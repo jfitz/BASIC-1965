@@ -1,0 +1,15 @@
+BASIC-1965
+
+This is an interpreter for the oldest form of BASIC, Dartmouth BASIC. Created in 1967 by Kemeny and Kurtz, BASIC was an interactive language that could take advantage of timesharing systems.
+
+This version is a primitive form of BASIC, less powerful than Dartmouth BASIC.
+
+- The statements supported are REM, LET, READ, DATA, PRINT, INPUT, IF, and GOTO.
+- Expressions are restricted to the LET statement. You cannot use expressions in PRINT or IF statements.
+- The LET statement must include the LET keyword.
+- No support for MAT statements.
+- No file operations.
+- DATA statements must be executed prior to READ statements. (This is a significant departure from BASIC.)
+- No user functions.
+- No subscripted variables.
+- No IF/THEN/ELSE. IF/THEN is supported, and that only with a target line number, not a target statement.
