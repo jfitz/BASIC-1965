@@ -1,5 +1,5 @@
 10 REM sample program
-20 DIM A(20)
+20 INPUT A
 30 LET C=1
 40 PRINT C
 50 DATA 10,20,30

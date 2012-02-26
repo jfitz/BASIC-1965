@@ -1,6 +1,17 @@
 #!/usr/bin/ruby
 
-class NumericValue
+class LineNumber
+  def initialize(text)
+    raise "Not a line number" if text !~ /^\d+$/
+    @line_number = text.to_i
+  end
+  
+  def to_s
+    @line_number.to_s
+  end
+end
+
+class NumericConstant
   def initialize(text)
     case
     when text =~ /^[+-]?\d+$/: @value = text.to_i
@@ -15,6 +26,17 @@ class NumericValue
   
   def to_s
     @value.to_s
+  end
+end
+
+class VariableName
+  def initialize(text)
+    raise "Not a variable name" if text !~ /^[A-Z][0-9]?$/
+    @var_name = text
+  end
+  
+  def to_s
+    @var_name
   end
 end
 
@@ -82,28 +104,6 @@ class Remark < AbstractLine
   end
 end
 
-class Dim < AbstractLine
-  def initialize(line)
-    super('DIM')
-    # todo: allow 2 dimensions
-    @variable_list = line.gsub(/ /, '').split(',')
-    # variable name, parens, number, close-parens [comma, variable name, parens, number, close-parens]...
-    @variable_list.each do | text_item |
-      if text_item !~ /^[A-Z][0-9]?\(\d\d?\)$/ then
-        @errors << "Invalid variable #{text_item}"
-      end
-    end
-  end
-  
-  def to_s
-    @keyword + ' ' + @variable_list.join(', ')
-  end
-  
-  def execute(interpreter)
-    print "unsupported operation #{@keyword}\n"
-  end
-end
-
 class Let < AbstractLine
   def initialize(line)
     super('LET')
@@ -126,7 +126,9 @@ class Input < AbstractLine
     @variable_list = line.gsub(/ /, '').split(',')
     # variable [comma, variable]...
     @variable_list.each do | text_item |
-      if text_item !~ /^[A-Z][0-9]?$/ then
+      begin
+        var_name = VariableName.new(text_item)
+      rescue
         @errors << "Invalid variable #{text_item}"
       end
     end
@@ -136,8 +138,37 @@ class Input < AbstractLine
     @keyword + ' ' + @variable_list.join(', ')
   end
   
+  private
+  def zip(names, values)
+    raise "Unequal lists" if names.size != values.size
+    results = Array.new
+    (0...names.size).each do | i |
+      results << { 'name' => names[i], 'value' => values[i] }
+    end    
+    results
+  end
+  
+  public
   def execute(interpreter)
-    print "unsupported operation #{@keyword}\n"
+    values = Array.new
+    while values.size < @variable_list.size do
+      print '?'
+      input_line = gets
+      input_line.chomp!
+      text_values = input_line.split(/,/)
+      text_values.each do | value |
+        begin
+          var_value = NumericConstant.new(value)
+          values << var_value.value
+        rescue
+          puts "Invalid value #{value}"
+        end
+      end
+    end
+    name_value_pairs = zip(@variable_list, values)
+    name_value_pairs.each do | hash |
+      interpreter.set_value(hash['name'], hash['value'])
+    end
   end
 end
 
@@ -166,7 +197,9 @@ class Print < AbstractLine
     @variable_list = line.gsub(/ /, '').split(',')
     # variable/constant, [separator, variable/constant]... [separator]
     @variable_list.each do | text_item |
-      if text_item !~ /^[A-Z][0-9]?$/ then
+      begin
+        var_name = VariableName.new(text_item)
+      rescue
         @errors << "Invalid variable #{text_item}"
       end
     end
@@ -196,14 +229,16 @@ end
 class Goto < AbstractLine
   def initialize(line)
     super('GO TO')
-    @destination = line.sub(/ /, '')
-    if @destination !~ /^\d+$/ then
-      @errors << "Invalid line number #{@destination}"
+    destination = line.sub(/ /, '')
+    begin
+      @destination = LineNumber.new(destination)
+    rescue
+      @errors << "Invalid line number #{destination}"
     end
   end
   
   def to_s
-    @keyword
+    @keyword + ' ' + @destination.to_s
   end
   
   def execute(interpreter)
@@ -218,7 +253,9 @@ class Read < AbstractLine
     @variable_list = line.gsub(/ /, '').split(',')
     # variable [comma, variable]...
     @variable_list.each do | text_item |
-      if text_item !~ /^[A-Z][0-9]?$/ then
+      begin
+        var_name = VariableName.new(text_item)
+      rescue
         @errors << "Invalid variable #{text_item}"
       end
     end
@@ -230,8 +267,11 @@ class Read < AbstractLine
   
   def execute(interpreter)
     @variable_list.each do | text_item |
-      if text_item =~ /^[A-Z][0-9]?$/ then
-        interpreter.set_value(text_item, interpreter.read_data)
+      begin
+        var_name = VariableName.new(text_item)
+        interpreter.set_value(var_name, interpreter.read_data)
+      rescue
+        puts "Invalid variable #{text_item}"
       end
     end
   end
@@ -244,7 +284,7 @@ class DataLine < AbstractLine
     # number [comma, number]...
     @data_list.each do | text_item |
       begin
-        NumericValue.new(text_item)
+        NumericConstant.new(text_item)
       rescue
         @errors << "Invalid value #{text_item}"
       end
@@ -258,7 +298,7 @@ class DataLine < AbstractLine
   def execute(interpreter)
     @data_list.each do | text_item |
       begin
-        interpreter.store_data(NumericValue.new(text_item))
+        interpreter.store_data(NumericConstant.new(text_item))
       rescue
         puts "Invalid value #{text_item} ignored"
       end
@@ -320,7 +360,6 @@ class Interpreter
       #todo: RETURN
       #todo: RESTORE
     when line_text[0..2] == 'REM': object = Remark.new(line_text[3..-1])
-    when line_text[0..2] == 'DIM': object = Dim.new(line_text[3..-1])
     when line_text[0..2] == 'LET': object = Let.new(line_text[3..-1])
     when line_text[0..4] == 'INPUT': object = Input.new(line_text[5..-1])
     when line_text[0..1] == 'IF': object = If.new(line_text[2..-1])
@@ -338,7 +377,7 @@ class Interpreter
   def cmd_list
     line_numbers = @program_lines.keys.sort
     if line_numbers.size > 0 then
-      line_numbers.each { | line_num | puts "#{line_num} #{@program_lines[line_num]}" }
+      line_numbers.each { | line_num | puts "#{line_num.to_s} #{@program_lines[line_num]}" }
     else
       puts 'No program loaded'
     end
@@ -407,7 +446,7 @@ class Interpreter
       if filename.size > 0 then
         begin
           File.open(filename, 'w') do | file |
-            line_numbers.each { | line_num | file.puts "#{line_num} #{@program_lines[line_num]}" }
+            line_numbers.each { | line_num | file.puts "#{line_num.to_s} #{@program_lines[line_num]}" }
             file.close
           end
         rescue Errno::ENOENT
@@ -426,8 +465,8 @@ class Interpreter
     puts "STOP in line #{@current_line_number}"
   end
   
-  def set_next_line(number)
-    @next_line_number = number.to_i
+  def set_next_line(line_number)
+    @next_line_number = line_number
   end
   
   def get_value(name)
@@ -435,7 +474,7 @@ class Interpreter
   end
   
   def set_value(name, value)
-    if @variables.has_key?(name) then
+    if @variables.has_key?(name.to_s) then
       @variables[name] = value
     else
       print "Unknown variable #{name} in line #{@current_line_number}\n"
@@ -499,5 +538,7 @@ class Interpreter
   end
 end
 
+puts "BASIC-1965 interpreter version -1"
 interpreter = Interpreter.new
 interpreter.go
+puts "BASIC-1965 ended"
