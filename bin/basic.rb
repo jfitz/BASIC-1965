@@ -60,6 +60,9 @@ class PrintHandler
     print "\n"
     @column = 0
   end
+  
+  def null
+  end
 end
 
 class AbstractLine
@@ -194,35 +197,49 @@ class Print < AbstractLine
     # todo: allow quoted text
     # todo: allow subscripted variables
     # todo: allow expressions
-    @variable_list = line.gsub(/ /, '').split(',')
+    item_list = line.gsub(/ /, '').split(/([,;])/)
     # variable/constant, [separator, variable/constant]... [separator]
-    @variable_list.each do | text_item |
-      begin
-        var_name = VariableName.new(text_item)
-      rescue
-        @errors << "Invalid variable #{text_item}"
+    @print_item_list = Array.new
+    var_name = nil
+    item_list.each do | print_item |
+      if print_item =~ /[,;]/ then
+        @print_item_list << { 'variable' => var_name, 'carriage' => print_item }
+        var_name = nil
+      else
+        begin
+          var_name = VariableName.new(print_item)
+        rescue
+          @errors << "Invalid variable #{print_item}"
+          var_name = VariableName.new('')
+        end
       end
     end
+    @print_item_list << { 'variable' => var_name, 'carriage' => '' }
   end
   
   def to_s
-    @keyword + ' ' + @variable_list.join(', ')
+    varnames = Array.new
+    @print_item_list.each { | print_item | varnames << "#{print_item['variable']}=#{print_item['carriage']}" }
+    @keyword + ' ' + varnames.join(', ')
   end
   
   def execute(interpreter)
-    # todo: track columns
-    # todo: handle comma separators
     printer = interpreter.print_handler
-    @variable_list.each do | variable_name |
-      variable_value = interpreter.get_value(variable_name)
+    @print_item_list.each do | print_item |
+      name = print_item['variable']
+      variable_value = interpreter.get_value(name)
       if variable_value != nil then
         printer.print_item variable_value.to_s
       else
-        print "Unknown variable #{variable_name}"
+        printer.print_item "Unknown variable #{name}"
       end
-      printer.tab
+      separator = print_item['carriage']
+      case
+      when separator == ';': printer.null
+      when separator == ',': printer.tab
+      else printer.newline
+      end
     end
-    printer.newline
   end
 end
 
@@ -340,7 +357,7 @@ class Interpreter
     @variables = Hash.new
     ('A'..'Z').each do | name |
       @variables[name] = 0
-      ('0'..'9').each { | number | @variables["#{name}#{number}"] = 0 }
+      #('0'..'9').each { | number | @variables["#{name}#{number}"] = 0 }
     end
     @data_store = Array.new
     @data_index = 0
@@ -469,15 +486,15 @@ class Interpreter
     @next_line_number = line_number
   end
   
-  def get_value(name)
-    @variables[name]
+  def get_value(variable)
+    @variables[variable.to_s]
   end
   
-  def set_value(name, value)
-    if @variables.has_key?(name.to_s) then
-      @variables[name] = value
+  def set_value(variable, value)
+    if @variables.has_key?(variable.to_s) then
+      @variables[variable.to_s] = value
     else
-      print "Unknown variable #{name} in line #{@current_line_number}\n"
+      print "Unknown variable #{variable} in line #{@current_line_number}\n"
     end
   end
   
