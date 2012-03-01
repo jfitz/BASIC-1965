@@ -25,7 +25,11 @@ class NumericConstant
   end
   
   def to_s
-    @value.to_s
+    if @value < 0 then
+      @value.to_s
+    else
+      ' ' + @value.to_s
+    end
   end
 end
 
@@ -448,11 +452,14 @@ class Interpreter
             end
           end
         end
+        true
       rescue Errno::ENOENT
         puts "File '#{filename}' not found"
+        false
       end
     else
       puts "Filename not specified"
+      false
     end
   end
 
@@ -557,7 +564,26 @@ class Interpreter
     puts
     puts "BASIC-1965 ended"
   end
+  
+  def load_and_run(filename)
+    puts "BASIC-1965 interpreter version -1"
+    puts
+    @program_lines = Hash.new
+    if cmd_load(filename) then
+      cmd_run
+    end
+    puts
+    puts "BASIC-1965 ended"
+  end
 end
 
 interpreter = Interpreter.new
-interpreter.go
+if ARGV.size > 0 then
+  filename = ARGV[0]
+  until ARGV.empty? do
+    ARGV.shift
+  end
+  interpreter.load_and_run(filename)
+else
+  interpreter.go
+end
