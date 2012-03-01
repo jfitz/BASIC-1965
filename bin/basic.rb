@@ -516,6 +516,8 @@ class Interpreter
   end
 
   def go
+    puts "BASIC-1965 interpreter version -1"
+    puts
     @program_lines = Hash.new
     need_prompt = true
     done = false
@@ -552,10 +554,10 @@ class Interpreter
         need_prompt = true
       end
     end
+    puts
+    puts "BASIC-1965 ended"
   end
 end
 
-puts "BASIC-1965 interpreter version -1"
 interpreter = Interpreter.new
 interpreter.go
-puts "BASIC-1965 ended"
