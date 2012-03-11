@@ -41,10 +41,22 @@ class NumericConstant
   end
 end
 
-class Operator
+class ArithmeticOperator
+  @@valid_operators = [ '+', '-', '*', '/' ]
+  def initialize(text)
+    raise "'#{text}' is not a valid arithmetic operator" if !@@valid_operators.include?(text)
+    @value = text
+  end
+  
+  def to_s
+    @value
+  end
+end
+
+class BooleanOperator
   @@valid_operators = [ '=', '<', '>', '=>', '<=', '<>' ]
   def initialize(text)
-    raise "'#{text}' is not a valid operator" if !@@valid_operators.include?(text)
+    raise "'#{text}' is not a valid boolean operator" if !@@valid_operators.include?(text)
     @value = text
   end
   
@@ -92,11 +104,52 @@ class NumericExpression
   end
 end
 
+class ArithmeticExpression
+  def initialize(text)
+    # parse into items and arith operators
+    parts = text.split(/([\+\-\*\/])/)
+    # convert from list of tokens into a tree
+    
+    @value = text
+  end
+
+  def value(interpreter)
+    NumericConstant.new('0')
+  end
+  
+  def to_s
+    @value
+  end
+end
+
+class Assignment
+  def initialize(text)
+    # parse into variable, '=', expression
+    parts = text.split('=', 2)
+    raise "'#{text}' is not a valid assignment" if parts.size != 2
+    @target = VariableName.new(parts[0])
+    @expression = ArithmeticExpression.new(parts[1])
+  end
+
+  def target
+    @target
+  end
+  
+  def value(interpreter)
+    @expression.value(interpreter)
+  end
+  
+  def to_s
+    @target.to_s + ' = ' + @expression.to_s
+  end
+end
+
 class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
+    raise "'#{text}' is not a boolean expression" if parts.size != 3
     @a = NumericExpression.new(parts[0])
-    @operator = Operator.new(parts[1])
+    @operator = BooleanOperator.new(parts[1])
     @b = NumericExpression.new(parts[2])
   end
   
@@ -193,15 +246,20 @@ end
 class Let < AbstractLine
   def initialize(line)
     super('LET')
-    @errors << "unsupported operation #{@keyword}"
+    begin
+      @expression = Assignment.new(line.gsub(/ /, ''))
+    rescue Exception => message
+      @errors << message
+      @expression = line
+    end
   end
   
   def to_s
-    @keyword
+    @keyword + ' ' + @expression.to_s
   end
   
   def execute_cmd(interpreter)
-    0
+    interpreter.set_value(@expression.target, @expression.value(interpreter))
   end
 end
 
@@ -270,7 +328,6 @@ class If < AbstractLine
       @boolean_expression = parts[0]
     end
     @destination = LineNumber.new(parts[1])
-    # todo: parse the expression, THEN, destination_line_number
   end
   
   def to_s
@@ -322,7 +379,7 @@ class Print < AbstractLine
       name = print_item['variable']
       variable_value = interpreter.get_value(name)
       if variable_value != nil then
-        printer.print_item variable_value.to_s
+        printer.print_item variable_value.to_formatted_s
       else
         printer.print_item "Unknown variable #{name}"
       end
@@ -442,7 +499,7 @@ class Interpreter
     @running = false
     @variables = Hash.new
     ('A'..'Z').each do | name |
-      @variables[name] = 0
+      @variables[name] = NumericConstant.new('0')
       #('0'..'9').each { | number | @variables["#{name}#{number}"] = 0 }
     end
     @data_store = Array.new
