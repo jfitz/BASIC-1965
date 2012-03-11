@@ -1,9 +1,13 @@
 #!/usr/bin/ruby
 
 class LineNumber
-  def initialize(text)
-    raise "Not a line number" if text !~ /^\d+$/
-    @line_number = text.to_i
+  def initialize(number)
+    raise "'#{number}' is not a line number" if /^\d+$/ !~ number
+    @line_number = number.to_i
+  end
+  
+  def to_i
+    @line_number
   end
   
   def to_s
@@ -16,7 +20,7 @@ class NumericConstant
     case
     when text =~ /^[+-]?\d+$/: @value = text.to_i
     when text =~ /^[+-]?\d+\.\d*$/: @value = text.to_f
-    else raise "Not a number" 
+    else raise "'#{text}' is not a number" 
     end
   end
 
@@ -25,6 +29,10 @@ class NumericConstant
   end
   
   def to_s
+    @value.to_s
+  end
+  
+  def to_formatted_s
     if @value < 0 then
       @value.to_s
     else
@@ -33,14 +41,77 @@ class NumericConstant
   end
 end
 
+class Operator
+  @@valid_operators = [ '=', '<', '>', '=>', '<=', '<>' ]
+  def initialize(text)
+    raise "'#{text}' is not a valid operator" if !@@valid_operators.include?(text)
+    @value = text
+  end
+  
+  def to_s
+    @value
+  end
+end
+
 class VariableName
   def initialize(text)
-    raise "Not a variable name" if text !~ /^[A-Z][0-9]?$/
+    raise "'#{text}' is not a variable name" if text !~ /^[A-Z][0-9]?$/
     @var_name = text
   end
   
   def to_s
     @var_name
+  end
+end
+
+class NumericExpression
+  def initialize(text)
+    @variable = nil
+    @value = nil
+    begin
+      @variable = VariableName.new(text)
+    rescue Exception => message
+      @value = NumericConstant.new(text)
+    end
+  end
+  
+  def value(interpreter)
+    if !@variable.nil? then
+      interpreter.get_value(@variable).value
+    else
+      @value.value
+    end
+  end
+  
+  def to_s
+    if !@variable.nil? then
+      @variable.to_s
+    else
+      @value.to_s
+    end
+  end
+end
+
+class BooleanExpression
+  def initialize(text)
+    parts = text.split(/\s*([=<>]+)\s*/)
+    @a = NumericExpression.new(parts[0])
+    @operator = Operator.new(parts[1])
+    @b = NumericExpression.new(parts[2])
+  end
+  
+  def value(interpreter)
+    case
+    when @operator.to_s == '=': @a.value(interpreter) == @b.value(interpreter)
+    when @operator.to_s == '<': @a.value(interpreter) < @b.value(interpreter)
+    when @operator.to_s == '>': @a.value(interpreter) > @b.value(interpreter)
+    when @operator.to_s == '<=': @a.value(interpreter) <= @b.value(interpreter)
+    when @operator.to_s == '>=': @a.value(interpreter) >= @b.value(interpreter)
+    end
+  end
+  
+  def to_s
+    @a.to_s + ' ' + @operator.to_s + ' ' + @b.to_s
   end
 end
 
@@ -78,6 +149,14 @@ class AbstractLine
   def errors
     @errors
   end
+  
+  def execute(interpreter)
+    if (@errors.size == 0) then
+      execute_cmd(interpreter)
+    else
+      @errors.each { | error | puts "line #{interpreter.current_line_number}: #{error}" }
+    end
+  end
 end
 
 class Unknown < AbstractLine
@@ -91,8 +170,8 @@ class Unknown < AbstractLine
     @line
   end
   
-  def execute(interpreter)
-    print "unsupported operation\n"
+  def execute_cmd(interpreter)
+    0
   end
 end
 
@@ -106,7 +185,7 @@ class Remark < AbstractLine
     @keyword + @contents
   end
 
-  def execute(interpreter)
+  def execute_cmd(interpreter)
     0
   end
 end
@@ -114,14 +193,15 @@ end
 class Let < AbstractLine
   def initialize(line)
     super('LET')
+    @errors << "unsupported operation #{@keyword}"
   end
   
   def to_s
     @keyword
   end
   
-  def execute(interpreter)
-    print "unsupported operation #{@keyword}\n"
+  def execute_cmd(interpreter)
+    0
   end
 end
 
@@ -156,7 +236,7 @@ class Input < AbstractLine
   end
   
   public
-  def execute(interpreter)
+  def execute_cmd(interpreter)
     values = Array.new
     while values.size < @variable_list.size do
       print '?'
@@ -182,14 +262,23 @@ end
 class If < AbstractLine
   def initialize(line)
     super('IF')
+    parts = line.gsub(/ /, '').split(/\s*THEN\s*/)
+    begin
+      @boolean_expression = BooleanExpression.new(parts[0])
+    rescue Exception => message
+      @errors << message
+      @boolean_expression = parts[0]
+    end
+    @destination = LineNumber.new(parts[1])
+    # todo: parse the expression, THEN, destination_line_number
   end
   
   def to_s
-    @keyword
+    @keyword + ' ' + @boolean_expression.to_s + ' THEN ' + @destination.to_s
   end
   
-  def execute(interpreter)
-    print "unsupported operation #{@keyword}\n"
+  def execute_cmd(interpreter)
+    interpreter.set_next_line(@destination.to_i) if @boolean_expression.value(interpreter)
   end
 end
 
@@ -227,7 +316,7 @@ class Print < AbstractLine
     @keyword + ' ' + varnames.join(', ')
   end
   
-  def execute(interpreter)
+  def execute_cmd(interpreter)
     printer = interpreter.print_handler
     @print_item_list.each do | print_item |
       name = print_item['variable']
@@ -262,8 +351,9 @@ class Goto < AbstractLine
     @keyword + ' ' + @destination.to_s
   end
   
-  def execute(interpreter)
-    interpreter.set_next_line(@destination)
+  def execute_cmd(interpreter)
+    next_line_number = @destination.to_i
+    interpreter.set_next_line(next_line_number)
   end
 end
 
@@ -286,14 +376,10 @@ class Read < AbstractLine
     @keyword + ' ' + @variable_list.join(', ')
   end
   
-  def execute(interpreter)
+  def execute_cmd(interpreter)
     @variable_list.each do | text_item |
-      begin
-        var_name = VariableName.new(text_item)
-        interpreter.set_value(var_name, interpreter.read_data)
-      rescue
-        puts "Invalid variable #{text_item}"
-      end
+      var_name = VariableName.new(text_item)
+      interpreter.set_value(var_name, interpreter.read_data)
     end
   end
 end
@@ -316,13 +402,9 @@ class DataLine < AbstractLine
     @keyword + ' '+ @data_list.join(', ')
   end
   
-  def execute(interpreter)
+  def execute_cmd(interpreter)
     @data_list.each do | text_item |
-      begin
-        interpreter.store_data(NumericConstant.new(text_item))
-      rescue
-        puts "Invalid value #{text_item} ignored"
-      end
+      interpreter.store_data(NumericConstant.new(text_item))
     end
   end
 end
@@ -336,7 +418,7 @@ class Stop < AbstractLine
     @keyword
   end
   
-  def execute(interpreter)
+  def execute_cmd(interpreter)
     interpreter.stop
   end
 end
@@ -350,7 +432,7 @@ class End < AbstractLine
     @keyword
   end
   
-  def execute(interpreter)
+  def execute_cmd(interpreter)
     interpreter.stop
   end
 end
@@ -417,10 +499,11 @@ class Interpreter
         @program_lines[@current_line_number].execute(self)
         # go to the next line number (which may have been changed by execute() )
         if @next_line_number != nil then
-          if line_numbers.index(@next_line_number) then
+          if line_numbers.include?(@next_line_number) then
             @current_line_number = @next_line_number
           else
 	    puts "Line number #{@next_line_number} not found"
+            error_stop
           end
 	else
           @running = false
@@ -487,6 +570,15 @@ class Interpreter
   def stop
     @running = false
     puts "STOP in line #{@current_line_number}"
+  end
+
+  def error_stop
+    @running = false
+    puts "Error in line #{@current_line_number}"
+  end
+
+  def current_line_number
+    @current_line_number
   end
   
   def set_next_line(line_number)
