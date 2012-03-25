@@ -28,6 +28,10 @@ class NumericConstant
     @value
   end
   
+  def numeric_value
+    @value
+  end
+  
   def to_s
     @value.to_s
   end
@@ -38,6 +42,10 @@ class NumericConstant
     else
       ' ' + @value.to_s
     end
+  end
+
+  def <(rhs)
+    @value < rhs.numeric_value
   end
 end
 
@@ -89,12 +97,20 @@ class NumericExpression
   
   def value(interpreter)
     if !@variable.nil? then
+      interpreter.get_value(@variable)
+    else
+      @value
+    end
+  end
+  
+  def numeric_value(interpreter)
+    if !@variable.nil? then
       interpreter.get_value(@variable).value
     else
       @value.value
     end
   end
-  
+
   def to_s
     if !@variable.nil? then
       @variable.to_s
@@ -128,7 +144,8 @@ class Assignment
     parts = text.split('=', 2)
     raise "'#{text}' is not a valid assignment" if parts.size != 2
     @target = VariableName.new(parts[0])
-    @expression = ArithmeticExpression.new(parts[1])
+    #@expression = ArithmeticExpression.new(parts[1])
+    @expression = NumericExpression.new(parts[1])
   end
 
   def target
@@ -699,6 +716,7 @@ class Interpreter
         end
       else
         # immediate command -- execute
+        # todo: add PRINT, LET
         case 
         when cmd == 'LIST': cmd_list
         when cmd == 'RUN': cmd_run
@@ -729,9 +747,7 @@ end
 interpreter = Interpreter.new
 if ARGV.size > 0 then
   filename = ARGV[0]
-  until ARGV.empty? do
-    ARGV.shift
-  end
+  until ARGV.empty? do ARGV.shift end
   interpreter.load_and_run(filename)
 else
   interpreter.go
