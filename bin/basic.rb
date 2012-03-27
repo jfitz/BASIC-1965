@@ -36,7 +36,7 @@ class NumericConstant
     @value.to_s
   end
   
-  def to_formatted_s
+  def to_formatted_s(interpreter)
     if @value < 0 then
       @value.to_s
     else
@@ -46,6 +46,27 @@ class NumericConstant
 
   def <(rhs)
     @value < rhs.numeric_value
+  end
+end
+
+class TextConstant
+  def initialize(text)
+    case
+    when text =~ /^".*"$/: @value = text[1..-2]
+    else raise "'#{text}' is not a text constant" 
+    end
+  end
+
+  def value
+    @value
+  end
+  
+  def to_s
+    "\"#{@value}\""
+  end
+  
+  def to_formatted_s(interpreter)
+    @value
   end
 end
 
@@ -118,6 +139,14 @@ class NumericExpression
       @value.to_s
     end
   end
+  
+  def to_formatted_s(interpreter)
+    if !@variable.nil? then
+      ' ' + interpreter.get_value(@variable).value.to_s
+    else
+      @value.value
+    end
+  end
 end
 
 class ArithmeticExpression
@@ -135,6 +164,34 @@ class ArithmeticExpression
   
   def to_s
     @value
+  end
+end
+
+class PrintableExpression
+  def initialize(text)
+    @numeric_expression = nil
+    @text_constant = nil
+    begin
+      @text_constant = TextConstant.new(text)
+    rescue Exception => message
+      @numeric_expression = NumericExpression.new(text)
+    end
+  end
+  
+  def to_s
+    if !@numeric_expression.nil? then
+      @numeric_expression.to_s
+    else
+      @text_constant.to_s
+    end
+  end
+  
+  def to_formatted_s(interpreter)
+    if !@numeric_expression.nil? then
+      @numeric_expression.to_formatted_s(interpreter)
+    else
+      @text_constant.to_formatted_s(interpreter)
+    end
   end
 end
 
@@ -357,6 +414,26 @@ class If < AbstractLine
 end
 
 class Print < AbstractLine
+  private
+  def split_args(text)
+    args = Array.new
+    current_arg = String.new
+    (0..text.size-1).each do | i |
+      c = text[i,1]
+      if [',', ';'].include?(c) then
+        args << current_arg
+        current_arg = String.new
+        args << c
+      else
+        current_arg += c
+      end
+    end
+    args << current_arg if current_arg.size > 0
+    
+    args
+  end
+  
+  public
   def initialize(line)
     super('PRINT')
     # todo: allow semicolon as separator
@@ -364,7 +441,7 @@ class Print < AbstractLine
     # todo: allow quoted text
     # todo: allow subscripted variables
     # todo: allow expressions
-    item_list = line.sub(/^ +/, '').split(/([,;])/)
+    item_list = split_args(line.sub(/^ +/, ''))
     # variable/constant, [separator, variable/constant]... [separator]
     @print_item_list = Array.new
     var_name = nil
@@ -376,9 +453,9 @@ class Print < AbstractLine
         begin
           print_item.sub!(/^ +/, '')
           print_item.sub!(/ +$/, '')
-          var_name = VariableName.new(print_item)
+          var_name = PrintableExpression.new(print_item)
         rescue
-          @errors << "Invalid variable #{print_item}"
+          @errors << "Invalid expression #{print_item}"
           var_name = VariableName.new('')
         end
       end
@@ -388,7 +465,7 @@ class Print < AbstractLine
   
   def to_s
     varnames = Array.new
-    @print_item_list.each { | print_item | varnames << "#{print_item['variable']}=#{print_item['carriage']}" }
+    @print_item_list.each { | print_item | varnames << print_item['variable'] }
     @keyword + ' ' + varnames.join(', ')
   end
   
@@ -396,12 +473,7 @@ class Print < AbstractLine
     printer = interpreter.print_handler
     @print_item_list.each do | print_item |
       name = print_item['variable']
-      variable_value = interpreter.get_value(name)
-      if variable_value != nil then
-        printer.print_item variable_value.to_formatted_s
-      else
-        printer.print_item "Unknown variable #{name}"
-      end
+      printer.print_item name.to_formatted_s(interpreter)
       separator = print_item['carriage']
       case
       when separator == ';': printer.null

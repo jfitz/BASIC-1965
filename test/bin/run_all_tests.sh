@@ -11,3 +11,5 @@ bash test/bin/run_one_test.sh ifthen
 bash test/bin/run_one_test.sh print_1
 bash test/bin/run_one_test.sh print_2
 bash test/bin/run_one_test.sh print_3
+bash test/bin/run_one_test.sh print_4
+bash test/bin/run_one_test.sh print_5
