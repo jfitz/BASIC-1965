@@ -364,7 +364,7 @@ class Print < AbstractLine
     # todo: allow quoted text
     # todo: allow subscripted variables
     # todo: allow expressions
-    item_list = line.gsub(/ /, '').split(/([,;])/)
+    item_list = line.sub(/^ +/, '').split(/([,;])/)
     # variable/constant, [separator, variable/constant]... [separator]
     @print_item_list = Array.new
     var_name = nil
@@ -374,6 +374,8 @@ class Print < AbstractLine
         var_name = nil
       else
         begin
+          print_item.sub!(/^ +/, '')
+          print_item.sub!(/ +$/, '')
           var_name = VariableName.new(print_item)
         rescue
           @errors << "Invalid variable #{print_item}"
