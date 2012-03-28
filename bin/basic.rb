@@ -47,6 +47,22 @@ class NumericConstant
   def <(rhs)
     @value < rhs.numeric_value
   end
+  
+  def >(rhs)
+    @value > rhs.numeric_value
+  end
+  
+  def ==(rhs)
+    @value == rhs.numeric_value
+  end
+  
+  def <=(rhs)
+    @value <= rhs.numeric_value
+  end
+
+  def >=(rhs)
+    @value >= rhs.numeric_value
+  end
 end
 
 class TextConstant
@@ -83,7 +99,7 @@ class ArithmeticOperator
 end
 
 class BooleanOperator
-  @@valid_operators = [ '=', '<', '>', '=>', '<=', '<>' ]
+  @@valid_operators = [ '=', '<', '>', '>=', '<=', '<>' ]
   def initialize(text)
     raise "'#{text}' is not a valid boolean operator" if !@@valid_operators.include?(text)
     @value = text
@@ -230,6 +246,7 @@ class BooleanExpression
   def value(interpreter)
     case
     when @operator.to_s == '=': @a.value(interpreter) == @b.value(interpreter)
+    when @operator.to_s == '<>': @a.value(interpreter) != @b.value(interpreter)
     when @operator.to_s == '<': @a.value(interpreter) < @b.value(interpreter)
     when @operator.to_s == '>': @a.value(interpreter) > @b.value(interpreter)
     when @operator.to_s == '<=': @a.value(interpreter) <= @b.value(interpreter)
