@@ -1,5 +1,47 @@
 #!/usr/bin/ruby
 
+class Node
+  def initialize(token)
+    @token = token
+    @precedence = 0
+    @left = nil
+    @right = nil
+    @parent = nil
+  end
+  
+  def token
+    @token
+  end
+  
+  def precedence
+    @precedence
+  end
+
+  def set_left(node)
+    @left = node
+  end
+  
+  def left
+    @left
+  end
+  
+  def set_right(node)
+    @right = node
+  end
+  
+  def right
+    @right
+  end
+  
+  def parent
+    @parent
+  end
+  
+  def set_parent(node)
+    @parent = node
+  end
+end
+
 class LineNumber
   def initialize(number)
     raise "'#{number}' is not a line number" if /^\d+$/ !~ number
@@ -15,9 +57,11 @@ class LineNumber
   end
 end
 
-class NumericConstant
+class NumericConstant < Node
   def initialize(text)
+    super
     case
+    when text.class.to_s == 'Fixnum': @value = text
     when text =~ /^[+-]?\d+$/: @value = text.to_i
     when text =~ /^[+-]?\d+\.\d*$/: @value = text.to_f
     else raise "'#{text}' is not a number" 
@@ -25,10 +69,6 @@ class NumericConstant
   end
 
   def value
-    @value
-  end
-  
-  def numeric_value
     @value
   end
   
@@ -42,26 +82,6 @@ class NumericConstant
     else
       ' ' + @value.to_s
     end
-  end
-
-  def <(rhs)
-    @value < rhs.numeric_value
-  end
-  
-  def >(rhs)
-    @value > rhs.numeric_value
-  end
-  
-  def ==(rhs)
-    @value == rhs.numeric_value
-  end
-  
-  def <=(rhs)
-    @value <= rhs.numeric_value
-  end
-
-  def >=(rhs)
-    @value >= rhs.numeric_value
   end
 end
 
@@ -86,11 +106,24 @@ class TextConstant
   end
 end
 
-class ArithmeticOperator
-  @@valid_operators = [ '+', '-', '*', '/' ]
+class ArithmeticOperator < Node
+  @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2 }
   def initialize(text)
-    raise "'#{text}' is not a valid arithmetic operator" if !@@valid_operators.include?(text)
-    @value = text
+    super
+    raise "'#{text}' is not an operator" if !@@operators.has_key?(text)
+    @op = text
+    @precedence = @@operators[@op]
+    @left = NumericConstant.new(0)
+    @right = NumericConstant.new(0)
+  end
+  
+  def evaluate(a, b, interpreter)
+    case
+    when @op == '+': NumericConstant.new(a.value(interpreter) + b.value(interpreter))
+    when @op == '-': NumericConstant.new(a.value(interpreter) - b.value(interpreter))
+    when @op == '*': NumericConstant.new(a.value(interpreter) * b.value(interpreter))
+    when @op == '/': NumericConstant.new(a.value(interpreter) / b.value(interpreter))
+    end
   end
   
   def to_s
@@ -110,8 +143,9 @@ class BooleanOperator
   end
 end
 
-class VariableName
+class VariableName < Node
   def initialize(text)
+    super
     raise "'#{text}' is not a variable name" if text !~ /^[A-Z][0-9]?$/
     @var_name = text
   end
@@ -121,8 +155,9 @@ class VariableName
   end
 end
 
-class NumericExpression
+class NumericExpression < Node
   def initialize(text)
+    super
     @variable = nil
     @value = nil
     begin
@@ -136,18 +171,10 @@ class NumericExpression
     if !@variable.nil? then
       interpreter.get_value(@variable)
     else
-      @value
-    end
-  end
-  
-  def numeric_value(interpreter)
-    if !@variable.nil? then
-      interpreter.get_value(@variable).value
-    else
       @value.value
     end
   end
-
+  
   def to_s
     if !@variable.nil? then
       @variable.to_s
@@ -158,7 +185,7 @@ class NumericExpression
   
   def to_formatted_s(interpreter)
     if !@variable.nil? then
-      ' ' + interpreter.get_value(@variable).value.to_s
+      ' ' + interpreter.get_value(@variable).to_s
     else
       @value.value
     end
@@ -166,20 +193,122 @@ class NumericExpression
 end
 
 class ArithmeticExpression
+  private
+  def split_args(text)
+    args = Array.new
+    current_arg = String.new
+    (0..text.size-1).each do | i |
+      c = text[i,1]
+      if [',', ';'].include?(c) then
+        args << current_arg
+        current_arg = String.new
+        args << c
+      else
+        current_arg += c
+      end
+    end
+    args << current_arg if current_arg.size > 0
+    
+    args
+  end
+  
+  public
   def initialize(text)
     # parse into items and arith operators
-    parts = text.split(/([\+\-\*\/])/)
+    tokens = text.split(/([\+\-\*\/])/)
     # convert from list of tokens into a tree
     
-    @value = text
+    list = Array.new
+    tokens.each do | token |
+      begin
+        list << NumericExpression.new(token)
+      rescue
+        begin
+          list << ArithmeticOperator.new(token)
+        rescue
+          raise "'#{token}' is not a value or operator"
+        end
+      end
+    end
+
+    level = 0
+
+    list.each do | token |
+      case
+      when token.class.to_s == 'NumericExpression': level += 1
+      when token.class.to_s == 'ArithmeticOperator': level -= 1
+      end
+    end
+
+    level -= 1 if list.size > 0
+
+    if level != 0 then
+      puts "LIST ' #{list.join('-')} ' ERROR"
+    end
+    
+    @root_node = Node.new('root')
+    current_node = @root_node
+    stack = Array.new
+
+    list.each do | token |
+      case
+      when token.class.to_s == 'NumericExpression':
+        child = token
+        current_node.set_right(child)
+        child.set_parent(current_node)
+      when token.class.to_s == 'ArithmeticOperator':
+        op = token
+        if op.precedence < current_node.precedence then
+          op.set_left(current_node)
+          op.set_parent(current_node.parent)
+        else
+          op.set_left(current_node.right)
+          op.set_parent(current_node)
+        end
+        op.parent.set_right(op)
+        op.left.set_parent(op)
+        current_node = op
+      end
+    end
+    current_node = @root_node.right
+    @root_node = current_node
+  end
+  
+  private
+  def evaluate(current_node, interpreter)
+    result = case
+      when current_node.class.to_s == 'ArithmeticOperator':
+        a = evaluate(current_node.left, interpreter)
+        b = evaluate(current_node.right, interpreter)
+        current_node.evaluate(a, b, interpreter)
+      when current_node.class.to_s == 'NumericExpression': current_node
+      else NumericConstant.new(0)
+    end
   end
 
+  def postfix_string(current_node)
+    result = ''
+    result += postfix_string(current_node.left) + ' ' if current_node.left != nil
+    result += postfix_string(current_node.right) + ' ' if current_node.right != nil
+    result += current_node.token.to_s
+
+    result
+  end
+
+  public
   def value(interpreter)
-    NumericConstant.new('0')
+    x = evaluate(@root_node, interpreter)
+    rv = case
+    when x.class.to_s == 'FixNum': x
+    when x.class.to_s == 'NumericConstant': x.value
+    when x.class.to_s == 'NumericExpression': x.value(interpreter)
+    else throw "Unknown data type #{x.class}"
+    end
+    rv
   end
   
   def to_s
-    @value
+    postfix_string(@root_node)
   end
 end
 
@@ -217,8 +346,8 @@ class Assignment
     parts = text.split('=', 2)
     raise "'#{text}' is not a valid assignment" if parts.size != 2
     @target = VariableName.new(parts[0])
-    #@expression = ArithmeticExpression.new(parts[1])
-    @expression = NumericExpression.new(parts[1])
+    @expression = ArithmeticExpression.new(parts[1])
+    #@expression = NumericExpression.new(parts[1])
   end
 
   def target
@@ -569,7 +698,8 @@ class DataLine < AbstractLine
   
   def execute_cmd(interpreter)
     @data_list.each do | text_item |
-      interpreter.store_data(NumericConstant.new(text_item))
+      x = NumericConstant.new(text_item)
+      interpreter.store_data(x.value)
     end
   end
 end
@@ -839,6 +969,9 @@ interpreter = Interpreter.new
 if ARGV.size > 0 then
   filename = ARGV[0]
   until ARGV.empty? do ARGV.shift end
+  # set_trace_func proc { | event, file, line, id, binding, classname |
+  #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include? (classname.to_s)
+  # }
   interpreter.load_and_run(filename)
 else
   interpreter.go

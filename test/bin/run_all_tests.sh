@@ -18,3 +18,10 @@ bash test/bin/run_one_test.sh print_2
 bash test/bin/run_one_test.sh print_3
 bash test/bin/run_one_test.sh print_4
 bash test/bin/run_one_test.sh print_5
+bash test/bin/run_one_test.sh let_n
+bash test/bin/run_one_test.sh let_n_plus_n
+bash test/bin/run_one_test.sh let_n_minus_n
+bash test/bin/run_one_test.sh let_n_times_n
+bash test/bin/run_one_test.sh let_n_divide_n
+bash test/bin/run_one_test.sh let_v_plus_n
+bash test/bin/run_one_test.sh let_n_plus_v
