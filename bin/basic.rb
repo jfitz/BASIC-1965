@@ -63,12 +63,13 @@ class NumericConstant < Node
     case
     when text.class.to_s == 'Fixnum': @value = text
     when text =~ /^[+-]?\d+$/: @value = text.to_i
+    when text.class.to_s == 'Float': @value = text
     when text =~ /^[+-]?\d+\.\d*$/: @value = text.to_f
     else raise "'#{text}' is not a number" 
     end
   end
 
-  def value
+  def value(interpreter)
     @value
   end
   
@@ -122,12 +123,18 @@ class ArithmeticOperator < Node
     when @op == '+': NumericConstant.new(a.value(interpreter) + b.value(interpreter))
     when @op == '-': NumericConstant.new(a.value(interpreter) - b.value(interpreter))
     when @op == '*': NumericConstant.new(a.value(interpreter) * b.value(interpreter))
-    when @op == '/': NumericConstant.new(a.value(interpreter) / b.value(interpreter))
+    when @op == '/': divide(a.value(interpreter), b.value(interpreter))
     end
+  end
+
+  def divide(a, b)
+    f = NumericConstant.new(a.to_f / b.to_f)
+    i = NumericConstant.new(a / b)
+    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
   end
   
   def to_s
-    @value
+    @op
   end
 end
 
@@ -171,7 +178,7 @@ class NumericExpression < Node
     if !@variable.nil? then
       interpreter.get_value(@variable)
     else
-      @value.value
+      @value.value(interpreter)
     end
   end
   
@@ -258,7 +265,7 @@ class ArithmeticExpression
         child.set_parent(current_node)
       when token.class.to_s == 'ArithmeticOperator':
         op = token
-        if op.precedence < current_node.precedence then
+        if op.precedence <= current_node.precedence then
           op.set_left(current_node)
           op.set_parent(current_node.parent)
         else
@@ -300,7 +307,7 @@ class ArithmeticExpression
     x = evaluate(@root_node, interpreter)
     rv = case
     when x.class.to_s == 'FixNum': x
-    when x.class.to_s == 'NumericConstant': x.value
+    when x.class.to_s == 'NumericConstant': x.value(interpreter)
     when x.class.to_s == 'NumericExpression': x.value(interpreter)
     else throw "Unknown data type #{x.class}"
     end
@@ -309,6 +316,18 @@ class ArithmeticExpression
   
   def to_s
     postfix_string(@root_node)
+  end
+
+  def to_postfix_s
+    postfix_string(@root_node)
+  end
+
+  def postfix_string(current_node)
+    result = ''
+    result += postfix_string(current_node.left) + ' ' if current_node.left != nil
+    result += postfix_string(current_node.right) + ' ' if current_node.right != nil
+    result += current_node.token.to_s
+    result
   end
 end
 
@@ -360,6 +379,10 @@ class Assignment
   
   def to_s
     @target.to_s + ' = ' + @expression.to_s
+  end
+
+  def to_postfix_s
+    @expression.to_postfix_s
   end
 end
 
@@ -699,7 +722,7 @@ class DataLine < AbstractLine
   def execute_cmd(interpreter)
     @data_list.each do | text_item |
       x = NumericConstant.new(text_item)
-      interpreter.store_data(x.value)
+      interpreter.store_data(x.value(interpreter))
     end
   end
 end

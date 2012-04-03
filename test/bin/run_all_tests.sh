@@ -25,3 +25,4 @@ bash test/bin/run_one_test.sh let_n_times_n
 bash test/bin/run_one_test.sh let_n_divide_n
 bash test/bin/run_one_test.sh let_v_plus_n
 bash test/bin/run_one_test.sh let_n_plus_v
+bash test/bin/run_one_test.sh celcius_to_fahrenheit
