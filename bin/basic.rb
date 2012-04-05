@@ -674,6 +674,42 @@ class Goto < AbstractLine
   end
 end
 
+class Gosub < AbstractLine
+  def initialize(line)
+    super('GOSUB')
+    destination = line.sub(/ /, '')
+    begin
+      @destination = LineNumber.new(destination)
+    rescue
+      @errors << "Invalid line number #{destination}"
+    end
+  end
+  
+  def to_s
+    @keyword + ' ' + @destination.to_s
+  end
+  
+  def execute_cmd(interpreter)
+    interpreter.push_return(interpreter.get_next_line)
+    next_line_number = @destination.to_i
+    interpreter.set_next_line(next_line_number)
+  end
+end
+
+class Return < AbstractLine
+  def initialize
+    super('RETURN')
+  end
+  
+  def to_s
+    @keyword
+  end
+  
+  def execute_cmd(interpreter)
+    interpreter.set_next_line(interpreter.pop_return)
+  end
+end
+
 class Read < AbstractLine
   def initialize(line)
     super('READ')
@@ -766,6 +802,7 @@ class Interpreter
     @data_store = Array.new
     @data_index = 0
     @printer = PrintHandler.new
+    @return_stack = Array.new
   end
   
   def parse_line(line)
@@ -787,6 +824,8 @@ class Interpreter
     when line_text[0..4] == 'PRINT': object = Print.new(line_text[5..-1])
     when line_text[0..4] == 'GO TO': object = Goto.new(line_text[5..-1])
     when line_text[0..3] == 'GOTO': object = Goto.new(line_text[4..-1])
+    when line_text[0..4] == 'GOSUB': object = Gosub.new(line_text[5..-1])
+    when line_text[0..5] == 'RETURN': object = Return.new
     when line_text[0..3] == 'READ': object = Read.new(line_text[4..-1])
     when line_text[0..3] == 'DATA': object = DataLine.new(line_text[4..-1])
     when line_text[0..3] == 'STOP': object = Stop.new
@@ -814,16 +853,21 @@ class Interpreter
         # pick the next line number
         index = line_numbers.index(@current_line_number) + 1
         @next_line_number = line_numbers[index]
-        @program_lines[@current_line_number].execute(self)
-        # go to the next line number (which may have been changed by execute() )
-        if @next_line_number != nil then
-          if line_numbers.include?(@next_line_number) then
-            @current_line_number = @next_line_number
+        begin
+          @program_lines[@current_line_number].execute(self)
+          # go to the next line number (which may have been changed by execute() )
+          if @next_line_number != nil then
+            if line_numbers.include?(@next_line_number) then
+              @current_line_number = @next_line_number
+            else
+              puts "Line number #{@next_line_number} not found"
+              error_stop
+            end
           else
-	    puts "Line number #{@next_line_number} not found"
-            error_stop
+            @running = false
           end
-	else
+        rescue Exception => message
+          puts "#{message} in line #{current_line_number}"
           @running = false
         end
       end
@@ -898,6 +942,10 @@ class Interpreter
   def current_line_number
     @current_line_number
   end
+
+  def get_next_line
+    @next_line_number
+  end
   
   def set_next_line(line_number)
     @next_line_number = line_number
@@ -917,6 +965,15 @@ class Interpreter
   
   def print_handler
     @printer
+  end
+  
+  def push_return(destination)
+    @return_stack.push(destination)
+  end
+  
+  def pop_return
+    raise "RETURN without GOSUB" if @return_stack.size == 0
+    @return_stack.pop
   end
   
   def store_data(value)
