@@ -854,7 +854,19 @@ class Interpreter
       puts 'No program loaded'
     end
   end
-
+  
+  private
+  def verify_next_line_number(line_numbers, next_line_number)
+    if next_line_number == nil then
+      raise "Program terminated without END"
+    end
+    if !line_numbers.include?(next_line_number) then
+      raise "Line number #{next_line_number} not found"
+    end
+    next_line_number
+  end
+  
+  public
   def cmd_run
     line_numbers = @program_lines.keys.sort
     if line_numbers.size > 0 then
@@ -863,21 +875,11 @@ class Interpreter
       @running = true
       while @running
         # pick the next line number
-        index = line_numbers.index(@current_line_number) + 1
-        @next_line_number = line_numbers[index]
+        @next_line_number = line_numbers[line_numbers.index(@current_line_number) + 1]
         begin
           @program_lines[@current_line_number].execute(self)
-          # go to the next line number (which may have been changed by execute() )
-          if @next_line_number != nil then
-            if line_numbers.include?(@next_line_number) then
-              @current_line_number = @next_line_number
-            else
-              puts "Line number #{@next_line_number} not found"
-              error_stop
-            end
-          else
-            @running = false
-          end
+          # set the next line number (which may have been changed by execute() )
+          @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
         rescue Exception => message
           puts "#{message} in line #{current_line_number}"
           @running = false
@@ -948,11 +950,6 @@ class Interpreter
   def stop
     @running = false
     puts "STOP in line #{@current_line_number}"
-  end
-
-  def error_stop
-    @running = false
-    puts "Error in line #{@current_line_number}"
   end
 
   def current_line_number
