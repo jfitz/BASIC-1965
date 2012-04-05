@@ -315,11 +315,23 @@ class ArithmeticExpression
   end
   
   def to_s
-    postfix_string(@root_node)
+    infix_string(@root_node)
   end
 
   def to_postfix_s
     postfix_string(@root_node)
+  end
+
+  def infix_string(current_node)
+    result = ''
+    if current_node.left != nil then
+      result += infix_string(current_node.left).to_s + ' '
+    end
+    result += current_node.token.to_s
+    if current_node.right then
+      result += ' ' + infix_string(current_node.right).to_s
+    end
+    result
   end
 
   def postfix_string(current_node)
@@ -876,12 +888,16 @@ class Interpreter
     end
   end
 
+  def cmd_new
+    @program_lines = Hash.new
+  end
+  
   def cmd_load(filename)
     filename.sub!(/^\s+/, '')
     if filename.size > 0 then
       begin
         File.open(filename, 'r') do | file |
-          program_lines = Hash.new
+          @program_lines = Hash.new
           file.each_line do | line |
             line.chomp!
             if line =~ /^\d+/ then
@@ -1021,6 +1037,7 @@ class Interpreter
         case 
         when cmd == 'LIST': cmd_list
         when cmd == 'RUN': cmd_run
+        when cmd == 'NEW': cmd_new
         when cmd[0..3] == 'LOAD': cmd_load(cmd[4..-1])
         when cmd[0..3] == 'SAVE': cmd_save(cmd[4..-1])
         when cmd == 'EXIT': done = true
