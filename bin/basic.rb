@@ -722,6 +722,109 @@ class Return < AbstractLine
   end
 end
 
+class ForNextControl
+  def initialize(control_variable_name, loop_start_number, start_value, end_value, step_value)
+    @control_variable_name = control_variable_name
+    @loop_start_number = loop_start_number
+    @start_value = start_value
+    @end_value = end_value
+    @step_value = step_value
+    @current_value = start_value
+  end
+  
+  def bump_control_variable(interpreter)
+    @current_value = @current_value + @step_value
+    interpreter.set_value(@control_variable_name, @current_value)
+  end
+  
+  def control_variable_name
+    @control_variable_name
+  end
+  
+  def end_value
+    @end_value
+  end
+  
+  def loop_start_number
+    @loop_start_number
+  end
+  
+  def terminated?(interpreter)
+    case
+    when @step_value > 0: (interpreter.get_value(@control_variable_name) >= end_value)
+    when @step_value < 0: (interpreter.get_value(@control_variable_name) <= end_value)
+    else true
+    end
+  end
+end
+
+class ForLine < AbstractLine
+  def initialize(line)
+    super('FOR')
+    # parse control variable, "=", numeric_expression, "TO", numeric_expression, "STEP", numeric_expression
+    parts = line.gsub(/ /, '').split('=', 2)
+    raise "Syntax error" if parts.size != 2
+    begin
+      @control_variable = VariableName.new(parts[0])
+    rescue Exception => message
+      @errors << message
+    end
+    parts = parts[1].split('TO', 2)
+    raise "Syntax error" if parts.size != 2
+    @start_value = NumericExpression.new(parts[0])
+    parts = parts[1].split('STEP', 2)
+    @end_value = NumericExpression.new(parts[0])
+    @step_value = parts.size > 1 ? NumericExpression.new(parts[1]) : NumericConstant.new(1)
+  end
+  
+  def to_s
+    @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s
+  end
+  
+  def execute_cmd(interpreter)
+    from_value = @start_value.value(interpreter)
+    interpreter.set_value(@control_variable, from_value)
+    to_value = @end_value.value(interpreter)
+    step_value = @step_value.value(interpreter)
+    interpreter.push_fornext(ForNextControl.new(@control_variable.to_s, interpreter.get_next_line, from_value, to_value, step_value))
+  end
+end
+
+class NextLine < AbstractLine
+  def initialize(line)
+    super('NEXT')
+    # parse control variable
+    @control_variable = nil
+    begin
+      @control_variable = VariableName.new(line.gsub(/ /, ''))
+    rescue Exception => message
+      @errors << message
+      @boolean_expression = line
+    end
+  end
+  
+  def to_s
+    @keyword + ' ' + @control_variable.to_s
+  end
+  
+  def execute_cmd(interpreter)
+    fornext_control = interpreter.pop_fornext #may raise "NEXT without FOR"
+    # verify top item matches control variable
+    x = fornext_control.control_variable_name
+    if x != @control_variable.to_s then
+      raise "NEXT #{@control_variable} does not match FOR #{x}"
+    end
+    # check control variable value
+    # if matches end value, stop here
+    return if fornext_control.terminated?(interpreter)
+    # set next line from top item
+    interpreter.set_next_line(fornext_control.loop_start_number)
+    # change control variable value
+    fornext_control.bump_control_variable(interpreter)
+    interpreter.push_fornext(fornext_control)
+  end
+end
+
 class Read < AbstractLine
   def initialize(line)
     super('READ')
@@ -815,6 +918,7 @@ class Interpreter
     @data_index = 0
     @printer = PrintHandler.new
     @return_stack = Array.new
+    @fornext_stack = Array.new
   end
   
   def parse_line(line)
@@ -837,6 +941,8 @@ class Interpreter
     when line_text[0..4] == 'GO TO': object = Goto.new(line_text[5..-1])
     when line_text[0..3] == 'GOTO': object = Goto.new(line_text[4..-1])
     when line_text[0..4] == 'GOSUB': object = Gosub.new(line_text[5..-1])
+    when line_text[0..2] == 'FOR': object = ForLine.new(line_text[3..-1])
+    when line_text[0..3] == 'NEXT': object = NextLine.new(line_text[4..-1])
     when line_text[0..5] == 'RETURN': object = Return.new
     when line_text[0..3] == 'READ': object = Read.new(line_text[4..-1])
     when line_text[0..3] == 'DATA': object = DataLine.new(line_text[4..-1])
@@ -987,6 +1093,15 @@ class Interpreter
   def pop_return
     raise "RETURN without GOSUB" if @return_stack.size == 0
     @return_stack.pop
+  end
+  
+  def push_fornext(fornext)
+    @fornext_stack.push(fornext)
+  end
+  
+  def pop_fornext
+    raise "NEXT without FOR" if @fornext_stack.size == 0
+    @fornext_stack.pop
   end
   
   def store_data(value)
