@@ -3,9 +3,6 @@
 class Node
   def initialize(token)
     @token = token
-    @precedence = 0
-    @left = nil
-    @right = nil
     @parent = nil
   end
   
@@ -14,23 +11,7 @@ class Node
   end
   
   def precedence
-    @precedence
-  end
-
-  def set_left(node)
-    @left = node
-  end
-  
-  def left
-    @left
-  end
-  
-  def set_right(node)
-    @right = node
-  end
-  
-  def right
-    @right
+    10
   end
   
   def parent
@@ -39,6 +20,72 @@ class Node
   
   def set_parent(node)
     @parent = node
+  end
+  
+  def set_left(node)
+    node.set_parent(self) if node != nil
+  end
+  
+  def left
+    nil
+  end
+  
+  def set_right(node)
+    node.set_parent(self) if node != nil
+  end
+  
+  def right
+    nil
+  end
+  
+  def infix_string
+    @token
+  end
+end
+
+class LeafNode < Node
+  def initialize(token)
+    super
+  end
+end
+
+class BinaryNode < Node
+  def initialize(token)
+    super
+    @precedence = 0
+    @left = nil
+    @right = nil
+  end
+  
+  def precedence
+    @precedence
+  end
+
+  def set_left(node)
+    node.set_parent(self) if node != nil
+    @left = node
+  end
+  
+  def left
+    @left
+  end
+  
+  def set_right(node)
+    node.set_parent(self)
+    node.set_left(@right)
+    @right = node
+  end
+  
+  def right
+    @right
+  end
+  
+  def infix_string
+    result = ''
+    result += @left.infix_string if @left != nil
+    result += @token
+    result += @right.infix_string if @right != nil
+    result
   end
 end
 
@@ -57,7 +104,7 @@ class LineNumber
   end
 end
 
-class NumericConstant < Node
+class NumericConstant < LeafNode
   def initialize(text)
     super
     case
@@ -107,29 +154,45 @@ class TextConstant
   end
 end
 
-class ArithmeticOperator < Node
+class ArithmeticOperator < BinaryNode
   @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2 }
   def initialize(text)
     super
     raise "'#{text}' is not an operator" if !@@operators.has_key?(text)
     @op = text
     @precedence = @@operators[@op]
-    @left = NumericConstant.new(0)
-    @right = NumericConstant.new(0)
   end
   
   def evaluate(a, b, interpreter)
     case
-    when @op == '+': NumericConstant.new(a.value(interpreter) + b.value(interpreter))
-    when @op == '-': NumericConstant.new(a.value(interpreter) - b.value(interpreter))
-    when @op == '*': NumericConstant.new(a.value(interpreter) * b.value(interpreter))
+    when @op == '+': add(a.value(interpreter), b.value(interpreter))
+    when @op == '-': subtract(a.value(interpreter), b.value(interpreter))
+    when @op == '*': multiply(a.value(interpreter), b.value(interpreter))
     when @op == '/': divide(a.value(interpreter), b.value(interpreter))
     end
   end
 
+  def add(a, b)
+    f = NumericConstant.new(a.to_f + b.to_f)
+    i = NumericConstant.new((a + b).to_i)
+    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
+  end
+  
+  def subtract(a, b)
+    f = NumericConstant.new(a.to_f - b.to_f)
+    i = NumericConstant.new((a - b).to_i)
+    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
+  end
+  
+  def multiply(a, b)
+    f = NumericConstant.new(a.to_f * b.to_f)
+    i = NumericConstant.new((a * b).to_i)
+    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
+  end
+  
   def divide(a, b)
     f = NumericConstant.new(a.to_f / b.to_f)
-    i = NumericConstant.new(a / b)
+    i = NumericConstant.new((a / b).to_i)
     (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
   end
   
@@ -150,7 +213,7 @@ class BooleanOperator
   end
 end
 
-class VariableName < Node
+class VariableName < LeafNode
   def initialize(text)
     super
     raise "'#{text}' is not a variable name" if text !~ /^[A-Z][0-9]?$/
@@ -162,7 +225,7 @@ class VariableName < Node
   end
 end
 
-class NumericExpression < Node
+class NumericExpression < LeafNode
   def initialize(text)
     super
     @variable = nil
@@ -253,32 +316,35 @@ class ArithmeticExpression
       puts "LIST ' #{list.join('-')} ' ERROR"
     end
     
-    @root_node = Node.new('root')
-    current_node = @root_node
+    current_node = nil
     stack = Array.new
 
     list.each do | token |
       case
       when token.class.to_s == 'NumericExpression':
         child = token
-        current_node.set_right(child)
-        child.set_parent(current_node)
+        if (current_node == nil) then
+          current_node = child
+        else
+          current_node.set_right(child)
+        end
       when token.class.to_s == 'ArithmeticOperator':
         op = token
-        if op.precedence <= current_node.precedence then
-          op.set_left(current_node)
-          op.set_parent(current_node.parent)
+        if (current_node == nil) then
+          current_node = op
         else
-          op.set_left(current_node.right)
-          op.set_parent(current_node)
+          if op.precedence >= current_node.precedence then
+            current_node.set_right(op)
+          else
+            current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > op.precedence
+            op.set_left(current_node)
+          end
         end
-        op.parent.set_right(op)
-        op.left.set_parent(op)
         current_node = op
       end
     end
-    current_node = @root_node.right
     @root_node = current_node
+    @root_node = @root_node.parent while @root_node.parent != nil
   end
   
   private
@@ -315,23 +381,11 @@ class ArithmeticExpression
   end
   
   def to_s
-    infix_string(@root_node)
+    @root_node.infix_string
   end
 
   def to_postfix_s
     postfix_string(@root_node)
-  end
-
-  def infix_string(current_node)
-    result = ''
-    if current_node.left != nil then
-      result += infix_string(current_node.left).to_s + ' '
-    end
-    result += current_node.token.to_s
-    if current_node.right then
-      result += ' ' + infix_string(current_node.right).to_s
-    end
-    result
   end
 
   def postfix_string(current_node)
