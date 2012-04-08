@@ -21,6 +21,10 @@ class Node
   def set_parent(node)
     @parent = node
   end
+
+  def topmost
+    @parent != nil ? @parent.topmost : self
+  end
   
   def set_left(node)
     node.set_parent(self) if node != nil
@@ -326,25 +330,33 @@ class ArithmeticExpression
         if (current_node == nil) then
           current_node = child
         else
-          current_node.set_right(child)
-        end
-      when token.class.to_s == 'ArithmeticOperator':
-        op = token
-        if (current_node == nil) then
-          current_node = op
+          if child.precedence >= current_node.precedence then
+            current_node.set_right(child)
+#            current_node = child
         else
-          if op.precedence >= current_node.precedence then
-            current_node.set_right(op)
-          else
-            current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > op.precedence
-            op.set_left(current_node)
+            puts "DBG:"
+            current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > child.precedence
+            child.set_left(current_node)
+            current_node = child
           end
         end
-        current_node = op
+      when token.class.to_s == 'ArithmeticOperator':
+        child = token
+        if (current_node == nil) then
+          current_node = child
+        else
+          if child.precedence >= current_node.precedence then
+            current_node.set_right(child)
+            current_node = child
+          else
+            current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > child.precedence
+            child.set_left(current_node)
+            current_node = child
+          end
+        end
       end
     end
-    @root_node = current_node
-    @root_node = @root_node.parent while @root_node.parent != nil
+    @root_node = current_node.topmost
   end
   
   private
