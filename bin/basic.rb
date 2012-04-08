@@ -94,7 +94,6 @@ class BinaryNode < Node
     result += @left.infix_string if @left != nil
     result += @token
     result += @right.infix_string if @right != nil
-    result
   end
 end
 
@@ -134,11 +133,7 @@ class NumericConstant < LeafNode
   end
   
   def to_formatted_s(interpreter)
-    if @value < 0 then
-      @value.to_s
-    else
-      ' ' + @value.to_s
-    end
+    @value < 0 ? @value.to_s : ' ' + @value.to_s
   end
 end
 
@@ -255,19 +250,11 @@ class NumericExpression < LeafNode
   end
   
   def to_s
-    if !@variable.nil? then
-      @variable.to_s
-    else
-      @value.to_s
-    end
+    @variable.nil? ? @value.to_s : @variable.to_s
   end
   
   def to_formatted_s(interpreter)
-    if !@variable.nil? then
-      ' ' + interpreter.get_value(@variable).to_s
-    else
-      @value.value
-    end
+    @variable.nil? ? @value.value : ' ' + interpreter.get_value(@variable).to_s
   end
 end
 
@@ -398,19 +385,11 @@ class PrintableExpression
   end
   
   def to_s
-    if !@numeric_expression.nil? then
-      @numeric_expression.to_s
-    else
-      @text_constant.to_s
-    end
+    @numeric_expression.nil? ? @numeric_expression.to_s : @text_constant.to_s
   end
   
   def to_formatted_s(interpreter)
-    if !@numeric_expression.nil? then
-      @numeric_expression.to_formatted_s(interpreter)
-    else
-      @text_constant.to_formatted_s(interpreter)
-    end
+    @numeric_expression.nil? ? @text_constant.to_formatted_s(interpreter): @numeric_expression.to_formatted_s(interpreter)
   end
 end
 
@@ -421,7 +400,6 @@ class Assignment
     raise "'#{text}' is not a valid assignment" if parts.size != 2
     @target = VariableName.new(parts[0])
     @expression = ArithmeticExpression.new(parts[1])
-    #@expression = NumericExpression.new(parts[1])
   end
 
   def target
