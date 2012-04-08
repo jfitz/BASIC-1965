@@ -27,7 +27,10 @@ class Node
   end
   
   def set_left(node)
+    p = node.parent
+    @parent = node.parent if node != nil
     node.set_parent(self) if node != nil
+    p.set_right(self) if p != nil
   end
   
   def left
@@ -66,8 +69,11 @@ class BinaryNode < Node
   end
 
   def set_left(node)
+    p = node.parent
+    @parent = node.parent if node != nil
     node.set_parent(self) if node != nil
     @left = node
+    p.set_right(self) if p != nil
   end
   
   def left
@@ -76,7 +82,6 @@ class BinaryNode < Node
   
   def set_right(node)
     node.set_parent(self)
-    node.set_left(@right)
     @right = node
   end
   
@@ -321,40 +326,16 @@ class ArithmeticExpression
     end
     
     current_node = nil
-    stack = Array.new
-
-    list.each do | token |
-      case
-      when token.class.to_s == 'NumericExpression':
-        child = token
-        if (current_node == nil) then
-          current_node = child
+    list.each do | new_node |
+      if (current_node != nil) then
+        if new_node.precedence >= current_node.precedence then
+          current_node.set_right(new_node)
         else
-          if child.precedence >= current_node.precedence then
-            current_node.set_right(child)
-#            current_node = child
-        else
-            puts "DBG:"
-            current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > child.precedence
-            child.set_left(current_node)
-            current_node = child
-          end
-        end
-      when token.class.to_s == 'ArithmeticOperator':
-        child = token
-        if (current_node == nil) then
-          current_node = child
-        else
-          if child.precedence >= current_node.precedence then
-            current_node.set_right(child)
-            current_node = child
-          else
-            current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > child.precedence
-            child.set_left(current_node)
-            current_node = child
-          end
+          current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > new_node.precedence
+          new_node.set_left(current_node)
         end
       end
+      current_node = new_node
     end
     @root_node = current_node.topmost
   end
@@ -376,20 +357,17 @@ class ArithmeticExpression
     result += postfix_string(current_node.left) + ' ' if current_node.left != nil
     result += postfix_string(current_node.right) + ' ' if current_node.right != nil
     result += current_node.token.to_s
-
-    result
   end
 
   public
   def value(interpreter)
     x = evaluate(@root_node, interpreter)
-    rv = case
+    case
     when x.class.to_s == 'FixNum': x
     when x.class.to_s == 'NumericConstant': x.value(interpreter)
     when x.class.to_s == 'NumericExpression': x.value(interpreter)
     else throw "Unknown data type #{x.class}"
     end
-    rv
   end
   
   def to_s
@@ -405,7 +383,6 @@ class ArithmeticExpression
     result += postfix_string(current_node.left) + ' ' if current_node.left != nil
     result += postfix_string(current_node.right) + ' ' if current_node.right != nil
     result += current_node.token.to_s
-    result
   end
 end
 
