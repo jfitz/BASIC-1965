@@ -324,14 +324,6 @@ class ArithmeticExpression
   end
   
   private
-  def evaluate(current_node, interpreter)
-    result = case
-      when current_node.class.to_s == 'BinaryOperator': current_node.evaluate(interpreter)
-      when current_node.class.to_s == 'NumericExpression': current_node.evaluate(interpreter)
-      else raise BASICException, "Unknown node type", caller
-    end
-  end
-
   def postfix_string(current_node)
     result = ''
     result += postfix_string(current_node.left) + ' ' if current_node.left != nil
@@ -341,7 +333,7 @@ class ArithmeticExpression
 
   public
   def value(interpreter)
-    x = evaluate(@root_node, interpreter)
+    x = @root_node.evaluate(interpreter)
     case
     when x.class.to_s == 'Fixnum': x
     when x.class.to_s == 'NumericConstant': x.evaluate(interpreter)
@@ -651,7 +643,6 @@ class Print < AbstractLine
           var_name = PrintableExpression.new(print_item)
         rescue BASICException
           @errors << "Invalid expression #{print_item}"
-          var_name = VariableName.new('')
         end
       end
     end
@@ -923,11 +914,6 @@ end
 class Interpreter
   def initialize
     @running = false
-    @variables = Hash.new
-    ('A'..'Z').each do | name |
-      @variables[name] = NumericConstant.new('0')
-      #('0'..'9').each { | number | @variables["#{name}#{number}"] = 0 }
-    end
     @data_store = Array.new
     @data_index = 0
     @printer = PrintHandler.new
@@ -988,6 +974,7 @@ class Interpreter
   
   public
   def cmd_run
+    @variables = Hash.new
     line_numbers = @program_lines.keys.sort
     if line_numbers.size > 0 then
       # start with the first line number
@@ -1085,14 +1072,23 @@ class Interpreter
   end
   
   def get_value(variable)
-    @variables[variable.to_s]
+    begin
+      VariableName.new(variable.to_s)
+      if !@variables.has_key?(variable.to_s) then
+        @variables[variable.to_s] = 0
+      end
+      @variables[variable.to_s]
+    rescue
+      raise BASICException, "Unknown variable #{variable}", caller
+    end
   end
   
   def set_value(variable, value)
-    if @variables.has_key?(variable.to_s) then
+    begin
+      VariableName.new(variable.to_s)
       @variables[variable.to_s] = value
-    else
-      print "Unknown variable #{variable} in line #{@current_line_number}\n"
+    rescue
+      raise BASICException, "Unknown variable #{variable}", caller
     end
   end
   
