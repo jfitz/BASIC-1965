@@ -127,7 +127,7 @@ class NumericConstant < LeafNode
     end
   end
 
-  def value(interpreter)
+  def evaluate(interpreter)
     @value
   end
   
@@ -178,37 +178,37 @@ class BinaryOperator < BinaryNode
     @precedence = @@operators[@op]
   end
   
-  def value(interpreter)
+  def evaluate(interpreter)
     case
-    when @op == '+': add(@left.value(interpreter), @right.value(interpreter))
-    when @op == '-': subtract(@left.value(interpreter), @right.value(interpreter))
-    when @op == '*': multiply(@left.value(interpreter), @right.value(interpreter))
-    when @op == '/': divide(@left.value(interpreter), @right.value(interpreter))
+    when @op == '+': add(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when @op == '-': subtract(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when @op == '*': multiply(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when @op == '/': divide(@left.evaluate(interpreter), @right.evaluate(interpreter))
     end
   end
 
   def add(a, b)
     f = NumericConstant.new(a.to_f + b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
   end
   
   def subtract(a, b)
     f = NumericConstant.new(a.to_f - b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
   end
   
   def multiply(a, b)
     f = NumericConstant.new(a.to_f * b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
   end
   
   def divide(a, b)
     f = NumericConstant.new(a.to_f / b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
   end
   
   def to_s
@@ -252,11 +252,11 @@ class NumericExpression < LeafNode
     end
   end
   
-  def value(interpreter)
+  def evaluate(interpreter)
     if !@variable.nil? then
       interpreter.get_value(@variable)
     else
-      @value.value(interpreter)
+      @value.evaluate(interpreter)
     end
   end
   
@@ -266,10 +266,6 @@ class NumericExpression < LeafNode
   
   def to_formatted_s(interpreter)
     @variable.nil? ? @value.value : ' ' + interpreter.get_value(@variable).to_s
-  end
-  
-  def evaluate(interpreter)
-    self
   end
 end
 
@@ -330,12 +326,9 @@ class ArithmeticExpression
   private
   def evaluate(current_node, interpreter)
     result = case
-      when current_node.class.to_s == 'BinaryOperator':
-        a = evaluate(current_node.left, interpreter)
-        b = evaluate(current_node.right, interpreter)
-        current_node.value(interpreter)
+      when current_node.class.to_s == 'BinaryOperator': current_node.evaluate(interpreter)
       when current_node.class.to_s == 'NumericExpression': current_node.evaluate(interpreter)
-      else NumericConstant.new(0)
+      else raise BASICException, "Unknown node type", caller
     end
   end
 
@@ -350,9 +343,9 @@ class ArithmeticExpression
   def value(interpreter)
     x = evaluate(@root_node, interpreter)
     case
-    when x.class.to_s == 'FixNum': x
-    when x.class.to_s == 'NumericConstant': x.value(interpreter)
-    when x.class.to_s == 'NumericExpression': x.value(interpreter)
+    when x.class.to_s == 'Fixnum': x
+    when x.class.to_s == 'NumericConstant': x.evaluate(interpreter)
+    when x.class.to_s == 'NumericExpression': x.evaluate(interpreter)
     else throw "Unknown data type #{x.class}"
     end
   end
@@ -428,14 +421,14 @@ class BooleanExpression
     @b = NumericExpression.new(parts[2])
   end
   
-  def value(interpreter)
+  def evaluate(interpreter)
     case
-    when @operator.to_s == '=': @a.value(interpreter) == @b.value(interpreter)
-    when @operator.to_s == '<>': @a.value(interpreter) != @b.value(interpreter)
-    when @operator.to_s == '<': @a.value(interpreter) < @b.value(interpreter)
-    when @operator.to_s == '>': @a.value(interpreter) > @b.value(interpreter)
-    when @operator.to_s == '<=': @a.value(interpreter) <= @b.value(interpreter)
-    when @operator.to_s == '>=': @a.value(interpreter) >= @b.value(interpreter)
+    when @operator.to_s == '=': @a.evaluate(interpreter) == @b.evaluate(interpreter)
+    when @operator.to_s == '<>': @a.evaluate(interpreter) != @b.evaluate(interpreter)
+    when @operator.to_s == '<': @a.evaluate(interpreter) < @b.evaluate(interpreter)
+    when @operator.to_s == '>': @a.evaluate(interpreter) > @b.evaluate(interpreter)
+    when @operator.to_s == '<=': @a.evaluate(interpreter) <= @b.evaluate(interpreter)
+    when @operator.to_s == '>=': @a.evaluate(interpreter) >= @b.evaluate(interpreter)
     end
   end
   
@@ -611,7 +604,7 @@ class If < AbstractLine
   end
   
   def execute_cmd(interpreter)
-    interpreter.set_next_line(@destination.to_i) if @boolean_expression.value(interpreter)
+    interpreter.set_next_line(@destination.to_i) if @boolean_expression.evaluate(interpreter)
   end
 end
 
@@ -803,10 +796,10 @@ class ForLine < AbstractLine
   end
   
   def execute_cmd(interpreter)
-    from_value = @start_value.value(interpreter)
+    from_value = @start_value.evaluate(interpreter)
     interpreter.set_value(@control_variable, from_value)
-    to_value = @end_value.value(interpreter)
-    step_value = @step_value.value(interpreter)
+    to_value = @end_value.evaluate(interpreter)
+    step_value = @step_value.evaluate(interpreter)
     interpreter.push_fornext(ForNextControl.new(@control_variable.to_s, interpreter.get_next_line, from_value, to_value, step_value))
   end
 end
@@ -894,7 +887,7 @@ class DataLine < AbstractLine
   def execute_cmd(interpreter)
     @data_list.each do | text_item |
       x = NumericConstant.new(text_item)
-      interpreter.store_data(x.value(interpreter))
+      interpreter.store_data(x.evaluate(interpreter))
     end
   end
 end
