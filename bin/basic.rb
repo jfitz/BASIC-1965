@@ -1,5 +1,8 @@
 #!/usr/bin/ruby
 
+class BASICException < Exception
+end
+
 class Node
   def initialize(token)
     @token = token
@@ -99,7 +102,7 @@ end
 
 class LineNumber
   def initialize(number)
-    raise "'#{number}' is not a line number" if /^\d+$/ !~ number
+    raise(BASICException, "'#{number}' is not a line number", caller) if /^\d+$/ !~ number
     @line_number = number.to_i
   end
   
@@ -120,12 +123,20 @@ class NumericConstant < LeafNode
     when text =~ /^[+-]?\d+$/: @value = text.to_i
     when text.class.to_s == 'Float': @value = text
     when text =~ /^[+-]?\d+\.\d*$/: @value = text.to_f
-    else raise "'#{text}' is not a number" 
+    else raise BASICException, "'#{text}' is not a number", caller
     end
   end
 
   def value(interpreter)
     @value
+  end
+  
+  def to_i
+    @value.to_i
+  end
+  
+  def to_f
+    @value.to_f
   end
   
   def to_s
@@ -141,7 +152,7 @@ class TextConstant
   def initialize(text)
     case
     when text =~ /^".*"$/: @value = text[1..-2]
-    else raise "'#{text}' is not a text constant" 
+    else raise BASICException, "'#{text}' is not a text constant", caller
     end
   end
 
@@ -158,45 +169,45 @@ class TextConstant
   end
 end
 
-class ArithmeticOperator < BinaryNode
+class BinaryOperator < BinaryNode
   @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2 }
   def initialize(text)
     super
-    raise "'#{text}' is not an operator" if !@@operators.has_key?(text)
+    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
     @precedence = @@operators[@op]
   end
   
-  def evaluate(a, b, interpreter)
+  def value(interpreter)
     case
-    when @op == '+': add(a.value(interpreter), b.value(interpreter))
-    when @op == '-': subtract(a.value(interpreter), b.value(interpreter))
-    when @op == '*': multiply(a.value(interpreter), b.value(interpreter))
-    when @op == '/': divide(a.value(interpreter), b.value(interpreter))
+    when @op == '+': add(@left.value(interpreter), @right.value(interpreter))
+    when @op == '-': subtract(@left.value(interpreter), @right.value(interpreter))
+    when @op == '*': multiply(@left.value(interpreter), @right.value(interpreter))
+    when @op == '/': divide(@left.value(interpreter), @right.value(interpreter))
     end
   end
 
   def add(a, b)
     f = NumericConstant.new(a.to_f + b.to_f)
-    i = NumericConstant.new((a + b).to_i)
+    i = NumericConstant.new(f.to_i)
     (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
   end
   
   def subtract(a, b)
     f = NumericConstant.new(a.to_f - b.to_f)
-    i = NumericConstant.new((a - b).to_i)
+    i = NumericConstant.new(f.to_i)
     (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
   end
   
   def multiply(a, b)
     f = NumericConstant.new(a.to_f * b.to_f)
-    i = NumericConstant.new((a * b).to_i)
+    i = NumericConstant.new(f.to_i)
     (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
   end
   
   def divide(a, b)
     f = NumericConstant.new(a.to_f / b.to_f)
-    i = NumericConstant.new((a / b).to_i)
+    i = NumericConstant.new(f.to_i)
     (f.value(nil) - i.value(nil)) < 1e-8 ? i : f
   end
   
@@ -208,7 +219,7 @@ end
 class BooleanOperator
   @@valid_operators = [ '=', '<', '>', '>=', '<=', '<>' ]
   def initialize(text)
-    raise "'#{text}' is not a valid boolean operator" if !@@valid_operators.include?(text)
+    raise(BASICException, "'#{text}' is not a valid boolean operator", caller) if !@@valid_operators.include?(text)
     @value = text
   end
   
@@ -220,7 +231,7 @@ end
 class VariableName < LeafNode
   def initialize(text)
     super
-    raise "'#{text}' is not a variable name" if text !~ /^[A-Z][0-9]?$/
+    raise(BASICException, "'#{text}' is not a variable name", caller) if text !~ /^[A-Z][0-9]?$/
     @var_name = text
   end
   
@@ -236,7 +247,7 @@ class NumericExpression < LeafNode
     @value = nil
     begin
       @variable = VariableName.new(text)
-    rescue Exception => message
+    rescue BASICException => message
       @value = NumericConstant.new(text)
     end
   end
@@ -255,6 +266,10 @@ class NumericExpression < LeafNode
   
   def to_formatted_s(interpreter)
     @variable.nil? ? @value.value : ' ' + interpreter.get_value(@variable).to_s
+  end
+  
+  def evaluate(interpreter)
+    self
   end
 end
 
@@ -288,30 +303,15 @@ class ArithmeticExpression
     tokens.each do | token |
       begin
         list << NumericExpression.new(token)
-      rescue
+      rescue BASICException
         begin
-          list << ArithmeticOperator.new(token)
-        rescue
-          raise "'#{token}' is not a value or operator"
+          list << BinaryOperator.new(token)
+        rescue BASICException
+          raise BASICException, "'#{token}' is not a value or operator", caller
         end
       end
     end
 
-    level = 0
-
-    list.each do | token |
-      case
-      when token.class.to_s == 'NumericExpression': level += 1
-      when token.class.to_s == 'ArithmeticOperator': level -= 1
-      end
-    end
-
-    level -= 1 if list.size > 0
-
-    if level != 0 then
-      puts "LIST ' #{list.join('-')} ' ERROR"
-    end
-    
     current_node = nil
     list.each do | new_node |
       if (current_node != nil) then
@@ -330,11 +330,11 @@ class ArithmeticExpression
   private
   def evaluate(current_node, interpreter)
     result = case
-      when current_node.class.to_s == 'ArithmeticOperator':
+      when current_node.class.to_s == 'BinaryOperator':
         a = evaluate(current_node.left, interpreter)
         b = evaluate(current_node.right, interpreter)
-        current_node.evaluate(a, b, interpreter)
-      when current_node.class.to_s == 'NumericExpression': current_node
+        current_node.value(interpreter)
+      when current_node.class.to_s == 'NumericExpression': current_node.evaluate(interpreter)
       else NumericConstant.new(0)
     end
   end
@@ -379,7 +379,7 @@ class PrintableExpression
     @text_constant = nil
     begin
       @text_constant = TextConstant.new(text)
-    rescue Exception => message
+    rescue BASICException => message
       @numeric_expression = NumericExpression.new(text)
     end
   end
@@ -397,7 +397,7 @@ class Assignment
   def initialize(text)
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    raise "'#{text}' is not a valid assignment" if parts.size != 2
+    raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
     @target = VariableName.new(parts[0])
     @expression = ArithmeticExpression.new(parts[1])
   end
@@ -422,7 +422,7 @@ end
 class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
-    raise "'#{text}' is not a boolean expression" if parts.size != 3
+    raise(BASICException, "'#{text}' is not a boolean expression", caller) if parts.size != 3
     @a = NumericExpression.new(parts[0])
     @operator = BooleanOperator.new(parts[1])
     @b = NumericExpression.new(parts[2])
@@ -524,7 +524,7 @@ class Let < AbstractLine
     super('LET')
     begin
       @expression = Assignment.new(line.gsub(/ /, ''))
-    rescue Exception => message
+    rescue BASICException => message
       @errors << message
       @expression = line
     end
@@ -549,7 +549,7 @@ class Input < AbstractLine
     @variable_list.each do | text_item |
       begin
         var_name = VariableName.new(text_item)
-      rescue
+      rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
     end
@@ -561,7 +561,7 @@ class Input < AbstractLine
   
   private
   def zip(names, values)
-    raise "Unequal lists" if names.size != values.size
+    raise(BASICException, "Unequal lists", caller) if names.size != values.size
     results = Array.new
     (0...names.size).each do | i |
       results << { 'name' => names[i], 'value' => values[i] }
@@ -581,7 +581,7 @@ class Input < AbstractLine
         begin
           var_value = NumericConstant.new(value)
           values << var_value.value
-        rescue
+        rescue BASICException
           puts "Invalid value #{value}"
         end
       end
@@ -599,7 +599,7 @@ class If < AbstractLine
     parts = line.gsub(/ /, '').split(/\s*THEN\s*/)
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
-    rescue Exception => message
+    rescue BASICException => message
       @errors << message
       @boolean_expression = parts[0]
     end
@@ -656,7 +656,7 @@ class Print < AbstractLine
           print_item.sub!(/^ +/, '')
           print_item.sub!(/ +$/, '')
           var_name = PrintableExpression.new(print_item)
-        rescue
+        rescue BASICException
           @errors << "Invalid expression #{print_item}"
           var_name = VariableName.new('')
         end
@@ -692,7 +692,7 @@ class Goto < AbstractLine
     destination = line.sub(/ /, '')
     begin
       @destination = LineNumber.new(destination)
-    rescue
+    rescue BASICException
       @errors << "Invalid line number #{destination}"
     end
   end
@@ -713,7 +713,7 @@ class Gosub < AbstractLine
     destination = line.sub(/ /, '')
     begin
       @destination = LineNumber.new(destination)
-    rescue
+    rescue BASICException
       @errors << "Invalid line number #{destination}"
     end
   end
@@ -784,14 +784,14 @@ class ForLine < AbstractLine
     super('FOR')
     # parse control variable, "=", numeric_expression, "TO", numeric_expression, "STEP", numeric_expression
     parts = line.gsub(/ /, '').split('=', 2)
-    raise "Syntax error" if parts.size != 2
+    raise(BASICException, "Syntax error", caller) if parts.size != 2
     begin
       @control_variable = VariableName.new(parts[0])
-    rescue Exception => message
+    rescue BASICException => message
       @errors << message
     end
     parts = parts[1].split('TO', 2)
-    raise "Syntax error" if parts.size != 2
+    raise(BASICException, "Syntax error", caller) if parts.size != 2
     @start_value = NumericExpression.new(parts[0])
     parts = parts[1].split('STEP', 2)
     @end_value = NumericExpression.new(parts[0])
@@ -818,7 +818,7 @@ class NextLine < AbstractLine
     @control_variable = nil
     begin
       @control_variable = VariableName.new(line.gsub(/ /, ''))
-    rescue Exception => message
+    rescue BASICException => message
       @errors << message
       @boolean_expression = line
     end
@@ -833,7 +833,7 @@ class NextLine < AbstractLine
     # verify top item matches control variable
     x = fornext_control.control_variable_name
     if x != @control_variable.to_s then
-      raise "NEXT #{@control_variable} does not match FOR #{x}"
+      raise BASICException, "NEXT #{@control_variable} does not match FOR #{x}", caller
     end
     # check control variable value
     # if matches end value, stop here
@@ -855,7 +855,7 @@ class Read < AbstractLine
     @variable_list.each do | text_item |
       begin
         var_name = VariableName.new(text_item)
-      rescue
+      rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
     end
@@ -881,7 +881,7 @@ class DataLine < AbstractLine
     @data_list.each do | text_item |
       begin
         NumericConstant.new(text_item)
-      rescue
+      rescue BASICException
         @errors << "Invalid value #{text_item}"
       end
     end
@@ -985,10 +985,10 @@ class Interpreter
   private
   def verify_next_line_number(line_numbers, next_line_number)
     if next_line_number == nil then
-      raise "Program terminated without END"
+      raise BASICException, "Program terminated without END", caller
     end
     if !line_numbers.include?(next_line_number) then
-      raise "Line number #{next_line_number} not found"
+      raise BASICException, "Line number #{next_line_number} not found", caller
     end
     next_line_number
   end
@@ -1007,7 +1007,7 @@ class Interpreter
           @program_lines[@current_line_number].execute(self)
           # set the next line number (which may have been changed by execute() )
           @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
-        rescue Exception => message
+        rescue BASICException => message
           puts "#{message} in line #{current_line_number}"
           @running = false
         end
@@ -1112,7 +1112,7 @@ class Interpreter
   end
   
   def pop_return
-    raise "RETURN without GOSUB" if @return_stack.size == 0
+    raise(BASICException, "RETURN without GOSUB", caller) if @return_stack.size == 0
     @return_stack.pop
   end
   
@@ -1121,7 +1121,7 @@ class Interpreter
   end
   
   def pop_fornext
-    raise "NEXT without FOR" if @fornext_stack.size == 0
+    raise(BASICException, "NEXT without FOR", caller) if @fornext_stack.size == 0
     @fornext_stack.pop
   end
   
