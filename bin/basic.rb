@@ -845,9 +845,9 @@ class ForLine < AbstractLine
     end
     parts = parts[1].split('TO', 2)
     raise(BASICException, "Syntax error", caller) if parts.size != 2
-    @start_value = NumericExpression.new(parts[0])
+    @start_value = ArithmeticExpression.new(parts[0])
     parts = parts[1].split('STEP', 2)
-    @end_value = NumericExpression.new(parts[0])
+    @end_value = ArithmeticExpression.new(parts[0])
     if parts.size > 1 then
       @has_step_value = true
       @step_value = ArithmeticExpression.new(parts[1])

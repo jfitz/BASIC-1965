@@ -29,4 +29,6 @@ bash test/bin/run_one_test.sh gosub_1
 bash test/bin/run_one_test.sh return_no_gosub
 bash test/bin/run_one_test.sh fornext_1
 bash test/bin/run_one_test.sh fornext_2
+bash test/bin/run_one_test.sh fornext_3
+bash test/bin/run_one_test.sh fornext_4
 bash test/bin/run_one_test.sh celcius_to_fahrenheit
