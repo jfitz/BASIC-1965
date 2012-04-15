@@ -59,6 +59,33 @@ class LeafNode < Node
   end
 end
 
+class UnaryNode < Node
+  def initialize(token)
+    super
+    @precedence = 0
+    @right = nil
+  end
+  
+  def precedence
+    @precedence
+  end
+
+  def set_right(node)
+    node.set_parent(self)
+    @right = node
+  end
+  
+  def right
+    @right
+  end
+  
+  def infix_string
+    result = ''
+    result += @token
+    result += @right.infix_string if @right != nil
+  end
+end
+
 class BinaryNode < Node
   def initialize(token)
     super
@@ -120,9 +147,9 @@ class NumericConstant < LeafNode
     super
     case
     when text.class.to_s == 'Fixnum': @value = text
-    when text =~ /^[+-]?\d+$/: @value = text.to_i
+    when text =~ /^\d+$/: @value = text.to_i
     when text.class.to_s == 'Float': @value = text
-    when text =~ /^[+-]?\d+\.\d*$/: @value = text.to_f
+    when text =~ /^\d+\.\d*$/: @value = text.to_f
     else raise BASICException, "'#{text}' is not a number", caller
     end
   end
@@ -166,6 +193,39 @@ class TextConstant
   
   def to_formatted_s(interpreter)
     @value
+  end
+end
+
+class UnaryOperator < UnaryNode
+  @@operators = { '+' => 9, '-' => 9 }
+  def initialize(text)
+    super
+    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
+    @op = text
+    @precedence = @@operators[@op]
+  end
+  
+  def evaluate(interpreter)
+    case
+    when @op == '+': posate(@right.evaluate(interpreter))
+    when @op == '-': negate(@right.evaluate(interpreter))
+    end
+  end
+
+  def posate(a)
+    f = NumericConstant.new(a.to_f)
+    i = NumericConstant.new(f.to_i)
+    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+  end
+  
+  def negate(a)
+    f = NumericConstant.new(- a.to_f)
+    i = NumericConstant.new(f.to_i)
+    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+  end
+  
+  def to_s
+    @op
   end
 end
 
@@ -296,14 +356,23 @@ class ArithmeticExpression
     # convert from list of tokens into a tree
     
     list = Array.new
+    last_was_operand = false
     tokens.each do | token |
-      begin
-        list << NumericExpression.new(token)
-      rescue BASICException
+      if token.size > 0 then
         begin
-          list << BinaryOperator.new(token)
+          list << NumericExpression.new(token)
+          last_was_operand = true
         rescue BASICException
-          raise BASICException, "'#{token}' is not a value or operator", caller
+          begin
+            if last_was_operand then
+              list << BinaryOperator.new(token)
+            else
+              list << UnaryOperator.new(token)
+            end
+            last_was_operand = false
+          rescue BASICException
+            raise BASICException, "'#{token}' is not a value or operator", caller
+          end
         end
       end
     end
@@ -332,7 +401,7 @@ class ArithmeticExpression
   end
 
   public
-  def value(interpreter)
+  def evaluate(interpreter)
     x = @root_node.evaluate(interpreter)
     case
     when x.class.to_s == 'Fixnum': x
@@ -392,7 +461,7 @@ class Assignment
   end
   
   def value(interpreter)
-    @expression.value(interpreter)
+    @expression.evaluate(interpreter)
   end
   
   def to_s
@@ -567,7 +636,7 @@ class Input < AbstractLine
           var_value = NumericConstant.new(value)
           values << var_value.value
         rescue BASICException
-          puts "Invalid value #{value}"
+          raise BASICException, "Invalid value #{value}", caller
         end
       end
     end
@@ -779,11 +848,21 @@ class ForLine < AbstractLine
     @start_value = NumericExpression.new(parts[0])
     parts = parts[1].split('STEP', 2)
     @end_value = NumericExpression.new(parts[0])
-    @step_value = parts.size > 1 ? NumericExpression.new(parts[1]) : NumericConstant.new(1)
+    if parts.size > 1 then
+      @has_step_value = true
+      @step_value = ArithmeticExpression.new(parts[1])
+    else
+      @has_step_value = false
+      @step_value = NumericConstant.new(1)
+    end
   end
   
   def to_s
-    @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s
+    if @has_step_value then
+      @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s + ' STEP ' + @step_value.to_s
+    else
+      @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s
+    end
   end
   
   def execute_cmd(interpreter)
@@ -985,8 +1064,12 @@ class Interpreter
         @next_line_number = line_numbers[line_numbers.index(@current_line_number) + 1]
         begin
           @program_lines[@current_line_number].execute(self)
-          # set the next line number (which may have been changed by execute() )
-          @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
+          if @running then
+            # set the next line number (which may have been changed by execute() )
+            @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
+          else
+            @current_line_number = nil
+          end
         rescue BASICException => message
           puts "#{message} in line #{current_line_number}"
           @running = false
