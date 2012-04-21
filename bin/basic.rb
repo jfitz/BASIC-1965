@@ -7,6 +7,7 @@ class Node
   def initialize(token)
     @token = token
     @parent = nil
+    @precedence = 10
   end
   
   def token
@@ -14,7 +15,7 @@ class Node
   end
   
   def precedence
-    10
+    @precedence
   end
   
   def parent
@@ -51,6 +52,43 @@ class Node
   def infix_string
     @token
   end
+  
+  def add_node(new_node)
+    if new_node.precedence >= precedence then
+      set_right(new_node)
+    else
+      current_node = self
+      current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > new_node.precedence
+      new_node.set_left(current_node)
+    end
+    new_node
+  end
+end
+
+class RootNode < Node
+  def initialize
+    super('root')
+    @precedence = -1
+    @right = nil
+  end
+  
+  def set_right(node)
+    node.set_parent(self)
+    @right = node
+  end
+  
+  def right
+    @right
+  end
+  
+  def evaluate(interpreter)
+    @right.evaluate(interpreter)
+  end
+  
+  def infix_string
+    result = ''
+    result += @right.infix_string if @right != nil
+  end
 end
 
 class LeafNode < Node
@@ -66,10 +104,6 @@ class UnaryNode < Node
     @right = nil
   end
   
-  def precedence
-    @precedence
-  end
-
   def set_right(node)
     node.set_parent(self)
     @right = node
@@ -86,6 +120,30 @@ class UnaryNode < Node
   end
 end
 
+class ListNode < Node
+  def initialize
+    super('(')
+    @precedence = 8
+    @right = nil
+  end
+  
+  def set_right(node)
+    node.set_parent(self)
+    @right = node
+  end
+  
+  def right
+    @right
+  end
+  
+  def infix_string
+    result = ''
+    result += @token
+    result += @right.infix_string if @right != nil
+    result += ')'
+  end
+end
+
 class BinaryNode < Node
   def initialize(token)
     super
@@ -94,10 +152,6 @@ class BinaryNode < Node
     @right = nil
   end
   
-  def precedence
-    @precedence
-  end
-
   def set_left(node)
     p = node.parent
     @parent = node.parent if node != nil
@@ -229,6 +283,24 @@ class UnaryOperator < UnaryNode
   end
 end
 
+class ListOperator < UnaryNode
+  @@operators = { '(' => 8 }
+  def initialize(text)
+    super
+    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
+    @op = text
+    @precedence = @@operators[@op]
+  end
+  
+  def evaluate(interpreter)
+    @right.evaluate(interpreter)
+  end
+
+  def to_s
+    @op
+  end
+end
+
 class BinaryOperator < BinaryNode
   @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2 }
   def initialize(text)
@@ -330,31 +402,11 @@ class NumericExpression < LeafNode
 end
 
 class ArithmeticExpression
-  private
-  def split_args(text)
-    args = Array.new
-    current_arg = String.new
-    (0..text.size-1).each do | i |
-      c = text[i,1]
-      if [',', ';'].include?(c) then
-        args << current_arg
-        current_arg = String.new
-        args << c
-      else
-        current_arg += c
-      end
-    end
-    args << current_arg if current_arg.size > 0
-    
-    args
-  end
-  
-  public
   def initialize(text)
     # parse into items and arith operators
     tokens = text.split(/([\+\-\*\/])/)
-    # convert from list of tokens into a tree
     
+    # convert from list of tokens into a tree
     list = Array.new
     last_was_operand = false
     tokens.each do | token |
@@ -371,27 +423,21 @@ class ArithmeticExpression
             end
             last_was_operand = false
           rescue BASICException
-            raise BASICException, "'#{token}' is not a value or operator", caller
+            begin
+              list << ListOperator.new(token)
+            rescue
+              raise BASICException, "'#{token}' is not a value or operator", caller
+            end
           end
         end
       end
     end
 
-    current_node = nil
-    list.each do | new_node |
-      if (current_node != nil) then
-        if new_node.precedence >= current_node.precedence then
-          current_node.set_right(new_node)
-        else
-          current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > new_node.precedence
-          new_node.set_left(current_node)
-        end
-      end
-      current_node = new_node
-    end
-    @root_node = current_node.topmost
+    node_tree = RootNode.new
+    list.each { | new_node | node_tree = node_tree.add_node(new_node) }
+    @root_node = node_tree.topmost
   end
-  
+
   private
   def postfix_string(current_node)
     result = ''
