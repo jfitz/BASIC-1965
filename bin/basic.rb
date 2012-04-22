@@ -124,6 +124,7 @@ class ListNode < Node
   def seal
     @left = @right
     @right = nil
+    @precedence = 8
   end
 end
 
@@ -246,6 +247,7 @@ end
 class UnaryOperator < UnaryNode
   @@operators = { '+' => 9, '-' => 9 }
   def initialize(text)
+    # puts "DBG: UnaryOperator.initialize(#{text})"
     super
     raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
@@ -279,6 +281,7 @@ end
 class ListOperator < ListNode
   @@operators = { '(' => 8 }
   def initialize(text)
+    # puts "DBG: ListOperator.initialize(#{text})"
     super()
     raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
@@ -297,6 +300,7 @@ end
 class ListEndOperator < ListEndNode
   @@operators = { ')' => 8 }
   def initialize(text)
+    # puts "DBG: ListEndOperator.initialize(#{text})"
     super()
     raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
@@ -311,6 +315,7 @@ end
 class BinaryOperator < BinaryNode
   @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2 }
   def initialize(text)
+    # puts "DBG: BinaryOperator.initialize(#{text})"
     super
     raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
@@ -412,11 +417,13 @@ class ArithmeticExpression
   def initialize(text)
     # parse into items and arith operators
     tokens = text.split(/([\+\-\*\/\(\)])/)
+    # puts "DBG: tokens=#{tokens.join(', ')}"
     
     # convert from list of tokens into a tree
     list = Array.new
     last_was_operand = false
     tokens.each do | token |
+      # puts "DBG: token=#{token}"
       if token.size > 0 then
         begin
           list << NumericExpression.new(token)
@@ -436,7 +443,7 @@ class ArithmeticExpression
             rescue BASICException
               begin
                 list << ListEndOperator.new(token)
-                last_was_operand = false
+                last_was_operand = true
               rescue
                 raise BASICException, "'#{token}' is not a value or operator", caller
               end
@@ -448,6 +455,7 @@ class ArithmeticExpression
 
     node_tree = RootNode.new
     list.each do | new_node |
+      # puts "DBG: #{infix_string(node_tree)}"
       place_node = node_tree.find_place(new_node)
       new_node.insert_node(place_node)
     end
@@ -460,6 +468,14 @@ class ArithmeticExpression
     result += postfix_string(current_node.left) + ' ' if current_node.left != nil
     result += postfix_string(current_node.right) + ' ' if current_node.right != nil
     result += current_node.token.to_s
+  end
+  
+  def infix_string(current_node)
+    result = ''
+    result += infix_string(current_node.left) if current_node.left != nil
+    result += current_node.token.to_s
+    result += infix_string(current_node.right) if current_node.right != nil
+    result
   end
 
   public
