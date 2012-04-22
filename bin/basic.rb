@@ -8,6 +8,7 @@ class Node
     @token = token
     @parent = nil
     @precedence = 10
+    @right = nil
   end
   
   def token
@@ -30,11 +31,8 @@ class Node
     @parent != nil ? @parent.topmost : self
   end
   
-  def set_left(node)
-    p = node.parent
-    @parent = node.parent if node != nil
-    node.set_parent(self) if node != nil
-    p.set_right(self) if p != nil
+  def rightmost
+    @right != nil ? @right.rightmost : self
   end
   
   def left
@@ -43,42 +41,35 @@ class Node
   
   def set_right(node)
     node.set_parent(self) if node != nil
+    @right = node
   end
   
   def right
-    nil
+    @right
   end
   
   def infix_string
     @token
   end
   
-  def add_node(new_node)
-    if new_node.precedence >= precedence then
-      set_right(new_node)
-    else
-      current_node = self
-      current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > new_node.precedence
-      new_node.set_left(current_node)
-    end
-    new_node
+  def find_place(node)
+    current_node = rightmost
+    current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > node.precedence
+    current_node
+  end
+  
+  def insert_node(tree)
+    @parent = tree
+    @right = @parent.right
+    @right.set_parent(self) if @right != nil
+    @parent.set_right(self)
   end
 end
 
 class RootNode < Node
   def initialize
     super('root')
-    @precedence = -1
-    @right = nil
-  end
-  
-  def set_right(node)
-    node.set_parent(self)
-    @right = node
-  end
-  
-  def right
-    @right
+    @precedence = -2
   end
   
   def evaluate(interpreter)
@@ -104,15 +95,6 @@ class UnaryNode < Node
     @right = nil
   end
   
-  def set_right(node)
-    node.set_parent(self)
-    @right = node
-  end
-  
-  def right
-    @right
-  end
-  
   def infix_string
     result = ''
     result += @token
@@ -127,20 +109,41 @@ class ListNode < Node
     @right = nil
   end
   
-  def set_right(node)
-    node.set_parent(self)
-    @right = node
-  end
-  
-  def right
-    @right
-  end
-  
   def infix_string
     result = ''
     result += @token
     result += @right.infix_string if @right != nil
     result += ')'
+  end
+  
+  def insert_node(tree)
+    super
+    @precedence = -1
+  end
+  
+  def seal
+    @left = @right
+    @right = nil
+  end
+end
+
+class ListEndNode < Node
+  def initialize
+    super(')')
+    @precedence = 8
+    @right = nil
+  end
+  
+  def insert_node(tree)
+    current_node = tree.rightmost
+    # find opening parens
+    current_node = tree.rightmost
+    current_node = current_node.parent while current_node.parent != nil && current_node.precedence != -1
+    if current_node.precedence == -1 then
+      current_node.seal
+    else
+      raise BASICException, "unmatched parens", caller
+    end
   end
 end
 
@@ -152,25 +155,8 @@ class BinaryNode < Node
     @right = nil
   end
   
-  def set_left(node)
-    p = node.parent
-    @parent = node.parent if node != nil
-    node.set_parent(self) if node != nil
-    @left = node
-    p.set_right(self) if p != nil
-  end
-  
   def left
     @left
-  end
-  
-  def set_right(node)
-    node.set_parent(self)
-    @right = node
-  end
-  
-  def right
-    @right
   end
   
   def infix_string
@@ -178,6 +164,13 @@ class BinaryNode < Node
     result += @left.infix_string if @left != nil
     result += @token
     result += @right.infix_string if @right != nil
+  end
+  
+  def insert_node(tree)
+    @parent = tree.parent
+    @left = tree
+    @left.set_parent(self)
+    @parent.set_right(self)
   end
 end
 
@@ -283,19 +276,33 @@ class UnaryOperator < UnaryNode
   end
 end
 
-class ListOperator < UnaryNode
+class ListOperator < ListNode
   @@operators = { '(' => 8 }
   def initialize(text)
-    super
+    super()
     raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
     @precedence = @@operators[@op]
   end
   
   def evaluate(interpreter)
-    @right.evaluate(interpreter)
+    @left != nil ? @left.evaluate(interpreter) : @right.evaluate(interpreter)
   end
 
+  def to_s
+    @op
+  end
+end
+
+class ListEndOperator < ListEndNode
+  @@operators = { ')' => 8 }
+  def initialize(text)
+    super()
+    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
+    @op = text
+    @precedence = @@operators[@op]
+  end
+  
   def to_s
     @op
   end
@@ -404,7 +411,7 @@ end
 class ArithmeticExpression
   def initialize(text)
     # parse into items and arith operators
-    tokens = text.split(/([\+\-\*\/])/)
+    tokens = text.split(/([\+\-\*\/\(\)])/)
     
     # convert from list of tokens into a tree
     list = Array.new
@@ -425,8 +432,14 @@ class ArithmeticExpression
           rescue BASICException
             begin
               list << ListOperator.new(token)
-            rescue
-              raise BASICException, "'#{token}' is not a value or operator", caller
+              last_was_operand = false
+            rescue BASICException
+              begin
+                list << ListEndOperator.new(token)
+                last_was_operand = false
+              rescue
+                raise BASICException, "'#{token}' is not a value or operator", caller
+              end
             end
           end
         end
@@ -434,7 +447,10 @@ class ArithmeticExpression
     end
 
     node_tree = RootNode.new
-    list.each { | new_node | node_tree = node_tree.add_node(new_node) }
+    list.each do | new_node |
+      place_node = node_tree.find_place(new_node)
+      new_node.insert_node(place_node)
+    end
     @root_node = node_tree.topmost
   end
 
@@ -1318,7 +1334,7 @@ if ARGV.size > 0 then
   filename = ARGV[0]
   until ARGV.empty? do ARGV.shift end
   # set_trace_func proc { | event, file, line, id, binding, classname |
-  #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include? (classname.to_s)
+  #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include?(classname.to_s)
   # }
   interpreter.load_and_run(filename)
 else
