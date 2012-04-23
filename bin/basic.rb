@@ -112,6 +112,7 @@ class ListNode < Node
   def infix_string
     result = ''
     result += @token
+    result += @left.infix_string if @left != nil
     result += @right.infix_string if @right != nil
     result += ')'
   end
@@ -163,7 +164,9 @@ class BinaryNode < Node
   def infix_string
     result = ''
     result += @left.infix_string if @left != nil
+    result += ' '
     result += @token
+    result += ' '
     result += @right.infix_string if @right != nil
   end
   
@@ -517,7 +520,7 @@ class PrintableExpression
   end
   
   def to_s
-    @numeric_expression.nil? ? @numeric_expression.to_s : @text_constant.to_s
+    @numeric_expression.nil? ? @text_constant.to_s : @numeric_expression.to_s
   end
   
   def to_formatted_s(interpreter)
