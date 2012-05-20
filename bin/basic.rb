@@ -4,11 +4,15 @@ class BASICException < Exception
 end
 
 class Node
+  @@counter = 1
+  
   def initialize(token)
     @token = token
     @parent = nil
     @precedence = 10
     @right = nil
+    @id = @@counter
+    @@counter += 1
   end
   
   def token
@@ -48,7 +52,15 @@ class Node
     @right
   end
   
+  def id
+    @id
+  end
+
   def infix_string
+    to_s
+  end
+    
+  def to_s
     @token
   end
   
@@ -63,6 +75,13 @@ class Node
     @right = @parent.right
     @right.set_parent(self) if @right != nil
     @parent.set_right(self)
+  end
+  
+  def dump
+    result = Array.new
+    result << @id.to_s + ':' + self.class.name + ' Value:' + @token + ' Precedence:' + @precedence.to_s + ' Right:' + (@right != nil ? @right.id.to_s : 'nil')
+    result.concat(@right.dump) if @right != nil
+    result
   end
 end
 
@@ -107,6 +126,7 @@ class ListNode < Node
     super('(')
     @precedence = 8
     @right = nil
+    @left = nil
   end
   
   def infix_string
@@ -116,7 +136,7 @@ class ListNode < Node
     result += @right.infix_string if @right != nil
     result += ')'
   end
-  
+
   def insert_node(tree)
     super
     @precedence = -1
@@ -126,6 +146,14 @@ class ListNode < Node
     @left = @right
     @right = nil
     @precedence = 8
+  end
+  
+  def dump
+    result = Array.new
+    result << @id.to_s + ':' + self.class.name + ' Value:' + @token + ' Precedence:' + @precedence.to_s + ' Right:' + (@right != nil ? @right.id.to_s : 'nil') + ' Left:' + (@left != nil ? @left.id.to_s : 'nil')
+    result.concat(@left.dump) if @left != nil
+    result.concat(@right.dump) if @right != nil
+    result
   end
 end
 
@@ -175,6 +203,14 @@ class BinaryNode < Node
     @left = tree
     @left.set_parent(self)
     @parent.set_right(self)
+  end
+  
+  def dump
+    result = Array.new
+    result << @id.to_s + ':' + self.class.name + ' Value:' + @token + ' Precedence:' + @precedence.to_s + ' Right:' + (@right != nil ? @right.id.to_s : 'nil') + ' Left:' + (@left != nil ? @left.id.to_s : 'nil')
+    result.concat(@left.dump) if @left != nil
+    result.concat(@right.dump) if @right != nil
+    result
   end
 end
 
@@ -296,7 +332,7 @@ class ListOperator < ListNode
   end
 
   def to_s
-    @op
+    infix_string
   end
 end
 
@@ -470,17 +506,23 @@ class ArithmeticExpression
     result = ''
     result += postfix_string(current_node.left) + ' ' if current_node.left != nil
     result += postfix_string(current_node.right) + ' ' if current_node.right != nil
-    result += current_node.token.to_s
+    result += current_node.to_s
   end
   
   def infix_string(current_node)
     result = ''
     result += infix_string(current_node.left) if current_node.left != nil
-    result += current_node.token.to_s
+    result += current_node.to_s
     result += infix_string(current_node.right) if current_node.right != nil
     result
   end
-
+  
+  public
+  def dump
+    puts infix_string(@root_node)
+    puts @root_node.dump
+  end
+  
   public
   def evaluate(interpreter)
     x = @root_node.evaluate(interpreter)
@@ -551,6 +593,10 @@ class Assignment
 
   def to_postfix_s
     @expression.to_postfix_s
+  end
+  
+  def dump
+    @expression.dump
   end
 end
 
@@ -670,6 +716,8 @@ class Let < AbstractLine
   end
   
   def execute_cmd(interpreter)
+    # @expression.dump
+    # puts
     interpreter.set_value(@expression.target, @expression.value(interpreter))
   end
 end
@@ -773,9 +821,6 @@ class Print < AbstractLine
   public
   def initialize(line)
     super('PRINT')
-    # todo: allow semicolon as separator
-    # todo: keep separators for spacing
-    # todo: allow quoted text
     # todo: allow subscripted variables
     # todo: allow expressions
     item_list = split_args(line.sub(/^ +/, ''))
@@ -1082,16 +1127,14 @@ class Interpreter
   end
   
   def parse_line(line)
-    line =~ /^\d+/
+    m = /^\d+/.match(line)
     # convert to int for a sortable key
-    line_num = $&.to_i
+    line_num = m[0].to_i
     # strip leading blanks
-    line_text = $'.sub(/^ +/, '')
+    line_text = m.post_match.sub(/^ +/, '')
     # pick out the keyword
     object = Unknown.new(line_text)
     case
-      #todo: GOSUB
-      #todo: RETURN
       #todo: RESTORE
     when line_text[0..2] == 'REM': object = Remark.new(line_text[3..-1])
     when line_text[0..2] == 'LET': object = Let.new(line_text[3..-1])
