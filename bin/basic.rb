@@ -11,6 +11,7 @@ class Node
     @parent = nil
     @precedence = 10
     @right = nil
+    @list = nil
     @id = @@counter
     @@counter += 1
   end
@@ -83,6 +84,18 @@ class Node
     result.concat(@right.dump) if @right != nil
     result
   end
+  
+  def is_list
+    @list != nil
+  end
+  
+  def list_count
+    if is_list then
+      @list.size
+    else
+      0
+    end
+  end
 end
 
 class RootNode < Node
@@ -127,6 +140,7 @@ class ListNode < Node
     @precedence = 8
     @right = nil
     @left = nil
+    @list = Array.new
   end
   
   def infix_string
@@ -142,9 +156,12 @@ class ListNode < Node
     @precedence = -1
   end
   
-  def seal
-    @left = @right
+  def push
+    @list.push(@right)
     @right = nil
+  end
+  
+  def seal
     @precedence = 8
   end
   
@@ -165,11 +182,11 @@ class ListEndNode < Node
   end
   
   def insert_node(tree)
-    current_node = tree.rightmost
     # find opening parens
     current_node = tree.rightmost
     current_node = current_node.parent while current_node.parent != nil && current_node.precedence != -1
     if current_node.precedence == -1 then
+      current_node.push
       current_node.seal
     else
       raise BASICException, "unmatched parens", caller
@@ -328,7 +345,17 @@ class ListOperator < ListNode
   end
   
   def evaluate(interpreter)
-    @left != nil ? @left.evaluate(interpreter) : @right.evaluate(interpreter)
+    # @left != nil ? @left.evaluate(interpreter) : @right.evaluate(interpreter)
+    evaluate_n(interpreter, 0)
+  end
+  
+  def evaluate_n(interpreter, index)
+    case index
+    when 0..list_count
+      @list[index].evaluate(interpreter)
+    else
+      0
+    end
   end
 
   def to_s
@@ -452,6 +479,31 @@ class NumericExpression < LeafNode
   end
 end
 
+class Function < Node
+  @@valid_names = [ 'INT' ]
+  def initialize(text)
+    raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
+    super
+    @name = text
+  end
+
+  def evaluate(interpreter)
+    if @right.list_count == 1 then
+      (@right.evaluate_n(interpreter,0)).truncate
+    else
+      raise(BASICException, "Wrong number of arguments", caller)
+    end
+  end
+
+  def to_s
+    @name + @right.to_s
+  end
+  
+  def to_formatted_s(interpreter)
+    @name + @right.to_formatted_s(interpreter)
+  end
+end
+
 class ArithmeticExpression
   def initialize(text)
     # parse into items and arith operators
@@ -465,26 +517,30 @@ class ArithmeticExpression
       # puts "DBG: token=#{token}"
       if token.size > 0 then
         begin
-          list << NumericExpression.new(token)
-          last_was_operand = true
-        rescue BASICException
+          list << Function.new(token)
+          rescue BASICException
           begin
-            if last_was_operand then
-              list << BinaryOperator.new(token)
-            else
-              list << UnaryOperator.new(token)
-            end
-            last_was_operand = false
+            list << NumericExpression.new(token)
+            last_was_operand = true
           rescue BASICException
             begin
-              list << ListOperator.new(token)
+              if last_was_operand then
+                list << BinaryOperator.new(token)
+              else
+                list << UnaryOperator.new(token)
+              end
               last_was_operand = false
             rescue BASICException
               begin
-                list << ListEndOperator.new(token)
-                last_was_operand = true
-              rescue
-                raise BASICException, "'#{token}' is not a value or operator", caller
+                list << ListOperator.new(token)
+                last_was_operand = false
+              rescue BASICException
+                begin
+                  list << ListEndOperator.new(token)
+                  last_was_operand = true
+                rescue
+                  raise BASICException, "'#{token}' is not a value or operator", caller
+                end
               end
             end
           end
@@ -528,6 +584,7 @@ class ArithmeticExpression
     x = @root_node.evaluate(interpreter)
     case
     when x.class.to_s == 'Fixnum': x
+    when x.class.to_s == 'Float': x
     when x.class.to_s == 'NumericConstant': x.evaluate(interpreter)
     when x.class.to_s == 'NumericExpression': x.evaluate(interpreter)
     else throw "Unknown data type #{x.class}"
@@ -716,8 +773,10 @@ class Let < AbstractLine
   end
   
   def execute_cmd(interpreter)
+    # diagnostics
     # @expression.dump
     # puts
+    # end diagnostics
     interpreter.set_value(@expression.target, @expression.value(interpreter))
   end
 end
