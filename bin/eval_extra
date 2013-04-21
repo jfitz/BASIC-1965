@@ -1,0 +1,51 @@
+# make tree
+root_node = ['value' => 'root']
+current_node = root_node
+stack = Stack.new
+
+list.each do | token |
+# print "TOKEN: $token\n";
+  if is_operator(token) then
+# print "OPERATOR\n";
+    op = ['value' => token]
+    if precedence(op) < precedence(current_node) then
+# print "PRECEDENCE LESS\n";
+      op['left'] = current_node
+      op['parent'] = current_node['parent']
+    else
+# print "PRECEDENCE MORE\n";
+      op['left'] = current_node['right']
+      op['parent'] = current_node
+    end
+    op['parent']->{'right'} = op
+    op['left']->{'parent'} = op
+    current_node = op
+  end
+  if is_parameter(token) then
+# print "PARAMETER\n";
+    child = ['value' => token]
+    current_node['right'] = child
+    child['parent'] = current_node
+  end
+  if token == '(' then
+    stack << current_node
+    new_node = ['value' => token]
+    current_node = new_node
+  end
+  if token == ')' then
+    new_tree = current_node
+    current_node = stack.pop
+    current_node['right'] = new_tree
+    new_tree['parent'] = current_node
+  end
+end
+current_node = root_node['right']
+delete current_node['parent']
+
+# print tree infix
+puts 'INFIX: ' + infix_string(current_node)
+
+# print tree postfix
+puts 'POSTFIX: ' + postfix_string(current_node)
+
+puts 'All done!'
