@@ -869,15 +869,17 @@ class Print < AbstractLine
   def split_args(text)
     args = Array.new
     current_arg = String.new
+    in_string = false
     (0..text.size-1).each do | i |
       c = text[i,1]
-      if [',', ';'].include?(c) then
+      if [',', ';'].include?(c) and not in_string then
         args << current_arg
         current_arg = String.new
         args << c
       else
         current_arg += c
       end
+      in_string = !in_string if ['"'].include?(c)
     end
     args << current_arg if current_arg.size > 0
     
@@ -894,7 +896,7 @@ class Print < AbstractLine
     @print_item_list = Array.new
     var_name = nil
     item_list.each do | print_item |
-      if print_item =~ /[,;]/ then
+      if print_item == ',' or print_item == ';' then
         @print_item_list << { 'variable' => var_name, 'carriage' => print_item }
         var_name = nil
       else
