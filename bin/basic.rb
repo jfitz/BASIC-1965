@@ -379,7 +379,7 @@ class ListEndOperator < ListEndNode
 end
 
 class BinaryOperator < BinaryNode
-  @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2 }
+  @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2, '^' => 3 }
   def initialize(text)
     # puts "DBG: BinaryOperator.initialize(#{text})"
     super
@@ -394,6 +394,7 @@ class BinaryOperator < BinaryNode
     when @op == '-': subtract(@left.evaluate(interpreter), @right.evaluate(interpreter))
     when @op == '*': multiply(@left.evaluate(interpreter), @right.evaluate(interpreter))
     when @op == '/': divide(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when @op == '^': power(@left.evaluate(interpreter), @right.evaluate(interpreter))
     end
   end
 
@@ -417,6 +418,12 @@ class BinaryOperator < BinaryNode
   
   def divide(a, b)
     f = NumericConstant.new(a.to_f / b.to_f)
+    i = NumericConstant.new(f.to_i)
+    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+  end
+  
+  def power(a, b)
+    f = NumericConstant.new(a.to_f ** b.to_f)
     i = NumericConstant.new(f.to_i)
     (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
   end
@@ -507,7 +514,7 @@ end
 class ArithmeticExpression
   def initialize(text)
     # parse into items and arith operators
-    tokens = text.split(/([\+\-\*\/\(\)])/)
+    tokens = text.split(/([\+\-\*\/\(\)\^])/)
     # puts "DBG: tokens=#{tokens.join(', ')}"
     
     # convert from list of tokens into a tree
@@ -822,7 +829,7 @@ class Input < AbstractLine
       text_values.each do | value |
         begin
           var_value = NumericConstant.new(value)
-          values << var_value.value
+          values << var_value.evaluate(interpreter)
         rescue BASICException
           raise BASICException, "Invalid value #{value}", caller
         end
@@ -900,7 +907,8 @@ class Print < AbstractLine
         end
       end
     end
-    @print_item_list << { 'variable' => var_name, 'carriage' => '' }
+    @print_item_list << { 'variable' => var_name, 'carriage' => '' } if not var_name.nil?
+    @print_item_list << { 'variable' => var_name, 'carriage' => '' } if @print_item_list.empty?
   end
   
   def to_s
@@ -913,7 +921,7 @@ class Print < AbstractLine
     printer = interpreter.print_handler
     @print_item_list.each do | print_item |
       name = print_item['variable']
-      printer.print_item name.to_formatted_s(interpreter)
+      printer.print_item name.to_formatted_s(interpreter) if not name.nil?
       separator = print_item['carriage']
       case
       when separator == ';': printer.null
