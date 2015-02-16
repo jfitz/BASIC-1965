@@ -249,11 +249,10 @@ end
 class NumericConstant < LeafNode
   def initialize(text)
     super
-    case
-    when text.class.to_s == 'Fixnum': @value = text
-    when text =~ /^\d+$/: @value = text.to_i
-    when text.class.to_s == 'Float': @value = text
-    when text =~ /^\d+\.\d*$/: @value = text.to_f
+    if text.class.to_s == 'Fixnum' then @value = text
+    elsif text =~ /^\d+$/ then @value = text.to_i
+    elsif text.class.to_s == 'Float' then @value = text
+    elsif text =~ /^\d+\.\d*$/ then @value = text.to_f
     else raise BASICException, "'#{text}' is not a number", caller
     end
   end
@@ -281,8 +280,7 @@ end
 
 class TextConstant
   def initialize(text)
-    case
-    when text =~ /^".*"$/: @value = text[1..-2]
+    if text =~ /^".*"$/ then @value = text[1..-2]
     else raise BASICException, "'#{text}' is not a text constant", caller
     end
   end
@@ -311,9 +309,11 @@ class UnaryOperator < UnaryNode
   end
   
   def evaluate(interpreter)
-    case
-    when @op == '+': posate(@right.evaluate(interpreter))
-    when @op == '-': negate(@right.evaluate(interpreter))
+    case @op
+    when '+'
+        posate(@right.evaluate(interpreter))
+    when '-'
+        negate(@right.evaluate(interpreter))
     end
   end
 
@@ -389,12 +389,17 @@ class BinaryOperator < BinaryNode
   end
   
   def evaluate(interpreter)
-    case
-    when @op == '+': add(@left.evaluate(interpreter), @right.evaluate(interpreter))
-    when @op == '-': subtract(@left.evaluate(interpreter), @right.evaluate(interpreter))
-    when @op == '*': multiply(@left.evaluate(interpreter), @right.evaluate(interpreter))
-    when @op == '/': divide(@left.evaluate(interpreter), @right.evaluate(interpreter))
-    when @op == '^': power(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    case @op
+    when '+'
+        add(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when '-'
+        subtract(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when '*'
+        multiply(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when '/'
+        divide(@left.evaluate(interpreter), @right.evaluate(interpreter))
+    when '^'
+        power(@left.evaluate(interpreter), @right.evaluate(interpreter))
     end
   end
 
@@ -589,11 +594,15 @@ class ArithmeticExpression
   public
   def evaluate(interpreter)
     x = @root_node.evaluate(interpreter)
-    case
-    when x.class.to_s == 'Fixnum': x
-    when x.class.to_s == 'Float': x
-    when x.class.to_s == 'NumericConstant': x.evaluate(interpreter)
-    when x.class.to_s == 'NumericExpression': x.evaluate(interpreter)
+    case x.class.to_s
+    when 'Fixnum'
+        x
+    when 'Float'
+        x
+    when 'NumericConstant'
+        x.evaluate(interpreter)
+    when 'NumericExpression'
+        x.evaluate(interpreter)
     else throw "Unknown data type #{x.class}"
     end
   end
@@ -674,13 +683,19 @@ class BooleanExpression
   end
   
   def evaluate(interpreter)
-    case
-    when @operator.to_s == '=': @a.evaluate(interpreter) == @b.evaluate(interpreter)
-    when @operator.to_s == '<>': @a.evaluate(interpreter) != @b.evaluate(interpreter)
-    when @operator.to_s == '<': @a.evaluate(interpreter) < @b.evaluate(interpreter)
-    when @operator.to_s == '>': @a.evaluate(interpreter) > @b.evaluate(interpreter)
-    when @operator.to_s == '<=': @a.evaluate(interpreter) <= @b.evaluate(interpreter)
-    when @operator.to_s == '>=': @a.evaluate(interpreter) >= @b.evaluate(interpreter)
+    case @operator.to_s
+    when '='
+        @a.evaluate(interpreter) == @b.evaluate(interpreter)
+    when '<>'
+        @a.evaluate(interpreter) != @b.evaluate(interpreter)
+    when '<'
+        @a.evaluate(interpreter) < @b.evaluate(interpreter)
+    when '>'
+        @a.evaluate(interpreter) > @b.evaluate(interpreter)
+    when '<='
+        @a.evaluate(interpreter) <= @b.evaluate(interpreter)
+    when '>='
+        @a.evaluate(interpreter) >= @b.evaluate(interpreter)
     end
   end
   
@@ -925,9 +940,11 @@ class Print < AbstractLine
       name = print_item['variable']
       printer.print_item name.to_formatted_s(interpreter) if not name.nil?
       separator = print_item['carriage']
-      case
-      when separator == ';': printer.null
-      when separator == ',': printer.tab
+      case separator
+      when ';'
+        printer.null
+      when ','
+        printer.tab
       else printer.newline
       end
     end
@@ -1019,9 +1036,8 @@ class ForNextControl
   end
   
   def terminated?(interpreter)
-    case
-    when @step_value > 0: (interpreter.get_value(@control_variable_name) >= end_value)
-    when @step_value < 0: (interpreter.get_value(@control_variable_name) <= end_value)
+    if @step_value > 0 then (interpreter.get_value(@control_variable_name) >= end_value)
+    elsif @step_value < 0 then (interpreter.get_value(@control_variable_name) <= end_value)
     else true
     end
   end
@@ -1203,23 +1219,22 @@ class Interpreter
     line_text = m.post_match.sub(/^ +/, '')
     # pick out the keyword
     object = Unknown.new(line_text)
-    case
       #todo: RESTORE
-    when line_text[0..2] == 'REM': object = Remark.new(line_text[3..-1])
-    when line_text[0..2] == 'LET': object = Let.new(line_text[3..-1])
-    when line_text[0..4] == 'INPUT': object = Input.new(line_text[5..-1])
-    when line_text[0..1] == 'IF': object = If.new(line_text[2..-1])
-    when line_text[0..4] == 'PRINT': object = Print.new(line_text[5..-1])
-    when line_text[0..4] == 'GO TO': object = Goto.new(line_text[5..-1])
-    when line_text[0..3] == 'GOTO': object = Goto.new(line_text[4..-1])
-    when line_text[0..4] == 'GOSUB': object = Gosub.new(line_text[5..-1])
-    when line_text[0..2] == 'FOR': object = ForLine.new(line_text[3..-1])
-    when line_text[0..3] == 'NEXT': object = NextLine.new(line_text[4..-1])
-    when line_text[0..5] == 'RETURN': object = Return.new
-    when line_text[0..3] == 'READ': object = Read.new(line_text[4..-1])
-    when line_text[0..3] == 'DATA': object = DataLine.new(line_text[4..-1])
-    when line_text[0..3] == 'STOP': object = Stop.new
-    when line_text[0..2] == 'END': object = End.new
+    if line_text[0..2] == 'REM' then object = Remark.new(line_text[3..-1])
+    elsif line_text[0..2] == 'LET' then object = Let.new(line_text[3..-1])
+    elsif line_text[0..4] == 'INPUT' then object = Input.new(line_text[5..-1])
+    elsif line_text[0..1] == 'IF' then object = If.new(line_text[2..-1])
+    elsif line_text[0..4] == 'PRINT' then object = Print.new(line_text[5..-1])
+    elsif line_text[0..4] == 'GO TO' then object = Goto.new(line_text[5..-1])
+    elsif line_text[0..3] == 'GOTO' then object = Goto.new(line_text[4..-1])
+    elsif line_text[0..4] == 'GOSUB' then object = Gosub.new(line_text[5..-1])
+    elsif line_text[0..2] == 'FOR' then object = ForLine.new(line_text[3..-1])
+    elsif line_text[0..3] == 'NEXT' then object = NextLine.new(line_text[4..-1])
+    elsif line_text[0..5] == 'RETURN' then object = Return.new
+    elsif line_text[0..3] == 'READ' then object = Read.new(line_text[4..-1])
+    elsif line_text[0..3] == 'DATA' then object = DataLine.new(line_text[4..-1])
+    elsif line_text[0..3] == 'STOP' then object = Stop.new
+    elsif line_text[0..2] == 'END' then object = End.new
     end
     [line_num, object]
   end
@@ -1278,7 +1293,7 @@ class Interpreter
   end
   
   def cmd_load(filename)
-    filename.sub!(/^\s+/, '')
+    filename = filename.sub(/^\s+/, '')
     if filename.size > 0 then
       begin
         File.open(filename, 'r') do | file |
@@ -1432,13 +1447,12 @@ class Interpreter
       else
         # immediate command -- execute
         # todo: add PRINT, LET
-        case 
-        when cmd == 'LIST': cmd_list
-        when cmd == 'RUN': cmd_run
-        when cmd == 'NEW': cmd_new
-        when cmd[0..3] == 'LOAD': cmd_load(cmd[4..-1])
-        when cmd[0..3] == 'SAVE': cmd_save(cmd[4..-1])
-        when cmd == 'EXIT': done = true
+        if cmd == 'LIST' then cmd_list
+        elsif cmd == 'RUN' then cmd_run
+        elsif cmd == 'NEW' then cmd_new
+        elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
+        elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
+        elsif cmd == 'EXIT' then done = true
         else print "Unknown command #{cmd}\n"
         end
         need_prompt = true
