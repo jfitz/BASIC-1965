@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+$randomizer = Random.new
+
 class BASICException < Exception
 end
 
@@ -492,7 +494,7 @@ class NumericExpression < LeafNode
 end
 
 class Function < Node
-  @@valid_names = [ 'INT' ]
+  @@valid_names = [ 'INT', 'RND' ]
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
     super
@@ -500,10 +502,20 @@ class Function < Node
   end
 
   def evaluate(interpreter)
-    if @right.list_count == 1 then
-      (@right.evaluate_n(interpreter,0)).truncate
-    else
-      raise(BASICException, "Wrong number of arguments", caller)
+    case @name
+    when 'INT'
+      if @right.list_count == 1 then
+        (@right.evaluate_n(interpreter,0)).truncate
+      else
+        raise(BASICException, "Wrong number of arguments", caller)
+      end
+    when 'RND'
+      if @right.list_count == 1 then
+        upper_bound = (@right.evaluate_n(interpreter,0)).truncate.to_f
+        $randomizer.rand(upper_bound)
+      else
+        raise(BASICException, "Wrong number of arguments", caller)
+      end
     end
   end
 
