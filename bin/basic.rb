@@ -509,7 +509,7 @@ class Function < Node
     case @name
     when 'INT'
       if @right.list_count == 1 then
-        (@right.evaluate_n(interpreter,0)).truncate
+        (@right.evaluate_n(interpreter,0)).to_i
       else
         raise(BASICException, "Wrong number of arguments", caller)
       end
@@ -1432,7 +1432,7 @@ class Interpreter
       @data_index += 1
       @data_store[@data_index - 1]
     else
-      nil
+      raise(BASICException, "Out of data", caller)
     end
   end
 
