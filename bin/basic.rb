@@ -113,6 +113,7 @@ class RootNode < Node
   def infix_string
     result = ''
     result += @right.infix_string if @right != nil
+    result
   end
 end
 
@@ -133,6 +134,7 @@ class UnaryNode < Node
     result = ''
     result += @token
     result += @right.infix_string if @right != nil
+    result
   end
 end
 
@@ -146,11 +148,12 @@ class ListNode < Node
   end
   
   def infix_string
+    text_vals = @list.map { | item | item.infix_string }
     result = ''
-    result += @token
-    result += @left.infix_string if @left != nil
-    result += @right.infix_string if @right != nil
+    result += '('
+    result += text_vals.join(',')
     result += ')'
+    result
   end
 
   def insert_node(tree)
@@ -215,6 +218,7 @@ class BinaryNode < Node
     result += @token
     result += ' '
     result += @right.infix_string if @right != nil
+    result
   end
   
   def insert_node(tree)
@@ -1272,7 +1276,7 @@ class Interpreter
   end
   
   public
-  def cmd_run
+  def cmd_run(trace_flag)
     @variables = Hash.new
     line_numbers = @program_lines.keys.sort
     if line_numbers.size > 0 then
@@ -1283,7 +1287,9 @@ class Interpreter
         # pick the next line number
         @next_line_number = line_numbers[line_numbers.index(@current_line_number) + 1]
         begin
-          @program_lines[@current_line_number].execute(self)
+          line = @program_lines[@current_line_number]
+          puts "#{@current_line_number}: #{line.to_s}" if trace_flag
+          line.execute(self)
           if @running then
             # set the next line number (which may have been changed by execute() )
             @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
@@ -1460,7 +1466,8 @@ class Interpreter
         # immediate command -- execute
         # todo: add PRINT, LET
         if cmd == 'LIST' then cmd_list
-        elsif cmd == 'RUN' then cmd_run
+        elsif cmd == 'RUN' then cmd_run(false)
+        elsif cmd == 'TRACE' then cmd_run(true)
         elsif cmd == 'NEW' then cmd_new
         elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
         elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
@@ -1474,12 +1481,12 @@ class Interpreter
     puts "BASIC-1965 ended"
   end
   
-  def load_and_run(filename)
+  def load_and_run(filename, trace_flag)
     puts "BASIC-1965 interpreter version -1"
     puts
     @program_lines = Hash.new
     if cmd_load(filename) then
-      cmd_run
+      cmd_run(trace_flag)
     end
     puts
     puts "BASIC-1965 ended"
@@ -1489,11 +1496,15 @@ end
 interpreter = Interpreter.new
 if ARGV.size > 0 then
   filename = ARGV[0]
-  until ARGV.empty? do ARGV.shift end
+  trace_flag = false
+  until ARGV.empty? do
+    trace_flag = true if ARGV[0] == '-trace'
+    ARGV.shift
+  end
   # set_trace_func proc { | event, file, line, id, binding, classname |
   #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include?(classname.to_s)
   # }
-  interpreter.load_and_run(filename)
+  interpreter.load_and_run(filename, trace_flag)
 else
   interpreter.go
 end
