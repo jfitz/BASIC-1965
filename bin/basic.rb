@@ -276,11 +276,11 @@ class NumericConstant < LeafNode
   end
   
   def to_s
-    @value.to_s
+    @value.round(5).to_s
   end
   
   def to_formatted_s(interpreter)
-    @value < 0 ? @value.to_s : ' ' + @value.to_s
+    @value < 0 ? @value.round(5).to_s : ' ' + @value.round(5).to_s
   end
 end
 
@@ -493,7 +493,7 @@ class NumericExpression < LeafNode
   end
   
   def to_formatted_s(interpreter)
-    @variable.nil? ? @value.value : ' ' + interpreter.get_value(@variable).to_s
+    @variable.nil? ? @value.value : ' ' + interpreter.get_value(@variable).round(5).to_s
   end
 end
 
@@ -655,7 +655,7 @@ class PrintableExpression
   end
   
   def to_formatted_s(interpreter)
-    @numeric_expression.nil? ? @text_constant.to_formatted_s(interpreter): @numeric_expression.to_formatted_s(interpreter)
+    @numeric_expression.nil? ? @text_constant.to_formatted_s(interpreter) : @numeric_expression.to_formatted_s(interpreter)
   end
 end
 
