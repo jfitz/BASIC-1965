@@ -516,6 +516,7 @@ class Function < Node
     when 'RND'
       if @right.list_count == 1 then
         upper_bound = (@right.evaluate_n(interpreter,0)).truncate.to_f
+        upper_bound = 1 if upper_bound <= 0
         $randomizer.rand(upper_bound)
       else
         raise(BASICException, "Wrong number of arguments", caller)
