@@ -69,7 +69,9 @@ class Node
   
   def find_place(node)
     current_node = rightmost
-    current_node = current_node.parent while current_node.parent != nil && current_node.parent.precedence > node.precedence
+    while current_node.parent != nil && current_node.parent.precedence >= node.precedence
+      current_node = current_node.parent
+    end
     current_node
   end
   
@@ -162,7 +164,7 @@ class ListNode < Node
   end
   
   def push
-    @list.push(@right)
+    @list.push(@right) if @right != nil
     @right = nil
   end
   
@@ -172,9 +174,12 @@ class ListNode < Node
   
   def dump
     result = Array.new
-    result << @id.to_s + ':' + self.class.name + ' Value:' + @token + ' Precedence:' + @precedence.to_s + ' Right:' + (@right != nil ? @right.id.to_s : 'nil') + ' Left:' + (@left != nil ? @left.id.to_s : 'nil')
+    result << @id.to_s + ':' + self.class.name + ' Value:' + @token + ' Precedence:' + @precedence.to_s + ' List:' + (@list.map { | item | item.id.to_s }).join(',')
     result.concat(@left.dump) if @left != nil
     result.concat(@right.dump) if @right != nil
+    @list.each do | item |
+      result.concat(item.dump)
+    end
     result
   end
 end
@@ -276,7 +281,7 @@ class NumericConstant < LeafNode
   end
   
   def to_s
-    @value.round(5).to_s
+    @value.to_s
   end
   
   def to_formatted_s(interpreter)
@@ -326,13 +331,13 @@ class UnaryOperator < UnaryNode
   def posate(a)
     f = NumericConstant.new(a.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
   end
   
   def negate(a)
     f = NumericConstant.new(- a.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
   end
   
   def to_s
@@ -412,31 +417,31 @@ class BinaryOperator < BinaryNode
   def add(a, b)
     f = NumericConstant.new(a.to_f + b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
   end
   
   def subtract(a, b)
     f = NumericConstant.new(a.to_f - b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
   end
   
   def multiply(a, b)
     f = NumericConstant.new(a.to_f * b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
   end
   
   def divide(a, b)
     f = NumericConstant.new(a.to_f / b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
   end
   
   def power(a, b)
     f = NumericConstant.new(a.to_f ** b.to_f)
     i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)) < 1e-8 ? i : f
+    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
   end
   
   def to_s
@@ -493,7 +498,9 @@ class NumericExpression < LeafNode
   end
   
   def to_formatted_s(interpreter)
-    @variable.nil? ? @value.value : ' ' + interpreter.get_value(@variable).round(5).to_s
+    vvalue = interpreter.get_value(@variable)
+    formatted = vvalue.class.to_s == 'Float' ? vvalue.round(5).to_s : vvalue.to_s
+    @variable.nil? ? @value.value : ' ' + formatted
   end
 end
 
@@ -503,6 +510,7 @@ class Function < Node
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
     super
     @name = text
+    @precedence = 9
   end
 
   def evaluate(interpreter)
