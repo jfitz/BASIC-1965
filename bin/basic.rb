@@ -1145,7 +1145,8 @@ class ForLine < AbstractLine
     interpreter.set_value(@control_variable, from_value)
     to_value = @end_value.evaluate(interpreter)
     step_value = @step_value.evaluate(interpreter)
-    interpreter.push_fornext(ForNextControl.new(@control_variable.to_s, interpreter.get_next_line, from_value, to_value, step_value))
+    fornext_control = ForNextControl.new(@control_variable.to_s, interpreter.get_next_line, from_value, to_value, step_value)
+    interpreter.set_fornext(fornext_control)
   end
 end
 
@@ -1167,12 +1168,7 @@ class NextLine < AbstractLine
   end
   
   def execute_cmd(interpreter)
-    fornext_control = interpreter.pop_fornext #may raise "NEXT without FOR"
-    # verify top item matches control variable
-    x = fornext_control.control_variable_name
-    if x != @control_variable.to_s then
-      raise BASICException, "NEXT #{@control_variable} does not match FOR #{x}", caller
-    end
+    fornext_control = interpreter.get_fornext(@control_variable)
     # check control variable value
     # if matches end value, stop here
     return if fornext_control.terminated?(interpreter)
@@ -1180,7 +1176,7 @@ class NextLine < AbstractLine
     interpreter.set_next_line(fornext_control.loop_start_number)
     # change control variable value
     fornext_control.bump_control_variable(interpreter)
-    interpreter.push_fornext(fornext_control)
+    interpreter.set_fornext(fornext_control)
   end
 end
 
@@ -1272,7 +1268,7 @@ class Interpreter
     @data_index = 0
     @printer = PrintHandler.new
     @return_stack = Array.new
-    @fornext_stack = Array.new
+    @fornexts = Hash.new
   end
   
   def parse_line(line)
@@ -1462,13 +1458,15 @@ class Interpreter
     @return_stack.pop
   end
   
-  def push_fornext(fornext)
-    @fornext_stack.push(fornext)
+  def set_fornext(fornext_control)
+    control_variable = fornext_control.control_variable_name
+    @fornexts[control_variable] = fornext_control
   end
   
-  def pop_fornext
-    raise(BASICException, "NEXT without FOR", caller) if @fornext_stack.size == 0
-    @fornext_stack.pop
+  def get_fornext(control_variable)
+    fornext = @fornexts[control_variable.to_s]
+    raise(BASICException, "NEXT without FOR", caller) if fornext == nil
+    fornext
   end
   
   def store_data(value)
