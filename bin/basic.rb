@@ -726,9 +726,9 @@ class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
     raise(BASICException, "'#{text}' is not a boolean expression", caller) if parts.size != 3
-    @a = NumericExpression.new(parts[0])
+    @a = ArithmeticExpression.new(parts[0])
     @operator = BooleanOperator.new(parts[1])
-    @b = NumericExpression.new(parts[2])
+    @b = ArithmeticExpression.new(parts[2])
   end
   
   def evaluate(interpreter)
