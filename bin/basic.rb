@@ -283,9 +283,15 @@ class NumericConstant < LeafNode
   def to_s
     @value.to_s
   end
+
+  def six_digits(value)
+    decimals = 5 - (value != 0 ? Math.log(value.abs,10).to_i : 0)
+    value.round(decimals)
+  end
   
   def to_formatted_s(interpreter)
-    @value < 0 ? @value.round(5).to_s : ' ' + @value.round(5).to_s
+    formatted = @value.class.to_s == 'Float' ? six_digits(@value).to_s : @value.to_s
+    @value < 0 ? formatted : ' ' + formatted
   end
 end
 
@@ -497,15 +503,20 @@ class NumericExpression < LeafNode
     @variable.nil? ? @value.to_s : @variable.to_s
   end
   
+  def six_digits(value)
+    decimals = 5 - (value != 0 ? Math.log(value.abs,10).to_i : 0)
+    value.round(decimals)
+  end
+  
   def to_formatted_s(interpreter)
     vvalue = interpreter.get_value(@variable)
-    formatted = vvalue.class.to_s == 'Float' ? vvalue.round(5).to_s : vvalue.to_s
+    formatted = vvalue.class.to_s == 'Float' ? six_digits(vvalue).to_s : vvalue.to_s
     @variable.nil? ? @value.value : ' ' + formatted
   end
 end
 
 class Function < Node
-  @@valid_names = [ 'INT', 'RND' ]
+  @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG' ]
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
     super
@@ -526,6 +537,19 @@ class Function < Node
         upper_bound = (@right.evaluate_n(interpreter,0)).truncate.to_f
         upper_bound = 1 if upper_bound <= 0
         $randomizer.rand(upper_bound)
+      else
+        raise(BASICException, "Wrong number of arguments", caller)
+      end
+    when 'EXP'
+      if @right.list_count == 1 then
+        Math.exp(@right.evaluate_n(interpreter,0))
+      else
+        raise(BASICException, "Wrong number of arguments", caller)
+      end
+    when 'LOG'
+      if @right.list_count == 1 then
+        vvalue = @right.evaluate_n(interpreter,0)
+        vvalue > 0 ? Math.log(vvalue) : 0
       else
         raise(BASICException, "Wrong number of arguments", caller)
       end
