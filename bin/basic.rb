@@ -1085,8 +1085,9 @@ class ForNextControl
   end
   
   def terminated?(interpreter)
-    if @step_value > 0 then (interpreter.get_value(@control_variable_name) >= end_value)
-    elsif @step_value < 0 then (interpreter.get_value(@control_variable_name) <= end_value)
+    current_value = interpreter.get_value(@control_variable_name)
+    if @step_value > 0 then (current_value + @step_value > end_value)
+    elsif @step_value < 0 then (current_value + @step_value < end_value)
     else true
     end
   end
