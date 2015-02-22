@@ -679,16 +679,31 @@ class PrintableExpression
     begin
       @text_constant = TextConstant.new(text)
     rescue BASICException => message
-      @numeric_expression = NumericExpression.new(text)
+      @numeric_expression = ArithmeticExpression.new(text)
     end
   end
   
   def to_s
-    @numeric_expression.nil? ? @text_constant.to_s : @numeric_expression.to_s
+    if @numeric_expression.nil? then
+      @text_constant.to_s
+    else
+      @numeric_expression.to_s
+    end
+  end
+  
+  def six_digits(value)
+    decimals = 5 - (value != 0 ? Math.log(value.abs,10).to_i : 0)
+    value.round(decimals)
   end
   
   def to_formatted_s(interpreter)
-    @numeric_expression.nil? ? @text_constant.to_formatted_s(interpreter) : @numeric_expression.to_formatted_s(interpreter)
+    if @numeric_expression.nil? then
+      @text_constant.to_formatted_s(interpreter)
+    else
+      vvalue = @numeric_expression.evaluate(interpreter)
+      formatted = vvalue.class.to_s == 'Float' ? six_digits(vvalue).to_s : vvalue.to_s
+      vvalue < 0 ? formatted : ' ' + formatted
+    end
   end
 end
 
@@ -946,7 +961,6 @@ class Print < AbstractLine
       in_string = !in_string if ['"'].include?(c)
     end
     args << current_arg if current_arg.size > 0
-    
     args
   end
   
@@ -1212,7 +1226,7 @@ class DataLine < AbstractLine
   end
   
   def to_s
-    @keyword + ' '+ @data_list.join(', ')
+    @keyword + ' ' + @data_list.join(', ')
   end
   
   def execute_cmd(interpreter)
