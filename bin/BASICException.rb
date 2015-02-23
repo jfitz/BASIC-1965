@@ -1,0 +1,3 @@
+class BASICException < Exception
+end
+

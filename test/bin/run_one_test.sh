@@ -4,13 +4,13 @@ echo Start test $1
 # create testbed
 echo Creating testbed...
 mkdir tests/$1
-cp bin/basic.rb test/data/$1/* tests/$1
+cp bin/* test/data/$1/* tests/$1
 echo testbed ready
 
 # execute program
 echo Running program...
 cd tests/$1
-ruby basic.rb $1.bas >stdout.txt 2>stderr.txt
+ruby -I. basic.rb $1.bas >stdout.txt 2>stderr.txt
 cd ../..
 echo run finished
 
