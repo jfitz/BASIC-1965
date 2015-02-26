@@ -3,6 +3,7 @@ class VariableName < LeafNode
     super
     raise(BASICException, "'#{text}' is not a variable name", caller) if text !~ /^[A-Z][0-9]?$/
     @var_name = text
+    @precedence = 9
   end
   
   def to_s
@@ -46,7 +47,7 @@ class NumericExpression < LeafNode
   end
 end
 
-class Function < Node
+class Function < LeafNode
   @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG' ]
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
