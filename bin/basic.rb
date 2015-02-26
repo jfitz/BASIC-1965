@@ -132,7 +132,7 @@ class Input < AbstractLine
     # variable [comma, variable]...
     @variable_list.each do | text_item |
       begin
-        var_name = VariableName.new(text_item)
+        var_name = VariableRef.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -370,7 +370,7 @@ class ForLine < AbstractLine
     parts = line.gsub(/ /, '').split('=', 2)
     raise(BASICException, "Syntax error", caller) if parts.size != 2
     begin
-      @control_variable = VariableName.new(parts[0])
+      @control_variable = VariableRef.new(parts[0])
     rescue BASICException => message
       @errors << message
     end
@@ -412,7 +412,7 @@ class NextLine < AbstractLine
     # parse control variable
     @control_variable = nil
     begin
-      @control_variable = VariableName.new(line.gsub(/ /, ''))
+      @control_variable = VariableRef.new(line.gsub(/ /, ''))
     rescue BASICException => message
       @errors << message
       @boolean_expression = line
@@ -444,7 +444,7 @@ class Read < AbstractLine
     # variable [comma, variable]...
     @variable_list.each do | text_item |
       begin
-        var_name = VariableName.new(text_item)
+        var_name = VariableRef.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -457,7 +457,7 @@ class Read < AbstractLine
   
   def execute_cmd(interpreter)
     @variable_list.each do | text_item |
-      var_name = VariableName.new(text_item)
+      var_name = VariableRef.new(text_item)
       interpreter.set_value(var_name, interpreter.read_data)
     end
   end
@@ -682,7 +682,7 @@ class Interpreter
   
   def get_value(variable)
     begin
-      VariableName.new(variable.to_s)
+      VariableRef.new(variable.to_s)
       if !@variables.has_key?(variable.to_s) then
         @variables[variable.to_s] = 0
       end
@@ -694,7 +694,7 @@ class Interpreter
   
   def set_value(variable, value)
     begin
-      VariableName.new(variable.to_s)
+      VariableRef.new(variable.to_s)
       @variables[variable.to_s] = value
     rescue
       raise BASICException, "Unknown variable #{variable}", caller

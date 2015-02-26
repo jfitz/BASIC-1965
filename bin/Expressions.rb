@@ -1,4 +1,4 @@
-class VariableName < LeafNode
+class VariableRef < LeafNode
   def initialize(text)
     super
     regex = Regexp.new('^[A-Z]\d?$')
@@ -19,7 +19,7 @@ class NumericExpression < LeafNode
     @variable = nil
     @value = nil
     begin
-      @variable = VariableName.new(text)
+      @variable = VariableRef.new(text)
     rescue BASICException => message
       @value = NumericConstant.new(text)
     end
@@ -277,7 +277,7 @@ class Assignment
     # parse into variable, '=', expression
     parts = text.split('=', 2)
     raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
-    @target = VariableName.new(parts[0])
+    @target = VariableRef.new(parts[0])
     @expression = ArithmeticExpression.new(parts[1])
   end
 
