@@ -1,7 +1,9 @@
 class VariableName < LeafNode
   def initialize(text)
     super
-    raise(BASICException, "'#{text}' is not a variable name", caller) if text !~ /^[A-Z][0-9]?$/
+    regex = Regexp.new('^[A-Z]\d?$')
+    # regex = Regexp.new('^[A-Z]\d?(\(\d{1,2}\))?$')
+    raise(BASICException, "'#{text}' is not a variable name", caller) if regex !~ text
     @var_name = text
     @precedence = 9
   end

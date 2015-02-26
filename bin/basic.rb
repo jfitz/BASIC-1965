@@ -10,7 +10,8 @@ $randomizer = Random.new
 
 class LineNumber
   def initialize(number)
-    raise(BASICException, "'#{number}' is not a line number", caller) if /^\d+$/ !~ number
+    regex = Regexp.new('^\d+$')
+    raise(BASICException, "'#{number}' is not a line number", caller) if regex !~ number
     @line_number = number.to_i
   end
   
