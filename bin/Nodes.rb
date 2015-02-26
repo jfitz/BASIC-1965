@@ -6,7 +6,6 @@ class Node
     @parent = nil
     @precedence = 10
     @right = nil
-    @list = nil
     @id = @@counter
     @@counter += 1
   end
@@ -81,18 +80,6 @@ class Node
     result.concat(@right.dump) if @right != nil
     result
   end
-  
-  def is_list
-    @list != nil
-  end
-  
-  def list_count
-    if is_list then
-      @list.size
-    else
-      0
-    end
-  end
 end
 
 class RootNode < Node
@@ -115,6 +102,11 @@ end
 class LeafNode < Node
   def initialize(token)
     super
+    @list = Array.new
+  end
+  
+  def list_count
+    @list.size
   end
 end
 
@@ -122,7 +114,6 @@ class UnaryNode < Node
   def initialize(token)
     super
     @precedence = 0
-    @right = nil
   end
   
   def infix_string
@@ -133,13 +124,10 @@ class UnaryNode < Node
   end
 end
 
-class ListNode < Node
+class ListNode < LeafNode
   def initialize
     super('(')
     @precedence = 8
-    @right = nil
-    @left = nil
-    @list = Array.new
   end
   
   def infix_string
@@ -168,8 +156,6 @@ class ListNode < Node
   def dump
     result = Array.new
     result << @id.to_s + ':' + self.class.name + ' Value:' + @token + ' Precedence:' + @precedence.to_s + ' List:' + (@list.map { | item | item.id.to_s }).join(',')
-    result.concat(@left.dump) if @left != nil
-    result.concat(@right.dump) if @right != nil
     @list.each do | item |
       result.concat(item.dump)
     end
@@ -177,11 +163,10 @@ class ListNode < Node
   end
 end
 
-class ListEndNode < Node
+class ListEndNode < LeafNode
   def initialize
     super(')')
     @precedence = 8
-    @right = nil
   end
   
   def insert_node(tree)
@@ -202,7 +187,6 @@ class BinaryNode < Node
     super
     @precedence = 0
     @left = nil
-    @right = nil
   end
   
   def left
