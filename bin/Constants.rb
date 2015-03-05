@@ -1,12 +1,12 @@
-class NumericConstant < LeafNode
+class NumericConstant
   def initialize(text)
-    super
     if text.class.to_s == 'Fixnum' then @value = text
     elsif text =~ /^\d+$/ then @value = text.to_i
     elsif text.class.to_s == 'Float' then @value = text
     elsif text =~ /^\d+\.\d*$/ then @value = text.to_f
     else raise BASICException, "'#{text}' is not a number", caller
     end
+    @precedence = 0
   end
 
   def evaluate(interpreter)
@@ -41,6 +41,7 @@ class TextConstant
     if text =~ /^".*"$/ then @value = text[1..-2]
     else raise BASICException, "'#{text}' is not a text constant", caller
     end
+    @precedence = 0
   end
 
   def value

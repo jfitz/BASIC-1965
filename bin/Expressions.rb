@@ -1,30 +1,61 @@
-class VariableRef < LeafNode
+class VariableRef
   def initialize(text)
-    super
     regex = Regexp.new('^[A-Z]\d?$')
     # regex = Regexp.new('^[A-Z]\d?(\(\d{1,2}\))?$')
     raise(BASICException, "'#{text}' is not a variable name", caller) if regex !~ text
     @var_name = text
-    @precedence = 9
+    @precedence = 0
   end
   
+  def is_operator
+    false
+  end
+
+  def is_list_op
+    false
+  end
+
+  def is_end_list
+    false
+  end
+
+  def precedence
+    @precedence
+  end
+
   def to_s
     @var_name
   end
 end
 
-class NumericExpression < LeafNode
+class NumericExpression
   def initialize(text)
-    super
     @variable = nil
     @value = nil
     begin
       @variable = VariableRef.new(text)
-    rescue BASICException => message
+    rescue BASICException
       @value = NumericConstant.new(text)
     end
+    @precedence = 0
   end
   
+  def is_operator
+    false
+  end
+  
+  def is_list_op
+    false
+  end
+
+  def is_end_list
+    false
+  end
+
+  def precedence
+    @precedence
+  end
+
   def evaluate(interpreter)
     if !@variable.nil? then
       interpreter.get_value(@variable)
@@ -49,44 +80,46 @@ class NumericExpression < LeafNode
   end
 end
 
-class Function < LeafNode
+class Function
   @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG' ]
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
-    super
     @name = text
-    @precedence = 9
+    @precedence = 0
   end
 
-  def evaluate(interpreter)
+  def is_operator
+    true
+  end
+  
+  def is_list_op
+    false
+  end
+
+  def is_end_list
+    false
+  end
+
+  def precedence
+    @precedence
+  end
+
+  def evaluate(stack)
     case @name
     when 'INT'
-      if @right.list_count == 1 then
-        (@right.evaluate_n(interpreter,0)).to_i
-      else
-        raise(BASICException, "Wrong number of arguments", caller)
-      end
+      x = stack.pop
+      x.to_i
     when 'RND'
-      if @right.list_count == 1 then
-        upper_bound = (@right.evaluate_n(interpreter,0)).truncate.to_f
-        upper_bound = 1 if upper_bound <= 0
-        $randomizer.rand(upper_bound)
-      else
-        raise(BASICException, "Wrong number of arguments", caller)
-      end
+      x = stack.pop
+      upper_bound = x.truncate.to_f
+      upper_bound = 1 if upper_bound <= 0
+      $randomizer.rand(upper_bound)
     when 'EXP'
-      if @right.list_count == 1 then
-        Math.exp(@right.evaluate_n(interpreter,0))
-      else
-        raise(BASICException, "Wrong number of arguments", caller)
-      end
+      x = stack.pop
+      Math.exp(x)
     when 'LOG'
-      if @right.list_count == 1 then
-        vvalue = @right.evaluate_n(interpreter,0)
-        vvalue > 0 ? Math.log(vvalue) : 0
-      else
-        raise(BASICException, "Wrong number of arguments", caller)
-      end
+      x = stack.pop
+      x > 0 ? Math.log(x) : 0
     end
   end
 
@@ -101,40 +134,42 @@ end
 
 class ArithmeticExpression
   def initialize(text)
-    # parse into items and arith operators
-    tokens = text.split(/([\+\-\*\/\(\)\^])/)
-    # puts "DBG: tokens=#{tokens.join(', ')}"
-    
-    # convert from list of tokens into a tree
-    list = Array.new
+    @uncompiled_expression = text
+    # split the  input infix string
+    words = text.split(/([\+\-\*\/\(\)\^])/)
+    # puts "DBG: words=[#{words.join('] [')}]"
+
+    tokens = Array.new
     last_was_operand = false
-    tokens.each do | token |
-      # puts "DBG: token=#{token}"
-      if token.size > 0 then
+    # convert tokens to objects
+    words.each do | word |
+      # puts "DBG: word=#{word}"
+      if word.size > 0 then
         begin
-          list << Function.new(token)
-          rescue BASICException
+          tokens << ListOperator.new(word)
+          last_was_operand = false
+        rescue BASICException
           begin
-            list << NumericExpression.new(token)
+            tokens << ListEndOperator.new(word)
             last_was_operand = true
           rescue BASICException
             begin
               if last_was_operand then
-                list << BinaryOperator.new(token)
+                tokens << BinaryOperator.new(word)
               else
-                list << UnaryOperator.new(token)
+                tokens << UnaryOperator.new(word)
               end
               last_was_operand = false
             rescue BASICException
               begin
-                list << ListOperator.new(token)
-                last_was_operand = false
+                tokens << Function.new(word)
+                last_was_operand = true
               rescue BASICException
                 begin
-                  list << ListEndOperator.new(token)
+                  tokens << NumericExpression.new(word)
                   last_was_operand = true
                 rescue
-                  raise BASICException, "'#{token}' is not a value or operator", caller
+                  raise BASICException, "'#{word}' is not a value or operator", caller
                 end
               end
             end
@@ -143,66 +178,67 @@ class ArithmeticExpression
       end
     end
 
-    node_tree = RootNode.new
-    list.each do | new_node |
-      # puts "DBG: #{infix_string(node_tree)}"
-      place_node = node_tree.find_place(new_node)
-      new_node.insert_node(place_node)
+    # stack for operators
+    operator_stack = Array.new
+    # list for compiled expression (postfix)
+    @compiled_expression = Array.new
+
+    # scan the token list from left to right
+    tokens.each do | token |
+      if token != '' then
+        # If the token is an operand, append it to the end of the output list
+        if not token.is_operator then
+          @compiled_expression << token
+        else
+          # If the token is a left parenthesis, push it on the opstack
+          if token.is_list_op then
+            operator_stack.push(token)
+          else
+            # If the token is a right parenthesis,
+            # pop the opstack until the corresponding left parenthesis is removed
+            # Append each operator to the end of the output list
+            if token.is_end_list then
+              while operator_stack.size > 0 and not operator_stack[-1].is_list_op do
+                @compiled_expression << operator_stack.pop
+              end
+              operator_stack.pop
+            else
+              # First remove any operators already on the stack that have higher or equal precedence
+              # and append them to the output list
+              while operator_stack.size > 0 and operator_stack[-1].precedence >= token.precedence do
+                @compiled_expression << operator_stack.pop
+              end
+              # push the token onto the stack
+              operator_stack.push(token)
+            end
+          end
+        end
+      end
     end
-    @root_node = node_tree.topmost
+    # Any operators still on the stack can be removed and appended to the end of the output list
+    while operator_stack.size > 0 do
+      @compiled_expression << operator_stack.pop
+    end
   end
 
-  private
-  def postfix_string(current_node)
-    result = ''
-    result += postfix_string(current_node.left) + ' ' if current_node.left != nil
-    result += postfix_string(current_node.right) + ' ' if current_node.right != nil
-    result += current_node.to_s
+  def is_operator
+    false
   end
   
-  def infix_string(current_node)
-    result = ''
-    result += infix_string(current_node.left) if current_node.left != nil
-    result += current_node.to_s
-    result += infix_string(current_node.right) if current_node.right != nil
-    result
+  def is_list_op
+    false
   end
-  
-  public
-  def dump
-    puts infix_string(@root_node)
-    puts @root_node.dump
+
+  def is_end_list
+    false
   end
-  
-  public
+
   def evaluate(interpreter)
-    x = @root_node.evaluate(interpreter)
-    case x.class.to_s
-    when 'Fixnum'
-        x
-    when 'Float'
-        x
-    when 'NumericConstant'
-        x.evaluate(interpreter)
-    when 'NumericExpression'
-        x.evaluate(interpreter)
-    else throw "Unknown data type #{x.class}"
-    end
+    interpreter.evaluate(@compiled_expression)
   end
   
   def to_s
-    @root_node.infix_string
-  end
-
-  def to_postfix_s
-    postfix_string(@root_node)
-  end
-
-  def postfix_string(current_node)
-    result = ''
-    result += postfix_string(current_node.left) + ' ' if current_node.left != nil
-    result += postfix_string(current_node.right) + ' ' if current_node.right != nil
-    result += current_node.token.to_s
+    @uncompiled_expression
   end
 end
 
@@ -295,10 +331,6 @@ class Assignment
 
   def to_postfix_s
     @expression.to_postfix_s
-  end
-  
-  def dump
-    @expression.dump
   end
 end
 

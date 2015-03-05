@@ -1,32 +1,48 @@
-class UnaryOperator < UnaryNode
-  @@operators = { '+' => 9, '-' => 9 }
+class UnaryOperator
+  @@operators = { '+' => 5, '-' => 5 }
   def initialize(text)
-    # puts "DBG: UnaryOperator.initialize(#{text})"
-    super
     raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
     @precedence = @@operators[@op]
   end
+
+  def is_operator
+    true
+  end
   
-  def evaluate(interpreter)
+  def is_list_op
+    false
+  end
+
+  def is_end_list
+    false
+  end
+
+  def precedence
+    @precedence
+  end
+
+  def evaluate(stack)
+    x = stack.pop
     case @op
     when '+'
-        posate(@right.evaluate(interpreter))
+      z = posate(x)
     when '-'
-        negate(@right.evaluate(interpreter))
+      z = negate(x)
     end
+    z
   end
 
   def posate(a)
-    f = NumericConstant.new(a.to_f)
-    i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
+    f = a.to_f
+    i = f.to_i
+    (f - i).abs < 1e-8 ? i : f
   end
   
   def negate(a)
-    f = NumericConstant.new(- a.to_f)
-    i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
+    f = -a.to_f
+    i = f.to_i
+    (f - i).abs < 1e-8 ? i : f
   end
   
   def to_s
@@ -34,103 +50,134 @@ class UnaryOperator < UnaryNode
   end
 end
 
-class ListOperator < ListNode
-  @@operators = { '(' => 8 }
+class ListOperator
+  @@operators = [ '(' ]
   def initialize(text)
-    # puts "DBG: ListOperator.initialize(#{text})"
-    super()
-    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
+    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.include?(text)
     @op = text
-    @precedence = @@operators[@op]
+    @precedence = 0
   end
   
-  def evaluate(interpreter)
-    # @left != nil ? @left.evaluate(interpreter) : @right.evaluate(interpreter)
-    evaluate_n(interpreter, 0)
+  def is_operator
+    true
   end
   
-  def evaluate_n(interpreter, index)
-    case index
-    when 0..list_count
-      @list[index].evaluate(interpreter)
-    else
-      0
-    end
+  def is_list_op
+    true
   end
 
-  def to_s
-    infix_string
+  def is_end_list
+    false
   end
-end
 
-class ListEndOperator < ListEndNode
-  @@operators = { ')' => 8 }
-  def initialize(text)
-    # puts "DBG: ListEndOperator.initialize(#{text})"
-    super()
-    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
-    @op = text
-    @precedence = @@operators[@op]
+  def precedence
+    @precedence
   end
-  
+
   def to_s
     @op
   end
 end
 
-class BinaryOperator < BinaryNode
-  @@operators = { '+' => 1, '-' => 1, '*' => 2, '/' => 2, '^' => 3 }
+class ListEndOperator
+  @@operators = [ ')' ]
   def initialize(text)
-    # puts "DBG: BinaryOperator.initialize(#{text})"
-    super
+    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.include?(text)
+    @op = text
+    @precedence = 0
+  end
+  
+  def is_operator
+    true
+  end
+  
+  def is_list_op
+    false
+  end
+
+  def is_end_list
+    true
+  end
+
+  def precedence
+    @precedence
+  end
+
+  def to_s
+    @op
+  end
+end
+
+class BinaryOperator
+  @@operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
+  def initialize(text)
     raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
     @op = text
     @precedence = @@operators[@op]
   end
   
-  def evaluate(interpreter)
+  def is_operator
+    true
+  end
+  
+  def is_list_op
+    false
+  end
+
+  def is_end_list
+    false
+  end
+
+  def precedence
+    @precedence
+  end
+
+  def evaluate(stack)
+    y = stack.pop
+    x = stack.pop
     case @op
     when '+'
-        add(@left.evaluate(interpreter), @right.evaluate(interpreter))
+      z = add(x, y)
     when '-'
-        subtract(@left.evaluate(interpreter), @right.evaluate(interpreter))
+      z = subtract(x, y)
     when '*'
-        multiply(@left.evaluate(interpreter), @right.evaluate(interpreter))
+      z = multiply(x, y)
     when '/'
-        divide(@left.evaluate(interpreter), @right.evaluate(interpreter))
+      z = divide(x, y)
     when '^'
-        power(@left.evaluate(interpreter), @right.evaluate(interpreter))
+      z = power(x, y)
     end
+    z
   end
 
   def add(a, b)
-    f = NumericConstant.new(a.to_f + b.to_f)
-    i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
+    f = a.to_f + b.to_f
+    i = f.to_i
+    (f - i).abs < 1e-8 ? i : f
   end
   
   def subtract(a, b)
-    f = NumericConstant.new(a.to_f - b.to_f)
-    i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
+    f = a.to_f - b.to_f
+    i = f.to_i
+    (f. - i).abs < 1e-8 ? i : f
   end
   
   def multiply(a, b)
-    f = NumericConstant.new(a.to_f * b.to_f)
-    i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
+    f = a.to_f * b.to_f
+    i = f.to_i
+    (f - i).abs < 1e-8 ? i : f
   end
   
   def divide(a, b)
-    f = NumericConstant.new(a.to_f / b.to_f)
-    i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
+    f = a.to_f / b.to_f
+    i = f.to_i
+    (f. - i).abs < 1e-8 ? i : f
   end
   
   def power(a, b)
-    f = NumericConstant.new(a.to_f ** b.to_f)
-    i = NumericConstant.new(f.to_i)
-    (f.evaluate(nil) - i.evaluate(nil)).abs < 1e-8 ? i : f
+    f = a.to_f ** b.to_f
+    i = f.to_i
+    (f - i).abs < 1e-8 ? i : f
   end
   
   def to_s
@@ -143,8 +190,25 @@ class BooleanOperator
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid boolean operator", caller) if !@@valid_operators.include?(text)
     @value = text
+    @precedence = 1
   end
   
+  def is_operator
+    true
+  end
+  
+  def is_list_op
+    false
+  end
+
+  def is_end_list
+    false
+  end
+
+  def precedence
+    @precedence
+  end
+
   def to_s
     @value
   end

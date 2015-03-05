@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 
 require 'BASICException'
-require 'Nodes'
 require 'Constants'
 require 'Operators'
 require 'Expressions'
@@ -223,8 +222,6 @@ class Print < AbstractLine
   public
   def initialize(line)
     super('PRINT')
-    # todo: allow subscripted variables
-    # todo: allow expressions
     item_list = split_args(line.sub(/^ +/, ''))
     # variable/constant, [separator, variable/constant]... [separator]
     @print_item_list = Array.new
@@ -439,7 +436,6 @@ end
 class Read < AbstractLine
   def initialize(line)
     super('READ')
-    # todo: allow subscripted variable
     @variable_list = line.gsub(/ /, '').split(',')
     # variable [comma, variable]...
     @variable_list.each do | text_item |
@@ -700,6 +696,34 @@ class Interpreter
       raise BASICException, "Unknown variable #{variable}", caller
     end
   end
+
+  def evaluate(compiled_expression)
+    stack = Array.new
+    compiled_expression.each do | token |
+      if token.is_operator then
+        x = token.evaluate(stack)
+        stack.push(x)
+      else
+      # if token is numeric expression, push onto stack
+        x = token.evaluate(self)
+        case x.class.to_s
+        when 'Fixnum'
+            z = 0
+        when 'Float'
+            z = 0
+        when 'NumericConstant'
+            x = x.evaluate(self)
+        when 'NumericExpression'
+            x = x.evaluate(self)
+        else throw "Unknown data type #{x.class}"
+        end
+        stack.push(x)
+      end
+    end
+    # should be only one item on stack
+    # that is the result
+    stack[0]
+  end
   
   def print_handler
     @printer
@@ -766,7 +790,6 @@ class Interpreter
         end
       else
         # immediate command -- execute
-        # todo: add PRINT, LET
         if cmd == 'LIST' then cmd_list
         elsif cmd == 'RUN' then cmd_run(false)
         elsif cmd == 'TRACE' then cmd_run(true)
