@@ -4,7 +4,6 @@ class VariableRef
     # regex = Regexp.new('^[A-Z]\d?(\(\d{1,2}\))?$')
     raise(BASICException, "'#{text}' is not a variable name", caller) if regex !~ text
     @var_name = text
-    @precedence = 0
   end
   
   def is_operator
@@ -17,10 +16,6 @@ class VariableRef
 
   def is_end_list
     false
-  end
-
-  def precedence
-    @precedence
   end
 
   def to_s
@@ -37,7 +32,6 @@ class NumericExpression
     rescue BASICException
       @value = NumericConstant.new(text)
     end
-    @precedence = 0
   end
   
   def is_operator
@@ -50,10 +44,6 @@ class NumericExpression
 
   def is_end_list
     false
-  end
-
-  def precedence
-    @precedence
   end
 
   def evaluate(interpreter)
@@ -85,7 +75,6 @@ class Function
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
     @name = text
-    @precedence = 0
   end
 
   def is_operator
@@ -98,10 +87,6 @@ class Function
 
   def is_end_list
     false
-  end
-
-  def precedence
-    @precedence
   end
 
   def evaluate(stack)
@@ -135,8 +120,9 @@ end
 class ArithmeticExpression
   def initialize(text)
     @uncompiled_expression = text
-    # split the  input infix string
-    words = text.split(/([\+\-\*\/\(\)\^])/)
+    # split the input infix string
+    regex = Regexp.new('([\+\-\*\/\(\)\^])')
+    words = text.split(regex)
     # puts "DBG: words=[#{words.join('] [')}]"
 
     tokens = Array.new
@@ -145,14 +131,14 @@ class ArithmeticExpression
     words.each do | word |
       # puts "DBG: word=#{word}"
       if word.size > 0 then
-        begin
-          tokens << ListOperator.new(word)
-          last_was_operand = false
-        rescue BASICException
-          begin
-            tokens << ListEndOperator.new(word)
+        if word == '(' then
+          tokens << '('
+          last_was_operand = true
+        else
+          if word == ')'
+            tokens << ')'
             last_was_operand = true
-          rescue BASICException
+          else
             begin
               if last_was_operand then
                 tokens << BinaryOperator.new(word)
@@ -186,30 +172,30 @@ class ArithmeticExpression
     # scan the token list from left to right
     tokens.each do | token |
       if token != '' then
-        # If the token is an operand, append it to the end of the output list
-        if not token.is_operator then
-          @compiled_expression << token
+        # If the token is a left parenthesis, push it on the opstack
+        if token == '(' then
+          operator_stack.push(token)
         else
-          # If the token is a left parenthesis, push it on the opstack
-          if token.is_list_op then
-            operator_stack.push(token)
+          # If the token is a right parenthesis,
+          # pop the opstack until the corresponding left parenthesis is removed
+          # Append each operator to the end of the output list
+          if token == ')' then
+            while operator_stack.size > 0 and operator_stack[-1] != '(' do
+              @compiled_expression << operator_stack.pop
+            end
+            operator_stack.pop
           else
-            # If the token is a right parenthesis,
-            # pop the opstack until the corresponding left parenthesis is removed
-            # Append each operator to the end of the output list
-            if token.is_end_list then
-              while operator_stack.size > 0 and not operator_stack[-1].is_list_op do
-                @compiled_expression << operator_stack.pop
-              end
-              operator_stack.pop
-            else
+            # If the token is an operand, append it to the end of the output list
+            if token.is_operator then
               # First remove any operators already on the stack that have higher or equal precedence
               # and append them to the output list
-              while operator_stack.size > 0 and operator_stack[-1].precedence >= token.precedence do
+              while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1].precedence >= token.precedence do
                 @compiled_expression << operator_stack.pop
               end
               # push the token onto the stack
               operator_stack.push(token)
+            else
+              @compiled_expression << token
             end
           end
         end
@@ -219,18 +205,6 @@ class ArithmeticExpression
     while operator_stack.size > 0 do
       @compiled_expression << operator_stack.pop
     end
-  end
-
-  def is_operator
-    false
-  end
-  
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    false
   end
 
   def evaluate(interpreter)

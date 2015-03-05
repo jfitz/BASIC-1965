@@ -50,64 +50,6 @@ class UnaryOperator
   end
 end
 
-class ListOperator
-  @@operators = [ '(' ]
-  def initialize(text)
-    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.include?(text)
-    @op = text
-    @precedence = 0
-  end
-  
-  def is_operator
-    true
-  end
-  
-  def is_list_op
-    true
-  end
-
-  def is_end_list
-    false
-  end
-
-  def precedence
-    @precedence
-  end
-
-  def to_s
-    @op
-  end
-end
-
-class ListEndOperator
-  @@operators = [ ')' ]
-  def initialize(text)
-    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.include?(text)
-    @op = text
-    @precedence = 0
-  end
-  
-  def is_operator
-    true
-  end
-  
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    true
-  end
-
-  def precedence
-    @precedence
-  end
-
-  def to_s
-    @op
-  end
-end
-
 class BinaryOperator
   @@operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
   def initialize(text)
