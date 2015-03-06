@@ -10,14 +10,6 @@ class VariableRef
     false
   end
 
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    false
-  end
-
   def to_s
     @var_name
   end
@@ -38,14 +30,6 @@ class NumericExpression
     false
   end
   
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    false
-  end
-
   def evaluate(interpreter)
     if !@variable.nil? then
       interpreter.get_value(@variable)
@@ -81,14 +65,6 @@ class Function
     true
   end
   
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    false
-  end
-
   def evaluate(stack)
     case @name
     when 'INT'
@@ -172,12 +148,12 @@ class ArithmeticExpression
     # scan the token list from left to right
     tokens.each do | token |
       if token != '' then
-        # If the token is a left parenthesis, push it on the opstack
+        # If the token is a left parenthesis, push it on the operator stack
         if token == '(' then
           operator_stack.push(token)
         else
           # If the token is a right parenthesis,
-          # pop the opstack until the corresponding left parenthesis is removed
+          # pop the operator stack until the corresponding left parenthesis is removed
           # Append each operator to the end of the output list
           if token == ')' then
             while operator_stack.size > 0 and operator_stack[-1] != '(' do
@@ -185,16 +161,16 @@ class ArithmeticExpression
             end
             operator_stack.pop
           else
-            # If the token is an operand, append it to the end of the output list
             if token.is_operator then
-              # First remove any operators already on the stack that have higher or equal precedence
-              # and append them to the output list
+              # remove operators already on the stack that have higher or equal precedence
+              # append them to the output list
               while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1].precedence >= token.precedence do
                 @compiled_expression << operator_stack.pop
               end
-              # push the token onto the stack
+              # push the operator onto the operator stack
               operator_stack.push(token)
             else
+              # the token is an operand, append it to the output list
               @compiled_expression << token
             end
           end

@@ -10,14 +10,6 @@ class UnaryOperator
     true
   end
   
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    false
-  end
-
   def precedence
     @precedence
   end
@@ -62,14 +54,6 @@ class BinaryOperator
     true
   end
   
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    false
-  end
-
   def precedence
     @precedence
   end
@@ -139,14 +123,6 @@ class BooleanOperator
     true
   end
   
-  def is_list_op
-    false
-  end
-
-  def is_end_list
-    false
-  end
-
   def precedence
     @precedence
   end
