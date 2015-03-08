@@ -128,11 +128,13 @@ class Function
     when 'EXP'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      Math.exp(x)
+      f = Math.exp(x)
+      float_to_possible_int(f)
     when 'LOG'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      x > 0 ? Math.log(x) : 0
+      f = x > 0 ? Math.log(x) : 0
+      float_to_possible_int(f)
     when 'ABS'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
@@ -140,7 +142,8 @@ class Function
     when 'SQR'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      x > 0 ? Math.sqrt(x) : 0
+      f = x > 0 ? Math.sqrt(x) : 0
+      float_to_possible_int(f)
     end
   end
 

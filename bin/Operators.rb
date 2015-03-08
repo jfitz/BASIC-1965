@@ -1,3 +1,8 @@
+def float_to_possible_int(f)
+    i = f.to_i
+    (f - i).abs < 1e-8 ? i : f
+end
+
 class UnaryOperator
   @@operators = { '+' => 5, '-' => 5 }
   def initialize(text)
@@ -31,14 +36,12 @@ class UnaryOperator
 
   def posate(a)
     f = a.to_f
-    i = f.to_i
-    (f - i).abs < 1e-8 ? i : f
+    float_to_possible_int(f)
   end
   
   def negate(a)
     f = -a.to_f
-    i = f.to_i
-    (f - i).abs < 1e-8 ? i : f
+    float_to_possible_int(f)
   end
   
   def to_s
@@ -86,32 +89,27 @@ class BinaryOperator
 
   def add(a, b)
     f = a.to_f + b.to_f
-    i = f.to_i
-    (f - i).abs < 1e-8 ? i : f
+    float_to_possible_int(f)
   end
   
   def subtract(a, b)
     f = a.to_f - b.to_f
-    i = f.to_i
-    (f. - i).abs < 1e-8 ? i : f
+    float_to_possible_int(f)
   end
   
   def multiply(a, b)
     f = a.to_f * b.to_f
-    i = f.to_i
-    (f - i).abs < 1e-8 ? i : f
+    float_to_possible_int(f)
   end
   
   def divide(a, b)
     f = a.to_f / b.to_f
-    i = f.to_i
-    (f. - i).abs < 1e-8 ? i : f
+    float_to_possible_int(f)
   end
   
   def power(a, b)
     f = a.to_f ** b.to_f
-    i = f.to_i
-    (f - i).abs < 1e-8 ? i : f
+    float_to_possible_int(f)
   end
   
   def to_s
