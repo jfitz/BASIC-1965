@@ -48,7 +48,7 @@ class PrintHandler
   end
 end
 
-class AbstractLine
+class AbstractStatement
   def initialize(keyword)
     @keyword = keyword
     @errors = Array.new
@@ -71,7 +71,7 @@ class AbstractLine
   end
 end
 
-class Unknown < AbstractLine
+class UnknownStatement < AbstractStatement
   def initialize(line)
     super('')
     @line = line
@@ -87,7 +87,7 @@ class Unknown < AbstractLine
   end
 end
 
-class Remark < AbstractLine
+class RemarkStatement < AbstractStatement
   def initialize(line)
     super('REM')
     @contents = line
@@ -102,7 +102,7 @@ class Remark < AbstractLine
   end
 end
 
-class Let < AbstractLine
+class LetStatement < AbstractStatement
   def initialize(line)
     super('LET')
     begin
@@ -126,7 +126,7 @@ class Let < AbstractLine
   end
 end
 
-class Input < AbstractLine
+class InputStatement < AbstractStatement
   def initialize(line)
     super('INPUT')
     # todo: allow subscripted variables
@@ -180,7 +180,7 @@ class Input < AbstractLine
   end
 end
 
-class If < AbstractLine
+class IfStatement < AbstractStatement
   def initialize(line)
     super('IF')
     parts = line.gsub(/ /, '').split(/\s*THEN\s*/)
@@ -202,7 +202,7 @@ class If < AbstractLine
   end
 end
 
-class Print < AbstractLine
+class PrintStatement < AbstractStatement
   private
   def split_args(text)
     args = Array.new
@@ -271,7 +271,7 @@ class Print < AbstractLine
   end
 end
 
-class Goto < AbstractLine
+class GotoStatement < AbstractStatement
   def initialize(line)
     super('GO TO')
     destination = line.sub(/ /, '')
@@ -292,7 +292,7 @@ class Goto < AbstractLine
   end
 end
 
-class Gosub < AbstractLine
+class GosubStatement < AbstractStatement
   def initialize(line)
     super('GOSUB')
     destination = line.sub(/ /, '')
@@ -314,7 +314,7 @@ class Gosub < AbstractLine
   end
 end
 
-class Return < AbstractLine
+class ReturnStatement < AbstractStatement
   def initialize
     super('RETURN')
   end
@@ -364,7 +364,7 @@ class ForNextControl
   end
 end
 
-class ForLine < AbstractLine
+class ForStatement < AbstractStatement
   def initialize(line)
     super('FOR')
     # parse control variable, "=", numeric_expression, "TO", numeric_expression, "STEP", numeric_expression
@@ -407,7 +407,7 @@ class ForLine < AbstractLine
   end
 end
 
-class NextLine < AbstractLine
+class NextStatement < AbstractStatement
   def initialize(line)
     super('NEXT')
     # parse control variable
@@ -437,7 +437,7 @@ class NextLine < AbstractLine
   end
 end
 
-class Read < AbstractLine
+class ReadStatement < AbstractStatement
   def initialize(line)
     super('READ')
     @variable_list = line.gsub(/ /, '').split(',')
@@ -463,7 +463,7 @@ class Read < AbstractLine
   end
 end
 
-class DataLine < AbstractLine
+class DataStatement < AbstractStatement
   def initialize(line)
     super('DATA')
     @data_list = line.gsub(/ /, '').split(',')
@@ -493,7 +493,7 @@ class DataLine < AbstractLine
   end
 end
 
-class Stop < AbstractLine
+class StopStatement < AbstractStatement
   def initialize
     super('STOP')
   end
@@ -507,7 +507,7 @@ class Stop < AbstractLine
   end
 end
 
-class End < AbstractLine
+class EndStatement < AbstractStatement
   def initialize
     super('END')
   end
@@ -538,23 +538,23 @@ class Interpreter
     # strip leading blanks
     line_text = m.post_match.sub(/^ +/, '')
     # pick out the keyword
-    object = Unknown.new(line_text)
+    object = UnknownStatement.new(line_text)
       #todo: RESTORE
-    if line_text[0..2] == 'REM' then object = Remark.new(line_text[3..-1])
-    elsif line_text[0..2] == 'LET' then object = Let.new(line_text[3..-1])
-    elsif line_text[0..4] == 'INPUT' then object = Input.new(line_text[5..-1])
-    elsif line_text[0..1] == 'IF' then object = If.new(line_text[2..-1])
-    elsif line_text[0..4] == 'PRINT' then object = Print.new(line_text[5..-1])
-    elsif line_text[0..4] == 'GO TO' then object = Goto.new(line_text[5..-1])
-    elsif line_text[0..3] == 'GOTO' then object = Goto.new(line_text[4..-1])
-    elsif line_text[0..4] == 'GOSUB' then object = Gosub.new(line_text[5..-1])
-    elsif line_text[0..2] == 'FOR' then object = ForLine.new(line_text[3..-1])
-    elsif line_text[0..3] == 'NEXT' then object = NextLine.new(line_text[4..-1])
-    elsif line_text[0..5] == 'RETURN' then object = Return.new
-    elsif line_text[0..3] == 'READ' then object = Read.new(line_text[4..-1])
-    elsif line_text[0..3] == 'DATA' then object = DataLine.new(line_text[4..-1])
-    elsif line_text[0..3] == 'STOP' then object = Stop.new
-    elsif line_text[0..2] == 'END' then object = End.new
+    if line_text[0..2] == 'REM' then object = RemarkStatement.new(line_text[3..-1])
+    elsif line_text[0..2] == 'LET' then object = LetStatement.new(line_text[3..-1])
+    elsif line_text[0..4] == 'INPUT' then object = InputStatement.new(line_text[5..-1])
+    elsif line_text[0..1] == 'IF' then object = IfStatement.new(line_text[2..-1])
+    elsif line_text[0..4] == 'PRINT' then object = PrintStatement.new(line_text[5..-1])
+    elsif line_text[0..4] == 'GO TO' then object = GotoStatement.new(line_text[5..-1])
+    elsif line_text[0..3] == 'GOTO' then object = GotoStatement.new(line_text[4..-1])
+    elsif line_text[0..4] == 'GOSUB' then object = GosubStatement.new(line_text[5..-1])
+    elsif line_text[0..2] == 'FOR' then object = ForStatement.new(line_text[3..-1])
+    elsif line_text[0..3] == 'NEXT' then object = NextStatement.new(line_text[4..-1])
+    elsif line_text[0..5] == 'RETURN' then object = ReturnStatement.new
+    elsif line_text[0..3] == 'READ' then object = ReadStatement.new(line_text[4..-1])
+    elsif line_text[0..3] == 'DATA' then object = DataStatement.new(line_text[4..-1])
+    elsif line_text[0..3] == 'STOP' then object = StopStatement.new
+    elsif line_text[0..2] == 'END' then object = EndStatement.new
     end
     [line_num, object]
   end
