@@ -10,6 +10,10 @@ class UnaryOperator
     true
   end
   
+  def is_function
+    false
+  end
+  
   def precedence
     @precedence
   end
@@ -52,6 +56,10 @@ class BinaryOperator
   
   def is_operator
     true
+  end
+  
+  def is_function
+    false
   end
   
   def precedence
@@ -121,6 +129,10 @@ class BooleanOperator
   
   def is_operator
     true
+  end
+  
+  def is_function
+    false
   end
   
   def precedence

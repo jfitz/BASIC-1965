@@ -10,6 +10,10 @@ class VariableRef
     false
   end
 
+  def is_function
+    false
+  end
+  
   def to_s
     @var_name
   end
@@ -27,6 +31,10 @@ class NumericExpression
   end
   
   def is_operator
+    false
+  end
+  
+  def is_function
     false
   end
   
@@ -54,33 +62,85 @@ class NumericExpression
   end
 end
 
+class ArgumentCounter
+  def initialize(value)
+    @value = value
+  end
+
+  def value
+    @value
+  end
+
+  def is_operator
+    false
+  end
+
+  def is_function
+    false
+  end
+
+  def evaluate(interpreter)
+    self
+  end
+
+  def to_s
+    "AC:#{@value}"
+  end
+end
+
 class Function
-  @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG' ]
+  @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR' ]
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
     @name = text
   end
 
   def is_operator
+    false
+  end
+  
+  def is_function
     true
+  end
+
+  def precedence
+    5
   end
   
   def evaluate(stack)
+    num_args = stack.pop
     case @name
     when 'INT'
+      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
       x.to_i
     when 'RND'
-      x = stack.pop
+      if num_args.value == 0 then
+        x = 100
+      elsif num_args.value == 1 then
+        x = stack.pop
+      else
+        raise(BASICException, "Function #{@name} wrong number of arguments", caller)
+      end
       upper_bound = x.truncate.to_f
       upper_bound = 1 if upper_bound <= 0
       $randomizer.rand(upper_bound)
     when 'EXP'
+      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
       Math.exp(x)
     when 'LOG'
+      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
       x > 0 ? Math.log(x) : 0
+    when 'ABS'
+      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      x = stack.pop
+      x >= 0 ? x : -x
+    when 'SQR'
+      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      x = stack.pop
+      x > 0 ? Math.sqrt(x) : 0
     end
   end
 
@@ -140,9 +200,9 @@ class ArithmeticExpression
       end
     end
 
-    # stack for operators
     operator_stack = Array.new
-    # list for compiled expression (postfix)
+    arg_count_stack = Array.new
+    arg_count = ArgumentCounter.new(0)
     @compiled_expression = Array.new
 
     # scan the token list from left to right
@@ -157,18 +217,34 @@ class ArithmeticExpression
           # Append each operator to the end of the output list
           if token == ')' then
             while operator_stack.size > 0 and operator_stack[-1] != '(' do
-              @compiled_expression << operator_stack.pop
+              op = operator_stack.pop
+              if op.is_function
+                @compiled_expression << arg_count
+              end
+              @compiled_expression << op
             end
-            operator_stack.pop
+            operator_stack.pop  # remove the '('
           else
-            if token.is_operator then
+            if arg_count.value == 0 then
+              arg_count = ArgumentCounter.new(1)
+            end
+            if token.is_operator or token.is_function then
               # remove operators already on the stack that have higher or equal precedence
               # append them to the output list
               while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1].precedence >= token.precedence do
-                @compiled_expression << operator_stack.pop
+                op = operator_stack.pop
+                if op.is_function
+                  @compiled_expression << arg_count
+                  arg_count = arg_count_stack.pop
+                end
+                @compiled_expression << op
               end
               # push the operator onto the operator stack
               operator_stack.push(token)
+              if token.is_function then
+                arg_count_stack.push(arg_count)
+                arg_count = ArgumentCounter.new(0)
+              end
             else
               # the token is an operand, append it to the output list
               @compiled_expression << token
@@ -179,7 +255,11 @@ class ArithmeticExpression
     end
     # Any operators still on the stack can be removed and appended to the end of the output list
     while operator_stack.size > 0 do
-      @compiled_expression << operator_stack.pop
+      op = operator_stack.pop
+      if op.is_function
+        @compiled_expression << arg_count
+      end
+      @compiled_expression << op
     end
   end
 

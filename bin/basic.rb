@@ -700,24 +700,28 @@ class Interpreter
   def evaluate(compiled_expression)
     stack = Array.new
     compiled_expression.each do | token |
-      if token.is_operator then
+      if token.is_operator or token.is_function then
         x = token.evaluate(stack)
         stack.push(x)
       else
-      # if token is numeric expression, push onto stack
-        x = token.evaluate(self)
-        case x.class.to_s
-        when 'Fixnum'
-            z = 0
-        when 'Float'
-            z = 0
-        when 'NumericConstant'
-            x = x.evaluate(self)
-        when 'NumericExpression'
-            x = x.evaluate(self)
-        else throw "Unknown data type #{x.class}"
+        if token.class.to_s == 'ArgumentCounter' then
+          stack.push(token)
+        else
+        # if token is numeric expression, push onto stack
+          x = token.evaluate(self)
+          case x.class.to_s
+          when 'Fixnum'
+              z = 0
+          when 'Float'
+              z = 0
+          when 'NumericConstant'
+              x = x.evaluate(self)
+          when 'NumericExpression'
+              x = x.evaluate(self)
+          else throw "Unknown data type #{x.class}"
+          end
+          stack.push(x)
         end
-        stack.push(x)
       end
     end
     # should be only one item on stack
