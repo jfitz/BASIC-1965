@@ -57,6 +57,10 @@ class AbstractLine
   def errors
     @errors
   end
+
+  def pre_execute(interpreter)
+    0
+  end
   
   def execute(interpreter)
     if (@errors.size == 0) then
@@ -476,12 +480,16 @@ class DataLine < AbstractLine
   def to_s
     @keyword + ' ' + @data_list.join(', ')
   end
-  
-  def execute_cmd(interpreter)
+
+  def pre_execute(interpreter)
     @data_list.each do | text_item |
       x = NumericConstant.new(text_item)
       interpreter.store_data(x.evaluate(interpreter))
     end
+  end
+  
+  def execute_cmd(interpreter)
+    0
   end
 end
 
@@ -576,6 +584,12 @@ class Interpreter
     @variables = Hash.new
     line_numbers = @program_lines.keys.sort
     if line_numbers.size > 0 then
+      # phase 1: do all initialization (store values in DATA lines)
+      line_numbers.each do | line_number |
+        line = @program_lines[line_number]
+        line.pre_execute(self)
+      end
+      # phase 2: run each command
       # start with the first line number
       @current_line_number = line_numbers[0]
       @running = true
