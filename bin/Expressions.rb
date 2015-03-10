@@ -13,52 +13,13 @@ class VariableRef
   def is_function
     false
   end
+
+  def evaluate(interpreter)
+    interpreter.get_value(@var_name)
+  end
   
   def to_s
     @var_name
-  end
-end
-
-class NumericExpression
-  def initialize(text)
-    @variable = nil
-    @value = nil
-    begin
-      @variable = VariableRef.new(text)
-    rescue BASICException
-      @value = NumericConstant.new(text)
-    end
-  end
-  
-  def is_operator
-    false
-  end
-  
-  def is_function
-    false
-  end
-  
-  def evaluate(interpreter)
-    if !@variable.nil? then
-      interpreter.get_value(@variable)
-    else
-      @value.evaluate(interpreter)
-    end
-  end
-  
-  def to_s
-    @variable.nil? ? @value.to_s : @variable.to_s
-  end
-  
-  def six_digits(value)
-    decimals = 5 - (value != 0 ? Math.log(value.abs,10).to_i : 0)
-    value.round(decimals)
-  end
-  
-  def to_formatted_s(interpreter)
-    vvalue = interpreter.get_value(@variable)
-    formatted = vvalue.class.to_s == 'Float' ? six_digits(vvalue).to_s : vvalue.to_s
-    @variable.nil? ? @value.value : ' ' + formatted
   end
 end
 
@@ -191,10 +152,15 @@ class ArithmeticExpression
                 last_was_operand = true
               rescue BASICException
                 begin
-                  tokens << NumericExpression.new(word)
+                  tokens << NumericConstant.new(word)
                   last_was_operand = true
-                rescue
-                  raise BASICException, "'#{word}' is not a value or operator", caller
+                rescue BASICException
+                  begin
+                    tokens << VariableRef.new(word)
+                    last_was_operand = true
+                  rescue
+                    raise BASICException, "'#{word}' is not a value or operator", caller
+                  end
                 end
               end
             end

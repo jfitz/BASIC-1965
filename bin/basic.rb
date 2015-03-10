@@ -240,7 +240,7 @@ class PrintStatement < AbstractStatement
           print_item.sub!(/ +$/, '')
           var_name = PrintableExpression.new(print_item)
         rescue BASICException
-          @errors << "Invalid expression #{print_item}"
+          @errors << "Invalid expression #{print_item} class: #{print_item.class}"
         end
       end
     end
@@ -730,7 +730,7 @@ class Interpreter
               z = 0
           when 'NumericConstant'
               x = x.evaluate(self)
-          when 'NumericExpression'
+          when 'VariableRef'
               x = x.evaluate(self)
           else throw "Unknown data type #{x.class}"
           end

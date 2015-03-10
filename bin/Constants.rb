@@ -9,6 +9,14 @@ class NumericConstant
     @precedence = 0
   end
 
+  def is_operator
+    false
+  end
+
+  def is_function
+    false
+  end
+  
   def evaluate(interpreter)
     @value
   end
