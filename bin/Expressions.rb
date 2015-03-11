@@ -50,7 +50,7 @@ class ArgumentCounter
 end
 
 class Function
-  @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR' ]
+  @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR', 'SIN', 'COS' ]
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
     @name = text
@@ -104,6 +104,16 @@ class Function
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
       f = x > 0 ? Math.sqrt(x) : 0
+      float_to_possible_int(f)
+    when 'SIN'
+      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      x = stack.pop
+      f = x > 0 ? Math.sin(x) : 0
+      float_to_possible_int(f)
+    when 'COS'
+      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      x = stack.pop
+      f = x > 0 ? Math.cos(x) : 0
       float_to_possible_int(f)
     end
   end
