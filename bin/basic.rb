@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 
+require 'benchmark'
 require 'BASICException'
 require 'Constants'
 require 'Operators'
@@ -837,7 +838,15 @@ class Interpreter
       else
         # immediate command -- execute
         if cmd == 'LIST' then cmd_list
-        elsif cmd == 'RUN' then cmd_run(false)
+        elsif cmd == 'RUN' then
+          timing = Benchmark.measure { cmd_run(false) }
+          user_time = timing.utime + timing.cutime
+          sys_time = timing.stime + timing.cstime
+          puts
+          puts "CPU time:"
+          puts " user: #{user_time.round(2)}"
+          puts " system: #{sys_time.round(2)}"
+          puts
         elsif cmd == 'TRACE' then cmd_run(true)
         elsif cmd == 'NEW' then cmd_new
         elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
@@ -852,30 +861,40 @@ class Interpreter
     puts "BASIC-1965 ended"
   end
   
-  def load_and_run(filename, trace_flag)
+  def load_and_run(filename, trace_flag, timing_flag)
     puts "BASIC-1965 interpreter version -1"
     puts
     @program_lines = Hash.new
-    if cmd_load(filename) then
-      cmd_run(trace_flag)
-    end
+    timing = Benchmark.measure { cmd_run(trace_flag) if cmd_load(filename) }
+    user_time = timing.utime + timing.cutime
+    sys_time = timing.stime + timing.cstime
     puts
     puts "BASIC-1965 ended"
+    if timing_flag then
+      puts "CPU time:"
+      puts " user: #{user_time.round(2)}"
+      puts " system: #{sys_time.round(2)}"
+    end
   end
 end
 
 interpreter = Interpreter.new
 if ARGV.size > 0 then
-  filename = ARGV[0]
+  filename = ''
+  timing_flag = true
   trace_flag = false
-  until ARGV.empty? do
-    trace_flag = true if ARGV[0] == '-trace'
-    ARGV.shift
+  ARGV.each do | arg |
+    if arg[0] == '-' then
+      trace_flag = true if arg == '-trace'
+      timing_flag = false if arg == '-notiming'
+    else
+      filename = arg if filename == '' #take only the first filename
+    end
   end
   # set_trace_func proc { | event, file, line, id, binding, classname |
   #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include?(classname.to_s)
   # }
-  interpreter.load_and_run(filename, trace_flag)
+  interpreter.load_and_run(filename, trace_flag, timing_flag)
 else
   interpreter.go
 end
