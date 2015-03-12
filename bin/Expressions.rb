@@ -69,12 +69,15 @@ class Function
   end
   
   def evaluate(stack)
+    result = 0
     num_args = stack.pop
     case @name
     when 'INT'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      x.to_i
+      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      result = xv.to_i
     when 'RND'
       if num_args.value == 0 then
         x = 100
@@ -85,37 +88,50 @@ class Function
       end
       upper_bound = x.truncate.to_f
       upper_bound = 1 if upper_bound <= 0
-      $randomizer.rand(upper_bound)
+      result = $randomizer.rand(upper_bound)
     when 'EXP'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      f = Math.exp(x)
-      float_to_possible_int(f)
+      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      f = Math.exp(xv)
+      result = float_to_possible_int(f)
     when 'LOG'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      f = x > 0 ? Math.log(x) : 0
-      float_to_possible_int(f)
+      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      f = xv > 0 ? Math.log(xv) : 0
+      result = float_to_possible_int(f)
     when 'ABS'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      x >= 0 ? x : -x
+      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      result = xv >= 0 ? xv : -xv
     when 'SQR'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      f = x > 0 ? Math.sqrt(x) : 0
-      float_to_possible_int(f)
+      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      f = xv > 0 ? Math.sqrt(xv) : 0
+      result = float_to_possible_int(f)
     when 'SIN'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      f = x > 0 ? Math.sin(x) : 0
-      float_to_possible_int(f)
+      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      f = xv > 0 ? Math.sin(xv) : 0
+      result = float_to_possible_int(f)
     when 'COS'
       raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
       x = stack.pop
-      f = x > 0 ? Math.cos(x) : 0
-      float_to_possible_int(f)
+      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      f = xv > 0 ? Math.cos(xv) : 0
+      result = float_to_possible_int(f)
     end
+    NumericConstant.new(result)
   end
 
   def to_s
@@ -253,20 +269,20 @@ end
 
 class PrintableExpression
   def initialize(text)
-    @numeric_expression = nil
+    @arithmetic_expression = nil
     @text_constant = nil
     begin
       @text_constant = TextConstant.new(text)
     rescue BASICException => message
-      @numeric_expression = ArithmeticExpression.new(text)
+      @arithmetic_expression = ArithmeticExpression.new(text)
     end
   end
   
   def to_s
-    if @numeric_expression.nil? then
+    if @arithmetic_expression.nil? then
       @text_constant.to_s
     else
-      @numeric_expression.to_s
+      @arithmetic_expression.to_s
     end
   end
   
@@ -276,12 +292,11 @@ class PrintableExpression
   end
   
   def to_formatted_s(interpreter)
-    if @numeric_expression.nil? then
+    if @arithmetic_expression.nil? then
       @text_constant.to_formatted_s(interpreter)
     else
-      vvalue = @numeric_expression.evaluate(interpreter)
-      formatted = vvalue.class.to_s == 'Float' ? six_digits(vvalue).to_s : vvalue.to_s
-      vvalue < 0 ? formatted : ' ' + formatted
+      numeric_constant = @arithmetic_expression.evaluate(interpreter)
+      numeric_constant.to_formatted_s(interpreter)
     end
   end
 end
@@ -298,17 +313,17 @@ class BooleanExpression
   def evaluate(interpreter)
     case @operator.to_s
     when '='
-        @a.evaluate(interpreter) == @b.evaluate(interpreter)
+        @a.evaluate(interpreter).to_v == @b.evaluate(interpreter).to_v
     when '<>'
-        @a.evaluate(interpreter) != @b.evaluate(interpreter)
+        @a.evaluate(interpreter).to_v != @b.evaluate(interpreter).to_v
     when '<'
-        @a.evaluate(interpreter) < @b.evaluate(interpreter)
+        @a.evaluate(interpreter).to_v < @b.evaluate(interpreter).to_v
     when '>'
-        @a.evaluate(interpreter) > @b.evaluate(interpreter)
+        @a.evaluate(interpreter).to_v > @b.evaluate(interpreter).to_v
     when '<='
-        @a.evaluate(interpreter) <= @b.evaluate(interpreter)
+        @a.evaluate(interpreter).to_v <= @b.evaluate(interpreter).to_v
     when '>='
-        @a.evaluate(interpreter) >= @b.evaluate(interpreter)
+        @a.evaluate(interpreter).to_v >= @b.evaluate(interpreter).to_v
     end
   end
   

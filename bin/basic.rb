@@ -257,16 +257,23 @@ class PrintStatement < AbstractStatement
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
     @print_item_list.each do | print_item |
+
       name = print_item['variable']
-      printer.print_item name.to_formatted_s(interpreter) if not name.nil?
+      if not name.nil?
+        v = name.to_formatted_s(interpreter)
+        printer.print_item v
+      end
+
       separator = print_item['carriage']
       case separator
       when ';'
         printer.null
       when ','
         printer.tab
-      else printer.newline
+      else
+        printer.newline
       end
+
     end
   end
 end
@@ -330,6 +337,15 @@ end
 
 class ForNextControl
   def initialize(control_variable_name, loop_start_number, start_value, end_value, step_value)
+    if start_value.class.to_s != 'Fixnum' and start_value.class.to_s != 'Float' then
+      raise Exception, "Invalid start value #{start_value} #{start_value.class}", caller
+    end
+    if end_value.class.to_s != 'Fixnum' and end_value.class.to_s != 'Float' then
+      raise Exception, "Invalid end value #{end_value} #{end_value.class}", caller
+    end
+    if step_value.class.to_s != 'Fixnum' and step_value.class.to_s != 'Float' then
+      raise Exception, "Invalid step value #{step_value} #{step_value.class}", caller
+    end
     @control_variable_name = control_variable_name
     @loop_start_number = loop_start_number
     @start_value = start_value
@@ -356,9 +372,9 @@ class ForNextControl
   end
   
   def terminated?(interpreter)
-    current_value = interpreter.get_value(@control_variable_name)
-    if @step_value > 0 then (current_value + @step_value > end_value)
-    elsif @step_value < 0 then (current_value + @step_value < end_value)
+    current_value = interpreter.get_value(@control_variable_name).to_v
+    if @step_value > 0 then (current_value + @step_value > @end_value)
+    elsif @step_value < 0 then (current_value + @step_value < @end_value)
     else true
     end
   end
@@ -385,7 +401,7 @@ class ForStatement < AbstractStatement
       @step_value = ArithmeticExpression.new(parts[1])
     else
       @has_step_value = false
-      @step_value = NumericConstant.new(1)
+      @step_value = ArithmeticExpression.new('1')
     end
   end
   
@@ -398,10 +414,10 @@ class ForStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
-    from_value = @start_value.evaluate(interpreter)
+    from_value = @start_value.evaluate(interpreter).to_v
     interpreter.set_value(@control_variable, from_value)
-    to_value = @end_value.evaluate(interpreter)
-    step_value = @step_value.evaluate(interpreter)
+    to_value = @end_value.evaluate(interpreter).to_v
+    step_value = @step_value.evaluate(interpreter).to_v
     fornext_control = ForNextControl.new(@control_variable.to_s, interpreter.get_next_line, from_value, to_value, step_value)
     interpreter.set_fornext(fornext_control)
   end
@@ -696,16 +712,32 @@ class Interpreter
       if !@variables.has_key?(variable.to_s) then
         @variables[variable.to_s] = 0
       end
-      @variables[variable.to_s]
+      x = @variables[variable.to_s]
+      case x.class.to_s
+      when 'Fixnum'
+        NumericConstant.new(x)
+      when 'Float'
+        NumericConstant.new(x)
+      else
+        raise Exception, "Invalid variable value type #{x}", caller
+      end
     rescue
       raise BASICException, "Unknown variable #{variable}", caller
     end
   end
   
   def set_value(variable, value)
+    c = value.class.to_s
+    if c != 'Fixnum' and c != 'Float' and c!= 'NumericConstant' then
+      raise Exception, "Bad variable value type #{c}", caller
+    end
     begin
       VariableRef.new(variable.to_s)
-      @variables[variable.to_s] = value
+      if c == 'NumericConstant' then
+        @variables[variable.to_s] = value.to_v
+      else
+        @variables[variable.to_s] = value
+      end
     rescue
       raise BASICException, "Unknown variable #{variable}", caller
     end
@@ -722,14 +754,10 @@ class Interpreter
           stack.push(token)
         else
         # if token is numeric expression, push onto stack
-          x = token.evaluate(self)
+          x = token
           case x.class.to_s
-          when 'Fixnum'
-              z = 0
-          when 'Float'
-              z = 0
           when 'NumericConstant'
-              x = x.evaluate(self)
+              z = 0
           when 'VariableRef'
               x = x.evaluate(self)
           else throw "Unknown data type #{x.class}"

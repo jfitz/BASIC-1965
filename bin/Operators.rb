@@ -31,7 +31,7 @@ class UnaryOperator
     when '-'
       z = negate(x)
     end
-    z
+    NumericConstant.new(z)
   end
 
   def posate(a)
@@ -84,7 +84,7 @@ class BinaryOperator
     when '^'
       z = power(x, y)
     end
-    z
+    NumericConstant.new(z)
   end
 
   def add(a, b)
