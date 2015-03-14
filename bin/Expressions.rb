@@ -14,6 +14,10 @@ class VariableRef
     false
   end
 
+  def is_terminal
+    false
+  end
+  
   def evaluate(interpreter)
     interpreter.get_value(@var_name)
   end
@@ -64,6 +68,10 @@ class Function
     true
   end
 
+  def is_terminal
+    false
+  end
+  
   def precedence
     5
   end
@@ -194,6 +202,7 @@ class ArithmeticExpression
         end
       end
     end
+    tokens << TerminalOperator.new
 
     operator_stack = Array.new
     arg_count_stack = Array.new
@@ -235,10 +244,12 @@ class ArithmeticExpression
                 @compiled_expression << op
               end
               # push the operator onto the operator stack
-              operator_stack.push(token)
-              if token.is_function then
-                arg_count_stack.push(arg_count)
-                arg_count = ArgumentCounter.new(0)
+              if not token.is_terminal then
+                operator_stack.push(token)
+                if token.is_function then
+                  arg_count_stack.push(arg_count)
+                  arg_count = ArgumentCounter.new(0)
+                end
               end
             else
               # the token is an operand, append it to the output list
@@ -247,14 +258,6 @@ class ArithmeticExpression
           end
         end
       end
-    end
-    # Any operators still on the stack can be removed and appended to the end of the output list
-    while operator_stack.size > 0 do
-      op = operator_stack.pop
-      if op.is_function
-        @compiled_expression << arg_count
-      end
-      @compiled_expression << op
     end
   end
 

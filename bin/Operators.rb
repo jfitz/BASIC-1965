@@ -23,6 +23,10 @@ class UnaryOperator
     @precedence
   end
 
+  def is_terminal
+    false
+  end
+  
   def evaluate(stack)
     x = stack.pop
     case @op
@@ -69,6 +73,10 @@ class BinaryOperator
     @precedence
   end
 
+  def is_terminal
+    false
+  end
+  
   def evaluate(stack)
     y = stack.pop
     x = stack.pop
@@ -137,8 +145,32 @@ class BooleanOperator
     @precedence
   end
 
+  def is_terminal
+    false
+  end
+  
   def to_s
     @value
   end
+end
+
+class TerminalOperator
+  
+  def is_operator
+    true
+  end
+  
+  def is_function
+    false
+  end
+
+  def is_terminal
+    true
+  end
+  
+  def precedence
+    0
+  end
+
 end
 
