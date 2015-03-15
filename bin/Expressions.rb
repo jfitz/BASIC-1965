@@ -1,8 +1,7 @@
 class VariableRef
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
-    # regex = Regexp.new('^[A-Z]\d?(\(\d{1,2}\))?$')
-    raise(BASICException, "'#{text}' is not a variable name", caller) if regex !~ text
+    raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
     @var_name = text
   end
   
@@ -319,19 +318,21 @@ class BooleanExpression
   end
   
   def evaluate(interpreter)
+    av = @a.evaluate(interpreter).to_v
+    bv = @b.evaluate(interpreter).to_v
     case @operator.to_s
     when '='
-        @a.evaluate(interpreter).to_v == @b.evaluate(interpreter).to_v
+        av == bv
     when '<>'
-        @a.evaluate(interpreter).to_v != @b.evaluate(interpreter).to_v
+        av != bv
     when '<'
-        @a.evaluate(interpreter).to_v < @b.evaluate(interpreter).to_v
+        av < bv
     when '>'
-        @a.evaluate(interpreter).to_v > @b.evaluate(interpreter).to_v
+        av > bv
     when '<='
-        @a.evaluate(interpreter).to_v <= @b.evaluate(interpreter).to_v
+        av <= bv
     when '>='
-        @a.evaluate(interpreter).to_v >= @b.evaluate(interpreter).to_v
+        av >= bv
     end
   end
   
