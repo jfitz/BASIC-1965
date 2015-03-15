@@ -209,13 +209,16 @@ class ArithmeticExpression
     arg_count = ArgumentCounter.new(0)
     @compiled_expression = Array.new
 
+    last_was_function = false
     # scan the token list from left to right
     tokens.each do | token |
       if token != '' then
         # If the token is a left parenthesis, push it on the operator stack
         if token == '(' then
           operator_stack.push(token)
+          last_was_function = false
         else
+          raise(BASICException, "Function requires parentheses", caller) if last_was_function
           # If the token is a right parenthesis,
           # pop the operator stack until the corresponding left parenthesis is removed
           # Append each operator to the end of the output list
@@ -228,10 +231,8 @@ class ArithmeticExpression
               @compiled_expression << op
             end
             operator_stack.pop  # remove the '('
+            last_was_function = false
           else
-            if arg_count.value == 0 then
-              arg_count = ArgumentCounter.new(1)
-            end
             if token.is_operator or token.is_function then
               # remove operators already on the stack that have higher or equal precedence
               # append them to the output list
@@ -253,8 +254,12 @@ class ArithmeticExpression
               end
             else
               # the token is an operand, append it to the output list
+              if arg_count.value == 0 then
+                arg_count = ArgumentCounter.new(1)
+              end
               @compiled_expression << token
             end
+            last_was_function = token.is_function
           end
         end
       end
