@@ -19,6 +19,14 @@ class NumericConstant
     false
   end
   
+  def is_terminal
+    false
+  end
+  
+  def is_variable
+    false
+  end
+  
   def evaluate(interpreter)
     @value
   end
@@ -58,6 +66,22 @@ class TextConstant
     @precedence = 0
   end
 
+  def is_operator
+    false
+  end
+
+  def is_function
+    false
+  end
+  
+  def is_terminal
+    false
+  end
+  
+  def is_variable
+    false
+  end
+  
   def value
     @value
   end

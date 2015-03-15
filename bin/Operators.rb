@@ -19,14 +19,18 @@ class UnaryOperator
     false
   end
   
-  def precedence
-    @precedence
+  def is_variable
+    false
   end
-
+  
   def is_terminal
     false
   end
   
+  def precedence
+    @precedence
+  end
+
   def evaluate(stack)
     x = stack.pop
     case @op
@@ -69,14 +73,18 @@ class BinaryOperator
     false
   end
   
-  def precedence
-    @precedence
+  def is_variable
+    false
   end
-
+  
   def is_terminal
     false
   end
   
+  def precedence
+    @precedence
+  end
+
   def evaluate(stack)
     y = stack.pop
     x = stack.pop
@@ -141,14 +149,18 @@ class BooleanOperator
     false
   end
   
-  def precedence
-    @precedence
+  def is_variable
+    false
   end
-
+  
   def is_terminal
     false
   end
   
+  def precedence
+    @precedence
+  end
+
   def to_s
     @value
   end
@@ -166,6 +178,10 @@ class TerminalOperator
 
   def is_terminal
     true
+  end
+  
+  def is_variable
+    false
   end
   
   def precedence

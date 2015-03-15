@@ -136,7 +136,7 @@ class InputStatement < AbstractStatement
     # variable [comma, variable]...
     @variable_list.each do | text_item |
       begin
-        var_name = VariableRef.new(text_item)
+        var_name = VariableValue.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -388,7 +388,7 @@ class ForStatement < AbstractStatement
     parts = line.gsub(/ /, '').split('=', 2)
     raise(BASICException, "Syntax error", caller) if parts.size != 2
     begin
-      @control_variable = VariableRef.new(parts[0])
+      @control_variable = VariableValue.new(parts[0])
     rescue BASICException => message
       @errors << message
     end
@@ -430,7 +430,7 @@ class NextStatement < AbstractStatement
     # parse control variable
     @control_variable = nil
     begin
-      @control_variable = VariableRef.new(line.gsub(/ /, ''))
+      @control_variable = VariableValue.new(line.gsub(/ /, ''))
     rescue BASICException => message
       @errors << message
       @boolean_expression = line
@@ -461,7 +461,7 @@ class ReadStatement < AbstractStatement
     # variable [comma, variable]...
     @variable_list.each do | text_item |
       begin
-        var_name = VariableRef.new(text_item)
+        var_name = VariableValue.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -474,7 +474,7 @@ class ReadStatement < AbstractStatement
   
   def execute_cmd(interpreter)
     @variable_list.each do | text_item |
-      var_name = VariableRef.new(text_item)
+      var_name = VariableValue.new(text_item)
       interpreter.set_value(var_name, interpreter.read_data)
     end
   end
@@ -709,7 +709,7 @@ class Interpreter
   
   def get_value(variable)
     begin
-      VariableRef.new(variable.to_s)
+      VariableValue.new(variable.to_s)
       if !@variables.has_key?(variable.to_s) then
         @variables[variable.to_s] = 0
       end
@@ -733,7 +733,7 @@ class Interpreter
       raise Exception, "Bad variable value type #{c}", caller
     end
     begin
-      VariableRef.new(variable.to_s)
+      VariableValue.new(variable.to_s)
       if c == 'NumericConstant' then
         @variables[variable.to_s] = value.to_v
       else
@@ -744,7 +744,7 @@ class Interpreter
     end
   end
 
-  def evaluate(compiled_expression)
+  def evaluate_r_value(compiled_expression)
     stack = Array.new
     compiled_expression.each do | token |
       if token.is_operator or token.is_function then
@@ -759,7 +759,7 @@ class Interpreter
           case x.class.to_s
           when 'NumericConstant'
               z = 0
-          when 'VariableRef'
+          when 'VariableValue'
               x = x.evaluate(self)
           else throw "Unknown data type #{x.class}"
           end

@@ -1,4 +1,4 @@
-class VariableRef
+class VariableValue
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
     raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
@@ -15,6 +15,14 @@ class VariableRef
 
   def is_terminal
     false
+  end
+
+  def is_variable
+    true
+  end
+  
+  def precedence
+    5
   end
   
   def evaluate(interpreter)
@@ -43,6 +51,10 @@ class ArgumentCounter
     false
   end
 
+  def is_variable
+    false
+  end
+  
   def evaluate(interpreter)
     self
   end
@@ -71,6 +83,10 @@ class Function
     false
   end
   
+  def is_variable
+    false
+  end
+  
   def precedence
     5
   end
@@ -80,58 +96,59 @@ class Function
     num_args = stack.pop
     case @name
     when 'INT'
-      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args.value}", caller) if num_args.value != 1
       x = stack.pop
       raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       result = xv.to_i
     when 'RND'
       if num_args.value == 0 then
-        x = 100
+        xv = 100
       elsif num_args.value == 1 then
         x = stack.pop
+        xv = x.to_v
       else
-        raise(BASICException, "Function #{@name} wrong number of arguments", caller)
+        raise(BASICException, "Function #{@name} expects 0 or 1 argument, found #{num_args.value}", caller)
       end
-      upper_bound = x.truncate.to_f
+      upper_bound = xv.truncate.to_f
       upper_bound = 1 if upper_bound <= 0
       result = $randomizer.rand(upper_bound)
     when 'EXP'
-      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args.value}", caller) if num_args.value != 1
       x = stack.pop
       raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = Math.exp(xv)
       result = float_to_possible_int(f)
     when 'LOG'
-      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args.value}", caller) if num_args.value != 1
       x = stack.pop
       raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.log(xv) : 0
       result = float_to_possible_int(f)
     when 'ABS'
-      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args.value}", caller) if num_args.value != 1
       x = stack.pop
       raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       result = xv >= 0 ? xv : -xv
     when 'SQR'
-      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args.value}", caller) if num_args.value != 1
       x = stack.pop
       raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.sqrt(xv) : 0
       result = float_to_possible_int(f)
     when 'SIN'
-      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args.value}", caller) if num_args.value != 1
       x = stack.pop
       raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.sin(xv) : 0
       result = float_to_possible_int(f)
     when 'COS'
-      raise(BASICException, "Function #{@name} wrong number of arguments", caller) if num_args.value != 1
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args.value}", caller) if num_args.value != 1
       x = stack.pop
       raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
@@ -158,6 +175,20 @@ class ArithmeticExpression
     words = text.split(regex)
     # puts "DBG: words=[#{words.join('] [')}]"
 
+    tokens = tokenize(words)
+    @compiled_expression = parse(tokens)
+  end
+
+  def evaluate(interpreter)
+    interpreter.evaluate_r_value(@compiled_expression)
+  end
+  
+  def to_s
+    @uncompiled_expression
+  end
+
+  private
+  def tokenize(words)
     tokens = Array.new
     last_was_operand = false
     # convert tokens to objects
@@ -189,7 +220,7 @@ class ArithmeticExpression
                   last_was_operand = true
                 rescue BASICException
                   begin
-                    tokens << VariableRef.new(word)
+                    tokens << VariableValue.new(word)
                     last_was_operand = true
                   rescue
                     raise BASICException, "'#{word}' is not a value or operator", caller
@@ -202,11 +233,13 @@ class ArithmeticExpression
       end
     end
     tokens << TerminalOperator.new
+  end
 
+  def parse(tokens)
     operator_stack = Array.new
     arg_count_stack = Array.new
     arg_count = ArgumentCounter.new(0)
-    @compiled_expression = Array.new
+    compiled_expression = Array.new
 
     last_was_function = false
     # scan the token list from left to right
@@ -225,23 +258,23 @@ class ArithmeticExpression
             while operator_stack.size > 0 and operator_stack[-1] != '(' do
               op = operator_stack.pop
               if op.is_function
-                @compiled_expression << arg_count
+                compiled_expression << arg_count
               end
-              @compiled_expression << op
+              compiled_expression << op
             end
             operator_stack.pop  # remove the '('
             last_was_function = false
           else
-            if token.is_operator or token.is_function then
+            if token.is_operator or token.is_function or token.is_variable then
               # remove operators already on the stack that have higher or equal precedence
               # append them to the output list
               while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1].precedence >= token.precedence do
                 op = operator_stack.pop
                 if op.is_function
-                  @compiled_expression << arg_count
+                  compiled_expression << arg_count
                   arg_count = arg_count_stack.pop
                 end
-                @compiled_expression << op
+                compiled_expression << op
               end
               # push the operator onto the operator stack
               if not token.is_terminal then
@@ -251,26 +284,22 @@ class ArithmeticExpression
                   arg_count = ArgumentCounter.new(0)
                 end
               end
+              if token.is_variable and arg_count.value == 0 then
+                arg_count = ArgumentCounter.new(1)
+              end
             else
               # the token is an operand, append it to the output list
               if arg_count.value == 0 then
                 arg_count = ArgumentCounter.new(1)
               end
-              @compiled_expression << token
+              compiled_expression << token
             end
             last_was_function = token.is_function
           end
         end
       end
     end
-  end
-
-  def evaluate(interpreter)
-    interpreter.evaluate(@compiled_expression)
-  end
-  
-  def to_s
-    @uncompiled_expression
+    compiled_expression
   end
 end
 
@@ -346,7 +375,7 @@ class Assignment
     # parse into variable, '=', expression
     parts = text.split('=', 2)
     raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
-    @target = VariableRef.new(parts[0])
+    @target = VariableValue.new(parts[0])
     @expression = ArithmeticExpression.new(parts[1])
   end
 
