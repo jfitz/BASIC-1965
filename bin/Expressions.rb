@@ -167,27 +167,12 @@ class Function
   end
 end
 
-class ArithmeticExpression
+class Expression
   def initialize(text)
     @uncompiled_expression = text
-    # split the input infix string
-    regex = Regexp.new('([\+\-\*\/\(\)\^])')
-    words = text.split(regex)
-    # puts "DBG: words=[#{words.join('] [')}]"
-
-    tokens = tokenize(words)
-    @compiled_expression = parse(tokens)
   end
 
-  def evaluate(interpreter)
-    interpreter.evaluate_r_value(@compiled_expression)
-  end
-  
-  def to_s
-    @uncompiled_expression
-  end
-
-  private
+  protected
   def tokenize(words)
     tokens = Array.new
     last_was_operand = false
@@ -235,6 +220,7 @@ class ArithmeticExpression
     tokens << TerminalOperator.new
   end
 
+  protected
   def parse(tokens)
     operator_stack = Array.new
     arg_count_stack = Array.new
@@ -301,6 +287,46 @@ class ArithmeticExpression
     end
     compiled_expression
   end
+  
+  def to_s
+    @uncompiled_expression
+  end
+end
+
+class ValueExpression < Expression
+  def initialize(text)
+    super
+    # split the input infix string
+    regex = Regexp.new('([\+\-\*\/\(\)\^])')
+    words = text.split(regex)
+    # puts "DBG: words=[#{words.join('] [')}]"
+
+    tokens = tokenize(words)
+    @compiled_expression = parse(tokens)
+  end
+
+  def evaluate(interpreter)
+    interpreter.evaluate_r_value(@compiled_expression)
+  end
+end
+
+class TargetExpression < Expression
+  def initialize(text)
+    super
+    # split the input infix string
+    regex = Regexp.new('([\+\-\*\/\(\)\^])')
+    words = text.split(regex)
+    # puts "DBG: words=[#{words.join('] [')}]"
+
+    tokens = tokenize(words)
+    # verify that the first token is a VariableValue
+    # convert it to a VariableRef
+    @compiled_expression = parse(tokens)
+  end
+
+  def evaluate(interpreter)
+    interpreter.evaluate_r_value(@compiled_expression)
+  end
 end
 
 class PrintableExpression
@@ -310,7 +336,7 @@ class PrintableExpression
     begin
       @text_constant = TextConstant.new(text)
     rescue BASICException => message
-      @arithmetic_expression = ArithmeticExpression.new(text)
+      @arithmetic_expression = ValueExpression.new(text)
     end
   end
   
@@ -341,9 +367,9 @@ class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
     raise(BASICException, "'#{text}' is not a boolean expression", caller) if parts.size != 3
-    @a = ArithmeticExpression.new(parts[0])
+    @a = ValueExpression.new(parts[0])
     @operator = BooleanOperator.new(parts[1])
-    @b = ArithmeticExpression.new(parts[2])
+    @b = ValueExpression.new(parts[2])
   end
   
   def evaluate(interpreter)
@@ -376,7 +402,7 @@ class Assignment
     parts = text.split('=', 2)
     raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
     @target = VariableValue.new(parts[0])
-    @expression = ArithmeticExpression.new(parts[1])
+    @expression = ValueExpression.new(parts[1])
   end
 
   def target
