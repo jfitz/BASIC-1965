@@ -1,10 +1,10 @@
-class VariableValue
+class Variable
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
     raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
     @var_name = text
   end
-  
+
   def is_operator
     false
   end
@@ -25,12 +25,28 @@ class VariableValue
     5
   end
   
+  def to_s
+    @var_name
+  end
+end
+
+class VariableValue < Variable
+  def initialize(text)
+    super
+  end
+  
   def evaluate(interpreter)
     interpreter.get_value(@var_name)
   end
+end
+
+class VariableReference < Variable
+  def initialize(text)
+    super
+  end
   
-  def to_s
-    @var_name
+  def evaluate(interpreter)
+    self
   end
 end
 
