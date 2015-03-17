@@ -768,8 +768,13 @@ class Interpreter
       end
     end
     # should be only one item on stack
+    n = stack.length
+    raise(BASICException, "Internal error: Too many items (#{n}) remaining on evaluation stack", caller) if n > 1
+    raise(BASICException, "Internal error: Not enough items (#{n}) remaining on evaluation stack", caller) if n < 1
     # that is the result
-    stack[0]
+    item = stack[0]
+    raise(BASICException, "Internal error: Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != 'NumericConstant'
+    item
   end
   
   def print_handler
