@@ -95,3 +95,38 @@ class TextConstant
   end
 end
 
+class BooleanConstant
+  def initialize(text)
+    @value = text.upcase == 'ON'
+    @precedence = 0
+  end
+
+  def is_operator
+    false
+  end
+
+  def is_function
+    false
+  end
+  
+  def is_terminal
+    false
+  end
+  
+  def is_variable
+    false
+  end
+  
+  def value
+    @value
+  end
+  
+  def to_s
+    @value ? 'true' : 'false'
+  end
+  
+  def to_formatted_s(interpreter)
+    @value ? 'true' : 'false'
+  end
+end
+

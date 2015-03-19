@@ -487,3 +487,18 @@ class EndStatement < AbstractStatement
   end
 end
 
+class TraceStatement < AbstractStatement
+  def initialize(line)
+    super('TRACE')
+    @operation = BooleanConstant.new(line.gsub(/ /, ''))
+  end
+
+  def execute_cmd(interpreter)
+    interpreter.trace(@operation.value)
+  end
+
+  def to_s
+    @keyword + ' ' + (@operation.value ? 'ON' : 'OFF')
+  end
+end
+

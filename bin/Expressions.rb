@@ -1,7 +1,7 @@
 class Variable
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
-    raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
+    raise(Exception, "'#{text}' is not a variable name", caller) if not regex.match(text)
     @var_name = text
   end
 
@@ -35,8 +35,19 @@ class VariableValue < Variable
     super
   end
   
-  def evaluate(interpreter)
-    interpreter.get_value(@var_name)
+  def evaluate(interpreter, stack)
+    if stack.size > 0 and stack[-1].class.to_s == 'ArgumentCounter' then
+      num_args = stack.pop
+      raise(BASICException, "Variable expects subscripts, found empty parentheses", caller) if num_args.value == 0
+      subs = Array.new
+      (1..num_args.value).each do | index |
+        subs << stack.pop
+      end
+      evaled_var_name = @var_name + '(' + subs.join(',') + ')'
+      interpreter.get_value(evaled_var_name)
+    else
+      interpreter.get_value(@var_name)
+    end
   end
 end
 
@@ -272,7 +283,7 @@ class Expression
               # append them to the output list
               while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1].precedence >= token.precedence do
                 op = operator_stack.pop
-                if op.is_function
+                if op.is_function then
                   compiled_expression << arg_count
                   arg_count = arg_count_stack.pop
                 end
@@ -418,7 +429,7 @@ class Assignment
     # parse into variable, '=', expression
     parts = text.split('=', 2)
     raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
-    @target = VariableValue.new(parts[0])
+    @target = TargetExpression.new(parts[0])
     @expression = ValueExpression.new(parts[1])
   end
 

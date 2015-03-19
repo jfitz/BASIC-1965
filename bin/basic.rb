@@ -79,11 +79,12 @@ class Interpreter
     elsif line_text[0..4] == 'GOSUB' then object = GosubStatement.new(line_text[5..-1])
     elsif line_text[0..2] == 'FOR' then object = ForStatement.new(line_text[3..-1])
     elsif line_text[0..3] == 'NEXT' then object = NextStatement.new(line_text[4..-1])
-    elsif line_text[0..5] == 'RETURN' then object = ReturnStatement.new
+    elsif line_text == 'RETURN' then object = ReturnStatement.new
     elsif line_text[0..3] == 'READ' then object = ReadStatement.new(line_text[4..-1])
     elsif line_text[0..3] == 'DATA' then object = DataStatement.new(line_text[4..-1])
-    elsif line_text[0..3] == 'STOP' then object = StopStatement.new
-    elsif line_text[0..2] == 'END' then object = EndStatement.new
+    elsif line_text == 'STOP' then object = StopStatement.new
+    elsif line_text == 'END' then object = EndStatement.new
+    elsif line_text[0..4] == 'TRACE' then object = TraceStatement.new(line_text[5..-1])
     end
     [line_num, object]
   end
@@ -111,6 +112,7 @@ class Interpreter
   public
   def cmd_run(trace_flag)
     @variables = Hash.new
+    @tron_flag = false
     line_numbers = @program_lines.keys.sort
     if line_numbers.size > 0 then
       # phase 1: do all initialization (store values in DATA lines)
@@ -127,7 +129,7 @@ class Interpreter
         @next_line_number = line_numbers[line_numbers.index(@current_line_number) + 1]
         begin
           line = @program_lines[@current_line_number]
-          puts "#{@current_line_number}: #{line.to_s}" if trace_flag
+          puts "#{@current_line_number}: #{line.to_s}" if trace_flag or @tron_flag
           line.execute(self)
           if @running then
             # set the next line number (which may have been changed by execute() )
@@ -145,8 +147,13 @@ class Interpreter
     end
   end
 
+  def trace(tron_flag)
+    @tron_flag = tron_flag
+  end
+
   def cmd_new
     @program_lines = Hash.new
+    @variables = Hash.new
   end
   
   def cmd_load(filename)
@@ -201,6 +208,10 @@ class Interpreter
       puts 'No program loaded'
     end
   end
+
+  def dump_vars
+    puts @variables
+  end
   
   def stop
     @running = false
@@ -221,11 +232,11 @@ class Interpreter
   
   def get_value(variable)
     begin
-      VariableValue.new(variable.to_s)
-      if !@variables.has_key?(variable.to_s) then
-        @variables[variable.to_s] = 0
+      v = variable.to_s
+      if !@variables.has_key?(v) then
+        @variables[v] = 0
       end
-      x = @variables[variable.to_s]
+      x = @variables[v]
       case x.class.to_s
       when 'Fixnum'
         NumericConstant.new(x)
@@ -245,11 +256,11 @@ class Interpreter
       raise Exception, "Bad variable value type #{c}", caller
     end
     begin
-      VariableValue.new(variable.to_s)
+      v = variable.to_s
       if c == 'NumericConstant' then
-        @variables[variable.to_s] = value.to_v
+        @variables[v] = value.to_v
       else
-        @variables[variable.to_s] = value
+        @variables[v] = value
       end
     rescue
       raise BASICException, "Unknown variable #{variable}", caller
@@ -272,7 +283,7 @@ class Interpreter
           when 'NumericConstant'
               z = 0
           when 'VariableValue'
-              x = x.evaluate(self)
+              x = x.evaluate(self, stack)
           else throw "Unknown data type #{x.class}"
           end
           stack.push(x)
@@ -354,7 +365,8 @@ class Interpreter
         end
       else
         # immediate command -- execute
-        if cmd == 'LIST' then cmd_list
+        if cmd == '' then x = 0
+        elsif cmd == 'LIST' then cmd_list
         elsif cmd == 'RUN' then
           timing = Benchmark.measure { cmd_run(false) }
           user_time = timing.utime + timing.cutime
@@ -369,6 +381,7 @@ class Interpreter
         elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
         elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
         elsif cmd == 'EXIT' then done = true
+        elsif cmd == '.VARS' then dump_vars
         else print "Unknown command #{cmd}\n"
         end
         need_prompt = true
