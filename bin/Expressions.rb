@@ -304,6 +304,7 @@ class Expression
     compiled_expression
   end
   
+  public
   def to_s
     @uncompiled_expression
   end
