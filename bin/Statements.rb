@@ -81,11 +81,12 @@ class InputStatement < AbstractStatement
     super('INPUT')
     # todo: allow subscripted variables
     # todo: allow text prompt (?)
-    @variable_list = line.gsub(/ /, '').split(',')
+    text_list = line.gsub(/ /, '').split(',')
     # variable [comma, variable]...
-    @variable_list.each do | text_item |
+    @variable_list = Array.new
+    text_list.each do | text_item |
       begin
-        var_name = VariableValue.new(text_item)
+        @variable_list << VariableName.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -337,7 +338,8 @@ class ForStatement < AbstractStatement
     parts = line.gsub(/ /, '').split('=', 2)
     raise(BASICException, "Syntax error", caller) if parts.size != 2
     begin
-      @control_variable = VariableValue.new(parts[0])
+      var_name = VariableName.new(parts[0])
+      @control_variable = VariableValue.new(var_name)
     rescue BASICException => message
       @errors << message
     end
@@ -379,7 +381,8 @@ class NextStatement < AbstractStatement
     # parse control variable
     @control_variable = nil
     begin
-      @control_variable = VariableValue.new(line.gsub(/ /, ''))
+      var_name = VariableName.new(line.gsub(/ /, ''))
+      @control_variable = VariableValue.new(var_name)
     rescue BASICException => message
       @errors << message
       @boolean_expression = line
@@ -406,11 +409,12 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line)
     super('READ')
-    @variable_list = line.gsub(/ /, '').split(',')
+    text_list = line.gsub(/ /, '').split(',')
     # variable [comma, variable]...
-    @variable_list.each do | text_item |
+    @variable_list = Array.new
+    text_list.each do | text_item |
       begin
-        var_name = VariableValue.new(text_item)
+        @variable_list << VariableName.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -422,8 +426,8 @@ class ReadStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
-    @variable_list.each do | text_item |
-      var_name = VariableValue.new(text_item)
+    @variable_list.each do | var_name |
+      var_name = VariableValue.new(var_name)
       interpreter.set_value(var_name, interpreter.read_data)
     end
   end

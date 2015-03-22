@@ -188,5 +188,8 @@ class TerminalOperator
     0
   end
 
+  def to_s
+    'TERM'
+  end
 end
 

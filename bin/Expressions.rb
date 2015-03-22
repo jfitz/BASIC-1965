@@ -1,8 +1,39 @@
-class Variable
+class VariableName
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
     raise(Exception, "'#{text}' is not a variable name", caller) if not regex.match(text)
     @var_name = text
+  end
+
+  def is_operator
+    false
+  end
+
+  def is_function
+    false
+  end
+
+  def is_terminal
+    false
+  end
+
+  def is_variable
+    true
+  end
+  
+  def precedence
+    5
+  end
+  
+  def to_s
+    @var_name
+  end
+end
+
+class Variable
+  def initialize(text)
+    raise(Exception, "'#{text}' is not a variable name", caller) if text.class.to_s != 'VariableName'
+    @var_name = text.to_s
   end
 
   def is_operator
@@ -232,7 +263,7 @@ class Expression
                   last_was_operand = true
                 rescue BASICException
                   begin
-                    tokens << VariableValue.new(word)
+                    tokens << VariableName.new(word)
                     last_was_operand = true
                   rescue
                     raise BASICException, "'#{word}' is not a value or operator", caller
@@ -291,8 +322,15 @@ class Expression
               end
               # push the operator onto the operator stack
               if not token.is_terminal then
-                operator_stack.push(token)
+                if token.is_variable then
+                  var_exp = VariableValue.new(token)
+                  operator_stack.push(var_exp)
+                end
+                if token.is_operator then
+                  operator_stack.push(token)
+                end
                 if token.is_function then
+                  operator_stack.push(token)
                   arg_count_stack.push(arg_count)
                   arg_count = ArgumentCounter.new(0)
                 end
@@ -330,7 +368,9 @@ class ValueExpression < Expression
     # puts "DBG: words=[#{words.join('] [')}]"
 
     tokens = tokenize(words)
+    # puts "DBG: tokens=[#{tokens.join('] [')}]"
     @compiled_expression = parse(tokens)
+    # puts "DBG: CE=[#{@compiled_expression.join('] [')}]"
   end
 
   def evaluate(interpreter)
