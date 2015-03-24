@@ -72,7 +72,7 @@ class LetStatement < AbstractStatement
     # @expression.dump
     # puts
     # end diagnostics
-    interpreter.set_value(@expression.target, @expression.value(interpreter))
+    interpreter.set_value(@expression.target(interpreter), @expression.value(interpreter))
   end
 end
 
@@ -414,7 +414,7 @@ class ReadStatement < AbstractStatement
     @variable_list = Array.new
     text_list.each do | text_item |
       begin
-        @variable_list << VariableName.new(text_item)
+        @variable_list << TargetExpression.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -427,8 +427,7 @@ class ReadStatement < AbstractStatement
   
   def execute_cmd(interpreter)
     @variable_list.each do | var_name |
-      var_name = VariableValue.new(var_name)
-      interpreter.set_value(var_name, interpreter.read_data)
+      interpreter.set_value(var_name.evaluate(interpreter), interpreter.read_data)
     end
   end
 end

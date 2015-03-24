@@ -255,6 +255,7 @@ class Interpreter
     if c != 'Fixnum' and c != 'Float' and c!= 'NumericConstant' then
       raise Exception, "Bad variable value type #{c}", caller
     end
+    ## puts "SET: #{variable} = #{value}"
     begin
       v = variable.to_s
       if c == 'NumericConstant' then
@@ -268,8 +269,11 @@ class Interpreter
   end
 
   def evaluate_r_value(compiled_expression)
+    ## puts "evaluate_r_value"
+    ## puts "CE: [#{compiled_expression.join('] [')}]"
     stack = Array.new
     compiled_expression.each do | token |
+      ## puts "token: #{token.class} #{token}"
       if token.is_operator or token.is_function then
         x = token.evaluate(stack)
         stack.push(x)
@@ -284,11 +288,53 @@ class Interpreter
               z = 0
           when 'VariableValue'
               x = x.evaluate(self, stack)
+          when 'VariableReference'
+              x = x.evaluate(self, stack)
           else throw "Unknown data type #{x.class}"
           end
           stack.push(x)
         end
       end
+      ## puts "stack: [#{stack.join('] [')}]"
+    end
+    # should be only one item on stack
+    n = stack.length
+    raise(BASICException, "Too many items (#{n}) remaining on evaluation stack", caller) if n > 1
+    raise(BASICException, "Not enough items (#{n}) remaining on evaluation stack", caller) if n < 1
+    # that is the result
+    item = stack[0]
+    raise(BASICException, "Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != 'NumericConstant'
+    item
+  end
+  
+  def evaluate_l_value(compiled_expression)
+    ## puts "evaluate_l_value"
+    ## puts "CE: [#{compiled_expression.join('] [')}]"
+    stack = Array.new
+    compiled_expression.each do | token |
+      ## puts "token: #{token.class} #{token}"
+      if token.is_operator or token.is_function then
+        x = token.evaluate(stack)
+        stack.push(x)
+      else
+        if token.class.to_s == 'ArgumentCounter' then
+          stack.push(token)
+        else
+        # if token is numeric expression, push onto stack
+          x = token
+          case x.class.to_s
+          when 'NumericConstant'
+              z = 0
+          when 'VariableValue'
+              x = x.evaluate(self, stack)
+          when 'VariableReference'
+              x = x.evaluate(self, stack)
+          else throw "Unknown data type #{x.class}"
+          end
+          stack.push(x)
+        end
+      end
+      ## puts "stack: [#{stack.join('] [')}]"
     end
     # should be only one item on stack
     n = stack.length
@@ -296,7 +342,7 @@ class Interpreter
     raise(BASICException, "Internal error: Not enough items (#{n}) remaining on evaluation stack", caller) if n < 1
     # that is the result
     item = stack[0]
-    raise(BASICException, "Internal error: Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != 'NumericConstant'
+    raise(BASICException, "Internal error: Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != 'String'
     item
   end
   

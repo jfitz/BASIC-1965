@@ -33,7 +33,7 @@ end
 class Variable
   def initialize(text)
     raise(Exception, "'#{text}' is not a variable name", caller) if text.class.to_s != 'VariableName'
-    @var_name = text.to_s
+    @var_name = text
   end
 
   def is_operator
@@ -56,8 +56,12 @@ class Variable
     5
   end
   
-  def to_s
+  def name
     @var_name
+  end
+
+  def to_s
+    @var_name.to_s
   end
 end
 
@@ -74,21 +78,31 @@ class VariableValue < Variable
       (1..num_args.value).each do | index |
         subs << stack.pop
       end
-      evaled_var_name = @var_name + '(' + subs.join(',') + ')'
+      evaled_var_name = @var_name.to_s + '(' + subs.join(',') + ')'
       interpreter.get_value(evaled_var_name)
     else
-      interpreter.get_value(@var_name)
+      interpreter.get_value(@var_name.to_s)
     end
   end
 end
 
 class VariableReference < Variable
-  def initialize(text)
-    super
+  def initialize(variable)
+    super(variable.name)
   end
   
-  def evaluate(interpreter)
-    self
+  def evaluate(interpreter, stack)
+    if stack.size > 0 and stack[-1].class.to_s == 'ArgumentCounter' then
+      num_args = stack.pop
+      raise(BASICException, "Variable expects subscripts, found empty parentheses", caller) if num_args.value == 0
+      subs = Array.new
+      (1..num_args.value).each do | index |
+        subs << stack.pop
+      end
+      evaled_var_name = @var_name.to_s + '(' + subs.join(',') + ')'
+    else
+      @var_name.to_s
+    end
   end
 end
 
@@ -111,6 +125,10 @@ class ArgumentCounter
 
   def is_variable
     false
+  end
+
+  def bump
+    @value = @value + 1
   end
   
   def evaluate(interpreter)
@@ -231,12 +249,19 @@ class Expression
   end
 
   protected
+  def split(text)
+    # split the input infix string
+    regex = Regexp.new('([\+\-\*\/\(\)\^])')
+    text.split(regex)
+  end
+
+  protected
   def tokenize(words)
     tokens = Array.new
     last_was_operand = false
     # convert tokens to objects
     words.each do | word |
-      # puts "DBG: word=#{word}"
+      # puts "word: #{word}"
       if word.size > 0 then
         if word == '(' then
           tokens << '('
@@ -274,6 +299,7 @@ class Expression
           end
         end
       end
+      # puts "  tokens: [#{tokens.join('] [')}]"
     end
     tokens << TerminalOperator.new
   end
@@ -285,14 +311,18 @@ class Expression
     arg_count = ArgumentCounter.new(0)
     compiled_expression = Array.new
 
+    # puts "tokens: [#{tokens.join('] [')}]"
     last_was_function = false
+    last_was_close_paren = false
     # scan the token list from left to right
     tokens.each do | token |
       if token != '' then
+        # puts "token: #{token.class} #{token}"
         # If the token is a left parenthesis, push it on the operator stack
         if token == '(' then
           operator_stack.push(token)
           last_was_function = false
+          last_was_close_paren = false
         else
           raise(BASICException, "Function requires parentheses", caller) if last_was_function
           # If the token is a right parenthesis,
@@ -301,13 +331,15 @@ class Expression
           if token == ')' then
             while operator_stack.size > 0 and operator_stack[-1] != '(' do
               op = operator_stack.pop
-              if op.is_function
+              if op.is_function then
                 compiled_expression << arg_count
+                arg_count = arg_count_stack.pop
               end
               compiled_expression << op
             end
             operator_stack.pop  # remove the '('
             last_was_function = false
+            last_was_close_paren = true
           else
             if token.is_operator or token.is_function or token.is_variable then
               # remove operators already on the stack that have higher or equal precedence
@@ -315,6 +347,9 @@ class Expression
               while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1].precedence >= token.precedence do
                 op = operator_stack.pop
                 if op.is_function then
+                  compiled_expression << arg_count
+                  arg_count = arg_count_stack.pop
+                elsif op.is_variable and last_was_close_paren then
                   compiled_expression << arg_count
                   arg_count = arg_count_stack.pop
                 end
@@ -332,7 +367,7 @@ class Expression
                 if token.is_function then
                   operator_stack.push(token)
                   arg_count_stack.push(arg_count)
-                  arg_count = ArgumentCounter.new(0)
+                  arg_count = ArgumentCounter.new(1)
                 end
               end
               if token.is_variable and arg_count.value == 0 then
@@ -346,10 +381,17 @@ class Expression
               compiled_expression << token
             end
             last_was_function = token.is_function
+            last_was_close_paren = false
           end
         end
       end
+      # puts "  OS: [#{operator_stack.join('] [')}]"
+      # puts "  AC: [#{arg_count_stack.join('] [')}] - #{arg_count}"
+      # puts "  CE: [#{compiled_expression.join('] [')}]"
     end
+    # puts "OS: [#{operator_stack.join('] [')}]"
+    # puts "AC: [#{arg_count_stack.join('] [')}] - #{arg_count}"
+    # puts "CE: [#{compiled_expression.join('] [')}]"
     compiled_expression
   end
   
@@ -362,11 +404,9 @@ end
 class ValueExpression < Expression
   def initialize(text)
     super
-    # split the input infix string
-    regex = Regexp.new('([\+\-\*\/\(\)\^])')
-    words = text.split(regex)
-    # puts "DBG: words=[#{words.join('] [')}]"
 
+    words = split(text)
+    # puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
     # puts "DBG: tokens=[#{tokens.join('] [')}]"
     @compiled_expression = parse(tokens)
@@ -381,19 +421,18 @@ end
 class TargetExpression < Expression
   def initialize(text)
     super
-    # split the input infix string
-    regex = Regexp.new('([\+\-\*\/\(\)\^])')
-    words = text.split(regex)
-    # puts "DBG: words=[#{words.join('] [')}]"
 
+    words = split(text)
+    # puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
-    # verify that the first token is a VariableValue
-    # convert it to a VariableRef
     @compiled_expression = parse(tokens)
+    raise(BASICException, "Value is not assignable (length 0)", caller) if @compiled_expression.length == 0
+    raise(BASICException, "Value is not assignable (type #{@compiled_expression[-1].class})", caller) if @compiled_expression[-1].class.to_s != 'VariableValue'
+    @compiled_expression[-1] = VariableReference.new(@compiled_expression[-1])
   end
 
   def evaluate(interpreter)
-    interpreter.evaluate_r_value(@compiled_expression)
+    interpreter.evaluate_l_value(@compiled_expression)
   end
 end
 
@@ -473,8 +512,8 @@ class Assignment
     @expression = ValueExpression.new(parts[1])
   end
 
-  def target
-    @target
+  def target(interpreter)
+    @target.evaluate(interpreter)
   end
   
   def value(interpreter)
