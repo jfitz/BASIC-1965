@@ -245,7 +245,7 @@ end
 
 class Expression
   def initialize(text)
-    @uncompiled_expression = text
+    @unparsed_expression = text
   end
 
   protected
@@ -309,7 +309,7 @@ class Expression
     operator_stack = Array.new
     arg_count_stack = Array.new
     arg_count = ArgumentCounter.new(0)
-    compiled_expression = Array.new
+    parsed_expression = Array.new
 
     # puts "tokens: [#{tokens.join('] [')}]"
     last_was_function = false
@@ -332,10 +332,10 @@ class Expression
             while operator_stack.size > 0 and operator_stack[-1] != '(' do
               op = operator_stack.pop
               if op.is_function then
-                compiled_expression << arg_count
+                parsed_expression << arg_count
                 arg_count = arg_count_stack.pop
               end
-              compiled_expression << op
+              parsed_expression << op
             end
             operator_stack.pop  # remove the '('
             last_was_function = false
@@ -347,13 +347,13 @@ class Expression
               while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1].precedence >= token.precedence do
                 op = operator_stack.pop
                 if op.is_function then
-                  compiled_expression << arg_count
+                  parsed_expression << arg_count
                   arg_count = arg_count_stack.pop
                 elsif op.is_variable and last_was_close_paren then
-                  compiled_expression << arg_count
+                  parsed_expression << arg_count
                   arg_count = arg_count_stack.pop
                 end
-                compiled_expression << op
+                parsed_expression << op
               end
               # push the operator onto the operator stack
               if not token.is_terminal then
@@ -378,7 +378,7 @@ class Expression
               if arg_count.value == 0 then
                 arg_count = ArgumentCounter.new(1)
               end
-              compiled_expression << token
+              parsed_expression << token
             end
             last_was_function = token.is_function
             last_was_close_paren = false
@@ -387,17 +387,17 @@ class Expression
       end
       # puts "  OS: [#{operator_stack.join('] [')}]"
       # puts "  AC: [#{arg_count_stack.join('] [')}] - #{arg_count}"
-      # puts "  CE: [#{compiled_expression.join('] [')}]"
+      # puts "  CE: [#{parsed_expression.join('] [')}]"
     end
     # puts "OS: [#{operator_stack.join('] [')}]"
     # puts "AC: [#{arg_count_stack.join('] [')}] - #{arg_count}"
-    # puts "CE: [#{compiled_expression.join('] [')}]"
-    compiled_expression
+    # puts "CE: [#{parsed_expression.join('] [')}]"
+    parsed_expression
   end
   
   public
   def to_s
-    @uncompiled_expression
+    @unparsed_expression
   end
 end
 
@@ -409,12 +409,12 @@ class ValueExpression < Expression
     # puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
     # puts "DBG: tokens=[#{tokens.join('] [')}]"
-    @compiled_expression = parse(tokens)
-    # puts "DBG: CE=[#{@compiled_expression.join('] [')}]"
+    @parsed_expression = parse(tokens)
+    # puts "DBG: CE=[#{@parsed_expression.join('] [')}]"
   end
 
   def evaluate(interpreter)
-    interpreter.evaluate_r_value(@compiled_expression)
+    interpreter.evaluate_r_value(@parsed_expression)
   end
 end
 
@@ -425,14 +425,14 @@ class TargetExpression < Expression
     words = split(text)
     # puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
-    @compiled_expression = parse(tokens)
-    raise(BASICException, "Value is not assignable (length 0)", caller) if @compiled_expression.length == 0
-    raise(BASICException, "Value is not assignable (type #{@compiled_expression[-1].class})", caller) if @compiled_expression[-1].class.to_s != 'VariableValue'
-    @compiled_expression[-1] = VariableReference.new(@compiled_expression[-1])
+    @parsed_expression = parse(tokens)
+    raise(BASICException, "Value is not assignable (length 0)", caller) if @parsed_expression.length == 0
+    raise(BASICException, "Value is not assignable (type #{@parsed_expression[-1].class})", caller) if @parsed_expression[-1].class.to_s != 'VariableValue'
+    @parsed_expression[-1] = VariableReference.new(@parsed_expression[-1])
   end
 
   def evaluate(interpreter)
-    interpreter.evaluate_l_value(@compiled_expression)
+    interpreter.evaluate_l_value(@parsed_expression)
   end
 end
 
