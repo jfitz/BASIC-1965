@@ -31,7 +31,7 @@ class UnaryOperator
     @precedence
   end
 
-  def evaluate(stack)
+  def evaluate(interpreter, stack)
     x = stack.pop
     case @op
     when '+'
@@ -85,7 +85,7 @@ class BinaryOperator
     @precedence
   end
 
-  def evaluate(stack)
+  def evaluate(interpreter, stack)
     y = stack.pop
     x = stack.pop
     case @op

@@ -274,25 +274,24 @@ class Interpreter
     stack = Array.new
     compiled_expression.each do | token |
       ## puts "token: #{token.class} #{token}"
-      if token.is_operator then
-        x = token.evaluate(stack)
-        stack.push(x)
-      else
-        case token.class.to_s
-        when 'Function'
-          x = token.evaluate(self, stack)
-        when 'ArgumentCounter'
-          x = token.evaluate(self, stack)
-        when 'NumericConstant'
-          x = token.evaluate(self, stack)
-        when 'VariableValue'
-          x = token.evaluate(self, stack)
-        when 'VariableReference'
-          x = token.evaluate(self, stack)
-        else throw "Unknown data type #{x.class}"
-        end
-        stack.push(x)
+      case token.class.to_s
+      when 'UnaryOperator'
+        x = token.evaluate(self, stack)
+      when 'BinaryOperator'
+        x = token.evaluate(self, stack)
+      when 'Function'
+        x = token.evaluate(self, stack)
+      when 'ArgumentCounter'
+        x = token.evaluate(self, stack)
+      when 'NumericConstant'
+        x = token.evaluate(self, stack)
+      when 'VariableValue'
+        x = token.evaluate(self, stack)
+      when 'VariableReference'
+        x = token.evaluate(self, stack)
+      else throw "Unknown data type #{x.class}"
       end
+      stack.push(x)
       ## puts "stack: [#{stack.join('] [')}]"
     end
     # should be only one item on stack
@@ -311,25 +310,24 @@ class Interpreter
     stack = Array.new
     compiled_expression.each do | token |
       ## puts "token: #{token.class} #{token}"
-      if token.is_operator then
-        x = token.evaluate(stack)
-        stack.push(x)
-      else
-        case token.class.to_s
-        when 'Function'
-          x = token.evaluate(self, stack)
-        when 'ArgumentCounter'
-          x = token.evaluate(self, stack)
-        when 'NumericConstant'
-          x = token.evaluate(self, stack)
-        when 'VariableValue'
-          x = token.evaluate(self, stack)
-        when 'VariableReference'
-          x = token.evaluate(self, stack)
-        else throw "Unknown data type #{x.class}"
-        end
-        stack.push(x)
+      case token.class.to_s
+      when 'UnaryOperator'
+        x = token.evaluate(self, stack)
+      when 'BinaryOperator'
+        x = token.evaluate(self, stack)
+      when 'Function'
+        x = token.evaluate(self, stack)
+      when 'ArgumentCounter'
+        x = token.evaluate(self, stack)
+      when 'NumericConstant'
+        x = token.evaluate(self, stack)
+      when 'VariableValue'
+        x = token.evaluate(self, stack)
+      when 'VariableReference'
+        x = token.evaluate(self, stack)
+      else throw "Unknown data type #{x.class}"
       end
+      stack.push(x)
       ## puts "stack: [#{stack.join('] [')}]"
     end
     # should be only one item on stack
