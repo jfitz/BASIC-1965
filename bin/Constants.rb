@@ -27,8 +27,8 @@ class NumericConstant
     false
   end
   
-  def evaluate(interpreter)
-    @value
+  def evaluate(interpreter, stack)
+    self
   end
   
   def to_i

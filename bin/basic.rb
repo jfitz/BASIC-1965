@@ -274,26 +274,24 @@ class Interpreter
     stack = Array.new
     compiled_expression.each do | token |
       ## puts "token: #{token.class} #{token}"
-      if token.is_operator or token.is_function then
+      if token.is_operator then
         x = token.evaluate(stack)
         stack.push(x)
       else
-        if token.class.to_s == 'ArgumentCounter' then
-          stack.push(token)
-        else
-        # if token is numeric expression, push onto stack
-          x = token
-          case x.class.to_s
-          when 'NumericConstant'
-              z = 0
-          when 'VariableValue'
-              x = x.evaluate(self, stack)
-          when 'VariableReference'
-              x = x.evaluate(self, stack)
-          else throw "Unknown data type #{x.class}"
-          end
-          stack.push(x)
+        case token.class.to_s
+        when 'Function'
+          x = token.evaluate(self, stack)
+        when 'ArgumentCounter'
+          x = token.evaluate(self, stack)
+        when 'NumericConstant'
+          x = token.evaluate(self, stack)
+        when 'VariableValue'
+          x = token.evaluate(self, stack)
+        when 'VariableReference'
+          x = token.evaluate(self, stack)
+        else throw "Unknown data type #{x.class}"
         end
+        stack.push(x)
       end
       ## puts "stack: [#{stack.join('] [')}]"
     end
@@ -313,26 +311,24 @@ class Interpreter
     stack = Array.new
     compiled_expression.each do | token |
       ## puts "token: #{token.class} #{token}"
-      if token.is_operator or token.is_function then
+      if token.is_operator then
         x = token.evaluate(stack)
         stack.push(x)
       else
-        if token.class.to_s == 'ArgumentCounter' then
-          stack.push(token)
-        else
-        # if token is numeric expression, push onto stack
-          x = token
-          case x.class.to_s
-          when 'NumericConstant'
-              z = 0
-          when 'VariableValue'
-              x = x.evaluate(self, stack)
-          when 'VariableReference'
-              x = x.evaluate(self, stack)
-          else throw "Unknown data type #{x.class}"
-          end
-          stack.push(x)
+        case token.class.to_s
+        when 'Function'
+          x = token.evaluate(self, stack)
+        when 'ArgumentCounter'
+          x = token.evaluate(self, stack)
+        when 'NumericConstant'
+          x = token.evaluate(self, stack)
+        when 'VariableValue'
+          x = token.evaluate(self, stack)
+        when 'VariableReference'
+          x = token.evaluate(self, stack)
+        else throw "Unknown data type #{x.class}"
         end
+        stack.push(x)
       end
       ## puts "stack: [#{stack.join('] [')}]"
     end

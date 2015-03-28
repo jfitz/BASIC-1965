@@ -131,7 +131,7 @@ class ArgumentCounter
     @value = @value + 1
   end
   
-  def evaluate(interpreter)
+  def evaluate(interpreter, stack)
     self
   end
 
@@ -167,7 +167,7 @@ class Function
     5
   end
   
-  def evaluate(stack)
+  def evaluate(interpreter, stack)
     result = 0
     num_args = stack.pop
     case @name

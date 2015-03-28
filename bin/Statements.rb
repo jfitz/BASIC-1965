@@ -453,7 +453,7 @@ class DataStatement < AbstractStatement
   def pre_execute(interpreter)
     @data_list.each do | text_item |
       x = NumericConstant.new(text_item)
-      interpreter.store_data(x.evaluate(interpreter))
+      interpreter.store_data(x)
     end
   end
   
