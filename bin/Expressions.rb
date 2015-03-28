@@ -394,6 +394,36 @@ class Expression
     # puts "CE: [#{parsed_expression.join('] [')}]"
     parsed_expression
   end
+
+  protected
+  def eval(interpreter, expected_result_class)
+    ## puts "eval"
+    ## puts "CE: [#{compiled_expression.join('] [')}]"
+    stack = Array.new
+    @parsed_expression.each do | token |
+      ## puts "token: #{token.class} #{token}"
+      case token.class.to_s
+      when 'UnaryOperator','BinaryOperator','Function'
+        x = token.evaluate(interpreter, stack)
+      when 'ArgumentCounter'
+        x = token.evaluate(interpreter, stack)
+      when 'NumericConstant','VariableValue','VariableReference'
+        x = token.evaluate(interpreter, stack)
+      else
+        raise Exception, "Unknown data type #{x.class}", caller
+      end
+      stack.push(x)
+      ## puts "stack: [#{stack.join('] [')}]"
+    end
+    # should be only one item on stack
+    n = stack.length
+    raise(Exception, "Too many items (#{n}) remaining on evaluation stack", caller) if n > 1
+    raise(Exception, "Not enough items (#{n}) remaining on evaluation stack", caller) if n < 1
+    # that is the result
+    item = stack[0]
+    raise(Exception, "Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != expected_result_class
+    item
+  end
   
   public
   def to_s
@@ -414,7 +444,7 @@ class ValueExpression < Expression
   end
 
   def evaluate(interpreter)
-    interpreter.evaluate_r_value(@parsed_expression)
+    eval(interpreter, 'NumericConstant')
   end
 end
 
@@ -432,7 +462,7 @@ class TargetExpression < Expression
   end
 
   def evaluate(interpreter)
-    interpreter.evaluate_l_value(@parsed_expression)
+    eval(interpreter, 'String')
   end
 end
 
