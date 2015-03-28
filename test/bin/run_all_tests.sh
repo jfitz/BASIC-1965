@@ -37,3 +37,11 @@ bash test/bin/run_one_test.sh function_int
 bash test/bin/run_one_test.sh celcius_to_fahrenheit
 bash test/bin/run_one_test.sh celcius_2
 
+bash test/bin/run_one_test.sh binom
+bash test/bin/run_one_test.sh convert
+bash test/bin/run_one_test.sh lrgfct
+bash test/bin/run_one_test.sh roots
+bash test/bin/run_one_test.sh sales
+bash test/bin/run_one_test.sh sqrabs
+bash test/bin/run_one_test.sh table
+
