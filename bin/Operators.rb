@@ -1,4 +1,5 @@
 def float_to_possible_int(f)
+    ## puts "f: #{f}"
     i = f.to_i
     (f - i).abs < 1e-8 ? i : f
 end
@@ -86,6 +87,7 @@ class BinaryOperator
   end
 
   def evaluate(interpreter, stack)
+    ## puts "stack: [#{stack.join('] [')}]"
     y = stack.pop
     x = stack.pop
     case @op
@@ -119,6 +121,7 @@ class BinaryOperator
   end
   
   def divide(a, b)
+    ## puts "a: #{a} b: #{b}"
     f = a.to_f / b.to_f
     float_to_possible_int(f)
   end
