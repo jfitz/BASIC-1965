@@ -5,26 +5,6 @@ class VariableName
     @var_name = text
   end
 
-  def is_operator
-    false
-  end
-
-  def is_function
-    false
-  end
-
-  def is_terminal
-    false
-  end
-
-  def is_variable
-    true
-  end
-  
-  def precedence
-    5
-  end
-  
   def to_s
     @var_name
   end
@@ -294,7 +274,8 @@ class Expression
                   last_was_operand = true
                 rescue BASICException
                   begin
-                    tokens << VariableName.new(word)
+                    var_name = VariableName.new(word)
+                    tokens << VariableValue.new(var_name)
                     last_was_operand = true
                   rescue BASICException
                     raise BASICException, "'#{word}' is not a value or operator", caller
@@ -365,16 +346,7 @@ class Expression
               end
               # push the operator onto the operator stack
               if not token.is_terminal then
-                if token.is_variable then
-                  var_exp = VariableValue.new(token)
-                  operator_stack.push(var_exp)
-                end
-                if token.is_operator then
-                  operator_stack.push(token)
-                end
-                if token.is_function then
-                  operator_stack.push(token)
-                end
+                operator_stack.push(token)
               end
             else
               # the token is an operand, append it to the output list
