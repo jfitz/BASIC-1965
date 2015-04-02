@@ -1,7 +1,7 @@
 class VariableName
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
-    raise(Exception, "'#{text}' is not a variable name", caller) if not regex.match(text)
+    raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
     @var_name = text
   end
 
@@ -32,7 +32,7 @@ end
 
 class Variable
   def initialize(text)
-    raise(Exception, "'#{text}' is not a variable name", caller) if text.class.to_s != 'VariableName'
+    raise(BASICException, "'#{text}' is not a variable name", caller) if text.class.to_s != 'VariableName'
     @var_name = text
   end
 
@@ -174,13 +174,13 @@ class Function
     result = 0
     args = stack.pop
     ## puts "args: #{args.class} #{args}"
-    raise(Exception, "No arguments for function", caller) if args.class.to_s != 'Array'
+    raise(BASICException, "No arguments for function", caller) if args.class.to_s != 'Array'
     num_args = args.length
     case @name
     when 'INT'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
-      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       result = xv.to_i
     when 'RND'
@@ -198,41 +198,41 @@ class Function
     when 'EXP'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
-      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = Math.exp(xv)
       result = float_to_possible_int(f)
     when 'LOG'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
-      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.log(xv) : 0
       result = float_to_possible_int(f)
     when 'ABS'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
-      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       result = xv >= 0 ? xv : -xv
     when 'SQR'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
-      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.sqrt(xv) : 0
       result = float_to_possible_int(f)
     when 'SIN'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
-      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.sin(xv) : 0
       result = float_to_possible_int(f)
     when 'COS'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
-      raise(Exception, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.cos(xv) : 0
       result = float_to_possible_int(f)
@@ -296,7 +296,7 @@ class Expression
                   begin
                     tokens << VariableName.new(word)
                     last_was_operand = true
-                  rescue
+                  rescue BASICException
                     raise BASICException, "'#{word}' is not a value or operator", caller
                   end
                 end

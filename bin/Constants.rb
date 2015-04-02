@@ -1,10 +1,10 @@
 class NumericConstant
   def initialize(text)
-    int_regex = Regexp.new('^\d+$')
-    float_regex = Regexp.new('^\d+\.\d*$')
+    int_regex = Regexp.new('^\d+(E\d+)?$')
+    float_regex = Regexp.new('^\d+\.\d*(E\d+)?$')
     if text.class.to_s == 'Fixnum' then @value = text
     elsif text.class.to_s == 'Float' then @value = text
-    elsif int_regex.match(text) then @value = text.to_i
+    elsif int_regex.match(text) then @value = text.to_f.to_i
     elsif float_regex.match(text) then @value = text.to_f
     else raise BASICException, "'#{text}' is not a number", caller
     end

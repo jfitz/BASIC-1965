@@ -68,23 +68,27 @@ class Interpreter
     line_text = m.post_match.sub(/^ +/, '')
     # pick out the keyword
     object = UnknownStatement.new(line_text)
+    begin
+      if line_text[0..2] == 'REM' then object = RemarkStatement.new(line_text[3..-1])
+      elsif line_text[0..2] == 'LET' then object = LetStatement.new(line_text[3..-1])
+      elsif line_text[0..4] == 'INPUT' then object = InputStatement.new(line_text[5..-1])
+      elsif line_text[0..1] == 'IF' then object = IfStatement.new(line_text[2..-1])
+      elsif line_text[0..4] == 'PRINT' then object = PrintStatement.new(line_text[5..-1])
+      elsif line_text[0..4] == 'GO TO' then object = GotoStatement.new(line_text[5..-1])
+      elsif line_text[0..3] == 'GOTO' then object = GotoStatement.new(line_text[4..-1])
+      elsif line_text[0..4] == 'GOSUB' then object = GosubStatement.new(line_text[5..-1])
+      elsif line_text[0..2] == 'FOR' then object = ForStatement.new(line_text[3..-1])
+      elsif line_text[0..3] == 'NEXT' then object = NextStatement.new(line_text[4..-1])
+      elsif line_text == 'RETURN' then object = ReturnStatement.new
+      elsif line_text[0..3] == 'READ' then object = ReadStatement.new(line_text[4..-1])
+      elsif line_text[0..3] == 'DATA' then object = DataStatement.new(line_text[4..-1])
       #todo: RESTORE
-    if line_text[0..2] == 'REM' then object = RemarkStatement.new(line_text[3..-1])
-    elsif line_text[0..2] == 'LET' then object = LetStatement.new(line_text[3..-1])
-    elsif line_text[0..4] == 'INPUT' then object = InputStatement.new(line_text[5..-1])
-    elsif line_text[0..1] == 'IF' then object = IfStatement.new(line_text[2..-1])
-    elsif line_text[0..4] == 'PRINT' then object = PrintStatement.new(line_text[5..-1])
-    elsif line_text[0..4] == 'GO TO' then object = GotoStatement.new(line_text[5..-1])
-    elsif line_text[0..3] == 'GOTO' then object = GotoStatement.new(line_text[4..-1])
-    elsif line_text[0..4] == 'GOSUB' then object = GosubStatement.new(line_text[5..-1])
-    elsif line_text[0..2] == 'FOR' then object = ForStatement.new(line_text[3..-1])
-    elsif line_text[0..3] == 'NEXT' then object = NextStatement.new(line_text[4..-1])
-    elsif line_text == 'RETURN' then object = ReturnStatement.new
-    elsif line_text[0..3] == 'READ' then object = ReadStatement.new(line_text[4..-1])
-    elsif line_text[0..3] == 'DATA' then object = DataStatement.new(line_text[4..-1])
-    elsif line_text == 'STOP' then object = StopStatement.new
-    elsif line_text == 'END' then object = EndStatement.new
-    elsif line_text[0..4] == 'TRACE' then object = TraceStatement.new(line_text[5..-1])
+      elsif line_text == 'STOP' then object = StopStatement.new
+      elsif line_text == 'END' then object = EndStatement.new
+      elsif line_text[0..4] == 'TRACE' then object = TraceStatement.new(line_text[5..-1])
+      end
+    rescue BASICException
+      puts "Syntax error"
     end
     [line_num, object]
   end

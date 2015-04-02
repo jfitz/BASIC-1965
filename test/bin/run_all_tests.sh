@@ -44,4 +44,5 @@ bash test/bin/run_one_test.sh roots
 bash test/bin/run_one_test.sh sales
 bash test/bin/run_one_test.sh sqrabs
 bash test/bin/run_one_test.sh table
+bash test/bin/run_one_test.sh income
 
