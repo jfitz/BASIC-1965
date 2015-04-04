@@ -231,6 +231,7 @@ end
 
 class Expression
   def initialize(text)
+    raise(Exception, "Expression cannot be empty", caller) if text.length == 0
     @unparsed_expression = text
   end
 
@@ -247,7 +248,7 @@ class Expression
     last_was_operand = false
     # convert tokens to objects
     words.each do | word |
-      # puts "word: #{word}"
+      ## puts "word: #{word}"
       if word.size > 0 then
         if word == '(' then
           tokens << '('
@@ -286,7 +287,7 @@ class Expression
           end
         end
       end
-      # puts "  tokens: [#{tokens.join('] [')}]"
+      ## puts "  tokens: [#{tokens.join('] [')}]"
     end
     tokens << TerminalOperator.new
   end
@@ -297,13 +298,13 @@ class Expression
     expression_stack = Array.new
     parsed_expression = Array.new
 
-    # puts "tokens: [#{tokens.join('] [')}]"
+    ## puts "tokens: [#{tokens.join('] [')}]"
     last_was_function = false
     last_was_variable = false
     # scan the token list from left to right
     tokens.each do | token |
       if token != '' then
-        # puts "token: #{token.class} #{token}"
+        ## puts "token: #{token.class} #{token}"
         # If the token is a left parenthesis, push it on the operator stack
         if token == '(' then
           if last_was_function or last_was_variable then
@@ -357,11 +358,11 @@ class Expression
           end
         end
       end
-      # puts "  OS: [#{operator_stack.join('] [')}]"
-      # puts "  CE: [#{parsed_expression.join('] [')}]"
+      ## puts "  OS: [#{operator_stack.join('] [')}]"
+      ## puts "  CE: [#{parsed_expression.join('] [')}]"
     end
-    # puts "OS: [#{operator_stack.join('] [')}]"
-    # puts "CE: [#{parsed_expression.join('] [')}]"
+    ## puts "OS: [#{operator_stack.join('] [')}]"
+    ## puts "CE: [#{parsed_expression.join('] [')}]"
     parsed_expression
   end
 
@@ -410,13 +411,13 @@ class ValueExpression < Expression
       super
 
       words = split(text)
-      # puts "DBG: words=[#{words.join('] [')}]"
+      ## puts "DBG: words=[#{words.join('] [')}]"
       tokens = tokenize(words)
-      # puts "DBG: tokens=[#{tokens.join('] [')}]"
+      ## puts "DBG: tokens=[#{tokens.join('] [')}]"
       @parsed_expression = parse(tokens)
-      # puts "DBG: CE=[#{@parsed_expression.join('] [')}]"
+      ## puts "DBG: CE=[#{@parsed_expression.join('] [')}]"
     else
-      super('')
+      @unparsed_expression = text
       @parsed_expression = text
     end
   end
@@ -432,14 +433,14 @@ class TargetExpression < Expression
       super
 
       words = split(text)
-      # puts "DBG: words=[#{words.join('] [')}]"
+      ## puts "DBG: words=[#{words.join('] [')}]"
       tokens = tokenize(words)
       @parsed_expression = parse(tokens)
       raise(BASICException, "Value is not assignable (length 0)", caller) if @parsed_expression.length == 0
       raise(BASICException, "Value is not assignable (type #{@parsed_expression[-1].class})", caller) if @parsed_expression[-1].class.to_s != 'VariableValue'
       @parsed_expression[-1] = VariableReference.new(@parsed_expression[-1])
     else
-      super('')
+      @unparsed_expression = text
       @parsed_expression = text
     end
   end

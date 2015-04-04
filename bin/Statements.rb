@@ -190,8 +190,8 @@ class PrintStatement < AbstractStatement
           print_item.sub!(/^ +/, '')
           print_item.sub!(/ +$/, '')
           var_name = PrintableExpression.new(print_item)
-        rescue BASICException
-          @errors << "Invalid expression #{print_item} class: #{print_item.class}"
+        rescue BASICException => e
+          @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
     end
