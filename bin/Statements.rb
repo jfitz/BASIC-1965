@@ -69,8 +69,8 @@ class LetStatement < AbstractStatement
   
   def execute_cmd(interpreter)
     # diagnostics
-    # @expression.dump
-    # puts
+    ## @expression.dump
+    ## puts
     # end diagnostics
     interpreter.set_value(@expression.target(interpreter), @expression.value(interpreter))
   end
@@ -162,9 +162,13 @@ class PrintStatement < AbstractStatement
     (0..text.size-1).each do | i |
       c = text[i,1]
       if [',', ';'].include?(c) and not in_string then
-        args << current_arg
+        args << current_arg if current_arg.length > 0
         current_arg = String.new
         args << c
+      elsif c == '"' and in_string then
+        current_arg += c
+        args << current_arg
+        current_arg = String.new
       else
         current_arg += c
       end
@@ -180,23 +184,31 @@ class PrintStatement < AbstractStatement
     item_list = split_args(line.sub(/^ +/, ''))
     # variable/constant, [separator, variable/constant]... [separator]
     @print_item_list = Array.new
-    var_name = nil
+    print_thing = nil
     item_list.each do | print_item |
       if print_item == ',' or print_item == ';' then
-        @print_item_list << { 'variable' => var_name, 'carriage' => print_item }
-        var_name = nil
+        # the item is a carriage control item
+        # save previous print thing, or create an empty one
+        print_thing = PrintableExpression.new('""') if print_thing == nil
+        @print_item_list << { 'variable' => print_thing, 'carriage' => print_item }
+        print_thing = nil
       else
         begin
+          # store previous print thing
+          if print_thing != nil then
+            @print_item_list << { 'variable' => print_thing, 'carriage' => '' }
+          end
+          # remove leading and trailing blanks
           print_item.sub!(/^ +/, '')
           print_item.sub!(/ +$/, '')
-          var_name = PrintableExpression.new(print_item)
+          print_thing = PrintableExpression.new(print_item)
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
     end
-    @print_item_list << { 'variable' => var_name, 'carriage' => '' } if not var_name.nil?
-    @print_item_list << { 'variable' => var_name, 'carriage' => '' } if @print_item_list.empty?
+    @print_item_list << { 'variable' => print_thing, 'carriage' => 'NL' } if not print_thing.nil?
+    @print_item_list << { 'variable' => PrintableExpression.new('""'), 'carriage' => 'NL' } if @print_item_list.empty?
   end
   
   def to_s
@@ -218,10 +230,10 @@ class PrintStatement < AbstractStatement
       separator = print_item['carriage']
       case separator
       when ';'
-        printer.null
+        printer.halftab
       when ','
         printer.tab
-      else
+      when 'NL'
         printer.newline
       end
 
@@ -472,6 +484,8 @@ class StopStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
+    printer = interpreter.print_handler
+    printer.newline_when_needed
     interpreter.stop
   end
 end
@@ -486,6 +500,8 @@ class EndStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
+    printer = interpreter.print_handler
+    printer.newline_when_needed
     interpreter.stop
   end
 end

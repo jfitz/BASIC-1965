@@ -41,12 +41,19 @@ class PrintHandler
     @column = new_column
   end
   
+  def halftab
+    new_column = ((@column / 6) + 1) * 6
+    (new_column - @column).times { | i | print ' ' }
+    @column = new_column
+  end
+  
   def newline
-    print "\n"
+    puts
     @column = 0
   end
   
-  def null
+  def newline_when_needed
+    newline if @column > 0
   end
 end
 
