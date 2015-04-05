@@ -299,7 +299,7 @@ class ReturnStatement < AbstractStatement
 end
 
 class ForNextControl
-  def initialize(control_variable_name, loop_start_number, start_value, end_value, step_value)
+  def initialize(control_variable, loop_start_number, start_value, end_value, step_value)
     if start_value.class.to_s != 'Fixnum' and start_value.class.to_s != 'Float' then
       raise Exception, "Invalid start value #{start_value} #{start_value.class}", caller
     end
@@ -309,7 +309,7 @@ class ForNextControl
     if step_value.class.to_s != 'Fixnum' and step_value.class.to_s != 'Float' then
       raise Exception, "Invalid step value #{step_value} #{step_value.class}", caller
     end
-    @control_variable_name = control_variable_name
+    @control_variable = control_variable
     @loop_start_number = loop_start_number
     @start_value = start_value
     @end_value = end_value
@@ -319,11 +319,11 @@ class ForNextControl
   
   def bump_control_variable(interpreter)
     @current_value = @current_value + @step_value
-    interpreter.set_value(@control_variable_name, @current_value)
+    interpreter.set_value(@control_variable, @current_value)
   end
   
-  def control_variable_name
-    @control_variable_name
+  def control_variable
+    @control_variable
   end
   
   def end_value
@@ -335,7 +335,7 @@ class ForNextControl
   end
   
   def terminated?(interpreter)
-    current_value = interpreter.get_value(@control_variable_name).to_v
+    current_value = interpreter.get_value(@control_variable).to_v
     if @step_value > 0 then (current_value + @step_value > @end_value)
     elsif @step_value < 0 then (current_value + @step_value < @end_value)
     else true
@@ -382,7 +382,7 @@ class ForStatement < AbstractStatement
     interpreter.set_value(@control_variable, from_value)
     to_value = @end_value.evaluate(interpreter).to_v
     step_value = @step_value.evaluate(interpreter).to_v
-    fornext_control = ForNextControl.new(@control_variable.to_s, interpreter.get_next_line, from_value, to_value, step_value)
+    fornext_control = ForNextControl.new(@control_variable, interpreter.get_next_line, from_value, to_value, step_value)
     interpreter.set_fornext(fornext_control)
   end
 end
@@ -423,10 +423,10 @@ class ReadStatement < AbstractStatement
     super('READ')
     text_list = line.gsub(/ /, '').split(',')
     # variable [comma, variable]...
-    @variable_list = Array.new
+    @expression_list = Array.new
     text_list.each do | text_item |
       begin
-        @variable_list << TargetExpression.new(text_item)
+        @expression_list << TargetExpression.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -434,12 +434,13 @@ class ReadStatement < AbstractStatement
   end
   
   def to_s
-    @keyword + ' ' + @variable_list.join(', ')
+    @keyword + ' ' + @expression_list.join(', ')
   end
   
   def execute_cmd(interpreter)
-    @variable_list.each do | var_name |
-      interpreter.set_value(var_name.evaluate(interpreter), interpreter.read_data)
+    @expression_list.each do | expression |
+      variable = expression.evaluate(interpreter)
+      interpreter.set_value(variable, interpreter.read_data)
     end
   end
 end

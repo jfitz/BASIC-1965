@@ -262,11 +262,13 @@ class Interpreter
   end
   
   def set_value(variable, value)
+    ## puts "SET: #{variable.class} #{variable} = #{value.class} #{value}"
     c = value.class.to_s
     if c != 'Fixnum' and c != 'Float' and c!= 'NumericConstant' then
       raise Exception, "Bad variable value type #{c}", caller
     end
-    ## puts "SET: #{variable} = #{value}"
+    subscripts = variable.subscripts
+    ## puts "subscripts: [#{subscripts.join(' ')}]"
     begin
       v = variable.to_s
       if c == 'NumericConstant' then
@@ -293,8 +295,9 @@ class Interpreter
   end
   
   def set_fornext(fornext_control)
-    control_variable = fornext_control.control_variable_name
-    @fornexts[control_variable] = fornext_control
+    control_variable = fornext_control.control_variable
+    control_variable_name = control_variable.to_s
+    @fornexts[control_variable_name] = fornext_control
   end
   
   def get_fornext(control_variable)

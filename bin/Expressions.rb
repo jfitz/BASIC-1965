@@ -14,6 +14,7 @@ class Variable
   def initialize(text)
     raise(BASICException, "'#{text}' is not a variable name", caller) if text.class.to_s != 'VariableName'
     @var_name = text
+    @subscripts = Array.new
   end
 
   def is_operator
@@ -41,7 +42,15 @@ class Variable
   end
 
   def to_s
-    @var_name.to_s
+    if subscripts.length > 0 then
+      @var_name.to_s + '(' + @subscripts.join(',') + ')'
+    else
+      @var_name.to_s
+    end
+  end
+
+  def subscripts
+    @subscripts
   end
 end
 
@@ -52,10 +61,10 @@ class VariableValue < Variable
   
   def evaluate(interpreter, stack)
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
-      subscripts = stack.pop
-      num_args = subscripts.length
+      @subscripts = stack.pop
+      num_args = @subscripts.length
       raise(BASICException, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
-      evaled_var_name = @var_name.to_s + '(' + subscripts.join(',') + ')'
+      evaled_var_name = @var_name.to_s + '(' + @subscripts.join(',') + ')'
       interpreter.get_value(evaled_var_name)
     else
       interpreter.get_value(@var_name.to_s)
@@ -70,13 +79,11 @@ class VariableReference < Variable
   
   def evaluate(interpreter, stack)
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
-      subscripts = stack.pop
-      num_args = subscripts.length
+      @subscripts = stack.pop
+      num_args = @subscripts.length
       raise(BASICException, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
-      evaled_var_name = @var_name.to_s + '(' + subscripts.join(',') + ')'
-    else
-      @var_name.to_s
     end
+    self
   end
 end
 
@@ -427,7 +434,7 @@ class TargetExpression
   end
 
   def evaluate(interpreter)
-    eval(interpreter, @parsed_expression, 'String')
+    eval(interpreter, @parsed_expression, 'VariableReference')
   end
 end
 
