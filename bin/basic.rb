@@ -26,25 +26,35 @@ class LineNumber
 end
 
 class PrintHandler
-  def initialize
+  def initialize(max_width)
     @column = 0
+    @max_width = max_width
   end
   
   def print_item(text)
-    print text
-    @column += text.size
+    if (@column + text.length) < @max_width then
+      print text
+      @column += text.size
+    else
+      overflow = @column + text.length - @max_width
+      first_count = text.length - overflow
+      print text[0..first_count]
+      newline
+      print text[first_count..text.length]
+      @column = overflow
+    end
   end
   
   def tab
     new_column = ((@column / 14) + 1) * 14
-    (new_column - @column).times { | i | print ' ' }
-    @column = new_column
+    spaces = ' ' * (new_column - @column)
+    print_item(spaces)
   end
   
   def halftab
     new_column = ((@column / 6) + 1) * 6
-    (new_column - @column).times { | i | print ' ' }
-    @column = new_column
+    spaces = ' ' * (new_column - @column)
+    print_item(spaces)
   end
   
   def newline
@@ -62,7 +72,7 @@ class Interpreter
     @running = false
     @data_store = Array.new
     @data_index = 0
-    @printer = PrintHandler.new
+    @printer = PrintHandler.new(66)
     @return_stack = Array.new
     @fornexts = Hash.new
   end
