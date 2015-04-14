@@ -79,23 +79,32 @@ end
 class InputStatement < AbstractStatement
   def initialize(line)
     super('INPUT')
-    @default_prompt = '? '
+    @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
     # todo: allow text prompt (default to ?)
     text_list = split_args(line.gsub(/^ +/, ''), false)
-    # variable [comma, variable]...
-    @expression_list = Array.new
-    text_list.each do | text_item |
+    if text_list.length > 0 then
       begin
-        @expression_list << TargetExpression.new(text_item)
+        @prompt = TextConstant.new(text_list[0])
+        text_list.delete_at(0)
       rescue BASICException
-        @errors << "Invalid variable #{text_item}"
       end
+      # variable [comma, variable]...
+      @expression_list = Array.new
+      text_list.each do | text_item |
+        begin
+          @expression_list << TargetExpression.new(text_item)
+        rescue BASICException
+          @errors << "Invalid variable #{text_item}"
+        end
+      end
+    else
+      @errors << "No variables specified"
     end
   end
   
   def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    @keyword + ' ' + (@prompt != @default_prompt ? @prompt.to_s + ', ' : '') + @expression_list.join(', ')
   end
   
   private
@@ -114,7 +123,7 @@ class InputStatement < AbstractStatement
     values = Array.new
     prompt = @prompt
     while values.size < @expression_list.size do
-      print prompt
+      print prompt.value
       input_line = gets
       input_line.chomp!
       text_values = input_line.split(/,/)
