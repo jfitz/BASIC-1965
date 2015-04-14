@@ -79,8 +79,10 @@ end
 class InputStatement < AbstractStatement
   def initialize(line)
     super('INPUT')
+    @default_prompt = '? '
+    @prompt = @default_prompt
     # todo: allow text prompt (default to ?)
-    text_list = line.gsub(/ /, '').split(',')
+    text_list = split_args(line.gsub(/^ +/, ''), false)
     # variable [comma, variable]...
     @expression_list = Array.new
     text_list.each do | text_item |
@@ -110,8 +112,9 @@ class InputStatement < AbstractStatement
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
     values = Array.new
+    prompt = @prompt
     while values.size < @expression_list.size do
-      print '?'
+      print prompt
       input_line = gets
       input_line.chomp!
       text_values = input_line.split(/,/)
@@ -123,6 +126,7 @@ class InputStatement < AbstractStatement
           raise BASICException, "Invalid value #{value}", caller
         end
       end
+      prompt = @default_prompt
     end
     name_value_pairs = zip(@expression_list, values)
     name_value_pairs.each do | hash |
@@ -155,34 +159,10 @@ class IfStatement < AbstractStatement
 end
 
 class PrintStatement < AbstractStatement
-  private
-  def split_args(text)
-    args = Array.new
-    current_arg = String.new
-    in_string = false
-    (0..text.size-1).each do | i |
-      c = text[i,1]
-      if [',', ';'].include?(c) and not in_string then
-        args << current_arg if current_arg.length > 0
-        current_arg = String.new
-        args << c
-      elsif c == '"' and in_string then
-        current_arg += c
-        args << current_arg
-        current_arg = String.new
-      else
-        current_arg += c
-      end
-      in_string = !in_string if ['"'].include?(c)
-    end
-    args << current_arg if current_arg.size > 0
-    args
-  end
-  
   public
   def initialize(line)
     super('PRINT')
-    item_list = split_args(line.sub(/^ +/, ''))
+    item_list = split_args(line.sub(/^ +/, ''), true)
     # variable/constant, [separator, variable/constant]... [separator]
     @print_item_list = Array.new
     print_thing = nil

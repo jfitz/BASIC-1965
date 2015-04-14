@@ -234,6 +234,30 @@ class Function
   end
 end
 
+def split_args(text, keep_separators)
+  args = Array.new
+  current_arg = String.new
+  in_string = false
+  text.split('').each do | c |
+    if [',', ';'].include?(c) and not in_string then
+      args << current_arg if current_arg.length > 0
+      current_arg = String.new
+      args << c if keep_separators
+    elsif c == '"' and in_string then
+      current_arg += c
+      args << current_arg
+      current_arg = String.new
+    elsif c == ' ' and not in_string then
+      c = c
+    else
+      current_arg += c
+    end
+    in_string = !in_string if c == '"'
+  end
+  args << current_arg if current_arg.size > 0
+  args
+end
+
 def split(text)
   # split the input infix string
   regex = Regexp.new('([\+\-\*\/\(\)\^])')
