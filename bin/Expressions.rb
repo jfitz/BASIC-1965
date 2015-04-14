@@ -60,6 +60,7 @@ class VariableValue < Variable
   end
   
   def evaluate(interpreter, stack)
+    ## puts "VariableValue::evaluate() #{to_s}"
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
       @subscripts = stack.pop
       num_args = @subscripts.length
@@ -78,6 +79,7 @@ class VariableReference < Variable
   end
   
   def evaluate(interpreter, stack)
+    ## puts "VariableReference::evaluate() #{to_s}"
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
       @subscripts = stack.pop
       num_args = @subscripts.length
@@ -88,8 +90,8 @@ class VariableReference < Variable
 end
 
 class List
-  def initialize(parsed_expression)
-    @parsed_expressions = parsed_expression
+  def initialize(parsed_expressions)
+    @parsed_expressions = parsed_expressions
   end
 
   def is_operator
@@ -117,11 +119,7 @@ class List
   end
   
   def evaluate(interpreter, stack)
-    result = Array.new
-    @parsed_expressions.each do | parsed_expression |
-      result << eval(interpreter, parsed_expression, 'NumericConstant')
-    end
-    result
+    eval(interpreter, @parsed_expressions, 'NumericConstant')
   end
 
   def to_s
@@ -157,6 +155,7 @@ class Function
   end
   
   def evaluate(interpreter, stack)
+    ## puts "Function::evaluate() #{to_s}"
     result = 0
     args = stack.pop
     ## puts "args: #{args.class} #{args}"
@@ -291,6 +290,7 @@ def tokenize(words)
 end
 
 def parse(tokens)
+  parsed_expressions = Array.new
   operator_stack = Array.new
   expression_stack = Array.new
   parsed_expression = Array.new
@@ -360,37 +360,44 @@ def parse(tokens)
   end
   ## puts "OS: [#{operator_stack.join('] [')}]"
   ## puts "CE: [#{parsed_expression.join('] [')}]"
-  parsed_expression
+  parsed_expressions << parsed_expression
+  parsed_expressions
 end
 
-def eval(interpreter, parsed_expression, expected_result_class)
-  ## puts "eval CE: [#{@parsed_expression.join('] [')}]"
-  stack = Array.new
-  parsed_expression.each do | token |
-    ## puts "token: #{token.class} #{token}"
-    case token.class.to_s
-    when 'List'
-      x = token.evaluate(interpreter, stack)
-    when 'UnaryOperator','BinaryOperator','Function'
-      x = token.evaluate(interpreter, stack)
-    when 'NumericConstant'
-      x = token.evaluate(interpreter, stack)
-    when 'VariableValue','VariableReference'
-      x = token.evaluate(interpreter, stack)
-    else
-      raise Exception, "Unknown data type #{x.class}", caller
+def eval(interpreter, parsed_expressions, expected_result_class)
+  expected = parsed_expressions.length
+  result_values = Array.new
+  parsed_expressions.each do | parsed_expression |
+    ## puts "eval CE: [#{parsed_expression.join('] [')}]"
+    stack = Array.new
+    parsed_expression.each do | token |
+      ## puts "token: #{token.class} #{token}"
+      case token.class.to_s
+      when 'List'
+        x = token.evaluate(interpreter, stack)
+      when 'UnaryOperator','BinaryOperator','Function'
+        x = token.evaluate(interpreter, stack)
+      when 'NumericConstant'
+        x = token.evaluate(interpreter, stack)
+      when 'VariableValue','VariableReference'
+        x = token.evaluate(interpreter, stack)
+      else
+        raise Exception, "Unknown data type #{x.class}", caller
+      end
+      stack.push(x)
+      ## puts "stack: [#{stack.join('] [')}]"
     end
-    stack.push(x)
-    ## puts "stack: [#{stack.join('] [')}]"
+    # should be only one item on stack
+    actual = stack.length
+    raise(Exception, "Expected #{expected} items, (#{actual}) remaining on evaluation stack", caller) if actual != 1
+    # very each item is of correct type
+    item = stack[0]
+    raise(Exception, "Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != expected_result_class
+    result_values << item
   end
-  # should be only one item on stack
-  n = stack.length
-  raise(Exception, "Too many items (#{n}) remaining on evaluation stack", caller) if n > 1
-  raise(Exception, "Not enough items (#{n}) remaining on evaluation stack", caller) if n < 1
-  # that is the result
-  item = stack[0]
-  raise(Exception, "Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != expected_result_class
-  item
+  actual = result_values.length
+  raise(Exception, "Expected #{expected} items, (#{actual}) remaining on evaluation stack", caller) if actual != expected
+  result_values
 end
 
 class ValueExpression
@@ -402,8 +409,8 @@ class ValueExpression
     ## puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
     ## puts "DBG: tokens=[#{tokens.join('] [')}]"
-    @parsed_expression = parse(tokens)
-    ## puts "DBG: CE=[#{@parsed_expression.join('] [')}]"
+    @parsed_expressions = parse(tokens)
+    ## puts "DBG: CE=[#{@parsed_expressions.join('] [')}]"
   end
 
   def to_s
@@ -411,7 +418,10 @@ class ValueExpression
   end
 
   def evaluate(interpreter)
-    eval(interpreter, @parsed_expression, 'NumericConstant')
+    ## puts "ValueExpression::evaluate() #{to_s}"
+    values = eval(interpreter, @parsed_expressions, 'NumericConstant')
+    raise(Exception, "Expected only 1 value", caller) if values.length != 1
+    values[0]
   end
 end
 
@@ -423,10 +433,13 @@ class TargetExpression
     words = split(text)
     ## puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
-    @parsed_expression = parse(tokens)
-    raise(BASICException, "Value is not assignable (length 0)", caller) if @parsed_expression.length == 0
-    raise(BASICException, "Value is not assignable (type #{@parsed_expression[-1].class})", caller) if @parsed_expression[-1].class.to_s != 'VariableValue'
-    @parsed_expression[-1] = VariableReference.new(@parsed_expression[-1])
+    @parsed_expressions = parse(tokens)
+    raise(BASICException, "Value lst is empty (length 0)", caller) if @parsed_expressions.length == 0
+    @parsed_expressions.each do | parsed_expression |
+      raise(BASICException, "Value is not assignable (length 0)", caller) if parsed_expression.length == 0
+      raise(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})", caller) if parsed_expression[-1].class.to_s != 'VariableValue'
+      parsed_expression[-1] = VariableReference.new(parsed_expression[-1])
+    end
   end
 
   def to_s
@@ -434,7 +447,10 @@ class TargetExpression
   end
 
   def evaluate(interpreter)
-    eval(interpreter, @parsed_expression, 'VariableReference')
+    ## puts "TargetExpression::evaluate() #{to_s}"
+    values = eval(interpreter, @parsed_expressions, 'VariableReference')
+    raise(Exception, "Expected only 1 value", caller) if values.length != 1
+    values[0]
   end
 end
 
