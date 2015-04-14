@@ -79,14 +79,13 @@ end
 class InputStatement < AbstractStatement
   def initialize(line)
     super('INPUT')
-    # todo: allow subscripted variables
-    # todo: allow text prompt (?)
+    # todo: allow text prompt (default to ?)
     text_list = line.gsub(/ /, '').split(',')
     # variable [comma, variable]...
-    @variable_list = Array.new
+    @expression_list = Array.new
     text_list.each do | text_item |
       begin
-        @variable_list << VariableName.new(text_item)
+        @expression_list << TargetExpression.new(text_item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -94,7 +93,7 @@ class InputStatement < AbstractStatement
   end
   
   def to_s
-    @keyword + ' ' + @variable_list.join(', ')
+    @keyword + ' ' + @expression_list.join(', ')
   end
   
   private
@@ -109,8 +108,9 @@ class InputStatement < AbstractStatement
   
   public
   def execute_cmd(interpreter)
+    printer = interpreter.print_handler
     values = Array.new
-    while values.size < @variable_list.size do
+    while values.size < @expression_list.size do
       print '?'
       input_line = gets
       input_line.chomp!
@@ -118,16 +118,17 @@ class InputStatement < AbstractStatement
       text_values.each do | value |
         begin
           var_value = NumericConstant.new(value)
-          values << var_value.evaluate(interpreter)
+          values << var_value.evaluate(interpreter, nil)
         rescue BASICException
           raise BASICException, "Invalid value #{value}", caller
         end
       end
     end
-    name_value_pairs = zip(@variable_list, values)
+    name_value_pairs = zip(@expression_list, values)
     name_value_pairs.each do | hash |
-      interpreter.set_value(hash['name'], hash['value'])
+      interpreter.set_value(hash['name'].evaluate(interpreter), hash['value'])
     end
+    printer.implied_newline
   end
 end
 

@@ -65,6 +65,10 @@ class PrintHandler
   def newline_when_needed
     newline if @column > 0
   end
+
+  def implied_newline
+    @column = 0
+  end
 end
 
 class Interpreter
@@ -413,6 +417,7 @@ if ARGV.size > 0 then
       filename = arg if filename == '' #take only the first filename
     end
   end
+  ARGV.clear
   # set_trace_func proc { | event, file, line, id, binding, classname |
   #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include?(classname.to_s)
   # }
