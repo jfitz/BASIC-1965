@@ -56,15 +56,21 @@ class LetStatement < AbstractStatement
   def initialize(line)
     super('LET')
     begin
-      @expression = Assignment.new(line.gsub(/ /, ''))
+      @assignment = Assignment.new(line.gsub(/ /, ''))
+      if @assignment.count_target != 1 then
+        @errors << 'Assignment must have only one left-hand value'
+      end
+      if @assignment.count_value != 1 then
+        @errors << 'Assignment must have only one right-hand value'
+      end
     rescue BASICException => message
       @errors << message
-      @expression = line
+      @assignment = line
     end
   end
   
   def to_s
-    @keyword + ' ' + @expression.to_s
+    @keyword + ' ' + @assignment.to_s
   end
   
   def execute_cmd(interpreter)
@@ -72,7 +78,9 @@ class LetStatement < AbstractStatement
     ## @expression.dump
     ## puts
     # end diagnostics
-    interpreter.set_value(@expression.target(interpreter), @expression.value(interpreter))
+    l_values = @assignment.eval_target(interpreter)
+    r_values = @assignment.eval_value(interpreter)
+    interpreter.set_value(l_values, r_values)
   end
 end
 

@@ -212,14 +212,14 @@ class Function
       x = args[0]
       raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
-      f = xv > 0 ? Math.sin(xv) : 0
+      f = xv >= 0 ? Math.sin(xv) : 0
       result = float_to_possible_int(f)
     when 'COS'
       raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
       x = args[0]
       raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
       xv = x.to_v
-      f = xv > 0 ? Math.cos(xv) : 0
+      f = xv >= 0 ? Math.cos(xv) : 0
       result = float_to_possible_int(f)
     end
     NumericConstant.new(result)
@@ -441,6 +441,10 @@ class ValueExpression
     @unparsed_expression
   end
 
+  def count
+    @parsed_expressions.length
+  end
+
   def evaluate(interpreter)
     ## puts "ValueExpression::evaluate() #{to_s}"
     values = eval(interpreter, @parsed_expressions, 'NumericConstant')
@@ -468,6 +472,10 @@ class TargetExpression
 
   def to_s
     @unparsed_expression
+  end
+
+  def count
+    @parsed_expressions.length
   end
 
   def evaluate(interpreter)
@@ -554,11 +562,19 @@ class Assignment
     @expression = ValueExpression.new(parts[1])
   end
 
-  def target(interpreter)
+  def count_target
+    @target.count
+  end
+
+  def eval_target(interpreter)
     @target.evaluate(interpreter)
   end
+
+  def count_value
+    @expression.count
+  end
   
-  def value(interpreter)
+  def eval_value(interpreter)
     @expression.evaluate(interpreter)
   end
   
