@@ -37,6 +37,20 @@ class UnknownStatement < AbstractStatement
   end
 end
 
+class EmptyStatement < AbstractStatement
+  def initialize()
+    super('')
+  end
+  
+  def to_s
+    ''
+  end
+
+  def execute_cmd(interpreter)
+    0
+  end
+end
+
 class RemarkStatement < AbstractStatement
   def initialize(line)
     super('REM')

@@ -85,33 +85,34 @@ class Interpreter
     m = /^\d+/.match(line)
     # convert to int for a sortable key
     line_num = m[0].to_i
-    # strip leading blanks
-    line_text = m.post_match.sub(/^ +/, '')
+    # strip leading and trailing blanks (SPACEs and TABs)
+    line_text = m.post_match.sub(/^\s+/, '').sub(/\s+$/, '')
     # pick out the keyword
-    object = UnknownStatement.new(line_text)
+    statement = UnknownStatement.new(line_text)
     begin
-      if line_text[0..2] == 'REM' then object = RemarkStatement.new(line_text[3..-1])
-      elsif line_text[0..2] == 'LET' then object = LetStatement.new(line_text[3..-1])
-      elsif line_text[0..4] == 'INPUT' then object = InputStatement.new(line_text[5..-1])
-      elsif line_text[0..1] == 'IF' then object = IfStatement.new(line_text[2..-1])
-      elsif line_text[0..4] == 'PRINT' then object = PrintStatement.new(line_text[5..-1])
-      elsif line_text[0..4] == 'GO TO' then object = GotoStatement.new(line_text[5..-1])
-      elsif line_text[0..3] == 'GOTO' then object = GotoStatement.new(line_text[4..-1])
-      elsif line_text[0..4] == 'GOSUB' then object = GosubStatement.new(line_text[5..-1])
-      elsif line_text[0..2] == 'FOR' then object = ForStatement.new(line_text[3..-1])
-      elsif line_text[0..3] == 'NEXT' then object = NextStatement.new(line_text[4..-1])
-      elsif line_text == 'RETURN' then object = ReturnStatement.new
-      elsif line_text[0..3] == 'READ' then object = ReadStatement.new(line_text[4..-1])
-      elsif line_text[0..3] == 'DATA' then object = DataStatement.new(line_text[4..-1])
+      if line_text == '' then statement = EmptyStatement.new()
+      elsif line_text[0..2] == 'REM' then statement = RemarkStatement.new(line_text[3..-1])
+      elsif line_text[0..2] == 'LET' then statement = LetStatement.new(line_text[3..-1])
+      elsif line_text[0..4] == 'INPUT' then statement = InputStatement.new(line_text[5..-1])
+      elsif line_text[0..1] == 'IF' then statement = IfStatement.new(line_text[2..-1])
+      elsif line_text[0..4] == 'PRINT' then statement = PrintStatement.new(line_text[5..-1])
+      elsif line_text[0..4] == 'GO TO' then statement = GotoStatement.new(line_text[5..-1])
+      elsif line_text[0..3] == 'GOTO' then statement = GotoStatement.new(line_text[4..-1])
+      elsif line_text[0..4] == 'GOSUB' then statement = GosubStatement.new(line_text[5..-1])
+      elsif line_text[0..2] == 'FOR' then statement = ForStatement.new(line_text[3..-1])
+      elsif line_text[0..3] == 'NEXT' then statement = NextStatement.new(line_text[4..-1])
+      elsif line_text == 'RETURN' then statement = ReturnStatement.new
+      elsif line_text[0..3] == 'READ' then statement = ReadStatement.new(line_text[4..-1])
+      elsif line_text[0..3] == 'DATA' then statement = DataStatement.new(line_text[4..-1])
       #todo: RESTORE
-      elsif line_text == 'STOP' then object = StopStatement.new
-      elsif line_text == 'END' then object = EndStatement.new
-      elsif line_text[0..4] == 'TRACE' then object = TraceStatement.new(line_text[5..-1])
+      elsif line_text == 'STOP' then statement = StopStatement.new
+      elsif line_text == 'END' then statement = EndStatement.new
+      elsif line_text[0..4] == 'TRACE' then statement = TraceStatement.new(line_text[5..-1])
       end
     rescue BASICException
       puts "Syntax error"
     end
-    [line_num, object]
+    [line_num, statement]
   end
 
   def cmd_list
