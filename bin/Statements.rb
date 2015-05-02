@@ -79,8 +79,10 @@ class LetStatement < AbstractStatement
     ## puts
     # end diagnostics
     l_values = @assignment.eval_target(interpreter)
+    l_value = l_values[0]
     r_values = @assignment.eval_value(interpreter)
-    interpreter.set_value(l_values, r_values)
+    r_value = r_values[0]
+    interpreter.set_value(l_value, r_value)
   end
 end
 
@@ -138,7 +140,8 @@ class InputStatement < AbstractStatement
       text_values.each do | value |
         begin
           var_value = NumericConstant.new(value)
-          values << var_value.evaluate(interpreter, nil)
+          r_value = var_value.evaluate(interpreter, nil)
+          values << r_value
         rescue BASICException
           raise BASICException, "Invalid value #{value}", caller
         end
@@ -147,7 +150,9 @@ class InputStatement < AbstractStatement
     end
     name_value_pairs = zip(@expression_list, values)
     name_value_pairs.each do | hash |
-      interpreter.set_value(hash['name'].evaluate(interpreter), hash['value'])
+      r_values = hash['name'].evaluate(interpreter)
+      r_value = r_values[0]
+      interpreter.set_value(r_value, hash['value'])
     end
     printer.implied_newline
   end
@@ -376,10 +381,10 @@ class ForStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
-    from_value = @start_value.evaluate(interpreter).to_v
+    from_value = @start_value.evaluate(interpreter)[0].to_v
     interpreter.set_value(@control_variable, from_value)
-    to_value = @end_value.evaluate(interpreter).to_v
-    step_value = @step_value.evaluate(interpreter).to_v
+    to_value = @end_value.evaluate(interpreter)[0].to_v
+    step_value = @step_value.evaluate(interpreter)[0].to_v
     fornext_control = ForNextControl.new(@control_variable, interpreter.get_next_line, from_value, to_value, step_value)
     interpreter.set_fornext(fornext_control)
   end
@@ -437,7 +442,8 @@ class ReadStatement < AbstractStatement
   
   def execute_cmd(interpreter)
     @expression_list.each do | expression |
-      variable = expression.evaluate(interpreter)
+      variables = expression.evaluate(interpreter)
+      variable = variables[0]
       interpreter.set_value(variable, interpreter.read_data)
     end
   end

@@ -448,8 +448,8 @@ class ValueExpression
   def evaluate(interpreter)
     ## puts "ValueExpression::evaluate() #{to_s}"
     values = eval(interpreter, @parsed_expressions, 'NumericConstant')
-    raise(Exception, "Expected only 1 value", caller) if values.length != 1
-    values[0]
+    raise(Exception, "Expected some values", caller) if values.length == 0
+    values
   end
 end
 
@@ -481,8 +481,8 @@ class TargetExpression
   def evaluate(interpreter)
     ## puts "TargetExpression::evaluate() #{to_s}"
     values = eval(interpreter, @parsed_expressions, 'VariableReference')
-    raise(Exception, "Expected only 1 value", caller) if values.length != 1
-    values[0]
+    raise(Exception, "Expected some values", caller) if values.length == 0
+    values
   end
 end
 
@@ -514,7 +514,8 @@ class PrintableExpression
     if @arithmetic_expression.nil? then
       @text_constant.to_formatted_s(interpreter)
     else
-      numeric_constant = @arithmetic_expression.evaluate(interpreter)
+      numeric_constants = @arithmetic_expression.evaluate(interpreter)
+      numeric_constant = numeric_constants[0]
       numeric_constant.to_formatted_s(interpreter)
     end
   end
@@ -530,8 +531,10 @@ class BooleanExpression
   end
   
   def evaluate(interpreter)
-    av = @a.evaluate(interpreter).to_v
-    bv = @b.evaluate(interpreter).to_v
+    avs = @a.evaluate(interpreter)
+    av = avs[0].to_v
+    bvs = @b.evaluate(interpreter)
+    bv = bvs[0].to_v
     case @operator.to_s
     when '='
         av == bv
