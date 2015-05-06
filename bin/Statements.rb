@@ -150,19 +150,10 @@ class InputStatement < AbstractStatement
       print prompt.value
       input_line = gets
       input_line.chomp!
-      text_values = input_line.split(/,/)
-      text_values.each do | value |
-        begin
-          var_value = NumericConstant.new(value)
-          r_value = var_value.evaluate(interpreter, nil)
-          values << r_value
-        rescue BASICException
-          raise BASICException, "Invalid value #{value}", caller
-        end
-      end
+      values += textline_to_constants(input_line)
       prompt = @default_prompt
     end
-    name_value_pairs = zip(@expression_list, values)
+    name_value_pairs = zip(@expression_list, values[0, @expression_list.length])
     name_value_pairs.each do | hash |
       r_values = hash['name'].evaluate(interpreter)
       r_value = r_values[0]
@@ -466,15 +457,7 @@ end
 class DataStatement < AbstractStatement
   def initialize(line)
     super('DATA')
-    @data_list = line.gsub(/ /, '').split(',')
-    # number [comma, number]...
-    @data_list.each do | text_item |
-      begin
-        NumericConstant.new(text_item)
-      rescue BASICException
-        @errors << "Invalid value #{text_item}"
-      end
-    end
+    @data_list = textline_to_constants(line)
   end
   
   def to_s
@@ -482,10 +465,7 @@ class DataStatement < AbstractStatement
   end
 
   def pre_execute(interpreter)
-    @data_list.each do | text_item |
-      x = NumericConstant.new(text_item)
-      interpreter.store_data(x)
-    end
+    interpreter.store_data(@data_list)
   end
   
   def execute_cmd(interpreter)

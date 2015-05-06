@@ -1,7 +1,7 @@
 class NumericConstant
   def initialize(text)
-    int_regex = Regexp.new('^\d+(E\d+)?$')
-    float_regex = Regexp.new('^\d+\.\d*(E\d+)?$')
+    int_regex = Regexp.new('^\s*\d+(E\d+)?$')
+    float_regex = Regexp.new('^\s*\d+\.\d*(E\d+)?$')
     if text.class.to_s == 'Fixnum' then @value = text
     elsif text.class.to_s == 'Float' then @value = text
     elsif int_regex.match(text) then @value = text.to_f.to_i

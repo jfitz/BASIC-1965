@@ -264,6 +264,19 @@ def split(text)
   text.split(regex)
 end
 
+def textline_to_constants(line)
+  values = Array.new
+  text_values = line.split(/,/)
+  text_values.each do | value |
+    begin
+      values << NumericConstant.new(value)
+    rescue BASICException
+      raise BASICException, "Invalid value #{value}", caller
+    end
+  end
+  values
+end
+
 def tokenize(words)
   tokens = Array.new
   last_was_operand = false

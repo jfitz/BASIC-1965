@@ -321,8 +321,8 @@ class Interpreter
     fornext
   end
   
-  def store_data(value)
-    @data_store << value
+  def store_data(values)
+    @data_store += values
   end
   
   def read_data
