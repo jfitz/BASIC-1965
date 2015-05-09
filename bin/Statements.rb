@@ -181,7 +181,7 @@ class IfStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
-    interpreter.set_next_line(@destination.to_i) if @boolean_expression.evaluate(interpreter)
+    interpreter.set_next_line(@destination) if @boolean_expression.evaluate(interpreter)
   end
 end
 
@@ -197,13 +197,13 @@ class PrintStatement < AbstractStatement
       if print_item == ',' or print_item == ';' then
         # the item is a carriage control item
         # save previous print thing, or create an empty one
-        print_thing = PrintableExpression.new('""') if print_thing == nil
+        print_thing = PrintableExpression.new('""') if print_thing.nil?
         @print_item_list << { 'variable' => print_thing, 'carriage' => print_item }
         print_thing = nil
       else
         begin
           # store previous print thing
-          if print_thing != nil then
+          if not print_thing.nil? then
             @print_item_list << { 'variable' => print_thing, 'carriage' => '' }
           end
           # remove leading and trailing blanks
@@ -265,8 +265,7 @@ class GotoStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
-    next_line_number = @destination.to_i
-    interpreter.set_next_line(next_line_number)
+    interpreter.set_next_line(@destination)
   end
 end
 
@@ -287,8 +286,7 @@ class GosubStatement < AbstractStatement
   
   def execute_cmd(interpreter)
     interpreter.push_return(interpreter.get_next_line)
-    next_line_number = @destination.to_i
-    interpreter.set_next_line(next_line_number)
+    interpreter.set_next_line(@destination)
   end
 end
 

@@ -10,14 +10,30 @@ require 'Statements'
 $randomizer = Random.new
 
 class LineNumber
-  def initialize(number)
+  def initialize(line_number)
     regex = Regexp.new('^\d+$')
-    raise(BASICException, "'#{number}' is not a line number", caller) if regex !~ number
-    @line_number = number.to_i
+    raise(BASICException, "'#{number}' is not a line number", caller) if regex !~ line_number
+    @line_number = line_number.to_i
+  end
+
+  def line_number
+    @line_number
   end
   
-  def to_i
-    @line_number
+  def eql?(rhs)
+    @line_number == rhs.line_number
+  end
+
+  def ==(rhs)
+    @line_number == rhs.line_number
+  end
+
+  def hash
+    @line_number.hash
+  end
+
+  def <=>(rhs)
+    @line_number <=> rhs.line_number
   end
   
   def to_s
@@ -83,8 +99,7 @@ class Interpreter
   
   def parse_line(line)
     m = /^\d+/.match(line)
-    # convert to int for a sortable key
-    line_num = m[0].to_i
+    line_num = LineNumber.new(m[0])
     # strip leading and trailing blanks (SPACEs and TABs)
     line_text = m.post_match.sub(/^\s+/, '').sub(/\s+$/, '')
     # pick out the keyword
@@ -126,7 +141,7 @@ class Interpreter
   
   private
   def verify_next_line_number(line_numbers, next_line_number)
-    if next_line_number == nil then
+    if next_line_number.nil? then
       raise BASICException, "Program terminated without END", caller
     end
     if !line_numbers.include?(next_line_number) then
@@ -317,7 +332,7 @@ class Interpreter
   
   def get_fornext(control_variable)
     fornext = @fornexts[control_variable.to_s]
-    raise(BASICException, "NEXT without FOR", caller) if fornext == nil
+    raise(BASICException, "NEXT without FOR", caller) if fornext.nil?
     fornext
   end
   
@@ -349,7 +364,7 @@ class Interpreter
       cmd.chomp!
       
       # process command
-      if cmd =~ /^\d+/ then
+      if cmd =~ /^\d/ then
         # program line -- store
         line_parts = parse_line(cmd)
         line_num = line_parts[0]
