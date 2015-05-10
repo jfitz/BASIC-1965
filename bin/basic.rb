@@ -46,8 +46,16 @@ class LineNumber
     @line_number <=> rhs.line_number
   end
 
+  def >(rhs)
+    @line_number > rhs.line_number
+  end
+  
   def >=(rhs)
     @line_number >= rhs.line_number
+  end
+  
+  def <(rhs)
+    @line_number < rhs.line_number
   end
   
   def <=(rhs)
@@ -59,37 +67,64 @@ class LineNumber
   end
 end
 
+def make_line_numbers(linespec, program_lines)
+  line_numbers = Array.new
+  if linespec == '' then
+    line_numbers = @program_lines.keys.sort
+  else
+    begin
+      line_number = LineNumber.new(linespec)
+      line_numbers << line_number if @program_lines.has_key?(line_number)
+    rescue BASICException
+      begin
+        line_numbers = line_range(linespec, @program_lines)
+      rescue BASICException
+        line_numbers = line_list(linespec, @program_lines)
+      end
+    end
+  end
+end
+
 def line_range(spec, lines)
-    list = Array.new
-    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
-    regex = Regexp.new('^\d+-\d+$')
-    raise(BASICException, "Invalid list specification", caller) if regex !~ spec
-    parts = spec.split('-')
-    start_val = LineNumber.new(parts[0])
-    end_val = LineNumber.new(parts[1])
-    line_numbers = lines.keys.sort
-    line_numbers.each { | line_number |
-      list << line_number if line_number >= start_val and line_number <= end_val
-    }
-    list
+  list = Array.new
+  spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
+  regex = Regexp.new('^\d+-\d+$')
+  raise(BASICException, "Invalid list specification", caller) if regex !~ spec
+  parts = spec.split('-')
+  start_val = LineNumber.new(parts[0])
+  end_val = LineNumber.new(parts[1])
+  raise(BASICException, "Invalid list specification", caller) if end_val < start_val
+  line_numbers = lines.keys.sort
+  line_numbers.each { | line_number |
+    list << line_number if line_number >= start_val and line_number <= end_val
+  }
+  list
 end
 
 def line_list(spec, lines)
-    list = Array.new
-    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
-    regex = Regexp.new('^\d+\+\d+$')
-    raise(BASICException, "Invalid list specification", caller) if regex !~ spec
+  list = Array.new
+  spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
+  two_regex = Regexp.new('^\d+\+\d+$')
+  one_regex = Regexp.new('^\d+\+$')
+  if two_regex =~ spec then
     parts = spec.split('+')
     start_val = LineNumber.new(parts[0])
     count = parts[1].to_i
-    line_numbers = lines.keys.sort
-    line_numbers.each { | line_number |
-      if line_number >= start_val and count >= 0 then
-        list << line_number
-        count -= 1
-      end
-    }
-    list
+  elsif one_regex =~ spec then
+    parts = spec.split('+')
+    start_val = LineNumber.new(parts[0])
+    count = 20
+  else
+    raise(BASICException, "Invalid list specification", caller)
+  end
+  line_numbers = lines.keys.sort
+  line_numbers.each { | line_number |
+    if line_number >= start_val and count >= 0 then
+      list << line_number
+      count -= 1
+    end
+  }
+  list
 end
 
 class PrintHandler
@@ -183,31 +218,14 @@ class Interpreter
 
   def cmd_list(linespec)
     linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
-    if @program_lines.size > 0 then
-      if linespec == '' then
-        line_numbers = @program_lines.keys.sort
-        line_numbers.each { | line_number | puts "#{line_number.to_s} #{@program_lines[line_number]}" }
-      else
-        begin
-          line_number = LineNumber.new(linespec)
-          if @program_lines.has_key?(line_number) then
-            puts "#{line_number.to_s} #{@program_lines[line_number]}"
-          else
-            puts "No line"
-          end
-        rescue BASICException
-          begin
-            line_numbers = line_range(linespec, @program_lines)
-            line_numbers.each { | line_number | puts "#{line_number.to_s} #{@program_lines[line_number]}" }
-          rescue BASICException
-            begin
-              line_numbers = line_list(linespec, @program_lines)
-              line_numbers.each { | line_number | puts "#{line_number.to_s} #{@program_lines[line_number]}" }
-            rescue BASICException => e
-              puts e
-            end
-          end
+    if @program_lines.size > 0
+      begin
+        line_numbers = make_line_numbers(linespec, @program_lines)
+        line_numbers.each do | line_number |
+          puts "#{line_number.to_s} #{@program_lines[line_number]}"
         end
+      rescue BASICException => e
+        puts e
       end
     else
       puts 'No program loaded'
