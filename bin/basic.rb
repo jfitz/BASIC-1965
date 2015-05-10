@@ -74,6 +74,24 @@ def line_range(spec, lines)
     list
 end
 
+def line_list(spec, lines)
+    list = Array.new
+    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
+    regex = Regexp.new('^\d+\+\d+$')
+    raise(BASICException, "Invalid list specification", caller) if regex !~ spec
+    parts = spec.split('+')
+    start_val = LineNumber.new(parts[0])
+    count = parts[1].to_i
+    line_numbers = lines.keys.sort
+    line_numbers.each { | line_number |
+      if line_number >= start_val and count >= 0 then
+        list << line_number
+        count -= 1
+      end
+    }
+    list
+end
+
 class PrintHandler
   def initialize(max_width)
     @column = 0
@@ -181,6 +199,13 @@ class Interpreter
           begin
             line_numbers = line_range(linespec, @program_lines)
             line_numbers.each { | line_number | puts "#{line_number.to_s} #{@program_lines[line_number]}" }
+          rescue BASICException
+            begin
+              line_numbers = line_list(linespec, @program_lines)
+              line_numbers.each { | line_number | puts "#{line_number.to_s} #{@program_lines[line_number]}" }
+            rescue BASICException => e
+              puts e
+            end
           end
         end
       end
