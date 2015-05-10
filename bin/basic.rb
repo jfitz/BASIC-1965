@@ -11,9 +11,15 @@ $randomizer = Random.new
 
 class LineNumber
   def initialize(line_number)
-    regex = Regexp.new('^\d+$')
-    raise(BASICException, "'#{number}' is not a line number", caller) if regex !~ line_number
-    @line_number = line_number.to_i
+    if line_number.class.to_s == 'String' then
+      regex = Regexp.new('^\d+$')
+      raise(BASICException, "'#{line_number}' is not a line number", caller) if regex !~ line_number
+      @line_number = line_number.to_i
+    elsif line_number.class.to_s == 'Fixnum' then
+      @line_number = line_number
+    else
+      raise BASICException, 'Invalid line number', caller
+    end
   end
 
   def line_number
@@ -32,13 +38,40 @@ class LineNumber
     @line_number.hash
   end
 
+  def succ
+    LineNumber.new(@line_number + 1)
+  end
+
   def <=>(rhs)
     @line_number <=> rhs.line_number
+  end
+
+  def >=(rhs)
+    @line_number >= rhs.line_number
+  end
+  
+  def <=(rhs)
+    @line_number <= rhs.line_number
   end
   
   def to_s
     @line_number.to_s
   end
+end
+
+def line_range(spec, lines)
+    list = Array.new
+    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
+    regex = Regexp.new('^\d+-\d+$')
+    raise(BASICException, "Invalid list specification", caller) if regex !~ spec
+    parts = spec.split('-')
+    start_val = LineNumber.new(parts[0])
+    end_val = LineNumber.new(parts[1])
+    line_numbers = lines.keys.sort
+    line_numbers.each { | line_number |
+      list << line_number if line_number >= start_val and line_number <= end_val
+    }
+    list
 end
 
 class PrintHandler
@@ -130,10 +163,27 @@ class Interpreter
     [line_num, statement]
   end
 
-  def cmd_list
-    line_numbers = @program_lines.keys.sort
-    if line_numbers.size > 0 then
-      line_numbers.each { | line_num | puts "#{line_num.to_s} #{@program_lines[line_num]}" }
+  def cmd_list(linespec)
+    linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
+    if @program_lines.size > 0 then
+      if linespec == '' then
+        line_numbers = @program_lines.keys.sort
+        line_numbers.each { | line_number | puts "#{line_number.to_s} #{@program_lines[line_number]}" }
+      else
+        begin
+          line_number = LineNumber.new(linespec)
+          if @program_lines.has_key?(line_number) then
+            puts "#{line_number.to_s} #{@program_lines[line_number]}"
+          else
+            puts "No line"
+          end
+        rescue BASICException
+          begin
+            line_numbers = line_range(linespec, @program_lines)
+            line_numbers.each { | line_number | puts "#{line_number.to_s} #{@program_lines[line_number]}" }
+          end
+        end
+      end
     else
       puts 'No program loaded'
     end
@@ -198,7 +248,7 @@ class Interpreter
   end
   
   def cmd_load(filename)
-    filename = filename.sub(/^\s+/, '')
+    filename = filename.sub(/^\s+/, '').sub(/\s+$/, '')
     if filename.size > 0 then
       begin
         File.open(filename, 'r') do | file |
@@ -378,7 +428,7 @@ class Interpreter
       else
         # immediate command -- execute
         if cmd == '' then x = 0
-        elsif cmd == 'LIST' then cmd_list
+        elsif cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
         elsif cmd == 'RUN' then
           timing = Benchmark.measure { cmd_run(false) }
           user_time = timing.utime + timing.cutime
