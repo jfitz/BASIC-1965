@@ -67,64 +67,74 @@ class LineNumber
   end
 end
 
-def make_line_numbers(linespec, program_lines)
-  line_numbers = Array.new
-  if linespec == '' then
-    line_numbers = @program_lines.keys.sort
-  else
-    begin
-      line_number = LineNumber.new(linespec)
-      line_numbers << line_number if @program_lines.has_key?(line_number)
-    rescue BASICException
+class LineNumberRange
+  def initialize(text, program_line_numbers)
+    @line_numbers = Array.new
+    @range_type = :empty
+    if text == '' then
+      @line_numbers = program_line_numbers
+      @range_type = :all
+    else
       begin
-        line_numbers = line_range(linespec, @program_lines)
+        line_number = LineNumber.new(text)
+        @line_numbers << line_number if program_line_numbers.include?(line_number)
+        @range_type = :single
       rescue BASICException
-        line_numbers = line_list(linespec, @program_lines)
+        begin
+          @line_numbers = line_range(text, program_line_numbers)
+        rescue BASICException
+          @line_numbers = line_list(text, program_line_numbers)
+        end
+        @range_type = :range
       end
     end
   end
-end
 
-def line_range(spec, lines)
-  list = Array.new
-  spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
-  regex = Regexp.new('^\d+-\d+$')
-  raise(BASICException, "Invalid list specification", caller) if regex !~ spec
-  parts = spec.split('-')
-  start_val = LineNumber.new(parts[0])
-  end_val = LineNumber.new(parts[1])
-  raise(BASICException, "Invalid list specification", caller) if end_val < start_val
-  line_numbers = lines.keys.sort
-  line_numbers.each { | line_number |
-    list << line_number if line_number >= start_val and line_number <= end_val
-  }
-  list
-end
-
-def line_list(spec, lines)
-  list = Array.new
-  spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
-  two_regex = Regexp.new('^\d+\+\d+$')
-  one_regex = Regexp.new('^\d+\+$')
-  if two_regex =~ spec then
-    parts = spec.split('+')
-    start_val = LineNumber.new(parts[0])
-    count = parts[1].to_i
-  elsif one_regex =~ spec then
-    parts = spec.split('+')
-    start_val = LineNumber.new(parts[0])
-    count = 20
-  else
-    raise(BASICException, "Invalid list specification", caller)
+  def line_numbers
+    @line_numbers
   end
-  line_numbers = lines.keys.sort
-  line_numbers.each { | line_number |
-    if line_number >= start_val and count >= 0 then
-      list << line_number
-      count -= 1
+
+  private
+  def line_range(spec, program_line_numbers)
+    list = Array.new
+    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
+    regex = Regexp.new('^\d+-\d+$')
+    raise(BASICException, "Invalid list specification", caller) if regex !~ spec
+    parts = spec.split('-')
+    start_val = LineNumber.new(parts[0])
+    end_val = LineNumber.new(parts[1])
+    raise(BASICException, "Invalid list specification", caller) if end_val < start_val
+    program_line_numbers.each { | line_number |
+      list << line_number if line_number >= start_val and line_number <= end_val
+    }
+    list
+  end
+
+  private
+  def line_list(spec, program_line_numbers)
+    list = Array.new
+    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
+    two_regex = Regexp.new('^\d+\+\d+$')
+    one_regex = Regexp.new('^\d+\+$')
+    if two_regex =~ spec then
+      parts = spec.split('+')
+      start_val = LineNumber.new(parts[0])
+      count = parts[1].to_i
+    elsif one_regex =~ spec then
+      parts = spec.split('+')
+      start_val = LineNumber.new(parts[0])
+      count = 20
+    else
+      raise(BASICException, "Invalid list specification", caller)
     end
-  }
-  list
+    program_line_numbers.each { | line_number |
+      if line_number >= start_val and count >= 0 then
+        list << line_number
+        count -= 1
+      end
+    }
+    list
+  end
 end
 
 class PrintHandler
@@ -220,7 +230,8 @@ class Interpreter
     linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
     if @program_lines.size > 0
       begin
-        line_numbers = make_line_numbers(linespec, @program_lines)
+        line_number_range = LineNumberRange.new(linespec, @program_lines.keys.sort)
+        line_numbers = line_number_range.line_numbers
         line_numbers.each do | line_number |
           puts "#{line_number.to_s} #{@program_lines[line_number]}"
         end
