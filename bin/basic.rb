@@ -94,6 +94,18 @@ class LineNumberRange
     @line_numbers
   end
 
+  def is_single
+    @range_type == :single
+  end
+
+  def is_range
+    @range_type == :range
+  end
+
+  def is_all
+    @range_type == :all
+  end
+
   private
   def line_range(spec, program_line_numbers)
     list = Array.new
@@ -234,6 +246,38 @@ class Interpreter
         line_numbers = line_number_range.line_numbers
         line_numbers.each do | line_number |
           puts "#{line_number.to_s} #{@program_lines[line_number]}"
+        end
+      rescue BASICException => e
+        puts e
+      end
+    else
+      puts 'No program loaded'
+    end
+  end
+  
+  def cmd_delete(linespec)
+    linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
+    if @program_lines.size > 0
+      begin
+        line_number_range = LineNumberRange.new(linespec, @program_lines.keys.sort)
+        line_numbers = line_number_range.line_numbers
+        if line_number_range.is_single then
+          line_numbers.each do | line_number |
+            @program_lines.delete(line_number)
+          end
+        elsif line_number_range.is_range then
+          line_numbers.each do | line_number |
+            puts "#{line_number.to_s} #{@program_lines[line_number]}"
+          end
+          print "DELETE THESE LINES? "
+          answer = gets.chomp
+          if answer == "YES" then
+            line_numbers.each do | line_number |
+              @program_lines.delete(line_number)
+            end
+          end
+        elsif line_number_range.is_all then
+          puts "Type NEW to delete an entire program"
         end
       rescue BASICException => e
         puts e
@@ -464,8 +508,7 @@ class Interpreter
       print "READY\n" if need_prompt
 
       # read input
-      cmd = gets
-      cmd.chomp!
+      cmd = gets.chomp
       
       # process command
       if cmd =~ /^\d/ then
@@ -483,6 +526,7 @@ class Interpreter
         # immediate command -- execute
         if cmd == '' then x = 0
         elsif cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
+        elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
         elsif cmd == 'RUN' then
           timing = Benchmark.measure { cmd_run(false) }
           user_time = timing.utime + timing.cutime
