@@ -427,12 +427,12 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line)
     super('READ')
-    text_list = line.gsub(/ /, '').split(',')
+    item_list = split_args(line.sub(/^ +/, ''), false)
     # variable [comma, variable]...
     @expression_list = Array.new
-    text_list.each do | text_item |
+    item_list.each do | item |
       begin
-        @expression_list << TargetExpression.new(text_item)
+        @expression_list << TargetExpression.new(item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end

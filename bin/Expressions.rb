@@ -238,8 +238,9 @@ def split_args(text, keep_separators)
   args = Array.new
   current_arg = String.new
   in_string = false
+  parens_level = 0
   text.split('').each do | c |
-    if [',', ';'].include?(c) and not in_string then
+    if [',', ';'].include?(c) and not in_string and parens_level == 0 then
       args << current_arg if current_arg.length > 0
       current_arg = String.new
       args << c if keep_separators
@@ -249,6 +250,12 @@ def split_args(text, keep_separators)
       current_arg = String.new
     elsif c == ' ' and not in_string then
       c = c
+    elsif c == '(' and not in_string then
+      current_arg += c
+      parens_level += 1
+    elsif c == ')' and not in_string then
+      current_arg += c
+      parens_level -= 1 if parens_level > 0
     else
       current_arg += c
     end
@@ -260,7 +267,7 @@ end
 
 def split(text)
   # split the input infix string
-  regex = Regexp.new('([\+\-\*\/\(\)\^])')
+  regex = Regexp.new('([\+\-\*\/\(\)\^,])')
   text.split(regex)
 end
 
@@ -288,8 +295,11 @@ def tokenize(words)
         tokens << '('
         last_was_operand = true
       else
-        if word == ')'
+        if word == ')' then
           tokens << ')'
+          last_was_operand = true
+        elsif word == ',' then
+          tokens << ','
           last_was_operand = true
         else
           begin
@@ -331,16 +341,21 @@ def parse(tokens)
   operator_stack = Array.new
   expression_stack = Array.new
   parsed_expression = Array.new
+  parens_stack = Array.new
 
   ## puts "tokens: [#{tokens.join('] [')}]"
   last_was_function = false
   last_was_variable = false
+  parens_group = Array.new
+  ## puts " PG new: [#{parens_group.join('] [')}]"
   # scan the token list from left to right
   tokens.each do | token |
     if token != '' then
       ## puts "token: #{token.class} #{token}"
+      ## puts "PG: [#{parens_group.join('] [')}]"
       # If the token is a left parenthesis, push it on the operator stack
       if token == '(' then
+        ## puts " PG (: [#{parens_group.join('] [')}]"
         if last_was_function or last_was_variable then
           # start parsing the list of function arguments
           expression_stack.push(parsed_expression)
@@ -349,26 +364,48 @@ def parse(tokens)
         else
           operator_stack.push(token)
         end
+        ## puts " PG pre-<<: [#{parens_group.join('] [')}]"
+        parens_stack << parens_group
+        parens_group = Array.new
         last_was_function = false
         last_was_variable = false
+      # If the token is a comma,
+      # pop the operator stack until the corresponding left parenthesis is found
+      # Append each operator to the end of the output list
+      elsif token == ',' then
+        while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1] != '[' do
+          op = operator_stack.pop
+          parsed_expression << op
+          ## puts "  PE ): [#{parsed_expression.join('] [')}]"
+        end
+        parens_group << parsed_expression
+        ## puts " PG ,: [#{parens_group.join('] [')}]"
+        parsed_expression = Array.new
       else
         raise(BASICException, "Function requires parentheses", caller) if last_was_function
         # If the token is a right parenthesis,
         # pop the operator stack until the corresponding left parenthesis is removed
         # Append each operator to the end of the output list
         if token == ')' then
+          ## puts " PG ) 1: [#{parens_group.join('] [')}]"
           while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1] != '[' do
             op = operator_stack.pop
             parsed_expression << op
+            ## puts "  PE ): [#{parsed_expression.join('] [')}]"
           end
+          parens_group << parsed_expression
           start_op = operator_stack.pop  # remove the '(' or '['
+          ## puts " PG ) 2: [#{parens_group.join('] [')}]"
           if start_op == '[' then
-            pe = Array.new
-            pe << parsed_expression
-            list = List.new(pe)
+            ## puts "  PE [: [#{parsed_expression.join('] [')}]"
+            list = List.new(parens_group)
             operator_stack.push(list)
+            ## puts "  OS [: [#{operator_stack.join('] [')}]"
             parsed_expression = expression_stack.pop
+            ## puts "  PE [: [#{parsed_expression.join('] [')}]"
           end
+          parens_group = parens_stack.pop
+          ## puts " PG pop: [#{parens_group.join('] [')}]"
           last_was_function = false
           last_was_variable = false
         else
@@ -378,6 +415,7 @@ def parse(tokens)
             while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1] != '[' and operator_stack[-1].precedence >= token.precedence do
               op = operator_stack.pop
               parsed_expression << op
+              ## puts "  PE stack: [#{parsed_expression.join('] [')}]"
             end
             # push the operator onto the operator stack
             if not token.is_terminal then
@@ -386,18 +424,19 @@ def parse(tokens)
           else
             # the token is an operand, append it to the output list
             parsed_expression << token
+            ## puts "  PE operand: [#{parsed_expression.join('] [')}]"
           end
           last_was_function = token.is_function
           last_was_variable = token.is_variable
         end
       end
     end
-    ## puts "  OS: [#{operator_stack.join('] [')}]"
-    ## puts "  CE: [#{parsed_expression.join('] [')}]"
+    ## puts "  OS end: [#{operator_stack.join('] [')}]"
+    ## puts "  CE end: [#{parsed_expressions.join('] [')}]"
   end
-  ## puts "OS: [#{operator_stack.join('] [')}]"
-  ## puts "CE: [#{parsed_expression.join('] [')}]"
+  ## puts "OS fin: [#{operator_stack.join('] [')}]"
   parsed_expressions << parsed_expression
+  ## puts "CE fin: [#{parsed_expressions.join('] [')}]"
   parsed_expressions
 end
 
@@ -408,7 +447,7 @@ def eval(interpreter, parsed_expressions, expected_result_class)
     ## puts "eval CE: [#{parsed_expression.join('] [')}]"
     stack = Array.new
     parsed_expression.each do | token |
-      ## puts "token: #{token.class} #{token}"
+      ## puts "parse::token: #{token.class} #{token}"
       case token.class.to_s
       when 'List'
         x = token.evaluate(interpreter, stack)
@@ -421,6 +460,7 @@ def eval(interpreter, parsed_expressions, expected_result_class)
       else
         raise Exception, "Unknown data type #{x.class}", caller
       end
+      ## puts "parse::value: #{x}"
       stack.push(x)
       ## puts "stack: [#{stack.join('] [')}]"
     end
@@ -447,7 +487,7 @@ class ValueExpression
     tokens = tokenize(words)
     ## puts "DBG: tokens=[#{tokens.join('] [')}]"
     @parsed_expressions = parse(tokens)
-    ## puts "DBG: CE=[#{@parsed_expressions.join('] [')}]"
+    ## puts "ValueExpression::init CE=[#{@parsed_expressions.join('] [')}]"
   end
 
   def to_s
@@ -460,8 +500,10 @@ class ValueExpression
 
   def evaluate(interpreter)
     ## puts "ValueExpression::evaluate() #{to_s}"
+    ## puts "ValueExpression:: [#{@parsed_expressions.join('] [')}]"
     values = eval(interpreter, @parsed_expressions, 'NumericConstant')
     raise(Exception, "Expected some values", caller) if values.length == 0
+    ## puts "ValueExpression::values: [#{values.join('] [')}]"
     values
   end
 end
@@ -474,9 +516,12 @@ class TargetExpression
     words = split(text)
     ## puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
+    ## puts "DBG: tokens=[#{tokens.join('] [')}]"
     @parsed_expressions = parse(tokens)
-    raise(BASICException, "Value lst is empty (length 0)", caller) if @parsed_expressions.length == 0
+    ## puts "TargetExpression::init CE=[#{@parsed_expressions.join('] [')}]"
+    raise(BASICException, "Value list is empty (length 0)", caller) if @parsed_expressions.length == 0
     @parsed_expressions.each do | parsed_expression |
+      ## puts "expression: #{parsed_expression} #{parsed_expression.class}"
       raise(BASICException, "Value is not assignable (length 0)", caller) if parsed_expression.length == 0
       raise(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})", caller) if parsed_expression[-1].class.to_s != 'VariableValue'
       parsed_expression[-1] = VariableReference.new(parsed_expression[-1])
@@ -493,6 +538,7 @@ class TargetExpression
 
   def evaluate(interpreter)
     ## puts "TargetExpression::evaluate() #{to_s}"
+    ## puts "TargetExpression:: [#{@parsed_expressions.join('] [')}]"
     values = eval(interpreter, @parsed_expressions, 'VariableReference')
     raise(Exception, "Expected some values", caller) if values.length == 0
     values

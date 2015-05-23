@@ -420,12 +420,14 @@ class Interpreter
   end
   
   def get_value(variable)
+    ## puts "GET: #{variable}"
     begin
       v = variable.to_s
       if !@variables.has_key?(v) then
         @variables[v] = 0
       end
       x = @variables[v]
+      ## puts "GET:value #{x}"
       case x.class.to_s
       when 'Fixnum'
         NumericConstant.new(x)
