@@ -57,4 +57,6 @@ bash test/bin/run_one_test.sh sqrabs
 bash test/bin/run_one_test.sh table
 bash test/bin/run_one_test.sh income
 bash test/bin/run_one_test.sh rc-sum
+bash test/bin/run_one_test.sh inverse_7
+bash test/bin/run_one_test.sh inverse_9
 
