@@ -399,7 +399,9 @@ class Interpreter
   end
 
   def dump_vars
-    puts @variables
+    @variables.each do | key, value |
+      puts "#{key}: #{value}"
+    end
   end
   
   def stop
