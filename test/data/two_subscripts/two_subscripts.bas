@@ -1,3 +1,4 @@
+8 DIM A(10,10)
 10 FOR I = 1 TO 3	
 20 FOR J = 1 TO 2
 30 LET A(I,J) = I * J

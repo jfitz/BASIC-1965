@@ -66,6 +66,42 @@ class RemarkStatement < AbstractStatement
   end
 end
 
+class DimStatement < AbstractStatement
+  def initialize(line)
+    super('DIM')
+    text_list = split_args(line.gsub(/^ +/, ''), false)
+    # variable [comma, variable]...
+    @expression_list = Array.new
+    if text_list.size > 0 then
+      text_list.each do | text_item |
+        begin
+          @expression_list << DimensionExpression.new(text_item)
+        rescue BASICException
+          @errors << "Invalid variable #{text_item}"
+        end
+      end
+    else
+      @errors << "No variables specified"
+    end
+  end
+
+  def to_s
+    @keyword + ' ' + @expression_list.join(', ')
+  end
+
+  def execute_cmd(interpreter)
+    @expression_list.each do | expression |
+      variables = expression.evaluate(interpreter)
+      variable = variables[0]
+      subscripts = variable.subscripts
+      if subscripts.size == 0 then
+        raise BASICException, "DIM statement requires subscript range", caller
+      end
+      interpreter.set_dimensions(variable.name, subscripts)
+    end
+  end
+end
+
 class LetStatement < AbstractStatement
   def initialize(line)
     super('LET')
@@ -88,10 +124,6 @@ class LetStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
-    # diagnostics
-    ## @expression.dump
-    ## puts
-    # end diagnostics
     l_values = @assignment.eval_target(interpreter)
     l_value = l_values[0]
     r_values = @assignment.eval_value(interpreter)
@@ -105,7 +137,6 @@ class InputStatement < AbstractStatement
     super('INPUT')
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
-    # todo: allow text prompt (default to ?)
     text_list = split_args(line.gsub(/^ +/, ''), false)
     if text_list.length > 0 then
       begin

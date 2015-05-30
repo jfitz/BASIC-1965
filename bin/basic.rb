@@ -203,6 +203,7 @@ class Interpreter
     @printer = PrintHandler.new(66)
     @return_stack = Array.new
     @fornexts = Hash.new
+    @dimensions = Hash.new
   end
   
   def parse_line(line)
@@ -215,6 +216,7 @@ class Interpreter
     begin
       if line_text == '' then statement = EmptyStatement.new()
       elsif line_text[0..2] == 'REM' then statement = RemarkStatement.new(line_text[3..-1])
+      elsif line_text[0..2] == 'DIM' then statement = DimStatement.new(line_text[3..-1])
       elsif line_text[0..2] == 'LET' then statement = LetStatement.new(line_text[3..-1])
       elsif line_text[0..4] == 'INPUT' then statement = InputStatement.new(line_text[5..-1])
       elsif line_text[0..1] == 'IF' then statement = IfStatement.new(line_text[2..-1])
@@ -419,6 +421,27 @@ class Interpreter
   
   def set_next_line(line_number)
     @next_line_number = line_number
+  end
+
+  def set_dimensions(variable, subscripts)
+    @dimensions[variable] = subscripts
+  end
+
+  def check_subscripts(variable, subscripts)
+    if @dimensions.has_key?(variable)
+      dimensions = @dimensions[variable]
+    else
+      dimensions = Array.new
+      dimensions << 10
+    end
+    if subscripts.size != dimensions.size then
+      raise BASICException, "Incorrect number of subscripts", caller
+    end
+    subscripts.zip(dimensions).each do | pair |
+      if pair[0] > pair[1] then
+        raise BASICException, "Subscript #{pair[0]} out of range #{pair[1]}"
+      end
+    end
   end
   
   def get_value(variable)

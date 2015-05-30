@@ -5,15 +5,27 @@ class VariableName
     @var_name = text
   end
 
+  def eql?(rhs)
+    @var_name == rhs.to_s
+  end
+
+  def ==(rhs)
+    @var_name == rhs.to_s
+  end
+
+  def hash
+    @var_name.hash
+  end
+
   def to_s
     @var_name
   end
 end
 
 class Variable
-  def initialize(text)
-    raise(BASICException, "'#{text}' is not a variable name", caller) if text.class.to_s != 'VariableName'
-    @var_name = text
+  def initialize(variable_name)
+    raise(BASICException, "'#{variable_name}' is not a variable name", caller) if variable_name.class.to_s != 'VariableName'
+    @variable_name = variable_name
     @subscripts = Array.new
   end
 
@@ -38,14 +50,14 @@ class Variable
   end
   
   def name
-    @var_name
+    @variable_name
   end
 
   def to_s
     if subscripts.length > 0 then
-      @var_name.to_s + '(' + @subscripts.join(',') + ')'
+      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
     else
-      @var_name.to_s
+      @variable_name.to_s
     end
   end
 
@@ -55,7 +67,7 @@ class Variable
 end
 
 class VariableValue < Variable
-  def initialize(text)
+  def initialize(variable_name)
     super
   end
   
@@ -64,18 +76,19 @@ class VariableValue < Variable
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(BASICException, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
-      evaled_var_name = @var_name.to_s + '(' + @subscripts.join(',') + ')'
+      raise(Exception, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
+      interpreter.check_subscripts(@variable_name, @subscripts)
+      evaled_var_name = @variable_name.to_s + '(' + @subscripts.join(',') + ')'
       interpreter.get_value(evaled_var_name)
     else
-      interpreter.get_value(@var_name.to_s)
+      interpreter.get_value(@variable_name.to_s)
     end
   end
 end
 
 class VariableReference < Variable
-  def initialize(variable)
-    super(variable.name)
+  def initialize(variable_value)
+    super(variable_value.name)
   end
   
   def evaluate(interpreter, stack)
@@ -83,7 +96,24 @@ class VariableReference < Variable
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(BASICException, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
+      raise(Exception, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
+      interpreter.check_subscripts(@variable_name, @subscripts)
+    end
+    self
+  end
+end
+
+class VariableDimension < Variable
+  def initialize(variable_value)
+    super(variable_value.name)
+  end
+  
+  def evaluate(interpreter, stack)
+    ## puts "VariableReference::evaluate() #{to_s}"
+    if stack.size > 0 and stack[-1].class.to_s == 'Array' then
+      @subscripts = stack.pop
+      num_args = @subscripts.length
+      raise(Exception, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
     end
     self
   end
@@ -319,8 +349,8 @@ def tokenize(words)
                 last_was_operand = true
               rescue BASICException
                 begin
-                  var_name = VariableName.new(word)
-                  tokens << VariableValue.new(var_name)
+                  variable_name = VariableName.new(word)
+                  tokens << VariableValue.new(variable_name)
                   last_was_operand = true
                 rescue BASICException
                   raise BASICException, "'#{word}' is not a value or operator", caller
@@ -455,7 +485,7 @@ def eval(interpreter, parsed_expressions, expected_result_class)
         x = token.evaluate(interpreter, stack)
       when 'NumericConstant'
         x = token.evaluate(interpreter, stack)
-      when 'VariableValue','VariableReference'
+      when 'VariableValue','VariableReference','VariableDimension'
         x = token.evaluate(interpreter, stack)
       else
         raise Exception, "Unknown data type #{x.class}", caller
@@ -466,14 +496,14 @@ def eval(interpreter, parsed_expressions, expected_result_class)
     end
     # should be only one item on stack
     actual = stack.length
-    raise(Exception, "Expected #{expected} items, (#{actual}) remaining on evaluation stack", caller) if actual != 1
+    raise(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack", caller) if actual != 1
     # very each item is of correct type
     item = stack[0]
-    raise(Exception, "Wrong item type (#{item.class}) remaining on evaluation stack", caller) if item.class.to_s != expected_result_class
+    raise(Exception, "Expected item #{expected_result_class}, found item type #{item.class} remaining on evaluation stack", caller) if item.class.to_s != expected_result_class
     result_values << item
   end
   actual = result_values.length
-  raise(Exception, "Expected #{expected} items, (#{actual}) remaining on evaluation stack", caller) if actual != expected
+  raise(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack", caller) if actual != expected
   result_values
 end
 
@@ -502,7 +532,7 @@ class ValueExpression
     ## puts "ValueExpression::evaluate() #{to_s}"
     ## puts "ValueExpression:: [#{@parsed_expressions.join('] [')}]"
     values = eval(interpreter, @parsed_expressions, 'NumericConstant')
-    raise(Exception, "Expected some values", caller) if values.length == 0
+    raise(Exception, "ValueExpression: Expected some values", caller) if values.length == 0
     ## puts "ValueExpression::values: [#{values.join('] [')}]"
     values
   end
@@ -540,6 +570,43 @@ class TargetExpression
     ## puts "TargetExpression::evaluate() #{to_s}"
     ## puts "TargetExpression:: [#{@parsed_expressions.join('] [')}]"
     values = eval(interpreter, @parsed_expressions, 'VariableReference')
+    raise(Exception, "Expected some values", caller) if values.length == 0
+    values
+  end
+end
+
+class DimensionExpression
+  def initialize(text)
+    raise(Exception, "Expression cannot be empty", caller) if text.length == 0
+    @unparsed_expression = text
+
+    words = split(text)
+    ## puts "DimensionExpression: words=[#{words.join('] [')}]"
+    tokens = tokenize(words)
+    ## puts "DimensionExpression: tokens=[#{tokens.join('] [')}]"
+    @parsed_expressions = parse(tokens)
+    ## puts "DimensionExpression CE=[#{@parsed_expressions.join('] [')}]"
+    raise(BASICException, "Value list is empty (length 0)", caller) if @parsed_expressions.length == 0
+    @parsed_expressions.each do | parsed_expression |
+      ## puts "expression: #{parsed_expression} #{parsed_expression.class}"
+      raise(BASICException, "Value is not assignable (length 0)", caller) if parsed_expression.length == 0
+      raise(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})", caller) if parsed_expression[-1].class.to_s != 'VariableValue'
+      parsed_expression[-1] = VariableDimension.new(parsed_expression[-1])
+    end
+  end
+
+  def to_s
+    @unparsed_expression
+  end
+
+  def count
+    @parsed_expressions.length
+  end
+
+  def evaluate(interpreter)
+    ## puts "DimensionExpression::evaluate() #{to_s}"
+    ## puts "DimensionExpression:: [#{@parsed_expressions.join('] [')}]"
+    values = eval(interpreter, @parsed_expressions, 'VariableDimension')
     raise(Exception, "Expected some values", caller) if values.length == 0
     values
   end
