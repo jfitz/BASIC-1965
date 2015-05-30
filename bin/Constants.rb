@@ -19,6 +19,14 @@ class NumericConstant
     end
   end
 
+  def <(rhs)
+    if rhs.class.to_s == 'NumericConstant' then
+      @value < rhs.to_v
+    else
+      @value < rhs
+    end
+  end
+
   def is_operator
     false
   end

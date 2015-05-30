@@ -44,6 +44,9 @@ bash test/bin/run_one_test.sh fornext_4
 bash test/bin/run_one_test.sh function_int
 bash test/bin/run_one_test.sh function_sin
 bash test/bin/run_one_test.sh function_cos
+bash test/bin/run_one_test.sh function_tan
+bash test/bin/run_one_test.sh function_atn
+bash test/bin/run_one_test.sh function_sgn
 
 bash test/bin/run_one_test.sh celcius_to_fahrenheit
 bash test/bin/run_one_test.sh celcius_2

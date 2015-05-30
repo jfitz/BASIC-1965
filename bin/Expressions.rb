@@ -158,7 +158,7 @@ class List
 end
 
 class Function
-  @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR', 'SIN', 'COS' ]
+  @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR', 'SIN', 'COS', 'TAN', 'ATN', 'SGN' ]
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
     @name = text
@@ -251,6 +251,27 @@ class Function
       xv = x.to_v
       f = xv >= 0 ? Math.cos(xv) : 0
       result = float_to_possible_int(f)
+    when 'TAN'
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      x = args[0]
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      f = xv >= 0 ? Math.tan(xv) : 0
+      result = float_to_possible_int(f)
+    when 'ATN'
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      x = args[0]
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      xv = x.to_v
+      f = xv >= 0 ? Math.atan(xv) : 0
+      result = float_to_possible_int(f)
+    when 'SGN'
+      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      x = args[0]
+      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      result = 0
+      result = 1 if x > 0
+      result = -1 if x < 0
     end
     NumericConstant.new(result)
   end
