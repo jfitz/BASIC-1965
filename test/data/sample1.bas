@@ -1,0 +1,5 @@
+10 DEF FNA(_)=INT(_)
+20 LET B=FNA(10.2)
+30 PRINT B
+99 END
+

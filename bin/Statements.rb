@@ -502,6 +502,34 @@ class DataStatement < AbstractStatement
   end
 end
 
+class DefineFunctionStatement < AbstractStatement
+  def initialize(line)
+    super('DEF')
+    begin
+      user_function_definition = UserFunctionDefinition.new(line.gsub(/ /, ''))
+    rescue BASICException => message
+      puts message
+      @errors << message
+      @assignment = line
+    end
+    @name = user_function_definition.name
+    @arguments = user_function_definition.arguments
+    @template = user_function_definition.template
+  end
+  
+  def to_s
+    @keyword + ' ' + @name + "(#{@arguments.join(', ')}) = " + @template.to_s
+  end
+
+  def pre_execute(interpreter)
+    interpreter.set_user_function(@name, @template)
+  end
+  
+  def execute_cmd(interpreter)
+    0
+  end
+end
+
 class StopStatement < AbstractStatement
   def initialize
     super('STOP')

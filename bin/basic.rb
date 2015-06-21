@@ -204,6 +204,7 @@ class Interpreter
     @return_stack = Array.new
     @fornexts = Hash.new
     @dimensions = Hash.new
+    @user_functions = Hash.new
   end
   
   def parse_line(line)
@@ -217,6 +218,7 @@ class Interpreter
       if line_text == '' then statement = EmptyStatement.new()
       elsif line_text[0..2] == 'REM' then statement = RemarkStatement.new(line_text[3..-1])
       elsif line_text[0..2] == 'DIM' then statement = DimStatement.new(line_text[3..-1])
+      elsif line_text[0..2] == 'DEF' then statement = DefineFunctionStatement.new(line_text[3..-1])
       elsif line_text[0..2] == 'LET' then statement = LetStatement.new(line_text[3..-1])
       elsif line_text[0..4] == 'INPUT' then statement = InputStatement.new(line_text[5..-1])
       elsif line_text[0..1] == 'IF' then statement = IfStatement.new(line_text[2..-1])
@@ -405,6 +407,12 @@ class Interpreter
       puts "#{key}: #{value}"
     end
   end
+
+  def dump_user_functions
+    @user_functions.each do | name, expression |
+      puts "#{name}: #{expression}"
+    end
+  end
   
   def stop
     @running = false
@@ -425,6 +433,14 @@ class Interpreter
 
   def set_dimensions(variable, subscripts)
     @dimensions[variable] = subscripts
+  end
+
+  def set_user_function(name, expressions)
+    @user_functions[name] = expressions
+  end
+
+  def get_user_function(name)
+    @user_functions[name]
   end
 
   def check_subscripts(variable, subscripts)
@@ -569,6 +585,7 @@ class Interpreter
         elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
         elsif cmd == 'EXIT' then done = true
         elsif cmd == '.VARS' then dump_vars
+        elsif cmd == '.UDFS' then dump_user_functions
         else print "Unknown command #{cmd}\n"
         end
         need_prompt = true

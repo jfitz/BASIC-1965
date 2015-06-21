@@ -1,6 +1,6 @@
 class VariableName
   def initialize(text)
-    regex = Regexp.new('^[A-Z]\d?$')
+    regex = Regexp.new('^[A-Z_]\d?$')
     raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
     @var_name = text
   end
@@ -71,6 +71,7 @@ class VariableValue < Variable
     super
   end
   
+  # return a single value
   def evaluate(interpreter, stack)
     ## puts "VariableValue::evaluate() #{to_s}"
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
@@ -91,6 +92,7 @@ class VariableReference < Variable
     super(variable_value.name)
   end
   
+  # return a single value, a reference to this object
   def evaluate(interpreter, stack)
     ## puts "VariableReference::evaluate() #{to_s}"
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
@@ -108,6 +110,7 @@ class VariableDimension < Variable
     super(variable_value.name)
   end
   
+  # return a single value, a reference to this object
   def evaluate(interpreter, stack)
     ## puts "VariableReference::evaluate() #{to_s}"
     if stack.size > 0 and stack[-1].class.to_s == 'Array' then
@@ -184,6 +187,7 @@ class Function
     5
   end
   
+  # return a single value
   def evaluate(interpreter, stack)
     ## puts "Function::evaluate() #{to_s}"
     result = 0
@@ -285,6 +289,73 @@ class Function
   end
 end
 
+class UserFunction
+  def initialize(text)
+    regex = Regexp.new('^FN[A-Z]$')
+    raise(BASICException, "'#{text}' is not a valid function", caller) if not regex.match(text)
+    @name = text
+  end
+
+  def is_operator
+    false
+  end
+  
+  def is_function
+    true
+  end
+
+  def is_terminal
+    false
+  end
+  
+  def is_variable
+    false
+  end
+  
+  def precedence
+    5
+  end
+  
+  # return a single value
+  def evaluate(interpreter, stack)
+    ## puts "UserFunction::evaluate() #{to_s}"
+    expression_template = interpreter.get_user_function(@name)
+    # verify function is defined
+    raise(BASICException, "Function #{@name} not defined", caller) if expression_template == nil
+
+    # verify arguments
+    args = stack.pop
+    raise(BASICException, "No arguments for function", caller) if args.class.to_s != 'Array'
+    num_args = args.length
+    raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+    x = args[0]
+    raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+
+    # identify dummy variable names
+    # create new variable names
+    # assign new values to variables
+    underscore = VariableName.new('_')
+    underscore_variable = VariableValue.new(underscore)
+    interpreter.set_value(underscore_variable, x)
+    # create expression with new variable names
+    dummy_to_real_names = Hash.new
+    expression = expression_template.create_value_expression(dummy_to_real_names)
+    # evaluate new expression
+    ## puts "UserFunction::evaluate: #{expression} #{expression.class}"
+    result = expression.evaluate(interpreter)
+    ## puts "UserFunction::result #{result} #{result.class}"
+    result[0]
+  end
+
+  def to_s
+    @name + @right.to_s
+  end
+  
+  def to_formatted_s(interpreter)
+    @name + @right.to_formatted_s(interpreter)
+  end
+end
+
 def split_args(text, keep_separators)
   args = Array.new
   current_arg = String.new
@@ -366,16 +437,20 @@ def tokenize(words)
               last_was_operand = true
             rescue BASICException
               begin
-                tokens << NumericConstant.new(word)
-                last_was_operand = true
-              rescue BASICException
-                begin
-                  variable_name = VariableName.new(word)
-                  tokens << VariableValue.new(variable_name)
-                  last_was_operand = true
+                tokens << UserFunction.new(word)
                 rescue BASICException
-                  raise BASICException, "'#{word}' is not a value or operator", caller
-                end
+                  begin
+                    tokens << NumericConstant.new(word)
+                    last_was_operand = true
+                    rescue BASICException
+                      begin
+                        variable_name = VariableName.new(word)
+                        tokens << VariableValue.new(variable_name)
+                        last_was_operand = true
+                      rescue BASICException
+                        raise BASICException, "'#{word}' is not a value or operator", caller
+                      end
+                  end
               end
             end
           end
@@ -495,14 +570,14 @@ def eval(interpreter, parsed_expressions, expected_result_class)
   expected = parsed_expressions.length
   result_values = Array.new
   parsed_expressions.each do | parsed_expression |
-    ## puts "eval CE: [#{parsed_expression.join('] [')}]"
+    ## puts "eval: [#{parsed_expression.join('] [')}]"
     stack = Array.new
     parsed_expression.each do | token |
       ## puts "parse::token: #{token.class} #{token}"
       case token.class.to_s
       when 'List'
         x = token.evaluate(interpreter, stack)
-      when 'UnaryOperator','BinaryOperator','Function'
+      when 'UnaryOperator','BinaryOperator','Function','UserFunction'
         x = token.evaluate(interpreter, stack)
       when 'NumericConstant'
         x = token.evaluate(interpreter, stack)
@@ -511,9 +586,9 @@ def eval(interpreter, parsed_expressions, expected_result_class)
       else
         raise Exception, "Unknown data type #{x.class}", caller
       end
-      ## puts "parse::value: #{x}"
+      ## puts "eval::value: #{x} #{x.class}"
       stack.push(x)
-      ## puts "stack: [#{stack.join('] [')}]"
+      ## puts "eval::stack: [#{stack.join('] [')}]"
     end
     # should be only one item on stack
     actual = stack.length
@@ -534,9 +609,9 @@ class ValueExpression
     @unparsed_expression = text
 
     words = split(text)
-    ## puts "DBG: words=[#{words.join('] [')}]"
+    ## puts "ValueExpression: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
-    ## puts "DBG: tokens=[#{tokens.join('] [')}]"
+    ## puts "ValueExpression: tokens=[#{tokens.join('] [')}]"
     @parsed_expressions = parse(tokens)
     ## puts "ValueExpression::init CE=[#{@parsed_expressions.join('] [')}]"
   end
@@ -556,6 +631,40 @@ class ValueExpression
     raise(Exception, "ValueExpression: Expected some values", caller) if values.length == 0
     ## puts "ValueExpression::values: [#{values.join('] [')}]"
     values
+  end
+end
+
+class ValueExpressionTemplate
+  def initialize(text)
+    raise(Exception, "Expression cannot be empty", caller) if text.length == 0
+    @unparsed_expression = text
+
+    words = split(text)
+    ## puts "ValueExpression: words=[#{words.join('] [')}]"
+    @tokens = tokenize(words)
+    ## puts "ValueExpression: tokens=[#{tokens.join('] [')}]"
+  end
+
+  def create_value_expression(dummy_to_names)
+    concrete_tokens = Array.new
+    @tokens.each do | item |
+    #   if it is a VariableValue and name is in dummy list
+    #   replace with a VariableValue with corresponding name from real_names
+    #   else copy it unchanged
+      if item.respond_to?('is_terminal') then
+        if not item.is_terminal then
+          concrete_tokens << item
+        end
+      else
+        concrete_tokens << item
+      end
+    end
+    # create a new ValueExpression
+    ValueExpression.new(concrete_tokens.join(''))
+  end
+
+  def to_s
+    @unparsed_expression
   end
 end
 
@@ -630,6 +739,29 @@ class DimensionExpression
     values = eval(interpreter, @parsed_expressions, 'VariableDimension')
     raise(Exception, "Expected some values", caller) if values.length == 0
     values
+  end
+end
+
+class UserFunctionPrototype
+  def initialize(text)
+    regex = Regexp.new('^FN[A-Z]\([A-Z_]\)$')
+    raise(BASICException, "Invalid function specification #{text}", caller) if not regex.match(text)
+    @name = text[0..2]
+    arg0 = text[4..4]
+    @arguments = Array.new
+    @arguments << arg0
+  end
+
+  def name
+    @name
+  end
+
+  def arguments
+    @arguments
+  end
+
+  def to_s
+    @name
   end
 end
 
@@ -734,6 +866,33 @@ class Assignment
 
   def to_postfix_s
     @expression.to_postfix_s
+  end
+end
+
+class UserFunctionDefinition
+  def initialize(text)
+    # parse into name '=' expression
+    parts = text.split('=', 2)
+    ## puts "UDF: #{text}"
+    raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
+    user_function_prototype = UserFunctionPrototype.new(parts[0])
+    @name = user_function_prototype.name
+    @arguments = user_function_prototype.arguments
+    ## puts "UDF: 1 #{@name}"
+    @template = ValueExpressionTemplate.new(parts[1])
+    ## puts "UDF: 2 #{@name}"
+  end
+
+  def name
+    @name
+  end
+
+  def arguments
+    @arguments
+  end
+
+  def template
+    @template
   end
 end
 
