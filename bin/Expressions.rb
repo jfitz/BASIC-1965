@@ -1,6 +1,6 @@
 class VariableName
   def initialize(text)
-    regex = Regexp.new('^[A-Z_]\d?$')
+    regex = Regexp.new('^[A-Z]\d?$')
     raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
     @var_name = text
   end
@@ -319,9 +319,9 @@ class UserFunction
   # return a single value
   def evaluate(interpreter, stack)
     ## puts "UserFunction::evaluate() #{to_s}"
-    expression_template = interpreter.get_user_function(@name)
+    expression = interpreter.get_user_function(@name)
     # verify function is defined
-    raise(BASICException, "Function #{@name} not defined", caller) if expression_template == nil
+    raise(BASICException, "Function #{@name} not defined", caller) if expression == nil
     user_var_names = interpreter.get_user_var_names(@name)
 
     # verify arguments
@@ -332,18 +332,10 @@ class UserFunction
     x = user_var_values[0]
     raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
 
-    # identify dummy variable names
-    # build Hash of names and values
+    # dummy variable names and their (now known) values
     names_and_values = Hash[user_var_names.zip(user_var_values)]
-    # assign new values to variables
     interpreter.set_user_var_values(names_and_values)
-    # create expression with new variable names
-    dummy_to_real_names = Hash.new
-    expression = expression_template.create_value_expression(dummy_to_real_names)
-    # evaluate new expression
-    ## puts "UserFunction::evaluate: #{expression} #{expression.class}"
     result = expression.evaluate(interpreter)
-    ## puts "UserFunction::result #{result} #{result.class}"
     interpreter.clear_user_var_values
     result[0]
   end
@@ -639,40 +631,6 @@ class ValueExpression
   end
 end
 
-class ValueExpressionTemplate
-  def initialize(text)
-    raise(Exception, "Expression cannot be empty", caller) if text.length == 0
-    @unparsed_expression = text
-
-    words = split(text)
-    ## puts "ValueExpression: words=[#{words.join('] [')}]"
-    @tokens = tokenize(words)
-    ## puts "ValueExpression: tokens=[#{tokens.join('] [')}]"
-  end
-
-  def create_value_expression(dummy_to_names)
-    concrete_tokens = Array.new
-    @tokens.each do | item |
-    #   if it is a VariableValue and name is in dummy list
-    #   replace with a VariableValue with corresponding name from real_names
-    #   else copy it unchanged
-      if item.respond_to?('is_terminal') then
-        if not item.is_terminal then
-          concrete_tokens << item
-        end
-      else
-        concrete_tokens << item
-      end
-    end
-    # create a new ValueExpression
-    ValueExpression.new(concrete_tokens.join(''))
-  end
-
-  def to_s
-    @unparsed_expression
-  end
-end
-
 class TargetExpression
   def initialize(text)
     raise(Exception, "Expression cannot be empty", caller) if text.length == 0
@@ -750,7 +708,7 @@ end
 
 class UserFunctionPrototype
   def initialize(text)
-    regex = Regexp.new('^FN[A-Z]\([A-Z_]\)$')
+    regex = Regexp.new('^FN[A-Z]\([A-Z]\)$')
     raise(BASICException, "Invalid function specification #{text}", caller) if not regex.match(text)
     @name = text[0..2]
     arg0 = text[4..4]
@@ -885,7 +843,7 @@ class UserFunctionDefinition
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
     ## puts "UDF: 1 #{@name}"
-    @template = ValueExpressionTemplate.new(parts[1])
+    @template = ValueExpression.new(parts[1])
     ## puts "UDF: 2 #{@name}"
   end
 
