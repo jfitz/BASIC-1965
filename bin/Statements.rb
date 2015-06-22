@@ -521,12 +521,8 @@ class DefineFunctionStatement < AbstractStatement
     @keyword + ' ' + @name + "(#{@arguments.join(', ')}) = " + @template.to_s
   end
 
-  def pre_execute(interpreter)
-    interpreter.set_user_function(@name, @template)
-  end
-  
   def execute_cmd(interpreter)
-    0
+    interpreter.set_user_function(@name, @arguments, @template)
   end
 end
 

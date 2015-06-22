@@ -205,6 +205,8 @@ class Interpreter
     @fornexts = Hash.new
     @dimensions = Hash.new
     @user_functions = Hash.new
+    @user_var_names = Hash.new
+    @user_var_values = Array.new
   end
   
   def parse_line(line)
@@ -435,12 +437,25 @@ class Interpreter
     @dimensions[variable] = subscripts
   end
 
-  def set_user_function(name, expressions)
+  def set_user_function(name, variable_names, expressions)
+    @user_var_names[name] = variable_names
     @user_functions[name] = expressions
   end
 
   def get_user_function(name)
     @user_functions[name]
+  end
+
+  def get_user_var_names(name)
+    @user_var_names[name]
+  end
+
+  def set_user_var_values(user_var_values)
+    @user_var_values.push(user_var_values)
+  end
+
+  def clear_user_var_values
+    @user_var_values.pop
   end
 
   def check_subscripts(variable, subscripts)
@@ -461,19 +476,33 @@ class Interpreter
   end
   
   def get_value(variable)
-    ## puts "GET: #{variable}"
+    ## puts "get_value: #{variable} #{variable.class}"
+    x = nil
+    v = variable.to_s
     begin
-      v = variable.to_s
-      if !@variables.has_key?(v) then
-        @variables[v] = 0
+      # first look in user function values stack
+      length = @user_var_values.length
+      if length > 0 then
+        names_and_values = @user_var_values[-1]
+        if names_and_values.has_key?(variable) then
+          x = names_and_values[variable]
+        end
       end
-      x = @variables[v]
-      ## puts "GET:value #{x}"
+      # then look in general table
+      if x.nil? then
+        if not @variables.has_key?(v) then
+          @variables[v] = 0
+        end
+        x = @variables[v]
+      end
+      ## puts "get_value:value #{x} #{x.class}"
       case x.class.to_s
       when 'Fixnum'
         NumericConstant.new(x)
       when 'Float'
         NumericConstant.new(x)
+      when 'NumericConstant'
+        x
       else
         raise Exception, "Invalid variable value type #{x}", caller
       end

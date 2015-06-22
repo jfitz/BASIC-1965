@@ -322,21 +322,21 @@ class UserFunction
     expression_template = interpreter.get_user_function(@name)
     # verify function is defined
     raise(BASICException, "Function #{@name} not defined", caller) if expression_template == nil
+    user_var_names = interpreter.get_user_var_names(@name)
 
     # verify arguments
-    args = stack.pop
-    raise(BASICException, "No arguments for function", caller) if args.class.to_s != 'Array'
-    num_args = args.length
-    raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
-    x = args[0]
+    user_var_values = stack.pop
+    raise(BASICException, "No arguments for function", caller) if user_var_values.class.to_s != 'Array'
+    num_args = user_var_values.length
+    raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != user_var_names.length
+    x = user_var_values[0]
     raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
 
     # identify dummy variable names
-    # create new variable names
+    # build Hash of names and values
+    names_and_values = Hash[user_var_names.zip(user_var_values)]
     # assign new values to variables
-    underscore = VariableName.new('_')
-    underscore_variable = VariableValue.new(underscore)
-    interpreter.set_value(underscore_variable, x)
+    interpreter.set_user_var_values(names_and_values)
     # create expression with new variable names
     dummy_to_real_names = Hash.new
     expression = expression_template.create_value_expression(dummy_to_real_names)
@@ -344,6 +344,7 @@ class UserFunction
     ## puts "UserFunction::evaluate: #{expression} #{expression.class}"
     result = expression.evaluate(interpreter)
     ## puts "UserFunction::result #{result} #{result.class}"
+    interpreter.clear_user_var_values
     result[0]
   end
 
@@ -406,6 +407,7 @@ def textline_to_constants(line)
   values
 end
 
+# returns an Array of tokens
 def tokenize(words)
   tokens = Array.new
   last_was_operand = false
@@ -462,6 +464,7 @@ def tokenize(words)
   tokens << TerminalOperator.new
 end
 
+# returns an Array of parsed expressions
 def parse(tokens)
   parsed_expressions = Array.new
   operator_stack = Array.new
@@ -566,6 +569,7 @@ def parse(tokens)
   parsed_expressions
 end
 
+# returns an Array of values
 def eval(interpreter, parsed_expressions, expected_result_class)
   expected = parsed_expressions.length
   result_values = Array.new
@@ -624,6 +628,7 @@ class ValueExpression
     @parsed_expressions.length
   end
 
+  # returns an Array of values
   def evaluate(interpreter)
     ## puts "ValueExpression::evaluate() #{to_s}"
     ## puts "ValueExpression:: [#{@parsed_expressions.join('] [')}]"
@@ -696,6 +701,7 @@ class TargetExpression
     @parsed_expressions.length
   end
 
+  # returns an Array of targets
   def evaluate(interpreter)
     ## puts "TargetExpression::evaluate() #{to_s}"
     ## puts "TargetExpression:: [#{@parsed_expressions.join('] [')}]"
