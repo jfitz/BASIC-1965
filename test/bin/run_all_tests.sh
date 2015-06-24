@@ -62,4 +62,5 @@ bash test/bin/run_one_test.sh income
 bash test/bin/run_one_test.sh rc-sum
 bash test/bin/run_one_test.sh inverse_7
 bash test/bin/run_one_test.sh inverse_9
+bash test/bin/run_one_test.sh define
 
