@@ -1,18 +1,23 @@
 class NumericConstant
   def initialize(text)
-    int_regex = Regexp.new('^\s*\d+(E\d+)?$')
-    float_regex = Regexp.new('^\s*\d+\.\d*(E\d+)?$')
-    if text.class.to_s == 'Fixnum' then @value = text
-    elsif text.class.to_s == 'Float' then @value = text
-    elsif int_regex.match(text) then @value = text.to_f.to_i
-    elsif float_regex.match(text) then @value = text.to_f
-    else raise BASICException, "'#{text}' is not a number", caller
+    int_regex = Regexp.new('\A\s*\d+(E\d+)?\z')
+    float_regex = Regexp.new('\A\s*\d+\.\d*(E\d+)?\z')
+    if text.class.to_s == 'Fixnum'
+      @value = text
+    elsif text.class.to_s == 'Float'
+      @value = text
+    elsif int_regex.match(text)
+      @value = text.to_f.to_i
+    elsif float_regex.match(text)
+      @value = text.to_f
+    else
+      fail BASICException, "'#{text}' is not a number"
     end
     @precedence = 0
   end
 
   def >(rhs)
-    if rhs.class.to_s == 'NumericConstant' then
+    if rhs.class.to_s == 'NumericConstant'
       @value > rhs.to_v
     else
       @value > rhs
@@ -20,7 +25,7 @@ class NumericConstant
   end
 
   def <(rhs)
-    if rhs.class.to_s == 'NumericConstant' then
+    if rhs.class.to_s == 'NumericConstant'
       @value < rhs.to_v
     else
       @value < rhs
@@ -76,8 +81,11 @@ end
 
 class TextConstant
   def initialize(text)
-    if text =~ /^".*"$/ then @value = text[1..-2]
-    else raise BASICException, "'#{text}' is not a text constant", caller
+    regex = Regexp.new('\A".*"\z')
+    if regex.match(text)
+      @value = text[1..-2]
+    else
+      fail BASICException, "'#{text}' is not a text constant"
     end
     @precedence = 0
   end

@@ -11,14 +11,14 @@ $randomizer = Random.new
 
 class LineNumber
   def initialize(line_number)
-    if line_number.class.to_s == 'String' then
-      regex = Regexp.new('^\d+$')
-      raise(BASICException, "'#{line_number}' is not a line number", caller) if regex !~ line_number
+    if line_number.class.to_s == 'String'
+      regex = Regexp.new('\A\d+\z')
+      fail(BASICException, "'#{line_number}' is not a line number") if regex !~ line_number
       @line_number = line_number.to_i
-    elsif line_number.class.to_s == 'Fixnum' then
+    elsif line_number.class.to_s == 'Fixnum'
       @line_number = line_number
     else
-      raise BASICException, 'Invalid line number', caller
+      fail BASICException, 'Invalid line number'
     end
   end
 
@@ -71,7 +71,7 @@ class LineNumberRange
   def initialize(text, program_line_numbers)
     @line_numbers = Array.new
     @range_type = :empty
-    if text == '' then
+    if text == ''
       @line_numbers = program_line_numbers
       @range_type = :all
     else
@@ -111,14 +111,14 @@ class LineNumberRange
     list = Array.new
     spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
     regex = Regexp.new('^\d+-\d+$')
-    raise(BASICException, "Invalid list specification", caller) if regex !~ spec
+    fail(BASICException, "Invalid list specification") if regex !~ spec
     parts = spec.split('-')
     start_val = LineNumber.new(parts[0])
     end_val = LineNumber.new(parts[1])
-    raise(BASICException, "Invalid list specification", caller) if end_val < start_val
-    program_line_numbers.each { | line_number |
+    fail(BASICException, "Invalid list specification") if end_val < start_val
+    program_line_numbers.each do | line_number |
       list << line_number if line_number >= start_val and line_number <= end_val
-    }
+    end
     list
   end
 
@@ -126,21 +126,21 @@ class LineNumberRange
   def line_list(spec, program_line_numbers)
     list = Array.new
     spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
-    two_regex = Regexp.new('^\d+\+\d+$')
-    one_regex = Regexp.new('^\d+\+$')
-    if two_regex =~ spec then
+    two_regex = Regexp.new('\A\d+\+\d+\z')
+    one_regex = Regexp.new('\A\d+\+\z')
+    if two_regex =~ spec
       parts = spec.split('+')
       start_val = LineNumber.new(parts[0])
       count = parts[1].to_i
-    elsif one_regex =~ spec then
+    elsif one_regex =~ spec
       parts = spec.split('+')
       start_val = LineNumber.new(parts[0])
       count = 20
     else
-      raise(BASICException, "Invalid list specification", caller)
+      fail(BASICException, "Invalid list specification")
     end
     program_line_numbers.each { | line_number |
-      if line_number >= start_val and count >= 0 then
+      if line_number >= start_val and count >= 0
         list << line_number
         count -= 1
       end
@@ -156,7 +156,7 @@ class PrintHandler
   end
   
   def print_item(text)
-    if (@column + text.length) < @max_width then
+    if (@column + text.length) < @max_width
       print text
       @column += text.size
     else
@@ -267,22 +267,22 @@ class Interpreter
       begin
         line_number_range = LineNumberRange.new(linespec, @program_lines.keys.sort)
         line_numbers = line_number_range.line_numbers
-        if line_number_range.is_single then
+        if line_number_range.is_single
           line_numbers.each do | line_number |
             @program_lines.delete(line_number)
           end
-        elsif line_number_range.is_range then
+        elsif line_number_range.is_range
           line_numbers.each do | line_number |
             puts "#{line_number.to_s} #{@program_lines[line_number]}"
           end
           print "DELETE THESE LINES? "
           answer = gets.chomp
-          if answer == "YES" then
+          if answer == "YES"
             line_numbers.each do | line_number |
               @program_lines.delete(line_number)
             end
           end
-        elsif line_number_range.is_all then
+        elsif line_number_range.is_all
           puts "Type NEW to delete an entire program"
         end
       rescue BASICException => e
@@ -295,11 +295,11 @@ class Interpreter
   
   private
   def verify_next_line_number(line_numbers, next_line_number)
-    if next_line_number.nil? then
-      raise BASICException, "Program terminated without END", caller
+    if next_line_number.nil?
+      fail BASICException, "Program terminated without END"
     end
-    if !line_numbers.include?(next_line_number) then
-      raise BASICException, "Line number #{next_line_number} not found", caller
+    if !line_numbers.include?(next_line_number)
+      fail BASICException, "Line number #{next_line_number} not found"
     end
     next_line_number
   end
@@ -309,7 +309,7 @@ class Interpreter
     @variables = Hash.new
     @tron_flag = false
     line_numbers = @program_lines.keys.sort
-    if line_numbers.size > 0 then
+    if line_numbers.size > 0
       # phase 1: do all initialization (store values in DATA lines)
       line_numbers.each do | line_number |
         line = @program_lines[line_number]
@@ -326,7 +326,7 @@ class Interpreter
           line = @program_lines[@current_line_number]
           puts "#{@current_line_number}: #{line.to_s}" if trace_flag or @tron_flag
           line.execute(self)
-          if @running then
+          if @running
             # set the next line number (which may have been changed by execute() )
             @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
           else
@@ -353,18 +353,18 @@ class Interpreter
   
   def cmd_load(filename)
     filename = filename.sub(/^\s+/, '').sub(/\s+$/, '')
-    if filename.size > 0 then
+    if filename.size > 0
       begin
         File.open(filename, 'r') do | file |
           @program_lines = Hash.new
           file.each_line do | line |
             line.chomp!
-            if line =~ /^\d+/ then
+            if line =~ /^\d+/
               line_parts = parse_line(line)
               line_num = line_parts[0]
               line_text = line_parts[1]
               @program_lines[line_num] = line_text
-              if line_text.errors.size > 0 then
+              if line_text.errors.size > 0
                 line_text.errors.each { | error | puts error }
               end
             else
@@ -385,9 +385,9 @@ class Interpreter
 
   def cmd_save(filename)
     line_numbers = @program_lines.keys.sort
-    if line_numbers.size > 0 then
+    if line_numbers.size > 0
       filename.sub!(/^\s+/, '')
-      if filename.size > 0 then
+      if filename.size > 0
         begin
           File.open(filename, 'w') do | file |
             line_numbers.each { | line_num | file.puts "#{line_num.to_s} #{@program_lines[line_num]}" }
@@ -465,37 +465,35 @@ class Interpreter
       dimensions = Array.new
       dimensions << 10
     end
-    if subscripts.size != dimensions.size then
-      raise BASICException, "Incorrect number of subscripts", caller
+    if subscripts.size != dimensions.size
+      fail BASICException, "Incorrect number of subscripts"
     end
     subscripts.zip(dimensions).each do | pair |
-      if pair[0] > pair[1] then
-        raise BASICException, "Subscript #{pair[0]} out of range #{pair[1]}"
+      if pair[0] > pair[1]
+        fail BASICException, "Subscript #{pair[0]} out of range #{pair[1]}"
       end
     end
   end
   
   def get_value(variable)
-    ## puts "get_value: #{variable} #{variable.class}"
     x = nil
     v = variable.to_s
     begin
       # first look in user function values stack
       length = @user_var_values.length
-      if length > 0 then
+      if length > 0
         names_and_values = @user_var_values[-1]
-        if names_and_values.has_key?(variable) then
+        if names_and_values.has_key?(variable)
           x = names_and_values[variable]
         end
       end
       # then look in general table
-      if x.nil? then
-        if not @variables.has_key?(v) then
+      if x.nil?
+        if not @variables.has_key?(v)
           @variables[v] = 0
         end
         x = @variables[v]
       end
-      ## puts "get_value:value #{x} #{x.class}"
       case x.class.to_s
       when 'Fixnum'
         NumericConstant.new(x)
@@ -504,7 +502,7 @@ class Interpreter
       when 'NumericConstant'
         x
       else
-        raise Exception, "Invalid variable value type #{x}", caller
+        fail Exception, "Invalid variable value type #{x}"
       end
     rescue
       raise BASICException, "Unknown variable #{variable}", caller
@@ -512,16 +510,14 @@ class Interpreter
   end
   
   def set_value(variable, value)
-    ## puts "SET: #{variable.class} #{variable} = #{value.class} #{value}"
     c = value.class.to_s
-    if c != 'Fixnum' and c != 'Float' and c!= 'NumericConstant' then
-      raise Exception, "Bad variable value type #{c}", caller
+    if c != 'Fixnum' and c != 'Float' and c!= 'NumericConstant'
+      fail Exception, "Bad variable value type #{c}"
     end
     subscripts = variable.subscripts
-    ## puts "subscripts: [#{subscripts.join(' ')}]"
     begin
       v = variable.to_s
-      if c == 'NumericConstant' then
+      if c == 'NumericConstant'
         @variables[v] = value.to_v
       else
         @variables[v] = value
@@ -540,7 +536,7 @@ class Interpreter
   end
   
   def pop_return
-    raise(BASICException, "RETURN without GOSUB", caller) if @return_stack.size == 0
+    fail(BASICException, "RETURN without GOSUB") if @return_stack.size == 0
     @return_stack.pop
   end
   
@@ -552,7 +548,7 @@ class Interpreter
   
   def get_fornext(control_variable)
     fornext = @fornexts[control_variable.to_s]
-    raise(BASICException, "NEXT without FOR", caller) if fornext.nil?
+    fail(BASICException, "NEXT without FOR") if fornext.nil?
     fornext
   end
   
@@ -561,11 +557,11 @@ class Interpreter
   end
   
   def read_data
-    if @data_index < @data_store.size then
+    if @data_index < @data_store.size
       @data_index += 1
       @data_store[@data_index - 1]
     else
-      raise(BASICException, "Out of data", caller)
+      fail BASICException, "Out of data"
     end
   end
 
@@ -583,14 +579,14 @@ class Interpreter
       cmd = gets.chomp
       
       # process command
-      if cmd =~ /^\d/ then
+      if cmd =~ /^\d/
         # program line -- store
         line_parts = parse_line(cmd)
         line_num = line_parts[0]
         line_text = line_parts[1]
         @program_lines[line_num] = line_text
         need_prompt = false
-        if line_text.errors.size > 0 then
+        if line_text.errors.size > 0
           line_text.errors.each { | error | puts error }
           need_prompt = true
         end
@@ -599,7 +595,7 @@ class Interpreter
         if cmd == '' then x = 0
         elsif cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
         elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
-        elsif cmd == 'RUN' then
+        elsif cmd == 'RUN'
           timing = Benchmark.measure { cmd_run(false) }
           user_time = timing.utime + timing.cutime
           sys_time = timing.stime + timing.cstime
@@ -633,7 +629,7 @@ class Interpreter
     sys_time = timing.stime + timing.cstime
     puts
     puts "BASIC-1965 ended"
-    if timing_flag then
+    if timing_flag
       puts "CPU time:"
       puts " user: #{user_time.round(2)}"
       puts " system: #{sys_time.round(2)}"
@@ -642,12 +638,12 @@ class Interpreter
 end
 
 interpreter = Interpreter.new
-if ARGV.size > 0 then
+if ARGV.size > 0
   filename = ''
   timing_flag = true
   trace_flag = false
   ARGV.each do | arg |
-    if arg[0] == '-' then
+    if arg[0] == '-'
       trace_flag = true if arg == '-trace'
       timing_flag = false if arg == '-notiming'
     else

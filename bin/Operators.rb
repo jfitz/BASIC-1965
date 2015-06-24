@@ -1,13 +1,13 @@
 def float_to_possible_int(f)
-    ## puts "f: #{f}"
     i = f.to_i
     (f - i).abs < 1e-8 ? i : f
 end
 
 class UnaryOperator
   @@operators = { '+' => 5, '-' => 5 }
+
   def initialize(text)
-    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
+    fail(BASICException, "'#{text}' is not an operator") unless @@operators.has_key?(text)
     @op = text
     @precedence = @@operators[@op]
   end
@@ -60,8 +60,9 @@ end
 
 class BinaryOperator
   @@operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
+
   def initialize(text)
-    raise(BASICException, "'#{text}' is not an operator", caller) if !@@operators.has_key?(text)
+    fail(BASICException, "'#{text}' is not an operator") unless @@operators.has_key?(text)
     @op = text
     @precedence = @@operators[@op]
   end
@@ -87,7 +88,6 @@ class BinaryOperator
   end
 
   def evaluate(interpreter, stack)
-    ## puts "stack: [#{stack.join('] [')}]"
     y = stack.pop
     x = stack.pop
     case @op
@@ -121,7 +121,6 @@ class BinaryOperator
   end
   
   def divide(a, b)
-    ## puts "a: #{a} b: #{b}"
     f = a.to_f / b.to_f
     float_to_possible_int(f)
   end
@@ -138,8 +137,9 @@ end
 
 class BooleanOperator
   @@valid_operators = [ '=', '<', '>', '>=', '<=', '<>' ]
+
   def initialize(text)
-    raise(BASICException, "'#{text}' is not a valid boolean operator", caller) if !@@valid_operators.include?(text)
+    fail(BASICException, "'#{text}' is not a valid boolean operator") unless @@valid_operators.include?(text)
     @value = text
     @precedence = 1
   end
@@ -170,7 +170,6 @@ class BooleanOperator
 end
 
 class TerminalOperator
-  
   def is_operator
     true
   end

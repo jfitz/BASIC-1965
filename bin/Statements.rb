@@ -13,7 +13,7 @@ class AbstractStatement
   end
   
   def execute(interpreter)
-    if (@errors.size == 0) then
+    if @errors.size == 0
       execute_cmd(interpreter)
     else
       @errors.each { | error | puts "line #{interpreter.current_line_number}: #{error}" }
@@ -72,7 +72,7 @@ class DimStatement < AbstractStatement
     text_list = split_args(line.gsub(/^ +/, ''), false)
     # variable [comma, variable]...
     @expression_list = Array.new
-    if text_list.size > 0 then
+    if text_list.size > 0
       text_list.each do | text_item |
         begin
           @expression_list << DimensionExpression.new(text_item)
@@ -94,8 +94,8 @@ class DimStatement < AbstractStatement
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
-      if subscripts.size == 0 then
-        raise BASICException, "DIM statement requires subscript range", caller
+      if subscripts.size == 0
+        fail BASICException, "DIM statement requires subscript range"
       end
       interpreter.set_dimensions(variable.name, subscripts)
     end
@@ -107,10 +107,10 @@ class LetStatement < AbstractStatement
     super('LET')
     begin
       @assignment = Assignment.new(line.gsub(/ /, ''))
-      if @assignment.count_target != 1 then
+      if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end
-      if @assignment.count_value != 1 then
+      if @assignment.count_value != 1
         @errors << 'Assignment must have only one right-hand value'
       end
     rescue BASICException => message
@@ -138,7 +138,7 @@ class InputStatement < AbstractStatement
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
     text_list = split_args(line.gsub(/^ +/, ''), false)
-    if text_list.length > 0 then
+    if text_list.length > 0
       begin
         @prompt = TextConstant.new(text_list[0])
         text_list.delete_at(0)
@@ -164,7 +164,7 @@ class InputStatement < AbstractStatement
   
   private
   def zip(names, values)
-    raise(BASICException, "Unequal lists", caller) if names.size != values.size
+    fail(BASICException, "Unequal lists") if names.size != values.size
     results = Array.new
     (0...names.size).each do | i |
       results << { 'name' => names[i], 'value' => values[i] }
@@ -225,7 +225,7 @@ class PrintStatement < AbstractStatement
     @print_item_list = Array.new
     print_thing = nil
     item_list.each do | print_item |
-      if print_item == ',' or print_item == ';' then
+      if print_item == ',' or print_item == ';'
         # the item is a carriage control item
         # save previous print thing, or create an empty one
         print_thing = PrintableExpression.new('""') if print_thing.nil?
@@ -234,7 +234,7 @@ class PrintStatement < AbstractStatement
       else
         begin
           # store previous print thing
-          if not print_thing.nil? then
+          if not print_thing.nil?
             @print_item_list << { 'variable' => print_thing, 'carriage' => '' }
           end
           # remove leading and trailing blanks
@@ -337,14 +337,14 @@ end
 
 class ForNextControl
   def initialize(control_variable, loop_start_number, start_value, end_value, step_value)
-    if start_value.class.to_s != 'Fixnum' and start_value.class.to_s != 'Float' then
-      raise Exception, "Invalid start value #{start_value} #{start_value.class}", caller
+    if start_value.class.to_s != 'Fixnum' and start_value.class.to_s != 'Float'
+      fail Exception, "Invalid start value #{start_value} #{start_value.class}"
     end
-    if end_value.class.to_s != 'Fixnum' and end_value.class.to_s != 'Float' then
-      raise Exception, "Invalid end value #{end_value} #{end_value.class}", caller
+    if end_value.class.to_s != 'Fixnum' and end_value.class.to_s != 'Float'
+      fail Exception, "Invalid end value #{end_value} #{end_value.class}"
     end
-    if step_value.class.to_s != 'Fixnum' and step_value.class.to_s != 'Float' then
-      raise Exception, "Invalid step value #{step_value} #{step_value.class}", caller
+    if step_value.class.to_s != 'Fixnum' and step_value.class.to_s != 'Float'
+      fail Exception, "Invalid step value #{step_value} #{step_value.class}"
     end
     @control_variable = control_variable
     @loop_start_number = loop_start_number
@@ -373,9 +373,12 @@ class ForNextControl
   
   def terminated?(interpreter)
     current_value = interpreter.get_value(@control_variable).to_v
-    if @step_value > 0 then (current_value + @step_value > @end_value)
-    elsif @step_value < 0 then (current_value + @step_value < @end_value)
-    else true
+    if @step_value > 0
+      current_value + @step_value > @end_value
+    elsif @step_value < 0
+      current_value + @step_value < @end_value
+    else
+      true
     end
   end
 end
@@ -385,7 +388,7 @@ class ForStatement < AbstractStatement
     super('FOR')
     # parse control variable, "=", numeric_expression, "TO", numeric_expression, "STEP", numeric_expression
     parts = line.gsub(/ /, '').split('=', 2)
-    raise(BASICException, "Syntax error", caller) if parts.size != 2
+    fail(BASICException, "Syntax error") if parts.size != 2
     begin
       var_name = VariableName.new(parts[0])
       @control_variable = VariableValue.new(var_name)
@@ -393,11 +396,11 @@ class ForStatement < AbstractStatement
       @errors << message
     end
     parts = parts[1].split('TO', 2)
-    raise(BASICException, "Syntax error", caller) if parts.size != 2
+    fail(BASICException, "Syntax error") if parts.size != 2
     @start_value = ValueExpression.new(parts[0])
     parts = parts[1].split('STEP', 2)
     @end_value = ValueExpression.new(parts[0])
-    if parts.size > 1 then
+    if parts.size > 1
       @has_step_value = true
       @step_value = ValueExpression.new(parts[1])
     else
@@ -407,7 +410,7 @@ class ForStatement < AbstractStatement
   end
   
   def to_s
-    if @has_step_value then
+    if @has_step_value
       @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s + ' STEP ' + @step_value.to_s
     else
       @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s

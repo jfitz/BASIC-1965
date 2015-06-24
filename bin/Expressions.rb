@@ -1,7 +1,7 @@
 class VariableName
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
-    raise(BASICException, "'#{text}' is not a variable name", caller) if not regex.match(text)
+    fail(BASICException, "'#{text}' is not a variable name") unless regex.match(text)
     @var_name = text
   end
 
@@ -24,7 +24,7 @@ end
 
 class Variable
   def initialize(variable_name)
-    raise(BASICException, "'#{variable_name}' is not a variable name", caller) if variable_name.class.to_s != 'VariableName'
+    fail(BASICException, "'#{variable_name}' is not a variable name", caller) if variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
     @subscripts = Array.new
   end
@@ -54,7 +54,7 @@ class Variable
   end
 
   def to_s
-    if subscripts.length > 0 then
+    if subscripts.length > 0
       @variable_name.to_s + '(' + @subscripts.join(',') + ')'
     else
       @variable_name.to_s
@@ -73,11 +73,10 @@ class VariableValue < Variable
   
   # return a single value
   def evaluate(interpreter, stack)
-    ## puts "VariableValue::evaluate() #{to_s}"
-    if stack.size > 0 and stack[-1].class.to_s == 'Array' then
+    if stack.size > 0 and stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(Exception, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
+      fail(Exception, "Variable expects subscripts, found empty parentheses") if num_args == 0
       interpreter.check_subscripts(@variable_name, @subscripts)
       evaled_var_name = @variable_name.to_s + '(' + @subscripts.join(',') + ')'
       interpreter.get_value(evaled_var_name)
@@ -94,11 +93,10 @@ class VariableReference < Variable
   
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
-    ## puts "VariableReference::evaluate() #{to_s}"
-    if stack.size > 0 and stack[-1].class.to_s == 'Array' then
+    if stack.size > 0 and stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(Exception, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
+      fail(Exception, "Variable expects subscripts, found empty parentheses") if num_args == 0
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
     self
@@ -112,11 +110,10 @@ class VariableDimension < Variable
   
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
-    ## puts "VariableReference::evaluate() #{to_s}"
-    if stack.size > 0 and stack[-1].class.to_s == 'Array' then
+    if stack.size > 0 and stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(Exception, "Variable expects subscripts, found empty parentheses", caller) if num_args == 0
+      fail(Exception, "Variable expects subscripts, found empty parentheses") if num_args == 0
     end
     self
   end
@@ -163,7 +160,7 @@ end
 class Function
   @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR', 'SIN', 'COS', 'TAN', 'ATN', 'SGN' ]
   def initialize(text)
-    raise(BASICException, "'#{text}' is not a valid function", caller) if !@@valid_names.include?(text)
+    fail(BASICException, "'#{text}' is not a valid function") unless @@valid_names.include?(text)
     @name = text
   end
 
@@ -189,90 +186,88 @@ class Function
   
   # return a single value
   def evaluate(interpreter, stack)
-    ## puts "Function::evaluate() #{to_s}"
     result = 0
     args = stack.pop
-    ## puts "args: #{args.class} #{args}"
-    raise(BASICException, "No arguments for function", caller) if args.class.to_s != 'Array'
+    fail(BASICException, "No arguments for function") if args.class.to_s != 'Array'
     num_args = args.length
     case @name
     when 'INT'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       result = xv.to_i
     when 'RND'
-      if num_args.value == 0 then
+      if num_args.value == 0
         xv = 100
-      elsif num_args.value == 1 then
+      elsif num_args.value == 1
         x = args[0]
         xv = x.to_v
       else
-        raise(BASICException, "Function #{@name} expects 0 or 1 argument, found #{num_args}", caller)
+        fail(BASICException, "Function #{@name} expects 0 or 1 argument, found #{num_args}")
       end
       upper_bound = xv.truncate.to_f
       upper_bound = 1 if upper_bound <= 0
       result = $randomizer.rand(upper_bound)
     when 'EXP'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = Math.exp(xv)
       result = float_to_possible_int(f)
     when 'LOG'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.log(xv) : 0
       result = float_to_possible_int(f)
     when 'ABS'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       result = xv >= 0 ? xv : -xv
     when 'SQR'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv > 0 ? Math.sqrt(xv) : 0
       result = float_to_possible_int(f)
     when 'SIN'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv >= 0 ? Math.sin(xv) : 0
       result = float_to_possible_int(f)
     when 'COS'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv >= 0 ? Math.cos(xv) : 0
       result = float_to_possible_int(f)
     when 'TAN'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv >= 0 ? Math.tan(xv) : 0
       result = float_to_possible_int(f)
     when 'ATN'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
       f = xv >= 0 ? Math.atan(xv) : 0
       result = float_to_possible_int(f)
     when 'SGN'
-      raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != 1
+      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
-      raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       result = 0
       result = 1 if x > 0
       result = -1 if x < 0
@@ -291,8 +286,8 @@ end
 
 class UserFunction
   def initialize(text)
-    regex = Regexp.new('^FN[A-Z]$')
-    raise(BASICException, "'#{text}' is not a valid function", caller) if not regex.match(text)
+    regex = Regexp.new('\AFN[A-Z]\z')
+    fail(BASICException, "'#{text}' is not a valid function") unless regex.match(text)
     @name = text
   end
 
@@ -318,19 +313,18 @@ class UserFunction
   
   # return a single value
   def evaluate(interpreter, stack)
-    ## puts "UserFunction::evaluate() #{to_s}"
     expression = interpreter.get_user_function(@name)
     # verify function is defined
-    raise(BASICException, "Function #{@name} not defined", caller) if expression == nil
+    fail(BASICException, "Function #{@name} not defined") if expression == nil
     user_var_names = interpreter.get_user_var_names(@name)
 
     # verify arguments
     user_var_values = stack.pop
-    raise(BASICException, "No arguments for function", caller) if user_var_values.class.to_s != 'Array'
+    fail(BASICException, "No arguments for function") if user_var_values.class.to_s != 'Array'
     num_args = user_var_values.length
-    raise(BASICException, "Function #{@name} expects 1 argument, found #{num_args}", caller) if num_args != user_var_names.length
+    fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != user_var_names.length
     x = user_var_values[0]
-    raise(BASICException, "Argument #{x} #{x.class} not numeric", caller) if x.class.to_s != 'NumericConstant'
+    fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
 
     # dummy variable names and their (now known) values
     names_and_values = Hash[user_var_names.zip(user_var_values)]
@@ -355,20 +349,20 @@ def split_args(text, keep_separators)
   in_string = false
   parens_level = 0
   text.split('').each do | c |
-    if [',', ';'].include?(c) and not in_string and parens_level == 0 then
+    if [',', ';'].include?(c) and not in_string and parens_level == 0
       args << current_arg if current_arg.length > 0
       current_arg = String.new
       args << c if keep_separators
-    elsif c == '"' and in_string then
+    elsif c == '"' and in_string
       current_arg += c
       args << current_arg
       current_arg = String.new
-    elsif c == ' ' and not in_string then
+    elsif c == ' ' and not in_string
       c = c
-    elsif c == '(' and not in_string then
+    elsif c == '(' and not in_string
       current_arg += c
       parens_level += 1
-    elsif c == ')' and not in_string then
+    elsif c == ')' and not in_string
       current_arg += c
       parens_level -= 1 if parens_level > 0
     else
@@ -405,21 +399,20 @@ def tokenize(words)
   last_was_operand = false
   # convert tokens to objects
   words.each do | word |
-    ## puts "word: #{word}"
-    if word.size > 0 then
-      if word == '(' then
+    if word.size > 0
+      if word == '('
         tokens << '('
         last_was_operand = true
       else
-        if word == ')' then
+        if word == ')'
           tokens << ')'
           last_was_operand = true
-        elsif word == ',' then
+        elsif word == ','
           tokens << ','
           last_was_operand = true
         else
           begin
-            if last_was_operand then
+            if last_was_operand
               tokens << BinaryOperator.new(word)
             else
               tokens << UnaryOperator.new(word)
@@ -451,7 +444,6 @@ def tokenize(words)
         end
       end
     end
-    ## puts "  tokens: [#{tokens.join('] [')}]"
   end
   tokens << TerminalOperator.new
 end
@@ -464,20 +456,15 @@ def parse(tokens)
   parsed_expression = Array.new
   parens_stack = Array.new
 
-  ## puts "tokens: [#{tokens.join('] [')}]"
   last_was_function = false
   last_was_variable = false
   parens_group = Array.new
-  ## puts " PG new: [#{parens_group.join('] [')}]"
   # scan the token list from left to right
   tokens.each do | token |
-    if token != '' then
-      ## puts "token: #{token.class} #{token}"
-      ## puts "PG: [#{parens_group.join('] [')}]"
+    if token != ''
       # If the token is a left parenthesis, push it on the operator stack
-      if token == '(' then
-        ## puts " PG (: [#{parens_group.join('] [')}]"
-        if last_was_function or last_was_variable then
+      if token == '('
+        if last_was_function or last_was_variable
           # start parsing the list of function arguments
           expression_stack.push(parsed_expression)
           parsed_expression = Array.new
@@ -485,7 +472,6 @@ def parse(tokens)
         else
           operator_stack.push(token)
         end
-        ## puts " PG pre-<<: [#{parens_group.join('] [')}]"
         parens_stack << parens_group
         parens_group = Array.new
         last_was_function = false
@@ -493,71 +479,56 @@ def parse(tokens)
       # If the token is a comma,
       # pop the operator stack until the corresponding left parenthesis is found
       # Append each operator to the end of the output list
-      elsif token == ',' then
+      elsif token == ','
         while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1] != '[' do
           op = operator_stack.pop
           parsed_expression << op
-          ## puts "  PE ): [#{parsed_expression.join('] [')}]"
         end
         parens_group << parsed_expression
-        ## puts " PG ,: [#{parens_group.join('] [')}]"
         parsed_expression = Array.new
       else
-        raise(BASICException, "Function requires parentheses", caller) if last_was_function
+        fail(BASICException, "Function requires parentheses") if last_was_function
         # If the token is a right parenthesis,
         # pop the operator stack until the corresponding left parenthesis is removed
         # Append each operator to the end of the output list
-        if token == ')' then
-          ## puts " PG ) 1: [#{parens_group.join('] [')}]"
+        if token == ')'
           while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1] != '[' do
             op = operator_stack.pop
             parsed_expression << op
-            ## puts "  PE ): [#{parsed_expression.join('] [')}]"
           end
           parens_group << parsed_expression
           start_op = operator_stack.pop  # remove the '(' or '['
-          ## puts " PG ) 2: [#{parens_group.join('] [')}]"
-          if start_op == '[' then
-            ## puts "  PE [: [#{parsed_expression.join('] [')}]"
+          if start_op == '['
             list = List.new(parens_group)
             operator_stack.push(list)
-            ## puts "  OS [: [#{operator_stack.join('] [')}]"
             parsed_expression = expression_stack.pop
-            ## puts "  PE [: [#{parsed_expression.join('] [')}]"
           end
           parens_group = parens_stack.pop
-          ## puts " PG pop: [#{parens_group.join('] [')}]"
           last_was_function = false
           last_was_variable = false
         else
-          if token.is_operator or token.is_function or token.is_variable then
+          if token.is_operator or token.is_function or token.is_variable
             # remove operators already on the stack that have higher or equal precedence
             # append them to the output list
             while operator_stack.size > 0 and operator_stack[-1] != '(' and operator_stack[-1] != '[' and operator_stack[-1].precedence >= token.precedence do
               op = operator_stack.pop
               parsed_expression << op
-              ## puts "  PE stack: [#{parsed_expression.join('] [')}]"
             end
             # push the operator onto the operator stack
-            if not token.is_terminal then
+            if not token.is_terminal
               operator_stack.push(token)
             end
           else
             # the token is an operand, append it to the output list
             parsed_expression << token
-            ## puts "  PE operand: [#{parsed_expression.join('] [')}]"
           end
           last_was_function = token.is_function
           last_was_variable = token.is_variable
         end
       end
     end
-    ## puts "  OS end: [#{operator_stack.join('] [')}]"
-    ## puts "  CE end: [#{parsed_expressions.join('] [')}]"
   end
-  ## puts "OS fin: [#{operator_stack.join('] [')}]"
   parsed_expressions << parsed_expression
-  ## puts "CE fin: [#{parsed_expressions.join('] [')}]"
   parsed_expressions
 end
 
@@ -566,10 +537,8 @@ def eval(interpreter, parsed_expressions, expected_result_class)
   expected = parsed_expressions.length
   result_values = Array.new
   parsed_expressions.each do | parsed_expression |
-    ## puts "eval: [#{parsed_expression.join('] [')}]"
     stack = Array.new
     parsed_expression.each do | token |
-      ## puts "parse::token: #{token.class} #{token}"
       case token.class.to_s
       when 'List'
         x = token.evaluate(interpreter, stack)
@@ -580,36 +549,31 @@ def eval(interpreter, parsed_expressions, expected_result_class)
       when 'VariableValue','VariableReference','VariableDimension'
         x = token.evaluate(interpreter, stack)
       else
-        raise Exception, "Unknown data type #{x.class}", caller
+        fail Exception, "Unknown data type #{x.class}"
       end
-      ## puts "eval::value: #{x} #{x.class}"
       stack.push(x)
-      ## puts "eval::stack: [#{stack.join('] [')}]"
     end
     # should be only one item on stack
     actual = stack.length
-    raise(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack", caller) if actual != 1
+    fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != 1
     # very each item is of correct type
     item = stack[0]
-    raise(Exception, "Expected item #{expected_result_class}, found item type #{item.class} remaining on evaluation stack", caller) if item.class.to_s != expected_result_class
+    fail(Exception, "Expected item #{expected_result_class}, found item type #{item.class} remaining on evaluation stack") if item.class.to_s != expected_result_class
     result_values << item
   end
   actual = result_values.length
-  raise(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack", caller) if actual != expected
+  fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != expected
   result_values
 end
 
 class ValueExpression
   def initialize(text)
-    raise(Exception, "Expression cannot be empty", caller) if text.length == 0
+    fail(Exception, "Expression cannot be empty") if text.length == 0
     @unparsed_expression = text
 
     words = split(text)
-    ## puts "ValueExpression: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
-    ## puts "ValueExpression: tokens=[#{tokens.join('] [')}]"
     @parsed_expressions = parse(tokens)
-    ## puts "ValueExpression::init CE=[#{@parsed_expressions.join('] [')}]"
   end
 
   def to_s
@@ -622,31 +586,24 @@ class ValueExpression
 
   # returns an Array of values
   def evaluate(interpreter)
-    ## puts "ValueExpression::evaluate() #{to_s}"
-    ## puts "ValueExpression:: [#{@parsed_expressions.join('] [')}]"
     values = eval(interpreter, @parsed_expressions, 'NumericConstant')
-    raise(Exception, "ValueExpression: Expected some values", caller) if values.length == 0
-    ## puts "ValueExpression::values: [#{values.join('] [')}]"
+    fail(Exception, "ValueExpression: Expected some values") if values.length == 0
     values
   end
 end
 
 class TargetExpression
   def initialize(text)
-    raise(Exception, "Expression cannot be empty", caller) if text.length == 0
+    fail(Exception, "Expression cannot be empty") if text.length == 0
     @unparsed_expression = text
 
     words = split(text)
-    ## puts "DBG: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
-    ## puts "DBG: tokens=[#{tokens.join('] [')}]"
     @parsed_expressions = parse(tokens)
-    ## puts "TargetExpression::init CE=[#{@parsed_expressions.join('] [')}]"
-    raise(BASICException, "Value list is empty (length 0)", caller) if @parsed_expressions.length == 0
+    fail(BASICException, "Value list is empty (length 0)") if @parsed_expressions.length == 0
     @parsed_expressions.each do | parsed_expression |
-      ## puts "expression: #{parsed_expression} #{parsed_expression.class}"
-      raise(BASICException, "Value is not assignable (length 0)", caller) if parsed_expression.length == 0
-      raise(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})", caller) if parsed_expression[-1].class.to_s != 'VariableValue'
+      fail(BASICException, "Value is not assignable (length 0)") if parsed_expression.length == 0
+      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'VariableValue'
       parsed_expression[-1] = VariableReference.new(parsed_expression[-1])
     end
   end
@@ -661,30 +618,24 @@ class TargetExpression
 
   # returns an Array of targets
   def evaluate(interpreter)
-    ## puts "TargetExpression::evaluate() #{to_s}"
-    ## puts "TargetExpression:: [#{@parsed_expressions.join('] [')}]"
     values = eval(interpreter, @parsed_expressions, 'VariableReference')
-    raise(Exception, "Expected some values", caller) if values.length == 0
+    fail(Exception, "Expected some values") if values.length == 0
     values
   end
 end
 
 class DimensionExpression
   def initialize(text)
-    raise(Exception, "Expression cannot be empty", caller) if text.length == 0
+    fail(Exception, "Expression cannot be empty") if text.length == 0
     @unparsed_expression = text
 
     words = split(text)
-    ## puts "DimensionExpression: words=[#{words.join('] [')}]"
     tokens = tokenize(words)
-    ## puts "DimensionExpression: tokens=[#{tokens.join('] [')}]"
     @parsed_expressions = parse(tokens)
-    ## puts "DimensionExpression CE=[#{@parsed_expressions.join('] [')}]"
-    raise(BASICException, "Value list is empty (length 0)", caller) if @parsed_expressions.length == 0
+    fail(BASICException, "Value list is empty (length 0)") if @parsed_expressions.length == 0
     @parsed_expressions.each do | parsed_expression |
-      ## puts "expression: #{parsed_expression} #{parsed_expression.class}"
-      raise(BASICException, "Value is not assignable (length 0)", caller) if parsed_expression.length == 0
-      raise(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})", caller) if parsed_expression[-1].class.to_s != 'VariableValue'
+      fail(BASICException, "Value is not assignable (length 0)") if parsed_expression.length == 0
+      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'VariableValue'
       parsed_expression[-1] = VariableDimension.new(parsed_expression[-1])
     end
   end
@@ -698,18 +649,16 @@ class DimensionExpression
   end
 
   def evaluate(interpreter)
-    ## puts "DimensionExpression::evaluate() #{to_s}"
-    ## puts "DimensionExpression:: [#{@parsed_expressions.join('] [')}]"
     values = eval(interpreter, @parsed_expressions, 'VariableDimension')
-    raise(Exception, "Expected some values", caller) if values.length == 0
+    fail(Exception, "Expected some values") if values.length == 0
     values
   end
 end
 
 class UserFunctionPrototype
   def initialize(text)
-    regex = Regexp.new('^FN[A-Z]\([A-Z]\)$')
-    raise(BASICException, "Invalid function specification #{text}", caller) if not regex.match(text)
+    regex = Regexp.new('\AFN[A-Z]\([A-Z]\)\z')
+    fail(BASICException, "Invalid function specification #{text}") unless regex.match(text)
     @name = text[0..2]
     arg0 = text[4..4]
     @arguments = Array.new
@@ -741,7 +690,7 @@ class PrintableExpression
   end
   
   def to_s
-    if @arithmetic_expression.nil? then
+    if @arithmetic_expression.nil?
       @text_constant.to_s
     else
       @arithmetic_expression.to_s
@@ -754,7 +703,7 @@ class PrintableExpression
   end
   
   def to_formatted_s(interpreter)
-    if @arithmetic_expression.nil? then
+    if @arithmetic_expression.nil?
       @text_constant.to_formatted_s(interpreter)
     else
       numeric_constants = @arithmetic_expression.evaluate(interpreter)
@@ -767,7 +716,7 @@ end
 class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
-    raise(BASICException, "'#{text}' is not a boolean expression", caller) if parts.size != 3
+    fail(BASICException, "'#{text}' is not a boolean expression") if parts.size != 3
     @a = ValueExpression.new(parts[0])
     @operator = BooleanOperator.new(parts[1])
     @b = ValueExpression.new(parts[2])
@@ -803,7 +752,7 @@ class Assignment
   def initialize(text)
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
+    fail(BASICException, "'#{text}' is not a valid assignment") if parts.size != 2
     @target = TargetExpression.new(parts[0])
     @expression = ValueExpression.new(parts[1])
   end
@@ -837,14 +786,11 @@ class UserFunctionDefinition
   def initialize(text)
     # parse into name '=' expression
     parts = text.split('=', 2)
-    ## puts "UDF: #{text}"
-    raise(BASICException, "'#{text}' is not a valid assignment", caller) if parts.size != 2
+    fail(BASICException, "'#{text}' is not a valid assignment") if parts.size != 2
     user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
-    ## puts "UDF: 1 #{@name}"
     @template = ValueExpression.new(parts[1])
-    ## puts "UDF: 2 #{@name}"
   end
 
   def name

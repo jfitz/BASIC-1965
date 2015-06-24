@@ -1,3 +1,2 @@
-class BASICException < Exception
-end
+class BASICException < Exception; end
 
