@@ -1,4 +1,3 @@
-8 DIM P(10,10)
 10 READ N
 20 FOR I = 1 TO N-1
 30 FOR J = 1 TO N-1

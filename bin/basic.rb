@@ -463,7 +463,7 @@ class Interpreter
       dimensions = @dimensions[variable]
     else
       dimensions = Array.new
-      dimensions << 10
+      subscripts.each { || dimensions << 10 }
     end
     if subscripts.size != dimensions.size
       fail BASICException, "Incorrect number of subscripts"

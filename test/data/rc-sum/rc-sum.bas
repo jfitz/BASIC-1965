@@ -1,4 +1,3 @@
-8 DIM T(10,10)
 10 READ R,C
 20 FOR I = 1 TO R
 30 FOR J = 1 TO C
