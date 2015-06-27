@@ -164,7 +164,7 @@ class PrintHandler
       first_count = text.length - overflow
       print text[0..first_count]
       newline
-      print text[first_count..text.length]
+      print text[first_count+1..text.length]
       @column = overflow
     end
   end
@@ -200,7 +200,7 @@ class Interpreter
     @running = false
     @data_store = Array.new
     @data_index = 0
-    @printer = PrintHandler.new(66)
+    @printer = PrintHandler.new(72)
     @return_stack = Array.new
     @fornexts = Hash.new
     @dimensions = Hash.new

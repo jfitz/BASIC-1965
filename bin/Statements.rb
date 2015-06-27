@@ -223,59 +223,37 @@ class PrintStatement < AbstractStatement
     item_list = split_args(line.sub(/^ +/, ''), true)
     # variable/constant, [separator, variable/constant]... [separator]
     @print_item_list = Array.new
-    print_thing = nil
     item_list.each do | print_item |
       if print_item == ',' or print_item == ';'
         # the item is a carriage control item
         # save previous print thing, or create an empty one
-        print_thing = PrintableExpression.new('""') if print_thing.nil?
-        @print_item_list << { 'variable' => print_thing, 'carriage' => print_item }
-        print_thing = nil
+        @print_item_list << CarriageControl.new(print_item)
       else
         begin
-          # store previous print thing
-          if not print_thing.nil?
-            @print_item_list << { 'variable' => print_thing, 'carriage' => '' }
-          end
           # remove leading and trailing blanks
           print_item.sub!(/^ +/, '')
           print_item.sub!(/ +$/, '')
-          print_thing = PrintableExpression.new(print_item)
+          @print_item_list << PrintableExpression.new(print_item)
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
     end
-    @print_item_list << { 'variable' => print_thing, 'carriage' => 'NL' } if not print_thing.nil?
-    @print_item_list << { 'variable' => PrintableExpression.new('""'), 'carriage' => 'NL' } if @print_item_list.empty?
+    @print_item_list << CarriageControl.new('NL') if @print_item_list.size == 0 or @print_item_list[-1].class.to_s != 'CarriageControl'
   end
   
   def to_s
     varnames = Array.new
-    @print_item_list.each { | print_item | varnames << print_item['variable'] }
-    @keyword + ' ' + varnames.join(', ')
+    @print_item_list.each do | print_item |
+      varnames << print_item.to_s
+    end
+    @keyword + ' ' + varnames.join(' ')
   end
   
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
     @print_item_list.each do | print_item |
-
-      name = print_item['variable']
-      if not name.nil?
-        v = name.to_formatted_s(interpreter)
-        printer.print_item v
-      end
-
-      separator = print_item['carriage']
-      case separator
-      when ';'
-        printer.halftab
-      when ','
-        printer.tab
-      when 'NL'
-        printer.newline
-      end
-
+      print_item.print(printer, interpreter)
     end
   end
 end

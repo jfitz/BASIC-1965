@@ -711,6 +711,41 @@ class PrintableExpression
       numeric_constant.to_formatted_s(interpreter)
     end
   end
+
+  def print(printer, interpreter)
+    text = to_formatted_s(interpreter)
+    printer.print_item text
+  end
+end
+
+class CarriageControl
+  @@valid_operators = [ 'NL', ',', ';' ]
+  def initialize(text)
+    fail(BASICException, "'#{text}' is not a valid separator") unless @@valid_operators.include?(text)
+    @operator = text
+  end
+
+  def to_s
+    case @operator
+    when ';'
+      ';'
+    when ','
+      ','
+    when 'NL'
+      ''
+    end
+  end
+
+  def print(printer, interpreter)
+    case @operator
+    when ';'
+      printer.halftab
+    when ','
+      printer.tab
+    when 'NL'
+      printer.newline
+    end
+  end
 end
 
 class BooleanExpression
