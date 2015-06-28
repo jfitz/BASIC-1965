@@ -63,4 +63,11 @@ bash test/bin/run_one_test.sh rc-sum
 bash test/bin/run_one_test.sh inverse_7
 bash test/bin/run_one_test.sh inverse_9
 bash test/bin/run_one_test.sh define
+bash test/bin/run_one_test.sh trig-1
+bash test/bin/run_one_test.sh trig-2
+bash test/bin/run_one_test.sh trig-3
+bash test/bin/run_one_test.sh zero-1
+bash test/bin/run_one_test.sh zero-2
+bash test/bin/run_one_test.sh zero-3
+bash test/bin/run_one_test.sh zero-4
 
