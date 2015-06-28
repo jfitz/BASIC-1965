@@ -121,6 +121,7 @@ class BinaryOperator
   end
   
   def divide(a, b)
+    fail(BASICException, "Division by zero") if b.to_f == 0
     f = a.to_f / b.to_f
     float_to_possible_int(f)
   end
