@@ -149,7 +149,11 @@ class List
   end
   
   def evaluate(interpreter, stack)
-    eval(interpreter, @parsed_expressions, 'NumericConstant')
+    if @parsed_expressions[0].size > 0
+      eval(interpreter, @parsed_expressions, 'NumericConstant')
+    else
+      eval(interpreter, @parsed_expressions, 'NilClass')
+    end
   end
 
   def to_s
@@ -198,9 +202,9 @@ class Function
       xv = x.to_v
       result = xv.to_i
     when 'RND'
-      if num_args.value == 0
+      if num_args == 0
         xv = 100
-      elsif num_args.value == 1
+      elsif num_args == 1
         x = args[0]
         xv = x.to_v
       else
@@ -534,7 +538,7 @@ end
 
 # returns an Array of values
 def eval(interpreter, parsed_expressions, expected_result_class)
-  expected = parsed_expressions.length
+  # expected = parsed_expressions[0].length
   result_values = Array.new
   parsed_expressions.each do | parsed_expression |
     stack = Array.new
@@ -554,15 +558,15 @@ def eval(interpreter, parsed_expressions, expected_result_class)
       stack.push(x)
     end
     # should be only one item on stack
-    actual = stack.length
-    fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != 1
+    # actual = stack.length
+    # fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != expected
     # very each item is of correct type
     item = stack[0]
-    fail(Exception, "Expected item #{expected_result_class}, found item type #{item.class} remaining on evaluation stack") if item.class.to_s != expected_result_class
-    result_values << item
+    # fail(Exception, "Expected item #{expected_result_class}, found item type #{item.class} remaining on evaluation stack") if item.class.to_s != expected_result_class
+    result_values << item unless item.class.to_s == 'NilClass'
   end
   actual = result_values.length
-  fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != expected
+  # fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != expected
   result_values
 end
 
@@ -586,8 +590,12 @@ class ValueExpression
 
   # returns an Array of values
   def evaluate(interpreter)
-    values = eval(interpreter, @parsed_expressions, 'NumericConstant')
-    fail(Exception, "ValueExpression: Expected some values") if values.length == 0
+    if @parsed_expressions.size > 0
+      values = eval(interpreter, @parsed_expressions, 'NumericConstant')
+      fail(Exception, "ValueExpression: Expected some values") if values.length == 0
+    else
+      values = Array.new
+    end
     values
   end
 end
