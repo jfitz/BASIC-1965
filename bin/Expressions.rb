@@ -746,8 +746,6 @@ class CarriageControl
 
   def print(printer, interpreter)
     case @operator
-    when ';'
-      printer.halftab
     when ','
       printer.tab
     when 'NL'

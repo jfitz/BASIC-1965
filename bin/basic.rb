@@ -175,12 +175,6 @@ class PrintHandler
     print_item(spaces)
   end
   
-  def halftab
-    new_column = ((@column / 6) + 1) * 6
-    spaces = ' ' * (new_column - @column)
-    print_item(spaces)
-  end
-  
   def newline
     puts
     @column = 0

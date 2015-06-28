@@ -75,7 +75,13 @@ class NumericConstant
   
   def to_formatted_s(interpreter)
     formatted = @value.class.to_s == 'Float' ? six_digits(@value).to_s : @value.to_s
-    @value < 0 ? formatted : ' ' + formatted
+    if @value >= 0
+      formatted = ' ' + formatted
+    end
+    while formatted.size < 7
+      formatted += ' '
+    end
+    formatted
   end
 end
 
