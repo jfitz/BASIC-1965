@@ -70,4 +70,6 @@ bash test/bin/run_one_test.sh zero-1
 bash test/bin/run_one_test.sh zero-2
 bash test/bin/run_one_test.sh zero-3
 bash test/bin/run_one_test.sh zero-4
+bash test/bin/run_one_test.sh plot
+bash test/bin/run_one_test.sh plotxy
 
