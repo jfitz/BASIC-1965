@@ -439,7 +439,7 @@ def tokenize(words)
                         tokens << VariableValue.new(variable_name)
                         last_was_operand = true
                       rescue BASICException
-                        raise BASICException, "'#{word}' is not a value or operator", caller
+                        fail BASICException, "'#{word}' is not a value or operator"
                       end
                   end
               end

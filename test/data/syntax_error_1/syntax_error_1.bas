@@ -1,0 +1,6 @@
+10 REM SYNTAX ERROR
+20 PRINT "Hello world"
+30 PRINT x
+40 PRINT "Done"
+99 END
+

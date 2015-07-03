@@ -227,7 +227,6 @@ class Interpreter
       elsif line_text == 'RETURN' then statement = ReturnStatement.new
       elsif line_text[0..3] == 'READ' then statement = ReadStatement.new(line_text[4..-1])
       elsif line_text[0..3] == 'DATA' then statement = DataStatement.new(line_text[4..-1])
-      #todo: RESTORE
       elsif line_text == 'STOP' then statement = StopStatement.new
       elsif line_text == 'END' then statement = EndStatement.new
       elsif line_text[0..4] == 'TRACE' then statement = TraceStatement.new(line_text[5..-1])
@@ -319,7 +318,12 @@ class Interpreter
         begin
           line = @program_lines[@current_line_number]
           puts "#{@current_line_number}: #{line.to_s}" if trace_flag or @tron_flag
-          line.execute(self)
+          if line.errors.size > 0
+            puts "Errors in line #{current_line_number}:"
+            line.errors.each { | error | puts error }
+            stop_running
+          end
+          line.execute(self) if @running
           if @running
             # set the next line number (which may have been changed by execute() )
             @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
@@ -328,7 +332,7 @@ class Interpreter
           end
         rescue BASICException => message
           puts "#{message} in line #{current_line_number}"
-          @running = false
+          stop_running
         end
       end
     else
@@ -411,8 +415,12 @@ class Interpreter
   end
   
   def stop
-    @running = false
+    stop_running
     puts "STOP in line #{@current_line_number}"
+  end
+
+  def stop_running
+    @running = false
   end
 
   def current_line_number

@@ -252,9 +252,7 @@ class PrintStatement < AbstractStatement
   
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
-    @print_item_list.each do | print_item |
-      print_item.print(printer, interpreter)
-    end
+    @print_item_list.each { | print_item | print_item.print(printer, interpreter) }
   end
 end
 
