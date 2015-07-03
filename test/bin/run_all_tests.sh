@@ -5,7 +5,8 @@ echo Creating directory tests
 mkdir tests
 
 echo Running all tests...
-bash test/bin/run_one_test.sh remarks
+bash test/bin/run_one_test.sh remark_1
+bash test/bin/run_one_test.sh remark_2
 bash test/bin/run_one_test.sh dataread
 
 bash test/bin/run_one_test.sh ifthen_ge
