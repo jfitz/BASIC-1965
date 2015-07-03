@@ -153,6 +153,7 @@ class PrintHandler
   def initialize(max_width)
     @column = 0
     @max_width = max_width
+    @last_was_numeric = false
   end
   
   def print_item(text)
@@ -167,17 +168,38 @@ class PrintHandler
       print text[first_count+1..text.length]
       @column = overflow
     end
+    @last_was_numeric = false
+  end
+
+  def last_was_numeric
+    @last_was_numeric = true
   end
   
   def tab
     new_column = ((@column / 14) + 1) * 14
     spaces = ' ' * (new_column - @column)
     print_item(spaces)
+    @last_was_numeric = false
+  end
+
+  def semicolon
+    if @last_was_numeric
+      count = 3
+      while @column > 0 and count > 0
+        print_item(' ')
+        count -= 1
+      end
+      while @column % 3 != 0
+        print_item(' ')
+      end
+    end
+    @last_was_numeric = false
   end
   
   def newline
     puts
     @column = 0
+    @last_was_numeric = false
   end
   
   def newline_when_needed

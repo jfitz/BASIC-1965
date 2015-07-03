@@ -78,9 +78,6 @@ class NumericConstant
     if @value >= 0
       formatted = ' ' + formatted
     end
-    while formatted.size < 7
-      formatted += ' '
-    end
     formatted
   end
 end

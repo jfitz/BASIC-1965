@@ -705,24 +705,15 @@ class PrintableExpression
     end
   end
   
-  def six_digits(value)
-    decimals = 5 - (value != 0 ? Math.log(value.abs,10).to_i : 0)
-    value.round(decimals)
-  end
-  
-  def to_formatted_s(interpreter)
+  def print(printer, interpreter)
     if @arithmetic_expression.nil?
-      @text_constant.to_formatted_s(interpreter)
+      printer.print_item @text_constant.to_formatted_s(interpreter)
     else
       numeric_constants = @arithmetic_expression.evaluate(interpreter)
       numeric_constant = numeric_constants[0]
-      numeric_constant.to_formatted_s(interpreter)
+      printer.print_item numeric_constant.to_formatted_s(interpreter)
+      printer.last_was_numeric
     end
-  end
-
-  def print(printer, interpreter)
-    text = to_formatted_s(interpreter)
-    printer.print_item text
   end
 end
 
@@ -748,6 +739,8 @@ class CarriageControl
     case @operator
     when ','
       printer.tab
+    when ';'
+      printer.semicolon
     when 'NL'
       printer.newline
     end
