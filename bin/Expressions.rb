@@ -66,7 +66,7 @@ class Variable
   end
 end
 
-class VariableValue < Variable
+class ScalarValue < Variable
   def initialize(variable_name)
     super
   end
@@ -86,7 +86,7 @@ class VariableValue < Variable
   end
 end
 
-class VariableReference < Variable
+class ScalarReference < Variable
   def initialize(variable_value)
     super(variable_value.name)
   end
@@ -150,9 +150,9 @@ class List
   
   def evaluate(interpreter, stack)
     if @parsed_expressions[0].size > 0
-      eval(interpreter, @parsed_expressions, 'NumericConstant')
+      eval_scalar(interpreter, @parsed_expressions, 'NumericConstant')
     else
-      eval(interpreter, @parsed_expressions, 'NilClass')
+      eval_scalar(interpreter, @parsed_expressions, 'NilClass')
     end
   end
 
@@ -161,7 +161,7 @@ class List
   end
 end
 
-class Function
+class ScalarFunction
   @@valid_names = [ 'INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR', 'SIN', 'COS', 'TAN', 'ATN', 'SGN' ]
   def initialize(text)
     fail(BASICException, "'#{text}' is not a valid function") unless @@valid_names.include?(text)
@@ -424,7 +424,7 @@ def tokenize(words)
             last_was_operand = false
           rescue BASICException
             begin
-              tokens << Function.new(word)
+              tokens << ScalarFunction.new(word)
               last_was_operand = true
             rescue BASICException
               begin
@@ -436,7 +436,7 @@ def tokenize(words)
                     rescue BASICException
                       begin
                         variable_name = VariableName.new(word)
-                        tokens << VariableValue.new(variable_name)
+                        tokens << ScalarValue.new(variable_name)
                         last_was_operand = true
                       rescue BASICException
                         fail BASICException, "'#{word}' is not a value or operator"
@@ -537,7 +537,7 @@ def parse(tokens)
 end
 
 # returns an Array of values
-def eval(interpreter, parsed_expressions, expected_result_class)
+def eval_scalar(interpreter, parsed_expressions, expected_result_class)
   # expected = parsed_expressions[0].length
   result_values = Array.new
   parsed_expressions.each do | parsed_expression |
@@ -546,11 +546,11 @@ def eval(interpreter, parsed_expressions, expected_result_class)
       case token.class.to_s
       when 'List'
         x = token.evaluate(interpreter, stack)
-      when 'UnaryOperator','BinaryOperator','Function','UserFunction'
+      when 'UnaryOperator','BinaryOperator','ScalarFunction','UserFunction'
         x = token.evaluate(interpreter, stack)
       when 'NumericConstant'
         x = token.evaluate(interpreter, stack)
-      when 'VariableValue','VariableReference','VariableDimension'
+      when 'ScalarValue','ScalarReference','VariableDimension'
         x = token.evaluate(interpreter, stack)
       else
         fail Exception, "Unknown data type #{x.class}"
@@ -570,7 +570,7 @@ def eval(interpreter, parsed_expressions, expected_result_class)
   result_values
 end
 
-class ValueExpression
+class ValueScalarExpression
   def initialize(text)
     fail(Exception, "Expression cannot be empty") if text.length == 0
     @unparsed_expression = text
@@ -591,8 +591,8 @@ class ValueExpression
   # returns an Array of values
   def evaluate(interpreter)
     if @parsed_expressions.size > 0
-      values = eval(interpreter, @parsed_expressions, 'NumericConstant')
-      fail(Exception, "ValueExpression: Expected some values") if values.length == 0
+      values = eval_scalar(interpreter, @parsed_expressions, 'NumericConstant')
+      fail(Exception, "ValueScalarExpression: Expected some values") if values.length == 0
     else
       values = Array.new
     end
@@ -600,7 +600,7 @@ class ValueExpression
   end
 end
 
-class TargetExpression
+class TargetScalarExpression
   def initialize(text)
     fail(Exception, "Expression cannot be empty") if text.length == 0
     @unparsed_expression = text
@@ -611,8 +611,8 @@ class TargetExpression
     fail(BASICException, "Value list is empty (length 0)") if @parsed_expressions.length == 0
     @parsed_expressions.each do | parsed_expression |
       fail(BASICException, "Value is not assignable (length 0)") if parsed_expression.length == 0
-      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'VariableValue'
-      parsed_expression[-1] = VariableReference.new(parsed_expression[-1])
+      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'ScalarValue'
+      parsed_expression[-1] = ScalarReference.new(parsed_expression[-1])
     end
   end
 
@@ -626,7 +626,7 @@ class TargetExpression
 
   # returns an Array of targets
   def evaluate(interpreter)
-    values = eval(interpreter, @parsed_expressions, 'VariableReference')
+    values = eval_scalar(interpreter, @parsed_expressions, 'ScalarReference')
     fail(Exception, "Expected some values") if values.length == 0
     values
   end
@@ -643,7 +643,7 @@ class DimensionExpression
     fail(BASICException, "Value list is empty (length 0)") if @parsed_expressions.length == 0
     @parsed_expressions.each do | parsed_expression |
       fail(BASICException, "Value is not assignable (length 0)") if parsed_expression.length == 0
-      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'VariableValue'
+      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'ScalarValue'
       parsed_expression[-1] = VariableDimension.new(parsed_expression[-1])
     end
   end
@@ -657,7 +657,7 @@ class DimensionExpression
   end
 
   def evaluate(interpreter)
-    values = eval(interpreter, @parsed_expressions, 'VariableDimension')
+    values = eval_scalar(interpreter, @parsed_expressions, 'VariableDimension')
     fail(Exception, "Expected some values") if values.length == 0
     values
   end
@@ -693,7 +693,7 @@ class PrintableExpression
     begin
       @text_constant = TextConstant.new(text)
     rescue BASICException => message
-      @arithmetic_expression = ValueExpression.new(text)
+      @arithmetic_expression = ValueScalarExpression.new(text)
     end
   end
   
@@ -751,9 +751,9 @@ class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
     fail(BASICException, "'#{text}' is not a boolean expression") if parts.size != 3
-    @a = ValueExpression.new(parts[0])
+    @a = ValueScalarExpression.new(parts[0])
     @operator = BooleanOperator.new(parts[1])
-    @b = ValueExpression.new(parts[2])
+    @b = ValueScalarExpression.new(parts[2])
   end
   
   def evaluate(interpreter)
@@ -787,8 +787,8 @@ class Assignment
     # parse into variable, '=', expression
     parts = text.split('=', 2)
     fail(BASICException, "'#{text}' is not a valid assignment") if parts.size != 2
-    @target = TargetExpression.new(parts[0])
-    @expression = ValueExpression.new(parts[1])
+    @target = TargetScalarExpression.new(parts[0])
+    @expression = ValueScalarExpression.new(parts[1])
   end
 
   def count_target
@@ -824,7 +824,7 @@ class UserFunctionDefinition
     user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
-    @template = ValueExpression.new(parts[1])
+    @template = ValueScalarExpression.new(parts[1])
   end
 
   def name

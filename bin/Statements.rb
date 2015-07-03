@@ -148,7 +148,7 @@ class InputStatement < AbstractStatement
       @expression_list = Array.new
       text_list.each do | text_item |
         begin
-          @expression_list << TargetExpression.new(text_item)
+          @expression_list << TargetScalarExpression.new(text_item)
         rescue BASICException
           @errors << "Invalid variable #{text_item}"
         end
@@ -367,21 +367,21 @@ class ForStatement < AbstractStatement
     fail(BASICException, "Syntax error") if parts.size != 2
     begin
       var_name = VariableName.new(parts[0])
-      @control_variable = VariableValue.new(var_name)
+      @control_variable = ScalarValue.new(var_name)
     rescue BASICException => message
       @errors << message
     end
     parts = parts[1].split('TO', 2)
     fail(BASICException, "Syntax error") if parts.size != 2
-    @start_value = ValueExpression.new(parts[0])
+    @start_value = ValueScalarExpression.new(parts[0])
     parts = parts[1].split('STEP', 2)
-    @end_value = ValueExpression.new(parts[0])
+    @end_value = ValueScalarExpression.new(parts[0])
     if parts.size > 1
       @has_step_value = true
-      @step_value = ValueExpression.new(parts[1])
+      @step_value = ValueScalarExpression.new(parts[1])
     else
       @has_step_value = false
-      @step_value = ValueExpression.new('1')
+      @step_value = ValueScalarExpression.new('1')
     end
   end
   
@@ -410,7 +410,7 @@ class NextStatement < AbstractStatement
     @control_variable = nil
     begin
       var_name = VariableName.new(line.gsub(/ /, ''))
-      @control_variable = VariableValue.new(var_name)
+      @control_variable = ScalarValue.new(var_name)
     rescue BASICException => message
       @errors << message
       @boolean_expression = line
@@ -442,7 +442,7 @@ class ReadStatement < AbstractStatement
     @expression_list = Array.new
     item_list.each do | item |
       begin
-        @expression_list << TargetExpression.new(item)
+        @expression_list << TargetScalarExpression.new(item)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
