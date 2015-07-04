@@ -176,9 +176,9 @@ class PrintHandler
   end
   
   def tab
-    new_column = ((@column / 14) + 1) * 14
-    spaces = ' ' * (new_column - @column)
-    print_item(spaces)
+    while @column > 0 and @column % 14 != 0
+      print_item(' ')
+    end
     @last_was_numeric = false
   end
 
