@@ -211,7 +211,7 @@ class ScalarFunction
         fail(BASICException, "Function #{@name} expects 0 or 1 argument, found #{num_args}")
       end
       upper_bound = xv.truncate.to_f
-      upper_bound = 1 if upper_bound <= 0
+      upper_bound = 1.to_f if upper_bound <= 0
       result = $randomizer.rand(upper_bound)
     when 'EXP'
       fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
@@ -245,14 +245,14 @@ class ScalarFunction
       x = args[0]
       fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
-      f = xv >= 0 ? Math.sin(xv) : 0
+      f = Math.sin(xv)
       result = float_to_possible_int(f)
     when 'COS'
       fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
       fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
       xv = x.to_v
-      f = xv >= 0 ? Math.cos(xv) : 0
+      f = Math.cos(xv)
       result = float_to_possible_int(f)
     when 'TAN'
       fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
