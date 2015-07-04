@@ -24,7 +24,7 @@ end
 
 class Variable
   def initialize(variable_name)
-    fail(BASICException, "'#{variable_name}' is not a variable name", caller) if variable_name.class.to_s != 'VariableName'
+    fail(BASICException, "'#{variable_name}' is not a variable name") if variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
     @subscripts = Array.new
   end
@@ -597,6 +597,48 @@ class ValueScalarExpression
       values = Array.new
     end
     values
+  end
+end
+
+class ValueMatrixExpression
+  def initialize(text)
+    variable_name = VariableName.new(text)
+    @variable = Variable.new(variable_name)
+  end
+
+  def to_s
+    @variable.to_s
+  end
+
+  def print(printer, interpreter)
+    dimensions = interpreter.get_dimensions(@variable.name)
+    if not dimensions.nil?
+      if dimensions.size == 1
+        upper = dimensions[0].to_v
+        (1..upper).each do | index |
+          varname = @variable.to_s + '(' + index.to_s + ')'
+          value = interpreter.get_value(varname)
+          printer.print_item(value.to_s)
+          printer.tab
+        end
+        printer.newline
+      end
+      if dimensions.size == 2
+        upper_i = dimensions[0].to_v
+        upper_j = dimensions[1].to_v
+        (1..upper_i).each do | i |
+          (1..upper_j).each do | j |
+            varname = @variable.to_s + '(' + i.to_s + ',' + j.to_s + ')'
+            value = interpreter.get_value(varname)
+            printer.print_item(value.to_s)
+            printer.tab
+          end
+          printer.newline
+        end
+      end
+    else
+      fail BASICException, "Undefined value #{@variable}"
+    end
   end
 end
 

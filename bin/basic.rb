@@ -252,6 +252,7 @@ class Interpreter
       elsif line_text == 'STOP' then statement = StopStatement.new
       elsif line_text == 'END' then statement = EndStatement.new
       elsif line_text[0..4] == 'TRACE' then statement = TraceStatement.new(line_text[5..-1])
+      elsif line_text[0..8] == 'MAT PRINT' then statement = MatPrintStatement.new(line_text[9..-1])
       end
     rescue BASICException
       puts "Syntax error"
@@ -459,6 +460,10 @@ class Interpreter
 
   def set_dimensions(variable, subscripts)
     @dimensions[variable] = subscripts
+  end
+
+  def get_dimensions(variable)
+    @dimensions[variable]
   end
 
   def set_user_function(name, variable_names, expressions)

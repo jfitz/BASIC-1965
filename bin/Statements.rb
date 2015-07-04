@@ -217,7 +217,6 @@ class IfStatement < AbstractStatement
 end
 
 class PrintStatement < AbstractStatement
-  public
   def initialize(line)
     super('PRINT')
     item_list = split_args(line.sub(/^ +/, ''), true)
@@ -549,6 +548,45 @@ class TraceStatement < AbstractStatement
 
   def to_s
     @keyword + ' ' + (@operation.value ? 'ON' : 'OFF')
+  end
+end
+
+class MatPrintStatement < AbstractStatement
+  def initialize(line)
+    super('MAT PRINT')
+    item_list = split_args(line.sub(/^ +/, ''), true)
+    # variable/constant, [separator, variable/constant]... [separator]
+    @print_item_list = Array.new
+    item_list.each do | print_item |
+      if print_item == ',' or print_item == ';'
+        # the item is a carriage control item
+        # save previous print thing, or create an empty one
+        @print_item_list << CarriageControl.new(print_item)
+      else
+        begin
+          # remove leading and trailing blanks
+          print_item.sub!(/^ +/, '')
+          print_item.sub!(/ +$/, '')
+          @print_item_list << ValueMatrixExpression.new(print_item)
+        rescue BASICException => e
+          @errors << "Invalid print item '#{print_item}': #{e.message}"
+        end
+      end
+    end
+    @print_item_list << CarriageControl.new('NL') if @print_item_list.size == 0 or @print_item_list[-1].class.to_s != 'CarriageControl'
+  end
+  
+  def to_s
+    varnames = Array.new
+    @print_item_list.each do | print_item |
+      varnames << print_item.to_s
+    end
+    @keyword + ' ' + varnames.join(' ')
+  end
+  
+  def execute_cmd(interpreter)
+    printer = interpreter.print_handler
+    @print_item_list.each { | print_item | print_item.print(printer, interpreter) }
   end
 end
 
