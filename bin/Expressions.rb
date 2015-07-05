@@ -610,7 +610,7 @@ class ValueMatrixExpression
     @variable.to_s
   end
 
-  def print(printer, interpreter)
+  def print(printer, interpreter, carriage)
     dimensions = interpreter.get_dimensions(@variable.name)
     if not dimensions.nil?
       if dimensions.size == 1
@@ -619,7 +619,8 @@ class ValueMatrixExpression
           varname = @variable.to_s + '(' + index.to_s + ')'
           value = interpreter.get_value(varname)
           printer.print_item(value.to_s)
-          printer.tab
+          printer.last_was_numeric
+          carriage.print(printer, interpreter)
         end
         printer.newline
       end
@@ -631,10 +632,12 @@ class ValueMatrixExpression
             varname = @variable.to_s + '(' + i.to_s + ',' + j.to_s + ')'
             value = interpreter.get_value(varname)
             printer.print_item(value.to_s)
-            printer.tab
+            printer.last_was_numeric
+            carriage.print(printer, interpreter)
           end
           printer.newline
         end
+        printer.newline
       end
     else
       fail BASICException, "Undefined value #{@variable}"
