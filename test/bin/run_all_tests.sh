@@ -55,6 +55,7 @@ bash test/bin/run_one_test.sh function_sgn
 bash test/bin/run_one_test.sh mat_print_1
 bash test/bin/run_one_test.sh mat_print_2
 bash test/bin/run_one_test.sh mat_print_3
+bash test/bin/run_one_test.sh mat_print_4
 
 bash test/bin/run_one_test.sh celcius_to_fahrenheit
 bash test/bin/run_one_test.sh celcius_2

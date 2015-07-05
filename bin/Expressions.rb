@@ -623,6 +623,7 @@ class ValueMatrixExpression
           carriage.print(printer, interpreter)
         end
         printer.newline
+        printer.newline
       end
       if dimensions.size == 2
         upper_i = dimensions[0].to_v
