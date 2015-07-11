@@ -335,28 +335,32 @@ class Interpreter
       # start with the first line number
       @current_line_number = line_numbers[0]
       @running = true
-      while @running
-        # pick the next line number
-        @next_line_number = line_numbers[line_numbers.index(@current_line_number) + 1]
-        begin
-          line = @program_lines[@current_line_number]
-          puts "#{@current_line_number}: #{line.to_s}" if trace_flag or @tron_flag
-          if line.errors.size > 0
-            puts "Errors in line #{current_line_number}:"
-            line.errors.each { | error | puts error }
+      begin
+        while @running
+          # pick the next line number
+          @next_line_number = line_numbers[line_numbers.index(@current_line_number) + 1]
+          begin
+            line = @program_lines[@current_line_number]
+            puts "#{@current_line_number}: #{line.to_s}" if trace_flag or @tron_flag
+            if line.errors.size > 0
+              puts "Errors in line #{current_line_number}:"
+              line.errors.each { | error | puts error }
+              stop_running
+            end
+            line.execute(self) if @running
+            if @running
+              # set the next line number (which may have been changed by execute() )
+              @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
+            else
+              @current_line_number = nil
+            end
+          rescue BASICException => message
+            puts "#{message} in line #{current_line_number}"
             stop_running
           end
-          line.execute(self) if @running
-          if @running
-            # set the next line number (which may have been changed by execute() )
-            @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
-          else
-            @current_line_number = nil
-          end
-        rescue BASICException => message
-          puts "#{message} in line #{current_line_number}"
-          stop_running
         end
+      rescue Interrupt
+        stop_running
       end
     else
       puts 'No program loaded'
