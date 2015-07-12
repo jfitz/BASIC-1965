@@ -4,6 +4,8 @@ class NumericConstant
     float_regex = Regexp.new('\A\s*[+-]?\d+\.\d*(E\d+)?\z')
     if text.class.to_s == 'Fixnum'
       @value = text
+    elsif text.class.to_s == 'Bignum'
+      @value = text
     elsif text.class.to_s == 'Float'
       @value = text
     elsif int_regex.match(text)
