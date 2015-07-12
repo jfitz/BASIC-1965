@@ -213,9 +213,11 @@ class PrintHandler
   end
 
   def print_out(text)
-    text.each_char do | c |
-      print c
-      delay
+    if not text.nil?
+      text.each_char do | c |
+        print c
+        delay
+      end
     end
   end
 
