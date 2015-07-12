@@ -312,13 +312,13 @@ end
 
 class ForNextControl
   def initialize(control_variable, loop_start_number, start_value, end_value, step_value)
-    if start_value.class.to_s != 'Fixnum' and start_value.class.to_s != 'Float'
+    if start_value.class.to_s != 'NumericConstant'
       fail Exception, "Invalid start value #{start_value} #{start_value.class}"
     end
-    if end_value.class.to_s != 'Fixnum' and end_value.class.to_s != 'Float'
+    if end_value.class.to_s != 'NumericConstant'
       fail Exception, "Invalid end value #{end_value} #{end_value.class}"
     end
-    if step_value.class.to_s != 'Fixnum' and step_value.class.to_s != 'Float'
+    if step_value.class.to_s != 'NumericConstant'
       fail Exception, "Invalid step value #{step_value} #{step_value.class}"
     end
     @control_variable = control_variable
@@ -330,7 +330,7 @@ class ForNextControl
   end
   
   def bump_control_variable(interpreter)
-    @current_value = @current_value + @step_value
+    @current_value = NumericConstant.new(@current_value.to_v + @step_value.to_v)
     interpreter.set_value(@control_variable, @current_value)
   end
   
@@ -347,7 +347,7 @@ class ForNextControl
   end
   
   def terminated?(interpreter)
-    current_value = interpreter.get_value(@control_variable).to_v
+    current_value = interpreter.get_value(@control_variable)
     if @step_value > 0
       current_value + @step_value > @end_value
     elsif @step_value < 0
@@ -393,10 +393,10 @@ class ForStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
-    from_value = @start_value.evaluate(interpreter)[0].to_v
+    from_value = @start_value.evaluate(interpreter)[0]
     interpreter.set_value(@control_variable, from_value)
-    to_value = @end_value.evaluate(interpreter)[0].to_v
-    step_value = @step_value.evaluate(interpreter)[0].to_v
+    to_value = @end_value.evaluate(interpreter)[0]
+    step_value = @step_value.evaluate(interpreter)[0]
     fornext_control = ForNextControl.new(@control_variable, interpreter.get_next_line, from_value, to_value, step_value)
     interpreter.set_fornext(fornext_control)
   end
