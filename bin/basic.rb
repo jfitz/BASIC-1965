@@ -150,22 +150,23 @@ class LineNumberRange
 end
 
 class PrintHandler
-  def initialize(max_width)
+  def initialize(max_width, print_rate)
     @column = 0
     @max_width = max_width
+    @print_rate = print_rate
     @last_was_numeric = false
   end
   
   def print_item(text)
     if (@column + text.length) < @max_width
-      print text
+      print_out text
       @column += text.size
     else
       overflow = @column + text.length - @max_width
       first_count = text.length - overflow
-      print text[0..first_count]
+      print_out text[0..first_count]
       newline
-      print text[first_count+1..text.length]
+      print_out text[first_count+1..text.length]
       @column = overflow
     end
     @last_was_numeric = false
@@ -198,6 +199,7 @@ class PrintHandler
   
   def newline
     puts
+    delay
     @column = 0
     @last_was_numeric = false
   end
@@ -209,14 +211,27 @@ class PrintHandler
   def implied_newline
     @column = 0
   end
+
+  def print_out(text)
+    text.each_char do | c |
+      print c
+      delay
+    end
+  end
+
+  def delay
+    if @print_rate > 0
+      sleep 1.0 / @print_rate
+    end
+  end
 end
 
 class Interpreter
-  def initialize
+  def initialize(output_speed)
     @running = false
     @data_store = Array.new
     @data_index = 0
-    @printer = PrintHandler.new(72)
+    @printer = PrintHandler.new(72,output_speed)
     @return_stack = Array.new
     @fornexts = Hash.new
     @dimensions = Hash.new
@@ -670,15 +685,16 @@ class Interpreter
   end
 end
 
-interpreter = Interpreter.new
 if ARGV.size > 0
   filename = ''
   timing_flag = true
   trace_flag = false
+  output_speed = 0
   ARGV.each do | arg |
     if arg[0] == '-'
       trace_flag = true if arg == '-trace'
       timing_flag = false if arg == '-notiming'
+      output_speed = 10 if arg == '-tty'
     else
       filename = arg if filename == '' #take only the first filename
     end
@@ -687,8 +703,10 @@ if ARGV.size > 0
   # set_trace_func proc { | event, file, line, id, binding, classname |
   #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include?(classname.to_s)
   # }
+  interpreter = Interpreter.new(output_speed)
   interpreter.load_and_run(filename, trace_flag, timing_flag)
 else
+  interpreter = Interpreter.new(0)
   interpreter.go
 end
 
