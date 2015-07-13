@@ -271,8 +271,8 @@ class Interpreter
       elsif line_text[0..4] == 'TRACE' then statement = TraceStatement.new(line_text[5..-1])
       elsif line_text[0..8] == 'MAT PRINT' then statement = MatPrintStatement.new(line_text[9..-1])
       end
-    rescue BASICException
-      puts "Syntax error"
+    rescue BASICException => e
+      puts "Syntax error: #{e.message}"
     end
     [line_num, statement]
   end

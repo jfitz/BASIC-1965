@@ -390,8 +390,8 @@ def textline_to_constants(line)
   text_values.each do | value |
     begin
       values << NumericConstant.new(value)
-    rescue BASICException
-      raise BASICException, "Invalid value #{value}", caller
+    rescue BASICException => e
+      fail BASICException, "Invalid value #{value}: #{e.message}"
     end
   end
   values
