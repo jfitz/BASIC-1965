@@ -41,6 +41,7 @@ bash test/bin/run_one_test.sh fornext_1
 bash test/bin/run_one_test.sh fornext_2
 bash test/bin/run_one_test.sh fornext_3
 bash test/bin/run_one_test.sh fornext_4
+bash test/bin/run_one_test.sh fornext_5
 
 bash test/bin/run_one_test.sh syntax_error_1
 bash test/bin/run_one_test.sh syntax_error_2

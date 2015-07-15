@@ -479,6 +479,21 @@ class Interpreter
     @next_line_number = line_number
   end
 
+  def find_closing_next(control_variable)
+    # starting with @next_line_number
+    line_numbers = @program_lines.keys
+    forward_line_numbers = line_numbers.select { | line_number | line_number > @current_line_number }
+    # find a NEXT statement with matching control variable
+    forward_line_numbers.each do | line_number |
+      statement = @program_lines[line_number]
+      if statement.class.to_s == 'NextStatement'
+        statement_control_variable = statement.get_control_variable
+        return line_number if statement_control_variable == control_variable
+      end
+    end
+    fail(BASICException, "FOR without NEXT") # if none found, error
+  end
+
   def set_dimensions(variable, subscripts)
     @dimensions[variable] = subscripts
   end

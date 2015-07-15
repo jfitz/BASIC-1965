@@ -345,6 +345,17 @@ class ForNextControl
   def loop_start_number
     @loop_start_number
   end
+
+  def front_terminated?(interpreter)
+    current_value = interpreter.get_value(@control_variable)
+    if @step_value > 0
+      @start_value > @end_value
+    elsif @step_value < 0
+      @start_value < @end_value
+    else
+      false
+    end
+  end
   
   def terminated?(interpreter)
     current_value = interpreter.get_value(@control_variable)
@@ -353,7 +364,7 @@ class ForNextControl
     elsif @step_value < 0
       current_value + @step_value < @end_value
     else
-      true
+      false
     end
   end
 end
@@ -393,12 +404,14 @@ class ForStatement < AbstractStatement
   end
   
   def execute_cmd(interpreter)
+    loop_end_number = interpreter.find_closing_next(@control_variable.name)
     from_value = @start_value.evaluate(interpreter)[0]
     interpreter.set_value(@control_variable, from_value)
     to_value = @end_value.evaluate(interpreter)[0]
     step_value = @step_value.evaluate(interpreter)[0]
     fornext_control = ForNextControl.new(@control_variable, interpreter.get_next_line, from_value, to_value, step_value)
     interpreter.set_fornext(fornext_control)
+    interpreter.set_next_line(loop_end_number) if fornext_control.front_terminated?(interpreter)
   end
 end
 
@@ -419,7 +432,11 @@ class NextStatement < AbstractStatement
   def to_s
     @keyword + ' ' + @control_variable.to_s
   end
-  
+
+  def get_control_variable
+    @control_variable.name
+  end
+
   def execute_cmd(interpreter)
     fornext_control = interpreter.get_fornext(@control_variable)
     # check control variable value
@@ -429,7 +446,6 @@ class NextStatement < AbstractStatement
     interpreter.set_next_line(fornext_control.loop_start_number)
     # change control variable value
     fornext_control.bump_control_variable(interpreter)
-    interpreter.set_fornext(fornext_control)
   end
 end
 
