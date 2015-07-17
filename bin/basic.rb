@@ -177,7 +177,14 @@ class PrintHandler
   end
   
   def tab
-    while @column > 0 and @column % 14 != 0
+    if @last_was_numeric
+      count = 3
+      while @column > 0 and count > 0
+        print_item(' ')
+        count -= 1
+      end
+    end
+    while @column > 0 and @column % 16 != 0
       print_item(' ')
     end
     @last_was_numeric = false
