@@ -1,22 +1,20 @@
 class AbstractStatement
+  attr_reader :errors
+
   def initialize(keyword)
     @keyword = keyword
-    @errors = Array.new
-  end
-  
-  def errors
-    @errors
+    @errors = []
   end
 
-  def pre_execute(interpreter)
+  def pre_execute(_)
     0
   end
-  
+
   def execute(interpreter)
     if @errors.size == 0
       execute_cmd(interpreter)
     else
-      @errors.each { | error | puts "line #{interpreter.current_line_number}: #{error}" }
+      @errors.each { |error| puts "line #{interpreter.current_line_number}: #{error}" }
     end
   end
 end
@@ -27,26 +25,26 @@ class UnknownStatement < AbstractStatement
     @line = line
     @errors << "Unknown command #{@line}"
   end
-  
+
   def to_s
     @line
   end
-  
-  def execute_cmd(interpreter)
+
+  def execute_cmd(_)
     0
   end
 end
 
 class EmptyStatement < AbstractStatement
-  def initialize()
+  def initialize
     super('')
   end
-  
+
   def to_s
     ''
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(_)
     0
   end
 end
@@ -56,12 +54,12 @@ class RemarkStatement < AbstractStatement
     super('REM')
     @contents = line
   end
-  
+
   def to_s
     @keyword + @contents
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(_)
     0
   end
 end
@@ -71,9 +69,9 @@ class DimStatement < AbstractStatement
     super('DIM')
     text_list = split_args(line.gsub(/^ +/, ''), false)
     # variable [comma, variable]...
-    @expression_list = Array.new
+    @expression_list = []
     if text_list.size > 0
-      text_list.each do | text_item |
+      text_list.each do |text_item|
         begin
           @expression_list << DimensionExpression.new(text_item)
         rescue BASICException
@@ -81,7 +79,7 @@ class DimStatement < AbstractStatement
         end
       end
     else
-      @errors << "No variables specified"
+      @errors << 'No variables specified'
     end
   end
 
@@ -90,12 +88,12 @@ class DimStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter)
-    @expression_list.each do | expression |
+    @expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
       if subscripts.size == 0
-        fail BASICException, "DIM statement requires subscript range"
+        fail BASICException, 'DIM statement requires subscript range'
       end
       interpreter.set_dimensions(variable.name, subscripts)
     end
@@ -118,11 +116,11 @@ class LetStatement < AbstractStatement
       @assignment = line
     end
   end
-  
+
   def to_s
     @keyword + ' ' + @assignment.to_s
   end
-  
+
   def execute_cmd(interpreter)
     l_values = @assignment.eval_target(interpreter)
     l_value = l_values[0]
@@ -145,8 +143,8 @@ class InputStatement < AbstractStatement
       rescue BASICException
       end
       # variable [comma, variable]...
-      @expression_list = Array.new
-      text_list.each do | text_item |
+      @expression_list = []
+      text_list.each do |text_item|
         begin
           @expression_list << TargetScalarExpression.new(text_item)
         rescue BASICException
@@ -154,30 +152,32 @@ class InputStatement < AbstractStatement
         end
       end
     else
-      @errors << "No variables specified"
+      @errors << 'No variables specified'
     end
   end
-  
+
   def to_s
     @keyword + ' ' + (@prompt != @default_prompt ? @prompt.to_s + ', ' : '') + @expression_list.join(', ')
   end
-  
+
   private
+
   def zip(names, values)
-    fail(BASICException, "Unequal lists") if names.size != values.size
-    results = Array.new
-    (0...names.size).each do | i |
+    fail(BASICException, 'Unequal lists') if names.size != values.size
+    results = []
+    (0...names.size).each do |i|
       results << { 'name' => names[i], 'value' => values[i] }
-    end    
+    end
     results
   end
-  
+
   public
+
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
-    values = Array.new
+    values = []
     prompt = @prompt
-    while values.size < @expression_list.size do
+    while values.size < @expression_list.size
       print prompt.value
       input_line = gets
       input_line.chomp!
@@ -185,7 +185,7 @@ class InputStatement < AbstractStatement
       prompt = @default_prompt
     end
     name_value_pairs = zip(@expression_list, values[0, @expression_list.length])
-    name_value_pairs.each do | hash |
+    name_value_pairs.each do |hash|
       r_values = hash['name'].evaluate(interpreter)
       r_value = r_values[0]
       interpreter.set_value(r_value, hash['value'])
@@ -206,11 +206,11 @@ class IfStatement < AbstractStatement
     end
     @destination = LineNumber.new(parts[1])
   end
-  
+
   def to_s
     @keyword + ' ' + @boolean_expression.to_s + ' THEN ' + @destination.to_s
   end
-  
+
   def execute_cmd(interpreter)
     interpreter.set_next_line(@destination) if @boolean_expression.evaluate(interpreter)
   end
@@ -221,11 +221,11 @@ class PrintStatement < AbstractStatement
     super('PRINT')
     item_list = split_args(line.sub(/^ +/, ''), true)
     # variable/constant, [separator, variable/constant]... [separator]
-    @print_item_list = Array.new
-    item_list.each do | print_item |
-      if print_item == ',' or print_item == ';'
+    @print_item_list = []
+    item_list.each do |print_item|
+      if print_item == ',' || print_item == ';'
         # the item is a carriage control item
-        # save previous print thing, or create an empty one
+        # save previous print thing, || create an empty one
         @print_item_list << CarriageControl.new(print_item)
       else
         begin
@@ -238,20 +238,20 @@ class PrintStatement < AbstractStatement
         end
       end
     end
-    @print_item_list << CarriageControl.new('NL') if @print_item_list.size == 0 or @print_item_list[-1].class.to_s != 'CarriageControl'
+    @print_item_list << CarriageControl.new('NL') if @print_item_list.size == 0 || @print_item_list[-1].class.to_s != 'CarriageControl'
   end
-  
+
   def to_s
-    varnames = Array.new
-    @print_item_list.each do | print_item |
+    varnames = []
+    @print_item_list.each do |print_item|
       varnames << print_item.to_s
     end
     @keyword + ' ' + varnames.join(' ')
   end
-  
+
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
-    @print_item_list.each { | print_item | print_item.print(printer, interpreter) }
+    @print_item_list.each { |print_item| print_item.print(printer, interpreter) }
   end
 end
 
@@ -265,11 +265,11 @@ class GotoStatement < AbstractStatement
       @errors << "Invalid line number #{destination}"
     end
   end
-  
+
   def to_s
     @keyword + ' ' + @destination.to_s
   end
-  
+
   def execute_cmd(interpreter)
     interpreter.set_next_line(@destination)
   end
@@ -285,11 +285,11 @@ class GosubStatement < AbstractStatement
       @errors << "Invalid line number #{destination}"
     end
   end
-  
+
   def to_s
     @keyword + ' ' + @destination.to_s
   end
-  
+
   def execute_cmd(interpreter)
     interpreter.push_return(interpreter.get_next_line)
     interpreter.set_next_line(@destination)
@@ -300,17 +300,21 @@ class ReturnStatement < AbstractStatement
   def initialize
     super('RETURN')
   end
-  
+
   def to_s
     @keyword
   end
-  
+
   def execute_cmd(interpreter)
     interpreter.set_next_line(interpreter.pop_return)
   end
 end
 
 class ForNextControl
+  attr_reader :control_variable
+  attr_reader :loop_start_number
+  attr_reader :end_value
+
   def initialize(control_variable, loop_start_number, start_value, end_value, step_value)
     if start_value.class.to_s != 'NumericConstant'
       fail Exception, "Invalid start value #{start_value} #{start_value.class}"
@@ -328,26 +332,13 @@ class ForNextControl
     @step_value = step_value
     @current_value = start_value
   end
-  
+
   def bump_control_variable(interpreter)
     @current_value = NumericConstant.new(@current_value.to_v + @step_value.to_v)
     interpreter.set_value(@control_variable, @current_value)
   end
-  
-  def control_variable
-    @control_variable
-  end
-  
-  def end_value
-    @end_value
-  end
-  
-  def loop_start_number
-    @loop_start_number
-  end
 
-  def front_terminated?(interpreter)
-    current_value = interpreter.get_value(@control_variable)
+  def front_terminated?(_)
     if @step_value > 0
       @start_value > @end_value
     elsif @step_value < 0
@@ -356,7 +347,7 @@ class ForNextControl
       false
     end
   end
-  
+
   def terminated?(interpreter)
     current_value = interpreter.get_value(@control_variable)
     if @step_value > 0
@@ -372,9 +363,9 @@ end
 class ForStatement < AbstractStatement
   def initialize(line)
     super('FOR')
-    # parse control variable, "=", numeric_expression, "TO", numeric_expression, "STEP", numeric_expression
+    # parse control variable, '=', numeric_expression, "TO", numeric_expression, "STEP", numeric_expression
     parts = line.gsub(/ /, '').split('=', 2)
-    fail(BASICException, "Syntax error") if parts.size != 2
+    fail(BASICException, 'Syntax error') if parts.size != 2
     begin
       var_name = VariableName.new(parts[0])
       @control_variable = ScalarValue.new(var_name)
@@ -382,7 +373,7 @@ class ForStatement < AbstractStatement
       @errors << message
     end
     parts = parts[1].split('TO', 2)
-    fail(BASICException, "Syntax error") if parts.size != 2
+    fail(BASICException, 'Syntax error') if parts.size != 2
     @start_value = ValueScalarExpression.new(parts[0])
     parts = parts[1].split('STEP', 2)
     @end_value = ValueScalarExpression.new(parts[0])
@@ -394,7 +385,7 @@ class ForStatement < AbstractStatement
       @step_value = ValueScalarExpression.new('1')
     end
   end
-  
+
   def to_s
     if @has_step_value
       @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s + ' STEP ' + @step_value.to_s
@@ -402,7 +393,7 @@ class ForStatement < AbstractStatement
       @keyword + ' ' + @control_variable.to_s + ' = ' + @start_value.to_s + ' TO ' + @end_value.to_s
     end
   end
-  
+
   def execute_cmd(interpreter)
     loop_end_number = interpreter.find_closing_next(@control_variable.name)
     from_value = @start_value.evaluate(interpreter)[0]
@@ -428,7 +419,7 @@ class NextStatement < AbstractStatement
       @boolean_expression = line
     end
   end
-  
+
   def to_s
     @keyword + ' ' + @control_variable.to_s
   end
@@ -454,8 +445,8 @@ class ReadStatement < AbstractStatement
     super('READ')
     item_list = split_args(line.sub(/^ +/, ''), false)
     # variable [comma, variable]...
-    @expression_list = Array.new
-    item_list.each do | item |
+    @expression_list = []
+    item_list.each do |item|
       begin
         @expression_list << TargetScalarExpression.new(item)
       rescue BASICException
@@ -463,13 +454,13 @@ class ReadStatement < AbstractStatement
       end
     end
   end
-  
+
   def to_s
     @keyword + ' ' + @expression_list.join(', ')
   end
-  
+
   def execute_cmd(interpreter)
-    @expression_list.each do | expression |
+    @expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       interpreter.set_value(variable, interpreter.read_data)
@@ -482,7 +473,7 @@ class DataStatement < AbstractStatement
     super('DATA')
     @data_list = textline_to_constants(line)
   end
-  
+
   def to_s
     @keyword + ' ' + @data_list.join(', ')
   end
@@ -491,7 +482,7 @@ class DataStatement < AbstractStatement
     interpreter.store_data(@data_list)
   end
   
-  def execute_cmd(interpreter)
+  def execute_cmd(_)
     0
   end
 end
@@ -510,7 +501,7 @@ class DefineFunctionStatement < AbstractStatement
     @arguments = user_function_definition.arguments
     @template = user_function_definition.template
   end
-  
+
   def to_s
     @keyword + ' ' + @name + "(#{@arguments.join(', ')}) = " + @template.to_s
   end
@@ -519,7 +510,7 @@ class DefineFunctionStatement < AbstractStatement
     interpreter.set_user_function(@name, @arguments, @template)
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(_)
   end
 end
 
@@ -527,11 +518,11 @@ class StopStatement < AbstractStatement
   def initialize
     super('STOP')
   end
-  
+
   def to_s
     @keyword
   end
-  
+
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
     printer.newline_when_needed
@@ -543,11 +534,11 @@ class EndStatement < AbstractStatement
   def initialize
     super('END')
   end
-  
+
   def to_s
     @keyword
   end
-  
+
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
     printer.newline_when_needed
@@ -575,10 +566,10 @@ class MatPrintStatement < AbstractStatement
     super('MAT PRINT')
     item_list = split_args(line.sub(/^ +/, ''), true)
     # variable/constant, [separator, variable/constant]... [separator]
-    @print_item_list = Array.new
+    @print_item_list = []
     last_was_variable = false
-    item_list.each do | print_item |
-      if print_item == ',' or print_item == ';'
+    item_list.each do |print_item|
+      if print_item == ',' || print_item == ';'
         # the item is a carriage control item
         # save previous print thing, or create an empty one
         @print_item_list << CarriageControl.new(print_item)
@@ -597,30 +588,29 @@ class MatPrintStatement < AbstractStatement
         end
       end
     end
-    @print_item_list << CarriageControl.new(',') if @print_item_list.size == 0 or @print_item_list[-1].class.to_s != 'CarriageControl'
+    @print_item_list << CarriageControl.new(',') if @print_item_list.size == 0 || @print_item_list[-1].class.to_s != 'CarriageControl'
   end
-  
+
   def to_s
-    varnames = Array.new
-    @print_item_list.each do | print_item |
+    varnames = []
+    @print_item_list.each do |print_item|
       varnames << print_item.to_s
     end
     @keyword + ' ' + varnames.join(' ')
   end
-  
+
   def execute_cmd(interpreter)
     # convert print items to pairs
-    variables = Array.new
-    carriages = Array.new
-    @print_item_list.each do | print_item |
+    variables = []
+    carriages = []
+    @print_item_list.each do |print_item|
       variables << print_item if print_item.class.to_s == 'ValueMatrixExpression'
       carriages << print_item if print_item.class.to_s == 'CarriageControl'
     end
     controls = variables.zip carriages
     printer = interpreter.print_handler
-    controls.each do | print_pair |
+    controls.each do |print_pair|
       print_pair[0].print(printer, interpreter, print_pair[1])
     end
   end
 end
-

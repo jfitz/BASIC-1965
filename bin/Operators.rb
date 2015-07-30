@@ -1,38 +1,35 @@
 def float_to_possible_int(f)
-    i = f.to_i
-    (f - i).abs < 1e-8 ? i : f
+  i = f.to_i
+  (f - i).abs < 1e-8 ? i : f
 end
 
 class UnaryOperator
-  @@operators = { '+' => 5, '-' => 5 }
+  attr_reader :precedence
 
   def initialize(text)
-    fail(BASICException, "'#{text}' is not an operator") unless @@operators.has_key?(text)
+    operators = { '+' => 5, '-' => 5 }
+    fail(BASICException, "'#{text}' is not an operator") unless operators.key?(text)
     @op = text
-    @precedence = @@operators[@op]
+    @precedence = operators[@op]
   end
 
-  def is_operator
+  def operator?
     true
   end
-  
-  def is_function
+
+  def function?
     false
-  end
-  
-  def is_variable
-    false
-  end
-  
-  def is_terminal
-    false
-  end
-  
-  def precedence
-    @precedence
   end
 
-  def evaluate(interpreter, stack)
+  def variable?
+    false
+  end
+
+  def terminal?
+    false
+  end
+
+  def evaluate(_, stack)
     x = stack.pop
     case @op
     when '+'
@@ -47,47 +44,44 @@ class UnaryOperator
     f = a.to_f
     float_to_possible_int(f)
   end
-  
+
   def negate(a)
     f = -a.to_f
     float_to_possible_int(f)
   end
-  
+
   def to_s
     @op
   end
 end
 
 class BinaryOperator
-  @@operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
+  attr_reader :precedence
 
   def initialize(text)
-    fail(BASICException, "'#{text}' is not an operator") unless @@operators.has_key?(text)
+    operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
+    fail(BASICException, "'#{text}' is not an operator") unless operators.key?(text)
     @op = text
-    @precedence = @@operators[@op]
-  end
-  
-  def is_operator
-    true
-  end
-  
-  def is_function
-    false
-  end
-  
-  def is_variable
-    false
-  end
-  
-  def is_terminal
-    false
-  end
-  
-  def precedence
-    @precedence
+    @precedence = operators[@op]
   end
 
-  def evaluate(interpreter, stack)
+  def operator?
+    true
+  end
+
+  def function?
+    false
+  end
+
+  def variable?
+    false
+  end
+
+  def terminal?
+    false
+  end
+
+  def evaluate(_, stack)
     y = stack.pop
     x = stack.pop
     case @op
@@ -109,60 +103,57 @@ class BinaryOperator
     f = a.to_f + b.to_f
     float_to_possible_int(f)
   end
-  
+
   def subtract(a, b)
     f = a.to_f - b.to_f
     float_to_possible_int(f)
   end
-  
+
   def multiply(a, b)
     f = a.to_f * b.to_f
     float_to_possible_int(f)
   end
-  
+
   def divide(a, b)
-    fail(BASICException, "Division by zero") if b.to_f == 0
+    fail(BASICException, 'Division by zero') if b.to_f == 0
     f = a.to_f / b.to_f
     float_to_possible_int(f)
   end
-  
+
   def power(a, b)
-    f = a.to_f ** b.to_f
+    f = a.to_f**b.to_f
     float_to_possible_int(f)
   end
-  
+
   def to_s
     @op
   end
 end
 
 class BooleanOperator
-  @@valid_operators = [ '=', '<', '>', '>=', '<=', '<>' ]
+  attr_reader :precedence
 
   def initialize(text)
-    fail(BASICException, "'#{text}' is not a valid boolean operator") unless @@valid_operators.include?(text)
+    valid_operators = ['=', '<', '>', '>=', '<=', '<>']
+    fail(BASICException, "'#{text}' is not a valid boolean operator") unless valid_operators.include?(text)
     @value = text
     @precedence = 1
   end
-  
-  def is_operator
+
+  def operator?
     true
   end
-  
-  def is_function
+
+  def function?
     false
   end
-  
-  def is_variable
+
+  def variable?
     false
   end
-  
-  def is_terminal
+
+  def terminal?
     false
-  end
-  
-  def precedence
-    @precedence
   end
 
   def to_s
@@ -171,22 +162,22 @@ class BooleanOperator
 end
 
 class TerminalOperator
-  def is_operator
+  def operator?
     true
   end
-  
-  def is_function
+
+  def function?
     false
   end
 
-  def is_terminal
+  def terminal?
     true
   end
-  
-  def is_variable
+
+  def variable?
     false
   end
-  
+
   def precedence
     0
   end
@@ -195,4 +186,3 @@ class TerminalOperator
     'TERM'
   end
 end
-

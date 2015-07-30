@@ -1,2 +1,1 @@
 class BASICException < Exception; end
-
