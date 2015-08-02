@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 require 'benchmark'
-require 'BASICException'
+require 'exceptions'
 require 'constants'
 require 'Operators'
 require 'Expressions'
