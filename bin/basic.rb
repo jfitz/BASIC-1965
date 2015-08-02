@@ -7,15 +7,12 @@ require 'operators'
 require 'expressions'
 require 'statements'
 
-$randomizer = Random.new
-
+# Contain line numbers
 class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    if line_number.class.to_s == 'String'
-      regex = Regexp.new('\A\d+\z')
-      fail(BASICException, "'#{line_number}' is not a line number") if regex !~ line_number
+    if line_number.class.to_s == 'String' && /\A\d+\z/.match(line_number)
       @line_number = line_number.to_i
     elsif line_number.class.to_s == 'Fixnum'
       @line_number = line_number
@@ -65,6 +62,8 @@ class LineNumber
   end
 end
 
+# Contain line number ranges
+# used in LIST and DELETE commands
 class LineNumberRange
   attr_reader :line_numbers
 
@@ -77,7 +76,8 @@ class LineNumberRange
     else
       begin
         line_number = LineNumber.new(text)
-        @line_numbers << line_number if program_line_numbers.include?(line_number)
+        @line_numbers << line_number if
+          program_line_numbers.include?(line_number)
         @range_type = :single
       rescue BASICException
         begin
@@ -145,6 +145,8 @@ class LineNumberRange
   end
 end
 
+# Print Handler class
+# Handle tab stops and carriage control
 class PrintHandler
   def initialize(max_width, print_rate)
     @column = 0
@@ -223,9 +225,13 @@ class PrintHandler
   end
 end
 
+# the interpreter
 class Interpreter
+  attr_reader :current_line_number
+
   def initialize(output_speed)
     @running = false
+    @randomizer = Random.new
     @data_store = []
     @data_index = 0
     @printer = PrintHandler.new(72, output_speed)
@@ -245,26 +251,43 @@ class Interpreter
     # pick out the keyword
     statement = UnknownStatement.new(line_text)
     begin
-      if line_text == '' then statement = EmptyStatement.new()
-      elsif line_text[0..2] == 'REM' then statement = RemarkStatement.new(line_text[3..-1])
-      elsif line_text[0..2] == 'DIM' then statement = DimStatement.new(line_text[3..-1])
-      elsif line_text[0..2] == 'DEF' then statement = DefineFunctionStatement.new(line_text[3..-1])
-      elsif line_text[0..2] == 'LET' then statement = LetStatement.new(line_text[3..-1])
-      elsif line_text[0..4] == 'INPUT' then statement = InputStatement.new(line_text[5..-1])
-      elsif line_text[0..1] == 'IF' then statement = IfStatement.new(line_text[2..-1])
-      elsif line_text[0..4] == 'PRINT' then statement = PrintStatement.new(line_text[5..-1])
-      elsif line_text[0..4] == 'GO TO' then statement = GotoStatement.new(line_text[5..-1])
-      elsif line_text[0..3] == 'GOTO' then statement = GotoStatement.new(line_text[4..-1])
-      elsif line_text[0..4] == 'GOSUB' then statement = GosubStatement.new(line_text[5..-1])
-      elsif line_text[0..2] == 'FOR' then statement = ForStatement.new(line_text[3..-1])
-      elsif line_text[0..3] == 'NEXT' then statement = NextStatement.new(line_text[4..-1])
+      if line_text == '' then statement = EmptyStatement.new
+      elsif line_text[0..2] == 'REM'
+        statement = RemarkStatement.new(line_text[3..-1])
+      elsif line_text[0..2] == 'DIM'
+        statement = DimStatement.new(line_text[3..-1])
+      elsif line_text[0..2] == 'DEF'
+        statement = DefineFunctionStatement.new(line_text[3..-1])
+      elsif line_text[0..2] == 'LET'
+        statement = LetStatement.new(line_text[3..-1])
+      elsif line_text[0..4] == 'INPUT'
+        statement = InputStatement.new(line_text[5..-1])
+      elsif line_text[0..1] == 'IF'
+        statement = IfStatement.new(line_text[2..-1])
+      elsif line_text[0..4] == 'PRINT'
+        statement = PrintStatement.new(line_text[5..-1])
+      elsif line_text[0..4] == 'GO TO'
+        statement = GotoStatement.new(line_text[5..-1])
+      elsif line_text[0..3] == 'GOTO'
+        statement = GotoStatement.new(line_text[4..-1])
+      elsif line_text[0..4] == 'GOSUB'
+        statement = GosubStatement.new(line_text[5..-1])
+      elsif line_text[0..2] == 'FOR'
+        statement = ForStatement.new(line_text[3..-1])
+      elsif line_text[0..3] == 'NEXT'
+        statement = NextStatement.new(line_text[4..-1])
       elsif line_text == 'RETURN' then statement = ReturnStatement.new
-      elsif line_text[0..3] == 'READ' then statement = ReadStatement.new(line_text[4..-1])
-      elsif line_text[0..3] == 'DATA' then statement = DataStatement.new(line_text[4..-1])
+      elsif line_text[0..3] == 'READ'
+        statement = ReadStatement.new(line_text[4..-1])
+      elsif line_text[0..3] == 'DATA'
+        statement = DataStatement.new(line_text[4..-1])
       elsif line_text == 'STOP' then statement = StopStatement.new
-      elsif line_text == 'END' then statement = EndStatement.new
-      elsif line_text[0..4] == 'TRACE' then statement = TraceStatement.new(line_text[5..-1])
-      elsif line_text[0..8] == 'MAT PRINT' then statement = MatPrintStatement.new(line_text[9..-1])
+      elsif line_text == 'END'
+        statement = EndStatement.new
+      elsif line_text[0..4] == 'TRACE'
+        statement = TraceStatement.new(line_text[5..-1])
+      elsif line_text[0..8] == 'MAT PRINT'
+        statement = MatPrintStatement.new(line_text[9..-1])
       end
     rescue BASICException => e
       puts "Syntax error: #{e.message}"
@@ -276,7 +299,8 @@ class Interpreter
     linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
     if @program_lines.size > 0
       begin
-        line_number_range = LineNumberRange.new(linespec, @program_lines.keys.sort)
+        line_number_range =
+          LineNumberRange.new(linespec, @program_lines.keys.sort)
         line_numbers = line_number_range.line_numbers
         line_numbers.each do |line_number|
           puts "#{line_number} #{@program_lines[line_number]}"
@@ -293,7 +317,8 @@ class Interpreter
     linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
     if @program_lines.size > 0
       begin
-        line_number_range = LineNumberRange.new(linespec, @program_lines.keys.sort)
+        line_number_range =
+          LineNumberRange.new(linespec, @program_lines.keys.sort)
         line_numbers = line_number_range.line_numbers
         if line_number_range.single?
           line_numbers.each do |line_number|
@@ -324,12 +349,10 @@ class Interpreter
   private
 
   def verify_next_line_number(line_numbers, next_line_number)
-    if next_line_number.nil?
-      fail BASICException, 'Program terminated without END'
-    end
-    if !line_numbers.include?(next_line_number)
-      fail BASICException, "Line number #{next_line_number} not found"
-    end
+    fail BASICException, 'Program terminated without END' if
+      next_line_number.nil?
+    fail BASICException, "Line number #{next_line_number} not found" unless
+      line_numbers.include?(next_line_number)
     next_line_number
   end
 
@@ -352,7 +375,8 @@ class Interpreter
       begin
         while @running
           # pick the next line number
-          @next_line_number = line_numbers[line_numbers.index(@current_line_number) + 1]
+          @next_line_number =
+            line_numbers[line_numbers.index(@current_line_number) + 1]
           begin
             line = @program_lines[@current_line_number]
             puts "#{@current_line_number}: #{line}" if trace_flag || @tron_flag
@@ -363,8 +387,10 @@ class Interpreter
             end
             line.execute(self) if @running
             if @running
-              # set the next line number (which may have been changed by execute() )
-              @current_line_number = verify_next_line_number(line_numbers, @next_line_number)
+              # set the next line number
+              # (which may have been changed by execute() )
+              @current_line_number =
+                verify_next_line_number(line_numbers, @next_line_number)
             else
               @current_line_number = nil
             end
@@ -429,7 +455,9 @@ class Interpreter
       if filename.size > 0
         begin
           File.open(filename, 'w') do |file|
-            line_numbers.each { |line_num| file.puts "#{line_num} #{@program_lines[line_num]}" }
+            line_numbers.each do |line_num|
+              file.puts "#{line_num} #{@program_lines[line_num]}"
+            end
             file.close
           end
         rescue Errno::ENOENT
@@ -464,8 +492,8 @@ class Interpreter
     @running = false
   end
 
-  def current_line_number
-    @current_line_number
+  def rand(upper_bound)
+    @randomizer.rand(upper_bound)
   end
 
   def get_next_line
@@ -479,7 +507,8 @@ class Interpreter
   def find_closing_next(control_variable)
     # starting with @next_line_number
     line_numbers = @program_lines.keys
-    forward_line_numbers = line_numbers.select { |line_number| line_number > @current_line_number }
+    forward_line_numbers =
+      line_numbers.select { |line_number| line_number > @current_line_number }
     # find a NEXT statement with matching control variable
     forward_line_numbers.each do |line_number|
       statement = @program_lines[line_number]
@@ -642,40 +671,40 @@ class Interpreter
         line_num = line_parts[0]
         line_text = line_parts[1]
         @program_lines[line_num] = line_text
-        need_prompt = false
-        if line_text.errors.size > 0
-          line_text.errors.each { |error| puts error }
-          need_prompt = true
-        end
+        line_text.errors.each { |error| puts error } if
+          line_text.errors.size > 0
+        need_prompt = line_text.errors.size > 0
       else
         # immediate command -- execute
-        if cmd.size > 0
-          if cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
-          elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
-          elsif cmd == 'RUN'
-            timing = Benchmark.measure { cmd_run(false) }
-            user_time = timing.utime + timing.cutime
-            sys_time = timing.stime + timing.cstime
-            puts
-            puts 'CPU time:'
-            puts " user: #{user_time.round(2)}"
-            puts " system: #{sys_time.round(2)}"
-            puts
-          elsif cmd == 'TRACE' then cmd_run(true)
-          elsif cmd == 'NEW' then cmd_new
-          elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
-          elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
-          elsif cmd == 'EXIT' then done = true
-          elsif cmd == '.VARS' then dump_vars
-          elsif cmd == '.UDFS' then dump_user_functions
-          else print "Unknown command #{cmd}\n"
-          end
-        end
+        done = execute_command(cmd) if cmd.size > 0
         need_prompt = true
       end
     end
     puts
     puts 'BASIC-1965 ended'
+  end
+
+  def execute_command(cmd)
+    done = false
+    if cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
+    elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
+    elsif cmd == 'RUN'
+      timing = Benchmark.measure { cmd_run(false) }
+      user_time = timing.utime + timing.cutime
+      sys_time = timing.stime + timing.cstime
+      puts
+      print timing(user_time, sys_time) if timing_flag
+      puts
+    elsif cmd == 'TRACE' then cmd_run(true)
+    elsif cmd == 'NEW' then cmd_new
+    elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
+    elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
+    elsif cmd == 'EXIT' then done = true
+    elsif cmd == '.VARS' then dump_vars
+    elsif cmd == '.UDFS' then dump_user_functions
+    else print "Unknown command #{cmd}\n"
+    end
+    done
   end
 
   def load_and_run(filename, trace_flag, timing_flag)
@@ -687,12 +716,14 @@ class Interpreter
     sys_time = timing.stime + timing.cstime
     puts
     puts 'BASIC-1965 ended'
-    if timing_flag
-      puts 'CPU time:'
-      puts " user: #{user_time.round(2)}"
-      puts " system: #{sys_time.round(2)}"
-    end
+    print timing(user_time, sys_time) if timing_flag
   end
+end
+
+def print_timing(user_time, sys_time)
+  puts 'CPU time:'
+  puts " user: #{user_time.round(2)}"
+  puts " system: #{sys_time.round(2)}"
 end
 
 if ARGV.size > 0
@@ -711,7 +742,10 @@ if ARGV.size > 0
   end
   ARGV.clear
   # set_trace_func proc { |event, file, line, id, binding, classname|
-  #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO', 'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception', 'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'].include?(classname.to_s)
+  #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO',
+  #    'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception',
+  #    'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'
+  #    ].include?(classname.to_s)
   # }
   interpreter = Interpreter.new(output_speed)
   interpreter.load_and_run(filename, trace_flag, timing_flag)

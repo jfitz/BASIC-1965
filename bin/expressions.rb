@@ -187,7 +187,7 @@ class ScalarFunction
   end
 
   # return a single value
-  def evaluate(_, stack)
+  def evaluate(interpreter, stack)
     result = 0
     args = stack.pop
     fail(BASICException, 'No arguments for function') if args.class.to_s != 'Array'
@@ -210,7 +210,7 @@ class ScalarFunction
       end
       upper_bound = xv.truncate.to_f
       upper_bound = 1.to_f if upper_bound <= 0
-      result = $randomizer.rand(upper_bound)
+      result = interpreter.rand(upper_bound)
     when 'EXP'
       fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
       x = args[0]
