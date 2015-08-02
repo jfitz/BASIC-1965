@@ -1,22 +1,28 @@
+
+private
+
+def text_to_numeric(text)
+  if /\A\s*[+-]?\d+(E\d+)?\z/.match(text)
+    text.to_f.to_i
+  elsif /\A\s*[+-]?\d+\.(\d*)?(E\d+)?\z/.match(text)
+    text.to_f
+  elsif /\A\s*[+-]?(\d+)?\.\d*(E\d+)?\z/.match(text)
+    text.to_f
+  else
+    fail BASICException, "'#{text}' is not a number"
+  end
+end
+
+public
+
+# Numeric constants
 class NumericConstant
   def initialize(text)
-    int_regex = Regexp.new('\A\s*[+-]?\d+(E\d+)?\z')
-    float1_regex = Regexp.new('\A\s*[+-]?\d+\.(\d*)?(E\d+)?\z')
-    float2_regex = Regexp.new('\A\s*[+-]?(\d+)?\.\d*(E\d+)?\z')
-    if text.class.to_s == 'Fixnum'
+    numeric_classes = %w(Fixnum Bignum Float)
+    if numeric_classes.include?(text.class.to_s)
       @value = text
-    elsif text.class.to_s == 'Bignum'
-      @value = text
-    elsif text.class.to_s == 'Float'
-      @value = text
-    elsif int_regex.match(text)
-      @value = text.to_f.to_i
-    elsif float1_regex.match(text)
-      @value = text.to_f
-    elsif float2_regex.match(text)
-      @value = text.to_f
     else
-      fail BASICException, "'#{text}' is not a number"
+      @value = text_to_numeric(text)
     end
     @precedence = 0
   end
@@ -88,11 +94,15 @@ class NumericConstant
 
   def to_formatted_s(_)
     lead_space = @value >= 0 ? ' ' : ''
-    formatted = @value.class.to_s == 'Float' ? six_digits(@value).to_s : @value.to_s
-    lead_space + formatted
+    if @value.class.to_s == 'Float'
+      lead_space + six_digits(@value).to_s
+    else
+      lead_space + @value.to_s
+    end
   end
 end
 
+# Text constants
 class TextConstant
   attr_reader :value
 
@@ -131,6 +141,7 @@ class TextConstant
   end
 end
 
+# Boolean constants
 class BooleanConstant
   attr_reader :value
 
@@ -163,4 +174,3 @@ class BooleanConstant
     @value ? 'true' : 'false'
   end
 end
-

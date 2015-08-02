@@ -2,7 +2,7 @@
 
 require 'benchmark'
 require 'BASICException'
-require 'Constants'
+require 'constants'
 require 'Operators'
 require 'Expressions'
 require 'Statements'
