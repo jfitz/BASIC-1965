@@ -3,9 +3,9 @@
 require 'benchmark'
 require 'exceptions'
 require 'constants'
-require 'Operators'
-require 'Expressions'
-require 'Statements'
+require 'operators'
+require 'expressions'
+require 'statements'
 
 $randomizer = Random.new
 
