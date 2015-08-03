@@ -362,48 +362,61 @@ class Interpreter
     @variables = {}
     @tron_flag = false
     line_numbers = @program_lines.keys.sort
+
     if line_numbers.size > 0
-      # phase 1: do all initialization (store values in DATA lines)
-      line_numbers.each do |line_number|
-        line = @program_lines[line_number]
-        line.pre_execute(self)
-      end
-      # phase 2: run each command
-      # start with the first line number
-      @current_line_number = line_numbers[0]
-      @running = true
-      begin
-        while @running
-          # pick the next line number
-          @next_line_number =
-            line_numbers[line_numbers.index(@current_line_number) + 1]
-          begin
-            line = @program_lines[@current_line_number]
-            puts "#{@current_line_number}: #{line}" if trace_flag || @tron_flag
-            if line.errors.size > 0
-              puts "Errors in line #{current_line_number}:"
-              line.errors.each { |error| puts error }
-              stop_running
-            end
-            line.execute(self) if @running
-            if @running
-              # set the next line number
-              # (which may have been changed by execute() )
-              @current_line_number =
-                verify_next_line_number(line_numbers, @next_line_number)
-            else
-              @current_line_number = nil
-            end
-          rescue BASICException => message
-            puts "#{message} in line #{current_line_number}"
-            stop_running
-          end
-        end
-      rescue Interrupt
-        stop_running
-      end
+      run_phase_1(line_numbers)
+      run_phase_2(line_numbers, trace_flag)
     else
       puts 'No program loaded'
+    end
+  end
+
+  def run_phase_1(line_numbers)
+    # phase 1: do all initialization (store values in DATA lines)
+    line_numbers.each do |line_number|
+      line = @program_lines[line_number]
+      line.pre_execute(self)
+    end
+  end
+
+  def run_phase_2(line_numbers, trace_flag)
+    # phase 2: run each command
+    # start with the first line number
+    @current_line_number = line_numbers[0]
+    @running = true
+    begin
+      program_loop(line_numbers, trace_flag) while @running
+    rescue Interrupt
+      stop_running
+    end
+  end
+
+  def program_loop(line_numbers, trace_flag)
+    # pick the next line number
+    @next_line_number =
+      line_numbers[line_numbers.index(@current_line_number) + 1]
+    begin
+      line = @program_lines[@current_line_number]
+      puts "#{@current_line_number}: #{line}" if trace_flag || @tron_flag
+      if line.errors.size > 0
+        puts "Errors in line #{current_line_number}:"
+        line.errors.each { |error| puts error }
+        stop_running
+      end
+      line.execute(self) if @running
+      # don't merge above statement into this block
+      # the statement may change the running state
+      if @running
+        # set the next line number
+        # (which may have been changed by execute() )
+        @current_line_number =
+          verify_next_line_number(line_numbers, @next_line_number)
+      else
+        @current_line_number = nil
+      end
+    rescue BASICException => message
+      puts "#{message} in line #{current_line_number}"
+      stop_running
     end
   end
 
@@ -449,20 +462,10 @@ class Interpreter
   end
 
   def cmd_save(filename)
-    line_numbers = @program_lines.keys.sort
-    if line_numbers.size > 0
+    if @program_lines.size > 0
       filename.sub!(/^\s+/, '')
       if filename.size > 0
-        begin
-          File.open(filename, 'w') do |file|
-            line_numbers.each do |line_num|
-              file.puts "#{line_num} #{@program_lines[line_num]}"
-            end
-            file.close
-          end
-        rescue Errno::ENOENT
-          puts "File '#{filename}' not opened"
-        end
+        save_file(filename)
       else
         puts 'Filename not specified'
       end
@@ -471,16 +474,32 @@ class Interpreter
     end
   end
 
+  def save_file(filename)
+    line_numbers = @program_lines.keys.sort
+    begin
+      File.open(filename, 'w') do |file|
+        line_numbers.each do |line_num|
+          file.puts "#{line_num} #{@program_lines[line_num]}"
+        end
+        file.close
+      end
+    rescue Errno::ENOENT
+      puts "File '#{filename}' not opened"
+    end
+  end
+
   def dump_vars
     @variables.each do |key, value|
       puts "#{key}: #{value}"
     end
+    puts
   end
 
   def dump_user_functions
     @user_functions.each do |name, expression|
       puts "#{name}: #{expression}"
     end
+    puts
   end
 
   def stop
@@ -553,16 +572,13 @@ class Interpreter
     if @dimensions.key?(variable)
       dimensions = @dimensions[variable]
     else
-      dimensions = []
-      subscripts.each { || dimensions << 10 }
+      dimensions = Array.new(subscripts.size, 10)
     end
-    if subscripts.size != dimensions.size
-      fail BASICException, 'Incorrect number of subscripts'
-    end
+    fail(BASICException, 'Incorrect number of subscripts') if
+      subscripts.size != dimensions.size
     subscripts.zip(dimensions).each do |pair|
-      if pair[0] > pair[1]
-        fail BASICException, "Subscript #{pair[0]} out of range #{pair[1]}"
-      end
+      fail(BASICException, "Subscript #{pair[0]} out of range #{pair[1]}") if
+        pair[0] > pair[1]
     end
   end
 
@@ -597,19 +613,14 @@ class Interpreter
   end
 
   def set_value(variable, value)
-    c = value.class.to_s
-    if c != 'Fixnum' && c != 'Float' && c != 'NumericConstant'
-      fail Exception, "Bad variable value type #{c}"
-    end
-    begin
-      v = variable.to_s
-      if c == 'NumericConstant'
-        @variables[v] = value.to_v
-      else
-        @variables[v] = value
-      end
-    rescue
-      raise BASICException, "Unknown variable #{variable}", caller
+    valid_classes = %w(Fixnum Float NumericConstant)
+    fail Exception, "Bad variable value type #{c}" unless
+      valid_classes.include?(value.class.to_s)
+    v = variable.to_s
+    if value.class.to_s == 'NumericConstant'
+      @variables[v] = value.to_v
+    else
+      @variables[v] = value
     end
   end
 
@@ -655,75 +666,82 @@ class Interpreter
     puts 'BASIC-1965 interpreter version -1'
     puts
     @program_lines = {}
-    need_prompt = true
-    done = false
-    until done
-      # display prompt
-      print "READY\n" if need_prompt
-
-      # read input
-      cmd = gets.chomp
-
-      # process command
-      if cmd =~ /^\d/
-        # program line -- store
-        line_parts = parse_line(cmd)
-        line_num = line_parts[0]
-        line_text = line_parts[1]
-        @program_lines[line_num] = line_text
-        line_text.errors.each { |error| puts error } if
-          line_text.errors.size > 0
-        need_prompt = line_text.errors.size > 0
-      else
-        # immediate command -- execute
-        done = execute_command(cmd) if cmd.size > 0
-        need_prompt = true
-      end
-    end
+    interactive_loop
     puts
     puts 'BASIC-1965 ended'
   end
 
+  def interactive_loop
+    need_prompt = true
+    done = false
+    until done
+      print "READY\n" if need_prompt
+      cmd = gets.chomp
+      if /\A\d/.match(cmd)
+        # starts with a number, so maybe it is a program line
+        need_prompt = store_program_line(cmd)
+      else
+        # immediate command -- execute
+        done = execute_command(cmd)
+        need_prompt = true
+      end
+    end
+  end
+
+  def store_program_line(cmd)
+    line_parts = parse_line(cmd)
+    line_num = line_parts[0]
+    line_text = line_parts[1]
+    @program_lines[line_num] = line_text
+    line_text.errors.each { |error| puts error } if line_text.errors.size > 0
+    line_text.errors.size > 0
+  end
+
   def execute_command(cmd)
     done = false
-    if cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
-    elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
-    elsif cmd == 'RUN'
-      timing = Benchmark.measure { cmd_run(false) }
-      user_time = timing.utime + timing.cutime
-      sys_time = timing.stime + timing.cstime
-      puts
-      print timing(user_time, sys_time) if timing_flag
-      puts
-    elsif cmd == 'TRACE' then cmd_run(true)
-    elsif cmd == 'NEW' then cmd_new
-    elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
-    elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
-    elsif cmd == 'EXIT' then done = true
-    elsif cmd == '.VARS' then dump_vars
-    elsif cmd == '.UDFS' then dump_user_functions
-    else print "Unknown command #{cmd}\n"
+    if cmd.size > 0
+      if cmd == 'EXIT' then done = true
+      elsif cmd == 'NEW' then cmd_new
+      elsif cmd == 'RUN' then execute_run_command
+      elsif cmd == 'TRACE' then cmd_run(true)
+      elsif cmd == '.VARS' then dump_vars
+      elsif cmd == '.UDFS' then dump_user_functions
+      elsif cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
+      elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
+      elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
+      elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
+      else print "Unknown command #{cmd}\n"
+      end
     end
     done
+  end
+
+  def execute_run_command
+    timing = Benchmark.measure { cmd_run(false) }
+    print_timing(timing)
+    puts
   end
 
   def load_and_run(filename, trace_flag, timing_flag)
     puts 'BASIC-1965 interpreter version -1'
     puts
     @program_lines = {}
-    timing = Benchmark.measure { cmd_run(trace_flag) if cmd_load(filename) }
+    if cmd_load(filename)
+      timing = Benchmark.measure { cmd_run(trace_flag) }
+      print_timing(timing) if timing_flag
+    end
+    puts
+    puts 'BASIC-1965 ended'
+  end
+
+  def print_timing(timing)
     user_time = timing.utime + timing.cutime
     sys_time = timing.stime + timing.cstime
     puts
-    puts 'BASIC-1965 ended'
-    print timing(user_time, sys_time) if timing_flag
+    puts 'CPU time:'
+    puts " user: #{user_time.round(2)}"
+    puts " system: #{sys_time.round(2)}"
   end
-end
-
-def print_timing(user_time, sys_time)
-  puts 'CPU time:'
-  puts " user: #{user_time.round(2)}"
-  puts " system: #{sys_time.round(2)}"
 end
 
 if ARGV.size > 0
