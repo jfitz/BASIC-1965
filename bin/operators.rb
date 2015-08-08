@@ -3,12 +3,14 @@ def float_to_possible_int(f)
   (f - i).abs < 1e-8 ? i : f
 end
 
+# Unary scalar operators
 class UnaryOperator
   attr_reader :precedence
 
   def initialize(text)
     operators = { '+' => 5, '-' => 5 }
-    fail(BASICException, "'#{text}' is not an operator") unless operators.key?(text)
+    fail(BASICException, "'#{text}' is not an operator") unless
+      operators.key?(text)
     @op = text
     @precedence = operators[@op]
   end
@@ -55,12 +57,14 @@ class UnaryOperator
   end
 end
 
+# Binary scalar operators
 class BinaryOperator
   attr_reader :precedence
 
   def initialize(text)
     operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
-    fail(BASICException, "'#{text}' is not an operator") unless operators.key?(text)
+    fail(BASICException, "'#{text}' is not an operator") unless
+      operators.key?(text)
     @op = text
     @precedence = operators[@op]
   end
@@ -86,17 +90,16 @@ class BinaryOperator
     x = stack.pop
     case @op
     when '+'
-      z = add(x, y)
+      NumericConstant.new(add(x, y))
     when '-'
-      z = subtract(x, y)
+      NumericConstant.new(subtract(x, y))
     when '*'
-      z = multiply(x, y)
+      NumericConstant.new(multiply(x, y))
     when '/'
-      z = divide(x, y)
+      NumericConstant.new(divide(x, y))
     when '^'
-      z = power(x, y)
+      NumericConstant.new(power(x, y))
     end
-    NumericConstant.new(z)
   end
 
   def add(a, b)
@@ -130,12 +133,14 @@ class BinaryOperator
   end
 end
 
+# Boolean operators
 class BooleanOperator
   attr_reader :precedence
 
   def initialize(text)
     valid_operators = ['=', '<', '>', '>=', '<=', '<>']
-    fail(BASICException, "'#{text}' is not a valid boolean operator") unless valid_operators.include?(text)
+    fail(BASICException, "'#{text}' is not a valid boolean operator") unless
+      valid_operators.include?(text)
     @value = text
     @precedence = 1
   end
@@ -161,6 +166,8 @@ class BooleanOperator
   end
 end
 
+# Terminal operator
+# not a real operator, used only for parsing
 class TerminalOperator
   def operator?
     true

@@ -532,8 +532,7 @@ class Interpreter
     forward_line_numbers.each do |line_number|
       statement = @program_lines[line_number]
       if statement.class.to_s == 'NextStatement'
-        statement_control_variable = statement.get_control_variable
-        return line_number if statement_control_variable == control_variable
+        return line_number if statement.control_variable == control_variable
       end
     end
     fail(BASICException, 'FOR without NEXT') # if none found, error
