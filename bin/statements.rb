@@ -483,7 +483,7 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line)
     super('READ')
-    item_list = split_args(line.sub(/^ +/, ''), false)
+    item_list = split_args(line.strip, false)
     # variable [comma, variable]...
     @expression_list = []
     item_list.each do |item|
@@ -610,7 +610,7 @@ end
 class MatPrintStatement < AbstractStatement
   def initialize(line)
     super('MAT PRINT')
-    item_list = split_args(line.sub(/^ +/, ''), true)
+    item_list = split_args(line.strip, true)
     # variable/constant, [separator, variable/constant]... [separator]
     @print_item_list = []
     last_was_variable = false
@@ -625,9 +625,7 @@ class MatPrintStatement < AbstractStatement
         @print_item_list << CarriageControl.new(',') if last_was_variable
         begin
           # remove leading and trailing blanks
-          print_item.sub!(/^ +/, '')
-          print_item.sub!(/ +$/, '')
-          @print_item_list << ValueMatrixExpression.new(print_item)
+          @print_item_list << ValueMatrixExpression.new(print_item.strip)
           last_was_variable = true
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
