@@ -1,8 +1,8 @@
 # Hold a variable name (not a reference or value)
 class VariableName
   def initialize(text)
-    regex = Regexp.new('^[A-Z]\d?$')
-    fail(BASICException, "'#{text}' is not a variable name") unless regex.match(text)
+    fail(BASICException, "'#{text}' is not a variable name") unless
+      /\A[A-Z]\d?\z/.match(text)
     @var_name = text
   end
 
@@ -28,7 +28,8 @@ class Variable
   attr_reader :subscripts
 
   def initialize(variable_name)
-    fail(BASICException, "'#{variable_name}' is not a variable name") if variable_name.class.to_s != 'VariableName'
+    fail(BASICException, "'#{variable_name}' is not a variable name") if
+      variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
     @subscripts = []
   end
@@ -72,14 +73,33 @@ class ScalarValue < Variable
     super
   end
 
+  private
+
+  def previous_is_array(stack)
+    stack.size > 0 && stack[-1].class.to_s == 'Array'
+  end
+
+  def get_subscripts(stack)
+    subscripts = stack.pop
+    num_args = subscripts.length
+    fail(Exception,
+         'Variable expects subscripts, found empty parentheses') if
+      num_args == 0
+    subscripts
+  end
+
+  def eval_var_name(name, subscripts)
+    name.to_s + '(' + subscripts.join(',') + ')'
+  end
+
+  public
+
   # return a single value
   def evaluate(interpreter, stack)
-    if stack.size > 0 && stack[-1].class.to_s == 'Array'
-      @subscripts = stack.pop
-      num_args = @subscripts.length
-      fail(Exception, 'Variable expects subscripts, found empty parentheses') if num_args == 0
+    if previous_is_array(stack)
+      @subscripts = get_subscripts(stack)
       interpreter.check_subscripts(@variable_name, @subscripts)
-      evaled_var_name = @variable_name.to_s + '(' + @subscripts.join(',') + ')'
+      evaled_var_name = eval_var_name(@variable_name, @subscripts)
       interpreter.get_value(evaled_var_name)
     else
       interpreter.get_value(@variable_name.to_s)
@@ -98,7 +118,9 @@ class ScalarReference < Variable
     if stack.size > 0 && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(Exception, 'Variable expects subscripts, found empty parentheses') if num_args == 0
+      fail(Exception,
+           'Variable expects subscripts, found empty parentheses') if
+        num_args == 0
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
     self
@@ -116,7 +138,9 @@ class VariableDimension < Variable
     if stack.size > 0 && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(Exception, 'Variable expects subscripts, found empty parentheses') if num_args == 0
+      fail(Exception,
+           'Variable expects subscripts, found empty parentheses') if
+        num_args == 0
     end
     self
   end
@@ -295,9 +319,8 @@ end
 # User-defined function (provides a scalar value)
 class UserFunction
   def initialize(text)
-    regex = Regexp.new('\AFN[A-Z]\z')
     fail(BASICException, "'#{text}' is not a valid function") unless
-      regex.match(text)
+      /\AFN[A-Z]\z/.match(text)
     @name = text
   end
 
@@ -393,8 +416,7 @@ end
 # needs changes to allow for negative exponents
 def split(text)
   # split the input infix string
-  regex = Regexp.new('([\+\-\*\/\(\)\^,])')
-  text.split(regex)
+  text.split(%r{([\+\-\*\/\(\)\^,])})
 end
 
 # converts text line to constant values
@@ -454,7 +476,8 @@ def tokenize(words)
                       tokens << ScalarValue.new(variable_name)
                       last_was_operand = true
                     rescue BASICException
-                      raise BASICException, "'#{word}' is not a value or operator"
+                      raise BASICException,
+                            "'#{word}' is not a value or operator"
                     end
                 end
             end
@@ -557,7 +580,7 @@ def parse(tokens)
 end
 
 # returns an Array of values
-def eval_scalar(interpreter, parsed_expressions, expected_result_class)
+def eval_scalar(interpreter, parsed_expressions, _)
   # expected = parsed_expressions[0].length
   result_values = []
   parsed_expressions.each do |parsed_expression|
@@ -593,7 +616,8 @@ def eval_scalar(interpreter, parsed_expressions, expected_result_class)
   end
   # actual = result_values.length
   # fail(Exception,
-  #      "Expected #{expected} items, #{actual} remaining on evaluation stack") if
+  #      "Expected #{expected} items, "
+  #      "#{actual} remaining on evaluation stack") if
   #   actual != expected
   result_values
 end
@@ -756,8 +780,8 @@ class UserFunctionPrototype
   attr_reader :arguments
 
   def initialize(text)
-    regex = Regexp.new('\AFN[A-Z]\([A-Z]\)\z')
-    fail(BASICException, "Invalid function specification #{text}") unless regex.match(text)
+    fail(BASICException, "Invalid function specification #{text}") unless
+      /\AFN[A-Z]\([A-Z]\)\z/.match(text)
     @name = text[0..2]
     arg0 = text[4..4]
     @arguments = [arg0]
@@ -804,7 +828,8 @@ end
 class CarriageControl
   def initialize(text)
     valid_operators = ['NL', ',', ';']
-    fail(BASICException, "'#{text}' is not a valid separator") unless valid_operators.include?(text)
+    fail(BASICException, "'#{text}' is not a valid separator") unless
+      valid_operators.include?(text)
     @operator = text
   end
 
@@ -835,7 +860,8 @@ end
 class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
-    fail(BASICException, "'#{text}' is not a boolean expression") if parts.size != 3
+    fail(BASICException, "'#{text}' is not a boolean expression") if
+      parts.size != 3
     @a = ValueScalarExpression.new(parts[0])
     @operator = BooleanOperator.new(parts[1])
     @b = ValueScalarExpression.new(parts[2])
@@ -872,7 +898,8 @@ class Assignment
   def initialize(text)
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    fail(BASICException, "'#{text}' is not a valid assignment") if parts.size != 2
+    fail(BASICException, "'#{text}' is not a valid assignment") if
+      parts.size != 2
     @target = TargetScalarExpression.new(parts[0])
     @expression = ValueScalarExpression.new(parts[1])
   end
@@ -911,7 +938,8 @@ class UserFunctionDefinition
   def initialize(text)
     # parse into name '=' expression
     parts = text.split('=', 2)
-    fail(BASICException, "'#{text}' is not a valid assignment") if parts.size != 2
+    fail(BASICException, "'#{text}' is not a valid assignment") if
+      parts.size != 2
     user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
