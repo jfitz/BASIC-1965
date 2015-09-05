@@ -1,3 +1,4 @@
+# Hold a variable name (not a reference or value)
 class VariableName
   def initialize(text)
     regex = Regexp.new('^[A-Z]\d?$')
@@ -22,6 +23,7 @@ class VariableName
   end
 end
 
+# Hold a variable (name with possible subscripts and value)
 class Variable
   attr_reader :subscripts
 
@@ -64,6 +66,7 @@ class Variable
   end
 end
 
+# Scalar value (not a matrix)
 class ScalarValue < Variable
   def initialize(variable_name)
     super
@@ -84,6 +87,7 @@ class ScalarValue < Variable
   end
 end
 
+# Scalar reference (not a matrix)
 class ScalarReference < Variable
   def initialize(variable_value)
     super(variable_value.name)
@@ -101,6 +105,7 @@ class ScalarReference < Variable
   end
 end
 
+# Dimensions to a variable
 class VariableDimension < Variable
   def initialize(variable_value)
     super(variable_value.name)
@@ -117,6 +122,7 @@ class VariableDimension < Variable
   end
 end
 
+# A list (needed because it has precedence value)
 class List
   def initialize(parsed_expressions)
     @parsed_expressions = parsed_expressions
@@ -159,10 +165,12 @@ class List
   end
 end
 
+# Scalar function (provides a scalar)
 class ScalarFunction
   def initialize(text)
-    valid_names = ['INT', 'RND', 'EXP', 'LOG', 'ABS', 'SQR', 'SIN', 'COS', 'TAN', 'ATN', 'SGN']
-    fail(BASICException, "'#{text}' is not a valid function") unless valid_names.include?(text)
+    valid_names = %w(INT RND EXP LOG ABS SQR SIN COS TAN ATN SGN)
+    fail(BASICException, "'#{text}' is not a valid function") unless
+      valid_names.include?(text)
     @name = text
   end
 
@@ -186,90 +194,88 @@ class ScalarFunction
     5
   end
 
+  private
+
+  def check_1_num_arg(args)
+    num_args = args.length
+    fail(BASICException,
+         "Function #{@name} expects 1 argument, found #{num_args}") if
+      num_args != 1
+    x = args[0]
+    fail(BASICException,
+         "Argument #{x} #{x.class} not numeric") if
+      x.class.to_s != 'NumericConstant'
+    x
+  end
+
+  public
+
   # return a single value
   def evaluate(interpreter, stack)
     result = 0
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if args.class.to_s != 'Array'
-    num_args = args.length
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
     case @name
     when 'INT'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       result = xv.to_i
     when 'RND'
+      num_args = args.length
       if num_args == 0
         xv = 100
       elsif num_args == 1
         x = args[0]
         xv = x.to_v
       else
-        fail(BASICException, "Function #{@name} expects 0 or 1 argument, found #{num_args}")
+        fail(BASICException,
+             "Function #{@name} expects 0 or 1 argument, found #{num_args}")
       end
       upper_bound = xv.truncate.to_f
       upper_bound = 1.to_f if upper_bound <= 0
       result = interpreter.rand(upper_bound)
     when 'EXP'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       f = Math.exp(xv)
       result = float_to_possible_int(f)
     when 'LOG'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       f = xv > 0 ? Math.log(xv) : 0
       result = float_to_possible_int(f)
     when 'ABS'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       result = xv >= 0 ? xv : -xv
     when 'SQR'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       f = xv > 0 ? Math.sqrt(xv) : 0
       result = float_to_possible_int(f)
     when 'SIN'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       f = Math.sin(xv)
       result = float_to_possible_int(f)
     when 'COS'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       f = Math.cos(xv)
       result = float_to_possible_int(f)
     when 'TAN'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       f = xv >= 0 ? Math.tan(xv) : 0
       result = float_to_possible_int(f)
     when 'ATN'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       xv = x.to_v
       f = xv >= 0 ? Math.atan(xv) : 0
       result = float_to_possible_int(f)
     when 'SGN'
-      fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != 1
-      x = args[0]
-      fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+      x = check_1_num_arg(args)
       result = 0
       result = 1 if x > 0
       result = -1 if x < 0
@@ -286,10 +292,12 @@ class ScalarFunction
   end
 end
 
+# User-defined function (provides a scalar value)
 class UserFunction
   def initialize(text)
     regex = Regexp.new('\AFN[A-Z]\z')
-    fail(BASICException, "'#{text}' is not a valid function") unless regex.match(text)
+    fail(BASICException, "'#{text}' is not a valid function") unless
+      regex.match(text)
     @name = text
   end
 
@@ -322,11 +330,15 @@ class UserFunction
 
     # verify arguments
     user_var_values = stack.pop
-    fail(BASICException, 'No arguments for function') if user_var_values.class.to_s != 'Array'
+    fail(BASICException, 'No arguments for function') if
+      user_var_values.class.to_s != 'Array'
     num_args = user_var_values.length
-    fail(BASICException, "Function #{@name} expects 1 argument, found #{num_args}") if num_args != user_var_names.length
+    fail(BASICException,
+         "Function #{@name} expects 1 argument, found #{num_args}") if
+      num_args != user_var_names.length
     x = user_var_values[0]
-    fail(BASICException, "Argument #{x} #{x.class} not numeric") if x.class.to_s != 'NumericConstant'
+    fail(BASICException, "Argument #{x} #{x.class} not numeric") if
+      x.class.to_s != 'NumericConstant'
 
     # dummy variable names and their (now known) values
     names_and_values = Hash[user_var_names.zip(user_var_values)]
@@ -345,6 +357,7 @@ class UserFunction
   end
 end
 
+# split a line into arguments
 def split_args(text, keep_separators)
   args = []
   current_arg = ''
@@ -376,12 +389,15 @@ def split_args(text, keep_separators)
   args
 end
 
+# split the input
+# needs changes to allow for negative exponents
 def split(text)
   # split the input infix string
   regex = Regexp.new('([\+\-\*\/\(\)\^,])')
   text.split(regex)
 end
 
+# converts text line to constant values
 def textline_to_constants(line)
   values = []
   text_values = line.split(/,/)
@@ -401,46 +417,46 @@ def tokenize(words)
   last_was_operand = false
   # convert tokens to objects
   words.each do |word|
-    if word.size > 0
-      if word == '('
-        tokens << '('
+    next if word.size == 0
+
+    if word == '('
+      tokens << '('
+      last_was_operand = true
+    else
+      if word == ')'
+        tokens << ')'
+        last_was_operand = true
+      elsif word == ','
+        tokens << ','
         last_was_operand = true
       else
-        if word == ')'
-          tokens << ')'
-          last_was_operand = true
-        elsif word == ','
-          tokens << ','
-          last_was_operand = true
-        else
+        begin
+          if last_was_operand
+            tokens << BinaryOperator.new(word)
+          else
+            tokens << UnaryOperator.new(word)
+          end
+          last_was_operand = false
+        rescue BASICException
           begin
-            if last_was_operand
-              tokens << BinaryOperator.new(word)
-            else
-              tokens << UnaryOperator.new(word)
-            end
-            last_was_operand = false
+            tokens << ScalarFunction.new(word)
+            last_was_operand = true
           rescue BASICException
             begin
-              tokens << ScalarFunction.new(word)
-              last_was_operand = true
-            rescue BASICException
-              begin
-                tokens << UserFunction.new(word)
-                rescue BASICException
-                  begin
-                    tokens << NumericConstant.new(word)
-                    last_was_operand = true
+              tokens << UserFunction.new(word)
+              rescue BASICException
+                begin
+                  tokens << NumericConstant.new(word)
+                  last_was_operand = true
+                  rescue BASICException
+                    begin
+                      variable_name = VariableName.new(word)
+                      tokens << ScalarValue.new(variable_name)
+                      last_was_operand = true
                     rescue BASICException
-                      begin
-                        variable_name = VariableName.new(word)
-                        tokens << ScalarValue.new(variable_name)
-                        last_was_operand = true
-                      rescue BASICException
-                        raise BASICException, "'#{word}' is not a value or operator"
-                      end
-                  end
-              end
+                      raise BASICException, "'#{word}' is not a value or operator"
+                    end
+                end
             end
           end
         end
@@ -463,68 +479,76 @@ def parse(tokens)
   parens_group = []
   # scan the token list from left to right
   tokens.each do |token|
-    if token != ''
-      # If the token is a left parenthesis, push it on the operator stack
-      if token == '('
-        if last_was_function || last_was_variable
-          # start parsing the list of function arguments
-          expression_stack.push(parsed_expression)
-          parsed_expression = []
-          operator_stack.push('[')
-        else
-          operator_stack.push(token)
-        end
-        parens_stack << parens_group
-        parens_group = []
-        last_was_function = false
-        last_was_variable = false
-      # If the token is a comma,
-      # pop the operator stack until the corresponding left parenthesis is found
+    next if token == ''
+
+    # If the token is a left parenthesis, push it on the operator stack
+    if token == '('
+      if last_was_function || last_was_variable
+        # start parsing the list of function arguments
+        expression_stack.push(parsed_expression)
+        parsed_expression = []
+        operator_stack.push('[')
+      else
+        operator_stack.push(token)
+      end
+      parens_stack << parens_group
+      parens_group = []
+      last_was_function = false
+      last_was_variable = false
+    # If the token is a comma,
+    # pop the operator stack until the corresponding left parenthesis is found
+    # Append each operator to the end of the output list
+    elsif token == ','
+      while operator_stack.size > 0 &&
+            operator_stack[-1] != '(' &&
+            operator_stack[-1] != '['
+        op = operator_stack.pop
+        parsed_expression << op
+      end
+      parens_group << parsed_expression
+      parsed_expression = []
+    else
+      fail(BASICException, 'Function requires parentheses') if last_was_function
+      # If the token is a right parenthesis,
+      # pop the operator stack until the corresponding left paren is removed
       # Append each operator to the end of the output list
-      elsif token == ','
-        while operator_stack.size > 0 && operator_stack[-1] != '(' && operator_stack[-1] != '['
+      if token == ')'
+        while operator_stack.size > 0 &&
+              operator_stack[-1] != '(' &&
+              operator_stack[-1] != '['
           op = operator_stack.pop
           parsed_expression << op
         end
         parens_group << parsed_expression
-        parsed_expression = []
+        start_op = operator_stack.pop  # remove the '(' || '['
+        if start_op == '['
+          list = List.new(parens_group)
+          operator_stack.push(list)
+          parsed_expression = expression_stack.pop
+        end
+        parens_group = parens_stack.pop
+        last_was_function = false
+        last_was_variable = false
       else
-        fail(BASICException, 'Function requires parentheses') if last_was_function
-        # If the token is a right parenthesis,
-        # pop the operator stack until the corresponding left parenthesis is removed
-        # Append each operator to the end of the output list
-        if token == ')'
-          while operator_stack.size > 0 && operator_stack[-1] != '(' && operator_stack[-1] != '['
+        if token.operator? || token.function? || token.variable?
+          # remove operators already on the stack that have higher
+          # or equal precedence
+          # append them to the output list
+          while operator_stack.size > 0 &&
+                operator_stack[-1] != '(' &&
+                operator_stack[-1] != '[' &&
+                operator_stack[-1].precedence >= token.precedence
             op = operator_stack.pop
             parsed_expression << op
           end
-          parens_group << parsed_expression
-          start_op = operator_stack.pop  # remove the '(' || '['
-          if start_op == '['
-            list = List.new(parens_group)
-            operator_stack.push(list)
-            parsed_expression = expression_stack.pop
-          end
-          parens_group = parens_stack.pop
-          last_was_function = false
-          last_was_variable = false
+          # push the operator onto the operator stack
+          operator_stack.push(token) unless token.terminal?
         else
-          if token.operator? || token.function? || token.variable?
-            # remove operators already on the stack that have higher or equal precedence
-            # append them to the output list
-            while operator_stack.size > 0 && operator_stack[-1] != '(' && operator_stack[-1] != '[' && operator_stack[-1].precedence >= token.precedence
-              op = operator_stack.pop
-              parsed_expression << op
-            end
-            # push the operator onto the operator stack
-            operator_stack.push(token) unless token.terminal?
-          else
-            # the token is an operand, append it to the output list
-            parsed_expression << token
-          end
-          last_was_function = token.function?
-          last_was_variable = token.variable?
+          # the token is an operand, append it to the output list
+          parsed_expression << token
         end
+        last_was_function = token.function?
+        last_was_variable = token.variable?
       end
     end
   end
@@ -555,17 +579,26 @@ def eval_scalar(interpreter, parsed_expressions, expected_result_class)
     end
     # should be only one item on stack
     # actual = stack.length
-    # fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != expected
+    # fail(Exception,
+    #      "Expected #{expected} items, "
+    #      "#{actual} remaining on evaluation stack") if
+    #  actual != expected
     # very each item is of correct type
     item = stack[0]
-    # fail(Exception, "Expected item #{expected_result_class}, found item type #{item.class} remaining on evaluation stack") if item.class.to_s != expected_result_class
+    # fail(Exception,
+    #      "Expected item #{expected_result_class}, "
+    #      "found item type #{item.class} remaining on evaluation stack") if
+    #  item.class.to_s != expected_result_class
     result_values << item unless item.class.to_s == 'NilClass'
   end
   # actual = result_values.length
-  # fail(Exception, "Expected #{expected} items, #{actual} remaining on evaluation stack") if actual != expected
+  # fail(Exception,
+  #      "Expected #{expected} items, #{actual} remaining on evaluation stack") if
+  #   actual != expected
   result_values
 end
 
+# Value scalar expression (an R-value)
 class ValueScalarExpression
   def initialize(text)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
@@ -588,7 +621,8 @@ class ValueScalarExpression
   def evaluate(interpreter)
     if @parsed_expressions.size > 0
       values = eval_scalar(interpreter, @parsed_expressions, 'NumericConstant')
-      fail(Exception, 'ValueScalarExpression: Expected some values') if values.length == 0
+      fail(Exception, 'ValueScalarExpression: Expected some values') if
+        values.length == 0
     else
       values = []
     end
@@ -596,6 +630,7 @@ class ValueScalarExpression
   end
 end
 
+# Value matrix expression (an R-value)
 class ValueMatrixExpression
   def initialize(text)
     variable_name = VariableName.new(text)
@@ -642,6 +677,7 @@ class ValueMatrixExpression
   end
 end
 
+# target scalar expression (an L-value)
 class TargetScalarExpression
   def initialize(text)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
@@ -650,10 +686,14 @@ class TargetScalarExpression
     words = split(text)
     tokens = tokenize(words)
     @parsed_expressions = parse(tokens)
-    fail(BASICException, 'Value list is empty (length 0)') if @parsed_expressions.length == 0
+    fail(BASICException, 'Value list is empty (length 0)') if
+      @parsed_expressions.length == 0
     @parsed_expressions.each do |parsed_expression|
-      fail(BASICException, 'Value is not assignable (length 0)') if parsed_expression.length == 0
-      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'ScalarValue'
+      fail(BASICException, 'Value is not assignable (length 0)') if
+        parsed_expression.length == 0
+      fail(BASICException,
+           "Value is not assignable (type #{parsed_expression[-1].class})") if
+        parsed_expression[-1].class.to_s != 'ScalarValue'
       parsed_expression[-1] = ScalarReference.new(parsed_expression[-1])
     end
   end
@@ -674,6 +714,7 @@ class TargetScalarExpression
   end
 end
 
+# A dimension expression (evaluates to dimensions)
 class DimensionExpression
   def initialize(text)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
@@ -682,10 +723,14 @@ class DimensionExpression
     words = split(text)
     tokens = tokenize(words)
     @parsed_expressions = parse(tokens)
-    fail(BASICException, 'Value list is empty (length 0)') if @parsed_expressions.length == 0
+    fail(BASICException, 'Value list is empty (length 0)') if
+      @parsed_expressions.length == 0
     @parsed_expressions.each do |parsed_expression|
-      fail(BASICException, 'Value is not assignable (length 0)') if parsed_expression.length == 0
-      fail(BASICException, "Value is not assignable (type #{parsed_expression[-1].class})") if parsed_expression[-1].class.to_s != 'ScalarValue'
+      fail(BASICException, 'Value is not assignable (length 0)') if
+        parsed_expression.length == 0
+      fail(BASICException,
+           "Value is not assignable (type #{parsed_expression[-1].class})") if
+        parsed_expression[-1].class.to_s != 'ScalarValue'
       parsed_expression[-1] = VariableDimension.new(parsed_expression[-1])
     end
   end
@@ -705,6 +750,7 @@ class DimensionExpression
   end
 end
 
+# User function prototype
 class UserFunctionPrototype
   attr_reader :name
   attr_reader :arguments
@@ -722,6 +768,7 @@ class UserFunctionPrototype
   end
 end
 
+# Printable expression (part of a PRINT statement)
 class PrintableExpression
   def initialize(text)
     @arithmetic_expression = nil
@@ -753,6 +800,7 @@ class PrintableExpression
   end
 end
 
+# Carriage control for PRINT statement
 class CarriageControl
   def initialize(text)
     valid_operators = ['NL', ',', ';']
@@ -783,6 +831,7 @@ class CarriageControl
   end
 end
 
+# Boolean expression
 class BooleanExpression
   def initialize(text)
     parts = text.split(/\s*([=<>]+)\s*/)
@@ -818,6 +867,7 @@ class BooleanExpression
   end
 end
 
+# An assignment (part of a LET statement)
 class Assignment
   def initialize(text)
     # parse into variable, '=', expression
@@ -852,6 +902,7 @@ class Assignment
   end
 end
 
+# User function definition
 class UserFunctionDefinition
   attr_reader :name
   attr_reader :arguments
