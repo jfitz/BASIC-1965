@@ -586,19 +586,7 @@ def eval_scalar(interpreter, parsed_expressions, _)
   parsed_expressions.each do |parsed_expression|
     stack = []
     parsed_expression.each do |token|
-      case token.class.to_s
-      when 'List'
-        x = token.evaluate(interpreter, stack)
-      when 'UnaryOperator', 'BinaryOperator', 'ScalarFunction', 'UserFunction'
-        x = token.evaluate(interpreter, stack)
-      when 'NumericConstant'
-        x = token.evaluate(interpreter, stack)
-      when 'ScalarValue', 'ScalarReference', 'VariableDimension'
-        x = token.evaluate(interpreter, stack)
-      else
-        fail Exception, "Unknown data type #{x.class}"
-      end
-      stack.push(x)
+      stack.push token.evaluate(interpreter, stack)
     end
     # should be only one item on stack
     # actual = stack.length
