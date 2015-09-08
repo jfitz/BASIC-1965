@@ -189,12 +189,38 @@ class List
   end
 end
 
+def scalarFunctionFactory(text)
+  case text
+  when 'INT'
+    ScalarFunctionInt.new(text)
+  when 'RND'
+    ScalarFunctionRnd.new(text)
+  when 'EXP'
+    ScalarFunctionExp.new(text)
+  when 'LOG'
+    ScalarFunctionLog.new(text)
+  when 'ABS'
+    ScalarFunctionAbs.new(text)
+  when 'SQR'
+    ScalarFunctionSqr.new(text)
+  when 'SIN'
+    ScalarFunctionSin.new(text)
+  when 'COS'
+    ScalarFunctionCos.new(text)
+  when 'TAN'
+    ScalarFunctionTan.new(text)
+  when 'ATN'
+    ScalarFunctionAtn.new(text)
+  when 'SGN'
+    ScalarFunctionSgn.new(text)
+  else
+    fail(BASICException, "'#{text}' is not a valid function")
+  end
+end
+
 # Scalar function (provides a scalar)
 class ScalarFunction
   def initialize(text)
-    valid_names = %w(INT RND EXP LOG ABS SQR SIN COS TAN ATN SGN)
-    fail(BASICException, "'#{text}' is not a valid function") unless
-      valid_names.include?(text)
     @name = text
   end
 
@@ -231,79 +257,22 @@ class ScalarFunction
       x.class.to_s != 'NumericConstant'
     x
   end
+end
 
-  public
+# function INT
+class ScalarFunctionInt < ScalarFunction
+  def initialize(text)
+    super
+  end
 
   # return a single value
-  def evaluate(interpreter, stack)
-    result = 0
+  def evaluate(_, stack)
     args = stack.pop
     fail(BASICException, 'No arguments for function') if
       args.class.to_s != 'Array'
-    case @name
-    when 'INT'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      result = xv.to_i
-    when 'RND'
-      num_args = args.length
-      if num_args == 0
-        xv = 100
-      elsif num_args == 1
-        x = args[0]
-        xv = x.to_v
-      else
-        fail(BASICException,
-             "Function #{@name} expects 0 or 1 argument, found #{num_args}")
-      end
-      upper_bound = xv.truncate.to_f
-      upper_bound = 1.to_f if upper_bound <= 0
-      result = interpreter.rand(upper_bound)
-    when 'EXP'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      f = Math.exp(xv)
-      result = float_to_possible_int(f)
-    when 'LOG'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      f = xv > 0 ? Math.log(xv) : 0
-      result = float_to_possible_int(f)
-    when 'ABS'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      result = xv >= 0 ? xv : -xv
-    when 'SQR'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      f = xv > 0 ? Math.sqrt(xv) : 0
-      result = float_to_possible_int(f)
-    when 'SIN'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      f = Math.sin(xv)
-      result = float_to_possible_int(f)
-    when 'COS'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      f = Math.cos(xv)
-      result = float_to_possible_int(f)
-    when 'TAN'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      f = xv >= 0 ? Math.tan(xv) : 0
-      result = float_to_possible_int(f)
-    when 'ATN'
-      x = check_1_num_arg(args)
-      xv = x.to_v
-      f = xv >= 0 ? Math.atan(xv) : 0
-      result = float_to_possible_int(f)
-    when 'SGN'
-      x = check_1_num_arg(args)
-      result = 0
-      result = 1 if x > 0
-      result = -1 if x < 0
-    end
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    result = xv.to_i
     NumericConstant.new(result)
   end
 
@@ -313,6 +282,195 @@ class ScalarFunction
 
   def to_formatted_s(interpreter)
     @name + @right.to_formatted_s(interpreter)
+  end
+end
+
+# function RND
+class ScalarFunctionRnd < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  # return a single value
+  def evaluate(interpreter, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    num_args = args.length
+    if num_args == 0
+      xv = 100
+    elsif num_args == 1
+      x = args[0]
+      xv = x.to_v
+    else
+      fail(BASICException,
+           "Function #{@name} expects 0 or 1 argument, found #{num_args}")
+    end
+    upper_bound = xv.truncate.to_f
+    upper_bound = 1.to_f if upper_bound <= 0
+    result = interpreter.rand(upper_bound)
+    NumericConstant.new(result)
+  end
+end
+
+# function EXP
+class ScalarFunctionExp < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    f = Math.exp(xv)
+    result = float_to_possible_int(f)
+    NumericConstant.new(result)
+  end
+end
+
+# function LOG
+class ScalarFunctionLog < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    f = xv > 0 ? Math.log(xv) : 0
+    result = float_to_possible_int(f)
+    NumericConstant.new(result)
+  end
+end
+
+# function ABS
+class ScalarFunctionAbs < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    result = xv >= 0 ? xv : -xv
+    NumericConstant.new(result)
+  end
+end
+
+# function SQR
+class ScalarFunctionSqr < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    f = xv > 0 ? Math.sqrt(xv) : 0
+    result = float_to_possible_int(f)
+    NumericConstant.new(result)
+  end
+end
+
+# function SIN
+class ScalarFunctionSin < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    f = Math.sin(xv)
+    result = float_to_possible_int(f)
+    NumericConstant.new(result)
+  end
+end
+
+# function COS
+class ScalarFunctionCos < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    f = Math.cos(xv)
+    result = float_to_possible_int(f)
+    NumericConstant.new(result)
+  end
+end
+
+# function TAN
+class ScalarFunctionTan < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    f = xv >= 0 ? Math.tan(xv) : 0
+    result = float_to_possible_int(f)
+    NumericConstant.new(result)
+  end
+end
+
+# function ATN
+class ScalarFunctionAtn < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    xv = x.to_v
+    f = xv >= 0 ? Math.atan(xv) : 0
+    result = float_to_possible_int(f)
+    NumericConstant.new(result)
+  end
+end
+
+# function SGN
+class ScalarFunctionSgn < ScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    x = check_1_num_arg(args)
+    result = 0
+    result = 1 if x > 0
+    result = -1 if x < 0
+    NumericConstant.new(result)
   end
 end
 
@@ -461,7 +619,7 @@ def tokenize(words)
           last_was_operand = false
         rescue BASICException
           begin
-            tokens << ScalarFunction.new(word)
+            tokens << scalarFunctionFactory(word)
             last_was_operand = true
           rescue BASICException
             begin
