@@ -596,20 +596,20 @@ def tokenize(words)
           rescue BASICException
             begin
               tokens << UserFunction.new(word)
+            rescue BASICException
+              begin
+                tokens << NumericConstant.new(word)
+                last_was_operand = true
               rescue BASICException
                 begin
-                  tokens << NumericConstant.new(word)
+                  variable_name = VariableName.new(word)
+                  tokens << ScalarValue.new(variable_name)
                   last_was_operand = true
-                  rescue BASICException
-                    begin
-                      variable_name = VariableName.new(word)
-                      tokens << ScalarValue.new(variable_name)
-                      last_was_operand = true
-                    rescue BASICException
-                      raise BASICException,
-                            "'#{word}' is not a value or operator"
-                    end
+                rescue BASICException
+                  raise BASICException,
+                        "'#{word}' is not a value or operator"
                 end
+              end
             end
           end
         end
@@ -785,37 +785,49 @@ class ValueMatrixExpression
 
   def print(printer, interpreter, carriage)
     dimensions = interpreter.get_dimensions(@variable.name)
-    if !dimensions.nil?
-      if dimensions.size == 1
-        upper = dimensions[0].to_v
-        (1..upper).each do |index|
-          varname = @variable.to_s + '(' + index.to_s + ')'
-          value = interpreter.get_value(varname)
-          printer.print_item(value.to_s)
-          printer.last_was_numeric
-          carriage.print(printer, interpreter)
-        end
-        printer.newline
-        printer.newline
-      end
-      if dimensions.size == 2
-        upper_i = dimensions[0].to_v
-        upper_j = dimensions[1].to_v
-        (1..upper_i).each do |i|
-          (1..upper_j).each do |j|
-            varname = @variable.to_s + '(' + i.to_s + ',' + j.to_s + ')'
-            value = interpreter.get_value(varname)
-            printer.print_item(value.to_s)
-            printer.last_was_numeric
-            carriage.print(printer, interpreter)
-          end
-          printer.newline
-        end
-        printer.newline
-      end
-    else
-      fail BASICException, "Undefined value #{@variable}"
+    fail BASICException, "Undefined value #{@variable}" if dimensions.nil?
+
+    fail BASICException, "Need dimensions in #{@variable}" if
+      dimensions.size == 0
+    print_1(dimensions, printer, interpreter, carriage) if
+      dimensions.size == 1
+    print_2(dimensions, printer, interpreter, carriage) if
+      dimensions.size == 2
+    fail BASICException, "Too many dimensions in #{@variable}" if
+      dimensions.size > 2
+  end
+
+private
+
+  def print_1(dimensions, printer, interpreter, carriage)
+    upper = dimensions[0].to_v
+
+    (1..upper).each do |index|
+      varname = @variable.to_s + '(' + index.to_s + ')'
+      value = interpreter.get_value(varname)
+      printer.print_item(value.to_s)
+      printer.last_was_numeric
+      carriage.print(printer, interpreter)
     end
+    printer.newline
+    printer.newline
+  end
+
+  def print_2(dimensions, printer, interpreter, carriage)
+    upper_i = dimensions[0].to_v
+    upper_j = dimensions[1].to_v
+
+    (1..upper_i).each do |i|
+      (1..upper_j).each do |j|
+        varname = @variable.to_s + '(' + i.to_s + ',' + j.to_s + ')'
+        value = interpreter.get_value(varname)
+        printer.print_item(value.to_s)
+        printer.last_was_numeric
+        carriage.print(printer, interpreter)
+      end
+      printer.newline
+    end
+    printer.newline
   end
 end
 
@@ -892,7 +904,27 @@ class DimensionExpression
   end
 end
 
+# User function definition
+# Define the user function name, arguments, and expression
+class UserFunctionDefinition
+  attr_reader :name
+  attr_reader :arguments
+  attr_reader :template
+
+  def initialize(text)
+    # parse into name '=' expression
+    parts = text.split('=', 2)
+    fail(BASICException, "'#{text}' is not a valid assignment") if
+      parts.size != 2
+    user_function_prototype = UserFunctionPrototype.new(parts[0])
+    @name = user_function_prototype.name
+    @arguments = user_function_prototype.arguments
+    @template = ValueScalarExpression.new(parts[1])
+  end
+end
+
 # User function prototype
+# Define the user function name and arguments
 class UserFunctionPrototype
   attr_reader :name
   attr_reader :arguments
@@ -1044,23 +1076,5 @@ class Assignment
 
   def to_postfix_s
     @expression.to_postfix_s
-  end
-end
-
-# User function definition
-class UserFunctionDefinition
-  attr_reader :name
-  attr_reader :arguments
-  attr_reader :template
-
-  def initialize(text)
-    # parse into name '=' expression
-    parts = text.split('=', 2)
-    fail(BASICException, "'#{text}' is not a valid assignment") if
-      parts.size != 2
-    user_function_prototype = UserFunctionPrototype.new(parts[0])
-    @name = user_function_prototype.name
-    @arguments = user_function_prototype.arguments
-    @template = ValueScalarExpression.new(parts[1])
   end
 end
