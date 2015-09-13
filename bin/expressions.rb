@@ -511,24 +511,30 @@ def split_args(text, keep_separators)
   in_string = false
   parens_level = 0
   text.split('').each do |c|
-    if [',', ';'].include?(c) && !in_string && parens_level == 0
-      args << current_arg if current_arg.length > 0
-      current_arg = ''
-      args << c if keep_separators
-    elsif c == '"' && in_string
-      current_arg += c
-      args << current_arg
-      current_arg = ''
-    elsif c == ' ' && !in_string
-      c = c
-    elsif c == '(' && !in_string
-      current_arg += c
-      parens_level += 1
-    elsif c == ')' && !in_string
-      current_arg += c
-      parens_level -= 1 if parens_level > 0
+    if in_string
+      if c == '"'
+        current_arg += c
+        args << current_arg
+        current_arg = ''
+      else
+        current_arg += c
+      end
     else
-      current_arg += c
+      if [',', ';'].include?(c) && parens_level == 0
+        args << current_arg if current_arg.length > 0
+        current_arg = ''
+        args << c if keep_separators
+      elsif c == ' '
+        c = c
+      elsif c == '('
+        current_arg += c
+        parens_level += 1
+      elsif c == ')'
+        current_arg += c
+        parens_level -= 1 if parens_level > 0
+      else
+        current_arg += c
+      end
     end
     in_string = !in_string if c == '"'
   end
