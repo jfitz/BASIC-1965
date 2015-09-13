@@ -189,7 +189,7 @@ class List
   end
 end
 
-def scalarFunctionFactory(text)
+def make_scalar_function(text)
   case text
   when 'INT'
     ScalarFunctionInt.new(text)
@@ -247,6 +247,8 @@ class ScalarFunction
   private
 
   def check_1_num_arg(args)
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
     num_args = args.length
     fail(BASICException,
          "Function #{@name} expects 1 argument, found #{num_args}") if
@@ -268,20 +270,10 @@ class ScalarFunctionInt < ScalarFunction
   # return a single value
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     result = xv.to_i
     NumericConstant.new(result)
-  end
-
-  def to_s
-    @name + @right.to_s
-  end
-
-  def to_formatted_s(interpreter)
-    @name + @right.to_formatted_s(interpreter)
   end
 end
 
@@ -321,8 +313,6 @@ class ScalarFunctionExp < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     f = Math.exp(xv)
@@ -339,8 +329,6 @@ class ScalarFunctionLog < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv > 0 ? Math.log(xv) : 0
@@ -357,8 +345,6 @@ class ScalarFunctionAbs < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     result = xv >= 0 ? xv : -xv
@@ -374,8 +360,6 @@ class ScalarFunctionSqr < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv > 0 ? Math.sqrt(xv) : 0
@@ -392,8 +376,6 @@ class ScalarFunctionSin < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     f = Math.sin(xv)
@@ -410,8 +392,6 @@ class ScalarFunctionCos < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     f = Math.cos(xv)
@@ -428,8 +408,6 @@ class ScalarFunctionTan < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv >= 0 ? Math.tan(xv) : 0
@@ -446,8 +424,6 @@ class ScalarFunctionAtn < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv >= 0 ? Math.atan(xv) : 0
@@ -464,8 +440,6 @@ class ScalarFunctionSgn < ScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
     x = check_1_num_arg(args)
     result = 0
     result = 1 if x > 0
@@ -527,14 +501,6 @@ class UserFunction
     result = expression.evaluate(interpreter)
     interpreter.clear_user_var_values
     result[0]
-  end
-
-  def to_s
-    @name + @right.to_s
-  end
-
-  def to_formatted_s(interpreter)
-    @name + @right.to_formatted_s(interpreter)
   end
 end
 
@@ -619,7 +585,7 @@ def tokenize(words)
           last_was_operand = false
         rescue BASICException
           begin
-            tokens << scalarFunctionFactory(word)
+            tokens << make_scalar_function(word)
             last_was_operand = true
           rescue BASICException
             begin
