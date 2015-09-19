@@ -57,6 +57,25 @@ class UnaryOperator
   end
 end
 
+def make_boolean_operator(text)
+  if text == '='
+    BooleanOperatorEq.new
+  elsif text == '<>'
+    BooleanOperatorNotEq.new
+  elsif text == '>'
+    BooleanOperatorGreater.new
+  elsif text == '>='
+    BooleanOperatorGreaterEq.new
+  elsif text == '<'
+    BooleanOperatorLess.new
+  elsif text == '<='
+    BooleanOperatorLessEq.new
+  else
+    fail(BASICException, "'#{text}' is not an operator") unless
+      operators.key?(text)
+  end
+end
+
 # Binary scalar operators
 class BinaryOperator
   attr_reader :precedence
@@ -133,36 +152,45 @@ class BinaryOperator
   end
 end
 
-# Boolean operators
-class BooleanOperator
-  attr_reader :precedence
-
-  def initialize(text)
-    valid_operators = ['=', '<', '>', '>=', '<=', '<>']
-    fail(BASICException, "'#{text}' is not a valid boolean operator") unless
-      valid_operators.include?(text)
-    @value = text
-    @precedence = 1
+# Boolean operator - equal
+class BooleanOperatorEq
+  def evaluate(av, bv)
+    av == bv
   end
+end
 
-  def operator?
-    true
+# Boolean operator - not equal
+class BooleanOperatorNotEq
+  def evaluate(av, bv)
+    av != bv
   end
+end
 
-  def function?
-    false
+# Boolean operator - greater than
+class BooleanOperatorGreater
+  def evaluate(av, bv)
+    av > bv
   end
+end
 
-  def variable?
-    false
+# Boolean operator - greater or equal
+class BooleanOperatorGreaterEq
+  def evaluate(av, bv)
+    av >= bv
   end
+end
 
-  def terminal?
-    false
+# Boolean operator - less than
+class BooleanOperatorLess
+  def evaluate(av, bv)
+    av < bv
   end
+end
 
-  def to_s
-    @value
+# Boolean operator - less or equal
+class BooleanOperatorLessEq
+  def evaluate(av, bv)
+    av <= bv
   end
 end
 

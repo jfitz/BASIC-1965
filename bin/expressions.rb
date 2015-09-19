@@ -990,7 +990,7 @@ class BooleanExpression
     fail(BASICException, "'#{text}' is not a boolean expression") if
       parts.size != 3
     @a = ValueScalarExpression.new(parts[0])
-    @operator = BooleanOperator.new(parts[1])
+    @operator = make_boolean_operator(parts[1])
     @b = ValueScalarExpression.new(parts[2])
   end
 
@@ -999,20 +999,7 @@ class BooleanExpression
     av = avs[0].to_v
     bvs = @b.evaluate(interpreter)
     bv = bvs[0].to_v
-    case @operator.to_s
-    when '='
-      av == bv
-    when '<>'
-      av != bv
-    when '<'
-      av < bv
-    when '>'
-      av > bv
-    when '<='
-      av <= bv
-    when '>='
-      av >= bv
-    end
+    @operator.evaluate(av, bv)
   end
 
   def to_s
