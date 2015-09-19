@@ -259,6 +259,25 @@ class ScalarFunction
       x.class.to_s != 'NumericConstant'
     x
   end
+
+  def check_0_1_num_args(args)
+    fail(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+    num_args = args.length
+    if num_args == 0
+      x = NumericConstant.new(100)
+    elsif num_args == 1
+      x = args[0]
+    else
+      fail(BASICException,
+           "Function #{@name} expects 0 or 1 argument, found #{num_args}")
+    end
+
+    fail(BASICException,
+         "Argument #{x} #{x.class} not numeric") if
+      x.class.to_s != 'NumericConstant'
+    x
+  end
 end
 
 # function INT
@@ -286,18 +305,8 @@ class ScalarFunctionRnd < ScalarFunction
   # return a single value
   def evaluate(interpreter, stack)
     args = stack.pop
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
-    num_args = args.length
-    if num_args == 0
-      xv = 100
-    elsif num_args == 1
-      x = args[0]
-      xv = x.to_v
-    else
-      fail(BASICException,
-           "Function #{@name} expects 0 or 1 argument, found #{num_args}")
-    end
+    x = check_0_1_num_args(args)
+    xv = x.to_v
     upper_bound = xv.truncate.to_f
     upper_bound = 1.to_f if upper_bound <= 0
     result = interpreter.rand(upper_bound)
@@ -489,7 +498,7 @@ class UserFunction
       user_var_values.class.to_s != 'Array'
     num_args = user_var_values.length
     fail(BASICException,
-         "Function #{@name} expects 1 argument, found #{num_args}") if
+         "Function #{@name} expects #{user_var_names.length} argument, found #{num_args}") if
       num_args != user_var_names.length
     x = user_var_values[0]
     fail(BASICException, "Argument #{x} #{x.class} not numeric") if
@@ -797,7 +806,7 @@ class ValueMatrixExpression
       dimensions.size > 2
   end
 
-private
+  private
 
   def print_1(dimensions, printer, interpreter, carriage)
     upper = dimensions[0].to_v
@@ -970,38 +979,6 @@ class PrintableExpression
       numeric_constant = numeric_constants[0]
       printer.print_item numeric_constant.to_formatted_s(interpreter)
       printer.last_was_numeric
-    end
-  end
-end
-
-# Carriage control for PRINT statement
-class CarriageControl
-  def initialize(text)
-    valid_operators = ['NL', ',', ';']
-    fail(BASICException, "'#{text}' is not a valid separator") unless
-      valid_operators.include?(text)
-    @operator = text
-  end
-
-  def to_s
-    case @operator
-    when ';'
-      ';'
-    when ','
-      ','
-    when 'NL'
-      ''
-    end
-  end
-
-  def print(printer, _)
-    case @operator
-    when ','
-      printer.tab
-    when ';'
-      printer.semicolon
-    when 'NL'
-      printer.newline
     end
   end
 end

@@ -662,3 +662,36 @@ class MatPrintStatement < AbstractStatement
     end
   end
 end
+
+# Carriage control for PRINT and MAT PRINT statements
+class CarriageControl
+  def initialize(text)
+    valid_operators = ['NL', ',', ';']
+    fail(BASICException, "'#{text}' is not a valid separator") unless
+      valid_operators.include?(text)
+    @operator = text
+  end
+
+  def to_s
+    case @operator
+    when ';'
+      ';'
+    when ','
+      ','
+    when 'NL'
+      ''
+    end
+  end
+
+  def print(printer, _)
+    case @operator
+    when ','
+      printer.tab
+    when ';'
+      printer.semicolon
+    when 'NL'
+      printer.newline
+    end
+  end
+end
+
