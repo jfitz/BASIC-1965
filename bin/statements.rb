@@ -246,38 +246,47 @@ class PrintStatement < AbstractStatement
     super('PRINT')
     item_list = split_args(line.strip, true)
     # variable/constant, [separator, variable/constant]... [separator]
-    @print_item_list = []
+    print_item_list = []
+    last_was_variable = false
     item_list.each do |print_item|
       if print_item == ',' || print_item == ';'
         # the item is a carriage control item
-        # save previous print thing, || create an empty one
-        @print_item_list << CarriageControl.new(print_item)
+        # save previous print thing, or create an empty one
+        print_item_list << CarriageControl.new(print_item)
+        last_was_variable = false
       else
+        # insert a plain carriage control
+        print_item_list << CarriageControl.new('') if last_was_variable
         begin
           # remove leading and trailing blanks
-          @print_item_list << PrintableExpression.new(print_item.strip)
+          print_item_list << PrintableExpression.new(print_item.strip)
+          last_was_variable = true
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
     end
-    @print_item_list << CarriageControl.new('NL') if
-      @print_item_list.size == 0 ||
-      @print_item_list[-1].class.to_s != 'CarriageControl'
+    print_item_list << PrintableExpression.new('""') if
+      print_item_list.size == 0
+    print_item_list << CarriageControl.new('NL') if
+      print_item_list[-1].class.to_s != 'CarriageControl'
+    @print_item_pairs = print_item_list.each_slice(2).to_a
   end
 
   def to_s
     varnames = []
-    @print_item_list.each do |print_item|
-      varnames << print_item.to_s
+    @print_item_pairs.each do |print_pair|
+      varnames << print_pair[0].to_s + print_pair[1].to_s
     end
     @keyword + ' ' + varnames.join(' ')
   end
 
   def execute_cmd(interpreter)
     printer = interpreter.print_handler
-    @print_item_list.each do |print_item|
-      print_item.print(printer, interpreter)
+    @print_item_pairs.each do |print_pair|
+      variable = print_pair[0]
+      carriage = print_pair[1]
+      variable.print(printer, interpreter, carriage)
     end
   end
 end
@@ -647,7 +656,6 @@ class MatPrintStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter)
-    variable = nil
     printer = interpreter.print_handler
     @print_item_pairs.each do |print_pair|
       variable = print_pair[0]
@@ -660,18 +668,10 @@ end
 # Carriage control for PRINT and MAT PRINT statements
 class CarriageControl
   def initialize(text)
-    valid_operators = ['NL', ',', ';']
+    valid_operators = ['NL', ',', ';', '']
     fail(BASICException, "'#{text}' is not a valid separator") unless
       valid_operators.include?(text)
     @operator = text
-  end
-
-  def rvalue?
-    false
-  end
-
-  def carriage?
-    true
   end
 
   def to_s
@@ -681,6 +681,8 @@ class CarriageControl
     when ','
       ','
     when 'NL'
+      ''
+    when ''
       ''
     end
   end
@@ -693,6 +695,8 @@ class CarriageControl
       printer.semicolon
     when 'NL'
       printer.newline
+    when ''
+      # do nothing
     end
   end
 end

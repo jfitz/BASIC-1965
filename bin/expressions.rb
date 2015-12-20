@@ -979,7 +979,7 @@ class PrintableExpression
     end
   end
 
-  def print(printer, interpreter)
+  def print(printer, interpreter, carriage)
     if @arithmetic_expression.nil?
       printer.print_item @text_constant.to_formatted_s(interpreter)
     else
@@ -988,6 +988,7 @@ class PrintableExpression
       printer.print_item numeric_constant.to_formatted_s(interpreter)
       printer.last_was_numeric
     end
+    carriage.print(printer, interpreter)
   end
 end
 
