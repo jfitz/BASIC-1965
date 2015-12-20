@@ -240,8 +240,32 @@ class IfStatement < AbstractStatement
   end
 end
 
+# Common for PRINT and MAT PRINT
+class AbstractPrintStatement < AbstractStatement
+  def initialize(line)
+    super
+  end
+
+  def to_s
+    varnames = []
+    @print_item_pairs.each do |print_pair|
+      varnames << print_pair[0].to_s + print_pair[1].to_s
+    end
+    @keyword + ' ' + varnames.join(' ')
+  end
+
+  def execute_cmd(interpreter)
+    printer = interpreter.print_handler
+    @print_item_pairs.each do |print_pair|
+      variable = print_pair[0]
+      carriage = print_pair[1]
+      variable.print(printer, interpreter, carriage)
+    end
+  end
+end
+
 # PRINT
-class PrintStatement < AbstractStatement
+class PrintStatement < AbstractPrintStatement
   def initialize(line)
     super('PRINT')
     item_list = split_args(line.strip, true)
@@ -271,23 +295,6 @@ class PrintStatement < AbstractStatement
     print_item_list << CarriageControl.new('NL') if
       print_item_list[-1].class.to_s != 'CarriageControl'
     @print_item_pairs = print_item_list.each_slice(2).to_a
-  end
-
-  def to_s
-    varnames = []
-    @print_item_pairs.each do |print_pair|
-      varnames << print_pair[0].to_s + print_pair[1].to_s
-    end
-    @keyword + ' ' + varnames.join(' ')
-  end
-
-  def execute_cmd(interpreter)
-    printer = interpreter.print_handler
-    @print_item_pairs.each do |print_pair|
-      variable = print_pair[0]
-      carriage = print_pair[1]
-      variable.print(printer, interpreter, carriage)
-    end
   end
 end
 
@@ -616,7 +623,7 @@ class TraceStatement < AbstractStatement
 end
 
 # MAT PRINT
-class MatPrintStatement < AbstractStatement
+class MatPrintStatement < AbstractPrintStatement
   def initialize(line)
     super('MAT PRINT')
     item_list = split_args(line.strip, true)
@@ -645,23 +652,6 @@ class MatPrintStatement < AbstractStatement
       print_item_list.size == 0 ||
       print_item_list[-1].class.to_s != 'CarriageControl'
     @print_item_pairs = print_item_list.each_slice(2).to_a
-  end
-
-  def to_s
-    varnames = []
-    @print_item_pairs.each do |print_pair|
-      varnames << print_pair[0].to_s + print_pair[1].to_s
-    end
-    @keyword + ' ' + varnames.join(' ')
-  end
-
-  def execute_cmd(interpreter)
-    printer = interpreter.print_handler
-    @print_item_pairs.each do |print_pair|
-      variable = print_pair[0]
-      carriage = print_pair[1]
-      variable.print(printer, interpreter, carriage)
-    end
   end
 end
 
