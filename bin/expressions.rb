@@ -65,6 +65,14 @@ class Variable
       @variable_name.to_s
     end
   end
+
+  def to_s_1(i)
+    @variable_name.to_s + '(' + i.to_s + ')'
+  end
+
+  def to_s_2(i, j)
+    @variable_name.to_s + '(' + i.to_s + ',' + j.to_s + ')'
+  end
 end
 
 # Scalar value (not a matrix)
@@ -812,7 +820,7 @@ class ValueMatrixExpression
     upper = dimensions[0].to_v
 
     (1..upper).each do |index|
-      varname = @variable.to_s + '(' + index.to_s + ')'
+      varname = @variable.to_s_1(index)
       value = interpreter.get_value(varname)
       printer.print_item(value.to_s)
       printer.last_was_numeric
@@ -828,7 +836,7 @@ class ValueMatrixExpression
 
     (1..upper_i).each do |i|
       (1..upper_j).each do |j|
-        varname = @variable.to_s + '(' + i.to_s + ',' + j.to_s + ')'
+        varname = @variable.to_s_2(i, j)
         value = interpreter.get_value(varname)
         printer.print_item(value.to_s)
         printer.last_was_numeric
