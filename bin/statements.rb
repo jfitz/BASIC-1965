@@ -612,53 +612,47 @@ class MatPrintStatement < AbstractStatement
     super('MAT PRINT')
     item_list = split_args(line.strip, true)
     # variable/constant, [separator, variable/constant]... [separator]
-    @print_item_list = []
+    print_item_list = []
     last_was_variable = false
     item_list.each do |print_item|
       if print_item == ',' || print_item == ';'
         # the item is a carriage control item
         # save previous print thing, or create an empty one
-        @print_item_list << CarriageControl.new(print_item)
+        print_item_list << CarriageControl.new(print_item)
         last_was_variable = false
       else
         # insert a plain carriage control
-        @print_item_list << CarriageControl.new(',') if last_was_variable
+        print_item_list << CarriageControl.new(',') if last_was_variable
         begin
           # remove leading and trailing blanks
-          @print_item_list << ValueMatrixExpression.new(print_item.strip)
+          print_item_list << ValueMatrixExpression.new(print_item.strip)
           last_was_variable = true
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
     end
-    @print_item_list << CarriageControl.new(',') if
-      @print_item_list.size == 0 ||
-      @print_item_list[-1].class.to_s != 'CarriageControl'
+    print_item_list << CarriageControl.new(',') if
+      print_item_list.size == 0 ||
+      print_item_list[-1].class.to_s != 'CarriageControl'
+    @print_item_pairs = print_item_list.each_slice(2).to_a
   end
 
   def to_s
     varnames = []
-    @print_item_list.each do |print_item|
-      varnames << print_item.to_s
+    @print_item_pairs.each do |print_pair|
+      varnames << print_pair[0].to_s + print_pair[1].to_s
     end
     @keyword + ' ' + varnames.join(' ')
   end
 
   def execute_cmd(interpreter)
-    # convert print items to pairs
-    variables = []
-    carriages = []
-    @print_item_list.each do |print_item|
-      variables << print_item if
-        print_item.class.to_s == 'ValueMatrixExpression'
-      carriages << print_item if
-        print_item.class.to_s == 'CarriageControl'
-    end
-    controls = variables.zip carriages
+    variable = nil
     printer = interpreter.print_handler
-    controls.each do |print_pair|
-      print_pair[0].print(printer, interpreter, print_pair[1])
+    @print_item_pairs.each do |print_pair|
+      variable = print_pair[0]
+      carriage = print_pair[1]
+      variable.print(printer, interpreter, carriage)
     end
   end
 end
@@ -670,6 +664,14 @@ class CarriageControl
     fail(BASICException, "'#{text}' is not a valid separator") unless
       valid_operators.include?(text)
     @operator = text
+  end
+
+  def rvalue?
+    false
+  end
+
+  def carriage?
+    true
   end
 
   def to_s
