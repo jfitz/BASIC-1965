@@ -628,30 +628,50 @@ class MatPrintStatement < AbstractPrintStatement
     super('MAT PRINT')
     item_list = split_args(line.strip, true)
     # variable/constant, [separator, variable/constant]... [separator]
+    print_item_list_1 = ctor_print_item_list_1(item_list)
+    print_item_list_2 = ctor_print_item_list_2(print_item_list_1)
+    @print_item_pairs = print_item_list_2.each_slice(2).to_a
+  end
+
+  private
+
+  def ctor_print_item_list_1(item_list)
     print_item_list = []
-    last_was_variable = false
     item_list.each do |print_item|
       if print_item == ',' || print_item == ';'
         # the item is a carriage control item
-        # save previous print thing, or create an empty one
         print_item_list << CarriageControl.new(print_item)
-        last_was_variable = false
       else
-        # insert a plain carriage control
-        print_item_list << CarriageControl.new(',') if last_was_variable
         begin
-          # remove leading and trailing blanks
           print_item_list << ValueMatrixExpression.new(print_item.strip)
-          last_was_variable = true
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
     end
+    print_item_list
+  end
+
+  def ctor_print_item_list_2(item_list)
+    last_was_var = false
+    print_item_list = []
+    # build list of print things and carriage control things
+    # one of each, alternating
+    item_list.each do |print_item|
+      this_is_var = print_item.class.to_s == 'ValueMatrixExpression'
+      if last_was_var
+        # insert a plain carriage control
+        print_item_list << CarriageControl.new(',') if this_is_var
+        print_item_list << print_item
+      else
+        print_item_list << print_item if this_is_var
+      end
+      last_was_var = this_is_var
+    end
     print_item_list << CarriageControl.new(',') if
       print_item_list.size == 0 ||
       print_item_list[-1].class.to_s != 'CarriageControl'
-    @print_item_pairs = print_item_list.each_slice(2).to_a
+    print_item_list
   end
 end
 
@@ -690,4 +710,3 @@ class CarriageControl
     end
   end
 end
-
