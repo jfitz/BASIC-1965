@@ -1,6 +1,8 @@
 #!/usr/bin/ruby
 
 require 'benchmark'
+require 'optparse'
+
 require 'exceptions'
 require 'constants'
 require 'operators'
@@ -743,30 +745,26 @@ class Interpreter
   end
 end
 
-if ARGV.size > 0
-  filename = ''
-  timing_flag = true
-  trace_flag = false
-  output_speed = 0
-  ARGV.each do |arg|
-    if arg[0] == '-'
-      trace_flag = true if arg == '-trace'
-      timing_flag = false if arg == '-notiming'
-      output_speed = 10 if arg == '-tty'
-    else
-      filename = arg if filename == '' # take only the first filename
-    end
-  end
-  ARGV.clear
-  # set_trace_func proc { |event, file, line, id, binding, classname|
-  #  puts "#{classname}.#{id} #{file}:#{line} #{event}" if !['IO',
-  #    'Kernel', 'Module', 'Fixnum',  'NameError', 'Exception',
-  #    'NoMethodError', 'Symbol', 'String', 'NilClass', 'Hash'
-  #    ].include?(classname.to_s)
-  # }
-  interpreter = Interpreter.new(output_speed)
-  interpreter.load_and_run(filename, trace_flag, timing_flag)
-else
+options = {}
+OptionParser.new do |opt|
+  opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
+  opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
+  opt.on('--trace') { |o| options[:trace] = o }
+  opt.on('--notiming') { |o| options[:notiming] = o }
+  opt.on('--tty') { |o| options[:tty] = o }
+end.parse!
+
+filename = options[:run_name]
+trace_flag = options.has_key?(:trace) || false
+notiming_flag = options.has_key?(:notiming) || false
+timing_flag = !notiming_flag
+output_speed = 0
+output_speed = 10 if options.has_key?(:tty)
+
+if filename.nil?
   interpreter = Interpreter.new(0)
   interpreter.go
+else
+  interpreter = Interpreter.new(output_speed)
+  interpreter.load_and_run(filename, trace_flag, timing_flag)
 end

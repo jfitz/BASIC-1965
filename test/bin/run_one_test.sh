@@ -10,7 +10,7 @@ echo testbed ready
 # execute program
 echo Running program...
 cd tests/$1
-ruby -I. basic.rb -notiming $1.bas >stdout.txt 2>stderr.txt
+ruby -I. basic.rb --notiming -r $1.bas >stdout.txt 2>stderr.txt
 cd ../..
 echo run finished
 
