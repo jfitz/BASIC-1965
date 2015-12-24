@@ -157,12 +157,20 @@ class BooleanOperatorEq
   def evaluate(av, bv)
     av == bv
   end
+
+  def to_s
+    '='
+  end
 end
 
 # Boolean operator - not equal
 class BooleanOperatorNotEq
   def evaluate(av, bv)
     av != bv
+  end
+
+  def to_s
+    '<>'
   end
 end
 
@@ -171,12 +179,20 @@ class BooleanOperatorGreater
   def evaluate(av, bv)
     av > bv
   end
+
+  def to_s
+    '>'
+  end
 end
 
 # Boolean operator - greater or equal
 class BooleanOperatorGreaterEq
   def evaluate(av, bv)
     av >= bv
+  end
+
+  def to_s
+    '>='
   end
 end
 
@@ -185,12 +201,20 @@ class BooleanOperatorLess
   def evaluate(av, bv)
     av < bv
   end
+
+  def to_s
+    '<'
+  end
 end
 
 # Boolean operator - less or equal
 class BooleanOperatorLessEq
   def evaluate(av, bv)
     av <= bv
+  end
+
+  def to_s
+    '<='
   end
 end
 
