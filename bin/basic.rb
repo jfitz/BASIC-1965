@@ -735,6 +735,17 @@ class Interpreter
     puts 'BASIC-1965 ended'
   end
 
+  def load_and_list(filename)
+    puts 'BASIC-1965 interpreter version -1'
+    puts
+    @program_lines = {}
+    if cmd_load(filename)
+      cmd_list('')
+    end
+    puts
+    puts 'BASIC-1965 ended'
+  end
+
   def print_timing(timing)
     user_time = timing.utime + timing.cutime
     sys_time = timing.stime + timing.cstime
@@ -754,17 +765,21 @@ OptionParser.new do |opt|
   opt.on('--tty') { |o| options[:tty] = o }
 end.parse!
 
-filename = options[:run_name]
+run_filename = options[:run_name]
+list_filename = options[:list_name]
 trace_flag = options.has_key?(:trace) || false
 notiming_flag = options.has_key?(:notiming) || false
 timing_flag = !notiming_flag
 output_speed = 0
 output_speed = 10 if options.has_key?(:tty)
 
-if filename.nil?
+if not run_filename.nil?
+  interpreter = Interpreter.new(output_speed)
+  interpreter.load_and_run(run_filename, trace_flag, timing_flag)
+elsif not list_filename.nil?
+  interpreter = Interpreter.new(0)
+  interpreter.load_and_list(list_filename)
+else
   interpreter = Interpreter.new(0)
   interpreter.go
-else
-  interpreter = Interpreter.new(output_speed)
-  interpreter.load_and_run(filename, trace_flag, timing_flag)
 end
