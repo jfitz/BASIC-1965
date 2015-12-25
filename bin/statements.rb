@@ -454,7 +454,7 @@ class ForStatement < AbstractStatement
     fornext_control =
       ForNextControl.new(@control_variable, interpreter.get_next_line,
                          from_value, to_value, step_value)
-    interpreter.set_fornext(fornext_control)
+    interpreter.assign_fornext(fornext_control)
     interpreter.set_next_line(loop_end_number) if
       fornext_control.front_terminated?(interpreter)
   end
@@ -484,7 +484,7 @@ class NextStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter)
-    fornext_control = interpreter.get_fornext(@control_variable)
+    fornext_control = interpreter.retrieve_fornext(@control_variable)
     # check control variable value
     # if matches end value, stop here
     return if fornext_control.terminated?(interpreter)

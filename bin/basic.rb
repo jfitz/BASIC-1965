@@ -107,14 +107,14 @@ class LineNumberRange
   private
 
   def line_range(spec, program_line_numbers)
-    list = []
-    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
-    regex = Regexp.new('^\d+-\d+$')
+    spec = spec.strip
+    regex = Regexp.new('\A\d+-\d+\z')
     fail(BASICException, 'Invalid list specification') if regex !~ spec
     parts = spec.split('-')
     start_val = LineNumber.new(parts[0])
     end_val = LineNumber.new(parts[1])
     fail(BASICException, 'Invalid list specification') if end_val < start_val
+    list = []
     program_line_numbers.each do |line_number|
       list << line_number if line_number >= start_val && line_number <= end_val
     end
@@ -122,8 +122,7 @@ class LineNumberRange
   end
 
   def line_list(spec, program_line_numbers)
-    list = []
-    spec = spec.sub(/^\s+/, '').sub(/\s+$/, '')
+    spec = spec.strip
     two_regex = Regexp.new('\A\d+\+\d+\z')
     one_regex = Regexp.new('\A\d+\+\z')
     if two_regex =~ spec
@@ -137,6 +136,7 @@ class LineNumberRange
     else
       fail(BASICException, 'Invalid list specification')
     end
+    list = []
     program_line_numbers.each do |line_number|
       if line_number >= start_val && count >= 0
         list << line_number
@@ -253,7 +253,7 @@ class Interpreter
     in_quotes = false
     line.each_char do |c|
       in_quotes = !in_quotes if c == '"'
-      sq_line += c if c != ' ' or in_quotes or in_remark
+      sq_line += c if c != ' ' || in_quotes || in_remark
     end
     sq_line
   end
@@ -264,7 +264,7 @@ class Interpreter
     m = /^\d+/.match(line)
     line_num = LineNumber.new(m[0])
     # strip leading and trailing blanks (SPACEs and TABs)
-    line_text = squeeze_out_spaces(m.post_match.strip())
+    line_text = squeeze_out_spaces(m.post_match.strip)
     # pick out the keyword
     keyword_statement_2_plus = {
       'IF' => IfStatement
@@ -310,26 +310,24 @@ class Interpreter
       3 => keyword_statement_3_plus,
       4 => keyword_statement_4_plus,
       5 => keyword_statement_5_plus,
-      8 => keyword_statement_8_plus,
+      8 => keyword_statement_8_plus
     }
 
     statement = UnknownStatement.new(line_text)
     begin
-      if line_text == '' then statement = EmptyStatement.new end
+      statement = EmptyStatement.new if line_text == ''
 
       keyword_statements_exact.each do |length, statement_hash|
-        keyword = line_text[0..length-1]
-        if statement_hash.has_key?(keyword)
-          statement = statement_hash[keyword].new
-        end
+        keyword = line_text[0..length - 1]
+        statement = statement_hash[keyword].new if
+          statement_hash.key?(keyword)
       end
 
       keyword_statements_plus.each do |length, statement_hash|
-        keyword = line_text[0..length-1]
+        keyword = line_text[0..length - 1]
         rest = line_text[length..-1]
-        if statement_hash.has_key?(keyword)
-          statement = statement_hash[keyword].new(rest)
-        end
+        statement = statement_hash[keyword].new(rest) if
+          statement_hash.key?(keyword)
       end
 
     rescue BASICException => e
@@ -679,13 +677,13 @@ class Interpreter
     @return_stack.pop
   end
 
-  def set_fornext(fornext_control)
+  def assign_fornext(fornext_control)
     control_variable = fornext_control.control_variable
     control_variable_name = control_variable.to_s
     @fornexts[control_variable_name] = fornext_control
   end
 
-  def get_fornext(control_variable)
+  def retrieve_fornext(control_variable)
     fornext = @fornexts[control_variable.to_s]
     fail(BASICException, 'NEXT without FOR') if fornext.nil?
     fornext
@@ -780,9 +778,7 @@ class Interpreter
     puts 'BASIC-1965 interpreter version -1'
     puts
     @program_lines = {}
-    if cmd_load(filename)
-      cmd_list('')
-    end
+    cmd_list('') if cmd_load(filename)
     puts
     puts 'BASIC-1965 ended'
   end
@@ -808,16 +804,16 @@ end.parse!
 
 run_filename = options[:run_name]
 list_filename = options[:list_name]
-trace_flag = options.has_key?(:trace) || false
-notiming_flag = options.has_key?(:notiming) || false
+trace_flag = options.key?(:trace) || false
+notiming_flag = options.key?(:notiming) || false
 timing_flag = !notiming_flag
 output_speed = 0
-output_speed = 10 if options.has_key?(:tty)
+output_speed = 10 if options.key?(:tty)
 
-if not run_filename.nil?
+if !run_filename.nil?
   interpreter = Interpreter.new(output_speed)
   interpreter.load_and_run(run_filename, trace_flag, timing_flag)
-elsif not list_filename.nil?
+elsif !list_filename.nil?
   interpreter = Interpreter.new(0)
   interpreter.load_and_list(list_filename)
 else
