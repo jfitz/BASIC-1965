@@ -266,43 +266,59 @@ class Interpreter
     # strip leading and trailing blanks (SPACEs and TABs)
     line_text = squeeze_out_spaces(m.post_match.strip())
     # pick out the keyword
+    keyword_statement_2_plus = {
+      'IF' => IfStatement
+    }
+    keyword_statement_3_exact = {
+      'END' => EndStatement
+    }
+    keyword_statement_3_plus = {
+      'REM' => RemarkStatement,
+      'DIM' => DimStatement,
+      'DEF' => DefineFunctionStatement,
+      'LET' => LetStatement,
+      'FOR' => ForStatement
+    }
+    keyword_statement_4_exact = {
+      'STOP' => StopStatement
+    }
+    keyword_statement_4_plus = {
+      'GOTO' => GotoStatement,
+      'NEXT' => NextStatement,
+      'READ' => ReadStatement,
+      'DATA' => DataStatement
+    }
+    keyword_statement_5_plus = {
+      'INPUT' => InputStatement,
+      'GOSUB' => GosubStatement,
+      'PRINT' => PrintStatement,
+      'TRACE' => TraceStatement
+    }
+    keyword_statement_6_exact = {
+      'RETURN' => ReturnStatement
+    }
+    keyword_statement_8_plus = {
+      'MATPRINT' => MatPrintStatement
+    }
     statement = UnknownStatement.new(line_text)
     begin
       if line_text == '' then statement = EmptyStatement.new
-      elsif line_text[0..2] == 'REM'
-        statement = RemarkStatement.new(line_text[3..-1])
-      elsif line_text[0..2] == 'DIM'
-        statement = DimStatement.new(line_text[3..-1])
-      elsif line_text[0..2] == 'DEF'
-        statement = DefineFunctionStatement.new(line_text[3..-1])
-      elsif line_text[0..2] == 'LET'
-        statement = LetStatement.new(line_text[3..-1])
-      elsif line_text[0..4] == 'INPUT'
-        statement = InputStatement.new(line_text[5..-1])
-      elsif line_text[0..1] == 'IF'
-        statement = IfStatement.new(line_text[2..-1])
-      elsif line_text[0..4] == 'PRINT'
-        statement = PrintStatement.new(line_text[5..-1])
-      elsif line_text[0..3] == 'GOTO'
-        statement = GotoStatement.new(line_text[4..-1])
-      elsif line_text[0..4] == 'GOSUB'
-        statement = GosubStatement.new(line_text[5..-1])
-      elsif line_text[0..2] == 'FOR'
-        statement = ForStatement.new(line_text[3..-1])
-      elsif line_text[0..3] == 'NEXT'
-        statement = NextStatement.new(line_text[4..-1])
-      elsif line_text == 'RETURN' then statement = ReturnStatement.new
-      elsif line_text[0..3] == 'READ'
-        statement = ReadStatement.new(line_text[4..-1])
-      elsif line_text[0..3] == 'DATA'
-        statement = DataStatement.new(line_text[4..-1])
-      elsif line_text == 'STOP' then statement = StopStatement.new
-      elsif line_text == 'END'
-        statement = EndStatement.new
-      elsif line_text[0..4] == 'TRACE'
-        statement = TraceStatement.new(line_text[5..-1])
-      elsif line_text[0..7] == 'MATPRINT'
-        statement = MatPrintStatement.new(line_text[8..-1])
+      elsif keyword_statement_2_plus.has_key?(line_text[0..1])
+        statement = keyword_statement_2_plus[line_text[0..1]].new(line_text[2..-1])
+      elsif keyword_statement_3_exact.has_key?(line_text[0..2])
+        statement = keyword_statement_3_exact[line_text[0..2]].new
+      elsif keyword_statement_3_plus.has_key?(line_text[0..2])
+        statement = keyword_statement_3_plus[line_text[0..2]].new(line_text[3..-1])
+      elsif keyword_statement_4_exact.has_key?(line_text[0..3])
+        statement = keyword_statement_4_exact[line_text[0..3]].new
+      elsif keyword_statement_4_plus.has_key?(line_text[0..3])
+        statement = keyword_statement_4_plus[line_text[0..3]].new(line_text[4..-1])
+      elsif keyword_statement_5_plus.has_key?(line_text[0..4])
+        statement = keyword_statement_5_plus[line_text[0..4]].new(line_text[5..-1])
+      elsif keyword_statement_6_exact.has_key?(line_text[0..5])
+        statement = keyword_statement_6_exact[line_text[0..5]].new
+      elsif keyword_statement_8_plus.has_key?(line_text[0..7])
+        statement = keyword_statement_8_plus[line_text[0..7]].new(line_text[8..-1])
       end
     rescue BASICException => e
       puts "Syntax error: #{e.message}"
