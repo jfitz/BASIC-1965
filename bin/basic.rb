@@ -245,11 +245,26 @@ class Interpreter
     @user_var_values = []
   end
 
+  private
+
+  def squeeze_out_spaces(line)
+    in_remark = line.start_with?('REM')
+    sq_line = ''
+    in_quotes = false
+    line.each_char do |c|
+      in_quotes = !in_quotes if c == '"'
+      sq_line += c if c != ' ' or in_quotes or in_remark
+    end
+    sq_line
+  end
+
+  public
+
   def parse_line(line)
     m = /^\d+/.match(line)
     line_num = LineNumber.new(m[0])
     # strip leading and trailing blanks (SPACEs and TABs)
-    line_text = m.post_match.sub(/^\s+/, '').sub(/\s+$/, '')
+    line_text = squeeze_out_spaces(m.post_match.strip())
     # pick out the keyword
     statement = UnknownStatement.new(line_text)
     begin
@@ -268,8 +283,6 @@ class Interpreter
         statement = IfStatement.new(line_text[2..-1])
       elsif line_text[0..4] == 'PRINT'
         statement = PrintStatement.new(line_text[5..-1])
-      elsif line_text[0..4] == 'GO TO'
-        statement = GotoStatement.new(line_text[5..-1])
       elsif line_text[0..3] == 'GOTO'
         statement = GotoStatement.new(line_text[4..-1])
       elsif line_text[0..4] == 'GOSUB'
@@ -288,8 +301,8 @@ class Interpreter
         statement = EndStatement.new
       elsif line_text[0..4] == 'TRACE'
         statement = TraceStatement.new(line_text[5..-1])
-      elsif line_text[0..8] == 'MAT PRINT'
-        statement = MatPrintStatement.new(line_text[9..-1])
+      elsif line_text[0..7] == 'MATPRINT'
+        statement = MatPrintStatement.new(line_text[8..-1])
       end
     rescue BASICException => e
       puts "Syntax error: #{e.message}"
