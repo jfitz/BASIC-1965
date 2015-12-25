@@ -300,26 +300,38 @@ class Interpreter
     keyword_statement_8_plus = {
       'MATPRINT' => MatPrintStatement
     }
+    keyword_statements_exact = {
+      3 => keyword_statement_3_exact,
+      4 => keyword_statement_4_exact,
+      6 => keyword_statement_6_exact
+    }
+    keyword_statements_plus = {
+      2 => keyword_statement_2_plus,
+      3 => keyword_statement_3_plus,
+      4 => keyword_statement_4_plus,
+      5 => keyword_statement_5_plus,
+      8 => keyword_statement_8_plus,
+    }
+
     statement = UnknownStatement.new(line_text)
     begin
-      if line_text == '' then statement = EmptyStatement.new
-      elsif keyword_statement_2_plus.has_key?(line_text[0..1])
-        statement = keyword_statement_2_plus[line_text[0..1]].new(line_text[2..-1])
-      elsif keyword_statement_3_exact.has_key?(line_text[0..2])
-        statement = keyword_statement_3_exact[line_text[0..2]].new
-      elsif keyword_statement_3_plus.has_key?(line_text[0..2])
-        statement = keyword_statement_3_plus[line_text[0..2]].new(line_text[3..-1])
-      elsif keyword_statement_4_exact.has_key?(line_text[0..3])
-        statement = keyword_statement_4_exact[line_text[0..3]].new
-      elsif keyword_statement_4_plus.has_key?(line_text[0..3])
-        statement = keyword_statement_4_plus[line_text[0..3]].new(line_text[4..-1])
-      elsif keyword_statement_5_plus.has_key?(line_text[0..4])
-        statement = keyword_statement_5_plus[line_text[0..4]].new(line_text[5..-1])
-      elsif keyword_statement_6_exact.has_key?(line_text[0..5])
-        statement = keyword_statement_6_exact[line_text[0..5]].new
-      elsif keyword_statement_8_plus.has_key?(line_text[0..7])
-        statement = keyword_statement_8_plus[line_text[0..7]].new(line_text[8..-1])
+      if line_text == '' then statement = EmptyStatement.new end
+
+      keyword_statements_exact.each do |length, statement_hash|
+        keyword = line_text[0..length-1]
+        if statement_hash.has_key?(keyword)
+          statement = statement_hash[keyword].new
+        end
       end
+
+      keyword_statements_plus.each do |length, statement_hash|
+        keyword = line_text[0..length-1]
+        rest = line_text[length..-1]
+        if statement_hash.has_key?(keyword)
+          statement = statement_hash[keyword].new(rest)
+        end
+      end
+
     rescue BASICException => e
       puts "Syntax error: #{e.message}"
     end
