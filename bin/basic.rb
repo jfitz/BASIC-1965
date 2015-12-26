@@ -300,34 +300,38 @@ class Interpreter
     keyword_statement_8_plus = {
       'MATPRINT' => MatPrintStatement
     }
-    keyword_statements_exact = {
-      3 => keyword_statement_3_exact,
-      4 => keyword_statement_4_exact,
-      6 => keyword_statement_6_exact
-    }
-    keyword_statements_plus = {
-      2 => keyword_statement_2_plus,
-      3 => keyword_statement_3_plus,
-      4 => keyword_statement_4_plus,
-      5 => keyword_statement_5_plus,
-      8 => keyword_statement_8_plus
-    }
+    keyword_statements_exact = [
+      { :length => 3, :defs => keyword_statement_3_exact },
+      { :length => 4, :defs => keyword_statement_4_exact },
+      { :length => 6, :defs => keyword_statement_6_exact }
+    ]
+    keyword_statements_plus = [
+      { :length => 2, :defs => keyword_statement_2_plus },
+      { :length => 3, :defs => keyword_statement_3_plus },
+      { :length => 4, :defs => keyword_statement_4_plus },
+      { :length => 5, :defs => keyword_statement_5_plus },
+      { :length => 8, :defs => keyword_statement_8_plus }
+    ]
 
     statement = UnknownStatement.new(line_text)
     begin
       statement = EmptyStatement.new if line_text == ''
 
-      keyword_statements_exact.each do |length, statement_hash|
+      keyword_statements_exact.each do |statement_hash|
+        length = statement_hash[:length]
+        defs = statement_hash[:defs]
         keyword = line_text[0..length - 1]
-        statement = statement_hash[keyword].new if
-          statement_hash.key?(keyword)
+        statement = defs[keyword].new if
+          defs.key?(keyword)
       end
 
-      keyword_statements_plus.each do |length, statement_hash|
+      keyword_statements_plus.each do |statement_hash|
+        length = statement_hash[:length]
+        defs = statement_hash[:defs]
         keyword = line_text[0..length - 1]
         rest = line_text[length..-1]
-        statement = statement_hash[keyword].new(rest) if
-          statement_hash.key?(keyword)
+        statement = defs[keyword].new(rest) if
+          defs.key?(keyword)
       end
 
     rescue BASICException => e
