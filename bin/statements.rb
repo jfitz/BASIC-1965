@@ -304,7 +304,7 @@ class IfStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter)
-    interpreter.set_next_line(@destination) if
+    interpreter.next_line_number = @destination if
       @boolean_expression.evaluate(interpreter)
   end
 end
@@ -384,7 +384,7 @@ class GotoStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter)
-    interpreter.set_next_line(@destination)
+    interpreter.next_line_number = @destination
   end
 end
 
@@ -405,8 +405,8 @@ class GosubStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter)
-    interpreter.push_return(interpreter.get_next_line)
-    interpreter.set_next_line(@destination)
+    interpreter.push_return(interpreter.next_line_number)
+    interpreter.next_line_number = @destination
   end
 end
 
@@ -421,7 +421,7 @@ class ReturnStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter)
-    interpreter.set_next_line(interpreter.pop_return)
+    interpreter.next_line_number = interpreter.pop_return
   end
 end
 
@@ -521,10 +521,10 @@ class ForStatement < AbstractStatement
     to_value = @end_value.evaluate(interpreter)[0]
     step_value = @step_value.evaluate(interpreter)[0]
     fornext_control =
-      ForNextControl.new(@control_variable, interpreter.get_next_line,
+      ForNextControl.new(@control_variable, interpreter.next_line_number,
                          from_value, to_value, step_value)
     interpreter.assign_fornext(fornext_control)
-    interpreter.set_next_line(loop_end_number) if
+    interpreter.next_line_number = loop_end_number if
       fornext_control.front_terminated?(interpreter)
   end
 end
@@ -558,7 +558,7 @@ class NextStatement < AbstractStatement
     # if matches end value, stop here
     return if fornext_control.terminated?(interpreter)
     # set next line from top item
-    interpreter.set_next_line(fornext_control.loop_start_number)
+    interpreter.next_line_number = fornext_control.loop_start_number
     # change control variable value
     fornext_control.bump_control_variable(interpreter)
   end

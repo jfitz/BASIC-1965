@@ -230,6 +230,7 @@ end
 # the interpreter
 class Interpreter
   attr_reader :current_line_number
+  attr_accessor :next_line_number
 
   def initialize(output_speed)
     @running = false
@@ -474,14 +475,6 @@ class Interpreter
 
   def rand(upper_bound)
     @randomizer.rand(upper_bound)
-  end
-
-  def get_next_line
-    @next_line_number
-  end
-
-  def set_next_line(line_number)
-    @next_line_number = line_number
   end
 
   def find_closing_next(control_variable)
