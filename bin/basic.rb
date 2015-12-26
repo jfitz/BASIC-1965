@@ -232,6 +232,7 @@ class Interpreter
   attr_reader :current_line_number
 
   def initialize(output_speed)
+    @statement_definitions = statement_definitions
     @running = false
     @randomizer = Random.new
     @data_store = []
@@ -265,73 +266,24 @@ class Interpreter
     line_num = LineNumber.new(m[0])
     # strip leading and trailing blanks (SPACEs and TABs)
     line_text = squeeze_out_spaces(m.post_match.strip)
-    # pick out the keyword
-    keyword_statement_2_plus = {
-      'IF' => IfStatement
-    }
-    keyword_statement_3_exact = {
-      'END' => EndStatement
-    }
-    keyword_statement_3_plus = {
-      'REM' => RemarkStatement,
-      'DIM' => DimStatement,
-      'DEF' => DefineFunctionStatement,
-      'LET' => LetStatement,
-      'FOR' => ForStatement
-    }
-    keyword_statement_4_exact = {
-      'STOP' => StopStatement
-    }
-    keyword_statement_4_plus = {
-      'GOTO' => GotoStatement,
-      'NEXT' => NextStatement,
-      'READ' => ReadStatement,
-      'DATA' => DataStatement
-    }
-    keyword_statement_5_plus = {
-      'INPUT' => InputStatement,
-      'GOSUB' => GosubStatement,
-      'PRINT' => PrintStatement,
-      'TRACE' => TraceStatement
-    }
-    keyword_statement_6_exact = {
-      'RETURN' => ReturnStatement
-    }
-    keyword_statement_8_plus = {
-      'MATPRINT' => MatPrintStatement
-    }
-    keyword_statements_exact = [
-      { :length => 3, :defs => keyword_statement_3_exact },
-      { :length => 4, :defs => keyword_statement_4_exact },
-      { :length => 6, :defs => keyword_statement_6_exact }
-    ]
-    keyword_statements_plus = [
-      { :length => 2, :defs => keyword_statement_2_plus },
-      { :length => 3, :defs => keyword_statement_3_plus },
-      { :length => 4, :defs => keyword_statement_4_plus },
-      { :length => 5, :defs => keyword_statement_5_plus },
-      { :length => 8, :defs => keyword_statement_8_plus }
-    ]
 
+    # pick out the keyword
     statement = UnknownStatement.new(line_text)
     begin
       statement = EmptyStatement.new if line_text == ''
 
-      keyword_statements_exact.each do |statement_hash|
-        length = statement_hash[:length]
-        defs = statement_hash[:defs]
+      @statement_definitions.each do |statement_hash|
+        def_keyword = statement_hash[:keyword]
+        length = def_keyword.length
         keyword = line_text[0..length - 1]
-        statement = defs[keyword].new if
-          defs.key?(keyword)
-      end
-
-      keyword_statements_plus.each do |statement_hash|
-        length = statement_hash[:length]
-        defs = statement_hash[:defs]
-        keyword = line_text[0..length - 1]
-        rest = line_text[length..-1]
-        statement = defs[keyword].new(rest) if
-          defs.key?(keyword)
+        if statement_hash.key?(:plus)
+          rest = line_text[length..-1]
+          statement = statement_hash[:statement].new(rest) if
+            keyword == def_keyword
+        else
+          statement = statement_hash[:statement].new if
+            keyword == def_keyword
+        end
       end
 
     rescue BASICException => e
@@ -795,6 +747,29 @@ class Interpreter
     puts " user: #{user_time.round(2)}"
     puts " system: #{sys_time.round(2)}"
   end
+end
+
+def statement_definitions
+  [
+    { :keyword => 'END', :statement => EndStatement },
+    { :keyword => 'STOP', :statement => StopStatement },
+    { :keyword => 'RETURN', :statement => ReturnStatement },
+    { :keyword => 'IF', :statement => IfStatement, :plus => true },
+    { :keyword => 'REM', :statement => RemarkStatement, :plus => true },
+    { :keyword => 'DIM', :statement => DimStatement, :plus => true },
+    { :keyword => 'DEF', :statement => DefineFunctionStatement, :plus => true },
+    { :keyword => 'LET', :statement => LetStatement, :plus => true },
+    { :keyword => 'FOR', :statement => ForStatement, :plus => true },
+    { :keyword => 'GOTO', :statement => GotoStatement, :plus => true },
+    { :keyword => 'NEXT', :statement => NextStatement, :plus => true },
+    { :keyword => 'READ', :statement => ReadStatement, :plus => true },
+    { :keyword => 'DATA', :statement => DataStatement, :plus => true },
+    { :keyword => 'INPUT', :statement => InputStatement, :plus => true },
+    { :keyword => 'GOSUB', :statement => GosubStatement, :plus => true },
+    { :keyword => 'PRINT', :statement => PrintStatement, :plus => true },
+    { :keyword => 'TRACE', :statement => TraceStatement, :plus => true },
+    { :keyword => 'MATPRINT', :statement => MatPrintStatement, :plus => true }
+  ]
 end
 
 options = {}
