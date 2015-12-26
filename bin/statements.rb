@@ -301,8 +301,8 @@ end
 # GOTO
 class GotoStatement < AbstractStatement
   def initialize(line)
-    super('GO TO')
-    destination = line.sub(/ /, '')
+    super('GOTO')
+    destination = line
     begin
       @destination = LineNumber.new(destination)
     rescue BASICException
@@ -323,7 +323,7 @@ end
 class GosubStatement < AbstractStatement
   def initialize(line)
     super('GOSUB')
-    destination = line.sub(/ /, '')
+    destination = line
     begin
       @destination = LineNumber.new(destination)
     rescue BASICException

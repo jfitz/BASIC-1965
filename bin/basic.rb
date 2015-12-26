@@ -248,39 +248,44 @@ class Interpreter
 
   private
 
-  def squeeze_out_spaces(line)
-    in_remark = line.start_with?('REM')
-    sq_line = ''
-    in_quotes = false
-    line.each_char do |c|
-      in_quotes = !in_quotes if c == '"'
-      sq_line += c if c != ' ' || in_quotes || in_remark
+  def ascii_printables(text)
+    ascii_text = ''
+    text.each_char do |c|
+      ascii_text += c if c >= ' ' && c <= '~'
     end
-    sq_line
+    ascii_text
+  end
+
+  def squeeze_out_spaces(text)
+    in_remark = text.start_with?('REM')
+    squeezed_text = ''
+    in_quotes = false
+    text.each_char do |c|
+      in_quotes = !in_quotes if c == '"'
+      squeezed_text += c if c != ' ' || in_quotes || in_remark
+    end
+    squeezed_text
   end
 
   public
 
   def parse_line(line)
-    m = /^\d+/.match(line)
-    line_num = LineNumber.new(m[0])
     # strip leading and trailing blanks (SPACEs and TABs)
-    line_text = squeeze_out_spaces(m.post_match.strip)
-
-    # pick out the keyword
+    line = squeeze_out_spaces(line)
+    m = /\A\d+/.match(line)
+    line_num = LineNumber.new(m[0])
+    line_text = m.post_match
     statement = UnknownStatement.new(line_text)
+    statement = EmptyStatement.new if line_text == ''
+    # pick out the keyword
     begin
-      statement = EmptyStatement.new if line_text == ''
-
-      @statement_definitions.each do |statement_hash|
-        def_keyword = statement_hash[:keyword]
+      @statement_definitions.each_key do |def_keyword|
         length = def_keyword.length
         keyword = line_text[0..length - 1]
         rest = line_text[length..-1]
-        statement = statement_hash[:statement].new(rest) if
+        statement = @statement_definitions[def_keyword].new(rest) if
           keyword == def_keyword
       end
-
     rescue BASICException => e
       puts "Syntax error: #{e.message}"
     end
@@ -288,7 +293,7 @@ class Interpreter
   end
 
   def cmd_list(linespec)
-    linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
+    linespec = linespec.strip
     if @program_lines.size > 0
       begin
         line_number_range =
@@ -306,7 +311,7 @@ class Interpreter
   end
 
   def cmd_delete(linespec)
-    linespec = linespec.sub(/^\s+/, '').sub(/\s+$/, '')
+    linespec = linespec.strip
     if @program_lines.size > 0
       begin
         line_number_range =
@@ -422,13 +427,13 @@ class Interpreter
   end
 
   def cmd_load(filename)
-    filename = filename.sub(/^\s+/, '').sub(/\s+$/, '')
+    filename = filename.strip
     if filename.size > 0
       begin
         File.open(filename, 'r') do |file|
           @program_lines = {}
           file.each_line do |line|
-            line.chomp!
+            line = ascii_printables(line)
             if line =~ /^\d+/
               line_parts = parse_line(line)
               line_num = line_parts[0]
@@ -455,7 +460,7 @@ class Interpreter
 
   def cmd_save(filename)
     if @program_lines.size > 0
-      filename.sub!(/^\s+/, '')
+      filename = filename.strip
       if filename.size > 0
         save_file(filename)
       else
@@ -667,7 +672,7 @@ class Interpreter
     done = false
     until done
       print "READY\n" if need_prompt
-      cmd = gets.chomp
+      cmd = ascii_printables(gets)
       if /\A\d/.match(cmd)
         # starts with a number, so maybe it is a program line
         need_prompt = store_program_line(cmd)
@@ -745,26 +750,26 @@ class Interpreter
 end
 
 def statement_definitions
-  [
-    { :keyword => 'END', :statement => EndStatement },
-    { :keyword => 'STOP', :statement => StopStatement },
-    { :keyword => 'RETURN', :statement => ReturnStatement },
-    { :keyword => 'IF', :statement => IfStatement },
-    { :keyword => 'REM', :statement => RemarkStatement },
-    { :keyword => 'DIM', :statement => DimStatement },
-    { :keyword => 'DEF', :statement => DefineFunctionStatement },
-    { :keyword => 'LET', :statement => LetStatement },
-    { :keyword => 'FOR', :statement => ForStatement },
-    { :keyword => 'GOTO', :statement => GotoStatement },
-    { :keyword => 'NEXT', :statement => NextStatement },
-    { :keyword => 'READ', :statement => ReadStatement },
-    { :keyword => 'DATA', :statement => DataStatement },
-    { :keyword => 'INPUT', :statement => InputStatement },
-    { :keyword => 'GOSUB', :statement => GosubStatement },
-    { :keyword => 'PRINT', :statement => PrintStatement },
-    { :keyword => 'TRACE', :statement => TraceStatement },
-    { :keyword => 'MATPRINT', :statement => MatPrintStatement }
-  ]
+  {
+    'END' => EndStatement,
+    'STOP' => StopStatement,
+    'RETURN' => ReturnStatement,
+    'IF' => IfStatement,
+    'REM' => RemarkStatement,
+    'DIM' => DimStatement,
+    'DEF' => DefineFunctionStatement,
+    'LET' => LetStatement,
+    'FOR' => ForStatement,
+    'GOTO' => GotoStatement,
+    'NEXT' => NextStatement,
+    'READ' => ReadStatement,
+    'DATA' => DataStatement,
+    'INPUT' => InputStatement,
+    'GOSUB' => GosubStatement,
+    'PRINT' => PrintStatement,
+    'TRACE' => TraceStatement,
+    'MATPRINT' => MatPrintStatement
+  }
 end
 
 options = {}
