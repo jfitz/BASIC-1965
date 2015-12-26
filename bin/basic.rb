@@ -232,11 +232,11 @@ class Interpreter
   attr_reader :current_line_number
 
   def initialize(output_speed)
-    @statement_definitions = statement_definitions
     @running = false
     @randomizer = Random.new
     @data_store = []
     @data_index = 0
+    @statement_factory = StatementFactory.new
     @printer = PrintHandler.new(72, output_speed)
     @return_stack = []
     @fornexts = {}
@@ -256,40 +256,14 @@ class Interpreter
     ascii_text
   end
 
-  def squeeze_out_spaces(text)
-    in_remark = text.start_with?('REM')
-    squeezed_text = ''
-    in_quotes = false
-    text.each_char do |c|
-      in_quotes = !in_quotes if c == '"'
-      squeezed_text += c if c != ' ' || in_quotes || in_remark
-    end
-    squeezed_text
-  end
-
   public
 
   def parse_line(line)
-    # strip leading and trailing blanks (SPACEs and TABs)
-    line = squeeze_out_spaces(line)
-    m = /\A\d+/.match(line)
-    line_num = LineNumber.new(m[0])
-    line_text = m.post_match
-    statement = UnknownStatement.new(line_text)
-    statement = EmptyStatement.new if line_text == ''
-    # pick out the keyword
     begin
-      @statement_definitions.each_key do |def_keyword|
-        length = def_keyword.length
-        keyword = line_text[0..length - 1]
-        rest = line_text[length..-1]
-        statement = @statement_definitions[def_keyword].new(rest) if
-          keyword == def_keyword
-      end
+      @statement_factory.parse(line)
     rescue BASICException => e
       puts "Syntax error: #{e.message}"
     end
-    [line_num, statement]
   end
 
   def cmd_list(linespec)
@@ -434,17 +408,7 @@ class Interpreter
           @program_lines = {}
           file.each_line do |line|
             line = ascii_printables(line)
-            if line =~ /^\d+/
-              line_parts = parse_line(line)
-              line_num = line_parts[0]
-              line_text = line_parts[1]
-              @program_lines[line_num] = line_text
-              if line_text.errors.size > 0
-                line_text.errors.each { |error| puts error }
-              end
-            else
-              # warn about line that does not begin with line number
-            end
+            store_program_line(line)
           end
         end
         true
@@ -685,12 +649,14 @@ class Interpreter
   end
 
   def store_program_line(cmd)
-    line_parts = parse_line(cmd)
-    line_num = line_parts[0]
-    line_text = line_parts[1]
-    @program_lines[line_num] = line_text
-    line_text.errors.each { |error| puts error } if line_text.errors.size > 0
-    line_text.errors.size > 0
+    line_num, line_text = parse_line(cmd)
+    if !line_num.nil? && !line_text.nil?
+      @program_lines[line_num] = line_text
+      line_text.errors.each { |error| puts error }
+      line_text.errors.size > 0
+    else
+      true
+    end
   end
 
   def execute_command(cmd)
@@ -747,29 +713,6 @@ class Interpreter
     puts " user: #{user_time.round(2)}"
     puts " system: #{sys_time.round(2)}"
   end
-end
-
-def statement_definitions
-  {
-    'END' => EndStatement,
-    'STOP' => StopStatement,
-    'RETURN' => ReturnStatement,
-    'IF' => IfStatement,
-    'REM' => RemarkStatement,
-    'DIM' => DimStatement,
-    'DEF' => DefineFunctionStatement,
-    'LET' => LetStatement,
-    'FOR' => ForStatement,
-    'GOTO' => GotoStatement,
-    'NEXT' => NextStatement,
-    'READ' => ReadStatement,
-    'DATA' => DataStatement,
-    'INPUT' => InputStatement,
-    'GOSUB' => GosubStatement,
-    'PRINT' => PrintStatement,
-    'TRACE' => TraceStatement,
-    'MATPRINT' => MatPrintStatement
-  }
 end
 
 options = {}

@@ -1,3 +1,72 @@
+# Statement factory class
+class StatementFactory
+  def initialize
+    @statement_definitions = statement_definitions
+  end
+
+  def parse(line)
+    line_num = nil
+    statement = nil
+    m = /\A\d+/.match(line)
+    unless m.nil?
+      line_num = LineNumber.new(m[0])
+      line_text = squeeze_out_spaces(m.post_match)
+      statement = create(line_text)
+    end
+    [line_num, statement]
+  end
+
+  private
+
+  def squeeze_out_spaces(text)
+    text = text.strip
+    in_remark = text.start_with?('REM')
+    squeezed_text = ''
+    in_quotes = false
+    text.each_char do |c|
+      in_quotes = !in_quotes if c == '"'
+      squeezed_text += c if c != ' ' || in_quotes || in_remark
+    end
+    squeezed_text
+  end
+
+  def create(text)
+    statement = UnknownStatement.new(text)
+    statement = EmptyStatement.new if text == ''
+    @statement_definitions.each_key do |def_keyword|
+      length = def_keyword.length
+      keyword = text[0..length - 1]
+      rest = text[length..-1]
+      statement = @statement_definitions[def_keyword].new(rest) if
+        keyword == def_keyword
+    end
+    statement
+  end
+
+  def statement_definitions
+    {
+      'END' => EndStatement,
+      'STOP' => StopStatement,
+      'RETURN' => ReturnStatement,
+      'IF' => IfStatement,
+      'REM' => RemarkStatement,
+      'DIM' => DimStatement,
+      'DEF' => DefineFunctionStatement,
+      'LET' => LetStatement,
+      'FOR' => ForStatement,
+      'GOTO' => GotoStatement,
+      'NEXT' => NextStatement,
+      'READ' => ReadStatement,
+      'DATA' => DataStatement,
+      'INPUT' => InputStatement,
+      'GOSUB' => GosubStatement,
+      'PRINT' => PrintStatement,
+      'TRACE' => TraceStatement,
+      'MATPRINT' => MatPrintStatement
+    }
+  end
+end
+
 # parent of all statement classes
 class AbstractStatement
   attr_reader :errors
