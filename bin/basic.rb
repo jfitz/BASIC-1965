@@ -276,14 +276,9 @@ class Interpreter
         def_keyword = statement_hash[:keyword]
         length = def_keyword.length
         keyword = line_text[0..length - 1]
-        if statement_hash.key?(:plus)
-          rest = line_text[length..-1]
-          statement = statement_hash[:statement].new(rest) if
-            keyword == def_keyword
-        else
-          statement = statement_hash[:statement].new if
-            keyword == def_keyword
-        end
+        rest = line_text[length..-1]
+        statement = statement_hash[:statement].new(rest) if
+          keyword == def_keyword
       end
 
     rescue BASICException => e
@@ -754,21 +749,21 @@ def statement_definitions
     { :keyword => 'END', :statement => EndStatement },
     { :keyword => 'STOP', :statement => StopStatement },
     { :keyword => 'RETURN', :statement => ReturnStatement },
-    { :keyword => 'IF', :statement => IfStatement, :plus => true },
-    { :keyword => 'REM', :statement => RemarkStatement, :plus => true },
-    { :keyword => 'DIM', :statement => DimStatement, :plus => true },
-    { :keyword => 'DEF', :statement => DefineFunctionStatement, :plus => true },
-    { :keyword => 'LET', :statement => LetStatement, :plus => true },
-    { :keyword => 'FOR', :statement => ForStatement, :plus => true },
-    { :keyword => 'GOTO', :statement => GotoStatement, :plus => true },
-    { :keyword => 'NEXT', :statement => NextStatement, :plus => true },
-    { :keyword => 'READ', :statement => ReadStatement, :plus => true },
-    { :keyword => 'DATA', :statement => DataStatement, :plus => true },
-    { :keyword => 'INPUT', :statement => InputStatement, :plus => true },
-    { :keyword => 'GOSUB', :statement => GosubStatement, :plus => true },
-    { :keyword => 'PRINT', :statement => PrintStatement, :plus => true },
-    { :keyword => 'TRACE', :statement => TraceStatement, :plus => true },
-    { :keyword => 'MATPRINT', :statement => MatPrintStatement, :plus => true }
+    { :keyword => 'IF', :statement => IfStatement },
+    { :keyword => 'REM', :statement => RemarkStatement },
+    { :keyword => 'DIM', :statement => DimStatement },
+    { :keyword => 'DEF', :statement => DefineFunctionStatement },
+    { :keyword => 'LET', :statement => LetStatement },
+    { :keyword => 'FOR', :statement => ForStatement },
+    { :keyword => 'GOTO', :statement => GotoStatement },
+    { :keyword => 'NEXT', :statement => NextStatement },
+    { :keyword => 'READ', :statement => ReadStatement },
+    { :keyword => 'DATA', :statement => DataStatement },
+    { :keyword => 'INPUT', :statement => InputStatement },
+    { :keyword => 'GOSUB', :statement => GosubStatement },
+    { :keyword => 'PRINT', :statement => PrintStatement },
+    { :keyword => 'TRACE', :statement => TraceStatement },
+    { :keyword => 'MATPRINT', :statement => MatPrintStatement }
   ]
 end
 

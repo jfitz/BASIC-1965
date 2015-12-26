@@ -343,7 +343,7 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize
+  def initialize(_)
     super('RETURN')
   end
 
@@ -574,7 +574,7 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize
+  def initialize(_)
     super('STOP')
   end
 
@@ -591,7 +591,7 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize
+  def initialize(_)
     super('END')
   end
 
