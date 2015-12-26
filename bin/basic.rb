@@ -162,6 +162,7 @@ class PrintHandler
       print_out text
       @column += text.size
     else
+      ## todo: use multiple passes (recursion?) for output longer than 2*max_width
       overflow = @column + text.length - @max_width
       first_count = text.length - overflow
       print_out text[0..first_count]
@@ -177,28 +178,30 @@ class PrintHandler
   end
 
   def tab
-    if @last_was_numeric
-      count = 3
-      while @column > 0 && count > 0
-        print_item(' ')
-        count -= 1
-      end
-    end
+    space_after_numeric if @last_was_numeric
     print_item(' ') while @column > 0 && @column % 16 != 0
     @last_was_numeric = false
   end
 
   def semicolon
     if @last_was_numeric
-      count = 3
-      while @column > 0 && count > 0
-        print_item(' ')
-        count -= 1
-      end
+      space_after_numeric
       print_item(' ') while @column % 3 != 0
     end
     @last_was_numeric = false
   end
+
+  private
+
+  def space_after_numeric
+    count = 3
+    while @column > 0 && count > 0
+      print_item(' ')
+      count -= 1
+    end
+  end
+
+  public
 
   def newline
     puts
