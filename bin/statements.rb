@@ -143,7 +143,7 @@ end
 class DimStatement < AbstractStatement
   def initialize(line)
     super('DIM')
-    text_list = split_args(line.strip, false)
+    text_list = split_args(line, false)
     # variable [comma, variable]...
     @expression_list = []
     if text_list.size > 0
@@ -181,7 +181,7 @@ class LetStatement < AbstractStatement
   def initialize(line)
     super('LET')
     begin
-      @assignment = Assignment.new(line.gsub(/ /, ''))
+      @assignment = Assignment.new(line)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end
@@ -213,7 +213,7 @@ class InputStatement < AbstractStatement
     super('INPUT')
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
-    text_list = split_args(line.strip, false)
+    text_list = split_args(line, false)
     if text_list.length > 0
       begin
         @prompt = TextConstant.new(text_list[0])
@@ -222,6 +222,7 @@ class InputStatement < AbstractStatement
         # if the first item wasn't a text constant,
         # don't create a prompt and use it as data
       end
+      ## todo: check list length again (after removing prompt item)
       # variable [comma, variable]...
       @expression_list = build_expression_list(text_list)
     else
@@ -289,7 +290,7 @@ end
 class IfStatement < AbstractStatement
   def initialize(line)
     super('IF')
-    parts = line.gsub(/ /, '').split(/\s*THEN\s*/)
+    parts = line.split(/\s*THEN\s*/)
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
     rescue BASICException => message
@@ -337,7 +338,7 @@ end
 class PrintStatement < AbstractPrintStatement
   def initialize(line)
     super('PRINT')
-    item_list = split_args(line.strip, true)
+    item_list = split_args(line, true)
     # variable/constant, [separator, variable/constant]... [separator]
     print_item_list = []
     last_was_variable = false
@@ -456,7 +457,7 @@ class ForNextControl
     interpreter.set_value(@control_variable, @current_value)
   end
 
-  def front_terminated?(_)
+  def front_terminated?
     if @step_value > 0
       @start_value > @end_value
     elsif @step_value < 0
@@ -484,7 +485,7 @@ class ForStatement < AbstractStatement
     super('FOR')
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
-    parts = line.gsub(/ /, '').split('=', 2)
+    parts = line.split('=', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
     begin
       var_name = VariableName.new(parts[0])
@@ -525,7 +526,7 @@ class ForStatement < AbstractStatement
                          from_value, to_value, step_value)
     interpreter.assign_fornext(fornext_control)
     interpreter.next_line_number = loop_end_number if
-      fornext_control.front_terminated?(interpreter)
+      fornext_control.front_terminated?
   end
 end
 
@@ -536,7 +537,7 @@ class NextStatement < AbstractStatement
     # parse control variable
     @control_variable = nil
     begin
-      var_name = VariableName.new(line.gsub(/ /, ''))
+      var_name = VariableName.new(line)
       @control_variable = ScalarValue.new(var_name)
     rescue BASICException => message
       @errors << message
@@ -568,7 +569,7 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line)
     super('READ')
-    item_list = split_args(line.strip, false)
+    item_list = split_args(line, false)
     # variable [comma, variable]...
     @expression_list = []
     item_list.each do |item|
@@ -618,7 +619,7 @@ class DefineFunctionStatement < AbstractStatement
   def initialize(line)
     super('DEF')
     begin
-      user_function_definition = UserFunctionDefinition.new(line.gsub(/ /, ''))
+      user_function_definition = UserFunctionDefinition.new(line)
     rescue BASICException => message
       puts message
       @errors << message
@@ -679,7 +680,7 @@ end
 class TraceStatement < AbstractStatement
   def initialize(line)
     super('TRACE')
-    @operation = BooleanConstant.new(line.gsub(/ /, ''))
+    @operation = BooleanConstant.new(line)
   end
 
   def execute_cmd(interpreter)
@@ -695,7 +696,7 @@ end
 class MatPrintStatement < AbstractPrintStatement
   def initialize(line)
     super('MAT PRINT')
-    item_list = split_args(line.strip, true)
+    item_list = split_args(line, true)
     # variable/constant, [separator, variable/constant]... [separator]
     print_item_list_1 = ctor_print_item_list_1(item_list)
     print_item_list_2 = ctor_print_item_list_2(print_item_list_1)
