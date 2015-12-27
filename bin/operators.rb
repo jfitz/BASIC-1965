@@ -5,6 +5,11 @@ end
 
 # Unary scalar operators
 class UnaryOperator
+  def self.init?(text)
+    operators = { '+' => 5, '-' => 5 }
+    operators.key?(text)
+  end
+
   attr_reader :precedence
 
   def initialize(text)
@@ -78,6 +83,11 @@ end
 
 # Binary scalar operators
 class BinaryOperator
+  def self.init?(text)
+    operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
+    operators.key?(text)
+  end
+
   attr_reader :precedence
 
   def initialize(text)

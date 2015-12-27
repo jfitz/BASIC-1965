@@ -225,8 +225,6 @@ def make_scalar_function(text)
     ScalarFunctionAtn.new(text)
   when 'SGN'
     ScalarFunctionSgn.new(text)
-  else
-    fail(BASICException, "'#{text}' is not a valid function")
   end
 end
 
@@ -598,42 +596,33 @@ def tokenize(words)
 
     if word == '('
       tokens << '('
+      last_was_operand = false
+    elsif word == ')'
+      tokens << ')'
+      last_was_operand = true
+    elsif word == ','
+      tokens << ','
+      last_was_operand = false
+    elsif last_was_operand && BinaryOperator.init?(word)
+      tokens << BinaryOperator.new(word)
+      last_was_operand = false
+    elsif !last_was_operand && UnaryOperator.init?(word)
+      tokens << UnaryOperator.new(word)
+      last_was_operand = false
+    elsif !make_scalar_function(word).nil?
+      tokens << make_scalar_function(word)
+      last_was_operand = true
+    elsif UserFunction.init?(word)
+      tokens << UserFunction.new(word)
+    elsif NumericConstant.init?(word)
+      tokens << NumericConstant.new(word)
+      last_was_operand = true
+    elsif VariableName.init?(word)
+      variable_name = VariableName.new(word)
+      tokens << ScalarValue.new(variable_name)
       last_was_operand = true
     else
-      if word == ')'
-        tokens << ')'
-        last_was_operand = true
-      elsif word == ','
-        tokens << ','
-        last_was_operand = true
-      else
-        begin
-          if last_was_operand
-            tokens << BinaryOperator.new(word)
-          else
-            tokens << UnaryOperator.new(word)
-          end
-          last_was_operand = false
-        rescue BASICException
-          begin
-            tokens << make_scalar_function(word)
-            last_was_operand = true
-          rescue BASICException
-            if UserFunction.init?(word)
-              tokens << UserFunction.new(word)
-            elsif NumericConstant.init?(word)
-              tokens << NumericConstant.new(word)
-              last_was_operand = true
-            elsif VariableName.init?(word)
-                variable_name = VariableName.new(word)
-                tokens << ScalarValue.new(variable_name)
-                last_was_operand = true
-            else
-              raise BASICException, "'#{word}' is not a value or operator"
-            end
-          end
-        end
-      end
+      fail BASICException, "'#{word}' is not a value or operator"
     end
   end
   tokens << TerminalOperator.new

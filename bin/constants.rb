@@ -8,8 +8,6 @@ def text_to_numeric(text)
     text.to_f
   elsif /\A\s*[+-]?(\d+)?\.\d*(E\d+)?\z/.match(text)
     text.to_f
-  else
-    nil
   end
 end
 
