@@ -456,16 +456,18 @@ class ScalarFunctionFactory
   }
 
   def self.valid?(text)
-    @@functions.key?(text)
+    @@functions.key?(text) || UserFunction.init?(text)
   end
 
   def self.make(text)
-    @@functions[text].new(text) if valid?(text)
+    func = @@functions[text].new(text) if @@functions.key?(text)
+    func = UserFunction.new(text) if UserFunction.init?(text)
+    func
   end
 end
 
 # User-defined function (provides a scalar value)
-class UserFunction
+class UserFunction <ScalarFunction
   def self.init?(text)
     /\AFN[A-Z]\z/.match(text)
   end
@@ -473,27 +475,7 @@ class UserFunction
   def initialize(text)
     fail(BASICException, "'#{text}' is not a valid function") unless
       UserFunction.init?(text)
-    @name = text
-  end
-
-  def operator?
-    false
-  end
-
-  def function?
-    true
-  end
-
-  def terminal?
-    false
-  end
-
-  def variable?
-    false
-  end
-
-  def precedence
-    5
+    super
   end
 
   # return a single value
@@ -609,8 +591,6 @@ def tokenize(words)
     elsif ScalarFunctionFactory.valid?(word)
       tokens << ScalarFunctionFactory.make(word)
       last_was_operand = true
-    elsif UserFunction.init?(word)
-      tokens << UserFunction.new(word)
     elsif NumericConstant.init?(word)
       tokens << NumericConstant.new(word)
       last_was_operand = true
