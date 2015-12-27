@@ -527,7 +527,7 @@ def split_args(text, keep_separators)
   current_arg = ''
   in_string = false
   parens_level = 0
-  text.split('').each do |c|
+  text.each_char do |c|
     if in_string
       if c == '"'
         current_arg += c
@@ -569,7 +569,7 @@ end
 # converts text line to constant values
 def textline_to_constants(line)
   values = []
-  text_values = line.split(/,/)
+  text_values = line.split(',')
   text_values.each do |value|
     begin
       values << NumericConstant.new(value)
@@ -995,7 +995,7 @@ end
 # Boolean expression
 class BooleanExpression
   def initialize(text)
-    parts = text.split(/\s*([=<>]+)\s*/)
+    parts = text.split(/([=<>]+)/)
     fail(BASICException, "'#{text}' is not a boolean expression") if
       parts.size != 3
     @a = ValueScalarExpression.new(parts[0])

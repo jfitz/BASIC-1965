@@ -290,7 +290,7 @@ end
 class IfStatement < AbstractStatement
   def initialize(line)
     super('IF')
-    parts = line.split(/\s*THEN\s*/)
+    parts = line.split('THEN')
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
     rescue BASICException => message
