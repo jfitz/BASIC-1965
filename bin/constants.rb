@@ -13,8 +13,82 @@ end
 
 public
 
+# token class
+class AbstractToken
+  def initialize
+    @operator = false
+    @function = false
+    @variable = false
+    @terminal = false
+    @group_start = false
+    @group_end = false
+    @param_start = false
+    @separator = false
+  end
+
+  def operator?
+    @operator
+  end
+
+  def function?
+    @function
+  end
+
+  def variable?
+    @variable
+  end
+
+  def terminal?
+    @terminal
+  end
+
+  def group_start?
+    @group_start
+  end
+
+  def group_end?
+    @group_end
+  end
+
+  def param_start?
+    @param_start
+  end
+
+  def separator?
+    @separator
+  end
+end
+
+# beginning of a group
+class GroupStart < AbstractToken
+  def initialize
+    @group_start = true
+  end
+end
+
+# end of a group
+class GroupEnd < AbstractToken
+  def initialize
+    @group_end = true
+  end
+end
+
+# beginning of a set of parameters
+class ParamStart < AbstractToken
+  def initialize
+    @param_start = true
+  end
+end
+
+# separator for group or params
+class ParamSeparator < AbstractToken
+  def initialize
+    @separator = true
+  end
+end
+
 # Numeric constants
-class NumericConstant
+class NumericConstant < AbstractToken
   def self.init?(text)
     numeric_classes = %w(Fixnum Bignum Float)
     numeric_classes.include?(text.class.to_s) || !text_to_numeric(text).nil?
@@ -53,22 +127,6 @@ class NumericConstant
     else
       NumericConstant.new(@value + other)
     end
-  end
-
-  def operator?
-    false
-  end
-
-  def function?
-    false
-  end
-
-  def terminal?
-    false
-  end
-
-  def variable?
-    false
   end
 
   def evaluate(_, _)

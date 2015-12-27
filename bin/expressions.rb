@@ -28,7 +28,7 @@ class VariableName
 end
 
 # Hold a variable (name with possible subscripts and value)
-class Variable
+class Variable < AbstractToken
   attr_reader :subscripts
 
   def initialize(variable_name)
@@ -36,22 +36,7 @@ class Variable
       variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
     @subscripts = []
-  end
-
-  def operator?
-    false
-  end
-
-  def function?
-    false
-  end
-
-  def terminal?
-    false
-  end
-
-  def variable?
-    true
+    @variable = true
   end
 
   def precedence
@@ -159,25 +144,10 @@ class VariableDimension < Variable
 end
 
 # A list (needed because it has precedence value)
-class List
+class List < AbstractToken
   def initialize(parsed_expressions)
     @parsed_expressions = parsed_expressions
-  end
-
-  def operator?
-    false
-  end
-
-  def function?
-    false
-  end
-
-  def terminal?
-    false
-  end
-
-  def variable?
-    true
+    @variable = true
   end
 
   def precedence
@@ -202,25 +172,10 @@ class List
 end
 
 # Scalar function (provides a scalar)
-class ScalarFunction
+class ScalarFunction < AbstractToken
   def initialize(text)
     @name = text
-  end
-
-  def operator?
-    false
-  end
-
-  def function?
-    true
-  end
-
-  def terminal?
-    false
-  end
-
-  def variable?
-    false
+    @function = true
   end
 
   def precedence
@@ -440,6 +395,7 @@ class ScalarFunctionSgn < ScalarFunction
   end
 end
 
+# class to make functions, given the name
 class ScalarFunctionFactory
   @@functions = {
     'INT' => ScalarFunctionInt,
@@ -467,7 +423,7 @@ class ScalarFunctionFactory
 end
 
 # User-defined function (provides a scalar value)
-class UserFunction <ScalarFunction
+class UserFunction < ScalarFunction
   def self.init?(text)
     /\AFN[A-Z]\z/.match(text)
   end
@@ -574,13 +530,13 @@ def tokenize(words)
     next if word.size == 0
 
     if word == '('
-      tokens << '('
+      tokens << GroupStart.new
       last_was_operand = false
     elsif word == ')'
-      tokens << ')'
+      tokens << GroupEnd.new
       last_was_operand = true
     elsif word == ','
-      tokens << ','
+      tokens << ParamSeparator.new
       last_was_operand = false
     elsif last_was_operand && BinaryOperator.init?(word)
       tokens << BinaryOperator.new(word)
@@ -621,12 +577,12 @@ def parse(tokens)
     next if token == ''
 
     # If the token is a left parenthesis, push it on the operator stack
-    if token == '('
+    if token.group_start?
       if last_was_function || last_was_variable
         # start parsing the list of function arguments
         expression_stack.push(parsed_expression)
         parsed_expression = []
-        operator_stack.push('[')
+        operator_stack.push(ParamStart.new)
       else
         operator_stack.push(token)
       end
@@ -637,10 +593,10 @@ def parse(tokens)
     # If the token is a comma,
     # pop the operator stack until the corresponding left parenthesis is found
     # Append each operator to the end of the output list
-    elsif token == ','
+    elsif token.separator?
       while operator_stack.size > 0 &&
-            operator_stack[-1] != '(' &&
-            operator_stack[-1] != '['
+            !operator_stack[-1].group_start? &&
+            !operator_stack[-1].param_start?
         op = operator_stack.pop
         parsed_expression << op
       end
@@ -651,16 +607,16 @@ def parse(tokens)
       # If the token is a right parenthesis,
       # pop the operator stack until the corresponding left paren is removed
       # Append each operator to the end of the output list
-      if token == ')'
+      if token.group_end?
         while operator_stack.size > 0 &&
-              operator_stack[-1] != '(' &&
-              operator_stack[-1] != '['
+              !operator_stack[-1].group_start? &&
+              !operator_stack[-1].param_start?
           op = operator_stack.pop
           parsed_expression << op
         end
         parens_group << parsed_expression
         start_op = operator_stack.pop  # remove the '(' || '['
-        if start_op == '['
+        if start_op.param_start?
           list = List.new(parens_group)
           operator_stack.push(list)
           parsed_expression = expression_stack.pop
@@ -674,8 +630,8 @@ def parse(tokens)
           # or equal precedence
           # append them to the output list
           while operator_stack.size > 0 &&
-                operator_stack[-1] != '(' &&
-                operator_stack[-1] != '[' &&
+                !operator_stack[-1].group_start? &&
+                !operator_stack[-1].param_start? &&
                 operator_stack[-1].precedence >= token.precedence
             op = operator_stack.pop
             parsed_expression << op

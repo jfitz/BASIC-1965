@@ -4,7 +4,7 @@ def float_to_possible_int(f)
 end
 
 # Unary scalar operators
-class UnaryOperator
+class UnaryOperator < AbstractToken
   def self.init?(text)
     operators = { '+' => 5, '-' => 5 }
     operators.key?(text)
@@ -18,22 +18,7 @@ class UnaryOperator
       operators.key?(text)
     @op = text
     @precedence = operators[@op]
-  end
-
-  def operator?
-    true
-  end
-
-  def function?
-    false
-  end
-
-  def variable?
-    false
-  end
-
-  def terminal?
-    false
+    @operator = true
   end
 
   def evaluate(_, stack)
@@ -82,7 +67,7 @@ def make_boolean_operator(text)
 end
 
 # Binary scalar operators
-class BinaryOperator
+class BinaryOperator < AbstractToken
   def self.init?(text)
     operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
     operators.key?(text)
@@ -96,22 +81,7 @@ class BinaryOperator
       operators.key?(text)
     @op = text
     @precedence = operators[@op]
-  end
-
-  def operator?
-    true
-  end
-
-  def function?
-    false
-  end
-
-  def variable?
-    false
-  end
-
-  def terminal?
-    false
+    @operator = true
   end
 
   def evaluate(_, stack)
@@ -230,21 +200,10 @@ end
 
 # Terminal operator
 # not a real operator, used only for parsing
-class TerminalOperator
-  def operator?
-    true
-  end
-
-  def function?
-    false
-  end
-
-  def terminal?
-    true
-  end
-
-  def variable?
-    false
+class TerminalOperator < AbstractToken
+  def initialize
+    @operator = true
+    @terminal = true
   end
 
   def precedence
