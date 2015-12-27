@@ -9,7 +9,7 @@ def text_to_numeric(text)
   elsif /\A\s*[+-]?(\d+)?\.\d*(E\d+)?\z/.match(text)
     text.to_f
   else
-    fail BASICException, "'#{text}' is not a number"
+    nil
   end
 end
 
@@ -17,6 +17,11 @@ public
 
 # Numeric constants
 class NumericConstant
+  def self.init?(text)
+    numeric_classes = %w(Fixnum Bignum Float)
+    numeric_classes.include?(text.class.to_s) || !text_to_numeric(text).nil?
+  end
+
   def initialize(text)
     numeric_classes = %w(Fixnum Bignum Float)
     if numeric_classes.include?(text.class.to_s)
@@ -25,6 +30,7 @@ class NumericConstant
       @value = text_to_numeric(text)
     end
     @precedence = 0
+    fail BASICException, "'#{text}' is not a number" if @value.nil?
   end
 
   def >(other)

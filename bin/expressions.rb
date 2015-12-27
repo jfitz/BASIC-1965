@@ -1,8 +1,12 @@
 # Hold a variable name (not a reference or value)
 class VariableName
+  def self.init?(text)
+    /\A[A-Z]\d?\z/.match(text)
+  end
+
   def initialize(text)
     fail(BASICException, "'#{text}' is not a variable name") unless
-      /\A[A-Z]\d?\z/.match(text)
+      VariableName.init?(text)
     @var_name = text
   end
 
@@ -467,9 +471,13 @@ end
 
 # User-defined function (provides a scalar value)
 class UserFunction
+  def self.init?(text)
+    /\AFN[A-Z]\z/.match(text)
+  end
+
   def initialize(text)
     fail(BASICException, "'#{text}' is not a valid function") unless
-      /\AFN[A-Z]\z/.match(text)
+      UserFunction.init?(text)
     @name = text
   end
 
@@ -611,22 +619,17 @@ def tokenize(words)
             tokens << make_scalar_function(word)
             last_was_operand = true
           rescue BASICException
-            begin
+            if UserFunction.init?(word)
               tokens << UserFunction.new(word)
-            rescue BASICException
-              begin
-                tokens << NumericConstant.new(word)
+            elsif NumericConstant.init?(word)
+              tokens << NumericConstant.new(word)
+              last_was_operand = true
+            elsif VariableName.init?(word)
+                variable_name = VariableName.new(word)
+                tokens << ScalarValue.new(variable_name)
                 last_was_operand = true
-              rescue BASICException
-                begin
-                  variable_name = VariableName.new(word)
-                  tokens << ScalarValue.new(variable_name)
-                  last_was_operand = true
-                rescue BASICException
-                  raise BASICException,
-                        "'#{word}' is not a value or operator"
-                end
-              end
+            else
+              raise BASICException, "'#{word}' is not a value or operator"
             end
           end
         end
