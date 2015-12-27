@@ -201,33 +201,6 @@ class List
   end
 end
 
-def make_scalar_function(text)
-  case text
-  when 'INT'
-    ScalarFunctionInt.new(text)
-  when 'RND'
-    ScalarFunctionRnd.new(text)
-  when 'EXP'
-    ScalarFunctionExp.new(text)
-  when 'LOG'
-    ScalarFunctionLog.new(text)
-  when 'ABS'
-    ScalarFunctionAbs.new(text)
-  when 'SQR'
-    ScalarFunctionSqr.new(text)
-  when 'SIN'
-    ScalarFunctionSin.new(text)
-  when 'COS'
-    ScalarFunctionCos.new(text)
-  when 'TAN'
-    ScalarFunctionTan.new(text)
-  when 'ATN'
-    ScalarFunctionAtn.new(text)
-  when 'SGN'
-    ScalarFunctionSgn.new(text)
-  end
-end
-
 # Scalar function (provides a scalar)
 class ScalarFunction
   def initialize(text)
@@ -467,6 +440,30 @@ class ScalarFunctionSgn < ScalarFunction
   end
 end
 
+class ScalarFunctionFactory
+  @@functions = {
+    'INT' => ScalarFunctionInt,
+    'RND' => ScalarFunctionRnd,
+    'EXP' => ScalarFunctionExp,
+    'LOG' => ScalarFunctionLog,
+    'ABS' => ScalarFunctionAbs,
+    'SQR' => ScalarFunctionSqr,
+    'SIN' => ScalarFunctionSin,
+    'COS' => ScalarFunctionCos,
+    'TAN' => ScalarFunctionTan,
+    'ATN' => ScalarFunctionAtn,
+    'SGN' => ScalarFunctionSgn
+  }
+
+  def self.valid?(text)
+    @@functions.key?(text)
+  end
+
+  def self.make(text)
+    @@functions[text].new(text) if valid?(text)
+  end
+end
+
 # User-defined function (provides a scalar value)
 class UserFunction
   def self.init?(text)
@@ -609,8 +606,8 @@ def tokenize(words)
     elsif !last_was_operand && UnaryOperator.init?(word)
       tokens << UnaryOperator.new(word)
       last_was_operand = false
-    elsif !make_scalar_function(word).nil?
-      tokens << make_scalar_function(word)
+    elsif ScalarFunctionFactory.valid?(word)
+      tokens << ScalarFunctionFactory.make(word)
       last_was_operand = true
     elsif UserFunction.init?(word)
       tokens << UserFunction.new(word)
