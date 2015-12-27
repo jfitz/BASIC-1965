@@ -837,8 +837,8 @@ class ValueMatrixExpression
   end
 end
 
-# target scalar expression (an L-value)
-class TargetScalarExpression
+# Abstract target expression
+class AbstractTargetExpression
   def initialize(text)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
     @unparsed_expression = text
@@ -846,16 +846,9 @@ class TargetScalarExpression
     words = split(text)
     tokens = tokenize(words)
     @parsed_expressions = parse(tokens)
-    fail(BASICException, 'Value list is empty (length 0)') if
-      @parsed_expressions.length == 0
-    @parsed_expressions.each do |parsed_expression|
-      fail(BASICException, 'Value is not assignable (length 0)') if
-        parsed_expression.length == 0
-      fail(BASICException,
-           "Value is not assignable (type #{parsed_expression[-1].class})") if
-        parsed_expression[-1].class.to_s != 'ScalarValue'
-      parsed_expression[-1] = ScalarReference.new(parsed_expression[-1])
-    end
+    check_length
+    check_all_lengths
+    check_resolve_types
   end
 
   def to_s
@@ -864,6 +857,38 @@ class TargetScalarExpression
 
   def count
     @parsed_expressions.length
+  end
+
+  private
+
+  def check_length
+    fail(BASICException, 'Value list is empty (length 0)') if
+      @parsed_expressions.length == 0
+  end
+
+  def check_all_lengths
+    @parsed_expressions.each do |parsed_expression|
+      fail(BASICException, 'Value is not assignable (length 0)') if
+        parsed_expression.length == 0
+    end
+  end
+
+  def check_resolve_types
+    @parsed_expressions.each do |parsed_expression|
+      fail(BASICException,
+           "Value is not assignable (type #{parsed_expression[-1].class})") if
+        parsed_expression[-1].class.to_s != 'ScalarValue'
+    end
+  end
+end
+
+# target scalar expression (an L-value)
+class TargetScalarExpression < AbstractTargetExpression
+  def initialize(text)
+    super
+    @parsed_expressions.each do |parsed_expression|
+      parsed_expression[-1] = ScalarReference.new(parsed_expression[-1])
+    end
   end
 
   # returns an Array of targets
@@ -875,32 +900,12 @@ class TargetScalarExpression
 end
 
 # A dimension expression (evaluates to dimensions)
-class DimensionExpression
+class DimensionExpression < AbstractTargetExpression
   def initialize(text)
-    fail(Exception, 'Expression cannot be empty') if text.length == 0
-    @unparsed_expression = text
-
-    words = split(text)
-    tokens = tokenize(words)
-    @parsed_expressions = parse(tokens)
-    fail(BASICException, 'Value list is empty (length 0)') if
-      @parsed_expressions.length == 0
+    super
     @parsed_expressions.each do |parsed_expression|
-      fail(BASICException, 'Value is not assignable (length 0)') if
-        parsed_expression.length == 0
-      fail(BASICException,
-           "Value is not assignable (type #{parsed_expression[-1].class})") if
-        parsed_expression[-1].class.to_s != 'ScalarValue'
       parsed_expression[-1] = VariableDimension.new(parsed_expression[-1])
     end
-  end
-
-  def to_s
-    @unparsed_expression
-  end
-
-  def count
-    @parsed_expressions.length
   end
 
   def evaluate(interpreter)
