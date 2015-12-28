@@ -37,6 +37,7 @@ class Variable < AbstractToken
     @variable_name = variable_name
     @subscripts = []
     @variable = true
+    @operand = true
   end
 
   def precedence
@@ -176,6 +177,7 @@ class ScalarFunction < AbstractToken
   def initialize(text)
     @name = text
     @function = true
+    @operand = true
   end
 
   def precedence
@@ -524,36 +526,27 @@ end
 # returns an Array of tokens
 def tokenize(words)
   tokens = []
-  last_was_operand = false
   # convert tokens to objects
   words.each do |word|
     next if word.size == 0
 
     if word == '('
       tokens << GroupStart.new
-      last_was_operand = false
     elsif word == ')'
       tokens << GroupEnd.new
-      last_was_operand = true
     elsif word == ','
       tokens << ParamSeparator.new
-      last_was_operand = false
-    elsif last_was_operand && BinaryOperator.init?(word)
+    elsif tokens.size > 0 && tokens[-1].operand? && BinaryOperator.init?(word)
       tokens << BinaryOperator.new(word)
-      last_was_operand = false
-    elsif !last_was_operand && UnaryOperator.init?(word)
+    elsif !(tokens.size > 0 && tokens[-1].operand?) && UnaryOperator.init?(word)
       tokens << UnaryOperator.new(word)
-      last_was_operand = false
     elsif ScalarFunctionFactory.valid?(word)
       tokens << ScalarFunctionFactory.make(word)
-      last_was_operand = true
     elsif NumericConstant.init?(word)
       tokens << NumericConstant.new(word)
-      last_was_operand = true
     elsif VariableName.init?(word)
       variable_name = VariableName.new(word)
       tokens << ScalarValue.new(variable_name)
-      last_was_operand = true
     else
       fail BASICException, "'#{word}' is not a value or operator"
     end

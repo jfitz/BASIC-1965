@@ -19,6 +19,7 @@ class AbstractToken
     @operator = false
     @function = false
     @variable = false
+    @operand = false
     @terminal = false
     @group_start = false
     @group_end = false
@@ -36,6 +37,10 @@ class AbstractToken
 
   def variable?
     @variable
+  end
+
+  def operand?
+    @operand
   end
 
   def terminal?
@@ -70,6 +75,7 @@ end
 class GroupEnd < AbstractToken
   def initialize
     @group_end = true
+    @operand = true
   end
 end
 
@@ -101,6 +107,7 @@ class NumericConstant < AbstractToken
     else
       @value = text_to_numeric(text)
     end
+    @operand = true
     @precedence = 0
     fail BASICException, "'#{text}' is not a number" if @value.nil?
   end
