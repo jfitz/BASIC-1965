@@ -715,6 +715,10 @@ class ValueMatrixExpression
     @variable = Variable.new(variable_name)
   end
 
+  def empty?
+    false
+  end
+
   def to_s
     @variable.to_s
   end
@@ -888,30 +892,36 @@ class PrintableExpression
   def initialize(text)
     @arithmetic_expression = nil
     @text_constant = nil
-    begin
-      @text_constant = TextConstant.new(text)
-    rescue BASICException
-      @arithmetic_expression = ValueScalarExpression.new(text)
+    unless text.nil?
+      begin
+        @text_constant = TextConstant.new(text)
+      rescue BASICException
+        @arithmetic_expression = ValueScalarExpression.new(text)
+      end
     end
+  end
+
+  def empty?
+    @text_constant.nil? && @arithmetic_expression.nil?
   end
 
   def to_s
-    if @arithmetic_expression.nil?
-      @text_constant.to_s
-    else
-      @arithmetic_expression.to_s
-    end
+    r = ''
+    r = @text_constant.to_s unless @text_constant.nil?
+    r = @arithmetic_expression.to_s unless @arithmetic_expression.nil?
+    r
   end
 
   def print(printer, interpreter, carriage)
-    if @arithmetic_expression.nil?
-      printer.print_item @text_constant.to_formatted_s(interpreter)
-    else
+    printer.print_item @text_constant.to_formatted_s(interpreter) unless
+      @text_constant.nil?
+    unless @arithmetic_expression.nil?
       numeric_constants = @arithmetic_expression.evaluate(interpreter)
       numeric_constant = numeric_constants[0]
       printer.print_item numeric_constant.to_formatted_s(interpreter)
       printer.last_was_numeric
     end
+    # for a nil expression, print nothing but do print the carriage operation
     carriage.print(printer, interpreter)
   end
 end

@@ -319,9 +319,13 @@ class AbstractPrintStatement < AbstractStatement
   def to_s
     varnames = []
     @print_item_pairs.each do |print_pair|
-      varnames << print_pair[0].to_s + print_pair[1].to_s
+      print_expression = print_pair[0]
+      value = print_expression.to_s
+      carriage = print_pair[1].to_s
+      item = ' ' + value + carriage
+      varnames << item unless print_expression.empty?
     end
-    @keyword + ' ' + varnames.join(' ')
+    @keyword + varnames.join('')
   end
 
   def execute_cmd(interpreter)
@@ -360,7 +364,7 @@ class PrintStatement < AbstractPrintStatement
         end
       end
     end
-    print_item_list << PrintableExpression.new('""') if
+    print_item_list << PrintableExpression.new(nil) if
       print_item_list.size == 0
     print_item_list << CarriageControl.new('NL') if
       print_item_list[-1].class.to_s != 'CarriageControl'
