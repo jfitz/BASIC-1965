@@ -59,6 +59,10 @@ class AbstractToken
     @param_start
   end
 
+  def starter?
+    @group_start || @param_start
+  end
+
   def separator?
     @separator
   end

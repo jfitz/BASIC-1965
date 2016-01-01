@@ -588,8 +588,7 @@ def parse(tokens)
     # Append each operator to the end of the output list
     elsif token.separator?
       while operator_stack.size > 0 &&
-            !operator_stack[-1].group_start? &&
-            !operator_stack[-1].param_start?
+            !operator_stack[-1].starter?
         op = operator_stack.pop
         parsed_expression << op
       end
@@ -602,13 +601,12 @@ def parse(tokens)
       # Append each operator to the end of the output list
       if token.group_end?
         while operator_stack.size > 0 &&
-              !operator_stack[-1].group_start? &&
-              !operator_stack[-1].param_start?
+              !operator_stack[-1].starter?
           op = operator_stack.pop
           parsed_expression << op
         end
         parens_group << parsed_expression
-        start_op = operator_stack.pop  # remove the '(' || '['
+        start_op = operator_stack.pop  # remove the '(' or '[' starter
         if start_op.param_start?
           list = List.new(parens_group)
           operator_stack.push(list)
@@ -623,8 +621,7 @@ def parse(tokens)
           # or equal precedence
           # append them to the output list
           while operator_stack.size > 0 &&
-                !operator_stack[-1].group_start? &&
-                !operator_stack[-1].param_start? &&
+                !operator_stack[-1].starter? &&
                 operator_stack[-1].precedence >= token.precedence
             op = operator_stack.pop
             parsed_expression << op
