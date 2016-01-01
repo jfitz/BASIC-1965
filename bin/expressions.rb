@@ -554,6 +554,23 @@ def tokenize(words)
   tokens << TerminalOperator.new
 end
 
+def stack_to_expression(stack, expression)
+  while stack.size > 0 &&
+        !stack[-1].starter?
+    op = stack.pop
+    expression << op
+  end
+end
+
+def stack_to_expression_precedence(stack, expression, token)
+  while stack.size > 0 &&
+        !stack[-1].starter? &&
+        stack[-1].precedence >= token.precedence
+    op = stack.pop
+    expression << op
+  end
+end
+
 # returns an Array of parsed expressions
 def parse(tokens)
   parsed_expressions = []
@@ -587,11 +604,7 @@ def parse(tokens)
     # pop the operator stack until the corresponding left parenthesis is found
     # Append each operator to the end of the output list
     elsif token.separator?
-      while operator_stack.size > 0 &&
-            !operator_stack[-1].starter?
-        op = operator_stack.pop
-        parsed_expression << op
-      end
+      stack_to_expression(operator_stack, parsed_expression)
       parens_group << parsed_expression
       parsed_expression = []
     else
@@ -600,11 +613,7 @@ def parse(tokens)
       # pop the operator stack until the corresponding left paren is removed
       # Append each operator to the end of the output list
       if token.group_end?
-        while operator_stack.size > 0 &&
-              !operator_stack[-1].starter?
-          op = operator_stack.pop
-          parsed_expression << op
-        end
+        stack_to_expression(operator_stack, parsed_expression)
         parens_group << parsed_expression
         start_op = operator_stack.pop  # remove the '(' or '[' starter
         if start_op.param_start?
@@ -620,12 +629,7 @@ def parse(tokens)
           # remove operators already on the stack that have higher
           # or equal precedence
           # append them to the output list
-          while operator_stack.size > 0 &&
-                !operator_stack[-1].starter? &&
-                operator_stack[-1].precedence >= token.precedence
-            op = operator_stack.pop
-            parsed_expression << op
-          end
+          stack_to_expression_precedence(operator_stack, parsed_expression, token)
           # push the operator onto the operator stack
           operator_stack.push(token) unless token.terminal?
         else
