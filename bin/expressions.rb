@@ -186,23 +186,30 @@ class ScalarFunction < AbstractToken
 
   private
 
-  def check_1_num_arg(args)
+  def check_args(args)
     fail(BASICException, 'No arguments for function') if
       args.class.to_s != 'Array'
+  end
+
+  def check_value(value)
+    fail(BASICException,
+         "Argument #{x} #{x.class} not numeric") if
+      value.class.to_s != 'NumericConstant'
+  end
+
+  def check_1_num_arg(args)
+    check_args(args)
     num_args = args.length
     fail(BASICException,
          "Function #{@name} expects 1 argument, found #{num_args}") if
       num_args != 1
     x = args[0]
-    fail(BASICException,
-         "Argument #{x} #{x.class} not numeric") if
-      x.class.to_s != 'NumericConstant'
+    check_value(x)
     x
   end
 
   def check_0_1_num_args(args)
-    fail(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
+    check_args(args)
     num_args = args.length
     if num_args == 0
       x = NumericConstant.new(100)
@@ -213,9 +220,7 @@ class ScalarFunction < AbstractToken
            "Function #{@name} expects 0 or 1 argument, found #{num_args}")
     end
 
-    fail(BASICException,
-         "Argument #{x} #{x.class} not numeric") if
-      x.class.to_s != 'NumericConstant'
+    check_value(x)
     x
   end
 end
@@ -472,20 +477,16 @@ def split_args(text, keep_separators)
   parens_level = 0
   text.each_char do |c|
     if in_string
+      current_arg += c
       if c == '"'
-        current_arg += c
         args << current_arg
         current_arg = ''
-      else
-        current_arg += c
       end
     else
       if [',', ';'].include?(c) && parens_level == 0
         args << current_arg if current_arg.length > 0
         current_arg = ''
         args << c if keep_separators
-      elsif c == ' '
-        c = c
       elsif c == '('
         current_arg += c
         parens_level += 1
@@ -666,7 +667,7 @@ def eval_scalar(interpreter, parsed_expressions, _)
     #      "Expected item #{expected_result_class}, "
     #      "found item type #{item.class} remaining on evaluation stack") if
     #  item.class.to_s != expected_result_class
-    result_values << item unless item.class.to_s == 'NilClass'
+    result_values << item unless item.nil?
   end
   # actual = result_values.length
   # fail(Exception,
