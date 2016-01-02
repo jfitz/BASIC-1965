@@ -278,7 +278,12 @@ class Interpreter
           LineNumberRange.new(linespec, @program_lines.keys.sort)
         line_numbers = line_number_range.line_numbers
         line_numbers.each do |line_number|
-          puts "#{line_number} #{@program_lines[line_number]}"
+          line = @program_lines[line_number]
+          puts "#{line_number} #{line.list}"
+          errors = line.errors
+          unless errors.nil?
+            errors.each { |error| puts ' ' + error }
+          end
         end
       rescue BASICException => e
         puts e
@@ -412,7 +417,7 @@ class Interpreter
           @program_lines = {}
           file.each_line do |line|
             line = ascii_printables(line)
-            store_program_line(line)
+            store_program_line(line, false)
           end
         end
         true
@@ -635,7 +640,7 @@ class Interpreter
       cmd = ascii_printables(gets)
       if /\A\d/.match(cmd)
         # starts with a number, so maybe it is a program line
-        need_prompt = store_program_line(cmd)
+        need_prompt = store_program_line(cmd, true)
       else
         # immediate command -- execute
         done = execute_command(cmd)
@@ -644,11 +649,11 @@ class Interpreter
     end
   end
 
-  def store_program_line(cmd)
+  def store_program_line(cmd, print_errors)
     line_num, line_text = parse_line(cmd)
     if !line_num.nil? && !line_text.nil?
       @program_lines[line_num] = line_text
-      line_text.errors.each { |error| puts error }
+      line_text.errors.each { |error| puts error } if print_errors
       line_text.errors.size > 0
     else
       true

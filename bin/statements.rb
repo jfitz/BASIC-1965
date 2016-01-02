@@ -71,13 +71,26 @@ end
 class AbstractStatement
   attr_reader :errors
 
-  def initialize(keyword)
+  def initialize(keyword, text)
     @keyword = keyword
+    @text = text
     @errors = []
   end
 
   def pre_execute(_)
     0
+  end
+
+  def list
+    if @errors.size == 0
+      to_s
+    else
+      @keyword + ' ' + @text
+    end
+  end
+
+  def errors
+    @errors
   end
 
   def execute(interpreter)
@@ -94,7 +107,7 @@ end
 # unknown statement
 class UnknownStatement < AbstractStatement
   def initialize(line)
-    super('')
+    super('', line)
     @line = line
     @errors << "Unknown command #{@line}"
   end
@@ -111,7 +124,7 @@ end
 # empty statement (line number only)
 class EmptyStatement < AbstractStatement
   def initialize
-    super('')
+    super('', '')
   end
 
   def to_s
@@ -126,7 +139,7 @@ end
 # REMARK
 class RemarkStatement < AbstractStatement
   def initialize(line)
-    super('REM')
+    super('REM', line)
     @contents = line
   end
 
@@ -142,7 +155,7 @@ end
 # DIM
 class DimStatement < AbstractStatement
   def initialize(line)
-    super('DIM')
+    super('DIM', line)
     text_list = split_args(line, false)
     # variable [comma, variable]...
     @expression_list = []
@@ -179,7 +192,7 @@ end
 # LET
 class LetStatement < AbstractStatement
   def initialize(line)
-    super('LET')
+    super('LET', line)
     begin
       @assignment = Assignment.new(line)
       if @assignment.count_target != 1
@@ -210,7 +223,7 @@ end
 # INPUT
 class InputStatement < AbstractStatement
   def initialize(line)
-    super('INPUT')
+    super('INPUT', line)
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
     text_list = split_args(line, false)
@@ -289,7 +302,7 @@ end
 # IF/THEN
 class IfStatement < AbstractStatement
   def initialize(line)
-    super('IF')
+    super('IF', line)
     parts = line.split('THEN')
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
@@ -312,8 +325,8 @@ end
 
 # Common for PRINT and MAT PRINT
 class AbstractPrintStatement < AbstractStatement
-  def initialize(line)
-    super
+  def initialize(keyword, line)
+    super(keyword, line)
   end
 
   def to_s
@@ -341,7 +354,7 @@ end
 # PRINT
 class PrintStatement < AbstractPrintStatement
   def initialize(line)
-    super('PRINT')
+    super('PRINT', line)
     item_list = split_args(line, true)
     # variable/constant, [separator, variable/constant]... [separator]
     print_item_list = []
@@ -375,7 +388,7 @@ end
 # GOTO
 class GotoStatement < AbstractStatement
   def initialize(line)
-    super('GOTO')
+    super('GOTO', line)
     destination = line
     begin
       @destination = LineNumber.new(destination)
@@ -396,7 +409,7 @@ end
 # GOSUB
 class GosubStatement < AbstractStatement
   def initialize(line)
-    super('GOSUB')
+    super('GOSUB', line)
     destination = line
     begin
       @destination = LineNumber.new(destination)
@@ -417,8 +430,8 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(_)
-    super('RETURN')
+  def initialize(line)
+    super('RETURN', line)
   end
 
   def to_s
@@ -486,7 +499,7 @@ end
 # FOR
 class ForStatement < AbstractStatement
   def initialize(line)
-    super('FOR')
+    super('FOR', line)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
     parts = line.split('=', 2)
@@ -537,7 +550,7 @@ end
 # NEXT
 class NextStatement < AbstractStatement
   def initialize(line)
-    super('NEXT')
+    super('NEXT', line)
     # parse control variable
     @control_variable = nil
     begin
@@ -572,7 +585,7 @@ end
 # READ
 class ReadStatement < AbstractStatement
   def initialize(line)
-    super('READ')
+    super('READ', line)
     item_list = split_args(line, false)
     # variable [comma, variable]...
     @expression_list = []
@@ -601,7 +614,7 @@ end
 # DATA
 class DataStatement < AbstractStatement
   def initialize(line)
-    super('DATA')
+    super('DATA', line)
     @data_list = textline_to_constants(line)
   end
 
@@ -621,7 +634,7 @@ end
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
   def initialize(line)
-    super('DEF')
+    super('DEF', line)
     begin
       user_function_definition = UserFunctionDefinition.new(line)
     rescue BASICException => message
@@ -648,8 +661,8 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(_)
-    super('STOP')
+  def initialize(line)
+    super('STOP', line)
   end
 
   def to_s
@@ -665,8 +678,8 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(_)
-    super('END')
+  def initialize(line)
+    super('END', line)
   end
 
   def to_s
@@ -683,7 +696,7 @@ end
 # TRACE
 class TraceStatement < AbstractStatement
   def initialize(line)
-    super('TRACE')
+    super('TRACE', line)
     @operation = BooleanConstant.new(line)
   end
 
@@ -699,7 +712,7 @@ end
 # MAT PRINT
 class MatPrintStatement < AbstractPrintStatement
   def initialize(line)
-    super('MAT PRINT')
+    super('MAT PRINT', line)
     item_list = split_args(line, true)
     # variable/constant, [separator, variable/constant]... [separator]
     print_item_list_1 = ctor_print_item_list_1(item_list)
