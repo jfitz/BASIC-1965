@@ -677,8 +677,7 @@ def eval_scalar(interpreter, parsed_expressions, _)
   result_values
 end
 
-# Value scalar expression (an R-value)
-class ValueScalarExpression
+class AbstractExpression
   def initialize(text)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
     @unparsed_expression = text
@@ -694,6 +693,13 @@ class ValueScalarExpression
 
   def count
     @parsed_expressions.length
+  end
+end
+
+# Value scalar expression (an R-value)
+class ValueScalarExpression < AbstractExpression
+  def initialize(text)
+    super
   end
 
   # returns an Array of values
@@ -773,25 +779,13 @@ class ValueMatrixExpression
 end
 
 # Abstract target expression
-class AbstractTargetExpression
+class AbstractTargetExpression < AbstractExpression
   def initialize(text)
-    fail(Exception, 'Expression cannot be empty') if text.length == 0
-    @unparsed_expression = text
+    super
 
-    words = split(text)
-    tokens = tokenize(words)
-    @parsed_expressions = parse(tokens)
     check_length
     check_all_lengths
     check_resolve_types
-  end
-
-  def to_s
-    @unparsed_expression
-  end
-
-  def count
-    @parsed_expressions.length
   end
 
   private
