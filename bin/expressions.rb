@@ -503,11 +503,35 @@ def split_args(text, keep_separators)
   args
 end
 
+def is_a_number(parts)
+  return false if parts.size != 3
+
+  b1 = /\A\d+(\.\d*)?E\z/.match(parts[0])
+  b2 = /\A[+-]\z/.match(parts[1])
+  b3 = /\A\d+\z/.match(parts[2])
+
+  b1 && b2 && b3
+end
+
 # split the input
 # todo: allow for negative exponents
 def split_input(text)
   # split the input infix string
-  text.split(%r{([\+\-\*\/\(\)\^,])})
+  parts = text.split(%r{([\+\-\*\/\(\)\^,])})
+  # we have split a value like '12E+3' into three parts (12E + 3)
+  # put them back into a single item
+  regrouped_parts = []
+  while parts.size > 0
+    first_three = parts[0..2]
+    if is_a_number(first_three)
+      regrouped_parts << first_three.join('')
+      parts = parts[3..-1]
+    else
+      regrouped_parts << parts[0]
+      parts = parts[1..-1]
+    end
+  end
+  regrouped_parts
 end
 
 # converts text line to constant values
