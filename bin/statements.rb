@@ -201,8 +201,8 @@ class LetStatement < AbstractStatement
       if @assignment.count_value != 1
         @errors << 'Assignment must have only one right-hand value'
       end
-    rescue BASICException => message
-      @errors << message
+    rescue BASICException => e
+      @errors << e.message
       @assignment = line
     end
   end
@@ -306,8 +306,8 @@ class IfStatement < AbstractStatement
     parts = line.split('THEN')
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
-    rescue BASICException => message
-      @errors << message
+    rescue BASICException => e
+      @errors << e.message
       @boolean_expression = parts[0]
     end
     @destination = LineNumber.new(parts[1])
@@ -507,8 +507,8 @@ class ForStatement < AbstractStatement
     begin
       var_name = VariableName.new(parts[0])
       @control_variable = ScalarValue.new(var_name)
-    rescue BASICException => message
-      @errors << message
+    rescue BASICException => e
+      @errors << e.message
     end
     parts = parts[1].split('TO', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
@@ -556,8 +556,8 @@ class NextStatement < AbstractStatement
     begin
       var_name = VariableName.new(line)
       @control_variable = ScalarValue.new(var_name)
-    rescue BASICException => message
-      @errors << message
+    rescue BASICException => e
+      @errors << e.message
       @boolean_expression = line
     end
   end
@@ -637,9 +637,9 @@ class DefineFunctionStatement < AbstractStatement
     super('DEF', line)
     begin
       user_function_definition = UserFunctionDefinition.new(line)
-    rescue BASICException => message
-      puts message
-      @errors << message
+    rescue BASICException => e
+      puts e.message
+      @errors << e.message
       @assignment = line
     end
     @name = user_function_definition.name
