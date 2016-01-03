@@ -504,8 +504,8 @@ def split_args(text, keep_separators)
 end
 
 # split the input
-# needs changes to allow for negative exponents
-def split(text)
+# todo: allow for negative exponents
+def split_input(text)
   # split the input infix string
   text.split(%r{([\+\-\*\/\(\)\^,])})
 end
@@ -522,37 +522,6 @@ def textline_to_constants(line)
     end
   end
   values
-end
-
-# returns an Array of tokens
-def tokenize(words)
-  tokens = []
-  # convert tokens to objects
-  words.each do |word|
-    next if word.size == 0
-
-    if word == '('
-      tokens << GroupStart.new
-    elsif word == ')'
-      tokens << GroupEnd.new
-    elsif word == ','
-      tokens << ParamSeparator.new
-    elsif tokens.size > 0 && tokens[-1].operand? && BinaryOperator.init?(word)
-      tokens << BinaryOperator.new(word)
-    elsif !(tokens.size > 0 && tokens[-1].operand?) && UnaryOperator.init?(word)
-      tokens << UnaryOperator.new(word)
-    elsif ScalarFunctionFactory.valid?(word)
-      tokens << ScalarFunctionFactory.make(word)
-    elsif NumericConstant.init?(word)
-      tokens << NumericConstant.new(word)
-    elsif VariableName.init?(word)
-      variable_name = VariableName.new(word)
-      tokens << ScalarValue.new(variable_name)
-    else
-      fail BASICException, "'#{word}' is not a value or operator"
-    end
-  end
-  tokens << TerminalOperator.new
 end
 
 def stack_to_expression(stack, expression)
@@ -682,7 +651,7 @@ class AbstractExpression
     fail(Exception, 'Expression cannot be empty') if text.length == 0
     @unparsed_expression = text
 
-    words = split(text)
+    words = split_input(text)
     tokens = tokenize(words)
     @parsed_expressions = parse(tokens)
   end
@@ -693,6 +662,38 @@ class AbstractExpression
 
   def count
     @parsed_expressions.length
+  end
+
+  private
+
+  def tokenize(words)
+    tokens = []
+    # convert tokens to objects
+    words.each do |word|
+      next if word.size == 0
+
+      if word == '('
+        tokens << GroupStart.new
+      elsif word == ')'
+        tokens << GroupEnd.new
+      elsif word == ','
+        tokens << ParamSeparator.new
+      elsif tokens.size > 0 && tokens[-1].operand? && BinaryOperator.init?(word)
+        tokens << BinaryOperator.new(word)
+      elsif !(tokens.size > 0 && tokens[-1].operand?) && UnaryOperator.init?(word)
+        tokens << UnaryOperator.new(word)
+      elsif ScalarFunctionFactory.valid?(word)
+        tokens << ScalarFunctionFactory.make(word)
+      elsif NumericConstant.init?(word)
+        tokens << NumericConstant.new(word)
+      elsif VariableName.init?(word)
+        variable_name = VariableName.new(word)
+        tokens << ScalarValue.new(variable_name)
+      else
+        fail BASICException, "'#{word}' is not a value or operator"
+      end
+    end
+    tokens << TerminalOperator.new
   end
 end
 
