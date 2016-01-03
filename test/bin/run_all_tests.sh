@@ -176,6 +176,10 @@ bash test/bin/run_one_test.sh function_sgn
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh function_sgn
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh function_exp
+((ECODE+=$?))
+bash test/bin/list_one_test.sh function_exp
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh mat_print_1
 ((ECODE+=$?))
