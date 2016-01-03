@@ -1,0 +1,13 @@
+10 REM Test different values
+20 LET A = 10
+30 LET B = -5
+40 LET C = 20.25
+50 LET D = -15.333
+60 LET E1 = 1.2E2
+120 PRINT "A="; A
+130 PRINT "B="; B
+140 PRINT "C="; C
+150 PRINT "D="; D
+160 PRINT "E1="; E1
+999 END
+

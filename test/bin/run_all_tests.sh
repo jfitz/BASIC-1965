@@ -16,6 +16,11 @@ bash test/bin/run_one_test.sh remark_2
 bash test/bin/list_one_test.sh remark_2
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh values
+((ECODE+=$?))
+bash test/bin/list_one_test.sh values
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh dataread
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh dataread
