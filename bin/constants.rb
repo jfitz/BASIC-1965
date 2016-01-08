@@ -180,7 +180,7 @@ class NumericConstant < AbstractToken
 end
 
 # Text constants
-class TextConstant
+class TextConstant < AbstractToken
   attr_reader :value
 
   def initialize(text)
@@ -191,22 +191,6 @@ class TextConstant
       fail BASICException, "'#{text}' is not a text constant"
     end
     @precedence = 0
-  end
-
-  def operator?
-    false
-  end
-
-  def function?
-    false
-  end
-
-  def terminal?
-    false
-  end
-
-  def variable?
-    false
   end
 
   def to_s
