@@ -190,6 +190,7 @@ class TextConstant < AbstractToken
     else
       fail BASICException, "'#{text}' is not a text constant"
     end
+    @operand = true
     @precedence = 0
   end
 
@@ -203,28 +204,13 @@ class TextConstant < AbstractToken
 end
 
 # Boolean constants
-class BooleanConstant
+class BooleanConstant < AbstractToken
   attr_reader :value
 
   def initialize(text)
     @value = text.upcase == 'ON'
+    @operand = true
     @precedence = 0
-  end
-
-  def operator?
-    false
-  end
-
-  def function?
-    false
-  end
-
-  def terminal?
-    false
-  end
-
-  def variable?
-    false
   end
 
   def to_s
