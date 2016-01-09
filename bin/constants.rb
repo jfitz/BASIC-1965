@@ -181,11 +181,14 @@ end
 
 # Text constants
 class TextConstant < AbstractToken
+  def self.init?(text)
+    /\A".*"\z/.match(text)
+  end
+
   attr_reader :value
 
   def initialize(text)
-    regex = Regexp.new('\A".*"\z')
-    if regex.match(text)
+    if TextConstant.init?(text)
       @value = text[1..-2]
     else
       fail BASICException, "'#{text}' is not a text constant"

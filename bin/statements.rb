@@ -89,10 +89,6 @@ class AbstractStatement
     end
   end
 
-  def errors
-    @errors
-  end
-
   def execute(interpreter)
     if @errors.size == 0
       execute_cmd(interpreter)
@@ -228,12 +224,9 @@ class InputStatement < AbstractStatement
     @prompt = @default_prompt
     text_list = split_args(line, false)
     if text_list.length > 0
-      begin
+      if TextConstant.init?(text_list[0])
         @prompt = TextConstant.new(text_list[0])
         text_list.delete_at(0)
-      rescue BASICException
-        # if the first item wasn't a text constant,
-        # don't create a prompt and use it as data
       end
       ## todo: check list length again (after removing prompt item)
       # variable [comma, variable]...

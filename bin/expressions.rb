@@ -503,36 +503,29 @@ def split_args(text, keep_separators)
   args
 end
 
-def is_a_number(parts)
-  return false if parts.size != 3
-
-  b1 = /\A\d+(\.\d*)?E\z/.match(parts[0])
-  b2 = /\A[+-]\z/.match(parts[1])
-  b3 = /\A\d+\z/.match(parts[2])
-
-  b1 && b2 && b3
-end
-
 # split the input
-# todo: allow for negative exponents
 def split_input(text)
   # split the input infix string
   parts = text.split(%r{([\+\-\*\/\(\)\^,])})
+  # remove empty elements
+  short_parts = parts.reject { |elem| elem.empty? }
   # we have split a value like '12E+3' into three parts (12E + 3)
   # put them back into a single item
   regrouped_parts = []
-  while parts.size > 0
-    first_three = parts[0..2]
-    if is_a_number(first_three)
-      regrouped_parts << first_three.join('')
-      parts = parts[3..-1]
+  while short_parts.size > 0
+    first_three = short_parts[0..2].join('')
+    if short_parts.size >= 3 && NumericConstant.init?(first_three)
+      regrouped_parts << first_three
+      short_parts = short_parts[3..-1]
     else
-      regrouped_parts << parts[0]
-      parts = parts[1..-1]
+      regrouped_parts << short_parts[0]
+      short_parts = short_parts[1..-1]
     end
   end
   regrouped_parts
 end
+
+public
 
 # converts text line to constant values
 def textline_to_constants(line)
@@ -547,6 +540,8 @@ def textline_to_constants(line)
   end
   values
 end
+
+private
 
 def stack_to_expression(stack, expression)
   while stack.size > 0 &&
@@ -638,6 +633,8 @@ def parse(tokens)
   parsed_expressions << parsed_expression
   parsed_expressions
 end
+
+public
 
 # returns an Array of values
 def eval_scalar(interpreter, parsed_expressions, _)
@@ -913,9 +910,9 @@ class PrintableExpression
     @arithmetic_expression = nil
     @text_constant = nil
     unless text.nil?
-      begin
+      if TextConstant.init?(text)
         @text_constant = TextConstant.new(text)
-      rescue BASICException
+      else
         @arithmetic_expression = ValueScalarExpression.new(text)
       end
     end
