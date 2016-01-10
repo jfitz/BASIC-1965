@@ -125,6 +125,34 @@ class ScalarReference < Variable
   end
 end
 
+# Matrix reference
+class MatrixReference < Variable
+  def initialize(variable_value)
+    super(variable_value.name)
+  end
+
+  def dimensions?
+    @subscripts.size > 0
+  end
+
+  def dimensions
+    @subscripts
+  end
+
+  # return a single value, a reference to this object
+  def evaluate(interpreter, stack)
+    if stack.size > 0 && stack[-1].class.to_s == 'Array'
+      @subscripts = stack.pop
+      num_args = @subscripts.length
+      fail(Exception,
+           'Variable expects subscripts, found empty parentheses') if
+        num_args == 0
+      interpreter.check_subscripts(@variable_name, @subscripts)
+    end
+    self
+  end
+end
+
 # Dimensions to a variable
 class VariableDimension < Variable
   def initialize(variable_value)
@@ -845,6 +873,23 @@ class TargetScalarExpression < AbstractTargetExpression
   # returns an Array of targets
   def evaluate(interpreter)
     values = eval_scalar(interpreter, @parsed_expressions, 'ScalarReference')
+    fail(Exception, 'Expected some values') if values.length == 0
+    values
+  end
+end
+
+# target matrix expression (an L-value)
+class TargetMatrixExpression < AbstractTargetExpression
+  def initialize(text)
+    super
+    @parsed_expressions.each do |parsed_expression|
+      parsed_expression[-1] = MatrixReference.new(parsed_expression[-1])
+    end
+  end
+
+  # returns an Array of targets
+  def evaluate(interpreter)
+    values = eval_scalar(interpreter, @parsed_expressions, 'MatrixReference')
     fail(Exception, 'Expected some values') if values.length == 0
     values
   end

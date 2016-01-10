@@ -62,7 +62,8 @@ class StatementFactory
       'GOSUB' => GosubStatement,
       'PRINT' => PrintStatement,
       'TRACE' => TraceStatement,
-      'MATPRINT' => MatPrintStatement
+      'MATPRINT' => MatPrintStatement,
+      'MATREAD' => MatReadStatement
     }
   end
 end
@@ -752,6 +753,57 @@ class MatPrintStatement < AbstractPrintStatement
       print_item_list.size == 0 ||
       print_item_list[-1].class.to_s != 'CarriageControl'
     print_item_list
+  end
+end
+
+class MatReadStatement < AbstractStatement
+  def initialize(line)
+    super('MAT READ', line)
+    item_list = split_args(line, false)
+    # variable [comma, variable]...
+    @expression_list = []
+    item_list.each do |item|
+      begin
+        expression = TargetMatrixExpression.new(item)
+        @expression_list << expression
+      rescue BASICException
+        @errors << "Invalid variable #{text_item}"
+      end
+    end
+  end
+
+  def to_s
+    @keyword + ' ' + @expression_list.join(', ')
+  end
+
+  def execute_cmd(interpreter)
+    @expression_list.each do |expression|
+      targets = expression.evaluate(interpreter)
+      targets.each do |target|
+        name = target.name
+        if target.dimensions?
+          dims = target.dimensions
+          interpreter.set_dimensions(name, dims)
+        end
+        dims = interpreter.get_dimensions(name)
+        fail(BASICException, 'Dimensions for MAT READ must be 1 or 2') if
+          dims.size < 1 || dims.size > 2
+        if dims.size == 1
+        #   for i = 1 to N; read value; set value
+        end
+        if dims.size == 2
+          n_rows = dims[0].to_i
+          n_cols = dims[1].to_i
+          (1..n_rows).each do |row|
+            (1..n_cols).each do |col|
+              value = interpreter.read_data
+              variable = name.to_s + '(' + row.to_s + ',' + col.to_s + ')'
+              interpreter.set_value(variable, value)
+            end
+          end
+        end
+      end
+    end
   end
 end
 
