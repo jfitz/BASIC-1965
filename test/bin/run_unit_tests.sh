@@ -207,6 +207,10 @@ bash test/bin/run_one_test.sh mati-0
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh mati-0
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh mati-1
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mati-1
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh celcius_to_fahrenheit
 ((ECODE+=$?))

@@ -756,6 +756,7 @@ class MatPrintStatement < AbstractPrintStatement
   end
 end
 
+# MAT READ
 class MatReadStatement < AbstractStatement
   def initialize(line)
     super('MAT READ', line)
@@ -786,22 +787,37 @@ class MatReadStatement < AbstractStatement
           interpreter.set_dimensions(name, dims)
         end
         dims = interpreter.get_dimensions(name)
-        fail(BASICException, 'Dimensions for MAT READ must be 1 or 2') if
-          dims.size < 1 || dims.size > 2
+        fail(BASICException, 'Dimensions for MAT READ must be 1 or 2') unless
+          [1, 2].include?(dims.size)
         if dims.size == 1
-        #   for i = 1 to N; read value; set value
+          n_cols = dims[0].to_i
+          read_vector(interpreter, name, n_cols)
         end
         if dims.size == 2
           n_rows = dims[0].to_i
           n_cols = dims[1].to_i
-          (1..n_rows).each do |row|
-            (1..n_cols).each do |col|
-              value = interpreter.read_data
-              variable = name.to_s + '(' + row.to_s + ',' + col.to_s + ')'
-              interpreter.set_value(variable, value)
-            end
-          end
+          read_matrix(interpreter, name, n_rows, n_cols)
         end
+      end
+    end
+  end
+
+  private
+
+  def read_vector(interpreter, name, n_cols)
+    (1..n_cols).each do |col|
+      value = interpreter.read_data
+      variable = name.to_s + '(' + col.to_s + ')'
+      interpreter.set_value(variable, value)
+    end
+  end
+
+  def read_matrix(interpreter, name, n_rows, n_cols)
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = interpreter.read_data
+        variable = name.to_s + '(' + row.to_s + ',' + col.to_s + ')'
+        interpreter.set_value(variable, value)
       end
     end
   end
