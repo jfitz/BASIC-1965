@@ -189,9 +189,9 @@ class List < AbstractToken
 
   def evaluate(interpreter, _)
     if @parsed_expressions[0].size > 0
-      eval_scalar(interpreter, @parsed_expressions, 'NumericConstant')
+      eval_scalar(interpreter, @parsed_expressions)
     else
-      eval_scalar(interpreter, @parsed_expressions, 'NilClass')
+      eval_scalar(interpreter, @parsed_expressions)
     end
   end
 
@@ -665,7 +665,7 @@ end
 public
 
 # returns an Array of values
-def eval_scalar(interpreter, parsed_expressions, _)
+def eval_scalar(interpreter, parsed_expressions)
   # expected = parsed_expressions[0].length
   result_values = []
   parsed_expressions.each do |parsed_expression|
@@ -755,7 +755,7 @@ class ValueScalarExpression < AbstractExpression
   # returns an Array of values
   def evaluate(interpreter)
     if @parsed_expressions.size > 0
-      values = eval_scalar(interpreter, @parsed_expressions, 'NumericConstant')
+      values = eval_scalar(interpreter, @parsed_expressions)
       fail(Exception, 'ValueScalarExpression: Expected some values') if
         values.length == 0
     else
@@ -872,7 +872,7 @@ class TargetScalarExpression < AbstractTargetExpression
 
   # returns an Array of targets
   def evaluate(interpreter)
-    values = eval_scalar(interpreter, @parsed_expressions, 'ScalarReference')
+    values = eval_scalar(interpreter, @parsed_expressions)
     fail(Exception, 'Expected some values') if values.length == 0
     values
   end
@@ -889,7 +889,7 @@ class TargetMatrixExpression < AbstractTargetExpression
 
   # returns an Array of targets
   def evaluate(interpreter)
-    values = eval_scalar(interpreter, @parsed_expressions, 'MatrixReference')
+    values = eval_scalar(interpreter, @parsed_expressions)
     fail(Exception, 'Expected some values') if values.length == 0
     values
   end
@@ -905,7 +905,7 @@ class DimensionExpression < AbstractTargetExpression
   end
 
   def evaluate(interpreter)
-    values = eval_scalar(interpreter, @parsed_expressions, 'VariableDimension')
+    values = eval_scalar(interpreter, @parsed_expressions)
     fail(Exception, 'Expected some values') if values.length == 0
     values
   end
