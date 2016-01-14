@@ -191,7 +191,7 @@ class LetStatement < AbstractStatement
   def initialize(line)
     super('LET', line)
     begin
-      @assignment = Assignment.new(line)
+      @assignment = ScalarAssignment.new(line)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end

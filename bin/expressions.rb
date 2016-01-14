@@ -1013,7 +1013,7 @@ class BooleanExpression
 end
 
 # An assignment (part of a LET statement)
-class Assignment
+class ScalarAssignment
   def initialize(text)
     # parse into variable, '=', expression
     parts = text.split('=', 2)
