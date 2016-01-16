@@ -588,78 +588,6 @@ def stack_to_expression_precedence(stack, expression, token)
   end
 end
 
-# returns an Array of parsed expressions
-def parse(tokens)
-  parsed_expressions = []
-  operator_stack = []
-  expression_stack = []
-  parsed_expression = []
-  parens_stack = []
-
-  last_was_function = false
-  last_was_variable = false
-  parens_group = []
-  # scan the token list from left to right
-  tokens.each do |token|
-    # If the token is a left parenthesis, push it on the operator stack
-    if token.group_start?
-      if last_was_function || last_was_variable
-        # start parsing the list of function arguments
-        expression_stack.push(parsed_expression)
-        parsed_expression = []
-        operator_stack.push(ParamStart.new)
-      else
-        operator_stack.push(token)
-      end
-      parens_stack << parens_group
-      parens_group = []
-      last_was_function = false
-      last_was_variable = false
-    # If the token is a comma,
-    # pop the operator stack until the corresponding left parenthesis is found
-    # Append each operator to the end of the output list
-    elsif token.separator?
-      stack_to_expression(operator_stack, parsed_expression)
-      parens_group << parsed_expression
-      parsed_expression = []
-    else
-      fail(BASICException, 'Function requires parentheses') if last_was_function
-      # If the token is a right parenthesis,
-      # pop the operator stack until the corresponding left paren is removed
-      # Append each operator to the end of the output list
-      if token.group_end?
-        stack_to_expression(operator_stack, parsed_expression)
-        parens_group << parsed_expression
-        start_op = operator_stack.pop  # remove the '(' or '[' starter
-        if start_op.param_start?
-          list = List.new(parens_group)
-          operator_stack.push(list)
-          parsed_expression = expression_stack.pop
-        end
-        parens_group = parens_stack.pop
-        last_was_function = false
-        last_was_variable = false
-      else
-        if token.operator? || token.function? || token.variable?
-          # remove operators already on the stack that have higher
-          # or equal precedence
-          # append them to the output list
-          stack_to_expression_precedence(operator_stack, parsed_expression, token)
-          # push the operator onto the operator stack
-          operator_stack.push(token) unless token.terminal?
-        else
-          # the token is an operand, append it to the output list
-          parsed_expression << token
-        end
-        last_was_function = token.function?
-        last_was_variable = token.variable?
-      end
-    end
-  end
-  parsed_expressions << parsed_expression
-  parsed_expressions
-end
-
 public
 
 # returns an Array of values
@@ -741,6 +669,72 @@ class AbstractExpression
       end
     end
     tokens << TerminalOperator.new
+  end
+
+  # returns an Array of parsed expressions
+  def parse(tokens)
+    parsed_expressions = []
+    operator_stack = []
+    expression_stack = []
+    parsed_expression = []
+    parens_stack = []
+
+    parens_group = []
+    previous_token = InitialOperator.new
+    # scan the token list from left to right
+    tokens.each do |token|
+      # If the token is a left parenthesis, push it on the operator stack
+      if token.group_start?
+        if previous_token.function? || previous_token.variable?
+          # start parsing the list of function arguments
+          expression_stack.push(parsed_expression)
+          parsed_expression = []
+          operator_stack.push(ParamStart.new)
+        else
+          operator_stack.push(token)
+        end
+        parens_stack << parens_group
+        parens_group = []
+      # If the token is a comma,
+      # pop the operator stack until the corresponding left parenthesis is found
+      # Append each operator to the end of the output list
+      elsif token.separator?
+        stack_to_expression(operator_stack, parsed_expression)
+        parens_group << parsed_expression
+        parsed_expression = []
+      else
+        fail(BASICException, 'Function requires parentheses') if previous_token.function?
+        # If the token is a right parenthesis,
+        # pop the operator stack until the corresponding left paren is removed
+        # Append each operator to the end of the output list
+        if token.group_end?
+          stack_to_expression(operator_stack, parsed_expression)
+          parens_group << parsed_expression
+          start_op = operator_stack.pop  # remove the '(' or '[' starter
+          if start_op.param_start?
+            list = List.new(parens_group)
+            operator_stack.push(list)
+            parsed_expression = expression_stack.pop
+          end
+          parens_group = parens_stack.pop
+        else
+          if token.operator? || token.function? || token.variable?
+            # remove operators already on the stack that have higher
+            # or equal precedence
+            # append them to the output list
+            stack_to_expression_precedence(operator_stack, parsed_expression, token)
+            # push the operator onto the operator stack
+            operator_stack.push(token) unless token.terminal?
+          else
+            # the token is an operand, append it to the output list
+            parsed_expression << token
+          end
+        end
+      end
+      previous_token = token
+    end
+    parsed_expressions << parsed_expression
+    parsed_expressions
   end
 end
 

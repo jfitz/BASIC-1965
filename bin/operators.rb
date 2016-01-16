@@ -198,6 +198,23 @@ class BooleanOperatorLessEq
   end
 end
 
+# Initial operator
+# not a real operator, used only for parsing
+class InitialOperator < AbstractToken
+  def initialize
+    @operator = true
+    @terminal = true
+  end
+
+  def precedence
+    0
+  end
+
+  def to_s
+    'INIT'
+  end
+end
+
 # Terminal operator
 # not a real operator, used only for parsing
 class TerminalOperator < AbstractToken
