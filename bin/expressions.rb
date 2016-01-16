@@ -601,8 +601,6 @@ def parse(tokens)
   parens_group = []
   # scan the token list from left to right
   tokens.each do |token|
-    next if token == ''
-
     # If the token is a left parenthesis, push it on the operator stack
     if token.group_start?
       if last_was_function || last_was_variable
