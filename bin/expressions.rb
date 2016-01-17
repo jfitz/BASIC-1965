@@ -1,5 +1,5 @@
 # Hold a variable name (not a reference or value)
-class VariableName
+class VariableName < AbstractToken
   def self.init?(text)
     /\A[A-Z]\d?\z/.match(text)
   end
@@ -8,6 +8,8 @@ class VariableName
     fail(BASICException, "'#{text}' is not a variable name") unless
       VariableName.init?(text)
     @var_name = text
+    @variable = true
+    @operand = true
   end
 
   def eql?(other)
@@ -20,6 +22,10 @@ class VariableName
 
   def hash
     @var_name.hash
+  end
+
+  def precedence
+    5
   end
 
   def to_s
@@ -659,8 +665,7 @@ class AbstractExpression
       elsif NumericConstant.init?(word)
         tokens << NumericConstant.new(word)
       elsif VariableName.init?(word)
-        variable_name = VariableName.new(word)
-        tokens << ScalarValue.new(variable_name)
+        tokens << VariableName.new(word)
       else
         fail BASICException, "'#{word}' is not a value or operator"
       end
@@ -732,14 +737,15 @@ class AbstractExpression
         # append them to the output list
         stack_to_precedence(operator_stack, parsed_expression, token)
         # push the operator onto the operator stack
-        operator_stack.push(token) unless token.terminal?
+        operator_stack.push(token)
       elsif token.variable?
         # remove operators already on the stack that have higher
         # or equal precedence
         # append them to the output list
         stack_to_precedence(operator_stack, parsed_expression, token)
         # push the operator onto the operator stack
-        operator_stack.push(token) unless token.terminal?
+        variable_name = ScalarValue.new(token)
+        operator_stack.push(variable_name)
       else
         # the token is an operand, append it to the output list
         parsed_expression << token
