@@ -47,25 +47,6 @@ class UnaryOperator < AbstractToken
   end
 end
 
-def make_boolean_operator(text)
-  if text == '='
-    BooleanOperatorEq.new
-  elsif text == '<>'
-    BooleanOperatorNotEq.new
-  elsif text == '>'
-    BooleanOperatorGreater.new
-  elsif text == '>='
-    BooleanOperatorGreaterEq.new
-  elsif text == '<'
-    BooleanOperatorLess.new
-  elsif text == '<='
-    BooleanOperatorLessEq.new
-  else
-    fail(BASICException, "'#{text}' is not an operator") unless
-      operators.key?(text)
-  end
-end
-
 # Binary scalar operators
 class BinaryOperator < AbstractToken
   def self.init?(text)

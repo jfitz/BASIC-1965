@@ -536,7 +536,7 @@ def split_input(text)
   # split the input infix string
   parts = text.split(%r{([\+\-\*\/\(\)\^,])})
   # remove empty elements
-  short_parts = parts.reject { |elem| elem.empty? }
+  short_parts = parts.reject(&:empty?)
   # we have split a value like '12E+3' into three parts (12E + 3)
   # put them back into a single item
   regrouped_parts = []
@@ -579,7 +579,7 @@ def stack_to_expression(stack, expression)
   end
 end
 
-def stack_to_expression_precedence(stack, expression, token)
+def stack_to_precedence(stack, expression, token)
   while stack.size > 0 &&
         !stack[-1].starter? &&
         stack[-1].precedence >= token.precedence
@@ -621,6 +621,7 @@ def eval_scalar(interpreter, parsed_expressions)
   result_values
 end
 
+# base class for expressions
 class AbstractExpression
   def initialize(text)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
@@ -653,9 +654,11 @@ class AbstractExpression
         tokens << GroupEnd.new
       elsif word == ','
         tokens << ParamSeparator.new
-      elsif tokens.size > 0 && tokens[-1].operand? && BinaryOperator.init?(word)
+      elsif tokens.size > 0 && tokens[-1].operand? &&
+            BinaryOperator.init?(word)
         tokens << BinaryOperator.new(word)
-      elsif !(tokens.size > 0 && tokens[-1].operand?) && UnaryOperator.init?(word)
+      elsif !(tokens.size > 0 && tokens[-1].operand?) &&
+            UnaryOperator.init?(word)
         tokens << UnaryOperator.new(word)
       elsif ScalarFunctionFactory.valid?(word)
         tokens << ScalarFunctionFactory.make(word)
@@ -703,7 +706,8 @@ class AbstractExpression
         parens_group << parsed_expression
         parsed_expression = []
       else
-        fail(BASICException, 'Function requires parentheses') if previous_token.function?
+        fail(BASICException, 'Function requires parentheses') if
+          previous_token.function?
         # If the token is a right parenthesis,
         # pop the operator stack until the corresponding left paren is removed
         # Append each operator to the end of the output list
@@ -722,7 +726,7 @@ class AbstractExpression
             # remove operators already on the stack that have higher
             # or equal precedence
             # append them to the output list
-            stack_to_expression_precedence(operator_stack, parsed_expression, token)
+            stack_to_precedence(operator_stack, parsed_expression, token)
             # push the operator onto the operator stack
             operator_stack.push(token) unless token.terminal?
           else
@@ -946,12 +950,11 @@ class PrintableExpression
   def initialize(text)
     @arithmetic_expression = nil
     @text_constant = nil
-    unless text.nil?
-      if TextConstant.init?(text)
-        @text_constant = TextConstant.new(text)
-      else
-        @arithmetic_expression = ValueScalarExpression.new(text)
-      end
+    return false if text.nil?
+    if TextConstant.init?(text)
+      @text_constant = TextConstant.new(text)
+    else
+      @arithmetic_expression = ValueScalarExpression.new(text)
     end
   end
 
@@ -986,6 +989,8 @@ class BooleanExpression
     parts = text.split(/([=<>]+)/)
     fail(BASICException, "'#{text}' is not a boolean expression") if
       parts.size != 3
+    @operators = make_operators
+
     @a = ValueScalarExpression.new(parts[0])
     @operator = make_boolean_operator(parts[1])
     @b = ValueScalarExpression.new(parts[2])
@@ -1001,6 +1006,26 @@ class BooleanExpression
 
   def to_s
     @a.to_s + ' ' + @operator.to_s + ' ' + @b.to_s
+  end
+
+  private
+
+  def make_operators
+    {
+      '=' => BooleanOperatorEq,
+      '<>' => BooleanOperatorNotEq,
+      '>' => BooleanOperatorGreater,
+      '>=' => BooleanOperatorGreaterEq,
+      '<' => BooleanOperatorLess,
+      '<=' => BooleanOperatorLessEq
+    }
+  end
+
+  def make_boolean_operator(text)
+    fail(BASICException, "'#{text}' is not an operator") unless
+      @operators.key?(text)
+
+    @operators[text].new
   end
 end
 
