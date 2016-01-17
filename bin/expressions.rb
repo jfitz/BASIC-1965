@@ -553,8 +553,6 @@ def split_input(text)
   regrouped_parts
 end
 
-public
-
 # converts text line to constant values
 def textline_to_constants(line)
   values = []
@@ -568,27 +566,6 @@ def textline_to_constants(line)
   end
   values
 end
-
-private
-
-def stack_to_expression(stack, expression)
-  while stack.size > 0 &&
-        !stack[-1].starter?
-    op = stack.pop
-    expression << op
-  end
-end
-
-def stack_to_precedence(stack, expression, token)
-  while stack.size > 0 &&
-        !stack[-1].starter? &&
-        stack[-1].precedence >= token.precedence
-    op = stack.pop
-    expression << op
-  end
-end
-
-public
 
 # returns an Array of values
 def eval_scalar(interpreter, parsed_expressions)
@@ -642,6 +619,23 @@ class AbstractExpression
 
   private
 
+  def stack_to_expression(stack, expression)
+    while stack.size > 0 &&
+          !stack[-1].starter?
+      op = stack.pop
+      expression << op
+    end
+  end
+
+  def stack_to_precedence(stack, expression, token)
+    while stack.size > 0 &&
+          !stack[-1].starter? &&
+          stack[-1].precedence >= token.precedence
+      op = stack.pop
+      expression << op
+    end
+  end
+
   def tokenize(words)
     tokens = []
     # convert tokens to objects
@@ -686,54 +680,69 @@ class AbstractExpression
     previous_token = InitialOperator.new
     # scan the token list from left to right
     tokens.each do |token|
-      # If the token is a left parenthesis, push it on the operator stack
-      if token.group_start?
-        if previous_token.function? || previous_token.variable?
-          # start parsing the list of function arguments
-          expression_stack.push(parsed_expression)
-          parsed_expression = []
-          operator_stack.push(ParamStart.new)
-        else
-          operator_stack.push(token)
-        end
+      fail(BASICException, 'Function requires parentheses') if
+        !token.group_start? && previous_token.function?
+      if token.group_start? && previous_token.function?
+        # start parsing the list of function arguments
+        expression_stack.push(parsed_expression)
+        parsed_expression = []
+        operator_stack.push(ParamStart.new)
         parens_stack << parens_group
         parens_group = []
-      # If the token is a comma,
-      # pop the operator stack until the corresponding left parenthesis is found
-      # Append each operator to the end of the output list
+      elsif token.group_start? && previous_token.variable?
+        # start parsing the list of subscripts
+        expression_stack.push(parsed_expression)
+        parsed_expression = []
+        operator_stack.push(ParamStart.new)
+        parens_stack << parens_group
+        parens_group = []
+      elsif token.group_start?
+        # neither arguments or subscripts; just a grouping parens
+        operator_stack.push(token)
+        parens_stack << parens_group
+        parens_group = []
       elsif token.separator?
+        # pop the operator stack until the corresponding left paren is found
+        # Append each operator to the end of the output list
         stack_to_expression(operator_stack, parsed_expression)
         parens_group << parsed_expression
         parsed_expression = []
-      else
-        fail(BASICException, 'Function requires parentheses') if
-          previous_token.function?
-        # If the token is a right parenthesis,
+      elsif token.group_end?
         # pop the operator stack until the corresponding left paren is removed
         # Append each operator to the end of the output list
-        if token.group_end?
-          stack_to_expression(operator_stack, parsed_expression)
-          parens_group << parsed_expression
-          start_op = operator_stack.pop  # remove the '(' or '[' starter
-          if start_op.param_start?
-            list = List.new(parens_group)
-            operator_stack.push(list)
-            parsed_expression = expression_stack.pop
-          end
-          parens_group = parens_stack.pop
-        else
-          if token.operator? || token.function? || token.variable?
-            # remove operators already on the stack that have higher
-            # or equal precedence
-            # append them to the output list
-            stack_to_precedence(operator_stack, parsed_expression, token)
-            # push the operator onto the operator stack
-            operator_stack.push(token) unless token.terminal?
-          else
-            # the token is an operand, append it to the output list
-            parsed_expression << token
-          end
+        stack_to_expression(operator_stack, parsed_expression)
+        parens_group << parsed_expression
+        start_op = operator_stack.pop  # remove the '(' or '[' starter
+        if start_op.param_start?
+          list = List.new(parens_group)
+          operator_stack.push(list)
+          parsed_expression = expression_stack.pop
         end
+        parens_group = parens_stack.pop
+      elsif token.operator?
+        # remove operators already on the stack that have higher
+        # or equal precedence
+        # append them to the output list
+        stack_to_precedence(operator_stack, parsed_expression, token)
+        # push the operator onto the operator stack
+        operator_stack.push(token) unless token.terminal?
+      elsif token.function?
+        # remove operators already on the stack that have higher
+        # or equal precedence
+        # append them to the output list
+        stack_to_precedence(operator_stack, parsed_expression, token)
+        # push the operator onto the operator stack
+        operator_stack.push(token) unless token.terminal?
+      elsif token.variable?
+        # remove operators already on the stack that have higher
+        # or equal precedence
+        # append them to the output list
+        stack_to_precedence(operator_stack, parsed_expression, token)
+        # push the operator onto the operator stack
+        operator_stack.push(token) unless token.terminal?
+      else
+        # the token is an operand, append it to the output list
+        parsed_expression << token
       end
       previous_token = token
     end
@@ -773,7 +782,7 @@ class ValueMatrixExpression
   end
 
   def printable?
-    return true
+    true
   end
 
   def to_s
@@ -967,7 +976,7 @@ class PrintableExpression
   end
 
   def printable?
-    return true
+    true
   end
 
   def to_s
