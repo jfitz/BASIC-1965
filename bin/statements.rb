@@ -349,32 +349,39 @@ end
 class PrintStatement < AbstractPrintStatement
   def initialize(line)
     super('PRINT', line)
+
     item_list = split_args(line, true)
     # variable/constant, [separator, variable/constant]... [separator]
+
     print_item_list = []
-    last_was_variable = false
+    previous_item = CarriageControl.new('')
     item_list.each do |print_item|
       if print_item == ',' || print_item == ';'
         # the item is a carriage control item
         # save previous print thing, or create an empty one
-        print_item_list << CarriageControl.new(print_item)
-        last_was_variable = false
+        item = CarriageControl.new(print_item)
+        print_item_list << item
       else
         # insert a plain carriage control
-        print_item_list << CarriageControl.new('') if last_was_variable
+        item = CarriageControl.new('')
+        print_item_list << item if previous_item.printable?
         begin
-          # remove leading and trailing blanks
-          print_item_list << PrintableExpression.new(print_item.strip)
-          last_was_variable = true
+          item = PrintableExpression.new(print_item.strip)
+          print_item_list << item
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
+      previous_item = item
     end
+
+    # add implied items at end of list
     print_item_list << PrintableExpression.new(nil) if
       print_item_list.size == 0
     print_item_list << CarriageControl.new('NL') if
       print_item_list[-1].class.to_s != 'CarriageControl'
+
+    # convert to pairs
     @print_item_pairs = print_item_list.each_slice(2).to_a
   end
 end
@@ -490,7 +497,7 @@ class ForNextControl
   end
 end
 
-# FOR
+# FOR statement
 class ForStatement < AbstractStatement
   def initialize(line)
     super('FOR', line)
@@ -507,15 +514,13 @@ class ForStatement < AbstractStatement
     parts = parts[1].split('TO', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
     @start_value = ValueScalarExpression.new(parts[0])
+
     parts = parts[1].split('STEP', 2)
     @end_value = ValueScalarExpression.new(parts[0])
-    if parts.size > 1
-      @has_step_value = true
-      @step_value = ValueScalarExpression.new(parts[1])
-    else
-      @has_step_value = false
-      @step_value = ValueScalarExpression.new('1')
-    end
+
+    @has_step_value = parts.size > 1
+    @step_value = ValueScalarExpression.new('1')
+    @step_value = ValueScalarExpression.new(parts[1]) if parts.size > 1
   end
 
   def to_s
@@ -734,24 +739,23 @@ class MatPrintStatement < AbstractPrintStatement
   end
 
   def ctor_print_item_list_2(item_list)
-    last_was_var = false
     print_item_list = []
+    previous_item = CarriageControl.new('')
     # build list of print things and carriage control things
     # one of each, alternating
     item_list.each do |print_item|
-      this_is_var = print_item.class.to_s == 'ValueMatrixExpression'
-      if last_was_var
+      if print_item.printable?
         # insert a plain carriage control
-        print_item_list << CarriageControl.new(',') if this_is_var
+        print_item_list << CarriageControl.new(',') if previous_item.printable?
         print_item_list << print_item
       else
-        print_item_list << print_item if this_is_var
+        print_item_list << print_item unless print_item.printable?
       end
-      last_was_var = this_is_var
+      previous_item = print_item
     end
     print_item_list << CarriageControl.new(',') if
       print_item_list.size == 0 ||
-      print_item_list[-1].class.to_s != 'CarriageControl'
+      print_item_list[-1].printable?
     print_item_list
   end
 end
@@ -830,6 +834,10 @@ class CarriageControl
     fail(BASICException, "'#{text}' is not a valid separator") unless
       valid_operators.include?(text)
     @operator = text
+  end
+
+  def printable?
+    false
   end
 
   def to_s

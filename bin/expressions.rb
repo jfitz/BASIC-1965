@@ -772,6 +772,10 @@ class ValueMatrixExpression
     false
   end
 
+  def printable?
+    return true
+  end
+
   def to_s
     @variable.to_s
   end
@@ -960,6 +964,10 @@ class PrintableExpression
 
   def empty?
     @text_constant.nil? && @arithmetic_expression.nil?
+  end
+
+  def printable?
+    return true
   end
 
   def to_s
