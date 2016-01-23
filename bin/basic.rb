@@ -562,6 +562,7 @@ class Interpreter
   end
 
   def set_value(variable, value)
+    c = value.class.to_s
     valid_classes = %w(Fixnum Float NumericConstant)
     fail Exception, "Bad variable value type #{c}" unless
       valid_classes.include?(value.class.to_s)

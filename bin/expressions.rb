@@ -131,6 +131,66 @@ class ScalarReference < Variable
   end
 end
 
+# Matrix with values
+class Matrix
+  def initialize(dimensions, values)
+    @dimensions = dimensions
+    @values = values
+  end
+
+  def dimensions
+    @dimensions
+  end
+
+  def get_value_1(col)
+    coords = '(' + col.to_s + ')'
+    return @values[coords] if @values.key?(coords)
+    0
+  end
+
+  def get_value_2(row, col)
+    coords = '(' + row.to_s + ',' + col.to_s + ')'
+    return @values[coords] if @values.key?(coords)
+    0
+  end
+
+  def to_s
+    'MATRIX: ' + @values.to_s
+  end
+end
+
+# Matrix value
+class MatrixValue < Variable
+  def initialize(variable_name)
+    super
+  end
+
+  def evaluate(interpreter, _)
+    dims = interpreter.get_dimensions(@variable_name)
+    values = {}
+    if dims.size == 1
+      n_cols = dims[0].to_i
+      (1..n_cols).each do |col|
+        coords = '(' + col.to_s + ')'
+        var_name = @variable_name.to_s + coords
+        values[coords] = interpreter.get_value(var_name)
+      end
+    end
+    if dims.size == 2
+      n_rows = dims[0].to_i
+      n_cols = dims[1].to_i
+      (1..n_rows).each do |row|
+        (1..n_cols).each do |col|
+          coords = '(' + row.to_s + ',' + col.to_s + ')'
+          var_name = @variable_name.to_s + coords
+          values[coords] = interpreter.get_value(var_name)
+        end
+      end
+    end
+    Matrix.new(dims, values)
+  end
+end
+
 # Matrix reference
 class MatrixReference < Variable
   def initialize(variable_value)
@@ -606,13 +666,13 @@ end
 
 # base class for expressions
 class AbstractExpression
-  def initialize(text)
+  def initialize(text, matrix_or_scalar)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
     @unparsed_expression = text
 
     words = split_input(text)
     tokens = tokenize(words)
-    @parsed_expressions = parse(tokens)
+    @parsed_expressions = parse(tokens, matrix_or_scalar)
   end
 
   def to_s
@@ -674,7 +734,7 @@ class AbstractExpression
   end
 
   # returns an Array of parsed expressions
-  def parse(tokens)
+  def parse(tokens, matrix_or_scalar)
     parsed_expressions = []
     operator_stack = []
     expression_stack = []
@@ -744,7 +804,11 @@ class AbstractExpression
         # append them to the output list
         stack_to_precedence(operator_stack, parsed_expression, token)
         # push the operator onto the operator stack
-        variable_name = ScalarValue.new(token)
+        if matrix_or_scalar
+          variable_name = MatrixValue.new(token)
+        else
+          variable_name = ScalarValue.new(token)
+        end
         operator_stack.push(variable_name)
       else
         # the token is an operand, append it to the output list
@@ -760,7 +824,7 @@ end
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
   def initialize(text)
-    super
+    super(text, false)
   end
 
   # returns an Array of values
@@ -777,10 +841,9 @@ class ValueScalarExpression < AbstractExpression
 end
 
 # Value matrix expression (an R-value)
-class ValueMatrixExpression
+class ValueMatrixExpression < AbstractExpression
   def initialize(text)
-    variable_name = VariableName.new(text)
-    @variable = Variable.new(variable_name)
+    super(text, true)
   end
 
   def empty?
@@ -791,62 +854,23 @@ class ValueMatrixExpression
     true
   end
 
-  def to_s
-    @variable.to_s
-  end
-
-  def print(printer, interpreter, carriage)
-    dimensions = interpreter.get_dimensions(@variable.name)
-    fail BASICException, "Undefined value #{@variable}" if dimensions.nil?
-
-    fail BASICException, "Need dimensions in #{@variable}" if
-      dimensions.size == 0
-    print_1(dimensions, printer, interpreter, carriage) if
-      dimensions.size == 1
-    print_2(dimensions, printer, interpreter, carriage) if
-      dimensions.size == 2
-    fail BASICException, "Too many dimensions in #{@variable}" if
-      dimensions.size > 2
-  end
-
-  private
-
-  def print_1(dimensions, printer, interpreter, carriage)
-    upper = dimensions[0].to_v
-
-    (1..upper).each do |index|
-      varname = @variable.to_s_1(index)
-      value = interpreter.get_value(varname)
-      printer.print_item(value.to_s)
-      printer.last_was_numeric
-      carriage.print(printer, interpreter)
+  # returns an Array of Matrix objects
+  def evaluate(interpreter)
+    if @parsed_expressions.size > 0
+      values = eval_scalar(interpreter, @parsed_expressions)
+      fail(Exception, 'ValueMatrixExpression: Expected some values') if
+        values.length == 0
+    else
+      values = []
     end
-    printer.newline
-    printer.newline
-  end
-
-  def print_2(dimensions, printer, interpreter, carriage)
-    upper_i = dimensions[0].to_v
-    upper_j = dimensions[1].to_v
-
-    (1..upper_i).each do |i|
-      (1..upper_j).each do |j|
-        varname = @variable.to_s_2(i, j)
-        value = interpreter.get_value(varname)
-        printer.print_item(value.to_s)
-        printer.last_was_numeric
-        carriage.print(printer, interpreter)
-      end
-      printer.newline
-    end
-    printer.newline
+    values
   end
 end
 
 # Abstract target expression
 class AbstractTargetExpression < AbstractExpression
   def initialize(text)
-    super
+    super(text, false)
 
     check_length
     check_all_lengths
@@ -966,19 +990,24 @@ end
 
 # Printable expression (part of a PRINT statement)
 class PrintableExpression
-  def initialize(text)
-    @arithmetic_expression = nil
+  def initialize(text, matrix_or_scalar)
+    @scalar_expression = nil
     @text_constant = nil
+    @matrix_expression = nil
     return false if text.nil?
     if TextConstant.init?(text)
       @text_constant = TextConstant.new(text)
     else
-      @arithmetic_expression = ValueScalarExpression.new(text)
+      if matrix_or_scalar
+        @matrix_expression = ValueMatrixExpression.new(text)
+      else
+        @scalar_expression = ValueScalarExpression.new(text)
+      end
     end
   end
 
   def empty?
-    @text_constant.nil? && @arithmetic_expression.nil?
+    @text_constant.nil? && @scalar_expression.nil? && @matrix_expression.nil?
   end
 
   def printable?
@@ -988,21 +1017,78 @@ class PrintableExpression
   def to_s
     r = ''
     r = @text_constant.to_s unless @text_constant.nil?
-    r = @arithmetic_expression.to_s unless @arithmetic_expression.nil?
+    r = @scalar_expression.to_s unless @scalar_expression.nil?
+    r = @matrix_expression.to_s unless @matrix_expression.nil?
     r
   end
 
   def print(printer, interpreter, carriage)
-    printer.print_item @text_constant.to_formatted_s(interpreter) unless
-      @text_constant.nil?
-    unless @arithmetic_expression.nil?
-      numeric_constants = @arithmetic_expression.evaluate(interpreter)
+    unless @text_constant.nil?
+      printer.print_item @text_constant.to_formatted_s(interpreter)
+      carriage.print(printer, interpreter)
+    end
+    unless @scalar_expression.nil?
+      numeric_constants = @scalar_expression.evaluate(interpreter)
       numeric_constant = numeric_constants[0]
       printer.print_item numeric_constant.to_formatted_s(interpreter)
       printer.last_was_numeric
+      carriage.print(printer, interpreter)
+    end
+    unless @matrix_expression.nil?
+      numeric_constants = @matrix_expression.evaluate(interpreter)
+      matrix = numeric_constants[0]
+      print_matrix(matrix, printer, interpreter, carriage)
     end
     # for a nil expression, print nothing but do print the carriage operation
-    carriage.print(printer, interpreter)
+    carriage.print(printer, interpreter) if
+      @text_constant.nil? && @scalar_expression.nil? && @matrix_expression.nil?
+  end
+
+  def print_matrix(matrix, printer, interpreter, carriage)
+    dimensions = matrix.dimensions
+    fail BASICException, "Undefined matrix" if dimensions.nil?
+
+    fail BASICException, "Need dimensions in matrix" if
+      dimensions.size == 0
+    print_1(matrix, dimensions, printer, interpreter, carriage) if
+      dimensions.size == 1
+    print_2(matrix, dimensions, printer, interpreter, carriage) if
+      dimensions.size == 2
+    fail BASICException, "Too many dimensions in matrix" if
+      dimensions.size > 2
+  end
+
+  private
+
+  def print_1(matrix, dimensions, printer, interpreter, carriage)
+    upper = dimensions[0].to_v
+
+    (1..upper).each do |index|
+      value = matrix.get_value_1(index)
+      printer.print_item(value.to_s)
+      printer.last_was_numeric
+      carriage.print(printer, interpreter)
+      printer.last_was_numeric
+    end
+    printer.newline
+    printer.newline
+  end
+
+  def print_2(matrix, dimensions, printer, interpreter, carriage)
+    upper_i = dimensions[0].to_v
+    upper_j = dimensions[1].to_v
+
+    (1..upper_i).each do |i|
+      (1..upper_j).each do |j|
+        value = matrix.get_value_2(i, j)
+        printer.print_item(value.to_s)
+        printer.last_was_numeric
+        carriage.print(printer, interpreter)
+        printer.last_was_numeric
+      end
+      printer.newline
+    end
+    printer.newline
   end
 end
 
@@ -1061,6 +1147,42 @@ class ScalarAssignment
       parts.size != 2
     @target = TargetScalarExpression.new(parts[0])
     @expression = ValueScalarExpression.new(parts[1])
+  end
+
+  def count_target
+    @target.count
+  end
+
+  def eval_target(interpreter)
+    @target.evaluate(interpreter)
+  end
+
+  def count_value
+    @expression.count
+  end
+
+  def eval_value(interpreter)
+    @expression.evaluate(interpreter)
+  end
+
+  def to_s
+    @target.to_s + ' = ' + @expression.to_s
+  end
+
+  def to_postfix_s
+    @expression.to_postfix_s
+  end
+end
+
+# An assignment (part of a MAT LET statement)
+class MatrixAssignment
+  def initialize(text)
+    # parse into variable, '=', expression
+    parts = text.split('=', 2)
+    fail(BASICException, "'#{text}' is not a valid assignment") if
+      parts.size != 2
+    @target = TargetMatrixExpression.new(parts[0])
+    @expression = ValueMatrixExpression.new(parts[1])
   end
 
   def count_target

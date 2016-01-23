@@ -63,7 +63,8 @@ class StatementFactory
       'PRINT' => PrintStatement,
       'TRACE' => TraceStatement,
       'MATPRINT' => MatPrintStatement,
-      'MATREAD' => MatReadStatement
+      'MATREAD' => MatReadStatement,
+      'MATLET' => MatLetStatement
     }
   end
 end
@@ -366,7 +367,7 @@ class PrintStatement < AbstractPrintStatement
         item = CarriageControl.new('')
         print_item_list << item if previous_item.printable?
         begin
-          item = PrintableExpression.new(print_item.strip)
+          item = PrintableExpression.new(print_item.strip, false)
           print_item_list << item
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
@@ -376,7 +377,7 @@ class PrintStatement < AbstractPrintStatement
     end
 
     # add implied items at end of list
-    print_item_list << PrintableExpression.new(nil) if
+    print_item_list << PrintableExpression.new(nil, false) if
       print_item_list.size == 0
     print_item_list << CarriageControl.new('NL') if
       print_item_list[-1].class.to_s != 'CarriageControl'
@@ -713,50 +714,37 @@ class MatPrintStatement < AbstractPrintStatement
   def initialize(line)
     super('MAT PRINT', line)
     item_list = split_args(line, true)
-    # variable/constant, [separator, variable/constant]... [separator]
-    print_item_list_1 = ctor_print_item_list_1(item_list)
-    print_item_list_2 = ctor_print_item_list_2(print_item_list_1)
-    @print_item_pairs = print_item_list_2.each_slice(2).to_a
-  end
 
-  private
-
-  def ctor_print_item_list_1(item_list)
     print_item_list = []
+    previous_item = CarriageControl.new('')
     item_list.each do |print_item|
       if print_item == ',' || print_item == ';'
         # the item is a carriage control item
-        print_item_list << CarriageControl.new(print_item)
+        # save previous print thing, or create an empty one
+        item = CarriageControl.new(print_item)
+        print_item_list << item
       else
+        # insert a plain carriage control
+        item = CarriageControl.new('')
+        print_item_list << item if previous_item.printable?
         begin
-          print_item_list << ValueMatrixExpression.new(print_item.strip)
+          item = PrintableExpression.new(print_item.strip, true)
+          print_item_list << item
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
         end
       end
+      previous_item = item
     end
-    print_item_list
-  end
 
-  def ctor_print_item_list_2(item_list)
-    print_item_list = []
-    previous_item = CarriageControl.new('')
-    # build list of print things and carriage control things
-    # one of each, alternating
-    item_list.each do |print_item|
-      if print_item.printable?
-        # insert a plain carriage control
-        print_item_list << CarriageControl.new(',') if previous_item.printable?
-        print_item_list << print_item
-      else
-        print_item_list << print_item unless print_item.printable?
-      end
-      previous_item = print_item
-    end
+    # add implied items at end of list
+    print_item_list << PrintableExpression.new(nil, true) if
+      print_item_list.size == 0
     print_item_list << CarriageControl.new(',') if
-      print_item_list.size == 0 ||
-      print_item_list[-1].printable?
-    print_item_list
+      print_item_list[-1].class.to_s != 'CarriageControl'
+
+    # convert to pairs
+    @print_item_pairs = print_item_list.each_slice(2).to_a
   end
 end
 
@@ -822,6 +810,60 @@ class MatReadStatement < AbstractStatement
         value = interpreter.read_data
         variable = name.to_s + '(' + row.to_s + ',' + col.to_s + ')'
         interpreter.set_value(variable, value)
+      end
+    end
+  end
+end
+
+# MAT LET
+class MatLetStatement < AbstractStatement
+  def initialize(line)
+    super('MAT LET', line)
+    begin
+      @assignment = MatrixAssignment.new(line)
+      if @assignment.count_target != 1
+        @errors << 'Assignment must have only one left-hand value'
+      end
+      if @assignment.count_value != 1
+        @errors << 'Assignment must have only one right-hand value'
+      end
+    rescue BASICException => e
+      @errors << e.message
+      @assignment = line
+    end
+  end
+
+  def to_s
+    @keyword + ' ' + @assignment.to_s
+  end
+
+  def execute_cmd(interpreter)
+    l_values = @assignment.eval_target(interpreter)
+    l_value = l_values[0]
+    name = l_value.name
+    r_values = @assignment.eval_value(interpreter)
+    r_value = r_values[0]
+    dims = r_value.dimensions
+    interpreter.set_dimensions(name, dims)
+    if dims.size == 1
+      n_cols = dims[0].to_i
+      (1..n_cols).each do |col|
+        value = r_value.get_value_1(col)
+        text_dims = '(' + col.to_s + ')'
+        variable = name.to_s + text_dims
+        interpreter.set_value(variable, value)
+      end
+    end
+    if dims.size == 2
+      n_rows = dims[0].to_i
+      n_cols = dims[1].to_i
+      (1..n_rows).each do |row|
+        (1..n_cols).each do |col|
+          value = r_value.get_value_2(row, col)
+          text_dims = '(' + row.to_s + ',' + col.to_s + ')'
+          variable = name.to_s + text_dims
+          interpreter.set_value(variable, value)
+        end
       end
     end
   end
