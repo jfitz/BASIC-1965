@@ -989,36 +989,33 @@ class UserFunctionPrototype
 end
 
 # Printable expression (part of a PRINT statement)
-class PrintableExpression
-  def initialize(text, matrix_or_scalar)
+class AbstractPrintableExpression
+  def printable?
+    true
+  end
+end
+
+# Printable expression for scalar
+class ScalarPrintableExpression < AbstractPrintableExpression
+  def initialize(text)
     @scalar_expression = nil
     @text_constant = nil
-    @matrix_expression = nil
     return false if text.nil?
     if TextConstant.init?(text)
       @text_constant = TextConstant.new(text)
     else
-      if matrix_or_scalar
-        @matrix_expression = ValueMatrixExpression.new(text)
-      else
-        @scalar_expression = ValueScalarExpression.new(text)
-      end
+      @scalar_expression = ValueScalarExpression.new(text)
     end
   end
 
   def empty?
-    @text_constant.nil? && @scalar_expression.nil? && @matrix_expression.nil?
-  end
-
-  def printable?
-    true
+    @text_constant.nil? && @scalar_expression.nil?
   end
 
   def to_s
     r = ''
     r = @text_constant.to_s unless @text_constant.nil?
     r = @scalar_expression.to_s unless @scalar_expression.nil?
-    r = @matrix_expression.to_s unless @matrix_expression.nil?
     r
   end
 
@@ -1034,31 +1031,52 @@ class PrintableExpression
       printer.last_was_numeric
       carriage.print(printer, interpreter)
     end
-    unless @matrix_expression.nil?
-      numeric_constants = @matrix_expression.evaluate(interpreter)
-      matrix = numeric_constants[0]
-      print_matrix(matrix, printer, interpreter, carriage)
-    end
     # for a nil expression, print nothing but do print the carriage operation
-    carriage.print(printer, interpreter) if
-      @text_constant.nil? && @scalar_expression.nil? && @matrix_expression.nil?
+    carriage.print(printer, interpreter) if empty?
   end
+end
+
+# Printable expression for matrix
+class MatrixPrintableExpression < AbstractPrintableExpression
+  def initialize(text)
+    @matrix_expression = nil
+    return false if text.nil?
+    @matrix_expression = ValueMatrixExpression.new(text)
+  end
+
+  def empty?
+    @matrix_expression.nil?
+  end
+
+  def to_s
+    @matrix_expression.to_s
+  end
+
+  def print(printer, interpreter, carriage)
+    numeric_constants = @matrix_expression.evaluate(interpreter)
+    matrix = numeric_constants[0]
+    print_matrix(matrix, printer, interpreter, carriage)
+    # for a nil expression, print nothing but do print the carriage operation
+    carriage.print(printer, interpreter) if empty?
+  end
+
+  private
 
   def print_matrix(matrix, printer, interpreter, carriage)
     dimensions = matrix.dimensions
     fail BASICException, "Undefined matrix" if dimensions.nil?
 
-    fail BASICException, "Need dimensions in matrix" if
-      dimensions.size == 0
-    print_1(matrix, dimensions, printer, interpreter, carriage) if
-      dimensions.size == 1
-    print_2(matrix, dimensions, printer, interpreter, carriage) if
-      dimensions.size == 2
-    fail BASICException, "Too many dimensions in matrix" if
-      dimensions.size > 2
+    case dimensions.size
+    when 0
+      fail BASICException, "Need dimensions in matrix"
+    when 1
+      print_1(matrix, dimensions, printer, interpreter, carriage)
+    when 2
+      print_2(matrix, dimensions, printer, interpreter, carriage)
+    else
+      fail BASICException, "Too many dimensions in matrix"
+    end
   end
-
-  private
 
   def print_1(matrix, dimensions, printer, interpreter, carriage)
     upper = dimensions[0].to_v

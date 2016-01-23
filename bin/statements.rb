@@ -367,7 +367,7 @@ class PrintStatement < AbstractPrintStatement
         item = CarriageControl.new('')
         print_item_list << item if previous_item.printable?
         begin
-          item = PrintableExpression.new(print_item.strip, false)
+          item = ScalarPrintableExpression.new(print_item.strip)
           print_item_list << item
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
@@ -377,7 +377,7 @@ class PrintStatement < AbstractPrintStatement
     end
 
     # add implied items at end of list
-    print_item_list << PrintableExpression.new(nil, false) if
+    print_item_list << ScalarPrintableExpression.new(nil) if
       print_item_list.size == 0
     print_item_list << CarriageControl.new('NL') if
       print_item_list[-1].class.to_s != 'CarriageControl'
@@ -728,7 +728,7 @@ class MatPrintStatement < AbstractPrintStatement
         item = CarriageControl.new('')
         print_item_list << item if previous_item.printable?
         begin
-          item = PrintableExpression.new(print_item.strip, true)
+          item = MatrixPrintableExpression.new(print_item.strip)
           print_item_list << item
         rescue BASICException => e
           @errors << "Invalid print item '#{print_item}': #{e.message}"
@@ -738,7 +738,7 @@ class MatPrintStatement < AbstractPrintStatement
     end
 
     # add implied items at end of list
-    print_item_list << PrintableExpression.new(nil, true) if
+    print_item_list << MatrixPrintableExpression.new(nil) if
       print_item_list.size == 0
     print_item_list << CarriageControl.new(',') if
       print_item_list[-1].class.to_s != 'CarriageControl'
