@@ -267,7 +267,7 @@ class List < AbstractToken
 end
 
 # Scalar function (provides a scalar)
-class ScalarFunction < AbstractToken
+class Function < AbstractToken
   def initialize(text)
     @name = text
     @function = true
@@ -320,7 +320,7 @@ class ScalarFunction < AbstractToken
 end
 
 # function INT
-class ScalarFunctionInt < ScalarFunction
+class FunctionInt < Function
   def initialize(text)
     super
   end
@@ -336,7 +336,7 @@ class ScalarFunctionInt < ScalarFunction
 end
 
 # function RND
-class ScalarFunctionRnd < ScalarFunction
+class FunctionRnd < Function
   def initialize(text)
     super
   end
@@ -354,7 +354,7 @@ class ScalarFunctionRnd < ScalarFunction
 end
 
 # function EXP
-class ScalarFunctionExp < ScalarFunction
+class FunctionExp < Function
   def initialize(text)
     super
   end
@@ -370,7 +370,7 @@ class ScalarFunctionExp < ScalarFunction
 end
 
 # function LOG
-class ScalarFunctionLog < ScalarFunction
+class FunctionLog < Function
   def initialize(text)
     super
   end
@@ -386,7 +386,7 @@ class ScalarFunctionLog < ScalarFunction
 end
 
 # function ABS
-class ScalarFunctionAbs < ScalarFunction
+class FunctionAbs < Function
   def initialize(text)
     super
   end
@@ -401,7 +401,7 @@ class ScalarFunctionAbs < ScalarFunction
 end
 
 # function SQR
-class ScalarFunctionSqr < ScalarFunction
+class FunctionSqr < Function
   def initialize(text)
     super
   end
@@ -417,7 +417,7 @@ class ScalarFunctionSqr < ScalarFunction
 end
 
 # function SIN
-class ScalarFunctionSin < ScalarFunction
+class FunctionSin < Function
   def initialize(text)
     super
   end
@@ -433,7 +433,7 @@ class ScalarFunctionSin < ScalarFunction
 end
 
 # function COS
-class ScalarFunctionCos < ScalarFunction
+class FunctionCos < Function
   def initialize(text)
     super
   end
@@ -449,7 +449,7 @@ class ScalarFunctionCos < ScalarFunction
 end
 
 # function TAN
-class ScalarFunctionTan < ScalarFunction
+class FunctionTan < Function
   def initialize(text)
     super
   end
@@ -465,7 +465,7 @@ class ScalarFunctionTan < ScalarFunction
 end
 
 # function ATN
-class ScalarFunctionAtn < ScalarFunction
+class FunctionAtn < Function
   def initialize(text)
     super
   end
@@ -481,7 +481,7 @@ class ScalarFunctionAtn < ScalarFunction
 end
 
 # function SGN
-class ScalarFunctionSgn < ScalarFunction
+class FunctionSgn < Function
   def initialize(text)
     super
   end
@@ -497,19 +497,19 @@ class ScalarFunctionSgn < ScalarFunction
 end
 
 # class to make functions, given the name
-class ScalarFunctionFactory
+class FunctionFactory
   @@functions = {
-    'INT' => ScalarFunctionInt,
-    'RND' => ScalarFunctionRnd,
-    'EXP' => ScalarFunctionExp,
-    'LOG' => ScalarFunctionLog,
-    'ABS' => ScalarFunctionAbs,
-    'SQR' => ScalarFunctionSqr,
-    'SIN' => ScalarFunctionSin,
-    'COS' => ScalarFunctionCos,
-    'TAN' => ScalarFunctionTan,
-    'ATN' => ScalarFunctionAtn,
-    'SGN' => ScalarFunctionSgn
+    'INT' => FunctionInt,
+    'RND' => FunctionRnd,
+    'EXP' => FunctionExp,
+    'LOG' => FunctionLog,
+    'ABS' => FunctionAbs,
+    'SQR' => FunctionSqr,
+    'SIN' => FunctionSin,
+    'COS' => FunctionCos,
+    'TAN' => FunctionTan,
+    'ATN' => FunctionAtn,
+    'SGN' => FunctionSgn
   }
 
   def self.valid?(text)
@@ -524,7 +524,7 @@ class ScalarFunctionFactory
 end
 
 # User-defined function (provides a scalar value)
-class UserFunction < ScalarFunction
+class UserFunction < Function
   def self.init?(text)
     /\AFN[A-Z]\z/.match(text)
   end
@@ -720,8 +720,8 @@ class AbstractExpression
       elsif !(tokens.size > 0 && tokens[-1].operand?) &&
             UnaryOperator.init?(word)
         tokens << UnaryOperator.new(word)
-      elsif ScalarFunctionFactory.valid?(word)
-        tokens << ScalarFunctionFactory.make(word)
+      elsif FunctionFactory.valid?(word)
+        tokens << FunctionFactory.make(word)
       elsif NumericConstant.init?(word)
         tokens << NumericConstant.new(word)
       elsif VariableName.init?(word)
