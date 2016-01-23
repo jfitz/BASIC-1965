@@ -25,25 +25,28 @@ class UnaryOperator < AbstractToken
     x = stack.pop
     case @op
     when '+'
-      z = posate(x)
+      posate(x)
     when '-'
-      z = negate(x)
+      negate(x)
     end
-    NumericConstant.new(z)
-  end
-
-  def posate(a)
-    f = a.to_f
-    float_to_possible_int(f)
-  end
-
-  def negate(a)
-    f = -a.to_f
-    float_to_possible_int(f)
   end
 
   def to_s
     @op
+  end
+
+  private
+
+  def posate(a)
+    f = a.to_f
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
+  end
+
+  def negate(a)
+    f = -a.to_f
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
   end
 end
 
@@ -70,46 +73,53 @@ class BinaryOperator < AbstractToken
     x = stack.pop
     case @op
     when '+'
-      NumericConstant.new(add(x, y))
+      add(x, y)
     when '-'
-      NumericConstant.new(subtract(x, y))
+      subtract(x, y)
     when '*'
-      NumericConstant.new(multiply(x, y))
+      multiply(x, y)
     when '/'
-      NumericConstant.new(divide(x, y))
+      divide(x, y)
     when '^'
-      NumericConstant.new(power(x, y))
+      power(x, y)
     end
   end
 
+  def to_s
+    @op
+  end
+
+  private
+
   def add(a, b)
     f = a.to_f + b.to_f
-    float_to_possible_int(f)
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
   end
 
   def subtract(a, b)
     f = a.to_f - b.to_f
-    float_to_possible_int(f)
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
   end
 
   def multiply(a, b)
     f = a.to_f * b.to_f
-    float_to_possible_int(f)
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
   end
 
   def divide(a, b)
     fail(BASICException, 'Division by zero') if b.to_f == 0
     f = a.to_f / b.to_f
-    float_to_possible_int(f)
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
   end
 
   def power(a, b)
     f = a.to_f**b.to_f
-    float_to_possible_int(f)
-  end
-
-  def to_s
-    @op
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
   end
 end
 
