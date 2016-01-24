@@ -7,15 +7,6 @@ mkdir tests
 echo Running all tests...
 ECODE=0
 
-bash test/bin/run_one_test.sh celcius_to_fahrenheit
-((ECODE+=$?))
-bash test/bin/list_one_test.sh celcius_to_fahrenheit
-((ECODE+=$?))
-bash test/bin/run_one_test.sh celcius_2
-((ECODE+=$?))
-bash test/bin/list_one_test.sh celcius_2
-((ECODE+=$?))
-
 bash test/bin/run_one_test.sh binom
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh binom
