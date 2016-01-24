@@ -112,6 +112,14 @@ bash test/bin/run_one_test.sh let_parens
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh let_parens
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh let_n_uni_plus
+((ECODE+=$?))
+bash test/bin/list_one_test.sh let_n_uni_plus
+((ECODE+=$?))
+bash test/bin/run_one_test.sh let_n_uni_minus
+((ECODE+=$?))
+bash test/bin/list_one_test.sh let_n_uni_minus
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh two_subscripts
 ((ECODE+=$?))
@@ -214,6 +222,14 @@ bash test/bin/list_one_test.sh mati-1
 bash test/bin/run_one_test.sh mat_let_1
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh mat_let_1
+((ECODE+=$?))
+bash test/bin/run_one_test.sh mat_let_uni_plus
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_let_uni_plus
+((ECODE+=$?))
+bash test/bin/run_one_test.sh mat_let_uni_minus
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_let_uni_minus
 ((ECODE+=$?))
 
 

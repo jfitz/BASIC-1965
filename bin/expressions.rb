@@ -4,12 +4,15 @@ class VariableName < AbstractToken
     /\A[A-Z]\d?\z/.match(text)
   end
 
+  attr_reader :precedence
+
   def initialize(text)
     fail(BASICException, "'#{text}' is not a variable name") unless
       VariableName.init?(text)
     @var_name = text
     @variable = true
     @operand = true
+    @precedence = 6
   end
 
   def eql?(other)
@@ -24,10 +27,6 @@ class VariableName < AbstractToken
     @var_name.hash
   end
 
-  def precedence
-    5
-  end
-
   def to_s
     @var_name
   end
@@ -36,6 +35,7 @@ end
 # Hold a variable (name with possible subscripts and value)
 class Variable < AbstractToken
   attr_reader :subscripts
+  attr_reader :precedence
 
   def initialize(variable_name)
     fail(BASICException, "'#{variable_name}' is not a variable name") if
@@ -44,10 +44,7 @@ class Variable < AbstractToken
     @subscripts = []
     @variable = true
     @operand = true
-  end
-
-  def precedence
-    5
+    @precedence = 6
   end
 
   def name
@@ -136,6 +133,10 @@ class Matrix
   def initialize(dimensions, values)
     @dimensions = dimensions
     @values = values
+  end
+
+  def matrix?
+    true
   end
 
   def dimensions
@@ -240,13 +241,13 @@ end
 
 # A list (needed because it has precedence value)
 class List < AbstractToken
+
+  attr_reader :precedence
+
   def initialize(parsed_expressions)
     @parsed_expressions = parsed_expressions
     @variable = true
-  end
-
-  def precedence
-    5
+    @precedence = 6
   end
 
   def list
@@ -268,14 +269,14 @@ end
 
 # Scalar function (provides a scalar)
 class Function < AbstractToken
+
+  attr_reader :precedence
+
   def initialize(text)
     @name = text
     @function = true
     @operand = true
-  end
-
-  def precedence
-    5
+    @precedence = 6
   end
 
   private
@@ -640,7 +641,8 @@ def eval_scalar(interpreter, parsed_expressions)
   parsed_expressions.each do |parsed_expression|
     stack = []
     parsed_expression.each do |token|
-      stack.push token.evaluate(interpreter, stack)
+      value = token.evaluate(interpreter, stack)
+      stack.push value
     end
     # should be only one item on stack
     # actual = stack.length
@@ -685,23 +687,6 @@ class AbstractExpression
 
   private
 
-  def stack_to_expression(stack, expression)
-    while stack.size > 0 &&
-          !stack[-1].starter?
-      op = stack.pop
-      expression << op
-    end
-  end
-
-  def stack_to_precedence(stack, expression, token)
-    while stack.size > 0 &&
-          !stack[-1].starter? &&
-          stack[-1].precedence >= token.precedence
-      op = stack.pop
-      expression << op
-    end
-  end
-
   def tokenize(words)
     tokens = []
     # convert tokens to objects
@@ -731,6 +716,23 @@ class AbstractExpression
       end
     end
     tokens << TerminalOperator.new
+  end
+
+  def stack_to_expression(stack, expression)
+    while stack.size > 0 &&
+          !stack[-1].starter?
+      op = stack.pop
+      expression << op
+    end
+  end
+
+  def stack_to_precedence(stack, expression, token)
+    while stack.size > 0 &&
+          !stack[-1].starter? &&
+          stack[-1].precedence >= token.precedence
+      op = stack.pop
+      expression << op
+    end
   end
 
   # returns an Array of parsed expressions

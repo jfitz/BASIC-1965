@@ -409,7 +409,7 @@ class Interpreter
     @variables = {}
   end
 
-  def cmd_load(filename)
+  def cmd_load(filename, trace_flag)
     filename = filename.strip
     if filename.size > 0
       begin
@@ -417,6 +417,7 @@ class Interpreter
           @program_lines = {}
           file.each_line do |line|
             line = ascii_printables(line)
+            puts line if trace_flag
             store_program_line(line, false)
           end
         end
@@ -660,7 +661,7 @@ class Interpreter
       elsif cmd == '.UDFS' then dump_user_functions
       elsif cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
       elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
-      elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1])
+      elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1], false)
       elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
       else print "Unknown command #{cmd}\n"
       end
@@ -678,7 +679,7 @@ class Interpreter
     puts 'BASIC-1965 interpreter version -1'
     puts
     @program_lines = {}
-    if cmd_load(filename)
+    if cmd_load(filename, false)
       timing = Benchmark.measure { cmd_run(trace_flag) }
       print_timing(timing) if timing_flag
     end
@@ -686,11 +687,11 @@ class Interpreter
     puts 'BASIC-1965 ended'
   end
 
-  def load_and_list(filename)
+  def load_and_list(filename, trace_flag)
     puts 'BASIC-1965 interpreter version -1'
     puts
     @program_lines = {}
-    cmd_list('') if cmd_load(filename)
+    cmd_list('') if cmd_load(filename, trace_flag)
     puts
     puts 'BASIC-1965 ended'
   end
@@ -727,7 +728,7 @@ if !run_filename.nil?
   interpreter.load_and_run(run_filename, trace_flag, timing_flag)
 elsif !list_filename.nil?
   interpreter = Interpreter.new(0)
-  interpreter.load_and_list(list_filename)
+  interpreter.load_and_list(list_filename, trace_flag)
 else
   interpreter = Interpreter.new(0)
   interpreter.go

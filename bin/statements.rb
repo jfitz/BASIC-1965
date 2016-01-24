@@ -843,6 +843,7 @@ class MatLetStatement < AbstractStatement
     name = l_value.name
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
+    fail BASICException, 'Expected Matrix' if r_value.class.to_s != 'Matrix'
     dims = r_value.dimensions
     interpreter.set_dimensions(name, dims)
     if dims.size == 1

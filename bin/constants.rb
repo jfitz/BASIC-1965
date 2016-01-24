@@ -144,6 +144,10 @@ class NumericConstant < AbstractToken
     end
   end
 
+  def matrix?
+    false
+  end
+
   def evaluate(_, _)
     self
   end
