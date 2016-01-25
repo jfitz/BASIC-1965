@@ -1023,13 +1023,13 @@ class ScalarPrintableExpression < AbstractPrintableExpression
 
   def print(printer, interpreter, carriage)
     unless @text_constant.nil?
-      printer.print_item @text_constant.to_formatted_s(interpreter)
+      printer.print_item @text_constant.to_formatted_s
       carriage.print(printer, interpreter)
     end
     unless @scalar_expression.nil?
       numeric_constants = @scalar_expression.evaluate(interpreter)
       numeric_constant = numeric_constants[0]
-      printer.print_item numeric_constant.to_formatted_s(interpreter)
+      printer.print_item numeric_constant.to_formatted_s
       printer.last_was_numeric
       carriage.print(printer, interpreter)
     end
@@ -1085,7 +1085,7 @@ class MatrixPrintableExpression < AbstractPrintableExpression
 
     (1..upper).each do |index|
       value = matrix.get_value_1(index)
-      printer.print_item(value.to_s)
+      printer.print_item(value.to_formatted_s)
       printer.last_was_numeric
       carriage.print(printer, interpreter)
       printer.last_was_numeric
@@ -1101,7 +1101,7 @@ class MatrixPrintableExpression < AbstractPrintableExpression
     (1..upper_i).each do |i|
       (1..upper_j).each do |j|
         value = matrix.get_value_2(i, j)
-        printer.print_item(value.to_s)
+        printer.print_item(value.to_formatted_s)
         printer.last_was_numeric
         carriage.print(printer, interpreter)
         printer.last_was_numeric

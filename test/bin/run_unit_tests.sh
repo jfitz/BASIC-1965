@@ -232,6 +232,27 @@ bash test/bin/run_one_test.sh mat_let_uni_minus
 bash test/bin/list_one_test.sh mat_let_uni_minus
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh mat_add_s_m
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_add_s_m
+((ECODE+=$?))
+bash test/bin/run_one_test.sh mat_subtract_s_m
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_subtract_s_m
+((ECODE+=$?))
+bash test/bin/run_one_test.sh mat_multiply_s_m
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_multiply_s_m
+((ECODE+=$?))
+bash test/bin/run_one_test.sh mat_divide_s_m
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_divide_s_m
+((ECODE+=$?))
+bash test/bin/run_one_test.sh mat_power_s_m
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_power_s_m
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh celcius_to_fahrenheit
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh celcius_to_fahrenheit

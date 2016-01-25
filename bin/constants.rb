@@ -120,6 +120,14 @@ class NumericConstant < AbstractToken
     fail BASICException, "'#{text}' is not a number" if @value.nil?
   end
 
+  def ==(other)
+    if other.class.to_s == 'NumericConstant'
+      @value == other.to_v
+    else
+      @value == other
+    end
+  end
+
   def >(other)
     if other.class.to_s == 'NumericConstant'
       @value > other.to_v
@@ -173,7 +181,7 @@ class NumericConstant < AbstractToken
     value.round(decimals)
   end
 
-  def to_formatted_s(_)
+  def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
     if @value.class.to_s == 'Float'
       lead_space + six_digits(@value).to_s
@@ -205,7 +213,7 @@ class TextConstant < AbstractToken
     "\"#{@value}\""
   end
 
-  def to_formatted_s(_)
+  def to_formatted_s
     @value
   end
 end
@@ -224,7 +232,7 @@ class BooleanConstant < AbstractToken
     @value ? 'true' : 'false'
   end
 
-  def to_formatted_s(_)
+  def to_formatted_s
     @value ? 'true' : 'false'
   end
 end
