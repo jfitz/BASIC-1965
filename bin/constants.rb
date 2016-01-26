@@ -1,3 +1,7 @@
+def float_to_possible_int(f)
+  i = f.to_i
+  (f - i).abs < 1e-8 ? i : f
+end
 
 private
 
@@ -146,10 +150,53 @@ class NumericConstant < AbstractToken
 
   def +(other)
     if other.class.to_s == 'NumericConstant'
-      NumericConstant.new(@value + other.to_v)
+      f = @value + other.to_v
     else
-      NumericConstant.new(@value + other)
+      f = @value + other
     end
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
+  end
+
+  def -(other)
+    if other.class.to_s == 'NumericConstant'
+      f = @value - other.to_v
+    else
+      f = @value - other
+    end
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
+  end
+
+  def *(other)
+    if other.class.to_s == 'NumericConstant'
+      f = @value * other.to_v
+    else
+      f = @value * other
+    end
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
+  end
+
+  def /(other)
+    fail(BASICException, 'Divide by zero') if other == 0
+    if other.class.to_s == 'NumericConstant'
+      f = @value.to_f / other.to_v.to_f
+    else
+      f = @value.to_f / other.to_f
+    end
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
+  end
+
+  def **(other)
+    if other.class.to_s == 'NumericConstant'
+      f = @value ** other.to_v
+    else
+      f = @value ** other
+    end
+    f2 = float_to_possible_int(f)
+    NumericConstant.new(f2)
   end
 
   def matrix?

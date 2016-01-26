@@ -1,8 +1,3 @@
-def float_to_possible_int(f)
-  i = f.to_i
-  (f - i).abs < 1e-8 ? i : f
-end
-
 # Unary scalar operators
 class UnaryOperator < AbstractToken
   def self.init?(text)
@@ -186,15 +181,15 @@ class BinaryOperator < AbstractToken
     else
       case @op
       when '+'
-        add(x, y)
+        x + y
       when '-'
-        subtract(x, y)
+        x - y
       when '*'
-        multiply(x, y)
+        x * y
       when '/'
-        divide(x, y)
+        x / y
       when '^'
-        power(x, y)
+        x ** y
       end
     end
   end
@@ -205,37 +200,6 @@ class BinaryOperator < AbstractToken
 
   private
 
-  def add(a, b)
-    f = a.to_f + b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
-  end
-
-  def subtract(a, b)
-    f = a.to_f - b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
-  end
-
-  def multiply(a, b)
-    f = a.to_f * b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
-  end
-
-  def divide(a, b)
-    fail(BASICException, 'Division by zero') if b.to_f == 0
-    f = a.to_f / b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
-  end
-
-  def power(a, b)
-    f = a.to_f ** b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
-  end
-
   def add_scalar_matrix_1(a, b)
     dims = b.dimensions
     values = {}
@@ -243,10 +207,8 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      f = a.to_f + b_value.to_f
-      f2 = float_to_possible_int(f)
       coords = '(' + col.to_s + ')'
-      values[coords] = NumericConstant.new(f2)
+      values[coords] = a + b_value
     end
     values
   end
@@ -260,10 +222,8 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        f = a.to_f + b_value.to_f
-        f2 = float_to_possible_int(f)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = a + b_value
       end
     end
     values
@@ -283,10 +243,8 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      f = a.to_f - b_value.to_f
-      f2 = float_to_possible_int(f)
       coords = '(' + col.to_s + ')'
-      values[coords] = NumericConstant.new(f2)
+      values[coords] = a - b_value
     end
     values
   end
@@ -300,10 +258,8 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        f = a.to_f - b_value.to_f
-        f2 = float_to_possible_int(f)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = a - b_value
       end
     end
     values
@@ -323,10 +279,8 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      f = a.to_f * b_value.to_f
-      f2 = float_to_possible_int(f)
       coords = '(' + col.to_s + ')'
-      values[coords] = NumericConstant.new(f2)
+      values[coords] = a * b_value
     end
     values
   end
@@ -340,10 +294,8 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        f = a.to_f * b_value.to_f
-        f2 = float_to_possible_int(f)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = a * b_value
       end
     end
     values
@@ -363,11 +315,8 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      fail(BASICException, 'Division by zero') if b_value.to_f == 0
-      f = a.to_f / b_value.to_f
-      f2 = float_to_possible_int(f)
       coords = '(' + col.to_s + ')'
-      values[coords] = NumericConstant.new(f2)
+      values[coords] = a / b_value
     end
     values
   end
@@ -381,11 +330,8 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        fail(BASICException, 'Division by zero') if b_value.to_f == 0
-        f = a.to_f / b_value.to_f
-        f2 = float_to_possible_int(f)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = a / b_value
       end
     end
     values
@@ -405,10 +351,8 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      f = a.to_f ** b_value.to_f
-      f2 = float_to_possible_int(f)
       coords = '(' + col.to_s + ')'
-      values[coords] = NumericConstant.new(f2)
+      values[coords] = a ** b_value
     end
     values
   end
@@ -422,10 +366,8 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        f = a.to_f ** b_value.to_f
-        f2 = float_to_possible_int(f)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = a ** b_value
       end
     end
     values
@@ -475,12 +417,8 @@ class BinaryOperator < AbstractToken
     n_cols = a_dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
-      a_value = a.get_value_1(col)
-      b_value = b.get_value_1(col)
-      f = a_value.to_f + b_value.to_f
-      f2 = float_to_possible_int(f)
       coords = '(' + col.to_s + ')'
-      values[coords] = NumericConstant.new(f2)
+      values[coords] = a_value + b_value
     end
     values
   end
@@ -495,10 +433,8 @@ class BinaryOperator < AbstractToken
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
-        f = a_value.to_f + b_value.to_f
-        f2 = float_to_possible_int(f)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = a_value + b_value
       end
     end
     values
@@ -522,10 +458,8 @@ class BinaryOperator < AbstractToken
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       b_value = b.get_value_1(col)
-      f = a_value.to_f - b_value.to_f
-      f2 = float_to_possible_int(f)
       coords = '(' + col.to_s + ')'
-      values[coords] = NumericConstant.new(f2)
+      values[coords] = a_value - b_value
     end
     values
   end
@@ -540,10 +474,8 @@ class BinaryOperator < AbstractToken
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
-        f = a_value.to_f - b_value.to_f
-        f2 = float_to_possible_int(f)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = a_value - b_value
       end
     end
     values
