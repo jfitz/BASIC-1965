@@ -93,14 +93,12 @@ class UnaryOperator < AbstractToken
 
   def posate(a)
     f = a.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    NumericConstant.new(f)
   end
 
   def negate(a)
     f = -a.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    NumericConstant.new(f)
   end
 
   def posate_matrix(a)
@@ -631,9 +629,8 @@ class BinaryOperator < AbstractToken
           b_value = b.get_value_2(a_col, r_col)
           f += a_value.to_f * b_value.to_f
         end
-        f2 = float_to_possible_int(f)
         coords = '(' + r_row.to_s + ',' + r_col.to_s + ')'
-        values[coords] = NumericConstant.new(f2)
+        values[coords] = NumericConstant.new(f)
       end
     end
     values

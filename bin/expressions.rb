@@ -365,8 +365,7 @@ class FunctionExp < Function
     x = check_1_num_arg(args)
     xv = x.to_v
     f = Math.exp(xv)
-    result = float_to_possible_int(f)
-    NumericConstant.new(result)
+    NumericConstant.new(f)
   end
 end
 
@@ -381,8 +380,7 @@ class FunctionLog < Function
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv > 0 ? Math.log(xv) : 0
-    result = float_to_possible_int(f)
-    NumericConstant.new(result)
+    NumericConstant.new(f)
   end
 end
 
@@ -412,8 +410,7 @@ class FunctionSqr < Function
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv > 0 ? Math.sqrt(xv) : 0
-    result = float_to_possible_int(f)
-    NumericConstant.new(result)
+    NumericConstant.new(f)
   end
 end
 
@@ -428,8 +425,7 @@ class FunctionSin < Function
     x = check_1_num_arg(args)
     xv = x.to_v
     f = Math.sin(xv)
-    result = float_to_possible_int(f)
-    NumericConstant.new(result)
+    NumericConstant.new(f)
   end
 end
 
@@ -444,8 +440,7 @@ class FunctionCos < Function
     x = check_1_num_arg(args)
     xv = x.to_v
     f = Math.cos(xv)
-    result = float_to_possible_int(f)
-    NumericConstant.new(result)
+    NumericConstant.new(f)
   end
 end
 
@@ -460,8 +455,7 @@ class FunctionTan < Function
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv >= 0 ? Math.tan(xv) : 0
-    result = float_to_possible_int(f)
-    NumericConstant.new(result)
+    NumericConstant.new(f)
   end
 end
 
@@ -476,8 +470,7 @@ class FunctionAtn < Function
     x = check_1_num_arg(args)
     xv = x.to_v
     f = xv >= 0 ? Math.atan(xv) : 0
-    result = float_to_possible_int(f)
-    NumericConstant.new(result)
+    NumericConstant.new(f)
   end
 end
 

@@ -1,26 +1,3 @@
-def float_to_possible_int(f)
-  i = f.to_i
-  (f - i).abs < 1e-8 ? i : f
-end
-
-private
-
-def text_to_numeric(text)
-  if /\A\s*[+-]?\d+(E\d+)?\z/.match(text)
-    text.to_f.to_i
-  elsif /\A\s*[+-]?\d+\.(\d*)?(E\d+)?\z/.match(text)
-    text.to_f
-  elsif /\A\s*[+-]?(\d+)?\.\d*(E\d+)?\z/.match(text)
-    text.to_f
-  elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(text)
-    text.to_f
-  elsif /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(text)
-    text.to_f
-  end
-end
-
-public
-
 # token class
 class AbstractToken
   def initialize
@@ -105,6 +82,24 @@ class ParamSeparator < AbstractToken
   end
 end
 
+private
+
+def text_to_numeric(text)
+  if /\A\s*[+-]?\d+(E\d+)?\z/.match(text)
+    text.to_f.to_i
+  elsif /\A\s*[+-]?\d+\.(\d*)?(E\d+)?\z/.match(text)
+    text.to_f
+  elsif /\A\s*[+-]?(\d+)?\.\d*(E\d+)?\z/.match(text)
+    text.to_f
+  elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(text)
+    text.to_f
+  elsif /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(text)
+    text.to_f
+  end
+end
+
+public
+
 # Numeric constants
 class NumericConstant < AbstractToken
   def self.init?(text)
@@ -112,13 +107,23 @@ class NumericConstant < AbstractToken
     numeric_classes.include?(text.class.to_s) || !text_to_numeric(text).nil?
   end
 
+  private
+
+  def float_to_possible_int(f)
+    i = f.to_i
+    (f - i).abs < 1e-8 ? i : f
+  end
+
+  public
+
   def initialize(text)
     numeric_classes = %w(Fixnum Bignum Float)
     if numeric_classes.include?(text.class.to_s)
-      @value = text
+      f = text
     else
-      @value = text_to_numeric(text)
+      f = text_to_numeric(text)
     end
+    @value = float_to_possible_int(f)
     @operand = true
     @precedence = 0
     fail BASICException, "'#{text}' is not a number" if @value.nil?
@@ -154,8 +159,7 @@ class NumericConstant < AbstractToken
     else
       f = @value + other
     end
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    NumericConstant.new(f)
   end
 
   def -(other)
@@ -164,8 +168,7 @@ class NumericConstant < AbstractToken
     else
       f = @value - other
     end
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    NumericConstant.new(f)
   end
 
   def *(other)
@@ -174,8 +177,7 @@ class NumericConstant < AbstractToken
     else
       f = @value * other
     end
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    NumericConstant.new(f)
   end
 
   def /(other)
@@ -185,8 +187,7 @@ class NumericConstant < AbstractToken
     else
       f = @value.to_f / other.to_f
     end
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    NumericConstant.new(f)
   end
 
   def **(other)
@@ -195,8 +196,7 @@ class NumericConstant < AbstractToken
     else
       f = @value ** other
     end
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    NumericConstant.new(f)
   end
 
   def matrix?
