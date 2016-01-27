@@ -202,7 +202,6 @@ class BinaryOperator < AbstractToken
 
   def add_scalar_matrix_1(a, b)
     dims = b.dimensions
-    values = {}
     n_cols = dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
@@ -215,7 +214,6 @@ class BinaryOperator < AbstractToken
 
   def add_scalar_matrix_2(a, b)
     dims = b.dimensions
-    values = {}
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     values = {}
@@ -238,7 +236,6 @@ class BinaryOperator < AbstractToken
 
   def subtract_scalar_matrix_1(a, b)
     dims = b.dimensions
-    values = {}
     n_cols = dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
@@ -251,7 +248,6 @@ class BinaryOperator < AbstractToken
 
   def subtract_scalar_matrix_2(a, b)
     dims = b.dimensions
-    values = {}
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     values = {}
@@ -274,7 +270,6 @@ class BinaryOperator < AbstractToken
 
   def multiply_scalar_matrix_1(a, b)
     dims = b.dimensions
-    values = {}
     n_cols = dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
@@ -287,7 +282,6 @@ class BinaryOperator < AbstractToken
 
   def multiply_scalar_matrix_2(a, b)
     dims = b.dimensions
-    values = {}
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     values = {}
@@ -310,7 +304,6 @@ class BinaryOperator < AbstractToken
 
   def divide_scalar_matrix_1(a, b)
     dims = b.dimensions
-    values = {}
     n_cols = dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
@@ -323,7 +316,6 @@ class BinaryOperator < AbstractToken
 
   def divide_scalar_matrix_2(a, b)
     dims = b.dimensions
-    values = {}
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     values = {}
@@ -346,7 +338,6 @@ class BinaryOperator < AbstractToken
 
   def power_scalar_matrix_1(a, b)
     dims = b.dimensions
-    values = {}
     n_cols = dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
@@ -359,7 +350,6 @@ class BinaryOperator < AbstractToken
 
   def power_scalar_matrix_2(a, b)
     dims = b.dimensions
-    values = {}
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     values = {}
@@ -380,40 +370,178 @@ class BinaryOperator < AbstractToken
     Matrix.new(dims, values)
   end
 
+  def add_matrix_scalar_1(a, b)
+    dims = a.dimensions
+    n_cols = dims[0].to_i
+    values = {}
+    (1..n_cols).each do |col|
+      a_value = a.get_value_1(col)
+      coords = '(' + col.to_s + ')'
+      values[coords] = a_value + b
+    end
+    values
+  end
+
+  def add_matrix_scalar_2(a, b)
+    dims = a.dimensions
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        a_value = a.get_value_2(row, col)
+        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        values[coords] = a_value + b
+      end
+    end
+    values
+  end
+
   def add_matrix_scalar(a, b)
-    f = a.to_f + b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    dims = a.dimensions
+    values = add_matrix_scalar_1(a, b) if dims.size == 1
+    values = add_matrix_scalar_2(a, b) if dims.size == 2
+    Matrix.new(dims, values)
+  end
+
+  def subtract_matrix_scalar_1(a, b)
+    dims = a.dimensions
+    n_cols = dims[0].to_i
+    values = {}
+    (1..n_cols).each do |col|
+      a_value = a.get_value_1(col)
+      coords = '(' + col.to_s + ')'
+      values[coords] = a_value - b
+    end
+    values
+  end
+
+  def subtract_matrix_scalar_2(a, b)
+    dims = a.dimensions
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        a_value = a.get_value_2(row, col)
+        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        values[coords] = a_value - b
+      end
+    end
+    values
   end
 
   def subtract_matrix_scalar(a, b)
-    f = a.to_f - b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    dims = a.dimensions
+    values = subtract_matrix_scalar_1(a, b) if dims.size == 1
+    values = subtract_matrix_scalar_2(a, b) if dims.size == 2
+    Matrix.new(dims, values)
+  end
+
+  def multiply_matrix_scalar_1(a, b)
+    dims = a.dimensions
+    n_cols = dims[0].to_i
+    values = {}
+    (1..n_cols).each do |col|
+      a_value = a.get_value_1(col)
+      coords = '(' + col.to_s + ')'
+      values[coords] = a_value * b
+    end
+    values
+  end
+
+  def multiply_matrix_scalar_2(a, b)
+    dims = a.dimensions
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        a_value = a.get_value_2(row, col)
+        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        values[coords] = a_value * b
+      end
+    end
+    values
   end
 
   def multiply_matrix_scalar(a, b)
-    f = a.to_f * b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    dims = a.dimensions
+    values = multiply_matrix_scalar_1(a, b) if dims.size == 1
+    values = multiply_matrix_scalar_2(a, b) if dims.size == 2
+    Matrix.new(dims, values)
+  end
+
+  def divide_matrix_scalar_1(a, b)
+    dims = a.dimensions
+    n_cols = dims[0].to_i
+    values = {}
+    (1..n_cols).each do |col|
+      a_value = a.get_value_1(col)
+      coords = '(' + col.to_s + ')'
+      values[coords] = a_value / b
+    end
+    values
+  end
+
+  def divide_matrix_scalar_2(a, b)
+    dims = a.dimensions
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        a_value = a.get_value_2(row, col)
+        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        values[coords] = a_value / b
+      end
+    end
+    values
   end
 
   def divide_matrix_scalar(a, b)
-    fail(BASICException, 'Division by zero') if b.to_f == 0
-    f = a.to_f / b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    dims = a.dimensions
+    values = divide_matrix_scalar_1(a, b) if dims.size == 1
+    values = divide_matrix_scalar_2(a, b) if dims.size == 2
+    Matrix.new(dims, values)
+  end
+
+  def power_matrix_scalar_1(a, b)
+    dims = a.dimensions
+    n_cols = dims[0].to_i
+    values = {}
+    (1..n_cols).each do |col|
+      a_value = a.get_value_1(col)
+      coords = '(' + col.to_s + ')'
+      values[coords] = a_value ** b
+    end
+    values
+  end
+
+  def power_matrix_scalar_2(a, b)
+    dims = a.dimensions
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        a_value = a.get_value_2(row, col)
+        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        values[coords] = a_value ** b
+      end
+    end
+    values
   end
 
   def power_matrix_scalar(a, b)
-    f = a.to_f**b.to_f
-    f2 = float_to_possible_int(f)
-    NumericConstant.new(f2)
+    dims = a.dimensions
+    values = power_matrix_scalar_1(a, b) if dims.size == 1
+    values = power_matrix_scalar_2(a, b) if dims.size == 2
+    Matrix.new(dims, values)
   end
 
   def add_matrix_matrix_1(a, b)
     a_dims = a.dimensions
-    values = {}
     n_cols = a_dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
@@ -425,7 +553,6 @@ class BinaryOperator < AbstractToken
 
   def add_matrix_matrix_2(a, b)
     a_dims = a.dimensions
-    values = {}
     n_rows = a_dims[0].to_i
     n_cols = a_dims[1].to_i
     values = {}
@@ -452,7 +579,6 @@ class BinaryOperator < AbstractToken
 
   def subtract_matrix_matrix_1(a, b)
     a_dims = a.dimensions
-    values = {}
     n_cols = a_dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
@@ -466,7 +592,6 @@ class BinaryOperator < AbstractToken
 
   def subtract_matrix_matrix_2(a, b)
     a_dims = a.dimensions
-    values = {}
     n_rows = a_dims[0].to_i
     n_cols = a_dims[1].to_i
     values = {}
