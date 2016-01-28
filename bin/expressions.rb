@@ -712,10 +712,10 @@ class AbstractExpression
   end
 
   def stack_to_expression(stack, expression)
-    while stack.size > 0 &&
-          !stack[-1].starter?
+    while !stack[-1].starter?
       op = stack.pop
       expression << op
+      fail(BASICException, 'Expression error') if stack.size == 0
     end
   end
 
@@ -811,6 +811,7 @@ class AbstractExpression
       end
       previous_token = token
     end
+    fail(BASICException, 'Expression error') if operator_stack.size > 0
     parsed_expressions << parsed_expression
     parsed_expressions
   end

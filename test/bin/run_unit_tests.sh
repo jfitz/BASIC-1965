@@ -164,6 +164,14 @@ bash test/bin/run_one_test.sh syntax_error_2
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh syntax_error_2
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh syntax_error_3
+((ECODE+=$?))
+bash test/bin/list_one_test.sh syntax_error_3
+((ECODE+=$?))
+bash test/bin/run_one_test.sh syntax_error_4
+((ECODE+=$?))
+bash test/bin/list_one_test.sh syntax_error_4
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh function_int
 ((ECODE+=$?))
