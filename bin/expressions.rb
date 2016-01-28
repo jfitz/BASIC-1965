@@ -286,24 +286,24 @@ class Function < AbstractToken
       args.class.to_s != 'Array'
   end
 
-  def check_value(value)
+  def check_value(value, type)
     fail(BASICException,
          "Argument #{x} #{x.class} not numeric") if
-      value.class.to_s != 'NumericConstant'
+      value.class.to_s != type
   end
 
-  def check_1_num_arg(args)
+  def check_1_num_arg(args, type)
     check_args(args)
     num_args = args.length
     fail(BASICException,
          "Function #{@name} expects 1 argument, found #{num_args}") if
       num_args != 1
     x = args[0]
-    check_value(x)
+    check_value(x, type)
     x
   end
 
-  def check_0_1_num_args(args)
+  def check_0_1_num_args(args, type)
     check_args(args)
     num_args = args.length
     if num_args == 0
@@ -315,7 +315,7 @@ class Function < AbstractToken
            "Function #{@name} expects 0 or 1 argument, found #{num_args}")
     end
 
-    check_value(x)
+    check_value(x, type)
     x
   end
 end
@@ -329,7 +329,7 @@ class FunctionInt < Function
   # return a single value
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     result = xv.to_i
     NumericConstant.new(result)
@@ -345,7 +345,7 @@ class FunctionRnd < Function
   # return a single value
   def evaluate(interpreter, stack)
     args = stack.pop
-    x = check_0_1_num_args(args)
+    x = check_0_1_num_args(args, 'NumericConstant')
     xv = x.to_v
     upper_bound = xv.truncate.to_f
     upper_bound = 1.to_f if upper_bound <= 0
@@ -362,7 +362,7 @@ class FunctionExp < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     f = Math.exp(xv)
     NumericConstant.new(f)
@@ -377,7 +377,7 @@ class FunctionLog < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     f = xv > 0 ? Math.log(xv) : 0
     NumericConstant.new(f)
@@ -392,7 +392,7 @@ class FunctionAbs < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     result = xv >= 0 ? xv : -xv
     NumericConstant.new(result)
@@ -407,7 +407,7 @@ class FunctionSqr < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     f = xv > 0 ? Math.sqrt(xv) : 0
     NumericConstant.new(f)
@@ -422,7 +422,7 @@ class FunctionSin < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     f = Math.sin(xv)
     NumericConstant.new(f)
@@ -437,7 +437,7 @@ class FunctionCos < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     f = Math.cos(xv)
     NumericConstant.new(f)
@@ -452,7 +452,7 @@ class FunctionTan < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     f = xv >= 0 ? Math.tan(xv) : 0
     NumericConstant.new(f)
@@ -467,7 +467,7 @@ class FunctionAtn < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     xv = x.to_v
     f = xv >= 0 ? Math.atan(xv) : 0
     NumericConstant.new(f)
@@ -482,11 +482,37 @@ class FunctionSgn < Function
 
   def evaluate(_, stack)
     args = stack.pop
-    x = check_1_num_arg(args)
+    x = check_1_num_arg(args, 'NumericConstant')
     result = 0
     result = 1 if x > 0
     result = -1 if x < 0
     NumericConstant.new(result)
+  end
+end
+
+# function TRN
+class FunctionTrn < Function
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    x = check_1_num_arg(args, 'Matrix')
+    dims = x.dimensions
+    fail(BASICException, 'TRN requires matrix') if dims.size != 2
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    new_dims = [dims[1], dims[0]]
+    new_values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = x.get_value_2(row, col)
+        coords = '(' + col.to_s + ',' + row.to_s + ')'
+        new_values[coords] = value
+      end
+    end
+    Matrix.new(new_dims, new_values)
   end
 end
 
@@ -503,7 +529,8 @@ class FunctionFactory
     'COS' => FunctionCos,
     'TAN' => FunctionTan,
     'ATN' => FunctionAtn,
-    'SGN' => FunctionSgn
+    'SGN' => FunctionSgn,
+    'TRN' => FunctionTrn
   }
 
   def self.valid?(text)
