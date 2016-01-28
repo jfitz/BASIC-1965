@@ -168,6 +168,7 @@ class MatrixValue < Variable
 
   def evaluate(interpreter, _)
     dims = interpreter.get_dimensions(@variable_name)
+    fail(BASICException, 'Variable has no dimensions') if dims.nil?
     values = {}
     if dims.size == 1
       n_cols = dims[0].to_i
@@ -320,8 +321,28 @@ class Function < AbstractToken
   end
 end
 
+class AbstractScalarFunction < Function
+  def initialize(text)
+    super
+  end
+
+  def default_type
+    ScalarValue
+  end
+end
+
+class AbstractMatrixFunction < Function
+  def initialize(text)
+    super
+  end
+
+  def default_type
+    MatrixValue
+  end
+end
+
 # function INT
-class FunctionInt < Function
+class FunctionInt < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -337,7 +358,7 @@ class FunctionInt < Function
 end
 
 # function RND
-class FunctionRnd < Function
+class FunctionRnd < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -355,7 +376,7 @@ class FunctionRnd < Function
 end
 
 # function EXP
-class FunctionExp < Function
+class FunctionExp < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -370,7 +391,7 @@ class FunctionExp < Function
 end
 
 # function LOG
-class FunctionLog < Function
+class FunctionLog < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -385,7 +406,7 @@ class FunctionLog < Function
 end
 
 # function ABS
-class FunctionAbs < Function
+class FunctionAbs < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -400,7 +421,7 @@ class FunctionAbs < Function
 end
 
 # function SQR
-class FunctionSqr < Function
+class FunctionSqr < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -415,7 +436,7 @@ class FunctionSqr < Function
 end
 
 # function SIN
-class FunctionSin < Function
+class FunctionSin < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -430,7 +451,7 @@ class FunctionSin < Function
 end
 
 # function COS
-class FunctionCos < Function
+class FunctionCos < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -445,7 +466,7 @@ class FunctionCos < Function
 end
 
 # function TAN
-class FunctionTan < Function
+class FunctionTan < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -460,7 +481,7 @@ class FunctionTan < Function
 end
 
 # function ATN
-class FunctionAtn < Function
+class FunctionAtn < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -475,7 +496,7 @@ class FunctionAtn < Function
 end
 
 # function SGN
-class FunctionSgn < Function
+class FunctionSgn < AbstractScalarFunction
   def initialize(text)
     super
   end
@@ -491,7 +512,7 @@ class FunctionSgn < Function
 end
 
 # function TRN
-class FunctionTrn < Function
+class FunctionTrn < AbstractMatrixFunction
   def initialize(text)
     super
   end
@@ -545,7 +566,7 @@ class FunctionFactory
 end
 
 # User-defined function (provides a scalar value)
-class UserFunction < Function
+class UserFunction < AbstractScalarFunction
   def self.init?(text)
     /\AFN[A-Z]\z/.match(text)
   end
@@ -688,13 +709,13 @@ end
 
 # base class for expressions
 class AbstractExpression
-  def initialize(text, matrix_or_scalar)
+  def initialize(text, default_type)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
     @unparsed_expression = text
 
     words = split_input(text)
     tokens = tokenize(words)
-    @parsed_expressions = parse(tokens, matrix_or_scalar)
+    @parsed_expressions = parse(tokens, default_type)
   end
 
   def to_s
@@ -756,12 +777,13 @@ class AbstractExpression
   end
 
   # returns an Array of parsed expressions
-  def parse(tokens, matrix_or_scalar)
+  def parse(tokens, default_type)
     parsed_expressions = []
     operator_stack = []
     expression_stack = []
     parsed_expression = []
     parens_stack = []
+    type_stack = [default_type]
 
     parens_group = []
     previous_token = InitialOperator.new
@@ -776,6 +798,7 @@ class AbstractExpression
         operator_stack.push(ParamStart.new)
         parens_stack << parens_group
         parens_group = []
+        type_stack.push(previous_token.default_type)
       elsif token.group_start? && previous_token.variable?
         # start parsing the list of subscripts
         expression_stack.push(parsed_expression)
@@ -783,11 +806,13 @@ class AbstractExpression
         operator_stack.push(ParamStart.new)
         parens_stack << parens_group
         parens_group = []
+        type_stack.push(ScalarValue)
       elsif token.group_start?
         # neither arguments or subscripts; just a grouping parens
         operator_stack.push(token)
         parens_stack << parens_group
         parens_group = []
+        type_stack.push(ScalarValue)
       elsif token.separator?
         # pop the operator stack until the corresponding left paren is found
         # Append each operator to the end of the output list
@@ -806,6 +831,7 @@ class AbstractExpression
           parsed_expression = expression_stack.pop
         end
         parens_group = parens_stack.pop
+        type_stack.pop
       elsif token.operator?
         # remove operators already on the stack that have higher
         # or equal precedence
@@ -826,11 +852,7 @@ class AbstractExpression
         # append them to the output list
         stack_to_precedence(operator_stack, parsed_expression, token)
         # push the operator onto the operator stack
-        if matrix_or_scalar
-          variable_name = MatrixValue.new(token)
-        else
-          variable_name = ScalarValue.new(token)
-        end
+        variable_name = type_stack[-1].new(token)
         operator_stack.push(variable_name)
       else
         # the token is an operand, append it to the output list
@@ -847,7 +869,7 @@ end
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
   def initialize(text)
-    super(text, false)
+    super(text, ScalarValue)
   end
 
   # returns an Array of values
@@ -866,7 +888,7 @@ end
 # Value matrix expression (an R-value)
 class ValueMatrixExpression < AbstractExpression
   def initialize(text)
-    super(text, true)
+    super(text, MatrixValue)
   end
 
   def empty?
@@ -893,7 +915,7 @@ end
 # Abstract target expression
 class AbstractTargetExpression < AbstractExpression
   def initialize(text)
-    super(text, false)
+    super(text, ScalarValue)
 
     check_length
     check_all_lengths

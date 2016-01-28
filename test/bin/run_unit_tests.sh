@@ -277,6 +277,11 @@ bash test/bin/run_one_test.sh mat_power_s_m
 bash test/bin/list_one_test.sh mat_power_s_m
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh mat_add_v_m
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_add_v_m
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh mat_add_m_s
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh mat_add_m_s
