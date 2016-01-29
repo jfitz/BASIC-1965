@@ -319,6 +319,23 @@ class Function < AbstractToken
     check_value(x, type)
     x
   end
+
+  def check_1_2_num_args(args, type)
+    check_args(args)
+    num_args = args.length
+    if num_args == 1
+      x = args[0]
+      check_value(x, type)
+    elsif num_args == 2
+      x = args[0]
+      check_value(x, type)
+      x = args[1]
+      check_value(x, type)
+    else
+      fail(BASICException,
+           "Function #{@name} expects 1 or 2 arguments, found #{num_args}")
+    end
+  end
 end
 
 class AbstractScalarFunction < Function
@@ -537,6 +554,36 @@ class FunctionTrn < AbstractMatrixFunction
   end
 end
 
+# function IDN
+class FunctionIdn < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    check_1_2_num_args(args, 'NumericConstant')
+    fail(BASICException, 'TRN requires matrix') if
+      args.size == 2 && args[1] != args[0]
+    n_rows = args[0].to_i
+    n_cols = args[0].to_i
+    new_dims = [args[0], args[0]]
+    new_values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        if col == row
+          value = NumericConstant.new(1)
+        else
+          value = NumericConstant.new(0)
+        end
+        coords = '(' + col.to_s + ',' + row.to_s + ')'
+        new_values[coords] = value
+      end
+    end
+    Matrix.new(new_dims, new_values)
+  end
+end
+
 # class to make functions, given the name
 class FunctionFactory
   @@functions = {
@@ -551,7 +598,8 @@ class FunctionFactory
     'TAN' => FunctionTan,
     'ATN' => FunctionAtn,
     'SGN' => FunctionSgn,
-    'TRN' => FunctionTrn
+    'TRN' => FunctionTrn,
+    'IDN' => FunctionIdn
   }
 
   def self.valid?(text)
