@@ -192,9 +192,9 @@ class NumericConstant < AbstractToken
 
   def **(other)
     if other.class.to_s == 'NumericConstant'
-      f = @value ** other.to_v
+      f = @value**other.to_v
     else
-      f = @value ** other
+      f = @value**other
     end
     NumericConstant.new(f)
   end

@@ -187,7 +187,7 @@ class BinaryOperator < AbstractToken
       when '/'
         x / y
       when '^'
-        x ** y
+        x**y
       end
     end
   end
@@ -341,7 +341,7 @@ class BinaryOperator < AbstractToken
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
       coords = '(' + col.to_s + ')'
-      values[coords] = a ** b_value
+      values[coords] = a**b_value
     end
     values
   end
@@ -355,7 +355,7 @@ class BinaryOperator < AbstractToken
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = a ** b_value
+        values[coords] = a**b_value
       end
     end
     values
@@ -511,7 +511,7 @@ class BinaryOperator < AbstractToken
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = '(' + col.to_s + ')'
-      values[coords] = a_value ** b
+      values[coords] = a_value**b
     end
     values
   end
@@ -525,7 +525,7 @@ class BinaryOperator < AbstractToken
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = '(' + row.to_s + ',' + col.to_s + ')'
-        values[coords] = a_value ** b
+        values[coords] = a_value**b
       end
     end
     values
@@ -543,6 +543,8 @@ class BinaryOperator < AbstractToken
     n_cols = a_dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
+      a_value = a.get_value_(col)
+      b_value = b.get_value_(col)
       coords = '(' + col.to_s + ')'
       values[coords] = a_value + b_value
     end
@@ -619,7 +621,6 @@ class BinaryOperator < AbstractToken
     r_cols = r_dims[1].to_i
     a_dims = a.dimensions
     a_rows = a_dims[0].to_i
-    a_cols = a_dims[1].to_i
     values = {}
     (1..r_rows).each do |r_row|
       (1..r_cols).each do |r_col|
@@ -651,11 +652,11 @@ class BinaryOperator < AbstractToken
     Matrix.new(r_dims, values)
   end
 
-  def divide_matrix_matrix(a, b)
+  def divide_matrix_matrix(_, _)
     fail BASICException, 'Cannot divide matrix by matrix'
   end
 
-  def power_matrix_matrix(a, b)
+  def power_matrix_matrix(_, _)
     fail BASICException, 'Cannot raise matrix to matrix power'
   end
 end
