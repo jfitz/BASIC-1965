@@ -130,6 +130,8 @@ end
 
 # Matrix with values
 class Matrix
+  attr_reader :dimensions
+
   def initialize(dimensions, values)
     @dimensions = dimensions
     @values = values
@@ -137,10 +139,6 @@ class Matrix
 
   def matrix?
     true
-  end
-
-  def dimensions
-    @dimensions
   end
 
   def get_value_1(col)
@@ -242,7 +240,6 @@ end
 
 # A list (needed because it has precedence value)
 class List < AbstractToken
-
   attr_reader :precedence
 
   def initialize(parsed_expressions)
@@ -270,7 +267,6 @@ end
 
 # Scalar function (provides a scalar)
 class Function < AbstractToken
-
   attr_reader :precedence
 
   def initialize(text)
@@ -304,6 +300,7 @@ class Function < AbstractToken
   end
 end
 
+# Function that expects scalar parameters
 class AbstractScalarFunction < Function
   def initialize(text)
     super
@@ -314,6 +311,7 @@ class AbstractScalarFunction < Function
   end
 end
 
+# Function that expects matrix parameters
 class AbstractMatrixFunction < Function
   def initialize(text)
     super
@@ -351,9 +349,7 @@ class FunctionRnd < AbstractScalarFunction
   # return a single value
   def evaluate(interpreter, stack)
     args = stack.pop
-    if args.size == 0
-      x = NumericConstant.new(100)
-    end
+    x = NumericConstant.new(100) if args.size == 0
     if args.size == 1
       check_arg_types(args, ['NumericConstant'])
       x = args[0]
@@ -803,7 +799,7 @@ class AbstractExpression
   end
 
   def stack_to_expression(stack, expression)
-    while !stack[-1].starter?
+    until stack[-1].starter?
       op = stack.pop
       expression << op
       fail(BASICException, 'Expression error') if stack.size == 0
@@ -1152,17 +1148,17 @@ class MatrixPrintableExpression < AbstractPrintableExpression
 
   def print_matrix(matrix, printer, interpreter, carriage)
     dimensions = matrix.dimensions
-    fail BASICException, "Undefined matrix" if dimensions.nil?
+    fail BASICException, 'Undefined matrix' if dimensions.nil?
 
     case dimensions.size
     when 0
-      fail BASICException, "Need dimensions in matrix"
+      fail BASICException, 'Need dimensions in matrix'
     when 1
       print_1(matrix, dimensions, printer, interpreter, carriage)
     when 2
       print_2(matrix, dimensions, printer, interpreter, carriage)
     else
-      fail BASICException, "Too many dimensions in matrix"
+      fail BASICException, 'Too many dimensions in matrix'
     end
   end
 
