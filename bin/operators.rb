@@ -621,6 +621,7 @@ class BinaryOperator < AbstractToken
     r_cols = r_dims[1].to_i
     a_dims = a.dimensions
     a_rows = a_dims[0].to_i
+    a_cols = a_dims[1].to_i
     values = {}
     (1..r_rows).each do |r_row|
       (1..r_cols).each do |r_col|

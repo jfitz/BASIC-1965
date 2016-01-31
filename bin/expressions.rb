@@ -349,6 +349,8 @@ class FunctionRnd < AbstractScalarFunction
   # return a single value
   def evaluate(interpreter, stack)
     args = stack.pop
+    fail(BASICException, 'Zero or one argument required for RND()') unless
+      args.size == 1 || args.size == 2
     x = NumericConstant.new(100) if args.size == 0
     if args.size == 1
       check_arg_types(args, ['NumericConstant'])
@@ -370,7 +372,8 @@ class FunctionExp < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'EXP requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for EXP()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -387,7 +390,8 @@ class FunctionLog < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'LOG requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for LOG()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -404,7 +408,8 @@ class FunctionAbs < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'ABS requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for ABS()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -421,7 +426,8 @@ class FunctionSqr < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'SQR requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for SQR()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -438,7 +444,8 @@ class FunctionSin < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'SIN requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for SIN()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -455,7 +462,8 @@ class FunctionCos < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'COS requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for COS()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -472,7 +480,8 @@ class FunctionTan < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'TRN requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for TAN()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -489,7 +498,8 @@ class FunctionAtn < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'ATN requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for ATN()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
@@ -506,7 +516,8 @@ class FunctionSgn < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'SGN requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for SGN()') unless
+      args.size == 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     result = 0
@@ -524,10 +535,11 @@ class FunctionTrn < AbstractMatrixFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'TRN requires single value') if args.size != 1
+    fail(BASICException, 'One argument required for TRN()') unless
+      args.size == 1
     check_arg_types(args, ['Matrix'])
     dims = args[0].dimensions
-    fail(BASICException, 'TRN requires matrix') if dims.size != 2
+    fail(BASICException, 'TRN requires matrix') unless dims.size == 2
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     new_dims = [dims[1], dims[0]]
@@ -535,6 +547,58 @@ class FunctionTrn < AbstractMatrixFunction
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         value = x.get_value_2(row, col)
+        coords = '(' + col.to_s + ',' + row.to_s + ')'
+        new_values[coords] = value
+      end
+    end
+    Matrix.new(new_dims, new_values)
+  end
+end
+
+# function ZER
+class FunctionZer < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'Two arguments required for ZER()') unless
+      args.size == 2
+    check_arg_types(args, ['NumericConstant', 'NumericConstant'])
+    n_rows = args[0].to_i
+    n_cols = args[1].to_i
+    new_dims = [args[0], args[1]]
+    new_values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = NumericConstant.new(0)
+        coords = '(' + col.to_s + ',' + row.to_s + ')'
+        new_values[coords] = value
+      end
+    end
+    Matrix.new(new_dims, new_values)
+  end
+end
+
+# function CON
+class FunctionCon < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'Two arguments required for CON()') unless
+      args.size == 2
+    check_arg_types(args, ['NumericConstant', 'NumericConstant'])
+    n_rows = args[0].to_i
+    n_cols = args[1].to_i
+    new_dims = [args[0], args[1]]
+    new_values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = NumericConstant.new(1)
         coords = '(' + col.to_s + ',' + row.to_s + ')'
         new_values[coords] = value
       end
@@ -590,6 +654,8 @@ class FunctionFactory
     'ATN' => FunctionAtn,
     'SGN' => FunctionSgn,
     'TRN' => FunctionTrn,
+    'ZER' => FunctionZer,
+    'CON' => FunctionCon,
     'IDN' => FunctionIdn
   }
 
