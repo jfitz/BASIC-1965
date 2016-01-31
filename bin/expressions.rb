@@ -639,6 +639,77 @@ class FunctionIdn < AbstractScalarFunction
   end
 end
 
+# function DET
+class FunctionDet < AbstractMatrixFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'One argument required for DET()') unless
+      args.size == 1
+    check_arg_types(args, ['Matrix'])
+    determinant(args[0])
+  end
+
+  private
+
+  def determinant(matrix)
+    dims = matrix.dimensions
+    fail(BASICException, 'TRN requires matrix') unless dims.size == 2
+    fail(BASICException, 'IDN requires square matrix') if dims[1] != dims[0]
+    if dims[0] == 1
+      det = matrix.get_value_2(1,1)
+    elsif dims[0].to_i == 2
+      a = matrix.get_value_2(1, 1)
+      b = matrix.get_value_2(1, 2)
+      c = matrix.get_value_2(2, 1)
+      d = matrix.get_value_2(2, 2)
+      det = a * d - b * c
+    else
+      sign = 1
+      det = NumericConstant.new(0)
+      n_cols = dims[1].to_i
+      # for each element in first row
+      (1..n_cols).each do |col|
+        v = matrix.get_value_2(1, col)
+        # create submatrix
+        subm = submatrix(matrix, 1, col)
+        d = v * determinant(subm) * sign
+        det = det + d
+        sign *= -1
+      end
+    end
+    det
+  end
+
+  def submatrix(matrix, exclude_row, exclude_col)
+    dims = matrix.dimensions
+    new_dims = [dims[0] - 1, dims[1] - 1]
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    new_values = {}
+    new_row = 1
+    (1..n_rows).each do |row|
+      new_col = 1
+      if row != exclude_row
+        (1..n_cols).each do |col|
+          if col != exclude_col
+            value = matrix.get_value_2(row, col)
+            old_coords = '(' + row.to_s + ',' + col.to_s + ')'
+            new_coords = '(' + new_row.to_s + ',' + new_col.to_s + ')'
+            new_values[new_coords] = value
+            new_col += 1
+          end
+        end
+        new_row += 1
+      end
+    end
+    Matrix.new(new_dims, new_values)
+  end
+end
+
 # class to make functions, given the name
 class FunctionFactory
   @@functions = {
@@ -656,7 +727,8 @@ class FunctionFactory
     'TRN' => FunctionTrn,
     'ZER' => FunctionZer,
     'CON' => FunctionCon,
-    'IDN' => FunctionIdn
+    'IDN' => FunctionIdn,
+    'DET' => FunctionDet
   }
 
   def self.valid?(text)

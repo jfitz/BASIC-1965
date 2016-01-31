@@ -540,7 +540,7 @@ class Interpreter
       subscripts.size != dimensions.size
     subscripts.zip(dimensions).each do |pair|
       fail(BASICException, "Subscript #{pair[0]} out of range #{pair[1]}") if
-        pair[0] > pair[1]
+        pair[0] > pair[1].to_i
     end
   end
 
@@ -556,7 +556,7 @@ class Interpreter
     end
     # then look in general table
     if x.nil?
-      @variables[v] = 0 unless @variables.key?(v)
+      @variables[v] = NumericConstant.new(0) unless @variables.key?(v)
       x = @variables[v]
     end
     x
