@@ -93,6 +93,17 @@ bash test/bin/run_one_test.sh zero-4
 bash test/bin/list_one_test.sh zero-4
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh matops
+((ECODE+=$?))
+bash test/bin/run_one_test.sh matmpy
+((ECODE+=$?))
+bash test/bin/run_one_test.sh matpwr
+((ECODE+=$?))
+bash test/bin/run_one_test.sh matinv
+((ECODE+=$?))
+bash test/bin/run_one_test.sh linequ
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh plot
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh plot

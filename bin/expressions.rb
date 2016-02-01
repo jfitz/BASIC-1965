@@ -137,6 +137,10 @@ class Matrix
     @values = values
   end
 
+  def clone
+    Matrix.new(@dimensions.clone, @values.clone)
+  end
+
   def matrix?
     true
   end
@@ -538,7 +542,8 @@ class FunctionTrn < AbstractMatrixFunction
     fail(BASICException, 'One argument required for TRN()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
-    dims = args[0].dimensions
+    matrix = args[0]
+    dims = matrix.dimensions
     fail(BASICException, 'TRN requires matrix') unless dims.size == 2
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
@@ -546,7 +551,7 @@ class FunctionTrn < AbstractMatrixFunction
     new_values = {}
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
-        value = x.get_value_2(row, col)
+        value = matrix.get_value_2(row, col)
         coords = '(' + col.to_s + ',' + row.to_s + ')'
         new_values[coords] = value
       end
@@ -657,8 +662,8 @@ class FunctionDet < AbstractMatrixFunction
 
   def determinant(matrix)
     dims = matrix.dimensions
-    fail(BASICException, 'TRN requires matrix') unless dims.size == 2
-    fail(BASICException, 'IDN requires square matrix') if dims[1] != dims[0]
+    fail(BASICException, 'DET requires matrix') unless dims.size == 2
+    fail(BASICException, 'DET requires square matrix') if dims[1] != dims[0]
     if dims[0] == 1
       det = matrix.get_value_2(1,1)
     elsif dims[0].to_i == 2
@@ -710,6 +715,121 @@ class FunctionDet < AbstractMatrixFunction
   end
 end
 
+# function INV
+class FunctionInv < AbstractMatrixFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+    fail(BASICException, 'One argument required for DET()') unless
+      args.size == 1
+    check_arg_types(args, ['Matrix'])
+    dims = args[0].dimensions
+    fail(BASICException, 'INV requires matrix') unless dims.size == 2
+    fail(BASICException, 'INV requires square matrix') if dims[1] != dims[0]
+    inverse(args[0])
+  end
+
+  private
+
+  def make_coords(r,c)
+    '(' + r.to_s + ',' + c.to_s + ')'
+  end
+
+  def inverse(matrix)
+    dims = matrix.dimensions
+    values = {}
+    work_matrix = matrix.clone	# do we need this?
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    # set all values
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = matrix.get_value_2(row, col)
+        coords = make_coords(row.to_s, col)
+        values[coords] = value
+      end
+    end
+    # create identity matrix
+    inv_values = {}
+    # set all values
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        coords = make_coords(row.to_s, col)
+        inv_values[coords] = NumericConstant.new(0)
+        inv_values[coords] = NumericConstant.new(1) if col == row
+      end
+    end
+    # convert to upper triangular form
+    (1..n_cols - 1).each do |col|
+      (col + 1..n_rows).each do |row|
+        denom_coords = make_coords(col, col)
+        denominator = values[denom_coords]
+        numer_coords = make_coords(row, col)
+        numerator = values[numer_coords]
+        factor = numerator / denominator
+        # adjust values for this row
+        (1..n_cols).each do |wcol|
+          value_coords = make_coords(row, wcol)
+          subtrahend = values[value_coords]
+          minuend_coords = make_coords(col, wcol)
+          minuend = values[minuend_coords]
+          new_value = subtrahend - minuend * factor
+          values[value_coords] = new_value
+          # update inverse matrix
+          subtrahend = inv_values[value_coords]
+          minuend = inv_values[minuend_coords]
+          new_value = subtrahend - minuend * factor
+          inv_values[value_coords] = new_value
+        end
+      end
+    end
+    # convert to lower triangular form
+    n_cols.downto(2) do |col|
+      (col - 1).downto(1).each do |row|
+        denom_coords = make_coords(col, col)
+        denominator = values[denom_coords]
+        numer_coords = make_coords(row, col)
+        numerator = values[numer_coords]
+        factor = numerator / denominator
+        # adjust values for this row
+        (1..n_cols).each do |wcol|
+          value_coords = make_coords(row, wcol)
+          subtrahend = values[value_coords]
+          minuend_coords = make_coords(col, wcol)
+          minuend = values[minuend_coords]
+          new_value = subtrahend - minuend * factor
+          values[value_coords] = new_value
+          # update inverse matrix
+          subtrahend = inv_values[value_coords]
+          minuend = inv_values[minuend_coords]
+          new_value = subtrahend - minuend * factor
+          inv_values[value_coords] = new_value
+        end
+      end
+    end
+    # normalize to ones
+    (1..n_rows).each do |row|
+      denom_coords = make_coords(row, row)
+      denominator = values[denom_coords]
+      (1..n_cols).each do |col|
+        coords = make_coords(row.to_s, col)
+        numerator = values[coords]
+        new_value = numerator / denominator
+        values[coords] = new_value
+        # update inverse matrix
+        numerator = inv_values[coords]
+        new_value = numerator / denominator
+        inv_values[coords] = new_value
+      end
+    end
+
+    Matrix.new(dims, inv_values)
+  end
+end
+
 # class to make functions, given the name
 class FunctionFactory
   @@functions = {
@@ -728,7 +848,8 @@ class FunctionFactory
     'ZER' => FunctionZer,
     'CON' => FunctionCon,
     'IDN' => FunctionIdn,
-    'DET' => FunctionDet
+    'DET' => FunctionDet,
+    'INV' => FunctionInv
   }
 
   def self.valid?(text)
