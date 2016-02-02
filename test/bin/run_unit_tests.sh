@@ -266,6 +266,15 @@ bash test/bin/run_one_test.sh mat_multiply_m_m
 bash test/bin/list_one_test.sh mat_multiply_m_m
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh mat_multiply_m_a
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_multiply_m_a
+((ECODE+=$?))
+bash test/bin/run_one_test.sh mat_multiply_a_m
+((ECODE+=$?))
+bash test/bin/list_one_test.sh mat_multiply_a_m
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh mat_add_s_m
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh mat_add_s_m

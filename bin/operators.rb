@@ -616,7 +616,61 @@ class BinaryOperator < AbstractToken
     Matrix.new(a_dims, values)
   end
 
-  def multiply_matrix_matrix_w(a, b, r_dims)
+  def array_to_horizontal(a)
+    a_dims = a.dimensions
+    new_dims = [NumericConstant.new(1), a_dims[0]]
+    n_cols = a_dims[0].to_i
+    new_values = {}
+    (1..n_cols).each do |col|
+      value = a.get_value_1(col)
+      coords = '(1,' + col.to_s + ')'
+      new_values[coords] = value
+    end
+    Matrix.new(new_dims, new_values)
+  end
+
+  def horizontal_to_array(m)
+    m_dims = m.dimensions
+    new_dims = [m_dims[1]]
+    new_values = {}
+    n_cols = new_dims[0].to_i
+    row = NumericConstant.new(1)
+    (1..n_cols).each do |col|
+      value = m.get_value_2(row, col)
+      coords = '(' + col.to_s + ')'
+      new_values[coords] = value
+    end
+    Matrix.new(new_dims, new_values)
+  end
+
+  def array_to_vertical(a)
+    a_dims = a.dimensions
+    new_dims = [a_dims[0], NumericConstant.new(1)]
+    n_cols = a_dims[0].to_i
+    new_values = {}
+    (1..n_cols).each do |col|
+      value = a.get_value_1(col)
+      coords = '(' + col.to_s + ',1)'
+      new_values[coords] = value
+    end
+    Matrix.new(new_dims, new_values)
+  end
+
+  def vertical_to_array(m)
+    m_dims = m.dimensions
+    new_dims = [m_dims[0]]
+    new_values = {}
+    n_rows = new_dims[0].to_i
+    col = NumericConstant.new(1)
+    (1..n_rows).each do |row|
+      value = m.get_value_2(row, col)
+      coords = '(' + row.to_s + ')'
+      new_values[coords] = value
+    end
+    Matrix.new(new_dims, new_values)
+  end
+
+  def multiply_matrix_matrix_2_2(a, b, r_dims)
     r_rows = r_dims[0].to_i
     r_cols = r_dims[1].to_i
     a_dims = a.dimensions
@@ -642,15 +696,39 @@ class BinaryOperator < AbstractToken
     # verify dimensions are acceptable
     a_dims = a.dimensions
     b_dims = b.dimensions
-    fail(BASICException, 'Matrix multiplication must have two matrices') if
-      a_dims.size != 2 || b_dims.size != 2
-    # number of columns in a must match number of rows in b
-    fail(BASICException, 'Matrix dimensions do not match') if
-      a_dims[1] != b_dims[0]
-    # result has number of rows in a and number of columns in b
-    r_dims = [a_dims[0], b_dims[1]]
-    values = multiply_matrix_matrix_w(a, b, r_dims)
-    Matrix.new(r_dims, values)
+    if a_dims.size == 2 && b_dims.size == 1
+      new_b = array_to_vertical(b)
+      new_b_dims = new_b.dimensions
+      # number of columns in a must match number of rows in b
+      fail(BASICException, 'Matrix dimensions do not match') if
+        a_dims[1] != new_b_dims[0]
+      # result is a single value
+      r_dims = [a_dims[0], new_b_dims[1]]
+      values = multiply_matrix_matrix_2_2(a, new_b, r_dims)
+      m = Matrix.new(r_dims, values)
+      vertical_to_array(m)
+    elsif a_dims.size == 1 && b_dims.size == 2
+      new_a = array_to_horizontal(a)
+      new_a_dims = new_a.dimensions
+      # number of columns in a must match number of rows in b
+      fail(BASICException, 'Matrix dimensions do not match') if
+        new_a_dims[1] != b_dims[0]
+      # result is a single value
+      r_dims = [new_a_dims[0], b_dims[1]]
+      values = multiply_matrix_matrix_2_2(new_a, b, r_dims)
+      m = Matrix.new(r_dims, values)
+      horizontal_to_array(m)
+    elsif a_dims.size == 2 && b_dims.size == 2
+      # number of columns in a must match number of rows in b
+      fail(BASICException, 'Matrix dimensions do not match') if
+        a_dims[1] != b_dims[0]
+      # result has number of rows in a and number of columns in b
+      r_dims = [a_dims[0], b_dims[1]]
+      values = multiply_matrix_matrix_2_2(a, b, r_dims)
+      Matrix.new(r_dims, values)
+    else
+      fail(BASICException, 'Matrix multiplication must have two matrices')
+    end
   end
 
   def divide_matrix_matrix(_, _)
