@@ -7,6 +7,7 @@ class VariableName < AbstractToken
   attr_reader :precedence
 
   def initialize(text)
+    super()
     fail(BASICException, "'#{text}' is not a variable name") unless
       VariableName.init?(text)
     @var_name = text
@@ -38,6 +39,7 @@ class Variable < AbstractToken
   attr_reader :precedence
 
   def initialize(variable_name)
+    super()
     fail(BASICException, "'#{variable_name}' is not a variable name") if
       variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
@@ -247,6 +249,7 @@ class List < AbstractToken
   attr_reader :precedence
 
   def initialize(parsed_expressions)
+    super()
     @parsed_expressions = parsed_expressions
     @variable = true
     @precedence = 6
@@ -274,6 +277,7 @@ class Function < AbstractToken
   attr_reader :precedence
 
   def initialize(text)
+    super()
     @name = text
     @function = true
     @operand = true
@@ -715,7 +719,6 @@ class FunctionDet < AbstractMatrixFunction
         (1..n_cols).each do |col|
           if col != exclude_col
             value = matrix.get_value_2(row, col)
-            old_coords = '(' + row.to_s + ',' + col.to_s + ')'
             new_coords = '(' + new_row.to_s + ',' + new_col.to_s + ')'
             new_values[new_coords] = value
             new_col += 1
@@ -754,7 +757,6 @@ class FunctionInv < AbstractMatrixFunction
   def inverse(matrix)
     dims = matrix.dimensions
     values = {}
-    work_matrix = matrix.clone	# do we need this?
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     # set all values

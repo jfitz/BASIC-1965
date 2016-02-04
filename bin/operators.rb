@@ -8,6 +8,7 @@ class UnaryOperator < AbstractToken
   attr_reader :precedence
 
   def initialize(text)
+    super()
     operators = { '+' => 5, '-' => 5 }
     fail(BASICException, "'#{text}' is not an operator") unless
       operators.key?(text)
@@ -126,6 +127,7 @@ class BinaryOperator < AbstractToken
   attr_reader :precedence
 
   def initialize(text)
+    super()
     operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
     fail(BASICException, "'#{text}' is not an operator") unless
       operators.key?(text)
@@ -674,7 +676,6 @@ class BinaryOperator < AbstractToken
     r_rows = r_dims[0].to_i
     r_cols = r_dims[1].to_i
     a_dims = a.dimensions
-    a_rows = a_dims[0].to_i
     a_cols = a_dims[1].to_i
     values = {}
     (1..r_rows).each do |r_row|
@@ -810,6 +811,7 @@ end
 # not a real operator, used only for parsing
 class InitialOperator < AbstractToken
   def initialize
+    super()
     @operator = true
     @terminal = true
   end
@@ -827,6 +829,7 @@ end
 # not a real operator, used only for parsing
 class TerminalOperator < AbstractToken
   def initialize
+    super()
     @operator = true
     @terminal = true
   end

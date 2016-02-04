@@ -56,6 +56,7 @@ end
 # beginning of a group
 class GroupStart < AbstractToken
   def initialize
+    super
     @group_start = true
   end
 end
@@ -63,6 +64,7 @@ end
 # end of a group
 class GroupEnd < AbstractToken
   def initialize
+    super
     @group_end = true
     @operand = true
   end
@@ -71,6 +73,7 @@ end
 # beginning of a set of parameters
 class ParamStart < AbstractToken
   def initialize
+    super
     @param_start = true
   end
 end
@@ -78,6 +81,7 @@ end
 # separator for group or params
 class ParamSeparator < AbstractToken
   def initialize
+    super
     @separator = true
   end
 end
@@ -117,6 +121,7 @@ class NumericConstant < AbstractToken
   public
 
   def initialize(text)
+    super()
     numeric_classes = %w(Fixnum Bignum Float)
     if numeric_classes.include?(text.class.to_s)
       f = text
@@ -247,6 +252,7 @@ class TextConstant < AbstractToken
   attr_reader :value
 
   def initialize(text)
+    super()
     if TextConstant.init?(text)
       @value = text[1..-2]
     else
@@ -270,6 +276,7 @@ class BooleanConstant < AbstractToken
   attr_reader :value
 
   def initialize(text)
+    super()
     @value = text.upcase == 'ON'
     @operand = true
     @precedence = 0
