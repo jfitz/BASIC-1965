@@ -611,18 +611,31 @@ class FunctionCon < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'Two arguments required for CON()') unless
-      args.size == 2
-    check_arg_types(args, ['NumericConstant', 'NumericConstant'])
-    n_rows = args[0].to_i
-    n_cols = args[1].to_i
-    new_dims = [args[0], args[1]]
-    new_values = {}
-    (1..n_rows).each do |row|
+    fail(BASICException, 'One or two arguments required for CON()') unless
+      args.size == 1 || args.size == 2
+    if args.size == 1
+      check_arg_types(args, ['NumericConstant'])
+      n_cols = args[0].to_i
+      new_dims = [args[0]]
+      new_values = {}
       (1..n_cols).each do |col|
         value = NumericConstant.new(1)
-        coords = '(' + col.to_s + ',' + row.to_s + ')'
+        coords = '(' + col.to_s + ')'
         new_values[coords] = value
+      end
+    end
+    if args.size == 2
+      check_arg_types(args, ['NumericConstant', 'NumericConstant'])
+      n_rows = args[0].to_i
+      n_cols = args[1].to_i
+      new_dims = [args[0], args[1]]
+      new_values = {}
+      (1..n_rows).each do |row|
+        (1..n_cols).each do |col|
+          value = NumericConstant.new(1)
+          coords = '(' + col.to_s + ',' + row.to_s + ')'
+          new_values[coords] = value
+        end
       end
     end
     Matrix.new(new_dims, new_values)
