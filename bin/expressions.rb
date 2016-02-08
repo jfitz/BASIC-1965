@@ -511,7 +511,7 @@ class FunctionAtn < AbstractScalarFunction
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
     xv = x.to_v
-    f = xv >= 0 ? Math.atan(xv) : 0
+    f = Math.atan(xv)
     NumericConstant.new(f)
   end
 end
