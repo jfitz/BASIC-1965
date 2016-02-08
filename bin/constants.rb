@@ -228,7 +228,7 @@ class NumericConstant < AbstractToken
   end
 
   def six_digits(value)
-    decimals = 5 - (value != 0 ? Math.log(value.abs, 10).to_i : 0)
+    decimals = 6 - (value != 0 ? Math.log(value.abs, 10).to_i : 0)
     value.round(decimals)
   end
 
