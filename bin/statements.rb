@@ -635,16 +635,19 @@ end
 class DefineFunctionStatement < AbstractStatement
   def initialize(line)
     super('DEF', line)
+    @name = ''
+    @arguments = []
+    @template = ''
     begin
       user_function_definition = UserFunctionDefinition.new(line)
+      @name = user_function_definition.name
+      @arguments = user_function_definition.arguments
+      @template = user_function_definition.template
     rescue BASICException => e
       puts e.message
       @errors << e.message
       @assignment = line
     end
-    @name = user_function_definition.name
-    @arguments = user_function_definition.arguments
-    @template = user_function_definition.template
   end
 
   def to_s
