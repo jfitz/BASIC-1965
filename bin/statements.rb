@@ -100,6 +100,21 @@ class AbstractStatement
       end
     end
   end
+
+  protected
+
+  # converts text line to constant values
+  def textline_to_constants(line)
+    values = []
+    text_values = line.split(',')
+    text_values.each do |value|
+      v = value.strip
+      raise BASICException, "Value '#{value}' not numeric" unless
+        NumericConstant.init?(v)
+      values << NumericConstant.new(v)
+    end
+    values
+  end
 end
 
 # unknown statement

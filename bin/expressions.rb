@@ -987,20 +987,6 @@ def split_input(text)
   regrouped_parts
 end
 
-# converts text line to constant values
-def textline_to_constants(line)
-  values = []
-  text_values = line.split(',')
-  text_values.each do |value|
-    begin
-      values << NumericConstant.new(value)
-    rescue BASICException => e
-      raise BASICException, "Invalid value #{value}: #{e.message}"
-    end
-  end
-  values
-end
-
 # returns an Array of values
 def eval_scalar(interpreter, parsed_expressions)
   # expected = parsed_expressions[0].length
