@@ -279,7 +279,7 @@ class Interpreter
         line_numbers = line_number_range.line_numbers
         line_numbers.each do |line_number|
           line = @program_lines[line_number]
-          puts "#{line_number} #{line.list}"
+          puts "#{line_number}#{line.list}"
           errors = line.errors
           unless errors.nil?
             errors.each { |error| puts ' ' + error }

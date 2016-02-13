@@ -1,3 +1,15 @@
+def squeeze_out_spaces(text)
+  text = text.strip
+  in_remark = text.start_with?('REM')
+  squeezed_text = ''
+  in_quotes = false
+  text.each_char do |c|
+    in_quotes = !in_quotes if c == '"'
+    squeezed_text += c if c != ' ' || in_quotes || in_remark
+  end
+  squeezed_text
+end
+
 # Statement factory class
 class StatementFactory
   def initialize
@@ -10,7 +22,7 @@ class StatementFactory
     m = /\A\d+/.match(line)
     unless m.nil?
       line_num = LineNumber.new(m[0])
-      line_text = squeeze_out_spaces(m.post_match)
+      line_text = m.post_match
       statement = create(line_text)
     end
     [line_num, statement]
@@ -18,26 +30,15 @@ class StatementFactory
 
   private
 
-  def squeeze_out_spaces(text)
-    text = text.strip
-    in_remark = text.start_with?('REM')
-    squeezed_text = ''
-    in_quotes = false
-    text.each_char do |c|
-      in_quotes = !in_quotes if c == '"'
-      squeezed_text += c if c != ' ' || in_quotes || in_remark
-    end
-    squeezed_text
-  end
-
   def create(text)
+    squeezed = squeeze_out_spaces(text)
     statement = UnknownStatement.new(text)
-    statement = EmptyStatement.new if text == ''
+    statement = EmptyStatement.new if squeezed == ''
     @statement_definitions.each_key do |def_keyword|
       length = def_keyword.length
-      keyword = text[0..length - 1]
+      keyword = squeezed[0..length - 1]
       rest = text[length..-1]
-      statement = @statement_definitions[def_keyword].new(rest) if
+      statement = @statement_definitions[def_keyword].new(text, squeezed) if
         keyword == def_keyword
     end
     statement
@@ -73,9 +74,12 @@ end
 class AbstractStatement
   attr_reader :errors
 
-  def initialize(keyword, text)
+  def initialize(keyword, text, squeezed)
     @keyword = keyword
     @text = text
+    squeezed_keyword = squeeze_out_spaces(keyword)
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     @errors = []
   end
 
@@ -85,9 +89,9 @@ class AbstractStatement
 
   def list
     if @errors.size == 0
-      to_s
+      ' ' + to_s
     else
-      @keyword + ' ' + @text
+      @text
     end
   end
 
@@ -120,13 +124,12 @@ end
 # unknown statement
 class UnknownStatement < AbstractStatement
   def initialize(line)
-    super('', line)
-    @line = line
-    @errors << "Unknown command #{@line}"
+    super('', line, line)
+    @errors << "Unknown command '#{@text}'"
   end
 
   def to_s
-    @line
+    @text
   end
 
   def execute_cmd(_)
@@ -137,7 +140,7 @@ end
 # empty statement (line number only)
 class EmptyStatement < AbstractStatement
   def initialize
-    super('', '')
+    super('', '', '')
   end
 
   def to_s
@@ -151,13 +154,14 @@ end
 
 # REMARK
 class RemarkStatement < AbstractStatement
-  def initialize(line)
-    super('REM', line)
-    @contents = line
+  def initialize(line, _)
+    # override the method to squeeze spaces from line
+    squeezed = line[0] == ' ' ? line[1..-1] : line
+    super('REM', line, squeezed)
   end
 
   def to_s
-    @keyword + @contents
+    @keyword + @rest
   end
 
   def execute_cmd(_)
@@ -167,9 +171,9 @@ end
 
 # DIM
 class DimStatement < AbstractStatement
-  def initialize(line)
-    super('DIM', line)
-    text_list = split_args(line, false)
+  def initialize(line, squeezed)
+    super('DIM', line, squeezed)
+    text_list = split_args(@rest, false)
     # variable [comma, variable]...
     @expression_list = []
     if text_list.size > 0
@@ -204,10 +208,10 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def initialize(line)
-    super('LET', line)
+  def initialize(line, squeezed)
+    super('LET', line, squeezed)
     begin
-      @assignment = ScalarAssignment.new(line)
+      @assignment = ScalarAssignment.new(@rest)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end
@@ -216,7 +220,6 @@ class LetStatement < AbstractStatement
       end
     rescue BASICException => e
       @errors << e.message
-      @assignment = line
     end
   end
 
@@ -235,11 +238,11 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def initialize(line)
-    super('INPUT', line)
+  def initialize(line, squeezed)
+    super('INPUT', line, squeezed)
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
-    text_list = split_args(line, false)
+    text_list = split_args(@rest, false)
     if text_list.length > 0
       if TextConstant.init?(text_list[0])
         @prompt = TextConstant.new(text_list[0])
@@ -311,9 +314,9 @@ end
 
 # IF/THEN
 class IfStatement < AbstractStatement
-  def initialize(line)
-    super('IF', line)
-    parts = line.split('THEN')
+  def initialize(line, squeezed)
+    super('IF', line, squeezed)
+    parts = @rest.split('THEN')
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
     rescue BASICException => e
@@ -335,8 +338,8 @@ end
 
 # Common for PRINT and MAT PRINT
 class AbstractPrintStatement < AbstractStatement
-  def initialize(keyword, line)
-    super(keyword, line)
+  def initialize(keyword, line, squeezed)
+    super(keyword, line, squeezed)
   end
 
   def to_s
@@ -363,10 +366,10 @@ end
 
 # PRINT
 class PrintStatement < AbstractPrintStatement
-  def initialize(line)
-    super('PRINT', line)
+  def initialize(line, squeezed)
+    super('PRINT', line, squeezed)
 
-    item_list = split_args(line, true)
+    item_list = split_args(@rest, true)
     # variable/constant, [separator, variable/constant]... [separator]
 
     print_item_list = []
@@ -404,9 +407,9 @@ end
 
 # GOTO
 class GotoStatement < AbstractStatement
-  def initialize(line)
-    super('GOTO', line)
-    destination = line
+  def initialize(line, squeezed)
+    super('GOTO', line, squeezed)
+    destination = @rest
     begin
       @destination = LineNumber.new(destination)
     rescue BASICException
@@ -425,9 +428,9 @@ end
 
 # GOSUB
 class GosubStatement < AbstractStatement
-  def initialize(line)
-    super('GOSUB', line)
-    destination = line
+  def initialize(line, squeezed)
+    super('GOSUB', line, squeezed)
+    destination = @rest
     begin
       @destination = LineNumber.new(destination)
     rescue BASICException
@@ -447,8 +450,8 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(line)
-    super('RETURN', line)
+  def initialize(line, squeezed)
+    super('RETURN', line, squeezed)
   end
 
   def to_s
@@ -515,11 +518,11 @@ end
 
 # FOR statement
 class ForStatement < AbstractStatement
-  def initialize(line)
-    super('FOR', line)
+  def initialize(line, squeezed)
+    super('FOR', line, squeezed)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
-    parts = line.split('=', 2)
+    parts = @rest.split('=', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
     begin
       var_name = VariableName.new(parts[0])
@@ -564,16 +567,15 @@ end
 
 # NEXT
 class NextStatement < AbstractStatement
-  def initialize(line)
-    super('NEXT', line)
+  def initialize(line, squeezed)
+    super('NEXT', line, squeezed)
     # parse control variable
     @control_variable = nil
     begin
-      var_name = VariableName.new(line)
+      var_name = VariableName.new(@rest)
       @control_variable = ScalarValue.new(var_name)
     rescue BASICException => e
       @errors << e.message
-      @boolean_expression = line
     end
   end
 
@@ -599,9 +601,9 @@ end
 
 # READ
 class ReadStatement < AbstractStatement
-  def initialize(line)
-    super('READ', line)
-    item_list = split_args(line, false)
+  def initialize(line, squeezed)
+    super('READ', line, squeezed)
+    item_list = split_args(@rest, false)
     # variable [comma, variable]...
     @expression_list = []
     item_list.each do |item|
@@ -628,9 +630,9 @@ end
 
 # DATA
 class DataStatement < AbstractStatement
-  def initialize(line)
-    super('DATA', line)
-    @data_list = textline_to_constants(line)
+  def initialize(line, squeezed)
+    super('DATA', line, squeezed)
+    @data_list = textline_to_constants(@rest)
   end
 
   def to_s
@@ -648,20 +650,19 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
-  def initialize(line)
-    super('DEF', line)
+  def initialize(line, squeezed)
+    super('DEF', line, squeezed)
     @name = ''
     @arguments = []
     @template = ''
     begin
-      user_function_definition = UserFunctionDefinition.new(line)
+      user_function_definition = UserFunctionDefinition.new(@rest)
       @name = user_function_definition.name
       @arguments = user_function_definition.arguments
       @template = user_function_definition.template
     rescue BASICException => e
       puts e.message
       @errors << e.message
-      @assignment = line
     end
   end
 
@@ -679,8 +680,8 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(line)
-    super('STOP', line)
+  def initialize(line, squeezed)
+    super('STOP', line, squeezed)
   end
 
   def to_s
@@ -696,8 +697,8 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(line)
-    super('END', line)
+  def initialize(line, squeezed)
+    super('END', line, squeezed)
   end
 
   def to_s
@@ -713,9 +714,9 @@ end
 
 # TRACE
 class TraceStatement < AbstractStatement
-  def initialize(line)
-    super('TRACE', line)
-    @operation = BooleanConstant.new(line)
+  def initialize(line, squeezed)
+    super('TRACE', line, squeezed)
+    @operation = BooleanConstant.new(@rest)
   end
 
   def execute_cmd(interpreter)
@@ -729,9 +730,9 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractPrintStatement
-  def initialize(line)
-    super('MAT PRINT', line)
-    item_list = split_args(line, true)
+  def initialize(line, squeezed)
+    super('MAT PRINT', line, squeezed)
+    item_list = split_args(@rest, true)
 
     print_item_list = []
     previous_item = CarriageControl.new('')
@@ -768,9 +769,9 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractStatement
-  def initialize(line)
-    super('MAT READ', line)
-    item_list = split_args(line, false)
+  def initialize(line, squeezed)
+    super('MAT READ', line, squeezed)
+    item_list = split_args(@rest, false)
     # variable [comma, variable]...
     @expression_list = []
     item_list.each do |item|
@@ -835,10 +836,10 @@ end
 
 # MAT LET
 class MatLetStatement < AbstractStatement
-  def initialize(line)
-    super('MAT LET', line)
+  def initialize(line, squeezed)
+    super('MAT LET', line, squeezed)
     begin
-      @assignment = MatrixAssignment.new(line)
+      @assignment = MatrixAssignment.new(@rest)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end
@@ -847,7 +848,7 @@ class MatLetStatement < AbstractStatement
       end
     rescue BASICException => e
       @errors << e.message
-      @assignment = line
+      @assignment = @rest
     end
   end
 
