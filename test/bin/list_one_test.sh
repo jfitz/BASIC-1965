@@ -23,7 +23,7 @@ diff tests/$TESTDIR/stdout.txt test/ref/$TESTNAME/list_stdout.txt
 ((ECODE+=$?))
 echo compare done
 echo Comparing stderr...
-diff tests/$TESTDIR/stderr.txt test/ref/$TESTNAME/list_stderr.txt
+diff tests/$TESTDIR/stderr.txt test/ref/stderr.txt
 ((ECODE+=$?))
 echo compare done
 

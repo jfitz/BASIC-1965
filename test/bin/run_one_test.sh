@@ -21,7 +21,7 @@ diff tests/$1/stdout.txt test/ref/$1/stdout.txt
 ((ECODE+=$?))
 echo compare done
 echo Comparing stderr...
-diff tests/$1/stderr.txt test/ref/$1/stderr.txt
+diff tests/$1/stderr.txt test/ref/stderr.txt
 ((ECODE+=$?))
 echo compare done
 
