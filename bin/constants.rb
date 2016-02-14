@@ -51,6 +51,16 @@ class AbstractToken
   def separator?
     @separator
   end
+
+  protected
+
+  def make_coord(c)
+    '(' + c.to_s + ')'
+  end
+
+  def make_coords(r,c)
+    '(' + r.to_s + ',' + c.to_s + ')'
+  end
 end
 
 # beginning of a group

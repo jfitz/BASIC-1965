@@ -148,19 +148,29 @@ class Matrix
   end
 
   def get_value_1(col)
-    coords = '(' + col.to_s + ')'
+    coords = make_coord(col)
     return @values[coords] if @values.key?(coords)
     0
   end
 
   def get_value_2(row, col)
-    coords = '(' + row.to_s + ',' + col.to_s + ')'
+    coords = make_coords(row, col)
     return @values[coords] if @values.key?(coords)
     0
   end
 
   def to_s
     'MATRIX: ' + @values.to_s
+  end
+
+  private
+
+  def make_coord(c)
+    '(' + c.to_s + ')'
+  end
+
+  def make_coords(r,c)
+    '(' + r.to_s + ',' + c.to_s + ')'
   end
 end
 
@@ -177,7 +187,7 @@ class MatrixValue < Variable
     if dims.size == 1
       n_cols = dims[0].to_i
       (1..n_cols).each do |col|
-        coords = '(' + col.to_s + ')'
+        coords = make_coord(col)
         var_name = @variable_name.to_s + coords
         values[coords] = interpreter.get_value(var_name)
       end
@@ -187,7 +197,7 @@ class MatrixValue < Variable
       n_cols = dims[1].to_i
       (1..n_rows).each do |row|
         (1..n_cols).each do |col|
-          coords = '(' + row.to_s + ',' + col.to_s + ')'
+          coords = make_coords(row, col)
           var_name = @variable_name.to_s + coords
           values[coords] = interpreter.get_value(var_name)
         end
@@ -556,7 +566,7 @@ class FunctionTrn < AbstractMatrixFunction
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         value = matrix.get_value_2(row, col)
-        coords = '(' + col.to_s + ',' + row.to_s + ')'
+        coords = make_coords(col, row)
         new_values[coords] = value
       end
     end
@@ -579,9 +589,9 @@ class FunctionZer < AbstractScalarFunction
       n_cols = args[0].to_i
       new_dims = [args[0]]
       new_values = {}
+      value = NumericConstant.new(0)
       (1..n_cols).each do |col|
-        value = NumericConstant.new(0)
-        coords = '(' + col.to_s + ')'
+        coords = make_coord(col)
         new_values[coords] = value
       end
     end
@@ -591,10 +601,10 @@ class FunctionZer < AbstractScalarFunction
       n_cols = args[1].to_i
       new_dims = [args[0], args[1]]
       new_values = {}
+      value = NumericConstant.new(0)
       (1..n_rows).each do |row|
         (1..n_cols).each do |col|
-          value = NumericConstant.new(0)
-          coords = '(' + row.to_s + ',' + col.to_s + ')'
+          coords = make_coords(row, col)
           new_values[coords] = value
         end
       end
@@ -618,9 +628,9 @@ class FunctionCon < AbstractScalarFunction
       n_cols = args[0].to_i
       new_dims = [args[0]]
       new_values = {}
+      value = NumericConstant.new(1)
       (1..n_cols).each do |col|
-        value = NumericConstant.new(1)
-        coords = '(' + col.to_s + ')'
+        coords = make_coord(col)
         new_values[coords] = value
       end
     end
@@ -630,10 +640,10 @@ class FunctionCon < AbstractScalarFunction
       n_cols = args[1].to_i
       new_dims = [args[0], args[1]]
       new_values = {}
+      value = NumericConstant.new(1)
       (1..n_rows).each do |row|
         (1..n_cols).each do |col|
-          value = NumericConstant.new(1)
-          coords = '(' + col.to_s + ',' + row.to_s + ')'
+          coords = make_coords(row, col)
           new_values[coords] = value
         end
       end
@@ -666,7 +676,7 @@ class FunctionIdn < AbstractScalarFunction
         else
           value = NumericConstant.new(0)
         end
-        coords = '(' + col.to_s + ',' + row.to_s + ')'
+        coords = make_coords(row, col)
         new_values[coords] = value
       end
     end
@@ -701,7 +711,7 @@ class FunctionDet < AbstractMatrixFunction
       b = matrix.get_value_2(1, 2)
       c = matrix.get_value_2(2, 1)
       d = matrix.get_value_2(2, 2)
-      det = a * d - b * c
+      det = (a * d) - (b * c)
     else
       sign = 1
       det = NumericConstant.new(0)
@@ -732,8 +742,8 @@ class FunctionDet < AbstractMatrixFunction
         (1..n_cols).each do |col|
           if col != exclude_col
             value = matrix.get_value_2(row, col)
-            new_coords = '(' + new_row.to_s + ',' + new_col.to_s + ')'
-            new_values[new_coords] = value
+            coords = make_coords(new_row, new_col)
+            new_values[coords] = value
             new_col += 1
           end
         end
@@ -763,10 +773,6 @@ class FunctionInv < AbstractMatrixFunction
 
   private
 
-  def make_coords(r,c)
-    '(' + r.to_s + ',' + c.to_s + ')'
-  end
-
   def inverse(matrix)
     dims = matrix.dimensions
     values = {}
@@ -776,7 +782,7 @@ class FunctionInv < AbstractMatrixFunction
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         value = matrix.get_value_2(row, col)
-        coords = make_coords(row.to_s, col)
+        coords = make_coords(row, col)
         values[coords] = value
       end
     end
@@ -785,7 +791,7 @@ class FunctionInv < AbstractMatrixFunction
     # set all values
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
-        coords = make_coords(row.to_s, col)
+        coords = make_coords(row, col)
         inv_values[coords] = NumericConstant.new(0)
         inv_values[coords] = NumericConstant.new(1) if col == row
       end
@@ -843,7 +849,7 @@ class FunctionInv < AbstractMatrixFunction
       denom_coords = make_coords(row, row)
       denominator = values[denom_coords]
       (1..n_cols).each do |col|
-        coords = make_coords(row.to_s, col)
+        coords = make_coords(row, col)
         numerator = values[coords]
         new_value = numerator / denominator
         values[coords] = new_value

@@ -202,15 +202,27 @@ bash test/bin/run_one_test.sh function_exp
 bash test/bin/list_one_test.sh function_exp
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh function_trn
+((ECODE+=$?))
 bash test/bin/list_one_test.sh function_trn
+((ECODE+=$?))
+bash test/bin/run_one_test.sh function_idn
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh function_idn
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh function_zer
+((ECODE+=$?))
 bash test/bin/list_one_test.sh function_zer
+((ECODE+=$?))
+bash test/bin/run_one_test.sh function_con
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh function_con
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh function_det
+((ECODE+=$?))
 bash test/bin/list_one_test.sh function_det
+((ECODE+=$?))
+bash test/bin/run_one_test.sh function_inv
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh function_inv
 ((ECODE+=$?))
