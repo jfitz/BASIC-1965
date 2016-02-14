@@ -34,13 +34,16 @@ class StatementFactory
     squeezed = squeeze_out_spaces(text)
     statement = UnknownStatement.new(text)
     statement = EmptyStatement.new if squeezed == ''
+    keyword = ''
     @statement_definitions.each_key do |def_keyword|
       length = def_keyword.length
-      keyword = squeezed[0..length - 1]
-      rest = text[length..-1]
-      statement = @statement_definitions[def_keyword].new(text, squeezed) if
-        keyword == def_keyword
+      stmt_keyword = squeezed[0..length - 1]
+      keyword = def_keyword if
+        stmt_keyword.size > keyword.size &&
+        stmt_keyword == def_keyword
     end
+    statement = @statement_definitions[keyword].new(text, squeezed) unless
+      keyword.size == 0
     statement
   end
 
@@ -65,7 +68,7 @@ class StatementFactory
       'TRACE' => TraceStatement,
       'MATPRINT' => MatPrintStatement,
       'MATREAD' => MatReadStatement,
-      'MATLET' => MatLetStatement
+      'MAT' => MatLetStatement
     }
   end
 end
@@ -837,7 +840,7 @@ end
 # MAT LET
 class MatLetStatement < AbstractStatement
   def initialize(line, squeezed)
-    super('MAT LET', line, squeezed)
+    super('MAT', line, squeezed)
     begin
       @assignment = MatrixAssignment.new(@rest)
       if @assignment.count_target != 1
