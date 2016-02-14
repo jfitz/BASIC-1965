@@ -89,9 +89,12 @@ end
 private
 
 def text_to_numeric(text)
-  # nnn(Enn)
-  if /\A\s*[+-]?\d+(E[+-]?\d+)?\z/.match(text)
+  # nnn(E+nn)
+  if /\A\s*[+-]?\d+(E+?\d+)?\z/.match(text)
     text.to_f.to_i
+  # nnn(E-nn)
+  elsif /\A\s*[+-]?\d+(E-\d+)?\z/.match(text)
+    text.to_f
   # nnn.(nnn)(E+-nn)
   elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(text)
     text.to_f

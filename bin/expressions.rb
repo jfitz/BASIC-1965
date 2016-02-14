@@ -1469,6 +1469,11 @@ end
 
 # Boolean expression
 class BooleanExpression
+  attr_reader :operator
+  attr_reader :a_value
+  attr_reader :b_value
+  attr_reader :result
+
   def initialize(text)
     parts = text.split(/([=<>]+)/)
     fail(BASICException, "'#{text}' is not a boolean expression") if
@@ -1476,16 +1481,19 @@ class BooleanExpression
     @operators = make_operators
 
     @a = ValueScalarExpression.new(parts[0])
+    @a_value = 'undefined'
     @operator = make_boolean_operator(parts[1])
     @b = ValueScalarExpression.new(parts[2])
+    @b_value = 'undefined'
+    @result = 'undefined'
   end
 
   def evaluate(interpreter)
     avs = @a.evaluate(interpreter)
-    av = avs[0].to_v
+    @a_value = avs[0].to_v
     bvs = @b.evaluate(interpreter)
-    bv = bvs[0].to_v
-    @operator.evaluate(av, bv)
+    @b_value = bvs[0].to_v
+    @result = @operator.evaluate(@a_value, @b_value)
   end
 
   def to_s

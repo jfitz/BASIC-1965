@@ -98,9 +98,9 @@ class AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute(interpreter, trace)
     if @errors.size == 0
-      execute_cmd(interpreter)
+      execute_cmd(interpreter, trace)
     else
       @errors.each do |error|
         puts "line #{interpreter.current_line_number}: #{error}"
@@ -135,7 +135,7 @@ class UnknownStatement < AbstractStatement
     @text
   end
 
-  def execute_cmd(_)
+  def execute_cmd(_, _)
     0
   end
 end
@@ -150,7 +150,7 @@ class EmptyStatement < AbstractStatement
     ''
   end
 
-  def execute_cmd(_)
+  def execute_cmd(_, _)
     0
   end
 end
@@ -167,7 +167,7 @@ class RemarkStatement < AbstractStatement
     @keyword + @rest
   end
 
-  def execute_cmd(_)
+  def execute_cmd(_, _)
     0
   end
 end
@@ -196,7 +196,7 @@ class DimStatement < AbstractStatement
     @keyword + ' ' + @expression_list.join(', ')
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     @expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
@@ -230,12 +230,17 @@ class LetStatement < AbstractStatement
     @keyword + ' ' + @assignment.to_s
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     l_values = @assignment.eval_target(interpreter)
     l_value = l_values[0]
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
     interpreter.set_value(l_value, r_value)
+    if trace
+      printer = interpreter.print_handler
+      printer.print_out(' ' + l_value.to_s + ' = ' + r_value.to_s)
+      printer.newline
+    end
   end
 end
 
@@ -267,7 +272,7 @@ class InputStatement < AbstractStatement
     end
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     printer = interpreter.print_handler
     values = input_values
     name_value_pairs =
@@ -333,9 +338,17 @@ class IfStatement < AbstractStatement
     @keyword + ' ' + @boolean_expression.to_s + ' THEN ' + @destination.to_s
   end
 
-  def execute_cmd(interpreter)
-    interpreter.next_line_number = @destination if
-      @boolean_expression.evaluate(interpreter)
+  def execute_cmd(interpreter, trace)
+    @boolean_expression.evaluate(interpreter)
+    interpreter.next_line_number = @destination if @boolean_expression.result
+    if trace
+      printer = interpreter.print_handler
+      printer.print_out(' ' + @boolean_expression.a_value.to_s)
+      printer.print_out(' ' + @boolean_expression.operator.to_s)
+      printer.print_out(' ' + @boolean_expression.b_value.to_s)
+      printer.print_out(' ' + @boolean_expression.result.to_s)
+      printer.newline
+    end
   end
 end
 
@@ -357,7 +370,7 @@ class AbstractPrintStatement < AbstractStatement
     @keyword + varnames.join('')
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     printer = interpreter.print_handler
     @print_item_pairs.each do |print_pair|
       variable = print_pair[0]
@@ -424,7 +437,7 @@ class GotoStatement < AbstractStatement
     @keyword + ' ' + @destination.to_s
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     interpreter.next_line_number = @destination
   end
 end
@@ -445,7 +458,7 @@ class GosubStatement < AbstractStatement
     @keyword + ' ' + @destination.to_s
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     interpreter.push_return(interpreter.next_line_number)
     interpreter.next_line_number = @destination
   end
@@ -461,7 +474,7 @@ class ReturnStatement < AbstractStatement
     @keyword
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     interpreter.next_line_number = interpreter.pop_return
   end
 end
@@ -553,7 +566,7 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     loop_end_number = interpreter.find_closing_next(@control_variable.name)
     from_value = @start_value.evaluate(interpreter)[0]
     interpreter.set_value(@control_variable, from_value)
@@ -590,7 +603,7 @@ class NextStatement < AbstractStatement
     @control_variable.name
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     fornext_control = interpreter.retrieve_fornext(@control_variable)
     # check control variable value
     # if matches end value, stop here
@@ -622,11 +635,17 @@ class ReadStatement < AbstractStatement
     @keyword + ' ' + @expression_list.join(', ')
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     @expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
-      interpreter.set_value(variable, interpreter.read_data)
+      value = interpreter.read_data
+      interpreter.set_value(variable, value)
+      if trace
+        printer = interpreter.print_handler
+        printer.print_out(' ' + variable.to_s + ' = ' + value.to_s)
+        printer.newline
+      end
     end
   end
 end
@@ -646,7 +665,7 @@ class DataStatement < AbstractStatement
     interpreter.store_data(@data_list)
   end
 
-  def execute_cmd(_)
+  def execute_cmd(_, _)
     0
   end
 end
@@ -677,7 +696,7 @@ class DefineFunctionStatement < AbstractStatement
     interpreter.set_user_function(@name, @arguments, @template)
   end
 
-  def execute_cmd(_)
+  def execute_cmd(_, _)
   end
 end
 
@@ -691,7 +710,7 @@ class StopStatement < AbstractStatement
     @keyword
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     printer = interpreter.print_handler
     printer.newline_when_needed
     interpreter.stop
@@ -708,7 +727,7 @@ class EndStatement < AbstractStatement
     @keyword
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     printer = interpreter.print_handler
     printer.newline_when_needed
     interpreter.stop
@@ -722,7 +741,7 @@ class TraceStatement < AbstractStatement
     @operation = BooleanConstant.new(@rest)
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     interpreter.trace(@operation.value)
   end
 
@@ -791,7 +810,7 @@ class MatReadStatement < AbstractStatement
     @keyword + ' ' + @expression_list.join(', ')
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     @expression_list.each do |expression|
       targets = expression.evaluate(interpreter)
       targets.each do |target|
@@ -859,7 +878,7 @@ class MatLetStatement < AbstractStatement
     @keyword + ' ' + @assignment.to_s
   end
 
-  def execute_cmd(interpreter)
+  def execute_cmd(interpreter, trace)
     l_values = @assignment.eval_target(interpreter)
     l_value = l_values[0]
     name = l_value.name

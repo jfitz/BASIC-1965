@@ -377,13 +377,17 @@ class Interpreter
       line_numbers[line_numbers.index(@current_line_number) + 1]
     begin
       line = @program_lines[@current_line_number]
-      puts "#{@current_line_number}: #{line}" if trace_flag || @tron_flag
+      if trace_flag || @tron_flag
+        @printer.newline_when_needed
+        @printer.print_out "#{@current_line_number}: #{line}"
+        @printer.newline
+      end
       if line.errors.size > 0
         puts "Errors in line #{current_line_number}:"
         line.errors.each { |error| puts error }
         stop_running
       end
-      line.execute(self) if @running
+      line.execute(self, trace_flag || @tron_flag) if @running
       # don't merge above statement into this block
       # the statement may change the running state
       if @running
