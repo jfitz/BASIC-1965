@@ -1571,7 +1571,17 @@ class MatrixAssignment
     fail(BASICException, "'#{text}' is not a valid assignment") if
       parts.size != 2
     @target = TargetMatrixExpression.new(parts[0])
-    @expression = ValueMatrixExpression.new(parts[1])
+    @functions = {
+      'CON' => FunctionCon,
+      'ZER' => FunctionZer,
+      'IDN' => FunctionIdn
+    }
+    @special_form = @functions.key?(parts[1])
+    if @special_form
+      @expression = parts[1]
+    else
+      @expression = ValueMatrixExpression.new(parts[1])
+    end
   end
 
   def count_target
@@ -1583,11 +1593,27 @@ class MatrixAssignment
   end
 
   def count_value
-    @expression.count
+    if @special_form
+      1
+    else
+      @expression.count
+    end
   end
 
   def eval_value(interpreter)
-    @expression.evaluate(interpreter)
+    if @special_form
+      vs = @target.evaluate(interpreter)
+      v = vs[0]
+      fail(Exception, 'Expected matrix reference') if
+        v.class.to_s != 'MatrixReference'
+      name = v.name
+      dims = interpreter.get_dimensions(name)
+      f = @functions[@expression].new('')
+      matrix = f.evaluate(interpreter, [dims])
+      [matrix]
+    else
+      @expression.evaluate(interpreter)
+    end
   end
 
   def to_s

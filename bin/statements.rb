@@ -856,7 +856,7 @@ class MatReadStatement < AbstractStatement
   end
 end
 
-# MAT LET
+# MAT assignment
 class MatLetStatement < AbstractStatement
   def initialize(line, squeezed)
     super('MAT', line, squeezed)
