@@ -47,7 +47,7 @@ class UnaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       value = source.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = posate(value)
     end
     values
@@ -60,7 +60,7 @@ class UnaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         value = source.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = posate(value)
       end
     end
@@ -72,7 +72,7 @@ class UnaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       value = source.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = negate(value)
     end
     values
@@ -85,7 +85,7 @@ class UnaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         value = source.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = negate(value)
       end
     end
@@ -206,7 +206,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a + b_value
     end
     values
@@ -220,7 +220,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a + b_value
       end
     end
@@ -240,7 +240,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a - b_value
     end
     values
@@ -254,7 +254,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a - b_value
       end
     end
@@ -274,7 +274,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a * b_value
     end
     values
@@ -288,7 +288,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a * b_value
       end
     end
@@ -308,7 +308,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a / b_value
     end
     values
@@ -322,7 +322,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a / b_value
       end
     end
@@ -342,7 +342,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a**b_value
     end
     values
@@ -356,7 +356,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a**b_value
       end
     end
@@ -376,7 +376,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a_value + b
     end
     values
@@ -390,7 +390,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a_value + b
       end
     end
@@ -410,7 +410,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a_value - b
     end
     values
@@ -424,7 +424,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a_value - b
       end
     end
@@ -444,7 +444,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a_value * b
     end
     values
@@ -458,7 +458,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a_value * b
       end
     end
@@ -478,7 +478,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a_value / b
     end
     values
@@ -492,7 +492,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a_value / b
       end
     end
@@ -512,7 +512,7 @@ class BinaryOperator < AbstractToken
     values = {}
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a_value**b
     end
     values
@@ -526,7 +526,7 @@ class BinaryOperator < AbstractToken
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a_value**b
       end
     end
@@ -547,7 +547,7 @@ class BinaryOperator < AbstractToken
     (1..n_cols).each do |col|
       a_value = a.get_value_(col)
       b_value = b.get_value_(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a_value + b_value
     end
     values
@@ -562,7 +562,7 @@ class BinaryOperator < AbstractToken
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a_value + b_value
       end
     end
@@ -586,7 +586,7 @@ class BinaryOperator < AbstractToken
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       b_value = b.get_value_1(col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       values[coords] = a_value - b_value
     end
     values
@@ -601,7 +601,7 @@ class BinaryOperator < AbstractToken
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
-        coords = '(' + row.to_s + ',' + col.to_s + ')'
+        coords = make_coords(row, col)
         values[coords] = a_value - b_value
       end
     end
@@ -625,7 +625,7 @@ class BinaryOperator < AbstractToken
     new_values = {}
     (1..n_cols).each do |col|
       value = a.get_value_1(col)
-      coords = '(1,' + col.to_s + ')'
+      coords = make_coords(1, col)
       new_values[coords] = value
     end
     Matrix.new(new_dims, new_values)
@@ -639,7 +639,7 @@ class BinaryOperator < AbstractToken
     row = NumericConstant.new(1)
     (1..n_cols).each do |col|
       value = m.get_value_2(row, col)
-      coords = '(' + col.to_s + ')'
+      coords = make_coord(col)
       new_values[coords] = value
     end
     Matrix.new(new_dims, new_values)
@@ -652,7 +652,7 @@ class BinaryOperator < AbstractToken
     new_values = {}
     (1..n_cols).each do |col|
       value = a.get_value_1(col)
-      coords = '(' + col.to_s + ',1)'
+      coords = make_coords(col, 1)
       new_values[coords] = value
     end
     Matrix.new(new_dims, new_values)
@@ -666,30 +666,33 @@ class BinaryOperator < AbstractToken
     col = NumericConstant.new(1)
     (1..n_rows).each do |row|
       value = m.get_value_2(row, col)
-      coords = '(' + row.to_s + ')'
+      coords = make_coord(row)
       new_values[coords] = value
     end
     Matrix.new(new_dims, new_values)
   end
 
-  def multiply_matrix_matrix_work(a, b)
+  def multiply_matrix_matrix_value(a, b, r_row, r_col)
     a_dims = a.dimensions
-    b_dims = b.dimensions
     a_cols = a_dims[1].to_i
-    r_dims = [a_dims[0], b_dims[1]]
+    f = 0
+    (1..a_cols).each do |a_col|
+      a_value = a.get_value_2(r_row, a_col)
+      b_value = b.get_value_2(a_col, r_col)
+      f += a_value.to_f * b_value.to_f
+    end
+    NumericConstant.new(f)
+  end
+
+  def multiply_matrix_matrix_work(a, b)
+    r_dims = [a.dimensions[0], b.dimensions[1]]
     r_rows = r_dims[0].to_i
     r_cols = r_dims[1].to_i
     values = {}
     (1..r_rows).each do |r_row|
       (1..r_cols).each do |r_col|
-        f = 0
-        (1..a_cols).each do |a_col|
-          a_value = a.get_value_2(r_row, a_col)
-          b_value = b.get_value_2(a_col, r_col)
-          f += a_value.to_f * b_value.to_f
-        end
-        coords = '(' + r_row.to_s + ',' + r_col.to_s + ')'
-        values[coords] = NumericConstant.new(f)
+        coords = make_coords(r_row, r_col)
+        values[coords] = multiply_matrix_matrix_value(a, b, r_row, r_col)
       end
     end
     values
@@ -733,14 +736,12 @@ class BinaryOperator < AbstractToken
   end
 
   def multiply_matrix_matrix(a, b)
-    # verify dimensions are acceptable
-    a_dims = a.dimensions
-    b_dims = b.dimensions
-    if a_dims.size == 2 && b_dims.size == 1
+    dim_counts = [a.dimensions.size, b.dimensions.size]
+    if dim_counts == [2, 1]
       multiply_matrix_matrix_2_1(a, b)
-    elsif a_dims.size == 1 && b_dims.size == 2
+    elsif dim_counts == [1, 2]
       multiply_matrix_matrix_1_2(a, b)
-    elsif a_dims.size == 2 && b_dims.size == 2
+    elsif dim_counts == [2, 2]
       multiply_matrix_matrix_2_2(a, b)
     else
       fail(BASICException, 'Matrix multiplication must have two matrices')
