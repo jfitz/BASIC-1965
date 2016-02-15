@@ -169,7 +169,7 @@ class Matrix
     '(' + c.to_s + ')'
   end
 
-  def make_coords(r,c)
+  def make_coords(r, c)
     '(' + r.to_s + ',' + c.to_s + ')'
   end
 end
@@ -596,7 +596,7 @@ class FunctionZer < AbstractScalarFunction
       end
     end
     if args.size == 2
-      check_arg_types(args, ['NumericConstant', 'NumericConstant'])
+      check_arg_types(args, %w(NumericConstant NumericConstant))
       n_rows = args[0].to_i
       n_cols = args[1].to_i
       new_dims = [args[0], args[1]]
@@ -635,7 +635,7 @@ class FunctionCon < AbstractScalarFunction
       end
     end
     if args.size == 2
-      check_arg_types(args, ['NumericConstant', 'NumericConstant'])
+      check_arg_types(args, %w(NumericConstant NumericConstant))
       n_rows = args[0].to_i
       n_cols = args[1].to_i
       new_dims = [args[0], args[1]]
@@ -661,7 +661,7 @@ class FunctionIdn < AbstractScalarFunction
   def evaluate(_, stack)
     args = stack.pop
     check_arg_types(args, ['NumericConstant']) if args.size == 1
-    check_arg_types(args, ['NumericConstant', 'NumericConstant']) if
+    check_arg_types(args, %w(NumericConstant NumericConstant)) if
       args.size == 2
     fail(BASICException, 'IDN requires square matrix') if
       args.size == 2 && args[1] != args[0]
@@ -705,7 +705,7 @@ class FunctionDet < AbstractMatrixFunction
     fail(BASICException, 'DET requires matrix') unless dims.size == 2
     fail(BASICException, 'DET requires square matrix') if dims[1] != dims[0]
     if dims[0] == 1
-      det = matrix.get_value_2(1,1)
+      det = matrix.get_value_2(1, 1)
     elsif dims[0].to_i == 2
       a = matrix.get_value_2(1, 1)
       b = matrix.get_value_2(1, 2)
@@ -722,7 +722,7 @@ class FunctionDet < AbstractMatrixFunction
         # create submatrix
         subm = submatrix(matrix, 1, col)
         d = v * determinant(subm) * sign
-        det = det + d
+        det += d
         sign *= -1
       end
     end
@@ -738,17 +738,15 @@ class FunctionDet < AbstractMatrixFunction
     new_row = 1
     (1..n_rows).each do |row|
       new_col = 1
-      if row != exclude_row
-        (1..n_cols).each do |col|
-          if col != exclude_col
-            value = matrix.get_value_2(row, col)
-            coords = make_coords(new_row, new_col)
-            new_values[coords] = value
-            new_col += 1
-          end
-        end
-        new_row += 1
+      next if row == exclude_row
+      (1..n_cols).each do |col|
+        next if col == exclude_col
+        value = matrix.get_value_2(row, col)
+        coords = make_coords(new_row, new_col)
+        new_values[coords] = value
+        new_col += 1
       end
+      new_row += 1
     end
     Matrix.new(new_dims, new_values)
   end
