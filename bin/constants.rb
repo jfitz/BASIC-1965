@@ -58,7 +58,7 @@ class AbstractToken
     '(' + c.to_s + ')'
   end
 
-  def make_coords(r,c)
+  def make_coords(r, c)
     '(' + r.to_s + ',' + c.to_s + ')'
   end
 end
