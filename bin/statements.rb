@@ -116,11 +116,21 @@ class AbstractStatement
     text_values = line.split(',')
     text_values.each do |value|
       v = value.strip
-      raise BASICException, "Value '#{value}' not numeric" unless
+      fail(BASICException, "Value '#{value}' not numeric") unless
         NumericConstant.init?(v)
       values << NumericConstant.new(v)
     end
     values
+  end
+
+  protected
+
+  def make_coord(c)
+    '(' + c.to_s + ')'
+  end
+
+  def make_coords(r, c)
+    '(' + r.to_s + ',' + c.to_s + ')'
   end
 end
 
@@ -196,7 +206,7 @@ class DimStatement < AbstractStatement
     @keyword + ' ' + @expression_list.join(', ')
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     @expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
@@ -236,11 +246,8 @@ class LetStatement < AbstractStatement
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
     interpreter.set_value(l_value, r_value)
-    if trace
-      printer = interpreter.print_handler
-      printer.print_out(' ' + l_value.to_s + ' = ' + r_value.to_s)
-      printer.newline
-    end
+    printer = interpreter.print_handler
+    printer.trace_output(' ' + l_value.to_s + ' = ' + r_value.to_s) if trace
   end
 end
 
@@ -279,7 +286,10 @@ class InputStatement < AbstractStatement
       zip(@expression_list, values[0, @expression_list.length])
     name_value_pairs.each do |hash|
       l_values = hash['name'].evaluate(interpreter)
-      interpreter.set_value(l_values[0], hash['value'])
+      l_value = l_values[0]
+      value = hash['value']
+      interpreter.set_value(l_value, value)
+      printer.trace_output(' ' + l_value.to_s + ' = ' + value.to_s) if trace
     end
     printer.implied_newline
   end
@@ -343,11 +353,11 @@ class IfStatement < AbstractStatement
     interpreter.next_line_number = @destination if @boolean_expression.result
     if trace
       printer = interpreter.print_handler
-      printer.print_out(' ' + @boolean_expression.a_value.to_s)
-      printer.print_out(' ' + @boolean_expression.operator.to_s)
-      printer.print_out(' ' + @boolean_expression.b_value.to_s)
-      printer.print_out(' ' + @boolean_expression.result.to_s)
-      printer.newline
+      s = ' ' + @boolean_expression.a_value.to_s +
+          ' ' + @boolean_expression.operator.to_s +
+          ' ' + @boolean_expression.b_value.to_s +
+          ' ' + @boolean_expression.result.to_s
+      printer.trace_output(s)
     end
   end
 end
@@ -370,7 +380,7 @@ class AbstractPrintStatement < AbstractStatement
     @keyword + varnames.join('')
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     printer = interpreter.print_handler
     @print_item_pairs.each do |print_pair|
       variable = print_pair[0]
@@ -437,7 +447,7 @@ class GotoStatement < AbstractStatement
     @keyword + ' ' + @destination.to_s
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     interpreter.next_line_number = @destination
   end
 end
@@ -458,7 +468,7 @@ class GosubStatement < AbstractStatement
     @keyword + ' ' + @destination.to_s
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     interpreter.push_return(interpreter.next_line_number)
     interpreter.next_line_number = @destination
   end
@@ -474,7 +484,7 @@ class ReturnStatement < AbstractStatement
     @keyword
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     interpreter.next_line_number = interpreter.pop_return
   end
 end
@@ -566,7 +576,7 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     loop_end_number = interpreter.find_closing_next(@control_variable.name)
     from_value = @start_value.evaluate(interpreter)[0]
     interpreter.set_value(@control_variable, from_value)
@@ -603,7 +613,7 @@ class NextStatement < AbstractStatement
     @control_variable.name
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     fornext_control = interpreter.retrieve_fornext(@control_variable)
     # check control variable value
     # if matches end value, stop here
@@ -641,11 +651,8 @@ class ReadStatement < AbstractStatement
       variable = variables[0]
       value = interpreter.read_data
       interpreter.set_value(variable, value)
-      if trace
-        printer = interpreter.print_handler
-        printer.print_out(' ' + variable.to_s + ' = ' + value.to_s)
-        printer.newline
-      end
+      printer = interpreter.print_handler
+      printer.trace_output(' ' + variable.to_s + ' = ' + value.to_s) if trace
     end
   end
 end
@@ -710,7 +717,7 @@ class StopStatement < AbstractStatement
     @keyword
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     printer = interpreter.print_handler
     printer.newline_when_needed
     interpreter.stop
@@ -727,7 +734,7 @@ class EndStatement < AbstractStatement
     @keyword
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     printer = interpreter.print_handler
     printer.newline_when_needed
     interpreter.stop
@@ -741,7 +748,7 @@ class TraceStatement < AbstractStatement
     @operation = BooleanConstant.new(@rest)
   end
 
-  def execute_cmd(interpreter, trace)
+  def execute_cmd(interpreter, _)
     interpreter.trace(@operation.value)
   end
 
@@ -815,41 +822,39 @@ class MatReadStatement < AbstractStatement
       targets = expression.evaluate(interpreter)
       targets.each do |target|
         name = target.name
-        if target.dimensions?
-          dims = target.dimensions
-          interpreter.set_dimensions(name, dims)
-        end
-        dims = interpreter.get_dimensions(name)
-        fail(BASICException, 'Dimensions for MAT READ must be 1 or 2') unless
-          [1, 2].include?(dims.size)
-        if dims.size == 1
-          n_cols = dims[0].to_i
-          read_vector(interpreter, name, n_cols)
-        end
-        if dims.size == 2
-          n_rows = dims[0].to_i
-          n_cols = dims[1].to_i
-          read_matrix(interpreter, name, n_rows, n_cols)
-        end
+        interpreter.set_dimensions(name, target.dimensions) if
+          target.dimensions?
+        read_values(name, interpreter, trace)
       end
     end
   end
 
   private
 
-  def read_vector(interpreter, name, n_cols)
+  def read_values(name, interpreter, trace)
+    dims = interpreter.get_dimensions(name)
+    fail(BASICException, 'Dimensions for MAT READ must be 1 or 2') unless
+      [1, 2].include?(dims.size)
+    read_vector(name, dims[0].to_i, interpreter, trace) if dims.size == 1
+    read_matrix(name, dims[0].to_i, dims[1].to_i, interpreter, trace) if
+      dims.size == 2
+  end
+
+  def read_vector(name, n_cols, interpreter, trace)
     (1..n_cols).each do |col|
       value = interpreter.read_data
-      variable = name.to_s + '(' + col.to_s + ')'
+      variable = name.to_s + make_coord(col)
+      printer.print_out(' ' + variable.to_s + ' = ' + value.to_s) if trace
       interpreter.set_value(variable, value)
     end
   end
 
-  def read_matrix(interpreter, name, n_rows, n_cols)
+  def read_matrix(name, n_rows, n_cols, interpreter, trace)
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         value = interpreter.read_data
-        variable = name.to_s + '(' + row.to_s + ',' + col.to_s + ')'
+        variable = name.to_s + make_coords(row, col)
+        printer.print_out(' ' + variable.to_s + ' = ' + value.to_s) if trace
         interpreter.set_value(variable, value)
       end
     end
@@ -879,33 +884,52 @@ class MatLetStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter, trace)
-    l_values = @assignment.eval_target(interpreter)
-    l_value = l_values[0]
+    l_value = first_target(interpreter)
     name = l_value.name
-    r_values = @assignment.eval_value(interpreter)
-    r_value = r_values[0]
-    fail BASICException, 'Expected Matrix' if r_value.class.to_s != 'Matrix'
+    r_value = first_value(interpreter)
     dims = r_value.dimensions
     interpreter.set_dimensions(name, dims)
-    if dims.size == 1
-      n_cols = dims[0].to_i
-      (1..n_cols).each do |col|
-        value = r_value.get_value_1(col)
-        text_dims = '(' + col.to_s + ')'
-        variable = name.to_s + text_dims
-        interpreter.set_value(variable, value)
-      end
+    assign_vector(name, r_value, interpreter, trace) if dims.size == 1
+    assign_matrix(name, r_value, interpreter, trace) if dims.size == 2
+  end
+
+  private
+
+  def first_target(interpreter)
+    l_values = @assignment.eval_target(interpreter)
+    l_values[0]
+  end
+
+  def first_value(interpreter)
+    r_values = @assignment.eval_value(interpreter)
+    r_value = r_values[0]
+    fail(BASICException, 'Expected Matrix') if r_value.class.to_s != 'Matrix'
+    r_value
+  end
+
+  def assign_vector(name, vector, interpreter, trace)
+    printer = interpreter.print_handler
+    dims = vector.dimensions
+    n_cols = dims[0].to_i
+    (1..n_cols).each do |col|
+      value = vector.get_value_1(col)
+      variable = name.to_s + make_coord(col)
+      printer.print_out(' ' + variable.to_s + ' = ' + value.to_s) if trace
+      interpreter.set_value(variable, value)
     end
-    if dims.size == 2
-      n_rows = dims[0].to_i
-      n_cols = dims[1].to_i
-      (1..n_rows).each do |row|
-        (1..n_cols).each do |col|
-          value = r_value.get_value_2(row, col)
-          text_dims = '(' + row.to_s + ',' + col.to_s + ')'
-          variable = name.to_s + text_dims
-          interpreter.set_value(variable, value)
-        end
+  end
+
+  def assign_matrix(name, matrix, interpreter, trace)
+    printer = interpreter.print_handler
+    dims = matrix.dimensions
+    n_rows = dims[0].to_i
+    n_cols = dims[1].to_i
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = matrix.get_value_2(row, col)
+        variable = name.to_s + make_coords(row, col)
+        printer.trace_output(' ' + variable.to_s + ' = ' + value.to_s) if trace
+        interpreter.set_value(variable, value)
       end
     end
   end

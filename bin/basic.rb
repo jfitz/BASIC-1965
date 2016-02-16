@@ -191,6 +191,12 @@ class PrintHandler
     @last_was_numeric = false
   end
 
+  def trace_output(s)
+    newline_when_needed
+    print_out(s)
+    newline
+  end
+
   private
 
   def space_after_numeric
