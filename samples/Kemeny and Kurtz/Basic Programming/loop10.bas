@@ -1,0 +1,7 @@
+5 LET A = 5
+10 FOR I = 1 TO 10
+15 LET A = A * 10
+20    PRINT I, A
+30 NEXT I
+99 END
+

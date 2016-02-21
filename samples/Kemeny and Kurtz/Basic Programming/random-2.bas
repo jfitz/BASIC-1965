@@ -1,0 +1,5 @@
+10 FOR I = 1 TO 30
+20    PRINT INT(6*RND(1)+1),
+30 NEXT I
+99 END
+

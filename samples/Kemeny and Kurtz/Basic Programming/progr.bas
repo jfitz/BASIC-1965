@@ -1,0 +1,9 @@
+5  READ A, B, C
+10 LET S = 0
+20 FOR N = A TO B STEP C
+30     LET S = S + N
+40 NEXT N
+50 PRINT "SUM =" S
+90 DATA 2, 1000, 3
+99 END
+
