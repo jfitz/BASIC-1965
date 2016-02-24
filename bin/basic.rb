@@ -241,13 +241,13 @@ class Interpreter
   attr_reader :current_line_number
   attr_accessor :next_line_number
 
-  def initialize(output_speed)
+  def initialize(print_width, output_speed)
     @running = false
     @randomizer = Random.new
     @data_store = []
     @data_index = 0
     @statement_factory = StatementFactory.new
-    @printer = PrintHandler.new(72, output_speed)
+    @printer = PrintHandler.new(print_width, output_speed)
     @return_stack = []
     @fornexts = {}
     @dimensions = {}
@@ -723,6 +723,7 @@ OptionParser.new do |opt|
   opt.on('--trace') { |o| options[:trace] = o }
   opt.on('--notiming') { |o| options[:notiming] = o }
   opt.on('--tty') { |o| options[:tty] = o }
+  opt.on('--print-width WIDTH') { |o| options[:print_width] = o }
 end.parse!
 
 run_filename = options[:run_name]
@@ -732,14 +733,16 @@ notiming_flag = options.key?(:notiming) || false
 timing_flag = !notiming_flag
 output_speed = 0
 output_speed = 10 if options.key?(:tty)
+print_width = 72
+print_width = options[:print_width].to_i if options.key?(:print_width)
 
 if !run_filename.nil?
-  interpreter = Interpreter.new(output_speed)
+  interpreter = Interpreter.new(print_width, output_speed)
   interpreter.load_and_run(run_filename, trace_flag, timing_flag)
 elsif !list_filename.nil?
-  interpreter = Interpreter.new(0)
+  interpreter = Interpreter.new(print_width, 0)
   interpreter.load_and_list(list_filename, trace_flag)
 else
-  interpreter = Interpreter.new(0)
+  interpreter = Interpreter.new(print_width, 0)
   interpreter.go
 end
