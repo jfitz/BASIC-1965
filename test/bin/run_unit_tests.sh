@@ -25,6 +25,10 @@ bash test/bin/run_one_test.sh dataread
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh dataread
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh datarestore
+((ECODE+=$?))
+bash test/bin/list_one_test.sh datarestore
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh ifthen_ge
 ((ECODE+=$?))

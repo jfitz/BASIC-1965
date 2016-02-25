@@ -647,6 +647,10 @@ class Interpreter
     end
   end
 
+  def reset_data
+    @data_index = 0
+  end
+
   def go
     puts 'BASIC-1965 interpreter version -1'
     puts

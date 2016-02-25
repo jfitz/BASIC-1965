@@ -62,6 +62,7 @@ class StatementFactory
       'NEXT' => NextStatement,
       'READ' => ReadStatement,
       'DATA' => DataStatement,
+      'RESTORE' => RestoreStatement,
       'INPUT' => InputStatement,
       'GOSUB' => GosubStatement,
       'PRINT' => PrintStatement,
@@ -678,6 +679,21 @@ class DataStatement < AbstractStatement
 
   def execute_cmd(_, _)
     0
+  end
+end
+
+# RESTORE
+class RestoreStatement < AbstractStatement
+  def initialize(line, squeezed)
+    super('RESTORE', line, squeezed)
+  end
+
+  def to_s
+    @keyword
+  end
+
+  def execute_cmd(interpreter, _)
+    interpreter.reset_data
   end
 end
 
