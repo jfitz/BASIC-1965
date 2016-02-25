@@ -142,7 +142,7 @@ end
 class UnknownStatement < AbstractStatement
   def initialize(line)
     super('', line, line)
-    @errors << "Unknown command '#{@text}'"
+    @errors << "Unknown statement '#{@text.strip}'"
   end
 
   def to_s
@@ -173,7 +173,7 @@ end
 class RemarkStatement < AbstractStatement
   def initialize(line, _)
     # override the method to squeeze spaces from line
-    squeezed = line[0] == ' ' ? line[1..-1] : line
+    squeezed = line.strip
     super('REM', line, squeezed)
   end
 
