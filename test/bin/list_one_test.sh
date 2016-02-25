@@ -12,7 +12,7 @@ echo testbed ready
 # execute program
 echo Running program...
 cd tests/$TESTDIR
-ruby -I. basic.rb -l $TESTNAME.bas >stdout.txt 2>stderr.txt
+ruby -I. basic.rb -p $TESTNAME.bas >stdout.txt 2>stderr.txt
 cd ../..
 echo run finished
 

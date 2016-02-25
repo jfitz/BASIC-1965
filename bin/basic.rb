@@ -300,6 +300,29 @@ class Interpreter
     end
   end
 
+  def cmd_pretty(linespec)
+    linespec = linespec.strip
+    if @program_lines.size > 0
+      begin
+        line_number_range =
+          LineNumberRange.new(linespec, @program_lines.keys.sort)
+        line_numbers = line_number_range.line_numbers
+        line_numbers.each do |line_number|
+          line = @program_lines[line_number]
+          puts "#{line_number}" + line.pretty
+          errors = line.errors
+          unless errors.nil?
+            errors.each { |error| puts ' ' + error }
+          end
+        end
+      rescue BASICException => e
+        puts e
+      end
+    else
+      puts 'No program loaded'
+    end
+  end
+
   def cmd_delete(linespec)
     linespec = linespec.strip
     if @program_lines.size > 0
@@ -671,6 +694,7 @@ class Interpreter
       elsif cmd == '.VARS' then dump_vars
       elsif cmd == '.UDFS' then dump_user_functions
       elsif cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
+      elsif cmd[0..5] == 'PRETTY' then cmd_pretty(cmd[6..-1])
       elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
       elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1], false)
       elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
@@ -707,6 +731,15 @@ class Interpreter
     puts 'BASIC-1965 ended'
   end
 
+  def load_and_pretty(filename, trace_flag)
+    puts 'BASIC-1965 interpreter version -1'
+    puts
+    @program_lines = {}
+    cmd_pretty('') if cmd_load(filename, trace_flag)
+    puts
+    puts 'BASIC-1965 ended'
+  end
+
   def print_timing(timing)
     user_time = timing.utime + timing.cutime
     sys_time = timing.stime + timing.cstime
@@ -721,6 +754,7 @@ options = {}
 OptionParser.new do |opt|
   opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
+  opt.on('-p', '--pretty-list SOURCE') { |o| options[:pretty_name] = o }
   opt.on('--trace') { |o| options[:trace] = o }
   opt.on('--notiming') { |o| options[:notiming] = o }
   opt.on('--tty') { |o| options[:tty] = o }
@@ -730,6 +764,7 @@ end.parse!
 
 run_filename = options[:run_name]
 list_filename = options[:list_name]
+pretty_filename = options[:pretty_name]
 trace_flag = options.key?(:trace) || false
 notiming_flag = options.key?(:notiming) || false
 timing_flag = !notiming_flag
@@ -746,6 +781,9 @@ if !run_filename.nil?
 elsif !list_filename.nil?
   interpreter = Interpreter.new(print_width, zone_width, 0)
   interpreter.load_and_list(list_filename, trace_flag)
+elsif !pretty_filename.nil?
+  interpreter = Interpreter.new(print_width, zone_width, 0)
+  interpreter.load_and_pretty(pretty_filename, trace_flag)
 else
   interpreter = Interpreter.new(print_width, zone_width, 0)
   interpreter.go

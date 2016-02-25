@@ -91,6 +91,10 @@ class AbstractStatement
   end
 
   def list
+    @text
+  end
+
+  def pretty
     if @errors.size == 0
       ' ' + to_s
     else
