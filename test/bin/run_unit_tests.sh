@@ -231,6 +231,19 @@ bash test/bin/run_one_test.sh function_inv
 bash test/bin/list_one_test.sh function_inv
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh define
+((ECODE+=$?))
+bash test/bin/list_one_test.sh define
+((ECODE+=$?))
+bash test/bin/run_one_test.sh define_2
+((ECODE+=$?))
+bash test/bin/list_one_test.sh define_2
+((ECODE+=$?))
+bash test/bin/run_one_test.sh define_error
+((ECODE+=$?))
+bash test/bin/list_one_test.sh define_error
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh mat_print_1
 ((ECODE+=$?))
 bash test/bin/list_one_test.sh mat_print_1

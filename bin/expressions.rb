@@ -1338,10 +1338,13 @@ class UserFunctionPrototype
 
   def initialize(text)
     fail(BASICException, "Invalid function specification #{text}") unless
-      /\AFN[A-Z]\([A-Z]\)\z/.match(text)
+      /\AFN[A-Z]\([A-Z](,[A-Z])*\)\z/.match(text)
     @name = text[0..2]
-    arg0 = text[4..4]
-    @arguments = [arg0]
+    args = text[4..-2]
+    @arguments = args.split(',')
+    # arguments must be unique
+    fail(BASICException, "Duplicate parameters") unless
+      @arguments.uniq.size == @arguments.size
   end
 
   def to_s

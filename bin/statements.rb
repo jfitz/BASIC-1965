@@ -716,7 +716,7 @@ class DefineFunctionStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @name + "(#{@arguments.join(', ')}) = " + @template.to_s
+    @keyword + ' ' + @name + "(#{@arguments.join(',')}) = " + @template.to_s
   end
 
   def pre_execute(interpreter)
