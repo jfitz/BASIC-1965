@@ -162,11 +162,27 @@ class NumericConstant < AbstractToken
     end
   end
 
+  def >=(other)
+    if other.class.to_s == 'NumericConstant'
+      @value >= other.to_v
+    else
+      @value >= other
+    end
+  end
+
   def <(other)
     if other.class.to_s == 'NumericConstant'
       @value < other.to_v
     else
       @value < other
+    end
+  end
+
+  def <=(other)
+    if other.class.to_s == 'NumericConstant'
+      @value <= other.to_v
+    else
+      @value <= other
     end
   end
 
@@ -222,6 +238,49 @@ class NumericConstant < AbstractToken
 
   def evaluate(_, _)
     self
+  end
+
+  def truncate
+    NumericConstant.new(@value.to_i)
+  end
+
+  def exp
+    NumericConstant.new(Math.exp(@value))
+  end
+
+  def log
+    NumericConstant.new(@value > 0 ? Math.log(@value) : 0)
+  end
+
+  def abs
+    NumericConstant.new(@value >= 0 ? @value : -@value)
+  end
+
+  def sqrt
+    NumericConstant.new(@value > 0 ? Math.sqrt(@value) : 0)
+  end
+
+  def sin
+    NumericConstant.new(Math.sin(@value))
+  end
+
+  def cos
+    NumericConstant.new(Math.cos(@value))
+  end
+
+  def tan
+    NumericConstant.new(@value >= 0 ? Math.tan(@value) : 0)
+  end
+
+  def atn
+    NumericConstant.new(Math.atan(@value))
+  end
+
+  def sign
+    result = 0
+    result = 1 if @value > 0
+    result = -1 if @value < 0
+    NumericConstant.new(result)
   end
 
   def to_i

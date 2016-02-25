@@ -352,9 +352,7 @@ class FunctionInt < AbstractScalarFunction
     fail(BASICException, 'INT requires single value') if args.size != 1
     check_arg_types(args, ['NumericConstant'])
     x = args[0]
-    xv = x.to_v
-    result = xv.to_i
-    NumericConstant.new(result)
+    x.truncate
   end
 end
 
@@ -374,11 +372,7 @@ class FunctionRnd < AbstractScalarFunction
       check_arg_types(args, ['NumericConstant'])
       x = args[0]
     end
-    xv = x.to_v
-    upper_bound = xv.truncate.to_f
-    upper_bound = 1.to_f if upper_bound <= 0
-    result = interpreter.rand(upper_bound)
-    NumericConstant.new(result)
+    interpreter.rand(x)
   end
 end
 
@@ -393,10 +387,7 @@ class FunctionExp < AbstractScalarFunction
     fail(BASICException, 'One argument required for EXP()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    f = Math.exp(xv)
-    NumericConstant.new(f)
+    args[0].exp
   end
 end
 
@@ -411,10 +402,7 @@ class FunctionLog < AbstractScalarFunction
     fail(BASICException, 'One argument required for LOG()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    f = xv > 0 ? Math.log(xv) : 0
-    NumericConstant.new(f)
+    args[0].log
   end
 end
 
@@ -429,10 +417,7 @@ class FunctionAbs < AbstractScalarFunction
     fail(BASICException, 'One argument required for ABS()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    result = xv >= 0 ? xv : -xv
-    NumericConstant.new(result)
+    args[0].abs
   end
 end
 
@@ -447,10 +432,7 @@ class FunctionSqr < AbstractScalarFunction
     fail(BASICException, 'One argument required for SQR()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    f = xv > 0 ? Math.sqrt(xv) : 0
-    NumericConstant.new(f)
+    args[0].sqrt
   end
 end
 
@@ -465,10 +447,7 @@ class FunctionSin < AbstractScalarFunction
     fail(BASICException, 'One argument required for SIN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    f = Math.sin(xv)
-    NumericConstant.new(f)
+    args[0].sin
   end
 end
 
@@ -483,10 +462,7 @@ class FunctionCos < AbstractScalarFunction
     fail(BASICException, 'One argument required for COS()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    f = Math.cos(xv)
-    NumericConstant.new(f)
+    args[0].cos
   end
 end
 
@@ -501,10 +477,7 @@ class FunctionTan < AbstractScalarFunction
     fail(BASICException, 'One argument required for TAN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    f = xv >= 0 ? Math.tan(xv) : 0
-    NumericConstant.new(f)
+    args[0].tan
   end
 end
 
@@ -519,10 +492,7 @@ class FunctionAtn < AbstractScalarFunction
     fail(BASICException, 'One argument required for ATN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    xv = x.to_v
-    f = Math.atan(xv)
-    NumericConstant.new(f)
+    args[0].atn
   end
 end
 
@@ -537,11 +507,7 @@ class FunctionSgn < AbstractScalarFunction
     fail(BASICException, 'One argument required for SGN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    result = 0
-    result = 1 if x > 0
-    result = -1 if x < 0
-    NumericConstant.new(result)
+    args[0].sign
   end
 end
 
@@ -1497,9 +1463,9 @@ class BooleanExpression
 
   def evaluate(interpreter)
     avs = @a.evaluate(interpreter)
-    @a_value = avs[0].to_v
+    @a_value = avs[0]
     bvs = @b.evaluate(interpreter)
-    @b_value = bvs[0].to_v
+    @b_value = bvs[0]
     @result = @operator.evaluate(@a_value, @b_value)
   end
 

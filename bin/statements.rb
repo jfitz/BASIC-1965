@@ -520,8 +520,7 @@ class ForNextControl
   end
 
   def bump_control_variable(interpreter)
-    @current_value =
-      NumericConstant.new(@current_value.to_v + @step_value.to_v)
+    @current_value = @current_value + @step_value
     interpreter.set_value(@control_variable, @current_value)
   end
 

@@ -517,7 +517,11 @@ class Interpreter
   end
 
   def rand(upper_bound)
-    @randomizer.rand(upper_bound)
+    upper_bound = upper_bound.to_v
+    upper_bound = upper_bound.truncate
+    upper_bound = upper_bound.to_f
+    upper_bound = 1.to_f if upper_bound <= 0
+    NumericConstant.new(@randomizer.rand(upper_bound))
   end
 
   def find_closing_next(control_variable)
