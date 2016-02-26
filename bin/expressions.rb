@@ -4,8 +4,6 @@ class VariableName < AbstractToken
     /\A[A-Z]\d?\z/.match(text)
   end
 
-  attr_reader :precedence
-
   def initialize(text)
     super()
     fail(BASICException, "'#{text}' is not a variable name") unless
@@ -36,7 +34,6 @@ end
 # Hold a variable (name with possible subscripts and value)
 class Variable < AbstractToken
   attr_reader :subscripts
-  attr_reader :precedence
 
   def initialize(variable_name)
     super()
@@ -59,14 +56,6 @@ class Variable < AbstractToken
     else
       @variable_name.to_s
     end
-  end
-
-  def to_s_1(i)
-    @variable_name.to_s + '(' + i.to_s + ')'
-  end
-
-  def to_s_2(i, j)
-    @variable_name.to_s + '(' + i.to_s + ',' + j.to_s + ')'
   end
 end
 
@@ -256,8 +245,6 @@ end
 
 # A list (needed because it has precedence value)
 class List < AbstractToken
-  attr_reader :precedence
-
   def initialize(parsed_expressions)
     super()
     @parsed_expressions = parsed_expressions
@@ -270,11 +257,7 @@ class List < AbstractToken
   end
 
   def evaluate(interpreter, _)
-    if @parsed_expressions[0].size > 0
-      eval_scalar(interpreter, @parsed_expressions)
-    else
-      eval_scalar(interpreter, @parsed_expressions)
-    end
+    eval_scalar(interpreter, @parsed_expressions)
   end
 
   def to_s
@@ -284,8 +267,6 @@ end
 
 # Scalar function (provides a scalar)
 class Function < AbstractToken
-  attr_reader :precedence
-
   def initialize(text)
     super()
     @name = text

@@ -5,8 +5,6 @@ class UnaryOperator < AbstractToken
     operators.key?(text)
   end
 
-  attr_reader :precedence
-
   def initialize(text)
     super()
     operators = { '+' => 5, '-' => 5 }
@@ -123,8 +121,6 @@ class BinaryOperator < AbstractToken
     operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
     operators.key?(text)
   end
-
-  attr_reader :precedence
 
   def initialize(text)
     super()
@@ -830,10 +826,7 @@ class InitialOperator < AbstractToken
     super()
     @operator = true
     @terminal = true
-  end
-
-  def precedence
-    0
+    @precedence = 0
   end
 
   def to_s
@@ -848,10 +841,7 @@ class TerminalOperator < AbstractToken
     super()
     @operator = true
     @terminal = true
-  end
-
-  def precedence
-    0
+    @precedence = 0
   end
 
   def to_s

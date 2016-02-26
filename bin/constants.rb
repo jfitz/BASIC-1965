@@ -1,5 +1,7 @@
 # token class
 class AbstractToken
+  attr_reader :precedence
+
   def initialize
     @operator = false
     @function = false
@@ -10,6 +12,7 @@ class AbstractToken
     @group_end = false
     @param_start = false
     @separator = false
+    @precedence = 10
   end
 
   def operator?
