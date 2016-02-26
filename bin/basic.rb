@@ -108,8 +108,8 @@ class LineNumberRange
 
   def line_range(spec, program_line_numbers)
     spec = spec.strip
-    regex = Regexp.new('\A\d+-\d+\z')
-    fail(BASICException, 'Invalid list specification') if regex !~ spec
+    fail(BASICException, 'Invalid list specification') unless
+      /\A\d+-\d+\z/.match(spec)
     parts = spec.split('-')
     start_val = LineNumber.new(parts[0])
     end_val = LineNumber.new(parts[1])
@@ -123,13 +123,11 @@ class LineNumberRange
 
   def line_list(spec, program_line_numbers)
     spec = spec.strip
-    two_regex = Regexp.new('\A\d+\+\d+\z')
-    one_regex = Regexp.new('\A\d+\+\z')
-    if two_regex =~ spec
+    if /\A\d+\+\d+\z/.match(spec)
       parts = spec.split('+')
       start_val = LineNumber.new(parts[0])
       count = parts[1].to_i
-    elsif one_regex =~ spec
+    elsif /\A\d+\+\z/.match(spec)
       parts = spec.split('+')
       start_val = LineNumber.new(parts[0])
       count = 20
@@ -159,17 +157,10 @@ class PrintHandler
   end
 
   def print_item(text)
-    if (@column + text.length) < @max_width
-      print_out text
-      @column += text.size
-    else
-      ## todo: use multiple passes (recursion?) for output longer than 2*max_width
-      overflow = @column + text.length - @max_width
-      first_count = text.length - overflow
-      print_out text[0..first_count]
-      newline
-      print_out text[first_count + 1..text.length]
-      @column = overflow
+    text.each_char do |c|
+      print_out(c)
+      @column += 1
+      newline if @column >= @max_width
     end
     @last_was_numeric = false
   end
@@ -283,15 +274,7 @@ class Interpreter
       begin
         line_number_range =
           LineNumberRange.new(linespec, @program_lines.keys.sort)
-        line_numbers = line_number_range.line_numbers
-        line_numbers.each do |line_number|
-          line = @program_lines[line_number]
-          puts "#{line_number}#{line.list}"
-          errors = line.errors
-          unless errors.nil?
-            errors.each { |error| puts ' ' + error }
-          end
-        end
+        list_lines_errors(line_number_range.line_numbers)
       rescue BASICException => e
         puts e
       end
@@ -306,15 +289,7 @@ class Interpreter
       begin
         line_number_range =
           LineNumberRange.new(linespec, @program_lines.keys.sort)
-        line_numbers = line_number_range.line_numbers
-        line_numbers.each do |line_number|
-          line = @program_lines[line_number]
-          puts "#{line_number}" + line.pretty
-          errors = line.errors
-          unless errors.nil?
-            errors.each { |error| puts ' ' + error }
-          end
-        end
+        pretty_lines_errors(line_number_range.line_numbers)
       rescue BASICException => e
         puts e
       end
@@ -322,6 +297,43 @@ class Interpreter
       puts 'No program loaded'
     end
   end
+
+  private
+
+  def list_lines_errors(line_numbers)
+    line_numbers.each do |line_number|
+      statement = @program_lines[line_number]
+      puts "#{line_number} #{statement.list}"
+      statement.errors.each { |error| puts ' ' + error }
+    end
+  end
+
+  def pretty_lines_errors(line_numbers)
+    line_numbers.each do |line_number|
+      statement = @program_lines[line_number]
+      puts "#{line_number}#{statement.pretty}"
+      statement.errors.each { |error| puts ' ' + error }
+    end
+  end
+
+  def list_lines(line_numbers)
+    line_numbers.each do |line_number|
+      puts "#{line_number} #{@program_lines[line_number]}"
+    end
+  end
+
+  def delete_lines(line_numbers)
+    line_numbers.each { |line_number| @program_lines.delete(line_number) }
+  end
+
+  def list_and_delete_lines(line_numbers)
+    list_lines(line_numbers)
+    print 'DELETE THESE LINES? '
+    answer = gets.chomp
+    delete_lines(line_numbers) if answer == 'YES'
+  end
+
+  public
 
   def cmd_delete(linespec)
     linespec = linespec.strip
@@ -331,20 +343,9 @@ class Interpreter
           LineNumberRange.new(linespec, @program_lines.keys.sort)
         line_numbers = line_number_range.line_numbers
         if line_number_range.single?
-          line_numbers.each do |line_number|
-            @program_lines.delete(line_number)
-          end
+          delete_lines(line_numbers)
         elsif line_number_range.range?
-          line_numbers.each do |line_number|
-            puts "#{line_number} #{@program_lines[line_number]}"
-          end
-          print 'DELETE THESE LINES? '
-          answer = gets.chomp
-          if answer == 'YES'
-            line_numbers.each do |line_number|
-              @program_lines.delete(line_number)
-            end
-          end
+          list_and_delete_lines(line_numbers)
         elsif line_number_range.all?
           puts 'Type NEW to delete an entire program'
         end
@@ -384,8 +385,7 @@ class Interpreter
   def run_phase_1(line_numbers)
     # phase 1: do all initialization (store values in DATA lines)
     line_numbers.each do |line_number|
-      line = @program_lines[line_number]
-      line.pre_execute(self)
+      @program_lines[line_number].pre_execute(self)
     end
   end
 
@@ -401,33 +401,40 @@ class Interpreter
     end
   end
 
+  private
+
+  def print_trace_info(line)
+    @printer.newline_when_needed
+    @printer.print_out "#{@current_line_number}: #{line}"
+    @printer.newline
+  end
+
+  def print_errors(current_line_number, statement)
+    puts "Errors in line #{current_line_number}:"
+    statement.errors.each { |error| puts error }
+  end
+
+  def execute_a_line(do_trace)
+    statement = @program_lines[@current_line_number]
+    print_trace_info(statement) if do_trace
+    stop_running if statement.errors.size > 0
+    print_errors(current_line_number, statement) if statement.errors.size > 0
+    statement.execute(self, do_trace) if @running
+  end
+
+  public
+
   def program_loop(line_numbers, trace_flag)
+    do_trace = trace_flag || @tron_flag
     # pick the next line number
     @next_line_number =
       line_numbers[line_numbers.index(@current_line_number) + 1]
     begin
-      line = @program_lines[@current_line_number]
-      if trace_flag || @tron_flag
-        @printer.newline_when_needed
-        @printer.print_out "#{@current_line_number}: #{line}"
-        @printer.newline
-      end
-      if line.errors.size > 0
-        puts "Errors in line #{current_line_number}:"
-        line.errors.each { |error| puts error }
-        stop_running
-      end
-      line.execute(self, trace_flag || @tron_flag) if @running
-      # don't merge above statement into this block
-      # the statement may change the running state
-      if @running
-        # set the next line number
-        # (which may have been changed by execute() )
-        @current_line_number =
-          verify_next_line_number(line_numbers, @next_line_number)
-      else
-        @current_line_number = nil
-      end
+      execute_a_line(do_trace)
+      # set the next line number
+      @current_line_number = nil
+      @current_line_number =
+        verify_next_line_number(line_numbers, @next_line_number) if @running
     rescue BASICException => message
       puts "#{message} in line #{current_line_number}"
       stop_running
@@ -568,12 +575,20 @@ class Interpreter
     @user_var_values.pop
   end
 
-  def check_subscripts(variable, subscripts)
+  private
+
+  def make_dimensions(variable, count)
     if @dimensions.key?(variable)
-      dimensions = @dimensions[variable]
+      @dimensions[variable]
     else
-      dimensions = Array.new(subscripts.size, 10)
+      Array.new(count, 10)
     end
+  end
+
+  public
+
+  def check_subscripts(variable, subscripts)
+    dimensions = make_dimensions(variable, subscripts.size)
     fail(BASICException, 'Incorrect number of subscripts') if
       subscripts.size != dimensions.size
     subscripts.zip(dimensions).each do |pair|
@@ -682,11 +697,11 @@ class Interpreter
   end
 
   def store_program_line(cmd, print_errors)
-    line_num, line_text = parse_line(cmd)
-    if !line_num.nil? && !line_text.nil?
-      @program_lines[line_num] = line_text
-      line_text.errors.each { |error| puts error } if print_errors
-      line_text.errors.size > 0
+    line_num, statement = parse_line(cmd)
+    if !line_num.nil? && !statement.nil?
+      @program_lines[line_num] = statement
+      statement.errors.each { |error| puts error } if print_errors
+      statement.errors.size > 0
     else
       true
     end

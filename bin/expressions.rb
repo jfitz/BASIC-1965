@@ -1409,7 +1409,7 @@ class MatrixPrintableExpression < AbstractPrintableExpression
   end
 
   def print_1(matrix, dimensions, printer, interpreter, carriage)
-    upper = dimensions[0].to_v
+    upper = dimensions[0].to_i
 
     (1..upper).each do |index|
       value = matrix.get_value_1(index)
@@ -1423,8 +1423,8 @@ class MatrixPrintableExpression < AbstractPrintableExpression
   end
 
   def print_2(matrix, dimensions, printer, interpreter, carriage)
-    upper_i = dimensions[0].to_v
-    upper_j = dimensions[1].to_v
+    upper_i = dimensions[0].to_i
+    upper_j = dimensions[1].to_i
 
     (1..upper_i).each do |i|
       (1..upper_j).each do |j|
