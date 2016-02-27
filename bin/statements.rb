@@ -548,8 +548,7 @@ class ForStatement < AbstractStatement
     parts = @rest.split('=', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
     begin
-      var_name = VariableName.new(parts[0])
-      @control_variable = ScalarValue.new(var_name)
+      @control_variable = VariableName.new(parts[0])
     rescue BASICException => e
       @errors << e.message
     end
@@ -574,7 +573,7 @@ class ForStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter, _)
-    loop_end_number = interpreter.find_closing_next(@control_variable.name)
+    loop_end_number = interpreter.find_closing_next(@control_variable.to_s)
     from_value = @start_value.evaluate(interpreter)[0]
     interpreter.set_value(@control_variable, from_value)
     to_value = @end_value.evaluate(interpreter)[0]
@@ -595,8 +594,7 @@ class NextStatement < AbstractStatement
     # parse control variable
     @control_variable = nil
     begin
-      var_name = VariableName.new(@rest)
-      @control_variable = ScalarValue.new(var_name)
+      @control_variable = VariableName.new(@rest)
     rescue BASICException => e
       @errors << e.message
     end
@@ -607,7 +605,7 @@ class NextStatement < AbstractStatement
   end
 
   def control_variable
-    @control_variable.name
+    @control_variable
   end
 
   def execute_cmd(interpreter, _)

@@ -1111,14 +1111,14 @@ class AbstractExpression
         # or equal precedence
         # append them to the output list
         stack_to_precedence(operator_stack, parsed_expression, token)
-        # push the operator onto the operator stack
+        # push the function onto the operator stack
         operator_stack.push(token)
       elsif token.variable?
         # remove operators already on the stack that have higher
         # or equal precedence
         # append them to the output list
         stack_to_precedence(operator_stack, parsed_expression, token)
-        # push the operator onto the operator stack
+        # push the variable onto the operator stack
         variable_name = type_stack[-1].new(token)
         operator_stack.push(variable_name)
       else

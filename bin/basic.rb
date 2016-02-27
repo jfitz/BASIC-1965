@@ -640,7 +640,8 @@ class Interpreter
   end
 
   def retrieve_fornext(control_variable)
-    fornext = @fornexts[control_variable.to_s]
+    control_variable_name = control_variable.to_s
+    fornext = @fornexts[control_variable_name]
     fail(BASICException, 'NEXT without FOR') if fornext.nil?
     fornext
   end
