@@ -525,9 +525,10 @@ class ForNextControl
   end
 
   def front_terminated?
-    if @step_value > 0
+    zero = NumericConstant.new(0)
+    if @step_value > zero
       @start_value > @end_value
-    elsif @step_value < 0
+    elsif @step_value < zero
       @start_value < @end_value
     else
       false
@@ -535,10 +536,11 @@ class ForNextControl
   end
 
   def terminated?(interpreter)
+    zero = NumericConstant.new(0)
     current_value = interpreter.get_value(@control_variable)
-    if @step_value > 0
+    if @step_value > zero
       current_value + @step_value > @end_value
-    elsif @step_value < 0
+    elsif @step_value < zero
       current_value + @step_value < @end_value
     else
       false

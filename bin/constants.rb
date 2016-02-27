@@ -150,89 +150,44 @@ class NumericConstant < AbstractToken
   end
 
   def ==(other)
-    if other.class.to_s == 'NumericConstant'
-      @value == other.to_v
-    else
-      @value == other
-    end
+    @value == other.to_v
   end
 
   def >(other)
-    if other.class.to_s == 'NumericConstant'
-      @value > other.to_v
-    else
-      @value > other
-    end
+    @value > other.to_v
   end
 
   def >=(other)
-    if other.class.to_s == 'NumericConstant'
-      @value >= other.to_v
-    else
-      @value >= other
-    end
+    @value >= other.to_v
   end
 
   def <(other)
-    if other.class.to_s == 'NumericConstant'
-      @value < other.to_v
-    else
-      @value < other
-    end
+    @value < other.to_v
   end
 
   def <=(other)
-    if other.class.to_s == 'NumericConstant'
-      @value <= other.to_v
-    else
-      @value <= other
-    end
+    @value <= other.to_v
   end
 
   def +(other)
-    if other.class.to_s == 'NumericConstant'
-      f = @value + other.to_v
-    else
-      f = @value + other
-    end
-    NumericConstant.new(f)
+    NumericConstant.new(@value + other.to_v)
   end
 
   def -(other)
-    if other.class.to_s == 'NumericConstant'
-      f = @value - other.to_v
-    else
-      f = @value - other
-    end
-    NumericConstant.new(f)
+    NumericConstant.new(@value - other.to_v)
   end
 
   def *(other)
-    if other.class.to_s == 'NumericConstant'
-      f = @value * other.to_v
-    else
-      f = @value * other
-    end
-    NumericConstant.new(f)
+    NumericConstant.new(@value * other.to_v)
   end
 
   def /(other)
-    fail(BASICException, 'Divide by zero') if other == 0
-    if other.class.to_s == 'NumericConstant'
-      f = @value.to_f / other.to_v.to_f
-    else
-      f = @value.to_f / other.to_f
-    end
-    NumericConstant.new(f)
+    fail(BASICException, 'Divide by zero') if other == NumericConstant.new(0)
+    NumericConstant.new(@value.to_f / other.to_v.to_f)
   end
 
   def **(other)
-    if other.class.to_s == 'NumericConstant'
-      f = @value**other.to_v
-    else
-      f = @value**other
-    end
-    NumericConstant.new(f)
+    NumericConstant.new(@value**other.to_v)
   end
 
   def matrix?

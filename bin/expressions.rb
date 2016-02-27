@@ -651,7 +651,7 @@ class FunctionDet < AbstractMatrixFunction
     dims = matrix.dimensions
     fail(BASICException, 'DET requires matrix') unless dims.size == 2
     fail(BASICException, 'DET requires square matrix') if dims[1] != dims[0]
-    if dims[0] == 1
+    if dims[0].to_i == 1
       det = matrix.get_value_2(1, 1)
     elsif dims[0].to_i == 2
       a = matrix.get_value_2(1, 1)
@@ -660,7 +660,8 @@ class FunctionDet < AbstractMatrixFunction
       d = matrix.get_value_2(2, 2)
       det = (a * d) - (b * c)
     else
-      sign = 1
+      minus_one = NumericConstant.new(-1)
+      sign = NumericConstant.new(1)
       det = NumericConstant.new(0)
       n_cols = dims[1].to_i
       # for each element in first row
@@ -670,7 +671,7 @@ class FunctionDet < AbstractMatrixFunction
         subm = submatrix(matrix, 1, col)
         d = v * determinant(subm) * sign
         det += d
-        sign *= -1
+        sign *= minus_one
       end
     end
     det
@@ -678,7 +679,8 @@ class FunctionDet < AbstractMatrixFunction
 
   def submatrix(matrix, exclude_row, exclude_col)
     dims = matrix.dimensions
-    new_dims = [dims[0] - 1, dims[1] - 1]
+    one = NumericConstant.new(1)
+    new_dims = [dims[0] - one, dims[1] - one]
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     new_values = {}
