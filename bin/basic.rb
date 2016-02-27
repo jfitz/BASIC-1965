@@ -303,7 +303,7 @@ class Interpreter
   def list_lines_errors(line_numbers)
     line_numbers.each do |line_number|
       statement = @program_lines[line_number]
-      puts "#{line_number} #{statement.list}"
+      puts "#{line_number}#{statement.list}"
       statement.errors.each { |error| puts ' ' + error }
     end
   end

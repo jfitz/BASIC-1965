@@ -1,30 +1,35 @@
 echo
-echo Start test $1
+TESTNAME=$1
+echo Start test $TESTNAME
 
 # create testbed
 echo Creating testbed...
-mkdir tests/$1
-cp bin/* test/data/$1/* tests/$1
+mkdir tests/$TESTNAME
+cp bin/* test/data/$TESTNAME/* tests/$TESTNAME
 echo testbed ready
 
 # execute program
 echo Running program...
-cd tests/$1
-ruby -I. basic.rb --notiming -r $1.bas >stdout.txt 2>stderr.txt
+cd tests/$TESTNAME
+ruby -I. basic.rb -l $TESTNAME.bas >list.txt
+ruby -I. basic.rb -p $TESTNAME.bas >pretty.txt
+ruby -I. basic.rb --notiming -r $TESTNAME.bas >stdout.txt
 cd ../..
 echo run finished
 
 # compare results
 ECODE=0
 echo Comparing stdout...
-diff tests/$1/stdout.txt test/ref/$1/stdout.txt
+diff tests/$TESTNAME/stdout.txt test/ref/$TESTNAME/stdout.txt
 ((ECODE+=$?))
-echo compare done
-echo Comparing stderr...
-diff tests/$1/stderr.txt test/ref/stderr.txt
+echo Comparing list...
+diff tests/$TESTNAME/list.txt test/ref/$TESTNAME/list.txt
+((ECODE+=$?))
+echo Comparing pretty...
+diff tests/$TESTNAME/pretty.txt test/ref/$TESTNAME/pretty.txt
 ((ECODE+=$?))
 echo compare done
 
-echo End test $1
+echo End test $TESTNAME
 exit $ECODE
 
