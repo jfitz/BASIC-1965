@@ -290,9 +290,11 @@ class Function < AbstractToken
 
   def check_arg_types(args, types)
     check_args(args)
+    n_types = types.size
+    n_args = args.size
     fail(BASICException,
-         "Function #{@name} expects #{types.size} argument, found #{args.size}") if
-      args.size != types.size
+         "Function #{@name} expects #{n_types} argument, found #{n_args}") if
+      n_args != n_types
     (0..types.size - 1).each do |i|
       check_value(args[i], types[i])
     end
@@ -867,13 +869,13 @@ class UserFunction < AbstractScalarFunction
     user_var_values = stack.pop
     fail(BASICException, 'No arguments for function') if
       user_var_values.class.to_s != 'Array'
+    num_values = user_var_names.length
     num_args = user_var_values.length
     fail(BASICException,
-         "Function #{@name} expects #{user_var_names.length} argument, found #{num_args}") if
-      num_args != user_var_names.length
-    x = user_var_values[0]
-    fail(BASICException, "Argument #{x} #{x.class} not numeric") if
-      x.class.to_s != 'NumericConstant'
+         "Function #{@name} expects #{num_values} args, found #{num_args}") if
+      num_args != num_values
+    types = ['NumericConstant'] * num_args
+    check_arg_types(user_var_values, types)
 
     # dummy variable names and their (now known) values
     names_and_values = Hash[user_var_names.zip(user_var_values)]

@@ -264,11 +264,9 @@ class NumericConstant < AbstractToken
 
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
-    if @value.class.to_s == 'Float'
-      lead_space + six_digits(@value).to_s
-    else
-      lead_space + @value.to_s
-    end
+    digits = six_digits(@value).to_s
+    digits = digits.sub(/0+\z/, '').sub(/\.\z/,'') if digits.include?('.')
+    lead_space + digits
   end
 end
 

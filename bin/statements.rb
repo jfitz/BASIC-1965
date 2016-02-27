@@ -502,15 +502,6 @@ class ForNextControl
 
   def initialize(control_variable, loop_start_number,
                  start_value, end_value, step_value)
-    if start_value.class.to_s != 'NumericConstant'
-      fail Exception, "Invalid start value #{start_value} #{start_value.class}"
-    end
-    if end_value.class.to_s != 'NumericConstant'
-      fail Exception, "Invalid end value #{end_value} #{end_value.class}"
-    end
-    if step_value.class.to_s != 'NumericConstant'
-      fail Exception, "Invalid step value #{step_value} #{step_value.class}"
-    end
     @control_variable = control_variable
     @loop_start_number = loop_start_number
     @start_value = start_value
