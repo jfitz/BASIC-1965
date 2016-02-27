@@ -110,7 +110,7 @@ class ScalarReference < Variable
     if stack.size > 0 && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(Exception,
+      fail(BASICException,
            'Variable expects subscripts, found empty parentheses') if
         num_args == 0
       interpreter.check_subscripts(@variable_name, @subscripts)
@@ -215,7 +215,7 @@ class MatrixReference < Variable
     if stack.size > 0 && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(Exception,
+      fail(BASICException,
            'Variable expects subscripts, found empty parentheses') if
         num_args == 0
       interpreter.check_subscripts(@variable_name, @subscripts)
@@ -235,7 +235,7 @@ class VariableDimension < Variable
     if stack.size > 0 && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(Exception,
+      fail(BASICException,
            'Variable expects subscripts, found empty parentheses') if
         num_args == 0
     end
