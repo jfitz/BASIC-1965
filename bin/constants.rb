@@ -275,7 +275,7 @@ class NumericConstant < AbstractToken
     lead_space = @value >= 0 ? ' ' : ''
     digits = six_digits(@value).to_s
     # remove trailing zeros and decimal point
-    digits = digits.sub(/0+\z/, '').sub(/\.\z/,'') if
+    digits = digits.sub(/0+\z/, '').sub(/\.\z/, '') if
       digits.include?('.') && !digits.include?('e')
     lead_space + digits
   end

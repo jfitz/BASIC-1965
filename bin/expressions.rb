@@ -1295,7 +1295,7 @@ class UserFunctionPrototype
     args = text[4..-2]
     @arguments = args.split(',')
     # arguments must be unique
-    fail(BASICException, "Duplicate parameters") unless
+    fail(BASICException, 'Duplicate parameters') unless
       @arguments.uniq.size == @arguments.size
   end
 

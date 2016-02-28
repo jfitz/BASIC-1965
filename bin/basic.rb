@@ -540,7 +540,7 @@ class Interpreter
     forward_line_numbers.each do |line_number|
       statement = @program_lines[line_number]
       if statement.class.to_s == 'NextStatement'
-        return line_number if statement.control_variable == control_variable
+        return line_number if statement.control == control_variable
       end
     end
     fail(BASICException, 'FOR without NEXT') # if none found, error
@@ -634,7 +634,7 @@ class Interpreter
   end
 
   def assign_fornext(fornext_control)
-    control_variable = fornext_control.control_variable
+    control_variable = fornext_control.control
     control_variable_name = control_variable.to_s
     @fornexts[control_variable_name] = fornext_control
   end

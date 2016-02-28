@@ -496,31 +496,31 @@ end
 
 # Helper class for FOR/NEXT
 class ForNextControl
-  attr_reader :control_variable
+  attr_reader :control
   attr_reader :loop_start_number
-  attr_reader :end_value
+  attr_reader :end
 
-  def initialize(control_variable, loop_start_number,
-                 start_value, end_value, step_value)
-    @control_variable = control_variable
+  def initialize(control, loop_start_number,
+                 start, endv, step_value)
+    @control = control
     @loop_start_number = loop_start_number
-    @start_value = start_value
-    @end_value = end_value
+    @start = start
+    @end = endv
     @step_value = step_value
-    @current_value = start_value
+    @current_value = start
   end
 
-  def bump_control_variable(interpreter)
+  def bump_control(interpreter)
     @current_value = @current_value + @step_value
-    interpreter.set_value(@control_variable, @current_value)
+    interpreter.set_value(@control, @current_value)
   end
 
   def front_terminated?
     zero = NumericConstant.new(0)
     if @step_value > zero
-      @start_value > @end_value
+      @start > @end
     elsif @step_value < zero
-      @start_value < @end_value
+      @start < @end
     else
       false
     end
@@ -528,11 +528,11 @@ class ForNextControl
 
   def terminated?(interpreter)
     zero = NumericConstant.new(0)
-    current_value = interpreter.get_value(@control_variable)
+    current_value = interpreter.get_value(@control)
     if @step_value > zero
-      current_value + @step_value > @end_value
+      current_value + @step_value > @end
     elsif @step_value < zero
-      current_value + @step_value < @end_value
+      current_value + @step_value < @end
     else
       false
     end
@@ -548,16 +548,16 @@ class ForStatement < AbstractStatement
     parts = @rest.split('=', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
     begin
-      @control_variable = VariableName.new(parts[0])
+      @control = VariableName.new(parts[0])
     rescue BASICException => e
       @errors << e.message
     end
     parts = parts[1].split('TO', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
-    @start_value = ValueScalarExpression.new(parts[0])
+    @start = ValueScalarExpression.new(parts[0])
 
     parts = parts[1].split('STEP', 2)
-    @end_value = ValueScalarExpression.new(parts[0])
+    @end = ValueScalarExpression.new(parts[0])
 
     @has_step_value = parts.size > 1
     @step_value = ValueScalarExpression.new('1')
@@ -566,20 +566,20 @@ class ForStatement < AbstractStatement
 
   def to_s
     if @has_step_value
-      "#{@keyword} #{@control_variable} = #{@start_value} TO #{@end_value} STEP #{@step_value}"
+      "#{@keyword} #{@control} = #{@start} TO #{@end} STEP #{@step_value}"
     else
-      "#{@keyword} #{@control_variable} = #{@start_value} TO #{@end_value}"
+      "#{@keyword} #{@control} = #{@start} TO #{@end}"
     end
   end
 
   def execute_cmd(interpreter, _)
-    loop_end_number = interpreter.find_closing_next(@control_variable.to_s)
-    from_value = @start_value.evaluate(interpreter)[0]
-    interpreter.set_value(@control_variable, from_value)
-    to_value = @end_value.evaluate(interpreter)[0]
+    loop_end_number = interpreter.find_closing_next(@control.to_s)
+    from_value = @start.evaluate(interpreter)[0]
+    interpreter.set_value(@control, from_value)
+    to_value = @end.evaluate(interpreter)[0]
     step_value = @step_value.evaluate(interpreter)[0]
     fornext_control =
-      ForNextControl.new(@control_variable, interpreter.next_line_number,
+      ForNextControl.new(@control, interpreter.next_line_number,
                          from_value, to_value, step_value)
     interpreter.assign_fornext(fornext_control)
     interpreter.next_line_number = loop_end_number if
@@ -589,34 +589,32 @@ end
 
 # NEXT
 class NextStatement < AbstractStatement
+  attr_reader :control
+
   def initialize(line, squeezed)
     super('NEXT', line, squeezed)
     # parse control variable
-    @control_variable = nil
+    @control = nil
     begin
-      @control_variable = VariableName.new(@rest)
+      @control = VariableName.new(@rest)
     rescue BASICException => e
       @errors << e.message
     end
   end
 
   def to_s
-    @keyword + ' ' + @control_variable.to_s
-  end
-
-  def control_variable
-    @control_variable
+    @keyword + ' ' + @control.to_s
   end
 
   def execute_cmd(interpreter, _)
-    fornext_control = interpreter.retrieve_fornext(@control_variable)
+    fornext_control = interpreter.retrieve_fornext(@control)
     # check control variable value
     # if matches end value, stop here
     return if fornext_control.terminated?(interpreter)
     # set next line from top item
     interpreter.next_line_number = fornext_control.loop_start_number
     # change control variable value
-    fornext_control.bump_control_variable(interpreter)
+    fornext_control.bump_control(interpreter)
   end
 end
 
