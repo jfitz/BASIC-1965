@@ -262,10 +262,21 @@ class NumericConstant < AbstractToken
     value.round(decimals)
   end
 
+  def print(printer, interpreter, carriage)
+    s = to_formatted_s
+    printer.print_item s
+    printer.last_was_numeric
+    carriage.print(printer, interpreter)
+  end
+
+  private
+
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
     digits = six_digits(@value).to_s
-    digits = digits.sub(/0+\z/, '').sub(/\.\z/,'') if digits.include?('.')
+    # remove trailing zeros and decimal point
+    digits = digits.sub(/0+\z/, '').sub(/\.\z/,'') if
+      digits.include?('.') && !digits.include?('e')
     lead_space + digits
   end
 end
@@ -293,8 +304,9 @@ class TextConstant < AbstractToken
     "\"#{@value}\""
   end
 
-  def to_formatted_s
-    @value
+  def print(printer, interpreter, carriage)
+    printer.print_item @value
+    carriage.print(printer, interpreter)
   end
 end
 
@@ -310,10 +322,6 @@ class BooleanConstant < AbstractToken
   end
 
   def to_s
-    @value ? 'true' : 'false'
-  end
-
-  def to_formatted_s
     @value ? 'true' : 'false'
   end
 end
