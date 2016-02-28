@@ -152,6 +152,19 @@ class Matrix
     'MATRIX: ' + @values.to_s
   end
 
+  def print(printer, interpreter, carriage)
+    case @dimensions.size
+    when 0
+      fail BASICException, 'Need dimensions in matrix'
+    when 1
+      print_1(printer, interpreter, carriage)
+    when 2
+      print_2(printer, interpreter, carriage)
+    else
+      fail BASICException, 'Too many dimensions in matrix'
+    end
+  end
+
   private
 
   def make_coord(c)
@@ -160,6 +173,31 @@ class Matrix
 
   def make_coords(r, c)
     '(' + r.to_s + ',' + c.to_s + ')'
+  end
+
+  def print_1(printer, interpreter, carriage)
+    upper = @dimensions[0].to_i
+
+    (1..upper).each do |index|
+      value = get_value_1(index)
+      value.print(printer, interpreter, carriage)
+    end
+    printer.newline
+    printer.newline
+  end
+
+  def print_2(printer, interpreter, carriage)
+    upper_i = @dimensions[0].to_i
+    upper_j = @dimensions[1].to_i
+
+    (1..upper_i).each do |i|
+      (1..upper_j).each do |j|
+        value = get_value_2(i, j)
+        value.print(printer, interpreter, carriage)
+      end
+      printer.newline
+    end
+    printer.newline
   end
 end
 
@@ -1299,15 +1337,12 @@ class ScalarPrintableExpression < AbstractPrintableExpression
 
   def print(printer, interpreter, carriage)
     unless @text_constant.nil?
-      printer.print_item @text_constant.to_formatted_s
-      carriage.print(printer, interpreter)
+      @text_constant.print(printer, interpreter, carriage)
     end
     unless @scalar_expression.nil?
       numeric_constants = @scalar_expression.evaluate(interpreter)
       numeric_constant = numeric_constants[0]
-      printer.print_item numeric_constant.to_formatted_s
-      printer.last_was_numeric
-      carriage.print(printer, interpreter)
+      numeric_constant.print(printer, interpreter, carriage)
     end
     # for a nil expression, print nothing but do print the carriage operation
     carriage.print(printer, interpreter) if empty?
@@ -1331,60 +1366,11 @@ class MatrixPrintableExpression < AbstractPrintableExpression
   end
 
   def print(printer, interpreter, carriage)
-    numeric_constants = @matrix_expression.evaluate(interpreter)
-    matrix = numeric_constants[0]
-    print_matrix(matrix, printer, interpreter, carriage)
+    matrices = @matrix_expression.evaluate(interpreter)
+    matrix = matrices[0]
+    matrix.print(printer, interpreter, carriage)
     # for a nil expression, print nothing but do print the carriage operation
     carriage.print(printer, interpreter) if empty?
-  end
-
-  private
-
-  def print_matrix(matrix, printer, interpreter, carriage)
-    dimensions = matrix.dimensions
-    fail BASICException, 'Undefined matrix' if dimensions.nil?
-
-    case dimensions.size
-    when 0
-      fail BASICException, 'Need dimensions in matrix'
-    when 1
-      print_1(matrix, dimensions, printer, interpreter, carriage)
-    when 2
-      print_2(matrix, dimensions, printer, interpreter, carriage)
-    else
-      fail BASICException, 'Too many dimensions in matrix'
-    end
-  end
-
-  def print_1(matrix, dimensions, printer, interpreter, carriage)
-    upper = dimensions[0].to_i
-
-    (1..upper).each do |index|
-      value = matrix.get_value_1(index)
-      printer.print_item(value.to_formatted_s)
-      printer.last_was_numeric
-      carriage.print(printer, interpreter)
-      printer.last_was_numeric
-    end
-    printer.newline
-    printer.newline
-  end
-
-  def print_2(matrix, dimensions, printer, interpreter, carriage)
-    upper_i = dimensions[0].to_i
-    upper_j = dimensions[1].to_i
-
-    (1..upper_i).each do |i|
-      (1..upper_j).each do |j|
-        value = matrix.get_value_2(i, j)
-        printer.print_item(value.to_formatted_s)
-        printer.last_was_numeric
-        carriage.print(printer, interpreter)
-        printer.last_was_numeric
-      end
-      printer.newline
-    end
-    printer.newline
   end
 end
 
