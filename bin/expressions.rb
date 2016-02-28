@@ -993,6 +993,13 @@ class AbstractExpression
     @parsed_expressions.length
   end
 
+  # returns an Array of values
+  def evaluate(interpreter)
+    values = eval_scalar(interpreter, @parsed_expressions)
+    fail(Exception, 'Expected some values') if values.length == 0
+    values
+  end
+
   private
 
   def tokenize(words)
@@ -1138,18 +1145,6 @@ class ValueScalarExpression < AbstractExpression
   def initialize(text)
     super(text, ScalarValue)
   end
-
-  # returns an Array of values
-  def evaluate(interpreter)
-    if @parsed_expressions.size > 0
-      values = eval_scalar(interpreter, @parsed_expressions)
-      fail(Exception, 'ValueScalarExpression: Expected some values') if
-        values.length == 0
-    else
-      values = []
-    end
-    values
-  end
 end
 
 # Value matrix expression (an R-value)
@@ -1164,18 +1159,6 @@ class ValueMatrixExpression < AbstractExpression
 
   def printable?
     true
-  end
-
-  # returns an Array of Matrix objects
-  def evaluate(interpreter)
-    if @parsed_expressions.size > 0
-      values = eval_scalar(interpreter, @parsed_expressions)
-      fail(Exception, 'ValueMatrixExpression: Expected some values') if
-        values.length == 0
-    else
-      values = []
-    end
-    values
   end
 end
 
@@ -1220,13 +1203,6 @@ class TargetScalarExpression < AbstractTargetExpression
       parsed_expression[-1] = ScalarReference.new(parsed_expression[-1])
     end
   end
-
-  # returns an Array of targets
-  def evaluate(interpreter)
-    values = eval_scalar(interpreter, @parsed_expressions)
-    fail(Exception, 'Expected some values') if values.length == 0
-    values
-  end
 end
 
 # target matrix expression (an L-value)
@@ -1237,13 +1213,6 @@ class TargetMatrixExpression < AbstractTargetExpression
       parsed_expression[-1] = MatrixReference.new(parsed_expression[-1])
     end
   end
-
-  # returns an Array of targets
-  def evaluate(interpreter)
-    values = eval_scalar(interpreter, @parsed_expressions)
-    fail(Exception, 'Expected some values') if values.length == 0
-    values
-  end
 end
 
 # A dimension expression (evaluates to dimensions)
@@ -1253,12 +1222,6 @@ class DimensionExpression < AbstractTargetExpression
     @parsed_expressions.each do |parsed_expression|
       parsed_expression[-1] = VariableDimension.new(parsed_expression[-1])
     end
-  end
-
-  def evaluate(interpreter)
-    values = eval_scalar(interpreter, @parsed_expressions)
-    fail(Exception, 'Expected some values') if values.length == 0
-    values
   end
 end
 
