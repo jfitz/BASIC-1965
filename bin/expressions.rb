@@ -1428,15 +1428,13 @@ class BooleanExpression
   end
 end
 
-# An assignment (part of a LET statement)
-class ScalarAssignment
+# Abstract assignment
+class AbstractAssignment
   def initialize(text)
     # parse into variable, '=', expression
     parts = text.split('=', 2)
     fail(BASICException, "'#{text}' is not a valid assignment") if
       parts.size != 2
-    @target = TargetScalarExpression.new(parts[0])
-    @expression = ValueScalarExpression.new(parts[1])
   end
 
   def count_target
@@ -1445,14 +1443,6 @@ class ScalarAssignment
 
   def eval_target(interpreter)
     @target.evaluate(interpreter)
-  end
-
-  def count_value
-    @expression.count
-  end
-
-  def eval_value(interpreter)
-    @expression.evaluate(interpreter)
   end
 
   def to_s
@@ -1464,13 +1454,31 @@ class ScalarAssignment
   end
 end
 
-# An assignment (part of a MAT LET statement)
-class MatrixAssignment
+# An assignment (part of a LET statement)
+class ScalarAssignment < AbstractAssignment
   def initialize(text)
+    super
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    fail(BASICException, "'#{text}' is not a valid assignment") if
-      parts.size != 2
+    @target = TargetScalarExpression.new(parts[0])
+    @expression = ValueScalarExpression.new(parts[1])
+  end
+
+  def count_value
+    @expression.count
+  end
+
+  def eval_value(interpreter)
+    @expression.evaluate(interpreter)
+  end
+end
+
+# An assignment (part of a MAT LET statement)
+class MatrixAssignment < AbstractAssignment
+  def initialize(text)
+    super
+    # parse into variable, '=', expression
+    parts = text.split('=', 2)
     @target = TargetMatrixExpression.new(parts[0])
     @functions = {
       'CON' => FunctionCon,
@@ -1485,14 +1493,6 @@ class MatrixAssignment
     end
   end
 
-  def count_target
-    @target.count
-  end
-
-  def eval_target(interpreter)
-    @target.evaluate(interpreter)
-  end
-
   def count_value
     if @special_form
       1
@@ -1503,25 +1503,19 @@ class MatrixAssignment
 
   def eval_value(interpreter)
     if @special_form
+      # special form obtains variable name and dimensions at run-time
       vs = @target.evaluate(interpreter)
       v = vs[0]
       fail(Exception, 'Expected matrix reference') if
         v.class.to_s != 'MatrixReference'
       name = v.name
       dims = interpreter.get_dimensions(name)
+
       f = @functions[@expression].new('')
       matrix = f.evaluate(interpreter, [dims])
       [matrix]
     else
       @expression.evaluate(interpreter)
     end
-  end
-
-  def to_s
-    @target.to_s + ' = ' + @expression.to_s
-  end
-
-  def to_postfix_s
-    @expression.to_postfix_s
   end
 end
