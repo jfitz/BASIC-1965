@@ -197,7 +197,7 @@ class DimStatement < AbstractStatement
     if text_list.size > 0
       text_list.each do |text_item|
         begin
-          @expression_list << DimensionExpression.new(text_item)
+          @expression_list << TargetExpression.new(text_item, VariableDimension)
         rescue BASICException
           @errors << "Invalid variable #{text_item}"
         end
@@ -326,7 +326,7 @@ class InputStatement < AbstractStatement
     expression_list = []
     text_list.each do |text_item|
       begin
-        expression_list << TargetScalarExpression.new(text_item)
+        expression_list << TargetExpression.new(text_item, ScalarReference)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -627,7 +627,7 @@ class ReadStatement < AbstractStatement
     @expression_list = []
     item_list.each do |item|
       begin
-        @expression_list << TargetScalarExpression.new(item)
+        @expression_list << TargetExpression.new(item, ScalarReference)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -813,7 +813,7 @@ class MatReadStatement < AbstractStatement
     @expression_list = []
     item_list.each do |item|
       begin
-        expression = TargetMatrixExpression.new(item)
+        expression = TargetExpression.new(item, MatrixReference)
         @expression_list << expression
       rescue BASICException
         @errors << "Invalid variable #{text_item}"

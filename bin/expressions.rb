@@ -1200,14 +1200,18 @@ class ValueMatrixExpression < AbstractExpression
   end
 end
 
-# Abstract target expression
-class AbstractTargetExpression < AbstractExpression
-  def initialize(text)
+# Target expression
+class TargetExpression < AbstractExpression
+  def initialize(text, type)
     super(text, ScalarValue)
 
     check_length
     check_all_lengths
     check_resolve_types
+
+    @parsed_expressions.each do |parsed_expression|
+      parsed_expression[-1] = type.new(parsed_expression[-1])
+    end
   end
 
   private
@@ -1229,36 +1233,6 @@ class AbstractTargetExpression < AbstractExpression
       fail(BASICException,
            "Value is not assignable (type #{parsed_expression[-1].class})") if
         parsed_expression[-1].class.to_s != 'ScalarValue'
-    end
-  end
-end
-
-# target scalar expression (an L-value)
-class TargetScalarExpression < AbstractTargetExpression
-  def initialize(text)
-    super
-    @parsed_expressions.each do |parsed_expression|
-      parsed_expression[-1] = ScalarReference.new(parsed_expression[-1])
-    end
-  end
-end
-
-# target matrix expression (an L-value)
-class TargetMatrixExpression < AbstractTargetExpression
-  def initialize(text)
-    super
-    @parsed_expressions.each do |parsed_expression|
-      parsed_expression[-1] = MatrixReference.new(parsed_expression[-1])
-    end
-  end
-end
-
-# A dimension expression (evaluates to dimensions)
-class DimensionExpression < AbstractTargetExpression
-  def initialize(text)
-    super
-    @parsed_expressions.each do |parsed_expression|
-      parsed_expression[-1] = VariableDimension.new(parsed_expression[-1])
     end
   end
 end
@@ -1460,7 +1434,7 @@ class ScalarAssignment < AbstractAssignment
     super
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    @target = TargetScalarExpression.new(parts[0])
+    @target = TargetExpression.new(parts[0], ScalarReference)
     @expression = ValueScalarExpression.new(parts[1])
   end
 
@@ -1479,7 +1453,7 @@ class MatrixAssignment < AbstractAssignment
     super
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    @target = TargetMatrixExpression.new(parts[0])
+    @target = TargetExpression.new(parts[0], MatrixReference)
     @functions = {
       'CON' => FunctionCon,
       'ZER' => FunctionZer,
