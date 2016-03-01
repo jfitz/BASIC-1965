@@ -356,14 +356,13 @@ class IfStatement < AbstractStatement
   def execute_cmd(interpreter, trace)
     @boolean_expression.evaluate(interpreter)
     interpreter.next_line_number = @destination if @boolean_expression.result
-    if trace
-      printer = interpreter.print_handler
-      s = ' ' + @boolean_expression.a_value.to_s +
-          ' ' + @boolean_expression.operator.to_s +
-          ' ' + @boolean_expression.b_value.to_s +
-          ' ' + @boolean_expression.result.to_s
-      printer.trace_output(s)
-    end
+    return unless trace
+    printer = interpreter.print_handler
+    s = ' ' + @boolean_expression.a_value.to_s +
+        ' ' + @boolean_expression.operator.to_s +
+        ' ' + @boolean_expression.b_value.to_s +
+        ' ' + @boolean_expression.result.to_s
+    printer.trace_output(s)
   end
 end
 
@@ -502,7 +501,7 @@ class ForNextControl
   end
 
   def bump_control(interpreter)
-    @current_value = @current_value + @step_value
+    @current_value += @step_value
     interpreter.set_value(@control, @current_value)
   end
 
@@ -952,46 +951,6 @@ class MatLetStatement < AbstractStatement
         printer.trace_output(' ' + variable.to_s + ' = ' + value.to_s) if trace
         interpreter.set_value(variable, value)
       end
-    end
-  end
-end
-
-# Carriage control for PRINT and MAT PRINT statements
-class CarriageControl
-  def initialize(text)
-    valid_operators = ['NL', ',', ';', '']
-    fail(BASICException, "'#{text}' is not a valid separator") unless
-      valid_operators.include?(text)
-    @operator = text
-  end
-
-  def printable?
-    false
-  end
-
-  def to_s
-    case @operator
-    when ';'
-      '; '
-    when ','
-      ', '
-    when 'NL'
-      ''
-    when ''
-      ' '
-    end
-  end
-
-  def print(printer, _)
-    case @operator
-    when ','
-      printer.tab
-    when ';'
-      printer.semicolon
-    when 'NL'
-      printer.newline
-    when ''
-      # do nothing
     end
   end
 end

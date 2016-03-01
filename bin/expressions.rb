@@ -180,7 +180,7 @@ class Matrix
 
     (1..upper).each do |index|
       value = get_value_1(index)
-      value.print(printer, interpreter)
+      value.print(printer)
       carriage.print(printer, interpreter)
     end
     printer.newline
@@ -194,7 +194,7 @@ class Matrix
     (1..upper_i).each do |i|
       (1..upper_j).each do |j|
         value = get_value_2(i, j)
-        value.print(printer, interpreter)
+        value.print(printer)
         carriage.print(printer, interpreter)
       end
       printer.newline
@@ -1193,7 +1193,7 @@ class ValueScalarExpression < AbstractExpression
   def print(printer, interpreter)
     numeric_constants = evaluate(interpreter)
     numeric_constant = numeric_constants[0]
-    numeric_constant.print(printer, interpreter)
+    numeric_constant.print(printer)
   end
 end
 

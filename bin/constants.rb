@@ -262,7 +262,7 @@ class NumericConstant < AbstractToken
     value.round(decimals)
   end
 
-  def print(printer, interpreter)
+  def print(printer)
     s = to_formatted_s
     printer.print_item s
     printer.last_was_numeric
@@ -307,7 +307,7 @@ class TextConstant < AbstractToken
     "\"#{@value}\""
   end
 
-  def print(printer, interpreter)
+  def print(printer, _)
     printer.print_item @value
   end
 end
@@ -325,5 +325,45 @@ class BooleanConstant < AbstractToken
 
   def to_s
     @value ? 'true' : 'false'
+  end
+end
+
+# Carriage control for PRINT and MAT PRINT statements
+class CarriageControl
+  def initialize(text)
+    valid_operators = ['NL', ',', ';', '']
+    fail(BASICException, "'#{text}' is not a valid separator") unless
+      valid_operators.include?(text)
+    @operator = text
+  end
+
+  def printable?
+    false
+  end
+
+  def to_s
+    case @operator
+    when ';'
+      '; '
+    when ','
+      ', '
+    when 'NL'
+      ''
+    when ''
+      ' '
+    end
+  end
+
+  def print(printer, _)
+    case @operator
+    when ','
+      printer.tab
+    when ';'
+      printer.semicolon
+    when 'NL'
+      printer.newline
+    when ''
+      # do nothing
+    end
   end
 end
