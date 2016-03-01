@@ -180,7 +180,8 @@ class Matrix
 
     (1..upper).each do |index|
       value = get_value_1(index)
-      value.print(printer, interpreter, carriage)
+      value.print(printer, interpreter)
+      carriage.print(printer, interpreter)
     end
     printer.newline
     printer.newline
@@ -193,7 +194,8 @@ class Matrix
     (1..upper_i).each do |i|
       (1..upper_j).each do |j|
         value = get_value_2(i, j)
-        value.print(printer, interpreter, carriage)
+        value.print(printer, interpreter)
+        carriage.print(printer, interpreter)
       end
       printer.newline
     end
@@ -1191,10 +1193,6 @@ class ValueMatrixExpression < AbstractExpression
     super(text, MatrixValue)
   end
 
-  def empty?
-    false
-  end
-
   def printable?
     true
   end
@@ -1298,10 +1296,6 @@ class ScalarPrintableExpression < AbstractPrintableExpression
     end
   end
 
-  def empty?
-    @text_constant.nil? && @scalar_expression.nil?
-  end
-
   def to_s
     r = ''
     r = @text_constant.to_s unless @text_constant.nil?
@@ -1309,17 +1303,15 @@ class ScalarPrintableExpression < AbstractPrintableExpression
     r
   end
 
-  def print(printer, interpreter, carriage)
+  def print(printer, interpreter)
     unless @text_constant.nil?
-      @text_constant.print(printer, interpreter, carriage)
+      @text_constant.print(printer, interpreter)
     end
     unless @scalar_expression.nil?
       numeric_constants = @scalar_expression.evaluate(interpreter)
       numeric_constant = numeric_constants[0]
-      numeric_constant.print(printer, interpreter, carriage)
+      numeric_constant.print(printer, interpreter)
     end
-    # for a nil expression, print nothing but do print the carriage operation
-    carriage.print(printer, interpreter) if empty?
   end
 end
 
@@ -1331,10 +1323,6 @@ class MatrixPrintableExpression < AbstractPrintableExpression
     @matrix_expression = ValueMatrixExpression.new(text)
   end
 
-  def empty?
-    @matrix_expression.nil?
-  end
-
   def to_s
     @matrix_expression.to_s
   end
@@ -1343,8 +1331,6 @@ class MatrixPrintableExpression < AbstractPrintableExpression
     matrices = @matrix_expression.evaluate(interpreter)
     matrix = matrices[0]
     matrix.print(printer, interpreter, carriage)
-    # for a nil expression, print nothing but do print the carriage operation
-    carriage.print(printer, interpreter) if empty?
   end
 end
 

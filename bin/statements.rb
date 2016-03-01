@@ -367,36 +367,8 @@ class IfStatement < AbstractStatement
   end
 end
 
-# Common for PRINT and MAT PRINT
-class AbstractPrintStatement < AbstractStatement
-  def initialize(keyword, line, squeezed)
-    super(keyword, line, squeezed)
-  end
-
-  def to_s
-    varnames = []
-    @print_item_pairs.each do |print_pair|
-      print_expression = print_pair[0]
-      value = print_expression.to_s
-      carriage = print_pair[1].to_s
-      item = ' ' + value + carriage
-      varnames << item unless print_expression.empty?
-    end
-    @keyword + varnames.join('')
-  end
-
-  def execute_cmd(interpreter, _)
-    printer = interpreter.print_handler
-    @print_item_pairs.each do |print_pair|
-      variable = print_pair[0]
-      carriage = print_pair[1]
-      variable.print(printer, interpreter, carriage)
-    end
-  end
-end
-
 # PRINT
-class PrintStatement < AbstractPrintStatement
+class PrintStatement < AbstractStatement
   def initialize(line, squeezed)
     super('PRINT', line, squeezed)
 
@@ -412,7 +384,7 @@ class PrintStatement < AbstractPrintStatement
         item = CarriageControl.new(print_item)
         print_item_list << item
       else
-        # insert a plain carriage control
+        # insert a plain carriage control between two printable things
         item = CarriageControl.new('')
         print_item_list << item if previous_item.printable?
         begin
@@ -429,10 +401,25 @@ class PrintStatement < AbstractPrintStatement
     print_item_list << ScalarPrintableExpression.new(nil) if
       print_item_list.size == 0
     print_item_list << CarriageControl.new('NL') if
-      print_item_list[-1].class.to_s != 'CarriageControl'
+      print_item_list[-1].printable?
 
-    # convert to pairs
-    @print_item_pairs = print_item_list.each_slice(2).to_a
+    @print_items = print_item_list
+  end
+
+  def to_s
+    varnames = []
+    @print_items.each do |item|
+      varnames << item.to_s
+    end
+    trailer = ' ' + varnames.join('')
+    @keyword + trailer.rstrip
+  end
+
+  def execute_cmd(interpreter, _)
+    printer = interpreter.print_handler
+    @print_items.each do |item|
+      item.print(printer, interpreter)
+    end
   end
 end
 
@@ -766,7 +753,7 @@ class TraceStatement < AbstractStatement
 end
 
 # MAT PRINT
-class MatPrintStatement < AbstractPrintStatement
+class MatPrintStatement < AbstractStatement
   def initialize(line, squeezed)
     super('MAT PRINT', line, squeezed)
     item_list = split_args(@rest, true)
@@ -797,10 +784,33 @@ class MatPrintStatement < AbstractPrintStatement
     print_item_list << MatrixPrintableExpression.new(nil) if
       print_item_list.size == 0
     print_item_list << CarriageControl.new(',') if
-      print_item_list[-1].class.to_s != 'CarriageControl'
+      print_item_list[-1].printable?
 
-    # convert to pairs
-    @print_item_pairs = print_item_list.each_slice(2).to_a
+    @print_items = print_item_list
+  end
+
+  def to_s
+    varnames = []
+    @print_items.each do |item|
+      varnames << item.to_s
+    end
+    trailer = ' ' + varnames.join('')
+    @keyword + trailer.rstrip
+  end
+
+  def execute_cmd(interpreter, _)
+    printer = interpreter.print_handler
+    i = 0
+    @print_items.each do |item|
+      unless item.class.to_s == 'CarriageControl'
+        carriage = CarriageControl.new('')
+        carriage = @print_items[i + 1] if
+          i < @print_items.size &&
+          !@print_items[i + 1].printable?
+        item.print(printer, interpreter, carriage)
+      end
+      i += 1
+    end
   end
 end
 
@@ -959,13 +969,13 @@ class CarriageControl
   def to_s
     case @operator
     when ';'
-      ';'
+      '; '
     when ','
-      ','
+      ', '
     when 'NL'
       ''
     when ''
-      ''
+      ' '
     end
   end
 

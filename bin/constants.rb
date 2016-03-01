@@ -262,11 +262,10 @@ class NumericConstant < AbstractToken
     value.round(decimals)
   end
 
-  def print(printer, interpreter, carriage)
+  def print(printer, interpreter)
     s = to_formatted_s
     printer.print_item s
     printer.last_was_numeric
-    carriage.print(printer, interpreter)
   end
 
   private
@@ -304,9 +303,8 @@ class TextConstant < AbstractToken
     "\"#{@value}\""
   end
 
-  def print(printer, interpreter, carriage)
+  def print(printer, interpreter)
     printer.print_item @value
-    carriage.print(printer, interpreter)
   end
 end
 
