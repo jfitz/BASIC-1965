@@ -179,6 +179,72 @@ class Matrix
     end
   end
 
+  def determinant
+    fail(BASICException, 'DET requires matrix') unless @dimensions.size == 2
+    fail(BASICException, 'DET requires square matrix') if
+      @dimensions[1] != @dimensions[0]
+    if @dimensions[0].to_i == 1
+      det = get_value_2(1, 1)
+    elsif @dimensions[0].to_i == 2
+      a = get_value_2(1, 1)
+      b = get_value_2(1, 2)
+      c = get_value_2(2, 1)
+      d = get_value_2(2, 2)
+      det = (a * d) - (b * c)
+    else
+      minus_one = NumericConstant.new(-1)
+      sign = NumericConstant.new(1)
+      det = NumericConstant.new(0)
+      n_cols = @dimensions[1].to_i
+      # for each element in first row
+      (1..n_cols).each do |col|
+        v = get_value_2(1, col)
+        # create submatrix
+        subm = submatrix(1, col)
+        d = v * subm.determinant * sign
+        det += d
+        sign *= minus_one
+      end
+    end
+    det
+  end
+
+  def inverse
+    # set all values
+    values = values_2
+
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
+
+    # create inverse matrix starter
+    inv_values = {}
+
+    # create identity matrix
+    # set all values
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        coords = make_coords(row, col)
+        inv_values[coords] = NumericConstant.new(0)
+        inv_values[coords] = NumericConstant.new(1) if col == row
+      end
+    end
+
+    # convert to upper triangular form
+    upper_triangle(n_cols, n_rows, values, inv_values)
+    # convert to lower triangular form
+    lower_triangle(n_cols, values, inv_values)
+    # normalize to ones
+    (1..n_rows).each do |row|
+      denom_coords = make_coords(row, row)
+      denominator = values[denom_coords]
+      (1..n_cols).each do |col|
+        unitize_matrix_entry(values, row, col, denominator)
+        unitize_matrix_entry(inv_values, row, col, denominator)
+      end
+    end
+    Matrix.new(@dimensions.clone, inv_values)
+  end
+
   private
 
   def make_coord(c)
@@ -214,6 +280,78 @@ class Matrix
       printer.newline
     end
     printer.newline
+  end
+
+  def submatrix(exclude_row, exclude_col)
+    one = NumericConstant.new(1)
+    new_dims = [@dimensions[0] - one, @dimensions[1] - one]
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
+    new_values = {}
+    new_row = 1
+    (1..n_rows).each do |row|
+      new_col = 1
+      next if row == exclude_row
+      (1..n_cols).each do |col|
+        next if col == exclude_col
+        value = get_value_2(row, col)
+        coords = make_coords(new_row, new_col)
+        new_values[coords] = value
+        new_col += 1
+      end
+      new_row += 1
+    end
+    Matrix.new(new_dims, new_values)
+  end
+
+  def calc_factor(values, row, col)
+    denom_coords = make_coords(col, col)
+    denominator = values[denom_coords]
+    numer_coords = make_coords(row, col)
+    numerator = values[numer_coords]
+    numerator / denominator
+  end
+
+  def adjust_matrix_entry(values, row, col, wcol, factor)
+    value_coords = make_coords(row, wcol)
+    minuend_coords = make_coords(col, wcol)
+    subtrahend = values[value_coords]
+    minuend = values[minuend_coords]
+    new_value = subtrahend - minuend * factor
+    values[value_coords] = new_value
+  end
+
+  def upper_triangle(n_cols, n_rows, values, inv_values)
+    (1..n_cols - 1).each do |col|
+      (col + 1..n_rows).each do |row|
+        # adjust values for this row
+        factor = calc_factor(values, row, col)
+        (1..n_cols).each do |wcol|
+          adjust_matrix_entry(values, row, col, wcol, factor)
+          adjust_matrix_entry(inv_values, row, col, wcol, factor)
+        end
+      end
+    end
+  end
+
+  def lower_triangle(n_cols, values, inv_values)
+    n_cols.downto(2) do |col|
+      (col - 1).downto(1).each do |row|
+        # adjust values for this row
+        factor = calc_factor(values, row, col)
+        (1..n_cols).each do |wcol|
+          adjust_matrix_entry(values, row, col, wcol, factor)
+          adjust_matrix_entry(inv_values, row, col, wcol, factor)
+        end
+      end
+    end
+  end
+
+  def unitize_matrix_entry(values, row, col, denominator)
+    coords = make_coords(row, col)
+    numerator = values[coords]
+    new_value = numerator / denominator
+    values[coords] = new_value
   end
 end
 
@@ -675,6 +813,8 @@ class FunctionIdn < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
+    fail(BASICException, 'One or two arguments required for IDN()') unless
+      args.size == 1 || args.size == 2
     check_arg_types(args, ['NumericConstant']) if args.size == 1
     check_arg_types(args, %w(NumericConstant NumericConstant)) if
       args.size == 2
@@ -704,62 +844,7 @@ class FunctionDet < AbstractMatrixFunction
     fail(BASICException, 'One argument required for DET()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
-    determinant(args[0])
-  end
-
-  private
-
-  def determinant(matrix)
-    dims = matrix.dimensions
-    fail(BASICException, 'DET requires matrix') unless dims.size == 2
-    fail(BASICException, 'DET requires square matrix') if dims[1] != dims[0]
-    if dims[0].to_i == 1
-      det = matrix.get_value_2(1, 1)
-    elsif dims[0].to_i == 2
-      a = matrix.get_value_2(1, 1)
-      b = matrix.get_value_2(1, 2)
-      c = matrix.get_value_2(2, 1)
-      d = matrix.get_value_2(2, 2)
-      det = (a * d) - (b * c)
-    else
-      minus_one = NumericConstant.new(-1)
-      sign = NumericConstant.new(1)
-      det = NumericConstant.new(0)
-      n_cols = dims[1].to_i
-      # for each element in first row
-      (1..n_cols).each do |col|
-        v = matrix.get_value_2(1, col)
-        # create submatrix
-        subm = submatrix(matrix, 1, col)
-        d = v * determinant(subm) * sign
-        det += d
-        sign *= minus_one
-      end
-    end
-    det
-  end
-
-  def submatrix(matrix, exclude_row, exclude_col)
-    dims = matrix.dimensions
-    one = NumericConstant.new(1)
-    new_dims = [dims[0] - one, dims[1] - one]
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    new_values = {}
-    new_row = 1
-    (1..n_rows).each do |row|
-      new_col = 1
-      next if row == exclude_row
-      (1..n_cols).each do |col|
-        next if col == exclude_col
-        value = matrix.get_value_2(row, col)
-        coords = make_coords(new_row, new_col)
-        new_values[coords] = value
-        new_col += 1
-      end
-      new_row += 1
-    end
-    Matrix.new(new_dims, new_values)
+    args[0].determinant
   end
 end
 
@@ -771,100 +856,13 @@ class FunctionInv < AbstractMatrixFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for DET()') unless
+    fail(BASICException, 'One argument required for INV()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
     dims = args[0].dimensions
     fail(BASICException, 'INV requires matrix') unless dims.size == 2
     fail(BASICException, 'INV requires square matrix') if dims[1] != dims[0]
-    inverse(args[0])
-  end
-
-  private
-
-  def calc_factor(values, row, col)
-    denom_coords = make_coords(col, col)
-    denominator = values[denom_coords]
-    numer_coords = make_coords(row, col)
-    numerator = values[numer_coords]
-    numerator / denominator
-  end
-
-  def adjust_matrix_entry(values, row, col, wcol, factor)
-    value_coords = make_coords(row, wcol)
-    minuend_coords = make_coords(col, wcol)
-    subtrahend = values[value_coords]
-    minuend = values[minuend_coords]
-    new_value = subtrahend - minuend * factor
-    values[value_coords] = new_value
-  end
-
-  def upper_triangle(n_cols, n_rows, values, inv_values)
-    (1..n_cols - 1).each do |col|
-      (col + 1..n_rows).each do |row|
-        # adjust values for this row
-        factor = calc_factor(values, row, col)
-        (1..n_cols).each do |wcol|
-          adjust_matrix_entry(values, row, col, wcol, factor)
-          adjust_matrix_entry(inv_values, row, col, wcol, factor)
-        end
-      end
-    end
-  end
-
-  def lower_triangle(n_cols, values, inv_values)
-    n_cols.downto(2) do |col|
-      (col - 1).downto(1).each do |row|
-        # adjust values for this row
-        factor = calc_factor(values, row, col)
-        (1..n_cols).each do |wcol|
-          adjust_matrix_entry(values, row, col, wcol, factor)
-          adjust_matrix_entry(inv_values, row, col, wcol, factor)
-        end
-      end
-    end
-  end
-
-  def unitize_matrix_entry(values, row, col, denominator)
-    coords = make_coords(row, col)
-    numerator = values[coords]
-    new_value = numerator / denominator
-    values[coords] = new_value
-  end
-
-  def inverse(matrix)
-    # set all values
-    values = matrix.values_2
-
-    dims = matrix.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-
-    # create identity matrix
-    inv_values = {}
-    # set all values
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        coords = make_coords(row, col)
-        inv_values[coords] = NumericConstant.new(0)
-        inv_values[coords] = NumericConstant.new(1) if col == row
-      end
-    end
-
-    # convert to upper triangular form
-    upper_triangle(n_cols, n_rows, values, inv_values)
-    # convert to lower triangular form
-    lower_triangle(n_cols, values, inv_values)
-    # normalize to ones
-    (1..n_rows).each do |row|
-      denom_coords = make_coords(row, row)
-      denominator = values[denom_coords]
-      (1..n_cols).each do |col|
-        unitize_matrix_entry(values, row, col, denominator)
-        unitize_matrix_entry(inv_values, row, col, denominator)
-      end
-    end
-    Matrix.new(dims, inv_values)
+    args[0].inverse
   end
 end
 
