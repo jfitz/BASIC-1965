@@ -782,6 +782,56 @@ class FunctionInv < AbstractMatrixFunction
 
   private
 
+  def calc_factor(values, row, col)
+    denom_coords = make_coords(col, col)
+    denominator = values[denom_coords]
+    numer_coords = make_coords(row, col)
+    numerator = values[numer_coords]
+    numerator / denominator
+  end
+
+  def adjust_matrix_entry(values, row, col, wcol, factor)
+    value_coords = make_coords(row, wcol)
+    minuend_coords = make_coords(col, wcol)
+    subtrahend = values[value_coords]
+    minuend = values[minuend_coords]
+    new_value = subtrahend - minuend * factor
+    values[value_coords] = new_value
+  end
+
+  def upper_triangle(n_cols, n_rows, values, inv_values)
+    (1..n_cols - 1).each do |col|
+      (col + 1..n_rows).each do |row|
+        # adjust values for this row
+        factor = calc_factor(values, row, col)
+        (1..n_cols).each do |wcol|
+          adjust_matrix_entry(values, row, col, wcol, factor)
+          adjust_matrix_entry(inv_values, row, col, wcol, factor)
+        end
+      end
+    end
+  end
+
+  def lower_triangle(n_cols, values, inv_values)
+    n_cols.downto(2) do |col|
+      (col - 1).downto(1).each do |row|
+        # adjust values for this row
+        factor = calc_factor(values, row, col)
+        (1..n_cols).each do |wcol|
+          adjust_matrix_entry(values, row, col, wcol, factor)
+          adjust_matrix_entry(inv_values, row, col, wcol, factor)
+        end
+      end
+    end
+  end
+
+  def unitize_matrix_entry(values, row, col, denominator)
+    coords = make_coords(row, col)
+    numerator = values[coords]
+    new_value = numerator / denominator
+    values[coords] = new_value
+  end
+
   def inverse(matrix)
     # set all values
     values = matrix.values_2
@@ -802,69 +852,18 @@ class FunctionInv < AbstractMatrixFunction
     end
 
     # convert to upper triangular form
-    (1..n_cols - 1).each do |col|
-      (col + 1..n_rows).each do |row|
-        denom_coords = make_coords(col, col)
-        denominator = values[denom_coords]
-        numer_coords = make_coords(row, col)
-        numerator = values[numer_coords]
-        factor = numerator / denominator
-        # adjust values for this row
-        (1..n_cols).each do |wcol|
-          value_coords = make_coords(row, wcol)
-          subtrahend = values[value_coords]
-          minuend_coords = make_coords(col, wcol)
-          minuend = values[minuend_coords]
-          new_value = subtrahend - minuend * factor
-          values[value_coords] = new_value
-          # update inverse matrix
-          subtrahend = inv_values[value_coords]
-          minuend = inv_values[minuend_coords]
-          new_value = subtrahend - minuend * factor
-          inv_values[value_coords] = new_value
-        end
-      end
-    end
+    upper_triangle(n_cols, n_rows, values, inv_values)
     # convert to lower triangular form
-    n_cols.downto(2) do |col|
-      (col - 1).downto(1).each do |row|
-        denom_coords = make_coords(col, col)
-        denominator = values[denom_coords]
-        numer_coords = make_coords(row, col)
-        numerator = values[numer_coords]
-        factor = numerator / denominator
-        # adjust values for this row
-        (1..n_cols).each do |wcol|
-          value_coords = make_coords(row, wcol)
-          subtrahend = values[value_coords]
-          minuend_coords = make_coords(col, wcol)
-          minuend = values[minuend_coords]
-          new_value = subtrahend - minuend * factor
-          values[value_coords] = new_value
-          # update inverse matrix
-          subtrahend = inv_values[value_coords]
-          minuend = inv_values[minuend_coords]
-          new_value = subtrahend - minuend * factor
-          inv_values[value_coords] = new_value
-        end
-      end
-    end
+    lower_triangle(n_cols, values, inv_values)
     # normalize to ones
     (1..n_rows).each do |row|
       denom_coords = make_coords(row, row)
       denominator = values[denom_coords]
       (1..n_cols).each do |col|
-        coords = make_coords(row, col)
-        numerator = values[coords]
-        new_value = numerator / denominator
-        values[coords] = new_value
-        # update inverse matrix
-        numerator = inv_values[coords]
-        new_value = numerator / denominator
-        inv_values[coords] = new_value
+        unitize_matrix_entry(values, row, col, denominator)
+        unitize_matrix_entry(inv_values, row, col, denominator)
       end
     end
-
     Matrix.new(dims, inv_values)
   end
 end
