@@ -1185,6 +1185,16 @@ class ValueScalarExpression < AbstractExpression
   def initialize(text)
     super(text, ScalarValue)
   end
+
+  def printable?
+    true
+  end
+
+  def print(printer, interpreter)
+    numeric_constants = evaluate(interpreter)
+    numeric_constant = numeric_constants[0]
+    numeric_constant.print(printer, interpreter)
+  end
 end
 
 # Value matrix expression (an R-value)
@@ -1195,6 +1205,12 @@ class ValueMatrixExpression < AbstractExpression
 
   def printable?
     true
+  end
+
+  def print(printer, interpreter, carriage)
+    matrices = evaluate(interpreter)
+    matrix = matrices[0]
+    matrix.print(printer, interpreter, carriage)
   end
 end
 
@@ -1273,64 +1289,6 @@ class UserFunctionPrototype
 
   def to_s
     @name
-  end
-end
-
-# Printable expression (part of a PRINT statement)
-class AbstractPrintableExpression
-  def printable?
-    true
-  end
-end
-
-# Printable expression for scalar
-class ScalarPrintableExpression < AbstractPrintableExpression
-  def initialize(text)
-    @scalar_expression = nil
-    @text_constant = nil
-    return false if text.nil?
-    if TextConstant.init?(text)
-      @text_constant = TextConstant.new(text)
-    else
-      @scalar_expression = ValueScalarExpression.new(text)
-    end
-  end
-
-  def to_s
-    r = ''
-    r = @text_constant.to_s unless @text_constant.nil?
-    r = @scalar_expression.to_s unless @scalar_expression.nil?
-    r
-  end
-
-  def print(printer, interpreter)
-    unless @text_constant.nil?
-      @text_constant.print(printer, interpreter)
-    end
-    unless @scalar_expression.nil?
-      numeric_constants = @scalar_expression.evaluate(interpreter)
-      numeric_constant = numeric_constants[0]
-      numeric_constant.print(printer, interpreter)
-    end
-  end
-end
-
-# Printable expression for matrix
-class MatrixPrintableExpression < AbstractPrintableExpression
-  def initialize(text)
-    @matrix_expression = nil
-    return false if text.nil?
-    @matrix_expression = ValueMatrixExpression.new(text)
-  end
-
-  def to_s
-    @matrix_expression.to_s
-  end
-
-  def print(printer, interpreter, carriage)
-    matrices = @matrix_expression.evaluate(interpreter)
-    matrix = matrices[0]
-    matrix.print(printer, interpreter, carriage)
   end
 end
 

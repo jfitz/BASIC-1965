@@ -299,6 +299,10 @@ class TextConstant < AbstractToken
     @precedence = 0
   end
 
+  def printable?
+    true
+  end
+
   def to_s
     "\"#{@value}\""
   end
