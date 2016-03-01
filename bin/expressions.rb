@@ -378,6 +378,28 @@ class AbstractScalarFunction < Function
   def default_type
     ScalarValue
   end
+
+  protected
+
+  def make_array(n_cols, value)
+    values = {}
+    (1..n_cols).each do |col|
+      coords = make_coord(col)
+      values[coords] = value
+    end
+    values
+  end
+
+  def make_matrix(n_rows, n_cols, value)
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        coords = make_coords(row, col)
+        values[coords] = value
+      end
+    end
+    values
+  end
 end
 
 # Function that expects matrix parameters
@@ -605,26 +627,14 @@ class FunctionZer < AbstractScalarFunction
       check_arg_types(args, ['NumericConstant'])
       n_cols = args[0].to_i
       new_dims = [args[0]]
-      new_values = {}
-      value = NumericConstant.new(0)
-      (1..n_cols).each do |col|
-        coords = make_coord(col)
-        new_values[coords] = value
-      end
+      new_values = make_array(n_cols, NumericConstant.new(0))
     end
     if args.size == 2
       check_arg_types(args, %w(NumericConstant NumericConstant))
       n_rows = args[0].to_i
       n_cols = args[1].to_i
       new_dims = [args[0], args[1]]
-      new_values = {}
-      value = NumericConstant.new(0)
-      (1..n_rows).each do |row|
-        (1..n_cols).each do |col|
-          coords = make_coords(row, col)
-          new_values[coords] = value
-        end
-      end
+      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(0))
     end
     Matrix.new(new_dims, new_values)
   end
@@ -644,26 +654,14 @@ class FunctionCon < AbstractScalarFunction
       check_arg_types(args, ['NumericConstant'])
       n_cols = args[0].to_i
       new_dims = [args[0]]
-      new_values = {}
-      value = NumericConstant.new(1)
-      (1..n_cols).each do |col|
-        coords = make_coord(col)
-        new_values[coords] = value
-      end
+      new_values = make_array(n_cols, NumericConstant.new(1))
     end
     if args.size == 2
       check_arg_types(args, %w(NumericConstant NumericConstant))
       n_rows = args[0].to_i
       n_cols = args[1].to_i
       new_dims = [args[0], args[1]]
-      new_values = {}
-      value = NumericConstant.new(1)
-      (1..n_rows).each do |row|
-        (1..n_cols).each do |col|
-          coords = make_coords(row, col)
-          new_values[coords] = value
-        end
-      end
+      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(1))
     end
     Matrix.new(new_dims, new_values)
   end
@@ -685,17 +683,11 @@ class FunctionIdn < AbstractScalarFunction
     n_rows = args[0].to_i
     n_cols = args[0].to_i
     new_dims = [args[0], args[0]]
-    new_values = {}
+    new_values = make_matrix(n_rows, n_cols, NumericConstant.new(0))
+    one = NumericConstant.new(1)
     (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        if col == row
-          value = NumericConstant.new(1)
-        else
-          value = NumericConstant.new(0)
-        end
-        coords = make_coords(row, col)
-        new_values[coords] = value
-      end
+      coords = make_coords(row, row)
+      new_values[coords] = one
     end
     Matrix.new(new_dims, new_values)
   end
