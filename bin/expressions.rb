@@ -136,6 +136,20 @@ class Matrix
     true
   end
 
+  def values_2
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = get_value_2(row, col)
+        coords = make_coords(row, col)
+        values[coords] = value
+      end
+    end
+    values
+  end
+
   def get_value_1(col)
     coords = make_coord(col)
     return @values[coords] if @values.key?(coords)
@@ -176,10 +190,10 @@ class Matrix
   end
 
   def print_1(printer, interpreter, carriage)
-    upper = @dimensions[0].to_i
+    n_cols = @dimensions[0].to_i
 
-    (1..upper).each do |index|
-      value = get_value_1(index)
+    (1..n_cols).each do |col|
+      value = get_value_1(col)
       value.print(printer)
       carriage.print(printer, interpreter)
     end
@@ -188,12 +202,12 @@ class Matrix
   end
 
   def print_2(printer, interpreter, carriage)
-    upper_i = @dimensions[0].to_i
-    upper_j = @dimensions[1].to_i
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
 
-    (1..upper_i).each do |i|
-      (1..upper_j).each do |j|
-        value = get_value_2(i, j)
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = get_value_2(row, col)
         value.print(printer)
         carriage.print(printer, interpreter)
       end
@@ -215,24 +229,38 @@ class MatrixValue < Variable
     values = {}
     if dims.size == 1
       n_cols = dims[0].to_i
-      (1..n_cols).each do |col|
-        coords = make_coord(col)
-        var_name = @variable_name.to_s + coords
-        values[coords] = interpreter.get_value(var_name)
-      end
+      values = evaluate_1(interpreter, n_cols)
     end
     if dims.size == 2
       n_rows = dims[0].to_i
       n_cols = dims[1].to_i
-      (1..n_rows).each do |row|
-        (1..n_cols).each do |col|
-          coords = make_coords(row, col)
-          var_name = @variable_name.to_s + coords
-          values[coords] = interpreter.get_value(var_name)
-        end
-      end
+      values = evaluate_2(interpreter, n_rows, n_cols)
     end
     Matrix.new(dims, values)
+  end
+
+  private
+
+  def evaluate_1(interpreter, n_cols)
+    values = {}
+    (1..n_cols).each do |col|
+      coords = make_coord(col)
+      var_name = @variable_name.to_s + coords
+      values[coords] = interpreter.get_value(var_name)
+    end
+    values
+  end
+
+  def evaluate_2(interpreter, n_rows, n_cols)
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        coords = make_coords(row, col)
+        var_name = @variable_name.to_s + coords
+        values[coords] = interpreter.get_value(var_name)
+      end
+    end
+    values
   end
 end
 
@@ -763,18 +791,13 @@ class FunctionInv < AbstractMatrixFunction
   private
 
   def inverse(matrix)
+    # set all values
+    values = matrix.values_2
+
     dims = matrix.dimensions
-    values = {}
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
-    # set all values
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        value = matrix.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = value
-      end
-    end
+
     # create identity matrix
     inv_values = {}
     # set all values
@@ -785,6 +808,7 @@ class FunctionInv < AbstractMatrixFunction
         inv_values[coords] = NumericConstant.new(1) if col == row
       end
     end
+
     # convert to upper triangular form
     (1..n_cols - 1).each do |col|
       (col + 1..n_rows).each do |row|
