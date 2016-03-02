@@ -179,6 +179,22 @@ class Matrix
     end
   end
 
+  def transpose
+    fail(BASICException, 'TRN requires matrix') unless @dimensions.size == 2
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
+    new_dims = [@dimensions[1], @dimensions[0]]
+    new_values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = get_value_2(row, col)
+        coords = make_coords(col, row)
+        new_values[coords] = value
+      end
+    end
+    Matrix.new(new_dims, new_values)
+  end
+
   def determinant
     fail(BASICException, 'DET requires matrix') unless @dimensions.size == 2
     fail(BASICException, 'DET requires square matrix') if
@@ -733,21 +749,7 @@ class FunctionTrn < AbstractMatrixFunction
     fail(BASICException, 'One argument required for TRN()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
-    matrix = args[0]
-    dims = matrix.dimensions
-    fail(BASICException, 'TRN requires matrix') unless dims.size == 2
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    new_dims = [dims[1], dims[0]]
-    new_values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        value = matrix.get_value_2(row, col)
-        coords = make_coords(col, row)
-        new_values[coords] = value
-      end
-    end
-    Matrix.new(new_dims, new_values)
+    args[0].transpose
   end
 end
 
@@ -761,17 +763,15 @@ class FunctionZer < AbstractScalarFunction
     args = stack.pop
     fail(BASICException, 'One or two arguments required for ZER()') unless
       args.size == 1 || args.size == 2
+    check_arg_types(args, ['NumericConstant'] * args.size)
+    new_dims = args.clone
     if args.size == 1
-      check_arg_types(args, ['NumericConstant'])
       n_cols = args[0].to_i
-      new_dims = [args[0]]
       new_values = make_array(n_cols, NumericConstant.new(0))
     end
     if args.size == 2
-      check_arg_types(args, %w(NumericConstant NumericConstant))
       n_rows = args[0].to_i
       n_cols = args[1].to_i
-      new_dims = [args[0], args[1]]
       new_values = make_matrix(n_rows, n_cols, NumericConstant.new(0))
     end
     Matrix.new(new_dims, new_values)
@@ -788,17 +788,15 @@ class FunctionCon < AbstractScalarFunction
     args = stack.pop
     fail(BASICException, 'One or two arguments required for CON()') unless
       args.size == 1 || args.size == 2
+    new_dims = args.clone
+    check_arg_types(args, ['NumericConstant'] * args.size)
     if args.size == 1
-      check_arg_types(args, ['NumericConstant'])
       n_cols = args[0].to_i
-      new_dims = [args[0]]
       new_values = make_array(n_cols, NumericConstant.new(1))
     end
     if args.size == 2
-      check_arg_types(args, %w(NumericConstant NumericConstant))
       n_rows = args[0].to_i
       n_cols = args[1].to_i
-      new_dims = [args[0], args[1]]
       new_values = make_matrix(n_rows, n_cols, NumericConstant.new(1))
     end
     Matrix.new(new_dims, new_values)
@@ -815,9 +813,7 @@ class FunctionIdn < AbstractScalarFunction
     args = stack.pop
     fail(BASICException, 'One or two arguments required for IDN()') unless
       args.size == 1 || args.size == 2
-    check_arg_types(args, ['NumericConstant']) if args.size == 1
-    check_arg_types(args, %w(NumericConstant NumericConstant)) if
-      args.size == 2
+    check_arg_types(args, ['NumericConstant'] * args.size)
     fail(BASICException, 'IDN requires square matrix') if
       args.size == 2 && args[1] != args[0]
     n_rows = args[0].to_i
