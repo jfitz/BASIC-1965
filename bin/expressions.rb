@@ -261,6 +261,43 @@ class Matrix
     Matrix.new(@dimensions.clone, inv_values)
   end
 
+  def zero
+    if @dimensions.size == 1
+      n_cols = @dimensions[0].to_i
+      new_values = make_array(n_cols, NumericConstant.new(0))
+    end
+    if @dimensions.size == 2
+      n_rows = @dimensions[0].to_i
+      n_cols = @dimensions[1].to_i
+      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(0))
+    end
+    Matrix.new(@dimensions.clone, new_values)
+  end
+
+  def one
+    if @dimensions.size == 1
+      n_cols = @dimensions[0].to_i
+      new_values = make_array(n_cols, NumericConstant.new(1))
+    end
+    if @dimensions.size == 2
+      n_rows = @dimensions[0].to_i
+      n_cols = @dimensions[1].to_i
+      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(1))
+    end
+    Matrix.new(@dimensions.clone, new_values)
+  end
+
+  def identity(size)
+    new_dims = [NumericConstant.new(size)] * 2
+    new_values = make_matrix(size, size, NumericConstant.new(0))
+    one = NumericConstant.new(1)
+    (1..size).each do |row|
+      coords = make_coords(row, row)
+      new_values[coords] = one
+    end
+    Matrix.new(new_dims, new_values)
+  end
+
   private
 
   def make_coord(c)
@@ -269,6 +306,26 @@ class Matrix
 
   def make_coords(r, c)
     '(' + r.to_s + ',' + c.to_s + ')'
+  end
+
+  def make_array(n_cols, value)
+    values = {}
+    (1..n_cols).each do |col|
+      coords = make_coord(col)
+      values[coords] = value
+    end
+    values
+  end
+
+  def make_matrix(n_rows, n_cols, value)
+    values = {}
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        coords = make_coords(row, col)
+        values[coords] = value
+      end
+    end
+    values
   end
 
   def print_1(printer, interpreter, carriage)
@@ -532,28 +589,6 @@ class AbstractScalarFunction < Function
   def default_type
     ScalarValue
   end
-
-  protected
-
-  def make_array(n_cols, value)
-    values = {}
-    (1..n_cols).each do |col|
-      coords = make_coord(col)
-      values[coords] = value
-    end
-    values
-  end
-
-  def make_matrix(n_rows, n_cols, value)
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        coords = make_coords(row, col)
-        values[coords] = value
-      end
-    end
-    values
-  end
 end
 
 # Function that expects matrix parameters
@@ -764,17 +799,8 @@ class FunctionZer < AbstractScalarFunction
     fail(BASICException, 'One or two arguments required for ZER()') unless
       args.size == 1 || args.size == 2
     check_arg_types(args, ['NumericConstant'] * args.size)
-    new_dims = args.clone
-    if args.size == 1
-      n_cols = args[0].to_i
-      new_values = make_array(n_cols, NumericConstant.new(0))
-    end
-    if args.size == 2
-      n_rows = args[0].to_i
-      n_cols = args[1].to_i
-      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(0))
-    end
-    Matrix.new(new_dims, new_values)
+    matrix = Matrix.new(args.clone, {})
+    matrix.zero
   end
 end
 
@@ -790,16 +816,8 @@ class FunctionCon < AbstractScalarFunction
       args.size == 1 || args.size == 2
     new_dims = args.clone
     check_arg_types(args, ['NumericConstant'] * args.size)
-    if args.size == 1
-      n_cols = args[0].to_i
-      new_values = make_array(n_cols, NumericConstant.new(1))
-    end
-    if args.size == 2
-      n_rows = args[0].to_i
-      n_cols = args[1].to_i
-      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(1))
-    end
-    Matrix.new(new_dims, new_values)
+    matrix = Matrix.new(args.clone, {})
+    matrix.one
   end
 end
 
@@ -816,16 +834,8 @@ class FunctionIdn < AbstractScalarFunction
     check_arg_types(args, ['NumericConstant'] * args.size)
     fail(BASICException, 'IDN requires square matrix') if
       args.size == 2 && args[1] != args[0]
-    n_rows = args[0].to_i
-    n_cols = args[0].to_i
-    new_dims = [args[0], args[0]]
-    new_values = make_matrix(n_rows, n_cols, NumericConstant.new(0))
-    one = NumericConstant.new(1)
-    (1..n_rows).each do |row|
-      coords = make_coords(row, row)
-      new_values[coords] = one
-    end
-    Matrix.new(new_dims, new_values)
+    matrix = Matrix.new(args, {})
+    matrix.identity(args[0].to_i)
   end
 end
 
