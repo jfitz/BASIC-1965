@@ -1020,6 +1020,115 @@ def eval_scalar(interpreter, parsed_expressions)
   result_values
 end
 
+class Parser
+  def initialize(default_type)
+    @parsed_expressions = []
+    @operator_stack = []
+    @expression_stack = []
+    @parsed_expression = []
+    @parens_stack = []
+    @type_stack = [default_type]
+    @parens_group = []
+    @previous_token = InitialOperator.new
+  end
+
+  def parse(token)
+    fail(BASICException, 'Function requires parentheses') if
+      !token.group_start? && @previous_token.function?
+    if token.group_start? && @previous_token.function?
+      # start parsing the list of function arguments
+      @expression_stack.push(@parsed_expression)
+      @parsed_expression = []
+      @operator_stack.push(ParamStart.new)
+      @parens_stack << @parens_group
+      @parens_group = []
+      @type_stack.push(@previous_token.default_type)
+    elsif token.group_start? && @previous_token.variable?
+      # start parsing the list of subscripts
+      @expression_stack.push(@parsed_expression)
+      @parsed_expression = []
+      @operator_stack.push(ParamStart.new)
+      @parens_stack << @parens_group
+      @parens_group = []
+      @type_stack.push(ScalarValue)
+    elsif token.group_start?
+      # neither arguments or subscripts; just a grouping parens
+      @operator_stack.push(token)
+      @parens_stack << @parens_group
+      @parens_group = []
+      @type_stack.push(ScalarValue)
+    elsif token.separator?
+      # pop the operator stack until the corresponding left paren is found
+      # Append each operator to the end of the output list
+      stack_to_expression(@operator_stack, @parsed_expression)
+      @parens_group << @parsed_expression
+      @parsed_expression = []
+    elsif token.group_end?
+      # pop the operator stack until the corresponding left paren is removed
+      # Append each operator to the end of the output list
+      stack_to_expression(@operator_stack, @parsed_expression)
+      @parens_group << @parsed_expression
+      start_op = @operator_stack.pop  # remove the '(' or '[' starter
+      if start_op.param_start?
+        list = List.new(@parens_group)
+        @operator_stack.push(list)
+        @parsed_expression = @expression_stack.pop
+      end
+      @parens_group = @parens_stack.pop
+      @type_stack.pop
+    elsif token.operator?
+      # remove operators already on the stack that have higher
+      # or equal precedence
+      # append them to the output list
+      stack_to_precedence(@operator_stack, @parsed_expression, token)
+      # push the operator onto the operator stack
+      @operator_stack.push(token) unless token.terminal?
+    elsif token.function?
+      # remove operators already on the stack that have higher
+      # or equal precedence
+      # append them to the output list
+      stack_to_precedence(@operator_stack, @parsed_expression, token)
+      # push the function onto the operator stack
+      @operator_stack.push(token)
+    elsif token.variable?
+      # remove operators already on the stack that have higher
+      # or equal precedence
+      # append them to the output list
+      stack_to_precedence(@operator_stack, @parsed_expression, token)
+      # push the variable onto the operator stack
+      variable_name = @type_stack[-1].new(token)
+      @operator_stack.push(variable_name)
+    else
+      # the token is an operand, append it to the output list
+      @parsed_expression << token
+    end
+    @previous_token = token
+  end
+
+  def expressions
+    fail(BASICException, 'Expression error') if @operator_stack.size > 0
+    @parsed_expressions << @parsed_expression
+    @parsed_expressions
+  end
+
+  def stack_to_expression(stack, expression)
+    until stack[-1].starter?
+      op = stack.pop
+      expression << op
+      fail(BASICException, 'Expression error') if stack.size == 0
+    end
+  end
+
+  def stack_to_precedence(stack, expression, token)
+    while stack.size > 0 &&
+          !stack[-1].starter? &&
+          stack[-1].precedence >= token.precedence
+      op = stack.pop
+      expression << op
+    end
+  end
+end
+
 # base class for expressions
 class AbstractExpression
   def initialize(text, default_type)
@@ -1028,7 +1137,11 @@ class AbstractExpression
 
     words = split_input(text)
     tokens = tokenize(words)
-    @parsed_expressions = parse(tokens, default_type)
+    parser = Parser.new(default_type)
+    tokens.each do |token|
+      parser.parse(token)
+    end
+    @parsed_expressions = parser.expressions
   end
 
   def to_s
@@ -1083,111 +1196,7 @@ class AbstractExpression
     end
   end
 
-  def stack_to_expression(stack, expression)
-    until stack[-1].starter?
-      op = stack.pop
-      expression << op
-      fail(BASICException, 'Expression error') if stack.size == 0
-    end
-  end
-
-  def stack_to_precedence(stack, expression, token)
-    while stack.size > 0 &&
-          !stack[-1].starter? &&
-          stack[-1].precedence >= token.precedence
-      op = stack.pop
-      expression << op
-    end
-  end
-
   # returns an Array of parsed expressions
-  def parse(tokens, default_type)
-    parsed_expressions = []
-    operator_stack = []
-    expression_stack = []
-    parsed_expression = []
-    parens_stack = []
-    type_stack = [default_type]
-
-    parens_group = []
-    previous_token = InitialOperator.new
-    # scan the token list from left to right
-    tokens.each do |token|
-      fail(BASICException, 'Function requires parentheses') if
-        !token.group_start? && previous_token.function?
-      if token.group_start? && previous_token.function?
-        # start parsing the list of function arguments
-        expression_stack.push(parsed_expression)
-        parsed_expression = []
-        operator_stack.push(ParamStart.new)
-        parens_stack << parens_group
-        parens_group = []
-        type_stack.push(previous_token.default_type)
-      elsif token.group_start? && previous_token.variable?
-        # start parsing the list of subscripts
-        expression_stack.push(parsed_expression)
-        parsed_expression = []
-        operator_stack.push(ParamStart.new)
-        parens_stack << parens_group
-        parens_group = []
-        type_stack.push(ScalarValue)
-      elsif token.group_start?
-        # neither arguments or subscripts; just a grouping parens
-        operator_stack.push(token)
-        parens_stack << parens_group
-        parens_group = []
-        type_stack.push(ScalarValue)
-      elsif token.separator?
-        # pop the operator stack until the corresponding left paren is found
-        # Append each operator to the end of the output list
-        stack_to_expression(operator_stack, parsed_expression)
-        parens_group << parsed_expression
-        parsed_expression = []
-      elsif token.group_end?
-        # pop the operator stack until the corresponding left paren is removed
-        # Append each operator to the end of the output list
-        stack_to_expression(operator_stack, parsed_expression)
-        parens_group << parsed_expression
-        start_op = operator_stack.pop  # remove the '(' or '[' starter
-        if start_op.param_start?
-          list = List.new(parens_group)
-          operator_stack.push(list)
-          parsed_expression = expression_stack.pop
-        end
-        parens_group = parens_stack.pop
-        type_stack.pop
-      elsif token.operator?
-        # remove operators already on the stack that have higher
-        # or equal precedence
-        # append them to the output list
-        stack_to_precedence(operator_stack, parsed_expression, token)
-        # push the operator onto the operator stack
-        operator_stack.push(token) unless token.terminal?
-      elsif token.function?
-        # remove operators already on the stack that have higher
-        # or equal precedence
-        # append them to the output list
-        stack_to_precedence(operator_stack, parsed_expression, token)
-        # push the function onto the operator stack
-        operator_stack.push(token)
-      elsif token.variable?
-        # remove operators already on the stack that have higher
-        # or equal precedence
-        # append them to the output list
-        stack_to_precedence(operator_stack, parsed_expression, token)
-        # push the variable onto the operator stack
-        variable_name = type_stack[-1].new(token)
-        operator_stack.push(variable_name)
-      else
-        # the token is an operand, append it to the output list
-        parsed_expression << token
-      end
-      previous_token = token
-    end
-    fail(BASICException, 'Expression error') if operator_stack.size > 0
-    parsed_expressions << parsed_expression
-    parsed_expressions
-  end
 end
 
 # Value scalar expression (an R-value)
