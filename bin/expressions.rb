@@ -194,9 +194,10 @@ class Matrix
     fail(BASICException, 'DET requires matrix') unless @dimensions.size == 2
     fail(BASICException, 'DET requires square matrix') if
       @dimensions[1] != @dimensions[0]
-    if @dimensions[0].to_i == 1
+    case @dimensions[0].to_i
+    when 1
       get_value_2(1, 1)
-    elsif @dimensions[0].to_i == 2
+    when 2
       determinant_2
     else
       determinant_n
@@ -1051,31 +1052,35 @@ class AbstractExpression
     tokens = []
     # convert tokens to objects
     words.each do |word|
-      next if word.size == 0
+      next unless word.size > 0
 
-      if word == '('
-        tokens << GroupStart.new
-      elsif word == ')'
-        tokens << GroupEnd.new
-      elsif word == ','
-        tokens << ParamSeparator.new
-      elsif tokens.size > 0 && tokens[-1].operand? &&
-            BinaryOperator.init?(word)
-        tokens << BinaryOperator.new(word)
-      elsif !(tokens.size > 0 && tokens[-1].operand?) &&
-            UnaryOperator.init?(word)
-        tokens << UnaryOperator.new(word)
-      elsif FunctionFactory.valid?(word)
-        tokens << FunctionFactory.make(word)
-      elsif NumericConstant.init?(word)
-        tokens << NumericConstant.new(word)
-      elsif VariableName.init?(word)
-        tokens << VariableName.new(word)
-      else
-        fail BASICException, "'#{word}' is not a value or operator"
-      end
+      follows_operand = tokens.size > 0 && tokens[-1].operand?
+
+      tokens << make_token(word, follows_operand)
     end
     tokens << TerminalOperator.new
+  end
+
+  def make_token(word, follows_operand)
+    if word == '('
+      GroupStart.new
+    elsif word == ')'
+      GroupEnd.new
+    elsif word == ','
+      ParamSeparator.new
+    elsif follows_operand && BinaryOperator.init?(word)
+      BinaryOperator.new(word)
+    elsif !follows_operand && UnaryOperator.init?(word)
+      UnaryOperator.new(word)
+    elsif FunctionFactory.valid?(word)
+      FunctionFactory.make(word)
+    elsif NumericConstant.init?(word)
+      NumericConstant.new(word)
+    elsif VariableName.init?(word)
+      VariableName.new(word)
+    else
+      fail BASICException, "'#{word}' is not a value or operator"
+    end
   end
 
   def stack_to_expression(stack, expression)
