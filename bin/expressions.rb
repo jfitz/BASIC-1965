@@ -137,11 +137,9 @@ class Matrix
   end
 
   def values_2
-    n_rows = @dimensions[0].to_i
-    n_cols = @dimensions[1].to_i
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    (1..@dimensions[0].to_i).each do |row|
+      (1..@dimensions[1].to_i).each do |col|
         value = get_value_2(row, col)
         coords = make_coords(row, col)
         values[coords] = value
@@ -153,13 +151,13 @@ class Matrix
   def get_value_1(col)
     coords = make_coord(col)
     return @values[coords] if @values.key?(coords)
-    0
+    NumericConstant.new(0)
   end
 
   def get_value_2(row, col)
     coords = make_coords(row, col)
     return @values[coords] if @values.key?(coords)
-    0
+    NumericConstant.new(0)
   end
 
   def to_s
@@ -179,20 +177,17 @@ class Matrix
     end
   end
 
-  def transpose
+  def transpose_values
     fail(BASICException, 'TRN requires matrix') unless @dimensions.size == 2
-    n_rows = @dimensions[0].to_i
-    n_cols = @dimensions[1].to_i
-    new_dims = [@dimensions[1], @dimensions[0]]
     new_values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    (1..@dimensions[0].to_i).each do |row|
+      (1..@dimensions[1].to_i).each do |col|
         value = get_value_2(row, col)
         coords = make_coords(col, row)
         new_values[coords] = value
       end
     end
-    Matrix.new(new_dims, new_values)
+    new_values
   end
 
   def determinant
@@ -200,102 +195,59 @@ class Matrix
     fail(BASICException, 'DET requires square matrix') if
       @dimensions[1] != @dimensions[0]
     if @dimensions[0].to_i == 1
-      det = get_value_2(1, 1)
+      get_value_2(1, 1)
     elsif @dimensions[0].to_i == 2
-      a = get_value_2(1, 1)
-      b = get_value_2(1, 2)
-      c = get_value_2(2, 1)
-      d = get_value_2(2, 2)
-      det = (a * d) - (b * c)
+      determinant_2
     else
-      minus_one = NumericConstant.new(-1)
-      sign = NumericConstant.new(1)
-      det = NumericConstant.new(0)
-      n_cols = @dimensions[1].to_i
-      # for each element in first row
-      (1..n_cols).each do |col|
-        v = get_value_2(1, col)
-        # create submatrix
-        subm = submatrix(1, col)
-        d = v * subm.determinant * sign
-        det += d
-        sign *= minus_one
-      end
+      determinant_n
     end
-    det
   end
 
-  def inverse
+  def inverse_values
     # set all values
     values = values_2
 
+    # create identity matrix
+    i_matrix = Matrix.new(@dimensions, {})
+    inv_values = i_matrix.identity_values
+
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
-
-    # create inverse matrix starter
-    inv_values = {}
-
-    # create identity matrix
-    # set all values
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        coords = make_coords(row, col)
-        inv_values[coords] = NumericConstant.new(0)
-        inv_values[coords] = NumericConstant.new(1) if col == row
-      end
-    end
 
     # convert to upper triangular form
     upper_triangle(n_cols, n_rows, values, inv_values)
     # convert to lower triangular form
     lower_triangle(n_cols, values, inv_values)
     # normalize to ones
-    (1..n_rows).each do |row|
-      denom_coords = make_coords(row, row)
-      denominator = values[denom_coords]
-      (1..n_cols).each do |col|
-        unitize_matrix_entry(values, row, col, denominator)
-        unitize_matrix_entry(inv_values, row, col, denominator)
-      end
-    end
-    Matrix.new(@dimensions.clone, inv_values)
+    unitize(n_cols, n_rows, values, inv_values)
+
+    inv_values
   end
 
-  def zero
-    if @dimensions.size == 1
-      n_cols = @dimensions[0].to_i
-      new_values = make_array(n_cols, NumericConstant.new(0))
-    end
-    if @dimensions.size == 2
-      n_rows = @dimensions[0].to_i
-      n_cols = @dimensions[1].to_i
-      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(0))
-    end
-    Matrix.new(@dimensions.clone, new_values)
+  def zero_values
+    x = make_array(@dimensions, NumericConstant.new(0)) if
+      @dimensions.size == 1
+    x = make_matrix(@dimensions, NumericConstant.new(0)) if
+      @dimensions.size == 2
+    x
   end
 
-  def one
-    if @dimensions.size == 1
-      n_cols = @dimensions[0].to_i
-      new_values = make_array(n_cols, NumericConstant.new(1))
-    end
-    if @dimensions.size == 2
-      n_rows = @dimensions[0].to_i
-      n_cols = @dimensions[1].to_i
-      new_values = make_matrix(n_rows, n_cols, NumericConstant.new(1))
-    end
-    Matrix.new(@dimensions.clone, new_values)
+  def one_values
+    x = make_array(@dimensions, NumericConstant.new(1)) if
+      @dimensions.size == 1
+    x = make_matrix(@dimensions, NumericConstant.new(1)) if
+      @dimensions.size == 2
+    x
   end
 
-  def identity(size)
-    new_dims = [NumericConstant.new(size)] * 2
-    new_values = make_matrix(size, size, NumericConstant.new(0))
+  def identity_values
+    new_values = make_matrix(@dimensions, NumericConstant.new(0))
     one = NumericConstant.new(1)
-    (1..size).each do |row|
+    (1..@dimensions[0].to_i).each do |row|
       coords = make_coords(row, row)
       new_values[coords] = one
     end
-    Matrix.new(new_dims, new_values)
+    new_values
   end
 
   private
@@ -308,21 +260,21 @@ class Matrix
     '(' + r.to_s + ',' + c.to_s + ')'
   end
 
-  def make_array(n_cols, value)
+  def make_array(dims, value)
     values = {}
-    (1..n_cols).each do |col|
+    (1..dims[0].to_i).each do |col|
       coords = make_coord(col)
       values[coords] = value
     end
     values
   end
 
-  def make_matrix(n_rows, n_cols, value)
+  def make_matrix(dims, int_value)
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    (1..dims[0].to_i).each do |row|
+      (1..dims[1].to_i).each do |col|
         coords = make_coords(row, col)
-        values[coords] = value
+        values[coords] = int_value
       end
     end
     values
@@ -355,17 +307,39 @@ class Matrix
     printer.newline
   end
 
+  def determinant_2
+    a = get_value_2(1, 1)
+    b = get_value_2(1, 2)
+    c = get_value_2(2, 1)
+    d = get_value_2(2, 2)
+    (a * d) - (b * c)
+  end
+
+  def determinant_n
+    minus_one = NumericConstant.new(-1)
+    sign = NumericConstant.new(1)
+    det = NumericConstant.new(0)
+    # for each element in first row
+    (1..@dimensions[1].to_i).each do |col|
+      v = get_value_2(1, col)
+      # create submatrix
+      subm = submatrix(1, col)
+      d = v * subm.determinant * sign
+      det += d
+      sign *= minus_one
+    end
+    det
+  end
+
   def submatrix(exclude_row, exclude_col)
     one = NumericConstant.new(1)
     new_dims = [@dimensions[0] - one, @dimensions[1] - one]
-    n_rows = @dimensions[0].to_i
-    n_cols = @dimensions[1].to_i
     new_values = {}
     new_row = 1
-    (1..n_rows).each do |row|
+    (1..@dimensions[0].to_i).each do |row|
       new_col = 1
       next if row == exclude_row
-      (1..n_cols).each do |col|
+      (1..@dimensions[1].to_i).each do |col|
         next if col == exclude_col
         value = get_value_2(row, col)
         coords = make_coords(new_row, new_col)
@@ -416,6 +390,17 @@ class Matrix
           adjust_matrix_entry(values, row, col, wcol, factor)
           adjust_matrix_entry(inv_values, row, col, wcol, factor)
         end
+      end
+    end
+  end
+
+  def unitize(n_cols, n_rows, values, inv_values)
+    (1..n_rows).each do |row|
+      denom_coords = make_coords(row, row)
+      denominator = values[denom_coords]
+      (1..n_cols).each do |col|
+        unitize_matrix_entry(values, row, col, denominator)
+        unitize_matrix_entry(inv_values, row, col, denominator)
       end
     end
   end
@@ -613,8 +598,7 @@ class FunctionInt < AbstractScalarFunction
     args = stack.pop
     fail(BASICException, 'INT requires single value') if args.size != 1
     check_arg_types(args, ['NumericConstant'])
-    x = args[0]
-    x.truncate
+    args[0].truncate
   end
 end
 
@@ -784,7 +768,9 @@ class FunctionTrn < AbstractMatrixFunction
     fail(BASICException, 'One argument required for TRN()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
-    args[0].transpose
+    dims = args[0].dimensions
+    new_dims = [dims[1], dims[0]]
+    Matrix.new(new_dims, args[0].transpose_values)
   end
 end
 
@@ -800,7 +786,7 @@ class FunctionZer < AbstractScalarFunction
       args.size == 1 || args.size == 2
     check_arg_types(args, ['NumericConstant'] * args.size)
     matrix = Matrix.new(args.clone, {})
-    matrix.zero
+    Matrix.new(matrix.dimensions, matrix.zero_values)
   end
 end
 
@@ -814,10 +800,9 @@ class FunctionCon < AbstractScalarFunction
     args = stack.pop
     fail(BASICException, 'One or two arguments required for CON()') unless
       args.size == 1 || args.size == 2
-    new_dims = args.clone
     check_arg_types(args, ['NumericConstant'] * args.size)
     matrix = Matrix.new(args.clone, {})
-    matrix.one
+    Matrix.new(matrix.dimensions, matrix.one_values)
   end
 end
 
@@ -834,8 +819,9 @@ class FunctionIdn < AbstractScalarFunction
     check_arg_types(args, ['NumericConstant'] * args.size)
     fail(BASICException, 'IDN requires square matrix') if
       args.size == 2 && args[1] != args[0]
-    matrix = Matrix.new(args, {})
-    matrix.identity(args[0].to_i)
+    dims = [args[0]] * 2
+    matrix = Matrix.new(dims, {})
+    Matrix.new(dims, matrix.identity_values)
   end
 end
 
@@ -868,7 +854,7 @@ class FunctionInv < AbstractMatrixFunction
     dims = args[0].dimensions
     fail(BASICException, 'INV requires matrix') unless dims.size == 2
     fail(BASICException, 'INV requires square matrix') if dims[1] != dims[0]
-    args[0].inverse
+    Matrix.new(dims.clone, args[0].inverse_values)
   end
 end
 
