@@ -68,16 +68,24 @@ end
 
 # beginning of a group
 class GroupStart < AbstractToken
-  def initialize
-    super
+  def self.init?(text)
+    text == '('
+  end
+
+  def initialize(text)
+    super()
     @group_start = true
   end
 end
 
 # end of a group
 class GroupEnd < AbstractToken
-  def initialize
-    super
+  def self.init?(text)
+    text == ')'
+  end
+
+  def initialize(text)
+    super()
     @group_end = true
     @operand = true
   end
@@ -93,8 +101,12 @@ end
 
 # separator for group or params
 class ParamSeparator < AbstractToken
-  def initialize
-    super
+  def self.init?(text)
+    text == ','
+  end
+
+  def initialize(text)
+    super()
     @separator = true
   end
 end

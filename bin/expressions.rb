@@ -261,21 +261,21 @@ class Matrix
     '(' + r.to_s + ',' + c.to_s + ')'
   end
 
-  def make_array(dims, value)
+  def make_array(dims, init_value)
     values = {}
     (1..dims[0].to_i).each do |col|
       coords = make_coord(col)
-      values[coords] = value
+      values[coords] = init_value
     end
     values
   end
 
-  def make_matrix(dims, int_value)
+  def make_matrix(dims, init_value)
     values = {}
     (1..dims[0].to_i).each do |row|
       (1..dims[1].to_i).each do |col|
         coords = make_coords(row, col)
-        values[coords] = int_value
+        values[coords] = init_value
       end
     end
     values
@@ -861,34 +861,34 @@ end
 
 # class to make functions, given the name
 class FunctionFactory
-  @@functions = {
-    'INT' => FunctionInt,
-    'RND' => FunctionRnd,
-    'EXP' => FunctionExp,
-    'LOG' => FunctionLog,
-    'ABS' => FunctionAbs,
-    'SQR' => FunctionSqr,
-    'SIN' => FunctionSin,
-    'COS' => FunctionCos,
-    'TAN' => FunctionTan,
-    'ATN' => FunctionAtn,
-    'SGN' => FunctionSgn,
-    'TRN' => FunctionTrn,
-    'ZER' => FunctionZer,
-    'CON' => FunctionCon,
-    'IDN' => FunctionIdn,
-    'DET' => FunctionDet,
-    'INV' => FunctionInv
-  }
-
-  def self.valid?(text)
-    @@functions.key?(text) || UserFunction.init?(text)
+  def initialize
+    @functions = {
+      'INT' => FunctionInt,
+      'RND' => FunctionRnd,
+      'EXP' => FunctionExp,
+      'LOG' => FunctionLog,
+      'ABS' => FunctionAbs,
+      'SQR' => FunctionSqr,
+      'SIN' => FunctionSin,
+      'COS' => FunctionCos,
+      'TAN' => FunctionTan,
+      'ATN' => FunctionAtn,
+      'SGN' => FunctionSgn,
+      'TRN' => FunctionTrn,
+      'ZER' => FunctionZer,
+      'CON' => FunctionCon,
+      'IDN' => FunctionIdn,
+      'DET' => FunctionDet,
+      'INV' => FunctionInv
+    }
   end
 
-  def self.make(text)
-    func = @@functions[text].new(text) if @@functions.key?(text)
-    func = UserFunction.new(text) if UserFunction.init?(text)
-    func
+  def valid?(text)
+    @functions.key?(text)
+  end
+
+  def make(text)
+    @functions[text].new(text) if @functions.key?(text)
   end
 end
 
@@ -966,28 +966,6 @@ def split_args(text, keep_separators)
   args
 end
 
-# split the input
-def split_input(text)
-  # split the input infix string
-  parts = text.split(%r{([\+\-\*\/\(\)\^,])})
-  # remove empty elements
-  short_parts = parts.reject(&:empty?)
-  # we have split a value like '12E+3' into three parts (12E + 3)
-  # put them back into a single item
-  regrouped_parts = []
-  while short_parts.size > 0
-    first_three = short_parts[0..2].join('')
-    if short_parts.size >= 3 && NumericConstant.init?(first_three)
-      regrouped_parts << first_three
-      short_parts = short_parts[3..-1]
-    else
-      regrouped_parts << short_parts[0]
-      short_parts = short_parts[1..-1]
-    end
-  end
-  regrouped_parts
-end
-
 # returns an Array of values
 def eval_scalar(interpreter, parsed_expressions)
   # expected = parsed_expressions[0].length
@@ -1020,12 +998,13 @@ def eval_scalar(interpreter, parsed_expressions)
   result_values
 end
 
+# Expression parser
 class Parser
   def initialize(default_type)
     @parsed_expressions = []
     @operator_stack = []
     @expression_stack = []
-    @parsed_expression = []
+    @current_expression = []
     @parens_stack = []
     @type_stack = [default_type]
     @parens_group = []
@@ -1037,16 +1016,16 @@ class Parser
       !token.group_start? && @previous_token.function?
     if token.group_start? && @previous_token.function?
       # start parsing the list of function arguments
-      @expression_stack.push(@parsed_expression)
-      @parsed_expression = []
+      @expression_stack.push(@current_expression)
+      @current_expression = []
       @operator_stack.push(ParamStart.new)
       @parens_stack << @parens_group
       @parens_group = []
       @type_stack.push(@previous_token.default_type)
     elsif token.group_start? && @previous_token.variable?
       # start parsing the list of subscripts
-      @expression_stack.push(@parsed_expression)
-      @parsed_expression = []
+      @expression_stack.push(@current_expression)
+      @current_expression = []
       @operator_stack.push(ParamStart.new)
       @parens_stack << @parens_group
       @parens_group = []
@@ -1060,19 +1039,19 @@ class Parser
     elsif token.separator?
       # pop the operator stack until the corresponding left paren is found
       # Append each operator to the end of the output list
-      stack_to_expression(@operator_stack, @parsed_expression)
-      @parens_group << @parsed_expression
-      @parsed_expression = []
+      stack_to_expression(@operator_stack, @current_expression)
+      @parens_group << @current_expression
+      @current_expression = []
     elsif token.group_end?
       # pop the operator stack until the corresponding left paren is removed
       # Append each operator to the end of the output list
-      stack_to_expression(@operator_stack, @parsed_expression)
-      @parens_group << @parsed_expression
+      stack_to_expression(@operator_stack, @current_expression)
+      @parens_group << @current_expression
       start_op = @operator_stack.pop  # remove the '(' or '[' starter
       if start_op.param_start?
         list = List.new(@parens_group)
         @operator_stack.push(list)
-        @parsed_expression = @expression_stack.pop
+        @current_expression = @expression_stack.pop
       end
       @parens_group = @parens_stack.pop
       @type_stack.pop
@@ -1080,34 +1059,34 @@ class Parser
       # remove operators already on the stack that have higher
       # or equal precedence
       # append them to the output list
-      stack_to_precedence(@operator_stack, @parsed_expression, token)
+      stack_to_precedence(@operator_stack, @current_expression, token)
       # push the operator onto the operator stack
       @operator_stack.push(token) unless token.terminal?
     elsif token.function?
       # remove operators already on the stack that have higher
       # or equal precedence
       # append them to the output list
-      stack_to_precedence(@operator_stack, @parsed_expression, token)
+      stack_to_precedence(@operator_stack, @current_expression, token)
       # push the function onto the operator stack
       @operator_stack.push(token)
     elsif token.variable?
       # remove operators already on the stack that have higher
       # or equal precedence
       # append them to the output list
-      stack_to_precedence(@operator_stack, @parsed_expression, token)
+      stack_to_precedence(@operator_stack, @current_expression, token)
       # push the variable onto the operator stack
       variable_name = @type_stack[-1].new(token)
       @operator_stack.push(variable_name)
     else
       # the token is an operand, append it to the output list
-      @parsed_expression << token
+      @current_expression << token
     end
     @previous_token = token
   end
 
   def expressions
     fail(BASICException, 'Expression error') if @operator_stack.size > 0
-    @parsed_expressions << @parsed_expression
+    @parsed_expressions << @current_expression
     @parsed_expressions
   end
 
@@ -1135,7 +1114,10 @@ class AbstractExpression
     fail(Exception, 'Expression cannot be empty') if text.length == 0
     @unparsed_expression = text
 
-    words = split_input(text)
+    split_words = split_input(text)
+    # we have split a value like '12E+3' into three parts (12E + 3)
+    # put them back into a single item
+    words = regroup(split_words)
     tokens = tokenize(words)
     parser = Parser.new(default_type)
     tokens.each do |token|
@@ -1161,42 +1143,78 @@ class AbstractExpression
 
   private
 
+  def split_input(text)
+    # split the input infix string
+    parts = text.split(%r{([\+\-\*\/\(\)\^,])})
+    # remove empty elements
+    parts.reject(&:empty?)
+  end
+
+  def regroup(short_parts)
+    regrouped_parts = []
+    while short_parts.size > 0
+      first_three = short_parts[0..2].join('')
+      if short_parts.size >= 3 && NumericConstant.init?(first_three)
+        regrouped_parts << first_three
+        short_parts = short_parts[3..-1]
+      else
+        regrouped_parts << short_parts[0]
+        short_parts = short_parts[1..-1]
+      end
+    end
+    regrouped_parts
+  end
+
   def tokenize(words)
     tokens = []
     # convert tokens to objects
     words.each do |word|
-      next unless word.size > 0
-
       follows_operand = tokens.size > 0 && tokens[-1].operand?
-
       tokens << make_token(word, follows_operand)
     end
     tokens << TerminalOperator.new
   end
 
   def make_token(word, follows_operand)
-    if word == '('
-      GroupStart.new
-    elsif word == ')'
-      GroupEnd.new
-    elsif word == ','
-      ParamSeparator.new
-    elsif follows_operand && BinaryOperator.init?(word)
-      BinaryOperator.new(word)
-    elsif !follows_operand && UnaryOperator.init?(word)
-      UnaryOperator.new(word)
-    elsif FunctionFactory.valid?(word)
-      FunctionFactory.make(word)
-    elsif NumericConstant.init?(word)
-      NumericConstant.new(word)
-    elsif VariableName.init?(word)
-      VariableName.new(word)
-    else
-      fail BASICException, "'#{word}' is not a value or operator"
+    ff = FunctionFactory.new
+    return ff.make(word) if ff.valid?(word)
+
+    token = nil
+    classes = follows_operand ? binary_classes : unary_classes
+    classes.each do |c|
+      token = c.new(word) if token.nil? && c.init?(word)
     end
+    fail(BASICException, "'#{word}' is not a value or operator") if token.nil?
+    token
   end
 
-  # returns an Array of parsed expressions
+  def binary_classes
+    # first match is used; select order with care
+    # UserFunction before VariableName
+    [
+      GroupStart,
+      GroupEnd,
+      ParamSeparator,
+      BinaryOperator,
+      NumericConstant,
+      UserFunction,
+      VariableName
+    ]
+  end
+
+  def unary_classes
+    # first match is used; select order with care
+    # UserFunction before VariableName
+    [
+      GroupStart,
+      GroupEnd,
+      ParamSeparator,
+      UnaryOperator,
+      NumericConstant,
+      UserFunction,
+      VariableName
+    ]
+  end
 end
 
 # Value scalar expression (an R-value)
