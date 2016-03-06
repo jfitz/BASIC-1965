@@ -943,7 +943,7 @@ class UserFunction < AbstractScalarFunction
 end
 
 # split a line into arguments
-def split_args(text, keep_separators)
+def split_args(text)
   args = []
   current_arg = ''
   in_string = false
@@ -959,7 +959,7 @@ def split_args(text, keep_separators)
       if [',', ';'].include?(c) && parens_level == 0
         args << current_arg if current_arg.length > 0
         current_arg = ''
-        args << c if keep_separators
+        args << c
       elsif c == '('
         current_arg += c
         parens_level += 1

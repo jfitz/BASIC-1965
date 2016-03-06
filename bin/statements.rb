@@ -196,8 +196,8 @@ end
 class DimStatement < AbstractStatement
   def initialize(line, squeezed)
     super('DIM', line, squeezed)
-    text_list = split_args(@rest, false)
-    # variable [comma, variable]...
+    text_list = split_args(@rest)
+    text_list.delete(',')
 
     @expression_list = []
     if text_list.size > 0
@@ -264,8 +264,9 @@ end
 class InputStatement < AbstractStatement
   def initialize(line, squeezed)
     super('INPUT', line, squeezed)
-    text_list = split_args(@rest, false)
-    # [prompt string, comma] variable [comma, variable]...
+    text_list = split_args(@rest)
+    text_list.delete(',')
+    # [prompt string] variable [variable]...
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
     if text_list.length > 0
@@ -372,7 +373,7 @@ end
 class PrintStatement < AbstractStatement
   def initialize(line, squeezed)
     super('PRINT', line, squeezed)
-    item_list = split_args(@rest, true)
+    item_list = split_args(@rest)
     # variable/constant, [separator, variable/constant]... [separator]
 
     @print_items = []
@@ -631,8 +632,9 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line, squeezed)
     super('READ', line, squeezed)
-    item_list = split_args(@rest, false)
-    # variable [comma, variable]...
+    item_list = split_args(@rest)
+    item_list.delete(',')
+    # variable [variable]...
 
     @expression_list = []
     item_list.each do |item|
@@ -777,7 +779,7 @@ end
 class MatPrintStatement < AbstractStatement
   def initialize(line, squeezed)
     super('MAT PRINT', line, squeezed)
-    item_list = split_args(@rest, true)
+    item_list = split_args(@rest)
     # variable, [separator, variable]... [separator]
 
     @print_items = []
@@ -842,8 +844,9 @@ end
 class MatReadStatement < AbstractStatement
   def initialize(line, squeezed)
     super('MAT READ', line, squeezed)
-    item_list = split_args(@rest, false)
-    # variable [comma, variable]...
+    item_list = split_args(@rest)
+    item_list.delete(',')
+    # variable [variable]...
 
     @expression_list = []
     item_list.each do |item|
