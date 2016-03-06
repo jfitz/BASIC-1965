@@ -536,23 +536,9 @@ class ForStatement < AbstractStatement
     super('FOR', line, squeezed)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
-    parts = @rest.split('=', 2)
-    fail(BASICException, 'Syntax error') if parts.size != 2
-    begin
-      @control = VariableName.new(parts[0])
-    rescue BASICException => e
-      @errors << e.message
-    end
-    parts = parts[1].split('TO', 2)
-    fail(BASICException, 'Syntax error') if parts.size != 2
-    @start = ValueScalarExpression.new(parts[0])
-
-    parts = parts[1].split('STEP', 2)
-    @end = ValueScalarExpression.new(parts[0])
-
-    @has_step_value = parts.size > 1
-    @step_value = ValueScalarExpression.new('1')
-    @step_value = ValueScalarExpression.new(parts[1]) if parts.size > 1
+    parts = make_control
+    parts = make_to_value(parts)
+    make_step_value(parts)
   end
 
   def to_s
@@ -575,6 +561,35 @@ class ForStatement < AbstractStatement
     interpreter.assign_fornext(fornext_control)
     interpreter.next_line_number = loop_end_number if
       fornext_control.front_terminated?
+  end
+
+  private
+
+  def make_control
+    parts = @rest.split('=', 2)
+    fail(BASICException, 'Syntax error') if parts.size != 2
+    begin
+      @control = VariableName.new(parts[0])
+    rescue BASICException => e
+      @errors << e.message
+    end
+    parts
+  end
+
+  def make_to_value(parts)
+    parts = parts[1].split('TO', 2)
+    fail(BASICException, 'Syntax error') if parts.size != 2
+    @start = ValueScalarExpression.new(parts[0])
+    parts
+  end
+
+  def make_step_value(parts)
+    parts = parts[1].split('STEP', 2)
+    @end = ValueScalarExpression.new(parts[0])
+
+    @has_step_value = parts.size > 1
+    @step_value = ValueScalarExpression.new('1')
+    @step_value = ValueScalarExpression.new(parts[1]) if parts.size > 1
   end
 end
 
