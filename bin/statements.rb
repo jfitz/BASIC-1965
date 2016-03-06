@@ -853,29 +853,32 @@ class MatReadStatement < AbstractStatement
 
   def read_values(name, interpreter, trace)
     dims = interpreter.get_dimensions(name)
-    fail(BASICException, 'Dimensions for MAT READ must be 1 or 2') unless
-      [1, 2].include?(dims.size)
-    read_vector(name, dims[0].to_i, interpreter, trace) if dims.size == 1
-    read_matrix(name, dims[0].to_i, dims[1].to_i, interpreter, trace) if
-      dims.size == 2
-  end
-
-  def read_vector(name, n_cols, interpreter, trace)
-    (1..n_cols).each do |col|
-      value = interpreter.read_data
-      variable = name.to_s + make_coord(col)
-      interpreter.set_value(variable, value, trace)
+    case dims.size
+    when 1
+      read_vector(name, dims, interpreter, trace)
+    when 2
+      read_matrix(name, dims, interpreter, trace)
+    else
+      fail(BASICException, 'Dimensions for MAT READ must be 1 or 2')
     end
   end
 
-  def read_matrix(name, n_rows, n_cols, interpreter, trace)
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        value = interpreter.read_data
-        variable = name.to_s + make_coords(row, col)
-        interpreter.set_value(variable, value, trace)
+  def read_vector(name, dims, interpreter, trace)
+    values = {}
+    (1..dims[0].to_i).each do |col|
+      values[make_coord(col)] = interpreter.read_data
+    end
+    interpreter.set_values(name, values, trace)
+  end
+
+  def read_matrix(name, dims, interpreter, trace)
+    values = {}
+    (1..dims[0].to_i).each do |row|
+      (1..dims[1].to_i).each do |col|
+        values[make_coords(row, col)] = interpreter.read_data
       end
     end
+    interpreter.set_values(name, values, trace)
   end
 end
 
@@ -907,8 +910,9 @@ class MatLetStatement < AbstractStatement
     r_value = first_value(interpreter)
     dims = r_value.dimensions
     interpreter.set_dimensions(name, dims)
-    assign_vector(name, r_value, interpreter, trace) if dims.size == 1
-    assign_matrix(name, r_value, interpreter, trace) if dims.size == 2
+    values = r_value.values_1 if dims.size == 1
+    values = r_value.values_2 if dims.size == 2
+    interpreter.set_values(name, values, trace)
   end
 
   private
@@ -923,15 +927,5 @@ class MatLetStatement < AbstractStatement
     r_value = r_values[0]
     fail(BASICException, 'Expected Matrix') if r_value.class.to_s != 'Matrix'
     r_value
-  end
-
-  def assign_vector(name, matrix, interpreter, trace)
-    values = matrix.values_1
-    interpreter.set_values(name, values, trace)
-  end
-
-  def assign_matrix(name, matrix, interpreter, trace)
-    values = matrix.values_2
-    interpreter.set_values(name, values, trace)
   end
 end
