@@ -72,7 +72,7 @@ class GroupStart < AbstractToken
     text == '('
   end
 
-  def initialize(text)
+  def initialize(_)
     super()
     @group_start = true
   end
@@ -84,7 +84,7 @@ class GroupEnd < AbstractToken
     text == ')'
   end
 
-  def initialize(text)
+  def initialize(_)
     super()
     @group_end = true
     @operand = true
@@ -105,7 +105,7 @@ class ParamSeparator < AbstractToken
     text == ','
   end
 
-  def initialize(text)
+  def initialize(_)
     super()
     @separator = true
   end

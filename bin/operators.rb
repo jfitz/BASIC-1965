@@ -136,57 +136,13 @@ class BinaryOperator < AbstractToken
     y = stack.pop
     x = stack.pop
     if x.matrix? && y.matrix?
-      case @op
-      when '+'
-        add_matrix_matrix(x, y)
-      when '-'
-        subtract_matrix_matrix(x, y)
-      when '*'
-        multiply_matrix_matrix(x, y)
-      when '/'
-        divide_matrix_matrix(x, y)
-      when '^'
-        power_matrix_matrix(x, y)
-      end
+      op_matrix_matrix(x, y)
     elsif x.matrix?
-      case @op
-      when '+'
-        add_matrix_scalar(x, y)
-      when '-'
-        subtract_matrix_scalar(x, y)
-      when '*'
-        multiply_matrix_scalar(x, y)
-      when '/'
-        divide_matrix_scalar(x, y)
-      when '^'
-        power_matrix_scalar(x, y)
-      end
+      op_matrix_scalar(x, y)
     elsif y.matrix?
-      case @op
-      when '+'
-        add_scalar_matrix(x, y)
-      when '-'
-        subtract_scalar_matrix(x, y)
-      when '*'
-        multiply_scalar_matrix(x, y)
-      when '/'
-        divide_scalar_matrix(x, y)
-      when '^'
-        power_scalar_matrix(x, y)
-      end
+      op_scalar_matrix(x, y)
     else
-      case @op
-      when '+'
-        x + y
-      when '-'
-        x - y
-      when '*'
-        x * y
-      when '/'
-        x / y
-      when '^'
-        x**y
-      end
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -195,6 +151,66 @@ class BinaryOperator < AbstractToken
   end
 
   private
+
+  def op_matrix_matrix(x, y)
+    case @op
+    when '+'
+      add_matrix_matrix(x, y)
+    when '-'
+      subtract_matrix_matrix(x, y)
+    when '*'
+      multiply_matrix_matrix(x, y)
+    when '/'
+      divide_matrix_matrix(x, y)
+    when '^'
+      power_matrix_matrix(x, y)
+    end
+  end
+
+  def op_matrix_scalar(x, y)
+    case @op
+    when '+'
+      add_matrix_scalar(x, y)
+    when '-'
+      subtract_matrix_scalar(x, y)
+    when '*'
+      multiply_matrix_scalar(x, y)
+    when '/'
+      divide_matrix_scalar(x, y)
+    when '^'
+      power_matrix_scalar(x, y)
+    end
+  end
+
+  def op_scalar_matrix(x, y)
+    case @op
+    when '+'
+      add_scalar_matrix(x, y)
+    when '-'
+      subtract_scalar_matrix(x, y)
+    when '*'
+      multiply_scalar_matrix(x, y)
+    when '/'
+      divide_scalar_matrix(x, y)
+    when '^'
+      power_scalar_matrix(x, y)
+    end
+  end
+
+  def op_scalar_scalar(x, y)
+    case @op
+    when '+'
+      x + y
+    when '-'
+      x - y
+    when '*'
+      x * y
+    when '/'
+      x / y
+    when '^'
+      x**y
+    end
+  end
 
   def add_scalar_matrix_1(a, b)
     dims = b.dimensions
