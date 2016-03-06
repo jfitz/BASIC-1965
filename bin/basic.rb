@@ -261,11 +261,9 @@ class Interpreter
   public
 
   def parse_line(line)
-    begin
-      @statement_factory.parse(line)
-    rescue BASICException => e
-      puts "Syntax error: #{e.message}"
-    end
+    @statement_factory.parse(line)
+  rescue BASICException => e
+    puts "Syntax error: #{e.message}"
   end
 
   def cmd_list(linespec)
@@ -622,7 +620,6 @@ class Interpreter
   end
 
   def set_values(name, values, trace)
-    printer = print_handler
     values.each do |coords, value|
       variable = name.to_s + coords
       set_value(variable, value, trace)
