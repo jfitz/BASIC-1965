@@ -360,9 +360,7 @@ class IfStatement < AbstractStatement
     interpreter.next_line_number = @destination if @boolean_expression.result
     return unless trace
     printer = interpreter.print_handler
-    s = ' ' + @boolean_expression.a_value.to_s +
-        ' ' + @boolean_expression.operator.to_s +
-        ' ' + @boolean_expression.b_value.to_s +
+    s = ' ' + @boolean_expression.evaluated_to_s +
         ' ' + @boolean_expression.result.to_s
     printer.trace_output(s)
   end

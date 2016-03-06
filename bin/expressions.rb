@@ -1372,6 +1372,10 @@ class BooleanExpression
     @a.to_s + ' ' + @operator.to_s + ' ' + @b.to_s
   end
 
+  def evaluated_to_s
+    @a_value.to_s + ' ' + @operator.to_s + ' ' + @b_value.to_s
+  end
+
   private
 
   def make_operators
