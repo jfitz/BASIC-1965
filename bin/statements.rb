@@ -252,8 +252,6 @@ class LetStatement < AbstractStatement
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
     interpreter.set_value(l_value, r_value, trace)
-    printer = interpreter.print_handler
-    printer.trace_output(' ' + l_value.to_s + ' = ' + r_value.to_s) if trace
   end
 end
 
@@ -296,7 +294,6 @@ class InputStatement < AbstractStatement
       l_value = l_values[0]
       value = hash['value']
       interpreter.set_value(l_value, value, trace)
-      printer.trace_output(' ' + l_value.to_s + ' = ' + value.to_s) if trace
     end
     printer.implied_newline
   end
@@ -652,8 +649,6 @@ class ReadStatement < AbstractStatement
       variable = variables[0]
       value = interpreter.read_data
       interpreter.set_value(variable, value, trace)
-      printer = interpreter.print_handler
-      printer.trace_output(' ' + variable.to_s + ' = ' + value.to_s) if trace
     end
   end
 end
