@@ -136,6 +136,16 @@ class Matrix
     true
   end
 
+  def values_1
+    values = {}
+    (1..@dimensions[0].to_i).each do |col|
+      value = get_value_1(col)
+      coords = make_coord(col)
+      values[coords] = value
+    end
+    values
+  end
+
   def values_2
     values = {}
     (1..@dimensions[0].to_i).each do |row|

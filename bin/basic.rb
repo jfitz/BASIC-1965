@@ -615,9 +615,18 @@ class Interpreter
     x
   end
 
-  def set_value(variable, value)
+  def set_value(variable, value, trace)
     v = variable.to_s
     @variables[v] = value
+    puts(' ' + variable.to_s + ' = ' + value.to_s) if trace
+  end
+
+  def set_values(name, values, trace)
+    printer = print_handler
+    values.each do |coords, value|
+      variable = name.to_s + coords
+      set_value(variable, value, trace)
+    end
   end
 
   def print_handler

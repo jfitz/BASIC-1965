@@ -250,7 +250,7 @@ class LetStatement < AbstractStatement
     l_value = l_values[0]
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
-    interpreter.set_value(l_value, r_value)
+    interpreter.set_value(l_value, r_value, trace)
     printer = interpreter.print_handler
     printer.trace_output(' ' + l_value.to_s + ' = ' + r_value.to_s) if trace
   end
@@ -293,7 +293,7 @@ class InputStatement < AbstractStatement
       l_values = hash['name'].evaluate(interpreter)
       l_value = l_values[0]
       value = hash['value']
-      interpreter.set_value(l_value, value)
+      interpreter.set_value(l_value, value, trace)
       printer.trace_output(' ' + l_value.to_s + ' = ' + value.to_s) if trace
     end
     printer.implied_newline
@@ -502,7 +502,7 @@ class ForNextControl
 
   def bump_control(interpreter)
     @current_value += @step_value
-    interpreter.set_value(@control, @current_value)
+    interpreter.set_value(@control, @current_value, false)
   end
 
   def front_terminated?
@@ -565,7 +565,7 @@ class ForStatement < AbstractStatement
   def execute_cmd(interpreter, _)
     loop_end_number = interpreter.find_closing_next(@control.to_s)
     from_value = @start.evaluate(interpreter)[0]
-    interpreter.set_value(@control, from_value)
+    interpreter.set_value(@control, from_value, false)
     to_value = @end.evaluate(interpreter)[0]
     step_value = @step_value.evaluate(interpreter)[0]
     fornext_control =
@@ -633,7 +633,7 @@ class ReadStatement < AbstractStatement
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       value = interpreter.read_data
-      interpreter.set_value(variable, value)
+      interpreter.set_value(variable, value, trace)
       printer = interpreter.print_handler
       printer.trace_output(' ' + variable.to_s + ' = ' + value.to_s) if trace
     end
@@ -864,8 +864,7 @@ class MatReadStatement < AbstractStatement
     (1..n_cols).each do |col|
       value = interpreter.read_data
       variable = name.to_s + make_coord(col)
-      printer.print_out(' ' + variable.to_s + ' = ' + value.to_s) if trace
-      interpreter.set_value(variable, value)
+      interpreter.set_value(variable, value, trace)
     end
   end
 
@@ -874,8 +873,7 @@ class MatReadStatement < AbstractStatement
       (1..n_cols).each do |col|
         value = interpreter.read_data
         variable = name.to_s + make_coords(row, col)
-        printer.print_out(' ' + variable.to_s + ' = ' + value.to_s) if trace
-        interpreter.set_value(variable, value)
+        interpreter.set_value(variable, value, trace)
       end
     end
   end
@@ -927,30 +925,13 @@ class MatLetStatement < AbstractStatement
     r_value
   end
 
-  def assign_vector(name, vector, interpreter, trace)
-    printer = interpreter.print_handler
-    dims = vector.dimensions
-    n_cols = dims[0].to_i
-    (1..n_cols).each do |col|
-      value = vector.get_value_1(col)
-      variable = name.to_s + make_coord(col)
-      printer.print_out(' ' + variable.to_s + ' = ' + value.to_s) if trace
-      interpreter.set_value(variable, value)
-    end
+  def assign_vector(name, matrix, interpreter, trace)
+    values = matrix.values_1
+    interpreter.set_values(name, values, trace)
   end
 
   def assign_matrix(name, matrix, interpreter, trace)
-    printer = interpreter.print_handler
-    dims = matrix.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        value = matrix.get_value_2(row, col)
-        variable = name.to_s + make_coords(row, col)
-        printer.trace_output(' ' + variable.to_s + ' = ' + value.to_s) if trace
-        interpreter.set_value(variable, value)
-      end
-    end
+    values = matrix.values_2
+    interpreter.set_values(name, values, trace)
   end
 end
