@@ -342,10 +342,13 @@ end
 
 # Carriage control for PRINT and MAT PRINT statements
 class CarriageControl
+  def self.init?(text)
+    ['NL', ',', ';', ''].include?(text)
+  end
+
   def initialize(text)
-    valid_operators = ['NL', ',', ';', '']
     fail(BASICException, "'#{text}' is not a valid separator") unless
-      valid_operators.include?(text)
+      CarriageControl.init?(text)
     @operator = text
   end
 
