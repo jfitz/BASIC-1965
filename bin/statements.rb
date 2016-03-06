@@ -375,39 +375,13 @@ class PrintStatement < AbstractStatement
     item_list = split_args(@rest, true)
     # variable/constant, [separator, variable/constant]... [separator]
 
-    print_item_list = []
+    @print_items = []
     previous_item = CarriageControl.new('')
     item_list.each do |print_item|
-      if print_item == ',' || print_item == ';'
-        # the item is a carriage control item
-        # save previous print thing, or create an empty one
-        item = CarriageControl.new(print_item)
-        print_item_list << item
-      else
-        # insert a plain carriage control between two printable things
-        item = CarriageControl.new('')
-        print_item_list << item if previous_item.printable?
-        begin
-          if TextConstant.init?(print_item.strip)
-            item = TextConstant.new(print_item.strip)
-          else
-            item = ValueScalarExpression.new(print_item.strip)
-          end
-          print_item_list << item
-        rescue BASICException => e
-          @errors << "Invalid print item '#{print_item}': #{e.message}"
-        end
-      end
-      previous_item = item
+      add_print_item(print_item, previous_item)
+      previous_item = @print_items[-1]
     end
-
-    # add implied items at end of list
-    print_item_list << CarriageControl.new('NL') if
-      print_item_list.size == 0
-    print_item_list << CarriageControl.new('NL') if
-      print_item_list[-1].printable?
-
-    @print_items = print_item_list
+    add_implied_print_items
   end
 
   def to_s
@@ -424,6 +398,35 @@ class PrintStatement < AbstractStatement
     @print_items.each do |item|
       item.print(printer, interpreter)
     end
+  end
+
+  private
+
+  def add_print_item(print_item, previous_item)
+    if CarriageControl.init?(print_item)
+      @print_items << CarriageControl.new(print_item)
+    else
+      # insert a plain carriage control between two printable things
+      @print_items << CarriageControl.new('') if previous_item.printable?
+      add_printable(print_item)
+    end
+  end
+
+  def add_printable(print_item)
+    if TextConstant.init?(print_item.strip)
+      @print_items << TextConstant.new(print_item.strip)
+    else
+      begin
+        @print_items << ValueScalarExpression.new(print_item.strip)
+      rescue BASICException => e
+        @errors << "Invalid print item '#{print_item}': #{e.message}"
+      end
+    end
+  end
+
+  def add_implied_print_items
+    @print_items << CarriageControl.new('NL') if @print_items.size == 0
+    @print_items << CarriageControl.new('NL') if @print_items[-1].printable?
   end
 end
 
