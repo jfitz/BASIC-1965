@@ -34,6 +34,13 @@ class StatementFactory
     squeezed = squeeze_out_spaces(text)
     statement = UnknownStatement.new(text)
     statement = EmptyStatement.new if squeezed == ''
+    keyword = find_keyword(squeezed)
+    statement = @statement_definitions[keyword].new(text, squeezed) unless
+      keyword.size == 0
+    statement
+  end
+
+  def find_keyword(squeezed)
     keyword = ''
     @statement_definitions.each_key do |def_keyword|
       length = def_keyword.length
@@ -42,9 +49,7 @@ class StatementFactory
         stmt_keyword.size > keyword.size &&
         stmt_keyword == def_keyword
     end
-    statement = @statement_definitions[keyword].new(text, squeezed) unless
-      keyword.size == 0
-    statement
+    keyword
   end
 
   def statement_definitions
