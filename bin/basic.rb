@@ -13,11 +13,13 @@ require 'statements'
 class LineNumber
   attr_reader :line_number
 
+  def self.init?(text)
+    /\A\d+\z/.match(text)
+  end
+
   def initialize(line_number)
-    if line_number.class.to_s == 'String' && /\A\d+\z/.match(line_number)
+    if LineNumber.init?(line_number)
       @line_number = line_number.to_i
-    elsif line_number.class.to_s == 'Fixnum'
-      @line_number = line_number
     else
       fail BASICException, 'Invalid line number'
     end
@@ -64,10 +66,63 @@ class LineNumber
   end
 end
 
+# line number range, in form start-end
+class LineNumberRange
+  attr_reader :list
+
+  def self.init?(text)
+    /\A\d+-\d+\z/.match(text)
+  end
+
+  def initialize(spec, program_line_numbers)
+    fail(BASICException, 'Invalid list specification') unless
+      LineNumberRange.init?(spec)
+    parts = spec.split('-')
+    start_val = LineNumber.new(parts[0])
+    end_val = LineNumber.new(parts[1])
+    @list = []
+    program_line_numbers.each do |line_number|
+      @list << line_number if line_number >= start_val && line_number <= end_val
+    end
+  end
+end
+
+# line number range, in form start-count (count default is 20)
+class LineNumberCountRange
+  attr_reader :list
+
+  def self.init?(text)
+    /\A\d+\+\d+\z/.match(text) || /\A\d+\+\z/.match(text)
+  end
+
+  def initialize(spec, program_line_numbers)
+    fail(BASICException, 'Invalid list specification') unless
+      LineNumberCountRange.init?(spec)
+
+    parts = spec.split('+')
+    start_val = LineNumber.new(parts[0])
+    count = parts.size > 1 ? parts[1].to_i : 20
+    make_list(program_line_numbers, start_val, count)
+  end
+
+  private
+
+  def make_list(program_line_numbers, start_val, count)
+    @list = []
+    program_line_numbers.each do |line_number|
+      if line_number >= start_val && count >= 0
+        @list << line_number
+        count -= 1
+      end
+    end
+  end
+end
+
 # Contain line number ranges
 # used in LIST and DELETE commands
-class LineNumberRange
+class LineListSpec
   attr_reader :line_numbers
+  attr_reader :range_type
 
   def initialize(text, program_line_numbers)
     @line_numbers = []
@@ -75,73 +130,34 @@ class LineNumberRange
     if text == ''
       @line_numbers = program_line_numbers
       @range_type = :all
-    else
-      begin
-        line_number = LineNumber.new(text)
-        @line_numbers << line_number if
-          program_line_numbers.include?(line_number)
-        @range_type = :single
-      rescue BASICException
-        begin
-          @line_numbers = line_range(text, program_line_numbers)
-        rescue BASICException
-          @line_numbers = line_list(text, program_line_numbers)
-        end
-        @range_type = :range
-      end
+    elsif LineNumber.init?(text)
+      make_single(text, program_line_numbers)
+    elsif LineNumberRange.init?(text)
+      make_range(text, program_line_numbers)
+    elsif LineNumberCountRange.init?(text)
+      make_count_range(text, program_line_numbers)
     end
-  end
-
-  def single?
-    @range_type == :single
-  end
-
-  def range?
-    @range_type == :range
-  end
-
-  def all?
-    @range_type == :all
   end
 
   private
 
-  def line_range(spec, program_line_numbers)
-    spec = spec.strip
-    fail(BASICException, 'Invalid list specification') unless
-      /\A\d+-\d+\z/.match(spec)
-    parts = spec.split('-')
-    start_val = LineNumber.new(parts[0])
-    end_val = LineNumber.new(parts[1])
-    fail(BASICException, 'Invalid list specification') if end_val < start_val
-    list = []
-    program_line_numbers.each do |line_number|
-      list << line_number if line_number >= start_val && line_number <= end_val
-    end
-    list
+  def make_single(text, program_line_numbers)
+    line_number = LineNumber.new(text)
+    @line_numbers << line_number if
+      program_line_numbers.include?(line_number)
+    @range_type = :single
   end
 
-  def line_list(spec, program_line_numbers)
-    spec = spec.strip
-    if /\A\d+\+\d+\z/.match(spec)
-      parts = spec.split('+')
-      start_val = LineNumber.new(parts[0])
-      count = parts[1].to_i
-    elsif /\A\d+\+\z/.match(spec)
-      parts = spec.split('+')
-      start_val = LineNumber.new(parts[0])
-      count = 20
-    else
-      fail(BASICException, 'Invalid list specification')
-    end
-    list = []
-    program_line_numbers.each do |line_number|
-      if line_number >= start_val && count >= 0
-        list << line_number
-        count -= 1
-      end
-    end
-    list
+  def make_range(text, program_line_numbers)
+    range = LineNumberRange.new(text, program_line_numbers)
+    @line_numbers = range.list
+    @range_type = :range
+  end
+
+  def make_count_range(text, program_line_numbers)
+    range = LineNumberCountRange.new(text, program_line_numbers)
+    @line_numbers = range.list
+    @range_type = :range
   end
 end
 
@@ -271,7 +287,7 @@ class Interpreter
     if @program_lines.size > 0
       begin
         line_number_range =
-          LineNumberRange.new(linespec, @program_lines.keys.sort)
+          LineListSpec.new(linespec, @program_lines.keys.sort)
         list_lines_errors(line_number_range.line_numbers)
       rescue BASICException => e
         puts e
@@ -286,7 +302,7 @@ class Interpreter
     if @program_lines.size > 0
       begin
         line_number_range =
-          LineNumberRange.new(linespec, @program_lines.keys.sort)
+          LineListSpec.new(linespec, @program_lines.keys.sort)
         pretty_lines_errors(line_number_range.line_numbers)
       rescue BASICException => e
         puts e
@@ -320,7 +336,7 @@ class Interpreter
     end
   end
 
-  def delete_lines(line_numbers)
+  def delete_specific_lines(line_numbers)
     line_numbers.each { |line_number| @program_lines.delete(line_number) }
   end
 
@@ -328,34 +344,35 @@ class Interpreter
     list_lines(line_numbers)
     print 'DELETE THESE LINES? '
     answer = gets.chomp
-    delete_lines(line_numbers) if answer == 'YES'
+    delete_specific_lines(line_numbers) if answer == 'YES'
   end
 
   public
 
   def cmd_delete(linespec)
-    linespec = linespec.strip
     if @program_lines.size > 0
-      begin
-        line_number_range =
-          LineNumberRange.new(linespec, @program_lines.keys.sort)
-        line_numbers = line_number_range.line_numbers
-        if line_number_range.single?
-          delete_lines(line_numbers)
-        elsif line_number_range.range?
-          list_and_delete_lines(line_numbers)
-        elsif line_number_range.all?
-          puts 'Type NEW to delete an entire program'
-        end
-      rescue BASICException => e
-        puts e
-      end
+      delete_lines(linespec.strip)
     else
       puts 'No program loaded'
     end
   end
 
   private
+
+  def delete_lines(linespec)
+    line_number_range =
+      LineListSpec.new(linespec.strip, @program_lines.keys.sort)
+    case line_number_range.range_type
+    when :single
+      delete_specific_lines(line_number_range.line_numbers)
+    when :range
+      list_and_delete_lines(line_number_range.line_numbers)
+    when :all
+      puts 'Type NEW to delete an entire program'
+    end
+    rescue BASICException => e
+      puts e
+  end
 
   def verify_next_line_number(line_numbers, next_line_number)
     fail BASICException, 'Program terminated without END' if
