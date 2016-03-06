@@ -578,12 +578,9 @@ class Interpreter
     @user_functions[name]
   end
 
-  def get_user_var_names(name)
-    @user_var_names[name]
-  end
-
-  def set_user_var_values(user_var_values)
-    @user_var_values.push(user_var_values)
+  def set_user_var_values(name, user_var_values)
+    names_and_values = Hash[@user_var_names[name].zip(user_var_values)]
+    @user_var_values.push(names_and_values)
   end
 
   def clear_user_var_values

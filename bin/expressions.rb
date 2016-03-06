@@ -919,25 +919,16 @@ class UserFunction < AbstractScalarFunction
     expression = interpreter.get_user_function(@name)
     # verify function is defined
     fail(BASICException, "Function #{@name} not defined") if expression.nil?
-    user_var_names = interpreter.get_user_var_names(@name)
 
     # verify arguments
     user_var_values = stack.pop
     fail(BASICException, 'No arguments for function') if
       user_var_values.class.to_s != 'Array'
-    num_values = user_var_names.length
-    num_args = user_var_values.length
-    fail(BASICException,
-         "Function #{@name} expects #{num_values} args, found #{num_args}") if
-      num_args != num_values
-    types = ['NumericConstant'] * num_args
-    check_arg_types(user_var_values, types)
+    check_arg_types(user_var_values,
+                    ['NumericConstant'] * user_var_values.length)
 
     # dummy variable names and their (now known) values
-    names_and_values = Hash[user_var_names.zip(user_var_values)]
-    interpreter.set_user_var_values(names_and_values)
-    result = expression.evaluate(interpreter)
-    interpreter.clear_user_var_values
+    result = expression.evaluate_with_vars(interpreter, @name, user_var_values)
     result[0]
   end
 end
@@ -1181,6 +1172,13 @@ class AbstractExpression
     values = eval_scalar(interpreter, @parsed_expressions)
     fail(Exception, 'Expected some values') if values.length == 0
     values
+  end
+
+  def evaluate_with_vars(interpreter, name, user_var_values)
+    interpreter.set_user_var_values(name, user_var_values)
+    result = evaluate(interpreter)
+    interpreter.clear_user_var_values
+    result
   end
 
   private
