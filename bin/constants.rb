@@ -27,6 +27,10 @@ class AbstractToken
     @variable
   end
 
+  def function_variable?
+    function? || variable?
+  end
+
   def operand?
     @operand
   end
@@ -53,6 +57,10 @@ class AbstractToken
 
   def separator?
     @separator
+  end
+
+  def group_separator?
+    group_start? || group_end? || separator?
   end
 
   protected

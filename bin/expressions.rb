@@ -345,6 +345,11 @@ class Matrix
   def submatrix(exclude_row, exclude_col)
     one = NumericConstant.new(1)
     new_dims = [@dimensions[0] - one, @dimensions[1] - one]
+    new_values = submatrix_values(exclude_row, exclude_col)
+    Matrix.new(new_dims, new_values)
+  end
+
+  def submatrix_values(exclude_row, exclude_col)
     new_values = {}
     new_row = 1
     (1..@dimensions[0].to_i).each do |row|
@@ -352,14 +357,12 @@ class Matrix
       next if row == exclude_row
       (1..@dimensions[1].to_i).each do |col|
         next if col == exclude_col
-        value = get_value_2(row, col)
-        coords = make_coords(new_row, new_col)
-        new_values[coords] = value
+        new_values[make_coords(new_row, new_col)] = get_value_2(row, col)
         new_col += 1
       end
       new_row += 1
     end
-    Matrix.new(new_dims, new_values)
+    new_values
   end
 
   def calc_factor(values, row, col)
@@ -433,20 +436,19 @@ class MatrixValue < Variable
   def evaluate(interpreter, _)
     dims = interpreter.get_dimensions(@variable_name)
     fail(BASICException, 'Variable has no dimensions') if dims.nil?
-    values = {}
-    if dims.size == 1
-      n_cols = dims[0].to_i
-      values = evaluate_1(interpreter, n_cols)
-    end
-    if dims.size == 2
-      n_rows = dims[0].to_i
-      n_cols = dims[1].to_i
-      values = evaluate_2(interpreter, n_rows, n_cols)
-    end
+    values = evaluate_n(interpreter, dims)
     Matrix.new(dims, values)
   end
 
   private
+
+  def evaluate_n(interpreter, dims)
+    values = {}
+    values = evaluate_1(interpreter, dims[0].to_i) if dims.size == 1
+    values = evaluate_2(interpreter, dims[0].to_i, dims[1].to_i) if
+      dims.size == 2
+    values
+  end
 
   def evaluate_1(interpreter, n_cols)
     values = {}
@@ -825,14 +827,20 @@ class FunctionIdn < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
+    check(args)
+    dims = [args[0]] * 2
+    matrix = Matrix.new(dims, {})
+    Matrix.new(dims, matrix.identity_values)
+  end
+
+  private
+
+  def check(args)
     fail(BASICException, 'One or two arguments required for IDN()') unless
       args.size == 1 || args.size == 2
     check_arg_types(args, ['NumericConstant'] * args.size)
     fail(BASICException, 'IDN requires square matrix') if
       args.size == 2 && args[1] != args[0]
-    dims = [args[0]] * 2
-    matrix = Matrix.new(dims, {})
-    Matrix.new(dims, matrix.identity_values)
   end
 end
 
@@ -859,13 +867,23 @@ class FunctionInv < AbstractMatrixFunction
 
   def evaluate(_, stack)
     args = stack.pop
+    check(args)
+    dims = args[0].dimensions
+    check_2(dims)
+    Matrix.new(dims.clone, args[0].inverse_values)
+  end
+
+  private
+
+  def check(args)
     fail(BASICException, 'One argument required for INV()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
-    dims = args[0].dimensions
+  end
+
+  def check_2(dims)
     fail(BASICException, 'INV requires matrix') unless dims.size == 2
     fail(BASICException, 'INV requires square matrix') if dims[1] != dims[0]
-    Matrix.new(dims.clone, args[0].inverse_values)
   end
 end
 
@@ -1016,18 +1034,12 @@ class Parser
     fail(BASICException, 'Function requires parentheses') if
       !token.group_start? && @previous_token.function?
 
-    if token.group_start?
-      start_group(token)
-    elsif token.separator?
-      pop_to_group_start
-    elsif token.group_end?
-      end_group
+    if token.group_separator?
+      group_separator(token)
     elsif token.operator?
       operator_higher(token)
-    elsif token.function?
-      start_function(token)
-    elsif token.variable?
-      start_variable(token)
+    elsif token.function_variable?
+      function_variable(token)
     else
       # the token is an operand, append it to the output list
       @current_expression << token
@@ -1058,6 +1070,16 @@ class Parser
           stack[-1].precedence >= token.precedence
       op = stack.pop
       expression << op
+    end
+  end
+
+  def group_separator(token)
+    if token.group_start?
+      start_group(token)
+    elsif token.separator?
+      pop_to_group_start
+    elsif token.group_end?
+      end_group
     end
   end
 
@@ -1119,6 +1141,14 @@ class Parser
     stack_to_precedence(@operator_stack, @current_expression, token)
     # push the operator onto the operator stack
     @operator_stack.push(token) unless token.terminal?
+  end
+
+  def function_variable(token)
+    if token.function?
+      start_function(token)
+    elsif token.variable?
+      start_variable(token)
+    end
   end
 
   # remove operators already on the stack that have higher
