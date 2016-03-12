@@ -951,40 +951,6 @@ class UserFunction < AbstractScalarFunction
   end
 end
 
-# split a line into arguments
-def split_args(text)
-  args = []
-  current_arg = ''
-  in_string = false
-  parens_level = 0
-  text.each_char do |c|
-    if in_string
-      current_arg += c
-      if c == '"'
-        args << current_arg
-        current_arg = ''
-      end
-    else
-      if [',', ';'].include?(c) && parens_level == 0
-        args << current_arg if current_arg.length > 0
-        current_arg = ''
-        args << c
-      elsif c == '('
-        current_arg += c
-        parens_level += 1
-      elsif c == ')'
-        current_arg += c
-        parens_level -= 1 if parens_level > 0
-      else
-        current_arg += c
-      end
-    end
-    in_string = !in_string if c == '"'
-  end
-  args << current_arg if current_arg.size > 0
-  args
-end
-
 # returns an Array of values
 def eval_scalar(interpreter, parsed_expressions)
   # expected = parsed_expressions[0].length

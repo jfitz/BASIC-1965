@@ -10,6 +10,64 @@ def squeeze_out_spaces(text)
   squeezed_text
 end
 
+# split a line into arguments
+class ArgSplitter
+  attr_reader :args
+
+  def initialize(text)
+    @args = []
+    @current_arg = ''
+    in_string = false
+    @parens_level = 0
+    text.each_char do |c|
+      if in_string
+        in_string(c)
+      else
+        not_in_string(c)
+      end
+      in_string = !in_string if c == '"'
+    end
+    @args << @current_arg if @current_arg.size > 0
+  end
+
+  private
+
+  def in_string(c)
+    @current_arg += c
+    return unless c == '"'
+    @args << @current_arg
+    @current_arg = ''
+  end
+
+  def not_in_string(c)
+    if [',', ';'].include?(c) && @parens_level == 0
+      separator(c)
+    elsif c == '('
+      open_parens
+    elsif c == ')'
+      close_parens
+    else
+      @current_arg += c
+    end
+  end
+
+  def separator(c)
+    @args << @current_arg if @current_arg.length > 0
+    @current_arg = ''
+    @args << c
+  end
+
+  def open_parens
+    @current_arg += '('
+    @parens_level += 1
+  end
+
+  def close_parens
+    @current_arg += ')'
+    @parens_level -= 1 if @parens_level > 0
+  end
+end
+
 # Statement factory class
 class StatementFactory
   def initialize
@@ -196,7 +254,8 @@ end
 class DimStatement < AbstractStatement
   def initialize(line, squeezed)
     super('DIM', line, squeezed)
-    text_list = split_args(@rest)
+    splitter = ArgSplitter.new(@rest)
+    text_list = splitter.args
     text_list.delete(',')
 
     @expression_list = []
@@ -264,7 +323,8 @@ end
 class InputStatement < AbstractStatement
   def initialize(line, squeezed)
     super('INPUT', line, squeezed)
-    text_list = split_args(@rest)
+    splitter = ArgSplitter.new(@rest)
+    text_list = splitter.args
     text_list.delete(',')
     # [prompt string] variable [variable]...
     @default_prompt = TextConstant.new('"? "')
@@ -373,7 +433,8 @@ end
 class PrintStatement < AbstractStatement
   def initialize(line, squeezed)
     super('PRINT', line, squeezed)
-    item_list = split_args(@rest)
+    splitter = ArgSplitter.new(@rest)
+    item_list = splitter.args
     # variable/constant, [separator, variable/constant]... [separator]
 
     @print_items = []
@@ -632,7 +693,8 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line, squeezed)
     super('READ', line, squeezed)
-    item_list = split_args(@rest)
+    splitter = ArgSplitter.new(@rest)
+    item_list = splitter.args
     item_list.delete(',')
     # variable [variable]...
 
@@ -779,7 +841,8 @@ end
 class MatPrintStatement < AbstractStatement
   def initialize(line, squeezed)
     super('MAT PRINT', line, squeezed)
-    item_list = split_args(@rest)
+    splitter = ArgSplitter.new(@rest)
+    item_list = splitter.args
     # variable, [separator, variable]... [separator]
 
     @print_items = []
@@ -844,7 +907,8 @@ end
 class MatReadStatement < AbstractStatement
   def initialize(line, squeezed)
     super('MAT READ', line, squeezed)
-    item_list = split_args(@rest)
+    splitter = ArgSplitter.new(@rest)
+    item_list = splitter.args
     item_list.delete(',')
     # variable [variable]...
 
