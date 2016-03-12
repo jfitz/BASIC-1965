@@ -721,24 +721,72 @@ class Interpreter
   end
 
   def execute_command(cmd)
-    done = false
-    if cmd.size > 0
-      if cmd == 'EXIT' then done = true
-      elsif cmd == 'NEW' then cmd_new
-      elsif cmd == 'RUN' then execute_run_command
-      elsif cmd == 'TRACE' then cmd_run(true)
-      elsif cmd == '.VARS' then dump_vars
-      elsif cmd == '.UDFS' then dump_user_functions
-      elsif cmd[0..3] == 'LIST' then cmd_list(cmd[4..-1])
-      elsif cmd[0..5] == 'PRETTY' then cmd_pretty(cmd[6..-1])
-      elsif cmd[0..5] == 'DELETE' then cmd_delete(cmd[6..-1])
-      elsif cmd[0..3] == 'LOAD' then cmd_load(cmd[4..-1], false)
-      elsif cmd[0..3] == 'SAVE' then cmd_save(cmd[4..-1])
-      else print "Unknown command #{cmd}\n"
-      end
+    return false if cmd.size == 0
+    return true if cmd == 'EXIT'
+    cmd4 = cmd[0..3]
+    cmd6 = cmd[0..5]
+    if simple_command?(cmd)
+      execute_simple_command(cmd)
+    elsif command_4?(cmd4)
+      execute_4_command(cmd4, cmd[4..-1])
+    elsif command_6?(cmd6)
+      execute_6_command(cmd6, cmd[6..-1])
+    else
+      print "Unknown command #{cmd}\n"
     end
-    done
+    false
   end
+
+  private
+
+  def simple_command?(text)
+    %w(NEW RUN TRACE .VARS .UDFS).include?(text)
+  end
+
+  def execute_simple_command(text)
+    case text
+    when 'NEW'
+      cmd_new
+    when 'RUN'
+      execute_run_command
+    when 'TRACE'
+      cmd_run(true)
+    when'.VARS'
+      dump_vars
+    when '.UDFS'
+      dump_user_functions
+    end
+  end
+
+  def command_4?(text)
+    %w(LIST LOAD SAVE).include?(text)
+  end
+
+  def execute_4_command(cmd, rest)
+    case cmd
+    when 'LIST'
+      cmd_list(rest)
+    when 'LOAD'
+      cmd_load(rest, false)
+    when 'SAVE'
+      cmd_save(rest)
+    end
+  end
+
+  def command_6?(text)
+    %w(PRETTY DELETE).include?(text)
+  end
+
+  def execute_6_command(cmd, rest)
+    case cmd
+    when 'PRETTY'
+      cmd_pretty(rest)
+    when 'DELETE'
+      cmd_delete(rest)
+    end
+  end
+
+  public
 
   def execute_run_command
     timing = Benchmark.measure { cmd_run(false) }
