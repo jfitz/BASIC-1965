@@ -91,48 +91,110 @@ class StatementFactory
   def create(text)
     squeezed = squeeze_out_spaces(text)
     statement = UnknownStatement.new(text)
-    statement = EmptyStatement.new if squeezed == ''
-    statement = RemarkStatement.new(text, squeezed) if squeezed[0..2] == 'REM'
-    keyword = find_keyword(squeezed)
-    statement = @statement_definitions[keyword].new(text, squeezed) unless
+    return EmptyStatement.new if squeezed == ''
+    return RemarkStatement.new(text, squeezed) if squeezed[0..2] == 'REM'
+
+    tokens = tokenize(text)
+    keyword = tokens[0]
+    keyword = tokens[0] + tokens[1] if tokens[0] == 'MAT' && (tokens[1] == 'READ' || tokens[1] == 'PRINT')
+    statement = @statement_definitions[keyword].new(text, squeezed, tokens) unless
       keyword.size == 0
     statement
   end
 
-  def find_keyword(squeezed)
-    keyword = ''
-    @statement_definitions.each_key do |def_keyword|
-      length = def_keyword.length
-      stmt_keyword = squeezed[0..length - 1]
-      keyword = def_keyword if
-        stmt_keyword.size > keyword.size &&
-        stmt_keyword == def_keyword
+  def tokenize(text)
+    tokens = []
+    keywords = statement_definitions.keys + ['TO', 'STEP'] - ['MATPRINT', 'MATREAD']
+    keyword_tokenizer = ListTokenizer.new(keywords)
+    operators = ['+', '-', '*', '/', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';']
+    operator_tokenizer = ListTokenizer.new(operators)
+    ff = FunctionFactory.new
+    func_names = ff.function_names
+    function_tokenizer = ListTokenizer.new(func_names)
+    text_tokenizer = TextTokenizer.new
+    number_tokenizer = NumberTokenizer.new
+    user_func_names = ['FNA', 'FNB', 'FNC', 'FND', 'FNE', 'FNF', 'FNG', 'FNH', 'FNI',
+       'FNJ', 'FNK', 'FNL', 'FNM', 'FNN', 'FNO', 'FNP', 'FNQ', 'FNR', 'FNS', 'FNT', 'FNU',
+       'FNV', 'FNW', 'FNX', 'FNY', 'FNZ']
+
+    userfunc_tokenizer = ListTokenizer.new(user_func_names)
+    variable_tokenizer = VariableTokenizer.new
+
+    text.each_char do |c|
+      if keyword_tokenizer.try(c) ||
+         operator_tokenizer.try(c) ||
+         function_tokenizer.try(c) ||
+         text_tokenizer.try(c) ||
+         number_tokenizer.try(c) ||
+         userfunc_tokenizer.try(c) ||
+         variable_tokenizer.try(c)
+        keyword_tokenizer.add(c)
+        operator_tokenizer.add(c)
+        function_tokenizer.add(c)
+        text_tokenizer.add(c)
+        number_tokenizer.add(c)
+        userfunc_tokenizer.add(c)
+        variable_tokenizer.add(c)
+      else
+        token = '***'
+        token = keyword_tokenizer.token if keyword_tokenizer.ok
+        token = operator_tokenizer.token if operator_tokenizer.ok
+        token = function_tokenizer.token if function_tokenizer.ok
+        token = text_tokenizer.token if text_tokenizer.ok
+        token = number_tokenizer.token if number_tokenizer.ok
+        token = userfunc_tokenizer.token if userfunc_tokenizer.ok
+        token = variable_tokenizer.token if variable_tokenizer.ok
+        tokens << token
+        keyword_tokenizer.reset
+        operator_tokenizer.reset
+        function_tokenizer.reset
+        text_tokenizer.reset
+        number_tokenizer.reset
+        userfunc_tokenizer.reset
+        variable_tokenizer.reset
+        keyword_tokenizer.add(c)
+        operator_tokenizer.add(c)
+        function_tokenizer.add(c)
+        text_tokenizer.add(c)
+        number_tokenizer.add(c)
+        userfunc_tokenizer.add(c)
+        variable_tokenizer.add(c)
+      end
     end
-    keyword
+    token = '***'
+    token = keyword_tokenizer.token if keyword_tokenizer.ok
+    token = operator_tokenizer.token if operator_tokenizer.ok
+    token = function_tokenizer.token if function_tokenizer.ok
+    token = text_tokenizer.token if text_tokenizer.ok
+    token = number_tokenizer.token if number_tokenizer.ok
+    token = userfunc_tokenizer.token if userfunc_tokenizer.ok
+    token = variable_tokenizer.token if variable_tokenizer.ok
+    tokens << token
+    tokens
   end
 
   def statement_definitions
     {
-      'END' => EndStatement,
-      'STOP' => StopStatement,
-      'RETURN' => ReturnStatement,
-      'IF' => IfStatement,
-      'DIM' => DimStatement,
-      'DEF' => DefineFunctionStatement,
-      'LET' => LetStatement,
-      'FOR' => ForStatement,
-      'GOTO' => GotoStatement,
-      'NEXT' => NextStatement,
-      'READ' => ReadStatement,
       'DATA' => DataStatement,
-      'RESTORE' => RestoreStatement,
-      'INPUT' => InputStatement,
+      'DEF' => DefineFunctionStatement,
+      'DIM' => DimStatement,
+      'END' => EndStatement,
+      'FOR' => ForStatement,
       'GOSUB' => GosubStatement,
-      'PRINT' => PrintStatement,
-      'TRACE' => TraceStatement,
+      'GOTO' => GotoStatement,
+      'IF' => IfStatement,
+      'INPUT' => InputStatement,
+      'LET' => LetStatement,
       'MATPRINT' => MatPrintStatement,
       'MATREAD' => MatReadStatement,
-      'MAT' => MatLetStatement
+      'MAT' => MatLetStatement,
+      'NEXT' => NextStatement,
+      'PRINT' => PrintStatement,
+      'READ' => ReadStatement,
+      'RESTORE' => RestoreStatement,
+      'RETURN' => ReturnStatement,
+      'STOP' => StopStatement,
+      'TRACE' => TraceStatement
     }
   end
 end
@@ -141,7 +203,7 @@ end
 class AbstractStatement
   attr_reader :errors
 
-  def initialize(keyword, text, squeezed)
+  def initialize(keyword, text, tokens, squeezed)
     @keyword = keyword
     @text = text
     squeezed_keyword = squeeze_out_spaces(keyword)
@@ -205,7 +267,7 @@ end
 # unknown statement
 class UnknownStatement < AbstractStatement
   def initialize(line)
-    super('', line, line)
+    super('', line, [], line)
     @errors << "Unknown statement '#{@text.strip}'"
   end
 
@@ -221,7 +283,7 @@ end
 # empty statement (line number only)
 class EmptyStatement < AbstractStatement
   def initialize
-    super('', '', '')
+    super('', '', [], '')
   end
 
   def to_s
@@ -238,7 +300,7 @@ class RemarkStatement < AbstractStatement
   def initialize(line, _)
     # override the method to squeeze spaces from line
     squeezed = line.strip
-    super('REM', line, squeezed)
+    super('REM', line, [], squeezed)
   end
 
   def to_s
@@ -252,8 +314,8 @@ end
 
 # DIM
 class DimStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('DIM', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('DIM', line, tokens, squeezed)
     splitter = ArgSplitter.new(@rest)
     text_list = splitter.args
     text_list.delete(',')
@@ -291,8 +353,8 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('LET', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('LET', line, tokens, squeezed)
     begin
       @assignment = ScalarAssignment.new(@rest)
       if @assignment.count_target != 1
@@ -321,8 +383,8 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('INPUT', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('INPUT', line, tokens, squeezed)
     splitter = ArgSplitter.new(@rest)
     text_list = splitter.args
     text_list.delete(',')
@@ -402,8 +464,8 @@ end
 
 # IF/THEN
 class IfStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('IF', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('IF', line, tokens, squeezed)
     parts = @rest.split('THEN')
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
@@ -431,8 +493,8 @@ end
 
 # PRINT
 class PrintStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('PRINT', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('PRINT', line, tokens, squeezed)
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     # variable/constant, [separator, variable/constant]... [separator]
@@ -494,8 +556,8 @@ end
 
 # GOTO
 class GotoStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('GOTO', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('GOTO', line, tokens, squeezed)
     destination = @rest
     begin
       @destination = LineNumber.new(destination)
@@ -515,8 +577,8 @@ end
 
 # GOSUB
 class GosubStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('GOSUB', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('GOSUB', line, tokens, squeezed)
     destination = @rest
     begin
       @destination = LineNumber.new(destination)
@@ -537,8 +599,8 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('RETURN', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('RETURN', line, tokens, squeezed)
   end
 
   def to_s
@@ -597,8 +659,8 @@ end
 
 # FOR statement
 class ForStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('FOR', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('FOR', line, tokens, squeezed)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
     parts = make_control
@@ -662,8 +724,8 @@ end
 class NextStatement < AbstractStatement
   attr_reader :control
 
-  def initialize(line, squeezed)
-    super('NEXT', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('NEXT', line, tokens, squeezed)
     # parse control variable
     @control = nil
     begin
@@ -691,8 +753,8 @@ end
 
 # READ
 class ReadStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('READ', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('READ', line, tokens, squeezed)
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     item_list.delete(',')
@@ -724,8 +786,8 @@ end
 
 # DATA
 class DataStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('DATA', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('DATA', line, tokens, squeezed)
     @data_list = textline_to_constants(@rest)
   end
 
@@ -744,8 +806,8 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('RESTORE', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('RESTORE', line, tokens, squeezed)
   end
 
   def to_s
@@ -759,8 +821,8 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('DEF', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('DEF', line, tokens, squeezed)
     @name = ''
     @arguments = []
     @template = ''
@@ -789,8 +851,8 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('STOP', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('STOP', line, tokens, squeezed)
   end
 
   def to_s
@@ -806,8 +868,8 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('END', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('END', line, tokens, squeezed)
   end
 
   def to_s
@@ -823,8 +885,8 @@ end
 
 # TRACE
 class TraceStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('TRACE', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('TRACE', line, tokens, squeezed)
     @operation = BooleanConstant.new(@rest)
   end
 
@@ -839,8 +901,8 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('MAT PRINT', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('MAT PRINT', line, tokens, squeezed)
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     # variable, [separator, variable]... [separator]
@@ -905,8 +967,8 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('MAT READ', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('MAT READ', line, tokens, squeezed)
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     item_list.delete(',')
@@ -974,8 +1036,8 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
-  def initialize(line, squeezed)
-    super('MAT', line, squeezed)
+  def initialize(line, squeezed, tokens)
+    super('MAT', line, tokens, squeezed)
     begin
       @assignment = MatrixAssignment.new(@rest)
       if @assignment.count_target != 1

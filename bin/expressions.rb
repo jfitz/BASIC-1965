@@ -1,3 +1,130 @@
+# accept characters to match item in list
+class ListTokenizer
+  attr_reader :ok
+  attr_reader :token
+
+  def initialize(legals)
+    @legals = legals
+    @ok = false
+    @token = ''
+  end
+
+  def try(c)
+    candidate = c != ' ' ? @token + c : @token
+    status = false
+    @legals.each do |legal|
+      status |= legal.start_with?(candidate)
+    end
+    status
+  end
+
+  def add(c)
+    @token += c if c != ' '
+    status = false
+    @legals.each do |legal|
+      status |= legal.start_with?(@token)
+    end
+    @ok = @legals.include?(@token)
+  end
+
+  def reset
+    @ok = false
+    @token = ''
+  end
+end
+
+class TextTokenizer
+  attr_reader :ok
+  attr_reader :token
+
+  def initialize
+    @ok = false
+    @token = ''
+  end
+
+  def try(c)
+    candidate = @token + c
+    status = false
+    case candidate.count('"')
+    when 0
+      status = false
+    when 1
+      status = candidate[0] == '"'
+    when 2
+      status = candidate[0] == '"' && candidate[-1] == '"'
+    else
+      status = false
+    end
+    status
+  end
+
+  def add(c)
+    @token += c
+    @ok = @token.count('"') == 2 && @token[0] == '"' && @token[-1] == '"'
+  end
+
+  def reset
+    @ok = false
+    @token = ''
+  end
+end
+
+class NumberTokenizer
+  attr_reader :ok
+  attr_reader :token
+
+  def initialize
+    @ok = false
+    @token = ''
+  end
+
+  def try(c)
+    candidate = c != ' ' ? @token + c : @token
+    /\A\s*[+-]?\d+(E+?\d+)?\z/.match(candidate) ||
+    /\A\s*[+-]?\d+(E-\d+)?\z/.match(candidate) ||
+    /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(candidate) ||
+    /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(candidate)
+  end
+
+  def add(c)
+    @token += c if c != ' '
+    @ok = /\A\s*[+-]?\d+(E+?\d+)?\z/.match(@token) ||
+          /\A\s*[+-]?\d+(E-\d+)?\z/.match(@token) ||
+          /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(@token) ||
+          /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(@token)
+  end
+
+  def reset
+    @ok = false
+    @token = ''
+  end
+end
+
+class VariableTokenizer
+  attr_reader :ok
+  attr_reader :token
+
+  def initialize
+    @ok = false
+    @token = ''
+  end
+
+  def try(c)
+    candidate = c != ' ' ? @token + c : @token
+    /\A[A-Z]\d?\z/.match(candidate)
+  end
+
+  def add(c)
+    @token += c if c != ' '
+    @ok = /\A[A-Z]\d?\z/.match(@token)
+  end
+
+  def reset
+    @ok = false
+    @token = ''
+  end
+end
+
 # Hold a variable name (not a reference or value)
 class VariableName < AbstractToken
   def self.init?(text)
@@ -917,6 +1044,10 @@ class FunctionFactory
 
   def make(text)
     @functions[text].new(text) if @functions.key?(text)
+  end
+
+  def function_names
+    @functions.keys
   end
 end
 
