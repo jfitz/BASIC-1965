@@ -92,6 +92,7 @@ class StatementFactory
     squeezed = squeeze_out_spaces(text)
     statement = UnknownStatement.new(text)
     statement = EmptyStatement.new if squeezed == ''
+    statement = RemarkStatement.new(text, squeezed) if squeezed[0..2] == 'REM'
     keyword = find_keyword(squeezed)
     statement = @statement_definitions[keyword].new(text, squeezed) unless
       keyword.size == 0
@@ -116,7 +117,6 @@ class StatementFactory
       'STOP' => StopStatement,
       'RETURN' => ReturnStatement,
       'IF' => IfStatement,
-      'REM' => RemarkStatement,
       'DIM' => DimStatement,
       'DEF' => DefineFunctionStatement,
       'LET' => LetStatement,
