@@ -127,6 +127,14 @@ class KeywordToken < AbstractToken
     @is_keyword = true
     @keyword = text
   end
+
+  def leading?
+    @keyword == 'MAT'
+  end
+
+  def trailing?
+    @keyword == 'READ' || @keyword == 'PRINT'
+  end
 end
 
 # operator token
@@ -234,7 +242,7 @@ class StatementFactory
     end
     if tokens.length >= 2 && tokens[0].keyword? && tokens[1].keyword?
       keyword = tokens[0].keyword + tokens[1].keyword if
-        tokens[0].keyword == 'MAT' && (tokens[1].keyword == 'READ' || tokens[1].keyword == 'PRINT')
+        tokens[0].leading? && tokens[1].trailing?
     end
     keyword
   end
@@ -248,15 +256,10 @@ class StatementFactory
       '+', '-', '*', '/', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';'
     ]
     operator_tokenizer = ListTokenizer.new(operators)
-    ff = FunctionFactory.new
-    func_names = ff.function_names
-    function_tokenizer = ListTokenizer.new(func_names)
+    function_tokenizer = ListTokenizer.new(FunctionFactory.function_names)
     text_tokenizer = TextTokenizer.new
     number_tokenizer = NumberTokenizer.new
-    user_func_names = %w(FNA FNB FNC FND FNE FNF FNG FNH FNI FNJ FNK FNL FNM
-                         FNN FNO FNP FNQ FNR FNS FNT FNU FNV FNW FNX FNY FNZ)
-
-    userfunc_tokenizer = ListTokenizer.new(user_func_names)
+    userfunc_tokenizer = ListTokenizer.new(('FNA'..'FNZ').to_a)
     variable_tokenizer = VariableTokenizer.new
 
     text.each_char do |c|

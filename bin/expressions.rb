@@ -1037,38 +1037,36 @@ end
 
 # class to make functions, given the name
 class FunctionFactory
-  def initialize
-    @functions = {
-      'INT' => FunctionInt,
-      'RND' => FunctionRnd,
-      'EXP' => FunctionExp,
-      'LOG' => FunctionLog,
-      'ABS' => FunctionAbs,
-      'SQR' => FunctionSqr,
-      'SIN' => FunctionSin,
-      'COS' => FunctionCos,
-      'TAN' => FunctionTan,
-      'ATN' => FunctionAtn,
-      'SGN' => FunctionSgn,
-      'TRN' => FunctionTrn,
-      'ZER' => FunctionZer,
-      'CON' => FunctionCon,
-      'IDN' => FunctionIdn,
-      'DET' => FunctionDet,
-      'INV' => FunctionInv
-    }
+  @@functions = {
+    'INT' => FunctionInt,
+    'RND' => FunctionRnd,
+    'EXP' => FunctionExp,
+    'LOG' => FunctionLog,
+    'ABS' => FunctionAbs,
+    'SQR' => FunctionSqr,
+    'SIN' => FunctionSin,
+    'COS' => FunctionCos,
+    'TAN' => FunctionTan,
+    'ATN' => FunctionAtn,
+    'SGN' => FunctionSgn,
+    'TRN' => FunctionTrn,
+    'ZER' => FunctionZer,
+    'CON' => FunctionCon,
+    'IDN' => FunctionIdn,
+    'DET' => FunctionDet,
+    'INV' => FunctionInv
+  }
+
+  def self.valid?(text)
+    @@functions.key?(text)
   end
 
-  def valid?(text)
-    @functions.key?(text)
+  def self.make(text)
+    @@functions[text].new(text) if @@functions.key?(text)
   end
 
-  def make(text)
-    @functions[text].new(text) if @functions.key?(text)
-  end
-
-  def function_names
-    @functions.keys
+  def self.function_names
+    @@functions.keys
   end
 end
 
@@ -1364,8 +1362,7 @@ class AbstractExpression
   end
 
   def make_element(word, follows_operand)
-    ff = FunctionFactory.new
-    return ff.make(word) if ff.valid?(word)
+    return FunctionFactory.make(word) if FunctionFactory.valid?(word)
 
     element = nil
     classes = follows_operand ? binary_classes : unary_classes
