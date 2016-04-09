@@ -90,32 +90,44 @@ class StatementFactory
 
   def create(text)
     squeezed = squeeze_out_spaces(text)
-    statement = UnknownStatement.new(text)
     return EmptyStatement.new if squeezed == ''
-    return RemarkStatement.new(text, squeezed) if squeezed[0..2] == 'REM'
+    return RemarkStatement.new(text) if squeezed[0..2] == 'REM'
 
     tokens = tokenize(text)
-    keyword = tokens[0]
-    keyword = tokens[0] + tokens[1] if tokens[0] == 'MAT' && (tokens[1] == 'READ' || tokens[1] == 'PRINT')
-    statement = @statement_definitions[keyword].new(text, squeezed, tokens) unless
-      keyword.size == 0
+    keyword = statement_word(tokens)
+    create_regular_statement(keyword, text, squeezed, tokens)
+  end
+
+  def create_regular_statement(keyword, text, squeezed, tokens)
+    statement = UnknownStatement.new(text)
+    statement =
+      @statement_definitions[keyword].new(text, squeezed, tokens) unless
+        keyword.size == 0
     statement
+  end
+
+  def statement_word(tokens)
+    keyword = tokens[0]
+    keyword = tokens[0] + tokens[1] if
+      tokens[0] == 'MAT' && (tokens[1] == 'READ' || tokens[1] == 'PRINT')
+    keyword
   end
 
   def tokenize(text)
     tokens = []
-    keywords = statement_definitions.keys + ['TO', 'STEP'] - ['MATPRINT', 'MATREAD']
+    keywords = statement_definitions.keys + %w(TO STEP) - %w(MATPRINT MATREAD)
     keyword_tokenizer = ListTokenizer.new(keywords)
-    operators = ['+', '-', '*', '/', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';']
+    operators = [
+      '+', '-', '*', '/', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';'
+    ]
     operator_tokenizer = ListTokenizer.new(operators)
     ff = FunctionFactory.new
     func_names = ff.function_names
     function_tokenizer = ListTokenizer.new(func_names)
     text_tokenizer = TextTokenizer.new
     number_tokenizer = NumberTokenizer.new
-    user_func_names = ['FNA', 'FNB', 'FNC', 'FND', 'FNE', 'FNF', 'FNG', 'FNH', 'FNI',
-       'FNJ', 'FNK', 'FNL', 'FNM', 'FNN', 'FNO', 'FNP', 'FNQ', 'FNR', 'FNS', 'FNT', 'FNU',
-       'FNV', 'FNW', 'FNX', 'FNY', 'FNZ']
+    user_func_names = %w(FNA FNB FNC FND FNE FNF FNG FNH FNI FNJ FNK FNL FNM
+                         FNN FNO FNP FNQ FNR FNS FNT FNU FNV FNW FNX FNY FNZ)
 
     userfunc_tokenizer = ListTokenizer.new(user_func_names)
     variable_tokenizer = VariableTokenizer.new
@@ -203,7 +215,7 @@ end
 class AbstractStatement
   attr_reader :errors
 
-  def initialize(keyword, text, tokens, squeezed)
+  def initialize(keyword, text, _, squeezed)
     @keyword = keyword
     @text = text
     squeezed_keyword = squeeze_out_spaces(keyword)
@@ -297,7 +309,7 @@ end
 
 # REMARK
 class RemarkStatement < AbstractStatement
-  def initialize(line, _)
+  def initialize(line)
     # override the method to squeeze spaces from line
     squeezed = line.strip
     super('REM', line, [], squeezed)

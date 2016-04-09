@@ -33,6 +33,7 @@ class ListTokenizer
   end
 end
 
+# token reader for text constants
 class TextTokenizer
   attr_reader :ok
   attr_reader :token
@@ -69,6 +70,7 @@ class TextTokenizer
   end
 end
 
+# token reader for numeric constants
 class NumberTokenizer
   attr_reader :ok
   attr_reader :token
@@ -81,9 +83,9 @@ class NumberTokenizer
   def try(c)
     candidate = c != ' ' ? @token + c : @token
     /\A\s*[+-]?\d+(E+?\d+)?\z/.match(candidate) ||
-    /\A\s*[+-]?\d+(E-\d+)?\z/.match(candidate) ||
-    /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(candidate) ||
-    /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(candidate)
+      /\A\s*[+-]?\d+(E-\d+)?\z/.match(candidate) ||
+      /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(candidate) ||
+      /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(candidate)
   end
 
   def add(c)
@@ -100,6 +102,7 @@ class NumberTokenizer
   end
 end
 
+# token reader for variables
 class VariableTokenizer
   attr_reader :ok
   attr_reader :token
