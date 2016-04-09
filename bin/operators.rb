@@ -1,5 +1,5 @@
 # Unary scalar operators
-class UnaryOperator < AbstractToken
+class UnaryOperator < AbstractElement
   def self.init?(text)
     operators = { '+' => 5, '-' => 5 }
     operators.key?(text)
@@ -116,7 +116,7 @@ class UnaryOperator < AbstractToken
 end
 
 # Binary scalar operators
-class BinaryOperator < AbstractToken
+class BinaryOperator < AbstractElement
   def self.init?(text)
     operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
     operators.key?(text)
@@ -837,7 +837,7 @@ end
 
 # Initial operator
 # not a real operator, used only for parsing
-class InitialOperator < AbstractToken
+class InitialOperator < AbstractElement
   def initialize
     super()
     @operator = true
@@ -852,7 +852,7 @@ end
 
 # Terminal operator
 # not a real operator, used only for parsing
-class TerminalOperator < AbstractToken
+class TerminalOperator < AbstractElement
   def initialize
     super()
     @operator = true

@@ -1,5 +1,5 @@
 # token class
-class AbstractToken
+class AbstractElement
   attr_reader :precedence
 
   def initialize
@@ -75,7 +75,7 @@ class AbstractToken
 end
 
 # beginning of a group
-class GroupStart < AbstractToken
+class GroupStart < AbstractElement
   def self.init?(text)
     text == '('
   end
@@ -87,7 +87,7 @@ class GroupStart < AbstractToken
 end
 
 # end of a group
-class GroupEnd < AbstractToken
+class GroupEnd < AbstractElement
   def self.init?(text)
     text == ')'
   end
@@ -100,7 +100,7 @@ class GroupEnd < AbstractToken
 end
 
 # beginning of a set of parameters
-class ParamStart < AbstractToken
+class ParamStart < AbstractElement
   def initialize
     super
     @param_start = true
@@ -108,7 +108,7 @@ class ParamStart < AbstractToken
 end
 
 # separator for group or params
-class ParamSeparator < AbstractToken
+class ParamSeparator < AbstractElement
   def self.init?(text)
     text == ','
   end
@@ -140,7 +140,7 @@ end
 public
 
 # Numeric constants
-class NumericConstant < AbstractToken
+class NumericConstant < AbstractElement
   def self.init?(text)
     numeric_classes = %w(Fixnum Bignum Float)
     numeric_classes.include?(text.class.to_s) || !text_to_numeric(text).nil?
@@ -301,7 +301,7 @@ class NumericConstant < AbstractToken
 end
 
 # Text constants
-class TextConstant < AbstractToken
+class TextConstant < AbstractElement
   def self.init?(text)
     /\A".*"\z/.match(text)
   end
@@ -333,7 +333,7 @@ class TextConstant < AbstractToken
 end
 
 # Boolean constants
-class BooleanConstant < AbstractToken
+class BooleanConstant < AbstractElement
   attr_reader :value
 
   def initialize(text)

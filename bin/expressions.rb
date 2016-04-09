@@ -129,7 +129,7 @@ class VariableTokenizer
 end
 
 # Hold a variable name (not a reference or value)
-class VariableName < AbstractToken
+class VariableName < AbstractElement
   def self.init?(text)
     /\A[A-Z]\d?\z/.match(text)
   end
@@ -162,7 +162,7 @@ class VariableName < AbstractToken
 end
 
 # Hold a variable (name with possible subscripts and value)
-class Variable < AbstractToken
+class Variable < AbstractElement
   attr_reader :subscripts
 
   def initialize(variable_name)
@@ -651,7 +651,7 @@ class VariableDimension < Variable
 end
 
 # A list (needed because it has precedence value)
-class List < AbstractToken
+class List < AbstractElement
   def initialize(parsed_expressions)
     super()
     @parsed_expressions = parsed_expressions
@@ -673,7 +673,7 @@ class List < AbstractToken
 end
 
 # Scalar function (provides a scalar)
-class Function < AbstractToken
+class Function < AbstractElement
   def initialize(text)
     super()
     @name = text
@@ -1091,8 +1091,8 @@ def eval_scalar(interpreter, parsed_expressions)
   result_values = []
   parsed_expressions.each do |parsed_expression|
     stack = []
-    parsed_expression.each do |token|
-      value = token.evaluate(interpreter, stack)
+    parsed_expression.each do |element|
+      value = element.evaluate(interpreter, stack)
       stack.push value
     end
     # should be only one item on stack
@@ -1127,25 +1127,25 @@ class Parser
     @parens_stack = []
     @type_stack = [default_type]
     @parens_group = []
-    @previous_token = InitialOperator.new
+    @previous_element = InitialOperator.new
   end
 
-  def parse(token)
+  def parse(element)
     fail(BASICException, 'Function requires parentheses') if
-      !token.group_start? && @previous_token.function?
+      !element.group_start? && @previous_element.function?
 
-    if token.group_separator?
-      group_separator(token)
-    elsif token.operator?
-      operator_higher(token)
-    elsif token.function_variable?
-      function_variable(token)
+    if element.group_separator?
+      group_separator(element)
+    elsif element.operator?
+      operator_higher(element)
+    elsif element.function_variable?
+      function_variable(element)
     else
-      # the token is an operand, append it to the output list
-      @current_expression << token
+      # the element is an operand, append it to the output list
+      @current_expression << element
     end
 
-    @previous_token = token
+    @previous_element = element
   end
 
   def expressions
@@ -1164,32 +1164,32 @@ class Parser
     end
   end
 
-  def stack_to_precedence(stack, expression, token)
+  def stack_to_precedence(stack, expression, element)
     while stack.size > 0 &&
           !stack[-1].starter? &&
-          stack[-1].precedence >= token.precedence
+          stack[-1].precedence >= element.precedence
       op = stack.pop
       expression << op
     end
   end
 
-  def group_separator(token)
-    if token.group_start?
-      start_group(token)
-    elsif token.separator?
+  def group_separator(element)
+    if element.group_start?
+      start_group(element)
+    elsif element.separator?
       pop_to_group_start
-    elsif token.group_end?
+    elsif element.group_end?
       end_group
     end
   end
 
-  def start_group(token)
-    if @previous_token.function?
-      start_associated_group(@previous_token.default_type)
-    elsif @previous_token.variable?
+  def start_group(element)
+    if @previous_element.function?
+      start_associated_group(@previous_element.default_type)
+    elsif @previous_element.variable?
       start_associated_group(ScalarValue)
     else
-      start_simple_group(token)
+      start_simple_group(element)
     end
   end
 
@@ -1204,8 +1204,8 @@ class Parser
     @type_stack.push(type)
   end
 
-  def start_simple_group(token)
-    @operator_stack.push(token)
+  def start_simple_group(element)
+    @operator_stack.push(element)
     @parens_stack << @parens_group
     @parens_group = []
     @type_stack.push(ScalarValue)
@@ -1237,36 +1237,36 @@ class Parser
   # remove operators already on the stack that have higher
   # or equal precedence
   # append them to the output list
-  def operator_higher(token)
-    stack_to_precedence(@operator_stack, @current_expression, token)
+  def operator_higher(element)
+    stack_to_precedence(@operator_stack, @current_expression, element)
     # push the operator onto the operator stack
-    @operator_stack.push(token) unless token.terminal?
+    @operator_stack.push(element) unless element.terminal?
   end
 
-  def function_variable(token)
-    if token.function?
-      start_function(token)
-    elsif token.variable?
-      start_variable(token)
+  def function_variable(element)
+    if element.function?
+      start_function(element)
+    elsif element.variable?
+      start_variable(element)
     end
   end
 
   # remove operators already on the stack that have higher
   # or equal precedence
   # append them to the output list
-  def start_function(token)
-    stack_to_precedence(@operator_stack, @current_expression, token)
+  def start_function(element)
+    stack_to_precedence(@operator_stack, @current_expression, element)
     # push the function onto the operator stack
-    @operator_stack.push(token)
+    @operator_stack.push(element)
   end
 
   # remove operators already on the stack that have higher
   # or equal precedence
   # append them to the output list
-  def start_variable(token)
-    stack_to_precedence(@operator_stack, @current_expression, token)
+  def start_variable(element)
+    stack_to_precedence(@operator_stack, @current_expression, element)
     # push the variable onto the operator stack
-    variable_name = @type_stack[-1].new(token)
+    variable_name = @type_stack[-1].new(element)
     @operator_stack.push(variable_name)
   end
 end
@@ -1281,10 +1281,10 @@ class AbstractExpression
     # we have split a value like '12E+3' into three parts (12E + 3)
     # put them back into a single item
     words = regroup(split_words)
-    tokens = tokenize(words)
+    elements = elementize(words)
     parser = Parser.new(default_type)
-    tokens.each do |token|
-      parser.parse(token)
+    elements.each do |element|
+      parser.parse(element)
     end
     @parsed_expressions = parser.expressions
   end
@@ -1335,27 +1335,27 @@ class AbstractExpression
     regrouped_parts
   end
 
-  def tokenize(words)
-    tokens = []
-    # convert tokens to objects
+  def elementize(words)
+    elements = []
+    # convert elements to objects
     words.each do |word|
-      follows_operand = tokens.size > 0 && tokens[-1].operand?
-      tokens << make_token(word, follows_operand)
+      follows_operand = elements.size > 0 && elements[-1].operand?
+      elements << make_element(word, follows_operand)
     end
-    tokens << TerminalOperator.new
+    elements << TerminalOperator.new
   end
 
-  def make_token(word, follows_operand)
+  def make_element(word, follows_operand)
     ff = FunctionFactory.new
     return ff.make(word) if ff.valid?(word)
 
-    token = nil
+    element = nil
     classes = follows_operand ? binary_classes : unary_classes
     classes.each do |c|
-      token = c.new(word) if token.nil? && c.init?(word)
+      element = c.new(word) if element.nil? && c.init?(word)
     end
-    fail(BASICException, "'#{word}' is not a value or operator") if token.nil?
-    token
+    fail(BASICException, "'#{word}' is not a value or operator") if element.nil?
+    element
   end
 
   def binary_classes
