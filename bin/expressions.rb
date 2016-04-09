@@ -1,3 +1,21 @@
+# accept any characters
+class InvalidTokenizer
+  attr_reader :token
+
+  def initialize
+    @ok = false
+    @token = ''
+  end
+
+  def add(c)
+    @token += c
+  end
+
+  def reset
+    @token = ''
+  end
+end
+
 # accept characters to match item in list
 class ListTokenizer
   attr_reader :ok

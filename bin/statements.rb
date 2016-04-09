@@ -68,6 +68,127 @@ class ArgSplitter
   end
 end
 
+# abstract token
+class AbstractToken
+  def initialize
+    @is_keyword = false
+    @is_operator = false
+    @is_function = false
+    @is_text_constant = false
+    @is_numeric_constant = false
+    @is_user_function = false
+    @is_variable = false
+  end
+
+  def keyword?
+    @is_keyword
+  end
+
+  def operator?
+    @is_operator
+  end
+
+  def function?
+    @is_function
+  end
+
+  def text_constant?
+    @is_text_constant
+  end
+
+  def numeric_constant?
+    @is_numeric_constant
+  end
+
+  def user_function?
+    @is_user_function
+  end
+
+  def variable?
+    @is_variable
+  end
+end
+
+# invalid token
+class InvalidToken < AbstractToken
+  attr_reader :text
+
+  def initialize(text)
+    @is_operator = true
+    @text = text
+  end
+end
+
+# keyword token
+class KeywordToken < AbstractToken
+  attr_reader :keyword
+
+  def initialize(text)
+    @is_keyword = true
+    @keyword = text
+  end
+end
+
+# operator token
+class OperatorToken < AbstractToken
+  attr_reader :operator
+
+  def initialize(text)
+    @is_operator = true
+    @operator = text
+  end
+end
+
+# function token
+class FunctionToken < AbstractToken
+  attr_reader :function
+
+  def initialize(text)
+    @is_function = true
+    @function = text
+  end
+end
+
+# text constant token
+class TextConstantToken < AbstractToken
+  attr_reader :text_constant
+
+  def initialize(text)
+    @is_text_constant = true
+    @text_constant = text
+  end
+end
+
+# numeric constant token
+class NumericConstantToken < AbstractToken
+  attr_reader :numeric_constant
+
+  def initialize(text)
+    @is_numeric_constant = true
+    @numeric_constant = text
+  end
+end
+
+# user function token
+class UserFunctionToken < AbstractToken
+  attr_reader :user_function
+
+  def initialize(text)
+    @is_user_function = true
+    @user_function = text
+  end
+end
+
+# variable token
+class VariableToken < AbstractToken
+  attr_reader :variable
+
+  def initialize(text)
+    @is_variable = true
+    @variable = text
+  end
+end
+
 # Statement factory class
 class StatementFactory
   def initialize
@@ -107,14 +228,20 @@ class StatementFactory
   end
 
   def statement_word(tokens)
-    keyword = tokens[0]
-    keyword = tokens[0] + tokens[1] if
-      tokens[0] == 'MAT' && (tokens[1] == 'READ' || tokens[1] == 'PRINT')
+    keyword = nil
+    if tokens.length >= 1 && tokens[0].keyword?
+      keyword = tokens[0].keyword
+    end
+    if tokens.length >= 2 && tokens[0].keyword? && tokens[1].keyword?
+      keyword = tokens[0].keyword + tokens[1].keyword if
+        tokens[0].keyword == 'MAT' && (tokens[1].keyword == 'READ' || tokens[1].keyword == 'PRINT')
+    end
     keyword
   end
 
   def tokenize(text)
     tokens = []
+    invalid_tokenizer = InvalidTokenizer.new
     keywords = statement_definitions.keys + %w(TO STEP) - %w(MATPRINT MATREAD)
     keyword_tokenizer = ListTokenizer.new(keywords)
     operators = [
@@ -140,6 +267,7 @@ class StatementFactory
          number_tokenizer.try(c) ||
          userfunc_tokenizer.try(c) ||
          variable_tokenizer.try(c)
+        invalid_tokenizer.add(c)
         keyword_tokenizer.add(c)
         operator_tokenizer.add(c)
         function_tokenizer.add(c)
@@ -148,15 +276,16 @@ class StatementFactory
         userfunc_tokenizer.add(c)
         variable_tokenizer.add(c)
       else
-        token = '***'
-        token = keyword_tokenizer.token if keyword_tokenizer.ok
-        token = operator_tokenizer.token if operator_tokenizer.ok
-        token = function_tokenizer.token if function_tokenizer.ok
-        token = text_tokenizer.token if text_tokenizer.ok
-        token = number_tokenizer.token if number_tokenizer.ok
-        token = userfunc_tokenizer.token if userfunc_tokenizer.ok
-        token = variable_tokenizer.token if variable_tokenizer.ok
+        token = InvalidToken.new(invalid_tokenizer.token)
+        token = KeywordToken.new(keyword_tokenizer.token) if keyword_tokenizer.ok
+        token = OperatorToken.new(operator_tokenizer.token) if operator_tokenizer.ok
+        token = FunctionToken.new(function_tokenizer.token) if function_tokenizer.ok
+        token = TextConstantToken.new(text_tokenizer.token) if text_tokenizer.ok
+        token = NumericConstantToken.new(number_tokenizer.token) if number_tokenizer.ok
+        token = UserFunctionToken.new(userfunc_tokenizer.token) if userfunc_tokenizer.ok
+        token = VariableToken.new(variable_tokenizer.token) if variable_tokenizer.ok
         tokens << token
+        invalid_tokenizer.reset
         keyword_tokenizer.reset
         operator_tokenizer.reset
         function_tokenizer.reset
@@ -164,6 +293,7 @@ class StatementFactory
         number_tokenizer.reset
         userfunc_tokenizer.reset
         variable_tokenizer.reset
+        invalid_tokenizer.add(c)
         keyword_tokenizer.add(c)
         operator_tokenizer.add(c)
         function_tokenizer.add(c)
@@ -173,14 +303,14 @@ class StatementFactory
         variable_tokenizer.add(c)
       end
     end
-    token = '***'
-    token = keyword_tokenizer.token if keyword_tokenizer.ok
-    token = operator_tokenizer.token if operator_tokenizer.ok
-    token = function_tokenizer.token if function_tokenizer.ok
-    token = text_tokenizer.token if text_tokenizer.ok
-    token = number_tokenizer.token if number_tokenizer.ok
-    token = userfunc_tokenizer.token if userfunc_tokenizer.ok
-    token = variable_tokenizer.token if variable_tokenizer.ok
+    token = InvalidToken.new(invalid_tokenizer.token)
+    token = KeywordToken.new(keyword_tokenizer.token) if keyword_tokenizer.ok
+    token = OperatorToken.new(operator_tokenizer.token) if operator_tokenizer.ok
+    token = FunctionToken.new(function_tokenizer.token) if function_tokenizer.ok
+    token = TextConstantToken.new(text_tokenizer.token) if text_tokenizer.ok
+    token = NumericConstantToken.new(number_tokenizer.token) if number_tokenizer.ok
+    token = UserFunctionToken.new(userfunc_tokenizer.token) if userfunc_tokenizer.ok
+    token = VariableToken.new(variable_tokenizer.token) if variable_tokenizer.ok
     tokens << token
     tokens
   end
