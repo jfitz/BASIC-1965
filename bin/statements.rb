@@ -175,6 +175,10 @@ class NumericConstantToken < AbstractToken
     @is_numeric_constant = true
     @numeric_constant = text
   end
+
+  def to_i
+    @numeric_constant.to_f.to_i
+  end
 end
 
 # user function token
@@ -618,7 +622,11 @@ class IfStatement < AbstractStatement
       @errors << e.message
       @boolean_expression = parts[0]
     end
-    @destination = LineNumber.new(parts[1])
+    if tokens[-1].numeric_constant?
+      @destination = LineNumber.new(tokens[-1])
+    else
+      @errors << "Invalid line number #{tokens[1]}"
+    end
   end
 
   def to_s
@@ -703,11 +711,14 @@ end
 class GotoStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('GOTO', line, tokens, squeezed)
-    destination = @rest
-    begin
-      @destination = LineNumber.new(destination)
-    rescue BASICException
-      @errors << "Invalid line number #{destination}"
+    if tokens.size == 2
+      if tokens[1].numeric_constant?
+        @destination = LineNumber.new(tokens[1])
+      else
+        @errors << "Invalid line number #{tokens[1]}"
+      end
+    else
+      @errors << "Syntax error"
     end
   end
 
@@ -724,11 +735,14 @@ end
 class GosubStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('GOSUB', line, tokens, squeezed)
-    destination = @rest
-    begin
-      @destination = LineNumber.new(destination)
-    rescue BASICException
-      @errors << "Invalid line number #{destination}"
+    if tokens.size == 2
+      if tokens[1].numeric_constant?
+        @destination = LineNumber.new(tokens[1])
+      else
+        @errors << "Invalid line number #{tokens[1]}"
+      end
+    else
+      @errors << "Syntax error"
     end
   end
 
