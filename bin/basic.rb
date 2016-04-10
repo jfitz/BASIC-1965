@@ -18,7 +18,8 @@ class LineNumber
   end
 
   def initialize(line_number)
-    if line_number.class.to_s == 'NumericConstantToken' || LineNumber.init?(line_number)
+    if line_number.class.to_s == 'NumericConstantToken' ||
+       LineNumber.init?(line_number)
       @line_number = line_number.to_i
     else
       fail BASICException, 'Invalid line number'

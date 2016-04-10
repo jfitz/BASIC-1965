@@ -155,7 +155,7 @@ class VariableName < AbstractElement
   def initialize(text)
     super()
     fail(BASICException, "'#{text}' is not a variable name") unless
-      text.class.to_s == "VariableToken" || VariableName.init?(text)
+      text.class.to_s == 'VariableToken' || VariableName.init?(text)
     @var_name = text
     @variable = true
     @operand = true
@@ -1037,7 +1037,7 @@ end
 
 # class to make functions, given the name
 class FunctionFactory
-  @@functions = {
+  @functions = {
     'INT' => FunctionInt,
     'RND' => FunctionRnd,
     'EXP' => FunctionExp,
@@ -1058,15 +1058,15 @@ class FunctionFactory
   }
 
   def self.valid?(text)
-    @@functions.key?(text)
+    @functions.key?(text)
   end
 
   def self.make(text)
-    @@functions[text].new(text) if @@functions.key?(text)
+    @functions[text].new(text) if @functions.key?(text)
   end
 
   def self.function_names
-    @@functions.keys
+    @functions.keys
   end
 end
 

@@ -155,6 +155,10 @@ class OperatorToken < AbstractToken
     @operator = text
   end
 
+  def equals?
+    @operator == '='
+  end
+
   def to_s
     @operator
   end
@@ -288,9 +292,7 @@ class StatementFactory
 
   def statement_word(tokens)
     keyword = nil
-    if tokens.length >= 1 && tokens[0].keyword?
-      keyword = tokens[0].keyword
-    end
+    keyword = tokens[0].keyword if tokens.length >= 1 && tokens[0].keyword?
     if tokens.length >= 2 && tokens[0].keyword? && tokens[1].keyword?
       keyword = tokens[0].keyword + tokens[1].keyword if
         tokens[0].leading? && tokens[1].trailing?
@@ -334,14 +336,22 @@ class StatementFactory
         variable_tokenizer.add(c)
       else
         token = InvalidToken.new(invalid_tokenizer.token)
-        token = KeywordToken.new(keyword_tokenizer.token) if keyword_tokenizer.ok
-        token = OperatorToken.new(operator_tokenizer.token) if operator_tokenizer.ok
-        token = FunctionToken.new(function_tokenizer.token) if function_tokenizer.ok
-        token = TextConstantToken.new(text_tokenizer.token) if text_tokenizer.ok
-        token = NumericConstantToken.new(number_tokenizer.token) if number_tokenizer.ok
-        token = BooleanConstantToken.new(boolean_tokenizer.token) if boolean_tokenizer.ok
-        token = UserFunctionToken.new(userfunc_tokenizer.token) if userfunc_tokenizer.ok
-        token = VariableToken.new(variable_tokenizer.token) if variable_tokenizer.ok
+        token = KeywordToken.new(keyword_tokenizer.token) if
+          keyword_tokenizer.ok
+        token = OperatorToken.new(operator_tokenizer.token) if
+          operator_tokenizer.ok
+        token = FunctionToken.new(function_tokenizer.token) if
+          function_tokenizer.ok
+        token = TextConstantToken.new(text_tokenizer.token) if
+          text_tokenizer.ok
+        token = NumericConstantToken.new(number_tokenizer.token) if
+          number_tokenizer.ok
+        token = BooleanConstantToken.new(boolean_tokenizer.token) if
+          boolean_tokenizer.ok
+        token = UserFunctionToken.new(userfunc_tokenizer.token) if
+          userfunc_tokenizer.ok
+        token = VariableToken.new(variable_tokenizer.token) if
+          variable_tokenizer.ok
         tokens << token
         invalid_tokenizer.reset
         keyword_tokenizer.reset
@@ -365,13 +375,19 @@ class StatementFactory
     end
     token = InvalidToken.new(invalid_tokenizer.token)
     token = KeywordToken.new(keyword_tokenizer.token) if keyword_tokenizer.ok
-    token = OperatorToken.new(operator_tokenizer.token) if operator_tokenizer.ok
-    token = FunctionToken.new(function_tokenizer.token) if function_tokenizer.ok
+    token = OperatorToken.new(operator_tokenizer.token) if
+      operator_tokenizer.ok
+    token = FunctionToken.new(function_tokenizer.token) if
+      function_tokenizer.ok
     token = TextConstantToken.new(text_tokenizer.token) if text_tokenizer.ok
-    token = NumericConstantToken.new(number_tokenizer.token) if number_tokenizer.ok
-    token = BooleanConstantToken.new(boolean_tokenizer.token) if boolean_tokenizer.ok
-    token = UserFunctionToken.new(userfunc_tokenizer.token) if userfunc_tokenizer.ok
-    token = VariableToken.new(variable_tokenizer.token) if variable_tokenizer.ok
+    token = NumericConstantToken.new(number_tokenizer.token) if
+      number_tokenizer.ok
+    token = BooleanConstantToken.new(boolean_tokenizer.token) if
+      boolean_tokenizer.ok
+    token = UserFunctionToken.new(userfunc_tokenizer.token) if
+      userfunc_tokenizer.ok
+    token = VariableToken.new(variable_tokenizer.token) if
+      variable_tokenizer.ok
     tokens << token
     tokens
   end
@@ -772,7 +788,7 @@ class GotoStatement < AbstractStatement
         @errors << "Invalid line number #{tokens[1]}"
       end
     else
-      @errors << "Syntax error"
+      @errors << 'Syntax error'
     end
   end
 
@@ -796,7 +812,7 @@ class GosubStatement < AbstractStatement
         @errors << "Invalid line number #{tokens[1]}"
       end
     else
-      @errors << "Syntax error"
+      @errors << 'Syntax error'
     end
   end
 
@@ -912,18 +928,16 @@ class ForStatement < AbstractStatement
       if tokens[1].variable?
         @control = VariableName.new(tokens[1])
       else
-        @errors << "Control variable must be a variable"
+        @errors << 'Control variable must be a variable'
       end
       if tokens[2].operator?
-        if tokens[2].operator != '='
-          @errors << "Syntax error, missing '=' sign"
-        end
+        @errors << "Syntax error, missing '=' sign" unless tokens[2].equals?
       else
-        @errors << "Syntax error, not enough items"
+        @errors << 'Syntax error, not enough items'
       end
     else
-      @errors << "Syntax error"
-    end    
+      @errors << 'Syntax error'
+    end
     parts
   end
 
@@ -959,7 +973,7 @@ class NextStatement < AbstractStatement
         @errors << "Invalid control variable #{tokens[1]}"
       end
     else
-      @errors << "Syntax error"
+      @errors << 'Syntax error'
     end
   end
 
