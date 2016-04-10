@@ -135,6 +135,10 @@ class KeywordToken < AbstractToken
   def trailing?
     @keyword == 'READ' || @keyword == 'PRINT'
   end
+
+  def to_s
+    @keyword
+  end
 end
 
 # operator token
@@ -144,6 +148,10 @@ class OperatorToken < AbstractToken
   def initialize(text)
     @is_operator = true
     @operator = text
+  end
+
+  def to_s
+    @operator
   end
 end
 
@@ -155,6 +163,10 @@ class FunctionToken < AbstractToken
     @is_function = true
     @function = text
   end
+
+  def to_s
+    @function
+  end
 end
 
 # text constant token
@@ -164,6 +176,10 @@ class TextConstantToken < AbstractToken
   def initialize(text)
     @is_text_constant = true
     @text_constant = text
+  end
+
+  def to_s
+    @text_constant
   end
 end
 
@@ -178,6 +194,10 @@ class NumericConstantToken < AbstractToken
 
   def to_i
     @numeric_constant.to_f.to_i
+  end
+
+  def to_s
+    @numeric_constant.to_s
   end
 end
 
@@ -198,6 +218,14 @@ class VariableToken < AbstractToken
   def initialize(text)
     @is_variable = true
     @variable = text
+  end
+
+  def hash
+    @variable.hash
+  end
+
+  def to_s
+    @variable
   end
 end
 
@@ -822,7 +850,7 @@ class ForStatement < AbstractStatement
     super('FOR', line, tokens, squeezed)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
-    parts = make_control
+    parts = make_control(tokens)
     parts = make_to_value(parts)
     make_step_value(parts)
   end
@@ -851,14 +879,25 @@ class ForStatement < AbstractStatement
 
   private
 
-  def make_control
+  def make_control(tokens)
     parts = @rest.split('=', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
-    begin
-      @control = VariableName.new(parts[0])
-    rescue BASICException => e
-      @errors << e.message
-    end
+    if tokens.size > 3
+      if tokens[1].variable?
+        @control = VariableName.new(tokens[1])
+      else
+        @errors << "Control variable must be a variable"
+      end
+      if tokens[2].operator?
+        if tokens[2].operator != '='
+          @errors << "Syntax error, missing '=' sign"
+        end
+      else
+        @errors << "Syntax error, not enough items"
+      end
+    else
+      @errors << "Syntax error"
+    end    
     parts
   end
 
@@ -887,10 +926,14 @@ class NextStatement < AbstractStatement
     super('NEXT', line, tokens, squeezed)
     # parse control variable
     @control = nil
-    begin
-      @control = VariableName.new(@rest)
-    rescue BASICException => e
-      @errors << e.message
+    if tokens.size == 2
+      if tokens[1].variable?
+        @control = VariableName.new(tokens[1])
+      else
+        @errors << "Invalid control variable #{tokens[1]}"
+      end
+    else
+      @errors << "Syntax error"
     end
   end
 

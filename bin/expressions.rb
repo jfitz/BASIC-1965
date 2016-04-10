@@ -155,7 +155,7 @@ class VariableName < AbstractElement
   def initialize(text)
     super()
     fail(BASICException, "'#{text}' is not a variable name") unless
-      VariableName.init?(text)
+      text.class.to_s == "VariableToken" || VariableName.init?(text)
     @var_name = text
     @variable = true
     @operand = true
@@ -167,7 +167,7 @@ class VariableName < AbstractElement
   end
 
   def ==(other)
-    @var_name == other.to_s
+    @var_name.to_s == other.to_s
   end
 
   def hash
@@ -175,7 +175,7 @@ class VariableName < AbstractElement
   end
 
   def to_s
-    @var_name
+    @var_name.to_s
   end
 end
 
