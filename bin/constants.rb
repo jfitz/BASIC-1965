@@ -338,7 +338,7 @@ class BooleanConstant < AbstractElement
 
   def initialize(text)
     super()
-    @value = text.upcase == 'ON'
+    @value = text.to_s.upcase == 'ON'
     @operand = true
     @precedence = 0
   end

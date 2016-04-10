@@ -76,6 +76,7 @@ class AbstractToken
     @is_function = false
     @is_text_constant = false
     @is_numeric_constant = false
+    @is_boolean_constant = false
     @is_user_function = false
     @is_variable = false
   end
@@ -98,6 +99,10 @@ class AbstractToken
 
   def numeric_constant?
     @is_numeric_constant
+  end
+
+  def boolean_constant?
+    @is_boolean_constant
   end
 
   def user_function?
@@ -201,6 +206,20 @@ class NumericConstantToken < AbstractToken
   end
 end
 
+# boolean constant token
+class BooleanConstantToken < AbstractToken
+  attr_reader :boolean_constant
+
+  def initialize(text)
+    @is_boolean_constant = true
+    @boolean_constant = text
+  end
+
+  def to_s
+    @boolean_constant.to_s
+  end
+end
+
 # user function token
 class UserFunctionToken < AbstractToken
   attr_reader :user_function
@@ -291,6 +310,7 @@ class StatementFactory
     function_tokenizer = ListTokenizer.new(FunctionFactory.function_names)
     text_tokenizer = TextTokenizer.new
     number_tokenizer = NumberTokenizer.new
+    boolean_tokenizer = ListTokenizer.new(%w(ON OFF))
     userfunc_tokenizer = ListTokenizer.new(('FNA'..'FNZ').to_a)
     variable_tokenizer = VariableTokenizer.new
 
@@ -300,6 +320,7 @@ class StatementFactory
          function_tokenizer.try(c) ||
          text_tokenizer.try(c) ||
          number_tokenizer.try(c) ||
+         boolean_tokenizer.try(c) ||
          userfunc_tokenizer.try(c) ||
          variable_tokenizer.try(c)
         invalid_tokenizer.add(c)
@@ -308,6 +329,7 @@ class StatementFactory
         function_tokenizer.add(c)
         text_tokenizer.add(c)
         number_tokenizer.add(c)
+        boolean_tokenizer.add(c)
         userfunc_tokenizer.add(c)
         variable_tokenizer.add(c)
       else
@@ -317,6 +339,7 @@ class StatementFactory
         token = FunctionToken.new(function_tokenizer.token) if function_tokenizer.ok
         token = TextConstantToken.new(text_tokenizer.token) if text_tokenizer.ok
         token = NumericConstantToken.new(number_tokenizer.token) if number_tokenizer.ok
+        token = BooleanConstantToken.new(boolean_tokenizer.token) if boolean_tokenizer.ok
         token = UserFunctionToken.new(userfunc_tokenizer.token) if userfunc_tokenizer.ok
         token = VariableToken.new(variable_tokenizer.token) if variable_tokenizer.ok
         tokens << token
@@ -326,6 +349,7 @@ class StatementFactory
         function_tokenizer.reset
         text_tokenizer.reset
         number_tokenizer.reset
+        boolean_tokenizer.reset
         userfunc_tokenizer.reset
         variable_tokenizer.reset
         invalid_tokenizer.add(c)
@@ -334,6 +358,7 @@ class StatementFactory
         function_tokenizer.add(c)
         text_tokenizer.add(c)
         number_tokenizer.add(c)
+        boolean_tokenizer.add(c)
         userfunc_tokenizer.add(c)
         variable_tokenizer.add(c)
       end
@@ -344,6 +369,7 @@ class StatementFactory
     token = FunctionToken.new(function_tokenizer.token) if function_tokenizer.ok
     token = TextConstantToken.new(text_tokenizer.token) if text_tokenizer.ok
     token = NumericConstantToken.new(number_tokenizer.token) if number_tokenizer.ok
+    token = BooleanConstantToken.new(boolean_tokenizer.token) if boolean_tokenizer.ok
     token = UserFunctionToken.new(userfunc_tokenizer.token) if userfunc_tokenizer.ok
     token = VariableToken.new(variable_tokenizer.token) if variable_tokenizer.ok
     tokens << token
@@ -1089,7 +1115,15 @@ end
 class TraceStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('TRACE', line, tokens, squeezed)
-    @operation = BooleanConstant.new(@rest)
+    if tokens.size > 1
+      if tokens[1].boolean_constant?
+        @operation = BooleanConstant.new(tokens[1])
+      else
+        @errors << "Syntax error, '#{tokens[1]}' not boolean"
+      end
+    else
+      @errors << 'Syntax error'
+    end
   end
 
   def execute_cmd(interpreter, _)

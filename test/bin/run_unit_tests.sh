@@ -189,6 +189,9 @@ bash test/bin/run_one_test.sh mat_divide_m_s
 bash test/bin/run_one_test.sh mat_power_m_s
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh trace
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh celcius_to_fahrenheit
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh celcius_2
