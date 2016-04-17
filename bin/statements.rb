@@ -13,33 +13,37 @@ end
 # split a line into arguments
 class ArgSplitter
   attr_reader :args
-
-  def initialize(text)
     @args = []
     @current_arg = ''
-    in_string = false
     @parens_level = 0
+
+  def self.split_text(text)
+    @args = []
+    @current_arg = ''
+    @parens_level = 0
+    in_str = false
     text.each_char do |c|
-      if in_string
+      if in_str
         in_string(c)
       else
         not_in_string(c)
       end
-      in_string = !in_string if c == '"'
+      in_str = !in_str if c == '"'
     end
     @args << @current_arg if @current_arg.size > 0
+    @args
   end
 
   private
 
-  def in_string(c)
+  def self.in_string(c)
     @current_arg += c
     return unless c == '"'
     @args << @current_arg
     @current_arg = ''
   end
 
-  def not_in_string(c)
+  def self.not_in_string(c)
     if [',', ';'].include?(c) && @parens_level == 0
       separator(c)
     elsif c == '('
@@ -51,18 +55,18 @@ class ArgSplitter
     end
   end
 
-  def separator(c)
+  def self.separator(c)
     @args << @current_arg if @current_arg.length > 0
     @current_arg = ''
     @args << c
   end
 
-  def open_parens
+  def self.open_parens
     @current_arg += '('
     @parens_level += 1
   end
 
-  def close_parens
+  def self.close_parens
     @current_arg += ')'
     @parens_level -= 1 if @parens_level > 0
   end
@@ -550,8 +554,7 @@ class DimStatement < AbstractStatement
     squeezed_keyword = squeeze_out_spaces('DIM')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
-    splitter = ArgSplitter.new(@rest)
-    text_list = splitter.args
+    text_list = ArgSplitter.split_text(@rest)
     text_list.delete(',')
 
     @expression_list = []
@@ -625,8 +628,7 @@ class InputStatement < AbstractStatement
     squeezed_keyword = squeeze_out_spaces('INPUT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
-    splitter = ArgSplitter.new(@rest)
-    text_list = splitter.args
+    text_list = ArgSplitter.split_text(@rest)
     text_list.delete(',')
     # [prompt string] variable [variable]...
     @default_prompt = TextConstant.new('"? "')
@@ -745,8 +747,7 @@ class PrintStatement < AbstractStatement
     squeezed_keyword = squeeze_out_spaces('PRINT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
-    splitter = ArgSplitter.new(@rest)
-    item_list = splitter.args
+    item_list = ArgSplitter.split_text(@rest)
     # variable/constant, [separator, variable/constant]... [separator]
 
     @print_items = []
@@ -1030,8 +1031,7 @@ class ReadStatement < AbstractStatement
     squeezed_keyword = squeeze_out_spaces('READ')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
-    splitter = ArgSplitter.new(@rest)
-    item_list = splitter.args
+    item_list = ArgSplitter.split_text(@rest)
     item_list.delete(',')
     # variable [variable]...
 
@@ -1192,8 +1192,7 @@ class MatPrintStatement < AbstractStatement
     squeezed_keyword = squeeze_out_spaces('MAT PRINT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
-    splitter = ArgSplitter.new(@rest)
-    item_list = splitter.args
+    item_list = ArgSplitter.split_text(@rest)
     # variable, [separator, variable]... [separator]
 
     @print_items = []
@@ -1261,8 +1260,7 @@ class MatReadStatement < AbstractStatement
     squeezed_keyword = squeeze_out_spaces('MAT READ')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
-    splitter = ArgSplitter.new(@rest)
-    item_list = splitter.args
+    item_list = ArgSplitter.split_text(@rest)
     item_list.delete(',')
     # variable [variable]...
 
