@@ -428,9 +428,6 @@ class AbstractStatement
   def initialize(keyword, text, _, squeezed)
     @keyword = keyword
     @text = text
-    squeezed_keyword = squeeze_out_spaces(keyword)
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
     @errors = []
   end
 
@@ -532,6 +529,9 @@ class RemarkStatement < AbstractStatement
     # override the method to squeeze spaces from line
     squeezed = line.strip
     super('REM', line, [], squeezed)
+    squeezed_keyword = squeeze_out_spaces('REM')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
   end
 
   def to_s
@@ -547,6 +547,9 @@ end
 class DimStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('DIM', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('DIM')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     splitter = ArgSplitter.new(@rest)
     text_list = splitter.args
     text_list.delete(',')
@@ -586,6 +589,9 @@ end
 class LetStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('LET', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('LET')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     begin
       @assignment = ScalarAssignment.new(@rest)
       if @assignment.count_target != 1
@@ -616,6 +622,9 @@ end
 class InputStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('INPUT', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('INPUT')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     splitter = ArgSplitter.new(@rest)
     text_list = splitter.args
     text_list.delete(',')
@@ -697,6 +706,9 @@ end
 class IfStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('IF', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('IF')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     parts = @rest.split('THEN')
     begin
       @boolean_expression = BooleanExpression.new(parts[0])
@@ -730,6 +742,9 @@ end
 class PrintStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('PRINT', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('PRINT')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     # variable/constant, [separator, variable/constant]... [separator]
@@ -902,6 +917,9 @@ end
 class ForStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('FOR', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('FOR')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
     parts = make_control(tokens)
@@ -1009,6 +1027,9 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('READ', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('READ')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     item_list.delete(',')
@@ -1077,6 +1098,9 @@ end
 class DefineFunctionStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('DEF', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('DEF')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     @name = ''
     @arguments = []
     @template = ''
@@ -1165,6 +1189,9 @@ end
 class MatPrintStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('MAT PRINT', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('MAT PRINT')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     # variable, [separator, variable]... [separator]
@@ -1231,6 +1258,9 @@ end
 class MatReadStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('MAT READ', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('MAT READ')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     splitter = ArgSplitter.new(@rest)
     item_list = splitter.args
     item_list.delete(',')
@@ -1300,6 +1330,9 @@ end
 class MatLetStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('MAT', line, tokens, squeezed)
+    squeezed_keyword = squeeze_out_spaces('MAT')
+    length = squeezed_keyword.length
+    @rest = squeezed[length..-1]
     begin
       @assignment = MatrixAssignment.new(@rest)
       if @assignment.count_target != 1
