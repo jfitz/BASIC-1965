@@ -119,7 +119,6 @@ class InvalidToken < AbstractToken
   attr_reader :text
 
   def initialize(text)
-    @is_operator = true
     @text = text
   end
 end
@@ -157,6 +156,10 @@ class OperatorToken < AbstractToken
 
   def equals?
     @operator == '='
+  end
+
+  def comma?
+    @operator == ','
   end
 
   def to_s
@@ -472,7 +475,16 @@ class AbstractStatement
     values
   end
 
-  protected
+  # converts text line to constant values
+  def tokens_to_constants(tokens)
+    values = []
+    tokens[1..-1].each do |token|
+      fail(BASICException, "Value '#{token}' not numeric") unless
+        token.numeric_constant? || (token.operator? && token.comma?)
+      values << NumericConstant.new(token.to_s) if token.numeric_constant?
+    end
+    values
+  end
 
   def make_coord(c)
     '(' + c.to_s + ')'
@@ -1030,7 +1042,7 @@ end
 class DataStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
     super('DATA', line, tokens, squeezed)
-    @data_list = textline_to_constants(@rest)
+    @data_list = tokens_to_constants(tokens)
   end
 
   def to_s
