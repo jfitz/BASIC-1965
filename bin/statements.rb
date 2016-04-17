@@ -425,7 +425,7 @@ end
 class AbstractStatement
   attr_reader :errors
 
-  def initialize(keyword, text, _, squeezed)
+  def initialize(keyword, text)
     @keyword = keyword
     @text = text
     @errors = []
@@ -495,7 +495,7 @@ end
 # unknown statement
 class UnknownStatement < AbstractStatement
   def initialize(line)
-    super('', line, [], line)
+    super('', line)
     @errors << "Unknown statement '#{@text.strip}'"
   end
 
@@ -511,7 +511,7 @@ end
 # empty statement (line number only)
 class EmptyStatement < AbstractStatement
   def initialize
-    super('', '', [], '')
+    super('', '')
   end
 
   def to_s
@@ -528,7 +528,7 @@ class RemarkStatement < AbstractStatement
   def initialize(line)
     # override the method to squeeze spaces from line
     squeezed = line.strip
-    super('REM', line, [], squeezed)
+    super('REM', line)
     squeezed_keyword = squeeze_out_spaces('REM')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -546,7 +546,7 @@ end
 # DIM
 class DimStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('DIM', line, tokens, squeezed)
+    super('DIM', line)
     squeezed_keyword = squeeze_out_spaces('DIM')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -588,7 +588,7 @@ end
 # LET
 class LetStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('LET', line, tokens, squeezed)
+    super('LET', line)
     squeezed_keyword = squeeze_out_spaces('LET')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -621,7 +621,7 @@ end
 # INPUT
 class InputStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('INPUT', line, tokens, squeezed)
+    super('INPUT', line)
     squeezed_keyword = squeeze_out_spaces('INPUT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -705,7 +705,7 @@ end
 # IF/THEN
 class IfStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('IF', line, tokens, squeezed)
+    super('IF', line)
     squeezed_keyword = squeeze_out_spaces('IF')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -741,7 +741,7 @@ end
 # PRINT
 class PrintStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('PRINT', line, tokens, squeezed)
+    super('PRINT', line)
     squeezed_keyword = squeeze_out_spaces('PRINT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -807,7 +807,7 @@ end
 # GOTO
 class GotoStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('GOTO', line, tokens, squeezed)
+    super('GOTO', line)
     if tokens.size == 2
       if tokens[1].numeric_constant?
         @destination = LineNumber.new(tokens[1])
@@ -831,7 +831,7 @@ end
 # GOSUB
 class GosubStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('GOSUB', line, tokens, squeezed)
+    super('GOSUB', line)
     if tokens.size == 2
       if tokens[1].numeric_constant?
         @destination = LineNumber.new(tokens[1])
@@ -856,7 +856,7 @@ end
 # RETURN
 class ReturnStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('RETURN', line, tokens, squeezed)
+    super('RETURN', line)
   end
 
   def to_s
@@ -916,7 +916,7 @@ end
 # FOR statement
 class ForStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('FOR', line, tokens, squeezed)
+    super('FOR', line)
     squeezed_keyword = squeeze_out_spaces('FOR')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -993,7 +993,7 @@ class NextStatement < AbstractStatement
   attr_reader :control
 
   def initialize(line, squeezed, tokens)
-    super('NEXT', line, tokens, squeezed)
+    super('NEXT', line)
     # parse control variable
     @control = nil
     if tokens.size == 2
@@ -1026,7 +1026,7 @@ end
 # READ
 class ReadStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('READ', line, tokens, squeezed)
+    super('READ', line)
     squeezed_keyword = squeeze_out_spaces('READ')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -1062,7 +1062,7 @@ end
 # DATA
 class DataStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('DATA', line, tokens, squeezed)
+    super('DATA', line)
     @data_list = tokens_to_constants(tokens)
   end
 
@@ -1082,7 +1082,7 @@ end
 # RESTORE
 class RestoreStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('RESTORE', line, tokens, squeezed)
+    super('RESTORE', line)
   end
 
   def to_s
@@ -1097,7 +1097,7 @@ end
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('DEF', line, tokens, squeezed)
+    super('DEF', line)
     squeezed_keyword = squeeze_out_spaces('DEF')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -1130,7 +1130,7 @@ end
 # STOP
 class StopStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('STOP', line, tokens, squeezed)
+    super('STOP', line)
   end
 
   def to_s
@@ -1147,7 +1147,7 @@ end
 # END
 class EndStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('END', line, tokens, squeezed)
+    super('END', line)
   end
 
   def to_s
@@ -1164,7 +1164,7 @@ end
 # TRACE
 class TraceStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('TRACE', line, tokens, squeezed)
+    super('TRACE', line)
     if tokens.size > 1
       if tokens[1].boolean_constant?
         @operation = BooleanConstant.new(tokens[1])
@@ -1188,7 +1188,7 @@ end
 # MAT PRINT
 class MatPrintStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('MAT PRINT', line, tokens, squeezed)
+    super('MAT PRINT', line)
     squeezed_keyword = squeeze_out_spaces('MAT PRINT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -1257,7 +1257,7 @@ end
 # MAT READ
 class MatReadStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('MAT READ', line, tokens, squeezed)
+    super('MAT READ', line)
     squeezed_keyword = squeeze_out_spaces('MAT READ')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
@@ -1329,7 +1329,7 @@ end
 # MAT assignment
 class MatLetStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('MAT', line, tokens, squeezed)
+    super('MAT', line)
     squeezed_keyword = squeeze_out_spaces('MAT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
