@@ -1290,8 +1290,13 @@ end
 # base class for expressions
 class AbstractExpression
   def initialize(text, tokens, default_type)
-    fail(Exception, 'Expression cannot be empty') if text.length == 0
-    @unparsed_expression = text
+    if tokens.nil?
+      fail(Exception, 'Expression cannot be empty') if text.length == 0
+      @unparsed_expression = text
+    else
+      fail(Exception, 'Expression cannot be empty') if tokens.length == 0
+      @unparsed_expression = tokens.map { |token| "#{token}" }.join
+    end
 
     if tokens.nil?
       split_words = split_input(text)

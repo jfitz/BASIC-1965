@@ -586,15 +586,13 @@ class DimStatement < AbstractStatement
 
     @expression_list = []
     if tokens_lists.size > 0
-      i = 0
       tokens_lists.each do |tokens_list|
         begin
           @expression_list <<
-            TargetExpression.new(text_list[i], tokens_list, VariableDimension)
+            TargetExpression.new(nil, tokens_list, VariableDimension)
         rescue BASICException
           @errors << "Invalid variable #{tokens_list}"
         end
-        i += 1
       end
     else
       @errors << 'No variables specified'
