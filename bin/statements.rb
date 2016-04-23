@@ -578,8 +578,6 @@ class DimStatement < AbstractStatement
     keyword = ''
     keyword += tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
-    length = keyword.length
-    @rest = squeezed[length..-1]
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
 
     @errors << 'No variables specified' if tokens_lists.size == 0
@@ -647,24 +645,22 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('INPUT', line)
-    squeezed_keyword = squeeze_out_spaces('INPUT')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
-    text_list = ArgSplitter.split_text(@rest)
-    text_list.delete(',')
+  def initialize(line, squeezed, tokens)
+    keyword = ''
+    keyword += tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # [prompt string] variable [variable]...
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
-    if text_list.length > 0
-      if TextConstant.init?(text_list[0])
-        @prompt = TextConstant.new(text_list[0])
-        text_list.delete_at(0)
+    if tokens_lists.length > 0
+      if tokens_lists[0][0].text_constant?
+        @prompt = TextConstant.new(tokens_lists[0][0].to_s)
+        tokens_lists.shift
       end
       ## todo: check list length again (after removing prompt item)
       # variable [comma, variable]...
-      @expression_list = build_expression_list(text_list)
+      @expression_list = build_expression_list(tokens_lists)
     else
       @errors << 'No variables specified'
     end
@@ -715,13 +711,13 @@ class InputStatement < AbstractStatement
     values
   end
 
-  def build_expression_list(text_list)
+  def build_expression_list(tokens_lists)
     expression_list = []
-    text_list.each do |text_item|
+    tokens_lists.each do |tokens_list|
       begin
-        expression_list << TargetExpression.new(text_item, nil, ScalarReference)
+        expression_list << TargetExpression.new(nil, tokens_list, ScalarReference)
       rescue BASICException
-        @errors << "Invalid variable #{text_item}"
+        @errors << "Invalid variable #{tokens_list}"
       end
     end
     expression_list
