@@ -574,7 +574,7 @@ end
 
 # DIM
 class DimStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = ''
     keyword += tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -645,7 +645,7 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = ''
     keyword += tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -715,7 +715,8 @@ class InputStatement < AbstractStatement
     expression_list = []
     tokens_lists.each do |tokens_list|
       begin
-        expression_list << TargetExpression.new(nil, tokens_list, ScalarReference)
+        expression_list <<
+          TargetExpression.new(nil, tokens_list, ScalarReference)
       rescue BASICException
         @errors << "Invalid variable #{tokens_list}"
       end
