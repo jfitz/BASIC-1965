@@ -580,22 +580,18 @@ class DimStatement < AbstractStatement
     super(keyword, line)
     length = keyword.length
     @rest = squeezed[length..-1]
-    text_list = ArgSplitter.split_text(@rest)
-    text_list.delete(',')
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
 
+    @errors << 'No variables specified' if tokens_lists.size == 0
+
     @expression_list = []
-    if tokens_lists.size > 0
-      tokens_lists.each do |tokens_list|
-        begin
-          @expression_list <<
-            TargetExpression.new(nil, tokens_list, VariableDimension)
-        rescue BASICException
-          @errors << "Invalid variable #{tokens_list}"
-        end
+    tokens_lists.each do |tokens_list|
+      begin
+        @expression_list <<
+          TargetExpression.new(nil, tokens_list, VariableDimension)
+      rescue BASICException
+        @errors << "Invalid variable #{tokens_list}"
       end
-    else
-      @errors << 'No variables specified'
     end
   end
 
