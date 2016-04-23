@@ -1289,15 +1289,24 @@ end
 
 # base class for expressions
 class AbstractExpression
-  def initialize(text, default_type)
+  def initialize(text, tokens, default_type)
     fail(Exception, 'Expression cannot be empty') if text.length == 0
     @unparsed_expression = text
 
-    split_words = split_input(text)
-    # we have split a value like '12E+3' into three parts (12E + 3)
-    # put them back into a single item
-    words = regroup(split_words)
-    elements = elementize(words)
+    if tokens.nil?
+      split_words = split_input(text)
+      # we have split a value like '12E+3' into three parts (12E + 3)
+      # put them back into a single item
+      words = regroup(split_words)
+      elements = elementize(words)
+    else
+      elements = []
+      tokens.each do |token|
+        follows_operand = elements.size > 0 && elements[-1].operand?
+        elements << token_to_element(token, follows_operand)
+      end
+      elements << TerminalOperator.new
+    end
     parser = Parser.new(default_type)
     elements.each do |element|
       parser.parse(element)
@@ -1373,6 +1382,19 @@ class AbstractExpression
     element
   end
 
+  def token_to_element(token, follows_operand)
+    return FunctionFactory.make(token.to_s) if
+      FunctionFactory.valid?(token.to_s)
+
+    element = nil
+    classes = follows_operand ? binary_classes : unary_classes
+    classes.each do |c|
+      element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
+    end
+    fail(BASICException, "'#{word}' is not a value or operator") if element.nil?
+    element
+  end
+
   def binary_classes
     # first match is used; select order with care
     # UserFunction before VariableName
@@ -1405,7 +1427,7 @@ end
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
   def initialize(text)
-    super(text, ScalarValue)
+    super(text, nil, ScalarValue)
   end
 
   def printable?
@@ -1422,7 +1444,7 @@ end
 # Value matrix expression (an R-value)
 class ValueMatrixExpression < AbstractExpression
   def initialize(text)
-    super(text, MatrixValue)
+    super(text, nil, MatrixValue)
   end
 
   def printable?
@@ -1438,8 +1460,8 @@ end
 
 # Target expression
 class TargetExpression < AbstractExpression
-  def initialize(text, type)
-    super(text, ScalarValue)
+  def initialize(text, tokens, type)
+    super(text, tokens, ScalarValue)
 
     check_length
     check_all_lengths
@@ -1604,7 +1626,7 @@ class ScalarAssignment < AbstractAssignment
     super
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    @target = TargetExpression.new(parts[0], ScalarReference)
+    @target = TargetExpression.new(parts[0], nil, ScalarReference)
     @expression = ValueScalarExpression.new(parts[1])
   end
 
@@ -1623,7 +1645,7 @@ class MatrixAssignment < AbstractAssignment
     super
     # parse into variable, '=', expression
     parts = text.split('=', 2)
-    @target = TargetExpression.new(parts[0], MatrixReference)
+    @target = TargetExpression.new(parts[0], nil, MatrixReference)
     @functions = {
       'CON' => FunctionCon,
       'ZER' => FunctionZer,

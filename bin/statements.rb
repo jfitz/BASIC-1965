@@ -13,9 +13,9 @@ end
 # split a line into arguments
 class ArgSplitter
   attr_reader :args
-    @args = []
-    @current_arg = ''
-    @parens_level = 0
+  @args = []
+  @current_arg = ''
+  @parens_level = 0
 
   def self.split_text(text)
     @args = []
@@ -34,7 +34,24 @@ class ArgSplitter
     @args
   end
 
-  private
+  def self.split_tokens(tokens, want_comma)
+    lists = []
+    list = []
+    parens_level = 0
+    tokens.each do |token|
+      if token.operator? && token.comma? && parens_level == 0
+        lists << list if list.size > 0
+        lists << token if want_comma
+        list = []
+      else
+        list << token
+      end
+      parens_level += 1 if token.operator? && token.open?
+      parens_level -= 1 if token.operator? && token.close? && parens_level > 0
+    end
+    lists << list if list.size > 0
+    lists
+  end
 
   def self.in_string(c)
     @current_arg += c
@@ -164,6 +181,14 @@ class OperatorToken < AbstractToken
 
   def comma?
     @operator == ','
+  end
+
+  def open?
+    @operator == '('
+  end
+
+  def close?
+    @operator == ')'
   end
 
   def to_s
@@ -550,21 +575,26 @@ end
 # DIM
 class DimStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('DIM', line)
-    squeezed_keyword = squeeze_out_spaces('DIM')
-    length = squeezed_keyword.length
+    keyword = ''
+    keyword += tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    length = keyword.length
     @rest = squeezed[length..-1]
     text_list = ArgSplitter.split_text(@rest)
     text_list.delete(',')
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
 
     @expression_list = []
-    if text_list.size > 0
-      text_list.each do |text_item|
+    if tokens_lists.size > 0
+      i = 0
+      tokens_lists.each do |tokens_list|
         begin
-          @expression_list << TargetExpression.new(text_item, VariableDimension)
+          @expression_list <<
+            TargetExpression.new(text_list[i], tokens_list, VariableDimension)
         rescue BASICException
-          @errors << "Invalid variable #{text_item}"
+          @errors << "Invalid variable #{tokens_list}"
         end
+        i += 1
       end
     else
       @errors << 'No variables specified'
@@ -590,7 +620,7 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('LET', line)
     squeezed_keyword = squeeze_out_spaces('LET')
     length = squeezed_keyword.length
@@ -623,7 +653,7 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('INPUT', line)
     squeezed_keyword = squeeze_out_spaces('INPUT')
     length = squeezed_keyword.length
@@ -695,7 +725,7 @@ class InputStatement < AbstractStatement
     expression_list = []
     text_list.each do |text_item|
       begin
-        expression_list << TargetExpression.new(text_item, ScalarReference)
+        expression_list << TargetExpression.new(text_item, nil, ScalarReference)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -742,7 +772,7 @@ end
 
 # PRINT
 class PrintStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('PRINT', line)
     squeezed_keyword = squeeze_out_spaces('PRINT')
     length = squeezed_keyword.length
@@ -807,7 +837,7 @@ end
 
 # GOTO
 class GotoStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     super('GOTO', line)
     if tokens.size == 2
       if tokens[1].numeric_constant?
@@ -831,7 +861,7 @@ end
 
 # GOSUB
 class GosubStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     super('GOSUB', line)
     if tokens.size == 2
       if tokens[1].numeric_constant?
@@ -856,7 +886,7 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, _)
     super('RETURN', line)
   end
 
@@ -993,7 +1023,7 @@ end
 class NextStatement < AbstractStatement
   attr_reader :control
 
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     super('NEXT', line)
     # parse control variable
     @control = nil
@@ -1026,7 +1056,7 @@ end
 
 # READ
 class ReadStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('READ', line)
     squeezed_keyword = squeeze_out_spaces('READ')
     length = squeezed_keyword.length
@@ -1038,7 +1068,7 @@ class ReadStatement < AbstractStatement
     @expression_list = []
     item_list.each do |item|
       begin
-        @expression_list << TargetExpression.new(item, ScalarReference)
+        @expression_list << TargetExpression.new(item, nil, ScalarReference)
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
       end
@@ -1061,7 +1091,7 @@ end
 
 # DATA
 class DataStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     super('DATA', line)
     @data_list = tokens_to_constants(tokens)
   end
@@ -1081,7 +1111,7 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, _)
     super('RESTORE', line)
   end
 
@@ -1096,7 +1126,7 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('DEF', line)
     squeezed_keyword = squeeze_out_spaces('DEF')
     length = squeezed_keyword.length
@@ -1129,7 +1159,7 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, _)
     super('STOP', line)
   end
 
@@ -1146,7 +1176,7 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, _tokens)
     super('END', line)
   end
 
@@ -1163,7 +1193,7 @@ end
 
 # TRACE
 class TraceStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     super('TRACE', line)
     if tokens.size > 1
       if tokens[1].boolean_constant?
@@ -1187,7 +1217,7 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('MAT PRINT', line)
     squeezed_keyword = squeeze_out_spaces('MAT PRINT')
     length = squeezed_keyword.length
@@ -1255,7 +1285,7 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('MAT READ', line)
     squeezed_keyword = squeeze_out_spaces('MAT READ')
     length = squeezed_keyword.length
@@ -1267,7 +1297,7 @@ class MatReadStatement < AbstractStatement
     @expression_list = []
     item_list.each do |item|
       begin
-        expression = TargetExpression.new(item, MatrixReference)
+        expression = TargetExpression.new(item, nil, MatrixReference)
         @expression_list << expression
       rescue BASICException
         @errors << "Invalid variable #{text_item}"
@@ -1326,7 +1356,7 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, squeezed, _tokens)
     super('MAT', line)
     squeezed_keyword = squeeze_out_spaces('MAT')
     length = squeezed_keyword.length
