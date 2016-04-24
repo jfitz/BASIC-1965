@@ -504,7 +504,7 @@ class AbstractStatement
   # converts text line to constant values
   def tokens_to_constants(tokens)
     values = []
-    tokens[1..-1].each do |token|
+    tokens.each do |token|
       fail(BASICException, "Value '#{token}' not numeric") unless
         token.numeric_constant? || (token.operator? && token.separator?)
       values << NumericConstant.new(token.to_s) if token.numeric_constant?
@@ -833,12 +833,15 @@ end
 # GOTO
 class GotoStatement < AbstractStatement
   def initialize(line, _, tokens)
-    super('GOTO', line)
-    if tokens.size == 2
-      if tokens[1].numeric_constant?
-        @destination = LineNumber.new(tokens[1])
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
+    if tokens.size == 1
+      if tokens[0].numeric_constant?
+        @destination = LineNumber.new(tokens[0])
       else
-        @errors << "Invalid line number #{tokens[1]}"
+        @errors << "Invalid line number #{tokens[0]}"
       end
     else
       @errors << 'Syntax error'
@@ -846,7 +849,7 @@ class GotoStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @destination.to_s
+    @keyword.join(' ') + ' ' + @destination.to_s
   end
 
   def execute_cmd(interpreter, _)
@@ -857,12 +860,15 @@ end
 # GOSUB
 class GosubStatement < AbstractStatement
   def initialize(line, _, tokens)
-    super('GOSUB', line)
-    if tokens.size == 2
-      if tokens[1].numeric_constant?
-        @destination = LineNumber.new(tokens[1])
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
+    if tokens.size == 1
+      if tokens[0].numeric_constant?
+        @destination = LineNumber.new(tokens[0])
       else
-        @errors << "Invalid line number #{tokens[1]}"
+        @errors << "Invalid line number #{tokens[0]}"
       end
     else
       @errors << 'Syntax error'
@@ -870,7 +876,7 @@ class GosubStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @destination.to_s
+    @keyword.join(' ') + ' ' + @destination.to_s
   end
 
   def execute_cmd(interpreter, _)
@@ -881,12 +887,14 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(line, _, _)
-    super('RETURN', line)
+  def initialize(line, _, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
   end
 
   def to_s
-    @keyword
+    @keyword.join(' ')
   end
 
   def execute_cmd(interpreter, _)
@@ -1019,14 +1027,16 @@ class NextStatement < AbstractStatement
   attr_reader :control
 
   def initialize(line, _, tokens)
-    super('NEXT', line)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
     # parse control variable
     @control = nil
-    if tokens.size == 2
-      if tokens[1].variable?
-        @control = VariableName.new(tokens[1])
+    if tokens.size == 1
+      if tokens[0].variable?
+        @control = VariableName.new(tokens[0])
       else
-        @errors << "Invalid control variable #{tokens[1]}"
+        @errors << "Invalid control variable #{tokens[0]}"
       end
     else
       @errors << 'Syntax error'
@@ -1034,7 +1044,7 @@ class NextStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @control.to_s
+    @keyword.join(' ') + ' ' + @control.to_s
   end
 
   def execute_cmd(interpreter, _)
@@ -1085,12 +1095,15 @@ end
 # DATA
 class DataStatement < AbstractStatement
   def initialize(line, _, tokens)
-    super('DATA', line)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
     @data_list = tokens_to_constants(tokens)
   end
 
   def to_s
-    @keyword + ' ' + @data_list.join(', ')
+    @keyword.join(' ') + ' ' + @data_list.join(', ')
   end
 
   def pre_execute(interpreter)
@@ -1104,12 +1117,14 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
-  def initialize(line, _, _)
-    super('RESTORE', line)
+  def initialize(line, _, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
   end
 
   def to_s
-    @keyword
+    @keyword.join(' ')
   end
 
   def execute_cmd(interpreter, _)
@@ -1152,12 +1167,14 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(line, _, _)
-    super('STOP', line)
+  def initialize(line, _, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
   end
 
   def to_s
-    @keyword
+    @keyword.join(' ')
   end
 
   def execute_cmd(interpreter, _)
@@ -1169,12 +1186,14 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(line, _, _tokens)
-    super('END', line)
+  def initialize(line, _, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
   end
 
   def to_s
-    @keyword
+    @keyword.join(' ')
   end
 
   def execute_cmd(interpreter, _)
@@ -1187,12 +1206,15 @@ end
 # TRACE
 class TraceStatement < AbstractStatement
   def initialize(line, _, tokens)
-    super('TRACE', line)
-    if tokens.size > 1
-      if tokens[1].boolean_constant?
-        @operation = BooleanConstant.new(tokens[1])
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
+    if tokens_lists.size > 0
+      if tokens_lists[0][0].boolean_constant?
+        @operation = BooleanConstant.new(tokens_lists[0][0])
       else
-        @errors << "Syntax error, '#{tokens[1]}' not boolean"
+        @errors << "Syntax error, '#{tokens_lists[0][0]}' not boolean"
       end
     else
       @errors << 'Syntax error'
@@ -1204,7 +1226,7 @@ class TraceStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + (@operation.value ? 'ON' : 'OFF')
+    @keyword.join(' ') + ' ' + (@operation.value ? 'ON' : 'OFF')
   end
 end
 
