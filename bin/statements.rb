@@ -653,14 +653,18 @@ class InputStatement < AbstractStatement
     # [prompt string] variable [variable]...
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
+    @expression_list = []
     if tokens_lists.length > 0
       if tokens_lists[0][0].text_constant?
         @prompt = TextConstant.new(tokens_lists[0][0].to_s)
         tokens_lists.shift
       end
-      ## todo: check list length again (after removing prompt item)
-      # variable [comma, variable]...
-      @expression_list = build_expression_list(tokens_lists)
+      # check variables are specified
+      if tokens_lists.length > 0
+        @expression_list = build_expression_list(tokens_lists)
+      else
+        @errors << 'No variables specified'
+      end
     else
       @errors << 'No variables specified'
     end
