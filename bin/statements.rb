@@ -575,8 +575,8 @@ end
 # DIM
 class DimStatement < AbstractStatement
   def initialize(line, _, tokens)
-    keyword = ''
-    keyword += tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
 
@@ -594,7 +594,7 @@ class DimStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    @keyword.join(' ') + ' ' + @expression_list.join(', ')
   end
 
   def execute_cmd(interpreter, _)
@@ -646,8 +646,8 @@ end
 # INPUT
 class InputStatement < AbstractStatement
   def initialize(line, _, tokens)
-    keyword = ''
-    keyword += tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # [prompt string] variable [variable]...
@@ -672,9 +672,9 @@ class InputStatement < AbstractStatement
 
   def to_s
     if @prompt != @default_prompt
-      @keyword + ' ' + @prompt.to_s + ', ' + @expression_list.join(', ')
+      @keyword.join(' ') + ' ' + @prompt.to_s + ', ' + @expression_list.join(', ')
     else
-      @keyword + ' ' + @expression_list.join(', ')
+      @keyword.join(' ') + ' ' + @expression_list.join(', ')
     end
   end
 
@@ -1051,27 +1051,25 @@ end
 
 # READ
 class ReadStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('READ', line)
-    squeezed_keyword = squeeze_out_spaces('READ')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
-    item_list = ArgSplitter.split_text(@rest)
-    item_list.delete(',')
+  def initialize(line, _, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # variable [variable]...
 
     @expression_list = []
-    item_list.each do |item|
+    tokens_lists.each do |tokens_list|
       begin
-        @expression_list << TargetExpression.new(item, nil, ScalarReference)
+        @expression_list << TargetExpression.new(nil, tokens_list, ScalarReference)
       rescue BASICException
-        @errors << "Invalid variable #{text_item}"
+        @errors << "Invalid variable #{tokens_list}"
       end
     end
   end
 
   def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    @keyword.join(' ') + ' ' + @expression_list.join(', ')
   end
 
   def execute_cmd(interpreter, trace)
@@ -1280,28 +1278,26 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('MAT READ', line)
-    squeezed_keyword = squeeze_out_spaces('MAT READ')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
-    item_list = ArgSplitter.split_text(@rest)
-    item_list.delete(',')
+  def initialize(line, _, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # variable [variable]...
 
     @expression_list = []
-    item_list.each do |item|
+    tokens_lists.each do |tokens_list|
       begin
-        expression = TargetExpression.new(item, nil, MatrixReference)
+        expression = TargetExpression.new(nil, tokens_list, MatrixReference)
         @expression_list << expression
       rescue BASICException
-        @errors << "Invalid variable #{text_item}"
+        @errors << "Invalid variable #{tokens_list}"
       end
     end
   end
 
   def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    @keyword.join(' ') + ' ' + @expression_list.join(', ')
   end
 
   def execute_cmd(interpreter, trace)
