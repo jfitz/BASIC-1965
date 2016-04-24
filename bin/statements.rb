@@ -34,14 +34,14 @@ class ArgSplitter
     @args
   end
 
-  def self.split_tokens(tokens, want_comma)
+  def self.split_tokens(tokens, want_separators)
     lists = []
     list = []
     parens_level = 0
     tokens.each do |token|
-      if token.operator? && token.comma? && parens_level == 0
+      if token.operator? && token.separator? && parens_level == 0
         lists << list if list.size > 0
-        lists << token if want_comma
+        lists << token if want_separators
         list = []
       else
         list << token
@@ -179,8 +179,8 @@ class OperatorToken < AbstractToken
     @operator == '='
   end
 
-  def comma?
-    @operator == ','
+  def separator?
+    @operator == ',' || @operator == ';'
   end
 
   def open?
@@ -506,7 +506,7 @@ class AbstractStatement
     values = []
     tokens[1..-1].each do |token|
       fail(BASICException, "Value '#{token}' not numeric") unless
-        token.numeric_constant? || (token.operator? && token.comma?)
+        token.numeric_constant? || (token.operator? && token.separator?)
       values << NumericConstant.new(token.to_s) if token.numeric_constant?
     end
     values
