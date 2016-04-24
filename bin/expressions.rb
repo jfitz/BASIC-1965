@@ -1396,7 +1396,7 @@ class AbstractExpression
     classes.each do |c|
       element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
     end
-    fail(BASICException, "'#{word}' is not a value or operator") if element.nil?
+    fail(BASICException, "'#{token.to_s}' is not a value or operator") if element.nil?
     element
   end
 
@@ -1465,8 +1465,8 @@ end
 
 # Target expression
 class TargetExpression < AbstractExpression
-  def initialize(text, tokens, type)
-    super(text, tokens, ScalarValue)
+  def initialize(tokens, type)
+    super(nil, tokens, ScalarValue)
 
     check_length
     check_all_lengths
@@ -1601,11 +1601,32 @@ end
 
 # Abstract assignment
 class AbstractAssignment
-  def initialize(text)
+  def initialize(text, tokens)
     # parse into variable, '=', expression
+    token_lists = split_tokens(tokens)
+    line_text = tokens.map { |token| token.to_s }.join
+    fail(BASICException, "'#{line_text}' is not a valid assignment") if
+      token_lists.size != 3 || !(token_lists[1].operator? && token_lists[1].equals?)
+
     parts = text.split('=', 2)
     fail(BASICException, "'#{text}' is not a valid assignment") if
       parts.size != 2
+  end
+
+  def split_tokens(tokens)
+    results = []
+    nonkeywords = []
+    tokens.each do |token|
+      if token.operator? && token.equals?
+        results << nonkeywords if nonkeywords.size > 0
+        nonkeywords = []
+        results << token
+      else
+        nonkeywords << token
+      end
+    end
+    results << nonkeywords if nonkeywords.size > 0
+    results
   end
 
   def count_target
@@ -1627,11 +1648,12 @@ end
 
 # An assignment (part of a LET statement)
 class ScalarAssignment < AbstractAssignment
-  def initialize(text)
+  def initialize(text, tokens)
     super
     # parse into variable, '=', expression
+    token_lists = split_tokens(tokens)
     parts = text.split('=', 2)
-    @target = TargetExpression.new(parts[0], nil, ScalarReference)
+    @target = TargetExpression.new(token_lists[0], ScalarReference)
     @expression = ValueScalarExpression.new(parts[1])
   end
 
@@ -1646,11 +1668,12 @@ end
 
 # An assignment (part of a MAT LET statement)
 class MatrixAssignment < AbstractAssignment
-  def initialize(text)
+  def initialize(text, tokens)
     super
     # parse into variable, '=', expression
+    token_lists = split_tokens(tokens)
     parts = text.split('=', 2)
-    @target = TargetExpression.new(parts[0], nil, MatrixReference)
+    @target = TargetExpression.new(token_lists[0], MatrixReference)
     @functions = {
       'CON' => FunctionCon,
       'ZER' => FunctionZer,

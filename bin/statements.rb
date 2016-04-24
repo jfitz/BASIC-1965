@@ -338,7 +338,7 @@ class StatementFactory
     keywords = statement_definitions.keys + %w(TO STEP) - %w(MATPRINT MATREAD)
     keyword_tokenizer = ListTokenizer.new(keywords)
     operators = [
-      '+', '-', '*', '/', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';'
+      '+', '-', '*', '/', '^', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';'
     ]
     operator_tokenizer = ListTokenizer.new(operators)
     function_tokenizer = ListTokenizer.new(FunctionFactory.function_names)
@@ -586,7 +586,7 @@ class DimStatement < AbstractStatement
     tokens_lists.each do |tokens_list|
       begin
         @expression_list <<
-          TargetExpression.new(nil, tokens_list, VariableDimension)
+          TargetExpression.new(tokens_list, VariableDimension)
       rescue BASICException
         @errors << "Invalid variable #{tokens_list}"
       end
@@ -612,13 +612,15 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('LET', line)
+  def initialize(line, squeezed, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
     squeezed_keyword = squeeze_out_spaces('LET')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
     begin
-      @assignment = ScalarAssignment.new(@rest)
+      @assignment = ScalarAssignment.new(@rest, tokens)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end
@@ -631,7 +633,7 @@ class LetStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @assignment.to_s
+    @keyword.join(' ') + ' ' + @assignment.to_s
   end
 
   def execute_cmd(interpreter, trace)
@@ -720,7 +722,7 @@ class InputStatement < AbstractStatement
     tokens_lists.each do |tokens_list|
       begin
         expression_list <<
-          TargetExpression.new(nil, tokens_list, ScalarReference)
+          TargetExpression.new(tokens_list, ScalarReference)
       rescue BASICException
         @errors << "Invalid variable #{tokens_list}"
       end
@@ -1071,7 +1073,7 @@ class ReadStatement < AbstractStatement
     @expression_list = []
     tokens_lists.each do |tokens_list|
       begin
-        @expression_list << TargetExpression.new(nil, tokens_list, ScalarReference)
+        @expression_list << TargetExpression.new(tokens_list, ScalarReference)
       rescue BASICException
         @errors << "Invalid variable #{tokens_list}"
       end
@@ -1310,7 +1312,7 @@ class MatReadStatement < AbstractStatement
     @expression_list = []
     tokens_lists.each do |tokens_list|
       begin
-        expression = TargetExpression.new(nil, tokens_list, MatrixReference)
+        expression = TargetExpression.new(tokens_list, MatrixReference)
         @expression_list << expression
       rescue BASICException
         @errors << "Invalid variable #{tokens_list}"
@@ -1369,13 +1371,15 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('MAT', line)
+  def initialize(line, squeezed, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
     squeezed_keyword = squeeze_out_spaces('MAT')
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
     begin
-      @assignment = MatrixAssignment.new(@rest)
+      @assignment = MatrixAssignment.new(@rest, tokens)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end
@@ -1389,7 +1393,7 @@ class MatLetStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @assignment.to_s
+    @keyword.join(' ') + ' ' + @assignment.to_s
   end
 
   def execute_cmd(interpreter, trace)
