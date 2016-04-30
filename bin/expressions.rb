@@ -1431,7 +1431,7 @@ end
 
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
-  def initialize(text)
+  def initialize(text, _tokens)
     super(text, nil, ScalarValue)
   end
 
@@ -1515,7 +1515,8 @@ class UserFunctionDefinition
     user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
-    @template = ValueScalarExpression.new(parts[1])
+    tokens = nil
+    @template = ValueScalarExpression.new(parts[1], tokens)
   end
 end
 
@@ -1554,10 +1555,12 @@ class BooleanExpression
       parts.size != 3
     @operators = make_operators
 
-    @a = ValueScalarExpression.new(parts[0])
+    tokens_a = nil
+    @a = ValueScalarExpression.new(parts[0], tokens_a)
     @a_value = 'undefined'
     @operator = make_boolean_operator(parts[1])
-    @b = ValueScalarExpression.new(parts[2])
+    tokens_b = nil
+    @b = ValueScalarExpression.new(parts[2], tokens_b)
     @b_value = 'undefined'
     @result = 'undefined'
   end
@@ -1654,7 +1657,7 @@ class ScalarAssignment < AbstractAssignment
     token_lists = split_tokens(tokens)
     parts = text.split('=', 2)
     @target = TargetExpression.new(token_lists[0], ScalarReference)
-    @expression = ValueScalarExpression.new(parts[1])
+    @expression = ValueScalarExpression.new(parts[1], nil)
   end
 
   def count_value

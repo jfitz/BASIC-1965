@@ -819,7 +819,8 @@ class PrintStatement < AbstractStatement
       @print_items << TextConstant.new(print_item.strip)
     else
       begin
-        @print_items << ValueScalarExpression.new(print_item.strip)
+        tokens = nil
+        @print_items << ValueScalarExpression.new(print_item.strip, tokens)
       rescue BASICException => e
         @errors << "Invalid print item '#{print_item}': #{e.message}"
       end
@@ -1010,17 +1011,20 @@ class ForStatement < AbstractStatement
   def make_to_value(parts)
     parts = parts[1].split('TO', 2)
     fail(BASICException, 'Syntax error') if parts.size != 2
-    @start = ValueScalarExpression.new(parts[0])
+    tokens = nil
+    @start = ValueScalarExpression.new(parts[0], tokens)
     parts
   end
 
   def make_step_value(parts)
     parts = parts[1].split('STEP', 2)
-    @end = ValueScalarExpression.new(parts[0])
+    tokens_s = nil
+    tokens_e = nil
+    @end = ValueScalarExpression.new(parts[0], tokens_e)
 
     @has_step_value = parts.size > 1
-    @step_value = ValueScalarExpression.new('1')
-    @step_value = ValueScalarExpression.new(parts[1]) if parts.size > 1
+    @step_value = ValueScalarExpression.new('1', nil)
+    @step_value = ValueScalarExpression.new(parts[1], tokens_s) if parts.size > 1
   end
 end
 
