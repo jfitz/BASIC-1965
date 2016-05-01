@@ -921,12 +921,12 @@ class ForNextControl
     @current_value = start
   end
 
-  def bump_control(interpreter)
+  def bump_control(interpreter, trace)
     @current_value += @step_value
-    interpreter.set_value(@control, @current_value, false)
+    interpreter.set_value(@control, @current_value, trace)
   end
 
-  def front_terminated?
+  def front_terminated?(interpreter, trace)
     zero = NumericConstant.new(0)
     if @step_value > zero
       @start > @end
@@ -972,7 +972,7 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def execute_cmd(interpreter, _)
+  def execute_cmd(interpreter, trace)
     loop_end_number = interpreter.find_closing_next(@control.to_s)
     from_value = @start.evaluate(interpreter)[0]
     interpreter.set_value(@control, from_value, false)
@@ -982,8 +982,18 @@ class ForStatement < AbstractStatement
       ForNextControl.new(@control, interpreter.next_line_number,
                          from_value, to_value, step_value)
     interpreter.assign_fornext(fornext_control)
-    interpreter.next_line_number = loop_end_number if
-      fornext_control.front_terminated?
+    terminated = fornext_control.front_terminated?(interpreter, trace)
+    interpreter.next_line_number = loop_end_number if terminated
+    return unless trace
+    printer = interpreter.print_handler
+    s = ' ' + @start.to_s + ' = ' + from_value.to_s
+    printer.trace_output(s)
+    s = ' ' + @end.to_s + ' = ' + to_value.to_s
+    printer.trace_output(s)
+    s = ' ' + @step_value.to_s + ' = ' + step_value.to_s
+    printer.trace_output(s)
+    s = ' terminated:' + terminated.to_s
+    printer.trace_output(s)
   end
 
   private
@@ -998,9 +1008,9 @@ class ForStatement < AbstractStatement
         @errors << 'Control variable must be a variable'
       end
       if tokens[2].operator?
-        @errors << "Syntax error, missing '=' sign" unless tokens[2].equals?
+        @errors << "Missing '=' sign" unless tokens[2].equals?
       else
-        @errors << 'Syntax error, not enough items'
+        @errors << 'Not enough items'
       end
     else
       @errors << 'Syntax error'
@@ -1053,15 +1063,21 @@ class NextStatement < AbstractStatement
     @keyword.join(' ') + ' ' + @control.to_s
   end
 
-  def execute_cmd(interpreter, _)
+  def execute_cmd(interpreter, trace)
     fornext_control = interpreter.retrieve_fornext(@control)
     # check control variable value
     # if matches end value, stop here
-    return if fornext_control.terminated?(interpreter)
+    terminated = fornext_control.terminated?(interpreter)
+    if trace
+      printer = interpreter.print_handler
+      s = ' terminated:' + terminated.to_s
+      printer.trace_output(s)
+    end
+    return if terminated
     # set next line from top item
     interpreter.next_line_number = fornext_control.loop_start_number
     # change control variable value
-    fornext_control.bump_control(interpreter)
+    fornext_control.bump_control(interpreter, trace)
   end
 end
 
