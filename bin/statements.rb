@@ -142,6 +142,10 @@ class InvalidToken < AbstractToken
   def initialize(text)
     @text = text
   end
+
+  def to_s
+    'INVALID:' + @text
+  end
 end
 
 # keyword token
@@ -309,7 +313,7 @@ class StatementFactory
     return EmptyStatement.new if squeezed == ''
     return RemarkStatement.new(text) if squeezed[0..2] == 'REM'
 
-    tokens = tokenize(text)
+    tokens = tokenize(squeezed)
     keyword = statement_word(tokens)
     create_regular_statement(keyword, text, squeezed, tokens)
   end
@@ -335,7 +339,7 @@ class StatementFactory
   def tokenize(text)
     tokens = []
     invalid_tokenizer = InvalidTokenizer.new
-    keywords = statement_definitions.keys + %w(TO STEP) - %w(MATPRINT MATREAD)
+    keywords = statement_definitions.keys + %w(THEN TO STEP) - %w(MATPRINT MATREAD)
     keyword_tokenizer = ListTokenizer.new(keywords)
     operators = [
       '+', '-', '*', '/', '^', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';'
@@ -348,79 +352,57 @@ class StatementFactory
     userfunc_tokenizer = ListTokenizer.new(('FNA'..'FNZ').to_a)
     variable_tokenizer = VariableTokenizer.new
 
-    text.each_char do |c|
-      if keyword_tokenizer.try(c) ||
-         operator_tokenizer.try(c) ||
-         function_tokenizer.try(c) ||
-         text_tokenizer.try(c) ||
-         number_tokenizer.try(c) ||
-         boolean_tokenizer.try(c) ||
-         userfunc_tokenizer.try(c) ||
-         variable_tokenizer.try(c)
-        invalid_tokenizer.add(c)
-        keyword_tokenizer.add(c)
-        operator_tokenizer.add(c)
-        function_tokenizer.add(c)
-        text_tokenizer.add(c)
-        number_tokenizer.add(c)
-        boolean_tokenizer.add(c)
-        userfunc_tokenizer.add(c)
-        variable_tokenizer.add(c)
-      else
-        token = InvalidToken.new(invalid_tokenizer.token)
-        token = KeywordToken.new(keyword_tokenizer.token) if
-          keyword_tokenizer.ok
-        token = OperatorToken.new(operator_tokenizer.token) if
-          operator_tokenizer.ok
-        token = FunctionToken.new(function_tokenizer.token) if
-          function_tokenizer.ok
-        token = TextConstantToken.new(text_tokenizer.token) if
-          text_tokenizer.ok
-        token = NumericConstantToken.new(number_tokenizer.token) if
-          number_tokenizer.ok
-        token = BooleanConstantToken.new(boolean_tokenizer.token) if
-          boolean_tokenizer.ok
-        token = UserFunctionToken.new(userfunc_tokenizer.token) if
-          userfunc_tokenizer.ok
-        token = VariableToken.new(variable_tokenizer.token) if
-          variable_tokenizer.ok
-        tokens << token
-        invalid_tokenizer.reset
-        keyword_tokenizer.reset
-        operator_tokenizer.reset
-        function_tokenizer.reset
-        text_tokenizer.reset
-        number_tokenizer.reset
-        boolean_tokenizer.reset
-        userfunc_tokenizer.reset
-        variable_tokenizer.reset
-        invalid_tokenizer.add(c)
-        keyword_tokenizer.add(c)
-        operator_tokenizer.add(c)
-        function_tokenizer.add(c)
-        text_tokenizer.add(c)
-        number_tokenizer.add(c)
-        boolean_tokenizer.add(c)
-        userfunc_tokenizer.add(c)
-        variable_tokenizer.add(c)
+    while !text.nil? && text.size > 0
+      invalid_tokenizer.try(text)
+      keyword_tokenizer.try(text)
+      operator_tokenizer.try(text)
+      function_tokenizer.try(text)
+      text_tokenizer.try(text)
+      number_tokenizer.try(text)
+      boolean_tokenizer.try(text)
+      userfunc_tokenizer.try(text)
+      variable_tokenizer.try(text)
+
+      count = 0
+      if keyword_tokenizer.count > count
+        token = KeywordToken.new(keyword_tokenizer.token)
+        count = keyword_tokenizer.count
       end
+      if operator_tokenizer.count > count
+        token = OperatorToken.new(operator_tokenizer.token)
+        count = operator_tokenizer.count
+      end
+      if function_tokenizer.count > count
+        token = FunctionToken.new(function_tokenizer.token)
+        count = function_tokenizer.count
+      end
+      if text_tokenizer.count > count
+        token = TextConstantToken.new(text_tokenizer.token)
+        count = text_tokenizer.count
+      end
+      if number_tokenizer.count > count
+        token = NumericConstantToken.new(number_tokenizer.token)
+        count = number_tokenizer.count
+      end
+      if boolean_tokenizer.count > count
+        token = BooleanConstantToken.new(boolean_tokenizer.token)
+        count = boolean_tokenizer.count
+      end
+      if userfunc_tokenizer.count > count
+        token = UserFunctionToken.new(userfunc_tokenizer.token)
+        count = userfunc_tokenizer.count
+      end
+      if variable_tokenizer.count > count
+        token = VariableToken.new(variable_tokenizer.token)
+        count = variable_tokenizer.count
+      end
+      if invalid_tokenizer.count > count
+        token = InvalidToken.new(invalid_tokenizer.token)
+        count = invalid_tokenizer.count
+      end
+      tokens << token
+      text = text[count..-1]
     end
-    token = InvalidToken.new(invalid_tokenizer.token)
-    token = KeywordToken.new(keyword_tokenizer.token) if keyword_tokenizer.ok
-    token = OperatorToken.new(operator_tokenizer.token) if
-      operator_tokenizer.ok
-    token = FunctionToken.new(function_tokenizer.token) if
-      function_tokenizer.ok
-    token = TextConstantToken.new(text_tokenizer.token) if text_tokenizer.ok
-    token = NumericConstantToken.new(number_tokenizer.token) if
-      number_tokenizer.ok
-    token = BooleanConstantToken.new(boolean_tokenizer.token) if
-      boolean_tokenizer.ok
-    token = UserFunctionToken.new(userfunc_tokenizer.token) if
-      userfunc_tokenizer.ok
-    token = VariableToken.new(variable_tokenizer.token) if
-      variable_tokenizer.ok
-    tokens << token
     tokens
   end
 
@@ -487,30 +469,6 @@ class AbstractStatement
   end
 
   protected
-
-  # converts text line to constant values
-  def textline_to_constants(line)
-    values = []
-    text_values = line.split(',')
-    text_values.each do |value|
-      v = value.strip
-      fail(BASICException, "Value '#{value}' not numeric") unless
-        NumericConstant.init?(v)
-      values << NumericConstant.new(v)
-    end
-    values
-  end
-
-  # converts text line to constant values
-  def tokens_to_constants(tokens)
-    values = []
-    tokens.each do |token|
-      fail(BASICException, "Value '#{token}' not numeric") unless
-        token.numeric_constant? || (token.operator? && token.separator?)
-      values << NumericConstant.new(token.to_s) if token.numeric_constant?
-    end
-    values
-  end
 
   def make_coord(c)
     '(' + c.to_s + ')'
@@ -703,6 +661,19 @@ class InputStatement < AbstractStatement
       results << { 'name' => names[i], 'value' => values[i] }
     end
     results
+  end
+
+  # converts text line to constant values
+  def textline_to_constants(line)
+    values = []
+    text_values = line.split(',')
+    text_values.each do |value|
+      v = value.strip
+      fail(BASICException, "Value '#{value}' not numeric") unless
+        NumericConstant.init?(v)
+      values << NumericConstant.new(v)
+    end
+    values
   end
 
   def input_values
@@ -1121,15 +1092,23 @@ class DataStatement < AbstractStatement
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
-    @data_list = tokens_to_constants(tokens)
+    @expressions = []
+    tokens_lists.each do |tokens_list|
+      expr = ValueScalarExpression.new(nil, tokens_list)
+      @expressions << expr
+    end
   end
 
   def to_s
-    @keyword.join(' ') + ' ' + @data_list.join(', ')
+    @keyword.join(' ') + ' ' + @expressions.join(', ')
   end
 
   def pre_execute(interpreter)
-    interpreter.store_data(@data_list)
+    data_list = []
+    @expressions.each do |expr|
+      data_list << expr.evaluate(interpreter)[0]
+    end
+    interpreter.store_data(data_list)
   end
 
   def execute_cmd(_, _)

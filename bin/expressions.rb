@@ -3,146 +3,87 @@ class InvalidTokenizer
   attr_reader :token
 
   def initialize
-    @ok = false
-    @token = ''
   end
 
-  def add(c)
-    @token += c
+  def try(text)
+    @token = ''
+    @token += text.size > 0 ? text[0] : ''
   end
 
-  def reset
-    @token = ''
+  def count
+    @token.size
   end
 end
 
 # accept characters to match item in list
 class ListTokenizer
-  attr_reader :ok
   attr_reader :token
 
   def initialize(legals)
     @legals = legals
-    @ok = false
+  end
+
+  def try(text)
     @token = ''
-  end
-
-  def try(c)
-    candidate = c != ' ' ? @token + c : @token
-    status = false
     @legals.each do |legal|
-      status |= legal.start_with?(candidate)
+      @token = legal if text.start_with?(legal) && legal.size > @token.size
     end
-    status
   end
 
-  def add(c)
-    @token += c if c != ' '
-    status = false
-    @legals.each do |legal|
-      status |= legal.start_with?(@token)
-    end
-    @ok = @legals.include?(@token)
-  end
-
-  def reset
-    @ok = false
-    @token = ''
+  def count
+    @token.size
   end
 end
 
 # token reader for text constants
 class TextTokenizer
-  attr_reader :ok
   attr_reader :token
 
   def initialize
-    @ok = false
+  end
+
+  def try(text)
     @token = ''
+    /\A".*"/.match(text) { |m| @token = m[0] }
   end
 
-  def try(c)
-    candidate = @token + c
-    status = false
-    case candidate.count('"')
-    when 0
-      status = false
-    when 1
-      status = candidate[0] == '"'
-    when 2
-      status = candidate[0] == '"' && candidate[-1] == '"'
-    else
-      status = false
-    end
-    status
-  end
-
-  def add(c)
-    @token += c
-    @ok = @token.count('"') == 2 && @token[0] == '"' && @token[-1] == '"'
-  end
-
-  def reset
-    @ok = false
-    @token = ''
+  def count
+    @token.size
   end
 end
 
 # token reader for numeric constants
 class NumberTokenizer
-  attr_reader :ok
   attr_reader :token
 
   def initialize
-    @ok = false
+  end
+
+  def try(text)
     @token = ''
+    /\A\d+(\.\d+)?(E[+-]?\d+)?/.match(text) { |m| @token = m[0] }
   end
 
-  def try(c)
-    candidate = c != ' ' ? @token + c : @token
-    /\A\s*[+-]?\d+(E+?\d+)?\z/.match(candidate) ||
-      /\A\s*[+-]?\d+(E-\d+)?\z/.match(candidate) ||
-      /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(candidate) ||
-      /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(candidate)
-  end
-
-  def add(c)
-    @token += c if c != ' '
-    @ok = /\A\s*[+-]?\d+(E+?\d+)?\z/.match(@token) ||
-          /\A\s*[+-]?\d+(E-\d+)?\z/.match(@token) ||
-          /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(@token) ||
-          /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(@token)
-  end
-
-  def reset
-    @ok = false
-    @token = ''
+  def count
+    @token.size
   end
 end
 
 # token reader for variables
 class VariableTokenizer
-  attr_reader :ok
   attr_reader :token
 
   def initialize
-    @ok = false
+  end
+
+  def try(text)
     @token = ''
+    /\A[A-Z]/.match(text) { |m| @token = m[0] }
+    /\A[A-Z]\d/.match(text) { |m| @token = m[0] }
   end
 
-  def try(c)
-    candidate = c != ' ' ? @token + c : @token
-    /\A[A-Z]\d?\z/.match(candidate)
-  end
-
-  def add(c)
-    @token += c if c != ' '
-    @ok = /\A[A-Z]\d?\z/.match(@token)
-  end
-
-  def reset
-    @ok = false
-    @token = ''
+  def count
+    @token.size
   end
 end
 
@@ -1396,7 +1337,7 @@ class AbstractExpression
     classes.each do |c|
       element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
     end
-    fail(BASICException, "'#{token.to_s}' is not a value or operator") if element.nil?
+    fail(BASICException, "'#{token}' is not a value or operator") if element.nil?
     element
   end
 
@@ -1431,8 +1372,8 @@ end
 
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
-  def initialize(text, _tokens)
-    super(text, nil, ScalarValue)
+  def initialize(text, tokens)
+    super(text, tokens, ScalarValue)
   end
 
   def printable?
