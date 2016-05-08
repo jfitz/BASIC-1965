@@ -1107,6 +1107,7 @@ class Parser
 
   def expressions
     fail(BASICException, 'Expression error') if @operator_stack.size > 0
+    @parsed_expressions.concat @parens_group if @parens_group.size > 0
     @parsed_expressions << @current_expression
     @parsed_expressions
   end
@@ -1114,10 +1115,9 @@ class Parser
   private
 
   def stack_to_expression(stack, expression)
-    until stack[-1].starter?
+    until stack.size == 0 || stack[-1].starter?
       op = stack.pop
       expression << op
-      fail(BASICException, 'Expression error') if stack.size == 0
     end
   end
 
@@ -1181,6 +1181,7 @@ class Parser
   def end_group
     stack_to_expression(@operator_stack, @current_expression)
     @parens_group << @current_expression
+    fail(BASICException, 'Expression error') if @operator_stack.size == 0
     start_op = @operator_stack.pop  # remove the '(' or '[' starter
     if start_op.param_start?
       list = List.new(@parens_group)

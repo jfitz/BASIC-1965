@@ -1091,23 +1091,15 @@ class DataStatement < AbstractStatement
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
-    @expressions = []
-    tokens_lists.each do |tokens_list|
-      expr = ValueScalarExpression.new(nil, tokens_list)
-      @expressions << expr
-    end
+    @expressions = ValueScalarExpression.new(nil, tokens)
   end
 
   def to_s
-    @keyword.join(' ') + ' ' + @expressions.join(', ')
+    @keyword.join(' ') + ' ' + @expressions.to_s
   end
 
   def pre_execute(interpreter)
-    data_list = []
-    @expressions.each do |expr|
-      data_list << expr.evaluate(interpreter)[0]
-    end
+    data_list = @expressions.evaluate(interpreter)
     interpreter.store_data(data_list)
   end
 
