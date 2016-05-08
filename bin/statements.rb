@@ -165,6 +165,14 @@ class KeywordToken < AbstractToken
     @keyword == 'READ' || @keyword == 'PRINT'
   end
 
+  def to?
+    @keyword == 'TO'
+  end
+
+  def step?
+    @keyword == 'STEP'
+  end
+
   def to_s
     @keyword
   end
@@ -924,22 +932,21 @@ end
 # FOR statement
 class ForStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('FOR', line)
-    squeezed_keyword = squeeze_out_spaces('FOR')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
-    parts = make_control(tokens)
-    parts = make_to_value(parts)
-    make_step_value(parts)
+    tokens2 = make_control(tokens)
+    tokens3 = make_to_value(tokens2)
+    make_step_value(tokens3)
   end
 
   def to_s
     if @has_step_value
-      "#{@keyword} #{@control} = #{@start} TO #{@end} STEP #{@step_value}"
+      "#{@keyword.join(' ')} #{@control} = #{@start} TO #{@end} STEP #{@step_value}"
     else
-      "#{@keyword} #{@control} = #{@start} TO #{@end}"
+      "#{@keyword.join(' ')} #{@control} = #{@start} TO #{@end}"
     end
   end
 
@@ -969,43 +976,81 @@ class ForStatement < AbstractStatement
 
   private
 
-  def make_control(tokens)
-    parts = @rest.split('=', 2)
-    fail(BASICException, 'Syntax error') if parts.size != 2
-    if tokens.size > 3
-      if tokens[1].variable?
-        @control = VariableName.new(tokens[1])
+  def split_on_equal(tokens)
+    results = []
+    list = []
+    tokens.each do |token|
+      if token.operator? && token.equals?
+        results << list if list.size > 0
+        list = []
       else
-        @errors << 'Control variable must be a variable'
+        list << token
       end
-      if tokens[2].operator?
-        @errors << "Missing '=' sign" unless tokens[2].equals?
-      else
-        @errors << 'Not enough items'
-      end
-    else
-      @errors << 'Syntax error'
     end
-    parts
+    results << list if list.size > 0
+    results
   end
 
-  def make_to_value(parts)
-    parts = parts[1].split('TO', 2)
+  def make_control(tokens)
+    parts = split_on_equal(tokens)
     fail(BASICException, 'Syntax error') if parts.size != 2
-    tokens = nil
-    @start = ValueScalarExpression.new(parts[0], tokens)
-    parts
+    if parts[0][0].variable?
+      @control = VariableName.new(parts[0][0])
+    else
+      @errors << 'Control variable must be a variable'
+    end
+    parts[1]
   end
 
-  def make_step_value(parts)
-    parts = parts[1].split('STEP', 2)
-    tokens_s = nil
-    tokens_e = nil
-    @end = ValueScalarExpression.new(parts[0], tokens_e)
+  def split_on_to(tokens)
+    results = []
+    list = []
+    tokens.each do |token|
+      if token.keyword? && token.to?
+        results << list if list.size > 0
+        list = []
+      else
+        list << token
+      end
+    end
+    results << list if list.size > 0
+    results
+  end
+
+  def make_to_value(tokens)
+    parts = split_on_to(tokens)
+    fail(BASICException, 'Syntax error') if parts.size != 2
+    @start = ValueScalarExpression.new(nil, parts[0])
+    parts[1]
+  end
+
+  def split_on_step(tokens)
+    results = []
+    list = []
+    tokens.each do |token|
+      if token.keyword? && token.step?
+        results << list if list.size > 0
+        list = []
+      else
+        list << token
+      end
+    end
+    results << list if list.size > 0
+    results
+  end
+
+  def make_step_value(tokens)
+    parts = split_on_step(tokens)
+    tokens_e = parts[0]
+    @end = ValueScalarExpression.new(nil, tokens_e)
 
     @has_step_value = parts.size > 1
-    @step_value = ValueScalarExpression.new('1', nil)
-    @step_value = ValueScalarExpression.new(parts[1], tokens_s) if parts.size > 1
+    if @has_step_value
+      tokens_s = parts[1]
+      @step_value = ValueScalarExpression.new(nil, tokens_s) if parts.size > 1
+    else
+      @step_value = ValueScalarExpression.new(nil, [NumericConstantToken.new(1)])
+    end
   end
 end
 
