@@ -781,11 +781,7 @@ class PrintStatement < AbstractStatement
         if @print_items.size > 0 && @print_items[-1].class.to_s == 'ValueScalarExpression'
           @print_items << CarriageControl.new('')
         end
-        if token_lists.size == 1 && token_lists.class.to_s == 'TextConstantToken'
-          @print_items << TextConstant.new(token_lists[0])
-        else
-          @print_items << ValueScalarExpression.new(nil, token_lists)
-        end
+        @print_items << ValueScalarExpression.new(nil, token_lists)
       end
       previous_item = @print_items[-1]
     end
@@ -1293,7 +1289,7 @@ class MatPrintStatement < AbstractStatement
         end
       end
       if tokens_list.class.to_s == 'Array'
-        @print_items << ValueMatrixExpression.new(nil, tokens_list)
+        @print_items << ValueMatrixExpression.new(tokens_list)
       end
       previous_item = @print_items[-1]
     end

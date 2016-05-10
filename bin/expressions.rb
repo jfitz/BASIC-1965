@@ -1392,8 +1392,8 @@ end
 
 # Value matrix expression (an R-value)
 class ValueMatrixExpression < AbstractExpression
-  def initialize(text, tokens)
-    super(text, tokens, MatrixValue)
+  def initialize(tokens)
+    super(nil, tokens, MatrixValue)
   end
 
   def printable?
@@ -1631,7 +1631,7 @@ class MatrixAssignment < AbstractAssignment
     if @special_form
       @expression = parts[1]
     else
-      @expression = ValueMatrixExpression.new(nil, token_lists[2])
+      @expression = ValueMatrixExpression.new(token_lists[2])
     end
   end
 
