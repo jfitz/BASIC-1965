@@ -39,7 +39,10 @@ class ArgSplitter
     list = []
     parens_level = 0
     tokens.each do |token|
-      if token.operator? && token.separator? && parens_level == 0
+      if token.operand? && (list.size > 0 && list[-1].operand?)
+        lists << list if list.size > 0
+        list = [token]
+      elsif token.operator? && token.separator? && parens_level == 0
         lists << list if list.size > 0
         lists << token if want_separators
         list = []
@@ -132,6 +135,11 @@ class AbstractToken
 
   def variable?
     @is_variable
+  end
+
+  def operand?
+    @is_function || @is_text_constant || @is_numeric_constant ||
+    @is_boolean_constant || @is_user_function || @is_variable
   end
 end
 
@@ -752,20 +760,36 @@ end
 
 # PRINT
 class PrintStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('PRINT', line)
-    squeezed_keyword = squeeze_out_spaces('PRINT')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
-    item_list = ArgSplitter.split_text(@rest)
+  def initialize(line, squeezed, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable/constant, [separator, variable/constant]... [separator]
 
     @print_items = []
     previous_item = CarriageControl.new('')
-    item_list.each do |print_item|
-      add_print_item(print_item, previous_item)
+    tokens_lists.each do |token_lists|
+      if token_lists.class.to_s == 'OperatorToken'
+        if token_lists.separator?
+          @print_items << CarriageControl.new(token_lists.to_s)
+        else
+          fail(BASICException, 'Syntax error')
+        end
+      end
+      if token_lists.class.to_s == 'Array'
+        if @print_items.size > 0 && @print_items[-1].class.to_s == 'ValueScalarExpression'
+          @print_items << CarriageControl.new('')
+        end
+        if token_lists.size == 1 && token_lists.class.to_s == 'TextConstantToken'
+          @print_items << TextConstant.new(token_lists[0])
+        else
+          @print_items << ValueScalarExpression.new(nil, token_lists)
+        end
+      end
       previous_item = @print_items[-1]
     end
+
     add_implied_print_items
   end
 
@@ -775,7 +799,7 @@ class PrintStatement < AbstractStatement
       varnames << item.to_s
     end
     trailer = ' ' + varnames.join('')
-    @keyword + trailer.rstrip
+    @keyword.join(' ') + trailer.rstrip
   end
 
   def execute_cmd(interpreter, _)
@@ -786,29 +810,6 @@ class PrintStatement < AbstractStatement
   end
 
   private
-
-  def add_print_item(print_item, previous_item)
-    if CarriageControl.init?(print_item)
-      @print_items << CarriageControl.new(print_item)
-    else
-      # insert a plain carriage control between two printable things
-      @print_items << CarriageControl.new('') if previous_item.printable?
-      add_printable(print_item)
-    end
-  end
-
-  def add_printable(print_item)
-    if TextConstant.init?(print_item.strip)
-      @print_items << TextConstant.new(print_item.strip)
-    else
-      begin
-        tokens = nil
-        @print_items << ValueScalarExpression.new(print_item.strip, tokens)
-      rescue BASICException => e
-        @errors << "Invalid print item '#{print_item}': #{e.message}"
-      end
-    end
-  end
 
   def add_implied_print_items
     @print_items << CarriageControl.new('NL') if @print_items.size == 0

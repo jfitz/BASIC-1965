@@ -319,6 +319,10 @@ class TextConstant < AbstractElement
     @precedence = 0
   end
 
+  def evaluate(_, _)
+    self
+  end
+
   def printable?
     true
   end
@@ -327,7 +331,7 @@ class TextConstant < AbstractElement
     "\"#{@value}\""
   end
 
-  def print(printer, _)
+  def print(printer)
     printer.print_item @value
   end
 end

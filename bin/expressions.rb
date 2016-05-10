@@ -44,7 +44,7 @@ class TextTokenizer
 
   def try(text)
     @token = ''
-    /\A".*"/.match(text) { |m| @token = m[0] }
+    /\A".*?"/.match(text) { |m| @token = m[0] }
   end
 
   def count
@@ -1352,7 +1352,8 @@ class AbstractExpression
       BinaryOperator,
       NumericConstant,
       UserFunction,
-      VariableName
+      VariableName,
+      TextConstant
     ]
   end
 
@@ -1366,7 +1367,8 @@ class AbstractExpression
       UnaryOperator,
       NumericConstant,
       UserFunction,
-      VariableName
+      VariableName,
+      TextConstant
     ]
   end
 end
