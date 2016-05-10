@@ -1338,7 +1338,7 @@ class AbstractExpression
     classes.each do |c|
       element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
     end
-    fail(BASICException, "'#{token}' is not a value or operator") if element.nil?
+    fail(BASICException, "Token '#{token}' is not a value or operator") if element.nil?
     element
   end
 
@@ -1390,8 +1390,8 @@ end
 
 # Value matrix expression (an R-value)
 class ValueMatrixExpression < AbstractExpression
-  def initialize(text)
-    super(text, nil, MatrixValue)
+  def initialize(text, tokens)
+    super(text, tokens, MatrixValue)
   end
 
   def printable?
@@ -1597,9 +1597,9 @@ class ScalarAssignment < AbstractAssignment
     super
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
-    parts = text.split('=', 2)
+    fail(BASICException, 'Bad assignment') if token_lists.size != 3
     @target = TargetExpression.new(token_lists[0], ScalarReference)
-    @expression = ValueScalarExpression.new(parts[1], nil)
+    @expression = ValueScalarExpression.new(nil, token_lists[2])
   end
 
   def count_value
@@ -1618,6 +1618,7 @@ class MatrixAssignment < AbstractAssignment
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
     parts = text.split('=', 2)
+    fail(BASICException, 'Bad assignment') if token_lists.size != 3
     @target = TargetExpression.new(token_lists[0], MatrixReference)
     @functions = {
       'CON' => FunctionCon,
@@ -1628,7 +1629,7 @@ class MatrixAssignment < AbstractAssignment
     if @special_form
       @expression = parts[1]
     else
-      @expression = ValueMatrixExpression.new(parts[1])
+      @expression = ValueMatrixExpression.new(nil, token_lists[2])
     end
   end
 

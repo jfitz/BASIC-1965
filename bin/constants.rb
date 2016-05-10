@@ -110,7 +110,7 @@ end
 # separator for group or params
 class ParamSeparator < AbstractElement
   def self.init?(text)
-    text == ','
+    text == ',' || text == ';'
   end
 
   def initialize(_)

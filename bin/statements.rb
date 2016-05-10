@@ -276,6 +276,10 @@ class UserFunctionToken < AbstractToken
     @is_user_function = true
     @user_function = text
   end
+
+  def to_s
+    @user_function.to_s
+  end
 end
 
 # variable token
@@ -1270,18 +1274,26 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('MAT PRINT', line)
-    squeezed_keyword = squeeze_out_spaces('MAT PRINT')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
-    item_list = ArgSplitter.split_text(@rest)
+  def initialize(line, squeezed, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable, [separator, variable]... [separator]
 
     @print_items = []
     previous_item = CarriageControl.new('')
-    item_list.each do |print_item|
-      add_print_item(print_item, previous_item)
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'OperatorToken'
+        if tokens_list.separator?
+          @print_items << CarriageControl.new(tokens_list.to_s)
+        else
+          fail(BASICException, 'Syntax error')
+        end
+      end
+      if tokens_list.class.to_s == 'Array'
+        @print_items << ValueMatrixExpression.new(nil, tokens_list)
+      end
       previous_item = @print_items[-1]
     end
 
@@ -1294,7 +1306,7 @@ class MatPrintStatement < AbstractStatement
       varnames << item.to_s
     end
     trailer = ' ' + varnames.join('')
-    @keyword + trailer.rstrip
+    @keyword.join(' ') + trailer.rstrip
   end
 
   def execute_cmd(interpreter, _)
@@ -1313,22 +1325,6 @@ class MatPrintStatement < AbstractStatement
   end
 
   private
-
-  def add_print_item(print_item, previous_item)
-    if CarriageControl.init?(print_item)
-      # the item is a carriage control item
-      # save previous print thing, or create an empty one
-      @print_items << CarriageControl.new(print_item)
-    else
-      # insert a plain carriage control
-      @print_items << CarriageControl.new('') if previous_item.printable?
-      begin
-        @print_items << ValueMatrixExpression.new(print_item.strip)
-      rescue BASICException => e
-        @errors << "Invalid print item '#{print_item}': #{e.message}"
-      end
-    end
-  end
 
   def add_implied_print_items
     @print_items << CarriageControl.new('NL') if @print_items.size == 0
