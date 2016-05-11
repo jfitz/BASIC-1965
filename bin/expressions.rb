@@ -1493,18 +1493,15 @@ class BooleanExpression
   attr_reader :b_value
   attr_reader :result
 
-  def initialize(text)
-    parts = text.split(/([=<>]+)/)
-    fail(BASICException, "'#{text}' is not a boolean expression") if
+  def initialize(tokens)
+    parts = split_tokens(tokens)
+    fail(BASICException, "'#{tokens}' is not a boolean expression") if
       parts.size != 3
-    @operators = make_operators
 
-    tokens_a = nil
-    @a = ValueScalarExpression.new(parts[0], tokens_a)
+    @a = ValueScalarExpression.new(nil, parts[0])
     @a_value = 'undefined'
     @operator = make_boolean_operator(parts[1])
-    tokens_b = nil
-    @b = ValueScalarExpression.new(parts[2], tokens_b)
+    @b = ValueScalarExpression.new(nil, parts[2])
     @b_value = 'undefined'
     @result = 'undefined'
   end
@@ -1527,6 +1524,22 @@ class BooleanExpression
 
   private
 
+  def split_tokens(tokens)
+    results = []
+    nonkeywords = []
+    tokens.each do |token|
+      if token.operator? && token.comparison?
+        results << nonkeywords if nonkeywords.size > 0
+        nonkeywords = []
+        results << token
+      else
+        nonkeywords << token
+      end
+    end
+    results << nonkeywords if nonkeywords.size > 0
+    results
+  end
+
   def make_operators
     {
       '=' => BooleanOperatorEq,
@@ -1538,11 +1551,12 @@ class BooleanExpression
     }
   end
 
-  def make_boolean_operator(text)
-    fail(BASICException, "'#{text}' is not an operator") unless
-      @operators.key?(text)
+  def make_boolean_operator(token)
+    operators = make_operators
+    fail(BASICException, "'#{token}' is not an operator") unless
+      operators.key?(token.to_s)
 
-    @operators[text].new
+    operators[token.to_s].new
   end
 end
 

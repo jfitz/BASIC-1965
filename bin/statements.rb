@@ -181,6 +181,10 @@ class KeywordToken < AbstractToken
     @keyword == 'STEP'
   end
 
+  def isthen?
+    @keyword == 'THEN'
+  end
+
   def to_s
     @keyword
   end
@@ -209,6 +213,12 @@ class OperatorToken < AbstractToken
 
   def close?
     @operator == ')'
+  end
+
+  def comparison?
+    @operator == '<' || @operator == '<=' ||
+    @operator == '>' || @operator == '>=' ||
+    @operator == '=' || @operator == '<>'
   end
 
   def to_s
@@ -362,7 +372,7 @@ class StatementFactory
     keywords = statement_definitions.keys + %w(THEN TO STEP) - %w(MATPRINT MATREAD)
     keyword_tokenizer = ListTokenizer.new(keywords)
     operators = [
-      '+', '-', '*', '/', '^', '(', ')', '<', '<=', '=', '>=', '<>', ',', ';'
+      '+', '-', '*', '/', '^', '(', ')', '<', '<=', '=', '>', '>=', '<>', ',', ';'
     ]
     operator_tokenizer = ListTokenizer.new(operators)
     function_tokenizer = ListTokenizer.new(FunctionFactory.function_names)
@@ -725,26 +735,32 @@ end
 # IF/THEN
 class IfStatement < AbstractStatement
   def initialize(line, squeezed, tokens)
-    super('IF', line)
-    squeezed_keyword = squeeze_out_spaces('IF')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
-    parts = @rest.split('THEN')
-    begin
-      @boolean_expression = BooleanExpression.new(parts[0])
-    rescue BASICException => e
-      @errors << e.message
-      @boolean_expression = parts[0]
-    end
-    if tokens[-1].numeric_constant?
-      @destination = LineNumber.new(tokens[-1])
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
+    parts = split_keywords(tokens)
+    if parts.size == 3
+      if parts[2][0].numeric_constant?
+        @destination = LineNumber.new(parts[2][0])
+        if parts[1].keyword? && parts[1].isthen?
+          begin
+            @boolean_expression = BooleanExpression.new(parts[0])
+          rescue BASICException => e
+            @errors << e.message
+          end
+        else
+          @errors << 'Missing THEN'
+        end
+      else
+        @errors << "Invalid line number #{parts[2][0]}"
+      end
     else
-      @errors << "Invalid line number #{tokens[1]}"
+      @errors << 'Syntax error'
     end
   end
 
   def to_s
-    @keyword + ' ' + @boolean_expression.to_s + ' THEN ' + @destination.to_s
+    @keyword.join(' ') + ' ' + @boolean_expression.to_s + ' THEN ' + @destination.to_s
   end
 
   def execute_cmd(interpreter, trace)
@@ -755,6 +771,22 @@ class IfStatement < AbstractStatement
     s = ' ' + @boolean_expression.evaluated_to_s +
         ' ' + @boolean_expression.result.to_s
     printer.trace_output(s)
+  end
+
+  def split_keywords(tokens)
+    results = []
+    nonkeywords = []
+    tokens.each do |token|
+      if token.keyword?
+        results << nonkeywords if nonkeywords.size > 0
+        nonkeywords = []
+        results << token
+      else
+        nonkeywords << token
+      end
+    end
+    results << nonkeywords if nonkeywords.size > 0
+    results
   end
 end
 
