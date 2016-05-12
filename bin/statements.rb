@@ -1207,8 +1207,10 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
-  def initialize(line, squeezed, _tokens)
-    super('DEF', line)
+  def initialize(line, squeezed, tokens)
+    keyword = []
+    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    super(keyword, line)
     squeezed_keyword = squeeze_out_spaces('DEF')
     length = squeezed_keyword.length
     rest = squeezed[length..-1]
@@ -1216,7 +1218,7 @@ class DefineFunctionStatement < AbstractStatement
     @arguments = []
     @template = ''
     begin
-      user_function_definition = UserFunctionDefinition.new(rest)
+      user_function_definition = UserFunctionDefinition.new(rest, tokens)
       @name = user_function_definition.name
       @arguments = user_function_definition.arguments
       @template = user_function_definition.template
@@ -1227,7 +1229,7 @@ class DefineFunctionStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @name + "(#{@arguments.join(',')}) = " + @template.to_s
+    @keyword.join(' ') + ' ' + @name + "(#{@arguments.join(',')}) = " + @template.to_s
   end
 
   def pre_execute(interpreter)

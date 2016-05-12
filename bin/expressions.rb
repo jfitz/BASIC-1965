@@ -1451,16 +1451,37 @@ class UserFunctionDefinition
   attr_reader :arguments
   attr_reader :template
 
-  def initialize(text)
+  def initialize(text, tokens)
     # parse into name '=' expression
-    parts = text.split('=', 2)
+    line_text = tokens.map { |token| token.to_s }.join
+    parts = split_tokens(tokens)
+    fail(BASICException, "'#{line_text}' is not a valid assignment") if
+      parts.size != 3
+    parts2 = text.split('=', 2)
     fail(BASICException, "'#{text}' is not a valid assignment") if
-      parts.size != 2
-    user_function_prototype = UserFunctionPrototype.new(parts[0])
+      parts2.size != 2
+    user_function_prototype = UserFunctionPrototype.new(parts2[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
-    tokens = nil
-    @template = ValueScalarExpression.new(parts[1], tokens)
+    @template = ValueScalarExpression.new(nil, parts[2])
+  end
+
+  private
+
+  def split_tokens(tokens)
+    results = []
+    nonkeywords = []
+    tokens.each do |token|
+      if token.operator? && token.equals?
+        results << nonkeywords if nonkeywords.size > 0
+        nonkeywords = []
+        results << token
+      else
+        nonkeywords << token
+      end
+    end
+    results << nonkeywords if nonkeywords.size > 0
+    results
   end
 end
 
