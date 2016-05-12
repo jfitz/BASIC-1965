@@ -345,13 +345,13 @@ class StatementFactory
 
     tokens = tokenize(squeezed)
     keyword = statement_word(tokens)
-    create_regular_statement(keyword, text, squeezed, tokens)
+    create_regular_statement(keyword, text, tokens)
   end
 
-  def create_regular_statement(keyword, text, squeezed, tokens)
+  def create_regular_statement(keyword, text,  tokens)
     statement = UnknownStatement.new(text)
     statement =
-      @statement_definitions[keyword].new(text, squeezed, tokens) unless
+      @statement_definitions[keyword].new(text, tokens) unless
         keyword.size == 0
     statement
   end
@@ -562,7 +562,7 @@ end
 
 # DIM
 class DimStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -600,7 +600,7 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -632,7 +632,7 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -731,7 +731,7 @@ end
 
 # IF/THEN
 class IfStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -789,7 +789,7 @@ end
 
 # PRINT
 class PrintStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -849,7 +849,7 @@ end
 
 # GOTO
 class GotoStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -876,7 +876,7 @@ end
 
 # GOSUB
 class GosubStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -904,7 +904,7 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -966,7 +966,7 @@ end
 
 # FOR statement
 class ForStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1093,7 +1093,7 @@ end
 class NextStatement < AbstractStatement
   attr_reader :control
 
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1134,7 +1134,7 @@ end
 
 # READ
 class ReadStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1167,7 +1167,7 @@ end
 
 # DATA
 class DataStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1190,7 +1190,7 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1207,18 +1207,15 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
-    squeezed_keyword = squeeze_out_spaces('DEF')
-    length = squeezed_keyword.length
-    rest = squeezed[length..-1]
     @name = ''
     @arguments = []
     @template = ''
     begin
-      user_function_definition = UserFunctionDefinition.new(rest, tokens)
+      user_function_definition = UserFunctionDefinition.new(tokens)
       @name = user_function_definition.name
       @arguments = user_function_definition.arguments
       @template = user_function_definition.template
@@ -1242,7 +1239,7 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1261,7 +1258,7 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1280,7 +1277,7 @@ end
 
 # TRACE
 class TraceStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1307,7 +1304,7 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1367,7 +1364,7 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1436,7 +1433,7 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
-  def initialize(line, _, tokens)
+  def initialize(line, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)

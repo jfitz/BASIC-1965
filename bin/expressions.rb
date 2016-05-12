@@ -1439,16 +1439,13 @@ class UserFunctionDefinition
   attr_reader :arguments
   attr_reader :template
 
-  def initialize(text, tokens)
+  def initialize(tokens)
     # parse into name '=' expression
     line_text = tokens.map { |token| token.to_s }.join
     parts = split_tokens(tokens)
     fail(BASICException, "'#{line_text}' is not a valid assignment") if
       parts.size != 3
-    parts2 = text.split('=', 2)
-    fail(BASICException, "'#{text}' is not a valid assignment") if
-      parts2.size != 2
-    user_function_prototype = UserFunctionPrototype.new(parts2[0])
+    user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
     @template = ValueScalarExpression.new(parts[2])
@@ -1479,12 +1476,10 @@ class UserFunctionPrototype
   attr_reader :name
   attr_reader :arguments
 
-  def initialize(text)
-    fail(BASICException, "Invalid function specification #{text}") unless
-      /\AFN[A-Z]\([A-Z](,[A-Z])*\)\z/.match(text)
-    @name = text[0..2]
-    args = text[4..-2]
-    @arguments = args.split(',')
+  def initialize(tokens)
+    variables = check_tokens(tokens)
+    @name = tokens[0].to_s
+    @arguments = variables.map { |v| v.to_s }
     # arguments must be unique
     fail(BASICException, 'Duplicate parameters') unless
       @arguments.uniq.size == @arguments.size
@@ -1492,6 +1487,31 @@ class UserFunctionPrototype
 
   def to_s
     @name
+  end
+
+  private
+
+  # verify tokens are UserFunction, open, variables and commas, close
+  def check_tokens(tokens)
+    fail(BASICException, 'Invalid function specification') unless
+      tokens.size >= 3
+    fail(BASICException, 'Invalid function name') unless
+      tokens[0].user_function?
+    fail(BASICException, 'Invalid function specification') unless
+      tokens[1].operator? && tokens[1].open?
+    fail(BASICException, 'Invalid function specification') unless
+      tokens[-1].operator? && tokens[-1].close?
+    params = tokens[2..-2]
+    variables = params.values_at(* params.each_index.select {|i| i.even?})
+    variables.each do |variable|
+      fail(BASICException, 'Invalid parameter') unless variable.variable?
+    end
+    separators = params.values_at(* params.each_index.select {|i| i.odd?})
+    separators.each do |separator|
+      fail(BASICException, 'Invalid list separator') unless
+        separator.operator && separator.separator?
+    end
+    variables
   end
 end
 
