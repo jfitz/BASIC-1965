@@ -1231,29 +1231,17 @@ end
 
 # base class for expressions
 class AbstractExpression
-  def initialize(text, tokens, default_type)
-    if tokens.nil?
-      fail(Exception, 'Expression cannot be empty') if text.length == 0
-      @unparsed_expression = text
-    else
-      fail(Exception, 'Expression cannot be empty') if tokens.length == 0
-      @unparsed_expression = tokens.map { |token| "#{token}" }.join
-    end
+  def initialize(tokens, default_type)
+    fail(Exception, 'Expression cannot be empty') if tokens.length == 0
+    @unparsed_expression = tokens.map { |token| "#{token}" }.join
 
-    if tokens.nil?
-      split_words = split_input(text)
-      # we have split a value like '12E+3' into three parts (12E + 3)
-      # put them back into a single item
-      words = regroup(split_words)
-      elements = elementize(words)
-    else
-      elements = []
-      tokens.each do |token|
-        follows_operand = elements.size > 0 && elements[-1].operand?
-        elements << token_to_element(token, follows_operand)
-      end
-      elements << TerminalOperator.new
+    elements = []
+    tokens.each do |token|
+      follows_operand = elements.size > 0 && elements[-1].operand?
+      elements << token_to_element(token, follows_operand)
     end
+    elements << TerminalOperator.new
+
     parser = Parser.new(default_type)
     elements.each do |element|
       parser.parse(element)
@@ -1376,7 +1364,7 @@ end
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
   def initialize(tokens)
-    super(nil, tokens, ScalarValue)
+    super(tokens, ScalarValue)
   end
 
   def printable?
@@ -1393,7 +1381,7 @@ end
 # Value matrix expression (an R-value)
 class ValueMatrixExpression < AbstractExpression
   def initialize(tokens)
-    super(nil, tokens, MatrixValue)
+    super(tokens, MatrixValue)
   end
 
   def printable?
@@ -1410,7 +1398,7 @@ end
 # Target expression
 class TargetExpression < AbstractExpression
   def initialize(tokens, type)
-    super(nil, tokens, ScalarValue)
+    super(tokens, ScalarValue)
 
     check_length
     check_all_lengths
