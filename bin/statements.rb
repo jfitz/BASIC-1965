@@ -608,7 +608,7 @@ class LetStatement < AbstractStatement
     length = squeezed_keyword.length
     @rest = squeezed[length..-1]
     begin
-      @assignment = ScalarAssignment.new(@rest, tokens)
+      @assignment = ScalarAssignment.new(tokens)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end
@@ -816,9 +816,8 @@ class PrintStatement < AbstractStatement
         begin
           @print_items << ValueScalarExpression.new(nil, tokens_list)
         rescue BASICException
-          tokens = []
-          tokens_list.each { |token| tokens << token.to_s }
-          @errors << 'Syntax error: \'' + tokens.join(' ') + '\' is not a value or operator'
+          line_text = tokens.map { |token| token.to_s }.join
+          @errors << 'Syntax error: \'' + line_text + '\' is not a value or operator'
         end
       end
       previous_item = @print_items[-1]
@@ -1438,15 +1437,12 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
-    squeezed_keyword = squeeze_out_spaces('MAT')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
     begin
-      @assignment = MatrixAssignment.new(@rest, tokens)
+      @assignment = MatrixAssignment.new(tokens)
       if @assignment.count_target != 1
         @errors << 'Assignment must have only one left-hand value'
       end

@@ -1562,16 +1562,12 @@ end
 
 # Abstract assignment
 class AbstractAssignment
-  def initialize(text, tokens)
+  def initialize(tokens)
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
     line_text = tokens.map { |token| token.to_s }.join
     fail(BASICException, "'#{line_text}' is not a valid assignment") if
       token_lists.size != 3 || !(token_lists[1].operator? && token_lists[1].equals?)
-
-    parts = text.split('=', 2)
-    fail(BASICException, "'#{text}' is not a valid assignment") if
-      parts.size != 2
   end
 
   def split_tokens(tokens)
@@ -1609,7 +1605,7 @@ end
 
 # An assignment (part of a LET statement)
 class ScalarAssignment < AbstractAssignment
-  def initialize(text, tokens)
+  def initialize(tokens)
     super
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
@@ -1629,11 +1625,10 @@ end
 
 # An assignment (part of a MAT LET statement)
 class MatrixAssignment < AbstractAssignment
-  def initialize(text, tokens)
+  def initialize(tokens)
     super
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
-    parts = text.split('=', 2)
     fail(BASICException, 'Bad assignment') if token_lists.size != 3
     @target = TargetExpression.new(token_lists[0], MatrixReference)
     @functions = {
@@ -1641,9 +1636,9 @@ class MatrixAssignment < AbstractAssignment
       'ZER' => FunctionZer,
       'IDN' => FunctionIdn
     }
-    @special_form = @functions.key?(parts[1])
+    @special_form = token_lists[2].size == 1 && @functions.key?(token_lists[2][0].to_s)
     if @special_form
-      @expression = parts[1]
+      @expression = token_lists[2][0].to_s
     else
       @expression = ValueMatrixExpression.new(token_lists[2])
     end
