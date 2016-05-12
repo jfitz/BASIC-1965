@@ -600,13 +600,10 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
-    squeezed_keyword = squeeze_out_spaces('LET')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
     begin
       @assignment = ScalarAssignment.new(tokens)
       if @assignment.count_target != 1
@@ -1214,12 +1211,12 @@ class DefineFunctionStatement < AbstractStatement
     super('DEF', line)
     squeezed_keyword = squeeze_out_spaces('DEF')
     length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
+    rest = squeezed[length..-1]
     @name = ''
     @arguments = []
     @template = ''
     begin
-      user_function_definition = UserFunctionDefinition.new(@rest)
+      user_function_definition = UserFunctionDefinition.new(rest)
       @name = user_function_definition.name
       @arguments = user_function_definition.arguments
       @template = user_function_definition.template
