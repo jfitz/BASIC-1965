@@ -1375,8 +1375,8 @@ end
 
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
-  def initialize(text, tokens)
-    super(text, tokens, ScalarValue)
+  def initialize(tokens)
+    super(nil, tokens, ScalarValue)
   end
 
   def printable?
@@ -1463,7 +1463,7 @@ class UserFunctionDefinition
     user_function_prototype = UserFunctionPrototype.new(parts2[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
-    @template = ValueScalarExpression.new(nil, parts[2])
+    @template = ValueScalarExpression.new(parts[2])
   end
 
   private
@@ -1519,10 +1519,10 @@ class BooleanExpression
     fail(BASICException, "'#{tokens}' is not a boolean expression") if
       parts.size != 3
 
-    @a = ValueScalarExpression.new(nil, parts[0])
+    @a = ValueScalarExpression.new(parts[0])
     @a_value = 'undefined'
     @operator = make_boolean_operator(parts[1])
-    @b = ValueScalarExpression.new(nil, parts[2])
+    @b = ValueScalarExpression.new(parts[2])
     @b_value = 'undefined'
     @result = 'undefined'
   end
@@ -1632,7 +1632,7 @@ class ScalarAssignment < AbstractAssignment
     token_lists = split_tokens(tokens)
     fail(BASICException, 'Bad assignment') if token_lists.size != 3
     @target = TargetExpression.new(token_lists[0], ScalarReference)
-    @expression = ValueScalarExpression.new(nil, token_lists[2])
+    @expression = ValueScalarExpression.new(token_lists[2])
   end
 
   def count_value

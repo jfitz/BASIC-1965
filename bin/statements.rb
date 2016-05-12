@@ -811,7 +811,7 @@ class PrintStatement < AbstractStatement
           @print_items << CarriageControl.new('')
         end
         begin
-          @print_items << ValueScalarExpression.new(nil, tokens_list)
+          @print_items << ValueScalarExpression.new(tokens_list)
         rescue BASICException
           line_text = tokens.map { |token| token.to_s }.join
           @errors << 'Syntax error: \'' + line_text + '\' is not a value or operator'
@@ -1055,7 +1055,7 @@ class ForStatement < AbstractStatement
   def make_to_value(tokens)
     parts = split_on_to(tokens)
     fail(BASICException, 'Syntax error') if parts.size != 2
-    @start = ValueScalarExpression.new(nil, parts[0])
+    @start = ValueScalarExpression.new(parts[0])
     parts[1]
   end
 
@@ -1077,14 +1077,14 @@ class ForStatement < AbstractStatement
   def make_step_value(tokens)
     parts = split_on_step(tokens)
     tokens_e = parts[0]
-    @end = ValueScalarExpression.new(nil, tokens_e)
+    @end = ValueScalarExpression.new(tokens_e)
 
     @has_step_value = parts.size > 1
     if @has_step_value
       tokens_s = parts[1]
-      @step_value = ValueScalarExpression.new(nil, tokens_s) if parts.size > 1
+      @step_value = ValueScalarExpression.new(tokens_s) if parts.size > 1
     else
-      @step_value = ValueScalarExpression.new(nil, [NumericConstantToken.new(1)])
+      @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
     end
   end
 end
@@ -1171,7 +1171,7 @@ class DataStatement < AbstractStatement
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
-    @expressions = ValueScalarExpression.new(nil, tokens)
+    @expressions = ValueScalarExpression.new(tokens)
   end
 
   def to_s
