@@ -152,7 +152,7 @@ class InvalidToken < AbstractToken
   end
 
   def to_s
-    'INVALID:' + @text
+    @text
   end
 end
 
@@ -734,7 +734,7 @@ end
 
 # IF/THEN
 class IfStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -792,7 +792,7 @@ end
 
 # PRINT
 class PrintStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -801,19 +801,25 @@ class PrintStatement < AbstractStatement
 
     @print_items = []
     previous_item = CarriageControl.new('')
-    tokens_lists.each do |token_lists|
-      if token_lists.class.to_s == 'OperatorToken'
-        if token_lists.separator?
-          @print_items << CarriageControl.new(token_lists.to_s)
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'OperatorToken'
+        if tokens_list.separator?
+          @print_items << CarriageControl.new(tokens_list.to_s)
         else
-          fail(BASICException, 'Syntax error')
+          @errors << 'Syntax error'
         end
       end
-      if token_lists.class.to_s == 'Array'
+      if tokens_list.class.to_s == 'Array'
         if @print_items.size > 0 && @print_items[-1].class.to_s == 'ValueScalarExpression'
           @print_items << CarriageControl.new('')
         end
-        @print_items << ValueScalarExpression.new(nil, token_lists)
+        begin
+          @print_items << ValueScalarExpression.new(nil, tokens_list)
+        rescue BASICException
+          tokens = []
+          tokens_list.each { |token| tokens << token.to_s }
+          @errors << 'Syntax error: \'' + tokens.join(' ') + '\' is not a value or operator'
+        end
       end
       previous_item = @print_items[-1]
     end
@@ -964,7 +970,7 @@ end
 
 # FOR statement
 class ForStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
@@ -1303,7 +1309,7 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractStatement
-  def initialize(line, squeezed, tokens)
+  def initialize(line, _, tokens)
     keyword = []
     keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
     super(keyword, line)
