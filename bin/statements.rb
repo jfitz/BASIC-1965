@@ -117,11 +117,12 @@ class StatementFactory
     tokens = []
     invalid_tokenizer = InvalidTokenizer.new
     keywords = statement_definitions.keys + %w(THEN TO STEP) -
-      %w(MATPRINT MATREAD)
+               %w(MATPRINT MATREAD)
     keyword_tokenizer = ListTokenizer.new(keywords)
     operators = [
       '+', '-', '*', '/', '^', '(', ')',
-      '<', '<=', '=', '>', '>=', '<>', ',', ';'
+      '<', '<=', '=', '>', '>=', '<>',
+      ',', ';'
     ]
     operator_tokenizer = ListTokenizer.new(operators)
     function_tokenizer = ListTokenizer.new(FunctionFactory.function_names)
@@ -534,7 +535,6 @@ class PrintStatement < AbstractStatement
     # variable/constant, [separator, variable/constant]... [separator]
 
     @print_items = []
-    previous_item = CarriageControl.new('')
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'OperatorToken'
         if tokens_list.separator?
@@ -542,8 +542,7 @@ class PrintStatement < AbstractStatement
         else
           @errors << 'Syntax error'
         end
-      end
-      if tokens_list.class.to_s == 'Array'
+      elsif tokens_list.class.to_s == 'Array'
         if !@print_items.empty? &&
            @print_items[-1].class.to_s == 'ValueScalarExpression'
           @print_items << CarriageControl.new('')
@@ -556,7 +555,6 @@ class PrintStatement < AbstractStatement
             'Syntax error: \'' + line_text + '\' is not a value or operator'
         end
       end
-      previous_item = @print_items[-1]
     end
 
     add_implied_print_items
@@ -636,7 +634,7 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(line, tokens)
+  def initialize(line, _tokens)
     super('RETURN', line)
   end
 
@@ -912,7 +910,7 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
-  def initialize(line, tokens)
+  def initialize(line, _tokens)
     super('RESTORE', line)
   end
 
@@ -957,7 +955,7 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(line, tokens)
+  def initialize(line, _tokens)
     super('STOP', line)
   end
 
@@ -974,7 +972,7 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(line, tokens)
+  def initialize(line, _tokens)
     super('END', line)
   end
 
@@ -1020,16 +1018,13 @@ class MatPrintStatement < AbstractStatement
     # variable, [separator, variable]... [separator]
 
     @print_items = []
-    previous_item = CarriageControl.new('')
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'OperatorToken'
         raise(BASICException, 'Syntax error') unless tokens_list.separator?
         @print_items << CarriageControl.new(tokens_list.to_s)
-      end
-      if tokens_list.class.to_s == 'Array'
+      elsif tokens_list.class.to_s == 'Array'
         @print_items << ValueMatrixExpression.new(tokens_list)
       end
-      previous_item = @print_items[-1]
     end
 
     add_implied_print_items
