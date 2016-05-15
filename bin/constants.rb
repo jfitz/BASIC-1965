@@ -390,3 +390,122 @@ class CarriageControl
     end
   end
 end
+
+# Hold a variable name (not a reference or value)
+class VariableName < AbstractElement
+  def self.init?(text)
+    /\A[A-Z]\d?\z/.match(text)
+  end
+
+  def initialize(text)
+    super()
+    raise(BASICException, "'#{text}' is not a variable name") unless
+      text.class.to_s == 'VariableToken' || VariableName.init?(text)
+    @var_name = text
+    @variable = true
+    @operand = true
+    @precedence = 6
+  end
+
+  def eql?(other)
+    @var_name == other.to_s
+  end
+
+  def ==(other)
+    @var_name.to_s == other.to_s
+  end
+
+  def hash
+    @var_name.hash
+  end
+
+  def to_s
+    @var_name.to_s
+  end
+end
+
+# Hold a variable (name with possible subscripts and value)
+class Variable < AbstractElement
+  attr_reader :subscripts
+
+  def initialize(variable_name)
+    super()
+    raise(BASICException, "'#{variable_name}' is not a variable name") if
+      variable_name.class.to_s != 'VariableName'
+    @variable_name = variable_name
+    @subscripts = []
+    @variable = true
+    @operand = true
+    @precedence = 6
+  end
+
+  def name
+    @variable_name
+  end
+
+  def to_s
+    if subscripts.empty?
+      @variable_name.to_s
+    else
+      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
+    end
+  end
+end
+
+# A list (needed because it has precedence value)
+class List < AbstractElement
+  def initialize(parsed_expressions)
+    super()
+    @parsed_expressions = parsed_expressions
+    @variable = true
+    @precedence = 6
+  end
+
+  def list
+    @parsed_expressions
+  end
+
+  def evaluate(interpreter, _)
+    eval_scalar(interpreter, @parsed_expressions)
+  end
+
+  def to_s
+    "[#{@parsed_expressions.join('] [')}]"
+  end
+end
+
+# Scalar function (provides a scalar)
+class Function < AbstractElement
+  def initialize(text)
+    super()
+    @name = text
+    @function = true
+    @operand = true
+    @precedence = 6
+  end
+
+  private
+
+  def check_args(args)
+    raise(BASICException, 'No arguments for function') if
+      args.class.to_s != 'Array'
+  end
+
+  def check_value(value, type)
+    raise(BASICException,
+          "Argument #{x} #{x.class} not of type #{type.class}") if
+      value.class.to_s != type
+  end
+
+  def check_arg_types(args, types)
+    check_args(args)
+    n_types = types.size
+    n_args = args.size
+    raise(BASICException,
+          "Function #{@name} expects #{n_types} argument, found #{n_args}") if
+      n_args != n_types
+    (0..types.size - 1).each do |i|
+      check_value(args[i], types[i])
+    end
+  end
+end

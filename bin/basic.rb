@@ -6,7 +6,9 @@ require 'optparse'
 require 'exceptions'
 require 'constants'
 require 'operators'
+require 'functions'
 require 'expressions'
+require 'tokens'
 require 'statements'
 
 # Contain line numbers
