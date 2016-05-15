@@ -123,16 +123,16 @@ private
 
 def text_to_numeric(text)
   # nnn(E+nn)
-  if /\A\s*[+-]?\d+(E+?\d+)?\z/.match(text)
+  if /\A\s*[+-]?\d+(E+?\d+)?\z/ =~ text
     text.to_f.to_i
   # nnn(E-nn)
-  elsif /\A\s*[+-]?\d+(E-\d+)?\z/.match(text)
+  elsif /\A\s*[+-]?\d+(E-\d+)?\z/ =~ text
     text.to_f
   # nnn.(nnn)(E+-nn)
-  elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/.match(text)
+  elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/ =~ text
     text.to_f
   # (nnn).nnn(E+-nn)
-  elsif /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/.match(text)
+  elsif /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/ =~ text
     text.to_f
   end
 end
@@ -158,15 +158,11 @@ class NumericConstant < AbstractElement
   def initialize(text)
     super()
     numeric_classes = %w(Fixnum Bignum Float)
-    if numeric_classes.include?(text.class.to_s)
-      f = text
-    else
-      f = text_to_numeric(text)
-    end
+    f = numeric_classes.include?(text.class.to_s) ? text : text_to_numeric(text)
     @value = float_to_possible_int(f)
     @operand = true
     @precedence = 0
-    fail BASICException, "'#{text}' is not a number" if @value.nil?
+    raise BASICException, "'#{text}' is not a number" if @value.nil?
   end
 
   def ==(other)
@@ -202,7 +198,7 @@ class NumericConstant < AbstractElement
   end
 
   def /(other)
-    fail(BASICException, 'Divide by zero') if other == NumericConstant.new(0)
+    raise(BASICException, 'Divide by zero') if other == NumericConstant.new(0)
     NumericConstant.new(@value.to_f / other.to_v.to_f)
   end
 
@@ -313,7 +309,7 @@ class TextConstant < AbstractElement
     if TextConstant.init?(text)
       @value = text[1..-2]
     else
-      fail BASICException, "'#{text}' is not a text constant"
+      raise BASICException, "'#{text}' is not a text constant"
     end
     @operand = true
     @precedence = 0
@@ -342,7 +338,7 @@ class BooleanConstant < AbstractElement
 
   def initialize(text)
     super()
-    @value = text.to_s.upcase == 'ON'
+    @value = text.to_s.casecmp('ON') == 0
     @operand = true
     @precedence = 0
   end
@@ -359,7 +355,7 @@ class CarriageControl
   end
 
   def initialize(text)
-    fail(BASICException, "'#{text}' is not a valid separator") unless
+    raise(BASICException, "'#{text}' is not a valid separator") unless
       CarriageControl.init?(text)
     @operator = text
   end

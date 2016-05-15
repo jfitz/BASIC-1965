@@ -8,7 +8,7 @@ class UnaryOperator < AbstractElement
   def initialize(text)
     super()
     operators = { '+' => 5, '-' => 5 }
-    fail(BASICException, "'#{text}' is not an operator") unless
+    raise(BASICException, "'#{text}' is not an operator") unless
       operators.key?(text)
     @op = text
     @precedence = operators[@op]
@@ -125,7 +125,7 @@ class BinaryOperator < AbstractElement
   def initialize(text)
     super()
     operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
-    fail(BASICException, "'#{text}' is not an operator") unless
+    raise(BASICException, "'#{text}' is not an operator") unless
       operators.key?(text)
     @op = text
     @precedence = operators[@op]
@@ -585,7 +585,7 @@ class BinaryOperator < AbstractElement
     # verify dimensions match
     a_dims = a.dimensions
     b_dims = b.dimensions
-    fail(BASICException, 'Matrix dimensions do not match') if a_dims != b_dims
+    raise(BASICException, 'Matrix dimensions do not match') if a_dims != b_dims
     values = add_matrix_matrix_1(a, b) if a_dims.size == 1
     values = add_matrix_matrix_2(a, b) if a_dims.size == 2
     Matrix.new(a_dims, values)
@@ -624,7 +624,7 @@ class BinaryOperator < AbstractElement
     # verify dimensions match
     a_dims = a.dimensions
     b_dims = b.dimensions
-    fail(BASICException, 'Matrix dimensions do not match') if a_dims != b_dims
+    raise(BASICException, 'Matrix dimensions do not match') if a_dims != b_dims
     values = subtract_matrix_matrix_1(a, b) if a_dims.size == 1
     values = subtract_matrix_matrix_2(a, b) if a_dims.size == 2
     Matrix.new(a_dims, values)
@@ -714,7 +714,7 @@ class BinaryOperator < AbstractElement
     a_dims = a.dimensions
     b_dims = b.dimensions
     # number of columns in a must match number of rows in b
-    fail(BASICException, 'Matrix dimensions do not match') if
+    raise(BASICException, 'Matrix dimensions do not match') if
       a_dims[1] != b_dims[0]
     r_dims = [a_dims[0], b_dims[1]]
     values = multiply_matrix_matrix_work(a, b)
@@ -726,7 +726,7 @@ class BinaryOperator < AbstractElement
     new_b = array_to_vertical(b)
     new_b_dims = new_b.dimensions
     # number of columns in a must match number of rows in b
-    fail(BASICException, 'Matrix dimensions do not match') if
+    raise(BASICException, 'Matrix dimensions do not match') if
       a_dims[1] != new_b_dims[0]
     r_dims = [a_dims[0], new_b_dims[1]]
     values = multiply_matrix_matrix_work(a, new_b)
@@ -739,7 +739,7 @@ class BinaryOperator < AbstractElement
     new_a_dims = new_a.dimensions
     b_dims = b.dimensions
     # number of columns in a must match number of rows in b
-    fail(BASICException, 'Matrix dimensions do not match') if
+    raise(BASICException, 'Matrix dimensions do not match') if
       new_a_dims[1] != b_dims[0]
     r_dims = [new_a_dims[0], b_dims[1]]
     values = multiply_matrix_matrix_work(new_a, b)
@@ -756,16 +756,16 @@ class BinaryOperator < AbstractElement
     elsif dim_counts == [2, 2]
       multiply_matrix_matrix_2_2(a, b)
     else
-      fail(BASICException, 'Matrix multiplication must have two matrices')
+      raise(BASICException, 'Matrix multiplication must have two matrices')
     end
   end
 
   def divide_matrix_matrix(_, _)
-    fail BASICException, 'Cannot divide matrix by matrix'
+    raise BASICException, 'Cannot divide matrix by matrix'
   end
 
   def power_matrix_matrix(_, _)
-    fail BASICException, 'Cannot raise matrix to matrix power'
+    raise BASICException, 'Cannot raise matrix to matrix power'
   end
 end
 

@@ -22,7 +22,7 @@ class LineNumber
        LineNumber.init?(line_number)
       @line_number = line_number.to_i
     else
-      fail BASICException, 'Invalid line number'
+      raise BASICException, 'Invalid line number'
     end
   end
 
@@ -76,7 +76,7 @@ class LineNumberRange
   end
 
   def initialize(spec, program_line_numbers)
-    fail(BASICException, 'Invalid list specification') unless
+    raise(BASICException, 'Invalid list specification') unless
       LineNumberRange.init?(spec)
     parts = spec.split('-')
     start_val = LineNumber.new(parts[0])
@@ -97,7 +97,7 @@ class LineNumberCountRange
   end
 
   def initialize(spec, program_line_numbers)
-    fail(BASICException, 'Invalid list specification') unless
+    raise(BASICException, 'Invalid list specification') unless
       LineNumberCountRange.init?(spec)
 
     parts = spec.split('+')
@@ -285,7 +285,7 @@ class Interpreter
 
   def cmd_list(linespec)
     linespec = linespec.strip
-    if @program_lines.size > 0
+    if !@program_lines.empty?
       begin
         line_number_range =
           LineListSpec.new(linespec, @program_lines.keys.sort)
@@ -300,7 +300,7 @@ class Interpreter
 
   def cmd_pretty(linespec)
     linespec = linespec.strip
-    if @program_lines.size > 0
+    if !@program_lines.empty?
       begin
         line_number_range =
           LineListSpec.new(linespec, @program_lines.keys.sort)
@@ -351,10 +351,10 @@ class Interpreter
   public
 
   def cmd_delete(linespec)
-    if @program_lines.size > 0
-      delete_lines(linespec.strip)
-    else
+    if @program_lines.empty?
       puts 'No program loaded'
+    else
+      delete_lines(linespec.strip)
     end
   end
 
@@ -371,14 +371,14 @@ class Interpreter
     when :all
       puts 'Type NEW to delete an entire program'
     end
-    rescue BASICException => e
-      puts e
+  rescue BASICException => e
+    puts e
   end
 
   def verify_next_line_number(line_numbers, next_line_number)
-    fail BASICException, 'Program terminated without END' if
+    raise BASICException, 'Program terminated without END' if
       next_line_number.nil?
-    fail BASICException, "Line number #{next_line_number} not found" unless
+    raise BASICException, "Line number #{next_line_number} not found" unless
       line_numbers.include?(next_line_number)
     next_line_number
   end
@@ -390,11 +390,11 @@ class Interpreter
     @tron_flag = false
     line_numbers = @program_lines.keys.sort
 
-    if line_numbers.size > 0
+    if line_numbers.empty?
+      puts 'No program loaded'
+    else
       run_phase_1(line_numbers)
       run_phase_2(line_numbers, trace_flag)
-    else
-      puts 'No program loaded'
     end
   end
 
@@ -433,8 +433,8 @@ class Interpreter
   def execute_a_line(do_trace)
     statement = @program_lines[@current_line_number]
     print_trace_info(statement) if do_trace
-    stop_running if statement.errors.size > 0
-    print_errors(current_line_number, statement) if statement.errors.size > 0
+    stop_running unless statement.errors.empty?
+    print_errors(current_line_number, statement) unless statement.errors.empty?
     statement.execute(self, do_trace) if @running
   end
 
@@ -468,7 +468,7 @@ class Interpreter
 
   def cmd_load(filename, trace_flag)
     filename = filename.strip
-    if filename.size > 0
+    if !filename.empty?
       begin
         File.open(filename, 'r') do |file|
           @program_lines = {}
@@ -490,15 +490,15 @@ class Interpreter
   end
 
   def cmd_save(filename)
-    if @program_lines.size > 0
-      filename = filename.strip
-      if filename.size > 0
-        save_file(filename)
-      else
-        puts 'Filename not specified'
-      end
-    else
+    if @program_lines.empty?
       puts 'No program loaded'
+    else
+      filename = filename.strip
+      if filename.empty?
+        puts 'Filename not specified'
+      else
+        save_file(filename)
+      end
     end
   end
 
@@ -559,7 +559,7 @@ class Interpreter
         return line_number if statement.control == control_variable
       end
     end
-    fail(BASICException, 'FOR without NEXT') # if none found, error
+    raise(BASICException, 'FOR without NEXT') # if none found, error
   end
 
   def set_dimensions(variable, subscripts)
@@ -602,10 +602,10 @@ class Interpreter
 
   def check_subscripts(variable, subscripts)
     dimensions = make_dimensions(variable, subscripts.size)
-    fail(BASICException, 'Incorrect number of subscripts') if
+    raise(BASICException, 'Incorrect number of subscripts') if
       subscripts.size != dimensions.size
     subscripts.zip(dimensions).each do |pair|
-      fail(BASICException, "Subscript #{pair[0]} out of range #{pair[1]}") if
+      raise(BASICException, "Subscript #{pair[0]} out of range #{pair[1]}") if
         pair[0] > pair[1]
     end
   end
@@ -650,7 +650,7 @@ class Interpreter
   end
 
   def pop_return
-    fail(BASICException, 'RETURN without GOSUB') if @return_stack.size == 0
+    raise(BASICException, 'RETURN without GOSUB') if @return_stack.empty?
     @return_stack.pop
   end
 
@@ -663,7 +663,7 @@ class Interpreter
   def retrieve_fornext(control_variable)
     control_variable_name = control_variable.to_s
     fornext = @fornexts[control_variable_name]
-    fail(BASICException, 'NEXT without FOR') if fornext.nil?
+    raise(BASICException, 'NEXT without FOR') if fornext.nil?
     fornext
   end
 
@@ -672,12 +672,9 @@ class Interpreter
   end
 
   def read_data
-    if @data_index < @data_store.size
-      @data_index += 1
-      @data_store[@data_index - 1]
-    else
-      fail BASICException, 'Out of data'
-    end
+    raise BASICException, 'Out of data' if @data_index >= @data_store.size
+    @data_index += 1
+    @data_store[@data_index - 1]
   end
 
   def reset_data
@@ -699,7 +696,7 @@ class Interpreter
     until done
       print "READY\n" if need_prompt
       cmd = ascii_printables(gets)
-      if /\A\d/.match(cmd)
+      if /\A\d/ =~ cmd
         # starts with a number, so maybe it is a program line
         need_prompt = store_program_line(cmd, true)
       else
@@ -715,14 +712,14 @@ class Interpreter
     if !line_num.nil? && !statement.nil?
       @program_lines[line_num] = statement
       statement.errors.each { |error| puts error } if print_errors
-      statement.errors.size > 0
+      !statement.errors.empty?
     else
       true
     end
   end
 
   def execute_command(cmd)
-    return false if cmd.size == 0
+    return false if cmd.empty?
     return true if cmd == 'EXIT'
     cmd4 = cmd[0..3]
     cmd6 = cmd[0..5]
@@ -752,7 +749,7 @@ class Interpreter
       execute_run_command
     when 'TRACE'
       cmd_run(true)
-    when'.VARS'
+    when '.VARS'
       dump_vars
     when '.UDFS'
       dump_user_functions

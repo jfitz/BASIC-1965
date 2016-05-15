@@ -21,11 +21,11 @@ class ArgSplitter
     list = []
     parens_level = 0
     tokens.each do |token|
-      if token.operand? && (list.size > 0 && list[-1].operand?)
-        lists << list if list.size > 0
+      if token.operand? && (!list.empty? && list[-1].operand?)
+        lists << list unless list.empty?
         list = [token]
       elsif token.operator? && token.separator? && parens_level == 0
-        lists << list if list.size > 0
+        lists << list unless list.empty?
         lists << token if want_separators
         list = []
       else
@@ -34,7 +34,7 @@ class ArgSplitter
       parens_level += 1 if token.operator? && token.open?
       parens_level -= 1 if token.operator? && token.close? && parens_level > 0
     end
-    lists << list if list.size > 0
+    lists << list unless list.empty?
     lists
   end
 
@@ -58,7 +58,7 @@ class ArgSplitter
   end
 
   def self.separator(c)
-    @args << @current_arg if @current_arg.length > 0
+    @args << @current_arg unless @current_arg.empty?
     @current_arg = ''
     @args << c
   end
@@ -121,7 +121,7 @@ class AbstractToken
 
   def operand?
     @is_function || @is_text_constant || @is_numeric_constant ||
-    @is_boolean_constant || @is_user_function || @is_variable
+      @is_boolean_constant || @is_user_function || @is_variable
   end
 end
 
@@ -199,8 +199,8 @@ class OperatorToken < AbstractToken
 
   def comparison?
     @operator == '<' || @operator == '<=' ||
-    @operator == '>' || @operator == '>=' ||
-    @operator == '=' || @operator == '<>'
+      @operator == '>' || @operator == '>=' ||
+      @operator == '=' || @operator == '<>'
   end
 
   def to_s
@@ -330,11 +330,11 @@ class StatementFactory
     create_regular_statement(keyword, text, tokens)
   end
 
-  def create_regular_statement(keyword, text,  tokens)
+  def create_regular_statement(keyword, text, tokens)
     statement = UnknownStatement.new(text)
     statement =
       @statement_definitions[keyword].new(text, tokens) unless
-        keyword.size == 0
+        keyword.empty?
     statement
   end
 
@@ -351,10 +351,12 @@ class StatementFactory
   def tokenize(text)
     tokens = []
     invalid_tokenizer = InvalidTokenizer.new
-    keywords = statement_definitions.keys + %w(THEN TO STEP) - %w(MATPRINT MATREAD)
+    keywords = statement_definitions.keys + %w(THEN TO STEP) -
+      %w(MATPRINT MATREAD)
     keyword_tokenizer = ListTokenizer.new(keywords)
     operators = [
-      '+', '-', '*', '/', '^', '(', ')', '<', '<=', '=', '>', '>=', '<>', ',', ';'
+      '+', '-', '*', '/', '^', '(', ')',
+      '<', '<=', '=', '>', '>=', '<>', ',', ';'
     ]
     operator_tokenizer = ListTokenizer.new(operators)
     function_tokenizer = ListTokenizer.new(FunctionFactory.function_names)
@@ -364,7 +366,7 @@ class StatementFactory
     userfunc_tokenizer = ListTokenizer.new(('FNA'..'FNZ').to_a)
     variable_tokenizer = VariableTokenizer.new
 
-    while !text.nil? && text.size > 0
+    until text.nil? || text.empty?
       invalid_tokenizer.try(text)
       keyword_tokenizer.try(text)
       operator_tokenizer.try(text)
@@ -463,7 +465,7 @@ class AbstractStatement
   end
 
   def pretty
-    if @errors.size == 0
+    if @errors.empty?
       ' ' + to_s
     else
       @text
@@ -471,7 +473,7 @@ class AbstractStatement
   end
 
   def execute(interpreter, trace)
-    if @errors.size == 0
+    if @errors.empty?
       execute_cmd(interpreter, trace)
     else
       @errors.each do |error|
@@ -546,11 +548,11 @@ end
 class DimStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
 
-    @errors << 'No variables specified' if tokens_lists.size == 0
+    @errors << 'No variables specified' if tokens_lists.empty?
 
     @expression_list = []
     tokens_lists.each do |tokens_list|
@@ -572,8 +574,8 @@ class DimStatement < AbstractStatement
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
-      if subscripts.size == 0
-        fail BASICException, 'DIM statement requires subscript range'
+      if subscripts.empty?
+        raise BASICException, 'DIM statement requires subscript range'
       end
       interpreter.set_dimensions(variable.name, subscripts)
     end
@@ -584,7 +586,7 @@ end
 class LetStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     begin
       @assignment = ScalarAssignment.new(tokens)
@@ -616,32 +618,33 @@ end
 class InputStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # [prompt string] variable [variable]...
     @default_prompt = TextConstant.new('"? "')
     @prompt = @default_prompt
     @expression_list = []
-    if tokens_lists.length > 0
+    if tokens_lists.empty?
+      @errors << 'No variables specified'
+    else
       if tokens_lists[0][0].text_constant?
         @prompt = TextConstant.new(tokens_lists[0][0].to_s)
         tokens_lists.shift
       end
       # check variables are specified
-      if tokens_lists.length > 0
-        @expression_list = build_expression_list(tokens_lists)
-      else
+      if tokens_lists.empty?
         @errors << 'No variables specified'
+      else
+        @expression_list = build_expression_list(tokens_lists)
       end
-    else
-      @errors << 'No variables specified'
     end
   end
 
   def to_s
     if @prompt != @default_prompt
-      @keyword.join(' ') + ' ' + @prompt.to_s + ', ' + @expression_list.join(', ')
+      @keyword.join(' ') + ' ' + @prompt.to_s + ', ' +
+        @expression_list.join(', ')
     else
       @keyword.join(' ') + ' ' + @expression_list.join(', ')
     end
@@ -664,7 +667,7 @@ class InputStatement < AbstractStatement
   private
 
   def zip(names, values)
-    fail(BASICException, 'Unequal lists') if names.size != values.size
+    raise(BASICException, 'Unequal lists') if names.size != values.size
     results = []
     (0...names.size).each do |i|
       results << { 'name' => names[i], 'value' => values[i] }
@@ -678,7 +681,7 @@ class InputStatement < AbstractStatement
     text_values = line.split(',')
     text_values.each do |value|
       v = value.strip
-      fail(BASICException, "Value '#{value}' not numeric") unless
+      raise(BASICException, "Value '#{value}' not numeric") unless
         NumericConstant.init?(v)
       values << NumericConstant.new(v)
     end
@@ -715,7 +718,7 @@ end
 class IfStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     parts = split_keywords(tokens)
     if parts.size == 3
@@ -739,7 +742,8 @@ class IfStatement < AbstractStatement
   end
 
   def to_s
-    @keyword.join(' ') + ' ' + @boolean_expression.to_s + ' THEN ' + @destination.to_s
+    @keyword.join(' ') + ' ' + @boolean_expression.to_s + ' THEN ' +
+      @destination.to_s
   end
 
   def execute_cmd(interpreter, trace)
@@ -757,14 +761,14 @@ class IfStatement < AbstractStatement
     nonkeywords = []
     tokens.each do |token|
       if token.keyword?
-        results << nonkeywords if nonkeywords.size > 0
+        results << nonkeywords unless nonkeywords.empty?
         nonkeywords = []
         results << token
       else
         nonkeywords << token
       end
     end
-    results << nonkeywords if nonkeywords.size > 0
+    results << nonkeywords unless nonkeywords.empty?
     results
   end
 end
@@ -773,7 +777,7 @@ end
 class PrintStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable/constant, [separator, variable/constant]... [separator]
@@ -789,14 +793,16 @@ class PrintStatement < AbstractStatement
         end
       end
       if tokens_list.class.to_s == 'Array'
-        if @print_items.size > 0 && @print_items[-1].class.to_s == 'ValueScalarExpression'
+        if !@print_items.empty? &&
+           @print_items[-1].class.to_s == 'ValueScalarExpression'
           @print_items << CarriageControl.new('')
         end
         begin
           @print_items << ValueScalarExpression.new(tokens_list)
         rescue BASICException
-          line_text = tokens.map { |token| token.to_s }.join
-          @errors << 'Syntax error: \'' + line_text + '\' is not a value or operator'
+          line_text = tokens.map(&:to_s).join
+          @errors <<
+            'Syntax error: \'' + line_text + '\' is not a value or operator'
         end
       end
       previous_item = @print_items[-1]
@@ -824,7 +830,7 @@ class PrintStatement < AbstractStatement
   private
 
   def add_implied_print_items
-    @print_items << CarriageControl.new('NL') if @print_items.size == 0
+    @print_items << CarriageControl.new('NL') if @print_items.empty?
     @print_items << CarriageControl.new('NL') if @print_items[-1].printable?
   end
 end
@@ -833,9 +839,8 @@ end
 class GotoStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
     if tokens.size == 1
       if tokens[0].numeric_constant?
         @destination = LineNumber.new(tokens[0])
@@ -860,9 +865,8 @@ end
 class GosubStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
     if tokens.size == 1
       if tokens[0].numeric_constant?
         @destination = LineNumber.new(tokens[0])
@@ -888,7 +892,7 @@ end
 class ReturnStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
   end
 
@@ -922,7 +926,7 @@ class ForNextControl
     interpreter.set_value(@control, @current_value, trace)
   end
 
-  def front_terminated?(interpreter, trace)
+  def front_terminated?
     zero = NumericConstant.new(0)
     if @step_value > zero
       @start > @end
@@ -950,7 +954,7 @@ end
 class ForStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
@@ -961,7 +965,8 @@ class ForStatement < AbstractStatement
 
   def to_s
     if @has_step_value
-      "#{@keyword.join(' ')} #{@control} = #{@start} TO #{@end} STEP #{@step_value}"
+      "#{@keyword.join(' ')} #{@control} = #{@start} TO #{@end}" +
+        " STEP #{@step_value}"
     else
       "#{@keyword.join(' ')} #{@control} = #{@start} TO #{@end}"
     end
@@ -977,7 +982,7 @@ class ForStatement < AbstractStatement
       ForNextControl.new(@control, interpreter.next_line_number,
                          from_value, to_value, step_value)
     interpreter.assign_fornext(fornext_control)
-    terminated = fornext_control.front_terminated?(interpreter, trace)
+    terminated = fornext_control.front_terminated?
     interpreter.next_line_number = loop_end_number if terminated
     return unless trace
     printer = interpreter.print_handler
@@ -998,19 +1003,19 @@ class ForStatement < AbstractStatement
     list = []
     tokens.each do |token|
       if token.operator? && token.equals?
-        results << list if list.size > 0
+        results << list unless list.empty?
         list = []
       else
         list << token
       end
     end
-    results << list if list.size > 0
+    results << list unless list.empty?
     results
   end
 
   def make_control(tokens)
     parts = split_on_equal(tokens)
-    fail(BASICException, 'Syntax error') if parts.size != 2
+    raise(BASICException, 'Syntax error') if parts.size != 2
     if parts[0][0].variable?
       @control = VariableName.new(parts[0][0])
     else
@@ -1024,19 +1029,19 @@ class ForStatement < AbstractStatement
     list = []
     tokens.each do |token|
       if token.keyword? && token.to?
-        results << list if list.size > 0
+        results << list unless list.empty?
         list = []
       else
         list << token
       end
     end
-    results << list if list.size > 0
+    results << list unless list.empty?
     results
   end
 
   def make_to_value(tokens)
     parts = split_on_to(tokens)
-    fail(BASICException, 'Syntax error') if parts.size != 2
+    raise(BASICException, 'Syntax error') if parts.size != 2
     @start = ValueScalarExpression.new(parts[0])
     parts[1]
   end
@@ -1046,13 +1051,13 @@ class ForStatement < AbstractStatement
     list = []
     tokens.each do |token|
       if token.keyword? && token.step?
-        results << list if list.size > 0
+        results << list unless list.empty?
         list = []
       else
         list << token
       end
     end
-    results << list if list.size > 0
+    results << list unless list.empty?
     results
   end
 
@@ -1077,7 +1082,7 @@ class NextStatement < AbstractStatement
 
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     # parse control variable
     @control = nil
@@ -1118,7 +1123,7 @@ end
 class ReadStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # variable [variable]...
@@ -1151,7 +1156,7 @@ end
 class DataStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     @expressions = ValueScalarExpression.new(tokens)
   end
@@ -1174,7 +1179,7 @@ end
 class RestoreStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
   end
 
@@ -1191,7 +1196,7 @@ end
 class DefineFunctionStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     @name = ''
     @arguments = []
@@ -1208,7 +1213,8 @@ class DefineFunctionStatement < AbstractStatement
   end
 
   def to_s
-    @keyword.join(' ') + ' ' + @name + "(#{@arguments.join(',')}) = " + @template.to_s
+    @keyword.join(' ') + ' ' + @name + "(#{@arguments.join(',')}) = " +
+      @template.to_s
   end
 
   def pre_execute(interpreter)
@@ -1223,7 +1229,7 @@ end
 class StopStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
   end
 
@@ -1242,7 +1248,7 @@ end
 class EndStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
   end
 
@@ -1261,17 +1267,15 @@ end
 class TraceStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
-    if tokens_lists.size > 0
-      if tokens_lists[0][0].boolean_constant?
-        @operation = BooleanConstant.new(tokens_lists[0][0])
-      else
-        @errors << "Syntax error, '#{tokens_lists[0][0]}' not boolean"
-      end
-    else
+    if tokens_lists.empty?
       @errors << 'Syntax error'
+    elsif tokens_lists[0][0].boolean_constant?
+      @operation = BooleanConstant.new(tokens_lists[0][0])
+    else
+      @errors << "Syntax error, '#{tokens_lists[0][0]}' not boolean"
     end
   end
 
@@ -1288,7 +1292,7 @@ end
 class MatPrintStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable, [separator, variable]... [separator]
@@ -1297,11 +1301,8 @@ class MatPrintStatement < AbstractStatement
     previous_item = CarriageControl.new('')
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'OperatorToken'
-        if tokens_list.separator?
-          @print_items << CarriageControl.new(tokens_list.to_s)
-        else
-          fail(BASICException, 'Syntax error')
-        end
+        raise(BASICException, 'Syntax error') unless tokens_list.separator?
+        @print_items << CarriageControl.new(tokens_list.to_s)
       end
       if tokens_list.class.to_s == 'Array'
         @print_items << ValueMatrixExpression.new(tokens_list)
@@ -1339,7 +1340,7 @@ class MatPrintStatement < AbstractStatement
   private
 
   def add_implied_print_items
-    @print_items << CarriageControl.new('NL') if @print_items.size == 0
+    @print_items << CarriageControl.new('NL') if @print_items.empty?
     @print_items << CarriageControl.new(',') if @print_items[-1].printable?
   end
 end
@@ -1348,7 +1349,7 @@ end
 class MatReadStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # variable [variable]...
@@ -1390,7 +1391,7 @@ class MatReadStatement < AbstractStatement
     when 2
       read_matrix(name, dims, interpreter, trace)
     else
-      fail(BASICException, 'Dimensions for MAT READ must be 1 or 2')
+      raise(BASICException, 'Dimensions for MAT READ must be 1 or 2')
     end
   end
 
@@ -1417,7 +1418,7 @@ end
 class MatLetStatement < AbstractStatement
   def initialize(line, tokens)
     keyword = []
-    keyword << tokens.shift.to_s while tokens.size > 0 && tokens[0].keyword?
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super(keyword, line)
     begin
       @assignment = MatrixAssignment.new(tokens)
@@ -1458,7 +1459,7 @@ class MatLetStatement < AbstractStatement
   def first_value(interpreter)
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
-    fail(BASICException, 'Expected Matrix') if r_value.class.to_s != 'Matrix'
+    raise(BASICException, 'Expected Matrix') if r_value.class.to_s != 'Matrix'
     r_value
   end
 end

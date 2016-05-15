@@ -7,7 +7,7 @@ class InvalidTokenizer
 
   def try(text)
     @token = ''
-    @token += text.size > 0 ? text[0] : ''
+    @token += text.empty? ? '' : text[0]
   end
 
   def count
@@ -95,7 +95,7 @@ class VariableName < AbstractElement
 
   def initialize(text)
     super()
-    fail(BASICException, "'#{text}' is not a variable name") unless
+    raise(BASICException, "'#{text}' is not a variable name") unless
       text.class.to_s == 'VariableToken' || VariableName.init?(text)
     @var_name = text
     @variable = true
@@ -126,7 +126,7 @@ class Variable < AbstractElement
 
   def initialize(variable_name)
     super()
-    fail(BASICException, "'#{variable_name}' is not a variable name") if
+    raise(BASICException, "'#{variable_name}' is not a variable name") if
       variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
     @subscripts = []
@@ -140,10 +140,10 @@ class Variable < AbstractElement
   end
 
   def to_s
-    if subscripts.length > 0
-      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
-    else
+    if subscripts.empty?
       @variable_name.to_s
+    else
+      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
     end
   end
 end
@@ -157,15 +157,14 @@ class ScalarValue < Variable
   private
 
   def previous_is_array(stack)
-    stack.size > 0 && stack[-1].class.to_s == 'Array'
+    !stack.empty? && stack[-1].class.to_s == 'Array'
   end
 
   def get_subscripts(stack)
     subscripts = stack.pop
-    num_args = subscripts.length
-    fail(Exception,
-         'Variable expects subscripts, found empty parentheses') if
-      num_args == 0
+    raise(Exception,
+          'Variable expects subscripts, found empty parentheses') if
+      subscripts.empty?
     subscripts
   end
 
@@ -196,11 +195,11 @@ class ScalarReference < Variable
 
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
-    if stack.size > 0 && stack[-1].class.to_s == 'Array'
+    if !stack.empty? && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(BASICException,
-           'Variable expects subscripts, found empty parentheses') if
+      raise(BASICException,
+            'Variable expects subscripts, found empty parentheses') if
         num_args == 0
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
@@ -266,18 +265,18 @@ class Matrix
   def print(printer, interpreter, carriage)
     case @dimensions.size
     when 0
-      fail BASICException, 'Need dimensions in matrix'
+      raise BASICException, 'Need dimensions in matrix'
     when 1
       print_1(printer, interpreter, carriage)
     when 2
       print_2(printer, interpreter, carriage)
     else
-      fail BASICException, 'Too many dimensions in matrix'
+      raise BASICException, 'Too many dimensions in matrix'
     end
   end
 
   def transpose_values
-    fail(BASICException, 'TRN requires matrix') unless @dimensions.size == 2
+    raise(BASICException, 'TRN requires matrix') unless @dimensions.size == 2
     new_values = {}
     (1..@dimensions[0].to_i).each do |row|
       (1..@dimensions[1].to_i).each do |col|
@@ -290,8 +289,8 @@ class Matrix
   end
 
   def determinant
-    fail(BASICException, 'DET requires matrix') unless @dimensions.size == 2
-    fail(BASICException, 'DET requires square matrix') if
+    raise(BASICException, 'DET requires matrix') unless @dimensions.size == 2
+    raise(BASICException, 'DET requires square matrix') if
       @dimensions[1] != @dimensions[0]
     case @dimensions[0].to_i
     when 1
@@ -524,7 +523,7 @@ class MatrixValue < Variable
 
   def evaluate(interpreter, _)
     dims = interpreter.get_dimensions(@variable_name)
-    fail(BASICException, 'Variable has no dimensions') if dims.nil?
+    raise(BASICException, 'Variable has no dimensions') if dims.nil?
     values = evaluate_n(interpreter, dims)
     Matrix.new(dims, values)
   end
@@ -569,7 +568,7 @@ class MatrixReference < Variable
   end
 
   def dimensions?
-    @subscripts.size > 0
+    !@subscripts.empty?
   end
 
   def dimensions
@@ -578,11 +577,11 @@ class MatrixReference < Variable
 
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
-    if stack.size > 0 && stack[-1].class.to_s == 'Array'
+    if !stack.empty? && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(BASICException,
-           'Variable expects subscripts, found empty parentheses') if
+      raise(BASICException,
+            'Variable expects subscripts, found empty parentheses') if
         num_args == 0
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
@@ -598,11 +597,11 @@ class VariableDimension < Variable
 
   # return a single value, a reference to this object
   def evaluate(_, stack)
-    if stack.size > 0 && stack[-1].class.to_s == 'Array'
+    if !stack.empty? && stack[-1].class.to_s == 'Array'
       @subscripts = stack.pop
       num_args = @subscripts.length
-      fail(BASICException,
-           'Variable expects subscripts, found empty parentheses') if
+      raise(BASICException,
+            'Variable expects subscripts, found empty parentheses') if
         num_args == 0
     end
     self
@@ -644,13 +643,13 @@ class Function < AbstractElement
   private
 
   def check_args(args)
-    fail(BASICException, 'No arguments for function') if
+    raise(BASICException, 'No arguments for function') if
       args.class.to_s != 'Array'
   end
 
   def check_value(value, type)
-    fail(BASICException,
-         "Argument #{x} #{x.class} not of type #{type.class}") if
+    raise(BASICException,
+          "Argument #{x} #{x.class} not of type #{type.class}") if
       value.class.to_s != type
   end
 
@@ -658,8 +657,8 @@ class Function < AbstractElement
     check_args(args)
     n_types = types.size
     n_args = args.size
-    fail(BASICException,
-         "Function #{@name} expects #{n_types} argument, found #{n_args}") if
+    raise(BASICException,
+          "Function #{@name} expects #{n_types} argument, found #{n_args}") if
       n_args != n_types
     (0..types.size - 1).each do |i|
       check_value(args[i], types[i])
@@ -698,7 +697,7 @@ class FunctionInt < AbstractScalarFunction
   # return a single value
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'INT requires single value') if args.size != 1
+    raise(BASICException, 'INT requires single value') if args.size != 1
     check_arg_types(args, ['NumericConstant'])
     args[0].truncate
   end
@@ -713,9 +712,9 @@ class FunctionRnd < AbstractScalarFunction
   # return a single value
   def evaluate(interpreter, stack)
     args = stack.pop
-    fail(BASICException, 'Zero or one argument required for RND()') unless
+    raise(BASICException, 'Zero or one argument required for RND()') unless
       args.size == 1 || args.size == 2
-    x = NumericConstant.new(100) if args.size == 0
+    x = NumericConstant.new(100) if args.empty?
     if args.size == 1
       check_arg_types(args, ['NumericConstant'])
       x = args[0]
@@ -732,7 +731,7 @@ class FunctionExp < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for EXP()') unless
+    raise(BASICException, 'One argument required for EXP()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].exp
@@ -747,7 +746,7 @@ class FunctionLog < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for LOG()') unless
+    raise(BASICException, 'One argument required for LOG()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].log
@@ -762,7 +761,7 @@ class FunctionAbs < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for ABS()') unless
+    raise(BASICException, 'One argument required for ABS()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].abs
@@ -777,7 +776,7 @@ class FunctionSqr < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for SQR()') unless
+    raise(BASICException, 'One argument required for SQR()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].sqrt
@@ -792,7 +791,7 @@ class FunctionSin < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for SIN()') unless
+    raise(BASICException, 'One argument required for SIN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].sin
@@ -807,7 +806,7 @@ class FunctionCos < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for COS()') unless
+    raise(BASICException, 'One argument required for COS()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].cos
@@ -822,7 +821,7 @@ class FunctionTan < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for TAN()') unless
+    raise(BASICException, 'One argument required for TAN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].tan
@@ -837,7 +836,7 @@ class FunctionAtn < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for ATN()') unless
+    raise(BASICException, 'One argument required for ATN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].atn
@@ -852,7 +851,7 @@ class FunctionSgn < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for SGN()') unless
+    raise(BASICException, 'One argument required for SGN()') unless
       args.size == 1
     check_arg_types(args, ['NumericConstant'])
     args[0].sign
@@ -867,7 +866,7 @@ class FunctionTrn < AbstractMatrixFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for TRN()') unless
+    raise(BASICException, 'One argument required for TRN()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
     dims = args[0].dimensions
@@ -884,7 +883,7 @@ class FunctionZer < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One or two arguments required for ZER()') unless
+    raise(BASICException, 'One or two arguments required for ZER()') unless
       args.size == 1 || args.size == 2
     check_arg_types(args, ['NumericConstant'] * args.size)
     matrix = Matrix.new(args.clone, {})
@@ -900,7 +899,7 @@ class FunctionCon < AbstractScalarFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One or two arguments required for CON()') unless
+    raise(BASICException, 'One or two arguments required for CON()') unless
       args.size == 1 || args.size == 2
     check_arg_types(args, ['NumericConstant'] * args.size)
     matrix = Matrix.new(args.clone, {})
@@ -925,10 +924,10 @@ class FunctionIdn < AbstractScalarFunction
   private
 
   def check(args)
-    fail(BASICException, 'One or two arguments required for IDN()') unless
+    raise(BASICException, 'One or two arguments required for IDN()') unless
       args.size == 1 || args.size == 2
     check_arg_types(args, ['NumericConstant'] * args.size)
-    fail(BASICException, 'IDN requires square matrix') if
+    raise(BASICException, 'IDN requires square matrix') if
       args.size == 2 && args[1] != args[0]
   end
 end
@@ -941,7 +940,7 @@ class FunctionDet < AbstractMatrixFunction
 
   def evaluate(_, stack)
     args = stack.pop
-    fail(BASICException, 'One argument required for DET()') unless
+    raise(BASICException, 'One argument required for DET()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
     args[0].determinant
@@ -965,14 +964,14 @@ class FunctionInv < AbstractMatrixFunction
   private
 
   def check(args)
-    fail(BASICException, 'One argument required for INV()') unless
+    raise(BASICException, 'One argument required for INV()') unless
       args.size == 1
     check_arg_types(args, ['Matrix'])
   end
 
   def check_2(dims)
-    fail(BASICException, 'INV requires matrix') unless dims.size == 2
-    fail(BASICException, 'INV requires square matrix') if dims[1] != dims[0]
+    raise(BASICException, 'INV requires matrix') unless dims.size == 2
+    raise(BASICException, 'INV requires square matrix') if dims[1] != dims[0]
   end
 end
 
@@ -1018,7 +1017,7 @@ class UserFunction < AbstractScalarFunction
   end
 
   def initialize(text)
-    fail(BASICException, "'#{text}' is not a valid function") unless
+    raise(BASICException, "'#{text}' is not a valid function") unless
       UserFunction.init?(text)
     super
   end
@@ -1027,11 +1026,11 @@ class UserFunction < AbstractScalarFunction
   def evaluate(interpreter, stack)
     expression = interpreter.get_user_function(@name)
     # verify function is defined
-    fail(BASICException, "Function #{@name} not defined") if expression.nil?
+    raise(BASICException, "Function #{@name} not defined") if expression.nil?
 
     # verify arguments
     user_var_values = stack.pop
-    fail(BASICException, 'No arguments for function') if
+    raise(BASICException, 'No arguments for function') if
       user_var_values.class.to_s != 'Array'
     check_arg_types(user_var_values,
                     ['NumericConstant'] * user_var_values.length)
@@ -1054,20 +1053,20 @@ def eval_scalar(interpreter, parsed_expressions)
     end
     # should be only one item on stack
     # actual = stack.length
-    # fail(Exception,
+    # raise(Exception,
     #      "Expected #{expected} items, "
     #      "#{actual} remaining on evaluation stack") if
     #  actual != expected
     # very each item is of correct type
     item = stack[0]
-    # fail(Exception,
+    # raise(Exception,
     #      "Expected item #{expected_result_class}, "
     #      "found item type #{item.class} remaining on evaluation stack") if
     #  item.class.to_s != expected_result_class
     result_values << item unless item.nil?
   end
   # actual = result_values.length
-  # fail(Exception,
+  # raise(Exception,
   #      "Expected #{expected} items, "
   #      "#{actual} remaining on evaluation stack") if
   #   actual != expected
@@ -1088,7 +1087,7 @@ class Parser
   end
 
   def parse(element)
-    fail(BASICException, 'Function requires parentheses') if
+    raise(BASICException, 'Function requires parentheses') if
       !element.group_start? && @previous_element.function?
 
     if element.group_separator?
@@ -1106,8 +1105,8 @@ class Parser
   end
 
   def expressions
-    fail(BASICException, 'Expression error') if @operator_stack.size > 0
-    @parsed_expressions.concat @parens_group if @parens_group.size > 0
+    raise(BASICException, 'Expression error') unless @operator_stack.empty?
+    @parsed_expressions.concat @parens_group unless @parens_group.empty?
     @parsed_expressions << @current_expression
     @parsed_expressions
   end
@@ -1115,14 +1114,14 @@ class Parser
   private
 
   def stack_to_expression(stack, expression)
-    until stack.size == 0 || stack[-1].starter?
+    until stack.empty? || stack[-1].starter?
       op = stack.pop
       expression << op
     end
   end
 
   def stack_to_precedence(stack, expression, element)
-    while stack.size > 0 &&
+    while !stack.empty? &&
           !stack[-1].starter? &&
           stack[-1].precedence >= element.precedence
       op = stack.pop
@@ -1181,8 +1180,9 @@ class Parser
   def end_group
     stack_to_expression(@operator_stack, @current_expression)
     @parens_group << @current_expression
-    fail(BASICException, 'Expression error') if @operator_stack.size == 0
-    start_op = @operator_stack.pop  # remove the '(' or '[' starter
+    raise(BASICException, 'Expression error') if @operator_stack.empty?
+    # remove the '(' or '[' starter
+    start_op = @operator_stack.pop
     if start_op.param_start?
       list = List.new(@parens_group)
       @operator_stack.push(list)
@@ -1232,12 +1232,12 @@ end
 # base class for expressions
 class AbstractExpression
   def initialize(tokens, default_type)
-    fail(Exception, 'Expression cannot be empty') if tokens.length == 0
-    @unparsed_expression = tokens.map { |token| "#{token}" }.join
+    raise(Exception, 'Expression cannot be empty') if tokens.empty?
+    @unparsed_expression = tokens.map(&:to_s).join
 
     elements = []
     tokens.each do |token|
-      follows_operand = elements.size > 0 && elements[-1].operand?
+      follows_operand = !elements.empty? && elements[-1].operand?
       elements << token_to_element(token, follows_operand)
     end
     elements << TerminalOperator.new
@@ -1260,7 +1260,7 @@ class AbstractExpression
   # returns an Array of values
   def evaluate(interpreter)
     values = eval_scalar(interpreter, @parsed_expressions)
-    fail(Exception, 'Expected some values') if values.length == 0
+    raise(Exception, 'Expected some values') if values.empty?
     values
   end
 
@@ -1282,7 +1282,7 @@ class AbstractExpression
 
   def regroup(short_parts)
     regrouped_parts = []
-    while short_parts.size > 0
+    until short_parts.empty?
       first_three = short_parts[0..2].join('')
       if short_parts.size >= 3 && NumericConstant.init?(first_three)
         regrouped_parts << first_three
@@ -1299,7 +1299,7 @@ class AbstractExpression
     elements = []
     # convert elements to objects
     words.each do |word|
-      follows_operand = elements.size > 0 && elements[-1].operand?
+      follows_operand = !elements.empty? && elements[-1].operand?
       elements << make_element(word, follows_operand)
     end
     elements << TerminalOperator.new
@@ -1313,7 +1313,8 @@ class AbstractExpression
     classes.each do |c|
       element = c.new(word) if element.nil? && c.init?(word)
     end
-    fail(BASICException, "'#{word}' is not a value or operator") if element.nil?
+    raise(BASICException, "'#{word}' is not a value or operator") if
+      element.nil?
     element
   end
 
@@ -1326,7 +1327,8 @@ class AbstractExpression
     classes.each do |c|
       element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
     end
-    fail(BASICException, "Token '#{token}' is not a value or operator") if element.nil?
+    raise(BASICException, "Token '#{token}' is not a value or operator") if
+      element.nil?
     element
   end
 
@@ -1412,21 +1414,21 @@ class TargetExpression < AbstractExpression
   private
 
   def check_length
-    fail(BASICException, 'Value list is empty (length 0)') if
-      @parsed_expressions.length == 0
+    raise(BASICException, 'Value list is empty (length 0)') if
+      @parsed_expressions.empty?
   end
 
   def check_all_lengths
     @parsed_expressions.each do |parsed_expression|
-      fail(BASICException, 'Value is not assignable (length 0)') if
-        parsed_expression.length == 0
+      raise(BASICException, 'Value is not assignable (length 0)') if
+        parsed_expression.empty?
     end
   end
 
   def check_resolve_types
     @parsed_expressions.each do |parsed_expression|
-      fail(BASICException,
-           "Value is not assignable (type #{parsed_expression[-1].class})") if
+      raise(BASICException,
+            "Value is not assignable (type #{parsed_expression[-1].class})") if
         parsed_expression[-1].class.to_s != 'ScalarValue'
     end
   end
@@ -1441,9 +1443,9 @@ class UserFunctionDefinition
 
   def initialize(tokens)
     # parse into name '=' expression
-    line_text = tokens.map { |token| token.to_s }.join
+    line_text = tokens.map(&:to_s).join
     parts = split_tokens(tokens)
-    fail(BASICException, "'#{line_text}' is not a valid assignment") if
+    raise(BASICException, "'#{line_text}' is not a valid assignment") if
       parts.size != 3
     user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
@@ -1458,14 +1460,14 @@ class UserFunctionDefinition
     nonkeywords = []
     tokens.each do |token|
       if token.operator? && token.equals?
-        results << nonkeywords if nonkeywords.size > 0
+        results << nonkeywords unless nonkeywords.empty?
         nonkeywords = []
         results << token
       else
         nonkeywords << token
       end
     end
-    results << nonkeywords if nonkeywords.size > 0
+    results << nonkeywords unless nonkeywords.empty?
     results
   end
 end
@@ -1479,9 +1481,9 @@ class UserFunctionPrototype
   def initialize(tokens)
     variables = check_tokens(tokens)
     @name = tokens[0].to_s
-    @arguments = variables.map { |v| v.to_s }
+    @arguments = variables.map(&:to_s)
     # arguments must be unique
-    fail(BASICException, 'Duplicate parameters') unless
+    raise(BASICException, 'Duplicate parameters') unless
       @arguments.uniq.size == @arguments.size
   end
 
@@ -1493,22 +1495,22 @@ class UserFunctionPrototype
 
   # verify tokens are UserFunction, open, variables and commas, close
   def check_tokens(tokens)
-    fail(BASICException, 'Invalid function specification') unless
+    raise(BASICException, 'Invalid function specification') unless
       tokens.size >= 3
-    fail(BASICException, 'Invalid function name') unless
+    raise(BASICException, 'Invalid function name') unless
       tokens[0].user_function?
-    fail(BASICException, 'Invalid function specification') unless
+    raise(BASICException, 'Invalid function specification') unless
       tokens[1].operator? && tokens[1].open?
-    fail(BASICException, 'Invalid function specification') unless
+    raise(BASICException, 'Invalid function specification') unless
       tokens[-1].operator? && tokens[-1].close?
     params = tokens[2..-2]
-    variables = params.values_at(* params.each_index.select {|i| i.even?})
+    variables = params.values_at(* params.each_index.select(&:even?))
     variables.each do |variable|
-      fail(BASICException, 'Invalid parameter') unless variable.variable?
+      raise(BASICException, 'Invalid parameter') unless variable.variable?
     end
-    separators = params.values_at(* params.each_index.select {|i| i.odd?})
+    separators = params.values_at(* params.each_index.select(&:odd?))
     separators.each do |separator|
-      fail(BASICException, 'Invalid list separator') unless
+      raise(BASICException, 'Invalid list separator') unless
         separator.operator && separator.separator?
     end
     variables
@@ -1524,7 +1526,7 @@ class BooleanExpression
 
   def initialize(tokens)
     parts = split_tokens(tokens)
-    fail(BASICException, "'#{tokens}' is not a boolean expression") if
+    raise(BASICException, "'#{tokens}' is not a boolean expression") if
       parts.size != 3
 
     @a = ValueScalarExpression.new(parts[0])
@@ -1558,14 +1560,14 @@ class BooleanExpression
     nonkeywords = []
     tokens.each do |token|
       if token.operator? && token.comparison?
-        results << nonkeywords if nonkeywords.size > 0
+        results << nonkeywords unless nonkeywords.empty?
         nonkeywords = []
         results << token
       else
         nonkeywords << token
       end
     end
-    results << nonkeywords if nonkeywords.size > 0
+    results << nonkeywords unless nonkeywords.empty?
     results
   end
 
@@ -1582,7 +1584,7 @@ class BooleanExpression
 
   def make_boolean_operator(token)
     operators = make_operators
-    fail(BASICException, "'#{token}' is not an operator") unless
+    raise(BASICException, "'#{token}' is not an operator") unless
       operators.key?(token.to_s)
 
     operators[token.to_s].new
@@ -1594,9 +1596,10 @@ class AbstractAssignment
   def initialize(tokens)
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
-    line_text = tokens.map { |token| token.to_s }.join
-    fail(BASICException, "'#{line_text}' is not a valid assignment") if
-      token_lists.size != 3 || !(token_lists[1].operator? && token_lists[1].equals?)
+    line_text = tokens.map(&:to_s).join
+    raise(BASICException, "'#{line_text}' is not a valid assignment") if
+      token_lists.size != 3 ||
+      !(token_lists[1].operator? && token_lists[1].equals?)
   end
 
   def split_tokens(tokens)
@@ -1604,14 +1607,14 @@ class AbstractAssignment
     nonkeywords = []
     tokens.each do |token|
       if token.operator? && token.equals?
-        results << nonkeywords if nonkeywords.size > 0
+        results << nonkeywords unless nonkeywords.empty?
         nonkeywords = []
         results << token
       else
         nonkeywords << token
       end
     end
-    results << nonkeywords if nonkeywords.size > 0
+    results << nonkeywords unless nonkeywords.empty?
     results
   end
 
@@ -1638,7 +1641,7 @@ class ScalarAssignment < AbstractAssignment
     super
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
-    fail(BASICException, 'Bad assignment') if token_lists.size != 3
+    raise(BASICException, 'Bad assignment') if token_lists.size != 3
     @target = TargetExpression.new(token_lists[0], ScalarReference)
     @expression = ValueScalarExpression.new(token_lists[2])
   end
@@ -1658,14 +1661,15 @@ class MatrixAssignment < AbstractAssignment
     super
     # parse into variable, '=', expression
     token_lists = split_tokens(tokens)
-    fail(BASICException, 'Bad assignment') if token_lists.size != 3
+    raise(BASICException, 'Bad assignment') if token_lists.size != 3
     @target = TargetExpression.new(token_lists[0], MatrixReference)
     @functions = {
       'CON' => FunctionCon,
       'ZER' => FunctionZer,
       'IDN' => FunctionIdn
     }
-    @special_form = token_lists[2].size == 1 && @functions.key?(token_lists[2][0].to_s)
+    @special_form = token_lists[2].size == 1 &&
+                    @functions.key?(token_lists[2][0].to_s)
     if @special_form
       @expression = token_lists[2][0].to_s
     else
@@ -1686,7 +1690,7 @@ class MatrixAssignment < AbstractAssignment
       # special form obtains variable name and dimensions at run-time
       vs = @target.evaluate(interpreter)
       v = vs[0]
-      fail(Exception, 'Expected matrix reference') if
+      raise(Exception, 'Expected matrix reference') if
         v.class.to_s != 'MatrixReference'
       name = v.name
       dims = interpreter.get_dimensions(name)
