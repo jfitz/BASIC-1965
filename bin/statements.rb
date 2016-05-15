@@ -147,14 +147,6 @@ class KeywordToken < AbstractToken
     @keyword = text
   end
 
-  def leading?
-    @keyword == 'MAT'
-  end
-
-  def trailing?
-    @keyword == 'READ' || @keyword == 'PRINT'
-  end
-
   def to?
     @keyword == 'TO'
   end
@@ -326,7 +318,8 @@ class StatementFactory
     return RemarkStatement.new(text) if squeezed[0..2] == 'REM'
 
     tokens = tokenize(squeezed)
-    keyword = statement_word(tokens)
+    keyword = ''
+    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     create_regular_statement(keyword, text, tokens)
   end
 
@@ -336,16 +329,6 @@ class StatementFactory
       @statement_definitions[keyword].new(text, tokens) unless
         keyword.empty?
     statement
-  end
-
-  def statement_word(tokens)
-    keyword = nil
-    keyword = tokens[0].keyword if tokens.length >= 1 && tokens[0].keyword?
-    if tokens.length >= 2 && tokens[0].keyword? && tokens[1].keyword?
-      keyword = tokens[0].keyword + tokens[1].keyword if
-        tokens[0].leading? && tokens[1].trailing?
-    end
-    keyword
   end
 
   def tokenize(text)
@@ -530,9 +513,7 @@ class RemarkStatement < AbstractStatement
     # override the method to squeeze spaces from line
     squeezed = line.strip
     super('REM', line)
-    squeezed_keyword = squeeze_out_spaces('REM')
-    length = squeezed_keyword.length
-    @rest = squeezed[length..-1]
+    @rest = squeezed[3..-1]
   end
 
   def to_s
@@ -547,8 +528,6 @@ end
 # DIM
 class DimStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('DIM', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
 
@@ -585,8 +564,6 @@ end
 # LET
 class LetStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('LET', line)
     begin
       @assignment = ScalarAssignment.new(tokens)
@@ -617,8 +594,6 @@ end
 # INPUT
 class InputStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('INPUT', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # [prompt string] variable [variable]...
@@ -716,8 +691,6 @@ end
 # IF/THEN
 class IfStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('IF', line)
     parts = split_keywords(tokens)
     if parts.size == 3
@@ -774,8 +747,6 @@ end
 # PRINT
 class PrintStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('PRINT', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable/constant, [separator, variable/constant]... [separator]
@@ -835,8 +806,6 @@ end
 # GOTO
 class GotoStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('GOTO', line)
     if tokens.size == 1
       if tokens[0].numeric_constant?
@@ -861,8 +830,6 @@ end
 # GOSUB
 class GosubStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('GOSUB', line)
     if tokens.size == 1
       if tokens[0].numeric_constant?
@@ -888,8 +855,6 @@ end
 # RETURN
 class ReturnStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('RETURN', line)
   end
 
@@ -950,8 +915,6 @@ end
 # FOR statement
 class ForStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('FOR', line)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
@@ -1077,8 +1040,6 @@ class NextStatement < AbstractStatement
   attr_reader :control
 
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('NEXT', line)
     # parse control variable
     @control = nil
@@ -1118,8 +1079,6 @@ end
 # READ
 class ReadStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('READ', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # variable [variable]...
@@ -1151,8 +1110,6 @@ end
 # DATA
 class DataStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('DATA', line)
     @expressions = ValueScalarExpression.new(tokens)
   end
@@ -1174,8 +1131,6 @@ end
 # RESTORE
 class RestoreStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('RESTORE', line)
   end
 
@@ -1191,8 +1146,6 @@ end
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('DEF', line)
     @name = ''
     @arguments = []
@@ -1223,8 +1176,6 @@ end
 # STOP
 class StopStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('STOP', line)
   end
 
@@ -1242,8 +1193,6 @@ end
 # END
 class EndStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('END', line)
   end
 
@@ -1261,8 +1210,6 @@ end
 # TRACE
 class TraceStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('TRACE', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     if tokens_lists.empty?
@@ -1286,8 +1233,6 @@ end
 # MAT PRINT
 class MatPrintStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('MAT PRINT', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable, [separator, variable]... [separator]
@@ -1342,8 +1287,6 @@ end
 # MAT READ
 class MatReadStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('MAT READ', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # variable [variable]...
@@ -1411,8 +1354,6 @@ end
 # MAT assignment
 class MatLetStatement < AbstractStatement
   def initialize(line, tokens)
-    keyword = []
-    keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
     super('MAT', line)
     begin
       @assignment = MatrixAssignment.new(tokens)
