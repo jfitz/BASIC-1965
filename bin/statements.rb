@@ -1,9 +1,8 @@
 def squeeze_out_spaces(text)
-  text = text.strip
-  in_remark = text.start_with?('REM')
   squeezed_text = ''
   in_quotes = false
   text.each_char do |c|
+    in_remark = squeezed_text.start_with?('REM')
     in_quotes = !in_quotes if c == '"'
     squeezed_text += c if c != ' ' || in_quotes || in_remark
   end
@@ -16,23 +15,6 @@ class ArgSplitter
   @args = []
   @current_arg = ''
   @parens_level = 0
-
-  def self.split_text(text)
-    @args = []
-    @current_arg = ''
-    @parens_level = 0
-    in_str = false
-    text.each_char do |c|
-      if in_str
-        in_string(c)
-      else
-        not_in_string(c)
-      end
-      in_str = !in_str if c == '"'
-    end
-    @args << @current_arg if @current_arg.size > 0
-    @args
-  end
 
   def self.split_tokens(tokens, want_separators)
     lists = []

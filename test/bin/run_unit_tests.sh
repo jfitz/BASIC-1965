@@ -45,6 +45,8 @@ bash test/bin/run_one_test.sh print_5
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh print_6
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh print_7
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh let_n
 ((ECODE+=$?))
