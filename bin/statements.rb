@@ -1017,16 +1017,7 @@ class MatPrintStatement < AbstractStatement
     tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable, [separator, variable]... [separator]
 
-    @print_items = []
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'OperatorToken'
-        raise(BASICException, 'Syntax error') unless tokens_list.separator?
-        @print_items << CarriageControl.new(tokens_list.to_s)
-      elsif tokens_list.class.to_s == 'Array'
-        @print_items << ValueMatrixExpression.new(tokens_list)
-      end
-    end
-
+    @print_items = tokens_to_expressions(tokens_lists)
     add_implied_print_items
   end
 
@@ -1054,6 +1045,19 @@ class MatPrintStatement < AbstractStatement
   end
 
   private
+
+  def tokens_to_expressions(tokens_lists)
+    print_items = []
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'OperatorToken'
+        raise(BASICException, 'Syntax error') unless tokens_list.separator?
+        print_items << CarriageControl.new(tokens_list.to_s)
+      elsif tokens_list.class.to_s == 'Array'
+        print_items << ValueMatrixExpression.new(tokens_list)
+      end
+    end
+    print_items
+  end
 
   def add_implied_print_items
     @print_items << CarriageControl.new('NL') if @print_items.empty?
