@@ -71,18 +71,6 @@ class KeywordToken < AbstractToken
     @keyword = text
   end
 
-  def to?
-    @keyword == 'TO'
-  end
-
-  def step?
-    @keyword == 'STEP'
-  end
-
-  def isthen?
-    @keyword == 'THEN'
-  end
-
   def to_s
     @keyword
   end
@@ -218,8 +206,6 @@ end
 
 # accept any characters
 class InvalidTokenizer
-  attr_reader :token
-
   def initialize
   end
 
@@ -230,6 +216,10 @@ class InvalidTokenizer
 
   def count
     @token.size
+  end
+
+  def token
+    InvalidToken.new(@token)
   end
 end
 

@@ -86,8 +86,7 @@ class StatementFactory
     m = /\A\d+/.match(line)
     unless m.nil?
       line_num = LineNumber.new(m[0])
-      line_text = m.post_match
-      statement = create(line_text)
+      statement = create(m.post_match)
     end
     [line_num, statement]
   end
@@ -114,46 +113,8 @@ class StatementFactory
   end
 
   def tokenize(text)
-    invalid_tokenizer = InvalidTokenizer.new
-    tokenizers = []
-    keywords = statement_definitions.keys + %w(THEN TO STEP) -
-               %w(MATPRINT MATREAD)
-    tokenizers << ListTokenizer.new(keywords, KeywordToken)
-    operators = [
-      '+', '-', '*', '/', '^', '(', ')',
-      '<', '<=', '=', '>', '>=', '<>',
-      ',', ';'
-    ]
-    tokenizers << ListTokenizer.new(operators, OperatorToken)
-    tokenizers <<
-      ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
-    tokenizers << TextTokenizer.new
-    tokenizers << NumberTokenizer.new
-    tokenizers << ListTokenizer.new(%w(ON OFF), BooleanConstantToken)
-    tokenizers << ListTokenizer.new(('FNA'..'FNZ').to_a, UserFunctionToken)
-    tokenizers << VariableTokenizer.new
-
-    tokens = []
-    until text.nil? || text.empty?
-      invalid_tokenizer.try(text)
-      tokenizers.each { |tokenizer| tokenizer.try(text) }
-
-      count = 0
-      token = ''
-      tokenizers.each do |tokenizer|
-        if tokenizer.count > count
-          token = tokenizer.token
-          count = tokenizer.count
-        end
-      end
-      if invalid_tokenizer.count > count
-        token = InvalidToken.new(invalid_tokenizer.token)
-        count = invalid_tokenizer.count
-      end
-      tokens << token
-      text = text[count..-1]
-    end
-    tokens
+    tokenizers = make_tokenizers
+    text_to_tokens(text, tokenizers)
   end
 
   def statement_definitions
@@ -179,6 +140,46 @@ class StatementFactory
       'STOP' => StopStatement,
       'TRACE' => TraceStatement
     }
+  end
+
+  def make_tokenizers
+    tokenizers = []
+    keywords = statement_definitions.keys + %w(THEN TO STEP) -
+               %w(MATPRINT MATREAD)
+    tokenizers << ListTokenizer.new(keywords, KeywordToken)
+    operators = [
+      '+', '-', '*', '/', '^', '(', ')',
+      '<', '<=', '=', '>', '>=', '<>',
+      ',', ';'
+    ]
+    tokenizers << ListTokenizer.new(operators, OperatorToken)
+    tokenizers <<
+      ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
+    tokenizers << TextTokenizer.new
+    tokenizers << NumberTokenizer.new
+    tokenizers << ListTokenizer.new(%w(ON OFF), BooleanConstantToken)
+    tokenizers << ListTokenizer.new(('FNA'..'FNZ').to_a, UserFunctionToken)
+    tokenizers << VariableTokenizer.new
+    tokenizers << InvalidTokenizer.new
+  end
+
+  def text_to_tokens(text, tokenizers)
+    tokens = []
+    until text.nil? || text.empty?
+      tokenizers.each { |tokenizer| tokenizer.try(text) }
+
+      count = 0
+      token = nil
+      tokenizers.each do |tokenizer|
+        if tokenizer.count > count
+          token = tokenizer.token
+          count = tokenizer.count
+        end
+      end
+      tokens << token unless token.nil?
+      text = text[count..-1]
+    end
+    tokens
   end
 end
 
@@ -491,7 +492,7 @@ class IfStatement < AbstractStatement
     else
       @errors << "Invalid line number #{destination}"
     end
-    @errors << 'Missing THEN' unless keyword.keyword? && keyword.isthen?
+    @errors << 'Missing THEN' unless keyword.to_s == 'THEN'
     begin
       @boolean_expression = BooleanExpression.new(expression)
     rescue BASICException => e
@@ -507,7 +508,7 @@ class PrintStatement < AbstractStatement
     tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable/constant, [separator, variable/constant]... [separator]
 
-    tokens_to_expressions(tokens_lists, tokens.map(&:to_s).join)
+    tokens_to_expressions(tokens_lists)
     add_implied_print_items
   end
 
@@ -528,33 +529,34 @@ class PrintStatement < AbstractStatement
 
   private
 
-  def tokens_to_expressions(tokens_lists, line_text)
+  def tokens_to_expressions(tokens_lists)
     @print_items = []
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'OperatorToken'
         add_carriage_control(tokens_list)
       elsif tokens_list.class.to_s == 'Array'
-        add_expression(tokens_list, line_text)
+        add_expression(tokens_list)
       end
     end
   end
 
-  def add_carriage_control(tokens_list)
-    if tokens_list.separator?
-      @print_items << CarriageControl.new(tokens_list.to_s)
+  def add_carriage_control(token)
+    if token.separator?
+      @print_items << CarriageControl.new(token.to_s)
     else
       @errors << 'Syntax error'
     end
   end
 
-  def add_expression(tokens_list, line_text)
+  def add_expression(tokens)
     if !@print_items.empty? &&
        @print_items[-1].class.to_s == 'ValueScalarExpression'
       @print_items << CarriageControl.new('')
     end
     begin
-      @print_items << ValueScalarExpression.new(tokens_list)
+      @print_items << ValueScalarExpression.new(tokens)
     rescue BASICException
+      line_text = tokens.map(&:to_s).join
       @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
     end
   end
@@ -710,23 +712,8 @@ class ForStatement < AbstractStatement
 
   private
 
-  def split_on_equal(tokens)
-    results = []
-    list = []
-    tokens.each do |token|
-      if token.operator? && token.equals?
-        results << list unless list.empty?
-        list = []
-      else
-        list << token
-      end
-    end
-    results << list unless list.empty?
-    results
-  end
-
   def make_control(tokens)
-    parts = split_on_equal(tokens)
+    parts = split_on_token(tokens, '=')
     raise(BASICException, 'Syntax error') if parts.size != 2
     if parts[0][0].variable?
       @control = VariableName.new(parts[0][0])
@@ -736,11 +723,11 @@ class ForStatement < AbstractStatement
     parts[1]
   end
 
-  def split_on_to(tokens)
+  def split_on_token(tokens, token_to_split)
     results = []
     list = []
     tokens.each do |token|
-      if token.keyword? && token.to?
+      if token.to_s == token_to_split
         results << list unless list.empty?
         list = []
       else
@@ -752,29 +739,14 @@ class ForStatement < AbstractStatement
   end
 
   def make_to_value(tokens)
-    parts = split_on_to(tokens)
+    parts = split_on_token(tokens, 'TO')
     raise(BASICException, 'Syntax error') if parts.size != 2
     @start = ValueScalarExpression.new(parts[0])
     parts[1]
   end
 
-  def split_on_step(tokens)
-    results = []
-    list = []
-    tokens.each do |token|
-      if token.keyword? && token.step?
-        results << list unless list.empty?
-        list = []
-      else
-        list << token
-      end
-    end
-    results << list unless list.empty?
-    results
-  end
-
   def make_step_value(tokens)
-    parts = split_on_step(tokens)
+    parts = split_on_token(tokens, 'STEP')
     tokens_e = parts[0]
     @end = ValueScalarExpression.new(tokens_e)
 
