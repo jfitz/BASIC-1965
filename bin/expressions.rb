@@ -1078,11 +1078,11 @@ end
 class AbstractAssignment
   def initialize(tokens)
     # parse into variable, '=', expression
-    token_lists = split_tokens(tokens)
+    @token_lists = split_tokens(tokens)
     line_text = tokens.map(&:to_s).join
     raise(BASICException, "'#{line_text}' is not a valid assignment") if
-      token_lists.size != 3 ||
-      !(token_lists[1].operator? && token_lists[1].equals?)
+      @token_lists.size != 3 ||
+      !(@token_lists[1].operator? && @token_lists[1].equals?)
   end
 
   def split_tokens(tokens)
@@ -1123,10 +1123,8 @@ class ScalarAssignment < AbstractAssignment
   def initialize(tokens)
     super
     # parse into variable, '=', expression
-    token_lists = split_tokens(tokens)
-    raise(BASICException, 'Bad assignment') if token_lists.size != 3
-    @target = TargetExpression.new(token_lists[0], ScalarReference)
-    @expression = ValueScalarExpression.new(token_lists[2])
+    @target = TargetExpression.new(@token_lists[0], ScalarReference)
+    @expression = ValueScalarExpression.new(@token_lists[2])
   end
 
   def count_value
@@ -1143,21 +1141,19 @@ class MatrixAssignment < AbstractAssignment
   def initialize(tokens)
     super
     # parse into variable, '=', expression
-    token_lists = split_tokens(tokens)
-    raise(BASICException, 'Bad assignment') if token_lists.size != 3
-    @target = TargetExpression.new(token_lists[0], MatrixReference)
+    @target = TargetExpression.new(@token_lists[0], MatrixReference)
     @functions = {
       'CON' => FunctionCon,
       'ZER' => FunctionZer,
       'IDN' => FunctionIdn
     }
-    @special_form = token_lists[2].size == 1 &&
-                    @functions.key?(token_lists[2][0].to_s)
-    if @special_form
-      @expression = token_lists[2][0].to_s
-    else
-      @expression = ValueMatrixExpression.new(token_lists[2])
-    end
+    @special_form = @token_lists[2].size == 1 &&
+                    @functions.key?(@token_lists[2][0].to_s)
+    @expression = if @special_form
+                    @token_lists[2][0].to_s
+                  else
+                    ValueMatrixExpression.new(@token_lists[2])
+                  end
   end
 
   def count_value
