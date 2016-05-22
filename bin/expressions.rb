@@ -756,58 +756,12 @@ class AbstractExpression
 
   private
 
-  def split_input(text)
-    # split the input infix string
-    parts = text.split(%r{([\+\-\*\/\(\)\^,])})
-    # remove empty elements
-    parts.reject(&:empty?)
-  end
-
-  def regroup(short_parts)
-    regrouped_parts = []
-    until short_parts.empty?
-      first_three = short_parts[0..2].join('')
-      if short_parts.size >= 3 && NumericConstant.init?(first_three)
-        regrouped_parts << first_three
-        short_parts = short_parts[3..-1]
-      else
-        regrouped_parts << short_parts[0]
-        short_parts = short_parts[1..-1]
-      end
-    end
-    regrouped_parts
-  end
-
-  def elementize(words)
-    elements = []
-    # convert elements to objects
-    words.each do |word|
-      follows_operand = !elements.empty? && elements[-1].operand?
-      elements << make_element(word, follows_operand)
-    end
-    elements << TerminalOperator.new
-  end
-
-  def make_element(word, follows_operand)
-    return FunctionFactory.make(word) if FunctionFactory.valid?(word)
-
-    element = nil
-    classes = follows_operand ? binary_classes : unary_classes
-    classes.each do |c|
-      element = c.new(word) if element.nil? && c.init?(word)
-    end
-    raise(BASICException, "'#{word}' is not a value or operator") if
-      element.nil?
-    element
-  end
-
   def token_to_element(token, follows_operand)
     return FunctionFactory.make(token.to_s) if
       FunctionFactory.valid?(token.to_s)
 
     element = nil
-    classes = follows_operand ? binary_classes : unary_classes
-    classes.each do |c|
+    (follows_operand ? binary_classes : unary_classes).each do |c|
       element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
     end
     raise(BASICException, "Token '#{token}' is not a value or operator") if
@@ -962,7 +916,8 @@ class UserFunctionPrototype
   attr_reader :arguments
 
   def initialize(tokens)
-    variables = check_tokens(tokens)
+    check_tokens(tokens)
+    variables = check_params(tokens[2..-2])
     @name = tokens[0].to_s
     @arguments = variables.map(&:to_s)
     # arguments must be unique
@@ -976,17 +931,17 @@ class UserFunctionPrototype
 
   private
 
-  # verify tokens are UserFunction, open, variables and commas, close
+  # verify tokens are UserFunction, open, close
   def check_tokens(tokens)
     raise(BASICException, 'Invalid function specification') unless
-      tokens.size >= 3
-    raise(BASICException, 'Invalid function name') unless
-      tokens[0].user_function?
+      tokens.size >= 3 && tokens[0].user_function?
     raise(BASICException, 'Invalid function specification') unless
-      tokens[1].operator? && tokens[1].open?
-    raise(BASICException, 'Invalid function specification') unless
+      tokens[1].operator? && tokens[1].open? &&
       tokens[-1].operator? && tokens[-1].close?
-    params = tokens[2..-2]
+  end
+
+  # verify tokens variables and commas
+  def check_params(params)
     variables = params.values_at(* params.each_index.select(&:even?))
     variables.each do |variable|
       raise(BASICException, 'Invalid parameter') unless variable.variable?
