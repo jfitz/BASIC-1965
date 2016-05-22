@@ -477,20 +477,7 @@ class IfStatement < AbstractStatement
     super('IF', line)
     parts = split_keywords(tokens)
     if parts.size == 3
-      if parts[2][0].numeric_constant?
-        @destination = LineNumber.new(parts[2][0])
-        if parts[1].keyword? && parts[1].isthen?
-          begin
-            @boolean_expression = BooleanExpression.new(parts[0])
-          rescue BASICException => e
-            @errors << e.message
-          end
-        else
-          @errors << 'Missing THEN'
-        end
-      else
-        @errors << "Invalid line number #{parts[2][0]}"
-      end
+      parse_line(parts[0], parts[1], parts[2][0])
     else
       @errors << 'Syntax error'
     end
@@ -525,6 +512,22 @@ class IfStatement < AbstractStatement
     results << nonkeywords unless nonkeywords.empty?
     results
   end
+
+  private
+
+  def parse_line(expression, keyword, destination)
+    if destination.numeric_constant?
+      @destination = LineNumber.new(destination)
+    else
+      @errors << "Invalid line number #{destination}"
+    end
+    @errors << 'Missing THEN' unless keyword.keyword? && keyword.isthen?
+    begin
+      @boolean_expression = BooleanExpression.new(expression)
+    rescue BASICException => e
+      @errors << e.message
+    end
+  end
 end
 
 # PRINT
@@ -534,29 +537,7 @@ class PrintStatement < AbstractStatement
     tokens_lists = ArgSplitter.split_tokens(tokens, true)
     # variable/constant, [separator, variable/constant]... [separator]
 
-    @print_items = []
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'OperatorToken'
-        if tokens_list.separator?
-          @print_items << CarriageControl.new(tokens_list.to_s)
-        else
-          @errors << 'Syntax error'
-        end
-      elsif tokens_list.class.to_s == 'Array'
-        if !@print_items.empty? &&
-           @print_items[-1].class.to_s == 'ValueScalarExpression'
-          @print_items << CarriageControl.new('')
-        end
-        begin
-          @print_items << ValueScalarExpression.new(tokens_list)
-        rescue BASICException
-          line_text = tokens.map(&:to_s).join
-          @errors <<
-            'Syntax error: \'' + line_text + '\' is not a value or operator'
-        end
-      end
-    end
-
+    tokens_to_expressions(tokens_lists, tokens.map(&:to_s).join)
     add_implied_print_items
   end
 
@@ -576,6 +557,37 @@ class PrintStatement < AbstractStatement
   end
 
   private
+
+  def tokens_to_expressions(tokens_lists, line_text)
+    @print_items = []
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'OperatorToken'
+        add_carriage_control(tokens_list)
+      elsif tokens_list.class.to_s == 'Array'
+        add_expression(tokens_list, line_text)
+      end
+    end
+  end
+
+  def add_carriage_control(tokens_list)
+    if tokens_list.separator?
+      @print_items << CarriageControl.new(tokens_list.to_s)
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def add_expression(tokens_list, line_text)
+    if !@print_items.empty? &&
+       @print_items[-1].class.to_s == 'ValueScalarExpression'
+      @print_items << CarriageControl.new('')
+    end
+    begin
+      @print_items << ValueScalarExpression.new(tokens_list)
+    rescue BASICException
+      @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
+    end
+  end
 
   def add_implied_print_items
     @print_items << CarriageControl.new('NL') if @print_items.empty?
@@ -712,27 +724,18 @@ class ForStatement < AbstractStatement
   end
 
   def execute_cmd(interpreter, trace)
-    loop_end_number = interpreter.find_closing_next(@control.to_s)
-    from_value = @start.evaluate(interpreter)[0]
-    interpreter.set_value(@control, from_value, false)
-    to_value = @end.evaluate(interpreter)[0]
-    step_value = @step_value.evaluate(interpreter)[0]
+    from = @start.evaluate(interpreter)[0]
+    to = @end.evaluate(interpreter)[0]
+    step = @step_value.evaluate(interpreter)[0]
+    interpreter.set_value(@control, from, false)
     fornext_control =
-      ForNextControl.new(@control, interpreter.next_line_number,
-                         from_value, to_value, step_value)
+      ForNextControl.new(@control, interpreter.next_line_number, from, to, step)
     interpreter.assign_fornext(fornext_control)
     terminated = fornext_control.front_terminated?
-    interpreter.next_line_number = loop_end_number if terminated
-    return unless trace
-    printer = interpreter.print_handler
-    s = ' ' + @start.to_s + ' = ' + from_value.to_s
-    printer.trace_output(s)
-    s = ' ' + @end.to_s + ' = ' + to_value.to_s
-    printer.trace_output(s)
-    s = ' ' + @step_value.to_s + ' = ' + step_value.to_s
-    printer.trace_output(s)
-    s = ' terminated:' + terminated.to_s
-    printer.trace_output(s)
+    interpreter.next_line_number =
+      interpreter.find_closing_next(@control.to_s) if terminated
+    print_trace_info(interpreter.print_handler, from, to, step, terminated) if
+      trace
   end
 
   private
@@ -812,6 +815,13 @@ class ForStatement < AbstractStatement
     else
       @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
     end
+  end
+
+  def print_trace_info(printer, from, to, step, terminated)
+    printer.trace_output(' ' + @start.to_s + ' = ' + from.to_s)
+    printer.trace_output(' ' + @end.to_s + ' = ' + to.to_s)
+    printer.trace_output(' ' + @step_value.to_s + ' = ' + step.to_s)
+    printer.trace_output(' terminated:' + terminated.to_s)
   end
 end
 
