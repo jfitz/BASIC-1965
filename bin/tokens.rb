@@ -235,10 +235,9 @@ end
 
 # accept characters to match item in list
 class ListTokenizer
-  attr_reader :token
-
-  def initialize(legals)
+  def initialize(legals, class_name)
     @legals = legals
+    @class = class_name
   end
 
   def try(text)
@@ -251,15 +250,14 @@ class ListTokenizer
   def count
     @token.size
   end
+
+  def token
+    @class.new(@token)
+  end
 end
 
 # token reader for text constants
 class TextTokenizer
-  attr_reader :token
-
-  def initialize
-  end
-
   def try(text)
     @token = ''
     /\A".*?"/.match(text) { |m| @token = m[0] }
@@ -268,15 +266,14 @@ class TextTokenizer
   def count
     @token.size
   end
+
+  def token
+    TextConstantToken.new(@token)
+  end
 end
 
 # token reader for numeric constants
 class NumberTokenizer
-  attr_reader :token
-
-  def initialize
-  end
-
   def try(text)
     @token = ''
     /\A\d+(\.\d+)?(E[+-]?\d+)?/.match(text) { |m| @token = m[0] }
@@ -285,15 +282,14 @@ class NumberTokenizer
   def count
     @token.size
   end
+
+  def token
+    NumericConstantToken.new(@token)
+  end
 end
 
 # token reader for variables
 class VariableTokenizer
-  attr_reader :token
-
-  def initialize
-  end
-
   def try(text)
     @token = ''
     /\A[A-Z]/.match(text) { |m| @token = m[0] }
@@ -302,5 +298,9 @@ class VariableTokenizer
 
   def count
     @token.size
+  end
+
+  def token
+    VariableToken.new(@token)
   end
 end

@@ -114,67 +114,37 @@ class StatementFactory
   end
 
   def tokenize(text)
-    tokens = []
     invalid_tokenizer = InvalidTokenizer.new
+    tokenizers = []
     keywords = statement_definitions.keys + %w(THEN TO STEP) -
                %w(MATPRINT MATREAD)
-    keyword_tokenizer = ListTokenizer.new(keywords)
+    tokenizers << ListTokenizer.new(keywords, KeywordToken)
     operators = [
       '+', '-', '*', '/', '^', '(', ')',
       '<', '<=', '=', '>', '>=', '<>',
       ',', ';'
     ]
-    operator_tokenizer = ListTokenizer.new(operators)
-    function_tokenizer = ListTokenizer.new(FunctionFactory.function_names)
-    text_tokenizer = TextTokenizer.new
-    number_tokenizer = NumberTokenizer.new
-    boolean_tokenizer = ListTokenizer.new(%w(ON OFF))
-    userfunc_tokenizer = ListTokenizer.new(('FNA'..'FNZ').to_a)
-    variable_tokenizer = VariableTokenizer.new
+    tokenizers << ListTokenizer.new(operators, OperatorToken)
+    tokenizers <<
+      ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
+    tokenizers << TextTokenizer.new
+    tokenizers << NumberTokenizer.new
+    tokenizers << ListTokenizer.new(%w(ON OFF), BooleanConstantToken)
+    tokenizers << ListTokenizer.new(('FNA'..'FNZ').to_a, UserFunctionToken)
+    tokenizers << VariableTokenizer.new
 
+    tokens = []
     until text.nil? || text.empty?
       invalid_tokenizer.try(text)
-      keyword_tokenizer.try(text)
-      operator_tokenizer.try(text)
-      function_tokenizer.try(text)
-      text_tokenizer.try(text)
-      number_tokenizer.try(text)
-      boolean_tokenizer.try(text)
-      userfunc_tokenizer.try(text)
-      variable_tokenizer.try(text)
+      tokenizers.each { |tokenizer| tokenizer.try(text) }
 
       count = 0
-      if keyword_tokenizer.count > count
-        token = KeywordToken.new(keyword_tokenizer.token)
-        count = keyword_tokenizer.count
-      end
-      if operator_tokenizer.count > count
-        token = OperatorToken.new(operator_tokenizer.token)
-        count = operator_tokenizer.count
-      end
-      if function_tokenizer.count > count
-        token = FunctionToken.new(function_tokenizer.token)
-        count = function_tokenizer.count
-      end
-      if text_tokenizer.count > count
-        token = TextConstantToken.new(text_tokenizer.token)
-        count = text_tokenizer.count
-      end
-      if number_tokenizer.count > count
-        token = NumericConstantToken.new(number_tokenizer.token)
-        count = number_tokenizer.count
-      end
-      if boolean_tokenizer.count > count
-        token = BooleanConstantToken.new(boolean_tokenizer.token)
-        count = boolean_tokenizer.count
-      end
-      if userfunc_tokenizer.count > count
-        token = UserFunctionToken.new(userfunc_tokenizer.token)
-        count = userfunc_tokenizer.count
-      end
-      if variable_tokenizer.count > count
-        token = VariableToken.new(variable_tokenizer.token)
-        count = variable_tokenizer.count
+      token = ''
+      tokenizers.each do |tokenizer|
+        if tokenizer.count > count
+          token = tokenizer.token
+          count = tokenizer.count
+        end
       end
       if invalid_tokenizer.count > count
         token = InvalidToken.new(invalid_tokenizer.token)
