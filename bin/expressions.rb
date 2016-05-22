@@ -718,12 +718,7 @@ class AbstractExpression
     raise(Exception, 'Expression cannot be empty') if tokens.empty?
     @unparsed_expression = tokens.map(&:to_s).join
 
-    elements = []
-    tokens.each do |token|
-      follows_operand = !elements.empty? && elements[-1].operand?
-      elements << token_to_element(token, follows_operand)
-    end
-    elements << TerminalOperator.new
+    elements = tokens_to_elements(tokens)
 
     parser = Parser.new(default_type)
     elements.each do |element|
@@ -755,6 +750,15 @@ class AbstractExpression
   end
 
   private
+
+  def tokens_to_elements(tokens)
+    elements = []
+    tokens.each do |token|
+      follows_operand = !elements.empty? && elements[-1].operand?
+      elements << token_to_element(token, follows_operand)
+    end
+    elements << TerminalOperator.new
+  end
 
   def token_to_element(token, follows_operand)
     return FunctionFactory.make(token.to_s) if
