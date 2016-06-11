@@ -643,8 +643,7 @@ class Interpreter
 
   def set_values(name, values, trace)
     values.each do |coords, value|
-      variable = Variable.new(name)
-      variable.set_coords(coords)
+      variable = Variable.new(name, coords)
       set_value(variable, value, trace)
     end
   end

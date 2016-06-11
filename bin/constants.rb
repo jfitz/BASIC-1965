@@ -440,12 +440,12 @@ end
 class Variable < AbstractElement
   attr_reader :subscripts
 
-  def initialize(variable_name)
+  def initialize(variable_name, subscripts = [])
     super()
     raise(BASICException, "'#{variable_name}' is not a variable name") if
       variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
-    @subscripts = []
+    @subscripts = subscripts
     @variable = true
     @operand = true
     @precedence = 6
@@ -457,10 +457,6 @@ class Variable < AbstractElement
 
   def content_type
     @variable_name.content_type
-  end
-
-  def set_coords(coords)
-    @subscripts = coords
   end
 
   def to_s

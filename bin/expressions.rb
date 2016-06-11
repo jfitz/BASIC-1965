@@ -392,8 +392,7 @@ class MatrixValue < Variable
     values = {}
     (1..n_cols).each do |col|
       coords = make_coord(col)
-      variable = Variable.new(@variable_name)
-      variable.set_coords(coords)
+      variable = Variable.new(@variable_name, coords)
       values[coords] = interpreter.get_value(variable)
     end
     values
@@ -404,8 +403,7 @@ class MatrixValue < Variable
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         coords = make_coords(row, col)
-        variable = Variable.new(@variable_name)
-        variable.set_coords(coords)
+        variable = Variable.new(@variable_name, coords)
         values[coords] = interpreter.get_value(variable)
       end
     end
