@@ -699,13 +699,16 @@ class ForStatement < AbstractStatement
     from = @start.evaluate(interpreter)[0]
     to = @end.evaluate(interpreter)[0]
     step = @step_value.evaluate(interpreter)[0]
+
     interpreter.set_value(@control, from, false)
     fornext_control =
       ForNextControl.new(@control, interpreter.next_line_number, from, to, step)
+
     interpreter.assign_fornext(fornext_control)
     terminated = fornext_control.front_terminated?
     interpreter.next_line_number =
       interpreter.find_closing_next(@control.to_s) if terminated
+
     print_trace_info(interpreter.print_handler, from, to, step, terminated) if
       trace
   end
@@ -760,10 +763,10 @@ class ForStatement < AbstractStatement
   end
 
   def print_trace_info(printer, from, to, step, terminated)
-    printer.trace_output(' ' + @start.to_s + ' = ' + from.to_s)
-    printer.trace_output(' ' + @end.to_s + ' = ' + to.to_s)
-    printer.trace_output(' ' + @step_value.to_s + ' = ' + step.to_s)
-    printer.trace_output(' terminated:' + terminated.to_s)
+    printer.trace_output(" #{@start} = #{from}")
+    printer.trace_output(" #{@end} = #{to}")
+    printer.trace_output(" #{@step_value} = #{step}")
+    printer.trace_output(" terminated:#{terminated}")
   end
 end
 
