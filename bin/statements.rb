@@ -310,7 +310,7 @@ class DimStatement < AbstractStatement
       if subscripts.empty?
         raise BASICException, 'DIM statement requires subscript range'
       end
-      interpreter.set_dimensions(variable.name, subscripts)
+      interpreter.set_dimensions(variable, subscripts)
     end
   end
 end
@@ -1043,10 +1043,9 @@ class MatReadStatement < AbstractStatement
     @expression_list.each do |expression|
       targets = expression.evaluate(interpreter)
       targets.each do |target|
-        name = target.name
-        interpreter.set_dimensions(name, target.dimensions) if
+        interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
-        read_values(name, interpreter, trace)
+        read_values(target.name, interpreter, trace)
       end
     end
   end
@@ -1108,7 +1107,7 @@ class MatLetStatement < AbstractStatement
 
   def execute_cmd(interpreter, trace)
     l_value = first_target(interpreter)
-    name = l_value.name
+    name = l_value
     r_value = first_value(interpreter)
     dims = r_value.dimensions
     interpreter.set_dimensions(name, dims)

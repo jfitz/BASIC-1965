@@ -565,7 +565,8 @@ class Interpreter
   end
 
   def set_dimensions(variable, subscripts)
-    @dimensions[variable] = subscripts
+    name = variable.name
+    @dimensions[name] = subscripts
   end
 
   def get_dimensions(variable)
@@ -631,6 +632,9 @@ class Interpreter
   end
 
   def set_value(variable, value, trace)
+    # check that value type matches variable type
+    raise(BASICException, 'Type mismatch') if
+      variable.content_type != value.class.to_s
     v = variable.to_s
     @variables[v] = value
     puts(' ' + variable.to_s + ' = ' + value.to_s) if trace
@@ -638,7 +642,9 @@ class Interpreter
 
   def set_values(name, values, trace)
     values.each do |coords, value|
-      variable = name.to_s + coords
+      variable_name = VariableName.new(name.to_s)
+      variable = Variable.new(variable_name)
+      variable.set_coords(coords)
       set_value(variable, value, trace)
     end
   end

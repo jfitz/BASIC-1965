@@ -419,6 +419,10 @@ class VariableName < AbstractElement
     @var_name.hash
   end
 
+  def content_type
+    'NumericConstant'
+  end
+
   def to_s
     @var_name.to_s
   end
@@ -441,6 +445,22 @@ class Variable < AbstractElement
 
   def name
     @variable_name
+  end
+
+  def content_type
+    @variable_name.content_type
+  end
+
+  def set_coords(coords)
+    values = []
+    text_values = coords[1..-2].split(',')
+    text_values.each do |value|
+      v = value.strip
+      raise(BASICException, "Value '#{value}' not numeric") unless
+        NumericConstant.init?(v)
+      values << NumericConstant.new(v)
+    end
+    @subscripts = values
   end
 
   def to_s
