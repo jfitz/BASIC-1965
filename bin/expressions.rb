@@ -938,10 +938,8 @@ class UserFunctionPrototype
   # verify tokens are UserFunction, open, close
   def check_tokens(tokens)
     raise(BASICException, 'Invalid function specification') unless
-      tokens.size >= 3 && tokens[0].user_function?
-    raise(BASICException, 'Invalid function specification') unless
-      tokens[1].operator? && tokens[1].open? &&
-      tokens[-1].operator? && tokens[-1].close?
+      tokens.size >= 3 && tokens[0].user_function? &&
+      tokens[1].open? && tokens[-1].close?
   end
 
   # verify tokens variables and commas

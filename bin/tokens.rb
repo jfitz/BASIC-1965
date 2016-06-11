@@ -19,6 +19,14 @@ class AbstractToken
     @is_operator
   end
 
+  def open?
+    false
+  end
+
+  def close?
+    false
+  end
+
   def function?
     @is_function
   end
