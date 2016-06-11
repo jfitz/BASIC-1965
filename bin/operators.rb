@@ -648,7 +648,7 @@ class BinaryOperator < AbstractElement
     new_dims = [m_dims[1]]
     new_values = {}
     n_cols = new_dims[0].to_i
-    row = NumericConstant.new(1)
+    row = 1
     (1..n_cols).each do |col|
       value = m.get_value_2(row, col)
       coords = make_coord(col)
@@ -675,7 +675,7 @@ class BinaryOperator < AbstractElement
     new_dims = [m_dims[0]]
     new_values = {}
     n_rows = new_dims[0].to_i
-    col = NumericConstant.new(1)
+    col = 1
     (1..n_rows).each do |row|
       value = m.get_value_2(row, col)
       coords = make_coord(row)

@@ -222,11 +222,11 @@ class AbstractStatement
   protected
 
   def make_coord(c)
-    '(' + c.to_s + ')'
+    [NumericConstant.new(c)]
   end
 
   def make_coords(r, c)
-    '(' + r.to_s + ',' + c.to_s + ')'
+    [NumericConstant.new(r), NumericConstant.new(c)]
   end
 end
 
@@ -1067,7 +1067,8 @@ class MatReadStatement < AbstractStatement
   def read_vector(name, dims, interpreter, trace)
     values = {}
     (1..dims[0].to_i).each do |col|
-      values[make_coord(col)] = interpreter.read_data
+      coord = make_coord(col)
+      values[coord] = interpreter.read_data
     end
     interpreter.set_values(name, values, trace)
   end
@@ -1076,7 +1077,8 @@ class MatReadStatement < AbstractStatement
     values = {}
     (1..dims[0].to_i).each do |row|
       (1..dims[1].to_i).each do |col|
-        values[make_coords(row, col)] = interpreter.read_data
+        coords = make_coords(row, col)
+        values[coords] = interpreter.read_data
       end
     end
     interpreter.set_values(name, values, trace)
@@ -1113,7 +1115,7 @@ class MatLetStatement < AbstractStatement
     interpreter.set_dimensions(name, dims)
     values = r_value.values_1 if dims.size == 1
     values = r_value.values_2 if dims.size == 2
-    interpreter.set_values(name, values, trace)
+    interpreter.set_values(l_value.name, values, trace)
   end
 
   private

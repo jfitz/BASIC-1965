@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 
+require 'pry'
 require 'benchmark'
 require 'optparse'
 
@@ -642,8 +643,7 @@ class Interpreter
 
   def set_values(name, values, trace)
     values.each do |coords, value|
-      variable_name = VariableName.new(name.to_s)
-      variable = Variable.new(variable_name)
+      variable = Variable.new(name)
       variable.set_coords(coords)
       set_value(variable, value, trace)
     end

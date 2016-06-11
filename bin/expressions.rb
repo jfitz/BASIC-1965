@@ -202,11 +202,11 @@ class Matrix
   private
 
   def make_coord(c)
-    '(' + c.to_s + ')'
+    [NumericConstant.new(c)]
   end
 
   def make_coords(r, c)
-    '(' + r.to_s + ',' + c.to_s + ')'
+    [NumericConstant.new(r), NumericConstant.new(c)]
   end
 
   def make_array(dims, init_value)
@@ -392,8 +392,9 @@ class MatrixValue < Variable
     values = {}
     (1..n_cols).each do |col|
       coords = make_coord(col)
-      var_name = @variable_name.to_s + coords
-      values[coords] = interpreter.get_value(var_name)
+      variable = Variable.new(@variable_name)
+      variable.set_coords(coords)
+      values[coords] = interpreter.get_value(variable)
     end
     values
   end
@@ -403,8 +404,9 @@ class MatrixValue < Variable
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         coords = make_coords(row, col)
-        var_name = @variable_name.to_s + coords
-        values[coords] = interpreter.get_value(var_name)
+        variable = Variable.new(@variable_name)
+        variable.set_coords(coords)
+        values[coords] = interpreter.get_value(variable)
       end
     end
     values

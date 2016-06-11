@@ -66,11 +66,11 @@ class AbstractElement
   protected
 
   def make_coord(c)
-    '(' + c.to_s + ')'
+    [NumericConstant.new(c)]
   end
 
   def make_coords(r, c)
-    '(' + r.to_s + ',' + c.to_s + ')'
+    [NumericConstant.new(r), NumericConstant.new(c)]
   end
 end
 
@@ -163,6 +163,14 @@ class NumericConstant < AbstractElement
     @operand = true
     @precedence = 0
     raise BASICException, "'#{text}' is not a number" if @value.nil?
+  end
+
+  def eql?(other)
+    @value == other.to_v
+  end
+
+  def hash
+    @value.hash
   end
 
   def ==(other)
@@ -452,15 +460,7 @@ class Variable < AbstractElement
   end
 
   def set_coords(coords)
-    values = []
-    text_values = coords[1..-2].split(',')
-    text_values.each do |value|
-      v = value.strip
-      raise(BASICException, "Value '#{value}' not numeric") unless
-        NumericConstant.init?(v)
-      values << NumericConstant.new(v)
-    end
-    @subscripts = values
+    @subscripts = coords
   end
 
   def to_s
