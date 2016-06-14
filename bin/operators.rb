@@ -772,7 +772,7 @@ end
 # Boolean operator - equal
 class BooleanOperatorEq
   def evaluate(av, bv)
-    av == bv
+    BooleanConstant.new(av == bv)
   end
 
   def to_s
@@ -783,7 +783,7 @@ end
 # Boolean operator - not equal
 class BooleanOperatorNotEq
   def evaluate(av, bv)
-    av != bv
+    BooleanConstant.new(av != bv)
   end
 
   def to_s
@@ -794,7 +794,7 @@ end
 # Boolean operator - greater than
 class BooleanOperatorGreater
   def evaluate(av, bv)
-    av > bv
+    BooleanConstant.new(av > bv)
   end
 
   def to_s
@@ -805,7 +805,7 @@ end
 # Boolean operator - greater or equal
 class BooleanOperatorGreaterEq
   def evaluate(av, bv)
-    av >= bv
+    BooleanConstant.new(av >= bv)
   end
 
   def to_s
@@ -816,7 +816,7 @@ end
 # Boolean operator - less than
 class BooleanOperatorLess
   def evaluate(av, bv)
-    av < bv
+    BooleanConstant.new(av < bv)
   end
 
   def to_s
@@ -827,7 +827,7 @@ end
 # Boolean operator - less or equal
 class BooleanOperatorLessEq
   def evaluate(av, bv)
-    av <= bv
+    BooleanConstant.new(av <= bv)
   end
 
   def to_s
