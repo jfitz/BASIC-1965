@@ -959,9 +959,6 @@ end
 
 # Boolean expression
 class BooleanExpression
-  attr_reader :operator
-  attr_reader :a_value
-  attr_reader :b_value
   attr_reader :result
 
   def initialize(tokens)
@@ -969,28 +966,20 @@ class BooleanExpression
     raise(BASICException, "'#{tokens}' is not a boolean expression") if
       parts.size != 3
 
-    @a = ValueScalarExpression.new(parts[0])
-    @a_value = 'undefined'
-    @operator = make_boolean_operator(parts[1])
-    @b = ValueScalarExpression.new(parts[2])
-    @b_value = 'undefined'
+    @expression = ValueScalarExpression.new(tokens)
     @result = 'undefined'
   end
 
   def evaluate(interpreter)
-    avs = @a.evaluate(interpreter)
-    @a_value = avs[0]
-    bvs = @b.evaluate(interpreter)
-    @b_value = bvs[0]
-    @result = @operator.evaluate(@a_value, @b_value)
+    @result = @expression.evaluate(interpreter)[0]
   end
 
   def to_s
-    @a.to_s + ' ' + @operator.to_s + ' ' + @b.to_s
+    @expression.to_s
   end
 
   def evaluated_to_s
-    @a_value.to_s + ' ' + @operator.to_s + ' ' + @b_value.to_s
+    @result.to_s
   end
 
   private
@@ -1009,25 +998,6 @@ class BooleanExpression
     end
     results << nonkeywords unless nonkeywords.empty?
     results
-  end
-
-  def make_operators
-    {
-      '=' => BooleanOperatorEq,
-      '<>' => BooleanOperatorNotEq,
-      '>' => BooleanOperatorGreater,
-      '>=' => BooleanOperatorGreaterEq,
-      '<' => BooleanOperatorLess,
-      '<=' => BooleanOperatorLessEq
-    }
-  end
-
-  def make_boolean_operator(token)
-    operators = make_operators
-    raise(BASICException, "'#{token}' is not an operator") unless
-      operators.key?(token.to_s)
-
-    operators[token.to_s].new
   end
 end
 

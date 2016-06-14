@@ -461,11 +461,10 @@ class IfStatement < AbstractStatement
   def execute_cmd(interpreter, trace)
     @boolean_expression.evaluate(interpreter)
     interpreter.next_line_number = @destination if
-      @boolean_expression.result.value
+      @boolean_expression.result
     return unless trace
     printer = interpreter.print_handler
-    s = ' ' + @boolean_expression.evaluated_to_s +
-        ' ' + @boolean_expression.result.value.to_s
+    s = ' ' + @boolean_expression.result.to_s
     printer.trace_output(s)
   end
 

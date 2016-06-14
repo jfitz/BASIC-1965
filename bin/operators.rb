@@ -118,13 +118,19 @@ end
 # Binary scalar operators
 class BinaryOperator < AbstractElement
   def self.init?(text)
-    operators = { '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5 }
+    operators = {
+      '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
+      '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
+    }
     operators.key?(text)
   end
 
   def initialize(text)
     super()
-    operators = { '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5 }
+    operators = {
+      '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
+      '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
+    }
     raise(BASICException, "'#{text}' is not an operator") unless
       operators.key?(text)
     @op = text
@@ -164,6 +170,8 @@ class BinaryOperator < AbstractElement
       divide_matrix_matrix(x, y)
     when '^'
       power_matrix_matrix(x, y)
+    else
+      raise BASICException, 'Invalid operation'
     end
   end
 
@@ -179,6 +187,8 @@ class BinaryOperator < AbstractElement
       divide_matrix_scalar(x, y)
     when '^'
       power_matrix_scalar(x, y)
+    else
+      raise BASICException, 'Invalid operation'
     end
   end
 
@@ -194,6 +204,8 @@ class BinaryOperator < AbstractElement
       divide_scalar_matrix(x, y)
     when '^'
       power_scalar_matrix(x, y)
+    else
+      raise BASICException, 'Invalid operation'
     end
   end
 
@@ -209,6 +221,18 @@ class BinaryOperator < AbstractElement
       x / y
     when '^'
       x**y
+    when '='
+      x == y
+    when '<>'
+      x != y
+    when '<'
+      x < y
+    when '<='
+      x <= y
+    when '>'
+      x > y
+    when '>='
+      x >= y
     end
   end
 
@@ -766,72 +790,6 @@ class BinaryOperator < AbstractElement
 
   def power_matrix_matrix(_, _)
     raise BASICException, 'Cannot raise matrix to matrix power'
-  end
-end
-
-# Boolean operator - equal
-class BooleanOperatorEq
-  def evaluate(av, bv)
-    BooleanConstant.new(av == bv)
-  end
-
-  def to_s
-    '='
-  end
-end
-
-# Boolean operator - not equal
-class BooleanOperatorNotEq
-  def evaluate(av, bv)
-    BooleanConstant.new(av != bv)
-  end
-
-  def to_s
-    '<>'
-  end
-end
-
-# Boolean operator - greater than
-class BooleanOperatorGreater
-  def evaluate(av, bv)
-    BooleanConstant.new(av > bv)
-  end
-
-  def to_s
-    '>'
-  end
-end
-
-# Boolean operator - greater or equal
-class BooleanOperatorGreaterEq
-  def evaluate(av, bv)
-    BooleanConstant.new(av >= bv)
-  end
-
-  def to_s
-    '>='
-  end
-end
-
-# Boolean operator - less than
-class BooleanOperatorLess
-  def evaluate(av, bv)
-    BooleanConstant.new(av < bv)
-  end
-
-  def to_s
-    '<'
-  end
-end
-
-# Boolean operator - less or equal
-class BooleanOperatorLessEq
-  def evaluate(av, bv)
-    BooleanConstant.new(av <= bv)
-  end
-
-  def to_s
-    '<='
   end
 end
 
