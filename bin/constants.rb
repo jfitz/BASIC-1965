@@ -346,7 +346,11 @@ class BooleanConstant < AbstractElement
 
   def initialize(text)
     super()
-    @value = text.to_s.casecmp('ON') == 0
+    @value = false
+    @value = true if text.class.to_s == 'BooleanConstantToken' &&
+      text.boolean_constant == 'ON'
+    @value = true if text.class.to_s == 'String' && text.to_s.casecmp('ON') == 0
+    @value = true if text.class.to_s == 'TrueClass'
     @operand = true
     @precedence = 0
   end
@@ -412,7 +416,7 @@ class VariableName < AbstractElement
     @var_name = text
     @variable = true
     @operand = true
-    @precedence = 6
+    @precedence = 7
   end
 
   def eql?(other)
@@ -448,7 +452,7 @@ class Variable < AbstractElement
     @subscripts = subscripts
     @variable = true
     @operand = true
-    @precedence = 6
+    @precedence = 7
   end
 
   def name
@@ -474,7 +478,7 @@ class List < AbstractElement
     super()
     @parsed_expressions = parsed_expressions
     @variable = true
-    @precedence = 6
+    @precedence = 7
   end
 
   def list
@@ -497,7 +501,7 @@ class Function < AbstractElement
     @name = text
     @function = true
     @operand = true
-    @precedence = 6
+    @precedence = 7
   end
 
   private

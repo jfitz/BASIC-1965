@@ -118,13 +118,13 @@ end
 # Binary scalar operators
 class BinaryOperator < AbstractElement
   def self.init?(text)
-    operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
+    operators = { '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5 }
     operators.key?(text)
   end
 
   def initialize(text)
     super()
-    operators = { '+' => 2, '-' => 2, '*' => 3, '/' => 3, '^' => 4 }
+    operators = { '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5 }
     raise(BASICException, "'#{text}' is not an operator") unless
       operators.key?(text)
     @op = text
