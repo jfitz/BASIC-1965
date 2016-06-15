@@ -957,50 +957,6 @@ class UserFunctionPrototype
   end
 end
 
-# Boolean expression
-class BooleanExpression
-  attr_reader :result
-
-  def initialize(tokens)
-    parts = split_tokens(tokens)
-    raise(BASICException, "'#{tokens}' is not a boolean expression") if
-      parts.size != 3
-
-    @expression = ValueScalarExpression.new(tokens)
-    @result = 'undefined'
-  end
-
-  def evaluate(interpreter)
-    @result = @expression.evaluate(interpreter)[0]
-  end
-
-  def to_s
-    @expression.to_s
-  end
-
-  def evaluated_to_s
-    @result.to_s
-  end
-
-  private
-
-  def split_tokens(tokens)
-    results = []
-    nonkeywords = []
-    tokens.each do |token|
-      if token.operator? && token.comparison?
-        results << nonkeywords unless nonkeywords.empty?
-        nonkeywords = []
-        results << token
-      else
-        nonkeywords << token
-      end
-    end
-    results << nonkeywords unless nonkeywords.empty?
-    results
-  end
-end
-
 # Abstract assignment
 class AbstractAssignment
   def initialize(tokens)

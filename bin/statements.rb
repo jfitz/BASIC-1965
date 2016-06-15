@@ -455,16 +455,15 @@ class IfStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @boolean_expression.to_s + ' THEN ' + @destination.to_s
+    @keyword + ' ' + @expression.to_s + ' THEN ' + @destination.to_s
   end
 
   def execute_cmd(interpreter, trace)
-    @boolean_expression.evaluate(interpreter)
-    interpreter.next_line_number = @destination if
-      @boolean_expression.result
+    result = @expression.evaluate(interpreter)[0]
+    interpreter.next_line_number = @destination if result
     return unless trace
     printer = interpreter.print_handler
-    s = ' ' + @boolean_expression.result.to_s
+    s = ' ' + result.to_s
     printer.trace_output(s)
   end
 
@@ -494,7 +493,7 @@ class IfStatement < AbstractStatement
     end
     @errors << 'Missing THEN' unless keyword.to_s == 'THEN'
     begin
-      @boolean_expression = BooleanExpression.new(expression)
+      @expression = ValueScalarExpression.new(expression)
     rescue BASICException => e
       @errors << e.message
     end
