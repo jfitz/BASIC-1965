@@ -222,17 +222,17 @@ class BinaryOperator < AbstractElement
     when '^'
       x**y
     when '='
-      x == y
+      BooleanConstant.new(x == y)
     when '<>'
-      x != y
+      BooleanConstant.new(x != y)
     when '<'
-      x < y
+      BooleanConstant.new(x < y)
     when '<='
-      x <= y
+      BooleanConstant.new(x <= y)
     when '>'
-      x > y
+      BooleanConstant.new(x > y)
     when '>='
-      x >= y
+      BooleanConstant.new(x >= y)
     end
   end
 

@@ -460,7 +460,7 @@ class IfStatement < AbstractStatement
 
   def execute_cmd(interpreter, trace)
     result = @expression.evaluate(interpreter)[0]
-    interpreter.next_line_number = @destination if result
+    interpreter.next_line_number = @destination if result.value
     return unless trace
     printer = interpreter.print_handler
     s = ' ' + result.to_s
