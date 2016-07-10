@@ -690,12 +690,8 @@ class Interpreter
   end
 
   def go
-    puts 'BASIC-1965 interpreter version -1'
-    puts
     @program_lines = {}
     interactive_loop
-    puts
-    puts 'BASIC-1965 ended'
   end
 
   def interactive_loop
@@ -801,33 +797,21 @@ class Interpreter
   end
 
   def load_and_run(filename, trace_flag, timing_flag)
-    puts 'BASIC-1965 interpreter version -1'
-    puts
     @program_lines = {}
     if cmd_load(filename, false)
       timing = Benchmark.measure { cmd_run(trace_flag) }
       print_timing(timing) if timing_flag
     end
-    puts
-    puts 'BASIC-1965 ended'
   end
 
   def load_and_list(filename, trace_flag)
-    puts 'BASIC-1965 interpreter version -1'
-    puts
     @program_lines = {}
     cmd_list('') if cmd_load(filename, trace_flag)
-    puts
-    puts 'BASIC-1965 ended'
   end
 
   def load_and_pretty(filename, trace_flag)
-    puts 'BASIC-1965 interpreter version -1'
-    puts
     @program_lines = {}
     cmd_pretty('') if cmd_load(filename, trace_flag)
-    puts
-    puts 'BASIC-1965 ended'
   end
 
   def print_timing(timing)
@@ -865,6 +849,8 @@ print_width = options[:print_width].to_i if options.key?(:print_width)
 zone_width = 16
 zone_width = options[:zone_width].to_i if options.key?(:zone_width)
 
+puts 'BASIC-1965 interpreter version -1'
+puts
 if !run_filename.nil?
   interpreter = Interpreter.new(print_width, zone_width, output_speed)
   interpreter.load_and_run(run_filename, trace_flag, timing_flag)
@@ -878,3 +864,5 @@ else
   interpreter = Interpreter.new(print_width, zone_width, 0)
   interpreter.go
 end
+puts
+puts 'BASIC-1965 ended'
