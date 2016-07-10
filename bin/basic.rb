@@ -336,7 +336,8 @@ class Interpreter
 
   def list_lines(line_numbers)
     line_numbers.each do |line_number|
-      puts "#{line_number} #{@program_lines[line_number]}"
+      statement = @program_lines[line_number]
+      puts "#{line_number}#{statement.list}"
     end
   end
 
