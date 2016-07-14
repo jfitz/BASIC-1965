@@ -45,7 +45,7 @@ class FunctionRnd < AbstractScalarFunction
   def evaluate(interpreter, stack)
     args = stack.pop
     raise(BASICException, 'Zero or one argument required for RND()') unless
-      args.size == 1 || args.size == 2
+      args.size == 0 || args.size == 1
     x = NumericConstant.new(100) if args.empty?
     if args.size == 1
       check_arg_types(args, ['NumericConstant'])

@@ -255,7 +255,7 @@ class Interpreter
 
   def initialize(print_width, zone_width, output_speed)
     @running = false
-    @randomizer = Random.new
+    @randomizer = Random.new(1)
     @data_store = []
     @data_index = 0
     @statement_factory = StatementFactory.new
@@ -546,8 +546,8 @@ class Interpreter
   def rand(upper_bound)
     upper_bound = upper_bound.to_v
     upper_bound = upper_bound.truncate
+    upper_bound = 1 if upper_bound <= 0
     upper_bound = upper_bound.to_f
-    upper_bound = 1.to_f if upper_bound <= 0
     NumericConstant.new(@randomizer.rand(upper_bound))
   end
 

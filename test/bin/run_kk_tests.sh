@@ -66,6 +66,18 @@ bash test/bin/run_one_test.sh matinv
 bash test/bin/run_one_test.sh linequ
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh deal
+((ECODE+=$?))
+bash test/bin/run_one_test.sh dice
+((ECODE+=$?))
+bash test/bin/run_one_test.sh needle
+((ECODE+=$?))
+bash test/bin/run_one_test.sh knight
+((ECODE+=$?))
+bash test/bin/run_one_test.sh random_float
+((ECODE+=$?))
+bash test/bin/run_one_test.sh random_int
+((ECODE+=$?))
 bash test/bin/run_one_test.sh plot
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh plotxy

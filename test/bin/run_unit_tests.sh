@@ -126,6 +126,10 @@ bash test/bin/run_one_test.sh function_det
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh function_inv
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh random_0
+((ECODE+=$?))
+bash test/bin/run_one_test.sh random_1
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh define
 ((ECODE+=$?))
