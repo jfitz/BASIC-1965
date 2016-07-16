@@ -290,9 +290,10 @@ class Interpreter
     linespec = linespec.strip
     if !@program_lines.empty?
       begin
-        line_number_range =
-          LineListSpec.new(linespec, @program_lines.keys.sort)
-        list_lines_errors(line_number_range.line_numbers)
+        line_numbers = @program_lines.keys.sort
+        line_number_range = LineListSpec.new(linespec, line_numbers)
+        line_numbers = line_number_range.line_numbers
+        list_lines_errors(line_numbers)
       rescue BASICException => e
         puts e
       end
@@ -305,9 +306,10 @@ class Interpreter
     linespec = linespec.strip
     if !@program_lines.empty?
       begin
-        line_number_range =
-          LineListSpec.new(linespec, @program_lines.keys.sort)
-        pretty_lines_errors(line_number_range.line_numbers)
+        line_numbers = @program_lines.keys.sort
+        line_number_range = LineListSpec.new(linespec, line_numbers)
+        line_numbers = line_number_range.line_numbers
+        pretty_lines_errors(line_numbers)
       rescue BASICException => e
         puts e
       end
@@ -321,7 +323,8 @@ class Interpreter
   def list_lines_errors(line_numbers)
     line_numbers.each do |line_number|
       statement = @program_lines[line_number]
-      puts "#{line_number}#{statement.list}"
+      text = statement.list
+      puts line_number.to_s + text
       statement.errors.each { |error| puts ' ' + error }
     end
   end
@@ -329,7 +332,8 @@ class Interpreter
   def pretty_lines_errors(line_numbers)
     line_numbers.each do |line_number|
       statement = @program_lines[line_number]
-      puts "#{line_number}#{statement.pretty}"
+      text = statement.pretty
+      puts line_number.to_s + text
       statement.errors.each { |error| puts ' ' + error }
     end
   end
@@ -337,7 +341,8 @@ class Interpreter
   def list_lines(line_numbers)
     line_numbers.each do |line_number|
       statement = @program_lines[line_number]
-      puts "#{line_number}#{statement.list}"
+      text = statement.list
+      puts line_number.to_s + text
     end
   end
 
@@ -365,13 +370,14 @@ class Interpreter
   private
 
   def delete_lines(linespec)
-    line_number_range =
-      LineListSpec.new(linespec.strip, @program_lines.keys.sort)
+    line_numbers = @program_lines.keys.sort
+    line_number_range = LineListSpec.new(linespec.strip, line_numbers)
+    line_numbers = line_number_range.line_numbers
     case line_number_range.range_type
     when :single
-      delete_specific_lines(line_number_range.line_numbers)
+      delete_specific_lines(line_numbers)
     when :range
-      list_and_delete_lines(line_number_range.line_numbers)
+      list_and_delete_lines(line_numbers)
     when :all
       puts 'Type NEW to delete an entire program'
     end
@@ -392,30 +398,31 @@ class Interpreter
   def cmd_run(trace_flag)
     @variables = {}
     @tron_flag = false
-    line_numbers = @program_lines.keys.sort
 
-    if line_numbers.empty?
+    if @program_lines.empty?
       puts 'No program loaded'
     else
-      run_phase_1(line_numbers)
-      run_phase_2(line_numbers, trace_flag)
+      run_phase_1
+      run_phase_2(trace_flag)
     end
   end
 
-  def run_phase_1(line_numbers)
+  def run_phase_1
     # phase 1: do all initialization (store values in DATA lines)
+    line_numbers = @program_lines.keys.sort
     line_numbers.each do |line_number|
       @program_lines[line_number].pre_execute(self)
     end
   end
 
-  def run_phase_2(line_numbers, trace_flag)
+  def run_phase_2(trace_flag)
     # phase 2: run each command
     # start with the first line number
+    line_numbers = @program_lines.keys.sort
     @current_line_number = line_numbers[0]
     @running = true
     begin
-      program_loop(line_numbers, trace_flag) while @running
+      program_loop(trace_flag || @tron_flag) while @running
     rescue Interrupt
       stop_running
     end
@@ -442,15 +449,12 @@ class Interpreter
     statement.execute(self, do_trace) if @running
   end
 
-  public
-
-  def program_loop(line_numbers, trace_flag)
-    do_trace = trace_flag || @tron_flag
+  def program_loop(trace_flag)
     # pick the next line number
-    @next_line_number =
-      line_numbers[line_numbers.index(@current_line_number) + 1]
+    line_numbers = @program_lines.keys.sort
+    @next_line_number = find_next_line_number
     begin
-      execute_a_line(do_trace)
+      execute_a_line(trace_flag)
       # set the next line number
       @current_line_number = nil
       @current_line_number =
@@ -460,6 +464,14 @@ class Interpreter
       stop_running
     end
   end
+
+  def find_next_line_number
+    line_numbers = @program_lines.keys.sort
+    index = line_numbers.index(@current_line_number)
+    line_numbers[index + 1]
+  end
+
+  public
 
   def trace(tron_flag)
     @tron_flag = tron_flag
@@ -511,7 +523,8 @@ class Interpreter
     begin
       File.open(filename, 'w') do |file|
         line_numbers.each do |line_num|
-          file.puts "#{line_num} #{@program_lines[line_num]}"
+          text = @program_lines[line_num]
+          file.puts line_num + ' ' + text
         end
         file.close
       end
@@ -553,7 +566,7 @@ class Interpreter
 
   def find_closing_next(control_variable)
     # starting with @next_line_number
-    line_numbers = @program_lines.keys
+    line_numbers = @program_lines.keys.sort
     forward_line_numbers =
       line_numbers.select { |line_number| line_number > @current_line_number }
     # find a NEXT statement with matching control variable
