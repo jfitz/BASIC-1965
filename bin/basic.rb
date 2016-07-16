@@ -385,12 +385,12 @@ class Interpreter
     puts e
   end
 
-  def verify_next_line_number(line_numbers, next_line_number)
+  def verify_next_line_number
     raise BASICException, 'Program terminated without END' if
-      next_line_number.nil?
-    raise BASICException, "Line number #{next_line_number} not found" unless
-      line_numbers.include?(next_line_number)
-    next_line_number
+      @next_line_number.nil?
+    line_numbers = @program_lines.keys.sort
+    raise BASICException, "Line number #{@next_line_number} not found" unless
+      line_numbers.include?(@next_line_number)
   end
 
   public
@@ -451,14 +451,15 @@ class Interpreter
 
   def program_loop(trace_flag)
     # pick the next line number
-    line_numbers = @program_lines.keys.sort
     @next_line_number = find_next_line_number
     begin
       execute_a_line(trace_flag)
       # set the next line number
       @current_line_number = nil
-      @current_line_number =
-        verify_next_line_number(line_numbers, @next_line_number) if @running
+      if @running
+        verify_next_line_number
+        @current_line_number = @next_line_number
+      end
     rescue BASICException => message
       puts "#{message} in line #{current_line_number}"
       stop_running
