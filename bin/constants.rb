@@ -348,7 +348,7 @@ class BooleanConstant < AbstractElement
     super()
     @value = false
     @value = true if text.class.to_s == 'BooleanConstantToken' &&
-      text.boolean_constant == 'ON'
+                     text.boolean_constant == 'ON'
     @value = true if text.class.to_s == 'String' && text.to_s.casecmp('ON') == 0
     @value = true if text.class.to_s == 'TrueClass'
     @operand = true
@@ -505,6 +505,20 @@ class Function < AbstractElement
   end
 
   private
+
+  def ensure_argument_count(stack, expected)
+    raise(BASICException, @name + ' requires argument') if
+      stack.empty? || stack[-1].class.to_s != 'Array'
+    valid = counts_to_text(expected)
+    raise(BASICException, @name + ' requires ' + valid + ' argument') unless
+      expected.include? stack[-1].size
+  end
+
+  def counts_to_text(counts)
+    words = %w( zero one two )
+    texts = counts.map { |v| words[v] }
+    texts.join(' or ')
+  end
 
   def check_args(args)
     raise(BASICException, 'No arguments for function') if
