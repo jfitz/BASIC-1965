@@ -671,9 +671,13 @@ class ForStatement < AbstractStatement
     super('FOR', line)
     # parse control variable, '=', numeric_expression, "TO",
     # numeric_expression, "STEP", numeric_expression
-    tokens2 = make_control(tokens)
-    tokens3 = make_to_value(tokens2)
-    make_step_value(tokens3)
+    begin
+      tokens2 = make_control(tokens)
+      tokens3 = make_to_value(tokens2)
+      make_step_value(tokens3)
+    rescue BASICException => e
+      @errors << e.message
+    end
   end
 
   def to_s
@@ -706,24 +710,26 @@ class ForStatement < AbstractStatement
 
   def make_control(tokens)
     parts = split_on_token(tokens, '=')
-    raise(BASICException, 'Syntax error') if parts.size != 2
+    raise(BASICException, 'Incorrect initialization') if parts.size != 3
+    raise(BASICException, 'Incorrect initialization') if parts[1].to_s != '='
     if parts[0][0].variable?
       @control = VariableName.new(parts[0][0])
     else
       @errors << 'Control variable must be a variable'
     end
-    parts[1]
+    parts[2]
   end
 
   def split_on_token(tokens, token_to_split)
     results = []
     list = []
     tokens.each do |token|
-      if token.to_s == token_to_split
+      if token.to_s != token_to_split
+        list << token
+      else
         results << list unless list.empty?
         list = []
-      else
-        list << token
+        results << token
       end
     end
     results << list unless list.empty?
@@ -732,9 +738,13 @@ class ForStatement < AbstractStatement
 
   def make_to_value(tokens)
     parts = split_on_token(tokens, 'TO')
-    raise(BASICException, 'Syntax error') if parts.size != 2
+    raise(BASICException, 'Missing start value') if
+      parts.size < 1 || parts[0].to_s == 'TO'
+    raise(BASICException, 'Missing \'TO\'') if
+      parts.size < 2 || parts[1].to_s != 'TO'
+    raise(BASICException, 'Missing end value') if parts.size != 3
     @start = ValueScalarExpression.new(parts[0])
-    parts[1]
+    parts[2]
   end
 
   def make_step_value(tokens)
@@ -742,10 +752,10 @@ class ForStatement < AbstractStatement
     tokens_e = parts[0]
     @end = ValueScalarExpression.new(tokens_e)
 
-    @has_step_value = parts.size > 1
+    @has_step_value = parts.size == 3
     if @has_step_value
-      tokens_s = parts[1]
-      @step_value = ValueScalarExpression.new(tokens_s) if parts.size > 1
+      tokens_s = parts[2]
+      @step_value = ValueScalarExpression.new(tokens_s) if parts.size == 3
     else
       @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
     end

@@ -91,6 +91,12 @@ bash test/bin/run_one_test.sh fornext_4
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh fornext_5
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh fornext_no_start
+((ECODE+=$?))
+bash test/bin/run_one_test.sh fornext_no_end
+((ECODE+=$?))
+bash test/bin/run_one_test.sh fornext_no_to
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh syntax_error_1
 ((ECODE+=$?))
