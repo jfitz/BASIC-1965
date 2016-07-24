@@ -274,7 +274,7 @@ end
 class NumberTokenizer
   def try(text)
     @token = ''
-    /\A\d+(\.\d+)?(E[+-]?\d+)?/.match(text) { |m| @token = m[0] }
+    /\A(\d+)?(\.\d+)?(E[+-]?\d+)?/.match(text) { |m| @token = m[0] }
   end
 
   def count
