@@ -252,6 +252,7 @@ end
 class Interpreter
   attr_reader :current_line_number
   attr_accessor :next_line_number
+  attr_reader :printer
 
   def initialize(print_width, zone_width, output_speed)
     @running = false
@@ -661,10 +662,6 @@ class Interpreter
       variable = Variable.new(name, coords)
       set_value(variable, value, trace)
     end
-  end
-
-  def print_handler
-    @printer
   end
 
   def push_return(destination)
