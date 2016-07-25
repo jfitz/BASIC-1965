@@ -445,9 +445,12 @@ class Interpreter
   def execute_a_line(do_trace)
     statement = @program_lines[@current_line_number]
     print_trace_info(statement) if do_trace
-    stop_running unless statement.errors.empty?
-    print_errors(current_line_number, statement) unless statement.errors.empty?
-    statement.execute(self, do_trace) if @running
+    if statement.errors.empty?
+      statement.execute(self, do_trace)
+    else
+      stop_running
+      print_errors(current_line_number, statement)
+    end
   end
 
   def program_loop(trace_flag)

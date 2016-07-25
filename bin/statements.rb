@@ -755,7 +755,7 @@ class ForStatement < AbstractStatement
     @has_step_value = parts.size == 3
     if @has_step_value
       tokens_s = parts[2]
-      @step_value = ValueScalarExpression.new(tokens_s) if parts.size == 3
+      @step_value = ValueScalarExpression.new(tokens_s)
     else
       @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
     end
