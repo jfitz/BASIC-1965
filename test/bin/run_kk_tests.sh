@@ -66,6 +66,8 @@ bash test/bin/run_one_test.sh matinv
 bash test/bin/run_one_test.sh linequ
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh annular
+((ECODE+=$?))
 bash test/bin/run_one_test.sh deal
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh dice

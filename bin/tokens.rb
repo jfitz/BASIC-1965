@@ -146,6 +146,10 @@ class TextConstantToken < AbstractToken
   def to_s
     @text_constant
   end
+
+  def value
+    @text_constant[1..-2]
+  end
 end
 
 # numeric constant token

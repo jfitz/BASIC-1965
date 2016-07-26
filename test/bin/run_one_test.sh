@@ -13,7 +13,12 @@ echo Running program...
 cd tests/$TESTNAME
 ruby -I. basic.rb -l $TESTNAME.bas >list.txt
 ruby -I. basic.rb -p $TESTNAME.bas >pretty.txt
+if [ -e stdin.txt ]
+then
+ruby -I. basic.rb --notiming -r $TESTNAME.bas <stdin.txt >stdout.txt
+else
 ruby -I. basic.rb --notiming -r $TESTNAME.bas >stdout.txt
+fi
 cd ../..
 echo run finished
 

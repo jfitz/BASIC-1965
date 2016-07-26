@@ -341,14 +341,14 @@ class InputStatement < AbstractStatement
     super('INPUT', line)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # [prompt string] variable [variable]...
-    @default_prompt = TextConstant.new('"? "')
+    @default_prompt = TextConstantToken.new('"? "')
     @prompt = @default_prompt
     @expression_list = []
     if tokens_lists.empty?
       @errors << 'No variables specified'
     else
       if tokens_lists[0][0].text_constant?
-        @prompt = TextConstant.new(tokens_lists[0][0].to_s)
+        @prompt = tokens_lists[0][0]
         tokens_lists.shift
       end
       # check variables are specified
