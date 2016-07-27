@@ -370,7 +370,7 @@ class InputStatement < AbstractStatement
 
   def execute(interpreter, trace)
     printer = interpreter.printer
-    values = input_values
+    values = input_values(interpreter)
     name_value_pairs =
       zip(@expression_list, values[0, @expression_list.length])
     name_value_pairs.each do |hash|
@@ -406,13 +406,13 @@ class InputStatement < AbstractStatement
     values
   end
 
-  def input_values
+  def input_values(interpreter)
     values = []
     prompt = @prompt
     while values.size < @expression_list.size
       print prompt.value
-      input_line = gets
-      values += textline_to_constants(input_line.chomp)
+      input_text = interpreter.read_line
+      values += textline_to_constants(input_text)
       prompt = @default_prompt
     end
     values

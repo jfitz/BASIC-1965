@@ -15,7 +15,7 @@ ruby -I. basic.rb -l $TESTNAME.bas >list.txt
 ruby -I. basic.rb -p $TESTNAME.bas >pretty.txt
 if [ -e stdin.txt ]
 then
-ruby -I. basic.rb --notiming -r $TESTNAME.bas <stdin.txt >stdout.txt
+ruby -I. basic.rb --notiming --echo-input -r $TESTNAME.bas <stdin.txt >stdout.txt
 else
 ruby -I. basic.rb --notiming -r $TESTNAME.bas >stdout.txt
 fi

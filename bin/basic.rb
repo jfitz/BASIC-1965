@@ -254,12 +254,13 @@ class Interpreter
   attr_accessor :next_line_number
   attr_reader :printer
 
-  def initialize(print_width, zone_width, output_speed)
+  def initialize(print_width, zone_width, output_speed, echo_input)
     @running = false
     @randomizer = Random.new(1)
     @data_store = []
     @data_index = 0
     @statement_factory = StatementFactory.new
+    @echo_input = echo_input
     @printer = PrintHandler.new(print_width, zone_width, output_speed)
     @return_stack = []
     @fornexts = {}
@@ -569,6 +570,13 @@ class Interpreter
     NumericConstant.new(@randomizer.rand(upper_bound))
   end
 
+  def read_line
+    input_line = gets
+    input_text = input_line.chomp
+    puts(input_text) if @echo_input
+    input_text
+  end
+
   def find_closing_next(control_variable)
     # starting with @next_line_number
     line_numbers = @program_lines.keys.sort
@@ -848,6 +856,7 @@ OptionParser.new do |opt|
   opt.on('--tty') { |o| options[:tty] = o }
   opt.on('--print-width WIDTH') { |o| options[:print_width] = o }
   opt.on('--zone-width WIDTH') { |o| options[:zone_width] = o }
+  opt.on('--echo-input') { |o| options[:echo_input] = o }
 end.parse!
 
 run_filename = options[:run_name]
@@ -862,20 +871,22 @@ print_width = 72
 print_width = options[:print_width].to_i if options.key?(:print_width)
 zone_width = 16
 zone_width = options[:zone_width].to_i if options.key?(:zone_width)
+echo_input = options.key?(:echo_input) || false
 
 puts 'BASIC-1965 interpreter version -1'
 puts
 if !run_filename.nil?
-  interpreter = Interpreter.new(print_width, zone_width, output_speed)
+  interpreter =
+    Interpreter.new(print_width, zone_width, output_speed, echo_input)
   interpreter.load_and_run(run_filename, trace_flag, timing_flag)
 elsif !list_filename.nil?
-  interpreter = Interpreter.new(print_width, zone_width, 0)
+  interpreter = Interpreter.new(print_width, zone_width, 0, echo_input)
   interpreter.load_and_list(list_filename, trace_flag)
 elsif !pretty_filename.nil?
-  interpreter = Interpreter.new(print_width, zone_width, 0)
+  interpreter = Interpreter.new(print_width, zone_width, 0, echo_input)
   interpreter.load_and_pretty(pretty_filename, trace_flag)
 else
-  interpreter = Interpreter.new(print_width, zone_width, 0)
+  interpreter = Interpreter.new(print_width, zone_width, 0, echo_input)
   interpreter.go
 end
 puts
