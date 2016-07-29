@@ -486,7 +486,7 @@ class List < AbstractElement
   end
 
   def evaluate(interpreter, _)
-    eval_scalar(interpreter, @parsed_expressions)
+    interpreter.evaluate(@parsed_expressions)
   end
 
   def to_s

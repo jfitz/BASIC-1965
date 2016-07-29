@@ -539,6 +539,38 @@ class Interpreter
     end
   end
 
+  # returns an Array of values
+  def evaluate(parsed_expressions)
+    # expected = parsed_expressions[0].length
+    result_values = []
+    parsed_expressions.each do |parsed_expression|
+      stack = []
+      parsed_expression.each do |element|
+        value = element.evaluate(self, stack)
+        stack.push value
+      end
+      # should be only one item on stack
+      # actual = stack.length
+      # raise(Exception,
+      #      "Expected #{expected} items, "
+      #      "#{actual} remaining on evaluation stack") if
+      #  actual != expected
+      # very each item is of correct type
+      item = stack[0]
+      # raise(Exception,
+      #      "Expected item #{expected_result_class}, "
+      #      "found item type #{item.class} remaining on evaluation stack") if
+      #  item.class.to_s != expected_result_class
+      result_values << item unless item.nil?
+    end
+    # actual = result_values.length
+    # raise(Exception,
+    #      "Expected #{expected} items, "
+    #      "#{actual} remaining on evaluation stack") if
+    #   actual != expected
+    result_values
+  end
+
   def dump_vars
     @variables.each do |key, value|
       puts "#{key}: #{value}"
