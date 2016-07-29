@@ -1,14 +1,3 @@
-def squeeze_out_spaces(text)
-  squeezed_text = ''
-  in_quotes = false
-  text.each_char do |c|
-    in_remark = squeezed_text.start_with?('REM')
-    in_quotes = !in_quotes if c == '"'
-    squeezed_text += c if c != ' ' || in_quotes || in_remark
-  end
-  squeezed_text
-end
-
 # split a line into arguments
 class ArgSplitter
   attr_reader :args
@@ -92,6 +81,17 @@ class StatementFactory
   end
 
   private
+
+  def squeeze_out_spaces(text)
+    squeezed_text = ''
+    in_quotes = false
+    text.each_char do |c|
+      in_remark = squeezed_text.start_with?('REM')
+      in_quotes = !in_quotes if c == '"'
+      squeezed_text += c if c != ' ' || in_quotes || in_remark
+    end
+    squeezed_text
+  end
 
   def create(text)
     squeezed = squeeze_out_spaces(text)
