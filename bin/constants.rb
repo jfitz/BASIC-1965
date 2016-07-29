@@ -119,34 +119,32 @@ class ParamSeparator < AbstractElement
   end
 end
 
-private
-
-def text_to_numeric(text)
-  # nnn(E+nn)
-  if /\A\s*[+-]?\d+(E+?\d+)?\z/ =~ text
-    text.to_f.to_i
-  # nnn(E-nn)
-  elsif /\A\s*[+-]?\d+(E-\d+)?\z/ =~ text
-    text.to_f
-  # nnn.(nnn)(E+-nn)
-  elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/ =~ text
-    text.to_f
-  # (nnn).nnn(E+-nn)
-  elsif /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/ =~ text
-    text.to_f
-  end
-end
-
 public
 
 # Numeric constants
 class NumericConstant < AbstractElement
   def self.init?(text)
     numeric_classes = %w(Fixnum Bignum Float)
-    numeric_classes.include?(text.class.to_s) || !text_to_numeric(text).nil?
+    numeric_classes.include?(text.class.to_s) || !numeric(text).nil?
   end
 
   private
+
+  def self.numeric(text)
+    # nnn(E+nn)
+    if /\A\s*[+-]?\d+(E+?\d+)?\z/ =~ text
+      text.to_f.to_i
+    # nnn(E-nn)
+    elsif /\A\s*[+-]?\d+(E-\d+)?\z/ =~ text
+      text.to_f
+    # nnn.(nnn)(E+-nn)
+    elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/ =~ text
+      text.to_f
+    # (nnn).nnn(E+-nn)
+    elsif /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/ =~ text
+      text.to_f
+    end
+  end
 
   def float_to_possible_int(f)
     i = f.to_i
@@ -158,7 +156,7 @@ class NumericConstant < AbstractElement
   def initialize(text)
     super()
     numeric_classes = %w(Fixnum Bignum Float)
-    f = numeric_classes.include?(text.class.to_s) ? text : text_to_numeric(text)
+    f = numeric_classes.include?(text.class.to_s) ? text : NumericConstant.numeric(text)
     @value = float_to_possible_int(f)
     @operand = true
     @precedence = 0
