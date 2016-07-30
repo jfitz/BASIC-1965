@@ -76,6 +76,11 @@ end
 
 # beginning of a group
 class GroupStart < AbstractElement
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     text == '('
   end
@@ -88,6 +93,11 @@ end
 
 # end of a group
 class GroupEnd < AbstractElement
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     text == ')'
   end
@@ -109,6 +119,11 @@ end
 
 # separator for group or params
 class ParamSeparator < AbstractElement
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     text == ',' || text == ';'
   end
@@ -123,6 +138,11 @@ public
 
 # Numeric constants
 class NumericConstant < AbstractElement
+  def self.accept?(token)
+    classes = %w(FixNum Bignum Float String NumericConstantToken)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     numeric_classes = %w(Fixnum Bignum Float)
     numeric_classes.include?(text.class.to_s) || !numeric(text).nil?
@@ -156,7 +176,9 @@ class NumericConstant < AbstractElement
   def initialize(text)
     super()
     numeric_classes = %w(Fixnum Bignum Float)
-    f = numeric_classes.include?(text.class.to_s) ? text : NumericConstant.numeric(text)
+    f = text if numeric_classes.include?(text.class.to_s)
+    f = NumericConstant.numeric(text) if text.class.to_s == 'String'
+    f = text.to_f if text.class.to_s == 'NumericConstantToken'
     @value = float_to_possible_int(f)
     @operand = true
     @precedence = 0
@@ -304,6 +326,11 @@ end
 
 # Text constants
 class TextConstant < AbstractElement
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     /\A".*"\z/.match(text)
   end
@@ -360,6 +387,11 @@ end
 
 # Carriage control for PRINT and MAT PRINT statements
 class CarriageControl
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     ['NL', ',', ';', ''].include?(text)
   end
@@ -403,6 +435,11 @@ end
 
 # Hold a variable name (not a reference or value)
 class VariableName < AbstractElement
+  def self.accept?(token)
+    classes = %w(VariableToken String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     /\A[A-Z]\d?\z/.match(text)
   end
@@ -421,7 +458,7 @@ class VariableName < AbstractElement
   end
 
   def eql?(other)
-    @var_name == other.to_s
+    @var_name.to_s == other.to_s
   end
 
   def ==(other)

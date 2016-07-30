@@ -495,6 +495,11 @@ end
 
 # User-defined function (provides a scalar value)
 class UserFunction < AbstractScalarFunction
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     /\AFN[A-Z]\z/.match(text)
   end
@@ -734,6 +739,7 @@ class AbstractExpression
 
     element = nil
     (follows_operand ? binary_classes : unary_classes).each do |c|
+      element = c.new(token) if element.nil? && c.accept?(token)
       element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
     end
     raise(BASICException, "Token '#{token}' is not a value or operator") if

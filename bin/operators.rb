@@ -1,5 +1,10 @@
 # Unary scalar operators
 class UnaryOperator < AbstractElement
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     operators = { '+' => 5, '-' => 5 }
     operators.key?(text)
@@ -117,6 +122,11 @@ end
 
 # Binary scalar operators
 class BinaryOperator < AbstractElement
+  def self.accept?(token)
+    classes = %w(String)
+    classes.include?(token.class.to_s)
+  end
+
   def self.init?(text)
     operators = {
       '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
