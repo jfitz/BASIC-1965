@@ -643,7 +643,9 @@ class Interpreter
   end
 
   def set_user_var_values(name, user_var_values)
-    names_and_values = Hash[@user_var_names[name].zip(user_var_values)]
+    param_names = @user_var_names[name]
+    param_names_values = param_names.zip(user_var_values)
+    names_and_values = Hash[param_names_values]
     @user_var_values.push(names_and_values)
   end
 
@@ -676,19 +678,19 @@ class Interpreter
   def get_value(variable)
     v = variable.to_s
 
+    value = nil
     # first look in user function values stack
     length = @user_var_values.length
-    x = nil
     if length > 0
       names_and_values = @user_var_values[-1]
-      x = names_and_values[variable] if names_and_values.key?(variable)
+      value = names_and_values[variable] if names_and_values.key?(variable)
     end
     # then look in general table
-    if x.nil?
+    if value.nil?
       @variables[v] = NumericConstant.new(0) unless @variables.key?(v)
-      x = @variables[v]
+      value = @variables[v]
     end
-    x
+    value
   end
 
   def set_value(variable, value, trace)

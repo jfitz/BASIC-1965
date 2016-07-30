@@ -407,6 +407,8 @@ class VariableName < AbstractElement
     /\A[A-Z]\d?\z/.match(text)
   end
 
+  attr_reader :content_type
+
   def initialize(text)
     super()
     raise(BASICException, "'#{text}' is not a variable name") unless
@@ -415,6 +417,7 @@ class VariableName < AbstractElement
     @variable = true
     @operand = true
     @precedence = 7
+    @content_type = 'NumericConstant'
   end
 
   def eql?(other)
@@ -427,10 +430,6 @@ class VariableName < AbstractElement
 
   def hash
     @var_name.hash
-  end
-
-  def content_type
-    'NumericConstant'
   end
 
   def to_s
