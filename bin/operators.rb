@@ -1,7 +1,7 @@
 # Unary scalar operators
 class UnaryOperator < AbstractElement
   def self.accept?(token)
-    classes = %w(String)
+    classes = %w(String OperatorToken)
     classes.include?(token.class.to_s)
   end
 
@@ -12,6 +12,7 @@ class UnaryOperator < AbstractElement
 
   def initialize(text)
     super()
+    text = text.to_s if text.class.to_s == 'OperatorToken'
     operators = { '+' => 5, '-' => 5 }
     raise(BASICException, "'#{text}' is not an operator") unless
       operators.key?(text)
@@ -123,7 +124,7 @@ end
 # Binary scalar operators
 class BinaryOperator < AbstractElement
   def self.accept?(token)
-    classes = %w(String)
+    classes = %w(String OperatorToken)
     classes.include?(token.class.to_s)
   end
 
@@ -137,6 +138,7 @@ class BinaryOperator < AbstractElement
 
   def initialize(text)
     super()
+    text = text.to_s if text.class.to_s == 'OperatorToken'
     operators = {
       '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
       '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
