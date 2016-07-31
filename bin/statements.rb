@@ -20,7 +20,7 @@ class ArgSplitter
       else
         list << token
       end
-      parens_level += 1 if token.operator? && token.open?
+      parens_level += 1 if token.groupstart?
       parens_level -= 1 if token.groupend? && parens_level > 0
     end
     lists << list unless list.empty?
@@ -146,18 +146,21 @@ class StatementFactory
     tokenizers = []
     keywords = statement_definitions.keys + %w(THEN TO STEP) -
                %w(MATPRINT MATREAD)
+
     tokenizers << ListTokenizer.new(keywords, KeywordToken)
     operators = [
-      '+', '-', '*', '/', '^', '(',
+      '+', '-', '*', '/', '^',
       '<', '<=', '=', '>', '>=', '<>'
     ]
     tokenizers << ListTokenizer.new(operators, OperatorToken)
-    groupends = [ ')' ]
-    tokenizers << ListTokenizer.new(groupends, GroupEndToken)
-    separators = [ ',', ';' ]
-    tokenizers << ListTokenizer.new(separators, ParamSeparatorToken)
+
+    tokenizers << ListTokenizer.new([ '(' ], GroupStartToken)
+    tokenizers << ListTokenizer.new([ ')' ], GroupEndToken)
+    tokenizers << ListTokenizer.new([ ',', ';' ], ParamSeparatorToken)
+
     tokenizers <<
       ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
+
     tokenizers << TextTokenizer.new
     tokenizers << NumberTokenizer.new
     tokenizers << ListTokenizer.new(%w(ON OFF), BooleanConstantToken)

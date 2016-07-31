@@ -10,6 +10,7 @@ class AbstractToken
     @is_boolean_constant = false
     @is_user_function = false
     @is_variable = false
+    @is_groupstart = false
     @is_groupend = false
   end
 
@@ -23,10 +24,6 @@ class AbstractToken
 
   def separator?
     @is_separator
-  end
-
-  def open?
-    false
   end
 
   def function?
@@ -51,6 +48,10 @@ class AbstractToken
 
   def variable?
     @is_variable
+  end
+
+  def groupstart?
+    @is_groupstart
   end
 
   def groupend?
@@ -103,10 +104,6 @@ class OperatorToken < AbstractToken
     @operator == '='
   end
 
-  def open?
-    @operator == '('
-  end
-
   def comparison?
     @operator == '<' || @operator == '<=' ||
       @operator == '>' || @operator == '>=' ||
@@ -115,6 +112,20 @@ class OperatorToken < AbstractToken
 
   def to_s
     @operator
+  end
+end
+
+# group start token
+class GroupStartToken < AbstractToken
+  attr_reader :start
+
+  def initialize(text)
+    @is_groupstart = true
+    @start = text
+  end
+
+  def to_s
+    @start
   end
 end
 
@@ -309,7 +320,7 @@ class NumberTokenizer
   def try(text)
     @token = ''
     /\A\d+(\.\d+)?(E[+-]?\d+)?/.match(text) { |m| @token = m[0] }
-    /\A\.\d+?(E[+-]?\d+)?/.match(text) { |m| @token = m[0] }
+    /\A\.\d+(E[+-]?\d+)?/.match(text) { |m| @token = m[0] }
   end
 
   def count

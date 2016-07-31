@@ -77,7 +77,7 @@ end
 # beginning of a group
 class GroupStart < AbstractElement
   def self.accept?(token)
-    classes = %w(String)
+    classes = %w(String GroupStartToken)
     classes.include?(token.class.to_s)
   end
 
@@ -144,7 +144,7 @@ public
 # Numeric constants
 class NumericConstant < AbstractElement
   def self.accept?(token)
-    classes = %w(FixNum Bignum Float String NumericConstantToken)
+    classes = %w(Fixnum Bignum Float String NumericConstantToken)
     classes.include?(token.class.to_s)
   end
 
