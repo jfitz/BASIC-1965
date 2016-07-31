@@ -94,7 +94,7 @@ end
 # end of a group
 class GroupEnd < AbstractElement
   def self.accept?(token)
-    classes = %w(String)
+    classes = %w(String GroupEndToken)
     classes.include?(token.class.to_s)
   end
 

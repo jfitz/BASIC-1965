@@ -21,7 +21,7 @@ class ArgSplitter
         list << token
       end
       parens_level += 1 if token.operator? && token.open?
-      parens_level -= 1 if token.operator? && token.close? && parens_level > 0
+      parens_level -= 1 if token.groupend? && parens_level > 0
     end
     lists << list unless list.empty?
     lists
@@ -148,10 +148,12 @@ class StatementFactory
                %w(MATPRINT MATREAD)
     tokenizers << ListTokenizer.new(keywords, KeywordToken)
     operators = [
-      '+', '-', '*', '/', '^', '(', ')',
+      '+', '-', '*', '/', '^', '(',
       '<', '<=', '=', '>', '>=', '<>'
     ]
     tokenizers << ListTokenizer.new(operators, OperatorToken)
+    groupends = [ ')' ]
+    tokenizers << ListTokenizer.new(groupends, GroupEndToken)
     separators = [ ',', ';' ]
     tokenizers << ListTokenizer.new(separators, ParamSeparatorToken)
     tokenizers <<
