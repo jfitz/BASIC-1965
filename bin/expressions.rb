@@ -496,7 +496,7 @@ end
 # User-defined function (provides a scalar value)
 class UserFunction < AbstractScalarFunction
   def self.accept?(token)
-    classes = %w(String UserFunctionToken)
+    classes = %w(UserFunctionToken)
     classes.include?(token.class.to_s)
   end
 
@@ -741,7 +741,6 @@ class AbstractExpression
     element = nil
     (follows_operand ? binary_classes : unary_classes).each do |c|
       element = c.new(token) if element.nil? && c.accept?(token)
-#      element = c.new(token.to_s) if element.nil? && c.init?(token.to_s)
     end
     raise(BASICException, "Token '#{token.class}:#{token}' is not a value or operator") if
       element.nil?

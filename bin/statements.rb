@@ -403,11 +403,14 @@ class InputStatement < AbstractStatement
   def textline_to_constants(line)
     values = []
     text_values = line.split(',')
+    tokenizer = NumberTokenizer.new
     text_values.each do |value|
       v = value.strip
+      tokenizer.try(v)
       raise(BASICException, "Value '#{value}' not numeric") unless
-        NumericConstant.init?(v)
-      values << NumericConstant.new(v)
+        tokenizer.count > 0
+      v1 = NumericConstantToken.new(v)
+      values << NumericConstant.new(v1)
     end
     values
   end
