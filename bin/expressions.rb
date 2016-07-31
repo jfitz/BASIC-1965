@@ -925,7 +925,7 @@ class UserFunctionPrototype
     separators = params.values_at(* params.each_index.select(&:odd?))
     separators.each do |separator|
       raise(BASICException, 'Invalid list separator') unless
-        separator.operator && separator.separator?
+        separator.separator?
     end
     variables
   end

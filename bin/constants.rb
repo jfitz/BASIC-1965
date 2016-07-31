@@ -120,7 +120,7 @@ end
 # separator for group or params
 class ParamSeparator < AbstractElement
   def self.accept?(token)
-    classes = %w(String)
+    classes = %w(String ParamSeparatorToken)
     classes.include?(token.class.to_s)
   end
 
@@ -128,9 +128,14 @@ class ParamSeparator < AbstractElement
     text == ',' || text == ';'
   end
 
-  def initialize(_)
+  def initialize(text)
     super()
+    @text = text
     @separator = true
+  end
+
+  def to_s
+    @text
   end
 end
 
@@ -387,17 +392,19 @@ end
 # Carriage control for PRINT and MAT PRINT statements
 class CarriageControl
   def self.accept?(token)
-    classes = %w(String)
+    classes = %w(String ParamSeparatorToken)
     classes.include?(token.class.to_s)
   end
 
   def self.init?(text)
+    text = text.to_s if text.class.to_s == 'ParamSeparatorToken'
     ['NL', ',', ';', ''].include?(text)
   end
 
   def initialize(text)
     raise(BASICException, "'#{text}' is not a valid separator") unless
       CarriageControl.init?(text)
+    text = text.to_s if text.class.to_s == 'ParamSeparatorToken'
     @operator = text
   end
 

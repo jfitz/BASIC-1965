@@ -13,7 +13,7 @@ class ArgSplitter
       if token.operand? && (!list.empty? && list[-1].operand?)
         lists << list unless list.empty?
         list = [token]
-      elsif token.operator? && token.separator? && parens_level == 0
+      elsif token.separator? && parens_level == 0
         lists << list unless list.empty?
         lists << token if want_separators
         list = []
@@ -149,10 +149,11 @@ class StatementFactory
     tokenizers << ListTokenizer.new(keywords, KeywordToken)
     operators = [
       '+', '-', '*', '/', '^', '(', ')',
-      '<', '<=', '=', '>', '>=', '<>',
-      ',', ';'
+      '<', '<=', '=', '>', '>=', '<>'
     ]
     tokenizers << ListTokenizer.new(operators, OperatorToken)
+    separators = [ ',', ';' ]
+    tokenizers << ListTokenizer.new(separators, ParamSeparatorToken)
     tokenizers <<
       ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
     tokenizers << TextTokenizer.new
@@ -521,7 +522,7 @@ class PrintStatement < AbstractStatement
   def tokens_to_expressions(tokens_lists)
     @print_items = []
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'OperatorToken'
+      if tokens_list.class.to_s == 'ParamSeparatorToken'
         add_carriage_control(tokens_list)
       elsif tokens_list.class.to_s == 'Array'
         add_expression(tokens_list)
@@ -1003,9 +1004,8 @@ class MatPrintStatement < AbstractStatement
   def tokens_to_expressions(tokens_lists)
     print_items = []
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'OperatorToken'
-        raise(BASICException, 'Syntax error') unless tokens_list.separator?
-        print_items << CarriageControl.new(tokens_list.to_s)
+      if tokens_list.class.to_s == 'ParamSeparatorToken'
+        print_items << CarriageControl.new(tokens_list)
       elsif tokens_list.class.to_s == 'Array'
         print_items << ValueMatrixExpression.new(tokens_list)
       end

@@ -3,6 +3,7 @@ class AbstractToken
   def initialize
     @is_keyword = false
     @is_operator = false
+    @is_separator = false
     @is_function = false
     @is_text_constant = false
     @is_numeric_constant = false
@@ -17,6 +18,10 @@ class AbstractToken
 
   def operator?
     @is_operator
+  end
+
+  def separator?
+    @is_separator
   end
 
   def open?
@@ -97,10 +102,6 @@ class OperatorToken < AbstractToken
     @operator == '='
   end
 
-  def separator?
-    @operator == ',' || @operator == ';'
-  end
-
   def open?
     @operator == '('
   end
@@ -117,6 +118,20 @@ class OperatorToken < AbstractToken
 
   def to_s
     @operator
+  end
+end
+
+# parameter separator token
+class ParamSeparatorToken < AbstractToken
+  attr_reader :operator
+
+  def initialize(text)
+    @is_separator = true
+    @separator = text
+  end
+
+  def to_s
+    @separator
   end
 end
 
