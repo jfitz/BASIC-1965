@@ -676,17 +676,16 @@ class Interpreter
   end
 
   def get_value(variable)
-    v = variable.to_s
-
     value = nil
     # first look in user function values stack
     length = @user_var_values.length
     if length > 0
       names_and_values = @user_var_values[-1]
-      value = names_and_values[variable] if names_and_values.key?(variable)
+      value = names_and_values[variable]
     end
     # then look in general table
     if value.nil?
+      v = variable.to_s
       @variables[v] = NumericConstant.new(0) unless @variables.key?(v)
       value = @variables[v]
     end
@@ -720,13 +719,11 @@ class Interpreter
 
   def assign_fornext(fornext_control)
     control_variable = fornext_control.control
-    control_variable_name = control_variable.to_s
-    @fornexts[control_variable_name] = fornext_control
+    @fornexts[control_variable] = fornext_control
   end
 
   def retrieve_fornext(control_variable)
-    control_variable_name = control_variable.to_s
-    fornext = @fornexts[control_variable_name]
+    fornext = @fornexts[control_variable]
     raise(BASICException, 'NEXT without FOR') if fornext.nil?
     fornext
   end
