@@ -139,6 +139,8 @@ class LineListSpec
       make_range(text, program_line_numbers)
     elsif LineNumberCountRange.init?(text)
       make_count_range(text, program_line_numbers)
+    else
+      raise(BASICException, 'Invalid list specification')
     end
   end
 
@@ -354,7 +356,7 @@ class Interpreter
   def list_and_delete_lines(line_numbers)
     list_lines(line_numbers)
     print 'DELETE THESE LINES? '
-    answer = gets.chomp
+    answer = read_line
     delete_specific_lines(line_numbers) if answer == 'YES'
   end
 
@@ -602,8 +604,7 @@ class Interpreter
   end
 
   def read_line
-    input_line = gets
-    input_text = input_line.chomp
+    input_text = ascii_printables(gets)
     puts(input_text) if @echo_input
     input_text
   end
@@ -751,7 +752,7 @@ class Interpreter
     done = false
     until done
       print "READY\n" if need_prompt
-      cmd = ascii_printables(gets)
+      cmd = read_line
       if /\A\d/ =~ cmd
         # starts with a number, so maybe it is a program line
         need_prompt = store_program_line(cmd, true)
