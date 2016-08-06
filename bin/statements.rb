@@ -74,10 +74,11 @@ class StatementFactory
     statement = nil
     m = /\A\d+/.match(text)
     unless m.nil?
-      line_num = LineNumber.new(m[0])
+      number = NumericConstantToken.new(m[0])
+      line_number = LineNumber.new(number)
       statement = create(m.post_match)
     end
-    [line_num, statement]
+    [line_number, statement]
   end
 
   private

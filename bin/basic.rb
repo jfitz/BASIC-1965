@@ -21,8 +21,7 @@ class LineNumber
   end
 
   def initialize(line_number)
-    if line_number.class.to_s == 'NumericConstantToken' ||
-       LineNumber.init?(line_number)
+    if line_number.class.to_s == 'NumericConstantToken'
       @line_number = line_number.to_i
     else
       raise BASICException, 'Invalid line number'
@@ -82,8 +81,8 @@ class LineNumberRange
     raise(BASICException, 'Invalid list specification') unless
       LineNumberRange.init?(spec)
     parts = spec.split('-')
-    start_val = LineNumber.new(parts[0])
-    end_val = LineNumber.new(parts[1])
+    start_val = LineNumber.new(NumericConstantToken.new(parts[0]))
+    end_val = LineNumber.new(NumericConstantToken.new(parts[1]))
     @list = []
     program_line_numbers.each do |line_number|
       @list << line_number if line_number >= start_val && line_number <= end_val
@@ -104,7 +103,7 @@ class LineNumberCountRange
       LineNumberCountRange.init?(spec)
 
     parts = spec.split('+')
-    start_val = LineNumber.new(parts[0])
+    start_val = LineNumber.new(NumericConstantToken.new(parts[0]))
     count = parts.size > 1 ? parts[1].to_i : 20
     make_list(program_line_numbers, start_val, count)
   end
@@ -146,7 +145,7 @@ class LineListSpec
   private
 
   def make_single(text, program_line_numbers)
-    line_number = LineNumber.new(text)
+    line_number = LineNumber.new(NumericConstantToken.new(text))
     @line_numbers << line_number if
       program_line_numbers.include?(line_number)
     @range_type = :single
