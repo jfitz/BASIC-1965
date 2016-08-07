@@ -1,22 +1,16 @@
 # Unary scalar operators
 class UnaryOperator < AbstractElement
   def self.accept?(token)
-    classes = %w(String OperatorToken)
+    classes = %w(OperatorToken)
     classes.include?(token.class.to_s)
-  end
-
-  def self.init?(text)
-    operators = { '+' => 5, '-' => 5 }
-    operators.key?(text)
   end
 
   def initialize(text)
     super()
-    text = text.to_s if text.class.to_s == 'OperatorToken'
+    @op = text.to_s
     operators = { '+' => 5, '-' => 5 }
     raise(BASICException, "'#{text}' is not an operator") unless
-      operators.key?(text)
-    @op = text
+      operators.key?(@op)
     @precedence = operators[@op]
     @operator = true
   end
@@ -124,28 +118,19 @@ end
 # Binary scalar operators
 class BinaryOperator < AbstractElement
   def self.accept?(token)
-    classes = %w(String OperatorToken)
+    classes = %w(OperatorToken)
     classes.include?(token.class.to_s)
-  end
-
-  def self.init?(text)
-    operators = {
-      '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
-      '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
-    }
-    operators.key?(text)
   end
 
   def initialize(text)
     super()
-    text = text.to_s if text.class.to_s == 'OperatorToken'
+    @op = text.to_s
     operators = {
       '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
       '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
     }
     raise(BASICException, "'#{text}' is not an operator") unless
-      operators.key?(text)
-    @op = text
+      operators.key?(@op)
     @precedence = operators[@op]
     @operator = true
   end
