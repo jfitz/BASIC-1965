@@ -209,27 +209,27 @@ class BinaryOperator < AbstractElement
   def op_scalar_scalar(x, y)
     case @op
     when '+'
-      x + y
+      x.add(y)
     when '-'
-      x - y
+      x.subtract(y)
     when '*'
-      x * y
+      x.multiply(y)
     when '/'
-      x / y
+      x.divide(y)
     when '^'
-      x**y
+      x.power(y)
     when '='
-      BooleanConstant.new(x == y)
+      x.b_eq(y)
     when '<>'
-      BooleanConstant.new(x != y)
+      x.b_ne(y)
     when '<'
-      BooleanConstant.new(x < y)
+      x.b_lt(y)
     when '<='
-      BooleanConstant.new(x <= y)
+      x.b_le(y)
     when '>'
-      BooleanConstant.new(x > y)
+      x.b_gt(y)
     when '>='
-      BooleanConstant.new(x >= y)
+      x.b_ge(y)
     end
   end
 
@@ -240,7 +240,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a + b_value
+      values[coords] = a.add(b_value)
     end
     values
   end
@@ -254,7 +254,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a + b_value
+        values[coords] = a.add(b_value)
       end
     end
     values
@@ -308,7 +308,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a * b_value
+      values[coords] = a.multiply(b_value)
     end
     values
   end
@@ -322,7 +322,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a * b_value
+        values[coords] = a.multiply(b_value)
       end
     end
     values
@@ -342,7 +342,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a / b_value
+      values[coords] = a.divide(b_value)
     end
     values
   end
@@ -356,7 +356,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a / b_value
+        values[coords] = a.divide(b_value)
       end
     end
     values
@@ -376,7 +376,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a**b_value
+      values[coords] = a.power(b_value)
     end
     values
   end
@@ -390,7 +390,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a**b_value
+        values[coords] = a.power(b_value)
       end
     end
     values
@@ -410,7 +410,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value + b
+      values[coords] = a_value.add(b)
     end
     values
   end
@@ -424,7 +424,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value + b
+        values[coords] = a_value.add(b)
       end
     end
     values
@@ -444,7 +444,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value - b
+      values[coords] = a_value.subtract(b)
     end
     values
   end
@@ -458,7 +458,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value - b
+        values[coords] = a_value.subtract(b)
       end
     end
     values
@@ -478,7 +478,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value * b
+      values[coords] = a_value.multiply(b)
     end
     values
   end
@@ -492,7 +492,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value * b
+        values[coords] = a_value.multiply(b)
       end
     end
     values
@@ -512,7 +512,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value / b
+      values[coords] = a_value.divide(b)
     end
     values
   end
@@ -526,7 +526,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value / b
+        values[coords] = a_value.divide(b)
       end
     end
     values
@@ -546,7 +546,7 @@ class BinaryOperator < AbstractElement
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value**b
+      values[coords] = a_value.power(b)
     end
     values
   end
@@ -560,7 +560,7 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value**b
+        values[coords] = a_value.power(b)
       end
     end
     values
@@ -581,7 +581,7 @@ class BinaryOperator < AbstractElement
       a_value = a.get_value_(col)
       b_value = b.get_value_(col)
       coords = make_coord(col)
-      values[coords] = a_value + b_value
+      values[coords] = a_value.add(b_value)
     end
     values
   end
@@ -596,7 +596,7 @@ class BinaryOperator < AbstractElement
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value + b_value
+        values[coords] = a_value.add(b_value)
       end
     end
     values
@@ -620,7 +620,7 @@ class BinaryOperator < AbstractElement
       a_value = a.get_value_1(col)
       b_value = b.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value - b_value
+      values[coords] = a_value.subtract(b_value)
     end
     values
   end
@@ -635,7 +635,7 @@ class BinaryOperator < AbstractElement
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value - b_value
+        values[coords] = a_value.subtract(b_value)
       end
     end
     values

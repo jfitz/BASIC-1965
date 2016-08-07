@@ -261,7 +261,7 @@ class Matrix
     b = get_value_2(1, 2)
     c = get_value_2(2, 1)
     d = get_value_2(2, 2)
-    (a * d) - (b * c)
+    a.multiply(d) - b.multiply(c)
   end
 
   def determinant_n
@@ -273,9 +273,9 @@ class Matrix
       v = get_value_2(1, col)
       # create submatrix
       subm = submatrix(1, col)
-      d = v * subm.determinant * sign
+      d = v.multiply(subm.determinant).multiply(sign)
       det += d
-      sign *= minus_one
+      sign = sign.multiply(minus_one)
     end
     det
   end
@@ -308,7 +308,7 @@ class Matrix
     denominator = values[denom_coords]
     numer_coords = make_coords(row, col)
     numerator = values[numer_coords]
-    numerator / denominator
+    numerator.divide(denominator)
   end
 
   def adjust_matrix_entry(values, row, col, wcol, factor)
@@ -316,7 +316,7 @@ class Matrix
     minuend_coords = make_coords(col, wcol)
     subtrahend = values[value_coords]
     minuend = values[minuend_coords]
-    new_value = subtrahend - minuend * factor
+    new_value = subtrahend - minuend.multiply(factor)
     values[value_coords] = new_value
   end
 
@@ -360,7 +360,7 @@ class Matrix
   def unitize_matrix_entry(values, row, col, denominator)
     coords = make_coords(row, col)
     numerator = values[coords]
-    new_value = numerator / denominator
+    new_value = numerator.divide(denominator)
     values[coords] = new_value
   end
 end

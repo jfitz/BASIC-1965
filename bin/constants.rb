@@ -217,6 +217,30 @@ class NumericConstant < AbstractElement
     @value <= other.to_v
   end
 
+  def b_eq(other)
+    BooleanConstant.new(@value == other.to_v)
+  end
+
+  def b_ne(other)
+    BooleanConstant.new(@value != other.to_v)
+  end
+
+  def b_gt(other)
+    BooleanConstant.new(@value > other.to_v)
+  end
+
+  def b_ge(other)
+    BooleanConstant.new(@value >= other.to_v)
+  end
+
+  def b_lt(other)
+    BooleanConstant.new(@value < other.to_v)
+  end
+
+  def b_le(other)
+    BooleanConstant.new(@value <= other.to_v)
+  end
+
   def +(other)
     NumericConstant.new(@value + other.to_v)
   end
@@ -225,16 +249,24 @@ class NumericConstant < AbstractElement
     NumericConstant.new(@value - other.to_v)
   end
 
-  def *(other)
+  def add(other)
+    NumericConstant.new(@value + other.to_v)
+  end
+
+  def subtract(other)
+    NumericConstant.new(@value - other.to_v)
+  end
+
+  def multiply(other)
     NumericConstant.new(@value * other.to_v)
   end
 
-  def /(other)
+  def divide(other)
     raise(BASICException, 'Divide by zero') if other == NumericConstant.new(0)
     NumericConstant.new(@value.to_f / other.to_v.to_f)
   end
 
-  def **(other)
+  def power(other)
     NumericConstant.new(@value**other.to_v)
   end
 
