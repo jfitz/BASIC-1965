@@ -24,7 +24,7 @@ class LineNumber
     if line_number.class.to_s == 'NumericConstantToken'
       @line_number = line_number.to_i
     else
-      raise BASICException, 'Invalid line number'
+      raise BASICException, "Invalid line number '{#line_number}'"
     end
   end
 
@@ -414,7 +414,8 @@ class Interpreter
     # phase 1: do all initialization (store values in DATA lines)
     line_numbers = @program_lines.keys.sort
     line_numbers.each do |line_number|
-      @program_lines[line_number].pre_execute(self)
+      line = @program_lines[line_number]
+      line.pre_execute(self)
     end
   end
 
@@ -617,9 +618,9 @@ class Interpreter
     # find a NEXT statement with matching control variable
     forward_line_numbers.each do |line_number|
       statement = @program_lines[line_number]
-      if statement.class.to_s == 'NextStatement'
-        return line_number if statement.control == control_variable
-      end
+      return line_number if
+        statement.class.to_s == 'NextStatement' &&
+        statement.control == control_variable
     end
     raise(BASICException, 'FOR without NEXT') # if none found, error
   end

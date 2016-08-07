@@ -208,7 +208,7 @@ class FunctionZer < AbstractScalarFunction
   end
 
   def evaluate(_, stack)
-    ensure_argument_count(stack, [1,2])
+    ensure_argument_count(stack, [1, 2])
     args = stack.pop
     check_arg_types(args, ['NumericConstant'] * args.size)
     matrix = Matrix.new(args.clone, {})
@@ -223,7 +223,7 @@ class FunctionCon < AbstractScalarFunction
   end
 
   def evaluate(_, stack)
-    ensure_argument_count(stack, [1,2])
+    ensure_argument_count(stack, [1, 2])
     args = stack.pop
     check_arg_types(args, ['NumericConstant'] * args.size)
     matrix = Matrix.new(args.clone, {})
@@ -238,7 +238,7 @@ class FunctionIdn < AbstractScalarFunction
   end
 
   def evaluate(_, stack)
-    ensure_argument_count(stack, [1,2])
+    ensure_argument_count(stack, [1, 2])
     args = stack.pop
     check_arg_types(args, ['NumericConstant'] * args.size)
     check_square(args) if args.size == 2

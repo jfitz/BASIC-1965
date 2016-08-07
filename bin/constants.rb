@@ -153,8 +153,6 @@ class NumericConstant < AbstractElement
     numeric_classes.include?(text.class.to_s) || !numeric(text).nil?
   end
 
-  private
-
   def self.numeric(text)
     # nnn(E+nn)
     if /\A\s*[+-]?\d+(E+?\d+)?\z/ =~ text
@@ -170,6 +168,8 @@ class NumericConstant < AbstractElement
       text.to_f
     end
   end
+
+  private
 
   def float_to_possible_int(f)
     i = f.to_i
@@ -448,13 +448,14 @@ class VariableName < AbstractElement
     /\A[A-Z]\d?\z/.match(text)
   end
 
+  attr_reader :name
   attr_reader :content_type
 
-  def initialize(text)
+  def initialize(token)
     super()
-    raise(BASICException, "'#{text}' is not a variable name") unless
-      text.class.to_s == 'VariableToken' || VariableName.init?(text)
-    @var_name = text
+    raise(BASICException, "'#{token}' is not a variable name") unless
+      token.class.to_s == 'VariableToken'
+    @name = token
     @variable = true
     @operand = true
     @precedence = 7
@@ -462,19 +463,19 @@ class VariableName < AbstractElement
   end
 
   def eql?(other)
-    @var_name.to_s == other.to_s
+    @name == other.name
   end
 
   def ==(other)
-    @var_name.to_s == other.to_s
+    @name == other.name
   end
 
   def hash
-    @var_name.hash
+    @name.hash
   end
 
   def to_s
-    @var_name.to_s
+    @name.to_s
   end
 end
 

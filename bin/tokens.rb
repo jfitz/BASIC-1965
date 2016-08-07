@@ -248,6 +248,14 @@ class VariableToken < AbstractToken
     @variable = text
   end
 
+  def eql?(other)
+    @variable == other.variable
+  end
+
+  def ==(other)
+    @variable == other.variable
+  end
+
   def hash
     @variable.hash
   end
