@@ -139,11 +139,11 @@ class BinaryOperator < AbstractElement
     y = stack.pop
     x = stack.pop
     if x.matrix? && y.matrix?
-      op_matrix_matrix(x, y)
+      matrix_matrix(x, y)
     elsif x.matrix?
-      op_matrix_scalar(x, y)
+      matrix_scalar(x, y)
     elsif y.matrix?
-      op_scalar_matrix(x, y)
+      scalar_matrix(x, y)
     else
       op_scalar_scalar(x, y)
     end
@@ -155,7 +155,7 @@ class BinaryOperator < AbstractElement
 
   private
 
-  def op_matrix_matrix(x, y)
+  def matrix_matrix(x, y)
     case @op
     when '+'
       add_matrix_matrix(x, y)
@@ -172,35 +172,35 @@ class BinaryOperator < AbstractElement
     end
   end
 
-  def op_matrix_scalar(x, y)
+  def matrix_scalar(x, y)
     case @op
     when '+'
-      add_matrix_scalar(x, y)
+      op_matrix_scalar(:add, x, y)
     when '-'
-      subtract_matrix_scalar(x, y)
+      op_matrix_scalar(:subtract, x, y)
     when '*'
-      multiply_matrix_scalar(x, y)
+      op_matrix_scalar(:multiply, x, y)
     when '/'
-      divide_matrix_scalar(x, y)
+      op_matrix_scalar(:divide, x, y)
     when '^'
-      power_matrix_scalar(x, y)
+      op_matrix_scalar(:power, x, y)
     else
       raise BASICException, 'Invalid operation'
     end
   end
 
-  def op_scalar_matrix(x, y)
+  def scalar_matrix(x, y)
     case @op
     when '+'
-      add_scalar_matrix(x, y)
+      op_scalar_matrix(:add, x, y)
     when '-'
-      subtract_scalar_matrix(x, y)
+      op_scalar_matrix(:subtract, x, y)
     when '*'
-      multiply_scalar_matrix(x, y)
+      op_scalar_matrix(:multiply, x, y)
     when '/'
-      divide_scalar_matrix(x, y)
+      op_scalar_matrix(:divide, x, y)
     when '^'
-      power_scalar_matrix(x, y)
+      op_scalar_matrix(:power, x, y)
     else
       raise BASICException, 'Invalid operation'
     end
@@ -233,19 +233,19 @@ class BinaryOperator < AbstractElement
     end
   end
 
-  def add_scalar_matrix_1(a, b)
+  def op_scalar_matrix_1(op, a, b)
     dims = b.dimensions
     n_cols = dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
       b_value = b.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a.add(b_value)
+      values[coords] = a.send(op, b_value)
     end
     values
   end
 
-  def add_scalar_matrix_2(a, b)
+  def op_scalar_matrix_2(op, a, b)
     dims = b.dimensions
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
@@ -254,168 +254,32 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a.add(b_value)
+        values[coords] = a.send(op, b_value)
       end
     end
     values
   end
 
-  def add_scalar_matrix(a, b)
+  def op_scalar_matrix(op, a, b)
     dims = b.dimensions
-    values = add_scalar_matrix_1(a, b) if dims.size == 1
-    values = add_scalar_matrix_2(a, b) if dims.size == 2
+    values = op_scalar_matrix_1(op, a, b) if dims.size == 1
+    values = op_scalar_matrix_2(op, a, b) if dims.size == 2
     Matrix.new(dims, values)
   end
 
-  def subtract_scalar_matrix_1(a, b)
-    dims = b.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      b_value = b.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a - b_value
-    end
-    values
-  end
-
-  def subtract_scalar_matrix_2(a, b)
-    dims = b.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        b_value = b.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a - b_value
-      end
-    end
-    values
-  end
-
-  def subtract_scalar_matrix(a, b)
-    dims = b.dimensions
-    values = subtract_scalar_matrix_1(a, b) if dims.size == 1
-    values = subtract_scalar_matrix_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def multiply_scalar_matrix_1(a, b)
-    dims = b.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      b_value = b.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a.multiply(b_value)
-    end
-    values
-  end
-
-  def multiply_scalar_matrix_2(a, b)
-    dims = b.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        b_value = b.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a.multiply(b_value)
-      end
-    end
-    values
-  end
-
-  def multiply_scalar_matrix(a, b)
-    dims = b.dimensions
-    values = multiply_scalar_matrix_1(a, b) if dims.size == 1
-    values = multiply_scalar_matrix_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def divide_scalar_matrix_1(a, b)
-    dims = b.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      b_value = b.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a.divide(b_value)
-    end
-    values
-  end
-
-  def divide_scalar_matrix_2(a, b)
-    dims = b.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        b_value = b.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a.divide(b_value)
-      end
-    end
-    values
-  end
-
-  def divide_scalar_matrix(a, b)
-    dims = b.dimensions
-    values = divide_scalar_matrix_1(a, b) if dims.size == 1
-    values = divide_scalar_matrix_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def power_scalar_matrix_1(a, b)
-    dims = b.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      b_value = b.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a.power(b_value)
-    end
-    values
-  end
-
-  def power_scalar_matrix_2(a, b)
-    dims = b.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        b_value = b.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a.power(b_value)
-      end
-    end
-    values
-  end
-
-  def power_scalar_matrix(a, b)
-    dims = b.dimensions
-    values = power_scalar_matrix_1(a, b) if dims.size == 1
-    values = power_scalar_matrix_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def add_matrix_scalar_1(a, b)
+  def op_matrix_scalar_1(op, a, b)
     dims = a.dimensions
     n_cols = dims[0].to_i
     values = {}
     (1..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value.add(b)
+      values[coords] = a_value.send(op, b)
     end
     values
   end
 
-  def add_matrix_scalar_2(a, b)
+  def op_matrix_scalar_2(op, a, b)
     dims = a.dimensions
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
@@ -424,152 +288,16 @@ class BinaryOperator < AbstractElement
       (1..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value.add(b)
+        values[coords] = a_value.send(op, b)
       end
     end
     values
   end
 
-  def add_matrix_scalar(a, b)
+  def op_matrix_scalar(op, a, b)
     dims = a.dimensions
-    values = add_matrix_scalar_1(a, b) if dims.size == 1
-    values = add_matrix_scalar_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def subtract_matrix_scalar_1(a, b)
-    dims = a.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      a_value = a.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a_value.subtract(b)
-    end
-    values
-  end
-
-  def subtract_matrix_scalar_2(a, b)
-    dims = a.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        a_value = a.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a_value.subtract(b)
-      end
-    end
-    values
-  end
-
-  def subtract_matrix_scalar(a, b)
-    dims = a.dimensions
-    values = subtract_matrix_scalar_1(a, b) if dims.size == 1
-    values = subtract_matrix_scalar_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def multiply_matrix_scalar_1(a, b)
-    dims = a.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      a_value = a.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a_value.multiply(b)
-    end
-    values
-  end
-
-  def multiply_matrix_scalar_2(a, b)
-    dims = a.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        a_value = a.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a_value.multiply(b)
-      end
-    end
-    values
-  end
-
-  def multiply_matrix_scalar(a, b)
-    dims = a.dimensions
-    values = multiply_matrix_scalar_1(a, b) if dims.size == 1
-    values = multiply_matrix_scalar_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def divide_matrix_scalar_1(a, b)
-    dims = a.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      a_value = a.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a_value.divide(b)
-    end
-    values
-  end
-
-  def divide_matrix_scalar_2(a, b)
-    dims = a.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        a_value = a.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a_value.divide(b)
-      end
-    end
-    values
-  end
-
-  def divide_matrix_scalar(a, b)
-    dims = a.dimensions
-    values = divide_matrix_scalar_1(a, b) if dims.size == 1
-    values = divide_matrix_scalar_2(a, b) if dims.size == 2
-    Matrix.new(dims, values)
-  end
-
-  def power_matrix_scalar_1(a, b)
-    dims = a.dimensions
-    n_cols = dims[0].to_i
-    values = {}
-    (1..n_cols).each do |col|
-      a_value = a.get_value_1(col)
-      coords = make_coord(col)
-      values[coords] = a_value.power(b)
-    end
-    values
-  end
-
-  def power_matrix_scalar_2(a, b)
-    dims = a.dimensions
-    n_rows = dims[0].to_i
-    n_cols = dims[1].to_i
-    values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
-        a_value = a.get_value_2(row, col)
-        coords = make_coords(row, col)
-        values[coords] = a_value.power(b)
-      end
-    end
-    values
-  end
-
-  def power_matrix_scalar(a, b)
-    dims = a.dimensions
-    values = power_matrix_scalar_1(a, b) if dims.size == 1
-    values = power_matrix_scalar_2(a, b) if dims.size == 2
+    values = op_matrix_scalar_1(op, a, b) if dims.size == 1
+    values = op_matrix_scalar_2(op, a, b) if dims.size == 2
     Matrix.new(dims, values)
   end
 
@@ -581,7 +309,7 @@ class BinaryOperator < AbstractElement
       a_value = a.get_value_(col)
       b_value = b.get_value_(col)
       coords = make_coord(col)
-      values[coords] = a_value.add(b_value)
+      values[coords] = a_value.send(:add, b_value)
     end
     values
   end
@@ -596,7 +324,7 @@ class BinaryOperator < AbstractElement
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value.add(b_value)
+        values[coords] = a_value.send(:add, b_value)
       end
     end
     values
@@ -620,7 +348,7 @@ class BinaryOperator < AbstractElement
       a_value = a.get_value_1(col)
       b_value = b.get_value_1(col)
       coords = make_coord(col)
-      values[coords] = a_value.subtract(b_value)
+      values[coords] = a_value.send(:subtract, b_value)
     end
     values
   end
@@ -635,7 +363,7 @@ class BinaryOperator < AbstractElement
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
-        values[coords] = a_value.subtract(b_value)
+        values[coords] = a_value.send(:subtract, b_value)
       end
     end
     values
