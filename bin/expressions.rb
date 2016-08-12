@@ -18,10 +18,6 @@ class ScalarValue < Variable
     subscripts
   end
 
-  def eval_var_name(name, subscripts)
-    name.to_s + '(' + subscripts.join(',') + ')'
-  end
-
   public
 
   # return a single value
@@ -29,10 +25,9 @@ class ScalarValue < Variable
     if previous_is_array(stack)
       @subscripts = get_subscripts(stack)
       interpreter.check_subscripts(@variable_name, @subscripts)
-      evaled_var_name = eval_var_name(@variable_name, @subscripts)
-      interpreter.get_value(evaled_var_name)
+      interpreter.get_value(self)
     else
-      interpreter.get_value(@variable_name.to_s)
+      interpreter.get_value(@variable_name)
     end
   end
 end

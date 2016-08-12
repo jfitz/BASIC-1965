@@ -495,11 +495,11 @@ class VariableName < AbstractElement
   end
 
   def eql?(other)
-    @name == other.name
+    to_s == other.to_s
   end
 
   def ==(other)
-    @name == other.name
+    to_s == other.to_s
   end
 
   def hash
