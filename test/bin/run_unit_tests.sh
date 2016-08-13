@@ -22,6 +22,9 @@ bash test/bin/run_one_test.sh dataread
 bash test/bin/run_one_test.sh datarestore
 ((ECODE+=$?))
 
+bash test/bin/run_one_test.sh input
+((ECODE+=$?))
+
 bash test/bin/run_one_test.sh ifthen_ge
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh ifthen_gt
