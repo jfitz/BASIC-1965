@@ -16,6 +16,7 @@ class UnaryOperator < AbstractElement
   end
 
   def evaluate(_, stack)
+    raise(BASICException, 'Not enough operands') if stack.size < 1
     x = stack.pop
     if x.matrix?
       case @op
@@ -136,6 +137,7 @@ class BinaryOperator < AbstractElement
   end
 
   def evaluate(_, stack)
+    raise(BASICException, 'Not enough operands') if stack.size < 2
     y = stack.pop
     x = stack.pop
     if x.matrix? && y.matrix?

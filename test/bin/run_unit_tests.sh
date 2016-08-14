@@ -37,6 +37,8 @@ bash test/bin/run_one_test.sh ifthen_ne
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh ifthen_eq
 ((ECODE+=$?))
+bash test/bin/run_one_test.sh ifthen_eq_error_1
+((ECODE+=$?))
 
 bash test/bin/run_one_test.sh print_1
 ((ECODE+=$?))
@@ -74,6 +76,8 @@ bash test/bin/run_one_test.sh let_parens
 bash test/bin/run_one_test.sh let_n_uni_plus
 ((ECODE+=$?))
 bash test/bin/run_one_test.sh let_n_uni_minus
+((ECODE+=$?))
+bash test/bin/run_one_test.sh let_error_1
 ((ECODE+=$?))
 
 bash test/bin/run_one_test.sh two_subscripts
