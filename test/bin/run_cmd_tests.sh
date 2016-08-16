@@ -7,15 +7,15 @@ mkdir tests
 echo Running all tests...
 ECODE=0
 
-bash test/bin/run_cmd_test.sh cmd_list
+bash test/bin/run_cmd_test.sh list
 ((ECODE+=$?))
-bash test/bin/run_cmd_test.sh cmd_list_range_1
+bash test/bin/run_cmd_test.sh list_range_1
 ((ECODE+=$?))
-bash test/bin/run_cmd_test.sh cmd_list_range_2
+bash test/bin/run_cmd_test.sh list_range_2
 ((ECODE+=$?))
-bash test/bin/run_cmd_test.sh cmd_list_range_3
+bash test/bin/run_cmd_test.sh list_range_3
 ((ECODE+=$?))
-bash test/bin/run_cmd_test.sh cmd_list_range_4
+bash test/bin/run_cmd_test.sh list_range_4
 ((ECODE+=$?))
 
 echo
