@@ -1,6 +1,5 @@
 #!/usr/bin/ruby
 
-require 'pry'
 require 'benchmark'
 require 'optparse'
 
