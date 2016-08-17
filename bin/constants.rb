@@ -338,8 +338,10 @@ class NumericConstant < AbstractElement
   end
 
   def six_digits(value)
+    # ensure only 6 digits of precision
     decimals = 5 - (value != 0 ? Math.log(value.abs, 10).to_i : 0)
-    value.round(decimals)
+    rounded = value.round(decimals)
+    rounded.to_f
   end
 
   def print(printer)
