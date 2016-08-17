@@ -5,7 +5,7 @@ echo Start test $TESTNAME
 # create testbed
 echo Creating testbed...
 mkdir tests/$TESTNAME
-cp bin/* test/data/$TESTNAME/* tests/$TESTNAME
+cp bin/* test/unit/data/$TESTNAME/* tests/$TESTNAME
 echo testbed ready
 
 # execute program
@@ -25,13 +25,13 @@ echo run finished
 # compare results
 ECODE=0
 echo Comparing stdout...
-diff tests/$TESTNAME/stdout.txt test/ref/$TESTNAME/stdout.txt
+diff tests/$TESTNAME/stdout.txt test/unit/ref/$TESTNAME/stdout.txt
 ((ECODE+=$?))
 echo Comparing list...
-diff tests/$TESTNAME/list.txt test/ref/$TESTNAME/list.txt
+diff tests/$TESTNAME/list.txt test/unit/ref/$TESTNAME/list.txt
 ((ECODE+=$?))
 echo Comparing pretty...
-diff tests/$TESTNAME/pretty.txt test/ref/$TESTNAME/pretty.txt
+diff tests/$TESTNAME/pretty.txt test/unit/ref/$TESTNAME/pretty.txt
 ((ECODE+=$?))
 echo compare done
 
