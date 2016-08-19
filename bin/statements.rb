@@ -155,8 +155,8 @@ class StatementFactory
     ]
     tokenizers << ListTokenizer.new(operators, OperatorToken)
 
-    tokenizers << ListTokenizer.new(['('], GroupStartToken)
-    tokenizers << ListTokenizer.new([')'], GroupEndToken)
+    tokenizers << ListTokenizer.new(['(', '['], GroupStartToken)
+    tokenizers << ListTokenizer.new([')', ']'], GroupEndToken)
     tokenizers << ListTokenizer.new([',', ';'], ParamSeparatorToken)
 
     tokenizers <<
