@@ -81,13 +81,16 @@ class GroupStart < AbstractElement
     classes.include?(token.class.to_s)
   end
 
-  def self.init?(text)
-    text == '('
+  attr_reader :text
+
+  def initialize(element)
+    super()
+    @text = element.to_s
+    @group_start = true
   end
 
-  def initialize(_)
-    super()
-    @group_start = true
+  def to_s
+    @text
   end
 end
 
@@ -98,22 +101,44 @@ class GroupEnd < AbstractElement
     classes.include?(token.class.to_s)
   end
 
-  def self.init?(text)
-    text == ')'
-  end
-
-  def initialize(_)
+  def initialize(element)
     super()
+    @text = element.to_s
     @group_end = true
     @operand = true
+  end
+
+  def compatible?(start_element)
+    if start_element.class.to_s == 'GroupStart'
+      return true if @text == ')' && start_element.text == '('
+      return true if @text == ']' && start_element.text == '['
+    end
+
+    if start_element.class.to_s == 'ParamStart'
+      return true if @text == ')' && start_element.text == '('
+      return true if @text == ']' && start_element.text == '['
+    end
+
+    false
+  end
+
+  def to_s
+    @text
   end
 end
 
 # beginning of a set of parameters
 class ParamStart < AbstractElement
-  def initialize
-    super
+  attr_reader :text
+
+  def initialize(element)
+    super()
+    @text = element.to_s
     @param_start = true
+  end
+
+  def to_s
+    @text
   end
 end
 
@@ -122,10 +147,6 @@ class ParamSeparator < AbstractElement
   def self.accept?(token)
     classes = %w(ParamSeparatorToken)
     classes.include?(token.class.to_s)
-  end
-
-  def self.init?(text)
-    text == ',' || text == ';'
   end
 
   def initialize(text)

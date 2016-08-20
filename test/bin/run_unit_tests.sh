@@ -113,6 +113,10 @@ bash test/bin/run_unit_test.sh syntax_error_3
 ((ECODE+=$?))
 bash test/bin/run_unit_test.sh syntax_error_4
 ((ECODE+=$?))
+bash test/bin/run_unit_test.sh bracket_mismatch_1
+((ECODE+=$?))
+bash test/bin/run_unit_test.sh bracket_mismatch_2
+((ECODE+=$?))
 
 bash test/bin/run_unit_test.sh function_int
 ((ECODE+=$?))

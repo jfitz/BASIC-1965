@@ -587,15 +587,15 @@ class Parser
     elsif element.separator?
       pop_to_group_start
     elsif element.group_end?
-      end_group
+      end_group(element)
     end
   end
 
   def start_group(element)
     if @previous_element.function?
-      start_associated_group(@previous_element.default_type)
+      start_associated_group(element, @previous_element.default_type)
     elsif @previous_element.variable?
-      start_associated_group(ScalarValue)
+      start_associated_group(element, ScalarValue)
     else
       start_simple_group(element)
     end
@@ -603,10 +603,10 @@ class Parser
 
   # a group associated with a function or variable
   # (arguments or subscripts)
-  def start_associated_group(type)
+  def start_associated_group(element, type)
     @expression_stack.push(@current_expression)
     @current_expression = []
-    @operator_stack.push(ParamStart.new)
+    @operator_stack.push(ParamStart.new(element))
     @parens_stack << @parens_group
     @parens_group = []
     @type_stack.push(type)
@@ -629,12 +629,15 @@ class Parser
 
   # pop the operator stack until the corresponding left paren is removed
   # Append each operator to the end of the output list
-  def end_group
+  def end_group(group_end_element)
     stack_to_expression(@operator_stack, @current_expression)
     @parens_group << @current_expression
     raise(BASICException, 'Expression error') if @operator_stack.empty?
     # remove the '(' or '[' starter
     start_op = @operator_stack.pop
+    error = 'Bracket/parenthesis mismatch, found ' + group_end_element.to_s +
+            ' to match ' + start_op.to_s
+    raise(BASICException, error) if !group_end_element.compatible?(start_op)
     if start_op.param_start?
       list = List.new(@parens_group)
       @operator_stack.push(list)
