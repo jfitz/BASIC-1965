@@ -120,6 +120,8 @@ bash test/bin/run_unit_test.sh bracket_mismatch_2
 
 bash test/bin/run_unit_test.sh function_int
 ((ECODE+=$?))
+bash test/bin/run_unit_test.sh function_int_floor --int-floor
+((ECODE+=$?))
 bash test/bin/run_unit_test.sh function_sin
 ((ECODE+=$?))
 bash test/bin/run_unit_test.sh function_cos

@@ -303,6 +303,10 @@ class NumericConstant < AbstractElement
     NumericConstant.new(@value.to_i)
   end
 
+  def floor
+    NumericConstant.new(@value.floor)
+  end
+
   def exp
     NumericConstant.new(Math.exp(@value))
   end

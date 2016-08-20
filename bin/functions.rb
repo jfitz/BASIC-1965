@@ -33,11 +33,11 @@ class FunctionInt < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(_, stack)
+  def evaluate(interpreter, stack)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['NumericConstant'])
-    args[0].truncate
+    interpreter.int_floor? ? args[0].floor : args[0].truncate
   end
 end
 
