@@ -153,6 +153,8 @@ bash test/bin/run_unit_test.sh random_0
 ((ECODE+=$?))
 bash test/bin/run_unit_test.sh random_1
 ((ECODE+=$?))
+bash test/bin/run_unit_test.sh random_10 --ignore-rnd-arg
+((ECODE+=$?))
 
 bash test/bin/run_unit_test.sh define_2
 ((ECODE+=$?))
