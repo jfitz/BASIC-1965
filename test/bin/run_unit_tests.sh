@@ -54,6 +54,10 @@ bash test/bin/run_unit_test.sh print_6
 ((ECODE+=$?))
 bash test/bin/run_unit_test.sh print_7
 ((ECODE+=$?))
+bash test/bin/run_unit_test.sh print_8
+((ECODE+=$?))
+bash test/bin/run_unit_test.sh print_9 --implied-semicolon
+((ECODE+=$?))
 
 bash test/bin/run_unit_test.sh let_n
 ((ECODE+=$?))
