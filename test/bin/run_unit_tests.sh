@@ -79,6 +79,8 @@ bash test/bin/run_unit_test.sh let_n_uni_minus
 ((ECODE+=$?))
 bash test/bin/run_unit_test.sh let_error_1
 ((ECODE+=$?))
+bash test/bin/run_unit_test.sh let_targets
+((ECODE+=$?))
 
 bash test/bin/run_unit_test.sh two_subscripts
 ((ECODE+=$?))
@@ -175,6 +177,8 @@ bash test/bin/run_unit_test.sh mat_let_1
 bash test/bin/run_unit_test.sh mat_let_uni_plus
 ((ECODE+=$?))
 bash test/bin/run_unit_test.sh mat_let_uni_minus
+((ECODE+=$?))
+bash test/bin/run_unit_test.sh mat_let_targets
 ((ECODE+=$?))
 
 bash test/bin/run_unit_test.sh mat_add_m_m
