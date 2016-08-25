@@ -74,15 +74,22 @@ bash test/bin/run_kk_test.sh plotxy
 ((ECODE+=$?))
 
 # chapter 8
-# factor
-# euclid
+bash test/bin/run_kk_test.sh factor
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh euclid
+((ECODE+=$?))
 bash test/bin/run_kk_test.sh china
 ((ECODE+=$?))
-# add300
-# mpy300
-# prim-1
-# primes
-# hgpr
+bash test/bin/run_kk_test.sh add300
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh mpy300
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh prim-1
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh primes
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh hgpr
+((ECODE+=$?))
 
 # chapter 9
 bash test/bin/run_kk_test.sh random_float
