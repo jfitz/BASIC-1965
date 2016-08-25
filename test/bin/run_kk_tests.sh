@@ -143,9 +143,12 @@ bash test/bin/run_kk_test.sh matinv
 ((ECODE+=$?))
 bash test/bin/run_kk_test.sh linequ
 ((ECODE+=$?))
-# net
-# tchain
-# echain
+bash test/bin/run_kk_test.sh net
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh tchain
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh echain
+((ECODE+=$?))
 
 # chapter 14
 bash test/bin/run_kk_test.sh poly
