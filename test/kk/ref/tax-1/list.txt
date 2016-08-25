@@ -1,0 +1,23 @@
+BASIC-1965 interpreter version -1
+
+10 DIM D(20)
+20 READ A,Y
+100 FOR Y1 = 1 TO Y STEP 2
+105    PRINT "CHANGE IN YEAR " Y1
+108    LET A1 = A
+110    FOR I = 1 TO Y1-1
+120       LET D(I) = A1*2/Y
+130       LET A1 = A1 - D(I)
+140       PRINT I;D(I)
+150    NEXT I
+160    LET D = A1/(Y-Y1+1)
+170    FOR I = Y1 TO Y
+180       LET D(I) = D
+185       PRINT I;D(I)
+190    NEXT I
+195    PRINT
+290 NEXT Y1
+900 DATA 5000,7
+999 END
+
+BASIC-1965 ended

@@ -114,19 +114,30 @@ bash test/bin/run_kk_test.sh knight
 # tic-2
 
 # chapter 11
-# comp-1
-# comp-2
-# tax-1
-# tax-2
-# tax-3
-# decide
+bash test/bin/run_kk_test.sh comp-1
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh comp-2
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh tax-1
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh tax-2
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh tax-3
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh decide
+((ECODE+=$?))
 
 # chapter 12
-# stat
-# linreg
-# contin
-# 2-by-2
-# rnksum
+bash test/bin/run_kk_test.sh stat
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh linreg
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh contin
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh 2-by-2
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh rnksum
+((ECODE+=$?))
 
 # chapter 13
 bash test/bin/run_kk_test.sh mati-0
