@@ -148,10 +148,14 @@ bash test/bin/run_kk_test.sh linequ
 # echain
 
 # chapter 14
-# poly
-# integr
-# taylor
-# diffeq
+bash test/bin/run_kk_test.sh poly
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh integr
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh taylor
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh diffeq
+((ECODE+=$?))
 
 # chapter 15
 # teachm
