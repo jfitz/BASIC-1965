@@ -100,10 +100,12 @@ bash test/bin/run_kk_test.sh dice
 ((ECODE+=$?))
 bash test/bin/run_kk_test.sh deal
 ((ECODE+=$?))
-# bridge
+bash test/bin/run_kk_test.sh bridge
+((ECODE+=$?))
 bash test/bin/run_kk_test.sh needle
 ((ECODE+=$?))
-#dodger
+bash test/bin/run_kk_test.sh dodger
+((ECODE+=$?))
 bash test/bin/run_kk_test.sh knight
 ((ECODE+=$?))
 
