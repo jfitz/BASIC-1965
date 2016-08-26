@@ -179,10 +179,14 @@ bash test/bin/run_kk_test.sh diffeq
 
 # chapter 15
 # teachm
-# code
-# foxrab
-# fxrb-1
-# music
+bash test/bin/run_kk_test.sh code
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh foxrab
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh fxrb-1
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh music
+((ECODE+=$?))
 
 bash test/bin/run_kk_test.sh sqrabs
 ((ECODE+=$?))
