@@ -108,10 +108,14 @@ bash test/bin/run_kk_test.sh knight
 ((ECODE+=$?))
 
 # chapter 10
-# batnum
-# nim
-# tictac
-# tic-2
+bash test/bin/run_kk_test.sh batnum
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh nim
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh tictac
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh tic-2
+((ECODE+=$?))
 
 # chapter 11
 bash test/bin/run_kk_test.sh comp-1
