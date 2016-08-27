@@ -191,7 +191,8 @@ class Tokenizer
           count = tokenizer.count
         end
       end
-      tokens << token unless token.nil?
+      raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
+      tokens += token
       text = text[count..-1]
     end
     tokens
@@ -410,36 +411,25 @@ class InputStatement < AbstractStatement
   end
 
   def input_values(interpreter)
+    # when parsing user input, we use different tokenizers than the code
+    # each token must end with a comma or a newline
+    # numeric tokens may contain leading signs
+    # all tokens may have leading or trailing spaces (or both)
     values = []
     prompt = @prompt
     tokenizers = []
-    operators = [
-      '+', '-', '*', '/', '^',
-      '<', '<=', '=', '>', '>=', '<>'
-    ]
-    tokenizers << ListTokenizer.new(operators, OperatorToken)
+    tokenizers << InputNumberTokenizer.new
+    tokenizers << InputENumberTokenizer.new
 
-    tokenizers << ListTokenizer.new(['(', '['], GroupStartToken)
-    tokenizers << ListTokenizer.new([')', ']'], GroupEndToken)
-    tokenizers << ListTokenizer.new([',', ';'], ParamSeparatorToken)
-
-    tokenizers <<
-      ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
-
-    tokenizers << NumberTokenizer.new
-    tokenizers << ListTokenizer.new(('FNA'..'FNZ').to_a, UserFunctionToken)
-    tokenizers << VariableTokenizer.new
-    tokenizers << InvalidTokenizer.new
     tokenizer = Tokenizer.new(tokenizers)
     while values.size < @expression_list.size
       print prompt.value
-      input_text = interpreter.read_line
 
-      # new start
+      input_text = interpreter.read_line
       tokens = tokenizer.tokenize(input_text)
-      @expressions = ValueScalarExpression.new(tokens)
-      values += @expressions.evaluate(interpreter)
-      # new end
+      expressions = ValueScalarExpression.new(tokens)
+      ev = expressions.evaluate(interpreter)
+      values += ev
 
       prompt = @default_prompt
     end
