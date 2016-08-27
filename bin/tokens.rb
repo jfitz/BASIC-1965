@@ -406,3 +406,35 @@ class InputENumberTokenizer
     [NumericConstantToken.new(@token)]
   end
 end
+
+# token reader for empty entries
+class InputEmptyTokenizer
+  def try(text)
+    @token = ''
+    /\A *,/.match(text) { |m| @token = m[0] }
+  end
+
+  def count
+    @token.size
+  end
+
+  def token
+    [TextConstantToken.new('"' + @token[0..-2] + '"'), ParamSeparatorToken.new(',')]
+  end
+end
+
+# token reader for empty entries
+class InputEEmptyTokenizer
+  def try(text)
+    @token = ''
+    /\A *\z/.match(text) { |m| @token = m[0] }
+  end
+
+  def count
+    @token.size
+  end
+
+  def token
+    [TextConstantToken.new('"' + @token + '"')]
+  end
+end

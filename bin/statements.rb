@@ -420,6 +420,8 @@ class InputStatement < AbstractStatement
     tokenizers = []
     tokenizers << InputNumberTokenizer.new
     tokenizers << InputENumberTokenizer.new
+    tokenizers << InputEmptyTokenizer.new
+    tokenizers << InputEEmptyTokenizer.new
 
     tokenizer = Tokenizer.new(tokenizers)
     while values.size < @expression_list.size

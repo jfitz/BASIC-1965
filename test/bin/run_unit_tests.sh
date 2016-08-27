@@ -24,6 +24,12 @@ bash test/bin/run_test.sh unit datarestore
 
 bash test/bin/run_test.sh unit input
 ((ECODE+=$?))
+bash test/bin/run_test.sh unit input_2
+((ECODE+=$?))
+bash test/bin/run_test.sh unit input_3
+((ECODE+=$?))
+bash test/bin/run_test.sh unit input_4
+((ECODE+=$?))
 
 bash test/bin/run_test.sh unit ifthen_ge
 ((ECODE+=$?))
