@@ -160,6 +160,11 @@ bash test/bin/run_unit_test.sh random_1
 bash test/bin/run_unit_test.sh random_10 --ignore-rnd-arg
 ((ECODE+=$?))
 
+bash test/bin/run_unit_test.sh sqrabs
+((ECODE+=$?))
+bash test/bin/run_unit_test.sh annular
+((ECODE+=$?))
+
 bash test/bin/run_unit_test.sh define_2
 ((ECODE+=$?))
 bash test/bin/run_unit_test.sh define_error

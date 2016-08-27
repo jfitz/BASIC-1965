@@ -188,11 +188,6 @@ bash test/bin/run_kk_test.sh fxrb-1
 bash test/bin/run_kk_test.sh music
 ((ECODE+=$?))
 
-bash test/bin/run_kk_test.sh sqrabs
-((ECODE+=$?))
-bash test/bin/run_kk_test.sh annular
-((ECODE+=$?))
-
 echo
 echo Failures: $ECODE
 
