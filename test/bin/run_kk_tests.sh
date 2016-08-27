@@ -12,6 +12,10 @@ bash test/bin/run_kk_test.sh convert
 ((ECODE+=$?))
 
 # chapter 2
+bash test/bin/run_kk_test.sh loop
+((ECODE+=$?))
+bash test/bin/run_kk_test.sh loop1
+((ECODE+=$?))
 bash test/bin/run_kk_test.sh binom
 ((ECODE+=$?))
 bash test/bin/run_kk_test.sh table
@@ -178,7 +182,8 @@ bash test/bin/run_kk_test.sh diffeq
 ((ECODE+=$?))
 
 # chapter 15
-# teachm
+bash test/bin/run_kk_test.sh teachm
+((ECODE+=$?))
 bash test/bin/run_kk_test.sh code
 ((ECODE+=$?))
 bash test/bin/run_kk_test.sh foxrab
