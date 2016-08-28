@@ -677,6 +677,10 @@ class Interpreter
   public
 
   def check_subscripts(variable, subscripts)
+    subscripts.each do |subscript|
+      raise(BASICException, "Non-numeric subscript '#{subscript}'") if
+        subscript.class.to_s != 'NumericConstant'
+    end
     dimensions = make_dimensions(variable, subscripts.size)
     raise(BASICException, 'Incorrect number of subscripts') if
       subscripts.size != dimensions.size
