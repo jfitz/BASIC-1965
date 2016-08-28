@@ -115,7 +115,8 @@ class StatementFactory
 
   def tokenize(text)
     tokenizers = make_tokenizers
-    tokenizer = Tokenizer.new(tokenizers)
+    invalid_tokenizer = InvalidTokenizer.new
+    tokenizer = Tokenizer.new(tokenizers, invalid_tokenizer)
     tokenizer.tokenize(text)
   end
 
@@ -162,20 +163,20 @@ class StatementFactory
 
     tokenizers <<
       ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
+    tokenizers << ListTokenizer.new(('FNA'..'FNZ').to_a, UserFunctionToken)
 
     tokenizers << TextTokenizer.new
     tokenizers << NumberTokenizer.new
-    tokenizers << ListTokenizer.new(%w(ON OFF), BooleanConstantToken)
-    tokenizers << ListTokenizer.new(('FNA'..'FNZ').to_a, UserFunctionToken)
     tokenizers << VariableTokenizer.new
-    tokenizers << InvalidTokenizer.new
+    tokenizers << ListTokenizer.new(%w(ON OFF), BooleanConstantToken)
   end
 end
 
 # tokenizer class
 class Tokenizer
-  def initialize(tokenizers)
+  def initialize(tokenizers, invalid_tokenizer)
     @tokenizers = tokenizers
+    @invalid_tokenizer = invalid_tokenizer
   end
 
   def tokenize(text)
@@ -185,11 +186,19 @@ class Tokenizer
 
       count = 0
       token = nil
+      # general tokenizers
       @tokenizers.each do |tokenizer|
         if tokenizer.count > count
           token = tokenizer.token
           count = tokenizer.count
         end
+      end
+
+      # invalid tokenizer
+      if token.nil? && !@invalid_tokenizer.nil?
+        @invalid_tokenizer.try(text)
+        token = @invalid_tokenizer.token
+        count = @invalid_tokenizer.count
       end
       raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
       tokens += token
@@ -423,7 +432,7 @@ class InputStatement < AbstractStatement
     tokenizers << InputEmptyTokenizer.new
     tokenizers << InputEEmptyTokenizer.new
 
-    tokenizer = Tokenizer.new(tokenizers)
+    tokenizer = Tokenizer.new(tokenizers, nil)
     while values.size < @expression_list.size
       print prompt.value
 
