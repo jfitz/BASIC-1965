@@ -96,13 +96,15 @@ class StatementFactory
 
   def create(text)
     squeezed = squeeze_out_spaces(text)
-    return EmptyStatement.new if squeezed == ''
-    return RemarkStatement.new(text) if squeezed[0..2] == 'REM'
+    return Line.new(text, EmptyStatement.new, []) if squeezed == ''
+    return Line.new(text, RemarkStatement.new(text), []) if
+      squeezed[0..2] == 'REM'
 
     tokens = tokenize(squeezed)
     keyword = ''
     keyword << tokens.shift.to_s while !tokens.empty? && tokens[0].keyword?
-    create_regular_statement(keyword, text, tokens)
+    statement = create_regular_statement(keyword, text, tokens)
+    Line.new(text, statement, tokens)
   end
 
   def create_regular_statement(keyword, text, tokens)

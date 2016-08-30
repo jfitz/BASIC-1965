@@ -625,7 +625,7 @@ class Function < AbstractElement
 
   def check_value(value, type)
     raise(BASICException,
-          "Argument #{x} #{x.class} not of type #{type.class}") if
+          "Argument #{value} #{value.class} not of type #{type.class}") if
       value.class.to_s != type
   end
 

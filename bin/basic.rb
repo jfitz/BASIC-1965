@@ -165,6 +165,22 @@ class LineListSpec
   end
 end
 
+# Line class to hold a line of code
+class Line
+  attr_reader :statement
+  attr_reader :tokens
+
+  def initialize(text, statement, tokens)
+    @text = text
+    @statement = statement
+    @tokens = tokens
+  end
+
+  def list
+    @text
+  end
+end
+
 # Print Handler class
 # Handle tab stops and carriage control
 class PrintHandler
@@ -298,14 +314,14 @@ class Interpreter
     puts "Syntax error: #{e.message}"
   end
 
-  def cmd_list(linespec)
+  def cmd_list(linespec, list_tokens)
     linespec = linespec.strip
     if !@program_lines.empty?
       begin
         line_numbers = @program_lines.keys.sort
         line_number_range = LineListSpec.new(linespec, line_numbers)
         line_numbers = line_number_range.line_numbers
-        list_lines_errors(line_numbers)
+        list_lines_errors(line_numbers, list_tokens)
       rescue BASICException => e
         puts e
       end
@@ -332,18 +348,22 @@ class Interpreter
 
   private
 
-  def list_lines_errors(line_numbers)
+  def list_lines_errors(line_numbers, list_tokens)
     line_numbers.each do |line_number|
-      statement = @program_lines[line_number]
-      text = statement.list
+      line = @program_lines[line_number]
+      text = line.list
       puts line_number.to_s + text
+      statement = line.statement
       statement.errors.each { |error| puts ' ' + error }
+      tokens = line.tokens
+      puts 'TOKENS: ' + tokens.map(&:to_s).join(' ') if list_tokens
     end
   end
 
   def pretty_lines_errors(line_numbers)
     line_numbers.each do |line_number|
-      statement = @program_lines[line_number]
+      line = @program_lines[line_number]
+      statement = line.statement
       text = statement.pretty
       puts line_number.to_s + text
       statement.errors.each { |error| puts ' ' + error }
@@ -352,8 +372,8 @@ class Interpreter
 
   def list_lines(line_numbers)
     line_numbers.each do |line_number|
-      statement = @program_lines[line_number]
-      text = statement.list
+      line = @program_lines[line_number]
+      text = line.list
       puts line_number.to_s + text
     end
   end
@@ -424,7 +444,8 @@ class Interpreter
     line_numbers = @program_lines.keys.sort
     line_numbers.each do |line_number|
       line = @program_lines[line_number]
-      line.pre_execute(self)
+      statement = line.statement
+      statement.pre_execute(self)
     end
   end
 
@@ -454,8 +475,9 @@ class Interpreter
     statement.errors.each { |error| puts error }
   end
 
-  def execute_a_line(do_trace)
-    statement = @program_lines[@current_line_number]
+  def execute_a_statement(do_trace)
+    line = @program_lines[@current_line_number]
+    statement = line.statement
     print_trace_info(statement) if do_trace
     if statement.errors.empty?
       statement.execute(self, do_trace)
@@ -469,7 +491,7 @@ class Interpreter
     # pick the next line number
     @next_line_number = find_next_line_number
     begin
-      execute_a_line(trace_flag)
+      execute_a_statement(trace_flag)
       # set the next line number
       @current_line_number = nil
       if @running
@@ -552,7 +574,7 @@ class Interpreter
 
   # returns an Array of values
   def evaluate(parsed_expressions)
-    # expected = parsed_expressions[0].length
+    expected = parsed_expressions.length
     result_values = []
     parsed_expressions.each do |parsed_expression|
       stack = []
@@ -572,13 +594,12 @@ class Interpreter
       #      "Expected item #{expected_result_class}, "
       #      "found item type #{item.class} remaining on evaluation stack") if
       #  item.class.to_s != expected_result_class
-      result_values << item unless item.nil?
+      result_values << item
     end
-    # actual = result_values.length
-    # raise(Exception,
-    #      "Expected #{expected} items, "
-    #      "#{actual} remaining on evaluation stack") if
-    #   actual != expected
+    actual = result_values.length
+    raise(Exception,
+          "Expected #{expected} items, #{actual} remaining on evaluation stack") if
+       actual != expected
     result_values
   end
 
@@ -627,7 +648,8 @@ class Interpreter
       line_numbers.select { |line_number| line_number > @current_line_number }
     # find a NEXT statement with matching control variable
     forward_line_numbers.each do |line_number|
-      statement = @program_lines[line_number]
+      line = @program_lines[line_number]
+      statement = line.statement
       return line_number if
         statement.class.to_s == 'NextStatement' &&
         statement.control == control_variable
@@ -709,8 +731,8 @@ class Interpreter
 
   def set_value(variable, value, trace)
     # check that value type matches variable type
-    raise(BASICException, 'Type mismatch') if
-      variable.content_type != value.class.to_s
+    raise(BASICException, "Type mismatch #{value.class} is not #{variable.content_type}") if
+      value.class.to_s != variable.content_type
     v = variable.to_s
     @variables[v] = value
     puts(' ' + variable.to_s + ' = ' + value.to_s) if trace
@@ -780,9 +802,10 @@ class Interpreter
   end
 
   def store_program_line(cmd, print_errors)
-    line_num, statement = parse_line(cmd)
-    if !line_num.nil? && !statement.nil?
-      @program_lines[line_num] = statement
+    line_num, line = parse_line(cmd)
+    if !line_num.nil? && !line.nil?
+      @program_lines[line_num] = line
+      statement = line.statement
       statement.errors.each { |error| puts error } if print_errors
       !statement.errors.empty?
     else
@@ -835,7 +858,7 @@ class Interpreter
   def execute_4_command(cmd, rest)
     case cmd
     when 'LIST'
-      cmd_list(rest)
+      cmd_list(rest, false)
     when 'LOAD'
       cmd_load(rest, false)
     when 'SAVE'
@@ -844,11 +867,13 @@ class Interpreter
   end
 
   def command_6?(text)
-    %w(PRETTY DELETE).include?(text)
+    %w(TOKENS PRETTY DELETE).include?(text)
   end
 
   def execute_6_command(cmd, rest)
     case cmd
+    when 'TOKENS'
+      cmd_list(rest, true)
     when 'PRETTY'
       cmd_pretty(rest)
     when 'DELETE'
@@ -872,9 +897,9 @@ class Interpreter
     end
   end
 
-  def load_and_list(filename, trace_flag)
+  def load_and_list(filename, trace_flag, list_tokens)
     @program_lines = {}
-    cmd_list('') if cmd_load(filename, trace_flag)
+    cmd_list('', list_tokens) if cmd_load(filename, trace_flag)
   end
 
   def load_and_pretty(filename, trace_flag)
@@ -900,6 +925,7 @@ options = {}
 OptionParser.new do |opt|
   opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
+  opt.on('--tokens') { |o| options[:tokens] = o }
   opt.on('-p', '--pretty-list SOURCE') { |o| options[:pretty_name] = o }
   opt.on('--trace') { |o| options[:trace] = o }
   opt.on('--notiming') { |o| options[:notiming] = o }
@@ -916,6 +942,7 @@ run_filename = options[:run_name]
 list_filename = options[:list_name]
 pretty_filename = options[:pretty_name]
 trace_flag = options.key?(:trace) || false
+list_tokens = options.key?(:tokens) || false
 notiming_flag = options.key?(:notiming) || false
 timing_flag = !notiming_flag
 output_speed = 0
@@ -940,7 +967,7 @@ elsif !list_filename.nil?
   interpreter =
     Interpreter.new(print_width, zone_width, 0, echo_input, int_floor,
                     ignore_rnd_arg, implied_semicolon)
-  interpreter.load_and_list(list_filename, trace_flag)
+  interpreter.load_and_list(list_filename, trace_flag, list_tokens)
 elsif !pretty_filename.nil?
   interpreter =
     Interpreter.new(print_width, zone_width, 0, echo_input, int_floor,

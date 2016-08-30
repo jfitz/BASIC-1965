@@ -53,7 +53,7 @@ class FunctionRnd < AbstractScalarFunction
       stack.empty? || stack[-1].class.to_s != 'Array'
     ensure_argument_count(stack, [0, 1])
     args = stack.pop
-    args = [NumericConstant.new(100)] if args.empty?
+    args = [NumericConstant.new(100)] if args.empty? || args[0].nil?
     check_arg_types(args, ['NumericConstant'])
     interpreter.rand(args[0])
   end
