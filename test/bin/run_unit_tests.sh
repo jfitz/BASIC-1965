@@ -125,6 +125,8 @@ bash test/bin/run_test.sh unit syntax_error_3
 ((ECODE+=$?))
 bash test/bin/run_test.sh unit syntax_error_4
 ((ECODE+=$?))
+bash test/bin/run_test.sh unit syntax_error_5
+((ECODE+=$?))
 bash test/bin/run_test.sh unit bracket_mismatch_1
 ((ECODE+=$?))
 bash test/bin/run_test.sh unit bracket_mismatch_2
