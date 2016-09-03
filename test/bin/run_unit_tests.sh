@@ -196,6 +196,39 @@ bash test/bin/run_test.sh unit arr_let_uni_minus
 bash test/bin/run_test.sh unit arr_let_targets
 ((ECODE+=$?))
 
+bash test/bin/run_test.sh unit arr_add_a_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_add_a_s
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_add_s_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_add_v_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_subtract_a_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_subtract_a_s
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_subtract_s_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_multiply_a_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_multiply_a_s
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_multiply_s_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_divide_a_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_divide_a_s
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_divide_s_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_power_a_a
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_power_a_s
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_power_s_a
+((ECODE+=$?))
+
 bash test/bin/run_test.sh unit mat_print_1
 ((ECODE+=$?))
 bash test/bin/run_test.sh unit mat_print_2

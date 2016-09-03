@@ -187,6 +187,12 @@ class BinaryOperator < AbstractElement
       matrix_scalar(x, y)
     elsif y.matrix?
       scalar_matrix(x, y)
+    elsif x.array? && y.array?
+      array_array(x, y)
+    elsif x.array?
+      array_scalar(x, y)
+    elsif y.array?
+      scalar_array(x, y)
     else
       op_scalar_scalar(x, y)
     end
@@ -244,6 +250,57 @@ class BinaryOperator < AbstractElement
       op_scalar_matrix(:divide, x, y)
     when '^'
       op_scalar_matrix(:power, x, y)
+    else
+      raise BASICException, 'Invalid operation'
+    end
+  end
+
+  def array_array(x, y)
+    case @op
+    when '+'
+      op_array_array(:add, x, y)
+    when '-'
+      op_array_array(:subtract, x, y)
+    when '*'
+      op_array_array(:multiply, x, y)
+    when '/'
+      op_array_array(:divide, x, y)
+    when '^'
+      op_array_array(:power, x, y)
+    else
+      raise BASICException, 'Invalid operation'
+    end
+  end
+
+  def array_scalar(x, y)
+    case @op
+    when '+'
+      op_array_scalar(:add, x, y)
+    when '-'
+      op_array_scalar(:subtract, x, y)
+    when '*'
+      op_array_scalar(:multiply, x, y)
+    when '/'
+      op_array_scalar(:divide, x, y)
+    when '^'
+      op_array_scalar(:power, x, y)
+    else
+      raise BASICException, 'Invalid operation'
+    end
+  end
+
+  def scalar_array(x, y)
+    case @op
+    when '+'
+      op_scalar_array(:add, x, y)
+    when '-'
+      op_scalar_array(:subtract, x, y)
+    when '*'
+      op_scalar_array(:multiply, x, y)
+    when '/'
+      op_scalar_array(:divide, x, y)
+    when '^'
+      op_scalar_array(:power, x, y)
     else
       raise BASICException, 'Invalid operation'
     end
@@ -558,6 +615,44 @@ class BinaryOperator < AbstractElement
 
   def power_matrix_matrix(_, _)
     raise BASICException, 'Cannot raise matrix to matrix power'
+  end
+
+  def op_array_array(op, a, b)
+    dims = b.dimensions
+    raise(BASICException, 'Arrays of different size') if a.dimensions != dims
+    n_cols = dims[0].to_i
+    values = {}
+    (0..n_cols).each do |col|
+      a_value = a.get_value(col)
+      b_value = b.get_value(col)
+      coords = make_coord(col)
+      values[coords] = a_value.send(op, b_value)
+    end
+    BASICArray.new(dims, values)
+  end
+
+  def op_scalar_array(op, a, b)
+    dims = b.dimensions
+    n_cols = dims[0].to_i
+    values = {}
+    (0..n_cols).each do |col|
+      b_value = b.get_value(col)
+      coords = make_coord(col)
+      values[coords] = a.send(op, b_value)
+    end
+    BASICArray.new(dims, values)
+  end
+
+  def op_array_scalar(op, a, b)
+    dims = a.dimensions
+    n_cols = dims[0].to_i
+    values = {}
+    (0..n_cols).each do |col|
+      a_value = a.get_value(col)
+      coords = make_coord(col)
+      values[coords] = a_value.send(op, b)
+    end
+    BASICArray.new(dims, values)
   end
 end
 
