@@ -116,6 +116,8 @@ bash test/bin/run_test.sh unit fornext_no_end
 ((ECODE+=$?))
 bash test/bin/run_test.sh unit fornext_no_to
 ((ECODE+=$?))
+bash test/bin/run_test.sh unit break_token
+((ECODE+=$?))
 
 bash test/bin/run_test.sh unit syntax_error_1
 ((ECODE+=$?))
