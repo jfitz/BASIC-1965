@@ -25,6 +25,13 @@ class UnaryOperator < AbstractElement
       when '-'
         negate_matrix(x)
       end
+    elsif x.array?
+      case @op
+      when '+'
+        posate_array(x)
+      when '-'
+        negate_array(x)
+      end
     else
       case @op
       when '+'
@@ -40,6 +47,17 @@ class UnaryOperator < AbstractElement
   end
 
   private
+
+  def posate_a(source)
+    n_cols = source.dimensions[0].to_i
+    values = {}
+    (1..n_cols).each do |col|
+      value = source.get_value(col)
+      coords = make_coord(col)
+      values[coords] = posate(value)
+    end
+    values
+  end
 
   def posate_1(source)
     n_cols = source.dimensions[0].to_i
@@ -62,6 +80,17 @@ class UnaryOperator < AbstractElement
         coords = make_coords(row, col)
         values[coords] = posate(value)
       end
+    end
+    values
+  end
+
+  def negate_a(source)
+    n_cols = source.dimensions[0].to_i
+    values = {}
+    (1..n_cols).each do |col|
+      value = source.get_value(col)
+      coords = make_coord(col)
+      values[coords] = negate(value)
     end
     values
   end
@@ -99,6 +128,18 @@ class UnaryOperator < AbstractElement
   def negate(a)
     f = -a.to_f
     NumericConstant.new(f)
+  end
+
+  def posate_array(a)
+    dims = a.dimensions
+    values = posate_a(a)
+    BASICArray.new(dims, values)
+  end
+
+  def negate_array(a)
+    dims = a.dimensions
+    values = negate_a(a)
+    BASICArray.new(dims, values)
   end
 
   def posate_matrix(a)

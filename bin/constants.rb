@@ -291,6 +291,10 @@ class NumericConstant < AbstractElement
     NumericConstant.new(@value**other.to_v)
   end
 
+  def array?
+    false
+  end
+
   def matrix?
     false
   end

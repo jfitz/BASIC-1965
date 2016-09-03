@@ -65,6 +65,10 @@ class BASICArray
     Array.new(@dimensions.clone, @values.clone)
   end
 
+  def array?
+    true
+  end
+
   def matrix?
     false
   end
@@ -72,7 +76,7 @@ class BASICArray
   def values
     values = {}
     (0..@dimensions[0].to_i).each do |col|
-      value = get_value_1(col)
+      value = get_value(col)
       coords = make_coord(col)
       values[coords] = value
     end
@@ -110,7 +114,7 @@ class BASICArray
     n_cols = @dimensions[0].to_i
 
     (0..n_cols).each do |col|
-      value = get_value_1(col)
+      value = get_value(col)
       value.print(printer)
       carriage.print(printer, interpreter)
     end
@@ -156,6 +160,10 @@ class Matrix
 
   def clone
     Matrix.new(@dimensions.clone, @values.clone)
+  end
+
+  def array?
+    false
   end
 
   def matrix?
@@ -477,6 +485,34 @@ class ArrayValue < Variable
       values[coords] = interpreter.get_value(variable)
     end
     values
+  end
+end
+
+# Array reference
+class ArrayReference < Variable
+  def initialize(variable_value)
+    super(variable_value.name)
+  end
+
+  def dimensions?
+    !@subscripts.empty?
+  end
+
+  def dimensions
+    @subscripts
+  end
+
+  # return a single value, a reference to this object
+  def evaluate(interpreter, stack)
+    if !stack.empty? && stack[-1].class.to_s == 'Array'
+      @subscripts = stack.pop
+      num_args = @subscripts.length
+      raise(BASICException,
+            'Variable expects subscripts, found empty parentheses') if
+        num_args == 0
+      interpreter.check_subscripts(@variable_name, @subscripts)
+    end
+    self
   end
 end
 
@@ -913,6 +949,23 @@ class ValueScalarExpression < AbstractExpression
   end
 end
 
+# Value array expression (an R-value)
+class ValueArrayExpression < AbstractExpression
+  def initialize(tokens)
+    super(tokens, ArrayValue)
+  end
+
+  def printable?
+    true
+  end
+
+  def print(printer, interpreter, carriage)
+    arrays = evaluate(interpreter)
+    array = arrays[0]
+    array.print(printer, interpreter, carriage)
+  end
+end
+
 # Value matrix expression (an R-value)
 class ValueMatrixExpression < AbstractExpression
   def initialize(tokens)
@@ -1099,6 +1152,23 @@ class ScalarAssignment < AbstractAssignment
     super
     @target = TargetExpression.new(@token_lists[0], ScalarReference)
     @expression = ValueScalarExpression.new(@token_lists[2])
+  end
+
+  def count_value
+    @expression.count
+  end
+
+  def eval_value(interpreter)
+    @expression.evaluate(interpreter)
+  end
+end
+
+# An assignment (part of an ARR LET statement)
+class ArrayAssignment < AbstractAssignment
+  def initialize(tokens)
+    super
+    @target = TargetExpression.new(@token_lists[0], ArrayReference)
+    @expression = ValueArrayExpression.new(@token_lists[2])
   end
 
   def count_value

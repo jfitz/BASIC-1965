@@ -135,6 +135,7 @@ class StatementFactory
       'INPUT' => InputStatement,
       'LET' => LetStatement,
       'ARRPRINT' => ArrPrintStatement,
+      'ARR' => ArrLetStatement,
       'MATPRINT' => MatPrintStatement,
       'MATREAD' => MatReadStatement,
       'MAT' => MatLetStatement,
@@ -1064,7 +1065,7 @@ class ArrPrintStatement < AbstractStatement
       if tokens_list.class.to_s == 'ParamSeparatorToken'
         print_items << CarriageControl.new(tokens_list)
       elsif tokens_list.class.to_s == 'Array'
-        print_items << ValueMatrixExpression.new(tokens_list)
+        print_items << ValueArrayExpression.new(tokens_list)
       end
     end
     print_items
@@ -1073,6 +1074,56 @@ class ArrPrintStatement < AbstractStatement
   def add_implied_print_items
     @print_items << CarriageControl.new('NL') if @print_items.empty?
     @print_items << CarriageControl.new(',') if @print_items[-1].printable?
+  end
+end
+
+# ARR assignment
+class ArrLetStatement < AbstractStatement
+  def initialize(line, tokens)
+    super('ARR', line)
+    tokens = remove_break_tokens(tokens)
+    begin
+      @assignment = ArrayAssignment.new(tokens) ###
+      if @assignment.count_target == 0
+        @errors << 'Assignment must have left-hand value(s)'
+      end
+      if @assignment.count_value != 1
+        @errors << 'Assignment must have only one right-hand value'
+      end
+    rescue BASICException => e
+      @errors << e.message
+      @assignment = @rest
+    end
+  end
+
+  def to_s
+    @keyword + ' ' + @assignment.to_s
+  end
+
+  def execute(interpreter, trace)
+    r_value = first_value(interpreter)
+    dims = r_value.dimensions
+    values = r_value.values
+
+    l_values = @assignment.eval_target(interpreter)
+    l_values.each do |l_value|
+      interpreter.set_dimensions(l_value, dims)
+      interpreter.set_values(l_value.name, values, trace)
+    end
+  end
+
+  private
+
+  def first_target(interpreter)
+    l_values = @assignment.eval_target(interpreter)
+    l_values[0]
+  end
+
+  def first_value(interpreter)
+    r_values = @assignment.eval_value(interpreter)
+    r_value = r_values[0]
+    raise(BASICException, 'Expected Array') if r_value.class.to_s != 'BASICArray'
+    r_value
   end
 end
 
