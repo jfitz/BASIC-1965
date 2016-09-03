@@ -134,6 +134,7 @@ class StatementFactory
       'IF' => IfStatement,
       'INPUT' => InputStatement,
       'LET' => LetStatement,
+      'ARRPRINT' => ArrPrintStatement,
       'MATPRINT' => MatPrintStatement,
       'MATREAD' => MatReadStatement,
       'MAT' => MatLetStatement,
@@ -1017,6 +1018,61 @@ class TraceStatement < AbstractStatement
 
   def to_s
     @keyword + ' ' + (@operation.value ? 'ON' : 'OFF')
+  end
+end
+
+# ARR PRINT
+class ArrPrintStatement < AbstractStatement
+  def initialize(line, tokens)
+    super('ARR PRINT', line)
+    tokens = remove_break_tokens(tokens)
+    tokens_lists = ArgSplitter.split_tokens(tokens, true)
+    # variable, [separator, variable]... [separator]
+
+    @print_items = tokens_to_expressions(tokens_lists)
+    add_implied_print_items
+  end
+
+  def to_s
+    if @print_items.size == 1
+      @keyword
+    else
+      @keyword + ' ' + @print_items.map(&:to_s).join.rstrip
+    end
+  end
+
+  def execute(interpreter, _)
+    printer = interpreter.printer
+    i = 0
+    @print_items.each do |item|
+      if item.printable?
+        carriage = CarriageControl.new('')
+        carriage = @print_items[i + 1] if
+          i < @print_items.size &&
+          !@print_items[i + 1].printable?
+        item.print(printer, interpreter, carriage)
+      end
+      i += 1
+    end
+  end
+
+  private
+
+  def tokens_to_expressions(tokens_lists)
+    print_items = []
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'ParamSeparatorToken'
+        print_items << CarriageControl.new(tokens_list)
+      elsif tokens_list.class.to_s == 'Array'
+        print_items << ValueMatrixExpression.new(tokens_list)
+      end
+    end
+    print_items
+  end
+
+  def add_implied_print_items
+    @print_items << CarriageControl.new('NL') if @print_items.empty?
+    @print_items << CarriageControl.new(',') if @print_items[-1].printable?
   end
 end
 

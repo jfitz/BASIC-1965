@@ -52,6 +52,99 @@ class ScalarReference < Variable
   end
 end
 
+# Array with values
+class BASICArray
+  attr_reader :dimensions
+
+  def initialize(dimensions, values)
+    @dimensions = dimensions
+    @values = values
+  end
+
+  def clone
+    Array.new(@dimensions.clone, @values.clone)
+  end
+
+  def matrix?
+    false
+  end
+
+  def values
+    values = {}
+    (0..@dimensions[0].to_i).each do |col|
+      value = get_value_1(col)
+      coords = make_coord(col)
+      values[coords] = value
+    end
+    values
+  end
+
+  def get_value(col)
+    coords = make_coord(col)
+    return @values[coords] if @values.key?(coords)
+    NumericConstant.new(0)
+  end
+
+  def to_s
+    'ARRAY: ' + @values.to_s
+  end
+
+  def print(printer, interpreter, carriage)
+    case @dimensions.size
+    when 0
+      raise BASICException, 'Need dimension in array'
+    when 1
+      print_1(printer, interpreter, carriage)
+    else
+      raise BASICException, 'Too many dimensions in array'
+    end
+  end
+
+  private
+
+  def make_coord(c)
+    [NumericConstant.new(c)]
+  end
+
+  def print_1(printer, interpreter, carriage)
+    n_cols = @dimensions[0].to_i
+
+    (0..n_cols).each do |col|
+      value = get_value_1(col)
+      value.print(printer)
+      carriage.print(printer, interpreter)
+    end
+    printer.newline
+  end
+end
+
+# Array value
+class ArrayValue < Variable
+  def initialize(variable_name)
+    super
+  end
+
+  def evaluate(interpreter, _)
+    dims = interpreter.get_dimensions(@variable_name)
+    raise(BASICException, 'Variable has no dimensions') if dims.nil?
+    raise(BASICException, 'Array requires one dimension') if dims.size != 1
+    values = evaluate_1(interpreter, dims)
+    BASICArray.new(dims, values)
+  end
+
+  private
+
+  def evaluate_1(interpreter, n_cols)
+    values = {}
+    (0..n_cols).each do |col|
+      coords = make_coord(col)
+      variable = Variable.new(@variable_name, coords)
+      values[coords] = interpreter.get_value(variable)
+    end
+    values
+  end
+end
+
 # Matrix with values
 class Matrix
   attr_reader :dimensions
@@ -357,6 +450,33 @@ class Matrix
     numerator = values[coords]
     new_value = numerator.divide(denominator)
     values[coords] = new_value
+  end
+end
+
+# Array value
+class ArrayValue < Variable
+  def initialize(variable_name)
+    super
+  end
+
+  def evaluate(interpreter, _)
+    dims = interpreter.get_dimensions(@variable_name)
+    raise(BASICException, 'Variable has no dimensions') if dims.nil?
+    raise(BASICException, 'Array requires one dimension') if dims.size != 1
+    values = evaluate_1(interpreter, dims[0].to_i)
+    BASICArray.new(dims, values)
+  end
+
+  private
+
+  def evaluate_1(interpreter, n_cols)
+    values = {}
+    (0..n_cols).each do |col|
+      coords = make_coord(col)
+      variable = Variable.new(@variable_name, coords)
+      values[coords] = interpreter.get_value(variable)
+    end
+    values
   end
 end
 

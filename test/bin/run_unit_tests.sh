@@ -180,6 +180,13 @@ bash test/bin/run_test.sh unit define_2
 bash test/bin/run_test.sh unit define_error
 ((ECODE+=$?))
 
+bash test/bin/run_test.sh unit arr_print_1
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_print_2
+((ECODE+=$?))
+bash test/bin/run_test.sh unit arr_print_3
+((ECODE+=$?))
+
 bash test/bin/run_test.sh unit mat_print_1
 ((ECODE+=$?))
 bash test/bin/run_test.sh unit mat_print_2
