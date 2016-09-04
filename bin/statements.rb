@@ -135,6 +135,7 @@ class StatementFactory
       'INPUT' => InputStatement,
       'LET' => LetStatement,
       'ARRPRINT' => ArrPrintStatement,
+      'ARRREAD' => ArrReadStatement,
       'ARR' => ArrLetStatement,
       'MATPRINT' => MatPrintStatement,
       'MATREAD' => MatReadStatement,
@@ -1074,6 +1075,62 @@ class ArrPrintStatement < AbstractStatement
   def add_implied_print_items
     @print_items << CarriageControl.new('NL') if @print_items.empty?
     @print_items << CarriageControl.new(',') if @print_items[-1].printable?
+  end
+end
+
+# ARR READ
+class ArrReadStatement < AbstractStatement
+  def initialize(line, tokens)
+    super('ARR READ', line)
+    tokens = remove_break_tokens(tokens)
+    tokens_lists = ArgSplitter.split_tokens(tokens, false)
+    # variable [variable]...
+
+    @expression_list = []
+    tokens_lists.each do |tokens_list|
+      begin
+        expression = TargetExpression.new(tokens_list, ArrayReference)
+        @expression_list << expression
+      rescue BASICException
+        @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
+      end
+    end
+  end
+
+  def to_s
+    @keyword + ' ' + @expression_list.join(', ')
+  end
+
+  def execute(interpreter, trace)
+    @expression_list.each do |expression|
+      targets = expression.evaluate(interpreter)
+      targets.each do |target|
+        interpreter.set_dimensions(target, target.dimensions) if
+          target.dimensions?
+        read_values(target.name, interpreter, trace)
+      end
+    end
+  end
+
+  private
+
+  def read_values(name, interpreter, trace)
+    dims = interpreter.get_dimensions(name)
+    case dims.size
+    when 1
+      read_array(name, dims, interpreter, trace)
+    else
+      raise(BASICException, 'Dimensions for ARR READ must be 1')
+    end
+  end
+
+  def read_array(name, dims, interpreter, trace)
+    values = {}
+    (0..dims[0].to_i).each do |col|
+      coord = make_coord(col)
+      values[coord] = interpreter.read_data
+    end
+    interpreter.set_values(name, values, trace)
   end
 end
 
