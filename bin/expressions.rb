@@ -122,33 +122,6 @@ class BASICArray
   end
 end
 
-# Array value
-class ArrayValue < Variable
-  def initialize(variable_name)
-    super
-  end
-
-  def evaluate(interpreter, _)
-    dims = interpreter.get_dimensions(@variable_name)
-    raise(BASICException, 'Variable has no dimensions') if dims.nil?
-    raise(BASICException, 'Array requires one dimension') if dims.size != 1
-    values = evaluate_1(interpreter, dims)
-    BASICArray.new(dims, values)
-  end
-
-  private
-
-  def evaluate_1(interpreter, n_cols)
-    values = {}
-    (0..n_cols).each do |col|
-      coords = make_coord(col)
-      variable = Variable.new(@variable_name, coords)
-      values[coords] = interpreter.get_value(variable)
-    end
-    values
-  end
-end
-
 # Matrix with values
 class Matrix
   attr_reader :dimensions
@@ -270,19 +243,21 @@ class Matrix
   end
 
   def zero_values
-    x = make_array(@dimensions, NumericConstant.new(0)) if
-      @dimensions.size == 1
-    x = make_matrix(@dimensions, NumericConstant.new(0)) if
-      @dimensions.size == 2
-    x
+    case @dimensions.size
+    when 1
+      make_array(@dimensions, NumericConstant.new(0))
+    when 2
+      make_matrix(@dimensions, NumericConstant.new(0))
+    end
   end
 
   def one_values
-    x = make_array(@dimensions, NumericConstant.new(1)) if
-      @dimensions.size == 1
-    x = make_matrix(@dimensions, NumericConstant.new(1)) if
-      @dimensions.size == 2
-    x
+    case @dimensions.size
+    when 1
+      make_array(@dimensions, NumericConstant.new(1))
+    when 2
+      make_matrix(@dimensions, NumericConstant.new(1))
+    end
   end
 
   def identity_values
@@ -488,10 +463,10 @@ class ArrayValue < Variable
   end
 end
 
-# Array reference
-class ArrayReference < Variable
-  def initialize(variable_value)
-    super(variable_value.name)
+# Compound variable (array or matrix) reference
+class CompoundReference < Variable
+  def initialize(name)
+    super
   end
 
   def dimensions?
@@ -513,6 +488,13 @@ class ArrayReference < Variable
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
     self
+  end
+end
+
+# Array reference
+class ArrayReference < CompoundReference
+  def initialize(variable_value)
+    super(variable_value.name)
   end
 end
 
@@ -563,30 +545,9 @@ class MatrixValue < Variable
 end
 
 # Matrix reference
-class MatrixReference < Variable
+class MatrixReference < CompoundReference
   def initialize(variable_value)
     super(variable_value.name)
-  end
-
-  def dimensions?
-    !@subscripts.empty?
-  end
-
-  def dimensions
-    @subscripts
-  end
-
-  # return a single value, a reference to this object
-  def evaluate(interpreter, stack)
-    if !stack.empty? && stack[-1].class.to_s == 'Array'
-      @subscripts = stack.pop
-      num_args = @subscripts.length
-      raise(BASICException,
-            'Variable expects subscripts, found empty parentheses') if
-        num_args == 0
-      interpreter.check_subscripts(@variable_name, @subscripts)
-    end
-    self
   end
 end
 
@@ -950,9 +911,9 @@ class ValueScalarExpression < AbstractExpression
 end
 
 # Value array expression (an R-value)
-class ValueArrayExpression < AbstractExpression
-  def initialize(tokens)
-    super(tokens, ArrayValue)
+class ValueCompoundExpression < AbstractExpression
+  def initialize(tokens, classref)
+    super
   end
 
   def printable?
@@ -960,26 +921,23 @@ class ValueArrayExpression < AbstractExpression
   end
 
   def print(printer, interpreter, carriage)
-    arrays = evaluate(interpreter)
-    array = arrays[0]
-    array.print(printer, interpreter, carriage)
+    compounds = evaluate(interpreter)
+    compound = compounds[0]
+    compound.print(printer, interpreter, carriage)
+  end
+end
+
+# Value array expression (an R-value)
+class ValueArrayExpression < ValueCompoundExpression
+  def initialize(tokens)
+    super(tokens, ArrayValue)
   end
 end
 
 # Value matrix expression (an R-value)
-class ValueMatrixExpression < AbstractExpression
+class ValueMatrixExpression < ValueCompoundExpression
   def initialize(tokens)
     super(tokens, MatrixValue)
-  end
-
-  def printable?
-    true
-  end
-
-  def print(printer, interpreter, carriage)
-    matrices = evaluate(interpreter)
-    matrix = matrices[0]
-    matrix.print(printer, interpreter, carriage)
   end
 end
 
