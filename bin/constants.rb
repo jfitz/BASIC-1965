@@ -63,6 +63,10 @@ class AbstractElement
     group_start? || group_end? || separator?
   end
 
+  def previous_is_array(stack)
+    !stack.empty? && stack[-1].class.to_s == 'Array'
+  end
+
   protected
 
   def make_coord(c)
@@ -109,15 +113,8 @@ class GroupEnd < AbstractElement
   end
 
   def compatible?(start_element)
-    if start_element.class.to_s == 'GroupStart'
-      return true if @text == ')' && start_element.text == '('
-      return true if @text == ']' && start_element.text == '['
-    end
-
-    if start_element.class.to_s == 'ParamStart'
-      return true if @text == ')' && start_element.text == '('
-      return true if @text == ']' && start_element.text == '['
-    end
+    return true if @text == ')' && start_element.text == '('
+    return true if @text == ']' && start_element.text == '['
 
     false
   end
@@ -609,8 +606,8 @@ class Function < AbstractElement
   private
 
   def ensure_argument_count(stack, expected)
-    raise(BASICException, @name + ' requires argument') if
-      stack.empty? || stack[-1].class.to_s != 'Array'
+    raise(BASICException, @name + ' requires argument') unless
+      previous_is_array(stack)
     valid = counts_to_text(expected)
     raise(BASICException, @name + ' requires ' + valid + ' argument') unless
       expected.include? stack[-1].size

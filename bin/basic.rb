@@ -351,8 +351,7 @@ class Interpreter
   def list_lines_errors(line_numbers, list_tokens)
     line_numbers.each do |line_number|
       line = @program_lines[line_number]
-      text = line.list
-      puts line_number.to_s + text
+      puts line_number.to_s + line.list
       statement = line.statement
       statement.errors.each { |error| puts ' ' + error }
       tokens = line.tokens
@@ -364,8 +363,7 @@ class Interpreter
     line_numbers.each do |line_number|
       line = @program_lines[line_number]
       statement = line.statement
-      text = statement.pretty
-      puts line_number.to_s + text
+      puts line_number.to_s + statement.pretty
       statement.errors.each { |error| puts ' ' + error }
     end
   end
@@ -586,7 +584,7 @@ class Interpreter
       end
       # should be only one item on stack
       act = stack.length
-      raise(BASICException, "Bad expression") if act != exp
+      raise(BASICException, 'Bad expression') if act != exp
       # verify each item is of correct type
       item = stack[0]
       # raise(Exception,
@@ -730,7 +728,8 @@ class Interpreter
 
   def set_value(variable, value, trace)
     # check that value type matches variable type
-    raise(BASICException, "Type mismatch #{value.class} is not #{variable.content_type}") if
+    raise(BASICException,
+          "Type mismatch #{value.class} is not #{variable.content_type}") if
       value.class.to_s != variable.content_type
     v = variable.to_s
     @variables[v] = value

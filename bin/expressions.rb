@@ -6,10 +6,6 @@ class ScalarValue < Variable
 
   private
 
-  def previous_is_array(stack)
-    !stack.empty? && stack[-1].class.to_s == 'Array'
-  end
-
   def get_subscripts(stack)
     subscripts = stack.pop
     raise(Exception,
@@ -40,7 +36,7 @@ class ScalarReference < Variable
 
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
-    if !stack.empty? && stack[-1].class.to_s == 'Array'
+    if previous_is_array(stack)
       @subscripts = stack.pop
       num_args = @subscripts.length
       raise(BASICException,
@@ -479,7 +475,7 @@ class CompoundReference < Variable
 
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
-    if !stack.empty? && stack[-1].class.to_s == 'Array'
+    if previous_is_array(stack)
       @subscripts = stack.pop
       num_args = @subscripts.length
       raise(BASICException,
@@ -559,7 +555,7 @@ class VariableDimension < Variable
 
   # return a single value, a reference to this object
   def evaluate(_, stack)
-    if !stack.empty? && stack[-1].class.to_s == 'Array'
+    if previous_is_array(stack)
       @subscripts = stack.pop
       num_args = @subscripts.length
       raise(BASICException,
@@ -754,7 +750,7 @@ class Parser
     start_op = @operator_stack.pop
     error = 'Bracket/parenthesis mismatch, found ' + group_end_element.to_s +
             ' to match ' + start_op.to_s
-    raise(BASICException, error) if !group_end_element.compatible?(start_op)
+    raise(BASICException, error) unless group_end_element.compatible?(start_op)
     if start_op.param_start?
       list = List.new(@parens_group)
       @operator_stack.push(list)
@@ -857,7 +853,8 @@ class AbstractExpression
     (follows_operand ? binary_classes : unary_classes).each do |c|
       element = c.new(token) if element.nil? && c.accept?(token)
     end
-    raise(BASICException, "Token '#{token.class}:#{token}' is not a value or operator") if
+    raise(BASICException,
+          "Token '#{token.class}:#{token}' is not a value or operator") if
       element.nil?
     element
   end
