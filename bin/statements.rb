@@ -415,7 +415,7 @@ class InputStatement < AbstractStatement
   end
 
   def execute(interpreter, trace)
-    printer = interpreter.printer
+    io = interpreter.console_io
     values = input_values(interpreter)
     name_value_pairs =
       zip(@expression_list, values[0, @expression_list.length])
@@ -425,7 +425,7 @@ class InputStatement < AbstractStatement
       value = hash['value']
       interpreter.set_value(l_value, value, trace)
     end
-    printer.implied_newline
+    io.implied_newline
   end
 
   private
@@ -501,9 +501,9 @@ class IfStatement < AbstractStatement
     result = @expression.evaluate(interpreter)[0]
     interpreter.next_line_number = @destination if result.value
     return unless trace
-    printer = interpreter.printer
+    io = interpreter.console_io
     s = ' ' + result.to_s
-    printer.trace_output(s)
+    io.trace_output(s)
   end
 
   def split_keywords(tokens)
@@ -560,9 +560,9 @@ class PrintStatement < AbstractStatement
   end
 
   def execute(interpreter, _)
-    printer = interpreter.printer
+    io = interpreter.console_io
     @print_items.each do |item|
-      item.print(printer, interpreter)
+      item.print(io, interpreter)
     end
   end
 
@@ -755,8 +755,8 @@ class ForStatement < AbstractStatement
     interpreter.next_line_number =
       interpreter.find_closing_next(@control) if terminated
 
-    print_trace_info(interpreter.printer, from, to, step, terminated) if
-      trace
+    io = interpreter.console_io
+    print_trace_info(io, from, to, step, terminated) if trace
   end
 
   private
@@ -814,11 +814,11 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def print_trace_info(printer, from, to, step, terminated)
-    printer.trace_output(" #{@start} = #{from}")
-    printer.trace_output(" #{@end} = #{to}")
-    printer.trace_output(" #{@step_value} = #{step}")
-    printer.trace_output(" terminated:#{terminated}")
+  def print_trace_info(io, from, to, step, terminated)
+    io.trace_output(" #{@start} = #{from}")
+    io.trace_output(" #{@end} = #{to}")
+    io.trace_output(" #{@step_value} = #{step}")
+    io.trace_output(" terminated:#{terminated}")
   end
 end
 
@@ -852,9 +852,9 @@ class NextStatement < AbstractStatement
     # if matches end value, stop here
     terminated = fornext_control.terminated?(interpreter)
     if trace
-      printer = interpreter.printer
+      io = interpreter.console_io
       s = ' terminated:' + terminated.to_s
-      printer.trace_output(s)
+      io.trace_output(s)
     end
     return if terminated
     # set next line from top item
@@ -975,8 +975,8 @@ class StopStatement < AbstractStatement
   end
 
   def execute(interpreter, _)
-    printer = interpreter.printer
-    printer.newline_when_needed
+    io = interpreter.console_io
+    io.newline_when_needed
     interpreter.stop
   end
 end
@@ -992,8 +992,8 @@ class EndStatement < AbstractStatement
   end
 
   def execute(interpreter, _)
-    printer = interpreter.printer
-    printer.newline_when_needed
+    io = interpreter.console_io
+    io.newline_when_needed
     interpreter.stop
   end
 end
@@ -1043,7 +1043,7 @@ class ArrPrintStatement < AbstractStatement
   end
 
   def execute(interpreter, _)
-    printer = interpreter.printer
+    io = interpreter.console_io
     i = 0
     @print_items.each do |item|
       if item.printable?
@@ -1051,7 +1051,7 @@ class ArrPrintStatement < AbstractStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.print(printer, interpreter, carriage)
+        item.print(io, interpreter, carriage)
       end
       i += 1
     end
@@ -1204,7 +1204,7 @@ class MatPrintStatement < AbstractStatement
   end
 
   def execute(interpreter, _)
-    printer = interpreter.printer
+    io = interpreter.console_io
     i = 0
     @print_items.each do |item|
       if item.printable?
@@ -1212,7 +1212,7 @@ class MatPrintStatement < AbstractStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.print(printer, interpreter, carriage)
+        item.print(io, interpreter, carriage)
       end
       i += 1
     end

@@ -50,6 +50,13 @@ echo Comparing stdout...
 diff tests/$TESTNAME/stdout.txt test/$TESTGROUP/ref/$TESTNAME/stdout.txt
 ((ECODE+=$?))
 fi
+if [ -e test/$TESTGROUP/ref/$TESTNAME/out_files.txt ]
+then
+while read F ; do
+  diff tests/$TESTNAME/$F test/$TESTGROUP/ref/$TESTNAME/$F
+  ((ECODE+=$?))
+done <test/$TESTGROUP/ref/$TESTNAME/out_files.txt
+fi
 
 echo End test $TESTNAME
 exit $ECODE
