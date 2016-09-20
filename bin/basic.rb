@@ -187,19 +187,19 @@ class Interpreter
   attr_reader :current_line_number
   attr_accessor :next_line_number
   attr_reader :console_io
+  attr_reader :data_store
 
   def initialize(print_width, zone_width, output_speed, echo_input, int_floor,
                  ignore_rnd_arg, implied_semicolon)
     @running = false
     @randomizer = Random.new(1)
-    @data_store = []
-    @data_index = 0
     @statement_factory = StatementFactory.new
     @int_floor = int_floor
     @ignore_rnd_arg = ignore_rnd_arg
     @console_io =
       ConsoleIo.new(print_width, zone_width, output_speed, implied_semicolon,
                     echo_input)
+    @data_store = DataStore.new
     @return_stack = []
     @fornexts = {}
     @dimensions = {}
@@ -655,20 +655,6 @@ class Interpreter
     fornext = @fornexts[control_variable]
     raise(BASICException, 'NEXT without FOR') if fornext.nil?
     fornext
-  end
-
-  def store_data(values)
-    @data_store += values
-  end
-
-  def read_data
-    raise BASICException, 'Out of data' if @data_index >= @data_store.size
-    @data_index += 1
-    @data_store[@data_index - 1]
-  end
-
-  def reset_data
-    @data_index = 0
   end
 
   def go

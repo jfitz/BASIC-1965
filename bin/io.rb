@@ -102,3 +102,25 @@ class ConsoleIo
     sleep(1.0 / @print_rate) if @print_rate > 0
   end
 end
+
+class DataStore
+  def initialize
+    @data_store = []
+    @data_index = 0
+  end
+
+  def store(values)
+    @data_store += values
+  end
+
+  def read
+    raise BASICException, 'Out of data' if @data_index >= @data_store.size
+    @data_index += 1
+    @data_store[@data_index - 1]
+  end
+
+  def reset
+    @data_index = 0
+  end
+end
+

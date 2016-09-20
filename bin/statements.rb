@@ -888,10 +888,11 @@ class ReadStatement < AbstractStatement
   end
 
   def execute(interpreter, trace)
+    ds = interpreter.data_store
     @expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
-      value = interpreter.read_data
+      value = ds.read
       interpreter.set_value(variable, value, trace)
     end
   end
@@ -910,8 +911,9 @@ class DataStatement < AbstractStatement
   end
 
   def pre_execute(interpreter)
+    ds = interpreter.data_store
     data_list = @expressions.evaluate(interpreter)
-    interpreter.store_data(data_list)
+    ds.store(data_list)
   end
 
   def execute(_, _)
@@ -930,7 +932,8 @@ class RestoreStatement < AbstractStatement
   end
 
   def execute(interpreter, _)
-    interpreter.reset_data
+    ds = interpreter.data_store
+    ds.reset
   end
 end
 
@@ -1126,9 +1129,10 @@ class ArrReadStatement < AbstractStatement
 
   def read_array(name, dims, interpreter, trace)
     values = {}
+    ds = interpreter.data_store
     (0..dims[0].to_i).each do |col|
       coord = make_coord(col)
-      values[coord] = interpreter.read_data
+      values[coord] = ds.read
     end
     interpreter.set_values(name, values, trace)
   end
@@ -1289,19 +1293,21 @@ class MatReadStatement < AbstractStatement
 
   def read_vector(name, dims, interpreter, trace)
     values = {}
+    ds = interpreter.data_store
     (1..dims[0].to_i).each do |col|
       coord = make_coord(col)
-      values[coord] = interpreter.read_data
+      values[coord] = ds.read
     end
     interpreter.set_values(name, values, trace)
   end
 
   def read_matrix(name, dims, interpreter, trace)
     values = {}
+    ds = interpreter.data_store
     (1..dims[0].to_i).each do |row|
       (1..dims[1].to_i).each do |col|
         coords = make_coords(row, col)
-        values[coords] = interpreter.read_data
+        values[coords] = ds.read
       end
     end
     interpreter.set_values(name, values, trace)
