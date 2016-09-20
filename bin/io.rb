@@ -1,13 +1,29 @@
 # ConsoleIo class
 # Handle tab stops and carriage control
 class ConsoleIo
-  def initialize(max_width, zone_width, print_rate, implied_semicolon)
+  def initialize(max_width, zone_width, print_rate, implied_semicolon,
+                 echo_input)
     @column = 0
     @max_width = max_width
     @zone_width = zone_width
     @print_rate = print_rate
     @implied_semicolon = implied_semicolon
     @last_was_numeric = false
+    @echo_input = echo_input
+  end
+
+  def ascii_printables(text)
+    ascii_text = ''
+    text.each_char do |c|
+      ascii_text += c if c >= ' ' && c <= '~'
+    end
+    ascii_text
+  end
+
+  def read_line
+    input_text = ascii_printables(gets)
+    puts(input_text) if @echo_input
+    input_text
   end
 
   def print_item(text)

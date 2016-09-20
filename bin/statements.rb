@@ -456,7 +456,8 @@ class InputStatement < AbstractStatement
     while values.size < @expression_list.size
       print prompt.value
 
-      input_text = interpreter.read_line
+      console_io = interpreter.console_io
+      input_text = console_io.read_line
       tokens = tokenizer.tokenize(input_text)
       expressions = ValueScalarExpression.new(tokens)
       ev = expressions.evaluate(interpreter)
