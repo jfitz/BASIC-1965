@@ -8,7 +8,7 @@ class UnaryOperator < AbstractElement
   def initialize(text)
     super()
     @op = text.to_s
-    operators = { '+' => 5, '-' => 5 }
+    operators = { '+' => 5, '-' => 5, '#' => 4 }
     raise(BASICException, "'#{text}' is not an operator") unless
       operators.key?(@op)
     @precedence = operators[@op]
@@ -38,6 +38,8 @@ class UnaryOperator < AbstractElement
         posate(x)
       when '-'
         negate(x)
+      when '#'
+        file_handle(x)
       end
     end
   end
@@ -128,6 +130,11 @@ class UnaryOperator < AbstractElement
   def negate(a)
     f = -a.to_f
     NumericConstant.new(f)
+  end
+
+  def file_handle(a)
+    num = a.to_i
+    FileHandle.new(num)
   end
 
   def posate_array(a)

@@ -287,6 +287,13 @@ bash test/bin/run_test.sh unit mat_divide_m_s
 bash test/bin/run_test.sh unit mat_power_m_s
 ((ECODE+=$?))
 
+bash test/bin/run_test.sh unit files_no_file
+((ECODE+=$?))
+bash test/bin/run_test.sh unit files_print_1
+((ECODE+=$?))
+bash test/bin/run_test.sh unit files_print_2
+((ECODE+=$?))
+
 bash test/bin/run_test.sh unit trace
 ((ECODE+=$?))
 

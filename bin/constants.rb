@@ -12,6 +12,7 @@ class AbstractElement
     @group_end = false
     @param_start = false
     @separator = false
+    @file_handle = false
     @precedence = 10
   end
 
@@ -65,6 +66,10 @@ class AbstractElement
 
   def previous_is_array(stack)
     !stack.empty? && stack[-1].class.to_s == 'Array'
+  end
+
+  def file_handle?
+    @file_handle
   end
 
   protected
@@ -444,6 +449,32 @@ class BooleanConstant < AbstractElement
 
   def to_s
     @value ? 'true' : 'false'
+  end
+end
+
+# File handle class
+class FileHandle < AbstractElement
+  attr_reader :number
+
+  def initialize(num)
+    super()
+    raise(BASICException, 'Invalid file reference') unless
+      num.class.to_s == 'Fixnum'
+    raise(BASICException, 'Invalid file number') if num < 0
+    @number = num
+    @file_handle = true
+  end
+
+  def hash
+    number.hash
+  end
+
+  def eql?(other)
+    number = other.number
+  end
+
+  def to_s
+    '#' + @number.to_s
   end
 end
 

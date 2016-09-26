@@ -200,6 +200,7 @@ class Interpreter
       ConsoleIo.new(print_width, zone_width, output_speed, implied_semicolon,
                     echo_input)
     @data_store = DataStore.new
+    @file_handlers = {}
     @return_stack = []
     @fornexts = {}
     @dimensions = {}
@@ -332,18 +333,25 @@ class Interpreter
     if @program_lines.empty?
       puts 'No program loaded'
     else
+      @running = true
       run_phase_1
-      run_phase_2(trace_flag)
+      run_phase_2(trace_flag) if @running
     end
   end
 
   def run_phase_1
     # phase 1: do all initialization (store values in DATA lines)
     line_numbers = @program_lines.keys.sort
-    line_numbers.each do |line_number|
-      line = @program_lines[line_number]
-      statement = line.statement
-      statement.pre_execute(self)
+    begin
+      line_numbers.each do |line_number|
+        @current_line_number = line_number
+        line = @program_lines[line_number]
+        statement = line.statement
+        statement.pre_execute(self)
+      end
+    rescue BASICException => message
+      puts "#{message} in line #{@current_line_number}"
+      stop_running
     end
   end
 
@@ -352,12 +360,12 @@ class Interpreter
     # start with the first line number
     line_numbers = @program_lines.keys.sort
     @current_line_number = line_numbers[0]
-    @running = true
     begin
       program_loop(trace_flag || @tron_flag) while @running
     rescue Interrupt
       stop_running
     end
+    @file_handlers.each { |fn, fh| fh.close }
   end
 
   private
@@ -397,7 +405,7 @@ class Interpreter
         @current_line_number = @next_line_number
       end
     rescue BASICException => message
-      puts "#{message} in line #{current_line_number}"
+      puts "#{message} in line #{@current_line_number}"
       stop_running
     end
   end
@@ -655,6 +663,25 @@ class Interpreter
     fornext = @fornexts[control_variable]
     raise(BASICException, 'NEXT without FOR') if fornext.nil?
     fornext
+  end
+
+  def add_file_names(file_names)
+    file_names.each do |name|
+      raise(BASICException, 'Invalid file name') unless
+        name.class.to_s == 'TextConstant'
+      raise(BASICException, "File '#{name.value}' not found") unless
+        File.file?(name.value)
+      file_handle = FileHandle.new(@file_handlers.size + 1)
+      @file_handlers[file_handle] = FileHandler.new(name.value)
+    end
+  end
+
+  def get_file_handler(file_handle)
+    return @console_io if file_handle.nil?
+
+    raise(BASICException, 'Unknown file handle') unless
+      @file_handlers.key?(file_handle)
+    @file_handlers[file_handle]
   end
 
   def go

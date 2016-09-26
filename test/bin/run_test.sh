@@ -53,6 +53,7 @@ fi
 if [ -e test/$TESTGROUP/ref/$TESTNAME/out_files.txt ]
 then
 while read F ; do
+  echo Comparing $F...
   diff tests/$TESTNAME/$F test/$TESTGROUP/ref/$TESTNAME/$F
   ((ECODE+=$?))
 done <test/$TESTGROUP/ref/$TESTNAME/out_files.txt
