@@ -293,6 +293,16 @@ bash test/bin/run_test.sh unit files_print_1
 ((ECODE+=$?))
 bash test/bin/run_test.sh unit files_print_2
 ((ECODE+=$?))
+bash test/bin/run_test.sh unit files_read_1
+((ECODE+=$?))
+bash test/bin/run_test.sh unit files_read_2
+((ECODE+=$?))
+bash test/bin/run_test.sh unit files_read_3
+((ECODE+=$?))
+bash test/bin/run_test.sh unit files_read_4
+((ECODE+=$?))
+bash test/bin/run_test.sh unit files_read_end
+((ECODE+=$?))
 
 bash test/bin/run_test.sh unit trace
 ((ECODE+=$?))

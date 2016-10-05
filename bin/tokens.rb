@@ -1,3 +1,39 @@
+# tokenizer class
+class Tokenizer
+  def initialize(tokenizers, invalid_tokenizer)
+    @tokenizers = tokenizers
+    @invalid_tokenizer = invalid_tokenizer
+  end
+
+  def tokenize(text)
+    tokens = []
+    until text.nil? || text.empty?
+      @tokenizers.each { |tokenizer| tokenizer.try(text) }
+
+      count = 0
+      token = nil
+      # general tokenizers
+      @tokenizers.each do |tokenizer|
+        if tokenizer.count > count
+          token = tokenizer.token
+          count = tokenizer.count
+        end
+      end
+
+      # invalid tokenizer
+      if token.nil? && !@invalid_tokenizer.nil?
+        @invalid_tokenizer.try(text)
+        token = @invalid_tokenizer.token
+        count = @invalid_tokenizer.count
+      end
+      raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
+      tokens += token
+      text = text[count..-1]
+    end
+    tokens
+  end
+end
+
 # abstract token
 class AbstractToken
   def initialize
@@ -12,6 +48,7 @@ class AbstractToken
     @is_variable = false
     @is_groupstart = false
     @is_groupend = false
+    @is_whitespace = false
   end
 
   def keyword?
@@ -58,6 +95,10 @@ class AbstractToken
     @is_groupend
   end
 
+  def whitespace?
+    @is_whitespace
+  end
+
   def operand?
     @is_function || @is_text_constant || @is_numeric_constant ||
       @is_boolean_constant || @is_user_function || @is_variable
@@ -87,6 +128,20 @@ class BreakToken < AbstractToken
 
   def to_s
     @text
+  end
+end
+
+# whitespace token
+class WhitespaceToken < AbstractToken
+  attr_reader :keyword
+
+  def initialize(text)
+    @is_whitespace = true
+    @keyword = text
+  end
+
+  def to_s
+    @keyword
   end
 end
 
@@ -320,6 +375,22 @@ class ListTokenizer
   end
 end
 
+# token reader for whitespace
+class WhitespaceTokenizer
+  def try(text)
+    @token = ''
+    /\A\s+/.match(text) { |m| @token = m[0] }
+  end
+
+  def count
+    @token.size
+  end
+
+  def token
+    [WhitespaceToken.new(@token)]
+  end
+end
+
 # token reader for text constants
 class TextTokenizer
   def try(text)
@@ -371,6 +442,29 @@ class VariableTokenizer
 
   def token
     [VariableToken.new(@token)]
+  end
+end
+
+# token reader for numeric constants
+class ReadNumberTokenizer
+  def try(text)
+    @token = ''
+    /\A[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\./.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\.E[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\.\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\.\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\.\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\.\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
+  end
+
+  def count
+    @token.size
+  end
+
+  def token
+    [NumericConstantToken.new(@token)]
   end
 end
 

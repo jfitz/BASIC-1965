@@ -180,42 +180,6 @@ class StatementFactory
   end
 end
 
-# tokenizer class
-class Tokenizer
-  def initialize(tokenizers, invalid_tokenizer)
-    @tokenizers = tokenizers
-    @invalid_tokenizer = invalid_tokenizer
-  end
-
-  def tokenize(text)
-    tokens = []
-    until text.nil? || text.empty?
-      @tokenizers.each { |tokenizer| tokenizer.try(text) }
-
-      count = 0
-      token = nil
-      # general tokenizers
-      @tokenizers.each do |tokenizer|
-        if tokenizer.count > count
-          token = tokenizer.token
-          count = tokenizer.count
-        end
-      end
-
-      # invalid tokenizer
-      if token.nil? && !@invalid_tokenizer.nil?
-        @invalid_tokenizer.try(text)
-        token = @invalid_tokenizer.token
-        count = @invalid_tokenizer.count
-      end
-      raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
-      tokens += token
-      text = text[count..-1]
-    end
-    tokens
-  end
-end
-
 # parent of all statement classes
 class AbstractStatement
   attr_reader :errors
@@ -911,26 +875,46 @@ class ReadStatement < AbstractStatement
   def initialize(line, tokens)
     super('READ', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
+    @tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # variable [variable]...
-
-    @expression_list = []
-    tokens_lists.each do |tokens_list|
-      begin
-        @expression_list << TargetExpression.new(tokens_list, ScalarReference)
-      rescue BASICException
-        @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
-      end
-    end
   end
 
   def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    list = []
+    @tokens_lists.each do |tokens_list|
+      s = ''
+      tokens_list.each { |token| s += token.to_s }
+      list << s
+    end
+    @keyword + ' ' + list.join(', ')
   end
 
   def execute(interpreter, trace)
-    ds = interpreter.data_store
-    @expression_list.each do |expression|
+    items_lists = @tokens_lists.clone
+    if items_lists.size > 0
+      begin
+        items_0 = items_lists[0]
+        expr = ValueScalarExpression.new(items_0)
+        value_0 = expr.evaluate(interpreter)
+        value_0_0 = value_0[0]
+        fh = nil
+        if value_0_0.class.to_s == 'FileHandle'
+          fh = value_0_0
+          items_lists.shift
+        end
+       rescue BASICException
+       end
+    end
+    expression_list = []
+    items_lists.each do |items_list|
+      begin
+        expression_list << TargetExpression.new(items_list, ScalarReference)
+      rescue BASICException
+        raise(BASICException, 'Invalid variable ' + items_list.map(&:to_s).join)
+      end
+    end
+    ds = interpreter.get_data_store(fh)
+    expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       value = ds.read
@@ -952,7 +936,7 @@ class DataStatement < AbstractStatement
   end
 
   def pre_execute(interpreter)
-    ds = interpreter.data_store
+    ds = interpreter.get_data_store(nil)
     data_list = @expressions.evaluate(interpreter)
     ds.store(data_list)
   end
@@ -973,7 +957,7 @@ class RestoreStatement < AbstractStatement
   end
 
   def execute(interpreter, _)
-    ds = interpreter.data_store
+    ds = interpreter.get_data_store(nil)
     ds.reset
   end
 end
@@ -1170,7 +1154,7 @@ class ArrReadStatement < AbstractStatement
 
   def read_array(name, dims, interpreter, trace)
     values = {}
-    ds = interpreter.data_store
+    ds = interpreter.get_data_store(nil)
     (0..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
@@ -1334,7 +1318,7 @@ class MatReadStatement < AbstractStatement
 
   def read_vector(name, dims, interpreter, trace)
     values = {}
-    ds = interpreter.data_store
+    ds = interpreter.get_data_store(nil)
     (1..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
@@ -1344,7 +1328,7 @@ class MatReadStatement < AbstractStatement
 
   def read_matrix(name, dims, interpreter, trace)
     values = {}
-    ds = interpreter.data_store
+    ds = interpreter.get_data_store(nil)
     (1..dims[0].to_i).each do |row|
       (1..dims[1].to_i).each do |col|
         coords = make_coords(row, col)

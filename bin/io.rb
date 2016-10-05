@@ -127,36 +127,82 @@ end
 # reads values from file and writes values to file
 class FileHandler
   def initialize(file_name)
-    @file = File.new(file_name, "w")
+    @file_name = file_name
+    @mode = nil
+    @file = nil
+    @data_store = []
+  end
+
+  def set_mode(mode)
+    if @mode.nil?
+      case mode
+      when :print
+        @file = File.new(@file_name, "wt")
+      when :read
+        @file = File.new(@file_name, "rt")
+      else
+        raise(Exception, 'Invalid file mode')
+      end
+      @mode = mode
+    else
+      raise(BASICException, 'Inconsistent file operation') unless @mode == mode
+    end
   end
 
   def close
-    @file.close
+    @file.close unless @file.nil?
   end
 
   def print_item(text)
+    set_mode(:print)
     @file.print text
   end
 
   def last_was_numeric
+    set_mode(:print)
   end
 
   def newline
+    set_mode(:print)
     @file.puts
   end
 
   def implied_newline
+    set_mode(:print)
   end
 
   def tab
+    set_mode(:print)
     @file.putc ' '
   end
 
   def semicolon
+    set_mode(:print)
     @file.putc ' '
   end
 
   def implied
+    set_mode(:print)
     @file.putc ' '
+  end
+
+  def read
+    set_mode(:read)
+    while @data_store.empty?
+      line = @file.gets
+      raise(BASICException, 'End of file') if line.nil?
+      tokenizers = []
+      tokenizers << ReadNumberTokenizer.new
+      tokenizers << ListTokenizer.new([',', ';'], ParamSeparatorToken)
+      tokenizers << WhitespaceTokenizer.new
+      invalid_tokenizer = InvalidTokenizer.new
+      tokenizer = Tokenizer.new(tokenizers, invalid_tokenizer)
+      tokens = tokenizer.tokenize(line)
+      tokens.each { |token|
+        next if token.separator? || token.whitespace?
+        @data_store << NumericConstant.new(token)
+      }
+    end
+    @data_store.shift
   end
 end

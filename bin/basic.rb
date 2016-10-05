@@ -187,7 +187,6 @@ class Interpreter
   attr_reader :current_line_number
   attr_accessor :next_line_number
   attr_reader :console_io
-  attr_reader :data_store
 
   def initialize(print_width, zone_width, output_speed, echo_input, int_floor,
                  ignore_rnd_arg, implied_semicolon)
@@ -681,7 +680,18 @@ class Interpreter
 
     raise(BASICException, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
-    @file_handlers[file_handle]
+    fh = @file_handlers[file_handle]
+    fh.set_mode(:print)
+    fh
+  end
+
+  def get_data_store(file_handle)
+    return @data_store if file_handle.nil?
+    raise(BASICException, 'Unknown file handle') unless
+      @file_handlers.key?(file_handle)
+    fh = @file_handlers[file_handle]
+    fh.set_mode(:read)
+    fh
   end
 
   def go
