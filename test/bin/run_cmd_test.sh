@@ -11,7 +11,7 @@ echo testbed ready
 # execute program
 echo Running program...
 cd tests/$TESTNAME
-ruby -I. basic.rb --notiming --echo-input <stdin.txt >stdout.txt 2>&1
+ruby basic.rb --notiming --echo-input <stdin.txt >stdout.txt 2>&1
 cd ../..
 echo run finished
 

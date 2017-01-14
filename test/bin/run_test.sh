@@ -17,7 +17,7 @@ if [ -e test/$TESTGROUP/ref/$TESTNAME/list.txt ]
 then
 echo List program...
 cd tests/$TESTNAME
-ruby -I. basic.rb -l $TESTNAME.bas >list.txt
+ruby basic.rb -l $TESTNAME.bas >list.txt
 cd ../..
 echo Comparing list...
 diff tests/$TESTNAME/list.txt test/$TESTGROUP/ref/$TESTNAME/list.txt
@@ -28,7 +28,7 @@ if [ -e test/$TESTGROUP/ref/$TESTNAME/pretty.txt ]
 then
 echo Pretty program...
 cd tests/$TESTNAME
-ruby -I. basic.rb -p $TESTNAME.bas >pretty.txt
+ruby basic.rb -p $TESTNAME.bas >pretty.txt
 cd ../..
 echo Comparing pretty...
 diff tests/$TESTNAME/pretty.txt test/$TESTGROUP/ref/$TESTNAME/pretty.txt
@@ -41,7 +41,7 @@ cd tests/$TESTNAME
 echo Running program...
 if [ -e stdin.txt ]
 then
-ruby -I. basic.rb --notiming $OPTIONS -r $TESTNAME.bas --echo-input <stdin.txt >stdout.txt
+ruby basic.rb --notiming $OPTIONS -r $TESTNAME.bas --echo-input <stdin.txt >stdout.txt
 else
 ruby -I. basic.rb --notiming $OPTIONS -r $TESTNAME.bas >stdout.txt
 fi
