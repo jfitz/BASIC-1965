@@ -1,62 +1,64 @@
 echo
-TESTGROUP=$1
-TESTNAME=$2
-OPTIONS=$3
+TESTROOT=$1
+TESTBED=$2
+TESTGROUP=$3
+TESTNAME=$4
+OPTIONS=$5
 echo Start test $TESTNAME
 
 # create testbed
 echo Creating testbed...
-mkdir tests/$TESTNAME
-cp bin/* test/$TESTGROUP/data/$TESTNAME/* tests/$TESTNAME
+mkdir "$TESTBED/$TESTNAME"
+cp bin/* "$TESTROOT/$TESTGROUP/data/$TESTNAME"/* "$TESTBED/$TESTNAME"
 echo testbed ready
 
 # execute program
 ECODE=0
 
-if [ -e test/$TESTGROUP/ref/$TESTNAME/list.txt ]
+if [ -e "$TESTROOT/$TESTGROUP/ref/$TESTNAME/list.txt" ]
 then
 echo List program...
-cd tests/$TESTNAME
+cd "$TESTBED/$TESTNAME"
 ruby basic.rb -l $TESTNAME.bas >list.txt
 cd ../..
 echo Comparing list...
-diff tests/$TESTNAME/list.txt test/$TESTGROUP/ref/$TESTNAME/list.txt
+diff "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/ref/$TESTNAME/list.txt"
 ((ECODE+=$?))
 fi
 
-if [ -e test/$TESTGROUP/ref/$TESTNAME/pretty.txt ]
+if [ -e "$TESTROOT/$TESTGROUP/ref/$TESTNAME/pretty.txt" ]
 then
 echo Pretty program...
-cd tests/$TESTNAME
+cd "$TESTBED/$TESTNAME"
 ruby basic.rb -p $TESTNAME.bas >pretty.txt
 cd ../..
 echo Comparing pretty...
-diff tests/$TESTNAME/pretty.txt test/$TESTGROUP/ref/$TESTNAME/pretty.txt
+diff "$TESTBED/$TESTNAME/pretty.txt" "$TESTROOT/$TESTGROUP/ref/$TESTNAME/pretty.txt"
 ((ECODE+=$?))
 fi
 
-if [ -e test/$TESTGROUP/ref/$TESTNAME/stdout.txt ]
+if [ -e "$TESTROOT/$TESTGROUP/ref/$TESTNAME/stdout.txt" ]
 then
-cd tests/$TESTNAME
+cd "$TESTBED/$TESTNAME"
 echo Running program...
 if [ -e stdin.txt ]
 then
 ruby basic.rb --notiming $OPTIONS -r $TESTNAME.bas --echo-input <stdin.txt >stdout.txt
 else
-ruby -I. basic.rb --notiming $OPTIONS -r $TESTNAME.bas >stdout.txt
+ruby basic.rb --notiming $OPTIONS -r $TESTNAME.bas >stdout.txt
 fi
 cd ../..
 echo Comparing stdout...
-diff tests/$TESTNAME/stdout.txt test/$TESTGROUP/ref/$TESTNAME/stdout.txt
+diff "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/ref/$TESTNAME/stdout.txt"
 ((ECODE+=$?))
 fi
 if [ -e test/$TESTGROUP/ref/$TESTNAME/out_files.txt ]
 then
 while read F ; do
   echo Comparing $F...
-  diff tests/$TESTNAME/$F test/$TESTGROUP/ref/$TESTNAME/$F
+  diff "$TESTBED/$TESTNAME/$F" "$TESTROOT/$TESTGROUP/ref/$TESTNAME/$F"
   ((ECODE+=$?))
-done <test/$TESTGROUP/ref/$TESTNAME/out_files.txt
+done <"$TESTROOT/$TESTGROUP/ref/$TESTNAME/out_files.txt"
 fi
 
 echo End test $TESTNAME

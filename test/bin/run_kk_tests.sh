@@ -1,196 +1,199 @@
-echo Removing old directory
-if [ -d tests ] ; then rm -r tests ; fi
+TESTROOT=test
+TESTBED=tests
 
-echo Creating directory tests
-mkdir tests
+echo Removing old directory
+if [ -d "$TESTBED" ] ; then rm -r "$TESTBED" ; fi
+
+echo Creating directory $TESTBED
+mkdir "$TESTBED"
 
 echo Running all tests...
 ECODE=0
 
 # chapter 1
-bash test/bin/run_test.sh kk convert
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk convert
 ((ECODE+=$?))
 
 # chapter 2
-bash test/bin/run_test.sh kk loop
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk loop
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk loop1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk loop1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk binom
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk binom
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk table
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk table
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk roots
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk roots
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk lrgfct
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk lrgfct
 ((ECODE+=$?))
 
 # chapter 3
-bash test/bin/run_test.sh kk sales
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk sales
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk income
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk income
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk order
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk order
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk rc-sum
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk rc-sum
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk inverse_7
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk inverse_7
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk inverse_9
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk inverse_9
 ((ECODE+=$?))
 
 # chapter 4
-bash test/bin/run_test.sh kk define
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk define
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk trig
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk trig
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk trig2
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk trig2
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk subr
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk subr
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk truth
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk truth
 ((ECODE+=$?))
 
 # chapter 5
-bash test/bin/run_test.sh kk degree
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk degree
 ((ECODE+=$?))
 
 # chapter 6
 
 # chapter 7
-bash test/bin/run_test.sh kk trig-1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk trig-1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk trig-2
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk trig-2
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk trig-3
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk trig-3
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk zero-1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk zero-1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk zero-2
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk zero-2
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk zero-3
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk zero-3
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk zero-4
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk zero-4
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk plot
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk plot
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk plotxy
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk plotxy
 ((ECODE+=$?))
 
 # chapter 8
-bash test/bin/run_test.sh kk factor
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk factor
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk euclid
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk euclid
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk china
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk china
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk add300
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk add300
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk mpy300
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk mpy300
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk prim-1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk prim-1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk primes
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk primes
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk hgpr
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk hgpr
 ((ECODE+=$?))
 
 # chapter 9
-bash test/bin/run_test.sh kk random_float
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk random_float
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk random_int
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk random_int
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk dice
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk dice
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk deal
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk deal
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk bridge
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk bridge
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk needle
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk needle
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk dodger
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk dodger
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk knight
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk knight
 ((ECODE+=$?))
 
 # chapter 10
-bash test/bin/run_test.sh kk batnum
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk batnum
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk nim
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk nim
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk tictac
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk tictac
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk tic-2
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk tic-2
 ((ECODE+=$?))
 
 # chapter 11
-bash test/bin/run_test.sh kk comp-1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk comp-1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk comp-2
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk comp-2
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk tax-1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk tax-1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk tax-2
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk tax-2
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk tax-3
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk tax-3
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk decide
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk decide
 ((ECODE+=$?))
 
 # chapter 12
-bash test/bin/run_test.sh kk stat
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk stat
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk linreg
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk linreg
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk contin
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk contin
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk 2-by-2
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk 2-by-2
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk rnksum
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk rnksum
 ((ECODE+=$?))
 
 # chapter 13
-bash test/bin/run_test.sh kk mati-0
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk mati-0
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk mati-1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk mati-1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk matops
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk matops
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk matmpy
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk matmpy
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk matpwr
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk matpwr
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk matinv
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk matinv
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk linequ
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk linequ
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk net
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk net
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk tchain
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk tchain
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk echain
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk echain
 ((ECODE+=$?))
 
 # chapter 14
-bash test/bin/run_test.sh kk poly
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk poly
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk integr
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk integr
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk taylor
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk taylor
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk diffeq
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk diffeq
 ((ECODE+=$?))
 
 # chapter 15
-bash test/bin/run_test.sh kk teachm
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk teachm
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk code
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk code
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk foxrab
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk foxrab
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk fxrb-1
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk fxrb-1
 ((ECODE+=$?))
-bash test/bin/run_test.sh kk music
+bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" kk music
 ((ECODE+=$?))
 
 echo
