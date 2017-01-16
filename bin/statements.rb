@@ -117,7 +117,7 @@ class StatementFactory
 
   def tokenize(text)
     tokenizers = make_tokenizers
-    invalid_tokenizer = InvalidTokenizer.new
+    invalid_tokenizer = InvalidTokenBuilder.new
     tokenizer = Tokenizer.new(tokenizers, invalid_tokenizer)
     tokenizer.tokenize(text)
   end
@@ -155,28 +155,28 @@ class StatementFactory
     tokenizers = []
 
     keywords = statement_definitions.keys + %w(THEN TO STEP)
-    tokenizers << ListTokenizer.new(keywords, KeywordToken)
+    tokenizers << ListTokenBuilder.new(keywords, KeywordToken)
 
     operators = [
       '+', '-', '*', '/', '^', '#',
       '<', '<=', '=', '>', '>=', '<>'
     ]
-    tokenizers << ListTokenizer.new(operators, OperatorToken)
+    tokenizers << ListTokenBuilder.new(operators, OperatorToken)
 
-    tokenizers << BreakTokenizer.new
+    tokenizers << BreakTokenBuilder.new
 
-    tokenizers << ListTokenizer.new(['(', '['], GroupStartToken)
-    tokenizers << ListTokenizer.new([')', ']'], GroupEndToken)
-    tokenizers << ListTokenizer.new([',', ';'], ParamSeparatorToken)
+    tokenizers << ListTokenBuilder.new(['(', '['], GroupStartToken)
+    tokenizers << ListTokenBuilder.new([')', ']'], GroupEndToken)
+    tokenizers << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
 
     tokenizers <<
-      ListTokenizer.new(FunctionFactory.function_names, FunctionToken)
-    tokenizers << ListTokenizer.new(('FNA'..'FNZ').to_a, UserFunctionToken)
+      ListTokenBuilder.new(FunctionFactory.function_names, FunctionToken)
+    tokenizers << ListTokenBuilder.new(('FNA'..'FNZ').to_a, UserFunctionToken)
 
-    tokenizers << TextTokenizer.new
-    tokenizers << NumberTokenizer.new
-    tokenizers << VariableTokenizer.new
-    tokenizers << ListTokenizer.new(%w(ON OFF), BooleanConstantToken)
+    tokenizers << TextTokenBuilder.new
+    tokenizers << NumberTokenBuilder.new
+    tokenizers << VariableTokenBuilder.new
+    tokenizers << ListTokenBuilder.new(%w(ON OFF), BooleanConstantToken)
   end
 end
 
@@ -434,10 +434,10 @@ class InputStatement < AbstractStatement
     values = []
     prompt = @prompt
     tokenizers = []
-    tokenizers << InputNumberTokenizer.new
-    tokenizers << InputENumberTokenizer.new
-    tokenizers << InputEmptyTokenizer.new
-    tokenizers << InputEEmptyTokenizer.new
+    tokenizers << InputNumberTokenBuilder.new
+    tokenizers << InputENumberTokenBuilder.new
+    tokenizers << InputEmptyTokenBuilder.new
+    tokenizers << InputEEmptyTokenBuilder.new
 
     tokenizer = Tokenizer.new(tokenizers, nil)
     while values.size < @expression_list.size

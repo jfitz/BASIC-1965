@@ -192,10 +192,10 @@ class FileHandler
       line = @file.gets
       raise(BASICException, 'End of file') if line.nil?
       tokenizers = []
-      tokenizers << ReadNumberTokenizer.new
-      tokenizers << ListTokenizer.new([',', ';'], ParamSeparatorToken)
-      tokenizers << WhitespaceTokenizer.new
-      invalid_tokenizer = InvalidTokenizer.new
+      tokenizers << ReadNumberTokenBuilder.new
+      tokenizers << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
+      tokenizers << WhitespaceTokenBuilder.new
+      invalid_tokenizer = InvalidTokenBuilder.new
       tokenizer = Tokenizer.new(tokenizers, invalid_tokenizer)
       tokens = tokenizer.tokenize(line)
       tokens.each { |token|
