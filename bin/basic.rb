@@ -9,6 +9,7 @@ require_relative 'operators'
 require_relative 'functions'
 require_relative 'expressions'
 require_relative 'tokens'
+require_relative 'tokenizers'
 require_relative 'io'
 require_relative 'statements'
 
