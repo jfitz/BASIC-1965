@@ -1,8 +1,5 @@
 # accept any characters
 class InvalidTokenBuilder
-  def initialize
-  end
-
   def try(text)
     @token = ''
     @token += text.empty? ? '' : text[0]
@@ -152,7 +149,10 @@ class InputNumberTokenBuilder
   end
 
   def token
-    [NumericConstantToken.new(@token[0..-2]), ParamSeparatorToken.new(',')]
+    [
+      NumericConstantToken.new(@token[0..-2]),
+      ParamSeparatorToken.new(',')
+    ]
   end
 end
 
@@ -191,7 +191,10 @@ class InputEmptyTokenBuilder
   end
 
   def token
-    [TextConstantToken.new('"' + @token[0..-2] + '"'), ParamSeparatorToken.new(',')]
+    [
+      TextConstantToken.new('"' + @token[0..-2] + '"'),
+      ParamSeparatorToken.new(',')
+    ]
   end
 end
 
@@ -216,7 +219,6 @@ class BreakTokenBuilder
   def try(text)
     @token = ''
     @token = text[0] if text[0] == '_'
-    text = '_'
   end
 
   def count
