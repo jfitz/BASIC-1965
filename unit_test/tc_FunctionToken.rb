@@ -10,7 +10,7 @@ class TestFunctionToken < Test::Unit::TestCase
     token = FunctionToken.new('INT')
 
     assert_equal('INT', token.to_s)
-    assert_equal('INT', token.function)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

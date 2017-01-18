@@ -10,7 +10,7 @@ class TestBreakToken < Test::Unit::TestCase
     token = BreakToken.new('_')
 
     assert_equal('_', token.to_s)
-    assert_equal('_', token.text)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

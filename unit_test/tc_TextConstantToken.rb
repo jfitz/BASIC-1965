@@ -10,8 +10,8 @@ class TestTextConstantToken < Test::Unit::TestCase
     token = TextConstantToken.new('""')
 
     assert_equal('""', token.to_s)
-    assert_equal('""', token.text_constant)
     assert_equal('', token.value)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)
@@ -31,8 +31,8 @@ class TestTextConstantToken < Test::Unit::TestCase
     token = TextConstantToken.new('"SIMPLE"')
 
     assert_equal('"SIMPLE"', token.to_s)
-    assert_equal('"SIMPLE"', token.text_constant)
     assert_equal('SIMPLE', token.value)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

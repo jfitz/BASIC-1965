@@ -10,7 +10,7 @@ class TestInvalidToken < Test::Unit::TestCase
     token = InvalidToken.new('?')
 
     assert_equal('?', token.to_s)
-    assert_equal('?', token.text)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

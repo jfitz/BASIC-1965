@@ -10,7 +10,7 @@ class TestGroupStartToken < Test::Unit::TestCase
     token = GroupStartToken.new('(')
 
     assert_equal('(', token.to_s)
-    assert_equal('(', token.start)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)
@@ -30,7 +30,7 @@ class TestGroupStartToken < Test::Unit::TestCase
     token = GroupStartToken.new('[')
 
     assert_equal('[', token.to_s)
-    assert_equal('[', token.start)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

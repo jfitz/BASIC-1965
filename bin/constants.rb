@@ -436,13 +436,12 @@ end
 class BooleanConstant < AbstractElement
   attr_reader :value
 
-  def initialize(text)
+  def initialize(obj)
     super()
     @value = false
-    @value = true if text.class.to_s == 'BooleanConstantToken' &&
-                     text.boolean_constant == 'ON'
-    @value = true if text.class.to_s == 'String' && text.to_s.casecmp('ON') == 0
-    @value = true if text.class.to_s == 'TrueClass'
+    @value = true if obj.class.to_s == 'BooleanConstantToken' && obj.to_s == 'ON'
+    @value = true if obj.class.to_s == 'String' && obj.casecmp('ON') == 0
+    @value = true if obj.class.to_s == 'TrueClass'
     @operand = true
     @precedence = 0
   end

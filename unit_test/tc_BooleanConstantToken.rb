@@ -10,7 +10,7 @@ class TestBooleanConstantToken < Test::Unit::TestCase
     token = BooleanConstantToken.new('ON')
 
     assert_equal('ON', token.to_s)
-    assert_equal('ON', token.boolean_constant)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

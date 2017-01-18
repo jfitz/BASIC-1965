@@ -10,7 +10,7 @@ class TestGroupEndToken < Test::Unit::TestCase
     token = GroupEndToken.new(')')
 
     assert_equal(')', token.to_s)
-    assert_equal(')', token.ender)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)
@@ -30,7 +30,7 @@ class TestGroupEndToken < Test::Unit::TestCase
     token = GroupEndToken.new(']')
 
     assert_equal(']', token.to_s)
-    assert_equal(']', token.ender)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

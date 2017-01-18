@@ -10,7 +10,7 @@ class TestKeywordToken < Test::Unit::TestCase
     token = KeywordToken.new('LET')
 
     assert_equal('LET', token.to_s)
-    assert_equal('LET', token.keyword)
+
     assert(token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

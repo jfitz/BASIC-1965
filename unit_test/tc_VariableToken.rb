@@ -10,7 +10,7 @@ class TestVariableToken < Test::Unit::TestCase
     token = VariableToken.new('A')
 
     assert_equal('A', token.to_s)
-    assert_equal('A', token.variable)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

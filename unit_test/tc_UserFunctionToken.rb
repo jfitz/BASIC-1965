@@ -10,7 +10,7 @@ class TestUserFunctinToken < Test::Unit::TestCase
     token = UserFunctionToken.new('FNA')
 
     assert_equal('FNA', token.to_s)
-    assert_equal('FNA', token.user_function)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)

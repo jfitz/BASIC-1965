@@ -71,8 +71,6 @@ end
 
 # invalid token
 class InvalidToken < AbstractToken
-  attr_reader :text
-
   def initialize(text)
     @text = text
   end
@@ -84,8 +82,6 @@ end
 
 # break token
 class BreakToken < AbstractToken
-  attr_reader :text
-
   def initialize(text)
     @text = text
   end
@@ -97,202 +93,178 @@ end
 
 # whitespace token
 class WhitespaceToken < AbstractToken
-  attr_reader :keyword
-
   def initialize(text)
     @is_whitespace = true
-    @keyword = text
+    @text = text
   end
 
   def to_s
-    @keyword
+    @text
   end
 end
 
 # keyword token
 class KeywordToken < AbstractToken
-  attr_reader :keyword
-
   def initialize(text)
     @is_keyword = true
-    @keyword = text
+    @text = text
   end
 
   def to_s
-    @keyword
+    @text
   end
 end
 
 # operator token
 class OperatorToken < AbstractToken
-  attr_reader :operator
-
   def initialize(text)
     @is_operator = true
-    @operator = text
+    @text = text
   end
 
   def equals?
-    @operator == '='
+    @text == '='
   end
 
   def comparison?
-    @operator == '<' || @operator == '<=' ||
-      @operator == '>' || @operator == '>=' ||
-      @operator == '=' || @operator == '<>'
+    @text == '<' || @text == '<=' ||
+      @text == '>' || @text == '>=' ||
+      @text == '=' || @text == '<>'
   end
 
   def to_s
-    @operator
+    @text
   end
 end
 
 # group start token
 class GroupStartToken < AbstractToken
-  attr_reader :start
-
   def initialize(text)
     @is_groupstart = true
-    @start = text
+    @text = text
   end
 
   def to_s
-    @start
+    @text
   end
 end
 
 # group end token
 class GroupEndToken < AbstractToken
-  attr_reader :ender
-
   def initialize(text)
     @is_groupend = true
-    @ender = text
+    @text = text
   end
 
   def to_s
-    @ender
+    @text
   end
 end
 
 # parameter separator token
 class ParamSeparatorToken < AbstractToken
-  attr_reader :separator
-
   def initialize(text)
     @is_separator = true
-    @separator = text
+    @text = text
   end
 
   def to_s
-    @separator
+    @text
   end
 end
 
 # function token
 class FunctionToken < AbstractToken
-  attr_reader :function
-
   def initialize(text)
     @is_function = true
-    @function = text
+    @text = text
   end
 
   def to_s
-    @function
+    @text
   end
 end
 
 # text constant token
 class TextConstantToken < AbstractToken
-  attr_reader :text_constant
-
   def initialize(text)
     @is_text_constant = true
-    @text_constant = text
+    @text = text
   end
 
   def to_s
-    @text_constant
+    @text
   end
 
   def value
-    @text_constant[1..-2]
+    @text[1..-2]
   end
 end
 
 # numeric constant token
 class NumericConstantToken < AbstractToken
-  attr_reader :numeric_constant
-
   def initialize(text)
     @is_numeric_constant = true
-    @numeric_constant = text
+    @text = text
   end
 
   def to_f
-    @numeric_constant.to_f
+    @text.to_f
   end
 
   def to_i
-    @numeric_constant.to_f.to_i
+    @text.to_f.to_i
   end
 
   def to_s
-    @numeric_constant.to_s
+    @text
   end
 end
 
 # boolean constant token
 class BooleanConstantToken < AbstractToken
-  attr_reader :boolean_constant
-
   def initialize(text)
     @is_boolean_constant = true
-    @boolean_constant = text
+    @text = text
   end
 
   def to_s
-    @boolean_constant.to_s
+    @text
   end
 end
 
 # user function token
 class UserFunctionToken < AbstractToken
-  attr_reader :user_function
-
   def initialize(text)
     @is_user_function = true
-    @user_function = text
+    @text = text
   end
 
   def to_s
-    @user_function.to_s
+    @text
   end
 end
 
 # variable token
 class VariableToken < AbstractToken
-  attr_reader :variable
-
   def initialize(text)
     @is_variable = true
-    @variable = text
+    @text = text
   end
 
   def eql?(other)
-    @variable == other.variable
+    @text == other.text
   end
 
   def ==(other)
-    @variable == other.variable
+    @text == other.text
   end
 
   def hash
-    @variable.hash
+    @text.hash
   end
 
   def to_s
-    @variable
+    @text
   end
 end

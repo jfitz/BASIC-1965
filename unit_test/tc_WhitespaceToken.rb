@@ -10,7 +10,7 @@ class TestWhitespaceToken < Test::Unit::TestCase
     token = WhitespaceToken.new(' ')
 
     assert_equal(' ', token.to_s)
-    assert_equal(' ', token.keyword)
+
     assert(!token.keyword?)
     assert(!token.operator?)
     assert(!token.separator?)
