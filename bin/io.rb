@@ -91,10 +91,12 @@ class ConsoleIo
   end
 
   def print_out(text)
-    text.each_char do |c|
-      print(c)
-      delay
-    end unless text.nil?
+    unless text.nil?
+      text.each_char do |c|
+        print(c)
+        delay
+      end
+    end
   end
 
   def delay
@@ -137,9 +139,9 @@ class FileHandler
     if @mode.nil?
       case mode
       when :print
-        @file = File.new(@file_name, "wt")
+        @file = File.new(@file_name, 'wt')
       when :read
-        @file = File.new(@file_name, "rt")
+        @file = File.new(@file_name, 'rt')
       else
         raise(Exception, 'Invalid file mode')
       end
@@ -191,17 +193,21 @@ class FileHandler
     while @data_store.empty?
       line = @file.gets
       raise(BASICException, 'End of file') if line.nil?
+      line = line.chomp
+
       tokenizers = []
-      tokenizers << ReadNumberTokenBuilder.new
+      tokenizers << InputNumberTokenBuilder.new
       tokenizers << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
       tokenizers << WhitespaceTokenBuilder.new
-      invalid_tokenizer = InvalidTokenBuilder.new
-      tokenizer = Tokenizer.new(tokenizers, invalid_tokenizer)
+
+      tokenizer = Tokenizer.new(tokenizers, InvalidTokenBuilder.new)
+
       tokens = tokenizer.tokenize(line)
-      tokens.each { |token|
-        next if token.separator? || token.whitespace?
-        @data_store << NumericConstant.new(token)
-      }
+      tokens.delete_if { |token| token.separator? || token.whitespace? }
+      tokens.each do |token|
+        t = NumericConstant.new(token)
+        @data_store << t
+      end
     end
     @data_store.shift
   end

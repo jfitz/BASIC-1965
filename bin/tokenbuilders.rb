@@ -69,6 +69,29 @@ class TextTokenBuilder
   end
 end
 
+# token reader for numeric constants in input channels (READ, INPUT)
+class InputNumberTokenBuilder
+  def try(text)
+    @token = ''
+    /\A[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\./.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\.E[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\.\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\d+\.\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\.\d+/.match(text) { |m| @token = m[0] }
+    /\A[+-]?\.\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
+  end
+
+  def count
+    @token.size
+  end
+
+  def token
+    [NumericConstantToken.new(@token)]
+  end
+end
+
 # token reader for numeric constants
 class NumberTokenBuilder
   def try(text)
@@ -104,113 +127,6 @@ class VariableTokenBuilder
 
   def token
     [VariableToken.new(@token)]
-  end
-end
-
-# token reader for numeric constants
-class ReadNumberTokenBuilder
-  def try(text)
-    @token = ''
-    /\A[+-]?\d+/.match(text) { |m| @token = m[0] }
-    /\A[+-]?\d+\./.match(text) { |m| @token = m[0] }
-    /\A[+-]?\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
-    /\A[+-]?\d+\.E[+-]?\d+/.match(text) { |m| @token = m[0] }
-    /\A[+-]?\d+\.\d+/.match(text) { |m| @token = m[0] }
-    /\A[+-]?\d+\.\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
-    /\A[+-]?\.\d+/.match(text) { |m| @token = m[0] }
-    /\A[+-]?\.\d+E[+-]?\d+/.match(text) { |m| @token = m[0] }
-  end
-
-  def count
-    @token.size
-  end
-
-  def token
-    [NumericConstantToken.new(@token)]
-  end
-end
-
-# token reader for numeric constants
-class InputNumberTokenBuilder
-  def try(text)
-    @token = ''
-    /\A *([+-]?\d+) *,/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.) *,/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+E[+-]?) *\d+,/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.E[+-]?\d+) *,/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.\d+) *,/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.\d+E[+-]?\d+) *,/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\.\d+) *,/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\.\d+E[+-]?\d+) *,/.match(text) { |m| @token = m[0] }
-  end
-
-  def count
-    @token.size
-  end
-
-  def token
-    [
-      NumericConstantToken.new(@token[0..-2]),
-      ParamSeparatorToken.new(',')
-    ]
-  end
-end
-
-# token reader for numeric constants
-class InputENumberTokenBuilder
-  def try(text)
-    @token = ''
-    /\A *([+-]?\d+) *\z/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.) *\z/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+E[+-]?\d+) *\z/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.E[+-]?\d+) *\z/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.\d+) *\z/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\d+\.\d+E[+-]?\d+) *\z/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\.\d+) *\z/.match(text) { |m| @token = m[0] }
-    /\A *([+-]?\.\d+E[+-]?\d+) *\z/.match(text) { |m| @token = m[0] }
-  end
-
-  def count
-    @token.size
-  end
-
-  def token
-    [NumericConstantToken.new(@token)]
-  end
-end
-
-# token reader for empty entries
-class InputEmptyTokenBuilder
-  def try(text)
-    @token = ''
-    /\A *,/.match(text) { |m| @token = m[0] }
-  end
-
-  def count
-    @token.size
-  end
-
-  def token
-    [
-      TextConstantToken.new('"' + @token[0..-2] + '"'),
-      ParamSeparatorToken.new(',')
-    ]
-  end
-end
-
-# token reader for empty entries
-class InputEEmptyTokenBuilder
-  def try(text)
-    @token = ''
-    /\A *\z/.match(text) { |m| @token = m[0] }
-  end
-
-  def count
-    @token.size
-  end
-
-  def token
-    [TextConstantToken.new('"' + @token + '"')]
   end
 end
 

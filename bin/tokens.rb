@@ -253,11 +253,11 @@ class VariableToken < AbstractToken
   end
 
   def eql?(other)
-    @text == other.text
+    @text == other.to_s
   end
 
   def ==(other)
-    @text == other.text
+    @text == other.to_s
   end
 
   def hash

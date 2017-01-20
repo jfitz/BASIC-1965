@@ -428,16 +428,15 @@ class InputStatement < AbstractStatement
 
   def input_values(interpreter)
     # when parsing user input, we use different tokenizers than the code
-    # each token must end with a comma or a newline
+    # values must be separated by separators
     # numeric tokens may contain leading signs
-    # all tokens may have leading or trailing spaces (or both)
+    # values may have leading or trailing spaces (or both)
     values = []
     prompt = @prompt
     tokenizers = []
     tokenizers << InputNumberTokenBuilder.new
-    tokenizers << InputENumberTokenBuilder.new
-    tokenizers << InputEmptyTokenBuilder.new
-    tokenizers << InputEEmptyTokenBuilder.new
+    tokenizers << ListTokenBuilder.new([','], ParamSeparatorToken)
+    tokenizers << WhitespaceTokenBuilder.new
 
     tokenizer = Tokenizer.new(tokenizers, nil)
     while values.size < @expression_list.size
@@ -446,6 +445,19 @@ class InputStatement < AbstractStatement
       console_io = interpreter.console_io
       input_text = console_io.read_line
       tokens = tokenizer.tokenize(input_text)
+      # drop whitespace
+      tokens.delete_if { |token| token.whitespace? }
+      # verify all even-index tokens are numeric
+      evens = tokens.values_at(* tokens.each_index.select { |i| i.even? })
+      evens.each do |token|
+        raise(BASICException, 'Invalid input') if !token.numeric_constant?
+      end
+      # verify all odd-index tokens are separators
+      odds = tokens.values_at(* tokens.each_index.select { |i| i.odd? })
+      odds.each do |token|
+        raise(BASICException, 'Invalid input') if !token.separator?
+      end
+      # convert from tokens to values
       expressions = ValueScalarExpression.new(tokens)
       ev = expressions.evaluate(interpreter)
       values += ev
@@ -571,7 +583,7 @@ class PrintStatement < AbstractStatement
         file_handle = nil
       end
     end
-    return file_handle, print_items
+    [file_handle, print_items]
   end
 
   def tokens_to_expressions(tokens_lists)
@@ -891,7 +903,7 @@ class ReadStatement < AbstractStatement
 
   def execute(interpreter, trace)
     items_lists = @tokens_lists.clone
-    if items_lists.size > 0
+    unless items_lists.size.zero?
       begin
         items_0 = items_lists[0]
         expr = ValueScalarExpression.new(items_0)
@@ -1170,7 +1182,7 @@ class ArrLetStatement < AbstractStatement
     tokens = remove_break_tokens(tokens)
     begin
       @assignment = ArrayAssignment.new(tokens) ###
-      if @assignment.count_target == 0
+      if @assignment.count_target.zero?
         @errors << 'Assignment must have left-hand value(s)'
       end
       if @assignment.count_value != 1
@@ -1208,7 +1220,8 @@ class ArrLetStatement < AbstractStatement
   def first_value(interpreter)
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
-    raise(BASICException, 'Expected Array') if r_value.class.to_s != 'BASICArray'
+    raise(BASICException, 'Expected Array') if
+      r_value.class.to_s != 'BASICArray'
     r_value
   end
 end
@@ -1346,7 +1359,7 @@ class MatLetStatement < AbstractStatement
     tokens = remove_break_tokens(tokens)
     begin
       @assignment = MatrixAssignment.new(tokens)
-      if @assignment.count_target == 0
+      if @assignment.count_target.zero?
         @errors << 'Assignment must have left-hand value(s)'
       end
       if @assignment.count_value != 1
