@@ -1,0 +1,1068 @@
+BASIC-1965
+==========
+
+Overview
+--------
+
+BASIC-1965 is an implementation of an early variant of the BASIC language.
+
+My reference manual has been Kemeny and Kurtz's "BASIC Programming" (John Wiley and Sons, 1967).
+I call this "K&K BASIC" (after "K&R C" for Kernighan and Ritchie's C book.).
+
+Initial impressions
+-------------------
+
+BASIC-1965 is really primitive!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+BASIC-1965 is an interpreter with no optimization.
+Each line is interpreted each time it is executed.
+If a line is executed ten times, it is interpreted ten times.
+There is some up-front parsing that occurs, but not much.
+
+The BASIC-1965 language has no exception handling.
+Invalid input, dividing by zero, and numeric overflow or underflow will cause execution to stop.
+There are no try/catch, no begin/rescue, no ON ERROR capabilities.
+
+BASIC-1965 is designed for processing numeric data.
+There are no capabilities for text variables ("string" variables), no MID$() function, no text input.
+(The PRINT statement handles text constants, and that's the only place for text values.)
+
+Space characters are insignificant in most places.
+When loading a program (or accepting new statements from the user), BASIC-1965 removes all spaces and then parses the line.
+When saving the program to a file and when listing the program for the user, BASIC-1965 inserts space characters to separate keywords and variable names.
+The two places that BASIC-1965 preserves spaces from the original statement are text literals and REMARK statements.
+
+BASIC-1965 is really fussy!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+BASIC-1965 keeps the spirit of the original BASIC language, as much as possible.
+Everything must be in upper case, except for text constants in PRINT statements.
+Commands ("RUN", "LIST"), statements ("PRINT", "LET"), function names, and variable names must be in upper case.
+Lower case causes an error.
+
+Keywords and tokens
+-------------------
+This implementation of BASIC tokenizes the program text and then parses the tokens.
+This can lead to some problems, when legal constructs can be confused for keywords.
+
+For example:
+
+	10 LET S = 1
+	20  LET P = 10
+	30 FOR I = S TO P
+	40 PRINT I
+	50 NEXT I
+	99 END
+
+The above program is legal, but will be parsed incorrectly.
+Line 30 contains the text "S TO P" which will be tokenized as "STOP" (remember that spaces are not significant) and not as the intended variable S, keyword 'TO', and variable P.
+
+The solution is to use an underscore character, which is a break character for the tokenizer and a null token for the parser.
+
+The corrected program is:
+
+	10 LET S = 1
+	20 LET P = 10
+	30 FOR I = S _ TO P
+	40 PRINT I
+	50 NEXT I
+	99 END
+
+The underscore stops the tokenizer and forces it to accept S as a variable and then procede with TOP wich will be tokenized as 'TO' and P.
+
+Differences from K&K BASIC
+--------------------------
+
+I have changed a few things:
+
+- Statements are spaced properly when listed (K&K BASIC keeps the original spacing)
+- The PRINT statement semicolon operator spaces text items together and numeric items apart
+- The RND() function can have zero parameters; when no value it returns a number from 0 to 100
+- The RND(X) function uses the passed value as an upper bound for the result. K&K BASIC ignores this parameter. Use the –ignore-rnd-arg option to match K&K.
+- The MAT assignment statement dimensions the target variable, so an earlier DIM is not needed
+- User-defined functions may have multiple parameters
+- The ARR statements are not mentioned in Kemeny and Kurtz, yet I have implemented them
+- The FILES statement is not mentioned in Kemeny and Kurtz, yet I have implemented it
+
+Running BASIC-1965
+------------------
+
+Interactive mode
+~~~~~~~~~~~~~~~~
+
+This is the classic mode, in which the user may edit programs and run them in the BASIC environment.
+You may use any of the immediate commands (see below).
+
+Run mode
+~~~~~~~~
+
+This option runs BASIC-1965 and also loads a specified BASIC program and then either lists or runs it.
+When the BASIC program ends, BASIC-1965 ends.
+
+|==========
+|Option |Effect
+|--run filename |Specifies the file to load and run. May be abbreviated as -r
+|--list filename |Specifies the file to load and list. May be abbreviated as -l
+|--pretty-list filename |Specifies the file to load and pretty-print. May be abbreviated as -p
+|--trace |Print each statement prior to executing it (useful for debugging). Does the same thing as the 'TRACE' command in interactive mode, but from the command line.
+|--notiming |Suppress the CPU time usage at the end of the output. Useful for comparing output when running tests.
+|--tty |Print output slowly, emulating the speed of an ASR-33 Teletype. Provides a better experience with some programs (often games) in which slow output lets your anticipation build. The fast output of modern computers displays information quickly, and TTY mode lets you read each line as it is "printed".
+|--print-width width |Specifies a print width. Lines will wrap at the specified column. Default value is 72.
+|--zone-width width |Specifies a zone width. PRINT statements will position output separated by commas in zones. Default is 16.
+|--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
+|--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
+|--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
+|--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no sp
+aces between them.)
+|==========
+
+Immediate commands
+------------------
+
+Immediate commands are executed on the command line.
+They are not stored as part of the program.
+They have no line number.
+They are available only in "run" mode.
+
+NEW
+~~~
+
+Clears the current program. Does not ask to save a loaded program.
+Syntax:	NEW
+
+LOAD
+~~~~
+
+Loads a stored program into memory.
+Sorts statements by line number.
+Clears the current program prior to loading the new one.
+
+Syntax:	LOAD filename
+
+LIST
+~~~~
+
+Lists the current program on the screen.
+
+Syntax:	LIST [line specification]
+
+The line specification may be in the form of a single line number, a range (two numbers separated by a hyphen), or a starting line and a count separated by a plus sign.
+
+Examples:
+|==========
+|Command |Result
+|LIST |Lists the entire program.
+|LIST 100 |Lists line 100, if it exists. If the line does not exist, nothing is printed.
+|LIST 100-199 |Lists all lines from line 100 to (and including) line 199.
+|LIST 100+10 |Lists line 100 and the next 10 lines, regardless of their line nunbers.
+|LIST 100+ |Lists line 100 and the next 20 lines.
+|==========
+
+PRETTY
+~~~~~~
+
+Lists the current program on the screen, adjusting the spacing between keywords, variable names, and constants.
+
+Syntax:	PRETTY [line specification]
+
+The line specification is the same as the line specification for the LIST command.
+
+DELETE
+~~~~~~
+
+Removes lines from the program.
+
+My experience with other BASIC interpreters is that lines can be deleted by simply typing a line number and pressing RETURN.
+(That is, entering an "empty" line with line number and nothing else.)
+That technique does not work with BASIC-1965, as K&K BASIC allows empty lines to be part of a program.
+
+So how to remove a line from a program?
+Replacing a line with an empty line is possible, and certainly makes the offending line "go away" from execution, but what if we want to really remove a line?
+
+That's what the DELETE command does.
+
+DELETE uses the same specification as the LIST command.
+
+Syntax:	DELETE [line specification]
+
+If the list specification is a single line, it is deleted immediately.
+If the list specification is a range, the lines are displayed and the user must confirm the operation.
+
+The DELETE command with no specification (implying the entire program) does not delete the program but does nothing.
+(To delete the entire program, use the NEW command.)
+
+RUN
+~~~
+
+Runs the current program.
+
+Syntax:	RUN
+
+TRACE
+~~~~~
+
+Runs the current program, displaying each line prior to execution.
+
+Syntax:	TRACE
+
+After the line is displayed and executed, certain statements (READ, LET, and IF) display additional information.
+READ displays the values read.
+LET displays the new value assigned.
+IF displays the two values, the operator, and the result ('true' or 'false').
+
+SAVE
+~~~~
+
+Saves the current program to disk.
+Will overwrite an existing file without prompting.
+
+Syntax:	SAVE filename
+
+Variables
+---------
+
+Variables store numeric values.
+There are only numeric variables, which handle integer and floating point values automatically.
+There are no variable types for text strings, integers, double-precision floats, or objects.
+
+Variable names consist of a single letter and an optional digit and an optional subscript.
+Subscripts are enclosed in parentheses or square brackets.
+
+|==========
+|Name |Valid or reason it is not valid
+|A |
+|B |
+|C |
+|D1 |
+|E0 |
+|F |
+|F1 |
+|F2 |
+|G(3) |
+|H(17) |
+|L(1,0) |
+|B[5] |
+|AA |Names may have at most one letter
+|A10 |Names may have at most one digit after one letter
+|9Z |Names must start with a letter
+|A_2 |Names may not contain underscore
+|K() |Subscripted names must have subscript values
+|==========
+
+Variables do not need to be declared.
+They are assumed to exist with value zero.
+
+Expressions and operators
+-------------------------
+
+BASIC-1965 supports the following arithmetic operations:
+
+|==========
+|Operation |Symbol |Precedence
+|Addition |+ |3
+|Subtraction |- |3
+|Multiplication |* |2
+|Division |/ |2
+|Exponent |^ |1
+|==========
+
+Parentheses may be used to force computations is a specific order.
+The expression A+B*C performs the multiplication first; the expression (A+B)*C performs the addition first.
+
+Errors in computation (overflow, underflow, and divide by zero) cause execution to stop.
+
+BASIC-1965 supports the following boolean comparisions:
+
+|==========
+|Operation |Symbol
+|Equal |=
+|Not equal |<>
+|Greater than |>
+|Greater than or equal |>=
+|Less than |<
+|Less than or equal |<=
+|==========
+
+Boolean comparisons are permitted only within IF statements, and only one comparison is allowed per statement.
+
+Numeric values
+--------------
+
+Numeric values are either integers or floating point.
+Integers are stored internally with Ruby's Fixnum class.
+Floating point numbers are stored as Ruby's Float with full precision and printed with six significant digits.
+
+Numeric constants may be integer or real, and may use E-notation with unsigned exponents.
+The 'E' must be uppercase; a lowercase 'e' will be rejected.
+Exponents may be signed or unsigned.
+
+|==========
+|Numeric constant |Valid or reason not valid
+|0 |
+|1 |
+|2 |
+|-5 |
+|17 |
+|123456789 |
+|1.03 |
+|-2.17 |
+|1E4 |
+|-2E3 |
+|1E-2 |
+|2.37E+4 |
+|0A |Only digits 0 through 9 and decimal points (and the 'E' for exponent) are permitted
+|3.03+E3 |The sign for the exponent must be after the 'E'. (This expression will be parsed as the value 3.03 plus the contents of variable E3.)
+1e4 |The 'E' for exponent must be uppercase
+|==========
+
+Program statements
+------------------
+
+Program statements are stored as part of the program.
+Every program statement must have a line number.
+
+Line numbers
+~~~~~~~~~~~~
+
+Line numbers are positive integers less than 10000.
+
+Empty lines
+~~~~~~~~~~~
+
+A line number with no following text is an empty line.
+It is retained as part of the program, but performs no action during execution.
+
+Examples:
+
+	10
+	120
+	6731
+
+DATA
+~~~~
+
+Specifies values for READ or MAT READ statements
+
+Syntax:	DATA value list
+
+Values must be numeric values separated by commas.
+Values must be numeric expressions.
+
+Examples:
+
+	390 DATA 3, 150, 175, 180
+	400 DATA 2
+
+The DATA statement is processed before the program runs, and processed only once.
+Thus, it may appear at the end of the program, and does not have to appear before a READ statement.
+
+But the side effect from processing the statement only once is ... the statement is processed only once (per run).
+A DATA statement inside a FOR/NEXT loop is processed only once, not once for each loop execution.
+
+The common behavior for all BASICs is to parse the values as numeric constants.
+BASIC-1965 parses the values as numeric expressions, due to its parsing of unary operators as separate from numeric values.
+The value '-1' is parsed as a unary minus and the value 1, which must be evaluated as an expression.
+This behavior of BASIC-1965 allows for any expression in DATA statements, including the use of variables and functions, but since DATA statements are interpreted before the program is run (and interpreted only once even if contained by a loop) variables will evaluate to zero.
+
+You can use expressions with only numeric constants, such as 3/4 or SIN(0.25).
+
+DEF
+~~~
+
+Specifies a user-defined function.
+
+Syntax:	DEF name(parameters) = expression
+
+User-defined functions have names in the form 'FNx' where 'x' is a single letter.
+
+The parameters in the definition must be single letters.
+They are not variable names.
+The invokation of the function may provide a variable name.
+(See examples below.)
+
+The definition for a user-defined function is an expression, similar to the right-hand side of the assignment in a LET statement.
+The parameters specified in the definition are substituted into the expression at run-time; other variables specified in the expression are evaluated as usual, using the existing values at the time of execution.
+
+Examples:
+
+	10 DEF FNA(A) = INT(A)
+	20 DEF FNB(C) = COS(C)/SIN(C)
+	30 DEF FNC(C) = COS(C)/SIN(A)
+	100 LET P1 = 3.1415
+	105 LET R4 = 20.1
+	110 LET A1 = FNA(R4)
+	120 LET B1 = FNB(30/P1)
+	130 LET A = 30/3.1416
+	131 LET A1 = FNC(45/P1)
+
+The DEF statement is processed before the program runs, and processed only once.
+Thus, it does not have to appear before it is used in a LET statement.
+(Although tradition is that the DEF is specified before the function is used.)
+
+DIM
+~~~
+
+Specifies the number of dimensions and maximum subscripts for each dimension. (Without a DIM statement, variables may have a dimension of at most 10.)
+
+Examples:
+
+	10 DIM A(20)
+	20 DIM B(15), C(20,30)
+
+Arrays are zero-based, so the DIM A(20) statement allows for values A(0) through A(20).
+
+END
+~~~
+
+Marks the end of the program.
+
+An END statement, when executed, will force the execution of the program to stop.
+
+Syntax:	END
+
+Examples:
+
+	999 END
+
+The END statement should be the last statement in the program, and there should be only one of them.
+BASIC-1965 checks for neither, and will allow an END in the middle of the program and will allow multiple END statements.
+
+FILES
+~~~~~
+
+Defines files to be used in the program.
+
+Syntax:	FILES filenames
+
+Examples:
+
+	20 FILES "test.txt"
+
+File names must be enclosed in double-quotes.
+Files must exist at the start of the program, even when the file will be written.
+It is not possible for BASIC to create a file.
+
+The requirement that output files exist at the start of execution may strike some as odd, and possibly perverse.
+Yet there is a reason behind it: BASIC interpreters of the mid-1960s acted this way.
+The notion of a file was a new one, and people thought of files as a special kind of tape file, except one that was written to a disk (or a drum).
+When a program used tape files, the operator had to mount the tapes prior to running the program, in order for the program to read and write its files.
+The files (or at least devices) existed and were ready to receive instructions.
+
+Disk-based files were considered in the same light, and the operating system had commands for the definition of files and the allocation of space to files.
+A program could no more create a file than it could create a magnetic tape.
+I have kept this flavor of operation for the FILES command.
+
+FOR
+~~~
+
+Performs a sequence of statements for a specific number of times.
+
+Syntax:	PRINT control variable = starting value TO ending value
+Syntax:	PRINT control variable = starting value TO ending value STEP iteration value
+
+The statements after the FOR statement (up to the accompanying NEXT statement) are repeated.
+The control variable may not have subscripts.
+The starting value, ending value, and iteration value may be integers or real.
+If the starting value is greater than the ending value (or less than the ending value, when the STEP value is negative) then the statements between the FOR statement and the next NEXT statement with a matching control value are not executed.
+
+A STEP value of zero will cause a loop that does not end.
+
+Examples:
+
+	10 FOR I = 1 TO 10
+	20 PRINT I
+	30 NEXT I
+
+	10 FOR I = 1 TO 10 STEP 2
+	20 PRINT I
+	30 NEXT I
+
+	10 FOR I = 1 TO 10.5 STEP 0.5
+	20 PRINT I
+	30 NEXT I
+
+	10 FOR I = 10 TO 1 STEP -1
+	20 PRINT I
+	30 NEXT I
+
+It is possible to change the value of the control value within the loop. You can write:
+
+	10 FOR I = 1 TO 10
+	20 PRINT A
+	30 LET I = 2
+	40 NEXT I
+
+This will lock the program into a permanent loop, as the value of I will never reach 10.
+
+GO TO
+~~~~~
+
+Changes the flow of the program.
+
+Syntax:	GO TO line number
+Syntax:	GOTO line number
+
+Examples:
+
+	300 GO TO 100
+
+Notice that the command "350 GO TO 350" is legal but not sensible.
+The interpreter will execute line 350 repeatedly with no output.
+(This is called a "locked loop" or more humorously a "dynamic halt".)
+
+GOSUB
+~~~~~
+
+Changes the flow of the program by calling a subroutine.
+
+Syntax:	GOSUB line number
+
+Examples:
+
+	300 GOSUB 400
+
+Notice that the command "350 GOSUB 350" is legal but not sensible.
+The interpreter will execute line 350 repeatedly with no output.
+Unlike the '350 GOTO 350' example, this command will evantually stop, as each iteration adds a return address to an internal stack.
+Eventually, the underlying Ruby process will exhaust available memory and halt.
+
+IF/THEN
+~~~~~~~
+Syntax:	IF boolean expression THEN line number
+
+The boolean expression must be in the form "expression operator expression" where operator is limited to the comparion operations listed above.
+Boolean operators such as "and" or "or" are not permitted.
+The two arguments in the boolean expression may be numeric constants, variables, or arithmetic expressions.
+Text values are not allowed.
+
+The "target" after the THEN keyword must be a line number; it cannot be a statement.
+
+Examples:
+
+	100 IF A = 1 THEN 200
+	110 IF A > B THEN 250
+	120 IF G1 <= G2 THEN 301
+
+INPUT
+~~~~~
+
+Prompts the user and allows the user to enter a numeric value.
+Non-numeric values are invalid and cause execution to stop.
+
+Syntax:	INPUT [prompt,] variable list
+
+Examples:
+	60 INPUT U
+	65 INPUT V1, V2, V3
+	70 INPUT "Enter values: ", A, B
+
+The default prompt is a single question mark (?) character.
+This prompt can be changed to any text value by specifying a text value as the first parameter.
+(This value must be a text constant.)
+When multiple values are specified, they may be entered on one line with commas as separators.
+If an insufficient number of values is entered, BASIC will prompt for more data.
+These prompts are always the question mark, not the specified prompt.
+
+LET
+~~~
+
+Assigns a value to a variable or a group of variables.
+
+Syntax:	LET target variable [, target variable...] = expression
+
+Examples:
+	40 LET A = 0
+	50 LET B = A + 10
+	55 LET C = C + 1
+	70 LET D, E = A + B
+
+Expressions may use a combination of operators, functions, and variables.
+
+NEXT
+~~~~
+
+Denotes the end of a FOR loop.
+
+Syntax:	NEXT control variable
+
+You can GOTO out of FOR/NEXT loops, and BASIC-1965 follows the examples set by Kemeny and Kurtz.
+
+For example:
+	10 REM Sample
+	20 FOR I = 1 TO 10
+	30 PRINT I
+	40 IF I = 7 GOTO 60
+	50 NEXT I
+	60 STOP
+	90 END
+
+The above code will print the values 1 through 7 and then stop.
+
+You can GOTO out of a loop and later GOTO back into it.
+BASIC-1965 will remember the state of the loop.
+If you GOTO into a FOR/NEXT loop (without activating it by the FOR statement), the eventual NEXT statement will cause an error.
+
+PRINT
+~~~~~
+
+Displays a set of variables and constants to the console, with a newline character.
+
+Printing to console
+^^^^^^^^^^^^^^^^^^^
+
+Syntax:	PRINT expression list
+Items in the list are separated by either commas or semicolons.
+A comma forces the next item to the next tab stop (tab stops are every 14 positions).
+A semicolon makes the next item adjacent to the previous item.
+
+Examples:
+
+	10 PRINT
+	20 PRINT A
+	30 PRINT A, B
+	40 PRINT "Output"
+	50 PRINT "Results:", R1
+	60 PRINT "Results:"; R2
+
+The list may include terminating separators.
+A terminating semicolon will suppress the newline.
+A terminating comma will advance to the next tab position and suppress the newline.
+
+	10 PRINT "Processing...";
+	... other statements that generate no output
+	20 PRINT "done"
+
+results in the text "Processing...done" on the console.
+
+The semicolon separator will force a small space between items.
+Between strings, there is no space.
+Between two numbers or a string and a number, BASIC will print spaces to the next column that is a multiple of 3.
+
+Numbers are printed with automatic formatting.
+BASIC-1965 will print a number with the necessary number of decimal places.
+It is not possible to force a number of decimal places.
+
+Printing to files
+^^^^^^^^^^^^^^^^^
+
+Syntax:	PRINT #filenum; expression list
+
+Items in the list are separated by either commas or semicolons.
+A comma or semicolon writes a SPACE character to the file.
+
+Examples:
+
+	10 PRINT
+	20 PRINT A
+	30 PRINT A, B
+	40 PRINT "Output"
+	50 PRINT "Results:", R1
+	60 PRINT "Results:"; R2
+
+The list may include terminating separators.
+A terminating comma or semicolon will write a SPACE and suppress the newline.
+
+	10 PRINT #2; "Processing...";
+	... other statements that generate no output
+	20 PRINT #2; "done"
+
+results in the text "Processing... done" to the file.
+
+Numbers are printed with automatic formatting.
+BASIC-1965 will print a number with the necessary number of decimal places.
+It is not possible to force a number of decimal places.
+
+READ
+~~~~
+
+Loads variables with values from DATA statements or files.
+
+Reading from DATA statements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Syntax:	READ variable list
+
+Examples:
+
+	400 READ N
+	410 READ A, B, C
+
+Notice that the number of values in a READ statement do not have to match the number of values in DATA statements.
+You may READ in pairs and define ten values per DATA statement.
+You may READ ten items from DATA statements that contain one value each.
+READing more values than are specified by DATA statements, in total, will cause an error.
+BASIC keeps an internal pointer to the next data item.
+This pointer can be reset with the RESTORE statement.
+
+Reading from files
+^^^^^^^^^^^^^^^^^^
+
+Syntax:	READ #filenum; variable list
+
+Examples:
+
+	400 READ #1; N
+	410 READ #2; A, B, C
+	420 READ #3; A$, B, C$
+
+Files are text files.
+Values in the file must be separated by space or separator (comma or semicolon) characters.
+The number of values in a READ statement does not have to match the number of values on a line in the input file.
+The READ statement will read additional lines and collect values to fill are specified variables.
+Values remaining on the text line are saved until the next READ statement.
+
+READing more values than are specified by DATA statements, in total, will cause an error.
+
+BASIC keeps an internal pointer to the next data item. This pointer can be reset with the RESTORE statement.
+
+REM
+~~~
+
+Allows for a comment in the program.
+
+Syntax:	REM any text
+
+Examples:
+
+	10 REM
+	20 REM Beginning of my first program
+	30 REMARK *----*
+
+RESTORE
+~~~~~~~
+
+Resets the internal pointer for the READ statement. After a RESTORE statement, a READ statement will read the first data item.
+
+Syntax:	RESTORE
+
+Examples:
+
+	210 RESTORE
+
+RETURN
+~~~~~~
+
+Changes the flow of the program by returning from a subroutine.
+
+Syntax:	RETURN
+
+Examples:
+
+	450 RETURN
+
+A RETURN statement makes sense only after the execution of a matching GOSUB statement. A RETURN without a GOSUB will cause an error.
+
+STOP
+~~~~
+
+Forces the execution of the program to stop.
+
+Syntax:	STOP
+
+Examples:
+
+	900 STOP
+
+TRACE
+~~~~~
+
+Turns tracing on or off.
+The TRACE command (interactive mode) runs a program and displays information ofr every line executed.
+The TRACE statement (part of a program) turns tracing on or off, allowing for targeted tracing of programs.
+
+Syntax:	TRACE state
+
+Examples:
+
+	100 TRACE ON
+	250 TRACE OFF
+
+The TRACE statement accepts a single value to set the state: ON or OFF.
+'ON' (or anything that does not look like 'OFF', 'NO' or 'FALSE') will set tracing on.
+The values 'OFF', 'NO', and 'FALSE' will turn off tracing.
+
+ARR statements
+--------------
+
+The ARR statements operate on one-dimensional arrays.
+Operations begin with index zero.
+
+ARR PRINT
+~~~~~~~~~
+
+Prints an array of values.
+
+Syntax:	ARR PRINT variable list
+
+Examples:
+	100 ARR PRINT A
+	110 ARR PRINT B;
+	120 ARR PRINT A; B;
+	130 ARR PRINT C, D
+
+The values must be defined with DIM statements prior to printing.
+Values are printed sequentially with as many values as will fit on a line.
+The carriage control character that follows a variable name will be used for each element in a printed row.
+The semicolon results in narrow columns, the comma (or no character) results in wide columns.
+
+ARR READ
+~~~~~~~~
+
+Reads data into an array of values.
+
+Syntax:	ARR READ variable list
+
+Examples:
+	100 ARR READ A
+	110 ARR READ B, C
+	120 ARR READ D(15)
+
+Dimensions may be supplied or omitted in ARR READ statements.
+When supplied, they override any previous DIM or ARR READ or MAT READ statement.
+When omitted, the variable must have dimensions specified in earlier DIM or ARR READ or MAT READ statements.
+
+The values for dimensions may be numeric constants or expressions.
+The expression is evaluated at run-time, like any other expression.
+
+Data is read from DATA statements, as with the READ statement.
+
+ARR
+~~~
+
+Assigns a value to a array variable.
+
+Syntax:	ARR target variable [, target variable...] = expression
+
+Examples:
+	100 ARR A = B
+	110 ARR A = B * C
+	120 ARR A = B + D
+	130 ARR A = B - E
+	140 ARR A = 2 * B
+	150 ARR A = 2 * B – E
+	160 ARR G,H = A + B
+
+Variables are assumed to represent array values.
+If you want to use a scalar variable, enclose it in parentheses:
+
+	130 LET S = 2
+	140 ARR A = (S) * B
+	150 ARR A = (S) * B - E
+
+The expression is limited to arithmetic operations (addition, subtraction, multiplication, division, and exponentiation).
+Certain operations are available for certain combinations of operands:
+
+|==========
+|First operand |Operation |Second operand |Restrictions |Actions
+|Array |Addition |Array |Arrays must have identical dimensions |Corresponding elements are added
+|Array |Subtraction |Array |Arrays must have identical dimensions |Elements from second array are subtracted from corresponding element in first array
+|Array |Multiplication |Array |Arrays must have identical dimensions |Corresponding elements are multiplied
+|Array |Division |Array |Arrays must have identical dimensions |Elements from the first array are numerators, elements from the second array are denominators
+|Array |Power |Array |Arrays must have identical dimensions |Elements from the first array are raised to the corresponding element in the second array
+|Scalar |Addition |Array ||Elements from the array are added to the scalar value
+|Scalar |Subtraction |Array ||Elements from the array are subtracted from the scalar value
+|Scalar |Multiplication |Array ||Elements from the array are multiplied by the scalar value
+|Scalar |Division |Array ||Elements from the array are divided into the scalar value
+|Scalar |Power |Array ||Elements from the array are the exponent of the scalar value
+|Array |Addition |Scalar ||Elements from the array are added to the scalar value
+|Array |Subtraction |Scalar ||The scalar value is subtracted from elements in the  array
+|Array |Multiplication |Scalar ||Elements from the array are multiplied by the scalar value
+|Array |Division |Scalar ||Elements from the array are divided by the scalar value
+|Array |Power |Scalar ||Elements from the array are raised to the scalar value
+|==========
+
+K&K BASIC makes no mention of the 'ARR' statement or any derived statements ('ARR PRINT', 'ARR READ').
+But it makes sense to include them.
+
+MAT statements
+--------------
+
+The MAT statements operate on matricies, which are either one- or two-dimensional arrays.
+
+Operations begin with indices of one, not zero.
+The values in the zero row and the zero column are ignored in MAT operations.
+
+MAT PRINT
+~~~~~~~~~
+
+Prints an array or matrix of values.
+
+Syntax:	MAT PRINT variable list
+
+Examples:
+	100 MAT PRINT A
+	110 MAT PRINT B;
+	120 MAT PRINT A; B;
+	130 MAT PRINT C, D
+
+The values must be defined with DIM statements prior to printing.
+
+For one-dimensional arrays, the values are printed sequentially with as many values as will fit on a line.
+
+For two-dimensional matrices, values for each row in the matrix are printed on a line and a new line is used for each row.
+
+For arrays and matrixes, the zero-index items are not printed.
+An array DIM(4) will print elements 1 through 4; a matrix DIM(3,5) will print three rows of elements 1 through 5.
+
+The carriage control character that follows a variable name will be used for each element in a printed row.
+The semicolon results in narrow columns, the comma (or no character) results in wide columns.
+
+MAT READ
+~~~~~~~~
+
+Reads data into an array or matrix of values.
+
+Syntax:	MAT READ variable list
+
+Examples:
+	100 MAT READ A
+	110 MAT READ B, C
+	120 MAT READ D(15)
+	130 MAT READ E(6,11)
+
+Dimensions may be supplied or omitted in MAT READ statements.
+When supplied, they override any previous DIM or ARR READ or MAT READ statement.
+When omitted, the variable must have dimensions specified in earlier DIM or ARR READ or MAT READ statements.
+
+The values for dimensions may be numeric constants ot expressions.
+The expression is evaluated at run-time, like any other expression.
+
+Data is read from DATA statements, as with the READ statement.
+
+MAT
+~~~
+
+Assigns a value to a matrix variable.
+
+Syntax:	MAT target variable [, target variable...] = expression
+
+Examples:
+	100 MAT A = B
+	110 MAT A = B * C
+	120 MAT A = B + D
+	130 MAT A = B - E
+	140 MAT A = 2 * B
+	150 MAT A = 2 * B – E
+	160 MAT G,H = A + B
+
+Variables are assumed to represent matrix values.
+They may refer to variables dimensioned with one or two variables.
+
+If you want to use a scalar variable, enclose it in parentheses:
+
+	130 LET S = 2
+	140 MAT A = (S) * B
+	150 MAT A = (S) * B - E
+
+The expression is limited to arithmetic operations (addition, subtraction, multiplication, division, and exponentiation).
+Certain operations are available for certain combinations of operands:
+
+|==========
+|First operand |Operation |Second operand |Restrictions |Actions
+|Matrix |Addition |Matrix |Matrices must have identical dimensions |Corresponding elements are added
+|Matrix |Subtraction |Matrix |Matrices must have identical dimensions |Elements from second matrix are subtracted from corresponding element in first matrix
+|Matrix |Multiplication |Matrix |Number of columns in second matrix must equal number of rows in first matrix |Computes dot product, which contains the number of columns of the first matrix and the number of rows in the second matrix
+|Matrix |Division |Matrix |Not allowed |
+|Matrix |Power |Matrix |Not allowed |
+|Scalar |Addition |Matrix ||Elements from the matrix are added to the scalar value
+|Scalar |Subtraction |Matrix ||Elements from the matrix are subtracted from the scalar value
+|Scalar |Multiplication |Matrix ||Elements from the matrix are multiplied by the scalar value
+|Scalar |Division |Matrix ||Elements from the matrix are divided into the scalar value
+|Scalar |Power |Matrix ||Elements from the matrix are the exponent of the scalar value
+|Matrix |Addition |Scalar ||Elements from the matrix are added to the scalar value
+|Matrix |Subtraction |Scalar ||The scalar value is subtracted from elements in the matrix
+|Matrix |Multiplication |Scalar ||Elements from the matrix are multiplied by the scalar value
+|Matrix |Division |Scalar ||Elements from the matrix are divided by the scalar value
+|Matrix |Power |Scalar | |Elements from the matrix are raised to the scalar value
+|==========
+
+K&K BASIC restricts the assignment of a variable used in a matrix multiplication operation.
+BASIC-1965 does not impose this restriction.
+You may write:
+
+	110 MAT A = A * C
+
+Functions
+---------
+
+Functions may be used in numeric expressions.
+
+|==========
+|Function |Result
+|INT(x) |Return the integer part of a numeric value.
+|RND(x) |Return a random number from zero to x. The value is a floating-point value; RND(1) can return any value from zero to 1. A value of zero or less than zero is considered to be 1.
+|RND() |Equivalent to RND(100).
+|EXP(x) |Computes ex.
+|LOG(x) |Computes the natural log of x. A value of zero or a negative value will cause an error.
+|ABS(x) |Computes the absolute value of x.
+|SQR(x) |Computes the square root of x. A negative value will cause an error.
+|SIN(x) |Computes the sine of x, where x is in radians.
+|COS(x) |Computes the cosine of x, where x is in radians.
+|TAN(x) |Computes the tangent of x, where x is in radians.
+|ATN(x) |Computes the arctangent of x, providing the answer in radians.
+|SGN(x) |Returns 1, 0, or -1, for positive, zero, or negative values of x.
+|TRN(m) |Transposes values in a matrix, exchanging rows and columns.
+|ZER(x) |Creates an array containing all zeros, with x columns
+|ZER(x,y) |Creates a matrix containing all zeros, with x rows and y columns.
+|CON(x) |Creates an array containing all ones, with x columns
+|CON(x,y) |Creates a matrix containing all ones, with x rows and y columns.
+|IDN(x) |Creates an identity matrix (all zeros except for ones on the diagonal).
+|IDN(x,x) |Same as IDN(x). The two values must be identical, as identity matrices are always square.
+|DET(m)	|Computes the determinant of the matrix. The matrix must be square.
+|===========
+
+Matrix function special forms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The functions ZER, CON, and IDN have normal forms and special forms.
+You can use the normal form in simple assignments without specifying dimensions of targets:
+
+	200 REM NO DIM STATEMENT FOR A OR B
+	240 MAT A = CON(3,4)
+	250 MAT B = IDN(4,4)
+
+When they are used as part of an expression, these functions must have parameters:
+
+	130 LET S = 4
+	140 MAT A = IDN(S) * 4
+	150 MAT B = ZER(S+1,S) + COS(45*3.14159/2)
+
+The special form allows for parameters to be omitted. The special form is when they are the sole element of the right-hand side of an assignment:
+
+	200 REM DIM STATEMENTS FOR A AND B ARE NECESSARY
+	230 DIM A(3,4), B(4,4)
+	240 MAT A = CON
+	250 MAT B = IDN
+
+In this special form, the target variable must already exist and have dimensions specified.
+
+Editing programs
+----------------
+
+Programs may be edited externally and loaded with the LOAD command, and they may be entered and edited within BASIC-1965.
+
+An entered line is parsed and either executed or stored as part of the program.
+Lines that begin with numbers are considered part of the program; lines without numbers are executed immediately.
+
+To replace a line, enter a line with the number of the old line.
+You must enter the entire line; there are no 'line editing' capabilities.
+
+Commentary
+----------
+
+END statement
+~~~~~~~~~~~~~
+
+The END statement is a puzzle.
+Why do we need an END statement when the interpreter holds the entire list of statements?
+Does it not know the end of its own data structure?
+
+END will cause execution to STOP, which is a proper action.
+But why not simply use a STOP statement?
+Or why not simply stop execution when the interpreter encounters the end of the list of statements?
+
+END seems to be a vestige of FORTRAN programming.
+FORTRAN needed an END to signal the compiler that the module was complete, and a separate STOP statement to generate code to return control to the operating system.
+
+Further readings indicate that the END statement preceded the STOP statement; that is the very early implementations of BASIC had END but not STOP.
+It might be that STOP was added later, and END was kept for compatibility.
