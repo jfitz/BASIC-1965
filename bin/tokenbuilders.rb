@@ -10,7 +10,7 @@ class InvalidTokenBuilder
   end
 
   def token
-    [InvalidToken.new(@token)]
+    InvalidToken.new(@token)
   end
 end
 
@@ -33,7 +33,7 @@ class ListTokenBuilder
   end
 
   def token
-    [@class.new(@token)]
+    @class.new(@token)
   end
 end
 
@@ -49,7 +49,7 @@ class WhitespaceTokenBuilder
   end
 
   def token
-    [WhitespaceToken.new(@token)]
+    WhitespaceToken.new(@token)
   end
 end
 
@@ -65,7 +65,7 @@ class TextTokenBuilder
   end
 
   def token
-    [TextConstantToken.new(@token)]
+    TextConstantToken.new(@token)
   end
 end
 
@@ -88,7 +88,7 @@ class InputNumberTokenBuilder
   end
 
   def token
-    [NumericConstantToken.new(@token)]
+    NumericConstantToken.new(@token)
   end
 end
 
@@ -109,7 +109,7 @@ class NumberTokenBuilder
   end
 
   def token
-    [NumericConstantToken.new(@token)]
+    NumericConstantToken.new(@token)
   end
 end
 
@@ -126,7 +126,7 @@ class VariableTokenBuilder
   end
 
   def token
-    [VariableToken.new(@token)]
+    VariableToken.new(@token)
   end
 end
 
@@ -142,6 +142,6 @@ class BreakTokenBuilder
   end
 
   def token
-    [BreakToken.new(@token)]
+    BreakToken.new(@token)
   end
 end
