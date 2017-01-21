@@ -112,8 +112,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
 |--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
-|--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no sp
-aces between them.)
+|--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
 |==========
 
 Immediate commands
@@ -127,7 +126,9 @@ They are available only in "run" mode.
 NEW
 ~~~
 
-Clears the current program. Does not ask to save a loaded program.
+Clears the current program.
+Does not ask to save a loaded program.
+
 Syntax:	NEW
 
 LOAD
@@ -402,7 +403,8 @@ Thus, it does not have to appear before it is used in a LET statement.
 DIM
 ~~~
 
-Specifies the number of dimensions and maximum subscripts for each dimension. (Without a DIM statement, variables may have a dimension of at most 10.)
+Specifies the number of dimensions and maximum subscripts for each dimension.
+(Without a DIM statement, variables may have a single dimension of at most 10.)
 
 Examples:
 
@@ -552,6 +554,7 @@ Non-numeric values are invalid and cause execution to stop.
 Syntax:	INPUT [prompt,] variable list
 
 Examples:
+
 	60 INPUT U
 	65 INPUT V1, V2, V3
 	70 INPUT "Enter values: ", A, B
@@ -571,6 +574,7 @@ Assigns a value to a variable or a group of variables.
 Syntax:	LET target variable [, target variable...] = expression
 
 Examples:
+
 	40 LET A = 0
 	50 LET B = A + 10
 	55 LET C = C + 1
@@ -588,6 +592,7 @@ Syntax:	NEXT control variable
 You can GOTO out of FOR/NEXT loops, and BASIC-1965 follows the examples set by Kemeny and Kurtz.
 
 For example:
+
 	10 REM Sample
 	20 FOR I = 1 TO 10
 	30 PRINT I
@@ -690,7 +695,9 @@ Examples:
 Notice that the number of values in a READ statement do not have to match the number of values in DATA statements.
 You may READ in pairs and define ten values per DATA statement.
 You may READ ten items from DATA statements that contain one value each.
+
 READing more values than are specified by DATA statements, in total, will cause an error.
+
 BASIC keeps an internal pointer to the next data item.
 This pointer can be reset with the RESTORE statement.
 
@@ -713,7 +720,8 @@ Values remaining on the text line are saved until the next READ statement.
 
 READing more values than are specified by DATA statements, in total, will cause an error.
 
-BASIC keeps an internal pointer to the next data item. This pointer can be reset with the RESTORE statement.
+BASIC keeps an internal pointer to the next data item.
+This pointer can be reset with the RESTORE statement.
 
 REM
 ~~~
@@ -795,6 +803,7 @@ Prints an array of values.
 Syntax:	ARR PRINT variable list
 
 Examples:
+
 	100 ARR PRINT A
 	110 ARR PRINT B;
 	120 ARR PRINT A; B;
@@ -813,6 +822,7 @@ Reads data into an array of values.
 Syntax:	ARR READ variable list
 
 Examples:
+
 	100 ARR READ A
 	110 ARR READ B, C
 	120 ARR READ D(15)
@@ -834,6 +844,7 @@ Assigns a value to a array variable.
 Syntax:	ARR target variable [, target variable...] = expression
 
 Examples:
+
 	100 ARR A = B
 	110 ARR A = B * C
 	120 ARR A = B + D
@@ -890,6 +901,7 @@ Prints an array or matrix of values.
 Syntax:	MAT PRINT variable list
 
 Examples:
+
 	100 MAT PRINT A
 	110 MAT PRINT B;
 	120 MAT PRINT A; B;
@@ -915,6 +927,7 @@ Reads data into an array or matrix of values.
 Syntax:	MAT READ variable list
 
 Examples:
+
 	100 MAT READ A
 	110 MAT READ B, C
 	120 MAT READ D(15)
@@ -937,6 +950,7 @@ Assigns a value to a matrix variable.
 Syntax:	MAT target variable [, target variable...] = expression
 
 Examples:
+
 	100 MAT A = B
 	110 MAT A = B * C
 	120 MAT A = B + D
