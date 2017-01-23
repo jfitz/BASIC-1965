@@ -1,9 +1,0 @@
-10 REM TEST PROGRAM
-20 LET A = 10
-25 LET B = 5 * ( 1 + 4 )
-30 LET Z = INT(2)
-35 LET A(2) = 22
-40 LET C = A(2)
-50 PRINT A,B,C
-99 END
-

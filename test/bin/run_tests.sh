@@ -11,10 +11,10 @@ mkdir "$TESTBED"
 echo Running all tests...
 ECODE=0
 
-while read F ; do
-    bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" "$TESTGROUP" $F
+for F in "$TESTROOT/$TESTGROUP"/*; do
+    bash "$TESTROOT/bin/run_test.sh" "$TESTROOT" "$TESTBED" "$TESTGROUP" ${F##*/}
     ((ECODE+=$?))
-done <"$TESTROOT/$TESTGROUP/data/test_names.txt"
+done
 
 echo
 echo Failures: $ECODE
