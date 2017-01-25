@@ -372,51 +372,88 @@ class InputStatement < AbstractStatement
   def initialize(line, tokens)
     super('INPUT', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
+    @tokens_lists = ArgSplitter.split_tokens(tokens, false)
     # [prompt string] variable [variable]...
+
     @default_prompt = TextConstantToken.new('"? "')
-    @prompt = @default_prompt
-    @expression_list = []
-    if tokens_lists.empty?
-      @errors << 'No variables specified'
-    else
-      if tokens_lists[0][0].text_constant?
-        @prompt = tokens_lists[0][0]
-        tokens_lists.shift
-      end
-      # check variables are specified
-      if tokens_lists.empty?
-        @errors << 'No variables specified'
-      else
-        @expression_list = build_expression_list(tokens_lists)
-      end
-    end
   end
 
   def to_s
-    if @prompt != @default_prompt
-      @keyword + ' ' + @prompt.to_s + ', ' + @expression_list.join(', ')
-    else
-      @keyword + ' ' + @expression_list.join(', ')
+    list = []
+    @tokens_lists.each do |tokens_list|
+      s = ''
+      tokens_list.each { |token| s += token.to_s }
+      list << s
     end
+    @keyword + ' ' + list.join(', ')
   end
 
   def execute(interpreter, trace)
-    io = interpreter.console_io
-    values = input_values(interpreter)
-    name_value_pairs =
-      zip(@expression_list, values[0, @expression_list.length])
+    tokens_lists = @tokens_lists.clone
+    prompt = @default_prompt
+    unless tokens_lists.size.zero?
+      begin
+        value = first_value(tokens_lists, interpreter)
+        fh = nil
+        if value.class.to_s == 'FileHandle'
+          fh = value
+          tokens_lists.shift
+          value = first_value(tokens_lists, interpreter)
+        end
+        token = first_token(tokens_lists)
+        if token.text_constant?
+          prompt = value
+          tokens_lists.shift
+        end
+      rescue BASICException
+      end
+    end
+    expression_list = []
+    tokens_lists.each do |items_list|
+      begin
+        expression_list << TargetExpression.new(items_list, ScalarReference)
+      rescue BASICException
+        raise(BASICException, 'Invalid variable ' + items_list.map(&:to_s).join)
+      end
+    end
+    if fh.nil?
+      io = interpreter.console_io
+      values =
+        input_values(interpreter, prompt, @default_prompt, expression_list)
+      io.implied_newline
+    else
+      values =
+        file_values(interpreter, expression_list, fh)
+    end
+    begin
+      name_value_pairs =
+        zip(expression_list, values[0, expression_list.length])
+    rescue BASICException
+      raise(BASICException, 'End of file') unless fh.nil?
+      raise(BASICException, 'Unequal lists')
+    end
     name_value_pairs.each do |hash|
       l_values = hash['name'].evaluate(interpreter)
       l_value = l_values[0]
       value = hash['value']
       interpreter.set_value(l_value, value, trace)
     end
-    io.implied_newline
   end
 
   private
 
+  def first_token(tokens_lists)
+    first_list = tokens_lists[0]
+    first_list[0]
+  end
+  
+  def first_value(tokens_lists, interpreter)
+    first_list = tokens_lists[0]
+    expr = ValueScalarExpression.new(first_list)
+    values = expr.evaluate(interpreter)
+    values[0]
+  end
+  
   def zip(names, values)
     raise(BASICException, 'Unequal lists') if names.size != values.size
     results = []
@@ -426,29 +463,23 @@ class InputStatement < AbstractStatement
     results
   end
 
-  def input_values(interpreter)
+  def input_values(interpreter, prompt, default_prompt, expression_list)
     values = []
-    prompt = @prompt
-    console_io = interpreter.console_io
-    while values.size < @expression_list.size
-      console_io.prompt(prompt)
-      values += console_io.input(interpreter)
+    io = interpreter.console_io
+    while values.size < expression_list.size
+      io.prompt(prompt)
+      values += io.input(interpreter)
 
-      prompt = @default_prompt
+      prompt = default_prompt
     end
     values
   end
 
-  def build_expression_list(tokens_lists)
-    expression_list = []
-    tokens_lists.each do |tokens_list|
-      begin
-        expression_list << TargetExpression.new(tokens_list, ScalarReference)
-      rescue BASICException
-        @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
-      end
-    end
-    expression_list
+  def file_values(interpreter, expression_list, fh)
+    values = []
+    io = interpreter.get_input(fh)
+    values += io.input(interpreter)
+    values
   end
 end
 
@@ -874,29 +905,27 @@ class ReadStatement < AbstractStatement
   end
 
   def execute(interpreter, trace)
-    items_lists = @tokens_lists.clone
-    unless items_lists.size.zero?
+    tokens_lists = @tokens_lists.clone
+    unless tokens_lists.size.zero?
       begin
-        items_0 = items_lists[0]
-        expr = ValueScalarExpression.new(items_0)
-        value_0 = expr.evaluate(interpreter)
-        value_0_0 = value_0[0]
+        value = first_value(tokens_lists, interpreter)
         fh = nil
-        if value_0_0.class.to_s == 'FileHandle'
-          fh = value_0_0
-          items_lists.shift
+        if value.class.to_s == 'FileHandle'
+          fh = value
+          tokens_lists.shift
         end
       rescue BASICException
       end
     end
     expression_list = []
-    items_lists.each do |items_list|
+    tokens_lists.each do |items_list|
       begin
         expression_list << TargetExpression.new(items_list, ScalarReference)
       rescue BASICException
         raise(BASICException, 'Invalid variable ' + items_list.map(&:to_s).join)
       end
     end
+    
     ds = interpreter.get_data_store(fh)
     expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
@@ -904,6 +933,15 @@ class ReadStatement < AbstractStatement
       value = ds.read
       interpreter.set_value(variable, value, trace)
     end
+  end
+
+  private
+  
+  def first_value(tokens_lists, interpreter)
+    first_list = tokens_lists[0]
+    expr = ValueScalarExpression.new(first_list)
+    values = expr.evaluate(interpreter)
+    values[0]
   end
 end
 

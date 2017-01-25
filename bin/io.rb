@@ -20,9 +20,11 @@ class ConsoleIo
   end
 
   def read_line
-    input_text = ascii_printables(gets)
-    puts(input_text) if @echo_input
-    input_text
+    input_text = gets
+    raise(BASICException, 'End of file') if input_text.nil?
+    ascii_text = ascii_printables(input_text)
+    puts(ascii_text) if @echo_input
+    ascii_text
   end
 
   def prompt(text)
@@ -188,6 +190,52 @@ class FileHandler
 
   def close
     @file.close unless @file.nil?
+  end
+
+  def ascii_printables(text)
+    ascii_text = ''
+    text.each_char do |c|
+      ascii_text += c if c >= ' ' && c <= '~'
+    end
+    ascii_text
+  end
+
+  def read_line
+    input_text = @file.gets
+    raise(BASICException, 'End of file') if input_text.nil?
+    input_text = input_text.chomp
+    ascii_printables(input_text)
+  end
+
+  def input(interpreter)
+    input_text = read_line
+
+    # when parsing user input, we use different tokenizers than the code
+    # values must be separated by separators
+    # numeric tokens may contain leading signs
+    # values may have leading or trailing spaces (or both)
+    tokenizers = []
+    tokenizers << InputNumberTokenBuilder.new
+    tokenizers << ListTokenBuilder.new([','], ParamSeparatorToken)
+    tokenizers << WhitespaceTokenBuilder.new
+
+    tokenizer = Tokenizer.new(tokenizers, nil)
+    tokens = tokenizer.tokenize(input_text)
+    # drop whitespace
+    tokens.delete_if(&:whitespace?)
+    # verify all even-index tokens are numeric
+    evens = tokens.values_at(* tokens.each_index.select(&:even?))
+    evens.each do |token|
+      raise(BASICException, 'Invalid input') unless token.numeric_constant?
+    end
+    # verify all odd-index tokens are separators
+    odds = tokens.values_at(* tokens.each_index.select(&:odd?))
+    odds.each do |token|
+      raise(BASICException, 'Invalid input') unless token.separator?
+    end
+    # convert from tokens to values
+    expressions = ValueScalarExpression.new(tokens)
+    expressions.evaluate(interpreter)
   end
 
   def print_item(text)

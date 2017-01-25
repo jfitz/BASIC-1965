@@ -687,6 +687,14 @@ class Interpreter
     fh
   end
 
+  def get_input(file_handle)
+    raise(BASICException, 'Unknown file handle') unless
+      @file_handlers.key?(file_handle)
+    fh = @file_handlers[file_handle]
+    fh.set_mode(:read)
+    fh
+  end
+
   def get_data_store(file_handle)
     return @data_store if file_handle.nil?
     raise(BASICException, 'Unknown file handle') unless
