@@ -76,7 +76,11 @@ class StatementFactory
     unless m.nil?
       number = NumericConstantToken.new(m[0])
       line_number = LineNumber.new(number)
-      statement = create(m.post_match)
+      begin
+        statement = create(m.post_match)
+      rescue BASICException => e
+        raise(BASICException, e.message + ' in line ' + number.to_s)
+      end
     end
     [line_number, statement]
   end
