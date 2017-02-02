@@ -525,10 +525,17 @@ class IfStatement < AbstractStatement
   end
 
   def execute(interpreter, trace)
-    result = @expression.evaluate(interpreter)[0]
+    io = interpreter.console_io
+    s = ' ' + @expression.to_s
+    io.trace_output(s) if trace
+    values = @expression.evaluate(interpreter)
+    raise(BASICException, 'Expression error') unless
+      values.size == 1
+    result = values[0]
+    raise(BASICException, 'Expression error') unless
+      result.class.to_s == 'BooleanConstant'
     interpreter.next_line_number = @destination if result.value
     return unless trace
-    io = interpreter.console_io
     s = ' ' + result.to_s
     io.trace_output(s)
   end
