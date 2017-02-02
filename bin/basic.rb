@@ -713,7 +713,7 @@ class Interpreter
     need_prompt = true
     done = false
     until done
-      print "READY\n" if need_prompt
+      puts "READY" if need_prompt
       cmd = @console_io.read_line
       if /\A\d/ =~ cmd
         # starts with a number, so maybe it is a program line
