@@ -196,7 +196,8 @@ class NumericConstant < AbstractElement
 
   def float_to_possible_int(f)
     i = f.to_i
-    (f - i).abs < 1e-8 ? i : f
+    frac = f - i
+    frac.zero? || (!i.zero? && frac.abs < 1e-7) ? i : f
   end
 
   public
