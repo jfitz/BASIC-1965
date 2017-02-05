@@ -566,41 +566,6 @@ class VariableDimension < Variable
   end
 end
 
-# class to make functions, given the name
-class FunctionFactory
-  @functions = {
-    'INT' => FunctionInt,
-    'RND' => FunctionRnd,
-    'EXP' => FunctionExp,
-    'LOG' => FunctionLog,
-    'ABS' => FunctionAbs,
-    'SQR' => FunctionSqr,
-    'SIN' => FunctionSin,
-    'COS' => FunctionCos,
-    'TAN' => FunctionTan,
-    'ATN' => FunctionAtn,
-    'SGN' => FunctionSgn,
-    'TRN' => FunctionTrn,
-    'ZER' => FunctionZer,
-    'CON' => FunctionCon,
-    'IDN' => FunctionIdn,
-    'DET' => FunctionDet,
-    'INV' => FunctionInv
-  }
-
-  def self.valid?(text)
-    @functions.key?(text)
-  end
-
-  def self.make(text)
-    @functions[text].new(text) if @functions.key?(text)
-  end
-
-  def self.function_names
-    @functions.keys
-  end
-end
-
 # User-defined function (provides a scalar value)
 class UserFunction < AbstractScalarFunction
   def self.accept?(token)
@@ -652,9 +617,6 @@ class Parser
   end
 
   def parse(element)
-    raise(BASICException, 'Function requires parentheses') if
-      !element.group_start? && @previous_element.function?
-
     if element.group_separator?
       group_separator(element)
     elsif element.operator?
@@ -672,7 +634,7 @@ class Parser
   def expressions
     raise(BASICException, 'Expression error') unless @operator_stack.empty?
     @parsed_expressions.concat @parens_group unless @parens_group.empty?
-    @parsed_expressions << @current_expression
+    @parsed_expressions << @current_expression unless @current_expression.empty?
     @parsed_expressions
   end
 
@@ -800,7 +762,6 @@ end
 # base class for expressions
 class AbstractExpression
   def initialize(tokens, default_type)
-    raise(Exception, 'Expression cannot be empty') if tokens.empty?
     @unparsed_expression = tokens.map(&:to_s).join
 
     elements = tokens_to_elements(tokens)
@@ -823,8 +784,6 @@ class AbstractExpression
   # returns an Array of values
   def evaluate(interpreter)
     values = interpreter.evaluate(@parsed_expressions)
-    raise(Exception, 'Expected some values') if values.empty?
-    values
   end
 
   def evaluate_with_vars(interpreter, name, user_var_values)

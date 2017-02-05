@@ -486,26 +486,22 @@ class Interpreter
     parsed_expressions.each do |parsed_expression|
       stack = []
       exp = parsed_expression.empty? ? 0 : 1
-      ## puts 'EXPR: ' + parsed_expression.map(&:to_s).join(' ')
       parsed_expression.each do |element|
         value = element.evaluate(self, stack)
         stack.push value
       end
-      # should be only one item on stack
       act = stack.length
       raise(BASICException, 'Bad expression') if act != exp
-      # verify each item is of correct type
-      item = stack[0]
-      # raise(Exception,
-      #      "Expected item #{expected_result_class}, "
-      #      "found item type #{item.class} remaining on evaluation stack") if
-      #  item.class.to_s != expected_result_class
-      result_values << item
+      unless act.zero?
+        # verify each item is of correct type
+        item = stack[0]
+        # raise(Exception,
+        #      "Expected item #{expected_result_class}, "
+        #      "found item type #{item.class} remaining on evaluation stack") if
+        #  item.class.to_s != expected_result_class
+        result_values << item
+      end
     end
-    actual = result_values.length
-    raise(BASICException,
-          "Expected #{expected} items, #{actual} on evaluation stack") if
-       actual != expected
     result_values
   end
 
