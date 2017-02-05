@@ -578,18 +578,25 @@ class PrintStatement < AbstractStatement
   def initialize(line, tokens)
     super('PRINT', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, true)
-    # variable/constant, [separator, variable/constant]... [separator]
-
-    tokens_to_expressions(tokens_lists)
-    add_implied_print_items
+    @tokens_lists = ArgSplitter.split_tokens(tokens, true)
+    @print_items = tokens_to_expressions(@tokens_lists)
   end
 
   def to_s
-    if @print_items.size == 1
+    s = ''
+    @tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'Array'
+        s << ' '
+        s << tokens_list.map(&:to_s).join
+      else
+        s << tokens_list.to_s
+      end
+    end
+
+    if @tokens_lists.size.zero?
       @keyword
     else
-      @keyword + ' ' + @print_items.map(&:to_s).join.rstrip
+      @keyword + s
     end
   end
 
@@ -621,40 +628,34 @@ class PrintStatement < AbstractStatement
   end
 
   def tokens_to_expressions(tokens_lists)
-    @print_items = []
+    print_items = []
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'ParamSeparatorToken'
-        add_carriage_control(tokens_list)
+        print_items << CarriageControl.new(tokens_list.to_s)
       elsif tokens_list.class.to_s == 'Array'
-        add_expression(tokens_list)
+        add_expression(print_items, tokens_list)
       end
     end
+    add_implied_items(print_items)
+    print_items
   end
 
-  def add_carriage_control(token)
-    if token.separator?
-      @print_items << CarriageControl.new(token.to_s)
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def add_expression(tokens)
-    if !@print_items.empty? &&
-       @print_items[-1].class.to_s == 'ValueScalarExpression'
-      @print_items << CarriageControl.new('')
+  def add_expression(print_items, tokens)
+    if !print_items.empty? &&
+       print_items[-1].class.to_s == 'ValueScalarExpression'
+      print_items << CarriageControl.new('')
     end
     begin
-      @print_items << ValueScalarExpression.new(tokens)
+      print_items << ValueScalarExpression.new(tokens)
     rescue BASICException
       line_text = tokens.map(&:to_s).join
       @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
     end
   end
 
-  def add_implied_print_items
-    @print_items << CarriageControl.new('NL') if @print_items.empty?
-    @print_items << CarriageControl.new('NL') if @print_items[-1].printable?
+  def add_implied_items(print_items)
+    print_items << CarriageControl.new('NL') if print_items.empty?
+    print_items << CarriageControl.new('NL') if print_items[-1].printable?
   end
 end
 
