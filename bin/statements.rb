@@ -573,15 +573,12 @@ class IfStatement < AbstractStatement
   end
 end
 
-# PRINT
-class PrintStatement < AbstractStatement
-  def initialize(line, tokens)
-    super('PRINT', line)
-    tokens = remove_break_tokens(tokens)
-    @tokens_lists = ArgSplitter.split_tokens(tokens, true)
-    @print_items = tokens_to_expressions(@tokens_lists)
+# common for PRINT, ARR PRINT, MAT PRINT
+class AbstractPrintStatement < AbstractStatement
+  def initialize(keyword, line)
+    super
   end
-
+  
   def to_s
     s = ''
     @tokens_lists.each do |tokens_list|
@@ -600,16 +597,6 @@ class PrintStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, _)
-    file_handle, print_items = extract_file_handle(@print_items, interpreter)
-    fh = interpreter.get_file_handler(file_handle)
-    print_items.each do |item|
-      item.print(fh, interpreter)
-    end
-  end
-
-  private
-
   def extract_file_handle(print_items, interpreter)
     print_items = print_items.clone
     if print_items.size > 1
@@ -626,6 +613,27 @@ class PrintStatement < AbstractStatement
     end
     [file_handle, print_items]
   end
+
+end
+
+# PRINT
+class PrintStatement < AbstractPrintStatement
+  def initialize(line, tokens)
+    super('PRINT', line)
+    tokens = remove_break_tokens(tokens)
+    @tokens_lists = ArgSplitter.split_tokens(tokens, true)
+    @print_items = tokens_to_expressions(@tokens_lists)
+  end
+
+  def execute(interpreter, _)
+    file_handle, print_items = extract_file_handle(@print_items, interpreter)
+    fh = interpreter.get_file_handler(file_handle)
+    print_items.each do |item|
+      item.print(fh, interpreter)
+    end
+  end
+
+  private
 
   def tokens_to_expressions(tokens_lists)
     print_items = []
@@ -1105,23 +1113,12 @@ class TraceStatement < AbstractStatement
 end
 
 # ARR PRINT
-class ArrPrintStatement < AbstractStatement
+class ArrPrintStatement < AbstractPrintStatement
   def initialize(line, tokens)
     super('ARR PRINT', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, true)
-    # variable, [separator, variable]... [separator]
-
-    @print_items = tokens_to_expressions(tokens_lists)
-    add_implied_print_items
-  end
-
-  def to_s
-    if @print_items.size == 1
-      @keyword
-    else
-      @keyword + ' ' + @print_items.map(&:to_s).join.rstrip
-    end
+    @tokens_lists = ArgSplitter.split_tokens(tokens, true)
+    @print_items = tokens_to_expressions(@tokens_lists)
   end
 
   def execute(interpreter, _)
@@ -1150,12 +1147,13 @@ class ArrPrintStatement < AbstractStatement
         print_items << ValueArrayExpression.new(tokens_list)
       end
     end
+    add_implied_items(print_items)
     print_items
   end
 
-  def add_implied_print_items
-    @print_items << CarriageControl.new('NL') if @print_items.empty?
-    @print_items << CarriageControl.new(',') if @print_items[-1].printable?
+  def add_implied_items(print_items)
+    print_items << CarriageControl.new('NL') if print_items.empty?
+    print_items << CarriageControl.new(',') if print_items[-1].printable?
   end
 end
 
@@ -1268,23 +1266,12 @@ class ArrLetStatement < AbstractStatement
 end
 
 # MAT PRINT
-class MatPrintStatement < AbstractStatement
+class MatPrintStatement < AbstractPrintStatement
   def initialize(line, tokens)
     super('MAT PRINT', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, true)
-    # variable, [separator, variable]... [separator]
-
-    @print_items = tokens_to_expressions(tokens_lists)
-    add_implied_print_items
-  end
-
-  def to_s
-    if @print_items.size == 1
-      @keyword
-    else
-      @keyword + ' ' + @print_items.map(&:to_s).join.rstrip
-    end
+    @tokens_lists = ArgSplitter.split_tokens(tokens, true)
+    @print_items = tokens_to_expressions(@tokens_lists)
   end
 
   def execute(interpreter, _)
@@ -1313,12 +1300,13 @@ class MatPrintStatement < AbstractStatement
         print_items << ValueMatrixExpression.new(tokens_list)
       end
     end
+    add_implied_items(print_items)
     print_items
   end
 
-  def add_implied_print_items
-    @print_items << CarriageControl.new('NL') if @print_items.empty?
-    @print_items << CarriageControl.new(',') if @print_items[-1].printable?
+  def add_implied_items(print_items)
+    print_items << CarriageControl.new('NL') if print_items.empty?
+    print_items << CarriageControl.new(',') if print_items[-1].printable?
   end
 end
 
