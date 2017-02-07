@@ -6,7 +6,7 @@ Overview
 
 BASIC-1965 is an implementation of an early variant of the BASIC language.
 
-My reference manual has been Kemeny and Kurtz's "BASIC Programming" (John Wiley and Sons, 1967).
+My references are Kemeny and Kurtz's "BASIC Programming" (John Wiley and Sons, 1967) and James S. Coan's "Basic BASIC" (Hayden, 1978).
 I call this "K&K BASIC" (after "K&R C" for Kernighan and Ritchie's C book.).
 
 Initial impressions
@@ -48,7 +48,7 @@ This can lead to some problems, when legal constructs can be confused for keywor
 For example:
 
 	10 LET S = 1
-	20  LET P = 10
+	20 LET P = 10
 	30 FOR I = S TO P
 	40 PRINT I
 	50 NEXT I
@@ -68,7 +68,7 @@ The corrected program is:
 	50 NEXT I
 	99 END
 
-The underscore stops the tokenizer and forces it to accept S as a variable and then procede with TOP wich will be tokenized as 'TO' and P.
+The underscore stops the tokenizer and forces it to accept S as a variable and then procede with TOP which will be tokenized as 'TO' and P (as there is no 'TOP' keyword).
 
 Differences from K&K BASIC
 --------------------------
@@ -81,8 +81,7 @@ I have changed a few things:
 - The RND(X) function uses the passed value as an upper bound for the result. K&K BASIC ignores this parameter. Use the –ignore-rnd-arg option to match K&K.
 - The MAT assignment statement dimensions the target variable, so an earlier DIM is not needed
 - User-defined functions may have multiple parameters
-- The ARR statements are not mentioned in Kemeny and Kurtz, yet I have implemented them
-- The FILES statement is not mentioned in Kemeny and Kurtz, yet I have implemented it
+- The ARR statements are not mentioned in Kemeny and Kurtz or in Coan
 
 Running BASIC-1965
 ------------------
@@ -800,6 +799,9 @@ ARR PRINT
 
 Prints an array of values.
 
+Printing to console
+^^^^^^^^^^^^^^^^^^^
+
 Syntax:	ARR PRINT variable list
 
 Examples:
@@ -813,6 +815,22 @@ The values must be defined with DIM statements prior to printing.
 Values are printed sequentially with as many values as will fit on a line.
 The carriage control character that follows a variable name will be used for each element in a printed row.
 The semicolon results in narrow columns, the comma (or no character) results in wide columns.
+
+Printing to files
+^^^^^^^^^^^^^^^^^
+ 
+Syntax:	ARR PRINT #filenum; variable list
+
+Examples:
+
+	100 ARR PRINT #1; A
+	110 ARR PRINT #2, B;
+	120 ARR PRINT #3; A; B;
+	130 ARR PRINT #4; C, D
+
+The values must be defined with DIM statements prior to printing.
+Values are printed sequentially with each set of values on one line.
+The carriage control character that follows a variable name is ignored.
 
 ARR READ
 ~~~~~~~~
@@ -898,6 +916,9 @@ MAT PRINT
 
 Prints an array or matrix of values.
 
+Printing to console
+^^^^^^^^^^^^^^^^^^^
+
 Syntax:	MAT PRINT variable list
 
 Examples:
@@ -918,6 +939,29 @@ An array DIM(4) will print elements 1 through 4; a matrix DIM(3,5) will print th
 
 The carriage control character that follows a variable name will be used for each element in a printed row.
 The semicolon results in narrow columns, the comma (or no character) results in wide columns.
+
+Printing to a file
+^^^^^^^^^^^^^^^^^^
+
+Syntax:	MAT PRINT #filenum; variable list
+
+Examples:
+
+	100 MAT PRINT #1; A
+	110 MAT PRINT #2, B;
+	120 MAT PRINT #3; A; B;
+	130 MAT PRINT #4; C, D
+
+The values must be defined with DIM statements prior to printing.
+
+For one-dimensional arrays, the values are printed on one line.
+
+For two-dimensional matrices, values for each row in the matrix are printed on a line and a new line is used for each row.
+
+For arrays and matrixes, the zero-index items are not printed.
+An array DIM(4) will print elements 1 through 4; a matrix DIM(3,5) will print three rows of elements 1 through 5.
+
+The carriage control character that follows a variable name is ignored.
 
 MAT READ
 ~~~~~~~~

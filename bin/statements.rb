@@ -1122,15 +1122,16 @@ class ArrPrintStatement < AbstractPrintStatement
   end
 
   def execute(interpreter, _)
-    io = interpreter.console_io
+    file_handle, print_items = extract_file_handle(@print_items, interpreter)
+    fh = interpreter.get_file_handler(file_handle)
     i = 0
-    @print_items.each do |item|
+    print_items.each do |item|
       if item.printable?
         carriage = CarriageControl.new('')
-        carriage = @print_items[i + 1] if
-          i < @print_items.size &&
-          !@print_items[i + 1].printable?
-        item.print(io, interpreter, carriage)
+        carriage = print_items[i + 1] if
+          i < print_items.size &&
+          !print_items[i + 1].printable?
+        item.print(fh, interpreter, carriage)
       end
       i += 1
     end
@@ -1270,15 +1271,16 @@ class MatPrintStatement < AbstractPrintStatement
   end
 
   def execute(interpreter, _)
-    io = interpreter.console_io
+    file_handle, print_items = extract_file_handle(@print_items, interpreter)
+    fh = interpreter.get_file_handler(file_handle)
     i = 0
-    @print_items.each do |item|
+    print_items.each do |item|
       if item.printable?
         carriage = CarriageControl.new('')
-        carriage = @print_items[i + 1] if
-          i < @print_items.size &&
-          !@print_items[i + 1].printable?
-        item.print(io, interpreter, carriage)
+        carriage = print_items[i + 1] if
+          i < print_items.size &&
+          !print_items[i + 1].printable?
+        item.print(fh, interpreter, carriage)
       end
       i += 1
     end
