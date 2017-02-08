@@ -7,6 +7,7 @@ Overview
 BASIC-1965 is an implementation of an early variant of the BASIC language.
 
 My references are Kemeny and Kurtz's "BASIC Programming" (John Wiley and Sons, 1967) and James S. Coan's "Basic BASIC" (Hayden, 1978).
+
 I call this "K&K BASIC" (after "K&R C" for Kernighan and Ritchie's C book.).
 
 Initial impressions
@@ -709,7 +710,6 @@ Examples:
 
 	400 READ #1; N
 	410 READ #2; A, B, C
-	420 READ #3; A$, B, C$
 
 Files are text files.
 Values in the file must be separated by space or separator (comma or semicolon) characters.
@@ -717,10 +717,9 @@ The number of values in a READ statement does not have to match the number of va
 The READ statement will read additional lines and collect values to fill are specified variables.
 Values remaining on the text line are saved until the next READ statement.
 
-READing more values than are specified by DATA statements, in total, will cause an error.
+READing more values than are specified by the file, in total, will cause an error.
 
 BASIC keeps an internal pointer to the next data item.
-This pointer can be reset with the RESTORE statement.
 
 REM
 ~~~
@@ -837,6 +836,9 @@ ARR READ
 
 Reads data into an array of values.
 
+Reading from DATA statements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Syntax:	ARR READ variable list
 
 Examples:
@@ -853,6 +855,26 @@ The values for dimensions may be numeric constants or expressions.
 The expression is evaluated at run-time, like any other expression.
 
 Data is read from DATA statements, as with the READ statement.
+
+Reading from files
+^^^^^^^^^^^^^^^^^^
+
+Syntax:	ARR READ #filenum; variable list
+
+Examples:
+
+	400 ARR READ #1; N
+	410 ARR READ #2; A, B, C
+
+Files are text files.
+Values in the file must be separated by space or separator (comma or semicolon) characters.
+The number of values in a READ statement does not have to match the number of values on a line in the input file.
+The READ statement will read additional lines and collect values to fill are specified variables.
+Values remaining on the text line are saved until the next READ statement.
+
+READing more values than are specified by the file, in total, will cause an error.
+
+BASIC keeps an internal pointer to the next data item.
 
 ARR
 ~~~
@@ -968,6 +990,9 @@ MAT READ
 
 Reads data into an array or matrix of values.
 
+Reading from DATA statements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Syntax:	MAT READ variable list
 
 Examples:
@@ -985,6 +1010,26 @@ The values for dimensions may be numeric constants ot expressions.
 The expression is evaluated at run-time, like any other expression.
 
 Data is read from DATA statements, as with the READ statement.
+
+Reading from files
+^^^^^^^^^^^^^^^^^^
+
+Syntax:	MAT READ #filenum; variable list
+
+Examples:
+
+	400 MAT READ #1; N
+	410 MAT READ #2; A, B, C
+
+Files are text files.
+Values in the file must be separated by space or separator (comma or semicolon) characters.
+The number of values in a READ statement does not have to match the number of values on a line in the input file.
+The READ statement will read additional lines and collect values to fill are specified variables.
+Values remaining on the text line are saved until the next READ statement.
+
+READing more values than are specified by the file, in total, will cause an error.
+
+BASIC keeps an internal pointer to the next data item.
 
 MAT
 ~~~

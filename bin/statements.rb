@@ -600,19 +600,22 @@ class AbstractPrintStatement < AbstractStatement
 
   def extract_file_handle(print_items, interpreter)
     print_items = print_items.clone
-    if print_items.size > 1
-      item_0 = print_items[0]
-      value_0 = item_0.evaluate(interpreter)
-      value_0_0 = value_0[0]
-      if value_0_0.class.to_s == 'FileHandle'
-        file_handle = value_0_0
+    file_handle = nil
+    unless print_items.size.zero?
+      value = first_item(print_items, interpreter)
+      if value.class.to_s == 'FileHandle'
+        file_handle = value
         print_items.shift
         print_items.shift if print_items[0].class.to_s == 'CarriageControl'
-      else
-        file_handle = nil
       end
     end
     [file_handle, print_items]
+  end
+
+  def first_item(print_items, interpreter)
+    first_list = print_items[0]
+    values = first_list.evaluate(interpreter)
+    values[0]
   end
 
   def add_implied_items(print_items)
@@ -925,13 +928,10 @@ class NextStatement < AbstractStatement
   end
 end
 
-# READ
-class ReadStatement < AbstractStatement
+# common for READ, ARR READ, MAT READ
+class AbstractReadStatement < AbstractStatement
   def initialize(line, tokens)
-    super('READ', line)
-    tokens = remove_break_tokens(tokens)
-    @tokens_lists = ArgSplitter.split_tokens(tokens, false)
-    # variable [variable]...
+    super
   end
 
   def to_s
@@ -944,44 +944,63 @@ class ReadStatement < AbstractStatement
     @keyword + ' ' + list.join(', ')
   end
 
-  def execute(interpreter, trace)
-    tokens_lists = @tokens_lists.clone
-    unless tokens_lists.size.zero?
-      begin
-        value = first_value(tokens_lists, interpreter)
-        fh = nil
-        if value.class.to_s == 'FileHandle'
-          fh = value
-          tokens_lists.shift
-        end
-      rescue BASICException
-      end
-    end
-    expression_list = []
-    tokens_lists.each do |items_list|
-      begin
-        expression_list << TargetExpression.new(items_list, ScalarReference)
-      rescue BASICException
-        raise(BASICException, 'Invalid variable ' + items_list.map(&:to_s).join)
-      end
-    end
-
-    ds = interpreter.get_data_store(fh)
-    expression_list.each do |expression|
-      variables = expression.evaluate(interpreter)
-      variable = variables[0]
-      value = ds.read
-      interpreter.set_value(variable, value, trace)
-    end
-  end
-
   private
+
+  def extract_file_handle(tokens_lists, interpreter)
+    tokens_lists = tokens_lists.clone
+    file_handle = nil
+    begin
+      unless tokens_lists.size.zero?
+        value = first_value(tokens_lists, interpreter)
+        if value.class.to_s == 'FileHandle'
+          file_handle = value
+          tokens_lists.shift
+          tokens_lists.shift if tokens_lists[0].class.to_s == 'CarriageControl'
+        end
+      end
+    rescue BASICException
+    end
+    [file_handle, tokens_lists]
+  end
 
   def first_value(tokens_lists, interpreter)
     first_list = tokens_lists[0]
     expr = ValueScalarExpression.new(first_list)
     values = expr.evaluate(interpreter)
     values[0]
+  end
+end
+
+# READ
+class ReadStatement < AbstractReadStatement
+  def initialize(line, tokens)
+    super('READ', line)
+    tokens = remove_break_tokens(tokens)
+    @tokens_lists = ArgSplitter.split_tokens(tokens, false)
+  end
+
+  def execute(interpreter, trace)
+    tokens_lists = @tokens_lists
+    unless tokens_lists.size.zero?
+      fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
+    end
+    expression_list = []
+    tokens_lists.each do |tokens_list|
+      begin
+        expression_list << TargetExpression.new(tokens_list, ScalarReference)
+      rescue BASICException
+        raise(BASICException, 'Invalid variable ' + tokens_list.map(&:to_s).join)
+      end
+    end
+
+    ds = interpreter.get_data_store(fh)
+    expression_list.each do |expression|
+      targets = expression.evaluate(interpreter)
+      targets.each do |target|
+        value = ds.read
+        interpreter.set_value(target, value, trace)
+      end
+    end
   end
 end
 
@@ -1154,54 +1173,53 @@ class ArrPrintStatement < AbstractPrintStatement
 end
 
 # ARR READ
-class ArrReadStatement < AbstractStatement
+class ArrReadStatement < AbstractReadStatement
   def initialize(line, tokens)
     super('ARR READ', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
-    # variable [variable]...
-
-    @expression_list = []
-    tokens_lists.each do |tokens_list|
-      begin
-        expression = TargetExpression.new(tokens_list, ArrayReference)
-        @expression_list << expression
-      rescue BASICException
-        @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
-      end
-    end
-  end
-
-  def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    @tokens_lists = ArgSplitter.split_tokens(tokens, false)
   end
 
   def execute(interpreter, trace)
-    @expression_list.each do |expression|
+    tokens_lists = @tokens_lists
+    unless tokens_lists.size.zero?
+      fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
+    end
+    expression_list = []
+    tokens_lists.each do |tokens_list|
+      begin
+        expression = TargetExpression.new(tokens_list, ArrayReference)
+        expression_list << expression
+      rescue BASICException
+        raise(BASICException, 'Invalid variable ' + tokens_list.map(&:to_s).join)
+      end
+    end
+
+    ds = interpreter.get_data_store(fh)
+    expression_list.each do |expression|
       targets = expression.evaluate(interpreter)
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
-        read_values(target.name, interpreter, trace)
+        read_values(target.name, interpreter, ds, trace)
       end
     end
   end
 
   private
 
-  def read_values(name, interpreter, trace)
+  def read_values(name, interpreter, ds, trace)
     dims = interpreter.get_dimensions(name)
     case dims.size
     when 1
-      read_array(name, dims, interpreter, trace)
+      read_array(name, dims, interpreter, ds, trace)
     else
       raise(BASICException, 'Dimensions for ARR READ must be 1')
     end
   end
 
-  def read_array(name, dims, interpreter, trace)
+  def read_array(name, dims, interpreter, ds, trace)
     values = {}
-    ds = interpreter.get_data_store(nil)
     (0..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
@@ -1303,56 +1321,55 @@ class MatPrintStatement < AbstractPrintStatement
 end
 
 # MAT READ
-class MatReadStatement < AbstractStatement
+class MatReadStatement < AbstractReadStatement
   def initialize(line, tokens)
     super('MAT READ', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
-    # variable [variable]...
-
-    @expression_list = []
-    tokens_lists.each do |tokens_list|
-      begin
-        expression = TargetExpression.new(tokens_list, MatrixReference)
-        @expression_list << expression
-      rescue BASICException
-        @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
-      end
-    end
-  end
-
-  def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    @tokens_lists = ArgSplitter.split_tokens(tokens, false)
   end
 
   def execute(interpreter, trace)
-    @expression_list.each do |expression|
+    tokens_lists = @tokens_lists
+    unless tokens_lists.size.zero?
+      fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
+    end
+    expression_list = []
+    tokens_lists.each do |tokens_list|
+      begin
+        expression = TargetExpression.new(tokens_list, MatrixReference)
+        expression_list << expression
+      rescue BASICException
+        raise(BASICException, 'Invalid variable ' + tokens_list.map(&:to_s).join)
+      end
+    end
+
+    ds = interpreter.get_data_store(fh)
+    expression_list.each do |expression|
       targets = expression.evaluate(interpreter)
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
-        read_values(target.name, interpreter, trace)
+        read_values(target.name, interpreter, ds, trace)
       end
     end
   end
 
   private
 
-  def read_values(name, interpreter, trace)
+  def read_values(name, interpreter, ds, trace)
     dims = interpreter.get_dimensions(name)
     case dims.size
     when 1
-      read_vector(name, dims, interpreter, trace)
+      read_vector(name, dims, interpreter, ds, trace)
     when 2
-      read_matrix(name, dims, interpreter, trace)
+      read_matrix(name, dims, interpreter, ds, trace)
     else
       raise(BASICException, 'Dimensions for MAT READ must be 1 or 2')
     end
   end
 
-  def read_vector(name, dims, interpreter, trace)
+  def read_vector(name, dims, interpreter, ds, trace)
     values = {}
-    ds = interpreter.get_data_store(nil)
     (1..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
@@ -1360,9 +1377,8 @@ class MatReadStatement < AbstractStatement
     interpreter.set_values(name, values, trace)
   end
 
-  def read_matrix(name, dims, interpreter, trace)
+  def read_matrix(name, dims, interpreter, ds, trace)
     values = {}
-    ds = interpreter.get_data_store(nil)
     (1..dims[0].to_i).each do |row|
       (1..dims[1].to_i).each do |col|
         coords = make_coords(row, col)
