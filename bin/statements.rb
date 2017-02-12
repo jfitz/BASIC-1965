@@ -601,7 +601,7 @@ class AbstractPrintStatement < AbstractStatement
   def extract_file_handle(print_items, interpreter)
     print_items = print_items.clone
     file_handle = nil
-    unless print_items.size.zero?
+    unless print_items.size.zero? || print_items[0].class.to_s == 'CarriageControl'
       value = first_item(print_items, interpreter)
       if value.class.to_s == 'FileHandle'
         file_handle = value
@@ -950,7 +950,7 @@ class AbstractReadStatement < AbstractStatement
     tokens_lists = tokens_lists.clone
     file_handle = nil
     begin
-      unless tokens_lists.size.zero?
+      unless tokens_lists.size.zero? || tokens_lists[0].class.to_s == 'CarriageControl'
         value = first_value(tokens_lists, interpreter)
         if value.class.to_s == 'FileHandle'
           file_handle = value
