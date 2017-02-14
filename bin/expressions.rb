@@ -8,9 +8,10 @@ class ScalarValue < Variable
 
   def get_subscripts(stack)
     subscripts = stack.pop
-    raise(Exception,
-          'Variable expects subscripts, found empty parentheses') if
-      subscripts.empty?
+    if subscripts.empty?
+      raise(Exception,
+            'Variable expects subscripts, found empty parentheses')
+    end
     subscripts
   end
 
@@ -39,9 +40,10 @@ class ScalarReference < Variable
     if previous_is_array(stack)
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(BASICException,
-            'Variable expects subscripts, found empty parentheses') if
-        num_args == 0
+      if num_args.zero?
+        raise(BASICException,
+              'Variable expects subscripts, found empty parentheses')
+      end
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
     self
@@ -478,9 +480,10 @@ class CompoundReference < Variable
     if previous_is_array(stack)
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(BASICException,
-            'Variable expects subscripts, found empty parentheses') if
-        num_args == 0
+      if num_args.zero?
+        raise(BASICException,
+              'Variable expects subscripts, found empty parentheses')
+      end
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
     self
@@ -558,9 +561,10 @@ class VariableDimension < Variable
     if previous_is_array(stack)
       @subscripts = stack.pop
       num_args = @subscripts.length
-      raise(BASICException,
-            'Variable expects subscripts, found empty parentheses') if
-        num_args == 0
+      if num_args.zero?
+        raise(BASICException,
+              'Variable expects subscripts, found empty parentheses')
+      end
     end
     self
   end
@@ -783,7 +787,7 @@ class AbstractExpression
 
   # returns an Array of values
   def evaluate(interpreter)
-    values = interpreter.evaluate(@parsed_expressions)
+    interpreter.evaluate(@parsed_expressions)
   end
 
   def evaluate_with_vars(interpreter, name, user_var_values)
@@ -812,9 +816,10 @@ class AbstractExpression
     (follows_operand ? binary_classes : unary_classes).each do |c|
       element = c.new(token) if element.nil? && c.accept?(token)
     end
-    raise(BASICException,
-          "Token '#{token.class}:#{token}' is not a value or operator") if
-      element.nil?
+    if element.nil?
+      raise(BASICException,
+            "Token '#{token.class}:#{token}' is not a value or operator")
+    end
     element
   end
 
@@ -927,9 +932,10 @@ class TargetExpression < AbstractExpression
 
   def check_resolve_types
     @parsed_expressions.each do |parsed_expression|
-      raise(BASICException,
-            "Value is not assignable (type #{parsed_expression[-1].class})") if
-        parsed_expression[-1].class.to_s != 'ScalarValue'
+      if parsed_expression[-1].class.to_s != 'ScalarValue'
+        raise(BASICException,
+              "Value is not assignable (type #{parsed_expression[-1].class})")
+      end
     end
   end
 end

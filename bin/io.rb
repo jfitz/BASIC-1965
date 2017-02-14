@@ -128,11 +128,11 @@ class ConsoleIo
   end
 
   def print_out(text)
-    unless text.nil?
-      text.each_char do |c|
-        print(c)
-        delay
-      end
+    return if text.nil?
+
+    text.each_char do |c|
+      print(c)
+      delay
     end
   end
 
