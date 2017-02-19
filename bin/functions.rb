@@ -49,10 +49,10 @@ class FunctionRnd < AbstractScalarFunction
 
   # return a single value
   def evaluate(interpreter, stack)
-    stack.push([NumericConstant.new(100)]) unless previous_is_array(stack)
+    stack.push([NumericConstant.new(1)]) unless previous_is_array(stack)
     ensure_argument_count(stack, [0, 1])
     args = stack.pop
-    args = [NumericConstant.new(100)] if args.empty? || args[0].nil?
+    args = [NumericConstant.new(1)] if args.empty? || args[0].nil?
     check_arg_types(args, ['NumericConstant'])
     interpreter.rand(args[0])
   end

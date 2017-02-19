@@ -78,7 +78,7 @@ I have changed a few things:
 
 - Statements are spaced properly when listed (K&K BASIC keeps the original spacing)
 - The PRINT statement semicolon operator spaces text items together and numeric items apart
-- The RND() function can have zero parameters; when no value it returns a number from 0 to 100
+- The RND() function can have zero parameters
 - The RND(X) function uses the passed value as an upper bound for the result. K&K BASIC ignores this parameter. Use the –ignore-rnd-arg option to match K&K.
 - The MAT assignment statement dimensions the target variable, so an earlier DIM is not needed
 - User-defined functions may have multiple parameters
@@ -175,7 +175,7 @@ Removes lines from the program.
 
 My experience with other BASIC interpreters is that lines can be deleted by simply typing a line number and pressing RETURN.
 (That is, entering an "empty" line with line number and nothing else.)
-That technique does not work with BASIC-1965, as K&K BASIC allows empty lines to be part of a program.
+That technique does not work with BASIC-1965, as BASIC-1965 allows empty lines to be part of a program.
 
 So how to remove a line from a program?
 Replacing a line with an empty line is possible, and certainly makes the offending line "go away" from execution, but what if we want to really remove a line?
@@ -1094,8 +1094,9 @@ Functions may be used in numeric expressions.
 |Function |Result
 |INT(x) |Return the integer part of a numeric value.
 |RND(x) |Return a random number from zero to x. The value is a floating-point value; RND(1) can return any value from zero to 1. A value of zero or less than zero is considered to be 1.
-|RND() |Equivalent to RND(100).
-|EXP(x) |Computes ex.
+|RND() |Equivalent to RND(1).
+|RND |Special form of RND, equivalent to RND(1).
+|EXP(x) |Computes e to the x power.
 |LOG(x) |Computes the natural log of x. A value of zero or a negative value will cause an error.
 |ABS(x) |Computes the absolute value of x.
 |SQR(x) |Computes the square root of x. A negative value will cause an error.
