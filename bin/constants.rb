@@ -435,17 +435,34 @@ end
 
 # Boolean constants
 class BooleanConstant < AbstractElement
+  def self.accept?(token)
+    classes = %w(BooleanConstantToken)
+    classes.include?(token.class.to_s)
+  end
+
+  def self.init?(text)
+    %w(TRUE FALSE).include?(text)
+  end
+
   attr_reader :value
 
   def initialize(obj)
     super()
     @value = false
     @value = true if
-      obj.class.to_s == 'BooleanConstantToken' && obj.to_s == 'ON'
-    @value = true if obj.class.to_s == 'String' && obj.casecmp('ON').zero?
+      obj.class.to_s == 'BooleanConstantToken' && obj.to_s == 'TRUE'
+    @value = true if obj.class.to_s == 'String' && obj.casecmp('TRUE').zero?
     @value = true if obj.class.to_s == 'TrueClass'
     @operand = true
     @precedence = 0
+  end
+
+  def evaluate(_, _)
+    self
+  end
+
+  def printable?
+    true
   end
 
   def to_s

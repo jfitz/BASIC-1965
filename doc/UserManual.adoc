@@ -776,16 +776,18 @@ Turns tracing on or off.
 The TRACE command (interactive mode) runs a program and displays information ofr every line executed.
 The TRACE statement (part of a program) turns tracing on or off, allowing for targeted tracing of programs.
 
-Syntax:	TRACE state
+Syntax:	TRACE expression
 
 Examples:
 
-	100 TRACE ON
-	250 TRACE OFF
+	100 TRACE TRUE
+	250 TRACE FALSE
+	300 TRACE A = 20
+	310 TRACE B < 7
 
-The TRACE statement accepts a single value to set the state: ON or OFF.
-'ON' (or anything that does not look like 'OFF', 'NO' or 'FALSE') will set tracing on.
-The values 'OFF', 'NO', and 'FALSE' will turn off tracing.
+The TRACE statement accepts a single value to set the state.
+The value TRUE or a comparison that evaluates to true will set tracing on.
+The value FALSE or a comparison that evaluates to false will turn off tracing.
 
 ARR statements
 --------------

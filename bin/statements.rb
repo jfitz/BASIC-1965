@@ -180,7 +180,7 @@ class StatementFactory
     tokenizers << TextTokenBuilder.new
     tokenizers << NumberTokenBuilder.new
     tokenizers << VariableTokenBuilder.new
-    tokenizers << ListTokenBuilder.new(%w(ON OFF), BooleanConstantToken)
+    tokenizers << ListTokenBuilder.new(%w(TRUE FALSE), BooleanConstantToken)
   end
 end
 
@@ -1112,22 +1112,33 @@ class TraceStatement < AbstractStatement
   def initialize(line, tokens)
     super('TRACE', line)
     tokens = remove_break_tokens(tokens)
-    tokens_lists = ArgSplitter.split_tokens(tokens, false)
-    if tokens_lists.empty?
-      @errors << 'Syntax error'
-    elsif tokens_lists[0][0].boolean_constant?
-      @operation = BooleanConstant.new(tokens_lists[0][0])
-    else
-      @errors << "Syntax error, '#{tokens_lists[0][0]}' not boolean"
-    end
+    @tokens_lists = ArgSplitter.split_tokens(tokens, false)
+    @errors << 'TRACE needs one value' if @tokens_lists.size != 1
   end
 
   def execute(interpreter, _)
-    interpreter.trace(@operation.value)
+    first_expression = @tokens_lists[0]
+    expression = ValueScalarExpression.new(first_expression)
+    value = expression.evaluate(interpreter)
+    interpreter.trace(value)
   end
 
   def to_s
-    @keyword + ' ' + (@operation.value ? 'ON' : 'OFF')
+    s = ''
+    @tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'Array'
+        s << ' '
+        s << tokens_list.map(&:to_s).join
+      else
+        s << tokens_list.to_s
+      end
+    end
+
+    if @tokens_lists.size.zero?
+      @keyword
+    else
+      @keyword + s
+    end
   end
 end
 
