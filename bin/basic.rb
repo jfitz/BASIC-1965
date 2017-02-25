@@ -725,6 +725,10 @@ class Interpreter
   def store_program_line(cmd, print_errors)
     line_num, line = parse_line(cmd)
     if !line_num.nil? && !line.nil?
+      # warn about duplicate lines when loading
+      # but not when typing
+      puts "Duplicate line number #{line_num}" if
+        @program_lines.key?(line_num) && !print_errors
       @program_lines[line_num] = line
       statement = line.statement
       statement.errors.each { |error| puts error } if print_errors
