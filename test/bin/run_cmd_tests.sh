@@ -1,5 +1,6 @@
 TESTROOT=test
 TESTBED=tests
+TESTGROUP=cmd
 
 echo Removing old directory
 if [ -d "$TESTBED" ] ; then rm -r "$TESTBED" ; fi
@@ -10,23 +11,10 @@ mkdir "$TESTBED"
 echo Running all tests...
 ECODE=0
 
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" list
-((ECODE+=$?))
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" list_range_1
-((ECODE+=$?))
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" list_range_2
-((ECODE+=$?))
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" list_range_3
-((ECODE+=$?))
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" list_range_4
-((ECODE+=$?))
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" list_dup_line
-((ECODE+=$?))
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" enter_list
-((ECODE+=$?))
-bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" revise_list
-((ECODE+=$?))
+for F in "$TESTROOT/$TESTGROUP"/*; do
+    bash "$TESTROOT/bin/run_cmd_test.sh" "$TESTROOT" "$TESTBED" "$TESTGROUP" ${F##*/}
+    ((ECODE+=$?))
+done
 
 echo
 echo Failures: $ECODE
-

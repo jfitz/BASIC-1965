@@ -18,4 +18,3 @@ done
 
 echo
 echo Failures: $ECODE
-
