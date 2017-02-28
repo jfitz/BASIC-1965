@@ -1,11 +1,12 @@
 # Handle tab stops and carriage control
 class ConsoleIo
-  def initialize(max_width, zone_width, print_rate, implied_semicolon,
-                 echo_input)
+  def initialize(max_width, zone_width, print_rate, newline_rate,
+                 implied_semicolon, echo_input)
     @column = 0
     @max_width = max_width
     @zone_width = zone_width
     @print_rate = print_rate
+    @newline_rate = newline_rate
     @implied_semicolon = implied_semicolon
     @last_was_numeric = false
     @echo_input = echo_input
@@ -71,6 +72,11 @@ class ConsoleIo
     @last_was_numeric = false
   end
 
+  def print_line(text)
+    print_item(text)
+    newline
+  end
+
   def last_was_numeric
     @last_was_numeric = true
   end
@@ -114,7 +120,7 @@ class ConsoleIo
 
   def newline
     puts
-    delay
+    newline_delay
     @column = 0
     @last_was_numeric = false
   end
@@ -138,6 +144,11 @@ class ConsoleIo
 
   def delay
     sleep(1.0 / @print_rate) if @print_rate > 0
+  end
+
+  def newline_delay
+    sleep(1.0 / @print_rate) if @print_rate > 0 && @newline_rate.zero?
+    sleep(1.0 / @newline_rate) if @newline_rate > 0
   end
 end
 

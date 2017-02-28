@@ -107,6 +107,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--trace |Print each statement prior to executing it (useful for debugging). Does the same thing as the 'TRACE' command in interactive mode, but from the command line.
 |--notiming |Suppress the CPU time usage at the end of the output. Useful for comparing output when running tests.
 |--tty |Print output slowly, emulating the speed of an ASR-33 Teletype. Provides a better experience with some programs (often games) in which slow output lets your anticipation build. The fast output of modern computers displays information quickly, and TTY mode lets you read each line as it is "printed".
+|--tty-lf |Similar to --tty but delays only the newline characters, not each individual character. Useful with --trace when debugging.
 |--print-width width |Specifies a print width. Lines will wrap at the specified column. Default value is 72.
 |--zone-width width |Specifies a zone width. PRINT statements will position output separated by commas in zones. Default is 16.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
