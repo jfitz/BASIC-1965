@@ -850,9 +850,9 @@ OptionParser.new do |opt|
   opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
   opt.on('--tokens') { |o| options[:tokens] = o }
-  opt.on('-p', '--pretty-list SOURCE') { |o| options[:pretty_name] = o }
+  opt.on('-p', '--pretty SOURCE') { |o| options[:pretty_name] = o }
   opt.on('--trace') { |o| options[:trace] = o }
-  opt.on('--notiming') { |o| options[:notiming] = o }
+  opt.on('--no-timing') { |o| options[:notiming] = o }
   opt.on('--tty') { |o| options[:tty] = o }
   opt.on('--tty-lf') { |o| options[:tty_lf] = o }
   opt.on('--print-width WIDTH') { |o| options[:print_width] = o }

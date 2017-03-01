@@ -19,7 +19,7 @@ if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt" ]
 then
   echo List program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb -l $TESTNAME.bas >list.txt
+  ruby basic.rb --list $TESTNAME.bas >list.txt
   cd ../..
   echo Comparing list...
   diff "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt"
@@ -30,7 +30,7 @@ if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt" ]
 then
   echo Pretty program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb -p $TESTNAME.bas >pretty.txt
+  ruby basic.rb --pretty $TESTNAME.bas >pretty.txt
   cd ../..
   echo Comparing pretty...
   diff "$TESTBED/$TESTNAME/pretty.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt"
@@ -47,9 +47,9 @@ then
   echo Running program...
   if [ -e stdin.txt ]
   then
-    ruby basic.rb --notiming $OPTIONS -r $TESTNAME.bas --echo-input <stdin.txt >stdout.txt $RUN_OPTIONS
+    ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --echo-input <stdin.txt >stdout.txt $RUN_OPTIONS
   else
-    ruby basic.rb --notiming $OPTIONS -r $TESTNAME.bas >stdout.txt $RUN_OPTIONS
+    ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas >stdout.txt $RUN_OPTIONS
   fi
   cd ../..
   echo Comparing stdout...
