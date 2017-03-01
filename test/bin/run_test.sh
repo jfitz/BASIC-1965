@@ -19,7 +19,7 @@ if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt" ]
 then
   echo List program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb --list $TESTNAME.bas >list.txt
+  ruby basic.rb --list $TESTNAME.bas --print-width 0 >list.txt
   cd ../..
   echo Comparing list...
   diff "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt"
@@ -30,7 +30,7 @@ if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt" ]
 then
   echo Pretty program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb --pretty $TESTNAME.bas >pretty.txt
+  ruby basic.rb --pretty $TESTNAME.bas --print-width 0 >pretty.txt
   cd ../..
   echo Comparing pretty...
   diff "$TESTBED/$TESTNAME/pretty.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt"
