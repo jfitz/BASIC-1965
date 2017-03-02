@@ -728,6 +728,15 @@ class Interpreter
       # but not when typing
       @console_io.print_line("Duplicate line number #{line_num}") if
         @program_lines.key?(line_num) && !print_errors
+
+      # warn about lines out of sequence
+      # but not when typing
+      max_key = @program_lines.max
+      @console_io.print_line("Line #{line_num} is out of sequence") if
+        @program_lines.size > 0 &&
+        line_num < @program_lines.max[0] &&
+        !print_errors
+
       @program_lines[line_num] = line
       statement = line.statement
       statement.errors.each { |error| puts error } if print_errors
