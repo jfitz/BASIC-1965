@@ -349,8 +349,8 @@ class Interpreter
         statement = line.statement
         statement.pre_execute(self)
       end
-    rescue BASICException => message
-      @console_io.print_line("#{message} in line #{@current_line_number}")
+    rescue BASICException => e
+      @console_io.print_line("#{e.message} in line #{@current_line_number}")
       stop_running
     end
   end
@@ -404,8 +404,13 @@ class Interpreter
         verify_next_line_number
         @current_line_number = @next_line_number
       end
-    rescue BASICException => message
-      @console_io.print_line("#{message} in line #{@current_line_number}")
+    rescue BASICException => e
+      if @current_line_number.nil?
+        @console_io.print_line(e.message)
+      else
+        line_number = @current_line_number
+        @console_io.print_line("#{e.message} in line #{line_number}")
+      end
       stop_running
     end
   end
