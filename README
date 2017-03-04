@@ -4,14 +4,17 @@ This is an interpreter for the oldest form of BASIC, Dartmouth BASIC. Created in
 
 This version is a primitive form of BASIC, less powerful than Microsoft BASIC.
 
-- Statements REM, DIM, LET, READ, DATA, PRINT, INPUT, IF, GOTO, GOSUB, RETURN, FOR, NEXT, MAT READ, MAT PRINT, and MAT
-- The LET statement must include the LET keyword
-- Functions ABS, SGN, SIN, COS, TAN, ATN, EXP, LOG, RND, ZER, CON, IDN, TRN, and INV
-- User-defined functions in form FNx(X)
-- Only one statement on each line
-- No file operations
-- No IF/THEN/ELSE. IF/THEN is supported, and that only with a target line number, not a target statement
 - Numeric variables only; no string variables
+- Functions ABS, SGN, SIN, COS, TAN, ATN, EXP, LOG, RND
+- Matrix functions ZER, CON, DET, IDN, TRN, INV
+- User-defined functions in form FNx(X)
+- Statements REM, DIM, LET, READ, DATA, PRINT, INPUT, IF, GOTO, GOSUB, RETURN, FOR, NEXT, STOP, END
+- The LET statement must include the LET keyword
+- Matrix operations with MAT, MAT READ, MAT PRINT
+- Array operations with ARR, ARR READ, ARR PRINT
+- Only one statement on each line
+- File operations with the FILES statement (not OPEN and CLOSE statements)
+- No IF/THEN/ELSE. IF/THEN is supported, and that only with a target line number, not a target statement
 - Interactive mode and command-line mode
 - Trace ability to print lines as they are executed
 - Option for slow output to simulate Teletype
