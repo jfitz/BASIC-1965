@@ -71,14 +71,14 @@ class StatementFactory
 
   def parse(text)
     line_number = nil
-    statement = nil
+    line = nil
     m = /\A\d+/.match(text)
     unless m.nil?
       number = NumericConstantToken.new(m[0])
       line_number = LineNumber.new(number)
-      statement = create(m.post_match)
+      line = create(m.post_match)
     end
-    [line_number, statement]
+    [line_number, line]
   end
 
   private

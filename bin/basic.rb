@@ -257,6 +257,8 @@ class Interpreter
       statement = line.statement
       statement.errors.each { |error| puts ' ' + error }
       tokens = line.tokens
+      text_tokens = tokens.map(&:to_s)
+      @console_io.print_line('TOKENS: ' + text_tokens.to_s) if list_tokens
     end
   end
 
