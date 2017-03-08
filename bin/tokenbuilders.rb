@@ -20,10 +20,6 @@ class ListTokenBuilder
   
   def initialize(legals, class_name)
     @legals = legals
-    @max_length = 0
-    @legals.each do |legal|
-      @max_length = legal.size if legal.size > @max_length
-    end
     @class = class_name
     @count = 0
   end
@@ -31,27 +27,55 @@ class ListTokenBuilder
   def try(text)
     token = ''
     candidate = ''
-    chars_eaten = 0
+    i = 0
+    best_candidate = ''
+    best_count = 0
     if text.size > 0 && text[0] != ' '
-      max_index = [@max_length, text.size].min - 1
-      (0..max_index).each do |i|
+      refused = false
+      until i == text.size || refused
+        # ignore space char
         unless text[i] == ' '
-          candidate = candidate + text[i]
-          @legals.each do |legal|
-            if candidate == legal && candidate.size > token.size
-              token = legal
-              chars_eaten = i + 1
+          c = text[i]
+          refused = !accept?(candidate, c)
+          unless refused
+            candidate = candidate + c
+            i += 1
+            if @legals.include?(candidate)
+              best_candidate = candidate
+              best_count = i
             end
           end
+        else
+          i += 1
         end
       end
     end
-    @token = token
-    @count = chars_eaten
+
+    @count = 0
+    unless best_candidate.size.zero?
+      @token = best_candidate
+      @count = best_count
+    end
+
+    @count > 0
   end
 
   def token
     @class.new(@token)
+  end
+
+  private
+
+  def accept?(candidate, c)
+    token = candidate + c
+    count = token.size - 1
+    result = false
+
+    @legals.each do |legal|
+      result = true if legal[0..count] == token
+    end
+
+    result
   end
 end
 
@@ -166,7 +190,8 @@ class NumberTokenBuilder
 
     @token = ''
     regexes.each { |regex| regex.match(candidate) { |m| @token = m[0] } }
-    @count = @token.size
+    @count = 0
+    @count = i if @token.size > 0
     @count > 0
   end
 
@@ -194,18 +219,56 @@ end
 
 # token reader for variables
 class VariableTokenBuilder
+  attr_reader :count
+  
   def try(text)
     @token = ''
-    /\A[A-Z]/.match(text) { |m| @token = m[0] }
-    /\A[A-Z]\d/.match(text) { |m| @token = m[0] }
-  end
 
-  def count
-    @token.size
+    candidate = ''
+    i = 0
+    if text.size > 0 && text[0] != ' '
+      refused = false
+      until i == text.size || refused
+        # ignore space char
+        unless text[i] == ' '
+          c = text[i]
+          refused = !accept?(candidate, c)
+          unless refused
+            candidate = candidate + c
+            i += 1
+          end
+        else
+          i += 1
+        end
+      end
+    end
+
+    # check that string conforms to one of these
+    regexes = [
+      /\A[A-Z]/,
+      /\A[A-Z]\d/
+    ]
+
+    @token = ''
+    regexes.each { |regex| regex.match(candidate) { |m| @token = m[0] } }
+    @count = i
+    @count > 0
   end
 
   def token
     VariableToken.new(@token)
+  end
+
+  private
+
+  def accept?(candidate, c)
+    result = false
+    # can always start with an alpha
+    result = true if /[A-Z]/.match(c) && candidate.size.zero?
+    # can always append a digit
+    result = true if /[0-9]/.match(c) && candidate.size == 1
+
+    result
   end
 end
 
