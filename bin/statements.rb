@@ -102,42 +102,43 @@ class StatementFactory
       squeezed == ''
     
     return Line.new(text,
-                    RemarkStatement.new('REMARK', text, tokens),
+                    RemarkStatement.new(['REMARK'], text, tokens),
                     tokens) if
       squeezed[0..5] == 'REMARK'
     
     return Line.new(text,
-                    RemarkStatement.new('REM',text, tokens),
+                    RemarkStatement.new(['REM'],text, tokens),
                     tokens) if
       squeezed[0..2] == 'REM'
 
     # collect leading keywords (ignoring whitespace)
     tokens = tokenize(text)
-    keyword = extract_keyword(tokens)
+    keywords = extract_keywords(tokens)
     
     begin
-      statement = create_regular_statement(keyword, text, tokens)
+      statement = create_regular_statement(keywords, text, tokens)
     rescue BASICException
       statement = InvalidStatement.new(text)
     end
     Line.new(text, statement, tokens)
   end
 
-  def extract_keyword(tokens)
-    keyword = ''
+  def extract_keywords(tokens)
+    keywords = []
     while !tokens.empty? &&
           (tokens[0].whitespace? || tokens[0].keyword?)
       token = tokens.shift
-      keyword << token.to_s if token.keyword?
+      keywords << token.to_s if token.keyword?
     end
-    keyword
+    keywords
   end
 
-  def create_regular_statement(keyword, text, tokens)
+  def create_regular_statement(keywords, text, tokens)
     statement = UnknownStatement.new(text)
+    keyword = keywords.join('')
     statement =
-      @statement_definitions[keyword].new(keyword, text, tokens) unless
-        keyword.empty?
+      @statement_definitions[keyword].new(keywords, text, tokens) if
+        @statement_definitions.key?(keyword)
     statement
   end
 
@@ -180,7 +181,7 @@ class StatementFactory
   def make_tokenizers
     tokenizers = []
 
-    keywords = statement_definitions.keys + %w(THEN TO STEP)
+    keywords = statement_definitions.keys + %w(THEN TO STEP) - %w(ARRREAD ARRPRINT MATREAD MATPRINT)
     tokenizers << ListTokenBuilder.new(keywords, KeywordToken)
 
     operators = [
@@ -211,8 +212,8 @@ end
 class AbstractStatement
   attr_reader :errors
 
-  def initialize(keyword, text)
-    @keyword = keyword
+  def initialize(keywords, text)
+    @keywords = keywords
     @text = text
     @errors = []
   end
@@ -267,7 +268,7 @@ end
 # unparsed statement
 class InvalidStatement < AbstractStatement
   def initialize(line)
-    super('', line)
+    super([], line)
     @errors << "Invalid statement"
   end
 
@@ -287,7 +288,7 @@ end
 # unknown statement
 class UnknownStatement < AbstractStatement
   def initialize(line)
-    super('', line)
+    super([], line)
     @errors << "Unknown statement '#{@text.strip}'"
   end
 
@@ -303,7 +304,7 @@ end
 # empty statement (line number only)
 class EmptyStatement < AbstractStatement
   def initialize
-    super('', '')
+    super([], '')
   end
 
   def to_s
@@ -317,16 +318,17 @@ end
 
 # REMARK
 class RemarkStatement < AbstractStatement
-  def initialize(keyword, line, _tokens)
-    super(keyword, line)
+  def initialize(keywords, line, _tokens)
+    super(keywords, line)
     # override the method to squeeze spaces from line
     squeezed = line.strip
+    keyword = keywords.join('')
     index = keyword.size
     @rest = squeezed[index..-1]
   end
 
   def to_s
-    @keyword + @rest
+    @keywords.join(' ') + @rest
   end
 
   def execute(_, _)
@@ -336,8 +338,8 @@ end
 
 # DIM
 class DimStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     tokens_lists = ArgSplitter.split_tokens(tokens, false)
@@ -356,7 +358,7 @@ class DimStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @expression_list.join(', ')
+    @keywords.join(' ') + ' ' + @expression_list.join(', ')
   end
 
   def execute(interpreter, _)
@@ -374,15 +376,15 @@ end
 
 # FILES
 class FilesStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @expressions = ValueScalarExpression.new(tokens)
   end
 
   def to_s
-    @keyword + ' ' + @expressions.to_s
+    @keywords.join(' ') + ' ' + @expressions.to_s
   end
 
   def pre_execute(interpreter)
@@ -397,8 +399,8 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword,  line)
+  def initialize(keywords, line, tokens)
+    super(keywords,  line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     begin
@@ -415,7 +417,7 @@ class LetStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @assignment.to_s
+    @keywords.join(' ') + ' ' + @assignment.to_s
   end
 
   def execute(interpreter, trace)
@@ -430,8 +432,8 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, false)
@@ -447,7 +449,7 @@ class InputStatement < AbstractStatement
       tokens_list.each { |token| s += token.to_s }
       list << s
     end
-    @keyword + ' ' + list.join(', ')
+    @keywords.join(' ') + ' ' + list.join(', ')
   end
 
   def execute(interpreter, trace)
@@ -547,8 +549,8 @@ end
 
 # IF/THEN
 class IfStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     parts = split_keywords(tokens)
@@ -560,7 +562,7 @@ class IfStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @expression.to_s + ' THEN ' + @destination.to_s
+    @keywords.join(' ') + ' ' + @expression.to_s + ' THEN ' + @destination.to_s
   end
 
   def execute(interpreter, trace)
@@ -614,8 +616,8 @@ end
 
 # common for PRINT, ARR PRINT, MAT PRINT
 class AbstractPrintStatement < AbstractStatement
-  def initialize(keyword, line, final_carriage)
-    super(keyword, line)
+  def initialize(keywords, line, final_carriage)
+    super(keywords, line)
     @final = final_carriage
   end
   
@@ -631,9 +633,9 @@ class AbstractPrintStatement < AbstractStatement
     end
 
     if @tokens_lists.size.zero?
-      @keyword
+      @keywords.join(' ')
     else
-      @keyword + s
+      @keywords.join(' ') + s
     end
   end
 
@@ -665,8 +667,8 @@ end
 
 # PRINT
 class PrintStatement < AbstractPrintStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line, CarriageControl.new('NL'))
+  def initialize(keywords, line, tokens)
+    super(keywords, line, CarriageControl.new('NL'))
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, true)
@@ -712,8 +714,8 @@ end
 
 # GOTO
 class GotoStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     if tokens.size == 1
@@ -728,7 +730,7 @@ class GotoStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @destination.to_s
+    @keywords.join(' ') + ' ' + @destination.to_s
   end
 
   def execute(interpreter, _)
@@ -738,8 +740,8 @@ end
 
 # GOSUB
 class GosubStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     if tokens.size == 1
@@ -754,7 +756,7 @@ class GosubStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @destination.to_s
+    @keywords.join(' ') + ' ' + @destination.to_s
   end
 
   def execute(interpreter, _)
@@ -765,12 +767,12 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def initialize(keyword, line, _tokens)
-    super(keyword, line)
+  def initialize(keywords, line, _tokens)
+    super(keywords, line)
   end
 
   def to_s
-    @keyword
+    @keywords.join(' ')
   end
 
   def execute(interpreter, _)
@@ -825,8 +827,8 @@ end
 
 # FOR statement
 class ForStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     # parse control variable, '=', numeric_expression, "TO",
@@ -841,10 +843,11 @@ class ForStatement < AbstractStatement
   end
 
   def to_s
+    keywords = @keywords.join(' ')
     if @has_step_value
-      "#{@keyword} #{@control} = #{@start} TO #{@end}" + " STEP #{@step_value}"
+      "#{keywords} #{@control} = #{@start} TO #{@end}" + " STEP #{@step_value}"
     else
-      "#{@keyword} #{@control} = #{@start} TO #{@end}"
+      "#{keywords} #{@control} = #{@start} TO #{@end}"
     end
   end
 
@@ -933,8 +936,8 @@ end
 class NextStatement < AbstractStatement
   attr_reader :control
 
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     # parse control variable
@@ -951,7 +954,7 @@ class NextStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @control.to_s
+    @keywords.join(' ') + ' ' + @control.to_s
   end
 
   def execute(interpreter, trace)
@@ -974,7 +977,7 @@ end
 
 # common for READ, ARR READ, MAT READ
 class AbstractReadStatement < AbstractStatement
-  def initialize(keyword, line)
+  def initialize(keywords, line)
     super
   end
 
@@ -985,7 +988,7 @@ class AbstractReadStatement < AbstractStatement
       tokens_list.each { |token| s += token.to_s }
       list << s
     end
-    @keyword + ' ' + list.join(', ')
+    @keywords.join(' ') + ' ' + list.join(', ')
   end
 
   private
@@ -1017,8 +1020,8 @@ end
 
 # READ
 class ReadStatement < AbstractReadStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, false)
@@ -1051,15 +1054,15 @@ end
 
 # DATA
 class DataStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @expressions = ValueScalarExpression.new(tokens)
   end
 
   def to_s
-    @keyword + ' ' + @expressions.to_s
+    @keywords.join(' ') + ' ' + @expressions.to_s
   end
 
   def pre_execute(interpreter)
@@ -1075,12 +1078,12 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
-  def initialize(keyword, line, _tokens)
-    super(keyword, line)
+  def initialize(keywords, line, _tokens)
+    super(keywords, line)
   end
 
   def to_s
-    @keyword
+    @keywords.join(' ')
   end
 
   def execute(interpreter, _)
@@ -1091,8 +1094,8 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @name = ''
@@ -1110,7 +1113,8 @@ class DefineFunctionStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @name + "(#{@arguments.join(',')}) = " + @template.to_s
+    @keywords.join(' ') + ' ' + @name +
+      "(#{@arguments.join(',')}) = " + @template.to_s
   end
 
   def pre_execute(interpreter)
@@ -1122,12 +1126,12 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def initialize(keyword, line, _tokens)
-    super(keyword, line)
+  def initialize(keywords, line, _tokens)
+    super(keywords, line)
   end
 
   def to_s
-    @keyword
+    @keywords.join(' ')
   end
 
   def execute(interpreter, _)
@@ -1139,12 +1143,12 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def initialize(keyword, line, _tokens)
-    super(keyword, line)
+  def initialize(keywords, line, _tokens)
+    super(keywords, line)
   end
 
   def to_s
-    @keyword
+    @keywords.join(' ')
   end
 
   def execute(interpreter, _)
@@ -1156,8 +1160,8 @@ end
 
 # TRACE
 class TraceStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, false)
@@ -1183,17 +1187,17 @@ class TraceStatement < AbstractStatement
     end
 
     if @tokens_lists.size.zero?
-      @keyword
+      @keywords.join(' ')
     else
-      @keyword + s
+      @keywords.join(' ') + s
     end
   end
 end
 
 # ARR PRINT
 class ArrPrintStatement < AbstractPrintStatement
-  def initialize(keyword, line, tokens)
-    super('ARR PRINT', line, CarriageControl.new(','))
+  def initialize(keywords, line, tokens)
+    super(keywords, line, CarriageControl.new(','))
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, true)
@@ -1234,8 +1238,8 @@ end
 
 # ARR READ
 class ArrReadStatement < AbstractReadStatement
-  def initialize(keyword, line, tokens)
-    super('ARR READ', line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, false)
@@ -1291,8 +1295,8 @@ end
 
 # ARR assignment
 class ArrLetStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     begin
@@ -1310,7 +1314,7 @@ class ArrLetStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @assignment.to_s
+    @keywords.join(' ') + ' ' + @assignment.to_s
   end
 
   def execute(interpreter, trace)
@@ -1343,8 +1347,8 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractPrintStatement
-  def initialize(keyword, line, tokens)
-    super('MAT PRINT', line, CarriageControl.new(','))
+  def initialize(keywords, line, tokens)
+    super(keywords, line, CarriageControl.new(','))
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, true)
@@ -1385,8 +1389,8 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractReadStatement
-  def initialize(keyword, line, tokens)
-    super('MAT READ', line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     @tokens_lists = ArgSplitter.split_tokens(tokens, false)
@@ -1455,8 +1459,8 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
-  def initialize(keyword, line, tokens)
-    super(keyword, line)
+  def initialize(keywords, line, tokens)
+    super(keywords, line)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
     begin
@@ -1474,7 +1478,7 @@ class MatLetStatement < AbstractStatement
   end
 
   def to_s
-    @keyword + ' ' + @assignment.to_s
+    @keywords.join(' ') + ' ' + @assignment.to_s
   end
 
   def execute(interpreter, trace)
