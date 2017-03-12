@@ -111,29 +111,51 @@ class StatementFactory
                     tokens) if
       squeezed[0..2] == 'REM'
 
-    # collect leading keywords (ignoring whitespace)
     tokens = tokenize(text)
+    tokens = remove_break_tokens(tokens)
+    tokens = remove_whitespace_tokens(tokens)
     keywords = extract_keywords(tokens)
     
     begin
-      statement = create_regular_statement(keywords, text, tokens)
+      statement = create_statement(keywords, text, tokens)
     rescue BASICException
       statement = InvalidStatement.new(text)
     end
     Line.new(text, statement, tokens)
   end
 
+  private
+  
+  def remove_break_tokens(tokens)
+    new_list = []
+
+    tokens.each do |token|
+      new_list << token unless token.class.to_s == 'BreakToken'
+    end
+
+    new_list
+  end
+
+  def remove_whitespace_tokens(tokens)
+    new_list = []
+
+    tokens.each do |token|
+      new_list << token unless token.class.to_s == 'WhitespaceToken'
+    end
+
+    new_list
+  end
+
   def extract_keywords(tokens)
     keywords = []
-    while !tokens.empty? &&
-          (tokens[0].whitespace? || tokens[0].keyword?)
+    while !tokens.empty? && tokens[0].keyword?
       token = tokens.shift
-      keywords << token.to_s if token.keyword?
+      keywords << token.to_s
     end
     keywords
   end
 
-  def create_regular_statement(keywords, text, tokens)
+  def create_statement(keywords, text, tokens)
     statement = UnknownStatement.new(text)
     keyword = keywords.join('')
     statement =
@@ -181,7 +203,10 @@ class StatementFactory
   def make_tokenizers
     tokenizers = []
 
-    keywords = statement_definitions.keys + %w(THEN TO STEP) - %w(ARRREAD ARRPRINT MATREAD MATPRINT)
+    keywords = statement_definitions.keys +
+               %w(THEN TO STEP) -
+               %w(ARRREAD ARRPRINT MATREAD MATPRINT)
+    
     tokenizers << ListTokenBuilder.new(keywords, KeywordToken)
 
     operators = [
@@ -198,7 +223,9 @@ class StatementFactory
 
     tokenizers <<
       ListTokenBuilder.new(FunctionFactory.function_names, FunctionToken)
-    tokenizers << ListTokenBuilder.new(('FNA'..'FNZ').to_a, UserFunctionToken)
+
+    function_names = ('FNA'..'FNZ').to_a
+    tokenizers << ListTokenBuilder.new(function_names, UserFunctionToken)
 
     tokenizers << TextTokenBuilder.new
     tokenizers << NumberTokenBuilder.new
@@ -215,8 +242,7 @@ class AbstractStatement
   def initialize(keywords, text, tokens)
     @keywords = keywords
     @text = text
-    tokens = remove_break_tokens(tokens)
-    @tokens = remove_whitespace_tokens(tokens)
+    @tokens = tokens
     @errors = []
   end
 
@@ -238,24 +264,20 @@ class AbstractStatement
 
   protected
 
-  def remove_break_tokens(tokens)
-    new_list = []
-
+  def split_on_token(tokens, token_to_split)
+    results = []
+    list = []
     tokens.each do |token|
-      new_list << token unless token.class.to_s == 'BreakToken'
+      if token.to_s != token_to_split
+        list << token
+      else
+        results << list unless list.empty?
+        list = []
+        results << token
+      end
     end
-
-    new_list
-  end
-
-  def remove_whitespace_tokens(tokens)
-    new_list = []
-
-    tokens.each do |token|
-      new_list << token unless token.class.to_s == 'WhitespaceToken'
-    end
-
-    new_list
+    results << list unless list.empty?
+    results
   end
 
   def make_coord(c)
@@ -868,22 +890,6 @@ class ForStatement < AbstractStatement
       @errors << 'Control variable must be a variable'
     end
     parts[2]
-  end
-
-  def split_on_token(tokens, token_to_split)
-    results = []
-    list = []
-    tokens.each do |token|
-      if token.to_s != token_to_split
-        list << token
-      else
-        results << list unless list.empty?
-        list = []
-        results << token
-      end
-    end
-    results << list unless list.empty?
-    results
   end
 
   def make_to_value(tokens)
