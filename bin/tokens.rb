@@ -1,6 +1,7 @@
 # abstract token
 class AbstractToken
   def initialize
+    @is_whitespace = false
     @is_keyword = false
     @is_operator = false
     @is_separator = false
@@ -12,7 +13,10 @@ class AbstractToken
     @is_variable = false
     @is_groupstart = false
     @is_groupend = false
-    @is_whitespace = false
+  end
+
+  def whitespace?
+    @is_whitespace
   end
 
   def keyword?
@@ -59,10 +63,6 @@ class AbstractToken
     @is_groupend
   end
 
-  def whitespace?
-    @is_whitespace
-  end
-
   def operand?
     @is_function || @is_text_constant || @is_numeric_constant ||
       @is_boolean_constant || @is_user_function || @is_variable
@@ -107,6 +107,17 @@ end
 class KeywordToken < AbstractToken
   def initialize(text)
     @is_keyword = true
+    @text = text
+  end
+
+  def to_s
+    @text
+  end
+end
+
+# remark comment token
+class RemarkToken < AbstractToken
+  def initialize(text)
     @text = text
   end
 

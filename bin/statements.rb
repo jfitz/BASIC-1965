@@ -83,34 +83,7 @@ class StatementFactory
 
   private
 
-  def squeeze_out_spaces(text)
-    squeezed_text = ''
-    in_quotes = false
-    text.each_char do |c|
-      in_remark = squeezed_text.start_with?('REM')
-      in_quotes = !in_quotes if c == '"'
-      squeezed_text += c if c != ' ' || in_quotes || in_remark
-    end
-    squeezed_text
-  end
-
   def create(text)
-    squeezed = squeeze_out_spaces(text)
-    tokens = []
-    
-    return Line.new(text, EmptyStatement.new, tokens) if
-      squeezed == ''
-    
-    return Line.new(text,
-                    RemarkStatement.new(['REMARK'], text, tokens),
-                    tokens) if
-      squeezed[0..5] == 'REMARK'
-    
-    return Line.new(text,
-                    RemarkStatement.new(['REM'],text, tokens),
-                    tokens) if
-      squeezed[0..2] == 'REM'
-
     tokens = tokenize(text)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
@@ -157,10 +130,15 @@ class StatementFactory
 
   def create_statement(keywords, text, tokens)
     statement = UnknownStatement.new(text)
-    keyword = keywords.join('')
-    statement =
-      @statement_definitions[keyword].new(keywords, text, tokens) if
+
+    if keywords.empty? && tokens.empty?
+      statement = EmptyStatement.new
+    else
+      keyword = keywords.join('')
+      statement =
+        @statement_definitions[keyword].new(keywords, text, tokens) if
         @statement_definitions.key?(keyword)
+    end
     statement
   end
 
@@ -193,6 +171,8 @@ class StatementFactory
       'NEXT' => NextStatement,
       'PRINT' => PrintStatement,
       'READ' => ReadStatement,
+      'REM' => RemarkStatement,
+      'REMARK' => RemarkStatement,
       'RESTORE' => RestoreStatement,
       'RETURN' => ReturnStatement,
       'STOP' => StopStatement,
@@ -203,8 +183,11 @@ class StatementFactory
   def make_tokenizers
     tokenizers = []
 
+    tokenizers << RemarkTokenBuilder.new
+    
     keywords = statement_definitions.keys +
                %w(THEN TO STEP) -
+               %w(REM REMARK) -
                %w(ARRREAD ARRPRINT MATREAD MATPRINT)
     
     tokenizers << ListTokenBuilder.new(keywords, KeywordToken)
@@ -344,15 +327,11 @@ end
 class RemarkStatement < AbstractStatement
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
-    # override the method to squeeze spaces from line
-    squeezed = line.strip
-    keyword = keywords.join('')
-    index = keyword.size
-    @rest = squeezed[index..-1]
+    @rest = tokens
   end
 
   def to_s
-    @keywords.join(' ') + @rest
+    @keywords.join(' ') + @rest.join
   end
 
   def execute(_, _)

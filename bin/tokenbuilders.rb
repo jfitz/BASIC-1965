@@ -79,6 +79,74 @@ class ListTokenBuilder
   end
 end
 
+# accept characters to match item in list
+class RemarkTokenBuilder
+  attr_reader :count
+  
+  def initialize
+    @legals = %w(REMARK REM)
+    @count = 0
+  end
+
+  def try(text)
+    token = ''
+    candidate = ''
+    i = 0
+    best_candidate = ''
+    best_count = 0
+    if text.size > 0 && text[0] != ' '
+      refused = false
+      until i == text.size || refused
+        # ignore space char
+        unless text[i] == ' '
+          c = text[i]
+          refused = !accept?(candidate, c)
+          unless refused
+            candidate = candidate + c
+            i += 1
+            if @legals.include?(candidate)
+              best_candidate = candidate
+              best_count = i
+            end
+          end
+        else
+          i += 1
+        end
+      end
+    end
+
+    @count = 0
+    unless best_candidate.size.zero?
+      remark = text[best_count..-1]
+      @keyword_token = best_candidate
+      @remark_token = remark
+      @count = text.size
+    end
+
+    @count > 0
+  end
+
+  def token
+    t1 = KeywordToken.new(@keyword_token)
+    t2 = RemarkToken.new(@remark_token)
+    [t1, t2]
+  end
+
+  private
+
+  def accept?(candidate, c)
+    token = candidate + c
+    count = token.size - 1
+    result = false
+
+    @legals.each do |legal|
+      result = true if legal[0..count] == token
+    end
+
+    result
+  end
+end
+
 # token reader for whitespace
 class WhitespaceTokenBuilder
   def try(text)

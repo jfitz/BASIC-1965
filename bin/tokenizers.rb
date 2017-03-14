@@ -13,7 +13,11 @@ class Tokenizer
       token, count = try_invalid(text) if token.nil? && !@invalid_tokenizer.nil?
       raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
 
-      tokens << token
+      if token.class.to_s == 'Array'
+        tokens += token
+      else
+        tokens << token
+      end
       text = text[count..-1]
     end
     tokens
