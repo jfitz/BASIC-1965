@@ -254,19 +254,25 @@ class AbstractStatement
 
     prev_open_parens = false
     prev_hash = false
-    prev_operator = false
     prev_operand = false
+    prev_operator = false
+    prev_variable = false
     prev_2_operand = false
     @tokens.each do |token|
       tokens << WhitespaceToken.new(' ') unless
-        token.separator? || token.groupstart? || token.groupend? ||
-        prev_open_parens || prev_hash ||
+        token.separator? ||
+        (token.groupstart? && prev_variable) ||
+        token.groupend? ||
+        prev_open_parens ||
+        prev_hash ||
         (prev_operator && !prev_2_operand)
       tokens << token
       prev_open_parens = token.groupstart?
       prev_hash = (token.operator? && token.hash?)
+      prev_variable = token.variable? || token.function? ||
+                      token.user_function?
       prev_2_operand = prev_operand
-      prev_operand = token.operand?
+      prev_operand = token.operand? || token.groupend?
       prev_operator = token.operator?
     end
 
@@ -624,24 +630,6 @@ class AbstractPrintStatement < AbstractStatement
     @final = final_carriage
   end
   
-  def to_s
-    s = ''
-    @tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        s << ' '
-        s << tokens_list.map(&:to_s).join
-      else
-        s << tokens_list.to_s
-      end
-    end
-
-    if @tokens_lists.size.zero?
-      ' ' + @keywords.join(' ')
-    else
-      ' ' + @keywords.join(' ') + s
-    end
-  end
-
   def extract_file_handle(print_items, interpreter)
     print_items = print_items.clone
     file_handle = nil

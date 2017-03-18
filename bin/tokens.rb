@@ -72,6 +72,7 @@ end
 # invalid token
 class InvalidToken < AbstractToken
   def initialize(text)
+    super()
     @text = text
   end
 
@@ -83,6 +84,7 @@ end
 # break token
 class BreakToken < AbstractToken
   def initialize(text)
+    super()
     @text = text
   end
 
@@ -94,6 +96,7 @@ end
 # whitespace token
 class WhitespaceToken < AbstractToken
   def initialize(text)
+    super()
     @is_whitespace = true
     @text = text
   end
@@ -106,6 +109,7 @@ end
 # keyword token
 class KeywordToken < AbstractToken
   def initialize(text)
+    super()
     @is_keyword = true
     @text = text
   end
@@ -118,6 +122,7 @@ end
 # remark comment token
 class RemarkToken < AbstractToken
   def initialize(text)
+    super()
     @text = text
   end
 
@@ -129,6 +134,7 @@ end
 # operator token
 class OperatorToken < AbstractToken
   def initialize(text)
+    super()
     @is_operator = true
     @text = text
   end
@@ -155,6 +161,7 @@ end
 # group start token
 class GroupStartToken < AbstractToken
   def initialize(text)
+    super()
     @is_groupstart = true
     @text = text
   end
@@ -167,6 +174,7 @@ end
 # group end token
 class GroupEndToken < AbstractToken
   def initialize(text)
+    super()
     @is_groupend = true
     @text = text
   end
@@ -179,6 +187,7 @@ end
 # parameter separator token
 class ParamSeparatorToken < AbstractToken
   def initialize(text)
+    super()
     @is_separator = true
     @text = text
   end
@@ -191,6 +200,7 @@ end
 # function token
 class FunctionToken < AbstractToken
   def initialize(text)
+    super()
     @is_function = true
     @text = text
   end
@@ -203,6 +213,7 @@ end
 # text constant token
 class TextConstantToken < AbstractToken
   def initialize(text)
+    super()
     @is_text_constant = true
     @text = text
   end
@@ -219,6 +230,7 @@ end
 # numeric constant token
 class NumericConstantToken < AbstractToken
   def initialize(text)
+    super()
     @is_numeric_constant = true
     @text = text
   end
@@ -239,6 +251,7 @@ end
 # boolean constant token
 class BooleanConstantToken < AbstractToken
   def initialize(text)
+    super()
     @is_boolean_constant = true
     @text = text
   end
@@ -251,6 +264,7 @@ end
 # user function token
 class UserFunctionToken < AbstractToken
   def initialize(text)
+    super()
     @is_user_function = true
     @text = text
   end
@@ -263,6 +277,7 @@ end
 # variable token
 class VariableToken < AbstractToken
   def initialize(text)
+    super()
     @is_variable = true
     @text = text
   end
