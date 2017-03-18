@@ -117,9 +117,13 @@ class RemarkTokenBuilder
 
     @count = 0
     unless best_candidate.size.zero?
-      remark = text[best_count..-1]
       @keyword_token = best_candidate
-      @remark_token = remark
+      remark = text[best_count..-1]
+      if remark[0] == ' '
+        @remark_token = remark[1..-1]
+      else
+        @remark_token = remark
+      end
       @count = text.size
     end
 
@@ -127,9 +131,10 @@ class RemarkTokenBuilder
   end
 
   def token
-    t1 = KeywordToken.new(@keyword_token)
-    t2 = RemarkToken.new(@remark_token)
-    [t1, t2]
+    tokens = []
+    tokens << KeywordToken.new(@keyword_token)
+    tokens << RemarkToken.new(@remark_token) unless @remark_token.empty?
+    tokens
   end
 
   private

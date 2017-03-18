@@ -372,9 +372,9 @@ class Interpreter
 
   private
 
-  def print_trace_info(line)
+  def print_trace_info(statement)
     @console_io.newline_when_needed
-    @console_io.print_out "#{@current_line_number}: #{line}"
+    @console_io.print_out @current_line_number.to_s + ':' + statement.to_s
     @console_io.newline
   end
 

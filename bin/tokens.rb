@@ -143,6 +143,10 @@ class OperatorToken < AbstractToken
       @text == '=' || @text == '<>'
   end
 
+  def hash?
+    @text == '#'
+  end
+  
   def to_s
     @text
   end
