@@ -816,15 +816,6 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def to_s
-    keywords = @keywords.join(' ')
-    if @has_step_value
-      ' ' + "#{keywords} #{@control} = #{@start} TO #{@end}" + " STEP #{@step_value}"
-    else
-      ' ' + "#{keywords} #{@control} = #{@start} TO #{@end}"
-    end
-  end
-
   def execute(interpreter, trace)
     from = @start.evaluate(interpreter)[0]
     to = @end.evaluate(interpreter)[0]
@@ -907,10 +898,6 @@ class NextStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
-  end
-
-  def to_s
-    ' ' + @keywords.join(' ') + ' ' + @control.to_s
   end
 
   def execute(interpreter, trace)

@@ -15,7 +15,7 @@ BASIC-1965 interpreter version -1
 240 LET C(J,I) = 1/R
 250 GOTO 210
 260
-270 FOR I = 2 TO N-1
+270 FOR I = 2 TO N - 1
 280 LET S = 0
 290 FOR J = 1 TO N
 300 LET S = S+C(I,J)
@@ -39,7 +39,7 @@ BASIC-1965 interpreter version -1
 480 PRINT "CURRENT FLOW"
 490 PRINT
 500 LET S1 = 0
-510 FOR I = 2 TO N-1
+510 FOR I = 2 TO N - 1
 520 PRINT "NODE" I
 530 FOR J = 1 TO N
 540 PRINT FNR(C(I, J) * (P(I) - P(J))),

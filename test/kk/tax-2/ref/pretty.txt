@@ -7,7 +7,7 @@ BASIC-1965 interpreter version -1
 100 FOR Y1 = 1 TO Y
 105 PRINT Y1,
 108 LET A1 = A
-110 FOR I = 1 TO Y1-1
+110 FOR I = 1 TO Y1 - 1
 120 LET D(I) = A1*2/Y
 130 LET A1 = A1-D(I)
 150 NEXT I

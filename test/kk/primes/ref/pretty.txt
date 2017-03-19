@@ -13,7 +13,7 @@ BASIC-1965 interpreter version -1
 50 LET K = K+1
 55 LET P(K) = P
 56 IF P>SQR(2000) THEN 90
-60 FOR I = P TO 2000 STEP 2*P
+60 FOR I = P TO 2000 STEP 2 * P
 65 LET X = (I-1)/2
 70 LET N(X) = -1
 80 NEXT I

@@ -19,8 +19,8 @@ BASIC-1965 interpreter version -1
 310 LET T(M+K) = 0
 320 NEXT K
 330
-360 FOR K = 1 TO M+N-1
-370 FOR L = K+1 TO M+N
+360 FOR K = 1 TO M + N - 1
+370 FOR L = K + 1 TO M + N
 380 IF Z(K)<=Z(L) THEN 450
 390 LET T = Z(K)
 400 LET Z(K) = Z(L)
@@ -41,14 +41,14 @@ BASIC-1965 interpreter version -1
 570 LET T = T+J
 580 LET K = K+1
 590 GOTO 540
-600 FOR L = B TO J-1
+600 FOR L = B TO J - 1
 610 LET Z(L) = T/K
 620 NEXT L
 630 IF J<=M+N THEN 510
 640
 740 LET S(0) = 0
 750 LET S(1) = 0
-760 FOR K = 1 TO M+N
+760 FOR K = 1 TO M + N
 770 LET S(T(K)) = S(T(K))+Z(K)
 790 NEXT K
 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)

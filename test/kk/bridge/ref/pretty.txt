@@ -9,7 +9,7 @@ BASIC-1965 interpreter version -1
 70
 100 FOR I = 1 TO 13
 109 IF I>13-I THEN 180
-110 FOR J = I TO 13-I
+110 FOR J = I TO 13 - I
 120 LET X = H(J)
 130 LET Y = H(J+1)
 140 IF X>Y THEN 170
