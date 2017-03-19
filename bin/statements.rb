@@ -924,16 +924,6 @@ class AbstractReadStatement < AbstractStatement
     super
   end
 
-  def to_s
-    list = []
-    @tokens_lists.each do |tokens_list|
-      s = ''
-      tokens_list.each { |token| s += token.to_s }
-      list << s
-    end
-    ' ' + @keywords.join(' ') + ' ' + list.join(', ')
-  end
-
   private
 
   def extract_file_handle(tokens_lists, interpreter)
@@ -1042,11 +1032,6 @@ class DefineFunctionStatement < AbstractStatement
       puts e.message
       @errors << e.message
     end
-  end
-
-  def to_s
-    ' ' + @keywords.join(' ') + ' ' + @name +
-      "(#{@arguments.join(',')}) = " + @template.to_s
   end
 
   def pre_execute(interpreter)

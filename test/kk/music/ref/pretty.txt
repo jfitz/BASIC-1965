@@ -1,7 +1,7 @@
 BASIC-1965 interpreter version -1
 
 10 DIM S(4, 100), P(6, 6), M(100)
-20 DEF FNC(X) = X-7*INT(X/7)
+20 DEF FNC(X) = X - 7 * INT(X / 7)
 30 PRINT "NOTE NUMBER", "CHORD",
 40 PRINT " S     A     T     B"
 50 PRINT
@@ -16,7 +16,7 @@ BASIC-1965 interpreter version -1
 150 DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1
 160 DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1, 1, 0
 190 FOR V = 0 TO 4
-200 READ S(V,N9)
+200 READ S(V, N9)
 210 NEXT V
 220 DATA 1, 0, -3, -5, -7
 240 LET C2 = 1
