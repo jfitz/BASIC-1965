@@ -11,9 +11,9 @@ BASIC-1965 interpreter version -1
 160 FOR X = X0 TO X1 - H STEP H
 170 LET D1 = FNF(X)
 180 LET Y1 = Y
-190 LET Y = Y+D1*H/2
-200 LET D2 = FNF(X+H/2)
-210 LET Y = Y1+D2*H
+190 LET Y = Y + D1 * H / 2
+200 LET D2 = FNF(X + H / 2)
+210 LET Y = Y1 + D2 * H
 220 PRINT X + H, Y
 230 NEXT X
 240

@@ -12,9 +12,9 @@ BASIC-1965 interpreter version -1
 210 PRINT 0, X, Y
 220 FOR I = 1 TO P
 230 FOR T = 0 TO T9 / P STEP T8
-240 LET X = X+(A*X-B*X*Y)*T8
-250 LET Y = Y+(C*X*Y-D*Y)*T8
-255 LET T1 = T1+T8
+240 LET X = X + (A * X - B * X * Y) * T8
+250 LET Y = Y + (C * X * Y - D * Y) * T8
+255 LET T1 = T1 + T8
 260 NEXT T
 270 PRINT T1, X, Y
 280 NEXT I

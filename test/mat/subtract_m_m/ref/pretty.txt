@@ -4,11 +4,11 @@ BASIC-1965 interpreter version -1
 20 DIM A(5, 5), B(5, 5)
 30 FOR I = 1 TO 5
 40 FOR J = 1 TO 5
-50 LET A(I,J) = I+J
-52 LET B(I,J) = I*J
+50 LET A(I, J) = I + J
+52 LET B(I, J) = I * J
 60 NEXT J
 70 NEXT I
-100 MAT C = A-B
+100 MAT C = A - B
 110 PRINT "MATRIX A"
 120 MAT PRINT A;
 130 PRINT "MATRIX B"

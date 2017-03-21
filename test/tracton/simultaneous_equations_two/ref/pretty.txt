@@ -6,10 +6,10 @@ BASIC-1965 interpreter version -1
 40 PRINT "CX + DY = F"
 50 PRINT "ENTER PARAMETERS A,B,C,D,E,F"
 60 INPUT A, B, C, D, E, F
-70 LET M = (A*D)-(B*C)
-80 IF M=0 THEN 140
-90 LET X = ((E*D)-(B*F))/M
-100 LET Y = ((A*F)-(E*C))/M
+70 LET M = (A * D) - (B * C)
+80 IF M = 0 THEN 140
+90 LET X = ((E * D) - (B * F)) / M
+100 LET Y = ((A * F) - (E * C)) / M
 110 PRINT "SOLUTION", "X = "; X, "Y = "; Y
 120 PRINT "********************"
 130 GOTO 160
@@ -17,7 +17,7 @@ BASIC-1965 interpreter version -1
 150 PRINT "********************"
 160 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 170 INPUT L
-180 IF L=1 THEN 200
+180 IF L = 1 THEN 200
 190 STOP
 200 PRINT
 210 GOTO 30

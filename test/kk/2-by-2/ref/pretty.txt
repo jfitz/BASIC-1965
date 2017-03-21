@@ -4,9 +4,9 @@ BASIC-1965 interpreter version -1
 110
 120 PRINT
 130 READ A, B, C, D
-140 LET N = A+B+C+D
-150 LET E = ABS(A*D-B*C)-N/2
-160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
+140 LET N = A + B + C + D
+150 LET E = ABS(A * D - B * C) - N / 2
+160 LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
 170
 180 PRINT A, B
 190 PRINT C, D, X

@@ -9,10 +9,10 @@ BASIC-1965 interpreter version -1
 100 FOR I = 1 TO N
 200 FOR J = 1 TO N - 1
 210 LET X = S(J)
-220 LET Y = S(J+1)
-230 IF X<=Y THEN 300
+220 LET Y = S(J + 1)
+230 IF X <= Y THEN 300
 240 LET S(J) = Y
-250 LET S(J+1) = X
+250 LET S(J + 1) = X
 300 NEXT J
 310 NEXT I
 400 FOR I = 1 TO N

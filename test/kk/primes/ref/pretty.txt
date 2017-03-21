@@ -8,13 +8,13 @@ BASIC-1965 interpreter version -1
 25 LET P(0) = 2
 26 LET K = 0
 30 FOR P = 3 TO 2000 STEP 2
-35 LET X = (P-1)/2
-40 IF N(X)<0 THEN 90
-50 LET K = K+1
+35 LET X = (P - 1) / 2
+40 IF N(X) < 0 THEN 90
+50 LET K = K + 1
 55 LET P(K) = P
-56 IF P>SQR(2000) THEN 90
+56 IF P > SQR(2000) THEN 90
 60 FOR I = P TO 2000 STEP 2 * P
-65 LET X = (I-1)/2
+65 LET X = (I - 1) / 2
 70 LET N(X) = -1
 80 NEXT I
 90 NEXT P

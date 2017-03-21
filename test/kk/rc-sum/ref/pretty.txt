@@ -9,7 +9,7 @@ BASIC-1965 interpreter version -1
 70 FOR I = 1 TO R
 80 LET S = 0
 90 FOR J = 1 TO C
-100 LET S = S+T(I,J)
+100 LET S = S + T(I, J)
 110 NEXT J
 120 PRINT "SUM OF ROW" I; "EQUALS" S
 130 NEXT I
@@ -17,7 +17,7 @@ BASIC-1965 interpreter version -1
 150 FOR J = 1 TO C
 160 LET S = 0
 170 FOR I = 1 TO R
-180 LET S = S+T(I,J)
+180 LET S = S + T(I, J)
 190 NEXT I
 200 PRINT "SUM OF COLUMN" J; "EQUALS" S
 210 NEXT J

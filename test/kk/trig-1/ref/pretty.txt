@@ -6,7 +6,7 @@ BASIC-1965 interpreter version -1
 130 DEF FNC(X) = COS(FND(X))
 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
 150 READ X, A, Y
-160 LET Z = SQR(X^2+Y^2-2*X*Y*FNC(A))
+160 LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
 170 PRINT X, A, Y, Z
 180 GOTO 150
 190 DATA 10, 60, 20, 3, 90, 4, 10, 120, 10

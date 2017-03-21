@@ -11,18 +11,18 @@ BASIC-1965 interpreter version -1
 90 FOR I = 1 TO N
 100 PRINT "SAMPLE = "
 110 INPUT X
-120 LET A = A+X
-130 LET B = B+(X^2)
-140 LET C = C+(X^3)
-150 LET D = D+(X^4)
+120 LET A = A + X
+130 LET B = B + (X ^ 2)
+140 LET C = C + (X ^ 3)
+150 LET D = D + (X ^ 4)
 160 NEXT I
-170 LET J = A/N
-180 LET E = (B/N)-(J^2)
-190 LET F = (C/N)-((3*J*B)/N)+(2*(J^3))
-200 LET G = (D/N)-((4*J*C)/N)
-210 LET H = G+((6*(J^2)*B)/N)-(3*(J^4))
-220 LET K = F/(E^(3/2))
-230 LET L = H/(E^2)
+170 LET J = A / N
+180 LET E = (B / N) - (J ^ 2)
+190 LET F = (C / N) - ((3 * J * B) / N) + (2 * (J ^ 3))
+200 LET G = (D / N) - ((4 * J * C) / N)
+210 LET H = G + ((6 * (J ^ 2) * B) / N) - (3 * (J ^ 4))
+220 LET K = F / (E ^ (3 / 2))
+230 LET L = H / (E ^ 2)
 240 PRINT "1ST MOMENT = "; J
 250 PRINT "2ND MOMENT = "; E
 260 PRINT "3RD MOMENT = "; F
@@ -32,7 +32,7 @@ BASIC-1965 interpreter version -1
 300 PRINT "**********************"
 310 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 320 INPUT Z
-330 IF Z=1 THEN 350
+330 IF Z = 1 THEN 350
 340 STOP
 350 PRINT
 360 GOTO 30
