@@ -76,7 +76,7 @@ Differences from K&K BASIC
 
 I have changed a few things:
 
-- Statements are spaced properly when listed (K&K BASIC keeps the original spacing)
+- The single quote is used for a comment on a line
 - The PRINT statement semicolon operator spaces text items together and numeric items apart
 - The RND() function can have zero parameters
 - The RND(X) function uses the passed value as an upper bound for the result. K&K BASIC ignores this parameter. Use the –ignore-rnd-arg option to match K&K.
@@ -322,6 +322,9 @@ Program statements
 
 Program statements are stored as part of the program.
 Every program statement must have a line number.
+
+A line may contain a comment denoted by a single quote.
+Everything to the right of the quote is a comment.
 
 Line numbers
 ~~~~~~~~~~~~
