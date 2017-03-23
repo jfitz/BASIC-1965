@@ -169,6 +169,25 @@ class WhitespaceTokenBuilder
   end
 end
 
+# token reader for comments
+class CommentTokenBuilder
+  attr_reader :count
+
+  def try(text)
+    @token = ''
+
+    if text.size > 0 && text[0] == "'"
+      @token = text
+    end
+
+    @count = @token.size
+  end
+
+  def token
+    CommentToken.new(@token)
+  end
+end
+
 # token reader for text constants
 class TextTokenBuilder
   attr_reader :count

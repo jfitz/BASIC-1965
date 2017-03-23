@@ -2,6 +2,7 @@
 class AbstractToken
   def initialize
     @is_whitespace = false
+    @is_comment = false
     @is_keyword = false
     @is_operator = false
     @is_separator = false
@@ -17,6 +18,10 @@ class AbstractToken
 
   def whitespace?
     @is_whitespace
+  end
+
+  def comment?
+    @is_comment
   end
 
   def keyword?
@@ -111,6 +116,19 @@ class KeywordToken < AbstractToken
   def initialize(text)
     super()
     @is_keyword = true
+    @text = text
+  end
+
+  def to_s
+    @text
+  end
+end
+
+# comment token
+class CommentToken < AbstractToken
+  def initialize(text)
+    super()
+    @is_comment = true
     @text = text
   end
 

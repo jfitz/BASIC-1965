@@ -87,6 +87,11 @@ class StatementFactory
     tokens = tokenize(text)
     tokens = remove_break_tokens(tokens)
     tokens = remove_whitespace_tokens(tokens)
+
+    comment = nil
+    if tokens.size > 0 && tokens[-1].comment?
+      comment = tokens.pop
+    end
     keywords = extract_keywords(tokens)
     
     begin
@@ -94,7 +99,7 @@ class StatementFactory
     rescue BASICException
       statement = InvalidStatement.new(text)
     end
-    Line.new(text, statement, tokens)
+    Line.new(text, statement, tokens, comment)
   end
 
   private
@@ -183,6 +188,7 @@ class StatementFactory
   def make_tokenizers
     tokenizers = []
 
+    tokenizers << CommentTokenBuilder.new
     tokenizers << RemarkTokenBuilder.new
     
     keywords = statement_definitions.keys +

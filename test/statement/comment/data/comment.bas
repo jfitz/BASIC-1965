@@ -1,0 +1,5 @@
+10 REM TEST OF COMMENTS
+20 LET A = 1           ' First comment
+30 LET B=SQR(2^2)  ' Second comment
+40 REM Remark with comment ' and here it is
+99 END
