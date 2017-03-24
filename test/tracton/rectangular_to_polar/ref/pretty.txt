@@ -24,8 +24,7 @@ BASIC-1965 interpreter version -1
 220 LET W = 90
 230 LET R = Y
 240 GOTO 310
-250 X > 0 THEN 290
- Unknown statement 'X > 0 THEN 290'
+250 IF X > 0 THEN 290
 260 LET W = 180
 270 LET R = ABS(X)
 280 GOTO 310
