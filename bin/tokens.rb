@@ -170,7 +170,7 @@ class OperatorToken < AbstractToken
   def hash?
     @text == '#'
   end
-  
+
   def to_s
     @text
   end
