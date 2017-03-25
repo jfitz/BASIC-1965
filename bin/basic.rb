@@ -173,9 +173,10 @@ class Line
   attr_reader :statement
   attr_reader :tokens
 
-  def initialize(text, statement, tokens, comment)
+  def initialize(text, statement, keywords, tokens, comment)
     @text = text
     @statement = statement
+    @keywords = keywords
     @tokens = tokens
     @comment = comment
   end
@@ -185,7 +186,7 @@ class Line
   end
 
   def pretty
-    text = @statement.pretty
+    text = pretty_tokens
     unless @comment.nil?
       space = @text.size - (text.size + @comment.to_s.size)
       space = 5 if space < 5
@@ -193,6 +194,45 @@ class Line
       text += @comment.to_s
     end
     text
+  end
+  
+  def pretty_tokens
+    tokens = []
+
+    @keywords.each do |token|
+      tokens << WhitespaceToken.new(' ')
+      tokens << token
+    end
+    
+    prev_open_parens = false
+    prev_hash = false
+    prev_operand = false
+    prev_operator = false
+    prev_variable = false
+    prev_2_operand = false
+    @tokens.each do |token|
+      tokens << WhitespaceToken.new(' ') unless
+        token.separator? ||
+        (token.groupstart? && prev_variable) ||
+        token.groupend? ||
+        prev_open_parens ||
+        prev_hash ||
+        (prev_operator && !prev_2_operand)
+      tokens << token
+      prev_open_parens = token.groupstart?
+      prev_hash = (token.operator? && token.hash?)
+      prev_variable = token.variable? || token.function? ||
+                      token.user_function?
+      prev_2_operand = prev_operand
+      prev_operand = token.operand? || token.groupend?
+      prev_operator = token.operator?
+    end
+
+    s = ''
+    tokens.each do |token|
+      s += token.to_s
+    end
+    s
   end
 end
 
@@ -386,9 +426,9 @@ class Interpreter
 
   private
 
-  def print_trace_info(statement)
+  def print_trace_info(line)
     @console_io.newline_when_needed
-    @console_io.print_out @current_line_number.to_s + ':' + statement.to_s
+    @console_io.print_out @current_line_number.to_s + ':' + line.pretty
     @console_io.newline
   end
 
@@ -400,7 +440,7 @@ class Interpreter
   def execute_a_statement(do_trace)
     line = @program_lines[@current_line_number]
     statement = line.statement
-    print_trace_info(statement) if do_trace
+    print_trace_info(line) if do_trace
     if statement.errors.empty?
       statement.execute(self, do_trace)
     else

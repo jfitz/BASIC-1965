@@ -84,22 +84,22 @@ class StatementFactory
   private
 
   def create(text)
-    tokens = tokenize(text)
-    tokens = remove_break_tokens(tokens)
-    tokens = remove_whitespace_tokens(tokens)
+    all_tokens = tokenize(text)
+    all_tokens = remove_break_tokens(all_tokens)
+    all_tokens = remove_whitespace_tokens(all_tokens)
 
     comment = nil
-    if tokens.size > 0 && tokens[-1].comment?
-      comment = tokens.pop
+    if all_tokens.size > 0 && all_tokens[-1].comment?
+      comment = all_tokens.pop
     end
-    keywords = extract_keywords(tokens)
+    keywords, tokens = extract_keywords(all_tokens)
     
     begin
       statement = create_statement(keywords, text, tokens)
     rescue BASICException
       statement = InvalidStatement.new(text)
     end
-    Line.new(text, statement, tokens, comment)
+    Line.new(text, statement, keywords, tokens, comment)
   end
 
   private
@@ -124,13 +124,16 @@ class StatementFactory
     new_list
   end
 
-  def extract_keywords(tokens)
+  def extract_keywords(all_tokens)
     keywords = []
-    while !tokens.empty? && tokens[0].keyword?
-      token = tokens.shift
-      keywords << token.to_s
+    tokens = []
+    saw_non_keyword = false
+    all_tokens.each do |token|
+      saw_non_keyword = true if !token.keyword?
+      keywords << token unless saw_non_keyword
+      tokens << token if saw_non_keyword
     end
-    keywords
+    [keywords, tokens]
   end
 
   def create_statement(keywords, text, tokens)
@@ -139,7 +142,7 @@ class StatementFactory
     if keywords.empty? && tokens.empty?
       statement = EmptyStatement.new
     else
-      keyword = keywords.join('')
+      keyword = keywords.map(&:to_s).join('')
       statement =
         @statement_definitions[keyword].new(keywords, text, tokens) if
         @statement_definitions.key?(keyword)
@@ -237,56 +240,6 @@ class AbstractStatement
 
   def pre_execute(_)
     0
-  end
-
-  def list
-    @text
-  end
-
-  def pretty
-    if @errors.empty?
-      to_s
-    else
-      @text
-    end
-  end
-
-  def to_s
-    tokens = []
-    @keywords.each do |keyword|
-      tokens << WhitespaceToken.new(' ')
-      tokens << keyword
-    end
-
-    prev_open_parens = false
-    prev_hash = false
-    prev_operand = false
-    prev_operator = false
-    prev_variable = false
-    prev_2_operand = false
-    @tokens.each do |token|
-      tokens << WhitespaceToken.new(' ') unless
-        token.separator? ||
-        (token.groupstart? && prev_variable) ||
-        token.groupend? ||
-        prev_open_parens ||
-        prev_hash ||
-        (prev_operator && !prev_2_operand)
-      tokens << token
-      prev_open_parens = token.groupstart?
-      prev_hash = (token.operator? && token.hash?)
-      prev_variable = token.variable? || token.function? ||
-                      token.user_function?
-      prev_2_operand = prev_operand
-      prev_operand = token.operand? || token.groupend?
-      prev_operator = token.operator?
-    end
-
-    s = ''
-    tokens.each do |token|
-      s += token.to_s
-    end
-    s
   end
 
   protected
