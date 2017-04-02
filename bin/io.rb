@@ -67,7 +67,7 @@ class ConsoleIo
     text.each_char do |c|
       print_out(c)
       @column += 1
-      newline if @max_width > 1 && @column >= @max_width
+      newline if @max_width > 0 && @column >= @max_width
     end
     @last_was_numeric = false
   end
@@ -227,29 +227,44 @@ class FileHandler
     # values must be separated by separators
     # numeric tokens may contain leading signs
     # values may have leading or trailing spaces (or both)
-    tokenizers = []
-    tokenizers << InputNumberTokenBuilder.new
-    tokenizers << ListTokenBuilder.new([','], ParamSeparatorToken)
-    tokenizers << WhitespaceTokenBuilder.new
+    tokenizers = input_tokenizers
 
     tokenizer = Tokenizer.new(tokenizers, nil)
     tokens = tokenizer.tokenize(input_text)
     # drop whitespace
     tokens.delete_if(&:whitespace?)
+
     # verify all even-index tokens are numeric
-    evens = tokens.values_at(* tokens.each_index.select(&:even?))
-    evens.each do |token|
-      raise(BASICException, 'Invalid input') unless token.numeric_constant?
-    end
     # verify all odd-index tokens are separators
-    odds = tokens.values_at(* tokens.each_index.select(&:odd?))
-    odds.each do |token|
-      raise(BASICException, 'Invalid input') unless token.separator?
-    end
+    verify_tokens(tokens)
+
     # convert from tokens to values
     expressions = ValueScalarExpression.new(tokens)
     expressions.evaluate(interpreter)
   end
+
+  private
+
+  def input_tokenizers
+    tokenizers = []
+    tokenizers << InputNumberTokenBuilder.new
+    tokenizers << ListTokenBuilder.new([','], ParamSeparatorToken)
+    tokenizers << WhitespaceTokenBuilder.new
+  end
+
+  def verify_tokens(tokens)
+    evens = tokens.values_at(* tokens.each_index.select(&:even?))
+    evens.each do |token|
+      raise(BASICException, 'Invalid input') unless token.numeric_constant?
+    end
+
+    odds = tokens.values_at(* tokens.each_index.select(&:odd?))
+    odds.each do |token|
+      raise(BASICException, 'Invalid input') unless token.separator?
+    end
+  end
+
+  public
 
   def print_item(text)
     set_mode(:print)
@@ -257,6 +272,7 @@ class FileHandler
   end
 
   def last_was_numeric
+    # for a file, this function does nothing
     set_mode(:print)
   end
 
@@ -266,6 +282,7 @@ class FileHandler
   end
 
   def implied_newline
+    # for a file, this function does nothing
     set_mode(:print)
   end
 
@@ -286,25 +303,48 @@ class FileHandler
 
   def read
     set_mode(:read)
-    while @data_store.empty?
-      line = @file.gets
+
+    tokenizers = read_tokenizers
+    tokenizer = Tokenizer.new(tokenizers, InvalidTokenBuilder.new)
+
+    @data_store = refill(@data_store, @file, tokenizer)
+
+    @data_store.shift
+  end
+
+  private
+
+  def refill(data_store, file, tokenizer)
+    while data_store.empty?
+      line = file.gets
       raise(BASICException, 'End of file') if line.nil?
       line = line.chomp
 
-      tokenizers = []
-      tokenizers << InputNumberTokenBuilder.new
-      tokenizers << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
-      tokenizers << WhitespaceTokenBuilder.new
-
-      tokenizer = Tokenizer.new(tokenizers, InvalidTokenBuilder.new)
-
       tokens = tokenizer.tokenize(line)
       tokens.delete_if { |token| token.separator? || token.whitespace? }
-      tokens.each do |token|
-        t = NumericConstant.new(token)
-        @data_store << t
-      end
+
+      converted = read_convert(tokens)
+      data_store += converted
     end
-    @data_store.shift
+
+    data_store
+  end
+
+  def read_tokenizers
+    tokenizers = []
+    tokenizers << InputNumberTokenBuilder.new
+    tokenizers << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
+    tokenizers << WhitespaceTokenBuilder.new
+  end
+
+  def read_convert(tokens)
+    converted = []
+
+    tokens.each do |token|
+      t = NumericConstant.new(token)
+      converted << t
+    end
+
+    converted
   end
 end
