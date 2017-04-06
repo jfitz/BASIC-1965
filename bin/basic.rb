@@ -878,17 +878,18 @@ end
 
 options = {}
 OptionParser.new do |opt|
-  opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
   opt.on('--tokens') { |o| options[:tokens] = o }
   opt.on('-p', '--pretty SOURCE') { |o| options[:pretty_name] = o }
+  opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
+  opt.on('--no-heading') { |o| options[:no_heading] = o }
+  opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--trace') { |o| options[:trace] = o }
-  opt.on('--no-timing') { |o| options[:notiming] = o }
+  opt.on('--no-timing') { |o| options[:no_timing] = o }
   opt.on('--tty') { |o| options[:tty] = o }
   opt.on('--tty-lf') { |o| options[:tty_lf] = o }
   opt.on('--print-width WIDTH') { |o| options[:print_width] = o }
   opt.on('--zone-width WIDTH') { |o| options[:zone_width] = o }
-  opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--int-floor') { |o| options[:int_floor] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
@@ -897,10 +898,10 @@ end.parse!
 run_filename = options[:run_name]
 list_filename = options[:list_name]
 pretty_filename = options[:pretty_name]
+show_heading = !(options.key?(:no_heading) || false)
 trace_flag = options.key?(:trace) || false
 list_tokens = options.key?(:tokens) || false
-notiming_flag = options.key?(:notiming) || false
-timing_flag = !notiming_flag
+show_timing = !(options.key?(:no_timing) || false)
 output_speed = 0
 output_speed = 10 if options.key?(:tty)
 newline_speed = 0
@@ -914,29 +915,27 @@ int_floor = options.key?(:int_floor) || false
 ignore_rnd_arg = options.key?(:ignore_rnd_arg) || false
 implied_semicolon = options.key?(:implied_semicolon) || false
 
-puts 'BASIC-1965 interpreter version -1'
-puts
+interpreter =
+  Interpreter.new(print_width, zone_width, output_speed, newline_speed,
+                  echo_input, int_floor, ignore_rnd_arg,
+                  implied_semicolon)
+
+if show_heading
+  puts 'BASIC-1965 interpreter version -1'
+  puts
+end
+
 if !run_filename.nil?
-  interpreter =
-    Interpreter.new(print_width, zone_width, output_speed, newline_speed,
-                    echo_input, int_floor, ignore_rnd_arg,
-                    implied_semicolon)
-  interpreter.load_and_run(run_filename, trace_flag, timing_flag)
+  interpreter.load_and_run(run_filename, trace_flag, show_timing)
 elsif !list_filename.nil?
-  interpreter =
-    Interpreter.new(print_width, zone_width, 0, 0, echo_input, int_floor,
-                    ignore_rnd_arg, implied_semicolon)
   interpreter.load_and_list(list_filename, trace_flag, list_tokens)
 elsif !pretty_filename.nil?
-  interpreter =
-    Interpreter.new(print_width, zone_width, 0, 0, echo_input, int_floor,
-                    ignore_rnd_arg, implied_semicolon)
   interpreter.load_and_pretty(pretty_filename, trace_flag)
 else
-  interpreter =
-    Interpreter.new(print_width, zone_width, 0, 0, echo_input, int_floor,
-                    ignore_rnd_arg, implied_semicolon)
   interpreter.go
 end
-puts
-puts 'BASIC-1965 ended'
+
+if show_heading
+  puts
+  puts 'BASIC-1965 ended'
+end
