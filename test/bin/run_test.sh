@@ -7,10 +7,9 @@ OPTIONS=$5
 echo Start test $TESTNAME
 
 # create testbed
-echo Creating testbed...
+echo Create testbed...
 mkdir "$TESTBED/$TESTNAME"
 cp bin/* "$TESTROOT/$TESTGROUP/$TESTNAME/data"/* "$TESTBED/$TESTNAME"
-echo testbed ready
 
 # execute program
 ECODE=0
@@ -21,7 +20,7 @@ then
   cd "$TESTBED/$TESTNAME"
   ruby basic.rb --list $TESTNAME.bas --print-width 0 >list.txt
   cd ../..
-  echo Comparing list...
+  echo Compare list...
   diff "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt"
   ((ECODE+=$?))
 fi
@@ -30,9 +29,9 @@ if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt" ]
 then
   echo Pretty program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb --pretty $TESTNAME.bas --print-width 0 >pretty.txt
+  ruby basic.rb --pretty $TESTNAME.bas --no-heading --print-width 0 >pretty.txt
   cd ../..
-  echo Comparing pretty...
+  echo Compare pretty...
   diff "$TESTBED/$TESTNAME/pretty.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt"
   ((ECODE+=$?))
 fi
@@ -44,7 +43,7 @@ then
     RUN_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/run_options.txt")
   fi
   cd "$TESTBED/$TESTNAME"
-  echo Running program...
+  echo Run program...
   if [ -e stdin.txt ]
   then
     ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --no-heading --echo-input <stdin.txt >stdout.txt $RUN_OPTIONS
@@ -52,7 +51,7 @@ then
     ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --no-heading >stdout.txt $RUN_OPTIONS
   fi
   cd ../..
-  echo Comparing stdout...
+  echo Compare stdout...
   diff "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt"
   ((ECODE+=$?))
 fi
@@ -60,7 +59,7 @@ fi
 if [ -e "test/$TESTGROUP/$TESTNAME/ref/out_files.txt" ]
 then
   while read F ; do
-    echo Comparing $F...
+    echo Compare $F...
     diff "$TESTBED/$TESTNAME/$F" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/$F"
     ((ECODE+=$?))
   done <"$TESTROOT/$TESTGROUP/$TESTNAME/ref/out_files.txt"
