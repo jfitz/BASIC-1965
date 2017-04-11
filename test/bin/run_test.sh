@@ -18,7 +18,7 @@ if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt" ]
 then
   echo List program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb --list $TESTNAME.bas --print-width 0 >list.txt
+  ruby basic.rb --list $TESTNAME.bas --no-heading --print-width 0 >list.txt
   cd ../..
   echo Compare list...
   diff "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt"
