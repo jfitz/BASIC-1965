@@ -102,6 +102,17 @@ class BASICArray
     end
   end
 
+  def write(printer, interpreter, carriage)
+    case @dimensions.size
+    when 0
+      raise BASICException, 'Need dimension in array'
+    when 1
+      write_1(printer, interpreter, carriage)
+    else
+      raise BASICException, 'Too many dimensions in array'
+    end
+  end
+
   private
 
   def make_coord(c)
@@ -115,6 +126,17 @@ class BASICArray
       value = get_value(col)
       value.print(printer)
       carriage.print(printer, interpreter)
+    end
+    printer.newline
+  end
+
+  def write_1(printer, interpreter, carriage)
+    n_cols = @dimensions[0].to_i
+
+    (0..n_cols).each do |col|
+      value = get_value(col)
+      value.write(printer)
+      carriage.write(printer, interpreter)
     end
     printer.newline
   end
@@ -187,6 +209,19 @@ class Matrix
       print_1(printer, interpreter, carriage)
     when 2
       print_2(printer, interpreter, carriage)
+    else
+      raise BASICException, 'Too many dimensions in matrix'
+    end
+  end
+
+  def write(printer, interpreter, carriage)
+    case @dimensions.size
+    when 0
+      raise BASICException, 'Need dimensions in matrix'
+    when 1
+      write_1(printer, interpreter, carriage)
+    when 2
+      write_2(printer, interpreter, carriage)
     else
       raise BASICException, 'Too many dimensions in matrix'
     end
@@ -319,6 +354,33 @@ class Matrix
         value = get_value_2(row, col)
         value.print(printer)
         carriage.print(printer, interpreter)
+      end
+      printer.newline
+    end
+    printer.newline
+  end
+
+  def write_1(printer, interpreter, carriage)
+    n_cols = @dimensions[0].to_i
+
+    (1..n_cols).each do |col|
+      value = get_value_1(col)
+      value.write(printer)
+      carriage.write(printer, interpreter)
+    end
+    printer.newline
+    printer.newline
+  end
+
+  def write_2(printer, interpreter, carriage)
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
+
+    (1..n_rows).each do |row|
+      (1..n_cols).each do |col|
+        value = get_value_2(row, col)
+        value.write(printer)
+        carriage.write(printer, interpreter)
       end
       printer.newline
     end
@@ -871,6 +933,12 @@ class ValueScalarExpression < AbstractExpression
     numeric_constant = numeric_constants[0]
     numeric_constant.print(printer)
   end
+
+  def write(printer, interpreter)
+    numeric_constants = evaluate(interpreter)
+    numeric_constant = numeric_constants[0]
+    numeric_constant.write(printer)
+  end
 end
 
 # Value array expression (an R-value)
@@ -887,6 +955,12 @@ class ValueCompoundExpression < AbstractExpression
     compounds = evaluate(interpreter)
     compound = compounds[0]
     compound.print(printer, interpreter, carriage)
+  end
+
+  def write(printer, interpreter, carriage)
+    compounds = evaluate(interpreter)
+    compound = compounds[0]
+    compound.write(printer, interpreter, carriage)
   end
 end
 

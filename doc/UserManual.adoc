@@ -662,12 +662,12 @@ A comma or semicolon writes a SPACE character to the file.
 
 Examples:
 
-	10 PRINT
-	20 PRINT A
-	30 PRINT A, B
-	40 PRINT "Output"
-	50 PRINT "Results:", R1
-	60 PRINT "Results:"; R2
+	10 PRINT #1
+	20 PRINT #2, A
+	30 PRINT #3; A, B
+	40 PRINT #4; "Output"
+	50 PRINT #5, "Results:", R1
+	60 PRINT #6, "Results:"; R2
 
 The list may include terminating separators.
 A terminating comma or semicolon will write a SPACE and suppress the newline.
@@ -794,6 +794,70 @@ The TRACE statement accepts a single value to set the state.
 The value TRUE or a comparison that evaluates to true will set tracing on.
 The value FALSE or a comparison that evaluates to false will turn off tracing.
 
+WRITE
+~~~~~
+
+Displays a set of variables and constants to the console, with a newline character. The same as the PRINT command, except that WRITE also provides delimiters between values.
+
+Writing to console
+^^^^^^^^^^^^^^^^^^
+
+Syntax:	WRITE expression list
+Items in the list are separated by either commas or semicolons.
+
+Examples:
+
+	10 WRITE
+	20 WRITE A
+	30 WRITE A, B
+	40 WRITE "Output"
+	50 WRITE "Results:", R1
+	60 WRITE "Results:"; R2
+
+The list may include terminating separators.
+A terminating semicolon will suppress the newline.
+A terminating comma will advance to the next tab position and suppress the newline.
+
+	10 WRITE "Processing...";
+	... other statements that generate no output
+	20 WRITE "done"
+
+results in the text "Processing...", "done" on the console.
+
+Numbers are printed with automatic formatting.
+BASIC-1965 will print a number with the necessary number of decimal places.
+It is not possible to force a number of decimal places.
+
+Writing to files
+^^^^^^^^^^^^^^^^
+
+Syntax:	WRITE #filenum; expression list
+
+Items in the list are separated by either commas or semicolons.
+A comma or semicolon writes a SPACE character to the file.
+
+Examples:
+
+	10 WRITE #1
+	20 WRITE #2, A
+	30 WRITE #3, A, B
+	40 WRITE #4; "Output"
+	50 WRITE #5, "Results:", R1
+	60 WRITE #6; "Results:"; R2
+
+The list may include terminating separators.
+A terminating comma or semicolon will write a SPACE and suppress the newline.
+
+	10 WRITE #2; "Processing...";
+	... other statements that generate no output
+	20 WRITE #2; "done"
+
+results in the text "Processing..."; "done" to the file.
+
+Numbers are printed with automatic formatting.
+BASIC-1965 will print a number with the necessary number of decimal places.
+It is not possible to force a number of decimal places.
+
 ARR statements
 --------------
 
@@ -882,6 +946,44 @@ Values remaining on the text line are saved until the next READ statement.
 READing more values than are specified by the file, in total, will cause an error.
 
 BASIC keeps an internal pointer to the next data item.
+
+ARR WRITE
+~~~~~~~~~
+
+Writes an array of values with separators.
+
+Writing to console
+^^^^^^^^^^^^^^^^^^
+
+Syntax:	ARR WRITE variable list
+
+Examples:
+
+	100 ARR WRITE A
+	110 ARR WRITE B;
+	120 ARR WRITE A; B;
+	130 ARR WRITE C, D
+
+The values must be defined with DIM statements prior to printing.
+Values are printed sequentially with as many values as will fit on a line.
+The carriage control character that follows a variable name will be used for each element in a printed row.
+The semicolon results in narrow columns, the comma (or no character) results in wide columns.
+
+Writing to files
+^^^^^^^^^^^^^^^^
+ 
+Syntax:	ARR WRITE #filenum; variable list
+
+Examples:
+
+	100 ARR WRITE #1; A
+	110 ARR WRITE #2, B;
+	120 ARR WRITE #3; A; B;
+	130 ARR WRITE #4; C, D
+
+The values must be defined with DIM statements prior to printing.
+Values are printed sequentially with each set of values on one line.
+The carriage control character that follows a variable name is ignored.
 
 ARR
 ~~~
@@ -1037,6 +1139,58 @@ Values remaining on the text line are saved until the next READ statement.
 READing more values than are specified by the file, in total, will cause an error.
 
 BASIC keeps an internal pointer to the next data item.
+
+MAT WRITE
+~~~~~~~~~
+
+Writes an array or matrix of values.
+
+Writing to console
+^^^^^^^^^^^^^^^^^^
+
+Syntax:	MAT WRITE variable list
+
+Examples:
+
+	100 MAT WRITE A
+	110 MAT WRITE B;
+	120 MAT WRITE A; B;
+	130 MAT WRITE C, D
+
+The values must be defined with DIM statements prior to printing.
+
+For one-dimensional arrays, the values are printed sequentially with as many values as will fit on a line.
+
+For two-dimensional matrices, values for each row in the matrix are printed on a line and a new line is used for each row.
+
+For arrays and matrixes, the zero-index items are not printed.
+An array DIM(4) will print elements 1 through 4; a matrix DIM(3,5) will print three rows of elements 1 through 5.
+
+The carriage control character that follows a variable name will be used for each element in a printed row.
+The semicolon results in narrow columns, the comma (or no character) results in wide columns.
+
+Writing to a file
+^^^^^^^^^^^^^^^^^
+
+Syntax:	MAT WRITE #filenum; variable list
+
+Examples:
+
+	100 MAT WRITE #1; A
+	110 MAT WRITE #2, B;
+	120 MAT WRITE #3; A; B;
+	130 MAT WRITE #4; C, D
+
+The values must be defined with DIM statements prior to printing.
+
+For one-dimensional arrays, the values are printed on one line.
+
+For two-dimensional matrices, values for each row in the matrix are printed on a line and a new line is used for each row.
+
+For arrays and matrixes, the zero-index items are not printed.
+An array DIM(4) will print elements 1 through 4; a matrix DIM(3,5) will print three rows of elements 1 through 5.
+
+The carriage control character that follows a variable name is ignored.
 
 MAT
 ~~~
