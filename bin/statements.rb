@@ -1024,6 +1024,11 @@ class EndStatement < AbstractStatement
     @errors << 'Extra items' unless @tokens.empty?
   end
 
+  def pre_execute(interpreter)
+    next_line = interpreter.find_next_line_number
+    raise(BASICException, 'Statements after END') unless next_line.nil?
+  end
+
   def execute(interpreter, _)
     io = interpreter.console_io
     io.newline_when_needed

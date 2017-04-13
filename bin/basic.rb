@@ -432,13 +432,13 @@ class Interpreter
     end
   end
 
+  public
+
   def find_next_line_number
     line_numbers = @program_lines.keys.sort
     index = line_numbers.index(@current_line_number)
     line_numbers[index + 1]
   end
-
-  public
 
   def trace(tron_flag)
     @tron_flag = tron_flag
