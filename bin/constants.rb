@@ -469,6 +469,14 @@ class BooleanConstant < AbstractElement
     @precedence = 0
   end
 
+  def array?
+    false
+  end
+
+  def matrix?
+    false
+  end
+
   def evaluate(_, _)
     self
   end

@@ -201,6 +201,8 @@ class BinaryOperator < AbstractElement
     elsif y.array?
       scalar_array(x, y)
     else
+      raise(BASICException, 'Type mismatch') unless
+        x.class.to_s == y.class.to_s
       op_scalar_scalar(x, y)
     end
   end
