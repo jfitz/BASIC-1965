@@ -9,7 +9,6 @@ class AbstractToken
     end
     
     prev_open_parens = false
-    prev_hash = false
     prev_operand = false
     prev_operator = false
     prev_variable = false
@@ -20,11 +19,9 @@ class AbstractToken
         (token.groupstart? && prev_variable) ||
         token.groupend? ||
         prev_open_parens ||
-        prev_hash ||
         (prev_operator && !prev_2_operand)
       pretty_tokens << token
       prev_open_parens = token.groupstart?
-      prev_hash = (token.operator? && token.hash?)
       prev_variable = token.variable? || token.function? ||
                       token.user_function?
       prev_2_operand = prev_operand
@@ -200,10 +197,6 @@ class OperatorToken < AbstractToken
     @text == '<' || @text == '<=' ||
       @text == '>' || @text == '>=' ||
       @text == '=' || @text == '<>'
-  end
-
-  def hash?
-    @text == '#'
   end
 
   def to_s
