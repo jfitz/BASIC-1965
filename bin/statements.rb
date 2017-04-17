@@ -202,10 +202,9 @@ class StatementFactory
 
     tokenizers << ListTokenBuilder.new(keywords, KeywordToken)
 
-    operators = [
-      '+', '-', '*', '/', '^', '#',
-      '<', '<=', '=', '>', '>=', '<>'
-    ]
+    un_ops = UnaryOperator.operators
+    bi_ops = BinaryOperator.operators
+    operators = (un_ops + bi_ops).uniq
     tokenizers << ListTokenBuilder.new(operators, OperatorToken)
 
     tokenizers << BreakTokenBuilder.new

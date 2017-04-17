@@ -5,13 +5,27 @@ class UnaryOperator < AbstractElement
     classes.include?(token.class.to_s)
   end
 
+  @operators = { '+' => 5, '-' => 5, '#' => 4 }
+
+  def self.operator?(op)
+    @operators.key?(op)
+  end
+
+  def self.precedence(op)
+    @operators[op]
+  end
+
+  def self.operators
+    @operators.keys
+  end
+
   def initialize(text)
     super()
     @op = text.to_s
-    operators = { '+' => 5, '-' => 5, '#' => 4 }
+
     raise(BASICException, "'#{text}' is not an operator") unless
-      operators.key?(@op)
-    @precedence = operators[@op]
+      self.class.operator?(@op)
+    @precedence = self.class.precedence(@op)
     @operator = true
   end
 
@@ -171,16 +185,30 @@ class BinaryOperator < AbstractElement
     classes.include?(token.class.to_s)
   end
 
+  @operators = {
+    '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
+    '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
+  }
+
+  def self.operator?(op)
+    @operators.key?(op)
+  end
+
+  def self.precedence(op)
+    @operators[op]
+  end
+
+  def self.operators
+    @operators.keys
+  end
+
   def initialize(text)
     super()
     @op = text.to_s
-    operators = {
-      '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
-      '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
-    }
+
     raise(BASICException, "'#{text}' is not an operator") unless
-      operators.key?(@op)
-    @precedence = operators[@op]
+      self.class.operator?(@op)
+    @precedence = self.class.precedence(@op)
     @operator = true
   end
 
