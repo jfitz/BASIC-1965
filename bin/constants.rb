@@ -151,9 +151,9 @@ class ParamSeparator < AbstractElement
     classes.include?(token.class.to_s)
   end
 
-  def initialize(text)
+  def initialize(token)
     super()
-    @text = text
+    @text = token.to_s
     @separator = true
   end
 
@@ -523,15 +523,15 @@ class CarriageControl
     classes.include?(token.class.to_s)
   end
 
-  def self.init?(text)
-    text = text.to_s if text.class.to_s == 'ParamSeparatorToken'
+  def self.init?(token)
+    text = token.to_s
     ['NL', ',', ';', ''].include?(text)
   end
 
-  def initialize(text)
-    raise(BASICException, "'#{text}' is not a valid separator") unless
-      CarriageControl.init?(text)
-    text = text.to_s if text.class.to_s == 'ParamSeparatorToken'
+  def initialize(token)
+    raise(BASICException, "'#{token}' is not a valid separator") unless
+      CarriageControl.init?(token)
+    text = token.to_s
     @operator = text
   end
 

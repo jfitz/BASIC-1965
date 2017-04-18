@@ -10,7 +10,8 @@ class ArgSplitter
     list = []
     parens_level = 0
     tokens.each do |token|
-      if token.operand? && (!list.empty? && list[-1].operand?)
+      if token.operand? &&
+         (!list.empty? && (list[-1].operand? || list[-1].groupend?))
         lists << list unless list.empty?
         list = [token]
       elsif token.separator? && parens_level.zero?
