@@ -26,7 +26,6 @@ module Reader
       raise(BASICException, 'Invalid input') unless token.separator?
     end
   end
-
 end
 
 # Handle tab stops and carriage control
@@ -70,7 +69,7 @@ class ConsoleIo
     # verify all even-index tokens are numeric
     # verify all odd-index tokens are separators
     verify_tokens(tokens)
-    
+
     # convert from tokens to values
     expressions = ValueScalarExpression.new(tokens)
     expressions.evaluate(interpreter)
@@ -199,7 +198,7 @@ class FileHandler
   end
 
   include Reader
-  
+
   def set_mode(mode)
     if @mode.nil?
       case mode

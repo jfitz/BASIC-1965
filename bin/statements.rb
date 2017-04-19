@@ -90,9 +90,9 @@ class StatementFactory
     all_tokens = remove_whitespace_tokens(all_tokens)
 
     comment = nil
-    if !all_tokens.empty? && all_tokens[-1].comment?
-      comment = all_tokens.pop
-    end
+    comment = all_tokens.pop if
+      !all_tokens.empty? && all_tokens[-1].comment?
+
     keywords, tokens = extract_keywords(all_tokens)
 
     begin
@@ -142,9 +142,10 @@ class StatementFactory
       statement = EmptyStatement.new
     else
       keyword = keywords.map(&:to_s).join('')
-      statement =
-        @statement_definitions[keyword].new(keywords, text, tokens) if
-        @statement_definitions.key?(keyword)
+      if @statement_definitions.key?(keyword)
+        statement =
+          @statement_definitions[keyword].new(keywords, text, tokens)
+      end
     end
     statement
   end
@@ -340,7 +341,7 @@ end
 # DIM
 class DimStatement < AbstractStatement
   def initialize(keywords, line, tokens)
-    super(keywords, line,tokens)
+    super(keywords, line, tokens)
     tokens_lists = ArgSplitter.split_tokens(@tokens, false)
 
     @errors << 'No variables specified' if tokens_lists.empty?

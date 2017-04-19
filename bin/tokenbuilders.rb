@@ -25,21 +25,20 @@ class ListTokenBuilder
   end
 
   def try(text)
-    token = ''
     best_candidate = ''
     best_count = 0
     if !text.empty? && text[0] != ' '
-      refused = false
       candidate = ''
       i = 0
-      until i == text.size || refused
+      accepted = true
+      while i < text.size && accepted
         c = text[i]
         # ignore space char
         if c == ' '
           i += 1
         else
-          refused = !accept?(candidate, c)
-          unless refused
+          accepted = accept?(candidate, c)
+          if accepted
             candidate += c
             i += 1
             if @legals.include?(candidate)
@@ -89,21 +88,20 @@ class RemarkTokenBuilder
   end
 
   def try(text)
-    token = ''
     best_candidate = ''
     best_count = 0
     if !text.empty? && text[0] != ' '
-      refused = false
       candidate = ''
       i = 0
-      until i == text.size || refused
+      accepted = true
+      while i < text.size && accepted
         c = text[i]
         # ignore space char
         if c == ' '
           i += 1
         else
-          refused = !accept?(candidate, c)
-          unless refused
+          accepted = accept?(candidate, c)
+          if accepted
             candidate += c
             i += 1
             if @legals.include?(candidate)
@@ -175,10 +173,7 @@ class CommentTokenBuilder
 
   def try(text)
     @token = ''
-
-    if !text.empty? && text[0] == "'"
-      @token = text
-    end
+    @token = text if !text.empty? && text[0] == "'"
 
     @count = @token.size
   end
@@ -254,15 +249,15 @@ class NumberTokenBuilder
     candidate = ''
     i = 0
     if !text.empty? && text[0] != ' '
-      refused = false
-      until i == text.size || refused
+      accepted = true
+      while i < text.size && accepted
         c = text[i]
         # ignore space char
         if c == ' '
           i += 1
         else
-          refused = !accept?(candidate, c)
-          unless refused
+          accepted = accept?(candidate, c)
+          if accepted
             candidate += c
             i += 1
           end
@@ -318,16 +313,17 @@ class VariableTokenBuilder
 
     candidate = ''
     i = 0
+
     if !text.empty? && text[0] != ' '
-      refused = false
-      until i == text.size || refused
+      accepted = true
+      while i < text.size && accepted
         c = text[i]
         # ignore space char
         if c == ' '
           i += 1
         else
-          refused = !accept?(candidate, c)
-          unless refused
+          accepted = accept?(candidate, c)
+          if accepted
             candidate += c
             i += 1
           end
