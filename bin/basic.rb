@@ -741,7 +741,7 @@ class Interpreter
   def store_program_line(cmd, print_errors)
     line_num, line = parse_line(cmd)
     if !line_num.nil? && !line.nil?
-      check_line_duplicate(line_num)
+      check_line_duplicate(line_num, print_errors)
       check_line_sequence(line_num, print_errors)
       @program_lines[line_num] = line
       statement = line.statement
@@ -771,7 +771,7 @@ class Interpreter
 
   private
 
-  def check_line_duplicate(line_num)
+  def check_line_duplicate(line_num, print_errors)
     # warn about duplicate lines when loading
     # but not when typing
     @console_io.print_line("Duplicate line number #{line_num}") if
