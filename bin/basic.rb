@@ -336,7 +336,7 @@ class Interpreter
   def verify_next_line_number
     raise BASICException, 'Program terminated without END' if
       @next_line_number.nil?
-    line_numbers = @program_lines.keys.sort
+    line_numbers = @program_lines.keys
     raise BASICException, "Line number #{@next_line_number} not found" unless
       line_numbers.include?(@next_line_number)
   end
@@ -358,13 +358,13 @@ class Interpreter
 
   def run_phase_1
     # phase 1: do all initialization (store values in DATA lines)
-    line_numbers = @program_lines.keys.sort
+    @current_line_number = @program_lines.min[0]
     begin
-      line_numbers.each do |line_number|
-        @current_line_number = line_number
-        line = @program_lines[line_number]
+      until @current_line_number.nil?
+        line = @program_lines[@current_line_number]
         statement = line.statement
         statement.pre_execute(self)
+        @current_line_number = find_next_line_number
       end
     rescue BASICException => e
       @console_io.print_line("#{e.message} in line #{@current_line_number}")
@@ -375,8 +375,7 @@ class Interpreter
   def run_phase_2(trace_flag)
     # phase 2: run each command
     # start with the first line number
-    line_numbers = @program_lines.keys.sort
-    @current_line_number = line_numbers[0]
+    @current_line_number = @program_lines.min[0]
     begin
       program_loop(trace_flag || @tron_flag) while @running
     rescue Interrupt
