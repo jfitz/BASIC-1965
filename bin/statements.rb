@@ -207,6 +207,24 @@ class AbstractStatement
     lists
   end
 
+  def check_tokens(tokens_lists, template)
+    return false unless tokens_lists.size == template.size
+
+    result = true
+    zip = template.zip(tokens_lists)
+    zip.each do |pair|
+      control = pair[0]
+      value = pair[1]
+      case control.class.to_s
+      when 'String'
+        result &= (value.keyword? && value.to_s == control)
+      when 'Array'
+        result &= (value.class.to_s == 'Array')
+      end
+    end
+    result
+  end
+
   def split_on_token(tokens, token_to_split)
     results = []
     list = []
@@ -481,9 +499,14 @@ end
 class IfStatement < AbstractStatement
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
-    parts = split_keywords(@tokens)
-    if parts.size == 3
-      parse_line(parts[0], parts[1], parts[2][0])
+    tokens_lists = split_keywords(@tokens)
+    template = [[], 'THEN', []]
+    
+    if check_tokens(tokens_lists, template)
+      condition = tokens_lists[0]
+      k_then = tokens_lists[1]
+      destination = tokens_lists[2]
+      parse_line(condition, k_then, destination[0])
     else
       @errors << 'Syntax error'
     end
@@ -529,7 +552,7 @@ class IfStatement < AbstractStatement
     else
       @errors << "Invalid line number #{destination}"
     end
-    @errors << 'Missing THEN' unless keyword.to_s == 'THEN'
+
     begin
       @expression = ValueScalarExpression.new(expression)
     rescue BASICException => e
