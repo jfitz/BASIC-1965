@@ -359,17 +359,7 @@ class Interpreter
   def run_phase_1
     # phase 1: do all initialization (store values in DATA lines)
     @current_line_number = @program_lines.min[0]
-    begin
-      until @current_line_number.nil?
-        line = @program_lines[@current_line_number]
-        statement = line.statement
-        statement.pre_execute(self)
-        @current_line_number = find_next_line_number
-      end
-    rescue BASICException => e
-      @console_io.print_line("#{e.message} in line #{@current_line_number}")
-      stop_running
-    end
+    preexecute_loop
   end
 
   def run_phase_2(trace_flag)
@@ -397,6 +387,30 @@ class Interpreter
     statement.errors.each { |error| puts error }
   end
 
+  def preexecute_a_statement
+    line = @program_lines[@current_line_number]
+    statement = line.statement
+    if statement.errors.empty?
+      statement.pre_execute(self)
+    else
+      stop_running
+      print_errors(current_line_number, statement)
+    end
+  end
+
+  def preexecute_loop
+    begin
+      while !@current_line_number.nil? && @running
+        preexecute_a_statement
+        @current_line_number = find_next_line_number
+      end
+    rescue BASICException => e
+      message = "#{e.message} in line #{@current_line_number}"
+      @console_io.print_line(message)
+      stop_running
+    end
+  end
+  
   def execute_a_statement(do_trace)
     line = @program_lines[@current_line_number]
     statement = line.statement
@@ -422,11 +436,11 @@ class Interpreter
       end
     rescue BASICException => e
       if @current_line_number.nil?
-        @console_io.print_line(e.message)
+        message = e.message
       else
-        line_number = @current_line_number
-        @console_io.print_line("#{e.message} in line #{line_number}")
+        message = "#{e.message} in line #{@current_line_number}"
       end
+      @console_io.print_line(message)
       stop_running
     end
   end
@@ -532,6 +546,14 @@ class Interpreter
       @console_io.print_line("#{name}: #{expression}")
     end
     puts
+  end
+
+  def dump_dims
+    @dimensions.each do |key, value|
+      dims = []
+      value.each { |nc| dims << nc.to_v }
+      @console_io.print_line("#{key.class}:#{key} (#{dims.join(', ')})")
+    end
   end
 
   def stop
@@ -788,7 +810,7 @@ class Interpreter
   end
 
   def simple_command?(text)
-    %w(NEW RUN TRACE .VARS .UDFS).include?(text)
+    %w(NEW RUN TRACE .VARS .UDFS .DIMS).include?(text)
   end
 
   def execute_simple_command(text)
@@ -803,6 +825,8 @@ class Interpreter
       dump_vars
     when '.UDFS'
       dump_user_functions
+    when '.DIMS'
+      dump_dims
     end
   end
 
