@@ -41,7 +41,7 @@ class StatementFactory
     new_list = []
 
     tokens.each do |token|
-      new_list << token unless token.class.to_s == 'BreakToken'
+      new_list << token unless token.break?
     end
 
     new_list
@@ -51,7 +51,7 @@ class StatementFactory
     new_list = []
 
     tokens.each do |token|
-      new_list << token unless token.class.to_s == 'WhitespaceToken'
+      new_list << token unless token.whitespace?
     end
 
     new_list
@@ -75,10 +75,9 @@ class StatementFactory
     if keywords.empty? && tokens.empty?
       statement = EmptyStatement.new
     else
-      keyword = keywords.map(&:to_s).join('')
-      if @statement_definitions.key?(keyword)
+      if @statement_definitions.key?(keywords)
         statement =
-          @statement_definitions[keyword].new(keywords, text, tokens)
+          @statement_definitions[keywords].new(keywords, text, tokens)
       end
     end
     statement
@@ -92,37 +91,55 @@ class StatementFactory
   end
 
   def statement_definitions
-    {
-      'ARRPRINT' => ArrPrintStatement,
-      'ARRREAD' => ArrReadStatement,
-      'ARRWRITE' => ArrWriteStatement,
-      'ARR' => ArrLetStatement,
-      'DATA' => DataStatement,
-      'DEF' => DefineFunctionStatement,
-      'DIM' => DimStatement,
-      'END' => EndStatement,
-      'FILES' => FilesStatement,
-      'FOR' => ForStatement,
-      'GOSUB' => GosubStatement,
-      'GOTO' => GotoStatement,
-      'IF' => IfStatement,
-      'INPUT' => InputStatement,
-      'LET' => LetStatement,
-      'MATPRINT' => MatPrintStatement,
-      'MATREAD' => MatReadStatement,
-      'MATWRITE' => MatWriteStatement,
-      'MAT' => MatLetStatement,
-      'NEXT' => NextStatement,
-      'PRINT' => PrintStatement,
-      'READ' => ReadStatement,
-      'REM' => RemarkStatement,
-      'REMARK' => RemarkStatement,
-      'RESTORE' => RestoreStatement,
-      'RETURN' => ReturnStatement,
-      'STOP' => StopStatement,
-      'TRACE' => TraceStatement,
-      'WRITE' => WriteStatement
-    }
+    a_full = [
+      ArrPrintStatement,
+      ArrReadStatement,
+      ArrWriteStatement,
+      ArrLetStatement,
+      DataStatement,
+      DefineFunctionStatement,
+      DimStatement,
+      EndStatement,
+      FilesStatement,
+      ForStatement,
+      GosubStatement,
+      GotoStatement,
+      IfStatement,
+      InputStatement,
+      LetStatement,
+      MatPrintStatement,
+      MatReadStatement,
+      MatWriteStatement,
+      MatLetStatement,
+      NextStatement,
+      PrintStatement,
+      ReadStatement,
+      RemarkStatement,
+      RestoreStatement,
+      ReturnStatement,
+      StopStatement,
+      TraceStatement,
+      WriteStatement
+    ]
+    h_full = Hash[a_full.collect { |c| [c.keywords, c] }]
+
+    a_short = [
+      RemarkStatement
+    ]
+    h_short = Hash[a_short.collect { |c| [c.short_keywords, c] }]
+
+    h_full.merge(h_short)
+  end
+
+  def keywords_definitions(statement_definitions)
+    keys = statement_definitions.keys
+    keywords = []
+    keys.each do |key|
+      keywords << key[0].to_s
+    end
+    keywords += %w(THEN TO STEP)
+    keywords -= %w(REM REMARK)
+    keywords.uniq
   end
 
   def make_tokenizers
@@ -131,10 +148,7 @@ class StatementFactory
     tokenizers << CommentTokenBuilder.new
     tokenizers << RemarkTokenBuilder.new
 
-    keywords = statement_definitions.keys +
-               %w(THEN TO STEP) -
-               %w(REM REMARK) -
-               %w(ARRREAD ARRPRINT ARRWRITE MATREAD MATPRINT MATWRITE)
+    keywords = keywords_definitions(statement_definitions)
 
     tokenizers << ListTokenBuilder.new(keywords, KeywordToken)
 
@@ -324,6 +338,14 @@ end
 
 # REMARK
 class RemarkStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('REMARK')]
+  end
+
+  def self.short_keywords
+    [KeywordToken.new('REM')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     @rest = tokens
@@ -336,6 +358,10 @@ end
 
 # DIM
 class DimStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('DIM')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -372,6 +398,10 @@ end
 
 # FILES
 class FilesStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('FILES')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -396,6 +426,10 @@ end
 
 # LET
 class LetStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('LET')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -430,6 +464,10 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('INPUT')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -543,6 +581,10 @@ end
 
 # IF/THEN
 class IfStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('IF')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -628,6 +670,10 @@ end
 
 # PRINT
 class PrintStatement < AbstractPrintStatement
+  def self.keywords
+    [KeywordToken.new('PRINT')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens, CarriageControl.new('NL'))
     tokens_lists = split_keywords(@tokens)
@@ -682,6 +728,10 @@ end
 
 # GOTO
 class GotoStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('GOTO')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -705,6 +755,10 @@ end
 
 # GOSUB
 class GosubStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('GOSUB')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -729,6 +783,10 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('RETURN')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -791,6 +849,10 @@ end
 
 # FOR statement
 class ForStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('FOR')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -882,6 +944,10 @@ end
 
 # NEXT
 class NextStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('NEXT')]
+  end
+
   attr_reader :control
 
   def initialize(keywords, line, tokens)
@@ -956,6 +1022,10 @@ end
 
 # READ
 class ReadStatement < AbstractReadStatement
+  def self.keywords
+    [KeywordToken.new('READ')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -996,6 +1066,10 @@ end
 
 # DATA
 class DataStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('DATA')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1021,6 +1095,10 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('RESTORE')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1039,6 +1117,10 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('DEF')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1071,6 +1153,10 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('STOP')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1090,6 +1176,10 @@ end
 
 # END
 class EndStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('END')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1114,6 +1204,10 @@ end
 
 # TRACE
 class TraceStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('TRACE')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1173,6 +1267,10 @@ end
 
 # WRITE
 class WriteStatement < AbstractWriteStatement
+  def self.keywords
+    [KeywordToken.new('WRITE')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens, CarriageControl.new('NL'))
     tokens_lists = split_keywords(@tokens)
@@ -1225,6 +1323,10 @@ end
 
 # ARR PRINT
 class ArrPrintStatement < AbstractPrintStatement
+  def self.keywords
+    [KeywordToken.new('ARR'), KeywordToken.new('PRINT')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens, CarriageControl.new(','))
     tokens_lists = split_keywords(@tokens)
@@ -1272,6 +1374,10 @@ end
 
 # ARR READ
 class ArrReadStatement < AbstractReadStatement
+  def self.keywords
+    [KeywordToken.new('ARR'), KeywordToken.new('READ')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1335,6 +1441,10 @@ end
 
 # ARR WRITE
 class ArrWriteStatement < AbstractWriteStatement
+  def self.keywords
+    [KeywordToken.new('ARR'), KeywordToken.new('WRITE')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens, CarriageControl.new(','))
     tokens_lists = split_keywords(@tokens)
@@ -1382,6 +1492,10 @@ end
 
 # ARR assignment
 class ArrLetStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('ARR')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1435,6 +1549,10 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractPrintStatement
+  def self.keywords
+    [KeywordToken.new('MAT'), KeywordToken.new('PRINT')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens, CarriageControl.new(','))
     tokens_lists = split_keywords(@tokens)
@@ -1482,6 +1600,10 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractReadStatement
+  def self.keywords
+    [KeywordToken.new('MAT'), KeywordToken.new('READ')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
@@ -1558,6 +1680,10 @@ end
 
 # MAT WRITE
 class MatWriteStatement < AbstractWriteStatement
+  def self.keywords
+    [KeywordToken.new('MAT'), KeywordToken.new('WRITE')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens, CarriageControl.new(','))
     tokens_lists = split_keywords(@tokens)
@@ -1605,6 +1731,10 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
+  def self.keywords
+    [KeywordToken.new('MAT')]
+  end
+
   def initialize(keywords, line, tokens)
     super(keywords, line, tokens)
     tokens_lists = split_keywords(@tokens)
