@@ -356,6 +356,8 @@ class Interpreter
     end
   end
 
+  private
+
   def run_phase_1
     # phase 1: do all initialization (store values in DATA lines)
     @current_line_number = @program_lines.min[0]
@@ -373,8 +375,6 @@ class Interpreter
     end
     @file_handlers.each { |_, fh| fh.close }
   end
-
-  private
 
   def print_trace_info(line)
     @console_io.newline_when_needed
