@@ -859,12 +859,23 @@ class ForStatement < AbstractStatement
     template1 = [[], 'TO', []]
     template2 = [[], 'TO', [], 'STEP', []]
 
-    if check_template(tokens_lists, template1) ||
-       check_template(tokens_lists, template2)
+    if check_template(tokens_lists, template1)
       begin
-        tokens2 = make_control(@tokens)
-        tokens3 = make_to_value(tokens2)
-        make_step_value(tokens3)
+        tokens1, tokens2 = control_and_start(tokens_lists[0])
+        @control = VariableName.new(tokens1[0])
+        @start = ValueScalarExpression.new(tokens2)
+        @end = ValueScalarExpression.new(tokens_lists[2])
+        @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
+      rescue BASICException => e
+        @errors << e.message
+      end
+    elsif check_template(tokens_lists, template2)
+      begin
+        tokens1, tokens2 = control_and_start(tokens_lists[0])
+        @control = VariableName.new(tokens1[0])
+        @start = ValueScalarExpression.new(tokens2)
+        @end = ValueScalarExpression.new(tokens_lists[2])
+        @step_value = ValueScalarExpression.new(tokens_lists[4])
       rescue BASICException => e
         @errors << e.message
       end
@@ -896,42 +907,17 @@ class ForStatement < AbstractStatement
 
   private
 
-  def make_control(tokens)
+  def control_and_start(tokens)
     parts = split_on_token(tokens, '=')
     raise(BASICException, 'Incorrect initialization') if
       parts.size != 3
     raise(BASICException, 'Incorrect initialization') if
       parts[1].to_s != '='
-    if parts[0][0].variable?
-      @control = VariableName.new(parts[0][0])
-    else
-      @errors << 'Control variable must be a variable'
-    end
-    parts[2]
-  end
 
-  def make_to_value(tokens)
-    parts = split_on_token(tokens, 'TO')
-    raise(BASICException, 'Missing start value') if
-      parts.empty? || parts[0].to_s == 'TO'
+    @errors << 'Control variable must be a variable' unless
+      parts[0][0].variable?
 
-    raise(BASICException, 'Missing end value') if parts.size != 3
-    @start = ValueScalarExpression.new(parts[0])
-    parts[2]
-  end
-
-  def make_step_value(tokens)
-    parts = split_on_token(tokens, 'STEP')
-    tokens_e = parts[0]
-    @end = ValueScalarExpression.new(tokens_e)
-
-    @has_step_value = parts.size == 3
-    if @has_step_value
-      tokens_s = parts[2]
-      @step_value = ValueScalarExpression.new(tokens_s)
-    else
-      @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
-    end
+    return [parts[0], parts[2]]
   end
 
   def print_trace_info(io, from, to, step, terminated)
