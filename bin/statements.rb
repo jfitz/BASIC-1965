@@ -91,7 +91,7 @@ class StatementFactory
   end
 
   def statement_definitions
-    a_full = [
+    classes = [
       ArrPrintStatement,
       ArrReadStatement,
       ArrWriteStatement,
@@ -121,14 +121,16 @@ class StatementFactory
       TraceStatement,
       WriteStatement
     ]
-    h_full = Hash[a_full.collect { |c| [c.keywords, c] }]
+    lead_keywords = {}
 
-    a_short = [
-      RemarkStatement
-    ]
-    h_short = Hash[a_short.collect { |c| [c.short_keywords, c] }]
+    classes.each do |class_name|
+      keyword_sets = class_name.lead_keywords
+      keyword_sets.each do |set|
+        lead_keywords[set] = class_name
+      end
+    end
 
-    h_full.merge(h_short)
+    lead_keywords
   end
 
   def keywords_definitions(statement_definitions)
@@ -338,12 +340,11 @@ end
 
 # REMARK
 class RemarkStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('REMARK')]
-  end
-
-  def self.short_keywords
-    [KeywordToken.new('REM')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('REMARK')],
+      [KeywordToken.new('REM')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -358,8 +359,10 @@ end
 
 # DIM
 class DimStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('DIM')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('DIM')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -398,8 +401,10 @@ end
 
 # FILES
 class FilesStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('FILES')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('FILES')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -426,8 +431,10 @@ end
 
 # LET
 class LetStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('LET')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('LET')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -464,8 +471,10 @@ end
 
 # INPUT
 class InputStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('INPUT')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('INPUT')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -581,8 +590,10 @@ end
 
 # IF/THEN
 class IfStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('IF')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('IF')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -670,8 +681,10 @@ end
 
 # PRINT
 class PrintStatement < AbstractPrintStatement
-  def self.keywords
-    [KeywordToken.new('PRINT')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('PRINT')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -728,8 +741,10 @@ end
 
 # GOTO
 class GotoStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('GOTO')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('GOTO')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -755,8 +770,10 @@ end
 
 # GOSUB
 class GosubStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('GOSUB')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('GOSUB')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -783,8 +800,10 @@ end
 
 # RETURN
 class ReturnStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('RETURN')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('RETURN')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -849,8 +868,10 @@ end
 
 # FOR statement
 class ForStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('FOR')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('FOR')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -930,8 +951,10 @@ end
 
 # NEXT
 class NextStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('NEXT')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('NEXT')]
+    ]
   end
 
   attr_reader :control
@@ -1008,8 +1031,10 @@ end
 
 # READ
 class ReadStatement < AbstractReadStatement
-  def self.keywords
-    [KeywordToken.new('READ')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('READ')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1052,8 +1077,10 @@ end
 
 # DATA
 class DataStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('DATA')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('DATA')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1081,8 +1108,10 @@ end
 
 # RESTORE
 class RestoreStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('RESTORE')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('RESTORE')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1103,8 +1132,10 @@ end
 
 # DEF FNx
 class DefineFunctionStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('DEF')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('DEF')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1139,8 +1170,10 @@ end
 
 # STOP
 class StopStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('STOP')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('STOP')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1162,8 +1195,10 @@ end
 
 # END
 class EndStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('END')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('END')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1190,8 +1225,10 @@ end
 
 # TRACE
 class TraceStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('TRACE')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('TRACE')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1253,8 +1290,10 @@ end
 
 # WRITE
 class WriteStatement < AbstractWriteStatement
-  def self.keywords
-    [KeywordToken.new('WRITE')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('WRITE')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1309,8 +1348,10 @@ end
 
 # ARR PRINT
 class ArrPrintStatement < AbstractPrintStatement
-  def self.keywords
-    [KeywordToken.new('ARR'), KeywordToken.new('PRINT')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('ARR'), KeywordToken.new('PRINT')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1360,8 +1401,10 @@ end
 
 # ARR READ
 class ArrReadStatement < AbstractReadStatement
-  def self.keywords
-    [KeywordToken.new('ARR'), KeywordToken.new('READ')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('ARR'), KeywordToken.new('READ')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1427,8 +1470,10 @@ end
 
 # ARR WRITE
 class ArrWriteStatement < AbstractWriteStatement
-  def self.keywords
-    [KeywordToken.new('ARR'), KeywordToken.new('WRITE')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('ARR'), KeywordToken.new('WRITE')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1478,8 +1523,10 @@ end
 
 # ARR assignment
 class ArrLetStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('ARR')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('ARR')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1535,8 +1582,10 @@ end
 
 # MAT PRINT
 class MatPrintStatement < AbstractPrintStatement
-  def self.keywords
-    [KeywordToken.new('MAT'), KeywordToken.new('PRINT')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('MAT'), KeywordToken.new('PRINT')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1586,8 +1635,10 @@ end
 
 # MAT READ
 class MatReadStatement < AbstractReadStatement
-  def self.keywords
-    [KeywordToken.new('MAT'), KeywordToken.new('READ')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('MAT'), KeywordToken.new('READ')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1666,8 +1717,10 @@ end
 
 # MAT WRITE
 class MatWriteStatement < AbstractWriteStatement
-  def self.keywords
-    [KeywordToken.new('MAT'), KeywordToken.new('WRITE')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('MAT'), KeywordToken.new('WRITE')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
@@ -1717,8 +1770,10 @@ end
 
 # MAT assignment
 class MatLetStatement < AbstractStatement
-  def self.keywords
-    [KeywordToken.new('MAT')]
+  def self.lead_keywords
+    [
+      [KeywordToken.new('MAT')]
+    ]
   end
 
   def initialize(keywords, line, tokens)
