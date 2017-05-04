@@ -482,19 +482,15 @@ class InputStatement < AbstractStatement
     tokens_lists = split_keywords(@tokens)
     template = [[]]
 
-    if check_template(tokens_lists, template)
-      @tokens_lists = split_tokens(@tokens, false)
-      # [prompt string] variable [variable]...
-
-      @default_prompt = TextConstantToken.new('"? "')
-    else
+    unless check_template(tokens_lists, template)
       @errors << 'Syntax error'
     end
   end
 
   def execute(interpreter, trace)
-    tokens_lists = @tokens_lists.clone
-    prompt = @default_prompt
+    tokens_lists = split_tokens(@tokens, false)
+    default_prompt = TextConstantToken.new('"? "')
+    prompt = default_prompt
     unless tokens_lists.size.zero?
       begin
         value = first_value(tokens_lists, interpreter)
@@ -524,7 +520,7 @@ class InputStatement < AbstractStatement
     if fh.nil?
       io = interpreter.console_io
       values =
-        input_values(interpreter, prompt, @default_prompt, expression_list.size)
+        input_values(interpreter, prompt, default_prompt, expression_list.size)
       io.implied_newline
     else
       values =
