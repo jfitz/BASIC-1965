@@ -204,11 +204,12 @@ class AbstractStatement
     @keywords = keywords
     @text = text
     @tokens = tokens
+    @tokens_lists = tokens_lists
     @errors = []
   end
 
   def pretty
-    AbstractToken.pretty(@keywords, @tokens)
+    AbstractToken.pretty(@keywords, @tokens_lists.flatten)
   end
 
   def pre_execute(_)
