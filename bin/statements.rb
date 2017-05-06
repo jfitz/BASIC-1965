@@ -1227,8 +1227,9 @@ class TraceStatement < AbstractStatement
     raise(BASICException, 'Too many values') if tokens_lists.size > 1
     first_expression = tokens_lists[0]
     expression = ValueScalarExpression.new(first_expression)
-    value = expression.evaluate(interpreter)
-    interpreter.trace(value)
+    values = expression.evaluate(interpreter)
+    value = values[0]
+    interpreter.trace(value.to_v)
   end
 end
 

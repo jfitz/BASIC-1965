@@ -485,6 +485,10 @@ class BooleanConstant < AbstractElement
     true
   end
 
+  def to_v
+    @value
+  end
+
   def to_s
     @value ? 'true' : 'false'
   end
