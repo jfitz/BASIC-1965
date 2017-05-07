@@ -203,7 +203,6 @@ class AbstractStatement
   def initialize(keywords, text, tokens, tokens_lists)
     @keywords = keywords
     @text = text
-    @tokens = tokens
     @tokens_lists = tokens_lists
     @errors = []
   end
@@ -483,34 +482,34 @@ class InputStatement < AbstractStatement
     super
     template = [[1, '>=']]
 
-    unless check_template(tokens_lists, template)
+    if check_template(tokens_lists, template)
+      @input_items = split_tokens(tokens_lists[0], false)
+    else  
       @errors << 'Syntax error'
     end
   end
 
   def execute(interpreter, trace)
-    tokens_lists = split_tokens(@tokens, false)
     default_prompt = TextConstantToken.new('"? "')
     prompt = default_prompt
-    unless tokens_lists.size.zero?
-      begin
-        value = first_value(tokens_lists, interpreter)
-        if value.class.to_s == 'FileHandle'
-          fh = value
-          tokens_lists.shift
-          value = first_value(tokens_lists, interpreter)
-        end
-        token = first_token(tokens_lists)
-        if token.text_constant?
-          prompt = value
-          tokens_lists.shift
-        end
-      rescue BASICException
-        fh = nil
+    input_items = @input_items.clone
+    begin
+      value = first_value(input_items, interpreter)
+      if value.class.to_s == 'FileHandle'
+        fh = value
+        input_items.shift
+        value = first_value(input_items, interpreter)
       end
+      token = first_token(input_items)
+      if token.text_constant?
+        prompt = value
+        input_items.shift
+      end
+    rescue BASICException
+      fh = nil
     end
     expression_list = []
-    tokens_lists.each do |items_list|
+    input_items.each do |items_list|
       begin
         expression_list << TargetExpression.new(items_list, ScalarReference)
       rescue BASICException
@@ -544,13 +543,12 @@ class InputStatement < AbstractStatement
 
   private
 
-  def first_token(tokens_lists)
-    first_list = tokens_lists[0]
-    first_list[0]
+  def first_token(input_items)
+    input_items[0][0]
   end
 
-  def first_value(tokens_lists, interpreter)
-    first_list = tokens_lists[0]
+  def first_value(input_items, interpreter)
+    first_list = input_items[0]
     expr = ValueScalarExpression.new(first_list)
     values = expr.evaluate(interpreter)
     values[0]
@@ -1032,15 +1030,17 @@ class ReadStatement < AbstractReadStatement
     super
     template = [[1, '>=']]
 
-    unless check_template(tokens_lists, template)
+    if check_template(tokens_lists, template)
+      @read_items = split_tokens(tokens_lists[0], false)
+    else
       @errors << 'Syntax error'
     end
   end
 
   def execute(interpreter, trace)
-    tokens_lists = split_tokens(@tokens, false)
-    unless tokens_lists.empty?
-      fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
+    read_items = @read_items.clone
+    unless read_items.empty?
+      fh, tokens_lists = extract_file_handle(read_items, interpreter)
     end
     expression_list = []
     tokens_lists.each do |tokens_list|
@@ -1218,13 +1218,15 @@ class TraceStatement < AbstractStatement
     super
     template = [[1, '>=']]
 
-    unless check_template(tokens_lists, template)
+    if check_template(tokens_lists, template)
+      @tokens_lists = split_tokens(tokens_lists[0], false)
+    else
       @errors << 'Syntax error'
     end
   end
 
   def execute(interpreter, _)
-    tokens_lists = split_tokens(@tokens, false)
+    tokens_lists = @tokens_lists.clone
     raise(BASICException, 'Too many values') if tokens_lists.size > 1
     first_expression = tokens_lists[0]
     expression = ValueScalarExpression.new(first_expression)
@@ -1390,13 +1392,15 @@ class ArrReadStatement < AbstractReadStatement
     super
     template = [[1, '>=']]
 
-    unless check_template(tokens_lists, template)
+    if check_template(tokens_lists, template)
+      @read_items = split_tokens(tokens_lists[0], false)
+    else
       @errors << 'Syntax error'
     end
   end
 
   def execute(interpreter, trace)
-    tokens_lists = split_tokens(@tokens, false)
+    tokens_lists = @read_items.clone
     unless tokens_lists.empty?
       fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
     end
@@ -1618,13 +1622,15 @@ class MatReadStatement < AbstractReadStatement
     super
     template = [[1, '>=']]
 
-    unless check_template(tokens_lists, template)
+    if check_template(tokens_lists, template)
+      @read_items = split_tokens(tokens_lists[0], false)
+    else
       @errors << 'Syntax error'
     end
   end
 
   def execute(interpreter, trace)
-    tokens_lists = split_tokens(@tokens, false)
+    tokens_lists = @read_items.clone
     unless tokens_lists.empty?
       fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
     end
