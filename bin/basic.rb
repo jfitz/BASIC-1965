@@ -173,10 +173,9 @@ class Line
   attr_reader :statement
   attr_reader :tokens
 
-  def initialize(text, statement, keywords, tokens, comment)
+  def initialize(text, statement, tokens, comment)
     @text = text
     @statement = statement
-    @keywords = keywords
     @tokens = tokens
     @comment = comment
   end
@@ -186,7 +185,7 @@ class Line
   end
 
   def pretty
-    text = AbstractToken.pretty_tokens(@keywords, @tokens)
+    text = AbstractToken.pretty_tokens([], @tokens)
     unless @comment.nil?
       space = @text.size - (text.size + @comment.to_s.size)
       space = 5 if space < 5
