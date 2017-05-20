@@ -63,6 +63,10 @@ class BASICArray
     Array.new(@dimensions.clone, @values.clone)
   end
 
+  def scalar?
+    false
+  end
+
   def array?
     true
   end
@@ -153,6 +157,10 @@ class Matrix
 
   def clone
     Matrix.new(@dimensions.clone, @values.clone)
+  end
+
+  def scalar?
+    false
   end
 
   def array?
@@ -741,7 +749,7 @@ class Parser
     start_op = @operator_stack.pop
     error = 'Bracket/parenthesis mismatch, found ' + group_end_element.to_s +
             ' to match ' + start_op.to_s
-    raise(BASICException, error) unless group_end_element.compatible?(start_op)
+    raise(BASICException, error) unless group_end_element.match?(start_op)
     if start_op.param_start?
       list = List.new(@parens_group)
       @operator_stack.push(list)

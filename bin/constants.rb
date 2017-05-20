@@ -117,11 +117,9 @@ class GroupEnd < AbstractElement
     @operand = true
   end
 
-  def compatible?(start_element)
-    return true if @text == ')' && start_element.text == '('
-    return true if @text == ']' && start_element.text == '['
-
-    false
+  def match?(start_element)
+    (start_element.text == '(' && @text == ')') ||
+    (start_element.text == '[' && @text == ']')
   end
 
   def to_s
@@ -213,6 +211,18 @@ class NumericConstant < AbstractElement
     raise BASICException, "'#{text}' is not a number" if @value.nil?
   end
 
+  def scalar?
+    true
+  end
+
+  def array?
+    false
+  end
+
+  def matrix?
+    false
+  end
+
   def numeric_constant?
     true
   end
@@ -300,14 +310,6 @@ class NumericConstant < AbstractElement
 
   def power(other)
     NumericConstant.new(@value**other.to_v)
-  end
-
-  def array?
-    false
-  end
-
-  def matrix?
-    false
   end
 
   def evaluate(_, _)
@@ -435,6 +437,10 @@ class TextConstant < AbstractElement
     self
   end
 
+  def scalar?
+    true
+  end
+
   def array?
     false
   end
@@ -493,12 +499,8 @@ class BooleanConstant < AbstractElement
     @precedence = 0
   end
 
-  def numeric_constant?
-    false
-  end
-
-  def text_constant?
-    false
+  def scalar?
+    true
   end
 
   def array?
@@ -506,6 +508,14 @@ class BooleanConstant < AbstractElement
   end
 
   def matrix?
+    false
+  end
+
+  def numeric_constant?
+    false
+  end
+
+  def text_constant?
     false
   end
 
@@ -652,22 +662,6 @@ class VariableName < AbstractElement
     @name.hash
   end
 
-  def is_compatible(value)
-    compatible = false
-
-    numerics = %w(NumericConstant)
-    strings = %w(TextConstant)
-    
-    if @content_type == 'NumericConstant'
-      compatible = numerics.include?(value.class.to_s)
-    end
-    if @content_type == 'TextConstant'
-      compatible = strings.include?(value.class.to_s)
-    end
-    
-    compatible
-  end
-
   def to_s
     @name.to_s
   end
@@ -694,23 +688,6 @@ class Variable < AbstractElement
 
   def content_type
     @variable_name.content_type
-  end
-
-  def is_compatible(value)
-    content_type = self.content_type
-    compatible = false
-
-    numerics = %w(NumericConstant)
-    strings = %w(TextConstant)
-    
-    if content_type == 'NumericConstant'
-      compatible = numerics.include?(value.class.to_s)
-    end
-    if content_type == 'TextConstant'
-      compatible = strings.include?(value.class.to_s)
-    end
-    
-    compatible
   end
 
   def to_s
