@@ -213,6 +213,14 @@ class NumericConstant < AbstractElement
     raise BASICException, "'#{text}' is not a number" if @value.nil?
   end
 
+  def numeric_constant?
+    true
+  end
+
+  def text_constant?
+    false
+  end
+
   def eql?(other)
     @value == other.to_v
   end
@@ -427,6 +435,22 @@ class TextConstant < AbstractElement
     self
   end
 
+  def array?
+    false
+  end
+
+  def matrix?
+    false
+  end
+
+  def numeric_constant?
+    false
+  end
+
+  def text_constant?
+    true
+  end
+
   def printable?
     true
   end
@@ -467,6 +491,14 @@ class BooleanConstant < AbstractElement
     @value = true if obj.class.to_s == 'TrueClass'
     @operand = true
     @precedence = 0
+  end
+
+  def numeric_constant?
+    false
+  end
+
+  def text_constant?
+    false
   end
 
   def array?
@@ -620,6 +652,22 @@ class VariableName < AbstractElement
     @name.hash
   end
 
+  def is_compatible(value)
+    compatible = false
+
+    numerics = %w(NumericConstant)
+    strings = %w(TextConstant)
+    
+    if @content_type == 'NumericConstant'
+      compatible = numerics.include?(value.class.to_s)
+    end
+    if @content_type == 'TextConstant'
+      compatible = strings.include?(value.class.to_s)
+    end
+    
+    compatible
+  end
+
   def to_s
     @name.to_s
   end
@@ -646,6 +694,23 @@ class Variable < AbstractElement
 
   def content_type
     @variable_name.content_type
+  end
+
+  def is_compatible(value)
+    content_type = self.content_type
+    compatible = false
+
+    numerics = %w(NumericConstant)
+    strings = %w(TextConstant)
+    
+    if content_type == 'NumericConstant'
+      compatible = numerics.include?(value.class.to_s)
+    end
+    if content_type == 'TextConstant'
+      compatible = strings.include?(value.class.to_s)
+    end
+    
+    compatible
   end
 
   def to_s
@@ -676,55 +741,5 @@ class List < AbstractElement
 
   def to_s
     "[#{@parsed_expressions.join('] [')}]"
-  end
-end
-
-# Scalar function (provides a scalar)
-class Function < AbstractElement
-  def initialize(text)
-    super()
-    @name = text
-    @function = true
-    @operand = true
-    @precedence = 7
-  end
-
-  private
-
-  def ensure_argument_count(stack, expected)
-    raise(BASICException, @name + ' requires argument') unless
-      previous_is_array(stack)
-    valid = counts_to_text(expected)
-    raise(BASICException, @name + ' requires ' + valid + ' argument') unless
-      expected.include? stack[-1].size
-  end
-
-  def counts_to_text(counts)
-    words = %w(zero one two)
-    texts = counts.map { |v| words[v] }
-    texts.join(' or ')
-  end
-
-  def check_args(args)
-    raise(BASICException, 'No arguments for function') if
-      args.class.to_s != 'Array'
-  end
-
-  def check_value(value, type)
-    if value.class.to_s != type
-      raise(BASICException,
-            "Argument #{value} #{value.class} not of type #{type.class}")
-    end
-  end
-
-  def check_arg_types(args, types)
-    check_args(args)
-    if args.size != types.size
-      raise(BASICException,
-            "Function #{@name} expects #{n_types} argument, found #{n_args}")
-    end
-    (0..types.size - 1).each do |i|
-      check_value(args[i], types[i])
-    end
   end
 end

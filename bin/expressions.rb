@@ -632,43 +632,6 @@ class VariableDimension < Variable
   end
 end
 
-# User-defined function (provides a scalar value)
-class UserFunction < AbstractScalarFunction
-  def self.accept?(token)
-    classes = %w(UserFunctionToken)
-    classes.include?(token.class.to_s)
-  end
-
-  def self.init?(text)
-    /\AFN[A-Z]\z/.match(text)
-  end
-
-  def initialize(text)
-    text = text.to_s if text.class.to_s == 'UserFunctionToken'
-    raise(BASICException, "'#{text}' is not a valid function") unless
-      UserFunction.init?(text)
-    super
-  end
-
-  # return a single value
-  def evaluate(interpreter, stack)
-    expression = interpreter.get_user_function(@name)
-    # verify function is defined
-    raise(BASICException, "Function #{@name} not defined") if expression.nil?
-
-    # verify arguments
-    user_var_values = stack.pop
-    raise(BASICException, 'No arguments for function') if
-      user_var_values.class.to_s != 'Array'
-    check_arg_types(user_var_values,
-                    ['NumericConstant'] * user_var_values.length)
-
-    # dummy variable names and their (now known) values
-    result = expression.evaluate_with_vars(interpreter, @name, user_var_values)
-    result[0]
-  end
-end
-
 # Expression parser
 class Parser
   def initialize(default_type)
