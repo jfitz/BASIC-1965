@@ -208,6 +208,7 @@ class BinaryOperator < AbstractElement
 
     raise(BASICException, "'#{text}' is not an operator") unless
       self.class.operator?(@op)
+
     @precedence = self.class.precedence(@op)
     @operator = true
   end
@@ -216,17 +217,18 @@ class BinaryOperator < AbstractElement
     raise(BASICException, 'Not enough operands') if stack.size < 2
     y = stack.pop
     x = stack.pop
+
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
-    elsif x.matrix?
+    elsif x.matrix? && y.scalar?
       matrix_scalar(x, y)
-    elsif y.matrix?
+    elsif x.scalar? && y.matrix?
       scalar_matrix(x, y)
     elsif x.array? && y.array?
       array_array(x, y)
-    elsif x.array?
+    elsif x.array? && y.scalar?
       array_scalar(x, y)
-    elsif y.array?
+    elsif x.scalar? && y.array?
       scalar_array(x, y)
     else
       raise(BASICException, 'Type mismatch') unless
@@ -242,132 +244,121 @@ class BinaryOperator < AbstractElement
   private
 
   def matrix_matrix(x, y)
-    case @op
-    when '+'
-      add_matrix_matrix(x, y)
-    when '-'
-      subtract_matrix_matrix(x, y)
-    when '*'
-      multiply_matrix_matrix(x, y)
-    when '/'
-      divide_matrix_matrix(x, y)
-    when '^'
-      power_matrix_matrix(x, y)
-    else
-      raise BASICException, 'Invalid operation'
-    end
+    op_table = {
+      '+' => :add,
+      '-' => :subtract,
+      '*' => :multiply,
+      '/' => :divide,
+      '^' => :power
+    }
+
+    op_sym = op_table[@op]
+
+    raise BASICException, 'Invalid operation' if op_sym.nil?
+
+    op_matrix_matrix(op_sym, x, y)
   end
 
   def matrix_scalar(x, y)
-    case @op
-    when '+'
-      op_matrix_scalar(:add, x, y)
-    when '-'
-      op_matrix_scalar(:subtract, x, y)
-    when '*'
-      op_matrix_scalar(:multiply, x, y)
-    when '/'
-      op_matrix_scalar(:divide, x, y)
-    when '^'
-      op_matrix_scalar(:power, x, y)
-    else
-      raise BASICException, 'Invalid operation'
-    end
+    op_table = {
+      '+' => :add,
+      '-' => :subtract,
+      '*' => :multiply,
+      '/' => :divide,
+      '^' => :power
+    }
+
+    op_sym = op_table[@op]
+
+    raise BASICException, 'Invalid operation' if op_sym.nil?
+
+    op_matrix_scalar(op_sym, x, y)
   end
 
   def scalar_matrix(x, y)
-    case @op
-    when '+'
-      op_scalar_matrix(:add, x, y)
-    when '-'
-      op_scalar_matrix(:subtract, x, y)
-    when '*'
-      op_scalar_matrix(:multiply, x, y)
-    when '/'
-      op_scalar_matrix(:divide, x, y)
-    when '^'
-      op_scalar_matrix(:power, x, y)
-    else
-      raise BASICException, 'Invalid operation'
-    end
+    op_table = {
+      '+' => :add,
+      '-' => :subtract,
+      '*' => :multiply,
+      '/' => :divide,
+      '^' => :power
+    }
+
+    op_sym = op_table[@op]
+
+    raise BASICException, 'Invalid operation' if op_sym.nil?
+
+    op_scalar_matrix(op_sym, x, y)
   end
 
   def array_array(x, y)
-    case @op
-    when '+'
-      op_array_array(:add, x, y)
-    when '-'
-      op_array_array(:subtract, x, y)
-    when '*'
-      op_array_array(:multiply, x, y)
-    when '/'
-      op_array_array(:divide, x, y)
-    when '^'
-      op_array_array(:power, x, y)
-    else
-      raise BASICException, 'Invalid operation'
-    end
+    op_table = {
+      '+' => :add,
+      '-' => :subtract,
+      '*' => :multiply,
+      '/' => :divide,
+      '^' => :power
+    }
+
+    op_sym = op_table[@op]
+
+    raise BASICException, 'Invalid operation' if op_sym.nil?
+
+    op_array_array(op_sym, x, y)
   end
 
   def array_scalar(x, y)
-    case @op
-    when '+'
-      op_array_scalar(:add, x, y)
-    when '-'
-      op_array_scalar(:subtract, x, y)
-    when '*'
-      op_array_scalar(:multiply, x, y)
-    when '/'
-      op_array_scalar(:divide, x, y)
-    when '^'
-      op_array_scalar(:power, x, y)
-    else
-      raise BASICException, 'Invalid operation'
-    end
+    op_table = {
+      '+' => :add,
+      '-' => :subtract,
+      '*' => :multiply,
+      '/' => :divide,
+      '^' => :power
+    }
+
+    op_sym = op_table[@op]
+
+    raise BASICException, 'Invalid operation' if op_sym.nil?
+
+    op_array_scalar(op_sym, x, y)
   end
 
   def scalar_array(x, y)
-    case @op
-    when '+'
-      op_scalar_array(:add, x, y)
-    when '-'
-      op_scalar_array(:subtract, x, y)
-    when '*'
-      op_scalar_array(:multiply, x, y)
-    when '/'
-      op_scalar_array(:divide, x, y)
-    when '^'
-      op_scalar_array(:power, x, y)
-    else
-      raise BASICException, 'Invalid operation'
-    end
+    op_table = {
+      '+' => :add,
+      '-' => :subtract,
+      '*' => :multiply,
+      '/' => :divide,
+      '^' => :power
+    }
+
+    op_sym = op_table[@op]
+
+    raise BASICException, 'Invalid operation' if op_sym.nil?
+
+    op_scalar_array(op_sym, x, y)
   end
 
   def op_scalar_scalar(x, y)
-    case @op
-    when '+'
-      x.add(y)
-    when '-'
-      x.subtract(y)
-    when '*'
-      x.multiply(y)
-    when '/'
-      x.divide(y)
-    when '^'
-      x.power(y)
-    when '='
-      x.b_eq(y)
-    when '<>'
-      x.b_ne(y)
-    when '<'
-      x.b_lt(y)
-    when '<='
-      x.b_le(y)
-    when '>'
-      x.b_gt(y)
-    when '>='
-      x.b_ge(y)
-    end
+    op_table = {
+      '+' => :add,
+      '-' => :subtract,
+      '*' => :multiply,
+      '/' => :divide,
+      '^' => :power,
+      '=' => :b_eq,
+      '<>' => :b_ne,
+      '<' => :b_lt,
+      '<=' => :b_le,
+      '>' => :b_gt,
+      '>=' => :b_ge
+    }
+
+    op_sym = op_table[@op]
+
+    raise BASICException, 'Invalid operation' if op_sym.nil?
+
+    x.public_send(op_sym, y)
   end
 
   def op_scalar_matrix_1(op, a, b)
@@ -690,6 +681,21 @@ class BinaryOperator < AbstractElement
       values[coords] = a_value.send(op, b)
     end
     BASICArray.new(dims, values)
+  end
+
+  def op_matrix_matrix(op_sym, a, b)
+    case op_sym
+    when :add
+      add_matrix_matrix(a, b)
+    when :subtract
+      subtract_matrix_matrix(a, b)
+    when :multiply
+      multiply_matrix_matrix(a, b)
+    when :divide
+      divide_matrix_matrix(a, b)
+    when :power
+      power_matrix_matrix(a, b)
+    end
   end
 end
 

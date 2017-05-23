@@ -39,11 +39,9 @@ class Function < AbstractElement
     when 'matrix'
       compatible = value.matrix?
     end
-    
-    unless compatible
-      raise(BASICException,
-            "Type mismatch value #{value} not #{type}")
-    end
+
+    raise(BASICException, "Type mismatch value #{value} not #{type}") unless
+      compatible
   end
 
   def check_arg_types(args, types)

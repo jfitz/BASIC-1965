@@ -7,7 +7,7 @@ class AbstractToken
       pretty_tokens << WhitespaceToken.new(' ')
       pretty_tokens << token
     end
-    
+
     prev_open_parens = false
     prev_operand = false
     prev_operator = false

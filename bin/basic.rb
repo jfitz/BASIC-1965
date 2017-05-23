@@ -398,18 +398,16 @@ class Interpreter
   end
 
   def preexecute_loop
-    begin
-      while !@current_line_number.nil? && @running
-        preexecute_a_statement
-        @current_line_number = find_next_line_number
-      end
-    rescue BASICException => e
-      message = "#{e.message} in line #{@current_line_number}"
-      @console_io.print_line(message)
-      stop_running
+    while !@current_line_number.nil? && @running
+      preexecute_a_statement
+      @current_line_number = find_next_line_number
     end
+  rescue BASICException => e
+    message = "#{e.message} in line #{@current_line_number}"
+    @console_io.print_line(message)
+    stop_running
   end
-  
+
   def execute_a_statement(do_trace)
     line = @program_lines[@current_line_number]
     statement = line.statement
@@ -524,11 +522,12 @@ class Interpreter
       end
       act = stack.length
       raise(BASICException, 'Bad expression') if act != exp
-      unless act.zero?
-        # verify each item is of correct type
-        item = stack[0]
-        result_values << item
-      end
+
+      next if act.zero?
+
+      # verify each item is of correct type
+      item = stack[0]
+      result_values << item
     end
     result_values
   end
@@ -869,10 +868,10 @@ class Interpreter
 
   def load_and_run(filename, trace_flag, timing_flag)
     @program_lines = {}
-    if cmd_load(filename, false)
-      timing = Benchmark.measure { cmd_run(trace_flag) }
-      print_timing(timing) if timing_flag
-    end
+    return unless cmd_load(filename, false)
+
+    timing = Benchmark.measure { cmd_run(trace_flag) }
+    print_timing(timing) if timing_flag
   end
 
   def load_and_list(filename, trace_flag, list_tokens)

@@ -119,7 +119,7 @@ class GroupEnd < AbstractElement
 
   def match?(start_element)
     (start_element.text == '(' && @text == ')') ||
-    (start_element.text == '[' && @text == ']')
+      (start_element.text == '[' && @text == ']')
   end
 
   def to_s
@@ -490,11 +490,11 @@ class BooleanConstant < AbstractElement
 
   def initialize(obj)
     super()
-    @value = false
-    @value = true if
-      obj.class.to_s == 'BooleanConstantToken' && obj.to_s == 'TRUE'
-    @value = true if obj.class.to_s == 'String' && obj.casecmp('TRUE').zero?
-    @value = true if obj.class.to_s == 'TrueClass'
+    obj_class = obj.class.to_s
+    @value =
+      (obj_class == 'BooleanConstantToken' && obj.to_s == 'TRUE') ||
+      (obj_class == 'String' && obj.casecmp('TRUE').zero?) ||
+      obj_class == 'TrueClass'
     @operand = true
     @precedence = 0
   end
