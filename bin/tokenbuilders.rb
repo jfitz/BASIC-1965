@@ -265,14 +265,26 @@ class NumberTokenBuilder
       end
     end
 
+    # if the candidate ends with 'E', remove it
+    # the tokenizer takes as many as possible,
+    # but a trailing 'E' is not valid
+    if candidate[-1] == 'E'
+      candidate = candidate[0..-2]
+      i -= 1
+
+      # back up to the 'E' in the input text
+      # (there may be spaces)
+      i -= 1 while text[i] != 'E'
+    end
+
     # check that string conforms to one of these
     regexes = [
-      /\A\d+/,
-      /\A\d+\./,
-      /\A\d+E[+-]?\d+/,
-      /\A\d+\.E[+-]?\d+/,
-      /\A\d+\.\d+(E[+-]?\d+)?/,
-      /\A\.\d+(E[+-]?\d+)?/
+      /\A\d+\z/,
+      /\A\d+\.\z/,
+      /\A\d+E[+-]?\d+\z/,
+      /\A\d+\.E[+-]?\d+\z/,
+      /\A\d+\.\d+(E[+-]?\d+)?\z/,
+      /\A\.\d+(E[+-]?\d+)?\z/
     ]
 
     @token = ''
@@ -290,15 +302,18 @@ class NumberTokenBuilder
 
   def accept?(candidate, c)
     result = false
+
     # can always append a digit
     result = true if /[0-9]/.match(c)
     # can append a decimal point if no decimal point and no E
     result = true if c == '.' && candidate.count('.', 'E').zero?
     # can append E if no E and at least one digit (not just decimal point)
-    result = true if c == 'E' && !candidate.count('0-9').zero?
+    result = true if c == 'E' &&
+                     candidate.count('E').zero? &&
+                     !candidate.count('0-9').zero?
     # can append sign if no chars or last char was E
-    result = true if c == '+' && candidate.empty? || candidate[-1] == 'E'
-    result = true if c == '-' && candidate.empty? || candidate[-1] == 'E'
+    result = true if c == '+' && (candidate.empty? || candidate[-1] == 'E')
+    result = true if c == '-' && (candidate.empty? || candidate[-1] == 'E')
 
     result
   end
@@ -333,8 +348,8 @@ class VariableTokenBuilder
 
     # check that string conforms to one of these
     regexes = [
-      /\A[A-Z]/,
-      /\A[A-Z]\d/
+      /\A[A-Z]\z/,
+      /\A[A-Z]\d\z/
     ]
 
     @token = ''

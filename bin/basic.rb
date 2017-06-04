@@ -664,7 +664,7 @@ class Interpreter
     # check that value type matches variable type
     if value.class.to_s != variable.content_type
       raise(BASICException,
-            "Type mismatch #{value.class} is not #{variable.content_type}")
+            "Type mismatch '#{value}' is not #{variable.content_type}")
     end
     v = variable.to_s
     @variables[v] = value
