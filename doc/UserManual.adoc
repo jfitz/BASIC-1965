@@ -113,6 +113,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--zone-width width |Specifies a zone width. PRINT statements will position output separated by commas in zones. Default is 16.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
 |--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
+|--randomize |Forces new sequences of numbers from the RND() function on successive runs.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
 |--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
 |==========

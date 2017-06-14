@@ -203,9 +203,11 @@ class Interpreter
   attr_reader :console_io
 
   def initialize(print_width, zone_width, output_speed, newline_speed,
-                 echo_input, int_floor, ignore_rnd_arg, implied_semicolon)
+                 echo_input, int_floor, ignore_rnd_arg, implied_semicolon,
+                 randomize)
     @running = false
     @randomizer = Random.new(1)
+    @randomizer = Random.new if randomize
     @statement_factory = StatementFactory.new
     @int_floor = int_floor
     @ignore_rnd_arg = ignore_rnd_arg
@@ -915,15 +917,16 @@ OptionParser.new do |opt|
   opt.on('--int-floor') { |o| options[:int_floor] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
+  opt.on('--randomize') { |o| options[:randomize] = o }
 end.parse!
 
 run_filename = options[:run_name]
 list_filename = options[:list_name]
 pretty_filename = options[:pretty_name]
-show_heading = !(options.key?(:no_heading) || false)
-trace_flag = options.key?(:trace) || false
-list_tokens = options.key?(:tokens) || false
-show_timing = !(options.key?(:no_timing) || false)
+show_heading = !options.key?(:no_heading)
+trace_flag = options.key?(:trace)
+list_tokens = options.key?(:tokens)
+show_timing = !options.key?(:no_timing)
 output_speed = 0
 output_speed = 10 if options.key?(:tty)
 newline_speed = 0
@@ -932,15 +935,16 @@ print_width = 72
 print_width = options[:print_width].to_i if options.key?(:print_width)
 zone_width = 16
 zone_width = options[:zone_width].to_i if options.key?(:zone_width)
-echo_input = options.key?(:echo_input) || false
-int_floor = options.key?(:int_floor) || false
-ignore_rnd_arg = options.key?(:ignore_rnd_arg) || false
-implied_semicolon = options.key?(:implied_semicolon) || false
+echo_input = options.key?(:echo_input)
+int_floor = options.key?(:int_floor)
+ignore_rnd_arg = options.key?(:ignore_rnd_arg)
+implied_semicolon = options.key?(:implied_semicolon)
+randomize = options.key?(:randomize)
 
 interpreter =
   Interpreter.new(print_width, zone_width, output_speed, newline_speed,
                   echo_input, int_floor, ignore_rnd_arg,
-                  implied_semicolon)
+                  implied_semicolon, randomize)
 
 if show_heading
   puts 'BASIC-1965 interpreter version -1'
