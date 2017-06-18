@@ -199,19 +199,21 @@ end
 # parent of all statement classes
 class AbstractStatement
   attr_reader :errors
+  attr_accessor :profile_count
 
   def initialize(keywords, tokens_lists)
     @keywords = keywords
     @tokens_lists = tokens_lists
     @errors = []
-  end
-
-  def pretty
-    AbstractToken.pretty(@keywords, @tokens_lists.flatten)
+    @profile_count = 0
   end
 
   def pre_execute(_)
-    0
+  end
+
+  def profile
+    text = AbstractToken.pretty_tokens(@keywords, @tokens_lists.flatten)
+    ' (' + @profile_count.to_s + ')' + text
   end
 
   protected
@@ -324,7 +326,6 @@ class UnknownStatement < AbstractStatement
   end
 
   def execute(_, _)
-    0
   end
 end
 
@@ -339,7 +340,7 @@ class EmptyStatement < AbstractStatement
   end
 
   def execute(_, _)
-    0
+    @profile_count += 1
   end
 end
 
@@ -358,7 +359,7 @@ class RemarkStatement < AbstractStatement
   end
 
   def execute(_, _)
-    0
+    @profile_count += 1
   end
 end
 
@@ -400,6 +401,8 @@ class DimStatement < AbstractStatement
       end
       interpreter.set_dimensions(variable, subscripts)
     end
+
+    @profile_count += 1
   end
 end
 
@@ -425,10 +428,10 @@ class FilesStatement < AbstractStatement
   def pre_execute(interpreter)
     file_names = @expressions.evaluate(interpreter)
     interpreter.add_file_names(file_names)
+    @profile_count += 1
   end
 
   def execute(_, _)
-    0
   end
 end
 
@@ -468,6 +471,8 @@ class LetStatement < AbstractStatement
     l_values.each do |l_value|
       interpreter.set_value(l_value, r_value, trace)
     end
+
+    @profile_count += 1
   end
 end
 
@@ -540,6 +545,8 @@ class InputStatement < AbstractStatement
       value = hash['value']
       interpreter.set_value(l_value, value, trace)
     end
+
+    @profile_count += 1
   end
 
   private
@@ -617,6 +624,9 @@ class IfStatement < AbstractStatement
     raise(BASICException, 'Expression error') unless
       result.class.to_s == 'BooleanConstant'
     interpreter.next_line_number = @destination if result.value
+
+    @profile_count += 1
+
     return unless trace
     s = ' ' + result.to_s
     io.trace_output(s)
@@ -703,6 +713,8 @@ class PrintStatement < AbstractPrintStatement
     print_items.each do |item|
       item.print(fh, interpreter)
     end
+
+    @profile_count += 1
   end
 
   private
@@ -759,6 +771,8 @@ class GotoStatement < AbstractStatement
 
   def execute(interpreter, _)
     interpreter.next_line_number = @destination
+
+    @profile_count += 1
   end
 end
 
@@ -788,6 +802,8 @@ class GosubStatement < AbstractStatement
   def execute(interpreter, _)
     interpreter.push_return(interpreter.next_line_number)
     interpreter.next_line_number = @destination
+
+    @profile_count += 1
   end
 end
 
@@ -810,6 +826,8 @@ class ReturnStatement < AbstractStatement
 
   def execute(interpreter, _)
     interpreter.next_line_number = interpreter.pop_return
+
+    @profile_count += 1
   end
 end
 
@@ -915,6 +933,8 @@ class ForStatement < AbstractStatement
 
     io = interpreter.console_io
     print_trace_info(io, from, to, step, terminated) if trace
+
+    @profile_count += 1
   end
 
   private
@@ -982,6 +1002,8 @@ class NextStatement < AbstractStatement
     interpreter.next_line_number = fornext_control.loop_start_number
     # change control variable value
     fornext_control.bump_control(interpreter, trace)
+
+    @profile_count += 1
   end
 end
 
@@ -1061,6 +1083,8 @@ class ReadStatement < AbstractReadStatement
         interpreter.set_value(target, value, trace)
       end
     end
+
+    @profile_count += 1
   end
 end
 
@@ -1087,10 +1111,11 @@ class DataStatement < AbstractStatement
     ds = interpreter.get_data_store(nil)
     data_list = @expressions.evaluate(interpreter)
     ds.store(data_list)
+
+    @profile_count += 1
   end
 
   def execute(_, _)
-    0
   end
 end
 
@@ -1114,6 +1139,8 @@ class RestoreStatement < AbstractStatement
   def execute(interpreter, _)
     ds = interpreter.get_data_store(nil)
     ds.reset
+
+    @profile_count += 1
   end
 end
 
@@ -1149,9 +1176,12 @@ class DefineFunctionStatement < AbstractStatement
 
   def pre_execute(interpreter)
     interpreter.set_user_function(@name, @arguments, @template)
+
+    @profile_count += 1
   end
 
-  def execute(_, _) end
+  def execute(_, _)
+  end
 end
 
 # STOP
@@ -1175,6 +1205,8 @@ class StopStatement < AbstractStatement
     io = interpreter.console_io
     io.newline_when_needed
     interpreter.stop
+
+    @profile_count += 1
   end
 end
 
@@ -1198,12 +1230,16 @@ class EndStatement < AbstractStatement
   def pre_execute(interpreter)
     next_line = interpreter.find_next_line_number
     raise(BASICException, 'Statements after END') unless next_line.nil?
+
+    @profile_count += 1
   end
 
   def execute(interpreter, _)
     io = interpreter.console_io
     io.newline_when_needed
     interpreter.stop
+
+    @profile_count += 1
   end
 end
 
@@ -1234,6 +1270,8 @@ class TraceStatement < AbstractStatement
     values = expression.evaluate(interpreter)
     value = values[0]
     interpreter.trace(value.to_v)
+
+    @profile_count += 1
   end
 end
 
@@ -1298,6 +1336,8 @@ class WriteStatement < AbstractWriteStatement
     print_items.each do |item|
       item.write(fh, interpreter)
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1363,6 +1403,8 @@ class ArrPrintStatement < AbstractPrintStatement
       end
       i += 1
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1425,6 +1467,8 @@ class ArrReadStatement < AbstractReadStatement
         read_values(target.name, interpreter, ds, trace)
       end
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1483,6 +1527,8 @@ class ArrWriteStatement < AbstractWriteStatement
       end
       i += 1
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1541,6 +1587,8 @@ class ArrLetStatement < AbstractStatement
       interpreter.set_dimensions(l_value, dims)
       interpreter.set_values(l_value.name, values, trace)
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1593,6 +1641,8 @@ class MatPrintStatement < AbstractPrintStatement
       end
       i += 1
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1655,6 +1705,8 @@ class MatReadStatement < AbstractReadStatement
         read_values(target.name, interpreter, ds, trace)
       end
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1726,6 +1778,8 @@ class MatWriteStatement < AbstractWriteStatement
       end
       i += 1
     end
+
+    @profile_count += 1
   end
 
   private
@@ -1785,6 +1839,8 @@ class MatLetStatement < AbstractStatement
       interpreter.set_dimensions(l_value, dims)
       interpreter.set_values(l_value.name, values, trace)
     end
+
+    @profile_count += 1
   end
 
   private

@@ -171,6 +171,32 @@ Syntax:	PRETTY [line specification]
 
 The line specification is the same as the line specification for the LIST command.
 
+PROFILE
+~~~~~~~
+
+Lists the current program on the screen in "pretty" mode, with additional information about the most recent run.
+The profile information is enclosed in parentheses immediately after line numbers.
+
+The line
+
+    10 LET A = 10
+
+will appear in the profile as
+
+    10 (1) LET A = 10
+
+
+Syntax:	PROFILE [line specification]
+
+The line specification is the same as the line specification for the LIST and PRETTY commands.
+
+The profile information lists the number of times a line was executed.
+Counts are reset after each execution.
+
+Profiling includes the initial "pre-run" processing of certain lines (DATA, FILES, DEF FN, and END) and the regular processing of all lines.
+The END statement is processed in both "pre-run" mode (to ensure that it is the last statement in a program) and often in regular mode (to stop processing).
+Therefore, it is common for the END statement to be counted twice.
+
 DELETE
 ~~~~~~
 

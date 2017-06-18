@@ -194,6 +194,10 @@ class Line
     end
     text
   end
+
+  def profile
+    @statement.profile
+  end
 end
 
 # the interpreter
@@ -262,6 +266,22 @@ class Interpreter
     end
   end
 
+  def cmd_profile(linespec)
+    linespec = linespec.strip
+    if !@program_lines.empty?
+      begin
+        line_numbers = @program_lines.keys.sort
+        line_number_range = LineListSpec.new(linespec, line_numbers)
+        line_numbers = line_number_range.line_numbers
+        profile_lines_errors(line_numbers)
+      rescue BASICException => e
+        @console_io.print_line(e)
+      end
+    else
+      @console_io.print_line('No program loaded')
+    end
+  end
+
   private
 
   def list_lines_errors(line_numbers, list_tokens)
@@ -282,6 +302,17 @@ class Interpreter
       number = line_number.to_s
       pretty = line.pretty
       @console_io.print_line(number + pretty)
+      statement = line.statement
+      statement.errors.each { |error| puts ' ' + error }
+    end
+  end
+
+  def profile_lines_errors(line_numbers)
+    line_numbers.each do |line_number|
+      line = @program_lines[line_number]
+      number = line_number.to_s
+      profile = line.profile
+      @console_io.print_line(number + profile)
       statement = line.statement
       statement.errors.each { |error| puts ' ' + error }
     end
@@ -348,6 +379,12 @@ class Interpreter
     @variables = {}
     @tron_flag = false
 
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      statement = line.statement
+      statement.profile_count = 0
+    end
+
     if @program_lines.empty?
       @console_io.print_line('No program loaded')
     else
@@ -410,12 +447,13 @@ class Interpreter
     stop_running
   end
 
-  def execute_a_statement(do_trace)
+  def execute_a_statement(trace_flag)
     line = @program_lines[@current_line_number]
+    current_line_number = @current_line_number
     statement = line.statement
-    print_trace_info(line) if do_trace
+    print_trace_info(line) if trace_flag
     if statement.errors.empty?
-      statement.execute(self, do_trace)
+      statement.execute(self, trace_flag)
     else
       stop_running
       print_errors(current_line_number, statement)
@@ -779,12 +817,15 @@ class Interpreter
     return true if cmd == 'EXIT'
     cmd4 = cmd[0..3]
     cmd6 = cmd[0..5]
+    cmd7 = cmd[0..6]
     if simple_command?(cmd)
       execute_simple_command(cmd)
     elsif command_4?(cmd4)
       execute_4_command(cmd4, cmd[4..-1])
     elsif command_6?(cmd6)
       execute_6_command(cmd6, cmd[6..-1])
+    elsif command_7?(cmd7)
+      execute_7_command(cmd7, cmd[7..-1])
     else
       print "Unknown command #{cmd}\n"
     end
@@ -860,6 +901,17 @@ class Interpreter
     end
   end
 
+  def command_7?(text)
+    %w(PROFILE).include?(text)
+  end
+
+  def execute_7_command(cmd, rest)
+    case cmd
+    when 'PROFILE'
+      cmd_profile(rest)
+    end
+  end
+
   public
 
   def execute_run_command
@@ -868,12 +920,23 @@ class Interpreter
     @console_io.print_line('')
   end
 
-  def load_and_run(filename, trace_flag, timing_flag)
+  def print_profile
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      number = line_number.to_s
+      profile = line.profile
+      text = number + profile
+      puts text
+    end
+  end
+
+  def load_and_run(filename, trace_flag, timing_flag, profile_flag)
     @program_lines = {}
     return unless cmd_load(filename, false)
 
     timing = Benchmark.measure { cmd_run(trace_flag) }
     print_timing(timing) if timing_flag
+    print_profile if profile_flag
   end
 
   def load_and_list(filename, trace_flag, list_tokens)
@@ -906,6 +969,7 @@ OptionParser.new do |opt|
   opt.on('--tokens') { |o| options[:tokens] = o }
   opt.on('-p', '--pretty SOURCE') { |o| options[:pretty_name] = o }
   opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
+  opt.on('--profile') { |o| options[:profile_name] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--trace') { |o| options[:trace] = o }
@@ -920,12 +984,14 @@ OptionParser.new do |opt|
   opt.on('--randomize') { |o| options[:randomize] = o }
 end.parse!
 
-run_filename = options[:run_name]
 list_filename = options[:list_name]
-pretty_filename = options[:pretty_name]
-show_heading = !options.key?(:no_heading)
-trace_flag = options.key?(:trace)
 list_tokens = options.key?(:tokens)
+pretty_filename = options[:pretty_name]
+run_filename = options[:run_name]
+profile_flag = options.key?(:profile_name)
+show_heading = !options.key?(:no_heading)
+echo_input = options.key?(:echo_input)
+trace_flag = options.key?(:trace)
 show_timing = !options.key?(:no_timing)
 output_speed = 0
 output_speed = 10 if options.key?(:tty)
@@ -935,7 +1001,6 @@ print_width = 72
 print_width = options[:print_width].to_i if options.key?(:print_width)
 zone_width = 16
 zone_width = options[:zone_width].to_i if options.key?(:zone_width)
-echo_input = options.key?(:echo_input)
 int_floor = options.key?(:int_floor)
 ignore_rnd_arg = options.key?(:ignore_rnd_arg)
 implied_semicolon = options.key?(:implied_semicolon)
@@ -952,7 +1017,7 @@ if show_heading
 end
 
 if !run_filename.nil?
-  interpreter.load_and_run(run_filename, trace_flag, show_timing)
+  interpreter.load_and_run(run_filename, trace_flag, show_timing, profile_flag)
 elsif !list_filename.nil?
   interpreter.load_and_list(list_filename, trace_flag, list_tokens)
 elsif !pretty_filename.nil?
