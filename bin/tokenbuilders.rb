@@ -117,11 +117,7 @@ class RemarkTokenBuilder
     unless best_candidate.size.zero?
       @keyword_token = best_candidate
       remark = text[best_count..-1]
-      if remark[0] == ' '
-        @remark_token = remark[1..-1]
-      else
-        @remark_token = remark
-      end
+      @remark_token = remark[0] == ' ' ? remark[1..-1] : remark
       @count = text.size
     end
 
@@ -304,7 +300,7 @@ class NumberTokenBuilder
     result = false
 
     # can always append a digit
-    result = true if /[0-9]/.match(c)
+    result = true if c =~ /[0-9]/
     # can append a decimal point if no decimal point and no E
     result = true if c == '.' && candidate.count('.', 'E').zero?
     # can append E if no E and at least one digit (not just decimal point)
@@ -367,9 +363,9 @@ class VariableTokenBuilder
   def accept?(candidate, c)
     result = false
     # can always start with an alpha
-    result = true if /[A-Z]/.match(c) && candidate.size.zero?
+    result = true if c =~ /[A-Z]/ && candidate.size.zero?
     # can always append a digit
-    result = true if /[0-9]/.match(c) && candidate.size == 1
+    result = true if c =~ /[0-9]/ && candidate.size == 1
 
     result
   end

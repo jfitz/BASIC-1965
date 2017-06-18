@@ -8,25 +8,25 @@ class AbstractToken
       pretty_tokens << token
     end
 
-    prev_open_parens = false
-    prev_operand = false
-    prev_operator = false
-    prev_variable = false
-    prev_2_operand = false
+    token1 = WhitespaceToken.new(' ')
+    token2 = WhitespaceToken.new(' ')
     tokens.each do |token|
+      prev_is_variable = token1.variable? ||
+                         token1.function? ||
+                         token1.user_function?
+
+      prev2_is_operand = token2.operand? || token2.groupend?
       pretty_tokens << WhitespaceToken.new(' ') unless
         token.separator? ||
-        (token.groupstart? && prev_variable) ||
+        (token.groupstart? && prev_is_variable) ||
         token.groupend? ||
-        prev_open_parens ||
-        (prev_operator && !prev_2_operand)
+        token1.groupstart? ||
+        (token1.operator? && !prev2_is_operand)
+
       pretty_tokens << token
-      prev_open_parens = token.groupstart?
-      prev_variable = token.variable? || token.function? ||
-                      token.user_function?
-      prev_2_operand = prev_operand
-      prev_operand = token.operand? || token.groupend?
-      prev_operator = token.operator?
+
+      token2 = token1
+      token1 = token
     end
 
     pretty_tokens.map(&:to_s).join

@@ -208,8 +208,7 @@ class AbstractStatement
     @profile_count = 0
   end
 
-  def pre_execute(_)
-  end
+  def pre_execute(_) end
 
   def profile
     text = AbstractToken.pretty_tokens(@keywords, @tokens_lists.flatten)
@@ -233,12 +232,9 @@ class AbstractStatement
                    value.to_s == control)
       when 'Array'
         result &= (value.class.to_s == 'Array')
-        if control.size == 1
-          result &= value.size == control[0]
-        end
-        if control.size == 2 && control[1] == '>='
-          result &= value.size >= control[0]
-        end
+        result &= value.size == control[0] if control.size == 1
+        result &= value.size >= control[0] if
+          control.size == 2 && control[1] == '>='
       end
     end
     result
@@ -325,8 +321,7 @@ class UnknownStatement < AbstractStatement
     @text
   end
 
-  def execute(_, _)
-  end
+  def execute(_, _) end
 end
 
 # empty statement (line number only)
@@ -431,8 +426,7 @@ class FilesStatement < AbstractStatement
     @profile_count += 1
   end
 
-  def execute(_, _)
-  end
+  def execute(_, _) end
 end
 
 # LET
@@ -490,7 +484,7 @@ class InputStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       @input_items = split_tokens(tokens_lists[0], false)
-    else  
+    else
       @errors << 'Syntax error'
     end
   end
@@ -819,9 +813,7 @@ class ReturnStatement < AbstractStatement
     super
     template = []
 
-    unless check_template(tokens_lists, template)
-      @errors << 'Syntax error'
-    end
+    @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
   def execute(interpreter, _)
@@ -949,7 +941,7 @@ class ForStatement < AbstractStatement
     @errors << 'Control variable must be a variable' unless
       parts[0][0].variable?
 
-    return [parts[0], parts[2]]
+    [parts[0], parts[2]]
   end
 
   def print_trace_info(io, from, to, step, terminated)
@@ -1115,8 +1107,7 @@ class DataStatement < AbstractStatement
     @profile_count += 1
   end
 
-  def execute(_, _)
-  end
+  def execute(_, _) end
 end
 
 # RESTORE
@@ -1131,9 +1122,7 @@ class RestoreStatement < AbstractStatement
     super
     template = []
 
-    unless check_template(tokens_lists, template)
-      @errors << 'Syntax error'
-    end
+    @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
   def execute(interpreter, _)
@@ -1180,8 +1169,7 @@ class DefineFunctionStatement < AbstractStatement
     @profile_count += 1
   end
 
-  def execute(_, _)
-  end
+  def execute(_, _) end
 end
 
 # STOP
@@ -1196,9 +1184,7 @@ class StopStatement < AbstractStatement
     super
     template = []
 
-    unless check_template(tokens_lists, template)
-      @errors << 'Syntax error'
-    end
+    @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
   def execute(interpreter, _)
@@ -1222,9 +1208,7 @@ class EndStatement < AbstractStatement
     super
     template = []
 
-    unless check_template(tokens_lists, template)
-      @errors << 'Syntax error'
-    end
+    @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
   def pre_execute(interpreter)
