@@ -484,6 +484,10 @@ class Interpreter
 
   public
 
+  def has_line_number(line_number)
+    @program_lines.key?(line_number)
+  end
+
   def find_next_line_number
     line_numbers = @program_lines.keys.sort
     index = line_numbers.index(@current_line_number)

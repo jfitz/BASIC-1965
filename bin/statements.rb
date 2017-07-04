@@ -607,6 +607,11 @@ class IfStatement < AbstractStatement
     end
   end
 
+  def pre_execute(interpreter)
+    raise(BASICException, "Line number #{@destination} not found") unless
+      interpreter.has_line_number(@destination)
+  end
+
   def execute(interpreter, trace)
     io = interpreter.console_io
     s = ' ' + @expression.to_s
@@ -763,6 +768,11 @@ class GotoStatement < AbstractStatement
     end
   end
 
+  def pre_execute(interpreter)
+    raise(BASICException, "Line number #{@destination} not found") unless
+      interpreter.has_line_number(@destination)
+  end
+
   def execute(interpreter, _)
     interpreter.next_line_number = @destination
 
@@ -791,6 +801,11 @@ class GosubStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
+  end
+
+  def pre_execute(interpreter)
+    raise(BASICException, "Line number #{@destination} not found") unless
+      interpreter.has_line_number(@destination)
   end
 
   def execute(interpreter, _)
