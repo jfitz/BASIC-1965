@@ -676,7 +676,7 @@ class Variable < AbstractElement
     raise(BASICException, "'#{variable_name}' is not a variable name") if
       variable_name.class.to_s != 'VariableName'
     @variable_name = variable_name
-    @subscripts = subscripts
+    @subscripts = normalize_subscripts(subscripts)
     @variable = true
     @operand = true
     @precedence = 7
@@ -696,6 +696,20 @@ class Variable < AbstractElement
     else
       @variable_name.to_s + '(' + @subscripts.join(',') + ')'
     end
+  end
+
+  private
+
+  def normalize_subscripts(subscripts)
+    raise(Exception, 'Invalid subscripts container') unless
+      subscripts.class.to_s == "Array"
+    int_subscripts = []
+    subscripts.each do |subscript|
+      raise(Excaption, "Invalid subscript #{subscript}") unless
+        subscript.numeric_constant?
+      int_subscripts << subscript.truncate
+    end
+    int_subscripts
   end
 end
 

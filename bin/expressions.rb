@@ -20,7 +20,8 @@ class ScalarValue < Variable
   # return a single value
   def evaluate(interpreter, stack)
     if previous_is_array(stack)
-      @subscripts = get_subscripts(stack)
+      subscripts = get_subscripts(stack)
+      @subscripts = interpreter.normalize_subscripts(subscripts)
       interpreter.check_subscripts(@variable_name, @subscripts)
       interpreter.get_value(self)
     else
@@ -38,7 +39,8 @@ class ScalarReference < Variable
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
     if previous_is_array(stack)
-      @subscripts = stack.pop
+      subscripts = stack.pop
+      @subscripts = interpreter.normalize_subscripts(subscripts)
       num_args = @subscripts.length
       if num_args.zero?
         raise(BASICException,
@@ -548,7 +550,8 @@ class CompoundReference < Variable
   # return a single value, a reference to this object
   def evaluate(interpreter, stack)
     if previous_is_array(stack)
-      @subscripts = stack.pop
+      subscripts = stack.pop
+      @subscripts = interpreter.normalize_subscripts(subscripts)
       num_args = @subscripts.length
       if num_args.zero?
         raise(BASICException,

@@ -630,7 +630,20 @@ class Interpreter
 
   def set_dimensions(variable, subscripts)
     name = variable.name
-    @dimensions[name] = subscripts
+    int_subscripts = normalize_subscripts(subscripts)
+    @dimensions[name] = int_subscripts
+  end
+
+  def normalize_subscripts(subscripts)
+    raise(Exception, 'Invalid subscripts container') unless
+      subscripts.class.to_s == "Array"
+    int_subscripts = []
+    subscripts.each do |subscript|
+      raise(Excaption, "Invalid subscript #{subscript}") unless
+        subscript.numeric_constant?
+      int_subscripts << subscript.truncate
+    end
+    int_subscripts
   end
 
   def get_dimensions(variable)
@@ -670,14 +683,11 @@ class Interpreter
   public
 
   def check_subscripts(variable, subscripts)
-    subscripts.each do |subscript|
-      raise(BASICException, "Non-numeric subscript '#{subscript}'") if
-        subscript.class.to_s != 'NumericConstant'
-    end
-    dimensions = make_dimensions(variable, subscripts.size)
+    int_subscripts = normalize_subscripts(subscripts)
+    dimensions = make_dimensions(variable, int_subscripts.size)
     raise(BASICException, 'Incorrect number of subscripts') if
-      subscripts.size != dimensions.size
-    subscripts.zip(dimensions).each do |pair|
+      int_subscripts.size != dimensions.size
+    int_subscripts.zip(dimensions).each do |pair|
       raise(BASICException, "Subscript #{pair[0]} out of range #{pair[1]}") if
         pair[0] > pair[1]
     end

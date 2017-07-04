@@ -257,6 +257,8 @@ There are no variable types for text strings, integers, double-precision floats,
 
 Variable names consist of a single letter and an optional digit and an optional subscript.
 Subscripts are enclosed in parentheses or square brackets.
+Values for subscripts are truncated to integers.
+The values 2.3 and 2.8 will both be converted to the value 2 when storing or retrieving values.
 
 |==========
 |Name |Valid or reason it is not valid
