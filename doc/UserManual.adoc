@@ -193,9 +193,9 @@ The line specification is the same as the line specification for the LIST and PR
 The profile information lists the total execution time for the statement, and the number of times the statement was executed.
 Counts are reset at the start of each execution.
 
-Profiling includes the first phase of processing of certain lines (DATA, FILES, DEF FN, and END) and the regular processing of all lines.
-The END statement is processed in both phases, to ensure that it is the last statement in a program and to stop processing.
-Therefore, it is common for the END statement to be counted twice.
+Profiling excludes the first phase of processing of certain lines (DATA, FILES, and DEF FN).
+These lines are processed before the program begins, and they do nothing when executed in the main execution.
+For example, placing a DATA statement inside of a FOR/NEXT loop does not cause the lines data values to be stored multiple times.
 
 DELETE
 ~~~~~~

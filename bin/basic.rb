@@ -459,6 +459,7 @@ class Interpreter
       sys_time = timing.stime + timing.cstime
       time = user_time + sys_time
       statement.profile_time += time
+      statement.profile_count += 1
     else
       stop_running
       print_errors(current_line_number, statement)
