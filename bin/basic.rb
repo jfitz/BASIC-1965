@@ -226,6 +226,7 @@ class Interpreter
     @user_functions = {}
     @user_var_names = {}
     @user_var_values = []
+    @program_lines = {}
   end
 
   def parse_line(line)
@@ -796,28 +797,6 @@ class Interpreter
     fh
   end
 
-  def go
-    @program_lines = {}
-    interactive_loop
-  end
-
-  def interactive_loop
-    need_prompt = true
-    done = false
-    until done
-      @console_io.print_line('READY') if need_prompt
-      cmd = @console_io.read_line
-      if /\A\d/ =~ cmd
-        # starts with a number, so maybe it is a program line
-        need_prompt = store_program_line(cmd, true)
-      else
-        # immediate command -- execute
-        done = execute_command(cmd)
-        need_prompt = true
-      end
-    end
-  end
-
   def store_program_line(cmd, print_errors)
     line_num, line = parse_line(cmd)
     if !line_num.nil? && !line.nil?
@@ -983,6 +962,26 @@ class Interpreter
   end
 end
 
+class Shell
+  def run(interpreter)
+    console_io = interpreter.console_io
+    need_prompt = true
+    done = false
+    until done
+      console_io.print_line('READY') if need_prompt
+      cmd = console_io.read_line
+      if /\A\d/ =~ cmd
+        # starts with a number, so maybe it is a program line
+        need_prompt = interpreter.store_program_line(cmd, true)
+      else
+        # immediate command -- execute
+        done = interpreter.execute_command(cmd)
+        need_prompt = true
+      end
+    end
+  end
+end
+
 options = {}
 OptionParser.new do |opt|
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
@@ -1043,7 +1042,8 @@ elsif !list_filename.nil?
 elsif !pretty_filename.nil?
   interpreter.load_and_pretty(pretty_filename, trace_flag)
 else
-  interpreter.go
+  shell = Shell.new
+  shell.run(interpreter)
 end
 
 if show_heading
