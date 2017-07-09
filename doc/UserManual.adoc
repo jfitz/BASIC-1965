@@ -183,15 +183,15 @@ The line
 
 will appear in the profile as
 
-    10 (1) LET A = 10
+    10 (0.0005/1) LET A = 10
 
 
 Syntax:	PROFILE [line specification]
 
 The line specification is the same as the line specification for the LIST and PRETTY commands.
 
-The profile information lists the number of times a line was executed.
-Counts are reset after each execution.
+The profile information lists the total execution time for the statement, and the number of times the statement was executed.
+Counts are reset at the start of each execution.
 
 Profiling includes the first phase of processing of certain lines (DATA, FILES, DEF FN, and END) and the regular processing of all lines.
 The END statement is processed in both phases, to ensure that it is the last statement in a program and to stop processing.

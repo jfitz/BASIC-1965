@@ -200,19 +200,21 @@ end
 class AbstractStatement
   attr_reader :errors
   attr_accessor :profile_count
+  attr_accessor :profile_time
 
   def initialize(keywords, tokens_lists)
     @keywords = keywords
     @tokens_lists = tokens_lists
     @errors = []
     @profile_count = 0
+    @profile_time = 0
   end
 
   def pre_execute(_) end
 
   def profile
     text = AbstractToken.pretty_tokens(@keywords, @tokens_lists.flatten)
-    ' (' + @profile_count.to_s + ')' + text
+    ' (' + @profile_time.to_s + '/' + @profile_count.to_s + ')' + text
   end
 
   protected

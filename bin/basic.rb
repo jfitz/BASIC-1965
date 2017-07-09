@@ -383,6 +383,7 @@ class Interpreter
       line = @program_lines[line_number]
       statement = line.statement
       statement.profile_count = 0
+      statement.profile_time = 0
     end
 
     if @program_lines.empty?
@@ -453,7 +454,11 @@ class Interpreter
     statement = line.statement
     print_trace_info(line) if trace_flag
     if statement.errors.empty?
-      statement.execute(self, trace_flag)
+      timing = Benchmark.measure { statement.execute(self, trace_flag) }
+      user_time = timing.utime + timing.cutime
+      sys_time = timing.stime + timing.cstime
+      time = user_time + sys_time
+      statement.profile_time += time
     else
       stop_running
       print_errors(current_line_number, statement)
