@@ -23,11 +23,9 @@ class LineNumber
   end
 
   def initialize(line_number)
-    if line_number.class.to_s == 'NumericConstantToken'
-      @line_number = line_number.to_i
-    else
-      raise BASICException, "Invalid line number '#{line_number}'"
-    end
+    raise BASICException, "Invalid line number '#{line_number}'" unless
+      line_number.class.to_s == 'NumericConstantToken'
+    @line_number = line_number.to_i
   end
 
   def eql?(other)
@@ -231,9 +229,9 @@ class Interpreter
     raise BASICException, 'Program terminated without END' if
       @next_line_number.nil?
     line_numbers = @program_lines.keys
-    raise(BASICException,
-          "Line number #{@next_line_number} not found") unless
-      line_numbers.include?(@next_line_number)
+    unless line_numbers.include?(@next_line_number)
+      raise(BASICException, "Line number #{@next_line_number} not found")
+    end
   end
 
   public
@@ -347,8 +345,6 @@ class Interpreter
     end
   end
 
-  public
-
   def has_line_number(line_number)
     @program_lines.key?(line_number)
   end
@@ -453,7 +449,7 @@ class Interpreter
 
   def normalize_subscripts(subscripts)
     raise(Exception, 'Invalid subscripts container') unless
-      subscripts.class.to_s == "Array"
+      subscripts.class.to_s == 'Array'
     int_subscripts = []
     subscripts.each do |subscript|
       raise(Excaption, "Invalid subscript #{subscript}") unless
@@ -608,6 +604,7 @@ class Interpreter
   end
 end
 
+# interactive shell
 class Shell
   def initialize(console_io, interpreter)
     @interpreter = interpreter
@@ -616,7 +613,7 @@ class Shell
     @statement_factory = StatementFactory.new
   end
 
-  def run(interpreter)
+  def run
     need_prompt = true
     done = false
     until done
@@ -756,7 +753,7 @@ class Shell
       @interpreter.run(@program_lines, trace_flag)
     end
   end
-  
+
   def dump_vars
     @interpreter.dump_vars
   end
@@ -886,7 +883,7 @@ class Shell
     @console_io.print_line(" user: #{user_time.round(2)}")
     @console_io.print_line(" system: #{sys_time.round(2)}")
   end
-  
+
   def cmd_delete(linespec)
     if @program_lines.empty?
       @console_io.print_line('No program loaded')
@@ -1063,7 +1060,7 @@ elsif !list_filename.nil?
 elsif !pretty_filename.nil?
   shell.load_and_pretty(pretty_filename, trace_flag)
 else
-  shell.run(interpreter)
+  shell.run
 end
 
 if show_heading
