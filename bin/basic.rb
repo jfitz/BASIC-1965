@@ -236,8 +236,8 @@ class Interpreter
 
   public
 
-  def run(program_lines, trace_flag)
-    @program_lines = program_lines
+  def run(program, trace_flag)
+    @program_lines = program.lines
 
     # reset profile metrics
     @program_lines.keys.sort.each do |line_number|
@@ -248,6 +248,7 @@ class Interpreter
     end
 
     # run the program
+    @variables = {}
     @tron_flag = false
     @running = true
     run_phase_1
@@ -604,169 +605,27 @@ class Interpreter
   end
 end
 
-# interactive shell
-class Shell
-  def initialize(console_io, interpreter)
-    @interpreter = interpreter
+# program container
+class Program
+  def initialize(console_io)
     @console_io = console_io
     @program_lines = {}
     @statement_factory = StatementFactory.new
   end
 
-  def run
-    need_prompt = true
-    done = false
-    until done
-      @console_io.print_line('READY') if need_prompt
-      cmd = @console_io.read_line
-      if /\A\d/ =~ cmd
-        # starts with a number, so maybe it is a program line
-        need_prompt = store_program_line(cmd, true)
-      else
-        # immediate command -- execute
-        done = execute_command(cmd)
-        need_prompt = true
-      end
-    end
+  def empty?
+    @program_lines.empty?
   end
 
-  def load_and_run(filename, trace_flag, timing_flag, profile_flag)
-    @program_lines = {}
-    return unless cmd_load(filename, false)
-
-    timing = Benchmark.measure { cmd_run(trace_flag) }
-    print_timing(timing) if timing_flag
-    print_profile if profile_flag
-  end
-
-  def load_and_list(filename, trace_flag, list_tokens)
-    @program_lines = {}
-    cmd_list('', list_tokens) if cmd_load(filename, trace_flag)
-  end
-
-  def load_and_pretty(filename, trace_flag)
-    @program_lines = {}
-    cmd_pretty('') if cmd_load(filename, trace_flag)
-  end
-
-  private
-
-  def execute_command(cmd)
-    return false if cmd.empty?
-    return true if cmd == 'EXIT'
-    cmd4 = cmd[0..3]
-    cmd6 = cmd[0..5]
-    cmd7 = cmd[0..6]
-    if simple_command?(cmd)
-      execute_simple_command(cmd)
-    elsif command_4?(cmd4)
-      execute_4_command(cmd4, cmd[4..-1])
-    elsif command_6?(cmd6)
-      execute_6_command(cmd6, cmd[6..-1])
-    elsif command_7?(cmd7)
-      execute_7_command(cmd7, cmd[7..-1])
-    else
-      print "Unknown command #{cmd}\n"
-    end
-    false
-  end
-
-  def simple_command?(text)
-    %w(NEW RUN TRACE .VARS .UDFS .DIMS).include?(text)
-  end
-
-  def execute_simple_command(text)
-    case text
-    when 'NEW'
-      cmd_new
-    when 'RUN'
-      execute_run_command
-    when 'TRACE'
-      cmd_run(true)
-    when '.VARS'
-      dump_vars
-    when '.UDFS'
-      dump_user_functions
-    when '.DIMS'
-      dump_dims
-    end
-  end
-
-  def command_4?(text)
-    %w(LIST LOAD SAVE).include?(text)
-  end
-
-  def execute_4_command(cmd, rest)
-    case cmd
-    when 'LIST'
-      cmd_list(rest, false)
-    when 'LOAD'
-      cmd_load(rest, false)
-    when 'SAVE'
-      cmd_save(rest)
-    end
-  end
-
-  def command_6?(text)
-    %w(TOKENS PRETTY DELETE).include?(text)
-  end
-
-  def execute_6_command(cmd, rest)
-    case cmd
-    when 'TOKENS'
-      cmd_list(rest, true)
-    when 'PRETTY'
-      cmd_pretty(rest)
-    when 'DELETE'
-      cmd_delete(rest)
-    end
-  end
-
-  def command_7?(text)
-    %w(PROFILE).include?(text)
-  end
-
-  def execute_7_command(cmd, rest)
-    case cmd
-    when 'PROFILE'
-      cmd_profile(rest)
-    end
+  def lines
+    @program_lines
   end
 
   def cmd_new
     @program_lines = {}
-    @interpreter.clear_variables
   end
 
-  def execute_run_command
-    timing = Benchmark.measure { cmd_run(false) }
-    print_timing(timing)
-    @console_io.print_line('')
-  end
-
-  def cmd_run(trace_flag)
-    @interpreter.clear_variables
-
-    if @program_lines.empty?
-      @console_io.print_line('No program loaded')
-    else
-      @interpreter.run(@program_lines, trace_flag)
-    end
-  end
-
-  def dump_vars
-    @interpreter.dump_vars
-  end
-
-  def dump_user_functions
-    @interpreter.dump_user_functions
-  end
-
-  def dump_dims
-    @interpreter.dump_dims
-  end
-
-  def cmd_list(linespec, list_tokens)
+  def list(linespec, list_tokens)
     linespec = linespec.strip
     if !@program_lines.empty?
       begin
@@ -782,7 +641,7 @@ class Shell
     end
   end
 
-  def cmd_pretty(linespec)
+  def pretty(linespec)
     linespec = linespec.strip
     if !@program_lines.empty?
       begin
@@ -798,7 +657,7 @@ class Shell
     end
   end
 
-  def cmd_profile(linespec)
+  def profile(linespec)
     linespec = linespec.strip
     if !@program_lines.empty?
       begin
@@ -814,7 +673,7 @@ class Shell
     end
   end
 
-  def cmd_load(filename, trace_flag)
+  def load(filename, trace_flag)
     filename = filename.strip
     if !filename.empty?
       begin
@@ -837,7 +696,7 @@ class Shell
     end
   end
 
-  def cmd_save(filename)
+  def save(filename)
     if @program_lines.empty?
       @console_io.print_line('No program loaded')
     else
@@ -875,16 +734,7 @@ class Shell
     end
   end
 
-  def print_timing(timing)
-    user_time = timing.utime + timing.cutime
-    sys_time = timing.stime + timing.cstime
-    @console_io.print_line('')
-    @console_io.print_line('CPU time:')
-    @console_io.print_line(" user: #{user_time.round(2)}")
-    @console_io.print_line(" system: #{sys_time.round(2)}")
-  end
-
-  def cmd_delete(linespec)
+  def delete(linespec)
     if @program_lines.empty?
       @console_io.print_line('No program loaded')
     else
@@ -998,13 +848,159 @@ class Shell
   end
 end
 
+# interactive shell
+class Shell
+  def initialize(console_io, interpreter, program)
+    @console_io = console_io
+    @interpreter = interpreter
+    @program = program
+  end
+
+  def run
+    need_prompt = true
+    done = false
+    until done
+      @console_io.print_line('READY') if need_prompt
+      cmd = @console_io.read_line
+      if /\A\d/ =~ cmd
+        # starts with a number, so maybe it is a program line
+        need_prompt = @program.store_program_line(cmd, true)
+      else
+        # immediate command -- execute
+        done = execute_command(cmd)
+        need_prompt = true
+      end
+    end
+  end
+
+  private
+
+  def execute_command(cmd)
+    return false if cmd.empty?
+    return true if cmd == 'EXIT'
+    cmd4 = cmd[0..3]
+    cmd6 = cmd[0..5]
+    cmd7 = cmd[0..6]
+    if simple_command?(cmd)
+      execute_simple_command(cmd)
+    elsif command_4?(cmd4)
+      execute_4_command(cmd4, cmd[4..-1])
+    elsif command_6?(cmd6)
+      execute_6_command(cmd6, cmd[6..-1])
+    elsif command_7?(cmd7)
+      execute_7_command(cmd7, cmd[7..-1])
+    else
+      print "Unknown command #{cmd}\n"
+    end
+    false
+  end
+
+  def simple_command?(text)
+    %w(NEW RUN TRACE .VARS .UDFS .DIMS).include?(text)
+  end
+
+  def execute_simple_command(text)
+    case text
+    when 'NEW'
+      @program.cmd_new
+      @interpreter.clear_variables
+    when 'RUN'
+      execute_run_command
+    when 'TRACE'
+      cmd_run(true)
+    when '.VARS'
+      dump_vars
+    when '.UDFS'
+      dump_user_functions
+    when '.DIMS'
+      dump_dims
+    end
+  end
+
+  def command_4?(text)
+    %w(LIST LOAD SAVE).include?(text)
+  end
+
+  def execute_4_command(cmd, rest)
+    case cmd
+    when 'LIST'
+      @program.list(rest, false)
+    when 'LOAD'
+      @program.load(rest, false)
+    when 'SAVE'
+      @program.save(rest)
+    end
+  end
+
+  def command_6?(text)
+    %w(TOKENS PRETTY DELETE).include?(text)
+  end
+
+  def execute_6_command(cmd, rest)
+    case cmd
+    when 'TOKENS'
+      @program.list(rest, true)
+    when 'PRETTY'
+      @program.pretty(rest)
+    when 'DELETE'
+      @program.delete(rest)
+    end
+  end
+
+  def command_7?(text)
+    %w(PROFILE).include?(text)
+  end
+
+  def execute_7_command(cmd, rest)
+    case cmd
+    when 'PROFILE'
+      @program.profile(rest)
+    end
+  end
+
+  def execute_run_command
+    timing = Benchmark.measure { cmd_run(false) }
+    print_timing(timing)
+    @console_io.print_line('')
+  end
+
+  def cmd_run(trace_flag)
+    if @program.empty?
+      @console_io.print_line('No program loaded')
+    else
+      @interpreter.run(@program, trace_flag)
+    end
+  end
+
+  def dump_vars
+    @interpreter.dump_vars
+  end
+
+  def dump_user_functions
+    @interpreter.dump_user_functions
+  end
+
+  def dump_dims
+    @interpreter.dump_dims
+  end
+end
+
+def print_timing(timing, console_io)
+  user_time = timing.utime + timing.cutime
+  sys_time = timing.stime + timing.cstime
+  console_io.print_line('')
+  console_io.print_line('CPU time:')
+  console_io.print_line(" user: #{user_time.round(2)}")
+  console_io.print_line(" system: #{sys_time.round(2)}")
+end
+
 options = {}
 OptionParser.new do |opt|
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
   opt.on('--tokens') { |o| options[:tokens] = o }
   opt.on('-p', '--pretty SOURCE') { |o| options[:pretty_name] = o }
   opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
-  opt.on('--profile') { |o| options[:profile_name] = o }
+  opt.on('--profile') { |o| options[:profile] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--trace') { |o| options[:trace] = o }
@@ -1023,7 +1019,7 @@ list_filename = options[:list_name]
 list_tokens = options.key?(:tokens)
 pretty_filename = options[:pretty_name]
 run_filename = options[:run_name]
-profile_flag = options.key?(:profile_name)
+show_profile = options.key?(:profile)
 show_heading = !options.key?(:no_heading)
 echo_input = options.key?(:echo_input)
 trace_flag = options.key?(:trace)
@@ -1047,18 +1043,28 @@ console_io =
 interpreter =
   Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
 
+program = Program.new(console_io)
+
 if show_heading
   puts 'BASIC-1965 interpreter version -1'
   puts
 end
 
-shell = Shell.new(console_io, interpreter)
+shell = Shell.new(console_io, interpreter, program)
 if !run_filename.nil?
-  shell.load_and_run(run_filename, trace_flag, show_timing, profile_flag)
+  if program.load(run_filename, false)
+    timing = Benchmark.measure { interpreter.run(program, trace_flag) }
+    print_timing(timing, console_io) if show_timing
+    program.print_profile if show_profile
+  end
 elsif !list_filename.nil?
-  shell.load_and_list(list_filename, trace_flag, list_tokens)
+  if program.load(list_filename, false)
+    program.list('', list_tokens)
+  end
 elsif !pretty_filename.nil?
-  shell.load_and_pretty(pretty_filename, trace_flag)
+  if program.load(pretty_filename, false)
+    program.pretty('')
+  end
 else
   shell.run
 end
