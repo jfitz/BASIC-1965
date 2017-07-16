@@ -960,7 +960,7 @@ class Shell
 
   def execute_run_command
     timing = Benchmark.measure { cmd_run(false) }
-    print_timing(timing)
+    print_timing(timing, @console_io)
     @console_io.print_line('')
   end
 
