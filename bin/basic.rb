@@ -196,6 +196,14 @@ class Line
   def profile
     @statement.profile
   end
+
+  def renumber(renumber_map)
+    @statement.renumber(renumber_map)
+    keywords = @statement.keywords
+    tokens = @statement.tokens
+    text = AbstractToken.pretty_tokens(keywords, tokens)
+    Line.new(text, @statement, keywords + tokens, @comment)
+  end
 end
 
 # the interpreter
@@ -758,6 +766,27 @@ class Program
     @console_io.print_line(e)
   end
 
+  def renumber
+    # generate new line numbers
+    renumber_map = {}
+    new_number = 10
+    @program_lines.keys.sort.each do |line_number|
+      number_token = NumericConstantToken.new(new_number)
+      new_line_number = LineNumber.new(number_token)
+      renumber_map[line_number] = new_line_number
+      new_number += 10
+    end
+    # assign new line numbers
+    new_program_lines = {}
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      new_line_number = renumber_map[line_number]
+      new_program_lines[new_line_number] = line.renumber(renumber_map)
+    end
+
+    @program_lines = new_program_lines
+  end
+
   def store_program_line(cmd, print_errors)
     line_num, line = parse_line(cmd)
     if !line_num.nil? && !line.nil?
@@ -881,6 +910,7 @@ class Shell
     cmd4 = cmd[0..3]
     cmd6 = cmd[0..5]
     cmd7 = cmd[0..6]
+    cmd8 = cmd[0..7]
     if simple_command?(cmd)
       execute_simple_command(cmd)
     elsif command_4?(cmd4)
@@ -889,6 +919,8 @@ class Shell
       execute_6_command(cmd6, cmd[6..-1])
     elsif command_7?(cmd7)
       execute_7_command(cmd7, cmd[7..-1])
+    elsif command_8?(cmd8)
+      execute_8_command(cmd8, cmd[8..-1])
     else
       print "Unknown command #{cmd}\n"
     end
@@ -955,6 +987,17 @@ class Shell
     case cmd
     when 'PROFILE'
       @program.profile(rest)
+    end
+  end
+
+  def command_8?(text)
+    %w(RENUMBER).include?(text)
+  end
+
+  def execute_8_command(cmd, rest)
+    case cmd
+    when 'RENUMBER'
+      @program.renumber
     end
   end
 

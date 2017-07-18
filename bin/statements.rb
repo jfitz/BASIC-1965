@@ -199,12 +199,14 @@ end
 # parent of all statement classes
 class AbstractStatement
   attr_reader :errors
+  attr_reader :keywords
+  attr_reader :tokens
   attr_accessor :profile_count
   attr_accessor :profile_time
 
   def initialize(keywords, tokens_lists)
     @keywords = keywords
-    @tokens_lists = tokens_lists
+    @tokens = tokens_lists.flatten
     @errors = []
     @profile_count = 0
     @profile_time = 0
@@ -213,9 +215,11 @@ class AbstractStatement
   def pre_execute(_) end
 
   def profile
-    text = AbstractToken.pretty_tokens(@keywords, @tokens_lists.flatten)
+    text = AbstractToken.pretty_tokens(@keywords, @tokens)
     ' (' + @profile_time.to_s + '/' + @profile_count.to_s + ')' + text
   end
+
+  def renumber(_) end
 
   protected
 
@@ -620,6 +624,11 @@ class IfStatement < AbstractStatement
     io.trace_output(s)
   end
 
+  def renumber(renumber_map)
+    @destination = renumber_map[@destination]
+    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
+  end
+
   private
 
   def parse_line(expression, destination)
@@ -763,6 +772,11 @@ class GotoStatement < AbstractStatement
   def execute(interpreter, _)
     interpreter.next_line_number = @destination
   end
+
+  def renumber(renumber_map)
+    @destination = renumber_map[@destination]
+    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
+  end
 end
 
 # GOSUB
@@ -796,6 +810,11 @@ class GosubStatement < AbstractStatement
   def execute(interpreter, _)
     interpreter.push_return(interpreter.next_line_number)
     interpreter.next_line_number = @destination
+  end
+
+  def renumber(renumber_map)
+    @destination = renumber_map[@destination]
+    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
   end
 end
 

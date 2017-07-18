@@ -221,6 +221,19 @@ If the list specification is a range, the lines are displayed and the user must 
 The DELETE command with no specification (implying the entire program) does not delete the program but does nothing.
 (To delete the entire program, use the NEW command.)
 
+RENUMBER
+~~~~~~~~
+
+Renumbers lines in the current program.
+
+Syntax: RENUMBER
+
+Modifies the current program, changing each line number.
+The first line is assigned line number 10.
+Each successive line is assgned a number 10 higher than the previous line.
+
+Each statement which contains a line number (GOTO, GOSUB, IF) is modified to use the corresponding new line number.
+
 RUN
 ~~~
 
