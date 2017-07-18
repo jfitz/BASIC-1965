@@ -681,7 +681,7 @@ class Program
     end
   end
 
-  def load(filename, trace_flag)
+  def load(filename)
     filename = filename.strip
     if !filename.empty?
       begin
@@ -689,7 +689,6 @@ class Program
           @program_lines = {}
           file.each_line do |line|
             line = @console_io.ascii_printables(line)
-            @console_io.print_line(line) if trace_flag
             store_program_line(line, false)
           end
         end
@@ -958,7 +957,7 @@ class Shell
     when 'LIST'
       @program.list(rest, false)
     when 'LOAD'
-      @program.load(rest, false)
+      @program.load(rest)
     when 'SAVE'
       @program.save(rest)
     end
@@ -1083,36 +1082,40 @@ randomize = options.key?(:randomize)
 console_io =
   ConsoleIo.new(print_width, zone_width, output_speed, newline_speed,
                 implied_semicolon, echo_input)
-interpreter =
-  Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
-
-program = Program.new(console_io)
 
 if show_heading
-  puts 'BASIC-1965 interpreter version -1'
-  puts
+  console_io.print_line('BASIC-1965 interpreter version -1')
+  console_io.newline
 end
 
-shell = Shell.new(console_io, interpreter, program)
 if !run_filename.nil?
-  if program.load(run_filename, false)
+  program = Program.new(console_io)
+  if program.load(run_filename)
+    interpreter =
+      Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
     timing = Benchmark.measure { interpreter.run(program, trace_flag) }
     print_timing(timing, console_io) if show_timing
     program.print_profile if show_profile
   end
 elsif !list_filename.nil?
-  if program.load(list_filename, false)
+  program = Program.new(console_io)
+  if program.load(list_filename)
     program.list('', list_tokens)
   end
 elsif !pretty_filename.nil?
-  if program.load(pretty_filename, false)
+  program = Program.new(console_io)
+  if program.load(pretty_filename)
     program.pretty('')
   end
 else
+  program = Program.new(console_io)
+  interpreter =
+    Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
+  shell = Shell.new(console_io, interpreter, program)
   shell.run
 end
 
 if show_heading
-  puts
-  puts 'BASIC-1965 ended'
+  console_io.newline
+  console_io.print_line('BASIC-1965 ended')
 end
