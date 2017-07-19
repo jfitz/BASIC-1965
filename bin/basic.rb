@@ -204,6 +204,10 @@ class Line
     text = AbstractToken.pretty_tokens(keywords, tokens)
     Line.new(text, @statement, keywords + tokens, @comment)
   end
+
+  def check(program, console_io, line_number)
+    @statement.program_check(program, console_io, line_number)
+  end
 end
 
 # the interpreter
@@ -245,6 +249,7 @@ class Interpreter
   public
 
   def run(program, trace_flag)
+    @program = program
     @program_lines = program.lines
 
     # reset profile metrics
@@ -306,7 +311,7 @@ class Interpreter
   def preexecute_loop
     while !@current_line_number.nil? && @running
       preexecute_a_statement
-      @current_line_number = find_next_line_number
+      @current_line_number = @program.find_next_line_number(@current_line_number)
     end
   rescue BASICException => e
     message = "#{e.message} in line #{@current_line_number}"
@@ -334,7 +339,7 @@ class Interpreter
 
   def program_loop(trace_flag)
     # pick the next line number
-    @next_line_number = find_next_line_number
+    @next_line_number = @program.find_next_line_number(@current_line_number)
     begin
       execute_a_statement(trace_flag)
       # set the next line number
@@ -359,9 +364,7 @@ class Interpreter
   end
 
   def find_next_line_number
-    line_numbers = @program_lines.keys.sort
-    index = line_numbers.index(@current_line_number)
-    line_numbers[index + 1]
+    @program.find_next_line_number(@current_line_number)
   end
 
   def trace(tron_flag)
@@ -625,6 +628,10 @@ class Program
     @program_lines.empty?
   end
 
+  def has_line_number(line_number)
+    @program_lines.key?(line_number)
+  end
+
   def lines
     @program_lines
   end
@@ -874,6 +881,21 @@ class Program
     answer = @console_io.read_line
     delete_specific_lines(line_numbers) if answer == 'YES'
   end
+
+  def check
+    result = true
+    @program_lines.keys.sort.each do |line_number|
+      r = @program_lines[line_number].check(self, @console_io, line_number)
+      result &&= r
+    end
+    result
+  end
+
+  def find_next_line_number(line_number)
+    line_numbers = @program_lines.keys.sort
+    index = line_numbers.index(line_number)
+    line_numbers[index + 1]
+  end
 end
 
 # interactive shell
@@ -996,21 +1018,21 @@ class Shell
   def execute_8_command(cmd, rest)
     case cmd
     when 'RENUMBER'
-      @program.renumber
+      @program.renumber if @program.check
     end
   end
 
   def execute_run_command
     timing = Benchmark.measure { cmd_run(false) }
     print_timing(timing, @console_io)
-    @console_io.print_line('')
+    @console_io.newline
   end
 
   def cmd_run(trace_flag)
-    if @program.empty?
-      @console_io.print_line('No program loaded')
+    unless @program.empty?
+      @interpreter.run(@program, trace_flag) if @program.check
     else
-      @interpreter.run(@program, trace_flag)
+      @console_io.print_line('No program loaded')
     end
   end
 
@@ -1030,7 +1052,7 @@ end
 def print_timing(timing, console_io)
   user_time = timing.utime + timing.cutime
   sys_time = timing.stime + timing.cstime
-  console_io.print_line('')
+  console_io.newline
   console_io.print_line('CPU time:')
   console_io.print_line(" user: #{user_time.round(2)}")
   console_io.print_line(" system: #{sys_time.round(2)}")
@@ -1090,7 +1112,7 @@ end
 
 if !run_filename.nil?
   program = Program.new(console_io)
-  if program.load(run_filename)
+  if program.load(run_filename) && program.check
     interpreter =
       Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
     timing = Benchmark.measure { interpreter.run(program, trace_flag) }

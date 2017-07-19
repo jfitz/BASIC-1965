@@ -212,6 +212,10 @@ class AbstractStatement
     @profile_time = 0
   end
 
+  def program_check(_, _, _)
+    true
+  end
+
   def pre_execute(_) end
 
   def profile
@@ -602,9 +606,10 @@ class IfStatement < AbstractStatement
     end
   end
 
-  def pre_execute(interpreter)
-    raise(BASICException, "Line number #{@destination} not found") unless
-      interpreter.has_line_number(@destination)
+  def program_check(program, console_io, line_number)
+    return true if program.has_line_number(@destination)
+    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    false
   end
 
   def execute(interpreter, trace)
@@ -764,9 +769,10 @@ class GotoStatement < AbstractStatement
     end
   end
 
-  def pre_execute(interpreter)
-    raise(BASICException, "Line number #{@destination} not found") unless
-      interpreter.has_line_number(@destination)
+  def program_check(program, console_io, line_number)
+    return true if program.has_line_number(@destination)
+    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    false
   end
 
   def execute(interpreter, _)
@@ -802,9 +808,10 @@ class GosubStatement < AbstractStatement
     end
   end
 
-  def pre_execute(interpreter)
-    raise(BASICException, "Line number #{@destination} not found") unless
-      interpreter.has_line_number(@destination)
+  def program_check(program, console_io, line_number)
+    return true if program.has_line_number(@destination)
+    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    false
   end
 
   def execute(interpreter, _)
@@ -1212,9 +1219,11 @@ class EndStatement < AbstractStatement
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
-  def pre_execute(interpreter)
-    next_line = interpreter.find_next_line_number
-    raise(BASICException, 'Statements after END') unless next_line.nil?
+  def program_check(program, console_io, line_number)
+    next_line = program.find_next_line_number(line_number)
+    return true if next_line.nil?
+    console_io.print_line("Statements after END in line #{line_number}")
+    false
   end
 
   def execute(interpreter, _)
