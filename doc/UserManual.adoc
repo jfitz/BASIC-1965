@@ -44,6 +44,7 @@ Lower case causes an error.
 Keywords and tokens
 -------------------
 This implementation of BASIC tokenizes the program text and then parses the tokens.
+When tokenizing, BASIC builds the longest legal token from available text.
 This can lead to some problems, when legal constructs can be confused for keywords.
 
 For example:
@@ -69,7 +70,9 @@ The corrected program is:
 	50 NEXT I
 	99 END
 
-The underscore stops the tokenizer and forces it to accept S as a variable and then procede with TOP which will be tokenized as 'TO' and P (as there is no 'TOP' keyword).
+The underscore stops the tokenizer and forces it to accept S as a token and then procede with TOP which will be tokenized as 'TO' and P (as there is no 'TOP' keyword).
+
+The 'TOKENS' command displays the tokens identified in each line.
 
 Differences from K&K BASIC
 --------------------------
@@ -168,6 +171,15 @@ PRETTY
 Lists the current program on the screen, adjusting the spacing between keywords, variable names, and constants.
 
 Syntax:	PRETTY [line specification]
+
+The line specification is the same as the line specification for the LIST command.
+
+TOKENS
+~~~~~~
+
+Lists the current program and for each line displays the tokens identified on that line.
+
+Syntax: TOKENS [line specification]
 
 The line specification is the same as the line specification for the LIST command.
 
