@@ -310,7 +310,7 @@ class InvalidStatement < AbstractStatement
     @text
   end
 
-  def execute(_, _)
+  def execute(_)
     raise(BASICException, @errors[0])
   end
 
@@ -331,7 +331,7 @@ class UnknownStatement < AbstractStatement
     @text
   end
 
-  def execute(_, _) end
+  def execute(_) end
 end
 
 # empty statement (line number only)
@@ -344,7 +344,7 @@ class EmptyStatement < AbstractStatement
     ''
   end
 
-  def execute(_, _) end
+  def execute(_) end
 end
 
 # REMARK
@@ -361,7 +361,7 @@ class RemarkStatement < AbstractStatement
     @rest = tokens_lists[0]
   end
 
-  def execute(_, _) end
+  def execute(_) end
 end
 
 # DIM
@@ -392,7 +392,7 @@ class DimStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     @expression_list.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
@@ -429,7 +429,7 @@ class FilesStatement < AbstractStatement
     interpreter.add_file_names(file_names)
   end
 
-  def execute(_, _) end
+  def execute(_) end
 end
 
 # LET
@@ -461,12 +461,12 @@ class LetStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     l_values = @assignment.eval_target(interpreter)
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
     l_values.each do |l_value|
-      interpreter.set_value(l_value, r_value, trace)
+      interpreter.set_value(l_value, r_value)
     end
   end
 end
@@ -490,7 +490,7 @@ class InputStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     default_prompt = TextConstantToken.new('"? "')
     prompt = default_prompt
     input_items = @input_items.clone
@@ -538,7 +538,7 @@ class InputStatement < AbstractStatement
       l_values = hash['name'].evaluate(interpreter)
       l_value = l_values[0]
       value = hash['value']
-      interpreter.set_value(l_value, value, trace)
+      interpreter.set_value(l_value, value)
     end
   end
 
@@ -612,10 +612,10 @@ class IfStatement < AbstractStatement
     false
   end
 
-  def execute(interpreter, trace)
-    io = interpreter.console_io
+  def execute(interpreter)
+    io = interpreter.trace_out
     s = ' ' + @expression.to_s
-    io.trace_output(s) if trace
+    io.trace_output(s)
     values = @expression.evaluate(interpreter)
     raise(BASICException, 'Expression error') unless
       values.size == 1
@@ -624,7 +624,6 @@ class IfStatement < AbstractStatement
       result.class.to_s == 'BooleanConstant'
     interpreter.next_line_number = @destination if result.value
 
-    return unless trace
     s = ' ' + result.to_s
     io.trace_output(s)
   end
@@ -709,7 +708,7 @@ class PrintStatement < AbstractPrintStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     file_handle, print_items = extract_file_handle(@print_items, interpreter)
     fh = interpreter.get_file_handler(file_handle)
     print_items.each do |item|
@@ -775,7 +774,7 @@ class GotoStatement < AbstractStatement
     false
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     interpreter.next_line_number = @destination
   end
 
@@ -814,7 +813,7 @@ class GosubStatement < AbstractStatement
     false
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     interpreter.push_return(interpreter.next_line_number)
     interpreter.next_line_number = @destination
   end
@@ -840,7 +839,7 @@ class ReturnStatement < AbstractStatement
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     interpreter.next_line_number = interpreter.pop_return
   end
 end
@@ -861,9 +860,9 @@ class ForNextControl
     @current_value = start
   end
 
-  def bump_control(interpreter, trace)
+  def bump_control(interpreter)
     @current_value += @step_value
-    interpreter.set_value(@control, @current_value, trace)
+    interpreter.set_value(@control, @current_value)
   end
 
   def front_terminated?
@@ -928,12 +927,12 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     from = @start.evaluate(interpreter)[0]
     to = @end.evaluate(interpreter)[0]
     step = @step_value.evaluate(interpreter)[0]
 
-    interpreter.set_value(@control, from, false)
+    interpreter.set_value(@control, from)
     fornext_control =
       ForNextControl.new(@control,
                          interpreter.next_line_number, from, to, step)
@@ -945,8 +944,8 @@ class ForStatement < AbstractStatement
         interpreter.find_closing_next(@control)
     end
 
-    io = interpreter.console_io
-    print_trace_info(io, from, to, step, terminated) if trace
+    io = interpreter.trace_out
+    print_trace_info(io, from, to, step, terminated)
   end
 
   private
@@ -999,21 +998,20 @@ class NextStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     fornext_control = interpreter.retrieve_fornext(@control)
     # check control variable value
     # if matches end value, stop here
     terminated = fornext_control.terminated?(interpreter)
-    if trace
-      io = interpreter.console_io
-      s = ' terminated:' + terminated.to_s
-      io.trace_output(s)
-    end
+    io = interpreter.trace_out
+    s = ' terminated:' + terminated.to_s
+    io.trace_output(s)
     return if terminated
+    
     # set next line from top item
     interpreter.next_line_number = fornext_control.loop_start_number
     # change control variable value
-    fornext_control.bump_control(interpreter, trace)
+    fornext_control.bump_control(interpreter)
   end
 end
 
@@ -1070,7 +1068,7 @@ class ReadStatement < AbstractReadStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     read_items = @read_items.clone
     unless read_items.empty?
       fh, tokens_lists = extract_file_handle(read_items, interpreter)
@@ -1090,7 +1088,7 @@ class ReadStatement < AbstractReadStatement
       targets = expression.evaluate(interpreter)
       targets.each do |target|
         value = ds.read
-        interpreter.set_value(target, value, trace)
+        interpreter.set_value(target, value)
       end
     end
   end
@@ -1121,7 +1119,7 @@ class DataStatement < AbstractStatement
     ds.store(data_list)
   end
 
-  def execute(_, _) end
+  def execute(_) end
 end
 
 # RESTORE
@@ -1139,7 +1137,7 @@ class RestoreStatement < AbstractStatement
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     ds = interpreter.get_data_store(nil)
     ds.reset
   end
@@ -1179,7 +1177,7 @@ class DefineFunctionStatement < AbstractStatement
     interpreter.set_user_function(@name, @arguments, @template)
   end
 
-  def execute(_, _) end
+  def execute(_) end
 end
 
 # STOP
@@ -1197,7 +1195,7 @@ class StopStatement < AbstractStatement
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     io = interpreter.console_io
     io.newline_when_needed
     interpreter.stop
@@ -1226,7 +1224,7 @@ class EndStatement < AbstractStatement
     false
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     io = interpreter.console_io
     io.newline_when_needed
     interpreter.stop
@@ -1252,7 +1250,7 @@ class TraceStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     tokens_lists = @tokens_lists.clone
     raise(BASICException, 'Too many values') if tokens_lists.size > 1
     first_expression = tokens_lists[0]
@@ -1318,7 +1316,7 @@ class WriteStatement < AbstractWriteStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     file_handle, print_items = extract_file_handle(@print_items, interpreter)
     fh = interpreter.get_file_handler(file_handle)
     print_items.each do |item|
@@ -1375,7 +1373,7 @@ class ArrPrintStatement < AbstractPrintStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     file_handle, print_items = extract_file_handle(@print_items, interpreter)
     fh = interpreter.get_file_handler(file_handle)
     i = 0
@@ -1426,7 +1424,7 @@ class ArrReadStatement < AbstractReadStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     tokens_lists = @read_items.clone
     unless tokens_lists.empty?
       fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
@@ -1448,30 +1446,30 @@ class ArrReadStatement < AbstractReadStatement
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
-        read_values(target.name, interpreter, ds, trace)
+        read_values(target.name, interpreter, ds)
       end
     end
   end
 
   private
 
-  def read_values(name, interpreter, ds, trace)
+  def read_values(name, interpreter, ds)
     dims = interpreter.get_dimensions(name)
     case dims.size
     when 1
-      read_array(name, dims, interpreter, ds, trace)
+      read_array(name, dims, interpreter, ds)
     else
       raise(BASICException, 'Dimensions for ARR READ must be 1')
     end
   end
 
-  def read_array(name, dims, interpreter, ds, trace)
+  def read_array(name, dims, interpreter, ds)
     values = {}
     (0..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
     end
-    interpreter.set_values(name, values, trace)
+    interpreter.set_values(name, values)
   end
 end
 
@@ -1495,7 +1493,7 @@ class ArrWriteStatement < AbstractWriteStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     file_handle, print_items = extract_file_handle(@print_items, interpreter)
     fh = interpreter.get_file_handler(file_handle)
     i = 0
@@ -1557,7 +1555,7 @@ class ArrLetStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     r_value = first_value(interpreter)
     dims = r_value.dimensions
     values = r_value.values
@@ -1565,7 +1563,7 @@ class ArrLetStatement < AbstractStatement
     l_values = @assignment.eval_target(interpreter)
     l_values.each do |l_value|
       interpreter.set_dimensions(l_value, dims)
-      interpreter.set_values(l_value.name, values, trace)
+      interpreter.set_values(l_value.name, values)
     end
   end
 
@@ -1605,7 +1603,7 @@ class MatPrintStatement < AbstractPrintStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     file_handle, print_items = extract_file_handle(@print_items, interpreter)
     fh = interpreter.get_file_handler(file_handle)
     i = 0
@@ -1656,7 +1654,7 @@ class MatReadStatement < AbstractReadStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     tokens_lists = @read_items.clone
     unless tokens_lists.empty?
       fh, tokens_lists = extract_file_handle(tokens_lists, interpreter)
@@ -1678,35 +1676,35 @@ class MatReadStatement < AbstractReadStatement
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
-        read_values(target.name, interpreter, ds, trace)
+        read_values(target.name, interpreter, ds)
       end
     end
   end
 
   private
 
-  def read_values(name, interpreter, ds, trace)
+  def read_values(name, interpreter, ds)
     dims = interpreter.get_dimensions(name)
     case dims.size
     when 1
-      read_vector(name, dims, interpreter, ds, trace)
+      read_vector(name, dims, interpreter, ds)
     when 2
-      read_matrix(name, dims, interpreter, ds, trace)
+      read_matrix(name, dims, interpreter, ds)
     else
       raise(BASICException, 'Dimensions for MAT READ must be 1 or 2')
     end
   end
 
-  def read_vector(name, dims, interpreter, ds, trace)
+  def read_vector(name, dims, interpreter, ds)
     values = {}
     (1..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
     end
-    interpreter.set_values(name, values, trace)
+    interpreter.set_values(name, values)
   end
 
-  def read_matrix(name, dims, interpreter, ds, trace)
+  def read_matrix(name, dims, interpreter, ds)
     values = {}
     (1..dims[0].to_i).each do |row|
       (1..dims[1].to_i).each do |col|
@@ -1714,7 +1712,7 @@ class MatReadStatement < AbstractReadStatement
         values[coords] = ds.read
       end
     end
-    interpreter.set_values(name, values, trace)
+    interpreter.set_values(name, values)
   end
 end
 
@@ -1738,7 +1736,7 @@ class MatWriteStatement < AbstractWriteStatement
     end
   end
 
-  def execute(interpreter, _)
+  def execute(interpreter)
     file_handle, print_items = extract_file_handle(@print_items, interpreter)
     fh = interpreter.get_file_handler(file_handle)
     i = 0
@@ -1800,7 +1798,7 @@ class MatLetStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter, trace)
+  def execute(interpreter)
     r_value = first_value(interpreter)
     dims = r_value.dimensions
     values = r_value.values_1 if dims.size == 1
@@ -1809,7 +1807,7 @@ class MatLetStatement < AbstractStatement
     l_values = @assignment.eval_target(interpreter)
     l_values.each do |l_value|
       interpreter.set_dimensions(l_value, dims)
-      interpreter.set_values(l_value.name, values, trace)
+      interpreter.set_values(l_value.name, values)
     end
   end
 

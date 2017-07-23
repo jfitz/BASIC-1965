@@ -166,6 +166,37 @@ class ConsoleIo
   end
 end
 
+# Null output used when we are not tracing
+class NullOut
+  def print_item(_) end
+
+  def print_line(_) end
+
+  def last_was_numeric
+    false
+  end
+
+  def tab ; end
+
+  def semicolon ; end
+
+  def implied ; end
+
+  def trace_output(_) end
+
+  def newline ; end
+
+  def newline_when_needed ; end
+
+  def implied_newline ; end
+
+  def print_out(_) end
+
+  def delay ; end
+
+  def newline_delay ; end
+end
+
 # stores values from DATA statement
 class DataStore
   def initialize

@@ -215,6 +215,7 @@ class Interpreter
   attr_reader :current_line_number
   attr_accessor :next_line_number
   attr_reader :console_io
+  attr_reader :trace_out
 
   def initialize(console_io, int_floor, ignore_rnd_arg, randomize)
     @running = false
@@ -251,6 +252,7 @@ class Interpreter
   def run(program, trace_flag)
     @program = program
     @program_lines = program.lines
+    @trace_flag = trace_flag
 
     # reset profile metrics
     @program_lines.keys.sort.each do |line_number|
@@ -260,12 +262,14 @@ class Interpreter
       statement.profile_time = 0
     end
 
+    @null_out = NullOut.new
+
     # run the program
     @variables = {}
-    @tron_flag = false
+    @trace_out = @trace_flag ? @console_io : @null_out
     @running = true
     run_phase_1
-    run_phase_2(trace_flag) if @running
+    run_phase_2 if @running
   end
 
   def run_phase_1
@@ -274,12 +278,12 @@ class Interpreter
     preexecute_loop
   end
 
-  def run_phase_2(trace_flag)
+  def run_phase_2
     # phase 2: run each command
     # start with the first line number
     @current_line_number = @program_lines.min[0]
     begin
-      program_loop(trace_flag || @tron_flag) while @running
+      program_loop while @running
     rescue Interrupt
       stop_running
     end
@@ -287,9 +291,9 @@ class Interpreter
   end
 
   def print_trace_info(line)
-    @console_io.newline_when_needed
-    @console_io.print_out @current_line_number.to_s + ':' + line.pretty
-    @console_io.newline
+    @trace_out.newline_when_needed
+    @trace_out.print_out @current_line_number.to_s + ':' + line.pretty
+    @trace_out.newline
   end
 
   def print_errors(current_line_number, statement)
@@ -319,13 +323,13 @@ class Interpreter
     stop_running
   end
 
-  def execute_a_statement(trace_flag)
+  def execute_a_statement
     line = @program_lines[@current_line_number]
     current_line_number = @current_line_number
     statement = line.statement
-    print_trace_info(line) if trace_flag
+    print_trace_info(line)
     if statement.errors.empty?
-      timing = Benchmark.measure { statement.execute(self, trace_flag) }
+      timing = Benchmark.measure { statement.execute(self) }
       user_time = timing.utime + timing.cutime
       sys_time = timing.stime + timing.cstime
       time = user_time + sys_time
@@ -337,11 +341,11 @@ class Interpreter
     end
   end
 
-  def program_loop(trace_flag)
+  def program_loop
     # pick the next line number
     @next_line_number = @program.find_next_line_number(@current_line_number)
     begin
-      execute_a_statement(trace_flag)
+      execute_a_statement
       # set the next line number
       @current_line_number = nil
       if @running
@@ -368,7 +372,7 @@ class Interpreter
   end
 
   def trace(tron_flag)
-    @tron_flag = tron_flag
+    @trace_out = (@trace_flag || tron_flag) ? @console_io : @null_out
   end
 
   def clear_variables
@@ -535,7 +539,7 @@ class Interpreter
     value
   end
 
-  def set_value(variable, value, trace)
+  def set_value(variable, value)
     # check that value type matches variable type
     if value.class.to_s != variable.content_type
       raise(BASICException,
@@ -543,13 +547,13 @@ class Interpreter
     end
     v = variable.to_s
     @variables[v] = value
-    @console_io.print_line(' ' + variable.to_s + ' = ' + value.to_s) if trace
+    @trace_out.print_line(' ' + variable.to_s + ' = ' + value.to_s)
   end
 
-  def set_values(name, values, trace)
+  def set_values(name, values)
     values.each do |coords, value|
       variable = Variable.new(name, coords)
-      set_value(variable, value, trace)
+      set_value(variable, value)
     end
   end
 
