@@ -312,7 +312,7 @@ class NumericConstant < AbstractElement
     NumericConstant.new(@value**other.to_v)
   end
 
-  def evaluate(_, _)
+  def evaluate(_, _, _)
     self
   end
 
@@ -433,7 +433,7 @@ class TextConstant < AbstractElement
     @precedence = 0
   end
 
-  def evaluate(_, _)
+  def evaluate(_, _, _)
     self
   end
 
@@ -519,7 +519,7 @@ class BooleanConstant < AbstractElement
     false
   end
 
-  def evaluate(_, _)
+  def evaluate(_, _, _)
     self
   end
 
@@ -726,8 +726,8 @@ class List < AbstractElement
     @parsed_expressions
   end
 
-  def evaluate(interpreter, _)
-    interpreter.evaluate(@parsed_expressions)
+  def evaluate(interpreter, _, trace)
+    interpreter.evaluate(@parsed_expressions, trace)
   end
 
   def to_s

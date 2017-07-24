@@ -103,7 +103,7 @@ class UserFunction < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack)
+  def evaluate(interpreter, stack, trace)
     expression = interpreter.get_user_function(@name)
     # verify function is defined
     raise(BASICException, "Function #{@name} not defined") if expression.nil?
@@ -116,7 +116,7 @@ class UserFunction < AbstractScalarFunction
                     ['numeric'] * user_var_values.length)
 
     # dummy variable names and their (now known) values
-    result = expression.evaluate_with_vars(interpreter, @name, user_var_values)
+    result = expression.evaluate_with_vars(interpreter, @name, user_var_values, trace)
     result[0]
   end
 end
@@ -128,7 +128,7 @@ class FunctionInt < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack)
+  def evaluate(interpreter, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -143,7 +143,7 @@ class FunctionRnd < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack)
+  def evaluate(interpreter, stack, _)
     stack.push([NumericConstant.new(1)]) unless previous_is_array(stack)
     ensure_argument_count(stack, [0, 1])
     args = stack.pop
@@ -159,7 +159,7 @@ class FunctionExp < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -173,7 +173,7 @@ class FunctionLog < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -187,7 +187,7 @@ class FunctionAbs < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -201,7 +201,7 @@ class FunctionSqr < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -215,7 +215,7 @@ class FunctionSin < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -229,7 +229,7 @@ class FunctionCos < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -243,7 +243,7 @@ class FunctionTan < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -257,7 +257,7 @@ class FunctionAtn < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -271,7 +271,7 @@ class FunctionSgn < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['numeric'])
@@ -285,7 +285,7 @@ class FunctionTrn < AbstractMatrixFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['matrix'])
@@ -301,7 +301,7 @@ class FunctionZer < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1, 2])
     args = stack.pop
     check_arg_types(args, ['numeric'] * args.size)
@@ -316,7 +316,7 @@ class FunctionCon < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1, 2])
     args = stack.pop
     check_arg_types(args, ['numeric'] * args.size)
@@ -331,7 +331,7 @@ class FunctionIdn < AbstractScalarFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1, 2])
     args = stack.pop
     check_arg_types(args, ['numeric'] * args.size)
@@ -356,7 +356,7 @@ class FunctionDet < AbstractMatrixFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     check_arg_types(args, ['matrix'])
@@ -370,7 +370,7 @@ class FunctionInv < AbstractMatrixFunction
     super
   end
 
-  def evaluate(_, stack)
+  def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
     dims = args[0].dimensions
