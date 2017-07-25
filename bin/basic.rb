@@ -1090,6 +1090,7 @@ OptionParser.new do |opt|
   opt.on('--int-floor') { |o| options[:int_floor] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
+  opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
 end.parse!
 
@@ -1113,11 +1114,14 @@ zone_width = options[:zone_width].to_i if options.key?(:zone_width)
 int_floor = options.key?(:int_floor)
 ignore_rnd_arg = options.key?(:ignore_rnd_arg)
 implied_semicolon = options.key?(:implied_semicolon)
+qmark_after_prompt = options.key?(:qmark_after_prompt)
 randomize = options.key?(:randomize)
 
+default_prompt = TextConstantToken.new('"? "')
 console_io =
   ConsoleIo.new(print_width, zone_width, output_speed, newline_speed,
-                implied_semicolon, echo_input)
+                implied_semicolon, default_prompt, qmark_after_prompt,
+                echo_input)
 
 if show_heading
   console_io.print_line('BASIC-1965 interpreter version -1')
