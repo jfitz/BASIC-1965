@@ -14,6 +14,9 @@ class AbstractElement
     @separator = false
     @file_handle = false
     @precedence = 10
+    @scalar = false
+    @array = false
+    @matrix = false
   end
 
   def operator?
@@ -72,6 +75,18 @@ class AbstractElement
     @file_handle
   end
 
+  def scalar?
+    @scalar
+  end
+
+  def array?
+    @array
+  end
+
+  def matrix?
+    @matrix
+  end
+  
   protected
 
   def make_coord(c)
@@ -162,8 +177,143 @@ end
 
 public
 
+# class that holds a value
+class AbstractValueElement < AbstractElement
+  def initialize
+    super
+    @numeric_constant = false
+    @text_constant = false
+    @boolean_constant = false
+    @operand = true
+    @precedence = 0
+    @scalar = true
+    @value = nil
+  end
+
+  def numeric_constant?
+    @numeric_constant
+  end
+
+  def text_constant?
+    @text_constant
+  end
+
+  def boolean_constant?
+    @boolean_constant
+  end
+
+  def eql?(other)
+    @value == other.to_v
+  end
+
+  def hash
+    @value.hash
+  end
+
+  def ==(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    @value == other.to_v
+  end
+
+  def >(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    @value > other.to_v
+  end
+
+  def >=(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    @value >= other.to_v
+  end
+
+  def <(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    @value < other.to_v
+  end
+
+  def <=(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    @value <= other.to_v
+  end
+
+  def b_eq(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    BooleanConstant.new(@value == other.to_v)
+  end
+
+  def b_ne(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    BooleanConstant.new(@value != other.to_v)
+  end
+
+  def b_gt(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    BooleanConstant.new(@value > other.to_v)
+  end
+
+  def b_ge(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    BooleanConstant.new(@value >= other.to_v)
+  end
+
+  def b_lt(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    BooleanConstant.new(@value < other.to_v)
+  end
+
+  def b_le(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
+    BooleanConstant.new(@value <= other.to_v)
+  end
+
+  def +(other)
+    raise(BASICException, 'Invalid operator')
+  end
+
+  def -(other)
+    raise(BASICException, 'Invalid operator')
+  end
+
+  def add(other)
+    raise(BASICException, 'Invalid operator')
+  end
+
+  def subtract(other)
+    raise(BASICException, 'Invalid operator')
+  end
+
+  def multiply(other)
+    raise(BASICException, 'Invalid operator')
+  end
+
+  def divide(other)
+    raise(BASICException, 'Invalid operator')
+  end
+
+  def power(other)
+    raise(BASICException, 'Invalid operator')
+  end
+
+  def printable?
+    true
+  end
+
+  def evaluate(_, _, _)
+    self
+  end
+
+  def to_v
+    @value
+  end
+
+  private
+
+  def compatible?(other)
+    self.class.to_s == other.class.to_s
+  end
+end
+
 # Numeric constants
-class NumericConstant < AbstractElement
+class NumericConstant < AbstractValueElement
   def self.accept?(token)
     classes = %w(Fixnum Bignum Float NumericConstantToken)
     classes.include?(token.class.to_s)
@@ -206,114 +356,44 @@ class NumericConstant < AbstractElement
     f = text if numeric_classes.include?(text.class.to_s)
     f = text.to_f if text.class.to_s == 'NumericConstantToken'
     @value = float_to_possible_int(f)
-    @operand = true
-    @precedence = 0
+    @numeric_constant = true
     raise BASICException, "'#{text}' is not a number" if @value.nil?
   end
 
-  def scalar?
-    true
-  end
-
-  def array?
-    false
-  end
-
-  def matrix?
-    false
-  end
-
-  def numeric_constant?
-    true
-  end
-
-  def text_constant?
-    false
-  end
-
-  def eql?(other)
-    @value == other.to_v
-  end
-
-  def hash
-    @value.hash
-  end
-
-  def ==(other)
-    @value == other.to_v
-  end
-
-  def >(other)
-    @value > other.to_v
-  end
-
-  def >=(other)
-    @value >= other.to_v
-  end
-
-  def <(other)
-    @value < other.to_v
-  end
-
-  def <=(other)
-    @value <= other.to_v
-  end
-
-  def b_eq(other)
-    BooleanConstant.new(@value == other.to_v)
-  end
-
-  def b_ne(other)
-    BooleanConstant.new(@value != other.to_v)
-  end
-
-  def b_gt(other)
-    BooleanConstant.new(@value > other.to_v)
-  end
-
-  def b_ge(other)
-    BooleanConstant.new(@value >= other.to_v)
-  end
-
-  def b_lt(other)
-    BooleanConstant.new(@value < other.to_v)
-  end
-
-  def b_le(other)
-    BooleanConstant.new(@value <= other.to_v)
-  end
-
   def +(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
     NumericConstant.new(@value + other.to_v)
   end
 
   def -(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
     NumericConstant.new(@value - other.to_v)
   end
 
   def add(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
     NumericConstant.new(@value + other.to_v)
   end
 
   def subtract(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
     NumericConstant.new(@value - other.to_v)
   end
 
   def multiply(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
     NumericConstant.new(@value * other.to_v)
   end
 
   def divide(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
     raise(BASICException, 'Divide by zero') if other == NumericConstant.new(0)
     NumericConstant.new(@value.to_f / other.to_v.to_f)
   end
 
   def power(other)
+    raise(BASICException, 'Type mismatch') unless compatible?(other)
     NumericConstant.new(@value**other.to_v)
-  end
-
-  def evaluate(_, _, _)
-    self
   end
 
   def truncate
@@ -371,10 +451,6 @@ class NumericConstant < AbstractElement
     @value.to_f
   end
 
-  def to_v
-    @value
-  end
-
   def to_s
     @value.to_s
   end
@@ -412,7 +488,7 @@ class NumericConstant < AbstractElement
 end
 
 # Text constants
-class TextConstant < AbstractElement
+class TextConstant < AbstractValueElement
   def self.accept?(token)
     classes = %w(TextConstantToken)
     classes.include?(token.class.to_s)
@@ -429,36 +505,7 @@ class TextConstant < AbstractElement
     @value = nil
     @value = text.value if text.class.to_s == 'TextConstantToken'
     raise(BASICException, "'#{text}' is not a text constant") if @value.nil?
-    @operand = true
-    @precedence = 0
-  end
-
-  def evaluate(_, _, _)
-    self
-  end
-
-  def scalar?
-    true
-  end
-
-  def array?
-    false
-  end
-
-  def matrix?
-    false
-  end
-
-  def numeric_constant?
-    false
-  end
-
-  def text_constant?
-    true
-  end
-
-  def printable?
-    true
+    @text_constant = true
   end
 
   def to_s
@@ -476,7 +523,7 @@ class TextConstant < AbstractElement
 end
 
 # Boolean constants
-class BooleanConstant < AbstractElement
+class BooleanConstant < AbstractValueElement
   def self.accept?(token)
     classes = %w(BooleanConstantToken)
     classes.include?(token.class.to_s)
@@ -495,40 +542,7 @@ class BooleanConstant < AbstractElement
       (obj_class == 'BooleanConstantToken' && obj.to_s == 'TRUE') ||
       (obj_class == 'String' && obj.casecmp('TRUE').zero?) ||
       obj_class == 'TrueClass'
-    @operand = true
-    @precedence = 0
-  end
-
-  def scalar?
-    true
-  end
-
-  def array?
-    false
-  end
-
-  def matrix?
-    false
-  end
-
-  def numeric_constant?
-    false
-  end
-
-  def text_constant?
-    false
-  end
-
-  def evaluate(_, _, _)
-    self
-  end
-
-  def printable?
-    true
-  end
-
-  def to_v
-    @value
+    @boolean_constant = true
   end
 
   def to_s
