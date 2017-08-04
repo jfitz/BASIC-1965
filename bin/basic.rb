@@ -2,6 +2,7 @@
 
 require 'benchmark'
 require 'optparse'
+require 'singleton'
 
 require_relative 'exceptions'
 require_relative 'tokens'
@@ -632,10 +633,11 @@ end
 
 # program container
 class Program
-  def initialize(console_io)
+  def initialize(console_io, tokenizers)
     @console_io = console_io
     @program_lines = {}
-    @statement_factory = StatementFactory.new
+    @statement_factory = StatementFactory.instance
+    @statement_factory.tokenizers = tokenizers
   end
 
   def empty?
@@ -1072,6 +1074,42 @@ def print_timing(timing, console_io)
   console_io.print_line(" system: #{sys_time.round(2)}")
 end
 
+
+def make_tokenizers
+  tokenizers = []
+
+  tokenizers << CommentTokenBuilder.new
+  tokenizers << RemarkTokenBuilder.new
+
+  statement_factory = StatementFactory.instance
+  keywords = statement_factory.keywords_definitions
+
+  tokenizers << ListTokenBuilder.new(keywords, KeywordToken)
+
+  un_ops = UnaryOperator.operators
+  bi_ops = BinaryOperator.operators
+  operators = (un_ops + bi_ops).uniq
+  tokenizers << ListTokenBuilder.new(operators, OperatorToken)
+
+  tokenizers << BreakTokenBuilder.new
+
+  tokenizers << ListTokenBuilder.new(['(', '['], GroupStartToken)
+  tokenizers << ListTokenBuilder.new([')', ']'], GroupEndToken)
+  tokenizers << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
+
+  tokenizers <<
+    ListTokenBuilder.new(FunctionFactory.function_names, FunctionToken)
+
+  function_names = ('FNA'..'FNZ').to_a
+  tokenizers << ListTokenBuilder.new(function_names, UserFunctionToken)
+
+  tokenizers << TextTokenBuilder.new
+  tokenizers << NumberTokenBuilder.new
+  tokenizers << VariableTokenBuilder.new
+  tokenizers << ListTokenBuilder.new(%w(TRUE FALSE), BooleanConstantToken)
+  tokenizers << WhitespaceTokenBuilder.new
+end
+
 options = {}
 OptionParser.new do |opt|
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
@@ -1123,13 +1161,15 @@ console_io =
                 implied_semicolon, default_prompt, qmark_after_prompt,
                 echo_input)
 
+tokenizers = make_tokenizers
+
 if show_heading
   console_io.print_line('BASIC-1965 interpreter version -1')
   console_io.newline
 end
 
 if !run_filename.nil?
-  program = Program.new(console_io)
+  program = Program.new(console_io, tokenizers)
   if program.load(run_filename) && program.check
     interpreter =
       Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
@@ -1138,17 +1178,17 @@ if !run_filename.nil?
     program.print_profile if show_profile
   end
 elsif !list_filename.nil?
-  program = Program.new(console_io)
+  program = Program.new(console_io, tokenizers)
   if program.load(list_filename)
     program.list('', list_tokens)
   end
 elsif !pretty_filename.nil?
-  program = Program.new(console_io)
+  program = Program.new(console_io, tokenizers)
   if program.load(pretty_filename)
     program.pretty('')
   end
 else
-  program = Program.new(console_io)
+  program = Program.new(console_io, tokenizers)
   interpreter =
     Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
   shell = Shell.new(console_io, interpreter, program)
