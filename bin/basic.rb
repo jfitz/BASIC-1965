@@ -251,7 +251,7 @@ class Interpreter
 
   public
 
-  def run(program, trace_flag)
+  def run(program, trace_flag, show_timing)
     @program = program
     @program_lines = program.lines
     @trace_flag = trace_flag
@@ -266,12 +266,27 @@ class Interpreter
 
     @null_out = NullOut.new
 
+    timing = Benchmark.measure { run_and_time }
+    print_timing(timing, console_io) if show_timing
+  end
+
+  def run_and_time
     # run the program
     @variables = {}
     @trace_out = @trace_flag ? @console_io : @null_out
     @running = true
     run_phase_1
     run_phase_2 if @running
+  end
+
+  def print_timing(timing, console_io)
+    user_time = timing.utime + timing.cutime
+    sys_time = timing.stime + timing.cstime
+    @console_io.newline
+    @console_io.print_line('CPU time:')
+    @console_io.print_line(" user: #{user_time.round(2)}")
+    @console_io.print_line(" system: #{sys_time.round(2)}")
+    @console_io.newline
   end
 
   def run_phase_1
@@ -974,9 +989,9 @@ class Shell
       @program.cmd_new
       @interpreter.clear_variables
     when 'RUN'
-      execute_run_command
+      cmd_run(false, true)
     when 'TRACE'
-      cmd_run(true)
+      cmd_run(true, false)
     when '.VARS'
       dump_vars
     when '.UDFS'
@@ -1038,15 +1053,9 @@ class Shell
     end
   end
 
-  def execute_run_command
-    timing = Benchmark.measure { cmd_run(false) }
-    print_timing(timing, @console_io)
-    @console_io.newline
-  end
-
-  def cmd_run(trace_flag)
+  def cmd_run(trace_flag, show_timing)
     unless @program.empty?
-      @interpreter.run(@program, trace_flag) if @program.check
+      @interpreter.run(@program, trace_flag, show_timing) if @program.check
     else
       @console_io.print_line('No program loaded')
     end
@@ -1064,16 +1073,6 @@ class Shell
     @interpreter.dump_dims
   end
 end
-
-def print_timing(timing, console_io)
-  user_time = timing.utime + timing.cutime
-  sys_time = timing.stime + timing.cstime
-  console_io.newline
-  console_io.print_line('CPU time:')
-  console_io.print_line(" user: #{user_time.round(2)}")
-  console_io.print_line(" system: #{sys_time.round(2)}")
-end
-
 
 def make_tokenizers
   tokenizers = []
@@ -1173,9 +1172,7 @@ if !run_filename.nil?
   if program.load(run_filename) && program.check
     interpreter =
       Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
-    timing = Benchmark.measure { interpreter.run(program, trace_flag) }
-    print_timing(timing, console_io) if show_timing
-    program.print_profile if show_profile
+    interpreter.run(program, trace_flag, show_timing)
   end
 elsif !list_filename.nil?
   program = Program.new(console_io, tokenizers)

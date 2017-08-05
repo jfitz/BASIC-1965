@@ -190,7 +190,7 @@ class AbstractStatement
 
   def profile
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
-    ' (' + @profile_time.to_s + '/' + @profile_count.to_s + ')' + text
+    ' (' + @profile_time.round(4).to_s + '/' + @profile_count.to_s + ')' + text
   end
 
   def renumber(_) end
