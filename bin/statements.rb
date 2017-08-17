@@ -29,19 +29,21 @@ class StatementFactory
   end
 
   def keywords_definitions
-    keys = statement_definitions.keys
     keywords = []
-    keys.each do |key|
-      keywords << key[0].to_s
+
+    statement_classes.each do |cl|
+      kwds = cl.lead_keywords.flatten
+      kwds.each { |kwd| keywords << kwd.to_s }
+
+      keywords += cl.extra_keywords
     end
-    keywords += %w(THEN TO STEP)
-    keywords -= %w(REM REMARK)
+
     keywords.uniq
   end
 
   private
 
-  def statement_definitions
+  def statement_classes
     classes = [
       ArrPrintStatement,
       ArrReadStatement,
@@ -72,9 +74,12 @@ class StatementFactory
       TraceStatement,
       WriteStatement
     ]
+  end
+
+  def statement_definitions
     lead_keywords = {}
 
-    classes.each do |class_name|
+    statement_classes.each do |class_name|
       keyword_sets = class_name.lead_keywords
       keyword_sets.each do |set|
         lead_keywords[set] = class_name
@@ -173,6 +178,10 @@ class AbstractStatement
   attr_reader :tokens
   attr_accessor :profile_count
   attr_accessor :profile_time
+
+  def self.extra_keywords
+    []
+  end
 
   def initialize(keywords, tokens_lists)
     @keywords = keywords
@@ -561,6 +570,10 @@ class IfStatement < AbstractStatement
     ]
   end
 
+  def self.extra_keywords
+    ['THEN']
+  end
+
   def initialize(keywords, tokens_lists)
     super
     template = [[1, '>='], 'THEN', [1]]
@@ -864,6 +877,10 @@ class ForStatement < AbstractStatement
     [
       [KeywordToken.new('FOR')]
     ]
+  end
+
+  def self.extra_keywords
+    ['TO', 'STEP']
   end
 
   def initialize(keywords, tokens_lists)
