@@ -343,6 +343,71 @@ class RemarkStatement < AbstractStatement
   def execute(_) end
 end
 
+# DATA
+class DataStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('DATA')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = [[1, '>=']]
+
+    if check_template(tokens_lists, template)
+      @expressions = ValueScalarExpression.new(tokens_lists[0])
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def pre_execute(interpreter)
+    ds = interpreter.get_data_store(nil)
+    data_list = @expressions.evaluate(interpreter, false)
+    ds.store(data_list)
+  end
+
+  def execute(_) end
+end
+
+# DEF FNx
+class DefineFunctionStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('DEF')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = [[1, '>=']]
+
+    if check_template(tokens_lists, template)
+      @name = ''
+      @arguments = []
+      @template = ''
+      begin
+        user_function_definition = UserFunctionDefinition.new(tokens_lists[0])
+        @name = user_function_definition.name
+        @arguments = user_function_definition.arguments
+        @template = user_function_definition.template
+      rescue BASICException => e
+        puts e.message
+        @errors << e.message
+      end
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def pre_execute(interpreter)
+    interpreter.set_user_function(@name, @arguments, @template)
+  end
+
+  def execute(_) end
+end
+
 # DIM
 class DimStatement < AbstractStatement
   def self.lead_keywords
@@ -384,6 +449,35 @@ class DimStatement < AbstractStatement
   end
 end
 
+# END
+class EndStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('END')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = []
+
+    @errors << 'Syntax error' unless check_template(tokens_lists, template)
+  end
+
+  def program_check(program, console_io, line_number)
+    next_line = program.find_next_line_number(line_number)
+    return true if next_line.nil?
+    console_io.print_line("Statements after END in line #{line_number}")
+    false
+  end
+
+  def execute(interpreter)
+    io = interpreter.console_io
+    io.newline_when_needed
+    interpreter.stop
+  end
+end
+
 # FILES
 class FilesStatement < AbstractStatement
   def self.lead_keywords
@@ -409,421 +503,6 @@ class FilesStatement < AbstractStatement
   end
 
   def execute(_) end
-end
-
-# LET
-class LetStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('LET')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = [[3, '>=']]
-
-    if check_template(tokens_lists, template)
-      begin
-        @assignment = ScalarAssignment.new(tokens_lists[0])
-        if @assignment.count_target.zero?
-          @errors << 'Assignment must have left-hand value(s)'
-        end
-        if @assignment.count_value != 1
-          @errors << 'Assignment must have only one right-hand value'
-        end
-      rescue BASICException => e
-        @errors << e.message
-      end
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def execute(interpreter)
-    l_values = @assignment.eval_target(interpreter)
-    r_values = @assignment.eval_value(interpreter)
-    r_value = r_values[0]
-    l_values.each do |l_value|
-      interpreter.set_value(l_value, r_value)
-    end
-  end
-end
-
-# INPUT
-class InputStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('INPUT')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = [[1, '>=']]
-
-    if check_template(tokens_lists, template)
-      @input_items = split_tokens(tokens_lists[0], false)
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def execute(interpreter)
-    prompt = nil
-    input_items = @input_items.clone
-    begin
-      value = first_value(input_items, interpreter)
-      if value.class.to_s == 'FileHandle'
-        fh = value
-        input_items.shift
-        value = first_value(input_items, interpreter)
-      end
-      token = first_token(input_items)
-      if token.text_constant?
-        prompt = value
-        input_items.shift
-      end
-    rescue BASICException
-      fh = nil
-    end
-    expression_list = []
-    input_items.each do |items_list|
-      begin
-        expression_list << TargetExpression.new(items_list, ScalarReference)
-      rescue BASICException
-        raise(BASICException,
-              'Invalid variable ' + items_list.map(&:to_s).join)
-      end
-    end
-    if fh.nil?
-      io = interpreter.console_io
-      values =
-        input_values(interpreter, prompt, expression_list.size)
-      io.implied_newline
-    else
-      values =
-        file_values(interpreter, fh)
-    end
-    begin
-      name_value_pairs =
-        zip(expression_list, values[0, expression_list.length])
-    rescue BASICException
-      raise(BASICException, 'End of file') unless fh.nil?
-      raise(BASICException, 'Unequal lists')
-    end
-    name_value_pairs.each do |hash|
-      l_values = hash['name'].evaluate(interpreter, false)
-      l_value = l_values[0]
-      value = hash['value']
-      interpreter.set_value(l_value, value)
-    end
-  end
-
-  private
-
-  def first_token(input_items)
-    input_items[0][0]
-  end
-
-  def first_value(input_items, interpreter)
-    first_list = input_items[0]
-    expr = ValueScalarExpression.new(first_list)
-    values = expr.evaluate(interpreter, false)
-    values[0]
-  end
-
-  def zip(names, values)
-    raise(BASICException, 'Unequal lists') if names.size != values.size
-    results = []
-    (0...names.size).each do |i|
-      results << { 'name' => names[i], 'value' => values[i] }
-    end
-    results
-  end
-
-  def input_values(interpreter, prompt, count)
-    values = []
-    io = interpreter.console_io
-    while values.size < count
-      io.prompt(prompt)
-      values += io.input(interpreter)
-
-      prompt = nil
-    end
-    values
-  end
-
-  def file_values(interpreter, fh)
-    values = []
-    io = interpreter.get_input(fh)
-    values += io.input(interpreter)
-    values
-  end
-end
-
-# IF/THEN
-class IfStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('IF')]
-    ]
-  end
-
-  def self.extra_keywords
-    ['THEN']
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = [[1, '>='], 'THEN', [1]]
-
-    if check_template(tokens_lists, template)
-      condition = tokens_lists[0]
-
-      destination = tokens_lists[2]
-      parse_line(condition, destination[0])
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def program_check(program, console_io, line_number)
-    return true if program.has_line_number(@destination)
-    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
-    false
-  end
-
-  def execute(interpreter)
-    io = interpreter.trace_out
-    s = ' ' + @expression.to_s
-    io.trace_output(s)
-    values = @expression.evaluate(interpreter, true)
-    raise(BASICException, 'Expression error') unless
-      values.size == 1
-    result = values[0]
-    raise(BASICException, 'Expression error') unless
-      result.class.to_s == 'BooleanConstant'
-    interpreter.next_line_number = @destination if result.value
-
-    s = ' ' + result.to_s
-    io.trace_output(s)
-  end
-
-  def renumber(renumber_map)
-    @destination = renumber_map[@destination]
-    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
-  end
-
-  private
-
-  def parse_line(expression, destination)
-    if destination.numeric_constant?
-      @destination = LineNumber.new(destination)
-    else
-      @errors << "Invalid line number #{destination}"
-    end
-
-    begin
-      @expression = ValueScalarExpression.new(expression)
-    rescue BASICException => e
-      @errors << e.message
-    end
-  end
-end
-
-# common for PRINT, ARR PRINT, MAT PRINT
-class AbstractPrintStatement < AbstractStatement
-  def initialize(keywords, tokens_lists, final_carriage)
-    super(keywords, tokens_lists)
-    @final = final_carriage
-  end
-
-  def extract_file_handle(print_items, interpreter)
-    print_items = print_items.clone
-    file_handle = nil
-    unless print_items.empty? ||
-           print_items[0].class.to_s == 'CarriageControl'
-      value = first_item(print_items, interpreter)
-      if value.class.to_s == 'FileHandle'
-        file_handle = value
-        print_items.shift
-        print_items.shift if
-          print_items[0].class.to_s == 'CarriageControl'
-      end
-    end
-    [file_handle, print_items]
-  end
-
-  def first_item(print_items, interpreter)
-    first_list = print_items[0]
-    values = first_list.evaluate(interpreter, false)
-    values[0]
-  end
-
-  def add_implied_items(print_items)
-    print_items << CarriageControl.new('NL') if print_items.empty?
-    print_items << @final if print_items[-1].printable?
-  end
-end
-
-# PRINT
-class PrintStatement < AbstractPrintStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('PRINT')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new('NL'))
-    template1 = []
-    template2 = [[1, '>=']]
-
-    if check_template(tokens_lists, template1)
-      @print_items = tokens_to_expressions([])
-    elsif check_template(tokens_lists, template2)
-      tokens_lists = split_tokens(tokens_lists[0], true)
-      @print_items = tokens_to_expressions(tokens_lists)
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def execute(interpreter)
-    file_handle, print_items = extract_file_handle(@print_items, interpreter)
-    fh = interpreter.get_file_handler(file_handle)
-    print_items.each do |item|
-      item.print(fh, interpreter)
-    end
-  end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    print_items = []
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'ParamSeparatorToken'
-        print_items << CarriageControl.new(tokens_list.to_s)
-      elsif tokens_list.class.to_s == 'Array'
-        add_expression(print_items, tokens_list)
-      end
-    end
-    add_implied_items(print_items)
-    print_items
-  end
-
-  def add_expression(print_items, tokens)
-    if !print_items.empty? &&
-       print_items[-1].class.to_s == 'ValueScalarExpression'
-      print_items << CarriageControl.new('')
-    end
-    begin
-      print_items << ValueScalarExpression.new(tokens)
-    rescue BASICException
-      line_text = tokens.map(&:to_s).join
-      @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
-    end
-  end
-end
-
-# GOTO
-class GotoStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('GOTO')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = [[1]]
-
-    if check_template(tokens_lists, template)
-      if tokens_lists[0][0].numeric_constant?
-        @destination = LineNumber.new(tokens_lists[0][0])
-      else
-        @errors << "Invalid line number #{tokens[0]}"
-      end
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def program_check(program, console_io, line_number)
-    return true if program.has_line_number(@destination)
-    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
-    false
-  end
-
-  def execute(interpreter)
-    interpreter.next_line_number = @destination
-  end
-
-  def renumber(renumber_map)
-    @destination = renumber_map[@destination]
-    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
-  end
-end
-
-# GOSUB
-class GosubStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('GOSUB')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = [[1]]
-
-    if check_template(tokens_lists, template)
-      if tokens_lists[0][0].numeric_constant?
-        @destination = LineNumber.new(tokens_lists[0][0])
-      else
-        @errors << "Invalid line number #{tokens[0]}"
-      end
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def program_check(program, console_io, line_number)
-    return true if program.has_line_number(@destination)
-    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
-    false
-  end
-
-  def execute(interpreter)
-    interpreter.push_return(interpreter.next_line_number)
-    interpreter.next_line_number = @destination
-  end
-
-  def renumber(renumber_map)
-    @destination = renumber_map[@destination]
-    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
-  end
-end
-
-# RETURN
-class ReturnStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('RETURN')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = []
-
-    @errors << 'Syntax error' unless check_template(tokens_lists, template)
-  end
-
-  def execute(interpreter)
-    interpreter.next_line_number = interpreter.pop_return
-  end
 end
 
 # Helper class for FOR/NEXT
@@ -957,6 +636,306 @@ class ForStatement < AbstractStatement
   end
 end
 
+# GOSUB
+class GosubStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('GOSUB')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = [[1]]
+
+    if check_template(tokens_lists, template)
+      if tokens_lists[0][0].numeric_constant?
+        @destination = LineNumber.new(tokens_lists[0][0])
+      else
+        @errors << "Invalid line number #{tokens[0]}"
+      end
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def program_check(program, console_io, line_number)
+    return true if program.has_line_number(@destination)
+    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    false
+  end
+
+  def execute(interpreter)
+    interpreter.push_return(interpreter.next_line_number)
+    interpreter.next_line_number = @destination
+  end
+
+  def renumber(renumber_map)
+    @destination = renumber_map[@destination]
+    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
+  end
+end
+
+# GOTO
+class GotoStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('GOTO')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = [[1]]
+
+    if check_template(tokens_lists, template)
+      if tokens_lists[0][0].numeric_constant?
+        @destination = LineNumber.new(tokens_lists[0][0])
+      else
+        @errors << "Invalid line number #{tokens[0]}"
+      end
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def program_check(program, console_io, line_number)
+    return true if program.has_line_number(@destination)
+    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    false
+  end
+
+  def execute(interpreter)
+    interpreter.next_line_number = @destination
+  end
+
+  def renumber(renumber_map)
+    @destination = renumber_map[@destination]
+    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
+  end
+end
+
+# IF/THEN
+class IfStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('IF')]
+    ]
+  end
+
+  def self.extra_keywords
+    ['THEN']
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = [[1, '>='], 'THEN', [1]]
+
+    if check_template(tokens_lists, template)
+      condition = tokens_lists[0]
+
+      destination = tokens_lists[2]
+      parse_line(condition, destination[0])
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def program_check(program, console_io, line_number)
+    return true if program.has_line_number(@destination)
+    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    false
+  end
+
+  def execute(interpreter)
+    io = interpreter.trace_out
+    s = ' ' + @expression.to_s
+    io.trace_output(s)
+    values = @expression.evaluate(interpreter, true)
+    raise(BASICException, 'Expression error') unless
+      values.size == 1
+    result = values[0]
+    raise(BASICException, 'Expression error') unless
+      result.class.to_s == 'BooleanConstant'
+    interpreter.next_line_number = @destination if result.value
+
+    s = ' ' + result.to_s
+    io.trace_output(s)
+  end
+
+  def renumber(renumber_map)
+    @destination = renumber_map[@destination]
+    @tokens[-1] = NumericConstantToken.new(@destination.line_number)
+  end
+
+  private
+
+  def parse_line(expression, destination)
+    if destination.numeric_constant?
+      @destination = LineNumber.new(destination)
+    else
+      @errors << "Invalid line number #{destination}"
+    end
+
+    begin
+      @expression = ValueScalarExpression.new(expression)
+    rescue BASICException => e
+      @errors << e.message
+    end
+  end
+end
+
+# INPUT
+class InputStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('INPUT')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = [[1, '>=']]
+
+    if check_template(tokens_lists, template)
+      @input_items = split_tokens(tokens_lists[0], false)
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def execute(interpreter)
+    prompt = nil
+    input_items = @input_items.clone
+    begin
+      value = first_value(input_items, interpreter)
+      if value.class.to_s == 'FileHandle'
+        fh = value
+        input_items.shift
+        value = first_value(input_items, interpreter)
+      end
+      token = first_token(input_items)
+      if token.text_constant?
+        prompt = value
+        input_items.shift
+      end
+    rescue BASICException
+      fh = nil
+    end
+    expression_list = []
+    input_items.each do |items_list|
+      begin
+        expression_list << TargetExpression.new(items_list, ScalarReference)
+      rescue BASICException
+        raise(BASICException,
+              'Invalid variable ' + items_list.map(&:to_s).join)
+      end
+    end
+    if fh.nil?
+      io = interpreter.console_io
+      values =
+        input_values(interpreter, prompt, expression_list.size)
+      io.implied_newline
+    else
+      values =
+        file_values(interpreter, fh)
+    end
+    begin
+      name_value_pairs =
+        zip(expression_list, values[0, expression_list.length])
+    rescue BASICException
+      raise(BASICException, 'End of file') unless fh.nil?
+      raise(BASICException, 'Unequal lists')
+    end
+    name_value_pairs.each do |hash|
+      l_values = hash['name'].evaluate(interpreter, false)
+      l_value = l_values[0]
+      value = hash['value']
+      interpreter.set_value(l_value, value)
+    end
+  end
+
+  private
+
+  def first_token(input_items)
+    input_items[0][0]
+  end
+
+  def first_value(input_items, interpreter)
+    first_list = input_items[0]
+    expr = ValueScalarExpression.new(first_list)
+    values = expr.evaluate(interpreter, false)
+    values[0]
+  end
+
+  def zip(names, values)
+    raise(BASICException, 'Unequal lists') if names.size != values.size
+    results = []
+    (0...names.size).each do |i|
+      results << { 'name' => names[i], 'value' => values[i] }
+    end
+    results
+  end
+
+  def input_values(interpreter, prompt, count)
+    values = []
+    io = interpreter.console_io
+    while values.size < count
+      io.prompt(prompt)
+      values += io.input(interpreter)
+
+      prompt = nil
+    end
+    values
+  end
+
+  def file_values(interpreter, fh)
+    values = []
+    io = interpreter.get_input(fh)
+    values += io.input(interpreter)
+    values
+  end
+end
+
+# LET
+class LetStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('LET')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+    template = [[3, '>=']]
+
+    if check_template(tokens_lists, template)
+      begin
+        @assignment = ScalarAssignment.new(tokens_lists[0])
+        if @assignment.count_target.zero?
+          @errors << 'Assignment must have left-hand value(s)'
+        end
+        if @assignment.count_value != 1
+          @errors << 'Assignment must have only one right-hand value'
+        end
+      rescue BASICException => e
+        @errors << e.message
+      end
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def execute(interpreter)
+    l_values = @assignment.eval_target(interpreter)
+    r_values = @assignment.eval_value(interpreter)
+    r_value = r_values[0]
+    l_values.each do |l_value|
+      interpreter.set_value(l_value, r_value)
+    end
+  end
+end
+
 # NEXT
 class NextStatement < AbstractStatement
   def self.lead_keywords
@@ -998,6 +977,101 @@ class NextStatement < AbstractStatement
     interpreter.next_line_number = fornext_control.loop_start_number
     # change control variable value
     fornext_control.bump_control(interpreter)
+  end
+end
+
+# common for PRINT, ARR PRINT, MAT PRINT
+class AbstractPrintStatement < AbstractStatement
+  def initialize(keywords, tokens_lists, final_carriage)
+    super(keywords, tokens_lists)
+    @final = final_carriage
+  end
+
+  def extract_file_handle(print_items, interpreter)
+    print_items = print_items.clone
+    file_handle = nil
+    unless print_items.empty? ||
+           print_items[0].class.to_s == 'CarriageControl'
+      value = first_item(print_items, interpreter)
+      if value.class.to_s == 'FileHandle'
+        file_handle = value
+        print_items.shift
+        print_items.shift if
+          print_items[0].class.to_s == 'CarriageControl'
+      end
+    end
+    [file_handle, print_items]
+  end
+
+  def first_item(print_items, interpreter)
+    first_list = print_items[0]
+    values = first_list.evaluate(interpreter, false)
+    values[0]
+  end
+
+  def add_implied_items(print_items)
+    print_items << CarriageControl.new('NL') if print_items.empty?
+    print_items << @final if print_items[-1].printable?
+  end
+end
+
+# PRINT
+class PrintStatement < AbstractPrintStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('PRINT')]
+    ]
+  end
+
+  def initialize(keywords, tokens_lists)
+    super(keywords, tokens_lists, CarriageControl.new('NL'))
+    template1 = []
+    template2 = [[1, '>=']]
+
+    if check_template(tokens_lists, template1)
+      @print_items = tokens_to_expressions([])
+    elsif check_template(tokens_lists, template2)
+      tokens_lists = split_tokens(tokens_lists[0], true)
+      @print_items = tokens_to_expressions(tokens_lists)
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def execute(interpreter)
+    file_handle, print_items = extract_file_handle(@print_items, interpreter)
+    fh = interpreter.get_file_handler(file_handle)
+    print_items.each do |item|
+      item.print(fh, interpreter)
+    end
+  end
+
+  private
+
+  def tokens_to_expressions(tokens_lists)
+    print_items = []
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'ParamSeparatorToken'
+        print_items << CarriageControl.new(tokens_list.to_s)
+      elsif tokens_list.class.to_s == 'Array'
+        add_expression(print_items, tokens_list)
+      end
+    end
+    add_implied_items(print_items)
+    print_items
+  end
+
+  def add_expression(print_items, tokens)
+    if !print_items.empty? &&
+       print_items[-1].class.to_s == 'ValueScalarExpression'
+      print_items << CarriageControl.new('')
+    end
+    begin
+      print_items << ValueScalarExpression.new(tokens)
+    rescue BASICException
+      line_text = tokens.map(&:to_s).join
+      @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
+    end
   end
 end
 
@@ -1080,34 +1154,6 @@ class ReadStatement < AbstractReadStatement
   end
 end
 
-# DATA
-class DataStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('DATA')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = [[1, '>=']]
-
-    if check_template(tokens_lists, template)
-      @expressions = ValueScalarExpression.new(tokens_lists[0])
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def pre_execute(interpreter)
-    ds = interpreter.get_data_store(nil)
-    data_list = @expressions.evaluate(interpreter, false)
-    ds.store(data_list)
-  end
-
-  def execute(_) end
-end
-
 # RESTORE
 class RestoreStatement < AbstractStatement
   def self.lead_keywords
@@ -1129,41 +1175,24 @@ class RestoreStatement < AbstractStatement
   end
 end
 
-# DEF FNx
-class DefineFunctionStatement < AbstractStatement
+# RETURN
+class ReturnStatement < AbstractStatement
   def self.lead_keywords
     [
-      [KeywordToken.new('DEF')]
+      [KeywordToken.new('RETURN')]
     ]
   end
 
   def initialize(keywords, tokens_lists)
     super
-    template = [[1, '>=']]
+    template = []
 
-    if check_template(tokens_lists, template)
-      @name = ''
-      @arguments = []
-      @template = ''
-      begin
-        user_function_definition = UserFunctionDefinition.new(tokens_lists[0])
-        @name = user_function_definition.name
-        @arguments = user_function_definition.arguments
-        @template = user_function_definition.template
-      rescue BASICException => e
-        puts e.message
-        @errors << e.message
-      end
-    else
-      @errors << 'Syntax error'
-    end
+    @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
-  def pre_execute(interpreter)
-    interpreter.set_user_function(@name, @arguments, @template)
+  def execute(interpreter)
+    interpreter.next_line_number = interpreter.pop_return
   end
-
-  def execute(_) end
 end
 
 # STOP
@@ -1179,35 +1208,6 @@ class StopStatement < AbstractStatement
     template = []
 
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
-  end
-
-  def execute(interpreter)
-    io = interpreter.console_io
-    io.newline_when_needed
-    interpreter.stop
-  end
-end
-
-# END
-class EndStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('END')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = []
-
-    @errors << 'Syntax error' unless check_template(tokens_lists, template)
-  end
-
-  def program_check(program, console_io, line_number)
-    next_line = program.find_next_line_number(line_number)
-    return true if next_line.nil?
-    console_io.print_line("Statements after END in line #{line_number}")
-    false
   end
 
   def execute(interpreter)
