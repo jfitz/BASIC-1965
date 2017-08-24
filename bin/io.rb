@@ -184,25 +184,25 @@ class NullOut
     false
   end
 
-  def tab ; end
+  def tab; end
 
-  def semicolon ; end
+  def semicolon; end
 
-  def implied ; end
+  def implied; end
 
   def trace_output(_) end
 
-  def newline ; end
+  def newline; end
 
-  def newline_when_needed ; end
+  def newline_when_needed; end
 
-  def implied_newline ; end
+  def implied_newline; end
 
   def print_out(_) end
 
-  def delay ; end
+  def delay; end
 
-  def newline_delay ; end
+  def newline_delay; end
 end
 
 # stores values from DATA statement

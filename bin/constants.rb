@@ -86,7 +86,7 @@ class AbstractElement
   def matrix?
     @matrix
   end
-  
+
   protected
 
   def make_coord(c)
@@ -265,31 +265,31 @@ class AbstractValueElement < AbstractElement
     BooleanConstant.new(@value <= other.to_v)
   end
 
-  def +(other)
+  def +(_)
     raise(BASICException, 'Invalid operator')
   end
 
-  def -(other)
+  def -(_)
     raise(BASICException, 'Invalid operator')
   end
 
-  def add(other)
+  def add(_)
     raise(BASICException, 'Invalid operator')
   end
 
-  def subtract(other)
+  def subtract(_)
     raise(BASICException, 'Invalid operator')
   end
 
-  def multiply(other)
+  def multiply(_)
     raise(BASICException, 'Invalid operator')
   end
 
-  def divide(other)
+  def divide(_)
     raise(BASICException, 'Invalid operator')
   end
 
-  def power(other)
+  def power(_)
     raise(BASICException, 'Invalid operator')
   end
 
@@ -716,7 +716,7 @@ class Variable < AbstractElement
 
   def normalize_subscripts(subscripts)
     raise(Exception, 'Invalid subscripts container') unless
-      subscripts.class.to_s == "Array"
+      subscripts.class.to_s == 'Array'
     int_subscripts = []
     subscripts.each do |subscript|
       raise(Excaption, "Invalid subscript #{subscript}") unless

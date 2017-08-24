@@ -116,7 +116,8 @@ class UserFunction < AbstractScalarFunction
                     ['numeric'] * user_var_values.length)
 
     # dummy variable names and their (now known) values
-    result = expression.evaluate_with_vars(interpreter, @name, user_var_values, trace)
+    result = expression.evaluate_with_vars(interpreter, @name,
+                                           user_var_values, trace)
     result[0]
   end
 end

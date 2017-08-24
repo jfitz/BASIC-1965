@@ -3,7 +3,7 @@ class StatementFactory
   include Singleton
 
   attr_writer :tokenizers
-  
+
   def initialize
     @statement_definitions = statement_definitions
     @tokenizers = []
@@ -44,7 +44,7 @@ class StatementFactory
   private
 
   def statement_classes
-    classes = [
+    [
       ArrPrintStatement,
       ArrReadStatement,
       ArrWriteStatement,
@@ -660,7 +660,7 @@ class GosubStatement < AbstractStatement
   end
 
   def program_check(program, console_io, line_number)
-    return true if program.has_line_number(@destination)
+    return true if program.line_number?(@destination)
     console_io.print_line("Line number #{@destination} not found in line #{line_number}")
     false
   end
@@ -700,7 +700,7 @@ class GotoStatement < AbstractStatement
   end
 
   def program_check(program, console_io, line_number)
-    return true if program.has_line_number(@destination)
+    return true if program.line_number?(@destination)
     console_io.print_line("Line number #{@destination} not found in line #{line_number}")
     false
   end
@@ -742,7 +742,7 @@ class IfStatement < AbstractStatement
   end
 
   def program_check(program, console_io, line_number)
-    return true if program.has_line_number(@destination)
+    return true if program.line_number?(@destination)
     console_io.print_line("Line number #{@destination} not found in line #{line_number}")
     false
   end
@@ -972,7 +972,7 @@ class NextStatement < AbstractStatement
     s = ' terminated:' + terminated.to_s
     io.trace_output(s)
     return if terminated
-    
+
     # set next line from top item
     interpreter.next_line_number = fornext_control.loop_start_number
     # change control variable value

@@ -244,9 +244,9 @@ class Interpreter
     raise BASICException, 'Program terminated without END' if
       @next_line_number.nil?
     line_numbers = @program_lines.keys
-    unless line_numbers.include?(@next_line_number)
-      raise(BASICException, "Line number #{@next_line_number} not found")
-    end
+    return if line_numbers.include?(@next_line_number)
+
+    raise(BASICException, "Line number #{@next_line_number} not found")
   end
 
   public
@@ -267,7 +267,7 @@ class Interpreter
     @null_out = NullOut.new
 
     timing = Benchmark.measure { run_and_time }
-    print_timing(timing, console_io) if show_timing
+    print_timing(timing) if show_timing
   end
 
   def run_and_time
@@ -279,7 +279,7 @@ class Interpreter
     run_phase_2 if @running
   end
 
-  def print_timing(timing, console_io)
+  def print_timing(timing)
     user_time = timing.utime + timing.cutime
     sys_time = timing.stime + timing.cstime
     @console_io.newline
@@ -332,7 +332,8 @@ class Interpreter
   def preexecute_loop
     while !@current_line_number.nil? && @running
       preexecute_a_statement
-      @current_line_number = @program.find_next_line_number(@current_line_number)
+      @current_line_number =
+        @program.find_next_line_number(@current_line_number)
     end
   rescue BASICException => e
     message = "#{e.message} in line #{@current_line_number}"
@@ -381,7 +382,7 @@ class Interpreter
     end
   end
 
-  def has_line_number(line_number)
+  def line_number?(line_number)
     @program_lines.key?(line_number)
   end
 
@@ -659,7 +660,7 @@ class Program
     @program_lines.empty?
   end
 
-  def has_line_number(line_number)
+  def line_number?(line_number)
     @program_lines.key?(line_number)
   end
 
@@ -1046,7 +1047,7 @@ class Shell
     %w(RENUMBER).include?(text)
   end
 
-  def execute_8_command(cmd, rest)
+  def execute_8_command(cmd, _)
     case cmd
     when 'RENUMBER'
       @program.renumber if @program.check
@@ -1054,10 +1055,10 @@ class Shell
   end
 
   def cmd_run(trace_flag, show_timing)
-    unless @program.empty?
-      @interpreter.run(@program, trace_flag, show_timing) if @program.check
-    else
+    if @program.empty?
       @console_io.print_line('No program loaded')
+    else
+      @interpreter.run(@program, trace_flag, show_timing) if @program.check
     end
   end
 
@@ -1167,25 +1168,18 @@ if show_heading
   console_io.newline
 end
 
+program = Program.new(console_io, tokenizers)
 if !run_filename.nil?
-  program = Program.new(console_io, tokenizers)
   if program.load(run_filename) && program.check
     interpreter =
       Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
     interpreter.run(program, trace_flag, show_timing)
   end
 elsif !list_filename.nil?
-  program = Program.new(console_io, tokenizers)
-  if program.load(list_filename)
-    program.list('', list_tokens)
-  end
+  program.list('', list_tokens) if program.load(list_filename)
 elsif !pretty_filename.nil?
-  program = Program.new(console_io, tokenizers)
-  if program.load(pretty_filename)
-    program.pretty('')
-  end
+  program.pretty('') if program.load(pretty_filename)
 else
-  program = Program.new(console_io, tokenizers)
   interpreter =
     Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
   shell = Shell.new(console_io, interpreter, program)
