@@ -511,19 +511,19 @@ class ForNextControl
   attr_reader :loop_start_number
   attr_reader :end
 
-  def initialize(control, loop_start_number, start, endv,
-                 step_value)
+  def initialize(control, interpreter, start, endv, step_value)
     @control = control
-    @loop_start_number = loop_start_number
     @start = start
     @end = endv
     @step_value = step_value
-    @current_value = start
+    interpreter.set_value(@control, start)
+    @loop_start_number = interpreter.next_line_number
   end
 
   def bump_control(interpreter)
-    @current_value += @step_value
-    interpreter.set_value(@control, @current_value)
+    current_value = interpreter.get_value(@control, false)
+    current_value += @step_value
+    interpreter.set_value(@control, current_value)
   end
 
   def front_terminated?
@@ -599,8 +599,7 @@ class ForStatement < AbstractStatement
 
     interpreter.set_value(@control, from)
     fornext_control =
-      ForNextControl.new(@control,
-                         interpreter.next_line_number, from, to, step)
+      ForNextControl.new(@control, interpreter, from, to, step)
 
     interpreter.assign_fornext(fornext_control)
     terminated = fornext_control.front_terminated?
