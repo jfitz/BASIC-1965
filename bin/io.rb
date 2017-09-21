@@ -8,11 +8,11 @@ module Reader
     ascii_text
   end
 
-  def make_tokenizers
-    tokenizers = []
-    tokenizers << InputNumberTokenBuilder.new
-    tokenizers << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
-    tokenizers << WhitespaceTokenBuilder.new
+  def make_tokenbuilders
+    tokenbuilders = []
+    tokenbuilders << InputNumberTokenBuilder.new
+    tokenbuilders << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
+    tokenbuilders << WhitespaceTokenBuilder.new
   end
 
   def verify_tokens(tokens)
@@ -67,8 +67,8 @@ class ConsoleIo
   def input(interpreter)
     input_text = read_line
 
-    tokenizers = make_tokenizers
-    tokenizer = Tokenizer.new(tokenizers, nil)
+    tokenbuilders = make_tokenbuilders
+    tokenizer = Tokenizer.new(tokenbuilders, nil)
     tokens = tokenizer.tokenize(input_text)
 
     # drop whitespace
@@ -268,8 +268,8 @@ class FileHandler
   def input(interpreter)
     input_text = read_line
 
-    tokenizers = make_tokenizers
-    tokenizer = Tokenizer.new(tokenizers, nil)
+    tokenbuilders = make_tokenbuilders
+    tokenizer = Tokenizer.new(tokenbuilders, nil)
     tokens = tokenizer.tokenize(input_text)
 
     # drop whitespace
@@ -321,8 +321,8 @@ class FileHandler
 
   def read
     set_mode(:read)
-    tokenizers = make_tokenizers
-    tokenizer = Tokenizer.new(tokenizers, InvalidTokenBuilder.new)
+    tokenbuilders = make_tokenbuilders
+    tokenizer = Tokenizer.new(tokenbuilders, InvalidTokenBuilder.new)
     @data_store = refill(@data_store, @file, tokenizer)
     @data_store.shift
   end

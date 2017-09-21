@@ -2,11 +2,11 @@
 class StatementFactory
   include Singleton
 
-  attr_writer :tokenizers
+  attr_writer :tokenbuilders
 
   def initialize
     @statement_definitions = statement_definitions
-    @tokenizers = []
+    @tokenbuilders = []
   end
 
   def parse(text)
@@ -165,8 +165,8 @@ class StatementFactory
   end
 
   def tokenize(text)
-    invalid_tokenizer = InvalidTokenBuilder.new
-    tokenizer = Tokenizer.new(@tokenizers, invalid_tokenizer)
+    invalid_tokenbuilder = InvalidTokenBuilder.new
+    tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
     tokenizer.tokenize(text)
   end
 end

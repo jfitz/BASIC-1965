@@ -1,16 +1,16 @@
 # tokenizer class
 class Tokenizer
-  def initialize(tokenizers, invalid_tokenizer)
-    @tokenizers = tokenizers
-    @invalid_tokenizer = invalid_tokenizer
+  def initialize(tokenbuilders, invalid_tokenbuilder)
+    @tokenbuilders = tokenbuilders
+    @invalid_tokenbuilder = invalid_tokenbuilder
   end
 
   def tokenize(text)
     tokens = []
     until text.nil? || text.empty?
-      token, count = try_tokenizers(text)
+      token, count = try_tokenbuilders(text)
 
-      token, count = try_invalid(text) if token.nil? && !@invalid_tokenizer.nil?
+      token, count = try_invalid(text) if token.nil? && !@invalid_tokenbuilder.nil?
       raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
 
       if token.class.to_s == 'Array'
@@ -25,24 +25,24 @@ class Tokenizer
 
   private
 
-  def try_tokenizers(text)
-    @tokenizers.each { |tokenizer| tokenizer.try(text) }
+  def try_tokenbuilders(text)
+    @tokenbuilders.each { |tokenbuilder| tokenbuilder.try(text) }
     count = 0
     token = nil
-    # general tokenizers
-    @tokenizers.each do |tokenizer|
-      if tokenizer.count > count
-        token = tokenizer.token
-        count = tokenizer.count
+    # general tokenbuilders
+    @tokenbuilders.each do |tokenbuilder|
+      if tokenbuilder.count > count
+        token = tokenbuilder.token
+        count = tokenbuilder.count
       end
     end
     [token, count]
   end
 
   def try_invalid(text)
-    @invalid_tokenizer.try(text)
-    token = @invalid_tokenizer.token
-    count = @invalid_tokenizer.count
+    @invalid_tokenbuilder.try(text)
+    token = @invalid_tokenbuilder.token
+    count = @invalid_tokenbuilder.count
     [token, count]
   end
 end
