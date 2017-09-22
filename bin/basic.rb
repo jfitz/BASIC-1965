@@ -413,6 +413,7 @@ OptionParser.new do |opt|
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
   opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
+  opt.on('--lock-fornext') { |o| options[:lock_fornext] = o }
 end.parse!
 
 list_filename = options[:list_name]
@@ -437,6 +438,7 @@ ignore_rnd_arg = options.key?(:ignore_rnd_arg)
 implied_semicolon = options.key?(:implied_semicolon)
 qmark_after_prompt = options.key?(:qmark_after_prompt)
 randomize = options.key?(:randomize)
+lock_fornext = options.key?(:lock_fornext)
 
 default_prompt = TextConstantToken.new('"? "')
 console_io =
@@ -455,7 +457,7 @@ program = Program.new(console_io, tokenbuilders)
 if !run_filename.nil?
   if program.load(run_filename) && program.check
     interpreter =
-      Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
+      Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize, lock_fornext)
     interpreter.run(program, trace_flag, show_timing)
   end
 elsif !list_filename.nil?
@@ -464,7 +466,7 @@ elsif !pretty_filename.nil?
   program.pretty('') if program.load(pretty_filename)
 else
   interpreter =
-    Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize)
+    Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize, lock_fornext)
   shell = Shell.new(console_io, interpreter, program)
   shell.run
 end

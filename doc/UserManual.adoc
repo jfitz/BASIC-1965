@@ -118,6 +118,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
 |--randomize |Forces new sequences of numbers from the RND() function on successive runs.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
+|--lock-fornext |Lock control variables to FOR/NEXT loops. Variables can be read but not changed.
 |--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
 |--qmark-after-prompt |On an INPUT line, print the question mark after the prompt.
 |==========
@@ -565,6 +566,11 @@ It is possible to change the value of the control value within the loop. You can
 	40 NEXT I
 
 This will lock the program into a permanent loop, as the value of I will never reach 10.
+
+The --lock-fornext option prevents such changes.
+When --lock-fornext is specified, an attempt to change a control variable causes an error.
+The variable may be changed after the FOR/NEXT loop terminates.
+Note that a GOTO to outside of the FOR/NEXT loop does not terminate the loop or unlock the variable.
 
 GO TO
 ~~~~~

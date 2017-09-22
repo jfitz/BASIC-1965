@@ -5,7 +5,7 @@ class Interpreter
   attr_reader :console_io
   attr_reader :trace_out
 
-  def initialize(console_io, int_floor, ignore_rnd_arg, randomize)
+  def initialize(console_io, int_floor, ignore_rnd_arg, randomize, lock_fornext)
     @running = false
     @randomizer = Random.new(1)
     @randomizer = Random.new if randomize
@@ -22,6 +22,8 @@ class Interpreter
     @user_var_values = []
     @program_lines = {}
     @variables = {}
+    @lock_fornext = lock_fornext
+    @locked_variables = []
     @get_value_seen = []
   end
 
@@ -354,6 +356,9 @@ class Interpreter
   end
 
   def set_value(variable, value)
+    raise(BASICException, "Cannot change locked variable #{variable}") if
+      @lock_fornext && @locked_variables.include?(variable)
+    
     # check that value type matches variable type
     if value.class.to_s != variable.content_type
       raise(BASICException,
@@ -369,6 +374,24 @@ class Interpreter
       variable = Variable.new(name, coords)
       set_value(variable, value)
     end
+  end
+
+  def lock_variable(variable)
+    return unless @lock_fornext
+    if @locked_variables.include?(variable)
+      raise(BASICExeption,
+            "Attempt to lock an already locked variable #{variable}")
+    end
+    @locked_variables << variable
+  end
+
+  def unlock_variable(variable)
+    return unless @lock_fornext
+    unless @locked_variables.include?(variable)
+      raise(BASICException,
+            "Attempt to unlock a variable #{variable} not locked")
+    end
+    @locked_variables.delete(variable)
   end
 
   def push_return(destination)
