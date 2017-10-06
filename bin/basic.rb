@@ -327,13 +327,15 @@ class Shell
   end
 
   def command_8?(text)
-    %w(RENUMBER).include?(text)
+    %w(RENUMBER CROSSREF).include?(text)
   end
 
   def execute_8_command(cmd, _)
     case cmd
     when 'RENUMBER'
       @program.renumber if @program.check
+    when 'CROSSREF'
+      @program.crossref if @program.check
     end
   end
 

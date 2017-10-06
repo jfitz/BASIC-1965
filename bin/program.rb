@@ -155,8 +155,8 @@ class Program
     @console_io.print_line(e)
   end
 
+  # generate new line numbers
   def renumber
-    # generate new line numbers
     renumber_map = {}
     new_number = 10
     @program_lines.keys.sort.each do |line_number|
@@ -174,6 +174,125 @@ class Program
     end
 
     @program_lines = new_program_lines
+  end
+
+  def numeric_refs
+    nums_list = {}
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      statement = line.statement
+
+      nums = statement.numerics
+      nums_list[line_number] = nums
+    end
+    nums_list
+  end
+
+  def strings_refs
+    strs_list = {}
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      statement = line.statement
+
+      strs = statement.strings
+      strs_list[line_number] = strs
+    end
+    strs_list
+  end
+
+  def function_refs
+    funcs_list = {}
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      statement = line.statement
+
+      funcs = statement.functions
+      funcs_list[line_number] = funcs
+    end
+    funcs_list
+  end
+
+  def user_function_refs
+    udfs_list = {}
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      statement = line.statement
+
+      udfs = statement.userfuncs
+      udfs_list[line_number] = udfs
+    end
+    udfs_list
+  end
+
+  def variables_refs
+    vars_list = {}
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      statement = line.statement
+
+      vars = statement.variables
+      vars_list[line_number] = vars
+    end
+    vars_list
+  end
+
+  def print_refs(refs)
+    refs.keys.sort.each do |num|
+      lines = refs[num]
+      puts num.to_s + ":\t" + lines.map(&:to_s).uniq.join(', ')
+    end
+  end
+
+  # generate cross-reference list
+  def crossref
+    puts 'Cross reference'
+    puts ''
+
+    nums_list = numeric_refs
+    numerics = make_summary(nums_list)
+    puts 'Numeric constants'
+    print_refs(numerics)
+    puts ''
+
+    strs_list = strings_refs
+    strings = make_summary(strs_list)
+    puts 'String constants'
+    print_refs(strings)
+    puts ''
+
+    funcs_list = function_refs
+    functions = make_summary(funcs_list)
+    puts 'Functions'
+    print_refs(functions)
+    puts ''
+
+    udfs_list = user_function_refs
+    userfuncs = make_summary(udfs_list)
+    puts 'User-defined functions'
+    print_refs(userfuncs)
+    puts ''
+
+    vars_list = variables_refs
+    variables = make_summary(vars_list)
+    puts 'Variables'
+    print_refs(variables)
+    puts ''
+  end
+
+  def make_summary(list)
+    summary = {}
+    list.each do |line_number, refs|
+      refs.each do |ref|
+        if summary.key?(ref)
+          entries = summary[ref]
+          entries << line_number
+        else
+          entries = [line_number]
+        end
+        summary[ref] = entries
+      end
+    end
+    summary
   end
 
   def store_program_line(cmd, print_errors)

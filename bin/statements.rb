@@ -204,6 +204,56 @@ class AbstractStatement
 
   def renumber(_) end
 
+  def numerics
+    nums = []
+
+    @tokens.each do |token|
+      nums << token if token.numeric_constant?
+    end
+
+    nums
+  end
+
+  def strings
+    strs = []
+
+    @tokens.each do |token|
+      strs << token if token.text_constant?
+    end
+
+    strs
+  end
+
+  def functions
+    funcs = []
+
+    @tokens.each do |token|
+      funcs << token if token.function?
+    end
+
+    funcs
+  end
+
+  def userfuncs
+    udfs = []
+
+    @tokens.each do |token|
+      udfs << token if token.user_function?
+    end
+
+    udfs
+  end
+
+  def variables
+    vars = []
+
+    @tokens.each do |token|
+      vars << token if token.variable?
+    end
+
+    vars
+  end
+
   protected
 
   def check_template(tokens_lists, template)
