@@ -25,6 +25,7 @@ class Interpreter
     @lock_fornext = lock_fornext
     @locked_variables = []
     @get_value_seen = []
+    @null_out = NullOut.new
   end
 
   private
@@ -40,7 +41,7 @@ class Interpreter
 
   public
 
-  def run(program, trace_flag, show_timing)
+  def run(program, trace_flag, show_timing, show_profile)
     @program = program
     @program_lines = program.lines
     @trace_flag = trace_flag
@@ -53,10 +54,9 @@ class Interpreter
       statement.profile_time = 0
     end
 
-    @null_out = NullOut.new
-
     timing = Benchmark.measure { run_and_time }
     print_timing(timing) if show_timing
+    @program.profile('') if show_profile
   end
 
   def run_and_time

@@ -343,7 +343,9 @@ class Shell
     if @program.empty?
       @console_io.print_line('No program loaded')
     else
-      @interpreter.run(@program, trace_flag, show_timing) if @program.check
+      if @program.check
+        @interpreter.run(@program, trace_flag, show_timing, false)
+      end
     end
   end
 
@@ -459,8 +461,9 @@ program = Program.new(console_io, tokenbuilders)
 if !run_filename.nil?
   if program.load(run_filename) && program.check
     interpreter =
-      Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize, lock_fornext)
-    interpreter.run(program, trace_flag, show_timing)
+      Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
+                      lock_fornext)
+    interpreter.run(program, trace_flag, show_timing, show_profile)
   end
 elsif !list_filename.nil?
   program.list('', list_tokens) if program.load(list_filename)
@@ -468,7 +471,8 @@ elsif !pretty_filename.nil?
   program.pretty('') if program.load(pretty_filename)
 else
   interpreter =
-    Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize, lock_fornext)
+    Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
+                    lock_fornext)
   shell = Shell.new(console_io, interpreter, program)
   shell.run
 end
