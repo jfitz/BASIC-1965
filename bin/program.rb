@@ -252,11 +252,13 @@ class Program
     refs
   end
 
-  def print_refs(refs)
+  def print_refs(title, refs)
+    puts title
     refs.keys.sort.each do |line_number|
       line_refs = refs[line_number]
       puts line_number.to_s + ":\t" + line_refs.map(&:to_s).uniq.join(', ')
     end
+    puts ''
   end
 
   # generate cross-reference list
@@ -266,33 +268,23 @@ class Program
 
     nums_list = numeric_refs
     numerics = make_summary(nums_list)
-    puts 'Numeric constants'
-    print_refs(numerics)
-    puts ''
+    print_refs('Numeric constants', numerics)
 
     strs_list = strings_refs
     strings = make_summary(strs_list)
-    puts 'String constants'
-    print_refs(strings)
-    puts ''
+    print_refs('String constants', strings)
 
     funcs_list = function_refs
     functions = make_summary(funcs_list)
-    puts 'Functions'
-    print_refs(functions)
-    puts ''
+    print_refs('Functions', functions)
 
     udfs_list = user_function_refs
     userfuncs = make_summary(udfs_list)
-    puts 'User-defined functions'
-    print_refs(userfuncs)
-    puts ''
+    print_refs('User-defined functions', userfuncs)
 
     vars_list = variables_refs
     variables = make_summary(vars_list)
-    puts 'Variables'
-    print_refs(variables)
-    puts ''
+    print_refs('Variables', variables)
   end
 
   def make_summary(list)
