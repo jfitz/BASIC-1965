@@ -39,49 +39,34 @@ class Program
     @program_lines = {}
   end
 
-  def list(linespec, list_tokens)
+  def line_list_spec(linespec)
     linespec = linespec.strip
+    line_numbers = @program_lines.keys.sort
+    LineListSpec.new(linespec, line_numbers)
+  end
+
+  def list(line_number_range, list_tokens)
     if !@program_lines.empty?
-      begin
-        line_numbers = @program_lines.keys.sort
-        line_number_range = LineListSpec.new(linespec, line_numbers)
-        line_numbers = line_number_range.line_numbers
-        list_lines_errors(line_numbers, list_tokens)
-      rescue BASICException => e
-        @console_io.print_line(e)
-      end
+      line_numbers = line_number_range.line_numbers
+      list_lines_errors(line_numbers, list_tokens)
     else
       @console_io.print_line('No program loaded')
     end
   end
 
-  def pretty(linespec)
-    linespec = linespec.strip
+  def pretty(line_number_range)
     if !@program_lines.empty?
-      begin
-        line_numbers = @program_lines.keys.sort
-        line_number_range = LineListSpec.new(linespec, line_numbers)
-        line_numbers = line_number_range.line_numbers
-        pretty_lines_errors(line_numbers)
-      rescue BASICException => e
-        @console_io.print_line(e)
-      end
+      line_numbers = line_number_range.line_numbers
+      pretty_lines_errors(line_numbers)
     else
       @console_io.print_line('No program loaded')
     end
   end
 
-  def profile(linespec)
-    linespec = linespec.strip
+  def profile(line_number_range)
     if !@program_lines.empty?
-      begin
-        line_numbers = @program_lines.keys.sort
-        line_number_range = LineListSpec.new(linespec, line_numbers)
-        line_numbers = line_number_range.line_numbers
-        profile_lines_errors(line_numbers)
-      rescue BASICException => e
-        @console_io.print_line(e)
-      end
+      line_numbers = line_number_range.line_numbers
+      profile_lines_errors(line_numbers)
     else
       @console_io.print_line('No program loaded')
     end
@@ -147,28 +132,25 @@ class Program
     end
   end
 
-  def delete(linespec)
+  def delete(line_number_range)
     if @program_lines.empty?
       @console_io.print_line('No program loaded')
     else
-      delete_lines(linespec.strip)
+      delete_lines(line_number_range)
     end
   end
 
-  def delete_lines(linespec)
-    line_numbers = @program_lines.keys.sort
-    line_number_range = LineListSpec.new(linespec.strip, line_numbers)
-    line_numbers = line_number_range.line_numbers
+  def delete_lines(line_number_range)
     case line_number_range.range_type
     when :single
+      line_numbers = line_number_range.line_numbers
       delete_specific_lines(line_numbers)
     when :range
+      line_numbers = line_number_range.line_numbers
       list_and_delete_lines(line_numbers)
     when :all
       @console_io.print_line('Type NEW to delete an entire program')
     end
-  rescue BASICException => e
-    @console_io.print_line(e)
   end
 
   # generate new line numbers

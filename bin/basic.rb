@@ -81,7 +81,7 @@ class LineNumberRange
   end
 
   def initialize(spec, program_line_numbers)
-    raise(BASICException, 'Invalid list specification') unless
+    raise(BASICCommandError, 'Invalid list specification') unless
       LineNumberRange.init?(spec)
     parts = spec.split('-')
     start_val = LineNumber.new(NumericConstantToken.new(parts[0]))
@@ -102,7 +102,7 @@ class LineNumberCountRange
   end
 
   def initialize(spec, program_line_numbers)
-    raise(BASICException, 'Invalid list specification') unless
+    raise(BASICCommandError, 'Invalid list specification') unless
       LineNumberCountRange.init?(spec)
 
     parts = spec.split('+')
@@ -143,7 +143,7 @@ class LineListSpec
     elsif LineNumberCountRange.init?(text)
       make_count_range(text, program_line_numbers)
     else
-      raise(BASICException, 'Invalid list specification')
+      raise(BASICCommandError, 'Invalid list specification')
     end
   end
 
@@ -292,12 +292,15 @@ class Shell
   def execute_4_command(cmd, rest)
     case cmd
     when 'LIST'
-      @program.list(rest, false)
+      line_number_range = @program.line_list_spec(rest)
+      @program.list(line_number_range, false)
     when 'LOAD'
       @program.load(rest)
     when 'SAVE'
       @program.save(rest)
     end
+  rescue BASICCommandError => e
+    @console_io.print_line(e.to_s)
   end
 
   def command_6?(text)
@@ -307,12 +310,17 @@ class Shell
   def execute_6_command(cmd, rest)
     case cmd
     when 'TOKENS'
-      @program.list(rest, true)
+      line_number_range = @program.line_list_spec(rest)
+      @program.list(line_number_range, true)
     when 'PRETTY'
-      @program.pretty(rest)
+      line_number_range = @program.line_list_spec(rest)
+      @program.pretty(line_number_range)
     when 'DELETE'
-      @program.delete(rest)
+      line_number_range = @program.line_list_spec(rest)
+      @program.delete(line_number_range)
     end
+  rescue BASICCommandError => e
+    @console_io.print_line(e.to_s)
   end
 
   def command_7?(text)
@@ -322,8 +330,11 @@ class Shell
   def execute_7_command(cmd, rest)
     case cmd
     when 'PROFILE'
-      @program.profile(rest)
+      line_number_range = @program.line_list_spec(rest)
+      @program.profile(line_number_range)
     end
+  rescue BASICCommandError => e
+    @console_io.print_line(e.to_s)
   end
 
   def command_8?(text)
