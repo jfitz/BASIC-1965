@@ -133,24 +133,14 @@ class Program
   end
 
   def delete(line_number_range)
-    if @program_lines.empty?
-      @console_io.print_line('No program loaded')
-    else
-      delete_lines(line_number_range)
-    end
-  end
+    raise(BASICCommandError, 'No program loaded') if
+      @program_lines.empty?
 
-  def delete_lines(line_number_range)
-    case line_number_range.range_type
-    when :single
-      line_numbers = line_number_range.line_numbers
-      delete_specific_lines(line_numbers)
-    when :range
-      line_numbers = line_number_range.line_numbers
-      list_and_delete_lines(line_numbers)
-    when :all
-      @console_io.print_line('Type NEW to delete an entire program')
-    end
+    raise(BASICCommandError, 'Type NEW to delete an entire program') if
+      line_number_range.range_type == :all
+    
+    line_numbers = line_number_range.line_numbers
+    delete_specific_lines(line_numbers)
   end
 
   # generate new line numbers
