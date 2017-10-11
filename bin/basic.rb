@@ -477,9 +477,15 @@ if !run_filename.nil?
     interpreter.run(program, trace_flag, show_timing, show_profile)
   end
 elsif !list_filename.nil?
-  program.list('', list_tokens) if program.load(list_filename)
+  if program.load(list_filename)
+    line_list_spec = program.line_list_spec('')
+    program.list(line_list_spec, list_tokens)
+  end
 elsif !pretty_filename.nil?
-  program.pretty('') if program.load(pretty_filename)
+  if program.load(pretty_filename)
+    line_list_spec = program.line_list_spec('')
+    program.pretty(line_list_spec)
+  end
 else
   interpreter =
     Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
