@@ -18,12 +18,12 @@ module Reader
   def verify_tokens(tokens)
     evens = tokens.values_at(* tokens.each_index.select(&:even?))
     evens.each do |token|
-      raise(BASICException, 'Invalid input') unless token.numeric_constant?
+      raise(BASICRuntimeError, 'Invalid input') unless token.numeric_constant?
     end
 
     odds = tokens.values_at(* tokens.each_index.select(&:odd?))
     odds.each do |token|
-      raise(BASICException, 'Invalid input') unless token.separator?
+      raise(BASICRuntimeError, 'Invalid input') unless token.separator?
     end
   end
 end
@@ -49,7 +49,7 @@ class ConsoleIo
 
   def read_line
     input_text = gets
-    raise(BASICException, 'End of file') if input_text.nil?
+    raise(BASICRuntimeError, 'End of file') if input_text.nil?
     ascii_text = ascii_printables(input_text)
     puts(ascii_text) if @echo_input
     ascii_text
@@ -217,7 +217,7 @@ class DataStore
   end
 
   def read
-    raise BASICException, 'Out of data' if @data_index >= @data_store.size
+    raise BASICRuntimeError, 'Out of data' if @data_index >= @data_store.size
     @data_index += 1
     @data_store[@data_index - 1]
   end
@@ -250,7 +250,7 @@ class FileHandler
       end
       @mode = mode
     else
-      raise(BASICException, 'Inconsistent file operation') unless @mode == mode
+      raise(BASICRuntimeError, 'Inconsistent file operation') unless @mode == mode
     end
   end
 
@@ -260,7 +260,7 @@ class FileHandler
 
   def read_line
     input_text = @file.gets
-    raise(BASICException, 'End of file') if input_text.nil?
+    raise(BASICRuntimeError, 'End of file') if input_text.nil?
     input_text = input_text.chomp
     ascii_printables(input_text)
   end
@@ -332,7 +332,7 @@ class FileHandler
   def refill(data_store, file, tokenizer)
     while data_store.empty?
       line = file.gets
-      raise(BASICException, 'End of file') if line.nil?
+      raise(BASICRuntimeError, 'End of file') if line.nil?
       line = line.chomp
 
       tokens = tokenizer.tokenize(line)

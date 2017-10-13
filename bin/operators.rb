@@ -23,14 +23,14 @@ class UnaryOperator < AbstractElement
     super()
     @op = text.to_s
 
-    raise(BASICException, "'#{text}' is not an operator") unless
+    raise(BASICRuntimeError, "'#{text}' is not an operator") unless
       self.class.operator?(@op)
     @precedence = self.class.precedence(@op)
     @operator = true
   end
 
   def evaluate(_, stack, _)
-    raise(BASICException, 'Not enough operands') if stack.empty?
+    raise(BASICRuntimeError, 'Not enough operands') if stack.empty?
     x = stack.pop
     if x.matrix?
       case @op
@@ -206,7 +206,7 @@ class BinaryOperator < AbstractElement
     super()
     @op = text.to_s
 
-    raise(BASICException, "'#{text}' is not an operator") unless
+    raise(BASICRuntimeError, "'#{text}' is not an operator") unless
       self.class.operator?(@op)
 
     @precedence = self.class.precedence(@op)
@@ -214,7 +214,7 @@ class BinaryOperator < AbstractElement
   end
 
   def evaluate(_, stack, _)
-    raise(BASICException, 'Not enough operands') if stack.size < 2
+    raise(BASICRuntimeError, 'Not enough operands') if stack.size < 2
     y = stack.pop
     x = stack.pop
 
@@ -231,7 +231,7 @@ class BinaryOperator < AbstractElement
     elsif x.scalar? && y.array?
       scalar_array(x, y)
     else
-      raise(BASICException, 'Type mismatch') unless
+      raise(BASICRuntimeError, 'Type mismatch') unless
         x.class.to_s == y.class.to_s
       op_scalar_scalar(x, y)
     end
@@ -254,7 +254,7 @@ class BinaryOperator < AbstractElement
 
     op_sym = op_table[@op]
 
-    raise BASICException, 'Invalid operation' if op_sym.nil?
+    raise BASICRuntimeError, 'Invalid operation' if op_sym.nil?
 
     op_matrix_matrix(op_sym, x, y)
   end
@@ -270,7 +270,7 @@ class BinaryOperator < AbstractElement
 
     op_sym = op_table[@op]
 
-    raise BASICException, 'Invalid operation' if op_sym.nil?
+    raise BASICRuntimeError, 'Invalid operation' if op_sym.nil?
 
     op_matrix_scalar(op_sym, x, y)
   end
@@ -286,7 +286,7 @@ class BinaryOperator < AbstractElement
 
     op_sym = op_table[@op]
 
-    raise BASICException, 'Invalid operation' if op_sym.nil?
+    raise BASICRuntimeError, 'Invalid operation' if op_sym.nil?
 
     op_scalar_matrix(op_sym, x, y)
   end
@@ -302,7 +302,7 @@ class BinaryOperator < AbstractElement
 
     op_sym = op_table[@op]
 
-    raise BASICException, 'Invalid operation' if op_sym.nil?
+    raise BASICRuntimeError, 'Invalid operation' if op_sym.nil?
 
     op_array_array(op_sym, x, y)
   end
@@ -318,7 +318,7 @@ class BinaryOperator < AbstractElement
 
     op_sym = op_table[@op]
 
-    raise BASICException, 'Invalid operation' if op_sym.nil?
+    raise BASICRuntimeError, 'Invalid operation' if op_sym.nil?
 
     op_array_scalar(op_sym, x, y)
   end
@@ -334,7 +334,7 @@ class BinaryOperator < AbstractElement
 
     op_sym = op_table[@op]
 
-    raise BASICException, 'Invalid operation' if op_sym.nil?
+    raise BASICRuntimeError, 'Invalid operation' if op_sym.nil?
 
     op_scalar_array(op_sym, x, y)
   end
@@ -356,7 +356,7 @@ class BinaryOperator < AbstractElement
 
     op_sym = op_table[@op]
 
-    raise BASICException, 'Invalid operation' if op_sym.nil?
+    raise BASICRuntimeError, 'Invalid operation' if op_sym.nil?
 
     x.public_send(op_sym, y)
   end
@@ -462,7 +462,7 @@ class BinaryOperator < AbstractElement
     # verify dimensions match
     a_dims = a.dimensions
     b_dims = b.dimensions
-    raise(BASICException, 'Matrix dimensions do not match') if a_dims != b_dims
+    raise(BASICRuntimeError, 'Matrix dimensions do not match') if a_dims != b_dims
     values = add_matrix_matrix_1(a, b) if a_dims.size == 1
     values = add_matrix_matrix_2(a, b) if a_dims.size == 2
     Matrix.new(a_dims, values)
@@ -501,7 +501,7 @@ class BinaryOperator < AbstractElement
     # verify dimensions match
     a_dims = a.dimensions
     b_dims = b.dimensions
-    raise(BASICException, 'Matrix dimensions do not match') if a_dims != b_dims
+    raise(BASICRuntimeError, 'Matrix dimensions do not match') if a_dims != b_dims
     values = subtract_matrix_matrix_1(a, b) if a_dims.size == 1
     values = subtract_matrix_matrix_2(a, b) if a_dims.size == 2
     Matrix.new(a_dims, values)
@@ -591,7 +591,7 @@ class BinaryOperator < AbstractElement
     a_dims = a.dimensions
     b_dims = b.dimensions
     # number of columns in a must match number of rows in b
-    raise(BASICException, 'Matrix dimensions do not match') if
+    raise(BASICRuntimeError, 'Matrix dimensions do not match') if
       a_dims[1] != b_dims[0]
     r_dims = [a_dims[0], b_dims[1]]
     values = multiply_matrix_matrix_work(a, b)
@@ -603,7 +603,7 @@ class BinaryOperator < AbstractElement
     new_b = array_to_vertical(b)
     new_b_dims = new_b.dimensions
     # number of columns in a must match number of rows in b
-    raise(BASICException, 'Matrix dimensions do not match') if
+    raise(BASICRuntimeError, 'Matrix dimensions do not match') if
       a_dims[1] != new_b_dims[0]
     r_dims = [a_dims[0], new_b_dims[1]]
     values = multiply_matrix_matrix_work(a, new_b)
@@ -616,7 +616,7 @@ class BinaryOperator < AbstractElement
     new_a_dims = new_a.dimensions
     b_dims = b.dimensions
     # number of columns in a must match number of rows in b
-    raise(BASICException, 'Matrix dimensions do not match') if
+    raise(BASICRuntimeError, 'Matrix dimensions do not match') if
       new_a_dims[1] != b_dims[0]
     r_dims = [new_a_dims[0], b_dims[1]]
     values = multiply_matrix_matrix_work(new_a, b)
@@ -633,21 +633,21 @@ class BinaryOperator < AbstractElement
     elsif dim_counts == [2, 2]
       multiply_matrix_matrix_2_2(a, b)
     else
-      raise(BASICException, 'Matrix multiplication must have two matrices')
+      raise(BASICRuntimeError, 'Matrix multiplication must have two matrices')
     end
   end
 
   def divide_matrix_matrix(_, _)
-    raise BASICException, 'Cannot divide matrix by matrix'
+    raise BASICRuntimeError, 'Cannot divide matrix by matrix'
   end
 
   def power_matrix_matrix(_, _)
-    raise BASICException, 'Cannot raise matrix to matrix power'
+    raise BASICRuntimeError, 'Cannot raise matrix to matrix power'
   end
 
   def op_array_array(op, a, b)
     dims = b.dimensions
-    raise(BASICException, 'Arrays of different size') if a.dimensions != dims
+    raise(BASICRuntimeError, 'Arrays of different size') if a.dimensions != dims
     n_cols = dims[0].to_i
     values = {}
     (0..n_cols).each do |col|

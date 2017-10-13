@@ -11,10 +11,10 @@ class Function < AbstractElement
   private
 
   def ensure_argument_count(stack, expected)
-    raise(BASICException, @name + ' requires argument') unless
+    raise(BASICRuntimeError, @name + ' requires argument') unless
       previous_is_array(stack)
     valid = counts_to_text(expected)
-    raise(BASICException, @name + ' requires ' + valid + ' argument') unless
+    raise(BASICRuntimeError, @name + ' requires ' + valid + ' argument') unless
       expected.include? stack[-1].size
   end
 
@@ -25,7 +25,7 @@ class Function < AbstractElement
   end
 
   def check_args(args)
-    raise(BASICException, 'No arguments for function') if
+    raise(BASICRuntimeError, 'No arguments for function') if
       args.class.to_s != 'Array'
   end
 
@@ -40,14 +40,14 @@ class Function < AbstractElement
       compatible = value.matrix?
     end
 
-    raise(BASICException, "Type mismatch value #{value} not #{type}") unless
+    raise(BASICRuntimeError, "Type mismatch value #{value} not #{type}") unless
       compatible
   end
 
   def check_arg_types(args, types)
     check_args(args)
     if args.size != types.size
-      raise(BASICException,
+      raise(BASICRuntimeError,
             "Function #{@name} expects #{n_types} argument, found #{n_args}")
     end
     (0..types.size - 1).each do |i|
@@ -78,8 +78,8 @@ class AbstractMatrixFunction < Function
   end
 
   def check_square(dims)
-    raise(BASICException, @name + ' requires matrix') unless dims.size == 2
-    raise(BASICException, @name + ' requires square matrix') unless
+    raise(BASICRuntimeError, @name + ' requires matrix') unless dims.size == 2
+    raise(BASICRuntimeError, @name + ' requires square matrix') unless
       dims[1] == dims[0]
   end
 end
@@ -97,7 +97,7 @@ class UserFunction < AbstractScalarFunction
 
   def initialize(text)
     text = text.to_s if text.class.to_s == 'UserFunctionToken'
-    raise(BASICException, "'#{text}' is not a valid function") unless
+    raise(BASICRuntimeError, "'#{text}' is not a valid function") unless
       UserFunction.init?(text)
     super
   end
@@ -106,11 +106,11 @@ class UserFunction < AbstractScalarFunction
   def evaluate(interpreter, stack, trace)
     expression = interpreter.get_user_function(@name)
     # verify function is defined
-    raise(BASICException, "Function #{@name} not defined") if expression.nil?
+    raise(BASICRuntimeError, "Function #{@name} not defined") if expression.nil?
 
     # verify arguments
     user_var_values = stack.pop
-    raise(BASICException, 'No arguments for function') if
+    raise(BASICRuntimeError, 'No arguments for function') if
       user_var_values.class.to_s != 'Array'
     check_arg_types(user_var_values,
                     ['numeric'] * user_var_values.length)
@@ -345,8 +345,8 @@ class FunctionIdn < AbstractScalarFunction
   private
 
   def check_square(dims)
-    raise(BASICException, @name + ' requires matrix') unless dims.size == 2
-    raise(BASICException, @name + ' requires square matrix') unless
+    raise(BASICRuntimeError, @name + ' requires matrix') unless dims.size == 2
+    raise(BASICRuntimeError, @name + ' requires square matrix') unless
       dims[1] == dims[0]
   end
 end

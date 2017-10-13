@@ -43,7 +43,7 @@ class ScalarReference < Variable
       @subscripts = interpreter.normalize_subscripts(subscripts)
       num_args = @subscripts.length
       if num_args.zero?
-        raise(BASICException,
+        raise(BASICRuntimeError,
               'Variable expects subscripts, found empty parentheses')
       end
       interpreter.check_subscripts(@variable_name, @subscripts)
@@ -100,22 +100,22 @@ class BASICArray
   def print(printer, interpreter, carriage)
     case @dimensions.size
     when 0
-      raise BASICException, 'Need dimension in array'
+      raise BASICRuntimeError, 'Need dimension in array'
     when 1
       print_1(printer, interpreter, carriage)
     else
-      raise BASICException, 'Too many dimensions in array'
+      raise BASICRuntimeError, 'Too many dimensions in array'
     end
   end
 
   def write(printer, interpreter, carriage)
     case @dimensions.size
     when 0
-      raise BASICException, 'Need dimension in array'
+      raise BASICRuntimeError, 'Need dimension in array'
     when 1
       write_1(printer, interpreter, carriage)
     else
-      raise BASICException, 'Too many dimensions in array'
+      raise BASICRuntimeError, 'Too many dimensions in array'
     end
   end
 
@@ -214,31 +214,31 @@ class Matrix
   def print(printer, interpreter, carriage)
     case @dimensions.size
     when 0
-      raise BASICException, 'Need dimensions in matrix'
+      raise BASICRuntimeError, 'Need dimensions in matrix'
     when 1
       print_1(printer, interpreter, carriage)
     when 2
       print_2(printer, interpreter, carriage)
     else
-      raise BASICException, 'Too many dimensions in matrix'
+      raise BASICRuntimeError, 'Too many dimensions in matrix'
     end
   end
 
   def write(printer, interpreter, carriage)
     case @dimensions.size
     when 0
-      raise BASICException, 'Need dimensions in matrix'
+      raise BASICRuntimeError, 'Need dimensions in matrix'
     when 1
       write_1(printer, interpreter, carriage)
     when 2
       write_2(printer, interpreter, carriage)
     else
-      raise BASICException, 'Too many dimensions in matrix'
+      raise BASICRuntimeError, 'Too many dimensions in matrix'
     end
   end
 
   def transpose_values
-    raise(BASICException, 'TRN requires matrix') unless @dimensions.size == 2
+    raise(BASICRuntimeError, 'TRN requires matrix') unless @dimensions.size == 2
     new_values = {}
     (1..@dimensions[0].to_i).each do |row|
       (1..@dimensions[1].to_i).each do |col|
@@ -251,8 +251,8 @@ class Matrix
   end
 
   def determinant
-    raise(BASICException, 'DET requires matrix') unless @dimensions.size == 2
-    raise(BASICException, 'DET requires square matrix') if
+    raise(BASICRuntimeError, 'DET requires matrix') unless @dimensions.size == 2
+    raise(BASICRuntimeError, 'DET requires square matrix') if
       @dimensions[1] != @dimensions[0]
     case @dimensions[0].to_i
     when 1
@@ -514,8 +514,8 @@ class ArrayValue < Variable
 
   def evaluate(interpreter, _, trace)
     dims = interpreter.get_dimensions(@variable_name)
-    raise(BASICException, 'Variable has no dimensions') if dims.nil?
-    raise(BASICException, 'Array requires one dimension') if dims.size != 1
+    raise(BASICRuntimeError, 'Variable has no dimensions') if dims.nil?
+    raise(BASICRuntimeError, 'Array requires one dimension') if dims.size != 1
     values = evaluate_1(interpreter, dims[0].to_i, trace)
     BASICArray.new(dims, values)
   end
@@ -554,7 +554,7 @@ class CompoundReference < Variable
       @subscripts = interpreter.normalize_subscripts(subscripts)
       num_args = @subscripts.length
       if num_args.zero?
-        raise(BASICException,
+        raise(BASICRuntimeError,
               'Variable expects subscripts, found empty parentheses')
       end
       interpreter.check_subscripts(@variable_name, @subscripts)
@@ -578,7 +578,7 @@ class MatrixValue < Variable
 
   def evaluate(interpreter, _, trace)
     dims = interpreter.get_dimensions(@variable_name)
-    raise(BASICException, 'Variable has no dimensions') if dims.nil?
+    raise(BASICRuntimeError, 'Variable has no dimensions') if dims.nil?
     values = evaluate_n(interpreter, dims, trace)
     Matrix.new(dims, values)
   end
@@ -635,7 +635,7 @@ class VariableDimension < Variable
       @subscripts = stack.pop
       num_args = @subscripts.length
       if num_args.zero?
-        raise(BASICException,
+        raise(BASICRuntimeError,
               'Variable expects subscripts, found empty parentheses')
       end
     end
@@ -969,13 +969,13 @@ class TargetExpression < AbstractExpression
   private
 
   def check_length
-    raise(BASICException, 'Value list is empty (length 0)') if
+    raise(BASICRuntimeError, 'Value list is empty (length 0)') if
       @parsed_expressions.empty?
   end
 
   def check_all_lengths
     @parsed_expressions.each do |parsed_expression|
-      raise(BASICException, 'Value is not assignable (length 0)') if
+      raise(BASICRuntimeError, 'Value is not assignable (length 0)') if
         parsed_expression.empty?
     end
   end
@@ -983,7 +983,7 @@ class TargetExpression < AbstractExpression
   def check_resolve_types
     @parsed_expressions.each do |parsed_expression|
       if parsed_expression[-1].class.to_s != 'ScalarValue'
-        raise(BASICException,
+        raise(BASICRuntimeError,
               "Value is not assignable (type #{parsed_expression[-1].class})")
       end
     end

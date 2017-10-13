@@ -31,12 +31,12 @@ class Interpreter
   private
 
   def verify_next_line_number
-    raise BASICException, 'Program terminated without END' if
+    raise BASICRuntimeError, 'Program terminated without END' if
       @next_line_number.nil?
     line_numbers = @program_lines.keys
     return if line_numbers.include?(@next_line_number)
 
-    raise(BASICException, "Line number #{@next_line_number} not found")
+    raise(BASICRuntimeError, "Line number #{@next_line_number} not found")
   end
 
   public
@@ -124,7 +124,7 @@ class Interpreter
       @current_line_number =
         @program.find_next_line_number(@current_line_number)
     end
-  rescue BASICException => e
+  rescue BASICException, BASICRuntimeError => e
     message = "#{e.message} in line #{@current_line_number}"
     @console_io.print_line(message)
     stop_running
@@ -160,7 +160,7 @@ class Interpreter
         verify_next_line_number
         @current_line_number = @next_line_number
       end
-    rescue BASICException => e
+    rescue BASICException, BASICRuntimeError => e
       if @current_line_number.nil?
         message = e.message
       else
@@ -200,7 +200,7 @@ class Interpreter
         stack.push value
       end
       act = stack.length
-      raise(BASICException, 'Bad expression') if act != exp
+      raise(BASICRuntimeError, 'Bad expression') if act != exp
 
       next if act.zero?
 
@@ -265,7 +265,7 @@ class Interpreter
         statement.class.to_s == 'NextStatement' &&
         statement.control == control_variable
     end
-    raise(BASICException, 'FOR without NEXT') # if none found, error
+    raise(BASICRuntimeError, 'FOR without NEXT') # if none found, error
   end
 
   def set_dimensions(variable, subscripts)
@@ -325,10 +325,10 @@ class Interpreter
   def check_subscripts(variable, subscripts)
     int_subscripts = normalize_subscripts(subscripts)
     dimensions = make_dimensions(variable, int_subscripts.size)
-    raise(BASICException, 'Incorrect number of subscripts') if
+    raise(BASICRuntimeError, 'Incorrect number of subscripts') if
       int_subscripts.size != dimensions.size
     int_subscripts.zip(dimensions).each do |pair|
-      raise(BASICException, "Subscript #{pair[0]} out of range #{pair[1]}") if
+      raise(BASICRuntimeError, "Subscript #{pair[0]} out of range #{pair[1]}") if
         pair[0] > pair[1]
     end
   end
@@ -356,12 +356,12 @@ class Interpreter
   end
 
   def set_value(variable, value)
-    raise(BASICException, "Cannot change locked variable #{variable}") if
+    raise(BASICRuntimeError, "Cannot change locked variable #{variable}") if
       @lock_fornext && @locked_variables.include?(variable)
     
     # check that value type matches variable type
     if value.class.to_s != variable.content_type
-      raise(BASICException,
+      raise(BASICRuntimeError,
             "Type mismatch '#{value}' is not #{variable.content_type}")
     end
     v = variable.to_s
@@ -388,7 +388,7 @@ class Interpreter
   def unlock_variable(variable)
     return unless @lock_fornext
     unless @locked_variables.include?(variable)
-      raise(BASICException,
+      raise(BASICRuntimeError,
             "Attempt to unlock a variable #{variable} not locked")
     end
     @locked_variables.delete(variable)
@@ -399,7 +399,7 @@ class Interpreter
   end
 
   def pop_return
-    raise(BASICException, 'RETURN without GOSUB') if @return_stack.empty?
+    raise(BASICRuntimeError, 'RETURN without GOSUB') if @return_stack.empty?
     @return_stack.pop
   end
 
@@ -410,15 +410,15 @@ class Interpreter
 
   def retrieve_fornext(control_variable)
     fornext = @fornexts[control_variable]
-    raise(BASICException, 'NEXT without FOR') if fornext.nil?
+    raise(BASICRuntimeError, 'NEXT without FOR') if fornext.nil?
     fornext
   end
 
   def add_file_names(file_names)
     file_names.each do |name|
-      raise(BASICException, 'Invalid file name') unless
+      raise(BASICRuntimeError, 'Invalid file name') unless
         name.class.to_s == 'TextConstant'
-      raise(BASICException, "File '#{name.value}' not found") unless
+      raise(BASICRuntimeError, "File '#{name.value}' not found") unless
         File.file?(name.value)
       file_handle = FileHandle.new(@file_handlers.size + 1)
       @file_handlers[file_handle] = FileHandler.new(name.value)
@@ -428,7 +428,7 @@ class Interpreter
   def get_file_handler(file_handle)
     return @console_io if file_handle.nil?
 
-    raise(BASICException, 'Unknown file handle') unless
+    raise(BASICRuntimeError, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
     fh = @file_handlers[file_handle]
     fh.set_mode(:print)
@@ -436,7 +436,7 @@ class Interpreter
   end
 
   def get_input(file_handle)
-    raise(BASICException, 'Unknown file handle') unless
+    raise(BASICRuntimeError, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
     fh = @file_handlers[file_handle]
     fh.set_mode(:read)
@@ -445,7 +445,7 @@ class Interpreter
 
   def get_data_store(file_handle)
     return @data_store if file_handle.nil?
-    raise(BASICException, 'Unknown file handle') unless
+    raise(BASICRuntimeError, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
     fh = @file_handlers[file_handle]
     fh.set_mode(:read)
