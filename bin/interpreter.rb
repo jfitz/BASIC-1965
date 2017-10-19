@@ -56,7 +56,10 @@ class Interpreter
 
     timing = Benchmark.measure { run_and_time }
     print_timing(timing) if show_timing
-    @program.profile('') if show_profile
+    if show_profile
+      line_list_spec = program.line_list_spec('')
+      @program.profile(line_list_spec)
+    end
   end
 
   def run_and_time
