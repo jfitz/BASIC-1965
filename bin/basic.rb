@@ -247,107 +247,69 @@ class Shell
     cmd6 = cmd[0..5]
     cmd7 = cmd[0..6]
     cmd8 = cmd[0..7]
-    if simple_command?(cmd)
-      execute_simple_command(cmd)
-    elsif command_4?(cmd4)
-      execute_4_command(cmd4, cmd[4..-1])
-    elsif command_6?(cmd6)
-      execute_6_command(cmd6, cmd[6..-1])
-    elsif command_7?(cmd7)
-      execute_7_command(cmd7, cmd[7..-1])
-    elsif command_8?(cmd8)
-      execute_8_command(cmd8, cmd[8..-1])
-    else
-      print "Unknown command #{cmd}\n"
+    begin
+      if %w(NEW RUN TRACE .VARS .UDFS .DIMS).include?(cmd)
+        case cmd
+        when 'NEW'
+          @program.cmd_new
+          @interpreter.clear_variables
+        when 'RUN'
+          cmd_run(false, true)
+        when 'TRACE'
+          cmd_run(true, false)
+        when '.VARS'
+          dump_vars
+        when '.UDFS'
+          dump_user_functions
+        when '.DIMS'
+          dump_dims
+        end
+      elsif %w(LIST LOAD SAVE).include?(cmd4)
+        rest = cmd[4..-1]
+        case cmd4
+        when 'LIST'
+          line_number_range = @program.line_list_spec(rest)
+          @program.list(line_number_range, false)
+        when 'LOAD'
+          @program.load(rest)
+        when 'SAVE'
+          @program.save(rest)
+        end
+      elsif %w(TOKENS PRETTY DELETE).include?(cmd6)
+        rest = cmd[6..-1]
+        case cmd6
+        when 'TOKENS'
+          line_number_range = @program.line_list_spec(rest)
+          @program.list(line_number_range, true)
+        when 'PRETTY'
+          line_number_range = @program.line_list_spec(rest)
+          @program.pretty(line_number_range)
+        when 'DELETE'
+          line_number_range = @program.line_list_spec(rest)
+          @program.delete(line_number_range)
+        end
+      elsif %w(PROFILE).include?(cmd7)
+        rest = cmd[7..-1]
+        case cmd7
+        when 'PROFILE'
+          line_number_range = @program.line_list_spec(rest)
+          @program.profile(line_number_range)
+        end
+      elsif %w(RENUMBER CROSSREF).include?(cmd8)
+        rest = cmd[8..-1]
+        case cmd
+        when 'RENUMBER'
+          @program.renumber if @program.check
+        when 'CROSSREF'
+          @program.crossref if @program.check
+        end
+      else
+        print "Unknown command #{cmd}\n"
+      end
+    rescue BASICCommandError => e
+      @console_io.print_line(e.to_s)
     end
     false
-  end
-
-  def simple_command?(text)
-    %w(NEW RUN TRACE .VARS .UDFS .DIMS).include?(text)
-  end
-
-  def execute_simple_command(text)
-    case text
-    when 'NEW'
-      @program.cmd_new
-      @interpreter.clear_variables
-    when 'RUN'
-      cmd_run(false, true)
-    when 'TRACE'
-      cmd_run(true, false)
-    when '.VARS'
-      dump_vars
-    when '.UDFS'
-      dump_user_functions
-    when '.DIMS'
-      dump_dims
-    end
-  end
-
-  def command_4?(text)
-    %w(LIST LOAD SAVE).include?(text)
-  end
-
-  def execute_4_command(cmd, rest)
-    case cmd
-    when 'LIST'
-      line_number_range = @program.line_list_spec(rest)
-      @program.list(line_number_range, false)
-    when 'LOAD'
-      @program.load(rest)
-    when 'SAVE'
-      @program.save(rest)
-    end
-  rescue BASICCommandError => e
-    @console_io.print_line(e.to_s)
-  end
-
-  def command_6?(text)
-    %w(TOKENS PRETTY DELETE).include?(text)
-  end
-
-  def execute_6_command(cmd, rest)
-    case cmd
-    when 'TOKENS'
-      line_number_range = @program.line_list_spec(rest)
-      @program.list(line_number_range, true)
-    when 'PRETTY'
-      line_number_range = @program.line_list_spec(rest)
-      @program.pretty(line_number_range)
-    when 'DELETE'
-      line_number_range = @program.line_list_spec(rest)
-      @program.delete(line_number_range)
-    end
-  rescue BASICCommandError => e
-    @console_io.print_line(e.to_s)
-  end
-
-  def command_7?(text)
-    %w(PROFILE).include?(text)
-  end
-
-  def execute_7_command(cmd, rest)
-    case cmd
-    when 'PROFILE'
-      line_number_range = @program.line_list_spec(rest)
-      @program.profile(line_number_range)
-    end
-  rescue BASICCommandError => e
-    @console_io.print_line(e.to_s)
-  end
-
-  def command_8?(text)
-    %w(RENUMBER CROSSREF).include?(text)
-  end
-
-  def execute_8_command(cmd, _)
-    case cmd
-    when 'RENUMBER'
-      @program.renumber if @program.check
-    when 'CROSSREF'
-      @program.crossref if @program.check
-    end
   end
 
   def cmd_run(trace_flag, show_timing)
