@@ -132,22 +132,34 @@ They are not stored as part of the program.
 They have no line number.
 They are available only in "run" mode.
 
-NEW
-~~~
+CROSSREF
+~~~~~~~~
 
-Clears the current program.
-Does not ask to save a loaded program.
+Lists the numeric constants, text constants, functions, and variables used in the program, along with the line numbers on which they appear.
 
-Syntax:	NEW
+DELETE
+~~~~~~
 
-LOAD
-~~~~
+Removes lines from the program.
 
-Loads a stored program into memory.
-Sorts statements by line number.
-Clears the current program prior to loading the new one.
+My experience with other BASIC interpreters is that lines can be deleted by simply typing a line number and pressing RETURN.
+(That is, entering an "empty" line with line number and nothing else.)
+That technique does not work with BASIC-1965, as BASIC-1965 allows empty lines to be part of a program.
 
-Syntax:	LOAD filename
+So how to remove a line from a program?
+Replacing a line with an empty line is possible, and certainly makes the offending line "go away" from execution, but what if we want to really remove a line?
+
+That's what the DELETE command does.
+
+DELETE uses the same specification as the LIST command.
+
+Syntax:	DELETE [line specification]
+
+If the list specification is a single line, it is deleted immediately.
+If the list specification is a range, the lines are displayed and the user must confirm the operation.
+
+The DELETE command with no specification (implying the entire program) does not delete the program but does nothing.
+(To delete the entire program, use the NEW command.)
 
 LIST
 ~~~~
@@ -168,6 +180,26 @@ Examples:
 |LIST 100+ |Lists line 100 and the next 20 lines.
 |==========
 
+LOAD
+~~~~
+
+Loads a stored program into memory.
+Sorts statements by line number.
+Clears the current program prior to loading the new one.
+
+Syntax:	LOAD filename
+
+The 'filename' argument may be enclosed in quotes.
+Quotes are necessary when the name contains a space character.
+
+NEW
+~~~
+
+Clears the current program.
+Does not ask to save a loaded program.
+
+Syntax:	NEW
+
 PRETTY
 ~~~~~~
 
@@ -176,20 +208,6 @@ Lists the current program on the screen, adjusting the spacing between keywords,
 Syntax:	PRETTY [line specification]
 
 The line specification is the same as the line specification for the LIST command.
-
-TOKENS
-~~~~~~
-
-Lists the current program and for each line displays the tokens identified on that line.
-
-Syntax: TOKENS [line specification]
-
-The line specification is the same as the line specification for the LIST command.
-
-CROSSREF
-~~~~~~~~
-
-Lists the numeric constants, text constants, functions, and variables used in the program, along with the line numbers on which they appear.
 
 PROFILE
 ~~~~~~~
@@ -216,30 +234,6 @@ Counts are reset at the start of each execution.
 Profiling excludes the first phase of processing of certain lines (DATA, FILES, and DEF FN).
 These lines are processed before the program begins, and they do nothing when executed in the main execution.
 For example, placing a DATA statement inside of a FOR/NEXT loop does not cause the lines data values to be stored multiple times.
-
-DELETE
-~~~~~~
-
-Removes lines from the program.
-
-My experience with other BASIC interpreters is that lines can be deleted by simply typing a line number and pressing RETURN.
-(That is, entering an "empty" line with line number and nothing else.)
-That technique does not work with BASIC-1965, as BASIC-1965 allows empty lines to be part of a program.
-
-So how to remove a line from a program?
-Replacing a line with an empty line is possible, and certainly makes the offending line "go away" from execution, but what if we want to really remove a line?
-
-That's what the DELETE command does.
-
-DELETE uses the same specification as the LIST command.
-
-Syntax:	DELETE [line specification]
-
-If the list specification is a single line, it is deleted immediately.
-If the list specification is a range, the lines are displayed and the user must confirm the operation.
-
-The DELETE command with no specification (implying the entire program) does not delete the program but does nothing.
-(To delete the entire program, use the NEW command.)
 
 RENUMBER
 ~~~~~~~~
@@ -272,6 +266,26 @@ They are executed only once in a program, even if the path of execution travels 
 
 The second phase executes statements, starting with the lowest-numbered statement and following the path of execution.
 
+SAVE
+~~~~
+
+Saves the current program to disk.
+Will overwrite an existing file without prompting.
+
+Syntax:	SAVE filename
+
+The 'filename' argument may be enclosed in quotes.
+Quotes are necessary when the name contains a space character.
+
+TOKENS
+~~~~~~
+
+Lists the current program and for each line displays the tokens identified on that line.
+
+Syntax: TOKENS [line specification]
+
+The line specification is the same as the line specification for the LIST command.
+
 TRACE
 ~~~~~
 
@@ -283,14 +297,6 @@ After the line is displayed and executed, certain statements (READ, LET, and IF)
 READ displays the values read.
 LET displays the new value assigned.
 IF displays the two values, the operator, and the result ('true' or 'false').
-
-SAVE
-~~~~
-
-Saves the current program to disk.
-Will overwrite an existing file without prompting.
-
-Syntax:	SAVE filename
 
 Variables
 ---------
