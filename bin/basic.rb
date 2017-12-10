@@ -219,6 +219,7 @@ class Shell
     @console_io = console_io
     @interpreter = interpreter
     @program = program
+    @tokenbuilders = make_command_tokenbuilders
   end
 
   def run
@@ -241,15 +242,18 @@ class Shell
   private
 
   def execute_command(cmd)
-    return false if cmd.empty?
-    return true if cmd == 'EXIT'
-    cmd4 = cmd[0..3]
-    cmd6 = cmd[0..5]
-    cmd7 = cmd[0..6]
-    cmd8 = cmd[0..7]
+    # tokenize
+    invalid_tokenbuilder = InvalidTokenBuilder.new
+    tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
+    tokens = tokenizer.tokenize(cmd)
+    tokens.delete_if(&:whitespace?)
+    
+    return false if tokens.empty?
     begin
-      if %w(NEW RUN TRACE .VARS .UDFS .DIMS).include?(cmd)
-        case cmd
+      if tokens[0].keyword?
+        case tokens[0].to_s
+        when 'EXIT'
+          return true
         when 'NEW'
           @program.cmd_new
           @interpreter.clear_variables
@@ -263,45 +267,38 @@ class Shell
           dump_user_functions
         when '.DIMS'
           dump_dims
-        end
-      elsif %w(LIST LOAD SAVE).include?(cmd4)
-        rest = cmd[4..-1]
-        case cmd4
         when 'LIST'
+          rest = cmd[4..-1]
           line_number_range = @program.line_list_spec(rest)
           @program.list(line_number_range, false)
         when 'LOAD'
+          rest = cmd[4..-1]
           @program.load(rest)
         when 'SAVE'
+          rest = cmd[4..-1]
           @program.save(rest)
-        end
-      elsif %w(TOKENS PRETTY DELETE).include?(cmd6)
-        rest = cmd[6..-1]
-        case cmd6
         when 'TOKENS'
+          rest = cmd[6..-1]
           line_number_range = @program.line_list_spec(rest)
           @program.list(line_number_range, true)
         when 'PRETTY'
+          rest = cmd[6..-1]
           line_number_range = @program.line_list_spec(rest)
           @program.pretty(line_number_range)
         when 'DELETE'
+          rest = cmd[6..-1]
           line_number_range = @program.line_list_spec(rest)
           @program.delete(line_number_range)
-        end
-      elsif %w(PROFILE).include?(cmd7)
-        rest = cmd[7..-1]
-        case cmd7
         when 'PROFILE'
+          rest = cmd[7..-1]
           line_number_range = @program.line_list_spec(rest)
           @program.profile(line_number_range)
-        end
-      elsif %w(RENUMBER CROSSREF).include?(cmd8)
-        rest = cmd[8..-1]
-        case cmd
         when 'RENUMBER'
           @program.renumber if @program.check
         when 'CROSSREF'
           @program.crossref if @program.check
+        else
+          print "Unknown command #{cmd}\n"
         end
       else
         print "Unknown command #{cmd}\n"
@@ -309,6 +306,7 @@ class Shell
     rescue BASICCommandError => e
       @console_io.print_line(e.to_s)
     end
+
     false
   end
 
@@ -335,7 +333,7 @@ class Shell
   end
 end
 
-def make_tokenbuilders
+def make_interpreter_tokenbuilders
   tokenbuilders = []
 
   tokenbuilders << CommentTokenBuilder.new
@@ -343,7 +341,6 @@ def make_tokenbuilders
 
   statement_factory = StatementFactory.instance
   keywords = statement_factory.keywords_definitions
-
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
@@ -367,6 +364,23 @@ def make_tokenbuilders
   tokenbuilders << NumberTokenBuilder.new
   tokenbuilders << VariableTokenBuilder.new
   tokenbuilders << ListTokenBuilder.new(%w(TRUE FALSE), BooleanConstantToken)
+  tokenbuilders << WhitespaceTokenBuilder.new
+end
+
+def make_command_tokenbuilders
+  tokenbuilders = []
+
+  keywords = %w(CROSSREF DELETE EXIT LIST LOAD NEW PRETTY PROFILE RENUMBER RUN SAVE TOKENS TRACE .DIMS .UDFS .VARS)
+  tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
+
+  un_ops = UnaryOperator.operators
+  bi_ops = BinaryOperator.operators
+  operators = (un_ops + bi_ops).uniq
+  tokenbuilders << ListTokenBuilder.new(operators, OperatorToken)
+
+  tokenbuilders << TextTokenBuilder.new
+  tokenbuilders << NumberTokenBuilder.new
+
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
@@ -423,7 +437,7 @@ console_io =
                 implied_semicolon, default_prompt, qmark_after_prompt,
                 echo_input)
 
-tokenbuilders = make_tokenbuilders
+tokenbuilders = make_interpreter_tokenbuilders
 
 if show_heading
   console_io.print_line('BASIC-1965 interpreter version -1')
