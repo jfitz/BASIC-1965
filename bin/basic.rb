@@ -76,19 +76,10 @@ end
 class LineNumberRange
   attr_reader :list
 
-  def self.init?(text)
-    /\A\d+-\d+\z/.match(text)
-  end
-
-  def initialize(spec, program_line_numbers)
-    raise(BASICCommandError, 'Invalid list specification') unless
-      LineNumberRange.init?(spec)
-    parts = spec.split('-')
-    start_val = LineNumber.new(NumericConstantToken.new(parts[0]))
-    end_val = LineNumber.new(NumericConstantToken.new(parts[1]))
+  def initialize(start, endline, program_line_numbers)
     @list = []
     program_line_numbers.each do |line_number|
-      @list << line_number if line_number >= start_val && line_number <= end_val
+      @list << line_number if line_number >= start && line_number <= endline
     end
   end
 end
@@ -97,75 +88,14 @@ end
 class LineNumberCountRange
   attr_reader :list
 
-  def self.init?(text)
-    /\A\d+\+\d+\z/.match(text) || /\A\d+\+\z/.match(text)
-  end
-
-  def initialize(spec, program_line_numbers)
-    raise(BASICCommandError, 'Invalid list specification') unless
-      LineNumberCountRange.init?(spec)
-
-    parts = spec.split('+')
-    start_val = LineNumber.new(NumericConstantToken.new(parts[0]))
-    count = parts.size > 1 ? parts[1].to_i : 20
-    make_list(program_line_numbers, start_val, count)
-  end
-
-  private
-
-  def make_list(program_line_numbers, start_val, count)
+  def initialize(start, count, program_line_numbers)
     @list = []
     program_line_numbers.each do |line_number|
-      if line_number >= start_val && count >= 0
+      if line_number >= start && count >= 0
         @list << line_number
         count -= 1
       end
     end
-  end
-end
-
-# Contain line number ranges
-# used in LIST and DELETE commands
-class LineListSpec
-  attr_reader :line_numbers
-  attr_reader :range_type
-
-  def initialize(text, program_line_numbers)
-    @line_numbers = []
-    @range_type = :empty
-    if text == ''
-      @line_numbers = program_line_numbers
-      @range_type = :all
-    elsif LineNumber.init?(text)
-      make_single(text, program_line_numbers)
-    elsif LineNumberRange.init?(text)
-      make_range(text, program_line_numbers)
-    elsif LineNumberCountRange.init?(text)
-      make_count_range(text, program_line_numbers)
-    else
-      raise(BASICCommandError, 'Invalid list specification')
-    end
-  end
-
-  private
-
-  def make_single(text, program_line_numbers)
-    line_number = LineNumber.new(NumericConstantToken.new(text))
-    @line_numbers << line_number if
-      program_line_numbers.include?(line_number)
-    @range_type = :single
-  end
-
-  def make_range(text, program_line_numbers)
-    range = LineNumberRange.new(text, program_line_numbers)
-    @line_numbers = range.list
-    @range_type = :range
-  end
-
-  def make_count_range(text, program_line_numbers)
-    range = LineNumberCountRange.new(text, program_line_numbers)
-    @line_numbers = range.list
-    @range_type = :range
   end
 end
 
@@ -268,28 +198,25 @@ class Shell
         when '.DIMS'
           dump_dims
         when 'LIST'
-          rest = cmd[4..-1]
-          line_number_range = @program.line_list_spec(rest)
+          line_number_range = @program.line_list_spec(tokens[1..-1])
           @program.list(line_number_range, false)
         when 'LOAD'
           @program.load(tokens[1..-1])
         when 'SAVE'
           @program.save(tokens[1..-1])
         when 'TOKENS'
-          rest = cmd[6..-1]
-          line_number_range = @program.line_list_spec(rest)
+          line_number_range = @program.line_list_spec(tokens[1..-1])
           @program.list(line_number_range, true)
         when 'PRETTY'
-          rest = cmd[6..-1]
-          line_number_range = @program.line_list_spec(rest)
+          line_number_range = @program.line_list_spec(tokens[1..-1])
           @program.pretty(line_number_range)
         when 'DELETE'
           rest = cmd[6..-1]
-          line_number_range = @program.line_list_spec(rest)
+          line_number_range = @program.line_list_spec(tokens[1..-1])
           @program.delete(line_number_range)
         when 'PROFILE'
           rest = cmd[7..-1]
-          line_number_range = @program.line_list_spec(rest)
+          line_number_range = @program.line_list_spec(tokens[1..-1])
           @program.profile(line_number_range)
         when 'RENUMBER'
           @program.renumber if @program.check
@@ -378,7 +305,6 @@ def make_command_tokenbuilders
 
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new
-  tokenbuilders << InputBareTextTokenBuilder.new
 
   tokenbuilders << WhitespaceTokenBuilder.new
 end
@@ -445,19 +371,22 @@ end
 
 program = Program.new(console_io, tokenbuilders)
 if !run_filename.nil?
-  if program.load(run_filename) && program.check
+  nametokens = [TextConstant.new(TextConstantToken.new('"' + run_filename + '"'))]
+  if program.load(nametokens) && program.check
     interpreter =
       Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
                       lock_fornext)
     interpreter.run(program, trace_flag, show_timing, show_profile)
   end
 elsif !list_filename.nil?
-  if program.load(list_filename)
+  nametokens = [TextConstant.new(TextConstantToken.new('"' + list_filename + '"'))]
+  if program.load(nametokens)
     line_list_spec = program.line_list_spec('')
     program.list(line_list_spec, list_tokens)
   end
 elsif !pretty_filename.nil?
-  if program.load(pretty_filename)
+  nametokens = [TextConstant.new(TextConstantToken.new('"' + pretty_filename + '"'))]
+  if program.load(nametokens)
     line_list_spec = program.line_list_spec('')
     program.pretty(line_list_spec)
   end

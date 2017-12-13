@@ -14,6 +14,58 @@ class LineRef
   end
 end
 
+# Contain line number ranges
+# used in LIST and DELETE commands
+class LineListSpec
+  attr_reader :line_numbers
+  attr_reader :range_type
+
+  def initialize(tokens, program_line_numbers)
+    @line_numbers = []
+    @range_type = :empty
+    if tokens.empty?
+      @line_numbers = program_line_numbers
+      @range_type = :all
+    elsif tokens.size == 1 && tokens[0].numeric_constant?
+      make_single(tokens[0], program_line_numbers)
+    elsif tokens.size == 3 && tokens[0].numeric_constant? && tokens[1].to_s == '-' && tokens[2].numeric_constant?
+      make_range(tokens, program_line_numbers)
+    elsif tokens.size == 2 && tokens[0].numeric_constant? && tokens[1].to_s == '+'
+      make_count_range(tokens, program_line_numbers)
+    elsif tokens.size == 3 && tokens[0].numeric_constant? && tokens[1].to_s == '+' && tokens[2].numeric_constant?
+      make_count_range(tokens, program_line_numbers)
+    else
+      raise(BASICCommandError, 'Invalid list specification')
+    end
+  end
+
+  private
+
+  def make_single(token, program_line_numbers)
+    line_number = LineNumber.new(token)
+    @line_numbers << line_number if
+      program_line_numbers.include?(line_number)
+    @range_type = :single
+  end
+
+  def make_range(tokens, program_line_numbers)
+    start = LineNumber.new(tokens[0])
+    endline = LineNumber.new(tokens[2])
+    range = LineNumberRange.new(start, endline, program_line_numbers)
+    @line_numbers = range.list
+    @range_type = :range
+  end
+
+  def make_count_range(tokens, program_line_numbers)
+    start = LineNumber.new(tokens[0])
+    count = 20
+    count = NumericConstant.new(tokens[2]).to_i if tokens.size > 2
+    range = LineNumberCountRange.new(start, count, program_line_numbers)
+    @line_numbers = range.list
+    @range_type = :range
+  end
+end
+
 # program container
 class Program
   def initialize(console_io, tokenbuilders)
@@ -39,10 +91,9 @@ class Program
     @program_lines = {}
   end
 
-  def line_list_spec(linespec)
-    linespec = linespec.strip
+  def line_list_spec(tokens)
     line_numbers = @program_lines.keys.sort
-    LineListSpec.new(linespec, line_numbers)
+    LineListSpec.new(tokens, line_numbers)
   end
 
   def list(line_number_range, list_tokens)
