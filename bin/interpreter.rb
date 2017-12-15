@@ -42,6 +42,11 @@ class Interpreter
   public
 
   def run(program, trace_flag, show_timing, show_profile)
+    if program.empty?
+      @console_io.print_line('No program loaded')
+      return
+    end
+    
     @program = program
     @program_lines = program.lines
     @trace_flag = trace_flag

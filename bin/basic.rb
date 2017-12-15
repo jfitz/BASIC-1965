@@ -154,8 +154,8 @@ class Shell
 
   def run
     need_prompt = true
-    done = false
-    until done
+    @done = false
+    until @done
       @console_io.print_line('READY') if need_prompt
       cmd = @console_io.read_line
       if /\A\d/ =~ cmd
@@ -163,7 +163,7 @@ class Shell
         need_prompt = @program.store_program_line(cmd, true)
       else
         # immediate command -- execute
-        done = execute_command(cmd)
+        execute_command(cmd)
         need_prompt = true
       end
     end
@@ -178,83 +178,62 @@ class Shell
     tokens = tokenizer.tokenize(cmd)
     tokens.delete_if(&:whitespace?)
     
-    return false if tokens.empty?
+    return if tokens.empty?
+
+    keyword = tokens[0]
+    args = tokens[1..-1]
+
+    unless keyword.keyword?
+      print "Unknown command #{cmd}\n"
+      return
+    end
+
     begin
-      if tokens[0].keyword?
-        case tokens[0].to_s
-        when 'EXIT'
-          return true
-        when 'NEW'
-          @program.cmd_new
-          @interpreter.clear_variables
-        when 'RUN'
-          cmd_run(false, true)
-        when 'TRACE'
-          cmd_run(true, false)
-        when '.VARS'
-          dump_vars
-        when '.UDFS'
-          dump_user_functions
-        when '.DIMS'
-          dump_dims
-        when 'LIST'
-          line_number_range = @program.line_list_spec(tokens[1..-1])
-          @program.list(line_number_range, false)
-        when 'LOAD'
-          @program.load(tokens[1..-1])
-        when 'SAVE'
-          @program.save(tokens[1..-1])
-        when 'TOKENS'
-          line_number_range = @program.line_list_spec(tokens[1..-1])
-          @program.list(line_number_range, true)
-        when 'PRETTY'
-          line_number_range = @program.line_list_spec(tokens[1..-1])
-          @program.pretty(line_number_range)
-        when 'DELETE'
-          rest = cmd[6..-1]
-          line_number_range = @program.line_list_spec(tokens[1..-1])
-          @program.delete(line_number_range)
-        when 'PROFILE'
-          rest = cmd[7..-1]
-          line_number_range = @program.line_list_spec(tokens[1..-1])
-          @program.profile(line_number_range)
-        when 'RENUMBER'
-          @program.renumber if @program.check
-        when 'CROSSREF'
-          @program.crossref if @program.check
-        else
-          print "Unknown command #{cmd}\n"
-        end
+      case keyword.to_s
+      when 'EXIT'
+        @done = true
+      when 'NEW'
+        @program.cmd_new
+        @interpreter.clear_variables
+      when 'RUN'
+        @interpreter.run(@program, false, true, false) if @program.check
+      when 'TRACE'
+        @interpreter.run(@program, true, false, false) if @program.check
+      when '.VARS'
+        @interpreter.dump_vars
+      when '.UDFS'
+        @interpreter.dump_user_functions
+      when '.DIMS'
+        @interpreter.dump_dims
+      when 'LIST'
+        line_number_range = @program.line_list_spec(args)
+        @program.list(line_number_range, false)
+      when 'LOAD'
+        @program.load(args)
+      when 'SAVE'
+        @program.save(args)
+      when 'TOKENS'
+        line_number_range = @program.line_list_spec(args)
+        @program.list(line_number_range, true)
+      when 'PRETTY'
+        line_number_range = @program.line_list_spec(args)
+        @program.pretty(line_number_range)
+      when 'DELETE'
+        line_number_range = @program.line_list_spec(args)
+        @program.delete(line_number_range)
+      when 'PROFILE'
+        line_number_range = @program.line_list_spec(args)
+        @program.profile(line_number_range)
+      when 'RENUMBER'
+        @program.renumber if @program.check
+      when 'CROSSREF'
+        @program.crossref if @program.check
       else
-        print "Unknown command #{cmd}\n"
+        print "Unknown command #{keyword}\n"
       end
     rescue BASICCommandError => e
       @console_io.print_line(e.to_s)
     end
-
-    false
-  end
-
-  def cmd_run(trace_flag, show_timing)
-    if @program.empty?
-      @console_io.print_line('No program loaded')
-    else
-      if @program.check
-        @interpreter.run(@program, trace_flag, show_timing, false)
-      end
-    end
-  end
-
-  def dump_vars
-    @interpreter.dump_vars
-  end
-
-  def dump_user_functions
-    @interpreter.dump_user_functions
-  end
-
-  def dump_dims
-    @interpreter.dump_dims
   end
 end
 
