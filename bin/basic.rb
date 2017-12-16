@@ -163,77 +163,76 @@ class Shell
         need_prompt = @program.store_program_line(cmd, true)
       else
         # immediate command -- execute
-        execute_command(cmd)
-        need_prompt = true
+        # tokenize
+        invalid_tokenbuilder = InvalidTokenBuilder.new
+        tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
+        tokens = tokenizer.tokenize(cmd)
+        tokens.delete_if(&:whitespace?)
+
+        unless tokens.empty?
+          need_prompt = true
+
+          keyword = tokens[0]
+          args = tokens[1..-1]
+
+          if keyword.keyword?
+            execute_command(keyword, args)
+          else
+            print "Unknown command #{keyword}\n"
+          end
+
+        end
       end
     end
   end
 
   private
 
-  def execute_command(cmd)
-    # tokenize
-    invalid_tokenbuilder = InvalidTokenBuilder.new
-    tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
-    tokens = tokenizer.tokenize(cmd)
-    tokens.delete_if(&:whitespace?)
-    
-    return if tokens.empty?
-
-    keyword = tokens[0]
-    args = tokens[1..-1]
-
-    unless keyword.keyword?
-      print "Unknown command #{cmd}\n"
-      return
+  def execute_command(keyword, args)
+    case keyword.to_s
+    when 'EXIT'
+      @done = true
+    when 'NEW'
+      @program.cmd_new
+      @interpreter.clear_variables
+    when 'RUN'
+      @interpreter.run(@program, false, true, false) if @program.check
+    when 'TRACE'
+      @interpreter.run(@program, true, false, false) if @program.check
+    when '.VARS'
+      @interpreter.dump_vars
+    when '.UDFS'
+      @interpreter.dump_user_functions
+    when '.DIMS'
+      @interpreter.dump_dims
+    when 'LIST'
+      line_number_range = @program.line_list_spec(args)
+      @program.list(line_number_range, false)
+    when 'LOAD'
+      @program.load(args)
+    when 'SAVE'
+      @program.save(args)
+    when 'TOKENS'
+      line_number_range = @program.line_list_spec(args)
+      @program.list(line_number_range, true)
+    when 'PRETTY'
+      line_number_range = @program.line_list_spec(args)
+      @program.pretty(line_number_range)
+    when 'DELETE'
+      line_number_range = @program.line_list_spec(args)
+      @program.delete(line_number_range)
+    when 'PROFILE'
+      line_number_range = @program.line_list_spec(args)
+      @program.profile(line_number_range)
+    when 'RENUMBER'
+      @program.renumber if @program.check
+    when 'CROSSREF'
+      @program.crossref if @program.check
+    else
+      print "Unknown command #{keyword}\n"
     end
-
-    begin
-      case keyword.to_s
-      when 'EXIT'
-        @done = true
-      when 'NEW'
-        @program.cmd_new
-        @interpreter.clear_variables
-      when 'RUN'
-        @interpreter.run(@program, false, true, false) if @program.check
-      when 'TRACE'
-        @interpreter.run(@program, true, false, false) if @program.check
-      when '.VARS'
-        @interpreter.dump_vars
-      when '.UDFS'
-        @interpreter.dump_user_functions
-      when '.DIMS'
-        @interpreter.dump_dims
-      when 'LIST'
-        line_number_range = @program.line_list_spec(args)
-        @program.list(line_number_range, false)
-      when 'LOAD'
-        @program.load(args)
-      when 'SAVE'
-        @program.save(args)
-      when 'TOKENS'
-        line_number_range = @program.line_list_spec(args)
-        @program.list(line_number_range, true)
-      when 'PRETTY'
-        line_number_range = @program.line_list_spec(args)
-        @program.pretty(line_number_range)
-      when 'DELETE'
-        line_number_range = @program.line_list_spec(args)
-        @program.delete(line_number_range)
-      when 'PROFILE'
-        line_number_range = @program.line_list_spec(args)
-        @program.profile(line_number_range)
-      when 'RENUMBER'
-        @program.renumber if @program.check
-      when 'CROSSREF'
-        @program.crossref if @program.check
-      else
-        print "Unknown command #{keyword}\n"
-      end
     rescue BASICCommandError => e
       @console_io.print_line(e.to_s)
-    end
   end
 end
 
