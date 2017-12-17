@@ -26,9 +26,29 @@ class Interpreter
     @locked_variables = []
     @get_value_seen = []
     @null_out = NullOut.new
+    @tokenbuilders = make_debug_tokenbuilders
+    @breakpoints = {}
   end
 
   private
+
+  def make_debug_tokenbuilders
+    tokenbuilders = []
+
+    keywords = %w(GO)
+    tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
+
+    un_ops = UnaryOperator.operators
+    bi_ops = BinaryOperator.operators
+    operators = (un_ops + bi_ops).uniq
+    tokenbuilders << ListTokenBuilder.new(operators, OperatorToken)
+
+    tokenbuilders << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
+
+    tokenbuilders << NumberTokenBuilder.new
+
+    tokenbuilders << WhitespaceTokenBuilder.new
+  end
 
   def verify_next_line_number
     raise BASICRuntimeError, 'Program terminated without END' if
@@ -46,7 +66,7 @@ class Interpreter
       @console_io.print_line('No program loaded')
       return
     end
-    
+
     @program = program
     @program_lines = program.lines
     @trace_flag = trace_flag
@@ -157,7 +177,49 @@ class Interpreter
     @get_value_seen = []
   end
 
+  def execute_debug_command(keyword, args)
+    case keyword.to_s
+    when 'GO'
+      @debug_done = true
+    else
+      print "Unknown command #{keyword}\n"
+    end
+    rescue BASICCommandError => e
+      @console_io.print_line(e.to_s)
+  end
+
+  def debug_shell
+    @debug_done = false
+    until @debug_done
+      @console_io.newline_when_needed
+      @console_io.print_item(': ')
+      cmd = @console_io.read_line
+
+      # tokenize
+      invalid_tokenbuilder = InvalidTokenBuilder.new
+      tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
+      tokens = tokenizer.tokenize(cmd)
+      tokens.delete_if(&:whitespace?)
+
+      unless tokens.empty?
+        keyword = tokens[0]
+        args = tokens[1..-1]
+
+        if keyword.keyword?
+          execute_debug_command(keyword, args)
+        else
+          print "Unknown command #{keyword}\n"
+        end
+
+      end
+    end
+  end
+
   def program_loop
+    if @breakpoints.key?(@current_line_number)
+      debug_shell
+    end
+    
     # pick the next line number
     @next_line_number = @program.find_next_line_number(@current_line_number)
     begin
@@ -177,6 +239,61 @@ class Interpreter
       @console_io.print_line(message)
       stop_running
     end
+  end
+
+  def split_breakpoint_tokens(tokens)
+    tokens_lists = []
+
+    tokens_list = []
+    tokens.each do |token|
+      if token.separator?
+        tokens_lists << tokens_list unless tokens.empty?
+        tokens_list = []
+      else
+        tokens_list << token
+      end
+    end
+
+    tokens_lists << tokens_list unless tokens.empty?
+
+    tokens_lists
+  end
+
+  def set_breakpoints(tokens)
+    if tokens.empty?
+      # print breakpoints
+      bps = @breakpoints.keys.sort.map(&:to_s).join(', ')
+      @console_io.print_line('BREAKPOINTS: ' + bps)
+    else
+      tokens_lists = split_breakpoint_tokens(tokens)
+      tokens_lists.each do |tokens_list|
+        if tokens_list.size == 1 && tokens_list[0].numeric_constant?
+          line_number = LineNumber.new(tokens_list[0])
+          condition = ''
+          @breakpoints[line_number] = condition
+        end
+        if tokens_list.size == 2 && tokens_list[0].text == '-' && tokens_list[1].numeric_constant?
+          line_number = LineNumber.new(tokens_list[1])
+          @breakpoints.delete(line_number)
+        end
+      end
+    end
+  end
+
+  def clear_breakpoints
+    @breakpoints = {}
+  end
+
+  def renumber_breakpoints(renumber_map)
+    new_breakpoints = {}
+
+    @breakpoints.each do |line_number, _|
+      condition = @breakpoints[line_number]
+      new_line_number = renumber_map[line_number]
+      new_breakpoints[new_line_number] = condition
+    end
+
+    @breakpoints = new_breakpoints
   end
 
   def line_number?(line_number)

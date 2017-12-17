@@ -253,6 +253,7 @@ class Program
     end
 
     @program_lines = new_program_lines
+    renumber_map
   end
 
   def numeric_refs

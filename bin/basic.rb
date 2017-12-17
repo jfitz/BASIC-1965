@@ -195,8 +195,11 @@ class Shell
     when 'NEW'
       @program.cmd_new
       @interpreter.clear_variables
+      @interpreter.clear_breakpoints
     when 'RUN'
       @interpreter.run(@program, false, true, false) if @program.check
+    when 'BREAK'
+      @interpreter.set_breakpoints(args)
     when 'TRACE'
       @interpreter.run(@program, true, false, false) if @program.check
     when '.VARS'
@@ -209,6 +212,7 @@ class Shell
       line_number_range = @program.line_list_spec(args)
       @program.list(line_number_range, false)
     when 'LOAD'
+      @interpreter.clear_breakpoints
       @program.load(args)
     when 'SAVE'
       @program.save(args)
@@ -225,7 +229,10 @@ class Shell
       line_number_range = @program.line_list_spec(args)
       @program.profile(line_number_range)
     when 'RENUMBER'
-      @program.renumber if @program.check
+      if @program.check
+        renumber_map = @program.renumber
+        @interpreter.renumber_breakpoints(renumber_map)
+      end
     when 'CROSSREF'
       @program.crossref if @program.check
     else
@@ -273,13 +280,15 @@ end
 def make_command_tokenbuilders
   tokenbuilders = []
 
-  keywords = %w(CROSSREF DELETE EXIT LIST LOAD NEW PRETTY PROFILE RENUMBER RUN SAVE TOKENS TRACE .DIMS .UDFS .VARS)
+  keywords = %w(BREAK CROSSREF DELETE EXIT LIST LOAD NEW PRETTY PROFILE RENUMBER RUN SAVE TOKENS TRACE .DIMS .UDFS .VARS)
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
   bi_ops = BinaryOperator.operators
   operators = (un_ops + bi_ops).uniq
   tokenbuilders << ListTokenBuilder.new(operators, OperatorToken)
+
+  tokenbuilders << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
 
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new

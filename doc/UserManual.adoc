@@ -132,6 +132,19 @@ They are not stored as part of the program.
 They have no line number.
 They are available only in "run" mode.
 
+BREAK
+~~~~~
+
+Sets, clears, or displays breakpoints.
+
+Syntax: BREAK line-number
+Syntax: BREAK -line-number
+Syntax: BREAK
+
+To set a breakpoint, type 'BREAK' followed by a line number.
+To clear a breakpoint, type 'BREAK' followed by a negative line number.
+To display breakpoints, type 'BREAK' with no arguments.
+
 CROSSREF
 ~~~~~~~~
 
@@ -191,6 +204,8 @@ Syntax:	LOAD filename
 
 The 'filename' argument must be enclosed in quotes.
 
+Clears all breakpoints.
+
 NEW
 ~~~
 
@@ -198,6 +213,8 @@ Clears the current program.
 Does not ask to save a loaded program.
 
 Syntax:	NEW
+
+Clears all breakpoints.
 
 PRETTY
 ~~~~~~
@@ -246,6 +263,8 @@ The first line is assigned line number 10.
 Each successive line is assgned a number 10 higher than the previous line.
 
 Each statement which contains a line number (GOTO, GOSUB, IF) is modified to use the corresponding new line number.
+
+RENUMBER also adjusts breakpoints, if any are set.
 
 RUN
 ~~~
