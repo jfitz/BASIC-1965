@@ -132,6 +132,76 @@ They are not stored as part of the program.
 They have no line number.
 They are available only in "run" mode.
 
+LOAD
+~~~~
+
+Loads a stored program into memory.
+Sorts statements by line number.
+Clears the current program prior to loading the new one.
+
+Syntax:	LOAD filename
+
+The 'filename' argument must be enclosed in quotes.
+
+Clears all breakpoints.
+
+SAVE
+~~~~
+
+Saves the current program to disk.
+Will overwrite an existing file without prompting.
+
+Syntax:	SAVE filename
+
+The 'filename' argument must be enclosed in quotes.
+
+NEW
+~~~
+
+Clears the current program.
+Does not ask to save a loaded program.
+
+Syntax:	NEW
+
+Clears all breakpoints.
+
+LIST
+~~~~
+
+Lists the current program on the screen.
+
+Syntax:	LIST [line specification]
+
+The line specification may be in the form of a single line number, a range (two numbers separated by a hyphen), or a starting line and a count separated by a plus sign.
+
+Examples:
+|==========
+|Command |Result
+|LIST |Lists the entire program.
+|LIST 100 |Lists line 100, if it exists. If the line does not exist, nothing is printed.
+|LIST 100-199 |Lists all lines from line 100 to (and including) line 199.
+|LIST 100+10 |Lists line 100 and the next 10 lines, regardless of their line nunbers.
+|LIST 100+ |Lists line 100 and the next 20 lines.
+|==========
+
+RUN
+~~~
+
+Runs the current program.
+
+Syntax:	RUN
+
+Program execution occurs in two phases.
+The first phase checks each statement for errors and executes some statements.
+Any error detected at this stage will halt execution.
+An error may be a syntax error or another error.
+GOTO and GOSUB statements with undefined targets are examples of errors.
+
+Statements executed in this first phase are the DATA, FILES, and DEF statements.
+They are executed only once in a program, even if the path of execution travels to them multiple times.
+
+The second phase executes statements, starting with the lowest-numbered statement and following the path of execution.
+
 BREAK
 ~~~~~
 
@@ -173,48 +243,6 @@ If the list specification is a range, the lines are displayed and the user must 
 
 The DELETE command with no specification (implying the entire program) does not delete the program but does nothing.
 (To delete the entire program, use the NEW command.)
-
-LIST
-~~~~
-
-Lists the current program on the screen.
-
-Syntax:	LIST [line specification]
-
-The line specification may be in the form of a single line number, a range (two numbers separated by a hyphen), or a starting line and a count separated by a plus sign.
-
-Examples:
-|==========
-|Command |Result
-|LIST |Lists the entire program.
-|LIST 100 |Lists line 100, if it exists. If the line does not exist, nothing is printed.
-|LIST 100-199 |Lists all lines from line 100 to (and including) line 199.
-|LIST 100+10 |Lists line 100 and the next 10 lines, regardless of their line nunbers.
-|LIST 100+ |Lists line 100 and the next 20 lines.
-|==========
-
-LOAD
-~~~~
-
-Loads a stored program into memory.
-Sorts statements by line number.
-Clears the current program prior to loading the new one.
-
-Syntax:	LOAD filename
-
-The 'filename' argument must be enclosed in quotes.
-
-Clears all breakpoints.
-
-NEW
-~~~
-
-Clears the current program.
-Does not ask to save a loaded program.
-
-Syntax:	NEW
-
-Clears all breakpoints.
 
 PRETTY
 ~~~~~~
@@ -265,34 +293,6 @@ Each successive line is assgned a number 10 higher than the previous line.
 Each statement which contains a line number (GOTO, GOSUB, IF) is modified to use the corresponding new line number.
 
 RENUMBER also adjusts breakpoints, if any are set.
-
-RUN
-~~~
-
-Runs the current program.
-
-Syntax:	RUN
-
-Program execution occurs in two phases.
-The first phase checks each statement for errors and executes some statements.
-Any error detected at this stage will halt execution.
-An error may be a syntax error or another error.
-GOTO and GOSUB statements with undefined targets are examples of errors.
-
-Statements executed in this first phase are the DATA, FILES, and DEF statements.
-They are executed only once in a program, even if the path of execution travels to them multiple times.
-
-The second phase executes statements, starting with the lowest-numbered statement and following the path of execution.
-
-SAVE
-~~~~
-
-Saves the current program to disk.
-Will overwrite an existing file without prompting.
-
-Syntax:	SAVE filename
-
-The 'filename' argument must be enclosed in quotes.
 
 TOKENS
 ~~~~~~
