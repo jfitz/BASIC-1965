@@ -35,7 +35,7 @@ class Interpreter
   def make_debug_tokenbuilders
     tokenbuilders = []
 
-    keywords = %w(GO)
+    keywords = %w(GO STOP)
     tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
     un_ops = UnaryOperator.operators
@@ -181,6 +181,9 @@ class Interpreter
     case keyword.to_s
     when 'GO'
       @debug_done = true
+    when 'STOP'
+      @debug_done = true
+      stop_running
     else
       print "Unknown command #{keyword}\n"
     end
@@ -189,10 +192,11 @@ class Interpreter
   end
 
   def debug_shell
+    line = @program_lines[@current_line_number]
+    @console_io.newline_when_needed
+    @console_io.print_line('DEBUG ' + @current_line_number.to_s + ': ' + line.pretty)
     @debug_done = false
     until @debug_done
-      @console_io.newline_when_needed
-      @console_io.print_item(': ')
       cmd = @console_io.read_line
 
       # tokenize
@@ -208,7 +212,7 @@ class Interpreter
         if keyword.keyword?
           execute_debug_command(keyword, args)
         else
-          print "Unknown command #{keyword}\n"
+          print "Unknown command #{cmd}\n"
         end
 
       end
