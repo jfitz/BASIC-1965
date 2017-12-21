@@ -315,6 +315,64 @@ READ displays the values read.
 LET displays the new value assigned.
 IF displays the two values, the operator, and the result ('true' or 'false').
 
+Debug shell
+-----------
+
+The debug shell lets you pause execution, examine or change the program, and examine or change variables.
+The shell is invoked by a breakpoint during a RUN or TRACE.
+Breakpoints are set by the BREAK command.
+
+The debug shell is available only in interactive mode.
+It is not available in programs run from the command line.
+
+Commands in the debug shell are:
+
+GO
+~~
+
+Continues execution of the program.
+
+STOP
+~~~~
+
+Stops the debug shell and the program.
+
+STEP
+~~~~
+
+Executes the current line and then re-invokes the debug shell.
+
+BREAK
+~~~~~
+
+Display, set, or clear breakpoints.
+
+LIST
+~~~~
+
+Lists program lines.
+
+DELETE
+~~~~~~
+
+Deletes program lines.
+
+PRINT
+~~~~~
+
+Prints one or more variables.
+
+LET
+~~~
+
+Assigns a value to a variable.
+The assigned value may be a constant or an expression.
+
+DIM
+~~~
+
+Assigns dimensions to a variable.
+
 Variables
 ---------
 
