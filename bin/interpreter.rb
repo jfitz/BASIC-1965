@@ -35,7 +35,7 @@ class Interpreter
   def make_debug_tokenbuilders
     tokenbuilders = []
 
-    keywords = %w(GO STOP STEP LIST DELETE PRINT LET DIM)
+    keywords = %w(GO STOP STEP LIST PRETTY DELETE PROFILE PRINT LET DIM)
     tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
     un_ops = UnaryOperator.operators
@@ -188,20 +188,34 @@ class Interpreter
     when 'STEP'
       @step_mode = true
       @debug_done = true
+    when 'LIST'
+      line_number_range = @program.line_list_spec(args)
+      @program.list(line_number_range, false)
+      need_prompt = true
+    when 'PRETTY'
+      line_number_range = @program.line_list_spec(args)
+      @program.pretty(line_number_range)
+    when 'DELETE'
+      line_number_range = @program.line_list_spec(args)
+      @program.enblank(line_number_range)
+    when 'PROFILE'
+      line_number_range = @program.line_list_spec(args)
+      @program.profile(line_number_range)
     else
       print "Unknown command #{keyword}\n"
     end
-    rescue BASICCommandError => e
-      @console_io.print_line(e.to_s)
+  rescue BASICCommandError => e
+    @console_io.print_line(e.to_s)
   end
 
   def debug_shell
     line = @program_lines[@current_line_number]
     @console_io.newline_when_needed
-    @console_io.print_line('DEBUG ' + @current_line_number.to_s + ': ' + line.pretty)
+    @console_io.print_line(@current_line_number.to_s + ': ' + line.pretty)
     @step_mode = false
     @debug_done = false
     until @debug_done
+      @console_io.print_line('DEBUG')
       cmd = @console_io.read_line
 
       # tokenize
@@ -307,10 +321,6 @@ class Interpreter
 
   def line_number?(line_number)
     @program_lines.key?(line_number)
-  end
-
-  def find_next_line_number
-    @program.find_next_line_number(@current_line_number)
   end
 
   def trace(tron_flag)

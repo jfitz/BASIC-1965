@@ -234,6 +234,17 @@ class Program
     delete_specific_lines(line_numbers)
   end
 
+  def enblank(line_number_range)
+    raise(BASICCommandError, 'No program loaded') if
+      @program_lines.empty?
+
+    raise(BASICCommandError, 'You cannot delete an entire program') if
+      line_number_range.range_type == :all
+    
+    line_numbers = line_number_range.line_numbers
+    enblank_specific_lines(line_numbers)
+  end
+
   # generate new line numbers
   def renumber
     renumber_map = {}
@@ -444,6 +455,15 @@ class Program
 
   def delete_specific_lines(line_numbers)
     line_numbers.each { |line_number| @program_lines.delete(line_number) }
+  end
+
+  def enblank_specific_lines(line_numbers)
+    factory = StatementFactory.instance
+    line_numbers.each do |line_number|
+      blank_line = line_number.to_s
+      line_num, line = @statement_factory.parse(blank_line)
+      @program_lines[line_num] = line
+    end
   end
 
   def list_and_delete_lines(line_numbers)

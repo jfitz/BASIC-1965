@@ -208,14 +208,14 @@ class Shell
       @interpreter.dump_user_functions
     when '.DIMS'
       @interpreter.dump_dims
-    when 'LIST'
-      line_number_range = @program.line_list_spec(args)
-      @program.list(line_number_range, false)
     when 'LOAD'
       @interpreter.clear_breakpoints
       @program.load(args)
     when 'SAVE'
       @program.save(args)
+    when 'LIST'
+      line_number_range = @program.line_list_spec(args)
+      @program.list(line_number_range, false)
     when 'TOKENS'
       line_number_range = @program.line_list_spec(args)
       @program.list(line_number_range, true)
