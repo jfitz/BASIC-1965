@@ -35,7 +35,7 @@ class Interpreter
   def make_debug_tokenbuilders
     tokenbuilders = []
 
-    keywords = %w(GO STOP STEP LIST PRETTY DELETE PROFILE PRINT LET DIM)
+    keywords = %w(GO STOP STEP BREAK LIST PRETTY DELETE PROFILE PRINT LET DIM)
     tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
     un_ops = UnaryOperator.operators
@@ -200,6 +200,8 @@ class Interpreter
     when 'STEP'
       @step_mode = true
       @debug_done = true
+    when 'BREAK'
+      set_breakpoints(args)
     when 'LIST'
       line_number_range = @program.line_list_spec(args)
       @program.list(line_number_range, false)
