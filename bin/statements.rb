@@ -28,6 +28,17 @@ class StatementFactory
     [line_number, line]
   end
 
+  def create(text, all_tokens, comment)
+    begin
+      statement = create_statement(all_tokens)
+    rescue BASICException
+      statement = InvalidStatement.new(text)
+    end
+    statement = UnknownStatement.new(text) if statement.nil?
+
+    Line.new(text, statement, all_tokens, comment)
+  end
+
   def keywords_definitions
     keywords = []
 
@@ -87,17 +98,6 @@ class StatementFactory
     end
 
     lead_keywords
-  end
-
-  def create(text, all_tokens, comment)
-    begin
-      statement = create_statement(all_tokens)
-    rescue BASICException
-      statement = InvalidStatement.new(text)
-    end
-    statement = UnknownStatement.new(text) if statement.nil?
-
-    Line.new(text, statement, all_tokens, comment)
   end
 
   def remove_break_tokens(tokens)
