@@ -803,6 +803,8 @@ end
 class AbstractExpression
   def initialize(tokens, default_type)
     @unparsed_expression = tokens.map(&:to_s).join
+    @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
+    @text_constant = tokens.size == 1 && tokens[0].text_constant?
 
     elements = tokens_to_elements(tokens)
 
@@ -819,6 +821,14 @@ class AbstractExpression
 
   def count
     @parsed_expressions.length
+  end
+
+  def numeric_constant?
+    @numeric_constant
+  end
+
+  def text_constant?
+    @text_constant
   end
 
   # returns an Array of values

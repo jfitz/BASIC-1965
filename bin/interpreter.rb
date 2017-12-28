@@ -514,7 +514,9 @@ class Interpreter
     end
     seen = @get_value_seen.include?(variable)
     if @trace_flag && trace && !seen
-      @trace_out.print_line(' ' + variable.to_s + ' = ' + value.to_s)
+      @trace_out.newline_when_needed
+      # TODO: value changes to dict of value and provenence
+      @trace_out.print_line(' ' + variable.to_s + ':' + value.to_s)
       @get_value_seen << variable
     end
     value
@@ -531,6 +533,7 @@ class Interpreter
     end
     v = variable.to_s
     @variables[v] = value
+    @trace_out.newline_when_needed
     @trace_out.print_line(' ' + variable.to_s + ' = ' + value.to_s)
   end
 

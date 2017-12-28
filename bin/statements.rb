@@ -649,7 +649,6 @@ class ForStatement < AbstractStatement
     to = @end.evaluate(interpreter, true)[0]
     step = @step_value.evaluate(interpreter, true)[0]
 
-    interpreter.set_value(@control, from)
     fornext_control =
       ForNextControl.new(@control, interpreter, from, to, step)
 
@@ -682,9 +681,9 @@ class ForStatement < AbstractStatement
   end
 
   def print_trace_info(io, from, to, step, terminated)
-    io.trace_output(" #{@start} = #{from}")
-    io.trace_output(" #{@end} = #{to}")
-    io.trace_output(" #{@step_value} = #{step}")
+    io.trace_output(" #{@start} = #{from}") unless @start.numeric_constant?
+    io.trace_output(" #{@end} = #{to}") unless @end.numeric_constant?
+    io.trace_output(" #{@step_value} = #{step}") unless @step_value.numeric_constant?
     io.trace_output(" terminated:#{terminated}")
   end
 end
