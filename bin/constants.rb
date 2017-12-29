@@ -360,6 +360,10 @@ class NumericConstant < AbstractValueElement
     raise(BASICRuntimeError, "'#{text}' is not a number") if @value.nil?
   end
 
+  def zero?
+    @value.zero?
+  end
+
   def +(other)
     raise(BASICRuntimeError, 'Type mismatch') unless compatible?(other)
     NumericConstant.new(@value + other.to_v)
@@ -387,7 +391,7 @@ class NumericConstant < AbstractValueElement
 
   def divide(other)
     raise(BASICRuntimeError, 'Type mismatch') unless compatible?(other)
-    raise(BASICRuntimeError, 'Divide by zero') if other == NumericConstant.new(0)
+    raise(BASICRuntimeError, 'Divide by zero') if other.zero?
     NumericConstant.new(@value.to_f / other.to_v.to_f)
   end
 

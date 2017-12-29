@@ -5,7 +5,8 @@ class Interpreter
   attr_reader :console_io
   attr_reader :trace_out
 
-  def initialize(console_io, int_floor, ignore_rnd_arg, randomize, lock_fornext)
+  def initialize(console_io, int_floor, ignore_rnd_arg, randomize,
+                 lock_fornext)
     @running = false
     @randomizer = Random.new(1)
     @randomizer = Random.new if randomize
@@ -205,7 +206,6 @@ class Interpreter
     when 'LIST'
       line_number_range = @program.line_list_spec(args)
       @program.list(line_number_range, false)
-      need_prompt = true
     when 'PRETTY'
       line_number_range = @program.line_list_spec(args)
       @program.pretty(line_number_range)
@@ -245,25 +245,22 @@ class Interpreter
       tokens = tokenizer.tokenize(cmd)
       tokens.delete_if(&:whitespace?)
 
-      unless tokens.empty?
-        keyword = tokens[0]
+      next if tokens.empty?
+
+      keyword = tokens[0]
+
+      if keyword.keyword?
         args = tokens[1..-1]
-
-        if keyword.keyword?
-          execute_debug_command(keyword, args, cmd)
-        else
-          print "Unknown command #{cmd}\n"
-        end
-
+        execute_debug_command(keyword, args, cmd)
+      else
+        print "Unknown command #{cmd}\n"
       end
     end
   end
 
   def program_loop
-    if @step_mode || @breakpoints.key?(@current_line_number)
-      debug_shell
-    end
-    
+    debug_shell if @step_mode || @breakpoints.key?(@current_line_number)
+
     # pick the next line number
     @next_line_number = @program.find_next_line_number(@current_line_number)
     begin
@@ -311,12 +308,15 @@ class Interpreter
     else
       tokens_lists = split_breakpoint_tokens(tokens)
       tokens_lists.each do |tokens_list|
-        if tokens_list.size == 1 && tokens_list[0].numeric_constant?
+        if tokens_list.size == 1 &&
+           tokens_list[0].numeric_constant?
           line_number = LineNumber.new(tokens_list[0])
           condition = ''
           @breakpoints[line_number] = condition
         end
-        if tokens_list.size == 2 && tokens_list[0].text == '-' && tokens_list[1].numeric_constant?
+        if tokens_list.size == 2 &&
+           tokens_list[0].text == '-' &&
+           tokens_list[1].numeric_constant?
           line_number = LineNumber.new(tokens_list[1])
           @breakpoints.delete(line_number)
         end
@@ -493,8 +493,9 @@ class Interpreter
     raise(BASICRuntimeError, 'Incorrect number of subscripts') if
       int_subscripts.size != dimensions.size
     int_subscripts.zip(dimensions).each do |pair|
-      raise(BASICRuntimeError, "Subscript #{pair[0]} out of range #{pair[1]}") if
-        pair[0] > pair[1]
+      if pair[0] > pair[1]
+        raise(BASICRuntimeError, "Subscript #{pair[0]} out of range #{pair[1]}")
+      end
     end
   end
 
@@ -525,7 +526,7 @@ class Interpreter
   def set_value(variable, value)
     raise(BASICRuntimeError, "Cannot change locked variable #{variable}") if
       @lock_fornext && @locked_variables.include?(variable)
-    
+
     # check that value type matches variable type
     if value.class.to_s != variable.content_type
       raise(BASICRuntimeError,

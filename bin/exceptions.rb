@@ -1,5 +1,5 @@
-class BASICException < Exception; end
+class BASICException < RuntimeError; end
 
-class BASICCommandError < Exception; end
+class BASICCommandError < RuntimeError; end
 
-class BASICRuntimeError < Exception; end
+class BASICRuntimeError < RuntimeError; end

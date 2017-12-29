@@ -158,35 +158,44 @@ class Shell
     until @done
       @console_io.print_line('READY') if need_prompt
       cmd = @console_io.read_line
-      if /\A\d/ =~ cmd
-        # starts with a number, so maybe it is a program line
-        need_prompt = @program.store_program_line(cmd, true)
-      else
-        # immediate command -- execute
-        # tokenize
-        invalid_tokenbuilder = InvalidTokenBuilder.new
-        tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
-        tokens = tokenizer.tokenize(cmd)
-        tokens.delete_if(&:whitespace?)
-
-        unless tokens.empty?
-          need_prompt = true
-
-          keyword = tokens[0]
-          args = tokens[1..-1]
-
-          if keyword.keyword?
-            execute_command(keyword, args)
-          else
-            print "Unknown command '#{cmd}'\n"
-          end
-
-        end
-      end
+      need_prompt = process_line(cmd)
     end
   end
 
   private
+
+  def process_line(cmd)
+    if /\A\d/ =~ cmd
+      # starts with a number, so maybe it is a program line
+      need_prompt = @program.store_program_line(cmd, true)
+    else
+      # immediate command -- execute
+      # tokenize
+      invalid_tokenbuilder = InvalidTokenBuilder.new
+      tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
+      tokens = tokenizer.tokenize(cmd)
+      tokens.delete_if(&:whitespace?)
+
+      if tokens.empty?
+        need_prompt = false
+      else
+        need_prompt = true
+        process_command(tokens)
+      end
+    end
+    need_prompt
+  end
+
+  def process_command(tokens)
+    keyword = tokens[0]
+    args = tokens[1..-1]
+
+    if keyword.keyword?
+      execute_command(keyword, args)
+    else
+      print "Unknown command '#{cmd}'\n"
+    end
+  end
 
   def execute_command(keyword, args)
     case keyword.to_s
@@ -238,8 +247,8 @@ class Shell
     else
       print "Unknown command #{keyword}\n"
     end
-    rescue BASICCommandError => e
-      @console_io.print_line(e.to_s)
+  rescue BASICCommandError => e
+    @console_io.print_line(e.to_s)
   end
 end
 
@@ -280,7 +289,10 @@ end
 def make_command_tokenbuilders
   tokenbuilders = []
 
-  keywords = %w(BREAK CROSSREF DELETE EXIT LIST LOAD NEW PRETTY PROFILE RENUMBER RUN SAVE TOKENS TRACE .DIMS .UDFS .VARS)
+  keywords = %w(
+    BREAK CROSSREF DELETE EXIT LIST LOAD NEW PRETTY PROFILE RENUMBER RUN SAVE
+    TOKENS TRACE .DIMS .UDFS .VARS
+  )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
@@ -358,7 +370,8 @@ end
 
 program = Program.new(console_io, tokenbuilders)
 if !run_filename.nil?
-  nametokens = [TextConstant.new(TextConstantToken.new('"' + run_filename + '"'))]
+  token = TextConstantToken.new('"' + run_filename + '"')
+  nametokens = [TextConstant.new(token)]
   if program.load(nametokens) && program.check
     interpreter =
       Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
@@ -366,13 +379,15 @@ if !run_filename.nil?
     interpreter.run(program, trace_flag, show_timing, show_profile)
   end
 elsif !list_filename.nil?
-  nametokens = [TextConstant.new(TextConstantToken.new('"' + list_filename + '"'))]
+  token = TextConstantToken.new('"' + list_filename + '"')
+  nametokens = [TextConstant.new(token)]
   if program.load(nametokens)
     line_list_spec = program.line_list_spec('')
     program.list(line_list_spec, list_tokens)
   end
 elsif !pretty_filename.nil?
-  nametokens = [TextConstant.new(TextConstantToken.new('"' + pretty_filename + '"'))]
+  token = TextConstantToken.new('"' + pretty_filename + '"')
+  nametokens = [TextConstant.new(token)]
   if program.load(nametokens)
     line_list_spec = program.line_list_spec('')
     program.pretty(line_list_spec)
