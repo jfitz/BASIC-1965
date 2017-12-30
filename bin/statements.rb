@@ -18,8 +18,8 @@ class StatementFactory
       line_number = LineNumber.new(number)
       line_text = m.post_match
       all_tokens = tokenize(line_text)
-      all_tokens = remove_break_tokens(all_tokens)
-      all_tokens = remove_whitespace_tokens(all_tokens)
+      all_tokens.delete_if(&:break?)
+      all_tokens.delete_if(&:whitespace?)
       comment = nil
       comment = all_tokens.pop if
         !all_tokens.empty? && all_tokens[-1].comment?
@@ -98,26 +98,6 @@ class StatementFactory
     end
 
     lead_keywords
-  end
-
-  def remove_break_tokens(tokens)
-    new_list = []
-
-    tokens.each do |token|
-      new_list << token unless token.break?
-    end
-
-    new_list
-  end
-
-  def remove_whitespace_tokens(tokens)
-    new_list = []
-
-    tokens.each do |token|
-      new_list << token unless token.whitespace?
-    end
-
-    new_list
   end
 
   def extract_keywords(all_tokens)
