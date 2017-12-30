@@ -1500,15 +1500,3 @@ FORTRAN needed an END to signal the compiler that the module was complete, and a
 
 Further readings indicate that the END statement preceded the STOP statement; that is the very early implementations of BASIC had END but not STOP.
 It might be that STOP was added later, and END was kept for compatibility.
-
-Frequently asked questions
---------------------------
-
-Why does the cross-reference output list only positive numeric values?
-Why does it convert negative values to positive values?
-
-When BASIC tokenizes a line, it converts expressions into groups of tokens.
-A unary minus is separate from the numeric value.
-All numeric values are stored as positive values.
-When the program runs, the expression is evaluated and the value becomes negative.
-A statement like LET X = -5 or DATA 3,4,-1,-14 stores what we humans interpret as '-5' in two tokens, the unary minus and the value 5.

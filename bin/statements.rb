@@ -187,51 +187,46 @@ class AbstractStatement
   def numerics
     nums = []
 
+    # convert a sequence of minus sign and numeric token to a single token
+    # the result list should be a list of tokens, not expressions
+    # and we want a unary minus and value to render as number in crossref
+    negate = false
+    prev_unary_minus = false
+    prev_operand = false
     @tokens.each do |token|
-      nums << token if token.numeric_constant?
+      negate = !negate if prev_unary_minus
+      if token.numeric_constant?
+        if negate
+          nums << token.clone.negate
+        else
+          nums << token
+        end
+      end
+      prev_unary_minus = token.operator? && token.to_s == '-' && !prev_operand
+      prev_operand = token.groupend? || token.numeric_constant? || token.variable?
     end
 
     nums
   end
 
   def strings
-    strs = []
-
-    @tokens.each do |token|
-      strs << token if token.text_constant?
-    end
-
-    strs
+    strs = @tokens.clone
+    strs.keep_if(&:text_constant?)
   end
 
   def functions
-    funcs = []
-
-    @tokens.each do |token|
-      funcs << token if token.function?
-    end
-
-    funcs
+    funcs = @tokens.clone
+    funcs.keep_if(&:function?)
   end
 
   def userfuncs
-    udfs = []
-
-    @tokens.each do |token|
-      udfs << token if token.user_function?
-    end
-
-    udfs
+    udfs = @tokens.clone
+    udfs.keep_if(&:user_function?)
   end
 
   def variables
-    vars = []
-
-    @tokens.each do |token|
-      vars << token if token.variable?
-    end
-
-    vars
+    vars = @tokens.clone
+    vars.keep_if(&:variable?)
   end
 
   protected

@@ -314,6 +314,7 @@ OptionParser.new do |opt|
   opt.on('--tokens') { |o| options[:tokens] = o }
   opt.on('-p', '--pretty SOURCE') { |o| options[:pretty_name] = o }
   opt.on('-r', '--run SOURCE') { |o| options[:run_name] = o }
+  opt.on('-c', '--crossref SOURCE') { |o| options[:cref_name] = o }
   opt.on('--profile') { |o| options[:profile] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
@@ -335,6 +336,7 @@ list_filename = options[:list_name]
 list_tokens = options.key?(:tokens)
 pretty_filename = options[:pretty_name]
 run_filename = options[:run_name]
+cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 show_heading = !options.key?(:no_heading)
 echo_input = options.key?(:echo_input)
@@ -391,6 +393,12 @@ elsif !pretty_filename.nil?
   if program.load(nametokens)
     line_list_spec = program.line_list_spec('')
     program.pretty(line_list_spec)
+  end
+elsif !cref_filename.nil?
+  token = TextConstantToken.new('"' + cref_filename + '"')
+  nametokens = [TextConstant.new(token)]
+  if program.load(nametokens)
+    program.crossref
   end
 else
   interpreter =
