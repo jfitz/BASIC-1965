@@ -36,7 +36,7 @@ class Interpreter
   def make_debug_tokenbuilders
     tokenbuilders = []
 
-    keywords = %w(GO STOP STEP BREAK LIST PRETTY DELETE PROFILE PRINT LET DIM)
+    keywords = %w(GO STOP STEP BREAK LIST PRETTY DELETE PROFILE DIM GOTO LET PRINT)
     tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
     un_ops = UnaryOperator.operators
@@ -215,6 +215,20 @@ class Interpreter
     when 'PROFILE'
       line_number_range = @program.line_list_spec(args)
       @program.profile(line_number_range)
+    when 'GOTO'
+      statement = GotoStatement.new([keyword], [args])
+      if statement.errors.empty?
+        statement.execute(self)
+      else
+        statement.errors.each { |error| puts error }
+      end
+    when 'LET'
+      statement = LetStatement.new([keyword], [args])
+      if statement.errors.empty?
+        statement.execute(self)
+      else
+        statement.errors.each { |error| puts error }
+      end
     when 'PRINT'
       statement = PrintStatement.new([keyword], [args])
       if statement.errors.empty?
@@ -259,10 +273,20 @@ class Interpreter
   end
 
   def program_loop
-    debug_shell if @step_mode || @breakpoints.key?(@current_line_number)
-
     # pick the next line number
     @next_line_number = @program.find_next_line_number(@current_line_number)
+    next_line_number = nil
+    next_line_number = @next_line_number.clone unless @next_line_number.nil?
+
+    # debug shell may change @next_line_number
+    debug_shell if @step_mode || @breakpoints.key?(@current_line_number)
+
+    # if next line number has changed, debug_shell executed a GOTO
+    if @next_line_number != next_line_number
+      @current_line_number = @next_line_number
+      @next_line_number = @program.find_next_line_number(@current_line_number)
+    end
+
     begin
       execute_a_statement
       # set the next line number
