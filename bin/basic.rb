@@ -193,7 +193,7 @@ class Shell
     if keyword.keyword?
       execute_command(keyword, args)
     else
-      print "Unknown command '#{cmd}'\n"
+      print "Unknown command '#{keyword}'\n"
     end
   end
 
