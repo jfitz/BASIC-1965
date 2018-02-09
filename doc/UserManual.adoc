@@ -363,6 +363,22 @@ DELETE
 Deletes program lines.
 Actually replaces the lines with blank lines, to avoid confusing the interpreter by deleting the current line.
 
+DIM
+~~~
+
+Assigns dimensions to a variable.
+
+GOTO
+~~~~
+
+Assigns control to the specified statement.
+
+LET
+~~~
+
+Assigns a value to a variable.
+The assigned value may be a constant or an expression.
+
 PRINT
 ~~~~~
 
@@ -372,17 +388,6 @@ PROFILE
 ~~~~~~~
 
 Prints profile information.
-
-LET
-~~~
-
-Assigns a value to a variable.
-The assigned value may be a constant or an expression.
-
-DIM
-~~~
-
-Assigns dimensions to a variable.
 
 Variables
 ---------
