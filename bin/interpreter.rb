@@ -194,11 +194,14 @@ class Interpreter
   def execute_debug_command(keyword, args, cmd)
     case keyword.to_s
     when 'GO'
+      raise(BASICCommandError, 'Too many arguments') unless args.empty?
       @debug_done = true
     when 'STOP'
+      raise(BASICCommandError, 'Too many arguments') unless args.empty?
       @debug_done = true
       stop_running
     when 'STEP'
+      raise(BASICCommandError, 'Too many arguments') unless args.empty?
       @step_mode = true
       @debug_done = true
     when 'BREAK'
