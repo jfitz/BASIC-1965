@@ -806,7 +806,7 @@ class IfStatement < AbstractStatement
 
     begin
       @expression = ValueScalarExpression.new(expression)
-    rescue BASICException => e
+    rescue BASICRuntimeError => e
       @errors << e.message
     end
   end
