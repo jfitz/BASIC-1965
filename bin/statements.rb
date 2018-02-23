@@ -31,7 +31,7 @@ class StatementFactory
   def create(text, all_tokens, comment)
     begin
       statement = create_statement(all_tokens)
-    rescue BASICException
+    rescue BASICError
       statement = InvalidStatement.new(text)
     end
     statement = UnknownStatement.new(text) if statement.nil?
@@ -417,7 +417,7 @@ class DefineFunctionStatement < AbstractStatement
         @name = user_function_definition.name
         @arguments = user_function_definition.arguments
         @template = user_function_definition.template
-      rescue BASICException => e
+      rescue BASICError => e
         puts e.message
         @errors << e.message
       end
@@ -452,7 +452,7 @@ class DimStatement < AbstractStatement
         begin
           @expression_list <<
             TargetExpression.new(tokens_list, VariableDimension)
-        rescue BASICException
+        rescue BASICError
           @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
         end
       end
@@ -601,7 +601,7 @@ class ForStatement < AbstractStatement
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
-      rescue BASICException => e
+      rescue BASICError => e
         @errors << e.message
       end
     elsif check_template(tokens_lists, template2)
@@ -611,7 +611,7 @@ class ForStatement < AbstractStatement
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step_value = ValueScalarExpression.new(tokens_lists[4])
-      rescue BASICException => e
+      rescue BASICError => e
         @errors << e.message
       end
     else
@@ -644,9 +644,9 @@ class ForStatement < AbstractStatement
 
   def control_and_start(tokens)
     parts = split_on_token(tokens, '=')
-    raise(BASICException, 'Incorrect initialization') if
+    raise(BASICError, 'Incorrect initialization') if
       parts.size != 3
-    raise(BASICException, 'Incorrect initialization') if
+    raise(BASICError, 'Incorrect initialization') if
       parts[1].to_s != '='
 
     @errors << 'Control variable must be a variable' unless
@@ -945,7 +945,7 @@ class LetStatement < AbstractStatement
         if @assignment.count_value != 1
           @errors << 'Assignment must have only one right-hand value'
         end
-      rescue BASICException => e
+      rescue BASICError => e
         @errors << e.message
       end
     else
@@ -1097,7 +1097,7 @@ class PrintStatement < AbstractPrintStatement
     end
     begin
       print_items << ValueScalarExpression.new(tokens)
-    rescue BASICException
+    rescue BASICError
       line_text = tokens.map(&:to_s).join
       @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
     end
@@ -1361,7 +1361,7 @@ class WriteStatement < AbstractWriteStatement
     end
     begin
       print_items << ValueScalarExpression.new(tokens)
-    rescue BASICException
+    rescue BASICError
       line_text = tokens.map(&:to_s).join
       @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
     end
@@ -1561,7 +1561,7 @@ class ArrLetStatement < AbstractStatement
         if @assignment.count_value != 1
           @errors << 'Assignment must have only one right-hand value'
         end
-      rescue BASICException => e
+      rescue BASICError => e
         @errors << e.message
         @assignment = @rest
       end
@@ -1804,7 +1804,7 @@ class MatLetStatement < AbstractStatement
         if @assignment.count_value != 1
           @errors << 'Assignment must have only one right-hand value'
         end
-      rescue BASICException => e
+      rescue BASICError => e
         @errors << e.message
         @assignment = @rest
       end

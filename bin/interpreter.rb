@@ -166,7 +166,7 @@ class Interpreter
       @current_line_number =
         @program.find_next_line_number(@current_line_number)
     end
-  rescue BASICException, BASICRuntimeError => e
+  rescue BASICRuntimeError => e
     message = "#{e.message} in line #{@current_line_number}"
     @console_io.print_line(message)
     stop_running
@@ -298,7 +298,7 @@ class Interpreter
         verify_next_line_number
         @current_line_number = @next_line_number
       end
-    rescue BASICException, BASICRuntimeError => e
+    rescue BASICRuntimeError => e
       if @current_line_number.nil?
         message = e.message
       else

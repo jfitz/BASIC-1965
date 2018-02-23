@@ -26,7 +26,7 @@ class LineNumber
   end
 
   def initialize(line_number)
-    raise BASICException, "Invalid line number '#{line_number}'" unless
+    raise BASICError, "Invalid line number '#{line_number}'" unless
       line_number.class.to_s == 'NumericConstantToken'
     @line_number = line_number.to_i
   end

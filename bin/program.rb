@@ -398,7 +398,7 @@ class Program
 
   def parse_line(line)
     @statement_factory.parse(line)
-  rescue BASICException => e
+  rescue BASICError => e
     @console_io.print_line("Syntax error: #{e.message}")
   end
 
