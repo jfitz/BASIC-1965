@@ -30,11 +30,10 @@ class StatementFactory
 
   def create(text, all_tokens, comment)
     begin
-      statement = create_statement(all_tokens)
-    rescue BASICError
-      statement = InvalidStatement.new(text)
+      statement = create_statement(text, all_tokens)
+    rescue BASICError => e
+      statement = InvalidStatement.new(text, all_tokens, e)
     end
-    statement = UnknownStatement.new(text) if statement.nil?
 
     Line.new(text, statement, all_tokens, comment)
   end
@@ -128,19 +127,22 @@ class StatementFactory
     results
   end
 
-  def create_statement(statement_tokens)
-    if statement_tokens.empty?
-      statement = EmptyStatement.new
-    else
+  def create_statement(text, statement_tokens)
+    statement = EmptyStatement.new
+
+    unless statement_tokens.empty?
+      statement = UnknownStatement.new(text)
+
       keywords, tokens = extract_keywords(statement_tokens)
+
       if @statement_definitions.key?(keywords)
         tokens_lists = split_keywords(tokens)
+
         statement =
           @statement_definitions[keywords].new(keywords, tokens_lists)
-      else
-        statement = nil
       end
     end
+
     statement
   end
 
@@ -304,10 +306,10 @@ end
 
 # unparsed statement
 class InvalidStatement < AbstractStatement
-  def initialize(text)
-    super([], [])
+  def initialize(text, tokens_lists, error)
+    super([], tokens_lists)
     @text = text
-    @errors << 'Invalid statement'
+    @errors << 'Invalid statement: ' + error.message
   end
 
   def to_s
@@ -452,7 +454,7 @@ class DimStatement < AbstractStatement
         begin
           @expression_list <<
             TargetExpression.new(tokens_list, VariableDimension)
-        rescue BASICError
+        rescue BASICExpressionError
           @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
         end
       end
@@ -601,7 +603,7 @@ class ForStatement < AbstractStatement
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step_value = ValueScalarExpression.new([NumericConstantToken.new(1)])
-      rescue BASICError => e
+      rescue BASICExpressionError => e
         @errors << e.message
       end
     elsif check_template(tokens_lists, template2)
@@ -611,7 +613,7 @@ class ForStatement < AbstractStatement
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step_value = ValueScalarExpression.new(tokens_lists[4])
-      rescue BASICError => e
+      rescue BASICExpressionError => e
         @errors << e.message
       end
     else
@@ -806,7 +808,7 @@ class IfStatement < AbstractStatement
 
     begin
       @expression = ValueScalarExpression.new(expression)
-    rescue BASICRuntimeError => e
+    rescue BASICExpressionError => e
       @errors << e.message
     end
   end
@@ -853,7 +855,7 @@ class InputStatement < AbstractStatement
     input_items.each do |items_list|
       begin
         expression_list << TargetExpression.new(items_list, ScalarReference)
-      rescue BASICRuntimeError
+      rescue BASICExpressionError
         raise(BASICRuntimeError,
               'Invalid variable ' + items_list.map(&:to_s).join)
       end
@@ -1097,7 +1099,7 @@ class PrintStatement < AbstractPrintStatement
     end
     begin
       print_items << ValueScalarExpression.new(tokens)
-    rescue BASICError
+    rescue BASICExpressionError
       line_text = tokens.map(&:to_s).join
       @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
     end
@@ -1166,7 +1168,7 @@ class ReadStatement < AbstractReadStatement
     tokens_lists.each do |tokens_list|
       begin
         expression_list << TargetExpression.new(tokens_list, ScalarReference)
-      rescue BASICRuntimeError
+      rescue BASICExpressionError
         raise(BASICRuntimeError,
               'Invalid variable ' + tokens_list.map(&:to_s).join)
       end
@@ -1361,7 +1363,7 @@ class WriteStatement < AbstractWriteStatement
     end
     begin
       print_items << ValueScalarExpression.new(tokens)
-    rescue BASICError
+    rescue BASICExpressionError
       line_text = tokens.map(&:to_s).join
       @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
     end
@@ -1449,7 +1451,7 @@ class ArrReadStatement < AbstractReadStatement
       begin
         expression = TargetExpression.new(tokens_list, ArrayReference)
         expression_list << expression
-      rescue BASICRuntimeError
+      rescue BASICExpressionError
         raise(BASICRuntimeError,
               'Invalid variable ' + tokens_list.map(&:to_s).join)
       end
@@ -1679,7 +1681,7 @@ class MatReadStatement < AbstractReadStatement
       begin
         expression = TargetExpression.new(tokens_list, MatrixReference)
         expression_list << expression
-      rescue BASICRuntimeError
+      rescue BASICExpressionError
         raise(BASICRuntimeError,
               'Invalid variable ' + tokens_list.map(&:to_s).join)
       end

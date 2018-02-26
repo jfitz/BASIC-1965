@@ -424,9 +424,12 @@ class Program
       @console_io.print_line(line_number.to_s + line.list)
       statement = line.statement
       statement.errors.each { |error| puts ' ' + error }
+
+      next unless list_tokens
+
       tokens = line.tokens
       text_tokens = tokens.map(&:to_s)
-      @console_io.print_line('TOKENS: ' + text_tokens.to_s) if list_tokens
+      @console_io.print_line('TOKENS: ' + text_tokens.to_s)
     end
   end
 

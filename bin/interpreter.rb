@@ -298,7 +298,7 @@ class Interpreter
         verify_next_line_number
         @current_line_number = @next_line_number
       end
-    rescue BASICRuntimeError => e
+    rescue BASICExpressionError, BASICRuntimeError => e
       if @current_line_number.nil?
         message = e.message
       else

@@ -68,6 +68,10 @@ class AbstractToken
     @text
   end
 
+  def dump
+    self.class.to_s + ':' + @text
+  end
+
   def break?
     @is_break
   end

@@ -672,7 +672,7 @@ class Parser
   end
 
   def expressions
-    raise(BASICError, 'Expression error') unless @operator_stack.empty?
+    raise(BASICExpressionError, 'Extra operators') unless @operator_stack.empty?
     @parsed_expressions.concat @parens_group unless @parens_group.empty?
     @parsed_expressions << @current_expression unless @current_expression.empty?
     @parsed_expressions
@@ -747,12 +747,12 @@ class Parser
   def end_group(group_end_element)
     stack_to_expression(@operator_stack, @current_expression)
     @parens_group << @current_expression
-    raise(BASICError, 'Expression error') if @operator_stack.empty?
+    raise(BASICExpressionError, 'Too few operators') if @operator_stack.empty?
     # remove the '(' or '[' starter
     start_op = @operator_stack.pop
     error = 'Bracket/parenthesis mismatch, found ' + group_end_element.to_s +
             ' to match ' + start_op.to_s
-    raise(BASICError, error) unless group_end_element.match?(start_op)
+    raise(BASICExpressionError, error) unless group_end_element.match?(start_op)
     if start_op.param_start?
       list = List.new(@parens_group)
       @operator_stack.push(list)
