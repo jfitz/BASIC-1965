@@ -471,7 +471,7 @@ class Interpreter
       subscripts.class.to_s == 'Array'
     int_subscripts = []
     subscripts.each do |subscript|
-      raise(Excaption, "Invalid subscript #{subscript}") unless
+      raise(Exception, "Invalid subscript #{subscript}") unless
         subscript.numeric_constant?
       int_subscripts << subscript.truncate
     end
