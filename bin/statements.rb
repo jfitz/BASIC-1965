@@ -411,14 +411,9 @@ class DefineFunctionStatement < AbstractStatement
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
-      @name = ''
-      @arguments = []
-      @expression = ''
+      @definition = nil
       begin
-        user_function_definition = UserFunctionDefinition.new(tokens_lists[0])
-        @name = user_function_definition.name
-        @arguments = user_function_definition.arguments
-        @expression = user_function_definition.expression
+        @definition = UserFunctionDefinition.new(tokens_lists[0])
       rescue BASICError => e
         puts e.message
         @errors << e.message
@@ -429,7 +424,8 @@ class DefineFunctionStatement < AbstractStatement
   end
 
   def pre_execute(interpreter)
-    interpreter.set_user_function(@name, @arguments, @expression)
+    name = @definition.name
+    interpreter.set_user_function(name, @definition)
   end
 
   def execute(_) end
