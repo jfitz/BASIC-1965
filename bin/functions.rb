@@ -1,4 +1,4 @@
-# Scalar function (provides a scalar)
+# function (provides a scalar)
 class Function < AbstractElement
   def initialize(text)
     super()
@@ -29,29 +29,41 @@ class Function < AbstractElement
       args.class.to_s != 'Array'
   end
 
-  def check_value(value, type)
+  def check_value(value, spec)
     compatible = false
+    type = spec['type']
+    shape = spec['shape']
     case type
     when 'numeric'
       compatible = value.numeric_constant?
+    end
+    raise(BASICRuntimeError, "Type mismatch value #{value} not #{type}") unless
+      compatible
+
+    compatible = false
+    case shape
+    when 'scalar'
+      compatible = value.scalar?
     when 'array'
       compatible = value.array?
     when 'matrix'
       compatible = value.matrix?
     end
 
-    raise(BASICRuntimeError, "Type mismatch value #{value} not #{type}") unless
+    raise(BASICRuntimeError, "Type mismatch value #{value} not #{shape}") unless
       compatible
   end
 
-  def check_arg_types(args, types)
+  def check_arg_types(args, specs)
     check_args(args)
-    if args.size != types.size
+    n_specs = specs.size
+    n_args = args.size
+    if n_args != n_specs
       raise(BASICRuntimeError,
-            "Function #{@name} expects #{n_types} argument, found #{n_args}")
+            "Function #{@name} expects #{n_specs} argument, found #{n_args}")
     end
-    (0..types.size - 1).each do |i|
-      check_value(args[i], types[i])
+    (0..n_specs - 1).each do |i|
+      check_value(args[i], specs[i])
     end
   end
 end
@@ -64,23 +76,6 @@ class AbstractScalarFunction < Function
 
   def default_type
     ScalarValue
-  end
-end
-
-# Function that expects matrix parameters
-class AbstractMatrixFunction < Function
-  def initialize(text)
-    super
-  end
-
-  def default_type
-    MatrixValue
-  end
-
-  def check_square(dims)
-    raise(BASICRuntimeError, @name + ' requires matrix') unless dims.size == 2
-    raise(BASICRuntimeError, @name + ' requires square matrix') unless
-      dims[1] == dims[0]
   end
 end
 
@@ -114,74 +109,33 @@ class UserFunction < AbstractScalarFunction
     raise(BASICRuntimeError, 'No arguments for function') if
       user_var_values.class.to_s != 'Array'
 
-    check_arg_types(user_var_values,
-                    ['numeric'] * user_var_values.length)
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    specs = [spec] * user_var_values.length
+    check_arg_types(user_var_values, specs)
 
     # dummy variable names and their (now known) values
     expression = definition.expression
     result = expression.evaluate_with_vars(interpreter, @name,
                                            user_var_values, trace)
+
     result[0]
   end
 end
 
-# function INT
-class FunctionInt < AbstractScalarFunction
+# Function that expects matrix parameters
+class AbstractMatrixFunction < Function
   def initialize(text)
     super
   end
 
-  # return a single value
-  def evaluate(interpreter, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    interpreter.int_floor? ? args[0].floor : args[0].truncate
-  end
-end
-
-# function RND
-class FunctionRnd < AbstractScalarFunction
-  def initialize(text)
-    super
+  def default_type
+    MatrixValue
   end
 
-  # return a single value
-  def evaluate(interpreter, stack, _)
-    stack.push([NumericConstant.new(1)]) unless previous_is_array(stack)
-    ensure_argument_count(stack, [0, 1])
-    args = stack.pop
-    args = [NumericConstant.new(1)] if args.empty? || args[0].nil?
-    check_arg_types(args, ['numeric'])
-    interpreter.rand(args[0])
-  end
-end
-
-# function EXP
-class FunctionExp < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    args[0].exp
-  end
-end
-
-# function LOG
-class FunctionLog < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    args[0].log
+  def check_square(dims)
+    raise(BASICRuntimeError, @name + ' requires matrix') unless dims.size == 2
+    raise(BASICRuntimeError, @name + ' requires square matrix') unless
+      dims[1] == dims[0]
   end
 end
 
@@ -194,64 +148,9 @@ class FunctionAbs < AbstractScalarFunction
   def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
-    check_arg_types(args, ['numeric'])
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
     args[0].abs
-  end
-end
-
-# function SQR
-class FunctionSqr < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    args[0].sqrt
-  end
-end
-
-# function SIN
-class FunctionSin < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    args[0].sin
-  end
-end
-
-# function COS
-class FunctionCos < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    args[0].cos
-  end
-end
-
-# function TAN
-class FunctionTan < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    args[0].tan
   end
 end
 
@@ -264,53 +163,9 @@ class FunctionAtn < AbstractScalarFunction
   def evaluate(_, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
-    check_arg_types(args, ['numeric'])
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
     args[0].atn
-  end
-end
-
-# function SGN
-class FunctionSgn < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['numeric'])
-    args[0].sign
-  end
-end
-
-# function TRN
-class FunctionTrn < AbstractMatrixFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1])
-    args = stack.pop
-    check_arg_types(args, ['matrix'])
-    dims = args[0].dimensions
-    new_dims = [dims[1], dims[0]]
-    Matrix.new(new_dims, args[0].transpose_values)
-  end
-end
-
-# function ZER
-class FunctionZer < AbstractScalarFunction
-  def initialize(text)
-    super
-  end
-
-  def evaluate(_, stack, _)
-    ensure_argument_count(stack, [1, 2])
-    args = stack.pop
-    check_arg_types(args, ['numeric'] * args.size)
-    matrix = Matrix.new(args.clone, {})
-    Matrix.new(matrix.dimensions, matrix.zero_values)
   end
 end
 
@@ -323,9 +178,55 @@ class FunctionCon < AbstractScalarFunction
   def evaluate(_, stack, _)
     ensure_argument_count(stack, [1, 2])
     args = stack.pop
-    check_arg_types(args, ['numeric'] * args.size)
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec] * args.size)
     matrix = Matrix.new(args.clone, {})
     Matrix.new(matrix.dimensions, matrix.one_values)
+  end
+end
+
+# function COS
+class FunctionCos < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    args[0].cos
+  end
+end
+
+# function DET
+class FunctionDet < AbstractMatrixFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'matrix' }
+    check_arg_types(args, [spec])
+    args[0].determinant
+  end
+end
+
+# function EXP
+class FunctionExp < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    args[0].exp
   end
 end
 
@@ -338,7 +239,8 @@ class FunctionIdn < AbstractScalarFunction
   def evaluate(_, stack, _)
     ensure_argument_count(stack, [1, 2])
     args = stack.pop
-    check_arg_types(args, ['numeric'] * args.size)
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec] * args.size)
     check_square(args) if args.size == 2
     dims = [args[0]] * 2
     matrix = Matrix.new(dims, {})
@@ -354,17 +256,19 @@ class FunctionIdn < AbstractScalarFunction
   end
 end
 
-# function DET
-class FunctionDet < AbstractMatrixFunction
+# function INT
+class FunctionInt < AbstractScalarFunction
   def initialize(text)
     super
   end
 
-  def evaluate(_, stack, _)
+  # return a single value
+  def evaluate(interpreter, stack, _)
     ensure_argument_count(stack, [1])
     args = stack.pop
-    check_arg_types(args, ['matrix'])
-    args[0].determinant
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    interpreter.int_floor? ? args[0].floor : args[0].truncate
   end
 end
 
@@ -378,9 +282,136 @@ class FunctionInv < AbstractMatrixFunction
     ensure_argument_count(stack, [1])
     args = stack.pop
     dims = args[0].dimensions
-    check_arg_types(args, ['matrix'])
+    spec = { 'type' => 'numeric', 'shape' => 'matrix' }
+    check_arg_types(args, [spec])
     check_square(dims)
     Matrix.new(dims.clone, args[0].inverse_values)
+  end
+end
+
+# function LOG
+class FunctionLog < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    args[0].log
+  end
+end
+
+# function RND
+class FunctionRnd < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  # return a single value
+  def evaluate(interpreter, stack, _)
+    stack.push([NumericConstant.new(1)]) unless previous_is_array(stack)
+    ensure_argument_count(stack, [0, 1])
+    args = stack.pop
+    args = [NumericConstant.new(1)] if args.empty? || args[0].nil?
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    interpreter.rand(args[0])
+  end
+end
+
+# function SGN
+class FunctionSgn < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    args[0].sign
+  end
+end
+
+# function SIN
+class FunctionSin < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    args[0].sin
+  end
+end
+
+# function SQR
+class FunctionSqr < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    args[0].sqrt
+  end
+end
+
+# function TAN
+class FunctionTan < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec])
+    args[0].tan
+  end
+end
+
+# function TRN
+class FunctionTrn < AbstractMatrixFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'matrix' }
+    check_arg_types(args, [spec])
+    dims = args[0].dimensions
+    new_dims = [dims[1], dims[0]]
+    Matrix.new(new_dims, args[0].transpose_values)
+  end
+end
+
+# function ZER
+class FunctionZer < AbstractScalarFunction
+  def initialize(text)
+    super
+  end
+
+  def evaluate(_, stack, _)
+    ensure_argument_count(stack, [1, 2])
+    args = stack.pop
+    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    check_arg_types(args, [spec] * args.size)
+    matrix = Matrix.new(args.clone, {})
+    Matrix.new(matrix.dimensions, matrix.zero_values)
   end
 end
 

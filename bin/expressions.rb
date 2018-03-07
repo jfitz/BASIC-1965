@@ -169,6 +169,16 @@ class Matrix
     false
   end
 
+  def numeric_constant?
+    value = get_value_2(0, 0)
+    value.numeric_constant?
+  end
+
+  def text_constant?
+    value = get_value_2(0, 0)
+    value.text_constant?
+  end
+
   def matrix?
     true
   end
