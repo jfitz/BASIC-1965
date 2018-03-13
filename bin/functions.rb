@@ -325,18 +325,23 @@ end
 class FunctionRnd < AbstractScalarFunction
   def initialize(text)
     super
-    @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
+    @signature_0 = []
+    @signature_1 = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
   # return a single value
   def evaluate(interpreter, stack, _)
-    stack.push([NumericConstant.new(1)]) unless previous_is_array(stack)
-    args = stack.pop
-    args = [NumericConstant.new(1)] if args.empty?
-    if match_args_to_signature(args, @signature)
-      interpreter.rand(args[0])
+    if previous_is_array(stack)
+      args = stack.pop
+      if match_args_to_signature(args, @signature_0)
+        interpreter.rand(NumericConstant.new(1))
+      elsif match_args_to_signature(args, @signature_1)
+        interpreter.rand(args[0])
+      else
+        raise(BASICRuntimeError, 'Wrong arguments for function')
+      end
     else
-      raise(BASICRuntimeError, 'Wrong arguments for function')
+      interpreter.rand(NumericConstant.new(1))
     end
   end
 end
