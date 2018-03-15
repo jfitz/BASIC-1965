@@ -489,11 +489,7 @@ class Interpreter
     @user_functions[name]
   end
 
-  def set_user_var_values(name, user_var_values)
-    definition = @user_functions[name]
-    param_names = definition.arguments
-    param_names_values = param_names.zip(user_var_values)
-    names_and_values = Hash[param_names_values]
+  def define_user_var_values(names_and_values)
     @user_var_values.push(names_and_values)
   end
 

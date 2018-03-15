@@ -91,21 +91,27 @@ class UserFunction < AbstractScalarFunction
     # verify function is defined
     raise(BASICRuntimeError, "Function #{@name} not defined") if definition.nil?
 
+    signature = definition.signature
+
     # verify arguments
-    user_var_values = stack.pop
+    arguments = stack.pop
+    
+    if match_args_to_signature(arguments, signature)
+      # dummy variable names and their (now known) values
+      params = definition.arguments
+      param_names_values = params.zip(arguments)
+      names_and_values = Hash[param_names_values]
+      interpreter.define_user_var_values(names_and_values)
 
-    spec = { 'type' => 'numeric', 'shape' => 'scalar' }
-    specs = [spec] * user_var_values.length
+      expression = definition.expression
+      results = expression.evaluate(interpreter, trace)
 
-    raise(BASICRuntimeError, 'Wrong arguments for function') unless
-      match_args_to_signature(user_var_values, specs)
+      interpreter.clear_user_var_values
+      results[0]
+    else
+      raise(BASICRuntimeError, 'Wrong arguments for function')
+    end
 
-    # dummy variable names and their (now known) values
-    expression = definition.expression
-    result = expression.evaluate_with_vars(interpreter, @name,
-                                           user_var_values, trace)
-
-    result[0]
   end
 end
 

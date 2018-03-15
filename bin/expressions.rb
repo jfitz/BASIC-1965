@@ -846,13 +846,6 @@ class AbstractExpression
     interpreter.evaluate(@parsed_expressions, trace)
   end
 
-  def evaluate_with_vars(interpreter, name, user_var_values, trace)
-    interpreter.set_user_var_values(name, user_var_values)
-    result = evaluate(interpreter, trace)
-    interpreter.clear_user_var_values
-    result
-  end
-
   private
 
   def tokens_to_elements(tokens)
@@ -1027,6 +1020,18 @@ class UserFunctionDefinition
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
     @expression = ValueScalarExpression.new(parts[2])
+  end
+
+  def signature
+    numeric_spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    sig = []
+
+    @arguments.each do |arg|
+      # arguments can only be numeric and scalar
+      sig << numeric_spec
+    end
+
+    sig
   end
 
   private
