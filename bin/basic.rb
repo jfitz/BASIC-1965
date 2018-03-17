@@ -276,8 +276,8 @@ def make_interpreter_tokenbuilders
   tokenbuilders <<
     ListTokenBuilder.new(FunctionFactory.function_names, FunctionToken)
 
-  function_names = ('FNA'..'FNZ').to_a
-  tokenbuilders << ListTokenBuilder.new(function_names, UserFunctionToken)
+  tokenbuilders <<
+    ListTokenBuilder.new(FunctionFactory.user_function_names, UserFunctionToken)
 
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new

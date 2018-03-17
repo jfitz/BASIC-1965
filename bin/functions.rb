@@ -498,4 +498,8 @@ class FunctionFactory
   def self.function_names
     @functions.keys
   end
+
+  def self.user_function_names
+    ('FNA'..'FNZ').to_a
+  end
 end
