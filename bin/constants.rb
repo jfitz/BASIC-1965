@@ -575,6 +575,10 @@ class BooleanConstant < AbstractValueElement
     @boolean_constant = true
   end
 
+  def content_type
+    'boolean'
+  end
+
   def to_s
     @value ? 'true' : 'false'
   end
