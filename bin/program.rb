@@ -336,9 +336,18 @@ class Program
 
   def print_refs(title, refs)
     puts title
-    refs.keys.sort.each do |line_number|
-      line_refs = refs[line_number]
-      puts line_number.to_s + ":\t" + line_refs.map(&:to_s).uniq.join(', ')
+    refs.keys.sort.each do |ref|
+      lines = refs[ref]
+      puts ref + ":\t" + lines.map(&:to_s).uniq.join(', ')
+    end
+    puts ''
+  end
+
+  def print_num_refs(title, refs)
+    puts title
+    refs.keys.sort.each do |ref|
+      lines = refs[ref]
+      puts ref.to_s + ":\t" + lines.map(&:to_s).uniq.join(', ')
     end
     puts ''
   end
@@ -350,11 +359,11 @@ class Program
 
     nums_list = numeric_refs
     numerics = make_summary(nums_list)
-    print_refs('Numeric constants', numerics)
+    print_num_refs('Numeric constants', numerics)
 
     strs_list = strings_refs
     strings = make_summary(strs_list)
-    print_refs('String constants', strings)
+    print_num_refs('String constants', strings)
 
     funcs_list = function_refs
     functions = make_summary(funcs_list)

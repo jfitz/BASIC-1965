@@ -17,6 +17,7 @@ class AbstractElement
     @scalar = false
     @array = false
     @matrix = false
+    @list = false
   end
 
   def operator?
@@ -85,6 +86,10 @@ class AbstractElement
 
   def matrix?
     @matrix
+  end
+
+  def list?
+    @list
   end
 
   protected
@@ -765,6 +770,7 @@ end
 class List < AbstractElement
   def initialize(parsed_expressions)
     super()
+    @list = true
     @parsed_expressions = parsed_expressions
     @variable = true
     @precedence = 7
@@ -780,5 +786,13 @@ class List < AbstractElement
 
   def to_s
     "[#{@parsed_expressions.join('] [')}]"
+  end
+
+  def size
+    @parsed_expressions.size
+  end
+
+  def count
+    @parsed_expressions.count
   end
 end

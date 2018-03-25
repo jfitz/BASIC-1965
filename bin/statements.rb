@@ -219,16 +219,19 @@ class AbstractStatement
   def functions
     funcs = @tokens.clone
     funcs.keep_if(&:function?)
+    funcs.map(&:to_s)
   end
 
   def userfuncs
     udfs = @tokens.clone
     udfs.keep_if(&:user_function?)
+    udfs.map(&:to_s)
   end
 
   def variables
     vars = @tokens.clone
     vars.keep_if(&:variable?)
+    vars.map(&:to_s)
   end
 
   protected
@@ -470,6 +473,14 @@ class DimStatement < AbstractStatement
       interpreter.set_dimensions(variable, subscripts)
     end
   end
+
+  def variables
+    vars = []
+    @expression_list.each do |expression|
+      vars += expression.variables
+    end
+    vars
+  end
 end
 
 # END
@@ -526,6 +537,10 @@ class FilesStatement < AbstractStatement
   end
 
   def execute(_) end
+
+  def variables
+    @expressions.variables
+  end
 end
 
 # Helper class for FOR/NEXT
@@ -636,6 +651,14 @@ class ForStatement < AbstractStatement
 
     io = interpreter.trace_out
     print_trace_info(io, from, to, step, terminated)
+  end
+
+  def variables
+    vars = []
+    vars << @control.to_s
+    vars += @start.variables
+    vars += @end.variables
+    vars += @step_value.variables
   end
 
   private
@@ -791,6 +814,12 @@ class IfStatement < AbstractStatement
   def renumber(renumber_map)
     @destination = renumber_map[@destination]
     @tokens[-1] = NumericConstantToken.new(@destination.line_number)
+  end
+
+  def variables
+    vars = []
+    vars += @expression.variables unless @expression.nil?
+    vars
   end
 
   private
@@ -958,6 +987,10 @@ class LetStatement < AbstractStatement
     l_values.each do |l_value|
       interpreter.set_value(l_value, r_value)
     end
+  end
+  
+  def variables
+    @assignment.variables
   end
 end
 
