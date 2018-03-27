@@ -1294,16 +1294,20 @@ class TraceStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
+    @errors << 'Too many values' if @tokens_lists.size > 1
+    @expression = ValueScalarExpression.new(tokens_lists[0])
   end
 
   def execute(interpreter)
-    tokens_lists = @tokens_lists.clone
-    raise(BASICRuntimeError, 'Too many values') if tokens_lists.size > 1
-    first_expression = tokens_lists[0]
-    expression = ValueScalarExpression.new(first_expression)
-    values = expression.evaluate(interpreter, true)
+    values = @expression.evaluate(interpreter, true)
     value = values[0]
     interpreter.trace(value.to_v)
+  end
+  
+  def variables
+    vars = []
+    vars += @expression.variables unless @expression.nil?
+    vars
   end
 end
 
