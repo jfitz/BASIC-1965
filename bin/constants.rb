@@ -651,6 +651,14 @@ class CarriageControl
     end
   end
 
+  def dump_parsed
+    []
+  end
+
+  def variables
+    []
+  end
+
   def print(printer, _)
     case @operator
     when ','
