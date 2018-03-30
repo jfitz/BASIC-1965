@@ -958,6 +958,11 @@ class ValueScalarExpression < AbstractExpression
     true
   end
 
+  def filehandle?
+    last_token = @parsed_expressions[0][-1]
+    last_token.operator? && last_token.to_s == '#'
+  end
+
   def print(printer, interpreter)
     numeric_constants = evaluate(interpreter, true)
     numeric_constant = numeric_constants[0]
@@ -979,6 +984,11 @@ class ValueCompoundExpression < AbstractExpression
 
   def printable?
     true
+  end
+
+  def filehandle?
+    last_token = @parsed_expressions[0][-1]
+    last_token.operator? && last_token.to_s == '#'
   end
 
   def print(printer, interpreter, carriage)
