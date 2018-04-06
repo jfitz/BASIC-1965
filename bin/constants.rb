@@ -603,11 +603,11 @@ class FileHandle < AbstractElement
   end
 
   def hash
-    number.hash
+    @number.hash
   end
 
   def eql?(other)
-    number == other.number
+    @number == other.number
   end
 
   def to_s
