@@ -852,55 +852,46 @@ class InputStatement < AbstractStatement
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
-      @input_items = split_tokens(tokens_lists[0], false)
+      input_items = split_tokens(tokens_lists[0], false)
+      input_items = tokens_to_expressions(input_items)
+      @file_tokens, input_items = extract_file_handle(input_items)
+      @prompt, @input_items = extract_prompt(input_items)
+ 
+      if !@input_items.empty? && @input_items[0].text_constant?
+        @prompt = input_items[0]
+        @input_items = @input_items[1..-1]
+      end
     else
       @errors << 'Syntax error'
     end
   end
 
   def execute(interpreter)
+    fh = nil
+    fh = get_file_handle(interpreter) unless @file_tokens.nil?
+
     prompt = nil
-    input_items = @input_items.clone
-    begin
-      value = first_value(input_items, interpreter)
-      if value.class.to_s == 'FileHandle'
-        fh = value
-        input_items.shift
-        value = first_value(input_items, interpreter)
-      end
-      token = first_token(input_items)
-      if token.text_constant?
-        prompt = value
-        input_items.shift
-      end
-    rescue BASICRuntimeError
-      fh = nil
+    unless @prompt.nil?
+      prompts = @prompt.evaluate(interpreter, false)
+      prompt = prompts[0]
     end
-    expression_list = []
-    input_items.each do |items_list|
-      begin
-        expression_list << TargetExpression.new(items_list, ScalarReference)
-      rescue BASICExpressionError
-        raise(BASICRuntimeError,
-              'Invalid variable ' + items_list.map(&:to_s).join)
-      end
-    end
+
     if fh.nil?
-      io = interpreter.console_io
+      fhr = interpreter.console_io
       values =
-        input_values(interpreter, prompt, expression_list.size)
-      io.implied_newline
+        input_values(fhr, interpreter, prompt, @input_items.size)
+      fhr.implied_newline
     else
-      values =
-        file_values(interpreter, fh)
+      fhr = get_file_handle(interpreter)
+      values = file_values(interpreter, fhr)
     end
-    begin
-      name_value_pairs =
-        zip(expression_list, values[0, expression_list.length])
-    rescue BASICRuntimeError
-      raise(BASICRuntimeError, 'End of file') unless fh.nil?
-      raise(BASICRuntimeError, 'Unequal lists')
-    end
+
+    raise(BASICRuntimeError, 'Not enough values') if
+      values.size < @input_items.size
+
+    name_value_pairs =
+      zip(@input_items, values[0..@input_items.length])
+
     name_value_pairs.each do |hash|
       l_values = hash['name'].evaluate(interpreter, false)
       l_value = l_values[0]
@@ -922,31 +913,105 @@ class InputStatement < AbstractStatement
     values[0]
   end
 
+  def extract_file_handle(print_items)
+    print_items = print_items.clone
+    file_tokens = nil
+
+    unless print_items.empty? ||
+           print_items[0].class.to_s == 'CarriageControl'
+      candidate_file_tokens = print_items[0]
+
+      if candidate_file_tokens.filehandle?
+        file_tokens = print_items.shift
+        print_items.shift if
+          print_items[0].class.to_s == 'CarriageControl'
+      end
+    end
+
+    [file_tokens, print_items]
+  end
+  
+  def extract_prompt(print_items)
+    print_items = print_items.clone
+    prompt = nil
+
+    unless print_items.empty? ||
+           print_items[0].class.to_s == 'CarriageControl'
+      candidate_prompt_tokens = print_items[0]
+
+      if candidate_prompt_tokens.text_constant?
+        prompt = print_items.shift
+        print_items.shift if
+          print_items[0].class.to_s == 'CarriageControl'
+      end
+    end
+
+    [prompt, print_items]
+  end
+  
+  def get_file_handle(interpreter)
+    file_handles = @file_tokens.evaluate(interpreter, false)
+    file_handles[0]
+   end
+
+  def tokens_to_expressions(tokens_lists)
+    print_items = []
+
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'Array'
+        add_expression(print_items, tokens_list)
+      end
+    end
+
+    print_items
+  end
+
+  def add_expression(print_items, tokens)
+    if tokens[0].operator? && tokens[0].to_s == '#'
+      print_items << ValueScalarExpression.new(tokens)
+    elsif tokens[0].text_constant?
+      print_items << ValueScalarExpression.new(tokens)
+    else
+      print_items << TargetExpression.new(tokens, ScalarReference)
+    end
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
+  end
+
   def zip(names, values)
-    raise(BASICRuntimeError, 'Unequal lists') if names.size != values.size
+    raise(BASICRuntimeError, 'Too few values') if values.size < names.size
+
     results = []
     (0...names.size).each do |i|
+      raise(BASICRuntimeError, names[i].to_s + ' is not assignable') unless
+        names[i].target?
+
       results << { 'name' => names[i], 'value' => values[i] }
     end
+
     results
   end
 
-  def input_values(interpreter, prompt, count)
+  def input_values(fhr, interpreter, prompt, count)
     values = []
-    io = interpreter.console_io
+
     while values.size < count
-      io.prompt(prompt)
-      values += io.input(interpreter)
+      fhr.prompt(prompt)
+      values += fhr.input(interpreter)
 
       prompt = nil
     end
+
     values
   end
 
   def file_values(interpreter, fh)
     values = []
-    io = interpreter.get_input(fh)
-    values += io.input(interpreter)
+
+    fhr = interpreter.get_input(fh)
+    values += fhr.input(interpreter)
+
     values
   end
 end

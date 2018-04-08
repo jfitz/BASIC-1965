@@ -821,6 +821,7 @@ class AbstractExpression
     @unparsed_expression = tokens.map(&:to_s).join
     @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
     @text_constant = tokens.size == 1 && tokens[0].text_constant?
+    @target = false
 
     elements = tokens_to_elements(tokens)
 
@@ -849,6 +850,10 @@ class AbstractExpression
 
   def text_constant?
     @text_constant
+  end
+
+  def target?
+    @target
   end
 
   # returns an Array of values
@@ -1028,6 +1033,8 @@ class TargetExpression < AbstractExpression
     check_length
     check_all_lengths
     check_resolve_types
+
+    @target = true
 
     @parsed_expressions.each do |parsed_expression|
       parsed_expression[-1] = type.new(parsed_expression[-1])
