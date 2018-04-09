@@ -900,6 +900,17 @@ class InputStatement < AbstractStatement
     end
   end
 
+  def variables
+    vars = []
+
+    vars += @file_tokens.variables unless @file_tokens.nil?
+    @input_items.each do |item|
+      vars += item.variables
+    end
+
+    vars
+  end
+
   private
 
   def first_token(input_items)
@@ -1139,6 +1150,17 @@ class AbstractPrintStatement < AbstractStatement
     print_items << CarriageControl.new('NL') if print_items.empty?
     print_items << @final if print_items[-1].printable?
   end
+
+  def variables
+    vars = []
+
+    vars += @file_tokens.variables unless @file_tokens.nil?
+    @print_items.each do |item|
+      vars += item.variables
+    end
+
+    vars
+  end
 end
 
 # PRINT
@@ -1208,6 +1230,17 @@ end
 class AbstractReadStatement < AbstractStatement
   def initialize(keywords, tokens_lists)
     super
+  end
+
+  def variables
+    vars = []
+
+    vars += @file_tokens.variables unless @file_tokens.nil?
+    @read_items.each do |item|
+      vars += item.variables
+    end
+
+    vars
   end
 
   private
@@ -1421,6 +1454,17 @@ class AbstractWriteStatement < AbstractStatement
   def add_implied_items(print_items)
     print_items << CarriageControl.new('NL') if print_items.empty?
     print_items << @final if print_items[-1].printable?
+  end
+
+  def variables
+    vars = []
+
+    vars += @file_tokens.variables unless @file_tokens.nil?
+    @print_items.each do |item|
+      vars += item.variables
+    end
+
+    vars
   end
 end
 
