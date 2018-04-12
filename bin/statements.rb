@@ -1772,6 +1772,12 @@ class ArrLetStatement < AbstractStatement
       interpreter.set_values(l_value.name, values)
     end
   end
+  
+  def variables
+    vars = []
+    vars = @assignment.variables unless @assignment.nil?
+    vars
+  end
 
   private
 
@@ -2050,6 +2056,12 @@ class MatLetStatement < AbstractStatement
       interpreter.set_dimensions(l_value, dims)
       interpreter.set_values(l_value.name, values)
     end
+  end
+  
+  def variables
+    vars = []
+    vars = @assignment.variables unless @assignment.nil?
+    vars
   end
 
   private

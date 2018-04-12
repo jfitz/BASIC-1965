@@ -1289,4 +1289,10 @@ class MatrixAssignment < AbstractAssignment
       @expression.evaluate(interpreter, true)
     end
   end
+
+  def variables
+    vars = @target.variables
+    vars += @expression.variables unless @special_form
+    vars
+  end
 end
