@@ -397,6 +397,11 @@ module FileFunctions
     file_handles = file_tokens.evaluate(interpreter, false)
     file_handles[0]
   end
+
+  def add_implied_items(print_items, final)
+    print_items << CarriageControl.new('NL') if print_items.empty?
+    print_items << final if print_items[-1].printable?
+  end
 end
 
 # DATA
@@ -987,6 +992,7 @@ class InputStatement < AbstractStatement
     else
       print_items << TargetExpression.new(tokens, ScalarReference)
     end
+
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -1126,11 +1132,6 @@ class AbstractPrintStatement < AbstractStatement
     @final = final_carriage
   end
 
-  def add_implied_items(print_items)
-    print_items << CarriageControl.new('NL') if print_items.empty?
-    print_items << @final if print_items[-1].printable?
-  end
-
   def variables
     vars = []
 
@@ -1184,14 +1185,18 @@ class PrintStatement < AbstractPrintStatement
 
   def tokens_to_expressions(tokens_lists)
     print_items = []
+
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'ParamSeparatorToken'
         print_items << CarriageControl.new(tokens_list.to_s)
-      elsif tokens_list.class.to_s == 'Array'
+      end
+
+      if tokens_list.class.to_s == 'Array'
         add_expression(print_items, tokens_list)
       end
     end
-    add_implied_items(print_items)
+
+    add_implied_items(print_items, @final)
     print_items
   end
 
@@ -1200,12 +1205,12 @@ class PrintStatement < AbstractPrintStatement
        print_items[-1].class.to_s == 'ValueScalarExpression'
       print_items << CarriageControl.new('')
     end
-    begin
-      print_items << ValueScalarExpression.new(tokens)
-    rescue BASICExpressionError
-      line_text = tokens.map(&:to_s).join
-      @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
-    end
+
+    print_items << ValueScalarExpression.new(tokens)
+
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
   end
 end
 
@@ -1269,11 +1274,13 @@ class ReadStatement < AbstractReadStatement
 
   def tokens_to_expressions(tokens_lists)
     print_items = []
+
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
         add_expression(print_items, tokens_list)
       end
     end
+
     print_items
   end
 
@@ -1283,6 +1290,7 @@ class ReadStatement < AbstractReadStatement
     else
       print_items << TargetExpression.new(tokens, ScalarReference)
     end
+
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -1393,11 +1401,6 @@ class AbstractWriteStatement < AbstractStatement
     @final = final_carriage
   end
 
-  def add_implied_items(print_items)
-    print_items << CarriageControl.new('NL') if print_items.empty?
-    print_items << @final if print_items[-1].printable?
-  end
-
   def variables
     vars = []
 
@@ -1452,12 +1455,14 @@ class WriteStatement < AbstractWriteStatement
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'ParamSeparatorToken'
         print_items << CarriageControl.new(tokens_list.to_s)
-      elsif tokens_list.class.to_s == 'Array'
+      end
+
+      if tokens_list.class.to_s == 'Array'
         add_expression(print_items, tokens_list)
       end
     end
 
-    add_implied_items(print_items)
+    add_implied_items(print_items, @final)
     print_items
   end
 
@@ -1467,12 +1472,11 @@ class WriteStatement < AbstractWriteStatement
       print_items << CarriageControl.new('')
     end
 
-    begin
-      print_items << ValueScalarExpression.new(tokens)
-    rescue BASICExpressionError
-      line_text = tokens.map(&:to_s).join
-      @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
-    end
+    print_items << ValueScalarExpression.new(tokens)
+
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
   end
 end
 
@@ -1523,12 +1527,14 @@ class ArrPrintStatement < AbstractPrintStatement
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'ParamSeparatorToken'
         print_items << CarriageControl.new(tokens_list)
-      elsif tokens_list.class.to_s == 'Array'
+      end
+
+      if tokens_list.class.to_s == 'Array'
         print_items << ValueArrayExpression.new(tokens_list)
       end
     end
 
-    add_implied_items(print_items)
+    add_implied_items(print_items, @final)
     print_items
   end
 end
@@ -1588,6 +1594,7 @@ class ArrReadStatement < AbstractReadStatement
     else
       print_items << TargetExpression.new(tokens, ArrayReference)
     end
+
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -1663,12 +1670,14 @@ class ArrWriteStatement < AbstractWriteStatement
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'ParamSeparatorToken'
         print_items << CarriageControl.new(tokens_list)
-      elsif tokens_list.class.to_s == 'Array'
+      end
+
+      if tokens_list.class.to_s == 'Array'
         print_items << ValueArrayExpression.new(tokens_list)
       end
     end
 
-    add_implied_items(print_items)
+    add_implied_items(print_items, @final)
     print_items
   end
 end
@@ -1786,12 +1795,14 @@ class MatPrintStatement < AbstractPrintStatement
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'ParamSeparatorToken'
         print_items << CarriageControl.new(tokens_list)
-      elsif tokens_list.class.to_s == 'Array'
+      end
+
+      if tokens_list.class.to_s == 'Array'
         print_items << ValueMatrixExpression.new(tokens_list)
       end
     end
 
-    add_implied_items(print_items)
+    add_implied_items(print_items, @final)
     print_items
   end
 end
@@ -1851,6 +1862,7 @@ class MatReadStatement < AbstractReadStatement
     else
       print_items << TargetExpression.new(tokens, MatrixReference)
     end
+
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -1941,12 +1953,14 @@ class MatWriteStatement < AbstractWriteStatement
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'ParamSeparatorToken'
         print_items << CarriageControl.new(tokens_list)
-      elsif tokens_list.class.to_s == 'Array'
+      end
+
+      if tokens_list.class.to_s == 'Array'
         print_items << ValueMatrixExpression.new(tokens_list)
       end
     end
 
-    add_implied_items(print_items)
+    add_implied_items(print_items, @final)
     print_items
   end
 end
