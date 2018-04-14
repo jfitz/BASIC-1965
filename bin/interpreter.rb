@@ -616,26 +616,19 @@ class Interpreter
     end
   end
 
-  def get_file_handler(file_handle)
+  def get_file_handler(file_handle, mode)
     return @console_io if file_handle.nil?
 
     raise(BASICRuntimeError, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
     fh = @file_handlers[file_handle]
-    fh.set_mode(:print)
-    fh
-  end
-
-  def get_input(file_handle)
-    raise(BASICRuntimeError, 'Unknown file handle') unless
-      @file_handlers.key?(file_handle)
-    fh = @file_handlers[file_handle]
-    fh.set_mode(:read)
+    fh.set_mode(mode)
     fh
   end
 
   def get_data_store(file_handle)
     return @data_store if file_handle.nil?
+
     raise(BASICRuntimeError, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
     fh = @file_handlers[file_handle]

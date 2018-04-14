@@ -373,6 +373,32 @@ class RemarkStatement < AbstractStatement
   def execute(_) end
 end
 
+# common functions for IO statements
+module FileFunctions
+  def extract_file_handle(print_items)
+    print_items = print_items.clone
+    file_tokens = nil
+    unless print_items.empty? ||
+           print_items[0].class.to_s == 'CarriageControl'
+      candidate_file_tokens = print_items[0]
+
+      if candidate_file_tokens.filehandle?
+        file_tokens = print_items.shift
+        print_items.shift if
+          print_items[0].class.to_s == 'CarriageControl'
+      end
+    end
+    [file_tokens, print_items]
+  end
+
+  def get_file_handle(interpreter, file_tokens)
+    return nil if file_tokens.nil?
+    
+    file_handles = file_tokens.evaluate(interpreter, false)
+    file_handles[0]
+  end
+end
+
 # DATA
 class DataStatement < AbstractStatement
   def self.lead_keywords
@@ -867,8 +893,8 @@ class InputStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :read)
 
     prompt = nil
     unless @prompt.nil?
@@ -877,13 +903,10 @@ class InputStatement < AbstractStatement
     end
 
     if fh.nil?
-      fhr = interpreter.console_io
-      values =
-        input_values(fhr, interpreter, prompt, @input_items.size)
+      values = input_values(fhr, interpreter, prompt, @input_items.size)
       fhr.implied_newline
     else
-      fhr = get_file_handle(interpreter)
-      values = file_values(interpreter, fhr)
+      values = file_values(fhr, interpreter)
     end
 
     raise(BASICRuntimeError, 'Not enough values') if
@@ -913,6 +936,8 @@ class InputStatement < AbstractStatement
 
   private
 
+  include FileFunctions
+
   def first_token(input_items)
     input_items[0][0]
   end
@@ -924,24 +949,6 @@ class InputStatement < AbstractStatement
     values[0]
   end
 
-  def extract_file_handle(print_items)
-    print_items = print_items.clone
-    file_tokens = nil
-
-    unless print_items.empty? ||
-           print_items[0].class.to_s == 'CarriageControl'
-      candidate_file_tokens = print_items[0]
-
-      if candidate_file_tokens.filehandle?
-        file_tokens = print_items.shift
-        print_items.shift if
-          print_items[0].class.to_s == 'CarriageControl'
-      end
-    end
-
-    [file_tokens, print_items]
-  end
-  
   def extract_prompt(print_items)
     print_items = print_items.clone
     prompt = nil
@@ -960,11 +967,6 @@ class InputStatement < AbstractStatement
     [prompt, print_items]
   end
   
-  def get_file_handle(interpreter)
-    file_handles = @file_tokens.evaluate(interpreter, false)
-    file_handles[0]
-   end
-
   def tokens_to_expressions(tokens_lists)
     print_items = []
 
@@ -1017,10 +1019,9 @@ class InputStatement < AbstractStatement
     values
   end
 
-  def file_values(interpreter, fh)
+  def file_values(fhr, interpreter)
     values = []
 
-    fhr = interpreter.get_input(fh)
     values += fhr.input(interpreter)
 
     values
@@ -1125,27 +1126,6 @@ class AbstractPrintStatement < AbstractStatement
     @final = final_carriage
   end
 
-  def extract_file_handle(print_items)
-    print_items = print_items.clone
-    file_tokens = nil
-    unless print_items.empty? ||
-           print_items[0].class.to_s == 'CarriageControl'
-      candidate_file_tokens = print_items[0]
-
-      if candidate_file_tokens.filehandle?
-        file_tokens = print_items.shift
-        print_items.shift if
-          print_items[0].class.to_s == 'CarriageControl'
-      end
-    end
-    [file_tokens, print_items]
-  end
-
-  def get_file_handle(interpreter)
-    file_handles = @file_tokens.evaluate(interpreter, false)
-    file_handles[0]
-  end
-
   def add_implied_items(print_items)
     print_items << CarriageControl.new('NL') if print_items.empty?
     print_items << @final if print_items[-1].printable?
@@ -1161,6 +1141,10 @@ class AbstractPrintStatement < AbstractStatement
 
     vars
   end
+
+  private
+
+  include FileFunctions
 end
 
 # PRINT
@@ -1188,9 +1172,8 @@ class PrintStatement < AbstractPrintStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
-    fhr = interpreter.get_file_handler(fh)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :print)
 
     @print_items.each do |item|
       item.print(fhr, interpreter)
@@ -1245,26 +1228,7 @@ class AbstractReadStatement < AbstractStatement
 
   private
 
-  def extract_file_handle(print_items)
-    print_items = print_items.clone
-    file_tokens = nil
-    unless print_items.empty? ||
-           print_items[0].class.to_s == 'CarriageControl'
-      candidate_file_tokens = print_items[0]
-
-      if candidate_file_tokens.filehandle?
-        file_tokens = print_items.shift
-        print_items.shift if
-          print_items[0].class.to_s == 'CarriageControl'
-      end
-    end
-    [file_tokens, print_items]
-  end
-
-  def get_file_handle(interpreter)
-    file_handles = @file_tokens.evaluate(interpreter, false)
-    file_handles[0]
-  end
+  include FileFunctions
 end
 
 # READ
@@ -1289,10 +1253,9 @@ class ReadStatement < AbstractReadStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
-
+    fh = get_file_handle(interpreter, @file_tokens)
     ds = interpreter.get_data_store(fh)
+
     @read_items.each do |item|
       targets = item.evaluate(interpreter, false)
       targets.each do |target|
@@ -1430,27 +1393,6 @@ class AbstractWriteStatement < AbstractStatement
     @final = final_carriage
   end
 
-  def extract_file_handle(print_items)
-    print_items = print_items.clone
-    file_tokens = nil
-    unless print_items.empty? ||
-           print_items[0].class.to_s == 'CarriageControl'
-      candidate_file_tokens = print_items[0]
-
-      if candidate_file_tokens.filehandle?
-        file_tokens = print_items.shift
-        print_items.shift if
-          print_items[0].class.to_s == 'CarriageControl'
-      end
-    end
-    [file_tokens, print_items]
-  end
-
-  def get_file_handle(interpreter)
-    file_handles = @file_tokens.evaluate(interpreter, false)
-    file_handles[0]
-  end
-
   def add_implied_items(print_items)
     print_items << CarriageControl.new('NL') if print_items.empty?
     print_items << @final if print_items[-1].printable?
@@ -1466,6 +1408,10 @@ class AbstractWriteStatement < AbstractStatement
 
     vars
   end
+
+  private
+
+  include FileFunctions
 end
 
 # WRITE
@@ -1490,9 +1436,8 @@ class WriteStatement < AbstractWriteStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
-    fhr = interpreter.get_file_handler(fh)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :print)
 
     @print_items.each do |item|
       item.write(fhr, interpreter)
@@ -1553,9 +1498,8 @@ class ArrPrintStatement < AbstractPrintStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
-    fhr = interpreter.get_file_handler(fh)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
     @print_items.each do |item|
@@ -1611,8 +1555,7 @@ class ArrReadStatement < AbstractReadStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
+    fh = get_file_handle(interpreter, @file_tokens)
     ds = interpreter.get_data_store(fh)
 
     @read_items.each do |item|
@@ -1695,9 +1638,8 @@ class ArrWriteStatement < AbstractWriteStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
-    fhr = interpreter.get_file_handler(fh)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
     @print_items.each do |item|
@@ -1819,9 +1761,8 @@ class MatPrintStatement < AbstractPrintStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
-    fhr = interpreter.get_file_handler(fh)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
     @print_items.each do |item|
@@ -1877,8 +1818,7 @@ class MatReadStatement < AbstractReadStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
+    fh = get_file_handle(interpreter, @file_tokens)
     ds = interpreter.get_data_store(fh)
 
     @read_items.each do |item|
@@ -1976,9 +1916,8 @@ class MatWriteStatement < AbstractWriteStatement
   end
 
   def execute(interpreter)
-    fh = nil
-    fh = get_file_handle(interpreter) unless @file_tokens.nil?
-    fhr = interpreter.get_file_handler(fh)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
     @print_items.each do |item|

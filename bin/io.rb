@@ -258,6 +258,10 @@ class FileHandler
     @file.close unless @file.nil?
   end
 
+  def to_s
+    @file_name
+  end
+
   def read_line
     input_text = @file.gets
     raise(BASICRuntimeError, 'End of file') if input_text.nil?
@@ -266,6 +270,7 @@ class FileHandler
   end
 
   def input(interpreter)
+    set_mode(:read)
     input_text = read_line
 
     tokenbuilders = make_tokenbuilders
