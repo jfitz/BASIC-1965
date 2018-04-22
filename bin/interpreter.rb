@@ -522,6 +522,15 @@ class Interpreter
   end
 
   def get_value(variable, trace)
+    legals = [
+      'VariableName',
+      'Value',
+      'ScalarValue'
+    ]
+
+    raise(Exception, "#{variable.class}:#{variable} is not a variable") unless
+      legals.include?(variable.class.to_s)
+
     value = nil
     # first look in user function values stack
     length = @user_var_values.length
@@ -529,23 +538,37 @@ class Interpreter
       names_and_values = @user_var_values[-1]
       value = names_and_values[variable]
     end
+
     # then look in general table
     if value.nil?
       v = variable.to_s
       @variables[v] = NumericConstant.new(0) unless @variables.key?(v)
       value = @variables[v]
     end
+
     seen = @get_value_seen.include?(variable)
+
     if @trace_flag && trace && !seen
       @trace_out.newline_when_needed
       # TODO: value changes to dict of value and provenence
       @trace_out.print_line(' ' + variable.to_s + ':' + value.to_s)
       @get_value_seen << variable
     end
+
     value
   end
 
   def set_value(variable, value)
+    legals = [
+      'Value',
+      'Variable',
+      'VariableName',
+      'ScalarReference'
+    ]
+    
+    raise(Exception, "#{variable.class}:#{variable} is not a variable name") unless
+      legals.include?(variable.class.to_s)
+
     raise(BASICRuntimeError, "Cannot change locked variable #{variable}") if
       @lock_fornext && @locked_variables.include?(variable)
 
@@ -554,6 +577,7 @@ class Interpreter
       raise(BASICRuntimeError,
             "Type mismatch '#{value}' is not #{variable.content_type}")
     end
+
     v = variable.to_s
     @variables[v] = value
     @trace_out.newline_when_needed

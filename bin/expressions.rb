@@ -1,22 +1,9 @@
 # Scalar value (not a matrix)
-class ScalarValue < Variable
+class ScalarValue < Value
   def initialize(variable_name)
     super
     @scalar = true
   end
-
-  private
-
-  def get_subscripts(stack)
-    subscripts = stack.pop
-    if subscripts.empty?
-      raise(Exception,
-            'Variable expects subscripts, found empty parentheses')
-    end
-    subscripts
-  end
-
-  public
 
   # return a single value
   def evaluate(interpreter, stack, trace)
@@ -29,10 +16,21 @@ class ScalarValue < Variable
       interpreter.get_value(@variable_name, trace)
     end
   end
+
+  private
+
+  def get_subscripts(stack)
+    subscripts = stack.pop
+    if subscripts.empty?
+      raise(Exception,
+            'Variable expects subscripts, found empty parentheses')
+    end
+    subscripts
+  end
 end
 
 # Scalar reference (not a matrix)
-class ScalarReference < Variable
+class ScalarReference < Reference
   def initialize(variable_value)
     super(variable_value.name)
     @scalar = true
@@ -44,10 +42,12 @@ class ScalarReference < Variable
       subscripts = stack.pop
       @subscripts = interpreter.normalize_subscripts(subscripts)
       num_args = @subscripts.length
+
       if num_args.zero?
         raise(BASICRuntimeError,
               'Variable expects subscripts, found empty parentheses')
       end
+
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
     self
@@ -81,11 +81,13 @@ class BASICArray
 
   def values
     values = {}
+
     (0..@dimensions[0].to_i).each do |col|
       value = get_value(col)
       coords = make_coord(col)
       values[coords] = value
     end
+
     values
   end
 
@@ -135,6 +137,7 @@ class BASICArray
       value.print(printer)
       carriage.print(printer, interpreter)
     end
+
     printer.newline
   end
 
@@ -146,6 +149,7 @@ class BASICArray
       value.write(printer)
       carriage.write(printer, interpreter)
     end
+
     printer.newline
   end
 end
@@ -187,16 +191,19 @@ class Matrix
 
   def values_1
     values = {}
+
     (1..@dimensions[0].to_i).each do |col|
       value = get_value_1(col)
       coords = make_coord(col)
       values[coords] = value
     end
+
     values
   end
 
   def values_2
     values = {}
+
     (1..@dimensions[0].to_i).each do |row|
       (1..@dimensions[1].to_i).each do |col|
         value = get_value_2(row, col)
@@ -204,6 +211,7 @@ class Matrix
         values[coords] = value
       end
     end
+
     values
   end
 
@@ -252,6 +260,7 @@ class Matrix
   def transpose_values
     raise(BASICRuntimeError, 'TRN requires matrix') unless @dimensions.size == 2
     new_values = {}
+
     (1..@dimensions[0].to_i).each do |row|
       (1..@dimensions[1].to_i).each do |col|
         value = get_value_2(row, col)
@@ -259,6 +268,7 @@ class Matrix
         new_values[coords] = value
       end
     end
+
     new_values
   end
 
@@ -318,10 +328,12 @@ class Matrix
   def identity_values
     new_values = make_matrix(@dimensions, NumericConstant.new(0))
     one = NumericConstant.new(1)
+
     (1..@dimensions[0].to_i).each do |row|
       coords = make_coords(row, row)
       new_values[coords] = one
     end
+
     new_values
   end
 
@@ -337,21 +349,25 @@ class Matrix
 
   def make_array(dims, init_value)
     values = {}
+
     (1..dims[0].to_i).each do |col|
       coords = make_coord(col)
       values[coords] = init_value
     end
+
     values
   end
 
   def make_matrix(dims, init_value)
     values = {}
+
     (1..dims[0].to_i).each do |row|
       (1..dims[1].to_i).each do |col|
         coords = make_coords(row, col)
         values[coords] = init_value
       end
     end
+
     values
   end
 
@@ -363,6 +379,7 @@ class Matrix
       value.print(printer)
       carriage.print(printer, interpreter)
     end
+
     printer.newline
     printer.newline
   end
@@ -379,6 +396,7 @@ class Matrix
       end
       printer.newline
     end
+
     printer.newline
   end
 
@@ -390,6 +408,7 @@ class Matrix
       value.write(printer)
       carriage.write(printer, interpreter)
     end
+
     printer.newline
     printer.newline
   end
@@ -406,6 +425,7 @@ class Matrix
       end
       printer.newline
     end
+
     printer.newline
   end
 
@@ -421,6 +441,7 @@ class Matrix
     minus_one = NumericConstant.new(-1)
     sign = NumericConstant.new(1)
     det = NumericConstant.new(0)
+
     # for each element in first row
     (1..@dimensions[1].to_i).each do |col|
       v = get_value_2(1, col)
@@ -430,6 +451,7 @@ class Matrix
       det += d
       sign = sign.multiply(minus_one)
     end
+
     det
   end
 
@@ -443,6 +465,7 @@ class Matrix
   def submatrix_values(exclude_row, exclude_col)
     new_values = {}
     new_row = 1
+
     (1..@dimensions[0].to_i).each do |row|
       new_col = 1
       next if row == exclude_row
@@ -453,6 +476,7 @@ class Matrix
       end
       new_row += 1
     end
+
     new_values
   end
 
@@ -519,7 +543,7 @@ class Matrix
 end
 
 # Array value
-class ArrayValue < Variable
+class ArrayValue < Value
   def initialize(variable_name)
     super
     @array = true
@@ -537,17 +561,19 @@ class ArrayValue < Variable
 
   def evaluate_1(interpreter, n_cols, trace)
     values = {}
+
     (0..n_cols).each do |col|
       coords = make_coord(col)
-      variable = Variable.new(@variable_name, coords)
+      variable = Value.new(@variable_name, coords)
       values[coords] = interpreter.get_value(variable, trace)
     end
+
     values
   end
 end
 
 # Compound variable (array or matrix) reference
-class CompoundReference < Variable
+class CompoundReference < Reference
   def initialize(name)
     super
   end
@@ -566,10 +592,12 @@ class CompoundReference < Variable
       subscripts = stack.pop
       @subscripts = interpreter.normalize_subscripts(subscripts)
       num_args = @subscripts.length
+
       if num_args.zero?
         raise(BASICRuntimeError,
               'Variable expects subscripts, found empty parentheses')
       end
+
       interpreter.check_subscripts(@variable_name, @subscripts)
     end
     self
@@ -585,7 +613,7 @@ class ArrayReference < CompoundReference
 end
 
 # Matrix value
-class MatrixValue < Variable
+class MatrixValue < Value
   def initialize(variable_name)
     super
     @matrix = true
@@ -603,30 +631,36 @@ class MatrixValue < Variable
   def evaluate_n(interpreter, dims, trace)
     values = {}
     values = evaluate_1(interpreter, dims[0].to_i, trace) if dims.size == 1
+
     values = evaluate_2(interpreter, dims[0].to_i, dims[1].to_i, trace) if
       dims.size == 2
+
     values
   end
 
   def evaluate_1(interpreter, n_cols, trace)
     values = {}
+
     (1..n_cols).each do |col|
       coords = make_coord(col)
-      variable = Variable.new(@variable_name, coords)
+      variable = Value.new(@variable_name, coords)
       values[coords] = interpreter.get_value(variable, trace)
     end
+
     values
   end
 
   def evaluate_2(interpreter, n_rows, n_cols, trace)
     values = {}
+
     (1..n_rows).each do |row|
       (1..n_cols).each do |col|
         coords = make_coords(row, col)
-        variable = Variable.new(@variable_name, coords)
+        variable = Value.new(@variable_name, coords)
         values[coords] = interpreter.get_value(variable, trace)
       end
     end
+
     values
   end
 end
@@ -640,7 +674,7 @@ class MatrixReference < CompoundReference
 end
 
 # Dimensions to a variable
-class VariableDimension < Variable
+class CompoundDeclaration < Variable
   def initialize(variable_value)
     super(variable_value.name)
   end
@@ -650,10 +684,12 @@ class VariableDimension < Variable
     if previous_is_array(stack)
       @subscripts = stack.pop
       num_args = @subscripts.length
+
       if num_args.zero?
         raise(BASICRuntimeError,
               'Variable expects subscripts, found empty parentheses')
       end
+
     end
     self
   end
@@ -689,6 +725,7 @@ class Parser
 
   def expressions
     raise(BASICExpressionError, 'Extra operators') unless @operator_stack.empty?
+
     @parsed_expressions.concat @parens_group unless @parens_group.empty?
     @parsed_expressions << @current_expression unless @current_expression.empty?
     @parsed_expressions
@@ -763,17 +800,22 @@ class Parser
   def end_group(group_end_element)
     stack_to_expression(@operator_stack, @current_expression)
     @parens_group << @current_expression
+
     raise(BASICExpressionError, 'Too few operators') if @operator_stack.empty?
+
     # remove the '(' or '[' starter
     start_op = @operator_stack.pop
     error = 'Bracket/parenthesis mismatch, found ' + group_end_element.to_s +
             ' to match ' + start_op.to_s
+
     raise(BASICExpressionError, error) unless group_end_element.match?(start_op)
+
     if start_op.param_start?
       list = List.new(@parens_group)
       @operator_stack.push(list)
       @current_expression = @expression_stack.pop
     end
+
     @parens_group = @parens_stack.pop
     @type_stack.pop
   end
@@ -824,8 +866,8 @@ class AbstractExpression
     @target = false
 
     elements = tokens_to_elements(tokens)
-
     parser = Parser.new(default_type)
+
     elements.each do |element|
       parser.parse(element)
     end
@@ -881,11 +923,13 @@ class AbstractExpression
           suffix = ''
           suffix = '()' if thing.array?
           suffix = '(,)' if thing.matrix?
+
           if suffix == '' && !previous.nil?
             if previous.list?
               suffix = '(' + (',' * (previous.size - 1)) + ')'
             end
           end
+
           vars << thing.to_s + suffix
         end
 
@@ -897,10 +941,12 @@ class AbstractExpression
 
   def tokens_to_elements(tokens)
     elements = []
+
     tokens.each do |token|
       follows_operand = !elements.empty? && elements[-1].operand?
       elements << token_to_element(token, follows_operand)
     end
+
     elements << TerminalOperator.new
   end
 
@@ -909,13 +955,16 @@ class AbstractExpression
       FunctionFactory.valid?(token.to_s)
 
     element = nil
+
     (follows_operand ? binary_classes : unary_classes).each do |c|
       element = c.new(token) if element.nil? && c.accept?(token)
     end
+
     if element.nil?
       raise(BASICError,
             "Token '#{token.class}:#{token}' is not a value or operator")
     end
+
     element
   end
 
@@ -1080,8 +1129,10 @@ class UserFunctionDefinition
     # parse into name '=' expression
     line_text = tokens.map(&:to_s).join
     parts = split_tokens(tokens)
+
     raise(BASICError, "'#{line_text}' is not a valid assignment") if
       parts.size != 3
+
     user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
@@ -1105,6 +1156,7 @@ class UserFunctionDefinition
   def split_tokens(tokens)
     results = []
     nonkeywords = []
+
     tokens.each do |token|
       if token.operator? && token.equals?
         results << nonkeywords unless nonkeywords.empty?
@@ -1114,6 +1166,7 @@ class UserFunctionDefinition
         nonkeywords << token
       end
     end
+
     results << nonkeywords unless nonkeywords.empty?
     results
   end
@@ -1127,12 +1180,13 @@ class UserFunctionPrototype
 
   def initialize(tokens)
     check_tokens(tokens)
-    variables = check_params(tokens[2..-2])
+    @arguments = check_params(tokens[2..-2])
     @name = tokens[0].to_s
-    @arguments = variables.map(&:to_s)
+    names = @arguments.map(&:to_s)
+
     # arguments must be unique
     raise(BASICError, 'Duplicate parameters') unless
-      @arguments.uniq.size == @arguments.size
+      names.uniq.size == names.size
   end
 
   def to_s
@@ -1151,14 +1205,17 @@ class UserFunctionPrototype
   # verify tokens variables and commas
   def check_params(params)
     variables = params.values_at(* params.each_index.select(&:even?))
+
     variables.each do |variable|
       raise(BASICError, 'Invalid parameter') unless variable.variable?
     end
+
     separators = params.values_at(* params.each_index.select(&:odd?))
     separators.each do |separator|
       raise(BASICError, 'Invalid list separator') unless
         separator.separator?
     end
+
     variables
   end
 end
@@ -1169,6 +1226,7 @@ class AbstractAssignment
     # parse into variable, '=', expression
     @token_lists = split_tokens(tokens)
     line_text = tokens.map(&:to_s).join
+
     raise(BASICError, "'#{line_text}' is not a valid assignment") if
       @token_lists.size != 3 ||
       !(@token_lists[1].operator? && @token_lists[1].equals?)
@@ -1177,6 +1235,7 @@ class AbstractAssignment
   def split_tokens(tokens)
     results = []
     nonkeywords = []
+
     tokens.each do |token|
       if token.operator? && token.equals?
         results << nonkeywords unless nonkeywords.empty?
@@ -1186,6 +1245,7 @@ class AbstractAssignment
         nonkeywords << token
       end
     end
+
     results << nonkeywords unless nonkeywords.empty?
     results
   end
@@ -1250,11 +1310,13 @@ class MatrixAssignment < AbstractAssignment
   def initialize(tokens)
     super
     @target = TargetExpression.new(@token_lists[0], MatrixReference)
+
     @functions = {
       'CON' => FunctionCon,
       'ZER' => FunctionZer,
       'IDN' => FunctionIdn
     }
+
     @special_form = @token_lists[2].size == 1 &&
                     @functions.key?(@token_lists[2][0].to_s)
     @expression = if @special_form
@@ -1277,8 +1339,10 @@ class MatrixAssignment < AbstractAssignment
       # special form obtains variable name and dimensions at run-time
       vs = @target.evaluate(interpreter, false)
       v = vs[0]
+
       raise(Exception, 'Expected matrix reference') if
         v.class.to_s != 'MatrixReference'
+
       name = v.name
       dims = interpreter.get_dimensions(name)
 

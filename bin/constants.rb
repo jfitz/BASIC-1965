@@ -734,8 +734,10 @@ class Variable < AbstractElement
 
   def initialize(variable_name, subscripts = [])
     super()
+
     raise(BASICRuntimeError, "'#{variable_name}' is not a variable name") if
       variable_name.class.to_s != 'VariableName'
+
     @variable_name = variable_name
     @subscripts = normalize_subscripts(subscripts)
     @variable = true
@@ -764,14 +766,26 @@ class Variable < AbstractElement
   def normalize_subscripts(subscripts)
     raise(BASICRuntimeError, 'Invalid subscripts container') unless
       subscripts.class.to_s == 'Array'
+
     int_subscripts = []
     subscripts.each do |subscript|
       raise(BASICRuntimeError, "Invalid subscript #{subscript}") unless
         subscript.numeric_constant?
+
       int_subscripts << subscript.truncate
     end
+
     int_subscripts
   end
+end
+
+class Value < Variable
+end
+
+class Reference < Variable
+end
+
+class Declaration < Variable
 end
 
 # A list (needed because it has precedence value)
