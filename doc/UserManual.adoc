@@ -72,8 +72,6 @@ The corrected program is:
 
 The underscore stops the tokenizer and forces it to accept S as a token and then procede with TOP which will be tokenized as 'TO' and P (as there is no 'TOP' keyword).
 
-The 'TOKENS' command displays the tokens identified in each line.
-
 Differences from K&K BASIC
 --------------------------
 
@@ -293,15 +291,6 @@ Each successive line is assgned a number 10 higher than the previous line.
 Each statement which contains a line number (GOTO, GOSUB, IF) is modified to use the corresponding new line number.
 
 RENUMBER also adjusts breakpoints, if any are set.
-
-TOKENS
-~~~~~~
-
-Lists the current program and for each line displays the tokens identified on that line.
-
-Syntax: TOKENS [line specification]
-
-The line specification is the same as the line specification for the LIST command.
 
 TRACE
 ~~~~~

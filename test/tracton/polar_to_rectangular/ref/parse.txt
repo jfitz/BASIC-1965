@@ -1,0 +1,78 @@
+10 REM THIS PROGRAM CONVERTS GIVEN POLAR COORDINATES
+ RemarkToken:THIS PROGRAM CONVERTS GIVEN POLAR COORDINATES
+20 REM INTO RECTANGULAR COORDINATES
+ RemarkToken:INTO RECTANGULAR COORDINATES
+30 PRINT "POLAR COORDINATES"
+ ITEMS
+ TextConstant:"POLAR COORDINATES"
+ CarriageControl:NL
+40 PRINT "ANGLE IN DEGREES = ";
+ ITEMS
+ TextConstant:"ANGLE IN DEGREES = "
+ CarriageControl:;
+50 INPUT W
+ ScalarReference:W
+60 LET W = (W*3.14159)/180
+ ScalarReference:W
+ ScalarValue:W
+ NumericConstant:3.14159
+ BinaryOperator:*
+ NumericConstant:180
+ BinaryOperator:/
+ AssignmentOperator:=
+70 PRINT "MAGNITUDE R = ";
+ ITEMS
+ TextConstant:"MAGNITUDE R = "
+ CarriageControl:;
+80 INPUT R
+ ScalarReference:R
+90 LET X = R*COS(W)
+ ScalarReference:X
+ ScalarValue:R
+ ScalarValue:W
+ FunctionCos
+ BinaryOperator:*
+ AssignmentOperator:=
+100 LET Y = R*SIN(W)
+ ScalarReference:Y
+ ScalarValue:R
+ ScalarValue:W
+ FunctionSin
+ BinaryOperator:*
+ AssignmentOperator:=
+110 PRINT "RECTANGULAR COORDINATES"
+ ITEMS
+ TextConstant:"RECTANGULAR COORDINATES"
+ CarriageControl:NL
+120 PRINT "X = ";X,"Y = ";Y
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:,
+ TextConstant:"Y = "
+ CarriageControl:;
+ ScalarValue:Y
+ CarriageControl:NL
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+150 INPUT L
+ ScalarReference:L
+160 IF L = 1 THEN 180
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+170 STOP
+ 
+180 PRINT
+ ITEMS
+ CarriageControl:NL
+190 GOTO 30
+ LineNumber:30
+200 END
+ 

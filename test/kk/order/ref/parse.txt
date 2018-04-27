@@ -1,0 +1,95 @@
+5  DIM S(100)
+ NumericConstant:100
+ CompoundDeclaration:S
+10 READ N
+ ScalarReference:N
+20 FOR I = 1 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+30    READ S(I)
+ ScalarValue:I
+ ScalarReference:S
+40 NEXT I
+ VariableToken:I
+50
+100 FOR I = 1 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+200    FOR J = 1 TO N-1
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+210       LET X = S(J)
+ ScalarReference:X
+ ScalarValue:J
+ ScalarValue:S
+ AssignmentOperator:=
+220       LET Y = S(J+1)
+ ScalarReference:Y
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ AssignmentOperator:=
+230       IF X <= Y THEN 300
+ ScalarValue:X
+ ScalarValue:Y
+ BinaryOperator:<=
+240       LET S(J) = Y
+ ScalarValue:J
+ ScalarReference:S
+ ScalarValue:Y
+ AssignmentOperator:=
+250       LET S(J+1) = X
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarReference:S
+ ScalarValue:X
+ AssignmentOperator:=
+300    NEXT J
+ VariableToken:J
+310 NEXT I
+ VariableToken:I
+400 FOR I = 1 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+410    PRINT S(I);
+ ITEMS
+ ScalarValue:I
+ ScalarValue:S
+ CarriageControl:;
+420 NEXT I
+ VariableToken:I
+900 DATA 20
+ NumericConstant:20
+910 DATA 5,2,7,3,8,1,9,11,3,15,20,4,0,10,2,16,2,8,9,1
+ NumericConstant:5
+ NumericConstant:2
+ NumericConstant:7
+ NumericConstant:3
+ NumericConstant:8
+ NumericConstant:1
+ NumericConstant:9
+ NumericConstant:11
+ NumericConstant:3
+ NumericConstant:15
+ NumericConstant:20
+ NumericConstant:4
+ NumericConstant:0
+ NumericConstant:10
+ NumericConstant:2
+ NumericConstant:16
+ NumericConstant:2
+ NumericConstant:8
+ NumericConstant:9
+ NumericConstant:1
+999 END
+ 

@@ -1,0 +1,55 @@
+10 REM THIS PROGRAM WILL COMPUTE THE LOG
+ RemarkToken:THIS PROGRAM WILL COMPUTE THE LOG
+20 REM OF ANY POSITIVE NUMBER X, TO ANY POSITIVE
+ RemarkToken:OF ANY POSITIVE NUMBER X, TO ANY POSITIVE
+30 REM BASE Y
+ RemarkToken:BASE Y
+40 PRINT "BASE = "
+ ITEMS
+ TextConstant:"BASE = "
+ CarriageControl:NL
+50 INPUT Y
+ ScalarReference:Y
+60 PRINT "X = "
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:NL
+70 INPUT X
+ ScalarReference:X
+80 LET J = LOG(X)/LOG(Y)
+ ScalarReference:J
+ ScalarValue:X
+ FunctionLog
+ ScalarValue:Y
+ FunctionLog
+ BinaryOperator:/
+ AssignmentOperator:=
+90 PRINT "LOG";X;" = ";J
+ ITEMS
+ TextConstant:"LOG"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+110 INPUT L
+ ScalarReference:L
+120 IF L =1 THEN 140
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+130 STOP
+ 
+140 PRINT
+ ITEMS
+ CarriageControl:NL
+150 GOTO 40
+ LineNumber:40
+160 END
+ 

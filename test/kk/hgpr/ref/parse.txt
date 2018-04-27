@@ -1,0 +1,358 @@
+10 DIM N(1000)
+ NumericConstant:1000
+ CompoundDeclaration:N
+11 DIM P(350)
+ NumericConstant:350
+ CompoundDeclaration:P
+20 FOR I = 1 TO 1000
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:1000"]
+ step:    ["NumericConstant:1"]
+21    LET N(I) = 0
+ ScalarValue:I
+ ScalarReference:N
+ NumericConstant:0
+ AssignmentOperator:=
+22 NEXT I
+ VariableToken:I
+25 LET P(0) = 2
+ NumericConstant:0
+ ScalarReference:P
+ NumericConstant:2
+ AssignmentOperator:=
+26 LET K = 0
+ ScalarReference:K
+ NumericConstant:0
+ AssignmentOperator:=
+30 FOR P = 3 TO 2000 STEP 2
+ control: VariableToken:P
+ start:   ["NumericConstant:3"]
+ end:     ["NumericConstant:2000"]
+ step:    ["NumericConstant:2"]
+35    LET X = (P-1)/2
+ ScalarReference:X
+ ScalarValue:P
+ NumericConstant:1
+ BinaryOperator:-
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+40    IF N(X) < 0 THEN 90
+ ScalarValue:X
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:<
+50    LET K = K+1
+ ScalarReference:K
+ ScalarValue:K
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+55    LET P(K) = P
+ ScalarValue:K
+ ScalarReference:P
+ ScalarValue:P
+ AssignmentOperator:=
+56    IF P > SQR(2000) THEN 90
+ ScalarValue:P
+ NumericConstant:2000
+ FunctionSqr
+ BinaryOperator:>
+60    FOR I = P TO 2000 STEP 2*P
+ control: VariableToken:I
+ start:   ["ScalarValue:P"]
+ end:     ["NumericConstant:2000"]
+ step:    ["NumericConstant:2", "ScalarValue:P", "BinaryOperator:*"]
+65       LET X = (I-1)/2
+ ScalarReference:X
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:-
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+70       LET N(X) = -1
+ ScalarValue:X
+ ScalarReference:N
+ NumericConstant:1
+ UnaryOperator:-
+ AssignmentOperator:=
+80    NEXT I
+ VariableToken:I
+90 NEXT P
+ VariableToken:P
+100 REM READ LEADING DIGITS
+ RemarkToken:READ LEADING DIGITS
+110 PRINT "SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
+ ITEMS
+ TextConstant:"SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
+ CarriageControl:NL
+115 PRINT
+ ITEMS
+ CarriageControl:NL
+116 PRINT "A = ";
+ ITEMS
+ TextConstant:"A = "
+ CarriageControl:;
+120 INPUT A
+ ScalarReference:A
+125 LET S = SQR((A+2)*1E3)
+ ScalarReference:S
+ ScalarValue:A
+ NumericConstant:2
+ BinaryOperator:+
+ NumericConstant:1000
+ BinaryOperator:*
+ FunctionSqr
+ AssignmentOperator:=
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "B = "
+ ITEMS
+ TextConstant:"B = "
+ CarriageControl:NL
+150 PRINT
+ ITEMS
+ CarriageControl:NL
+160
+200 REM TEST PRIMES TO 2000
+ RemarkToken:TEST PRIMES TO 2000
+205 FOR I = 1 TO 1000
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:1000"]
+ step:    ["NumericConstant:1"]
+206    LET N(I) = 0
+ ScalarValue:I
+ ScalarReference:N
+ NumericConstant:0
+ AssignmentOperator:=
+207 NEXT I
+ VariableToken:I
+210 FOR I = 1 TO K
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:K"]
+ step:    ["NumericConstant:1"]
+220    LET F = P(I)
+ ScalarReference:F
+ ScalarValue:I
+ ScalarValue:P
+ AssignmentOperator:=
+230    GOSUB 800
+ LineNumber:800
+239    IF Z > 999 THEN 270
+ ScalarValue:Z
+ NumericConstant:999
+ BinaryOperator:>
+240    FOR J = Z TO 999 STEP F
+ control: VariableToken:J
+ start:   ["ScalarValue:Z"]
+ end:     ["NumericConstant:999"]
+ step:    ["ScalarValue:F"]
+250       LET N(J) = -1
+ ScalarValue:J
+ ScalarReference:N
+ NumericConstant:1
+ UnaryOperator:-
+ AssignmentOperator:=
+260    NEXT J
+ VariableToken:J
+270 NEXT I
+ VariableToken:I
+280
+400 REM TEST REMAINING NUMBERS
+ RemarkToken:TEST REMAINING NUMBERS
+405 LET D = 2
+ ScalarReference:D
+ NumericConstant:2
+ AssignmentOperator:=
+410 LET F = 2003
+ ScalarReference:F
+ NumericConstant:2003
+ AssignmentOperator:=
+420    GOSUB 800
+ LineNumber:800
+430    IF Z > 999 THEN 450
+ ScalarValue:Z
+ NumericConstant:999
+ BinaryOperator:>
+440    LET N(Z) = -1
+ ScalarValue:Z
+ ScalarReference:N
+ NumericConstant:1
+ UnaryOperator:-
+ AssignmentOperator:=
+450 LET F = F+D
+ ScalarReference:F
+ ScalarValue:F
+ ScalarValue:D
+ BinaryOperator:+
+ AssignmentOperator:=
+460 LET D = 6-D
+ ScalarReference:D
+ NumericConstant:6
+ ScalarValue:D
+ BinaryOperator:-
+ AssignmentOperator:=
+470 IF F <= S THEN 420
+ ScalarValue:F
+ ScalarValue:S
+ BinaryOperator:<=
+480
+700 REM PRINT RESULT
+ RemarkToken:PRINT RESULT
+702 LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+705 FOR I = 0 TO 999
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:999"]
+ step:    ["NumericConstant:1"]
+710    IF N(I) < 0 THEN 730
+ ScalarValue:I
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:<
+720    PRINT 2*I + 1;
+ ITEMS
+ NumericConstant:2
+ ScalarValue:I
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:+
+ CarriageControl:;
+725    LET S = S+1
+ ScalarReference:S
+ ScalarValue:S
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+730 NEXT I
+ VariableToken:I
+732 PRINT
+ ITEMS
+ CarriageControl:NL
+733 PRINT
+ ITEMS
+ CarriageControl:NL
+735 PRINT "THERE ARE " S; "PRIMES IN THE RANGE."
+ ITEMS
+ TextConstant:"THERE ARE "
+ CarriageControl:
+ ScalarValue:S
+ CarriageControl:;
+ TextConstant:"PRIMES IN THE RANGE."
+ CarriageControl:NL
+740 PRINT
+ ITEMS
+ CarriageControl:NL
+745 PRINT
+ ITEMS
+ CarriageControl:NL
+750 PRINT "TWIN PRIMES:"
+ ITEMS
+ TextConstant:"TWIN PRIMES:"
+ CarriageControl:NL
+752 PRINT
+ ITEMS
+ CarriageControl:NL
+755 FOR I = 0 TO 998
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:998"]
+ step:    ["NumericConstant:1"]
+760    IF N(I) < 0 THEN 780
+ ScalarValue:I
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:<
+765    IF N(I+1) < 0 THEN 780
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:<
+770    PRINT 2*I+1, 2*I+3
+ ITEMS
+ NumericConstant:2
+ ScalarValue:I
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:+
+ CarriageControl:,
+ NumericConstant:2
+ ScalarValue:I
+ BinaryOperator:*
+ NumericConstant:3
+ BinaryOperator:+
+ CarriageControl:NL
+780 NEXT I
+ VariableToken:I
+790 STOP
+ 
+795
+800 REM TEST FACTOR F
+ RemarkToken:TEST FACTOR F
+810 LET X = A - F*INT(A/F)
+ ScalarReference:X
+ ScalarValue:A
+ ScalarValue:F
+ ScalarValue:A
+ ScalarValue:F
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+820 LET Y = A*1E3
+ ScalarReference:Y
+ ScalarValue:A
+ NumericConstant:1000
+ BinaryOperator:*
+ AssignmentOperator:=
+830 LET X = F - (Y - F*INT(Y/F))
+ ScalarReference:X
+ ScalarValue:F
+ ScalarValue:Y
+ ScalarValue:F
+ ScalarValue:Y
+ ScalarValue:F
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:*
+ BinaryOperator:-
+ BinaryOperator:-
+ AssignmentOperator:=
+840 IF X <> 2*INT(X/2) THEN 860
+ ScalarValue:X
+ NumericConstant:2
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:*
+ BinaryOperator:<>
+850 LET X = X + F
+ ScalarReference:X
+ ScalarValue:X
+ ScalarValue:F
+ BinaryOperator:+
+ AssignmentOperator:=
+860 LET Z = (X-1)/2
+ ScalarReference:Z
+ ScalarValue:X
+ NumericConstant:1
+ BinaryOperator:-
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+870 RETURN
+ 
+999 END
+ 

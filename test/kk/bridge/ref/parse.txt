@@ -1,0 +1,236 @@
+10 DIM H(13)
+ NumericConstant:13
+ CompoundDeclaration:H
+20 GOSUB 1000
+ LineNumber:1000
+30 FOR C = 1 TO 13
+ control: VariableToken:C
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:13"]
+ step:    ["NumericConstant:1"]
+40    GOSUB 2000
+ LineNumber:2000
+50    LET H(C) = X
+ ScalarValue:C
+ ScalarReference:H
+ ScalarValue:X
+ AssignmentOperator:=
+60 NEXT C
+ VariableToken:C
+70
+100 FOR I = 1 TO 13
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:13"]
+ step:    ["NumericConstant:1"]
+109    IF I > 13-I THEN 180
+ ScalarValue:I
+ NumericConstant:13
+ ScalarValue:I
+ BinaryOperator:-
+ BinaryOperator:>
+110    FOR J = I TO 13-I
+ control: VariableToken:J
+ start:   ["ScalarValue:I"]
+ end:     ["NumericConstant:13", "ScalarValue:I", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+120       LET X = H(J)
+ ScalarReference:X
+ ScalarValue:J
+ ScalarValue:H
+ AssignmentOperator:=
+130       LET Y = H(J+1)
+ ScalarReference:Y
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:H
+ AssignmentOperator:=
+140       IF X > Y THEN 170
+ ScalarValue:X
+ ScalarValue:Y
+ BinaryOperator:>
+150       LET H(J) = Y
+ ScalarValue:J
+ ScalarReference:H
+ ScalarValue:Y
+ AssignmentOperator:=
+160       LET H(J+1) = X
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarReference:H
+ ScalarValue:X
+ AssignmentOperator:=
+170    NEXT J
+ VariableToken:J
+180 NEXT I
+ VariableToken:I
+190
+200 FOR C = 1 TO 13
+ control: VariableToken:C
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:13"]
+ step:    ["NumericConstant:1"]
+210    LET X = H(C)
+ ScalarReference:X
+ ScalarValue:C
+ ScalarValue:H
+ AssignmentOperator:=
+220    GOSUB 3000
+ LineNumber:3000
+230 NEXT C
+ VariableToken:C
+240 STOP
+ 
+250
+1000 REM SET UP DECK
+ RemarkToken:SET UP DECK
+1010 DIM L(51)
+ NumericConstant:51
+ CompoundDeclaration:L
+1020 FOR I = 0 TO 51
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:51"]
+ step:    ["NumericConstant:1"]
+1030    LET L(I) = I
+ ScalarValue:I
+ ScalarReference:L
+ ScalarValue:I
+ AssignmentOperator:=
+1040 NEXT I
+ VariableToken:I
+1050 RETURN
+ 
+1060
+2000 REM DEAL A CARD
+ RemarkToken:DEAL A CARD
+2010 LET I = INT(52*RND(1))
+ ScalarReference:I
+ NumericConstant:52
+ NumericConstant:1
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ AssignmentOperator:=
+2020 LET X = L(I)
+ ScalarReference:X
+ ScalarValue:I
+ ScalarValue:L
+ AssignmentOperator:=
+2030 IF X < 0 THEN 2010
+ ScalarValue:X
+ NumericConstant:0
+ BinaryOperator:<
+2040 LET L(I) = -1
+ ScalarValue:I
+ ScalarReference:L
+ NumericConstant:1
+ UnaryOperator:-
+ AssignmentOperator:=
+2050 RETURN
+ 
+2060
+3000 REM PRINT A CARD
+ RemarkToken:PRINT A CARD
+3010 LET S = INT(X/13)
+ ScalarReference:S
+ ScalarValue:X
+ NumericConstant:13
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+3020 LET V = X - 13*S
+ ScalarReference:V
+ ScalarValue:X
+ NumericConstant:13
+ ScalarValue:S
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+3030 IF S > 0 THEN 3060
+ ScalarValue:S
+ NumericConstant:0
+ BinaryOperator:>
+3040 PRINT "CLUB  ";
+ ITEMS
+ TextConstant:"CLUB  "
+ CarriageControl:;
+3050 GOTO 3500
+ LineNumber:3500
+3060 IF S > 1 THEN 3090
+ ScalarValue:S
+ NumericConstant:1
+ BinaryOperator:>
+3070 PRINT "DIAMOND  ";
+ ITEMS
+ TextConstant:"DIAMOND  "
+ CarriageControl:;
+3080 GOTO 3500
+ LineNumber:3500
+3090 IF S > 2 THEN 3120
+ ScalarValue:S
+ NumericConstant:2
+ BinaryOperator:>
+3100 PRINT "HEART  ";
+ ITEMS
+ TextConstant:"HEART  "
+ CarriageControl:;
+3110 GOTO 3500
+ LineNumber:3500
+3120 PRINT "SPADE  ";
+ ITEMS
+ TextConstant:"SPADE  "
+ CarriageControl:;
+3130
+3500 IF V > 8 THEN 3530
+ ScalarValue:V
+ NumericConstant:8
+ BinaryOperator:>
+3510 PRINT V + 2
+ ITEMS
+ ScalarValue:V
+ NumericConstant:2
+ BinaryOperator:+
+ CarriageControl:NL
+3520 RETURN
+ 
+3530 IF V > 9 THEN 3560
+ ScalarValue:V
+ NumericConstant:9
+ BinaryOperator:>
+3540 PRINT "JACK"
+ ITEMS
+ TextConstant:"JACK"
+ CarriageControl:NL
+3550 RETURN
+ 
+3560 IF V > 10 THEN 3590
+ ScalarValue:V
+ NumericConstant:10
+ BinaryOperator:>
+3570 PRINT "QUEEN"
+ ITEMS
+ TextConstant:"QUEEN"
+ CarriageControl:NL
+3580 RETURN
+ 
+3590 IF V > 11 THEN 3620
+ ScalarValue:V
+ NumericConstant:11
+ BinaryOperator:>
+3600 PRINT "KING"
+ ITEMS
+ TextConstant:"KING"
+ CarriageControl:NL
+3610 RETURN
+ 
+3620 PRINT "ACE"
+ ITEMS
+ TextConstant:"ACE"
+ CarriageControl:NL
+3630 RETURN
+ 
+9999 END
+ 

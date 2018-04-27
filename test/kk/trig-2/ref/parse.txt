@@ -1,0 +1,86 @@
+100 REM ANGLE-SIDE-ANGLE
+ RemarkToken:ANGLE-SIDE-ANGLE
+110 LET P = 3.14159625
+ ScalarReference:P
+ NumericConstant:3.14159625
+ AssignmentOperator:=
+120 DEF FND(X) = X*P/180
+ ScalarValue:X
+ ScalarValue:P
+ BinaryOperator:*
+ NumericConstant:180
+ BinaryOperator:/
+130 DEF FNS(X) = SIN(FND(X))
+ ScalarValue:X
+ UserFunction
+ FunctionSin
+140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
+ ITEMS
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"SECOND SIDE"
+ CarriageControl:,
+ TextConstant:"THIRD SIDE"
+ CarriageControl:NL
+150 READ A,X,B
+ ScalarReference:A
+ ScalarReference:X
+ ScalarReference:B
+160 LET C = 180 - A - B
+ ScalarReference:C
+ NumericConstant:180
+ ScalarValue:A
+ BinaryOperator:-
+ ScalarValue:B
+ BinaryOperator:-
+ AssignmentOperator:=
+170 LET Y = X*FNS(B)/FNS(C)
+ ScalarReference:Y
+ ScalarValue:X
+ ScalarValue:B
+ UserFunction
+ BinaryOperator:*
+ ScalarValue:C
+ UserFunction
+ BinaryOperator:/
+ AssignmentOperator:=
+180 LET Z = X*FNS(A)/FNS(C)
+ ScalarReference:Z
+ ScalarValue:X
+ ScalarValue:A
+ UserFunction
+ BinaryOperator:*
+ ScalarValue:C
+ UserFunction
+ BinaryOperator:/
+ AssignmentOperator:=
+190 PRINT A,X,B,Y,Z
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:Y
+ CarriageControl:,
+ ScalarValue:Z
+ CarriageControl:NL
+200 GOTO 150
+ LineNumber:150
+210 DATA 60,5,60, 60,5,90, 15,10,63
+ NumericConstant:60
+ NumericConstant:5
+ NumericConstant:60
+ NumericConstant:60
+ NumericConstant:5
+ NumericConstant:90
+ NumericConstant:15
+ NumericConstant:10
+ NumericConstant:63
+220 END
+ 

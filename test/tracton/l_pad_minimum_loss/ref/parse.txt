@@ -1,0 +1,108 @@
+10 REM THIS PROGRAM COMPUTES THE VALUES OF
+ RemarkToken:THIS PROGRAM COMPUTES THE VALUES OF
+20 REM THE TWO RESISTANCES REQUIRED TO CONSTRUCT A
+ RemarkToken:THE TWO RESISTANCES REQUIRED TO CONSTRUCT A
+30 REM L-PAD OF MINIMUM LOSS
+ RemarkToken:L-PAD OF MINIMUM LOSS
+40 PRINT "1ST IMPEDANCE"
+ ITEMS
+ TextConstant:"1ST IMPEDANCE"
+ CarriageControl:NL
+50 INPUT Z1
+ ScalarReference:Z1
+60 PRINT "2ND IMPEDANCE"
+ ITEMS
+ TextConstant:"2ND IMPEDANCE"
+ CarriageControl:NL
+70 INPUT Z2
+ ScalarReference:Z2
+80 LET R1 = Z1*SQR(1 - (Z2/Z1))
+ ScalarReference:R1
+ ScalarValue:Z1
+ NumericConstant:1
+ ScalarValue:Z2
+ ScalarValue:Z1
+ BinaryOperator:/
+ BinaryOperator:-
+ FunctionSqr
+ BinaryOperator:*
+ AssignmentOperator:=
+90 LET R2 = Z2/SQR(1 - (Z2/Z1))
+ ScalarReference:R2
+ ScalarValue:Z2
+ NumericConstant:1
+ ScalarValue:Z2
+ ScalarValue:Z1
+ BinaryOperator:/
+ BinaryOperator:-
+ FunctionSqr
+ BinaryOperator:/
+ AssignmentOperator:=
+100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
+ ScalarReference:M
+ ScalarValue:Z1
+ ScalarValue:Z2
+ BinaryOperator:/
+ FunctionSqr
+ ScalarValue:Z1
+ ScalarValue:Z2
+ BinaryOperator:/
+ NumericConstant:1
+ BinaryOperator:-
+ FunctionSqr
+ BinaryOperator:+
+ AssignmentOperator:=
+110 LET L = 20*(LOG(M)/LOG(10))
+ ScalarReference:L
+ NumericConstant:20
+ ScalarValue:M
+ FunctionLog
+ NumericConstant:10
+ FunctionLog
+ BinaryOperator:/
+ BinaryOperator:*
+ AssignmentOperator:=
+120 PRINT "COMPONENTS OF THE L-PAD"
+ ITEMS
+ TextConstant:"COMPONENTS OF THE L-PAD"
+ CarriageControl:NL
+130 PRINT "RESISTOR 1 = ";R1
+ ITEMS
+ TextConstant:"RESISTOR 1 = "
+ CarriageControl:;
+ ScalarValue:R1
+ CarriageControl:NL
+140 PRINT "RESISTOR 2 = ";R2
+ ITEMS
+ TextConstant:"RESISTOR 2 = "
+ CarriageControl:;
+ ScalarValue:R2
+ CarriageControl:NL
+150 PRINT "LOSS IN DECIBELS = ";L
+ ITEMS
+ TextConstant:"LOSS IN DECIBELS = "
+ CarriageControl:;
+ ScalarValue:L
+ CarriageControl:NL
+160 PRINT
+ ITEMS
+ CarriageControl:NL
+170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+180 INPUT X
+ ScalarReference:X
+190 IF X = 1 THEN 210
+ ScalarValue:X
+ NumericConstant:1
+ BinaryOperator:=
+200 STOP
+ 
+210 PRINT
+ ITEMS
+ CarriageControl:NL
+220 GOTO 40
+ LineNumber:40
+230 END
+ 

@@ -1,0 +1,198 @@
+10 DIM A(100), X(100), T(100,2)
+ NumericConstant:100
+ CompoundDeclaration:A
+ NumericConstant:100
+ CompoundDeclaration:X
+ NumericConstant:100
+ NumericConstant:2
+ CompoundDeclaration:T
+20 READ N
+ ScalarReference:N
+30 FOR I = 0 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+40 READ A(I)
+ ScalarValue:I
+ ScalarReference:A
+50 NEXT I
+ VariableToken:I
+60 READ X9
+ ScalarReference:X9
+70 FOR J = 1 TO X9
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:X9"]
+ step:    ["NumericConstant:1"]
+80 READ X(J)
+ ScalarValue:J
+ ScalarReference:X
+90 NEXT J
+ VariableToken:J
+95
+100 REM  MAIN ROUTINE.
+ RemarkToken: MAIN ROUTINE.
+110 LET K = 0
+ ScalarReference:K
+ NumericConstant:0
+ AssignmentOperator:=
+120 GOSUB 500
+ LineNumber:500
+130 GOSUB 2000
+ LineNumber:2000
+140 LET K = 1
+ ScalarReference:K
+ NumericConstant:1
+ AssignmentOperator:=
+150 GOSUB 500
+ LineNumber:500
+160 GOSUB 2000
+ LineNumber:2000
+170 LET K = 2
+ ScalarReference:K
+ NumericConstant:2
+ AssignmentOperator:=
+180 GOSUB 500
+ LineNumber:500
+190
+200 REM  PRINT ANSWERS.
+ RemarkToken: PRINT ANSWERS.
+210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
+ ITEMS
+ TextConstant:" X"
+ CarriageControl:,
+ TextConstant:"POLY."
+ CarriageControl:,
+ TextConstant:"1ST DER."
+ CarriageControl:,
+ TextConstant:"2D DER."
+ CarriageControl:NL
+220 PRINT
+ ITEMS
+ CarriageControl:NL
+230 FOR J = 1 TO X9
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:X9"]
+ step:    ["NumericConstant:1"]
+240 PRINT X(J), T(J,0), T(J,1), T(J,2)
+ ITEMS
+ ScalarValue:J
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:J
+ NumericConstant:0
+ ScalarValue:T
+ CarriageControl:,
+ ScalarValue:J
+ NumericConstant:1
+ ScalarValue:T
+ CarriageControl:,
+ ScalarValue:J
+ NumericConstant:2
+ ScalarValue:T
+ CarriageControl:NL
+250 NEXT J
+ VariableToken:J
+260 STOP
+ 
+270
+500 REM  RUN THROUGH X-VALUES
+ RemarkToken: RUN THROUGH X-VALUES
+510 FOR J = 1 TO X9
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:X9"]
+ step:    ["NumericConstant:1"]
+520 LET X = X(J)
+ ScalarReference:X
+ ScalarValue:J
+ ScalarValue:X
+ AssignmentOperator:=
+530 GOSUB 1000
+ LineNumber:1000
+540 LET T(J,K) = Y
+ ScalarValue:J
+ ScalarValue:K
+ ScalarReference:T
+ ScalarValue:Y
+ AssignmentOperator:=
+550 NEXT J
+ VariableToken:J
+560 RETURN
+ 
+570
+1000 REM  EVALUATE.
+ RemarkToken: EVALUATE.
+1010 LET Y = 0
+ ScalarReference:Y
+ NumericConstant:0
+ AssignmentOperator:=
+1020 FOR I = 0 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+1030 LET Y = Y*X + A(I)
+ ScalarReference:Y
+ ScalarValue:Y
+ ScalarValue:X
+ BinaryOperator:*
+ ScalarValue:I
+ ScalarValue:A
+ BinaryOperator:+
+ AssignmentOperator:=
+1040 NEXT I
+ VariableToken:I
+1050 RETURN
+ 
+1060
+2000 REM  DIFFERENTIATE.
+ RemarkToken: DIFFERENTIATE.
+2010 FOR I = 0 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+2020 LET A(I) = A(I)*(N-I)
+ ScalarValue:I
+ ScalarReference:A
+ ScalarValue:I
+ ScalarValue:A
+ ScalarValue:N
+ ScalarValue:I
+ BinaryOperator:-
+ BinaryOperator:*
+ AssignmentOperator:=
+2030 NEXT I
+ VariableToken:I
+2040 LET N = N-1
+ ScalarReference:N
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+2050 RETURN
+ 
+2060
+9000 DATA 2, 2, -3, 1
+ NumericConstant:2
+ NumericConstant:2
+ NumericConstant:3
+ UnaryOperator:-
+ NumericConstant:1
+9100 DATA 8, -3, -1, 0, 0.5, 0.75, 1, 2.5, 5
+ NumericConstant:8
+ NumericConstant:3
+ UnaryOperator:-
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:0
+ NumericConstant:0.5
+ NumericConstant:0.75
+ NumericConstant:1
+ NumericConstant:2.5
+ NumericConstant:5
+9999 END
+ 

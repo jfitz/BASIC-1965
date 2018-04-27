@@ -1,0 +1,54 @@
+10 REM THIS PROGRAM COMPUTES THE ARITHMETIC
+ RemarkToken:THIS PROGRAM COMPUTES THE ARITHMETIC
+20 REM MEAN
+ RemarkToken:MEAN
+30 LET X = 0
+ ScalarReference:X
+ NumericConstant:0
+ AssignmentOperator:=
+40 LET N = 0
+ ScalarReference:N
+ NumericConstant:0
+ AssignmentOperator:=
+50 PRINT "ENTER SAMPLE";
+ ITEMS
+ TextConstant:"ENTER SAMPLE"
+ CarriageControl:;
+60 INPUT W
+ ScalarReference:W
+70 LET N = N + 1
+ ScalarReference:N
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+80 LET X = X + W
+ ScalarReference:X
+ ScalarValue:X
+ ScalarValue:W
+ BinaryOperator:+
+ AssignmentOperator:=
+90 LET A = X/N
+ ScalarReference:A
+ ScalarValue:X
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+100 PRINT "N = "; N, "SAMPLE ="; W,"CURRENT MEAN = ";A
+ ITEMS
+ TextConstant:"N = "
+ CarriageControl:;
+ ScalarValue:N
+ CarriageControl:,
+ TextConstant:"SAMPLE ="
+ CarriageControl:;
+ ScalarValue:W
+ CarriageControl:,
+ TextConstant:"CURRENT MEAN = "
+ CarriageControl:;
+ ScalarValue:A
+ CarriageControl:NL
+110 GOTO 50
+ LineNumber:50
+120 END
+ 

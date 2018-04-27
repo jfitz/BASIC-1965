@@ -1,0 +1,125 @@
+10 REM THIS PROGRAM COMPUTES N EQUALLY SPACED
+ RemarkToken:THIS PROGRAM COMPUTES N EQUALLY SPACED
+20 REM POINTS ON THE CIRCUMFERENCE OF A CIRCLE
+ RemarkToken:POINTS ON THE CIRCUMFERENCE OF A CIRCLE
+30 PRINT "CENTER OF CIRCLE (X0,Y0) = ";
+ ITEMS
+ TextConstant:"CENTER OF CIRCLE (X0,Y0) = "
+ CarriageControl:;
+40 INPUT X0,Y0
+ ScalarReference:X0
+ ScalarReference:Y0
+50 PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
+ ITEMS
+ TextConstant:"ANGLE IN DEGREES OF 1ST POINT = "
+ CarriageControl:;
+60 INPUT W
+ ScalarReference:W
+70 LET W = (W*3.14159)/180
+ ScalarReference:W
+ ScalarValue:W
+ NumericConstant:3.14159
+ BinaryOperator:*
+ NumericConstant:180
+ BinaryOperator:/
+ AssignmentOperator:=
+80 PRINT "NUMBER OF POINTS DESIRED = ";
+ ITEMS
+ TextConstant:"NUMBER OF POINTS DESIRED = "
+ CarriageControl:;
+90 INPUT N
+ ScalarReference:N
+100 PRINT "RADIUS OF CIRCLE = ";
+ ITEMS
+ TextConstant:"RADIUS OF CIRCLE = "
+ CarriageControl:;
+110 INPUT R
+ ScalarReference:R
+120 LET Z = 6.28319/N
+ ScalarReference:Z
+ NumericConstant:6.28319
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "COORDINATES"
+ ITEMS
+ TextConstant:"COORDINATES"
+ CarriageControl:NL
+150 FOR I = 0 TO N - 1
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+160 LET X = X0 + (R*COS(W + (Z*I)))
+ ScalarReference:X
+ ScalarValue:X0
+ ScalarValue:R
+ ScalarValue:W
+ ScalarValue:Z
+ ScalarValue:I
+ BinaryOperator:*
+ BinaryOperator:+
+ FunctionCos
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+170 LET Y = Y0 + (R*SIN(W + (Z*I)))
+ ScalarReference:Y
+ ScalarValue:Y0
+ ScalarValue:R
+ ScalarValue:W
+ ScalarValue:Z
+ ScalarValue:I
+ BinaryOperator:*
+ BinaryOperator:+
+ FunctionSin
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+180 LET P = I + 1
+ ScalarReference:P
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+190 PRINT "POINT:";P,"X = ";X,"Y = ";Y
+ ITEMS
+ TextConstant:"POINT:"
+ CarriageControl:;
+ ScalarValue:P
+ CarriageControl:,
+ TextConstant:"X = "
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:,
+ TextConstant:"Y = "
+ CarriageControl:;
+ ScalarValue:Y
+ CarriageControl:NL
+200 NEXT I
+ VariableToken:I
+210 PRINT
+ ITEMS
+ CarriageControl:NL
+220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+230 INPUT L
+ ScalarReference:L
+240 IF L = 1 THEN 260
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+250 STOP
+ 
+260 PRINT
+ ITEMS
+ CarriageControl:NL
+270 GOTO 30
+ LineNumber:30
+280 END
+ 

@@ -1,0 +1,74 @@
+5 PRINT
+ ITEMS
+ CarriageControl:NL
+10 PRINT "A, R, Y, T";
+ ITEMS
+ TextConstant:"A, R, Y, T"
+ CarriageControl:;
+20 INPUT A, R, Y, T
+ ScalarReference:A
+ ScalarReference:R
+ ScalarReference:Y
+ ScalarReference:T
+26 IF T = 999 THEN 999
+ ScalarValue:T
+ NumericConstant:999
+ BinaryOperator:=
+30 IF A <= 0 THEN 100
+ ScalarValue:A
+ NumericConstant:0
+ BinaryOperator:<=
+40 IF R <= 0 THEN 100
+ ScalarValue:R
+ NumericConstant:0
+ BinaryOperator:<=
+50 IF Y <= 0 THEN 100
+ ScalarValue:Y
+ NumericConstant:0
+ BinaryOperator:<=
+60 IF T <= 0 THEN 100
+ ScalarValue:T
+ NumericConstant:0
+ BinaryOperator:<=
+70 LET N = Y*T
+ ScalarReference:N
+ ScalarValue:Y
+ ScalarValue:T
+ BinaryOperator:*
+ AssignmentOperator:=
+80 LET R1 = R/100/T
+ ScalarReference:R1
+ ScalarValue:R
+ NumericConstant:100
+ BinaryOperator:/
+ ScalarValue:T
+ BinaryOperator:/
+ AssignmentOperator:=
+90 LET B = A*(1+R1)^N
+ ScalarReference:B
+ ScalarValue:A
+ NumericConstant:1
+ ScalarValue:R1
+ BinaryOperator:+
+ ScalarValue:N
+ BinaryOperator:^
+ BinaryOperator:*
+ AssignmentOperator:=
+95 PRINT "FINAL AMOUNT = $" B
+ ITEMS
+ TextConstant:"FINAL AMOUNT = $"
+ CarriageControl:
+ ScalarValue:B
+ CarriageControl:NL
+96 GOTO 5
+ LineNumber:5
+100 REM ERROR ROUTINE
+ RemarkToken:ERROR ROUTINE
+110 PRINT "INCORRECT DATA. PLEASE RETYPE."
+ ITEMS
+ TextConstant:"INCORRECT DATA. PLEASE RETYPE."
+ CarriageControl:NL
+120 GOTO 5
+ LineNumber:5
+999 END
+ 

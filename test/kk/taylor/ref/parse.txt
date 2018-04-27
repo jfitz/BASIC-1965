@@ -1,0 +1,81 @@
+10 READ X,N
+ ScalarReference:X
+ ScalarReference:N
+20 LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+25 LET F = 1
+ ScalarReference:F
+ NumericConstant:1
+ AssignmentOperator:=
+30 FOR I = 1 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+40 LET K = 2*I-1
+ ScalarReference:K
+ NumericConstant:2
+ ScalarValue:I
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+50 LET S = S + F*X^K/K
+ ScalarReference:S
+ ScalarValue:S
+ ScalarValue:F
+ ScalarValue:X
+ ScalarValue:K
+ BinaryOperator:^
+ BinaryOperator:*
+ ScalarValue:K
+ BinaryOperator:/
+ BinaryOperator:+
+ AssignmentOperator:=
+60 LET F = -F
+ ScalarReference:F
+ ScalarValue:F
+ UnaryOperator:-
+ AssignmentOperator:=
+70 NEXT I
+ VariableToken:I
+80 PRINT "ATN OF " X; "= " ATN(X)
+ ITEMS
+ TextConstant:"ATN OF "
+ CarriageControl:
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:"= "
+ CarriageControl:
+ ScalarValue:X
+ FunctionAtn
+ CarriageControl:NL
+85 PRINT N; "TERMS OF THE SERIES YIELD " S
+ ITEMS
+ ScalarValue:N
+ CarriageControl:;
+ TextConstant:"TERMS OF THE SERIES YIELD "
+ CarriageControl:
+ ScalarValue:S
+ CarriageControl:NL
+90 PRINT
+ ITEMS
+ CarriageControl:NL
+91 GOTO 10
+ LineNumber:10
+95 DATA 0.5, 2, 0.5, 5, 0.5, 10, -0.75, 10, 0.99, 10
+ NumericConstant:0.5
+ NumericConstant:2
+ NumericConstant:0.5
+ NumericConstant:5
+ NumericConstant:0.5
+ NumericConstant:10
+ NumericConstant:0.75
+ UnaryOperator:-
+ NumericConstant:10
+ NumericConstant:0.99
+ NumericConstant:10
+99 END
+ 

@@ -1,0 +1,22 @@
+10 REM This is a test
+ RemarkToken:This is a test
+20 DATA 10,20,30
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:30
+30 READ A,B,C
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+40 PRINT "Number"; B; C
+ ITEMS
+ TextConstant:"Number"
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 

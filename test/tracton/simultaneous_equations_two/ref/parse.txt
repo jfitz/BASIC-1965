@@ -1,0 +1,106 @@
+10 REM THIS PROGRAM COMPUTES TO SIMULTANEOUS EQUATIONS
+ RemarkToken:THIS PROGRAM COMPUTES TO SIMULTANEOUS EQUATIONS
+20 REM IN TWO UNKNOWNS
+ RemarkToken:IN TWO UNKNOWNS
+30 PRINT "AX + BY = E"
+ ITEMS
+ TextConstant:"AX + BY = E"
+ CarriageControl:NL
+40 PRINT "CX + DY = F"
+ ITEMS
+ TextConstant:"CX + DY = F"
+ CarriageControl:NL
+50 PRINT "ENTER PARAMETERS A,B,C,D,E,F"
+ ITEMS
+ TextConstant:"ENTER PARAMETERS A,B,C,D,E,F"
+ CarriageControl:NL
+60 INPUT A,B,C,D,E,F
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+ ScalarReference:D
+ ScalarReference:E
+ ScalarReference:F
+70 LET M = (A*D) - (B*C)
+ ScalarReference:M
+ ScalarValue:A
+ ScalarValue:D
+ BinaryOperator:*
+ ScalarValue:B
+ ScalarValue:C
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+80 IF M = 0 THEN 140
+ ScalarValue:M
+ NumericConstant:0
+ BinaryOperator:=
+90 LET X = ((E*D) - (B*F))/M
+ ScalarReference:X
+ ScalarValue:E
+ ScalarValue:D
+ BinaryOperator:*
+ ScalarValue:B
+ ScalarValue:F
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+100 LET Y = ((A*F) - (E*C))/M
+ ScalarReference:Y
+ ScalarValue:A
+ ScalarValue:F
+ BinaryOperator:*
+ ScalarValue:E
+ ScalarValue:C
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+110 PRINT "SOLUTION","X = ";X,"Y = ";Y
+ ITEMS
+ TextConstant:"SOLUTION"
+ CarriageControl:,
+ TextConstant:"X = "
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:,
+ TextConstant:"Y = "
+ CarriageControl:;
+ ScalarValue:Y
+ CarriageControl:NL
+120 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+130 GOTO 160
+ LineNumber:160
+140 PRINT "NO SOLUTION, OR NO UNIQUE SOLUTION EXISTS"
+ ITEMS
+ TextConstant:"NO SOLUTION, OR NO UNIQUE SOLUTION EXISTS"
+ CarriageControl:NL
+150 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+160 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+170 INPUT L
+ ScalarReference:L
+180 IF L = 1 THEN 200
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+190 STOP
+ 
+200 PRINT
+ ITEMS
+ CarriageControl:NL
+210 GOTO 30
+ LineNumber:30
+220 END
+ 

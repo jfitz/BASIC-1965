@@ -1,0 +1,41 @@
+10 DIM A(20)
+ NumericConstant:20
+ CompoundDeclaration:A
+20 FOR I = 1 TO 20
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:20"]
+ step:    ["NumericConstant:1"]
+30 LET A(I) = I
+ ScalarValue:I
+ ScalarReference:A
+ ScalarValue:I
+ AssignmentOperator:=
+40 NEXT I
+ VariableToken:I
+100 TRACE I > 0
+ ScalarValue:I
+ NumericConstant:0
+ BinaryOperator:>
+110 PRINT "START REPORT"
+ ITEMS
+ TextConstant:"START REPORT"
+ CarriageControl:NL
+120 FOR I = 4 TO 7
+ control: VariableToken:I
+ start:   ["NumericConstant:4"]
+ end:     ["NumericConstant:7"]
+ step:    ["NumericConstant:1"]
+130 PRINT A(I)
+ ITEMS
+ ScalarValue:I
+ ScalarValue:A
+ CarriageControl:NL
+140 NEXT I
+ VariableToken:I
+150 TRACE I = 0
+ ScalarValue:I
+ NumericConstant:0
+ BinaryOperator:=
+900 END
+ 

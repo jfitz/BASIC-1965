@@ -1,0 +1,39 @@
+10 READ N,I
+ ScalarReference:N
+ ScalarReference:I
+20 LET B = 1
+ ScalarReference:B
+ NumericConstant:1
+ AssignmentOperator:=
+30 FOR K = 1 TO I
+ control: VariableToken:K
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:I"]
+ step:    ["NumericConstant:1"]
+40 LET B = B*(N-K+1)/K
+ ScalarReference:B
+ ScalarValue:B
+ ScalarValue:N
+ ScalarValue:K
+ BinaryOperator:-
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ ScalarValue:K
+ BinaryOperator:/
+ AssignmentOperator:=
+50 NEXT K
+ VariableToken:K
+60 PRINT B
+ ITEMS
+ ScalarValue:B
+ CarriageControl:NL
+70 STOP
+ 
+90 DATA 10,4
+ NumericConstant:10
+ NumericConstant:4
+98 RETURN
+ 
+100 END
+ 

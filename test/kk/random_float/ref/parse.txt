@@ -1,0 +1,14 @@
+10 FOR I = 1 TO 30
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:30"]
+ step:    ["NumericConstant:1"]
+20    PRINT RND(1),
+ ITEMS
+ NumericConstant:1
+ FunctionRnd
+ CarriageControl:,
+30 NEXT I
+ VariableToken:I
+99 END
+ 

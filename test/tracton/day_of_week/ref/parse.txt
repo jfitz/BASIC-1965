@@ -1,0 +1,164 @@
+10 REM THIS PROGRAM COMPUTES THE DAY OF THE WEEK
+ RemarkToken:THIS PROGRAM COMPUTES THE DAY OF THE WEEK
+20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
+ RemarkToken:RESTRICTION: THE DATE MUST BE AFTER 1752
+30 LET J$(1) = "SUNDAY"
+ Token 'InvalidToken:$' is not a value or operator
+40 LET J$(2) = "MONDAY"
+ Token 'InvalidToken:$' is not a value or operator
+50 LET J$(3) = "TUESDAY"
+ Token 'InvalidToken:$' is not a value or operator
+60 LET J$(4) = "WEDNESDAY"
+ Token 'InvalidToken:$' is not a value or operator
+70 LET J$(5) = "THURSDAY"
+ Token 'InvalidToken:$' is not a value or operator
+80 LET J$(6) = "FRIDAY"
+ Token 'InvalidToken:$' is not a value or operator
+90 LET J$(7) = "SATURDAY"
+ Token 'InvalidToken:$' is not a value or operator
+100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+ ITEMS
+ TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+ CarriageControl:NL
+110 INPUT D,M,Y
+ ScalarReference:D
+ ScalarReference:M
+ ScalarReference:Y
+120 IF Y > 1752 THEN 150
+ ScalarValue:Y
+ NumericConstant:1752
+ BinaryOperator:>
+130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
+ ITEMS
+ TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
+ CarriageControl:NL
+140 GOTO 100
+ LineNumber:100
+150 LET K = INT(0.6 + (1/M))
+ ScalarReference:K
+ NumericConstant:0.6
+ NumericConstant:1
+ ScalarValue:M
+ BinaryOperator:/
+ BinaryOperator:+
+ FunctionInt
+ AssignmentOperator:=
+160 LET L = Y - K
+ ScalarReference:L
+ ScalarValue:Y
+ ScalarValue:K
+ BinaryOperator:-
+ AssignmentOperator:=
+170 LET O = M + 12*K
+ ScalarReference:O
+ ScalarValue:M
+ NumericConstant:12
+ ScalarValue:K
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+180 LET P = L/100
+ ScalarReference:P
+ ScalarValue:L
+ NumericConstant:100
+ BinaryOperator:/
+ AssignmentOperator:=
+190 LET Z1 = INT(P/4)
+ ScalarReference:Z1
+ ScalarValue:P
+ NumericConstant:4
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+200 LET Z2 = INT(P)
+ ScalarReference:Z2
+ ScalarValue:P
+ FunctionInt
+ AssignmentOperator:=
+210 LET Z3 = INT((5*L)/4)
+ ScalarReference:Z3
+ NumericConstant:5
+ ScalarValue:L
+ BinaryOperator:*
+ NumericConstant:4
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+220 LET Z4 = INT (13*(O + 1)/5)
+ ScalarReference:Z4
+ NumericConstant:13
+ ScalarValue:O
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ NumericConstant:5
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
+ ScalarReference:Z
+ ScalarValue:Z4
+ ScalarValue:Z3
+ BinaryOperator:+
+ ScalarValue:Z2
+ BinaryOperator:-
+ ScalarValue:Z1
+ BinaryOperator:+
+ ScalarValue:D
+ BinaryOperator:+
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+240 LET Z=Z - (7*INT(Z/7)) + 1
+ ScalarReference:Z
+ ScalarValue:Z
+ NumericConstant:7
+ ScalarValue:Z
+ NumericConstant:7
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:*
+ BinaryOperator:-
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+260 PRINT
+ ITEMS
+ CarriageControl:NL
+270 PRINT "FOR NEXT DATE TYPE IN YES, IF NOT"
+ ITEMS
+ TextConstant:"FOR NEXT DATE TYPE IN YES, IF NOT"
+ CarriageControl:NL
+280 PRINT "TYPE NO"
+ ITEMS
+ TextConstant:"TYPE NO"
+ CarriageControl:NL
+290 INPUT L$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+300 IF L$ = "YES" THEN 340
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+310 IF L$ = "NO" THEN 360
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+320 PRINT "INVALID COMMAND"
+ ITEMS
+ TextConstant:"INVALID COMMAND"
+ CarriageControl:NL
+330 GOTO 270
+ LineNumber:270
+340 PRINT
+ ITEMS
+ CarriageControl:NL
+350 GOTO 30
+ LineNumber:30
+360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
+ ITEMS
+ TextConstant:"DAY OF THE WEEK SAYS GOOD-BYE"
+ CarriageControl:NL
+370 END
+ 

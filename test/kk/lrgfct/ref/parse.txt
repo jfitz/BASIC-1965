@@ -1,0 +1,41 @@
+10 PRINT "NUMBER", "LARGEST FACTOR"
+ ITEMS
+ TextConstant:"NUMBER"
+ CarriageControl:,
+ TextConstant:"LARGEST FACTOR"
+ CarriageControl:NL
+20 FOR N = 1001 TO 1020 STEP 2
+ control: VariableToken:N
+ start:   ["NumericConstant:1001"]
+ end:     ["NumericConstant:1020"]
+ step:    ["NumericConstant:2"]
+30 PRINT N,
+ ITEMS
+ ScalarValue:N
+ CarriageControl:,
+40 FOR F = INT(N/2) TO 1 STEP -1
+ control: VariableToken:F
+ start:   ["ScalarValue:N", "NumericConstant:2", "BinaryOperator:/", "FunctionInt"]
+ end:     ["NumericConstant:1"]
+ step:    ["NumericConstant:1", "UnaryOperator:-"]
+50 IF N/F <> INT(N/F) THEN 80
+ ScalarValue:N
+ ScalarValue:F
+ BinaryOperator:/
+ ScalarValue:N
+ ScalarValue:F
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:<>
+60 PRINT F
+ ITEMS
+ ScalarValue:F
+ CarriageControl:NL
+70 GOTO 90
+ LineNumber:90
+80 NEXT F
+ VariableToken:F
+90 NEXT N
+ VariableToken:N
+99 END
+ 

@@ -1,0 +1,56 @@
+10 FOR I = 1 TO 3
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+20 FOR J = 1 TO 2
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:2"]
+ step:    ["NumericConstant:1"]
+30 LET A(I,J) = I * J
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:A
+ ScalarValue:I
+ ScalarValue:J
+ BinaryOperator:*
+ AssignmentOperator:=
+40 NEXT J
+ VariableToken:J
+50 NEXT I
+ VariableToken:I
+55 PRINT "I","J","PRODUCT"
+ ITEMS
+ TextConstant:"I"
+ CarriageControl:,
+ TextConstant:"J"
+ CarriageControl:,
+ TextConstant:"PRODUCT"
+ CarriageControl:NL
+60 FOR I = 1 TO 3
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+70 FOR J = 1 TO 2
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:2"]
+ step:    ["NumericConstant:1"]
+80 PRINT I, J, A(I,J)
+ ITEMS
+ ScalarValue:I
+ CarriageControl:,
+ ScalarValue:J
+ CarriageControl:,
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:A
+ CarriageControl:NL
+90 NEXT J
+ VariableToken:J
+100 NEXT I
+ VariableToken:I
+999 END
+ 

@@ -1,0 +1,679 @@
+10 DIM S(4,100), P(6,6), M(100)
+ NumericConstant:4
+ NumericConstant:100
+ CompoundDeclaration:S
+ NumericConstant:6
+ NumericConstant:6
+ CompoundDeclaration:P
+ NumericConstant:100
+ CompoundDeclaration:M
+20 DEF FNC(X) = X-7*INT(X/7)
+ ScalarValue:X
+ NumericConstant:7
+ ScalarValue:X
+ NumericConstant:7
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:*
+ BinaryOperator:-
+30 PRINT "NOTE NUMBER", "CHORD",
+ ITEMS
+ TextConstant:"NOTE NUMBER"
+ CarriageControl:,
+ TextConstant:"CHORD"
+ CarriageControl:,
+40 PRINT " S     A     T     B"
+ ITEMS
+ TextConstant:" S     A     T     B"
+ CarriageControl:NL
+50 PRINT
+ ITEMS
+ CarriageControl:NL
+60
+100 REM  INITIALIZE.
+ RemarkToken: INITIALIZE.
+110 MAT READ P
+ MatrixReference:P
+111 DATA 5,4,1,6,2,3, 6,4,2,1,5,3, 6,4,3,1,2,5
+ NumericConstant:5
+ NumericConstant:4
+ NumericConstant:1
+ NumericConstant:6
+ NumericConstant:2
+ NumericConstant:3
+ NumericConstant:6
+ NumericConstant:4
+ NumericConstant:2
+ NumericConstant:1
+ NumericConstant:5
+ NumericConstant:3
+ NumericConstant:6
+ NumericConstant:4
+ NumericConstant:3
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:5
+112 DATA 1,5,4,6,3,2, 2,6,5,4,1,3, 1,5,3,6,2,4
+ NumericConstant:1
+ NumericConstant:5
+ NumericConstant:4
+ NumericConstant:6
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:2
+ NumericConstant:6
+ NumericConstant:5
+ NumericConstant:4
+ NumericConstant:1
+ NumericConstant:3
+ NumericConstant:1
+ NumericConstant:5
+ NumericConstant:3
+ NumericConstant:6
+ NumericConstant:2
+ NumericConstant:4
+120 READ N9
+ ScalarReference:N9
+130 MAT READ M(N9)
+ ScalarValue:N9
+ MatrixReference:M
+140 DATA 28
+ NumericConstant:28
+150 DATA 2,1,0,2,1,0,7,5,7,4,2,0,1
+ NumericConstant:2
+ NumericConstant:1
+ NumericConstant:0
+ NumericConstant:2
+ NumericConstant:1
+ NumericConstant:0
+ NumericConstant:7
+ NumericConstant:5
+ NumericConstant:7
+ NumericConstant:4
+ NumericConstant:2
+ NumericConstant:0
+ NumericConstant:1
+160 DATA 2,1,0,2,1,0,7,5,7,4,2,0,1,1,0
+ NumericConstant:2
+ NumericConstant:1
+ NumericConstant:0
+ NumericConstant:2
+ NumericConstant:1
+ NumericConstant:0
+ NumericConstant:7
+ NumericConstant:5
+ NumericConstant:7
+ NumericConstant:4
+ NumericConstant:2
+ NumericConstant:0
+ NumericConstant:1
+ NumericConstant:1
+ NumericConstant:0
+190 FOR V = 0 TO 4
+ control: VariableToken:V
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:4"]
+ step:    ["NumericConstant:1"]
+200    READ S(V,N9)
+ ScalarValue:V
+ ScalarValue:N9
+ ScalarReference:S
+210 NEXT V
+ VariableToken:V
+220 DATA 1,0,-3,-5,-7
+ NumericConstant:1
+ NumericConstant:0
+ NumericConstant:3
+ UnaryOperator:-
+ NumericConstant:5
+ UnaryOperator:-
+ NumericConstant:7
+ UnaryOperator:-
+240 LET C2 = 1
+ ScalarReference:C2
+ NumericConstant:1
+ AssignmentOperator:=
+250
+450 FOR N = N9 TO 1 STEP -1
+ control: VariableToken:N
+ start:   ["ScalarValue:N9"]
+ end:     ["NumericConstant:1"]
+ step:    ["NumericConstant:1", "UnaryOperator:-"]
+460 IF N = N9 THEN 6000
+ ScalarValue:N
+ ScalarValue:N9
+ BinaryOperator:=
+500 REM  TEST CHORDS.
+ RemarkToken: TEST CHORDS.
+505 LET I1 = 1
+ ScalarReference:I1
+ NumericConstant:1
+ AssignmentOperator:=
+510 FOR I = I1 TO 6
+ control: VariableToken:I
+ start:   ["ScalarValue:I1"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+520 LET C2 = P(C1,I)
+ ScalarReference:C2
+ ScalarValue:C1
+ ScalarValue:I
+ ScalarValue:P
+ AssignmentOperator:=
+525 LET S(0,N) = C2
+ NumericConstant:0
+ ScalarValue:N
+ ScalarReference:S
+ ScalarValue:C2
+ AssignmentOperator:=
+530 LET S = M(N)
+ ScalarReference:S
+ ScalarValue:N
+ ScalarValue:M
+ AssignmentOperator:=
+540 LET S(1,N) = S
+ NumericConstant:1
+ ScalarValue:N
+ ScalarReference:S
+ ScalarValue:S
+ AssignmentOperator:=
+542
+545 REM  FIX ROOT
+ RemarkToken: FIX ROOT
+550 LET D(1) = C2-8
+ NumericConstant:1
+ ScalarReference:D
+ ScalarValue:C2
+ NumericConstant:8
+ BinaryOperator:-
+ AssignmentOperator:=
+560 LET D(2) = C2-15
+ NumericConstant:2
+ ScalarReference:D
+ ScalarValue:C2
+ NumericConstant:15
+ BinaryOperator:-
+ AssignmentOperator:=
+565 LET D = S(4,N+1)
+ ScalarReference:D
+ NumericConstant:4
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ AssignmentOperator:=
+570 FOR J = 1 TO 2
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:2"]
+ step:    ["NumericConstant:1"]
+580 IF ABS(D(J)-D) <= 5 THEN 610
+ ScalarValue:J
+ ScalarValue:D
+ ScalarValue:D
+ BinaryOperator:-
+ FunctionAbs
+ NumericConstant:5
+ BinaryOperator:<=
+590 LET R = D(3-J)
+ ScalarReference:R
+ NumericConstant:3
+ ScalarValue:J
+ BinaryOperator:-
+ ScalarValue:D
+ AssignmentOperator:=
+600 GOTO 660
+ LineNumber:660
+610 NEXT J
+ VariableToken:J
+620 IF S > S(1,N+1) THEN 650
+ ScalarValue:S
+ NumericConstant:1
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ BinaryOperator:>
+630 LET R = D(1)
+ ScalarReference:R
+ NumericConstant:1
+ ScalarValue:D
+ AssignmentOperator:=
+640 GOTO 660
+ LineNumber:660
+650 LET R = D(2)
+ ScalarReference:R
+ NumericConstant:2
+ ScalarValue:D
+ AssignmentOperator:=
+660 LET S(4,N) = R
+ NumericConstant:4
+ ScalarValue:N
+ ScalarReference:S
+ ScalarValue:R
+ AssignmentOperator:=
+670
+700 REM  FIND OTHER NOTES
+ RemarkToken: FIND OTHER NOTES
+705 LET J = 1
+ ScalarReference:J
+ NumericConstant:1
+ AssignmentOperator:=
+710 FOR K = 0 TO 4 STEP 2
+ control: VariableToken:K
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:4"]
+ step:    ["NumericConstant:2"]
+720 IF FNC(S-(R+K))=0 THEN 750
+ ScalarValue:S
+ ScalarValue:R
+ ScalarValue:K
+ BinaryOperator:+
+ BinaryOperator:-
+ UserFunction
+ NumericConstant:0
+ BinaryOperator:=
+730 LET B(J) = R+K
+ ScalarValue:J
+ ScalarReference:B
+ ScalarValue:R
+ ScalarValue:K
+ BinaryOperator:+
+ AssignmentOperator:=
+740 LET J = J+1
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+750 NEXT K
+ VariableToken:K
+760 IF J > 3 THEN 4000
+ ScalarValue:J
+ NumericConstant:3
+ BinaryOperator:>
+770
+800 FOR L = 0 TO 6
+ control: VariableToken:L
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+810 LET A = B(1)
+ ScalarReference:A
+ NumericConstant:1
+ ScalarValue:B
+ AssignmentOperator:=
+820 LET B = B(2)
+ ScalarReference:B
+ NumericConstant:2
+ ScalarValue:B
+ AssignmentOperator:=
+830 LET W(0,L) = 0
+ NumericConstant:0
+ ScalarValue:L
+ ScalarReference:W
+ NumericConstant:0
+ AssignmentOperator:=
+840 LET W(2,L) = B
+ NumericConstant:2
+ ScalarValue:L
+ ScalarReference:W
+ ScalarValue:B
+ AssignmentOperator:=
+850 LET W(3,L) = A
+ NumericConstant:3
+ ScalarValue:L
+ ScalarReference:W
+ ScalarValue:A
+ AssignmentOperator:=
+860 LET B(1) = B
+ NumericConstant:1
+ ScalarReference:B
+ ScalarValue:B
+ AssignmentOperator:=
+870 LET B(2) = A+7
+ NumericConstant:2
+ ScalarReference:B
+ ScalarValue:A
+ NumericConstant:7
+ BinaryOperator:+
+ AssignmentOperator:=
+880 NEXT L
+ VariableToken:L
+899
+1000 REM  TEST CASES IN W-TABLE
+ RemarkToken: TEST CASES IN W-TABLE
+1010 FOR L = 0 TO 6
+ control: VariableToken:L
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+1020 FOR V = 2 TO 3
+ control: VariableToken:V
+ start:   ["NumericConstant:2"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+1030 LET B = W(V,L)
+ ScalarReference:B
+ ScalarValue:V
+ ScalarValue:L
+ ScalarValue:W
+ AssignmentOperator:=
+1040 IF ABS(B-S(V,N+1)) > 5 THEN 1260
+ ScalarValue:B
+ ScalarValue:V
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ BinaryOperator:-
+ FunctionAbs
+ NumericConstant:5
+ BinaryOperator:>
+1050 IF B > 17-4*V THEN 1260
+ ScalarValue:B
+ NumericConstant:17
+ NumericConstant:4
+ ScalarValue:V
+ BinaryOperator:*
+ BinaryOperator:-
+ BinaryOperator:>
+1060 IF B < 5-4*V THEN 1260
+ ScalarValue:B
+ NumericConstant:5
+ NumericConstant:4
+ ScalarValue:V
+ BinaryOperator:*
+ BinaryOperator:-
+ BinaryOperator:<
+1070 LET S(V,N) = B
+ ScalarValue:V
+ ScalarValue:N
+ ScalarReference:S
+ ScalarValue:B
+ AssignmentOperator:=
+1080 IF S(2*V-3,N) <= S(2*V-2,N) THEN 1260
+ NumericConstant:2
+ ScalarValue:V
+ BinaryOperator:*
+ NumericConstant:3
+ BinaryOperator:-
+ ScalarValue:N
+ ScalarValue:S
+ NumericConstant:2
+ ScalarValue:V
+ BinaryOperator:*
+ NumericConstant:2
+ BinaryOperator:-
+ ScalarValue:N
+ ScalarValue:S
+ BinaryOperator:<=
+1090 NEXT V
+ VariableToken:V
+1095
+1100 REM  CHECK FOR BAD TRANSITIONS
+ RemarkToken: CHECK FOR BAD TRANSITIONS
+1102 IF C1 = C2 THEN 1200
+ ScalarValue:C1
+ ScalarValue:C2
+ BinaryOperator:=
+1105 FOR V1 = 1 TO 4
+ control: VariableToken:V1
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+ step:    ["NumericConstant:1"]
+1110 FOR V2 = V1+1 TO 4
+ control: VariableToken:V2
+ start:   ["ScalarValue:V1", "NumericConstant:1", "BinaryOperator:+"]
+ end:     ["NumericConstant:4"]
+ step:    ["NumericConstant:1"]
+1115 LET D = S(V1,N+1)-S(V2,N+1)
+ ScalarReference:D
+ ScalarValue:V1
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ ScalarValue:V2
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ BinaryOperator:-
+ AssignmentOperator:=
+1120 IF FNC(D) = 0 THEN 1145
+ ScalarValue:D
+ UserFunction
+ NumericConstant:0
+ BinaryOperator:=
+1130 IF FNC(D) = 4 THEN 1145
+ ScalarValue:D
+ UserFunction
+ NumericConstant:4
+ BinaryOperator:=
+1140 GOTO 1160
+ LineNumber:1160
+1145 LET S1 = S(V1,N)-S(V1,N+1)
+ ScalarReference:S1
+ ScalarValue:V1
+ ScalarValue:N
+ ScalarValue:S
+ ScalarValue:V1
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ BinaryOperator:-
+ AssignmentOperator:=
+1150 LET S2 = S(V2,N)-S(V2,N+1)
+ ScalarReference:S2
+ ScalarValue:V2
+ ScalarValue:N
+ ScalarValue:S
+ ScalarValue:V2
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ BinaryOperator:-
+ AssignmentOperator:=
+1155 IF S1 = S2 THEN 1260
+ ScalarValue:S1
+ ScalarValue:S2
+ BinaryOperator:=
+1160 NEXT V2
+ VariableToken:V2
+1165 NEXT V1
+ VariableToken:V1
+1170
+1200 REM COMPUTE DISTANCE
+ RemarkToken:COMPUTE DISTANCE
+1210 FOR V = 2 TO 3
+ control: VariableToken:V
+ start:   ["NumericConstant:2"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+1220 LET D(V) = ABS(S(V,N)-S(V,N+1))
+ ScalarValue:V
+ ScalarReference:D
+ ScalarValue:V
+ ScalarValue:N
+ ScalarValue:S
+ ScalarValue:V
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ BinaryOperator:-
+ FunctionAbs
+ AssignmentOperator:=
+1230 NEXT V
+ VariableToken:V
+1240 LET W(0,L) = D(2)+D(3)
+ NumericConstant:0
+ ScalarValue:L
+ ScalarReference:W
+ NumericConstant:2
+ ScalarValue:D
+ NumericConstant:3
+ ScalarValue:D
+ BinaryOperator:+
+ AssignmentOperator:=
+1250 GOTO 1261
+ LineNumber:1261
+1260 LET W(0,L) = 999
+ NumericConstant:0
+ ScalarValue:L
+ ScalarReference:W
+ NumericConstant:999
+ AssignmentOperator:=
+1261 NEXT L
+ VariableToken:L
+1262
+1500 REM  SELECT CHORD
+ RemarkToken: SELECT CHORD
+1510 LET M = 999
+ ScalarReference:M
+ NumericConstant:999
+ AssignmentOperator:=
+1520 FOR L = 0 TO 6
+ control: VariableToken:L
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+1530 LET M1 = W(0,L)
+ ScalarReference:M1
+ NumericConstant:0
+ ScalarValue:L
+ ScalarValue:W
+ AssignmentOperator:=
+1540 IF M1 > M THEN 1590
+ ScalarValue:M1
+ ScalarValue:M
+ BinaryOperator:>
+1550 LET M = M1
+ ScalarReference:M
+ ScalarValue:M1
+ AssignmentOperator:=
+1560 LET L9 = L
+ ScalarReference:L9
+ ScalarValue:L
+ AssignmentOperator:=
+1590 NEXT L
+ VariableToken:L
+1600 IF M = 999 THEN 4000
+ ScalarValue:M
+ NumericConstant:999
+ BinaryOperator:=
+1610 LET S(2,N) = W(2,L9)
+ NumericConstant:2
+ ScalarValue:N
+ ScalarReference:S
+ NumericConstant:2
+ ScalarValue:L9
+ ScalarValue:W
+ AssignmentOperator:=
+1620 LET S(3,N) = W(3,L9)
+ NumericConstant:3
+ ScalarValue:N
+ ScalarReference:S
+ NumericConstant:3
+ ScalarValue:L9
+ ScalarValue:W
+ AssignmentOperator:=
+1630 GOTO 6000
+ LineNumber:6000
+1640
+4000 REM  REJECT CHORD
+ RemarkToken: REJECT CHORD
+4001 NEXT I
+ VariableToken:I
+5000 REM  BACK UP
+ RemarkToken: BACK UP
+5005 LET N = N+1
+ ScalarReference:N
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+5010 IF N <> N9 THEN 5100
+ ScalarValue:N
+ ScalarValue:N9
+ BinaryOperator:<>
+5020 PRINT "STUCK"
+ ITEMS
+ TextConstant:"STUCK"
+ CarriageControl:NL
+5030 STOP
+ 
+5100 LET C2 = S(0,N)
+ ScalarReference:C2
+ NumericConstant:0
+ ScalarValue:N
+ ScalarValue:S
+ AssignmentOperator:=
+5110 LET C1 = S(0,N+1)
+ ScalarReference:C1
+ NumericConstant:0
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:S
+ AssignmentOperator:=
+5120 FOR I = 1 TO 6
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+5130 IF C2 = P(C1,I) THEN 5200
+ ScalarValue:C2
+ ScalarValue:C1
+ ScalarValue:I
+ ScalarValue:P
+ BinaryOperator:=
+5140 NEXT I
+ VariableToken:I
+5200 LET I1 = I+1
+ ScalarReference:I1
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+5210 GOTO 510
+ LineNumber:510
+5220
+6000 REM  PRINT RESULTS
+ RemarkToken: PRINT RESULTS
+6001 PRINT N, S(0,N), S(1,N);S(2,N);S(3,N);S(4,N)
+ ITEMS
+ ScalarValue:N
+ CarriageControl:,
+ NumericConstant:0
+ ScalarValue:N
+ ScalarValue:S
+ CarriageControl:,
+ NumericConstant:1
+ ScalarValue:N
+ ScalarValue:S
+ CarriageControl:;
+ NumericConstant:2
+ ScalarValue:N
+ ScalarValue:S
+ CarriageControl:;
+ NumericConstant:3
+ ScalarValue:N
+ ScalarValue:S
+ CarriageControl:;
+ NumericConstant:4
+ ScalarValue:N
+ ScalarValue:S
+ CarriageControl:NL
+6002 LET C1 = C2
+ ScalarReference:C1
+ ScalarValue:C2
+ AssignmentOperator:=
+6003 NEXT N
+ VariableToken:N
+6004
+9999 END
+ 

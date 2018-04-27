@@ -1,0 +1,207 @@
+100 REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
+ RemarkToken:THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
+110
+120 LET N = 20 + INT(80*RND(X))
+ ScalarReference:N
+ NumericConstant:20
+ NumericConstant:80
+ ScalarValue:X
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ AssignmentOperator:=
+130 LET K = 5 + INT(10*RND(X))
+ ScalarReference:K
+ NumericConstant:5
+ NumericConstant:10
+ ScalarValue:X
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ AssignmentOperator:=
+140 PRINT "LEGAL MOVES ARE:"
+ ITEMS
+ TextConstant:"LEGAL MOVES ARE:"
+ CarriageControl:NL
+150 PRINT "TAKE AWAY 1 THROUGH" K
+ ITEMS
+ TextConstant:"TAKE AWAY 1 THROUGH"
+ CarriageControl:
+ ScalarValue:K
+ CarriageControl:NL
+160 PRINT "LAST PERSON TO MOVE LOSES"
+ ITEMS
+ TextConstant:"LAST PERSON TO MOVE LOSES"
+ CarriageControl:NL
+170 PRINT
+ ITEMS
+ CarriageControl:NL
+180 PRINT "THE INITIAL NUMBER IS" N
+ ITEMS
+ TextConstant:"THE INITIAL NUMBER IS"
+ CarriageControl:
+ ScalarValue:N
+ CarriageControl:NL
+190 PRINT
+ ITEMS
+ CarriageControl:NL
+200
+210 REM OPPONENT'S MOVE
+ RemarkToken:OPPONENT'S MOVE
+220 PRINT "YOUR MOVE";
+ ITEMS
+ TextConstant:"YOUR MOVE"
+ CarriageControl:;
+230 INPUT X
+ ScalarReference:X
+240 IF X > K THEN 270
+ ScalarValue:X
+ ScalarValue:K
+ BinaryOperator:>
+250 IF X < 1 THEN 270
+ ScalarValue:X
+ NumericConstant:1
+ BinaryOperator:<
+260 IF X <= N THEN 310
+ ScalarValue:X
+ ScalarValue:N
+ BinaryOperator:<=
+270 PRINT "ILLEGAL MOVE"
+ ITEMS
+ TextConstant:"ILLEGAL MOVE"
+ CarriageControl:NL
+280 PRINT
+ ITEMS
+ CarriageControl:NL
+290 GOTO 210
+ LineNumber:210
+300
+310 REM TEST FOR WIN
+ RemarkToken:TEST FOR WIN
+320 LET N = N-X
+ ScalarReference:N
+ ScalarValue:N
+ ScalarValue:X
+ BinaryOperator:-
+ AssignmentOperator:=
+330 IF N > 0 THEN 410
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:>
+340 PRINT "I WIN ***"
+ ITEMS
+ TextConstant:"I WIN ***"
+ CarriageControl:NL
+350 PRINT
+ ITEMS
+ CarriageControl:NL
+360 PRINT
+ ITEMS
+ CarriageControl:NL
+370 PRINT "NEW GAME."
+ ITEMS
+ TextConstant:"NEW GAME."
+ CarriageControl:NL
+380 PRINT
+ ITEMS
+ CarriageControl:NL
+390 GOTO 120
+ LineNumber:120
+400
+410 REM MACHINE'S MOVE
+ RemarkToken:MACHINE'S MOVE
+420 LET Q = INT((N-1)/(K+1))
+ ScalarReference:Q
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ ScalarValue:K
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+430 LET Y = N-1 - Q*(K+1)
+ ScalarReference:Y
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ ScalarValue:Q
+ ScalarValue:K
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+440 IF Y = 0 THEN 530
+ ScalarValue:Y
+ NumericConstant:0
+ BinaryOperator:=
+450 LET N = N - Y
+ ScalarReference:N
+ ScalarValue:N
+ ScalarValue:Y
+ BinaryOperator:-
+ AssignmentOperator:=
+460 PRINT "MY MOVE:" Y
+ ITEMS
+ TextConstant:"MY MOVE:"
+ CarriageControl:
+ ScalarValue:Y
+ CarriageControl:NL
+470 PRINT
+ ITEMS
+ CarriageControl:NL
+480 IF N = 0 THEN 600
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:=
+490 PRINT "NEW TOTAL IS" N
+ ITEMS
+ TextConstant:"NEW TOTAL IS"
+ CarriageControl:
+ ScalarValue:N
+ CarriageControl:NL
+500 PRINT
+ ITEMS
+ CarriageControl:NL
+510 GOTO 210
+ LineNumber:210
+520
+530 REM MAKE RANDOM MOVE
+ RemarkToken:MAKE RANDOM MOVE
+540 IF N > 1 THEN 570
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:>
+550 LET Y = 1
+ ScalarReference:Y
+ NumericConstant:1
+ AssignmentOperator:=
+560 GOTO 450
+ LineNumber:450
+570 LET Y = I + INT(K*RND(0))
+ ScalarReference:Y
+ ScalarValue:I
+ ScalarValue:K
+ NumericConstant:0
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ AssignmentOperator:=
+580 GOTO 450
+ LineNumber:450
+590
+600 REM MACHINE LOST
+ RemarkToken:MACHINE LOST
+610 PRINT "YOU WIN ***"
+ ITEMS
+ TextConstant:"YOU WIN ***"
+ CarriageControl:NL
+620 GOTO 350
+ LineNumber:350
+630 END
+ 

@@ -1,0 +1,186 @@
+100 LET N = 0
+ ScalarReference:N
+ NumericConstant:0
+ AssignmentOperator:=
+110 LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+120 LET S2 = 0
+ ScalarReference:S2
+ NumericConstant:0
+ AssignmentOperator:=
+130
+140 READ X
+ ScalarReference:X
+150 IF X = 999999 THEN 210
+ ScalarValue:X
+ NumericConstant:999999
+ BinaryOperator:=
+160 LET N = N + 1
+ ScalarReference:N
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+170 LET S = S + X
+ ScalarReference:S
+ ScalarValue:S
+ ScalarValue:X
+ BinaryOperator:+
+ AssignmentOperator:=
+180 LET S2 = S2 + X*X
+ ScalarReference:S2
+ ScalarValue:S2
+ ScalarValue:X
+ ScalarValue:X
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+190 GO TO 140
+ LineNumber:140
+200
+210 LET M = S/N
+ ScalarReference:M
+ ScalarValue:S
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+220 LET V = (N*S2 - S*S)/N/(N-1)
+ ScalarReference:V
+ ScalarValue:N
+ ScalarValue:S2
+ BinaryOperator:*
+ ScalarValue:S
+ ScalarValue:S
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ AssignmentOperator:=
+230 LET D = SQR(V)
+ ScalarReference:D
+ ScalarValue:V
+ FunctionSqr
+ AssignmentOperator:=
+240 LET P = .6745*D
+ ScalarReference:P
+ NumericConstant:0.6745
+ ScalarValue:D
+ BinaryOperator:*
+ AssignmentOperator:=
+250 LET E = SQR(V/N)
+ ScalarReference:E
+ ScalarValue:V
+ ScalarValue:N
+ BinaryOperator:/
+ FunctionSqr
+ AssignmentOperator:=
+260 LET C = D/M
+ ScalarReference:C
+ ScalarValue:D
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+270
+280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
+ ITEMS
+ TextConstant:"NUMBER"
+ CarriageControl:,
+ TextConstant:"SUM"
+ CarriageControl:,
+ TextConstant:"SUM-SQUARES"
+ CarriageControl:,
+ TextConstant:"MEAN"
+ CarriageControl:,
+ TextConstant:"VARIANCE"
+ CarriageControl:NL
+290 PRINT N, S, S2, M, V
+ ITEMS
+ ScalarValue:N
+ CarriageControl:,
+ ScalarValue:S
+ CarriageControl:,
+ ScalarValue:S2
+ CarriageControl:,
+ ScalarValue:M
+ CarriageControl:,
+ ScalarValue:V
+ CarriageControl:NL
+300 PRINT
+ ITEMS
+ CarriageControl:NL
+310 PRINT "STD. DEV.", "PROB. ERR.", "STD.ERR. MN.", "COEFF. VAR."
+ ITEMS
+ TextConstant:"STD. DEV."
+ CarriageControl:,
+ TextConstant:"PROB. ERR."
+ CarriageControl:,
+ TextConstant:"STD.ERR. MN."
+ CarriageControl:,
+ TextConstant:"COEFF. VAR."
+ CarriageControl:NL
+320 PRINT D, P, E, C
+ ITEMS
+ ScalarValue:D
+ CarriageControl:,
+ ScalarValue:P
+ CarriageControl:,
+ ScalarValue:E
+ CarriageControl:,
+ ScalarValue:C
+ CarriageControl:NL
+330 PRINT
+ ITEMS
+ CarriageControl:NL
+340 PRINT
+ ITEMS
+ CarriageControl:NL
+350
+360 LET N = 0
+ ScalarReference:N
+ NumericConstant:0
+ AssignmentOperator:=
+370 LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+380 LET S2 = 0
+ ScalarReference:S2
+ NumericConstant:0
+ AssignmentOperator:=
+390 READ X
+ ScalarReference:X
+400 IF X <> 999999 THEN 160
+ ScalarValue:X
+ NumericConstant:999999
+ BinaryOperator:<>
+410
+900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:3
+ NumericConstant:4
+ NumericConstant:5
+ NumericConstant:6
+ NumericConstant:7
+ NumericConstant:8
+ NumericConstant:9
+ NumericConstant:10
+ NumericConstant:999999
+910 DATA 4, 3, 9, 15, 21, 6, 999999
+ NumericConstant:4
+ NumericConstant:3
+ NumericConstant:9
+ NumericConstant:15
+ NumericConstant:21
+ NumericConstant:6
+ NumericConstant:999999
+998 DATA 999999
+ NumericConstant:999999
+999 END
+ 

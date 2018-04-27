@@ -878,6 +878,21 @@ class AbstractExpression
     @unparsed_expression
   end
 
+  def dump
+    lines = []
+
+    @parsed_expressions.each do |expression|
+      x = expression.map(&:dump)
+      if x.class.to_s == 'Array'
+        lines += x.flatten
+      else
+        lines << x
+      end
+    end
+
+    lines
+  end
+
   def count
     @parsed_expressions.length
   end
@@ -1139,6 +1154,10 @@ class UserFunctionDefinition
     @expression = ValueScalarExpression.new(parts[2])
   end
 
+  def dump
+    @expression.dump
+  end
+
   def signature
     numeric_spec = { 'type' => 'numeric', 'shape' => 'scalar' }
     sig = []
@@ -1277,6 +1296,13 @@ class ScalarAssignment < AbstractAssignment
     super
     @target = TargetExpression.new(@token_lists[0], ScalarReference)
     @expression = ValueScalarExpression.new(@token_lists[2])
+  end
+
+  def dump
+    lines = []
+    lines += @target.dump
+    lines += @expression.dump
+    lines << 'AssignmentOperator:='
   end
 
   def count_value

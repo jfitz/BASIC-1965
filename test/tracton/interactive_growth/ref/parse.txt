@@ -1,0 +1,226 @@
+10 REM THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
+ RemarkToken:THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
+20 REM A QUANTITY Y THE DESTROYER AND A QUANTITY X
+ RemarkToken:A QUANTITY Y THE DESTROYER AND A QUANTITY X
+30 REM THE CREATOR. X CAN PROPOGATE, AND ON A
+ RemarkToken:THE CREATOR. X CAN PROPOGATE, AND ON A
+40 REM CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
+ RemarkToken:CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
+50 REM THUS INCREASING THE NUMBER OF YS.
+ RemarkToken:THUS INCREASING THE NUMBER OF YS.
+60 PRINT "NUMBER OF DESTROYERS (Y) = ";
+ ITEMS
+ TextConstant:"NUMBER OF DESTROYERS (Y) = "
+ CarriageControl:;
+70 INPUT Y
+ ScalarReference:Y
+80 PRINT "NUMBER OF CREATORS (X) = ";
+ ITEMS
+ TextConstant:"NUMBER OF CREATORS (X) = "
+ CarriageControl:;
+90 INPUT X
+ ScalarReference:X
+100 PRINT "PROPAGATION RATE OF X = ";
+ ITEMS
+ TextConstant:"PROPAGATION RATE OF X = "
+ CarriageControl:;
+110 INPUT Z
+ ScalarReference:Z
+120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
+ ITEMS
+ TextConstant:"CHANCE OF METTING BETWEEN X AND Y = "
+ CarriageControl:;
+130 INPUT A
+ ScalarReference:A
+140 PRINT "TIME BETWEEN SAMPLES = ";
+ ITEMS
+ TextConstant:"TIME BETWEEN SAMPLES = "
+ CarriageControl:;
+150 INPUT H
+ ScalarReference:H
+160 PRINT "MAXIMUM GENERATIONS = ";
+ ITEMS
+ TextConstant:"MAXIMUM GENERATIONS = "
+ CarriageControl:;
+170 INPUT K
+ ScalarReference:K
+180 LET J = 0
+ ScalarReference:J
+ NumericConstant:0
+ AssignmentOperator:=
+190 PRINT
+ ITEMS
+ CarriageControl:NL
+200 PRINT "INTERACTIVE GROWTH PATTERNS"
+ ITEMS
+ TextConstant:"INTERACTIVE GROWTH PATTERNS"
+ CarriageControl:NL
+210 PRINT
+ ITEMS
+ CarriageControl:NL
+220 PRINT "CREATOR","DESTROYER"
+ ITEMS
+ TextConstant:"CREATOR"
+ CarriageControl:,
+ TextConstant:"DESTROYER"
+ CarriageControl:NL
+230 IF J = K THEN 470
+ ScalarValue:J
+ ScalarValue:K
+ BinaryOperator:=
+240 LET J = J + 1
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+250 LET B = A*X*Y
+ ScalarReference:B
+ ScalarValue:A
+ ScalarValue:X
+ BinaryOperator:*
+ ScalarValue:Y
+ BinaryOperator:*
+ AssignmentOperator:=
+260 LET C = ((Y - B)*H) + Y
+ ScalarReference:C
+ ScalarValue:Y
+ ScalarValue:B
+ BinaryOperator:-
+ ScalarValue:H
+ BinaryOperator:*
+ ScalarValue:Y
+ BinaryOperator:+
+ AssignmentOperator:=
+270 IF C < 0 THEN 390
+ ScalarValue:C
+ NumericConstant:0
+ BinaryOperator:<
+280 LET Y = C
+ ScalarReference:Y
+ ScalarValue:C
+ AssignmentOperator:=
+290 LET D = (((X*Z) - B)*H) + X
+ ScalarReference:D
+ ScalarValue:X
+ ScalarValue:Z
+ BinaryOperator:*
+ ScalarValue:B
+ BinaryOperator:-
+ ScalarValue:H
+ BinaryOperator:*
+ ScalarValue:X
+ BinaryOperator:+
+ AssignmentOperator:=
+300 IF D < 0 THEN 410
+ ScalarValue:D
+ NumericConstant:0
+ BinaryOperator:<
+310 LET X = D
+ ScalarReference:X
+ ScalarValue:D
+ AssignmentOperator:=
+320 LET M = INT(X)
+ ScalarReference:M
+ ScalarValue:X
+ FunctionInt
+ AssignmentOperator:=
+330 LET N = INT(Y)
+ ScalarReference:N
+ ScalarValue:Y
+ FunctionInt
+ AssignmentOperator:=
+340 PRINT M,N
+ ITEMS
+ ScalarValue:M
+ CarriageControl:,
+ ScalarValue:N
+ CarriageControl:NL
+350 IF M = 0 THEN 370
+ ScalarValue:M
+ NumericConstant:0
+ BinaryOperator:=
+360 GOTO 230
+ LineNumber:230
+370 IF N = 0 THEN 430
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:=
+380 GOTO 230
+ LineNumber:230
+390 LET Y = 0
+ ScalarReference:Y
+ NumericConstant:0
+ AssignmentOperator:=
+400 GOTO 290
+ LineNumber:290
+410 LET X = 0
+ ScalarReference:X
+ NumericConstant:0
+ AssignmentOperator:=
+420 GOTO 320
+ LineNumber:320
+430 PRINT "ALL GROWTH ENDED"
+ ITEMS
+ TextConstant:"ALL GROWTH ENDED"
+ CarriageControl:NL
+440 PRINT "NUMBER OF GENERATIONS = ";J
+ ITEMS
+ TextConstant:"NUMBER OF GENERATIONS = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+450 PRINT
+ ITEMS
+ CarriageControl:NL
+460 GOTO 560
+ LineNumber:560
+470 PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
+ ITEMS
+ TextConstant:"MAXIMUM NUMBER OF GENERATIONS REACHED"
+ CarriageControl:NL
+480 PRINT
+ ITEMS
+ CarriageControl:NL
+490 PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+ ITEMS
+ TextConstant:"FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+ CarriageControl:NL
+500 INPUT W
+ ScalarReference:W
+510 IF W = 1 THEN 530
+ ScalarValue:W
+ NumericConstant:1
+ BinaryOperator:=
+520 GOTO 560
+ LineNumber:560
+530 PRINT "MAXIMUM GENERATIONS = ";
+ ITEMS
+ TextConstant:"MAXIMUM GENERATIONS = "
+ CarriageControl:;
+540 INPUT K
+ ScalarReference:K
+550 GOTO 230
+ LineNumber:230
+560 PRINT
+ ITEMS
+ CarriageControl:NL
+570 PRINT "FOR NEXT PATTERN TYPE 1, 0 TO STOP"
+ ITEMS
+ TextConstant:"FOR NEXT PATTERN TYPE 1, 0 TO STOP"
+ CarriageControl:NL
+580 INPUT W
+ ScalarReference:W
+590 IF W = 1 THEN 610
+ ScalarValue:W
+ NumericConstant:1
+ BinaryOperator:=
+600 STOP
+ 
+610 PRINT
+ ITEMS
+ CarriageControl:NL
+620 GOTO 60
+ LineNumber:60
+630 END
+ 

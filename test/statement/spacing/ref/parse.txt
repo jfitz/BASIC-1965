@@ -1,0 +1,30 @@
+10 REM THIS IS A TEST PROGRAM FOR THE SPACING OF STATEMENTS
+ RemarkToken:THIS IS A TEST PROGRAM FOR THE SPACING OF STATEMENTS
+20 R E M A R K THIS IS THE FIRST TEST
+ RemarkToken:THIS IS THE FIRST TEST
+30 LET A = 5
+ ScalarReference:A
+ NumericConstant:5
+ AssignmentOperator:=
+40 L E T A 2 = A * 2
+ ScalarReference:A2
+ ScalarValue:A
+ NumericConstant:2
+ BinaryOperator:*
+ AssignmentOperator:=
+50LETA5=A*5
+ ScalarReference:A5
+ ScalarValue:A
+ NumericConstant:5
+ BinaryOperator:*
+ AssignmentOperator:=
+60 PRI NT A,A2,A5
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:A2
+ CarriageControl:,
+ ScalarValue:A5
+ CarriageControl:NL
+99 END
+ 

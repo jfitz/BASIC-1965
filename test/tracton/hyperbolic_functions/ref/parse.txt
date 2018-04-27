@@ -1,0 +1,227 @@
+10 REM THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
+ RemarkToken:THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
+20 PRINT "SINH (1)"
+ ITEMS
+ TextConstant:"SINH (1)"
+ CarriageControl:NL
+30 PRINT "COSH (2)"
+ ITEMS
+ TextConstant:"COSH (2)"
+ CarriageControl:NL
+40 PRINT "TANH (3)"
+ ITEMS
+ TextConstant:"TANH (3)"
+ CarriageControl:NL
+50 PRINT "CSCH (4)"
+ ITEMS
+ TextConstant:"CSCH (4)"
+ CarriageControl:NL
+60 PRINT "SECH (5)"
+ ITEMS
+ TextConstant:"SECH (5)"
+ CarriageControl:NL
+70 PRINT "COTH (6)"
+ ITEMS
+ TextConstant:"COTH (6)"
+ CarriageControl:NL
+80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ ITEMS
+ TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ CarriageControl:NL
+90 INPUT C
+ ScalarReference:C
+100 ON C GOTO 110,160,210,270,320,370
+ Unknown statement 'ON C GOTO 110,160,210,270,320,370'
+ Unimplemented
+110 GOSUB 490
+ LineNumber:490
+120 GOSUB 520
+ LineNumber:520
+130 LET Z = Y/2
+ ScalarReference:Z
+ ScalarValue:Y
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+140 PRINT "SINH";X;" =";Z
+ ITEMS
+ TextConstant:"SINH"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+150 GOTO 420
+ LineNumber:420
+160 GOSUB 490
+ LineNumber:490
+170 GOSUB 540
+ LineNumber:540
+180 LET Z = B/2
+ ScalarReference:Z
+ ScalarValue:B
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+190 PRINT "COSH";X;" =";Z
+ ITEMS
+ TextConstant:"COSH"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+200 GOTO 420
+ LineNumber:420
+210 GOSUB 490
+ LineNumber:490
+220 GOSUB 520
+ LineNumber:520
+230 GOSUB 540
+ LineNumber:540
+240 LET Z = Y/B
+ ScalarReference:Z
+ ScalarValue:Y
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+250 PRINT "TANH";X;" =";Z
+ ITEMS
+ TextConstant:"TANH"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+260 GOTO 420
+ LineNumber:420
+270 GOSUB 490
+ LineNumber:490
+280 GOSUB 520
+ LineNumber:520
+290 LET Z = 1/(Y/2)
+ ScalarReference:Z
+ NumericConstant:1
+ ScalarValue:Y
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:/
+ AssignmentOperator:=
+300 PRINT "CSCH";X;" =";Z
+ ITEMS
+ TextConstant:"CSCH"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+310 GOTO 420
+ LineNumber:420
+320 GOSUB 490
+ LineNumber:490
+330 GOSUB 540
+ LineNumber:540
+340 LET Z = 1/(B/2)
+ ScalarReference:Z
+ NumericConstant:1
+ ScalarValue:B
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:/
+ AssignmentOperator:=
+350 PRINT "SECH";X;" =";Z
+ ITEMS
+ TextConstant:"SECH"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+360 GOTO 420
+ LineNumber:420
+370 GOSUB 490
+ LineNumber:490
+380 GOSUB 520
+ LineNumber:520
+390 GOSUB 540
+ LineNumber:540
+400 LET Z = 1/(Y/B)
+ ScalarReference:Z
+ NumericConstant:1
+ ScalarValue:Y
+ ScalarValue:B
+ BinaryOperator:/
+ BinaryOperator:/
+ AssignmentOperator:=
+410 PRINT "COTH";X;" =";Z
+ ITEMS
+ TextConstant:"COTH"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+420 PRINT
+ ITEMS
+ CarriageControl:NL
+430 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+440 INPUT L
+ ScalarReference:L
+450 IF L = 1 THEN 470
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+460 STOP
+ 
+470 PRINT
+ ITEMS
+ CarriageControl:NL
+480 GOTO 80
+ LineNumber:80
+490 PRINT "X = "
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:NL
+500 INPUT X
+ ScalarReference:X
+510 RETURN
+ 
+520 LET Y = EXP(X) - EXP(-X)
+ ScalarReference:Y
+ ScalarValue:X
+ FunctionExp
+ ScalarValue:X
+ UnaryOperator:-
+ FunctionExp
+ BinaryOperator:-
+ AssignmentOperator:=
+530 RETURN
+ 
+540 LET B = EXP(X) + EXP(-X)
+ ScalarReference:B
+ ScalarValue:X
+ FunctionExp
+ ScalarValue:X
+ UnaryOperator:-
+ FunctionExp
+ BinaryOperator:+
+ AssignmentOperator:=
+550 RETURN
+ 
+560 END
+ 

@@ -1,0 +1,154 @@
+10 REM THIS PROGRAM COMPUTES THE SOLUTION TO A
+ RemarkToken:THIS PROGRAM COMPUTES THE SOLUTION TO A
+20 REM QUADRATIC EQUATION
+ RemarkToken:QUADRATIC EQUATION
+30 PRINT "ENTER VALUES FOR A, B AND C"
+ ITEMS
+ TextConstant:"ENTER VALUES FOR A, B AND C"
+ CarriageControl:NL
+40 INPUT A,B,C
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+50 LET D = ((B^2) - (4*A*C))/(4*A^2)
+ ScalarReference:D
+ ScalarValue:B
+ NumericConstant:2
+ BinaryOperator:^
+ NumericConstant:4
+ ScalarValue:A
+ BinaryOperator:*
+ ScalarValue:C
+ BinaryOperator:*
+ BinaryOperator:-
+ NumericConstant:4
+ ScalarValue:A
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+60 IF D > = 0 THEN 130
+ ScalarValue:D
+ NumericConstant:0
+ BinaryOperator:>=
+70 LET X = -B/(2*A)
+ ScalarReference:X
+ ScalarValue:B
+ UnaryOperator:-
+ NumericConstant:2
+ ScalarValue:A
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
+ ScalarReference:Y
+ NumericConstant:4
+ ScalarValue:A
+ BinaryOperator:*
+ ScalarValue:C
+ BinaryOperator:*
+ ScalarValue:B
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:-
+ FunctionSqr
+ NumericConstant:2
+ ScalarValue:A
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+90 PRINT "ROOTS ARE COMPLEX"
+ ITEMS
+ TextConstant:"ROOTS ARE COMPLEX"
+ CarriageControl:NL
+100 PRINT "REAL PART = ";X
+ ITEMS
+ TextConstant:"REAL PART = "
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:NL
+110 PRINT "IMAGINARY PART = ";Y
+ ITEMS
+ TextConstant:"IMAGINARY PART = "
+ CarriageControl:;
+ ScalarValue:Y
+ CarriageControl:NL
+120 GOTO 220
+ LineNumber:220
+130 LET E = - B/(2*A)
+ ScalarReference:E
+ ScalarValue:B
+ UnaryOperator:-
+ NumericConstant:2
+ ScalarValue:A
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+140 IF E > = 0 THEN 170
+ ScalarValue:E
+ NumericConstant:0
+ BinaryOperator:>=
+150 LET Z = E - SQR(D)
+ ScalarReference:Z
+ ScalarValue:E
+ ScalarValue:D
+ FunctionSqr
+ BinaryOperator:-
+ AssignmentOperator:=
+160 GOTO 180
+ LineNumber:180
+170 LET Z = E + SQR(D)
+ ScalarReference:Z
+ ScalarValue:E
+ ScalarValue:D
+ FunctionSqr
+ BinaryOperator:+
+ AssignmentOperator:=
+180 LET W = C/(Z*A)
+ ScalarReference:W
+ ScalarValue:C
+ ScalarValue:Z
+ ScalarValue:A
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+190 PRINT "ROOTS ARE REAL"
+ ITEMS
+ TextConstant:"ROOTS ARE REAL"
+ CarriageControl:NL
+200 PRINT "1ST ROOT = ";Z
+ ITEMS
+ TextConstant:"1ST ROOT = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+210 PRINT "2ND ROOT = ";W
+ ITEMS
+ TextConstant:"2ND ROOT = "
+ CarriageControl:;
+ ScalarValue:W
+ CarriageControl:NL
+220 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+230 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+240 INPUT L
+ ScalarReference:L
+250 IF L = 1 THEN 270
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+260 STOP
+ 
+270 PRINT
+ ITEMS
+ CarriageControl:NL
+280 GOTO 30
+ LineNumber:30
+290 END
+ 

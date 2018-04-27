@@ -1,0 +1,400 @@
+100 REM INITIALIZE
+ RemarkToken:INITIALIZE
+110 FOR B = 1 TO 9
+ control: VariableToken:B
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:9"]
+ step:    ["NumericConstant:1"]
+120    FOR R = 0 TO 3
+ control: VariableToken:R
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+130    READ P(B,R)
+ ScalarValue:B
+ ScalarValue:R
+ ScalarReference:P
+140    NEXT R
+ VariableToken:R
+150 NEXT B
+ VariableToken:B
+160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
+ NumericConstant:0.644
+ NumericConstant:0.24
+ NumericConstant:0.077
+ NumericConstant:0.039
+ NumericConstant:0.644
+ NumericConstant:0.19
+ NumericConstant:0.103
+ NumericConstant:0.053
+ NumericConstant:0.72
+ NumericConstant:0.167
+ NumericConstant:0.046
+ NumericConstant:0.05
+170 DATA 0.641, 0.244, 0.05, 0.038, 0.673, 0.153, 0.073, 0.038, 0.651, 0.182, 0.106, 0.038
+ NumericConstant:0.641
+ NumericConstant:0.244
+ NumericConstant:0.05
+ NumericConstant:0.038
+ NumericConstant:0.673
+ NumericConstant:0.153
+ NumericConstant:0.073
+ NumericConstant:0.038
+ NumericConstant:0.651
+ NumericConstant:0.182
+ NumericConstant:0.106
+ NumericConstant:0.038
+180 DATA 0.704, 0.162, 0.079, 0.036, 0.709, 0.162, 0.071, 0.04, 0.836, 0.09, 0.053, 0.016
+ NumericConstant:0.704
+ NumericConstant:0.162
+ NumericConstant:0.079
+ NumericConstant:0.036
+ NumericConstant:0.709
+ NumericConstant:0.162
+ NumericConstant:0.071
+ NumericConstant:0.04
+ NumericConstant:0.836
+ NumericConstant:0.09
+ NumericConstant:0.053
+ NumericConstant:0.016
+190
+200 FOR R = 1 TO 4
+ control: VariableToken:R
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+ step:    ["NumericConstant:1"]
+210    FOR C = 0 TO 7
+ control: VariableToken:C
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:7"]
+ step:    ["NumericConstant:1"]
+220       READ Q(R,C)
+ ScalarValue:R
+ ScalarValue:C
+ ScalarReference:Q
+230    NEXT C
+ VariableToken:C
+240 NEXT R
+ VariableToken:R
+250 DATA 1, 5, 11, 15, 11, 15, 21, 25
+ NumericConstant:1
+ NumericConstant:5
+ NumericConstant:11
+ NumericConstant:15
+ NumericConstant:11
+ NumericConstant:15
+ NumericConstant:21
+ NumericConstant:25
+260 DATA 1, 3, 3, 7, 5, 7, 7, 17
+ NumericConstant:1
+ NumericConstant:3
+ NumericConstant:3
+ NumericConstant:7
+ NumericConstant:5
+ NumericConstant:7
+ NumericConstant:7
+ NumericConstant:17
+270 DATA 2, 12, 12, 22, 12, 22, 22, 32
+ NumericConstant:2
+ NumericConstant:12
+ NumericConstant:12
+ NumericConstant:22
+ NumericConstant:12
+ NumericConstant:22
+ NumericConstant:22
+ NumericConstant:32
+280 DATA 10, 20, 20, 30, 20, 30, 30, 40
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:20
+ NumericConstant:30
+ NumericConstant:20
+ NumericConstant:30
+ NumericConstant:30
+ NumericConstant:40
+290
+300 LET S1 = 0
+ ScalarReference:S1
+ NumericConstant:0
+ AssignmentOperator:=
+310 LET B = 0
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+320 LET H = 0
+ ScalarReference:H
+ NumericConstant:0
+ AssignmentOperator:=
+330 LET L7 = 0
+ ScalarReference:L7
+ NumericConstant:0
+ AssignmentOperator:=
+340 LET I = 1
+ ScalarReference:I
+ NumericConstant:1
+ AssignmentOperator:=
+350
+360 FOR C = 0 TO 7
+ control: VariableToken:C
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:7"]
+ step:    ["NumericConstant:1"]
+370    READ L(C)
+ ScalarValue:C
+ ScalarReference:L
+380 NEXT C
+ VariableToken:C
+390 DATA 0, 1, 1, 2, 1, 2, 2, 3
+ NumericConstant:0
+ NumericConstant:1
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:2
+ NumericConstant:3
+400
+410 REM NEW INNING
+ RemarkToken:NEW INNING
+430 PRINT "INNING" I
+ ITEMS
+ TextConstant:"INNING"
+ CarriageControl:
+ ScalarValue:I
+ CarriageControl:NL
+450 LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+460 LET O = 0
+ ScalarReference:O
+ NumericConstant:0
+ AssignmentOperator:=
+470 LET C = 0
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+480
+490 REM NEW BATTER
+ RemarkToken:NEW BATTER
+500 IF B < 9 THEN 520
+ ScalarValue:B
+ NumericConstant:9
+ BinaryOperator:<
+510 LET B = 0
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+520 LET B = B+1
+ ScalarReference:B
+ ScalarValue:B
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+530
+540 REM DETERMINE OUTCOME
+ RemarkToken:DETERMINE OUTCOME
+550 LET X = RND(0)
+ ScalarReference:X
+ NumericConstant:0
+ FunctionRnd
+ AssignmentOperator:=
+560 FOR R = 0 TO 3
+ control: VariableToken:R
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+570 LET X = X - P(B,R)
+ ScalarReference:X
+ ScalarValue:X
+ ScalarValue:B
+ ScalarValue:R
+ ScalarValue:P
+ BinaryOperator:-
+ AssignmentOperator:=
+580 IF X < 0 THEN 620
+ ScalarValue:X
+ NumericConstant:0
+ BinaryOperator:<
+590 NEXT R
+ VariableToken:R
+600 LET R = 4
+ ScalarReference:R
+ NumericConstant:4
+ AssignmentOperator:=
+610
+620 REM PRINT OUTCOME
+ RemarkToken:PRINT OUTCOME
+630 IF R > 0 THEN 660
+ ScalarValue:R
+ NumericConstant:0
+ BinaryOperator:>
+640 PRINT "OUT   ";
+ ITEMS
+ TextConstant:"OUT   "
+ CarriageControl:;
+650 GOTO 770
+ LineNumber:770
+660 IF R > 1 THEN 690
+ ScalarValue:R
+ NumericConstant:1
+ BinaryOperator:>
+670 PRINT "SINGLE   ";
+ ITEMS
+ TextConstant:"SINGLE   "
+ CarriageControl:;
+680 GOTO 770
+ LineNumber:770
+690 IF R > 2 THEN 720
+ ScalarValue:R
+ NumericConstant:2
+ BinaryOperator:>
+700 PRINT "WALK   ";
+ ITEMS
+ TextConstant:"WALK   "
+ CarriageControl:;
+710 GOTO 770
+ LineNumber:770
+720 IF R > 3 THEN 750
+ ScalarValue:R
+ NumericConstant:3
+ BinaryOperator:>
+730 PRINT "DOUBLE   ";
+ ITEMS
+ TextConstant:"DOUBLE   "
+ CarriageControl:;
+740 GOTO 770
+ LineNumber:770
+750 PRINT "HOME RUN   ";
+ ITEMS
+ TextConstant:"HOME RUN   "
+ CarriageControl:;
+760 
+770 REM DO BOOK-KEEPING
+ RemarkToken:DO BOOK-KEEPING
+780 IF R = 0 THEN 860
+ ScalarValue:R
+ NumericConstant:0
+ BinaryOperator:=
+790 IF R = 2 THEN 810
+ ScalarValue:R
+ NumericConstant:2
+ BinaryOperator:=
+800 LET H = H + 1
+ ScalarReference:H
+ ScalarValue:H
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+810 LET X = Q(R,C)
+ ScalarReference:X
+ ScalarValue:R
+ ScalarValue:C
+ ScalarValue:Q
+ AssignmentOperator:=
+820 LET Y = INT(X/10)
+ ScalarReference:Y
+ ScalarValue:X
+ NumericConstant:10
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+830 LET C = X - Y*10
+ ScalarReference:C
+ ScalarValue:X
+ ScalarValue:Y
+ NumericConstant:10
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+840 LET S = S+Y
+ ScalarReference:S
+ ScalarValue:S
+ ScalarValue:Y
+ BinaryOperator:+
+ AssignmentOperator:=
+850 GOTO 490
+ LineNumber:490
+860 IF O = 2 THEN 890
+ ScalarValue:O
+ NumericConstant:2
+ BinaryOperator:=
+870 LET O = O+1
+ ScalarReference:O
+ ScalarValue:O
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+880 GOTO 490
+ LineNumber:490
+885
+890 REM END OF AN INNING
+ RemarkToken:END OF AN INNING
+895 LET L7 = L7 + L(C)
+ ScalarReference:L7
+ ScalarValue:L7
+ ScalarValue:C
+ ScalarValue:L
+ BinaryOperator:+
+ AssignmentOperator:=
+900 PRINT
+ ITEMS
+ CarriageControl:NL
+910 PRINT S; "RUNS"
+ ITEMS
+ ScalarValue:S
+ CarriageControl:;
+ TextConstant:"RUNS"
+ CarriageControl:NL
+920 PRINT
+ ITEMS
+ CarriageControl:NL
+930 LET S1 = S1+S
+ ScalarReference:S1
+ ScalarValue:S1
+ ScalarValue:S
+ BinaryOperator:+
+ AssignmentOperator:=
+940 LET I = I+1
+ ScalarReference:I
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+945 IF I < 9 THEN 410
+ ScalarValue:I
+ NumericConstant:9
+ BinaryOperator:<
+950 
+955 REM PRINT RESULTS
+ RemarkToken:PRINT RESULTS
+960 PRINT
+ ITEMS
+ CarriageControl:NL
+965 PRINT "GAME TOTALS:"
+ ITEMS
+ TextConstant:"GAME TOTALS:"
+ CarriageControl:NL
+970 PRINT
+ ITEMS
+ CarriageControl:NL
+975 PRINT S1; "RUNS SCORED"
+ ITEMS
+ ScalarValue:S1
+ CarriageControl:;
+ TextConstant:"RUNS SCORED"
+ CarriageControl:NL
+980 PRINT L7; "MEN LEFT ON BASE"
+ ITEMS
+ ScalarValue:L7
+ CarriageControl:;
+ TextConstant:"MEN LEFT ON BASE"
+ CarriageControl:NL
+985 PRINT H; "HITS"
+ ITEMS
+ ScalarValue:H
+ CarriageControl:;
+ TextConstant:"HITS"
+ CarriageControl:NL
+990 END
+ 

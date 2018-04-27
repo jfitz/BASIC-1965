@@ -1,0 +1,100 @@
+10 REM THIS PROGRAM TESTS IF A NUMBER IS PRIME
+ RemarkToken:THIS PROGRAM TESTS IF A NUMBER IS PRIME
+20 REM IT CONTINUES TO CYCLE UNTIL ZERO IS ENTERED
+ RemarkToken:IT CONTINUES TO CYCLE UNTIL ZERO IS ENTERED
+30 PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
+ ITEMS
+ TextConstant:"ENTER THE TEST NUMBER, ZERO TO STOP"
+ CarriageControl:NL
+40 INPUT N
+ ScalarReference:N
+50 LET N = INT(N)
+ ScalarReference:N
+ ScalarValue:N
+ FunctionInt
+ AssignmentOperator:=
+60 IF N = 0 THEN 220
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:=
+70 IF N < 4 THEN 180
+ ScalarValue:N
+ NumericConstant:4
+ BinaryOperator:<
+80 LET I = 0
+ ScalarReference:I
+ NumericConstant:0
+ AssignmentOperator:=
+90 LET T = 2
+ ScalarReference:T
+ NumericConstant:2
+ AssignmentOperator:=
+100 LET J = INT(N/T)
+ ScalarReference:J
+ ScalarValue:N
+ ScalarValue:T
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+110 LET K = J*T
+ ScalarReference:K
+ ScalarValue:J
+ ScalarValue:T
+ BinaryOperator:*
+ AssignmentOperator:=
+120 IF N = K THEN 200
+ ScalarValue:N
+ ScalarValue:K
+ BinaryOperator:=
+130 LET I = I + 1
+ ScalarReference:I
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+140 LET L = T*T
+ ScalarReference:L
+ ScalarValue:T
+ ScalarValue:T
+ BinaryOperator:*
+ AssignmentOperator:=
+150 IF L > N THEN 180
+ ScalarValue:L
+ ScalarValue:N
+ BinaryOperator:>
+160 LET T = (I*2) + 1
+ ScalarReference:T
+ ScalarValue:I
+ NumericConstant:2
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+170 GOTO 100
+ LineNumber:100
+180 PRINT N;"IS A PRIME"
+ ITEMS
+ ScalarValue:N
+ CarriageControl:;
+ TextConstant:"IS A PRIME"
+ CarriageControl:NL
+190 GOTO 30
+ LineNumber:30
+200 PRINT N;"IS NOT A PRIME:";T;"IS THE SMALLEST FACTOR"
+ ITEMS
+ ScalarValue:N
+ CarriageControl:;
+ TextConstant:"IS NOT A PRIME:"
+ CarriageControl:;
+ ScalarValue:T
+ CarriageControl:;
+ TextConstant:"IS THE SMALLEST FACTOR"
+ CarriageControl:NL
+210 GOTO 30
+ LineNumber:30
+220 PRINT "GOOD-BYE FROM THE PRIME TESTER"
+ ITEMS
+ TextConstant:"GOOD-BYE FROM THE PRIME TESTER"
+ CarriageControl:NL
+230 END
+ 

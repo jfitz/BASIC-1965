@@ -1,0 +1,172 @@
+100 REM *** INTRO
+ RemarkToken:*** INTRO
+200 REM *** SET UP BOARD
+ RemarkToken:*** SET UP BOARD
+210 REM *** EMPTY GRID
+ RemarkToken:*** EMPTY GRID
+220 DIM B(10,10)
+ NumericConstant:10
+ NumericConstant:10
+ CompoundDeclaration:B
+230 REM *** INITIAL PATTERN
+ RemarkToken:*** INITIAL PATTERN
+240 LET B(4,4)=1
+ NumericConstant:4
+ NumericConstant:4
+ ScalarReference:B
+ NumericConstant:1
+ AssignmentOperator:=
+241 LET B(4,5)=1
+ NumericConstant:4
+ NumericConstant:5
+ ScalarReference:B
+ NumericConstant:1
+ AssignmentOperator:=
+242 LET B(4,6)=1
+ NumericConstant:4
+ NumericConstant:6
+ ScalarReference:B
+ NumericConstant:1
+ AssignmentOperator:=
+300 REM *** DISPLAY BOARD
+ RemarkToken:*** DISPLAY BOARD
+310 MAT PRINT B;
+ ITEMS
+ MatrixValue:B
+ CarriageControl:;
+400 REM *** CALCULATE NEIGHBORS
+ RemarkToken:*** CALCULATE NEIGHBORS
+410 DIM B(11,11)
+ NumericConstant:11
+ NumericConstant:11
+ CompoundDeclaration:B
+420 MAT N=ZER(10,10)
+ Unimplemented
+430 FOR I=1 TO 10
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:1"]
+440 FOR J=1 TO 10
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:1"]
+442 LET C = 0
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+450 FOR I0=-1 TO 1
+ control: VariableToken:I0
+ start:   ["NumericConstant:1", "UnaryOperator:-"]
+ end:     ["NumericConstant:1"]
+ step:    ["NumericConstant:1"]
+460 FOR J0=-1 TO 1
+ control: VariableToken:J0
+ start:   ["NumericConstant:1", "UnaryOperator:-"]
+ end:     ["NumericConstant:1"]
+ step:    ["NumericConstant:1"]
+470 IF ABS(I0)+ABS(J0) = 0 THEN 500
+ ScalarValue:I0
+ FunctionAbs
+ ScalarValue:J0
+ FunctionAbs
+ BinaryOperator:+
+ NumericConstant:0
+ BinaryOperator:=
+480 IF B(I+I0,J+J0) = 0 THEN 500
+ ScalarValue:I
+ ScalarValue:I0
+ BinaryOperator:+
+ ScalarValue:J
+ ScalarValue:J0
+ BinaryOperator:+
+ ScalarValue:B
+ NumericConstant:0
+ BinaryOperator:=
+490 LET C = C + 1
+ ScalarReference:C
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+500 NEXT J0
+ VariableToken:J0
+510 NEXT I0
+ VariableToken:I0
+512 LET N(I,J)=C
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:N
+ ScalarValue:C
+ AssignmentOperator:=
+520 NEXT J
+ VariableToken:J
+530 NEXT I
+ VariableToken:I
+540 DIM B(10,10)
+ NumericConstant:10
+ NumericConstant:10
+ CompoundDeclaration:B
+600 REM *** CALCULATE NEW BOARD
+ RemarkToken:*** CALCULATE NEW BOARD
+610 FOR I=1 TO 10
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:1"]
+620 FOR J=1 TO 10
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:1"]
+630 IF N(I,J)<2 THEN 660
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:N
+ NumericConstant:2
+ BinaryOperator:<
+640 IF N(I,J)=2 THEN 720
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:N
+ NumericConstant:2
+ BinaryOperator:=
+650 IF N(I,J)=3 THEN 690
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:N
+ NumericConstant:3
+ BinaryOperator:=
+660 REM * CELL DIES
+ RemarkToken:* CELL DIES
+670 LET B(I,J)=0
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+680 GOTO 730
+ LineNumber:730
+690 REM * CELL IS BORN
+ RemarkToken:* CELL IS BORN
+700 LET B(I,J)=1
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:B
+ NumericConstant:1
+ AssignmentOperator:=
+710 GOTO 730
+ LineNumber:730
+720 REM * CELL REMAINS UNCHANGED
+ RemarkToken:* CELL REMAINS UNCHANGED
+730 NEXT J
+ VariableToken:J
+740 NEXT I
+ VariableToken:I
+800 REM *** CONTINUE FOREVER
+ RemarkToken:*** CONTINUE FOREVER
+810 GOTO 300
+ LineNumber:300
+999 END
+ 

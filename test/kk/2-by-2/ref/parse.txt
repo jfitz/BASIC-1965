@@ -1,0 +1,94 @@
+100 PRINT "TABLE","   ","CHI-SQUARE"
+ ITEMS
+ TextConstant:"TABLE"
+ CarriageControl:,
+ TextConstant:"   "
+ CarriageControl:,
+ TextConstant:"CHI-SQUARE"
+ CarriageControl:NL
+110
+120 PRINT
+ ITEMS
+ CarriageControl:NL
+130 READ A,B,C,D
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+ ScalarReference:D
+140 LET N = A+B+C+D
+ ScalarReference:N
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:+
+ ScalarValue:C
+ BinaryOperator:+
+ ScalarValue:D
+ BinaryOperator:+
+ AssignmentOperator:=
+150 LET E = ABS(A*D - B*C) - N/2
+ ScalarReference:E
+ ScalarValue:A
+ ScalarValue:D
+ BinaryOperator:*
+ ScalarValue:B
+ ScalarValue:C
+ BinaryOperator:*
+ BinaryOperator:-
+ FunctionAbs
+ ScalarValue:N
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:-
+ AssignmentOperator:=
+160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
+ ScalarReference:X
+ ScalarValue:N
+ ScalarValue:E
+ BinaryOperator:*
+ ScalarValue:E
+ BinaryOperator:*
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:+
+ ScalarValue:C
+ ScalarValue:D
+ BinaryOperator:+
+ BinaryOperator:*
+ ScalarValue:A
+ ScalarValue:C
+ BinaryOperator:+
+ BinaryOperator:*
+ ScalarValue:B
+ ScalarValue:D
+ BinaryOperator:+
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+170
+180 PRINT A,B
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:NL
+190 PRINT C,D,X
+ ITEMS
+ ScalarValue:C
+ CarriageControl:,
+ ScalarValue:D
+ CarriageControl:,
+ ScalarValue:X
+ CarriageControl:NL
+200 GO TO 120
+ LineNumber:120
+900 DATA 6, 0, 2, 6, 6, 0, 1, 3
+ NumericConstant:6
+ NumericConstant:0
+ NumericConstant:2
+ NumericConstant:6
+ NumericConstant:6
+ NumericConstant:0
+ NumericConstant:1
+ NumericConstant:3
+999 END
+ 

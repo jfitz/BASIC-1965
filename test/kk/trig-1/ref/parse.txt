@@ -1,0 +1,74 @@
+100 REM SIDE-ANGLE-SIDE
+ RemarkToken:SIDE-ANGLE-SIDE
+110 LET P = 3.14159265
+ ScalarReference:P
+ NumericConstant:3.14159265
+ AssignmentOperator:=
+120 DEF FND(X)=X*P/180
+ ScalarValue:X
+ ScalarValue:P
+ BinaryOperator:*
+ NumericConstant:180
+ BinaryOperator:/
+130 DEF FNC(X)=COS(FND(X))
+ ScalarValue:X
+ UserFunction
+ FunctionCos
+140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
+ ITEMS
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"THIRD SIDE"
+ CarriageControl:NL
+150 READ X,A,Y
+ ScalarReference:X
+ ScalarReference:A
+ ScalarReference:Y
+160 LET Z = SQR(X^2 + Y^2 - 2*X*Y*FNC(A))
+ ScalarReference:Z
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:^
+ ScalarValue:Y
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:+
+ NumericConstant:2
+ ScalarValue:X
+ BinaryOperator:*
+ ScalarValue:Y
+ BinaryOperator:*
+ ScalarValue:A
+ UserFunction
+ BinaryOperator:*
+ BinaryOperator:-
+ FunctionSqr
+ AssignmentOperator:=
+170 PRINT X,A,Y,Z
+ ITEMS
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:Y
+ CarriageControl:,
+ ScalarValue:Z
+ CarriageControl:NL
+180 GOTO 150
+ LineNumber:150
+190 DATA 10,60,20, 3,90,4, 10,120,10
+ NumericConstant:10
+ NumericConstant:60
+ NumericConstant:20
+ NumericConstant:3
+ NumericConstant:90
+ NumericConstant:4
+ NumericConstant:10
+ NumericConstant:120
+ NumericConstant:10
+200 END
+ 

@@ -1,0 +1,80 @@
+10 REM THIS PROGRAM COMPUTES THE HARMONIC MEAN
+ RemarkToken:THIS PROGRAM COMPUTES THE HARMONIC MEAN
+20 REM OF SAMPLES ENTERED BY THE USER
+ RemarkToken:OF SAMPLES ENTERED BY THE USER
+30 LET Z = 0
+ ScalarReference:Z
+ NumericConstant:0
+ AssignmentOperator:=
+40 LET N = 0
+ ScalarReference:N
+ NumericConstant:0
+ AssignmentOperator:=
+50 PRINT "SAMPLE = ";
+ ITEMS
+ TextConstant:"SAMPLE = "
+ CarriageControl:;
+60 INPUT X
+ ScalarReference:X
+70 IF X = 0 THEN 130
+ ScalarValue:X
+ NumericConstant:0
+ BinaryOperator:=
+80 LET N = N + 1
+ ScalarReference:N
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+90 LET Z = Z + (1/X)
+ ScalarReference:Z
+ ScalarValue:Z
+ NumericConstant:1
+ ScalarValue:X
+ BinaryOperator:/
+ BinaryOperator:+
+ AssignmentOperator:=
+100 LET H = N/Z
+ ScalarReference:H
+ ScalarValue:N
+ ScalarValue:Z
+ BinaryOperator:/
+ AssignmentOperator:=
+110 PRINT "N = ";N,"SAMPLE = ";X,"CURRENT MEAN = ";H
+ ITEMS
+ TextConstant:"N = "
+ CarriageControl:;
+ ScalarValue:N
+ CarriageControl:,
+ TextConstant:"SAMPLE = "
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:,
+ TextConstant:"CURRENT MEAN = "
+ CarriageControl:;
+ ScalarValue:H
+ CarriageControl:NL
+120 GOTO 50
+ LineNumber:50
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+150 INPUT L
+ ScalarReference:L
+160 IF L = 1 THEN 180
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+170 STOP
+ 
+180 PRINT
+ ITEMS
+ CarriageControl:NL
+190 GOTO 30
+ LineNumber:30
+200 END
+ 

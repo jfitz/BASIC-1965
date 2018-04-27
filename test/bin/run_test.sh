@@ -25,6 +25,22 @@ then
   ((ECODE+=$?))
 fi
 
+if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/parse.txt" ]
+then
+    if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/data/parse_options.txt" ]
+    then
+	PARSE_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/parse_options.txt")
+    fi
+
+    echo Parse program...
+    cd "$TESTBED/$TESTNAME"
+    ruby basic.rb --parse $TESTNAME.bas --no-heading --print-width 0 >parse.txt $GROUP_OPTIONS $TEST_OPTIONS $PARSE_OPTIONS
+    cd ../..
+    echo Compare parse...
+    diff "$TESTBED/$TESTNAME/parse.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/parse.txt"
+    ((ECODE+=$?))
+fi
+
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt" ]
 then
   echo Pretty program...

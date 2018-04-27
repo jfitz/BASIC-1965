@@ -1,0 +1,119 @@
+100 PRINT "NUMBER TO BE FACTORED:";
+ ITEMS
+ TextConstant:"NUMBER TO BE FACTORED:"
+ CarriageControl:;
+110 INPUT N
+ ScalarReference:N
+120 PRINT
+ ITEMS
+ CarriageControl:NL
+130 IF N = 0 THEN 999
+ ScalarValue:N
+ NumericConstant:0
+ BinaryOperator:=
+140 IF N = 2 THEN 250
+ ScalarValue:N
+ NumericConstant:2
+ BinaryOperator:=
+150 LET Z = 0
+ ScalarReference:Z
+ NumericConstant:0
+ AssignmentOperator:=
+160
+170 LET F = 2
+ ScalarReference:F
+ NumericConstant:2
+ AssignmentOperator:=
+180 GOSUB 300
+ LineNumber:300
+190 FOR F = 3 TO SQR(N)+1 STEP 2
+ control: VariableToken:F
+ start:   ["NumericConstant:3"]
+ end:     ["ScalarValue:N", "FunctionSqr", "NumericConstant:1", "BinaryOperator:+"]
+ step:    ["NumericConstant:2"]
+200 GOSUB 300
+ LineNumber:300
+210 NEXT F
+ VariableToken:F
+220 IF Z = 0 THEN 250
+ ScalarValue:Z
+ NumericConstant:0
+ BinaryOperator:=
+230 PRINT N;
+ ITEMS
+ ScalarValue:N
+ CarriageControl:;
+240 GOTO 500
+ LineNumber:500
+250 PRINT N; "IS PRIME."
+ ITEMS
+ ScalarValue:N
+ CarriageControl:;
+ TextConstant:"IS PRIME."
+ CarriageControl:NL
+260 GOTO 500
+ LineNumber:500
+270 
+300 REM TESTS F AS A FACTOR
+ RemarkToken:TESTS F AS A FACTOR
+310 IF N/F <> INT(N/F) THEN 410
+ ScalarValue:N
+ ScalarValue:F
+ BinaryOperator:/
+ ScalarValue:N
+ ScalarValue:F
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:<>
+330 IF Z > 0 THEN 370
+ ScalarValue:Z
+ NumericConstant:0
+ BinaryOperator:>
+340 PRINT N; "HAS THE FACTORS:"
+ ITEMS
+ ScalarValue:N
+ CarriageControl:;
+ TextConstant:"HAS THE FACTORS:"
+ CarriageControl:NL
+350 PRINT "     ";
+ ITEMS
+ TextConstant:"     "
+ CarriageControl:;
+360 LET Z = 1
+ ScalarReference:Z
+ NumericConstant:1
+ AssignmentOperator:=
+370 PRINT F;
+ ITEMS
+ ScalarValue:F
+ CarriageControl:;
+380 LET N = N/F
+ ScalarReference:N
+ ScalarValue:N
+ ScalarValue:F
+ BinaryOperator:/
+ AssignmentOperator:=
+390 IF N = 1 THEN 500
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:=
+400 GOTO 310
+ LineNumber:310
+410 RETURN
+ 
+420
+500 REM ALL DONE
+ RemarkToken:ALL DONE
+510 PRINT
+ ITEMS
+ CarriageControl:NL
+520 PRINT
+ ITEMS
+ CarriageControl:NL
+530 PRINT
+ ITEMS
+ CarriageControl:NL
+540 GOTO 100
+ LineNumber:100
+999 END
+ 

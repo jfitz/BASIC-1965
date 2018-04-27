@@ -1,0 +1,22 @@
+10 REM This is a test
+ RemarkToken:This is a test
+20 LET A=10
+ ScalarReference:A
+ NumericConstant:10
+ AssignmentOperator:=
+30 LET B=A^2
+ ScalarReference:B
+ ScalarValue:A
+ NumericConstant:2
+ BinaryOperator:^
+ AssignmentOperator:=
+40 PRINT A,B
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 

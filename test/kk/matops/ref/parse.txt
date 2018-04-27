@@ -1,0 +1,60 @@
+100 MAT READ A(2,3), B(2,3)
+ NumericConstant:2
+ NumericConstant:3
+ MatrixReference:A
+ NumericConstant:2
+ NumericConstant:3
+ MatrixReference:B
+110
+130 MAT S = A+B
+ Unimplemented
+140 PRINT "THE SUM"
+ ITEMS
+ TextConstant:"THE SUM"
+ CarriageControl:NL
+150 MAT PRINT S
+ ITEMS
+ MatrixValue:S
+ CarriageControl:,
+160
+170 MAT D = A-B
+ Unimplemented
+180 PRINT "THE DIFFERENCE"
+ ITEMS
+ TextConstant:"THE DIFFERENCE"
+ CarriageControl:NL
+190 MAT PRINT D
+ ITEMS
+ MatrixValue:D
+ CarriageControl:,
+200
+210 MAT K = (1/4)*A
+ Unimplemented
+220 PRINT "SCALAR MULTIPLE"
+ ITEMS
+ TextConstant:"SCALAR MULTIPLE"
+ CarriageControl:NL
+230 MAT PRINT K
+ ITEMS
+ MatrixValue:K
+ CarriageControl:,
+240
+900 DATA 1, 4, 7, 3, 2, 1
+ NumericConstant:1
+ NumericConstant:4
+ NumericConstant:7
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:1
+910 DATA 3, -2, 6, 2, -5, -1
+ NumericConstant:3
+ NumericConstant:2
+ UnaryOperator:-
+ NumericConstant:6
+ NumericConstant:2
+ NumericConstant:5
+ UnaryOperator:-
+ NumericConstant:1
+ UnaryOperator:-
+999 END
+ 

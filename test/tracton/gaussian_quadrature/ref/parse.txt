@@ -1,0 +1,298 @@
+10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+ RemarkToken:THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+20 REM AND INFINITY BY GAUSSIAN QUADRATURE
+ RemarkToken:AND INFINITY BY GAUSSIAN QUADRATURE
+30 LET C1 = .238619
+ ScalarReference:C1
+ NumericConstant:0.238619
+ AssignmentOperator:=
+40 LET C2 = - C1
+ ScalarReference:C2
+ ScalarValue:C1
+ UnaryOperator:-
+ AssignmentOperator:=
+50 LET C3 = .661209
+ ScalarReference:C3
+ NumericConstant:0.661209
+ AssignmentOperator:=
+60 LET C4 = - C3
+ ScalarReference:C4
+ ScalarValue:C3
+ UnaryOperator:-
+ AssignmentOperator:=
+70 LET C5 = .932470
+ ScalarReference:C5
+ NumericConstant:0.93247
+ AssignmentOperator:=
+80 LET C6 = - C5
+ ScalarReference:C6
+ ScalarValue:C5
+ UnaryOperator:-
+ AssignmentOperator:=
+90 LET D1 = .467914
+ ScalarReference:D1
+ NumericConstant:0.467914
+ AssignmentOperator:=
+100 LET D2 = .360762
+ ScalarReference:D2
+ NumericConstant:0.360762
+ AssignmentOperator:=
+110 LET D3 = .171324
+ ScalarReference:D3
+ NumericConstant:0.171324
+ AssignmentOperator:=
+120 LET J = 0
+ ScalarReference:J
+ NumericConstant:0
+ AssignmentOperator:=
+130 PRINT "ENDPOINT A = ";
+ ITEMS
+ TextConstant:"ENDPOINT A = "
+ CarriageControl:;
+140 INPUT A
+ ScalarReference:A
+150 LET X = (2/(1 + C1)) + (A - 1)
+ ScalarReference:X
+ NumericConstant:2
+ NumericConstant:1
+ ScalarValue:C1
+ BinaryOperator:+
+ BinaryOperator:/
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:+
+ AssignmentOperator:=
+160 GOSUB 470
+ LineNumber:470
+170 LET N = ((4*D1)/(1 + C1)^2)*Q
+ ScalarReference:N
+ NumericConstant:4
+ ScalarValue:D1
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:C1
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:/
+ ScalarValue:Q
+ BinaryOperator:*
+ AssignmentOperator:=
+180 LET J = J + N
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:N
+ BinaryOperator:+
+ AssignmentOperator:=
+190 LET X = (2/(1 + C2)) + (A - 1)
+ ScalarReference:X
+ NumericConstant:2
+ NumericConstant:1
+ ScalarValue:C2
+ BinaryOperator:+
+ BinaryOperator:/
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:+
+ AssignmentOperator:=
+200 GOSUB 470
+ LineNumber:470
+210 LET N = ((4*D1)/(1 + C2)^2)*Q
+ ScalarReference:N
+ NumericConstant:4
+ ScalarValue:D1
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:C2
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:/
+ ScalarValue:Q
+ BinaryOperator:*
+ AssignmentOperator:=
+220 LET J = J + N
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:N
+ BinaryOperator:+
+ AssignmentOperator:=
+230 LET X = (2/(1 + C3)) + (A - 1)
+ ScalarReference:X
+ NumericConstant:2
+ NumericConstant:1
+ ScalarValue:C3
+ BinaryOperator:+
+ BinaryOperator:/
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:+
+ AssignmentOperator:=
+240 GOSUB 470
+ LineNumber:470
+250 LET N = ((4*D2)/(1 + C3)^2)*Q
+ ScalarReference:N
+ NumericConstant:4
+ ScalarValue:D2
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:C3
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:/
+ ScalarValue:Q
+ BinaryOperator:*
+ AssignmentOperator:=
+260 LET J = J + N
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:N
+ BinaryOperator:+
+ AssignmentOperator:=
+270 LET X = (2/(1 + C4)) + (A - 1)
+ ScalarReference:X
+ NumericConstant:2
+ NumericConstant:1
+ ScalarValue:C4
+ BinaryOperator:+
+ BinaryOperator:/
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:+
+ AssignmentOperator:=
+280 GOSUB 470
+ LineNumber:470
+290 LET N = ((4*D2)/(1 + C4)^2)*Q
+ ScalarReference:N
+ NumericConstant:4
+ ScalarValue:D2
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:C4
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:/
+ ScalarValue:Q
+ BinaryOperator:*
+ AssignmentOperator:=
+300 LET J = J + N
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:N
+ BinaryOperator:+
+ AssignmentOperator:=
+310 LET X = (2/(1 + C5)) + (A - 1)
+ ScalarReference:X
+ NumericConstant:2
+ NumericConstant:1
+ ScalarValue:C5
+ BinaryOperator:+
+ BinaryOperator:/
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:+
+ AssignmentOperator:=
+320 GOSUB 470
+ LineNumber:470
+330 LET N = ((4*D3)/(1 + C5)^2)*Q
+ ScalarReference:N
+ NumericConstant:4
+ ScalarValue:D3
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:C5
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:/
+ ScalarValue:Q
+ BinaryOperator:*
+ AssignmentOperator:=
+340 LET J = J + N
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:N
+ BinaryOperator:+
+ AssignmentOperator:=
+350 LET X = (2/(1 + C6)) + (A - 1)
+ ScalarReference:X
+ NumericConstant:2
+ NumericConstant:1
+ ScalarValue:C6
+ BinaryOperator:+
+ BinaryOperator:/
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:+
+ AssignmentOperator:=
+360 GOSUB 470
+ LineNumber:470
+370 LET N = ((4*D3)/(1 + C6)^2)*Q
+ ScalarReference:N
+ NumericConstant:4
+ ScalarValue:D3
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:C6
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:/
+ ScalarValue:Q
+ BinaryOperator:*
+ AssignmentOperator:=
+380 LET J = J + N
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:N
+ BinaryOperator:+
+ AssignmentOperator:=
+390 LET G = J/2
+ ScalarReference:G
+ ScalarValue:J
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+400 PRINT "INTEGRAL = ";G
+ ITEMS
+ TextConstant:"INTEGRAL = "
+ CarriageControl:;
+ ScalarValue:G
+ CarriageControl:NL
+410 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+420 INPUT L
+ ScalarReference:L
+430 IF L = 1 THEN 450
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+440 STOP
+ 
+450 PRINT
+ ITEMS
+ CarriageControl:NL
+460 GOTO 120
+ LineNumber:120
+470 LET Q = 2*X + 5
+ ScalarReference:Q
+ NumericConstant:2
+ ScalarValue:X
+ BinaryOperator:*
+ NumericConstant:5
+ BinaryOperator:+
+ AssignmentOperator:=
+480 RETURN
+ 
+490 END
+ 

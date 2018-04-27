@@ -1,0 +1,111 @@
+100 READ A, B, C, D
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+ ScalarReference:D
+110 READ T8, T9, P
+ ScalarReference:T8
+ ScalarReference:T9
+ ScalarReference:P
+140 DATA 4, 2, 1, 3
+ NumericConstant:4
+ NumericConstant:2
+ NumericConstant:1
+ NumericConstant:3
+150 DATA .01, 4, 35
+ NumericConstant:0.01
+ NumericConstant:4
+ NumericConstant:35
+160 LET T1 = 0
+ ScalarReference:T1
+ NumericConstant:0
+ AssignmentOperator:=
+170
+180 PRINT "TIME", " X", " Y"
+ ITEMS
+ TextConstant:"TIME"
+ CarriageControl:,
+ TextConstant:" X"
+ CarriageControl:,
+ TextConstant:" Y"
+ CarriageControl:NL
+190 PRINT
+ ITEMS
+ CarriageControl:NL
+200 READ X, Y
+ ScalarReference:X
+ ScalarReference:Y
+210 PRINT 0, X, Y
+ ITEMS
+ NumericConstant:0
+ CarriageControl:,
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:Y
+ CarriageControl:NL
+220 FOR I = 1 TO P
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:P"]
+ step:    ["NumericConstant:1"]
+230 FOR T = 0 TO T9/P STEP T8
+ control: VariableToken:T
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:T9", "ScalarValue:P", "BinaryOperator:/"]
+ step:    ["ScalarValue:T8"]
+240 LET X = X + (A*X - B*X*Y)*T8
+ ScalarReference:X
+ ScalarValue:X
+ ScalarValue:A
+ ScalarValue:X
+ BinaryOperator:*
+ ScalarValue:B
+ ScalarValue:X
+ BinaryOperator:*
+ ScalarValue:Y
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:T8
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+250 LET Y = Y + (C*X*Y - D*Y)*T8
+ ScalarReference:Y
+ ScalarValue:Y
+ ScalarValue:C
+ ScalarValue:X
+ BinaryOperator:*
+ ScalarValue:Y
+ BinaryOperator:*
+ ScalarValue:D
+ ScalarValue:Y
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:T8
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+255 LET T1 = T1 + T8
+ ScalarReference:T1
+ ScalarValue:T1
+ ScalarValue:T8
+ BinaryOperator:+
+ AssignmentOperator:=
+260 NEXT T
+ VariableToken:T
+270 PRINT T1, X, Y
+ ITEMS
+ ScalarValue:T1
+ CarriageControl:,
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:Y
+ CarriageControl:NL
+280 NEXT I
+ VariableToken:I
+290
+900 DATA 3,.5
+ NumericConstant:3
+ NumericConstant:0.5
+999 END
+ 

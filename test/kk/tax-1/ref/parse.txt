@@ -1,0 +1,90 @@
+10 DIM D(20)
+ NumericConstant:20
+ CompoundDeclaration:D
+20 READ A,Y
+ ScalarReference:A
+ ScalarReference:Y
+100 FOR Y1 = 1 TO Y STEP 2
+ control: VariableToken:Y1
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:Y"]
+ step:    ["NumericConstant:2"]
+105    PRINT "CHANGE IN YEAR " Y1
+ ITEMS
+ TextConstant:"CHANGE IN YEAR "
+ CarriageControl:
+ ScalarValue:Y1
+ CarriageControl:NL
+108    LET A1 = A
+ ScalarReference:A1
+ ScalarValue:A
+ AssignmentOperator:=
+110    FOR I = 1 TO Y1-1
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:Y1", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+120       LET D(I) = A1*2/Y
+ ScalarValue:I
+ ScalarReference:D
+ ScalarValue:A1
+ NumericConstant:2
+ BinaryOperator:*
+ ScalarValue:Y
+ BinaryOperator:/
+ AssignmentOperator:=
+130       LET A1 = A1 - D(I)
+ ScalarReference:A1
+ ScalarValue:A1
+ ScalarValue:I
+ ScalarValue:D
+ BinaryOperator:-
+ AssignmentOperator:=
+140       PRINT I;D(I)
+ ITEMS
+ ScalarValue:I
+ CarriageControl:;
+ ScalarValue:I
+ ScalarValue:D
+ CarriageControl:NL
+150    NEXT I
+ VariableToken:I
+160    LET D = A1/(Y-Y1+1)
+ ScalarReference:D
+ ScalarValue:A1
+ ScalarValue:Y
+ ScalarValue:Y1
+ BinaryOperator:-
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:/
+ AssignmentOperator:=
+170    FOR I = Y1 TO Y
+ control: VariableToken:I
+ start:   ["ScalarValue:Y1"]
+ end:     ["ScalarValue:Y"]
+ step:    ["NumericConstant:1"]
+180       LET D(I) = D
+ ScalarValue:I
+ ScalarReference:D
+ ScalarValue:D
+ AssignmentOperator:=
+185       PRINT I;D(I)
+ ITEMS
+ ScalarValue:I
+ CarriageControl:;
+ ScalarValue:I
+ ScalarValue:D
+ CarriageControl:NL
+190    NEXT I
+ VariableToken:I
+195    PRINT
+ ITEMS
+ CarriageControl:NL
+290 NEXT Y1
+ VariableToken:Y1
+900 DATA 5000,7
+ NumericConstant:5000
+ NumericConstant:7
+999 END
+ 

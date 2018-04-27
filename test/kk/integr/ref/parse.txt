@@ -1,0 +1,115 @@
+10 DEF FNF(X) = X^2 + 3*X + 1
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:^
+ NumericConstant:3
+ ScalarValue:X
+ BinaryOperator:*
+ BinaryOperator:+
+ NumericConstant:1
+ BinaryOperator:+
+20 READ A, B, E
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:E
+30 PRINT "TRAPEZOID", "MIDPOINT", "SIMPSON"
+ ITEMS
+ TextConstant:"TRAPEZOID"
+ CarriageControl:,
+ TextConstant:"MIDPOINT"
+ CarriageControl:,
+ TextConstant:"SIMPSON"
+ CarriageControl:NL
+40 LET H = B-A
+ ScalarReference:H
+ ScalarValue:B
+ ScalarValue:A
+ BinaryOperator:-
+ AssignmentOperator:=
+50 LET T = (FNF(A)+FNF(B))*H
+ ScalarReference:T
+ ScalarValue:A
+ UserFunction
+ ScalarValue:B
+ UserFunction
+ BinaryOperator:+
+ ScalarValue:H
+ BinaryOperator:*
+ AssignmentOperator:=
+60 LET M = 0
+ ScalarReference:M
+ NumericConstant:0
+ AssignmentOperator:=
+100 LET T = (T+M)/2
+ ScalarReference:T
+ ScalarValue:T
+ ScalarValue:M
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+120 LET M = 0
+ ScalarReference:M
+ NumericConstant:0
+ AssignmentOperator:=
+130 FOR X = A+H/2 TO B STEP H
+ control: VariableToken:X
+ start:   ["ScalarValue:A", "ScalarValue:H", "NumericConstant:2", "BinaryOperator:/", "BinaryOperator:+"]
+ end:     ["ScalarValue:B"]
+ step:    ["ScalarValue:H"]
+140 LET M = M + FNF(X)
+ ScalarReference:M
+ ScalarValue:M
+ ScalarValue:X
+ UserFunction
+ BinaryOperator:+
+ AssignmentOperator:=
+150 NEXT X
+ VariableToken:X
+160 LET M = M*H
+ ScalarReference:M
+ ScalarValue:M
+ ScalarValue:H
+ BinaryOperator:*
+ AssignmentOperator:=
+170 LET S = (T + 2*M)/3
+ ScalarReference:S
+ ScalarValue:T
+ NumericConstant:2
+ ScalarValue:M
+ BinaryOperator:*
+ BinaryOperator:+
+ NumericConstant:3
+ BinaryOperator:/
+ AssignmentOperator:=
+180 PRINT T, M, S
+ ITEMS
+ ScalarValue:T
+ CarriageControl:,
+ ScalarValue:M
+ CarriageControl:,
+ ScalarValue:S
+ CarriageControl:NL
+185 LET H = H/2
+ ScalarReference:H
+ ScalarValue:H
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+190 IF ABS(T-M)/ABS(S) > E THEN 100
+ ScalarValue:T
+ ScalarValue:M
+ BinaryOperator:-
+ FunctionAbs
+ ScalarValue:S
+ FunctionAbs
+ BinaryOperator:/
+ ScalarValue:E
+ BinaryOperator:>
+900 DATA 1, 5
+ NumericConstant:1
+ NumericConstant:5
+910 DATA 1E-6
+ NumericConstant:1.0e-06
+999 END
+ 

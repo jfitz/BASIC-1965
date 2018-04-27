@@ -1,0 +1,22 @@
+10 LET I = 1
+ ScalarReference:I
+ NumericConstant:1
+ AssignmentOperator:=
+20 IF I > 1000 THEN 60
+ ScalarValue:I
+ NumericConstant:1000
+ BinaryOperator:>
+30 PRINT I
+ ITEMS
+ ScalarValue:I
+ CarriageControl:NL
+40 LET I = I + 1
+ ScalarReference:I
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+50 GOTO 20
+ LineNumber:20
+60 END
+ 

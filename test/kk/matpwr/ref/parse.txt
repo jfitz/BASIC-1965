@@ -1,0 +1,43 @@
+10 READ N
+ ScalarReference:N
+20 MAT READ M(N,N)
+ ScalarValue:N
+ ScalarValue:N
+ MatrixReference:M
+30 FOR I = 1 TO 4
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+ step:    ["NumericConstant:1"]
+40 PRINT "POWER : " 2^I
+ ITEMS
+ TextConstant:"POWER : "
+ CarriageControl:
+ NumericConstant:2
+ ScalarValue:I
+ BinaryOperator:^
+ CarriageControl:NL
+50 MAT A = M*M
+ Unimplemented
+60 MAT PRINT A
+ ITEMS
+ MatrixValue:A
+ CarriageControl:,
+70 MAT M = A
+ Unimplemented
+80 NEXT I
+ VariableToken:I
+90 DATA 3
+ NumericConstant:3
+91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5
+ NumericConstant:0.5
+ NumericConstant:0.25
+ NumericConstant:0.25
+ NumericConstant:0.5
+ NumericConstant:0
+ NumericConstant:0.5
+ NumericConstant:0.25
+ NumericConstant:0.25
+ NumericConstant:0.5
+99 END
+ 

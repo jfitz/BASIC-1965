@@ -1,0 +1,256 @@
+100 DIM X(100), Y(100), Z(200), T(200)
+ NumericConstant:100
+ CompoundDeclaration:X
+ NumericConstant:100
+ CompoundDeclaration:Y
+ NumericConstant:200
+ CompoundDeclaration:Z
+ NumericConstant:200
+ CompoundDeclaration:T
+110
+140 READ M, N
+ ScalarReference:M
+ ScalarReference:N
+150 FOR I = 1 TO M
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:M"]
+ step:    ["NumericConstant:1"]
+160    READ M(I)
+ ScalarValue:I
+ ScalarReference:M
+170 NEXT I
+ VariableToken:I
+180 FOR J = 1 TO N
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+190    READ Y(J)
+ ScalarValue:J
+ ScalarReference:Y
+200 NEXT J
+ VariableToken:J
+210
+250 FOR K = 1 TO M
+ control: VariableToken:K
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:M"]
+ step:    ["NumericConstant:1"]
+260    LET Z(K) = X(K)
+ ScalarValue:K
+ ScalarReference:Z
+ ScalarValue:K
+ ScalarValue:X
+ AssignmentOperator:=
+270    LET T(K) = +1
+ ScalarValue:K
+ ScalarReference:T
+ NumericConstant:1
+ UnaryOperator:+
+ AssignmentOperator:=
+280 NEXT K
+ VariableToken:K
+290 FOR K = 1 TO N
+ control: VariableToken:K
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+300    LET Z(M+K) = Y(K)
+ ScalarValue:M
+ ScalarValue:K
+ BinaryOperator:+
+ ScalarReference:Z
+ ScalarValue:K
+ ScalarValue:Y
+ AssignmentOperator:=
+310    LET T(M+K) = 0
+ ScalarValue:M
+ ScalarValue:K
+ BinaryOperator:+
+ ScalarReference:T
+ NumericConstant:0
+ AssignmentOperator:=
+320 NEXT K
+ VariableToken:K
+330
+360 FOR K = 1 TO M+N-1
+ control: VariableToken:K
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+370    FOR L = K+1 TO M+N
+ control: VariableToken:L
+ start:   ["ScalarValue:K", "NumericConstant:1", "BinaryOperator:+"]
+ end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
+ step:    ["NumericConstant:1"]
+380       IF Z(K) <= Z(L) THEN 450
+ ScalarValue:K
+ ScalarValue:Z
+ ScalarValue:L
+ ScalarValue:Z
+ BinaryOperator:<=
+390       LET T = Z(K)
+ ScalarReference:T
+ ScalarValue:K
+ ScalarValue:Z
+ AssignmentOperator:=
+400       LET Z(K) = Z(L)
+ ScalarValue:K
+ ScalarReference:Z
+ ScalarValue:L
+ ScalarValue:Z
+ AssignmentOperator:=
+410       LET Z(L) = T
+ ScalarValue:L
+ ScalarReference:Z
+ ScalarValue:T
+ AssignmentOperator:=
+420       LET T = T(K)
+ ScalarReference:T
+ ScalarValue:K
+ ScalarValue:T
+ AssignmentOperator:=
+430       LET T(K) = T(L)
+ ScalarValue:K
+ ScalarReference:T
+ ScalarValue:L
+ ScalarValue:T
+ AssignmentOperator:=
+440       LET T(L) = T
+ ScalarValue:L
+ ScalarReference:T
+ ScalarValue:T
+ AssignmentOperator:=
+450    NEXT L
+ VariableToken:L
+460 NEXT K
+ VariableToken:K
+470
+500 LET J = 1
+ ScalarReference:J
+ NumericConstant:1
+ AssignmentOperator:=
+510 LET K = 1
+ ScalarReference:K
+ NumericConstant:1
+ AssignmentOperator:=
+520 LET B = J
+ ScalarReference:B
+ ScalarValue:J
+ AssignmentOperator:=
+530 LET T = J
+ ScalarReference:T
+ ScalarValue:J
+ AssignmentOperator:=
+540 LET J = J+1
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+550 IF J > M+N THEN 600
+ ScalarValue:J
+ ScalarValue:M
+ ScalarValue:N
+ BinaryOperator:+
+ BinaryOperator:>
+560 IF Z(J) > Z(B) THEN 600
+ ScalarValue:J
+ ScalarValue:Z
+ ScalarValue:B
+ ScalarValue:Z
+ BinaryOperator:>
+570 LET T = T+J
+ ScalarReference:T
+ ScalarValue:T
+ ScalarValue:J
+ BinaryOperator:+
+ AssignmentOperator:=
+580 LET K = K+1
+ ScalarReference:K
+ ScalarValue:K
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+590 GO TO 540
+ LineNumber:540
+600 FOR L = B TO J-1
+ control: VariableToken:L
+ start:   ["ScalarValue:B"]
+ end:     ["ScalarValue:J", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+610    LET Z(L) = T/K
+ ScalarValue:L
+ ScalarReference:Z
+ ScalarValue:T
+ ScalarValue:K
+ BinaryOperator:/
+ AssignmentOperator:=
+620 NEXT L
+ VariableToken:L
+630 IF J <= M+N THEN 510
+ ScalarValue:J
+ ScalarValue:M
+ ScalarValue:N
+ BinaryOperator:+
+ BinaryOperator:<=
+640
+740 LET S(0) = 0
+ NumericConstant:0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+750 LET S(1) = 0
+ NumericConstant:1
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+760 FOR K = 1 TO M+N
+ control: VariableToken:K
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
+ step:    ["NumericConstant:1"]
+770    LET S(T(K)) = S(T(K)) + Z(K)
+ ScalarValue:K
+ ScalarValue:T
+ ScalarReference:S
+ ScalarValue:K
+ ScalarValue:T
+ ScalarValue:S
+ ScalarValue:K
+ ScalarValue:Z
+ BinaryOperator:+
+ AssignmentOperator:=
+790 NEXT K
+ VariableToken:K
+800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
+ ITEMS
+ TextConstant:"RANK SUM FOR X IS"
+ CarriageControl:;
+ NumericConstant:1
+ ScalarValue:S
+ CarriageControl:,
+ TextConstant:"FOR Y IS"
+ CarriageControl:;
+ NumericConstant:0
+ ScalarValue:S
+ CarriageControl:NL
+810
+900 DATA 6, 4
+ NumericConstant:6
+ NumericConstant:4
+910 DATA 117, 145, 147, 120, 150, 120
+ NumericConstant:117
+ NumericConstant:145
+ NumericConstant:147
+ NumericConstant:120
+ NumericConstant:150
+ NumericConstant:120
+920 DATA 160, 160, 140, 190
+ NumericConstant:160
+ NumericConstant:160
+ NumericConstant:140
+ NumericConstant:190
+999 END
+ 

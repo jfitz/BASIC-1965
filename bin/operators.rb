@@ -29,6 +29,10 @@ class UnaryOperator < AbstractElement
     @operator = true
   end
 
+  def dump
+    self.class.to_s + ':' + @op
+  end
+
   def evaluate(_, stack, _)
     raise(BASICExpressionError, 'Not enough operands') if stack.empty?
     x = stack.pop
@@ -211,6 +215,10 @@ class BinaryOperator < AbstractElement
 
     @precedence = self.class.precedence(@op)
     @operator = true
+  end
+
+  def dump
+    self.class.to_s + ':' + @op
   end
 
   def evaluate(_, stack, _)

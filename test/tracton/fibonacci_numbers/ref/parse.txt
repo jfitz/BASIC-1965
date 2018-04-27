@@ -1,0 +1,111 @@
+10 REM THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
+ RemarkToken:THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
+20 PRINT "ENTER FIRST TERM"
+ ITEMS
+ TextConstant:"ENTER FIRST TERM"
+ CarriageControl:NL
+30 INPUT A
+ ScalarReference:A
+40 PRINT "ENTER SECOND TERM"
+ ITEMS
+ TextConstant:"ENTER SECOND TERM"
+ CarriageControl:NL
+50 INPUT B
+ ScalarReference:B
+60 PRINT "MAXIMUM NUMBER OF TERMS = "
+ ITEMS
+ TextConstant:"MAXIMUM NUMBER OF TERMS = "
+ CarriageControl:NL
+70 INPUT N
+ ScalarReference:N
+80 PRINT
+ ITEMS
+ CarriageControl:NL
+90 PRINT "TABLE OF FIBONACCI NUMBERS"
+ ITEMS
+ TextConstant:"TABLE OF FIBONACCI NUMBERS"
+ CarriageControl:NL
+100 PRINT "TERM NO.","FIBONACCI NUMBER"
+ ITEMS
+ TextConstant:"TERM NO."
+ CarriageControl:,
+ TextConstant:"FIBONACCI NUMBER"
+ CarriageControl:NL
+110 LET K = 1
+ ScalarReference:K
+ NumericConstant:1
+ AssignmentOperator:=
+120 PRINT K,A
+ ITEMS
+ ScalarValue:K
+ CarriageControl:,
+ ScalarValue:A
+ CarriageControl:NL
+130 LET K = 2
+ ScalarReference:K
+ NumericConstant:2
+ AssignmentOperator:=
+140 PRINT K,B
+ ITEMS
+ ScalarValue:K
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:NL
+150 LET K = K + 1
+ ScalarReference:K
+ ScalarValue:K
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+160 LET Q = A + B
+ ScalarReference:Q
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:+
+ AssignmentOperator:=
+170 PRINT K,Q
+ ITEMS
+ ScalarValue:K
+ CarriageControl:,
+ ScalarValue:Q
+ CarriageControl:NL
+180 LET A = B
+ ScalarReference:A
+ ScalarValue:B
+ AssignmentOperator:=
+190 LET B = Q
+ ScalarReference:B
+ ScalarValue:Q
+ AssignmentOperator:=
+200 IF K > = N THEN 220
+ ScalarValue:K
+ ScalarValue:N
+ BinaryOperator:>=
+210 GOTO 150
+ LineNumber:150
+220 PRINT "MAXIMUM NUMBER OF TERMS REACHED"
+ ITEMS
+ TextConstant:"MAXIMUM NUMBER OF TERMS REACHED"
+ CarriageControl:NL
+230 PRINT
+ ITEMS
+ CarriageControl:NL
+240 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+250 INPUT L
+ ScalarReference:L
+260 IF L = 1 THEN 280
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+270 STOP
+ 
+280 PRINT
+ ITEMS
+ CarriageControl:NL
+290 GOTO 20
+ LineNumber:20
+300 END
+ 

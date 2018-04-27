@@ -1,0 +1,23 @@
+10 REM This is a test
+ RemarkToken:This is a test
+20 READ A,B,C
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+30 PRINT A,B,C
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:C
+ CarriageControl:NL
+40 DATA 10,20,-30
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:30
+ UnaryOperator:-
+90 STOP
+ 
+99 END
+ 

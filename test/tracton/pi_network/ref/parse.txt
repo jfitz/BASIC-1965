@@ -1,0 +1,157 @@
+10 REM THIS PROGRAM COMPUTES THE COMPONENTS
+ RemarkToken:THIS PROGRAM COMPUTES THE COMPONENTS
+20 REM OF A PI-NETWORK. TO MATCH TWO
+ RemarkToken:OF A PI-NETWORK. TO MATCH TWO
+30 REM IMPEDANCES
+ RemarkToken:IMPEDANCES
+40 PRINT "ENTER 1ST IMPEDANCE"
+ ITEMS
+ TextConstant:"ENTER 1ST IMPEDANCE"
+ CarriageControl:NL
+50 INPUT Z1
+ ScalarReference:Z1
+60 PRINT "ENTER 2ND IMPEDANCE"
+ ITEMS
+ TextConstant:"ENTER 2ND IMPEDANCE"
+ CarriageControl:NL
+70 INPUT Z2
+ ScalarReference:Z2
+80 PRINT "ENTER DESIRED SYSTEM Q"
+ ITEMS
+ TextConstant:"ENTER DESIRED SYSTEM Q"
+ CarriageControl:NL
+90 INPUT Q
+ ScalarReference:Q
+100 PRINT "ENTER OPERATING FREQUENCY"
+ ITEMS
+ TextConstant:"ENTER OPERATING FREQUENCY"
+ CarriageControl:NL
+110 INPUT F
+ ScalarReference:F
+120 LET A = Z1/Q
+ ScalarReference:A
+ ScalarValue:Z1
+ ScalarValue:Q
+ BinaryOperator:/
+ AssignmentOperator:=
+130 LET C = ((Z2/Z1)*((Q^2) + 1)) - 1
+ ScalarReference:C
+ ScalarValue:Z2
+ ScalarValue:Z1
+ BinaryOperator:/
+ ScalarValue:Q
+ NumericConstant:2
+ BinaryOperator:^
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+140 LET B = Z2/SQR(C)
+ ScalarReference:B
+ ScalarValue:Z2
+ ScalarValue:C
+ FunctionSqr
+ BinaryOperator:/
+ AssignmentOperator:=
+150 LET E = (Z2/(Q*B)) + 1
+ ScalarReference:E
+ ScalarValue:Z2
+ ScalarValue:Q
+ ScalarValue:B
+ BinaryOperator:*
+ BinaryOperator:/
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+160 LET D = E*((Q*Z1)/((Q^2) + 1))
+ ScalarReference:D
+ ScalarValue:E
+ ScalarValue:Q
+ ScalarValue:Z1
+ BinaryOperator:*
+ ScalarValue:Q
+ NumericConstant:2
+ BinaryOperator:^
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:/
+ BinaryOperator:*
+ AssignmentOperator:=
+170 LET P = 6.28319
+ ScalarReference:P
+ NumericConstant:6.28319
+ AssignmentOperator:=
+180 LET C1 = 1/(P*F*A)
+ ScalarReference:C1
+ NumericConstant:1
+ ScalarValue:P
+ ScalarValue:F
+ BinaryOperator:*
+ ScalarValue:A
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+190 LET C2 = 1/(P*F*B)
+ ScalarReference:C2
+ NumericConstant:1
+ ScalarValue:P
+ ScalarValue:F
+ BinaryOperator:*
+ ScalarValue:B
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+200 LET L = D/(P*F)
+ ScalarReference:L
+ ScalarValue:D
+ ScalarValue:P
+ ScalarValue:F
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+210 PRINT "COMPONENTS OF PI-NETWORK"
+ ITEMS
+ TextConstant:"COMPONENTS OF PI-NETWORK"
+ CarriageControl:NL
+220 PRINT "CAPACITOR 1 = ";C1
+ ITEMS
+ TextConstant:"CAPACITOR 1 = "
+ CarriageControl:;
+ ScalarValue:C1
+ CarriageControl:NL
+230 PRINT "CAPACITOR 2 = ";C2
+ ITEMS
+ TextConstant:"CAPACITOR 2 = "
+ CarriageControl:;
+ ScalarValue:C2
+ CarriageControl:NL
+240 PRINT "INDUCTOR = ";L
+ ITEMS
+ TextConstant:"INDUCTOR = "
+ CarriageControl:;
+ ScalarValue:L
+ CarriageControl:NL
+250 PRINT
+ ITEMS
+ CarriageControl:NL
+260 PRINT "TO CONTINUE TYPE 1, IF NOT 0"
+ ITEMS
+ TextConstant:"TO CONTINUE TYPE 1, IF NOT 0"
+ CarriageControl:NL
+270 INPUT X
+ ScalarReference:X
+280 IF X = 1 THEN 300
+ ScalarValue:X
+ NumericConstant:1
+ BinaryOperator:=
+290 STOP
+ 
+300 PRINT
+ ITEMS
+ CarriageControl:NL
+310 GOTO 40
+ LineNumber:40
+320 END
+ 

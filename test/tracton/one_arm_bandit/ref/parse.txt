@@ -1,0 +1,249 @@
+10 REM THIS PROGRAM SIMULATES THEN MECHANICAL
+ RemarkToken:THIS PROGRAM SIMULATES THEN MECHANICAL
+20 REM THREE WHEEL ONE-ARM BANDIT
+ RemarkToken:THREE WHEEL ONE-ARM BANDIT
+30 PRINT "ARE INSTRUCTIONS REQUIRED"
+ ITEMS
+ TextConstant:"ARE INSTRUCTIONS REQUIRED"
+ CarriageControl:NL
+40 PRINT "TYPE EITHER YES OR NO"
+ ITEMS
+ TextConstant:"TYPE EITHER YES OR NO"
+ CarriageControl:NL
+50 INPUT L$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+60 IF L$ = "YES" THEN 100
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+70 IF L$ = "NO" THEN 170
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+80 PRINT "INVALID COMMAND"
+ ITEMS
+ TextConstant:"INVALID COMMAND"
+ CarriageControl:NL
+90 GOTO 30
+ LineNumber:30
+100 PRINT "SCORING IS SIMPLE; 3 ORANGES, LEMONS OR"
+ ITEMS
+ TextConstant:"SCORING IS SIMPLE; 3 ORANGES, LEMONS OR"
+ CarriageControl:NL
+110 PRINT "BANANAS EARN $10. 3 CHERRIES EARN $90."
+ ITEMS
+ TextConstant:"BANANAS EARN $10. 3 CHERRIES EARN $90."
+ CarriageControl:NL
+120 PRINT "IF THE FIRST FRUIT IS AN APPLE YOU EARN #$2"
+ ITEMS
+ TextConstant:"IF THE FIRST FRUIT IS AN APPLE YOU EARN #$2"
+ CarriageControl:NL
+130 PRINT "IF THE 1ST AND 2ND ARE APPLES YOU EARN $3"
+ ITEMS
+ TextConstant:"IF THE 1ST AND 2ND ARE APPLES YOU EARN $3"
+ CarriageControl:NL
+140 PRINT "IF THE LAST FRUIT IS A CHERRY AND THE"
+ ITEMS
+ TextConstant:"IF THE LAST FRUIT IS A CHERRY AND THE"
+ CarriageControl:NL
+150 PRINT "OTHER TWO ARE THE SAME BUT NOT APPLES YOU"
+ ITEMS
+ TextConstant:"OTHER TWO ARE THE SAME BUT NOT APPLES YOU"
+ CarriageControl:NL
+160 PRINT "EARN $10. EACH TURN COSTS $1. GOOD-LUCK"
+ ITEMS
+ TextConstant:"EARN $10. EACH TURN COSTS $1. GOOD-LUCK"
+ CarriageControl:NL
+170 LET J = 0
+ ScalarReference:J
+ NumericConstant:0
+ AssignmentOperator:=
+180 PRINT
+ ITEMS
+ CarriageControl:NL
+190 GOSUB 590
+ LineNumber:590
+200 LET S1 = S
+ ScalarReference:S1
+ ScalarValue:S
+ AssignmentOperator:=
+210 GOSUB 590
+ LineNumber:590
+220 LET S2 = S
+ ScalarReference:S2
+ ScalarValue:S
+ AssignmentOperator:=
+230 GOSUB 590
+ LineNumber:590
+240 LET S3 = S
+ ScalarReference:S3
+ ScalarValue:S
+ AssignmentOperator:=
+250 LET S = S1
+ ScalarReference:S
+ ScalarValue:S1
+ AssignmentOperator:=
+260 GOSUB 610
+ LineNumber:610
+270 LET S1$ = S$
+ Token 'InvalidToken:$' is not a value or operator
+280 LET S = S2
+ ScalarReference:S
+ ScalarValue:S2
+ AssignmentOperator:=
+290 GOSUB 610
+ LineNumber:610
+300 LET S2$ = S$
+ Token 'InvalidToken:$' is not a value or operator
+310 LET S = S3
+ ScalarReference:S
+ ScalarValue:S3
+ AssignmentOperator:=
+320 GOSUB 610
+ LineNumber:610
+330 LET S3$ = S$
+ Token 'InvalidToken:$' is not a value or operator
+340 IF S1$ = "CHERRY" THEN 380
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+350 IF S1$ = "APPLE" THEN 420
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+360 IF S1$ = S2$ THEN 440
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+370 GOTO 460
+ LineNumber:460
+380 IF S1$ = S2$ THEN 400
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+390 GOTO 460
+ LineNumber:460
+400 IF S2$ = S3$ THEN 480
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+410 GOTO 460
+ LineNumber:460
+420 IF S1$ = S2$ THEN 500
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+430 GOTO 520
+ LineNumber:520
+440 IF S2$ = S3$ THEN 540
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+450 IF S3$ = "CHERRY" THEN 540
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+460 LET J = J - 1
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+470 GOTO 550
+ LineNumber:550
+480 LET J = J + 89
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:89
+ BinaryOperator:+
+ AssignmentOperator:=
+490 GOTO 550
+ LineNumber:550
+500 LET J = J + 2
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:2
+ BinaryOperator:+
+ AssignmentOperator:=
+510 GOTO 550
+ LineNumber:550
+520 LET J = J + 1
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+530 GOTO 550
+ LineNumber:550
+540 LET J = J + 9
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:9
+ BinaryOperator:+
+ AssignmentOperator:=
+550 PRINT
+ ITEMS
+ CarriageControl:NL
+560 PRINT S1$;" ";S2$;" ";S3$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+570 PRINT "YOUR EARNINGS ARE NOW $";J
+ ITEMS
+ TextConstant:"YOUR EARNINGS ARE NOW $"
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+580 GOTO 720
+ LineNumber:720
+590 LET S = 1 + INT(5*RND)
+ ScalarReference:S
+ NumericConstant:1
+ NumericConstant:5
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ AssignmentOperator:=
+600 600 RETURN
+ Unknown statement '600 RETURN'
+ Unimplemented
+610 ON S GOTO 620, 640, 660, 680, 700
+ Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
+ Unimplemented
+620 LET S$ = "CHERRY"
+ Token 'InvalidToken:$' is not a value or operator
+630 GOTO 710
+ LineNumber:710
+640 LET S$ = "APPLE"
+ Token 'InvalidToken:$' is not a value or operator
+650 GOTO 710
+ LineNumber:710
+660 LET S$ = "LEMON"
+ Token 'InvalidToken:$' is not a value or operator
+670 GOTO 710
+ LineNumber:710
+680 LET S$ = "ORANGE"
+ Token 'InvalidToken:$' is not a value or operator
+690 GOTO 710
+ LineNumber:710
+700 LET S$ = "BANANA"
+ Token 'InvalidToken:$' is not a value or operator
+710 RETURN
+ 
+720 PRINT
+ ITEMS
+ CarriageControl:NL
+730 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+ ITEMS
+ TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
+ CarriageControl:NL
+740 INPUT Z$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+750 IF Z$ = "Y" THEN 780
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"
+ ITEMS
+ TextConstant:"ONE-ARM BANDIT SAYS GOOD-BYE"
+ CarriageControl:NL
+770 STOP
+ 
+780 PRINT
+ ITEMS
+ CarriageControl:NL
+790 GOTO 190
+ LineNumber:190
+800 END
+ 

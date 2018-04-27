@@ -1,0 +1,255 @@
+10 REM THIS PROGRAM COMPUTES THE COMPONENTS
+ RemarkToken:THIS PROGRAM COMPUTES THE COMPONENTS
+20 REM REQUIRED FOR A PI OR T TYPE
+ RemarkToken:REQUIRED FOR A PI OR T TYPE
+30 REM RESISTIVE ATTENUATOR
+ RemarkToken:RESISTIVE ATTENUATOR
+40 PRINT "INPUT RESISTANCE R(IN) = ";
+ ITEMS
+ TextConstant:"INPUT RESISTANCE R(IN) = "
+ CarriageControl:;
+50 INPUT R1
+ ScalarReference:R1
+60 PRINT "OUTPUT RESISTANCE R(OUT) = ";
+ ITEMS
+ TextConstant:"OUTPUT RESISTANCE R(OUT) = "
+ CarriageControl:;
+70 INPUT R9
+ ScalarReference:R9
+80 LET Z = R1/R9
+ ScalarReference:Z
+ ScalarValue:R1
+ ScalarValue:R9
+ BinaryOperator:/
+ AssignmentOperator:=
+90 LET Q = (SQR(Z) + SQR(Z - 1))^2
+ ScalarReference:Q
+ ScalarValue:Z
+ FunctionSqr
+ ScalarValue:Z
+ NumericConstant:1
+ BinaryOperator:-
+ FunctionSqr
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:^
+ AssignmentOperator:=
+100 LET M = 10*(LOG(Q)/LOG(10))
+ ScalarReference:M
+ NumericConstant:10
+ ScalarValue:Q
+ FunctionLog
+ NumericConstant:10
+ FunctionLog
+ BinaryOperator:/
+ BinaryOperator:*
+ AssignmentOperator:=
+110 PRINT "MINIMUM SYSTEM LOSS IN DECIBELS = ";M
+ ITEMS
+ TextConstant:"MINIMUM SYSTEM LOSS IN DECIBELS = "
+ CarriageControl:;
+ ScalarValue:M
+ CarriageControl:NL
+120 PRINT "ENTERED DESIRED LOSS IN DECIBELS";
+ ITEMS
+ TextConstant:"ENTERED DESIRED LOSS IN DECIBELS"
+ CarriageControl:;
+130 INPUT N
+ ScalarReference:N
+135 LET N = INT(N)
+ ScalarReference:N
+ ScalarValue:N
+ FunctionInt
+ AssignmentOperator:=
+140 REM COMPUTE T NETWORK
+ RemarkToken:COMPUTE T NETWORK
+150 LET T3 = 2*(SQR(N*R1*R9))/(N-1)
+ ScalarReference:T3
+ NumericConstant:2
+ ScalarValue:N
+ ScalarValue:R1
+ BinaryOperator:*
+ ScalarValue:R9
+ BinaryOperator:*
+ FunctionSqr
+ BinaryOperator:*
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ AssignmentOperator:=
+160 LET T1 = R1*((N+1)/(N-1)) - T3
+ ScalarReference:T1
+ ScalarValue:R1
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ BinaryOperator:*
+ ScalarValue:T3
+ BinaryOperator:-
+ AssignmentOperator:=
+170 LET T2 = R9*((N+1)/(N-1)) - T3
+ ScalarReference:T2
+ ScalarValue:R9
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ BinaryOperator:*
+ ScalarValue:T3
+ BinaryOperator:-
+ AssignmentOperator:=
+180 REM COMPUTE PI NETWORK
+ RemarkToken:COMPUTE PI NETWORK
+190 LET P3 = 0.5*(N-1)*SQR((R1*R9)/N)
+ ScalarReference:P3
+ NumericConstant:0.5
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:*
+ ScalarValue:R1
+ ScalarValue:R9
+ BinaryOperator:*
+ ScalarValue:N
+ BinaryOperator:/
+ FunctionSqr
+ BinaryOperator:*
+ AssignmentOperator:=
+200 LET P1 = 1/(1/R1*((N+1)/(N-1)) - (1/P3))
+ ScalarReference:P1
+ NumericConstant:1
+ NumericConstant:1
+ ScalarValue:R1
+ BinaryOperator:/
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:P3
+ BinaryOperator:/
+ BinaryOperator:-
+ BinaryOperator:/
+ AssignmentOperator:=
+210 LET P2 = 1/(1/R9*((N+1)/(N-1)) - (1/P3))
+ ScalarReference:P2
+ NumericConstant:1
+ NumericConstant:1
+ ScalarValue:R9
+ BinaryOperator:/
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ BinaryOperator:*
+ NumericConstant:1
+ ScalarValue:P3
+ BinaryOperator:/
+ BinaryOperator:-
+ BinaryOperator:/
+ AssignmentOperator:=
+220 REM REPORT
+ RemarkToken:REPORT
+230 PRINT "R(IN) = ";R1,"R(OUT) = ";R9
+ ITEMS
+ TextConstant:"R(IN) = "
+ CarriageControl:;
+ ScalarValue:R1
+ CarriageControl:,
+ TextConstant:"R(OUT) = "
+ CarriageControl:;
+ ScalarValue:R9
+ CarriageControl:NL
+240 PRINT "DESIRED LOSS = ";N
+ ITEMS
+ TextConstant:"DESIRED LOSS = "
+ CarriageControl:;
+ ScalarValue:N
+ CarriageControl:NL
+250 PRINT
+ ITEMS
+ CarriageControl:NL
+260 PRINT "T ATTENUATOR"
+ ITEMS
+ TextConstant:"T ATTENUATOR"
+ CarriageControl:NL
+270 PRINT "RESISTOR 1 = ";T1
+ ITEMS
+ TextConstant:"RESISTOR 1 = "
+ CarriageControl:;
+ ScalarValue:T1
+ CarriageControl:NL
+280 PRINT "RESISTOR 2 = ";T2
+ ITEMS
+ TextConstant:"RESISTOR 2 = "
+ CarriageControl:;
+ ScalarValue:T2
+ CarriageControl:NL
+290 PRINT "RESISTOR 3 = ";T3
+ ITEMS
+ TextConstant:"RESISTOR 3 = "
+ CarriageControl:;
+ ScalarValue:T3
+ CarriageControl:NL
+300 PRINT
+ ITEMS
+ CarriageControl:NL
+310 PRINT "PI ATTENUATOR"
+ ITEMS
+ TextConstant:"PI ATTENUATOR"
+ CarriageControl:NL
+320 PRINT "RESISTOR 1 = ";P1
+ ITEMS
+ TextConstant:"RESISTOR 1 = "
+ CarriageControl:;
+ ScalarValue:P1
+ CarriageControl:NL
+330 PRINT "RESISTOR 2 = ";P2
+ ITEMS
+ TextConstant:"RESISTOR 2 = "
+ CarriageControl:;
+ ScalarValue:P2
+ CarriageControl:NL
+340 PRINT "RESISTOR 3 = ";P3
+ ITEMS
+ TextConstant:"RESISTOR 3 = "
+ CarriageControl:;
+ ScalarValue:P3
+ CarriageControl:NL
+350 PRINT
+ ITEMS
+ CarriageControl:NL
+360 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+370 INPUT Q
+ ScalarReference:Q
+380 IF Q = 1 THEN 400
+ ScalarValue:Q
+ NumericConstant:1
+ BinaryOperator:=
+390 STOP
+ 
+400 PRINT
+ ITEMS
+ CarriageControl:NL
+410 GOTO 40
+ LineNumber:40
+420 END
+ 

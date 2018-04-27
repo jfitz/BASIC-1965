@@ -1,0 +1,17 @@
+10 REM This is a test
+ RemarkToken:This is a test
+15 DIM A(3)
+ NumericConstant:3
+ CompoundDeclaration:A
+20 FILES "input.txt"
+ TextConstant:"input.txt"
+30 ARR READ #1;A
+ ArrayReference:A
+40 ARR PRINT A
+ ITEMS
+ ArrayValue:A
+ CarriageControl:,
+90 STOP
+ 
+99 END
+ 

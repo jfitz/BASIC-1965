@@ -1,0 +1,221 @@
+10 REM THIS PROGRAM COMPUTES INVERSE HYPERBOLIC FUNCTIONS
+ RemarkToken:THIS PROGRAM COMPUTES INVERSE HYPERBOLIC FUNCTIONS
+20 PRINT "SINH - 1 (1)"
+ ITEMS
+ TextConstant:"SINH - 1 (1)"
+ CarriageControl:NL
+30 PRINT "COSH - 1 (2)"
+ ITEMS
+ TextConstant:"COSH - 1 (2)"
+ CarriageControl:NL
+40 PRINT "TANH - 1 (3)"
+ ITEMS
+ TextConstant:"TANH - 1 (3)"
+ CarriageControl:NL
+50 PRINT "CSCH - 1 (4)"
+ ITEMS
+ TextConstant:"CSCH - 1 (4)"
+ CarriageControl:NL
+60 PRINT "SECH - 1 (5)"
+ ITEMS
+ TextConstant:"SECH - 1 (5)"
+ CarriageControl:NL
+70 PRINT "COTH - 1 (6)"
+ ITEMS
+ TextConstant:"COTH - 1 (6)"
+ CarriageControl:NL
+80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ ITEMS
+ TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ CarriageControl:NL
+90 INPUT C
+ ScalarReference:C
+100 ON C GOTO 110,150,190,230,280,330
+ Unknown statement 'ON C GOTO 110,150,190,230,280,330'
+ Unimplemented
+110 GOSUB 440
+ LineNumber:440
+120 GOSUB 470
+ LineNumber:470
+130 PRINT "SINH - 1";X;" = ";Z
+ ITEMS
+ TextConstant:"SINH - 1"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+140 GOTO 370
+ LineNumber:370
+150 GOSUB 440
+ LineNumber:440
+160 GOSUB 490
+ LineNumber:490
+170 PRINT "COSH - 1";X;" = ";Z
+ ITEMS
+ TextConstant:"COSH - 1"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+180 GOTO 370
+ LineNumber:370
+190 GOSUB 440
+ LineNumber:440
+200 GOSUB 510
+ LineNumber:510
+210 PRINT "TANH - 1";X;" = ";Z
+ ITEMS
+ TextConstant:"TANH - 1"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+220 GOTO 370
+ LineNumber:370
+230 GOSUB 530
+ LineNumber:530
+240 GOSUB 470
+ LineNumber:470
+250 LET X = A
+ ScalarReference:X
+ ScalarValue:A
+ AssignmentOperator:=
+260 PRINT "CSCH - 1";X;" = ";Z
+ ITEMS
+ TextConstant:"CSCH - 1"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+270 GOTO 370
+ LineNumber:370
+280 GOSUB 530
+ LineNumber:530
+290 GOSUB 490
+ LineNumber:490
+300 LET X = A
+ ScalarReference:X
+ ScalarValue:A
+ AssignmentOperator:=
+310 PRINT "SECH - 1";X;" = ";Z
+ ITEMS
+ TextConstant:"SECH - 1"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+320 GOTO 370
+ LineNumber:370
+330 GOSUB 530
+ LineNumber:530
+340 GOSUB 510
+ LineNumber:510
+350 LET X = A
+ ScalarReference:X
+ ScalarValue:A
+ AssignmentOperator:=
+360 PRINT "COTH - 1";X;" = ";Z
+ ITEMS
+ TextConstant:"COTH - 1"
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+370 PRINT
+ ITEMS
+ CarriageControl:NL
+380 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+390 INPUT L
+ ScalarReference:L
+400 IF L = 1 THEN 420
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+410 STOP
+ 
+420 PRINT
+ ITEMS
+ CarriageControl:NL
+430 GOTO 80
+ LineNumber:80
+440 PRINT "X = ";
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:;
+450 INPUT X
+ ScalarReference:X
+460 RETURN
+ 
+470 LET Z = LOG(X + SQR((X^2) + 1))
+ ScalarReference:Z
+ ScalarValue:X
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:^
+ NumericConstant:1
+ BinaryOperator:+
+ FunctionSqr
+ BinaryOperator:+
+ FunctionLog
+ AssignmentOperator:=
+480 RETURN
+ 
+490 LET Z = LOG(X + SQR((X^2) - 1))
+ ScalarReference:Z
+ ScalarValue:X
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:^
+ NumericConstant:1
+ BinaryOperator:-
+ FunctionSqr
+ BinaryOperator:+
+ FunctionLog
+ AssignmentOperator:=
+500 RETURN
+ 
+510 LET Z = (LOG((1 + X/(1 - X)))/2
+ Extra operators
+520 RETURN
+ 
+530 PRINT "X = ";
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:;
+540 INPUT X
+ ScalarReference:X
+550 LET A = X
+ ScalarReference:A
+ ScalarValue:X
+ AssignmentOperator:=
+560 LET X = 1/X
+ ScalarReference:X
+ NumericConstant:1
+ ScalarValue:X
+ BinaryOperator:/
+ AssignmentOperator:=
+570 RETURN
+ 
+580 END
+ 

@@ -1,0 +1,189 @@
+10 REM THIS PROGRAM SIMULATES THE GAME OF CRAPS
+ RemarkToken:THIS PROGRAM SIMULATES THE GAME OF CRAPS
+20 RANDOMIZE
+ Unknown statement 'RANDOMIZE'
+ Unimplemented
+30 PRINT " FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
+ ITEMS
+ TextConstant:" FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
+ CarriageControl:NL
+40 INPUT R$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+50 IF R$ = "RULES" THEN 90
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+60 IF R$ = "GO" THEN 140
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+70 PRINT "INVALID COMMAND"
+ ITEMS
+ TextConstant:"INVALID COMMAND"
+ CarriageControl:NL
+80 GOTO 30
+ LineNumber:30
+90 PRINT "A 7 OR 11 ON THE FIRST THROW WINS"
+ ITEMS
+ TextConstant:"A 7 OR 11 ON THE FIRST THROW WINS"
+ CarriageControl:NL
+100 PRINT "YOU CAN ALSO WIN BY THROWING A 4,5,6,8,9,10"
+ ITEMS
+ TextConstant:"YOU CAN ALSO WIN BY THROWING A 4,5,6,8,9,10"
+ CarriageControl:NL
+110 PRINT "AND MATCHING IT BEFORE THROWING A 7. IF ON"
+ ITEMS
+ TextConstant:"AND MATCHING IT BEFORE THROWING A 7. IF ON"
+ CarriageControl:NL
+120 PRINT "THE FIRST THROW 2,3 OR A 12 COMES UP"
+ ITEMS
+ TextConstant:"THE FIRST THROW 2,3 OR A 12 COMES UP"
+ CarriageControl:NL
+130 PRINT "YOU LOSE AUTOMATICALLY"
+ ITEMS
+ TextConstant:"YOU LOSE AUTOMATICALLY"
+ CarriageControl:NL
+140 LET J = 0
+ ScalarReference:J
+ NumericConstant:0
+ AssignmentOperator:=
+150 GOSUB 460
+ LineNumber:460
+160 LET D1 = N
+ ScalarReference:D1
+ ScalarValue:N
+ AssignmentOperator:=
+170 GOSUB 460
+ LineNumber:460
+180 LET D2 = N
+ ScalarReference:D2
+ ScalarValue:N
+ AssignmentOperator:=
+190 LET D3 = D1 + D2
+ ScalarReference:D3
+ ScalarValue:D1
+ ScalarValue:D2
+ BinaryOperator:+
+ AssignmentOperator:=
+200 LET J = J + 1
+ ScalarReference:J
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+210 IF J = 1 THEN 260
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:=
+220 IF D3 = D4 THEN 420
+ ScalarValue:D3
+ ScalarValue:D4
+ BinaryOperator:=
+230 IF D3 = 7 THEN 440
+ ScalarValue:D3
+ NumericConstant:7
+ BinaryOperator:=
+240 PRINT "YOU THROW A ";D3
+ ITEMS
+ TextConstant:"YOU THROW A "
+ CarriageControl:;
+ ScalarValue:D3
+ CarriageControl:NL
+250 GOTO 150
+ LineNumber:150
+260 IF D3 = 7 THEN 320
+ ScalarValue:D3
+ NumericConstant:7
+ BinaryOperator:=
+270 IF D3 = 2 THEN 340
+ ScalarValue:D3
+ NumericConstant:2
+ BinaryOperator:=
+280 IF D3 = 3 THEN 340
+ ScalarValue:D3
+ NumericConstant:3
+ BinaryOperator:=
+290 IF D3 = 12 THEN 340
+ ScalarValue:D3
+ NumericConstant:12
+ BinaryOperator:=
+300 IF D3 = 11 THEN 320
+ ScalarValue:D3
+ NumericConstant:11
+ BinaryOperator:=
+310 LET D4 = D3
+ ScalarReference:D4
+ ScalarValue:D3
+ AssignmentOperator:=
+315 GOTO 240
+ LineNumber:240
+320 PRINT "YOU THROW A ";D3;" YOU WIN"
+ ITEMS
+ TextConstant:"YOU THROW A "
+ CarriageControl:;
+ ScalarValue:D3
+ CarriageControl:;
+ TextConstant:" YOU WIN"
+ CarriageControl:NL
+330 GOTO 350
+ LineNumber:350
+340 PRINT "YOU THROW A ";D3;" YOU LOSE"
+ ITEMS
+ TextConstant:"YOU THROW A "
+ CarriageControl:;
+ ScalarValue:D3
+ CarriageControl:;
+ TextConstant:" YOU LOSE"
+ CarriageControl:NL
+350 PRINT
+ ITEMS
+ CarriageControl:NL
+360 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+ ITEMS
+ TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
+ CarriageControl:NL
+370 INPUT L$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+380 IF L$ = "Y" THEN 400
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+390 STOP
+ 
+400 PRINT
+ ITEMS
+ CarriageControl:NL
+410 GOTO 30
+ LineNumber:30
+420 PRINT "YOU THROW A ";D3;"YOU WIN BY MATCHING"
+ ITEMS
+ TextConstant:"YOU THROW A "
+ CarriageControl:;
+ ScalarValue:D3
+ CarriageControl:;
+ TextConstant:"YOU WIN BY MATCHING"
+ CarriageControl:NL
+430 GOTO 350
+ LineNumber:350
+440 PRINT "YOU THROW A ";D3;" SORRY YOU LOSE"
+ ITEMS
+ TextConstant:"YOU THROW A "
+ CarriageControl:;
+ ScalarValue:D3
+ CarriageControl:;
+ TextConstant:" SORRY YOU LOSE"
+ CarriageControl:NL
+450 GOTO 350
+ LineNumber:350
+460 LET N = 1 + INT(6*RND)
+ ScalarReference:N
+ NumericConstant:1
+ NumericConstant:6
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ AssignmentOperator:=
+470 RETURN
+ 
+480 END
+ 

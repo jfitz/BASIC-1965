@@ -1,0 +1,87 @@
+10 REM THIS PROGRAM COMPUTES THE PARAMETERS
+ RemarkToken:THIS PROGRAM COMPUTES THE PARAMETERS
+20 REM CONNECTED WITH A CIRCULAR SECTION
+ RemarkToken:CONNECTED WITH A CIRCULAR SECTION
+30 PRINT "RADIUS"
+ ITEMS
+ TextConstant:"RADIUS"
+ CarriageControl:NL
+40 INPUT R
+ ScalarReference:R
+50 LET P = 3.14159
+ ScalarReference:P
+ NumericConstant:3.14159
+ AssignmentOperator:=
+60 LET D = 2*R
+ ScalarReference:D
+ NumericConstant:2
+ ScalarValue:R
+ BinaryOperator:*
+ AssignmentOperator:=
+70 LET I = (P*(D^4))/64
+ ScalarReference:I
+ ScalarValue:P
+ ScalarValue:D
+ NumericConstant:4
+ BinaryOperator:^
+ BinaryOperator:*
+ NumericConstant:64
+ BinaryOperator:/
+ AssignmentOperator:=
+80 LET J = I*2
+ ScalarReference:J
+ ScalarValue:I
+ NumericConstant:2
+ BinaryOperator:*
+ AssignmentOperator:=
+90 LET A = (P*(D^2))/4
+ ScalarReference:A
+ ScalarValue:P
+ ScalarValue:D
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:*
+ NumericConstant:4
+ BinaryOperator:/
+ AssignmentOperator:=
+100 PRINT "MOMENT OF INERTIA = ";I
+ ITEMS
+ TextConstant:"MOMENT OF INERTIA = "
+ CarriageControl:;
+ ScalarValue:I
+ CarriageControl:NL
+110 PRINT "POLAR MOMENT OF INERTIA = ";J
+ ITEMS
+ TextConstant:"POLAR MOMENT OF INERTIA = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+120 PRINT "AREA OF SECTION = ";A
+ ITEMS
+ TextConstant:"AREA OF SECTION = "
+ CarriageControl:;
+ ScalarValue:A
+ CarriageControl:NL
+130 PRINT "*************************"
+ ITEMS
+ TextConstant:"*************************"
+ CarriageControl:NL
+140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+150 INPUT L
+ ScalarReference:L
+160 IF L = 1 THEN 180
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+170 STOP
+ 
+180 PRINT
+ ITEMS
+ CarriageControl:NL
+190 GOTO 30
+ LineNumber:30
+200 END
+ 

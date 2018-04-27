@@ -1,0 +1,146 @@
+10 REM THIS PROGRAM COMPUTES PERMUTATIONS
+ RemarkToken:THIS PROGRAM COMPUTES PERMUTATIONS
+20 REM AND COMBINATIONS, WHERE N = NUMBER OF
+ RemarkToken:AND COMBINATIONS, WHERE N = NUMBER OF
+30 REM ITEMS AND R = SIZE OF GROUP SELECTED
+ RemarkToken:ITEMS AND R = SIZE OF GROUP SELECTED
+40 PRINT "ENTER N,R";
+ ITEMS
+ TextConstant:"ENTER N,R"
+ CarriageControl:;
+50 INPUT N,R
+ ScalarReference:N
+ ScalarReference:R
+60 IF N < R THEN 270
+ ScalarValue:N
+ ScalarValue:R
+ BinaryOperator:<
+70 IF R < 0 THEN 290
+ ScalarValue:R
+ NumericConstant:0
+ BinaryOperator:<
+80 LET T = N
+ ScalarReference:T
+ ScalarValue:N
+ AssignmentOperator:=
+90 GOSUB 310
+ LineNumber:310
+100 LET A = T
+ ScalarReference:A
+ ScalarValue:T
+ AssignmentOperator:=
+110 LET T = N - R
+ ScalarReference:T
+ ScalarValue:N
+ ScalarValue:R
+ BinaryOperator:-
+ AssignmentOperator:=
+120 GOSUB 310
+ LineNumber:310
+130 LET B = T
+ ScalarReference:B
+ ScalarValue:T
+ AssignmentOperator:=
+140 LET P = A/B
+ ScalarReference:P
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+150 LET T = R
+ ScalarReference:T
+ ScalarValue:R
+ AssignmentOperator:=
+160 GOSUB 310
+ LineNumber:310
+170 LET C = A/(T*B)
+ ScalarReference:C
+ ScalarValue:A
+ ScalarValue:T
+ ScalarValue:B
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+180 PRINT "PERMUTATIONS = ";P
+ ITEMS
+ TextConstant:"PERMUTATIONS = "
+ CarriageControl:;
+ ScalarValue:P
+ CarriageControl:NL
+190 PRINT "COMBINATIONS = ";C
+ ITEMS
+ TextConstant:"COMBINATIONS = "
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:NL
+200 PRINT
+ ITEMS
+ CarriageControl:NL
+210 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+220 INPUT L
+ ScalarReference:L
+230 IF L = 1 THEN 250
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+240 STOP
+ 
+250 PRINT
+ ITEMS
+ CarriageControl:NL
+260 GOTO 40
+ LineNumber:40
+270 PRINT "N < R, INVALID INPUT"
+ ITEMS
+ TextConstant:"N < R, INVALID INPUT"
+ CarriageControl:NL
+280 GOTO 40
+ LineNumber:40
+290 PRINT "R < 0, INVALID INPUT"
+ ITEMS
+ TextConstant:"R < 0, INVALID INPUT"
+ CarriageControl:NL
+300 GOTO 40
+ LineNumber:40
+310 IF T = 0 THEN 390
+ ScalarValue:T
+ NumericConstant:0
+ BinaryOperator:=
+320 IF T = 1 THEN 390
+ ScalarValue:T
+ NumericConstant:1
+ BinaryOperator:=
+330 LET J = 1
+ ScalarReference:J
+ NumericConstant:1
+ AssignmentOperator:=
+340 FOR I = 2 TO T
+ control: VariableToken:I
+ start:   ["NumericConstant:2"]
+ end:     ["ScalarValue:T"]
+ step:    ["NumericConstant:1"]
+350 LET J = J*I
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:I
+ BinaryOperator:*
+ AssignmentOperator:=
+360 NEXT I
+ VariableToken:I
+370 LET T = J
+ ScalarReference:T
+ ScalarValue:J
+ AssignmentOperator:=
+380 GOTO 400
+ LineNumber:400
+390 LET T = 1
+ ScalarReference:T
+ NumericConstant:1
+ AssignmentOperator:=
+400 RETURN
+ 
+410 END
+ 

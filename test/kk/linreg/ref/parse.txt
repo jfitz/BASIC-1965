@@ -1,0 +1,329 @@
+100 LET X1 = 0
+ ScalarReference:X1
+ NumericConstant:0
+ AssignmentOperator:=
+110 LET X2 = 0
+ ScalarReference:X2
+ NumericConstant:0
+ AssignmentOperator:=
+120 LET Y1 = 0
+ ScalarReference:Y1
+ NumericConstant:0
+ AssignmentOperator:=
+130 LET Y2 = 0
+ ScalarReference:Y2
+ NumericConstant:0
+ AssignmentOperator:=
+140 LET Z = 0
+ ScalarReference:Z
+ NumericConstant:0
+ AssignmentOperator:=
+150
+160 READ N
+ ScalarReference:N
+170 FOR I = 1 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+180    READ X, Y
+ ScalarReference:X
+ ScalarReference:Y
+190    LET X1 = X1 + X
+ ScalarReference:X1
+ ScalarValue:X1
+ ScalarValue:X
+ BinaryOperator:+
+ AssignmentOperator:=
+200    LET Y1 = Y1 + Y
+ ScalarReference:Y1
+ ScalarValue:Y1
+ ScalarValue:Y
+ BinaryOperator:+
+ AssignmentOperator:=
+210    LET X2 = X2 + X*X
+ ScalarReference:X2
+ ScalarValue:X2
+ ScalarValue:X
+ ScalarValue:X
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+220    LET Y2 = Y2 + Y*Y
+ ScalarReference:Y2
+ ScalarValue:Y2
+ ScalarValue:Y
+ ScalarValue:Y
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+230    LET Z = Z + X*Y
+ ScalarReference:Z
+ ScalarValue:Z
+ ScalarValue:X
+ ScalarValue:Y
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+240 NEXT I
+ VariableToken:I
+250
+260 LET X3 = X1/N
+ ScalarReference:X3
+ ScalarValue:X1
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+265 LET Y3 = Y1/N
+ ScalarReference:Y3
+ ScalarValue:Y1
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+270 LET S1 = X2 - X1*X3
+ ScalarReference:S1
+ ScalarValue:X2
+ ScalarValue:X1
+ ScalarValue:X3
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+280 LET S2 = Y2 - Y1*Y3
+ ScalarReference:S2
+ ScalarValue:Y2
+ ScalarValue:Y1
+ ScalarValue:Y3
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+290 LET S = Z - X1*Y3
+ ScalarReference:S
+ ScalarValue:Z
+ ScalarValue:X1
+ ScalarValue:Y3
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+300 LET B = S/S1
+ ScalarReference:B
+ ScalarValue:S
+ ScalarValue:S1
+ BinaryOperator:/
+ AssignmentOperator:=
+310 LET B1 = Y3 - B*X3
+ ScalarReference:B1
+ ScalarValue:Y3
+ ScalarValue:B
+ ScalarValue:X3
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+320 LET S3 = S2 - B*S
+ ScalarReference:S3
+ ScalarValue:S2
+ ScalarValue:B
+ ScalarValue:S
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+330 LET S4 = S3/(N-2)
+ ScalarReference:S4
+ ScalarValue:S3
+ ScalarValue:N
+ NumericConstant:2
+ BinaryOperator:-
+ BinaryOperator:/
+ AssignmentOperator:=
+340
+350 PRINT "NUMBER = "N
+ ITEMS
+ TextConstant:"NUMBER = "
+ CarriageControl:
+ ScalarValue:N
+ CarriageControl:NL
+360 PRINT "MEAN OF X = "X3, "OF Y "Y3
+ ITEMS
+ TextConstant:"MEAN OF X = "
+ CarriageControl:
+ ScalarValue:X3
+ CarriageControl:,
+ TextConstant:"OF Y "
+ CarriageControl:
+ ScalarValue:Y3
+ CarriageControl:NL
+370 PRINT "SLOPE = "B, "Y-INTERCEPT = "B1
+ ITEMS
+ TextConstant:"SLOPE = "
+ CarriageControl:
+ ScalarValue:B
+ CarriageControl:,
+ TextConstant:"Y-INTERCEPT = "
+ CarriageControl:
+ ScalarValue:B1
+ CarriageControl:NL
+375 PRINT
+ ITEMS
+ CarriageControl:NL
+380 PRINT "SUM-OF-SQUARES ", "TOTAL", Y2
+ ITEMS
+ TextConstant:"SUM-OF-SQUARES "
+ CarriageControl:,
+ TextConstant:"TOTAL"
+ CarriageControl:,
+ ScalarValue:Y2
+ CarriageControl:NL
+390 PRINT "    ", "MEAN", Y3*Y1
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"MEAN"
+ CarriageControl:,
+ ScalarValue:Y3
+ ScalarValue:Y1
+ BinaryOperator:*
+ CarriageControl:NL
+400 PRINT "    ", "SLOPE", B*S
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"SLOPE"
+ CarriageControl:,
+ ScalarValue:B
+ ScalarValue:S
+ BinaryOperator:*
+ CarriageControl:NL
+410 PRINT "    ", "RESIDUAL", S3
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"RESIDUAL"
+ CarriageControl:,
+ ScalarValue:S3
+ CarriageControl:NL
+415 PRINT
+ ITEMS
+ CarriageControl:NL
+420 PRINT "STANDARD DEVIATIONS"
+ ITEMS
+ TextConstant:"STANDARD DEVIATIONS"
+ CarriageControl:NL
+430 PRINT "    ", "X  ", SQR(S1/(N - 1))
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"X  "
+ CarriageControl:,
+ ScalarValue:S1
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ FunctionSqr
+ CarriageControl:NL
+440 PRINT "    ", "Y  ", SQR(S2/(N-1))
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"Y  "
+ CarriageControl:,
+ ScalarValue:S2
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:/
+ FunctionSqr
+ CarriageControl:NL
+450 PRINT "    ", "ERROR", SQR(S4)
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"ERROR"
+ CarriageControl:,
+ ScalarValue:S4
+ FunctionSqr
+ CarriageControl:NL
+460 PRINT "    ", "Y-BAR", SQR(S4/N)
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"Y-BAR"
+ CarriageControl:,
+ ScalarValue:S4
+ ScalarValue:N
+ BinaryOperator:/
+ FunctionSqr
+ CarriageControl:NL
+470 PRINT "    ", "SLOPE", SQR(S4/S1)
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"SLOPE"
+ CarriageControl:,
+ ScalarValue:S4
+ ScalarValue:S1
+ BinaryOperator:/
+ FunctionSqr
+ CarriageControl:NL
+480 PRINT "    ", "Y-INTER.", SQR(S4*(1/N + X3*X3/S1))
+ ITEMS
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"Y-INTER."
+ CarriageControl:,
+ ScalarValue:S4
+ NumericConstant:1
+ ScalarValue:N
+ BinaryOperator:/
+ ScalarValue:X3
+ ScalarValue:X3
+ BinaryOperator:*
+ ScalarValue:S1
+ BinaryOperator:/
+ BinaryOperator:+
+ BinaryOperator:*
+ FunctionSqr
+ CarriageControl:NL
+485 PRINT
+ ITEMS
+ CarriageControl:NL
+490 PRINT "F-RATIO FOR SLOPE = " B*S/S4
+ ITEMS
+ TextConstant:"F-RATIO FOR SLOPE = "
+ CarriageControl:
+ ScalarValue:B
+ ScalarValue:S
+ BinaryOperator:*
+ ScalarValue:S4
+ BinaryOperator:/
+ CarriageControl:NL
+500 PRINT "CORRELATION COEFFICIENT = " S/SQR(S1*S2)
+ ITEMS
+ TextConstant:"CORRELATION COEFFICIENT = "
+ CarriageControl:
+ ScalarValue:S
+ ScalarValue:S1
+ ScalarValue:S2
+ BinaryOperator:*
+ FunctionSqr
+ BinaryOperator:/
+ CarriageControl:NL
+510
+900 DATA 5
+ NumericConstant:5
+901 DATA 480, 56
+ NumericConstant:480
+ NumericConstant:56
+902 DATA 500, 61
+ NumericConstant:500
+ NumericConstant:61
+903 DATA 520, 78
+ NumericConstant:520
+ NumericConstant:78
+904 DATA 540, 71
+ NumericConstant:540
+ NumericConstant:71
+905 DATA 560, 82
+ NumericConstant:560
+ NumericConstant:82
+999 END
+ 

@@ -8,6 +8,10 @@ class Function < AbstractElement
     @precedence = 7
   end
 
+  def dump
+    self.class.to_s
+  end
+
   private
 
   def counts_to_text(counts)

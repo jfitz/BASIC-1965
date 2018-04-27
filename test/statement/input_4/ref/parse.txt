@@ -1,0 +1,18 @@
+10 REM TEST FOR INPUT STATEMENT
+ RemarkToken:TEST FOR INPUT STATEMENT
+70 INPUT "PLAIN, EMPTY, PLAIN"; P1, P2, P3
+ ScalarReference:P1
+ ScalarReference:P2
+ ScalarReference:P3
+75 PRINT "THE NUMBERS WERE"; P1; P2; P3
+ ITEMS
+ TextConstant:"THE NUMBERS WERE"
+ CarriageControl:;
+ ScalarValue:P1
+ CarriageControl:;
+ ScalarValue:P2
+ CarriageControl:;
+ ScalarValue:P3
+ CarriageControl:NL
+99 END
+ 

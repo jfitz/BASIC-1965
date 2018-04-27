@@ -1,0 +1,120 @@
+10 REM THIS PROGRAM COMPUTES THE FIRST DERIVATIVE
+ RemarkToken:THIS PROGRAM COMPUTES THE FIRST DERIVATIVE
+20 REM OF A FUNCTION ENTERED BY THE USER
+ RemarkToken:OF A FUNCTION ENTERED BY THE USER
+30 PRINT "VALUE OF X = ";
+ ITEMS
+ TextConstant:"VALUE OF X = "
+ CarriageControl:;
+40 INPUT X
+ ScalarReference:X
+50 LET Y = X
+ ScalarReference:Y
+ ScalarValue:X
+ AssignmentOperator:=
+60 LET Z = (X*(1E-04))/2
+ ScalarReference:Z
+ ScalarValue:X
+ NumericConstant:0.0001
+ BinaryOperator:*
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+70 LET W = X + Z
+ ScalarReference:W
+ ScalarValue:X
+ ScalarValue:Z
+ BinaryOperator:+
+ AssignmentOperator:=
+80 LET V = X - Z
+ ScalarReference:V
+ ScalarValue:X
+ ScalarValue:Z
+ BinaryOperator:-
+ AssignmentOperator:=
+90 LET X = W
+ ScalarReference:X
+ ScalarValue:W
+ AssignmentOperator:=
+100 GOSUB 280
+ LineNumber:280
+110 LET A = P
+ ScalarReference:A
+ ScalarValue:P
+ AssignmentOperator:=
+120 LET X = V
+ ScalarReference:X
+ ScalarValue:V
+ AssignmentOperator:=
+130 GOSUB 280
+ LineNumber:280
+140 LET B = P
+ ScalarReference:B
+ ScalarValue:P
+ AssignmentOperator:=
+150 LET X = Y
+ ScalarReference:X
+ ScalarValue:Y
+ AssignmentOperator:=
+160 GOSUB 280
+ LineNumber:280
+170 LET C = P
+ ScalarReference:C
+ ScalarValue:P
+ AssignmentOperator:=
+180 LET F = (A - B)/(2*Z)
+ ScalarReference:F
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:-
+ NumericConstant:2
+ ScalarValue:Z
+ BinaryOperator:*
+ BinaryOperator:/
+ AssignmentOperator:=
+190 PRINT "IF X = ";Y,"THEN F(X) = ";C
+ ITEMS
+ TextConstant:"IF X = "
+ CarriageControl:;
+ ScalarValue:Y
+ CarriageControl:,
+ TextConstant:"THEN F(X) = "
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:NL
+200 PRINT "AND F'(X) = ";F
+ ITEMS
+ TextConstant:"AND F'(X) = "
+ CarriageControl:;
+ ScalarValue:F
+ CarriageControl:NL
+210 PRINT
+ ITEMS
+ CarriageControl:NL
+220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+230 INPUT L
+ ScalarReference:L
+240 IF L = 1 THEN 260
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+250 STOP
+ 
+260 PRINT
+ ITEMS
+ CarriageControl:NL
+270 GOTO 40
+ LineNumber:40
+280 LET P = X^2
+ ScalarReference:P
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:^
+ AssignmentOperator:=
+290 RETURN
+ 
+300 END
+ 

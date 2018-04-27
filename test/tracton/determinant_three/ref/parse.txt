@@ -1,0 +1,255 @@
+10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+ RemarkToken:THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+20 PRINT "ENTER 3 X 3 MATRIX"
+ ITEMS
+ TextConstant:"ENTER 3 X 3 MATRIX"
+ CarriageControl:NL
+30 INPUT A,B,C,D,E,F,G,H,I
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+ ScalarReference:D
+ ScalarReference:E
+ ScalarReference:F
+ ScalarReference:G
+ ScalarReference:H
+ ScalarReference:I
+40 REM COMPUTE DETERMINANT OF 3X3
+ RemarkToken:COMPUTE DETERMINANT OF 3X3
+50 LET M = (A*E*I) + (B*F*G) + (C*H*D)
+ ScalarReference:M
+ ScalarValue:A
+ ScalarValue:E
+ BinaryOperator:*
+ ScalarValue:I
+ BinaryOperator:*
+ ScalarValue:B
+ ScalarValue:F
+ BinaryOperator:*
+ ScalarValue:G
+ BinaryOperator:*
+ BinaryOperator:+
+ ScalarValue:C
+ ScalarValue:H
+ BinaryOperator:*
+ ScalarValue:D
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+60 LET N = M - (C*E*G) - (F*H*A) - (I*D*B)
+ ScalarReference:N
+ ScalarValue:M
+ ScalarValue:C
+ ScalarValue:E
+ BinaryOperator:*
+ ScalarValue:G
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:F
+ ScalarValue:H
+ BinaryOperator:*
+ ScalarValue:A
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:I
+ ScalarValue:D
+ BinaryOperator:*
+ ScalarValue:B
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+70 REM COMPUTE INVERSE
+ RemarkToken:COMPUTE INVERSE
+80 LET O = ((E*I) - (H*F))/N
+ ScalarReference:O
+ ScalarValue:E
+ ScalarValue:I
+ BinaryOperator:*
+ ScalarValue:H
+ ScalarValue:F
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+90 LET P = ((G*F) - (D*I))/N
+ ScalarReference:P
+ ScalarValue:G
+ ScalarValue:F
+ BinaryOperator:*
+ ScalarValue:D
+ ScalarValue:I
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+100 LET Q = ((D*H) - (G*E))/N
+ ScalarReference:Q
+ ScalarValue:D
+ ScalarValue:H
+ BinaryOperator:*
+ ScalarValue:G
+ ScalarValue:E
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+110 LET R = ((H*C) - (B*I))/N
+ ScalarReference:R
+ ScalarValue:H
+ ScalarValue:C
+ BinaryOperator:*
+ ScalarValue:B
+ ScalarValue:I
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+120 LET S = ((A*I) - (G*C))/N
+ ScalarReference:S
+ ScalarValue:A
+ ScalarValue:I
+ BinaryOperator:*
+ ScalarValue:G
+ ScalarValue:C
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+130 LET T = ((G*B) - (A*H))/N
+ ScalarReference:T
+ ScalarValue:G
+ ScalarValue:B
+ BinaryOperator:*
+ ScalarValue:A
+ ScalarValue:H
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+140 LET U = ((B*F) - (E*C))/N
+ ScalarReference:U
+ ScalarValue:B
+ ScalarValue:F
+ BinaryOperator:*
+ ScalarValue:E
+ ScalarValue:C
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+150 LET V = ((D*C) - (A*F))/N
+ ScalarReference:V
+ ScalarValue:D
+ ScalarValue:C
+ BinaryOperator:*
+ ScalarValue:A
+ ScalarValue:F
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+160 LET W = ((A*E) - (D*B))/N
+ ScalarReference:W
+ ScalarValue:A
+ ScalarValue:E
+ BinaryOperator:*
+ ScalarValue:D
+ ScalarValue:B
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+170 PRINT "ORIGINAL MATRIX"
+ ITEMS
+ TextConstant:"ORIGINAL MATRIX"
+ CarriageControl:NL
+180 PRINT A,B,C
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:C
+ CarriageControl:NL
+190 PRINT D,E,F
+ ITEMS
+ ScalarValue:D
+ CarriageControl:,
+ ScalarValue:E
+ CarriageControl:,
+ ScalarValue:F
+ CarriageControl:NL
+200 PRINT G,H,I
+ ITEMS
+ ScalarValue:G
+ CarriageControl:,
+ ScalarValue:H
+ CarriageControl:,
+ ScalarValue:I
+ CarriageControl:NL
+210 PRINT
+ ITEMS
+ CarriageControl:NL
+220 PRINT "DETERMINANT = ";N
+ ITEMS
+ TextConstant:"DETERMINANT = "
+ CarriageControl:;
+ ScalarValue:N
+ CarriageControl:NL
+230 PRINT
+ ITEMS
+ CarriageControl:NL
+240 PRINT "INVERSE OF MATRIX"
+ ITEMS
+ TextConstant:"INVERSE OF MATRIX"
+ CarriageControl:NL
+250 PRINT O,R,U
+ ITEMS
+ ScalarValue:O
+ CarriageControl:,
+ ScalarValue:R
+ CarriageControl:,
+ ScalarValue:U
+ CarriageControl:NL
+260 PRINT P,S,V
+ ITEMS
+ ScalarValue:P
+ CarriageControl:,
+ ScalarValue:S
+ CarriageControl:,
+ ScalarValue:V
+ CarriageControl:NL
+270 PRINT Q,T,W
+ ITEMS
+ ScalarValue:Q
+ CarriageControl:,
+ ScalarValue:T
+ CarriageControl:,
+ ScalarValue:W
+ CarriageControl:NL
+280 PRINT
+ ITEMS
+ CarriageControl:NL
+290 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+300 INPUT L
+ ScalarReference:L
+310 IF L = 1 THEN 20
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+320 STOP
+ 
+330 END
+ 

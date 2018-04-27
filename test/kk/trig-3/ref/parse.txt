@@ -1,0 +1,209 @@
+100 REM ANGLE-SIDE-SIDE
+ RemarkToken:ANGLE-SIDE-SIDE
+110 LET P = 3.14159265
+ ScalarReference:P
+ NumericConstant:3.14159265
+ AssignmentOperator:=
+120 DEF FND(X) = X*P/180
+ ScalarValue:X
+ ScalarValue:P
+ BinaryOperator:*
+ NumericConstant:180
+ BinaryOperator:/
+130 DEF FNS(X) = SIN(FND(X))
+ ScalarValue:X
+ UserFunction
+ FunctionSin
+135 DEF FNR(X) = INT(100*X+0.5)/100
+ NumericConstant:100
+ ScalarValue:X
+ BinaryOperator:*
+ NumericConstant:0.5
+ BinaryOperator:+
+ FunctionInt
+ NumericConstant:100
+ BinaryOperator:/
+140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
+ ITEMS
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"THIRD SIDE"
+ CarriageControl:,
+ TextConstant:"CASE 2"
+ CarriageControl:NL
+150 READ B,X,Y
+ ScalarReference:B
+ ScalarReference:X
+ ScalarReference:Y
+160 PRINT B,X,Y,
+ ITEMS
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:Y
+ CarriageControl:,
+170 LET S = X*FNS(B)/Y
+ ScalarReference:S
+ ScalarValue:X
+ ScalarValue:B
+ UserFunction
+ BinaryOperator:*
+ ScalarValue:Y
+ BinaryOperator:/
+ AssignmentOperator:=
+180 IF S > 1 THEN 290
+ ScalarValue:S
+ NumericConstant:1
+ BinaryOperator:>
+190 IF FNR(S) = 1 THEN 320
+ ScalarValue:S
+ UserFunction
+ NumericConstant:1
+ BinaryOperator:=
+195
+200 REM TWO POINTS OF INTERSECTION
+ RemarkToken:TWO POINTS OF INTERSECTION
+210 LET T = S/SQR(1-S^2)
+ ScalarReference:T
+ ScalarValue:S
+ NumericConstant:1
+ ScalarValue:S
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:-
+ FunctionSqr
+ BinaryOperator:/
+ AssignmentOperator:=
+220 LET C = ATN(T)*180/P
+ ScalarReference:C
+ ScalarValue:T
+ FunctionAtn
+ NumericConstant:180
+ BinaryOperator:*
+ ScalarValue:P
+ BinaryOperator:/
+ AssignmentOperator:=
+230 LET A = 180 - B - C
+ ScalarReference:A
+ NumericConstant:180
+ ScalarValue:B
+ BinaryOperator:-
+ ScalarValue:C
+ BinaryOperator:-
+ AssignmentOperator:=
+240 GOSUB 370
+ LineNumber:370
+250 LET C = 180 - C
+ ScalarReference:C
+ NumericConstant:180
+ ScalarValue:C
+ BinaryOperator:-
+ AssignmentOperator:=
+260 LET A = 180 - B - C
+ ScalarReference:A
+ NumericConstant:180
+ ScalarValue:B
+ BinaryOperator:-
+ ScalarValue:C
+ BinaryOperator:-
+ AssignmentOperator:=
+270 GOSUB 370
+ LineNumber:370
+275 PRINT
+ ITEMS
+ CarriageControl:NL
+280 GOTO 150
+ LineNumber:150
+285
+290 REM NO POINT OF INTERSECTION
+ RemarkToken:NO POINT OF INTERSECTION
+300 PRINT "NONE", "NONE"
+ ITEMS
+ TextConstant:"NONE"
+ CarriageControl:,
+ TextConstant:"NONE"
+ CarriageControl:NL
+310 GOTO 150
+ LineNumber:150
+315
+320 REM ONE POINT OF INTERSECTION
+ RemarkToken:ONE POINT OF INTERSECTION
+330 LET A = 90 - B
+ ScalarReference:A
+ NumericConstant:90
+ ScalarValue:B
+ BinaryOperator:-
+ AssignmentOperator:=
+340 GOSUB 370
+ LineNumber:370
+350 PRINT "NONE"
+ ITEMS
+ TextConstant:"NONE"
+ CarriageControl:NL
+360 GOTO 150
+ LineNumber:150
+365
+370 REM ANGLE-SIDE-ANGLE ROUTINE
+ RemarkToken:ANGLE-SIDE-ANGLE ROUTINE
+380 LET Z = X*FNS(A)/S
+ ScalarReference:Z
+ ScalarValue:X
+ ScalarValue:A
+ UserFunction
+ BinaryOperator:*
+ ScalarValue:S
+ BinaryOperator:/
+ AssignmentOperator:=
+390 IF Z >= 0 THEN 420
+ ScalarValue:Z
+ NumericConstant:0
+ BinaryOperator:>=
+400 PRINT "NONE",
+ ITEMS
+ TextConstant:"NONE"
+ CarriageControl:,
+410 RETURN
+ 
+420 PRINT Z,
+ ITEMS
+ ScalarValue:Z
+ CarriageControl:,
+430 RETURN
+ 
+440
+450 DATA 60,10,8, 60,10,9, 60,10,11, 120,10,8, 120,10,9
+ NumericConstant:60
+ NumericConstant:10
+ NumericConstant:8
+ NumericConstant:60
+ NumericConstant:10
+ NumericConstant:9
+ NumericConstant:60
+ NumericConstant:10
+ NumericConstant:11
+ NumericConstant:120
+ NumericConstant:10
+ NumericConstant:8
+ NumericConstant:120
+ NumericConstant:10
+ NumericConstant:9
+460 DATA 120,10,11, 90,3,5, 60,5,5, 30,10,5
+ NumericConstant:120
+ NumericConstant:10
+ NumericConstant:11
+ NumericConstant:90
+ NumericConstant:3
+ NumericConstant:5
+ NumericConstant:60
+ NumericConstant:5
+ NumericConstant:5
+ NumericConstant:30
+ NumericConstant:10
+ NumericConstant:5
+470 END
+ 

@@ -1,0 +1,26 @@
+10 DEF FNL(A,B)=LOG(A)/LOG(B)
+ ScalarValue:A
+ FunctionLog
+ ScalarValue:B
+ FunctionLog
+ BinaryOperator:/
+20 FOR N = 2 TO 10 STEP 2
+ control: VariableToken:N
+ start:   ["NumericConstant:2"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:2"]
+30 PRINT N, LOG(N), FNL(N,10)
+ ITEMS
+ ScalarValue:N
+ CarriageControl:,
+ ScalarValue:N
+ FunctionLog
+ CarriageControl:,
+ ScalarValue:N
+ NumericConstant:10
+ UserFunction
+ CarriageControl:NL
+40 NEXT N
+ VariableToken:N
+99 END
+ 

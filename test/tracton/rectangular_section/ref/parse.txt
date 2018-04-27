@@ -1,0 +1,88 @@
+10 REM THIS PROGRAM COMPUTES THE VARIOUS PARAMETERS
+ RemarkToken:THIS PROGRAM COMPUTES THE VARIOUS PARAMETERS
+20 REM CONNECTED WITH A RECTANGULAR SECTION
+ RemarkToken:CONNECTED WITH A RECTANGULAR SECTION
+30 PRINT "BASE = ";
+ ITEMS
+ TextConstant:"BASE = "
+ CarriageControl:;
+40 INPUT B
+ ScalarReference:B
+50 PRINT "HEIGHT = ";
+ ITEMS
+ TextConstant:"HEIGHT = "
+ CarriageControl:;
+60 INPUT H
+ ScalarReference:H
+70 LET I = (B*(H^3))/12
+ ScalarReference:I
+ ScalarValue:B
+ ScalarValue:H
+ NumericConstant:3
+ BinaryOperator:^
+ BinaryOperator:*
+ NumericConstant:12
+ BinaryOperator:/
+ AssignmentOperator:=
+80 LET J = (B*H*(B^2 + H^2))/12
+ ScalarReference:J
+ ScalarValue:B
+ ScalarValue:H
+ BinaryOperator:*
+ ScalarValue:B
+ NumericConstant:2
+ BinaryOperator:^
+ ScalarValue:H
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:+
+ BinaryOperator:*
+ NumericConstant:12
+ BinaryOperator:/
+ AssignmentOperator:=
+90 LET A = B*H
+ ScalarReference:A
+ ScalarValue:B
+ ScalarValue:H
+ BinaryOperator:*
+ AssignmentOperator:=
+100 PRINT "MOMENT OF INERTIA = ";I
+ ITEMS
+ TextConstant:"MOMENT OF INERTIA = "
+ CarriageControl:;
+ ScalarValue:I
+ CarriageControl:NL
+110 PRINT "POLAR MOMENT OF INERTIA = ";J
+ ITEMS
+ TextConstant:"POLAR MOMENT OF INERTIA = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+120 PRINT "AREA OF SECTION = ";A
+ ITEMS
+ TextConstant:"AREA OF SECTION = "
+ CarriageControl:;
+ ScalarValue:A
+ CarriageControl:NL
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+150 INPUT L
+ ScalarReference:L
+160 IF L = 1 THEN 180
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+170 STOP
+ 
+180 PRINT
+ ITEMS
+ CarriageControl:NL
+190 GOTO 30
+ LineNumber:30
+200 END
+ 

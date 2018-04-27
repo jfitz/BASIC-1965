@@ -1,0 +1,58 @@
+10 REM THIS PROGRAM COMPUTES THE GAUSSIAN PROBABILITY
+ RemarkToken:THIS PROGRAM COMPUTES THE GAUSSIAN PROBABILITY
+20 REM FUNCTION OF X
+ RemarkToken:FUNCTION OF X
+30 PRINT "X = ";
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:;
+40 INPUT X
+ ScalarReference:X
+50 LET A = EXP(-(X^2)/2)
+ ScalarReference:A
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:^
+ UnaryOperator:-
+ NumericConstant:2
+ BinaryOperator:/
+ FunctionExp
+ AssignmentOperator:=
+60 LET B = .398942
+ ScalarReference:B
+ NumericConstant:0.398942
+ AssignmentOperator:=
+70 LET C = B*A
+ ScalarReference:C
+ ScalarValue:B
+ ScalarValue:A
+ BinaryOperator:*
+ AssignmentOperator:=
+80 PRINT "F(X) = ";C
+ ITEMS
+ TextConstant:"F(X) = "
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:NL
+90 PRINT
+ ITEMS
+ CarriageControl:NL
+100 PRINT "TO CONTINUE TYPE 1, 0 TO STOP"
+ ITEMS
+ TextConstant:"TO CONTINUE TYPE 1, 0 TO STOP"
+ CarriageControl:NL
+110 INPUT L
+ ScalarReference:L
+120 IF L = 1 THEN 140
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+130 STOP
+ 
+140 PRINT
+ ITEMS
+ CarriageControl:NL
+150 GOTO 30
+ LineNumber:30
+160 END
+ 

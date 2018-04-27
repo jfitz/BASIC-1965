@@ -1,0 +1,299 @@
+10 REM THIS PROGRAM COMPUTES THE PERCENTAGES OF THE
+ RemarkToken:THIS PROGRAM COMPUTES THE PERCENTAGES OF THE
+20 REM PRODUCTS PRODUCED BY HYDROCARBON COMBUSTION
+ RemarkToken:PRODUCTS PRODUCED BY HYDROCARBON COMBUSTION
+30 PRINT "FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO"
+ ITEMS
+ TextConstant:"FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO"
+ CarriageControl:NL
+40 INPUT I$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+50 IF I$ = "YES" THEN 90
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+60 IF I$ = "NO" THEN 130
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+70 PRINT "INVALID COMMAND"
+ ITEMS
+ TextConstant:"INVALID COMMAND"
+ CarriageControl:NL
+80 GOTO 30
+ LineNumber:30
+90 PRINT "THE AMOUNTS OF EACH ELEMENT MUST BE"
+ ITEMS
+ TextConstant:"THE AMOUNTS OF EACH ELEMENT MUST BE"
+ CarriageControl:NL
+100 PRINT "ENTERED, EVEN IF THE AMOUNT IS ZERO"
+ ITEMS
+ TextConstant:"ENTERED, EVEN IF THE AMOUNT IS ZERO"
+ CarriageControl:NL
+110 PRINT "EXAMPLE: - METHANE (CH4) MUST BE ENTERED AS"
+ ITEMS
+ TextConstant:"EXAMPLE: - METHANE (CH4) MUST BE ENTERED AS"
+ CarriageControl:NL
+120 PRINT "C;1, H:4, O:0, S:0, N:0"
+ ITEMS
+ TextConstant:"C;1, H:4, O:0, S:0, N:0"
+ CarriageControl:NL
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "ENTER CARBON(C), HYDROGEN(H), OXYGEN(O)"
+ ITEMS
+ TextConstant:"ENTER CARBON(C), HYDROGEN(H), OXYGEN(O)"
+ CarriageControl:NL
+150 PRINT "SULPHUR(S), NITROGEN(N) IN THAT ORDER"
+ ITEMS
+ TextConstant:"SULPHUR(S), NITROGEN(N) IN THAT ORDER"
+ CarriageControl:NL
+160 INPUT C,H,O,S,N
+ ScalarReference:C
+ ScalarReference:H
+ ScalarReference:O
+ ScalarReference:S
+ ScalarReference:N
+170 PRINT "ENTER PERCENTAGE EXCESS AIR, IF ZERO"
+ ITEMS
+ TextConstant:"ENTER PERCENTAGE EXCESS AIR, IF ZERO"
+ CarriageControl:NL
+180 PRINT "ENTER 0. EXAMPLE: - 34% ENTER AS 34"
+ ITEMS
+ TextConstant:"ENTER 0. EXAMPLE: - 34% ENTER AS 34"
+ CarriageControl:NL
+190 INPUT E
+ ScalarReference:E
+200 LET E = 1 + (E/100)
+ ScalarReference:E
+ NumericConstant:1
+ ScalarValue:E
+ NumericConstant:100
+ BinaryOperator:/
+ BinaryOperator:+
+ AssignmentOperator:=
+210 LET O2 = C + S + (H/4) - (O/2)
+ ScalarReference:O2
+ ScalarValue:C
+ ScalarValue:S
+ BinaryOperator:+
+ ScalarValue:H
+ NumericConstant:4
+ BinaryOperator:/
+ BinaryOperator:+
+ ScalarValue:O
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:-
+ AssignmentOperator:=
+220 LET A = O2*E*4.762
+ ScalarReference:A
+ ScalarValue:O2
+ ScalarValue:E
+ BinaryOperator:*
+ NumericConstant:4.762
+ BinaryOperator:*
+ AssignmentOperator:=
+230 LET A1 = 1.8094*A
+ ScalarReference:A1
+ NumericConstant:1.8094
+ ScalarValue:A
+ BinaryOperator:*
+ AssignmentOperator:=
+240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
+ ScalarReference:F
+ NumericConstant:0.7507
+ ScalarValue:C
+ BinaryOperator:*
+ NumericConstant:0.063
+ ScalarValue:H
+ BinaryOperator:*
+ BinaryOperator:+
+ NumericConstant:2.004
+ ScalarValue:S
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+250 LET F = (0.875*N) + O + F
+ ScalarReference:F
+ NumericConstant:0.875
+ ScalarValue:N
+ BinaryOperator:*
+ ScalarValue:O
+ BinaryOperator:+
+ ScalarValue:F
+ BinaryOperator:+
+ AssignmentOperator:=
+260 LET A1 = A1/F
+ ScalarReference:A1
+ ScalarValue:A1
+ ScalarValue:F
+ BinaryOperator:/
+ AssignmentOperator:=
+270 LET M = A + (H/4) + (O/2) + (N/2)
+ ScalarReference:M
+ ScalarValue:A
+ ScalarValue:H
+ NumericConstant:4
+ BinaryOperator:/
+ BinaryOperator:+
+ ScalarValue:O
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:+
+ ScalarValue:N
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:+
+ AssignmentOperator:=
+280 LET C2 = (C*100)/M
+ ScalarReference:C2
+ ScalarValue:C
+ NumericConstant:100
+ BinaryOperator:*
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+290 LET S2 = (S*100)/M
+ ScalarReference:S2
+ ScalarValue:S
+ NumericConstant:100
+ BinaryOperator:*
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+300 LET H2 = (H*100)/M
+ ScalarReference:H2
+ ScalarValue:H
+ NumericConstant:100
+ BinaryOperator:*
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+310 LET O3 = (100*(E-1)*O2)/M
+ ScalarReference:O3
+ NumericConstant:100
+ ScalarValue:E
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:*
+ ScalarValue:O2
+ BinaryOperator:*
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
+ ScalarReference:N2
+ NumericConstant:100
+ NumericConstant:3.762
+ ScalarValue:E
+ BinaryOperator:*
+ ScalarValue:O2
+ BinaryOperator:*
+ ScalarValue:N
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:+
+ BinaryOperator:*
+ ScalarValue:M
+ BinaryOperator:/
+ AssignmentOperator:=
+330 PRINT
+ ITEMS
+ CarriageControl:NL
+340 PRINT "AIR-FUEL RATIO WITH RESPECT TO MOLES = ";A
+ ITEMS
+ TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MOLES = "
+ CarriageControl:;
+ ScalarValue:A
+ CarriageControl:NL
+350 PRINT "AIR-FUEL RATIO WITH RESPECT TO MASS = ";A1
+ ITEMS
+ TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MASS = "
+ CarriageControl:;
+ ScalarValue:A1
+ CarriageControl:NL
+360 PRINT "TOTAL MOLES OF PRODUCT = ";M
+ ITEMS
+ TextConstant:"TOTAL MOLES OF PRODUCT = "
+ CarriageControl:;
+ ScalarValue:M
+ CarriageControl:NL
+370 PRINT "*****PERCENTAGE VOLUME OF PRODUCTS*****"
+ ITEMS
+ TextConstant:"*****PERCENTAGE VOLUME OF PRODUCTS*****"
+ CarriageControl:NL
+380 PRINT "CARBON DIOXIDE = ";C2;"%"
+ ITEMS
+ TextConstant:"CARBON DIOXIDE = "
+ CarriageControl:;
+ ScalarValue:C2
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+390 PRINT "SULPHUR DIOXIDE = ";S2;"%"
+ ITEMS
+ TextConstant:"SULPHUR DIOXIDE = "
+ CarriageControl:;
+ ScalarValue:S2
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+400 PRINT "WATER = ";H2;"%"
+ ITEMS
+ TextConstant:"WATER = "
+ CarriageControl:;
+ ScalarValue:H2
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+410 PRINT "OXYGEN = ";O3;"%"
+ ITEMS
+ TextConstant:"OXYGEN = "
+ CarriageControl:;
+ ScalarValue:O3
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+420 PRINT "NITROGEN = ";N2;"%"
+ ITEMS
+ TextConstant:"NITROGEN = "
+ CarriageControl:;
+ ScalarValue:N2
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+430 PRINT "*****COMPLETE COMBUSTION ASSUMED*****"
+ ITEMS
+ TextConstant:"*****COMPLETE COMBUSTION ASSUMED*****"
+ CarriageControl:NL
+440 PRINT
+ ITEMS
+ CarriageControl:NL
+450 PRINT "TO TRY NEXT COMPOUND TYPE YES"
+ ITEMS
+ TextConstant:"TO TRY NEXT COMPOUND TYPE YES"
+ CarriageControl:NL
+460 PRINT "TO STOP TYPE NO"
+ ITEMS
+ TextConstant:"TO STOP TYPE NO"
+ CarriageControl:NL
+470 INPUT L$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+480 IF L$ = "YES" THEN 510
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+490 PRINT "COMBUSTION SAYS GOOD-BYE"
+ ITEMS
+ TextConstant:"COMBUSTION SAYS GOOD-BYE"
+ CarriageControl:NL
+500 STOP
+ 
+510 PRINT
+ ITEMS
+ CarriageControl:NL
+520 GOTO 30
+ LineNumber:30
+530 END
+ 

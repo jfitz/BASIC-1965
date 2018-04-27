@@ -1,0 +1,38 @@
+10 REM This is a test
+ RemarkToken:This is a test
+20 FILES "input.txt"
+ TextConstant:"input.txt"
+30 READ #1;A,B,C,D
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+ ScalarReference:D
+40 PRINT A;B;C;D
+ ITEMS
+ ScalarValue:A
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:;
+ ScalarValue:D
+ CarriageControl:NL
+50 READ #1;A,B,C,D
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+ ScalarReference:D
+60 PRINT A;B;C;D
+ ITEMS
+ ScalarValue:A
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:;
+ ScalarValue:D
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 

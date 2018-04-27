@@ -1,0 +1,144 @@
+10 REM THIS PROGRAM COMPUTES THE MEAN, STANDARD
+ RemarkToken:THIS PROGRAM COMPUTES THE MEAN, STANDARD
+20 REM DEVIATION AND STANDARD ERROR FOR GROUPED DATA
+ RemarkToken:DEVIATION AND STANDARD ERROR FOR GROUPED DATA
+30 LET A = 0
+ ScalarReference:A
+ NumericConstant:0
+ AssignmentOperator:=
+40 LET B = 0
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+50 LET C = 0
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+60 LET D = 0
+ ScalarReference:D
+ NumericConstant:0
+ AssignmentOperator:=
+70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
+ ITEMS
+ TextConstant:"ENTER SAMPLE VALUE AND FREQUENCY"
+ CarriageControl:;
+80 INPUT X,F
+ ScalarReference:X
+ ScalarReference:F
+90 IF F <= 0 THEN 170
+ ScalarValue:F
+ NumericConstant:0
+ BinaryOperator:<=
+100 LET A = A + 1
+ ScalarReference:A
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+110 LET B = B + F
+ ScalarReference:B
+ ScalarValue:B
+ ScalarValue:F
+ BinaryOperator:+
+ AssignmentOperator:=
+120 LET G = X*F
+ ScalarReference:G
+ ScalarValue:X
+ ScalarValue:F
+ BinaryOperator:*
+ AssignmentOperator:=
+130 LET C = C + G
+ ScalarReference:C
+ ScalarValue:C
+ ScalarValue:G
+ BinaryOperator:+
+ AssignmentOperator:=
+140 LET E = (X^2)*F
+ ScalarReference:E
+ ScalarValue:X
+ NumericConstant:2
+ BinaryOperator:^
+ ScalarValue:F
+ BinaryOperator:*
+ AssignmentOperator:=
+150 LET D = D + E
+ ScalarReference:D
+ ScalarValue:D
+ ScalarValue:E
+ BinaryOperator:+
+ AssignmentOperator:=
+160 GOTO 70
+ LineNumber:70
+170 LET H = C/B
+ ScalarReference:H
+ ScalarValue:C
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+180 LET I = SQR(D - (B*(H^2)))
+ ScalarReference:I
+ ScalarValue:D
+ ScalarValue:B
+ ScalarValue:H
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:*
+ BinaryOperator:-
+ FunctionSqr
+ AssignmentOperator:=
+190 LET J = I/SQR(B)
+ ScalarReference:J
+ ScalarValue:I
+ ScalarValue:B
+ FunctionSqr
+ BinaryOperator:/
+ AssignmentOperator:=
+200 PRINT
+ ITEMS
+ CarriageControl:NL
+210 PRINT "NUMBER OF SAMPLES ENTERED = ";A
+ ITEMS
+ TextConstant:"NUMBER OF SAMPLES ENTERED = "
+ CarriageControl:;
+ ScalarValue:A
+ CarriageControl:NL
+220 PRINT "MEAN = ";H
+ ITEMS
+ TextConstant:"MEAN = "
+ CarriageControl:;
+ ScalarValue:H
+ CarriageControl:NL
+230 PRINT "STANDARD DEVIATION = ";I
+ ITEMS
+ TextConstant:"STANDARD DEVIATION = "
+ CarriageControl:;
+ ScalarValue:I
+ CarriageControl:NL
+240 PRINT "STANDARD ERROR = ";J
+ ITEMS
+ TextConstant:"STANDARD ERROR = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+250 PRINT
+ ITEMS
+ CarriageControl:NL
+260 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+270 INPUT L
+ ScalarReference:L
+280 IF L = 1 THEN 300
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+290 STOP
+ 
+300 PRINT
+ ITEMS
+ CarriageControl:NL
+310 GOTO 30
+ LineNumber:30
+320 END
+ 

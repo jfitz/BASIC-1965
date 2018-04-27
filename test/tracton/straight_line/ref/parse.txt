@@ -1,0 +1,96 @@
+10 REM THIS PROGRAM COMPUTES VALUE DEPRECIATION
+ RemarkToken:THIS PROGRAM COMPUTES VALUE DEPRECIATION
+20 REM BY THE STRAIGHT LINE METHOD
+ RemarkToken:BY THE STRAIGHT LINE METHOD
+30 PRINT "ORIGINAL VALUE = ";
+ ITEMS
+ TextConstant:"ORIGINAL VALUE = "
+ CarriageControl:;
+40 INPUT A
+ ScalarReference:A
+50 PRINT "LIFETIME IN YEARS = ";
+ ITEMS
+ TextConstant:"LIFETIME IN YEARS = "
+ CarriageControl:;
+60 INPUT B
+ ScalarReference:B
+70 LET C = A/B
+ ScalarReference:C
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+80 PRINT "YEARLY DEPRECIATION = ";C
+ ITEMS
+ TextConstant:"YEARLY DEPRECIATION = "
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:NL
+90 PRINT
+ ITEMS
+ CarriageControl:NL
+100 PRINT "YEAR","VALUE"
+ ITEMS
+ TextConstant:"YEAR"
+ CarriageControl:,
+ TextConstant:"VALUE"
+ CarriageControl:NL
+110 LET X = 0
+ ScalarReference:X
+ NumericConstant:0
+ AssignmentOperator:=
+120 LET X = X + 1
+ ScalarReference:X
+ ScalarValue:X
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+130 LET A = A - C
+ ScalarReference:A
+ ScalarValue:A
+ ScalarValue:C
+ BinaryOperator:-
+ AssignmentOperator:=
+140 IF A < 0 THEN 160
+ ScalarValue:A
+ NumericConstant:0
+ BinaryOperator:<
+150 GOTO 170
+ LineNumber:170
+160 LET A = 0
+ ScalarReference:A
+ NumericConstant:0
+ AssignmentOperator:=
+170 PRINT X,A
+ ITEMS
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:A
+ CarriageControl:NL
+180 IF X < B THEN 120
+ ScalarValue:X
+ ScalarValue:B
+ BinaryOperator:<
+190 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+210 INPUT L
+ ScalarReference:L
+220 IF L = 1 THEN 240
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+230 STOP
+ 
+240 PRINT
+ ITEMS
+ CarriageControl:NL
+250 GOTO 30
+ LineNumber:30
+260 END
+ 

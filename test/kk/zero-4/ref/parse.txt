@@ -1,0 +1,183 @@
+10 DEF FNF(X) = X^5 + 2*X^3 -1
+ ScalarValue:X
+ NumericConstant:5
+ BinaryOperator:^
+ NumericConstant:2
+ ScalarValue:X
+ NumericConstant:3
+ BinaryOperator:^
+ BinaryOperator:*
+ BinaryOperator:+
+ NumericConstant:1
+ BinaryOperator:-
+11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
+ RemarkToken:DEF FNF(X) = -3*X^5 + X^3 + 1
+12 REM DEF FNF(X) = X^2 + 1
+ RemarkToken:DEF FNF(X) = X^2 + 1
+13 REM DEF FNF(X) = X^2 - 0.001
+ RemarkToken:DEF FNF(X) = X^2 - 0.001
+14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
+ RemarkToken:DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
+20 READ A,B
+ ScalarReference:A
+ ScalarReference:B
+22 GOSUB 200
+ LineNumber:200
+26 LET X(1+S) = A
+ NumericConstant:1
+ ScalarValue:S
+ BinaryOperator:+
+ ScalarReference:X
+ ScalarValue:A
+ AssignmentOperator:=
+28 LET X(1-S) = B
+ NumericConstant:1
+ ScalarValue:S
+ BinaryOperator:-
+ ScalarReference:X
+ ScalarValue:B
+ AssignmentOperator:=
+30 LET X = (X(0)+X(2))/2
+ ScalarReference:X
+ NumericConstant:0
+ ScalarValue:X
+ NumericConstant:2
+ ScalarValue:X
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+35 LET F = SGN(FNF(X))
+ ScalarReference:F
+ ScalarValue:X
+ UserFunction
+ FunctionSgn
+ AssignmentOperator:=
+40 IF F = 0 THEN 100
+ ScalarValue:F
+ NumericConstant:0
+ BinaryOperator:=
+50 LET X(1+F) = X
+ NumericConstant:1
+ ScalarValue:F
+ BinaryOperator:+
+ ScalarReference:X
+ ScalarValue:X
+ AssignmentOperator:=
+80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
+ NumericConstant:0
+ ScalarValue:X
+ NumericConstant:2
+ ScalarValue:X
+ BinaryOperator:-
+ FunctionAbs
+ NumericConstant:0
+ ScalarValue:X
+ FunctionAbs
+ NumericConstant:2
+ ScalarValue:X
+ FunctionAbs
+ BinaryOperator:+
+ BinaryOperator:/
+ NumericConstant:5.0e-07
+ BinaryOperator:<
+90 GOTO 30
+ LineNumber:30
+100 PRINT "ONE ZERO AT" X
+ ITEMS
+ TextConstant:"ONE ZERO AT"
+ CarriageControl:
+ ScalarValue:X
+ CarriageControl:NL
+110 STOP
+ 
+200 LET S = SGN(FNF(A))
+ ScalarReference:S
+ ScalarValue:A
+ UserFunction
+ FunctionSgn
+ AssignmentOperator:=
+210 LET T = SGN(FNF(B))
+ ScalarReference:T
+ ScalarValue:B
+ UserFunction
+ FunctionSgn
+ AssignmentOperator:=
+220 IF S*T = 0 THEN 400
+ ScalarValue:S
+ ScalarValue:T
+ BinaryOperator:*
+ NumericConstant:0
+ BinaryOperator:=
+230 IF S*T > 0 THEN 300
+ ScalarValue:S
+ ScalarValue:T
+ BinaryOperator:*
+ NumericConstant:0
+ BinaryOperator:>
+240 RETURN
+ 
+300 LET L = B-A
+ ScalarReference:L
+ ScalarValue:B
+ ScalarValue:A
+ BinaryOperator:-
+ AssignmentOperator:=
+310 FOR I = 1 TO 1000
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:1000"]
+ step:    ["NumericConstant:1"]
+320 LET X = A + RND()*L
+ ScalarReference:X
+ ScalarValue:A
+ FunctionRnd
+ ScalarValue:L
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+330 IF S * SGN(FNF(X)) < 0 THEN 370
+ ScalarValue:S
+ ScalarValue:X
+ UserFunction
+ FunctionSgn
+ BinaryOperator:*
+ NumericConstant:0
+ BinaryOperator:<
+340 NEXT I
+ VariableToken:I
+350 PRINT "NO CHANGE OF SIGN FOUND"
+ ITEMS
+ TextConstant:"NO CHANGE OF SIGN FOUND"
+ CarriageControl:NL
+360 STOP
+ 
+370 LET B = X
+ ScalarReference:B
+ ScalarValue:X
+ AssignmentOperator:=
+380 RETURN
+ 
+400 IF S = 0 THEN 430
+ ScalarValue:S
+ NumericConstant:0
+ BinaryOperator:=
+410 LET X = B
+ ScalarReference:X
+ ScalarValue:B
+ AssignmentOperator:=
+420 GOTO 100
+ LineNumber:100
+430 LET X = A
+ ScalarReference:X
+ ScalarValue:A
+ AssignmentOperator:=
+440 GOTO 100
+ LineNumber:100
+900 REM DATA 0,1
+ RemarkToken:DATA 0,1
+910 DATA 0,1
+ NumericConstant:0
+ NumericConstant:1
+999 END
+ 

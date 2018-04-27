@@ -1,0 +1,73 @@
+10 REM THIS PROGRAM COMPUTES CHI-SQUARE
+ RemarkToken:THIS PROGRAM COMPUTES CHI-SQUARE
+20 REM EVALUATION ON THE OBSERVED TO
+ RemarkToken:EVALUATION ON THE OBSERVED TO
+30 REM EXPECTED FREQUENCIES
+ RemarkToken:EXPECTED FREQUENCIES
+40 LET J = 0
+ ScalarReference:J
+ NumericConstant:0
+ AssignmentOperator:=
+50 PRINT "OBSERVED FREQUENCIES = "
+ ITEMS
+ TextConstant:"OBSERVED FREQUENCIES = "
+ CarriageControl:NL
+60 INPUT D
+ ScalarReference:D
+70 PRINT "EXPECTED FREQUENCIES = "
+ ITEMS
+ TextConstant:"EXPECTED FREQUENCIES = "
+ CarriageControl:NL
+80 INPUT E
+ ScalarReference:E
+90 IF E = 0 THEN 130
+ ScalarValue:E
+ NumericConstant:0
+ BinaryOperator:=
+100 LET K = ((D - E)^2)/E
+ ScalarReference:K
+ ScalarValue:D
+ ScalarValue:E
+ BinaryOperator:-
+ NumericConstant:2
+ BinaryOperator:^
+ ScalarValue:E
+ BinaryOperator:/
+ AssignmentOperator:=
+110 LET J = J + K
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:K
+ BinaryOperator:+
+ AssignmentOperator:=
+120 GOTO 50
+ LineNumber:50
+130 PRINT "CHI-SQUARE = ";J
+ ITEMS
+ TextConstant:"CHI-SQUARE = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+140 PRINT "*****************"
+ ITEMS
+ TextConstant:"*****************"
+ CarriageControl:NL
+150 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+160 INPUT L
+ ScalarReference:L
+170 IF L = 1 THEN 190
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+180 STOP
+ 
+190 PRINT
+ ITEMS
+ CarriageControl:NL
+200 GOTO 40
+ LineNumber:40
+210 END
+ 

@@ -1,0 +1,23 @@
+10 DIM A(6)
+ NumericConstant:6
+ CompoundDeclaration:A
+20 FOR I = 1 TO 6
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+40 LET A(I) = I*3
+ ScalarValue:I
+ ScalarReference:A
+ ScalarValue:I
+ NumericConstant:3
+ BinaryOperator:*
+ AssignmentOperator:=
+60 NEXT I
+ VariableToken:I
+70 MAT PRINT A;
+ ITEMS
+ MatrixValue:A
+ CarriageControl:;
+99 END
+ 

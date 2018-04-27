@@ -1,0 +1,201 @@
+10 REM THIS PROGRAM COMPUTES THE SOLUTION TO
+ RemarkToken:THIS PROGRAM COMPUTES THE SOLUTION TO
+20 REM A SYSTEM OF 3 EQUATIONS IN 3 UNKNOWNS
+ RemarkToken:A SYSTEM OF 3 EQUATIONS IN 3 UNKNOWNS
+30 PRINT "SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
+ ITEMS
+ TextConstant:"SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
+ CarriageControl:NL
+40 PRINT "OF THE TYPE AX + BY + CZ = D"
+ ITEMS
+ TextConstant:"OF THE TYPE AX + BY + CZ = D"
+ CarriageControl:NL
+50 PRINT "ENTER THE 1ST EQUATION (A,B,C,D)"
+ ITEMS
+ TextConstant:"ENTER THE 1ST EQUATION (A,B,C,D)"
+ CarriageControl:NL
+60 INPUT A1,B1,C1,D1
+ ScalarReference:A1
+ ScalarReference:B1
+ ScalarReference:C1
+ ScalarReference:D1
+70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
+ ITEMS
+ TextConstant:"ENTER THE 2ND EQUATION (A,B,C,D)"
+ CarriageControl:NL
+80 INPUT A2,B2,C2,D2
+ ScalarReference:A2
+ ScalarReference:B2
+ ScalarReference:C2
+ ScalarReference:D2
+90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
+ ITEMS
+ TextConstant:"ENTER THE 3RD EQUATION (A,B,C,D)"
+ CarriageControl:NL
+100 INPUT A3,B3,C3,D3
+ ScalarReference:A3
+ ScalarReference:B3
+ ScalarReference:C3
+ ScalarReference:D3
+110 LET E1 = ((B1*A2)/A1) - B2
+ ScalarReference:E1
+ ScalarValue:B1
+ ScalarValue:A2
+ BinaryOperator:*
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:B2
+ BinaryOperator:-
+ AssignmentOperator:=
+120 LET E2 = ((C1*A2)/A1) - C2
+ ScalarReference:E2
+ ScalarValue:C1
+ ScalarValue:A2
+ BinaryOperator:*
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:C2
+ BinaryOperator:-
+ AssignmentOperator:=
+130 LET E3 = ((B1*A3)/A1) - B3
+ ScalarReference:E3
+ ScalarValue:B1
+ ScalarValue:A3
+ BinaryOperator:*
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:B3
+ BinaryOperator:-
+ AssignmentOperator:=
+140 LET E4 = ((C1*A3)/A1) - C3
+ ScalarReference:E4
+ ScalarValue:C1
+ ScalarValue:A3
+ BinaryOperator:*
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:C3
+ BinaryOperator:-
+ AssignmentOperator:=
+150 LET E5 = ((E1*E4) - (E2*E3))
+ ScalarReference:E5
+ ScalarValue:E1
+ ScalarValue:E4
+ BinaryOperator:*
+ ScalarValue:E2
+ ScalarValue:E3
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+160 IF E5 = 0 THEN 250
+ ScalarValue:E5
+ NumericConstant:0
+ BinaryOperator:=
+170 LET E6 = ((D1*A2)/A1) - D2
+ ScalarReference:E6
+ ScalarValue:D1
+ ScalarValue:A2
+ BinaryOperator:*
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:D2
+ BinaryOperator:-
+ AssignmentOperator:=
+180 LET E7 = ((D1*A3)/A1) - D3
+ ScalarReference:E7
+ ScalarValue:D1
+ ScalarValue:A3
+ BinaryOperator:*
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:D3
+ BinaryOperator:-
+ AssignmentOperator:=
+190 LET Y = ((E6*E4) - (E2*E7))/E5
+ ScalarReference:Y
+ ScalarValue:E6
+ ScalarValue:E4
+ BinaryOperator:*
+ ScalarValue:E2
+ ScalarValue:E7
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:E5
+ BinaryOperator:/
+ AssignmentOperator:=
+200 LET Z = ((E1*E7) - (E6*E3))/E5
+ ScalarReference:Z
+ ScalarValue:E1
+ ScalarValue:E7
+ BinaryOperator:*
+ ScalarValue:E6
+ ScalarValue:E3
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:E5
+ BinaryOperator:/
+ AssignmentOperator:=
+210 LET X = (D1/A1) - (B1/A1*Y) - ((C1/A1)*Z)
+ ScalarReference:X
+ ScalarValue:D1
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:B1
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:Y
+ BinaryOperator:*
+ BinaryOperator:-
+ ScalarValue:C1
+ ScalarValue:A1
+ BinaryOperator:/
+ ScalarValue:Z
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+220 PRINT "SOLUTION"
+ ITEMS
+ TextConstant:"SOLUTION"
+ CarriageControl:NL
+230 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:,
+ TextConstant:"Y = "
+ CarriageControl:;
+ ScalarValue:Y
+ CarriageControl:,
+ TextConstant:"Z = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+240 GOTO 260
+ LineNumber:260
+250 PRINT "INSUFFICIENT OR ERRONEOUS DATA ENTERED"
+ ITEMS
+ TextConstant:"INSUFFICIENT OR ERRONEOUS DATA ENTERED"
+ CarriageControl:NL
+260 PRINT
+ ITEMS
+ CarriageControl:NL
+270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+280 INPUT L
+ ScalarReference:L
+290 IF L = 1 THEN 310
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+300 STOP
+ 
+310 PRINT
+ ITEMS
+ CarriageControl:NL
+320 GOTO 30
+ LineNumber:30
+330 END
+ 

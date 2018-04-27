@@ -1,0 +1,19 @@
+10 FOR I = 1 TO 30
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:30"]
+ step:    ["NumericConstant:1"]
+20    PRINT INT(6*RND(1)+1),
+ ITEMS
+ NumericConstant:6
+ NumericConstant:1
+ FunctionRnd
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:+
+ FunctionInt
+ CarriageControl:,
+30 NEXT I
+ VariableToken:I
+99 END
+ 

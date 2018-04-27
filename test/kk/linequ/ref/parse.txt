@@ -1,0 +1,55 @@
+100 DIM A(20,20), C(20,20), B(20), X(20)
+ NumericConstant:20
+ NumericConstant:20
+ CompoundDeclaration:A
+ NumericConstant:20
+ NumericConstant:20
+ CompoundDeclaration:C
+ NumericConstant:20
+ CompoundDeclaration:B
+ NumericConstant:20
+ CompoundDeclaration:X
+110
+120 READ N
+ ScalarReference:N
+130 MAT READ A(N,N)
+ ScalarValue:N
+ ScalarValue:N
+ MatrixReference:A
+140 MAT READ B(N)
+ ScalarValue:N
+ MatrixReference:B
+150
+160 MAT C = INV(A)
+ Unimplemented
+170 MAT X = C*B
+ Unimplemented
+180
+190 MAT PRINT X
+ ITEMS
+ MatrixValue:X
+ CarriageControl:,
+200
+210 DATA 3
+ NumericConstant:3
+220 DATA 2, -4, 3
+ NumericConstant:2
+ NumericConstant:4
+ UnaryOperator:-
+ NumericConstant:3
+230 DATA 3, 0, -1
+ NumericConstant:3
+ NumericConstant:0
+ NumericConstant:1
+ UnaryOperator:-
+240 DATA 2, 5, 1
+ NumericConstant:2
+ NumericConstant:5
+ NumericConstant:1
+250 DATA -9, 4, 11
+ NumericConstant:9
+ UnaryOperator:-
+ NumericConstant:4
+ NumericConstant:11
+999 END
+ 

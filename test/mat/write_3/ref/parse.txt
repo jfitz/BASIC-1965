@@ -1,0 +1,58 @@
+10 DIM A(6,5), B(3,4)
+ NumericConstant:6
+ NumericConstant:5
+ CompoundDeclaration:A
+ NumericConstant:3
+ NumericConstant:4
+ CompoundDeclaration:B
+20 FOR I = 1 TO 6
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+30 FOR J = 1 TO 5
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:5"]
+ step:    ["NumericConstant:1"]
+40 LET A(I,J) = I + J
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:A
+ ScalarValue:I
+ ScalarValue:J
+ BinaryOperator:+
+ AssignmentOperator:=
+50 NEXT J
+ VariableToken:J
+60 NEXT I
+ VariableToken:I
+70 FOR I = 1 TO 3
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+80 FOR J = 1 TO 4
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+ step:    ["NumericConstant:1"]
+90 LET B(I,J) = I * J
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:B
+ ScalarValue:I
+ ScalarValue:J
+ BinaryOperator:*
+ AssignmentOperator:=
+100 NEXT J
+ VariableToken:J
+110 NEXT I
+ VariableToken:I
+120 MAT WRITE A;B;
+ MatrixValue:A
+ CarriageControl:;
+ MatrixValue:B
+ CarriageControl:;
+999 END
+ 

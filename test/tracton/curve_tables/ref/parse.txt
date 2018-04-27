@@ -1,0 +1,77 @@
+10 REM THIS PROGRAM GENERATES A SERIES OF
+ RemarkToken:THIS PROGRAM GENERATES A SERIES OF
+20 REM DATA POINTS, WITH WHICH THE USER CAN
+ RemarkToken:DATA POINTS, WITH WHICH THE USER CAN
+30 REM PLOT CURVES. THE DATA POINTS GENERATED
+ RemarkToken:PLOT CURVES. THE DATA POINTS GENERATED
+40 REM LIE BETWEEN THE VALUES GIVEN FOR X
+ RemarkToken:LIE BETWEEN THE VALUES GIVEN FOR X
+50 REM IF A STEP SIZE OTHER THAN 1 IS DERIVED
+ RemarkToken:IF A STEP SIZE OTHER THAN 1 IS DERIVED
+60 REM USE A STEP STATEMENT WITH THE FOR STATEMENTS
+ RemarkToken:USE A STEP STATEMENT WITH THE FOR STATEMENTS
+70 PRINT "STARTING VALUE OF X = ";
+ ITEMS
+ TextConstant:"STARTING VALUE OF X = "
+ CarriageControl:;
+80 INPUT X
+ ScalarReference:X
+90 PRINT "END VALUE OF X = ";
+ ITEMS
+ TextConstant:"END VALUE OF X = "
+ CarriageControl:;
+100 INPUT W
+ ScalarReference:W
+110 PRINT "TABLE"
+ ITEMS
+ TextConstant:"TABLE"
+ CarriageControl:NL
+120 PRINT "X","Y"
+ ITEMS
+ TextConstant:"X"
+ CarriageControl:,
+ TextConstant:"Y"
+ CarriageControl:NL
+130 FOR I = X TO W
+ control: VariableToken:I
+ start:   ["ScalarValue:X"]
+ end:     ["ScalarValue:W"]
+ step:    ["NumericConstant:1"]
+140 LET Y = 2*I + 6
+ ScalarReference:Y
+ NumericConstant:2
+ ScalarValue:I
+ BinaryOperator:*
+ NumericConstant:6
+ BinaryOperator:+
+ AssignmentOperator:=
+150 PRINT I,Y
+ ITEMS
+ ScalarValue:I
+ CarriageControl:,
+ ScalarValue:Y
+ CarriageControl:NL
+160 NEXT I
+ VariableToken:I
+170 PRINT
+ ITEMS
+ CarriageControl:NL
+180 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+190 INPUT L
+ ScalarReference:L
+200 IF L = 1 THEN 220
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+210 STOP
+ 
+220 PRINT
+ ITEMS
+ CarriageControl:NL
+230 GOTO 70
+ LineNumber:70
+240 END
+ 

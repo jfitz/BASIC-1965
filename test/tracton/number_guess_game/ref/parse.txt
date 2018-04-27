@@ -1,0 +1,110 @@
+10 REM THE COMPUTER CHOOSES A NUMBER FROM
+ RemarkToken:THE COMPUTER CHOOSES A NUMBER FROM
+20 REM 1 TO 100 AT RANDOM, THE OBJECT OF
+ RemarkToken:1 TO 100 AT RANDOM, THE OBJECT OF
+30 REM THE GAME IS TO GUESS THE CHOSEN
+ RemarkToken:THE GAME IS TO GUESS THE CHOSEN
+40 REM NUMBER IN AS FEW GUESSES AS POSSIBLE
+ RemarkToken:NUMBER IN AS FEW GUESSES AS POSSIBLE
+50 LET R = 1 + INT(100*RND)
+ ScalarReference:R
+ NumericConstant:1
+ NumericConstant:100
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ AssignmentOperator:=
+60 LET Y = 0
+ ScalarReference:Y
+ NumericConstant:0
+ AssignmentOperator:=
+70 PRINT "A RANDOM NUMBER HAS BEEN PICKED"
+ ITEMS
+ TextConstant:"A RANDOM NUMBER HAS BEEN PICKED"
+ CarriageControl:NL
+80 PRINT "TRY GUESSING IT, HINT THE NUMBER"
+ ITEMS
+ TextConstant:"TRY GUESSING IT, HINT THE NUMBER"
+ CarriageControl:NL
+90 PRINT "IS FROM 1 TO 100"
+ ITEMS
+ TextConstant:"IS FROM 1 TO 100"
+ CarriageControl:NL
+100 PRINT "GOOD LUCK!!!"
+ ITEMS
+ TextConstant:"GOOD LUCK!!!"
+ CarriageControl:NL
+110 PRINT
+ ITEMS
+ CarriageControl:NL
+120 PRINT "YOUR GUESS IS = ";
+ ITEMS
+ TextConstant:"YOUR GUESS IS = "
+ CarriageControl:;
+130 INPUT X
+ ScalarReference:X
+140 LET Y = Y + 1
+ ScalarReference:Y
+ ScalarValue:Y
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+150 IF X = R THEN 180
+ ScalarValue:X
+ ScalarValue:R
+ BinaryOperator:=
+160 IF X > R THEN 280
+ ScalarValue:X
+ ScalarValue:R
+ BinaryOperator:>
+170 GOTO 300
+ LineNumber:300
+180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
+ ITEMS
+ TextConstant:"NOT BAD!!!-YOU GOT IT!!!"
+ CarriageControl:NL
+190 PRINT "YOUR NUMBER OF TRIES WERE";Y
+ ITEMS
+ TextConstant:"YOUR NUMBER OF TRIES WERE"
+ CarriageControl:;
+ ScalarValue:Y
+ CarriageControl:NL
+200 PRINT
+ ITEMS
+ CarriageControl:NL
+210 PRINT "IF YOU WANT TO TRY AGAIN, TYPE 1"
+ ITEMS
+ TextConstant:"IF YOU WANT TO TRY AGAIN, TYPE 1"
+ CarriageControl:NL
+220 PRINT "IF NOT TYPE 0"
+ ITEMS
+ TextConstant:"IF NOT TYPE 0"
+ CarriageControl:NL
+230 INPUT L
+ ScalarReference:L
+240 IF L = 1 THEN 260
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+250 STOP
+ 
+260 PRINT
+ ITEMS
+ CarriageControl:NL
+270 GOTO 50
+ LineNumber:50
+280 PRINT "TOO HIGH, TRY AGAIN"
+ ITEMS
+ TextConstant:"TOO HIGH, TRY AGAIN"
+ CarriageControl:NL
+290 GOTO 120
+ LineNumber:120
+300 PRINT "TOO LOW, TRY AGAIN"
+ ITEMS
+ TextConstant:"TOO LOW, TRY AGAIN"
+ CarriageControl:NL
+310 GOTO 120
+ LineNumber:120
+320 END
+ 

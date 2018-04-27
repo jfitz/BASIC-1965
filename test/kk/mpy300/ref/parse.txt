@@ -1,0 +1,463 @@
+Line 10 is out of sequence
+Line 100 is out of sequence
+Line 110 is out of sequence
+Line 120 is out of sequence
+Line 130 is out of sequence
+Line 140 is out of sequence
+Line 150 is out of sequence
+Line 160 is out of sequence
+Line 170 is out of sequence
+Line 180 is out of sequence
+Line 210 is out of sequence
+Line 220 is out of sequence
+Line 230 is out of sequence
+Line 240 is out of sequence
+Line 250 is out of sequence
+Line 260 is out of sequence
+Line 270 is out of sequence
+Line 280 is out of sequence
+Line 290 is out of sequence
+Line 300 is out of sequence
+Line 310 is out of sequence
+Line 320 is out of sequence
+Line 330 is out of sequence
+Line 340 is out of sequence
+Line 350 is out of sequence
+Line 360 is out of sequence
+Line 370 is out of sequence
+Line 380 is out of sequence
+Line 390 is out of sequence
+Line 400 is out of sequence
+Line 410 is out of sequence
+Line 420 is out of sequence
+Line 430 is out of sequence
+Line 440 is out of sequence
+Line 450 is out of sequence
+Line 500 is out of sequence
+Line 510 is out of sequence
+Line 520 is out of sequence
+Line 530 is out of sequence
+Line 600 is out of sequence
+Line 610 is out of sequence
+Line 620 is out of sequence
+Line 630 is out of sequence
+Line 640 is out of sequence
+10   DIM A(100),B(100),C(200),X(100)
+ NumericConstant:100
+ CompoundDeclaration:A
+ NumericConstant:100
+ CompoundDeclaration:B
+ NumericConstant:200
+ CompoundDeclaration:C
+ NumericConstant:100
+ CompoundDeclaration:X
+100  REM READ, PRINT A,B
+ RemarkToken:READ, PRINT A,B
+110  GOSUB 1000
+ LineNumber:1000
+120  GOSUB 2000
+ LineNumber:2000
+130  FOR I = 0 TO L
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L"]
+ step:    ["NumericConstant:1"]
+140      LET A(I) = C(I)
+ ScalarValue:I
+ ScalarReference:A
+ ScalarValue:I
+ ScalarValue:C
+ AssignmentOperator:=
+150  NEXT I
+ VariableToken:I
+160  LET L1 = L
+ ScalarReference:L1
+ ScalarValue:L
+ AssignmentOperator:=
+170  PRINT "TIMES"
+ ITEMS
+ TextConstant:"TIMES"
+ CarriageControl:NL
+180  PRINT
+ ITEMS
+ CarriageControl:NL
+210  GOSUB 1000
+ LineNumber:1000
+220  GOSUB 2000
+ LineNumber:2000
+230  FOR I = 0 TO L
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L"]
+ step:    ["NumericConstant:1"]
+240      LET B(I) = C(I)
+ ScalarValue:I
+ ScalarReference:B
+ ScalarValue:I
+ ScalarValue:C
+ AssignmentOperator:=
+250  NEXT I
+ VariableToken:I
+260  LET L2 = L
+ ScalarReference:L2
+ ScalarValue:L
+ AssignmentOperator:=
+270  PRINT "EQUALS"
+ ITEMS
+ TextConstant:"EQUALS"
+ CarriageControl:NL
+280  PRINT
+ ITEMS
+ CarriageControl:NL
+290 
+300  REM C = A * B
+ RemarkToken:C = A * B
+310  LET L = L1+L2
+ ScalarReference:L
+ ScalarValue:L1
+ ScalarValue:L2
+ BinaryOperator:+
+ AssignmentOperator:=
+320  FOR I = 0 TO L
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L"]
+ step:    ["NumericConstant:1"]
+330      LET C(I) = 0
+ ScalarValue:I
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+340  NEXT I
+ VariableToken:I
+350  FOR J = 0 TO L1
+ control: VariableToken:J
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L1"]
+ step:    ["NumericConstant:1"]
+360      FOR K = 0 TO L2
+ control: VariableToken:K
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L2"]
+ step:    ["NumericConstant:1"]
+370          LET I = J+K
+ ScalarReference:I
+ ScalarValue:J
+ ScalarValue:K
+ BinaryOperator:+
+ AssignmentOperator:=
+380          LET C(I) = C(I) + A(J)*B(K)
+ ScalarValue:I
+ ScalarReference:C
+ ScalarValue:I
+ ScalarValue:C
+ ScalarValue:J
+ ScalarValue:A
+ ScalarValue:K
+ ScalarValue:B
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+390      NEXT K
+ VariableToken:K
+400  NEXT J
+ VariableToken:J
+410  GOTO 600
+ LineNumber:600
+420  LET L = L2
+ ScalarReference:L
+ ScalarValue:L2
+ AssignmentOperator:=
+430      FOR I = L1+1 TO L
+ control: VariableToken:I
+ start:   ["ScalarValue:L1", "NumericConstant:1", "BinaryOperator:+"]
+ end:     ["ScalarValue:L"]
+ step:    ["NumericConstant:1"]
+440  LET A(I) = 0
+ ScalarValue:I
+ ScalarReference:A
+ NumericConstant:0
+ AssignmentOperator:=
+450  NEXT I
+ VariableToken:I
+500  FOR I = 0 TO L
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L"]
+ step:    ["NumericConstant:1"]
+510      LET C(I) = A(I) + B(I)
+ ScalarValue:I
+ ScalarReference:C
+ ScalarValue:I
+ ScalarValue:A
+ ScalarValue:I
+ ScalarValue:B
+ BinaryOperator:+
+ AssignmentOperator:=
+520  NEXT I
+ VariableToken:I
+530
+600  REM CARRY, PRINT ANSWER
+ RemarkToken:CARRY, PRINT ANSWER
+610  GOSUB 3000
+ LineNumber:3000
+620  GOSUB 2000
+ LineNumber:2000
+630  STOP
+ 
+640
+1000 REM READ A NUMBER C
+ RemarkToken:READ A NUMBER C
+1010 FOR I = 0 TO 100
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:100"]
+ step:    ["NumericConstant:1"]
+1020     READ X(I)
+ ScalarValue:I
+ ScalarReference:X
+1030     IF X(I) < 0 THEN 1100
+ ScalarValue:I
+ ScalarValue:X
+ NumericConstant:0
+ BinaryOperator:<
+1040 NEXT I
+ VariableToken:I
+1050 GOTO 1200
+ LineNumber:1200
+1100 LET L = I-1
+ ScalarReference:L
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+1110 FOR I = 0 TO L
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L"]
+ step:    ["NumericConstant:1"]
+1120     LET C(I) = X(L-I)
+ ScalarValue:I
+ ScalarReference:C
+ ScalarValue:L
+ ScalarValue:I
+ BinaryOperator:-
+ ScalarValue:X
+ AssignmentOperator:=
+1130 NEXT I
+ VariableToken:I
+1140 RETURN
+ 
+1200 PRINT "NUMBER TOO LONG"
+ ITEMS
+ TextConstant:"NUMBER TOO LONG"
+ CarriageControl:NL
+1210 STOP
+ 
+1220
+2000 REM PRINT A NUMBER C
+ RemarkToken:PRINT A NUMBER C
+2010 IF C(L) >= 100 THEN 2200
+ ScalarValue:L
+ ScalarValue:C
+ NumericConstant:100
+ BinaryOperator:>=
+2020 PRINT "      ";
+ ITEMS
+ TextConstant:"      "
+ CarriageControl:;
+2030 IF C(L) >= 10 THEN 2100
+ ScalarValue:L
+ ScalarValue:C
+ NumericConstant:10
+ BinaryOperator:>=
+2040 PRINT "      ";
+ ITEMS
+ TextConstant:"      "
+ CarriageControl:;
+2050 PRINT C(L); ",   ";
+ ITEMS
+ ScalarValue:L
+ ScalarValue:C
+ CarriageControl:;
+ TextConstant:",   "
+ CarriageControl:;
+2060 LET L9 = L-1
+ ScalarReference:L9
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+2070 GOTO 2210
+ LineNumber:2210
+2100 LET M = INT(C(K)/10)
+ ScalarReference:M
+ ScalarValue:K
+ ScalarValue:C
+ NumericConstant:10
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+2110 LET C(L) = C(L) - 10*M
+ ScalarValue:L
+ ScalarReference:C
+ ScalarValue:L
+ ScalarValue:C
+ NumericConstant:10
+ ScalarValue:M
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+2120 PRINT M;
+ ITEMS
+ ScalarValue:M
+ CarriageControl:;
+2130 GOTO 2050
+ LineNumber:2050
+2200 LET L9 = L
+ ScalarReference:L9
+ ScalarValue:L
+ AssignmentOperator:=
+2210 FOR I = L9 TO 0 STEP -1
+ control: VariableToken:I
+ start:   ["ScalarValue:L9"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperator:-"]
+2220     LET N = C(I)
+ ScalarReference:N
+ ScalarValue:I
+ ScalarValue:C
+ AssignmentOperator:=
+2230     LET Q = 100
+ ScalarReference:Q
+ NumericConstant:100
+ AssignmentOperator:=
+2240     FOR J = 1 TO 3
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:3"]
+ step:    ["NumericConstant:1"]
+2250         LET M = INT(N/Q)
+ ScalarReference:M
+ ScalarValue:N
+ ScalarValue:Q
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+2260         LET N = N - M*Q
+ ScalarReference:N
+ ScalarValue:N
+ ScalarValue:M
+ ScalarValue:Q
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+2270         LET Q = Q/10
+ ScalarReference:Q
+ ScalarValue:Q
+ NumericConstant:10
+ BinaryOperator:/
+ AssignmentOperator:=
+2280         PRINT M;
+ ITEMS
+ ScalarValue:M
+ CarriageControl:;
+2290     NEXT J
+ VariableToken:J
+2300     IF I = 0 THEN 2400
+ ScalarValue:I
+ NumericConstant:0
+ BinaryOperator:=
+2310     PRINT ",   ";
+ ITEMS
+ TextConstant:",   "
+ CarriageControl:;
+2320 NEXT I
+ VariableToken:I
+2400 PRINT
+ ITEMS
+ CarriageControl:NL
+2405 PRINT
+ ITEMS
+ CarriageControl:NL
+2410 RETURN
+ 
+2420
+3000 REM CARRY IS IN NUMBER C
+ RemarkToken:CARRY IS IN NUMBER C
+3010 LET C(L+1) = 0
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+3020 FOR I = 0 TO L
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:L"]
+ step:    ["NumericConstant:1"]
+3030     LET N = C(I)
+ ScalarReference:N
+ ScalarValue:I
+ ScalarValue:C
+ AssignmentOperator:=
+3040     LET M = INT(N/1000)
+ ScalarReference:M
+ ScalarValue:N
+ NumericConstant:1000
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+3050     LET C(I) = N - 1000*M
+ ScalarValue:I
+ ScalarReference:C
+ ScalarValue:N
+ NumericConstant:1000
+ ScalarValue:M
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+3060     LET C(I+1) = C(I+1) + M
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarReference:C
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:C
+ ScalarValue:M
+ BinaryOperator:+
+ AssignmentOperator:=
+3070 NEXT I
+ VariableToken:I
+3080 IF M = 0 THEN 3100
+ ScalarValue:M
+ NumericConstant:0
+ BinaryOperator:=
+3090 LET L = L+1
+ ScalarReference:L
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+3100 RETURN
+ 
+3110
+9000 DATA 123,456,789,333,-1
+ NumericConstant:123
+ NumericConstant:456
+ NumericConstant:789
+ NumericConstant:333
+ NumericConstant:1
+ UnaryOperator:-
+9010 DATA 987,654,321,000,-1
+ NumericConstant:987
+ NumericConstant:654
+ NumericConstant:321
+ NumericConstant:0
+ NumericConstant:1
+ UnaryOperator:-
+9999 END
+ 

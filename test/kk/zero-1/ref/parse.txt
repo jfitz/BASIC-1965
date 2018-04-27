@@ -1,0 +1,69 @@
+10 DEF FNF(X) = X^5 + 2*X^3 -1
+ ScalarValue:X
+ NumericConstant:5
+ BinaryOperator:^
+ NumericConstant:2
+ ScalarValue:X
+ NumericConstant:3
+ BinaryOperator:^
+ BinaryOperator:*
+ BinaryOperator:+
+ NumericConstant:1
+ BinaryOperator:-
+20 READ A,B
+ ScalarReference:A
+ ScalarReference:B
+30 LET X = (A+B)/2
+ ScalarReference:X
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+40 IF FNF(X) = 0 THEN 100
+ ScalarValue:X
+ UserFunction
+ NumericConstant:0
+ BinaryOperator:=
+50 IF FNF(X) < 0 THEN 70
+ ScalarValue:X
+ UserFunction
+ NumericConstant:0
+ BinaryOperator:<
+60 LET B = X
+ ScalarReference:B
+ ScalarValue:X
+ AssignmentOperator:=
+65 GOTO 80
+ LineNumber:80
+70 LET A = X
+ ScalarReference:A
+ ScalarValue:X
+ AssignmentOperator:=
+80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.000005 THEN 100
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:-
+ FunctionAbs
+ ScalarValue:A
+ FunctionAbs
+ ScalarValue:B
+ FunctionAbs
+ BinaryOperator:+
+ BinaryOperator:/
+ NumericConstant:5.0e-06
+ BinaryOperator:<
+90 GOTO 30
+ LineNumber:30
+100 PRINT "ONE ZERO AT" X
+ ITEMS
+ TextConstant:"ONE ZERO AT"
+ CarriageControl:
+ ScalarValue:X
+ CarriageControl:NL
+900 DATA 0,1
+ NumericConstant:0
+ NumericConstant:1
+999 END
+ 

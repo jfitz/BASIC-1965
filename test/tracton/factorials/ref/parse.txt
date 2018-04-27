@@ -1,0 +1,56 @@
+10 REM THIS PROGRAM COMPUTES THE FACTORIALS OF X
+ RemarkToken:THIS PROGRAM COMPUTES THE FACTORIALS OF X
+20 REM BY ITERATIVE MULTIPLICATIONS
+ RemarkToken:BY ITERATIVE MULTIPLICATIONS
+30 PRINT "X = ";
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:;
+40 INPUT X
+ ScalarReference:X
+50 LET Z = 1
+ ScalarReference:Z
+ NumericConstant:1
+ AssignmentOperator:=
+60 FOR I = 1 TO X
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:X"]
+ step:    ["NumericConstant:1"]
+70 LET Z = Z*I
+ ScalarReference:Z
+ ScalarValue:Z
+ ScalarValue:I
+ BinaryOperator:*
+ AssignmentOperator:=
+80 NEXT I
+ VariableToken:I
+90 PRINT "X = ";X,"X! = ";Z
+ ITEMS
+ TextConstant:"X = "
+ CarriageControl:;
+ ScalarValue:X
+ CarriageControl:,
+ TextConstant:"X! = "
+ CarriageControl:;
+ ScalarValue:Z
+ CarriageControl:NL
+100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+110 INPUT L
+ ScalarReference:L
+120 IF L = 1 THEN 140
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+130 STOP
+ 
+140 PRINT
+ ITEMS
+ CarriageControl:NL
+150 GOTO 30
+ LineNumber:30
+160 END
+ 

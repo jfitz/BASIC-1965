@@ -1,0 +1,117 @@
+10 REM THIS PROGRAM SIMULATES THE I CHING
+ RemarkToken:THIS PROGRAM SIMULATES THE I CHING
+20 RANDOMIZE
+ Unknown statement 'RANDOMIZE'
+ Unimplemented
+30 PRINT "ENTER DATE AS M,D,Y"
+ ITEMS
+ TextConstant:"ENTER DATE AS M,D,Y"
+ CarriageControl:NL
+40 INPUT M,D,Y
+ ScalarReference:M
+ ScalarReference:D
+ ScalarReference:Y
+50 PRINT "ENTER TIME AS H,M(24 HOUR CLOCK)"
+ ITEMS
+ TextConstant:"ENTER TIME AS H,M(24 HOUR CLOCK)"
+ CarriageControl:NL
+60 INPUT H,M1
+ ScalarReference:H
+ ScalarReference:M1
+70 LET N = M + (D/30) + (Y/100) + H + (M1/60)
+ ScalarReference:N
+ ScalarValue:M
+ ScalarValue:D
+ NumericConstant:30
+ BinaryOperator:/
+ BinaryOperator:+
+ ScalarValue:Y
+ NumericConstant:100
+ BinaryOperator:/
+ BinaryOperator:+
+ ScalarValue:H
+ BinaryOperator:+
+ ScalarValue:M1
+ NumericConstant:60
+ BinaryOperator:/
+ BinaryOperator:+
+ AssignmentOperator:=
+80 FOR I = 1 TO 6
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+90 LET K = N*RND(0)
+ ScalarReference:K
+ ScalarValue:N
+ NumericConstant:0
+ FunctionRnd
+ BinaryOperator:*
+ AssignmentOperator:=
+100 LET K = K - INT(K)
+ ScalarReference:K
+ ScalarValue:K
+ ScalarValue:K
+ FunctionInt
+ BinaryOperator:-
+ AssignmentOperator:=
+110 LET C(I) = 1 + INT(2*K)
+ ScalarValue:I
+ ScalarReference:C
+ NumericConstant:1
+ NumericConstant:2
+ ScalarValue:K
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ AssignmentOperator:=
+120 NEXT I
+ VariableToken:I
+130 FOR I = 1 TO 6
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:6"]
+ step:    ["NumericConstant:1"]
+140 IF C(I) = 1 THEN 170
+ ScalarValue:I
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:=
+150 PRINT "---"
+ ITEMS
+ TextConstant:"---"
+ CarriageControl:NL
+160 GOTO 180
+ LineNumber:180
+170 PRINT "- -"
+ ITEMS
+ TextConstant:"- -"
+ CarriageControl:NL
+180 NEXT I
+ VariableToken:I
+190 PRINT
+ ITEMS
+ CarriageControl:NL
+200 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+ ITEMS
+ TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
+ CarriageControl:NL
+210 INPUT L$
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+220 IF L$ = "Y" THEN 250
+ Invalid statement: Token 'InvalidToken:$' is not a value or operator
+ Unimplemented
+230 PRINT "THE I CHING SAYS GOOD-BYE"
+ ITEMS
+ TextConstant:"THE I CHING SAYS GOOD-BYE"
+ CarriageControl:NL
+240 STOP
+ 
+250 PRINT
+ ITEMS
+ CarriageControl:NL
+260 GOTO 30
+ LineNumber:30
+270 END
+ 

@@ -1,0 +1,100 @@
+10 DEF FNF(X) = X^5 + 2*X^3 -1
+ ScalarValue:X
+ NumericConstant:5
+ BinaryOperator:^
+ NumericConstant:2
+ ScalarValue:X
+ NumericConstant:3
+ BinaryOperator:^
+ BinaryOperator:*
+ BinaryOperator:+
+ NumericConstant:1
+ BinaryOperator:-
+20 READ A,B
+ ScalarReference:A
+ ScalarReference:B
+22 LET S = SGN(FNF(A))
+ ScalarReference:S
+ ScalarValue:A
+ UserFunction
+ FunctionSgn
+ AssignmentOperator:=
+24 IF S = 0 THEN 95
+ ScalarValue:S
+ NumericConstant:0
+ BinaryOperator:=
+26 LET X(1+S) = A
+ NumericConstant:1
+ ScalarValue:S
+ BinaryOperator:+
+ ScalarReference:X
+ ScalarValue:A
+ AssignmentOperator:=
+28 LET X(1-S) = B
+ NumericConstant:1
+ ScalarValue:S
+ BinaryOperator:-
+ ScalarReference:X
+ ScalarValue:B
+ AssignmentOperator:=
+30 LET X = (X(0)+X(2))/2
+ ScalarReference:X
+ NumericConstant:0
+ ScalarValue:X
+ NumericConstant:2
+ ScalarValue:X
+ BinaryOperator:+
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+35 LET F = SGN(FNF(X))
+ ScalarReference:F
+ ScalarValue:X
+ UserFunction
+ FunctionSgn
+ AssignmentOperator:=
+40 IF F = 0 THEN 100
+ ScalarValue:F
+ NumericConstant:0
+ BinaryOperator:=
+50 LET X(1+F) = X
+ NumericConstant:1
+ ScalarValue:F
+ BinaryOperator:+
+ ScalarReference:X
+ ScalarValue:X
+ AssignmentOperator:=
+80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
+ NumericConstant:0
+ ScalarValue:X
+ NumericConstant:2
+ ScalarValue:X
+ BinaryOperator:-
+ FunctionAbs
+ NumericConstant:0
+ ScalarValue:X
+ FunctionAbs
+ NumericConstant:2
+ ScalarValue:X
+ FunctionAbs
+ BinaryOperator:+
+ BinaryOperator:/
+ NumericConstant:5.0e-07
+ BinaryOperator:<
+90 GOTO 30
+ LineNumber:30
+95 LET X = A
+ ScalarReference:X
+ ScalarValue:A
+ AssignmentOperator:=
+100 PRINT "ONE ZERO AT" X
+ ITEMS
+ TextConstant:"ONE ZERO AT"
+ CarriageControl:
+ ScalarValue:X
+ CarriageControl:NL
+900 DATA 0,1
+ NumericConstant:0
+ NumericConstant:1
+999 END
+ 

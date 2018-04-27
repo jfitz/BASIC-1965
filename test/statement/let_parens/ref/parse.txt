@@ -1,0 +1,78 @@
+10 LET A1=10*(3*(2+1))
+ ScalarReference:A1
+ NumericConstant:10
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ BinaryOperator:*
+ AssignmentOperator:=
+20 LET A2=(3*(2+1))*10
+ ScalarReference:A2
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ NumericConstant:10
+ BinaryOperator:*
+ AssignmentOperator:=
+30 LET B1=10*(3+(2*1))
+ ScalarReference:B1
+ NumericConstant:10
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:1
+ BinaryOperator:*
+ BinaryOperator:+
+ BinaryOperator:*
+ AssignmentOperator:=
+40 LET B2=(3+(2*1))*10
+ ScalarReference:B2
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:1
+ BinaryOperator:*
+ BinaryOperator:+
+ NumericConstant:10
+ BinaryOperator:*
+ AssignmentOperator:=
+50 LET C1=10+(3*(2+1))
+ ScalarReference:C1
+ NumericConstant:10
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+60 LET C2=(3*(2+1))+10
+ ScalarReference:C2
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ NumericConstant:10
+ BinaryOperator:+
+ AssignmentOperator:=
+70 PRINT A1, A2, B1, B2, C1, C2
+ ITEMS
+ ScalarValue:A1
+ CarriageControl:,
+ ScalarValue:A2
+ CarriageControl:,
+ ScalarValue:B1
+ CarriageControl:,
+ ScalarValue:B2
+ CarriageControl:,
+ ScalarValue:C1
+ CarriageControl:,
+ ScalarValue:C2
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 

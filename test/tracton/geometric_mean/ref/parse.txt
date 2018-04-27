@@ -1,0 +1,86 @@
+10 REM THIS PROGRAM COMPUTES THE GEOMETRIC MEAN
+ RemarkToken:THIS PROGRAM COMPUTES THE GEOMETRIC MEAN
+20 REM AFTER EACH SAMPLE IS ENTERED, THE NUMBER OF
+ RemarkToken:AFTER EACH SAMPLE IS ENTERED, THE NUMBER OF
+30 REM SAMPLES, THE CURRENT SAMPLE, AND CURRENT MEAN
+ RemarkToken:SAMPLES, THE CURRENT SAMPLE, AND CURRENT MEAN
+40 REM IS PRINTED
+ RemarkToken:IS PRINTED
+50 LET Y = 1
+ ScalarReference:Y
+ NumericConstant:1
+ AssignmentOperator:=
+60 LET N = 0
+ ScalarReference:N
+ NumericConstant:0
+ AssignmentOperator:=
+70 PRINT "SAMPLE = ";
+ ITEMS
+ TextConstant:"SAMPLE = "
+ CarriageControl:;
+80 INPUT W
+ ScalarReference:W
+90 IF W = 0 THEN 160
+ ScalarValue:W
+ NumericConstant:0
+ BinaryOperator:=
+100 LET N = N + 1
+ ScalarReference:N
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+110 LET Y = Y * W
+ ScalarReference:Y
+ ScalarValue:Y
+ ScalarValue:W
+ BinaryOperator:*
+ AssignmentOperator:=
+120 LET G = Y^(1/N)
+ ScalarReference:G
+ ScalarValue:Y
+ NumericConstant:1
+ ScalarValue:N
+ BinaryOperator:/
+ BinaryOperator:^
+ AssignmentOperator:=
+130 PRINT "NUMBER OF SAMPLES = ";N,"CURRENT SAMPLE = ";W
+ ITEMS
+ TextConstant:"NUMBER OF SAMPLES = "
+ CarriageControl:;
+ ScalarValue:N
+ CarriageControl:,
+ TextConstant:"CURRENT SAMPLE = "
+ CarriageControl:;
+ ScalarValue:W
+ CarriageControl:NL
+140 PRINT "CURRENT MEAN = ";G
+ ITEMS
+ TextConstant:"CURRENT MEAN = "
+ CarriageControl:;
+ ScalarValue:G
+ CarriageControl:NL
+150 GOTO 70
+ LineNumber:70
+160 PRINT
+ ITEMS
+ CarriageControl:NL
+170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+180 INPUT L
+ ScalarReference:L
+190 IF L = 1 THEN 210
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+200 STOP
+ 
+210 PRINT
+ ITEMS
+ CarriageControl:NL
+220 GOTO 50
+ LineNumber:50
+230 END
+ 

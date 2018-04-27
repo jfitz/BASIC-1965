@@ -1,0 +1,169 @@
+110 READ M,N
+ ScalarReference:M
+ ScalarReference:N
+120 FOR I = 1 TO M
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:M"]
+ step:    ["NumericConstant:1"]
+130    LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+140    FOR J = 1 TO N
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+150       READ O(I,J)
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:O
+160       LET S = S + O(I,J)
+ ScalarReference:S
+ ScalarValue:S
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:O
+ BinaryOperator:+
+ AssignmentOperator:=
+170    NEXT J
+ VariableToken:J
+180    LET R(I) = S
+ ScalarValue:I
+ ScalarReference:R
+ ScalarValue:S
+ AssignmentOperator:=
+190 NEXT I
+ VariableToken:I
+200
+210 LET S1 = 0
+ ScalarReference:S1
+ NumericConstant:0
+ AssignmentOperator:=
+220 FOR J = 1 TO N
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+230    LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+240    FOR I = 1 TO M
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:M"]
+ step:    ["NumericConstant:1"]
+250       LET S = S + O(I,J)
+ ScalarReference:S
+ ScalarValue:S
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:O
+ BinaryOperator:+
+ AssignmentOperator:=
+260    NEXT I
+ VariableToken:I
+270    LET C(J) = S
+ ScalarValue:J
+ ScalarReference:C
+ ScalarValue:S
+ AssignmentOperator:=
+280    LET S1 = S1 + S
+ ScalarReference:S1
+ ScalarValue:S1
+ ScalarValue:S
+ BinaryOperator:+
+ AssignmentOperator:=
+290 NEXT J
+ VariableToken:J
+300
+310 PRINT
+ ITEMS
+ CarriageControl:NL
+320 LET C = 0
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+330 FOR I = 1 TO M
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:M"]
+ step:    ["NumericConstant:1"]
+340    FOR J = 1 TO N
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+350       LET E = R(I)*C(J)/S1
+ ScalarReference:E
+ ScalarValue:I
+ ScalarValue:R
+ ScalarValue:J
+ ScalarValue:C
+ BinaryOperator:*
+ ScalarValue:S1
+ BinaryOperator:/
+ AssignmentOperator:=
+360       LET C = C + (O(I,J) - E)^2/E
+ ScalarReference:C
+ ScalarValue:C
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:O
+ ScalarValue:E
+ BinaryOperator:-
+ NumericConstant:2
+ BinaryOperator:^
+ ScalarValue:E
+ BinaryOperator:/
+ BinaryOperator:+
+ AssignmentOperator:=
+370       PRINT O(I,J),
+ ITEMS
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:O
+ CarriageControl:,
+380    NEXT J
+ VariableToken:J
+390    PRINT
+ ITEMS
+ CarriageControl:NL
+400 NEXT I
+ VariableToken:I
+410 PRINT
+ ITEMS
+ CarriageControl:NL
+420 PRINT "CHI-SQUARE EQUALS";C;"ON";(M-1)*(N-1);"DEGREES OF FREEDOM"
+ ITEMS
+ TextConstant:"CHI-SQUARE EQUALS"
+ CarriageControl:;
+ ScalarValue:C
+ CarriageControl:;
+ TextConstant:"ON"
+ CarriageControl:;
+ ScalarValue:M
+ NumericConstant:1
+ BinaryOperator:-
+ ScalarValue:N
+ NumericConstant:1
+ BinaryOperator:-
+ BinaryOperator:*
+ CarriageControl:;
+ TextConstant:"DEGREES OF FREEDOM"
+ CarriageControl:NL
+430
+900 DATA 3,2
+ NumericConstant:3
+ NumericConstant:2
+910 DATA 17,42,50,50,114,61
+ NumericConstant:17
+ NumericConstant:42
+ NumericConstant:50
+ NumericConstant:50
+ NumericConstant:114
+ NumericConstant:61
+999 END
+ 

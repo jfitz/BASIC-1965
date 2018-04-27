@@ -1,0 +1,92 @@
+10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
+ RemarkToken:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
+20 READ A, A0
+ ScalarReference:A
+ ScalarReference:A0
+30 LET B = A + A0
+ ScalarReference:B
+ ScalarValue:A
+ ScalarValue:A0
+ BinaryOperator:+
+ AssignmentOperator:=
+40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
+ ITEMS
+ TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
+ CarriageControl:;
+ ScalarValue:A
+ CarriageControl:;
+ TextConstant:"TO"
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:NL
+50 PRINT
+ ITEMS
+ CarriageControl:NL
+100 FOR N = A TO B
+ control: VariableToken:N
+ start:   ["ScalarValue:A"]
+ end:     ["ScalarValue:B"]
+ step:    ["NumericConstant:1"]
+110 LET N0 = N
+ ScalarReference:N0
+ ScalarValue:N
+ AssignmentOperator:=
+120 GOSUB 400
+ LineNumber:400
+130 NEXT N
+ VariableToken:N
+140 STOP
+ 
+400 REM PRINT INFO FOR ONE NUMBER
+ RemarkToken:PRINT INFO FOR ONE NUMBER
+410 PRINT N0;":";
+ ITEMS
+ ScalarValue:N0
+ CarriageControl:;
+ TextConstant:":"
+ CarriageControl:;
+420 IF N0 = 1 THEN 490
+ ScalarValue:N0
+ NumericConstant:1
+ BinaryOperator:=
+430 IF N0/2 = INT(N0/2) THEN 460
+ ScalarValue:N0
+ NumericConstant:2
+ BinaryOperator:/
+ ScalarValue:N0
+ NumericConstant:2
+ BinaryOperator:/
+ FunctionInt
+ BinaryOperator:=
+440 LET N0 = 3*N0 + 1
+ ScalarReference:N0
+ NumericConstant:3
+ ScalarValue:N0
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+450 GOTO 470
+ LineNumber:470
+460 LET N0 = N0/2
+ ScalarReference:N0
+ ScalarValue:N0
+ NumericConstant:2
+ BinaryOperator:/
+ AssignmentOperator:=
+470 PRINT N0;
+ ITEMS
+ ScalarValue:N0
+ CarriageControl:;
+480 GOTO 420
+ LineNumber:420
+490 PRINT
+ ITEMS
+ CarriageControl:NL
+500 RETURN
+ 
+900 DATA 1, 998
+ NumericConstant:1
+ NumericConstant:998
+999 END
+ 

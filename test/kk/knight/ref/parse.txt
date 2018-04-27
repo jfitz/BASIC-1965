@@ -1,0 +1,205 @@
+100 REMARK THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
+ RemarkToken:THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
+110 REMARK UNTIL NO FURTHER MOVE IS POSSIBLE. IT THEN PRINTS
+ RemarkToken:UNTIL NO FURTHER MOVE IS POSSIBLE. IT THEN PRINTS
+120 REMARK OUT THE FINAL POSITION AND THE LENGTH OF THE SERIES.
+ RemarkToken:OUT THE FINAL POSITION AND THE LENGTH OF THE SERIES.
+130 
+140 REMARK WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
+ RemarkToken:WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
+150 READ I0, J0
+ ScalarReference:I0
+ ScalarReference:J0
+160 PRINT "RANK  ";"FILE  ";"LENGTH"
+ ITEMS
+ TextConstant:"RANK  "
+ CarriageControl:;
+ TextConstant:"FILE  "
+ CarriageControl:;
+ TextConstant:"LENGTH"
+ CarriageControl:NL
+180
+182 LET Z0 = 0
+ ScalarReference:Z0
+ NumericConstant:0
+ AssignmentOperator:=
+190 REMARK WE ZERO THE BOARD AND INITIALIZE
+ RemarkToken:WE ZERO THE BOARD AND INITIALIZE
+200 FOR I = 1 TO 8
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:8"]
+ step:    ["NumericConstant:1"]
+210    FOR J = 1 TO 8
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:8"]
+ step:    ["NumericConstant:1"]
+220       LET B(I,J) = 0
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+230    NEXT J
+ VariableToken:J
+240 NEXT I
+ VariableToken:I
+250 LET I = I0
+ ScalarReference:I
+ ScalarValue:I0
+ AssignmentOperator:=
+260 LET J = J0
+ ScalarReference:J
+ ScalarValue:J0
+ AssignmentOperator:=
+270 LET M = 1
+ ScalarReference:M
+ NumericConstant:1
+ AssignmentOperator:=
+280 LET B(I,J) = -1
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:B
+ NumericConstant:1
+ UnaryOperator:-
+ AssignmentOperator:=
+290
+300 REMARK WE NOW START THE SERIES OF MOVES
+ RemarkToken:WE NOW START THE SERIES OF MOVES
+310 LET C1 = 9
+ ScalarReference:C1
+ NumericConstant:9
+ AssignmentOperator:=
+320 LET C = 0
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+330 FOR I1 = I - 2 TO I + 2
+ control: VariableToken:I1
+ start:   ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:-"]
+ end:     ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:+"]
+ step:    ["NumericConstant:1"]
+340    IF I1 = 1 THEN 480
+ ScalarValue:I1
+ NumericConstant:1
+ BinaryOperator:=
+350    IF ABS(I1 - 4.5) > 4 THEN 480
+ ScalarValue:I1
+ NumericConstant:4.5
+ BinaryOperator:-
+ FunctionAbs
+ NumericConstant:4
+ BinaryOperator:>
+360    LET D1 = 3 - ABS(I1 - I)
+ ScalarReference:D1
+ NumericConstant:3
+ ScalarValue:I1
+ ScalarValue:I
+ BinaryOperator:-
+ FunctionAbs
+ BinaryOperator:-
+ AssignmentOperator:=
+370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
+ control: VariableToken:J1
+ start:   ["ScalarValue:J", "ScalarValue:D1", "BinaryOperator:-"]
+ end:     ["ScalarValue:J", "ScalarValue:D1", "BinaryOperator:+"]
+ step:    ["NumericConstant:2", "ScalarValue:D1", "BinaryOperator:*"]
+380       IF ABS(J1 - 4.5) > 4 THEN 470
+ ScalarValue:J1
+ NumericConstant:4.5
+ BinaryOperator:-
+ FunctionAbs
+ NumericConstant:4
+ BinaryOperator:>
+390       IF B(I1,J1) < 0 THEN 470
+ ScalarValue:I1
+ ScalarValue:J1
+ ScalarValue:B
+ NumericConstant:0
+ BinaryOperator:<
+400       LET C = C + 1
+ ScalarReference:C
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+410       IF C <> C1 THEN 470
+ ScalarValue:C
+ ScalarValue:C1
+ BinaryOperator:<>
+420       LET I = I1
+ ScalarReference:I
+ ScalarValue:I1
+ AssignmentOperator:=
+430       LET J = J1
+ ScalarReference:J
+ ScalarValue:J1
+ AssignmentOperator:=
+440       LET B(I,J) = -1
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:B
+ NumericConstant:1
+ UnaryOperator:-
+ AssignmentOperator:=
+450       LET M = M + 1
+ ScalarReference:M
+ ScalarValue:M
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+460       GOTO 310
+ LineNumber:310
+470    NEXT J1
+ VariableToken:J1
+480 NEXT I1
+ VariableToken:I1
+490 IF C = 0 THEN 600
+ ScalarValue:C
+ NumericConstant:0
+ BinaryOperator:=
+500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
+ RemarkToken:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
+510 LET C1 = INT(RND(Z)*C + 1)
+ ScalarReference:C1
+ ScalarValue:Z
+ FunctionRnd
+ ScalarValue:C
+ BinaryOperator:*
+ NumericConstant:1
+ BinaryOperator:+
+ FunctionInt
+ AssignmentOperator:=
+520 GOTO 320
+ LineNumber:320
+600 REMARK WE HAVE GONE AS FAR AS WE CAN
+ RemarkToken:WE HAVE GONE AS FAR AS WE CAN
+610 PRINT I; J; M
+ ITEMS
+ ScalarValue:I
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:;
+ ScalarValue:M
+ CarriageControl:NL
+612 LET Z0 = Z0+1
+ ScalarReference:Z0
+ ScalarValue:Z0
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+620 IF Z0 < 40 THEN 200
+ ScalarValue:Z0
+ NumericConstant:40
+ BinaryOperator:<
+630 REMARK WE GO FOR ANOTHER TRIAL
+ RemarkToken:WE GO FOR ANOTHER TRIAL
+880
+890 REMARK THE DATA FOR THE STARTING POSITION
+ RemarkToken:THE DATA FOR THE STARTING POSITION
+900 DATA 1, 1
+ NumericConstant:1
+ NumericConstant:1
+999 END
+ 

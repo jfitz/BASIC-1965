@@ -1,0 +1,34 @@
+10 DATA 10,20,30
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:30
+20 READ A,B,C
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+30 PRINT A,B,C
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:C
+ CarriageControl:NL
+40 IF A<20 THEN 70
+ ScalarValue:A
+ NumericConstant:20
+ BinaryOperator:<
+50 PRINT A
+ ITEMS
+ ScalarValue:A
+ CarriageControl:NL
+60 GOTO 90
+ LineNumber:90
+70 PRINT B
+ ITEMS
+ ScalarValue:B
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 

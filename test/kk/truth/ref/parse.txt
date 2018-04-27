@@ -1,0 +1,87 @@
+10 PRINT " P", " Q", " R", "FORMULA"
+ ITEMS
+ TextConstant:" P"
+ CarriageControl:,
+ TextConstant:" Q"
+ CarriageControl:,
+ TextConstant:" R"
+ CarriageControl:,
+ TextConstant:"FORMULA"
+ CarriageControl:NL
+15 PRINT
+ ITEMS
+ CarriageControl:NL
+20 FOR P = 1 TO 0 STEP -1
+ control: VariableToken:P
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperator:-"]
+30     FOR Q = 1 TO 0 STEP -1
+ control: VariableToken:Q
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperator:-"]
+40         FOR R = 1 TO 0 STEP -1
+ control: VariableToken:R
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperator:-"]
+50             LET X = P
+ ScalarReference:X
+ ScalarValue:P
+ AssignmentOperator:=
+60             GOSUB 200
+ LineNumber:200
+70             LET X = Q
+ ScalarReference:X
+ ScalarValue:Q
+ AssignmentOperator:=
+80             GOSUB 200
+ LineNumber:200
+90             LET X = R
+ ScalarReference:X
+ ScalarValue:R
+ AssignmentOperator:=
+95             GOSUB 200
+ LineNumber:200
+100            LET X = P*SGN(Q+R)
+ ScalarReference:X
+ ScalarValue:P
+ ScalarValue:Q
+ ScalarValue:R
+ BinaryOperator:+
+ FunctionSgn
+ BinaryOperator:*
+ AssignmentOperator:=
+110            GOSUB 200
+ LineNumber:200
+120            PRINT
+ ITEMS
+ CarriageControl:NL
+130        NEXT R
+ VariableToken:R
+140    NEXT Q
+ VariableToken:Q
+150 NEXT P
+ VariableToken:P
+160 STOP
+ 
+170
+200 IF X > 0 THEN 250
+ ScalarValue:X
+ NumericConstant:0
+ BinaryOperator:>
+210 PRINT "FALSE",
+ ITEMS
+ TextConstant:"FALSE"
+ CarriageControl:,
+220 RETURN
+ 
+250 PRINT "TRUE",
+ ITEMS
+ TextConstant:"TRUE"
+ CarriageControl:,
+260 RETURN
+ 
+999 END
+ 

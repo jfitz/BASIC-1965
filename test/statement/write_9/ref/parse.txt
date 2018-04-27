@@ -1,0 +1,19 @@
+10 LET V=100
+ ScalarReference:V
+ NumericConstant:100
+ AssignmentOperator:=
+20 LET X=200
+ ScalarReference:X
+ NumericConstant:200
+ AssignmentOperator:=
+30 WRITE V"UNITS IS"X"VALUE"
+ ScalarValue:V
+ CarriageControl:
+ TextConstant:"UNITS IS"
+ CarriageControl:
+ ScalarValue:X
+ CarriageControl:
+ TextConstant:"VALUE"
+ CarriageControl:NL
+40 END
+ 

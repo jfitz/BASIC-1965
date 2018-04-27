@@ -1,0 +1,68 @@
+10 REM THIS PROGRAM COMPUTES THE "NO REPETITIONS"
+ RemarkToken:THIS PROGRAM COMPUTES THE "NO REPETITIONS"
+20 REM PROBABILITY OF A SAMPLE
+ RemarkToken:PROBABILITY OF A SAMPLE
+30 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+35 PRINT "TOTAL POPULATION"
+ ITEMS
+ TextConstant:"TOTAL POPULATION"
+ CarriageControl:NL
+40 INPUT M
+ ScalarReference:M
+50 PRINT "SIZE OF SAMPLE"
+ ITEMS
+ TextConstant:"SIZE OF SAMPLE"
+ CarriageControl:NL
+60 INPUT N
+ ScalarReference:N
+70 LET J = 1
+ ScalarReference:J
+ NumericConstant:1
+ AssignmentOperator:=
+80 FOR I = 1 TO N - 1
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+90 LET K = 1 - (I/M)
+ ScalarReference:K
+ NumericConstant:1
+ ScalarValue:I
+ ScalarValue:M
+ BinaryOperator:/
+ BinaryOperator:-
+ AssignmentOperator:=
+100 LET J = J*K
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:K
+ BinaryOperator:*
+ AssignmentOperator:=
+110 NEXT I
+ VariableToken:I
+120 PRINT "PROBABILITY = ";J
+ ITEMS
+ TextConstant:"PROBABILITY = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+150 INPUT L
+ ScalarReference:L
+160 IF L = 1 THEN 30
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+170 STOP
+ 
+180 END
+ 

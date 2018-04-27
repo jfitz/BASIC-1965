@@ -1,0 +1,116 @@
+10 REM THIS PROGRAM COMPUTES RECTANGULAR COORDINATE
+ RemarkToken:THIS PROGRAM COMPUTES RECTANGULAR COORDINATE
+20 REM TRANSLATION AND/OR ROTATION
+ RemarkToken:TRANSLATION AND/OR ROTATION
+30 PRINT "ANGLE OF ROTATION IN DEGREES = ";
+ ITEMS
+ TextConstant:"ANGLE OF ROTATION IN DEGREES = "
+ CarriageControl:;
+40 INPUT A
+ ScalarReference:A
+50 LET B = (A*3.14159)/180
+ ScalarReference:B
+ ScalarValue:A
+ NumericConstant:3.14159
+ BinaryOperator:*
+ NumericConstant:180
+ BinaryOperator:/
+ AssignmentOperator:=
+60 PRINT "COORDINATES OF NEW ORIGIN (X0,Y0) =";
+ ITEMS
+ TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
+ CarriageControl:;
+70 INPUT X,Y
+ ScalarReference:X
+ ScalarReference:Y
+80 PRINT "OLD COORDINATES OF DATA POINT (X1,Y1) =";
+ ITEMS
+ TextConstant:"OLD COORDINATES OF DATA POINT (X1,Y1) ="
+ CarriageControl:;
+90 INPUT F,C
+ ScalarReference:F
+ ScalarReference:C
+100 LET Z = F - X
+ ScalarReference:Z
+ ScalarValue:F
+ ScalarValue:X
+ BinaryOperator:-
+ AssignmentOperator:=
+110 LET W = C - Y
+ ScalarReference:W
+ ScalarValue:C
+ ScalarValue:Y
+ BinaryOperator:-
+ AssignmentOperator:=
+120 LET D = (Z*COS(B)) + (W*SIN(B))
+ ScalarReference:D
+ ScalarValue:Z
+ ScalarValue:B
+ FunctionCos
+ BinaryOperator:*
+ ScalarValue:W
+ ScalarValue:B
+ FunctionSin
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+130 LET E = - (Z*SIN(B)) + (W*COS(B))
+ ScalarReference:E
+ ScalarValue:Z
+ ScalarValue:B
+ FunctionSin
+ BinaryOperator:*
+ UnaryOperator:-
+ ScalarValue:W
+ ScalarValue:B
+ FunctionCos
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+140 PRINT
+ ITEMS
+ CarriageControl:NL
+150 PRINT "SPECIFIED ROTATION =";A
+ ITEMS
+ TextConstant:"SPECIFIED ROTATION ="
+ CarriageControl:;
+ ScalarValue:A
+ CarriageControl:NL
+160 PRINT "NEW COORDINATES OF DATA POINT"
+ ITEMS
+ TextConstant:"NEW COORDINATES OF DATA POINT"
+ CarriageControl:NL
+170 PRINT "X2 = ";D
+ ITEMS
+ TextConstant:"X2 = "
+ CarriageControl:;
+ ScalarValue:D
+ CarriageControl:NL
+180 PRINT "Y2 = ";E
+ ITEMS
+ TextConstant:"Y2 = "
+ CarriageControl:;
+ ScalarValue:E
+ CarriageControl:NL
+190 PRINT
+ ITEMS
+ CarriageControl:NL
+200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+210 INPUT L
+ ScalarReference:L
+220 IF L = 1 THEN 240
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+230 STOP
+ 
+240 PRINT
+ ITEMS
+ CarriageControl:NL
+250 GOTO 30
+ LineNumber:30
+260 END
+ 

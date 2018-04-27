@@ -1,0 +1,75 @@
+10 READ N
+ ScalarReference:N
+20 FOR I = 1 TO N-1
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+30 FOR J = 1 TO N-1
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+40 LET P(I,J) = I*J - INT(I*J/N)*N
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:P
+ ScalarValue:I
+ ScalarValue:J
+ BinaryOperator:*
+ ScalarValue:I
+ ScalarValue:J
+ BinaryOperator:*
+ ScalarValue:N
+ BinaryOperator:/
+ FunctionInt
+ ScalarValue:N
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+50 NEXT J
+ VariableToken:J
+60 NEXT I
+ VariableToken:I
+70 FOR I = 1 TO N-1
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+80 FOR J = 1 TO N-1
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+90 IF P(I,J) = 1 THEN 140
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:P
+ NumericConstant:1
+ BinaryOperator:=
+100 NEXT J
+ VariableToken:J
+110 PRINT I; "DOES NOT HAVE AN INVERSE"
+ ITEMS
+ ScalarValue:I
+ CarriageControl:;
+ TextConstant:"DOES NOT HAVE AN INVERSE"
+ CarriageControl:NL
+120 NEXT I
+ VariableToken:I
+130 STOP
+ 
+140 PRINT I; "HAS AN INVERSE" J
+ ITEMS
+ ScalarValue:I
+ CarriageControl:;
+ TextConstant:"HAS AN INVERSE"
+ CarriageControl:
+ ScalarValue:J
+ CarriageControl:NL
+150 GOTO 120
+ LineNumber:120
+160 DATA 9
+ NumericConstant:9
+999 END
+ 

@@ -1,0 +1,72 @@
+10 REM THIS PROGRAM COMPUTES LINEAR INTERPOLATION
+ RemarkToken:THIS PROGRAM COMPUTES LINEAR INTERPOLATION
+20 PRINT "KNOWN VALUE OF X (X1,X2) = ";
+ ITEMS
+ TextConstant:"KNOWN VALUE OF X (X1,X2) = "
+ CarriageControl:;
+30 INPUT X1,X2
+ ScalarReference:X1
+ ScalarReference:X2
+40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
+ ITEMS
+ TextConstant:"KNOWN VALUES OF Y (F(X1),F(X2)) = "
+ CarriageControl:;
+50 INPUT Y1,Y2
+ ScalarReference:Y1
+ ScalarReference:Y2
+60 PRINT "INTERPOLATE F(X) AT X = ";
+ ITEMS
+ TextConstant:"INTERPOLATE F(X) AT X = "
+ CarriageControl:;
+70 INPUT X
+ ScalarReference:X
+80 LET G = ((X2 - X)*Y1) + ((X - X1)*Y2)
+ ScalarReference:G
+ ScalarValue:X2
+ ScalarValue:X
+ BinaryOperator:-
+ ScalarValue:Y1
+ BinaryOperator:*
+ ScalarValue:X
+ ScalarValue:X1
+ BinaryOperator:-
+ ScalarValue:Y2
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+90 LET F = G/(X2 - X1)
+ ScalarReference:F
+ ScalarValue:G
+ ScalarValue:X2
+ ScalarValue:X1
+ BinaryOperator:-
+ BinaryOperator:/
+ AssignmentOperator:=
+100 PRINT "INTERPOLATED F(X) = ";F
+ ITEMS
+ TextConstant:"INTERPOLATED F(X) = "
+ CarriageControl:;
+ ScalarValue:F
+ CarriageControl:NL
+110 PRINT
+ ITEMS
+ CarriageControl:NL
+120 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+130 INPUT L
+ ScalarReference:L
+140 IF L = 1 THEN 160
+ ScalarValue:L
+ NumericConstant:1
+ BinaryOperator:=
+150 STOP
+ 
+160 PRINT
+ ITEMS
+ CarriageControl:NL
+170 GOTO 20
+ LineNumber:20
+180 END
+ 

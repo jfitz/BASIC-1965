@@ -1,0 +1,315 @@
+10 DIM T(100,10), V(100)
+ NumericConstant:100
+ NumericConstant:10
+ CompoundDeclaration:T
+ NumericConstant:100
+ CompoundDeclaration:V
+20 FOR I = 0 TO 100
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:100"]
+ step:    ["NumericConstant:1"]
+30    READ K
+ ScalarReference:K
+40    IF K = 999 THEN 100
+ ScalarValue:K
+ NumericConstant:999
+ BinaryOperator:=
+50    LET T(I,0) = K
+ ScalarValue:I
+ NumericConstant:0
+ ScalarReference:T
+ ScalarValue:K
+ AssignmentOperator:=
+60    LET K1 = ABS(K)
+ ScalarReference:K1
+ ScalarValue:K
+ FunctionAbs
+ AssignmentOperator:=
+70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:2", "ScalarValue:K1", "BinaryOperator:*", "NumericConstant:1", "BinaryOperator:+", "ScalarValue:K1", "FunctionSgn", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+80       READ T(I,J)
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:T
+90    NEXT J
+ VariableToken:J
+95 NEXT I
+ VariableToken:I
+99
+100 PRINT "SELECTED ACTS: ";
+ ITEMS
+ TextConstant:"SELECTED ACTS: "
+ CarriageControl:;
+105 FOR I = I-1 TO 0 STEP -1
+ control: VariableToken:I
+ start:   ["ScalarValue:I", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperator:-"]
+110    LET K = T(I,0)
+ ScalarReference:K
+ ScalarValue:I
+ NumericConstant:0
+ ScalarValue:T
+ AssignmentOperator:=
+120    IF K > 0 THEN 200
+ ScalarValue:K
+ NumericConstant:0
+ BinaryOperator:>
+130    IF K < 0 THEN 300
+ ScalarValue:K
+ NumericConstant:0
+ BinaryOperator:<
+140    LET V(I) = T(I,1)
+ ScalarValue:I
+ ScalarReference:V
+ ScalarValue:I
+ NumericConstant:1
+ ScalarValue:T
+ AssignmentOperator:=
+150    GOTO 399
+ LineNumber:399
+200    LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+210    FOR J = 2 TO 2*K STEP 2
+ control: VariableToken:J
+ start:   ["NumericConstant:2"]
+ end:     ["NumericConstant:2", "ScalarValue:K", "BinaryOperator:*"]
+ step:    ["NumericConstant:2"]
+220       LET B = T(I,J)
+ ScalarReference:B
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:T
+ AssignmentOperator:=
+230       LET S = S + T(I,J-1)*V(B)
+ ScalarReference:S
+ ScalarValue:S
+ ScalarValue:I
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:-
+ ScalarValue:T
+ ScalarValue:B
+ ScalarValue:V
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+240    NEXT J
+ VariableToken:J
+250    LET V(I) = S
+ ScalarValue:I
+ ScalarReference:V
+ ScalarValue:S
+ AssignmentOperator:=
+260    GOTO 399
+ LineNumber:399
+300    LET M = -999999999
+ ScalarReference:M
+ NumericConstant:999999999
+ UnaryOperator:-
+ AssignmentOperator:=
+310    FOR J = 2 TO 2*ABS(K) STEP 2
+ control: VariableToken:J
+ start:   ["NumericConstant:2"]
+ end:     ["NumericConstant:2", "ScalarValue:K", "FunctionAbs", "BinaryOperator:*"]
+ step:    ["NumericConstant:2"]
+320       LET V = V(T(I,J))
+ ScalarReference:V
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:T
+ ScalarValue:V
+ AssignmentOperator:=
+330       IF V <= M THEN 360
+ ScalarValue:V
+ ScalarValue:M
+ BinaryOperator:<=
+340       LET M = V
+ ScalarReference:M
+ ScalarValue:V
+ AssignmentOperator:=
+350       LET A = T(I,J-1)
+ ScalarReference:A
+ ScalarValue:I
+ ScalarValue:J
+ NumericConstant:1
+ BinaryOperator:-
+ ScalarValue:T
+ AssignmentOperator:=
+360    NEXT J
+ VariableToken:J
+370    PRINT A;
+ ITEMS
+ ScalarValue:A
+ CarriageControl:;
+380    LET V(I) = M
+ ScalarValue:I
+ ScalarReference:V
+ ScalarValue:M
+ AssignmentOperator:=
+399 NEXT I
+ VariableToken:I
+400 PRINT
+ ITEMS
+ CarriageControl:NL
+410 PRINT
+ ITEMS
+ CarriageControl:NL
+420 PRINT "EXPECTED GAIN = $" V(0)
+ ITEMS
+ TextConstant:"EXPECTED GAIN = $"
+ CarriageControl:
+ NumericConstant:0
+ ScalarValue:V
+ CarriageControl:NL
+430
+900 DATA -3,1,1,2,2,3,3
+ NumericConstant:3
+ UnaryOperator:-
+ NumericConstant:1
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:2
+ NumericConstant:3
+ NumericConstant:3
+901 DATA 2,.5,4,0.5,5
+ NumericConstant:2
+ NumericConstant:0.5
+ NumericConstant:4
+ NumericConstant:0.5
+ NumericConstant:5
+902 DATA 0,0
+ NumericConstant:0
+ NumericConstant:0
+903 DATA 3,0.333,6,0.167,7,0.5,8
+ NumericConstant:3
+ NumericConstant:0.333
+ NumericConstant:6
+ NumericConstant:0.167
+ NumericConstant:7
+ NumericConstant:0.5
+ NumericConstant:8
+904 DATA 0,100
+ NumericConstant:0
+ NumericConstant:100
+905 DATA -2,4,9,5,10
+ NumericConstant:2
+ UnaryOperator:-
+ NumericConstant:4
+ NumericConstant:9
+ NumericConstant:5
+ NumericConstant:10
+906 DATA 2,0.5,11,0.5,12
+ NumericConstant:2
+ NumericConstant:0.5
+ NumericConstant:11
+ NumericConstant:0.5
+ NumericConstant:12
+907 DATA 0,-10
+ NumericConstant:0
+ NumericConstant:10
+ UnaryOperator:-
+908 DATA 2,0.75,13,0.25,14
+ NumericConstant:2
+ NumericConstant:0.75
+ NumericConstant:13
+ NumericConstant:0.25
+ NumericConstant:14
+909 DATA 3,0.167,15,0.333,16,0.5,17
+ NumericConstant:3
+ NumericConstant:0.167
+ NumericConstant:15
+ NumericConstant:0.333
+ NumericConstant:16
+ NumericConstant:0.5
+ NumericConstant:17
+910 DATA 0,-100
+ NumericConstant:0
+ NumericConstant:100
+ UnaryOperator:-
+911 DATA 0,90
+ NumericConstant:0
+ NumericConstant:90
+912 DATA -2,6,18,7,19
+ NumericConstant:2
+ UnaryOperator:-
+ NumericConstant:6
+ NumericConstant:18
+ NumericConstant:7
+ NumericConstant:19
+913 DATA 0,90
+ NumericConstant:0
+ NumericConstant:90
+914 DATA -2,8,20,9,21
+ NumericConstant:2
+ UnaryOperator:-
+ NumericConstant:8
+ NumericConstant:20
+ NumericConstant:9
+ NumericConstant:21
+915 DATA 0,100
+ NumericConstant:0
+ NumericConstant:100
+916 DATA 0,0
+ NumericConstant:0
+ NumericConstant:0
+917 DATA 0,-100
+ NumericConstant:0
+ NumericConstant:100
+ UnaryOperator:-
+918 DATA 3,0.167,22,0.333,23,0.5,24
+ NumericConstant:3
+ NumericConstant:0.167
+ NumericConstant:22
+ NumericConstant:0.333
+ NumericConstant:23
+ NumericConstant:0.5
+ NumericConstant:24
+919 DATA 0,-110
+ NumericConstant:0
+ NumericConstant:110
+ UnaryOperator:-
+920 DATA 3,0.167,25,0.333,26,0.5,27
+ NumericConstant:3
+ NumericConstant:0.167
+ NumericConstant:25
+ NumericConstant:0.333
+ NumericConstant:26
+ NumericConstant:0.5
+ NumericConstant:27
+921 DATA 0,-110
+ NumericConstant:0
+ NumericConstant:110
+ UnaryOperator:-
+922 DATA 0,90
+ NumericConstant:0
+ NumericConstant:90
+923 DATA 0,-10
+ NumericConstant:0
+ NumericConstant:10
+ UnaryOperator:-
+924 DATA 0,-110
+ NumericConstant:0
+ NumericConstant:110
+ UnaryOperator:-
+925 DATA 0,90
+ NumericConstant:0
+ NumericConstant:90
+926 DATA 0,-10
+ NumericConstant:0
+ NumericConstant:10
+ UnaryOperator:-
+927 DATA 0,-110
+ NumericConstant:0
+ NumericConstant:110
+ UnaryOperator:-
+998 DATA 999
+ NumericConstant:999
+999 END
+ 

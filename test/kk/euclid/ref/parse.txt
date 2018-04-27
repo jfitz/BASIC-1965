@@ -1,0 +1,59 @@
+10 PRINT " A", " B", "G.C.D."
+ ITEMS
+ TextConstant:" A"
+ CarriageControl:,
+ TextConstant:" B"
+ CarriageControl:,
+ TextConstant:"G.C.D."
+ CarriageControl:NL
+20 READ A,B
+ ScalarReference:A
+ ScalarReference:B
+30 PRINT A,B,
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:,
+40 LET Q = INT(A/B)
+ ScalarReference:Q
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:/
+ FunctionInt
+ AssignmentOperator:=
+45 LET R = A - Q*B
+ ScalarReference:R
+ ScalarValue:A
+ ScalarValue:Q
+ ScalarValue:B
+ BinaryOperator:*
+ BinaryOperator:-
+ AssignmentOperator:=
+50 LET A = B
+ ScalarReference:A
+ ScalarValue:B
+ AssignmentOperator:=
+55 LET B = R
+ ScalarReference:B
+ ScalarValue:R
+ AssignmentOperator:=
+60 IF R > 0 THEN 40
+ ScalarValue:R
+ NumericConstant:0
+ BinaryOperator:>
+70 PRINT A
+ ITEMS
+ ScalarValue:A
+ CarriageControl:NL
+80 GOTO 20
+ LineNumber:20
+90 DATA 130,169, 243,256, 123456789,987654321
+ NumericConstant:130
+ NumericConstant:169
+ NumericConstant:243
+ NumericConstant:256
+ NumericConstant:123456789
+ NumericConstant:987654321
+99 END
+ 

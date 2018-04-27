@@ -1,0 +1,51 @@
+10 REM COMPUTE SQR(15+X) + SQR(X) = 15
+ RemarkToken:COMPUTE SQR(15+X) + SQR(X) = 15
+20 PRINT "X","SQR(15+X)+SQR(X)","SQR(15+X)-SQR(X)"
+ ITEMS
+ TextConstant:"X"
+ CarriageControl:,
+ TextConstant:"SQR(15+X)+SQR(X)"
+ CarriageControl:,
+ TextConstant:"SQR(15+X)-SQR(X)"
+ CarriageControl:NL
+30 FOR X = 1 TO 100
+ control: VariableToken:X
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:100"]
+ step:    ["NumericConstant:1"]
+40 LET A1 = SQR(15+X)
+ ScalarReference:A1
+ NumericConstant:15
+ ScalarValue:X
+ BinaryOperator:+
+ FunctionSqr
+ AssignmentOperator:=
+50 LET A2 = SQR(X)
+ ScalarReference:A2
+ ScalarValue:X
+ FunctionSqr
+ AssignmentOperator:=
+60 LET A = A1+A2
+ ScalarReference:A
+ ScalarValue:A1
+ ScalarValue:A2
+ BinaryOperator:+
+ AssignmentOperator:=
+70 LET B = A1-A2
+ ScalarReference:B
+ ScalarValue:A1
+ ScalarValue:A2
+ BinaryOperator:-
+ AssignmentOperator:=
+80 PRINT X,A,B
+ ITEMS
+ ScalarValue:X
+ CarriageControl:,
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:NL
+90 NEXT X
+ VariableToken:X
+99 END
+ 

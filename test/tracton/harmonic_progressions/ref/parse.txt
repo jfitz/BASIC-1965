@@ -1,0 +1,124 @@
+10 REM THIS PROGRAM COMPUTES A SERIES OF HARMONIC
+ RemarkToken:THIS PROGRAM COMPUTES A SERIES OF HARMONIC
+20 REM PROGRESSIONS
+ RemarkToken:PROGRESSIONS
+30 PRINT "VALUE OF A = "
+ ITEMS
+ TextConstant:"VALUE OF A = "
+ CarriageControl:NL
+40 INPUT A
+ ScalarReference:A
+50 PRINT "VALUE OF B = "
+ ITEMS
+ TextConstant:"VALUE OF B = "
+ CarriageControl:NL
+60 INPUT B
+ ScalarReference:B
+70 PRINT "DIFFERENCE = "
+ ITEMS
+ TextConstant:"DIFFERENCE = "
+ CarriageControl:NL
+80 INPUT D
+ ScalarReference:D
+90 PRINT "NUMBER OF TERMS = "
+ ITEMS
+ TextConstant:"NUMBER OF TERMS = "
+ CarriageControl:NL
+100 INPUT N
+ ScalarReference:N
+110 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+ ITEMS
+ TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
+ CarriageControl:NL
+120 INPUT C
+ ScalarReference:C
+130 IF C = 1 THEN 150
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:=
+140 GOTO 170
+ LineNumber:170
+150 PRINT "HARMONIC PROGRESSION"
+ ITEMS
+ TextConstant:"HARMONIC PROGRESSION"
+ CarriageControl:NL
+160 PRINT "TERM NUMBER","TERM VALUE"
+ ITEMS
+ TextConstant:"TERM NUMBER"
+ CarriageControl:,
+ TextConstant:"TERM VALUE"
+ CarriageControl:NL
+170 LET J = 0
+ ScalarReference:J
+ NumericConstant:0
+ AssignmentOperator:=
+180 FOR I = 0 TO N - 1
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+190 LET K = I + 1
+ ScalarReference:K
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+200 LET L = A/(B + (I*D))
+ ScalarReference:L
+ ScalarValue:A
+ ScalarValue:B
+ ScalarValue:I
+ ScalarValue:D
+ BinaryOperator:*
+ BinaryOperator:+
+ BinaryOperator:/
+ AssignmentOperator:=
+210 LET J = J + L
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:L
+ BinaryOperator:+
+ AssignmentOperator:=
+220 IF C = 1 THEN 240
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:=
+230 GOTO 250
+ LineNumber:250
+240 PRINT K,L
+ ITEMS
+ ScalarValue:K
+ CarriageControl:,
+ ScalarValue:L
+ CarriageControl:NL
+250 NEXT I
+ VariableToken:I
+260 PRINT "SUM = ";J
+ ITEMS
+ TextConstant:"SUM = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+270 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+280 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+290 INPUT X
+ ScalarReference:X
+300 IF X = 1 THEN 320
+ ScalarValue:X
+ NumericConstant:1
+ BinaryOperator:=
+310 STOP
+ 
+320 PRINT
+ ITEMS
+ CarriageControl:NL
+330 GOTO 30
+ LineNumber:30
+340 END
+ 

@@ -1,0 +1,88 @@
+100 LET P = 3.14159265
+ ScalarReference:P
+ NumericConstant:3.14159265
+ AssignmentOperator:=
+110 LET C = 0
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+120 FOR N = 1 TO 1000
+ control: VariableToken:N
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:1000"]
+ step:    ["NumericConstant:1"]
+130    LET Y = RND(Z)
+ ScalarReference:Y
+ ScalarValue:Z
+ FunctionRnd
+ AssignmentOperator:=
+140    LET R = RND(Z)
+ ScalarReference:R
+ ScalarValue:Z
+ FunctionRnd
+ AssignmentOperator:=
+150    LET A = P*(R-1/2)
+ ScalarReference:A
+ ScalarValue:P
+ ScalarValue:R
+ NumericConstant:1
+ NumericConstant:2
+ BinaryOperator:/
+ BinaryOperator:-
+ BinaryOperator:*
+ AssignmentOperator:=
+160    LET Y1 = Y - COS(A)
+ ScalarReference:Y1
+ ScalarValue:Y
+ ScalarValue:A
+ FunctionCos
+ BinaryOperator:-
+ AssignmentOperator:=
+170    LET Y2 = Y + COS(A)
+ ScalarReference:Y2
+ ScalarValue:Y
+ ScalarValue:A
+ FunctionCos
+ BinaryOperator:+
+ AssignmentOperator:=
+172    LET C2 = COS(A)
+ ScalarReference:C2
+ ScalarValue:A
+ FunctionCos
+ AssignmentOperator:=
+180    IF SGN(Y1) = SGN(Y2) THEN 200
+ ScalarValue:Y1
+ FunctionSgn
+ ScalarValue:Y2
+ FunctionSgn
+ BinaryOperator:=
+190    LET C = C+1
+ ScalarReference:C
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+200 NEXT N
+ VariableToken:N
+210 LET F = C/N
+ ScalarReference:F
+ ScalarValue:C
+ ScalarValue:N
+ BinaryOperator:/
+ AssignmentOperator:=
+220 PRINT "FRACTION OF CROSSINGS = " F
+ ITEMS
+ TextConstant:"FRACTION OF CROSSINGS = "
+ CarriageControl:
+ ScalarValue:F
+ CarriageControl:NL
+230 PRINT "ESTIMATE OF PI = " 2/F
+ ITEMS
+ TextConstant:"ESTIMATE OF PI = "
+ CarriageControl:
+ NumericConstant:2
+ ScalarValue:F
+ BinaryOperator:/
+ CarriageControl:NL
+240 END
+ 

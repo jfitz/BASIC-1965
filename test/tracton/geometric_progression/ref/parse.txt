@@ -1,0 +1,118 @@
+10 REM THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
+ RemarkToken:THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
+20 REM OF A GEOMETRIC PROGRESSION
+ RemarkToken:OF A GEOMETRIC PROGRESSION
+30 PRINT "FIRST TERM = ";
+ ITEMS
+ TextConstant:"FIRST TERM = "
+ CarriageControl:;
+40 INPUT A
+ ScalarReference:A
+50 PRINT "RATIO OF TERMS = ";
+ ITEMS
+ TextConstant:"RATIO OF TERMS = "
+ CarriageControl:;
+60 INPUT R
+ ScalarReference:R
+70 PRINT "NUMBER OF TERMS = ";
+ ITEMS
+ TextConstant:"NUMBER OF TERMS = "
+ CarriageControl:;
+80 INPUT N
+ ScalarReference:N
+90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+ ITEMS
+ TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
+ CarriageControl:NL
+100 INPUT C
+ ScalarReference:C
+110 IF C = 1 THEN 130
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:=
+120 GOTO 160
+ LineNumber:160
+130 PRINT
+ ITEMS
+ CarriageControl:NL
+140 PRINT "GEOMETRIC PROGRESSION"
+ ITEMS
+ TextConstant:"GEOMETRIC PROGRESSION"
+ CarriageControl:NL
+150 PRINT "TERM NUMBER","TERM VALUE"
+ ITEMS
+ TextConstant:"TERM NUMBER"
+ CarriageControl:,
+ TextConstant:"TERM VALUE"
+ CarriageControl:NL
+160 LET J = 0
+ ScalarReference:J
+ NumericConstant:0
+ AssignmentOperator:=
+170 FOR I = 0 TO N - 1
+ control: VariableToken:I
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+180 LET K = I + 1
+ ScalarReference:K
+ ScalarValue:I
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+190 LET L = A*(R^I)
+ ScalarReference:L
+ ScalarValue:A
+ ScalarValue:R
+ ScalarValue:I
+ BinaryOperator:^
+ BinaryOperator:*
+ AssignmentOperator:=
+200 LET J = J + L
+ ScalarReference:J
+ ScalarValue:J
+ ScalarValue:L
+ BinaryOperator:+
+ AssignmentOperator:=
+210 IF C = 1 THEN 230
+ ScalarValue:C
+ NumericConstant:1
+ BinaryOperator:=
+220 GOTO 240
+ LineNumber:240
+230 PRINT K,L
+ ITEMS
+ ScalarValue:K
+ CarriageControl:,
+ ScalarValue:L
+ CarriageControl:NL
+240 NEXT I
+ VariableToken:I
+250 PRINT "SUM = ";J
+ ITEMS
+ TextConstant:"SUM = "
+ CarriageControl:;
+ ScalarValue:J
+ CarriageControl:NL
+260 PRINT
+ ITEMS
+ CarriageControl:NL
+270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ ITEMS
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+280 INPUT X
+ ScalarReference:X
+290 IF X = 1 THEN 310
+ ScalarValue:X
+ NumericConstant:1
+ BinaryOperator:=
+300 STOP
+ 
+310 PRINT
+ ITEMS
+ CarriageControl:NL
+320 GOTO 30
+ LineNumber:30
+330 END
+ 

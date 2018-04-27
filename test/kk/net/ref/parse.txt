@@ -1,0 +1,279 @@
+100 DEF FNR(X)=INT(X*1E3 + .5)/1E3
+ ScalarValue:X
+ NumericConstant:1000
+ BinaryOperator:*
+ NumericConstant:0.5
+ BinaryOperator:+
+ FunctionInt
+ NumericConstant:1000
+ BinaryOperator:/
+110 DIM C(20,20), U(20,20), B(20), P(20)
+ NumericConstant:20
+ NumericConstant:20
+ CompoundDeclaration:C
+ NumericConstant:20
+ NumericConstant:20
+ CompoundDeclaration:U
+ NumericConstant:20
+ CompoundDeclaration:B
+ NumericConstant:20
+ CompoundDeclaration:P
+120 READ N,V
+ ScalarReference:N
+ ScalarReference:V
+130 MAT C = ZER(N,N)
+ Unimplemented
+150 MAT B = ZER(N)
+ Unimplemented
+170 LET C(1,1) = 1
+ NumericConstant:1
+ NumericConstant:1
+ ScalarReference:C
+ NumericConstant:1
+ AssignmentOperator:=
+180 LET C(N,N) = 1
+ ScalarValue:N
+ ScalarValue:N
+ ScalarReference:C
+ NumericConstant:1
+ AssignmentOperator:=
+190 LET B(1) = V
+ NumericConstant:1
+ ScalarReference:B
+ ScalarValue:V
+ AssignmentOperator:=
+200
+210 READ I,J,R
+ ScalarReference:I
+ ScalarReference:J
+ ScalarReference:R
+220 IF I = -1 THEN 270
+ ScalarValue:I
+ NumericConstant:1
+ UnaryOperator:-
+ BinaryOperator:=
+230 LET C(I,J) = 1/R
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:C
+ NumericConstant:1
+ ScalarValue:R
+ BinaryOperator:/
+ AssignmentOperator:=
+240 LET C(J,I) = 1/R
+ ScalarValue:J
+ ScalarValue:I
+ ScalarReference:C
+ NumericConstant:1
+ ScalarValue:R
+ BinaryOperator:/
+ AssignmentOperator:=
+250 GOTO 210
+ LineNumber:210
+260
+270 FOR I = 2 TO N-1
+ control: VariableToken:I
+ start:   ["NumericConstant:2"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+280    LET S = 0
+ ScalarReference:S
+ NumericConstant:0
+ AssignmentOperator:=
+290    FOR J = 1 TO N
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+300       LET S = S+C(I,J)
+ ScalarReference:S
+ ScalarValue:S
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:C
+ BinaryOperator:+
+ AssignmentOperator:=
+310    NEXT J
+ VariableToken:J
+320    LET C(I,I) = -S
+ ScalarValue:I
+ ScalarValue:I
+ ScalarReference:C
+ ScalarValue:S
+ UnaryOperator:-
+ AssignmentOperator:=
+330    LET C(1,I) = 0
+ NumericConstant:1
+ ScalarValue:I
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+340    LET C(N,I) = 0
+ ScalarValue:N
+ ScalarValue:I
+ ScalarReference:C
+ NumericConstant:0
+ AssignmentOperator:=
+350 NEXT I
+ VariableToken:I
+360
+370 MAT U = INV(C)
+ Unimplemented
+380 MAT P = U*B
+ Unimplemented
+390
+400 PRINT "NODE", "VOLTAGE"
+ ITEMS
+ TextConstant:"NODE"
+ CarriageControl:,
+ TextConstant:"VOLTAGE"
+ CarriageControl:NL
+410 PRINT
+ ITEMS
+ CarriageControl:NL
+420 FOR I = 1 TO N
+ control: VariableToken:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+430    PRINT I, FNR(P(I))
+ ITEMS
+ ScalarValue:I
+ CarriageControl:,
+ ScalarValue:I
+ ScalarValue:P
+ UserFunction
+ CarriageControl:NL
+440 NEXT I
+ VariableToken:I
+450 PRINT
+ ITEMS
+ CarriageControl:NL
+460 PRINT
+ ITEMS
+ CarriageControl:NL
+470
+480 PRINT "CURRENT FLOW"
+ ITEMS
+ TextConstant:"CURRENT FLOW"
+ CarriageControl:NL
+490 PRINT
+ ITEMS
+ CarriageControl:NL
+500 LET S1 = 0
+ ScalarReference:S1
+ NumericConstant:0
+ AssignmentOperator:=
+510 FOR I = 2 TO N-1
+ control: VariableToken:I
+ start:   ["NumericConstant:2"]
+ end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+520    PRINT "NODE" I
+ ITEMS
+ TextConstant:"NODE"
+ CarriageControl:
+ ScalarValue:I
+ CarriageControl:NL
+530    FOR J = 1 TO N
+ control: VariableToken:J
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N"]
+ step:    ["NumericConstant:1"]
+540       PRINT FNR(C(I,J)*(P(I)-P(J))),
+ ITEMS
+ ScalarValue:I
+ ScalarValue:J
+ ScalarValue:C
+ ScalarValue:I
+ ScalarValue:P
+ ScalarValue:J
+ ScalarValue:P
+ BinaryOperator:-
+ BinaryOperator:*
+ UserFunction
+ CarriageControl:,
+550    NEXT J
+ VariableToken:J
+560    LET S1 = S1 + C(I,N)*(P(I)-P(N))
+ ScalarReference:S1
+ ScalarValue:S1
+ ScalarValue:I
+ ScalarValue:N
+ ScalarValue:C
+ ScalarValue:I
+ ScalarValue:P
+ ScalarValue:N
+ ScalarValue:P
+ BinaryOperator:-
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
+570    PRINT
+ ITEMS
+ CarriageControl:NL
+580    PRINT
+ ITEMS
+ CarriageControl:NL
+590 NEXT I
+ VariableToken:I
+600 PRINT
+ ITEMS
+ CarriageControl:NL
+610
+620 PRINT "TOTAL CURRENT = " FNR(S1)
+ ITEMS
+ TextConstant:"TOTAL CURRENT = "
+ CarriageControl:
+ ScalarValue:S1
+ UserFunction
+ CarriageControl:NL
+630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V/S1)
+ ITEMS
+ TextConstant:"RESISTANCE OF CIRCUIT = "
+ CarriageControl:
+ ScalarValue:V
+ ScalarValue:S1
+ BinaryOperator:/
+ UserFunction
+ CarriageControl:NL
+640
+650 DATA 7,24
+ NumericConstant:7
+ NumericConstant:24
+660 DATA 1,2,100, 2,7,50, 2,3,25, 1,4,16, 3,4,20, 3,6,40
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:100
+ NumericConstant:2
+ NumericConstant:7
+ NumericConstant:50
+ NumericConstant:2
+ NumericConstant:3
+ NumericConstant:25
+ NumericConstant:1
+ NumericConstant:4
+ NumericConstant:16
+ NumericConstant:3
+ NumericConstant:4
+ NumericConstant:20
+ NumericConstant:3
+ NumericConstant:6
+ NumericConstant:40
+670 DATA 4,5,60, 5,6,60, 6,7,40
+ NumericConstant:4
+ NumericConstant:5
+ NumericConstant:60
+ NumericConstant:5
+ NumericConstant:6
+ NumericConstant:60
+ NumericConstant:6
+ NumericConstant:7
+ NumericConstant:40
+680 DATA -1,0,0
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:0
+ NumericConstant:0
+690 END
+ 
