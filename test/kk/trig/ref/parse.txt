@@ -25,7 +25,7 @@
  TextConstant:"COSINE"
  CarriageControl:NL
 60 FOR X = 0 TO 90 STEP 10
- control: VariableToken:X
+ control: VariableName:X
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:90"]
  step:    ["NumericConstant:10"]
@@ -40,6 +40,6 @@
  UserFunction
  CarriageControl:NL
 80 NEXT X
- VariableToken:X
+ VariableName:X
 99 END
  

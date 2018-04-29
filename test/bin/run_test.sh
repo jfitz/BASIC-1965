@@ -11,18 +11,33 @@ echo Create testbed...
 mkdir "$TESTBED/$TESTNAME"
 cp bin/* "$TESTROOT/$TESTGROUP/$TESTNAME/data"/* "$TESTBED/$TESTNAME"
 
+if [ -e "$TESTROOT/$TESTGROUP/options.txt" ]
+then
+    GROUP_OPTIONS=$(<"$TESTROOT/$TESTGROUP/options.txt")
+fi
+
+if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/data/options.txt" ]
+then
+    TEST_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/options.txt")
+fi
+
 # execute program
-ECODE=0
+NUM_FAIL=0
 
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt" ]
 then
   echo List program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb --list $TESTNAME.bas --no-heading --print-width 0 >list.txt
+  ruby basic.rb --list $TESTNAME.bas --no-heading --print-width 0 >list.txt $GROUP_OPTIONS $TEST_OPTIONS
   cd ../..
   echo Compare list...
   diff "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt"
-  ((ECODE+=$?))
+    ((ECODE=$?))
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt"
+    fi
 fi
 
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/parse.txt" ]
@@ -38,29 +53,44 @@ then
     cd ../..
     echo Compare parse...
     diff "$TESTBED/$TESTNAME/parse.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/parse.txt"
-    ((ECODE+=$?))
+    ((ECODE=$?))
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/parse.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/parse.txt"
+    fi
 fi
 
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt" ]
 then
   echo Pretty program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb --pretty $TESTNAME.bas --no-heading --print-width 0 >pretty.txt
+  ruby basic.rb --pretty $TESTNAME.bas --no-heading --print-width 0 >pretty.txt $GROUP_OPTIONS $TEST_OPTIONS
   cd ../..
   echo Compare pretty...
   diff "$TESTBED/$TESTNAME/pretty.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt"
-  ((ECODE+=$?))
+    ((ECODE=$?))
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/pretty.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt"
+    fi
 fi
 
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/crossref.txt" ]
 then
   echo Crossref program...
   cd "$TESTBED/$TESTNAME"
-  ruby basic.rb --crossref $TESTNAME.bas --no-heading --print-width 0 >crossref.txt
+  ruby basic.rb --crossref $TESTNAME.bas --no-heading --print-width 0 >crossref.txt $GROUP_OPTIONS $TEST_OPTIONS
   cd ../..
   echo Compare crossref...
   diff "$TESTBED/$TESTNAME/crossref.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/crossref.txt"
-  ((ECODE+=$?))
+    ((ECODE=$?))
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/crossref.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/crossref.txt"
+    fi
 fi
 
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt" ]
@@ -70,17 +100,22 @@ then
     RUN_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/run_options.txt")
   fi
   cd "$TESTBED/$TESTNAME"
-  echo Run program...
+  echo Run program with options $GROUP_OPTIONS $TEST_OPTIONS $RUN_OPTIONS
   if [ -e stdin.txt ]
   then
-    ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --no-heading --echo-input <stdin.txt >stdout.txt $RUN_OPTIONS
+    ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --echo-input <stdin.txt >stdout.txt $GROUP_OPTIONS $TEST_OPTIONS $RUN_OPTIONS
   else
-    ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --no-heading >stdout.txt $RUN_OPTIONS
+    ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading >stdout.txt $GROUP_OPTIONS $TEST_OPTIONS $RUN_OPTIONS
   fi
   cd ../..
   echo Compare stdout...
   diff "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt"
-  ((ECODE+=$?))
+    ((ECODE=$?))
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt"
+    fi
 fi
 
 if [ -e "test/$TESTGROUP/$TESTNAME/ref/out_files.txt" ]
@@ -88,9 +123,14 @@ then
   while read F ; do
     echo Compare $F...
     diff "$TESTBED/$TESTNAME/$F" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/$F"
-    ((ECODE+=$?))
+    ((ECODE=$?))
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/$F" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/$F"
+    fi
   done <"$TESTROOT/$TESTGROUP/$TESTNAME/ref/out_files.txt"
 fi
 
 echo End test $TESTNAME
-exit $ECODE
+exit $NUM_FAIL

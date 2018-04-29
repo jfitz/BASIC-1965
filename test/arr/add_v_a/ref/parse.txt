@@ -1,10 +1,10 @@
 10 REM ARRAY ASSIGNMENT
- RemarkToken:ARRAY ASSIGNMENT
+ Remark:ARRAY ASSIGNMENT
 20 DIM A(5)
  NumericConstant:5
  CompoundDeclaration:A
 30 FOR I = 0 TO 5
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
  step:    ["NumericConstant:1"]
@@ -14,7 +14,7 @@
  ScalarValue:I
  AssignmentOperator:=
 70 NEXT I
- VariableToken:I
+ VariableName:I
 90 LET C = 5
  ScalarReference:C
  NumericConstant:5

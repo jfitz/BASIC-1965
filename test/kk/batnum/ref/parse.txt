@@ -1,5 +1,5 @@
 100 REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
- RemarkToken:THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
+ Remark:THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
 110
 120 LET N = 20 + INT(80*RND(X))
  ScalarReference:N
@@ -49,7 +49,7 @@
  CarriageControl:NL
 200
 210 REM OPPONENT'S MOVE
- RemarkToken:OPPONENT'S MOVE
+ Remark:OPPONENT'S MOVE
 220 PRINT "YOUR MOVE";
  ITEMS
  TextConstant:"YOUR MOVE"
@@ -79,7 +79,7 @@
  LineNumber:210
 300
 310 REM TEST FOR WIN
- RemarkToken:TEST FOR WIN
+ Remark:TEST FOR WIN
 320 LET N = N-X
  ScalarReference:N
  ScalarValue:N
@@ -111,7 +111,7 @@
  LineNumber:120
 400
 410 REM MACHINE'S MOVE
- RemarkToken:MACHINE'S MOVE
+ Remark:MACHINE'S MOVE
 420 LET Q = INT((N-1)/(K+1))
  ScalarReference:Q
  ScalarValue:N
@@ -171,7 +171,7 @@
  LineNumber:210
 520
 530 REM MAKE RANDOM MOVE
- RemarkToken:MAKE RANDOM MOVE
+ Remark:MAKE RANDOM MOVE
 540 IF N > 1 THEN 570
  ScalarValue:N
  NumericConstant:1
@@ -196,7 +196,7 @@
  LineNumber:450
 590
 600 REM MACHINE LOST
- RemarkToken:MACHINE LOST
+ Remark:MACHINE LOST
 610 PRINT "YOU WIN ***"
  ITEMS
  TextConstant:"YOU WIN ***"

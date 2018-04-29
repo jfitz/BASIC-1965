@@ -1,12 +1,12 @@
 10 READ N
  ScalarReference:N
 20 FOR I = 1 TO N-1
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
 30 FOR J = 1 TO N-1
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -28,16 +28,16 @@
  BinaryOperator:-
  AssignmentOperator:=
 50 NEXT J
- VariableToken:J
+ VariableName:J
 60 NEXT I
- VariableToken:I
+ VariableName:I
 70 FOR I = 1 TO N-1
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
 80 FOR J = 1 TO N-1
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -48,7 +48,7 @@
  NumericConstant:1
  BinaryOperator:=
 100 NEXT J
- VariableToken:J
+ VariableName:J
 110 PRINT I; "DOES NOT HAVE AN INVERSE"
  ITEMS
  ScalarValue:I
@@ -56,7 +56,7 @@
  TextConstant:"DOES NOT HAVE AN INVERSE"
  CarriageControl:NL
 120 NEXT I
- VariableToken:I
+ VariableName:I
 130 STOP
  
 140 PRINT I; "HAS AN INVERSE" J

@@ -6,7 +6,7 @@
  NumericConstant:1
  AssignmentOperator:=
 30 FOR K = 1 TO I
- control: VariableToken:K
+ control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I"]
  step:    ["NumericConstant:1"]
@@ -23,7 +23,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 50 NEXT K
- VariableToken:K
+ VariableName:K
 60 PRINT B
  ITEMS
  ScalarValue:B

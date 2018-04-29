@@ -2,7 +2,7 @@
  ScalarReference:M
  ScalarReference:N
 120 FOR I = 1 TO M
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
  step:    ["NumericConstant:1"]
@@ -11,7 +11,7 @@
  NumericConstant:0
  AssignmentOperator:=
 140    FOR J = 1 TO N
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -28,21 +28,21 @@
  BinaryOperator:+
  AssignmentOperator:=
 170    NEXT J
- VariableToken:J
+ VariableName:J
 180    LET R(I) = S
  ScalarValue:I
  ScalarReference:R
  ScalarValue:S
  AssignmentOperator:=
 190 NEXT I
- VariableToken:I
+ VariableName:I
 200
 210 LET S1 = 0
  ScalarReference:S1
  NumericConstant:0
  AssignmentOperator:=
 220 FOR J = 1 TO N
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -51,7 +51,7 @@
  NumericConstant:0
  AssignmentOperator:=
 240    FOR I = 1 TO M
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
  step:    ["NumericConstant:1"]
@@ -64,7 +64,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 260    NEXT I
- VariableToken:I
+ VariableName:I
 270    LET C(J) = S
  ScalarValue:J
  ScalarReference:C
@@ -77,7 +77,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 290 NEXT J
- VariableToken:J
+ VariableName:J
 300
 310 PRINT
  ITEMS
@@ -87,12 +87,12 @@
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I = 1 TO M
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
  step:    ["NumericConstant:1"]
 340    FOR J = 1 TO N
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -127,12 +127,12 @@
  ScalarValue:O
  CarriageControl:,
 380    NEXT J
- VariableToken:J
+ VariableName:J
 390    PRINT
  ITEMS
  CarriageControl:NL
 400 NEXT I
- VariableToken:I
+ VariableName:I
 410 PRINT
  ITEMS
  CarriageControl:NL

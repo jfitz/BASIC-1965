@@ -44,12 +44,12 @@
  NumericConstant:1
  AssignmentOperator:=
 220 FOR I = 1 TO P
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:P"]
  step:    ["NumericConstant:1"]
 230 FOR T = 0 TO T9/P STEP T8
- control: VariableToken:T
+ control: VariableName:T
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:T9", "ScalarValue:P", "BinaryOperator:/"]
  step:    ["ScalarValue:T8"]
@@ -86,7 +86,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 260 NEXT T
- VariableToken:T
+ VariableName:T
 270 LET G(FNR(X*1.5),FNR(Y)) = 1
  ScalarValue:X
  NumericConstant:1.5
@@ -98,15 +98,15 @@
  NumericConstant:1
  AssignmentOperator:=
 280 NEXT I
- VariableToken:I
+ VariableName:I
 290
 300 FOR J = 20 TO 0 STEP -1
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:20"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 310 FOR I = 0 TO 60
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:60"]
  step:    ["NumericConstant:1"]
@@ -117,14 +117,14 @@
  NumericConstant:0
  BinaryOperator:>
 330 NEXT I
- VariableToken:I
+ VariableName:I
 340 PRINT
  ITEMS
  CarriageControl:NL
 350 GOTO 470
  LineNumber:470
 360 FOR I = 0 TO 60
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:60"]
  step:    ["NumericConstant:1"]
@@ -145,7 +145,7 @@
  TextConstant:"*"
  CarriageControl:;
 410 FOR K = I+1 TO 60
- control: VariableToken:K
+ control: VariableName:K
  start:   ["ScalarValue:I", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["NumericConstant:60"]
  step:    ["NumericConstant:1"]
@@ -156,16 +156,16 @@
  NumericConstant:0
  BinaryOperator:>
 430 NEXT K
- VariableToken:K
+ VariableName:K
 440 GOTO 460
  LineNumber:460
 450 NEXT I
- VariableToken:I
+ VariableName:I
 460 PRINT
  ITEMS
  CarriageControl:NL
 470 NEXT J
- VariableToken:J
+ VariableName:J
 480
 900 DATA 3,.5
  NumericConstant:3

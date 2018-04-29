@@ -7,7 +7,7 @@
  NumericConstant:0
  AssignmentOperator:=
 120 FOR N = 1 TO 1000
- control: VariableToken:N
+ control: VariableName:N
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
  step:    ["NumericConstant:1"]
@@ -63,7 +63,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 200 NEXT N
- VariableToken:N
+ VariableName:N
 210 LET F = C/N
  ScalarReference:F
  ScalarValue:C

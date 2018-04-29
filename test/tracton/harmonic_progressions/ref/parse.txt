@@ -1,7 +1,7 @@
 10 REM THIS PROGRAM COMPUTES A SERIES OF HARMONIC
- RemarkToken:THIS PROGRAM COMPUTES A SERIES OF HARMONIC
+ Remark:THIS PROGRAM COMPUTES A SERIES OF HARMONIC
 20 REM PROGRESSIONS
- RemarkToken:PROGRESSIONS
+ Remark:PROGRESSIONS
 30 PRINT "VALUE OF A = "
  ITEMS
  TextConstant:"VALUE OF A = "
@@ -53,7 +53,7 @@
  NumericConstant:0
  AssignmentOperator:=
 180 FOR I = 0 TO N - 1
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -92,7 +92,7 @@
  ScalarValue:L
  CarriageControl:NL
 250 NEXT I
- VariableToken:I
+ VariableName:I
 260 PRINT "SUM = ";J
  ITEMS
  TextConstant:"SUM = "

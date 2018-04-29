@@ -2,7 +2,7 @@
  NumericConstant:6
  CompoundDeclaration:A
 20 FOR I = 0 TO 6
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
  step:    ["NumericConstant:1"]
@@ -12,7 +12,7 @@
  ScalarValue:I
  AssignmentOperator:=
 60 NEXT I
- VariableToken:I
+ VariableName:I
 70 ARR PRINT A
  ITEMS
  ArrayValue:A

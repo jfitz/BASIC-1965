@@ -1,7 +1,7 @@
 10 GOSUB 1000
  LineNumber:1000
 20 FOR C = 1 TO 5
- control: VariableToken:C
+ control: VariableName:C
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
  step:    ["NumericConstant:1"]
@@ -10,17 +10,17 @@
 40    GOSUB 3000
  LineNumber:3000
 50 NEXT C
- VariableToken:C
+ VariableName:C
 60 STOP
  
 70
 1000 REM SET UP DECK
- RemarkToken:SET UP DECK
+ Remark:SET UP DECK
 1010 DIM L(51)
  NumericConstant:51
  CompoundDeclaration:L
 1020 FOR I = 0 TO 51
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
  step:    ["NumericConstant:1"]
@@ -30,12 +30,12 @@
  ScalarValue:I
  AssignmentOperator:=
 1040 NEXT I
- VariableToken:I
+ VariableName:I
 1050 RETURN
  
 1060
 2000 REM DEAL A CARD
- RemarkToken:DEAL A CARD
+ Remark:DEAL A CARD
 2010 LET I = INT(52*RND(1))
  ScalarReference:I
  NumericConstant:52
@@ -63,7 +63,7 @@
  
 2060
 3000 REM PRINT A CARD
- RemarkToken:PRINT A CARD
+ Remark:PRINT A CARD
 3010 LET S = INT(X/13)
  ScalarReference:S
  ScalarValue:X

@@ -1,5 +1,5 @@
 10 REM TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
- RemarkToken:TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
+ Remark:TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
 20 DIM L(1000)
  NumericConstant:1000
  CompoundDeclaration:L
@@ -8,7 +8,7 @@
  NumericConstant:1000
  AssignmentOperator:=
 100 REM INITIALIZE LOCKERS TO OPEN
- RemarkToken:INITIALIZE LOCKERS TO OPEN
+ Remark:INITIALIZE LOCKERS TO OPEN
 110 PRINT "INITIALIZING";N;" LOCKERS..."
  ITEMS
  TextConstant:"INITIALIZING"
@@ -18,12 +18,12 @@
  TextConstant:" LOCKERS..."
  CarriageControl:NL
 130 FOR I = 1 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
 140 FOR J = I TO N STEP I
- control: VariableToken:J
+ control: VariableName:J
  start:   ["ScalarValue:I"]
  end:     ["ScalarValue:N"]
  step:    ["ScalarValue:I"]
@@ -36,17 +36,17 @@
  BinaryOperator:-
  AssignmentOperator:=
 160 NEXT J
- VariableToken:J
+ VariableName:J
 180 NEXT I
- VariableToken:I
+ VariableName:I
 200 REM PRINT LOCKER STATES
- RemarkToken:PRINT LOCKER STATES
+ Remark:PRINT LOCKER STATES
 310 PRINT "OPEN LOCKERS:";
  ITEMS
  TextConstant:"OPEN LOCKERS:"
  CarriageControl:;
 320 FOR I = 1 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -60,7 +60,7 @@
  ScalarValue:I
  CarriageControl:;
 350 NEXT I
- VariableToken:I
+ VariableName:I
 360 PRINT
  ITEMS
  CarriageControl:NL

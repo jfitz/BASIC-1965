@@ -1,9 +1,9 @@
 10 REM THIS PROGRAM COMPUTES THE COMPONENTS
- RemarkToken:THIS PROGRAM COMPUTES THE COMPONENTS
+ Remark:THIS PROGRAM COMPUTES THE COMPONENTS
 20 REM REQUIRED FOR A PI OR T TYPE
- RemarkToken:REQUIRED FOR A PI OR T TYPE
+ Remark:REQUIRED FOR A PI OR T TYPE
 30 REM RESISTIVE ATTENUATOR
- RemarkToken:RESISTIVE ATTENUATOR
+ Remark:RESISTIVE ATTENUATOR
 40 PRINT "INPUT RESISTANCE R(IN) = ";
  ITEMS
  TextConstant:"INPUT RESISTANCE R(IN) = "
@@ -62,7 +62,7 @@
  FunctionInt
  AssignmentOperator:=
 140 REM COMPUTE T NETWORK
- RemarkToken:COMPUTE T NETWORK
+ Remark:COMPUTE T NETWORK
 150 LET T3 = 2*(SQR(N*R1*R9))/(N-1)
  ScalarReference:T3
  NumericConstant:2
@@ -107,7 +107,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 180 REM COMPUTE PI NETWORK
- RemarkToken:COMPUTE PI NETWORK
+ Remark:COMPUTE PI NETWORK
 190 LET P3 = 0.5*(N-1)*SQR((R1*R9)/N)
  ScalarReference:P3
  NumericConstant:0.5
@@ -164,7 +164,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 220 REM REPORT
- RemarkToken:REPORT
+ Remark:REPORT
 230 PRINT "R(IN) = ";R1,"R(OUT) = ";R9
  ITEMS
  TextConstant:"R(IN) = "

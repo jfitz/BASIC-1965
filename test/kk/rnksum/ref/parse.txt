@@ -12,7 +12,7 @@
  ScalarReference:M
  ScalarReference:N
 150 FOR I = 1 TO M
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
  step:    ["NumericConstant:1"]
@@ -20,9 +20,9 @@
  ScalarValue:I
  ScalarReference:M
 170 NEXT I
- VariableToken:I
+ VariableName:I
 180 FOR J = 1 TO N
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -30,10 +30,10 @@
  ScalarValue:J
  ScalarReference:Y
 200 NEXT J
- VariableToken:J
+ VariableName:J
 210
 250 FOR K = 1 TO M
- control: VariableToken:K
+ control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
  step:    ["NumericConstant:1"]
@@ -50,9 +50,9 @@
  UnaryOperator:+
  AssignmentOperator:=
 280 NEXT K
- VariableToken:K
+ VariableName:K
 290 FOR K = 1 TO N
- control: VariableToken:K
+ control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -72,15 +72,15 @@
  NumericConstant:0
  AssignmentOperator:=
 320 NEXT K
- VariableToken:K
+ VariableName:K
 330
 360 FOR K = 1 TO M+N-1
- control: VariableToken:K
+ control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
 370    FOR L = K+1 TO M+N
- control: VariableToken:L
+ control: VariableName:L
  start:   ["ScalarValue:K", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
  step:    ["NumericConstant:1"]
@@ -123,9 +123,9 @@
  ScalarValue:T
  AssignmentOperator:=
 450    NEXT L
- VariableToken:L
+ VariableName:L
 460 NEXT K
- VariableToken:K
+ VariableName:K
 470
 500 LET J = 1
  ScalarReference:J
@@ -176,7 +176,7 @@
 590 GO TO 540
  LineNumber:540
 600 FOR L = B TO J-1
- control: VariableToken:L
+ control: VariableName:L
  start:   ["ScalarValue:B"]
  end:     ["ScalarValue:J", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -188,7 +188,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 620 NEXT L
- VariableToken:L
+ VariableName:L
 630 IF J <= M+N THEN 510
  ScalarValue:J
  ScalarValue:M
@@ -207,7 +207,7 @@
  NumericConstant:0
  AssignmentOperator:=
 760 FOR K = 1 TO M+N
- control: VariableToken:K
+ control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
  step:    ["NumericConstant:1"]
@@ -223,7 +223,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 790 NEXT K
- VariableToken:K
+ VariableName:K
 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
  ITEMS
  TextConstant:"RANK SUM FOR X IS"

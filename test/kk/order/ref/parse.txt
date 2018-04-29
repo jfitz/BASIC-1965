@@ -4,7 +4,7 @@
 10 READ N
  ScalarReference:N
 20 FOR I = 1 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -12,15 +12,15 @@
  ScalarValue:I
  ScalarReference:S
 40 NEXT I
- VariableToken:I
+ VariableName:I
 50
 100 FOR I = 1 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
 200    FOR J = 1 TO N-1
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -53,11 +53,11 @@
  ScalarValue:X
  AssignmentOperator:=
 300    NEXT J
- VariableToken:J
+ VariableName:J
 310 NEXT I
- VariableToken:I
+ VariableName:I
 400 FOR I = 1 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -67,7 +67,7 @@
  ScalarValue:S
  CarriageControl:;
 420 NEXT I
- VariableToken:I
+ VariableName:I
 900 DATA 20
  NumericConstant:20
 910 DATA 5,2,7,3,8,1,9,11,3,15,20,4,0,10,2,16,2,8,9,1

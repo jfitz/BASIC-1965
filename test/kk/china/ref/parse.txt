@@ -3,7 +3,7 @@
  ScalarReference:B
  ScalarReference:P
 20 FOR I = 2 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -11,7 +11,7 @@
  ScalarReference:A
  ScalarReference:M
 40       FOR K = 0 TO M-1
- control: VariableToken:K
+ control: VariableName:K
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:M", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -35,7 +35,7 @@
  ScalarValue:A
  BinaryOperator:=
 70    NEXT K
- VariableToken:K
+ VariableName:K
 80    PRINT "ERROR"
  ITEMS
  TextConstant:"ERROR"
@@ -53,7 +53,7 @@
  ScalarValue:X
  AssignmentOperator:=
 120 NEXT I
- VariableToken:I
+ VariableName:I
 128 TRACE TRUE
  BooleanConstant:true
 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P

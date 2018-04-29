@@ -1,5 +1,5 @@
 10 FOR I = 1 TO 30
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:30"]
  step:    ["NumericConstant:1"]
@@ -9,6 +9,6 @@
  FunctionRnd
  CarriageControl:,
 30 NEXT I
- VariableToken:I
+ VariableName:I
 99 END
  

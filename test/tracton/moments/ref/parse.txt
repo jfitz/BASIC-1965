@@ -1,7 +1,7 @@
 10 REM THIS PROGRAM COMPUTES THE VALUES OF THE
- RemarkToken:THIS PROGRAM COMPUTES THE VALUES OF THE
+ Remark:THIS PROGRAM COMPUTES THE VALUES OF THE
 20 REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
- RemarkToken:FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
+ Remark:FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
 30 LET A = 0
  ScalarReference:A
  NumericConstant:0
@@ -25,7 +25,7 @@
 80 INPUT N
  ScalarReference:N
 90 FOR I = 1 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -66,7 +66,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 160 NEXT I
- VariableToken:I
+ VariableName:I
 170 LET J = A/N
  ScalarReference:J
  ScalarValue:A

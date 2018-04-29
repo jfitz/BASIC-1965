@@ -1,9 +1,9 @@
 10 REM THIS PROGRAM COMPUTES PERMUTATIONS
- RemarkToken:THIS PROGRAM COMPUTES PERMUTATIONS
+ Remark:THIS PROGRAM COMPUTES PERMUTATIONS
 20 REM AND COMBINATIONS, WHERE N = NUMBER OF
- RemarkToken:AND COMBINATIONS, WHERE N = NUMBER OF
+ Remark:AND COMBINATIONS, WHERE N = NUMBER OF
 30 REM ITEMS AND R = SIZE OF GROUP SELECTED
- RemarkToken:ITEMS AND R = SIZE OF GROUP SELECTED
+ Remark:ITEMS AND R = SIZE OF GROUP SELECTED
 40 PRINT "ENTER N,R";
  ITEMS
  TextConstant:"ENTER N,R"
@@ -118,7 +118,7 @@
  NumericConstant:1
  AssignmentOperator:=
 340 FOR I = 2 TO T
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:T"]
  step:    ["NumericConstant:1"]
@@ -129,7 +129,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 360 NEXT I
- VariableToken:I
+ VariableName:I
 370 LET T = J
  ScalarReference:T
  ScalarValue:J

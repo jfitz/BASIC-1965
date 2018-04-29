@@ -31,7 +31,7 @@
  CarriageControl:NL
 60
 100 REM  INITIALIZE.
- RemarkToken: INITIALIZE.
+ Remark: INITIALIZE.
 110 MAT READ P
  MatrixReference:P
 111 DATA 5,4,1,6,2,3, 6,4,2,1,5,3, 6,4,3,1,2,5
@@ -110,7 +110,7 @@
  NumericConstant:1
  NumericConstant:0
 190 FOR V = 0 TO 4
- control: VariableToken:V
+ control: VariableName:V
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:4"]
  step:    ["NumericConstant:1"]
@@ -119,7 +119,7 @@
  ScalarValue:N9
  ScalarReference:S
 210 NEXT V
- VariableToken:V
+ VariableName:V
 220 DATA 1,0,-3,-5,-7
  NumericConstant:1
  NumericConstant:0
@@ -135,7 +135,7 @@
  AssignmentOperator:=
 250
 450 FOR N = N9 TO 1 STEP -1
- control: VariableToken:N
+ control: VariableName:N
  start:   ["ScalarValue:N9"]
  end:     ["NumericConstant:1"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
@@ -144,13 +144,13 @@
  ScalarValue:N9
  BinaryOperator:=
 500 REM  TEST CHORDS.
- RemarkToken: TEST CHORDS.
+ Remark: TEST CHORDS.
 505 LET I1 = 1
  ScalarReference:I1
  NumericConstant:1
  AssignmentOperator:=
 510 FOR I = I1 TO 6
- control: VariableToken:I
+ control: VariableName:I
  start:   ["ScalarValue:I1"]
  end:     ["NumericConstant:6"]
  step:    ["NumericConstant:1"]
@@ -179,7 +179,7 @@
  AssignmentOperator:=
 542
 545 REM  FIX ROOT
- RemarkToken: FIX ROOT
+ Remark: FIX ROOT
 550 LET D(1) = C2-8
  NumericConstant:1
  ScalarReference:D
@@ -203,7 +203,7 @@
  ScalarValue:S
  AssignmentOperator:=
 570 FOR J = 1 TO 2
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
  step:    ["NumericConstant:1"]
@@ -225,7 +225,7 @@
 600 GOTO 660
  LineNumber:660
 610 NEXT J
- VariableToken:J
+ VariableName:J
 620 IF S > S(1,N+1) THEN 650
  ScalarValue:S
  NumericConstant:1
@@ -254,13 +254,13 @@
  AssignmentOperator:=
 670
 700 REM  FIND OTHER NOTES
- RemarkToken: FIND OTHER NOTES
+ Remark: FIND OTHER NOTES
 705 LET J = 1
  ScalarReference:J
  NumericConstant:1
  AssignmentOperator:=
 710 FOR K = 0 TO 4 STEP 2
- control: VariableToken:K
+ control: VariableName:K
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:4"]
  step:    ["NumericConstant:2"]
@@ -287,14 +287,14 @@
  BinaryOperator:+
  AssignmentOperator:=
 750 NEXT K
- VariableToken:K
+ VariableName:K
 760 IF J > 3 THEN 4000
  ScalarValue:J
  NumericConstant:3
  BinaryOperator:>
 770
 800 FOR L = 0 TO 6
- control: VariableToken:L
+ control: VariableName:L
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
  step:    ["NumericConstant:1"]
@@ -339,17 +339,17 @@
  BinaryOperator:+
  AssignmentOperator:=
 880 NEXT L
- VariableToken:L
+ VariableName:L
 899
 1000 REM  TEST CASES IN W-TABLE
- RemarkToken: TEST CASES IN W-TABLE
+ Remark: TEST CASES IN W-TABLE
 1010 FOR L = 0 TO 6
- control: VariableToken:L
+ control: VariableName:L
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
  step:    ["NumericConstant:1"]
 1020 FOR V = 2 TO 3
- control: VariableToken:V
+ control: VariableName:V
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:3"]
  step:    ["NumericConstant:1"]
@@ -409,21 +409,21 @@
  ScalarValue:S
  BinaryOperator:<=
 1090 NEXT V
- VariableToken:V
+ VariableName:V
 1095
 1100 REM  CHECK FOR BAD TRANSITIONS
- RemarkToken: CHECK FOR BAD TRANSITIONS
+ Remark: CHECK FOR BAD TRANSITIONS
 1102 IF C1 = C2 THEN 1200
  ScalarValue:C1
  ScalarValue:C2
  BinaryOperator:=
 1105 FOR V1 = 1 TO 4
- control: VariableToken:V1
+ control: VariableName:V1
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
  step:    ["NumericConstant:1"]
 1110 FOR V2 = V1+1 TO 4
- control: VariableToken:V2
+ control: VariableName:V2
  start:   ["ScalarValue:V1", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["NumericConstant:4"]
  step:    ["NumericConstant:1"]
@@ -482,14 +482,14 @@
  ScalarValue:S2
  BinaryOperator:=
 1160 NEXT V2
- VariableToken:V2
+ VariableName:V2
 1165 NEXT V1
- VariableToken:V1
+ VariableName:V1
 1170
 1200 REM COMPUTE DISTANCE
- RemarkToken:COMPUTE DISTANCE
+ Remark:COMPUTE DISTANCE
 1210 FOR V = 2 TO 3
- control: VariableToken:V
+ control: VariableName:V
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:3"]
  step:    ["NumericConstant:1"]
@@ -508,7 +508,7 @@
  FunctionAbs
  AssignmentOperator:=
 1230 NEXT V
- VariableToken:V
+ VariableName:V
 1240 LET W(0,L) = D(2)+D(3)
  NumericConstant:0
  ScalarValue:L
@@ -528,16 +528,16 @@
  NumericConstant:999
  AssignmentOperator:=
 1261 NEXT L
- VariableToken:L
+ VariableName:L
 1262
 1500 REM  SELECT CHORD
- RemarkToken: SELECT CHORD
+ Remark: SELECT CHORD
 1510 LET M = 999
  ScalarReference:M
  NumericConstant:999
  AssignmentOperator:=
 1520 FOR L = 0 TO 6
- control: VariableToken:L
+ control: VariableName:L
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
  step:    ["NumericConstant:1"]
@@ -560,7 +560,7 @@
  ScalarValue:L
  AssignmentOperator:=
 1590 NEXT L
- VariableToken:L
+ VariableName:L
 1600 IF M = 999 THEN 4000
  ScalarValue:M
  NumericConstant:999
@@ -585,11 +585,11 @@
  LineNumber:6000
 1640
 4000 REM  REJECT CHORD
- RemarkToken: REJECT CHORD
+ Remark: REJECT CHORD
 4001 NEXT I
- VariableToken:I
+ VariableName:I
 5000 REM  BACK UP
- RemarkToken: BACK UP
+ Remark: BACK UP
 5005 LET N = N+1
  ScalarReference:N
  ScalarValue:N
@@ -621,7 +621,7 @@
  ScalarValue:S
  AssignmentOperator:=
 5120 FOR I = 1 TO 6
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
  step:    ["NumericConstant:1"]
@@ -632,7 +632,7 @@
  ScalarValue:P
  BinaryOperator:=
 5140 NEXT I
- VariableToken:I
+ VariableName:I
 5200 LET I1 = I+1
  ScalarReference:I1
  ScalarValue:I
@@ -643,7 +643,7 @@
  LineNumber:510
 5220
 6000 REM  PRINT RESULTS
- RemarkToken: PRINT RESULTS
+ Remark: PRINT RESULTS
 6001 PRINT N, S(0,N), S(1,N);S(2,N);S(3,N);S(4,N)
  ITEMS
  ScalarValue:N
@@ -673,7 +673,7 @@
  ScalarValue:C2
  AssignmentOperator:=
 6003 NEXT N
- VariableToken:N
+ VariableName:N
 6004
 9999 END
  

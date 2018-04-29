@@ -1,12 +1,12 @@
 100 REM INITIALIZE
- RemarkToken:INITIALIZE
+ Remark:INITIALIZE
 110 FOR B = 1 TO 9
- control: VariableToken:B
+ control: VariableName:B
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
  step:    ["NumericConstant:1"]
 120    FOR R = 0 TO 3
- control: VariableToken:R
+ control: VariableName:R
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
  step:    ["NumericConstant:1"]
@@ -15,9 +15,9 @@
  ScalarValue:R
  ScalarReference:P
 140    NEXT R
- VariableToken:R
+ VariableName:R
 150 NEXT B
- VariableToken:B
+ VariableName:B
 160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
  NumericConstant:0.644
  NumericConstant:0.24
@@ -59,12 +59,12 @@
  NumericConstant:0.016
 190
 200 FOR R = 1 TO 4
- control: VariableToken:R
+ control: VariableName:R
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
  step:    ["NumericConstant:1"]
 210    FOR C = 0 TO 7
- control: VariableToken:C
+ control: VariableName:C
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
  step:    ["NumericConstant:1"]
@@ -73,9 +73,9 @@
  ScalarValue:C
  ScalarReference:Q
 230    NEXT C
- VariableToken:C
+ VariableName:C
 240 NEXT R
- VariableToken:R
+ VariableName:R
 250 DATA 1, 5, 11, 15, 11, 15, 21, 25
  NumericConstant:1
  NumericConstant:5
@@ -135,7 +135,7 @@
  AssignmentOperator:=
 350
 360 FOR C = 0 TO 7
- control: VariableToken:C
+ control: VariableName:C
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
  step:    ["NumericConstant:1"]
@@ -143,7 +143,7 @@
  ScalarValue:C
  ScalarReference:L
 380 NEXT C
- VariableToken:C
+ VariableName:C
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
  NumericConstant:0
  NumericConstant:1
@@ -155,7 +155,7 @@
  NumericConstant:3
 400
 410 REM NEW INNING
- RemarkToken:NEW INNING
+ Remark:NEW INNING
 430 PRINT "INNING" I
  ITEMS
  TextConstant:"INNING"
@@ -176,7 +176,7 @@
  AssignmentOperator:=
 480
 490 REM NEW BATTER
- RemarkToken:NEW BATTER
+ Remark:NEW BATTER
 500 IF B < 9 THEN 520
  ScalarValue:B
  NumericConstant:9
@@ -193,14 +193,14 @@
  AssignmentOperator:=
 530
 540 REM DETERMINE OUTCOME
- RemarkToken:DETERMINE OUTCOME
+ Remark:DETERMINE OUTCOME
 550 LET X = RND(0)
  ScalarReference:X
  NumericConstant:0
  FunctionRnd
  AssignmentOperator:=
 560 FOR R = 0 TO 3
- control: VariableToken:R
+ control: VariableName:R
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
  step:    ["NumericConstant:1"]
@@ -217,14 +217,14 @@
  NumericConstant:0
  BinaryOperator:<
 590 NEXT R
- VariableToken:R
+ VariableName:R
 600 LET R = 4
  ScalarReference:R
  NumericConstant:4
  AssignmentOperator:=
 610
 620 REM PRINT OUTCOME
- RemarkToken:PRINT OUTCOME
+ Remark:PRINT OUTCOME
 630 IF R > 0 THEN 660
  ScalarValue:R
  NumericConstant:0
@@ -271,7 +271,7 @@
  CarriageControl:;
 760 
 770 REM DO BOOK-KEEPING
- RemarkToken:DO BOOK-KEEPING
+ Remark:DO BOOK-KEEPING
 780 IF R = 0 THEN 860
  ScalarValue:R
  NumericConstant:0
@@ -329,7 +329,7 @@
  LineNumber:490
 885
 890 REM END OF AN INNING
- RemarkToken:END OF AN INNING
+ Remark:END OF AN INNING
 895 LET L7 = L7 + L(C)
  ScalarReference:L7
  ScalarValue:L7
@@ -367,7 +367,7 @@
  BinaryOperator:<
 950 
 955 REM PRINT RESULTS
- RemarkToken:PRINT RESULTS
+ Remark:PRINT RESULTS
 960 PRINT
  ITEMS
  CarriageControl:NL

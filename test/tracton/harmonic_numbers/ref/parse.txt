@@ -1,5 +1,5 @@
 10 REM THIS PROGRAM COMPUTES HARMONIC NUMBERS
- RemarkToken:THIS PROGRAM COMPUTES HARMONIC NUMBERS
+ Remark:THIS PROGRAM COMPUTES HARMONIC NUMBERS
 20 PRINT "MAXIMUM TERM NUMBER"
  ITEMS
  TextConstant:"MAXIMUM TERM NUMBER"
@@ -21,7 +21,7 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 70 FOR I = 0 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -50,7 +50,7 @@
  ScalarValue:D
  CarriageControl:NL
 120 NEXT I
- VariableToken:I
+ VariableName:I
 130 PRINT
  ITEMS
  CarriageControl:NL

@@ -2,7 +2,7 @@
  NumericConstant:6
  CompoundDeclaration:A
 20 FOR I = 1 TO 6
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
  step:    ["NumericConstant:1"]
@@ -14,7 +14,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 60 NEXT I
- VariableToken:I
+ VariableName:I
 70 MAT WRITE A;
  MatrixValue:A
  CarriageControl:;

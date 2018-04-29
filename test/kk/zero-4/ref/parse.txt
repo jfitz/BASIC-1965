@@ -11,13 +11,13 @@
  NumericConstant:1
  BinaryOperator:-
 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
- RemarkToken:DEF FNF(X) = -3*X^5 + X^3 + 1
+ Remark:DEF FNF(X) = -3*X^5 + X^3 + 1
 12 REM DEF FNF(X) = X^2 + 1
- RemarkToken:DEF FNF(X) = X^2 + 1
+ Remark:DEF FNF(X) = X^2 + 1
 13 REM DEF FNF(X) = X^2 - 0.001
- RemarkToken:DEF FNF(X) = X^2 - 0.001
+ Remark:DEF FNF(X) = X^2 - 0.001
 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
- RemarkToken:DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
+ Remark:DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
 20 READ A,B
  ScalarReference:A
  ScalarReference:B
@@ -124,7 +124,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 310 FOR I = 1 TO 1000
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
  step:    ["NumericConstant:1"]
@@ -145,7 +145,7 @@
  NumericConstant:0
  BinaryOperator:<
 340 NEXT I
- VariableToken:I
+ VariableName:I
 350 PRINT "NO CHANGE OF SIGN FOUND"
  ITEMS
  TextConstant:"NO CHANGE OF SIGN FOUND"
@@ -175,7 +175,7 @@
 440 GOTO 100
  LineNumber:100
 900 REM DATA 0,1
- RemarkToken:DATA 0,1
+ Remark:DATA 0,1
 910 DATA 0,1
  NumericConstant:0
  NumericConstant:1

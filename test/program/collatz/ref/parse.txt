@@ -1,5 +1,5 @@
 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
- RemarkToken:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
+ Remark:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
 20 READ A, A0
  ScalarReference:A
  ScalarReference:A0
@@ -23,7 +23,7 @@
  ITEMS
  CarriageControl:NL
 100 FOR N = A TO B
- control: VariableToken:N
+ control: VariableName:N
  start:   ["ScalarValue:A"]
  end:     ["ScalarValue:B"]
  step:    ["NumericConstant:1"]
@@ -34,11 +34,11 @@
 120 GOSUB 400
  LineNumber:400
 130 NEXT N
- VariableToken:N
+ VariableName:N
 140 STOP
  
 400 REM PRINT INFO FOR ONE NUMBER
- RemarkToken:PRINT INFO FOR ONE NUMBER
+ Remark:PRINT INFO FOR ONE NUMBER
 410 PRINT N0;":";
  ITEMS
  ScalarValue:N0

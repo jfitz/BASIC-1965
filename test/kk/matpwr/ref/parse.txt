@@ -5,7 +5,7 @@
  ScalarValue:N
  MatrixReference:M
 30 FOR I = 1 TO 4
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
  step:    ["NumericConstant:1"]
@@ -26,7 +26,7 @@
 70 MAT M = A
  Unimplemented
 80 NEXT I
- VariableToken:I
+ VariableName:I
 90 DATA 3
  NumericConstant:3
 91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5

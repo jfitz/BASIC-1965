@@ -44,12 +44,12 @@
  ScalarValue:Y
  CarriageControl:NL
 220 FOR I = 1 TO P
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:P"]
  step:    ["NumericConstant:1"]
 230 FOR T = 0 TO T9/P STEP T8
- control: VariableToken:T
+ control: VariableName:T
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:T9", "ScalarValue:P", "BinaryOperator:/"]
  step:    ["ScalarValue:T8"]
@@ -92,7 +92,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 260 NEXT T
- VariableToken:T
+ VariableName:T
 270 PRINT T1, X, Y
  ITEMS
  ScalarValue:T1
@@ -102,7 +102,7 @@
  ScalarValue:Y
  CarriageControl:NL
 280 NEXT I
- VariableToken:I
+ VariableName:I
 290
 900 DATA 3,.5
  NumericConstant:3

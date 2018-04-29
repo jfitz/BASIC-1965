@@ -5,7 +5,7 @@
  NumericConstant:350
  CompoundDeclaration:P
 20 FOR I = 1 TO 1000
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
  step:    ["NumericConstant:1"]
@@ -15,7 +15,7 @@
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
- VariableToken:I
+ VariableName:I
 25 LET P(0) = 2
  NumericConstant:0
  ScalarReference:P
@@ -26,7 +26,7 @@
  NumericConstant:0
  AssignmentOperator:=
 30 FOR P = 3 TO 2000 STEP 2
- control: VariableToken:P
+ control: VariableName:P
  start:   ["NumericConstant:3"]
  end:     ["NumericConstant:2000"]
  step:    ["NumericConstant:2"]
@@ -60,7 +60,7 @@
  FunctionSqr
  BinaryOperator:>
 60    FOR I = P TO 2000 STEP 2*P
- control: VariableToken:I
+ control: VariableName:I
  start:   ["ScalarValue:P"]
  end:     ["NumericConstant:2000"]
  step:    ["NumericConstant:2", "ScalarValue:P", "BinaryOperator:*"]
@@ -79,11 +79,11 @@
  UnaryOperator:-
  AssignmentOperator:=
 80    NEXT I
- VariableToken:I
+ VariableName:I
 90 NEXT P
- VariableToken:P
+ VariableName:P
 100 FOR I = 0 TO K
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:K"]
  step:    ["NumericConstant:1"]
@@ -93,6 +93,6 @@
  ScalarValue:P
  CarriageControl:;
 120 NEXT I
- VariableToken:I
+ VariableName:I
 999 END
  

@@ -1,7 +1,7 @@
 10 REM THIS PROGRAM COMPUTES THE FACTORIALS OF X
- RemarkToken:THIS PROGRAM COMPUTES THE FACTORIALS OF X
+ Remark:THIS PROGRAM COMPUTES THE FACTORIALS OF X
 20 REM BY ITERATIVE MULTIPLICATIONS
- RemarkToken:BY ITERATIVE MULTIPLICATIONS
+ Remark:BY ITERATIVE MULTIPLICATIONS
 30 PRINT "X = ";
  ITEMS
  TextConstant:"X = "
@@ -13,7 +13,7 @@
  NumericConstant:1
  AssignmentOperator:=
 60 FOR I = 1 TO X
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X"]
  step:    ["NumericConstant:1"]
@@ -24,7 +24,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 80 NEXT I
- VariableToken:I
+ VariableName:I
 90 PRINT "X = ";X,"X! = ";Z
  ITEMS
  TextConstant:"X = "

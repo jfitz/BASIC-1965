@@ -1,5 +1,5 @@
 10 REM THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
- RemarkToken:THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
+ Remark:THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
 20 PRINT "FIRST TERM = ";
  ITEMS
  TextConstant:"FIRST TERM = "
@@ -45,7 +45,7 @@
  NumericConstant:0
  AssignmentOperator:=
 150 FOR I = 0 TO N - 1
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -82,7 +82,7 @@
  ScalarValue:L
  CarriageControl:NL
 220 NEXT I
- VariableToken:I
+ VariableName:I
 230 PRINT "SUM = ";J
  ITEMS
  TextConstant:"SUM = "

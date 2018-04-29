@@ -12,17 +12,17 @@
  ITEMS
  CarriageControl:NL
 20 FOR P = 1 TO 0 STEP -1
- control: VariableToken:P
+ control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 30     FOR Q = 1 TO 0 STEP -1
- control: VariableToken:Q
+ control: VariableName:Q
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 40         FOR R = 1 TO 0 STEP -1
- control: VariableToken:R
+ control: VariableName:R
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
@@ -59,11 +59,11 @@
  ITEMS
  CarriageControl:NL
 130        NEXT R
- VariableToken:R
+ VariableName:R
 140    NEXT Q
- VariableToken:Q
+ VariableName:Q
 150 NEXT P
- VariableToken:P
+ VariableName:P
 160 STOP
  
 170

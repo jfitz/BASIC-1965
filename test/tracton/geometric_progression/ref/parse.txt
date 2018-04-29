@@ -1,7 +1,7 @@
 10 REM THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
- RemarkToken:THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
+ Remark:THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
 20 REM OF A GEOMETRIC PROGRESSION
- RemarkToken:OF A GEOMETRIC PROGRESSION
+ Remark:OF A GEOMETRIC PROGRESSION
 30 PRINT "FIRST TERM = ";
  ITEMS
  TextConstant:"FIRST TERM = "
@@ -50,7 +50,7 @@
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 0 TO N - 1
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
  step:    ["NumericConstant:1"]
@@ -87,7 +87,7 @@
  ScalarValue:L
  CarriageControl:NL
 240 NEXT I
- VariableToken:I
+ VariableName:I
 250 PRINT "SUM = ";J
  ITEMS
  TextConstant:"SUM = "

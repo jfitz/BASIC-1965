@@ -1,5 +1,5 @@
 10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
- RemarkToken:THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+ Remark:THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
 20 PRINT "ENTER 3 X 3 MATRIX"
  ITEMS
  TextConstant:"ENTER 3 X 3 MATRIX"
@@ -15,7 +15,7 @@
  ScalarReference:H
  ScalarReference:I
 40 REM COMPUTE DETERMINANT OF 3X3
- RemarkToken:COMPUTE DETERMINANT OF 3X3
+ Remark:COMPUTE DETERMINANT OF 3X3
 50 LET M = (A*E*I) + (B*F*G) + (C*H*D)
  ScalarReference:M
  ScalarValue:A
@@ -59,7 +59,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 70 REM COMPUTE INVERSE
- RemarkToken:COMPUTE INVERSE
+ Remark:COMPUTE INVERSE
 80 LET O = ((E*I) - (H*F))/N
  ScalarReference:O
  ScalarValue:E

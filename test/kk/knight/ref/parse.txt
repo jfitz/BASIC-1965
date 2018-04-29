@@ -1,12 +1,12 @@
 100 REMARK THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
- RemarkToken:THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
+ Remark:THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
 110 REMARK UNTIL NO FURTHER MOVE IS POSSIBLE. IT THEN PRINTS
- RemarkToken:UNTIL NO FURTHER MOVE IS POSSIBLE. IT THEN PRINTS
+ Remark:UNTIL NO FURTHER MOVE IS POSSIBLE. IT THEN PRINTS
 120 REMARK OUT THE FINAL POSITION AND THE LENGTH OF THE SERIES.
- RemarkToken:OUT THE FINAL POSITION AND THE LENGTH OF THE SERIES.
+ Remark:OUT THE FINAL POSITION AND THE LENGTH OF THE SERIES.
 130 
 140 REMARK WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
- RemarkToken:WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
+ Remark:WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
 150 READ I0, J0
  ScalarReference:I0
  ScalarReference:J0
@@ -24,14 +24,14 @@
  NumericConstant:0
  AssignmentOperator:=
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
- RemarkToken:WE ZERO THE BOARD AND INITIALIZE
+ Remark:WE ZERO THE BOARD AND INITIALIZE
 200 FOR I = 1 TO 8
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
  step:    ["NumericConstant:1"]
 210    FOR J = 1 TO 8
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
  step:    ["NumericConstant:1"]
@@ -42,9 +42,9 @@
  NumericConstant:0
  AssignmentOperator:=
 230    NEXT J
- VariableToken:J
+ VariableName:J
 240 NEXT I
- VariableToken:I
+ VariableName:I
 250 LET I = I0
  ScalarReference:I
  ScalarValue:I0
@@ -66,7 +66,7 @@
  AssignmentOperator:=
 290
 300 REMARK WE NOW START THE SERIES OF MOVES
- RemarkToken:WE NOW START THE SERIES OF MOVES
+ Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
  ScalarReference:C1
  NumericConstant:9
@@ -76,7 +76,7 @@
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I1 = I - 2 TO I + 2
- control: VariableToken:I1
+ control: VariableName:I1
  start:   ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:-"]
  end:     ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:+"]
  step:    ["NumericConstant:1"]
@@ -101,7 +101,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
- control: VariableToken:J1
+ control: VariableName:J1
  start:   ["ScalarValue:J", "ScalarValue:D1", "BinaryOperator:-"]
  end:     ["ScalarValue:J", "ScalarValue:D1", "BinaryOperator:+"]
  step:    ["NumericConstant:2", "ScalarValue:D1", "BinaryOperator:*"]
@@ -152,15 +152,15 @@
 460       GOTO 310
  LineNumber:310
 470    NEXT J1
- VariableToken:J1
+ VariableName:J1
 480 NEXT I1
- VariableToken:I1
+ VariableName:I1
 490 IF C = 0 THEN 600
  ScalarValue:C
  NumericConstant:0
  BinaryOperator:=
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
- RemarkToken:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
+ Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
 510 LET C1 = INT(RND(Z)*C + 1)
  ScalarReference:C1
  ScalarValue:Z
@@ -174,7 +174,7 @@
 520 GOTO 320
  LineNumber:320
 600 REMARK WE HAVE GONE AS FAR AS WE CAN
- RemarkToken:WE HAVE GONE AS FAR AS WE CAN
+ Remark:WE HAVE GONE AS FAR AS WE CAN
 610 PRINT I; J; M
  ITEMS
  ScalarValue:I
@@ -194,10 +194,10 @@
  NumericConstant:40
  BinaryOperator:<
 630 REMARK WE GO FOR ANOTHER TRIAL
- RemarkToken:WE GO FOR ANOTHER TRIAL
+ Remark:WE GO FOR ANOTHER TRIAL
 880
 890 REMARK THE DATA FOR THE STARTING POSITION
- RemarkToken:THE DATA FOR THE STARTING POSITION
+ Remark:THE DATA FOR THE STARTING POSITION
 900 DATA 1, 1
  NumericConstant:1
  NumericConstant:1

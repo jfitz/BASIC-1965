@@ -22,7 +22,7 @@
 160 READ N
  ScalarReference:N
 170 FOR I = 1 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -66,7 +66,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 240 NEXT I
- VariableToken:I
+ VariableName:I
 250
 260 LET X3 = X1/N
  ScalarReference:X3

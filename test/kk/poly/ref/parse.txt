@@ -9,7 +9,7 @@
 20 READ N
  ScalarReference:N
 30 FOR I = 0 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -17,11 +17,11 @@
  ScalarValue:I
  ScalarReference:A
 50 NEXT I
- VariableToken:I
+ VariableName:I
 60 READ X9
  ScalarReference:X9
 70 FOR J = 1 TO X9
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
  step:    ["NumericConstant:1"]
@@ -29,10 +29,10 @@
  ScalarValue:J
  ScalarReference:X
 90 NEXT J
- VariableToken:J
+ VariableName:J
 95
 100 REM  MAIN ROUTINE.
- RemarkToken: MAIN ROUTINE.
+ Remark: MAIN ROUTINE.
 110 LET K = 0
  ScalarReference:K
  NumericConstant:0
@@ -57,7 +57,7 @@
  LineNumber:500
 190
 200 REM  PRINT ANSWERS.
- RemarkToken: PRINT ANSWERS.
+ Remark: PRINT ANSWERS.
 210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
  ITEMS
  TextConstant:" X"
@@ -72,7 +72,7 @@
  ITEMS
  CarriageControl:NL
 230 FOR J = 1 TO X9
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
  step:    ["NumericConstant:1"]
@@ -94,14 +94,14 @@
  ScalarValue:T
  CarriageControl:NL
 250 NEXT J
- VariableToken:J
+ VariableName:J
 260 STOP
  
 270
 500 REM  RUN THROUGH X-VALUES
- RemarkToken: RUN THROUGH X-VALUES
+ Remark: RUN THROUGH X-VALUES
 510 FOR J = 1 TO X9
- control: VariableToken:J
+ control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
  step:    ["NumericConstant:1"]
@@ -119,18 +119,18 @@
  ScalarValue:Y
  AssignmentOperator:=
 550 NEXT J
- VariableToken:J
+ VariableName:J
 560 RETURN
  
 570
 1000 REM  EVALUATE.
- RemarkToken: EVALUATE.
+ Remark: EVALUATE.
 1010 LET Y = 0
  ScalarReference:Y
  NumericConstant:0
  AssignmentOperator:=
 1020 FOR I = 0 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -144,14 +144,14 @@
  BinaryOperator:+
  AssignmentOperator:=
 1040 NEXT I
- VariableToken:I
+ VariableName:I
 1050 RETURN
  
 1060
 2000 REM  DIFFERENTIATE.
- RemarkToken: DIFFERENTIATE.
+ Remark: DIFFERENTIATE.
 2010 FOR I = 0 TO N
- control: VariableToken:I
+ control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
  step:    ["NumericConstant:1"]
@@ -166,7 +166,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 2030 NEXT I
- VariableToken:I
+ VariableName:I
 2040 LET N = N-1
  ScalarReference:N
  ScalarValue:N
