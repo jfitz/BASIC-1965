@@ -393,6 +393,8 @@ if !run_filename.nil?
     interpreter =
       Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
                       lock_fornext)
+
+    interpreter.set_default_args('RND', NumericConstant.new(1))
     interpreter.run(program, trace_flag, show_timing, show_profile)
   end
 elsif !list_filename.nil?
@@ -426,6 +428,8 @@ else
   interpreter =
     Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
                     lock_fornext)
+
+  interpreter.set_default_args('RND', NumericConstant.new(1))
   shell = Shell.new(console_io, interpreter, program)
   shell.run
 end

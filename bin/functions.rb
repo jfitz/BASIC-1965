@@ -14,6 +14,15 @@ class Function < AbstractElement
 
   private
 
+  def default_args(interpreter)
+    arg = interpreter.default_args(@name)
+
+    raise(BASICRuntimeError, "#{@name} requires arguments") if
+      arg.nil?
+
+    arg
+  end
+
   def counts_to_text(counts)
     words = %w(zero one two)
     texts = counts.map { |v| words[v] }
@@ -343,15 +352,18 @@ class FunctionRnd < AbstractScalarFunction
   def evaluate(interpreter, stack, _)
     if previous_is_array(stack)
       args = stack.pop
+
       if match_args_to_signature(args, @signature_0)
-        interpreter.rand(NumericConstant.new(1))
+        arg = default_args(interpreter)
+        interpreter.rand(arg)
       elsif match_args_to_signature(args, @signature_1)
         interpreter.rand(args[0])
       else
         raise(BASICRuntimeError, 'Wrong arguments for function')
       end
     else
-      interpreter.rand(NumericConstant.new(1))
+      arg = default_args(interpreter)
+      interpreter.rand(arg)
     end
   end
 end

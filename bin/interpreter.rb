@@ -18,6 +18,7 @@ class Interpreter
     @return_stack = []
     @fornexts = {}
     @dimensions = {}
+    @default_args = {}
     @user_functions = {}
     @user_var_values = []
     @program_lines = {}
@@ -376,6 +377,15 @@ class Interpreter
 
   def clear_variables
     @variables = {}
+  end
+
+  # get default arguments
+  def default_args(name)
+    @default_args[name]
+  end
+
+  def set_default_args(name, args)
+    @default_args[name] = args
   end
 
   # returns an Array of values
