@@ -1416,27 +1416,30 @@ Functions may be used in numeric expressions.
 
 |==========
 |Function |Result
+|ABS(x) |Computes the absolute value of x.
+|ATN(x) |Computes the arctangent of x, providing the answer in radians.
+|CON(x) |Creates an array containing all ones, with x columns
+|CON(x,y) |Creates a matrix containing all ones, with x rows and y columns.
+|CON or CON() |Creates an array or matrix containins all ones, with dimensions based on the assignment target.
+|COS(x) |Computes the cosine of x, where x is in radians.
+|DET(m)	|Computes the determinant of the matrix. The matrix must be square.
+|EXP(x) |Computes e to the x power.
+|IDN(x) |Creates an identity matrix (all zeros except for ones on the diagonal).
+|IDN(x,x) |Same as IDN(x). The two values must be identical, as identity matrices are always square.
+|IDN or IDN() |Creates an identity matrix with dimensions based on the assignment target.
 |INT(x) |Return the integer part of a numeric value.
+|LOG(x) |Computes the natural log of x. A value of zero or a negative value will cause an error.
 |RND(x) |Return a random number from zero to x. The value is a floating-point value; RND(1) can return any value from zero to 1. A value of zero or less than zero is considered to be 1.
 |RND() |Equivalent to RND(1).
 |RND |Special form of RND, equivalent to RND(1).
-|EXP(x) |Computes e to the x power.
-|LOG(x) |Computes the natural log of x. A value of zero or a negative value will cause an error.
-|ABS(x) |Computes the absolute value of x.
-|SQR(x) |Computes the square root of x. A negative value will cause an error.
-|SIN(x) |Computes the sine of x, where x is in radians.
-|COS(x) |Computes the cosine of x, where x is in radians.
-|TAN(x) |Computes the tangent of x, where x is in radians.
-|ATN(x) |Computes the arctangent of x, providing the answer in radians.
 |SGN(x) |Returns 1, 0, or -1, for positive, zero, or negative values of x.
+|SIN(x) |Computes the sine of x, where x is in radians.
+|SQR(x) |Computes the square root of x. A negative value will cause an error.
+|TAN(x) |Computes the tangent of x, where x is in radians.
 |TRN(m) |Transposes values in a matrix, exchanging rows and columns.
 |ZER(x) |Creates an array containing all zeros, with x columns
 |ZER(x,y) |Creates a matrix containing all zeros, with x rows and y columns.
-|CON(x) |Creates an array containing all ones, with x columns
-|CON(x,y) |Creates a matrix containing all ones, with x rows and y columns.
-|IDN(x) |Creates an identity matrix (all zeros except for ones on the diagonal).
-|IDN(x,x) |Same as IDN(x). The two values must be identical, as identity matrices are always square.
-|DET(m)	|Computes the determinant of the matrix. The matrix must be square.
+|ZER or ZER() |Creates an array or matrix containins all zeros, with dimensions based on the assignment target.
 |===========
 
 Matrix function special forms
@@ -1449,13 +1452,7 @@ You can use the normal form in simple assignments without specifying dimensions 
 	240 MAT A = CON(3,4)
 	250 MAT B = IDN(4,4)
 
-When they are used as part of an expression, these functions must have parameters:
-
-	130 LET S = 4
-	140 MAT A = IDN(S) * 4
-	150 MAT B = ZER(S+1,S) + COS(45*3.14159/2)
-
-The special form allows for parameters to be omitted. The special form is when they are the sole element of the right-hand side of an assignment:
+The special form allows for parameters to be omitted.
 
 	200 REM DIM STATEMENTS FOR A AND B ARE NECESSARY
 	230 DIM A(3,4), B(4,4)
