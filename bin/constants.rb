@@ -18,6 +18,7 @@ class AbstractElement
     @array = false
     @matrix = false
     @list = false
+    @carriage = false
   end
 
   def dump
@@ -94,6 +95,10 @@ class AbstractElement
 
   def list?
     @list
+  end
+
+  def carriage_control?
+    @carriage
   end
 
   protected
@@ -640,6 +645,8 @@ class CarriageControl
       CarriageControl.init?(token)
     text = token.to_s
     @operator = text
+    @carriage = true
+    @file_handle = false
   end
 
   def printable?
@@ -661,6 +668,14 @@ class CarriageControl
 
   def dump
     [self.class.to_s + ':' + @operator]
+  end
+
+  def carriage_control?
+    @carriage
+  end
+
+  def filehandle?
+    @file_handle
   end
 
   def variables

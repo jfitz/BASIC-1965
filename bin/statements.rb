@@ -395,13 +395,13 @@ module FileFunctions
     print_items = print_items.clone
     file_tokens = nil
     unless print_items.empty? ||
-           print_items[0].class.to_s == 'CarriageControl'
+           print_items[0].carriage_control?
       candidate_file_tokens = print_items[0]
 
       if candidate_file_tokens.filehandle?
         file_tokens = print_items.shift
         print_items.shift if
-          print_items[0].class.to_s == 'CarriageControl'
+          print_items[0].carriage_control?
       end
     end
     [file_tokens, print_items]

@@ -870,6 +870,7 @@ class AbstractExpression
     @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
     @text_constant = tokens.size == 1 && tokens[0].text_constant?
     @target = false
+    @carriage = false
 
     elements = tokens_to_elements(tokens)
     parser = Parser.new(default_type)
@@ -897,6 +898,10 @@ class AbstractExpression
     end
 
     lines
+  end
+
+  def carriage_control?
+    @carriage
   end
 
   def count
