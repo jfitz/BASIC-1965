@@ -583,7 +583,7 @@ class Interpreter
       @lock_fornext && @locked_variables.include?(variable)
 
     # check that value type matches variable type
-    if value.class.to_s != variable.content_type
+    unless variable.compatible?(value)
       raise(BASICRuntimeError,
             "Type mismatch '#{value}' is not #{variable.content_type}")
     end
@@ -642,7 +642,7 @@ class Interpreter
   def add_file_names(file_names)
     file_names.each do |name|
       raise(BASICRuntimeError, 'Invalid file name') unless
-        name.class.to_s == 'TextConstant'
+        name.text_constant?
       raise(BASICRuntimeError, "File '#{name.value}' not found") unless
         File.file?(name.value)
       file_handle = FileHandle.new(@file_handlers.size + 1)

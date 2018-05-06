@@ -524,6 +524,10 @@ class NumericConstant < AbstractValueElement
       digits.include?('.') && !digits.include?('e')
     lead_space + digits
   end
+
+  def compatible?(other)
+    other.numeric_constant?
+  end
 end
 
 # Text constants
@@ -581,7 +585,7 @@ class BooleanConstant < AbstractValueElement
   end
 
   def content_type
-    'boolean'
+    'bool'
   end
 
   def to_s
@@ -706,11 +710,7 @@ class VariableName < AbstractElement
     @variable = true
     @operand = true
     @precedence = 7
-    @content_type = 'NumericConstant'
-  end
-
-  def dump
-    self.class.to_s + ':' + @name.to_s
+    @content_type = 'numeric'
   end
 
   def eql?(other)
@@ -723,6 +723,27 @@ class VariableName < AbstractElement
 
   def hash
     @name.hash
+  end
+
+  def dump
+    self.class.to_s + ':' + @name.to_s
+  end
+
+  def compatible?(value)
+    numerics = %w(numeric)
+    strings = %w(string)
+
+    compatible = false
+
+    if content_type == 'numeric'
+      compatible = numerics.include?(value.content_type)
+    end
+
+    if content_type == 'string'
+      compatible = strings.include?(value.content_type)
+    end
+
+    compatible
   end
 
   def to_s
@@ -757,6 +778,23 @@ class Variable < AbstractElement
 
   def content_type
     @variable_name.content_type
+  end
+
+  def compatible?(value)
+    numerics = %w(numeric)
+    strings = %w(string)
+
+    compatible = false
+
+    if content_type == 'numeric'
+      compatible = numerics.include?(value.content_type)
+    end
+
+    if content_type == 'string'
+      compatible = strings.include?(value.content_type)
+    end
+
+    compatible
   end
 
   def to_s
