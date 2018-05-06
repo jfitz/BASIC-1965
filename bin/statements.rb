@@ -1304,12 +1304,10 @@ class PrintStatement < AbstractPrintStatement
     print_items = []
 
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'ParamSeparatorToken'
-        print_items << CarriageControl.new(tokens_list.to_s)
-      end
-
       if tokens_list.class.to_s == 'Array'
         add_expression(print_items, tokens_list)
+      elsif tokens_list.separator?
+        print_items << CarriageControl.new(tokens_list.to_s)
       end
     end
 
@@ -1610,12 +1608,10 @@ class WriteStatement < AbstractWriteStatement
     print_items = []
 
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'ParamSeparatorToken'
-        print_items << CarriageControl.new(tokens_list.to_s)
-      end
-
       if tokens_list.class.to_s == 'Array'
         add_expression(print_items, tokens_list)
+      elsif tokens_list.separator?
+        print_items << CarriageControl.new(tokens_list.to_s)
       end
     end
 
@@ -1682,12 +1678,10 @@ class ArrPrintStatement < AbstractPrintStatement
     print_items = []
 
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'ParamSeparatorToken'
-        print_items << CarriageControl.new(tokens_list)
-      end
-
       if tokens_list.class.to_s == 'Array'
         print_items << ValueArrayExpression.new(tokens_list)
+      elsif tokens_list.separator?
+        print_items << CarriageControl.new(tokens_list)
       end
     end
 
@@ -1825,12 +1819,10 @@ class ArrWriteStatement < AbstractWriteStatement
     print_items = []
 
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'ParamSeparatorToken'
-        print_items << CarriageControl.new(tokens_list)
-      end
-
       if tokens_list.class.to_s == 'Array'
         print_items << ValueArrayExpression.new(tokens_list)
+      elsif tokens_list.separator?
+        print_items << CarriageControl.new(tokens_list)
       end
     end
 
@@ -1950,12 +1942,10 @@ class MatPrintStatement < AbstractPrintStatement
     print_items = []
 
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'ParamSeparatorToken'
-        print_items << CarriageControl.new(tokens_list)
-      end
-
       if tokens_list.class.to_s == 'Array'
         print_items << ValueMatrixExpression.new(tokens_list)
+      elsif tokens_list.separator?
+        print_items << CarriageControl.new(tokens_list)
       end
     end
 
@@ -2108,12 +2098,10 @@ class MatWriteStatement < AbstractWriteStatement
     print_items = []
 
     tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'ParamSeparatorToken'
-        print_items << CarriageControl.new(tokens_list)
-      end
-
       if tokens_list.class.to_s == 'Array'
         print_items << ValueMatrixExpression.new(tokens_list)
+      elsif tokens_list.separator?
+        print_items << CarriageControl.new(tokens_list)
       end
     end
 
