@@ -1043,13 +1043,13 @@ class InputStatement < AbstractStatement
     prompt = nil
 
     unless print_items.empty? ||
-           print_items[0].class.to_s == 'CarriageControl'
+           print_items[0].carriage_control?
       candidate_prompt_tokens = print_items[0]
 
       if candidate_prompt_tokens.text_constant?
         prompt = print_items.shift
         print_items.shift if
-          print_items[0].class.to_s == 'CarriageControl'
+          print_items[0].carriage_control?
       end
     end
 
