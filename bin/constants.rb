@@ -337,7 +337,7 @@ class AbstractValueElement < AbstractElement
   private
 
   def compatible?(other)
-    self.class.to_s == other.class.to_s
+    other.content_type == content_type
   end
 end
 
