@@ -348,11 +348,6 @@ class NumericConstant < AbstractValueElement
     classes.include?(token.class.to_s)
   end
 
-  def self.init?(text)
-    numeric_classes = %w(Fixnum Bignum Float)
-    numeric_classes.include?(text.class.to_s) || !numeric(text).nil?
-  end
-
   def self.numeric(text)
     # nnn(E+nn)
     if /\A\s*[+-]?\d+(E+?\d+)?\z/ =~ text
@@ -538,10 +533,6 @@ class TextConstant < AbstractValueElement
     classes.include?(token.class.to_s)
   end
 
-  def self.init?(text)
-    /\A".*"\z/.match(text)
-  end
-
   attr_reader :value
 
   def initialize(text)
@@ -575,10 +566,6 @@ class BooleanConstant < AbstractValueElement
   def self.accept?(token)
     classes = %w(BooleanConstantToken)
     classes.include?(token.class.to_s)
-  end
-
-  def self.init?(text)
-    %w(TRUE FALSE).include?(text)
   end
 
   attr_reader :value
@@ -635,16 +622,8 @@ class CarriageControl
     classes.include?(token.class.to_s)
   end
 
-  def self.init?(token)
-    text = token.to_s
-    ['NL', ',', ';', ''].include?(text)
-  end
-
   def initialize(token)
-    raise(BASICRuntimeError, "'#{token}' is not a valid separator") unless
-      CarriageControl.init?(token)
-    text = token.to_s
-    @operator = text
+    @operator = token.to_s
     @carriage = true
     @file_handle = false
   end
@@ -714,10 +693,6 @@ class VariableName < AbstractElement
   def self.accept?(token)
     classes = %w(VariableToken)
     classes.include?(token.class.to_s)
-  end
-
-  def self.init?(text)
-    /\A[A-Z]\d?\z/.match(text)
   end
 
   attr_reader :name

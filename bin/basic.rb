@@ -21,10 +21,6 @@ require_relative 'program'
 class LineNumber
   attr_reader :line_number
 
-  def self.init?(text)
-    /\A\d+\z/.match(text)
-  end
-
   def initialize(line_number)
     raise BASICError, "Invalid line number '#{line_number}'" unless
       line_number.class.to_s == 'NumericConstantToken'

@@ -88,16 +88,7 @@ class UserFunction < AbstractScalarFunction
     classes.include?(token.class.to_s)
   end
 
-  def self.init?(text)
-    /\AFN[A-Z]\z/.match(text)
-  end
-
   def initialize(text)
-    text = text.to_s if text.class.to_s == 'UserFunctionToken'
-
-    raise(BASICRuntimeError, "'#{text}' is not a valid function") unless
-      UserFunction.init?(text)
-
     super
   end
 
