@@ -522,9 +522,19 @@ class Interpreter
   def check_subscripts(variable, subscripts)
     int_subscripts = normalize_subscripts(subscripts)
     dimensions = make_dimensions(variable, int_subscripts.size)
+
     raise(BASICRuntimeError, 'Incorrect number of subscripts') if
       int_subscripts.size != dimensions.size
+
+    # zero is the lower bound
+    zero = NumericConstant.new(0)
+
+    # check subscript value against lower and upper bounds
     int_subscripts.zip(dimensions).each do |pair|
+      if pair[0] < zero
+        raise(BASICRuntimeError, "Subscript #{pair[0]} out of range")
+      end
+
       if pair[0] > pair[1]
         raise(BASICRuntimeError, "Subscript #{pair[0]} out of range #{pair[1]}")
       end
