@@ -377,6 +377,8 @@ class NumericConstant < AbstractValueElement
   def initialize(text)
     super()
     numeric_classes = %w(Fixnum Bignum Float)
+    f = nil
+    f = text.to_f if text.class.to_s == 'Rational'
     f = text if numeric_classes.include?(text.class.to_s)
     f = text.to_f if text.class.to_s == 'NumericConstantToken'
     @value = float_to_possible_int(f)
