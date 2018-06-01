@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo
 TESTROOT=$1
 TESTBED=$2

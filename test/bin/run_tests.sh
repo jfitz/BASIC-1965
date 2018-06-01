@@ -1,3 +1,5 @@
+#!/bin/bash
+
 TESTROOT=test
 TESTBED=tests
 TESTGROUP=$1
