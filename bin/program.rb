@@ -1,3 +1,136 @@
+# Contain line numbers
+class LineNumber
+  attr_reader :line_number
+
+  def initialize(line_number)
+    raise BASICError, "Invalid line number '#{line_number}'" unless
+      line_number.class.to_s == 'NumericConstantToken'
+    @line_number = line_number.to_i
+  end
+
+  def eql?(other)
+    @line_number == other.line_number
+  end
+
+  def ==(other)
+    @line_number == other.line_number
+  end
+
+  def hash
+    @line_number.hash
+  end
+
+  def succ
+    LineNumber.new(@line_number + 1)
+  end
+
+  def <=>(other)
+    @line_number <=> other.line_number
+  end
+
+  def >(other)
+    @line_number > other.line_number
+  end
+
+  def >=(other)
+    @line_number >= other.line_number
+  end
+
+  def <(other)
+    @line_number < other.line_number
+  end
+
+  def <=(other)
+    @line_number <= other.line_number
+  end
+
+  def dump
+    self.class.to_s + ':' + @line_number.to_s
+  end
+
+  def to_s
+    @line_number.to_s
+  end
+end
+
+# line number range, in form start-end
+class LineNumberRange
+  attr_reader :list
+
+  def initialize(start, endline, program_line_numbers)
+    @list = []
+    program_line_numbers.each do |line_number|
+      @list << line_number if line_number >= start && line_number <= endline
+    end
+  end
+end
+
+# line number range, in form start-count (count default is 20)
+class LineNumberCountRange
+  attr_reader :list
+
+  def initialize(start, count, program_line_numbers)
+    @list = []
+    program_line_numbers.each do |line_number|
+      if line_number >= start && count >= 0
+        @list << line_number
+        count -= 1
+      end
+    end
+  end
+end
+
+# Line class to hold a line of code
+class Line
+  attr_reader :statement
+  attr_reader :tokens
+
+  def initialize(text, statement, tokens, comment)
+    @text = text
+    @statement = statement
+    @tokens = tokens
+    @comment = comment
+  end
+
+  def list
+    @text
+  end
+
+  def pretty
+    text = AbstractToken.pretty_tokens([], @tokens)
+
+    unless @comment.nil?
+      space = @text.size - (text.size + @comment.to_s.size)
+      space = 5 if space < 5
+      text += ' ' * space
+      text += @comment.to_s
+    end
+
+    text
+  end
+
+  def parse
+    texts = []
+    @statements.each { |statement| texts << statement.dump }
+  end
+
+  def profile
+    @statement.profile
+  end
+
+  def renumber(renumber_map)
+    @statement.renumber(renumber_map)
+    keywords = @statement.keywords
+    tokens = @statement.tokens
+    text = AbstractToken.pretty_tokens(keywords, tokens)
+    Line.new(text, @statement, keywords + tokens, @comment)
+  end
+
+  def check(program, console_io, line_number)
+    @statement.program_check(program, console_io, line_number)
+  end
+end
+
 # line reference for cross reference
 class LineRef
   def initialize(line_num, assignment)
