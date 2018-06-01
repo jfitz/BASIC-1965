@@ -416,6 +416,8 @@ class Program
     renumber_map
   end
 
+  private
+
   def numeric_refs
     refs = {}
     @program_lines.keys.sort.each do |line_number|
@@ -494,6 +496,8 @@ class Program
     puts ''
   end
 
+  public
+
   # generate cross-reference list
   def crossref
     puts 'Cross reference'
@@ -520,6 +524,8 @@ class Program
     print_refs('Variables', variables)
   end
 
+  private
+
   def make_summary(list)
     summary = {}
     list.each do |line_number, refs|
@@ -532,6 +538,8 @@ class Program
     end
     summary
   end
+
+  public
 
   def store_program_line(cmd, print_errors)
     line_num, line = parse_line(cmd)
@@ -568,6 +576,8 @@ class Program
       line_num < @program_lines.max[0] &&
       !print_errors
   end
+
+  private
 
   def list_lines_errors(line_numbers, list_tokens)
     line_numbers.each do |line_number|
@@ -609,8 +619,12 @@ class Program
     line_numbers.each do |line_number|
       line = @program_lines[line_number]
       number = line_number.to_s
+
+      # print the line
       pretty = line.pretty
       @console_io.print_line(number + pretty)
+
+      # print the errors
       statement = line.statement
       statement.errors.each { |error| puts ' ' + error }
     end
@@ -620,8 +634,12 @@ class Program
     line_numbers.each do |line_number|
       line = @program_lines[line_number]
       number = line_number.to_s
+
+      # print the line
       profile = line.profile
       @console_io.print_line(number + profile)
+
+      # print the errors
       statement = line.statement
       statement.errors.each { |error| puts ' ' + error }
     end
@@ -646,6 +664,8 @@ class Program
       @program_lines[line_num] = line
     end
   end
+
+  public
 
   def list_and_delete_lines(line_numbers)
     list_lines(line_numbers)
