@@ -30,10 +30,27 @@
  AssignmentOperator:=
 300 REM *** DISPLAY BOARD
  Remark:*** DISPLAY BOARD
-310 MAT PRINT B;
+310 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+320 MAT PRINT B;
  ITEMS
  MatrixValue:B
  CarriageControl:;
+330 PRINT "********************"
+ ITEMS
+ TextConstant:"********************"
+ CarriageControl:NL
+340 PRINT
+ ITEMS
+ CarriageControl:NL
+350 INPUT "CONTINUE (1=YES)", A
+ ScalarReference:A
+360 IF A <> 1 THEN 999
+ ScalarValue:A
+ NumericConstant:1
+ BinaryOperator:<>
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 DIM B(11,11)
@@ -164,8 +181,8 @@
  VariableName:J
 740 NEXT I
  VariableName:I
-800 REM *** CONTINUE FOREVER
- Remark:*** CONTINUE FOREVER
+800 REM *** NEXT ITERATION
+ Remark:*** NEXT ITERATION
 810 GOTO 300
  LineNumber:300
 999 END
