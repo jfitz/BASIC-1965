@@ -265,6 +265,10 @@ class Program
     end
   end
 
+  def run(interpreter, trace_flag, show_timing, show_profile)
+    interpreter.run(self, trace_flag, show_timing, show_profile)
+  end
+
   def profile(line_number_range)
     if !@program_lines.empty?
       line_numbers = line_number_range.line_numbers
