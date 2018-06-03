@@ -265,8 +265,26 @@ class Program
     end
   end
 
+  private
+
+  def reset_profile_metrics
+    @program_lines.keys.sort.each do |line_number|
+      line = @program_lines[line_number]
+      statement = line.statement
+      statement.profile_count = 0
+      statement.profile_time = 0
+    end
+  end
+
+  public
+
   def run(interpreter, trace_flag, show_timing, show_profile)
-    interpreter.run(self, trace_flag, show_timing, show_profile)
+    if !@program_lines.empty?
+      reset_profile_metrics
+      interpreter.run(self, trace_flag, show_timing, show_profile)
+    else
+      @console_io.print_line('No program loaded')
+    end
   end
 
   def profile(line_number_range)
