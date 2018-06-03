@@ -134,5 +134,30 @@ then
   done <"$TESTROOT/$TESTGROUP/$TESTNAME/ref/out_files.txt"
 fi
 
+if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/trace.txt" ]
+then
+    if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/data/run_options.txt" ]
+    then
+	RUN_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/run_options.txt")
+    fi
+    cd "$TESTBED/$TESTNAME"
+    echo Trace program with options $GROUP_OPTIONS $TEST_OPTIONS $RUN_OPTIONS
+    if [ -e stdin.txt ]
+    then
+	ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --trace --echo-input <stdin.txt >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $RUN_OPTIONS
+    else
+	ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --trace >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $RUN_OPTIONS
+    fi
+    cd ../..
+    echo Compare trace...
+    diff "$TESTBED/$TESTNAME/trace.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/trace.txt"
+    ((ECODE=$?))
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/trace.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/trace.txt"
+    fi
+fi
+
 echo End test $TESTNAME
 exit $NUM_FAIL
