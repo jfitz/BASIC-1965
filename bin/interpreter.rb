@@ -76,12 +76,13 @@ class Interpreter
 
   def run(program, trace_flag, show_timing, show_profile)
     @program = program
-    @program_lines = program.lines
+
     @trace_flag = trace_flag
     @step_mode = false
 
-    @variables = {}
     @trace_out = @trace_flag ? @console_io : @null_out
+    @variables = {}
+    @program_lines = program.lines
 
     if show_timing
       timing = Benchmark.measure { run_all_phases }
@@ -98,8 +99,8 @@ class Interpreter
 
   def run_all_phases
     @running = true
-    run_phase_1
-    run_phase_2 if @running
+    run_phase_1(@program_lines)
+    run_phase_2(@program_lines) if @running
   end
 
   def print_timing(timing)
@@ -112,18 +113,18 @@ class Interpreter
     @console_io.newline
   end
 
-  def run_phase_1
+  def run_phase_1(program_lines)
     # phase 1: do all initialization (store values in DATA lines)
-    @current_line_number = @program_lines.min[0]
-    preexecute_loop
+    @current_line_number = program_lines.min[0]
+    preexecute_loop(program_lines)
   end
 
-  def run_phase_2
+  def run_phase_2(program_lines)
     # phase 2: run each command
     # start with the first line number
-    @current_line_number = @program_lines.min[0]
+    @current_line_number = program_lines.min[0]
     begin
-      program_loop while @running
+      program_loop(program_lines) while @running
     rescue Interrupt
       stop_running
     end
@@ -141,8 +142,8 @@ class Interpreter
     statement.errors.each { |error| puts error }
   end
 
-  def preexecute_a_statement
-    line = @program_lines[@current_line_number]
+  def preexecute_a_statement(program_lines)
+    line = program_lines[@current_line_number]
     statement = line.statement
     if statement.errors.empty?
       statement.pre_execute(self)
@@ -152,9 +153,9 @@ class Interpreter
     end
   end
 
-  def preexecute_loop
+  def preexecute_loop(program_lines)
     while !@current_line_number.nil? && @running
-      preexecute_a_statement
+      preexecute_a_statement(program_lines)
       @current_line_number =
         @program.find_next_line_number(@current_line_number)
     end
@@ -164,8 +165,8 @@ class Interpreter
     stop_running
   end
 
-  def execute_a_statement
-    line = @program_lines[@current_line_number]
+  def execute_a_statement(program_lines)
+    line = program_lines[@current_line_number]
     current_line_number = @current_line_number
     statement = line.statement
     print_trace_info(line)
@@ -267,7 +268,7 @@ class Interpreter
     end
   end
 
-  def program_loop
+  def program_loop(program_lines)
     # pick the next line number
     @next_line_number = @program.find_next_line_number(@current_line_number)
     next_line_number = nil
@@ -283,7 +284,7 @@ class Interpreter
     end
 
     begin
-      execute_a_statement
+      execute_a_statement(program_lines)
       # set the next line number
       @current_line_number = nil
       if @running
