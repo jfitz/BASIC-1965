@@ -114,7 +114,7 @@ class Interpreter
   end
 
   def run_phase_1(program_lines)
-    # phase 1: do all initialization (store values in DATA lines)
+    # do all initialization (store values in DATA lines)
     @current_line_number = program_lines.min[0]
     preexecute_loop(program_lines)
   end
@@ -137,30 +137,28 @@ class Interpreter
     @trace_out.newline
   end
 
-  def print_errors(current_line_number, statement)
-    @console_io.print_line("Errors in line #{current_line_number}:")
-    statement.errors.each { |error| puts error }
+  def print_errors(line_number, statement)
+    @console_io.print_line("Errors in line #{line_number}:")
+    statement.print_errors(@console_io)
   end
 
-  def preexecute_a_statement(program_lines)
-    line = program_lines[@current_line_number]
-    statement = line.statement
+  def preexecute_a_statement(line_number, statement)
     if statement.errors.empty?
       statement.pre_execute(self)
     else
       stop_running
-      print_errors(current_line_number, statement)
+      print_errors(line_number, statement)
     end
   end
 
   def preexecute_loop(program_lines)
-    while !@current_line_number.nil? && @running
-      preexecute_a_statement(program_lines)
-      @current_line_number =
-        @program.find_next_line_number(@current_line_number)
+    program_lines.keys.sort.each do |line_number|
+      line = program_lines[line_number]
+      statement = line.statement
+      preexecute_a_statement(line_number, statement)
     end
   rescue BASICRuntimeError => e
-    message = "#{e.message} in line #{@current_line_number}"
+    message = "#{e.message} in line #{line_number}"
     @console_io.print_line(message)
     stop_running
   end
