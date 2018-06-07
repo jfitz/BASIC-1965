@@ -113,6 +113,7 @@ class Shell
       @interpreter.dump_dims
     when '.PARSE'
       line_number_range = @program.line_list_spec(args)
+      @program.parse(line_number_range)
     when '.TOKENS'
       line_number_range = @program.line_list_spec(args)
       @program.list(line_number_range, true)
