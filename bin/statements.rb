@@ -177,11 +177,33 @@ class AbstractStatement
     ['Unimplemented']
   end
 
+  def print_errors(console_io)
+    @errors.each { |error| console_io.print_line(error) }
+  end
+
   def program_check(_, _, _)
     true
   end
 
+  def print_errors(console_io)
+    @errors.each { |error| console_io.print_line(error) }
+  end
+
+  def preexecute_a_statement(line_number, interpreter, console_io)
+    if errors.empty?
+      pre_execute(interpreter)
+    else
+      interpreter.stop_running
+      console_io.print_line("Errors in line #{line_number}:")
+      print_errors(console_io)
+    end
+  end
+
+  private
+
   def pre_execute(_) end
+
+  public
 
   def profile
     text = AbstractToken.pretty_tokens(@keywords, @tokens)

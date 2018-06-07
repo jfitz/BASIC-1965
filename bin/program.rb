@@ -290,6 +290,18 @@ class Program
 
   public
 
+  def preexecute_loop(interpreter)
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statement = line.statement
+      statement.preexecute_a_statement(line_number, interpreter, @console_io)
+    end
+  rescue BASICRuntimeError => e
+    message = "#{e.message} in line #{line_number}"
+    @console_io.print_line(message)
+    interpreter.stop_running
+  end
+
   def run(interpreter, trace_flag, show_timing, show_profile)
     if !@lines.empty?
       if @errors.empty?
