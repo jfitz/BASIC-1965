@@ -283,8 +283,7 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
-      statement.profile_count = 0
-      statement.profile_time = 0
+      statement.reset_profile_metrics
     end
   end
 

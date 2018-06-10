@@ -114,7 +114,7 @@ class Interpreter
   end
 
   def run_statements(program_lines)
-    # run each command
+    # run each statement
     # start with the first line number
     @current_line_number = program_lines.min[0]
     @running = true
@@ -128,12 +128,6 @@ class Interpreter
     @file_handlers.each { |_, fh| fh.close }
   end
 
-  def print_trace_info(line)
-    @trace_out.newline_when_needed
-    @trace_out.print_out @current_line_number.to_s + ':' + line.pretty
-    @trace_out.newline
-  end
-
   def print_errors(line_number, statement)
     @console_io.print_line("Errors in line #{line_number}:")
     statement.print_errors(@console_io)
@@ -143,19 +137,8 @@ class Interpreter
     line = program_lines[@current_line_number]
     current_line_number = @current_line_number
     statement = line.statement
-    print_trace_info(line)
-    if statement.errors.empty?
-      timing = Benchmark.measure { statement.execute(self) }
-      user_time = timing.utime + timing.cutime
-      sys_time = timing.stime + timing.cstime
-      time = user_time + sys_time
-      statement.profile_time += time
-      statement.profile_count += 1
-    else
-      stop_running
-      print_errors(current_line_number, statement)
-    end
-    @get_value_seen = []
+
+    statement.execute_a_statement(self, @trace_out, @current_line_number)
   end
 
   def execute_debug_command(keyword, args, cmd)
@@ -259,6 +242,8 @@ class Interpreter
 
     begin
       execute_a_statement(program_lines)
+      @get_value_seen = []
+
       # set the next line number
       @current_line_number = nil
       if @running

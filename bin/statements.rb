@@ -158,8 +158,6 @@ class AbstractStatement
   attr_reader :errors
   attr_reader :keywords
   attr_reader :tokens
-  attr_accessor :profile_count
-  attr_accessor :profile_time
 
   def self.extra_keywords
     []
@@ -171,6 +169,11 @@ class AbstractStatement
     @errors = []
     @profile_count = 0
     @profile_time = 0
+  end
+
+  def pretty
+    list = [AbstractToken.pretty_tokens(@keywords, @tokens)]
+    list.join(' ')
   end
 
   def dump
@@ -204,7 +207,29 @@ class AbstractStatement
 
   def pre_execute(_) end
 
+  def print_trace_info(trace_out, current_line_number)
+    trace_out.newline_when_needed
+    trace_out.print_out current_line_number.to_s + ':' + pretty
+    trace_out.newline
+  end
+
   public
+
+  def reset_profile_metrics
+    @profile_count = 0
+    @profile_time = 0
+  end
+
+  def execute_a_statement(interpreter, trace_out, current_line_number)
+    print_trace_info(trace_out, current_line_number)
+    
+    timing = Benchmark.measure { execute(interpreter) }
+    user_time = timing.utime + timing.cutime
+    sys_time = timing.stime + timing.cstime
+    time = user_time + sys_time
+    @profile_time += time
+    @profile_count += 1
+  end
 
   def profile
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
@@ -764,7 +789,7 @@ class ForStatement < AbstractStatement
     end
 
     io = interpreter.trace_out
-    print_trace_info(io, from, to, step, terminated)
+    print_more_trace_info(io, from, to, step, terminated)
   end
 
   def variables
@@ -790,7 +815,7 @@ class ForStatement < AbstractStatement
     [parts[0], parts[2]]
   end
 
-  def print_trace_info(io, from, to, step, terminated)
+  def print_more_trace_info(io, from, to, step, terminated)
     io.trace_output(" #{@start} = #{from}") unless @start.numeric_constant?
     io.trace_output(" #{@end} = #{to}") unless @end.numeric_constant?
     io.trace_output(" #{@step_value} = #{step}") unless @step_value.numeric_constant?
