@@ -297,15 +297,14 @@ class AbstractStatement
       control = pair[0]
       value = pair[1]
 
-      case control.class.to_s
-      when 'String'
-        result &= (value.keyword? &&
-                   value.to_s == control)
-      when 'Array'
-        result &= (value.class.to_s == 'Array')
+      if control.class.to_s == 'String' && value.class.to_s == 'KeywordToken'
+        result &= value.to_s == control
+      elsif control.class.to_s == 'Array' && value.class.to_s == 'Array'
         result &= value.size == control[0] if control.size == 1
         result &= value.size >= control[0] if
           control.size == 2 && control[1] == '>='
+      else
+        result = false
       end
     end
     result
@@ -947,7 +946,11 @@ class IfStatement < AbstractStatement
 
   def program_check(program, console_io, line_number)
     return true if program.line_number?(@destination)
-    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    if @destination.nil?
+      console_io.print_line("Invalid or missing line number in line #{line_number}")
+    else    
+      console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    end
     false
   end
 
