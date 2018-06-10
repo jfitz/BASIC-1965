@@ -197,6 +197,7 @@ class AbstractStatement
       console_io.print_line("Errors in line #{line_number}:")
       print_errors(console_io)
     end
+    errors.empty?
   end
 
   private
