@@ -91,17 +91,13 @@ class Shell
     when 'SAVE'
       @program.save(args)
     when 'LIST'
-      line_number_range = @program.line_list_spec(args)
-      @program.list(line_number_range, false)
+      @program.list(args, false)
     when 'PRETTY'
-      line_number_range = @program.line_list_spec(args)
-      @program.pretty(line_number_range)
+      @program.pretty(args)
     when 'DELETE'
-      line_number_range = @program.line_list_spec(args)
-      @program.delete(line_number_range)
+      @program.delete(args)
     when 'PROFILE'
-      line_number_range = @program.line_list_spec(args)
-      @program.profile(line_number_range)
+      @program.profile(arg)
     when 'RENUMBER'
       if @program.check
         renumber_map = @program.renumber
@@ -112,11 +108,9 @@ class Shell
     when '.DIMS'
       @interpreter.dump_dims
     when '.PARSE'
-      line_number_range = @program.line_list_spec(args)
-      @program.parse(line_number_range)
+      @program.parse(args)
     when '.TOKENS'
-      line_number_range = @program.line_list_spec(args)
-      @program.list(line_number_range, true)
+      @program.list(args, true)
     when '.UDFS'
       @interpreter.dump_user_functions
     when '.VARS'
@@ -265,22 +259,19 @@ elsif !list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
   nametokens = [TextConstant.new(token)]
   if program.load(nametokens)
-    line_list_spec = program.line_list_spec('')
-    program.list(line_list_spec, list_tokens)
+    program.list('', list_tokens)
   end
 elsif !parse_filename.nil?
   token = TextConstantToken.new('"' + parse_filename + '"')
   nametokens = [TextConstant.new(token)]
   if program.load(nametokens)
-    line_list_spec = program.line_list_spec('')
-    program.parse(line_list_spec)
+    program.parse('')
   end
 elsif !pretty_filename.nil?
   token = TextConstantToken.new('"' + pretty_filename + '"')
   nametokens = [TextConstant.new(token)]
   if program.load(nametokens)
-    line_list_spec = program.line_list_spec('')
-    program.pretty(line_list_spec)
+    program.pretty('')
   end
 elsif !cref_filename.nil?
   token = TextConstantToken.new('"' + cref_filename + '"')
