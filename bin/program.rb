@@ -306,6 +306,26 @@ class Program
     false
   end
 
+  def find_closing_next(control_variable, current_line_number)
+    # starting with @next_line_number
+    line_numbers = @lines.keys.sort
+    forward_line_numbers =
+      line_numbers.select { |line_number| line_number > current_line_number }
+
+    # find a NEXT statement with matching control variable
+    forward_line_numbers.each do |line_number|
+      line = @lines[line_number]
+      statement = line.statement
+
+      return line_number if
+        statement.class.to_s == 'NextStatement' &&
+        statement.control == control_variable
+    end
+
+    # if none found, error
+    raise(BASICRuntimeError, 'FOR without NEXT')
+  end
+
   def run(interpreter, trace_flag, show_timing, show_profile)
     if !@lines.empty?
       if @errors.empty?

@@ -405,20 +405,8 @@ class Interpreter
     NumericConstant.new(@randomizer.rand(upper_bound))
   end
 
-  def find_closing_next(control_variable)
-    # starting with @next_line_number
-    line_numbers = @program_lines.keys.sort
-    forward_line_numbers =
-      line_numbers.select { |line_number| line_number > @current_line_number }
-    # find a NEXT statement with matching control variable
-    forward_line_numbers.each do |line_number|
-      line = @program_lines[line_number]
-      statement = line.statement
-      return line_number if
-        statement.class.to_s == 'NextStatement' &&
-        statement.control == control_variable
-    end
-    raise(BASICRuntimeError, 'FOR without NEXT') # if none found, error
+  def find_closing_next(control)
+    @program.find_closing_next(control, @current_line_number)
   end
 
   def set_dimensions(variable, subscripts)
