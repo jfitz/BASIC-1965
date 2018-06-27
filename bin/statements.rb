@@ -249,6 +249,7 @@ class AbstractStatement
     prev_operand = false
     @tokens.each do |token|
       negate = !negate if prev_unary_minus
+
       if token.numeric_constant?
         if negate
           nums << token.clone.negate
@@ -256,8 +257,13 @@ class AbstractStatement
           nums << token
         end
       end
+
       prev_unary_minus = token.operator? && token.to_s == '-' && !prev_operand
-      prev_operand = token.groupend? || token.numeric_constant? || token.variable?
+
+      prev_operand =
+        token.groupend? ||
+        token.numeric_constant? ||
+        token.variable?
     end
 
     nums
@@ -461,7 +467,7 @@ module FileFunctions
 
   def get_file_handle(interpreter, file_tokens)
     return nil if file_tokens.nil?
-    
+
     file_handles = file_tokens.evaluate(interpreter, false)
     file_handles[0]
   end
@@ -727,7 +733,7 @@ class ForStatement < AbstractStatement
   end
 
   def self.extra_keywords
-    ['TO', 'STEP']
+    %w(TO STEP)
   end
 
   def initialize(keywords, tokens_lists)
@@ -796,7 +802,7 @@ class ForStatement < AbstractStatement
     vars << @control.to_s
     vars += @start.variables
     vars += @end.variables
-    vars += @step_value.variables
+    vars + @step_value.variables
   end
 
   private
@@ -948,7 +954,7 @@ class IfStatement < AbstractStatement
     return true if program.line_number?(@destination)
     if @destination.nil?
       console_io.print_line("Invalid or missing line number in line #{line_number}")
-    else    
+    else
       console_io.print_line("Line number #{@destination} not found in line #{line_number}")
     end
     false
@@ -1030,11 +1036,7 @@ class InputStatement < AbstractStatement
 
   def dump
     lines = []
-
-    unless @input_items.nil?
-      @input_items.each { |item| lines += item.dump }
-    end
-
+    @input_items.each { |item| lines += item.dump } unless @input_items.nil?
     lines
   end
 
@@ -1071,13 +1073,8 @@ class InputStatement < AbstractStatement
 
   def variables
     vars = []
-
     vars += @file_tokens.variables unless @file_tokens.nil?
-
-    unless @input_items.nil?
-      @input_items.each { |item| vars += item.variables }
-    end
-
+    @input_items.each { |item| vars += item.variables } unless @input_items.nil?
     vars
   end
 
@@ -1116,7 +1113,7 @@ class InputStatement < AbstractStatement
 
     [prompt, print_items]
   end
-  
+
   def tokens_to_expressions(tokens_lists)
     print_items = []
 
@@ -1225,7 +1222,7 @@ class LetStatement < AbstractStatement
       interpreter.set_value(l_value, r_value)
     end
   end
-  
+
   def variables
     vars = []
     vars = @assignment.variables unless @assignment.nil?
@@ -1301,26 +1298,16 @@ class AbstractPrintStatement < AbstractStatement
     end
 
     lines << 'ITEMS'
-    unless @print_items.nil?
-      @print_items.each { |item| lines += item.dump }
-    end
-
+    @print_items.each { |item| lines += item.dump } unless @print_items.nil?
     lines
   end
 
   def variables
     vars = []
-
     vars += @file_tokens.variables unless @file_tokens.nil?
-
-    unless @print_items.nil?
-      @print_items.each { |item| vars += item.variables }
-    end
-
+    @print_items.each { |item| vars += item.variables } unless @print_items.nil?
     vars
   end
-
-  private
 
   include FileFunctions
 end
@@ -1398,28 +1385,16 @@ class AbstractReadStatement < AbstractStatement
 
   def dump
     lines = []
-
-    unless @read_items.nil?
-      @read_items.each { |item| lines += item.dump }
-    end
-
+    @read_items.each { |item| lines += item.dump } unless @read_items.nil?
     lines
   end
 
   def variables
     vars = []
-
     vars += @file_tokens.variables unless @file_tokens.nil?
-
-
-    unless @read_items.nil?
-      @read_items.each { |item| vars += item.variables }
-    end
-
+    @read_items.each { |item| vars += item.variables } unless @read_items.nil?
     vars
   end
-
-  private
 
   include FileFunctions
 end
@@ -1591,7 +1566,7 @@ class TraceStatement < AbstractStatement
     value = values[0]
     interpreter.trace(value.to_v)
   end
-  
+
   def variables
     vars = []
     vars += @expression.variables unless @expression.nil?
@@ -1608,27 +1583,16 @@ class AbstractWriteStatement < AbstractStatement
 
   def dump
     lines = []
-
-    unless @print_items.nil?
-      @print_items.each { |item| lines += item.dump }
-    end
-
+    @print_items.each { |item| lines += item.dump } unless @print_items.nil?
     lines
   end
 
   def variables
     vars = []
-
     vars += @file_tokens.variables unless @file_tokens.nil?
-
-    unless @print_items.nil?
-      @print_items.each { |item| vars += item.variables }
-    end
-
+    @print_items.each { |item| vars += item.variables } unless @print_items.nil?
     vars
   end
-
-  private
 
   include FileFunctions
 end
@@ -1728,7 +1692,7 @@ class ArrPrintStatement < AbstractPrintStatement
           !@print_items[i + 1].printable?
         item.print(fhr, interpreter, carriage)
       end
-      
+
       i += 1
     end
   end
@@ -1933,7 +1897,7 @@ class ArrLetStatement < AbstractStatement
       interpreter.set_values(l_value.name, values)
     end
   end
-  
+
   def variables
     vars = []
     vars = @assignment.variables unless @assignment.nil?
@@ -2233,7 +2197,7 @@ class MatLetStatement < AbstractStatement
       interpreter.set_values(l_value.name, values)
     end
   end
-  
+
   def variables
     vars = []
     vars = @assignment.variables unless @assignment.nil?

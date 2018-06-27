@@ -91,15 +91,11 @@ class Interpreter
       run_program
     end
 
-    if show_profile
-      @program.profile('')
-    end
+    @program.profile('') if show_profile
   end
 
   def run_program
-    if @program.preexecute_loop(self)
-      run_statements(@program_lines)
-    end
+    run_statements(@program_lines) if @program.preexecute_loop(self)
   end
 
   def print_timing(timing)
@@ -134,7 +130,6 @@ class Interpreter
 
   def execute_a_statement(program_lines)
     line = program_lines[@current_line_number]
-    current_line_number = @current_line_number
     statement = line.statement
 
     statement.execute_a_statement(self, @trace_out, @current_line_number)
@@ -477,11 +472,7 @@ class Interpreter
   end
 
   def get_value(variable, trace)
-    legals = [
-      'VariableName',
-      'Value',
-      'ScalarValue'
-    ]
+    legals = %w(VariableName Value ScalarValue)
 
     raise(Exception, "#{variable.class}:#{variable} is not a variable") unless
       legals.include?(variable.class.to_s)
@@ -514,13 +505,8 @@ class Interpreter
   end
 
   def set_value(variable, value)
-    legals = [
-      'Value',
-      'Variable',
-      'VariableName',
-      'ScalarReference'
-    ]
-    
+    legals = %w(Value Variable VariableName ScalarReference)
+
     raise(Exception, "#{variable.class}:#{variable} is not a variable name") unless
       legals.include?(variable.class.to_s)
 

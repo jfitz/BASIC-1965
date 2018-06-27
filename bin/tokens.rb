@@ -262,11 +262,7 @@ class NumericConstantToken < AbstractToken
   end
 
   def negate
-    if @text[0] == '-'
-      @text = @text[1..-1]
-    else
-      @text = '-' + @text
-    end
+    @text = @text[0] == '-' ? @text[1..-1] : '-' + @text
   end
 
   def to_f

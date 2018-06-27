@@ -10,7 +10,9 @@ class Tokenizer
     until text.nil? || text.empty?
       token, count = try_tokenbuilders(text)
 
-      token, count = try_invalid(text) if token.nil? && !@invalid_tokenbuilder.nil?
+      token, count =
+             try_invalid(text) if token.nil? && !@invalid_tokenbuilder.nil?
+
       raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
 
       if token.class.to_s == 'Array'
@@ -18,6 +20,7 @@ class Tokenizer
       else
         tokens << token
       end
+
       text = text[count..-1]
     end
     tokens
@@ -29,6 +32,7 @@ class Tokenizer
     @tokenbuilders.each { |tokenbuilder| tokenbuilder.try(text) }
     count = 0
     token = nil
+
     # general tokenbuilders
     @tokenbuilders.each do |tokenbuilder|
       if tokenbuilder.count > count
@@ -36,6 +40,7 @@ class Tokenizer
         count = tokenbuilder.count
       end
     end
+
     [token, count]
   end
 

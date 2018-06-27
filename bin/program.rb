@@ -210,6 +210,8 @@ end
 
 # program container
 class Program
+  attr_reader :lines
+
   def initialize(console_io, tokenbuilders)
     @console_io = console_io
     @lines = {}
@@ -224,10 +226,6 @@ class Program
 
   def line_number?(line_number)
     @lines.key?(line_number)
-  end
-
-  def lines
-    @lines
   end
 
   private
@@ -299,6 +297,7 @@ class Program
     okay = true
 
     @lines.keys.sort.each do |line_number|
+      @line_number = line_number
       line = @lines[line_number]
       statement = line.statement
       okay &=
@@ -307,7 +306,7 @@ class Program
 
     okay
   rescue BASICRuntimeError => e
-    message = "#{e.message} in line #{line_number}"
+    message = "#{e.message} in line #{@line_number}"
     @console_io.print_line(message)
     false
   end

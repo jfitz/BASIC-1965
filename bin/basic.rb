@@ -258,27 +258,19 @@ if !run_filename.nil?
 elsif !list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
   nametokens = [TextConstant.new(token)]
-  if program.load(nametokens)
-    program.list('', list_tokens)
-  end
+  program.list('', list_tokens) if program.load(nametokens)
 elsif !parse_filename.nil?
   token = TextConstantToken.new('"' + parse_filename + '"')
   nametokens = [TextConstant.new(token)]
-  if program.load(nametokens)
-    program.parse('')
-  end
+  program.parse('') if program.load(nametokens)
 elsif !pretty_filename.nil?
   token = TextConstantToken.new('"' + pretty_filename + '"')
   nametokens = [TextConstant.new(token)]
-  if program.load(nametokens)
-    program.pretty('')
-  end
+  program.pretty('') if program.load(nametokens)
 elsif !cref_filename.nil?
   token = TextConstantToken.new('"' + cref_filename + '"')
   nametokens = [TextConstant.new(token)]
-  if program.load(nametokens)
-    program.crossref
-  end
+  program.crossref if program.load(nametokens)
 else
   interpreter =
     Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,

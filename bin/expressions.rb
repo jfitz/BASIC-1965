@@ -951,9 +951,7 @@ class AbstractExpression
           suffix = '(,)' if thing.matrix?
 
           if suffix == '' && !previous.nil?
-            if previous.list?
-              suffix = '(' + (',' * (previous.size - 1)) + ')'
-            end
+            suffix = '(' + (',' * (previous.size - 1)) + ')' if previous.list?
           end
 
           vars << thing.to_s + suffix
@@ -1090,7 +1088,7 @@ class ValueArrayExpression < ValueCompoundExpression
   def initialize(tokens)
     super(tokens, ArrayValue)
 
-    @array= true
+    @array = true
   end
 end
 
@@ -1176,7 +1174,7 @@ class UserFunctionDefinition
     numeric_spec = { 'type' => 'numeric', 'shape' => 'scalar' }
     sig = []
 
-    @arguments.each do |arg|
+    @arguments.each do ||
       # arguments can only be numeric and scalar
       sig << numeric_spec
     end
