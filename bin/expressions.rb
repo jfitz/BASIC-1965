@@ -874,10 +874,7 @@ class AbstractExpression
 
     elements = tokens_to_elements(tokens)
     parser = Parser.new(default_type)
-
-    elements.each do |element|
-      parser.parse(element)
-    end
+    elements.each { |element| parser.parse(element) }
     @parsed_expressions = parser.expressions
   end
 
@@ -937,6 +934,7 @@ class AbstractExpression
 
   def parsed_expressions_variables(parsed_expressions)
     vars = []
+
     parsed_expressions.each do |expression|
       previous = nil
 
@@ -950,9 +948,8 @@ class AbstractExpression
           suffix = '()' if thing.array?
           suffix = '(,)' if thing.matrix?
 
-          if suffix == '' && !previous.nil?
-            suffix = '(' + (',' * (previous.size - 1)) + ')' if previous.list?
-          end
+          suffix = '(' + (',' * (previous.size - 1)) + ')' if
+            suffix == '' && !previous.nil? && previous.list?
 
           vars << thing.to_s + suffix
         end
@@ -960,6 +957,7 @@ class AbstractExpression
         previous = thing
       end
     end
+
     vars
   end
 
@@ -1199,6 +1197,7 @@ class UserFunctionDefinition
     end
 
     results << nonkeywords unless nonkeywords.empty?
+
     results
   end
 end
@@ -1366,7 +1365,6 @@ class MatrixAssignment < AbstractAssignment
 
   def variables
     vars = @target.variables
-    vars += @expression.variables unless @special_form
-    vars
+    vars + @expression.variables
   end
 end

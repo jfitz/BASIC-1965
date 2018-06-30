@@ -181,15 +181,11 @@ class AbstractStatement
   end
 
   def print_errors(console_io)
-    @errors.each { |error| console_io.print_line(error) }
+    @errors.each { |error| console_io.print_line(' ' + error) }
   end
 
   def program_check(_, _, _)
     true
-  end
-
-  def print_errors(console_io)
-    @errors.each { |error| console_io.print_line(error) }
   end
 
   def preexecute_a_statement(line_number, interpreter, console_io)
@@ -222,7 +218,7 @@ class AbstractStatement
 
   def execute_a_statement(interpreter, trace_out, current_line_number)
     print_trace_info(trace_out, current_line_number)
-    
+
     timing = Benchmark.measure { execute(interpreter) }
     user_time = timing.utime + timing.cutime
     sys_time = timing.stime + timing.cstime
@@ -1024,7 +1020,7 @@ class InputStatement < AbstractStatement
       input_items = tokens_to_expressions(input_items)
       @file_tokens, input_items = extract_file_handle(input_items)
       @prompt, @input_items = extract_prompt(input_items)
- 
+
       if !@input_items.empty? && @input_items[0].text_constant?
         @prompt = input_items[0]
         @input_items = @input_items[1..-1]

@@ -30,25 +30,38 @@ class Function < AbstractElement
     texts.join(' or ')
   end
 
-  def match_arg_type_shape(value, spec)
-    type = spec['type']
-    shape = spec['shape']
-
-    type_compatible = false
+  def match_arg_type(value, type)
     case type
     when 'numeric'
-      type_compatible = value.numeric_constant?
+      compatible = value.numeric_constant?
+    else
+      compatible = false
     end
 
-    shape_compatible = false
+    compatible
+  end
+
+  def match_arg_shape(value, shape)
     case shape
     when 'scalar'
-      shape_compatible = value.scalar?
+      compatible = value.scalar?
     when 'array'
-      shape_compatible = value.array?
+      compatible = value.array?
     when 'matrix'
-      shape_compatible = value.matrix?
+      compatible = value.matrix?
+    else
+      compatible = false
     end
+
+    compatible
+  end
+
+  def match_arg_type_shape(value, spec)
+    type = spec['type']
+    type_compatible = match_arg_type(value, type)
+
+    shape = spec['shape']
+    shape_compatible = match_arg_shape(value, shape)
 
     type_compatible && shape_compatible
   end
@@ -95,6 +108,7 @@ class UserFunction < AbstractScalarFunction
   # return a single value
   def evaluate(interpreter, stack, trace)
     definition = interpreter.get_user_function(@name)
+
     # verify function is defined
     raise(BASICRuntimeError, "Function #{@name} not defined") if definition.nil?
 

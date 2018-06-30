@@ -59,6 +59,7 @@ class LineNumberRange
 
   def initialize(start, endline, program_line_numbers)
     @list = []
+
     program_line_numbers.each do |line_number|
       @list << line_number if line_number >= start && line_number <= endline
     end
@@ -71,6 +72,7 @@ class LineNumberCountRange
 
   def initialize(start, count, program_line_numbers)
     @list = []
+
     program_line_numbers.each do |line_number|
       if line_number >= start && count >= 0
         @list << line_number
@@ -156,6 +158,7 @@ class LineListSpec
   def initialize(tokens, program_line_numbers)
     @line_numbers = []
     @range_type = :empty
+
     if tokens.empty?
       @line_numbers = program_line_numbers
       @range_type = :all
@@ -185,8 +188,10 @@ class LineListSpec
 
   def make_single(token, program_line_numbers)
     line_number = LineNumber.new(token)
+
     @line_numbers << line_number if
       program_line_numbers.include?(line_number)
+
     @range_type = :single
   end
 
@@ -252,7 +257,7 @@ class Program
     if !@lines.empty?
       line_numbers = line_number_range.line_numbers
       list_lines_errors(line_numbers, list_tokens)
-      @errors.each { |error| puts error }
+      @errors.each { |error| @console_io.print_line(error) }
     else
       @console_io.print_line('No program loaded')
     end
@@ -275,7 +280,7 @@ class Program
     if !@lines.empty?
       line_numbers = line_number_range.line_numbers
       pretty_lines_errors(line_numbers)
-      @errors.each { |error| puts error }
+      @errors.each { |error| @console_io.print_line(error) }
     else
       @console_io.print_line('No program loaded')
     end
@@ -337,7 +342,7 @@ class Program
         reset_profile_metrics
         interpreter.run(self, trace_flag, show_timing, show_profile)
       else
-        @errors.each { |error| puts error }
+        @errors.each { |error| @console_io.print_line(error) }
       end
     else
       @console_io.print_line('No program loaded')
@@ -459,7 +464,7 @@ class Program
       number = line_number.to_s
       profile = line.profile
       text = number + profile
-      puts text
+      @console_io.print_line(text)
     end
   end
 
@@ -589,25 +594,25 @@ class Program
   end
 
   def print_refs(title, refs)
-    puts title
+    @console_io.print_line(title)
 
     refs.keys.sort.each do |ref|
       lines = refs[ref]
-      puts ref + ":\t" + lines.map(&:to_s).uniq.join(', ')
+      @console_io.print_line(ref + ":\t" + lines.map(&:to_s).uniq.join(', '))
     end
 
-    puts ''
+    @console_io.print_line('')
   end
 
   def print_num_refs(title, refs)
-    puts title
+    @console_io.print_line(title)
 
     refs.keys.sort.each do |ref|
       lines = refs[ref]
-      puts ref.to_s + ":\t" + lines.map(&:to_s).uniq.join(', ')
+      @console_io.print_line(ref.to_s + ":\t" + lines.map(&:to_s).uniq.join(', '))
     end
 
-    puts ''
+    @console_io.print_line('')
   end
 
   def make_summary(list)
@@ -629,8 +634,8 @@ class Program
 
   # generate cross-reference list
   def crossref
-    puts 'Cross reference'
-    puts ''
+    @console_io.print_line('Cross reference')
+    @console_io.print_line('')
 
     nums_list = numeric_refs
     numerics = make_summary(nums_list)
@@ -687,7 +692,8 @@ class Program
       check_line_sequence(line_num, print_errors)
       @lines[line_num] = line
       statement = line.statement
-      statement.errors.each { |error| puts error } if print_errors
+      statement.errors.each { |error| @console_io.print_line(error) } if
+        print_errors
       @errors = check_program
       !statement.errors.empty?
     else
@@ -706,7 +712,7 @@ class Program
 
       # print the errors
       statement = line.statement
-      statement.errors.each { |error| puts ' ' + error }
+      statement.errors.each { |error| @console_io.print_line(' ' + error) }
 
       next unless list_tokens
 
@@ -744,7 +750,7 @@ class Program
 
       # print the errors
       statement = line.statement
-      statement.errors.each { |error| puts ' ' + error }
+      statement.errors.each { |error| @console_io.print_line(' ' + error) }
     end
   end
 
@@ -759,7 +765,7 @@ class Program
 
       # print the errors
       statement = line.statement
-      statement.errors.each { |error| puts ' ' + error }
+      statement.errors.each { |error| @console_io.print_line(' ' + error) }
     end
   end
 

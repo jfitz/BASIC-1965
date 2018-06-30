@@ -123,6 +123,7 @@ class GroupStart < AbstractElement
 
   def initialize(element)
     super()
+
     @text = element.to_s
     @group_start = true
   end
@@ -141,6 +142,7 @@ class GroupEnd < AbstractElement
 
   def initialize(element)
     super()
+
     @text = element.to_s
     @group_end = true
     @operand = true
@@ -162,6 +164,7 @@ class ParamStart < AbstractElement
 
   def initialize(element)
     super()
+
     @text = element.to_s
     @param_start = true
   end
@@ -180,6 +183,7 @@ class ParamSeparator < AbstractElement
 
   def initialize(token)
     super()
+
     @text = token.to_s
     @separator = true
   end
@@ -195,6 +199,7 @@ public
 class AbstractValueElement < AbstractElement
   def initialize
     super
+
     @numeric_constant = false
     @text_constant = false
     @boolean_constant = false
@@ -376,14 +381,18 @@ class NumericConstant < AbstractValueElement
 
   def initialize(text)
     super()
+
     numeric_classes = %w(Fixnum Bignum Float)
+    float_classes = %w(Rational NumericConstantToken)
+
     f = nil
-    f = text.to_f if text.class.to_s == 'Rational'
+    f = text.to_f if float_classes.include?(text.class.to_s)
     f = text if numeric_classes.include?(text.class.to_s)
-    f = text.to_f if text.class.to_s == 'NumericConstantToken'
+
+    raise(BASICRuntimeError, "'#{text}' is not a number") if f.nil?
+
     @value = float_to_possible_int(f)
     @numeric_constant = true
-    raise(BASICRuntimeError, "'#{text}' is not a number") if @value.nil?
   end
 
   def zero?
@@ -543,6 +552,7 @@ class TextConstant < AbstractValueElement
 
   def initialize(text)
     super()
+
     @value = nil
     @value = text.value if text.class.to_s == 'TextConstantToken'
     raise(BASICRuntimeError, "'#{text}' is not a text constant") if @value.nil?
@@ -578,11 +588,14 @@ class BooleanConstant < AbstractValueElement
 
   def initialize(obj)
     super()
+
     obj_class = obj.class.to_s
+
     @value =
       (obj_class == 'BooleanConstantToken' && obj.to_s == 'TRUE') ||
       (obj_class == 'String' && obj.casecmp('TRUE').zero?) ||
       obj_class == 'TrueClass'
+
     @boolean_constant = true
   end
 
@@ -601,9 +614,12 @@ class FileHandle < AbstractElement
 
   def initialize(num)
     super()
+
     raise(BASICRuntimeError, 'Invalid file reference') unless
       num.class.to_s == 'Fixnum'
+
     raise(BASICRuntimeError, 'Invalid file number') if num < 0
+
     @number = num
     @file_handle = true
   end
@@ -706,8 +722,10 @@ class VariableName < AbstractElement
 
   def initialize(token)
     super()
+
     raise(BASICRuntimeError, "'#{token}' is not a variable name") unless
       token.class.to_s == 'VariableToken'
+
     @name = token
     @variable = true
     @operand = true
@@ -838,6 +856,7 @@ end
 class List < AbstractElement
   def initialize(parsed_expressions)
     super()
+
     @list = true
     @parsed_expressions = parsed_expressions
     @variable = true
@@ -850,8 +869,10 @@ class List < AbstractElement
 
   def dump
     lines = []
+
     @parsed_expressions.each do |expression|
       expression.each { |exp| lines << exp.dump }
+
     end
     lines
   end
@@ -877,6 +898,7 @@ end
 class Remark < AbstractElement
   def initialize(tokens)
     super()
+
     @texts = []
     @texts = tokens.map(&:to_s) unless tokens.nil?
   end

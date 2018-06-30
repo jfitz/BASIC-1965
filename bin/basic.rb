@@ -24,6 +24,7 @@ class Shell
     @interpreter = interpreter
     @program = program
     @tokenbuilders = make_command_tokenbuilders
+    @invalid_tokenbuilder = InvalidTokenBuilder.new
   end
 
   def run
@@ -39,28 +40,20 @@ class Shell
   private
 
   def process_line(cmd)
-    if /\A\d/ =~ cmd
-      # starts with a number, so maybe it is a program line
-      need_prompt = @program.store_program_line(cmd, true)
-    else
-      # immediate command -- execute
-      # tokenize
-      invalid_tokenbuilder = InvalidTokenBuilder.new
-      tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
-      tokens = tokenizer.tokenize(cmd)
-      tokens.delete_if(&:whitespace?)
+    # starts with a number, so maybe it is a program line
+    return need_prompt = @program.store_program_line(cmd, true) if /\A\d/ =~ cmd
 
-      if tokens.empty?
-        need_prompt = false
-      else
-        need_prompt = true
-        process_command(tokens)
-      end
-    end
-    need_prompt
+    # immediate command -- tokenize and execute
+    tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
+    tokens = tokenizer.tokenize(cmd)
+    tokens.delete_if(&:whitespace?)
+
+    process_command(tokens)
   end
 
   def process_command(tokens)
+    return false if tokens.empty?
+
     keyword = tokens[0]
     args = tokens[1..-1]
 
