@@ -233,6 +233,10 @@ class Program
     @lines.key?(line_number)
   end
 
+  def first_line_number
+    @lines.min[0]
+  end
+
   private
 
   def check_program

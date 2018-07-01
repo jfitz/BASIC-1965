@@ -21,7 +21,6 @@ class Interpreter
     @default_args = {}
     @user_functions = {}
     @user_var_values = []
-    @program_lines = {}
     @variables = {}
     @lock_fornext = lock_fornext
     @locked_variables = []
@@ -66,8 +65,8 @@ class Interpreter
   def verify_next_line_number
     raise BASICRuntimeError, 'Program terminated without END' if
       @next_line_number.nil?
-    line_numbers = @program_lines.keys
-    return if line_numbers.include?(@next_line_number)
+
+    return if @program.line_number?(@next_line_number)
 
     raise(BASICRuntimeError, "Line number #{@next_line_number} not found")
   end
@@ -82,7 +81,6 @@ class Interpreter
 
     @trace_out = @trace_flag ? @console_io : @null_out
     @variables = {}
-    @program_lines = program.lines
 
     if show_timing
       timing = Benchmark.measure { run_program }
@@ -95,7 +93,7 @@ class Interpreter
   end
 
   def run_program
-    run_statements(@program_lines) if @program.preexecute_loop(self)
+    run_statements if @program.preexecute_loop(self)
   end
 
   def print_timing(timing)
@@ -108,14 +106,14 @@ class Interpreter
     @console_io.newline
   end
 
-  def run_statements(program_lines)
+  def run_statements
     # run each statement
     # start with the first line number
-    @current_line_number = program_lines.min[0]
+    @current_line_number = @program.first_line_number
     @running = true
 
     begin
-      program_loop(program_lines) while @running
+      program_loop while @running
     rescue Interrupt
       stop_running
     end
@@ -128,7 +126,8 @@ class Interpreter
     statement.print_errors(@console_io)
   end
 
-  def execute_a_statement(program_lines)
+  def execute_a_statement
+    program_lines = @program.lines
     line = program_lines[@current_line_number]
     statement = line.statement
 
@@ -187,7 +186,7 @@ class Interpreter
   end
 
   def debug_shell
-    line = @program_lines[@current_line_number]
+    line = @program.lines[@current_line_number]
     @console_io.newline_when_needed
     @console_io.print_line(@current_line_number.to_s + ': ' + line.pretty)
     @step_mode = false
@@ -215,7 +214,7 @@ class Interpreter
     end
   end
 
-  def program_loop(program_lines)
+  def program_loop
     # pick the next line number
     @next_line_number = @program.find_next_line_number(@current_line_number)
     next_line_number = nil
@@ -231,7 +230,7 @@ class Interpreter
     end
 
     begin
-      execute_a_statement(program_lines)
+      execute_a_statement
       @get_value_seen = []
 
       # set the next line number
@@ -310,7 +309,7 @@ class Interpreter
   end
 
   def line_number?(line_number)
-    @program_lines.key?(line_number)
+    @program.line_number?(line_number)
   end
 
   def trace(tron_flag)
