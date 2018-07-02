@@ -19,7 +19,7 @@ ECODE=0
 
 echo Running program...
 cd "$TESTBED/$TESTNAME"
-ruby basic.rb --no-timing --echo-input <stdin.txt >stdout.txt 2>&1
+ruby basic.rb --no-timing --print-width 0 --echo-input <stdin.txt >stdout.txt 2>&1
 cd ../..
 echo run finished
 

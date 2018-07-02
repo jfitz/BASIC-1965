@@ -41,7 +41,7 @@ class Shell
 
   def process_line(cmd)
     # starts with a number, so maybe it is a program line
-    return need_prompt = @program.store_program_line(cmd, true) if /\A\d/ =~ cmd
+    return @program.store_program_line(cmd, true) if /\A\d/ =~ cmd
 
     # immediate command -- tokenize and execute
     tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
@@ -65,6 +65,8 @@ class Shell
   end
 
   def execute_command(keyword, args)
+    need_prompt = true
+
     case keyword.to_s
     when 'EXIT'
       @done = true
@@ -111,8 +113,11 @@ class Shell
     else
       print "Unknown command #{keyword}\n"
     end
+
+    need_prompt
   rescue BASICCommandError => e
     @console_io.print_line(e.to_s)
+    true
   end
 end
 
