@@ -606,7 +606,7 @@ class Program
       @console_io.print_line(line)
     end
 
-    @console_io.print_line('')
+    @console_io.newline
   end
 
   def print_num_refs(title, refs)
@@ -615,7 +615,7 @@ class Program
     refs.keys.sort.each do |ref|
       lines = refs[ref]
       line = ref.to_s + ":\t" + lines.map(&:to_s).uniq.join(', ')
-      @console_io.newline
+      @console_io.print_line(line)
     end
 
     @console_io.newline
