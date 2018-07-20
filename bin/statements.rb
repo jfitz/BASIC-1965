@@ -805,9 +805,9 @@ class ForStatement < AbstractStatement
 
   def control_and_start(tokens)
     parts = split_on_token(tokens, '=')
-    raise(BASICError, 'Incorrect initialization') if
+    raise(BASICSyntaxError, 'Incorrect initialization') if
       parts.size != 3
-    raise(BASICError, 'Incorrect initialization') if
+    raise(BASICSyntaxError, 'Missing "=" sign') if
       parts[1].to_s != '='
 
     @errors << 'Control variable must be a variable' unless

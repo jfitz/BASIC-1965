@@ -13,7 +13,7 @@ class Tokenizer
       token, count =
              try_invalid(text) if token.nil? && !@invalid_tokenbuilder.nil?
 
-      raise(Exception, "Cannot tokenize '#{text}'") if token.nil?
+      raise(BASICSyntaxError, "Cannot tokenize '#{text}'") if token.nil?
 
       if token.class.to_s == 'Array'
         tokens += token

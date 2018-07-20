@@ -3,7 +3,7 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    raise BASICError, "Invalid line number '#{line_number}'" unless
+    raise BASICSyntaxError, "Invalid line number '#{line_number}'" unless
       line_number.class.to_s == 'NumericConstantToken'
     @line_number = line_number.to_i
   end

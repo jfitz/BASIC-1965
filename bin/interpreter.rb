@@ -402,11 +402,11 @@ class Interpreter
   end
 
   def normalize_subscripts(subscripts)
-    raise(Exception, 'Invalid subscripts container') unless
+    raise(BASICSyntaxError, 'Invalid subscripts container') unless
       subscripts.class.to_s == 'Array'
     int_subscripts = []
     subscripts.each do |subscript|
-      raise(Exception, "Invalid subscript #{subscript}") unless
+      raise(BASICExpressionError, "Invalid subscript #{subscript}") unless
         subscript.numeric_constant?
       int_subscripts << subscript.truncate
     end
@@ -470,7 +470,8 @@ class Interpreter
   def get_value(variable, trace)
     legals = %w(VariableName Value ScalarValue)
 
-    raise(Exception, "#{variable.class}:#{variable} is not a variable") unless
+    raise(BASICSyntaxError,
+          "#{variable.class}:#{variable} is not a variable") unless
       legals.include?(variable.class.to_s)
 
     value = nil
@@ -503,7 +504,8 @@ class Interpreter
   def set_value(variable, value)
     legals = %w(Value Variable VariableName ScalarReference)
 
-    raise(Exception, "#{variable.class}:#{variable} is not a variable name") unless
+    raise(BASICSyntaxError,
+          "#{variable.class}:#{variable} is not a variable name") unless
       legals.include?(variable.class.to_s)
 
     raise(BASICRuntimeError, "Cannot change locked variable #{variable}") if

@@ -23,7 +23,7 @@ class ScalarValue < Value
   def get_subscripts(stack)
     subscripts = stack.pop
     if subscripts.empty?
-      raise(Exception,
+      raise(BASICExpressionError,
             'Variable expects subscripts, found empty parentheses')
     end
     subscripts
@@ -983,7 +983,7 @@ class AbstractExpression
     end
 
     if element.nil?
-      raise(BASICError,
+      raise(BASICSyntaxError,
             "Token '#{token.class}:#{token}' is not a value or operator")
     end
 
@@ -1155,7 +1155,7 @@ class UserFunctionDefinition
     line_text = tokens.map(&:to_s).join
     parts = split_tokens(tokens)
 
-    raise(BASICError, "'#{line_text}' is not a valid assignment") if
+    raise(BASICSyntaxError, "'#{line_text}' is not a valid assignment") if
       parts.size != 3
 
     user_function_prototype = UserFunctionPrototype.new(parts[0])
@@ -1215,7 +1215,7 @@ class UserFunctionPrototype
     names = @arguments.map(&:to_s)
 
     # arguments must be unique
-    raise(BASICError, 'Duplicate parameters') unless
+    raise(BASICExpressionError, 'Duplicate parameters') unless
       names.uniq.size == names.size
   end
 
@@ -1227,7 +1227,7 @@ class UserFunctionPrototype
 
   # verify tokens are UserFunction, open, close
   def check_tokens(tokens)
-    raise(BASICError, 'Invalid function specification') unless
+    raise(BASICSyntaxError, 'Invalid function specification') unless
       tokens.size >= 3 && tokens[0].user_function? &&
       tokens[1].groupstart? && tokens[-1].groupend?
   end
@@ -1237,12 +1237,12 @@ class UserFunctionPrototype
     variables = params.values_at(* params.each_index.select(&:even?))
 
     variables.each do |variable|
-      raise(BASICError, 'Invalid parameter') unless variable.variable?
+      raise(BASICSyntaxError, 'Invalid parameter') unless variable.variable?
     end
 
     separators = params.values_at(* params.each_index.select(&:odd?))
     separators.each do |separator|
-      raise(BASICError, 'Invalid list separator') unless
+      raise(BASICSyntaxError, 'Invalid list separator') unless
         separator.separator?
     end
 
@@ -1259,7 +1259,7 @@ class AbstractAssignment
     @token_lists = split_tokens(tokens)
     line_text = tokens.map(&:to_s).join
 
-    raise(BASICError, "'#{line_text}' is not a valid assignment") if
+    raise(BASICSyntaxError, "'#{line_text}' is not a valid assignment") if
       @token_lists.size != 3 ||
       !(@token_lists[1].operator? && @token_lists[1].equals?)
   end

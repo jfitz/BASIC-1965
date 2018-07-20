@@ -246,7 +246,7 @@ class FileHandler
       when :read
         @file = File.new(@file_name, 'rt')
       else
-        raise(Exception, 'Invalid file mode')
+        raise(BASICRuntimeError, 'Invalid file mode')
       end
       @mode = mode
     else
