@@ -419,7 +419,7 @@ class Program
       File.open(filename, 'w') do |file|
         line_numbers.each do |line_num|
           line = @lines[line_num]
-          file.puts line_num.to_s + ' ' + line.list
+          file.puts line_num.to_s + line.list
         end
         file.close
       end
