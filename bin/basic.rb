@@ -100,15 +100,15 @@ class Shell
       end
     when 'CROSSREF'
       @program.crossref if @program.check
-    when '.DIMS'
+    when 'DIMS'
       @interpreter.dump_dims
-    when '.PARSE'
+    when 'PARSE'
       @program.parse(args)
-    when '.TOKENS'
+    when 'TOKENS'
       @program.list(args, true)
-    when '.UDFS'
+    when 'UDFS'
       @interpreter.dump_user_functions
-    when '.VARS'
+    when 'VARS'
       @interpreter.dump_vars
     else
       print "Unknown command #{keyword}\n"
@@ -159,8 +159,8 @@ def make_command_tokenbuilders
   tokenbuilders = []
 
   keywords = %w(
-    BREAK CROSSREF DELETE EXIT LIST LOAD NEW PRETTY PROFILE RENUMBER RUN SAVE
-    TRACE .DIMS .PARSE .TOKENS .UDFS .VARS
+    BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW PARSE PRETTY PROFILE
+    RENUMBER RUN SAVE TOKENS TRACE UDFS VARS
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
