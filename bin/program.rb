@@ -340,28 +340,31 @@ class Program
     raise(BASICRuntimeError, 'FOR without NEXT')
   end
 
-  def run(interpreter, trace_flag, show_timing, show_profile)
-    if !@lines.empty?
-      if @errors.empty?
-        reset_profile_metrics
-        interpreter.run(self, trace_flag, show_timing, show_profile)
-      else
-        @errors.each { |error| @console_io.print_line(error) }
-      end
-    else
+  def run(interpreter, trace_flag, provenence, show_timing, show_profile)
+    if @lines.empty?
       @console_io.print_line('No program loaded')
+      return
     end
+
+    unless @errors.empty?
+      @errors.each { |error| @console_io.print_line(error) }
+      return
+    end
+
+    reset_profile_metrics
+    interpreter.run(self, trace_flag, provenence, show_timing, show_profile)
   end
 
   def profile(args)
     line_number_range = line_list_spec(args)
 
-    if !@lines.empty?
-      line_numbers = line_number_range.line_numbers
-      profile_lines_errors(line_numbers)
-    else
+    if @lines.empty?
       @console_io.print_line('No program loaded')
+      return
     end
+
+    line_numbers = line_number_range.line_numbers
+    profile_lines_errors(line_numbers)
   end
 
   private
