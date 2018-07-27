@@ -28,7 +28,7 @@ NUM_FAIL=0
 
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt" ]
 then
-    echo List program...
+    echo List program with options $GROUP_OPTIONS $TEST_OPTIONS
     cd "$TESTBED/$TESTNAME"
     ruby basic.rb --list $TESTNAME.bas --no-heading --print-width 0 >list.txt $GROUP_OPTIONS $TEST_OPTIONS
     cd ../..
@@ -51,7 +51,7 @@ then
 	PARSE_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/parse_options.txt")
     fi
 
-    echo Parse program...
+    echo Parse program with options $GROUP_OPTIONS $TEST_OPTIONS $PARSE_OPTIONS
     cd "$TESTBED/$TESTNAME"
     ruby basic.rb --parse $TESTNAME.bas --no-heading --print-width 0 >parse.txt $GROUP_OPTIONS $TEST_OPTIONS $PARSE_OPTIONS
     cd ../..
@@ -74,7 +74,7 @@ then
 	PRETTY_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/pretty_options.txt")
     fi
 
-    echo Pretty program...
+    echo Pretty program with options $GROUP_OPTIONS $TEST_OPTIONS $PRETTY_OPTIONS
     cd "$TESTBED/$TESTNAME"
     ruby basic.rb --pretty $TESTNAME.bas --no-heading --print-width 0 >pretty.txt $GROUP_OPTIONS $TEST_OPTIONS $PRETTY_OPTIONS
     cd ../..
@@ -92,7 +92,7 @@ fi
 
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/crossref.txt" ]
 then
-    echo Crossref program...
+    echo Crossref program with options $GROUP_OPTIONS $TEST_OPTIONS
     cd "$TESTBED/$TESTNAME"
     ruby basic.rb --crossref $TESTNAME.bas --no-heading --print-width 0 >crossref.txt $GROUP_OPTIONS $TEST_OPTIONS
     cd ../..
@@ -124,7 +124,6 @@ then
     if [ -e "$TESTBED/$TESTNAME/stdin.txt" ]
     then
 	cd "$TESTBED/$TESTNAME"
-	echo ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --echo-input stdin.txt stdout.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 	ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --echo-input <stdin.txt >stdout.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 	cd ../..
     else
@@ -171,7 +170,7 @@ then
 	RUN_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/run_options.txt")
     fi
 
-    echo Trace program with options $GROUP_OPTIONS $TEST_OPTIONS $RUN_OPTIONS
+    echo Trace program with options $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 
     if [ -e "$TESTBED/$TESTNAME/stdin.txt" ]
     then

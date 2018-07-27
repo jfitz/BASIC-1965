@@ -27,6 +27,11 @@ echo run finished
 echo Comparing stdout...
 diff "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt"
 ((ECODE+=$?))
+
+if [ $ECODE -ne 0 ]
+then
+   cp "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt"
+fi
 echo compare done
 
 echo End test $TESTNAME

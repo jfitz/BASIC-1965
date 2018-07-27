@@ -73,11 +73,11 @@ class Interpreter
 
   public
 
-  def run(program, trace_flag, provenence, show_timing, show_profile)
+  def run(program, trace_flag, action_flags, show_timing, show_profile)
     @program = program
 
     @trace_flag = trace_flag
-    @provenence = provenence
+    @action_flags = action_flags
     @step_mode = false
 
     @trace_out = @trace_flag ? @console_io : @null_out
@@ -353,12 +353,7 @@ class Interpreter
   def dump_vars
     @variables.each do |name, dict|
       value = dict['value']
-      if @provenence
-        line = dict['line']
-        @console_io.print_line("#{name}: (#{line}) #{value}")
-      else
-        @console_io.print_line("#{name}: #{value}")
-      end
+      @console_io.print_line("#{name}: #{value}")
     end
 
     @console_io.newline
@@ -510,7 +505,8 @@ class Interpreter
     end
 
     if @trace_flag && trace && !seen
-      if @provenence && !line.nil?
+      provenence = @action_flags['provenence']
+      if provenence && !line.nil?
         text = ' ' + variable.to_s + ': (' + line.to_s + ') ' + value.to_s
       else
         text = ' ' + variable.to_s + ': ' + value.to_s
