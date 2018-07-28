@@ -19,12 +19,12 @@ require_relative 'program'
 
 # interactive shell
 class Shell
-  def initialize(console_io, interpreter, program, action_flags)
+  def initialize(console_io, interpreter, program, action_flags, tokenbuilders)
     @console_io = console_io
     @interpreter = interpreter
     @program = program
     @action_flags = action_flags
-    @tokenbuilders = make_command_tokenbuilders
+    @tokenbuilders = tokenbuilders
     @invalid_tokenbuilder = InvalidTokenBuilder.new
   end
 
@@ -301,7 +301,11 @@ elsif !cref_filename.nil?
 else
   interpreter = Interpreter.new(console_io, interpreter_flags)
   interpreter.set_default_args('RND', NumericConstant.new(1))
-  shell = Shell.new(console_io, interpreter, program, action_flags)
+  tokenbuilders = make_command_tokenbuilders
+
+  shell =
+    Shell.new(console_io, interpreter, program, action_flags, tokenbuilders)
+
   shell.run
 end
 
