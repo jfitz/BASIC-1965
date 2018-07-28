@@ -73,7 +73,7 @@ class Interpreter
 
   public
 
-  def run(program, action_flags, show_timing, show_profile)
+  def run(program, action_flags)
     @program = program
 
     @action_flags = action_flags
@@ -83,24 +83,11 @@ class Interpreter
     @trace_out = trace_flag ? @console_io : @null_out
     @variables = {}
 
-    timing = Benchmark.measure { run_program }
-
-    print_timing(timing) if show_timing
-    @program.profile('') if show_profile
+    run_program
   end
 
   def run_program
     run_statements if @program.preexecute_loop(self)
-  end
-
-  def print_timing(timing)
-    user_time = timing.utime + timing.cutime
-    sys_time = timing.stime + timing.cstime
-    @console_io.newline
-    @console_io.print_line('CPU time:')
-    @console_io.print_line(" user: #{user_time.round(2)}")
-    @console_io.print_line(" system: #{sys_time.round(2)}")
-    @console_io.newline
   end
 
   def run_statements

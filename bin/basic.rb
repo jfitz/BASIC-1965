@@ -76,13 +76,18 @@ class Shell
       @interpreter.clear_variables
       @interpreter.clear_breakpoints
     when 'RUN'
-      @program.run(@interpreter, @action_flags, true, false) if @program.check
+      if @program.check
+        timing = Benchmark.measure {
+          @program.run(@interpreter, @action_flags)
+        }
+        print_timing(timing, @console_io)
+      end
     when 'BREAK'
       @interpreter.set_breakpoints(args)
     when 'TRACE'
       old_trace_flag = @action_flags['trace']
       @action_flags['trace'] = true
-      @program.run(@interpreter, @action_flags, false, false) if @program.check
+      @program.run(@interpreter, @action_flags) if @program.check
       @action_flags['trace'] = old_trace_flag
     when 'LOAD'
       @interpreter.clear_breakpoints
@@ -181,6 +186,16 @@ def make_command_tokenbuilders
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
+def print_timing(timing, console_io)
+  user_time = timing.utime + timing.cutime
+  sys_time = timing.stime + timing.cstime
+  console_io.newline
+  console_io.print_line('CPU time:')
+  console_io.print_line(" user: #{user_time.round(2)}")
+  console_io.print_line(" system: #{sys_time.round(2)}")
+  console_io.newline
+end
+
 options = {}
 OptionParser.new do |opt|
   opt.on('-l', '--list SOURCE') { |o| options[:list_name] = o }
@@ -207,8 +222,6 @@ OptionParser.new do |opt|
   opt.on('--lock-fornext') { |o| options[:lock_fornext] = o }
 end.parse!
 
-action_flags = {}
-output_flags = {}
 list_filename = options[:list_name]
 list_tokens = options.key?(:tokens)
 pretty_filename = options[:pretty_name]
@@ -217,10 +230,13 @@ run_filename = options[:run_name]
 cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 show_heading = !options.key?(:no_heading)
-action_flags['trace'] = options.key?(:trace)
-action_flags['provenence'] = options.key?(:provenence)
 show_timing = !options.key?(:no_timing)
 
+action_flags = {}
+action_flags['trace'] = options.key?(:trace)
+action_flags['provenence'] = options.key?(:provenence)
+
+output_flags = {}
 output_flags['echo'] = options.key?(:echo_input)
 output_flags['speed'] = 0
 output_flags['speed'] = 10 if options.key?(:tty)
@@ -260,7 +276,11 @@ if !run_filename.nil?
                       lock_fornext)
 
     interpreter.set_default_args('RND', NumericConstant.new(1))
-    program.run(interpreter, action_flags, show_timing, show_profile)
+    timing = Benchmark.measure {
+      program.run(interpreter, action_flags)
+    }
+    print_timing(timing, console_io) if show_timing
+    program.profile('') if show_profile
   end
 elsif !list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
