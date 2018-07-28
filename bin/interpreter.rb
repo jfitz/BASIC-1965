@@ -73,14 +73,14 @@ class Interpreter
 
   public
 
-  def run(program, trace_flag, action_flags, show_timing, show_profile)
+  def run(program, action_flags, show_timing, show_profile)
     @program = program
 
-    @trace_flag = trace_flag
     @action_flags = action_flags
     @step_mode = false
 
-    @trace_out = @trace_flag ? @console_io : @null_out
+    trace_flag = @action_flags['trace']
+    @trace_out = trace_flag ? @console_io : @null_out
     @variables = {}
 
     timing = Benchmark.measure { run_program }
@@ -309,7 +309,8 @@ class Interpreter
   end
 
   def trace(tron_flag)
-    @trace_out = (@trace_flag || tron_flag) ? @console_io : @null_out
+    trace_flag = @action_flags['trace']
+    @trace_out = (trace_flag || tron_flag) ? @console_io : @null_out
   end
 
   def clear_variables
@@ -327,8 +328,9 @@ class Interpreter
 
   # returns an Array of values
   def evaluate(parsed_expressions, trace)
-    old_trace_flag = @trace_flag
-    @trace_flag = trace
+    old_trace_flag = @action_flags['trace']
+    @action_flags['trace'] = trace
+
     result_values = []
     parsed_expressions.each do |parsed_expression|
       stack = []
@@ -346,7 +348,8 @@ class Interpreter
       item = stack[0]
       result_values << item
     end
-    @trace_flag = old_trace_flag
+
+    @action_flags['trace'] = old_trace_flag
     result_values
   end
 
@@ -504,7 +507,8 @@ class Interpreter
       seen = @get_value_seen.include?(variable)
     end
 
-    if @trace_flag && trace && !seen
+    trace_flag = @action_flags['trace']
+    if trace_flag && trace && !seen
       provenence = @action_flags['provenence']
       if provenence && !line.nil?
         text = ' ' + variable.to_s + ': (' + line.to_s + ') ' + value.to_s

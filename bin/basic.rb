@@ -76,13 +76,14 @@ class Shell
       @interpreter.clear_variables
       @interpreter.clear_breakpoints
     when 'RUN'
-      @program.run(@interpreter, false, @action_flags, true, false) if
-        @program.check
+      @program.run(@interpreter, @action_flags, true, false) if @program.check
     when 'BREAK'
       @interpreter.set_breakpoints(args)
     when 'TRACE'
-      @program.run(@interpreter, true, @action_flags, false, false) if
-        @program.check
+      old_trace_flag = @action_flags['trace']
+      @action_flags['trace'] = true
+      @program.run(@interpreter, @action_flags, false, false) if @program.check
+      @action_flags['trace'] = old_trace_flag
     when 'LOAD'
       @interpreter.clear_breakpoints
       @program.load(args)
@@ -216,7 +217,7 @@ cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 show_heading = !options.key?(:no_heading)
 echo_input = options.key?(:echo_input)
-trace_flag = options.key?(:trace)
+action_flags['trace'] = options.key?(:trace)
 action_flags['provenence'] = options.key?(:provenence)
 show_timing = !options.key?(:no_timing)
 output_speed = 0
@@ -257,7 +258,7 @@ if !run_filename.nil?
                       lock_fornext)
 
     interpreter.set_default_args('RND', NumericConstant.new(1))
-    program.run(interpreter, trace_flag, action_flags, show_timing, show_profile)
+    program.run(interpreter, action_flags, show_timing, show_profile)
   end
 elsif !list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
