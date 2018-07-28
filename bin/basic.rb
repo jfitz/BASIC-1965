@@ -252,10 +252,11 @@ output_flags['implied_semicolon'] = options.key?(:implied_semicolon)
 output_flags['qmark_after_prompt'] = options.key?(:qmark_after_prompt)
 output_flags['default_prompt'] = TextConstantToken.new('"? "')
 
-int_floor = options.key?(:int_floor)
-ignore_rnd_arg = options.key?(:ignore_rnd_arg)
-randomize = options.key?(:randomize)
-lock_fornext = options.key?(:lock_fornext)
+interpreter_flags = {}
+interpreter_flags['int_floor'] = options.key?(:int_floor)
+interpreter_flags['ignore_rnd_arg'] = options.key?(:ignore_rnd_arg)
+interpreter_flags['randomize'] = options.key?(:randomize)
+interpreter_flags['lock_fornext'] = options.key?(:lock_fornext)
 
 console_io = ConsoleIo.new(output_flags)
 
@@ -271,14 +272,13 @@ if !run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   nametokens = [TextConstant.new(token)]
   if program.load(nametokens) && program.check
-    interpreter =
-      Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
-                      lock_fornext)
-
+    interpreter = Interpreter.new(console_io, interpreter_flags)
     interpreter.set_default_args('RND', NumericConstant.new(1))
+
     timing = Benchmark.measure {
       program.run(interpreter, action_flags)
     }
+
     print_timing(timing, console_io) if show_timing
     program.profile('') if show_profile
   end
@@ -299,10 +299,7 @@ elsif !cref_filename.nil?
   nametokens = [TextConstant.new(token)]
   program.crossref if program.load(nametokens)
 else
-  interpreter =
-    Interpreter.new(console_io, int_floor, ignore_rnd_arg, randomize,
-                    lock_fornext)
-
+  interpreter = Interpreter.new(console_io, interpreter_flags)
   interpreter.set_default_args('RND', NumericConstant.new(1))
   shell = Shell.new(console_io, interpreter, program, action_flags)
   shell.run

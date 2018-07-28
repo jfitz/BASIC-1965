@@ -5,14 +5,16 @@ class Interpreter
   attr_reader :console_io
   attr_reader :trace_out
 
-  def initialize(console_io, int_floor, ignore_rnd_arg, randomize,
-                 lock_fornext)
-    @running = false
+  def initialize(console_io, interpreter_flags)
     @randomizer = Random.new(1)
-    @randomizer = Random.new if randomize
-    @int_floor = int_floor
-    @ignore_rnd_arg = ignore_rnd_arg
+    @randomizer = Random.new if interpreter_flags['randomize']
+    @int_floor = interpreter_flags['int_floor']
+    @ignore_rnd_arg = interpreter_flags['ignore_rnd_arg']
+    @lock_fornext = interpreter_flags['lock_fornext']
+
+    @tokenbuilders = make_debug_tokenbuilders
     @console_io = console_io
+
     @data_store = DataStore.new
     @file_handlers = {}
     @return_stack = []
@@ -22,12 +24,11 @@ class Interpreter
     @user_functions = {}
     @user_var_values = []
     @variables = {}
-    @lock_fornext = lock_fornext
     @locked_variables = []
     @get_value_seen = []
     @null_out = NullOut.new
-    @tokenbuilders = make_debug_tokenbuilders
     @breakpoints = {}
+    @running = false
   end
 
   private
