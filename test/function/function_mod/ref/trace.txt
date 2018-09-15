@@ -1,0 +1,89 @@
+10: REM This is a test
+15: PRINT "NUMBERS", "QUOTIENT", "MODULUS"
+NUMBERS         QUOTIENT        MODULUS
+20: LET A = 12
+ A = 12
+21: LET B = 7
+ B = 7
+22: LET Q = A / B
+ A: 12
+ B: 7
+ Q = 1.7142857142857142
+23: LET M = MOD(A, B)
+ A: 12
+ B: 7
+ M = 5
+24: PRINT A; B, Q, M
+ A: 12
+ 12   
+ B: 7
+ 7              
+ Q: 1.7142857142857142
+ 1.71429        
+ M: 5
+ 5
+30: LET A = -12
+ A = -12
+31: LET B = 7
+ B = 7
+32: LET Q = A / B
+ A: -12
+ B: 7
+ Q = -1.7142857142857142
+33: LET M = MOD(A, B)
+ A: -12
+ B: 7
+ M = 2
+34: PRINT A; B, Q, M
+ A: -12
+-12   
+ B: 7
+ 7              
+ Q: -1.7142857142857142
+-1.71429        
+ M: 2
+ 2
+40: LET A = 12
+ A = 12
+41: LET B = -7
+ B = -7
+42: LET Q = A / B
+ A: 12
+ B: -7
+ Q = -1.7142857142857142
+43: LET M = MOD(A, B)
+ A: 12
+ B: -7
+ M = -2
+44: PRINT A; B, Q, M
+ A: 12
+ 12   
+ B: -7
+-7              
+ Q: -1.7142857142857142
+-1.71429        
+ M: -2
+-2
+50: LET A = -12
+ A = -12
+51: LET B = -7
+ B = -7
+52: LET Q = A / B
+ A: -12
+ B: -7
+ Q = 1.7142857142857142
+53: LET M = MOD(A, B)
+ A: -12
+ B: -7
+ M = -5
+54: PRINT A; B, Q, M
+ A: -12
+-12   
+ B: -7
+-7              
+ Q: 1.7142857142857142
+ 1.71429        
+ M: -5
+-5
+90: STOP
+STOP in line 90

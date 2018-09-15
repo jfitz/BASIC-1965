@@ -462,6 +462,10 @@ class NumericConstant < AbstractValueElement
     NumericConstant.new(@value > 0 ? Math.log(@value) : 0)
   end
 
+  def mod(other)
+    NumericConstant.new(other.to_v != 0 ? @value % other.to_v : 0)
+  end
+
   def abs
     NumericConstant.new(@value >= 0 ? @value : -@value)
   end

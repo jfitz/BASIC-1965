@@ -383,6 +383,28 @@ class FunctionLog < AbstractScalarFunction
   end
 end
 
+# function MOD
+class FunctionMod < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [
+      { 'type' => 'numeric', 'shape' => 'scalar' },
+      { 'type' => 'numeric', 'shape' => 'scalar' }
+    ]
+  end
+
+  # return a single value
+  def evaluate(interpreter, stack)
+    args = stack.pop
+
+    raise(BASICRuntimeError, 'Wrong arguments for function') unless
+      match_args_to_signature(args, @signature)
+
+    args[0].mod(args[1])
+  end
+end
+
 # function RND
 class FunctionRnd < AbstractScalarFunction
   def initialize(text)
@@ -546,23 +568,24 @@ end
 # class to make functions, given the name
 class FunctionFactory
   @functions = {
-    'INT' => FunctionInt,
-    'RND' => FunctionRnd,
-    'EXP' => FunctionExp,
-    'LOG' => FunctionLog,
     'ABS' => FunctionAbs,
-    'SQR' => FunctionSqr,
-    'SIN' => FunctionSin,
-    'COS' => FunctionCos,
-    'TAN' => FunctionTan,
     'ATN' => FunctionAtn,
-    'SGN' => FunctionSgn,
-    'TRN' => FunctionTrn,
-    'ZER' => FunctionZer,
     'CON' => FunctionCon,
-    'IDN' => FunctionIdn,
+    'COS' => FunctionCos,
     'DET' => FunctionDet,
-    'INV' => FunctionInv
+    'EXP' => FunctionExp,
+    'IDN' => FunctionIdn,
+    'INT' => FunctionInt,
+    'INV' => FunctionInv,
+    'LOG' => FunctionLog,
+    'MOD' => FunctionMod,
+    'RND' => FunctionRnd,
+    'SGN' => FunctionSgn,
+    'SIN' => FunctionSin,
+    'SQR' => FunctionSqr,
+    'TAN' => FunctionTan,
+    'TRN' => FunctionTrn,
+    'ZER' => FunctionZer
   }
 
   def self.valid?(text)

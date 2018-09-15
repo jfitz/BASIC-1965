@@ -1,0 +1,138 @@
+10 REM This is a test
+ Remark:This is a test
+15 PRINT "NUMBERS","QUOTIENT","MODULUS"
+ ITEMS
+ TextConstant:"NUMBERS"
+ CarriageControl:,
+ TextConstant:"QUOTIENT"
+ CarriageControl:,
+ TextConstant:"MODULUS"
+ CarriageControl:NL
+20 LET A=12
+ ScalarReference:A
+ NumericConstant:12
+ AssignmentOperator:=
+21 LET B=7
+ ScalarReference:B
+ NumericConstant:7
+ AssignmentOperator:=
+22 LET Q=A/B
+ ScalarReference:Q
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+23 LET M=MOD(A,B)
+ ScalarReference:M
+ ScalarValue:A
+ ScalarValue:B
+ FunctionMod
+ AssignmentOperator:=
+24 PRINT A;B,Q,M
+ ITEMS
+ ScalarValue:A
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:Q
+ CarriageControl:,
+ ScalarValue:M
+ CarriageControl:NL
+30 LET A=-12
+ ScalarReference:A
+ NumericConstant:12
+ UnaryOperator:-
+ AssignmentOperator:=
+31 LET B=7
+ ScalarReference:B
+ NumericConstant:7
+ AssignmentOperator:=
+32 LET Q=A/B
+ ScalarReference:Q
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+33 LET M=MOD(A,B)
+ ScalarReference:M
+ ScalarValue:A
+ ScalarValue:B
+ FunctionMod
+ AssignmentOperator:=
+34 PRINT A;B,Q,M
+ ITEMS
+ ScalarValue:A
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:Q
+ CarriageControl:,
+ ScalarValue:M
+ CarriageControl:NL
+40 LET A=12
+ ScalarReference:A
+ NumericConstant:12
+ AssignmentOperator:=
+41 LET B=-7
+ ScalarReference:B
+ NumericConstant:7
+ UnaryOperator:-
+ AssignmentOperator:=
+42 LET Q=A/B
+ ScalarReference:Q
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+43 LET M=MOD(A,B)
+ ScalarReference:M
+ ScalarValue:A
+ ScalarValue:B
+ FunctionMod
+ AssignmentOperator:=
+44 PRINT A;B,Q,M
+ ITEMS
+ ScalarValue:A
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:Q
+ CarriageControl:,
+ ScalarValue:M
+ CarriageControl:NL
+50 LET A=-12
+ ScalarReference:A
+ NumericConstant:12
+ UnaryOperator:-
+ AssignmentOperator:=
+51 LET B=-7
+ ScalarReference:B
+ NumericConstant:7
+ UnaryOperator:-
+ AssignmentOperator:=
+52 LET Q=A/B
+ ScalarReference:Q
+ ScalarValue:A
+ ScalarValue:B
+ BinaryOperator:/
+ AssignmentOperator:=
+53 LET M=MOD(A,B)
+ ScalarReference:M
+ ScalarValue:A
+ ScalarValue:B
+ FunctionMod
+ AssignmentOperator:=
+54 PRINT A;B,Q,M
+ ITEMS
+ ScalarValue:A
+ CarriageControl:;
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:Q
+ CarriageControl:,
+ ScalarValue:M
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
