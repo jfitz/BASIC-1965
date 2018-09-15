@@ -464,7 +464,7 @@ module FileFunctions
   def get_file_handle(interpreter, file_tokens)
     return nil if file_tokens.nil?
 
-    file_handles = file_tokens.evaluate(interpreter, false)
+    file_handles = file_tokens.evaluate(interpreter)
     file_handles[0]
   end
 
@@ -500,7 +500,7 @@ class DataStatement < AbstractStatement
 
   def pre_execute(interpreter)
     ds = interpreter.get_data_store(nil)
-    data_list = @expressions.evaluate(interpreter, false)
+    data_list = @expressions.evaluate(interpreter)
     ds.store(data_list)
   end
 
@@ -584,7 +584,7 @@ class DimStatement < AbstractStatement
 
   def execute(interpreter)
     @expression_list.each do |expression|
-      variables = expression.evaluate(interpreter, false)
+      variables = expression.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
       if subscripts.empty?
@@ -662,7 +662,7 @@ class FilesStatement < AbstractStatement
   end
 
   def pre_execute(interpreter)
-    file_names = @expressions.evaluate(interpreter, false)
+    file_names = @expressions.evaluate(interpreter)
     interpreter.add_file_names(file_names)
   end
 
@@ -689,7 +689,7 @@ class ForNextControl
   end
 
   def bump_control(interpreter)
-    current_value = interpreter.get_value(@control, false)
+    current_value = interpreter.get_value(@control)
     current_value += @step_value
     interpreter.unlock_variable(@control)
     interpreter.set_value(@control, current_value)
@@ -709,7 +709,7 @@ class ForNextControl
 
   def terminated?(interpreter)
     zero = NumericConstant.new(0)
-    current_value = interpreter.get_value(@control, true)
+    current_value = interpreter.get_value(@control)
     if @step_value > zero
       current_value + @step_value > @end
     elsif @step_value < zero
@@ -773,9 +773,9 @@ class ForStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    from = @start.evaluate(interpreter, true)[0]
-    to = @end.evaluate(interpreter, true)[0]
-    step = @step_value.evaluate(interpreter, true)[0]
+    from = @start.evaluate(interpreter)[0]
+    to = @end.evaluate(interpreter)[0]
+    step = @step_value.evaluate(interpreter)[0]
 
     fornext_control =
       ForNextControl.new(@control, interpreter, from, to, step)
@@ -957,7 +957,7 @@ class IfStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    values = @expression.evaluate(interpreter, true)
+    values = @expression.evaluate(interpreter)
 
     raise(BASICRuntimeError, 'Expression error') unless
       values.size == 1
@@ -1042,7 +1042,7 @@ class InputStatement < AbstractStatement
 
     prompt = nil
     unless @prompt.nil?
-      prompts = @prompt.evaluate(interpreter, false)
+      prompts = @prompt.evaluate(interpreter)
       prompt = prompts[0]
     end
 
@@ -1060,7 +1060,7 @@ class InputStatement < AbstractStatement
       zip(@input_items, values[0..@input_items.length])
 
     name_value_pairs.each do |hash|
-      l_values = hash['name'].evaluate(interpreter, false)
+      l_values = hash['name'].evaluate(interpreter)
       l_value = l_values[0]
       value = hash['value']
       interpreter.set_value(l_value, value)
@@ -1085,7 +1085,7 @@ class InputStatement < AbstractStatement
   def first_value(input_items, interpreter)
     first_list = input_items[0]
     expr = ValueScalarExpression.new(first_list)
-    values = expr.evaluate(interpreter, false)
+    values = expr.evaluate(interpreter)
     values[0]
   end
 
@@ -1421,7 +1421,7 @@ class ReadStatement < AbstractReadStatement
     ds = interpreter.get_data_store(fh)
 
     @read_items.each do |item|
-      targets = item.evaluate(interpreter, false)
+      targets = item.evaluate(interpreter)
       targets.each do |target|
         value = ds.read
         interpreter.set_value(target, value)
@@ -1558,9 +1558,9 @@ class TraceStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    values = @expression.evaluate(interpreter, true)
+    values = @expression.evaluate(interpreter)
     value = values[0]
-    interpreter.trace(value.to_v)
+    interpreter.set_trace(value.to_v)
   end
 
   def variables
@@ -1737,7 +1737,7 @@ class ArrReadStatement < AbstractReadStatement
     ds = interpreter.get_data_store(fh)
 
     @read_items.each do |item|
-      targets = item.evaluate(interpreter, false)
+      targets = item.evaluate(interpreter)
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
@@ -2001,7 +2001,7 @@ class MatReadStatement < AbstractReadStatement
     ds = interpreter.get_data_store(fh)
 
     @read_items.each do |item|
-      targets = item.evaluate(interpreter, false)
+      targets = item.evaluate(interpreter)
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?

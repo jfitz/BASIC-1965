@@ -106,7 +106,7 @@ class UserFunction < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack, trace)
+  def evaluate(interpreter, stack)
     definition = interpreter.get_user_function(@name)
 
     # verify function is defined
@@ -127,7 +127,7 @@ class UserFunction < AbstractScalarFunction
     interpreter.define_user_var_values(names_and_values)
 
     expression = definition.expression
-    results = expression.evaluate(interpreter, trace)
+    results = expression.evaluate(interpreter)
 
     interpreter.clear_user_var_values
     results[0]
@@ -159,7 +159,7 @@ class FunctionAbs < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -177,7 +177,7 @@ class FunctionAtn < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -201,7 +201,7 @@ class FunctionCon < AbstractScalarFunction
       ]
   end
 
-  def evaluate(interpreter, stack, _)
+  def evaluate(interpreter, stack)
     if previous_is_array(stack)
       args = stack.pop
 
@@ -234,7 +234,7 @@ class FunctionCos < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -252,7 +252,7 @@ class FunctionDet < AbstractMatrixFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'matrix' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -270,7 +270,7 @@ class FunctionExp < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -294,7 +294,7 @@ class FunctionIdn < AbstractScalarFunction
       ]
   end
 
-  def evaluate(interpreter, stack, _)
+  def evaluate(interpreter, stack)
     if previous_is_array(stack)
       args = stack.pop
 
@@ -335,7 +335,7 @@ class FunctionInt < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack, _)
+  def evaluate(interpreter, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -353,7 +353,7 @@ class FunctionInv < AbstractMatrixFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'matrix' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -373,7 +373,7 @@ class FunctionLog < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -393,7 +393,7 @@ class FunctionRnd < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack, _)
+  def evaluate(interpreter, stack)
     if previous_is_array(stack)
       args = stack.pop
 
@@ -420,7 +420,7 @@ class FunctionSgn < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -438,7 +438,7 @@ class FunctionSin < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -456,7 +456,7 @@ class FunctionSqr < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -474,7 +474,7 @@ class FunctionTan < AbstractScalarFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'scalar' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -492,7 +492,7 @@ class FunctionTrn < AbstractMatrixFunction
     @signature = [{ 'type' => 'numeric', 'shape' => 'matrix' }]
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -518,7 +518,7 @@ class FunctionZer < AbstractScalarFunction
       ]
   end
 
-  def evaluate(interpreter, stack, _)
+  def evaluate(interpreter, stack)
     if previous_is_array(stack)
       args = stack.pop
 

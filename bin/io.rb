@@ -79,7 +79,7 @@ class ConsoleIo
 
     # convert from tokens to values
     expressions = ValueScalarExpression.new(tokens)
-    expressions.evaluate(interpreter, false)
+    expressions.evaluate(interpreter)
   end
 
   def print_item(text)
@@ -285,7 +285,7 @@ class FileHandler
 
     # convert from tokens to values
     expressions = ValueScalarExpression.new(tokens)
-    expressions.evaluate(interpreter, false)
+    expressions.evaluate(interpreter)
   end
 
   def print_item(text)

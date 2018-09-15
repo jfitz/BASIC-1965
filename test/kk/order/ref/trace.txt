@@ -7,120 +7,140 @@
  N = 20
  terminated:false
 30: READ S(I)
+ I: 1
  S(1) = 5
 40: NEXT I
  I: 1
  terminated:false
  I = 2
 30: READ S(I)
+ I: 2
  S(2) = 2
 40: NEXT I
  I: 2
  terminated:false
  I = 3
 30: READ S(I)
+ I: 3
  S(3) = 7
 40: NEXT I
  I: 3
  terminated:false
  I = 4
 30: READ S(I)
+ I: 4
  S(4) = 3
 40: NEXT I
  I: 4
  terminated:false
  I = 5
 30: READ S(I)
+ I: 5
  S(5) = 8
 40: NEXT I
  I: 5
  terminated:false
  I = 6
 30: READ S(I)
+ I: 6
  S(6) = 1
 40: NEXT I
  I: 6
  terminated:false
  I = 7
 30: READ S(I)
+ I: 7
  S(7) = 9
 40: NEXT I
  I: 7
  terminated:false
  I = 8
 30: READ S(I)
+ I: 8
  S(8) = 11
 40: NEXT I
  I: 8
  terminated:false
  I = 9
 30: READ S(I)
+ I: 9
  S(9) = 3
 40: NEXT I
  I: 9
  terminated:false
  I = 10
 30: READ S(I)
+ I: 10
  S(10) = 15
 40: NEXT I
  I: 10
  terminated:false
  I = 11
 30: READ S(I)
+ I: 11
  S(11) = 20
 40: NEXT I
  I: 11
  terminated:false
  I = 12
 30: READ S(I)
+ I: 12
  S(12) = 4
 40: NEXT I
  I: 12
  terminated:false
  I = 13
 30: READ S(I)
+ I: 13
  S(13) = 0
 40: NEXT I
  I: 13
  terminated:false
  I = 14
 30: READ S(I)
+ I: 14
  S(14) = 10
 40: NEXT I
  I: 14
  terminated:false
  I = 15
 30: READ S(I)
+ I: 15
  S(15) = 2
 40: NEXT I
  I: 15
  terminated:false
  I = 16
 30: READ S(I)
+ I: 16
  S(16) = 16
 40: NEXT I
  I: 16
  terminated:false
  I = 17
 30: READ S(I)
+ I: 17
  S(17) = 2
 40: NEXT I
  I: 17
  terminated:false
  I = 18
 30: READ S(I)
+ I: 18
  S(18) = 8
 40: NEXT I
  I: 18
  terminated:false
  I = 19
 30: READ S(I)
+ I: 19
  S(19) = 9
 40: NEXT I
  I: 19
  terminated:false
  I = 20
 30: READ S(I)
+ I: 20
  S(20) = 1
 40: NEXT I
  I: 20
@@ -149,9 +169,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 1
  Y: 2
  S(1) = 2
 250: LET S(J + 1) = X
+ J: 1
  X: 5
  S(2) = 5
 300: NEXT J
@@ -187,9 +209,11 @@
  Y: 3
  X<=Y: false
 240: LET S(J) = Y
+ J: 3
  Y: 3
  S(3) = 3
 250: LET S(J + 1) = X
+ J: 3
  X: 7
  S(4) = 7
 300: NEXT J
@@ -225,9 +249,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 5
  Y: 1
  S(5) = 1
 250: LET S(J + 1) = X
+ J: 5
  X: 8
  S(6) = 8
 300: NEXT J
@@ -279,9 +305,11 @@
  Y: 3
  X<=Y: false
 240: LET S(J) = Y
+ J: 8
  Y: 3
  S(8) = 3
 250: LET S(J + 1) = X
+ J: 8
  X: 11
  S(9) = 11
 300: NEXT J
@@ -333,9 +361,11 @@
  Y: 4
  X<=Y: false
 240: LET S(J) = Y
+ J: 11
  Y: 4
  S(11) = 4
 250: LET S(J + 1) = X
+ J: 11
  X: 20
  S(12) = 20
 300: NEXT J
@@ -355,9 +385,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 12
  Y: 0
  S(12) = 0
 250: LET S(J + 1) = X
+ J: 12
  X: 20
  S(13) = 20
 300: NEXT J
@@ -377,9 +409,11 @@
  Y: 10
  X<=Y: false
 240: LET S(J) = Y
+ J: 13
  Y: 10
  S(13) = 10
 250: LET S(J + 1) = X
+ J: 13
  X: 20
  S(14) = 20
 300: NEXT J
@@ -399,9 +433,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 14
  Y: 2
  S(14) = 2
 250: LET S(J + 1) = X
+ J: 14
  X: 20
  S(15) = 20
 300: NEXT J
@@ -421,9 +457,11 @@
  Y: 16
  X<=Y: false
 240: LET S(J) = Y
+ J: 15
  Y: 16
  S(15) = 16
 250: LET S(J + 1) = X
+ J: 15
  X: 20
  S(16) = 20
 300: NEXT J
@@ -443,9 +481,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 16
  Y: 2
  S(16) = 2
 250: LET S(J + 1) = X
+ J: 16
  X: 20
  S(17) = 20
 300: NEXT J
@@ -465,9 +505,11 @@
  Y: 8
  X<=Y: false
 240: LET S(J) = Y
+ J: 17
  Y: 8
  S(17) = 8
 250: LET S(J + 1) = X
+ J: 17
  X: 20
  S(18) = 20
 300: NEXT J
@@ -487,9 +529,11 @@
  Y: 9
  X<=Y: false
 240: LET S(J) = Y
+ J: 18
  Y: 9
  S(18) = 9
 250: LET S(J + 1) = X
+ J: 18
  X: 20
  S(19) = 20
 300: NEXT J
@@ -509,9 +553,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 19
  Y: 1
  S(19) = 1
 250: LET S(J + 1) = X
+ J: 19
  X: 20
  S(20) = 20
 300: NEXT J
@@ -555,9 +601,11 @@
  Y: 3
  X<=Y: false
 240: LET S(J) = Y
+ J: 2
  Y: 3
  S(2) = 3
 250: LET S(J + 1) = X
+ J: 2
  X: 5
  S(3) = 5
 300: NEXT J
@@ -593,9 +641,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 4
  Y: 1
  S(4) = 1
 250: LET S(J + 1) = X
+ J: 4
  X: 7
  S(5) = 7
 300: NEXT J
@@ -647,9 +697,11 @@
  Y: 3
  X<=Y: false
 240: LET S(J) = Y
+ J: 7
  Y: 3
  S(7) = 3
 250: LET S(J + 1) = X
+ J: 7
  X: 9
  S(8) = 9
 300: NEXT J
@@ -701,9 +753,11 @@
  Y: 4
  X<=Y: false
 240: LET S(J) = Y
+ J: 10
  Y: 4
  S(10) = 4
 250: LET S(J + 1) = X
+ J: 10
  X: 15
  S(11) = 15
 300: NEXT J
@@ -723,9 +777,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 11
  Y: 0
  S(11) = 0
 250: LET S(J + 1) = X
+ J: 11
  X: 15
  S(12) = 15
 300: NEXT J
@@ -745,9 +801,11 @@
  Y: 10
  X<=Y: false
 240: LET S(J) = Y
+ J: 12
  Y: 10
  S(12) = 10
 250: LET S(J + 1) = X
+ J: 12
  X: 15
  S(13) = 15
 300: NEXT J
@@ -767,9 +825,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 13
  Y: 2
  S(13) = 2
 250: LET S(J + 1) = X
+ J: 13
  X: 15
  S(14) = 15
 300: NEXT J
@@ -805,9 +865,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 15
  Y: 2
  S(15) = 2
 250: LET S(J + 1) = X
+ J: 15
  X: 16
  S(16) = 16
 300: NEXT J
@@ -827,9 +889,11 @@
  Y: 8
  X<=Y: false
 240: LET S(J) = Y
+ J: 16
  Y: 8
  S(16) = 8
 250: LET S(J + 1) = X
+ J: 16
  X: 16
  S(17) = 16
 300: NEXT J
@@ -849,9 +913,11 @@
  Y: 9
  X<=Y: false
 240: LET S(J) = Y
+ J: 17
  Y: 9
  S(17) = 9
 250: LET S(J + 1) = X
+ J: 17
  X: 16
  S(18) = 16
 300: NEXT J
@@ -871,9 +937,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 18
  Y: 1
  S(18) = 1
 250: LET S(J + 1) = X
+ J: 18
  X: 16
  S(19) = 16
 300: NEXT J
@@ -949,9 +1017,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 3
  Y: 1
  S(3) = 1
 250: LET S(J + 1) = X
+ J: 3
  X: 5
  S(4) = 5
 300: NEXT J
@@ -1003,9 +1073,11 @@
  Y: 3
  X<=Y: false
 240: LET S(J) = Y
+ J: 6
  Y: 3
  S(6) = 3
 250: LET S(J + 1) = X
+ J: 6
  X: 8
  S(7) = 8
 300: NEXT J
@@ -1057,9 +1129,11 @@
  Y: 4
  X<=Y: false
 240: LET S(J) = Y
+ J: 9
  Y: 4
  S(9) = 4
 250: LET S(J + 1) = X
+ J: 9
  X: 11
  S(10) = 11
 300: NEXT J
@@ -1079,9 +1153,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 10
  Y: 0
  S(10) = 0
 250: LET S(J + 1) = X
+ J: 10
  X: 11
  S(11) = 11
 300: NEXT J
@@ -1101,9 +1177,11 @@
  Y: 10
  X<=Y: false
 240: LET S(J) = Y
+ J: 11
  Y: 10
  S(11) = 10
 250: LET S(J + 1) = X
+ J: 11
  X: 11
  S(12) = 11
 300: NEXT J
@@ -1123,9 +1201,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 12
  Y: 2
  S(12) = 2
 250: LET S(J + 1) = X
+ J: 12
  X: 11
  S(13) = 11
 300: NEXT J
@@ -1161,9 +1241,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 14
  Y: 2
  S(14) = 2
 250: LET S(J + 1) = X
+ J: 14
  X: 15
  S(15) = 15
 300: NEXT J
@@ -1183,9 +1265,11 @@
  Y: 8
  X<=Y: false
 240: LET S(J) = Y
+ J: 15
  Y: 8
  S(15) = 8
 250: LET S(J + 1) = X
+ J: 15
  X: 15
  S(16) = 15
 300: NEXT J
@@ -1205,9 +1289,11 @@
  Y: 9
  X<=Y: false
 240: LET S(J) = Y
+ J: 16
  Y: 9
  S(16) = 9
 250: LET S(J + 1) = X
+ J: 16
  X: 15
  S(17) = 15
 300: NEXT J
@@ -1227,9 +1313,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 17
  Y: 1
  S(17) = 1
 250: LET S(J + 1) = X
+ J: 17
  X: 15
  S(18) = 15
 300: NEXT J
@@ -1305,9 +1393,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 2
  Y: 1
  S(2) = 1
 250: LET S(J + 1) = X
+ J: 2
  X: 3
  S(3) = 3
 300: NEXT J
@@ -1359,9 +1449,11 @@
  Y: 3
  X<=Y: false
 240: LET S(J) = Y
+ J: 5
  Y: 3
  S(5) = 3
 250: LET S(J + 1) = X
+ J: 5
  X: 7
  S(6) = 7
 300: NEXT J
@@ -1413,9 +1505,11 @@
  Y: 4
  X<=Y: false
 240: LET S(J) = Y
+ J: 8
  Y: 4
  S(8) = 4
 250: LET S(J + 1) = X
+ J: 8
  X: 9
  S(9) = 9
 300: NEXT J
@@ -1435,9 +1529,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 9
  Y: 0
  S(9) = 0
 250: LET S(J + 1) = X
+ J: 9
  X: 9
  S(10) = 9
 300: NEXT J
@@ -1473,9 +1569,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 11
  Y: 2
  S(11) = 2
 250: LET S(J + 1) = X
+ J: 11
  X: 10
  S(12) = 10
 300: NEXT J
@@ -1511,9 +1609,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 13
  Y: 2
  S(13) = 2
 250: LET S(J + 1) = X
+ J: 13
  X: 11
  S(14) = 11
 300: NEXT J
@@ -1533,9 +1633,11 @@
  Y: 8
  X<=Y: false
 240: LET S(J) = Y
+ J: 14
  Y: 8
  S(14) = 8
 250: LET S(J + 1) = X
+ J: 14
  X: 11
  S(15) = 11
 300: NEXT J
@@ -1555,9 +1657,11 @@
  Y: 9
  X<=Y: false
 240: LET S(J) = Y
+ J: 15
  Y: 9
  S(15) = 9
 250: LET S(J + 1) = X
+ J: 15
  X: 11
  S(16) = 11
 300: NEXT J
@@ -1577,9 +1681,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 16
  Y: 1
  S(16) = 1
 250: LET S(J + 1) = X
+ J: 16
  X: 11
  S(17) = 11
 300: NEXT J
@@ -1655,9 +1761,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 1
  Y: 1
  S(1) = 1
 250: LET S(J + 1) = X
+ J: 1
  X: 2
  S(2) = 2
 300: NEXT J
@@ -1709,9 +1817,11 @@
  Y: 3
  X<=Y: false
 240: LET S(J) = Y
+ J: 4
  Y: 3
  S(4) = 3
 250: LET S(J + 1) = X
+ J: 4
  X: 5
  S(5) = 5
 300: NEXT J
@@ -1763,9 +1873,11 @@
  Y: 4
  X<=Y: false
 240: LET S(J) = Y
+ J: 7
  Y: 4
  S(7) = 4
 250: LET S(J + 1) = X
+ J: 7
  X: 8
  S(8) = 8
 300: NEXT J
@@ -1785,9 +1897,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 8
  Y: 0
  S(8) = 0
 250: LET S(J + 1) = X
+ J: 8
  X: 8
  S(9) = 8
 300: NEXT J
@@ -1823,9 +1937,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 10
  Y: 2
  S(10) = 2
 250: LET S(J + 1) = X
+ J: 10
  X: 9
  S(11) = 9
 300: NEXT J
@@ -1861,9 +1977,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 12
  Y: 2
  S(12) = 2
 250: LET S(J + 1) = X
+ J: 12
  X: 10
  S(13) = 10
 300: NEXT J
@@ -1883,9 +2001,11 @@
  Y: 8
  X<=Y: false
 240: LET S(J) = Y
+ J: 13
  Y: 8
  S(13) = 8
 250: LET S(J + 1) = X
+ J: 13
  X: 10
  S(14) = 10
 300: NEXT J
@@ -1905,9 +2025,11 @@
  Y: 9
  X<=Y: false
 240: LET S(J) = Y
+ J: 14
  Y: 9
  S(14) = 9
 250: LET S(J + 1) = X
+ J: 14
  X: 10
  S(15) = 10
 300: NEXT J
@@ -1927,9 +2049,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 15
  Y: 1
  S(15) = 1
 250: LET S(J + 1) = X
+ J: 15
  X: 10
  S(16) = 10
 300: NEXT J
@@ -2101,9 +2225,11 @@
  Y: 4
  X<=Y: false
 240: LET S(J) = Y
+ J: 6
  Y: 4
  S(6) = 4
 250: LET S(J + 1) = X
+ J: 6
  X: 7
  S(7) = 7
 300: NEXT J
@@ -2123,9 +2249,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 7
  Y: 0
  S(7) = 0
 250: LET S(J + 1) = X
+ J: 7
  X: 7
  S(8) = 7
 300: NEXT J
@@ -2161,9 +2289,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 9
  Y: 2
  S(9) = 2
 250: LET S(J + 1) = X
+ J: 9
  X: 8
  S(10) = 8
 300: NEXT J
@@ -2199,9 +2329,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 11
  Y: 2
  S(11) = 2
 250: LET S(J + 1) = X
+ J: 11
  X: 9
  S(12) = 9
 300: NEXT J
@@ -2221,9 +2353,11 @@
  Y: 8
  X<=Y: false
 240: LET S(J) = Y
+ J: 12
  Y: 8
  S(12) = 8
 250: LET S(J + 1) = X
+ J: 12
  X: 9
  S(13) = 9
 300: NEXT J
@@ -2259,9 +2393,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 14
  Y: 1
  S(14) = 1
 250: LET S(J + 1) = X
+ J: 14
  X: 9
  S(15) = 9
 300: NEXT J
@@ -2433,9 +2569,11 @@
  Y: 4
  X<=Y: false
 240: LET S(J) = Y
+ J: 5
  Y: 4
  S(5) = 4
 250: LET S(J + 1) = X
+ J: 5
  X: 5
  S(6) = 5
 300: NEXT J
@@ -2455,9 +2593,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 6
  Y: 0
  S(6) = 0
 250: LET S(J + 1) = X
+ J: 6
  X: 5
  S(7) = 5
 300: NEXT J
@@ -2493,9 +2633,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 8
  Y: 2
  S(8) = 2
 250: LET S(J + 1) = X
+ J: 8
  X: 7
  S(9) = 7
 300: NEXT J
@@ -2531,9 +2673,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 10
  Y: 2
  S(10) = 2
 250: LET S(J + 1) = X
+ J: 10
  X: 8
  S(11) = 8
 300: NEXT J
@@ -2585,9 +2729,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 13
  Y: 1
  S(13) = 1
 250: LET S(J + 1) = X
+ J: 13
  X: 9
  S(14) = 9
 300: NEXT J
@@ -2775,9 +2921,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 5
  Y: 0
  S(5) = 0
 250: LET S(J + 1) = X
+ J: 5
  X: 4
  S(6) = 4
 300: NEXT J
@@ -2813,9 +2961,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 7
  Y: 2
  S(7) = 2
 250: LET S(J + 1) = X
+ J: 7
  X: 5
  S(8) = 5
 300: NEXT J
@@ -2851,9 +3001,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 9
  Y: 2
  S(9) = 2
 250: LET S(J + 1) = X
+ J: 9
  X: 7
  S(10) = 7
 300: NEXT J
@@ -2905,9 +3057,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 12
  Y: 1
  S(12) = 1
 250: LET S(J + 1) = X
+ J: 12
  X: 8
  S(13) = 8
 300: NEXT J
@@ -3095,9 +3249,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 4
  Y: 0
  S(4) = 0
 250: LET S(J + 1) = X
+ J: 4
  X: 3
  S(5) = 3
 300: NEXT J
@@ -3133,9 +3289,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 6
  Y: 2
  S(6) = 2
 250: LET S(J + 1) = X
+ J: 6
  X: 4
  S(7) = 4
 300: NEXT J
@@ -3171,9 +3329,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 8
  Y: 2
  S(8) = 2
 250: LET S(J + 1) = X
+ J: 8
  X: 5
  S(9) = 5
 300: NEXT J
@@ -3225,9 +3385,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 11
  Y: 1
  S(11) = 1
 250: LET S(J + 1) = X
+ J: 11
  X: 8
  S(12) = 8
 300: NEXT J
@@ -3415,9 +3577,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 3
  Y: 0
  S(3) = 0
 250: LET S(J + 1) = X
+ J: 3
  X: 3
  S(4) = 3
 300: NEXT J
@@ -3453,9 +3617,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 5
  Y: 2
  S(5) = 2
 250: LET S(J + 1) = X
+ J: 5
  X: 3
  S(6) = 3
 300: NEXT J
@@ -3491,9 +3657,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 7
  Y: 2
  S(7) = 2
 250: LET S(J + 1) = X
+ J: 7
  X: 4
  S(8) = 4
 300: NEXT J
@@ -3545,9 +3713,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 10
  Y: 1
  S(10) = 1
 250: LET S(J + 1) = X
+ J: 10
  X: 7
  S(11) = 7
 300: NEXT J
@@ -3735,9 +3905,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 2
  Y: 0
  S(2) = 0
 250: LET S(J + 1) = X
+ J: 2
  X: 2
  S(3) = 2
 300: NEXT J
@@ -3773,9 +3945,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 4
  Y: 2
  S(4) = 2
 250: LET S(J + 1) = X
+ J: 4
  X: 3
  S(5) = 3
 300: NEXT J
@@ -3811,9 +3985,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 6
  Y: 2
  S(6) = 2
 250: LET S(J + 1) = X
+ J: 6
  X: 3
  S(7) = 3
 300: NEXT J
@@ -3865,9 +4041,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 9
  Y: 1
  S(9) = 1
 250: LET S(J + 1) = X
+ J: 9
  X: 5
  S(10) = 5
 300: NEXT J
@@ -4055,9 +4233,11 @@
  Y: 0
  X<=Y: false
 240: LET S(J) = Y
+ J: 1
  Y: 0
  S(1) = 0
 250: LET S(J + 1) = X
+ J: 1
  X: 1
  S(2) = 1
 300: NEXT J
@@ -4125,9 +4305,11 @@
  Y: 2
  X<=Y: false
 240: LET S(J) = Y
+ J: 5
  Y: 2
  S(5) = 2
 250: LET S(J + 1) = X
+ J: 5
  X: 3
  S(6) = 3
 300: NEXT J
@@ -4179,9 +4361,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 8
  Y: 1
  S(8) = 1
 250: LET S(J + 1) = X
+ J: 8
  X: 4
  S(9) = 4
 300: NEXT J
@@ -4481,9 +4665,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 7
  Y: 1
  S(7) = 1
 250: LET S(J + 1) = X
+ J: 7
  X: 3
  S(8) = 3
 300: NEXT J
@@ -4783,9 +4969,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 6
  Y: 1
  S(6) = 1
 250: LET S(J + 1) = X
+ J: 6
  X: 3
  S(7) = 3
 300: NEXT J
@@ -5085,9 +5273,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 5
  Y: 1
  S(5) = 1
 250: LET S(J + 1) = X
+ J: 5
  X: 2
  S(6) = 2
 300: NEXT J
@@ -5387,9 +5577,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 4
  Y: 1
  S(4) = 1
 250: LET S(J + 1) = X
+ J: 4
  X: 2
  S(5) = 2
 300: NEXT J
@@ -5689,9 +5881,11 @@
  Y: 1
  X<=Y: false
 240: LET S(J) = Y
+ J: 3
  Y: 1
  S(3) = 1
 250: LET S(J + 1) = X
+ J: 3
  X: 2
  S(4) = 2
 300: NEXT J

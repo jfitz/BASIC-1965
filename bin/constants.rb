@@ -331,7 +331,7 @@ class AbstractValueElement < AbstractElement
     true
   end
 
-  def evaluate(_, _, _)
+  def evaluate(_, _)
     self
   end
 
@@ -877,8 +877,8 @@ class List < AbstractElement
     lines
   end
 
-  def evaluate(interpreter, _, trace)
-    interpreter.evaluate(@parsed_expressions, trace)
+  def evaluate(interpreter, _)
+    interpreter.evaluate(@parsed_expressions)
   end
 
   def to_s

@@ -80,8 +80,8 @@ class Interpreter
     @action_flags = action_flags
     @step_mode = false
 
-    trace_flag = @action_flags['trace']
-    @trace_out = trace_flag ? @console_io : @null_out
+    trace = @action_flags['trace']
+    @trace_out = trace ? @console_io : @null_out
     @variables = {}
 
     run_program
@@ -296,9 +296,9 @@ class Interpreter
     @program.line_number?(line_number)
   end
 
-  def trace(tron_flag)
-    trace_flag = @action_flags['trace']
-    @trace_out = (trace_flag || tron_flag) ? @console_io : @null_out
+  def set_trace(trace)
+    @action_flags['trace'] = trace
+    @trace_out = trace ? @console_io : @null_out
   end
 
   def clear_variables
@@ -315,16 +315,15 @@ class Interpreter
   end
 
   # returns an Array of values
-  def evaluate(parsed_expressions, trace)
-    old_trace_flag = @action_flags['trace']
-    @action_flags['trace'] = trace
+  def evaluate(parsed_expressions)
+    trace = @action_flags['trace']
 
     result_values = []
     parsed_expressions.each do |parsed_expression|
       stack = []
       exp = parsed_expression.empty? ? 0 : 1
       parsed_expression.each do |element|
-        value = element.evaluate(self, stack, trace)
+        value = element.evaluate(self, stack)
         stack.push value
       end
       act = stack.length
@@ -337,7 +336,6 @@ class Interpreter
       result_values << item
     end
 
-    @action_flags['trace'] = old_trace_flag
     result_values
   end
 
@@ -460,7 +458,7 @@ class Interpreter
     end
   end
 
-  def get_value(variable, trace)
+  def get_value(variable)
     legals = %w(VariableName Value ScalarValue)
 
     raise(BASICSyntaxError,
@@ -495,8 +493,8 @@ class Interpreter
       seen = @get_value_seen.include?(variable)
     end
 
-    trace_flag = @action_flags['trace']
-    if trace_flag && trace && !seen
+    trace = @action_flags['trace']
+    if trace && !seen
       provenence = @action_flags['provenence']
       if provenence && !line.nil?
         text = ' ' + variable.to_s + ': (' + line.to_s + ') ' + value.to_s

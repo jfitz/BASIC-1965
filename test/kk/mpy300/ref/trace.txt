@@ -50,6 +50,7 @@ Line 640 is out of sequence
  I = 0
  terminated:false
 1020: READ X(I)
+ I: 0
  X(0) = 123
 1030: IF X(I) < 0 THEN 1100
  I: 0
@@ -60,6 +61,7 @@ Line 640 is out of sequence
  terminated:false
  I = 1
 1020: READ X(I)
+ I: 1
  X(1) = 456
 1030: IF X(I) < 0 THEN 1100
  I: 1
@@ -70,6 +72,7 @@ Line 640 is out of sequence
  terminated:false
  I = 2
 1020: READ X(I)
+ I: 2
  X(2) = 789
 1030: IF X(I) < 0 THEN 1100
  I: 2
@@ -80,6 +83,7 @@ Line 640 is out of sequence
  terminated:false
  I = 3
 1020: READ X(I)
+ I: 3
  X(3) = 333
 1030: IF X(I) < 0 THEN 1100
  I: 3
@@ -90,6 +94,7 @@ Line 640 is out of sequence
  terminated:false
  I = 4
 1020: READ X(I)
+ I: 4
  X(4) = -1
 1030: IF X(I) < 0 THEN 1100
  I: 4
@@ -104,8 +109,8 @@ Line 640 is out of sequence
  L = 3
  terminated:false
 1120: LET C(I) = X(L - I)
- L: 3
  I: 0
+ L: 3
  X(3): 333
  C(0) = 333
 1130: NEXT I
@@ -113,8 +118,8 @@ Line 640 is out of sequence
  terminated:false
  I = 1
 1120: LET C(I) = X(L - I)
- L: 3
  I: 1
+ L: 3
  X(2): 789
  C(1) = 789
 1130: NEXT I
@@ -122,8 +127,8 @@ Line 640 is out of sequence
  terminated:false
  I = 2
 1120: LET C(I) = X(L - I)
- L: 3
  I: 2
+ L: 3
  X(1): 456
  C(2) = 456
 1130: NEXT I
@@ -131,8 +136,8 @@ Line 640 is out of sequence
  terminated:false
  I = 3
 1120: LET C(I) = X(L - I)
- L: 3
  I: 3
+ L: 3
  X(0): 123
  C(3) = 123
 1130: NEXT I
@@ -498,6 +503,7 @@ TIMES
  I = 0
  terminated:false
 1020: READ X(I)
+ I: 0
  X(0) = 987
 1030: IF X(I) < 0 THEN 1100
  I: 0
@@ -508,6 +514,7 @@ TIMES
  terminated:false
  I = 1
 1020: READ X(I)
+ I: 1
  X(1) = 654
 1030: IF X(I) < 0 THEN 1100
  I: 1
@@ -518,6 +525,7 @@ TIMES
  terminated:false
  I = 2
 1020: READ X(I)
+ I: 2
  X(2) = 321
 1030: IF X(I) < 0 THEN 1100
  I: 2
@@ -528,6 +536,7 @@ TIMES
  terminated:false
  I = 3
 1020: READ X(I)
+ I: 3
  X(3) = 0
 1030: IF X(I) < 0 THEN 1100
  I: 3
@@ -538,6 +547,7 @@ TIMES
  terminated:false
  I = 4
 1020: READ X(I)
+ I: 4
  X(4) = -1
 1030: IF X(I) < 0 THEN 1100
  I: 4
@@ -552,8 +562,8 @@ TIMES
  L = 3
  terminated:false
 1120: LET C(I) = X(L - I)
- L: 3
  I: 0
+ L: 3
  X(3): 0
  C(0) = 0
 1130: NEXT I
@@ -561,8 +571,8 @@ TIMES
  terminated:false
  I = 1
 1120: LET C(I) = X(L - I)
- L: 3
  I: 1
+ L: 3
  X(2): 321
  C(1) = 321
 1130: NEXT I
@@ -570,8 +580,8 @@ TIMES
  terminated:false
  I = 2
 1120: LET C(I) = X(L - I)
- L: 3
  I: 2
+ L: 3
  X(1): 654
  C(2) = 654
 1130: NEXT I
@@ -579,8 +589,8 @@ TIMES
  terminated:false
  I = 3
 1120: LET C(I) = X(L - I)
- L: 3
  I: 3
+ L: 3
  X(0): 987
  C(3) = 987
 1130: NEXT I
@@ -952,42 +962,49 @@ EQUALS
  L = 6
  terminated:false
 330: LET C(I) = 0
+ I: 0
  C(0) = 0
 340: NEXT I
  I: 0
  terminated:false
  I = 1
 330: LET C(I) = 0
+ I: 1
  C(1) = 0
 340: NEXT I
  I: 1
  terminated:false
  I = 2
 330: LET C(I) = 0
+ I: 2
  C(2) = 0
 340: NEXT I
  I: 2
  terminated:false
  I = 3
 330: LET C(I) = 0
+ I: 3
  C(3) = 0
 340: NEXT I
  I: 3
  terminated:false
  I = 4
 330: LET C(I) = 0
+ I: 4
  C(4) = 0
 340: NEXT I
  I: 4
  terminated:false
  I = 5
 330: LET C(I) = 0
+ I: 5
  C(5) = 0
 340: NEXT I
  I: 5
  terminated:false
  I = 6
 330: LET C(I) = 0
+ I: 6
  C(6) = 0
 340: NEXT I
  I: 6
@@ -1289,6 +1306,7 @@ EQUALS
 610: GOSUB 3000
 3000: REM CARRY IS IN NUMBER C
 3010: LET C(L + 1) = 0
+ L: 6
  C(7) = 0
 3020: FOR I = 0 TO L
  L: 6
@@ -1303,6 +1321,7 @@ EQUALS
  N: 0
  M = 0
 3050: LET C(I) = N - 1000 * M
+ I: 0
  N: 0
  M: 0
  C(0) = 0
@@ -1323,6 +1342,7 @@ EQUALS
  N: 106893
  M = 106
 3050: LET C(I) = N - 1000 * M
+ I: 1
  N: 106893
  M: 106
  C(1) = 893
@@ -1343,6 +1363,7 @@ EQUALS
  N: 471157
  M = 471
 3050: LET C(I) = N - 1000 * M
+ I: 2
  N: 471157
  M: 471
  C(2) = 157
@@ -1363,6 +1384,7 @@ EQUALS
  N: 991524
  M = 991
 3050: LET C(I) = N - 1000 * M
+ I: 3
  N: 991524
  M: 991
  C(3) = 524
@@ -1383,6 +1405,7 @@ EQUALS
  N: 1117441
  M = 1117
 3050: LET C(I) = N - 1000 * M
+ I: 4
  N: 1117441
  M: 1117
  C(4) = 441
@@ -1403,6 +1426,7 @@ EQUALS
  N: 531631
  M = 531
 3050: LET C(I) = N - 1000 * M
+ I: 5
  N: 531631
  M: 531
  C(5) = 631
@@ -1423,6 +1447,7 @@ EQUALS
  N: 121932
  M = 121
 3050: LET C(I) = N - 1000 * M
+ I: 6
  N: 121932
  M: 121
  C(6) = 932

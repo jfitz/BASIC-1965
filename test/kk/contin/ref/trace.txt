@@ -14,6 +14,8 @@
  N = 2
  terminated:false
 150: READ O(I, J)
+ I: 1
+ J: 1
  O(1,1) = 17
 160: LET S = S + O(I, J)
  S: 0
@@ -26,6 +28,8 @@
  terminated:false
  J = 2
 150: READ O(I, J)
+ I: 1
+ J: 2
  O(1,2) = 42
 160: LET S = S + O(I, J)
  S: 17
@@ -37,6 +41,7 @@
  J: 2
  terminated:true
 180: LET R(I) = S
+ I: 1
  S: 59
  R(1) = 59
 190: NEXT I
@@ -51,6 +56,8 @@
  N = 2
  terminated:false
 150: READ O(I, J)
+ I: 2
+ J: 1
  O(2,1) = 50
 160: LET S = S + O(I, J)
  S: 0
@@ -63,6 +70,8 @@
  terminated:false
  J = 2
 150: READ O(I, J)
+ I: 2
+ J: 2
  O(2,2) = 50
 160: LET S = S + O(I, J)
  S: 50
@@ -74,6 +83,7 @@
  J: 2
  terminated:true
 180: LET R(I) = S
+ I: 2
  S: 100
  R(2) = 100
 190: NEXT I
@@ -88,6 +98,8 @@
  N = 2
  terminated:false
 150: READ O(I, J)
+ I: 3
+ J: 1
  O(3,1) = 114
 160: LET S = S + O(I, J)
  S: 0
@@ -100,6 +112,8 @@
  terminated:false
  J = 2
 150: READ O(I, J)
+ I: 3
+ J: 2
  O(3,2) = 61
 160: LET S = S + O(I, J)
  S: 114
@@ -111,6 +125,7 @@
  J: 2
  terminated:true
 180: LET R(I) = S
+ I: 3
  S: 175
  R(3) = 175
 190: NEXT I
@@ -161,6 +176,7 @@
  I: 3
  terminated:true
 270: LET C(J) = S
+ J: 1
  S: 181
  C(1) = 181
 280: LET S1 = S1 + S
@@ -208,6 +224,7 @@
  I: 3
  terminated:true
 270: LET C(J) = S
+ J: 2
  S: 153
  C(2) = 153
 280: LET S1 = S1 + S

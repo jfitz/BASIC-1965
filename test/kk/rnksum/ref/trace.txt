@@ -9,36 +9,42 @@
  M = 6
  terminated:false
 160: READ M(I)
+ I: 1
  M(1) = 117
 170: NEXT I
  I: 1
  terminated:false
  I = 2
 160: READ M(I)
+ I: 2
  M(2) = 145
 170: NEXT I
  I: 2
  terminated:false
  I = 3
 160: READ M(I)
+ I: 3
  M(3) = 147
 170: NEXT I
  I: 3
  terminated:false
  I = 4
 160: READ M(I)
+ I: 4
  M(4) = 120
 170: NEXT I
  I: 4
  terminated:false
  I = 5
 160: READ M(I)
+ I: 5
  M(5) = 150
 170: NEXT I
  I: 5
  terminated:false
  I = 6
 160: READ M(I)
+ I: 6
  M(6) = 120
 170: NEXT I
  I: 6
@@ -49,24 +55,28 @@
  N = 4
  terminated:false
 190: READ Y(J)
+ J: 1
  Y(1) = 160
 200: NEXT J
  J: 1
  terminated:false
  J = 2
 190: READ Y(J)
+ J: 2
  Y(2) = 160
 200: NEXT J
  J: 2
  terminated:false
  J = 3
 190: READ Y(J)
+ J: 3
  Y(3) = 140
 200: NEXT J
  J: 3
  terminated:false
  J = 4
 190: READ Y(J)
+ J: 4
  Y(4) = 190
 200: NEXT J
  J: 4
@@ -82,6 +92,7 @@
  X(1): 0
  Z(1) = 0
 270: LET T(K) = +1
+ K: 1
  T(1) = 1
 280: NEXT K
  K: 1
@@ -92,6 +103,7 @@
  X(2): 0
  Z(2) = 0
 270: LET T(K) = +1
+ K: 2
  T(2) = 1
 280: NEXT K
  K: 2
@@ -102,6 +114,7 @@
  X(3): 0
  Z(3) = 0
 270: LET T(K) = +1
+ K: 3
  T(3) = 1
 280: NEXT K
  K: 3
@@ -112,6 +125,7 @@
  X(4): 0
  Z(4) = 0
 270: LET T(K) = +1
+ K: 4
  T(4) = 1
 280: NEXT K
  K: 4
@@ -122,6 +136,7 @@
  X(5): 0
  Z(5) = 0
 270: LET T(K) = +1
+ K: 5
  T(5) = 1
 280: NEXT K
  K: 5
@@ -132,6 +147,7 @@
  X(6): 0
  Z(6) = 0
 270: LET T(K) = +1
+ K: 6
  T(6) = 1
 280: NEXT K
  K: 6
@@ -142,40 +158,52 @@
  N = 4
  terminated:false
 300: LET Z(M + K) = Y(K)
+ M: 6
  K: 1
  Y(1): 160
  Z(7) = 160
 310: LET T(M + K) = 0
+ M: 6
+ K: 1
  T(7) = 0
 320: NEXT K
  K: 1
  terminated:false
  K = 2
 300: LET Z(M + K) = Y(K)
+ M: 6
  K: 2
  Y(2): 160
  Z(8) = 160
 310: LET T(M + K) = 0
+ M: 6
+ K: 2
  T(8) = 0
 320: NEXT K
  K: 2
  terminated:false
  K = 3
 300: LET Z(M + K) = Y(K)
+ M: 6
  K: 3
  Y(3): 140
  Z(9) = 140
 310: LET T(M + K) = 0
+ M: 6
+ K: 3
  T(9) = 0
 320: NEXT K
  K: 3
  terminated:false
  K = 4
 300: LET Z(M + K) = Y(K)
+ M: 6
  K: 4
  Y(4): 190
  Z(10) = 190
 310: LET T(M + K) = 0
+ M: 6
+ K: 4
  T(10) = 0
 320: NEXT K
  K: 4
@@ -672,10 +700,12 @@
  Z(7): 160
  T = 160
 400: LET Z(K) = Z(L)
+ K: 7
  L: 9
  Z(9): 140
  Z(7) = 140
 410: LET Z(L) = T
+ L: 9
  T: 160
  Z(9) = 160
 420: LET T = T(K)
@@ -683,10 +713,12 @@
  T(7): 0
  T = 0
 430: LET T(K) = T(L)
+ K: 7
  L: 9
  T(9): 0
  T(7) = 0
 440: LET T(L) = T
+ L: 9
  T: 0
  T(9) = 0
 450: NEXT L
@@ -900,6 +932,7 @@
  J-1 = 6
  terminated:false
 610: LET Z(L) = T / K
+ L: 1
  T: 21
  K: 6
  Z(1) = 3.5
@@ -908,6 +941,7 @@
  terminated:false
  L = 2
 610: LET Z(L) = T / K
+ L: 2
  T: 21
  K: 6
  Z(2) = 3.5
@@ -916,6 +950,7 @@
  terminated:false
  L = 3
 610: LET Z(L) = T / K
+ L: 3
  T: 21
  K: 6
  Z(3) = 3.5
@@ -924,6 +959,7 @@
  terminated:false
  L = 4
 610: LET Z(L) = T / K
+ L: 4
  T: 21
  K: 6
  Z(4) = 3.5
@@ -932,6 +968,7 @@
  terminated:false
  L = 5
 610: LET Z(L) = T / K
+ L: 5
  T: 21
  K: 6
  Z(5) = 3.5
@@ -940,6 +977,7 @@
  terminated:false
  L = 6
 610: LET Z(L) = T / K
+ L: 6
  T: 21
  K: 6
  Z(6) = 3.5
@@ -981,6 +1019,7 @@
  J-1 = 7
  terminated:false
 610: LET Z(L) = T / K
+ L: 7
  T: 7
  K: 1
  Z(7) = 7
@@ -1044,6 +1083,7 @@
  J-1 = 9
  terminated:false
 610: LET Z(L) = T / K
+ L: 8
  T: 17
  K: 2
  Z(8) = 8.5
@@ -1052,6 +1092,7 @@
  terminated:false
  L = 9
 610: LET Z(L) = T / K
+ L: 9
  T: 17
  K: 2
  Z(9) = 8.5
@@ -1087,6 +1128,7 @@
  J-1 = 10
  terminated:false
 610: LET Z(L) = T / K
+ L: 10
  T: 10
  K: 1
  Z(10) = 10
@@ -1112,6 +1154,7 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 1
  T(1): 1
+ T(1): 1
  S(1): 0
  Z(1): 3.5
  S(1) = 3.5
@@ -1121,6 +1164,7 @@
  K = 2
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 2
+ T(2): 1
  T(2): 1
  S(1): 3.5
  Z(2): 3.5
@@ -1132,6 +1176,7 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 3
  T(3): 1
+ T(3): 1
  S(1): 7
  Z(3): 3.5
  S(1) = 10.5
@@ -1141,6 +1186,7 @@
  K = 4
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 4
+ T(4): 1
  T(4): 1
  S(1): 10.5
  Z(4): 3.5
@@ -1152,6 +1198,7 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 5
  T(5): 1
+ T(5): 1
  S(1): 14
  Z(5): 3.5
  S(1) = 17.5
@@ -1161,6 +1208,7 @@
  K = 6
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 6
+ T(6): 1
  T(6): 1
  S(1): 17.5
  Z(6): 3.5
@@ -1172,6 +1220,7 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 7
  T(7): 0
+ T(7): 0
  S(0): 0
  Z(7): 7
  S(0) = 7
@@ -1181,6 +1230,7 @@
  K = 8
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 8
+ T(8): 0
  T(8): 0
  S(0): 7
  Z(8): 8.5
@@ -1192,6 +1242,7 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 9
  T(9): 0
+ T(9): 0
  S(0): 15.5
  Z(9): 8.5
  S(0) = 24
@@ -1201,6 +1252,7 @@
  K = 10
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 10
+ T(10): 0
  T(10): 0
  S(0): 24
  Z(10): 10

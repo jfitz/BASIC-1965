@@ -50,6 +50,7 @@ NOTE NUMBER     CHORD
 120: READ N9
  N9 = 28
 130: MAT READ M(N9)
+ N9: 28
  M(1) = 2
  M(2) = 1
  M(3) = 0
@@ -85,30 +86,40 @@ NOTE NUMBER     CHORD
  V = 0
  terminated:false
 200: READ S(V, N9)
+ V: 0
+ N9: 28
  S(0,28) = 1
 210: NEXT V
  V: 0
  terminated:false
  V = 1
 200: READ S(V, N9)
+ V: 1
+ N9: 28
  S(1,28) = 0
 210: NEXT V
  V: 1
  terminated:false
  V = 2
 200: READ S(V, N9)
+ V: 2
+ N9: 28
  S(2,28) = -3
 210: NEXT V
  V: 2
  terminated:false
  V = 3
 200: READ S(V, N9)
+ V: 3
+ N9: 28
  S(3,28) = -5
 210: NEXT V
  V: 3
  terminated:false
  V = 4
 200: READ S(V, N9)
+ V: 4
+ N9: 28
  S(4,28) = -7
 210: NEXT V
  V: 4
@@ -166,6 +177,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 27
  C2: 5
  S(0,27) = 5
 530: LET S = M(N)
@@ -173,6 +185,7 @@ NOTE NUMBER     CHORD
  M(27): 1
  S = 1
 540: LET S(1, N) = S
+ N: 27
  S: 1
  S(1,27) = 1
 542:
@@ -216,6 +229,7 @@ NOTE NUMBER     CHORD
  D(2): -10
  R = -10
 660: LET S(4, N) = R
+ N: 27
  R: -10
  S(4,27) = -10
 670:
@@ -233,6 +247,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -251,6 +266,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -285,11 +301,14 @@ NOTE NUMBER     CHORD
  B(2): -8
  B = -8
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -8
  W(2,0) = -8
 850: LET W(3, L) = A
+ L: 0
  A: -10
  W(3,0) = -10
 860: LET B(1) = B
@@ -309,11 +328,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -3
  W(2,1) = -3
 850: LET W(3, L) = A
+ L: 1
  A: -8
  W(3,1) = -8
 860: LET B(1) = B
@@ -333,11 +355,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -1
  W(2,2) = -1
 850: LET W(3, L) = A
+ L: 2
  A: -3
  W(3,2) = -3
 860: LET B(1) = B
@@ -357,11 +382,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 4
  W(2,3) = 4
 850: LET W(3, L) = A
+ L: 3
  A: -1
  W(3,3) = -1
 860: LET B(1) = B
@@ -381,11 +409,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 6
  W(2,4) = 6
 850: LET W(3, L) = A
+ L: 4
  A: 4
  W(3,4) = 4
 860: LET B(1) = B
@@ -405,11 +436,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 11
  W(2,5) = 11
 850: LET W(3, L) = A
+ L: 5
  A: 6
  W(3,5) = 6
 860: LET B(1) = B
@@ -429,11 +463,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 13
  W(2,6) = 13
 850: LET W(3, L) = A
+ L: 6
  A: 11
  W(3,6) = 11
 860: LET B(1) = B
@@ -473,6 +510,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -501,6 +539,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 27
  B: -3
  S(2,27) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -533,6 +573,7 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -561,6 +602,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 27
  B: -1
  S(2,27) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -593,6 +636,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 27
  B: -3
  S(3,27) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -830,6 +875,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 2
  D(3): 2
  W(0,2) = 4
@@ -853,6 +899,7 @@ NOTE NUMBER     CHORD
  S(2,28): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -873,6 +920,7 @@ NOTE NUMBER     CHORD
  S(2,28): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -893,6 +941,7 @@ NOTE NUMBER     CHORD
  S(2,28): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -913,6 +962,7 @@ NOTE NUMBER     CHORD
  S(2,28): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -1029,10 +1079,12 @@ NOTE NUMBER     CHORD
  M: 4
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 27
  L9: 2
  W(2,2): -1
  S(2,27) = -1
 1620: LET S(3, N) = W(3, L9)
+ N: 27
  L9: 2
  W(3,2): -3
  S(3,27) = -3
@@ -1076,6 +1128,7 @@ NOTE NUMBER     CHORD
  P(5,1): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 26
  C2: 2
  S(0,26) = 2
 530: LET S = M(N)
@@ -1083,6 +1136,7 @@ NOTE NUMBER     CHORD
  M(26): 1
  S = 1
 540: LET S(1, N) = S
+ N: 26
  S: 1
  S(1,26) = 1
 542:
@@ -1127,6 +1181,7 @@ NOTE NUMBER     CHORD
  R = -6
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 26
  R: -6
  S(4,26) = -6
 670:
@@ -1155,6 +1210,7 @@ NOTE NUMBER     CHORD
  X: 5
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -6
  K: 2
  B(1) = -4
@@ -1173,6 +1229,7 @@ NOTE NUMBER     CHORD
  X: 3
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -6
  K: 4
  B(2) = -2
@@ -1196,11 +1253,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -2
  W(2,0) = -2
 850: LET W(3, L) = A
+ L: 0
  A: -4
  W(3,0) = -4
 860: LET B(1) = B
@@ -1220,11 +1280,14 @@ NOTE NUMBER     CHORD
  B(2): 3
  B = 3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 3
  W(2,1) = 3
 850: LET W(3, L) = A
+ L: 1
  A: -2
  W(3,1) = -2
 860: LET B(1) = B
@@ -1244,11 +1307,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 5
  W(2,2) = 5
 850: LET W(3, L) = A
+ L: 2
  A: 3
  W(3,2) = 3
 860: LET B(1) = B
@@ -1268,11 +1334,14 @@ NOTE NUMBER     CHORD
  B(2): 10
  B = 10
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 10
  W(2,3) = 10
 850: LET W(3, L) = A
+ L: 3
  A: 5
  W(3,3) = 5
 860: LET B(1) = B
@@ -1292,11 +1361,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 12
  W(2,4) = 12
 850: LET W(3, L) = A
+ L: 4
  A: 10
  W(3,4) = 10
 860: LET B(1) = B
@@ -1316,11 +1388,14 @@ NOTE NUMBER     CHORD
  B(2): 17
  B = 17
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 17
  W(2,5) = 17
 850: LET W(3, L) = A
+ L: 5
  A: 12
  W(3,5) = 12
 860: LET B(1) = B
@@ -1340,11 +1415,14 @@ NOTE NUMBER     CHORD
  B(2): 19
  B = 19
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 19
  W(2,6) = 19
 850: LET W(3, L) = A
+ L: 6
  A: 17
  W(3,6) = 17
 860: LET B(1) = B
@@ -1384,6 +1462,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 26
  B: -2
  S(2,26) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -1416,6 +1496,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 26
  B: -4
  S(3,26) = -4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -1668,6 +1750,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 0
  D(2): 1
  D(3): 1
  W(0,0) = 2
@@ -1699,6 +1782,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 26
  B: 3
  S(2,26) = 3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -1708,6 +1793,7 @@ NOTE NUMBER     CHORD
  S(2,26): 3
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -1728,6 +1814,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -1748,6 +1835,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -1768,6 +1856,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -1788,6 +1877,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -1808,6 +1898,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -1912,10 +2003,12 @@ NOTE NUMBER     CHORD
  M: 2
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 26
  L9: 0
  W(2,0): -2
  S(2,26) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 26
  L9: 0
  W(3,0): -4
  S(3,26) = -4
@@ -1959,6 +2052,7 @@ NOTE NUMBER     CHORD
  P(2,1): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 25
  C2: 6
  S(0,25) = 6
 530: LET S = M(N)
@@ -1966,6 +2060,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -2010,6 +2105,7 @@ NOTE NUMBER     CHORD
  R = -2
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -2
  S(4,25) = -2
 670:
@@ -2027,6 +2123,7 @@ NOTE NUMBER     CHORD
  X: 2
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -2
  K: 0
  B(1) = -2
@@ -2056,6 +2153,7 @@ NOTE NUMBER     CHORD
  X: -2
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -2
  K: 4
  B(2) = 2
@@ -2079,11 +2177,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: 2
  W(2,0) = 2
 850: LET W(3, L) = A
+ L: 0
  A: -2
  W(3,0) = -2
 860: LET B(1) = B
@@ -2103,11 +2204,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 5
  W(2,1) = 5
 850: LET W(3, L) = A
+ L: 1
  A: 2
  W(3,1) = 2
 860: LET B(1) = B
@@ -2127,11 +2231,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 9
  W(2,2) = 9
 850: LET W(3, L) = A
+ L: 2
  A: 5
  W(3,2) = 5
 860: LET B(1) = B
@@ -2151,11 +2258,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 12
  W(2,3) = 12
 850: LET W(3, L) = A
+ L: 3
  A: 9
  W(3,3) = 9
 860: LET B(1) = B
@@ -2175,11 +2285,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 16
  W(2,4) = 16
 850: LET W(3, L) = A
+ L: 4
  A: 12
  W(3,4) = 12
 860: LET B(1) = B
@@ -2199,11 +2312,14 @@ NOTE NUMBER     CHORD
  B(2): 19
  B = 19
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 19
  W(2,5) = 19
 850: LET W(3, L) = A
+ L: 5
  A: 16
  W(3,5) = 16
 860: LET B(1) = B
@@ -2223,11 +2339,14 @@ NOTE NUMBER     CHORD
  B(2): 23
  B = 23
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 23
  W(2,6) = 23
 850: LET W(3, L) = A
+ L: 6
  A: 19
  W(3,6) = 19
 860: LET B(1) = B
@@ -2267,6 +2386,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 25
  B: 2
  S(2,25) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -2276,6 +2397,7 @@ NOTE NUMBER     CHORD
  S(2,25): 2
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -2296,6 +2418,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -2316,6 +2439,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -2336,6 +2460,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -2356,6 +2481,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -2376,6 +2502,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -2396,6 +2523,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -2546,6 +2674,7 @@ NOTE NUMBER     CHORD
  P(2,2): 4
  C2 = 4
 525: LET S(0, N) = C2
+ N: 25
  C2: 4
  S(0,25) = 4
 530: LET S = M(N)
@@ -2553,6 +2682,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -2597,6 +2727,7 @@ NOTE NUMBER     CHORD
  R = -4
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -4
  S(4,25) = -4
 670:
@@ -2614,6 +2745,7 @@ NOTE NUMBER     CHORD
  X: 4
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -4
  K: 0
  B(1) = -4
@@ -2632,6 +2764,7 @@ NOTE NUMBER     CHORD
  X: 2
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -4
  K: 2
  B(2) = -2
@@ -2666,11 +2799,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -2
  W(2,0) = -2
 850: LET W(3, L) = A
+ L: 0
  A: -4
  W(3,0) = -4
 860: LET B(1) = B
@@ -2690,11 +2826,14 @@ NOTE NUMBER     CHORD
  B(2): 3
  B = 3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 3
  W(2,1) = 3
 850: LET W(3, L) = A
+ L: 1
  A: -2
  W(3,1) = -2
 860: LET B(1) = B
@@ -2714,11 +2853,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 5
  W(2,2) = 5
 850: LET W(3, L) = A
+ L: 2
  A: 3
  W(3,2) = 3
 860: LET B(1) = B
@@ -2738,11 +2880,14 @@ NOTE NUMBER     CHORD
  B(2): 10
  B = 10
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 10
  W(2,3) = 10
 850: LET W(3, L) = A
+ L: 3
  A: 5
  W(3,3) = 5
 860: LET B(1) = B
@@ -2762,11 +2907,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 12
  W(2,4) = 12
 850: LET W(3, L) = A
+ L: 4
  A: 10
  W(3,4) = 10
 860: LET B(1) = B
@@ -2786,11 +2934,14 @@ NOTE NUMBER     CHORD
  B(2): 17
  B = 17
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 17
  W(2,5) = 17
 850: LET W(3, L) = A
+ L: 5
  A: 12
  W(3,5) = 12
 860: LET B(1) = B
@@ -2810,11 +2961,14 @@ NOTE NUMBER     CHORD
  B(2): 19
  B = 19
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 19
  W(2,6) = 19
 850: LET W(3, L) = A
+ L: 6
  A: 17
  W(3,6) = 17
 860: LET B(1) = B
@@ -2854,6 +3008,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 25
  B: -2
  S(2,25) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -2886,6 +3042,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 25
  B: -4
  S(3,25) = -4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -2895,6 +3053,7 @@ NOTE NUMBER     CHORD
  S(4,25): -4
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -2923,6 +3082,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 25
  B: 3
  S(2,25) = 3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -2932,6 +3093,7 @@ NOTE NUMBER     CHORD
  S(2,25): 3
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -2952,6 +3114,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -2972,6 +3135,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -2992,6 +3156,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -3012,6 +3177,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -3032,6 +3198,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -3182,6 +3349,7 @@ NOTE NUMBER     CHORD
  P(2,3): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 25
  C2: 2
  S(0,25) = 2
 530: LET S = M(N)
@@ -3189,6 +3357,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -3226,6 +3395,7 @@ NOTE NUMBER     CHORD
  R = -6
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -6
  S(4,25) = -6
 670:
@@ -3243,6 +3413,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -6
  K: 0
  B(1) = -6
@@ -3261,6 +3432,7 @@ NOTE NUMBER     CHORD
  X: 4
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -6
  K: 2
  B(2) = -4
@@ -3279,6 +3451,7 @@ NOTE NUMBER     CHORD
  X: 2
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -6
  K: 4
  B(3) = -2
@@ -3302,6 +3475,7 @@ NOTE NUMBER     CHORD
  P(2,4): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 25
  C2: 1
  S(0,25) = 1
 530: LET S = M(N)
@@ -3309,6 +3483,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -3346,6 +3521,7 @@ NOTE NUMBER     CHORD
  R = -7
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -7
  S(4,25) = -7
 670:
@@ -3374,6 +3550,7 @@ NOTE NUMBER     CHORD
  X: 5
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -7
  K: 2
  B(1) = -5
@@ -3392,6 +3569,7 @@ NOTE NUMBER     CHORD
  X: 3
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -7
  K: 4
  B(2) = -3
@@ -3415,11 +3593,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -3
  W(2,0) = -3
 850: LET W(3, L) = A
+ L: 0
  A: -5
  W(3,0) = -5
 860: LET B(1) = B
@@ -3439,11 +3620,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 2
  W(2,1) = 2
 850: LET W(3, L) = A
+ L: 1
  A: -3
  W(3,1) = -3
 860: LET B(1) = B
@@ -3463,11 +3647,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 4
  W(2,2) = 4
 850: LET W(3, L) = A
+ L: 2
  A: 2
  W(3,2) = 2
 860: LET B(1) = B
@@ -3487,11 +3674,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 9
  W(2,3) = 9
 850: LET W(3, L) = A
+ L: 3
  A: 4
  W(3,3) = 4
 860: LET B(1) = B
@@ -3511,11 +3701,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 11
  W(2,4) = 11
 850: LET W(3, L) = A
+ L: 4
  A: 9
  W(3,4) = 9
 860: LET B(1) = B
@@ -3535,11 +3728,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 16
  W(2,5) = 16
 850: LET W(3, L) = A
+ L: 5
  A: 11
  W(3,5) = 11
 860: LET B(1) = B
@@ -3559,11 +3755,14 @@ NOTE NUMBER     CHORD
  B(2): 18
  B = 18
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 18
  W(2,6) = 18
 850: LET W(3, L) = A
+ L: 6
  A: 16
  W(3,6) = 16
 860: LET B(1) = B
@@ -3603,6 +3802,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 25
  B: -3
  S(2,25) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -3635,6 +3836,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 25
  B: -5
  S(3,25) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -3733,6 +3936,7 @@ NOTE NUMBER     CHORD
  S2: -1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -3761,6 +3965,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 25
  B: 2
  S(2,25) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -3770,6 +3976,7 @@ NOTE NUMBER     CHORD
  S(2,25): 2
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -3790,6 +3997,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -3810,6 +4018,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -3830,6 +4039,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -3850,6 +4060,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -3870,6 +4081,7 @@ NOTE NUMBER     CHORD
  S(2,26): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -4020,6 +4232,7 @@ NOTE NUMBER     CHORD
  P(2,5): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 25
  C2: 5
  S(0,25) = 5
 530: LET S = M(N)
@@ -4027,6 +4240,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -4071,6 +4285,7 @@ NOTE NUMBER     CHORD
  R = -3
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -3
  S(4,25) = -3
 670:
@@ -4088,6 +4303,7 @@ NOTE NUMBER     CHORD
  X: 3
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -3
  K: 0
  B(1) = -3
@@ -4106,6 +4322,7 @@ NOTE NUMBER     CHORD
  X: 1
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -3
  K: 2
  B(2) = -1
@@ -4124,6 +4341,7 @@ NOTE NUMBER     CHORD
  X: -1
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -3
  K: 4
  B(3) = 1
@@ -4147,6 +4365,7 @@ NOTE NUMBER     CHORD
  P(2,6): 3
  C2 = 3
 525: LET S(0, N) = C2
+ N: 25
  C2: 3
  S(0,25) = 3
 530: LET S = M(N)
@@ -4154,6 +4373,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -4191,6 +4411,7 @@ NOTE NUMBER     CHORD
  R = -5
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -5
  S(4,25) = -5
 670:
@@ -4208,6 +4429,7 @@ NOTE NUMBER     CHORD
  X: 5
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -5
  K: 0
  B(1) = -5
@@ -4226,6 +4448,7 @@ NOTE NUMBER     CHORD
  X: 3
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -5
  K: 2
  B(2) = -3
@@ -4244,6 +4467,7 @@ NOTE NUMBER     CHORD
  X: 1
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -5
  K: 4
  B(3) = -1
@@ -4300,6 +4524,7 @@ NOTE NUMBER     CHORD
  P(5,2): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 26
  C2: 6
  S(0,26) = 6
 530: LET S = M(N)
@@ -4307,6 +4532,7 @@ NOTE NUMBER     CHORD
  M(26): 1
  S = 1
 540: LET S(1, N) = S
+ N: 26
  S: 1
  S(1,26) = 1
 542:
@@ -4335,6 +4561,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 26
  R: -9
  S(4,26) = -9
 670:
@@ -4352,6 +4579,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -4370,6 +4598,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 2
  B(2) = -7
@@ -4388,6 +4617,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -9
  K: 4
  B(3) = -5
@@ -4411,6 +4641,7 @@ NOTE NUMBER     CHORD
  P(5,3): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 26
  C2: 5
  S(0,26) = 5
 530: LET S = M(N)
@@ -4418,6 +4649,7 @@ NOTE NUMBER     CHORD
  M(26): 1
  S = 1
 540: LET S(1, N) = S
+ N: 26
  S: 1
  S(1,26) = 1
 542:
@@ -4446,6 +4678,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 26
  R: -10
  S(4,26) = -10
 670:
@@ -4463,6 +4696,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -4481,6 +4715,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -4515,11 +4750,14 @@ NOTE NUMBER     CHORD
  B(2): -8
  B = -8
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -8
  W(2,0) = -8
 850: LET W(3, L) = A
+ L: 0
  A: -10
  W(3,0) = -10
 860: LET B(1) = B
@@ -4539,11 +4777,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -3
  W(2,1) = -3
 850: LET W(3, L) = A
+ L: 1
  A: -8
  W(3,1) = -8
 860: LET B(1) = B
@@ -4563,11 +4804,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -1
  W(2,2) = -1
 850: LET W(3, L) = A
+ L: 2
  A: -3
  W(3,2) = -3
 860: LET B(1) = B
@@ -4587,11 +4831,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 4
  W(2,3) = 4
 850: LET W(3, L) = A
+ L: 3
  A: -1
  W(3,3) = -1
 860: LET B(1) = B
@@ -4611,11 +4858,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 6
  W(2,4) = 6
 850: LET W(3, L) = A
+ L: 4
  A: 4
  W(3,4) = 4
 860: LET B(1) = B
@@ -4635,11 +4885,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 11
  W(2,5) = 11
 850: LET W(3, L) = A
+ L: 5
  A: 6
  W(3,5) = 6
 860: LET B(1) = B
@@ -4659,11 +4912,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 13
  W(2,6) = 13
 850: LET W(3, L) = A
+ L: 6
  A: 11
  W(3,6) = 11
 860: LET B(1) = B
@@ -4695,6 +4951,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -4723,6 +4980,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 26
  B: -3
  S(2,26) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -4755,6 +5014,7 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -4783,6 +5043,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 26
  B: -1
  S(2,26) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -4815,6 +5077,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 26
  B: -3
  S(3,26) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -4856,6 +5120,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 0
  D(3): 0
  W(0,2) = 0
@@ -4887,6 +5152,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 26
  B: 4
  S(2,26) = 4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -4896,6 +5163,7 @@ NOTE NUMBER     CHORD
  S(2,26): 4
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -4916,6 +5184,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -4936,6 +5205,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -4956,6 +5226,7 @@ NOTE NUMBER     CHORD
  S(2,27): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -5072,10 +5343,12 @@ NOTE NUMBER     CHORD
  M: 0
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 26
  L9: 2
  W(2,2): -1
  S(2,26) = -1
 1620: LET S(3, N) = W(3, L9)
+ N: 26
  L9: 2
  W(3,2): -3
  S(3,26) = -3
@@ -5119,6 +5392,7 @@ NOTE NUMBER     CHORD
  P(5,1): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 25
  C2: 2
  S(0,25) = 2
 530: LET S = M(N)
@@ -5126,6 +5400,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -5170,6 +5445,7 @@ NOTE NUMBER     CHORD
  R = -6
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -6
  S(4,25) = -6
 670:
@@ -5187,6 +5463,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -6
  K: 0
  B(1) = -6
@@ -5205,6 +5482,7 @@ NOTE NUMBER     CHORD
  X: 4
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -6
  K: 2
  B(2) = -4
@@ -5223,6 +5501,7 @@ NOTE NUMBER     CHORD
  X: 2
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -6
  K: 4
  B(3) = -2
@@ -5246,6 +5525,7 @@ NOTE NUMBER     CHORD
  P(5,2): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 25
  C2: 6
  S(0,25) = 6
 530: LET S = M(N)
@@ -5253,6 +5533,7 @@ NOTE NUMBER     CHORD
  M(25): 0
  S = 0
 540: LET S(1, N) = S
+ N: 25
  S: 0
  S(1,25) = 0
 542:
@@ -5281,6 +5562,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 25
  R: -9
  S(4,25) = -9
 670:
@@ -5298,6 +5580,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -5327,6 +5610,7 @@ NOTE NUMBER     CHORD
  X: 5
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 4
  B(2) = -5
@@ -5350,11 +5634,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -5
  W(2,0) = -5
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -5374,11 +5661,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -5
  W(3,1) = -5
 860: LET B(1) = B
@@ -5398,11 +5688,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 2
  W(2,2) = 2
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -5422,11 +5715,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 2
  W(3,3) = 2
 860: LET B(1) = B
@@ -5446,11 +5742,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 9
  W(2,4) = 9
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -5470,11 +5769,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 9
  W(3,5) = 9
 860: LET B(1) = B
@@ -5494,11 +5796,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 16
  W(2,6) = 16
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -5538,6 +5843,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -5566,6 +5872,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 25
  B: -2
  S(2,25) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -5598,6 +5906,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 25
  B: -5
  S(3,25) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -5850,6 +6160,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 1
  D(3): 2
  W(0,1) = 3
@@ -5881,6 +6192,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 25
  B: 2
  S(2,25) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -5890,6 +6203,7 @@ NOTE NUMBER     CHORD
  S(2,25): 2
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -5910,6 +6224,7 @@ NOTE NUMBER     CHORD
  S(2,26): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -5930,6 +6245,7 @@ NOTE NUMBER     CHORD
  S(2,26): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -5950,6 +6266,7 @@ NOTE NUMBER     CHORD
  S(2,26): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -5970,6 +6287,7 @@ NOTE NUMBER     CHORD
  S(2,26): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -6080,10 +6398,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 25
  L9: 1
  W(2,1): -2
  S(2,25) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 25
  L9: 1
  W(3,1): -5
  S(3,25) = -5
@@ -6127,6 +6447,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 24
  C2: 1
  S(0,24) = 1
 530: LET S = M(N)
@@ -6134,6 +6455,7 @@ NOTE NUMBER     CHORD
  M(24): 2
  S = 2
 540: LET S(1, N) = S
+ N: 24
  S: 2
  S(1,24) = 2
 542:
@@ -6177,6 +6499,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 24
  R: -14
  S(4,24) = -14
 670:
@@ -6194,6 +6517,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 0
  B(1) = -14
@@ -6223,6 +6547,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 4
  B(2) = -10
@@ -6246,11 +6571,14 @@ NOTE NUMBER     CHORD
  B(2): -10
  B = -10
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -10
  W(2,0) = -10
 850: LET W(3, L) = A
+ L: 0
  A: -14
  W(3,0) = -14
 860: LET B(1) = B
@@ -6270,11 +6598,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -7
  W(2,1) = -7
 850: LET W(3, L) = A
+ L: 1
  A: -10
  W(3,1) = -10
 860: LET B(1) = B
@@ -6294,11 +6625,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -3
  W(2,2) = -3
 850: LET W(3, L) = A
+ L: 2
  A: -7
  W(3,2) = -7
 860: LET B(1) = B
@@ -6318,11 +6652,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 0
  W(2,3) = 0
 850: LET W(3, L) = A
+ L: 3
  A: -3
  W(3,3) = -3
 860: LET B(1) = B
@@ -6342,11 +6679,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 4
  W(2,4) = 4
 850: LET W(3, L) = A
+ L: 4
  A: 0
  W(3,4) = 0
 860: LET B(1) = B
@@ -6366,11 +6706,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 7
  W(2,5) = 7
 850: LET W(3, L) = A
+ L: 5
  A: 4
  W(3,5) = 4
 860: LET B(1) = B
@@ -6390,11 +6733,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 11
  W(2,6) = 11
 850: LET W(3, L) = A
+ L: 6
  A: 7
  W(3,6) = 7
 860: LET B(1) = B
@@ -6426,6 +6772,7 @@ NOTE NUMBER     CHORD
  S(2,25): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -6454,6 +6801,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -6482,6 +6830,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 24
  B: -3
  S(2,24) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -6514,6 +6864,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 24
  B: -7
  S(3,24) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -6751,6 +7103,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 1
  D(3): 2
  W(0,2) = 3
@@ -6782,6 +7135,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 24
  B: 0
  S(2,24) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -6814,6 +7169,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 24
  B: -3
  S(3,24) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -7051,6 +7408,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 3
  D(2): 2
  D(3): 2
  W(0,3) = 4
@@ -7074,6 +7432,7 @@ NOTE NUMBER     CHORD
  S(2,25): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -7094,6 +7453,7 @@ NOTE NUMBER     CHORD
  S(2,25): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -7114,6 +7474,7 @@ NOTE NUMBER     CHORD
  S(2,25): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -7230,10 +7591,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 24
  L9: 2
  W(2,2): -3
  S(2,24) = -3
 1620: LET S(3, N) = W(3, L9)
+ N: 24
  L9: 2
  W(3,2): -7
  S(3,24) = -7
@@ -7277,6 +7640,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 23
  C2: 5
  S(0,23) = 5
 530: LET S = M(N)
@@ -7284,6 +7648,7 @@ NOTE NUMBER     CHORD
  M(23): 4
  S = 4
 540: LET S(1, N) = S
+ N: 23
  S: 4
  S(1,23) = 4
 542:
@@ -7312,6 +7677,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 23
  R: -10
  S(4,23) = -10
 670:
@@ -7340,6 +7706,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 2
  B(1) = -8
@@ -7358,6 +7725,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 4
  B(2) = -6
@@ -7381,11 +7749,14 @@ NOTE NUMBER     CHORD
  B(2): -6
  B = -6
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -6
  W(2,0) = -6
 850: LET W(3, L) = A
+ L: 0
  A: -8
  W(3,0) = -8
 860: LET B(1) = B
@@ -7405,11 +7776,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -1
  W(2,1) = -1
 850: LET W(3, L) = A
+ L: 1
  A: -6
  W(3,1) = -6
 860: LET B(1) = B
@@ -7429,11 +7803,14 @@ NOTE NUMBER     CHORD
  B(2): 1
  B = 1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 1
  W(2,2) = 1
 850: LET W(3, L) = A
+ L: 2
  A: -1
  W(3,2) = -1
 860: LET B(1) = B
@@ -7453,11 +7830,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 6
  W(2,3) = 6
 850: LET W(3, L) = A
+ L: 3
  A: 1
  W(3,3) = 1
 860: LET B(1) = B
@@ -7477,11 +7857,14 @@ NOTE NUMBER     CHORD
  B(2): 8
  B = 8
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 8
  W(2,4) = 8
 850: LET W(3, L) = A
+ L: 4
  A: 6
  W(3,4) = 6
 860: LET B(1) = B
@@ -7501,11 +7884,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 13
  W(2,5) = 13
 850: LET W(3, L) = A
+ L: 5
  A: 8
  W(3,5) = 8
 860: LET B(1) = B
@@ -7525,11 +7911,14 @@ NOTE NUMBER     CHORD
  B(2): 15
  B = 15
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 15
  W(2,6) = 15
 850: LET W(3, L) = A
+ L: 6
  A: 13
  W(3,6) = 13
 860: LET B(1) = B
@@ -7569,6 +7958,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -7597,6 +7987,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 23
  B: -1
  S(2,23) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -7629,6 +8021,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 23
  B: -6
  S(3,23) = -6
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -7881,6 +8275,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 2
  D(3): 1
  W(0,1) = 3
@@ -7912,6 +8307,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 23
  B: 1
  S(2,23) = 1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -7936,6 +8333,7 @@ NOTE NUMBER     CHORD
  S(3,24): -7
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -7956,6 +8354,7 @@ NOTE NUMBER     CHORD
  S(2,24): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -7976,6 +8375,7 @@ NOTE NUMBER     CHORD
  S(2,24): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -7996,6 +8396,7 @@ NOTE NUMBER     CHORD
  S(2,24): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -8016,6 +8417,7 @@ NOTE NUMBER     CHORD
  S(2,24): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -8126,10 +8528,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 23
  L9: 1
  W(2,1): -1
  S(2,23) = -1
 1620: LET S(3, N) = W(3, L9)
+ N: 23
  L9: 1
  W(3,1): -6
  S(3,23) = -6
@@ -8173,6 +8577,7 @@ NOTE NUMBER     CHORD
  P(5,1): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 22
  C2: 2
  S(0,22) = 2
 530: LET S = M(N)
@@ -8180,6 +8585,7 @@ NOTE NUMBER     CHORD
  M(22): 7
  S = 7
 540: LET S(1, N) = S
+ N: 22
  S: 7
  S(1,22) = 7
 542:
@@ -8223,6 +8629,7 @@ NOTE NUMBER     CHORD
  D(2): -13
  R = -13
 660: LET S(4, N) = R
+ N: 22
  R: -13
  S(4,22) = -13
 670:
@@ -8240,6 +8647,7 @@ NOTE NUMBER     CHORD
  X: 20
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -13
  K: 0
  B(1) = -13
@@ -8258,6 +8666,7 @@ NOTE NUMBER     CHORD
  X: 18
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -13
  K: 2
  B(2) = -11
@@ -8276,6 +8685,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -13
  K: 4
  B(3) = -9
@@ -8299,6 +8709,7 @@ NOTE NUMBER     CHORD
  P(5,2): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 22
  C2: 6
  S(0,22) = 6
 530: LET S = M(N)
@@ -8306,6 +8717,7 @@ NOTE NUMBER     CHORD
  M(22): 7
  S = 7
 540: LET S(1, N) = S
+ N: 22
  S: 7
  S(1,22) = 7
 542:
@@ -8334,6 +8746,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 22
  R: -9
  S(4,22) = -9
 670:
@@ -8351,6 +8764,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -8380,6 +8794,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 4
  B(2) = -5
@@ -8403,11 +8818,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -5
  W(2,0) = -5
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -8427,11 +8845,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -5
  W(3,1) = -5
 860: LET B(1) = B
@@ -8451,11 +8872,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 2
  W(2,2) = 2
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -8475,11 +8899,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 2
  W(3,3) = 2
 860: LET B(1) = B
@@ -8499,11 +8926,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 9
  W(2,4) = 9
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -8523,11 +8953,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 9
  W(3,5) = 9
 860: LET B(1) = B
@@ -8547,11 +8980,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 16
  W(2,6) = 16
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -8591,6 +9027,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -8619,6 +9056,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 22
  B: -2
  S(2,22) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -8651,6 +9090,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 22
  B: -5
  S(3,22) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -8846,6 +9287,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -8874,6 +9316,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 22
  B: 2
  S(2,22) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -8906,6 +9350,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 22
  B: -2
  S(3,22) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -9143,6 +9589,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 3
  D(3): 4
  W(0,2) = 7
@@ -9166,6 +9613,7 @@ NOTE NUMBER     CHORD
  S(2,23): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -9186,6 +9634,7 @@ NOTE NUMBER     CHORD
  S(2,23): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -9206,6 +9655,7 @@ NOTE NUMBER     CHORD
  S(2,23): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -9226,6 +9676,7 @@ NOTE NUMBER     CHORD
  S(2,23): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -9342,10 +9793,12 @@ NOTE NUMBER     CHORD
  M: 7
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 22
  L9: 2
  W(2,2): 2
  S(2,22) = 2
 1620: LET S(3, N) = W(3, L9)
+ N: 22
  L9: 2
  W(3,2): -2
  S(3,22) = -2
@@ -9389,6 +9842,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 21
  C2: 1
  S(0,21) = 1
 530: LET S = M(N)
@@ -9396,6 +9850,7 @@ NOTE NUMBER     CHORD
  M(21): 5
  S = 5
 540: LET S(1, N) = S
+ N: 21
  S: 5
  S(1,21) = 5
 542:
@@ -9440,6 +9895,7 @@ NOTE NUMBER     CHORD
  R = -7
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 21
  R: -7
  S(4,21) = -7
 670:
@@ -9457,6 +9913,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -7
  K: 0
  B(1) = -7
@@ -9475,6 +9932,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -7
  K: 2
  B(2) = -5
@@ -9493,6 +9951,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -7
  K: 4
  B(3) = -3
@@ -9516,6 +9975,7 @@ NOTE NUMBER     CHORD
  P(6,2): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 21
  C2: 5
  S(0,21) = 5
 530: LET S = M(N)
@@ -9523,6 +9983,7 @@ NOTE NUMBER     CHORD
  M(21): 5
  S = 5
 540: LET S(1, N) = S
+ N: 21
  S: 5
  S(1,21) = 5
 542:
@@ -9551,6 +10012,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 21
  R: -10
  S(4,21) = -10
 670:
@@ -9568,6 +10030,7 @@ NOTE NUMBER     CHORD
  X: 15
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -9586,6 +10049,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -9604,6 +10068,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -10
  K: 4
  B(3) = -6
@@ -9627,6 +10092,7 @@ NOTE NUMBER     CHORD
  P(6,3): 3
  C2 = 3
 525: LET S(0, N) = C2
+ N: 21
  C2: 3
  S(0,21) = 3
 530: LET S = M(N)
@@ -9634,6 +10100,7 @@ NOTE NUMBER     CHORD
  M(21): 5
  S = 5
 540: LET S(1, N) = S
+ N: 21
  S: 5
  S(1,21) = 5
 542:
@@ -9678,6 +10145,7 @@ NOTE NUMBER     CHORD
  R = -5
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 21
  R: -5
  S(4,21) = -5
 670:
@@ -9695,6 +10163,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -5
  K: 0
  B(1) = -5
@@ -9713,6 +10182,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -5
  K: 2
  B(2) = -3
@@ -9731,6 +10201,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -5
  K: 4
  B(3) = -1
@@ -9754,6 +10225,7 @@ NOTE NUMBER     CHORD
  P(6,4): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 21
  C2: 6
  S(0,21) = 6
 530: LET S = M(N)
@@ -9761,6 +10233,7 @@ NOTE NUMBER     CHORD
  M(21): 5
  S = 5
 540: LET S(1, N) = S
+ N: 21
  S: 5
  S(1,21) = 5
 542:
@@ -9789,6 +10262,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 21
  R: -9
  S(4,21) = -9
 670:
@@ -9817,6 +10291,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 2
  B(1) = -7
@@ -9835,6 +10310,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 4
  B(2) = -5
@@ -9858,11 +10334,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -5
  W(2,0) = -5
 850: LET W(3, L) = A
+ L: 0
  A: -7
  W(3,0) = -7
 860: LET B(1) = B
@@ -9882,11 +10361,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 0
  W(2,1) = 0
 850: LET W(3, L) = A
+ L: 1
  A: -5
  W(3,1) = -5
 860: LET B(1) = B
@@ -9906,11 +10388,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 2
  W(2,2) = 2
 850: LET W(3, L) = A
+ L: 2
  A: 0
  W(3,2) = 0
 860: LET B(1) = B
@@ -9930,11 +10415,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 7
  W(2,3) = 7
 850: LET W(3, L) = A
+ L: 3
  A: 2
  W(3,3) = 2
 860: LET B(1) = B
@@ -9954,11 +10442,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 9
  W(2,4) = 9
 850: LET W(3, L) = A
+ L: 4
  A: 7
  W(3,4) = 7
 860: LET B(1) = B
@@ -9978,11 +10469,14 @@ NOTE NUMBER     CHORD
  B(2): 14
  B = 14
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 14
  W(2,5) = 14
 850: LET W(3, L) = A
+ L: 5
  A: 9
  W(3,5) = 9
 860: LET B(1) = B
@@ -10002,11 +10496,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 16
  W(2,6) = 16
 850: LET W(3, L) = A
+ L: 6
  A: 14
  W(3,6) = 14
 860: LET B(1) = B
@@ -10038,6 +10535,7 @@ NOTE NUMBER     CHORD
  S(2,22): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -10066,6 +10564,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 21
  B: 0
  S(2,21) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -10098,6 +10598,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 21
  B: -5
  S(3,21) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -10139,6 +10641,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 2
  D(3): 3
  W(0,1) = 5
@@ -10170,6 +10673,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 21
  B: 2
  S(2,21) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -10202,6 +10707,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 21
  B: 0
  S(3,21) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -10243,6 +10750,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 0
  D(3): 2
  W(0,2) = 2
@@ -10274,6 +10782,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 21
  B: 7
  S(2,21) = 7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -10283,6 +10793,7 @@ NOTE NUMBER     CHORD
  S(2,21): 7
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -10303,6 +10814,7 @@ NOTE NUMBER     CHORD
  S(2,22): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -10323,6 +10835,7 @@ NOTE NUMBER     CHORD
  S(2,22): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -10343,6 +10856,7 @@ NOTE NUMBER     CHORD
  S(2,22): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -10459,10 +10973,12 @@ NOTE NUMBER     CHORD
  M: 2
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 21
  L9: 2
  W(2,2): 2
  S(2,21) = 2
 1620: LET S(3, N) = W(3, L9)
+ N: 21
  L9: 2
  W(3,2): 0
  S(3,21) = 0
@@ -10506,6 +11022,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 20
  C2: 1
  S(0,20) = 1
 530: LET S = M(N)
@@ -10513,6 +11030,7 @@ NOTE NUMBER     CHORD
  M(20): 7
  S = 7
 540: LET S(1, N) = S
+ N: 20
  S: 7
  S(1,20) = 7
 542:
@@ -10556,6 +11074,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 20
  R: -14
  S(4,20) = -14
 670:
@@ -10584,6 +11103,7 @@ NOTE NUMBER     CHORD
  X: 19
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 2
  B(1) = -12
@@ -10602,6 +11122,7 @@ NOTE NUMBER     CHORD
  X: 17
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 4
  B(2) = -10
@@ -10625,11 +11146,14 @@ NOTE NUMBER     CHORD
  B(2): -10
  B = -10
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -10
  W(2,0) = -10
 850: LET W(3, L) = A
+ L: 0
  A: -12
  W(3,0) = -12
 860: LET B(1) = B
@@ -10649,11 +11173,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -5
  W(2,1) = -5
 850: LET W(3, L) = A
+ L: 1
  A: -10
  W(3,1) = -10
 860: LET B(1) = B
@@ -10673,11 +11200,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -3
  W(2,2) = -3
 850: LET W(3, L) = A
+ L: 2
  A: -5
  W(3,2) = -5
 860: LET B(1) = B
@@ -10697,11 +11227,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 2
  W(2,3) = 2
 850: LET W(3, L) = A
+ L: 3
  A: -3
  W(3,3) = -3
 860: LET B(1) = B
@@ -10721,11 +11254,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 4
  W(2,4) = 4
 850: LET W(3, L) = A
+ L: 4
  A: 2
  W(3,4) = 2
 860: LET B(1) = B
@@ -10745,11 +11281,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 9
  W(2,5) = 9
 850: LET W(3, L) = A
+ L: 5
  A: 4
  W(3,5) = 4
 860: LET B(1) = B
@@ -10769,11 +11308,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 11
  W(2,6) = 11
 850: LET W(3, L) = A
+ L: 6
  A: 9
  W(3,6) = 9
 860: LET B(1) = B
@@ -10805,6 +11347,7 @@ NOTE NUMBER     CHORD
  S(2,21): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -10825,6 +11368,7 @@ NOTE NUMBER     CHORD
  S(2,21): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -10853,6 +11397,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 20
  B: -3
  S(2,20) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -10885,6 +11431,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 20
  B: -5
  S(3,20) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -11050,6 +11598,7 @@ NOTE NUMBER     CHORD
  S2: -5
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -11078,6 +11627,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 20
  B: 2
  S(2,20) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -11110,6 +11661,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 20
  B: -3
  S(3,20) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -11347,6 +11900,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 3
  D(2): 0
  D(3): 3
  W(0,3) = 3
@@ -11378,6 +11932,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 20
  B: 4
  S(2,20) = 4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -11410,6 +11966,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 20
  B: 2
  S(3,20) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -11647,6 +12205,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 4
  D(2): 2
  D(3): 2
  W(0,4) = 4
@@ -11670,6 +12229,7 @@ NOTE NUMBER     CHORD
  S(2,21): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -11690,6 +12250,7 @@ NOTE NUMBER     CHORD
  S(2,21): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -11812,10 +12373,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 20
  L9: 3
  W(2,3): 2
  S(2,20) = 2
 1620: LET S(3, N) = W(3, L9)
+ N: 20
  L9: 3
  W(3,3): -3
  S(3,20) = -3
@@ -11859,6 +12422,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 19
  C2: 5
  S(0,19) = 5
 530: LET S = M(N)
@@ -11866,6 +12430,7 @@ NOTE NUMBER     CHORD
  M(19): 0
  S = 0
 540: LET S(1, N) = S
+ N: 19
  S: 0
  S(1,19) = 0
 542:
@@ -11894,6 +12459,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 19
  R: -10
  S(4,19) = -10
 670:
@@ -11911,6 +12477,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -11929,6 +12496,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -11947,6 +12515,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -10
  K: 4
  B(3) = -6
@@ -11970,6 +12539,7 @@ NOTE NUMBER     CHORD
  P(1,2): 4
  C2 = 4
 525: LET S(0, N) = C2
+ N: 19
  C2: 4
  S(0,19) = 4
 530: LET S = M(N)
@@ -11977,6 +12547,7 @@ NOTE NUMBER     CHORD
  M(19): 0
  S = 0
 540: LET S(1, N) = S
+ N: 19
  S: 0
  S(1,19) = 0
 542:
@@ -12005,6 +12576,7 @@ NOTE NUMBER     CHORD
  R = -11
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 19
  R: -11
  S(4,19) = -11
 670:
@@ -12022,6 +12594,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -11
  K: 0
  B(1) = -11
@@ -12040,6 +12613,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -11
  K: 2
  B(2) = -9
@@ -12074,11 +12648,14 @@ NOTE NUMBER     CHORD
  B(2): -9
  B = -9
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -9
  W(2,0) = -9
 850: LET W(3, L) = A
+ L: 0
  A: -11
  W(3,0) = -11
 860: LET B(1) = B
@@ -12098,11 +12675,14 @@ NOTE NUMBER     CHORD
  B(2): -4
  B = -4
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -4
  W(2,1) = -4
 850: LET W(3, L) = A
+ L: 1
  A: -9
  W(3,1) = -9
 860: LET B(1) = B
@@ -12122,11 +12702,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -2
  W(2,2) = -2
 850: LET W(3, L) = A
+ L: 2
  A: -4
  W(3,2) = -4
 860: LET B(1) = B
@@ -12146,11 +12729,14 @@ NOTE NUMBER     CHORD
  B(2): 3
  B = 3
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 3
  W(2,3) = 3
 850: LET W(3, L) = A
+ L: 3
  A: -2
  W(3,3) = -2
 860: LET B(1) = B
@@ -12170,11 +12756,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 5
  W(2,4) = 5
 850: LET W(3, L) = A
+ L: 4
  A: 3
  W(3,4) = 3
 860: LET B(1) = B
@@ -12194,11 +12783,14 @@ NOTE NUMBER     CHORD
  B(2): 10
  B = 10
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 10
  W(2,5) = 10
 850: LET W(3, L) = A
+ L: 5
  A: 5
  W(3,5) = 5
 860: LET B(1) = B
@@ -12218,11 +12810,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 12
  W(2,6) = 12
 850: LET W(3, L) = A
+ L: 6
  A: 10
  W(3,6) = 10
 860: LET B(1) = B
@@ -12254,6 +12849,7 @@ NOTE NUMBER     CHORD
  S(2,20): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -12274,6 +12870,7 @@ NOTE NUMBER     CHORD
  S(2,20): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -12302,6 +12899,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 19
  B: -2
  S(2,19) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -12334,6 +12933,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 19
  B: -4
  S(3,19) = -4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -12571,6 +13172,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 4
  D(3): 1
  W(0,2) = 5
@@ -12602,6 +13204,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 19
  B: 3
  S(2,19) = 3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -12611,6 +13215,7 @@ NOTE NUMBER     CHORD
  S(2,19): 3
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -12639,6 +13244,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 19
  B: 5
  S(2,19) = 5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -12648,6 +13255,7 @@ NOTE NUMBER     CHORD
  S(2,19): 5
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -12668,6 +13276,7 @@ NOTE NUMBER     CHORD
  S(2,20): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -12688,6 +13297,7 @@ NOTE NUMBER     CHORD
  S(2,20): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -12804,10 +13414,12 @@ NOTE NUMBER     CHORD
  M: 5
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 19
  L9: 2
  W(2,2): -2
  S(2,19) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 19
  L9: 2
  W(3,2): -4
  S(3,19) = -4
@@ -12851,6 +13463,7 @@ NOTE NUMBER     CHORD
  P(4,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 18
  C2: 1
  S(0,18) = 1
 530: LET S = M(N)
@@ -12858,6 +13471,7 @@ NOTE NUMBER     CHORD
  M(18): 1
  S = 1
 540: LET S(1, N) = S
+ N: 18
  S: 1
  S(1,18) = 1
 542:
@@ -12901,6 +13515,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 18
  R: -14
  S(4,18) = -14
 670:
@@ -12918,6 +13533,7 @@ NOTE NUMBER     CHORD
  X: 15
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 0
  B(1) = -14
@@ -12936,6 +13552,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 2
  B(2) = -12
@@ -12954,6 +13571,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -14
  K: 4
  B(3) = -10
@@ -12977,6 +13595,7 @@ NOTE NUMBER     CHORD
  P(4,2): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 18
  C2: 5
  S(0,18) = 5
 530: LET S = M(N)
@@ -12984,6 +13603,7 @@ NOTE NUMBER     CHORD
  M(18): 1
  S = 1
 540: LET S(1, N) = S
+ N: 18
  S: 1
  S(1,18) = 1
 542:
@@ -13012,6 +13632,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 18
  R: -10
  S(4,18) = -10
 670:
@@ -13029,6 +13650,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -13047,6 +13669,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -13081,11 +13704,14 @@ NOTE NUMBER     CHORD
  B(2): -8
  B = -8
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -8
  W(2,0) = -8
 850: LET W(3, L) = A
+ L: 0
  A: -10
  W(3,0) = -10
 860: LET B(1) = B
@@ -13105,11 +13731,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -3
  W(2,1) = -3
 850: LET W(3, L) = A
+ L: 1
  A: -8
  W(3,1) = -8
 860: LET B(1) = B
@@ -13129,11 +13758,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -1
  W(2,2) = -1
 850: LET W(3, L) = A
+ L: 2
  A: -3
  W(3,2) = -3
 860: LET B(1) = B
@@ -13153,11 +13785,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 4
  W(2,3) = 4
 850: LET W(3, L) = A
+ L: 3
  A: -1
  W(3,3) = -1
 860: LET B(1) = B
@@ -13177,11 +13812,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 6
  W(2,4) = 6
 850: LET W(3, L) = A
+ L: 4
  A: 4
  W(3,4) = 4
 860: LET B(1) = B
@@ -13201,11 +13839,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 11
  W(2,5) = 11
 850: LET W(3, L) = A
+ L: 5
  A: 6
  W(3,5) = 6
 860: LET B(1) = B
@@ -13225,11 +13866,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 13
  W(2,6) = 13
 850: LET W(3, L) = A
+ L: 6
  A: 11
  W(3,6) = 11
 860: LET B(1) = B
@@ -13261,6 +13905,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -13289,6 +13934,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 18
  B: -3
  S(2,18) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -13321,6 +13968,7 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -13349,6 +13997,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 18
  B: -1
  S(2,18) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -13381,6 +14031,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 18
  B: -3
  S(3,18) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -13462,6 +14114,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -13482,6 +14135,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -13502,6 +14156,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -13522,6 +14177,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -13542,6 +14198,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -13692,6 +14349,7 @@ NOTE NUMBER     CHORD
  P(4,3): 4
  C2 = 4
 525: LET S(0, N) = C2
+ N: 18
  C2: 4
  S(0,18) = 4
 530: LET S = M(N)
@@ -13699,6 +14357,7 @@ NOTE NUMBER     CHORD
  M(18): 1
  S = 1
 540: LET S(1, N) = S
+ N: 18
  S: 1
  S(1,18) = 1
 542:
@@ -13727,6 +14386,7 @@ NOTE NUMBER     CHORD
  R = -11
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 18
  R: -11
  S(4,18) = -11
 670:
@@ -13744,6 +14404,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -11
  K: 0
  B(1) = -11
@@ -13762,6 +14423,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -11
  K: 2
  B(2) = -9
@@ -13780,6 +14442,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -11
  K: 4
  B(3) = -7
@@ -13803,6 +14466,7 @@ NOTE NUMBER     CHORD
  P(4,4): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 18
  C2: 6
  S(0,18) = 6
 530: LET S = M(N)
@@ -13810,6 +14474,7 @@ NOTE NUMBER     CHORD
  M(18): 1
  S = 1
 540: LET S(1, N) = S
+ N: 18
  S: 1
  S(1,18) = 1
 542:
@@ -13838,6 +14503,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 18
  R: -9
  S(4,18) = -9
 670:
@@ -13855,6 +14521,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -13873,6 +14540,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 2
  B(2) = -7
@@ -13891,6 +14559,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -9
  K: 4
  B(3) = -5
@@ -13914,6 +14583,7 @@ NOTE NUMBER     CHORD
  P(4,5): 3
  C2 = 3
 525: LET S(0, N) = C2
+ N: 18
  C2: 3
  S(0,18) = 3
 530: LET S = M(N)
@@ -13921,6 +14591,7 @@ NOTE NUMBER     CHORD
  M(18): 1
  S = 1
 540: LET S(1, N) = S
+ N: 18
  S: 1
  S(1,18) = 1
 542:
@@ -13949,6 +14620,7 @@ NOTE NUMBER     CHORD
  R = -12
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 18
  R: -12
  S(4,18) = -12
 670:
@@ -13966,6 +14638,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -12
  K: 0
  B(1) = -12
@@ -13984,6 +14657,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -12
  K: 2
  B(2) = -10
@@ -14002,6 +14676,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -12
  K: 4
  B(3) = -8
@@ -14025,6 +14700,7 @@ NOTE NUMBER     CHORD
  P(4,6): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 18
  C2: 2
  S(0,18) = 2
 530: LET S = M(N)
@@ -14032,6 +14708,7 @@ NOTE NUMBER     CHORD
  M(18): 1
  S = 1
 540: LET S(1, N) = S
+ N: 18
  S: 1
  S(1,18) = 1
 542:
@@ -14075,6 +14752,7 @@ NOTE NUMBER     CHORD
  D(2): -13
  R = -13
 660: LET S(4, N) = R
+ N: 18
  R: -13
  S(4,18) = -13
 670:
@@ -14103,6 +14781,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -13
  K: 2
  B(1) = -11
@@ -14121,6 +14800,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -13
  K: 4
  B(2) = -9
@@ -14144,11 +14824,14 @@ NOTE NUMBER     CHORD
  B(2): -9
  B = -9
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -9
  W(2,0) = -9
 850: LET W(3, L) = A
+ L: 0
  A: -11
  W(3,0) = -11
 860: LET B(1) = B
@@ -14168,11 +14851,14 @@ NOTE NUMBER     CHORD
  B(2): -4
  B = -4
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -4
  W(2,1) = -4
 850: LET W(3, L) = A
+ L: 1
  A: -9
  W(3,1) = -9
 860: LET B(1) = B
@@ -14192,11 +14878,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -2
  W(2,2) = -2
 850: LET W(3, L) = A
+ L: 2
  A: -4
  W(3,2) = -4
 860: LET B(1) = B
@@ -14216,11 +14905,14 @@ NOTE NUMBER     CHORD
  B(2): 3
  B = 3
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 3
  W(2,3) = 3
 850: LET W(3, L) = A
+ L: 3
  A: -2
  W(3,3) = -2
 860: LET B(1) = B
@@ -14240,11 +14932,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 5
  W(2,4) = 5
 850: LET W(3, L) = A
+ L: 4
  A: 3
  W(3,4) = 3
 860: LET B(1) = B
@@ -14264,11 +14959,14 @@ NOTE NUMBER     CHORD
  B(2): 10
  B = 10
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 10
  W(2,5) = 10
 850: LET W(3, L) = A
+ L: 5
  A: 5
  W(3,5) = 5
 860: LET B(1) = B
@@ -14288,11 +14986,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 12
  W(2,6) = 12
 850: LET W(3, L) = A
+ L: 6
  A: 10
  W(3,6) = 10
 860: LET B(1) = B
@@ -14324,6 +15025,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -14352,6 +15054,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -14380,6 +15083,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 18
  B: -2
  S(2,18) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -14412,6 +15117,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 18
  B: -4
  S(3,18) = -4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -14664,6 +15371,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 0
  D(3): 0
  W(0,2) = 0
@@ -14695,6 +15403,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 18
  B: 3
  S(2,18) = 3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -14704,6 +15414,7 @@ NOTE NUMBER     CHORD
  S(2,18): 3
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -14724,6 +15435,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -14744,6 +15456,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -14764,6 +15477,7 @@ NOTE NUMBER     CHORD
  S(2,19): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -14880,10 +15594,12 @@ NOTE NUMBER     CHORD
  M: 0
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 18
  L9: 2
  W(2,2): -2
  S(2,18) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 18
  L9: 2
  W(3,2): -4
  S(3,18) = -4
@@ -14927,6 +15643,7 @@ NOTE NUMBER     CHORD
  P(2,1): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 17
  C2: 6
  S(0,17) = 6
 530: LET S = M(N)
@@ -14934,6 +15651,7 @@ NOTE NUMBER     CHORD
  M(17): 2
  S = 2
 540: LET S(1, N) = S
+ N: 17
  S: 2
  S(1,17) = 2
 542:
@@ -14962,6 +15680,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 17
  R: -9
  S(4,17) = -9
 670:
@@ -14979,6 +15698,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -14997,6 +15717,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 2
  B(2) = -7
@@ -15031,11 +15752,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -7
  W(2,0) = -7
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -15055,11 +15779,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -7
  W(3,1) = -7
 860: LET B(1) = B
@@ -15079,11 +15806,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 0
  W(2,2) = 0
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -15103,11 +15833,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 0
  W(3,3) = 0
 860: LET B(1) = B
@@ -15127,11 +15860,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 7
  W(2,4) = 7
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -15151,11 +15887,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 7
  W(3,5) = 7
 860: LET B(1) = B
@@ -15175,11 +15914,14 @@ NOTE NUMBER     CHORD
  B(2): 14
  B = 14
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 14
  W(2,6) = 14
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -15219,6 +15961,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -15247,6 +15990,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 17
  B: -2
  S(2,17) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -15279,6 +16024,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 17
  B: -7
  S(3,17) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -15516,6 +16263,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 0
  D(3): 3
  W(0,1) = 3
@@ -15547,6 +16295,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 17
  B: 0
  S(2,17) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -15579,6 +16329,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 17
  B: -2
  S(3,17) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -15816,6 +16568,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 2
  D(3): 2
  W(0,2) = 4
@@ -15839,6 +16592,7 @@ NOTE NUMBER     CHORD
  S(2,18): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -15859,6 +16613,7 @@ NOTE NUMBER     CHORD
  S(2,18): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -15879,6 +16634,7 @@ NOTE NUMBER     CHORD
  S(2,18): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -15899,6 +16655,7 @@ NOTE NUMBER     CHORD
  S(2,18): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -16009,10 +16766,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 17
  L9: 1
  W(2,1): -2
  S(2,17) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 17
  L9: 1
  W(3,1): -7
  S(3,17) = -7
@@ -16056,6 +16815,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 16
  C2: 1
  S(0,16) = 1
 530: LET S = M(N)
@@ -16063,6 +16823,7 @@ NOTE NUMBER     CHORD
  M(16): 0
  S = 0
 540: LET S(1, N) = S
+ N: 16
  S: 0
  S(1,16) = 0
 542:
@@ -16107,6 +16868,7 @@ NOTE NUMBER     CHORD
  R = -7
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 16
  R: -7
  S(4,16) = -7
 670:
@@ -16135,6 +16897,7 @@ NOTE NUMBER     CHORD
  X: 5
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -7
  K: 2
  B(1) = -5
@@ -16153,6 +16916,7 @@ NOTE NUMBER     CHORD
  X: 3
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -7
  K: 4
  B(2) = -3
@@ -16176,11 +16940,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -3
  W(2,0) = -3
 850: LET W(3, L) = A
+ L: 0
  A: -5
  W(3,0) = -5
 860: LET B(1) = B
@@ -16200,11 +16967,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 2
  W(2,1) = 2
 850: LET W(3, L) = A
+ L: 1
  A: -3
  W(3,1) = -3
 860: LET B(1) = B
@@ -16224,11 +16994,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 4
  W(2,2) = 4
 850: LET W(3, L) = A
+ L: 2
  A: 2
  W(3,2) = 2
 860: LET B(1) = B
@@ -16248,11 +17021,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 9
  W(2,3) = 9
 850: LET W(3, L) = A
+ L: 3
  A: 4
  W(3,3) = 4
 860: LET B(1) = B
@@ -16272,11 +17048,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 11
  W(2,4) = 11
 850: LET W(3, L) = A
+ L: 4
  A: 9
  W(3,4) = 9
 860: LET B(1) = B
@@ -16296,11 +17075,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 16
  W(2,5) = 16
 850: LET W(3, L) = A
+ L: 5
  A: 11
  W(3,5) = 11
 860: LET B(1) = B
@@ -16320,11 +17102,14 @@ NOTE NUMBER     CHORD
  B(2): 18
  B = 18
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 18
  W(2,6) = 18
 850: LET W(3, L) = A
+ L: 6
  A: 16
  W(3,6) = 16
 860: LET B(1) = B
@@ -16364,6 +17149,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 16
  B: -3
  S(2,16) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -16396,6 +17183,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 16
  B: -5
  S(3,16) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -16648,6 +17437,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 0
  D(2): 1
  D(3): 2
  W(0,0) = 3
@@ -16679,6 +17469,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 16
  B: 2
  S(2,16) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -16688,6 +17480,7 @@ NOTE NUMBER     CHORD
  S(2,16): 2
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -16708,6 +17501,7 @@ NOTE NUMBER     CHORD
  S(2,17): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -16728,6 +17522,7 @@ NOTE NUMBER     CHORD
  S(2,17): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -16748,6 +17543,7 @@ NOTE NUMBER     CHORD
  S(2,17): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -16768,6 +17564,7 @@ NOTE NUMBER     CHORD
  S(2,17): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -16788,6 +17585,7 @@ NOTE NUMBER     CHORD
  S(2,17): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -16892,10 +17690,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 16
  L9: 0
  W(2,0): -3
  S(2,16) = -3
 1620: LET S(3, N) = W(3, L9)
+ N: 16
  L9: 0
  W(3,0): -5
  S(3,16) = -5
@@ -16939,6 +17739,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 15
  C2: 5
  S(0,15) = 5
 530: LET S = M(N)
@@ -16946,6 +17747,7 @@ NOTE NUMBER     CHORD
  M(15): 1
  S = 1
 540: LET S(1, N) = S
+ N: 15
  S: 1
  S(1,15) = 1
 542:
@@ -16989,6 +17791,7 @@ NOTE NUMBER     CHORD
  D(2): -10
  R = -10
 660: LET S(4, N) = R
+ N: 15
  R: -10
  S(4,15) = -10
 670:
@@ -17006,6 +17809,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -17024,6 +17828,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -17058,11 +17863,14 @@ NOTE NUMBER     CHORD
  B(2): -8
  B = -8
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -8
  W(2,0) = -8
 850: LET W(3, L) = A
+ L: 0
  A: -10
  W(3,0) = -10
 860: LET B(1) = B
@@ -17082,11 +17890,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -3
  W(2,1) = -3
 850: LET W(3, L) = A
+ L: 1
  A: -8
  W(3,1) = -8
 860: LET B(1) = B
@@ -17106,11 +17917,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -1
  W(2,2) = -1
 850: LET W(3, L) = A
+ L: 2
  A: -3
  W(3,2) = -3
 860: LET B(1) = B
@@ -17130,11 +17944,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 4
  W(2,3) = 4
 850: LET W(3, L) = A
+ L: 3
  A: -1
  W(3,3) = -1
 860: LET B(1) = B
@@ -17154,11 +17971,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 6
  W(2,4) = 6
 850: LET W(3, L) = A
+ L: 4
  A: 4
  W(3,4) = 4
 860: LET B(1) = B
@@ -17178,11 +17998,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 11
  W(2,5) = 11
 850: LET W(3, L) = A
+ L: 5
  A: 6
  W(3,5) = 6
 860: LET B(1) = B
@@ -17202,11 +18025,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 13
  W(2,6) = 13
 850: LET W(3, L) = A
+ L: 6
  A: 11
  W(3,6) = 11
 860: LET B(1) = B
@@ -17246,6 +18072,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -17274,6 +18101,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 15
  B: -3
  S(2,15) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -17306,6 +18135,7 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -17334,6 +18164,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 15
  B: -1
  S(2,15) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -17366,6 +18198,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 15
  B: -3
  S(3,15) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -17603,6 +18437,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 2
  D(3): 2
  W(0,2) = 4
@@ -17626,6 +18461,7 @@ NOTE NUMBER     CHORD
  S(2,16): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -17646,6 +18482,7 @@ NOTE NUMBER     CHORD
  S(2,16): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -17666,6 +18503,7 @@ NOTE NUMBER     CHORD
  S(2,16): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -17686,6 +18524,7 @@ NOTE NUMBER     CHORD
  S(2,16): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -17802,10 +18641,12 @@ NOTE NUMBER     CHORD
  M: 4
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 15
  L9: 2
  W(2,2): -1
  S(2,15) = -1
 1620: LET S(3, N) = W(3, L9)
+ N: 15
  L9: 2
  W(3,2): -3
  S(3,15) = -3
@@ -17849,6 +18690,7 @@ NOTE NUMBER     CHORD
  P(5,1): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 14
  C2: 2
  S(0,14) = 2
 530: LET S = M(N)
@@ -17856,6 +18698,7 @@ NOTE NUMBER     CHORD
  M(14): 2
  S = 2
 540: LET S(1, N) = S
+ N: 14
  S: 2
  S(1,14) = 2
 542:
@@ -17899,6 +18742,7 @@ NOTE NUMBER     CHORD
  D(2): -13
  R = -13
 660: LET S(4, N) = R
+ N: 14
  R: -13
  S(4,14) = -13
 670:
@@ -17916,6 +18760,7 @@ NOTE NUMBER     CHORD
  X: 15
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -13
  K: 0
  B(1) = -13
@@ -17934,6 +18779,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -13
  K: 2
  B(2) = -11
@@ -17952,6 +18798,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -13
  K: 4
  B(3) = -9
@@ -17975,6 +18822,7 @@ NOTE NUMBER     CHORD
  P(5,2): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 14
  C2: 6
  S(0,14) = 6
 530: LET S = M(N)
@@ -17982,6 +18830,7 @@ NOTE NUMBER     CHORD
  M(14): 2
  S = 2
 540: LET S(1, N) = S
+ N: 14
  S: 2
  S(1,14) = 2
 542:
@@ -18010,6 +18859,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 14
  R: -9
  S(4,14) = -9
 670:
@@ -18027,6 +18877,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -18045,6 +18896,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 2
  B(2) = -7
@@ -18079,11 +18931,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -7
  W(2,0) = -7
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -18103,11 +18958,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -7
  W(3,1) = -7
 860: LET B(1) = B
@@ -18127,11 +18985,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 0
  W(2,2) = 0
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -18151,11 +19012,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 0
  W(3,3) = 0
 860: LET B(1) = B
@@ -18175,11 +19039,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 7
  W(2,4) = 7
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -18199,11 +19066,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 7
  W(3,5) = 7
 860: LET B(1) = B
@@ -18223,11 +19093,14 @@ NOTE NUMBER     CHORD
  B(2): 14
  B = 14
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 14
  W(2,6) = 14
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -18259,6 +19132,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -18287,6 +19161,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 14
  B: -2
  S(2,14) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -18319,6 +19195,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 14
  B: -7
  S(3,14) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -18437,6 +19315,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -18465,6 +19344,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 14
  B: 0
  S(2,14) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -18497,6 +19378,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 14
  B: -2
  S(3,14) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -18578,6 +19461,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -18598,6 +19482,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -18618,6 +19503,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -18638,6 +19524,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -18658,6 +19545,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -18808,6 +19696,7 @@ NOTE NUMBER     CHORD
  P(5,3): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 14
  C2: 5
  S(0,14) = 5
 530: LET S = M(N)
@@ -18815,6 +19704,7 @@ NOTE NUMBER     CHORD
  M(14): 2
  S = 2
 540: LET S(1, N) = S
+ N: 14
  S: 2
  S(1,14) = 2
 542:
@@ -18843,6 +19733,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 14
  R: -10
  S(4,14) = -10
 670:
@@ -18860,6 +19751,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -18878,6 +19770,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -18896,6 +19789,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -10
  K: 4
  B(3) = -6
@@ -18919,6 +19813,7 @@ NOTE NUMBER     CHORD
  P(5,4): 4
  C2 = 4
 525: LET S(0, N) = C2
+ N: 14
  C2: 4
  S(0,14) = 4
 530: LET S = M(N)
@@ -18926,6 +19821,7 @@ NOTE NUMBER     CHORD
  M(14): 2
  S = 2
 540: LET S(1, N) = S
+ N: 14
  S: 2
  S(1,14) = 2
 542:
@@ -18954,6 +19850,7 @@ NOTE NUMBER     CHORD
  R = -11
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 14
  R: -11
  S(4,14) = -11
 670:
@@ -18971,6 +19868,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -11
  K: 0
  B(1) = -11
@@ -18989,6 +19887,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -11
  K: 2
  B(2) = -9
@@ -19007,6 +19906,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -11
  K: 4
  B(3) = -7
@@ -19030,6 +19930,7 @@ NOTE NUMBER     CHORD
  P(5,5): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 14
  C2: 1
  S(0,14) = 1
 530: LET S = M(N)
@@ -19037,6 +19938,7 @@ NOTE NUMBER     CHORD
  M(14): 2
  S = 2
 540: LET S(1, N) = S
+ N: 14
  S: 2
  S(1,14) = 2
 542:
@@ -19080,6 +19982,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 14
  R: -14
  S(4,14) = -14
 670:
@@ -19097,6 +20000,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 0
  B(1) = -14
@@ -19126,6 +20030,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 4
  B(2) = -10
@@ -19149,11 +20054,14 @@ NOTE NUMBER     CHORD
  B(2): -10
  B = -10
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -10
  W(2,0) = -10
 850: LET W(3, L) = A
+ L: 0
  A: -14
  W(3,0) = -14
 860: LET B(1) = B
@@ -19173,11 +20081,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -7
  W(2,1) = -7
 850: LET W(3, L) = A
+ L: 1
  A: -10
  W(3,1) = -10
 860: LET B(1) = B
@@ -19197,11 +20108,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -3
  W(2,2) = -3
 850: LET W(3, L) = A
+ L: 2
  A: -7
  W(3,2) = -7
 860: LET B(1) = B
@@ -19221,11 +20135,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 0
  W(2,3) = 0
 850: LET W(3, L) = A
+ L: 3
  A: -3
  W(3,3) = -3
 860: LET B(1) = B
@@ -19245,11 +20162,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 4
  W(2,4) = 4
 850: LET W(3, L) = A
+ L: 4
  A: 0
  W(3,4) = 0
 860: LET B(1) = B
@@ -19269,11 +20189,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 7
  W(2,5) = 7
 850: LET W(3, L) = A
+ L: 5
  A: 4
  W(3,5) = 4
 860: LET B(1) = B
@@ -19293,11 +20216,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 11
  W(2,6) = 11
 850: LET W(3, L) = A
+ L: 6
  A: 7
  W(3,6) = 7
 860: LET B(1) = B
@@ -19329,6 +20255,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -19349,6 +20276,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -19377,6 +20305,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 14
  B: -3
  S(2,14) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -19409,6 +20339,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 14
  B: -7
  S(3,14) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -19619,6 +20551,7 @@ NOTE NUMBER     CHORD
  S2: -4
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -19647,6 +20580,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 14
  B: 0
  S(2,14) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -19679,6 +20614,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 14
  B: -3
  S(3,14) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -19931,6 +20868,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 3
  D(2): 1
  D(3): 0
  W(0,3) = 1
@@ -19962,6 +20900,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 14
  B: 4
  S(2,14) = 4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -19971,6 +20911,7 @@ NOTE NUMBER     CHORD
  S(2,14): 4
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -19991,6 +20932,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -20011,6 +20953,7 @@ NOTE NUMBER     CHORD
  S(2,15): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -20133,10 +21076,12 @@ NOTE NUMBER     CHORD
  M: 1
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 14
  L9: 3
  W(2,3): 0
  S(2,14) = 0
 1620: LET S(3, N) = W(3, L9)
+ N: 14
  L9: 3
  W(3,3): -3
  S(3,14) = -3
@@ -20180,6 +21125,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 13
  C2: 5
  S(0,13) = 5
 530: LET S = M(N)
@@ -20187,6 +21133,7 @@ NOTE NUMBER     CHORD
  M(13): 1
  S = 1
 540: LET S(1, N) = S
+ N: 13
  S: 1
  S(1,13) = 1
 542:
@@ -20215,6 +21162,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 13
  R: -10
  S(4,13) = -10
 670:
@@ -20232,6 +21180,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -20250,6 +21199,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -20284,11 +21234,14 @@ NOTE NUMBER     CHORD
  B(2): -8
  B = -8
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -8
  W(2,0) = -8
 850: LET W(3, L) = A
+ L: 0
  A: -10
  W(3,0) = -10
 860: LET B(1) = B
@@ -20308,11 +21261,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -3
  W(2,1) = -3
 850: LET W(3, L) = A
+ L: 1
  A: -8
  W(3,1) = -8
 860: LET B(1) = B
@@ -20332,11 +21288,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -1
  W(2,2) = -1
 850: LET W(3, L) = A
+ L: 2
  A: -3
  W(3,2) = -3
 860: LET B(1) = B
@@ -20356,11 +21315,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 4
  W(2,3) = 4
 850: LET W(3, L) = A
+ L: 3
  A: -1
  W(3,3) = -1
 860: LET B(1) = B
@@ -20380,11 +21342,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 6
  W(2,4) = 6
 850: LET W(3, L) = A
+ L: 4
  A: 4
  W(3,4) = 4
 860: LET B(1) = B
@@ -20404,11 +21369,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 11
  W(2,5) = 11
 850: LET W(3, L) = A
+ L: 5
  A: 6
  W(3,5) = 6
 860: LET B(1) = B
@@ -20428,11 +21396,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 13
  W(2,6) = 13
 850: LET W(3, L) = A
+ L: 6
  A: 11
  W(3,6) = 11
 860: LET B(1) = B
@@ -20464,6 +21435,7 @@ NOTE NUMBER     CHORD
  S(2,14): 0
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -20492,6 +21464,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 13
  B: -3
  S(2,13) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -20524,6 +21498,7 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -20552,6 +21527,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 13
  B: -1
  S(2,13) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -20584,6 +21561,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 13
  B: -3
  S(3,13) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -20821,6 +21800,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 1
  D(3): 0
  W(0,2) = 1
@@ -20852,6 +21832,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 13
  B: 4
  S(2,13) = 4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -20861,6 +21843,7 @@ NOTE NUMBER     CHORD
  S(2,13): 4
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -20881,6 +21864,7 @@ NOTE NUMBER     CHORD
  S(2,14): 0
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -20901,6 +21885,7 @@ NOTE NUMBER     CHORD
  S(2,14): 0
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -20921,6 +21906,7 @@ NOTE NUMBER     CHORD
  S(2,14): 0
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -21037,10 +22023,12 @@ NOTE NUMBER     CHORD
  M: 1
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 13
  L9: 2
  W(2,2): -1
  S(2,13) = -1
 1620: LET S(3, N) = W(3, L9)
+ N: 13
  L9: 2
  W(3,2): -3
  S(3,13) = -3
@@ -21084,6 +22072,7 @@ NOTE NUMBER     CHORD
  P(5,1): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 12
  C2: 2
  S(0,12) = 2
 530: LET S = M(N)
@@ -21091,6 +22080,7 @@ NOTE NUMBER     CHORD
  M(12): 0
  S = 0
 540: LET S(1, N) = S
+ N: 12
  S: 0
  S(1,12) = 0
 542:
@@ -21135,6 +22125,7 @@ NOTE NUMBER     CHORD
  R = -6
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 12
  R: -6
  S(4,12) = -6
 670:
@@ -21152,6 +22143,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -6
  K: 0
  B(1) = -6
@@ -21170,6 +22162,7 @@ NOTE NUMBER     CHORD
  X: 4
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -6
  K: 2
  B(2) = -4
@@ -21188,6 +22181,7 @@ NOTE NUMBER     CHORD
  X: 2
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -6
  K: 4
  B(3) = -2
@@ -21211,6 +22205,7 @@ NOTE NUMBER     CHORD
  P(5,2): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 12
  C2: 6
  S(0,12) = 6
 530: LET S = M(N)
@@ -21218,6 +22213,7 @@ NOTE NUMBER     CHORD
  M(12): 0
  S = 0
 540: LET S(1, N) = S
+ N: 12
  S: 0
  S(1,12) = 0
 542:
@@ -21246,6 +22242,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 12
  R: -9
  S(4,12) = -9
 670:
@@ -21263,6 +22260,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -21292,6 +22290,7 @@ NOTE NUMBER     CHORD
  X: 5
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 4
  B(2) = -5
@@ -21315,11 +22314,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -5
  W(2,0) = -5
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -21339,11 +22341,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -5
  W(3,1) = -5
 860: LET B(1) = B
@@ -21363,11 +22368,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 2
  W(2,2) = 2
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -21387,11 +22395,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 2
  W(3,3) = 2
 860: LET B(1) = B
@@ -21411,11 +22422,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 9
  W(2,4) = 9
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -21435,11 +22449,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 9
  W(3,5) = 9
 860: LET B(1) = B
@@ -21459,11 +22476,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 16
  W(2,6) = 16
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -21503,6 +22523,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -21531,6 +22552,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 12
  B: -2
  S(2,12) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -21563,6 +22586,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 12
  B: -5
  S(3,12) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -21815,6 +22840,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 1
  D(3): 2
  W(0,1) = 3
@@ -21846,6 +22872,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 12
  B: 2
  S(2,12) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -21855,6 +22883,7 @@ NOTE NUMBER     CHORD
  S(2,12): 2
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -21875,6 +22904,7 @@ NOTE NUMBER     CHORD
  S(2,13): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -21895,6 +22925,7 @@ NOTE NUMBER     CHORD
  S(2,13): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -21915,6 +22946,7 @@ NOTE NUMBER     CHORD
  S(2,13): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -21935,6 +22967,7 @@ NOTE NUMBER     CHORD
  S(2,13): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -22045,10 +23078,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 12
  L9: 1
  W(2,1): -2
  S(2,12) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 12
  L9: 1
  W(3,1): -5
  S(3,12) = -5
@@ -22092,6 +23127,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 11
  C2: 1
  S(0,11) = 1
 530: LET S = M(N)
@@ -22099,6 +23135,7 @@ NOTE NUMBER     CHORD
  M(11): 2
  S = 2
 540: LET S(1, N) = S
+ N: 11
  S: 2
  S(1,11) = 2
 542:
@@ -22142,6 +23179,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 11
  R: -14
  S(4,11) = -14
 670:
@@ -22159,6 +23197,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 0
  B(1) = -14
@@ -22188,6 +23227,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 4
  B(2) = -10
@@ -22211,11 +23251,14 @@ NOTE NUMBER     CHORD
  B(2): -10
  B = -10
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -10
  W(2,0) = -10
 850: LET W(3, L) = A
+ L: 0
  A: -14
  W(3,0) = -14
 860: LET B(1) = B
@@ -22235,11 +23278,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -7
  W(2,1) = -7
 850: LET W(3, L) = A
+ L: 1
  A: -10
  W(3,1) = -10
 860: LET B(1) = B
@@ -22259,11 +23305,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -3
  W(2,2) = -3
 850: LET W(3, L) = A
+ L: 2
  A: -7
  W(3,2) = -7
 860: LET B(1) = B
@@ -22283,11 +23332,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 0
  W(2,3) = 0
 850: LET W(3, L) = A
+ L: 3
  A: -3
  W(3,3) = -3
 860: LET B(1) = B
@@ -22307,11 +23359,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 4
  W(2,4) = 4
 850: LET W(3, L) = A
+ L: 4
  A: 0
  W(3,4) = 0
 860: LET B(1) = B
@@ -22331,11 +23386,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 7
  W(2,5) = 7
 850: LET W(3, L) = A
+ L: 5
  A: 4
  W(3,5) = 4
 860: LET B(1) = B
@@ -22355,11 +23413,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 11
  W(2,6) = 11
 850: LET W(3, L) = A
+ L: 6
  A: 7
  W(3,6) = 7
 860: LET B(1) = B
@@ -22391,6 +23452,7 @@ NOTE NUMBER     CHORD
  S(2,12): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -22419,6 +23481,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -22447,6 +23510,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 11
  B: -3
  S(2,11) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -22479,6 +23544,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 11
  B: -7
  S(3,11) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -22716,6 +23783,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 1
  D(3): 2
  W(0,2) = 3
@@ -22747,6 +23815,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 11
  B: 0
  S(2,11) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -22779,6 +23849,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 11
  B: -3
  S(3,11) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -23016,6 +24088,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 3
  D(2): 2
  D(3): 2
  W(0,3) = 4
@@ -23039,6 +24112,7 @@ NOTE NUMBER     CHORD
  S(2,12): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -23059,6 +24133,7 @@ NOTE NUMBER     CHORD
  S(2,12): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -23079,6 +24154,7 @@ NOTE NUMBER     CHORD
  S(2,12): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -23195,10 +24271,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 11
  L9: 2
  W(2,2): -3
  S(2,11) = -3
 1620: LET S(3, N) = W(3, L9)
+ N: 11
  L9: 2
  W(3,2): -7
  S(3,11) = -7
@@ -23242,6 +24320,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 10
  C2: 5
  S(0,10) = 5
 530: LET S = M(N)
@@ -23249,6 +24328,7 @@ NOTE NUMBER     CHORD
  M(10): 4
  S = 4
 540: LET S(1, N) = S
+ N: 10
  S: 4
  S(1,10) = 4
 542:
@@ -23277,6 +24357,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 10
  R: -10
  S(4,10) = -10
 670:
@@ -23305,6 +24386,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 2
  B(1) = -8
@@ -23323,6 +24405,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 4
  B(2) = -6
@@ -23346,11 +24429,14 @@ NOTE NUMBER     CHORD
  B(2): -6
  B = -6
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -6
  W(2,0) = -6
 850: LET W(3, L) = A
+ L: 0
  A: -8
  W(3,0) = -8
 860: LET B(1) = B
@@ -23370,11 +24456,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -1
  W(2,1) = -1
 850: LET W(3, L) = A
+ L: 1
  A: -6
  W(3,1) = -6
 860: LET B(1) = B
@@ -23394,11 +24483,14 @@ NOTE NUMBER     CHORD
  B(2): 1
  B = 1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 1
  W(2,2) = 1
 850: LET W(3, L) = A
+ L: 2
  A: -1
  W(3,2) = -1
 860: LET B(1) = B
@@ -23418,11 +24510,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 6
  W(2,3) = 6
 850: LET W(3, L) = A
+ L: 3
  A: 1
  W(3,3) = 1
 860: LET B(1) = B
@@ -23442,11 +24537,14 @@ NOTE NUMBER     CHORD
  B(2): 8
  B = 8
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 8
  W(2,4) = 8
 850: LET W(3, L) = A
+ L: 4
  A: 6
  W(3,4) = 6
 860: LET B(1) = B
@@ -23466,11 +24564,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 13
  W(2,5) = 13
 850: LET W(3, L) = A
+ L: 5
  A: 8
  W(3,5) = 8
 860: LET B(1) = B
@@ -23490,11 +24591,14 @@ NOTE NUMBER     CHORD
  B(2): 15
  B = 15
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 15
  W(2,6) = 15
 850: LET W(3, L) = A
+ L: 6
  A: 13
  W(3,6) = 13
 860: LET B(1) = B
@@ -23534,6 +24638,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -23562,6 +24667,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 10
  B: -1
  S(2,10) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -23594,6 +24701,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 10
  B: -6
  S(3,10) = -6
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -23846,6 +24955,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 2
  D(3): 1
  W(0,1) = 3
@@ -23877,6 +24987,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 10
  B: 1
  S(2,10) = 1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -23901,6 +25013,7 @@ NOTE NUMBER     CHORD
  S(3,11): -7
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -23921,6 +25034,7 @@ NOTE NUMBER     CHORD
  S(2,11): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -23941,6 +25055,7 @@ NOTE NUMBER     CHORD
  S(2,11): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -23961,6 +25076,7 @@ NOTE NUMBER     CHORD
  S(2,11): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -23981,6 +25097,7 @@ NOTE NUMBER     CHORD
  S(2,11): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -24091,10 +25208,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 10
  L9: 1
  W(2,1): -1
  S(2,10) = -1
 1620: LET S(3, N) = W(3, L9)
+ N: 10
  L9: 1
  W(3,1): -6
  S(3,10) = -6
@@ -24138,6 +25257,7 @@ NOTE NUMBER     CHORD
  P(5,1): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 9
  C2: 2
  S(0,9) = 2
 530: LET S = M(N)
@@ -24145,6 +25265,7 @@ NOTE NUMBER     CHORD
  M(9): 7
  S = 7
 540: LET S(1, N) = S
+ N: 9
  S: 7
  S(1,9) = 7
 542:
@@ -24188,6 +25309,7 @@ NOTE NUMBER     CHORD
  D(2): -13
  R = -13
 660: LET S(4, N) = R
+ N: 9
  R: -13
  S(4,9) = -13
 670:
@@ -24205,6 +25327,7 @@ NOTE NUMBER     CHORD
  X: 20
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -13
  K: 0
  B(1) = -13
@@ -24223,6 +25346,7 @@ NOTE NUMBER     CHORD
  X: 18
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -13
  K: 2
  B(2) = -11
@@ -24241,6 +25365,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -13
  K: 4
  B(3) = -9
@@ -24264,6 +25389,7 @@ NOTE NUMBER     CHORD
  P(5,2): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 9
  C2: 6
  S(0,9) = 6
 530: LET S = M(N)
@@ -24271,6 +25397,7 @@ NOTE NUMBER     CHORD
  M(9): 7
  S = 7
 540: LET S(1, N) = S
+ N: 9
  S: 7
  S(1,9) = 7
 542:
@@ -24299,6 +25426,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 9
  R: -9
  S(4,9) = -9
 670:
@@ -24316,6 +25444,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -24345,6 +25474,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 4
  B(2) = -5
@@ -24368,11 +25498,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -5
  W(2,0) = -5
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -24392,11 +25525,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -5
  W(3,1) = -5
 860: LET B(1) = B
@@ -24416,11 +25552,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 2
  W(2,2) = 2
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -24440,11 +25579,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 2
  W(3,3) = 2
 860: LET B(1) = B
@@ -24464,11 +25606,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 9
  W(2,4) = 9
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -24488,11 +25633,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 9
  W(3,5) = 9
 860: LET B(1) = B
@@ -24512,11 +25660,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 16
  W(2,6) = 16
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -24556,6 +25707,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -24584,6 +25736,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 9
  B: -2
  S(2,9) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -24616,6 +25770,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 9
  B: -5
  S(3,9) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -24811,6 +25967,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -24839,6 +25996,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 9
  B: 2
  S(2,9) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -24871,6 +26030,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 9
  B: -2
  S(3,9) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -25108,6 +26269,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 3
  D(3): 4
  W(0,2) = 7
@@ -25131,6 +26293,7 @@ NOTE NUMBER     CHORD
  S(2,10): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -25151,6 +26314,7 @@ NOTE NUMBER     CHORD
  S(2,10): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -25171,6 +26335,7 @@ NOTE NUMBER     CHORD
  S(2,10): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -25191,6 +26356,7 @@ NOTE NUMBER     CHORD
  S(2,10): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -25307,10 +26473,12 @@ NOTE NUMBER     CHORD
  M: 7
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 9
  L9: 2
  W(2,2): 2
  S(2,9) = 2
 1620: LET S(3, N) = W(3, L9)
+ N: 9
  L9: 2
  W(3,2): -2
  S(3,9) = -2
@@ -25354,6 +26522,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 8
  C2: 1
  S(0,8) = 1
 530: LET S = M(N)
@@ -25361,6 +26530,7 @@ NOTE NUMBER     CHORD
  M(8): 5
  S = 5
 540: LET S(1, N) = S
+ N: 8
  S: 5
  S(1,8) = 5
 542:
@@ -25405,6 +26575,7 @@ NOTE NUMBER     CHORD
  R = -7
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 8
  R: -7
  S(4,8) = -7
 670:
@@ -25422,6 +26593,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -7
  K: 0
  B(1) = -7
@@ -25440,6 +26612,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -7
  K: 2
  B(2) = -5
@@ -25458,6 +26631,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -7
  K: 4
  B(3) = -3
@@ -25481,6 +26655,7 @@ NOTE NUMBER     CHORD
  P(6,2): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 8
  C2: 5
  S(0,8) = 5
 530: LET S = M(N)
@@ -25488,6 +26663,7 @@ NOTE NUMBER     CHORD
  M(8): 5
  S = 5
 540: LET S(1, N) = S
+ N: 8
  S: 5
  S(1,8) = 5
 542:
@@ -25516,6 +26692,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 8
  R: -10
  S(4,8) = -10
 670:
@@ -25533,6 +26710,7 @@ NOTE NUMBER     CHORD
  X: 15
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -25551,6 +26729,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -25569,6 +26748,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -10
  K: 4
  B(3) = -6
@@ -25592,6 +26772,7 @@ NOTE NUMBER     CHORD
  P(6,3): 3
  C2 = 3
 525: LET S(0, N) = C2
+ N: 8
  C2: 3
  S(0,8) = 3
 530: LET S = M(N)
@@ -25599,6 +26780,7 @@ NOTE NUMBER     CHORD
  M(8): 5
  S = 5
 540: LET S(1, N) = S
+ N: 8
  S: 5
  S(1,8) = 5
 542:
@@ -25643,6 +26825,7 @@ NOTE NUMBER     CHORD
  R = -5
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 8
  R: -5
  S(4,8) = -5
 670:
@@ -25660,6 +26843,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -5
  K: 0
  B(1) = -5
@@ -25678,6 +26862,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -5
  K: 2
  B(2) = -3
@@ -25696,6 +26881,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -5
  K: 4
  B(3) = -1
@@ -25719,6 +26905,7 @@ NOTE NUMBER     CHORD
  P(6,4): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 8
  C2: 6
  S(0,8) = 6
 530: LET S = M(N)
@@ -25726,6 +26913,7 @@ NOTE NUMBER     CHORD
  M(8): 5
  S = 5
 540: LET S(1, N) = S
+ N: 8
  S: 5
  S(1,8) = 5
 542:
@@ -25754,6 +26942,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 8
  R: -9
  S(4,8) = -9
 670:
@@ -25782,6 +26971,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 2
  B(1) = -7
@@ -25800,6 +26990,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 4
  B(2) = -5
@@ -25823,11 +27014,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -5
  W(2,0) = -5
 850: LET W(3, L) = A
+ L: 0
  A: -7
  W(3,0) = -7
 860: LET B(1) = B
@@ -25847,11 +27041,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 0
  W(2,1) = 0
 850: LET W(3, L) = A
+ L: 1
  A: -5
  W(3,1) = -5
 860: LET B(1) = B
@@ -25871,11 +27068,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 2
  W(2,2) = 2
 850: LET W(3, L) = A
+ L: 2
  A: 0
  W(3,2) = 0
 860: LET B(1) = B
@@ -25895,11 +27095,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 7
  W(2,3) = 7
 850: LET W(3, L) = A
+ L: 3
  A: 2
  W(3,3) = 2
 860: LET B(1) = B
@@ -25919,11 +27122,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 9
  W(2,4) = 9
 850: LET W(3, L) = A
+ L: 4
  A: 7
  W(3,4) = 7
 860: LET B(1) = B
@@ -25943,11 +27149,14 @@ NOTE NUMBER     CHORD
  B(2): 14
  B = 14
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 14
  W(2,5) = 14
 850: LET W(3, L) = A
+ L: 5
  A: 9
  W(3,5) = 9
 860: LET B(1) = B
@@ -25967,11 +27176,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 16
  W(2,6) = 16
 850: LET W(3, L) = A
+ L: 6
  A: 14
  W(3,6) = 14
 860: LET B(1) = B
@@ -26003,6 +27215,7 @@ NOTE NUMBER     CHORD
  S(2,9): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -26031,6 +27244,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 8
  B: 0
  S(2,8) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -26063,6 +27278,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 8
  B: -5
  S(3,8) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -26104,6 +27321,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 2
  D(3): 3
  W(0,1) = 5
@@ -26135,6 +27353,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 8
  B: 2
  S(2,8) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -26167,6 +27387,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 8
  B: 0
  S(3,8) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -26208,6 +27430,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 0
  D(3): 2
  W(0,2) = 2
@@ -26239,6 +27462,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 8
  B: 7
  S(2,8) = 7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -26248,6 +27473,7 @@ NOTE NUMBER     CHORD
  S(2,8): 7
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -26268,6 +27494,7 @@ NOTE NUMBER     CHORD
  S(2,9): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -26288,6 +27515,7 @@ NOTE NUMBER     CHORD
  S(2,9): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -26308,6 +27536,7 @@ NOTE NUMBER     CHORD
  S(2,9): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -26424,10 +27653,12 @@ NOTE NUMBER     CHORD
  M: 2
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 8
  L9: 2
  W(2,2): 2
  S(2,8) = 2
 1620: LET S(3, N) = W(3, L9)
+ N: 8
  L9: 2
  W(3,2): 0
  S(3,8) = 0
@@ -26471,6 +27702,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 7
  C2: 1
  S(0,7) = 1
 530: LET S = M(N)
@@ -26478,6 +27710,7 @@ NOTE NUMBER     CHORD
  M(7): 7
  S = 7
 540: LET S(1, N) = S
+ N: 7
  S: 7
  S(1,7) = 7
 542:
@@ -26521,6 +27754,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 7
  R: -14
  S(4,7) = -14
 670:
@@ -26549,6 +27783,7 @@ NOTE NUMBER     CHORD
  X: 19
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 2
  B(1) = -12
@@ -26567,6 +27802,7 @@ NOTE NUMBER     CHORD
  X: 17
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 4
  B(2) = -10
@@ -26590,11 +27826,14 @@ NOTE NUMBER     CHORD
  B(2): -10
  B = -10
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -10
  W(2,0) = -10
 850: LET W(3, L) = A
+ L: 0
  A: -12
  W(3,0) = -12
 860: LET B(1) = B
@@ -26614,11 +27853,14 @@ NOTE NUMBER     CHORD
  B(2): -5
  B = -5
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -5
  W(2,1) = -5
 850: LET W(3, L) = A
+ L: 1
  A: -10
  W(3,1) = -10
 860: LET B(1) = B
@@ -26638,11 +27880,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -3
  W(2,2) = -3
 850: LET W(3, L) = A
+ L: 2
  A: -5
  W(3,2) = -5
 860: LET B(1) = B
@@ -26662,11 +27907,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 2
  W(2,3) = 2
 850: LET W(3, L) = A
+ L: 3
  A: -3
  W(3,3) = -3
 860: LET B(1) = B
@@ -26686,11 +27934,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 4
  W(2,4) = 4
 850: LET W(3, L) = A
+ L: 4
  A: 2
  W(3,4) = 2
 860: LET B(1) = B
@@ -26710,11 +27961,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 9
  W(2,5) = 9
 850: LET W(3, L) = A
+ L: 5
  A: 4
  W(3,5) = 4
 860: LET B(1) = B
@@ -26734,11 +27988,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 11
  W(2,6) = 11
 850: LET W(3, L) = A
+ L: 6
  A: 9
  W(3,6) = 9
 860: LET B(1) = B
@@ -26770,6 +28027,7 @@ NOTE NUMBER     CHORD
  S(2,8): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -26790,6 +28048,7 @@ NOTE NUMBER     CHORD
  S(2,8): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -26818,6 +28077,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 7
  B: -3
  S(2,7) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -26850,6 +28111,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 7
  B: -5
  S(3,7) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -27015,6 +28278,7 @@ NOTE NUMBER     CHORD
  S2: -5
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -27043,6 +28307,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 7
  B: 2
  S(2,7) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -27075,6 +28341,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 7
  B: -3
  S(3,7) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -27312,6 +28580,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 3
  D(2): 0
  D(3): 3
  W(0,3) = 3
@@ -27343,6 +28612,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 7
  B: 4
  S(2,7) = 4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -27375,6 +28646,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 7
  B: 2
  S(3,7) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -27612,6 +28885,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 4
  D(2): 2
  D(3): 2
  W(0,4) = 4
@@ -27635,6 +28909,7 @@ NOTE NUMBER     CHORD
  S(2,8): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -27655,6 +28930,7 @@ NOTE NUMBER     CHORD
  S(2,8): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -27777,10 +29053,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 7
  L9: 3
  W(2,3): 2
  S(2,7) = 2
 1620: LET S(3, N) = W(3, L9)
+ N: 7
  L9: 3
  W(3,3): -3
  S(3,7) = -3
@@ -27824,6 +29102,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 6
  C2: 5
  S(0,6) = 5
 530: LET S = M(N)
@@ -27831,6 +29110,7 @@ NOTE NUMBER     CHORD
  M(6): 0
  S = 0
 540: LET S(1, N) = S
+ N: 6
  S: 0
  S(1,6) = 0
 542:
@@ -27859,6 +29139,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 6
  R: -10
  S(4,6) = -10
 670:
@@ -27876,6 +29157,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -27894,6 +29176,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -27912,6 +29195,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -10
  K: 4
  B(3) = -6
@@ -27935,6 +29219,7 @@ NOTE NUMBER     CHORD
  P(1,2): 4
  C2 = 4
 525: LET S(0, N) = C2
+ N: 6
  C2: 4
  S(0,6) = 4
 530: LET S = M(N)
@@ -27942,6 +29227,7 @@ NOTE NUMBER     CHORD
  M(6): 0
  S = 0
 540: LET S(1, N) = S
+ N: 6
  S: 0
  S(1,6) = 0
 542:
@@ -27970,6 +29256,7 @@ NOTE NUMBER     CHORD
  R = -11
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 6
  R: -11
  S(4,6) = -11
 670:
@@ -27987,6 +29274,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -11
  K: 0
  B(1) = -11
@@ -28005,6 +29293,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -11
  K: 2
  B(2) = -9
@@ -28039,11 +29328,14 @@ NOTE NUMBER     CHORD
  B(2): -9
  B = -9
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -9
  W(2,0) = -9
 850: LET W(3, L) = A
+ L: 0
  A: -11
  W(3,0) = -11
 860: LET B(1) = B
@@ -28063,11 +29355,14 @@ NOTE NUMBER     CHORD
  B(2): -4
  B = -4
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -4
  W(2,1) = -4
 850: LET W(3, L) = A
+ L: 1
  A: -9
  W(3,1) = -9
 860: LET B(1) = B
@@ -28087,11 +29382,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -2
  W(2,2) = -2
 850: LET W(3, L) = A
+ L: 2
  A: -4
  W(3,2) = -4
 860: LET B(1) = B
@@ -28111,11 +29409,14 @@ NOTE NUMBER     CHORD
  B(2): 3
  B = 3
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 3
  W(2,3) = 3
 850: LET W(3, L) = A
+ L: 3
  A: -2
  W(3,3) = -2
 860: LET B(1) = B
@@ -28135,11 +29436,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 5
  W(2,4) = 5
 850: LET W(3, L) = A
+ L: 4
  A: 3
  W(3,4) = 3
 860: LET B(1) = B
@@ -28159,11 +29463,14 @@ NOTE NUMBER     CHORD
  B(2): 10
  B = 10
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 10
  W(2,5) = 10
 850: LET W(3, L) = A
+ L: 5
  A: 5
  W(3,5) = 5
 860: LET B(1) = B
@@ -28183,11 +29490,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 12
  W(2,6) = 12
 850: LET W(3, L) = A
+ L: 6
  A: 10
  W(3,6) = 10
 860: LET B(1) = B
@@ -28219,6 +29529,7 @@ NOTE NUMBER     CHORD
  S(2,7): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -28239,6 +29550,7 @@ NOTE NUMBER     CHORD
  S(2,7): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -28267,6 +29579,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 6
  B: -2
  S(2,6) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -28299,6 +29613,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 6
  B: -4
  S(3,6) = -4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -28536,6 +29852,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 4
  D(3): 1
  W(0,2) = 5
@@ -28567,6 +29884,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 6
  B: 3
  S(2,6) = 3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -28576,6 +29895,7 @@ NOTE NUMBER     CHORD
  S(2,6): 3
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -28604,6 +29924,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 6
  B: 5
  S(2,6) = 5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -28613,6 +29935,7 @@ NOTE NUMBER     CHORD
  S(2,6): 5
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -28633,6 +29956,7 @@ NOTE NUMBER     CHORD
  S(2,7): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -28653,6 +29977,7 @@ NOTE NUMBER     CHORD
  S(2,7): 2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -28769,10 +30094,12 @@ NOTE NUMBER     CHORD
  M: 5
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 6
  L9: 2
  W(2,2): -2
  S(2,6) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 6
  L9: 2
  W(3,2): -4
  S(3,6) = -4
@@ -28816,6 +30143,7 @@ NOTE NUMBER     CHORD
  P(4,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 5
  C2: 1
  S(0,5) = 1
 530: LET S = M(N)
@@ -28823,6 +30151,7 @@ NOTE NUMBER     CHORD
  M(5): 1
  S = 1
 540: LET S(1, N) = S
+ N: 5
  S: 1
  S(1,5) = 1
 542:
@@ -28866,6 +30195,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 5
  R: -14
  S(4,5) = -14
 670:
@@ -28883,6 +30213,7 @@ NOTE NUMBER     CHORD
  X: 15
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 0
  B(1) = -14
@@ -28901,6 +30232,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 2
  B(2) = -12
@@ -28919,6 +30251,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -14
  K: 4
  B(3) = -10
@@ -28942,6 +30275,7 @@ NOTE NUMBER     CHORD
  P(4,2): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 5
  C2: 5
  S(0,5) = 5
 530: LET S = M(N)
@@ -28949,6 +30283,7 @@ NOTE NUMBER     CHORD
  M(5): 1
  S = 1
 540: LET S(1, N) = S
+ N: 5
  S: 1
  S(1,5) = 1
 542:
@@ -28977,6 +30312,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 5
  R: -10
  S(4,5) = -10
 670:
@@ -28994,6 +30330,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -29012,6 +30349,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -29046,11 +30384,14 @@ NOTE NUMBER     CHORD
  B(2): -8
  B = -8
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -8
  W(2,0) = -8
 850: LET W(3, L) = A
+ L: 0
  A: -10
  W(3,0) = -10
 860: LET B(1) = B
@@ -29070,11 +30411,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -3
  W(2,1) = -3
 850: LET W(3, L) = A
+ L: 1
  A: -8
  W(3,1) = -8
 860: LET B(1) = B
@@ -29094,11 +30438,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -1
  W(2,2) = -1
 850: LET W(3, L) = A
+ L: 2
  A: -3
  W(3,2) = -3
 860: LET B(1) = B
@@ -29118,11 +30465,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 4
  W(2,3) = 4
 850: LET W(3, L) = A
+ L: 3
  A: -1
  W(3,3) = -1
 860: LET B(1) = B
@@ -29142,11 +30492,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 6
  W(2,4) = 6
 850: LET W(3, L) = A
+ L: 4
  A: 4
  W(3,4) = 4
 860: LET B(1) = B
@@ -29166,11 +30519,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 11
  W(2,5) = 11
 850: LET W(3, L) = A
+ L: 5
  A: 6
  W(3,5) = 6
 860: LET B(1) = B
@@ -29190,11 +30546,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 13
  W(2,6) = 13
 850: LET W(3, L) = A
+ L: 6
  A: 11
  W(3,6) = 11
 860: LET B(1) = B
@@ -29226,6 +30585,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -29254,6 +30614,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 5
  B: -3
  S(2,5) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -29286,6 +30648,7 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -29314,6 +30677,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 5
  B: -1
  S(2,5) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -29346,6 +30711,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 5
  B: -3
  S(3,5) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -29427,6 +30794,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -29447,6 +30815,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -29467,6 +30836,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -29487,6 +30857,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -29507,6 +30878,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -29657,6 +31029,7 @@ NOTE NUMBER     CHORD
  P(4,3): 4
  C2 = 4
 525: LET S(0, N) = C2
+ N: 5
  C2: 4
  S(0,5) = 4
 530: LET S = M(N)
@@ -29664,6 +31037,7 @@ NOTE NUMBER     CHORD
  M(5): 1
  S = 1
 540: LET S(1, N) = S
+ N: 5
  S: 1
  S(1,5) = 1
 542:
@@ -29692,6 +31066,7 @@ NOTE NUMBER     CHORD
  R = -11
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 5
  R: -11
  S(4,5) = -11
 670:
@@ -29709,6 +31084,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -11
  K: 0
  B(1) = -11
@@ -29727,6 +31103,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -11
  K: 2
  B(2) = -9
@@ -29745,6 +31122,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -11
  K: 4
  B(3) = -7
@@ -29768,6 +31146,7 @@ NOTE NUMBER     CHORD
  P(4,4): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 5
  C2: 6
  S(0,5) = 6
 530: LET S = M(N)
@@ -29775,6 +31154,7 @@ NOTE NUMBER     CHORD
  M(5): 1
  S = 1
 540: LET S(1, N) = S
+ N: 5
  S: 1
  S(1,5) = 1
 542:
@@ -29803,6 +31183,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 5
  R: -9
  S(4,5) = -9
 670:
@@ -29820,6 +31201,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -29838,6 +31220,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 2
  B(2) = -7
@@ -29856,6 +31239,7 @@ NOTE NUMBER     CHORD
  X: 6
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -9
  K: 4
  B(3) = -5
@@ -29879,6 +31263,7 @@ NOTE NUMBER     CHORD
  P(4,5): 3
  C2 = 3
 525: LET S(0, N) = C2
+ N: 5
  C2: 3
  S(0,5) = 3
 530: LET S = M(N)
@@ -29886,6 +31271,7 @@ NOTE NUMBER     CHORD
  M(5): 1
  S = 1
 540: LET S(1, N) = S
+ N: 5
  S: 1
  S(1,5) = 1
 542:
@@ -29914,6 +31300,7 @@ NOTE NUMBER     CHORD
  R = -12
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 5
  R: -12
  S(4,5) = -12
 670:
@@ -29931,6 +31318,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -12
  K: 0
  B(1) = -12
@@ -29949,6 +31337,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -12
  K: 2
  B(2) = -10
@@ -29967,6 +31356,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -12
  K: 4
  B(3) = -8
@@ -29990,6 +31380,7 @@ NOTE NUMBER     CHORD
  P(4,6): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 5
  C2: 2
  S(0,5) = 2
 530: LET S = M(N)
@@ -29997,6 +31388,7 @@ NOTE NUMBER     CHORD
  M(5): 1
  S = 1
 540: LET S(1, N) = S
+ N: 5
  S: 1
  S(1,5) = 1
 542:
@@ -30040,6 +31432,7 @@ NOTE NUMBER     CHORD
  D(2): -13
  R = -13
 660: LET S(4, N) = R
+ N: 5
  R: -13
  S(4,5) = -13
 670:
@@ -30068,6 +31461,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -13
  K: 2
  B(1) = -11
@@ -30086,6 +31480,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -13
  K: 4
  B(2) = -9
@@ -30109,11 +31504,14 @@ NOTE NUMBER     CHORD
  B(2): -9
  B = -9
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -9
  W(2,0) = -9
 850: LET W(3, L) = A
+ L: 0
  A: -11
  W(3,0) = -11
 860: LET B(1) = B
@@ -30133,11 +31531,14 @@ NOTE NUMBER     CHORD
  B(2): -4
  B = -4
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -4
  W(2,1) = -4
 850: LET W(3, L) = A
+ L: 1
  A: -9
  W(3,1) = -9
 860: LET B(1) = B
@@ -30157,11 +31558,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -2
  W(2,2) = -2
 850: LET W(3, L) = A
+ L: 2
  A: -4
  W(3,2) = -4
 860: LET B(1) = B
@@ -30181,11 +31585,14 @@ NOTE NUMBER     CHORD
  B(2): 3
  B = 3
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 3
  W(2,3) = 3
 850: LET W(3, L) = A
+ L: 3
  A: -2
  W(3,3) = -2
 860: LET B(1) = B
@@ -30205,11 +31612,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 5
  W(2,4) = 5
 850: LET W(3, L) = A
+ L: 4
  A: 3
  W(3,4) = 3
 860: LET B(1) = B
@@ -30229,11 +31639,14 @@ NOTE NUMBER     CHORD
  B(2): 10
  B = 10
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 10
  W(2,5) = 10
 850: LET W(3, L) = A
+ L: 5
  A: 5
  W(3,5) = 5
 860: LET B(1) = B
@@ -30253,11 +31666,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 12
  W(2,6) = 12
 850: LET W(3, L) = A
+ L: 6
  A: 10
  W(3,6) = 10
 860: LET B(1) = B
@@ -30289,6 +31705,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -30317,6 +31734,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -30345,6 +31763,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 5
  B: -2
  S(2,5) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -30377,6 +31797,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 5
  B: -4
  S(3,5) = -4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -30629,6 +32051,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 0
  D(3): 0
  W(0,2) = 0
@@ -30660,6 +32083,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 5
  B: 3
  S(2,5) = 3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -30669,6 +32094,7 @@ NOTE NUMBER     CHORD
  S(2,5): 3
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -30689,6 +32115,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -30709,6 +32136,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -30729,6 +32157,7 @@ NOTE NUMBER     CHORD
  S(2,6): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -30845,10 +32274,12 @@ NOTE NUMBER     CHORD
  M: 0
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 5
  L9: 2
  W(2,2): -2
  S(2,5) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 5
  L9: 2
  W(3,2): -4
  S(3,5) = -4
@@ -30892,6 +32323,7 @@ NOTE NUMBER     CHORD
  P(2,1): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 4
  C2: 6
  S(0,4) = 6
 530: LET S = M(N)
@@ -30899,6 +32331,7 @@ NOTE NUMBER     CHORD
  M(4): 2
  S = 2
 540: LET S(1, N) = S
+ N: 4
  S: 2
  S(1,4) = 2
 542:
@@ -30927,6 +32360,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 4
  R: -9
  S(4,4) = -9
 670:
@@ -30944,6 +32378,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -30962,6 +32397,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 2
  B(2) = -7
@@ -30996,11 +32432,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -7
  W(2,0) = -7
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -31020,11 +32459,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -7
  W(3,1) = -7
 860: LET B(1) = B
@@ -31044,11 +32486,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 0
  W(2,2) = 0
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -31068,11 +32513,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 0
  W(3,3) = 0
 860: LET B(1) = B
@@ -31092,11 +32540,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 7
  W(2,4) = 7
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -31116,11 +32567,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 7
  W(3,5) = 7
 860: LET B(1) = B
@@ -31140,11 +32594,14 @@ NOTE NUMBER     CHORD
  B(2): 14
  B = 14
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 14
  W(2,6) = 14
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -31184,6 +32641,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -31212,6 +32670,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 4
  B: -2
  S(2,4) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -31244,6 +32704,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 4
  B: -7
  S(3,4) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -31481,6 +32943,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 1
  D(2): 0
  D(3): 3
  W(0,1) = 3
@@ -31512,6 +32975,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 4
  B: 0
  S(2,4) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -31544,6 +33009,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 4
  B: -2
  S(3,4) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -31781,6 +33248,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 2
  D(3): 2
  W(0,2) = 4
@@ -31804,6 +33272,7 @@ NOTE NUMBER     CHORD
  S(2,5): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -31824,6 +33293,7 @@ NOTE NUMBER     CHORD
  S(2,5): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -31844,6 +33314,7 @@ NOTE NUMBER     CHORD
  S(2,5): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -31864,6 +33335,7 @@ NOTE NUMBER     CHORD
  S(2,5): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -31974,10 +33446,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 4
  L9: 1
  W(2,1): -2
  S(2,4) = -2
 1620: LET S(3, N) = W(3, L9)
+ N: 4
  L9: 1
  W(3,1): -7
  S(3,4) = -7
@@ -32021,6 +33495,7 @@ NOTE NUMBER     CHORD
  P(6,1): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 3
  C2: 1
  S(0,3) = 1
 530: LET S = M(N)
@@ -32028,6 +33503,7 @@ NOTE NUMBER     CHORD
  M(3): 0
  S = 0
 540: LET S(1, N) = S
+ N: 3
  S: 0
  S(1,3) = 0
 542:
@@ -32072,6 +33548,7 @@ NOTE NUMBER     CHORD
  R = -7
 640: GOTO 660
 660: LET S(4, N) = R
+ N: 3
  R: -7
  S(4,3) = -7
 670:
@@ -32100,6 +33577,7 @@ NOTE NUMBER     CHORD
  X: 5
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -7
  K: 2
  B(1) = -5
@@ -32118,6 +33596,7 @@ NOTE NUMBER     CHORD
  X: 3
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -7
  K: 4
  B(2) = -3
@@ -32141,11 +33620,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -3
  W(2,0) = -3
 850: LET W(3, L) = A
+ L: 0
  A: -5
  W(3,0) = -5
 860: LET B(1) = B
@@ -32165,11 +33647,14 @@ NOTE NUMBER     CHORD
  B(2): 2
  B = 2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: 2
  W(2,1) = 2
 850: LET W(3, L) = A
+ L: 1
  A: -3
  W(3,1) = -3
 860: LET B(1) = B
@@ -32189,11 +33674,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 4
  W(2,2) = 4
 850: LET W(3, L) = A
+ L: 2
  A: 2
  W(3,2) = 2
 860: LET B(1) = B
@@ -32213,11 +33701,14 @@ NOTE NUMBER     CHORD
  B(2): 9
  B = 9
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 9
  W(2,3) = 9
 850: LET W(3, L) = A
+ L: 3
  A: 4
  W(3,3) = 4
 860: LET B(1) = B
@@ -32237,11 +33728,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 11
  W(2,4) = 11
 850: LET W(3, L) = A
+ L: 4
  A: 9
  W(3,4) = 9
 860: LET B(1) = B
@@ -32261,11 +33755,14 @@ NOTE NUMBER     CHORD
  B(2): 16
  B = 16
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 16
  W(2,5) = 16
 850: LET W(3, L) = A
+ L: 5
  A: 11
  W(3,5) = 11
 860: LET B(1) = B
@@ -32285,11 +33782,14 @@ NOTE NUMBER     CHORD
  B(2): 18
  B = 18
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 18
  W(2,6) = 18
 850: LET W(3, L) = A
+ L: 6
  A: 16
  W(3,6) = 16
 860: LET B(1) = B
@@ -32329,6 +33829,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 3
  B: -3
  S(2,3) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -32361,6 +33863,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 3
  B: -5
  S(3,3) = -5
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -32613,6 +34117,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 0
  D(2): 1
  D(3): 2
  W(0,0) = 3
@@ -32644,6 +34149,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 3
  B: 2
  S(2,3) = 2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -32653,6 +34160,7 @@ NOTE NUMBER     CHORD
  S(2,3): 2
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -32673,6 +34181,7 @@ NOTE NUMBER     CHORD
  S(2,4): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -32693,6 +34202,7 @@ NOTE NUMBER     CHORD
  S(2,4): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -32713,6 +34223,7 @@ NOTE NUMBER     CHORD
  S(2,4): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -32733,6 +34244,7 @@ NOTE NUMBER     CHORD
  S(2,4): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -32753,6 +34265,7 @@ NOTE NUMBER     CHORD
  S(2,4): -2
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -32857,10 +34370,12 @@ NOTE NUMBER     CHORD
  M: 3
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 3
  L9: 0
  W(2,0): -3
  S(2,3) = -3
 1620: LET S(3, N) = W(3, L9)
+ N: 3
  L9: 0
  W(3,0): -5
  S(3,3) = -5
@@ -32904,6 +34419,7 @@ NOTE NUMBER     CHORD
  P(1,1): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 2
  C2: 5
  S(0,2) = 5
 530: LET S = M(N)
@@ -32911,6 +34427,7 @@ NOTE NUMBER     CHORD
  M(2): 1
  S = 1
 540: LET S(1, N) = S
+ N: 2
  S: 1
  S(1,2) = 1
 542:
@@ -32954,6 +34471,7 @@ NOTE NUMBER     CHORD
  D(2): -10
  R = -10
 660: LET S(4, N) = R
+ N: 2
  R: -10
  S(4,2) = -10
 670:
@@ -32971,6 +34489,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -32989,6 +34508,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -33023,11 +34543,14 @@ NOTE NUMBER     CHORD
  B(2): -8
  B = -8
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -8
  W(2,0) = -8
 850: LET W(3, L) = A
+ L: 0
  A: -10
  W(3,0) = -10
 860: LET B(1) = B
@@ -33047,11 +34570,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -3
  W(2,1) = -3
 850: LET W(3, L) = A
+ L: 1
  A: -8
  W(3,1) = -8
 860: LET B(1) = B
@@ -33071,11 +34597,14 @@ NOTE NUMBER     CHORD
  B(2): -1
  B = -1
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -1
  W(2,2) = -1
 850: LET W(3, L) = A
+ L: 2
  A: -3
  W(3,2) = -3
 860: LET B(1) = B
@@ -33095,11 +34624,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 4
  W(2,3) = 4
 850: LET W(3, L) = A
+ L: 3
  A: -1
  W(3,3) = -1
 860: LET B(1) = B
@@ -33119,11 +34651,14 @@ NOTE NUMBER     CHORD
  B(2): 6
  B = 6
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 6
  W(2,4) = 6
 850: LET W(3, L) = A
+ L: 4
  A: 4
  W(3,4) = 4
 860: LET B(1) = B
@@ -33143,11 +34678,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 11
  W(2,5) = 11
 850: LET W(3, L) = A
+ L: 5
  A: 6
  W(3,5) = 6
 860: LET B(1) = B
@@ -33167,11 +34705,14 @@ NOTE NUMBER     CHORD
  B(2): 13
  B = 13
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 13
  W(2,6) = 13
 850: LET W(3, L) = A
+ L: 6
  A: 11
  W(3,6) = 11
 860: LET B(1) = B
@@ -33211,6 +34752,7 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -33239,6 +34781,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 2
  B: -3
  S(2,2) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -33271,6 +34815,7 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -33299,6 +34844,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 2
  B: -1
  S(2,2) = -1
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -33331,6 +34878,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 2
  B: -3
  S(3,2) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -33568,6 +35117,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 2
  D(2): 2
  D(3): 2
  W(0,2) = 4
@@ -33591,6 +35141,7 @@ NOTE NUMBER     CHORD
  S(2,3): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -33611,6 +35162,7 @@ NOTE NUMBER     CHORD
  S(2,3): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -33631,6 +35183,7 @@ NOTE NUMBER     CHORD
  S(2,3): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -33651,6 +35204,7 @@ NOTE NUMBER     CHORD
  S(2,3): -3
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -33767,10 +35321,12 @@ NOTE NUMBER     CHORD
  M: 4
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 2
  L9: 2
  W(2,2): -1
  S(2,2) = -1
 1620: LET S(3, N) = W(3, L9)
+ N: 2
  L9: 2
  W(3,2): -3
  S(3,2) = -3
@@ -33814,6 +35370,7 @@ NOTE NUMBER     CHORD
  P(5,1): 2
  C2 = 2
 525: LET S(0, N) = C2
+ N: 1
  C2: 2
  S(0,1) = 2
 530: LET S = M(N)
@@ -33821,6 +35378,7 @@ NOTE NUMBER     CHORD
  M(1): 2
  S = 2
 540: LET S(1, N) = S
+ N: 1
  S: 2
  S(1,1) = 2
 542:
@@ -33864,6 +35422,7 @@ NOTE NUMBER     CHORD
  D(2): -13
  R = -13
 660: LET S(4, N) = R
+ N: 1
  R: -13
  S(4,1) = -13
 670:
@@ -33881,6 +35440,7 @@ NOTE NUMBER     CHORD
  X: 15
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -13
  K: 0
  B(1) = -13
@@ -33899,6 +35459,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -13
  K: 2
  B(2) = -11
@@ -33917,6 +35478,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -13
  K: 4
  B(3) = -9
@@ -33940,6 +35502,7 @@ NOTE NUMBER     CHORD
  P(5,2): 6
  C2 = 6
 525: LET S(0, N) = C2
+ N: 1
  C2: 6
  S(0,1) = 6
 530: LET S = M(N)
@@ -33947,6 +35510,7 @@ NOTE NUMBER     CHORD
  M(1): 2
  S = 2
 540: LET S(1, N) = S
+ N: 1
  S: 2
  S(1,1) = 2
 542:
@@ -33975,6 +35539,7 @@ NOTE NUMBER     CHORD
  R = -9
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 1
  R: -9
  S(4,1) = -9
 670:
@@ -33992,6 +35557,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -9
  K: 0
  B(1) = -9
@@ -34010,6 +35576,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -9
  K: 2
  B(2) = -7
@@ -34044,11 +35611,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -7
  W(2,0) = -7
 850: LET W(3, L) = A
+ L: 0
  A: -9
  W(3,0) = -9
 860: LET B(1) = B
@@ -34068,11 +35638,14 @@ NOTE NUMBER     CHORD
  B(2): -2
  B = -2
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -2
  W(2,1) = -2
 850: LET W(3, L) = A
+ L: 1
  A: -7
  W(3,1) = -7
 860: LET B(1) = B
@@ -34092,11 +35665,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: 0
  W(2,2) = 0
 850: LET W(3, L) = A
+ L: 2
  A: -2
  W(3,2) = -2
 860: LET B(1) = B
@@ -34116,11 +35692,14 @@ NOTE NUMBER     CHORD
  B(2): 5
  B = 5
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 5
  W(2,3) = 5
 850: LET W(3, L) = A
+ L: 3
  A: 0
  W(3,3) = 0
 860: LET B(1) = B
@@ -34140,11 +35719,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 7
  W(2,4) = 7
 850: LET W(3, L) = A
+ L: 4
  A: 5
  W(3,4) = 5
 860: LET B(1) = B
@@ -34164,11 +35746,14 @@ NOTE NUMBER     CHORD
  B(2): 12
  B = 12
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 12
  W(2,5) = 12
 850: LET W(3, L) = A
+ L: 5
  A: 7
  W(3,5) = 7
 860: LET B(1) = B
@@ -34188,11 +35773,14 @@ NOTE NUMBER     CHORD
  B(2): 14
  B = 14
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 14
  W(2,6) = 14
 850: LET W(3, L) = A
+ L: 6
  A: 12
  W(3,6) = 12
 860: LET B(1) = B
@@ -34224,6 +35812,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -34252,6 +35841,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 1
  B: -2
  S(2,1) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -34284,6 +35875,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 1
  B: -7
  S(3,1) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -34402,6 +35995,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -34430,6 +36024,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 1
  B: 0
  S(2,1) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -34462,6 +36058,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 1
  B: -2
  S(3,1) = -2
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -34543,6 +36141,7 @@ NOTE NUMBER     CHORD
  S2: 1
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -34563,6 +36162,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 3
  W(0,3) = 999
 1261: NEXT L
  L: 3
@@ -34583,6 +36183,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -34603,6 +36204,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -34623,6 +36225,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -34773,6 +36376,7 @@ NOTE NUMBER     CHORD
  P(5,3): 5
  C2 = 5
 525: LET S(0, N) = C2
+ N: 1
  C2: 5
  S(0,1) = 5
 530: LET S = M(N)
@@ -34780,6 +36384,7 @@ NOTE NUMBER     CHORD
  M(1): 2
  S = 2
 540: LET S(1, N) = S
+ N: 1
  S: 2
  S(1,1) = 2
 542:
@@ -34808,6 +36413,7 @@ NOTE NUMBER     CHORD
  R = -10
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 1
  R: -10
  S(4,1) = -10
 670:
@@ -34825,6 +36431,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -10
  K: 0
  B(1) = -10
@@ -34843,6 +36450,7 @@ NOTE NUMBER     CHORD
  X: 10
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -10
  K: 2
  B(2) = -8
@@ -34861,6 +36469,7 @@ NOTE NUMBER     CHORD
  X: 8
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -10
  K: 4
  B(3) = -6
@@ -34884,6 +36493,7 @@ NOTE NUMBER     CHORD
  P(5,4): 4
  C2 = 4
 525: LET S(0, N) = C2
+ N: 1
  C2: 4
  S(0,1) = 4
 530: LET S = M(N)
@@ -34891,6 +36501,7 @@ NOTE NUMBER     CHORD
  M(1): 2
  S = 2
 540: LET S(1, N) = S
+ N: 1
  S: 2
  S(1,1) = 2
 542:
@@ -34919,6 +36530,7 @@ NOTE NUMBER     CHORD
  R = -11
 600: GOTO 660
 660: LET S(4, N) = R
+ N: 1
  R: -11
  S(4,1) = -11
 670:
@@ -34936,6 +36548,7 @@ NOTE NUMBER     CHORD
  X: 13
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -11
  K: 0
  B(1) = -11
@@ -34954,6 +36567,7 @@ NOTE NUMBER     CHORD
  X: 11
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -11
  K: 2
  B(2) = -9
@@ -34972,6 +36586,7 @@ NOTE NUMBER     CHORD
  X: 9
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 3
  R: -11
  K: 4
  B(3) = -7
@@ -34995,6 +36610,7 @@ NOTE NUMBER     CHORD
  P(5,5): 1
  C2 = 1
 525: LET S(0, N) = C2
+ N: 1
  C2: 1
  S(0,1) = 1
 530: LET S = M(N)
@@ -35002,6 +36618,7 @@ NOTE NUMBER     CHORD
  M(1): 2
  S = 2
 540: LET S(1, N) = S
+ N: 1
  S: 2
  S(1,1) = 2
 542:
@@ -35045,6 +36662,7 @@ NOTE NUMBER     CHORD
  D(2): -14
  R = -14
 660: LET S(4, N) = R
+ N: 1
  R: -14
  S(4,1) = -14
 670:
@@ -35062,6 +36680,7 @@ NOTE NUMBER     CHORD
  X: 16
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 1
  R: -14
  K: 0
  B(1) = -14
@@ -35091,6 +36710,7 @@ NOTE NUMBER     CHORD
  X: 12
  FNC(S-(R+K))=0: false
 730: LET B(J) = R + K
+ J: 2
  R: -14
  K: 4
  B(2) = -10
@@ -35114,11 +36734,14 @@ NOTE NUMBER     CHORD
  B(2): -10
  B = -10
 830: LET W(0, L) = 0
+ L: 0
  W(0,0) = 0
 840: LET W(2, L) = B
+ L: 0
  B: -10
  W(2,0) = -10
 850: LET W(3, L) = A
+ L: 0
  A: -14
  W(3,0) = -14
 860: LET B(1) = B
@@ -35138,11 +36761,14 @@ NOTE NUMBER     CHORD
  B(2): -7
  B = -7
 830: LET W(0, L) = 0
+ L: 1
  W(0,1) = 0
 840: LET W(2, L) = B
+ L: 1
  B: -7
  W(2,1) = -7
 850: LET W(3, L) = A
+ L: 1
  A: -10
  W(3,1) = -10
 860: LET B(1) = B
@@ -35162,11 +36788,14 @@ NOTE NUMBER     CHORD
  B(2): -3
  B = -3
 830: LET W(0, L) = 0
+ L: 2
  W(0,2) = 0
 840: LET W(2, L) = B
+ L: 2
  B: -3
  W(2,2) = -3
 850: LET W(3, L) = A
+ L: 2
  A: -7
  W(3,2) = -7
 860: LET B(1) = B
@@ -35186,11 +36815,14 @@ NOTE NUMBER     CHORD
  B(2): 0
  B = 0
 830: LET W(0, L) = 0
+ L: 3
  W(0,3) = 0
 840: LET W(2, L) = B
+ L: 3
  B: 0
  W(2,3) = 0
 850: LET W(3, L) = A
+ L: 3
  A: -3
  W(3,3) = -3
 860: LET B(1) = B
@@ -35210,11 +36842,14 @@ NOTE NUMBER     CHORD
  B(2): 4
  B = 4
 830: LET W(0, L) = 0
+ L: 4
  W(0,4) = 0
 840: LET W(2, L) = B
+ L: 4
  B: 4
  W(2,4) = 4
 850: LET W(3, L) = A
+ L: 4
  A: 0
  W(3,4) = 0
 860: LET B(1) = B
@@ -35234,11 +36869,14 @@ NOTE NUMBER     CHORD
  B(2): 7
  B = 7
 830: LET W(0, L) = 0
+ L: 5
  W(0,5) = 0
 840: LET W(2, L) = B
+ L: 5
  B: 7
  W(2,5) = 7
 850: LET W(3, L) = A
+ L: 5
  A: 4
  W(3,5) = 4
 860: LET B(1) = B
@@ -35258,11 +36896,14 @@ NOTE NUMBER     CHORD
  B(2): 11
  B = 11
 830: LET W(0, L) = 0
+ L: 6
  W(0,6) = 0
 840: LET W(2, L) = B
+ L: 6
  B: 11
  W(2,6) = 11
 850: LET W(3, L) = A
+ L: 6
  A: 7
  W(3,6) = 7
 860: LET B(1) = B
@@ -35294,6 +36935,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 0
  W(0,0) = 999
 1261: NEXT L
  L: 0
@@ -35314,6 +36956,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 1
  W(0,1) = 999
 1261: NEXT L
  L: 1
@@ -35342,6 +36985,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 1
  B: -3
  S(2,1) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -35374,6 +37019,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 1
  B: -7
  S(3,1) = -7
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -35584,6 +37231,7 @@ NOTE NUMBER     CHORD
  S2: -4
  S1=S2: true
 1260: LET W(0, L) = 999
+ L: 2
  W(0,2) = 999
 1261: NEXT L
  L: 2
@@ -35612,6 +37260,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 1
  B: 0
  S(2,1) = 0
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -35644,6 +37294,8 @@ NOTE NUMBER     CHORD
  V: 3
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 3
+ N: 1
  B: -3
  S(3,1) = -3
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -35896,6 +37548,7 @@ NOTE NUMBER     CHORD
  V: 3
  terminated:true
 1240: LET W(0, L) = D(2) + D(3)
+ L: 3
  D(2): 1
  D(3): 0
  W(0,3) = 1
@@ -35927,6 +37580,8 @@ NOTE NUMBER     CHORD
  V: 2
  B<5-4*V: false
 1070: LET S(V, N) = B
+ V: 2
+ N: 1
  B: 4
  S(2,1) = 4
 1080: IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
@@ -35936,6 +37591,7 @@ NOTE NUMBER     CHORD
  S(2,1): 4
  S(2*V-3,N)<=S(2*V-2,N): true
 1260: LET W(0, L) = 999
+ L: 4
  W(0,4) = 999
 1261: NEXT L
  L: 4
@@ -35956,6 +37612,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 5
  W(0,5) = 999
 1261: NEXT L
  L: 5
@@ -35976,6 +37633,7 @@ NOTE NUMBER     CHORD
  S(2,2): -1
  ABS(B-S(V,N+1))>5: true
 1260: LET W(0, L) = 999
+ L: 6
  W(0,6) = 999
 1261: NEXT L
  L: 6
@@ -36098,10 +37756,12 @@ NOTE NUMBER     CHORD
  M: 1
  M=999: false
 1610: LET S(2, N) = W(2, L9)
+ N: 1
  L9: 3
  W(2,3): 0
  S(2,1) = 0
 1620: LET S(3, N) = W(3, L9)
+ N: 1
  L9: 3
  W(3,3): -3
  S(3,1) = -3

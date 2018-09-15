@@ -33,7 +33,7 @@ class UnaryOperator < AbstractElement
     self.class.to_s + ':' + @op
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.empty?
     x = stack.pop
     if x.matrix?
@@ -221,7 +221,7 @@ class BinaryOperator < AbstractElement
     self.class.to_s + ':' + @op
   end
 
-  def evaluate(_, stack, _)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop

@@ -9,18 +9,24 @@
  J = 1
  terminated:false
 120: READ A(I, J)
+ I: 1
+ J: 1
  A(1,1) = 1
 130: NEXT J
  J: 1
  terminated:false
  J = 2
 120: READ A(I, J)
+ I: 1
+ J: 2
  A(1,2) = 2
 130: NEXT J
  J: 2
  terminated:false
  J = 3
 120: READ A(I, J)
+ I: 1
+ J: 3
  A(1,3) = 3
 130: NEXT J
  J: 3
@@ -33,18 +39,24 @@
  J = 1
  terminated:false
 120: READ A(I, J)
+ I: 2
+ J: 1
  A(2,1) = 4
 130: NEXT J
  J: 1
  terminated:false
  J = 2
 120: READ A(I, J)
+ I: 2
+ J: 2
  A(2,2) = 5
 130: NEXT J
  J: 2
  terminated:false
  J = 3
 120: READ A(I, J)
+ I: 2
+ J: 3
  A(2,3) = 6
 130: NEXT J
  J: 3
@@ -68,18 +80,21 @@ MATRIX A
  I = 1
  terminated:false
 220: READ B(I)
+ I: 1
  B(1) = 7
 240: NEXT I
  I: 1
  terminated:false
  I = 2
 220: READ B(I)
+ I: 2
  B(2) = 8
 240: NEXT I
  I: 2
  terminated:false
  I = 3
 220: READ B(I)
+ I: 3
  B(3) = 9
 240: NEXT I
  I: 3
