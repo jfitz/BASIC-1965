@@ -1,0 +1,709 @@
+10: READ X, N
+ X = 0.5
+ N = 2
+20: LET S = 0
+ S = 0
+25: LET F = 1
+ F = 1
+30: FOR I = 1 TO N
+ N: 2
+ I = 1
+ N = 2
+ terminated:false
+40: LET K = 2 * I - 1
+ I: 1
+ K = 1
+50: LET S = S + F * X ^ K / K
+ S: 0
+ F: 1
+ X: 0.5
+ K: 1
+ S = 0.5
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: LET K = 2 * I - 1
+ I: 2
+ K = 3
+50: LET S = S + F * X ^ K / K
+ S: 0.5
+ F: -1
+ X: 0.5
+ K: 3
+ S = 0.4583333333333333
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 2
+ terminated:true
+80: PRINT "ATN OF " X; "= " ATN(X)
+ATN OF 
+ X: 0.5
+ 0.5     =  0.46365
+85: PRINT N; "TERMS OF THE SERIES YIELD " S
+ N: 2
+ 2    TERMS OF THE SERIES YIELD 
+ S: 0.4583333333333333
+ 0.45833
+90: PRINT
+
+91: GOTO 10
+10: READ X, N
+ X = 0.5
+ N = 5
+20: LET S = 0
+ S = 0
+25: LET F = 1
+ F = 1
+30: FOR I = 1 TO N
+ N: 5
+ I = 1
+ N = 5
+ terminated:false
+40: LET K = 2 * I - 1
+ I: 1
+ K = 1
+50: LET S = S + F * X ^ K / K
+ S: 0
+ F: 1
+ X: 0.5
+ K: 1
+ S = 0.5
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: LET K = 2 * I - 1
+ I: 2
+ K = 3
+50: LET S = S + F * X ^ K / K
+ S: 0.5
+ F: -1
+ X: 0.5
+ K: 3
+ S = 0.4583333333333333
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+40: LET K = 2 * I - 1
+ I: 3
+ K = 5
+50: LET S = S + F * X ^ K / K
+ S: 0.4583333333333333
+ F: 1
+ X: 0.5
+ K: 5
+ S = 0.4645833333333333
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+40: LET K = 2 * I - 1
+ I: 4
+ K = 7
+50: LET S = S + F * X ^ K / K
+ S: 0.4645833333333333
+ F: -1
+ X: 0.5
+ K: 7
+ S = 0.46346726190476184
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+40: LET K = 2 * I - 1
+ I: 5
+ K = 9
+50: LET S = S + F * X ^ K / K
+ S: 0.46346726190476184
+ F: 1
+ X: 0.5
+ K: 9
+ S = 0.46368427579365074
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 5
+ terminated:true
+80: PRINT "ATN OF " X; "= " ATN(X)
+ATN OF 
+ X: 0.5
+ 0.5     =  0.46365
+85: PRINT N; "TERMS OF THE SERIES YIELD " S
+ N: 5
+ 5    TERMS OF THE SERIES YIELD 
+ S: 0.46368427579365074
+ 0.46368
+90: PRINT
+
+91: GOTO 10
+10: READ X, N
+ X = 0.5
+ N = 10
+20: LET S = 0
+ S = 0
+25: LET F = 1
+ F = 1
+30: FOR I = 1 TO N
+ N: 10
+ I = 1
+ N = 10
+ terminated:false
+40: LET K = 2 * I - 1
+ I: 1
+ K = 1
+50: LET S = S + F * X ^ K / K
+ S: 0
+ F: 1
+ X: 0.5
+ K: 1
+ S = 0.5
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: LET K = 2 * I - 1
+ I: 2
+ K = 3
+50: LET S = S + F * X ^ K / K
+ S: 0.5
+ F: -1
+ X: 0.5
+ K: 3
+ S = 0.4583333333333333
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+40: LET K = 2 * I - 1
+ I: 3
+ K = 5
+50: LET S = S + F * X ^ K / K
+ S: 0.4583333333333333
+ F: 1
+ X: 0.5
+ K: 5
+ S = 0.4645833333333333
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+40: LET K = 2 * I - 1
+ I: 4
+ K = 7
+50: LET S = S + F * X ^ K / K
+ S: 0.4645833333333333
+ F: -1
+ X: 0.5
+ K: 7
+ S = 0.46346726190476184
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+40: LET K = 2 * I - 1
+ I: 5
+ K = 9
+50: LET S = S + F * X ^ K / K
+ S: 0.46346726190476184
+ F: 1
+ X: 0.5
+ K: 9
+ S = 0.46368427579365074
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+40: LET K = 2 * I - 1
+ I: 6
+ K = 11
+50: LET S = S + F * X ^ K / K
+ S: 0.46368427579365074
+ F: -1
+ X: 0.5
+ K: 11
+ S = 0.46363988658910527
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+40: LET K = 2 * I - 1
+ I: 7
+ K = 13
+50: LET S = S + F * X ^ K / K
+ S: 0.46363988658910527
+ F: 1
+ X: 0.5
+ K: 13
+ S = 0.4636492766131437
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+40: LET K = 2 * I - 1
+ I: 8
+ K = 15
+50: LET S = S + F * X ^ K / K
+ S: 0.4636492766131437
+ F: -1
+ X: 0.5
+ K: 15
+ S = 0.46364724210793534
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+40: LET K = 2 * I - 1
+ I: 9
+ K = 17
+50: LET S = S + F * X ^ K / K
+ S: 0.46364724210793534
+ F: 1
+ X: 0.5
+ K: 17
+ S = 0.46364769089584895
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+40: LET K = 2 * I - 1
+ I: 10
+ K = 19
+50: LET S = S + F * X ^ K / K
+ S: 0.46364769089584895
+ F: -1
+ X: 0.5
+ K: 19
+ S = 0.4636475905090788
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 10
+ terminated:true
+80: PRINT "ATN OF " X; "= " ATN(X)
+ATN OF 
+ X: 0.5
+ 0.5     =  0.46365
+85: PRINT N; "TERMS OF THE SERIES YIELD " S
+ N: 10
+ 10   TERMS OF THE SERIES YIELD 
+ S: 0.4636475905090788
+ 0.46365
+90: PRINT
+
+91: GOTO 10
+10: READ X, N
+ X = -0.75
+ N = 10
+20: LET S = 0
+ S = 0
+25: LET F = 1
+ F = 1
+30: FOR I = 1 TO N
+ N: 10
+ I = 1
+ N = 10
+ terminated:false
+40: LET K = 2 * I - 1
+ I: 1
+ K = 1
+50: LET S = S + F * X ^ K / K
+ S: 0
+ F: 1
+ X: -0.75
+ K: 1
+ S = -0.75
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: LET K = 2 * I - 1
+ I: 2
+ K = 3
+50: LET S = S + F * X ^ K / K
+ S: -0.75
+ F: -1
+ X: -0.75
+ K: 3
+ S = -0.609375
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+40: LET K = 2 * I - 1
+ I: 3
+ K = 5
+50: LET S = S + F * X ^ K / K
+ S: -0.609375
+ F: 1
+ X: -0.75
+ K: 5
+ S = -0.6568359375
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+40: LET K = 2 * I - 1
+ I: 4
+ K = 7
+50: LET S = S + F * X ^ K / K
+ S: -0.6568359375
+ F: -1
+ X: -0.75
+ K: 7
+ S = -0.6377668108258929
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+40: LET K = 2 * I - 1
+ I: 5
+ K = 9
+50: LET S = S + F * X ^ K / K
+ S: -0.6377668108258929
+ F: 1
+ X: -0.75
+ K: 9
+ S = -0.6461095537458148
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+40: LET K = 2 * I - 1
+ I: 6
+ K = 11
+50: LET S = S + F * X ^ K / K
+ S: -0.6461095537458148
+ F: -1
+ X: -0.75
+ K: 11
+ S = -0.6422699959247143
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+40: LET K = 2 * I - 1
+ I: 7
+ K = 13
+50: LET S = S + F * X ^ K / K
+ S: -0.6422699959247143
+ F: 1
+ X: -0.75
+ K: 13
+ S = -0.6440974777722573
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+40: LET K = 2 * I - 1
+ I: 8
+ K = 15
+50: LET S = S + F * X ^ K / K
+ S: -0.6440974777722573
+ F: -1
+ X: -0.75
+ K: 15
+ S = -0.6432065803715802
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+40: LET K = 2 * I - 1
+ I: 9
+ K = 17
+50: LET S = S + F * X ^ K / K
+ S: -0.6432065803715802
+ F: 1
+ X: -0.75
+ K: 17
+ S = -0.643648753713828
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+40: LET K = 2 * I - 1
+ I: 10
+ K = 19
+50: LET S = S + F * X ^ K / K
+ S: -0.643648753713828
+ F: -1
+ X: -0.75
+ K: 19
+ S = -0.6434262125251309
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 10
+ terminated:true
+80: PRINT "ATN OF " X; "= " ATN(X)
+ATN OF 
+ X: -0.75
+-0.75    = -0.6435
+85: PRINT N; "TERMS OF THE SERIES YIELD " S
+ N: 10
+ 10   TERMS OF THE SERIES YIELD 
+ S: -0.6434262125251309
+-0.64343
+90: PRINT
+
+91: GOTO 10
+10: READ X, N
+ X = 0.99
+ N = 10
+20: LET S = 0
+ S = 0
+25: LET F = 1
+ F = 1
+30: FOR I = 1 TO N
+ N: 10
+ I = 1
+ N = 10
+ terminated:false
+40: LET K = 2 * I - 1
+ I: 1
+ K = 1
+50: LET S = S + F * X ^ K / K
+ S: 0
+ F: 1
+ X: 0.99
+ K: 1
+ S = 0.99
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: LET K = 2 * I - 1
+ I: 2
+ K = 3
+50: LET S = S + F * X ^ K / K
+ S: 0.99
+ F: -1
+ X: 0.99
+ K: 3
+ S = 0.6665669999999999
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+40: LET K = 2 * I - 1
+ I: 3
+ K = 5
+50: LET S = S + F * X ^ K / K
+ S: 0.6665669999999999
+ F: 1
+ X: 0.99
+ K: 5
+ S = 0.8567650099799999
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+40: LET K = 2 * I - 1
+ I: 4
+ K = 7
+50: LET S = S + F * X ^ K / K
+ S: 0.8567650099799999
+ F: -1
+ X: 0.99
+ K: 7
+ S = 0.7236128174218586
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+40: LET K = 2 * I - 1
+ I: 5
+ K = 9
+50: LET S = S + F * X ^ K / K
+ S: 0.7236128174218586
+ F: 1
+ X: 0.99
+ K: 9
+ S = 0.8251147338089297
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+40: LET K = 2 * I - 1
+ I: 6
+ K = 11
+50: LET S = S + F * X ^ K / K
+ S: 0.8251147338089297
+ F: -1
+ X: 0.99
+ K: 11
+ S = 0.7437203470581374
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+40: LET K = 2 * I - 1
+ I: 7
+ K = 13
+50: LET S = S + F * X ^ K / K
+ S: 0.7437203470581374
+ F: 1
+ X: 0.99
+ K: 13
+ S = 0.8112219642119042
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+40: LET K = 2 * I - 1
+ I: 8
+ K = 15
+50: LET S = S + F * X ^ K / K
+ S: 0.8112219642119042
+ F: -1
+ X: 0.99
+ K: 15
+ S = 0.7538847405691517
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+40: LET K = 2 * I - 1
+ I: 9
+ K = 17
+50: LET S = S + F * X ^ K / K
+ S: 0.7538847405691517
+ F: 1
+ X: 0.99
+ K: 17
+ S = 0.803469634297618
+60: LET F = -F
+ F: 1
+ F = -1
+70: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+40: LET K = 2 * I - 1
+ I: 10
+ K = 19
+50: LET S = S + F * X ^ K / K
+ S: 0.803469634297618
+ F: -1
+ X: 0.99
+ K: 19
+ S = 0.7599870751483766
+60: LET F = -F
+ F: -1
+ F = 1
+70: NEXT I
+ I: 10
+ terminated:true
+80: PRINT "ATN OF " X; "= " ATN(X)
+ATN OF 
+ X: 0.99
+ 0.99    =  0.78037
+85: PRINT N; "TERMS OF THE SERIES YIELD " S
+ N: 10
+ 10   TERMS OF THE SERIES YIELD 
+ S: 0.7599870751483766
+ 0.75999
+90: PRINT
+
+91: GOTO 10
+10: READ X, N
+Out of data in line 10

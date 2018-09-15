@@ -1,0 +1,2475 @@
+100: REM INITIALIZE
+110: FOR B = 1 TO 9
+ B = 1
+ terminated:false
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(1,0) = 0.644
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(1,1) = 0.24
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(1,2) = 0.077
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(1,3) = 0.039
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 1
+ terminated:false
+ B = 2
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(2,0) = 0.644
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(2,1) = 0.19
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(2,2) = 0.103
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(2,3) = 0.053
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 2
+ terminated:false
+ B = 3
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(3,0) = 0.72
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(3,1) = 0.167
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(3,2) = 0.046
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(3,3) = 0.05
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 3
+ terminated:false
+ B = 4
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(4,0) = 0.641
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(4,1) = 0.244
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(4,2) = 0.05
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(4,3) = 0.038
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 4
+ terminated:false
+ B = 5
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(5,0) = 0.673
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(5,1) = 0.153
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(5,2) = 0.073
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(5,3) = 0.038
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 5
+ terminated:false
+ B = 6
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(6,0) = 0.651
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(6,1) = 0.182
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(6,2) = 0.106
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(6,3) = 0.038
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 6
+ terminated:false
+ B = 7
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(7,0) = 0.704
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(7,1) = 0.162
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(7,2) = 0.079
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(7,3) = 0.036
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 7
+ terminated:false
+ B = 8
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(8,0) = 0.709
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(8,1) = 0.162
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(8,2) = 0.071
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(8,3) = 0.04
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 8
+ terminated:false
+ B = 9
+120: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+130: READ P(B, R)
+ P(9,0) = 0.836
+140: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+130: READ P(B, R)
+ P(9,1) = 0.09
+140: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+130: READ P(B, R)
+ P(9,2) = 0.053
+140: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+130: READ P(B, R)
+ P(9,3) = 0.016
+140: NEXT R
+ R: 3
+ terminated:true
+150: NEXT B
+ B: 9
+ terminated:true
+160: DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
+170: DATA 0.641, 0.244, 0.05, 0.038, 0.673, 0.153, 0.073, 0.038, 0.651, 0.182, 0.106, 0.038
+180: DATA 0.704, 0.162, 0.079, 0.036, 0.709, 0.162, 0.071, 0.04, 0.836, 0.09, 0.053, 0.016
+190:
+200: FOR R = 1 TO 4
+ R = 1
+ terminated:false
+210: FOR C = 0 TO 7
+ C = 0
+ terminated:false
+220: READ Q(R, C)
+ Q(1,0) = 1
+230: NEXT C
+ C: 0
+ terminated:false
+ C = 1
+220: READ Q(R, C)
+ Q(1,1) = 5
+230: NEXT C
+ C: 1
+ terminated:false
+ C = 2
+220: READ Q(R, C)
+ Q(1,2) = 11
+230: NEXT C
+ C: 2
+ terminated:false
+ C = 3
+220: READ Q(R, C)
+ Q(1,3) = 15
+230: NEXT C
+ C: 3
+ terminated:false
+ C = 4
+220: READ Q(R, C)
+ Q(1,4) = 11
+230: NEXT C
+ C: 4
+ terminated:false
+ C = 5
+220: READ Q(R, C)
+ Q(1,5) = 15
+230: NEXT C
+ C: 5
+ terminated:false
+ C = 6
+220: READ Q(R, C)
+ Q(1,6) = 21
+230: NEXT C
+ C: 6
+ terminated:false
+ C = 7
+220: READ Q(R, C)
+ Q(1,7) = 25
+230: NEXT C
+ C: 7
+ terminated:true
+240: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+210: FOR C = 0 TO 7
+ C = 0
+ terminated:false
+220: READ Q(R, C)
+ Q(2,0) = 1
+230: NEXT C
+ C: 0
+ terminated:false
+ C = 1
+220: READ Q(R, C)
+ Q(2,1) = 3
+230: NEXT C
+ C: 1
+ terminated:false
+ C = 2
+220: READ Q(R, C)
+ Q(2,2) = 3
+230: NEXT C
+ C: 2
+ terminated:false
+ C = 3
+220: READ Q(R, C)
+ Q(2,3) = 7
+230: NEXT C
+ C: 3
+ terminated:false
+ C = 4
+220: READ Q(R, C)
+ Q(2,4) = 5
+230: NEXT C
+ C: 4
+ terminated:false
+ C = 5
+220: READ Q(R, C)
+ Q(2,5) = 7
+230: NEXT C
+ C: 5
+ terminated:false
+ C = 6
+220: READ Q(R, C)
+ Q(2,6) = 7
+230: NEXT C
+ C: 6
+ terminated:false
+ C = 7
+220: READ Q(R, C)
+ Q(2,7) = 17
+230: NEXT C
+ C: 7
+ terminated:true
+240: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+210: FOR C = 0 TO 7
+ C = 0
+ terminated:false
+220: READ Q(R, C)
+ Q(3,0) = 2
+230: NEXT C
+ C: 0
+ terminated:false
+ C = 1
+220: READ Q(R, C)
+ Q(3,1) = 12
+230: NEXT C
+ C: 1
+ terminated:false
+ C = 2
+220: READ Q(R, C)
+ Q(3,2) = 12
+230: NEXT C
+ C: 2
+ terminated:false
+ C = 3
+220: READ Q(R, C)
+ Q(3,3) = 22
+230: NEXT C
+ C: 3
+ terminated:false
+ C = 4
+220: READ Q(R, C)
+ Q(3,4) = 12
+230: NEXT C
+ C: 4
+ terminated:false
+ C = 5
+220: READ Q(R, C)
+ Q(3,5) = 22
+230: NEXT C
+ C: 5
+ terminated:false
+ C = 6
+220: READ Q(R, C)
+ Q(3,6) = 22
+230: NEXT C
+ C: 6
+ terminated:false
+ C = 7
+220: READ Q(R, C)
+ Q(3,7) = 32
+230: NEXT C
+ C: 7
+ terminated:true
+240: NEXT R
+ R: 3
+ terminated:false
+ R = 4
+210: FOR C = 0 TO 7
+ C = 0
+ terminated:false
+220: READ Q(R, C)
+ Q(4,0) = 10
+230: NEXT C
+ C: 0
+ terminated:false
+ C = 1
+220: READ Q(R, C)
+ Q(4,1) = 20
+230: NEXT C
+ C: 1
+ terminated:false
+ C = 2
+220: READ Q(R, C)
+ Q(4,2) = 20
+230: NEXT C
+ C: 2
+ terminated:false
+ C = 3
+220: READ Q(R, C)
+ Q(4,3) = 30
+230: NEXT C
+ C: 3
+ terminated:false
+ C = 4
+220: READ Q(R, C)
+ Q(4,4) = 20
+230: NEXT C
+ C: 4
+ terminated:false
+ C = 5
+220: READ Q(R, C)
+ Q(4,5) = 30
+230: NEXT C
+ C: 5
+ terminated:false
+ C = 6
+220: READ Q(R, C)
+ Q(4,6) = 30
+230: NEXT C
+ C: 6
+ terminated:false
+ C = 7
+220: READ Q(R, C)
+ Q(4,7) = 40
+230: NEXT C
+ C: 7
+ terminated:true
+240: NEXT R
+ R: 4
+ terminated:true
+250: DATA 1, 5, 11, 15, 11, 15, 21, 25
+260: DATA 1, 3, 3, 7, 5, 7, 7, 17
+270: DATA 2, 12, 12, 22, 12, 22, 22, 32
+280: DATA 10, 20, 20, 30, 20, 30, 30, 40
+290:
+300: LET S1 = 0
+ S1 = 0
+310: LET B = 0
+ B = 0
+320: LET H = 0
+ H = 0
+330: LET L7 = 0
+ L7 = 0
+340: LET I = 1
+ I = 1
+350:
+360: FOR C = 0 TO 7
+ C = 0
+ terminated:false
+370: READ L(C)
+ L(0) = 0
+380: NEXT C
+ C: 0
+ terminated:false
+ C = 1
+370: READ L(C)
+ L(1) = 1
+380: NEXT C
+ C: 1
+ terminated:false
+ C = 2
+370: READ L(C)
+ L(2) = 1
+380: NEXT C
+ C: 2
+ terminated:false
+ C = 3
+370: READ L(C)
+ L(3) = 2
+380: NEXT C
+ C: 3
+ terminated:false
+ C = 4
+370: READ L(C)
+ L(4) = 1
+380: NEXT C
+ C: 4
+ terminated:false
+ C = 5
+370: READ L(C)
+ L(5) = 2
+380: NEXT C
+ C: 5
+ terminated:false
+ C = 6
+370: READ L(C)
+ L(6) = 2
+380: NEXT C
+ C: 6
+ terminated:false
+ C = 7
+370: READ L(C)
+ L(7) = 3
+380: NEXT C
+ C: 7
+ terminated:true
+390: DATA 0, 1, 1, 2, 1, 2, 2, 3
+400:
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 1
+ 1
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 0
+ B<9: true
+520: LET B = B + 1
+ B: 0
+ B = 1
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.417022004702574
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.417022004702574
+ B: 1
+ R: 0
+ P(1,0): 0.644
+ X = -0.22697799529742602
+580: IF X < 0 THEN 620
+ X: -0.22697799529742602
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 1
+ B<9: true
+520: LET B = B + 1
+ B: 1
+ B = 2
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.7203244934421581
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.7203244934421581
+ B: 2
+ R: 0
+ P(2,0): 0.644
+ X = 0.07632449344215808
+580: IF X < 0 THEN 620
+ X: 0.07632449344215808
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.07632449344215808
+ B: 2
+ R: 1
+ P(2,1): 0.19
+ X = -0.11367550655784192
+580: IF X < 0 THEN 620
+ X: -0.11367550655784192
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 1
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 1
+ R>1: false
+670: PRINT "SINGLE   ";
+SINGLE   
+680: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 1
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 1
+ R=2: false
+800: LET H = H + 1
+ H: 0
+ H = 1
+810: LET X = Q(R, C)
+ R: 1
+ C: 0
+ Q(1,0): 1
+ X = 1
+820: LET Y = INT(X / 10)
+ X: 1
+ Y = 0
+830: LET C = X - Y * 10
+ X: 1
+ Y: 0
+ C = 1
+840: LET S = S + Y
+ S: 0
+ Y: 0
+ S = 0
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 2
+ B<9: true
+520: LET B = B + 1
+ B: 2
+ B = 3
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.00011437481734488664
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.00011437481734488664
+ B: 3
+ R: 0
+ P(3,0): 0.72
+ X = -0.7198856251826551
+580: IF X < 0 THEN 620
+ X: -0.7198856251826551
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 3
+ B<9: true
+520: LET B = B + 1
+ B: 3
+ B = 4
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.30233257263183977
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.30233257263183977
+ B: 4
+ R: 0
+ P(4,0): 0.641
+ X = -0.33866742736816025
+580: IF X < 0 THEN 620
+ X: -0.33866742736816025
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 0
+ C: 1
+ L(1): 1
+ L7 = 1
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 0
+ 0    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 0
+ S: 0
+ S1 = 0
+940: LET I = I + 1
+ I: 1
+ I = 2
+945: IF I < 9 THEN 410
+ I: 2
+ I<9: true
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 2
+ 2
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 4
+ B<9: true
+520: LET B = B + 1
+ B: 4
+ B = 5
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.14675589081711304
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.14675589081711304
+ B: 5
+ R: 0
+ P(5,0): 0.673
+ X = -0.526244109182887
+580: IF X < 0 THEN 620
+ X: -0.526244109182887
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 5
+ B<9: true
+520: LET B = B + 1
+ B: 5
+ B = 6
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.0923385947687978
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.0923385947687978
+ B: 6
+ R: 0
+ P(6,0): 0.651
+ X = -0.5586614052312022
+580: IF X < 0 THEN 620
+ X: -0.5586614052312022
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 6
+ B<9: true
+520: LET B = B + 1
+ B: 6
+ B = 7
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.1862602113776709
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.1862602113776709
+ B: 7
+ R: 0
+ P(7,0): 0.704
+ X = -0.5177397886223291
+580: IF X < 0 THEN 620
+ X: -0.5177397886223291
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 1
+ C: 0
+ L(0): 0
+ L7 = 1
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 0
+ 0    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 0
+ S: 0
+ S1 = 0
+940: LET I = I + 1
+ I: 2
+ I = 3
+945: IF I < 9 THEN 410
+ I: 3
+ I<9: true
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 3
+ 3
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 7
+ B<9: true
+520: LET B = B + 1
+ B: 7
+ B = 8
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.34556072704304774
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.34556072704304774
+ B: 8
+ R: 0
+ P(8,0): 0.709
+ X = -0.3634392729569522
+580: IF X < 0 THEN 620
+ X: -0.3634392729569522
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 8
+ B<9: true
+520: LET B = B + 1
+ B: 8
+ B = 9
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.39676747423066994
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.39676747423066994
+ B: 9
+ R: 0
+ P(9,0): 0.836
+ X = -0.43923252576933003
+580: IF X < 0 THEN 620
+ X: -0.43923252576933003
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 9
+ B<9: false
+510: LET B = 0
+ B = 0
+520: LET B = B + 1
+ B: 0
+ B = 1
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.538816734003357
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.538816734003357
+ B: 1
+ R: 0
+ P(1,0): 0.644
+ X = -0.10518326599664307
+580: IF X < 0 THEN 620
+ X: -0.10518326599664307
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 1
+ C: 0
+ L(0): 0
+ L7 = 1
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 0
+ 0    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 0
+ S: 0
+ S1 = 0
+940: LET I = I + 1
+ I: 3
+ I = 4
+945: IF I < 9 THEN 410
+ I: 4
+ I<9: true
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 4
+ 4
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 1
+ B<9: true
+520: LET B = B + 1
+ B: 1
+ B = 2
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.4191945144032948
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.4191945144032948
+ B: 2
+ R: 0
+ P(2,0): 0.644
+ X = -0.2248054855967052
+580: IF X < 0 THEN 620
+ X: -0.2248054855967052
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 2
+ B<9: true
+520: LET B = B + 1
+ B: 2
+ B = 3
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.6852195003967595
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.6852195003967595
+ B: 3
+ R: 0
+ P(3,0): 0.72
+ X = -0.03478049960324048
+580: IF X < 0 THEN 620
+ X: -0.03478049960324048
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 3
+ B<9: true
+520: LET B = B + 1
+ B: 3
+ B = 4
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.20445224973151743
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.20445224973151743
+ B: 4
+ R: 0
+ P(4,0): 0.641
+ X = -0.4365477502684826
+580: IF X < 0 THEN 620
+ X: -0.4365477502684826
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 1
+ C: 0
+ L(0): 0
+ L7 = 1
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 0
+ 0    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 0
+ S: 0
+ S1 = 0
+940: LET I = I + 1
+ I: 4
+ I = 5
+945: IF I < 9 THEN 410
+ I: 5
+ I<9: true
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 5
+ 5
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 4
+ B<9: true
+520: LET B = B + 1
+ B: 4
+ B = 5
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.8781174363909454
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.8781174363909454
+ B: 5
+ R: 0
+ P(5,0): 0.673
+ X = 0.20511743639094537
+580: IF X < 0 THEN 620
+ X: 0.20511743639094537
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.20511743639094537
+ B: 5
+ R: 1
+ P(5,1): 0.153
+ X = 0.052117436390945376
+580: IF X < 0 THEN 620
+ X: 0.052117436390945376
+ X<0: false
+590: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+570: LET X = X - P(B, R)
+ X: 0.052117436390945376
+ B: 5
+ R: 2
+ P(5,2): 0.073
+ X = -0.02088256360905462
+580: IF X < 0 THEN 620
+ X: -0.02088256360905462
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 2
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 2
+ R>1: true
+690: IF R > 2 THEN 720
+ R: 2
+ R>2: false
+700: PRINT "WALK   ";
+WALK   
+710: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 2
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 2
+ R=2: true
+810: LET X = Q(R, C)
+ R: 2
+ C: 0
+ Q(2,0): 1
+ X = 1
+820: LET Y = INT(X / 10)
+ X: 1
+ Y = 0
+830: LET C = X - Y * 10
+ X: 1
+ Y: 0
+ C = 1
+840: LET S = S + Y
+ S: 0
+ Y: 0
+ S = 0
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 5
+ B<9: true
+520: LET B = B + 1
+ B: 5
+ B = 6
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.027387593197926163
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.027387593197926163
+ B: 6
+ R: 0
+ P(6,0): 0.651
+ X = -0.6236124068020739
+580: IF X < 0 THEN 620
+ X: -0.6236124068020739
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 6
+ B<9: true
+520: LET B = B + 1
+ B: 6
+ B = 7
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.6704675101784022
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.6704675101784022
+ B: 7
+ R: 0
+ P(7,0): 0.704
+ X = -0.03353248982159773
+580: IF X < 0 THEN 620
+ X: -0.03353248982159773
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 7
+ B<9: true
+520: LET B = B + 1
+ B: 7
+ B = 8
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.41730480236712697
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.41730480236712697
+ B: 8
+ R: 0
+ P(8,0): 0.709
+ X = -0.291695197632873
+580: IF X < 0 THEN 620
+ X: -0.291695197632873
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 1
+ C: 1
+ L(1): 1
+ L7 = 2
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 0
+ 0    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 0
+ S: 0
+ S1 = 0
+940: LET I = I + 1
+ I: 5
+ I = 6
+945: IF I < 9 THEN 410
+ I: 6
+ I<9: true
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 6
+ 6
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 8
+ B<9: true
+520: LET B = B + 1
+ B: 8
+ B = 9
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.5586898284457517
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.5586898284457517
+ B: 9
+ R: 0
+ P(9,0): 0.836
+ X = -0.2773101715542483
+580: IF X < 0 THEN 620
+ X: -0.2773101715542483
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 9
+ B<9: false
+510: LET B = 0
+ B = 0
+520: LET B = B + 1
+ B: 0
+ B = 1
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.14038693859523377
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.14038693859523377
+ B: 1
+ R: 0
+ P(1,0): 0.644
+ X = -0.5036130614047662
+580: IF X < 0 THEN 620
+ X: -0.5036130614047662
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 1
+ B<9: true
+520: LET B = B + 1
+ B: 1
+ B = 2
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.1981014890848788
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.1981014890848788
+ B: 2
+ R: 0
+ P(2,0): 0.644
+ X = -0.4458985109151212
+580: IF X < 0 THEN 620
+ X: -0.4458985109151212
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 2
+ C: 0
+ L(0): 0
+ L7 = 2
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 0
+ 0    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 0
+ S: 0
+ S1 = 0
+940: LET I = I + 1
+ I: 6
+ I = 7
+945: IF I < 9 THEN 410
+ I: 7
+ I<9: true
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 7
+ 7
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 2
+ B<9: true
+520: LET B = B + 1
+ B: 2
+ B = 3
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.8007445686755367
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.8007445686755367
+ B: 3
+ R: 0
+ P(3,0): 0.72
+ X = 0.0807445686755367
+580: IF X < 0 THEN 620
+ X: 0.0807445686755367
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.0807445686755367
+ B: 3
+ R: 1
+ P(3,1): 0.167
+ X = -0.08625543132446331
+580: IF X < 0 THEN 620
+ X: -0.08625543132446331
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 1
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 1
+ R>1: false
+670: PRINT "SINGLE   ";
+SINGLE   
+680: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 1
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 1
+ R=2: false
+800: LET H = H + 1
+ H: 1
+ H = 2
+810: LET X = Q(R, C)
+ R: 1
+ C: 0
+ Q(1,0): 1
+ X = 1
+820: LET Y = INT(X / 10)
+ X: 1
+ Y = 0
+830: LET C = X - Y * 10
+ X: 1
+ Y: 0
+ C = 1
+840: LET S = S + Y
+ S: 0
+ Y: 0
+ S = 0
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 3
+ B<9: true
+520: LET B = B + 1
+ B: 3
+ B = 4
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.9682615757193975
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.9682615757193975
+ B: 4
+ R: 0
+ P(4,0): 0.641
+ X = 0.3272615757193975
+580: IF X < 0 THEN 620
+ X: 0.3272615757193975
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.3272615757193975
+ B: 4
+ R: 1
+ P(4,1): 0.244
+ X = 0.08326157571939752
+580: IF X < 0 THEN 620
+ X: 0.08326157571939752
+ X<0: false
+590: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+570: LET X = X - P(B, R)
+ X: 0.08326157571939752
+ B: 4
+ R: 2
+ P(4,2): 0.05
+ X = 0.033261575719397515
+580: IF X < 0 THEN 620
+ X: 0.033261575719397515
+ X<0: false
+590: NEXT R
+ R: 2
+ terminated:false
+ R = 3
+570: LET X = X - P(B, R)
+ X: 0.033261575719397515
+ B: 4
+ R: 3
+ P(4,3): 0.038
+ X = -0.004738424280602484
+580: IF X < 0 THEN 620
+ X: -0.004738424280602484
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 3
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 3
+ R>1: true
+690: IF R > 2 THEN 720
+ R: 3
+ R>2: true
+720: IF R > 3 THEN 750
+ R: 3
+ R>3: false
+730: PRINT "DOUBLE   ";
+DOUBLE   
+740: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 3
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 3
+ R=2: false
+800: LET H = H + 1
+ H: 2
+ H = 3
+810: LET X = Q(R, C)
+ R: 3
+ C: 1
+ Q(3,1): 12
+ X = 12
+820: LET Y = INT(X / 10)
+ X: 12
+ Y = 1
+830: LET C = X - Y * 10
+ X: 12
+ Y: 1
+ C = 2
+840: LET S = S + Y
+ S: 0
+ Y: 1
+ S = 1
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 4
+ B<9: true
+520: LET B = B + 1
+ B: 4
+ B = 5
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.31342417815924284
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.31342417815924284
+ B: 5
+ R: 0
+ P(5,0): 0.673
+ X = -0.3595758218407572
+580: IF X < 0 THEN 620
+ X: -0.3595758218407572
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 5
+ B<9: true
+520: LET B = B + 1
+ B: 5
+ B = 6
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.6923226156693141
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.6923226156693141
+ B: 6
+ R: 0
+ P(6,0): 0.651
+ X = 0.041322615669314056
+580: IF X < 0 THEN 620
+ X: 0.041322615669314056
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.041322615669314056
+ B: 6
+ R: 1
+ P(6,1): 0.182
+ X = -0.14067738433068594
+580: IF X < 0 THEN 620
+ X: -0.14067738433068594
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 1
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 1
+ R>1: false
+670: PRINT "SINGLE   ";
+SINGLE   
+680: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 1
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 1
+ R=2: false
+800: LET H = H + 1
+ H: 3
+ H = 4
+810: LET X = Q(R, C)
+ R: 1
+ C: 2
+ Q(1,2): 11
+ X = 11
+820: LET Y = INT(X / 10)
+ X: 11
+ Y = 1
+830: LET C = X - Y * 10
+ X: 11
+ Y: 1
+ C = 1
+840: LET S = S + Y
+ S: 1
+ Y: 1
+ S = 2
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 6
+ B<9: true
+520: LET B = B + 1
+ B: 6
+ B = 7
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.8763891522960383
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.8763891522960383
+ B: 7
+ R: 0
+ P(7,0): 0.704
+ X = 0.17238915229603835
+580: IF X < 0 THEN 620
+ X: 0.17238915229603835
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.17238915229603835
+ B: 7
+ R: 1
+ P(7,1): 0.162
+ X = 0.010389152296038345
+580: IF X < 0 THEN 620
+ X: 0.010389152296038345
+ X<0: false
+590: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+570: LET X = X - P(B, R)
+ X: 0.010389152296038345
+ B: 7
+ R: 2
+ P(7,2): 0.079
+ X = -0.06861084770396166
+580: IF X < 0 THEN 620
+ X: -0.06861084770396166
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 2
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 2
+ R>1: true
+690: IF R > 2 THEN 720
+ R: 2
+ R>2: false
+700: PRINT "WALK   ";
+WALK   
+710: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 2
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 2
+ R=2: true
+810: LET X = Q(R, C)
+ R: 2
+ C: 1
+ Q(2,1): 3
+ X = 3
+820: LET Y = INT(X / 10)
+ X: 3
+ Y = 0
+830: LET C = X - Y * 10
+ X: 3
+ Y: 0
+ C = 3
+840: LET S = S + Y
+ S: 2
+ Y: 0
+ S = 2
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 7
+ B<9: true
+520: LET B = B + 1
+ B: 7
+ B = 8
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.8946066635038473
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.8946066635038473
+ B: 8
+ R: 0
+ P(8,0): 0.709
+ X = 0.18560666350384736
+580: IF X < 0 THEN 620
+ X: 0.18560666350384736
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.18560666350384736
+ B: 8
+ R: 1
+ P(8,1): 0.162
+ X = 0.023606663503847353
+580: IF X < 0 THEN 620
+ X: 0.023606663503847353
+ X<0: false
+590: NEXT R
+ R: 1
+ terminated:false
+ R = 2
+570: LET X = X - P(B, R)
+ X: 0.023606663503847353
+ B: 8
+ R: 2
+ P(8,2): 0.071
+ X = -0.04739333649615264
+580: IF X < 0 THEN 620
+ X: -0.04739333649615264
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 2
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 2
+ R>1: true
+690: IF R > 2 THEN 720
+ R: 2
+ R>2: false
+700: PRINT "WALK   ";
+WALK   
+710: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 2
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 2
+ R=2: true
+810: LET X = Q(R, C)
+ R: 2
+ C: 3
+ Q(2,3): 7
+ X = 7
+820: LET Y = INT(X / 10)
+ X: 7
+ Y = 0
+830: LET C = X - Y * 10
+ X: 7
+ Y: 0
+ C = 7
+840: LET S = S + Y
+ S: 2
+ Y: 0
+ S = 2
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 8
+ B<9: true
+520: LET B = B + 1
+ B: 8
+ B = 9
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.08504421136977791
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.08504421136977791
+ B: 9
+ R: 0
+ P(9,0): 0.836
+ X = -0.750955788630222
+580: IF X < 0 THEN 620
+ X: -0.750955788630222
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 9
+ B<9: false
+510: LET B = 0
+ B = 0
+520: LET B = B + 1
+ B: 0
+ B = 1
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.03905478323288236
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.03905478323288236
+ B: 1
+ R: 0
+ P(1,0): 0.644
+ X = -0.6049452167671177
+580: IF X < 0 THEN 620
+ X: -0.6049452167671177
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 2
+ C: 7
+ L(7): 3
+ L7 = 5
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 2
+ 2    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 0
+ S: 2
+ S1 = 2
+940: LET I = I + 1
+ I: 7
+ I = 8
+945: IF I < 9 THEN 410
+ I: 8
+ I<9: true
+410: REM NEW INNING
+430: PRINT "INNING" I
+INNING
+ I: 8
+ 8
+450: LET S = 0
+ S = 0
+460: LET O = 0
+ O = 0
+470: LET C = 0
+ C = 0
+480:
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 1
+ B<9: true
+520: LET B = B + 1
+ B: 1
+ B = 2
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.1698304195645689
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.1698304195645689
+ B: 2
+ R: 0
+ P(2,0): 0.644
+ X = -0.4741695804354311
+580: IF X < 0 THEN 620
+ X: -0.4741695804354311
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 0
+ O=2: false
+870: LET O = O + 1
+ O: 0
+ O = 1
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 2
+ B<9: true
+520: LET B = B + 1
+ B: 2
+ B = 3
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.8781425034294131
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.8781425034294131
+ B: 3
+ R: 0
+ P(3,0): 0.72
+ X = 0.15814250342941316
+580: IF X < 0 THEN 620
+ X: 0.15814250342941316
+ X<0: false
+590: NEXT R
+ R: 0
+ terminated:false
+ R = 1
+570: LET X = X - P(B, R)
+ X: 0.15814250342941316
+ B: 3
+ R: 1
+ P(3,1): 0.167
+ X = -0.008857496570586848
+580: IF X < 0 THEN 620
+ X: -0.008857496570586848
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 1
+ R>0: true
+660: IF R > 1 THEN 690
+ R: 1
+ R>1: false
+670: PRINT "SINGLE   ";
+SINGLE   
+680: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 1
+ R=0: false
+790: IF R = 2 THEN 810
+ R: 1
+ R=2: false
+800: LET H = H + 1
+ H: 4
+ H = 5
+810: LET X = Q(R, C)
+ R: 1
+ C: 0
+ Q(1,0): 1
+ X = 1
+820: LET Y = INT(X / 10)
+ X: 1
+ Y = 0
+830: LET C = X - Y * 10
+ X: 1
+ Y: 0
+ C = 1
+840: LET S = S + Y
+ S: 0
+ Y: 0
+ S = 0
+850: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 3
+ B<9: true
+520: LET B = B + 1
+ B: 3
+ B = 4
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.0983468338330501
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.0983468338330501
+ B: 4
+ R: 0
+ P(4,0): 0.641
+ X = -0.5426531661669499
+580: IF X < 0 THEN 620
+ X: -0.5426531661669499
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 1
+ O=2: false
+870: LET O = O + 1
+ O: 1
+ O = 2
+880: GOTO 490
+490: REM NEW BATTER
+500: IF B < 9 THEN 520
+ B: 4
+ B<9: true
+520: LET B = B + 1
+ B: 4
+ B = 5
+530:
+540: REM DETERMINE OUTCOME
+550: LET X = RND(0)
+ X = 0.42110762500505217
+560: FOR R = 0 TO 3
+ R = 0
+ terminated:false
+570: LET X = X - P(B, R)
+ X: 0.42110762500505217
+ B: 5
+ R: 0
+ P(5,0): 0.673
+ X = -0.2518923749949479
+580: IF X < 0 THEN 620
+ X: -0.2518923749949479
+ X<0: true
+620: REM PRINT OUTCOME
+630: IF R > 0 THEN 660
+ R: 0
+ R>0: false
+640: PRINT "OUT   ";
+OUT   
+650: GOTO 770
+770: REM DO BOOK-KEEPING
+780: IF R = 0 THEN 860
+ R: 0
+ R=0: true
+860: IF O = 2 THEN 890
+ O: 2
+ O=2: true
+890: REM END OF AN INNING
+895: LET L7 = L7 + L(C)
+ L7: 5
+ C: 1
+ L(1): 1
+ L7 = 6
+900: PRINT
+
+910: PRINT S; "RUNS"
+ S: 0
+ 0    RUNS
+920: PRINT
+
+930: LET S1 = S1 + S
+ S1: 2
+ S: 0
+ S1 = 2
+940: LET I = I + 1
+ I: 8
+ I = 9
+945: IF I < 9 THEN 410
+ I: 9
+ I<9: false
+950:
+955: REM PRINT RESULTS
+960: PRINT
+
+965: PRINT "GAME TOTALS:"
+GAME TOTALS:
+970: PRINT
+
+975: PRINT S1; "RUNS SCORED"
+ S1: 2
+ 2    RUNS SCORED
+980: PRINT L7; "MEN LEFT ON BASE"
+ L7: 6
+ 6    MEN LEFT ON BASE
+985: PRINT H; "HITS"
+ H: 5
+ 5    HITS
+990: END
+STOP in line 990

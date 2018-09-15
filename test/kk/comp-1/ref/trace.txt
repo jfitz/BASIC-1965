@@ -1,0 +1,124 @@
+5: PRINT
+
+10: PRINT "A, R, Y, T";
+A, R, Y, T
+20: INPUT A, R, Y, T
+? 100,4,1,4
+ A = 100
+ R = 4
+ Y = 1
+ T = 4
+26: IF T = 999 THEN 999
+ T: 4
+ T=999: false
+30: IF A <= 0 THEN 100
+ A: 100
+ A<=0: false
+40: IF R <= 0 THEN 100
+ R: 4
+ R<=0: false
+50: IF Y <= 0 THEN 100
+ Y: 1
+ Y<=0: false
+60: IF T <= 0 THEN 100
+ T: 4
+ T<=0: false
+70: LET N = Y * T
+ Y: 1
+ T: 4
+ N = 4
+80: LET R1 = R / 100 / T
+ R: 4
+ T: 4
+ R1 = 0.01
+90: LET B = A * (1 + R1) ^ N
+ A: 100
+ R1: 0.01
+ N: 4
+ B = 104.060401
+95: PRINT "FINAL AMOUNT = $" B
+FINAL AMOUNT = $
+ B: 104.060401
+ 104.06
+96: GOTO 5
+5: PRINT
+
+10: PRINT "A, R, Y, T";
+A, R, Y, T
+20: INPUT A, R, Y, T
+? 1000,0,10,12
+ A = 1000
+ R = 0
+ Y = 10
+ T = 12
+26: IF T = 999 THEN 999
+ T: 12
+ T=999: false
+30: IF A <= 0 THEN 100
+ A: 1000
+ A<=0: false
+40: IF R <= 0 THEN 100
+ R: 0
+ R<=0: true
+100: REM ERROR ROUTINE
+110: PRINT "INCORRECT DATA. PLEASE RETYPE."
+INCORRECT DATA. PLEASE RETYPE.
+120: GOTO 5
+5: PRINT
+
+10: PRINT "A, R, Y, T";
+A, R, Y, T
+20: INPUT A, R, Y, T
+? 1000,6,10,12
+ A = 1000
+ R = 6
+ Y = 10
+ T = 12
+26: IF T = 999 THEN 999
+ T: 12
+ T=999: false
+30: IF A <= 0 THEN 100
+ A: 1000
+ A<=0: false
+40: IF R <= 0 THEN 100
+ R: 6
+ R<=0: false
+50: IF Y <= 0 THEN 100
+ Y: 10
+ Y<=0: false
+60: IF T <= 0 THEN 100
+ T: 12
+ T<=0: false
+70: LET N = Y * T
+ Y: 10
+ T: 12
+ N = 120
+80: LET R1 = R / 100 / T
+ R: 6
+ T: 12
+ R1 = 0.005
+90: LET B = A * (1 + R1) ^ N
+ A: 1000
+ R1: 0.005
+ N: 120
+ B = 1819.3967340322902
+95: PRINT "FINAL AMOUNT = $" B
+FINAL AMOUNT = $
+ B: 1819.3967340322902
+ 1819.4
+96: GOTO 5
+5: PRINT
+
+10: PRINT "A, R, Y, T";
+A, R, Y, T
+20: INPUT A, R, Y, T
+? 999,999,999,999
+ A = 999
+ R = 999
+ Y = 999
+ T = 999
+26: IF T = 999 THEN 999
+ T: 999
+ T=999: true
+999: END
+STOP in line 999

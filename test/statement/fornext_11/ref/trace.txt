@@ -1,0 +1,10 @@
+10: REM TEST FOR/NEXT WITH CHANGE TO INDEX
+20: FOR I = 1 TO 5
+ I = 1
+ terminated:false
+30: PRINT "BEFORE: "; I
+BEFORE: 
+ I: 1
+ 1
+40: LET I = 3
+Cannot change locked variable I in line 40

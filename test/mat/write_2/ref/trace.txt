@@ -1,0 +1,319 @@
+10: DIM A(6, 5)
+20: FOR I = 1 TO 6
+ I = 1
+ terminated:false
+30: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+40: LET A(I, J) = I + J
+ I: 1
+ J: 1
+ A(1,1) = 2
+50: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+40: LET A(I, J) = I + J
+ I: 1
+ J: 2
+ A(1,2) = 3
+50: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+40: LET A(I, J) = I + J
+ I: 1
+ J: 3
+ A(1,3) = 4
+50: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+40: LET A(I, J) = I + J
+ I: 1
+ J: 4
+ A(1,4) = 5
+50: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+40: LET A(I, J) = I + J
+ I: 1
+ J: 5
+ A(1,5) = 6
+50: NEXT J
+ J: 5
+ terminated:true
+60: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+30: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+40: LET A(I, J) = I + J
+ I: 2
+ J: 1
+ A(2,1) = 3
+50: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+40: LET A(I, J) = I + J
+ I: 2
+ J: 2
+ A(2,2) = 4
+50: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+40: LET A(I, J) = I + J
+ I: 2
+ J: 3
+ A(2,3) = 5
+50: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+40: LET A(I, J) = I + J
+ I: 2
+ J: 4
+ A(2,4) = 6
+50: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+40: LET A(I, J) = I + J
+ I: 2
+ J: 5
+ A(2,5) = 7
+50: NEXT J
+ J: 5
+ terminated:true
+60: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+30: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+40: LET A(I, J) = I + J
+ I: 3
+ J: 1
+ A(3,1) = 4
+50: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+40: LET A(I, J) = I + J
+ I: 3
+ J: 2
+ A(3,2) = 5
+50: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+40: LET A(I, J) = I + J
+ I: 3
+ J: 3
+ A(3,3) = 6
+50: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+40: LET A(I, J) = I + J
+ I: 3
+ J: 4
+ A(3,4) = 7
+50: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+40: LET A(I, J) = I + J
+ I: 3
+ J: 5
+ A(3,5) = 8
+50: NEXT J
+ J: 5
+ terminated:true
+60: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+30: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+40: LET A(I, J) = I + J
+ I: 4
+ J: 1
+ A(4,1) = 5
+50: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+40: LET A(I, J) = I + J
+ I: 4
+ J: 2
+ A(4,2) = 6
+50: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+40: LET A(I, J) = I + J
+ I: 4
+ J: 3
+ A(4,3) = 7
+50: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+40: LET A(I, J) = I + J
+ I: 4
+ J: 4
+ A(4,4) = 8
+50: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+40: LET A(I, J) = I + J
+ I: 4
+ J: 5
+ A(4,5) = 9
+50: NEXT J
+ J: 5
+ terminated:true
+60: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+30: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+40: LET A(I, J) = I + J
+ I: 5
+ J: 1
+ A(5,1) = 6
+50: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+40: LET A(I, J) = I + J
+ I: 5
+ J: 2
+ A(5,2) = 7
+50: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+40: LET A(I, J) = I + J
+ I: 5
+ J: 3
+ A(5,3) = 8
+50: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+40: LET A(I, J) = I + J
+ I: 5
+ J: 4
+ A(5,4) = 9
+50: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+40: LET A(I, J) = I + J
+ I: 5
+ J: 5
+ A(5,5) = 10
+50: NEXT J
+ J: 5
+ terminated:true
+60: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+30: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+40: LET A(I, J) = I + J
+ I: 6
+ J: 1
+ A(6,1) = 7
+50: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+40: LET A(I, J) = I + J
+ I: 6
+ J: 2
+ A(6,2) = 8
+50: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+40: LET A(I, J) = I + J
+ I: 6
+ J: 3
+ A(6,3) = 9
+50: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+40: LET A(I, J) = I + J
+ I: 6
+ J: 4
+ A(6,4) = 10
+50: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+40: LET A(I, J) = I + J
+ I: 6
+ J: 5
+ A(6,5) = 11
+50: NEXT J
+ J: 5
+ terminated:true
+60: NEXT I
+ I: 6
+ terminated:true
+70: MAT WRITE A;
+ A(1,1): 2
+ A(1,2): 3
+ A(1,3): 4
+ A(1,4): 5
+ A(1,5): 6
+ A(2,1): 3
+ A(2,2): 4
+ A(2,3): 5
+ A(2,4): 6
+ A(2,5): 7
+ A(3,1): 4
+ A(3,2): 5
+ A(3,3): 6
+ A(3,4): 7
+ A(3,5): 8
+ A(4,1): 5
+ A(4,2): 6
+ A(4,3): 7
+ A(4,4): 8
+ A(4,5): 9
+ A(5,1): 6
+ A(5,2): 7
+ A(5,3): 8
+ A(5,4): 9
+ A(5,5): 10
+ A(6,1): 7
+ A(6,2): 8
+ A(6,3): 9
+ A(6,4): 10
+ A(6,5): 11
+ 2; 3; 4; 5; 6;
+ 3; 4; 5; 6; 7;
+ 4; 5; 6; 7; 8;
+ 5; 6; 7; 8; 9;
+ 6; 7; 8; 9; 10;
+ 7; 8; 9; 10; 11;
+
+99: END
+STOP in line 99

@@ -1,0 +1,4871 @@
+10: REM  MACHINE ENCODING AND DECODING PROGRAM.
+20: DIM L(100)
+30: FOR I = 1 TO 100
+ I = 1
+ terminated:false
+40: READ L(I)
+ L(1) = 7
+50: IF L(I) < 0 THEN 70
+ I: 1
+ L(1): 7
+ L(I)<0: false
+60: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: READ L(I)
+ L(2) = 18
+50: IF L(I) < 0 THEN 70
+ I: 2
+ L(2): 18
+ L(I)<0: false
+60: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+40: READ L(I)
+ L(3) = 5
+50: IF L(I) < 0 THEN 70
+ I: 3
+ L(3): 5
+ L(I)<0: false
+60: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+40: READ L(I)
+ L(4) = 5
+50: IF L(I) < 0 THEN 70
+ I: 4
+ L(4): 5
+ L(I)<0: false
+60: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+40: READ L(I)
+ L(5) = 20
+50: IF L(I) < 0 THEN 70
+ I: 5
+ L(5): 20
+ L(I)<0: false
+60: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+40: READ L(I)
+ L(6) = 9
+50: IF L(I) < 0 THEN 70
+ I: 6
+ L(6): 9
+ L(I)<0: false
+60: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+40: READ L(I)
+ L(7) = 14
+50: IF L(I) < 0 THEN 70
+ I: 7
+ L(7): 14
+ L(I)<0: false
+60: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+40: READ L(I)
+ L(8) = 7
+50: IF L(I) < 0 THEN 70
+ I: 8
+ L(8): 7
+ L(I)<0: false
+60: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+40: READ L(I)
+ L(9) = 19
+50: IF L(I) < 0 THEN 70
+ I: 9
+ L(9): 19
+ L(I)<0: false
+60: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+40: READ L(I)
+ L(10) = 0
+50: IF L(I) < 0 THEN 70
+ I: 10
+ L(10): 0
+ L(I)<0: false
+60: NEXT I
+ I: 10
+ terminated:false
+ I = 11
+40: READ L(I)
+ L(11) = 6
+50: IF L(I) < 0 THEN 70
+ I: 11
+ L(11): 6
+ L(I)<0: false
+60: NEXT I
+ I: 11
+ terminated:false
+ I = 12
+40: READ L(I)
+ L(12) = 18
+50: IF L(I) < 0 THEN 70
+ I: 12
+ L(12): 18
+ L(I)<0: false
+60: NEXT I
+ I: 12
+ terminated:false
+ I = 13
+40: READ L(I)
+ L(13) = 15
+50: IF L(I) < 0 THEN 70
+ I: 13
+ L(13): 15
+ L(I)<0: false
+60: NEXT I
+ I: 13
+ terminated:false
+ I = 14
+40: READ L(I)
+ L(14) = 13
+50: IF L(I) < 0 THEN 70
+ I: 14
+ L(14): 13
+ L(I)<0: false
+60: NEXT I
+ I: 14
+ terminated:false
+ I = 15
+40: READ L(I)
+ L(15) = 0
+50: IF L(I) < 0 THEN 70
+ I: 15
+ L(15): 0
+ L(I)<0: false
+60: NEXT I
+ I: 15
+ terminated:false
+ I = 16
+40: READ L(I)
+ L(16) = 20
+50: IF L(I) < 0 THEN 70
+ I: 16
+ L(16): 20
+ L(I)<0: false
+60: NEXT I
+ I: 16
+ terminated:false
+ I = 17
+40: READ L(I)
+ L(17) = 8
+50: IF L(I) < 0 THEN 70
+ I: 17
+ L(17): 8
+ L(I)<0: false
+60: NEXT I
+ I: 17
+ terminated:false
+ I = 18
+40: READ L(I)
+ L(18) = 5
+50: IF L(I) < 0 THEN 70
+ I: 18
+ L(18): 5
+ L(I)<0: false
+60: NEXT I
+ I: 18
+ terminated:false
+ I = 19
+40: READ L(I)
+ L(19) = 0
+50: IF L(I) < 0 THEN 70
+ I: 19
+ L(19): 0
+ L(I)<0: false
+60: NEXT I
+ I: 19
+ terminated:false
+ I = 20
+40: READ L(I)
+ L(20) = 4
+50: IF L(I) < 0 THEN 70
+ I: 20
+ L(20): 4
+ L(I)<0: false
+60: NEXT I
+ I: 20
+ terminated:false
+ I = 21
+40: READ L(I)
+ L(21) = 1
+50: IF L(I) < 0 THEN 70
+ I: 21
+ L(21): 1
+ L(I)<0: false
+60: NEXT I
+ I: 21
+ terminated:false
+ I = 22
+40: READ L(I)
+ L(22) = 18
+50: IF L(I) < 0 THEN 70
+ I: 22
+ L(22): 18
+ L(I)<0: false
+60: NEXT I
+ I: 22
+ terminated:false
+ I = 23
+40: READ L(I)
+ L(23) = 20
+50: IF L(I) < 0 THEN 70
+ I: 23
+ L(23): 20
+ L(I)<0: false
+60: NEXT I
+ I: 23
+ terminated:false
+ I = 24
+40: READ L(I)
+ L(24) = 13
+50: IF L(I) < 0 THEN 70
+ I: 24
+ L(24): 13
+ L(I)<0: false
+60: NEXT I
+ I: 24
+ terminated:false
+ I = 25
+40: READ L(I)
+ L(25) = 15
+50: IF L(I) < 0 THEN 70
+ I: 25
+ L(25): 15
+ L(I)<0: false
+60: NEXT I
+ I: 25
+ terminated:false
+ I = 26
+40: READ L(I)
+ L(26) = 21
+50: IF L(I) < 0 THEN 70
+ I: 26
+ L(26): 21
+ L(I)<0: false
+60: NEXT I
+ I: 26
+ terminated:false
+ I = 27
+40: READ L(I)
+ L(27) = 20
+50: IF L(I) < 0 THEN 70
+ I: 27
+ L(27): 20
+ L(I)<0: false
+60: NEXT I
+ I: 27
+ terminated:false
+ I = 28
+40: READ L(I)
+ L(28) = 8
+50: IF L(I) < 0 THEN 70
+ I: 28
+ L(28): 8
+ L(I)<0: false
+60: NEXT I
+ I: 28
+ terminated:false
+ I = 29
+40: READ L(I)
+ L(29) = 0
+50: IF L(I) < 0 THEN 70
+ I: 29
+ L(29): 0
+ L(I)<0: false
+60: NEXT I
+ I: 29
+ terminated:false
+ I = 30
+40: READ L(I)
+ L(30) = 20
+50: IF L(I) < 0 THEN 70
+ I: 30
+ L(30): 20
+ L(I)<0: false
+60: NEXT I
+ I: 30
+ terminated:false
+ I = 31
+40: READ L(I)
+ L(31) = 9
+50: IF L(I) < 0 THEN 70
+ I: 31
+ L(31): 9
+ L(I)<0: false
+60: NEXT I
+ I: 31
+ terminated:false
+ I = 32
+40: READ L(I)
+ L(32) = 13
+50: IF L(I) < 0 THEN 70
+ I: 32
+ L(32): 13
+ L(I)<0: false
+60: NEXT I
+ I: 32
+ terminated:false
+ I = 33
+40: READ L(I)
+ L(33) = 5
+50: IF L(I) < 0 THEN 70
+ I: 33
+ L(33): 5
+ L(I)<0: false
+60: NEXT I
+ I: 33
+ terminated:false
+ I = 34
+40: READ L(I)
+ L(34) = 19
+50: IF L(I) < 0 THEN 70
+ I: 34
+ L(34): 19
+ L(I)<0: false
+60: NEXT I
+ I: 34
+ terminated:false
+ I = 35
+40: READ L(I)
+ L(35) = 8
+50: IF L(I) < 0 THEN 70
+ I: 35
+ L(35): 8
+ L(I)<0: false
+60: NEXT I
+ I: 35
+ terminated:false
+ I = 36
+40: READ L(I)
+ L(36) = 1
+50: IF L(I) < 0 THEN 70
+ I: 36
+ L(36): 1
+ L(I)<0: false
+60: NEXT I
+ I: 36
+ terminated:false
+ I = 37
+40: READ L(I)
+ L(37) = 18
+50: IF L(I) < 0 THEN 70
+ I: 37
+ L(37): 18
+ L(I)<0: false
+60: NEXT I
+ I: 37
+ terminated:false
+ I = 38
+40: READ L(I)
+ L(38) = 9
+50: IF L(I) < 0 THEN 70
+ I: 38
+ L(38): 9
+ L(I)<0: false
+60: NEXT I
+ I: 38
+ terminated:false
+ I = 39
+40: READ L(I)
+ L(39) = 14
+50: IF L(I) < 0 THEN 70
+ I: 39
+ L(39): 14
+ L(I)<0: false
+60: NEXT I
+ I: 39
+ terminated:false
+ I = 40
+40: READ L(I)
+ L(40) = 7
+50: IF L(I) < 0 THEN 70
+ I: 40
+ L(40): 7
+ L(I)<0: false
+60: NEXT I
+ I: 40
+ terminated:false
+ I = 41
+40: READ L(I)
+ L(41) = 0
+50: IF L(I) < 0 THEN 70
+ I: 41
+ L(41): 0
+ L(I)<0: false
+60: NEXT I
+ I: 41
+ terminated:false
+ I = 42
+40: READ L(I)
+ L(42) = 19
+50: IF L(I) < 0 THEN 70
+ I: 42
+ L(42): 19
+ L(I)<0: false
+60: NEXT I
+ I: 42
+ terminated:false
+ I = 43
+40: READ L(I)
+ L(43) = 25
+50: IF L(I) < 0 THEN 70
+ I: 43
+ L(43): 25
+ L(I)<0: false
+60: NEXT I
+ I: 43
+ terminated:false
+ I = 44
+40: READ L(I)
+ L(44) = 19
+50: IF L(I) < 0 THEN 70
+ I: 44
+ L(44): 19
+ L(I)<0: false
+60: NEXT I
+ I: 44
+ terminated:false
+ I = 45
+40: READ L(I)
+ L(45) = 20
+50: IF L(I) < 0 THEN 70
+ I: 45
+ L(45): 20
+ L(I)<0: false
+60: NEXT I
+ I: 45
+ terminated:false
+ I = 46
+40: READ L(I)
+ L(46) = 5
+50: IF L(I) < 0 THEN 70
+ I: 46
+ L(46): 5
+ L(I)<0: false
+60: NEXT I
+ I: 46
+ terminated:false
+ I = 47
+40: READ L(I)
+ L(47) = 13
+50: IF L(I) < 0 THEN 70
+ I: 47
+ L(47): 13
+ L(I)<0: false
+60: NEXT I
+ I: 47
+ terminated:false
+ I = 48
+40: READ L(I)
+ L(48) = -1
+50: IF L(I) < 0 THEN 70
+ I: 48
+ L(48): -1
+ L(I)<0: true
+70: LET I9 = I - 1
+ I: 48
+ I9 = 47
+100: PRINT "PLEASE TYPE KEY";
+PLEASE TYPE KEY
+110: INPUT K(1), K(2), K(3), K(4), K(5)
+? 13,1,7,9,3
+ K(1) = 13
+ K(2) = 1
+ K(3) = 7
+ K(4) = 9
+ K(5) = 3
+120: PRINT
+
+130: PRINT "TYPE '0' FOR ENCODING, '1' FOR DECODING";
+TYPE '0' FOR ENCODING, '1' FOR DECODING
+140: INPUT F
+? 0
+ F = 0
+145: PRINT
+
+150: IF F = 0 THEN 200
+ F: 0
+ F=0: true
+200: PRINT "ENCODED MESSAGE:"
+ENCODED MESSAGE:
+210: PRINT
+
+215: LET J = 1
+ J = 1
+220: FOR I = 1 TO I9
+ I9: 47
+ I = 1
+ I9 = 47
+ terminated:false
+230: LET X = L(I) + K(J)
+ I: 1
+ L(1): 7
+ J: 1
+ K(1): 13
+ X = 20
+240: IF X <= 26 THEN 260
+ X: 20
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 20
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 20
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 20
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 20
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 20
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 20
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 20
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 20
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 20
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 20
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 20
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 20
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 20
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 20
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 20
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 20
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 20
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 20
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 20
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 20
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 20
+ X>20: false
+1620: PRINT "T";
+T
+1630: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+230: LET X = L(I) + K(J)
+ I: 2
+ L(2): 18
+ J: 2
+ K(2): 1
+ X = 19
+240: IF X <= 26 THEN 260
+ X: 19
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 19
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 19
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 19
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 19
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 19
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 19
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 19
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 19
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 19
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 19
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 19
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 19
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 19
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 19
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 19
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 19
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 19
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 19
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 19
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 19
+ X>19: false
+1590: PRINT "S";
+S
+1600: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+230: LET X = L(I) + K(J)
+ I: 3
+ L(3): 5
+ J: 3
+ K(3): 7
+ X = 12
+240: IF X <= 26 THEN 260
+ X: 12
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 12
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 12
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 12
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 12
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 12
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 12
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 12
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 12
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 12
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 12
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 12
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 12
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 12
+ X>12: false
+1380: PRINT "L";
+L
+1390: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+230: LET X = L(I) + K(J)
+ I: 4
+ L(4): 5
+ J: 4
+ K(4): 9
+ X = 14
+240: IF X <= 26 THEN 260
+ X: 14
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 14
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 14
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 14
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 14
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 14
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 14
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 14
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 14
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 14
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 14
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 14
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 14
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 14
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 14
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 14
+ X>14: false
+1440: PRINT "N";
+N
+1450: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+230: LET X = L(I) + K(J)
+ I: 5
+ L(5): 20
+ J: 5
+ K(5): 3
+ X = 23
+240: IF X <= 26 THEN 260
+ X: 23
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 23
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 23
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 23
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 23
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 23
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 23
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 23
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 23
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 23
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 23
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 23
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 23
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 23
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 23
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 23
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 23
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 23
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 23
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 23
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 23
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 23
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 23
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 23
+ X>22: true
+1700: IF X > 23 THEN 1730
+ X: 23
+ X>23: false
+1710: PRINT "W";
+W
+1720: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+230: LET X = L(I) + K(J)
+ I: 6
+ L(6): 9
+ J: 1
+ K(1): 13
+ X = 22
+240: IF X <= 26 THEN 260
+ X: 22
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 22
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 22
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 22
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 22
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 22
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 22
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 22
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 22
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 22
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 22
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 22
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 22
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 22
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 22
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 22
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 22
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 22
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 22
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 22
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 22
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 22
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 22
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 22
+ X>22: false
+1680: PRINT "V";
+V
+1690: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+230: LET X = L(I) + K(J)
+ I: 7
+ L(7): 14
+ J: 2
+ K(2): 1
+ X = 15
+240: IF X <= 26 THEN 260
+ X: 15
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 15
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 15
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 15
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 15
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 15
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 15
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 15
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 15
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 15
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 15
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 15
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 15
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 15
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 15
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 15
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 15
+ X>15: false
+1470: PRINT "O";
+O
+1480: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+230: LET X = L(I) + K(J)
+ I: 8
+ L(8): 7
+ J: 3
+ K(3): 7
+ X = 14
+240: IF X <= 26 THEN 260
+ X: 14
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 14
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 14
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 14
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 14
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 14
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 14
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 14
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 14
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 14
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 14
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 14
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 14
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 14
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 14
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 14
+ X>14: false
+1440: PRINT "N";
+N
+1450: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+230: LET X = L(I) + K(J)
+ I: 9
+ L(9): 19
+ J: 4
+ K(4): 9
+ X = 28
+240: IF X <= 26 THEN 260
+ X: 28
+ X<=26: false
+250: LET X = X - 27
+ X: 28
+ X = 1
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 1
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 1
+ X>1: false
+1050: PRINT "A";
+A
+1060: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+230: LET X = L(I) + K(J)
+ I: 10
+ L(10): 0
+ J: 5
+ K(5): 3
+ X = 3
+240: IF X <= 26 THEN 260
+ X: 3
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 3
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 3
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 3
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 3
+ X>3: false
+1110: PRINT "C";
+C
+1120: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 10
+ terminated:false
+ I = 11
+230: LET X = L(I) + K(J)
+ I: 11
+ L(11): 6
+ J: 1
+ K(1): 13
+ X = 19
+240: IF X <= 26 THEN 260
+ X: 19
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 19
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 19
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 19
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 19
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 19
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 19
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 19
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 19
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 19
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 19
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 19
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 19
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 19
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 19
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 19
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 19
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 19
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 19
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 19
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 19
+ X>19: false
+1590: PRINT "S";
+S
+1600: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 11
+ terminated:false
+ I = 12
+230: LET X = L(I) + K(J)
+ I: 12
+ L(12): 18
+ J: 2
+ K(2): 1
+ X = 19
+240: IF X <= 26 THEN 260
+ X: 19
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 19
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 19
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 19
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 19
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 19
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 19
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 19
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 19
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 19
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 19
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 19
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 19
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 19
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 19
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 19
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 19
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 19
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 19
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 19
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 19
+ X>19: false
+1590: PRINT "S";
+S
+1600: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 12
+ terminated:false
+ I = 13
+230: LET X = L(I) + K(J)
+ I: 13
+ L(13): 15
+ J: 3
+ K(3): 7
+ X = 22
+240: IF X <= 26 THEN 260
+ X: 22
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 22
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 22
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 22
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 22
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 22
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 22
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 22
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 22
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 22
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 22
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 22
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 22
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 22
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 22
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 22
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 22
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 22
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 22
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 22
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 22
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 22
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 22
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 22
+ X>22: false
+1680: PRINT "V";
+V
+1690: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 13
+ terminated:false
+ I = 14
+230: LET X = L(I) + K(J)
+ I: 14
+ L(14): 13
+ J: 4
+ K(4): 9
+ X = 22
+240: IF X <= 26 THEN 260
+ X: 22
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 22
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 22
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 22
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 22
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 22
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 22
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 22
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 22
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 22
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 22
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 22
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 22
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 22
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 22
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 22
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 22
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 22
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 22
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 22
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 22
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 22
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 22
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 22
+ X>22: false
+1680: PRINT "V";
+V
+1690: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 14
+ terminated:false
+ I = 15
+230: LET X = L(I) + K(J)
+ I: 15
+ L(15): 0
+ J: 5
+ K(5): 3
+ X = 3
+240: IF X <= 26 THEN 260
+ X: 3
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 3
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 3
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 3
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 3
+ X>3: false
+1110: PRINT "C";
+C
+1120: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 15
+ terminated:false
+ I = 16
+230: LET X = L(I) + K(J)
+ I: 16
+ L(16): 20
+ J: 1
+ K(1): 13
+ X = 33
+240: IF X <= 26 THEN 260
+ X: 33
+ X<=26: false
+250: LET X = X - 27
+ X: 33
+ X = 6
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 6
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 6
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 6
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 6
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 6
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 6
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 6
+ X>6: false
+1200: PRINT "F";
+F
+1210: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 16
+ terminated:false
+ I = 17
+230: LET X = L(I) + K(J)
+ I: 17
+ L(17): 8
+ J: 2
+ K(2): 1
+ X = 9
+240: IF X <= 26 THEN 260
+ X: 9
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 9
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 9
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 9
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 9
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 9
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 9
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 9
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 9
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 9
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 9
+ X>9: false
+1290: PRINT "I";
+I
+1300: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 17
+ terminated:false
+ I = 18
+230: LET X = L(I) + K(J)
+ I: 18
+ L(18): 5
+ J: 3
+ K(3): 7
+ X = 12
+240: IF X <= 26 THEN 260
+ X: 12
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 12
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 12
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 12
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 12
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 12
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 12
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 12
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 12
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 12
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 12
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 12
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 12
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 12
+ X>12: false
+1380: PRINT "L";
+L
+1390: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 18
+ terminated:false
+ I = 19
+230: LET X = L(I) + K(J)
+ I: 19
+ L(19): 0
+ J: 4
+ K(4): 9
+ X = 9
+240: IF X <= 26 THEN 260
+ X: 9
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 9
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 9
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 9
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 9
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 9
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 9
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 9
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 9
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 9
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 9
+ X>9: false
+1290: PRINT "I";
+I
+1300: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 19
+ terminated:false
+ I = 20
+230: LET X = L(I) + K(J)
+ I: 20
+ L(20): 4
+ J: 5
+ K(5): 3
+ X = 7
+240: IF X <= 26 THEN 260
+ X: 7
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 7
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 7
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 7
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 7
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 7
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 7
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 7
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 7
+ X>7: false
+1230: PRINT "G";
+G
+1240: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 20
+ terminated:false
+ I = 21
+230: LET X = L(I) + K(J)
+ I: 21
+ L(21): 1
+ J: 1
+ K(1): 13
+ X = 14
+240: IF X <= 26 THEN 260
+ X: 14
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 14
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 14
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 14
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 14
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 14
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 14
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 14
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 14
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 14
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 14
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 14
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 14
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 14
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 14
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 14
+ X>14: false
+1440: PRINT "N";
+N
+1450: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 21
+ terminated:false
+ I = 22
+230: LET X = L(I) + K(J)
+ I: 22
+ L(22): 18
+ J: 2
+ K(2): 1
+ X = 19
+240: IF X <= 26 THEN 260
+ X: 19
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 19
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 19
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 19
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 19
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 19
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 19
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 19
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 19
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 19
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 19
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 19
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 19
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 19
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 19
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 19
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 19
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 19
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 19
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 19
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 19
+ X>19: false
+1590: PRINT "S";
+S
+1600: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 22
+ terminated:false
+ I = 23
+230: LET X = L(I) + K(J)
+ I: 23
+ L(23): 20
+ J: 3
+ K(3): 7
+ X = 27
+240: IF X <= 26 THEN 260
+ X: 27
+ X<=26: false
+250: LET X = X - 27
+ X: 27
+ X = 0
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 0
+ X>0: false
+1020: PRINT " ";
+ 
+1030: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 23
+ terminated:false
+ I = 24
+230: LET X = L(I) + K(J)
+ I: 24
+ L(24): 13
+ J: 4
+ K(4): 9
+ X = 22
+240: IF X <= 26 THEN 260
+ X: 22
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 22
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 22
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 22
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 22
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 22
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 22
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 22
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 22
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 22
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 22
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 22
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 22
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 22
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 22
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 22
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 22
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 22
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 22
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 22
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 22
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 22
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 22
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 22
+ X>22: false
+1680: PRINT "V";
+V
+1690: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 24
+ terminated:false
+ I = 25
+230: LET X = L(I) + K(J)
+ I: 25
+ L(25): 15
+ J: 5
+ K(5): 3
+ X = 18
+240: IF X <= 26 THEN 260
+ X: 18
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 18
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 18
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 18
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 18
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 18
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 18
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 18
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 18
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 18
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 18
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 18
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 18
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 18
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 18
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 18
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 18
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 18
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 18
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 18
+ X>18: false
+1560: PRINT "R";
+R
+1570: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 25
+ terminated:false
+ I = 26
+230: LET X = L(I) + K(J)
+ I: 26
+ L(26): 21
+ J: 1
+ K(1): 13
+ X = 34
+240: IF X <= 26 THEN 260
+ X: 34
+ X<=26: false
+250: LET X = X - 27
+ X: 34
+ X = 7
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 7
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 7
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 7
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 7
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 7
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 7
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 7
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 7
+ X>7: false
+1230: PRINT "G";
+G
+1240: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 26
+ terminated:false
+ I = 27
+230: LET X = L(I) + K(J)
+ I: 27
+ L(27): 20
+ J: 2
+ K(2): 1
+ X = 21
+240: IF X <= 26 THEN 260
+ X: 21
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 21
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 21
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 21
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 21
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 21
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 21
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 21
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 21
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 21
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 21
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 21
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 21
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 21
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 21
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 21
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 21
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 21
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 21
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 21
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 21
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 21
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 21
+ X>21: false
+1650: PRINT "U";
+U
+1660: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 27
+ terminated:false
+ I = 28
+230: LET X = L(I) + K(J)
+ I: 28
+ L(28): 8
+ J: 3
+ K(3): 7
+ X = 15
+240: IF X <= 26 THEN 260
+ X: 15
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 15
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 15
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 15
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 15
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 15
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 15
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 15
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 15
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 15
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 15
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 15
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 15
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 15
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 15
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 15
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 15
+ X>15: false
+1470: PRINT "O";
+O
+1480: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 28
+ terminated:false
+ I = 29
+230: LET X = L(I) + K(J)
+ I: 29
+ L(29): 0
+ J: 4
+ K(4): 9
+ X = 9
+240: IF X <= 26 THEN 260
+ X: 9
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 9
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 9
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 9
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 9
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 9
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 9
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 9
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 9
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 9
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 9
+ X>9: false
+1290: PRINT "I";
+I
+1300: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 29
+ terminated:false
+ I = 30
+230: LET X = L(I) + K(J)
+ I: 30
+ L(30): 20
+ J: 5
+ K(5): 3
+ X = 23
+240: IF X <= 26 THEN 260
+ X: 23
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 23
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 23
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 23
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 23
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 23
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 23
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 23
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 23
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 23
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 23
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 23
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 23
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 23
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 23
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 23
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 23
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 23
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 23
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 23
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 23
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 23
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 23
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 23
+ X>22: true
+1700: IF X > 23 THEN 1730
+ X: 23
+ X>23: false
+1710: PRINT "W";
+W
+1720: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 30
+ terminated:false
+ I = 31
+230: LET X = L(I) + K(J)
+ I: 31
+ L(31): 9
+ J: 1
+ K(1): 13
+ X = 22
+240: IF X <= 26 THEN 260
+ X: 22
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 22
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 22
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 22
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 22
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 22
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 22
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 22
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 22
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 22
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 22
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 22
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 22
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 22
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 22
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 22
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 22
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 22
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 22
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 22
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 22
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 22
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 22
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 22
+ X>22: false
+1680: PRINT "V";
+V
+1690: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 31
+ terminated:false
+ I = 32
+230: LET X = L(I) + K(J)
+ I: 32
+ L(32): 13
+ J: 2
+ K(2): 1
+ X = 14
+240: IF X <= 26 THEN 260
+ X: 14
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 14
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 14
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 14
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 14
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 14
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 14
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 14
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 14
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 14
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 14
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 14
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 14
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 14
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 14
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 14
+ X>14: false
+1440: PRINT "N";
+N
+1450: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 32
+ terminated:false
+ I = 33
+230: LET X = L(I) + K(J)
+ I: 33
+ L(33): 5
+ J: 3
+ K(3): 7
+ X = 12
+240: IF X <= 26 THEN 260
+ X: 12
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 12
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 12
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 12
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 12
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 12
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 12
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 12
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 12
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 12
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 12
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 12
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 12
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 12
+ X>12: false
+1380: PRINT "L";
+L
+1390: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 33
+ terminated:false
+ I = 34
+230: LET X = L(I) + K(J)
+ I: 34
+ L(34): 19
+ J: 4
+ K(4): 9
+ X = 28
+240: IF X <= 26 THEN 260
+ X: 28
+ X<=26: false
+250: LET X = X - 27
+ X: 28
+ X = 1
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 1
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 1
+ X>1: false
+1050: PRINT "A";
+A
+1060: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 34
+ terminated:false
+ I = 35
+230: LET X = L(I) + K(J)
+ I: 35
+ L(35): 8
+ J: 5
+ K(5): 3
+ X = 11
+240: IF X <= 26 THEN 260
+ X: 11
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 11
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 11
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 11
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 11
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 11
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 11
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 11
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 11
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 11
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 11
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 11
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 11
+ X>11: false
+1350: PRINT "K";
+K
+1360: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 35
+ terminated:false
+ I = 36
+230: LET X = L(I) + K(J)
+ I: 36
+ L(36): 1
+ J: 1
+ K(1): 13
+ X = 14
+240: IF X <= 26 THEN 260
+ X: 14
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 14
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 14
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 14
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 14
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 14
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 14
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 14
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 14
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 14
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 14
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 14
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 14
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 14
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 14
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 14
+ X>14: false
+1440: PRINT "N";
+N
+1450: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 36
+ terminated:false
+ I = 37
+230: LET X = L(I) + K(J)
+ I: 37
+ L(37): 18
+ J: 2
+ K(2): 1
+ X = 19
+240: IF X <= 26 THEN 260
+ X: 19
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 19
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 19
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 19
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 19
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 19
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 19
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 19
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 19
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 19
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 19
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 19
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 19
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 19
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 19
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 19
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 19
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 19
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 19
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 19
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 19
+ X>19: false
+1590: PRINT "S";
+S
+1600: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 37
+ terminated:false
+ I = 38
+230: LET X = L(I) + K(J)
+ I: 38
+ L(38): 9
+ J: 3
+ K(3): 7
+ X = 16
+240: IF X <= 26 THEN 260
+ X: 16
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 16
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 16
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 16
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 16
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 16
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 16
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 16
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 16
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 16
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 16
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 16
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 16
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 16
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 16
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 16
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 16
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 16
+ X>16: false
+1500: PRINT "P";
+P
+1510: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 38
+ terminated:false
+ I = 39
+230: LET X = L(I) + K(J)
+ I: 39
+ L(39): 14
+ J: 4
+ K(4): 9
+ X = 23
+240: IF X <= 26 THEN 260
+ X: 23
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 23
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 23
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 23
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 23
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 23
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 23
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 23
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 23
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 23
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 23
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 23
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 23
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 23
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 23
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 23
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 23
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 23
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 23
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 23
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 23
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 23
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 23
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 23
+ X>22: true
+1700: IF X > 23 THEN 1730
+ X: 23
+ X>23: false
+1710: PRINT "W";
+W
+1720: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 39
+ terminated:false
+ I = 40
+230: LET X = L(I) + K(J)
+ I: 40
+ L(40): 7
+ J: 5
+ K(5): 3
+ X = 10
+240: IF X <= 26 THEN 260
+ X: 10
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 10
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 10
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 10
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 10
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 10
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 10
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 10
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 10
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 10
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 10
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 10
+ X>10: false
+1320: PRINT "J";
+J
+1330: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 40
+ terminated:false
+ I = 41
+230: LET X = L(I) + K(J)
+ I: 41
+ L(41): 0
+ J: 1
+ K(1): 13
+ X = 13
+240: IF X <= 26 THEN 260
+ X: 13
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 13
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 13
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 13
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 13
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 13
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 13
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 13
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 13
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 13
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 13
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 13
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 13
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 13
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 13
+ X>13: false
+1410: PRINT "M";
+M
+1420: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 41
+ terminated:false
+ I = 42
+230: LET X = L(I) + K(J)
+ I: 42
+ L(42): 19
+ J: 2
+ K(2): 1
+ X = 20
+240: IF X <= 26 THEN 260
+ X: 20
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 20
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 20
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 20
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 20
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 20
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 20
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 20
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 20
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 20
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 20
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 20
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 20
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 20
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 20
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 20
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 20
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 20
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 20
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 20
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 20
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 20
+ X>20: false
+1620: PRINT "T";
+T
+1630: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 42
+ terminated:false
+ I = 43
+230: LET X = L(I) + K(J)
+ I: 43
+ L(43): 25
+ J: 3
+ K(3): 7
+ X = 32
+240: IF X <= 26 THEN 260
+ X: 32
+ X<=26: false
+250: LET X = X - 27
+ X: 32
+ X = 5
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 5
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 5
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 5
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 5
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 5
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 5
+ X>5: false
+1170: PRINT "E";
+E
+1180: RETURN
+270: LET J = J + 1
+ J: 3
+ J = 4
+280: IF J <= 5 THEN 300
+ J: 4
+ J<=5: true
+300: NEXT I
+ I: 43
+ terminated:false
+ I = 44
+230: LET X = L(I) + K(J)
+ I: 44
+ L(44): 19
+ J: 4
+ K(4): 9
+ X = 28
+240: IF X <= 26 THEN 260
+ X: 28
+ X<=26: false
+250: LET X = X - 27
+ X: 28
+ X = 1
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 1
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 1
+ X>1: false
+1050: PRINT "A";
+A
+1060: RETURN
+270: LET J = J + 1
+ J: 4
+ J = 5
+280: IF J <= 5 THEN 300
+ J: 5
+ J<=5: true
+300: NEXT I
+ I: 44
+ terminated:false
+ I = 45
+230: LET X = L(I) + K(J)
+ I: 45
+ L(45): 20
+ J: 5
+ K(5): 3
+ X = 23
+240: IF X <= 26 THEN 260
+ X: 23
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 23
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 23
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 23
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 23
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 23
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 23
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 23
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 23
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 23
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 23
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 23
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 23
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 23
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 23
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 23
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 23
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 23
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 23
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 23
+ X>18: true
+1580: IF X > 19 THEN 1610
+ X: 23
+ X>19: true
+1610: IF X > 20 THEN 1640
+ X: 23
+ X>20: true
+1640: IF X > 21 THEN 1670
+ X: 23
+ X>21: true
+1670: IF X > 22 THEN 1700
+ X: 23
+ X>22: true
+1700: IF X > 23 THEN 1730
+ X: 23
+ X>23: false
+1710: PRINT "W";
+W
+1720: RETURN
+270: LET J = J + 1
+ J: 5
+ J = 6
+280: IF J <= 5 THEN 300
+ J: 6
+ J<=5: false
+290: LET J = 1
+ J = 1
+300: NEXT I
+ I: 45
+ terminated:false
+ I = 46
+230: LET X = L(I) + K(J)
+ I: 46
+ L(46): 5
+ J: 1
+ K(1): 13
+ X = 18
+240: IF X <= 26 THEN 260
+ X: 18
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 18
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 18
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 18
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 18
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 18
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 18
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 18
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 18
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 18
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 18
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 18
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 18
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 18
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 18
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 18
+ X>14: true
+1460: IF X > 15 THEN 1490
+ X: 18
+ X>15: true
+1490: IF X > 16 THEN 1520
+ X: 18
+ X>16: true
+1520: IF X > 17 THEN 1550
+ X: 18
+ X>17: true
+1550: IF X > 18 THEN 1580
+ X: 18
+ X>18: false
+1560: PRINT "R";
+R
+1570: RETURN
+270: LET J = J + 1
+ J: 1
+ J = 2
+280: IF J <= 5 THEN 300
+ J: 2
+ J<=5: true
+300: NEXT I
+ I: 46
+ terminated:false
+ I = 47
+230: LET X = L(I) + K(J)
+ I: 47
+ L(47): 13
+ J: 2
+ K(2): 1
+ X = 14
+240: IF X <= 26 THEN 260
+ X: 14
+ X<=26: true
+260: GOSUB 1000
+1000: REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+1010: IF X > 0 THEN 1040
+ X: 14
+ X>0: true
+1040: IF X > 1 THEN 1070
+ X: 14
+ X>1: true
+1070: IF X > 2 THEN 1100
+ X: 14
+ X>2: true
+1100: IF X > 3 THEN 1130
+ X: 14
+ X>3: true
+1130: IF X > 4 THEN 1160
+ X: 14
+ X>4: true
+1160: IF X > 5 THEN 1190
+ X: 14
+ X>5: true
+1190: IF X > 6 THEN 1220
+ X: 14
+ X>6: true
+1220: IF X > 7 THEN 1250
+ X: 14
+ X>7: true
+1250: IF X > 8 THEN 1280
+ X: 14
+ X>8: true
+1280: IF X > 9 THEN 1310
+ X: 14
+ X>9: true
+1310: IF X > 10 THEN 1340
+ X: 14
+ X>10: true
+1340: IF X > 11 THEN 1370
+ X: 14
+ X>11: true
+1370: IF X > 12 THEN 1400
+ X: 14
+ X>12: true
+1400: IF X > 13 THEN 1430
+ X: 14
+ X>13: true
+1430: IF X > 14 THEN 1460
+ X: 14
+ X>14: false
+1440: PRINT "N";
+N
+1450: RETURN
+270: LET J = J + 1
+ J: 2
+ J = 3
+280: IF J <= 5 THEN 300
+ J: 3
+ J<=5: true
+300: NEXT I
+ I: 47
+ terminated:true
+310: PRINT
+
+315: LET J = 1
+ J = 1
+320: FOR I = 1 TO I9
+ I9: 47
+ I = 1
+ I9 = 47
+ terminated:false
+330: LET X = L(I) + K(J)
+ I: 1
+ L(1): 7
+ J: 1
+ K(1): 13
+ X = 20
+340: IF X <= 26 THEN 360
+ X: 20
+ X<=26: true
+360: PRINT X;
+ X: 20
+ 20   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+330: LET X = L(I) + K(J)
+ I: 2
+ L(2): 18
+ J: 2
+ K(2): 1
+ X = 19
+340: IF X <= 26 THEN 360
+ X: 19
+ X<=26: true
+360: PRINT X;
+ X: 19
+ 19   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+330: LET X = L(I) + K(J)
+ I: 3
+ L(3): 5
+ J: 3
+ K(3): 7
+ X = 12
+340: IF X <= 26 THEN 360
+ X: 12
+ X<=26: true
+360: PRINT X;
+ X: 12
+ 12   
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+330: LET X = L(I) + K(J)
+ I: 4
+ L(4): 5
+ J: 4
+ K(4): 9
+ X = 14
+340: IF X <= 26 THEN 360
+ X: 14
+ X<=26: true
+360: PRINT X;
+ X: 14
+ 14   
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+330: LET X = L(I) + K(J)
+ I: 5
+ L(5): 20
+ J: 5
+ K(5): 3
+ X = 23
+340: IF X <= 26 THEN 360
+ X: 23
+ X<=26: true
+360: PRINT X;
+ X: 23
+ 23   
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+330: LET X = L(I) + K(J)
+ I: 6
+ L(6): 9
+ J: 1
+ K(1): 13
+ X = 22
+340: IF X <= 26 THEN 360
+ X: 22
+ X<=26: true
+360: PRINT X;
+ X: 22
+ 22   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+330: LET X = L(I) + K(J)
+ I: 7
+ L(7): 14
+ J: 2
+ K(2): 1
+ X = 15
+340: IF X <= 26 THEN 360
+ X: 15
+ X<=26: true
+360: PRINT X;
+ X: 15
+ 15   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+330: LET X = L(I) + K(J)
+ I: 8
+ L(8): 7
+ J: 3
+ K(3): 7
+ X = 14
+340: IF X <= 26 THEN 360
+ X: 14
+ X<=26: true
+360: PRINT X;
+ X: 14
+ 14   
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+330: LET X = L(I) + K(J)
+ I: 9
+ L(9): 19
+ J: 4
+ K(4): 9
+ X = 28
+340: IF X <= 26 THEN 360
+ X: 28
+ X<=26: false
+350: LET X = X - 27
+ X: 28
+ X = 1
+360: PRINT X;
+ X: 1
+ 1    
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+330: LET X = L(I) + K(J)
+ I: 10
+ L(10): 0
+ J: 5
+ K(5): 3
+ X = 3
+340: IF X <= 26 THEN 360
+ X: 3
+ X<=26: true
+360: PRINT X;
+ X: 3
+ 3    
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 10
+ terminated:false
+ I = 11
+330: LET X = L(I) + K(J)
+ I: 11
+ L(11): 6
+ J: 1
+ K(1): 13
+ X = 19
+340: IF X <= 26 THEN 360
+ X: 19
+ X<=26: true
+360: PRINT X;
+ X: 19
+ 19   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 11
+ terminated:false
+ I = 12
+330: LET X = L(I) + K(J)
+ I: 12
+ L(12): 18
+ J: 2
+ K(2): 1
+ X = 19
+340: IF X <= 26 THEN 360
+ X: 19
+ X<=26: true
+360: PRINT X;
+ X: 19
+ 19   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 12
+ terminated:false
+ I = 13
+330: LET X = L(I) + K(J)
+ I: 13
+ L(13): 15
+ J: 3
+ K(3): 7
+ X = 22
+340: IF X <= 26 THEN 360
+ X: 22
+ X<=26: true
+360: PRINT X;
+ X: 22
+ 22   
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 13
+ terminated:false
+ I = 14
+330: LET X = L(I) + K(J)
+ I: 14
+ L(14): 13
+ J: 4
+ K(4): 9
+ X = 22
+340: IF X <= 26 THEN 360
+ X: 22
+ X<=26: true
+360: PRINT X;
+ X: 22
+ 22   
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 14
+ terminated:false
+ I = 15
+330: LET X = L(I) + K(J)
+ I: 15
+ L(15): 0
+ J: 5
+ K(5): 3
+ X = 3
+340: IF X <= 26 THEN 360
+ X: 3
+ X<=26: true
+360: PRINT X;
+ X: 3
+ 3    
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 15
+ terminated:false
+ I = 16
+330: LET X = L(I) + K(J)
+ I: 16
+ L(16): 20
+ J: 1
+ K(1): 13
+ X = 33
+340: IF X <= 26 THEN 360
+ X: 33
+ X<=26: false
+350: LET X = X - 27
+ X: 33
+ X = 6
+360: PRINT X;
+ X: 6
+ 6    
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 16
+ terminated:false
+ I = 17
+330: LET X = L(I) + K(J)
+ I: 17
+ L(17): 8
+ J: 2
+ K(2): 1
+ X = 9
+340: IF X <= 26 THEN 360
+ X: 9
+ X<=26: true
+360: PRINT X;
+ X: 9
+ 9    
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 17
+ terminated:false
+ I = 18
+330: LET X = L(I) + K(J)
+ I: 18
+ L(18): 5
+ J: 3
+ K(3): 7
+ X = 12
+340: IF X <= 26 THEN 360
+ X: 12
+ X<=26: true
+360: PRINT X;
+ X: 12
+ 12   
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 18
+ terminated:false
+ I = 19
+330: LET X = L(I) + K(J)
+ I: 19
+ L(19): 0
+ J: 4
+ K(4): 9
+ X = 9
+340: IF X <= 26 THEN 360
+ X: 9
+ X<=26: true
+360: PRINT X;
+ X: 9
+ 9    
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 19
+ terminated:false
+ I = 20
+330: LET X = L(I) + K(J)
+ I: 20
+ L(20): 4
+ J: 5
+ K(5): 3
+ X = 7
+340: IF X <= 26 THEN 360
+ X: 7
+ X<=26: true
+360: PRINT X;
+ X: 7
+ 7    
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 20
+ terminated:false
+ I = 21
+330: LET X = L(I) + K(J)
+ I: 21
+ L(21): 1
+ J: 1
+ K(1): 13
+ X = 14
+340: IF X <= 26 THEN 360
+ X: 14
+ X<=26: true
+360: PRINT X;
+ X: 14
+ 14   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 21
+ terminated:false
+ I = 22
+330: LET X = L(I) + K(J)
+ I: 22
+ L(22): 18
+ J: 2
+ K(2): 1
+ X = 19
+340: IF X <= 26 THEN 360
+ X: 19
+ X<=26: true
+360: PRINT X;
+ X: 19
+ 19   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 22
+ terminated:false
+ I = 23
+330: LET X = L(I) + K(J)
+ I: 23
+ L(23): 20
+ J: 3
+ K(3): 7
+ X = 27
+340: IF X <= 26 THEN 360
+ X: 27
+ X<=26: false
+350: LET X = X - 27
+ X: 27
+ X = 0
+360: PRINT X;
+ X: 0
+ 0    
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 23
+ terminated:false
+ I = 24
+330: LET X = L(I) + K(J)
+ I: 24
+ L(24): 13
+ J: 4
+ K(4): 9
+ X = 22
+340: IF X <= 26 THEN 360
+ X: 22
+ X<=26: true
+360: PRINT X;
+ X: 22
+ 22   
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 24
+ terminated:false
+ I = 25
+330: LET X = L(I) + K(J)
+ I: 25
+ L(25): 15
+ J: 5
+ K(5): 3
+ X = 18
+340: IF X <= 26 THEN 360
+ X: 18
+ X<=26: true
+360: PRINT X;
+ X: 18
+ 18   
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 25
+ terminated:false
+ I = 26
+330: LET X = L(I) + K(J)
+ I: 26
+ L(26): 21
+ J: 1
+ K(1): 13
+ X = 34
+340: IF X <= 26 THEN 360
+ X: 34
+ X<=26: false
+350: LET X = X - 27
+ X: 34
+ X = 7
+360: PRINT X;
+ X: 7
+ 7    
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 26
+ terminated:false
+ I = 27
+330: LET X = L(I) + K(J)
+ I: 27
+ L(27): 20
+ J: 2
+ K(2): 1
+ X = 21
+340: IF X <= 26 THEN 360
+ X: 21
+ X<=26: true
+360: PRINT X;
+ X: 21
+ 21   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 27
+ terminated:false
+ I = 28
+330: LET X = L(I) + K(J)
+ I: 28
+ L(28): 8
+ J: 3
+ K(3): 7
+ X = 15
+340: IF X <= 26 THEN 360
+ X: 15
+ X<=26: true
+360: PRINT X;
+ X: 15
+ 15   
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 28
+ terminated:false
+ I = 29
+330: LET X = L(I) + K(J)
+ I: 29
+ L(29): 0
+ J: 4
+ K(4): 9
+ X = 9
+340: IF X <= 26 THEN 360
+ X: 9
+ X<=26: true
+360: PRINT X;
+ X: 9
+ 9    
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 29
+ terminated:false
+ I = 30
+330: LET X = L(I) + K(J)
+ I: 30
+ L(30): 20
+ J: 5
+ K(5): 3
+ X = 23
+340: IF X <= 26 THEN 360
+ X: 23
+ X<=26: true
+360: PRINT X;
+ X: 23
+ 23   
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 30
+ terminated:false
+ I = 31
+330: LET X = L(I) + K(J)
+ I: 31
+ L(31): 9
+ J: 1
+ K(1): 13
+ X = 22
+340: IF X <= 26 THEN 360
+ X: 22
+ X<=26: true
+360: PRINT X;
+ X: 22
+ 22   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 31
+ terminated:false
+ I = 32
+330: LET X = L(I) + K(J)
+ I: 32
+ L(32): 13
+ J: 2
+ K(2): 1
+ X = 14
+340: IF X <= 26 THEN 360
+ X: 14
+ X<=26: true
+360: PRINT X;
+ X: 14
+ 14   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 32
+ terminated:false
+ I = 33
+330: LET X = L(I) + K(J)
+ I: 33
+ L(33): 5
+ J: 3
+ K(3): 7
+ X = 12
+340: IF X <= 26 THEN 360
+ X: 12
+ X<=26: true
+360: PRINT X;
+ X: 12
+ 12   
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 33
+ terminated:false
+ I = 34
+330: LET X = L(I) + K(J)
+ I: 34
+ L(34): 19
+ J: 4
+ K(4): 9
+ X = 28
+340: IF X <= 26 THEN 360
+ X: 28
+ X<=26: false
+350: LET X = X - 27
+ X: 28
+ X = 1
+360: PRINT X;
+ X: 1
+ 1    
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 34
+ terminated:false
+ I = 35
+330: LET X = L(I) + K(J)
+ I: 35
+ L(35): 8
+ J: 5
+ K(5): 3
+ X = 11
+340: IF X <= 26 THEN 360
+ X: 11
+ X<=26: true
+360: PRINT X;
+ X: 11
+ 11   
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 35
+ terminated:false
+ I = 36
+330: LET X = L(I) + K(J)
+ I: 36
+ L(36): 1
+ J: 1
+ K(1): 13
+ X = 14
+340: IF X <= 26 THEN 360
+ X: 14
+ X<=26: true
+360: PRINT X;
+ X: 14
+ 14   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 36
+ terminated:false
+ I = 37
+330: LET X = L(I) + K(J)
+ I: 37
+ L(37): 18
+ J: 2
+ K(2): 1
+ X = 19
+340: IF X <= 26 THEN 360
+ X: 19
+ X<=26: true
+360: PRINT X;
+ X: 19
+ 19   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 37
+ terminated:false
+ I = 38
+330: LET X = L(I) + K(J)
+ I: 38
+ L(38): 9
+ J: 3
+ K(3): 7
+ X = 16
+340: IF X <= 26 THEN 360
+ X: 16
+ X<=26: true
+360: PRINT X;
+ X: 16
+ 16   
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 38
+ terminated:false
+ I = 39
+330: LET X = L(I) + K(J)
+ I: 39
+ L(39): 14
+ J: 4
+ K(4): 9
+ X = 23
+340: IF X <= 26 THEN 360
+ X: 23
+ X<=26: true
+360: PRINT X;
+ X: 23
+ 23   
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 39
+ terminated:false
+ I = 40
+330: LET X = L(I) + K(J)
+ I: 40
+ L(40): 7
+ J: 5
+ K(5): 3
+ X = 10
+340: IF X <= 26 THEN 360
+ X: 10
+ X<=26: true
+360: PRINT X;
+ X: 10
+ 10   
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 40
+ terminated:false
+ I = 41
+330: LET X = L(I) + K(J)
+ I: 41
+ L(41): 0
+ J: 1
+ K(1): 13
+ X = 13
+340: IF X <= 26 THEN 360
+ X: 13
+ X<=26: true
+360: PRINT X;
+ X: 13
+ 13   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 41
+ terminated:false
+ I = 42
+330: LET X = L(I) + K(J)
+ I: 42
+ L(42): 19
+ J: 2
+ K(2): 1
+ X = 20
+340: IF X <= 26 THEN 360
+ X: 20
+ X<=26: true
+360: PRINT X;
+ X: 20
+ 20   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 42
+ terminated:false
+ I = 43
+330: LET X = L(I) + K(J)
+ I: 43
+ L(43): 25
+ J: 3
+ K(3): 7
+ X = 32
+340: IF X <= 26 THEN 360
+ X: 32
+ X<=26: false
+350: LET X = X - 27
+ X: 32
+ X = 5
+360: PRINT X;
+ X: 5
+ 5    
+370: LET J = J + 1
+ J: 3
+ J = 4
+380: IF J <= 5 THEN 400
+ J: 4
+ J<=5: true
+400: NEXT I
+ I: 43
+ terminated:false
+ I = 44
+330: LET X = L(I) + K(J)
+ I: 44
+ L(44): 19
+ J: 4
+ K(4): 9
+ X = 28
+340: IF X <= 26 THEN 360
+ X: 28
+ X<=26: false
+350: LET X = X - 27
+ X: 28
+ X = 1
+360: PRINT X;
+ X: 1
+ 1    
+370: LET J = J + 1
+ J: 4
+ J = 5
+380: IF J <= 5 THEN 400
+ J: 5
+ J<=5: true
+400: NEXT I
+ I: 44
+ terminated:false
+ I = 45
+330: LET X = L(I) + K(J)
+ I: 45
+ L(45): 20
+ J: 5
+ K(5): 3
+ X = 23
+340: IF X <= 26 THEN 360
+ X: 23
+ X<=26: true
+360: PRINT X;
+ X: 23
+ 23   
+370: LET J = J + 1
+ J: 5
+ J = 6
+380: IF J <= 5 THEN 400
+ J: 6
+ J<=5: false
+390: LET J = 1
+ J = 1
+400: NEXT I
+ I: 45
+ terminated:false
+ I = 46
+330: LET X = L(I) + K(J)
+ I: 46
+ L(46): 5
+ J: 1
+ K(1): 13
+ X = 18
+340: IF X <= 26 THEN 360
+ X: 18
+ X<=26: true
+360: PRINT X;
+ X: 18
+ 18   
+370: LET J = J + 1
+ J: 1
+ J = 2
+380: IF J <= 5 THEN 400
+ J: 2
+ J<=5: true
+400: NEXT I
+ I: 46
+ terminated:false
+ I = 47
+330: LET X = L(I) + K(J)
+ I: 47
+ L(47): 13
+ J: 2
+ K(2): 1
+ X = 14
+340: IF X <= 26 THEN 360
+ X: 14
+ X<=26: true
+360: PRINT X;
+ X: 14
+ 14   
+370: LET J = J + 1
+ J: 2
+ J = 3
+380: IF J <= 5 THEN 400
+ J: 3
+ J<=5: true
+400: NEXT I
+ I: 47
+ terminated:true
+800: STOP
+STOP in line 800

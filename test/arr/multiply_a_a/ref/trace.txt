@@ -1,0 +1,137 @@
+10: REM ARRAY ASSIGNMENT
+20: DIM A(6), B(6)
+30: DATA 1, 2, 3, 4, 5, 6
+40: DATA 7, 8, 9, 10, 11, 12
+100: FOR I = 0 TO 5
+ I = 0
+ terminated:false
+120: READ A(I)
+ A(0) = 1
+140: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+120: READ A(I)
+ A(1) = 2
+140: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ A(I)
+ A(2) = 3
+140: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ A(I)
+ A(3) = 4
+140: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+120: READ A(I)
+ A(4) = 5
+140: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+120: READ A(I)
+ A(5) = 6
+140: NEXT I
+ I: 5
+ terminated:true
+150: PRINT "ARRAY A"
+ARRAY A
+160: ARR PRINT A;
+ A(0): 1
+ A(1): 2
+ A(2): 3
+ A(3): 4
+ A(4): 5
+ A(5): 6
+ A(6): 0
+ 1     2     3     4     5     6     0    
+200: FOR I = 0 TO 5
+ I = 0
+ terminated:false
+220: READ B(I)
+ B(0) = 7
+240: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+220: READ B(I)
+ B(1) = 8
+240: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+220: READ B(I)
+ B(2) = 9
+240: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+220: READ B(I)
+ B(3) = 10
+240: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+220: READ B(I)
+ B(4) = 11
+240: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+220: READ B(I)
+ B(5) = 12
+240: NEXT I
+ I: 5
+ terminated:true
+250: PRINT "ARRAY B"
+ARRAY B
+260: ARR PRINT B;
+ B(0): 7
+ B(1): 8
+ B(2): 9
+ B(3): 10
+ B(4): 11
+ B(5): 12
+ B(6): 0
+ 7     8     9     10    11    12    0    
+300: ARR C = A * B
+ A(0): 1
+ A(1): 2
+ A(2): 3
+ A(3): 4
+ A(4): 5
+ A(5): 6
+ A(6): 0
+ B(0): 7
+ B(1): 8
+ B(2): 9
+ B(3): 10
+ B(4): 11
+ B(5): 12
+ B(6): 0
+ C(0) = 7
+ C(1) = 16
+ C(2) = 27
+ C(3) = 40
+ C(4) = 55
+ C(5) = 72
+ C(6) = 0
+310: PRINT "ARRAY C"
+ARRAY C
+320: ARR PRINT C;
+ C(0): 7
+ C(1): 16
+ C(2): 27
+ C(3): 40
+ C(4): 55
+ C(5): 72
+ C(6): 0
+ 7     16    27    40    55    72    0    
+999: END
+STOP in line 999

@@ -1,0 +1,173 @@
+10: REM THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
+20: REM OF A GEOMETRIC PROGRESSION
+30: PRINT "FIRST TERM = ";
+FIRST TERM = 
+40: INPUT A
+? 10
+ A = 10
+50: PRINT "RATIO OF TERMS = ";
+RATIO OF TERMS = 
+60: INPUT R
+? 2
+ R = 2
+70: PRINT "NUMBER OF TERMS = ";
+NUMBER OF TERMS = 
+80: INPUT N
+? 5
+ N = 5
+90: PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+FOR TABLE TYPE 1, IF NOT TYPE 0
+100: INPUT C
+? 1
+ C = 1
+110: IF C = 1 THEN 130
+ C: 1
+ C=1: true
+130: PRINT
+
+140: PRINT "GEOMETRIC PROGRESSION"
+GEOMETRIC PROGRESSION
+150: PRINT "TERM NUMBER", "TERM VALUE"
+TERM NUMBER     TERM VALUE
+160: LET J = 0
+ J = 0
+170: FOR I = 0 TO N - 1
+ N: 5
+ I = 0
+ N-1 = 4
+ terminated:false
+180: LET K = I + 1
+ I: 0
+ K = 1
+190: LET L = A * (R ^ I)
+ A: 10
+ R: 2
+ I: 0
+ L = 10
+200: LET J = J + L
+ J: 0
+ L: 10
+ J = 10
+210: IF C = 1 THEN 230
+ C: 1
+ C=1: true
+230: PRINT K, L
+ K: 1
+ 1              
+ L: 10
+ 10
+240: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+180: LET K = I + 1
+ I: 1
+ K = 2
+190: LET L = A * (R ^ I)
+ A: 10
+ R: 2
+ I: 1
+ L = 20
+200: LET J = J + L
+ J: 10
+ L: 20
+ J = 30
+210: IF C = 1 THEN 230
+ C: 1
+ C=1: true
+230: PRINT K, L
+ K: 2
+ 2              
+ L: 20
+ 20
+240: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+180: LET K = I + 1
+ I: 2
+ K = 3
+190: LET L = A * (R ^ I)
+ A: 10
+ R: 2
+ I: 2
+ L = 40
+200: LET J = J + L
+ J: 30
+ L: 40
+ J = 70
+210: IF C = 1 THEN 230
+ C: 1
+ C=1: true
+230: PRINT K, L
+ K: 3
+ 3              
+ L: 40
+ 40
+240: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+180: LET K = I + 1
+ I: 3
+ K = 4
+190: LET L = A * (R ^ I)
+ A: 10
+ R: 2
+ I: 3
+ L = 80
+200: LET J = J + L
+ J: 70
+ L: 80
+ J = 150
+210: IF C = 1 THEN 230
+ C: 1
+ C=1: true
+230: PRINT K, L
+ K: 4
+ 4              
+ L: 80
+ 80
+240: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+180: LET K = I + 1
+ I: 4
+ K = 5
+190: LET L = A * (R ^ I)
+ A: 10
+ R: 2
+ I: 4
+ L = 160
+200: LET J = J + L
+ J: 150
+ L: 160
+ J = 310
+210: IF C = 1 THEN 230
+ C: 1
+ C=1: true
+230: PRINT K, L
+ K: 5
+ 5              
+ L: 160
+ 160
+240: NEXT I
+ I: 4
+ terminated:true
+250: PRINT "SUM = "; J
+SUM = 
+ J: 310
+ 310
+260: PRINT
+
+270: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+280: INPUT X
+? 0
+ X = 0
+290: IF X = 1 THEN 310
+ X: 0
+ X=1: false
+300: STOP
+STOP in line 300

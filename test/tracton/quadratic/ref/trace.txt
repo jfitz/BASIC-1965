@@ -1,0 +1,104 @@
+10: REM THIS PROGRAM COMPUTES THE SOLUTION TO A
+20: REM QUADRATIC EQUATION
+30: PRINT "ENTER VALUES FOR A, B AND C"
+ENTER VALUES FOR A, B AND C
+40: INPUT A, B, C
+? 1,1,0
+ A = 1
+ B = 1
+ C = 0
+50: LET D = ((B ^ 2) - (4 * A * C)) / (4 * A ^ 2)
+ B: 1
+ A: 1
+ C: 0
+ D = 0.25
+60: IF D >= 0 THEN 130
+ D: 0.25
+ D>=0: true
+130: LET E = -B / (2 * A)
+ B: 1
+ A: 1
+ E = -0.5
+140: IF E >= 0 THEN 170
+ E: -0.5
+ E>=0: false
+150: LET Z = E - SQR(D)
+ E: -0.5
+ D: 0.25
+ Z = -1
+160: GOTO 180
+180: LET W = C / (Z * A)
+ C: 0
+ Z: -1
+ A: 1
+ W = 0
+190: PRINT "ROOTS ARE REAL"
+ROOTS ARE REAL
+200: PRINT "1ST ROOT = "; Z
+1ST ROOT = 
+ Z: -1
+-1
+210: PRINT "2ND ROOT = "; W
+2ND ROOT = 
+ W: 0
+ 0
+220: PRINT "********************"
+********************
+230: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+240: INPUT L
+? 1
+ L = 1
+250: IF L = 1 THEN 270
+ L: 1
+ L=1: true
+270: PRINT
+
+280: GOTO 30
+30: PRINT "ENTER VALUES FOR A, B AND C"
+ENTER VALUES FOR A, B AND C
+40: INPUT A, B, C
+? 10,10,10
+ A = 10
+ B = 10
+ C = 10
+50: LET D = ((B ^ 2) - (4 * A * C)) / (4 * A ^ 2)
+ B: 10
+ A: 10
+ C: 10
+ D = -0.75
+60: IF D >= 0 THEN 130
+ D: -0.75
+ D>=0: false
+70: LET X = -B / (2 * A)
+ B: 10
+ A: 10
+ X = -0.5
+80: LET Y = (SQR((4 * A * C) - B ^ 2)) / (2 * A)
+ A: 10
+ C: 10
+ B: 10
+ Y = 0.8660254037844387
+90: PRINT "ROOTS ARE COMPLEX"
+ROOTS ARE COMPLEX
+100: PRINT "REAL PART = "; X
+REAL PART = 
+ X: -0.5
+-0.5
+110: PRINT "IMAGINARY PART = "; Y
+IMAGINARY PART = 
+ Y: 0.8660254037844387
+ 0.86603
+120: GOTO 220
+220: PRINT "********************"
+********************
+230: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+240: INPUT L
+? 0
+ L = 0
+250: IF L = 1 THEN 270
+ L: 0
+ L=1: false
+260: STOP
+STOP in line 260

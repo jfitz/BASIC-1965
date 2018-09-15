@@ -1,0 +1,319 @@
+10: REM MATRIX ASSIGNMENT
+20: DIM A(5, 5)
+30: FOR I = 1 TO 5
+ I = 1
+ terminated:false
+40: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+50: LET A(I, J) = I + J
+ I: 1
+ J: 1
+ A(1,1) = 2
+60: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50: LET A(I, J) = I + J
+ I: 1
+ J: 2
+ A(1,2) = 3
+60: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50: LET A(I, J) = I + J
+ I: 1
+ J: 3
+ A(1,3) = 4
+60: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+50: LET A(I, J) = I + J
+ I: 1
+ J: 4
+ A(1,4) = 5
+60: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+50: LET A(I, J) = I + J
+ I: 1
+ J: 5
+ A(1,5) = 6
+60: NEXT J
+ J: 5
+ terminated:true
+70: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+50: LET A(I, J) = I + J
+ I: 2
+ J: 1
+ A(2,1) = 3
+60: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50: LET A(I, J) = I + J
+ I: 2
+ J: 2
+ A(2,2) = 4
+60: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50: LET A(I, J) = I + J
+ I: 2
+ J: 3
+ A(2,3) = 5
+60: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+50: LET A(I, J) = I + J
+ I: 2
+ J: 4
+ A(2,4) = 6
+60: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+50: LET A(I, J) = I + J
+ I: 2
+ J: 5
+ A(2,5) = 7
+60: NEXT J
+ J: 5
+ terminated:true
+70: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+40: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+50: LET A(I, J) = I + J
+ I: 3
+ J: 1
+ A(3,1) = 4
+60: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50: LET A(I, J) = I + J
+ I: 3
+ J: 2
+ A(3,2) = 5
+60: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50: LET A(I, J) = I + J
+ I: 3
+ J: 3
+ A(3,3) = 6
+60: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+50: LET A(I, J) = I + J
+ I: 3
+ J: 4
+ A(3,4) = 7
+60: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+50: LET A(I, J) = I + J
+ I: 3
+ J: 5
+ A(3,5) = 8
+60: NEXT J
+ J: 5
+ terminated:true
+70: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+40: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+50: LET A(I, J) = I + J
+ I: 4
+ J: 1
+ A(4,1) = 5
+60: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50: LET A(I, J) = I + J
+ I: 4
+ J: 2
+ A(4,2) = 6
+60: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50: LET A(I, J) = I + J
+ I: 4
+ J: 3
+ A(4,3) = 7
+60: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+50: LET A(I, J) = I + J
+ I: 4
+ J: 4
+ A(4,4) = 8
+60: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+50: LET A(I, J) = I + J
+ I: 4
+ J: 5
+ A(4,5) = 9
+60: NEXT J
+ J: 5
+ terminated:true
+70: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+40: FOR J = 1 TO 5
+ J = 1
+ terminated:false
+50: LET A(I, J) = I + J
+ I: 5
+ J: 1
+ A(5,1) = 6
+60: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50: LET A(I, J) = I + J
+ I: 5
+ J: 2
+ A(5,2) = 7
+60: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50: LET A(I, J) = I + J
+ I: 5
+ J: 3
+ A(5,3) = 8
+60: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+50: LET A(I, J) = I + J
+ I: 5
+ J: 4
+ A(5,4) = 9
+60: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+50: LET A(I, J) = I + J
+ I: 5
+ J: 5
+ A(5,5) = 10
+60: NEXT J
+ J: 5
+ terminated:true
+70: NEXT I
+ I: 5
+ terminated:true
+100: MAT B = A
+ A(1,1): 2
+ A(1,2): 3
+ A(1,3): 4
+ A(1,4): 5
+ A(1,5): 6
+ A(2,1): 3
+ A(2,2): 4
+ A(2,3): 5
+ A(2,4): 6
+ A(2,5): 7
+ A(3,1): 4
+ A(3,2): 5
+ A(3,3): 6
+ A(3,4): 7
+ A(3,5): 8
+ A(4,1): 5
+ A(4,2): 6
+ A(4,3): 7
+ A(4,4): 8
+ A(4,5): 9
+ A(5,1): 6
+ A(5,2): 7
+ A(5,3): 8
+ A(5,4): 9
+ A(5,5): 10
+ B(1,1) = 2
+ B(1,2) = 3
+ B(1,3) = 4
+ B(1,4) = 5
+ B(1,5) = 6
+ B(2,1) = 3
+ B(2,2) = 4
+ B(2,3) = 5
+ B(2,4) = 6
+ B(2,5) = 7
+ B(3,1) = 4
+ B(3,2) = 5
+ B(3,3) = 6
+ B(3,4) = 7
+ B(3,5) = 8
+ B(4,1) = 5
+ B(4,2) = 6
+ B(4,3) = 7
+ B(4,4) = 8
+ B(4,5) = 9
+ B(5,1) = 6
+ B(5,2) = 7
+ B(5,3) = 8
+ B(5,4) = 9
+ B(5,5) = 10
+110: MAT PRINT B,
+ B(1,1): 2
+ B(1,2): 3
+ B(1,3): 4
+ B(1,4): 5
+ B(1,5): 6
+ B(2,1): 3
+ B(2,2): 4
+ B(2,3): 5
+ B(2,4): 6
+ B(2,5): 7
+ B(3,1): 4
+ B(3,2): 5
+ B(3,3): 6
+ B(3,4): 7
+ B(3,5): 8
+ B(4,1): 5
+ B(4,2): 6
+ B(4,3): 7
+ B(4,4): 8
+ B(4,5): 9
+ B(5,1): 6
+ B(5,2): 7
+ B(5,3): 8
+ B(5,4): 9
+ B(5,5): 10
+ 2               3               4               5               6              
+ 3               4               5               6               7              
+ 4               5               6               7               8              
+ 5               6               7               8               9              
+ 6               7               8               9               10             
+
+999: END
+STOP in line 999

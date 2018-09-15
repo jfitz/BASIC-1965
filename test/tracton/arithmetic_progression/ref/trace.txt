@@ -1,0 +1,170 @@
+10: REM THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
+20: PRINT "FIRST TERM = ";
+FIRST TERM = 
+30: INPUT A
+? 10
+ A = 10
+40: PRINT "COMMON DIFFERENCE = ";
+COMMON DIFFERENCE = 
+50: INPUT D
+? 2
+ D = 2
+60: PRINT "NUMBER OF TERMS = ";
+NUMBER OF TERMS = 
+70: INPUT N
+? 5
+ N = 5
+80: PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0";
+FOR TABLE TYPE 1, IF NOT TYPE 0
+90: INPUT C
+? 1
+ C = 1
+100: IF C = 1 THEN 120
+ C: 1
+ C=1: true
+120: PRINT "ARITHMETIC PROGRESSION"
+ARITHMETIC PROGRESSION
+130: PRINT "TERM NUMBER", "TERM VALUE"
+TERM NUMBER     TERM VALUE
+140: LET J = 0
+ J = 0
+150: FOR I = 0 TO N - 1
+ N: 5
+ I = 0
+ N-1 = 4
+ terminated:false
+160: LET K = I + 1
+ I: 0
+ K = 1
+170: LET L = A + (I * D)
+ A: 10
+ I: 0
+ D: 2
+ L = 10
+180: LET J = J + L
+ J: 0
+ L: 10
+ J = 10
+190: IF C = 1 THEN 210
+ C: 1
+ C=1: true
+210: PRINT K, L
+ K: 1
+ 1              
+ L: 10
+ 10
+220: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+160: LET K = I + 1
+ I: 1
+ K = 2
+170: LET L = A + (I * D)
+ A: 10
+ I: 1
+ D: 2
+ L = 12
+180: LET J = J + L
+ J: 10
+ L: 12
+ J = 22
+190: IF C = 1 THEN 210
+ C: 1
+ C=1: true
+210: PRINT K, L
+ K: 2
+ 2              
+ L: 12
+ 12
+220: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+160: LET K = I + 1
+ I: 2
+ K = 3
+170: LET L = A + (I * D)
+ A: 10
+ I: 2
+ D: 2
+ L = 14
+180: LET J = J + L
+ J: 22
+ L: 14
+ J = 36
+190: IF C = 1 THEN 210
+ C: 1
+ C=1: true
+210: PRINT K, L
+ K: 3
+ 3              
+ L: 14
+ 14
+220: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+160: LET K = I + 1
+ I: 3
+ K = 4
+170: LET L = A + (I * D)
+ A: 10
+ I: 3
+ D: 2
+ L = 16
+180: LET J = J + L
+ J: 36
+ L: 16
+ J = 52
+190: IF C = 1 THEN 210
+ C: 1
+ C=1: true
+210: PRINT K, L
+ K: 4
+ 4              
+ L: 16
+ 16
+220: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+160: LET K = I + 1
+ I: 4
+ K = 5
+170: LET L = A + (I * D)
+ A: 10
+ I: 4
+ D: 2
+ L = 18
+180: LET J = J + L
+ J: 52
+ L: 18
+ J = 70
+190: IF C = 1 THEN 210
+ C: 1
+ C=1: true
+210: PRINT K, L
+ K: 5
+ 5              
+ L: 18
+ 18
+220: NEXT I
+ I: 4
+ terminated:true
+230: PRINT "SUM = "; J
+SUM = 
+ J: 70
+ 70
+240: PRINT
+
+250: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+260: INPUT X
+? 0
+ X = 0
+270: IF X = 1 THEN 290
+ X: 0
+ X=1: false
+290: STOP
+STOP in line 290

@@ -1,0 +1,23 @@
+10: REM TEST FOR/NEXT WITH CHANGE TO INDEX
+20: FOR I = 1 TO 5
+ I = 1
+ terminated:false
+30: PRINT "BEFORE: "; I
+BEFORE: 
+ I: 1
+ 1
+40: LET I = 10
+ I = 10
+50: PRINT "AFTER: "; I
+AFTER: 
+ I: 10
+ 10
+60: NEXT I
+ I: 10
+ terminated:true
+70: PRINT "FINAL: "; I
+FINAL: 
+ I: 10
+ 10
+90: END
+STOP in line 90

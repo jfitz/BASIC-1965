@@ -1,0 +1,556 @@
+10: REM THIS PROGRAM COMPUTES A SERIES OF HARMONIC
+20: REM PROGRESSIONS
+30: PRINT "VALUE OF A = "
+VALUE OF A = 
+40: INPUT A
+? 10
+ A = 10
+50: PRINT "VALUE OF B = "
+VALUE OF B = 
+60: INPUT B
+? 2
+ B = 2
+70: PRINT "DIFFERENCE = "
+DIFFERENCE = 
+80: INPUT D
+? 3
+ D = 3
+90: PRINT "NUMBER OF TERMS = "
+NUMBER OF TERMS = 
+100: INPUT N
+? 20
+ N = 20
+110: PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+FOR TABLE TYPE 1, IF NOT TYPE 0
+120: INPUT C
+? 1
+ C = 1
+130: IF C = 1 THEN 150
+ C: 1
+ C=1: true
+150: PRINT "HARMONIC PROGRESSION"
+HARMONIC PROGRESSION
+160: PRINT "TERM NUMBER", "TERM VALUE"
+TERM NUMBER     TERM VALUE
+170: LET J = 0
+ J = 0
+180: FOR I = 0 TO N - 1
+ N: 20
+ I = 0
+ N-1 = 19
+ terminated:false
+190: LET K = I + 1
+ I: 0
+ K = 1
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 0
+ D: 3
+ L = 5
+210: LET J = J + L
+ J: 0
+ L: 5
+ J = 5
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 1
+ 1              
+ L: 5
+ 5
+250: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+190: LET K = I + 1
+ I: 1
+ K = 2
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 1
+ D: 3
+ L = 2
+210: LET J = J + L
+ J: 5
+ L: 2
+ J = 7
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 2
+ 2              
+ L: 2
+ 2
+250: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+190: LET K = I + 1
+ I: 2
+ K = 3
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 2
+ D: 3
+ L = 1.25
+210: LET J = J + L
+ J: 7
+ L: 1.25
+ J = 8.25
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 3
+ 3              
+ L: 1.25
+ 1.25
+250: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+190: LET K = I + 1
+ I: 3
+ K = 4
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 3
+ D: 3
+ L = 0.9090909090909091
+210: LET J = J + L
+ J: 8.25
+ L: 0.9090909090909091
+ J = 9.159090909090908
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 4
+ 4              
+ L: 0.9090909090909091
+ 0.90909
+250: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+190: LET K = I + 1
+ I: 4
+ K = 5
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 4
+ D: 3
+ L = 0.7142857142857143
+210: LET J = J + L
+ J: 9.159090909090908
+ L: 0.7142857142857143
+ J = 9.873376623376622
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 5
+ 5              
+ L: 0.7142857142857143
+ 0.71429
+250: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+190: LET K = I + 1
+ I: 5
+ K = 6
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 5
+ D: 3
+ L = 0.5882352941176471
+210: LET J = J + L
+ J: 9.873376623376622
+ L: 0.5882352941176471
+ J = 10.461611917494269
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 6
+ 6              
+ L: 0.5882352941176471
+ 0.58824
+250: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+190: LET K = I + 1
+ I: 6
+ K = 7
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 6
+ D: 3
+ L = 0.5
+210: LET J = J + L
+ J: 10.461611917494269
+ L: 0.5
+ J = 10.961611917494269
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 7
+ 7              
+ L: 0.5
+ 0.5
+250: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+190: LET K = I + 1
+ I: 7
+ K = 8
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 7
+ D: 3
+ L = 0.43478260869565216
+210: LET J = J + L
+ J: 10.961611917494269
+ L: 0.43478260869565216
+ J = 11.39639452618992
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 8
+ 8              
+ L: 0.43478260869565216
+ 0.43478
+250: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+190: LET K = I + 1
+ I: 8
+ K = 9
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 8
+ D: 3
+ L = 0.38461538461538464
+210: LET J = J + L
+ J: 11.39639452618992
+ L: 0.38461538461538464
+ J = 11.781009910805306
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 9
+ 9              
+ L: 0.38461538461538464
+ 0.38462
+250: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+190: LET K = I + 1
+ I: 9
+ K = 10
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 9
+ D: 3
+ L = 0.3448275862068966
+210: LET J = J + L
+ J: 11.781009910805306
+ L: 0.3448275862068966
+ J = 12.125837497012203
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 10
+ 10             
+ L: 0.3448275862068966
+ 0.34483
+250: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+190: LET K = I + 1
+ I: 10
+ K = 11
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 10
+ D: 3
+ L = 0.3125
+210: LET J = J + L
+ J: 12.125837497012203
+ L: 0.3125
+ J = 12.438337497012203
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 11
+ 11             
+ L: 0.3125
+ 0.3125
+250: NEXT I
+ I: 10
+ terminated:false
+ I = 11
+190: LET K = I + 1
+ I: 11
+ K = 12
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 11
+ D: 3
+ L = 0.2857142857142857
+210: LET J = J + L
+ J: 12.438337497012203
+ L: 0.2857142857142857
+ J = 12.72405178272649
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 12
+ 12             
+ L: 0.2857142857142857
+ 0.28571
+250: NEXT I
+ I: 11
+ terminated:false
+ I = 12
+190: LET K = I + 1
+ I: 12
+ K = 13
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 12
+ D: 3
+ L = 0.2631578947368421
+210: LET J = J + L
+ J: 12.72405178272649
+ L: 0.2631578947368421
+ J = 12.987209677463332
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 13
+ 13             
+ L: 0.2631578947368421
+ 0.26316
+250: NEXT I
+ I: 12
+ terminated:false
+ I = 13
+190: LET K = I + 1
+ I: 13
+ K = 14
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 13
+ D: 3
+ L = 0.24390243902439024
+210: LET J = J + L
+ J: 12.987209677463332
+ L: 0.24390243902439024
+ J = 13.231112116487722
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 14
+ 14             
+ L: 0.24390243902439024
+ 0.2439
+250: NEXT I
+ I: 13
+ terminated:false
+ I = 14
+190: LET K = I + 1
+ I: 14
+ K = 15
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 14
+ D: 3
+ L = 0.22727272727272727
+210: LET J = J + L
+ J: 13.231112116487722
+ L: 0.22727272727272727
+ J = 13.458384843760449
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 15
+ 15             
+ L: 0.22727272727272727
+ 0.22727
+250: NEXT I
+ I: 14
+ terminated:false
+ I = 15
+190: LET K = I + 1
+ I: 15
+ K = 16
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 15
+ D: 3
+ L = 0.2127659574468085
+210: LET J = J + L
+ J: 13.458384843760449
+ L: 0.2127659574468085
+ J = 13.671150801207258
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 16
+ 16             
+ L: 0.2127659574468085
+ 0.21277
+250: NEXT I
+ I: 15
+ terminated:false
+ I = 16
+190: LET K = I + 1
+ I: 16
+ K = 17
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 16
+ D: 3
+ L = 0.2
+210: LET J = J + L
+ J: 13.671150801207258
+ L: 0.2
+ J = 13.871150801207257
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 17
+ 17             
+ L: 0.2
+ 0.2
+250: NEXT I
+ I: 16
+ terminated:false
+ I = 17
+190: LET K = I + 1
+ I: 17
+ K = 18
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 17
+ D: 3
+ L = 0.18867924528301888
+210: LET J = J + L
+ J: 13.871150801207257
+ L: 0.18867924528301888
+ J = 14.059830046490276
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 18
+ 18             
+ L: 0.18867924528301888
+ 0.18868
+250: NEXT I
+ I: 17
+ terminated:false
+ I = 18
+190: LET K = I + 1
+ I: 18
+ K = 19
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 18
+ D: 3
+ L = 0.17857142857142858
+210: LET J = J + L
+ J: 14.059830046490276
+ L: 0.17857142857142858
+ J = 14.238401475061705
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 19
+ 19             
+ L: 0.17857142857142858
+ 0.17857
+250: NEXT I
+ I: 18
+ terminated:false
+ I = 19
+190: LET K = I + 1
+ I: 19
+ K = 20
+200: LET L = A / (B + (I * D))
+ A: 10
+ B: 2
+ I: 19
+ D: 3
+ L = 0.1694915254237288
+210: LET J = J + L
+ J: 14.238401475061705
+ L: 0.1694915254237288
+ J = 14.407893000485434
+220: IF C = 1 THEN 240
+ C: 1
+ C=1: true
+240: PRINT K, L
+ K: 20
+ 20             
+ L: 0.1694915254237288
+ 0.16949
+250: NEXT I
+ I: 19
+ terminated:true
+260: PRINT "SUM = "; J
+SUM = 
+ J: 14.407893000485434
+ 14.4079
+270: PRINT "********************"
+********************
+280: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+290: INPUT X
+? 0
+ X = 0
+300: IF X = 1 THEN 320
+ X: 0
+ X=1: false
+310: STOP
+STOP in line 310

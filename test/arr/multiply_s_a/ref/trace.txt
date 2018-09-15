@@ -1,0 +1,81 @@
+10: REM ARRAY ASSIGNMENT
+20: DIM A(5)
+30: FOR I = 0 TO 5
+ I = 0
+ terminated:false
+50: LET A(I) = I
+ I: 0
+ A(0) = 0
+70: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+50: LET A(I) = I
+ I: 1
+ A(1) = 1
+70: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+50: LET A(I) = I
+ I: 2
+ A(2) = 2
+70: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+50: LET A(I) = I
+ I: 3
+ A(3) = 3
+70: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+50: LET A(I) = I
+ I: 4
+ A(4) = 4
+70: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+50: LET A(I) = I
+ I: 5
+ A(5) = 5
+70: NEXT I
+ I: 5
+ terminated:true
+100: ARR B = 2 * A
+ A(0): 0
+ A(1): 1
+ A(2): 2
+ A(3): 3
+ A(4): 4
+ A(5): 5
+ B(0) = 0
+ B(1) = 2
+ B(2) = 4
+ B(3) = 6
+ B(4) = 8
+ B(5) = 10
+110: PRINT "ARRAY A"
+ARRAY A
+120: ARR PRINT A;
+ A(0): 0
+ A(1): 1
+ A(2): 2
+ A(3): 3
+ A(4): 4
+ A(5): 5
+ 0     1     2     3     4     5    
+130: PRINT "ARRAY B"
+ARRAY B
+140: ARR PRINT B;
+ B(0): 0
+ B(1): 2
+ B(2): 4
+ B(3): 6
+ B(4): 8
+ B(5): 10
+ 0     2     4     6     8     10   
+999: END
+STOP in line 999

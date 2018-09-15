@@ -1,0 +1,75 @@
+100: REM SIDE-ANGLE-SIDE
+110: LET P = 3.14159265
+ P = 3.14159265
+120: DEF FND(X) = X * P / 180
+130: DEF FNC(X) = COS(FND(X))
+140: PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
+SIDE            ANGLE           SIDE            THIRD SIDE
+150: READ X, A, Y
+ X = 10
+ A = 60
+ Y = 20
+160: LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
+ X: 10
+ Y: 20
+ A: 60
+ X: 60
+ X: 60
+ P: 3.14159265
+ Z = 17.320508063722798
+170: PRINT X, A, Y, Z
+ X: 10
+ 10             
+ A: 60
+ 60             
+ Y: 20
+ 20             
+ Z: 17.320508063722798
+ 17.3205
+180: GOTO 150
+150: READ X, A, Y
+ X = 3
+ A = 90
+ Y = 4
+160: LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
+ X: 3
+ Y: 4
+ A: 90
+ X: 90
+ X: 90
+ P: 3.14159265
+ Z = 4.999999995692248
+170: PRINT X, A, Y, Z
+ X: 3
+ 3              
+ A: 90
+ 90             
+ Y: 4
+ 4              
+ Z: 4.999999995692248
+ 5
+180: GOTO 150
+150: READ X, A, Y
+ X = 10
+ A = 120
+ Y = 10
+160: LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
+ X: 10
+ Y: 10
+ A: 120
+ X: 120
+ X: 120
+ P: 3.14159265
+ Z = 17.320508063722798
+170: PRINT X, A, Y, Z
+ X: 10
+ 10             
+ A: 120
+ 120            
+ Y: 10
+ 10             
+ Z: 17.320508063722798
+ 17.3205
+180: GOTO 150
+150: READ X, A, Y
+Out of data in line 150

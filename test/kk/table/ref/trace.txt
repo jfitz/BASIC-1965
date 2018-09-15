@@ -1,0 +1,48 @@
+10: PRINT " X", "EXP(X)", "LOG(X)"
+ X              EXP(X)          LOG(X)
+20: FOR X = 1 TO 3.5 STEP 0.5
+ X = 1
+ terminated:false
+30: PRINT X, EXP(X), LOG(X)
+ X: 1
+ 1               2.71828         0
+40: NEXT X
+ X: 1
+ terminated:false
+ X = 1.5
+30: PRINT X, EXP(X), LOG(X)
+ X: 1.5
+ 1.5             4.48169         0.40547
+40: NEXT X
+ X: 1.5
+ terminated:false
+ X = 2
+30: PRINT X, EXP(X), LOG(X)
+ X: 2
+ 2               7.38906         0.69315
+40: NEXT X
+ X: 2
+ terminated:false
+ X = 2.5
+30: PRINT X, EXP(X), LOG(X)
+ X: 2.5
+ 2.5             12.1825         0.91629
+40: NEXT X
+ X: 2.5
+ terminated:false
+ X = 3
+30: PRINT X, EXP(X), LOG(X)
+ X: 3
+ 3               20.0855         1.09861
+40: NEXT X
+ X: 3
+ terminated:false
+ X = 3.5
+30: PRINT X, EXP(X), LOG(X)
+ X: 3.5
+ 3.5             33.1155         1.25276
+40: NEXT X
+ X: 3.5
+ terminated:true
+99: END
+STOP in line 99

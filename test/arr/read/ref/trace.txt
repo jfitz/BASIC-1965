@@ -1,0 +1,44 @@
+10: REM ARRAY ASSIGNMENT
+20: DIM A(6)
+30: DATA 0, 1, 2, 3, 4, 5, 6
+40: DATA 7, 8, 9, 10, 11, 12, 13, 14
+100: ARR READ A
+ A(0) = 0
+ A(1) = 1
+ A(2) = 2
+ A(3) = 3
+ A(4) = 4
+ A(5) = 5
+ A(6) = 6
+150: PRINT "ARRAY A"
+ARRAY A
+160: ARR PRINT A;
+ A(0): 0
+ A(1): 1
+ A(2): 2
+ A(3): 3
+ A(4): 4
+ A(5): 5
+ A(6): 6
+ 0     1     2     3     4     5     6    
+200: ARR READ B(6)
+ B(0) = 7
+ B(1) = 8
+ B(2) = 9
+ B(3) = 10
+ B(4) = 11
+ B(5) = 12
+ B(6) = 13
+250: PRINT "ARRAY B"
+ARRAY B
+260: ARR PRINT B;
+ B(0): 7
+ B(1): 8
+ B(2): 9
+ B(3): 10
+ B(4): 11
+ B(5): 12
+ B(6): 13
+ 7     8     9     10    11    12    13   
+999: END
+STOP in line 999

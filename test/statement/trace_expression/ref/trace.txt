@@ -1,0 +1,185 @@
+10: DIM A(20)
+20: FOR I = 1 TO 20
+ I = 1
+ terminated:false
+30: LET A(I) = I
+ I: 1
+ A(1) = 1
+40: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+30: LET A(I) = I
+ I: 2
+ A(2) = 2
+40: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+30: LET A(I) = I
+ I: 3
+ A(3) = 3
+40: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+30: LET A(I) = I
+ I: 4
+ A(4) = 4
+40: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+30: LET A(I) = I
+ I: 5
+ A(5) = 5
+40: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+30: LET A(I) = I
+ I: 6
+ A(6) = 6
+40: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+30: LET A(I) = I
+ I: 7
+ A(7) = 7
+40: NEXT I
+ I: 7
+ terminated:false
+ I = 8
+30: LET A(I) = I
+ I: 8
+ A(8) = 8
+40: NEXT I
+ I: 8
+ terminated:false
+ I = 9
+30: LET A(I) = I
+ I: 9
+ A(9) = 9
+40: NEXT I
+ I: 9
+ terminated:false
+ I = 10
+30: LET A(I) = I
+ I: 10
+ A(10) = 10
+40: NEXT I
+ I: 10
+ terminated:false
+ I = 11
+30: LET A(I) = I
+ I: 11
+ A(11) = 11
+40: NEXT I
+ I: 11
+ terminated:false
+ I = 12
+30: LET A(I) = I
+ I: 12
+ A(12) = 12
+40: NEXT I
+ I: 12
+ terminated:false
+ I = 13
+30: LET A(I) = I
+ I: 13
+ A(13) = 13
+40: NEXT I
+ I: 13
+ terminated:false
+ I = 14
+30: LET A(I) = I
+ I: 14
+ A(14) = 14
+40: NEXT I
+ I: 14
+ terminated:false
+ I = 15
+30: LET A(I) = I
+ I: 15
+ A(15) = 15
+40: NEXT I
+ I: 15
+ terminated:false
+ I = 16
+30: LET A(I) = I
+ I: 16
+ A(16) = 16
+40: NEXT I
+ I: 16
+ terminated:false
+ I = 17
+30: LET A(I) = I
+ I: 17
+ A(17) = 17
+40: NEXT I
+ I: 17
+ terminated:false
+ I = 18
+30: LET A(I) = I
+ I: 18
+ A(18) = 18
+40: NEXT I
+ I: 18
+ terminated:false
+ I = 19
+30: LET A(I) = I
+ I: 19
+ A(19) = 19
+40: NEXT I
+ I: 19
+ terminated:false
+ I = 20
+30: LET A(I) = I
+ I: 20
+ A(20) = 20
+40: NEXT I
+ I: 20
+ terminated:true
+100: TRACE I > 0
+ I: 20
+110: PRINT "START REPORT"
+START REPORT
+120: FOR I = 4 TO 7
+ I = 4
+ terminated:false
+130: PRINT A(I)
+ I: 4
+ A(4): 4
+ 4
+140: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+130: PRINT A(I)
+ I: 5
+ A(5): 5
+ 5
+140: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+130: PRINT A(I)
+ I: 6
+ A(6): 6
+ 6
+140: NEXT I
+ I: 6
+ terminated:false
+ I = 7
+130: PRINT A(I)
+ I: 7
+ A(7): 7
+ 7
+140: NEXT I
+ I: 7
+ terminated:true
+150: TRACE I = 0
+ I: 7
+900: END
+STOP in line 900

@@ -1,0 +1,1257 @@
+10: DIM A(100), X(100), T(100, 2)
+20: READ N
+ N = 2
+30: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+40: READ A(I)
+ A(0) = 2
+50: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+40: READ A(I)
+ A(1) = -3
+50: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+40: READ A(I)
+ A(2) = 1
+50: NEXT I
+ I: 2
+ terminated:true
+60: READ X9
+ X9 = 8
+70: FOR J = 1 TO X9
+ X9: 8
+ J = 1
+ X9 = 8
+ terminated:false
+80: READ X(J)
+ X(1) = -3
+90: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+80: READ X(J)
+ X(2) = -1
+90: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+80: READ X(J)
+ X(3) = 0
+90: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+80: READ X(J)
+ X(4) = 0.5
+90: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+80: READ X(J)
+ X(5) = 0.75
+90: NEXT J
+ J: 5
+ terminated:false
+ J = 6
+80: READ X(J)
+ X(6) = 1
+90: NEXT J
+ J: 6
+ terminated:false
+ J = 7
+80: READ X(J)
+ X(7) = 2.5
+90: NEXT J
+ J: 7
+ terminated:false
+ J = 8
+80: READ X(J)
+ X(8) = 5
+90: NEXT J
+ J: 8
+ terminated:true
+95:
+100: REM  MAIN ROUTINE.
+110: LET K = 0
+ K = 0
+120: GOSUB 500
+500: REM  RUN THROUGH X-VALUES
+510: FOR J = 1 TO X9
+ X9: 8
+ J = 1
+ X9 = 8
+ terminated:false
+520: LET X = X(J)
+ J: 1
+ X(1): -3
+ X = -3
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: -3
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: -3
+ I: 1
+ A(1): -3
+ Y = -9
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: -9
+ X: -3
+ I: 2
+ A(2): 1
+ Y = 28
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 28
+ T(1,0) = 28
+550: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+520: LET X = X(J)
+ J: 2
+ X(2): -1
+ X = -1
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: -1
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: -1
+ I: 1
+ A(1): -3
+ Y = -5
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: -5
+ X: -1
+ I: 2
+ A(2): 1
+ Y = 6
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 6
+ T(2,0) = 6
+550: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+520: LET X = X(J)
+ J: 3
+ X(3): 0
+ X = 0
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: 0
+ I: 1
+ A(1): -3
+ Y = -3
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: -3
+ X: 0
+ I: 2
+ A(2): 1
+ Y = 1
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 1
+ T(3,0) = 1
+550: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+520: LET X = X(J)
+ J: 4
+ X(4): 0.5
+ X = 0.5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0.5
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: 0.5
+ I: 1
+ A(1): -3
+ Y = -2
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: -2
+ X: 0.5
+ I: 2
+ A(2): 1
+ Y = 0
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 0
+ T(4,0) = 0
+550: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+520: LET X = X(J)
+ J: 5
+ X(5): 0.75
+ X = 0.75
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0.75
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: 0.75
+ I: 1
+ A(1): -3
+ Y = -1.5
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: -1.5
+ X: 0.75
+ I: 2
+ A(2): 1
+ Y = -0.125
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: -0.125
+ T(5,0) = -0.125
+550: NEXT J
+ J: 5
+ terminated:false
+ J = 6
+520: LET X = X(J)
+ J: 6
+ X(6): 1
+ X = 1
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 1
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: 1
+ I: 1
+ A(1): -3
+ Y = -1
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: -1
+ X: 1
+ I: 2
+ A(2): 1
+ Y = 0
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 0
+ T(6,0) = 0
+550: NEXT J
+ J: 6
+ terminated:false
+ J = 7
+520: LET X = X(J)
+ J: 7
+ X(7): 2.5
+ X = 2.5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 2.5
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: 2.5
+ I: 1
+ A(1): -3
+ Y = 2
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: 2.5
+ I: 2
+ A(2): 1
+ Y = 6
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 6
+ T(7,0) = 6
+550: NEXT J
+ J: 7
+ terminated:false
+ J = 8
+520: LET X = X(J)
+ J: 8
+ X(8): 5
+ X = 5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 5
+ I: 0
+ A(0): 2
+ Y = 2
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 2
+ X: 5
+ I: 1
+ A(1): -3
+ Y = 7
+1040: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1030: LET Y = Y * X + A(I)
+ Y: 7
+ X: 5
+ I: 2
+ A(2): 1
+ Y = 36
+1040: NEXT I
+ I: 2
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 36
+ T(8,0) = 36
+550: NEXT J
+ J: 8
+ terminated:true
+560: RETURN
+130: GOSUB 2000
+2000: REM  DIFFERENTIATE.
+2010: FOR I = 0 TO N
+ N: 2
+ I = 0
+ N = 2
+ terminated:false
+2020: LET A(I) = A(I) * (N - I)
+ I: 0
+ A(0): 2
+ N: 2
+ A(0) = 4
+2030: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+2020: LET A(I) = A(I) * (N - I)
+ I: 1
+ A(1): -3
+ N: 2
+ A(1) = -3
+2030: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+2020: LET A(I) = A(I) * (N - I)
+ I: 2
+ A(2): 1
+ N: 2
+ A(2) = 0
+2030: NEXT I
+ I: 2
+ terminated:true
+2040: LET N = N - 1
+ N: 2
+ N = 1
+2050: RETURN
+140: LET K = 1
+ K = 1
+150: GOSUB 500
+500: REM  RUN THROUGH X-VALUES
+510: FOR J = 1 TO X9
+ X9: 8
+ J = 1
+ X9 = 8
+ terminated:false
+520: LET X = X(J)
+ J: 1
+ X(1): -3
+ X = -3
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: -3
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: -3
+ I: 1
+ A(1): -3
+ Y = -15
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: -15
+ T(1,1) = -15
+550: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+520: LET X = X(J)
+ J: 2
+ X(2): -1
+ X = -1
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: -1
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: -1
+ I: 1
+ A(1): -3
+ Y = -7
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: -7
+ T(2,1) = -7
+550: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+520: LET X = X(J)
+ J: 3
+ X(3): 0
+ X = 0
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: 0
+ I: 1
+ A(1): -3
+ Y = -3
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: -3
+ T(3,1) = -3
+550: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+520: LET X = X(J)
+ J: 4
+ X(4): 0.5
+ X = 0.5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0.5
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: 0.5
+ I: 1
+ A(1): -3
+ Y = -1
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: -1
+ T(4,1) = -1
+550: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+520: LET X = X(J)
+ J: 5
+ X(5): 0.75
+ X = 0.75
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0.75
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: 0.75
+ I: 1
+ A(1): -3
+ Y = 0
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 0
+ T(5,1) = 0
+550: NEXT J
+ J: 5
+ terminated:false
+ J = 6
+520: LET X = X(J)
+ J: 6
+ X(6): 1
+ X = 1
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 1
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: 1
+ I: 1
+ A(1): -3
+ Y = 1
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 1
+ T(6,1) = 1
+550: NEXT J
+ J: 6
+ terminated:false
+ J = 7
+520: LET X = X(J)
+ J: 7
+ X(7): 2.5
+ X = 2.5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 2.5
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: 2.5
+ I: 1
+ A(1): -3
+ Y = 7
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 7
+ T(7,1) = 7
+550: NEXT J
+ J: 7
+ terminated:false
+ J = 8
+520: LET X = X(J)
+ J: 8
+ X(8): 5
+ X = 5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 5
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+1030: LET Y = Y * X + A(I)
+ Y: 4
+ X: 5
+ I: 1
+ A(1): -3
+ Y = 17
+1040: NEXT I
+ I: 1
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 17
+ T(8,1) = 17
+550: NEXT J
+ J: 8
+ terminated:true
+560: RETURN
+160: GOSUB 2000
+2000: REM  DIFFERENTIATE.
+2010: FOR I = 0 TO N
+ N: 1
+ I = 0
+ N = 1
+ terminated:false
+2020: LET A(I) = A(I) * (N - I)
+ I: 0
+ A(0): 4
+ N: 1
+ A(0) = 4
+2030: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+2020: LET A(I) = A(I) * (N - I)
+ I: 1
+ A(1): -3
+ N: 1
+ A(1) = 0
+2030: NEXT I
+ I: 1
+ terminated:true
+2040: LET N = N - 1
+ N: 1
+ N = 0
+2050: RETURN
+170: LET K = 2
+ K = 2
+180: GOSUB 500
+500: REM  RUN THROUGH X-VALUES
+510: FOR J = 1 TO X9
+ X9: 8
+ J = 1
+ X9 = 8
+ terminated:false
+520: LET X = X(J)
+ J: 1
+ X(1): -3
+ X = -3
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: -3
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(1,2) = 4
+550: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+520: LET X = X(J)
+ J: 2
+ X(2): -1
+ X = -1
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: -1
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(2,2) = 4
+550: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+520: LET X = X(J)
+ J: 3
+ X(3): 0
+ X = 0
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(3,2) = 4
+550: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+520: LET X = X(J)
+ J: 4
+ X(4): 0.5
+ X = 0.5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0.5
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(4,2) = 4
+550: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+520: LET X = X(J)
+ J: 5
+ X(5): 0.75
+ X = 0.75
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 0.75
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(5,2) = 4
+550: NEXT J
+ J: 5
+ terminated:false
+ J = 6
+520: LET X = X(J)
+ J: 6
+ X(6): 1
+ X = 1
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 1
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(6,2) = 4
+550: NEXT J
+ J: 6
+ terminated:false
+ J = 7
+520: LET X = X(J)
+ J: 7
+ X(7): 2.5
+ X = 2.5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 2.5
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(7,2) = 4
+550: NEXT J
+ J: 7
+ terminated:false
+ J = 8
+520: LET X = X(J)
+ J: 8
+ X(8): 5
+ X = 5
+530: GOSUB 1000
+1000: REM  EVALUATE.
+1010: LET Y = 0
+ Y = 0
+1020: FOR I = 0 TO N
+ N: 0
+ I = 0
+ N = 0
+ terminated:false
+1030: LET Y = Y * X + A(I)
+ Y: 0
+ X: 5
+ I: 0
+ A(0): 4
+ Y = 4
+1040: NEXT I
+ I: 0
+ terminated:true
+1050: RETURN
+540: LET T(J, K) = Y
+ Y: 4
+ T(8,2) = 4
+550: NEXT J
+ J: 8
+ terminated:true
+560: RETURN
+190:
+200: REM  PRINT ANSWERS.
+210: PRINT " X", "POLY.", "1ST DER.", "2D DER."
+ X              POLY.           1ST DER.        2D DER.
+220: PRINT
+
+230: FOR J = 1 TO X9
+ X9: 8
+ J = 1
+ X9 = 8
+ terminated:false
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 1
+ X(1): -3
+-3              
+ T(1,0): 28
+ 28             
+ T(1,1): -15
+-15             
+ T(1,2): 4
+ 4
+250: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 2
+ X(2): -1
+-1              
+ T(2,0): 6
+ 6              
+ T(2,1): -7
+-7              
+ T(2,2): 4
+ 4
+250: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 3
+ X(3): 0
+ 0              
+ T(3,0): 1
+ 1              
+ T(3,1): -3
+-3              
+ T(3,2): 4
+ 4
+250: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 4
+ X(4): 0.5
+ 0.5            
+ T(4,0): 0
+ 0              
+ T(4,1): -1
+-1              
+ T(4,2): 4
+ 4
+250: NEXT J
+ J: 4
+ terminated:false
+ J = 5
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 5
+ X(5): 0.75
+ 0.75           
+ T(5,0): -0.125
+-0.125          
+ T(5,1): 0
+ 0              
+ T(5,2): 4
+ 4
+250: NEXT J
+ J: 5
+ terminated:false
+ J = 6
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 6
+ X(6): 1
+ 1              
+ T(6,0): 0
+ 0              
+ T(6,1): 1
+ 1              
+ T(6,2): 4
+ 4
+250: NEXT J
+ J: 6
+ terminated:false
+ J = 7
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 7
+ X(7): 2.5
+ 2.5            
+ T(7,0): 6
+ 6              
+ T(7,1): 7
+ 7              
+ T(7,2): 4
+ 4
+250: NEXT J
+ J: 7
+ terminated:false
+ J = 8
+240: PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+ J: 8
+ X(8): 5
+ 5              
+ T(8,0): 36
+ 36             
+ T(8,1): 17
+ 17             
+ T(8,2): 4
+ 4
+250: NEXT J
+ J: 8
+ terminated:true
+260: STOP
+STOP in line 260
