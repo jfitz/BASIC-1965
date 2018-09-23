@@ -80,7 +80,7 @@ class Shell
         timing = Benchmark.measure {
           @program.run(@interpreter, @action_flags)
         }
-        print_timing(timing, @console_io)
+        print_timing(timing, @console_io) if @action_flags['timing']
       end
     when 'BREAK'
       @interpreter.set_breakpoints(args)
@@ -229,12 +229,12 @@ parse_filename = options[:parse_name]
 run_filename = options[:run_name]
 cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
-show_heading = !options.key?(:no_heading)
-show_timing = !options.key?(:no_timing)
 
 action_flags = {}
 action_flags['trace'] = options.key?(:trace)
 action_flags['provenence'] = options.key?(:provenence)
+action_flags['timing'] = !options.key?(:no_timing)
+action_flags['heading'] = !options.key?(:no_heading)
 
 output_flags = {}
 output_flags['echo'] = options.key?(:echo_input)
@@ -262,7 +262,7 @@ console_io = ConsoleIo.new(output_flags)
 
 tokenbuilders = make_interpreter_tokenbuilders
 
-if show_heading
+if action_flags['heading']
   console_io.print_line('BASIC-1965 interpreter version -1')
   console_io.newline
 end
@@ -279,7 +279,7 @@ if !run_filename.nil?
       program.run(interpreter, action_flags)
     }
 
-    print_timing(timing, console_io) if show_timing
+    print_timing(timing, console_io) if action_flags['timing']
     program.profile('') if show_profile
   end
 elsif !list_filename.nil?
@@ -309,7 +309,7 @@ else
   shell.run
 end
 
-if show_heading
+if action_flags['heading']
   console_io.newline
   console_io.print_line('BASIC-1965 ended')
 end
