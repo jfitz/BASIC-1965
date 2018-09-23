@@ -40,19 +40,19 @@ class Shell
 
   private
 
-  def process_line(cmd)
+  def process_line(line)
     # starts with a number, so maybe it is a program line
-    return @program.store_program_line(cmd, true) if /\A\d/ =~ cmd
+    return @program.store_program_line(line, true) if /\A\d/ =~ line
 
     # immediate command -- tokenize and execute
     tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
-    tokens = tokenizer.tokenize(cmd)
+    tokens = tokenizer.tokenize(line)
     tokens.delete_if(&:whitespace?)
 
-    process_command(tokens)
+    process_command(tokens, line)
   end
 
-  def process_command(tokens)
+  def process_command(tokens, line)
     return false if tokens.empty?
 
     keyword = tokens[0]
@@ -61,7 +61,7 @@ class Shell
     if keyword.keyword?
       execute_command(keyword, args)
     else
-      print "Unknown command '#{keyword}'\n"
+      print "Unknown command '#{line}'\n"
     end
   end
 
