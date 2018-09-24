@@ -65,6 +65,14 @@ class Shell
     end
   end
 
+  def option_command(args)
+    @action_flags.each do |option|
+      name = option[0].upcase
+      value = option[1].to_s.upcase
+      @console_io.print_line(name + ' ' + value)
+    end
+  end
+
   def execute_command(keyword, args)
     need_prompt = true
 
@@ -119,6 +127,8 @@ class Shell
       @interpreter.dump_user_functions
     when 'VARS'
       @interpreter.dump_vars
+    when 'OPTION'
+      option_command(args)
     else
       print "Unknown command #{keyword}\n"
     end
@@ -168,8 +178,8 @@ def make_command_tokenbuilders
   tokenbuilders = []
 
   keywords = %w(
-    BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW PARSE PRETTY PROFILE
-    RENUMBER RUN SAVE TOKENS TRACE UDFS VARS
+    BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
+    PROFILE RENUMBER RUN SAVE TOKENS TRACE UDFS VARS
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
