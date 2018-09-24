@@ -61,15 +61,19 @@ class Shell
     if keyword.keyword?
       execute_command(keyword, args)
     else
-      print "Unknown command '#{line}'\n"
+      @console_io.print_line("Unknown command '#{line}'\n")
     end
   end
 
   def option_command(args)
-    @action_flags.each do |option|
-      name = option[0].upcase
-      value = option[1].to_s.upcase
-      @console_io.print_line(name + ' ' + value)
+    if args.empty?
+      @action_flags.each do |option|
+        name = option[0].upcase
+        value = option[1].to_s.upcase
+        @console_io.print_line(name + ' ' + value)
+      end
+    else
+      @console_io.print_line("Syntax error\n")
     end
   end
 
