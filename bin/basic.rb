@@ -61,7 +61,8 @@ class Shell
     if keyword.keyword?
       execute_command(keyword, args)
     else
-      @console_io.print_line("Unknown command '#{line}'\n")
+      @console_io.print_line("Unknown command '#{line}'")
+      @console_io.newline
     end
   end
 
@@ -72,8 +73,19 @@ class Shell
         value = option[1].to_s.upcase
         @console_io.print_line(name + ' ' + value)
       end
+    elsif args.size == 1 && args[0].keyword?
+      kwd = args[0].to_s
+      kwd_d = kwd.downcase
+      if @action_flags.key?(kwd_d)
+        value = @action_flags[kwd_d].to_s.upcase
+        @console_io.print_line("#{kwd} #{value}")
+      else
+        @console_io.print_line("Unknown option #{kwd}")
+        @console_io.newline
+      end
     else
-      @console_io.print_line("Syntax error\n")
+      @console_io.print_line('Syntax error')
+      @console_io.newline
     end
   end
 
@@ -134,12 +146,14 @@ class Shell
     when 'OPTION'
       option_command(args)
     else
-      print "Unknown command #{keyword}\n"
+      @console_io.print_line("Unknown command #{keyword}")
+      @console_io.newline
     end
 
     need_prompt
   rescue BASICCommandError => e
     @console_io.print_line(e.to_s)
+    @console_io.newline
     true
   end
 end
@@ -182,8 +196,8 @@ def make_command_tokenbuilders
   tokenbuilders = []
 
   keywords = %w(
-    BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
-    PROFILE RENUMBER RUN SAVE TOKENS TRACE UDFS VARS
+    BREAK CROSSREF DELETE DIMS EXIT HEADING LIST LOAD NEW OPTION PARSE PRETTY
+    PROFILE PROVENENCE RENUMBER RUN SAVE TIMING TRACE TOKENS UDFS VARS
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
