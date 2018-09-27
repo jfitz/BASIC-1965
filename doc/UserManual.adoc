@@ -340,6 +340,28 @@ Syntax:	PARSE [line specification]
 
 The line specification is the same as the line specification for the LIST command.
 
+OPTION
+~~~~~~
+
+Display or set various options for the BASIC interpreter.
+
+Syntax: OPTION
+Syntax: OPTION option
+Syntax: OPTION option TRUE|FALSE
+
+The first form ('OPTION' by itself) lists the options and their current values.
+The second form lists a specific option and its current value.
+The final form sets the value for an option.
+
+The options that can be set are:
+
+    HEADING
+    TIMING
+    TRACE
+    PROVENENCE
+
+These options can be initialized on the command line.
+The OPTION command overrides the command-line setting.
 
 
 Debug shell
