@@ -83,6 +83,18 @@ class Shell
         @console_io.print_line("Unknown option #{kwd}")
         @console_io.newline
       end
+    elsif args.size == 2 && args[0].keyword? && args[1].boolean_constant?
+      kwd = args[0].to_s
+      kwd_d = kwd.downcase
+      if @action_flags.key?(kwd_d)
+        boolean = BooleanConstant.new(args[1])
+        @action_flags[kwd_d] = boolean.to_v
+        value = @action_flags[kwd_d].to_s.upcase
+        @console_io.print_line("#{kwd} #{value}")
+      else
+        @console_io.print_line("Unknown option #{kwd}")
+        @console_io.newline
+      end
     else
       @console_io.print_line('Syntax error')
       @console_io.newline
@@ -211,6 +223,7 @@ def make_command_tokenbuilders
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new
 
+  tokenbuilders << ListTokenBuilder.new(%w(TRUE FALSE), BooleanConstantToken)
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
