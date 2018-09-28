@@ -81,7 +81,6 @@ class StatementFactory
       RestoreStatement,
       ReturnStatement,
       StopStatement,
-      TraceStatement,
       WriteStatement
     ]
   end
@@ -1528,45 +1527,6 @@ class StopStatement < AbstractStatement
     io = interpreter.console_io
     io.newline_when_needed
     interpreter.stop
-  end
-end
-
-# TRACE
-class TraceStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('TRACE')]
-    ]
-  end
-
-  def initialize(keywords, tokens_lists)
-    super
-    template = [[1, '>=']]
-
-    if check_template(tokens_lists, template)
-      @tokens_lists = split_tokens(tokens_lists[0], false)
-    else
-      @errors << 'Syntax error'
-    end
-
-    @errors << 'Too many values' if @tokens_lists.size > 1
-    @expression = ValueScalarExpression.new(tokens_lists[0])
-  end
-
-  def dump
-    @expression.dump
-  end
-
-  def execute(interpreter)
-    values = @expression.evaluate(interpreter)
-    value = values[0]
-    interpreter.set_trace(value.to_v)
-  end
-
-  def variables
-    vars = []
-    vars += @expression.variables unless @expression.nil?
-    vars
   end
 end
 

@@ -120,11 +120,6 @@ class Shell
       end
     when 'BREAK'
       @interpreter.set_breakpoints(args)
-    when 'TRACE'
-      old_trace_flag = @action_flags['trace']
-      @action_flags['trace'] = true
-      @program.run(@interpreter, @action_flags) if @program.check
-      @action_flags['trace'] = old_trace_flag
     when 'LOAD'
       @interpreter.clear_breakpoints
       @program.load(args)
