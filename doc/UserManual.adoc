@@ -843,6 +843,30 @@ You can GOTO out of a loop and later GOTO back into it.
 BASIC-1965 will remember the state of the loop.
 If you GOTO into a FOR/NEXT loop (without activating it by the FOR statement), the eventual NEXT statement will cause an error.
 
+OPTION
+~~~~~~
+
+Sets an option for the interpreter.
+
+Syntax: OPTION option expression
+
+Option is either 'TRACE' or 'PROVENENCE'.
+The options for HEADING and TIMING are not available as a run-time option.
+
+Expression must evaluate to a boolean value.
+It may be 'TRUE' or 'FALSE' or a more complex expression.
+
+Examples:
+
+	10 OPTION TRACE TRUE
+	40 OPTION PROVENENCE A > 0
+
+Unlike other interpreters, the OPTION statement is executed in-line.
+It is not a setting prior to the execution of the program.
+
+A program may contain multiple OPTION statements.
+Each will be executed as a normal statement.
+
 PRINT
 ~~~~~
 
@@ -852,6 +876,7 @@ Printing to console
 ^^^^^^^^^^^^^^^^^^^
 
 Syntax:	PRINT expression list
+
 Items in the list are separated by either commas or semicolons.
 A comma forces the next item to the next tab stop (tab stops are every 14 positions).
 A semicolon makes the next item adjacent to the previous item.

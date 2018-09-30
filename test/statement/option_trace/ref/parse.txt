@@ -1,0 +1,26 @@
+10 REM TEST THE OPTION STATEMENT
+ Remark:TEST THE OPTION STATEMENT
+20 OPTION TRACE TRUE
+ BooleanConstant:true
+30 READ A,B,C
+ ScalarReference:A
+ ScalarReference:B
+ ScalarReference:C
+40 PRINT A,B,C
+ ITEMS
+ ScalarValue:A
+ CarriageControl:,
+ ScalarValue:B
+ CarriageControl:,
+ ScalarValue:C
+ CarriageControl:NL
+50 OPTION TRACE 1 = 0
+ NumericConstant:1
+ NumericConstant:0
+ BinaryOperator:=
+90 DATA 1,2,3
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:3
+99 END
+ 

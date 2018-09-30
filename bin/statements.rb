@@ -75,6 +75,7 @@ class StatementFactory
       MatWriteStatement,
       MatLetStatement,
       NextStatement,
+      OptionStatement,
       PrintStatement,
       ReadStatement,
       RemarkStatement,
@@ -130,15 +131,24 @@ class StatementFactory
     statement = EmptyStatement.new
 
     unless statement_tokens.empty?
-      statement = UnknownStatement.new(text)
+      statement = nil
 
       keywords, tokens = extract_keywords(statement_tokens)
 
-      if @statement_definitions.key?(keywords)
-        tokens_lists = split_keywords(tokens)
+      while statement.nil?
+        if @statement_definitions.key?(keywords)
+          tokens_lists = split_keywords(tokens)
 
-        statement =
-          @statement_definitions[keywords].new(keywords, tokens_lists)
+          statement =
+            @statement_definitions[keywords].new(keywords, tokens_lists)
+        else
+          if keywords.empty?
+            statement = UnknownStatement.new(text) if statement.nil?
+          else
+            keyword = keywords.pop
+            tokens.unshift(keyword)
+          end
+        end
       end
     end
 
@@ -298,12 +308,27 @@ class AbstractStatement
       control = pair[0]
       value = pair[1]
 
-      if control.class.to_s == 'String' && value.class.to_s == 'KeywordToken'
-        result &= value.to_s == control
-      elsif control.class.to_s == 'Array' && value.class.to_s == 'Array'
+      if control.class.to_s == 'Array' &&
+         value.class.to_s == 'Array'
+
+        # control array and value array implies an expression
         result &= value.size == control[0] if control.size == 1
         result &= value.size >= control[0] if
           control.size == 2 && control[1] == '>='
+        
+      elsif control.class.to_s == 'Array' &&
+            value.class.to_s == 'KeywordToken'
+
+        # control array and single value (not array of one) implies
+        # multiple possible keywords
+        result &= control.include?(value.to_s)
+
+      elsif control.class.to_s == 'String' &&
+            value.class.to_s == 'KeywordToken'
+
+        # single control and single value is a specific keyword
+        result &= value.to_s == control
+
       else
         result = false
       end
@@ -1273,6 +1298,54 @@ class NextStatement < AbstractStatement
       # change control variable value
       fornext_control.bump_control(interpreter)
     end
+  end
+end
+
+# OPTION
+class OptionStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('OPTION')]
+    ]
+  end
+
+  def self.extra_keywords
+    %w(PROVENENCE TRACE)
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+
+    # omit HEADING and TIMING as they are not used in the interpreter
+    template = [['PROVENENCE', 'TRACE'], [1, '>=']]
+
+    if check_template(tokens_lists, template)
+      @key = tokens_lists[0].to_s.downcase
+      tokens = split_tokens(tokens_lists[1], true)
+      @expression = ValueScalarExpression.new(tokens[0])
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def dump
+    lines = []
+    lines += @expression.dump unless @expression.nil?
+    lines
+  end
+
+  def execute(interpreter)
+    console_io = interpreter.console_io
+
+    values = @expression.evaluate(interpreter)
+    value0 = values[0]
+    interpreter.set_action(@key, value0.to_v)
+  end
+
+  def variables
+    vars = []
+    vars += @expression.variables unless @expression.nil?
+    vars
   end
 end
 
