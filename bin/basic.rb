@@ -70,27 +70,38 @@ class Shell
     if args.empty?
       @action_flags.each do |option|
         name = option[0].upcase
-        value = option[1].to_s.upcase
+        value = option[1][:value].to_s.upcase
         @console_io.print_line(name + ' ' + value)
       end
     elsif args.size == 1 && args[0].keyword?
       kwd = args[0].to_s
       kwd_d = kwd.downcase
+
       if @action_flags.key?(kwd_d)
-        value = @action_flags[kwd_d].to_s.upcase
+        value = @action_flags[kwd_d][:value].to_s.upcase
         @console_io.print_line("#{kwd} #{value}")
       else
         @console_io.print_line("Unknown option #{kwd}")
         @console_io.newline
       end
-    elsif args.size == 2 && args[0].keyword? && args[1].boolean_constant?
+    elsif args.size == 2 && args[0].keyword?
       kwd = args[0].to_s
       kwd_d = kwd.downcase
+
       if @action_flags.key?(kwd_d)
-        boolean = BooleanConstant.new(args[1])
-        @action_flags[kwd_d] = boolean.to_v
-        value = @action_flags[kwd_d].to_s.upcase
-        @console_io.print_line("#{kwd} #{value}")
+        case @action_flags[kwd_d][:type]
+        when :bool
+          if args[1].boolean_constant?
+            boolean = BooleanConstant.new(args[1])
+            @action_flags[kwd_d][:value] = boolean.to_v
+            value = @action_flags[kwd_d][:value].to_s.upcase
+            @console_io.print_line("#{kwd} #{value}")
+          else
+            @console_io.print_line('Incorrect value type')
+          end
+        else
+          @console_io.print_line('Unknown value type')
+        end
       else
         @console_io.print_line("Unknown option #{kwd}")
         @console_io.newline
@@ -116,7 +127,7 @@ class Shell
         timing = Benchmark.measure {
           @program.run(@interpreter, @action_flags)
         }
-        print_timing(timing, @console_io) if @action_flags['timing']
+        print_timing(timing, @console_io) if @action_flags['timing'][:value]
       end
     when 'BREAK'
       @interpreter.set_breakpoints(args)
@@ -267,10 +278,22 @@ cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 
 action_flags = {}
-action_flags['trace'] = options.key?(:trace)
-action_flags['provenence'] = options.key?(:provenence)
-action_flags['timing'] = !options.key?(:no_timing)
-action_flags['heading'] = !options.key?(:no_heading)
+action_flags['trace'] = {
+  :value => options.key?(:trace),
+  :type => :bool
+}
+action_flags['provenence'] = {
+  :value => options.key?(:provenence),
+  :type => :bool
+}
+action_flags['timing'] = {
+  :value => !options.key?(:no_timing),
+  :type => :bool
+}
+action_flags['heading'] = {
+  :value => !options.key?(:no_heading),
+  :type => :bool
+}
 
 output_flags = {}
 output_flags['echo'] = options.key?(:echo_input)
@@ -298,7 +321,7 @@ console_io = ConsoleIo.new(output_flags)
 
 tokenbuilders = make_interpreter_tokenbuilders
 
-if action_flags['heading']
+if action_flags['heading'][:value]
   console_io.print_line('BASIC-1965 interpreter version -1')
   console_io.newline
 end
@@ -315,7 +338,7 @@ if !run_filename.nil?
       program.run(interpreter, action_flags)
     }
 
-    print_timing(timing, console_io) if action_flags['timing']
+    print_timing(timing, console_io) if action_flags['timing'][:value]
     program.profile('') if show_profile
   end
 elsif !list_filename.nil?
@@ -345,7 +368,7 @@ else
   shell.run
 end
 
-if action_flags['heading']
+if action_flags['heading'][:value]
   console_io.newline
   console_io.print_line('BASIC-1965 ended')
 end

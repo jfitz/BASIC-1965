@@ -1321,8 +1321,8 @@ class OptionStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       @key = tokens_lists[0].to_s.downcase
-      tokens = split_tokens(tokens_lists[1], true)
-      @expression = ValueScalarExpression.new(tokens[0])
+      expression_tokens = split_tokens(tokens_lists[1], true)
+      @expression = ValueScalarExpression.new(expression_tokens[0])
     else
       @errors << 'Syntax error'
     end
@@ -1339,6 +1339,14 @@ class OptionStatement < AbstractStatement
 
     values = @expression.evaluate(interpreter)
     value0 = values[0]
+
+    case interpreter.get_type(@key)
+    when :bool
+      raise(BASICRuntimeError, 'Incorrect value type') unless value0.boolean_constant?
+    else
+      raise(BASICRuntimeError, 'Unknown value type')
+    end
+
     interpreter.set_action(@key, value0.to_v)
   end
 
