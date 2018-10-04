@@ -300,6 +300,10 @@ class Program
     end
   end
 
+  def duplicate(o)
+    Marshal.load(Marshal.dump(o))
+  end
+
   public
 
   def preexecute_loop(interpreter)
@@ -352,7 +356,8 @@ class Program
     end
 
     reset_profile_metrics
-    interpreter.run(self, action_flags.clone)
+    flags = duplicate(action_flags)
+    interpreter.run(self, flags)
   end
 
   def profile(args)
