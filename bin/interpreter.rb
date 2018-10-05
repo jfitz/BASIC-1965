@@ -5,12 +5,10 @@ class Interpreter
   attr_reader :console_io
   attr_reader :trace_out
 
-  def initialize(console_io, interpreter_flags)
+  def initialize(console_io, interpreter_options)
     @randomizer = Random.new(1)
-    @randomizer = Random.new if interpreter_flags['randomize']
-    @int_floor = interpreter_flags['int_floor']
-    @ignore_rnd_arg = interpreter_flags['ignore_rnd_arg']
-    @lock_fornext = interpreter_flags['lock_fornext']
+    @randomizer = Random.new if interpreter_options['randomize']
+    @interpreter_options = interpreter_options
 
     @tokenbuilders = make_debug_tokenbuilders
     @console_io = console_io
@@ -74,13 +72,13 @@ class Interpreter
 
   public
 
-  def run(program, action_flags)
+  def run(program, action_options)
     @program = program
 
-    @action_flags = action_flags
+    @action_options = action_options
     @step_mode = false
 
-    trace = @action_flags['trace'].value
+    trace = @action_options['trace'].value
     @trace_out = trace ? @console_io : @null_out
     @variables = {}
 
@@ -122,13 +120,16 @@ class Interpreter
     case keyword.to_s
     when 'GO'
       raise(BASICCommandError, 'Too many arguments') unless args.empty?
+
       @debug_done = true
     when 'STOP'
       raise(BASICCommandError, 'Too many arguments') unless args.empty?
+
       @debug_done = true
       stop_running
     when 'STEP'
       raise(BASICCommandError, 'Too many arguments') unless args.empty?
+
       @step_mode = true
       @debug_done = true
     when 'BREAK'
@@ -175,6 +176,7 @@ class Interpreter
     @console_io.print_line(@current_line_number.to_s + ': ' + line.pretty)
     @step_mode = false
     @debug_done = false
+
     until @debug_done
       @console_io.print_line('DEBUG')
       cmd = @console_io.read_line
@@ -297,11 +299,11 @@ class Interpreter
   end
 
   def get_type(name)
-    @action_flags[name].type
+    @action_options[name].type
   end
 
   def set_action(name, value)
-    @action_flags[name].set(value)
+    @action_options[name].set(value)
     if name == 'trace'
       @trace_out = value ? @console_io : @null_out
     end
@@ -322,17 +324,20 @@ class Interpreter
 
   # returns an Array of values
   def evaluate(parsed_expressions)
-    trace = @action_flags['trace'].value
+    trace = @action_options['trace'].value
 
     result_values = []
     parsed_expressions.each do |parsed_expression|
       stack = []
       exp = parsed_expression.empty? ? 0 : 1
+
       parsed_expression.each do |element|
         value = element.evaluate(self, stack)
         stack.push value
       end
+
       act = stack.length
+
       raise(BASICRuntimeError, 'Bad expression') if act != exp
 
       next if act.zero?
@@ -383,7 +388,7 @@ class Interpreter
     upper_bound = upper_bound.to_v
     upper_bound = upper_bound.truncate
     upper_bound = 1 if upper_bound <= 0
-    upper_bound = 1 if @ignore_rnd_arg
+    upper_bound = 1 if @interpreter_options['ignore_rnd_arg']
     upper_bound = upper_bound.to_f
     NumericConstant.new(@randomizer.rand(upper_bound))
   end
@@ -401,10 +406,12 @@ class Interpreter
   def normalize_subscripts(subscripts)
     raise(BASICSyntaxError, 'Invalid subscripts container') unless
       subscripts.class.to_s == 'Array'
+
     int_subscripts = []
     subscripts.each do |subscript|
       raise(BASICExpressionError, "Invalid subscript #{subscript}") unless
         subscript.numeric_constant?
+
       int_subscripts << subscript.truncate
     end
     int_subscripts
@@ -499,9 +506,10 @@ class Interpreter
       seen = @get_value_seen.include?(variable)
     end
 
-    trace = @action_flags['trace'].value
+    trace = @action_options['trace'].value
+
     if trace && !seen
-      provenence = @action_flags['provenence'].value
+      provenence = @action_options['provenence'].value
       if provenence && !line.nil?
         text = ' ' + variable.to_s + ': (' + line.to_s + ') ' + value.to_s
       else
@@ -524,7 +532,7 @@ class Interpreter
       legals.include?(variable.class.to_s)
 
     raise(BASICRuntimeError, "Cannot change locked variable #{variable}") if
-      @lock_fornext && @locked_variables.include?(variable)
+      @interpreter_options['lock_fornext'] && @locked_variables.include?(variable)
 
     # check that value type matches variable type
     unless variable.compatible?(value)
@@ -548,20 +556,24 @@ class Interpreter
   end
 
   def lock_variable(variable)
-    return unless @lock_fornext
+    return unless @interpreter_options['lock_fornext']
+
     if @locked_variables.include?(variable)
       raise(BASICExeption,
             "Attempt to lock an already locked variable #{variable}")
     end
+
     @locked_variables << variable
   end
 
   def unlock_variable(variable)
-    return unless @lock_fornext
+    return unless @interpreter_options['lock_fornext']
+
     unless @locked_variables.include?(variable)
       raise(BASICRuntimeError,
             "Attempt to unlock a variable #{variable} not locked")
     end
+
     @locked_variables.delete(variable)
   end
 
@@ -571,6 +583,7 @@ class Interpreter
 
   def pop_return
     raise(BASICRuntimeError, 'RETURN without GOSUB') if @return_stack.empty?
+
     @return_stack.pop
   end
 
@@ -581,7 +594,9 @@ class Interpreter
 
   def retrieve_fornext(control_variable)
     fornext = @fornexts[control_variable]
+
     raise(BASICRuntimeError, 'NEXT without FOR') if fornext.nil?
+
     fornext
   end
 
@@ -589,8 +604,10 @@ class Interpreter
     file_names.each do |name|
       raise(BASICRuntimeError, 'Invalid file name') unless
         name.text_constant?
+
       raise(BASICRuntimeError, "File '#{name.value}' not found") unless
         File.file?(name.value)
+
       file_handle = FileHandle.new(@file_handlers.size + 1)
       @file_handlers[file_handle] = FileHandler.new(name.value)
     end
@@ -601,6 +618,7 @@ class Interpreter
 
     raise(BASICRuntimeError, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
+
     fh = @file_handlers[file_handle]
     fh.set_mode(mode)
     fh
@@ -611,12 +629,13 @@ class Interpreter
 
     raise(BASICRuntimeError, 'Unknown file handle') unless
       @file_handlers.key?(file_handle)
+
     fh = @file_handlers[file_handle]
     fh.set_mode(:read)
     fh
   end
 
   def int_floor?
-    @int_floor
+    @interpreter_options['int_floor']
   end
 end
