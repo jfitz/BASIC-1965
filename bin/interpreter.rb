@@ -80,7 +80,7 @@ class Interpreter
     @action_flags = action_flags
     @step_mode = false
 
-    trace = @action_flags['trace'][:value]
+    trace = @action_flags['trace'].value
     @trace_out = trace ? @console_io : @null_out
     @variables = {}
 
@@ -297,11 +297,11 @@ class Interpreter
   end
 
   def get_type(name)
-    @action_flags[name][:type]
+    @action_flags[name].type
   end
 
   def set_action(name, value)
-    @action_flags[name][:value] = value
+    @action_flags[name].set(value)
     if name == 'trace'
       @trace_out = value ? @console_io : @null_out
     end
@@ -322,7 +322,7 @@ class Interpreter
 
   # returns an Array of values
   def evaluate(parsed_expressions)
-    trace = @action_flags['trace'][:value]
+    trace = @action_flags['trace'].value
 
     result_values = []
     parsed_expressions.each do |parsed_expression|
@@ -499,9 +499,9 @@ class Interpreter
       seen = @get_value_seen.include?(variable)
     end
 
-    trace = @action_flags['trace'][:value]
+    trace = @action_flags['trace'].value
     if trace && !seen
-      provenence = @action_flags['provenence'][:value]
+      provenence = @action_flags['provenence'].value
       if provenence && !line.nil?
         text = ' ' + variable.to_s + ': (' + line.to_s + ') ' + value.to_s
       else

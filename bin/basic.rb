@@ -17,6 +17,38 @@ require_relative 'statements'
 require_relative 'interpreter'
 require_relative 'program'
 
+# option class
+class Option
+  attr_reader :type
+  attr_reader :value
+
+  def initialize(type, value)
+    @type = type
+    check_value(value)
+    @value = value
+  end
+
+  def set(value)
+    check_value(value)
+    @value = value
+  end
+
+  private
+
+  def check_value(value)
+    case @type
+    when :bool
+      legals = %w(TrueClass FalseClass)
+      raise(BASICRuntimeError, 'Invalid value') unless legals.include?(value.class.to_s)
+    when :int
+      legals = %w(Fixnum)
+      raise(BASICRuntimeError, 'Invalid value') unless legals.include?(value.class.to_s)
+    else
+      raise(BASICRuntimeError, 'Unknown value type')
+    end
+  end
+end
+
 # interactive shell
 class Shell
   def initialize(console_io, interpreter, program, action_flags, tokenbuilders)
@@ -70,7 +102,7 @@ class Shell
     if args.empty?
       @action_flags.each do |option|
         name = option[0].upcase
-        value = option[1][:value].to_s.upcase
+        value = option[1].value.to_s.upcase
         @console_io.print_line(name + ' ' + value)
       end
     elsif args.size == 1 && args[0].keyword?
@@ -78,7 +110,7 @@ class Shell
       kwd_d = kwd.downcase
 
       if @action_flags.key?(kwd_d)
-        value = @action_flags[kwd_d][:value].to_s.upcase
+        value = @action_flags[kwd_d].value.to_s.upcase
         @console_io.print_line("#{kwd} #{value}")
       else
         @console_io.print_line("Unknown option #{kwd}")
@@ -89,19 +121,18 @@ class Shell
       kwd_d = kwd.downcase
 
       if @action_flags.key?(kwd_d)
-        case @action_flags[kwd_d][:type]
-        when :bool
+        begin
           if args[1].boolean_constant?
             boolean = BooleanConstant.new(args[1])
-            @action_flags[kwd_d][:value] = boolean.to_v
-            value = @action_flags[kwd_d][:value].to_s.upcase
-            @console_io.print_line("#{kwd} #{value}")
+            @action_flags[kwd_d].set(boolean.to_v)
           else
             @console_io.print_line('Incorrect value type')
           end
-        else
-          @console_io.print_line('Unknown value type')
+        rescue BASICRuntimeError => e
+          @console_io.print_line(e)
         end
+        value = @action_flags[kwd_d].value.to_s.upcase
+        @console_io.print_line("#{kwd} #{value}")
       else
         @console_io.print_line("Unknown option #{kwd}")
         @console_io.newline
@@ -127,7 +158,7 @@ class Shell
         timing = Benchmark.measure {
           @program.run(@interpreter, @action_flags)
         }
-        print_timing(timing, @console_io) if @action_flags['timing'][:value]
+        print_timing(timing, @console_io) if @action_flags['timing'].value
       end
     when 'BREAK'
       @interpreter.set_breakpoints(args)
@@ -278,22 +309,10 @@ cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 
 action_flags = {}
-action_flags['trace'] = {
-  :value => options.key?(:trace),
-  :type => :bool
-}
-action_flags['provenence'] = {
-  :value => options.key?(:provenence),
-  :type => :bool
-}
-action_flags['timing'] = {
-  :value => !options.key?(:no_timing),
-  :type => :bool
-}
-action_flags['heading'] = {
-  :value => !options.key?(:no_heading),
-  :type => :bool
-}
+action_flags['trace'] = Option.new(:bool, options.key?(:trace))
+action_flags['provenence'] = Option.new(:bool, options.key?(:provenence))
+action_flags['timing'] = Option.new(:bool, !options.key?(:no_timing))
+action_flags['heading'] = Option.new(:bool, !options.key?(:no_heading))
 
 output_flags = {}
 output_flags['echo'] = options.key?(:echo_input)
@@ -321,7 +340,7 @@ console_io = ConsoleIo.new(output_flags)
 
 tokenbuilders = make_interpreter_tokenbuilders
 
-if action_flags['heading'][:value]
+if action_flags['heading'].value
   console_io.print_line('BASIC-1965 interpreter version -1')
   console_io.newline
 end
@@ -338,7 +357,7 @@ if !run_filename.nil?
       program.run(interpreter, action_flags)
     }
 
-    print_timing(timing, console_io) if action_flags['timing'][:value]
+    print_timing(timing, console_io) if action_flags['timing'].value
     program.profile('') if show_profile
   end
 elsif !list_filename.nil?
@@ -368,7 +387,7 @@ else
   shell.run
 end
 
-if action_flags['heading'][:value]
+if action_flags['heading'].value
   console_io.newline
   console_io.print_line('BASIC-1965 ended')
 end

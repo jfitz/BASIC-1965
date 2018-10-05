@@ -1340,13 +1340,6 @@ class OptionStatement < AbstractStatement
     values = @expression.evaluate(interpreter)
     value0 = values[0]
 
-    case interpreter.get_type(@key)
-    when :bool
-      raise(BASICRuntimeError, 'Incorrect value type') unless value0.boolean_constant?
-    else
-      raise(BASICRuntimeError, 'Unknown value type')
-    end
-
     interpreter.set_action(@key, value0.to_v)
   end
 
