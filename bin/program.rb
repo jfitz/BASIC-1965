@@ -344,7 +344,7 @@ class Program
     raise(BASICRuntimeError, 'FOR without NEXT')
   end
 
-  def run(interpreter, action_flags)
+  def run(interpreter, action_options)
     if @lines.empty?
       @console_io.print_line('No program loaded')
       return
@@ -356,7 +356,7 @@ class Program
     end
 
     reset_profile_metrics
-    flags = duplicate(action_flags)
+    flags = duplicate(action_options)
     interpreter.run(self, flags)
   end
 

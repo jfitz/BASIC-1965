@@ -7,7 +7,7 @@ class Interpreter
 
   def initialize(console_io, interpreter_options)
     @randomizer = Random.new(1)
-    @randomizer = Random.new if interpreter_options['randomize']
+    @randomizer = Random.new if interpreter_options['randomize'].value
     @interpreter_options = interpreter_options
 
     @tokenbuilders = make_debug_tokenbuilders
@@ -34,7 +34,9 @@ class Interpreter
   def make_debug_tokenbuilders
     tokenbuilders = []
 
-    keywords = %w(GO STOP STEP BREAK LIST PRETTY DELETE PROFILE DIM GOTO LET PRINT)
+    keywords =
+      %w(GO STOP STEP BREAK LIST PRETTY DELETE PROFILE DIM GOTO LET PRINT)
+
     tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
     un_ops = UnaryOperator.operators
@@ -77,9 +79,9 @@ class Interpreter
 
     @action_options = action_options
     @step_mode = false
-
     trace = @action_options['trace'].value
     @trace_out = trace ? @console_io : @null_out
+
     @variables = {}
 
     run_program
@@ -298,10 +300,6 @@ class Interpreter
     @program.line_number?(line_number)
   end
 
-  def get_type(name)
-    @action_options[name].type
-  end
-
   def set_action(name, value)
     @action_options[name].set(value)
     if name == 'trace'
@@ -388,7 +386,7 @@ class Interpreter
     upper_bound = upper_bound.to_v
     upper_bound = upper_bound.truncate
     upper_bound = 1 if upper_bound <= 0
-    upper_bound = 1 if @interpreter_options['ignore_rnd_arg']
+    upper_bound = 1 if @interpreter_options['ignore_rnd_arg'].value
     upper_bound = upper_bound.to_f
     NumericConstant.new(@randomizer.rand(upper_bound))
   end
@@ -531,8 +529,10 @@ class Interpreter
           "#{variable.class}:#{variable} is not a variable name") unless
       legals.include?(variable.class.to_s)
 
-    raise(BASICRuntimeError, "Cannot change locked variable #{variable}") if
-      @interpreter_options['lock_fornext'] && @locked_variables.include?(variable)
+    if @interpreter_options['lock_fornext'].value &&
+       @locked_variables.include?(variable)
+      raise(BASICRuntimeError, "Cannot change locked variable #{variable}")
+    end
 
     # check that value type matches variable type
     unless variable.compatible?(value)
@@ -556,7 +556,7 @@ class Interpreter
   end
 
   def lock_variable(variable)
-    return unless @interpreter_options['lock_fornext']
+    return unless @interpreter_options['lock_fornext'].value
 
     if @locked_variables.include?(variable)
       raise(BASICExeption,
@@ -567,7 +567,7 @@ class Interpreter
   end
 
   def unlock_variable(variable)
-    return unless @interpreter_options['lock_fornext']
+    return unless @interpreter_options['lock_fornext'].value
 
     unless @locked_variables.include?(variable)
       raise(BASICRuntimeError,
@@ -636,6 +636,6 @@ class Interpreter
   end
 
   def int_floor?
-    @interpreter_options['int_floor']
+    @interpreter_options['int_floor'].value
   end
 end
