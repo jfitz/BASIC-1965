@@ -22,8 +22,8 @@ class Option
   attr_reader :type
   attr_reader :value
 
-  def initialize(type, value)
-    @type = type
+  def initialize(defs, value)
+    @defs = defs
     check_value(value)
     @value = value
   end
@@ -36,7 +36,8 @@ class Option
   private
 
   def check_value(value)
-    case @type
+    type = @defs[:type]
+    case type
     when :bool
       legals = %w(TrueClass FalseClass)
 
@@ -47,6 +48,16 @@ class Option
 
       raise(BASICRuntimeError, 'Invalid value') unless
         legals.include?(value.class.to_s)
+
+      min = @defs[:min]
+      if !min.nil? && value < min
+        raise(BASICRuntimeError, 'Valid below minimum')
+      end
+
+      max = @defs[:max]
+      if !max.nil? && value > max
+        raise(BASICRuntimeError, 'Valid above maximum')
+      end
     else
       raise(BASICRuntimeError, 'Unknown value type')
     end
@@ -312,11 +323,13 @@ run_filename = options[:run_name]
 cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 
+boolean = { :type => :bool }
+
 action_options = {}
-action_options['heading'] = Option.new(:bool, !options.key?(:no_heading))
-action_options['provenence'] = Option.new(:bool, options.key?(:provenence))
-action_options['timing'] = Option.new(:bool, !options.key?(:no_timing))
-action_options['trace'] = Option.new(:bool, options.key?(:trace))
+action_options['heading'] = Option.new(boolean, !options.key?(:no_heading))
+action_options['provenence'] = Option.new(boolean, options.key?(:provenence))
+action_options['timing'] = Option.new(boolean, !options.key?(:no_timing))
+action_options['trace'] = Option.new(boolean, options.key?(:trace))
 
 output_flags = {}
 output_flags['echo'] = options.key?(:echo_input)
@@ -337,14 +350,14 @@ output_flags['default_prompt'] = TextConstantToken.new('"? "')
 interpreter_options = {}
 
 interpreter_options['ignore_rnd_arg'] =
-  Option.new(:bool, options.key?(:ignore_rnd_arg))
+  Option.new(boolean, options.key?(:ignore_rnd_arg))
 
-interpreter_options['int_floor'] = Option.new(:bool, options.key?(:int_floor))
+interpreter_options['int_floor'] = Option.new(boolean, options.key?(:int_floor))
 
 interpreter_options['lock_fornext'] =
-  Option.new(:bool, options.key?(:lock_fornext))
+  Option.new(boolean, options.key?(:lock_fornext))
 
-interpreter_options['randomize'] = Option.new(:bool, options.key?(:randomize))
+interpreter_options['randomize'] = Option.new(boolean, options.key?(:randomize))
 
 console_io = ConsoleIo.new(output_flags)
 
