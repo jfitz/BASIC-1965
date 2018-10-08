@@ -30,15 +30,8 @@ end
 
 # Handle tab stops and carriage control
 class ConsoleIo
-  def initialize(output_flags)
-    @max_width = output_flags['print_width']
-    @zone_width = output_flags['zone_width']
-    @print_rate = output_flags['speed']
-    @newline_rate = output_flags['newline_speed']
-    @implied_semicolon = output_flags['implied_semicolon']
-    @default_prompt = output_flags['default_prompt']
-    @echo_input = output_flags['echo']
-    @qmark_after_prompt = output_flags['qmark_after_prompt']
+  def initialize(output_options)
+    @output_options = output_options;
 
     @column = 0
     @last_was_numeric = false
@@ -50,16 +43,18 @@ class ConsoleIo
     input_text = gets
     raise(BASICRuntimeError, 'End of file') if input_text.nil?
     ascii_text = ascii_printables(input_text)
-    puts(ascii_text) if @echo_input
+    puts(ascii_text) if @output_options['echo'].value
     ascii_text
   end
 
   def prompt(text)
     if text.nil?
-      print @default_prompt.value
+      print @output_options['default_prompt'].value
     else
       print text.value
-      print @default_prompt.value if @qmark_after_prompt
+
+      print @output_options['default_prompt'].value if
+        @output_options['qmark_after_prompt'].value
     end
   end
 
@@ -86,7 +81,8 @@ class ConsoleIo
     text.each_char do |c|
       print_out(c)
       @column += 1
-      newline if @max_width > 0 && @column >= @max_width
+      newline if @output_options['print_width'].value > 0 &&
+                 @column >= @output_options['print_width'].value
     end
     @last_was_numeric = false
   end
@@ -102,8 +98,9 @@ class ConsoleIo
 
   def tab
     space_after_numeric if @last_was_numeric
-    if @zone_width > 0
-      print_item(' ') while @column > 0 && @column % @zone_width != 0
+    if @output_options['zone_width'].value > 0
+      print_item(' ') while @column > 0 &&
+                            @column % @output_options['zone_width'].value != 0
     end
     @last_was_numeric = false
   end
@@ -117,7 +114,7 @@ class ConsoleIo
   end
 
   def implied
-    semicolon if @implied_semicolon
+    semicolon if @output_options['implied_semicolon'].value
     # nothing else otherwise
   end
 
@@ -164,12 +161,17 @@ class ConsoleIo
   end
 
   def delay
-    sleep(1.0 / @print_rate) if @print_rate > 0
+    sleep(1.0 / @output_options['print_speed'].value) if
+      @output_options['print_speed'].value > 0
   end
 
   def newline_delay
-    sleep(1.0 / @print_rate) if @print_rate > 0 && @newline_rate.zero?
-    sleep(1.0 / @newline_rate) if @newline_rate > 0
+    sleep(1.0 / @output_options['print_speed'].value) if
+      @output_options['print_speed'].value > 0 &&
+      @output_options['newline_speed'].value.zero?
+
+    sleep(1.0 / @output_options['newline_speed'].value) if
+      @output_options['newline_speed'].value > 0
   end
 end
 

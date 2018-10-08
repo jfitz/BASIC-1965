@@ -58,6 +58,11 @@ class Option
       if !max.nil? && value > max
         raise(BASICRuntimeError, 'Valid above maximum')
       end
+    when :string
+      legals = %(String)
+
+      raise(BASICRuntimeError, 'Invalid value') unless
+        legals.include?(value.class.to_s)
     else
       raise(BASICRuntimeError, 'Unknown value type')
     end
@@ -324,6 +329,10 @@ cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 
 boolean = { :type => :bool }
+string = { :type => :string }
+int = { :type => :int, :min => 0 }
+int_132 = { :type => :int, :max => 132, :min => 0 }
+int_40 = { :type => :int, :max => 40, :min => 0 }
 
 action_options = {}
 action_options['heading'] = Option.new(boolean, !options.key?(:no_heading))
@@ -331,21 +340,33 @@ action_options['provenence'] = Option.new(boolean, options.key?(:provenence))
 action_options['timing'] = Option.new(boolean, !options.key?(:no_timing))
 action_options['trace'] = Option.new(boolean, options.key?(:trace))
 
-output_flags = {}
-output_flags['echo'] = options.key?(:echo_input)
-output_flags['speed'] = 0
-output_flags['speed'] = 10 if options.key?(:tty)
-output_flags['newline_speed'] = 0
-output_flags['newline_speed'] = 10 if options.key?(:tty_lf)
-output_flags['print_width'] = 72
-output_flags['print_width'] = options[:print_width].to_i if
-  options.key?(:print_width)
-output_flags['zone_width'] = 16
-output_flags['zone_width'] = options[:zone_width].to_i if
-  options.key?(:zone_width)
-output_flags['implied_semicolon'] = options.key?(:implied_semicolon)
-output_flags['qmark_after_prompt'] = options.key?(:qmark_after_prompt)
-output_flags['default_prompt'] = TextConstantToken.new('"? "')
+output_options = {}
+
+output_options['default_prompt'] = Option.new(string, '? ')
+
+output_options['echo'] = Option.new(boolean, options.key?(:echo_input))
+
+output_options['implied_semicolon'] =
+  Option.new(boolean, options.key?(:implied_semicolon))
+
+newline_speed = 0
+newline_speed = 10 if options.key?(:tty_lf)
+output_options['newline_speed'] = Option.new(int, newline_speed)
+
+print_width = 72
+print_width = options[:print_width].to_i if options.key?(:print_width)
+output_options['print_width'] = Option.new(int_132, print_width)
+
+output_options['qmark_after_prompt'] =
+  Option.new(boolean, options.key?(:qmark_after_prompt))
+
+print_speed = 0
+print_speed = 10 if options.key?(:tty)
+output_options['print_speed'] = Option.new(int, print_speed)
+
+zone_width = 16
+zone_width = options[:zone_width].to_i if options.key?(:zone_width)
+output_options['zone_width'] = Option.new(int_40, zone_width)
 
 interpreter_options = {}
 
@@ -359,7 +380,7 @@ interpreter_options['lock_fornext'] =
 
 interpreter_options['randomize'] = Option.new(boolean, options.key?(:randomize))
 
-console_io = ConsoleIo.new(output_flags)
+console_io = ConsoleIo.new(output_options)
 
 tokenbuilders = make_interpreter_tokenbuilders
 
