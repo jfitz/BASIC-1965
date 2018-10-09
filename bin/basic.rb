@@ -265,8 +265,8 @@ def make_command_tokenbuilders
   tokenbuilders = []
 
   keywords = %w(
-    BREAK CROSSREF DELETE DIMS EXIT HEADING LIST LOAD NEW OPTION PARSE PRETTY
-    PROFILE PROVENENCE RENUMBER RUN SAVE TIMING TRACE TOKENS UDFS VARS
+    BASE BREAK CROSSREF DELETE DIMS EXIT HEADING LIST LOAD NEW OPTION PARSE
+    PRETTY PROFILE PROVENENCE RENUMBER RUN SAVE TIMING TRACE TOKENS UDFS VARS
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
@@ -318,6 +318,7 @@ OptionParser.new do |opt|
   opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
   opt.on('--lock-fornext') { |o| options[:lock_fornext] = o }
+  opt.on('--base BASE') { |o| options[:base] = o }
 end.parse!
 
 list_filename = options[:list_name]
@@ -333,8 +334,14 @@ string = { :type => :string }
 int = { :type => :int, :min => 0 }
 int_132 = { :type => :int, :max => 132, :min => 0 }
 int_40 = { :type => :int, :max => 40, :min => 0 }
+int_1 = { :type => :int, :max => 1, :min => 0 }
 
 action_options = {}
+
+base = 0
+base = options[:base].to_i if options.key?(:base)
+action_options['base'] = Option.new(int_1, base)
+
 action_options['heading'] = Option.new(boolean, !options.key?(:no_heading))
 action_options['provenence'] = Option.new(boolean, options.key?(:provenence))
 action_options['timing'] = Option.new(boolean, !options.key?(:no_timing))

@@ -1310,14 +1310,14 @@ class OptionStatement < AbstractStatement
   end
 
   def self.extra_keywords
-    %w(PROVENENCE TRACE)
+    %w(BASE PROVENENCE TRACE)
   end
 
   def initialize(keywords, tokens_lists)
     super
 
     # omit HEADING and TIMING as they are not used in the interpreter
-    template = [['PROVENENCE', 'TRACE'], [1, '>=']]
+    template = [['BASE', 'PROVENENCE', 'TRACE'], [1, '>=']]
 
     if check_template(tokens_lists, template)
       @key = tokens_lists[0].to_s.downcase
@@ -1820,7 +1820,8 @@ class ArrReadStatement < AbstractReadStatement
   def read_array(name, dims, interpreter, ds)
     values = {}
 
-    (0..dims[0].to_i).each do |col|
+    base = interpreter.base
+    (base..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
     end
@@ -1919,7 +1920,7 @@ class ArrLetStatement < AbstractStatement
   def execute(interpreter)
     r_value = first_value(interpreter)
     dims = r_value.dimensions
-    values = r_value.values
+    values = r_value.values(interpreter)
 
     l_values = @assignment.eval_target(interpreter)
     l_values.each do |l_value|

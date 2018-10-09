@@ -454,12 +454,13 @@ class Interpreter
     raise(BASICRuntimeError, 'Incorrect number of subscripts') if
       int_subscripts.size != dimensions.size
 
-    # zero is the lower bound
-    zero = NumericConstant.new(0)
+    # lower bound
+    lower_value = @action_options['base'].value
+    lower = NumericConstant.new(lower_value)
 
     # check subscript value against lower and upper bounds
     int_subscripts.zip(dimensions).each do |pair|
-      if pair[0] < zero
+      if pair[0] < lower
         raise(BASICRuntimeError, "Subscript #{pair[0]} out of range")
       end
 
@@ -637,5 +638,9 @@ class Interpreter
 
   def int_floor?
     @interpreter_options['int_floor'].value
+  end
+
+  def base
+    @action_options['base'].value
   end
 end

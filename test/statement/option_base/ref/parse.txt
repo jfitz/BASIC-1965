@@ -1,0 +1,51 @@
+10 REM TEST THE OPTION STATEMENT
+ Remark:TEST THE OPTION STATEMENT
+20 DIM A(10)
+ NumericConstant:10
+ CompoundDeclaration:A
+30 FOR I = 1 TO 10
+ control: VariableName:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:1"]
+40 LET A(I) = I
+ ScalarValue:I
+ ScalarReference:A
+ ScalarValue:I
+ AssignmentOperator:=
+50 NEXT I
+ VariableName:I
+100 OPTION BASE 0
+ NumericConstant:0
+110 FOR I = 0 TO 10
+ control: VariableName:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:1"]
+120 PRINT I;A(I)
+ ITEMS
+ ScalarValue:I
+ CarriageControl:;
+ ScalarValue:I
+ ScalarValue:A
+ CarriageControl:NL
+130 NEXT I
+ VariableName:I
+200 OPTION BASE 1
+ NumericConstant:1
+210 FOR I = 0 TO 10
+ control: VariableName:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:10"]
+ step:    ["NumericConstant:1"]
+220 PRINT I;A(I)
+ ITEMS
+ ScalarValue:I
+ CarriageControl:;
+ ScalarValue:I
+ ScalarValue:A
+ CarriageControl:NL
+230 NEXT I
+ VariableName:I
+999 END
+ 

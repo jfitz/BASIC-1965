@@ -120,6 +120,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--randomize |Forces new sequences of numbers from the RND() function on successive runs.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
 |--lock-fornext |Lock control variables to FOR/NEXT loops. Variables can be read but not changed.
+|--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
 |--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
 |--qmark-after-prompt |On an INPUT line, print the question mark after the prompt.
 |==========
@@ -335,7 +336,7 @@ Display or set various options for the BASIC interpreter.
 
 Syntax: OPTION
 Syntax: OPTION option
-Syntax: OPTION option TRUE|FALSE
+Syntax: OPTION option value
 
 The first form ('OPTION' by itself) lists the options and their current values.
 The second form lists a specific option and its current value.
@@ -343,13 +344,18 @@ The final form sets the value for an option.
 
 The options that can be set are:
 
-    HEADING
-    TIMING
-    TRACE
-    PROVENENCE
+    BASE (0 or 1)
+    HEADING (TRUE or FALSE)
+    TIMING (TRUE or FALSE)
+    TRACE (TRUE or FALSE)
+    PROVENENCE (TRUE or FALSE)
 
 These options can be initialized on the command line.
 The OPTION command overrides the command-line setting.
+
+OPTION BASE 1
+
+Sets the minimum subscript index to 1. The default is zero. The default can be restored with OPTION BASE 0.
 
 OPTION HEADING TRUE
 
@@ -645,6 +651,9 @@ Examples:
 
 Arrays are zero-based, so the DIM A(20) statement allows for values A(0) through A(20).
 
+OPTION BASE 1 changes arrays to one-based, but does not change the upper bound.
+With OPTION BASE 1, the statement DIM A(20) allows for values A(1) through A(20).
+
 END
 ~~~
 
@@ -850,7 +859,7 @@ Sets an option for the interpreter.
 
 Syntax: OPTION option expression
 
-Option is either 'TRACE' or 'PROVENENCE'.
+Option is either 'BASE', 'TRACE', or 'PROVENENCE'.
 The options for HEADING and TIMING are not available as a run-time option.
 
 Expression must evaluate to a boolean value.
@@ -860,6 +869,7 @@ Examples:
 
 	10 OPTION TRACE TRUE
 	40 OPTION PROVENENCE A > 0
+	100 OPTION BASE 1
 
 Unlike other interpreters, the OPTION statement is executed in-line.
 It is not a setting prior to the execution of the program.
@@ -1098,7 +1108,8 @@ ARR statements
 --------------
 
 The ARR statements operate on one-dimensional arrays.
-Operations begin with index zero.
+Operations begin with the index specified in OPTION BASE.
+This is unlike the MAT statements, which always begin with index 1.
 
 ARR PRINT
 ~~~~~~~~~
@@ -1277,6 +1288,7 @@ The MAT statements operate on matricies, which are either one- or two-dimensiona
 
 Operations begin with indices of one, not zero.
 The values in the zero row and the zero column are ignored in MAT operations.
+This behavior is not changed with the OPTION BASE statement.
 
 MAT PRINT
 ~~~~~~~~~

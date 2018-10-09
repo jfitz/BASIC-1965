@@ -221,12 +221,14 @@ class BinaryOperator < AbstractElement
     self.class.to_s + ':' + @op
   end
 
-  def evaluate(_, stack)
+  def evaluate(interpreter, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
+    base = interpreter.base
+    
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
     elsif x.matrix? && y.scalar?
@@ -234,11 +236,11 @@ class BinaryOperator < AbstractElement
     elsif x.scalar? && y.matrix?
       scalar_matrix(x, y)
     elsif x.array? && y.array?
-      array_array(x, y)
+      array_array(x, y, base)
     elsif x.array? && y.scalar?
-      array_scalar(x, y)
+      array_scalar(x, y, base)
     elsif x.scalar? && y.array?
-      scalar_array(x, y)
+      scalar_array(x, y, base)
     elsif x.content_type == y.content_type
       op_scalar_scalar(x, y)
     else
@@ -300,7 +302,7 @@ class BinaryOperator < AbstractElement
     op_scalar_matrix(op_sym, x, y)
   end
 
-  def array_array(x, y)
+  def array_array(x, y, base)
     op_table = {
       '+' => :add,
       '-' => :subtract,
@@ -313,10 +315,10 @@ class BinaryOperator < AbstractElement
 
     raise BASICExpressionError, 'Invalid operation' if op_sym.nil?
 
-    op_array_array(op_sym, x, y)
+    op_array_array(op_sym, x, y, base)
   end
 
-  def array_scalar(x, y)
+  def array_scalar(x, y, base)
     op_table = {
       '+' => :add,
       '-' => :subtract,
@@ -329,10 +331,10 @@ class BinaryOperator < AbstractElement
 
     raise BASICExpressionError, 'Invalid operation' if op_sym.nil?
 
-    op_array_scalar(op_sym, x, y)
+    op_array_scalar(op_sym, x, y, base)
   end
 
-  def scalar_array(x, y)
+  def scalar_array(x, y, base)
     op_table = {
       '+' => :add,
       '-' => :subtract,
@@ -345,7 +347,7 @@ class BinaryOperator < AbstractElement
 
     raise BASICExpressionError, 'Invalid operation' if op_sym.nil?
 
-    op_scalar_array(op_sym, x, y)
+    op_scalar_array(op_sym, x, y, base)
   end
 
   def op_scalar_scalar(x, y)
@@ -654,12 +656,12 @@ class BinaryOperator < AbstractElement
     raise BASICExpressionError, 'Cannot raise matrix to matrix power'
   end
 
-  def op_array_array(op, a, b)
+  def op_array_array(op, a, b, base)
     dims = b.dimensions
     raise(BASICRuntimeError, 'Arrays of different size') if a.dimensions != dims
     n_cols = dims[0].to_i
     values = {}
-    (0..n_cols).each do |col|
+    (base..n_cols).each do |col|
       a_value = a.get_value(col)
       b_value = b.get_value(col)
       coords = make_coord(col)
@@ -668,11 +670,11 @@ class BinaryOperator < AbstractElement
     BASICArray.new(dims, values)
   end
 
-  def op_scalar_array(op, a, b)
+  def op_scalar_array(op, a, b, base)
     dims = b.dimensions
     n_cols = dims[0].to_i
     values = {}
-    (0..n_cols).each do |col|
+    (base..n_cols).each do |col|
       b_value = b.get_value(col)
       coords = make_coord(col)
       values[coords] = a.send(op, b_value)
@@ -680,11 +682,11 @@ class BinaryOperator < AbstractElement
     BASICArray.new(dims, values)
   end
 
-  def op_array_scalar(op, a, b)
+  def op_array_scalar(op, a, b, base)
     dims = a.dimensions
     n_cols = dims[0].to_i
     values = {}
-    (0..n_cols).each do |col|
+    (base..n_cols).each do |col|
       a_value = a.get_value(col)
       coords = make_coord(col)
       values[coords] = a_value.send(op, b)

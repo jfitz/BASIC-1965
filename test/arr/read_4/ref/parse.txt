@@ -1,0 +1,44 @@
+10 REM ARRAY ASSIGNMENT
+ Remark:ARRAY ASSIGNMENT
+15 OPTION BASE 1
+ NumericConstant:1
+20 DIM A(6)
+ NumericConstant:6
+ CompoundDeclaration:A
+30 DATA 0,1,2,3,4,5,6
+ NumericConstant:0
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:3
+ NumericConstant:4
+ NumericConstant:5
+ NumericConstant:6
+40 DATA 7,8,9,10,11
+ NumericConstant:7
+ NumericConstant:8
+ NumericConstant:9
+ NumericConstant:10
+ NumericConstant:11
+100 ARR READ A
+ ArrayReference:A
+150 PRINT "ARRAY A"
+ ITEMS
+ TextConstant:"ARRAY A"
+ CarriageControl:NL
+160 ARR PRINT A;
+ ITEMS
+ ArrayValue:A
+ CarriageControl:;
+200 ARR READ B(6)
+ NumericConstant:6
+ ArrayReference:B
+250 PRINT "ARRAY B"
+ ITEMS
+ TextConstant:"ARRAY B"
+ CarriageControl:NL
+260 ARR PRINT B;
+ ITEMS
+ ArrayValue:B
+ CarriageControl:;
+999 END
+ 
