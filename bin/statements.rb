@@ -13,6 +13,7 @@ class StatementFactory
     line_number = nil
     line = nil
     m = /\A\d+/.match(text)
+
     unless m.nil?
       number = NumericConstantToken.new(m[0])
       line_number = LineNumber.new(number)
@@ -21,8 +22,10 @@ class StatementFactory
       all_tokens.delete_if(&:break?)
       all_tokens.delete_if(&:whitespace?)
       comment = nil
+
       comment = all_tokens.pop if
         !all_tokens.empty? && all_tokens[-1].comment?
+
       line = create(line_text, all_tokens, comment)
     end
     [line_number, line]
@@ -91,6 +94,7 @@ class StatementFactory
 
     statement_classes.each do |class_name|
       keyword_sets = class_name.lead_keywords
+
       keyword_sets.each do |set|
         lead_keywords[set] = class_name
       end
@@ -103,6 +107,7 @@ class StatementFactory
     keywords = []
     tokens = []
     saw_non_keyword = false
+
     all_tokens.each do |token|
       saw_non_keyword = true unless token.keyword?
       keywords << token unless saw_non_keyword
@@ -114,6 +119,7 @@ class StatementFactory
   def split_keywords(tokens)
     results = []
     nonkeywords = []
+
     tokens.each do |token|
       if token.keyword?
         results << nonkeywords unless nonkeywords.empty?
@@ -252,6 +258,7 @@ class AbstractStatement
     negate = false
     prev_unary_minus = false
     prev_operand = false
+
     @tokens.each do |token|
       negate = !negate if prev_unary_minus
 
@@ -304,6 +311,7 @@ class AbstractStatement
 
     result = true
     zip = template.zip(tokens_lists)
+
     zip.each do |pair|
       control = pair[0]
       value = pair[1]
@@ -340,6 +348,7 @@ class AbstractStatement
     lists = []
     list = []
     parens_level = 0
+
     tokens.each do |token|
       if token.operand? &&
          (!list.empty? && (list[-1].operand? || list[-1].groupend?))
@@ -355,13 +364,16 @@ class AbstractStatement
       parens_level += 1 if token.groupstart?
       parens_level -= 1 if token.groupend? && !parens_level.zero?
     end
+
     lists << list unless list.empty?
+
     lists
   end
 
   def split_on_token(tokens, token_to_split)
     results = []
     list = []
+
     tokens.each do |token|
       if token.to_s != token_to_split
         list << token
@@ -371,7 +383,9 @@ class AbstractStatement
         results << token
       end
     end
+
     results << list unless list.empty?
+
     results
   end
 
@@ -587,6 +601,7 @@ class DimStatement < AbstractStatement
     @expression_list = []
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], false)
+
       tokens_lists.each do |tokens_list|
         begin
           @expression_list <<
@@ -611,18 +626,22 @@ class DimStatement < AbstractStatement
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
+
       if subscripts.empty?
         raise BASICRuntimeError, 'DIM statement requires subscript range'
       end
+
       interpreter.set_dimensions(variable, subscripts)
     end
   end
 
   def variables
     vars = []
+
     @expression_list.each do |expression|
       vars += expression.variables
     end
+
     vars
   end
 end
@@ -649,8 +668,11 @@ class EndStatement < AbstractStatement
 
   def program_check(program, console_io, line_number)
     next_line = program.find_next_line_number(line_number)
+
     return true if next_line.nil?
+
     console_io.print_line("Statements after END in line #{line_number}")
+
     false
   end
 
@@ -694,53 +716,6 @@ class FilesStatement < AbstractStatement
 
   def variables
     @expressions.variables
-  end
-end
-
-# Helper class for FOR/NEXT
-class ForNextControl
-  attr_reader :control
-  attr_reader :loop_start_number
-  attr_reader :end
-
-  def initialize(control, interpreter, start, endv, step_value)
-    @control = control
-    @start = start
-    @end = endv
-    @step_value = step_value
-    interpreter.set_value(@control, start)
-    @loop_start_number = interpreter.next_line_number
-  end
-
-  def bump_control(interpreter)
-    current_value = interpreter.get_value(@control)
-    current_value += @step_value
-    interpreter.unlock_variable(@control)
-    interpreter.set_value(@control, current_value)
-    interpreter.lock_variable(@control)
-  end
-
-  def front_terminated?
-    zero = NumericConstant.new(0)
-    if @step_value > zero
-      @start > @end
-    elsif @step_value < zero
-      @start < @end
-    else
-      false
-    end
-  end
-
-  def terminated?(interpreter)
-    zero = NumericConstant.new(0)
-    current_value = interpreter.get_value(@control)
-    if @step_value > zero
-      current_value + @step_value > @end
-    elsif @step_value < zero
-      current_value + @step_value < @end
-    else
-      false
-    end
   end
 end
 
@@ -801,15 +776,12 @@ class ForStatement < AbstractStatement
     to = @end.evaluate(interpreter)[0]
     step = @step_value.evaluate(interpreter)[0]
 
-    fornext_control =
-      ForNextControl.new(@control, interpreter, from, to, step)
-
-    interpreter.assign_fornext(fornext_control)
+    fornext_control = interpreter.assign_fornext(@control, from, to, step)
     interpreter.lock_variable(@control)
     terminated = fornext_control.front_terminated?
+
     if terminated
-      interpreter.next_line_number =
-        interpreter.find_closing_next(@control)
+      interpreter.next_line_number = interpreter.find_closing_next(@control)
       interpreter.unlock_variable(@control)
     end
 
@@ -923,7 +895,9 @@ class GotoStatement < AbstractStatement
 
   def program_check(program, console_io, line_number)
     return true if program.line_number?(@destination)
+
     console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+
     false
   end
 
@@ -972,11 +946,13 @@ class IfStatement < AbstractStatement
 
   def program_check(program, console_io, line_number)
     return true if program.line_number?(@destination)
+
     if @destination.nil?
       console_io.print_line("Invalid or missing line number in line #{line_number}")
     else
       console_io.print_line("Line number #{@destination} not found in line #{line_number}")
     end
+
     false
   end
 
@@ -1005,7 +981,9 @@ class IfStatement < AbstractStatement
 
   def variables
     vars = []
+
     vars += @expression.variables unless @expression.nil?
+
     vars
   end
 
@@ -1056,7 +1034,9 @@ class InputStatement < AbstractStatement
 
   def dump
     lines = []
+
     @input_items.each { |item| lines += item.dump } unless @input_items.nil?
+
     lines
   end
 
@@ -1095,6 +1075,7 @@ class InputStatement < AbstractStatement
     vars = []
     vars += @file_tokens.variables unless @file_tokens.nil?
     @input_items.each { |item| vars += item.variables } unless @input_items.nil?
+
     vars
   end
 
@@ -1231,6 +1212,7 @@ class LetStatement < AbstractStatement
   def dump
     lines = []
     lines += @assignment.dump unless @assignment.nil?
+
     lines
   end
 
@@ -1238,6 +1220,7 @@ class LetStatement < AbstractStatement
     l_values = @assignment.eval_target(interpreter)
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
+
     l_values.each do |l_value|
       interpreter.set_value(l_value, r_value)
     end
@@ -1246,6 +1229,7 @@ class LetStatement < AbstractStatement
   def variables
     vars = []
     vars = @assignment.variables unless @assignment.nil?
+
     vars
   end
 end
@@ -1290,6 +1274,7 @@ class NextStatement < AbstractStatement
     io = interpreter.trace_out
     s = ' terminated:' + terminated.to_s
     io.trace_output(s)
+
     if terminated
       interpreter.unlock_variable(@control)
     else
@@ -1346,6 +1331,7 @@ class OptionStatement < AbstractStatement
   def variables
     vars = []
     vars += @expression.variables unless @expression.nil?
+
     vars
   end
 end
@@ -1429,6 +1415,7 @@ class PrintStatement < AbstractPrintStatement
     end
 
     add_implied_items(print_items, @final)
+
     print_items
   end
 
@@ -1455,6 +1442,7 @@ class AbstractReadStatement < AbstractStatement
   def dump
     lines = []
     @read_items.each { |item| lines += item.dump } unless @read_items.nil?
+
     lines
   end
 
@@ -1462,6 +1450,7 @@ class AbstractReadStatement < AbstractStatement
     vars = []
     vars += @file_tokens.variables unless @file_tokens.nil?
     @read_items.each { |item| vars += item.variables } unless @read_items.nil?
+
     vars
   end
 
@@ -1614,6 +1603,7 @@ class AbstractWriteStatement < AbstractStatement
   def dump
     lines = []
     @print_items.each { |item| lines += item.dump } unless @print_items.nil?
+
     lines
   end
 
@@ -1621,6 +1611,7 @@ class AbstractWriteStatement < AbstractStatement
     vars = []
     vars += @file_tokens.variables unless @file_tokens.nil?
     @print_items.each { |item| vars += item.variables } unless @print_items.nil?
+
     vars
   end
 
@@ -1671,6 +1662,7 @@ class WriteStatement < AbstractWriteStatement
     end
 
     add_implied_items(print_items, @final)
+
     print_items
   end
 
@@ -1741,6 +1733,7 @@ class ArrPrintStatement < AbstractPrintStatement
     end
 
     add_implied_items(print_items, @final)
+
     print_items
   end
 end
@@ -1902,9 +1895,11 @@ class ArrLetStatement < AbstractStatement
     if check_template(tokens_lists, template)
       begin
         @assignment = ArrayAssignment.new(tokens_lists[0])
+
         if @assignment.count_target.zero?
           @errors << 'Assignment must have left-hand value(s)'
         end
+
         if @assignment.count_value != 1
           @errors << 'Assignment must have only one right-hand value'
         end
@@ -1932,6 +1927,7 @@ class ArrLetStatement < AbstractStatement
   def variables
     vars = []
     vars = @assignment.variables unless @assignment.nil?
+
     vars
   end
 
@@ -1939,6 +1935,7 @@ class ArrLetStatement < AbstractStatement
 
   def first_target(interpreter)
     l_values = @assignment.eval_target(interpreter)
+
     l_values[0]
   end
 
@@ -2006,6 +2003,7 @@ class MatPrintStatement < AbstractPrintStatement
     end
 
     add_implied_items(print_items, @final)
+
     print_items
   end
 end
@@ -2232,6 +2230,7 @@ class MatLetStatement < AbstractStatement
   def variables
     vars = []
     vars = @assignment.variables unless @assignment.nil?
+
     vars
   end
 end

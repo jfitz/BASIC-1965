@@ -1,3 +1,51 @@
+# Helper class for FOR/NEXT
+class ForNextControl
+  attr_reader :control
+  attr_reader :loop_start_number
+  attr_reader :end
+
+  def initialize(control, start, endv, step_value, loop_start_number)
+    @control = control
+    @start = start
+    @end = endv
+    @step_value = step_value
+    @loop_start_number = loop_start_number
+  end
+
+  def bump_control(interpreter)
+    current_value = interpreter.get_value(@control)
+    current_value += @step_value
+    interpreter.unlock_variable(@control)
+    interpreter.set_value(@control, current_value)
+    interpreter.lock_variable(@control)
+  end
+
+  def front_terminated?
+    zero = NumericConstant.new(0)
+
+    if @step_value > zero
+      @start > @end
+    elsif @step_value < zero
+      @start < @end
+    else
+      false
+    end
+  end
+
+  def terminated?(interpreter)
+    zero = NumericConstant.new(0)
+    current_value = interpreter.get_value(@control)
+
+    if @step_value > zero
+      current_value + @step_value > @end
+    elsif @step_value < zero
+      current_value + @step_value < @end
+    else
+      false
+    end
+  end
+end
+
 # the interpreter
 class Interpreter
   attr_reader :current_line_number
@@ -223,6 +271,7 @@ class Interpreter
 
       # set the next line number
       @current_line_number = nil
+
       if @running
         verify_next_line_number
         @current_line_number = @next_line_number
@@ -242,6 +291,7 @@ class Interpreter
     tokens_lists = []
 
     tokens_list = []
+
     tokens.each do |token|
       if token.separator?
         tokens_lists << tokens_list unless tokens.empty?
@@ -270,6 +320,7 @@ class Interpreter
           condition = ''
           @breakpoints[line_number] = condition
         end
+
         if tokens_list.size == 2 &&
            tokens_list[0].text == '-' &&
            tokens_list[1].numeric_constant?
@@ -325,6 +376,7 @@ class Interpreter
     trace = @action_options['trace'].value
 
     result_values = []
+
     parsed_expressions.each do |parsed_expression|
       stack = []
       exp = parsed_expression.empty? ? 0 : 1
@@ -406,12 +458,14 @@ class Interpreter
       subscripts.class.to_s == 'Array'
 
     int_subscripts = []
+
     subscripts.each do |subscript|
       raise(BASICExpressionError, "Invalid subscript #{subscript}") unless
         subscript.numeric_constant?
 
       int_subscripts << subscript.truncate
     end
+
     int_subscripts
   end
 
@@ -480,6 +534,7 @@ class Interpreter
     value = nil
     # first look in user function values stack
     length = @user_var_values.length
+
     if length > 0
       names_and_values = @user_var_values[-1]
       value = names_and_values[variable]
@@ -509,6 +564,7 @@ class Interpreter
 
     if trace && !seen
       provenence = @action_options['provenence'].value
+
       if provenence && !line.nil?
         text = ' ' + variable.to_s + ': (' + line.to_s + ') ' + value.to_s
       else
@@ -588,9 +644,14 @@ class Interpreter
     @return_stack.pop
   end
 
-  def assign_fornext(fornext_control)
-    control_variable = fornext_control.control
-    @fornexts[control_variable] = fornext_control
+  def assign_fornext(control, from, to, step)
+    fornext_control =
+      ForNextControl.new(control, from, to, step, @next_line_number)
+
+    @fornexts[control] = fornext_control
+    set_value(control, from)
+
+    fornext_control
   end
 
   def retrieve_fornext(control_variable)
