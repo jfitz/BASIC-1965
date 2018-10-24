@@ -548,14 +548,14 @@ class Interpreter
         # define a value for this variable
         @variables[v] =
           {
-            'line' => @current_line_number,
+            'provenance' => @current_line_number,
             'value' => NumericConstant.new(0)
           }
       end
 
       dict = @variables[v]
       value = dict['value']
-      line = dict['line']
+      provenance = dict['provenance']
 
       seen = @get_value_seen.include?(variable)
     end
@@ -563,10 +563,10 @@ class Interpreter
     trace = @action_options['trace'].value
 
     if trace && !seen
-      provenence = @action_options['provenence'].value
+      provenance_option = @action_options['provenance'].value
 
-      if provenence && !line.nil?
-        text = ' ' + variable.to_s + ': (' + line.to_s + ') ' + value.to_s
+      if provenance_option && !provenance.nil?
+        text = ' ' + variable.to_s + ': (' + provenance.to_s + ') ' + value.to_s
       else
         text = ' ' + variable.to_s + ': ' + value.to_s
       end
@@ -598,7 +598,7 @@ class Interpreter
     end
 
     v = variable.to_s
-    dict = { 'line' => @current_line_number, 'value' => value }
+    dict = { 'provenance' => @current_line_number, 'value' => value }
     @variables[v] = dict
 
     @trace_out.newline_when_needed

@@ -266,7 +266,7 @@ def make_command_tokenbuilders
 
   keywords = %w(
     BASE BREAK CROSSREF DELETE DIMS EXIT HEADING LIST LOAD NEW OPTION PARSE
-    PRETTY PROFILE PROVENENCE RENUMBER RUN SAVE TIMING TRACE TOKENS UDFS VARS
+    PRETTY PROFILE PROVENANCE RENUMBER RUN SAVE TIMING TRACE TOKENS UDFS VARS
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
@@ -306,7 +306,7 @@ OptionParser.new do |opt|
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--trace') { |o| options[:trace] = o }
-  opt.on('--provenence') { |o| options[:provenence] = o }
+  opt.on('--provenance') { |o| options[:provenance] = o }
   opt.on('--no-timing') { |o| options[:no_timing] = o }
   opt.on('--tty') { |o| options[:tty] = o }
   opt.on('--tty-lf') { |o| options[:tty_lf] = o }
@@ -343,7 +343,7 @@ base = options[:base].to_i if options.key?(:base)
 action_options['base'] = Option.new(int_1, base)
 
 action_options['heading'] = Option.new(boolean, !options.key?(:no_heading))
-action_options['provenence'] = Option.new(boolean, options.key?(:provenence))
+action_options['provenance'] = Option.new(boolean, options.key?(:provenance))
 action_options['timing'] = Option.new(boolean, !options.key?(:no_timing))
 action_options['trace'] = Option.new(boolean, options.key?(:trace))
 
