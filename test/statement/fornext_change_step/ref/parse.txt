@@ -1,0 +1,33 @@
+10 REM TEST FOR/NEXT STATEMENTS
+ Remark:TEST FOR/NEXT STATEMENTS
+20 LET B = 1
+ ScalarReference:B
+ NumericConstant:1
+ AssignmentOperator:=
+30 LET E = 5
+ ScalarReference:E
+ NumericConstant:5
+ AssignmentOperator:=
+40 LET S = 1
+ ScalarReference:S
+ NumericConstant:1
+ AssignmentOperator:=
+50 FOR I = B TO E STEP S
+ control: VariableName:I
+ start:   ["ScalarValue:B"]
+ end:     ["ScalarValue:E"]
+ step:    ["ScalarValue:S"]
+60 PRINT I
+ ITEMS
+ ScalarValue:I
+ CarriageControl:NL
+70 LET S = S + 1
+ ScalarReference:S
+ ScalarValue:S
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+80 NEXT I
+ VariableName:I
+99 END
+ 

@@ -741,6 +741,11 @@ When --lock-fornext is specified, an attempt to change a control variable causes
 The variable may be changed after the FOR/NEXT loop terminates.
 Note that a GOTO to outside of the FOR/NEXT loop does not terminate the loop or unlock the variable.
 
+Variables may be used to indicate the loop start, end, and step values.
+The start, end, and step values are calculated at the beginning of the loop.
+They are not re-calculated during the loop execution.
+If variables are used, assignments to those variables in the loop will have no affect on the loop.
+
 GO TO
 ~~~~~
 
