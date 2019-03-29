@@ -1,9 +1,21 @@
 100 MAT A = ZER(3,3)
- Unimplemented
+ MatrixReference:A
+ NumericConstant:3
+ NumericConstant:3
+ FunctionZer
+ AssignmentOperator:=
 110 MAT B = CON(3,3)
- Unimplemented
+ MatrixReference:B
+ NumericConstant:3
+ NumericConstant:3
+ FunctionCon
+ AssignmentOperator:=
 120 MAT C = IDN(3,3)
- Unimplemented
+ MatrixReference:C
+ NumericConstant:3
+ NumericConstant:3
+ FunctionIdn
+ AssignmentOperator:=
 130
 200 PRINT "ALL ZEROES"
  ITEMS
@@ -41,7 +53,10 @@
  MatrixValue:A
  CarriageControl:,
 330 MAT B = INV(A)
- Unimplemented
+ MatrixReference:B
+ MatrixValue:A
+ FunctionInv
+ AssignmentOperator:=
 340 PRINT "ITS INVERSE"
  ITEMS
  TextConstant:"ITS INVERSE"
@@ -52,9 +67,17 @@
  CarriageControl:,
 360
 400 MAT R = A*B
- Unimplemented
+ MatrixReference:R
+ MatrixValue:A
+ MatrixValue:B
+ BinaryOperator:*
+ AssignmentOperator:=
 410 MAT R = R-C
- Unimplemented
+ MatrixReference:R
+ MatrixValue:R
+ MatrixValue:C
+ BinaryOperator:-
+ AssignmentOperator:=
 420 PRINT "ROUNDOFF ERRORS"
  ITEMS
  TextConstant:"ROUNDOFF ERRORS"

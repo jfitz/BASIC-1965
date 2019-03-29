@@ -18,13 +18,19 @@
  BinaryOperator:^
  CarriageControl:NL
 50 MAT A = M*M
- Unimplemented
+ MatrixReference:A
+ MatrixValue:M
+ MatrixValue:M
+ BinaryOperator:*
+ AssignmentOperator:=
 60 MAT PRINT A
  ITEMS
  MatrixValue:A
  CarriageControl:,
 70 MAT M = A
- Unimplemented
+ MatrixReference:M
+ MatrixValue:A
+ AssignmentOperator:=
 80 NEXT I
  VariableName:I
 90 DATA 3

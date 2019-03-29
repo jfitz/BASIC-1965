@@ -21,9 +21,16 @@
  MatrixReference:B
 150
 160 MAT C = INV(A)
- Unimplemented
+ MatrixReference:C
+ MatrixValue:A
+ FunctionInv
+ AssignmentOperator:=
 170 MAT X = C*B
- Unimplemented
+ MatrixReference:X
+ MatrixValue:C
+ MatrixValue:B
+ BinaryOperator:*
+ AssignmentOperator:=
 180
 190 MAT PRINT X
  ITEMS

@@ -62,7 +62,11 @@
  MatrixValue:B
  CarriageControl:;
 300 MAT C = A*B
- Unimplemented
+ MatrixReference:C
+ MatrixValue:A
+ MatrixValue:B
+ BinaryOperator:*
+ AssignmentOperator:=
 310 PRINT "MATRIX C"
  ITEMS
  TextConstant:"MATRIX C"

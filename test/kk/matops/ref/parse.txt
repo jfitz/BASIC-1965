@@ -7,7 +7,11 @@
  MatrixReference:B
 110
 130 MAT S = A+B
- Unimplemented
+ MatrixReference:S
+ MatrixValue:A
+ MatrixValue:B
+ BinaryOperator:+
+ AssignmentOperator:=
 140 PRINT "THE SUM"
  ITEMS
  TextConstant:"THE SUM"
@@ -18,7 +22,11 @@
  CarriageControl:,
 160
 170 MAT D = A-B
- Unimplemented
+ MatrixReference:D
+ MatrixValue:A
+ MatrixValue:B
+ BinaryOperator:-
+ AssignmentOperator:=
 180 PRINT "THE DIFFERENCE"
  ITEMS
  TextConstant:"THE DIFFERENCE"
@@ -29,7 +37,13 @@
  CarriageControl:,
 200
 210 MAT K = (1/4)*A
- Unimplemented
+ MatrixReference:K
+ NumericConstant:1
+ NumericConstant:4
+ BinaryOperator:/
+ MatrixValue:A
+ BinaryOperator:*
+ AssignmentOperator:=
 220 PRINT "SCALAR MULTIPLE"
  ITEMS
  TextConstant:"SCALAR MULTIPLE"

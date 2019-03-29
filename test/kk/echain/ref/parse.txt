@@ -22,7 +22,11 @@
  ScalarValue:N
  MatrixReference:P
 140 MAT Z = IDN(N,N)
- Unimplemented
+ MatrixReference:Z
+ ScalarValue:N
+ ScalarValue:N
+ FunctionIdn
+ AssignmentOperator:=
 150
 160 PRINT "TRANSITION PROBABILITIES"
  ITEMS
@@ -37,7 +41,11 @@
  CarriageControl:;
 190
 200 MAT Z = Z-P
- Unimplemented
+ MatrixReference:Z
+ MatrixValue:Z
+ MatrixValue:P
+ BinaryOperator:-
+ AssignmentOperator:=
 210 FOR I = 1 TO N
  control: VariableName:I
  start:   ["NumericConstant:1"]
@@ -52,9 +60,16 @@
 230 NEXT I
  VariableName:I
 240 MAT M = INV(Z)
- Unimplemented
+ MatrixReference:M
+ MatrixValue:Z
+ FunctionInv
+ AssignmentOperator:=
 245 MAT A = ZER(1,N)
- Unimplemented
+ MatrixReference:A
+ NumericConstant:1
+ ScalarValue:N
+ FunctionZer
+ AssignmentOperator:=
 250 FOR J = 1 TO N
  control: VariableName:J
  start:   ["NumericConstant:1"]
@@ -83,9 +98,17 @@
  CarriageControl:;
 310
 320 MAT M = IDN(N,N)
- Unimplemented
+ MatrixReference:M
+ ScalarValue:N
+ ScalarValue:N
+ FunctionIdn
+ AssignmentOperator:=
 330 MAT M = M-P
- Unimplemented
+ MatrixReference:M
+ MatrixValue:M
+ MatrixValue:P
+ BinaryOperator:-
+ AssignmentOperator:=
 340 FOR I = 1 TO N
  control: VariableName:I
  start:   ["NumericConstant:1"]
@@ -113,7 +136,10 @@
 380 NEXT I
  VariableName:I
 390 MAT Z = INV(M)
- Unimplemented
+ MatrixReference:Z
+ MatrixValue:M
+ FunctionInv
+ AssignmentOperator:=
 400
 410 FOR I = 1 TO N
  control: VariableName:I
@@ -158,7 +184,11 @@
  CarriageControl:;
 490
 500 MAT B = A*M
- Unimplemented
+ MatrixReference:B
+ MatrixValue:A
+ MatrixValue:M
+ BinaryOperator:*
+ AssignmentOperator:=
 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
  ITEMS
  TextConstant:"FIRST PASSAGE TIME IN EQUILIBRIUM"

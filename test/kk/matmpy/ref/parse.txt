@@ -9,9 +9,16 @@
  MatrixReference:A
  MatrixReference:B
 120 MAT P = A*B
- Unimplemented
+ MatrixReference:P
+ MatrixValue:A
+ MatrixValue:B
+ BinaryOperator:*
+ AssignmentOperator:=
 130 MAT T = TRN(A)
- Unimplemented
+ MatrixReference:T
+ MatrixValue:A
+ FunctionTrn
+ AssignmentOperator:=
 140
 200 PRINT "FIRST MATRIX"
  ITEMS

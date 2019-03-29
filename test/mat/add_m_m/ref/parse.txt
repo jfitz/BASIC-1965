@@ -38,7 +38,11 @@
 70 NEXT I
  VariableName:I
 100 MAT C = A + B
- Unimplemented
+ MatrixReference:C
+ MatrixValue:A
+ MatrixValue:B
+ BinaryOperator:+
+ AssignmentOperator:=
 110 PRINT "MATRIX A"
  ITEMS
  TextConstant:"MATRIX A"

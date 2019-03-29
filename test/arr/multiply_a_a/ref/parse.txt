@@ -56,7 +56,11 @@
  ArrayValue:B
  CarriageControl:;
 300 ARR C = A*B
- Unimplemented
+ ArrayReference:C
+ ArrayValue:A
+ ArrayValue:B
+ BinaryOperator:*
+ AssignmentOperator:=
 310 PRINT "ARRAY C"
  ITEMS
  TextConstant:"ARRAY C"

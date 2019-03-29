@@ -26,9 +26,16 @@
  ScalarValue:M
  MatrixReference:R
 160 MAT N = IDN(N,N)
- Unimplemented
+ MatrixReference:N
+ ScalarValue:N
+ ScalarValue:N
+ FunctionIdn
+ AssignmentOperator:=
 170 MAT U = CON(N)
- Unimplemented
+ MatrixReference:U
+ ScalarValue:N
+ FunctionCon
+ AssignmentOperator:=
 180
 190 PRINT "TRANSIENT TO TRANSIENT PROBABILITIES"
  ITEMS
@@ -55,9 +62,16 @@
  CarriageControl:;
 260
 270 MAT Q = N-Q
- Unimplemented
+ MatrixReference:Q
+ MatrixValue:N
+ MatrixValue:Q
+ BinaryOperator:-
+ AssignmentOperator:=
 280 MAT N = INV(Q)
- Unimplemented
+ MatrixReference:N
+ MatrixValue:Q
+ FunctionInv
+ AssignmentOperator:=
 290 PRINT "FUNDAMENTAL MATRIX"
  ITEMS
  TextConstant:"FUNDAMENTAL MATRIX"
@@ -71,7 +85,11 @@
  CarriageControl:;
 320
 330 MAT T = N*U
- Unimplemented
+ MatrixReference:T
+ MatrixValue:N
+ MatrixValue:U
+ BinaryOperator:*
+ AssignmentOperator:=
 340 PRINT "ABSORBTION TIMES"
  ITEMS
  TextConstant:"ABSORBTION TIMES"
@@ -85,7 +103,11 @@
  CarriageControl:;
 370
 380 MAT Q = N*R
- Unimplemented
+ MatrixReference:Q
+ MatrixValue:N
+ MatrixValue:R
+ BinaryOperator:*
+ AssignmentOperator:=
 390 PRINT "ABSORBTION PROBABILITIES"
  ITEMS
  TextConstant:"ABSORBTION PROBABILITIES"
