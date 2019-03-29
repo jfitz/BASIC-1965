@@ -349,7 +349,7 @@ end
 # Numeric constants
 class NumericConstant < AbstractValueElement
   def self.accept?(token)
-    classes = %w(Fixnum Bignum Float NumericConstantToken)
+    classes = %w(Fixnum Integer Bignum Float NumericConstantToken)
     classes.include?(token.class.to_s)
   end
 
@@ -382,7 +382,7 @@ class NumericConstant < AbstractValueElement
   def initialize(text)
     super()
 
-    numeric_classes = %w(Fixnum Bignum Float)
+    numeric_classes = %w(Fixnum Integer Bignum Float)
     float_classes = %w(Rational NumericConstantToken)
 
     f = nil
@@ -620,7 +620,7 @@ class FileHandle < AbstractElement
     super()
 
     raise(BASICRuntimeError, 'Invalid file reference') unless
-      num.class.to_s == 'Fixnum'
+      ['Fixnum', 'Integer'].include?(num.class.to_s)
 
     raise(BASICRuntimeError, 'Invalid file number') if num < 0
 

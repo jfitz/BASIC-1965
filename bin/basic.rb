@@ -41,27 +41,27 @@ class Option
     when :bool
       legals = %w(TrueClass FalseClass)
 
-      raise(BASICRuntimeError, 'Invalid value') unless
+      raise(BASICRuntimeError, "Invalid type #{value.class} for boolean") unless
         legals.include?(value.class.to_s)
     when :int
-      legals = %w(Fixnum)
+      legals = %w(Fixnum Integer)
 
-      raise(BASICRuntimeError, 'Invalid value') unless
+      raise(BASICRuntimeError, "Invalid type #{value.class} for integer") unless
         legals.include?(value.class.to_s)
 
       min = @defs[:min]
       if !min.nil? && value < min
-        raise(BASICRuntimeError, 'Valid below minimum')
+        raise(BASICRuntimeError, "Value #{value} below minimum #{min}")
       end
 
       max = @defs[:max]
       if !max.nil? && value > max
-        raise(BASICRuntimeError, 'Valid above maximum')
+        raise(BASICRuntimeError, "Value #{value} above maximum #{max}")
       end
     when :string
       legals = %(String)
 
-      raise(BASICRuntimeError, 'Invalid value') unless
+      raise(BASICRuntimeError, "Invalid type #{value.class} for string") unless
         legals.include?(value.class.to_s)
     else
       raise(BASICRuntimeError, 'Unknown value type')
