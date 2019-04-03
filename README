@@ -4,11 +4,12 @@ This is an interpreter for the oldest form of BASIC, Dartmouth BASIC. Created in
 
 This version is a primitive form of BASIC, less powerful than Microsoft BASIC.
 
+Features of the language:
 - Numeric variables only; no string variables
 - Functions ABS, ATN, COS, EXP, LOG, RND, SGN, SIN, TAN
 - Matrix functions CON, DET, IDN, INV, TRN, ZER
 - User-defined functions in form FNx(X)
-- Statements DATA, DIM, END, FOR, GOSUB, GOTO, IF, INPUT, LET, NEXT, PRINT, READ, REMARK, RETURN, STOP, TRACE, WRITE
+- Statements DATA, DIM, END, FOR, GOSUB, GOTO, IF, INPUT, LET, NEXT, OPTION, PRINT, READ, REMARK, RETURN, STOP, WRITE
 - The LET statement must include the LET keyword
 - Matrix operations with MAT, MAT READ, MAT PRINT
 - Array operations with ARR, ARR READ, ARR PRINT
@@ -16,10 +17,12 @@ This version is a primitive form of BASIC, less powerful than Microsoft BASIC.
 - Comments with single quote (') character
 - File operations with the FILES statement (not OPEN and CLOSE statements)
 - No IF/THEN/ELSE. IF/THEN is supported, and that only with a target line number, not a target statement
+
+Features of the interpreter:
 - Interactive mode and command-line mode
-- Trace ability to print lines as they are executed
 - Option for slow output to simulate Teletype
+- Trace ability to print lines as they are executed
+- Provenence to indicate the lines in which variables were assigned
 - Profile information with execution time and counts for each line
 - Cross-reference listing
-- Debugger commands in the interpreter
-- Provenence to indicate the lines in which variables were assigned
+- Rudimentary debugger

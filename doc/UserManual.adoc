@@ -344,39 +344,45 @@ The final form sets the value for an option.
 
 The options that can be set are:
 
-    BASE (0 or 1)
-    HEADING (TRUE or FALSE)
-    TIMING (TRUE or FALSE)
-    TRACE (TRUE or FALSE)
-    PROVENANCE (TRUE or FALSE)
+    BASE
+    DEFAULT_PROMPT
+    ECHO
+    HEADING
+    IGNORE_RND_ARG
+    IMPLIED_SEMICOLON
+    LOCK_FORNEXT
+    NEWLINE_SPEED
+    PRINT_SPEED
+    PRINT_WIDTH
+    PROVENANCE
+    QMARK_AFTER_PROMPT
+    RANDOMIZE
+    TIMING
+    TRACE
+    ZONE_WIDTH
 
 These options can be initialized on the command line.
 The OPTION command overrides the command-line setting.
 
-OPTION BASE 1
-
-Sets the minimum subscript index to 1. The default is zero. The default can be restored with OPTION BASE 0.
-
-OPTION HEADING TRUE
-
-Displays the opening and closing lines that identify BASIC.
-
-OPTION TIMING TRUE
-
-After running a program, display time to execute (user time and system time).
-
-OPTION TRACE TRUE
-
-Runs the current program, displaying each line prior to execution.
-After the line is displayed and executed, certain statements (READ, LET, and IF) display additional information.
-READ displays the values read.
-LET displays the new value assigned.
-IF displays the two values, the operator, and the result ('true' or 'false').
-
-OPTION PROVENANCE TRUE
-
-When TRACE is TRUE, expand display of a variable to include the line in which it was assigned its value.
-
+|==========
+|Option |Type |Default |Effect
+|BASE |numeric |0 |Sets the base for arrays and matrices to either 0 or 1
+|DEFAULT_PROMPT |String |"? " |Changes the prompt for INPUT statements
+|ECHO |TRUE or FALSE |FALSE |Echoes input (useful for testing)
+|HEADING |TRUE or FALSE |TRUE |Displays the opening and closing lines that identify BASIC
+|IGNORE_RND_ARG |TRUE or FALSE |FALSE |Ignores the argument to RND(), needed for some old BASIC programs
+|IMPLIED_SEMICOLON |TRUE or FALSE |FALSE |Assume that a semicolon is specified between arguments to PRINT without intervening carriage control specified
+|INT_FLOOR |TRUE or FALSE |FALSE |Sets truncation towards negative infinity instead of towards zero
+|LOCK_FORNEXT |TRUE or FALSE |FALSE |Do not allow changes to FOR/NEXT control variables within the loop
+|NEWLINE_SPEED |numeric |0 |Limit printing speed only for newlines
+|PRINT_SPEED |numeric |0 |Limit printing speed (a value of 10 emulates an old TeleType)
+|PRINT_WIDTH |numeric |72 |Wrap output at the specified column; 0 disables wrapping
+|PROVENANCE |TRUE or FALSE |FALSE |Expands trace display to include the line in which a variable was assigned its value
+|QMARK_AFTER_PROMPT |TRUE or FALSE |FALSE |Display '?' after a prompt in an INPUT statement
+|RANDOMIZE |TRUE or FALSE |FALSE |Randomize RND(); same as 'RANDOMIZE' statement 
+|TIMING |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
+|TRACE |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
+|ZONE_WIDTH |numeric |16 |Width of print zones for comma separators
 
 Debug shell
 -----------
@@ -864,11 +870,23 @@ Sets an option for the interpreter.
 
 Syntax: OPTION option expression
 
-Option is either 'BASE', 'TRACE', or 'PROVENANCE'.
-The options for HEADING and TIMING are not available as a run-time option.
+Possible options are a subset of the options in the shell.
 
-Expression must evaluate to a boolean value.
-It may be 'TRUE' or 'FALSE' or a more complex expression.
+    DEFAULT_PROMPT
+    ECHO
+    IGNORE_RND_ARG
+    IMPLIED_SEMICOLON
+    LOCK_FORNEXT
+    NEWLINE_SPEED
+    PRINT_SPEED
+    PRINT_WIDTH
+    PROVENANCE
+    QMARK_AFTER_PROMPT
+    TRACE
+    ZONE_WIDTH
+
+Expression must evaluate to a value approprate for the option.
+It may be a literal, a variable, or a more complex expression.
 
 Examples:
 
@@ -880,7 +898,7 @@ Unlike other interpreters, the OPTION statement is executed in-line.
 It is not a setting prior to the execution of the program.
 
 A program may contain multiple OPTION statements.
-Each will be executed as a normal statement.
+Each will be executed as a normal statement, in its sequence.
 
 PRINT
 ~~~~~

@@ -300,10 +300,6 @@ class Program
     end
   end
 
-  def duplicate(o)
-    Marshal.load(Marshal.dump(o))
-  end
-
   public
 
   def preexecute_loop(interpreter)
@@ -344,7 +340,7 @@ class Program
     raise(BASICRuntimeError, 'FOR without NEXT')
   end
 
-  def run(interpreter, action_options)
+  def run(interpreter, options)
     if @lines.empty?
       @console_io.print_line('No program loaded')
       return
@@ -356,8 +352,7 @@ class Program
     end
 
     reset_profile_metrics
-    flags = duplicate(action_options)
-    interpreter.run(self, flags)
+    interpreter.run(self, options)
   end
 
   def profile(args)

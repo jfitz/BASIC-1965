@@ -53,10 +53,9 @@ class Interpreter
   attr_reader :console_io
   attr_reader :trace_out
 
-  def initialize(console_io, interpreter_options)
+  def initialize(console_io, randomize_option)
     @randomizer = Random.new(1)
-    @randomizer = Random.new if interpreter_options['randomize'].value
-    @interpreter_options = interpreter_options
+    @randomizer = Random.new if randomize_option.value
 
     @tokenbuilders = make_debug_tokenbuilders
     @console_io = console_io
@@ -122,12 +121,12 @@ class Interpreter
 
   public
 
-  def run(program, action_options)
+  def run(program, options)
     @program = program
 
-    @action_options = action_options
+    @options = options
     @step_mode = false
-    trace = @action_options['trace'].value
+    trace = @options['trace'].value
     @trace_out = trace ? @console_io : @null_out
 
     @variables = {}
@@ -352,7 +351,7 @@ class Interpreter
   end
 
   def set_action(name, value)
-    @action_options[name].set(value)
+    @options[name].set(value)
     if name == 'trace'
       @trace_out = value ? @console_io : @null_out
     end
@@ -373,7 +372,7 @@ class Interpreter
 
   # returns an Array of values
   def evaluate(parsed_expressions)
-    trace = @action_options['trace'].value
+    trace = @options['trace'].value
 
     result_values = []
 
@@ -438,7 +437,7 @@ class Interpreter
     upper_bound = upper_bound.to_v
     upper_bound = upper_bound.truncate
     upper_bound = 1 if upper_bound <= 0
-    upper_bound = 1 if @interpreter_options['ignore_rnd_arg'].value
+    upper_bound = 1 if @options['ignore_rnd_arg'].value
     upper_bound = upper_bound.to_f
     NumericConstant.new(@randomizer.rand(upper_bound))
   end
@@ -509,7 +508,7 @@ class Interpreter
       int_subscripts.size != dimensions.size
 
     # lower bound
-    lower_value = @action_options['base'].value
+    lower_value = @options['base'].value
     lower = NumericConstant.new(lower_value)
 
     # check subscript value against lower and upper bounds
@@ -560,10 +559,10 @@ class Interpreter
       seen = @get_value_seen.include?(variable)
     end
 
-    trace = @action_options['trace'].value
+    trace = @options['trace'].value
 
     if trace && !seen
-      provenance_option = @action_options['provenance'].value
+      provenance_option = @options['provenance'].value
 
       if provenance_option && !provenance.nil?
         text = ' ' + variable.to_s + ': (' + provenance.to_s + ') ' + value.to_s
@@ -586,7 +585,7 @@ class Interpreter
           "#{variable.class}:#{variable} is not a variable name") unless
       legals.include?(variable.class.to_s)
 
-    if @interpreter_options['lock_fornext'].value &&
+    if @options['lock_fornext'].value &&
        @locked_variables.include?(variable)
       raise(BASICRuntimeError, "Cannot change locked variable #{variable}")
     end
@@ -613,7 +612,7 @@ class Interpreter
   end
 
   def lock_variable(variable)
-    return unless @interpreter_options['lock_fornext'].value
+    return unless @options['lock_fornext'].value
 
     if @locked_variables.include?(variable)
       raise(BASICExeption,
@@ -624,7 +623,7 @@ class Interpreter
   end
 
   def unlock_variable(variable)
-    return unless @interpreter_options['lock_fornext'].value
+    return unless @options['lock_fornext'].value
 
     unless @locked_variables.include?(variable)
       raise(BASICRuntimeError,
@@ -698,10 +697,10 @@ class Interpreter
   end
 
   def int_floor?
-    @interpreter_options['int_floor'].value
+    @options['int_floor'].value
   end
 
   def base
-    @action_options['base'].value
+    @options['base'].value
   end
 end
