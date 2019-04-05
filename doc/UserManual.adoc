@@ -120,6 +120,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--randomize |Forces new sequences of numbers from the RND() function on successive runs.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
 |--lock-fornext |Lock control variables to FOR/NEXT loops. Variables can be read but not changed.
+|--match-fornext |Require exact pairing of FOR/NEXT loops. The default allows programs to jump out of an inner loop and continue the outer loop.
 |--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
 |--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
 |--qmark-after-prompt |On an INPUT line, print the question mark after the prompt.
@@ -351,6 +352,7 @@ The options that can be set are:
     IGNORE_RND_ARG
     IMPLIED_SEMICOLON
     LOCK_FORNEXT
+    MATCH_FORNEXT
     NEWLINE_SPEED
     PRINT_SPEED
     PRINT_WIDTH
@@ -877,6 +879,7 @@ Possible options are a subset of the options in the shell.
     IGNORE_RND_ARG
     IMPLIED_SEMICOLON
     LOCK_FORNEXT
+    MATCH_FORNEXT
     NEWLINE_SPEED
     PRINT_SPEED
     PRINT_WIDTH

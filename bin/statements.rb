@@ -778,11 +778,13 @@ class ForStatement < AbstractStatement
 
     fornext_control = interpreter.assign_fornext(@control, from, to, step)
     interpreter.lock_variable(@control)
+    interpreter.enter_fornext(@control)
     terminated = fornext_control.front_terminated?
 
     if terminated
       interpreter.next_line_number = interpreter.find_closing_next(@control)
       interpreter.unlock_variable(@control)
+      interpreter.exit_fornext
     end
 
     io = interpreter.trace_out
@@ -1268,6 +1270,16 @@ class NextStatement < AbstractStatement
 
   def execute(interpreter)
     fornext_control = interpreter.retrieve_fornext(@control)
+
+    if interpreter.match_fornext?
+      # check control variable matches current loop
+      expected = interpreter.top_fornext
+      actual = fornext_control.control
+      if actual != expected
+        raise(BASICRuntimeError, "Found NEXT #{actual} when expecting #{expected}")
+      end
+    end
+
     # check control variable value
     # if matches end value, stop here
     terminated = fornext_control.terminated?(interpreter)
@@ -1277,6 +1289,7 @@ class NextStatement < AbstractStatement
 
     if terminated
       interpreter.unlock_variable(@control)
+      interpreter.exit_fornext
     else
       # set next line from top item
       interpreter.next_line_number = fornext_control.loop_start_number
@@ -1297,8 +1310,8 @@ class OptionStatement < AbstractStatement
   def self.extra_keywords
     %w(
       BASE DEFAULT_PROMPT ECHO IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
-      LOCK_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH PROVENANCE
-      QMARK_AFTER_PROMPT TRACE ZONE_WIDTH
+      LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
+      PROVENANCE QMARK_AFTER_PROMPT TRACE ZONE_WIDTH
     )
   end
 

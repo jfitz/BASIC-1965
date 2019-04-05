@@ -294,7 +294,7 @@ def make_command_tokenbuilders
     BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
     PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT ECHO HEADING IGNORE_RND_ARG IMPLIED_SEMICOLON
-    INT_FLOOR LOCK_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
+    INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
     PROVENANCE QMARK_AFTER_PROMPT RANDOMIZE TIMING TRACE ZONE_WIDTH
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
@@ -347,6 +347,7 @@ OptionParser.new do |opt|
   opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
   opt.on('--lock-fornext') { |o| options[:lock_fornext] = o }
+  opt.on('--match-fornext') { |o| options[:match_fornext] = o }
   opt.on('--base BASE') { |o| options[:base] = o }
 end.parse!
 
@@ -384,6 +385,9 @@ basic_options['int_floor'] = Option.new(boolean, options.key?(:int_floor))
 
 basic_options['lock_fornext'] =
   Option.new(boolean, options.key?(:lock_fornext))
+
+basic_options['match_fornext'] =
+  Option.new(boolean, options.key?(:match_fornext))
 
 newline_speed = 0
 newline_speed = 10 if options.key?(:tty_lf)

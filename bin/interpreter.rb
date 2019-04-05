@@ -70,6 +70,7 @@ class Interpreter
     @user_var_values = []
     @variables = {}
     @locked_variables = []
+    @fornext_stack = []
     @get_value_seen = []
     @null_out = NullOut.new
     @breakpoints = {}
@@ -661,6 +662,20 @@ class Interpreter
     fornext
   end
 
+  def enter_fornext(variable)
+    @fornext_stack.push(variable)
+  end
+
+  def exit_fornext
+    @fornext_stack.pop
+  end
+
+  def top_fornext
+    raise(BASICRuntimeError, 'Implied NEXT without FOR') if @fornext_stack.empty?
+
+    @fornext_stack[-1]
+  end
+
   def add_file_names(file_names)
     file_names.each do |name|
       raise(BASICRuntimeError, 'Invalid file name') unless
@@ -700,7 +715,11 @@ class Interpreter
     @options['int_floor'].value
   end
 
-  def base
+  def match_fornext?
+    @options['match_fornext'].value
+  end
+
+def base
     @options['base'].value
   end
 end
