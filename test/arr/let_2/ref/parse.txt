@@ -1,0 +1,27 @@
+10 REM ARRAY ASSIGNMENT
+ Remark:ARRAY ASSIGNMENT
+20 DIM A(5)
+ NumericConstant:5
+ CompoundDeclaration:A
+30 FOR I = 0 TO 5
+ control: VariableName:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:5"]
+ step:    ["NumericConstant:1"]
+50 LET A(I) = I
+ ScalarValue:I
+ ScalarReference:A
+ ScalarValue:I
+ AssignmentOperator:=
+70 NEXT I
+ VariableName:I
+100 ARR LET B = A
+ ArrayReference:B
+ ArrayValue:A
+ AssignmentOperator:=
+110 ARR PRINT B,
+ ITEMS
+ ArrayValue:B
+ CarriageControl:,
+999 END
+ 

@@ -1,0 +1,38 @@
+10 REM MATRIX ASSIGNMENT
+ Remark:MATRIX ASSIGNMENT
+20 DIM A(5,5)
+ NumericConstant:5
+ NumericConstant:5
+ CompoundDeclaration:A
+30 FOR I = 1 TO 5
+ control: VariableName:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:5"]
+ step:    ["NumericConstant:1"]
+40 FOR J = 1 TO 5
+ control: VariableName:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:5"]
+ step:    ["NumericConstant:1"]
+50 LET A(I,J) = I+J
+ ScalarValue:I
+ ScalarValue:J
+ ScalarReference:A
+ ScalarValue:I
+ ScalarValue:J
+ BinaryOperator:+
+ AssignmentOperator:=
+60 NEXT J
+ VariableName:J
+70 NEXT I
+ VariableName:I
+100 MAT LET B = A
+ MatrixReference:B
+ MatrixValue:A
+ AssignmentOperator:=
+110 MAT PRINT B,
+ ITEMS
+ MatrixValue:B
+ CarriageControl:,
+999 END
+ 

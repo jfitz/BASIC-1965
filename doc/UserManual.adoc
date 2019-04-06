@@ -1258,17 +1258,18 @@ The values must be defined with DIM statements prior to printing.
 Values are printed sequentially with each set of values on one line.
 The carriage control character that follows a variable name is ignored.
 
-ARR
-~~~
+ARR LET
+~~~~~~~
 
 Assigns a value to a array variable.
 
+Syntax:	ARR LET target variable [, target variable...] = expression
 Syntax:	ARR target variable [, target variable...] = expression
 
 Examples:
 
-	100 ARR A = B
-	110 ARR A = B * C
+	100 ARR LET A = B
+	110 ARR LET A = B * C
 	120 ARR A = B + D
 	130 ARR A = B - E
 	140 ARR A = 2 * B
@@ -1466,17 +1467,18 @@ An array DIM(4) will print elements 1 through 4; a matrix DIM(3,5) will print th
 
 The carriage control character that follows a variable name is ignored.
 
-MAT
-~~~
+MAT LET
+~~~~~~~
 
 Assigns a value to a matrix variable.
 
+Syntax:	MAT LET target variable [, target variable...] = expression
 Syntax:	MAT target variable [, target variable...] = expression
 
 Examples:
 
-	100 MAT A = B
-	110 MAT A = B * C
+	100 MAT LET A = B
+	110 MAT LET A = B * C
 	120 MAT A = B + D
 	130 MAT A = B - E
 	140 MAT A = 2 * B
