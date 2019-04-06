@@ -332,23 +332,23 @@ OptionParser.new do |opt|
   opt.on('--profile') { |o| options[:profile] = o }
   opt.on('-c', '--crossref SOURCE') { |o| options[:cref_name] = o }
   opt.on('--parse SOURCE') { |o| options[:parse_name] = o }
-  opt.on('--no-heading') { |o| options[:no_heading] = o }
+  opt.on('--base BASE') { |o| options[:base] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
-  opt.on('--trace') { |o| options[:trace] = o }
+  opt.on('--no-heading') { |o| options[:no_heading] = o }
+  opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
+  opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
+  opt.on('--int-floor') { |o| options[:int_floor] = o }
+  opt.on('--lock-fornext') { |o| options[:lock_fornext] = o }
+  opt.on('--match-fornext') { |o| options[:match_fornext] = o }
+  opt.on('--print-width WIDTH') { |o| options[:print_width] = o }
   opt.on('--provenance') { |o| options[:provenance] = o }
+  opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
+  opt.on('--randomize') { |o| options[:randomize] = o }
+  opt.on('--trace') { |o| options[:trace] = o }
   opt.on('--no-timing') { |o| options[:no_timing] = o }
   opt.on('--tty') { |o| options[:tty] = o }
   opt.on('--tty-lf') { |o| options[:tty_lf] = o }
-  opt.on('--print-width WIDTH') { |o| options[:print_width] = o }
   opt.on('--zone-width WIDTH') { |o| options[:zone_width] = o }
-  opt.on('--int-floor') { |o| options[:int_floor] = o }
-  opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
-  opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
-  opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
-  opt.on('--randomize') { |o| options[:randomize] = o }
-  opt.on('--lock-fornext') { |o| options[:lock_fornext] = o }
-  opt.on('--match-fornext') { |o| options[:match_fornext] = o }
-  opt.on('--base BASE') { |o| options[:base] = o }
 end.parse!
 
 list_filename = options[:list_name]
