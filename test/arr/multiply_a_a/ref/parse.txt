@@ -37,6 +37,9 @@
  ITEMS
  ArrayValue:A
  CarriageControl:;
+162 PRINT
+ ITEMS
+ CarriageControl:NL
 200 FOR I = 0 TO 5
  control: VariableName:I
  start:   ["NumericConstant:0"]
@@ -55,6 +58,9 @@
  ITEMS
  ArrayValue:B
  CarriageControl:;
+262 PRINT
+ ITEMS
+ CarriageControl:NL
 300 ARR C = A*B
  ArrayReference:C
  ArrayValue:A
@@ -69,5 +75,8 @@
  ITEMS
  ArrayValue:C
  CarriageControl:;
+322 PRINT
+ ITEMS
+ CarriageControl:NL
 999 END
  
