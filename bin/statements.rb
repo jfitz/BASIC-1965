@@ -1705,7 +1705,7 @@ class ArrPrintStatement < AbstractPrintStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new(','))
+    super(keywords, tokens_lists, CarriageControl.new('NL'))
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1722,6 +1722,7 @@ class ArrPrintStatement < AbstractPrintStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
+
     @print_items.each do |item|
       if item.printable?
         carriage = CarriageControl.new('')
@@ -1848,7 +1849,7 @@ class ArrWriteStatement < AbstractWriteStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new(','))
+    super(keywords, tokens_lists, CarriageControl.new('NL'))
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1865,6 +1866,7 @@ class ArrWriteStatement < AbstractWriteStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
+
     @print_items.each do |item|
       if item.printable?
         carriage = CarriageControl.new('')

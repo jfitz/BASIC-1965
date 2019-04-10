@@ -135,22 +135,42 @@ class BASICArray
   def print_1(printer, interpreter, carriage)
     n_cols = @dimensions[0].to_i
 
+    my_carriage = carriage
+    # override newline with comma, except for last
+    if carriage.to_s == ''
+      my_carriage = CarriageControl.new(',')
+    end
+
     base = interpreter.base
     (base..n_cols).each do |col|
       value = get_value(col)
       value.print(printer)
-      carriage.print(printer, interpreter)
+      if col < n_cols
+        my_carriage.print(printer, interpreter)
+      else
+        carriage.print(printer, interpreter)
+      end
     end
   end
 
   def write_1(printer, interpreter, carriage)
     n_cols = @dimensions[0].to_i
 
+    my_carriage = carriage
+    # override newline with comma, except for last
+    if carriage.to_s == ''
+      my_carriage = CarriageControl.new(',')
+    end
+
     base = interpreter.base
     (base..n_cols).each do |col|
       value = get_value(col)
       value.write(printer)
-      carriage.write(printer, interpreter)
+      if col < n_cols
+        my_carriage.write(printer, interpreter)
+      else
+        carriage.write(printer, interpreter)
+      end
     end
   end
 end
