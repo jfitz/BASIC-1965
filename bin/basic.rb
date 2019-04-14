@@ -295,7 +295,8 @@ def make_command_tokenbuilders
     PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT ECHO HEADING IGNORE_RND_ARG IMPLIED_SEMICOLON
     INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
-    PROVENANCE QMARK_AFTER_PROMPT RANDOMIZE TIMING TRACE ZONE_WIDTH
+    PROVENANCE QMARK_AFTER_PROMPT RANDOMIZE SEMICOLON_ZONE_WIDTH
+    TIMING TRACE ZONE_WIDTH
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
@@ -344,6 +345,7 @@ OptionParser.new do |opt|
   opt.on('--provenance') { |o| options[:provenance] = o }
   opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
+  opt.on('--semicolon-zone-width WIDTH') { |o| options[:semicolon_zone_width] = o }
   opt.on('--trace') { |o| options[:trace] = o }
   opt.on('--no-timing') { |o| options[:no_timing] = o }
   opt.on('--tty') { |o| options[:tty] = o }
@@ -407,6 +409,14 @@ basic_options['qmark_after_prompt'] =
   Option.new(boolean, options.key?(:qmark_after_prompt))
 
 basic_options['randomize'] = Option.new(boolean, options.key?(:randomize))
+
+semicolon_zone_width = 0
+if options.key?(:semicolon_zone_width)
+  semicolon_zone_width = options[:semicolon_zone_width].to_i
+end
+
+basic_options['semicolon_zone_width'] = Option.new(int, semicolon_zone_width)
+
 basic_options['timing'] = Option.new(boolean, !options.key?(:no_timing))
 basic_options['trace'] = Option.new(boolean, options.key?(:trace))
 

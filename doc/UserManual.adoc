@@ -108,22 +108,23 @@ When the BASIC program ends, BASIC-1965 ends.
 |--list filename |Specifies the file to load and list. May be abbreviated as -l
 |--pretty filename |Specifies the file to load and pretty-print. May be abbreviated as -p
 |--parse filename |specifies the file to load and parse.
-|--no-heading |Supress the header and trailer messages.
-|--trace |Print each statement prior to executing it (useful for debugging). Does the same thing as the 'OPTION TRACE TRUE' command in interactive mode, but from the command line.
-|--provenance |When displaying a variable in a trace, also display the line number where it was set.
-|--tty |Print output slowly, emulating the speed of an ASR-33 Teletype. Provides a better experience with some programs (often games) in which slow output lets your anticipation build. The fast output of modern computers displays information quickly, and TTY mode lets you read each line as it is "printed".
-|--tty-lf |Similar to --tty but delays only the newline characters, not each individual character. Useful with --trace when debugging.
-|--print-width width |Specifies a print width. Lines will wrap at the specified column. Default value is 72.
-|--zone-width width |Specifies a zone width. PRINT statements will position output separated by commas in zones. Default is 16.
+|--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
-|--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
-|--randomize |Forces new sequences of numbers from the RND() function on successive runs.
+|--no-heading |Supress the header and trailer messages.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
+|--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
+|--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
 |--lock-fornext |Lock control variables to FOR/NEXT loops. Variables can be read but not changed.
 |--match-fornext |Require exact pairing of FOR/NEXT loops. The default allows programs to jump out of an inner loop and continue the outer loop.
-|--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
-|--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
+|--print-width width |Specifies a print width. Lines will wrap at the specified column. Default value is 72.
+|--provenance |When displaying a variable in a trace, also display the line number where it was set.
 |--qmark-after-prompt |On an INPUT line, print the question mark after the prompt.
+|--randomize |Forces new sequences of numbers from the RND() function on successive runs.
+|--semicolon-zone-width |Enables print zones for semicolon carriage control.
+|--trace |Print each statement prior to executing it (useful for debugging). Does the same thing as the 'OPTION TRACE TRUE' command in interactive mode, but from the command line.
+|--tty |Print output slowly, emulating the speed of an ASR-33 Teletype. Provides a better experience with some programs (often games) in which slow output lets your anticipation build. The fast output of modern computers displays information quickly, and TTY mode lets you read each line as it is "printed".
+|--tty-lf |Similar to --tty but delays only the newline characters, not each individual character. Useful with --trace when debugging.
+|--zone-width width |Specifies a zone width. PRINT statements will position output separated by commas in zones. Default is 16.
 |==========
 
 Immediate commands
@@ -359,6 +360,7 @@ The options that can be set are:
     PROVENANCE
     QMARK_AFTER_PROMPT
     RANDOMIZE
+    SEMICOLON_ZONE_WIDTH
     TIMING
     TRACE
     ZONE_WIDTH
@@ -885,6 +887,7 @@ Possible options are a subset of the options in the shell.
     PRINT_WIDTH
     PROVENANCE
     QMARK_AFTER_PROMPT
+    SEMICOLON_ZONE_WIDTH
     TRACE
     ZONE_WIDTH
 
@@ -915,7 +918,7 @@ Syntax:	PRINT expression list
 
 Items in the list are separated by either commas or semicolons.
 A comma forces the next item to the next tab stop (tab stops are every 14 positions).
-A semicolon makes the next item adjacent to the previous item.
+A semicolon makes the next item adjacent to the previous item (or to the next semicolon zone, if semicolon zones are enabled).
 
 Examples:
 
@@ -938,7 +941,7 @@ results in the text "Processing...done" on the console.
 
 The semicolon separator will force a small space between items.
 Between strings, there is no space.
-Between two numbers or a string and a number, BASIC will print spaces to the next column that is a multiple of 3.
+If semicolon zones are enabled (width greater than zero), then BASIC will advance tp the next zone.
 
 Numbers are printed with automatic formatting.
 BASIC-1965 will print a number with the necessary number of decimal places.
