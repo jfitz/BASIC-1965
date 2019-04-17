@@ -164,7 +164,7 @@ class Shell
             @console_io.print_line('Incorrect value type')
           end
         rescue BASICRuntimeError => e
-          @console_io.print_line(e)
+          @console_io.print_line(e.to_s)
         end
         value = @options[kwd_d].value.to_s.upcase
         @console_io.print_line("#{kwd} #{value}")
@@ -293,7 +293,7 @@ def make_command_tokenbuilders
   keywords = %w(
     BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
     PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
-    BASE DEFAULT_PROMPT ECHO HEADING IGNORE_RND_ARG IMPLIED_SEMICOLON
+    BASE DECIMALS DEFAULT_PROMPT ECHO HEADING IGNORE_RND_ARG IMPLIED_SEMICOLON
     INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
     PROVENANCE QMARK_AFTER_PROMPT RANDOMIZE SEMICOLON_ZONE_WIDTH
     TIMING TRACE ZONE_WIDTH
@@ -334,6 +334,7 @@ OptionParser.new do |opt|
   opt.on('-c', '--crossref SOURCE') { |o| options[:cref_name] = o }
   opt.on('--parse SOURCE') { |o| options[:parse_name] = o }
   opt.on('--base BASE') { |o| options[:base] = o }
+  opt.on('--decimals DIGITS') { |o| options[:decimals] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
@@ -364,6 +365,7 @@ show_profile = options.key?(:profile)
 boolean = { :type => :bool }
 string = { :type => :string }
 int = { :type => :int, :min => 0 }
+int_1_15 = { :type => :int, :max => 15, :min => 1 }
 int_132 = { :type => :int, :max => 132, :min => 0 }
 int_40 = { :type => :int, :max => 40, :min => 0 }
 int_1 = { :type => :int, :max => 1, :min => 0 }
@@ -373,6 +375,11 @@ basic_options = {}
 base = 0
 base = options[:base].to_i if options.key?(:base)
 basic_options['base'] = Option.new(int_1, base)
+
+decimals = 5
+decimals = options[:decimals] if options.key?(:decimals)
+basic_options['decimals'] = Option.new(int_1_15, decimals)
+
 basic_options['default_prompt'] = Option.new(string, '? ')
 basic_options['echo'] = Option.new(boolean, options.key?(:echo_input))
 basic_options['heading'] = Option.new(boolean, !options.key?(:no_heading))
@@ -423,6 +430,8 @@ basic_options['trace'] = Option.new(boolean, options.key?(:trace))
 zone_width = 16
 zone_width = options[:zone_width].to_i if options.key?(:zone_width)
 basic_options['zone_width'] = Option.new(int_40, zone_width)
+
+NumericConstant.set_options(basic_options)
 
 console_io = ConsoleIo.new(basic_options)
 

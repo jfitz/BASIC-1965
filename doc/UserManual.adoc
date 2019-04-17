@@ -109,6 +109,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--pretty filename |Specifies the file to load and pretty-print. May be abbreviated as -p
 |--parse filename |specifies the file to load and parse.
 |--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
+|--decimals digits |Sets the number of decimals printed. Default is 5, maximum is 15.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
 |--no-heading |Supress the header and trailer messages.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
@@ -347,6 +348,7 @@ The final form sets the value for an option.
 The options that can be set are:
 
     BASE
+    DECIMALS
     DEFAULT_PROMPT
     ECHO
     HEADING
@@ -371,6 +373,7 @@ The OPTION command overrides the command-line setting.
 |==========
 |Option |Type |Default |Effect
 |BASE |numeric |0 |Sets the base for arrays and matrices to either 0 or 1
+|DECIMALS |numeric 1 to 15 |5 |Sets the number of decimals printed
 |DEFAULT_PROMPT |String |"? " |Changes the prompt for INPUT statements
 |ECHO |TRUE or FALSE |FALSE |Echoes input (useful for testing)
 |HEADING |TRUE or FALSE |TRUE |Displays the opening and closing lines that identify BASIC
@@ -876,6 +879,7 @@ Syntax: OPTION option expression
 
 Possible options are a subset of the options in the shell.
 
+    DECIMALS
     DEFAULT_PROMPT
     ECHO
     IGNORE_RND_ARG
