@@ -395,6 +395,9 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICRuntimeError, "'#{text}' is not a number") if f.nil?
 
+    epsilon = @@options['epsilon'].value
+    f = 0 if f.abs < epsilon
+
     @value = float_to_possible_int(f)
     @numeric_constant = true
   end

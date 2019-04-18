@@ -38,6 +38,8 @@ class Option
       @value.to_s
     when :int
       @value.to_s
+    when :float
+      @value.to_s
     when :string
       '"' + @value.to_s + '"'
     end
@@ -56,6 +58,21 @@ class Option
       legals = %w(Fixnum Integer)
 
       raise(BASICRuntimeError, "Invalid type #{value.class} for integer") unless
+        legals.include?(value.class.to_s)
+
+      min = @defs[:min]
+      if !min.nil? && value < min
+        raise(BASICRuntimeError, "Value #{value} below minimum #{min}")
+      end
+
+      max = @defs[:max]
+      if !max.nil? && value > max
+        raise(BASICRuntimeError, "Value #{value} above maximum #{max}")
+      end
+    when :float
+      legals = %w(Fixnum Integer Float Rational)
+
+      raise(BASICRuntimeError, "Invalid type #{value.class} for float") unless
         legals.include?(value.class.to_s)
 
       min = @defs[:min]
@@ -293,8 +310,9 @@ def make_command_tokenbuilders
   keywords = %w(
     BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
     PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
-    BASE DECIMALS DEFAULT_PROMPT ECHO HEADING IGNORE_RND_ARG IMPLIED_SEMICOLON
-    INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
+    BASE DECIMALS DEFAULT_PROMPT ECHO EPSILON HEADING
+    IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
+    LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
     PROVENANCE QMARK_AFTER_PROMPT RANDOMIZE SEMICOLON_ZONE_WIDTH
     TIMING TRACE ZONE_WIDTH
   )
@@ -336,6 +354,7 @@ OptionParser.new do |opt|
   opt.on('--base BASE') { |o| options[:base] = o }
   opt.on('--decimals DIGITS') { |o| options[:decimals] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
+  opt.on('--epsilon LIMIT') { |o| options[:epsilon] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
@@ -369,6 +388,7 @@ int_1_15 = { :type => :int, :max => 15, :min => 1 }
 int_132 = { :type => :int, :max => 132, :min => 0 }
 int_40 = { :type => :int, :max => 40, :min => 0 }
 int_1 = { :type => :int, :max => 1, :min => 0 }
+float = { :type => :float, :min => 0 }
 
 basic_options = {}
 
@@ -382,6 +402,11 @@ basic_options['decimals'] = Option.new(int_1_15, decimals)
 
 basic_options['default_prompt'] = Option.new(string, '? ')
 basic_options['echo'] = Option.new(boolean, options.key?(:echo_input))
+
+epsilon = 1e-7
+epsilon = options[:epsilon].to_f if options.key?(:epsilon)
+basic_options['epsilon'] = Option.new(float, epsilon)
+
 basic_options['heading'] = Option.new(boolean, !options.key?(:no_heading))
 
 basic_options['ignore_rnd_arg'] =
