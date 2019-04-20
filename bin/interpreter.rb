@@ -132,6 +132,7 @@ class Interpreter
 
     @variables = {}
 
+    clear_previous_lines
     run_program
   end
 
@@ -160,10 +161,16 @@ class Interpreter
   end
 
   def execute_a_statement
+    raise(BASICRuntimeError, 'Infinite loop detected') if
+      @previous_line_numbers.include?(@current_line_number)
+
+    @previous_line_numbers << @current_line_number
+
     line = @program.lines[@current_line_number]
     statement = line.statement
 
-    statement.execute_a_statement(self, @trace_out, @current_line_number)
+    statement.print_trace_info(@trace_out, @current_line_number)
+    statement.execute_a_statement(self, @current_line_number)
   end
 
   def execute_debug_command(keyword, args, cmd)
@@ -440,6 +447,9 @@ class Interpreter
     upper_bound = 1 if upper_bound <= 0
     upper_bound = 1 if @options['ignore_rnd_arg'].value
     upper_bound = upper_bound.to_f
+
+    clear_previous_lines
+
     NumericConstant.new(@randomizer.rand(upper_bound))
   end
 
@@ -598,6 +608,20 @@ class Interpreter
     end
 
     v = variable.to_s
+
+    if @variables.key?(v)
+      dict = @variables[v]
+      old_value = dict['value']
+      old_provenance = dict['provenance']
+      # a different value resets 'infinite loop' check
+      if value != old_value || @current_line_number != old_provenance
+        @previous_line_numbers = []
+      end
+    else
+      # no prior value is a new value
+      clear_previous_lines
+    end
+
     dict = { 'provenance' => @current_line_number, 'value' => value }
     @variables[v] = dict
 
@@ -610,6 +634,10 @@ class Interpreter
       variable = Variable.new(name, coords)
       set_value(variable, value)
     end
+  end
+
+  def clear_previous_lines
+    @previous_line_numbers = []
   end
 
   def lock_variable(variable)
@@ -640,6 +668,11 @@ class Interpreter
 
   def pop_return
     raise(BASICRuntimeError, 'RETURN without GOSUB') if @return_stack.empty?
+
+    # remove all lines from the subroutine in the 'visited' list
+    while !@previous_line_numbers.empty? && @previous_line_numbers[-1] != @return_stack[-1]
+      @previous_line_numbers.pop
+    end
 
     @return_stack.pop
   end

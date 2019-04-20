@@ -1597,6 +1597,37 @@ Lines that begin with numbers are considered part of the program; lines without 
 To replace a line, enter a line with the number of the old line.
 You must enter the entire line; there are no 'line editing' capabilities.
 
+Infinite loops
+--------------
+
+The interpreter detects infinite loops in some situations.
+When it detects an infinite loop, it stops the program.
+The detection algorithm is weak, and it will miss most infinite loops.
+The detection algorithm is:
+
+	keep a list of the line numbers for executed statements
+	if the statement about to be executed is in the list, report an infinite loop
+	when a variable is set to a new value (different than current value), clear the list
+
+This algorithm will detect simple infinite loops such as
+
+	10 PRINT "HELLO"
+	20 GOTO 10
+
+and
+
+	10 LET A = 1
+	20 IF A < 5 THEN 10
+
+and
+
+	10 GOTO 10
+
+and also
+
+	10 FOR I = 1 TO 10 STEP 0
+
+
 Commentary
 ----------
 

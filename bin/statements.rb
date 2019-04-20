@@ -214,15 +214,15 @@ class AbstractStatement
     errors.empty?
   end
 
-  private
-
-  def pre_execute(_) end
-
   def print_trace_info(trace_out, current_line_number)
     trace_out.newline_when_needed
     trace_out.print_out current_line_number.to_s + ':' + pretty
     trace_out.newline
   end
+
+  private
+
+  def pre_execute(_) end
 
   public
 
@@ -231,13 +231,13 @@ class AbstractStatement
     @profile_time = 0
   end
 
-  def execute_a_statement(interpreter, trace_out, current_line_number)
-    print_trace_info(trace_out, current_line_number)
-
+  def execute_a_statement(interpreter, current_line_number)
     timing = Benchmark.measure { execute(interpreter) }
+
     user_time = timing.utime + timing.cutime
     sys_time = timing.stime + timing.cstime
     time = user_time + sys_time
+
     @profile_time += time
     @profile_count += 1
   end
@@ -1071,6 +1071,8 @@ class InputStatement < AbstractStatement
       value = hash['value']
       interpreter.set_value(l_value, value)
     end
+
+    interpreter.clear_previous_lines
   end
 
   def variables
@@ -1507,6 +1509,8 @@ class ReadStatement < AbstractReadStatement
         interpreter.set_value(target, value)
       end
     end
+
+    interpreter.clear_previous_lines
   end
 
   private
@@ -1790,6 +1794,8 @@ class ArrReadStatement < AbstractReadStatement
         read_values(target.name, interpreter, ds)
       end
     end
+
+    interpreter.clear_previous_lines
   end
 
   private
@@ -2069,6 +2075,8 @@ class MatReadStatement < AbstractReadStatement
         read_values(target.name, interpreter, ds)
       end
     end
+
+    interpreter.clear_previous_lines
   end
 
   private

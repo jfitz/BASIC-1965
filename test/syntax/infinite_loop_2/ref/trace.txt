@@ -1,0 +1,12 @@
+10: REM TEST INFINITE LOOP CHECK
+20: LET A = 1
+ A = 1
+30: PRINT A
+ A: 1
+ 1
+40: IF A < 10 THEN 20
+ A: 1
+ A<10: true
+20: LET A = 1
+ A = 1
+Infinite loop detected in line 30
