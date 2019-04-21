@@ -161,8 +161,10 @@ class Interpreter
   end
 
   def execute_a_statement
+    detect = @options['detect_infinite_loop'].value
+
     raise(BASICRuntimeError, 'Infinite loop detected') if
-      @previous_line_numbers.include?(@current_line_number)
+      detect && @previous_line_numbers.include?(@current_line_number)
 
     @previous_line_numbers << @current_line_number
 

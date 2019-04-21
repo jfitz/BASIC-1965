@@ -310,7 +310,8 @@ def make_command_tokenbuilders
   keywords = %w(
     BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
     PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
-    BASE DECIMALS DEFAULT_PROMPT ECHO EPSILON HEADING
+    BASE DECIMALS DEFAULT_PROMPT DETECT_INFINITE_LOOP
+    ECHO EPSILON HEADING
     IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
     PROVENANCE QMARK_AFTER_PROMPT RANDOMIZE SEMICOLON_ZONE_WIDTH
@@ -353,6 +354,7 @@ OptionParser.new do |opt|
   opt.on('--parse SOURCE') { |o| options[:parse_name] = o }
   opt.on('--base BASE') { |o| options[:base] = o }
   opt.on('--decimals DIGITS') { |o| options[:decimals] = o }
+  opt.on('--no-detect-infinite-loop') { |o| options[:no_detect_infinite_loop] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--epsilon LIMIT') { |o| options[:epsilon] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
@@ -401,6 +403,10 @@ decimals = options[:decimals] if options.key?(:decimals)
 basic_options['decimals'] = Option.new(int_1_15, decimals)
 
 basic_options['default_prompt'] = Option.new(string, '? ')
+
+basic_options['detect_infinite_loop'] =
+  Option.new(boolean, !options.key?(:no_detect_infinite_loop))
+
 basic_options['echo'] = Option.new(boolean, options.key?(:echo_input))
 
 epsilon = 1e-7
