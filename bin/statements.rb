@@ -573,7 +573,9 @@ class DefineFunctionStatement < AbstractStatement
 
   def dump
     lines = []
+
     lines += @definition.dump unless @definition.nil?
+
     lines
   end
 
@@ -617,7 +619,9 @@ class DimStatement < AbstractStatement
 
   def dump
     lines = []
+
     @expression_list.each { |expression| lines += expression.dump }
+
     lines
   end
 
@@ -942,7 +946,9 @@ class IfStatement < AbstractStatement
 
   def dump
     lines = []
+
     lines += @expression.dump unless @expression.nil?
+
     lines
   end
 
@@ -1047,6 +1053,7 @@ class InputStatement < AbstractStatement
     fhr = interpreter.get_file_handler(fh, :read)
 
     prompt = nil
+
     unless @prompt.nil?
       prompts = @prompt.evaluate(interpreter)
       prompt = prompts[0]
@@ -1215,6 +1222,7 @@ class LetStatement < AbstractStatement
 
   def dump
     lines = []
+
     lines += @assignment.dump unless @assignment.nil?
 
     lines
@@ -1336,7 +1344,9 @@ class OptionStatement < AbstractStatement
 
   def dump
     lines = []
+
     lines += @expression.dump unless @expression.nil?
+
     lines
   end
 
@@ -1462,6 +1472,7 @@ class AbstractReadStatement < AbstractStatement
 
   def dump
     lines = []
+
     @read_items.each { |item| lines += item.dump } unless @read_items.nil?
 
     lines
@@ -1625,6 +1636,7 @@ class AbstractWriteStatement < AbstractStatement
 
   def dump
     lines = []
+
     @print_items.each { |item| lines += item.dump } unless @print_items.nil?
 
     lines
@@ -1942,6 +1954,7 @@ class ArrLetStatement < AbstractStatement
 
   def dump
     lines = []
+
     lines += @assignment.dump unless @assignment.nil?
 
     lines
@@ -2237,6 +2250,7 @@ class MatLetStatement < AbstractStatement
 
   def dump
     lines = []
+
     lines += @assignment.dump unless @assignment.nil?
 
     lines

@@ -5,6 +5,7 @@ module Reader
     text.each_char do |c|
       ascii_text += c if c >= ' ' && c <= '~'
     end
+
     ascii_text
   end
 
@@ -17,47 +18,22 @@ module Reader
 
   def verify_tokens(tokens)
     evens = tokens.values_at(* tokens.each_index.select(&:even?))
+
     evens.each do |token|
-      raise(BASICRuntimeError, 'Invalid input') unless token.numeric_constant?
+      raise(BASICRuntimeError, 'Invalid input') unless
+        token.numeric_constant?
     end
 
     odds = tokens.values_at(* tokens.each_index.select(&:odd?))
+
     odds.each do |token|
       raise(BASICRuntimeError, 'Invalid input') unless token.separator?
     end
   end
 end
 
-# Handle tab stops and carriage control
-class ConsoleIo
-  def initialize(options)
-    @options = options;
-
-    @column = 0
-    @last_was_numeric = false
-  end
-
-  include Reader
-
-  def read_line
-    input_text = gets
-    raise(BASICRuntimeError, 'End of file') if input_text.nil?
-    ascii_text = ascii_printables(input_text)
-    puts(ascii_text) if @options['echo'].value
-    ascii_text
-  end
-
-  def prompt(text)
-    if text.nil?
-      print @options['default_prompt'].value
-    else
-      print text.value
-
-      print @options['default_prompt'].value if
-        @options['qmark_after_prompt'].value
-    end
-  end
-
+# Common routines for input
+module Inputter
   def input(interpreter)
     input_text = read_line
 
@@ -76,6 +52,40 @@ class ConsoleIo
     expressions = ValueScalarExpression.new(tokens)
     expressions.evaluate(interpreter)
   end
+end
+
+# Handle tab stops and carriage control
+class ConsoleIo
+  def initialize(options)
+    @options = options
+
+    @column = 0
+    @last_was_numeric = false
+  end
+
+  include Reader
+  include Inputter
+
+  def read_line
+    input_text = gets
+
+    raise(BASICRuntimeError, 'End of file') if input_text.nil?
+
+    ascii_text = ascii_printables(input_text)
+    puts(ascii_text) if @options['echo'].value
+    ascii_text
+  end
+
+  def prompt(text)
+    if text.nil?
+      print @options['default_prompt'].value
+    else
+      print text.value
+
+      print @options['default_prompt'].value if
+        @options['qmark_after_prompt'].value
+    end
+  end
 
   def print_item(text)
     text.each_char do |c|
@@ -84,6 +94,7 @@ class ConsoleIo
       newline if @options['print_width'].value > 0 &&
                  @column >= @options['print_width'].value
     end
+
     @last_was_numeric = false
   end
 
@@ -102,9 +113,10 @@ class ConsoleIo
     zone_width = @options['zone_width'].value
 
     if zone_width > 0
-      print_item(' ') while @column > 0 &&
-                            @column % @options['zone_width'].value != 0
+      print_item(' ') while
+        @column > 0 && @column % zone_width != 0
     end
+
     @last_was_numeric = false
   end
 
@@ -227,6 +239,7 @@ class DataStore
 
   def read
     raise BASICRuntimeError, 'Out of data' if @data_index >= @data_store.size
+
     @data_index += 1
     @data_store[@data_index - 1]
   end
@@ -246,6 +259,7 @@ class FileHandler
   end
 
   include Reader
+  include Inputter
 
   def set_mode(mode)
     if @mode.nil?
@@ -273,29 +287,11 @@ class FileHandler
 
   def read_line
     input_text = @file.gets
+
     raise(BASICRuntimeError, 'End of file') if input_text.nil?
+
     input_text = input_text.chomp
     ascii_printables(input_text)
-  end
-
-  def input(interpreter)
-    set_mode(:read)
-    input_text = read_line
-
-    tokenbuilders = make_tokenbuilders
-    tokenizer = Tokenizer.new(tokenbuilders, nil)
-    tokens = tokenizer.tokenize(input_text)
-
-    # drop whitespace
-    tokens.delete_if(&:whitespace?)
-
-    # verify all even-index tokens are numeric
-    # verify all odd-index tokens are separators
-    verify_tokens(tokens)
-
-    # convert from tokens to values
-    expressions = ValueScalarExpression.new(tokens)
-    expressions.evaluate(interpreter)
   end
 
   def print_item(text)
@@ -346,17 +342,15 @@ class FileHandler
   def refill(data_store, file, tokenizer)
     while data_store.empty?
       line = file.gets
+
       raise(BASICRuntimeError, 'End of file') if line.nil?
+
       line = line.chomp
 
       tokens = tokenizer.tokenize(line)
-
-      # drop whitespace and separators
       tokens.delete_if { |token| token.separator? || token.whitespace? }
 
-      # convert to values
       converted = read_convert(tokens)
-
       data_store += converted
     end
 
