@@ -285,13 +285,23 @@ class Interpreter
         verify_next_line_number
         @current_line_number = @next_line_number
       end
-    rescue BASICExpressionError, BASICRuntimeError => e
+    rescue BASICRuntimeError => e
       if @current_line_number.nil?
-        message = e.message
+        @console_io.newline_when_needed
+        @console_io.print_line(e.message)
       else
-        message = "#{e.message} in line #{@current_line_number}"
+        @console_io.newline_when_needed
+        @console_io.print_line("#{e.message} in line #{@current_line_number}")
       end
-      @console_io.print_line(message)
+      stop_running
+    rescue BASICExpressionError => e
+      if @current_line_number.nil?
+        @console_io.newline_when_needed
+        @console_io.print_line(e.message)
+      else
+        @console_io.newline_when_needed
+        @console_io.print_line("#{e.message} in line #{@current_line_number}")
+      end
       stop_running
     end
   end

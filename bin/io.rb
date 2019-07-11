@@ -78,11 +78,11 @@ class ConsoleIo
 
   def prompt(text)
     if text.nil?
-      print @options['default_prompt'].value
+      print_item(@options['default_prompt'].value)
     else
-      print text.value
+      print_item(text.value)
 
-      print @options['default_prompt'].value if
+      print_item(@options['default_prompt'].value) if
         @options['qmark_after_prompt'].value
     end
   end
