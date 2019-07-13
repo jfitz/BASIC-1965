@@ -76,11 +76,17 @@ class ConsoleIo
     ascii_text
   end
 
-  def prompt(text)
+  def prompt(text, remaining)
     if text.nil?
+      print_item("(#{remaining})") if
+        @options['prompt_count'].value
+
       print_item(@options['default_prompt'].value)
     else
       print_item(text.value)
+
+      print_item("(#{remaining})") if
+        @options['prompt_count'].value
 
       print_item(@options['default_prompt'].value) if
         @options['qmark_after_prompt'].value

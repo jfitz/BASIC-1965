@@ -1170,7 +1170,8 @@ class InputStatement < AbstractStatement
     values = []
 
     while values.size < count
-      fhr.prompt(prompt)
+      remaining = count - values.size
+      fhr.prompt(prompt, remaining)
       values += fhr.input(interpreter)
 
       prompt = nil
@@ -1321,10 +1322,11 @@ class OptionStatement < AbstractStatement
     %w(
       BASE DECIMALS DEFAULT_PROMPT DETECT_INFINITE_LOOP
       ECHO EPSILON
-      IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
-      LOCK_FORNEXT MATCH_FORNEXT
-      NEWLINE_SPEED PRINT_SPEED PRINT_WIDTH
-      PROVENANCE QMARK_AFTER_PROMPT TRACE ZONE_WIDTH
+      IGNORE_RND_ARG IMPLIED_SEMICOLON
+      INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
+      PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
+      QMARK_AFTER_PROMPT
+      TRACE ZONE_WIDTH
     )
   end
 
