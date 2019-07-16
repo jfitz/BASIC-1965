@@ -348,10 +348,6 @@ end
 
 # Numeric constants
 class NumericConstant < AbstractValueElement
-  def self.set_options(options)
-    @@options = options
-  end
-
   def self.accept?(token)
     classes = %w(Fixnum Integer Bignum Float NumericConstantToken)
     classes.include?(token.class.to_s)
@@ -395,7 +391,7 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICRuntimeError, "'#{text}' is not a number") if f.nil?
 
-    epsilon = @@options['epsilon'].value
+    epsilon = $options['epsilon'].value
     f = 0 if f.abs < epsilon
 
     @value = float_to_possible_int(f)
@@ -517,7 +513,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def decimal_digits(value)
-    decimals = @@options['decimals'].value
+    decimals = $options['decimals'].value
     num_decimals = decimals - (value != 0 ? Math.log(value.abs, 10).to_i : 0)
     rounded = value.round(num_decimals)
     rounded.to_f

@@ -97,11 +97,10 @@ end
 
 # interactive shell
 class Shell
-  def initialize(console_io, interpreter, program, options, tokenbuilders)
+  def initialize(console_io, interpreter, program, tokenbuilders)
     @console_io = console_io
     @interpreter = interpreter
     @program = program
-    @options = options
     @tokenbuilders = tokenbuilders
     @invalid_tokenbuilder = InvalidTokenBuilder.new
   end
@@ -146,7 +145,7 @@ class Shell
 
   def option_command(args)
     if args.empty?
-      @options.each do |option|
+      $options.each do |option|
         name = option[0].upcase
         value = option[1].value.to_s.upcase
         @console_io.print_line(name + ' ' + value)
@@ -155,8 +154,8 @@ class Shell
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
-      if @options.key?(kwd_d)
-        value = @options[kwd_d].value.to_s.upcase
+      if $options.key?(kwd_d)
+        value = $options[kwd_d].value.to_s.upcase
         @console_io.print_line("#{kwd} #{value}")
       else
         @console_io.print_line("Unknown option #{kwd}")
@@ -166,24 +165,24 @@ class Shell
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
-      if @options.key?(kwd_d)
+      if $options.key?(kwd_d)
         begin
           if args[1].boolean_constant?
             boolean = BooleanConstant.new(args[1])
-            @options[kwd_d].set(boolean.to_v)
+            $options[kwd_d].set(boolean.to_v)
           elsif args[1].numeric_constant?
             numeric = NumericConstant.new(args[1])
-            @options[kwd_d].set(numeric.to_v)
+            $options[kwd_d].set(numeric.to_v)
           elsif args[1].text_constant?
             text = TextConstant.new(args[1])
-            @options[kwd_d].set(text.to_v)
+            $options[kwd_d].set(text.to_v)
           else
             @console_io.print_line('Incorrect value type')
           end
         rescue BASICRuntimeError => e
           @console_io.print_line(e.to_s)
         end
-        value = @options[kwd_d].value.to_s.upcase
+        value = $options[kwd_d].value.to_s.upcase
         @console_io.print_line("#{kwd} #{value}")
       else
         @console_io.print_line("Unknown option #{kwd}")
@@ -213,15 +212,15 @@ class Shell
       if @program.check
         # duplicate the options
         options_2 = {}
-        @options.each { |name, option| options_2[name] = duplicate(option) }
+        $options.each { |name, option| options_2[name] = duplicate(option) }
 
         timing = Benchmark.measure {
-          @program.run(@interpreter, @options)
+          @program.run(@interpreter)
         }
 
         # restore options to undo any changes during the run
-        options_2.each { |name, option| @options[name] = option }
-        print_timing(timing, @console_io) if @options['timing'].value
+        options_2.each { |name, option| $options[name] = option }
+        print_timing(timing, @console_io) if $options['timing'].value
       end
     when 'BREAK'
       @interpreter.set_breakpoints(args)
@@ -394,85 +393,83 @@ int_40 = { :type => :int, :max => 40, :min => 0 }
 int_1 = { :type => :int, :max => 1, :min => 0 }
 float = { :type => :float, :min => 0 }
 
-basic_options = {}
+$options = {}
 
 base = 0
 base = options[:base].to_i if options.key?(:base)
-basic_options['base'] = Option.new(int_1, base)
+$options['base'] = Option.new(int_1, base)
 
 decimals = 5
 decimals = options[:decimals] if options.key?(:decimals)
-basic_options['decimals'] = Option.new(int_1_15, decimals)
+$options['decimals'] = Option.new(int_1_15, decimals)
 
-basic_options['default_prompt'] = Option.new(string, '? ')
+$options['default_prompt'] = Option.new(string, '? ')
 
-basic_options['detect_infinite_loop'] =
+$options['detect_infinite_loop'] =
   Option.new(boolean, !options.key?(:no_detect_infinite_loop))
 
-basic_options['echo'] = Option.new(boolean, options.key?(:echo_input))
+$options['echo'] = Option.new(boolean, options.key?(:echo_input))
 
 epsilon = 1e-7
 epsilon = options[:epsilon].to_f if options.key?(:epsilon)
-basic_options['epsilon'] = Option.new(float, epsilon)
+$options['epsilon'] = Option.new(float, epsilon)
 
-basic_options['heading'] = Option.new(boolean, !options.key?(:no_heading))
+$options['heading'] = Option.new(boolean, !options.key?(:no_heading))
 
-basic_options['ignore_rnd_arg'] =
+$options['ignore_rnd_arg'] =
   Option.new(boolean, options.key?(:ignore_rnd_arg))
 
-basic_options['implied_semicolon'] =
+$options['implied_semicolon'] =
   Option.new(boolean, options.key?(:implied_semicolon))
 
-basic_options['int_floor'] = Option.new(boolean, options.key?(:int_floor))
+$options['int_floor'] = Option.new(boolean, options.key?(:int_floor))
 
-basic_options['lock_fornext'] =
+$options['lock_fornext'] =
   Option.new(boolean, options.key?(:lock_fornext))
 
-basic_options['match_fornext'] =
+$options['match_fornext'] =
   Option.new(boolean, options.key?(:match_fornext))
 
 newline_speed = 0
 newline_speed = 10 if options.key?(:tty_lf)
-basic_options['newline_speed'] = Option.new(int, newline_speed)
+$options['newline_speed'] = Option.new(int, newline_speed)
 
 print_speed = 0
 print_speed = 10 if options.key?(:tty)
-basic_options['print_speed'] = Option.new(int, print_speed)
+$options['print_speed'] = Option.new(int, print_speed)
 
 print_width = 72
 print_width = options[:print_width].to_i if options.key?(:print_width)
-basic_options['print_width'] = Option.new(int_132, print_width)
+$options['print_width'] = Option.new(int_132, print_width)
 
-basic_options['prompt_count'] = Option.new(boolean, options.key?(:prompt_count))
+$options['prompt_count'] = Option.new(boolean, options.key?(:prompt_count))
 
-basic_options['provenance'] = Option.new(boolean, options.key?(:provenance))
+$options['provenance'] = Option.new(boolean, options.key?(:provenance))
 
-basic_options['qmark_after_prompt'] =
+$options['qmark_after_prompt'] =
   Option.new(boolean, options.key?(:qmark_after_prompt))
 
-basic_options['randomize'] = Option.new(boolean, options.key?(:randomize))
+$options['randomize'] = Option.new(boolean, options.key?(:randomize))
 
 semicolon_zone_width = 0
 if options.key?(:semicolon_zone_width)
   semicolon_zone_width = options[:semicolon_zone_width].to_i
 end
 
-basic_options['semicolon_zone_width'] = Option.new(int, semicolon_zone_width)
+$options['semicolon_zone_width'] = Option.new(int, semicolon_zone_width)
 
-basic_options['timing'] = Option.new(boolean, !options.key?(:no_timing))
-basic_options['trace'] = Option.new(boolean, options.key?(:trace))
+$options['timing'] = Option.new(boolean, !options.key?(:no_timing))
+$options['trace'] = Option.new(boolean, options.key?(:trace))
 
 zone_width = 16
 zone_width = options[:zone_width].to_i if options.key?(:zone_width)
-basic_options['zone_width'] = Option.new(int_40, zone_width)
+$options['zone_width'] = Option.new(int_40, zone_width)
 
-NumericConstant.set_options(basic_options)
-
-console_io = ConsoleIo.new(basic_options)
+console_io = ConsoleIo.new
 
 tokenbuilders = make_interpreter_tokenbuilders
 
-if basic_options['heading'].value
+if $options['heading'].value
   console_io.print_line('BASIC-1965 interpreter version -1')
   console_io.newline
 end
@@ -482,15 +479,14 @@ if !run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   nametokens = [TextConstant.new(token)]
   if program.load(nametokens) && program.check
-    randomize_option = basic_options['randomize']
-    interpreter = Interpreter.new(console_io, randomize_option)
+    interpreter = Interpreter.new(console_io)
     interpreter.set_default_args('RND', NumericConstant.new(1))
 
     timing = Benchmark.measure {
-      program.run(interpreter, basic_options)
+      program.run(interpreter)
     }
 
-    print_timing(timing, console_io) if basic_options['timing'].value
+    print_timing(timing, console_io) if $options['timing'].value
     program.profile('') if show_profile
   end
 elsif !list_filename.nil?
@@ -510,18 +506,16 @@ elsif !cref_filename.nil?
   nametokens = [TextConstant.new(token)]
   program.crossref if program.load(nametokens)
 else
-  randomize_option = basic_options['randomize']
-  interpreter = Interpreter.new(console_io, randomize_option)
+  interpreter = Interpreter.new(console_io)
   interpreter.set_default_args('RND', NumericConstant.new(1))
   tokenbuilders = make_command_tokenbuilders
 
-  shell =
-    Shell.new(console_io, interpreter, program, basic_options, tokenbuilders)
+  shell = Shell.new(console_io, interpreter, program, tokenbuilders)
 
   shell.run
 end
 
-if basic_options['heading'].value
+if $options['heading'].value
   console_io.newline
   console_io.print_line('BASIC-1965 ended')
 end
