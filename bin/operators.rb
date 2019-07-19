@@ -547,11 +547,11 @@ class BinaryOperator < AbstractElement
   end
 
   def array_to_horizontal(a)
+    base = $options['base'].value
     a_dims = a.dimensions
-    new_dims = [NumericConstant.new(1), a_dims[0]]
+    new_dims = [NumericConstant.new(base), a_dims[0]]
     n_cols = a_dims[0].to_i
     new_values = {}
-    base = $options['base'].value
 
     (base..n_cols).each do |col|
       value = a.get_value_1(col)
@@ -578,11 +578,11 @@ class BinaryOperator < AbstractElement
   end
 
   def array_to_vertical(a)
+    base = $options['base'].value
     a_dims = a.dimensions
-    new_dims = [a_dims[0], NumericConstant.new(1)]
+    new_dims = [a_dims[0], NumericConstant.new(base)]
     n_cols = a_dims[0].to_i
     new_values = {}
-    base = $options['base'].value
 
     (base..n_cols).each do |col|
       value = a.get_value_1(col)

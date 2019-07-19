@@ -1,0 +1,164 @@
+10: REM MATRIX ASSIGNMENT FOR THIN MATRICES
+20: OPTION BASE 0
+30: DIM H(0, 5), V(5, 0)
+40: FOR I = 0 TO 5
+ I = 0
+ terminated:false
+50: LET H(0, I) = I
+ I: 0
+ H(0,0) = 0
+52: LET V(I, 0) = I
+ I: 0
+ V(0,0) = 0
+60: NEXT I
+ I: 0
+ terminated:false
+ I = 1
+50: LET H(0, I) = I
+ I: 1
+ H(0,1) = 1
+52: LET V(I, 0) = I
+ I: 1
+ V(1,0) = 1
+60: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+50: LET H(0, I) = I
+ I: 2
+ H(0,2) = 2
+52: LET V(I, 0) = I
+ I: 2
+ V(2,0) = 2
+60: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+50: LET H(0, I) = I
+ I: 3
+ H(0,3) = 3
+52: LET V(I, 0) = I
+ I: 3
+ V(3,0) = 3
+60: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+50: LET H(0, I) = I
+ I: 4
+ H(0,4) = 4
+52: LET V(I, 0) = I
+ I: 4
+ V(4,0) = 4
+60: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+50: LET H(0, I) = I
+ I: 5
+ H(0,5) = 5
+52: LET V(I, 0) = I
+ I: 5
+ V(5,0) = 5
+60: NEXT I
+ I: 5
+ terminated:true
+70: MAT PRINT H;
+ H(0,0): 0
+ H(0,1): 1
+ H(0,2): 2
+ H(0,3): 3
+ H(0,4): 4
+ H(0,5): 5
+ 0  1  2  3  4  5 
+
+72: MAT PRINT V;
+ V(0,0): 0
+ V(1,0): 1
+ V(2,0): 2
+ V(3,0): 3
+ V(4,0): 4
+ V(5,0): 5
+ 0 
+ 1 
+ 2 
+ 3 
+ 4 
+ 5 
+
+120: OPTION BASE 1
+130: DIM H(1, 5), V(5, 1)
+140: FOR I = 1 TO 5
+ I = 1
+ terminated:false
+150: LET H(1, I) = I
+ I: 1
+ H(1,1) = 1
+152: LET V(I, 1) = I
+ I: 1
+ V(1,1) = 1
+160: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+150: LET H(1, I) = I
+ I: 2
+ H(1,2) = 2
+152: LET V(I, 1) = I
+ I: 2
+ V(2,1) = 2
+160: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+150: LET H(1, I) = I
+ I: 3
+ H(1,3) = 3
+152: LET V(I, 1) = I
+ I: 3
+ V(3,1) = 3
+160: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+150: LET H(1, I) = I
+ I: 4
+ H(1,4) = 4
+152: LET V(I, 1) = I
+ I: 4
+ V(4,1) = 4
+160: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+150: LET H(1, I) = I
+ I: 5
+ H(1,5) = 5
+152: LET V(I, 1) = I
+ I: 5
+ V(5,1) = 5
+160: NEXT I
+ I: 5
+ terminated:true
+170: MAT PRINT H;
+ H(1,1): 1
+ H(1,2): 2
+ H(1,3): 3
+ H(1,4): 4
+ H(1,5): 5
+ 1  2  3  4  5 
+
+172: MAT PRINT V;
+ V(1,1): 1
+ V(2,1): 2
+ V(3,1): 3
+ V(4,1): 4
+ V(5,1): 5
+ 1 
+ 2 
+ 3 
+ 4 
+ 5 
+
+999: END
+STOP in line 999
