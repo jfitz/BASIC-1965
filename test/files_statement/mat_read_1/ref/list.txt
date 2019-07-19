@@ -1,4 +1,5 @@
 10 REM This is a test
+12 OPTION BASE 1
 15 DIM A(3,4)
 20 FILES "input.txt"
 30 MAT READ #1;A

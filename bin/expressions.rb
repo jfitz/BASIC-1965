@@ -213,7 +213,9 @@ class Matrix
   def values_1
     values = {}
 
-    (1..@dimensions[0].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..@dimensions[0].to_i).each do |col|
       value = get_value_1(col)
       coords = make_coord(col)
       values[coords] = value
@@ -225,8 +227,10 @@ class Matrix
   def values_2
     values = {}
 
-    (1..@dimensions[0].to_i).each do |row|
-      (1..@dimensions[1].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..@dimensions[0].to_i).each do |row|
+      (base..@dimensions[1].to_i).each do |col|
         value = get_value_2(row, col)
         coords = make_coords(row, col)
         values[coords] = value
@@ -282,8 +286,10 @@ class Matrix
     raise(BASICRuntimeError, 'TRN requires matrix') unless @dimensions.size == 2
     new_values = {}
 
-    (1..@dimensions[0].to_i).each do |row|
-      (1..@dimensions[1].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..@dimensions[0].to_i).each do |row|
+      (base..@dimensions[1].to_i).each do |col|
         value = get_value_2(row, col)
         coords = make_coords(col, row)
         new_values[coords] = value
@@ -350,7 +356,9 @@ class Matrix
     new_values = make_matrix(@dimensions, NumericConstant.new(0))
     one = NumericConstant.new(1)
 
-    (1..@dimensions[0].to_i).each do |row|
+    base = $options['base'].value
+
+    (base..@dimensions[0].to_i).each do |row|
       coords = make_coords(row, row)
       new_values[coords] = one
     end
@@ -371,7 +379,9 @@ class Matrix
   def make_array(dims, init_value)
     values = {}
 
-    (1..dims[0].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..dims[0].to_i).each do |col|
       coords = make_coord(col)
       values[coords] = init_value
     end
@@ -382,8 +392,10 @@ class Matrix
   def make_matrix(dims, init_value)
     values = {}
 
-    (1..dims[0].to_i).each do |row|
-      (1..dims[1].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..dims[0].to_i).each do |row|
+      (base..dims[1].to_i).each do |col|
         coords = make_coords(row, col)
         values[coords] = init_value
       end
@@ -395,7 +407,9 @@ class Matrix
   def print_1(printer, interpreter, carriage)
     n_cols = @dimensions[0].to_i
 
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = get_value_1(col)
       value.print(printer)
       carriage.print(printer, interpreter)
@@ -409,8 +423,10 @@ class Matrix
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
 
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         value = get_value_2(row, col)
         value.print(printer)
         carriage.print(printer, interpreter)
@@ -425,7 +441,9 @@ class Matrix
   def write_1(printer, interpreter, carriage)
     n_cols = @dimensions[0].to_i
 
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = get_value_1(col)
       value.write(printer)
       carriage.write(printer, interpreter)
@@ -439,8 +457,10 @@ class Matrix
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
 
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         value = get_value_2(row, col)
         value.write(printer)
         carriage.write(printer, interpreter)
@@ -466,7 +486,9 @@ class Matrix
     det = NumericConstant.new(0)
 
     # for each element in first row
-    (1..@dimensions[1].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..@dimensions[1].to_i).each do |col|
       v = get_value_2(1, col)
       # create submatrix
       subm = submatrix(1, col)
@@ -489,10 +511,12 @@ class Matrix
     new_values = {}
     new_row = 1
 
-    (1..@dimensions[0].to_i).each do |row|
+    base = $options['base'].value
+
+    (base..@dimensions[0].to_i).each do |row|
       new_col = 1
       next if row == exclude_row
-      (1..@dimensions[1].to_i).each do |col|
+      (base..@dimensions[1].to_i).each do |col|
         next if col == exclude_col
         new_values[make_coords(new_row, new_col)] = get_value_2(row, col)
         new_col += 1
@@ -521,11 +545,13 @@ class Matrix
   end
 
   def upper_triangle(n_cols, n_rows, values, inv_values)
-    (1..n_cols - 1).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols - 1).each do |col|
       (col + 1..n_rows).each do |row|
         # adjust values for this row
         factor = calc_factor(values, row, col)
-        (1..n_cols).each do |wcol|
+        (base..n_cols).each do |wcol|
           adjust_matrix_entry(values, row, col, wcol, factor)
           adjust_matrix_entry(inv_values, row, col, wcol, factor)
         end
@@ -534,11 +560,13 @@ class Matrix
   end
 
   def lower_triangle(n_cols, values, inv_values)
-    n_cols.downto(2) do |col|
-      (col - 1).downto(1).each do |row|
+    base = $options['base'].value
+
+    n_cols.downto(base + 1) do |col|
+      (col - 1).downto(base).each do |row|
         # adjust values for this row
         factor = calc_factor(values, row, col)
-        (1..n_cols).each do |wcol|
+        (base..n_cols).each do |wcol|
           adjust_matrix_entry(values, row, col, wcol, factor)
           adjust_matrix_entry(inv_values, row, col, wcol, factor)
         end
@@ -547,10 +575,12 @@ class Matrix
   end
 
   def unitize(n_cols, n_rows, values, inv_values)
-    (1..n_rows).each do |row|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
       denom_coords = make_coords(row, row)
       denominator = values[denom_coords]
-      (1..n_cols).each do |col|
+      (base..n_cols).each do |col|
         unitize_matrix_entry(values, row, col, denominator)
         unitize_matrix_entry(inv_values, row, col, denominator)
       end
@@ -668,7 +698,9 @@ class MatrixValue < Value
   def evaluate_1(interpreter, n_cols)
     values = {}
 
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       coords = make_coord(col)
       variable = Value.new(@variable_name, coords)
       values[coords] = interpreter.get_value(variable)
@@ -680,8 +712,10 @@ class MatrixValue < Value
   def evaluate_2(interpreter, n_rows, n_cols)
     values = {}
 
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         coords = make_coords(row, col)
         variable = Value.new(@variable_name, coords)
         values[coords] = interpreter.get_value(variable)

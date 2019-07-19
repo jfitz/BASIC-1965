@@ -32,6 +32,8 @@
 60
 100 REM  INITIALIZE.
  Remark: INITIALIZE.
+105 OPTION BASE 1
+ NumericConstant:1
 110 MAT READ P
  MatrixReference:P
 111 DATA 5,4,1,6,2,3, 6,4,2,1,5,3, 6,4,3,1,2,5
@@ -108,6 +110,8 @@
  NumericConstant:0
  NumericConstant:1
  NumericConstant:1
+ NumericConstant:0
+170 OPTION BASE 0
  NumericConstant:0
 190 FOR V = 0 TO 4
  control: VariableName:V

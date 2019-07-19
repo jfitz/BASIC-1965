@@ -71,7 +71,9 @@ class UnaryOperator < AbstractElement
   def posate_a(source)
     n_cols = source.dimensions[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = source.get_value(col)
       coords = make_coord(col)
       values[coords] = posate(value)
@@ -82,7 +84,9 @@ class UnaryOperator < AbstractElement
   def posate_1(source)
     n_cols = source.dimensions[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = source.get_value_1(col)
       coords = make_coord(col)
       values[coords] = posate(value)
@@ -94,8 +98,10 @@ class UnaryOperator < AbstractElement
     n_rows = source.dimensions[0].to_i
     n_cols = source.dimensions[1].to_i
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         value = source.get_value_2(row, col)
         coords = make_coords(row, col)
         values[coords] = posate(value)
@@ -107,7 +113,9 @@ class UnaryOperator < AbstractElement
   def negate_a(source)
     n_cols = source.dimensions[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = source.get_value(col)
       coords = make_coord(col)
       values[coords] = negate(value)
@@ -118,7 +126,9 @@ class UnaryOperator < AbstractElement
   def negate_1(source)
     n_cols = source.dimensions[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = source.get_value_1(col)
       coords = make_coord(col)
       values[coords] = negate(value)
@@ -130,8 +140,10 @@ class UnaryOperator < AbstractElement
     n_rows = source.dimensions[0].to_i
     n_cols = source.dimensions[1].to_i
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         value = source.get_value_2(row, col)
         coords = make_coords(row, col)
         values[coords] = negate(value)
@@ -228,7 +240,7 @@ class BinaryOperator < AbstractElement
     x = stack.pop
 
     base = interpreter.base
-    
+
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
     elsif x.matrix? && y.scalar?
@@ -376,7 +388,9 @@ class BinaryOperator < AbstractElement
     dims = b.dimensions
     n_cols = dims[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       b_value = b.get_value_1(col)
       coords = make_coord(col)
       values[coords] = a.send(op, b_value)
@@ -389,8 +403,10 @@ class BinaryOperator < AbstractElement
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
         values[coords] = a.send(op, b_value)
@@ -410,7 +426,9 @@ class BinaryOperator < AbstractElement
     dims = a.dimensions
     n_cols = dims[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       a_value = a.get_value_1(col)
       coords = make_coord(col)
       values[coords] = a_value.send(op, b)
@@ -423,8 +441,10 @@ class BinaryOperator < AbstractElement
     n_rows = dims[0].to_i
     n_cols = dims[1].to_i
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         coords = make_coords(row, col)
         values[coords] = a_value.send(op, b)
@@ -444,7 +464,9 @@ class BinaryOperator < AbstractElement
     a_dims = a.dimensions
     n_cols = a_dims[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       a_value = a.get_value_(col)
       b_value = b.get_value_(col)
       coords = make_coord(col)
@@ -458,8 +480,10 @@ class BinaryOperator < AbstractElement
     n_rows = a_dims[0].to_i
     n_cols = a_dims[1].to_i
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
@@ -483,7 +507,9 @@ class BinaryOperator < AbstractElement
     a_dims = a.dimensions
     n_cols = a_dims[0].to_i
     values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       a_value = a.get_value_1(col)
       b_value = b.get_value_1(col)
       coords = make_coord(col)
@@ -497,8 +523,10 @@ class BinaryOperator < AbstractElement
     n_rows = a_dims[0].to_i
     n_cols = a_dims[1].to_i
     values = {}
-    (1..n_rows).each do |row|
-      (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
         a_value = a.get_value_2(row, col)
         b_value = b.get_value_2(row, col)
         coords = make_coords(row, col)
@@ -523,9 +551,11 @@ class BinaryOperator < AbstractElement
     new_dims = [NumericConstant.new(1), a_dims[0]]
     n_cols = a_dims[0].to_i
     new_values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = a.get_value_1(col)
-      coords = make_coords(1, col)
+      coords = make_coords(base, col)
       new_values[coords] = value
     end
     Matrix.new(new_dims, new_values)
@@ -536,8 +566,10 @@ class BinaryOperator < AbstractElement
     new_dims = [m_dims[1]]
     new_values = {}
     n_cols = new_dims[0].to_i
-    row = 1
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+    row = base
+
+    (base..n_cols).each do |col|
       value = m.get_value_2(row, col)
       coords = make_coord(col)
       new_values[coords] = value
@@ -550,9 +582,11 @@ class BinaryOperator < AbstractElement
     new_dims = [a_dims[0], NumericConstant.new(1)]
     n_cols = a_dims[0].to_i
     new_values = {}
-    (1..n_cols).each do |col|
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
       value = a.get_value_1(col)
-      coords = make_coords(col, 1)
+      coords = make_coords(col, base)
       new_values[coords] = value
     end
     Matrix.new(new_dims, new_values)
@@ -563,8 +597,10 @@ class BinaryOperator < AbstractElement
     new_dims = [m_dims[0]]
     new_values = {}
     n_rows = new_dims[0].to_i
-    col = 1
-    (1..n_rows).each do |row|
+    base = $options['base'].value
+    col = base
+
+    (base..n_rows).each do |row|
       value = m.get_value_2(row, col)
       coords = make_coord(row)
       new_values[coords] = value
@@ -576,7 +612,9 @@ class BinaryOperator < AbstractElement
     a_dims = a.dimensions
     a_cols = a_dims[1].to_i
     f = 0
-    (1..a_cols).each do |a_col|
+    base = $options['base'].value
+
+    (base..a_cols).each do |a_col|
       a_value = a.get_value_2(r_row, a_col)
       b_value = b.get_value_2(a_col, r_col)
       f += a_value.to_f * b_value.to_f
@@ -589,8 +627,10 @@ class BinaryOperator < AbstractElement
     r_rows = r_dims[0].to_i
     r_cols = r_dims[1].to_i
     values = {}
-    (1..r_rows).each do |r_row|
-      (1..r_cols).each do |r_col|
+    base = $options['base'].value
+
+    (base..r_rows).each do |r_row|
+      (base..r_cols).each do |r_col|
         coords = make_coords(r_row, r_col)
         values[coords] = multiply_matrix_matrix_value(a, b, r_row, r_col)
       end

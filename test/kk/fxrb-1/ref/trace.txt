@@ -5517,22 +5517,13 @@
  I: 30
  terminated:true
 290:
-300: FOR J = 20 TO 0 STEP -1
+300: FOR J = 20 TO 1 STEP -1
  J = 20
  -1 = -1
  terminated:false
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 20
- G(0,20): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 20
@@ -5682,21 +5673,9 @@
  J: 20
  G(17,20): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 20
- G(0,20): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 20
@@ -6402,18 +6381,9 @@
  J: 20
  terminated:false
  J = 19
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 19
- G(0,19): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 19
@@ -6509,21 +6479,9 @@
  J: 19
  G(11,19): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 19
- G(0,19): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 19
@@ -7103,18 +7061,9 @@
  J: 19
  terminated:false
  J = 18
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 18
- G(0,18): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 18
@@ -7661,18 +7610,9 @@
  J: 18
  terminated:false
  J = 17
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 17
- G(0,17): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 17
@@ -7732,21 +7672,9 @@
  J: 17
  G(7,17): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 17
- G(0,17): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 17
@@ -8686,18 +8614,9 @@
  J: 17
  terminated:false
  J = 16
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 16
- G(0,16): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 16
@@ -9244,18 +9163,9 @@
  J: 16
  terminated:false
  J = 15
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 15
- G(0,15): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 15
@@ -9306,21 +9216,9 @@
  J: 15
  G(6,15): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 15
- G(0,15): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 15
@@ -9885,18 +9783,9 @@
  J: 15
  terminated:false
  J = 14
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 14
- G(0,14): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 14
@@ -10443,18 +10332,9 @@
  J: 14
  terminated:false
  J = 13
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 13
- G(0,13): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 13
@@ -10487,21 +10367,9 @@
  J: 13
  G(4,13): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 13
- G(0,13): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 13
@@ -11588,18 +11456,9 @@
  J: 13
  terminated:false
  J = 12
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 12
- G(0,12): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 12
@@ -12146,18 +12005,9 @@
  J: 12
  terminated:false
  J = 11
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 11
- G(0,11): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 11
@@ -12190,21 +12040,9 @@
  J: 11
  G(4,11): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 11
- G(0,11): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 11
@@ -12763,18 +12601,9 @@
  J: 11
  terminated:false
  J = 10
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 10
- G(0,10): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 10
@@ -13321,18 +13150,9 @@
  J: 10
  terminated:false
  J = 9
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 9
- G(0,9): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 9
@@ -13365,21 +13185,9 @@
  J: 9
  G(4,9): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 9
- G(0,9): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 9
@@ -14526,18 +14334,9 @@
  J: 9
  terminated:false
  J = 8
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 8
- G(0,8): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 8
@@ -14570,21 +14369,9 @@
  J: 8
  G(4,8): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 8
- G(0,8): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 8
@@ -15143,18 +14930,9 @@
  J: 8
  terminated:false
  J = 7
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 7
- G(0,7): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 7
@@ -15187,21 +14965,9 @@
  J: 7
  G(4,7): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 7
- G(0,7): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 7
@@ -15760,18 +15526,9 @@
  J: 7
  terminated:false
  J = 6
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 6
- G(0,6): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 6
@@ -15804,21 +15561,9 @@
  J: 6
  G(4,6): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 6
- G(0,6): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 6
@@ -16941,18 +16686,9 @@
  J: 6
  terminated:false
  J = 5
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 5
- G(0,5): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 5
@@ -16985,21 +16721,9 @@
  J: 5
  G(4,5): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 5
- G(0,5): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 5
@@ -17558,18 +17282,9 @@
  J: 5
  terminated:false
  J = 4
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 4
- G(0,4): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 4
@@ -17611,21 +17326,9 @@
  J: 4
  G(5,4): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 4
- G(0,4): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 4
@@ -18679,18 +18382,9 @@
  J: 4
  terminated:false
  J = 3
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 3
- G(0,3): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 3
@@ -18741,21 +18435,9 @@
  J: 3
  G(6,3): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 3
- G(0,3): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 3
@@ -19716,18 +19398,9 @@
  J: 3
  terminated:false
  J = 2
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 2
- G(0,2): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 2
@@ -19805,21 +19478,9 @@
  J: 2
  G(9,2): 1
  G(I,J)>0: true
-360: FOR I = 0 TO 60
- I = 0
- terminated:false
-370: IF G(I, J) > 0 THEN 400
- I: 0
- J: 2
- G(0,2): 0
- G(I,J)>0: false
-380: PRINT " ";
- 
-390: GOTO 450
-450: NEXT I
- I: 0
- terminated:false
+360: FOR I = 1 TO 60
  I = 1
+ terminated:false
 370: IF G(I, J) > 0 THEN 400
  I: 1
  J: 2
@@ -20609,18 +20270,9 @@
  J: 2
  terminated:false
  J = 1
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 1
- G(0,1): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
+310: FOR I = 1 TO 60
  I = 1
+ terminated:false
 320: IF G(I, J) > 0 THEN 360
  I: 1
  J: 1
@@ -21165,564 +20817,6 @@
 350: GOTO 470
 470: NEXT J
  J: 1
- terminated:false
- J = 0
-310: FOR I = 0 TO 60
- I = 0
- terminated:false
-320: IF G(I, J) > 0 THEN 360
- I: 0
- J: 0
- G(0,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 0
- terminated:false
- I = 1
-320: IF G(I, J) > 0 THEN 360
- I: 1
- J: 0
- G(1,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 1
- terminated:false
- I = 2
-320: IF G(I, J) > 0 THEN 360
- I: 2
- J: 0
- G(2,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 2
- terminated:false
- I = 3
-320: IF G(I, J) > 0 THEN 360
- I: 3
- J: 0
- G(3,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 3
- terminated:false
- I = 4
-320: IF G(I, J) > 0 THEN 360
- I: 4
- J: 0
- G(4,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 4
- terminated:false
- I = 5
-320: IF G(I, J) > 0 THEN 360
- I: 5
- J: 0
- G(5,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 5
- terminated:false
- I = 6
-320: IF G(I, J) > 0 THEN 360
- I: 6
- J: 0
- G(6,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 6
- terminated:false
- I = 7
-320: IF G(I, J) > 0 THEN 360
- I: 7
- J: 0
- G(7,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 7
- terminated:false
- I = 8
-320: IF G(I, J) > 0 THEN 360
- I: 8
- J: 0
- G(8,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 8
- terminated:false
- I = 9
-320: IF G(I, J) > 0 THEN 360
- I: 9
- J: 0
- G(9,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 9
- terminated:false
- I = 10
-320: IF G(I, J) > 0 THEN 360
- I: 10
- J: 0
- G(10,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 10
- terminated:false
- I = 11
-320: IF G(I, J) > 0 THEN 360
- I: 11
- J: 0
- G(11,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 11
- terminated:false
- I = 12
-320: IF G(I, J) > 0 THEN 360
- I: 12
- J: 0
- G(12,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 12
- terminated:false
- I = 13
-320: IF G(I, J) > 0 THEN 360
- I: 13
- J: 0
- G(13,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 13
- terminated:false
- I = 14
-320: IF G(I, J) > 0 THEN 360
- I: 14
- J: 0
- G(14,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 14
- terminated:false
- I = 15
-320: IF G(I, J) > 0 THEN 360
- I: 15
- J: 0
- G(15,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 15
- terminated:false
- I = 16
-320: IF G(I, J) > 0 THEN 360
- I: 16
- J: 0
- G(16,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 16
- terminated:false
- I = 17
-320: IF G(I, J) > 0 THEN 360
- I: 17
- J: 0
- G(17,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 17
- terminated:false
- I = 18
-320: IF G(I, J) > 0 THEN 360
- I: 18
- J: 0
- G(18,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 18
- terminated:false
- I = 19
-320: IF G(I, J) > 0 THEN 360
- I: 19
- J: 0
- G(19,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 19
- terminated:false
- I = 20
-320: IF G(I, J) > 0 THEN 360
- I: 20
- J: 0
- G(20,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 20
- terminated:false
- I = 21
-320: IF G(I, J) > 0 THEN 360
- I: 21
- J: 0
- G(21,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 21
- terminated:false
- I = 22
-320: IF G(I, J) > 0 THEN 360
- I: 22
- J: 0
- G(22,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 22
- terminated:false
- I = 23
-320: IF G(I, J) > 0 THEN 360
- I: 23
- J: 0
- G(23,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 23
- terminated:false
- I = 24
-320: IF G(I, J) > 0 THEN 360
- I: 24
- J: 0
- G(24,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 24
- terminated:false
- I = 25
-320: IF G(I, J) > 0 THEN 360
- I: 25
- J: 0
- G(25,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 25
- terminated:false
- I = 26
-320: IF G(I, J) > 0 THEN 360
- I: 26
- J: 0
- G(26,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 26
- terminated:false
- I = 27
-320: IF G(I, J) > 0 THEN 360
- I: 27
- J: 0
- G(27,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 27
- terminated:false
- I = 28
-320: IF G(I, J) > 0 THEN 360
- I: 28
- J: 0
- G(28,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 28
- terminated:false
- I = 29
-320: IF G(I, J) > 0 THEN 360
- I: 29
- J: 0
- G(29,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 29
- terminated:false
- I = 30
-320: IF G(I, J) > 0 THEN 360
- I: 30
- J: 0
- G(30,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 30
- terminated:false
- I = 31
-320: IF G(I, J) > 0 THEN 360
- I: 31
- J: 0
- G(31,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 31
- terminated:false
- I = 32
-320: IF G(I, J) > 0 THEN 360
- I: 32
- J: 0
- G(32,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 32
- terminated:false
- I = 33
-320: IF G(I, J) > 0 THEN 360
- I: 33
- J: 0
- G(33,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 33
- terminated:false
- I = 34
-320: IF G(I, J) > 0 THEN 360
- I: 34
- J: 0
- G(34,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 34
- terminated:false
- I = 35
-320: IF G(I, J) > 0 THEN 360
- I: 35
- J: 0
- G(35,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 35
- terminated:false
- I = 36
-320: IF G(I, J) > 0 THEN 360
- I: 36
- J: 0
- G(36,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 36
- terminated:false
- I = 37
-320: IF G(I, J) > 0 THEN 360
- I: 37
- J: 0
- G(37,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 37
- terminated:false
- I = 38
-320: IF G(I, J) > 0 THEN 360
- I: 38
- J: 0
- G(38,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 38
- terminated:false
- I = 39
-320: IF G(I, J) > 0 THEN 360
- I: 39
- J: 0
- G(39,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 39
- terminated:false
- I = 40
-320: IF G(I, J) > 0 THEN 360
- I: 40
- J: 0
- G(40,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 40
- terminated:false
- I = 41
-320: IF G(I, J) > 0 THEN 360
- I: 41
- J: 0
- G(41,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 41
- terminated:false
- I = 42
-320: IF G(I, J) > 0 THEN 360
- I: 42
- J: 0
- G(42,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 42
- terminated:false
- I = 43
-320: IF G(I, J) > 0 THEN 360
- I: 43
- J: 0
- G(43,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 43
- terminated:false
- I = 44
-320: IF G(I, J) > 0 THEN 360
- I: 44
- J: 0
- G(44,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 44
- terminated:false
- I = 45
-320: IF G(I, J) > 0 THEN 360
- I: 45
- J: 0
- G(45,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 45
- terminated:false
- I = 46
-320: IF G(I, J) > 0 THEN 360
- I: 46
- J: 0
- G(46,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 46
- terminated:false
- I = 47
-320: IF G(I, J) > 0 THEN 360
- I: 47
- J: 0
- G(47,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 47
- terminated:false
- I = 48
-320: IF G(I, J) > 0 THEN 360
- I: 48
- J: 0
- G(48,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 48
- terminated:false
- I = 49
-320: IF G(I, J) > 0 THEN 360
- I: 49
- J: 0
- G(49,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 49
- terminated:false
- I = 50
-320: IF G(I, J) > 0 THEN 360
- I: 50
- J: 0
- G(50,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 50
- terminated:false
- I = 51
-320: IF G(I, J) > 0 THEN 360
- I: 51
- J: 0
- G(51,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 51
- terminated:false
- I = 52
-320: IF G(I, J) > 0 THEN 360
- I: 52
- J: 0
- G(52,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 52
- terminated:false
- I = 53
-320: IF G(I, J) > 0 THEN 360
- I: 53
- J: 0
- G(53,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 53
- terminated:false
- I = 54
-320: IF G(I, J) > 0 THEN 360
- I: 54
- J: 0
- G(54,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 54
- terminated:false
- I = 55
-320: IF G(I, J) > 0 THEN 360
- I: 55
- J: 0
- G(55,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 55
- terminated:false
- I = 56
-320: IF G(I, J) > 0 THEN 360
- I: 56
- J: 0
- G(56,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 56
- terminated:false
- I = 57
-320: IF G(I, J) > 0 THEN 360
- I: 57
- J: 0
- G(57,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 57
- terminated:false
- I = 58
-320: IF G(I, J) > 0 THEN 360
- I: 58
- J: 0
- G(58,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 58
- terminated:false
- I = 59
-320: IF G(I, J) > 0 THEN 360
- I: 59
- J: 0
- G(59,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 59
- terminated:false
- I = 60
-320: IF G(I, J) > 0 THEN 360
- I: 60
- J: 0
- G(60,0): 0
- G(I,J)>0: false
-330: NEXT I
- I: 60
- terminated:true
-340: PRINT
-
-350: GOTO 470
-470: NEXT J
- J: 0
  terminated:true
 480:
 900: DATA 3, .5

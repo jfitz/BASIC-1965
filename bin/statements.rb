@@ -323,7 +323,7 @@ class AbstractStatement
         result &= value.size == control[0] if control.size == 1
         result &= value.size >= control[0] if
           control.size == 2 && control[1] == '>='
-        
+
       elsif control.class.to_s == 'Array' &&
             value.class.to_s == 'KeywordToken'
 
@@ -2137,7 +2137,9 @@ class MatReadStatement < AbstractReadStatement
   def read_vector(name, dims, interpreter, ds)
     values = {}
 
-    (1..dims[0].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..dims[0].to_i).each do |col|
       coord = make_coord(col)
       values[coord] = ds.read
     end
@@ -2148,8 +2150,10 @@ class MatReadStatement < AbstractReadStatement
   def read_matrix(name, dims, interpreter, ds)
     values = {}
 
-    (1..dims[0].to_i).each do |row|
-      (1..dims[1].to_i).each do |col|
+    base = $options['base'].value
+
+    (base..dims[0].to_i).each do |row|
+      (base..dims[1].to_i).each do |col|
         coords = make_coords(row, col)
         values[coords] = ds.read
       end
