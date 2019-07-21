@@ -1,0 +1,694 @@
+10 REM SIMULATION OF NEIGHBORS AND MOVES
+ Remark:SIMULATION OF NEIGHBORS AND MOVES
+20 OPTION BASE 0
+ NumericConstant:0
+100 REM collect data
+ Remark:collect data
+110 READ R0,C0
+ ScalarReference:R0
+ ScalarReference:C0
+120 READ N0
+ ScalarReference:N0
+122 DIM M(N0)
+ ScalarValue:N0
+ CompoundDeclaration:M
+130 READ D0
+ ScalarReference:D0
+132 READ I0
+ ScalarReference:I0
+134 READ Z8
+ ScalarReference:Z8
+136 LET Z0 = R0 * 2 + C0 * 2 + Z8
+ ScalarReference:Z0
+ ScalarValue:R0
+ NumericConstant:2
+ BinaryOperator:*
+ ScalarValue:C0
+ NumericConstant:2
+ BinaryOperator:*
+ BinaryOperator:+
+ ScalarValue:Z8
+ BinaryOperator:+
+ AssignmentOperator:=
+150 PRINT "Board size:";R0+1;"x";C0+1
+ ITEMS
+ TextConstant:"Board size:"
+ CarriageControl:;
+ ScalarValue:R0
+ NumericConstant:1
+ BinaryOperator:+
+ CarriageControl:;
+ TextConstant:"x"
+ CarriageControl:;
+ ScalarValue:C0
+ NumericConstant:1
+ BinaryOperator:+
+ CarriageControl:NL
+152 PRINT "Number of populations:";N0
+ ITEMS
+ TextConstant:"Number of populations:"
+ CarriageControl:;
+ ScalarValue:N0
+ CarriageControl:NL
+154 PRINT "Discomfort threshold:";D0
+ ITEMS
+ TextConstant:"Discomfort threshold:"
+ CarriageControl:;
+ ScalarValue:D0
+ CarriageControl:NL
+156 PRINT "Iteration threshold:";I0
+ ITEMS
+ TextConstant:"Iteration threshold:"
+ CarriageControl:;
+ ScalarValue:I0
+ CarriageControl:NL
+158 PRINT "Number of zero cells:";Z0
+ ITEMS
+ TextConstant:"Number of zero cells:"
+ CarriageControl:;
+ ScalarValue:Z0
+ CarriageControl:NL
+200 REM configure initial board
+ Remark:configure initial board
+210 PRINT "Initializing board... ";
+ ITEMS
+ TextConstant:"Initializing board... "
+ CarriageControl:;
+220 GOSUB 1100
+ LineNumber:1100
+230 PRINT "done."
+ ITEMS
+ TextConstant:"done."
+ CarriageControl:NL
+240 LET I1 = 1
+ ScalarReference:I1
+ NumericConstant:1
+ AssignmentOperator:=
+242 LET P2 = 0.99
+ ScalarReference:P2
+ NumericConstant:0.99
+ AssignmentOperator:=
+300 REM display board
+ Remark:display board
+310 PRINT
+ ITEMS
+ CarriageControl:NL
+312 PRINT "Iteration";I1;":"
+ ITEMS
+ TextConstant:"Iteration"
+ CarriageControl:;
+ ScalarValue:I1
+ CarriageControl:;
+ TextConstant:":"
+ CarriageControl:NL
+314 PRINT
+ ITEMS
+ CarriageControl:NL
+320 GOSUB 1200
+ LineNumber:1200
+400 REM ask to continue
+ Remark:ask to continue
+410 IF P2 < I0 THEN 900
+ ScalarValue:P2
+ ScalarValue:I0
+ BinaryOperator:<
+430 LET I1 = I1 + 1
+ ScalarReference:I1
+ ScalarValue:I1
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+500 REM calculate comfort
+ Remark:calculate comfort
+510 PRINT "Calculating moves... ";
+ ITEMS
+ TextConstant:"Calculating moves... "
+ CarriageControl:;
+520 GOSUB 1300
+ LineNumber:1300
+530 PRINT "done."
+ ITEMS
+ TextConstant:"done."
+ CarriageControl:NL
+540 PRINT "Moves: ";
+ ITEMS
+ TextConstant:"Moves: "
+ CarriageControl:;
+542 ARR PRINT M;
+ ITEMS
+ ArrayValue:M
+ CarriageControl:;
+550 LET M = 0
+ ScalarReference:M
+ NumericConstant:0
+ AssignmentOperator:=
+552 FOR I = 1 TO N0
+ control: VariableName:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N0"]
+ step:    ["NumericConstant:1"]
+554 LET M = M + M(I)
+ ScalarReference:M
+ ScalarValue:M
+ ScalarValue:I
+ ScalarValue:M
+ BinaryOperator:+
+ AssignmentOperator:=
+556 NEXT I
+ VariableName:I
+558 LET T = (R0+1) * (C0+1) - Z0
+ ScalarReference:T
+ ScalarValue:R0
+ NumericConstant:1
+ BinaryOperator:+
+ ScalarValue:C0
+ NumericConstant:1
+ BinaryOperator:+
+ BinaryOperator:*
+ ScalarValue:Z0
+ BinaryOperator:-
+ AssignmentOperator:=
+560 LET P2 = M / T
+ ScalarReference:P2
+ ScalarValue:M
+ ScalarValue:T
+ BinaryOperator:/
+ AssignmentOperator:=
+562 PRINT "(";P2*100;"%)"
+ ITEMS
+ TextConstant:"("
+ CarriageControl:;
+ ScalarValue:P2
+ NumericConstant:100
+ BinaryOperator:*
+ CarriageControl:;
+ TextConstant:"%)"
+ CarriageControl:NL
+570 PRINT
+ ITEMS
+ CarriageControl:NL
+600 REM fill in new board
+ Remark:fill in new board
+610 PRINT "Filling in new board... ";
+ ITEMS
+ TextConstant:"Filling in new board... "
+ CarriageControl:;
+620 GOSUB 1400
+ LineNumber:1400
+630 PRINT "done."
+ ITEMS
+ TextConstant:"done."
+ CarriageControl:NL
+700 REM new board becomes the board
+ Remark:new board becomes the board
+710 MAT B = B1
+ MatrixReference:B
+ MatrixValue:B1
+ AssignmentOperator:=
+800 GOTO 300
+ LineNumber:300
+900 REM End the simulation
+ Remark:End the simulation
+910 PRINT
+ ITEMS
+ CarriageControl:NL
+920 PRINT "SIMULATION TERMINATED"
+ ITEMS
+ TextConstant:"SIMULATION TERMINATED"
+ CarriageControl:NL
+990 STOP
+ 
+1100 REM configure initial board
+ Remark:configure initial board
+1110 REM SET EVERYTHING TO -1
+ Remark:SET EVERYTHING TO -1
+1112 MAT B = CON(R0,C0) * -1
+ MatrixReference:B
+ ScalarValue:R0
+ ScalarValue:C0
+ FunctionCon
+ NumericConstant:1
+ UnaryOperator:-
+ BinaryOperator:*
+ AssignmentOperator:=
+1120 REM SET HORIZONTAL BORDERS TO 0
+ Remark:SET HORIZONTAL BORDERS TO 0
+1122 FOR C = 0 TO C0
+ control: VariableName:C
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:C0"]
+ step:    ["NumericConstant:1"]
+1124 LET B(0,C) = 0
+ NumericConstant:0
+ ScalarValue:C
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+1126 LET B(R0,C) = 0
+ ScalarValue:R0
+ ScalarValue:C
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+1128 NEXT C
+ VariableName:C
+1130 REM SET VERTICAL BORDERS TO 0
+ Remark:SET VERTICAL BORDERS TO 0
+1132 FOR R = 0 TO R0
+ control: VariableName:R
+ start:   ["NumericConstant:0"]
+ end:     ["ScalarValue:R0"]
+ step:    ["NumericConstant:1"]
+1134 LET B(R,0) = 0
+ ScalarValue:R
+ NumericConstant:0
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+1136 LET B(R,C0) = 0
+ ScalarValue:R
+ ScalarValue:C0
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+1138 NEXT R
+ VariableName:R
+1140 REM SET INSIDE EMPTY AREAS TO 0
+ Remark:SET INSIDE EMPTY AREAS TO 0
+1142 FOR I = 1 TO Z8
+ control: VariableName:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:Z8"]
+ step:    ["NumericConstant:1"]
+1144 READ R,C
+ ScalarReference:R
+ ScalarReference:C
+1146 LET B(R,C) = 0
+ ScalarValue:R
+ ScalarValue:C
+ ScalarReference:B
+ NumericConstant:0
+ AssignmentOperator:=
+1148 NEXT I
+ VariableName:I
+1150 REM SET REMAINING CELLS TO POPULATION GROUP
+ Remark:SET REMAINING CELLS TO POPULATION GROUP
+1152 FOR R = 1 TO R0-1
+ control: VariableName:R
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+1153 FOR C = 1 TO C0-1
+ control: VariableName:C
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+1154 IF B(R,C) <> -1 THEN 1157
+ ScalarValue:R
+ ScalarValue:C
+ ScalarValue:B
+ NumericConstant:1
+ UnaryOperator:-
+ BinaryOperator:<>
+1155 LET B(R,C)=INT(RND(N0)+1)
+ ScalarValue:R
+ ScalarValue:C
+ ScalarReference:B
+ ScalarValue:N0
+ FunctionRnd
+ NumericConstant:1
+ BinaryOperator:+
+ FunctionInt
+ AssignmentOperator:=
+1157 NEXT C
+ VariableName:C
+1158 NEXT R
+ VariableName:R
+1190 RETURN
+ 
+1200 REM display board
+ Remark:display board
+1210 MAT PRINT B;
+ ITEMS
+ MatrixValue:B
+ CarriageControl:;
+1290 RETURN
+ 
+1300 REM calculate comfort, count people who move
+ Remark:calculate comfort, count people who move
+1302 MAT B1 = B
+ MatrixReference:B1
+ MatrixValue:B
+ AssignmentOperator:=
+1304 FOR I = 1 TO N0
+ control: VariableName:I
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:N0"]
+ step:    ["NumericConstant:1"]
+1305 LET M(I) = 0
+ ScalarValue:I
+ ScalarReference:M
+ NumericConstant:0
+ AssignmentOperator:=
+1306 NEXT I
+ VariableName:I
+1310 FOR R = 1 TO R0-1
+ control: VariableName:R
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+1312 FOR C = 1 TO C0-1
+ control: VariableName:C
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+1314 IF B(R,C) = 0 THEN 1380
+ ScalarValue:R
+ ScalarValue:C
+ ScalarValue:B
+ NumericConstant:0
+ BinaryOperator:=
+1317 LET X7 = 0
+ ScalarReference:X7
+ NumericConstant:0
+ AssignmentOperator:=
+1318 LET X8 = 0
+ ScalarReference:X8
+ NumericConstant:0
+ AssignmentOperator:=
+1320 FOR I9 = -1 TO 1
+ control: VariableName:I9
+ start:   ["NumericConstant:1", "UnaryOperator:-"]
+ end:     ["NumericConstant:1"]
+ step:    ["NumericConstant:1"]
+1322 FOR J9 = -1 TO 1
+ control: VariableName:J9
+ start:   ["NumericConstant:1", "UnaryOperator:-"]
+ end:     ["NumericConstant:1"]
+ step:    ["NumericConstant:1"]
+1330 IF B(R+I9,C+J9) = 0 THEN 1340
+ ScalarValue:R
+ ScalarValue:I9
+ BinaryOperator:+
+ ScalarValue:C
+ ScalarValue:J9
+ BinaryOperator:+
+ ScalarValue:B
+ NumericConstant:0
+ BinaryOperator:=
+1332 IF B(R+I9,C+J9) = B(R,C) THEN 1340
+ ScalarValue:R
+ ScalarValue:I9
+ BinaryOperator:+
+ ScalarValue:C
+ ScalarValue:J9
+ BinaryOperator:+
+ ScalarValue:B
+ ScalarValue:R
+ ScalarValue:C
+ ScalarValue:B
+ BinaryOperator:=
+1334 LET X8 = X8 + 1
+ ScalarReference:X8
+ ScalarValue:X8
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+1336 GOTO 1350
+ LineNumber:1350
+1340 LET X7 = X7 + 1
+ ScalarReference:X7
+ ScalarValue:X7
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+1350 NEXT J9
+ VariableName:J9
+1352 NEXT I9
+ VariableName:I9
+1360 LET X = X8 / X7
+ ScalarReference:X
+ ScalarValue:X8
+ ScalarValue:X7
+ BinaryOperator:/
+ AssignmentOperator:=
+1370 IF X < D0 THEN 1380
+ ScalarValue:X
+ ScalarValue:D0
+ BinaryOperator:<
+1372 LET M(B(R,C)) = M(B(R,C)) + 1
+ ScalarValue:R
+ ScalarValue:C
+ ScalarValue:B
+ ScalarReference:M
+ ScalarValue:R
+ ScalarValue:C
+ ScalarValue:B
+ ScalarValue:M
+ NumericConstant:1
+ BinaryOperator:+
+ AssignmentOperator:=
+1374 LET B1(R,C) = -1
+ ScalarValue:R
+ ScalarValue:C
+ ScalarReference:B1
+ NumericConstant:1
+ UnaryOperator:-
+ AssignmentOperator:=
+1380 NEXT C
+ VariableName:C
+1382 NEXT R
+ VariableName:R
+1390 RETURN
+ 
+1400 REM fill in new board
+ Remark:fill in new board
+1410 FOR R = 1 TO R0-1
+ control: VariableName:R
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+1412 FOR C = 1 TO C0-1
+ control: VariableName:C
+ start:   ["NumericConstant:1"]
+ end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
+ step:    ["NumericConstant:1"]
+1420 IF B1(R,C) <> -1 THEN 1450
+ ScalarValue:R
+ ScalarValue:C
+ ScalarValue:B1
+ NumericConstant:1
+ UnaryOperator:-
+ BinaryOperator:<>
+1430 LET P = INT(RND(N0)+1)
+ ScalarReference:P
+ ScalarValue:N0
+ FunctionRnd
+ NumericConstant:1
+ BinaryOperator:+
+ FunctionInt
+ AssignmentOperator:=
+1432 IF M(P) <= 0 THEN 1430
+ ScalarValue:P
+ ScalarValue:M
+ NumericConstant:0
+ BinaryOperator:<=
+1440 LET B1(R,C) = P
+ ScalarValue:R
+ ScalarValue:C
+ ScalarReference:B1
+ ScalarValue:P
+ AssignmentOperator:=
+1442 LET M(P) = M(P) - 1
+ ScalarValue:P
+ ScalarReference:M
+ ScalarValue:P
+ ScalarValue:M
+ NumericConstant:1
+ BinaryOperator:-
+ AssignmentOperator:=
+1450 NEXT C
+ VariableName:C
+1452 NEXT R
+ VariableName:R
+1490 RETURN
+ 
+3000 REM NUMBER OF ROWS AND COLUMNS
+ Remark:NUMBER OF ROWS AND COLUMNS
+3005 DATA 40,40
+ NumericConstant:40
+ NumericConstant:40
+3010 REM NUMBER OF POPULATION GROUPS
+ Remark:NUMBER OF POPULATION GROUPS
+3012 DATA 3
+ NumericConstant:3
+3020 REM DISCOMFORT THRESHOLD, ITERATION THRESHOLD
+ Remark:DISCOMFORT THRESHOLD, ITERATION THRESHOLD
+3022 DATA 0.8, 0.10
+ NumericConstant:0.8
+ NumericConstant:0.1
+3030 REM NUMBER OF ZERO-CELLS
+ Remark:NUMBER OF ZERO-CELLS
+3032 DATA 73
+ NumericConstant:73
+3050 REM COORDS FOR ZERO-CELLS
+ Remark:COORDS FOR ZERO-CELLS
+3051 DATA 1,10,2,10,3,10,4,10,5,10
+ NumericConstant:1
+ NumericConstant:10
+ NumericConstant:2
+ NumericConstant:10
+ NumericConstant:3
+ NumericConstant:10
+ NumericConstant:4
+ NumericConstant:10
+ NumericConstant:5
+ NumericConstant:10
+3052 DATA 39,20,38,20,37,20,36,20,35,20,34,20,33,20,32,20,31,20,30,20
+ NumericConstant:39
+ NumericConstant:20
+ NumericConstant:38
+ NumericConstant:20
+ NumericConstant:37
+ NumericConstant:20
+ NumericConstant:36
+ NumericConstant:20
+ NumericConstant:35
+ NumericConstant:20
+ NumericConstant:34
+ NumericConstant:20
+ NumericConstant:33
+ NumericConstant:20
+ NumericConstant:32
+ NumericConstant:20
+ NumericConstant:31
+ NumericConstant:20
+ NumericConstant:30
+ NumericConstant:20
+3053 DATA 29,20,28,20,27,20,26,20,25,20
+ NumericConstant:29
+ NumericConstant:20
+ NumericConstant:28
+ NumericConstant:20
+ NumericConstant:27
+ NumericConstant:20
+ NumericConstant:26
+ NumericConstant:20
+ NumericConstant:25
+ NumericConstant:20
+3054 DATA 6,11,7,12,8,13,9,14,10,15,11,16,12,17,13,18
+ NumericConstant:6
+ NumericConstant:11
+ NumericConstant:7
+ NumericConstant:12
+ NumericConstant:8
+ NumericConstant:13
+ NumericConstant:9
+ NumericConstant:14
+ NumericConstant:10
+ NumericConstant:15
+ NumericConstant:11
+ NumericConstant:16
+ NumericConstant:12
+ NumericConstant:17
+ NumericConstant:13
+ NumericConstant:18
+3055 DATA 12,1,12,2,12,3,12,4,12,5,12,6
+ NumericConstant:12
+ NumericConstant:1
+ NumericConstant:12
+ NumericConstant:2
+ NumericConstant:12
+ NumericConstant:3
+ NumericConstant:12
+ NumericConstant:4
+ NumericConstant:12
+ NumericConstant:5
+ NumericConstant:12
+ NumericConstant:6
+3056 DATA 18,39,18,38,18,37,18,36,18,35,18,34
+ NumericConstant:18
+ NumericConstant:39
+ NumericConstant:18
+ NumericConstant:38
+ NumericConstant:18
+ NumericConstant:37
+ NumericConstant:18
+ NumericConstant:36
+ NumericConstant:18
+ NumericConstant:35
+ NumericConstant:18
+ NumericConstant:34
+3057 DATA 24,19,23,18,22,17,21,16,20,15,19,14,18,13,17,12,16,11
+ NumericConstant:24
+ NumericConstant:19
+ NumericConstant:23
+ NumericConstant:18
+ NumericConstant:22
+ NumericConstant:17
+ NumericConstant:21
+ NumericConstant:16
+ NumericConstant:20
+ NumericConstant:15
+ NumericConstant:19
+ NumericConstant:14
+ NumericConstant:18
+ NumericConstant:13
+ NumericConstant:17
+ NumericConstant:12
+ NumericConstant:16
+ NumericConstant:11
+3058 DATA 24,21,23,22,22,23,21,24,20,25,19,26,18,27,17,28,16,29,16,30,16,31,16,32,17,33
+ NumericConstant:24
+ NumericConstant:21
+ NumericConstant:23
+ NumericConstant:22
+ NumericConstant:22
+ NumericConstant:23
+ NumericConstant:21
+ NumericConstant:24
+ NumericConstant:20
+ NumericConstant:25
+ NumericConstant:19
+ NumericConstant:26
+ NumericConstant:18
+ NumericConstant:27
+ NumericConstant:17
+ NumericConstant:28
+ NumericConstant:16
+ NumericConstant:29
+ NumericConstant:16
+ NumericConstant:30
+ NumericConstant:16
+ NumericConstant:31
+ NumericConstant:16
+ NumericConstant:32
+ NumericConstant:17
+ NumericConstant:33
+3059 DATA 24,20,23,20,22,20,21,20,20,20,19,20,18,20,17,20,16,20,15,20,14,19,13,19
+ NumericConstant:24
+ NumericConstant:20
+ NumericConstant:23
+ NumericConstant:20
+ NumericConstant:22
+ NumericConstant:20
+ NumericConstant:21
+ NumericConstant:20
+ NumericConstant:20
+ NumericConstant:20
+ NumericConstant:19
+ NumericConstant:20
+ NumericConstant:18
+ NumericConstant:20
+ NumericConstant:17
+ NumericConstant:20
+ NumericConstant:16
+ NumericConstant:20
+ NumericConstant:15
+ NumericConstant:20
+ NumericConstant:14
+ NumericConstant:19
+ NumericConstant:13
+ NumericConstant:19
+4999 END
+ 
