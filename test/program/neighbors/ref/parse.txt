@@ -340,18 +340,10 @@
  MatrixReference:B1
  MatrixValue:B
  AssignmentOperator:=
-1304 FOR I = 1 TO N0
- control: VariableName:I
- start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N0"]
- step:    ["NumericConstant:1"]
-1305 LET M(I) = 0
- ScalarValue:I
- ScalarReference:M
- NumericConstant:0
+1304 MAT M = ZER()
+ MatrixReference:M
+ FunctionZer
  AssignmentOperator:=
-1306 NEXT I
- VariableName:I
 1310 FOR R = 1 TO R0-1
  control: VariableName:R
  start:   ["NumericConstant:1"]
