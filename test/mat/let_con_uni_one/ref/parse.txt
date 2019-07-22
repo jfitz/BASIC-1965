@@ -1,0 +1,29 @@
+10 REM TEST
+ Remark:TEST
+20 MAT M = CON(4) * -1
+ MatrixReference:M
+ NumericConstant:4
+ FunctionCon
+ NumericConstant:1
+ UnaryOperator:-
+ BinaryOperator:*
+ AssignmentOperator:=
+30 MAT PRINT M
+ ITEMS
+ MatrixValue:M
+ CarriageControl:,
+40 MAT M2 = CON(4,3) * -3
+ MatrixReference:M2
+ NumericConstant:4
+ NumericConstant:3
+ FunctionCon
+ NumericConstant:3
+ UnaryOperator:-
+ BinaryOperator:*
+ AssignmentOperator:=
+50 MAT PRINT M2
+ ITEMS
+ MatrixValue:M2
+ CarriageControl:,
+99 END
+ 

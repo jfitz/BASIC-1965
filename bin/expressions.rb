@@ -786,7 +786,7 @@ class Parser
   end
 
   def expressions
-    raise(BASICExpressionError, 'Extra operators') unless @operator_stack.empty?
+    raise(BASICExpressionError, 'Too many operators') unless @operator_stack.empty?
 
     @parsed_expressions.concat @parens_group unless @parens_group.empty?
     @parsed_expressions << @current_expression unless @current_expression.empty?
@@ -1039,7 +1039,7 @@ class AbstractExpression
     end
 
     if element.nil?
-      raise(BASICSyntaxError,
+      raise(BASICExpressionError,
             "Token '#{token.class}:#{token}' is not a value or operator")
     end
 
@@ -1191,7 +1191,8 @@ class TargetExpression < AbstractExpression
 
   def check_resolve_types
     @parsed_expressions.each do |parsed_expression|
-      if parsed_expression[-1].class.to_s != 'ScalarValue'
+      if parsed_expression[-1].class.to_s != 'ScalarValue' &&
+         parsed_expression[-1].class.to_s != 'UserFunction'
         raise(BASICRuntimeError,
               "Value is not assignable (type #{parsed_expression[-1].class})")
       end
@@ -1211,7 +1212,7 @@ class UserFunctionDefinition
     line_text = tokens.map(&:to_s).join
     parts = split_tokens(tokens)
 
-    raise(BASICSyntaxError, "'#{line_text}' is not a valid assignment") if
+    raise(BASICExpressionError, "'#{line_text}' is not a valid assignment") if
       parts.size != 3
 
     user_function_prototype = UserFunctionPrototype.new(parts[0])
@@ -1221,7 +1222,9 @@ class UserFunctionDefinition
   end
 
   def dump
-    @expression.dump
+    lines = []
+    lines += @expression.dump unless @expression.nil?
+    lines
   end
 
   def signature
@@ -1266,8 +1269,8 @@ class UserFunctionPrototype
 
   def initialize(tokens)
     check_tokens(tokens)
-    @arguments = check_params(tokens[2..-2])
     @name = tokens[0].to_s
+    @arguments = check_params(tokens[2..-2])
     names = @arguments.map(&:to_s)
 
     # arguments must be unique
@@ -1293,7 +1296,7 @@ class UserFunctionPrototype
     variables = params.values_at(* params.each_index.select(&:even?))
 
     variables.each do |variable|
-      raise(BASICSyntaxError, 'Invalid parameter') unless variable.variable?
+      raise(BASICExpressionError, 'Invalid parameter') unless variable.variable?
     end
 
     separators = params.values_at(* params.each_index.select(&:odd?))

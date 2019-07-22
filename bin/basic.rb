@@ -220,6 +220,8 @@ class Shell
 
         # restore options to undo any changes during the run
         options_2.each { |name, option| $options[name] = option }
+
+        # print timing info
         print_timing(timing, @console_io) if $options['timing'].value
       end
     when 'BREAK'

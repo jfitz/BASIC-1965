@@ -5,7 +5,7 @@ class UnaryOperator < AbstractElement
     classes.include?(token.class.to_s)
   end
 
-  @operators = { '+' => 5, '-' => 5, '#' => 4 }
+  @operators = { '+' => 6, '-' => 6, '#' => 4 }
 
   def self.operator?(op)
     @operators.key?(op)
@@ -202,7 +202,9 @@ class BinaryOperator < AbstractElement
   end
 
   @operators = {
-    '=' => 2, '<>' => 2, '>' => 2, '>=' => 2, '<' => 2, '<=' => 2,
+    '=' => 2, '<>' => 2,
+    '>' => 2, '>=' => 2,
+    '<' => 2, '<=' => 2,
     '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
   }
 
@@ -467,8 +469,8 @@ class BinaryOperator < AbstractElement
     base = $options['base'].value
 
     (base..n_cols).each do |col|
-      a_value = a.get_value_(col)
-      b_value = b.get_value_(col)
+      a_value = a.get_value_1(col)
+      b_value = b.get_value_1(col)
       coords = make_coord(col)
       values[coords] = a_value.send(:add, b_value)
     end

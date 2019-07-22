@@ -300,31 +300,31 @@ class AbstractValueElement < AbstractElement
   end
 
   def +(_)
-    raise(BASICRuntimeError, 'Invalid operator')
+    raise(BASICRuntimeError, 'Invalid operator +')
   end
 
   def -(_)
-    raise(BASICRuntimeError, 'Invalid operator')
+    raise(BASICRuntimeError, 'Invalid operator -')
   end
 
   def add(_)
-    raise(BASICRuntimeError, 'Invalid operator')
+    raise(BASICRuntimeError, 'Invalid operator add')
   end
 
   def subtract(_)
-    raise(BASICRuntimeError, 'Invalid operator')
+    raise(BASICRuntimeError, 'Invalid operator subtract')
   end
 
   def multiply(_)
-    raise(BASICRuntimeError, 'Invalid operator')
+    raise(BASICRuntimeError, 'Invalid operator multiply')
   end
 
   def divide(_)
-    raise(BASICRuntimeError, 'Invalid operator')
+    raise(BASICRuntimeError, 'Invalid operator divide')
   end
 
   def power(_)
-    raise(BASICRuntimeError, 'Invalid operator')
+    raise(BASICRuntimeError, 'Invalid operator power')
   end
 
   def printable?
@@ -407,13 +407,13 @@ class NumericConstant < AbstractValueElement
   end
 
   def +(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in +"
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
     raise(BASICRuntimeError, message) unless compatible?(other)
     NumericConstant.new(@value + other.to_v)
   end
 
   def -(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in -"
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in -()"
     raise(BASICRuntimeError, message) unless compatible?(other)
     NumericConstant.new(@value - other.to_v)
   end
@@ -565,7 +565,7 @@ class TextConstant < AbstractValueElement
 
     @value = nil
     @value = text.value if text.class.to_s == 'TextConstantToken'
-    raise(BASICRuntimeError, "'#{text}' is not a text constant") if @value.nil?
+    raise(BASICSyntaxError, "'#{text}' is not a text constant") if @value.nil?
     @text_constant = true
   end
 
@@ -733,8 +733,9 @@ class VariableName < AbstractElement
   def initialize(token)
     super()
 
-    raise(BASICRuntimeError, "'#{token}' is not a variable name") unless
-      token.class.to_s == 'VariableToken'
+    raise(BASICSyntaxError, "'#{token}' is not a variable name") unless
+      token.class.to_s == 'VariableToken' ||
+      token.class.to_s == 'UserFunctionToken'
 
     @name = token
     @variable = true
@@ -788,8 +789,9 @@ class Variable < AbstractElement
   def initialize(variable_name, subscripts = [])
     super()
 
-    raise(BASICRuntimeError, "'#{variable_name}' is not a variable name") if
-      variable_name.class.to_s != 'VariableName'
+    raise(BASICSyntaxError, "'#{variable_name}' is not a variable name") if
+      variable_name.class.to_s != 'VariableName' &&
+      variable_name.class.to_s != 'UserFunctionToken'
 
     @variable_name = variable_name
     @subscripts = normalize_subscripts(subscripts)
@@ -838,12 +840,12 @@ class Variable < AbstractElement
   private
 
   def normalize_subscripts(subscripts)
-    raise(BASICRuntimeError, 'Invalid subscripts container') unless
+    raise(BASICSyntaxError, 'Invalid subscripts container') unless
       subscripts.class.to_s == 'Array'
 
     int_subscripts = []
     subscripts.each do |subscript|
-      raise(BASICRuntimeError, "Invalid subscript #{subscript}") unless
+      raise(BASICExpressionError, "Invalid subscript #{subscript}") unless
         subscript.numeric_constant?
 
       int_subscripts << subscript.truncate
