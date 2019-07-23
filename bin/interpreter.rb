@@ -567,6 +567,10 @@ class Interpreter
     if value.nil?
       v = variable.to_s
       unless @variables.key?(v)
+        if $options['require_initialized'].value
+          raise(BASICRuntimeError, "Uninitialized variable #{v}")
+        end
+
         # define a value for this variable
         @variables[v] =
           {

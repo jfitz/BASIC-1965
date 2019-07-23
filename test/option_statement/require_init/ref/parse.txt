@@ -1,0 +1,16 @@
+10 REM TEST OF REQUIRE-INIT
+ Remark:TEST OF REQUIRE-INIT
+20 OPTION REQUIRE_INITIALIZED FALSE
+ BooleanConstant:false
+30 PRINT A
+ ITEMS
+ ScalarValue:A
+ CarriageControl:NL
+40 OPTION REQUIRE_INITIALIZED TRUE
+ BooleanConstant:true
+50 PRINT B
+ ITEMS
+ ScalarValue:B
+ CarriageControl:NL
+99 END
+ 

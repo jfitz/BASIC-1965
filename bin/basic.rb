@@ -316,7 +316,7 @@ def make_command_tokenbuilders
     IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
     PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
-    QMARK_AFTER_PROMPT RANDOMIZE
+    QMARK_AFTER_PROMPT RANDOMIZE REQUIRE_INITIALIZED
     SEMICOLON_ZONE_WIDTH TIMING TRACE ZONE_WIDTH
   )
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
@@ -370,6 +370,7 @@ OptionParser.new do |opt|
   opt.on('--provenance') { |o| options[:provenance] = o }
   opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
+  opt.on('--require-initialized') { |o| options[:require_initialized] = o }
   opt.on('--semicolon-zone-width WIDTH') { |o| options[:semicolon_zone_width] = o }
   opt.on('--trace') { |o| options[:trace] = o }
   opt.on('--no-timing') { |o| options[:no_timing] = o }
@@ -452,6 +453,9 @@ $options['qmark_after_prompt'] =
   Option.new(boolean, options.key?(:qmark_after_prompt))
 
 $options['randomize'] = Option.new(boolean, options.key?(:randomize))
+
+$options['require_initialized'] =
+  Option.new(boolean, options.key?(:require_initialized))
 
 semicolon_zone_width = 0
 if options.key?(:semicolon_zone_width)

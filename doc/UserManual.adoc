@@ -124,6 +124,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--provenance |When displaying a variable in a trace, also display the line number where it was set.
 |--qmark-after-prompt |On an INPUT line, print the question mark after the prompt.
 |--randomize |Forces new sequences of numbers from the RND() function on successive runs.
+|--require-initialized |Require that variables are initialized before they are used.
 |--semicolon-zone-width |Enables print zones for semicolon carriage control.
 |--trace |Print each statement prior to executing it (useful for debugging). Does the same thing as the 'OPTION TRACE TRUE' command in interactive mode, but from the command line.
 |--tty |Print output slowly, emulating the speed of an ASR-33 Teletype. Provides a better experience with some programs (often games) in which slow output lets your anticipation build. The fast output of modern computers displays information quickly, and TTY mode lets you read each line as it is "printed".
@@ -368,6 +369,7 @@ The options that can be set are:
     PROVENANCE
     QMARK_AFTER_PROMPT
     RANDOMIZE
+    REQUIRE_INITIALIZED
     SEMICOLON_ZONE_WIDTH
     TIMING
     TRACE
@@ -396,6 +398,7 @@ The OPTION command overrides the command-line setting.
 |PROVENANCE |TRUE or FALSE |FALSE |Expands trace display to include the line in which a variable was assigned its value
 |QMARK_AFTER_PROMPT |TRUE or FALSE |FALSE |Display '?' after a prompt in an INPUT statement
 |RANDOMIZE |TRUE or FALSE |FALSE |Randomize RND(); same as 'RANDOMIZE' statement 
+|REQUIRE_INITIALIZED |TRUE or FALSE |FALSE |Variables must be initialized before use
 |TIMING |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
 |TRACE |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
 |ZONE_WIDTH |numeric |16 |Width of print zones for comma separators
@@ -903,6 +906,7 @@ Possible options are a subset of the options in the shell.
     PROMPT_COUNT
     PROVENANCE
     QMARK_AFTER_PROMPT
+    REQUIRE_INITIALIZED
     SEMICOLON_ZONE_WIDTH
     TRACE
     ZONE_WIDTH
