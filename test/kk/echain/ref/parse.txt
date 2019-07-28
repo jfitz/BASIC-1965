@@ -50,7 +50,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 220 LET Z(I,N) = 1
  ScalarValue:I
  ScalarValue:N
@@ -74,7 +73,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 260 LET A(1,J) = M(N,J)
  NumericConstant:1
  ScalarValue:J
@@ -113,12 +111,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 350 FOR J = 1 TO N
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 360 LET M(I,J) = M(I,J)+A(1,J)
  ScalarValue:I
  ScalarValue:J
@@ -145,12 +141,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 420 FOR J = 1 TO N
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 430 LET M(I,J) = (Z(J,J)-Z(I,J))/A(1,J)
  ScalarValue:I
  ScalarValue:J

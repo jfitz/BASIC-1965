@@ -5,7 +5,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
- step:    ["NumericConstant:1"]
 130    LET S = 0
  ScalarReference:S
  NumericConstant:0
@@ -14,7 +13,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 150       READ O(I,J)
  ScalarValue:I
  ScalarValue:J
@@ -45,7 +43,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 230    LET S = 0
  ScalarReference:S
  NumericConstant:0
@@ -54,7 +51,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
- step:    ["NumericConstant:1"]
 250       LET S = S + O(I,J)
  ScalarReference:S
  ScalarValue:S
@@ -90,12 +86,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
- step:    ["NumericConstant:1"]
 340    FOR J = 1 TO N
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 350       LET E = R(I)*C(J)/S1
  ScalarReference:E
  ScalarValue:I

@@ -7,7 +7,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
- step:    ["NumericConstant:1"]
 40 LET A(I) = I
  ScalarValue:I
  ScalarReference:A
@@ -21,7 +20,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:10"]
- step:    ["NumericConstant:1"]
 120 PRINT I;A(I)
  ITEMS
  ScalarValue:I
@@ -37,7 +35,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:10"]
- step:    ["NumericConstant:1"]
 220 PRINT I;A(I)
  ITEMS
  ScalarValue:I

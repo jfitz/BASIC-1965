@@ -19,14 +19,11 @@ Duplicate line number 2750
  TextConstant:"EITHER YES OR NO"
  CarriageControl:NL
 80 INPUT A$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "A$" is not a value or operator
 90 IF A$ = "YES" THEN 130
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 100 IF A$ = "NO" THEN 540
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 110 PRINT "YOU HAVE ISSUED AN INVALID RESPONSE"
  ITEMS
  TextConstant:"YOU HAVE ISSUED AN INVALID RESPONSE"
@@ -683,14 +680,11 @@ Duplicate line number 2750
  TextConstant:"ENTER EITHER YES OR NO"
  CarriageControl:NL
 1710 INPUT C$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "C$" is not a value or operator
 1720 IF C$ = "YES" THEN 1820
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1730 IF C$ = "NO" THEN 1880
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1740 PRINT "INVALID RESPONSE"
  ITEMS
  TextConstant:"INVALID RESPONSE"
@@ -702,14 +696,11 @@ Duplicate line number 2750
  TextConstant:"WHICH FIGHTER THE SKY (S) OR RADER (R)"
  CarriageControl:NL
 1770 INPUT C$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "C$" is not a value or operator
 1780 IF C$ = "S" THEN 1840
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1790 IF C$ = "R" THEN 1860
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1800 PRINT "WHICH???"
  ITEMS
  TextConstant:"WHICH???"
@@ -747,16 +738,13 @@ Duplicate line number 2750
  TextConstant:"ON THE SKY FIGHTER (S)"
  CarriageControl:NL
 1900 INPUT C$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "C$" is not a value or operator
 1910 LET Q$ = 5000*(1 + INT(100*RND)/100)
  Token 'InvalidToken:$' is not a value or operator
 1920 IF C$ = "S" THEN 1980
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1930 IF C$ = "R" THEN 2000
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1940 PRINT "WHICH ENEMY???"
  ITEMS
  TextConstant:"WHICH ENEMY???"
@@ -808,14 +796,11 @@ Duplicate line number 2750
  TextConstant:"DO YOU WISH COMPUTER ASSISTANCE, YES OR NO"
  CarriageControl:NL
 2050 INPUT C$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "C$" is not a value or operator
 2060 IF C$ = "YES" THEN 2100
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2070 IF C$ = "NO" THEN 2120
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2080 PRINT "THE COMPUTER RESPONDS ONLY TO A YES OR NO"
  ITEMS
  TextConstant:"THE COMPUTER RESPONDS ONLY TO A YES OR NO"
@@ -841,8 +826,7 @@ Duplicate line number 2750
  TextConstant:"DO YOU WISH TO FIRE ON"
  CarriageControl:NL
 2150 INPUT C$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "C$" is not a value or operator
 2160 IF J = 1 THEN 2190
  ScalarValue:J
  NumericConstant:1
@@ -865,11 +849,9 @@ Duplicate line number 2750
  NumericConstant:1000
  AssignmentOperator:=
 2200 IF C$ = "S" THEN 2240
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2210 IF C$ = "R" THEN 2260
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2220 PRINT "WHICH TARGET?????"
  ITEMS
  TextConstant:"WHICH TARGET?????"
@@ -941,18 +923,15 @@ Duplicate line number 2750
  TextConstant:"THE DEATH STAR"
  CarriageControl:NL
 2400 INPUT C$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "C$" is not a value or operator
 2410 IF F > 2.25E04 THEN 2470
  ScalarValue:F
  NumericConstant:22500
  BinaryOperator:>
 2420 IF C$ = "A" THEN 2500
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2430 IF C$ = "T" THEN 2620
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2440 PRINT "DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
  ITEMS
  TextConstant:"DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
@@ -1027,8 +1006,12 @@ Duplicate line number 2750
  ScalarValue:D
  NumericConstant:0
  BinaryOperator:<=
-2640 LET X1 - X1 - F
- 'X1-X1-F' is not a valid assignment
+2640 LET X1 = X1 - F
+ ScalarReference:X1
+ ScalarValue:X1
+ ScalarValue:F
+ BinaryOperator:-
+ AssignmentOperator:=
 2650 GOTO 2680
  LineNumber:2680
 2660 PRINT "THE SKY FIGHTER'S ENERGY IS NOW";T1;"UNITS"
@@ -1083,14 +1066,11 @@ Duplicate line number 2750
  TextConstant:"NOT TYPE NO"
  CarriageControl:NL
 2800 INPUT L$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "L$" is not a value or operator
 2810 IF L$ = "GO" THEN 2840
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2820 IF L$ = "NO" THEN 2860
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
  ITEMS
  TextConstant:"DO YOU WANT TO STOP OR PLAY AGAIN?????"

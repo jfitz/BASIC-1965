@@ -8,7 +8,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
- step:    ["NumericConstant:1"]
 21    LET N(I) = 0
  ScalarValue:I
  ScalarReference:N
@@ -123,7 +122,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
- step:    ["NumericConstant:1"]
 206    LET N(I) = 0
  ScalarValue:I
  ScalarReference:N
@@ -135,7 +133,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:K"]
- step:    ["NumericConstant:1"]
 220    LET F = P(I)
  ScalarReference:F
  ScalarValue:I
@@ -212,7 +209,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:999"]
- step:    ["NumericConstant:1"]
 710    IF N(I) < 0 THEN 730
  ScalarValue:I
  ScalarValue:N
@@ -265,7 +261,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:998"]
- step:    ["NumericConstant:1"]
 760    IF N(I) < 0 THEN 780
  ScalarValue:I
  ScalarValue:N

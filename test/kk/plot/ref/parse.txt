@@ -57,7 +57,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 220 PRINT "-";
  ITEMS
  TextConstant:"-"
@@ -91,7 +90,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 292 IF I = Y1 THEN 302
  ScalarValue:I
  ScalarValue:Y1

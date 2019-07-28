@@ -26,7 +26,6 @@
  control: VariableName:N
  start:   ["ScalarValue:A"]
  end:     ["ScalarValue:B"]
- step:    ["NumericConstant:1"]
 110 LET N0 = N
  ScalarReference:N0
  ScalarValue:N
@@ -49,14 +48,11 @@
  ScalarValue:N0
  NumericConstant:1
  BinaryOperator:=
-430 IF N0/2 = INT(N0/2) THEN 460
+430 IF MOD(N0,2) = 0 THEN 460
  ScalarValue:N0
  NumericConstant:2
- BinaryOperator:/
- ScalarValue:N0
- NumericConstant:2
- BinaryOperator:/
- FunctionInt
+ FunctionMod
+ NumericConstant:0
  BinaryOperator:=
 440 LET N0 = 3*N0 + 1
  ScalarReference:N0

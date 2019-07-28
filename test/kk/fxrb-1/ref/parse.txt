@@ -49,7 +49,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:P"]
- step:    ["NumericConstant:1"]
 230 FOR T = 0 TO T9/P STEP T8
  control: VariableName:T
  start:   ["NumericConstant:0"]
@@ -111,7 +110,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:60"]
- step:    ["NumericConstant:1"]
 320 IF G(I,J) > 0 THEN 360
  ScalarValue:I
  ScalarValue:J
@@ -129,7 +127,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:60"]
- step:    ["NumericConstant:1"]
 370 IF G(I,J) > 0 THEN 400
  ScalarValue:I
  ScalarValue:J
@@ -150,7 +147,6 @@
  control: VariableName:K
  start:   ["ScalarValue:I", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["NumericConstant:60"]
- step:    ["NumericConstant:1"]
 420 IF G(K,J) > 0 THEN 450
  ScalarValue:K
  ScalarValue:J

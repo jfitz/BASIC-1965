@@ -26,7 +26,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y"]
- step:    ["NumericConstant:1"]
 110    LET D(I) = A*(Y-I+1)/Y9
  ScalarValue:I
  ScalarReference:D
@@ -60,7 +59,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y"]
- step:    ["NumericConstant:1"]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
  ScalarReference:S
  ScalarValue:S

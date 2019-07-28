@@ -8,7 +8,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:100"]
- step:    ["NumericConstant:1"]
 30    READ K
  ScalarReference:K
 40    IF K = 999 THEN 100
@@ -30,7 +29,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2", "ScalarValue:K1", "BinaryOperator:*", "NumericConstant:1", "BinaryOperator:+", "ScalarValue:K1", "FunctionSgn", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 80       READ T(I,J)
  ScalarValue:I
  ScalarValue:J

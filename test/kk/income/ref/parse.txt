@@ -2,7 +2,6 @@
  control: VariableName:D
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
- step:    ["NumericConstant:1"]
 20 LET N(D) = 0
  ScalarValue:D
  ScalarReference:N
@@ -14,7 +13,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
- step:    ["NumericConstant:1"]
 50 READ X
  ScalarReference:X
 60 LET D = INT(X/1E4)
@@ -50,7 +48,6 @@
  control: VariableName:D
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
- step:    ["NumericConstant:1"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
  ITEMS
  ScalarValue:D

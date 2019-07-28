@@ -982,6 +982,14 @@ class AbstractExpression
     interpreter.evaluate(@parsed_expressions)
   end
 
+  def numerics
+    parsed_expressions_numerics(@parsed_expressions)
+  end
+  
+  def strings
+    parsed_expressions_strings(@parsed_expressions)
+  end
+  
   def variables
     parsed_expressions_variables(@parsed_expressions)
   end
@@ -1015,6 +1023,49 @@ class AbstractExpression
     end
 
     vars
+  end
+
+  def parsed_expressions_numerics(parsed_expressions)
+    vars = []
+
+    parsed_expressions.each do |expression|
+      previous = nil
+      # backwards so the unary operator (if any) is seen first
+      expression.reverse_each do |thing|
+        if thing.list?
+          # recurse into expressions in list
+          sublist = thing.list
+          vars += parsed_expressions_numerics(sublist)
+        elsif thing.numeric_constant?
+          if !previous.nil? && previous.operator? && previous.unary? && previous.to_s == '-'
+            vars << thing.negate
+          else
+            vars << thing
+          end
+        end
+        previous = thing
+      end
+    end
+
+    vars
+  end
+
+  def parsed_expressions_strings(parsed_expressions)
+    strs = []
+
+    parsed_expressions.each do |expression|
+      expression.each do |thing|
+        if thing.list?
+          # recurse into expressions in list
+          sublist = thing.list
+          strs += parsed_expressions_strings(sublist)
+        elsif thing.text_constant?
+          strs << thing
+        end
+      end
+    end
+
+    strs
   end
 
   def tokens_to_elements(tokens)
@@ -1239,6 +1290,18 @@ class UserFunctionDefinition
     sig
   end
 
+  def numerics
+    @expression.numerics
+  end
+
+  def strings
+    @expression.strings
+  end
+
+  def variables
+    @expression.variables
+  end
+
   private
 
   def split_tokens(tokens)
@@ -1339,6 +1402,14 @@ class AbstractAssignment
 
     results << nonkeywords unless nonkeywords.empty?
     results
+  end
+
+  def numerics
+    @target.numerics + @expression.numerics
+  end
+
+  def strings
+    @target.strings + @expression.strings
   end
 
   def variables

@@ -117,7 +117,6 @@
  control: VariableName:V
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 200    READ S(V,N9)
  ScalarValue:V
  ScalarValue:N9
@@ -157,7 +156,6 @@
  control: VariableName:I
  start:   ["ScalarValue:I1"]
  end:     ["NumericConstant:6"]
- step:    ["NumericConstant:1"]
 520 LET C2 = P(C1,I)
  ScalarReference:C2
  ScalarValue:C1
@@ -210,7 +208,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
- step:    ["NumericConstant:1"]
 580 IF ABS(D(J)-D) <= 5 THEN 610
  ScalarValue:J
  ScalarValue:D
@@ -301,7 +298,6 @@
  control: VariableName:L
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
- step:    ["NumericConstant:1"]
 810 LET A = B(1)
  ScalarReference:A
  NumericConstant:1
@@ -351,12 +347,10 @@
  control: VariableName:L
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
- step:    ["NumericConstant:1"]
 1020 FOR V = 2 TO 3
  control: VariableName:V
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 1030 LET B = W(V,L)
  ScalarReference:B
  ScalarValue:V
@@ -425,12 +419,10 @@
  control: VariableName:V1
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 1110 FOR V2 = V1+1 TO 4
  control: VariableName:V2
  start:   ["ScalarValue:V1", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 1115 LET D = S(V1,N+1)-S(V2,N+1)
  ScalarReference:D
  ScalarValue:V1
@@ -496,7 +488,6 @@
  control: VariableName:V
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 1220 LET D(V) = ABS(S(V,N)-S(V,N+1))
  ScalarValue:V
  ScalarReference:D
@@ -544,7 +535,6 @@
  control: VariableName:L
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
- step:    ["NumericConstant:1"]
 1530 LET M1 = W(0,L)
  ScalarReference:M1
  NumericConstant:0
@@ -628,7 +618,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
- step:    ["NumericConstant:1"]
 5130 IF C2 = P(C1,I) THEN 5200
  ScalarValue:C2
  ScalarValue:C1

@@ -4,12 +4,10 @@
  control: VariableName:B
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
- step:    ["NumericConstant:1"]
 120    FOR R = 0 TO 3
  control: VariableName:R
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 130    READ P(B,R)
  ScalarValue:B
  ScalarValue:R
@@ -62,12 +60,10 @@
  control: VariableName:R
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 210    FOR C = 0 TO 7
  control: VariableName:C
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
- step:    ["NumericConstant:1"]
 220       READ Q(R,C)
  ScalarValue:R
  ScalarValue:C
@@ -138,7 +134,6 @@
  control: VariableName:C
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
- step:    ["NumericConstant:1"]
 370    READ L(C)
  ScalarValue:C
  ScalarReference:L
@@ -203,7 +198,6 @@
  control: VariableName:R
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 570 LET X = X - P(B,R)
  ScalarReference:X
  ScalarValue:X

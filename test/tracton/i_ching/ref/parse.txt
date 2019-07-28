@@ -40,7 +40,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
- step:    ["NumericConstant:1"]
 90 LET K = N*RND(0)
  ScalarReference:K
  ScalarValue:N
@@ -71,7 +70,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
- step:    ["NumericConstant:1"]
 140 IF C(I) = 1 THEN 170
  ScalarValue:I
  ScalarValue:C
@@ -97,11 +95,9 @@
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 210 INPUT L$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "L$" is not a value or operator
 220 IF L$ = "Y" THEN 250
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 230 PRINT "THE I CHING SAYS GOOD-BYE"
  ITEMS
  TextConstant:"THE I CHING SAYS GOOD-BYE"

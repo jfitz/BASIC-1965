@@ -82,7 +82,6 @@
  control: VariableName:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 280    LET S = 0
  ScalarReference:S
  NumericConstant:0
@@ -91,7 +90,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 300       LET S = S+C(I,J)
  ScalarReference:S
  ScalarValue:S
@@ -149,7 +147,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 430    PRINT I, FNR(P(I))
  ITEMS
  ScalarValue:I
@@ -182,7 +179,6 @@
  control: VariableName:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 520    PRINT "NODE" I
  ITEMS
  TextConstant:"NODE"
@@ -193,7 +189,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 540       PRINT FNR(C(I,J)*(P(I)-P(J))),
  ITEMS
  ScalarValue:I

@@ -15,7 +15,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
- step:    ["NumericConstant:1"]
 160    READ M(I)
  ScalarValue:I
  ScalarReference:M
@@ -25,7 +24,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 190    READ Y(J)
  ScalarValue:J
  ScalarReference:Y
@@ -36,7 +34,6 @@
  control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
- step:    ["NumericConstant:1"]
 260    LET Z(K) = X(K)
  ScalarValue:K
  ScalarReference:Z
@@ -55,7 +52,6 @@
  control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
- step:    ["NumericConstant:1"]
 300    LET Z(M+K) = Y(K)
  ScalarValue:M
  ScalarValue:K
@@ -78,12 +74,10 @@
  control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 370    FOR L = K+1 TO M+N
  control: VariableName:L
  start:   ["ScalarValue:K", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
- step:    ["NumericConstant:1"]
 380       IF Z(K) <= Z(L) THEN 450
  ScalarValue:K
  ScalarValue:Z
@@ -179,7 +173,6 @@
  control: VariableName:L
  start:   ["ScalarValue:B"]
  end:     ["ScalarValue:J", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 610    LET Z(L) = T/K
  ScalarValue:L
  ScalarReference:Z
@@ -210,7 +203,6 @@
  control: VariableName:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
- step:    ["NumericConstant:1"]
 770    LET S(T(K)) = S(T(K)) + Z(K)
  ScalarValue:K
  ScalarValue:T

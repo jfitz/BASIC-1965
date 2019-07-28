@@ -19,6 +19,9 @@ class AbstractElement
     @matrix = false
     @list = false
     @carriage = false
+    @numeric_constant = false
+    @text_constant = false
+    @boolean_constant = false
   end
 
   def dump
@@ -99,6 +102,18 @@ class AbstractElement
 
   def carriage_control?
     @carriage
+  end
+
+  def numeric_constant?
+    @numeric_constant
+  end
+
+  def text_constant?
+    @text_constant
+  end
+
+  def boolean_constant?
+    @boolean_constant
   end
 
   protected
@@ -200,9 +215,6 @@ class AbstractValueElement < AbstractElement
   def initialize
     super
 
-    @numeric_constant = false
-    @text_constant = false
-    @boolean_constant = false
     @operand = true
     @precedence = 0
     @scalar = true
@@ -211,18 +223,6 @@ class AbstractValueElement < AbstractElement
 
   def dump
     self.class.to_s + ':' + to_s
-  end
-
-  def numeric_constant?
-    @numeric_constant
-  end
-
-  def text_constant?
-    @text_constant
-  end
-
-  def boolean_constant?
-    @boolean_constant
   end
 
   def eql?(other)
@@ -406,6 +406,38 @@ class NumericConstant < AbstractValueElement
     'numeric'
   end
 
+  def eql?(other)
+    @value == other.to_v
+  end
+
+  def ==(other)
+    @value == other.to_v
+  end
+
+  def hash
+    @value.hash
+  end
+
+  def <=>(other)
+    @value <=> other.to_v
+  end
+
+  def >(other)
+    @value > other.to_v
+  end
+
+  def >=(other)
+    @value >= other.to_v
+  end
+
+  def <(other)
+    @value < other.to_v
+  end
+
+  def <=(other)
+    @value <= other.to_v
+  end
+
   def +(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
     raise(BASICRuntimeError, message) unless compatible?(other)
@@ -447,6 +479,10 @@ class NumericConstant < AbstractValueElement
     message = "Type mismatch (#{content_type}/#{other.content_type}) in power()"
     raise(BASICRuntimeError, message) unless compatible?(other)
     NumericConstant.new(@value**other.to_v)
+  end
+
+  def negate
+    NumericConstant.new(-(@value))
   end
 
   def truncate
@@ -573,6 +609,38 @@ class TextConstant < AbstractValueElement
     'string'
   end
 
+  def eql?(other)
+    @value == other.to_v
+  end
+
+  def ==(other)
+    @value == other.to_v
+  end
+
+  def hash
+    @value.hash
+  end
+
+  def <=>(other)
+    @value <=> other.to_v
+  end
+
+  def >(other)
+    @value > other.to_v
+  end
+
+  def >=(other)
+    @value >= other.to_v
+  end
+
+  def <(other)
+    @value < other.to_v
+  end
+
+  def <=(other)
+    @value <= other.to_v
+  end
+
   def to_s
     "\"#{@value}\""
   end
@@ -611,6 +679,38 @@ class BooleanConstant < AbstractValueElement
 
   def content_type
     'bool'
+  end
+
+  def eql?(other)
+    @value == other.to_v
+  end
+
+  def ==(other)
+    @value == other.to_v
+  end
+
+  def hash
+    @value.hash
+  end
+
+  def <=>(other)
+    @value <=> other.to_v
+  end
+
+  def >(other)
+    @value > other.to_v
+  end
+
+  def >=(other)
+    @value >= other.to_v
+  end
+
+  def <(other)
+    @value < other.to_v
+  end
+
+  def <=(other)
+    @value <= other.to_v
   end
 
   def to_s
@@ -687,6 +787,14 @@ class CarriageControl
 
   def filehandle?
     @file_handle
+  end
+
+  def numerics
+    []
+  end
+
+  def strings
+    []
   end
 
   def variables

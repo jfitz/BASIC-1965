@@ -9,14 +9,11 @@
  TextConstant:"IF NOT TYPE NO"
  CarriageControl:NL
 40 INPUT C$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "C$" is not a value or operator
 50 IF C$ = "YES" THEN 90
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 60 IF C$ = "NO " THEN 340
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 70 PRINT "INVALID RESPONSE"
  ITEMS
  TextConstant:"INVALID RESPONSE"
@@ -379,14 +376,11 @@
  TextConstant:"DO YOU WANT A HIT, OR DO YOU STAND"
  CarriageControl:NL
 970 INPUT Q$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "Q$" is not a value or operator
 980 IF Q$ = "HIT" THEN 1020
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 990 IF Q$ = "STAND" THEN 1040
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1000 PRINT "INVALID RESPONSE"
  ITEMS
  TextConstant:"INVALID RESPONSE"
@@ -417,11 +411,9 @@
  TextConstant:"TYPE YES OR NO"
  CarriageControl:NL
 1090 INPUT L$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "L$" is not a value or operator
 1100 IF L$ = "YES" THEN 1130
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1110 PRINT "BLACKJACK SAYS GOOD-BYE"
  ITEMS
  TextConstant:"BLACKJACK SAYS GOOD-BYE"

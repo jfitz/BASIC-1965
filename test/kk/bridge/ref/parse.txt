@@ -7,7 +7,6 @@
  control: VariableName:C
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:13"]
- step:    ["NumericConstant:1"]
 40    GOSUB 2000
  LineNumber:2000
 50    LET H(C) = X
@@ -22,7 +21,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:13"]
- step:    ["NumericConstant:1"]
 109    IF I > 13-I THEN 180
  ScalarValue:I
  NumericConstant:13
@@ -33,7 +31,6 @@
  control: VariableName:J
  start:   ["ScalarValue:I"]
  end:     ["NumericConstant:13", "ScalarValue:I", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 120       LET X = H(J)
  ScalarReference:X
  ScalarValue:J
@@ -71,7 +68,6 @@
  control: VariableName:C
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:13"]
- step:    ["NumericConstant:1"]
 210    LET X = H(C)
  ScalarReference:X
  ScalarValue:C
@@ -93,7 +89,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
- step:    ["NumericConstant:1"]
 1030    LET L(I) = I
  ScalarValue:I
  ScalarReference:L

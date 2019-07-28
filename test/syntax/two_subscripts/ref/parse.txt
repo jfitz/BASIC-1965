@@ -2,12 +2,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 20 FOR J = 1 TO 2
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
- step:    ["NumericConstant:1"]
 30 LET A(I,J) = I * J
  ScalarValue:I
  ScalarValue:J
@@ -32,12 +30,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 70 FOR J = 1 TO 2
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
- step:    ["NumericConstant:1"]
 80 PRINT I, J, A(I,J)
  ITEMS
  ScalarValue:I

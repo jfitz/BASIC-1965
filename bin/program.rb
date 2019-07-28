@@ -536,9 +536,7 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
-
-      num_refs = statement.numerics
-      refs[line_number] = num_refs
+      refs[line_number] = statement.numerics
     end
 
     refs
@@ -550,9 +548,7 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
-
-      strs = statement.strings
-      refs[line_number] = strs
+      refs[line_number] = statement.strings
     end
 
     refs
@@ -564,9 +560,7 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
-
-      funcs = statement.functions
-      refs[line_number] = funcs
+      refs[line_number] = statement.functions
     end
 
     refs
@@ -578,9 +572,7 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
-
-      udfs = statement.userfuncs
-      refs[line_number] = udfs
+      refs[line_number] = statement.userfuncs
     end
 
     refs
@@ -592,11 +584,21 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
-
-      vars = statement.variables
-      refs[line_number] = vars
+      refs[line_number] = statement.variables
     end
 
+    refs
+  end
+
+  def linenums_refs
+    refs = {}
+
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statement = line.statement
+      refs[line_number] = statement.linenums
+     end
+ 
     refs
   end
 
@@ -665,6 +667,10 @@ class Program
     vars_list = variables_refs
     variables = make_summary(vars_list)
     print_refs('Variables', variables)
+
+    lines_list = linenums_refs
+    linenums = make_summary(lines_list)
+    print_num_refs('Line numbers', linenums)
   end
 
   private

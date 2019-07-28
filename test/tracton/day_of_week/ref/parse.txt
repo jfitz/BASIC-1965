@@ -123,8 +123,10 @@
  BinaryOperator:+
  AssignmentOperator:=
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "J$(Z)" is not a value or operator
+ ITEMS
+ TextConstant:"THE DAY OF THE WEEK IS "
+ CarriageControl:;
 260 PRINT
  ITEMS
  CarriageControl:NL
@@ -137,14 +139,11 @@
  TextConstant:"TYPE NO"
  CarriageControl:NL
 290 INPUT L$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "L$" is not a value or operator
 300 IF L$ = "YES" THEN 340
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 310 IF L$ = "NO" THEN 360
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 320 PRINT "INVALID COMMAND"
  ITEMS
  TextConstant:"INVALID COMMAND"

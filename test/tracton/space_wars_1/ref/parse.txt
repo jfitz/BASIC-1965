@@ -16,14 +16,11 @@
  TextConstant:"YES OR NO"
  CarriageControl:NL
 70 INPUT A$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "A$" is not a value or operator
 80 IF A$ = "YES" THEN 120
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 90 IF A$ = "NO" THEN 250
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 100 PRINT "INVALID RESPONSE"
  ITEMS
  TextConstant:"INVALID RESPONSE"
@@ -141,7 +138,7 @@
  NumericConstant:0
  BinaryOperator:=
 400 LET H2 = (1 + INT(100*RND)/100
- Extra operators
+ Too many operators
 410 LET D1 = 500*H2
  ScalarReference:D1
  NumericConstant:500
@@ -502,11 +499,9 @@
  TextConstant:"OTHERWISE TYPE NO"
  CarriageControl:NL
 1270 INPUT Z$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "Z$" is not a value or operator
 1280 IF Z$ = "GO" THEN 1310
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 1290 PRINT "SPACE WARS SAYS GOOD-BYE"
  ITEMS
  TextConstant:"SPACE WARS SAYS GOOD-BYE"

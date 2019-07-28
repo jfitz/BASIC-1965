@@ -29,12 +29,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
- step:    ["NumericConstant:1"]
 210    FOR J = 1 TO 8
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
- step:    ["NumericConstant:1"]
 220       LET B(I,J) = 0
  ScalarValue:I
  ScalarValue:J
@@ -79,7 +77,6 @@
  control: VariableName:I1
  start:   ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:-"]
  end:     ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:+"]
- step:    ["NumericConstant:1"]
 340    IF I1 = 1 THEN 480
  ScalarValue:I1
  NumericConstant:1

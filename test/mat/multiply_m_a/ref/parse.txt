@@ -21,12 +21,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
- step:    ["NumericConstant:1"]
 110 FOR J = 1 TO 3
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 120 READ A(I,J)
  ScalarValue:I
  ScalarValue:J
@@ -47,7 +45,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 220 READ B(I)
  ScalarValue:I
  ScalarReference:B

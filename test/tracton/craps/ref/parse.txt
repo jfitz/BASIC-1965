@@ -8,14 +8,11 @@
  TextConstant:" FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
  CarriageControl:NL
 40 INPUT R$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "R$" is not a value or operator
 50 IF R$ = "RULES" THEN 90
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 60 IF R$ = "GO" THEN 140
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 70 PRINT "INVALID COMMAND"
  ITEMS
  TextConstant:"INVALID COMMAND"
@@ -142,11 +139,9 @@
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 370 INPUT L$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "L$" is not a value or operator
 380 IF L$ = "Y" THEN 400
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 390 STOP
  
 400 PRINT

@@ -4,7 +4,6 @@
  control: VariableName:C
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
- step:    ["NumericConstant:1"]
 30    GOSUB 2000
  LineNumber:2000
 40    GOSUB 3000
@@ -23,7 +22,6 @@
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
- step:    ["NumericConstant:1"]
 1030    LET L(I) = I
  ScalarValue:I
  ScalarReference:L

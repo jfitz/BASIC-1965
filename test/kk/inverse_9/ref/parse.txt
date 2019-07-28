@@ -4,12 +4,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 30 FOR J = 1 TO N-1
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 40 LET P(I,J) = I*J - INT(I*J/N)*N
  ScalarValue:I
  ScalarValue:J
@@ -35,12 +33,10 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 80 FOR J = 1 TO N-1
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 90 IF P(I,J) = 1 THEN 140
  ScalarValue:I
  ScalarValue:J

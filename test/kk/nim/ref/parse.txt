@@ -9,7 +9,6 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 150    LET N(P) = INT(10*RND(0))+6
  ScalarValue:P
  ScalarReference:N
@@ -105,7 +104,6 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 390    LET X = N(P)
  ScalarReference:X
  ScalarValue:P
@@ -148,7 +146,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 490    LET S(J) = B(1,J) + B(2,J) + B(3,J)
  ScalarValue:J
  ScalarReference:S
@@ -201,7 +198,6 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 560    IF N(P) = 0 THEN 590
  ScalarValue:P
  ScalarValue:N
@@ -229,7 +225,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 630    IF S(J) > 0 THEN 650
  ScalarValue:J
  ScalarValue:S
@@ -241,7 +236,6 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 660    IF B(P,J) = 1 THEN 680
  ScalarValue:P
  ScalarValue:J
@@ -258,7 +252,6 @@
  control: VariableName:J
  start:   ["ScalarValue:J"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 700    IF S(J) = 0 THEN 750
  ScalarValue:J
  ScalarValue:S
@@ -356,7 +349,6 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 920    PRINT "PILE " P; N(P)
  ITEMS
  TextConstant:"PILE "

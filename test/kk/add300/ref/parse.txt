@@ -56,7 +56,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
- step:    ["NumericConstant:1"]
 140      LET A(I) = C(I)
  ScalarValue:I
  ScalarReference:A
@@ -84,7 +83,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
- step:    ["NumericConstant:1"]
 240      LET B(I) = C(I)
  ScalarValue:I
  ScalarReference:B
@@ -119,7 +117,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["ScalarValue:L2", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["ScalarValue:L"]
- step:    ["NumericConstant:1"]
 340      LET B(I) = 0
  ScalarValue:I
  ScalarReference:B
@@ -137,7 +134,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["ScalarValue:L1", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["ScalarValue:L"]
- step:    ["NumericConstant:1"]
 440      LET A(I) = 0
  ScalarValue:I
  ScalarReference:A
@@ -149,7 +145,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
- step:    ["NumericConstant:1"]
 510      LET C(I) = A(I) + B(I)
  ScalarValue:I
  ScalarReference:C
@@ -177,7 +172,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:100"]
- step:    ["NumericConstant:1"]
 1020     READ X(I)
  ScalarValue:I
  ScalarReference:X
@@ -200,7 +194,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
- step:    ["NumericConstant:1"]
 1120     LET C(I) = X(L-I)
  ScalarValue:I
  ScalarReference:C
@@ -301,7 +294,6 @@ Line 640 is out of sequence
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 2250         LET M = INT(N/Q)
  ScalarReference:M
  ScalarValue:N
@@ -361,7 +353,6 @@ Line 640 is out of sequence
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
- step:    ["NumericConstant:1"]
 3030     LET N = C(I)
  ScalarReference:N
  ScalarValue:I

@@ -45,14 +45,11 @@
  TextConstant:"TYPE F FOR THE GENERALIZED FACTORIAL"
  CarriageControl:NL
 140 INPUT A$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "A$" is not a value or operator
 150 IF A$ = "G" THEN 190
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 160 IF A$ = "F" THEN 300
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 170 PRINT "INVALID RESPONSE"
  ITEMS
  TextConstant:"INVALID RESPONSE"
@@ -157,11 +154,9 @@
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 440 INPUT L$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "L$" is not a value or operator
 450 IF L$ = "Y" THEN 470
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 460 STOP
  
 470 PRINT

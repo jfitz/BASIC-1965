@@ -7,12 +7,10 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
- step:    ["NumericConstant:1"]
 110     FOR I = 1 TO 3
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 120        READ T(P,I)
  ScalarValue:P
  ScalarValue:I
@@ -50,12 +48,10 @@
  control: VariableName:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
- step:    ["NumericConstant:1"]
 210     FOR J = 1 TO 4
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 220        READ U(S,J)
  ScalarValue:S
  ScalarValue:J
@@ -110,7 +106,6 @@
  control: VariableName:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
- step:    ["NumericConstant:1"]
 275     LET C(S) = 0
  ScalarValue:S
  ScalarReference:C
@@ -192,7 +187,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 480     LET P = U(M,J)
  ScalarReference:P
  ScalarValue:M
@@ -302,7 +296,6 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
- step:    ["NumericConstant:1"]
 1020 IF C(P) = 2 THEN 1100
  ScalarValue:P
  ScalarValue:C
@@ -314,7 +307,6 @@
  control: VariableName:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
- step:    ["NumericConstant:1"]
 1050 IF C(P) = -2 THEN 1100
  ScalarValue:P
  ScalarValue:C
@@ -329,7 +321,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
- step:    ["NumericConstant:1"]
 1110    LET M = T(P,I)
  ScalarReference:M
  ScalarValue:P
@@ -348,7 +339,6 @@
  control: VariableName:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
- step:    ["NumericConstant:1"]
 1210    LET V(S) = 0
  ScalarValue:S
  ScalarReference:V
@@ -363,7 +353,6 @@
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
- step:    ["NumericConstant:1"]
 1230       LET P = U(S,J)
  ScalarReference:P
  ScalarValue:S
@@ -398,7 +387,6 @@
  control: VariableName:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
- step:    ["NumericConstant:1"]
 1320    IF V(S) <= V THEN 1350
  ScalarValue:S
  ScalarValue:V

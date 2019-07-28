@@ -11,14 +11,11 @@
  TextConstant:"TYPE EITHER YES OR NO"
  CarriageControl:NL
 50 INPUT L$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "L$" is not a value or operator
 60 IF L$ = "YES" THEN 100
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 70 IF L$ = "NO" THEN 170
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 80 PRINT "INVALID COMMAND"
  ITEMS
  TextConstant:"INVALID COMMAND"
@@ -103,37 +100,29 @@
 330 LET S3$ = S$
  Token 'InvalidToken:$' is not a value or operator
 340 IF S1$ = "CHERRY" THEN 380
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 350 IF S1$ = "APPLE" THEN 420
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 360 IF S1$ = S2$ THEN 440
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 370 GOTO 460
  LineNumber:460
 380 IF S1$ = S2$ THEN 400
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 390 GOTO 460
  LineNumber:460
 400 IF S2$ = S3$ THEN 480
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 410 GOTO 460
  LineNumber:460
 420 IF S1$ = S2$ THEN 500
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 430 GOTO 520
  LineNumber:520
 440 IF S2$ = S3$ THEN 540
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 450 IF S3$ = "CHERRY" THEN 540
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 460 LET J = J - 1
  ScalarReference:J
  ScalarValue:J
@@ -176,8 +165,16 @@
  ITEMS
  CarriageControl:NL
 560 PRINT S1$;" ";S2$;" ";S3$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "S1$" is not a value or operator
+ Syntax error: "S2$" is not a value or operator
+ Syntax error: "S3$" is not a value or operator
+ ITEMS
+ CarriageControl:;
+ TextConstant:" "
+ CarriageControl:;
+ CarriageControl:;
+ TextConstant:" "
+ CarriageControl:;
 570 PRINT "YOUR EARNINGS ARE NOW $";J
  ITEMS
  TextConstant:"YOUR EARNINGS ARE NOW $"
@@ -229,11 +226,9 @@
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 740 INPUT Z$
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Syntax error: "Z$" is not a value or operator
 750 IF Z$ = "Y" THEN 780
- Invalid statement: Token 'InvalidToken:$' is not a value or operator
- Unimplemented
+ Token 'InvalidToken:$' is not a value or operator
 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"
  ITEMS
  TextConstant:"ONE-ARM BANDIT SAYS GOOD-BYE"
