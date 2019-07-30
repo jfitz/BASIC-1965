@@ -146,7 +146,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N0"]
- step:    ["NumericConstant:1"]
 554 LET M = M + M(I)
  ScalarReference:M
  ScalarValue:M
@@ -237,7 +236,6 @@
  control: VariableName:C
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:C0"]
- step:    ["NumericConstant:1"]
 1124 LET B(0,C) = 0
  NumericConstant:0
  ScalarValue:C
@@ -258,7 +256,6 @@
  control: VariableName:R
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:R0"]
- step:    ["NumericConstant:1"]
 1134 LET B(R,0) = 0
  ScalarValue:R
  NumericConstant:0
@@ -279,7 +276,6 @@
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Z8"]
- step:    ["NumericConstant:1"]
 1144 READ R,C
  ScalarReference:R
  ScalarReference:C
@@ -297,12 +293,10 @@
  control: VariableName:R
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 1153 FOR C = 1 TO C0-1
  control: VariableName:C
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 1154 IF B(R,C) <> -1 THEN 1157
  ScalarValue:R
  ScalarValue:C
@@ -348,12 +342,10 @@
  control: VariableName:R
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 1312 FOR C = 1 TO C0-1
  control: VariableName:C
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 1314 IF B(R,C) = 0 THEN 1380
  ScalarValue:R
  ScalarValue:C
@@ -372,12 +364,10 @@
  control: VariableName:I9
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1"]
 1322 FOR J9 = -1 TO 1
  control: VariableName:J9
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1"]
 1330 IF B(R+I9,C+J9) = 0 THEN 1340
  ScalarValue:R
  ScalarValue:I9
@@ -459,12 +449,10 @@
  control: VariableName:R
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 1412 FOR C = 1 TO C0-1
  control: VariableName:C
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
- step:    ["NumericConstant:1"]
 1420 IF B1(R,C) <> -1 THEN 1450
  ScalarValue:R
  ScalarValue:C
