@@ -111,7 +111,7 @@ VALUES WITH EPSILON 1E-10
 210: LET A = 1 / 7
  A = 0.14285714285714285
 220: OPTION EPSILON 1E-10
-230: FOR I = 1 TO 10
+230: FOR I = 1 TO 12
  I = 1
  terminated:false
 240: PRINT A
@@ -209,9 +209,29 @@ VALUES WITH EPSILON 1E-10
  1.4286E-10
 250: LET A = A / 10
  A: 1.4285714285714288e-10
- A = 1.4285714285714288e-11
+ A = 0
 260: NEXT I
  I: 10
+ terminated:false
+ I = 11
+240: PRINT A
+ A: 0
+ 0
+250: LET A = A / 10
+ A: 0
+ A = 0
+260: NEXT I
+ I: 11
+ terminated:false
+ I = 12
+240: PRINT A
+ A: 0
+ 0
+250: LET A = A / 10
+ A: 0
+ A = 0
+260: NEXT I
+ I: 12
  terminated:true
 999: END
 STOP in line 999
