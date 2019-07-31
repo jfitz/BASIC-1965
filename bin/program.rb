@@ -614,7 +614,19 @@ class Program
     @console_io.newline
   end
 
-  def print_num_refs(title, refs)
+  def print_numeric_refs(title, refs)
+    @console_io.print_line(title)
+
+    refs.keys.sort.each do |ref|
+      lines = refs[ref]
+      line = ref.token_chars + ":\t" + lines.map(&:to_s).uniq.join(', ')
+      @console_io.print_line(line)
+    end
+
+    @console_io.newline
+  end
+
+  def print_object_refs(title, refs)
     @console_io.print_line(title)
 
     refs.keys.sort.each do |ref|
@@ -650,11 +662,11 @@ class Program
 
     nums_list = numeric_refs
     numerics = make_summary(nums_list)
-    print_num_refs('Numeric constants', numerics)
+    print_numeric_refs('Numeric constants', numerics)
 
     strs_list = strings_refs
     strings = make_summary(strs_list)
-    print_num_refs('String constants', strings)
+    print_object_refs('String constants', strings)
 
     funcs_list = function_refs
     functions = make_summary(funcs_list)
@@ -670,7 +682,7 @@ class Program
 
     lines_list = linenums_refs
     linenums = make_summary(lines_list)
-    print_num_refs('Line numbers', linenums)
+    print_object_refs('Line numbers', linenums)
   end
 
   private
