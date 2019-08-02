@@ -173,6 +173,9 @@ class AbstractStatement
   attr_reader :errors
   attr_reader :keywords
   attr_reader :tokens
+  attr_reader :numerics
+  attr_reader :strings
+  attr_reader :linenums
 
   def self.extra_keywords
     []
@@ -182,6 +185,9 @@ class AbstractStatement
     @keywords = keywords
     @tokens = tokens_lists.flatten
     @errors = []
+    @numerics = []
+    @strings = []
+    @linenums = []
     @profile_count = 0
     @profile_time = 0
   end
@@ -249,14 +255,6 @@ class AbstractStatement
 
   def renumber(_) end
 
-  def numerics
-    []
-  end
-
-  def strings
-    []
-  end
-
   def functions
     funcs = @tokens.clone
     funcs.keep_if(&:function?)
@@ -273,10 +271,6 @@ class AbstractStatement
     vars = @tokens.clone
     vars.keep_if(&:variable?)
     vars.map(&:to_s)
-  end
-
-  def linenums
-    []
   end
 
   protected
@@ -502,6 +496,8 @@ class DataStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       @expressions = ValueScalarExpression.new(tokens_lists[0])
+      @numerics = @expressions.numerics
+      @strings = @expressions.strings
     else
       @errors << 'Syntax error'
     end
@@ -511,14 +507,6 @@ class DataStatement < AbstractStatement
     @expressions.dump
   end
   
-  def numerics
-    @expressions.numerics
-  end
-
-  def strings
-    @expressions.strings
-  end
-
   def pre_execute(interpreter)
     ds = interpreter.get_data_store(nil)
     data_list = @expressions.evaluate(interpreter)
@@ -545,6 +533,8 @@ class DefineFunctionStatement < AbstractStatement
       @definition = nil
       begin
         @definition = UserFunctionDefinition.new(tokens_lists[0])
+        @numerics = @definition.numerics
+        @strings = @definition.strings
       rescue BASICError => e
         puts e.message
         @errors << e.message
@@ -558,14 +548,6 @@ class DefineFunctionStatement < AbstractStatement
     lines = []
     lines += @definition.dump unless @definition.nil?
     lines
-  end
-
-  def numerics
-    @definition.numerics
-  end
-
-  def strings
-    @definition.strings
   end
 
   def variables
@@ -601,6 +583,9 @@ class DimStatement < AbstractStatement
         begin
           @expression_list <<
             TargetExpression.new(tokens_list, CompoundDeclaration)
+
+          @expression_list.each { |expression| @numerics += expression.numerics }
+          @expression_list.each { |expression| @strings += expression.strings }
         rescue BASICExpressionError
           @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
         end
@@ -614,18 +599,6 @@ class DimStatement < AbstractStatement
     lines = []
     @expression_list.each { |expression| lines += expression.dump }
     lines
-  end
-
-  def numerics
-    vars = []
-    @expression_list.each { |expression| vars += expression.numerics }
-    vars
-  end
- 
-  def strings
-    vars = []
-    @expression_list.each { |expression| vars += expression.strings }
-    vars
   end
 
   def variables
@@ -753,6 +726,8 @@ class ForStatement < AbstractStatement
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step_value = nil
+        @numerics = @start.numerics + @end.numerics
+        @strings = @start.strings + @end.strings
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -763,6 +738,8 @@ class ForStatement < AbstractStatement
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step_value = ValueScalarExpression.new(tokens_lists[4])
+        @numerics = @start.numerics + @end.numerics + @step_value.numerics
+        @strings = @start.strings + @end.strings + @step_value.strings
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -780,18 +757,6 @@ class ForStatement < AbstractStatement
     lines
   end
 
-  def numerics
-    nums = @start.numerics + @end.numerics
-    nums += @step_value.numerics unless @step_value.nil?
-    nums
-  end
-  
-  def strings
-    strs = @start.strings + @end.strings
-    strs += @step_value.strings unless @step_value.nil?
-    strs
-  end
-  
   def variables
     vars = []
     vars << @control.to_s
@@ -862,6 +827,7 @@ class GosubStatement < AbstractStatement
     if check_template(tokens_lists, template)
       if tokens_lists[0][0].numeric_constant?
         @destination = LineNumber.new(tokens_lists[0][0])
+        @linenums = [@destination]
       else
         @errors << "Invalid line number #{tokens[0]}"
       end
@@ -878,10 +844,6 @@ class GosubStatement < AbstractStatement
     return true if program.line_number?(@destination)
     console_io.print_line("Line number #{@destination} not found in line #{line_number}")
     false
-  end
-
-  def linenums
-    [@destination]
   end
 
   def execute(interpreter)
@@ -911,6 +873,7 @@ class GotoStatement < AbstractStatement
     if check_template(tokens_lists, template)
       if tokens_lists[0][0].numeric_constant?
         @destination = LineNumber.new(tokens_lists[0][0])
+        @linenums = [@destination]
       else
         @errors << "Invalid line number #{tokens[0]}"
       end
@@ -929,10 +892,6 @@ class GotoStatement < AbstractStatement
     console_io.print_line("Line number #{@destination} not found in line #{line_number}")
 
     false
-  end
-
-  def linenums
-    [@destination]
   end
 
   def execute(interpreter)
@@ -967,6 +926,9 @@ class IfStatement < AbstractStatement
 
       destination = tokens_lists[2]
       parse_line(condition, destination[0])
+      @numerics = @expression.numerics unless @expression.nil?
+      @strings = @expression.strings unless @expression.nil?
+      @linenums = [@destination]
     else
       @errors << 'Syntax error'
     end
@@ -990,26 +952,10 @@ class IfStatement < AbstractStatement
     false
   end
 
-  def numerics
-    nums = []
-    nums += @expression.numerics unless @expression.nil?
-    nums
-  end
-
-  def strings
-    strs = []
-    strs += @expression.strings unless @expression.nil?
-    strs
-  end
-
   def variables
     vars = []
     vars += @expression.variables unless @expression.nil?
     vars
-  end
-
-  def linenums
-    [@destination]
   end
 
   def execute(interpreter)
@@ -1075,6 +1021,12 @@ class InputStatement < AbstractStatement
         @prompt = input_items[0]
         @input_items = @input_items[1..-1]
       end
+
+      @numerics = @file_tokens.numerics unless @file_tokens.nil?
+      @input_items.each { |item| @numerics += item.numerics }
+      @strings = @prompt.strings unless @prompt.nil?
+      @strings += @file_tokens.strings unless @file_tokens.nil?
+      @input_items.each { |item| @strings += item.strings }
     else
       @errors << 'Syntax error'
     end
@@ -1086,19 +1038,6 @@ class InputStatement < AbstractStatement
     lines
   end
 
-  def numerics
-    nums = []
-    @input_items.each { |item| nums += item.numerics } unless @input_items.nil?
-    nums
-  end
-  
-  def strings
-    strs = []
-    strs += @prompt.strings unless @prompt.nil?
-    @input_items.each { |item| strs += item.strings } unless @input_items.nil?
-    strs
-  end
-  
   def variables
     vars = []
     @input_items.each { |item| vars += item.variables } unless @input_items.nil?
@@ -1248,12 +1187,17 @@ class AbstractLetStatement < AbstractStatement
     if check_template(tokens_lists, template)
       begin
         @assignment = ScalarAssignment.new(tokens_lists[0])
+
         if @assignment.count_target.zero?
           @errors << 'Assignment must have left-hand value(s)'
         end
+
         if @assignment.count_value != 1
           @errors << 'Assignment must have only one right-hand value'
         end
+
+        @numerics = @assignment.numerics
+        @strings = @assignment.strings
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -1266,18 +1210,6 @@ class AbstractLetStatement < AbstractStatement
     lines = []
     lines += @assignment.dump unless @assignment.nil?
     lines
-  end
-
-  def numerics
-    nums = []
-    nums += @assignment.numerics unless @assignment.nil?
-    nums
-  end
-  
-  def strings
-    strs = []
-    strs += @assignment.strings unless @assignment.nil?
-    strs
   end
 
   def variables
@@ -1402,12 +1334,16 @@ class OptionStatement < AbstractStatement
     if check_template(tokens_lists, template)
       @key = tokens_lists[0].to_s.downcase
       expression_tokens = split_tokens(tokens_lists[1], true)
+
       # OPTION statements do not respect the EPSILON value
       # (so they can set new, smaller EPSILON values)
       epsilon = $options['epsilon']
       $options['epsilon'] = Option.new(float, 0.0)
       @expression = ValueScalarExpression.new(expression_tokens[0])
       $options['epsilon'] = epsilon
+
+      @numerics = @expression.numerics
+      @strings = @expression.strings
     else
       @errors << 'Syntax error'
     end
@@ -1417,18 +1353,6 @@ class OptionStatement < AbstractStatement
     lines = []
     lines += @expression.dump unless @expression.nil?
     lines
-  end
-
-  def numerics
-    vars = []
-    vars += @expression.numerics unless @expression.nil?
-    vars
-  end
-
-  def strings
-    vars = []
-    vars += @expression.strings unless @expression.nil?
-    vars
   end
 
   def variables
@@ -1468,18 +1392,11 @@ class AbstractPrintStatement < AbstractStatement
     lines
   end
 
-  def numerics
-    vars = []
-    vars += @file_tokens.numerics unless @file_tokens.nil?
-    @print_items.each { |item| vars += item.numerics } unless @print_items.nil?
-    vars
-  end
-
-  def strings
-    vars = []
-    vars += @file_tokens.strings unless @file_tokens.nil?
-    @print_items.each { |item| vars += item.strings } unless @print_items.nil?
-    vars
+  def make_references
+    @numerics = @file_tokens.numerics unless @file_tokens.nil?
+    @print_items.each { |item| @numerics += item.numerics }
+    @strings = @file_tokens.strings unless @file_tokens.nil?
+    @print_items.each { |item| @strings += item.strings }
   end
 
   def variables
@@ -1512,6 +1429,7 @@ class PrintStatement < AbstractPrintStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       print_items = tokens_to_expressions(tokens_lists)
       @file_tokens, @print_items = extract_file_handle(print_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -1570,18 +1488,11 @@ class AbstractReadStatement < AbstractStatement
     lines
   end
 
-  def numerics
-    vars = []
-    vars += @file_tokens.numerics unless @file_tokens.nil?
-    @read_items.each { |item| vars += item.numerics } unless @read_items.nil?
-    vars
-  end
-
-  def strings
-    vars = []
-    vars += @file_tokens.strings unless @file_tokens.nil?
-    @read_items.each { |item| vars += item.strings } unless @read_items.nil?
-    vars
+  def make_references
+    @numerics = @file_tokens.numerics unless @file_tokens.nil?
+    @read_items.each { |item| @numerics += item.numerics }
+    @strings = @file_tokens.strings unless @file_tokens.nil?
+    @read_items.each { |item| @strings += item.strings }
   end
 
   def variables
@@ -1610,6 +1521,7 @@ class ReadStatement < AbstractReadStatement
       read_items = split_tokens(tokens_lists[0], false)
       read_items = tokens_to_expressions(read_items)
       @file_tokens, @read_items = extract_file_handle(read_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -1745,18 +1657,11 @@ class AbstractWriteStatement < AbstractStatement
     lines
   end
 
-  def numerics
-    vars = []
-    vars += @file_tokens.numerics unless @file_tokens.nil?
-    @print_items.each { |item| vars += item.numerics } unless @print_items.nil?
-    vars
-  end
-
-  def strings
-    vars = []
-    vars += @file_tokens.strings unless @file_tokens.nil?
-    @print_items.each { |item| vars += item.strings } unless @print_items.nil?
-    vars
+  def make_references
+    @numerics = @file_tokens.numerics unless @file_tokens.nil?
+    @print_items.each { |item| @numerics += item.numerics }
+    @strings = @file_tokens.strings unless @file_tokens.nil?
+    @print_items.each { |item| @strings += item.strings }
   end
 
   def variables
@@ -1785,6 +1690,7 @@ class WriteStatement < AbstractWriteStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       print_items = tokens_to_expressions(tokens_lists)
       @file_tokens, @print_items = extract_file_handle(print_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -1847,6 +1753,7 @@ class ArrPrintStatement < AbstractPrintStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       print_items = tokens_to_expressions(tokens_lists)
       @file_tokens, @print_items = extract_file_handle(print_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -1906,6 +1813,7 @@ class ArrReadStatement < AbstractReadStatement
       read_items = split_tokens(tokens_lists[0], false)
       read_items = tokens_to_expressions(read_items)
       @file_tokens, @read_items = extract_file_handle(read_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -1993,6 +1901,7 @@ class ArrWriteStatement < AbstractWriteStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       print_items = tokens_to_expressions(tokens_lists)
       @file_tokens, @print_items = extract_file_handle(print_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -2115,6 +2024,7 @@ class MatPrintStatement < AbstractPrintStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       print_items = tokens_to_expressions(tokens_lists)
       @file_tokens, @print_items = extract_file_handle(print_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -2173,6 +2083,7 @@ class MatReadStatement < AbstractReadStatement
       read_items = split_tokens(tokens_lists[0], false)
       read_items = tokens_to_expressions(read_items)
       @file_tokens, @read_items = extract_file_handle(read_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -2278,6 +2189,7 @@ class MatWriteStatement < AbstractWriteStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       print_items = tokens_to_expressions(tokens_lists)
       @file_tokens, @print_items = extract_file_handle(print_items)
+      make_references
     else
       @errors << 'Syntax error'
     end
