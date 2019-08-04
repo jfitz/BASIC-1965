@@ -826,6 +826,7 @@ class GosubStatement < AbstractStatement
 
   def renumber(renumber_map)
     @destination = renumber_map[@destination]
+    @linenums = [@destination]
     @tokens[-1] = NumericConstantToken.new(@destination.line_number)
   end
 end
@@ -873,6 +874,7 @@ class GotoStatement < AbstractStatement
 
   def renumber(renumber_map)
     @destination = renumber_map[@destination]
+    @linenums = [@destination]
     @tokens[-1] = NumericConstantToken.new(@destination.line_number)
   end
 end
@@ -946,6 +948,7 @@ class IfStatement < AbstractStatement
 
   def renumber(renumber_map)
     @destination = renumber_map[@destination]
+    @linenums = [@destination]
     @tokens[-1] = NumericConstantToken.new(@destination.line_number)
   end
 
@@ -990,12 +993,7 @@ class InputStatement < AbstractStatement
         @input_items = @input_items[1..-1]
       end
 
-      @numerics = @file_tokens.numerics unless @file_tokens.nil?
-      @input_items.each { |item| @numerics += item.numerics }
-      @strings = @prompt.strings unless @prompt.nil?
-      @strings += @file_tokens.strings unless @file_tokens.nil?
-      @input_items.each { |item| @variables += item.variables }
-      @input_items.each { |item| @strings += item.strings }
+      make_references
     else
       @errors << 'Syntax error'
     end
@@ -1044,6 +1042,18 @@ class InputStatement < AbstractStatement
   private
 
   include FileFunctions
+
+  def make_references
+    @numerics = @file_tokens.numerics unless @file_tokens.nil?
+    @input_items.each { |item| @numerics += item.numerics }
+
+    @strings = @prompt.strings unless @prompt.nil?
+    @strings += @file_tokens.strings unless @file_tokens.nil?
+    @input_items.each { |item| @strings += item.strings }
+
+    @variables = @file_tokens.variables unless @file_tokens.nil?
+    @input_items.each { |item| @variables += item.variables }
+  end
 
   def first_token(input_items)
     input_items[0][0]
