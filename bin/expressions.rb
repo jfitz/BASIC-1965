@@ -4,6 +4,7 @@ class ScalarValue < Value
     super
 
     @scalar = true
+    @value = true
   end
 
   # return a single value
@@ -36,6 +37,7 @@ class ScalarReference < Reference
     super(variable_value.name)
 
     @scalar = true
+    @reference = true
   end
 
   # return a single value, a reference to this object
@@ -601,6 +603,7 @@ class ArrayValue < Value
     super
 
     @array = true
+    @value = true
   end
 
   def evaluate(interpreter, _)
@@ -665,6 +668,7 @@ class ArrayReference < CompoundReference
     super(variable_value.name)
 
     @array = true
+    @reference = true
   end
 end
 
@@ -674,6 +678,7 @@ class MatrixValue < Value
     super
 
     @matrix = true
+    @value = true
   end
 
   def evaluate(interpreter, _)
@@ -732,6 +737,7 @@ class MatrixReference < CompoundReference
     super(variable_value.name)
 
     @matrix = true
+    @reference = true
   end
 end
 
@@ -754,6 +760,89 @@ class CompoundDeclaration < Variable
 
     end
     self
+  end
+end
+
+class XrefEntry
+  attr_reader :variable
+  attr_reader :n_dims
+  attr_reader :is_ref
+
+  def initialize(variable, n_dims, is_ref)
+    @variable = variable
+    @n_dims = n_dims
+    @is_ref = is_ref
+  end
+
+  def eql?(other)
+    @variable == other.variable &&
+      @n_dims == other.n_dims &&
+      @is_ref == other.is_ref
+  end
+
+  def hash
+    @variable.hash + @n_dims.hash + @is_ref.hash
+  end
+
+  def <=>(other)
+    return -1 if self < other
+    return 1 if self > other
+    0
+  end
+
+  def ==(other)
+    @variable == other.variable &&
+      @n_dims == other.n_dims &&
+      @is_ref == other.is_ref
+  end
+
+  def >(other)
+    return true if @variable > other.variable
+    return false if @variable < other.variable
+
+    return true if @n_dims > other.n_dims
+    return false if @n_dims < other.n_dims
+    
+    !@is_ref && other.is_ref
+  end
+
+  def >=(other)
+    return true if @variable > other.variable
+    return false if @variable < other.variable
+
+    return true if @n_dims > other.n_dims
+    return false if @n_dims < other.n_dims
+    
+    !@is_ref && other.is_ref
+  end
+
+  def <(other)
+    return true if @variable < other.variable
+    return false if @variable > other.variable
+
+    return true if @n_dims < other.n_dims
+    return false if @n_dims > other.n_dims
+    
+    @is_ref && !other.is_ref
+  end
+
+  def <=(other)
+    return true if @variable < other.variable
+    return false if @variable > other.variable
+
+    return true if @n_dims < other.n_dims
+    return false if @n_dims > other.n_dims
+    
+    @is_ref && !other.is_ref
+  end
+
+  def to_s
+    dims = ''
+    dims = '()' if @n_dims == 1
+    dims = '(,)' if @n_dims == 2
+    ref = ''
+    ref = '=' if @is_ref
+    @variable.to_s + dims + ref
   end
 end
 
@@ -1008,14 +1097,16 @@ class AbstractExpression
           sublist = thing.list
           vars += parsed_expressions_variables(sublist)
         elsif thing.variable?
-          suffix = ''
-          suffix = '()' if thing.array?
-          suffix = '(,)' if thing.matrix?
+          n_dims = 0
+          n_dims = 1 if thing.array?
+          n_dims = 2 if thing.matrix?
 
-          suffix = '(' + (',' * (previous.size - 1)) + ')' if
-            suffix == '' && !previous.nil? && previous.list?
+          n_dims = previous.size if
+            n_dims == 0 && !previous.nil? && previous.list?
 
-          vars << thing.to_s + suffix
+          is_ref = thing.reference?
+
+          vars << XrefEntry.new(thing.to_s, n_dims, is_ref)
         end
 
         previous = thing

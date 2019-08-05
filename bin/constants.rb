@@ -19,6 +19,8 @@ class AbstractElement
     @matrix = false
     @list = false
     @carriage = false
+    @value = false
+    @reference = false
     @numeric_constant = false
     @text_constant = false
     @boolean_constant = false
@@ -104,6 +106,14 @@ class AbstractElement
     @carriage
   end
 
+  def value?
+    @value
+  end
+
+  def reference?
+    @reference
+  end
+  
   def numeric_constant?
     @numeric_constant
   end
@@ -231,6 +241,12 @@ class AbstractValueElement < AbstractElement
 
   def hash
     @value.hash
+  end
+
+  def <=>(other)
+    return -1 if self < other
+    return 1 if self > other
+    0
   end
 
   def ==(other)

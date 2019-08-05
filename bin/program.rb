@@ -678,7 +678,7 @@ class Program
 
     vars_list = variables_refs
     variables = make_summary(vars_list)
-    print_refs('Variables', variables)
+    print_object_refs('Variables', variables)
 
     lines_list = linenums_refs
     linenums = make_summary(lines_list)
