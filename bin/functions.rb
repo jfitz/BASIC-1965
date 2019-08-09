@@ -1,5 +1,5 @@
 # function (provides a scalar)
-class Function < AbstractElement
+class AbstractFunction < AbstractElement
   def initialize(text)
     super()
 
@@ -84,13 +84,41 @@ class Function < AbstractElement
 end
 
 # Function that expects scalar parameters
-class AbstractScalarFunction < Function
+class AbstractScalarFunction < AbstractFunction
   def initialize(text)
     super
   end
 
   def default_type
     ScalarValue
+  end
+end
+
+# Function that expects array parameters
+class AbstractArrayFunction < AbstractFunction
+  def initialize(text)
+    super
+  end
+
+  def default_type
+    ArrayValue
+  end
+end
+
+# Function that expects matrix parameters
+class AbstractMatrixFunction < AbstractFunction
+  def initialize(text)
+    super
+  end
+
+  def default_type
+    MatrixValue
+  end
+
+  def check_square(dims)
+    raise(BASICRuntimeError, @name + ' requires matrix') unless dims.size == 2
+    raise(BASICRuntimeError, @name + ' requires square matrix') unless
+      dims[1] == dims[0]
   end
 end
 
@@ -131,23 +159,6 @@ class UserFunction < AbstractScalarFunction
 
     interpreter.clear_user_var_values
     results[0]
-  end
-end
-
-# Function that expects matrix parameters
-class AbstractMatrixFunction < Function
-  def initialize(text)
-    super
-  end
-
-  def default_type
-    MatrixValue
-  end
-
-  def check_square(dims)
-    raise(BASICRuntimeError, @name + ' requires matrix') unless dims.size == 2
-    raise(BASICRuntimeError, @name + ' requires square matrix') unless
-      dims[1] == dims[0]
   end
 end
 

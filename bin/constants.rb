@@ -989,6 +989,24 @@ class Reference < Variable
 end
 
 class Declaration < Variable
+  def initialize(variable_value)
+    super(variable_value.name)
+  end
+
+  # return a single value, a reference to this object
+  def evaluate(_, stack)
+    if previous_is_array(stack)
+      @subscripts = stack.pop
+      num_args = @subscripts.length
+
+      if num_args.zero?
+        raise(BASICRuntimeError,
+              'Variable expects subscripts, found empty parentheses')
+      end
+    end
+
+    self
+  end
 end
 
 # A list (needed because it has precedence value)

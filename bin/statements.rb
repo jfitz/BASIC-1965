@@ -575,7 +575,7 @@ class DimStatement < AbstractStatement
       tokens_lists.each do |tokens_list|
         begin
           @expression_list <<
-            TargetExpression.new(tokens_list, CompoundDeclaration)
+            TargetExpression.new(tokens_list, Declaration)
 
           @expression_list.each { |expression| @numerics += expression.numerics }
           @expression_list.each { |expression| @strings += expression.strings }
