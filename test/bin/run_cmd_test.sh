@@ -30,7 +30,7 @@ diff "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.
 
 if [ $ECODE -ne 0 ]
 then
-   cp "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt"
+   cp "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt" "$TESTBED/$TESTNAME/stdout.txt"
 fi
 echo compare done
 

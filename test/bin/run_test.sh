@@ -34,7 +34,7 @@ then
     cd ../..
 
     echo Compare list...
-    diff "$TESTBED/$TESTNAME/list.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt"
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/list.txt" "$TESTBED/$TESTNAME/list.txt"
     ((ECODE=$?))
 
     if [ $ECODE -ne 0 ]
@@ -57,7 +57,7 @@ then
     cd ../..
 
     echo Compare parse...
-    diff "$TESTBED/$TESTNAME/parse.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/parse.txt"
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/parse.txt" "$TESTBED/$TESTNAME/parse.txt"
     ((ECODE=$?))
 
     if [ $ECODE -ne 0 ]
@@ -80,7 +80,7 @@ then
     cd ../..
 
     echo Compare pretty...
-    diff "$TESTBED/$TESTNAME/pretty.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt"
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt" "$TESTBED/$TESTNAME/pretty.txt"
     ((ECODE=$?))
 
     if [ $ECODE -ne 0 ]
@@ -98,7 +98,7 @@ then
     cd ../..
 
     echo Compare crossref...
-    diff "$TESTBED/$TESTNAME/crossref.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/crossref.txt"
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/crossref.txt" "$TESTBED/$TESTNAME/crossref.txt"
     ((ECODE=$?))
     if [ $ECODE -ne 0 ]
     then
@@ -133,7 +133,7 @@ then
     fi
 
     echo Compare stdout...
-    diff "$TESTBED/$TESTNAME/stdout.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt"
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/stdout.txt" "$TESTBED/$TESTNAME/stdout.txt"
     ((ECODE=$?))
 
     if [ $ECODE -ne 0 ]
@@ -147,7 +147,7 @@ if [ -e "test/$TESTGROUP/$TESTNAME/ref/out_files.txt" ]
 then
     while read F ; do
 	echo Compare $F...
-	diff "$TESTBED/$TESTNAME/$F" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/$F"
+	diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/$F" "$TESTBED/$TESTNAME/$F"
 	((ECODE=$?))
 
 	if [ $ECODE -ne 0 ]
@@ -184,7 +184,7 @@ then
     fi
 
     echo Compare trace...
-    diff "$TESTBED/$TESTNAME/trace.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/trace.txt"
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/trace.txt" "$TESTBED/$TESTNAME/trace.txt"
     ((ECODE=$?))
 
     if [ $ECODE -ne 0 ]
