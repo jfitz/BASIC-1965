@@ -983,9 +983,25 @@ class Variable < AbstractElement
 end
 
 class Value < Variable
+  def initialize(name, type, subscripts = [])
+    super(name, subscripts)
+
+    @value = true
+    @scalar = true if type == :scalar
+    @array = true if type == :array
+    @matrix = true if type == :matrix
+  end
 end
 
 class Reference < Variable
+  def initialize(name, type, subscripts = [])
+    super(name, subscripts)
+
+    @reference = true
+    @scalar = true if type == :scalar
+    @array = true if type == :array
+    @matrix = true if type == :matrix
+  end
 end
 
 class Declaration < Variable
