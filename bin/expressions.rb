@@ -3,52 +3,12 @@ class ScalarValue < Value
   def initialize(variable_name)
     super(variable_name, :scalar)
   end
-
-  # return a single value
-  def evaluate(interpreter, stack)
-    if previous_is_array(stack)
-      subscripts = get_subscripts(stack)
-      @subscripts = interpreter.normalize_subscripts(subscripts)
-      interpreter.check_subscripts(@variable_name, @subscripts)
-      interpreter.get_value(self)
-    else
-      interpreter.get_value(@variable_name)
-    end
-  end
-
-  private
-
-  def get_subscripts(stack)
-    subscripts = stack.pop
-    if subscripts.empty?
-      raise(BASICExpressionError,
-            'Variable expects subscripts, found empty parentheses')
-    end
-    subscripts
-  end
 end
 
 # Scalar reference (not a matrix)
 class ScalarReference < Reference
   def initialize(variable_value)
     super(variable_value.name, :scalar)
-  end
-
-  # return a single value, a reference to this object
-  def evaluate(interpreter, stack)
-    if previous_is_array(stack)
-      subscripts = stack.pop
-      @subscripts = interpreter.normalize_subscripts(subscripts)
-      num_args = @subscripts.length
-
-      if num_args.zero?
-        raise(BASICRuntimeError,
-              'Variable expects subscripts, found empty parentheses')
-      end
-
-      interpreter.check_subscripts(@variable_name, @subscripts)
-    end
-    self
   end
 end
 
@@ -596,60 +556,12 @@ class ArrayValue < Value
   def initialize(variable_name)
     super(variable_name, :array)
   end
-
-  def evaluate(interpreter, _)
-    dims = interpreter.get_dimensions(@variable_name)
-    raise(BASICRuntimeError, 'Variable has no dimensions') if dims.nil?
-    raise(BASICRuntimeError, 'Array requires one dimension') if dims.size != 1
-    values = evaluate_1(interpreter, dims[0].to_i)
-    BASICArray.new(dims, values)
-  end
-
-  private
-
-  def evaluate_1(interpreter, n_cols)
-    values = {}
-
-    base = interpreter.base
-    (base..n_cols).each do |col|
-      coords = make_coord(col)
-      variable = Value.new(@variable_name, :array, coords)
-      values[coords] = interpreter.get_value(variable)
-    end
-
-    values
-  end
 end
 
 # Compound variable (array or matrix) reference
 class CompoundReference < Reference
-  def initialize(name, type)
+  def initialize(_, _)
     super
-  end
-
-  def dimensions?
-    !@subscripts.empty?
-  end
-
-  def dimensions
-    @subscripts
-  end
-
-  # return a single value, a reference to this object
-  def evaluate(interpreter, stack)
-    if previous_is_array(stack)
-      subscripts = stack.pop
-      @subscripts = interpreter.normalize_subscripts(subscripts)
-      num_args = @subscripts.length
-
-      if num_args.zero?
-        raise(BASICRuntimeError,
-              'Variable expects subscripts, found empty parentheses')
-      end
-
-      interpreter.check_subscripts(@variable_name, @subscripts)
-    end
-    self
   end
 end
 
@@ -664,55 +576,6 @@ end
 class MatrixValue < Value
   def initialize(variable_name)
     super(variable_name, :matrix)
-  end
-
-  def evaluate(interpreter, _)
-    dims = interpreter.get_dimensions(@variable_name)
-    raise(BASICRuntimeError, 'Variable has no dimensions') if dims.nil?
-    values = evaluate_n(interpreter, dims)
-    Matrix.new(dims, values)
-  end
-
-  private
-
-  def evaluate_n(interpreter, dims)
-    values = {}
-    values = evaluate_1(interpreter, dims[0].to_i) if dims.size == 1
-
-    values = evaluate_2(interpreter, dims[0].to_i, dims[1].to_i) if
-      dims.size == 2
-
-    values
-  end
-
-  def evaluate_1(interpreter, n_cols)
-    values = {}
-
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      coords = make_coord(col)
-      variable = Value.new(@variable_name, :matrix, coords)
-      values[coords] = interpreter.get_value(variable)
-    end
-
-    values
-  end
-
-  def evaluate_2(interpreter, n_rows, n_cols)
-    values = {}
-
-    base = $options['base'].value
-
-    (base..n_rows).each do |row|
-      (base..n_cols).each do |col|
-        coords = make_coords(row, col)
-        variable = Value.new(@variable_name, :matrix, coords)
-        values[coords] = interpreter.get_value(variable)
-      end
-    end
-
-    values
   end
 end
 
