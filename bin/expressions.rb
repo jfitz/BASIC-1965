@@ -1107,7 +1107,7 @@ class ValueArrayExpression < ValueCompoundExpression
   def initialize(tokens)
     super(tokens, ArrayValue)
 
-    @array = true
+    @shape = :array
   end
 end
 
@@ -1116,7 +1116,7 @@ class ValueMatrixExpression < ValueCompoundExpression
   def initialize(tokens)
     super(tokens, MatrixValue)
 
-    @matrix = true
+    @shape = :matrix
   end
 end
 
@@ -1198,7 +1198,7 @@ class UserFunctionDefinition
   end
 
   def signature
-    numeric_spec = { 'type' => 'numeric', 'shape' => 'scalar' }
+    numeric_spec = { 'type' => 'numeric', 'shape' => :scalar }
     sig = []
 
     @arguments.each do ||
