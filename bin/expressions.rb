@@ -1198,7 +1198,7 @@ class UserFunctionDefinition
   end
 
   def signature
-    numeric_spec = { 'type' => 'numeric', 'shape' => :scalar }
+    numeric_spec = { 'type' => :numeric, 'shape' => :scalar }
     sig = []
 
     @arguments.each do ||

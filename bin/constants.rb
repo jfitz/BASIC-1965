@@ -420,7 +420,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def content_type
-    'numeric'
+    :numeric
   end
 
   def eql?(other)
@@ -623,7 +623,7 @@ class TextConstant < AbstractValueElement
   end
 
   def content_type
-    'string'
+    :string
   end
 
   def eql?(other)
@@ -695,7 +695,7 @@ class BooleanConstant < AbstractValueElement
   end
 
   def content_type
-    'bool'
+    :boolean
   end
 
   def eql?(other)
@@ -866,7 +866,7 @@ class VariableName < AbstractElement
     @variable = true
     @operand = true
     @precedence = 7
-    @content_type = 'numeric'
+    @content_type = :numeric
   end
 
   def eql?(other)
@@ -886,16 +886,16 @@ class VariableName < AbstractElement
   end
 
   def compatible?(value)
-    numerics = %w(numeric)
-    strings = %w(string)
+    numerics = [:numeric]
+    strings = [:string]
 
     compatible = false
 
-    if content_type == 'numeric'
+    if content_type == :numeric
       compatible = numerics.include?(value.content_type)
     end
 
-    if content_type == 'string'
+    if content_type == :string
       compatible = strings.include?(value.content_type)
     end
 
@@ -938,16 +938,16 @@ class Variable < AbstractElement
   end
 
   def compatible?(value)
-    numerics = %w(numeric)
-    strings = %w(string)
+    numerics = [:numeric]
+    strings = [:string]
 
     compatible = false
 
-    if content_type == 'numeric'
+    if content_type == :numeric
       compatible = numerics.include?(value.content_type)
     end
 
-    if content_type == 'string'
+    if content_type == :string
       compatible = strings.include?(value.content_type)
     end
 
