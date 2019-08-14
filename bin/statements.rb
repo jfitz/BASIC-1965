@@ -575,7 +575,7 @@ class DimStatement < AbstractStatement
       tokens_lists.each do |tokens_list|
         begin
           @expression_list <<
-            TargetExpression.new(tokens_list, Declaration)
+            TargetExpression.new(tokens_list, :declaration)
 
           @expression_list.each { |expression| @numerics += expression.numerics }
           @expression_list.each { |expression| @strings += expression.strings }
@@ -1107,7 +1107,7 @@ class InputStatement < AbstractStatement
     elsif tokens[0].text_constant?
       print_items << ValueScalarExpression.new(tokens)
     else
-      print_items << TargetExpression.new(tokens, ScalarReference)
+      print_items << TargetExpression.new(tokens, :scalar)
     end
 
   rescue BASICExpressionError
@@ -1524,7 +1524,7 @@ class ReadStatement < AbstractReadStatement
     if tokens[0].operator? && tokens[0].to_s == '#'
       print_items << ValueScalarExpression.new(tokens)
     else
-      print_items << TargetExpression.new(tokens, ScalarReference)
+      print_items << TargetExpression.new(tokens, :scalar)
     end
 
   rescue BASICExpressionError
@@ -1812,7 +1812,7 @@ class ArrReadStatement < AbstractReadStatement
     if tokens[0].operator? && tokens[0].to_s == '#'
       print_items << ValueScalarExpression.new(tokens)
     else
-      print_items << TargetExpression.new(tokens, ArrayReference)
+      print_items << TargetExpression.new(tokens, :array)
     end
 
   rescue BASICExpressionError
@@ -2086,7 +2086,7 @@ class MatReadStatement < AbstractReadStatement
     if tokens[0].operator? && tokens[0].to_s == '#'
       print_items << ValueScalarExpression.new(tokens)
     else
-      print_items << TargetExpression.new(tokens, MatrixReference)
+      print_items << TargetExpression.new(tokens, :matrix)
     end
 
   rescue BASICExpressionError

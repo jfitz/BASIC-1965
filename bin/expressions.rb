@@ -558,15 +558,8 @@ class ArrayValue < Value
   end
 end
 
-# Compound variable (array or matrix) reference
-class CompoundReference < Reference
-  def initialize(_, _)
-    super
-  end
-end
-
 # Array reference
-class ArrayReference < CompoundReference
+class ArrayReference < Reference
   def initialize(variable_value)
     super(variable_value.name, :array)
   end
@@ -580,7 +573,7 @@ class MatrixValue < Value
 end
 
 # Matrix reference
-class MatrixReference < CompoundReference
+class MatrixReference < Reference
   def initialize(variable_value)
     super(variable_value.name, :matrix)
   end
@@ -1122,10 +1115,11 @@ end
 
 # Target expression
 class TargetExpression < AbstractExpression
-  def initialize(tokens, type)
+  def initialize(tokens, shape)
     valuetype = ScalarValue
-    valuetype = ArrayValue if type == ArrayReference
-    valuetype = MatrixValue if type == MatrixReference
+    valuetype = ArrayValue if shape == :array
+    valuetype = MatrixValue if shape == :matrix
+    valuetype = ScalarValue if shape == :declaration
     super(tokens, valuetype)
 
     check_length
@@ -1134,8 +1128,13 @@ class TargetExpression < AbstractExpression
 
     @target = true
 
+    reftype = ScalarReference
+    reftype = ArrayReference if shape == :array
+    reftype = MatrixReference if shape == :matrix
+    reftype = Declaration if shape == :declaration
+    
     @parsed_expressions.each do |parsed_expression|
-      parsed_expression[-1] = type.new(parsed_expression[-1])
+      parsed_expression[-1] = reftype.new(parsed_expression[-1])
     end
   end
 
@@ -1354,7 +1353,7 @@ class ScalarAssignment < AbstractAssignment
   def initialize(tokens)
     super
 
-    @target = TargetExpression.new(@token_lists[0], ScalarReference)
+    @target = TargetExpression.new(@token_lists[0], :scalar)
     @expression = ValueScalarExpression.new(@token_lists[2])
   end
 
@@ -1372,7 +1371,7 @@ class ArrayAssignment < AbstractAssignment
   def initialize(tokens)
     super
 
-    @target = TargetExpression.new(@token_lists[0], ArrayReference)
+    @target = TargetExpression.new(@token_lists[0], :array)
     @expression = ValueArrayExpression.new(@token_lists[2])
   end
 
@@ -1390,7 +1389,7 @@ class MatrixAssignment < AbstractAssignment
   def initialize(tokens)
     super
 
-    @target = TargetExpression.new(@token_lists[0], MatrixReference)
+    @target = TargetExpression.new(@token_lists[0], :matrix)
     @expression = ValueMatrixExpression.new(@token_lists[2])
   end
 
