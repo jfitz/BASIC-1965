@@ -1113,13 +1113,52 @@ class ValueMatrixExpression < ValueCompoundExpression
   end
 end
 
+# Declaration expression
+class DeclarationExpression < AbstractExpression
+  def initialize(tokens)
+    super(tokens, Declaration)
+
+    check_length
+    check_all_lengths
+    check_resolve_types
+
+    @target = true
+  end
+
+  def filehandle?
+    false
+  end
+
+  private
+
+  def check_length
+    raise(BASICRuntimeError, 'Value list is empty (length 0)') if
+      @parsed_expressions.empty?
+  end
+
+  def check_all_lengths
+    @parsed_expressions.each do |parsed_expression|
+      raise(BASICRuntimeError, 'Value is not assignable (length 0)') if
+        parsed_expression.empty?
+    end
+  end
+
+  def check_resolve_types
+    @parsed_expressions.each do |parsed_expression|
+      if parsed_expression[-1].class.to_s != 'Declaration'
+        raise(BASICRuntimeError,
+              "Value is not assignable (type #{parsed_expression[-1].class})")
+      end
+    end
+  end
+end
+
 # Target expression
 class TargetExpression < AbstractExpression
   def initialize(tokens, shape)
     valuetype = ScalarValue
     valuetype = ArrayValue if shape == :array
     valuetype = MatrixValue if shape == :matrix
-    valuetype = ScalarValue if shape == :declaration
     super(tokens, valuetype)
 
     check_length
@@ -1131,7 +1170,6 @@ class TargetExpression < AbstractExpression
     reftype = ScalarReference
     reftype = ArrayReference if shape == :array
     reftype = MatrixReference if shape == :matrix
-    reftype = Declaration if shape == :declaration
     
     @parsed_expressions.each do |parsed_expression|
       parsed_expression[-1] = reftype.new(parsed_expression[-1])

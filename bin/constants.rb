@@ -907,6 +907,76 @@ class VariableName < AbstractElement
   end
 end
 
+class Declaration < AbstractElement
+  attr_reader :subscripts
+
+  def initialize(variable_name, subscripts = [])
+    super()
+
+    raise(Exception, #BASICSyntaxError,
+          "'#{variable_name.class}:#{variable_name}' is not a variable name") if
+      variable_name.class.to_s != 'VariableName'
+
+    @variable_name = variable_name
+    @subscripts = normalize_subscripts(subscripts)
+    @variable = true
+    @operand = true
+    @precedence = 7
+  end
+
+  def dump
+    self.class.to_s + ':' + @variable_name.to_s
+  end
+
+  def name
+    @variable_name
+  end
+
+  def content_type
+    @variable_name.content_type
+  end
+
+  def to_s
+    if subscripts.empty?
+      @variable_name.to_s
+    else
+      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
+    end
+  end
+
+  # return a single value, a reference to this object
+  def evaluate(_, stack)
+    if previous_is_array(stack)
+      @subscripts = stack.pop
+      num_args = @subscripts.length
+
+      if num_args.zero?
+        raise(BASICRuntimeError,
+              'Variable expects subscripts, found empty parentheses')
+      end
+    end
+
+    self
+  end
+
+  private
+
+  def normalize_subscripts(subscripts)
+    raise(BASICSyntaxError, 'Invalid subscripts container') unless
+      subscripts.class.to_s == 'Array'
+
+    int_subscripts = []
+    subscripts.each do |subscript|
+      raise(BASICExpressionError, "Invalid subscript #{subscript}") unless
+        subscript.numeric_constant?
+
+      int_subscripts << subscript.truncate
+    end
+
+    int_subscripts
+  end
+end
+
 # Hold a variable (name with possible subscripts and value)
 class Variable < AbstractElement
   attr_reader :subscripts
@@ -1143,27 +1213,6 @@ class Reference < Variable
       end
 
       interpreter.check_subscripts(@variable_name, @subscripts)
-    end
-
-    self
-  end
-end
-
-class Declaration < Variable
-  def initialize(variable_value)
-    super(variable_value.name)
-  end
-
-  # return a single value, a reference to this object
-  def evaluate(_, stack)
-    if previous_is_array(stack)
-      @subscripts = stack.pop
-      num_args = @subscripts.length
-
-      if num_args.zero?
-        raise(BASICRuntimeError,
-              'Variable expects subscripts, found empty parentheses')
-      end
     end
 
     self
