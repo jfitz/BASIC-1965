@@ -1121,12 +1121,6 @@ class DeclarationExpression < AbstractExpression
     check_length
     check_all_lengths
     check_resolve_types
-
-    @target = true
-  end
-
-  def filehandle?
-    false
   end
 
   private
