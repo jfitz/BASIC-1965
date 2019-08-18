@@ -4,17 +4,17 @@ class ForNextControl
   attr_reader :loop_start_number
   attr_reader :end
 
-  def initialize(control, start, endv, step_value, loop_start_number)
+  def initialize(control, start, endv, step, loop_start_number)
     @control = control
     @start = start
     @end = endv
-    @step_value = step_value
+    @step = step
     @loop_start_number = loop_start_number
   end
 
   def bump_control(interpreter)
     current_value = interpreter.get_value(@control)
-    current_value += @step_value
+    current_value += @step
     interpreter.unlock_variable(@control)
     interpreter.set_value(@control, current_value)
     interpreter.lock_variable(@control)
@@ -23,9 +23,9 @@ class ForNextControl
   def front_terminated?
     zero = NumericConstant.new(0)
 
-    if @step_value > zero
+    if @step > zero
       @start > @end
-    elsif @step_value < zero
+    elsif @step < zero
       @start < @end
     else
       false
@@ -36,10 +36,10 @@ class ForNextControl
     zero = NumericConstant.new(0)
     current_value = interpreter.get_value(@control)
 
-    if @step_value > zero
-      current_value + @step_value > @end
-    elsif @step_value < zero
-      current_value + @step_value < @end
+    if @step > zero
+      current_value + @step > @end
+    elsif @step < zero
+      current_value + @step < @end
     else
       false
     end

@@ -704,7 +704,7 @@ class ForStatement < AbstractStatement
         @control = VariableName.new(tokens1[0])
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
-        @step_value = nil
+        @step = nil
         @numerics = @start.numerics + @end.numerics
         @strings = @start.strings + @end.strings
         control = XrefEntry.new(@control.to_s, 0, true)
@@ -718,11 +718,11 @@ class ForStatement < AbstractStatement
         @control = VariableName.new(tokens1[0])
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
-        @step_value = ValueScalarExpression.new(tokens_lists[4])
-        @numerics = @start.numerics + @end.numerics + @step_value.numerics
-        @strings = @start.strings + @end.strings + @step_value.strings
+        @step = ValueScalarExpression.new(tokens_lists[4])
+        @numerics = @start.numerics + @end.numerics + @step.numerics
+        @strings = @start.strings + @end.strings + @step.strings
         control = XrefEntry.new(@control.to_s, 0, true)
-        @variables = [control] + @start.variables + @end.variables + @step_value.variables
+        @variables = [control] + @start.variables + @end.variables + @step.variables
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -736,7 +736,7 @@ class ForStatement < AbstractStatement
     lines << 'control: ' + @control.dump
     lines << 'start:   ' + @start.dump.to_s
     lines << 'end:     ' + @end.dump.to_s
-    lines << 'step:    ' + @step_value.dump.to_s unless @step_value.nil?
+    lines << 'step:    ' + @step.dump.to_s unless @step.nil?
     lines
   end
 
@@ -744,7 +744,7 @@ class ForStatement < AbstractStatement
     from = @start.evaluate(interpreter)[0]
     to = @end.evaluate(interpreter)[0]
     step = NumericConstant.new(1)
-    step = @step_value.evaluate(interpreter)[0] unless @step_value.nil?
+    step = @step.evaluate(interpreter)[0] unless @step.nil?
 
     fornext_control = interpreter.assign_fornext(@control, from, to, step)
     interpreter.lock_variable(@control)
@@ -779,8 +779,8 @@ class ForStatement < AbstractStatement
   def print_more_trace_info(io, from, to, step, terminated)
     io.trace_output(" #{@start} = #{from}") unless @start.numeric_constant?
     io.trace_output(" #{@end} = #{to}") unless @end.numeric_constant?
-    io.trace_output(" #{@step_value} = #{step}") unless
-      @step_value.nil? || @step_value.numeric_constant?
+    io.trace_output(" #{@step} = #{step}") unless
+      @step.nil? || @step.numeric_constant?
     io.trace_output(" terminated:#{terminated}")
   end
 end
