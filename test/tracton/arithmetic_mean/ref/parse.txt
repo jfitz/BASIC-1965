@@ -3,11 +3,11 @@
 20 REM MEAN
  Remark:MEAN
 30 LET X = 0
- ScalarReference:X
+ Reference:X
  NumericConstant:0
  AssignmentOperator:=
 40 LET N = 0
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "ENTER SAMPLE";
@@ -15,21 +15,21 @@
  TextConstant:"ENTER SAMPLE"
  CarriageControl:;
 60 INPUT W
- ScalarReference:W
+ Reference:W
 70 LET N = N + 1
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 80 LET X = X + W
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  ScalarValue:W
  BinaryOperator:+
  AssignmentOperator:=
 90 LET A = X/N
- ScalarReference:A
+ Reference:A
  ScalarValue:X
  ScalarValue:N
  BinaryOperator:/

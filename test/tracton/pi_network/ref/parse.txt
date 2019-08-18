@@ -9,33 +9,33 @@
  TextConstant:"ENTER 1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
- ScalarReference:Z1
+ Reference:Z1
 60 PRINT "ENTER 2ND IMPEDANCE"
  ITEMS
  TextConstant:"ENTER 2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
- ScalarReference:Z2
+ Reference:Z2
 80 PRINT "ENTER DESIRED SYSTEM Q"
  ITEMS
  TextConstant:"ENTER DESIRED SYSTEM Q"
  CarriageControl:NL
 90 INPUT Q
- ScalarReference:Q
+ Reference:Q
 100 PRINT "ENTER OPERATING FREQUENCY"
  ITEMS
  TextConstant:"ENTER OPERATING FREQUENCY"
  CarriageControl:NL
 110 INPUT F
- ScalarReference:F
+ Reference:F
 120 LET A = Z1/Q
- ScalarReference:A
+ Reference:A
  ScalarValue:Z1
  ScalarValue:Q
  BinaryOperator:/
  AssignmentOperator:=
 130 LET C = ((Z2/Z1)*((Q^2) + 1)) - 1
- ScalarReference:C
+ Reference:C
  ScalarValue:Z2
  ScalarValue:Z1
  BinaryOperator:/
@@ -49,14 +49,14 @@
  BinaryOperator:-
  AssignmentOperator:=
 140 LET B = Z2/SQR(C)
- ScalarReference:B
+ Reference:B
  ScalarValue:Z2
  ScalarValue:C
  FunctionSqr
  BinaryOperator:/
  AssignmentOperator:=
 150 LET E = (Z2/(Q*B)) + 1
- ScalarReference:E
+ Reference:E
  ScalarValue:Z2
  ScalarValue:Q
  ScalarValue:B
@@ -66,7 +66,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 160 LET D = E*((Q*Z1)/((Q^2) + 1))
- ScalarReference:D
+ Reference:D
  ScalarValue:E
  ScalarValue:Q
  ScalarValue:Z1
@@ -80,11 +80,11 @@
  BinaryOperator:*
  AssignmentOperator:=
 170 LET P = 6.28319
- ScalarReference:P
+ Reference:P
  NumericConstant:6.28319
  AssignmentOperator:=
 180 LET C1 = 1/(P*F*A)
- ScalarReference:C1
+ Reference:C1
  NumericConstant:1
  ScalarValue:P
  ScalarValue:F
@@ -94,7 +94,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 190 LET C2 = 1/(P*F*B)
- ScalarReference:C2
+ Reference:C2
  NumericConstant:1
  ScalarValue:P
  ScalarValue:F
@@ -104,7 +104,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 200 LET L = D/(P*F)
- ScalarReference:L
+ Reference:L
  ScalarValue:D
  ScalarValue:P
  ScalarValue:F
@@ -141,7 +141,7 @@
  TextConstant:"TO CONTINUE TYPE 1, IF NOT 0"
  CarriageControl:NL
 270 INPUT X
- ScalarReference:X
+ Reference:X
 280 IF X = 1 THEN 300
  ScalarValue:X
  NumericConstant:1

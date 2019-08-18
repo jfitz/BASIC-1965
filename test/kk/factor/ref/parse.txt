@@ -3,7 +3,7 @@
  TextConstant:"NUMBER TO BE FACTORED:"
  CarriageControl:;
 110 INPUT N
- ScalarReference:N
+ Reference:N
 120 PRINT
  ITEMS
  CarriageControl:NL
@@ -16,12 +16,12 @@
  NumericConstant:2
  BinaryOperator:=
 150 LET Z = 0
- ScalarReference:Z
+ Reference:Z
  NumericConstant:0
  AssignmentOperator:=
 160
 170 LET F = 2
- ScalarReference:F
+ Reference:F
  NumericConstant:2
  AssignmentOperator:=
 180 GOSUB 300
@@ -80,7 +80,7 @@
  TextConstant:"     "
  CarriageControl:;
 360 LET Z = 1
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  AssignmentOperator:=
 370 PRINT F;
@@ -88,7 +88,7 @@
  ScalarValue:F
  CarriageControl:;
 380 LET N = N/F
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  ScalarValue:F
  BinaryOperator:/

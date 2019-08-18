@@ -2,15 +2,15 @@
  ScalarValue:X
  FunctionSin
 110 READ A,B,S
- ScalarReference:A
- ScalarReference:B
- ScalarReference:S
+ Reference:A
+ Reference:B
+ Reference:S
 120 READ C,D,N
- ScalarReference:C
- ScalarReference:D
- ScalarReference:N
+ Reference:C
+ Reference:D
+ Reference:N
 130 LET H = (D-C)/N
- ScalarReference:H
+ Reference:H
  ScalarValue:D
  ScalarValue:C
  BinaryOperator:-
@@ -73,12 +73,12 @@
  end:     ["ScalarValue:B"]
  step:    ["ScalarValue:S"]
 270 LET Y = FNF(X)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:X
  UserFunction
  AssignmentOperator:=
 280 LET Y1 = FNR((Y-C)/H)
- ScalarReference:Y1
+ Reference:Y1
  ScalarValue:Y
  ScalarValue:C
  BinaryOperator:-

@@ -1,7 +1,7 @@
 10 REM TEST FOR INPUT STATEMENT
  Remark:TEST FOR INPUT STATEMENT
 20 INPUT "LEADING SPACES:"; N1
- ScalarReference:N1
+ Reference:N1
 25 PRINT "THE NUMBER WAS"; N1
  ITEMS
  TextConstant:"THE NUMBER WAS"
@@ -9,7 +9,7 @@
  ScalarValue:N1
  CarriageControl:NL
 30 INPUT "TRAILING SPACES:"; N2
- ScalarReference:N2
+ Reference:N2
 35 PRINT "THE NUMBER WAS"; N2
  ITEMS
  TextConstant:"THE NUMBER WAS"
@@ -17,7 +17,7 @@
  ScalarValue:N2
  CarriageControl:NL
 40 INPUT "LEADING AND TRAILING SPACES:"; N3
- ScalarReference:N3
+ Reference:N3
 45 PRINT "THE NUMBERS WAS"; N3
  ITEMS
  TextConstant:"THE NUMBERS WAS"
@@ -25,9 +25,9 @@
  ScalarValue:N3
  CarriageControl:NL
 50 INPUT "LEADING, LEADING AND TRAILING, TRAILING"; N4, N5, N6
- ScalarReference:N4
- ScalarReference:N5
- ScalarReference:N6
+ Reference:N4
+ Reference:N5
+ Reference:N6
 55 PRINT "THE NUMBERS WERE"; N4; N5; N6
  ITEMS
  TextConstant:"THE NUMBERS WERE"

@@ -1,12 +1,12 @@
 10 READ X,N
- ScalarReference:X
- ScalarReference:N
+ Reference:X
+ Reference:N
 20 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 25 LET F = 1
- ScalarReference:F
+ Reference:F
  NumericConstant:1
  AssignmentOperator:=
 30 FOR I = 1 TO N
@@ -14,7 +14,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 40 LET K = 2*I-1
- ScalarReference:K
+ Reference:K
  NumericConstant:2
  ScalarValue:I
  BinaryOperator:*
@@ -22,7 +22,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 50 LET S = S + F*X^K/K
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:F
  ScalarValue:X
@@ -34,7 +34,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 60 LET F = -F
- ScalarReference:F
+ Reference:F
  ScalarValue:F
  UnaryOperator:-
  AssignmentOperator:=

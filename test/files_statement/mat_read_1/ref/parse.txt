@@ -5,11 +5,11 @@
 15 DIM A(3,4)
  NumericConstant:3
  NumericConstant:4
- CompoundDeclaration:A
+ Declaration:A
 20 FILES "input.txt"
  TextConstant:"input.txt"
 30 MAT READ #1;A
- MatrixReference:A
+ Reference:A
 40 MAT PRINT A
  ITEMS
  MatrixValue:A

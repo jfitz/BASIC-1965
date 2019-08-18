@@ -3,43 +3,43 @@
 20 REM THE LIMITS A AND B OF F(X)
  Remark:THE LIMITS A AND B OF F(X)
 30 LET C1 = .238619
- ScalarReference:C1
+ Reference:C1
  NumericConstant:0.238619
  AssignmentOperator:=
 40 LET C2 = C1
- ScalarReference:C2
+ Reference:C2
  ScalarValue:C1
  AssignmentOperator:=
 50 LET C3 = .661209
- ScalarReference:C3
+ Reference:C3
  NumericConstant:0.661209
  AssignmentOperator:=
 60 LET C4 = C3
- ScalarReference:C4
+ Reference:C4
  ScalarValue:C3
  AssignmentOperator:=
 70 LET C5 = .932470
- ScalarReference:C5
+ Reference:C5
  NumericConstant:0.93247
  AssignmentOperator:=
 80 LET C6 = C5
- ScalarReference:C6
+ Reference:C6
  ScalarValue:C5
  AssignmentOperator:=
 90 LET D1 = .467914
- ScalarReference:D1
+ Reference:D1
  NumericConstant:0.467914
  AssignmentOperator:=
 100 LET D2 = .360762
- ScalarReference:D2
+ Reference:D2
  NumericConstant:0.360762
  AssignmentOperator:=
 110 LET D3 = .171324
- ScalarReference:D3
+ Reference:D3
  NumericConstant:0.171324
  AssignmentOperator:=
 120 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 130 PRINT "ENTER ENDPOINTS A,B"
@@ -47,22 +47,22 @@
  TextConstant:"ENTER ENDPOINTS A,B"
  CarriageControl:NL
 140 INPUT A,B
- ScalarReference:A
- ScalarReference:B
+ Reference:A
+ Reference:B
 150 LET Y = B - A
- ScalarReference:Y
+ Reference:Y
  ScalarValue:B
  ScalarValue:A
  BinaryOperator:-
  AssignmentOperator:=
 160 LET Z = B + A
- ScalarReference:Z
+ Reference:Z
  ScalarValue:B
  ScalarValue:A
  BinaryOperator:+
  AssignmentOperator:=
 170 LET X = ((C1*Y) +Z)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:C1
  ScalarValue:Y
  BinaryOperator:*
@@ -74,19 +74,19 @@
 180 GOSUB 500
  LineNumber:500
 190 LET N = D1*Q
- ScalarReference:N
+ Reference:N
  ScalarValue:D1
  ScalarValue:Q
  BinaryOperator:*
  AssignmentOperator:=
 200 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 210 LET X = ((C2*Y) + Z)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:C2
  ScalarValue:Y
  BinaryOperator:*
@@ -98,19 +98,19 @@
 220 GOSUB 500
  LineNumber:500
 230 LET N = D1*Q
- ScalarReference:N
+ Reference:N
  ScalarValue:D1
  ScalarValue:Q
  BinaryOperator:*
  AssignmentOperator:=
 240 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 250 LET X = ((C3*Y) + Z)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:C3
  ScalarValue:Y
  BinaryOperator:*
@@ -122,19 +122,19 @@
 260 GOSUB 500
  LineNumber:500
 270 LET N = D2*Q
- ScalarReference:N
+ Reference:N
  ScalarValue:D2
  ScalarValue:Q
  BinaryOperator:*
  AssignmentOperator:=
 280 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 290 LET X = ((C4*Y) + Z)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:C4
  ScalarValue:Y
  BinaryOperator:*
@@ -146,19 +146,19 @@
 300 GOSUB 500
  LineNumber:500
 310 LET N = D2*Q
- ScalarReference:N
+ Reference:N
  ScalarValue:D2
  ScalarValue:Q
  BinaryOperator:*
  AssignmentOperator:=
 320 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 330 LET X = ((C5*Y) + Z)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:C5
  ScalarValue:Y
  BinaryOperator:*
@@ -170,19 +170,19 @@
 340 GOSUB 500
  LineNumber:500
 350 LET N = D3*Q
- ScalarReference:N
+ Reference:N
  ScalarValue:D3
  ScalarValue:Q
  BinaryOperator:*
  AssignmentOperator:=
 360 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 370 LET X = ((C6*Y) + Z)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:C6
  ScalarValue:Y
  BinaryOperator:*
@@ -194,19 +194,19 @@
 380 GOSUB 500
  LineNumber:500
 390 LET N = D3*Y
- ScalarReference:N
+ Reference:N
  ScalarValue:D3
  ScalarValue:Y
  BinaryOperator:*
  AssignmentOperator:=
 400 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 410 LET G = (Y/2)*J
- ScalarReference:G
+ Reference:G
  ScalarValue:Y
  NumericConstant:2
  BinaryOperator:/
@@ -227,7 +227,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 450 INPUT L
- ScalarReference:L
+ Reference:L
 460 IF L = 1 THEN 480
  ScalarValue:L
  NumericConstant:1
@@ -240,7 +240,7 @@
 490 GOTO 120
  LineNumber:120
 500 LET Q = 13*X^2 - 6*X^2 + SIN(X) + 1/X
- ScalarReference:Q
+ Reference:Q
  NumericConstant:13
  ScalarValue:X
  NumericConstant:2

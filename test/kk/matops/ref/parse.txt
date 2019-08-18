@@ -1,13 +1,13 @@
 100 MAT READ A(2,3), B(2,3)
  NumericConstant:2
  NumericConstant:3
- MatrixReference:A
+ Reference:A
  NumericConstant:2
  NumericConstant:3
- MatrixReference:B
+ Reference:B
 110
 130 MAT S = A+B
- MatrixReference:S
+ Reference:S
  MatrixValue:A
  MatrixValue:B
  BinaryOperator:+
@@ -22,7 +22,7 @@
  CarriageControl:,
 160
 170 MAT D = A-B
- MatrixReference:D
+ Reference:D
  MatrixValue:A
  MatrixValue:B
  BinaryOperator:-
@@ -37,7 +37,7 @@
  CarriageControl:,
 200
 210 MAT K = (1/4)*A
- MatrixReference:K
+ Reference:K
  NumericConstant:1
  NumericConstant:4
  BinaryOperator:/

@@ -1,20 +1,20 @@
 10 READ N,B,P
- ScalarReference:N
- ScalarReference:B
- ScalarReference:P
+ Reference:N
+ Reference:B
+ Reference:P
 20 FOR I = 2 TO N
  control: VariableName:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:N"]
 30    READ A,M
- ScalarReference:A
- ScalarReference:M
+ Reference:A
+ Reference:M
 40       FOR K = 0 TO M-1
  control: VariableName:K
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:M", "NumericConstant:1", "BinaryOperator:-"]
 50       LET X = B + K*P
- ScalarReference:X
+ Reference:X
  ScalarValue:B
  ScalarValue:K
  ScalarValue:P
@@ -41,13 +41,13 @@
 90    STOP
  
 100 LET P = P*M
- ScalarReference:P
+ Reference:P
  ScalarValue:P
  ScalarValue:M
  BinaryOperator:*
  AssignmentOperator:=
 110 LET B = X
- ScalarReference:B
+ Reference:B
  ScalarValue:X
  AssignmentOperator:=
 120 NEXT I

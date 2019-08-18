@@ -17,7 +17,7 @@
 90 REM STATEMENT AND N SET AHEAD OF TIME
  Remark:STATEMENT AND N SET AHEAD OF TIME
 100 LET I = N - 1
- ScalarReference:I
+ Reference:I
  ScalarValue:N
  NumericConstant:1
  BinaryOperator:-
@@ -27,7 +27,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I"]
 120 LET K = J + 1
- ScalarReference:K
+ Reference:K
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
@@ -46,19 +46,19 @@
 150 REM SAVE FIRST VALUE
  Remark:SAVE FIRST VALUE
 160 LET T = Z(L)
- ScalarReference:T
+ Reference:T
  ScalarValue:L
  ScalarValue:Z
  AssignmentOperator:=
 170 LET Z(L) =Z(J)
  ScalarValue:L
- ScalarReference:Z
+ Reference:Z
  ScalarValue:J
  ScalarValue:Z
  AssignmentOperator:=
 180 LET Z(J) = T
  ScalarValue:J
- ScalarReference:Z
+ Reference:Z
  ScalarValue:T
  AssignmentOperator:=
 190 REM IF Z IS THE KEY FOR SORTING MULTIPLE

@@ -7,15 +7,15 @@
  TextConstant:"ORIGINAL VALUE = "
  CarriageControl:;
 40 INPUT A
- ScalarReference:A
+ Reference:A
 50 PRINT "LIFETIME IN YEARS = ";
  ITEMS
  TextConstant:"LIFETIME IN YEARS = "
  CarriageControl:;
 60 INPUT B
- ScalarReference:B
+ Reference:B
 70 LET C = A/B
- ScalarReference:C
+ Reference:C
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:/
@@ -36,17 +36,17 @@
  TextConstant:"VALUE"
  CarriageControl:NL
 110 LET X = 0
- ScalarReference:X
+ Reference:X
  NumericConstant:0
  AssignmentOperator:=
 120 LET X = X + 1
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 130 LET A = A - C
- ScalarReference:A
+ Reference:A
  ScalarValue:A
  ScalarValue:C
  BinaryOperator:-
@@ -58,7 +58,7 @@
 150 GOTO 170
  LineNumber:170
 160 LET A = 0
- ScalarReference:A
+ Reference:A
  NumericConstant:0
  AssignmentOperator:=
 170 PRINT X,A
@@ -80,7 +80,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
- ScalarReference:L
+ Reference:L
 220 IF L = 1 THEN 240
  ScalarValue:L
  NumericConstant:1

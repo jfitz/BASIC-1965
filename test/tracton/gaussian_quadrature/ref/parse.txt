@@ -3,46 +3,46 @@
 20 REM AND INFINITY BY GAUSSIAN QUADRATURE
  Remark:AND INFINITY BY GAUSSIAN QUADRATURE
 30 LET C1 = .238619
- ScalarReference:C1
+ Reference:C1
  NumericConstant:0.238619
  AssignmentOperator:=
 40 LET C2 = - C1
- ScalarReference:C2
+ Reference:C2
  ScalarValue:C1
  UnaryOperator:-
  AssignmentOperator:=
 50 LET C3 = .661209
- ScalarReference:C3
+ Reference:C3
  NumericConstant:0.661209
  AssignmentOperator:=
 60 LET C4 = - C3
- ScalarReference:C4
+ Reference:C4
  ScalarValue:C3
  UnaryOperator:-
  AssignmentOperator:=
 70 LET C5 = .932470
- ScalarReference:C5
+ Reference:C5
  NumericConstant:0.93247
  AssignmentOperator:=
 80 LET C6 = - C5
- ScalarReference:C6
+ Reference:C6
  ScalarValue:C5
  UnaryOperator:-
  AssignmentOperator:=
 90 LET D1 = .467914
- ScalarReference:D1
+ Reference:D1
  NumericConstant:0.467914
  AssignmentOperator:=
 100 LET D2 = .360762
- ScalarReference:D2
+ Reference:D2
  NumericConstant:0.360762
  AssignmentOperator:=
 110 LET D3 = .171324
- ScalarReference:D3
+ Reference:D3
  NumericConstant:0.171324
  AssignmentOperator:=
 120 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 130 PRINT "ENDPOINT A = ";
@@ -50,9 +50,9 @@
  TextConstant:"ENDPOINT A = "
  CarriageControl:;
 140 INPUT A
- ScalarReference:A
+ Reference:A
 150 LET X = (2/(1 + C1)) + (A - 1)
- ScalarReference:X
+ Reference:X
  NumericConstant:2
  NumericConstant:1
  ScalarValue:C1
@@ -66,7 +66,7 @@
 160 GOSUB 470
  LineNumber:470
 170 LET N = ((4*D1)/(1 + C1)^2)*Q
- ScalarReference:N
+ Reference:N
  NumericConstant:4
  ScalarValue:D1
  BinaryOperator:*
@@ -80,13 +80,13 @@
  BinaryOperator:*
  AssignmentOperator:=
 180 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 190 LET X = (2/(1 + C2)) + (A - 1)
- ScalarReference:X
+ Reference:X
  NumericConstant:2
  NumericConstant:1
  ScalarValue:C2
@@ -100,7 +100,7 @@
 200 GOSUB 470
  LineNumber:470
 210 LET N = ((4*D1)/(1 + C2)^2)*Q
- ScalarReference:N
+ Reference:N
  NumericConstant:4
  ScalarValue:D1
  BinaryOperator:*
@@ -114,13 +114,13 @@
  BinaryOperator:*
  AssignmentOperator:=
 220 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 230 LET X = (2/(1 + C3)) + (A - 1)
- ScalarReference:X
+ Reference:X
  NumericConstant:2
  NumericConstant:1
  ScalarValue:C3
@@ -134,7 +134,7 @@
 240 GOSUB 470
  LineNumber:470
 250 LET N = ((4*D2)/(1 + C3)^2)*Q
- ScalarReference:N
+ Reference:N
  NumericConstant:4
  ScalarValue:D2
  BinaryOperator:*
@@ -148,13 +148,13 @@
  BinaryOperator:*
  AssignmentOperator:=
 260 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 270 LET X = (2/(1 + C4)) + (A - 1)
- ScalarReference:X
+ Reference:X
  NumericConstant:2
  NumericConstant:1
  ScalarValue:C4
@@ -168,7 +168,7 @@
 280 GOSUB 470
  LineNumber:470
 290 LET N = ((4*D2)/(1 + C4)^2)*Q
- ScalarReference:N
+ Reference:N
  NumericConstant:4
  ScalarValue:D2
  BinaryOperator:*
@@ -182,13 +182,13 @@
  BinaryOperator:*
  AssignmentOperator:=
 300 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 310 LET X = (2/(1 + C5)) + (A - 1)
- ScalarReference:X
+ Reference:X
  NumericConstant:2
  NumericConstant:1
  ScalarValue:C5
@@ -202,7 +202,7 @@
 320 GOSUB 470
  LineNumber:470
 330 LET N = ((4*D3)/(1 + C5)^2)*Q
- ScalarReference:N
+ Reference:N
  NumericConstant:4
  ScalarValue:D3
  BinaryOperator:*
@@ -216,13 +216,13 @@
  BinaryOperator:*
  AssignmentOperator:=
 340 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 350 LET X = (2/(1 + C6)) + (A - 1)
- ScalarReference:X
+ Reference:X
  NumericConstant:2
  NumericConstant:1
  ScalarValue:C6
@@ -236,7 +236,7 @@
 360 GOSUB 470
  LineNumber:470
 370 LET N = ((4*D3)/(1 + C6)^2)*Q
- ScalarReference:N
+ Reference:N
  NumericConstant:4
  ScalarValue:D3
  BinaryOperator:*
@@ -250,13 +250,13 @@
  BinaryOperator:*
  AssignmentOperator:=
 380 LET J = J + N
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:+
  AssignmentOperator:=
 390 LET G = J/2
- ScalarReference:G
+ Reference:G
  ScalarValue:J
  NumericConstant:2
  BinaryOperator:/
@@ -272,7 +272,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 420 INPUT L
- ScalarReference:L
+ Reference:L
 430 IF L = 1 THEN 450
  ScalarValue:L
  NumericConstant:1
@@ -285,7 +285,7 @@
 460 GOTO 120
  LineNumber:120
 470 LET Q = 2*X + 5
- ScalarReference:Q
+ Reference:Q
  NumericConstant:2
  ScalarValue:X
  BinaryOperator:*

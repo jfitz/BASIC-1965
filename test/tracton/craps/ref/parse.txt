@@ -40,29 +40,29 @@
  TextConstant:"YOU LOSE AUTOMATICALLY"
  CarriageControl:NL
 140 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 150 GOSUB 460
  LineNumber:460
 160 LET D1 = N
- ScalarReference:D1
+ Reference:D1
  ScalarValue:N
  AssignmentOperator:=
 170 GOSUB 460
  LineNumber:460
 180 LET D2 = N
- ScalarReference:D2
+ Reference:D2
  ScalarValue:N
  AssignmentOperator:=
 190 LET D3 = D1 + D2
- ScalarReference:D3
+ Reference:D3
  ScalarValue:D1
  ScalarValue:D2
  BinaryOperator:+
  AssignmentOperator:=
 200 LET J = J + 1
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
@@ -108,7 +108,7 @@
  NumericConstant:11
  BinaryOperator:=
 310 LET D4 = D3
- ScalarReference:D4
+ Reference:D4
  ScalarValue:D3
  AssignmentOperator:=
 315 GOTO 240
@@ -170,7 +170,7 @@
 450 GOTO 350
  LineNumber:350
 460 LET N = 1 + INT(6*RND)
- ScalarReference:N
+ Reference:N
  NumericConstant:1
  NumericConstant:6
  FunctionRnd

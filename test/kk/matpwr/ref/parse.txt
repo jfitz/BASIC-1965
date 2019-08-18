@@ -1,9 +1,9 @@
 10 READ N
- ScalarReference:N
+ Reference:N
 20 MAT READ M(N,N)
  ScalarValue:N
  ScalarValue:N
- MatrixReference:M
+ Reference:M
 30 FOR I = 1 TO 4
  control: VariableName:I
  start:   ["NumericConstant:1"]
@@ -17,7 +17,7 @@
  BinaryOperator:^
  CarriageControl:NL
 50 MAT A = M*M
- MatrixReference:A
+ Reference:A
  MatrixValue:M
  MatrixValue:M
  BinaryOperator:*
@@ -27,7 +27,7 @@
  MatrixValue:A
  CarriageControl:,
 70 MAT M = A
- MatrixReference:M
+ Reference:M
  MatrixValue:A
  AssignmentOperator:=
 80 NEXT I

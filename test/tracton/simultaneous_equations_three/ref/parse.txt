@@ -15,30 +15,30 @@
  TextConstant:"ENTER THE 1ST EQUATION (A,B,C,D)"
  CarriageControl:NL
 60 INPUT A1,B1,C1,D1
- ScalarReference:A1
- ScalarReference:B1
- ScalarReference:C1
- ScalarReference:D1
+ Reference:A1
+ Reference:B1
+ Reference:C1
+ Reference:D1
 70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
  ITEMS
  TextConstant:"ENTER THE 2ND EQUATION (A,B,C,D)"
  CarriageControl:NL
 80 INPUT A2,B2,C2,D2
- ScalarReference:A2
- ScalarReference:B2
- ScalarReference:C2
- ScalarReference:D2
+ Reference:A2
+ Reference:B2
+ Reference:C2
+ Reference:D2
 90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
  ITEMS
  TextConstant:"ENTER THE 3RD EQUATION (A,B,C,D)"
  CarriageControl:NL
 100 INPUT A3,B3,C3,D3
- ScalarReference:A3
- ScalarReference:B3
- ScalarReference:C3
- ScalarReference:D3
+ Reference:A3
+ Reference:B3
+ Reference:C3
+ Reference:D3
 110 LET E1 = ((B1*A2)/A1) - B2
- ScalarReference:E1
+ Reference:E1
  ScalarValue:B1
  ScalarValue:A2
  BinaryOperator:*
@@ -48,7 +48,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 120 LET E2 = ((C1*A2)/A1) - C2
- ScalarReference:E2
+ Reference:E2
  ScalarValue:C1
  ScalarValue:A2
  BinaryOperator:*
@@ -58,7 +58,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 130 LET E3 = ((B1*A3)/A1) - B3
- ScalarReference:E3
+ Reference:E3
  ScalarValue:B1
  ScalarValue:A3
  BinaryOperator:*
@@ -68,7 +68,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 140 LET E4 = ((C1*A3)/A1) - C3
- ScalarReference:E4
+ Reference:E4
  ScalarValue:C1
  ScalarValue:A3
  BinaryOperator:*
@@ -78,7 +78,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 150 LET E5 = ((E1*E4) - (E2*E3))
- ScalarReference:E5
+ Reference:E5
  ScalarValue:E1
  ScalarValue:E4
  BinaryOperator:*
@@ -92,7 +92,7 @@
  NumericConstant:0
  BinaryOperator:=
 170 LET E6 = ((D1*A2)/A1) - D2
- ScalarReference:E6
+ Reference:E6
  ScalarValue:D1
  ScalarValue:A2
  BinaryOperator:*
@@ -102,7 +102,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 180 LET E7 = ((D1*A3)/A1) - D3
- ScalarReference:E7
+ Reference:E7
  ScalarValue:D1
  ScalarValue:A3
  BinaryOperator:*
@@ -112,7 +112,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 190 LET Y = ((E6*E4) - (E2*E7))/E5
- ScalarReference:Y
+ Reference:Y
  ScalarValue:E6
  ScalarValue:E4
  BinaryOperator:*
@@ -124,7 +124,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 200 LET Z = ((E1*E7) - (E6*E3))/E5
- ScalarReference:Z
+ Reference:Z
  ScalarValue:E1
  ScalarValue:E7
  BinaryOperator:*
@@ -136,7 +136,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 210 LET X = (D1/A1) - (B1/A1*Y) - ((C1/A1)*Z)
- ScalarReference:X
+ Reference:X
  ScalarValue:D1
  ScalarValue:A1
  BinaryOperator:/
@@ -185,7 +185,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT L
- ScalarReference:L
+ Reference:L
 290 IF L = 1 THEN 310
  ScalarValue:L
  NumericConstant:1

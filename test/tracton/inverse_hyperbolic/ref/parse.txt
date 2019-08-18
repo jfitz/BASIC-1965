@@ -29,7 +29,7 @@
  TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- ScalarReference:C
+ Reference:C
 100 ON C GOTO 110,150,190,230,280,330
  Unknown statement 'ON C GOTO 110,150,190,230,280,330'
  Unimplemented
@@ -86,7 +86,7 @@
 240 GOSUB 470
  LineNumber:470
 250 LET X = A
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  AssignmentOperator:=
 260 PRINT "CSCH - 1";X;" = ";Z
@@ -106,7 +106,7 @@
 290 GOSUB 490
  LineNumber:490
 300 LET X = A
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  AssignmentOperator:=
 310 PRINT "SECH - 1";X;" = ";Z
@@ -126,7 +126,7 @@
 340 GOSUB 510
  LineNumber:510
 350 LET X = A
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  AssignmentOperator:=
 360 PRINT "COTH - 1";X;" = ";Z
@@ -147,7 +147,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 390 INPUT L
- ScalarReference:L
+ Reference:L
 400 IF L = 1 THEN 420
  ScalarValue:L
  NumericConstant:1
@@ -164,11 +164,11 @@
  TextConstant:"X = "
  CarriageControl:;
 450 INPUT X
- ScalarReference:X
+ Reference:X
 460 RETURN
  
 470 LET Z = LOG(X + SQR((X^2) + 1))
- ScalarReference:Z
+ Reference:Z
  ScalarValue:X
  ScalarValue:X
  NumericConstant:2
@@ -182,7 +182,7 @@
 480 RETURN
  
 490 LET Z = LOG(X + SQR((X^2) - 1))
- ScalarReference:Z
+ Reference:Z
  ScalarValue:X
  ScalarValue:X
  NumericConstant:2
@@ -204,13 +204,13 @@
  TextConstant:"X = "
  CarriageControl:;
 540 INPUT X
- ScalarReference:X
+ Reference:X
 550 LET A = X
- ScalarReference:A
+ Reference:A
  ScalarValue:X
  AssignmentOperator:=
 560 LET X = 1/X
- ScalarReference:X
+ Reference:X
  NumericConstant:1
  ScalarValue:X
  BinaryOperator:/

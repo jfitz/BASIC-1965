@@ -29,7 +29,7 @@
  TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- ScalarReference:C
+ Reference:C
 100 ON C GOTO 110,160,210,270,320,370
  Unknown statement 'ON C GOTO 110,160,210,270,320,370'
  Unimplemented
@@ -38,7 +38,7 @@
 120 GOSUB 520
  LineNumber:520
 130 LET Z = Y/2
- ScalarReference:Z
+ Reference:Z
  ScalarValue:Y
  NumericConstant:2
  BinaryOperator:/
@@ -60,7 +60,7 @@
 170 GOSUB 540
  LineNumber:540
 180 LET Z = B/2
- ScalarReference:Z
+ Reference:Z
  ScalarValue:B
  NumericConstant:2
  BinaryOperator:/
@@ -84,7 +84,7 @@
 230 GOSUB 540
  LineNumber:540
 240 LET Z = Y/B
- ScalarReference:Z
+ Reference:Z
  ScalarValue:Y
  ScalarValue:B
  BinaryOperator:/
@@ -106,7 +106,7 @@
 280 GOSUB 520
  LineNumber:520
 290 LET Z = 1/(Y/2)
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  ScalarValue:Y
  NumericConstant:2
@@ -130,7 +130,7 @@
 330 GOSUB 540
  LineNumber:540
 340 LET Z = 1/(B/2)
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  ScalarValue:B
  NumericConstant:2
@@ -156,7 +156,7 @@
 390 GOSUB 540
  LineNumber:540
 400 LET Z = 1/(Y/B)
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  ScalarValue:Y
  ScalarValue:B
@@ -181,7 +181,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 440 INPUT L
- ScalarReference:L
+ Reference:L
 450 IF L = 1 THEN 470
  ScalarValue:L
  NumericConstant:1
@@ -198,11 +198,11 @@
  TextConstant:"X = "
  CarriageControl:NL
 500 INPUT X
- ScalarReference:X
+ Reference:X
 510 RETURN
  
 520 LET Y = EXP(X) - EXP(-X)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:X
  FunctionExp
  ScalarValue:X
@@ -213,7 +213,7 @@
 530 RETURN
  
 540 LET B = EXP(X) + EXP(-X)
- ScalarReference:B
+ Reference:B
  ScalarValue:X
  FunctionExp
  ScalarValue:X

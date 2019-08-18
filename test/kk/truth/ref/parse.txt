@@ -27,25 +27,25 @@
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 50             LET X = P
- ScalarReference:X
+ Reference:X
  ScalarValue:P
  AssignmentOperator:=
 60             GOSUB 200
  LineNumber:200
 70             LET X = Q
- ScalarReference:X
+ Reference:X
  ScalarValue:Q
  AssignmentOperator:=
 80             GOSUB 200
  LineNumber:200
 90             LET X = R
- ScalarReference:X
+ Reference:X
  ScalarValue:R
  AssignmentOperator:=
 95             GOSUB 200
  LineNumber:200
 100            LET X = P*SGN(Q+R)
- ScalarReference:X
+ Reference:X
  ScalarValue:P
  ScalarValue:Q
  ScalarValue:R

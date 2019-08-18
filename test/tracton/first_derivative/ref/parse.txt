@@ -7,13 +7,13 @@
  TextConstant:"VALUE OF X = "
  CarriageControl:;
 40 INPUT X
- ScalarReference:X
+ Reference:X
 50 LET Y = X
- ScalarReference:Y
+ Reference:Y
  ScalarValue:X
  AssignmentOperator:=
 60 LET Z = (X*(1E-04))/2
- ScalarReference:Z
+ Reference:Z
  ScalarValue:X
  NumericConstant:0.0001
  BinaryOperator:*
@@ -21,49 +21,49 @@
  BinaryOperator:/
  AssignmentOperator:=
 70 LET W = X + Z
- ScalarReference:W
+ Reference:W
  ScalarValue:X
  ScalarValue:Z
  BinaryOperator:+
  AssignmentOperator:=
 80 LET V = X - Z
- ScalarReference:V
+ Reference:V
  ScalarValue:X
  ScalarValue:Z
  BinaryOperator:-
  AssignmentOperator:=
 90 LET X = W
- ScalarReference:X
+ Reference:X
  ScalarValue:W
  AssignmentOperator:=
 100 GOSUB 280
  LineNumber:280
 110 LET A = P
- ScalarReference:A
+ Reference:A
  ScalarValue:P
  AssignmentOperator:=
 120 LET X = V
- ScalarReference:X
+ Reference:X
  ScalarValue:V
  AssignmentOperator:=
 130 GOSUB 280
  LineNumber:280
 140 LET B = P
- ScalarReference:B
+ Reference:B
  ScalarValue:P
  AssignmentOperator:=
 150 LET X = Y
- ScalarReference:X
+ Reference:X
  ScalarValue:Y
  AssignmentOperator:=
 160 GOSUB 280
  LineNumber:280
 170 LET C = P
- ScalarReference:C
+ Reference:C
  ScalarValue:P
  AssignmentOperator:=
 180 LET F = (A - B)/(2*Z)
- ScalarReference:F
+ Reference:F
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:-
@@ -96,7 +96,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- ScalarReference:L
+ Reference:L
 240 IF L = 1 THEN 260
  ScalarValue:L
  NumericConstant:1
@@ -109,7 +109,7 @@
 270 GOTO 40
  LineNumber:40
 280 LET P = X^2
- ScalarReference:P
+ Reference:P
  ScalarValue:X
  NumericConstant:2
  BinaryOperator:^

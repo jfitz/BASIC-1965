@@ -3,19 +3,19 @@
 20 REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
  Remark:FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
 30 LET A = 0
- ScalarReference:A
+ Reference:A
  NumericConstant:0
  AssignmentOperator:=
 40 LET B = 0
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 50 LET C = 0
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 60 LET D = 0
- ScalarReference:D
+ Reference:D
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "NUMBER OF SAMPLES = "
@@ -23,7 +23,7 @@
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:NL
 80 INPUT N
- ScalarReference:N
+ Reference:N
 90 FOR I = 1 TO N
  control: VariableName:I
  start:   ["NumericConstant:1"]
@@ -33,15 +33,15 @@
  TextConstant:"SAMPLE = "
  CarriageControl:NL
 110 INPUT X
- ScalarReference:X
+ Reference:X
 120 LET A = A + X
- ScalarReference:A
+ Reference:A
  ScalarValue:A
  ScalarValue:X
  BinaryOperator:+
  AssignmentOperator:=
 130 LET B = B + (X^2)
- ScalarReference:B
+ Reference:B
  ScalarValue:B
  ScalarValue:X
  NumericConstant:2
@@ -49,7 +49,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 140 LET C = C + (X^3)
- ScalarReference:C
+ Reference:C
  ScalarValue:C
  ScalarValue:X
  NumericConstant:3
@@ -57,7 +57,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 150 LET D = D + (X^4)
- ScalarReference:D
+ Reference:D
  ScalarValue:D
  ScalarValue:X
  NumericConstant:4
@@ -67,13 +67,13 @@
 160 NEXT I
  VariableName:I
 170 LET J = A/N
- ScalarReference:J
+ Reference:J
  ScalarValue:A
  ScalarValue:N
  BinaryOperator:/
  AssignmentOperator:=
 180 LET E = (B/N) - (J^2)
- ScalarReference:E
+ Reference:E
  ScalarValue:B
  ScalarValue:N
  BinaryOperator:/
@@ -83,7 +83,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 190 LET F = (C/N) - ((3*J*B)/N) + (2*(J^3))
- ScalarReference:F
+ Reference:F
  ScalarValue:C
  ScalarValue:N
  BinaryOperator:/
@@ -103,7 +103,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 200 LET G = (D/N) - ((4*J*C)/N)
- ScalarReference:G
+ Reference:G
  ScalarValue:D
  ScalarValue:N
  BinaryOperator:/
@@ -117,7 +117,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 210 LET H = G + ((6*(J^2)*B)/N) - (3*(J^4))
- ScalarReference:H
+ Reference:H
  ScalarValue:G
  NumericConstant:6
  ScalarValue:J
@@ -137,7 +137,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 220 LET K = F/(E^(3/2))
- ScalarReference:K
+ Reference:K
  ScalarValue:F
  ScalarValue:E
  NumericConstant:3
@@ -147,7 +147,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 230 LET L = H/(E^2)
- ScalarReference:L
+ Reference:L
  ScalarValue:H
  ScalarValue:E
  NumericConstant:2
@@ -201,7 +201,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 320 INPUT Z
- ScalarReference:Z
+ Reference:Z
 330 IF Z = 1 THEN 350
  ScalarValue:Z
  NumericConstant:1

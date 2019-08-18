@@ -13,39 +13,39 @@
  TextConstant:"NUMBER OF DESTROYERS (Y) = "
  CarriageControl:;
 70 INPUT Y
- ScalarReference:Y
+ Reference:Y
 80 PRINT "NUMBER OF CREATORS (X) = ";
  ITEMS
  TextConstant:"NUMBER OF CREATORS (X) = "
  CarriageControl:;
 90 INPUT X
- ScalarReference:X
+ Reference:X
 100 PRINT "PROPAGATION RATE OF X = ";
  ITEMS
  TextConstant:"PROPAGATION RATE OF X = "
  CarriageControl:;
 110 INPUT Z
- ScalarReference:Z
+ Reference:Z
 120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
  ITEMS
  TextConstant:"CHANCE OF METTING BETWEEN X AND Y = "
  CarriageControl:;
 130 INPUT A
- ScalarReference:A
+ Reference:A
 140 PRINT "TIME BETWEEN SAMPLES = ";
  ITEMS
  TextConstant:"TIME BETWEEN SAMPLES = "
  CarriageControl:;
 150 INPUT H
- ScalarReference:H
+ Reference:H
 160 PRINT "MAXIMUM GENERATIONS = ";
  ITEMS
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 170 INPUT K
- ScalarReference:K
+ Reference:K
 180 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 190 PRINT
@@ -69,13 +69,13 @@
  ScalarValue:K
  BinaryOperator:=
 240 LET J = J + 1
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 250 LET B = A*X*Y
- ScalarReference:B
+ Reference:B
  ScalarValue:A
  ScalarValue:X
  BinaryOperator:*
@@ -83,7 +83,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 260 LET C = ((Y - B)*H) + Y
- ScalarReference:C
+ Reference:C
  ScalarValue:Y
  ScalarValue:B
  BinaryOperator:-
@@ -97,11 +97,11 @@
  NumericConstant:0
  BinaryOperator:<
 280 LET Y = C
- ScalarReference:Y
+ Reference:Y
  ScalarValue:C
  AssignmentOperator:=
 290 LET D = (((X*Z) - B)*H) + X
- ScalarReference:D
+ Reference:D
  ScalarValue:X
  ScalarValue:Z
  BinaryOperator:*
@@ -117,16 +117,16 @@
  NumericConstant:0
  BinaryOperator:<
 310 LET X = D
- ScalarReference:X
+ Reference:X
  ScalarValue:D
  AssignmentOperator:=
 320 LET M = INT(X)
- ScalarReference:M
+ Reference:M
  ScalarValue:X
  FunctionInt
  AssignmentOperator:=
 330 LET N = INT(Y)
- ScalarReference:N
+ Reference:N
  ScalarValue:Y
  FunctionInt
  AssignmentOperator:=
@@ -149,13 +149,13 @@
 380 GOTO 230
  LineNumber:230
 390 LET Y = 0
- ScalarReference:Y
+ Reference:Y
  NumericConstant:0
  AssignmentOperator:=
 400 GOTO 290
  LineNumber:290
 410 LET X = 0
- ScalarReference:X
+ Reference:X
  NumericConstant:0
  AssignmentOperator:=
 420 GOTO 320
@@ -187,7 +187,7 @@
  TextConstant:"FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
  CarriageControl:NL
 500 INPUT W
- ScalarReference:W
+ Reference:W
 510 IF W = 1 THEN 530
  ScalarValue:W
  NumericConstant:1
@@ -199,7 +199,7 @@
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 540 INPUT K
- ScalarReference:K
+ Reference:K
 550 GOTO 230
  LineNumber:230
 560 PRINT
@@ -210,7 +210,7 @@
  TextConstant:"FOR NEXT PATTERN TYPE 1, 0 TO STOP"
  CarriageControl:NL
 580 INPUT W
- ScalarReference:W
+ Reference:W
 590 IF W = 1 THEN 610
  ScalarValue:W
  NumericConstant:1

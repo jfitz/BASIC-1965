@@ -1,12 +1,12 @@
 110 READ M,N
- ScalarReference:M
- ScalarReference:N
+ Reference:M
+ Reference:N
 120 FOR I = 1 TO M
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
 130    LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 140    FOR J = 1 TO N
@@ -16,9 +16,9 @@
 150       READ O(I,J)
  ScalarValue:I
  ScalarValue:J
- ScalarReference:O
+ Reference:O
 160       LET S = S + O(I,J)
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:I
  ScalarValue:J
@@ -29,14 +29,14 @@
  VariableName:J
 180    LET R(I) = S
  ScalarValue:I
- ScalarReference:R
+ Reference:R
  ScalarValue:S
  AssignmentOperator:=
 190 NEXT I
  VariableName:I
 200
 210 LET S1 = 0
- ScalarReference:S1
+ Reference:S1
  NumericConstant:0
  AssignmentOperator:=
 220 FOR J = 1 TO N
@@ -44,7 +44,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 230    LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 240    FOR I = 1 TO M
@@ -52,7 +52,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
 250       LET S = S + O(I,J)
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:I
  ScalarValue:J
@@ -63,11 +63,11 @@
  VariableName:I
 270    LET C(J) = S
  ScalarValue:J
- ScalarReference:C
+ Reference:C
  ScalarValue:S
  AssignmentOperator:=
 280    LET S1 = S1 + S
- ScalarReference:S1
+ Reference:S1
  ScalarValue:S1
  ScalarValue:S
  BinaryOperator:+
@@ -79,7 +79,7 @@
  ITEMS
  CarriageControl:NL
 320 LET C = 0
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I = 1 TO M
@@ -91,7 +91,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 350       LET E = R(I)*C(J)/S1
- ScalarReference:E
+ Reference:E
  ScalarValue:I
  ScalarValue:R
  ScalarValue:J
@@ -101,7 +101,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 360       LET C = C + (O(I,J) - E)^2/E
- ScalarReference:C
+ Reference:C
  ScalarValue:C
  ScalarValue:I
  ScalarValue:J

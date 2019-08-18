@@ -1,15 +1,15 @@
 10 REM TEST FOR/NEXT STATEMENTS
  Remark:TEST FOR/NEXT STATEMENTS
 20 LET B = 1
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  AssignmentOperator:=
 30 LET E = 5
- ScalarReference:E
+ Reference:E
  NumericConstant:5
  AssignmentOperator:=
 40 LET S = 1
- ScalarReference:S
+ Reference:S
  NumericConstant:1
  AssignmentOperator:=
 50 FOR I = B TO E STEP S
@@ -22,7 +22,7 @@
  ScalarValue:I
  CarriageControl:NL
 70 LET B = B + 1
- ScalarReference:B
+ Reference:B
  ScalarValue:B
  NumericConstant:1
  BinaryOperator:+

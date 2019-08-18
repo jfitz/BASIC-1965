@@ -2,14 +2,14 @@
  NumericConstant:100
  Declaration:S
 10 READ N
- ScalarReference:N
+ Reference:N
 20 FOR I = 1 TO N
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 30    READ S(I)
  ScalarValue:I
- ScalarReference:S
+ Reference:S
 40 NEXT I
  VariableName:I
 50
@@ -22,12 +22,12 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 210       LET X = S(J)
- ScalarReference:X
+ Reference:X
  ScalarValue:J
  ScalarValue:S
  AssignmentOperator:=
 220       LET Y = S(J+1)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
@@ -39,14 +39,14 @@
  BinaryOperator:<=
 240       LET S(J) = Y
  ScalarValue:J
- ScalarReference:S
+ Reference:S
  ScalarValue:Y
  AssignmentOperator:=
 250       LET S(J+1) = X
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
- ScalarReference:S
+ Reference:S
  ScalarValue:X
  AssignmentOperator:=
 300    NEXT J

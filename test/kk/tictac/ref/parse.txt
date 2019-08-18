@@ -35,34 +35,34 @@
  ITEMS
  CarriageControl:NL
 230 LET A = 9
- ScalarReference:A
+ Reference:A
  NumericConstant:9
  AssignmentOperator:=
 240 LET M = A
- ScalarReference:M
+ Reference:M
  ScalarValue:A
  AssignmentOperator:=
 250 GOSUB 650
  LineNumber:650
 260 LET P = M
- ScalarReference:P
+ Reference:P
  ScalarValue:M
  AssignmentOperator:=
 270 LET B = FNM(P+1)
- ScalarReference:B
+ Reference:B
  ScalarValue:P
  NumericConstant:1
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 280 LET M = B
- ScalarReference:M
+ Reference:M
  ScalarValue:B
  AssignmentOperator:=
 290 GOSUB 650
  LineNumber:650
 300 LET Q = M
- ScalarReference:Q
+ Reference:Q
  ScalarValue:M
  AssignmentOperator:=
 310 IF Q = FNM(B+4) THEN 360
@@ -73,14 +73,14 @@
  UserFunction
  BinaryOperator:=
 320    LET C = FNM(B+4)
- ScalarReference:C
+ Reference:C
  ScalarValue:B
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 330    LET M = C
- ScalarReference:M
+ Reference:M
  ScalarValue:C
  AssignmentOperator:=
 340    GOSUB 700
@@ -88,20 +88,20 @@
 350    GO TO 730
  LineNumber:730
 360 LET C = FNM(B+2)
- ScalarReference:C
+ Reference:C
  ScalarValue:B
  NumericConstant:2
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 370 LET M = C
- ScalarReference:M
+ Reference:M
  ScalarValue:C
  AssignmentOperator:=
 380 GOSUB 650
  LineNumber:650
 390 LET R = M
- ScalarReference:R
+ Reference:R
  ScalarValue:M
  AssignmentOperator:=
 400 IF R = FNM(C+4) THEN 450
@@ -112,14 +112,14 @@
  UserFunction
  BinaryOperator:=
 410    LET D = FNM(C+4)
- ScalarReference:D
+ Reference:D
  ScalarValue:C
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 420    LET M = D
- ScalarReference:M
+ Reference:M
  ScalarValue:D
  AssignmentOperator:=
 430    GOSUB 700
@@ -136,14 +136,14 @@
  FunctionInt
  BinaryOperator:<>
 460    LET D = FNM(C+7)
- ScalarReference:D
+ Reference:D
  ScalarValue:C
  NumericConstant:7
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 470    LET M = D
- ScalarReference:M
+ Reference:M
  ScalarValue:D
  AssignmentOperator:=
 480    GOSUB 700
@@ -151,20 +151,20 @@
 490    GO TO 730
  LineNumber:730
 500 LET D = FNM(C+3)
- ScalarReference:D
+ Reference:D
  ScalarValue:C
  NumericConstant:3
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 510 LET M = D
- ScalarReference:M
+ Reference:M
  ScalarValue:D
  AssignmentOperator:=
 520 GOSUB 650
  LineNumber:650
 530 LET S = M
- ScalarReference:S
+ Reference:S
  ScalarValue:M
  AssignmentOperator:=
 540 IF S = FNM(D+4) THEN 590
@@ -175,14 +175,14 @@
  UserFunction
  BinaryOperator:=
 550    LET E = FNM(D+4)
- ScalarReference:E
+ Reference:E
  ScalarValue:D
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 560    LET M = E
- ScalarReference:M
+ Reference:M
  ScalarValue:E
  AssignmentOperator:=
 570    GOSUB 700
@@ -190,14 +190,14 @@
 580    GO TO 730
  LineNumber:730
 590 LET E = FNM(D+6)
- ScalarReference:E
+ Reference:E
  ScalarValue:D
  NumericConstant:6
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 600 LET M = E
- ScalarReference:M
+ Reference:M
  ScalarValue:E
  AssignmentOperator:=
 610 GOSUB 700
@@ -216,7 +216,7 @@
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 670 INPUT M
- ScalarReference:M
+ Reference:M
 680 RETURN
  
 690

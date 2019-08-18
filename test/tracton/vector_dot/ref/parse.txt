@@ -7,21 +7,21 @@
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
- ScalarReference:A1
- ScalarReference:A2
- ScalarReference:A3
+ Reference:A1
+ Reference:A2
+ Reference:A3
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
  ITEMS
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
- ScalarReference:B1
- ScalarReference:B2
- ScalarReference:B3
+ Reference:B1
+ Reference:B2
+ Reference:B3
 70 REM CALCULATE THE NORM OF A VECTOR
  Remark:CALCULATE THE NORM OF A VECTOR
 80 LET X = SQR((A1^2) + (A2^2) + (A3^2))
- ScalarReference:X
+ Reference:X
  ScalarValue:A1
  NumericConstant:2
  BinaryOperator:^
@@ -38,7 +38,7 @@
 90 REM CALCULATE THE NORM OF B VECTOR
  Remark:CALCULATE THE NORM OF B VECTOR
 100 LET Y = SQR((B1^2) + (B2^2) + (B3^2))
- ScalarReference:Y
+ Reference:Y
  ScalarValue:B1
  NumericConstant:2
  BinaryOperator:^
@@ -55,7 +55,7 @@
 110 REM CALCULATE DOT PRODUCT
  Remark:CALCULATE DOT PRODUCT
 120 LET Z = (A1*B1) + (A2*B2) + (A3*B3)
- ScalarReference:Z
+ Reference:Z
  ScalarValue:A1
  ScalarValue:B1
  BinaryOperator:*
@@ -95,7 +95,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- ScalarReference:L
+ Reference:L
 190 IF L = 1 THEN 210
  ScalarValue:L
  NumericConstant:1

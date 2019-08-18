@@ -1,8 +1,8 @@
 10 READ N,I
- ScalarReference:N
- ScalarReference:I
+ Reference:N
+ Reference:I
 20 LET B = 1
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  AssignmentOperator:=
 30 FOR K = 1 TO I
@@ -10,7 +10,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I"]
 40 LET B = B*(N-K+1)/K
- ScalarReference:B
+ Reference:B
  ScalarValue:B
  ScalarValue:N
  ScalarValue:K

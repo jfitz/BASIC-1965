@@ -5,19 +5,19 @@
  TextConstant:"ENTER 3 X 3 MATRIX"
  CarriageControl:NL
 30 INPUT A,B,C,D,E,F,G,H,I
- ScalarReference:A
- ScalarReference:B
- ScalarReference:C
- ScalarReference:D
- ScalarReference:E
- ScalarReference:F
- ScalarReference:G
- ScalarReference:H
- ScalarReference:I
+ Reference:A
+ Reference:B
+ Reference:C
+ Reference:D
+ Reference:E
+ Reference:F
+ Reference:G
+ Reference:H
+ Reference:I
 40 REM COMPUTE DETERMINANT OF 3X3
  Remark:COMPUTE DETERMINANT OF 3X3
 50 LET M = (A*E*I) + (B*F*G) + (C*H*D)
- ScalarReference:M
+ Reference:M
  ScalarValue:A
  ScalarValue:E
  BinaryOperator:*
@@ -37,7 +37,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 60 LET N = M - (C*E*G) - (F*H*A) - (I*D*B)
- ScalarReference:N
+ Reference:N
  ScalarValue:M
  ScalarValue:C
  ScalarValue:E
@@ -61,7 +61,7 @@
 70 REM COMPUTE INVERSE
  Remark:COMPUTE INVERSE
 80 LET O = ((E*I) - (H*F))/N
- ScalarReference:O
+ Reference:O
  ScalarValue:E
  ScalarValue:I
  BinaryOperator:*
@@ -73,7 +73,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 90 LET P = ((G*F) - (D*I))/N
- ScalarReference:P
+ Reference:P
  ScalarValue:G
  ScalarValue:F
  BinaryOperator:*
@@ -85,7 +85,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 100 LET Q = ((D*H) - (G*E))/N
- ScalarReference:Q
+ Reference:Q
  ScalarValue:D
  ScalarValue:H
  BinaryOperator:*
@@ -97,7 +97,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 110 LET R = ((H*C) - (B*I))/N
- ScalarReference:R
+ Reference:R
  ScalarValue:H
  ScalarValue:C
  BinaryOperator:*
@@ -109,7 +109,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 120 LET S = ((A*I) - (G*C))/N
- ScalarReference:S
+ Reference:S
  ScalarValue:A
  ScalarValue:I
  BinaryOperator:*
@@ -121,7 +121,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 130 LET T = ((G*B) - (A*H))/N
- ScalarReference:T
+ Reference:T
  ScalarValue:G
  ScalarValue:B
  BinaryOperator:*
@@ -133,7 +133,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 140 LET U = ((B*F) - (E*C))/N
- ScalarReference:U
+ Reference:U
  ScalarValue:B
  ScalarValue:F
  BinaryOperator:*
@@ -145,7 +145,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 150 LET V = ((D*C) - (A*F))/N
- ScalarReference:V
+ Reference:V
  ScalarValue:D
  ScalarValue:C
  BinaryOperator:*
@@ -157,7 +157,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 160 LET W = ((A*E) - (D*B))/N
- ScalarReference:W
+ Reference:W
  ScalarValue:A
  ScalarValue:E
  BinaryOperator:*
@@ -244,7 +244,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 300 INPUT L
- ScalarReference:L
+ Reference:L
 310 IF L = 1 THEN 20
  ScalarValue:L
  NumericConstant:1

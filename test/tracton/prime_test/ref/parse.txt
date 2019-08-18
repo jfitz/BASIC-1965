@@ -7,9 +7,9 @@
  TextConstant:"ENTER THE TEST NUMBER, ZERO TO STOP"
  CarriageControl:NL
 40 INPUT N
- ScalarReference:N
+ Reference:N
 50 LET N = INT(N)
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  FunctionInt
  AssignmentOperator:=
@@ -22,22 +22,22 @@
  NumericConstant:4
  BinaryOperator:<
 80 LET I = 0
- ScalarReference:I
+ Reference:I
  NumericConstant:0
  AssignmentOperator:=
 90 LET T = 2
- ScalarReference:T
+ Reference:T
  NumericConstant:2
  AssignmentOperator:=
 100 LET J = INT(N/T)
- ScalarReference:J
+ Reference:J
  ScalarValue:N
  ScalarValue:T
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 110 LET K = J*T
- ScalarReference:K
+ Reference:K
  ScalarValue:J
  ScalarValue:T
  BinaryOperator:*
@@ -47,13 +47,13 @@
  ScalarValue:K
  BinaryOperator:=
 130 LET I = I + 1
- ScalarReference:I
+ Reference:I
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 140 LET L = T*T
- ScalarReference:L
+ Reference:L
  ScalarValue:T
  ScalarValue:T
  BinaryOperator:*
@@ -63,7 +63,7 @@
  ScalarValue:N
  BinaryOperator:>
 160 LET T = (I*2) + 1
- ScalarReference:T
+ Reference:T
  ScalarValue:I
  NumericConstant:2
  BinaryOperator:*

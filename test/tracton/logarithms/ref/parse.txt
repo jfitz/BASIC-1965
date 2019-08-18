@@ -9,15 +9,15 @@
  TextConstant:"BASE = "
  CarriageControl:NL
 50 INPUT Y
- ScalarReference:Y
+ Reference:Y
 60 PRINT "X = "
  ITEMS
  TextConstant:"X = "
  CarriageControl:NL
 70 INPUT X
- ScalarReference:X
+ Reference:X
 80 LET J = LOG(X)/LOG(Y)
- ScalarReference:J
+ Reference:J
  ScalarValue:X
  FunctionLog
  ScalarValue:Y
@@ -39,7 +39,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- ScalarReference:L
+ Reference:L
 120 IF L =1 THEN 140
  ScalarValue:L
  NumericConstant:1

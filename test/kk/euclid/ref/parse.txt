@@ -7,8 +7,8 @@
  TextConstant:"G.C.D."
  CarriageControl:NL
 20 READ A,B
- ScalarReference:A
- ScalarReference:B
+ Reference:A
+ Reference:B
 30 PRINT A,B,
  ITEMS
  ScalarValue:A
@@ -16,14 +16,14 @@
  ScalarValue:B
  CarriageControl:,
 40 LET Q = INT(A/B)
- ScalarReference:Q
+ Reference:Q
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 45 LET R = A - Q*B
- ScalarReference:R
+ Reference:R
  ScalarValue:A
  ScalarValue:Q
  ScalarValue:B
@@ -31,11 +31,11 @@
  BinaryOperator:-
  AssignmentOperator:=
 50 LET A = B
- ScalarReference:A
+ Reference:A
  ScalarValue:B
  AssignmentOperator:=
 55 LET B = R
- ScalarReference:B
+ Reference:B
  ScalarValue:R
  AssignmentOperator:=
 60 IF R > 0 THEN 40

@@ -25,7 +25,7 @@
  TextConstant:"ENTER 1 TO 5"
  CarriageControl:NL
 80 INPUT A
- ScalarReference:A
+ Reference:A
 90 ON A GOTO 100,160,220,280,340
  Unknown statement 'ON A GOTO 100,160,220,280,340'
  Unimplemented
@@ -36,7 +36,7 @@
 120 GOSUB 470
  LineNumber:470
 130 LET X = Y*((1 + I)^N)
- ScalarReference:X
+ Reference:X
  ScalarValue:Y
  NumericConstant:1
  ScalarValue:I
@@ -60,7 +60,7 @@
 180 GOSUB 470
  LineNumber:470
 190 LET Y = X*((1 + I)^N)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:X
  NumericConstant:1
  ScalarValue:I
@@ -84,7 +84,7 @@
 240 GOSUB 470
  LineNumber:470
 250 LET L = Y*((1 + I^N) - 1)
- ScalarReference:L
+ Reference:L
  ScalarValue:Y
  NumericConstant:1
  ScalarValue:I
@@ -110,7 +110,7 @@
 300 GOSUB 470
  LineNumber:470
 310 LET I = ((X/Y)^(1/N)) - 1
- ScalarReference:I
+ Reference:I
  ScalarValue:X
  ScalarValue:Y
  BinaryOperator:/
@@ -136,7 +136,7 @@
 360 GOSUB 440
  LineNumber:440
 370 LET N = (LOG(X/Y))/(LOG(1 + I))
- ScalarReference:N
+ Reference:N
  ScalarValue:X
  ScalarValue:Y
  BinaryOperator:/
@@ -161,7 +161,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 401 INPUT L
- ScalarReference:L
+ Reference:L
 402 IF L = 1 THEN 404
  ScalarValue:L
  NumericConstant:1
@@ -178,7 +178,7 @@
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
 420 INPUT Y
- ScalarReference:Y
+ Reference:Y
 430 RETURN
  
 440 PRINT "INTEREST RATE = ";
@@ -186,7 +186,7 @@
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
 450 INPUT I
- ScalarReference:I
+ Reference:I
 460 RETURN
  
 470 PRINT "NUMBER OF TIME PERIODS = ";
@@ -194,7 +194,7 @@
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
 480 INPUT N
- ScalarReference:N
+ Reference:N
 490 RETURN
  
 500 PRINT "FUTURE VALUE = ";
@@ -202,7 +202,7 @@
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
 510 INPUT X
- ScalarReference:X
+ Reference:X
 520 RETURN
  
 530 END

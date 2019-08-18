@@ -2,9 +2,9 @@
  Remark:This is a test
 15 DIM A(3),B(5)
  NumericConstant:3
- CompoundDeclaration:A
+ Declaration:A
  NumericConstant:5
- CompoundDeclaration:B
+ Declaration:B
 20 DATA 10,20,30,40
  NumericConstant:10
  NumericConstant:20
@@ -20,8 +20,8 @@
 25 FILES "output.txt"
  TextConstant:"output.txt"
 30 ARR READ A,B
- ArrayReference:A
- ArrayReference:B
+ Reference:A
+ Reference:B
 40 ARR WRITE #1;A,B
  ArrayValue:A
  CarriageControl:,

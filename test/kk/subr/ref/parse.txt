@@ -1,17 +1,17 @@
 100 LET X = 5
- ScalarReference:X
+ Reference:X
  NumericConstant:5
  AssignmentOperator:=
 110 GOSUB 500
  LineNumber:500
 120 LET X = 7
- ScalarReference:X
+ Reference:X
  NumericConstant:7
  AssignmentOperator:=
 130 GOSUB 500
  LineNumber:500
 140 LET X = 11
- ScalarReference:X
+ Reference:X
  NumericConstant:11
  AssignmentOperator:=
 150 GOSUB 500
@@ -20,20 +20,20 @@
  
 170
 500 LET Y = 3*X
- ScalarReference:Y
+ Reference:Y
  NumericConstant:3
  ScalarValue:X
  BinaryOperator:*
  AssignmentOperator:=
 510 LET Z = 1.2*EXP(Y)
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1.2
  ScalarValue:Y
  FunctionExp
  BinaryOperator:*
  AssignmentOperator:=
 520 LET Y = SQR(Z+2)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Z
  NumericConstant:2
  BinaryOperator:+

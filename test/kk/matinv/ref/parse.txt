@@ -1,17 +1,17 @@
 100 MAT A = ZER(3,3)
- MatrixReference:A
+ Reference:A
  NumericConstant:3
  NumericConstant:3
  FunctionZer
  AssignmentOperator:=
 110 MAT B = CON(3,3)
- MatrixReference:B
+ Reference:B
  NumericConstant:3
  NumericConstant:3
  FunctionCon
  AssignmentOperator:=
 120 MAT C = IDN(3,3)
- MatrixReference:C
+ Reference:C
  NumericConstant:3
  NumericConstant:3
  FunctionIdn
@@ -43,7 +43,7 @@
  CarriageControl:;
 260
 300 MAT READ A
- MatrixReference:A
+ Reference:A
 310 PRINT "SQUARE MATRIX"
  ITEMS
  TextConstant:"SQUARE MATRIX"
@@ -53,7 +53,7 @@
  MatrixValue:A
  CarriageControl:,
 330 MAT B = INV(A)
- MatrixReference:B
+ Reference:B
  MatrixValue:A
  FunctionInv
  AssignmentOperator:=
@@ -67,13 +67,13 @@
  CarriageControl:,
 360
 400 MAT R = A*B
- MatrixReference:R
+ Reference:R
  MatrixValue:A
  MatrixValue:B
  BinaryOperator:*
  AssignmentOperator:=
 410 MAT R = R-C
- MatrixReference:R
+ Reference:R
  MatrixValue:R
  MatrixValue:C
  BinaryOperator:-

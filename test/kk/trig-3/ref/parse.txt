@@ -1,7 +1,7 @@
 100 REM ANGLE-SIDE-SIDE
  Remark:ANGLE-SIDE-SIDE
 110 LET P = 3.14159265
- ScalarReference:P
+ Reference:P
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
@@ -36,9 +36,9 @@
  TextConstant:"CASE 2"
  CarriageControl:NL
 150 READ B,X,Y
- ScalarReference:B
- ScalarReference:X
- ScalarReference:Y
+ Reference:B
+ Reference:X
+ Reference:Y
 160 PRINT B,X,Y,
  ITEMS
  ScalarValue:B
@@ -48,7 +48,7 @@
  ScalarValue:Y
  CarriageControl:,
 170 LET S = X*FNS(B)/Y
- ScalarReference:S
+ Reference:S
  ScalarValue:X
  ScalarValue:B
  UserFunction
@@ -69,7 +69,7 @@
 200 REM TWO POINTS OF INTERSECTION
  Remark:TWO POINTS OF INTERSECTION
 210 LET T = S/SQR(1-S^2)
- ScalarReference:T
+ Reference:T
  ScalarValue:S
  NumericConstant:1
  ScalarValue:S
@@ -80,7 +80,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 220 LET C = ATN(T)*180/P
- ScalarReference:C
+ Reference:C
  ScalarValue:T
  FunctionAtn
  NumericConstant:180
@@ -89,7 +89,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 230 LET A = 180 - B - C
- ScalarReference:A
+ Reference:A
  NumericConstant:180
  ScalarValue:B
  BinaryOperator:-
@@ -99,13 +99,13 @@
 240 GOSUB 370
  LineNumber:370
 250 LET C = 180 - C
- ScalarReference:C
+ Reference:C
  NumericConstant:180
  ScalarValue:C
  BinaryOperator:-
  AssignmentOperator:=
 260 LET A = 180 - B - C
- ScalarReference:A
+ Reference:A
  NumericConstant:180
  ScalarValue:B
  BinaryOperator:-
@@ -134,7 +134,7 @@
 320 REM ONE POINT OF INTERSECTION
  Remark:ONE POINT OF INTERSECTION
 330 LET A = 90 - B
- ScalarReference:A
+ Reference:A
  NumericConstant:90
  ScalarValue:B
  BinaryOperator:-
@@ -151,7 +151,7 @@
 370 REM ANGLE-SIDE-ANGLE ROUTINE
  Remark:ANGLE-SIDE-ANGLE ROUTINE
 380 LET Z = X*FNS(A)/S
- ScalarReference:Z
+ Reference:Z
  ScalarValue:X
  ScalarValue:A
  UserFunction

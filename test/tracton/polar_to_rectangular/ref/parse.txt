@@ -11,9 +11,9 @@
  TextConstant:"ANGLE IN DEGREES = "
  CarriageControl:;
 50 INPUT W
- ScalarReference:W
+ Reference:W
 60 LET W = (W*3.14159)/180
- ScalarReference:W
+ Reference:W
  ScalarValue:W
  NumericConstant:3.14159
  BinaryOperator:*
@@ -25,16 +25,16 @@
  TextConstant:"MAGNITUDE R = "
  CarriageControl:;
 80 INPUT R
- ScalarReference:R
+ Reference:R
 90 LET X = R*COS(W)
- ScalarReference:X
+ Reference:X
  ScalarValue:R
  ScalarValue:W
  FunctionCos
  BinaryOperator:*
  AssignmentOperator:=
 100 LET Y = R*SIN(W)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:R
  ScalarValue:W
  FunctionSin
@@ -62,7 +62,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- ScalarReference:L
+ Reference:L
 160 IF L = 1 THEN 180
  ScalarValue:L
  NumericConstant:1

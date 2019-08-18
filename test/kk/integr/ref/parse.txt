@@ -9,9 +9,9 @@
  NumericConstant:1
  BinaryOperator:+
 20 READ A, B, E
- ScalarReference:A
- ScalarReference:B
- ScalarReference:E
+ Reference:A
+ Reference:B
+ Reference:E
 30 PRINT "TRAPEZOID", "MIDPOINT", "SIMPSON"
  ITEMS
  TextConstant:"TRAPEZOID"
@@ -21,13 +21,13 @@
  TextConstant:"SIMPSON"
  CarriageControl:NL
 40 LET H = B-A
- ScalarReference:H
+ Reference:H
  ScalarValue:B
  ScalarValue:A
  BinaryOperator:-
  AssignmentOperator:=
 50 LET T = (FNF(A)+FNF(B))*H
- ScalarReference:T
+ Reference:T
  ScalarValue:A
  UserFunction
  ScalarValue:B
@@ -37,11 +37,11 @@
  BinaryOperator:*
  AssignmentOperator:=
 60 LET M = 0
- ScalarReference:M
+ Reference:M
  NumericConstant:0
  AssignmentOperator:=
 100 LET T = (T+M)/2
- ScalarReference:T
+ Reference:T
  ScalarValue:T
  ScalarValue:M
  BinaryOperator:+
@@ -49,7 +49,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 120 LET M = 0
- ScalarReference:M
+ Reference:M
  NumericConstant:0
  AssignmentOperator:=
 130 FOR X = A+H/2 TO B STEP H
@@ -58,7 +58,7 @@
  end:     ["ScalarValue:B"]
  step:    ["ScalarValue:H"]
 140 LET M = M + FNF(X)
- ScalarReference:M
+ Reference:M
  ScalarValue:M
  ScalarValue:X
  UserFunction
@@ -67,13 +67,13 @@
 150 NEXT X
  VariableName:X
 160 LET M = M*H
- ScalarReference:M
+ Reference:M
  ScalarValue:M
  ScalarValue:H
  BinaryOperator:*
  AssignmentOperator:=
 170 LET S = (T + 2*M)/3
- ScalarReference:S
+ Reference:S
  ScalarValue:T
  NumericConstant:2
  ScalarValue:M
@@ -91,7 +91,7 @@
  ScalarValue:S
  CarriageControl:NL
 185 LET H = H/2
- ScalarReference:H
+ Reference:H
  ScalarValue:H
  NumericConstant:2
  BinaryOperator:/

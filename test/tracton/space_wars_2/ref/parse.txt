@@ -204,19 +204,19 @@ Duplicate line number 2750
 536 REM X-WING ENERGY AND SKY ENERGY
  Remark:X-WING ENERGY AND SKY ENERGY
 540 LET X1 = 5E05
- ScalarReference:X1
+ Reference:X1
  NumericConstant:500000
  AssignmentOperator:=
 550 LET T1 = 1E04
- ScalarReference:T1
+ Reference:T1
  NumericConstant:10000
  AssignmentOperator:=
 560 LET T2 = 5E04
- ScalarReference:T2
+ Reference:T2
  NumericConstant:50000
  AssignmentOperator:=
 570 LET D = 1E05
- ScalarReference:D
+ Reference:D
  NumericConstant:100000
  AssignmentOperator:=
 580 GOSUB 630
@@ -236,17 +236,17 @@ Duplicate line number 2750
  NumericConstant:10000
  BinaryOperator:>
 640 LET L = 1
- ScalarReference:L
+ Reference:L
  NumericConstant:1
  AssignmentOperator:=
 650 GOTO 700
  LineNumber:700
 660 LET L = 0
- ScalarReference:L
+ Reference:L
  NumericConstant:0
  AssignmentOperator:=
 670 LET H = (1 + INT(100*RND)/100)
- ScalarReference:H
+ Reference:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -257,7 +257,7 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 680 LET E1 = 5000*H
- ScalarReference:E1
+ Reference:E1
  NumericConstant:5000
  ScalarValue:H
  BinaryOperator:*
@@ -265,7 +265,7 @@ Duplicate line number 2750
 690 GOTO 720
  LineNumber:720
 700 LET H = (1 + INT(100*RND)/100)
- ScalarReference:H
+ Reference:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -276,7 +276,7 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 710 LET E1 = 1000*H
- ScalarReference:E1
+ Reference:E1
  NumericConstant:1000
  ScalarValue:H
  BinaryOperator:*
@@ -288,17 +288,17 @@ Duplicate line number 2750
  NumericConstant:5000
  BinaryOperator:>
 740 LET K = 1
- ScalarReference:K
+ Reference:K
  NumericConstant:1
  AssignmentOperator:=
 750 GOTO 800
  LineNumber:800
 760 LET K = 0
- ScalarReference:K
+ Reference:K
  NumericConstant:0
  AssignmentOperator:=
 770 LET H = (1 + INT(100*RND)/100)
- ScalarReference:H
+ Reference:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -309,7 +309,7 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 780 LET E2 = 8000*H
- ScalarReference:E2
+ Reference:E2
  NumericConstant:8000
  ScalarValue:H
  BinaryOperator:*
@@ -317,7 +317,7 @@ Duplicate line number 2750
 790 GOTO 820
  LineNumber:820
 800 LET H = (1 + INT(100*RND)/100)
- ScalarReference:H
+ Reference:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -328,7 +328,7 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 810 LET E2 = 3000*H
- ScalarReference:E2
+ Reference:E2
  NumericConstant:3000
  ScalarValue:H
  BinaryOperator:*
@@ -340,11 +340,11 @@ Duplicate line number 2750
  NumericConstant:3000
  BinaryOperator:<
 850 LET E3 = 0
- ScalarReference:E3
+ Reference:E3
  NumericConstant:0
  AssignmentOperator:=
 860 LET H = (1 + INT(100*RND)/100)
- ScalarReference:H
+ Reference:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -355,19 +355,19 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 870 LET E3 = 2E04*H
- ScalarReference:E3
+ Reference:E3
  NumericConstant:20000
  ScalarValue:H
  BinaryOperator:*
  AssignmentOperator:=
 880 LET T1 = T1 - E1
- ScalarReference:T1
+ Reference:T1
  ScalarValue:T1
  ScalarValue:E1
  BinaryOperator:-
  AssignmentOperator:=
 890 LET T2 = T2 - E2
- ScalarReference:T2
+ Reference:T2
  ScalarValue:T2
  ScalarValue:E2
  BinaryOperator:-
@@ -379,17 +379,17 @@ Duplicate line number 2750
 910 GOTO 950
  LineNumber:950
 920 LET E1 = 0
- ScalarReference:E1
+ Reference:E1
  NumericConstant:0
  AssignmentOperator:=
 930 LET Y = 1
- ScalarReference:Y
+ Reference:Y
  NumericConstant:1
  AssignmentOperator:=
 940 GOTO 960
  LineNumber:960
 950 LET Y = 0
- ScalarReference:Y
+ Reference:Y
  NumericConstant:0
  AssignmentOperator:=
 960 IF T2 <= 0 THEN 980
@@ -399,21 +399,21 @@ Duplicate line number 2750
 970 GOTO 1010
  LineNumber:1010
 980 LET E2 = 0
- ScalarReference:E2
+ Reference:E2
  NumericConstant:0
  AssignmentOperator:=
 990 LET Z = 1
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  AssignmentOperator:=
 1000 GOTO 1020
  LineNumber:1020
 1010 LET Z = 0
- ScalarReference:Z
+ Reference:Z
  NumericConstant:0
  AssignmentOperator:=
 1020 LET X1 = X1 - E1 - E2 - E3
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  ScalarValue:E1
  BinaryOperator:-
@@ -493,7 +493,7 @@ Duplicate line number 2750
 1210 GOTO 1360
  LineNumber:1360
 1220 LET C = 1 + (5*RND)
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  NumericConstant:5
  FunctionRnd
@@ -604,7 +604,7 @@ Duplicate line number 2750
  TextConstant:"WHICH COMMAND DO YOU WISH TO EXECUTE"
  CarriageControl:NL
 1520 INPUT B
- ScalarReference:B
+ Reference:B
 1530 ON B GOTO 1540, 1690, 2030, 2320
  Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
  Unimplemented
@@ -621,7 +621,7 @@ Duplicate line number 2750
  TextConstant:"AWAY THAN 1000KM"
  CarriageControl:NL
 1570 LET X1 = X1 - 2E04
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  NumericConstant:20000
  BinaryOperator:-
@@ -629,7 +629,7 @@ Duplicate line number 2750
 1580 GOTO 2680
  LineNumber:2680
 1590 LET H = 1 + (INT(100*RND))
- ScalarReference:H
+ Reference:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -646,7 +646,7 @@ Duplicate line number 2750
  TextConstant:"YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  CarriageControl:NL
 1620 LET X1 = X1 - 2E04
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  NumericConstant:20000
  BinaryOperator:-
@@ -708,13 +708,13 @@ Duplicate line number 2750
 1810 GOTO 1760
  LineNumber:1760
 1820 LET Q = 5500
- ScalarReference:Q
+ Reference:Q
  NumericConstant:5500
  AssignmentOperator:=
 1830 GOTO 1760
  LineNumber:1760
 1840 LET T1 = T1 - Q
- ScalarReference:T1
+ Reference:T1
  ScalarValue:T1
  ScalarValue:Q
  BinaryOperator:-
@@ -722,7 +722,7 @@ Duplicate line number 2750
 1850 GOTO 1960
  LineNumber:1960
 1860 LET T2 = T2 - Q
- ScalarReference:T2
+ Reference:T2
  ScalarValue:T2
  ScalarValue:Q
  BinaryOperator:-
@@ -752,7 +752,7 @@ Duplicate line number 2750
 1950 GOTO 1880
  LineNumber:1880
 1960 LET X1 = X1 - 5000
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  NumericConstant:5000
  BinaryOperator:-
@@ -760,13 +760,13 @@ Duplicate line number 2750
 1970 GOTO 2660
  LineNumber:2660
 1980 LET T1 = T1 - Q
- ScalarReference:T1
+ Reference:T1
  ScalarValue:T1
  ScalarValue:Q
  BinaryOperator:-
  AssignmentOperator:=
 1982 LET X1 = X1 - 5000
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  NumericConstant:5000
  BinaryOperator:-
@@ -774,13 +774,13 @@ Duplicate line number 2750
 1990 GOTO 2010
  LineNumber:2010
 2000 LET T2 = T2 - Q
- ScalarReference:T2
+ Reference:T2
  ScalarValue:T2
  ScalarValue:Q
  BinaryOperator:-
  AssignmentOperator:=
 2010 LET X1 = X1 - 5000
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  NumericConstant:5000
  BinaryOperator:-
@@ -808,13 +808,13 @@ Duplicate line number 2750
 2090 GOTO 2040
  LineNumber:2040
 2100 LET J = 1
- ScalarReference:J
+ Reference:J
  NumericConstant:1
  AssignmentOperator:=
 2110 GOTO 2130
  LineNumber:2130
 2120 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 2130 PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
@@ -832,7 +832,7 @@ Duplicate line number 2750
  NumericConstant:1
  BinaryOperator:=
 2170 LET Q = 1000*(1 + INT(RND)/100)
- ScalarReference:Q
+ Reference:Q
  NumericConstant:1000
  NumericConstant:1
  FunctionRnd
@@ -845,7 +845,7 @@ Duplicate line number 2750
 2180 GOTO 2200
  LineNumber:2200
 2190 LET Q = 1000
- ScalarReference:Q
+ Reference:Q
  NumericConstant:1000
  AssignmentOperator:=
 2200 IF C$ = "S" THEN 2240
@@ -859,7 +859,7 @@ Duplicate line number 2750
 2230 GOTO 2130
  LineNumber:2130
 2240 LET T1 = T1 - Q
- ScalarReference:T1
+ Reference:T1
  ScalarValue:T1
  ScalarValue:Q
  BinaryOperator:-
@@ -867,7 +867,7 @@ Duplicate line number 2750
 2250 GOTO 2270
  LineNumber:2270
 2260 LET T2 = T2 - Q
- ScalarReference:T2
+ Reference:T2
  ScalarValue:T2
  ScalarValue:Q
  BinaryOperator:-
@@ -877,7 +877,7 @@ Duplicate line number 2750
  NumericConstant:1
  BinaryOperator:=
 2280 LET X1 = X1 - 1000
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  NumericConstant:1000
  BinaryOperator:-
@@ -885,7 +885,7 @@ Duplicate line number 2750
 2290 GOTO 2660
  LineNumber:2660
 2300 LET X1 = X1 - 1500
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  NumericConstant:1500
  BinaryOperator:-
@@ -913,7 +913,7 @@ Duplicate line number 2750
  TextConstant:"AT ANY ONE TIME"
  CarriageControl:NL
 2370 INPUT F
- ScalarReference:F
+ Reference:F
 2380 PRINT "IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
  ITEMS
  TextConstant:"IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
@@ -955,7 +955,7 @@ Duplicate line number 2750
 2490 GOTO 2640
  LineNumber:2640
 2500 LET D = D + F
- ScalarReference:D
+ Reference:D
  ScalarValue:D
  ScalarValue:F
  BinaryOperator:+
@@ -997,7 +997,7 @@ Duplicate line number 2750
 2610 GOTO 2690
  LineNumber:2690
 2620 LET D = D - F
- ScalarReference:D
+ Reference:D
  ScalarValue:D
  ScalarValue:F
  BinaryOperator:-
@@ -1007,7 +1007,7 @@ Duplicate line number 2750
  NumericConstant:0
  BinaryOperator:<=
 2640 LET X1 = X1 - F
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  ScalarValue:F
  BinaryOperator:-

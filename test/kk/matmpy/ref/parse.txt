@@ -6,16 +6,16 @@
  NumericConstant:4
  Declaration:B
 110 MAT READ A, B
- MatrixReference:A
- MatrixReference:B
+ Reference:A
+ Reference:B
 120 MAT P = A*B
- MatrixReference:P
+ Reference:P
  MatrixValue:A
  MatrixValue:B
  BinaryOperator:*
  AssignmentOperator:=
 130 MAT T = TRN(A)
- MatrixReference:T
+ Reference:T
  MatrixValue:A
  FunctionTrn
  AssignmentOperator:=

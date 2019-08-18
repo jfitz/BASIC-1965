@@ -1,36 +1,36 @@
 100 LET N = 0
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 110 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 120 LET S2 = 0
- ScalarReference:S2
+ Reference:S2
  NumericConstant:0
  AssignmentOperator:=
 130
 140 READ X
- ScalarReference:X
+ Reference:X
 150 IF X = 999999 THEN 210
  ScalarValue:X
  NumericConstant:999999
  BinaryOperator:=
 160 LET N = N + 1
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 170 LET S = S + X
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:X
  BinaryOperator:+
  AssignmentOperator:=
 180 LET S2 = S2 + X*X
- ScalarReference:S2
+ Reference:S2
  ScalarValue:S2
  ScalarValue:X
  ScalarValue:X
@@ -41,13 +41,13 @@
  LineNumber:140
 200
 210 LET M = S/N
- ScalarReference:M
+ Reference:M
  ScalarValue:S
  ScalarValue:N
  BinaryOperator:/
  AssignmentOperator:=
 220 LET V = (N*S2 - S*S)/N/(N-1)
- ScalarReference:V
+ Reference:V
  ScalarValue:N
  ScalarValue:S2
  BinaryOperator:*
@@ -63,25 +63,25 @@
  BinaryOperator:/
  AssignmentOperator:=
 230 LET D = SQR(V)
- ScalarReference:D
+ Reference:D
  ScalarValue:V
  FunctionSqr
  AssignmentOperator:=
 240 LET P = .6745*D
- ScalarReference:P
+ Reference:P
  NumericConstant:0.6745
  ScalarValue:D
  BinaryOperator:*
  AssignmentOperator:=
 250 LET E = SQR(V/N)
- ScalarReference:E
+ Reference:E
  ScalarValue:V
  ScalarValue:N
  BinaryOperator:/
  FunctionSqr
  AssignmentOperator:=
 260 LET C = D/M
- ScalarReference:C
+ Reference:C
  ScalarValue:D
  ScalarValue:M
  BinaryOperator:/
@@ -142,19 +142,19 @@
  CarriageControl:NL
 350
 360 LET N = 0
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 370 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 380 LET S2 = 0
- ScalarReference:S2
+ Reference:S2
  NumericConstant:0
  AssignmentOperator:=
 390 READ X
- ScalarReference:X
+ Reference:X
 400 IF X <> 999999 THEN 160
  ScalarValue:X
  NumericConstant:999999

@@ -606,11 +606,20 @@ class Interpreter
   end
 
   def set_value(variable, value)
-    legals = %w(Value Variable VariableName ScalarReference)
+    legals = [
+      'Value',
+      'Variable',
+      'VariableName',
+      'Reference'
+    ]
 
-    raise(BASICSyntaxError,
+    raise(BASICRuntimeError,
           "#{variable.class}:#{variable} is not a variable name") unless
       legals.include?(variable.class.to_s)
+
+    raise(BASICRuntimeError,
+          "#{variable.class}:#{variable} is not a scalar variable name") if
+      variable.class.to_s == 'VariableName' && !variable.scalar?
 
     if $options['lock_fornext'].value &&
        @locked_variables.include?(variable)

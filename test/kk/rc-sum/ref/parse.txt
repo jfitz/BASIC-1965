@@ -1,6 +1,6 @@
 10 READ R,C
- ScalarReference:R
- ScalarReference:C
+ Reference:R
+ Reference:C
 20 FOR I = 1 TO R
  control: VariableName:I
  start:   ["NumericConstant:1"]
@@ -12,7 +12,7 @@
 40 READ T(I,J)
  ScalarValue:I
  ScalarValue:J
- ScalarReference:T
+ Reference:T
 50 NEXT J
  VariableName:J
 60 NEXT I
@@ -22,7 +22,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R"]
 80 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 90 FOR J = 1 TO C
@@ -30,7 +30,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C"]
 100 LET S = S + T(I,J)
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:I
  ScalarValue:J
@@ -59,7 +59,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C"]
 160 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 1 TO R
@@ -67,7 +67,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R"]
 180 LET S = S + T(I,J)
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:I
  ScalarValue:J

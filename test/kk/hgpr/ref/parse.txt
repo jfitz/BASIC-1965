@@ -10,18 +10,18 @@
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
  ScalarValue:I
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
  VariableName:I
 25 LET P(0) = 2
  NumericConstant:0
- ScalarReference:P
+ Reference:P
  NumericConstant:2
  AssignmentOperator:=
 26 LET K = 0
- ScalarReference:K
+ Reference:K
  NumericConstant:0
  AssignmentOperator:=
 30 FOR P = 3 TO 2000 STEP 2
@@ -30,7 +30,7 @@
  end:     ["NumericConstant:2000"]
  step:    ["NumericConstant:2"]
 35    LET X = (P-1)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:P
  NumericConstant:1
  BinaryOperator:-
@@ -43,14 +43,14 @@
  NumericConstant:0
  BinaryOperator:<
 50    LET K = K+1
- ScalarReference:K
+ Reference:K
  ScalarValue:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 55    LET P(K) = P
  ScalarValue:K
- ScalarReference:P
+ Reference:P
  ScalarValue:P
  AssignmentOperator:=
 56    IF P > SQR(2000) THEN 90
@@ -64,7 +64,7 @@
  end:     ["NumericConstant:2000"]
  step:    ["NumericConstant:2", "ScalarValue:P", "BinaryOperator:*"]
 65       LET X = (I-1)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:-
@@ -73,7 +73,7 @@
  AssignmentOperator:=
 70       LET N(X) = -1
  ScalarValue:X
- ScalarReference:N
+ Reference:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -95,9 +95,9 @@
  TextConstant:"A = "
  CarriageControl:;
 120 INPUT A
- ScalarReference:A
+ Reference:A
 125 LET S = SQR((A+2)*1E3)
- ScalarReference:S
+ Reference:S
  ScalarValue:A
  NumericConstant:2
  BinaryOperator:+
@@ -124,7 +124,7 @@
  end:     ["NumericConstant:1000"]
 206    LET N(I) = 0
  ScalarValue:I
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 207 NEXT I
@@ -134,7 +134,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:K"]
 220    LET F = P(I)
- ScalarReference:F
+ Reference:F
  ScalarValue:I
  ScalarValue:P
  AssignmentOperator:=
@@ -151,7 +151,7 @@
  step:    ["ScalarValue:F"]
 250       LET N(J) = -1
  ScalarValue:J
- ScalarReference:N
+ Reference:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -163,11 +163,11 @@
 400 REM TEST REMAINING NUMBERS
  Remark:TEST REMAINING NUMBERS
 405 LET D = 2
- ScalarReference:D
+ Reference:D
  NumericConstant:2
  AssignmentOperator:=
 410 LET F = 2003
- ScalarReference:F
+ Reference:F
  NumericConstant:2003
  AssignmentOperator:=
 420    GOSUB 800
@@ -178,18 +178,18 @@
  BinaryOperator:>
 440    LET N(Z) = -1
  ScalarValue:Z
- ScalarReference:N
+ Reference:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
 450 LET F = F+D
- ScalarReference:F
+ Reference:F
  ScalarValue:F
  ScalarValue:D
  BinaryOperator:+
  AssignmentOperator:=
 460 LET D = 6-D
- ScalarReference:D
+ Reference:D
  NumericConstant:6
  ScalarValue:D
  BinaryOperator:-
@@ -202,7 +202,7 @@
 700 REM PRINT RESULT
  Remark:PRINT RESULT
 702 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 705 FOR I = 0 TO 999
@@ -223,7 +223,7 @@
  BinaryOperator:+
  CarriageControl:;
 725    LET S = S+1
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  NumericConstant:1
  BinaryOperator:+
@@ -295,7 +295,7 @@
 800 REM TEST FACTOR F
  Remark:TEST FACTOR F
 810 LET X = A - F*INT(A/F)
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  ScalarValue:F
  ScalarValue:A
@@ -306,13 +306,13 @@
  BinaryOperator:-
  AssignmentOperator:=
 820 LET Y = A*1E3
- ScalarReference:Y
+ Reference:Y
  ScalarValue:A
  NumericConstant:1000
  BinaryOperator:*
  AssignmentOperator:=
 830 LET X = F - (Y - F*INT(Y/F))
- ScalarReference:X
+ Reference:X
  ScalarValue:F
  ScalarValue:Y
  ScalarValue:F
@@ -334,13 +334,13 @@
  BinaryOperator:*
  BinaryOperator:<>
 850 LET X = X + F
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  ScalarValue:F
  BinaryOperator:+
  AssignmentOperator:=
 860 LET Z = (X-1)/2
- ScalarReference:Z
+ Reference:Z
  ScalarValue:X
  NumericConstant:1
  BinaryOperator:-

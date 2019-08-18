@@ -7,11 +7,11 @@
 40 REM IS PRINTED
  Remark:IS PRINTED
 50 LET Y = 1
- ScalarReference:Y
+ Reference:Y
  NumericConstant:1
  AssignmentOperator:=
 60 LET N = 0
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "SAMPLE = ";
@@ -19,25 +19,25 @@
  TextConstant:"SAMPLE = "
  CarriageControl:;
 80 INPUT W
- ScalarReference:W
+ Reference:W
 90 IF W = 0 THEN 160
  ScalarValue:W
  NumericConstant:0
  BinaryOperator:=
 100 LET N = N + 1
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 110 LET Y = Y * W
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Y
  ScalarValue:W
  BinaryOperator:*
  AssignmentOperator:=
 120 LET G = Y^(1/N)
- ScalarReference:G
+ Reference:G
  ScalarValue:Y
  NumericConstant:1
  ScalarValue:N
@@ -70,7 +70,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- ScalarReference:L
+ Reference:L
 190 IF L = 1 THEN 210
  ScalarValue:L
  NumericConstant:1

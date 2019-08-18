@@ -7,19 +7,19 @@
  TextConstant:"RADIUS"
  CarriageControl:NL
 40 INPUT R
- ScalarReference:R
+ Reference:R
 50 LET P = 3.14159
- ScalarReference:P
+ Reference:P
  NumericConstant:3.14159
  AssignmentOperator:=
 60 LET D = 2*R
- ScalarReference:D
+ Reference:D
  NumericConstant:2
  ScalarValue:R
  BinaryOperator:*
  AssignmentOperator:=
 70 LET I = (P*(D^4))/64
- ScalarReference:I
+ Reference:I
  ScalarValue:P
  ScalarValue:D
  NumericConstant:4
@@ -29,13 +29,13 @@
  BinaryOperator:/
  AssignmentOperator:=
 80 LET J = I*2
- ScalarReference:J
+ Reference:J
  ScalarValue:I
  NumericConstant:2
  BinaryOperator:*
  AssignmentOperator:=
 90 LET A = (P*(D^2))/4
- ScalarReference:A
+ Reference:A
  ScalarValue:P
  ScalarValue:D
  NumericConstant:2
@@ -71,7 +71,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- ScalarReference:L
+ Reference:L
 160 IF L = 1 THEN 180
  ScalarValue:L
  NumericConstant:1

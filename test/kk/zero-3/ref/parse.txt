@@ -11,10 +11,10 @@
  NumericConstant:1
  BinaryOperator:-
 20 READ A,B
- ScalarReference:A
- ScalarReference:B
+ Reference:A
+ Reference:B
 22 LET S = SGN(FNF(A))
- ScalarReference:S
+ Reference:S
  ScalarValue:A
  UserFunction
  FunctionSgn
@@ -27,18 +27,18 @@
  NumericConstant:1
  ScalarValue:S
  BinaryOperator:+
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
  ScalarValue:S
  BinaryOperator:-
- ScalarReference:X
+ Reference:X
  ScalarValue:B
  AssignmentOperator:=
 30 LET X = (X(0)+X(2))/2
- ScalarReference:X
+ Reference:X
  NumericConstant:0
  ScalarValue:X
  NumericConstant:2
@@ -48,7 +48,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 35 LET F = SGN(FNF(X))
- ScalarReference:F
+ Reference:F
  ScalarValue:X
  UserFunction
  FunctionSgn
@@ -61,7 +61,7 @@
  NumericConstant:1
  ScalarValue:F
  BinaryOperator:+
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  AssignmentOperator:=
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
@@ -84,7 +84,7 @@
 90 GOTO 30
  LineNumber:30
 95 LET X = A
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  AssignmentOperator:=
 100 PRINT "ONE ZERO AT" X

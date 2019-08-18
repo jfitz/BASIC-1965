@@ -9,21 +9,21 @@
  TextConstant:"INPUT RESISTANCE R(IN) = "
  CarriageControl:;
 50 INPUT R1
- ScalarReference:R1
+ Reference:R1
 60 PRINT "OUTPUT RESISTANCE R(OUT) = ";
  ITEMS
  TextConstant:"OUTPUT RESISTANCE R(OUT) = "
  CarriageControl:;
 70 INPUT R9
- ScalarReference:R9
+ Reference:R9
 80 LET Z = R1/R9
- ScalarReference:Z
+ Reference:Z
  ScalarValue:R1
  ScalarValue:R9
  BinaryOperator:/
  AssignmentOperator:=
 90 LET Q = (SQR(Z) + SQR(Z - 1))^2
- ScalarReference:Q
+ Reference:Q
  ScalarValue:Z
  FunctionSqr
  ScalarValue:Z
@@ -35,7 +35,7 @@
  BinaryOperator:^
  AssignmentOperator:=
 100 LET M = 10*(LOG(Q)/LOG(10))
- ScalarReference:M
+ Reference:M
  NumericConstant:10
  ScalarValue:Q
  FunctionLog
@@ -55,16 +55,16 @@
  TextConstant:"ENTERED DESIRED LOSS IN DECIBELS"
  CarriageControl:;
 130 INPUT N
- ScalarReference:N
+ Reference:N
 135 LET N = INT(N)
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  FunctionInt
  AssignmentOperator:=
 140 REM COMPUTE T NETWORK
  Remark:COMPUTE T NETWORK
 150 LET T3 = 2*(SQR(N*R1*R9))/(N-1)
- ScalarReference:T3
+ Reference:T3
  NumericConstant:2
  ScalarValue:N
  ScalarValue:R1
@@ -79,7 +79,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 160 LET T1 = R1*((N+1)/(N-1)) - T3
- ScalarReference:T1
+ Reference:T1
  ScalarValue:R1
  ScalarValue:N
  NumericConstant:1
@@ -93,7 +93,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 170 LET T2 = R9*((N+1)/(N-1)) - T3
- ScalarReference:T2
+ Reference:T2
  ScalarValue:R9
  ScalarValue:N
  NumericConstant:1
@@ -109,7 +109,7 @@
 180 REM COMPUTE PI NETWORK
  Remark:COMPUTE PI NETWORK
 190 LET P3 = 0.5*(N-1)*SQR((R1*R9)/N)
- ScalarReference:P3
+ Reference:P3
  NumericConstant:0.5
  ScalarValue:N
  NumericConstant:1
@@ -124,7 +124,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 200 LET P1 = 1/(1/R1*((N+1)/(N-1)) - (1/P3))
- ScalarReference:P1
+ Reference:P1
  NumericConstant:1
  NumericConstant:1
  ScalarValue:R1
@@ -144,7 +144,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 210 LET P2 = 1/(1/R9*((N+1)/(N-1)) - (1/P3))
- ScalarReference:P2
+ Reference:P2
  NumericConstant:1
  NumericConstant:1
  ScalarValue:R9
@@ -239,7 +239,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 370 INPUT Q
- ScalarReference:Q
+ Reference:Q
 380 IF Q = 1 THEN 400
  ScalarValue:Q
  NumericConstant:1

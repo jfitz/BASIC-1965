@@ -46,11 +46,11 @@
  TextConstant:"SULPHUR(S), NITROGEN(N) IN THAT ORDER"
  CarriageControl:NL
 160 INPUT C,H,O,S,N
- ScalarReference:C
- ScalarReference:H
- ScalarReference:O
- ScalarReference:S
- ScalarReference:N
+ Reference:C
+ Reference:H
+ Reference:O
+ Reference:S
+ Reference:N
 170 PRINT "ENTER PERCENTAGE EXCESS AIR, IF ZERO"
  ITEMS
  TextConstant:"ENTER PERCENTAGE EXCESS AIR, IF ZERO"
@@ -60,9 +60,9 @@
  TextConstant:"ENTER 0. EXAMPLE: - 34% ENTER AS 34"
  CarriageControl:NL
 190 INPUT E
- ScalarReference:E
+ Reference:E
 200 LET E = 1 + (E/100)
- ScalarReference:E
+ Reference:E
  NumericConstant:1
  ScalarValue:E
  NumericConstant:100
@@ -70,7 +70,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 210 LET O2 = C + S + (H/4) - (O/2)
- ScalarReference:O2
+ Reference:O2
  ScalarValue:C
  ScalarValue:S
  BinaryOperator:+
@@ -84,7 +84,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 220 LET A = O2*E*4.762
- ScalarReference:A
+ Reference:A
  ScalarValue:O2
  ScalarValue:E
  BinaryOperator:*
@@ -92,13 +92,13 @@
  BinaryOperator:*
  AssignmentOperator:=
 230 LET A1 = 1.8094*A
- ScalarReference:A1
+ Reference:A1
  NumericConstant:1.8094
  ScalarValue:A
  BinaryOperator:*
  AssignmentOperator:=
 240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
- ScalarReference:F
+ Reference:F
  NumericConstant:0.7507
  ScalarValue:C
  BinaryOperator:*
@@ -112,7 +112,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 250 LET F = (0.875*N) + O + F
- ScalarReference:F
+ Reference:F
  NumericConstant:0.875
  ScalarValue:N
  BinaryOperator:*
@@ -122,13 +122,13 @@
  BinaryOperator:+
  AssignmentOperator:=
 260 LET A1 = A1/F
- ScalarReference:A1
+ Reference:A1
  ScalarValue:A1
  ScalarValue:F
  BinaryOperator:/
  AssignmentOperator:=
 270 LET M = A + (H/4) + (O/2) + (N/2)
- ScalarReference:M
+ Reference:M
  ScalarValue:A
  ScalarValue:H
  NumericConstant:4
@@ -144,7 +144,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 280 LET C2 = (C*100)/M
- ScalarReference:C2
+ Reference:C2
  ScalarValue:C
  NumericConstant:100
  BinaryOperator:*
@@ -152,7 +152,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 290 LET S2 = (S*100)/M
- ScalarReference:S2
+ Reference:S2
  ScalarValue:S
  NumericConstant:100
  BinaryOperator:*
@@ -160,7 +160,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 300 LET H2 = (H*100)/M
- ScalarReference:H2
+ Reference:H2
  ScalarValue:H
  NumericConstant:100
  BinaryOperator:*
@@ -168,7 +168,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 310 LET O3 = (100*(E-1)*O2)/M
- ScalarReference:O3
+ Reference:O3
  NumericConstant:100
  ScalarValue:E
  NumericConstant:1
@@ -180,7 +180,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
- ScalarReference:N2
+ Reference:N2
  NumericConstant:100
  NumericConstant:3.762
  ScalarValue:E

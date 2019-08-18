@@ -9,10 +9,10 @@
  FunctionSqr
 20
 100 READ X0, X1, Y0, H
- ScalarReference:X0
- ScalarReference:X1
- ScalarReference:Y0
- ScalarReference:H
+ Reference:X0
+ Reference:X1
+ Reference:Y0
+ Reference:H
 110 PRINT " X", " Y"
  ITEMS
  TextConstant:" X"
@@ -29,7 +29,7 @@
  ScalarValue:Y0
  CarriageControl:NL
 140 LET Y = Y0
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Y0
  AssignmentOperator:=
 150
@@ -39,17 +39,17 @@
  end:     ["ScalarValue:X1", "ScalarValue:H", "BinaryOperator:-"]
  step:    ["ScalarValue:H"]
 170 LET D1 = FNF(X,Y)
- ScalarReference:D1
+ Reference:D1
  ScalarValue:X
  ScalarValue:Y
  UserFunction
  AssignmentOperator:=
 180 LET Y1 = Y
- ScalarReference:Y1
+ Reference:Y1
  ScalarValue:Y
  AssignmentOperator:=
 190 LET Y = Y + D1*H/2
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Y
  ScalarValue:D1
  ScalarValue:H
@@ -59,7 +59,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 200 LET D2 = FNF(X+H/2,Y)
- ScalarReference:D2
+ Reference:D2
  ScalarValue:X
  ScalarValue:H
  NumericConstant:2
@@ -69,7 +69,7 @@
  UserFunction
  AssignmentOperator:=
 210 LET Y = Y1 + D2*H
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Y1
  ScalarValue:D2
  ScalarValue:H

@@ -7,11 +7,11 @@
  TextConstant:"ENTER VALUES FOR A, B AND C"
  CarriageControl:NL
 40 INPUT A,B,C
- ScalarReference:A
- ScalarReference:B
- ScalarReference:C
+ Reference:A
+ Reference:B
+ Reference:C
 50 LET D = ((B^2) - (4*A*C))/(4*A^2)
- ScalarReference:D
+ Reference:D
  ScalarValue:B
  NumericConstant:2
  BinaryOperator:^
@@ -33,7 +33,7 @@
  NumericConstant:0
  BinaryOperator:>=
 70 LET X = -B/(2*A)
- ScalarReference:X
+ Reference:X
  ScalarValue:B
  UnaryOperator:-
  NumericConstant:2
@@ -42,7 +42,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
- ScalarReference:Y
+ Reference:Y
  NumericConstant:4
  ScalarValue:A
  BinaryOperator:*
@@ -77,7 +77,7 @@
 120 GOTO 220
  LineNumber:220
 130 LET E = - B/(2*A)
- ScalarReference:E
+ Reference:E
  ScalarValue:B
  UnaryOperator:-
  NumericConstant:2
@@ -90,7 +90,7 @@
  NumericConstant:0
  BinaryOperator:>=
 150 LET Z = E - SQR(D)
- ScalarReference:Z
+ Reference:Z
  ScalarValue:E
  ScalarValue:D
  FunctionSqr
@@ -99,14 +99,14 @@
 160 GOTO 180
  LineNumber:180
 170 LET Z = E + SQR(D)
- ScalarReference:Z
+ Reference:Z
  ScalarValue:E
  ScalarValue:D
  FunctionSqr
  BinaryOperator:+
  AssignmentOperator:=
 180 LET W = C/(Z*A)
- ScalarReference:W
+ Reference:W
  ScalarValue:C
  ScalarValue:Z
  ScalarValue:A
@@ -138,7 +138,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 240 INPUT L
- ScalarReference:L
+ Reference:L
 250 IF L = 1 THEN 270
  ScalarValue:L
  NumericConstant:1

@@ -7,11 +7,11 @@
 40 REM THEN M(T) IS EQUAL TO THE HARMONIC MEAN
  Remark:THEN M(T) IS EQUAL TO THE HARMONIC MEAN
 50 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 60 LET N = 0
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "T = ";
@@ -19,19 +19,19 @@
  TextConstant:"T = "
  CarriageControl:;
 80 INPUT T
- ScalarReference:T
+ Reference:T
 90 PRINT "INPUT SAMPLE";
  ITEMS
  TextConstant:"INPUT SAMPLE"
  CarriageControl:;
 100 INPUT X
- ScalarReference:X
+ Reference:X
 110 IF X = 0 THEN 150
  ScalarValue:X
  NumericConstant:0
  BinaryOperator:=
 120 LET J = J + (X^T)
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:X
  ScalarValue:T
@@ -39,7 +39,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 130 LET N = N + 1
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:1
  BinaryOperator:+
@@ -47,7 +47,7 @@
 140 GOTO 90
  LineNumber:90
 150 LET G = (J/N)^(1/T)
- ScalarReference:G
+ Reference:G
  ScalarValue:J
  ScalarValue:N
  BinaryOperator:/
@@ -78,7 +78,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 200 INPUT L
- ScalarReference:L
+ Reference:L
 210 IF L = 1 THEN 230
  ScalarValue:L
  NumericConstant:1

@@ -1,8 +1,8 @@
 100 READ M, C
- ScalarReference:M
- ScalarReference:C
+ Reference:M
+ Reference:C
 110 LET M1 = M + C/100
- ScalarReference:M1
+ Reference:M1
  ScalarValue:M
  ScalarValue:C
  NumericConstant:100
@@ -10,20 +10,20 @@
  BinaryOperator:+
  AssignmentOperator:=
 120 LET I = M1 * 39.37
- ScalarReference:I
+ Reference:I
  ScalarValue:M1
  NumericConstant:39.37
  BinaryOperator:*
  AssignmentOperator:=
 130 LET F = INT(I/12)
- ScalarReference:F
+ Reference:F
  ScalarValue:I
  NumericConstant:12
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 140 LET I = I - 12*F
- ScalarReference:I
+ Reference:I
  ScalarValue:I
  NumericConstant:12
  ScalarValue:F

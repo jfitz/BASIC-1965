@@ -3,19 +3,19 @@
 20 REM DEVIATION AND STANDARD ERROR FOR GROUPED DATA
  Remark:DEVIATION AND STANDARD ERROR FOR GROUPED DATA
 30 LET A = 0
- ScalarReference:A
+ Reference:A
  NumericConstant:0
  AssignmentOperator:=
 40 LET B = 0
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 50 LET C = 0
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 60 LET D = 0
- ScalarReference:D
+ Reference:D
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
@@ -23,38 +23,38 @@
  TextConstant:"ENTER SAMPLE VALUE AND FREQUENCY"
  CarriageControl:;
 80 INPUT X,F
- ScalarReference:X
- ScalarReference:F
+ Reference:X
+ Reference:F
 90 IF F <= 0 THEN 170
  ScalarValue:F
  NumericConstant:0
  BinaryOperator:<=
 100 LET A = A + 1
- ScalarReference:A
+ Reference:A
  ScalarValue:A
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 110 LET B = B + F
- ScalarReference:B
+ Reference:B
  ScalarValue:B
  ScalarValue:F
  BinaryOperator:+
  AssignmentOperator:=
 120 LET G = X*F
- ScalarReference:G
+ Reference:G
  ScalarValue:X
  ScalarValue:F
  BinaryOperator:*
  AssignmentOperator:=
 130 LET C = C + G
- ScalarReference:C
+ Reference:C
  ScalarValue:C
  ScalarValue:G
  BinaryOperator:+
  AssignmentOperator:=
 140 LET E = (X^2)*F
- ScalarReference:E
+ Reference:E
  ScalarValue:X
  NumericConstant:2
  BinaryOperator:^
@@ -62,7 +62,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 150 LET D = D + E
- ScalarReference:D
+ Reference:D
  ScalarValue:D
  ScalarValue:E
  BinaryOperator:+
@@ -70,13 +70,13 @@
 160 GOTO 70
  LineNumber:70
 170 LET H = C/B
- ScalarReference:H
+ Reference:H
  ScalarValue:C
  ScalarValue:B
  BinaryOperator:/
  AssignmentOperator:=
 180 LET I = SQR(D - (B*(H^2)))
- ScalarReference:I
+ Reference:I
  ScalarValue:D
  ScalarValue:B
  ScalarValue:H
@@ -87,7 +87,7 @@
  FunctionSqr
  AssignmentOperator:=
 190 LET J = I/SQR(B)
- ScalarReference:J
+ Reference:J
  ScalarValue:I
  ScalarValue:B
  FunctionSqr
@@ -128,7 +128,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 270 INPUT L
- ScalarReference:L
+ Reference:L
 280 IF L = 1 THEN 300
  ScalarValue:L
  NumericConstant:1

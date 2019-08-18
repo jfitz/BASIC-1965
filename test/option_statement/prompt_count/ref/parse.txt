@@ -1,10 +1,10 @@
 10 REM TEST OPTION PROMPT_COUNT
  Remark:TEST OPTION PROMPT_COUNT
 110 INPUT "ENTER 4 NUMBERS: "; A1, A2, A3, A4
- ScalarReference:A1
- ScalarReference:A2
- ScalarReference:A3
- ScalarReference:A4
+ Reference:A1
+ Reference:A2
+ Reference:A3
+ Reference:A4
 120 PRINT "YOU ENTERED: "; A1; A2; A3; A4
  ITEMS
  TextConstant:"YOU ENTERED: "
@@ -20,10 +20,10 @@
 200 OPTION PROMPT_COUNT TRUE
  BooleanConstant:true
 210 INPUT "ENTER 4 NUMBERS: "; B1, B2, B3, B4
- ScalarReference:B1
- ScalarReference:B2
- ScalarReference:B3
- ScalarReference:B4
+ Reference:B1
+ Reference:B2
+ Reference:B3
+ Reference:B4
 220 PRINT "YOU ENTERED: "; B1; B2; B3; B4
  ITEMS
  TextConstant:"YOU ENTERED: "

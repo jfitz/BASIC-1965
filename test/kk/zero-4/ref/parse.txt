@@ -19,26 +19,26 @@
 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
  Remark:DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
 20 READ A,B
- ScalarReference:A
- ScalarReference:B
+ Reference:A
+ Reference:B
 22 GOSUB 200
  LineNumber:200
 26 LET X(1+S) = A
  NumericConstant:1
  ScalarValue:S
  BinaryOperator:+
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
  ScalarValue:S
  BinaryOperator:-
- ScalarReference:X
+ Reference:X
  ScalarValue:B
  AssignmentOperator:=
 30 LET X = (X(0)+X(2))/2
- ScalarReference:X
+ Reference:X
  NumericConstant:0
  ScalarValue:X
  NumericConstant:2
@@ -48,7 +48,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 35 LET F = SGN(FNF(X))
- ScalarReference:F
+ Reference:F
  ScalarValue:X
  UserFunction
  FunctionSgn
@@ -61,7 +61,7 @@
  NumericConstant:1
  ScalarValue:F
  BinaryOperator:+
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  AssignmentOperator:=
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
@@ -92,13 +92,13 @@
 110 STOP
  
 200 LET S = SGN(FNF(A))
- ScalarReference:S
+ Reference:S
  ScalarValue:A
  UserFunction
  FunctionSgn
  AssignmentOperator:=
 210 LET T = SGN(FNF(B))
- ScalarReference:T
+ Reference:T
  ScalarValue:B
  UserFunction
  FunctionSgn
@@ -118,7 +118,7 @@
 240 RETURN
  
 300 LET L = B-A
- ScalarReference:L
+ Reference:L
  ScalarValue:B
  ScalarValue:A
  BinaryOperator:-
@@ -128,7 +128,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 320 LET X = A + RND()*L
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  FunctionRnd
  ScalarValue:L
@@ -152,7 +152,7 @@
 360 STOP
  
 370 LET B = X
- ScalarReference:B
+ Reference:B
  ScalarValue:X
  AssignmentOperator:=
 380 RETURN
@@ -162,13 +162,13 @@
  NumericConstant:0
  BinaryOperator:=
 410 LET X = B
- ScalarReference:X
+ Reference:X
  ScalarValue:B
  AssignmentOperator:=
 420 GOTO 100
  LineNumber:100
 430 LET X = A
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  AssignmentOperator:=
 440 GOTO 100

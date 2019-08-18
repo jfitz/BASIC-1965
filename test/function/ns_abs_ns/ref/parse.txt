@@ -7,11 +7,11 @@
  TextConstant:"ABSOLUTE"
  CarriageControl:NL
 20 LET A=10
- ScalarReference:A
+ Reference:A
  NumericConstant:10
  AssignmentOperator:=
 22 LET A1=ABS(A)
- ScalarReference:A1
+ Reference:A1
  ScalarValue:A
  FunctionAbs
  AssignmentOperator:=
@@ -22,12 +22,12 @@
  ScalarValue:A1
  CarriageControl:NL
 30 LET B=-20
- ScalarReference:B
+ Reference:B
  NumericConstant:20
  UnaryOperator:-
  AssignmentOperator:=
 32 LET B1=ABS(B)
- ScalarReference:B1
+ Reference:B1
  ScalarValue:B
  FunctionAbs
  AssignmentOperator:=
@@ -38,11 +38,11 @@
  ScalarValue:B1
  CarriageControl:NL
 40 LET C=0
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 42 LET C1=ABS(C)
- ScalarReference:C1
+ Reference:C1
  ScalarValue:C
  FunctionAbs
  AssignmentOperator:=

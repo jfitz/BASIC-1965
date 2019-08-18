@@ -9,8 +9,8 @@
  TextConstant:"ENTER N,R"
  CarriageControl:;
 50 INPUT N,R
- ScalarReference:N
- ScalarReference:R
+ Reference:N
+ Reference:R
 60 IF N < R THEN 270
  ScalarValue:N
  ScalarValue:R
@@ -20,17 +20,17 @@
  NumericConstant:0
  BinaryOperator:<
 80 LET T = N
- ScalarReference:T
+ Reference:T
  ScalarValue:N
  AssignmentOperator:=
 90 GOSUB 310
  LineNumber:310
 100 LET A = T
- ScalarReference:A
+ Reference:A
  ScalarValue:T
  AssignmentOperator:=
 110 LET T = N - R
- ScalarReference:T
+ Reference:T
  ScalarValue:N
  ScalarValue:R
  BinaryOperator:-
@@ -38,23 +38,23 @@
 120 GOSUB 310
  LineNumber:310
 130 LET B = T
- ScalarReference:B
+ Reference:B
  ScalarValue:T
  AssignmentOperator:=
 140 LET P = A/B
- ScalarReference:P
+ Reference:P
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:/
  AssignmentOperator:=
 150 LET T = R
- ScalarReference:T
+ Reference:T
  ScalarValue:R
  AssignmentOperator:=
 160 GOSUB 310
  LineNumber:310
 170 LET C = A/(T*B)
- ScalarReference:C
+ Reference:C
  ScalarValue:A
  ScalarValue:T
  ScalarValue:B
@@ -81,7 +81,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 220 INPUT L
- ScalarReference:L
+ Reference:L
 230 IF L = 1 THEN 250
  ScalarValue:L
  NumericConstant:1
@@ -114,7 +114,7 @@
  NumericConstant:1
  BinaryOperator:=
 330 LET J = 1
- ScalarReference:J
+ Reference:J
  NumericConstant:1
  AssignmentOperator:=
 340 FOR I = 2 TO T
@@ -122,7 +122,7 @@
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:T"]
 350 LET J = J*I
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:I
  BinaryOperator:*
@@ -130,13 +130,13 @@
 360 NEXT I
  VariableName:I
 370 LET T = J
- ScalarReference:T
+ Reference:T
  ScalarValue:J
  AssignmentOperator:=
 380 GOTO 400
  LineNumber:400
 390 LET T = 1
- ScalarReference:T
+ Reference:T
  NumericConstant:1
  AssignmentOperator:=
 400 RETURN

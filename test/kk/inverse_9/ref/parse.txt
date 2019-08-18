@@ -1,5 +1,5 @@
 10 READ N
- ScalarReference:N
+ Reference:N
 20 FOR I = 1 TO N-1
  control: VariableName:I
  start:   ["NumericConstant:1"]
@@ -11,7 +11,7 @@
 40 LET P(I,J) = I*J - INT(I*J/N)*N
  ScalarValue:I
  ScalarValue:J
- ScalarReference:P
+ Reference:P
  ScalarValue:I
  ScalarValue:J
  BinaryOperator:*

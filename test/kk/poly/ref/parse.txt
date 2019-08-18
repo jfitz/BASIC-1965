@@ -7,32 +7,32 @@
  NumericConstant:2
  Declaration:T
 20 READ N
- ScalarReference:N
+ Reference:N
 30 FOR I = 0 TO N
  control: VariableName:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
 40 READ A(I)
  ScalarValue:I
- ScalarReference:A
+ Reference:A
 50 NEXT I
  VariableName:I
 60 READ X9
- ScalarReference:X9
+ Reference:X9
 70 FOR J = 1 TO X9
  control: VariableName:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
 80 READ X(J)
  ScalarValue:J
- ScalarReference:X
+ Reference:X
 90 NEXT J
  VariableName:J
 95
 100 REM  MAIN ROUTINE.
  Remark: MAIN ROUTINE.
 110 LET K = 0
- ScalarReference:K
+ Reference:K
  NumericConstant:0
  AssignmentOperator:=
 120 GOSUB 500
@@ -40,7 +40,7 @@
 130 GOSUB 2000
  LineNumber:2000
 140 LET K = 1
- ScalarReference:K
+ Reference:K
  NumericConstant:1
  AssignmentOperator:=
 150 GOSUB 500
@@ -48,7 +48,7 @@
 160 GOSUB 2000
  LineNumber:2000
 170 LET K = 2
- ScalarReference:K
+ Reference:K
  NumericConstant:2
  AssignmentOperator:=
 180 GOSUB 500
@@ -102,7 +102,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
 520 LET X = X(J)
- ScalarReference:X
+ Reference:X
  ScalarValue:J
  ScalarValue:X
  AssignmentOperator:=
@@ -111,7 +111,7 @@
 540 LET T(J,K) = Y
  ScalarValue:J
  ScalarValue:K
- ScalarReference:T
+ Reference:T
  ScalarValue:Y
  AssignmentOperator:=
 550 NEXT J
@@ -122,7 +122,7 @@
 1000 REM  EVALUATE.
  Remark: EVALUATE.
 1010 LET Y = 0
- ScalarReference:Y
+ Reference:Y
  NumericConstant:0
  AssignmentOperator:=
 1020 FOR I = 0 TO N
@@ -130,7 +130,7 @@
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
 1030 LET Y = Y*X + A(I)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Y
  ScalarValue:X
  BinaryOperator:*
@@ -151,7 +151,7 @@
  end:     ["ScalarValue:N"]
 2020 LET A(I) = A(I)*(N-I)
  ScalarValue:I
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  ScalarValue:A
  ScalarValue:N
@@ -162,7 +162,7 @@
 2030 NEXT I
  VariableName:I
 2040 LET N = N-1
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:1
  BinaryOperator:-

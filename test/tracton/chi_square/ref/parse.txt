@@ -5,7 +5,7 @@
 30 REM EXPECTED FREQUENCIES
  Remark:EXPECTED FREQUENCIES
 40 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "OBSERVED FREQUENCIES = "
@@ -13,19 +13,19 @@
  TextConstant:"OBSERVED FREQUENCIES = "
  CarriageControl:NL
 60 INPUT D
- ScalarReference:D
+ Reference:D
 70 PRINT "EXPECTED FREQUENCIES = "
  ITEMS
  TextConstant:"EXPECTED FREQUENCIES = "
  CarriageControl:NL
 80 INPUT E
- ScalarReference:E
+ Reference:E
 90 IF E = 0 THEN 130
  ScalarValue:E
  NumericConstant:0
  BinaryOperator:=
 100 LET K = ((D - E)^2)/E
- ScalarReference:K
+ Reference:K
  ScalarValue:D
  ScalarValue:E
  BinaryOperator:-
@@ -35,7 +35,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 110 LET J = J + K
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:K
  BinaryOperator:+
@@ -57,7 +57,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 160 INPUT L
- ScalarReference:L
+ Reference:L
 170 IF L = 1 THEN 190
  ScalarValue:L
  NumericConstant:1

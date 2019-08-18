@@ -7,19 +7,19 @@
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
- ScalarReference:A1
- ScalarReference:A2
- ScalarReference:A3
+ Reference:A1
+ Reference:A2
+ Reference:A3
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
  ITEMS
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
- ScalarReference:B1
- ScalarReference:B2
- ScalarReference:B3
+ Reference:B1
+ Reference:B2
+ Reference:B3
 70 LET X = (A2*B3) - (A3*B2)
- ScalarReference:X
+ Reference:X
  ScalarValue:A2
  ScalarValue:B3
  BinaryOperator:*
@@ -29,7 +29,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 80 LET Y = (A3*B1) - (A1*B3)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:A3
  ScalarValue:B1
  BinaryOperator:*
@@ -39,7 +39,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 90 LET Z = (A1*B2) - (A2*B1)
- ScalarReference:Z
+ Reference:Z
  ScalarValue:A1
  ScalarValue:B2
  BinaryOperator:*
@@ -75,7 +75,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 140 INPUT L
- ScalarReference:L
+ Reference:L
 150 IF L = 1 THEN 170
  ScalarValue:L
  NumericConstant:1

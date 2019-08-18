@@ -9,7 +9,7 @@
  end:     ["NumericConstant:100"]
 40    READ L(I)
  ScalarValue:I
- ScalarReference:L
+ Reference:L
 50    IF L(I) < 0 THEN 70
  ScalarValue:I
  ScalarValue:L
@@ -18,7 +18,7 @@
 60 NEXT I
  VariableName:I
 70 LET I9 = I-1
- ScalarReference:I9
+ Reference:I9
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:-
@@ -29,15 +29,15 @@
  CarriageControl:;
 110 INPUT K(1), K(2), K(3), K(4), K(5)
  NumericConstant:1
- ScalarReference:K
+ Reference:K
  NumericConstant:2
- ScalarReference:K
+ Reference:K
  NumericConstant:3
- ScalarReference:K
+ Reference:K
  NumericConstant:4
- ScalarReference:K
+ Reference:K
  NumericConstant:5
- ScalarReference:K
+ Reference:K
 120 PRINT
  ITEMS
  CarriageControl:NL
@@ -46,7 +46,7 @@
  TextConstant:"TYPE '0' FOR ENCODING, '1' FOR DECODING"
  CarriageControl:;
 140 INPUT F
- ScalarReference:F
+ Reference:F
 145 PRINT
  ITEMS
  CarriageControl:NL
@@ -64,7 +64,7 @@
  end:     ["NumericConstant:5"]
 180    LET K(J) = 27-K(J)
  ScalarValue:J
- ScalarReference:K
+ Reference:K
  NumericConstant:27
  ScalarValue:J
  ScalarValue:K
@@ -82,7 +82,7 @@
  ITEMS
  CarriageControl:NL
 215 LET J = 1
- ScalarReference:J
+ Reference:J
  NumericConstant:1
  AssignmentOperator:=
 220 FOR I = 1 TO I9
@@ -90,7 +90,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I9"]
 230    LET X = L(I)+K(J)
- ScalarReference:X
+ Reference:X
  ScalarValue:I
  ScalarValue:L
  ScalarValue:J
@@ -102,7 +102,7 @@
  NumericConstant:26
  BinaryOperator:<=
 250    LET X = X-27
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  NumericConstant:27
  BinaryOperator:-
@@ -110,7 +110,7 @@
 260    GOSUB 1000
  LineNumber:1000
 270    LET J = J+1
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
@@ -120,7 +120,7 @@
  NumericConstant:5
  BinaryOperator:<=
 290    LET J = 1
- ScalarReference:J
+ Reference:J
  NumericConstant:1
  AssignmentOperator:=
 300 NEXT I
@@ -129,7 +129,7 @@
  ITEMS
  CarriageControl:NL
 315 LET J = 1
- ScalarReference:J
+ Reference:J
  NumericConstant:1
  AssignmentOperator:=
 320 FOR I = 1 TO I9
@@ -137,7 +137,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I9"]
 330    LET X = L(I)+K(J)
- ScalarReference:X
+ Reference:X
  ScalarValue:I
  ScalarValue:L
  ScalarValue:J
@@ -149,7 +149,7 @@
  NumericConstant:26
  BinaryOperator:<=
 350    LET X = X-27
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  NumericConstant:27
  BinaryOperator:-
@@ -159,7 +159,7 @@
  ScalarValue:X
  CarriageControl:;
 370    LET J = J+1
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
@@ -169,7 +169,7 @@
  NumericConstant:5
  BinaryOperator:<=
 390    LET J = 1
- ScalarReference:J
+ Reference:J
  NumericConstant:1
  AssignmentOperator:=
 400 NEXT I

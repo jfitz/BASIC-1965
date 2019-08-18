@@ -6,8 +6,8 @@
  NumericConstant:3
  Declaration:B
 120 MAT READ A,B
- MatrixReference:A
- MatrixReference:B
+ Reference:A
+ Reference:B
 130 PRINT "EXAMPLE 1"
  ITEMS
  TextConstant:"EXAMPLE 1"
@@ -22,12 +22,12 @@
  MatrixValue:B
  CarriageControl:,
 160 READ P, Q
- ScalarReference:P
- ScalarReference:Q
+ Reference:P
+ Reference:Q
 170 MAT READ A(P,Q)
  ScalarValue:P
  ScalarValue:Q
- MatrixReference:A
+ Reference:A
 180 PRINT "EXAMPLE 2"
  ITEMS
  TextConstant:"EXAMPLE 2"

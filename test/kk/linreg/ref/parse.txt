@@ -1,47 +1,47 @@
 100 LET X1 = 0
- ScalarReference:X1
+ Reference:X1
  NumericConstant:0
  AssignmentOperator:=
 110 LET X2 = 0
- ScalarReference:X2
+ Reference:X2
  NumericConstant:0
  AssignmentOperator:=
 120 LET Y1 = 0
- ScalarReference:Y1
+ Reference:Y1
  NumericConstant:0
  AssignmentOperator:=
 130 LET Y2 = 0
- ScalarReference:Y2
+ Reference:Y2
  NumericConstant:0
  AssignmentOperator:=
 140 LET Z = 0
- ScalarReference:Z
+ Reference:Z
  NumericConstant:0
  AssignmentOperator:=
 150
 160 READ N
- ScalarReference:N
+ Reference:N
 170 FOR I = 1 TO N
  control: VariableName:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 180    READ X, Y
- ScalarReference:X
- ScalarReference:Y
+ Reference:X
+ Reference:Y
 190    LET X1 = X1 + X
- ScalarReference:X1
+ Reference:X1
  ScalarValue:X1
  ScalarValue:X
  BinaryOperator:+
  AssignmentOperator:=
 200    LET Y1 = Y1 + Y
- ScalarReference:Y1
+ Reference:Y1
  ScalarValue:Y1
  ScalarValue:Y
  BinaryOperator:+
  AssignmentOperator:=
 210    LET X2 = X2 + X*X
- ScalarReference:X2
+ Reference:X2
  ScalarValue:X2
  ScalarValue:X
  ScalarValue:X
@@ -49,7 +49,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 220    LET Y2 = Y2 + Y*Y
- ScalarReference:Y2
+ Reference:Y2
  ScalarValue:Y2
  ScalarValue:Y
  ScalarValue:Y
@@ -57,7 +57,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 230    LET Z = Z + X*Y
- ScalarReference:Z
+ Reference:Z
  ScalarValue:Z
  ScalarValue:X
  ScalarValue:Y
@@ -68,19 +68,19 @@
  VariableName:I
 250
 260 LET X3 = X1/N
- ScalarReference:X3
+ Reference:X3
  ScalarValue:X1
  ScalarValue:N
  BinaryOperator:/
  AssignmentOperator:=
 265 LET Y3 = Y1/N
- ScalarReference:Y3
+ Reference:Y3
  ScalarValue:Y1
  ScalarValue:N
  BinaryOperator:/
  AssignmentOperator:=
 270 LET S1 = X2 - X1*X3
- ScalarReference:S1
+ Reference:S1
  ScalarValue:X2
  ScalarValue:X1
  ScalarValue:X3
@@ -88,7 +88,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 280 LET S2 = Y2 - Y1*Y3
- ScalarReference:S2
+ Reference:S2
  ScalarValue:Y2
  ScalarValue:Y1
  ScalarValue:Y3
@@ -96,7 +96,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 290 LET S = Z - X1*Y3
- ScalarReference:S
+ Reference:S
  ScalarValue:Z
  ScalarValue:X1
  ScalarValue:Y3
@@ -104,13 +104,13 @@
  BinaryOperator:-
  AssignmentOperator:=
 300 LET B = S/S1
- ScalarReference:B
+ Reference:B
  ScalarValue:S
  ScalarValue:S1
  BinaryOperator:/
  AssignmentOperator:=
 310 LET B1 = Y3 - B*X3
- ScalarReference:B1
+ Reference:B1
  ScalarValue:Y3
  ScalarValue:B
  ScalarValue:X3
@@ -118,7 +118,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 320 LET S3 = S2 - B*S
- ScalarReference:S3
+ Reference:S3
  ScalarValue:S2
  ScalarValue:B
  ScalarValue:S
@@ -126,7 +126,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 330 LET S4 = S3/(N-2)
- ScalarReference:S4
+ Reference:S4
  ScalarValue:S3
  ScalarValue:N
  NumericConstant:2

@@ -11,13 +11,13 @@
  TextConstant:"X = "
  CarriageControl:;
 50 INPUT X
- ScalarReference:X
+ Reference:X
 60 PRINT "Y = ";
  ITEMS
  TextConstant:"Y = "
  CarriageControl:;
 70 INPUT Y
- ScalarReference:Y
+ Reference:Y
 80 IF X + Y = 0 THEN 180
  ScalarValue:X
  ScalarValue:Y
@@ -33,14 +33,14 @@
  NumericConstant:0
  BinaryOperator:=
 110 LET W = ATN(Y/X)
- ScalarReference:W
+ Reference:W
  ScalarValue:Y
  ScalarValue:X
  BinaryOperator:/
  FunctionAtn
  AssignmentOperator:=
 120 LET W = (W*180)/3.14159
- ScalarReference:W
+ Reference:W
  ScalarValue:W
  NumericConstant:180
  BinaryOperator:*
@@ -48,7 +48,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 130 LET R = SQR(X^2 + Y^2)
- ScalarReference:R
+ Reference:R
  ScalarValue:X
  NumericConstant:2
  BinaryOperator:^
@@ -61,11 +61,11 @@
 140 GOTO 310
  LineNumber:310
 150 LET W = 0
- ScalarReference:W
+ Reference:W
  NumericConstant:0
  AssignmentOperator:=
 160 LET R = 0
- ScalarReference:R
+ Reference:R
  NumericConstant:0
  AssignmentOperator:=
 170 GOTO 310
@@ -75,23 +75,23 @@
  NumericConstant:0
  BinaryOperator:>
 190 LET W = - 90
- ScalarReference:W
+ Reference:W
  NumericConstant:90
  UnaryOperator:-
  AssignmentOperator:=
 200 LET R = ABS(Y)
- ScalarReference:R
+ Reference:R
  ScalarValue:Y
  FunctionAbs
  AssignmentOperator:=
 210 GOTO 310
  LineNumber:310
 220 LET W = 90
- ScalarReference:W
+ Reference:W
  NumericConstant:90
  AssignmentOperator:=
 230 LET R = Y
- ScalarReference:R
+ Reference:R
  ScalarValue:Y
  AssignmentOperator:=
 240 GOTO 310
@@ -101,22 +101,22 @@
  NumericConstant:0
  BinaryOperator:>
 260 LET W = 180
- ScalarReference:W
+ Reference:W
  NumericConstant:180
  AssignmentOperator:=
 270 LET R = ABS(X)
- ScalarReference:R
+ Reference:R
  ScalarValue:X
  FunctionAbs
  AssignmentOperator:=
 280 GOTO 310
  LineNumber:310
 290 LET W = 0
- ScalarReference:W
+ Reference:W
  NumericConstant:0
  AssignmentOperator:=
 300 LET R = X
- ScalarReference:R
+ Reference:R
  ScalarValue:X
  AssignmentOperator:=
 310 PRINT "POLAR COORDINATES"
@@ -144,7 +144,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 360 INPUT L
- ScalarReference:L
+ Reference:L
 370 IF L = 1 THEN 390
  ScalarValue:L
  NumericConstant:1

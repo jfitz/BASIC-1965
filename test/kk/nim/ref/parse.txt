@@ -11,7 +11,7 @@
  end:     ["NumericConstant:3"]
 150    LET N(P) = INT(10*RND(0))+6
  ScalarValue:P
- ScalarReference:N
+ Reference:N
  NumericConstant:10
  NumericConstant:0
  FunctionRnd
@@ -39,11 +39,11 @@
  TextConstant:"PILE, NUMBER TAKEN"
  CarriageControl:;
 230 INPUT P, N
- ScalarReference:P
- ScalarReference:N
+ Reference:P
+ Reference:N
 240 LET N(P) = N(P) - N
  ScalarValue:P
- ScalarReference:N
+ Reference:N
  ScalarValue:P
  ScalarValue:N
  ScalarValue:N
@@ -60,7 +60,7 @@
  CarriageControl:NL
 270 LET N(P) = N(P) + N
  ScalarValue:P
- ScalarReference:N
+ Reference:N
  ScalarValue:P
  ScalarValue:N
  ScalarValue:N
@@ -105,7 +105,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 390    LET X = N(P)
- ScalarReference:X
+ Reference:X
  ScalarValue:P
  ScalarValue:N
  AssignmentOperator:=
@@ -115,7 +115,7 @@
  end:     ["NumericConstant:1"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 410       LET Y = INT(X/2)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:X
  NumericConstant:2
  BinaryOperator:/
@@ -124,7 +124,7 @@
 420       LET B(P,J) = X - 2*Y
  ScalarValue:P
  ScalarValue:J
- ScalarReference:B
+ Reference:B
  ScalarValue:X
  NumericConstant:2
  ScalarValue:Y
@@ -132,7 +132,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 430       LET X = Y
- ScalarReference:X
+ Reference:X
  ScalarValue:Y
  AssignmentOperator:=
 440    NEXT J
@@ -148,7 +148,7 @@
  end:     ["NumericConstant:4"]
 490    LET S(J) = B(1,J) + B(2,J) + B(3,J)
  ScalarValue:J
- ScalarReference:S
+ Reference:S
  NumericConstant:1
  ScalarValue:J
  ScalarValue:B
@@ -163,7 +163,7 @@
  AssignmentOperator:=
 500    LET S(J) = S(J) - 2*INT(S(J)/2)
  ScalarValue:J
- ScalarReference:S
+ Reference:S
  ScalarValue:J
  ScalarValue:S
  NumericConstant:2
@@ -204,7 +204,7 @@
  NumericConstant:0
  BinaryOperator:=
 570    LET N = INT(N(P)*RND(0)) + 1
- ScalarReference:N
+ Reference:N
  ScalarValue:P
  ScalarValue:N
  NumericConstant:0
@@ -245,7 +245,7 @@
 670 NEXT P
  VariableName:P
 680 LET N = 0
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 690 FOR J = J TO 4
@@ -264,7 +264,7 @@
  NumericConstant:0
  BinaryOperator:=
 720    LET N = N + 2^(4-J)
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:2
  NumericConstant:4
@@ -276,7 +276,7 @@
 730    GOTO 750
  LineNumber:750
 740    LET N = N - 2^(4-J)
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:2
  NumericConstant:4
@@ -308,7 +308,7 @@
  CarriageControl:NL
 810 LET N(P) = N(P) - N
  ScalarValue:P
- ScalarReference:N
+ Reference:N
  ScalarValue:P
  ScalarValue:N
  ScalarValue:N

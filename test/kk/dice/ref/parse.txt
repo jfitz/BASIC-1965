@@ -21,7 +21,7 @@
  NumericConstant:11
  BinaryOperator:=
 70    LET D9 = D
- ScalarReference:D9
+ Reference:D9
  ScalarValue:D
  AssignmentOperator:=
 100   GOSUB 500
@@ -66,7 +66,7 @@
 500 REM ROLL DICE
  Remark:ROLL DICE
 510 LET D1 = INT(6*RND(1)+1)
- ScalarReference:D1
+ Reference:D1
  NumericConstant:6
  NumericConstant:1
  FunctionRnd
@@ -76,7 +76,7 @@
  FunctionInt
  AssignmentOperator:=
 520 LET D2 = INT(6*RND(1)+1)
- ScalarReference:D2
+ Reference:D2
  NumericConstant:6
  NumericConstant:1
  FunctionRnd
@@ -94,7 +94,7 @@
  ScalarValue:D2
  CarriageControl:NL
 530 LET D = D1 + D2
- ScalarReference:D
+ Reference:D
  ScalarValue:D1
  ScalarValue:D2
  BinaryOperator:+

@@ -4,7 +4,7 @@
  end:     ["NumericConstant:5"]
 20 LET N(D) = 0
  ScalarValue:D
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 30 NEXT D
@@ -14,9 +14,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 50 READ X
- ScalarReference:X
+ Reference:X
 60 LET D = INT(X/1E4)
- ScalarReference:D
+ Reference:D
  ScalarValue:X
  NumericConstant:10000
  BinaryOperator:/
@@ -24,7 +24,7 @@
  AssignmentOperator:=
 70 LET N(D) = N(D) + 1
  ScalarValue:D
- ScalarReference:N
+ Reference:N
  ScalarValue:D
  ScalarValue:N
  NumericConstant:1

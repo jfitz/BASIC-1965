@@ -8,18 +8,18 @@
  TextConstant:"ENTER DATE AS M,D,Y"
  CarriageControl:NL
 40 INPUT M,D,Y
- ScalarReference:M
- ScalarReference:D
- ScalarReference:Y
+ Reference:M
+ Reference:D
+ Reference:Y
 50 PRINT "ENTER TIME AS H,M(24 HOUR CLOCK)"
  ITEMS
  TextConstant:"ENTER TIME AS H,M(24 HOUR CLOCK)"
  CarriageControl:NL
 60 INPUT H,M1
- ScalarReference:H
- ScalarReference:M1
+ Reference:H
+ Reference:M1
 70 LET N = M + (D/30) + (Y/100) + H + (M1/60)
- ScalarReference:N
+ Reference:N
  ScalarValue:M
  ScalarValue:D
  NumericConstant:30
@@ -41,14 +41,14 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
 90 LET K = N*RND(0)
- ScalarReference:K
+ Reference:K
  ScalarValue:N
  NumericConstant:0
  FunctionRnd
  BinaryOperator:*
  AssignmentOperator:=
 100 LET K = K - INT(K)
- ScalarReference:K
+ Reference:K
  ScalarValue:K
  ScalarValue:K
  FunctionInt
@@ -56,7 +56,7 @@
  AssignmentOperator:=
 110 LET C(I) = 1 + INT(2*K)
  ScalarValue:I
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  NumericConstant:2
  ScalarValue:K

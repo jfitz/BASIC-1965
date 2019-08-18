@@ -1,18 +1,18 @@
 100 READ A,B,C,D
- ScalarReference:A
- ScalarReference:B
- ScalarReference:C
- ScalarReference:D
+ Reference:A
+ Reference:B
+ Reference:C
+ Reference:D
 110 READ T8,T9,P
- ScalarReference:T8
- ScalarReference:T9
- ScalarReference:P
+ Reference:T8
+ Reference:T9
+ Reference:P
 120 DIM G(60,20)
  NumericConstant:60
  NumericConstant:20
  Declaration:G
 130 MAT G = ZER
- MatrixReference:G
+ Reference:G
  FunctionZer
  AssignmentOperator:=
 140 DATA 4,2,1,3
@@ -33,8 +33,8 @@
  FunctionInt
 170
 200 READ X,Y
- ScalarReference:X
- ScalarReference:Y
+ Reference:X
+ Reference:Y
 210 LET G(FNR(X*1.5),FNR(Y)) = 1
  ScalarValue:X
  NumericConstant:1.5
@@ -42,7 +42,7 @@
  UserFunction
  ScalarValue:Y
  UserFunction
- ScalarReference:G
+ Reference:G
  NumericConstant:1
  AssignmentOperator:=
 220 FOR I = 1 TO P
@@ -55,7 +55,7 @@
  end:     ["ScalarValue:T9", "ScalarValue:P", "BinaryOperator:/"]
  step:    ["ScalarValue:T8"]
 240 LET X = X + (A*X - B*X*Y)*T8
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  ScalarValue:A
  ScalarValue:X
@@ -71,7 +71,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Y
  ScalarValue:C
  ScalarValue:X
@@ -95,7 +95,7 @@
  UserFunction
  ScalarValue:Y
  UserFunction
- ScalarReference:G
+ Reference:G
  NumericConstant:1
  AssignmentOperator:=
 280 NEXT I

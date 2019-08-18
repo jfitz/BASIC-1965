@@ -7,17 +7,17 @@
  TextConstant:"ENTER A11, A12"
  CarriageControl:;
 40 INPUT A,B
- ScalarReference:A
- ScalarReference:B
+ Reference:A
+ Reference:B
 50 PRINT "A21, A22";
  ITEMS
  TextConstant:"A21, A22"
  CarriageControl:;
 60 INPUT C,D
- ScalarReference:C
- ScalarReference:D
+ Reference:C
+ Reference:D
 70 LET E = (D*A) - (B*C)
- ScalarReference:E
+ Reference:E
  ScalarValue:D
  ScalarValue:A
  BinaryOperator:*
@@ -27,27 +27,27 @@
  BinaryOperator:-
  AssignmentOperator:=
 80 LET F = D/E
- ScalarReference:F
+ Reference:F
  ScalarValue:D
  ScalarValue:E
  BinaryOperator:/
  AssignmentOperator:=
 90 LET G = - B/E
- ScalarReference:G
+ Reference:G
  ScalarValue:B
  UnaryOperator:-
  ScalarValue:E
  BinaryOperator:/
  AssignmentOperator:=
 100 LET H = - C/E
- ScalarReference:H
+ Reference:H
  ScalarValue:C
  UnaryOperator:-
  ScalarValue:E
  BinaryOperator:/
  AssignmentOperator:=
 110 LET I = A/E
- ScalarReference:I
+ Reference:I
  ScalarValue:A
  ScalarValue:E
  BinaryOperator:/
@@ -104,7 +104,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- ScalarReference:L
+ Reference:L
 240 IF L = 1 THEN 30
  ScalarValue:L
  NumericConstant:1

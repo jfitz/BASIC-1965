@@ -2,10 +2,10 @@
  NumericConstant:20
  Declaration:D
 20 READ A,Y,T,R
- ScalarReference:A
- ScalarReference:Y
- ScalarReference:T
- ScalarReference:R
+ Reference:A
+ Reference:Y
+ Reference:T
+ Reference:R
 30 PRINT "YEAR", "DEPRECIATE"
  ITEMS
  TextConstant:"YEAR"
@@ -13,7 +13,7 @@
  TextConstant:"DEPRECIATE"
  CarriageControl:NL
 40 LET Y9 = Y*(Y+1)/2
- ScalarReference:Y9
+ Reference:Y9
  ScalarValue:Y
  ScalarValue:Y
  NumericConstant:1
@@ -28,7 +28,7 @@
  end:     ["ScalarValue:Y"]
 110    LET D(I) = A*(Y-I+1)/Y9
  ScalarValue:I
- ScalarReference:D
+ Reference:D
  ScalarValue:A
  ScalarValue:Y
  ScalarValue:I
@@ -52,7 +52,7 @@
  ITEMS
  CarriageControl:NL
 200 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 210 FOR I = 1 TO Y
@@ -60,7 +60,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y"]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:I
  ScalarValue:D

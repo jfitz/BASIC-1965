@@ -6,12 +6,12 @@
  TextConstant:"A, B, P, R, Y, T"
  CarriageControl:;
 20 INPUT A, B, P, R, Y, T
- ScalarReference:A
- ScalarReference:B
- ScalarReference:P
- ScalarReference:R
- ScalarReference:Y
- ScalarReference:T
+ Reference:A
+ Reference:B
+ Reference:P
+ Reference:R
+ Reference:Y
+ Reference:T
 21 IF A < 0 THEN 800
  ScalarValue:A
  NumericConstant:0
@@ -62,7 +62,7 @@
 110 GOSUB 1000
  LineNumber:1000
 120 LET A = (B+P1)/R2 - P1
- ScalarReference:A
+ Reference:A
  ScalarValue:B
  ScalarValue:P1
  BinaryOperator:+
@@ -89,7 +89,7 @@
 210 GOSUB 1000
  LineNumber:1000
 220 LET B = (A+P1)*R2 - P1
- ScalarReference:B
+ Reference:B
  ScalarValue:A
  ScalarValue:P1
  BinaryOperator:+
@@ -116,7 +116,7 @@
 310 GOSUB 1000
  LineNumber:1000
 320 LET P = R1*(B - A*R2)/(R2-1)
- ScalarReference:P
+ Reference:P
  ScalarValue:R1
  ScalarValue:B
  ScalarValue:A
@@ -143,7 +143,7 @@
 410 GOSUB 1000
  LineNumber:1000
 415 LET Q = (B+P1)/(A+P1)
- ScalarReference:Q
+ Reference:Q
  ScalarValue:B
  ScalarValue:P1
  BinaryOperator:+
@@ -157,7 +157,7 @@
  NumericConstant:1
  BinaryOperator:<=
 420 LET Y = LOG(Q)/LOG(1+R1)/T
- ScalarReference:Y
+ Reference:Y
  ScalarValue:Q
  FunctionLog
  NumericConstant:1
@@ -180,7 +180,7 @@
 500 REM FIND ANNUAL INTEREST
  Remark:FIND ANNUAL INTEREST
 505 LET S = B - (A+Y*T*P)
- ScalarReference:S
+ Reference:S
  ScalarValue:B
  ScalarValue:A
  ScalarValue:Y
@@ -199,7 +199,7 @@
 520    GOSUB 1000
  LineNumber:1000
 530    LET S1 = B - ((A+P1)*R2 - P1)
- ScalarReference:S1
+ Reference:S1
  ScalarValue:B
  ScalarValue:A
  ScalarValue:P1
@@ -217,7 +217,7 @@
  NumericConstant:0
  BinaryOperator:<=
 536    LET S = S1
- ScalarReference:S
+ Reference:S
  ScalarValue:S1
  AssignmentOperator:=
 540 NEXT R
@@ -263,13 +263,13 @@
 1000 REM COMPUTE BASIC QUANTITIES
  Remark:COMPUTE BASIC QUANTITIES
 1010 LET N = Y*T
- ScalarReference:N
+ Reference:N
  ScalarValue:Y
  ScalarValue:T
  BinaryOperator:*
  AssignmentOperator:=
 1020 LET R1 = R/100/T
- ScalarReference:R1
+ Reference:R1
  ScalarValue:R
  NumericConstant:100
  BinaryOperator:/
@@ -277,13 +277,13 @@
  BinaryOperator:/
  AssignmentOperator:=
 1030 LET P1 = P/R1
- ScalarReference:P1
+ Reference:P1
  ScalarValue:P
  ScalarValue:R1
  BinaryOperator:/
  AssignmentOperator:=
 1040 LET R2 = (1+R1)^N
- ScalarReference:R2
+ Reference:R2
  NumericConstant:1
  ScalarValue:R1
  BinaryOperator:+

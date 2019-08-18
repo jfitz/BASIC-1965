@@ -13,15 +13,15 @@
 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
  Remark:DEF FNF(X) = -3*X^5 + X^3 + 1
 20 READ A,B
- ScalarReference:A
- ScalarReference:B
+ Reference:A
+ Reference:B
 25 IF FNF(A) > 0 THEN 230
  ScalarValue:A
  UserFunction
  NumericConstant:0
  BinaryOperator:>
 30 LET X = (A+B)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:+
@@ -39,13 +39,13 @@
  NumericConstant:0
  BinaryOperator:<
 60 LET B = X
- ScalarReference:B
+ Reference:B
  ScalarValue:X
  AssignmentOperator:=
 65 GOTO 80
  LineNumber:80
 70 LET A = X
- ScalarReference:A
+ Reference:A
  ScalarValue:X
  AssignmentOperator:=
 80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.0000005 THEN 100
@@ -73,7 +73,7 @@
  
 120
 230 LET X = (A+B)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:+
@@ -91,13 +91,13 @@
  NumericConstant:0
  BinaryOperator:<
 260 LET A = X
- ScalarReference:A
+ Reference:A
  ScalarValue:X
  AssignmentOperator:=
 265 GOTO 280
  LineNumber:280
 270 LET B = X
- ScalarReference:B
+ Reference:B
  ScalarValue:X
  AssignmentOperator:=
 280 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.0000005 THEN 100

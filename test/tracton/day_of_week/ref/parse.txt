@@ -21,9 +21,9 @@
  TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
 110 INPUT D,M,Y
- ScalarReference:D
- ScalarReference:M
- ScalarReference:Y
+ Reference:D
+ Reference:M
+ Reference:Y
 120 IF Y > 1752 THEN 150
  ScalarValue:Y
  NumericConstant:1752
@@ -35,7 +35,7 @@
 140 GOTO 100
  LineNumber:100
 150 LET K = INT(0.6 + (1/M))
- ScalarReference:K
+ Reference:K
  NumericConstant:0.6
  NumericConstant:1
  ScalarValue:M
@@ -44,13 +44,13 @@
  FunctionInt
  AssignmentOperator:=
 160 LET L = Y - K
- ScalarReference:L
+ Reference:L
  ScalarValue:Y
  ScalarValue:K
  BinaryOperator:-
  AssignmentOperator:=
 170 LET O = M + 12*K
- ScalarReference:O
+ Reference:O
  ScalarValue:M
  NumericConstant:12
  ScalarValue:K
@@ -58,25 +58,25 @@
  BinaryOperator:+
  AssignmentOperator:=
 180 LET P = L/100
- ScalarReference:P
+ Reference:P
  ScalarValue:L
  NumericConstant:100
  BinaryOperator:/
  AssignmentOperator:=
 190 LET Z1 = INT(P/4)
- ScalarReference:Z1
+ Reference:Z1
  ScalarValue:P
  NumericConstant:4
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 200 LET Z2 = INT(P)
- ScalarReference:Z2
+ Reference:Z2
  ScalarValue:P
  FunctionInt
  AssignmentOperator:=
 210 LET Z3 = INT((5*L)/4)
- ScalarReference:Z3
+ Reference:Z3
  NumericConstant:5
  ScalarValue:L
  BinaryOperator:*
@@ -85,7 +85,7 @@
  FunctionInt
  AssignmentOperator:=
 220 LET Z4 = INT (13*(O + 1)/5)
- ScalarReference:Z4
+ Reference:Z4
  NumericConstant:13
  ScalarValue:O
  NumericConstant:1
@@ -96,7 +96,7 @@
  FunctionInt
  AssignmentOperator:=
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
- ScalarReference:Z
+ Reference:Z
  ScalarValue:Z4
  ScalarValue:Z3
  BinaryOperator:+
@@ -110,7 +110,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 240 LET Z=Z - (7*INT(Z/7)) + 1
- ScalarReference:Z
+ Reference:Z
  ScalarValue:Z
  NumericConstant:7
  ScalarValue:Z

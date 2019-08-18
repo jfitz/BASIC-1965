@@ -11,22 +11,22 @@
  Declaration:X
 110
 120 READ N
- ScalarReference:N
+ Reference:N
 130 MAT READ A(N,N)
  ScalarValue:N
  ScalarValue:N
- MatrixReference:A
+ Reference:A
 140 MAT READ B(N)
  ScalarValue:N
- MatrixReference:B
+ Reference:B
 150
 160 MAT C = INV(A)
- MatrixReference:C
+ Reference:C
  MatrixValue:A
  FunctionInv
  AssignmentOperator:=
 170 MAT X = C*B
- MatrixReference:X
+ Reference:X
  MatrixValue:C
  MatrixValue:B
  BinaryOperator:*

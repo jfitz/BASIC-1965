@@ -2,11 +2,11 @@
  NumericConstant:20
  Declaration:D
 20 READ A,Y
- ScalarReference:A
- ScalarReference:Y
+ Reference:A
+ Reference:Y
 30 READ T,R
- ScalarReference:T
- ScalarReference:R
+ Reference:T
+ Reference:R
 40 PRINT "YEAR", "SAVING"
  ITEMS
  TextConstant:"YEAR"
@@ -22,7 +22,7 @@
  ScalarValue:Y1
  CarriageControl:,
 108    LET A1 = A
- ScalarReference:A1
+ Reference:A1
  ScalarValue:A
  AssignmentOperator:=
 110    FOR I = 1 TO Y1-1
@@ -31,7 +31,7 @@
  end:     ["ScalarValue:Y1", "NumericConstant:1", "BinaryOperator:-"]
 120       LET D(I) = A1*2/Y
  ScalarValue:I
- ScalarReference:D
+ Reference:D
  ScalarValue:A1
  NumericConstant:2
  BinaryOperator:*
@@ -39,7 +39,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 130       LET A1 = A1 - D(I)
- ScalarReference:A1
+ Reference:A1
  ScalarValue:A1
  ScalarValue:I
  ScalarValue:D
@@ -48,7 +48,7 @@
 150    NEXT I
  VariableName:I
 160    LET D = A1/(Y-Y1+1)
- ScalarReference:D
+ Reference:D
  ScalarValue:A1
  ScalarValue:Y
  ScalarValue:Y1
@@ -63,13 +63,13 @@
  end:     ["ScalarValue:Y"]
 180       LET D(I) = D
  ScalarValue:I
- ScalarReference:D
+ Reference:D
  ScalarValue:D
  AssignmentOperator:=
 190    NEXT I
  VariableName:I
 200    LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 210    FOR I = 1 TO Y
@@ -77,7 +77,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y"]
 220       LET S = S + D(I)*(T/100)*(1+R/100)^(Y-I)
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:I
  ScalarValue:D

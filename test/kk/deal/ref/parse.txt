@@ -24,7 +24,7 @@
  end:     ["NumericConstant:51"]
 1030    LET L(I) = I
  ScalarValue:I
- ScalarReference:L
+ Reference:L
  ScalarValue:I
  AssignmentOperator:=
 1040 NEXT I
@@ -35,7 +35,7 @@
 2000 REM DEAL A CARD
  Remark:DEAL A CARD
 2010 LET I = INT(52*RND(1))
- ScalarReference:I
+ Reference:I
  NumericConstant:52
  NumericConstant:1
  FunctionRnd
@@ -43,7 +43,7 @@
  FunctionInt
  AssignmentOperator:=
 2020 LET X = L(I)
- ScalarReference:X
+ Reference:X
  ScalarValue:I
  ScalarValue:L
  AssignmentOperator:=
@@ -53,7 +53,7 @@
  BinaryOperator:<
 2040 LET L(I) = -1
  ScalarValue:I
- ScalarReference:L
+ Reference:L
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -63,14 +63,14 @@
 3000 REM PRINT A CARD
  Remark:PRINT A CARD
 3010 LET S = INT(X/13)
- ScalarReference:S
+ Reference:S
  ScalarValue:X
  NumericConstant:13
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 3020 LET V = X - 13*S
- ScalarReference:V
+ Reference:V
  ScalarValue:X
  NumericConstant:13
  ScalarValue:S

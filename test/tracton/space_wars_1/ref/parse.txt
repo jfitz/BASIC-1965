@@ -78,15 +78,15 @@
  TextConstant:"MAY THE FORCE BE WITH YOU"
  CarriageControl:NL
 250 LET E1 = 1E04
- ScalarReference:E1
+ Reference:E1
  NumericConstant:10000
  AssignmentOperator:=
 260 LET E2 = E1
- ScalarReference:E2
+ Reference:E2
  ScalarValue:E1
  AssignmentOperator:=
 270 LET D = 1E03 + INT(5E05*RND)
- ScalarReference:D
+ Reference:D
  NumericConstant:1000
  NumericConstant:500000
  FunctionRnd
@@ -95,7 +95,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 280 LET B = 1 + INT(180*RND)
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  NumericConstant:180
  FunctionRnd
@@ -108,7 +108,7 @@
 300 GOSUB 390
  LineNumber:390
 310 LET E1 = E1 - D1
- ScalarReference:E1
+ Reference:E1
  ScalarValue:E1
  ScalarValue:D1
  BinaryOperator:-
@@ -122,13 +122,13 @@
  NumericConstant:100000
  BinaryOperator:>=
 350 LET L = 1
- ScalarReference:L
+ Reference:L
  NumericConstant:1
  AssignmentOperator:=
 360 GOTO 380
  LineNumber:380
 370 LET L = 0
- ScalarReference:L
+ Reference:L
  NumericConstant:0
  AssignmentOperator:=
 380 RETURN
@@ -140,13 +140,13 @@
 400 LET H2 = (1 + INT(100*RND)/100
  Too many operators
 410 LET D1 = 500*H2
- ScalarReference:D1
+ Reference:D1
  NumericConstant:500
  ScalarValue:H2
  BinaryOperator:*
  AssignmentOperator:=
 420 LET E2 = E2 - 500
- ScalarReference:E2
+ Reference:E2
  ScalarValue:E2
  NumericConstant:500
  BinaryOperator:-
@@ -154,7 +154,7 @@
 430 GOTO 490
  LineNumber:490
 440 LET M1 = 1 + INT(2*RND)
- ScalarReference:M1
+ Reference:M1
  NumericConstant:1
  NumericConstant:2
  FunctionRnd
@@ -169,11 +169,11 @@
 460 GOTO 480
  LineNumber:480
 470 LET D1 = 0
- ScalarReference:D1
+ Reference:D1
  NumericConstant:0
  AssignmentOperator:=
 480 LET E2 = E2 - 1000
- ScalarReference:E2
+ Reference:E2
  ScalarValue:E2
  NumericConstant:1000
  BinaryOperator:-
@@ -269,7 +269,7 @@
  TextConstant:"WHICH COMMAND DO YOU WISH TO EXECUTE"
  CarriageControl:NL
 710 INPUT C
- ScalarReference:C
+ Reference:C
 720 ON C GOTO 730, 840, 1010, 1100, 1140
  Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
  Unimplemented
@@ -278,7 +278,7 @@
  TextConstant:"HOW MANY DEGREES OF ROTATION"
  CarriageControl:NL
 740 INPUT B1
- ScalarReference:B1
+ Reference:B1
 750 IF B + B1 < 0 THEN 800
  ScalarValue:B
  ScalarValue:B1
@@ -292,13 +292,13 @@
  NumericConstant:180
  BinaryOperator:>
 770 LET B = B + B1
- ScalarReference:B
+ Reference:B
  ScalarValue:B
  ScalarValue:B1
  BinaryOperator:+
  AssignmentOperator:=
 780 LET E1 = E1 - (10*ABS(B1))
- ScalarReference:E1
+ Reference:E1
  ScalarValue:E1
  NumericConstant:10
  ScalarValue:B1
@@ -325,7 +325,7 @@
  TextConstant:"HOW MANY KM TO TRAVERSE"
  CarriageControl:NL
 850 INPUT K
- ScalarReference:K
+ Reference:K
 860 IF D + K < 0 THEN 910
  ScalarValue:D
  ScalarValue:K
@@ -339,13 +339,13 @@
  NumericConstant:1000000
  BinaryOperator:>
 880 LET D = D + K
- ScalarReference:D
+ Reference:D
  ScalarValue:D
  ScalarValue:K
  BinaryOperator:+
  AssignmentOperator:=
 890 LET E1 = E1 - (ABS(K)/1000)
- ScalarReference:E1
+ Reference:E1
  ScalarValue:E1
  ScalarValue:K
  FunctionAbs
@@ -391,7 +391,7 @@
 1000 GOTO 840
  LineNumber:840
 1010 LET E1 = E1 - 1000
- ScalarReference:E1
+ Reference:E1
  ScalarValue:E1
  NumericConstant:1000
  BinaryOperator:-
@@ -417,7 +417,7 @@
 1070 GOTO 290
  LineNumber:290
 1080 LET E2 = E2 - 1000
- ScalarReference:E2
+ Reference:E2
  ScalarValue:E2
  NumericConstant:1000
  BinaryOperator:-
@@ -425,13 +425,13 @@
 1090 GOTO 290
  LineNumber:290
 1100 LET E1 = E1 - 500
- ScalarReference:E1
+ Reference:E1
  ScalarValue:E1
  NumericConstant:500
  BinaryOperator:-
  AssignmentOperator:=
 1110 LET D2 = (1 + INT(100*RND)/100)
- ScalarReference:D2
+ Reference:D2
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -442,7 +442,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 1120 LET E2 = E2 - (D2*500)
- ScalarReference:E2
+ Reference:E2
  ScalarValue:E2
  ScalarValue:D2
  NumericConstant:500

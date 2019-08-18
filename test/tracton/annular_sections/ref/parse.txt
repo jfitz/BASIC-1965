@@ -5,15 +5,15 @@
 30  REM SECTION
  Remark:SECTION
 40  INPUT "INSIDE DIAMETER (D1) = ", D1
- ScalarReference:D1
+ Reference:D1
 50  INPUT "OUTSIDE DIAMETER (D2) = "; D2
- ScalarReference:D2
+ Reference:D2
 60  LET P=3.14159
- ScalarReference:P
+ Reference:P
  NumericConstant:3.14159
  AssignmentOperator:=
 70  LET I = (P*((D2 ^ 4) - (D1 ^ 4)))/64
- ScalarReference:I
+ Reference:I
  ScalarValue:P
  ScalarValue:D2
  NumericConstant:4
@@ -27,13 +27,13 @@
  BinaryOperator:/
  AssignmentOperator:=
 80  LET J=I*2
- ScalarReference:J
+ Reference:J
  ScalarValue:I
  NumericConstant:2
  BinaryOperator:*
  AssignmentOperator:=
 100  LET A = (P*((D2 ^ 2) - (D1 ^ 2)))/4
- ScalarReference:A
+ Reference:A
  ScalarValue:P
  ScalarValue:D2
  NumericConstant:2
@@ -72,7 +72,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:;
 160  INPUT L
- ScalarReference:L
+ Reference:L
 170  IF L=1 THEN 190
  ScalarValue:L
  NumericConstant:1

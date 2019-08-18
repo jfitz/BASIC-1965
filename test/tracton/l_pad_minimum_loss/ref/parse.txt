@@ -9,15 +9,15 @@
  TextConstant:"1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
- ScalarReference:Z1
+ Reference:Z1
 60 PRINT "2ND IMPEDANCE"
  ITEMS
  TextConstant:"2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
- ScalarReference:Z2
+ Reference:Z2
 80 LET R1 = Z1*SQR(1 - (Z2/Z1))
- ScalarReference:R1
+ Reference:R1
  ScalarValue:Z1
  NumericConstant:1
  ScalarValue:Z2
@@ -28,7 +28,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
- ScalarReference:R2
+ Reference:R2
  ScalarValue:Z2
  NumericConstant:1
  ScalarValue:Z2
@@ -39,7 +39,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
- ScalarReference:M
+ Reference:M
  ScalarValue:Z1
  ScalarValue:Z2
  BinaryOperator:/
@@ -53,7 +53,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 110 LET L = 20*(LOG(M)/LOG(10))
- ScalarReference:L
+ Reference:L
  NumericConstant:20
  ScalarValue:M
  FunctionLog
@@ -92,7 +92,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT X
- ScalarReference:X
+ Reference:X
 190 IF X = 1 THEN 210
  ScalarValue:X
  NumericConstant:1

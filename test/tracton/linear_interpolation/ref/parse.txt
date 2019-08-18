@@ -5,23 +5,23 @@
  TextConstant:"KNOWN VALUE OF X (X1,X2) = "
  CarriageControl:;
 30 INPUT X1,X2
- ScalarReference:X1
- ScalarReference:X2
+ Reference:X1
+ Reference:X2
 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
  ITEMS
  TextConstant:"KNOWN VALUES OF Y (F(X1),F(X2)) = "
  CarriageControl:;
 50 INPUT Y1,Y2
- ScalarReference:Y1
- ScalarReference:Y2
+ Reference:Y1
+ Reference:Y2
 60 PRINT "INTERPOLATE F(X) AT X = ";
  ITEMS
  TextConstant:"INTERPOLATE F(X) AT X = "
  CarriageControl:;
 70 INPUT X
- ScalarReference:X
+ Reference:X
 80 LET G = ((X2 - X)*Y1) + ((X - X1)*Y2)
- ScalarReference:G
+ Reference:G
  ScalarValue:X2
  ScalarValue:X
  BinaryOperator:-
@@ -35,7 +35,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 90 LET F = G/(X2 - X1)
- ScalarReference:F
+ Reference:F
  ScalarValue:G
  ScalarValue:X2
  ScalarValue:X1
@@ -56,7 +56,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 130 INPUT L
- ScalarReference:L
+ Reference:L
 140 IF L = 1 THEN 160
  ScalarValue:L
  NumericConstant:1

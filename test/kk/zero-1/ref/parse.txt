@@ -11,10 +11,10 @@
  NumericConstant:1
  BinaryOperator:-
 20 READ A,B
- ScalarReference:A
- ScalarReference:B
+ Reference:A
+ Reference:B
 30 LET X = (A+B)/2
- ScalarReference:X
+ Reference:X
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:+
@@ -32,13 +32,13 @@
  NumericConstant:0
  BinaryOperator:<
 60 LET B = X
- ScalarReference:B
+ Reference:B
  ScalarValue:X
  AssignmentOperator:=
 65 GOTO 80
  LineNumber:80
 70 LET A = X
- ScalarReference:A
+ Reference:A
  ScalarValue:X
  AssignmentOperator:=
 80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.000005 THEN 100

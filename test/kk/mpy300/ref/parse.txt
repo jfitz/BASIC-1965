@@ -63,14 +63,14 @@ Line 640 is out of sequence
  end:     ["ScalarValue:L"]
 140      LET A(I) = C(I)
  ScalarValue:I
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  ScalarValue:C
  AssignmentOperator:=
 150  NEXT I
  VariableName:I
 160  LET L1 = L
- ScalarReference:L1
+ Reference:L1
  ScalarValue:L
  AssignmentOperator:=
 170  PRINT "TIMES"
@@ -90,14 +90,14 @@ Line 640 is out of sequence
  end:     ["ScalarValue:L"]
 240      LET B(I) = C(I)
  ScalarValue:I
- ScalarReference:B
+ Reference:B
  ScalarValue:I
  ScalarValue:C
  AssignmentOperator:=
 250  NEXT I
  VariableName:I
 260  LET L2 = L
- ScalarReference:L2
+ Reference:L2
  ScalarValue:L
  AssignmentOperator:=
 270  PRINT "EQUALS"
@@ -111,7 +111,7 @@ Line 640 is out of sequence
 300  REM C = A * B
  Remark:C = A * B
 310  LET L = L1+L2
- ScalarReference:L
+ Reference:L
  ScalarValue:L1
  ScalarValue:L2
  BinaryOperator:+
@@ -122,7 +122,7 @@ Line 640 is out of sequence
  end:     ["ScalarValue:L"]
 330      LET C(I) = 0
  ScalarValue:I
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 340  NEXT I
@@ -136,14 +136,14 @@ Line 640 is out of sequence
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L2"]
 370          LET I = J+K
- ScalarReference:I
+ Reference:I
  ScalarValue:J
  ScalarValue:K
  BinaryOperator:+
  AssignmentOperator:=
 380          LET C(I) = C(I) + A(J)*B(K)
  ScalarValue:I
- ScalarReference:C
+ Reference:C
  ScalarValue:I
  ScalarValue:C
  ScalarValue:J
@@ -160,7 +160,7 @@ Line 640 is out of sequence
 410  GOTO 600
  LineNumber:600
 420  LET L = L2
- ScalarReference:L
+ Reference:L
  ScalarValue:L2
  AssignmentOperator:=
 430      FOR I = L1+1 TO L
@@ -169,7 +169,7 @@ Line 640 is out of sequence
  end:     ["ScalarValue:L"]
 440  LET A(I) = 0
  ScalarValue:I
- ScalarReference:A
+ Reference:A
  NumericConstant:0
  AssignmentOperator:=
 450  NEXT I
@@ -180,7 +180,7 @@ Line 640 is out of sequence
  end:     ["ScalarValue:L"]
 510      LET C(I) = A(I) + B(I)
  ScalarValue:I
- ScalarReference:C
+ Reference:C
  ScalarValue:I
  ScalarValue:A
  ScalarValue:I
@@ -207,7 +207,7 @@ Line 640 is out of sequence
  end:     ["NumericConstant:100"]
 1020     READ X(I)
  ScalarValue:I
- ScalarReference:X
+ Reference:X
 1030     IF X(I) < 0 THEN 1100
  ScalarValue:I
  ScalarValue:X
@@ -218,7 +218,7 @@ Line 640 is out of sequence
 1050 GOTO 1200
  LineNumber:1200
 1100 LET L = I-1
- ScalarReference:L
+ Reference:L
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:-
@@ -229,7 +229,7 @@ Line 640 is out of sequence
  end:     ["ScalarValue:L"]
 1120     LET C(I) = X(L-I)
  ScalarValue:I
- ScalarReference:C
+ Reference:C
  ScalarValue:L
  ScalarValue:I
  BinaryOperator:-
@@ -274,7 +274,7 @@ Line 640 is out of sequence
  TextConstant:",   "
  CarriageControl:;
 2060 LET L9 = L-1
- ScalarReference:L9
+ Reference:L9
  ScalarValue:L
  NumericConstant:1
  BinaryOperator:-
@@ -282,7 +282,7 @@ Line 640 is out of sequence
 2070 GOTO 2210
  LineNumber:2210
 2100 LET M = INT(C(K)/10)
- ScalarReference:M
+ Reference:M
  ScalarValue:K
  ScalarValue:C
  NumericConstant:10
@@ -291,7 +291,7 @@ Line 640 is out of sequence
  AssignmentOperator:=
 2110 LET C(L) = C(L) - 10*M
  ScalarValue:L
- ScalarReference:C
+ Reference:C
  ScalarValue:L
  ScalarValue:C
  NumericConstant:10
@@ -306,7 +306,7 @@ Line 640 is out of sequence
 2130 GOTO 2050
  LineNumber:2050
 2200 LET L9 = L
- ScalarReference:L9
+ Reference:L9
  ScalarValue:L
  AssignmentOperator:=
 2210 FOR I = L9 TO 0 STEP -1
@@ -315,12 +315,12 @@ Line 640 is out of sequence
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 2220     LET N = C(I)
- ScalarReference:N
+ Reference:N
  ScalarValue:I
  ScalarValue:C
  AssignmentOperator:=
 2230     LET Q = 100
- ScalarReference:Q
+ Reference:Q
  NumericConstant:100
  AssignmentOperator:=
 2240     FOR J = 1 TO 3
@@ -328,14 +328,14 @@ Line 640 is out of sequence
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 2250         LET M = INT(N/Q)
- ScalarReference:M
+ Reference:M
  ScalarValue:N
  ScalarValue:Q
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 2260         LET N = N - M*Q
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  ScalarValue:M
  ScalarValue:Q
@@ -343,7 +343,7 @@ Line 640 is out of sequence
  BinaryOperator:-
  AssignmentOperator:=
 2270         LET Q = Q/10
- ScalarReference:Q
+ Reference:Q
  ScalarValue:Q
  NumericConstant:10
  BinaryOperator:/
@@ -379,7 +379,7 @@ Line 640 is out of sequence
  ScalarValue:L
  NumericConstant:1
  BinaryOperator:+
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 3020 FOR I = 0 TO L
@@ -387,12 +387,12 @@ Line 640 is out of sequence
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
 3030     LET N = C(I)
- ScalarReference:N
+ Reference:N
  ScalarValue:I
  ScalarValue:C
  AssignmentOperator:=
 3040     LET M = INT(N/1000)
- ScalarReference:M
+ Reference:M
  ScalarValue:N
  NumericConstant:1000
  BinaryOperator:/
@@ -400,7 +400,7 @@ Line 640 is out of sequence
  AssignmentOperator:=
 3050     LET C(I) = N - 1000*M
  ScalarValue:I
- ScalarReference:C
+ Reference:C
  ScalarValue:N
  NumericConstant:1000
  ScalarValue:M
@@ -411,7 +411,7 @@ Line 640 is out of sequence
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:+
- ScalarReference:C
+ Reference:C
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:+
@@ -426,7 +426,7 @@ Line 640 is out of sequence
  NumericConstant:0
  BinaryOperator:=
 3090 LET L = L+1
- ScalarReference:L
+ Reference:L
  ScalarValue:L
  NumericConstant:1
  BinaryOperator:+

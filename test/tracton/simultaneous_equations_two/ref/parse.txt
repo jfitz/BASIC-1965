@@ -15,14 +15,14 @@
  TextConstant:"ENTER PARAMETERS A,B,C,D,E,F"
  CarriageControl:NL
 60 INPUT A,B,C,D,E,F
- ScalarReference:A
- ScalarReference:B
- ScalarReference:C
- ScalarReference:D
- ScalarReference:E
- ScalarReference:F
+ Reference:A
+ Reference:B
+ Reference:C
+ Reference:D
+ Reference:E
+ Reference:F
 70 LET M = (A*D) - (B*C)
- ScalarReference:M
+ Reference:M
  ScalarValue:A
  ScalarValue:D
  BinaryOperator:*
@@ -36,7 +36,7 @@
  NumericConstant:0
  BinaryOperator:=
 90 LET X = ((E*D) - (B*F))/M
- ScalarReference:X
+ Reference:X
  ScalarValue:E
  ScalarValue:D
  BinaryOperator:*
@@ -48,7 +48,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 100 LET Y = ((A*F) - (E*C))/M
- ScalarReference:Y
+ Reference:Y
  ScalarValue:A
  ScalarValue:F
  BinaryOperator:*
@@ -90,7 +90,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 170 INPUT L
- ScalarReference:L
+ Reference:L
 180 IF L = 1 THEN 200
  ScalarValue:L
  NumericConstant:1

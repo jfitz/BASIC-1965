@@ -5,13 +5,6 @@ class ScalarValue < Value
   end
 end
 
-# Scalar reference (not a matrix)
-class ScalarReference < Reference
-  def initialize(variable_value)
-    super(variable_value.name, :scalar)
-  end
-end
-
 # Array with values
 class BASICArray
   attr_reader :dimensions
@@ -558,24 +551,10 @@ class ArrayValue < Value
   end
 end
 
-# Array reference
-class ArrayReference < Reference
-  def initialize(variable_value)
-    super(variable_value.name, :array)
-  end
-end
-
 # Matrix value
 class MatrixValue < Value
   def initialize(variable_name)
     super(variable_name, :matrix)
-  end
-end
-
-# Matrix reference
-class MatrixReference < Reference
-  def initialize(variable_value)
-    super(variable_value.name, :matrix)
   end
 end
 
@@ -1161,12 +1140,8 @@ class TargetExpression < AbstractExpression
 
     @target = true
 
-    reftype = ScalarReference
-    reftype = ArrayReference if shape == :array
-    reftype = MatrixReference if shape == :matrix
-    
     @parsed_expressions.each do |parsed_expression|
-      parsed_expression[-1] = reftype.new(parsed_expression[-1])
+      parsed_expression[-1] = Reference.new(parsed_expression[-1], shape)
     end
   end
 

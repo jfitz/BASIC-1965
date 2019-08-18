@@ -10,13 +10,13 @@
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
  ScalarValue:I
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
  VariableName:I
 26 LET K = 0
- ScalarReference:K
+ Reference:K
  NumericConstant:0
  AssignmentOperator:=
 30 FOR P = 2 TO 1000
@@ -29,14 +29,14 @@
  NumericConstant:0
  BinaryOperator:<
 50    LET K = K+1
- ScalarReference:K
+ Reference:K
  ScalarValue:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 55    LET P(K) = P
  ScalarValue:K
- ScalarReference:P
+ Reference:P
  ScalarValue:P
  AssignmentOperator:=
 56    IF P > SQR(1000) THEN 90
@@ -51,7 +51,7 @@
  step:    ["ScalarValue:P"]
 70       LET N(I) = -1
  ScalarValue:I
- ScalarReference:N
+ Reference:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=

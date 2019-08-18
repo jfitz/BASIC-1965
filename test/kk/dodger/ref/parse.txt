@@ -11,7 +11,7 @@
 130    READ P(B,R)
  ScalarValue:B
  ScalarValue:R
- ScalarReference:P
+ Reference:P
 140    NEXT R
  VariableName:R
 150 NEXT B
@@ -67,7 +67,7 @@
 220       READ Q(R,C)
  ScalarValue:R
  ScalarValue:C
- ScalarReference:Q
+ Reference:Q
 230    NEXT C
  VariableName:C
 240 NEXT R
@@ -110,23 +110,23 @@
  NumericConstant:40
 290
 300 LET S1 = 0
- ScalarReference:S1
+ Reference:S1
  NumericConstant:0
  AssignmentOperator:=
 310 LET B = 0
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 320 LET H = 0
- ScalarReference:H
+ Reference:H
  NumericConstant:0
  AssignmentOperator:=
 330 LET L7 = 0
- ScalarReference:L7
+ Reference:L7
  NumericConstant:0
  AssignmentOperator:=
 340 LET I = 1
- ScalarReference:I
+ Reference:I
  NumericConstant:1
  AssignmentOperator:=
 350
@@ -136,7 +136,7 @@
  end:     ["NumericConstant:7"]
 370    READ L(C)
  ScalarValue:C
- ScalarReference:L
+ Reference:L
 380 NEXT C
  VariableName:C
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
@@ -158,15 +158,15 @@
  ScalarValue:I
  CarriageControl:NL
 450 LET S = 0
- ScalarReference:S
+ Reference:S
  NumericConstant:0
  AssignmentOperator:=
 460 LET O = 0
- ScalarReference:O
+ Reference:O
  NumericConstant:0
  AssignmentOperator:=
 470 LET C = 0
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 480
@@ -177,11 +177,11 @@
  NumericConstant:9
  BinaryOperator:<
 510 LET B = 0
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 520 LET B = B+1
- ScalarReference:B
+ Reference:B
  ScalarValue:B
  NumericConstant:1
  BinaryOperator:+
@@ -190,7 +190,7 @@
 540 REM DETERMINE OUTCOME
  Remark:DETERMINE OUTCOME
 550 LET X = RND(0)
- ScalarReference:X
+ Reference:X
  NumericConstant:0
  FunctionRnd
  AssignmentOperator:=
@@ -199,7 +199,7 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
 570 LET X = X - P(B,R)
- ScalarReference:X
+ Reference:X
  ScalarValue:X
  ScalarValue:B
  ScalarValue:R
@@ -213,7 +213,7 @@
 590 NEXT R
  VariableName:R
 600 LET R = 4
- ScalarReference:R
+ Reference:R
  NumericConstant:4
  AssignmentOperator:=
 610
@@ -275,26 +275,26 @@
  NumericConstant:2
  BinaryOperator:=
 800 LET H = H + 1
- ScalarReference:H
+ Reference:H
  ScalarValue:H
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 810 LET X = Q(R,C)
- ScalarReference:X
+ Reference:X
  ScalarValue:R
  ScalarValue:C
  ScalarValue:Q
  AssignmentOperator:=
 820 LET Y = INT(X/10)
- ScalarReference:Y
+ Reference:Y
  ScalarValue:X
  NumericConstant:10
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 830 LET C = X - Y*10
- ScalarReference:C
+ Reference:C
  ScalarValue:X
  ScalarValue:Y
  NumericConstant:10
@@ -302,7 +302,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 840 LET S = S+Y
- ScalarReference:S
+ Reference:S
  ScalarValue:S
  ScalarValue:Y
  BinaryOperator:+
@@ -314,7 +314,7 @@
  NumericConstant:2
  BinaryOperator:=
 870 LET O = O+1
- ScalarReference:O
+ Reference:O
  ScalarValue:O
  NumericConstant:1
  BinaryOperator:+
@@ -325,7 +325,7 @@
 890 REM END OF AN INNING
  Remark:END OF AN INNING
 895 LET L7 = L7 + L(C)
- ScalarReference:L7
+ Reference:L7
  ScalarValue:L7
  ScalarValue:C
  ScalarValue:L
@@ -344,13 +344,13 @@
  ITEMS
  CarriageControl:NL
 930 LET S1 = S1+S
- ScalarReference:S1
+ Reference:S1
  ScalarValue:S1
  ScalarValue:S
  BinaryOperator:+
  AssignmentOperator:=
 940 LET I = I+1
- ScalarReference:I
+ Reference:I
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:+

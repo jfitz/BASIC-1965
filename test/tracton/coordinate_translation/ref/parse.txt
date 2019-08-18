@@ -7,9 +7,9 @@
  TextConstant:"ANGLE OF ROTATION IN DEGREES = "
  CarriageControl:;
 40 INPUT A
- ScalarReference:A
+ Reference:A
 50 LET B = (A*3.14159)/180
- ScalarReference:B
+ Reference:B
  ScalarValue:A
  NumericConstant:3.14159
  BinaryOperator:*
@@ -21,29 +21,29 @@
  TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
  CarriageControl:;
 70 INPUT X,Y
- ScalarReference:X
- ScalarReference:Y
+ Reference:X
+ Reference:Y
 80 PRINT "OLD COORDINATES OF DATA POINT (X1,Y1) =";
  ITEMS
  TextConstant:"OLD COORDINATES OF DATA POINT (X1,Y1) ="
  CarriageControl:;
 90 INPUT F,C
- ScalarReference:F
- ScalarReference:C
+ Reference:F
+ Reference:C
 100 LET Z = F - X
- ScalarReference:Z
+ Reference:Z
  ScalarValue:F
  ScalarValue:X
  BinaryOperator:-
  AssignmentOperator:=
 110 LET W = C - Y
- ScalarReference:W
+ Reference:W
  ScalarValue:C
  ScalarValue:Y
  BinaryOperator:-
  AssignmentOperator:=
 120 LET D = (Z*COS(B)) + (W*SIN(B))
- ScalarReference:D
+ Reference:D
  ScalarValue:Z
  ScalarValue:B
  FunctionCos
@@ -55,7 +55,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 130 LET E = - (Z*SIN(B)) + (W*COS(B))
- ScalarReference:E
+ Reference:E
  ScalarValue:Z
  ScalarValue:B
  FunctionSin
@@ -100,7 +100,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
- ScalarReference:L
+ Reference:L
 220 IF L = 1 THEN 240
  ScalarValue:L
  NumericConstant:1

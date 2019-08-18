@@ -7,9 +7,9 @@
  TextConstant:"X = "
  CarriageControl:;
 40 INPUT X
- ScalarReference:X
+ Reference:X
 50 LET Z = 1
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  AssignmentOperator:=
 60 FOR I = 1 TO X
@@ -17,7 +17,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X"]
 70 LET Z = Z*I
- ScalarReference:Z
+ Reference:Z
  ScalarValue:Z
  ScalarValue:I
  BinaryOperator:*
@@ -39,7 +39,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- ScalarReference:L
+ Reference:L
 120 IF L = 1 THEN 140
  ScalarValue:L
  NumericConstant:1

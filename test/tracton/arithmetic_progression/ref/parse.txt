@@ -5,25 +5,25 @@
  TextConstant:"FIRST TERM = "
  CarriageControl:;
 30 INPUT A
- ScalarReference:A
+ Reference:A
 40 PRINT "COMMON DIFFERENCE = ";
  ITEMS
  TextConstant:"COMMON DIFFERENCE = "
  CarriageControl:;
 50 INPUT D
- ScalarReference:D
+ Reference:D
 60 PRINT "NUMBER OF TERMS = ";
  ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:;
 70 INPUT N
- ScalarReference:N
+ Reference:N
 80 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0";
  ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:;
 90 INPUT C
- ScalarReference:C
+ Reference:C
 100 IF C = 1 THEN 120
  ScalarValue:C
  NumericConstant:1
@@ -41,7 +41,7 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 140 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 150 FOR I = 0 TO N - 1
@@ -49,13 +49,13 @@
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 160 LET K = I + 1
- ScalarReference:K
+ Reference:K
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 170 LET L = A + (I*D)
- ScalarReference:L
+ Reference:L
  ScalarValue:A
  ScalarValue:I
  ScalarValue:D
@@ -63,7 +63,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 180 LET J = J + L
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:L
  BinaryOperator:+
@@ -96,7 +96,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 260 INPUT X
- ScalarReference:X
+ Reference:X
 270 IF X = 1 THEN 290
  ScalarValue:X
  NumericConstant:1

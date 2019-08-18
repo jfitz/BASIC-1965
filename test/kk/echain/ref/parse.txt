@@ -16,13 +16,13 @@
  Declaration:B
 110
 120 READ N
- ScalarReference:N
+ Reference:N
 130 MAT READ P(N,N)
  ScalarValue:N
  ScalarValue:N
- MatrixReference:P
+ Reference:P
 140 MAT Z = IDN(N,N)
- MatrixReference:Z
+ Reference:Z
  ScalarValue:N
  ScalarValue:N
  FunctionIdn
@@ -41,7 +41,7 @@
  CarriageControl:;
 190
 200 MAT Z = Z-P
- MatrixReference:Z
+ Reference:Z
  MatrixValue:Z
  MatrixValue:P
  BinaryOperator:-
@@ -53,18 +53,18 @@
 220 LET Z(I,N) = 1
  ScalarValue:I
  ScalarValue:N
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  AssignmentOperator:=
 230 NEXT I
  VariableName:I
 240 MAT M = INV(Z)
- MatrixReference:M
+ Reference:M
  MatrixValue:Z
  FunctionInv
  AssignmentOperator:=
 245 MAT A = ZER(1,N)
- MatrixReference:A
+ Reference:A
  NumericConstant:1
  ScalarValue:N
  FunctionZer
@@ -76,7 +76,7 @@
 260 LET A(1,J) = M(N,J)
  NumericConstant:1
  ScalarValue:J
- ScalarReference:A
+ Reference:A
  ScalarValue:N
  ScalarValue:J
  ScalarValue:M
@@ -96,13 +96,13 @@
  CarriageControl:;
 310
 320 MAT M = IDN(N,N)
- MatrixReference:M
+ Reference:M
  ScalarValue:N
  ScalarValue:N
  FunctionIdn
  AssignmentOperator:=
 330 MAT M = M-P
- MatrixReference:M
+ Reference:M
  MatrixValue:M
  MatrixValue:P
  BinaryOperator:-
@@ -118,7 +118,7 @@
 360 LET M(I,J) = M(I,J)+A(1,J)
  ScalarValue:I
  ScalarValue:J
- ScalarReference:M
+ Reference:M
  ScalarValue:I
  ScalarValue:J
  ScalarValue:M
@@ -132,7 +132,7 @@
 380 NEXT I
  VariableName:I
 390 MAT Z = INV(M)
- MatrixReference:Z
+ Reference:Z
  MatrixValue:M
  FunctionInv
  AssignmentOperator:=
@@ -148,7 +148,7 @@
 430 LET M(I,J) = (Z(J,J)-Z(I,J))/A(1,J)
  ScalarValue:I
  ScalarValue:J
- ScalarReference:M
+ Reference:M
  ScalarValue:J
  ScalarValue:J
  ScalarValue:Z
@@ -178,7 +178,7 @@
  CarriageControl:;
 490
 500 MAT B = A*M
- MatrixReference:B
+ Reference:B
  MatrixValue:A
  MatrixValue:M
  BinaryOperator:*

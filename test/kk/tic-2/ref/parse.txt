@@ -14,7 +14,7 @@
 120        READ T(P,I)
  ScalarValue:P
  ScalarValue:I
- ScalarReference:T
+ Reference:T
 130     NEXT I
  VariableName:I
 140  NEXT P
@@ -55,7 +55,7 @@
 220        READ U(S,J)
  ScalarValue:S
  ScalarValue:J
- ScalarReference:U
+ Reference:U
 230     NEXT J
  VariableName:J
 240  NEXT S
@@ -99,7 +99,7 @@
  NumericConstant:7
  NumericConstant:8
 265  LET N = 0
- ScalarReference:N
+ Reference:N
  NumericConstant:0
  AssignmentOperator:=
 270  FOR S = 1 TO 9
@@ -108,12 +108,12 @@
  end:     ["NumericConstant:9"]
 275     LET C(S) = 0
  ScalarValue:S
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 280     LET B(S) = 0
  ScalarValue:S
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 285  NEXT S
@@ -154,9 +154,9 @@
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 410  INPUT M
- ScalarReference:M
+ Reference:M
 415  LET F = -1
- ScalarReference:F
+ Reference:F
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -180,7 +180,7 @@
  BinaryOperator:<>
 460  LET B(M) = F
  ScalarValue:M
- ScalarReference:B
+ Reference:B
  ScalarValue:F
  AssignmentOperator:=
 470  FOR J = 1 TO 4
@@ -188,7 +188,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 480     LET P = U(M,J)
- ScalarReference:P
+ Reference:P
  ScalarValue:M
  ScalarValue:J
  ScalarValue:U
@@ -199,7 +199,7 @@
  BinaryOperator:=
 500     LET C(P) = C(P) + F
  ScalarValue:P
- ScalarReference:C
+ Reference:C
  ScalarValue:P
  ScalarValue:C
  ScalarValue:F
@@ -219,7 +219,7 @@
 530  NEXT J
  VariableName:J
 535  LET N = N+1
- ScalarReference:N
+ Reference:N
  ScalarValue:N
  NumericConstant:1
  BinaryOperator:+
@@ -254,7 +254,7 @@
  ScalarValue:M
  CarriageControl:NL
 630  LET F = 1
- ScalarReference:F
+ Reference:F
  NumericConstant:1
  AssignmentOperator:=
 640  GOTO 460
@@ -322,7 +322,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 1110    LET M = T(P,I)
- ScalarReference:M
+ Reference:M
  ScalarValue:P
  ScalarValue:I
  ScalarValue:T
@@ -341,7 +341,7 @@
  end:     ["NumericConstant:9"]
 1210    LET V(S) = 0
  ScalarValue:S
- ScalarReference:V
+ Reference:V
  NumericConstant:0
  AssignmentOperator:=
 1215    IF B(S) <> 0 THEN 1270
@@ -354,7 +354,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 1230       LET P = U(S,J)
- ScalarReference:P
+ Reference:P
  ScalarValue:S
  ScalarValue:J
  ScalarValue:U
@@ -365,7 +365,7 @@
  BinaryOperator:=
 1250       LET V(S) = V(S) + 1 + ABS(C(P))
  ScalarValue:S
- ScalarReference:V
+ Reference:V
  ScalarValue:S
  ScalarValue:V
  NumericConstant:1
@@ -380,7 +380,7 @@
 1270 NEXT S
  VariableName:S
 1300 LET V = 0
- ScalarReference:V
+ Reference:V
  NumericConstant:0
  AssignmentOperator:=
 1310 FOR S = 1 TO 9
@@ -393,12 +393,12 @@
  ScalarValue:V
  BinaryOperator:<=
 1330    LET V = V(S)
- ScalarReference:V
+ Reference:V
  ScalarValue:S
  ScalarValue:V
  AssignmentOperator:=
 1340    LET M = S
- ScalarReference:M
+ Reference:M
  ScalarValue:S
  AssignmentOperator:=
 1350 NEXT S

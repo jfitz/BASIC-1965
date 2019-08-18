@@ -1,7 +1,7 @@
 100 REM SIDE-ANGLE-SIDE
  Remark:SIDE-ANGLE-SIDE
 110 LET P = 3.14159265
- ScalarReference:P
+ Reference:P
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X)=X*P/180
@@ -25,11 +25,11 @@
  TextConstant:"THIRD SIDE"
  CarriageControl:NL
 150 READ X,A,Y
- ScalarReference:X
- ScalarReference:A
- ScalarReference:Y
+ Reference:X
+ Reference:A
+ Reference:Y
 160 LET Z = SQR(X^2 + Y^2 - 2*X*Y*FNC(A))
- ScalarReference:Z
+ Reference:Z
  ScalarValue:X
  NumericConstant:2
  BinaryOperator:^

@@ -5,19 +5,19 @@
  TextConstant:"ENTER FIRST TERM"
  CarriageControl:NL
 30 INPUT A
- ScalarReference:A
+ Reference:A
 40 PRINT "ENTER SECOND TERM"
  ITEMS
  TextConstant:"ENTER SECOND TERM"
  CarriageControl:NL
 50 INPUT B
- ScalarReference:B
+ Reference:B
 60 PRINT "MAXIMUM NUMBER OF TERMS = "
  ITEMS
  TextConstant:"MAXIMUM NUMBER OF TERMS = "
  CarriageControl:NL
 70 INPUT N
- ScalarReference:N
+ Reference:N
 80 PRINT
  ITEMS
  CarriageControl:NL
@@ -32,7 +32,7 @@
  TextConstant:"FIBONACCI NUMBER"
  CarriageControl:NL
 110 LET K = 1
- ScalarReference:K
+ Reference:K
  NumericConstant:1
  AssignmentOperator:=
 120 PRINT K,A
@@ -42,7 +42,7 @@
  ScalarValue:A
  CarriageControl:NL
 130 LET K = 2
- ScalarReference:K
+ Reference:K
  NumericConstant:2
  AssignmentOperator:=
 140 PRINT K,B
@@ -52,13 +52,13 @@
  ScalarValue:B
  CarriageControl:NL
 150 LET K = K + 1
- ScalarReference:K
+ Reference:K
  ScalarValue:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 160 LET Q = A + B
- ScalarReference:Q
+ Reference:Q
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:+
@@ -70,11 +70,11 @@
  ScalarValue:Q
  CarriageControl:NL
 180 LET A = B
- ScalarReference:A
+ Reference:A
  ScalarValue:B
  AssignmentOperator:=
 190 LET B = Q
- ScalarReference:B
+ Reference:B
  ScalarValue:Q
  AssignmentOperator:=
 200 IF K > = N THEN 220
@@ -95,7 +95,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 250 INPUT L
- ScalarReference:L
+ Reference:L
 260 IF L = 1 THEN 280
  ScalarValue:L
  NumericConstant:1

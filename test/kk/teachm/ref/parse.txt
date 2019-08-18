@@ -28,7 +28,7 @@
  TextConstant:"(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
  CarriageControl:NL
 130 LET C = 1
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  AssignmentOperator:=
 140 GOSUB 8000
@@ -59,7 +59,7 @@
  TextConstant:"4. NONE OF THESE.)"
  CarriageControl:NL
 220 LET C = 3
- ScalarReference:C
+ Reference:C
  NumericConstant:3
  AssignmentOperator:=
 230 GOSUB 8000
@@ -115,7 +115,7 @@
  TextConstant:"4. NONE OF THESE.)"
  CarriageControl:NL
 350 LET C = 2
- ScalarReference:C
+ Reference:C
  NumericConstant:2
  AssignmentOperator:=
 360 GOSUB 8000
@@ -151,7 +151,7 @@
  TextConstant:"(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
  CarriageControl:NL
 420 LET C = 3
- ScalarReference:C
+ Reference:C
  NumericConstant:3
  AssignmentOperator:=
 430 GOSUB 8000
@@ -200,7 +200,7 @@
  TextConstant:"(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
  CarriageControl:NL
 530 LET C = 1
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  AssignmentOperator:=
 540 GOSUB 8000
@@ -243,7 +243,7 @@
  TextConstant:"YOUR ANSWER"
  CarriageControl:;
 8010 INPUT X
- ScalarReference:X
+ Reference:X
 8020 IF C <> X THEN 8050
  ScalarValue:C
  ScalarValue:X

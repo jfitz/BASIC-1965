@@ -6,10 +6,10 @@
  TextConstant:"A, R, Y, T"
  CarriageControl:;
 20 INPUT A, R, Y, T
- ScalarReference:A
- ScalarReference:R
- ScalarReference:Y
- ScalarReference:T
+ Reference:A
+ Reference:R
+ Reference:Y
+ Reference:T
 26 IF T = 999 THEN 999
  ScalarValue:T
  NumericConstant:999
@@ -31,13 +31,13 @@
  NumericConstant:0
  BinaryOperator:<=
 70 LET N = Y*T
- ScalarReference:N
+ Reference:N
  ScalarValue:Y
  ScalarValue:T
  BinaryOperator:*
  AssignmentOperator:=
 80 LET R1 = R/100/T
- ScalarReference:R1
+ Reference:R1
  ScalarValue:R
  NumericConstant:100
  BinaryOperator:/
@@ -45,7 +45,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 90 LET B = A*(1+R1)^N
- ScalarReference:B
+ Reference:B
  ScalarValue:A
  NumericConstant:1
  ScalarValue:R1

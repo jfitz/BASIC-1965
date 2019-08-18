@@ -51,7 +51,7 @@
  TextConstant:"EARN $10. EACH TURN COSTS $1. GOOD-LUCK"
  CarriageControl:NL
 170 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 180 PRINT
@@ -60,23 +60,23 @@
 190 GOSUB 590
  LineNumber:590
 200 LET S1 = S
- ScalarReference:S1
+ Reference:S1
  ScalarValue:S
  AssignmentOperator:=
 210 GOSUB 590
  LineNumber:590
 220 LET S2 = S
- ScalarReference:S2
+ Reference:S2
  ScalarValue:S
  AssignmentOperator:=
 230 GOSUB 590
  LineNumber:590
 240 LET S3 = S
- ScalarReference:S3
+ Reference:S3
  ScalarValue:S
  AssignmentOperator:=
 250 LET S = S1
- ScalarReference:S
+ Reference:S
  ScalarValue:S1
  AssignmentOperator:=
 260 GOSUB 610
@@ -84,7 +84,7 @@
 270 LET S1$ = S$
  Token 'InvalidToken:$' is not a value or operator
 280 LET S = S2
- ScalarReference:S
+ Reference:S
  ScalarValue:S2
  AssignmentOperator:=
 290 GOSUB 610
@@ -92,7 +92,7 @@
 300 LET S2$ = S$
  Token 'InvalidToken:$' is not a value or operator
 310 LET S = S3
- ScalarReference:S
+ Reference:S
  ScalarValue:S3
  AssignmentOperator:=
 320 GOSUB 610
@@ -124,7 +124,7 @@
 450 IF S3$ = "CHERRY" THEN 540
  Token 'InvalidToken:$' is not a value or operator
 460 LET J = J - 1
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:-
@@ -132,7 +132,7 @@
 470 GOTO 550
  LineNumber:550
 480 LET J = J + 89
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:89
  BinaryOperator:+
@@ -140,7 +140,7 @@
 490 GOTO 550
  LineNumber:550
 500 LET J = J + 2
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:2
  BinaryOperator:+
@@ -148,7 +148,7 @@
 510 GOTO 550
  LineNumber:550
 520 LET J = J + 1
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:1
  BinaryOperator:+
@@ -156,7 +156,7 @@
 530 GOTO 550
  LineNumber:550
 540 LET J = J + 9
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  NumericConstant:9
  BinaryOperator:+
@@ -184,7 +184,7 @@
 580 GOTO 720
  LineNumber:720
 590 LET S = 1 + INT(5*RND)
- ScalarReference:S
+ Reference:S
  NumericConstant:1
  NumericConstant:5
  FunctionRnd

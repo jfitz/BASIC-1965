@@ -11,12 +11,12 @@
  ITEMS
  CarriageControl:NL
 130 READ A,B,C,D
- ScalarReference:A
- ScalarReference:B
- ScalarReference:C
- ScalarReference:D
+ Reference:A
+ Reference:B
+ Reference:C
+ Reference:D
 140 LET N = A+B+C+D
- ScalarReference:N
+ Reference:N
  ScalarValue:A
  ScalarValue:B
  BinaryOperator:+
@@ -26,7 +26,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 150 LET E = ABS(A*D - B*C) - N/2
- ScalarReference:E
+ Reference:E
  ScalarValue:A
  ScalarValue:D
  BinaryOperator:*
@@ -41,7 +41,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
- ScalarReference:X
+ Reference:X
  ScalarValue:N
  ScalarValue:E
  BinaryOperator:*

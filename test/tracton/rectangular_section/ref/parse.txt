@@ -7,15 +7,15 @@
  TextConstant:"BASE = "
  CarriageControl:;
 40 INPUT B
- ScalarReference:B
+ Reference:B
 50 PRINT "HEIGHT = ";
  ITEMS
  TextConstant:"HEIGHT = "
  CarriageControl:;
 60 INPUT H
- ScalarReference:H
+ Reference:H
 70 LET I = (B*(H^3))/12
- ScalarReference:I
+ Reference:I
  ScalarValue:B
  ScalarValue:H
  NumericConstant:3
@@ -25,7 +25,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 80 LET J = (B*H*(B^2 + H^2))/12
- ScalarReference:J
+ Reference:J
  ScalarValue:B
  ScalarValue:H
  BinaryOperator:*
@@ -41,7 +41,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 90 LET A = B*H
- ScalarReference:A
+ Reference:A
  ScalarValue:B
  ScalarValue:H
  BinaryOperator:*
@@ -72,7 +72,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- ScalarReference:L
+ Reference:L
 160 IF L = 1 THEN 180
  ScalarValue:L
  NumericConstant:1

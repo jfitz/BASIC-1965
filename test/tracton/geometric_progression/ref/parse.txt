@@ -7,25 +7,25 @@
  TextConstant:"FIRST TERM = "
  CarriageControl:;
 40 INPUT A
- ScalarReference:A
+ Reference:A
 50 PRINT "RATIO OF TERMS = ";
  ITEMS
  TextConstant:"RATIO OF TERMS = "
  CarriageControl:;
 60 INPUT R
- ScalarReference:R
+ Reference:R
 70 PRINT "NUMBER OF TERMS = ";
  ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:;
 80 INPUT N
- ScalarReference:N
+ Reference:N
 90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
  ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 100 INPUT C
- ScalarReference:C
+ Reference:C
 110 IF C = 1 THEN 130
  ScalarValue:C
  NumericConstant:1
@@ -46,7 +46,7 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 160 LET J = 0
- ScalarReference:J
+ Reference:J
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 0 TO N - 1
@@ -54,13 +54,13 @@
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 180 LET K = I + 1
- ScalarReference:K
+ Reference:K
  ScalarValue:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 190 LET L = A*(R^I)
- ScalarReference:L
+ Reference:L
  ScalarValue:A
  ScalarValue:R
  ScalarValue:I
@@ -68,7 +68,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 200 LET J = J + L
- ScalarReference:J
+ Reference:J
  ScalarValue:J
  ScalarValue:L
  BinaryOperator:+
@@ -101,7 +101,7 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT X
- ScalarReference:X
+ Reference:X
 290 IF X = 1 THEN 310
  ScalarValue:X
  NumericConstant:1

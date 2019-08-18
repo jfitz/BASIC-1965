@@ -8,8 +8,8 @@
 140 REMARK WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
  Remark:WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
 150 READ I0, J0
- ScalarReference:I0
- ScalarReference:J0
+ Reference:I0
+ Reference:J0
 160 PRINT "RANK  ";"FILE  ";"LENGTH"
  ITEMS
  TextConstant:"RANK  "
@@ -20,7 +20,7 @@
  CarriageControl:NL
 180
 182 LET Z0 = 0
- ScalarReference:Z0
+ Reference:Z0
  NumericConstant:0
  AssignmentOperator:=
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
@@ -36,7 +36,7 @@
 220       LET B(I,J) = 0
  ScalarValue:I
  ScalarValue:J
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 230    NEXT J
@@ -44,21 +44,21 @@
 240 NEXT I
  VariableName:I
 250 LET I = I0
- ScalarReference:I
+ Reference:I
  ScalarValue:I0
  AssignmentOperator:=
 260 LET J = J0
- ScalarReference:J
+ Reference:J
  ScalarValue:J0
  AssignmentOperator:=
 270 LET M = 1
- ScalarReference:M
+ Reference:M
  NumericConstant:1
  AssignmentOperator:=
 280 LET B(I,J) = -1
  ScalarValue:I
  ScalarValue:J
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -66,11 +66,11 @@
 300 REMARK WE NOW START THE SERIES OF MOVES
  Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
- ScalarReference:C1
+ Reference:C1
  NumericConstant:9
  AssignmentOperator:=
 320 LET C = 0
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I1 = I - 2 TO I + 2
@@ -89,7 +89,7 @@
  NumericConstant:4
  BinaryOperator:>
 360    LET D1 = 3 - ABS(I1 - I)
- ScalarReference:D1
+ Reference:D1
  NumericConstant:3
  ScalarValue:I1
  ScalarValue:I
@@ -116,7 +116,7 @@
  NumericConstant:0
  BinaryOperator:<
 400       LET C = C + 1
- ScalarReference:C
+ Reference:C
  ScalarValue:C
  NumericConstant:1
  BinaryOperator:+
@@ -126,22 +126,22 @@
  ScalarValue:C1
  BinaryOperator:<>
 420       LET I = I1
- ScalarReference:I
+ Reference:I
  ScalarValue:I1
  AssignmentOperator:=
 430       LET J = J1
- ScalarReference:J
+ Reference:J
  ScalarValue:J1
  AssignmentOperator:=
 440       LET B(I,J) = -1
  ScalarValue:I
  ScalarValue:J
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
 450       LET M = M + 1
- ScalarReference:M
+ Reference:M
  ScalarValue:M
  NumericConstant:1
  BinaryOperator:+
@@ -159,7 +159,7 @@
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
  Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
 510 LET C1 = INT(RND(Z)*C + 1)
- ScalarReference:C1
+ Reference:C1
  ScalarValue:Z
  FunctionRnd
  ScalarValue:C
@@ -181,7 +181,7 @@
  ScalarValue:M
  CarriageControl:NL
 612 LET Z0 = Z0+1
- ScalarReference:Z0
+ Reference:Z0
  ScalarValue:Z0
  NumericConstant:1
  BinaryOperator:+

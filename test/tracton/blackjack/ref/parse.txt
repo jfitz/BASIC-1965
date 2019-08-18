@@ -127,35 +127,35 @@
  Unknown statement 'RANDOMIZE'
  Unimplemented
 360 LET D = 0
- ScalarReference:D
+ Reference:D
  NumericConstant:0
  AssignmentOperator:=
 370 LET P = D
- ScalarReference:P
+ Reference:P
  ScalarValue:D
  AssignmentOperator:=
 380 GOSUB 820
  LineNumber:820
 390 LET D1 = C
- ScalarReference:D1
+ Reference:D1
  ScalarValue:C
  AssignmentOperator:=
 400 GOSUB 820
  LineNumber:820
 410 LET D2 = C
- ScalarReference:D2
+ Reference:D2
  ScalarValue:C
  AssignmentOperator:=
 420 GOSUB 820
  LineNumber:820
 430 LET P1 = C
- ScalarReference:P1
+ Reference:P1
  ScalarValue:C
  AssignmentOperator:=
 440 GOSUB 820
  LineNumber:820
 450 LET P2 = C
- ScalarReference:P2
+ Reference:P2
  ScalarValue:C
  AssignmentOperator:=
 460 PRINT
@@ -188,13 +188,13 @@
  BinaryOperator:+
  CarriageControl:NL
 500 LET D = D1 + D2
- ScalarReference:D
+ Reference:D
  ScalarValue:D1
  ScalarValue:D2
  BinaryOperator:+
  AssignmentOperator:=
 510 LET P = P1 + P2
- ScalarReference:P
+ Reference:P
  ScalarValue:P1
  ScalarValue:P2
  BinaryOperator:+
@@ -268,7 +268,7 @@
  ScalarValue:C
  CarriageControl:NL
 710 LET P = P + C
- ScalarReference:P
+ Reference:P
  ScalarValue:P
  ScalarValue:C
  BinaryOperator:+
@@ -288,7 +288,7 @@
 750 GOSUB 820
  LineNumber:820
 760 LET D = D + C
- ScalarReference:D
+ Reference:D
  ScalarValue:D
  ScalarValue:C
  BinaryOperator:+
@@ -316,7 +316,7 @@
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  NumericConstant:11
  FunctionRnd
@@ -337,13 +337,13 @@
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  AssignmentOperator:=
 880 RETURN
  
 890 LET C = 1 + INT(11*RND)
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  NumericConstant:11
  FunctionRnd
@@ -366,7 +366,7 @@
 930 GOTO 950
  LineNumber:950
 940 LET C = 1
- ScalarReference:C
+ Reference:C
  NumericConstant:1
  AssignmentOperator:=
 950 RETURN
@@ -388,13 +388,13 @@
 1010 GOTO 960
  LineNumber:960
 1020 LET L = 1
- ScalarReference:L
+ Reference:L
  NumericConstant:1
  AssignmentOperator:=
 1030 GOTO 1050
  LineNumber:1050
 1040 LET L = 0
- ScalarReference:L
+ Reference:L
  NumericConstant:0
  AssignmentOperator:=
 1050 RETURN

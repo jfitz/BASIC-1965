@@ -5,21 +5,21 @@
 100 REM collect data
  Remark:collect data
 110 READ R0,C0
- ScalarReference:R0
- ScalarReference:C0
+ Reference:R0
+ Reference:C0
 120 READ N0
- ScalarReference:N0
+ Reference:N0
 122 DIM M(N0)
  ScalarValue:N0
- CompoundDeclaration:M
+ Declaration:M
 130 READ D0
- ScalarReference:D0
+ Reference:D0
 132 READ I0
- ScalarReference:I0
+ Reference:I0
 134 READ Z8
- ScalarReference:Z8
+ Reference:Z8
 136 LET Z0 = R0 * 2 + C0 * 2 + Z8
- ScalarReference:Z0
+ Reference:Z0
  ScalarValue:R0
  NumericConstant:2
  BinaryOperator:*
@@ -81,11 +81,11 @@
  TextConstant:"done."
  CarriageControl:NL
 240 LET I1 = 1
- ScalarReference:I1
+ Reference:I1
  NumericConstant:1
  AssignmentOperator:=
 242 LET P2 = 0.99
- ScalarReference:P2
+ Reference:P2
  NumericConstant:0.99
  AssignmentOperator:=
 300 REM display board
@@ -113,7 +113,7 @@
  ScalarValue:I0
  BinaryOperator:<
 430 LET I1 = I1 + 1
- ScalarReference:I1
+ Reference:I1
  ScalarValue:I1
  NumericConstant:1
  BinaryOperator:+
@@ -139,7 +139,7 @@
  ArrayValue:M
  CarriageControl:;
 550 LET M = 0
- ScalarReference:M
+ Reference:M
  NumericConstant:0
  AssignmentOperator:=
 552 FOR I = 1 TO N0
@@ -147,7 +147,7 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N0"]
 554 LET M = M + M(I)
- ScalarReference:M
+ Reference:M
  ScalarValue:M
  ScalarValue:I
  ScalarValue:M
@@ -156,7 +156,7 @@
 556 NEXT I
  VariableName:I
 558 LET T = (R0+1) * (C0+1) - Z0
- ScalarReference:T
+ Reference:T
  ScalarValue:R0
  NumericConstant:1
  BinaryOperator:+
@@ -168,7 +168,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 560 LET P2 = M / T
- ScalarReference:P2
+ Reference:P2
  ScalarValue:M
  ScalarValue:T
  BinaryOperator:/
@@ -201,7 +201,7 @@
 700 REM new board becomes the board
  Remark:new board becomes the board
 710 MAT B = B1
- MatrixReference:B
+ Reference:B
  MatrixValue:B1
  AssignmentOperator:=
 800 GOTO 300
@@ -222,7 +222,7 @@
 1110 REM SET EVERYTHING TO -1
  Remark:SET EVERYTHING TO -1
 1112 MAT B = CON(R0,C0) * -1
- MatrixReference:B
+ Reference:B
  ScalarValue:R0
  ScalarValue:C0
  FunctionCon
@@ -239,13 +239,13 @@
 1124 LET B(0,C) = 0
  NumericConstant:0
  ScalarValue:C
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1126 LET B(R0,C) = 0
  ScalarValue:R0
  ScalarValue:C
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1128 NEXT C
@@ -259,13 +259,13 @@
 1134 LET B(R,0) = 0
  ScalarValue:R
  NumericConstant:0
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1136 LET B(R,C0) = 0
  ScalarValue:R
  ScalarValue:C0
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1138 NEXT R
@@ -277,12 +277,12 @@
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Z8"]
 1144 READ R,C
- ScalarReference:R
- ScalarReference:C
+ Reference:R
+ Reference:C
 1146 LET B(R,C) = 0
  ScalarValue:R
  ScalarValue:C
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1148 NEXT I
@@ -307,7 +307,7 @@
 1155 LET B(R,C)=INT(RND(N0)+1)
  ScalarValue:R
  ScalarValue:C
- ScalarReference:B
+ Reference:B
  ScalarValue:N0
  FunctionRnd
  NumericConstant:1
@@ -331,11 +331,11 @@
 1300 REM calculate comfort, count people who move
  Remark:calculate comfort, count people who move
 1302 MAT B1 = B
- MatrixReference:B1
+ Reference:B1
  MatrixValue:B
  AssignmentOperator:=
 1304 MAT M = ZER()
- MatrixReference:M
+ Reference:M
  FunctionZer
  AssignmentOperator:=
 1310 FOR R = 1 TO R0-1
@@ -353,11 +353,11 @@
  NumericConstant:0
  BinaryOperator:=
 1317 LET X7 = 0
- ScalarReference:X7
+ Reference:X7
  NumericConstant:0
  AssignmentOperator:=
 1318 LET X8 = 0
- ScalarReference:X8
+ Reference:X8
  NumericConstant:0
  AssignmentOperator:=
 1320 FOR I9 = -1 TO 1
@@ -391,7 +391,7 @@
  ScalarValue:B
  BinaryOperator:=
 1334 LET X8 = X8 + 1
- ScalarReference:X8
+ Reference:X8
  ScalarValue:X8
  NumericConstant:1
  BinaryOperator:+
@@ -399,7 +399,7 @@
 1336 GOTO 1350
  LineNumber:1350
 1340 LET X7 = X7 + 1
- ScalarReference:X7
+ Reference:X7
  ScalarValue:X7
  NumericConstant:1
  BinaryOperator:+
@@ -409,7 +409,7 @@
 1352 NEXT I9
  VariableName:I9
 1360 LET X = X8 / X7
- ScalarReference:X
+ Reference:X
  ScalarValue:X8
  ScalarValue:X7
  BinaryOperator:/
@@ -422,7 +422,7 @@
  ScalarValue:R
  ScalarValue:C
  ScalarValue:B
- ScalarReference:M
+ Reference:M
  ScalarValue:R
  ScalarValue:C
  ScalarValue:B
@@ -433,7 +433,7 @@
 1374 LET B1(R,C) = -1
  ScalarValue:R
  ScalarValue:C
- ScalarReference:B1
+ Reference:B1
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -461,7 +461,7 @@
  UnaryOperator:-
  BinaryOperator:<>
 1430 LET P = INT(RND(N0)+1)
- ScalarReference:P
+ Reference:P
  ScalarValue:N0
  FunctionRnd
  NumericConstant:1
@@ -476,12 +476,12 @@
 1440 LET B1(R,C) = P
  ScalarValue:R
  ScalarValue:C
- ScalarReference:B1
+ Reference:B1
  ScalarValue:P
  AssignmentOperator:=
 1442 LET M(P) = M(P) - 1
  ScalarValue:P
- ScalarReference:M
+ Reference:M
  ScalarValue:P
  ScalarValue:M
  NumericConstant:1
