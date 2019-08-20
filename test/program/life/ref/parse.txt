@@ -15,19 +15,19 @@
 240 LET B(4,4)=1
  NumericConstant:4
  NumericConstant:4
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  AssignmentOperator:=
 241 LET B(4,5)=1
  NumericConstant:4
  NumericConstant:5
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  AssignmentOperator:=
 242 LET B(4,6)=1
  NumericConstant:4
  NumericConstant:6
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  AssignmentOperator:=
 300 REM *** DISPLAY BOARD
@@ -48,7 +48,7 @@
  ITEMS
  CarriageControl:NL
 350 INPUT "CONTINUE (1=YES)", A
- ScalarReference:A
+ Reference:A
 360 IF A <> 1 THEN 999
  ScalarValue:A
  NumericConstant:1
@@ -56,7 +56,7 @@
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
- MatrixReference:N
+ Reference:N
  NumericConstant:10
  NumericConstant:10
  FunctionZer
@@ -76,7 +76,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 442 LET C = 0
- ScalarReference:C
+ Reference:C
  NumericConstant:0
  AssignmentOperator:=
 450 FOR I0=-1 TO 1
@@ -106,7 +106,7 @@
  NumericConstant:0
  BinaryOperator:=
 490 LET C = C + 1
- ScalarReference:C
+ Reference:C
  ScalarValue:C
  NumericConstant:1
  BinaryOperator:+
@@ -118,7 +118,7 @@
 512 LET N(I,J)=C
  ScalarValue:I
  ScalarValue:J
- ScalarReference:N
+ Reference:N
  ScalarValue:C
  AssignmentOperator:=
 520 NEXT J
@@ -164,7 +164,7 @@
 670 LET B(I,J)=0
  ScalarValue:I
  ScalarValue:J
- ScalarReference:B
+ Reference:B
  NumericConstant:0
  AssignmentOperator:=
 680 GOTO 730
@@ -174,7 +174,7 @@
 700 LET B(I,J)=1
  ScalarValue:I
  ScalarValue:J
- ScalarReference:B
+ Reference:B
  NumericConstant:1
  AssignmentOperator:=
 710 GOTO 730

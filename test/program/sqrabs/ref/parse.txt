@@ -3,25 +3,25 @@
  start:   ["NumericConstant:5", "UnaryOperator:-"]
  end:     ["NumericConstant:10"]
 20 LET A=ABS(I)
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  FunctionAbs
  AssignmentOperator:=
 30 LET S=SQR(ABS(I))
- ScalarReference:S
+ Reference:S
  ScalarValue:I
  FunctionAbs
  FunctionSqr
  AssignmentOperator:=
 31 LET A1=ABS(I)+3
- ScalarReference:A1
+ Reference:A1
  ScalarValue:I
  FunctionAbs
  NumericConstant:3
  BinaryOperator:+
  AssignmentOperator:=
 32 LET S1=SQR(ABS(I)+3)
- ScalarReference:S1
+ Reference:S1
  ScalarValue:I
  FunctionAbs
  NumericConstant:3
@@ -29,7 +29,7 @@
  FunctionSqr
  AssignmentOperator:=
 34 LET S2=SQR(ABS(I)+3)*2
- ScalarReference:S2
+ Reference:S2
  ScalarValue:I
  FunctionAbs
  NumericConstant:3

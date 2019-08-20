@@ -1,33 +1,33 @@
 10 REM Test different values
  Remark:Test different values
 20 LET A = 10
- ScalarReference:A
+ Reference:A
  NumericConstant:10
  AssignmentOperator:=
 30 LET B = -5
- ScalarReference:B
+ Reference:B
  NumericConstant:5
  UnaryOperator:-
  AssignmentOperator:=
 40 LET C = 20.25
- ScalarReference:C
+ Reference:C
  NumericConstant:20.25
  AssignmentOperator:=
 50 LET D = -15.333
- ScalarReference:D
+ Reference:D
  NumericConstant:15.333
  UnaryOperator:-
  AssignmentOperator:=
 60 LET E1 = 1.2E2
- ScalarReference:E1
+ Reference:E1
  NumericConstant:120
  AssignmentOperator:=
 62 LET E2 = 1.2E+2
- ScalarReference:E2
+ Reference:E2
  NumericConstant:120
  AssignmentOperator:=
 64 LET E3 = 1.2E-2
- ScalarReference:E3
+ Reference:E3
  NumericConstant:0.012
  AssignmentOperator:=
 120 PRINT "A="; A

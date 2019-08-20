@@ -1,10 +1,10 @@
 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
  Remark:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
 20 READ A, A0
- ScalarReference:A
- ScalarReference:A0
+ Reference:A
+ Reference:A0
 30 LET B = A + A0
- ScalarReference:B
+ Reference:B
  ScalarValue:A
  ScalarValue:A0
  BinaryOperator:+
@@ -27,7 +27,7 @@
  start:   ["ScalarValue:A"]
  end:     ["ScalarValue:B"]
 110 LET N0 = N
- ScalarReference:N0
+ Reference:N0
  ScalarValue:N
  AssignmentOperator:=
 120 GOSUB 400
@@ -55,7 +55,7 @@
  NumericConstant:0
  BinaryOperator:=
 440 LET N0 = 3*N0 + 1
- ScalarReference:N0
+ Reference:N0
  NumericConstant:3
  ScalarValue:N0
  BinaryOperator:*
@@ -65,7 +65,7 @@
 450 GOTO 470
  LineNumber:470
 460 LET N0 = N0/2
- ScalarReference:N0
+ Reference:N0
  ScalarValue:N0
  NumericConstant:2
  BinaryOperator:/

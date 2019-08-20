@@ -23,7 +23,7 @@
  end:     ["NumericConstant:3"]
 120 READ A(I)
  ScalarValue:I
- ScalarReference:A
+ Reference:A
 140 NEXT I
  VariableName:I
 150 PRINT "MATRIX A"
@@ -45,7 +45,7 @@
 220 READ B(I,J)
  ScalarValue:I
  ScalarValue:J
- ScalarReference:B
+ Reference:B
 230 NEXT J
  VariableName:J
 240 NEXT I
@@ -59,7 +59,7 @@
  MatrixValue:B
  CarriageControl:;
 300 MAT C = A*B
- MatrixReference:C
+ Reference:C
  MatrixValue:A
  MatrixValue:B
  BinaryOperator:*

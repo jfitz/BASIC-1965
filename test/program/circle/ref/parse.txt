@@ -28,31 +28,31 @@
 100 REM POINT A
  Remark:POINT A
 101 READ A1,A2
- ScalarReference:A1
- ScalarReference:A2
+ Reference:A1
+ Reference:A2
 110 REM CIRCLE AT POINT D WITH RADIUS DC
  Remark:CIRCLE AT POINT D WITH RADIUS DC
 111 READ D1,D2
- ScalarReference:D1
- ScalarReference:D2
+ Reference:D1
+ Reference:D2
 113 READ C1,C2
- ScalarReference:C1
- ScalarReference:C2
+ Reference:C1
+ Reference:C2
 115 LET D5=D1-C1  ' RADIUS
- ScalarReference:D5
+ Reference:D5
  ScalarValue:D1
  ScalarValue:C1
  BinaryOperator:-
  AssignmentOperator:=
 121 READ Z9,Z8
- ScalarReference:Z9
- ScalarReference:Z8
+ Reference:Z9
+ Reference:Z8
 122 READ R9
- ScalarReference:R9
+ Reference:R9
 200 REM FIND POINT B
  Remark:FIND POINT B
 201 LET B1=(A1+D1)/2
- ScalarReference:B1
+ Reference:B1
  ScalarValue:A1
  ScalarValue:D1
  BinaryOperator:+
@@ -60,17 +60,17 @@
  BinaryOperator:/
  AssignmentOperator:=
 202 LET B2=0
- ScalarReference:B2
+ Reference:B2
  NumericConstant:0
  AssignmentOperator:=
 203 LET I1=D1+D5
- ScalarReference:I1
+ Reference:I1
  ScalarValue:D1
  ScalarValue:D5
  BinaryOperator:+
  AssignmentOperator:=
 204 LET I2=0
- ScalarReference:I2
+ Reference:I2
  NumericConstant:0
  AssignmentOperator:=
 217 PRINT "IDENTIFYING POINT B"
@@ -88,13 +88,13 @@
  TextConstant:"Z"
  CarriageControl:NL
 219 LET Z=1
- ScalarReference:Z
+ Reference:Z
  NumericConstant:1
  AssignmentOperator:=
 220 REM RATIO OF AC/BC
  Remark:RATIO OF AC/BC
 221 LET F1 = FNL(A1,A2,C1,C2)
- ScalarReference:F1
+ Reference:F1
  ScalarValue:A1
  ScalarValue:A2
  ScalarValue:C1
@@ -102,7 +102,7 @@
  UserFunction
  AssignmentOperator:=
 222 LET F2 = FNL(B1,B2,C1,C2)
- ScalarReference:F2
+ Reference:F2
  ScalarValue:B1
  ScalarValue:B2
  ScalarValue:C1
@@ -110,7 +110,7 @@
  UserFunction
  AssignmentOperator:=
 223 LET R0 = F1/F2
- ScalarReference:R0
+ Reference:R0
  ScalarValue:F1
  ScalarValue:F2
  BinaryOperator:/
@@ -118,7 +118,7 @@
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
 231 LET G1 = FNL(A1,A2,I1,I2)
- ScalarReference:G1
+ Reference:G1
  ScalarValue:A1
  ScalarValue:A2
  ScalarValue:I1
@@ -126,7 +126,7 @@
  UserFunction
  AssignmentOperator:=
 232 LET G2 = FNL(B1,B2,I1,I2)
- ScalarReference:G2
+ Reference:G2
  ScalarValue:B1
  ScalarValue:B2
  ScalarValue:I1
@@ -134,7 +134,7 @@
  UserFunction
  AssignmentOperator:=
 233 LET R1 = G1/G2
- ScalarReference:R1
+ Reference:R1
  ScalarValue:G1
  ScalarValue:G2
  BinaryOperator:/
@@ -161,7 +161,7 @@
  ScalarValue:R1
  BinaryOperator:<
 242 LET B1=B1+Z
- ScalarReference:B1
+ Reference:B1
  ScalarValue:B1
  ScalarValue:Z
  BinaryOperator:+
@@ -169,13 +169,13 @@
 243 GOTO 246
  LineNumber:246
 245 LET B1=B1-Z
- ScalarReference:B1
+ Reference:B1
  ScalarValue:B1
  ScalarValue:Z
  BinaryOperator:-
  AssignmentOperator:=
 246 LET Z=Z*Z8
- ScalarReference:Z
+ Reference:Z
  ScalarValue:Z
  ScalarValue:Z8
  BinaryOperator:*
@@ -260,12 +260,12 @@
 420 REM PICK POINT ON CIRCLE D
  Remark:PICK POINT ON CIRCLE D
 421 LET T = FNR(I)
- ScalarReference:T
+ Reference:T
  ScalarValue:I
  UserFunction
  AssignmentOperator:=
 422 LET I1 = D1 + COS(T)*D5
- ScalarReference:I1
+ Reference:I1
  ScalarValue:D1
  ScalarValue:T
  FunctionCos
@@ -274,7 +274,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 423 LET I2 = D2 + SIN(T)*D5
- ScalarReference:I2
+ Reference:I2
  ScalarValue:D2
  ScalarValue:T
  FunctionSin
@@ -283,7 +283,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 424 LET G1 = FNL(A1,A2,I1,I2)
- ScalarReference:G1
+ Reference:G1
  ScalarValue:A1
  ScalarValue:A2
  ScalarValue:I1
@@ -291,7 +291,7 @@
  UserFunction
  AssignmentOperator:=
 425 LET G2 = FNL(B1,B2,I1,I2)
- ScalarReference:G2
+ Reference:G2
  ScalarValue:B1
  ScalarValue:B2
  ScalarValue:I1
@@ -299,7 +299,7 @@
  UserFunction
  AssignmentOperator:=
 426 LET R1 = G1/G2
- ScalarReference:R1
+ Reference:R1
  ScalarValue:G1
  ScalarValue:G2
  BinaryOperator:/

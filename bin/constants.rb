@@ -997,6 +997,18 @@ class Variable < AbstractElement
     @precedence = 7
   end
 
+  def eql?(other)
+    @variable_name == other.name && @subscripts == other.subscripts
+  end
+
+  def ==(other)
+    @variable_name == other.name && @subscripts == other.subscripts
+  end
+
+  def hash
+    @variable_name.hash && @subscripts.hash
+  end
+
   def dump
     self.class.to_s + ':' + @variable_name.to_s
   end

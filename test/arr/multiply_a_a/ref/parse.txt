@@ -25,7 +25,7 @@
  end:     ["NumericConstant:5"]
 120 READ A(I)
  ScalarValue:I
- ScalarReference:A
+ Reference:A
 140 NEXT I
  VariableName:I
 150 PRINT "ARRAY A"
@@ -45,7 +45,7 @@
  end:     ["NumericConstant:5"]
 220 READ B(I)
  ScalarValue:I
- ScalarReference:B
+ Reference:B
 240 NEXT I
  VariableName:I
 250 PRINT "ARRAY B"
@@ -60,7 +60,7 @@
  ITEMS
  CarriageControl:NL
 300 ARR C = A*B
- ArrayReference:C
+ Reference:C
  ArrayValue:A
  ArrayValue:B
  BinaryOperator:*

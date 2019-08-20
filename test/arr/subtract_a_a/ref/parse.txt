@@ -11,12 +11,12 @@
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
  ScalarValue:I
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  AssignmentOperator:=
 52 LET B(I) = I*3
  ScalarValue:I
- ScalarReference:B
+ Reference:B
  ScalarValue:I
  NumericConstant:3
  BinaryOperator:*
@@ -24,7 +24,7 @@
 70 NEXT I
  VariableName:I
 100 ARR C = A - B
- ArrayReference:C
+ Reference:C
  ArrayValue:A
  ArrayValue:B
  BinaryOperator:-

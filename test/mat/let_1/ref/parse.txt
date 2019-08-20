@@ -17,7 +17,7 @@
 50 LET A(I,J) = I+J
  ScalarValue:I
  ScalarValue:J
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  ScalarValue:J
  BinaryOperator:+
@@ -27,7 +27,7 @@
 70 NEXT I
  VariableName:I
 100 MAT B = A
- MatrixReference:B
+ Reference:B
  MatrixValue:A
  AssignmentOperator:=
 110 MAT PRINT B,
@@ -51,7 +51,7 @@
 150 LET A(I,J) = I+J
  ScalarValue:I
  ScalarValue:J
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  ScalarValue:J
  BinaryOperator:+
@@ -61,7 +61,7 @@
 170 NEXT I
  VariableName:I
 200 MAT B = A
- MatrixReference:B
+ Reference:B
  MatrixValue:A
  AssignmentOperator:=
 210 MAT PRINT B,

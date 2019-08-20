@@ -9,13 +9,13 @@
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
  ScalarValue:I
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  AssignmentOperator:=
 70 NEXT I
  VariableName:I
 100 ARR B = +A
- ArrayReference:B
+ Reference:B
  ArrayValue:A
  UnaryOperator:+
  AssignmentOperator:=

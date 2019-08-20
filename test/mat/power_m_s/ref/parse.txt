@@ -15,7 +15,7 @@
 50 LET A(I,J) = I+J
  ScalarValue:I
  ScalarValue:J
- ScalarReference:A
+ Reference:A
  ScalarValue:I
  ScalarValue:J
  BinaryOperator:+
@@ -25,7 +25,7 @@
 70 NEXT I
  VariableName:I
 100 MAT B = A ^ 2
- MatrixReference:B
+ Reference:B
  MatrixValue:A
  NumericConstant:2
  BinaryOperator:^
