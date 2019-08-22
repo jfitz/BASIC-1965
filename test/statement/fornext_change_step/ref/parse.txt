@@ -13,7 +13,7 @@
  NumericConstant:1
  AssignmentOperator:=
 50 FOR I = B TO E STEP S
- control: VariableName:I
+ control: Variable:I
  start:   ["ScalarValue:B"]
  end:     ["ScalarValue:E"]
  step:    ["ScalarValue:S"]
@@ -28,6 +28,6 @@
  BinaryOperator:+
  AssignmentOperator:=
 80 NEXT I
- VariableName:I
+ Variable:I
 99 END
  

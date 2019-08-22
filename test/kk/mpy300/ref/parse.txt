@@ -58,7 +58,7 @@ Line 640 is out of sequence
 120  GOSUB 2000
  LineNumber:2000
 130  FOR I = 0 TO L
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
 140      LET A(I) = C(I)
@@ -68,7 +68,7 @@ Line 640 is out of sequence
  ScalarValue:C
  AssignmentOperator:=
 150  NEXT I
- VariableName:I
+ Variable:I
 160  LET L1 = L
  Reference:L1
  ScalarValue:L
@@ -85,7 +85,7 @@ Line 640 is out of sequence
 220  GOSUB 2000
  LineNumber:2000
 230  FOR I = 0 TO L
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
 240      LET B(I) = C(I)
@@ -95,7 +95,7 @@ Line 640 is out of sequence
  ScalarValue:C
  AssignmentOperator:=
 250  NEXT I
- VariableName:I
+ Variable:I
 260  LET L2 = L
  Reference:L2
  ScalarValue:L
@@ -117,7 +117,7 @@ Line 640 is out of sequence
  BinaryOperator:+
  AssignmentOperator:=
 320  FOR I = 0 TO L
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
 330      LET C(I) = 0
@@ -126,13 +126,13 @@ Line 640 is out of sequence
  NumericConstant:0
  AssignmentOperator:=
 340  NEXT I
- VariableName:I
+ Variable:I
 350  FOR J = 0 TO L1
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L1"]
 360      FOR K = 0 TO L2
- control: VariableName:K
+ control: Variable:K
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L2"]
 370          LET I = J+K
@@ -154,9 +154,9 @@ Line 640 is out of sequence
  BinaryOperator:+
  AssignmentOperator:=
 390      NEXT K
- VariableName:K
+ Variable:K
 400  NEXT J
- VariableName:J
+ Variable:J
 410  GOTO 600
  LineNumber:600
 420  LET L = L2
@@ -164,7 +164,7 @@ Line 640 is out of sequence
  ScalarValue:L2
  AssignmentOperator:=
 430      FOR I = L1+1 TO L
- control: VariableName:I
+ control: Variable:I
  start:   ["ScalarValue:L1", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["ScalarValue:L"]
 440  LET A(I) = 0
@@ -173,9 +173,9 @@ Line 640 is out of sequence
  NumericConstant:0
  AssignmentOperator:=
 450  NEXT I
- VariableName:I
+ Variable:I
 500  FOR I = 0 TO L
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
 510      LET C(I) = A(I) + B(I)
@@ -188,7 +188,7 @@ Line 640 is out of sequence
  BinaryOperator:+
  AssignmentOperator:=
 520  NEXT I
- VariableName:I
+ Variable:I
 530
 600  REM CARRY, PRINT ANSWER
  Remark:CARRY, PRINT ANSWER
@@ -202,7 +202,7 @@ Line 640 is out of sequence
 1000 REM READ A NUMBER C
  Remark:READ A NUMBER C
 1010 FOR I = 0 TO 100
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:100"]
 1020     READ X(I)
@@ -214,7 +214,7 @@ Line 640 is out of sequence
  NumericConstant:0
  BinaryOperator:<
 1040 NEXT I
- VariableName:I
+ Variable:I
 1050 GOTO 1200
  LineNumber:1200
 1100 LET L = I-1
@@ -224,7 +224,7 @@ Line 640 is out of sequence
  BinaryOperator:-
  AssignmentOperator:=
 1110 FOR I = 0 TO L
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
 1120     LET C(I) = X(L-I)
@@ -236,7 +236,7 @@ Line 640 is out of sequence
  ScalarValue:X
  AssignmentOperator:=
 1130 NEXT I
- VariableName:I
+ Variable:I
 1140 RETURN
  
 1200 PRINT "NUMBER TOO LONG"
@@ -310,7 +310,7 @@ Line 640 is out of sequence
  ScalarValue:L
  AssignmentOperator:=
 2210 FOR I = L9 TO 0 STEP -1
- control: VariableName:I
+ control: Variable:I
  start:   ["ScalarValue:L9"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
@@ -324,7 +324,7 @@ Line 640 is out of sequence
  NumericConstant:100
  AssignmentOperator:=
 2240     FOR J = 1 TO 3
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 2250         LET M = INT(N/Q)
@@ -353,7 +353,7 @@ Line 640 is out of sequence
  ScalarValue:M
  CarriageControl:;
 2290     NEXT J
- VariableName:J
+ Variable:J
 2300     IF I = 0 THEN 2400
  ScalarValue:I
  NumericConstant:0
@@ -363,7 +363,7 @@ Line 640 is out of sequence
  TextConstant:",   "
  CarriageControl:;
 2320 NEXT I
- VariableName:I
+ Variable:I
 2400 PRINT
  ITEMS
  CarriageControl:NL
@@ -383,7 +383,7 @@ Line 640 is out of sequence
  NumericConstant:0
  AssignmentOperator:=
 3020 FOR I = 0 TO L
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:L"]
 3030     LET N = C(I)
@@ -420,7 +420,7 @@ Line 640 is out of sequence
  BinaryOperator:+
  AssignmentOperator:=
 3070 NEXT I
- VariableName:I
+ Variable:I
 3080 IF M = 0 THEN 3100
  ScalarValue:M
  NumericConstant:0

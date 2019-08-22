@@ -4,21 +4,21 @@
 10 READ N
  Reference:N
 20 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 30    READ S(I)
  ScalarValue:I
  Reference:S
 40 NEXT I
- VariableName:I
+ Variable:I
 50
 100 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 200    FOR J = 1 TO N-1
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 210       LET X = S(J)
@@ -50,11 +50,11 @@
  ScalarValue:X
  AssignmentOperator:=
 300    NEXT J
- VariableName:J
+ Variable:J
 310 NEXT I
- VariableName:I
+ Variable:I
 400 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 410    PRINT S(I);
@@ -63,7 +63,7 @@
  ScalarValue:S
  CarriageControl:;
 420 NEXT I
- VariableName:I
+ Variable:I
 900 DATA 20
  NumericConstant:20
 910 DATA 5,2,7,3,8,1,9,11,3,15,20,4,0,10,2,16,2,8,9,1

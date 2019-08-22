@@ -5,7 +5,7 @@
  NumericConstant:100
  Declaration:V
 20 FOR I = 0 TO 100
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:100"]
 30    READ K
@@ -26,7 +26,7 @@
  FunctionAbs
  AssignmentOperator:=
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2", "ScalarValue:K1", "BinaryOperator:*", "NumericConstant:1", "BinaryOperator:+", "ScalarValue:K1", "FunctionSgn", "BinaryOperator:-"]
 80       READ T(I,J)
@@ -34,16 +34,16 @@
  ScalarValue:J
  Reference:T
 90    NEXT J
- VariableName:J
+ Variable:J
 95 NEXT I
- VariableName:I
+ Variable:I
 99
 100 PRINT "SELECTED ACTS: ";
  ITEMS
  TextConstant:"SELECTED ACTS: "
  CarriageControl:;
 105 FOR I = I-1 TO 0 STEP -1
- control: VariableName:I
+ control: Variable:I
  start:   ["ScalarValue:I", "NumericConstant:1", "BinaryOperator:-"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
@@ -75,7 +75,7 @@
  NumericConstant:0
  AssignmentOperator:=
 210    FOR J = 2 TO 2*K STEP 2
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:2", "ScalarValue:K", "BinaryOperator:*"]
  step:    ["NumericConstant:2"]
@@ -99,7 +99,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 240    NEXT J
- VariableName:J
+ Variable:J
 250    LET V(I) = S
  ScalarValue:I
  Reference:V
@@ -113,7 +113,7 @@
  UnaryOperator:-
  AssignmentOperator:=
 310    FOR J = 2 TO 2*ABS(K) STEP 2
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:2", "ScalarValue:K", "FunctionAbs", "BinaryOperator:*"]
  step:    ["NumericConstant:2"]
@@ -141,7 +141,7 @@
  ScalarValue:T
  AssignmentOperator:=
 360    NEXT J
- VariableName:J
+ Variable:J
 370    PRINT A;
  ITEMS
  ScalarValue:A
@@ -152,7 +152,7 @@
  ScalarValue:M
  AssignmentOperator:=
 399 NEXT I
- VariableName:I
+ Variable:I
 400 PRINT
  ITEMS
  CarriageControl:NL

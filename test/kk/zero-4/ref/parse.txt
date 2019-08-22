@@ -124,7 +124,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 310 FOR I = 1 TO 1000
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 320 LET X = A + RND()*L
@@ -144,7 +144,7 @@
  NumericConstant:0
  BinaryOperator:<
 340 NEXT I
- VariableName:I
+ Variable:I
 350 PRINT "NO CHANGE OF SIGN FOUND"
  ITEMS
  TextConstant:"NO CHANGE OF SIGN FOUND"

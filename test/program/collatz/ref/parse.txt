@@ -23,7 +23,7 @@
  ITEMS
  CarriageControl:NL
 100 FOR N = A TO B
- control: VariableName:N
+ control: Variable:N
  start:   ["ScalarValue:A"]
  end:     ["ScalarValue:B"]
 110 LET N0 = N
@@ -33,7 +33,7 @@
 120 GOSUB 400
  LineNumber:400
 130 NEXT N
- VariableName:N
+ Variable:N
 140 STOP
  
 400 REM PRINT INFO FOR ONE NUMBER

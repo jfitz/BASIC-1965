@@ -20,14 +20,14 @@
  NumericConstant:11
  NumericConstant:12
 100 FOR I = 0 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 120 READ A(I)
  ScalarValue:I
  Reference:A
 140 NEXT I
- VariableName:I
+ Variable:I
 150 PRINT "ARRAY A"
  ITEMS
  TextConstant:"ARRAY A"
@@ -40,14 +40,14 @@
  ITEMS
  CarriageControl:NL
 200 FOR I = 0 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 220 READ B(I)
  ScalarValue:I
  Reference:B
 240 NEXT I
- VariableName:I
+ Variable:I
 250 PRINT "ARRAY B"
  ITEMS
  TextConstant:"ARRAY B"

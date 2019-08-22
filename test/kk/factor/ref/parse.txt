@@ -27,14 +27,14 @@
 180 GOSUB 300
  LineNumber:300
 190 FOR F = 3 TO SQR(N)+1 STEP 2
- control: VariableName:F
+ control: Variable:F
  start:   ["NumericConstant:3"]
  end:     ["ScalarValue:N", "FunctionSqr", "NumericConstant:1", "BinaryOperator:+"]
  step:    ["NumericConstant:2"]
 200 GOSUB 300
  LineNumber:300
 210 NEXT F
- VariableName:F
+ Variable:F
 220 IF Z = 0 THEN 250
  ScalarValue:Z
  NumericConstant:0

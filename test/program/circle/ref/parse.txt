@@ -253,7 +253,7 @@
  TextConstant:"DIFFERENCE"
  CarriageControl:NL
 410 FOR I = 0 TO 365 STEP 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:365"]
  step:    ["NumericConstant:5"]
@@ -325,7 +325,7 @@
  BinaryOperator:-
  CarriageControl:NL
 441 NEXT I
- VariableName:I
+ Variable:I
 900 REM DATA - POINT A, POINT D, POINT C
  Remark:DATA - POINT A, POINT D, POINT C
 901 DATA 0,0,100,0,75,0,0.00001,0.995,0.00001

@@ -701,7 +701,8 @@ class ForStatement < AbstractStatement
     if check_template(tokens_lists, template1)
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
-        @control = VariableName.new(tokens1[0])
+        variable_name = VariableName.new(tokens1[0])
+        @control = Variable.new(variable_name)
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step = nil
@@ -715,7 +716,8 @@ class ForStatement < AbstractStatement
     elsif check_template(tokens_lists, template2)
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
-        @control = VariableName.new(tokens1[0])
+        variable_name = VariableName.new(tokens1[0])
+        @control = Variable.new(variable_name)
         @start = ValueScalarExpression.new(tokens2)
         @end = ValueScalarExpression.new(tokens_lists[2])
         @step = ValueScalarExpression.new(tokens_lists[4])
@@ -746,14 +748,14 @@ class ForStatement < AbstractStatement
     step = NumericConstant.new(1)
     step = @step.evaluate(interpreter)[0] unless @step.nil?
 
-    fornext_control = interpreter.assign_fornext(@control, from, to, step)
-    interpreter.lock_variable(@control)
-    interpreter.enter_fornext(@control)
+    fornext_control = interpreter.assign_fornext(@control.name, from, to, step)
+    interpreter.lock_variable(@control.name)
+    interpreter.enter_fornext(@control.name)
     terminated = fornext_control.front_terminated?
 
     if terminated
-      interpreter.next_line_number = interpreter.find_closing_next(@control)
-      interpreter.unlock_variable(@control)
+      interpreter.next_line_number = interpreter.find_closing_next(@control.name)
+      interpreter.unlock_variable(@control.name)
       interpreter.exit_fornext
     end
 
@@ -1237,9 +1239,10 @@ class NextStatement < AbstractStatement
       # parse control variable
       @control = nil
       if tokens_lists[0][0].variable?
-        @control = VariableName.new(tokens_lists[0][0])
-        control = XrefEntry.new(@control.to_s, 0, false)
-        @variables = [control]
+        variable_name = VariableName.new(tokens_lists[0][0])
+        @control = Variable.new(variable_name)
+        controlx = XrefEntry.new(@control.to_s, 0, false)
+        @variables = [controlx]
       else
         @errors << "Invalid control variable #{tokens[0]}"
       end
@@ -1253,7 +1256,7 @@ class NextStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    fornext_control = interpreter.retrieve_fornext(@control)
+    fornext_control = interpreter.retrieve_fornext(@control.name)
 
     if interpreter.match_fornext?
       # check control variable matches current loop
@@ -1272,7 +1275,7 @@ class NextStatement < AbstractStatement
     io.trace_output(s)
 
     if terminated
-      interpreter.unlock_variable(@control)
+      interpreter.unlock_variable(@control.name)
       interpreter.exit_fornext
     else
       # set next line from top item

@@ -53,7 +53,7 @@
  NumericConstant:0
  AssignmentOperator:=
 130 FOR X = A+H/2 TO B STEP H
- control: VariableName:X
+ control: Variable:X
  start:   ["ScalarValue:A", "ScalarValue:H", "NumericConstant:2", "BinaryOperator:/", "BinaryOperator:+"]
  end:     ["ScalarValue:B"]
  step:    ["ScalarValue:H"]
@@ -65,7 +65,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 150 NEXT X
- VariableName:X
+ Variable:X
 160 LET M = M*H
  Reference:M
  ScalarValue:M

@@ -5,7 +5,7 @@
  NumericConstant:350
  Declaration:P
 20 FOR I = 1 TO 1000
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
@@ -14,7 +14,7 @@
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
- VariableName:I
+ Variable:I
 25 LET P(0) = 2
  NumericConstant:0
  Reference:P
@@ -25,7 +25,7 @@
  NumericConstant:0
  AssignmentOperator:=
 30 FOR P = 3 TO 2000 STEP 2
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:3"]
  end:     ["NumericConstant:2000"]
  step:    ["NumericConstant:2"]
@@ -59,7 +59,7 @@
  FunctionSqr
  BinaryOperator:>
 60    FOR I = P TO 2000 STEP 2*P
- control: VariableName:I
+ control: Variable:I
  start:   ["ScalarValue:P"]
  end:     ["NumericConstant:2000"]
  step:    ["NumericConstant:2", "ScalarValue:P", "BinaryOperator:*"]
@@ -78,11 +78,11 @@
  UnaryOperator:-
  AssignmentOperator:=
 80    NEXT I
- VariableName:I
+ Variable:I
 90 NEXT P
- VariableName:P
+ Variable:P
 100 FOR I = 0 TO K
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:K"]
 110    PRINT P(I);
@@ -91,6 +91,6 @@
  ScalarValue:P
  CarriageControl:;
 120 NEXT I
- VariableName:I
+ Variable:I
 999 END
  

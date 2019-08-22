@@ -192,7 +192,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 510 FOR R = 0.1 TO 100 STEP 0.1
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:0.1"]
  end:     ["NumericConstant:100"]
  step:    ["NumericConstant:0.1"]
@@ -221,7 +221,7 @@
  ScalarValue:S1
  AssignmentOperator:=
 540 NEXT R
- VariableName:R
+ Variable:R
 545 PRINT "NO ANSWER FOUND"
  ITEMS
  TextConstant:"NO ANSWER FOUND"

@@ -7,7 +7,7 @@
  NumericConstant:0
  AssignmentOperator:=
 120 FOR N = 1 TO 1000
- control: VariableName:N
+ control: Variable:N
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 130    LET Y = RND(Z)
@@ -62,7 +62,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 200 NEXT N
- VariableName:N
+ Variable:N
 210 LET F = C/N
  Reference:F
  ScalarValue:C

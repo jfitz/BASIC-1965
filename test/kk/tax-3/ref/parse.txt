@@ -23,7 +23,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 100 FOR I = 1 TO Y
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y"]
 110    LET D(I) = A*(Y-I+1)/Y9
@@ -47,7 +47,7 @@
  ScalarValue:D
  CarriageControl:NL
 130 NEXT I
- VariableName:I
+ Variable:I
 140 PRINT
  ITEMS
  CarriageControl:NL
@@ -56,7 +56,7 @@
  NumericConstant:0
  AssignmentOperator:=
 210 FOR I = 1 TO Y
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y"]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
@@ -81,7 +81,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 230 NEXT I
- VariableName:I
+ Variable:I
 240 PRINT "SAVING = $" S
  ITEMS
  TextConstant:"SAVING = $"

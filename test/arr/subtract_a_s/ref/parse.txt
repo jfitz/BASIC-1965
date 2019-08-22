@@ -4,7 +4,7 @@
  NumericConstant:5
  Declaration:A
 30 FOR I = 0 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
@@ -13,7 +13,7 @@
  ScalarValue:I
  AssignmentOperator:=
 70 NEXT I
- VariableName:I
+ Variable:I
 100 ARR B = A - 1
  Reference:B
  ArrayValue:A

@@ -4,7 +4,7 @@
  NumericConstant:10
  Declaration:A
 30 FOR I = 1 TO 10
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 40 LET A(I) = I
@@ -13,11 +13,11 @@
  ScalarValue:I
  AssignmentOperator:=
 50 NEXT I
- VariableName:I
+ Variable:I
 100 OPTION BASE 0
  NumericConstant:0
 110 FOR I = 0 TO 10
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:10"]
 120 PRINT I;A(I)
@@ -28,11 +28,11 @@
  ScalarValue:A
  CarriageControl:NL
 130 NEXT I
- VariableName:I
+ Variable:I
 200 OPTION BASE 1
  NumericConstant:1
 210 FOR I = 0 TO 10
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:10"]
 220 PRINT I;A(I)
@@ -43,6 +43,6 @@
  ScalarValue:A
  CarriageControl:NL
 230 NEXT I
- VariableName:I
+ Variable:I
 999 END
  

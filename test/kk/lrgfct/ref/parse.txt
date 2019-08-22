@@ -5,7 +5,7 @@
  TextConstant:"LARGEST FACTOR"
  CarriageControl:NL
 20 FOR N = 1001 TO 1020 STEP 2
- control: VariableName:N
+ control: Variable:N
  start:   ["NumericConstant:1001"]
  end:     ["NumericConstant:1020"]
  step:    ["NumericConstant:2"]
@@ -14,7 +14,7 @@
  ScalarValue:N
  CarriageControl:,
 40 FOR F = INT(N/2) TO 1 STEP -1
- control: VariableName:F
+ control: Variable:F
  start:   ["ScalarValue:N", "NumericConstant:2", "BinaryOperator:/", "FunctionInt"]
  end:     ["NumericConstant:1"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
@@ -34,8 +34,8 @@
 70 GOTO 90
  LineNumber:90
 80 NEXT F
- VariableName:F
+ Variable:F
 90 NEXT N
- VariableName:N
+ Variable:N
 99 END
  

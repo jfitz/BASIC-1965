@@ -18,11 +18,11 @@
  TextConstant:" LOCKERS..."
  CarriageControl:NL
 130 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 140 FOR J = I TO N STEP I
- control: VariableName:J
+ control: Variable:J
  start:   ["ScalarValue:I"]
  end:     ["ScalarValue:N"]
  step:    ["ScalarValue:I"]
@@ -35,9 +35,9 @@
  BinaryOperator:-
  AssignmentOperator:=
 160 NEXT J
- VariableName:J
+ Variable:J
 180 NEXT I
- VariableName:I
+ Variable:I
 200 REM PRINT LOCKER STATES
  Remark:PRINT LOCKER STATES
 310 PRINT "OPEN LOCKERS:";
@@ -45,7 +45,7 @@
  TextConstant:"OPEN LOCKERS:"
  CarriageControl:;
 320 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 330 IF L(I) = 0 THEN 350
@@ -58,7 +58,7 @@
  ScalarValue:I
  CarriageControl:;
 350 NEXT I
- VariableName:I
+ Variable:I
 360 PRINT
  ITEMS
  CarriageControl:NL

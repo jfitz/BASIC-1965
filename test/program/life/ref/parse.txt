@@ -68,11 +68,11 @@
  NumericConstant:11
  Declaration:B
 430 FOR I=1 TO 10
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 440 FOR J=1 TO 10
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 442 LET C = 0
@@ -80,11 +80,11 @@
  NumericConstant:0
  AssignmentOperator:=
 450 FOR I0=-1 TO 1
- control: VariableName:I0
+ control: Variable:I0
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
 460 FOR J0=-1 TO 1
- control: VariableName:J0
+ control: Variable:J0
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
@@ -112,9 +112,9 @@
  BinaryOperator:+
  AssignmentOperator:=
 500 NEXT J0
- VariableName:J0
+ Variable:J0
 510 NEXT I0
- VariableName:I0
+ Variable:I0
 512 LET N(I,J)=C
  ScalarValue:I
  ScalarValue:J
@@ -122,9 +122,9 @@
  ScalarValue:C
  AssignmentOperator:=
 520 NEXT J
- VariableName:J
+ Variable:J
 530 NEXT I
- VariableName:I
+ Variable:I
 535 OPTION BASE 1
  NumericConstant:1
 540 DIM B(10,10)
@@ -134,11 +134,11 @@
 600 REM *** CALCULATE NEW BOARD
  Remark:*** CALCULATE NEW BOARD
 610 FOR I=1 TO 10
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 620 FOR J=1 TO 10
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 630 IF N(I,J)<2 THEN 660
@@ -182,9 +182,9 @@
 720 REM * CELL REMAINS UNCHANGED
  Remark:* CELL REMAINS UNCHANGED
 730 NEXT J
- VariableName:J
+ Variable:J
 740 NEXT I
- VariableName:I
+ Variable:I
 800 REM *** NEXT ITERATION
  Remark:*** NEXT ITERATION
 810 GOTO 300

@@ -9,25 +9,25 @@
 20 READ N
  Reference:N
 30 FOR I = 0 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
 40 READ A(I)
  ScalarValue:I
  Reference:A
 50 NEXT I
- VariableName:I
+ Variable:I
 60 READ X9
  Reference:X9
 70 FOR J = 1 TO X9
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
 80 READ X(J)
  ScalarValue:J
  Reference:X
 90 NEXT J
- VariableName:J
+ Variable:J
 95
 100 REM  MAIN ROUTINE.
  Remark: MAIN ROUTINE.
@@ -70,7 +70,7 @@
  ITEMS
  CarriageControl:NL
 230 FOR J = 1 TO X9
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
@@ -91,14 +91,14 @@
  ScalarValue:T
  CarriageControl:NL
 250 NEXT J
- VariableName:J
+ Variable:J
 260 STOP
  
 270
 500 REM  RUN THROUGH X-VALUES
  Remark: RUN THROUGH X-VALUES
 510 FOR J = 1 TO X9
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:X9"]
 520 LET X = X(J)
@@ -115,7 +115,7 @@
  ScalarValue:Y
  AssignmentOperator:=
 550 NEXT J
- VariableName:J
+ Variable:J
 560 RETURN
  
 570
@@ -126,7 +126,7 @@
  NumericConstant:0
  AssignmentOperator:=
 1020 FOR I = 0 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
 1030 LET Y = Y*X + A(I)
@@ -139,14 +139,14 @@
  BinaryOperator:+
  AssignmentOperator:=
 1040 NEXT I
- VariableName:I
+ Variable:I
 1050 RETURN
  
 1060
 2000 REM  DIFFERENTIATE.
  Remark: DIFFERENTIATE.
 2010 FOR I = 0 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
 2020 LET A(I) = A(I)*(N-I)
@@ -160,7 +160,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 2030 NEXT I
- VariableName:I
+ Variable:I
 2040 LET N = N-1
  Reference:N
  ScalarValue:N

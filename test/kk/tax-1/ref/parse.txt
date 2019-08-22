@@ -5,7 +5,7 @@
  Reference:A
  Reference:Y
 100 FOR Y1 = 1 TO Y STEP 2
- control: VariableName:Y1
+ control: Variable:Y1
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y"]
  step:    ["NumericConstant:2"]
@@ -20,7 +20,7 @@
  ScalarValue:A
  AssignmentOperator:=
 110    FOR I = 1 TO Y1-1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:Y1", "NumericConstant:1", "BinaryOperator:-"]
 120       LET D(I) = A1*2/Y
@@ -47,7 +47,7 @@
  ScalarValue:D
  CarriageControl:NL
 150    NEXT I
- VariableName:I
+ Variable:I
 160    LET D = A1/(Y-Y1+1)
  Reference:D
  ScalarValue:A1
@@ -59,7 +59,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 170    FOR I = Y1 TO Y
- control: VariableName:I
+ control: Variable:I
  start:   ["ScalarValue:Y1"]
  end:     ["ScalarValue:Y"]
 180       LET D(I) = D
@@ -75,12 +75,12 @@
  ScalarValue:D
  CarriageControl:NL
 190    NEXT I
- VariableName:I
+ Variable:I
 195    PRINT
  ITEMS
  CarriageControl:NL
 290 NEXT Y1
- VariableName:Y1
+ Variable:Y1
 900 DATA 5000,7
  NumericConstant:5000
  NumericConstant:7

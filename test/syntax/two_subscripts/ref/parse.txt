@@ -1,9 +1,9 @@
 10 FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 20 FOR J = 1 TO 2
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
 30 LET A(I,J) = I * J
@@ -15,9 +15,9 @@
  BinaryOperator:*
  AssignmentOperator:=
 40 NEXT J
- VariableName:J
+ Variable:J
 50 NEXT I
- VariableName:I
+ Variable:I
 55 PRINT "I","J","PRODUCT"
  ITEMS
  TextConstant:"I"
@@ -27,11 +27,11 @@
  TextConstant:"PRODUCT"
  CarriageControl:NL
 60 FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 70 FOR J = 1 TO 2
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
 80 PRINT I, J, A(I,J)
@@ -45,8 +45,8 @@
  ScalarValue:A
  CarriageControl:NL
 90 NEXT J
- VariableName:J
+ Variable:J
 100 NEXT I
- VariableName:I
+ Variable:I
 999 END
  

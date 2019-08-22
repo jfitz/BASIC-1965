@@ -7,7 +7,7 @@
  NumericConstant:10
  AssignmentOperator:=
 30 FOR I = L1 TO L2
- control: VariableName:I
+ control: Variable:I
  start:   ["ScalarValue:L1"]
  end:     ["ScalarValue:L2"]
 40 PRINT I
@@ -15,7 +15,7 @@
  ScalarValue:I
  CarriageControl:NL
 50 NEXT I
- VariableName:I
+ Variable:I
 90 STOP
  
 99 END

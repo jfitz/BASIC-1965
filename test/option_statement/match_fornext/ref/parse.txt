@@ -7,11 +7,11 @@
 30 OPTION MATCH_FORNEXT FALSE
  BooleanConstant:false
 40 FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 50 FOR J = 1 TO 3
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 60 PRINT I,J
@@ -25,9 +25,9 @@
  NumericConstant:2
  BinaryOperator:=
 80 NEXT J
- VariableName:J
+ Variable:J
 90 NEXT I
- VariableName:I
+ Variable:I
 120 PRINT "OPTION MATCH_FORNEXT TRUE"
  ITEMS
  TextConstant:"OPTION MATCH_FORNEXT TRUE"
@@ -35,11 +35,11 @@
 130 OPTION MATCH_FORNEXT TRUE
  BooleanConstant:true
 140 FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 150 FOR J = 1 TO 3
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 160 PRINT I,J
@@ -53,8 +53,8 @@
  NumericConstant:2
  BinaryOperator:=
 180 NEXT J
- VariableName:J
+ Variable:J
 190 NEXT I
- VariableName:I
+ Variable:I
 999 END
  

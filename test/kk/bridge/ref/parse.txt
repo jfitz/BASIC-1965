@@ -4,7 +4,7 @@
 20 GOSUB 1000
  LineNumber:1000
 30 FOR C = 1 TO 13
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:13"]
 40    GOSUB 2000
@@ -15,10 +15,10 @@
  ScalarValue:X
  AssignmentOperator:=
 60 NEXT C
- VariableName:C
+ Variable:C
 70
 100 FOR I = 1 TO 13
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:13"]
 109    IF I > 13-I THEN 180
@@ -28,7 +28,7 @@
  BinaryOperator:-
  BinaryOperator:>
 110    FOR J = I TO 13-I
- control: VariableName:J
+ control: Variable:J
  start:   ["ScalarValue:I"]
  end:     ["NumericConstant:13", "ScalarValue:I", "BinaryOperator:-"]
 120       LET X = H(J)
@@ -60,12 +60,12 @@
  ScalarValue:X
  AssignmentOperator:=
 170    NEXT J
- VariableName:J
+ Variable:J
 180 NEXT I
- VariableName:I
+ Variable:I
 190
 200 FOR C = 1 TO 13
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:13"]
 210    LET X = H(C)
@@ -76,7 +76,7 @@
 220    GOSUB 3000
  LineNumber:3000
 230 NEXT C
- VariableName:C
+ Variable:C
 240 STOP
  
 250
@@ -86,7 +86,7 @@
  NumericConstant:51
  Declaration:L
 1020 FOR I = 0 TO 51
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
 1030    LET L(I) = I
@@ -95,7 +95,7 @@
  ScalarValue:I
  AssignmentOperator:=
 1040 NEXT I
- VariableName:I
+ Variable:I
 1050 RETURN
  
 1060

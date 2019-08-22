@@ -18,14 +18,14 @@
  NumericConstant:11
  NumericConstant:12
 100 FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 120 READ A(I)
  ScalarValue:I
  Reference:A
 140 NEXT I
- VariableName:I
+ Variable:I
 150 PRINT "MATRIX A"
  ITEMS
  TextConstant:"MATRIX A"
@@ -35,11 +35,11 @@
  MatrixValue:A
  CarriageControl:;
 200 FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 210 FOR J = 1 TO 2
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
 220 READ B(I,J)
@@ -47,9 +47,9 @@
  ScalarValue:J
  Reference:B
 230 NEXT J
- VariableName:J
+ Variable:J
 240 NEXT I
- VariableName:I
+ Variable:I
 250 PRINT "MATRIX B"
  ITEMS
  TextConstant:"MATRIX B"

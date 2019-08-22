@@ -54,7 +54,7 @@
  TextConstant:"'"
  CarriageControl:;
 210 FOR I = 1 TO N-1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 220 PRINT "-";
@@ -62,13 +62,13 @@
  TextConstant:"-"
  CarriageControl:;
 230 NEXT I
- VariableName:I
+ Variable:I
 240 PRINT "'"
  ITEMS
  TextConstant:"'"
  CarriageControl:NL
 250 FOR X = A TO B STEP S
- control: VariableName:X
+ control: Variable:X
  start:   ["ScalarValue:A"]
  end:     ["ScalarValue:B"]
  step:    ["ScalarValue:S"]
@@ -87,7 +87,7 @@
  UserFunction
  AssignmentOperator:=
 290 FOR I = 0 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:N"]
 292 IF I = Y1 THEN 302
@@ -105,7 +105,7 @@
  TextConstant:"*"
  CarriageControl:;
 310 NEXT I
- VariableName:I
+ Variable:I
 315 PRINT "   ";
  ITEMS
  TextConstant:"   "
@@ -115,7 +115,7 @@
  ScalarValue:X
  CarriageControl:NL
 330 NEXT X
- VariableName:X
+ Variable:X
 340 DATA 0,6.401,0.2
  NumericConstant:0
  NumericConstant:6.401

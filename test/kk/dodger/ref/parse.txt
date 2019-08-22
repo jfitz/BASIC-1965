@@ -1,11 +1,11 @@
 100 REM INITIALIZE
  Remark:INITIALIZE
 110 FOR B = 1 TO 9
- control: VariableName:B
+ control: Variable:B
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 120    FOR R = 0 TO 3
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
 130    READ P(B,R)
@@ -13,9 +13,9 @@
  ScalarValue:R
  Reference:P
 140    NEXT R
- VariableName:R
+ Variable:R
 150 NEXT B
- VariableName:B
+ Variable:B
 160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
  NumericConstant:0.644
  NumericConstant:0.24
@@ -57,11 +57,11 @@
  NumericConstant:0.016
 190
 200 FOR R = 1 TO 4
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 210    FOR C = 0 TO 7
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
 220       READ Q(R,C)
@@ -69,9 +69,9 @@
  ScalarValue:C
  Reference:Q
 230    NEXT C
- VariableName:C
+ Variable:C
 240 NEXT R
- VariableName:R
+ Variable:R
 250 DATA 1, 5, 11, 15, 11, 15, 21, 25
  NumericConstant:1
  NumericConstant:5
@@ -131,14 +131,14 @@
  AssignmentOperator:=
 350
 360 FOR C = 0 TO 7
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
 370    READ L(C)
  ScalarValue:C
  Reference:L
 380 NEXT C
- VariableName:C
+ Variable:C
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
  NumericConstant:0
  NumericConstant:1
@@ -195,7 +195,7 @@
  FunctionRnd
  AssignmentOperator:=
 560 FOR R = 0 TO 3
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
 570 LET X = X - P(B,R)
@@ -211,7 +211,7 @@
  NumericConstant:0
  BinaryOperator:<
 590 NEXT R
- VariableName:R
+ Variable:R
 600 LET R = 4
  Reference:R
  NumericConstant:4

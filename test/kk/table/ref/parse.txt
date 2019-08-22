@@ -7,7 +7,7 @@
  TextConstant:"LOG(X)"
  CarriageControl:NL
 20 FOR X = 1 TO 3.5 STEP 0.5
- control: VariableName:X
+ control: Variable:X
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3.5"]
  step:    ["NumericConstant:0.5"]
@@ -22,6 +22,6 @@
  FunctionLog
  CarriageControl:NL
 40 NEXT X
- VariableName:X
+ Variable:X
 99 END
  

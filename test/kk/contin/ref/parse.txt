@@ -2,7 +2,7 @@
  Reference:M
  Reference:N
 120 FOR I = 1 TO M
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
 130    LET S = 0
@@ -10,7 +10,7 @@
  NumericConstant:0
  AssignmentOperator:=
 140    FOR J = 1 TO N
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 150       READ O(I,J)
@@ -26,21 +26,21 @@
  BinaryOperator:+
  AssignmentOperator:=
 170    NEXT J
- VariableName:J
+ Variable:J
 180    LET R(I) = S
  ScalarValue:I
  Reference:R
  ScalarValue:S
  AssignmentOperator:=
 190 NEXT I
- VariableName:I
+ Variable:I
 200
 210 LET S1 = 0
  Reference:S1
  NumericConstant:0
  AssignmentOperator:=
 220 FOR J = 1 TO N
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 230    LET S = 0
@@ -48,7 +48,7 @@
  NumericConstant:0
  AssignmentOperator:=
 240    FOR I = 1 TO M
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
 250       LET S = S + O(I,J)
@@ -60,7 +60,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 260    NEXT I
- VariableName:I
+ Variable:I
 270    LET C(J) = S
  ScalarValue:J
  Reference:C
@@ -73,7 +73,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 290 NEXT J
- VariableName:J
+ Variable:J
 300
 310 PRINT
  ITEMS
@@ -83,11 +83,11 @@
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I = 1 TO M
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:M"]
 340    FOR J = 1 TO N
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 350       LET E = R(I)*C(J)/S1
@@ -121,12 +121,12 @@
  ScalarValue:O
  CarriageControl:,
 380    NEXT J
- VariableName:J
+ Variable:J
 390    PRINT
  ITEMS
  CarriageControl:NL
 400 NEXT I
- VariableName:I
+ Variable:I
 410 PRINT
  ITEMS
  CarriageControl:NL

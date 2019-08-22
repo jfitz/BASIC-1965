@@ -4,7 +4,7 @@
  NumericConstant:100
  Declaration:L
 30 FOR I = 1 TO 100
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:100"]
 40    READ L(I)
@@ -16,7 +16,7 @@
  NumericConstant:0
  BinaryOperator:<
 60 NEXT I
- VariableName:I
+ Variable:I
 70 LET I9 = I-1
  Reference:I9
  ScalarValue:I
@@ -59,7 +59,7 @@
  TextConstant:"DECODED MESSAGE:"
  CarriageControl:NL
 170 FOR J = 1 TO 5
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 180    LET K(J) = 27-K(J)
@@ -71,7 +71,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 190 NEXT J
- VariableName:J
+ Variable:J
 195 GOTO 210
  LineNumber:210
 200 PRINT "ENCODED MESSAGE:"
@@ -86,7 +86,7 @@
  NumericConstant:1
  AssignmentOperator:=
 220 FOR I = 1 TO I9
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I9"]
 230    LET X = L(I)+K(J)
@@ -124,7 +124,7 @@
  NumericConstant:1
  AssignmentOperator:=
 300 NEXT I
- VariableName:I
+ Variable:I
 310 PRINT
  ITEMS
  CarriageControl:NL
@@ -133,7 +133,7 @@
  NumericConstant:1
  AssignmentOperator:=
 320 FOR I = 1 TO I9
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I9"]
 330    LET X = L(I)+K(J)
@@ -173,7 +173,7 @@
  NumericConstant:1
  AssignmentOperator:=
 400 NEXT I
- VariableName:I
+ Variable:I
 800 STOP
  
 900 DATA 7,18,5,5,20,9,14,7,19,0,6,18,15,13,0,20,8,5,0

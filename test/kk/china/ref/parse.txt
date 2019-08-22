@@ -3,14 +3,14 @@
  Reference:B
  Reference:P
 20 FOR I = 2 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:N"]
 30    READ A,M
  Reference:A
  Reference:M
 40       FOR K = 0 TO M-1
- control: VariableName:K
+ control: Variable:K
  start:   ["NumericConstant:0"]
  end:     ["ScalarValue:M", "NumericConstant:1", "BinaryOperator:-"]
 50       LET X = B + K*P
@@ -33,7 +33,7 @@
  ScalarValue:A
  BinaryOperator:=
 70    NEXT K
- VariableName:K
+ Variable:K
 80    PRINT "ERROR"
  ITEMS
  TextConstant:"ERROR"
@@ -51,7 +51,7 @@
  ScalarValue:X
  AssignmentOperator:=
 120 NEXT I
- VariableName:I
+ Variable:I
 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
  ITEMS
  TextConstant:"X  IS CONGRUENT TO "

@@ -10,7 +10,7 @@
  NumericConstant:1
  AssignmentOperator:=
 30 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 40 LET K = 2*I-1
@@ -39,7 +39,7 @@
  UnaryOperator:-
  AssignmentOperator:=
 70 NEXT I
- VariableName:I
+ Variable:I
 80 PRINT "ATN OF " X; "= " ATN(X)
  ITEMS
  TextConstant:"ATN OF "

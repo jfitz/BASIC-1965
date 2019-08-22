@@ -6,7 +6,7 @@
 130 REM INITIALIZE
  Remark:INITIALIZE
 140 FOR P = 1 TO 3
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 150    LET N(P) = INT(10*RND(0))+6
@@ -21,7 +21,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 160 NEXT P
- VariableName:P
+ Variable:P
 170 PRINT "INITIAL CONFIGURATION:"
  ITEMS
  TextConstant:"INITIAL CONFIGURATION:"
@@ -101,7 +101,7 @@
 370 REM SET UP BIT-PATTERNS
  Remark:SET UP BIT-PATTERNS
 380 FOR P = 1 TO 3
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 390    LET X = N(P)
@@ -110,7 +110,7 @@
  ScalarValue:N
  AssignmentOperator:=
 400    FOR J = 4 TO 1 STEP -1
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:4"]
  end:     ["NumericConstant:1"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
@@ -136,14 +136,14 @@
  ScalarValue:Y
  AssignmentOperator:=
 440    NEXT J
- VariableName:J
+ Variable:J
 450 NEXT P
- VariableName:P
+ Variable:P
 460
 470 REM FIND COLUMN PARITIES
  Remark:FIND COLUMN PARITIES
 480 FOR J = 1 TO 4
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 490    LET S(J) = B(1,J) + B(2,J) + B(3,J)
@@ -176,7 +176,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 510 NEXT J
- VariableName:J
+ Variable:J
 520
 530 REM IF ALL EVEN, MAKE RANDOM MOVE
  Remark:IF ALL EVEN, MAKE RANDOM MOVE
@@ -195,7 +195,7 @@
  NumericConstant:0
  BinaryOperator:>
 550 FOR P = 1 TO 3
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 560    IF N(P) = 0 THEN 590
@@ -217,12 +217,12 @@
 580    GOTO 770
  LineNumber:770
 590 NEXT P
- VariableName:P
+ Variable:P
 600
 610 REM MAKE OPTIMAL MOVE
  Remark:MAKE OPTIMAL MOVE
 620 FOR J = 1 TO 4
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 630    IF S(J) > 0 THEN 650
@@ -231,9 +231,9 @@
  NumericConstant:0
  BinaryOperator:>
 640 NEXT J
- VariableName:J
+ Variable:J
 650 FOR P = 1 TO 3
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 660    IF B(P,J) = 1 THEN 680
@@ -243,13 +243,13 @@
  NumericConstant:1
  BinaryOperator:=
 670 NEXT P
- VariableName:P
+ Variable:P
 680 LET N = 0
  Reference:N
  NumericConstant:0
  AssignmentOperator:=
 690 FOR J = J TO 4
- control: VariableName:J
+ control: Variable:J
  start:   ["ScalarValue:J"]
  end:     ["NumericConstant:4"]
 700    IF S(J) = 0 THEN 750
@@ -286,7 +286,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 750 NEXT J
- VariableName:J
+ Variable:J
 760
 770 REM CARRY OUT MOVE
  Remark:CARRY OUT MOVE
@@ -346,7 +346,7 @@
 900 REM PRINT CONFIGURATION
  Remark:PRINT CONFIGURATION
 910 FOR P = 1 TO 3
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 920    PRINT "PILE " P; N(P)
@@ -359,7 +359,7 @@
  ScalarValue:N
  CarriageControl:NL
 930 NEXT P
- VariableName:P
+ Variable:P
 940 PRINT
  ITEMS
  CarriageControl:NL

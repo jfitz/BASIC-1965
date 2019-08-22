@@ -26,11 +26,11 @@
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
  Remark:WE ZERO THE BOARD AND INITIALIZE
 200 FOR I = 1 TO 8
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 210    FOR J = 1 TO 8
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 220       LET B(I,J) = 0
@@ -40,9 +40,9 @@
  NumericConstant:0
  AssignmentOperator:=
 230    NEXT J
- VariableName:J
+ Variable:J
 240 NEXT I
- VariableName:I
+ Variable:I
 250 LET I = I0
  Reference:I
  ScalarValue:I0
@@ -74,7 +74,7 @@
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I1 = I - 2 TO I + 2
- control: VariableName:I1
+ control: Variable:I1
  start:   ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:-"]
  end:     ["ScalarValue:I", "NumericConstant:2", "BinaryOperator:+"]
 340    IF I1 = 1 THEN 480
@@ -98,7 +98,7 @@
  BinaryOperator:-
  AssignmentOperator:=
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
- control: VariableName:J1
+ control: Variable:J1
  start:   ["ScalarValue:J", "ScalarValue:D1", "BinaryOperator:-"]
  end:     ["ScalarValue:J", "ScalarValue:D1", "BinaryOperator:+"]
  step:    ["NumericConstant:2", "ScalarValue:D1", "BinaryOperator:*"]
@@ -149,9 +149,9 @@
 460       GOTO 310
  LineNumber:310
 470    NEXT J1
- VariableName:J1
+ Variable:J1
 480 NEXT I1
- VariableName:I1
+ Variable:I1
 490 IF C = 0 THEN 600
  ScalarValue:C
  NumericConstant:0

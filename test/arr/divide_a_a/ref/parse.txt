@@ -6,7 +6,7 @@
  NumericConstant:5
  Declaration:B
 30 FOR I = 0 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
@@ -24,7 +24,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 70 NEXT I
- VariableName:I
+ Variable:I
 100 ARR C = A / B
  Reference:C
  ArrayValue:A

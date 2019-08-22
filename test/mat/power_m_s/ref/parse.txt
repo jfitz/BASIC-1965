@@ -5,11 +5,11 @@
  NumericConstant:5
  Declaration:A
 30 FOR I = 1 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 40 FOR J = 1 TO 5
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 50 LET A(I,J) = I+J
@@ -21,9 +21,9 @@
  BinaryOperator:+
  AssignmentOperator:=
 60 NEXT J
- VariableName:J
+ Variable:J
 70 NEXT I
- VariableName:I
+ Variable:I
 100 MAT B = A ^ 2
  Reference:B
  MatrixValue:A

@@ -1,7 +1,7 @@
 10 GOSUB 1000
  LineNumber:1000
 20 FOR C = 1 TO 5
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 30    GOSUB 2000
@@ -9,7 +9,7 @@
 40    GOSUB 3000
  LineNumber:3000
 50 NEXT C
- VariableName:C
+ Variable:C
 60 STOP
  
 70
@@ -19,7 +19,7 @@
  NumericConstant:51
  Declaration:L
 1020 FOR I = 0 TO 51
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
 1030    LET L(I) = I
@@ -28,7 +28,7 @@
  ScalarValue:I
  AssignmentOperator:=
 1040 NEXT I
- VariableName:I
+ Variable:I
 1050 RETURN
  
 1060

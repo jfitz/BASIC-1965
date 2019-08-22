@@ -6,7 +6,7 @@
  NumericConstant:1
  AssignmentOperator:=
 30 FOR K = 1 TO I
- control: VariableName:K
+ control: Variable:K
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:I"]
 40 LET B = B*(N-K+1)/K
@@ -22,7 +22,7 @@
  BinaryOperator:/
  AssignmentOperator:=
 50 NEXT K
- VariableName:K
+ Variable:K
 60 PRINT B
  ITEMS
  ScalarValue:B

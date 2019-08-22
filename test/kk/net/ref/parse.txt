@@ -79,7 +79,7 @@
  LineNumber:210
 260
 270 FOR I = 2 TO N-1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 280    LET S = 0
@@ -87,7 +87,7 @@
  NumericConstant:0
  AssignmentOperator:=
 290    FOR J = 1 TO N
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 300       LET S = S+C(I,J)
@@ -99,7 +99,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 310    NEXT J
- VariableName:J
+ Variable:J
 320    LET C(I,I) = -S
  ScalarValue:I
  ScalarValue:I
@@ -120,7 +120,7 @@
  NumericConstant:0
  AssignmentOperator:=
 350 NEXT I
- VariableName:I
+ Variable:I
 360
 370 MAT U = INV(C)
  Reference:U
@@ -144,7 +144,7 @@
  ITEMS
  CarriageControl:NL
 420 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 430    PRINT I, FNR(P(I))
@@ -156,7 +156,7 @@
  UserFunction
  CarriageControl:NL
 440 NEXT I
- VariableName:I
+ Variable:I
 450 PRINT
  ITEMS
  CarriageControl:NL
@@ -176,7 +176,7 @@
  NumericConstant:0
  AssignmentOperator:=
 510 FOR I = 2 TO N-1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:2"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 520    PRINT "NODE" I
@@ -186,7 +186,7 @@
  ScalarValue:I
  CarriageControl:NL
 530    FOR J = 1 TO N
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N"]
 540       PRINT FNR(C(I,J)*(P(I)-P(J))),
@@ -203,7 +203,7 @@
  UserFunction
  CarriageControl:,
 550    NEXT J
- VariableName:J
+ Variable:J
 560    LET S1 = S1 + C(I,N)*(P(I)-P(N))
  Reference:S1
  ScalarValue:S1
@@ -225,7 +225,7 @@
  ITEMS
  CarriageControl:NL
 590 NEXT I
- VariableName:I
+ Variable:I
 600 PRINT
  ITEMS
  CarriageControl:NL

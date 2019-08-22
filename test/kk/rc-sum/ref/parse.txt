@@ -2,11 +2,11 @@
  Reference:R
  Reference:C
 20 FOR I = 1 TO R
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R"]
 30 FOR J = 1 TO C
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C"]
 40 READ T(I,J)
@@ -14,11 +14,11 @@
  ScalarValue:J
  Reference:T
 50 NEXT J
- VariableName:J
+ Variable:J
 60 NEXT I
- VariableName:I
+ Variable:I
 70 FOR I = 1 TO R
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R"]
 80 LET S = 0
@@ -26,7 +26,7 @@
  NumericConstant:0
  AssignmentOperator:=
 90 FOR J = 1 TO C
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C"]
 100 LET S = S + T(I,J)
@@ -38,7 +38,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 110 NEXT J
- VariableName:J
+ Variable:J
 120 PRINT "SUM OF ROW" I; "EQUALS" S
  ITEMS
  TextConstant:"SUM OF ROW"
@@ -50,12 +50,12 @@
  ScalarValue:S
  CarriageControl:NL
 130 NEXT I
- VariableName:I
+ Variable:I
 140 PRINT
  ITEMS
  CarriageControl:NL
 150 FOR J = 1 TO C
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:C"]
 160 LET S = 0
@@ -63,7 +63,7 @@
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 1 TO R
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:R"]
 180 LET S = S + T(I,J)
@@ -75,7 +75,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 190 NEXT I
- VariableName:I
+ Variable:I
 200 PRINT "SUM OF COLUMN" J; "EQUALS" S
  ITEMS
  TextConstant:"SUM OF COLUMN"
@@ -87,7 +87,7 @@
  ScalarValue:S
  CarriageControl:NL
 210 NEXT J
- VariableName:J
+ Variable:J
 220 DATA 3,5
  NumericConstant:3
  NumericConstant:5

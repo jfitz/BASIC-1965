@@ -10,7 +10,7 @@
  NumericConstant:0
  Declaration:V
 40 FOR I = 0 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET H(0,I) = I
@@ -26,7 +26,7 @@
  ScalarValue:I
  AssignmentOperator:=
 60 NEXT I
- VariableName:I
+ Variable:I
 70 MAT PRINT H;
  ITEMS
  MatrixValue:H
@@ -45,7 +45,7 @@
  NumericConstant:1
  Declaration:V
 140 FOR I = 1 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 150 LET H(1,I) = I
@@ -61,7 +61,7 @@
  ScalarValue:I
  AssignmentOperator:=
 160 NEXT I
- VariableName:I
+ Variable:I
 170 MAT PRINT H;
  ITEMS
  MatrixValue:H

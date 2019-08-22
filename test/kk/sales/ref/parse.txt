@@ -1,12 +1,12 @@
 10 FOR I = 1 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 20 READ P(I)
  ScalarValue:I
  Reference:P
 30 NEXT I
- VariableName:I
+ Variable:I
 40 DATA 1.20,2.15,0.65,4.30,2.00
  NumericConstant:1.2
  NumericConstant:2.15
@@ -18,7 +18,7 @@
  NumericConstant:0
  AssignmentOperator:=
 110 FOR I = 1 TO 5
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 120 READ N
@@ -33,7 +33,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 140 NEXT I
- VariableName:I
+ Variable:I
 150 PRINT "TOTAL ORDER $" S
  ITEMS
  TextConstant:"TOTAL ORDER $"

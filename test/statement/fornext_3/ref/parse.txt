@@ -1,5 +1,5 @@
 10 FOR I = 10 TO 1 STEP -1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:10"]
  end:     ["NumericConstant:1"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
@@ -8,7 +8,7 @@
  ScalarValue:I
  CarriageControl:NL
 30 NEXT I
- VariableName:I
+ Variable:I
 90 STOP
  
 99 END

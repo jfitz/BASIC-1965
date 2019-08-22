@@ -1,5 +1,5 @@
 10 FOR D = 0 TO 5
- control: VariableName:D
+ control: Variable:D
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 20 LET N(D) = 0
@@ -8,9 +8,9 @@
  NumericConstant:0
  AssignmentOperator:=
 30 NEXT D
- VariableName:D
+ Variable:D
 40 FOR I = 1 TO 10
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 50 READ X
@@ -31,7 +31,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 80 NEXT I
- VariableName:I
+ Variable:I
 100 PRINT "        INCOME"
  ITEMS
  TextConstant:"        INCOME"
@@ -45,7 +45,7 @@
  TextConstant:"NUMBER OF PEOPLE"
  CarriageControl:NL
 120 FOR D = 0 TO 5
- control: VariableName:D
+ control: Variable:D
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
@@ -64,7 +64,7 @@
  ScalarValue:N
  CarriageControl:NL
 140 NEXT D
- VariableName:D
+ Variable:D
 900 DATA 15000,22500,7350,32700,51000,8400,12700,8100,29000,35460
  NumericConstant:15000
  NumericConstant:22500

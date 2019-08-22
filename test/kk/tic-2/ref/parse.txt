@@ -4,11 +4,11 @@
 90   REM INITIALIZER
  Remark:INITIALIZER
 100  FOR P = 1 TO 8
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 110     FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 120        READ T(P,I)
@@ -16,9 +16,9 @@
  ScalarValue:I
  Reference:T
 130     NEXT I
- VariableName:I
+ Variable:I
 140  NEXT P
- VariableName:P
+ Variable:P
 150  DATA 1,2,3,8,9,4,7,6,5,1,8,7,2,9,6,3,4,5,1,9,5,7,9,3
  NumericConstant:1
  NumericConstant:2
@@ -45,11 +45,11 @@
  NumericConstant:9
  NumericConstant:3
 200  FOR S = 1 TO 9
- control: VariableName:S
+ control: Variable:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 210     FOR J = 1 TO 4
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 220        READ U(S,J)
@@ -57,9 +57,9 @@
  ScalarValue:J
  Reference:U
 230     NEXT J
- VariableName:J
+ Variable:J
 240  NEXT S
- VariableName:S
+ Variable:S
 250  DATA 1,4,7,0,1,5,0,0,1,6,8,0,2,6,0,0,3,6,7,0
  NumericConstant:1
  NumericConstant:4
@@ -103,7 +103,7 @@
  NumericConstant:0
  AssignmentOperator:=
 270  FOR S = 1 TO 9
- control: VariableName:S
+ control: Variable:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 275     LET C(S) = 0
@@ -117,7 +117,7 @@
  NumericConstant:0
  AssignmentOperator:=
 285  NEXT S
- VariableName:S
+ Variable:S
 290
 300  REM WHO STARTS?
  Remark:WHO STARTS?
@@ -184,7 +184,7 @@
  ScalarValue:F
  AssignmentOperator:=
 470  FOR J = 1 TO 4
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 480     LET P = U(M,J)
@@ -217,7 +217,7 @@
  NumericConstant:3
  BinaryOperator:=
 530  NEXT J
- VariableName:J
+ Variable:J
 535  LET N = N+1
  Reference:N
  ScalarValue:N
@@ -293,7 +293,7 @@
 1000 REM SELECT A MOVE
  Remark:SELECT A MOVE
 1010 FOR P = 1 TO 8
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 1020 IF C(P) = 2 THEN 1100
@@ -302,9 +302,9 @@
  NumericConstant:2
  BinaryOperator:=
 1030 NEXT P
- VariableName:P
+ Variable:P
 1040 FOR P = 1 TO 8
- control: VariableName:P
+ control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 1050 IF C(P) = -2 THEN 1100
@@ -314,11 +314,11 @@
  UnaryOperator:-
  BinaryOperator:=
 1060 NEXT P
- VariableName:P
+ Variable:P
 1070 GOTO 1200
  LineNumber:1200
 1100 FOR I = 1 TO 3
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 1110    LET M = T(P,I)
@@ -333,10 +333,10 @@
  NumericConstant:0
  BinaryOperator:=
 1130 NEXT I
- VariableName:I
+ Variable:I
 1140
 1200 FOR S = 1 TO 9
- control: VariableName:S
+ control: Variable:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 1210    LET V(S) = 0
@@ -350,7 +350,7 @@
  NumericConstant:0
  BinaryOperator:<>
 1220    FOR J = 1 TO 4
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 1230       LET P = U(S,J)
@@ -376,15 +376,15 @@
  BinaryOperator:+
  AssignmentOperator:=
 1260    NEXT J
- VariableName:J
+ Variable:J
 1270 NEXT S
- VariableName:S
+ Variable:S
 1300 LET V = 0
  Reference:V
  NumericConstant:0
  AssignmentOperator:=
 1310 FOR S = 1 TO 9
- control: VariableName:S
+ control: Variable:S
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 1320    IF V(S) <= V THEN 1350
@@ -402,7 +402,7 @@
  ScalarValue:S
  AssignmentOperator:=
 1350 NEXT S
- VariableName:S
+ Variable:S
 1999 RETURN
  
 9999 END

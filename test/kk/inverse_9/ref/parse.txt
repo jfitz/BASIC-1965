@@ -1,11 +1,11 @@
 10 READ N
  Reference:N
 20 FOR I = 1 TO N-1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 30 FOR J = 1 TO N-1
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 40 LET P(I,J) = I*J - INT(I*J/N)*N
@@ -26,15 +26,15 @@
  BinaryOperator:-
  AssignmentOperator:=
 50 NEXT J
- VariableName:J
+ Variable:J
 60 NEXT I
- VariableName:I
+ Variable:I
 70 FOR I = 1 TO N-1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 80 FOR J = 1 TO N-1
- control: VariableName:J
+ control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
 90 IF P(I,J) = 1 THEN 140
@@ -44,7 +44,7 @@
  NumericConstant:1
  BinaryOperator:=
 100 NEXT J
- VariableName:J
+ Variable:J
 110 PRINT I; "DOES NOT HAVE AN INVERSE"
  ITEMS
  ScalarValue:I
@@ -52,7 +52,7 @@
  TextConstant:"DOES NOT HAVE AN INVERSE"
  CarriageControl:NL
 120 NEXT I
- VariableName:I
+ Variable:I
 130 STOP
  
 140 PRINT I; "HAS AN INVERSE" J

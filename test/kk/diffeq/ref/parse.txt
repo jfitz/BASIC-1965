@@ -34,7 +34,7 @@
  AssignmentOperator:=
 150
 160 FOR X = X0 TO X1-H STEP H
- control: VariableName:X
+ control: Variable:X
  start:   ["ScalarValue:X0"]
  end:     ["ScalarValue:X1", "ScalarValue:H", "BinaryOperator:-"]
  step:    ["ScalarValue:H"]
@@ -85,7 +85,7 @@
  ScalarValue:Y
  CarriageControl:NL
 230 NEXT X
- VariableName:X
+ Variable:X
 240
 900 DATA 0, 1, 1
  NumericConstant:0

@@ -5,7 +5,7 @@
  ScalarValue:N
  Reference:M
 30 FOR I = 1 TO 4
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 40 PRINT "POWER : " 2^I
@@ -31,7 +31,7 @@
  MatrixValue:A
  AssignmentOperator:=
 80 NEXT I
- VariableName:I
+ Variable:I
 90 DATA 3
  NumericConstant:3
 91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5
