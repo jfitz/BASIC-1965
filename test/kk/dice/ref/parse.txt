@@ -5,33 +5,33 @@
 20    GOSUB 500
  LineNumber:500
 30    IF D < 4 THEN 300
- ScalarValue:D
+ Value:D
  NumericConstant:4
  BinaryOperator:<
 40    IF D = 12 THEN 300
- ScalarValue:D
+ Value:D
  NumericConstant:12
  BinaryOperator:=
 50    IF D = 7 THEN 400
- ScalarValue:D
+ Value:D
  NumericConstant:7
  BinaryOperator:=
 60    IF D = 11 THEN 400
- ScalarValue:D
+ Value:D
  NumericConstant:11
  BinaryOperator:=
 70    LET D9 = D
  Reference:D9
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 100   GOSUB 500
  LineNumber:500
 110   IF D = D9 THEN 200
- ScalarValue:D
- ScalarValue:D9
+ Value:D
+ Value:D9
  BinaryOperator:=
 120   IF D = 7 THEN 250
- ScalarValue:D
+ Value:D
  NumericConstant:7
  BinaryOperator:=
 130   GOTO 100
@@ -89,14 +89,14 @@
  ITEMS
  TextConstant:"YOUR ROLL IS "
  CarriageControl:;
- ScalarValue:D1
+ Value:D1
  CarriageControl:;
- ScalarValue:D2
+ Value:D2
  CarriageControl:NL
 530 LET D = D1 + D2
  Reference:D
- ScalarValue:D1
- ScalarValue:D2
+ Value:D1
+ Value:D2
  BinaryOperator:+
  AssignmentOperator:=
 540 RETURN

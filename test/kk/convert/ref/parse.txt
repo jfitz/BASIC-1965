@@ -3,40 +3,40 @@
  Reference:C
 110 LET M1 = M + C/100
  Reference:M1
- ScalarValue:M
- ScalarValue:C
+ Value:M
+ Value:C
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 120 LET I = M1 * 39.37
  Reference:I
- ScalarValue:M1
+ Value:M1
  NumericConstant:39.37
  BinaryOperator:*
  AssignmentOperator:=
 130 LET F = INT(I/12)
  Reference:F
- ScalarValue:I
+ Value:I
  NumericConstant:12
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 140 LET I = I - 12*F
  Reference:I
- ScalarValue:I
+ Value:I
  NumericConstant:12
- ScalarValue:F
+ Value:F
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 150 PRINT M, "METERS", C, "CENTIMETERS"
  ITEMS
- ScalarValue:M
+ Value:M
  CarriageControl:,
  TextConstant:"METERS"
  CarriageControl:,
- ScalarValue:C
+ Value:C
  CarriageControl:,
  TextConstant:"CENTIMETERS"
  CarriageControl:NL
@@ -45,18 +45,18 @@
  TextConstant:"CONVERTS TO"
  CarriageControl:NL
 170 IF F = 0 THEN 190
- ScalarValue:F
+ Value:F
  NumericConstant:0
  BinaryOperator:=
 180 PRINT F, "FEET",
  ITEMS
- ScalarValue:F
+ Value:F
  CarriageControl:,
  TextConstant:"FEET"
  CarriageControl:,
 190 PRINT I, "INCHES"
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:,
  TextConstant:"INCHES"
  CarriageControl:NL

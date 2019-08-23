@@ -3,25 +3,25 @@
 20 FOR I = 1 TO N-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 30 FOR J = 1 TO N-1
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 40 LET P(I,J) = I*J - INT(I*J/N)*N
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:P
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:*
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:*
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  FunctionInt
- ScalarValue:N
+ Value:N
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
@@ -32,22 +32,22 @@
 70 FOR I = 1 TO N-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 80 FOR J = 1 TO N-1
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 90 IF P(I,J) = 1 THEN 140
- ScalarValue:I
- ScalarValue:J
- ScalarValue:P
+ Value:I
+ Value:J
+ Value:P
  NumericConstant:1
  BinaryOperator:=
 100 NEXT J
  Variable:J
 110 PRINT I; "DOES NOT HAVE AN INVERSE"
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:;
  TextConstant:"DOES NOT HAVE AN INVERSE"
  CarriageControl:NL
@@ -57,11 +57,11 @@
  
 140 PRINT I; "HAS AN INVERSE" J
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:;
  TextConstant:"HAS AN INVERSE"
  CarriageControl:
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 150 GOTO 120
  LineNumber:120

@@ -12,49 +12,49 @@
  Reference:C
 50 LET D = ((B^2) - (4*A*C))/(4*A^2)
  Reference:D
- ScalarValue:B
+ Value:B
  NumericConstant:2
  BinaryOperator:^
  NumericConstant:4
- ScalarValue:A
+ Value:A
  BinaryOperator:*
- ScalarValue:C
+ Value:C
  BinaryOperator:*
  BinaryOperator:-
  NumericConstant:4
- ScalarValue:A
+ Value:A
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 60 IF D > = 0 THEN 130
- ScalarValue:D
+ Value:D
  NumericConstant:0
  BinaryOperator:>=
 70 LET X = -B/(2*A)
  Reference:X
- ScalarValue:B
+ Value:B
  UnaryOperator:-
  NumericConstant:2
- ScalarValue:A
+ Value:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
  Reference:Y
  NumericConstant:4
- ScalarValue:A
+ Value:A
  BinaryOperator:*
- ScalarValue:C
+ Value:C
  BinaryOperator:*
- ScalarValue:B
+ Value:B
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:-
  FunctionSqr
  NumericConstant:2
- ScalarValue:A
+ Value:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -66,33 +66,33 @@
  ITEMS
  TextConstant:"REAL PART = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:NL
 110 PRINT "IMAGINARY PART = ";Y
  ITEMS
  TextConstant:"IMAGINARY PART = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 120 GOTO 220
  LineNumber:220
 130 LET E = - B/(2*A)
  Reference:E
- ScalarValue:B
+ Value:B
  UnaryOperator:-
  NumericConstant:2
- ScalarValue:A
+ Value:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 140 IF E > = 0 THEN 170
- ScalarValue:E
+ Value:E
  NumericConstant:0
  BinaryOperator:>=
 150 LET Z = E - SQR(D)
  Reference:Z
- ScalarValue:E
- ScalarValue:D
+ Value:E
+ Value:D
  FunctionSqr
  BinaryOperator:-
  AssignmentOperator:=
@@ -100,16 +100,16 @@
  LineNumber:180
 170 LET Z = E + SQR(D)
  Reference:Z
- ScalarValue:E
- ScalarValue:D
+ Value:E
+ Value:D
  FunctionSqr
  BinaryOperator:+
  AssignmentOperator:=
 180 LET W = C/(Z*A)
  Reference:W
- ScalarValue:C
- ScalarValue:Z
- ScalarValue:A
+ Value:C
+ Value:Z
+ Value:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -121,13 +121,13 @@
  ITEMS
  TextConstant:"1ST ROOT = "
  CarriageControl:;
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 210 PRINT "2ND ROOT = ";W
  ITEMS
  TextConstant:"2ND ROOT = "
  CarriageControl:;
- ScalarValue:W
+ Value:W
  CarriageControl:NL
 220 PRINT "********************"
  ITEMS
@@ -140,7 +140,7 @@
 240 INPUT L
  Reference:L
 250 IF L = 1 THEN 270
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 260 STOP

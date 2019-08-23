@@ -18,9 +18,9 @@
  Reference:X
 80 LET J = LOG(X)/LOG(Y)
  Reference:J
- ScalarValue:X
+ Value:X
  FunctionLog
- ScalarValue:Y
+ Value:Y
  FunctionLog
  BinaryOperator:/
  AssignmentOperator:=
@@ -28,11 +28,11 @@
  ITEMS
  TextConstant:"LOG"
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  ITEMS
@@ -41,7 +41,7 @@
 110 INPUT L
  Reference:L
 120 IF L =1 THEN 140
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 130 STOP

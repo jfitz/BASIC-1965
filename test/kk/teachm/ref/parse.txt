@@ -34,8 +34,8 @@
 140 GOSUB 8000
  LineNumber:8000
 150 IF X = C THEN 200
- ScalarValue:X
- ScalarValue:C
+ Value:X
+ Value:C
  BinaryOperator:=
 160 PRINT "LET'S TRY THAT ONE AGAIN."
  ITEMS
@@ -65,11 +65,11 @@
 230 GOSUB 8000
  LineNumber:8000
 240 IF C = X THEN 300
- ScalarValue:C
- ScalarValue:X
+ Value:C
+ Value:X
  BinaryOperator:=
 250 IF X = 1 THEN 280
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:=
 260 PRINT "ANOTHER RETRY -- OKAY?"
@@ -121,11 +121,11 @@
 360 GOSUB 8000
  LineNumber:8000
 370 IF C = X THEN 400
- ScalarValue:C
- ScalarValue:X
+ Value:C
+ Value:X
  BinaryOperator:=
 375 IF X <> 1 THEN 390
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:<>
 380 PRINT "BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
@@ -157,11 +157,11 @@
 430 GOSUB 8000
  LineNumber:8000
 440 IF C = X THEN 500
- ScalarValue:C
- ScalarValue:X
+ Value:C
+ Value:X
  BinaryOperator:=
 450 IF X = 1 THEN 470
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:=
 460 PRINT "THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
@@ -206,11 +206,11 @@
 540 GOSUB 8000
  LineNumber:8000
 550 IF C = X THEN 600
- ScalarValue:C
- ScalarValue:X
+ Value:C
+ Value:X
  BinaryOperator:=
 560 IF C = 3 THEN 580
- ScalarValue:C
+ Value:C
  NumericConstant:3
  BinaryOperator:=
 570 PRINT "THIS ONE INCREASES THE VALUE OF X BY T UNITS."
@@ -245,8 +245,8 @@
 8010 INPUT X
  Reference:X
 8020 IF C <> X THEN 8050
- ScalarValue:C
- ScalarValue:X
+ Value:C
+ Value:X
  BinaryOperator:<>
 8030 PRINT "CORRECT"
  ITEMS
@@ -258,7 +258,7 @@
  ITEMS
  TextConstant:"INCORRECT. CORRECT ANSWER IS "
  CarriageControl:;
- ScalarValue:C
+ Value:C
  CarriageControl:NL
 8060 RETURN
  

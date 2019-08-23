@@ -1,9 +1,9 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
- ScalarValue:X
+ Value:X
  NumericConstant:5
  BinaryOperator:^
  NumericConstant:2
- ScalarValue:X
+ Value:X
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:*
@@ -16,46 +16,46 @@
  Reference:A
  Reference:B
 25 IF FNF(A) > 0 THEN 230
- ScalarValue:A
+ Value:A
  UserFunction
  NumericConstant:0
  BinaryOperator:>
 30 LET X = (A+B)/2
  Reference:X
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 40 IF FNF(A) = 0 THEN 100
- ScalarValue:A
+ Value:A
  UserFunction
  NumericConstant:0
  BinaryOperator:=
 50 IF FNF(A) < 0 THEN 70
- ScalarValue:A
+ Value:A
  UserFunction
  NumericConstant:0
  BinaryOperator:<
 60 LET B = X
  Reference:B
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 65 GOTO 80
  LineNumber:80
 70 LET A = X
  Reference:A
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.0000005 THEN 100
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:-
  FunctionAbs
- ScalarValue:A
+ Value:A
  FunctionAbs
- ScalarValue:B
+ Value:B
  FunctionAbs
  BinaryOperator:+
  BinaryOperator:/
@@ -67,47 +67,47 @@
  ITEMS
  TextConstant:"ONE ZERO AT"
  CarriageControl:
- ScalarValue:X
+ Value:X
  CarriageControl:NL
 110 STOP
  
 120
 230 LET X = (A+B)/2
  Reference:X
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 240 IF FNF(X) = 0 THEN 100
- ScalarValue:X
+ Value:X
  UserFunction
  NumericConstant:0
  BinaryOperator:=
 250 IF FNF(X) < 0 THEN 270
- ScalarValue:X
+ Value:X
  UserFunction
  NumericConstant:0
  BinaryOperator:<
 260 LET A = X
  Reference:A
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 265 GOTO 280
  LineNumber:280
 270 LET B = X
  Reference:B
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 280 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.0000005 THEN 100
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:-
  FunctionAbs
- ScalarValue:A
+ Value:A
  FunctionAbs
- ScalarValue:B
+ Value:B
  FunctionAbs
  BinaryOperator:+
  BinaryOperator:/

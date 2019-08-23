@@ -16,8 +16,8 @@
  Reference:H
 70 LET I = (B*(H^3))/12
  Reference:I
- ScalarValue:B
- ScalarValue:H
+ Value:B
+ Value:H
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:*
@@ -26,13 +26,13 @@
  AssignmentOperator:=
 80 LET J = (B*H*(B^2 + H^2))/12
  Reference:J
- ScalarValue:B
- ScalarValue:H
+ Value:B
+ Value:H
  BinaryOperator:*
- ScalarValue:B
+ Value:B
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:H
+ Value:H
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
@@ -42,27 +42,27 @@
  AssignmentOperator:=
 90 LET A = B*H
  Reference:A
- ScalarValue:B
- ScalarValue:H
+ Value:B
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 100 PRINT "MOMENT OF INERTIA = ";I
  ITEMS
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
  ITEMS
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
  ITEMS
  TextConstant:"AREA OF SECTION = "
  CarriageControl:;
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 130 PRINT
  ITEMS
@@ -74,7 +74,7 @@
 150 INPUT L
  Reference:L
 160 IF L = 1 THEN 180
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

@@ -12,52 +12,52 @@
  Reference:N
  Reference:R
 60 IF N < R THEN 270
- ScalarValue:N
- ScalarValue:R
+ Value:N
+ Value:R
  BinaryOperator:<
 70 IF R < 0 THEN 290
- ScalarValue:R
+ Value:R
  NumericConstant:0
  BinaryOperator:<
 80 LET T = N
  Reference:T
- ScalarValue:N
+ Value:N
  AssignmentOperator:=
 90 GOSUB 310
  LineNumber:310
 100 LET A = T
  Reference:A
- ScalarValue:T
+ Value:T
  AssignmentOperator:=
 110 LET T = N - R
  Reference:T
- ScalarValue:N
- ScalarValue:R
+ Value:N
+ Value:R
  BinaryOperator:-
  AssignmentOperator:=
 120 GOSUB 310
  LineNumber:310
 130 LET B = T
  Reference:B
- ScalarValue:T
+ Value:T
  AssignmentOperator:=
 140 LET P = A/B
  Reference:P
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:/
  AssignmentOperator:=
 150 LET T = R
  Reference:T
- ScalarValue:R
+ Value:R
  AssignmentOperator:=
 160 GOSUB 310
  LineNumber:310
 170 LET C = A/(T*B)
  Reference:C
- ScalarValue:A
- ScalarValue:T
- ScalarValue:B
+ Value:A
+ Value:T
+ Value:B
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -65,13 +65,13 @@
  ITEMS
  TextConstant:"PERMUTATIONS = "
  CarriageControl:;
- ScalarValue:P
+ Value:P
  CarriageControl:NL
 190 PRINT "COMBINATIONS = ";C
  ITEMS
  TextConstant:"COMBINATIONS = "
  CarriageControl:;
- ScalarValue:C
+ Value:C
  CarriageControl:NL
 200 PRINT
  ITEMS
@@ -83,7 +83,7 @@
 220 INPUT L
  Reference:L
 230 IF L = 1 THEN 250
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 240 STOP
@@ -106,11 +106,11 @@
 300 GOTO 40
  LineNumber:40
 310 IF T = 0 THEN 390
- ScalarValue:T
+ Value:T
  NumericConstant:0
  BinaryOperator:=
 320 IF T = 1 THEN 390
- ScalarValue:T
+ Value:T
  NumericConstant:1
  BinaryOperator:=
 330 LET J = 1
@@ -118,20 +118,20 @@
  NumericConstant:1
  AssignmentOperator:=
 340 FOR I = 2 TO T
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["ScalarValue:T"]
+ end:     ["Value:T"]
 350 LET J = J*I
  Reference:J
- ScalarValue:J
- ScalarValue:I
+ Value:J
+ Value:I
  BinaryOperator:*
  AssignmentOperator:=
 360 NEXT I
- VariableName:I
+ Variable:I
 370 LET T = J
  Reference:T
- ScalarValue:J
+ Value:J
  AssignmentOperator:=
 380 GOTO 400
  LineNumber:400

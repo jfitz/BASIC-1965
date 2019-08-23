@@ -18,10 +18,10 @@
  Reference:Z2
 80 LET R1 = Z1*SQR(1 - (Z2/Z1))
  Reference:R1
- ScalarValue:Z1
+ Value:Z1
  NumericConstant:1
- ScalarValue:Z2
- ScalarValue:Z1
+ Value:Z2
+ Value:Z1
  BinaryOperator:/
  BinaryOperator:-
  FunctionSqr
@@ -29,10 +29,10 @@
  AssignmentOperator:=
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
  Reference:R2
- ScalarValue:Z2
+ Value:Z2
  NumericConstant:1
- ScalarValue:Z2
- ScalarValue:Z1
+ Value:Z2
+ Value:Z1
  BinaryOperator:/
  BinaryOperator:-
  FunctionSqr
@@ -40,12 +40,12 @@
  AssignmentOperator:=
 100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
  Reference:M
- ScalarValue:Z1
- ScalarValue:Z2
+ Value:Z1
+ Value:Z2
  BinaryOperator:/
  FunctionSqr
- ScalarValue:Z1
- ScalarValue:Z2
+ Value:Z1
+ Value:Z2
  BinaryOperator:/
  NumericConstant:1
  BinaryOperator:-
@@ -55,7 +55,7 @@
 110 LET L = 20*(LOG(M)/LOG(10))
  Reference:L
  NumericConstant:20
- ScalarValue:M
+ Value:M
  FunctionLog
  NumericConstant:10
  FunctionLog
@@ -70,19 +70,19 @@
  ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
- ScalarValue:R1
+ Value:R1
  CarriageControl:NL
 140 PRINT "RESISTOR 2 = ";R2
  ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
- ScalarValue:R2
+ Value:R2
  CarriageControl:NL
 150 PRINT "LOSS IN DECIBELS = ";L
  ITEMS
  TextConstant:"LOSS IN DECIBELS = "
  CarriageControl:;
- ScalarValue:L
+ Value:L
  CarriageControl:NL
 160 PRINT
  ITEMS
@@ -94,7 +94,7 @@
 180 INPUT X
  Reference:X
 190 IF X = 1 THEN 210
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:=
 200 STOP

@@ -25,9 +25,9 @@
 80 INPUT N
  Reference:N
 90 FOR I = 1 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 100 PRINT "SAMPLE = "
  ITEMS
  TextConstant:"SAMPLE = "
@@ -36,67 +36,67 @@
  Reference:X
 120 LET A = A + X
  Reference:A
- ScalarValue:A
- ScalarValue:X
+ Value:A
+ Value:X
  BinaryOperator:+
  AssignmentOperator:=
 130 LET B = B + (X^2)
  Reference:B
- ScalarValue:B
- ScalarValue:X
+ Value:B
+ Value:X
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
  AssignmentOperator:=
 140 LET C = C + (X^3)
  Reference:C
- ScalarValue:C
- ScalarValue:X
+ Value:C
+ Value:X
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:+
  AssignmentOperator:=
 150 LET D = D + (X^4)
  Reference:D
- ScalarValue:D
- ScalarValue:X
+ Value:D
+ Value:X
  NumericConstant:4
  BinaryOperator:^
  BinaryOperator:+
  AssignmentOperator:=
 160 NEXT I
- VariableName:I
+ Variable:I
 170 LET J = A/N
  Reference:J
- ScalarValue:A
- ScalarValue:N
+ Value:A
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 180 LET E = (B/N) - (J^2)
  Reference:E
- ScalarValue:B
- ScalarValue:N
+ Value:B
+ Value:N
  BinaryOperator:/
- ScalarValue:J
+ Value:J
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:-
  AssignmentOperator:=
 190 LET F = (C/N) - ((3*J*B)/N) + (2*(J^3))
  Reference:F
- ScalarValue:C
- ScalarValue:N
+ Value:C
+ Value:N
  BinaryOperator:/
  NumericConstant:3
- ScalarValue:J
+ Value:J
  BinaryOperator:*
- ScalarValue:B
+ Value:B
  BinaryOperator:*
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  BinaryOperator:-
  NumericConstant:2
- ScalarValue:J
+ Value:J
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:*
@@ -104,33 +104,33 @@
  AssignmentOperator:=
 200 LET G = (D/N) - ((4*J*C)/N)
  Reference:G
- ScalarValue:D
- ScalarValue:N
+ Value:D
+ Value:N
  BinaryOperator:/
  NumericConstant:4
- ScalarValue:J
+ Value:J
  BinaryOperator:*
- ScalarValue:C
+ Value:C
  BinaryOperator:*
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  BinaryOperator:-
  AssignmentOperator:=
 210 LET H = G + ((6*(J^2)*B)/N) - (3*(J^4))
  Reference:H
- ScalarValue:G
+ Value:G
  NumericConstant:6
- ScalarValue:J
+ Value:J
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
- ScalarValue:B
+ Value:B
  BinaryOperator:*
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  BinaryOperator:+
  NumericConstant:3
- ScalarValue:J
+ Value:J
  NumericConstant:4
  BinaryOperator:^
  BinaryOperator:*
@@ -138,8 +138,8 @@
  AssignmentOperator:=
 220 LET K = F/(E^(3/2))
  Reference:K
- ScalarValue:F
- ScalarValue:E
+ Value:F
+ Value:E
  NumericConstant:3
  NumericConstant:2
  BinaryOperator:/
@@ -148,8 +148,8 @@
  AssignmentOperator:=
 230 LET L = H/(E^2)
  Reference:L
- ScalarValue:H
- ScalarValue:E
+ Value:H
+ Value:E
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:/
@@ -158,25 +158,25 @@
  ITEMS
  TextConstant:"1ST MOMENT = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 250 PRINT "2ND MOMENT = ";E
  ITEMS
  TextConstant:"2ND MOMENT = "
  CarriageControl:;
- ScalarValue:E
+ Value:E
  CarriageControl:NL
 260 PRINT "3RD MOMENT = ";F
  ITEMS
  TextConstant:"3RD MOMENT = "
  CarriageControl:;
- ScalarValue:F
+ Value:F
  CarriageControl:NL
 270 PRINT "4TH MOMENT = ";H
  ITEMS
  TextConstant:"4TH MOMENT = "
  CarriageControl:;
- ScalarValue:H
+ Value:H
  CarriageControl:NL
 280 PRINT "MOMENT COEFFICIENTS"
  ITEMS
@@ -186,11 +186,11 @@
  ITEMS
  TextConstant:"SKEWNESS = "
  CarriageControl:;
- ScalarValue:K
+ Value:K
  CarriageControl:,
  TextConstant:"KURTOSIS = "
  CarriageControl:;
- ScalarValue:L
+ Value:L
  CarriageControl:NL
 300 PRINT "**********************"
  ITEMS
@@ -203,7 +203,7 @@
 320 INPUT Z
  Reference:Z
 330 IF Z = 1 THEN 350
- ScalarValue:Z
+ Value:Z
  NumericConstant:1
  BinaryOperator:=
 340 STOP

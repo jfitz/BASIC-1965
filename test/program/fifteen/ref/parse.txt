@@ -15,34 +15,34 @@
 40 LET A1 = SQR(15+X)
  Reference:A1
  NumericConstant:15
- ScalarValue:X
+ Value:X
  BinaryOperator:+
  FunctionSqr
  AssignmentOperator:=
 50 LET A2 = SQR(X)
  Reference:A2
- ScalarValue:X
+ Value:X
  FunctionSqr
  AssignmentOperator:=
 60 LET A = A1+A2
  Reference:A
- ScalarValue:A1
- ScalarValue:A2
+ Value:A1
+ Value:A2
  BinaryOperator:+
  AssignmentOperator:=
 70 LET B = A1-A2
  Reference:B
- ScalarValue:A1
- ScalarValue:A2
+ Value:A1
+ Value:A2
  BinaryOperator:-
  AssignmentOperator:=
 80 PRINT X,A,B
  ITEMS
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 90 NEXT X
  Variable:X

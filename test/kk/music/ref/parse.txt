@@ -8,9 +8,9 @@
  NumericConstant:100
  Declaration:M
 20 DEF FNC(X) = X-7*INT(X/7)
- ScalarValue:X
+ Value:X
  NumericConstant:7
- ScalarValue:X
+ Value:X
  NumericConstant:7
  BinaryOperator:/
  FunctionInt
@@ -77,7 +77,7 @@
 120 READ N9
  Reference:N9
 130 MAT READ M(N9)
- ScalarValue:N9
+ Value:N9
  Reference:M
 140 DATA 28
  NumericConstant:28
@@ -118,8 +118,8 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:4"]
 200    READ S(V,N9)
- ScalarValue:V
- ScalarValue:N9
+ Value:V
+ Value:N9
  Reference:S
 210 NEXT V
  Variable:V
@@ -139,12 +139,12 @@
 250
 450 FOR N = N9 TO 1 STEP -1
  control: Variable:N
- start:   ["ScalarValue:N9"]
+ start:   ["Value:N9"]
  end:     ["NumericConstant:1"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 460 IF N = N9 THEN 6000
- ScalarValue:N
- ScalarValue:N9
+ Value:N
+ Value:N9
  BinaryOperator:=
 500 REM  TEST CHORDS.
  Remark: TEST CHORDS.
@@ -154,30 +154,30 @@
  AssignmentOperator:=
 510 FOR I = I1 TO 6
  control: Variable:I
- start:   ["ScalarValue:I1"]
+ start:   ["Value:I1"]
  end:     ["NumericConstant:6"]
 520 LET C2 = P(C1,I)
  Reference:C2
- ScalarValue:C1
- ScalarValue:I
- ScalarValue:P
+ Value:C1
+ Value:I
+ Value:P
  AssignmentOperator:=
 525 LET S(0,N) = C2
  NumericConstant:0
- ScalarValue:N
+ Value:N
  Reference:S
- ScalarValue:C2
+ Value:C2
  AssignmentOperator:=
 530 LET S = M(N)
  Reference:S
- ScalarValue:N
- ScalarValue:M
+ Value:N
+ Value:M
  AssignmentOperator:=
 540 LET S(1,N) = S
  NumericConstant:1
- ScalarValue:N
+ Value:N
  Reference:S
- ScalarValue:S
+ Value:S
  AssignmentOperator:=
 542
 545 REM  FIX ROOT
@@ -185,33 +185,33 @@
 550 LET D(1) = C2-8
  NumericConstant:1
  Reference:D
- ScalarValue:C2
+ Value:C2
  NumericConstant:8
  BinaryOperator:-
  AssignmentOperator:=
 560 LET D(2) = C2-15
  NumericConstant:2
  Reference:D
- ScalarValue:C2
+ Value:C2
  NumericConstant:15
  BinaryOperator:-
  AssignmentOperator:=
 565 LET D = S(4,N+1)
  Reference:D
  NumericConstant:4
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  AssignmentOperator:=
 570 FOR J = 1 TO 2
  control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
 580 IF ABS(D(J)-D) <= 5 THEN 610
- ScalarValue:J
- ScalarValue:D
- ScalarValue:D
+ Value:J
+ Value:D
+ Value:D
  BinaryOperator:-
  FunctionAbs
  NumericConstant:5
@@ -219,39 +219,39 @@
 590 LET R = D(3-J)
  Reference:R
  NumericConstant:3
- ScalarValue:J
+ Value:J
  BinaryOperator:-
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 600 GOTO 660
  LineNumber:660
 610 NEXT J
  Variable:J
 620 IF S > S(1,N+1) THEN 650
- ScalarValue:S
+ Value:S
  NumericConstant:1
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  BinaryOperator:>
 630 LET R = D(1)
  Reference:R
  NumericConstant:1
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 640 GOTO 660
  LineNumber:660
 650 LET R = D(2)
  Reference:R
  NumericConstant:2
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 660 LET S(4,N) = R
  NumericConstant:4
- ScalarValue:N
+ Value:N
  Reference:S
- ScalarValue:R
+ Value:R
  AssignmentOperator:=
 670
 700 REM  FIND OTHER NOTES
@@ -266,31 +266,31 @@
  end:     ["NumericConstant:4"]
  step:    ["NumericConstant:2"]
 720 IF FNC(S-(R+K))=0 THEN 750
- ScalarValue:S
- ScalarValue:R
- ScalarValue:K
+ Value:S
+ Value:R
+ Value:K
  BinaryOperator:+
  BinaryOperator:-
  UserFunction
  NumericConstant:0
  BinaryOperator:=
 730 LET B(J) = R+K
- ScalarValue:J
+ Value:J
  Reference:B
- ScalarValue:R
- ScalarValue:K
+ Value:R
+ Value:K
  BinaryOperator:+
  AssignmentOperator:=
 740 LET J = J+1
  Reference:J
- ScalarValue:J
+ Value:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 750 NEXT K
  Variable:K
 760 IF J > 3 THEN 4000
- ScalarValue:J
+ Value:J
  NumericConstant:3
  BinaryOperator:>
 770
@@ -301,40 +301,40 @@
 810 LET A = B(1)
  Reference:A
  NumericConstant:1
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 820 LET B = B(2)
  Reference:B
  NumericConstant:2
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 830 LET W(0,L) = 0
  NumericConstant:0
- ScalarValue:L
+ Value:L
  Reference:W
  NumericConstant:0
  AssignmentOperator:=
 840 LET W(2,L) = B
  NumericConstant:2
- ScalarValue:L
+ Value:L
  Reference:W
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 850 LET W(3,L) = A
  NumericConstant:3
- ScalarValue:L
+ Value:L
  Reference:W
- ScalarValue:A
+ Value:A
  AssignmentOperator:=
 860 LET B(1) = B
  NumericConstant:1
  Reference:B
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 870 LET B(2) = A+7
  NumericConstant:2
  Reference:B
- ScalarValue:A
+ Value:A
  NumericConstant:7
  BinaryOperator:+
  AssignmentOperator:=
@@ -353,58 +353,58 @@
  end:     ["NumericConstant:3"]
 1030 LET B = W(V,L)
  Reference:B
- ScalarValue:V
- ScalarValue:L
- ScalarValue:W
+ Value:V
+ Value:L
+ Value:W
  AssignmentOperator:=
 1040 IF ABS(B-S(V,N+1)) > 5 THEN 1260
- ScalarValue:B
- ScalarValue:V
- ScalarValue:N
+ Value:B
+ Value:V
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  BinaryOperator:-
  FunctionAbs
  NumericConstant:5
  BinaryOperator:>
 1050 IF B > 17-4*V THEN 1260
- ScalarValue:B
+ Value:B
  NumericConstant:17
  NumericConstant:4
- ScalarValue:V
+ Value:V
  BinaryOperator:*
  BinaryOperator:-
  BinaryOperator:>
 1060 IF B < 5-4*V THEN 1260
- ScalarValue:B
+ Value:B
  NumericConstant:5
  NumericConstant:4
- ScalarValue:V
+ Value:V
  BinaryOperator:*
  BinaryOperator:-
  BinaryOperator:<
 1070 LET S(V,N) = B
- ScalarValue:V
- ScalarValue:N
+ Value:V
+ Value:N
  Reference:S
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 1080 IF S(2*V-3,N) <= S(2*V-2,N) THEN 1260
  NumericConstant:2
- ScalarValue:V
+ Value:V
  BinaryOperator:*
  NumericConstant:3
  BinaryOperator:-
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  NumericConstant:2
- ScalarValue:V
+ Value:V
  BinaryOperator:*
  NumericConstant:2
  BinaryOperator:-
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  BinaryOperator:<=
 1090 NEXT V
  Variable:V
@@ -412,8 +412,8 @@
 1100 REM  CHECK FOR BAD TRANSITIONS
  Remark: CHECK FOR BAD TRANSITIONS
 1102 IF C1 = C2 THEN 1200
- ScalarValue:C1
- ScalarValue:C2
+ Value:C1
+ Value:C2
  BinaryOperator:=
 1105 FOR V1 = 1 TO 4
  control: Variable:V1
@@ -421,29 +421,29 @@
  end:     ["NumericConstant:4"]
 1110 FOR V2 = V1+1 TO 4
  control: Variable:V2
- start:   ["ScalarValue:V1", "NumericConstant:1", "BinaryOperator:+"]
+ start:   ["Value:V1", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["NumericConstant:4"]
 1115 LET D = S(V1,N+1)-S(V2,N+1)
  Reference:D
- ScalarValue:V1
- ScalarValue:N
+ Value:V1
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
- ScalarValue:V2
- ScalarValue:N
+ Value:S
+ Value:V2
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  BinaryOperator:-
  AssignmentOperator:=
 1120 IF FNC(D) = 0 THEN 1145
- ScalarValue:D
+ Value:D
  UserFunction
  NumericConstant:0
  BinaryOperator:=
 1130 IF FNC(D) = 4 THEN 1145
- ScalarValue:D
+ Value:D
  UserFunction
  NumericConstant:4
  BinaryOperator:=
@@ -451,31 +451,31 @@
  LineNumber:1160
 1145 LET S1 = S(V1,N)-S(V1,N+1)
  Reference:S1
- ScalarValue:V1
- ScalarValue:N
- ScalarValue:S
- ScalarValue:V1
- ScalarValue:N
+ Value:V1
+ Value:N
+ Value:S
+ Value:V1
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  BinaryOperator:-
  AssignmentOperator:=
 1150 LET S2 = S(V2,N)-S(V2,N+1)
  Reference:S2
- ScalarValue:V2
- ScalarValue:N
- ScalarValue:S
- ScalarValue:V2
- ScalarValue:N
+ Value:V2
+ Value:N
+ Value:S
+ Value:V2
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  BinaryOperator:-
  AssignmentOperator:=
 1155 IF S1 = S2 THEN 1260
- ScalarValue:S1
- ScalarValue:S2
+ Value:S1
+ Value:S2
  BinaryOperator:=
 1160 NEXT V2
  Variable:V2
@@ -489,16 +489,16 @@
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:3"]
 1220 LET D(V) = ABS(S(V,N)-S(V,N+1))
- ScalarValue:V
+ Value:V
  Reference:D
- ScalarValue:V
- ScalarValue:N
- ScalarValue:S
- ScalarValue:V
- ScalarValue:N
+ Value:V
+ Value:N
+ Value:S
+ Value:V
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  BinaryOperator:-
  FunctionAbs
  AssignmentOperator:=
@@ -506,19 +506,19 @@
  Variable:V
 1240 LET W(0,L) = D(2)+D(3)
  NumericConstant:0
- ScalarValue:L
+ Value:L
  Reference:W
  NumericConstant:2
- ScalarValue:D
+ Value:D
  NumericConstant:3
- ScalarValue:D
+ Value:D
  BinaryOperator:+
  AssignmentOperator:=
 1250 GOTO 1261
  LineNumber:1261
 1260 LET W(0,L) = 999
  NumericConstant:0
- ScalarValue:L
+ Value:L
  Reference:W
  NumericConstant:999
  AssignmentOperator:=
@@ -538,42 +538,42 @@
 1530 LET M1 = W(0,L)
  Reference:M1
  NumericConstant:0
- ScalarValue:L
- ScalarValue:W
+ Value:L
+ Value:W
  AssignmentOperator:=
 1540 IF M1 > M THEN 1590
- ScalarValue:M1
- ScalarValue:M
+ Value:M1
+ Value:M
  BinaryOperator:>
 1550 LET M = M1
  Reference:M
- ScalarValue:M1
+ Value:M1
  AssignmentOperator:=
 1560 LET L9 = L
  Reference:L9
- ScalarValue:L
+ Value:L
  AssignmentOperator:=
 1590 NEXT L
  Variable:L
 1600 IF M = 999 THEN 4000
- ScalarValue:M
+ Value:M
  NumericConstant:999
  BinaryOperator:=
 1610 LET S(2,N) = W(2,L9)
  NumericConstant:2
- ScalarValue:N
+ Value:N
  Reference:S
  NumericConstant:2
- ScalarValue:L9
- ScalarValue:W
+ Value:L9
+ Value:W
  AssignmentOperator:=
 1620 LET S(3,N) = W(3,L9)
  NumericConstant:3
- ScalarValue:N
+ Value:N
  Reference:S
  NumericConstant:3
- ScalarValue:L9
- ScalarValue:W
+ Value:L9
+ Value:W
  AssignmentOperator:=
 1630 GOTO 6000
  LineNumber:6000
@@ -586,13 +586,13 @@
  Remark: BACK UP
 5005 LET N = N+1
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 5010 IF N <> N9 THEN 5100
- ScalarValue:N
- ScalarValue:N9
+ Value:N
+ Value:N9
  BinaryOperator:<>
 5020 PRINT "STUCK"
  ITEMS
@@ -603,32 +603,32 @@
 5100 LET C2 = S(0,N)
  Reference:C2
  NumericConstant:0
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  AssignmentOperator:=
 5110 LET C1 = S(0,N+1)
  Reference:C1
  NumericConstant:0
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:S
+ Value:S
  AssignmentOperator:=
 5120 FOR I = 1 TO 6
  control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
 5130 IF C2 = P(C1,I) THEN 5200
- ScalarValue:C2
- ScalarValue:C1
- ScalarValue:I
- ScalarValue:P
+ Value:C2
+ Value:C1
+ Value:I
+ Value:P
  BinaryOperator:=
 5140 NEXT I
  Variable:I
 5200 LET I1 = I+1
  Reference:I1
- ScalarValue:I
+ Value:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -639,31 +639,31 @@
  Remark: PRINT RESULTS
 6001 PRINT N, S(0,N), S(1,N);S(2,N);S(3,N);S(4,N)
  ITEMS
- ScalarValue:N
+ Value:N
  CarriageControl:,
  NumericConstant:0
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  CarriageControl:,
  NumericConstant:1
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  CarriageControl:;
  NumericConstant:2
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  CarriageControl:;
  NumericConstant:3
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  CarriageControl:;
  NumericConstant:4
- ScalarValue:N
- ScalarValue:S
+ Value:N
+ Value:S
  CarriageControl:NL
 6002 LET C1 = C2
  Reference:C1
- ScalarValue:C2
+ Value:C2
  AssignmentOperator:=
 6003 NEXT N
  Variable:N

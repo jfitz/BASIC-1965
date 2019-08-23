@@ -14,26 +14,26 @@
 140 READ X
  Reference:X
 150 IF X = 999999 THEN 210
- ScalarValue:X
+ Value:X
  NumericConstant:999999
  BinaryOperator:=
 160 LET N = N + 1
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 170 LET S = S + X
  Reference:S
- ScalarValue:S
- ScalarValue:X
+ Value:S
+ Value:X
  BinaryOperator:+
  AssignmentOperator:=
 180 LET S2 = S2 + X*X
  Reference:S2
- ScalarValue:S2
- ScalarValue:X
- ScalarValue:X
+ Value:S2
+ Value:X
+ Value:X
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
@@ -42,48 +42,48 @@
 200
 210 LET M = S/N
  Reference:M
- ScalarValue:S
- ScalarValue:N
+ Value:S
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 220 LET V = (N*S2 - S*S)/N/(N-1)
  Reference:V
- ScalarValue:N
- ScalarValue:S2
+ Value:N
+ Value:S2
  BinaryOperator:*
- ScalarValue:S
- ScalarValue:S
+ Value:S
+ Value:S
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  AssignmentOperator:=
 230 LET D = SQR(V)
  Reference:D
- ScalarValue:V
+ Value:V
  FunctionSqr
  AssignmentOperator:=
 240 LET P = .6745*D
  Reference:P
  NumericConstant:0.6745
- ScalarValue:D
+ Value:D
  BinaryOperator:*
  AssignmentOperator:=
 250 LET E = SQR(V/N)
  Reference:E
- ScalarValue:V
- ScalarValue:N
+ Value:V
+ Value:N
  BinaryOperator:/
  FunctionSqr
  AssignmentOperator:=
 260 LET C = D/M
  Reference:C
- ScalarValue:D
- ScalarValue:M
+ Value:D
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 270
@@ -101,15 +101,15 @@
  CarriageControl:NL
 290 PRINT N, S, S2, M, V
  ITEMS
- ScalarValue:N
+ Value:N
  CarriageControl:,
- ScalarValue:S
+ Value:S
  CarriageControl:,
- ScalarValue:S2
+ Value:S2
  CarriageControl:,
- ScalarValue:M
+ Value:M
  CarriageControl:,
- ScalarValue:V
+ Value:V
  CarriageControl:NL
 300 PRINT
  ITEMS
@@ -126,13 +126,13 @@
  CarriageControl:NL
 320 PRINT D, P, E, C
  ITEMS
- ScalarValue:D
+ Value:D
  CarriageControl:,
- ScalarValue:P
+ Value:P
  CarriageControl:,
- ScalarValue:E
+ Value:E
  CarriageControl:,
- ScalarValue:C
+ Value:C
  CarriageControl:NL
 330 PRINT
  ITEMS
@@ -156,7 +156,7 @@
 390 READ X
  Reference:X
 400 IF X <> 999999 THEN 160
- ScalarValue:X
+ Value:X
  NumericConstant:999999
  BinaryOperator:<>
 410

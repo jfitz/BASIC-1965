@@ -5,30 +5,30 @@
  Reference:A0
 30 LET B = A + A0
  Reference:B
- ScalarValue:A
- ScalarValue:A0
+ Value:A
+ Value:A0
  BinaryOperator:+
  AssignmentOperator:=
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  ITEMS
  TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
  CarriageControl:;
- ScalarValue:A
+ Value:A
  CarriageControl:;
  TextConstant:"TO"
  CarriageControl:;
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 50 PRINT
  ITEMS
  CarriageControl:NL
 100 FOR N = A TO B
  control: Variable:N
- start:   ["ScalarValue:A"]
- end:     ["ScalarValue:B"]
+ start:   ["Value:A"]
+ end:     ["Value:B"]
 110 LET N0 = N
  Reference:N0
- ScalarValue:N
+ Value:N
  AssignmentOperator:=
 120 GOSUB 400
  LineNumber:400
@@ -40,16 +40,16 @@
  Remark:PRINT INFO FOR ONE NUMBER
 410 PRINT N0;":";
  ITEMS
- ScalarValue:N0
+ Value:N0
  CarriageControl:;
  TextConstant:":"
  CarriageControl:;
 420 IF N0 = 1 THEN 490
- ScalarValue:N0
+ Value:N0
  NumericConstant:1
  BinaryOperator:=
 430 IF MOD(N0,2) = 0 THEN 460
- ScalarValue:N0
+ Value:N0
  NumericConstant:2
  FunctionMod
  NumericConstant:0
@@ -57,7 +57,7 @@
 440 LET N0 = 3*N0 + 1
  Reference:N0
  NumericConstant:3
- ScalarValue:N0
+ Value:N0
  BinaryOperator:*
  NumericConstant:1
  BinaryOperator:+
@@ -66,13 +66,13 @@
  LineNumber:470
 460 LET N0 = N0/2
  Reference:N0
- ScalarValue:N0
+ Value:N0
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 470 PRINT N0;
  ITEMS
- ScalarValue:N0
+ Value:N0
  CarriageControl:;
 480 GOTO 420
  LineNumber:420

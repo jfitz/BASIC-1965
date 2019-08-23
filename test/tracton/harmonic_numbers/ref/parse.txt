@@ -21,35 +21,35 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 70 FOR I = 0 TO N
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 80 LET K = I + 1
  Reference:K
- ScalarValue:I
+ Value:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 90 LET C = 1/K
  Reference:C
  NumericConstant:1
- ScalarValue:K
+ Value:K
  BinaryOperator:/
  AssignmentOperator:=
 100 LET D = D + C
  Reference:D
- ScalarValue:D
- ScalarValue:C
+ Value:D
+ Value:C
  BinaryOperator:+
  AssignmentOperator:=
 110 PRINT K,D
  ITEMS
- ScalarValue:K
+ Value:K
  CarriageControl:,
- ScalarValue:D
+ Value:D
  CarriageControl:NL
 120 NEXT I
- VariableName:I
+ Variable:I
 130 PRINT
  ITEMS
  CarriageControl:NL

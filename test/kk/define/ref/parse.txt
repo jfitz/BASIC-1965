@@ -1,5 +1,5 @@
 10 DEF FNL(A)=LOG(A)/LOG(10)
- ScalarValue:A
+ Value:A
  FunctionLog
  NumericConstant:10
  FunctionLog
@@ -11,12 +11,12 @@
  step:    ["NumericConstant:2"]
 30 PRINT N, LOG(N), FNL(N)
  ITEMS
- ScalarValue:N
+ Value:N
  CarriageControl:,
- ScalarValue:N
+ Value:N
  FunctionLog
  CarriageControl:,
- ScalarValue:N
+ Value:N
  UserFunction
  CarriageControl:NL
 40 NEXT N

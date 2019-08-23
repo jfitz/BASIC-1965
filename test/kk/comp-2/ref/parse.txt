@@ -13,47 +13,47 @@
  Reference:Y
  Reference:T
 21 IF A < 0 THEN 800
- ScalarValue:A
+ Value:A
  NumericConstant:0
  BinaryOperator:<
 22 IF B < 0 THEN 800
- ScalarValue:B
+ Value:B
  NumericConstant:0
  BinaryOperator:<
 23 IF R <= 0 THEN 800
- ScalarValue:R
+ Value:R
  NumericConstant:0
  BinaryOperator:<=
 24 IF Y <= 0 THEN 800
- ScalarValue:Y
+ Value:Y
  NumericConstant:0
  BinaryOperator:<=
 25 IF T <= 0 THEN 800
- ScalarValue:T
+ Value:T
  NumericConstant:0
  BinaryOperator:<=
 26 IF T = 999 THEN 9999
- ScalarValue:T
+ Value:T
  NumericConstant:999
  BinaryOperator:=
 30 IF A = 999 THEN 100
- ScalarValue:A
+ Value:A
  NumericConstant:999
  BinaryOperator:=
 40 IF B = 999 THEN 200
- ScalarValue:B
+ Value:B
  NumericConstant:999
  BinaryOperator:=
 50 IF P = 999 THEN 300
- ScalarValue:P
+ Value:P
  NumericConstant:999
  BinaryOperator:=
 60 IF Y = 999 THEN 400
- ScalarValue:Y
+ Value:Y
  NumericConstant:999
  BinaryOperator:=
 70 IF R = 999 THEN 500
- ScalarValue:R
+ Value:R
  NumericConstant:999
  BinaryOperator:=
 80
@@ -63,23 +63,23 @@
  LineNumber:1000
 120 LET A = (B+P1)/R2 - P1
  Reference:A
- ScalarValue:B
- ScalarValue:P1
+ Value:B
+ Value:P1
  BinaryOperator:+
- ScalarValue:R2
+ Value:R2
  BinaryOperator:/
- ScalarValue:P1
+ Value:P1
  BinaryOperator:-
  AssignmentOperator:=
 125 IF A < 0 THEN 850
- ScalarValue:A
+ Value:A
  NumericConstant:0
  BinaryOperator:<
 130 PRINT "ORIGINAL AMOUNT = $" A
  ITEMS
  TextConstant:"ORIGINAL AMOUNT = $"
  CarriageControl:
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 140 GOTO 5
  LineNumber:5
@@ -90,23 +90,23 @@
  LineNumber:1000
 220 LET B = (A+P1)*R2 - P1
  Reference:B
- ScalarValue:A
- ScalarValue:P1
+ Value:A
+ Value:P1
  BinaryOperator:+
- ScalarValue:R2
+ Value:R2
  BinaryOperator:*
- ScalarValue:P1
+ Value:P1
  BinaryOperator:-
  AssignmentOperator:=
 225 IF B < 0 THEN 850
- ScalarValue:B
+ Value:B
  NumericConstant:0
  BinaryOperator:<
 230 PRINT "FINAL AMOUNT = $" B
  ITEMS
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 240 GOTO 5
  LineNumber:5
@@ -117,14 +117,14 @@
  LineNumber:1000
 320 LET P = R1*(B - A*R2)/(R2-1)
  Reference:P
- ScalarValue:R1
- ScalarValue:B
- ScalarValue:A
- ScalarValue:R2
+ Value:R1
+ Value:B
+ Value:A
+ Value:R2
  BinaryOperator:*
  BinaryOperator:-
  BinaryOperator:*
- ScalarValue:R2
+ Value:R2
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
@@ -133,7 +133,7 @@
  ITEMS
  TextConstant:"PAYMENT = $"
  CarriageControl:
- ScalarValue:P
+ Value:P
  CarriageControl:NL
 340 GOTO 5
  LineNumber:5
@@ -144,35 +144,35 @@
  LineNumber:1000
 415 LET Q = (B+P1)/(A+P1)
  Reference:Q
- ScalarValue:B
- ScalarValue:P1
+ Value:B
+ Value:P1
  BinaryOperator:+
- ScalarValue:A
- ScalarValue:P1
+ Value:A
+ Value:P1
  BinaryOperator:+
  BinaryOperator:/
  AssignmentOperator:=
 416 IF Q <= 1 THEN 850
- ScalarValue:Q
+ Value:Q
  NumericConstant:1
  BinaryOperator:<=
 420 LET Y = LOG(Q)/LOG(1+R1)/T
  Reference:Y
- ScalarValue:Q
+ Value:Q
  FunctionLog
  NumericConstant:1
- ScalarValue:R1
+ Value:R1
  BinaryOperator:+
  FunctionLog
  BinaryOperator:/
- ScalarValue:T
+ Value:T
  BinaryOperator:/
  AssignmentOperator:=
 430 PRINT "NUMBER OF YEARS = " Y
  ITEMS
  TextConstant:"NUMBER OF YEARS = "
  CarriageControl:
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 440 GOTO 5
  LineNumber:5
@@ -181,12 +181,12 @@
  Remark:FIND ANNUAL INTEREST
 505 LET S = B - (A+Y*T*P)
  Reference:S
- ScalarValue:B
- ScalarValue:A
- ScalarValue:Y
- ScalarValue:T
+ Value:B
+ Value:A
+ Value:Y
+ Value:T
  BinaryOperator:*
- ScalarValue:P
+ Value:P
  BinaryOperator:*
  BinaryOperator:+
  BinaryOperator:-
@@ -200,25 +200,25 @@
  LineNumber:1000
 530    LET S1 = B - ((A+P1)*R2 - P1)
  Reference:S1
- ScalarValue:B
- ScalarValue:A
- ScalarValue:P1
+ Value:B
+ Value:A
+ Value:P1
  BinaryOperator:+
- ScalarValue:R2
+ Value:R2
  BinaryOperator:*
- ScalarValue:P1
+ Value:P1
  BinaryOperator:-
  BinaryOperator:-
  AssignmentOperator:=
 535    IF S*S1 <= 0 THEN 550
- ScalarValue:S
- ScalarValue:S1
+ Value:S
+ Value:S1
  BinaryOperator:*
  NumericConstant:0
  BinaryOperator:<=
 536    LET S = S1
  Reference:S
- ScalarValue:S1
+ Value:S1
  AssignmentOperator:=
 540 NEXT R
  Variable:R
@@ -232,13 +232,13 @@
  ITEMS
  TextConstant:"ANNUAL INTEREST IS BETWEEN "
  CarriageControl:
- ScalarValue:R
+ Value:R
  NumericConstant:0.1
  BinaryOperator:-
  CarriageControl:;
  TextConstant:"AND "
  CarriageControl:
- ScalarValue:R
+ Value:R
  CarriageControl:;
  TextConstant:"PERCENT"
  CarriageControl:NL
@@ -264,30 +264,30 @@
  Remark:COMPUTE BASIC QUANTITIES
 1010 LET N = Y*T
  Reference:N
- ScalarValue:Y
- ScalarValue:T
+ Value:Y
+ Value:T
  BinaryOperator:*
  AssignmentOperator:=
 1020 LET R1 = R/100/T
  Reference:R1
- ScalarValue:R
+ Value:R
  NumericConstant:100
  BinaryOperator:/
- ScalarValue:T
+ Value:T
  BinaryOperator:/
  AssignmentOperator:=
 1030 LET P1 = P/R1
  Reference:P1
- ScalarValue:P
- ScalarValue:R1
+ Value:P
+ Value:R1
  BinaryOperator:/
  AssignmentOperator:=
 1040 LET R2 = (1+R1)^N
  Reference:R2
  NumericConstant:1
- ScalarValue:R1
+ Value:R1
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  BinaryOperator:^
  AssignmentOperator:=
 1099 RETURN

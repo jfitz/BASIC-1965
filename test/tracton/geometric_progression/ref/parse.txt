@@ -27,7 +27,7 @@
 100 INPUT C
  Reference:C
 110 IF C = 1 THEN 130
- ScalarValue:C
+ Value:C
  NumericConstant:1
  BinaryOperator:=
 120 GOTO 160
@@ -50,48 +50,48 @@
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 0 TO N - 1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 180 LET K = I + 1
  Reference:K
- ScalarValue:I
+ Value:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 190 LET L = A*(R^I)
  Reference:L
- ScalarValue:A
- ScalarValue:R
- ScalarValue:I
+ Value:A
+ Value:R
+ Value:I
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
 200 LET J = J + L
  Reference:J
- ScalarValue:J
- ScalarValue:L
+ Value:J
+ Value:L
  BinaryOperator:+
  AssignmentOperator:=
 210 IF C = 1 THEN 230
- ScalarValue:C
+ Value:C
  NumericConstant:1
  BinaryOperator:=
 220 GOTO 240
  LineNumber:240
 230 PRINT K,L
  ITEMS
- ScalarValue:K
+ Value:K
  CarriageControl:,
- ScalarValue:L
+ Value:L
  CarriageControl:NL
 240 NEXT I
- VariableName:I
+ Variable:I
 250 PRINT "SUM = ";J
  ITEMS
  TextConstant:"SUM = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 260 PRINT
  ITEMS
@@ -103,7 +103,7 @@
 280 INPUT X
  Reference:X
 290 IF X = 1 THEN 310
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:=
 300 STOP

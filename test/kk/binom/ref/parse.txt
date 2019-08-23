@@ -8,24 +8,24 @@
 30 FOR K = 1 TO I
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:I"]
+ end:     ["Value:I"]
 40 LET B = B*(N-K+1)/K
  Reference:B
- ScalarValue:B
- ScalarValue:N
- ScalarValue:K
+ Value:B
+ Value:N
+ Value:K
  BinaryOperator:-
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
- ScalarValue:K
+ Value:K
  BinaryOperator:/
  AssignmentOperator:=
 50 NEXT K
  Variable:K
 60 PRINT B
  ITEMS
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 70 STOP
  

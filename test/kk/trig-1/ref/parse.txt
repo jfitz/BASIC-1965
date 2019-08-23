@@ -5,13 +5,13 @@
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X)=X*P/180
- ScalarValue:X
- ScalarValue:P
+ Value:X
+ Value:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 130 DEF FNC(X)=COS(FND(X))
- ScalarValue:X
+ Value:X
  UserFunction
  FunctionCos
 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
@@ -30,19 +30,19 @@
  Reference:Y
 160 LET Z = SQR(X^2 + Y^2 - 2*X*Y*FNC(A))
  Reference:Z
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:Y
+ Value:Y
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
  NumericConstant:2
- ScalarValue:X
+ Value:X
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
- ScalarValue:A
+ Value:A
  UserFunction
  BinaryOperator:*
  BinaryOperator:-
@@ -50,13 +50,13 @@
  AssignmentOperator:=
 170 PRINT X,A,Y,Z
  ITEMS
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:Y
+ Value:Y
  CarriageControl:,
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 180 GOTO 150
  LineNumber:150

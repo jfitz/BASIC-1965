@@ -10,7 +10,7 @@
  Reference:X
 50 LET A = EXP(-(X^2)/2)
  Reference:A
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:^
  UnaryOperator:-
@@ -24,15 +24,15 @@
  AssignmentOperator:=
 70 LET C = B*A
  Reference:C
- ScalarValue:B
- ScalarValue:A
+ Value:B
+ Value:A
  BinaryOperator:*
  AssignmentOperator:=
 80 PRINT "F(X) = ";C
  ITEMS
  TextConstant:"F(X) = "
  CarriageControl:;
- ScalarValue:C
+ Value:C
  CarriageControl:NL
 90 PRINT
  ITEMS
@@ -44,7 +44,7 @@
 110 INPUT L
  Reference:L
 120 IF L = 1 THEN 140
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 130 STOP

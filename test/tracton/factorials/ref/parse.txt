@@ -13,26 +13,26 @@
  NumericConstant:1
  AssignmentOperator:=
 60 FOR I = 1 TO X
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:X"]
+ end:     ["Value:X"]
 70 LET Z = Z*I
  Reference:Z
- ScalarValue:Z
- ScalarValue:I
+ Value:Z
+ Value:I
  BinaryOperator:*
  AssignmentOperator:=
 80 NEXT I
- VariableName:I
+ Variable:I
 90 PRINT "X = ";X,"X! = ";Z
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:,
  TextConstant:"X! = "
  CarriageControl:;
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  ITEMS
@@ -41,7 +41,7 @@
 110 INPUT L
  Reference:L
 120 IF L = 1 THEN 140
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 130 STOP

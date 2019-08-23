@@ -8,8 +8,8 @@
 110
 130 MAT S = A+B
  Reference:S
- MatrixValue:A
- MatrixValue:B
+ Value:A
+ Value:B
  BinaryOperator:+
  AssignmentOperator:=
 140 PRINT "THE SUM"
@@ -18,13 +18,13 @@
  CarriageControl:NL
 150 MAT PRINT S
  ITEMS
- MatrixValue:S
+ Value:S
  CarriageControl:,
 160
 170 MAT D = A-B
  Reference:D
- MatrixValue:A
- MatrixValue:B
+ Value:A
+ Value:B
  BinaryOperator:-
  AssignmentOperator:=
 180 PRINT "THE DIFFERENCE"
@@ -33,7 +33,7 @@
  CarriageControl:NL
 190 MAT PRINT D
  ITEMS
- MatrixValue:D
+ Value:D
  CarriageControl:,
 200
 210 MAT K = (1/4)*A
@@ -41,7 +41,7 @@
  NumericConstant:1
  NumericConstant:4
  BinaryOperator:/
- MatrixValue:A
+ Value:A
  BinaryOperator:*
  AssignmentOperator:=
 220 PRINT "SCALAR MULTIPLE"
@@ -50,7 +50,7 @@
  CarriageControl:NL
 230 MAT PRINT K
  ITEMS
- MatrixValue:K
+ Value:K
  CarriageControl:,
 240
 900 DATA 1, 4, 7, 3, 2, 1

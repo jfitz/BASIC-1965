@@ -12,30 +12,30 @@
 30 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 40 LET K = 2*I-1
  Reference:K
  NumericConstant:2
- ScalarValue:I
+ Value:I
  BinaryOperator:*
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 50 LET S = S + F*X^K/K
  Reference:S
- ScalarValue:S
- ScalarValue:F
- ScalarValue:X
- ScalarValue:K
+ Value:S
+ Value:F
+ Value:X
+ Value:K
  BinaryOperator:^
  BinaryOperator:*
- ScalarValue:K
+ Value:K
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 60 LET F = -F
  Reference:F
- ScalarValue:F
+ Value:F
  UnaryOperator:-
  AssignmentOperator:=
 70 NEXT I
@@ -44,20 +44,20 @@
  ITEMS
  TextConstant:"ATN OF "
  CarriageControl:
- ScalarValue:X
+ Value:X
  CarriageControl:;
  TextConstant:"= "
  CarriageControl:
- ScalarValue:X
+ Value:X
  FunctionAtn
  CarriageControl:NL
 85 PRINT N; "TERMS OF THE SERIES YIELD " S
  ITEMS
- ScalarValue:N
+ Value:N
  CarriageControl:;
  TextConstant:"TERMS OF THE SERIES YIELD "
  CarriageControl:
- ScalarValue:S
+ Value:S
  CarriageControl:NL
 90 PRINT
  ITEMS

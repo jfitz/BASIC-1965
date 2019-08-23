@@ -18,35 +18,35 @@
  Reference:W
 70 LET N = N + 1
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 80 LET X = X + W
  Reference:X
- ScalarValue:X
- ScalarValue:W
+ Value:X
+ Value:W
  BinaryOperator:+
  AssignmentOperator:=
 90 LET A = X/N
  Reference:A
- ScalarValue:X
- ScalarValue:N
+ Value:X
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 100 PRINT "N = "; N, "SAMPLE ="; W,"CURRENT MEAN = ";A
  ITEMS
  TextConstant:"N = "
  CarriageControl:;
- ScalarValue:N
+ Value:N
  CarriageControl:,
  TextConstant:"SAMPLE ="
  CarriageControl:;
- ScalarValue:W
+ Value:W
  CarriageControl:,
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 110 GOTO 50
  LineNumber:50

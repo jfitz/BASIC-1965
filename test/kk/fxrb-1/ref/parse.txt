@@ -26,7 +26,7 @@
  NumericConstant:30
 160 DEF FNR(X) = INT(4*X+.5)
  NumericConstant:4
- ScalarValue:X
+ Value:X
  BinaryOperator:*
  NumericConstant:0.5
  BinaryOperator:+
@@ -36,11 +36,11 @@
  Reference:X
  Reference:Y
 210 LET G(FNR(X*1.5),FNR(Y)) = 1
- ScalarValue:X
+ Value:X
  NumericConstant:1.5
  BinaryOperator:*
  UserFunction
- ScalarValue:Y
+ Value:Y
  UserFunction
  Reference:G
  NumericConstant:1
@@ -48,52 +48,52 @@
 220 FOR I = 1 TO P
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:P"]
+ end:     ["Value:P"]
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:T9", "ScalarValue:P", "BinaryOperator:/"]
- step:    ["ScalarValue:T8"]
+ end:     ["Value:T9", "Value:P", "BinaryOperator:/"]
+ step:    ["Value:T8"]
 240 LET X = X + (A*X - B*X*Y)*T8
  Reference:X
- ScalarValue:X
- ScalarValue:A
- ScalarValue:X
+ Value:X
+ Value:A
+ Value:X
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:X
+ Value:B
+ Value:X
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:T8
+ Value:T8
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Reference:Y
- ScalarValue:Y
- ScalarValue:C
- ScalarValue:X
+ Value:Y
+ Value:C
+ Value:X
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
- ScalarValue:D
- ScalarValue:Y
+ Value:D
+ Value:Y
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:T8
+ Value:T8
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 260 NEXT T
  Variable:T
 270 LET G(FNR(X*1.5),FNR(Y)) = 1
- ScalarValue:X
+ Value:X
  NumericConstant:1.5
  BinaryOperator:*
  UserFunction
- ScalarValue:Y
+ Value:Y
  UserFunction
  Reference:G
  NumericConstant:1
@@ -111,9 +111,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:60"]
 320 IF G(I,J) > 0 THEN 360
- ScalarValue:I
- ScalarValue:J
- ScalarValue:G
+ Value:I
+ Value:J
+ Value:G
  NumericConstant:0
  BinaryOperator:>
 330 NEXT I
@@ -128,9 +128,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:60"]
 370 IF G(I,J) > 0 THEN 400
- ScalarValue:I
- ScalarValue:J
- ScalarValue:G
+ Value:I
+ Value:J
+ Value:G
  NumericConstant:0
  BinaryOperator:>
 380 PRINT " ";
@@ -145,12 +145,12 @@
  CarriageControl:;
 410 FOR K = I+1 TO 60
  control: Variable:K
- start:   ["ScalarValue:I", "NumericConstant:1", "BinaryOperator:+"]
+ start:   ["Value:I", "NumericConstant:1", "BinaryOperator:+"]
  end:     ["NumericConstant:60"]
 420 IF G(K,J) > 0 THEN 450
- ScalarValue:K
- ScalarValue:J
- ScalarValue:G
+ Value:K
+ Value:J
+ Value:G
  NumericConstant:0
  BinaryOperator:>
 430 NEXT K

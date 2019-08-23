@@ -1,5 +1,5 @@
 100 DEF FNF(X) = SIN(X)
- ScalarValue:X
+ Value:X
  FunctionSin
 110 READ A,B,S
  Reference:A
@@ -11,14 +11,14 @@
  Reference:N
 130 LET H = (D-C)/N
  Reference:H
- ScalarValue:D
- ScalarValue:C
+ Value:D
+ Value:C
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 140 IF N <= 50 THEN 170
- ScalarValue:N
+ Value:N
  NumericConstant:50
  BinaryOperator:<=
 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
@@ -28,7 +28,7 @@
 160 STOP
  
 170 DEF FNR(X) = INT(X+0.5)
- ScalarValue:X
+ Value:X
  NumericConstant:0.5
  BinaryOperator:+
  FunctionInt
@@ -36,15 +36,15 @@
  ITEMS
  TextConstant:"Y-AXIS:  FROM "
  CarriageControl:
- ScalarValue:C
+ Value:C
  CarriageControl:;
  TextConstant:"TO "
  CarriageControl:
- ScalarValue:D
+ Value:D
  CarriageControl:;
  TextConstant:"IN STEPS OF "
  CarriageControl:
- ScalarValue:H
+ Value:H
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -56,7 +56,7 @@
 210 FOR I = 1 TO N-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 220 PRINT "-";
  ITEMS
  TextConstant:"-"
@@ -69,30 +69,30 @@
  CarriageControl:NL
 250 FOR X = A TO B STEP S
  control: Variable:X
- start:   ["ScalarValue:A"]
- end:     ["ScalarValue:B"]
- step:    ["ScalarValue:S"]
+ start:   ["Value:A"]
+ end:     ["Value:B"]
+ step:    ["Value:S"]
 270 LET Y = FNF(X)
  Reference:Y
- ScalarValue:X
+ Value:X
  UserFunction
  AssignmentOperator:=
 280 LET Y1 = FNR((Y-C)/H)
  Reference:Y1
- ScalarValue:Y
- ScalarValue:C
+ Value:Y
+ Value:C
  BinaryOperator:-
- ScalarValue:H
+ Value:H
  BinaryOperator:/
  UserFunction
  AssignmentOperator:=
 290 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 292 IF I = Y1 THEN 302
- ScalarValue:I
- ScalarValue:Y1
+ Value:I
+ Value:Y1
  BinaryOperator:=
 300 PRINT " ";
  ITEMS
@@ -112,7 +112,7 @@
  CarriageControl:;
 320 PRINT X
  ITEMS
- ScalarValue:X
+ Value:X
  CarriageControl:NL
 330 NEXT X
  Variable:X

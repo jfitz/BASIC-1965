@@ -14,9 +14,9 @@
 170 REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
  Remark:THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
 180 DEF FNM(X) = X - 8*INT((X-1)/8)
- ScalarValue:X
+ Value:X
  NumericConstant:8
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:-
  NumericConstant:8
@@ -40,48 +40,48 @@
  AssignmentOperator:=
 240 LET M = A
  Reference:M
- ScalarValue:A
+ Value:A
  AssignmentOperator:=
 250 GOSUB 650
  LineNumber:650
 260 LET P = M
  Reference:P
- ScalarValue:M
+ Value:M
  AssignmentOperator:=
 270 LET B = FNM(P+1)
  Reference:B
- ScalarValue:P
+ Value:P
  NumericConstant:1
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 280 LET M = B
  Reference:M
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 290 GOSUB 650
  LineNumber:650
 300 LET Q = M
  Reference:Q
- ScalarValue:M
+ Value:M
  AssignmentOperator:=
 310 IF Q = FNM(B+4) THEN 360
- ScalarValue:Q
- ScalarValue:B
+ Value:Q
+ Value:B
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  BinaryOperator:=
 320    LET C = FNM(B+4)
  Reference:C
- ScalarValue:B
+ Value:B
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 330    LET M = C
  Reference:M
- ScalarValue:C
+ Value:C
  AssignmentOperator:=
 340    GOSUB 700
  LineNumber:700
@@ -89,62 +89,62 @@
  LineNumber:730
 360 LET C = FNM(B+2)
  Reference:C
- ScalarValue:B
+ Value:B
  NumericConstant:2
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 370 LET M = C
  Reference:M
- ScalarValue:C
+ Value:C
  AssignmentOperator:=
 380 GOSUB 650
  LineNumber:650
 390 LET R = M
  Reference:R
- ScalarValue:M
+ Value:M
  AssignmentOperator:=
 400 IF R = FNM(C+4) THEN 450
- ScalarValue:R
- ScalarValue:C
+ Value:R
+ Value:C
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  BinaryOperator:=
 410    LET D = FNM(C+4)
  Reference:D
- ScalarValue:C
+ Value:C
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 420    LET M = D
  Reference:M
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 430    GOSUB 700
  LineNumber:700
 440    GO TO 730
  LineNumber:730
 450 IF P/2 <> INT(P/2) THEN 500
- ScalarValue:P
+ Value:P
  NumericConstant:2
  BinaryOperator:/
- ScalarValue:P
+ Value:P
  NumericConstant:2
  BinaryOperator:/
  FunctionInt
  BinaryOperator:<>
 460    LET D = FNM(C+7)
  Reference:D
- ScalarValue:C
+ Value:C
  NumericConstant:7
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 470    LET M = D
  Reference:M
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 480    GOSUB 700
  LineNumber:700
@@ -152,38 +152,38 @@
  LineNumber:730
 500 LET D = FNM(C+3)
  Reference:D
- ScalarValue:C
+ Value:C
  NumericConstant:3
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 510 LET M = D
  Reference:M
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 520 GOSUB 650
  LineNumber:650
 530 LET S = M
  Reference:S
- ScalarValue:M
+ Value:M
  AssignmentOperator:=
 540 IF S = FNM(D+4) THEN 590
- ScalarValue:S
- ScalarValue:D
+ Value:S
+ Value:D
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  BinaryOperator:=
 550    LET E = FNM(D+4)
  Reference:E
- ScalarValue:D
+ Value:D
  NumericConstant:4
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 560    LET M = E
  Reference:M
- ScalarValue:E
+ Value:E
  AssignmentOperator:=
 570    GOSUB 700
  LineNumber:700
@@ -191,14 +191,14 @@
  LineNumber:730
 590 LET E = FNM(D+6)
  Reference:E
- ScalarValue:D
+ Value:D
  NumericConstant:6
  BinaryOperator:+
  UserFunction
  AssignmentOperator:=
 600 LET M = E
  Reference:M
- ScalarValue:E
+ Value:E
  AssignmentOperator:=
 610 GOSUB 700
  LineNumber:700
@@ -224,7 +224,7 @@
  ITEMS
  TextConstant:"COMPUTER MOVES"
  CarriageControl:;
- ScalarValue:M
+ Value:M
  CarriageControl:NL
 710 RETURN
  

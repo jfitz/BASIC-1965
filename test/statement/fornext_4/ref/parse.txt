@@ -8,11 +8,11 @@
  AssignmentOperator:=
 30 FOR I = L1 TO L2
  control: Variable:I
- start:   ["ScalarValue:L1"]
- end:     ["ScalarValue:L2"]
+ start:   ["Value:L1"]
+ end:     ["Value:L2"]
 40 PRINT I
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 50 NEXT I
  Variable:I

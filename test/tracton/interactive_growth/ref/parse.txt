@@ -65,85 +65,85 @@
  TextConstant:"DESTROYER"
  CarriageControl:NL
 230 IF J = K THEN 470
- ScalarValue:J
- ScalarValue:K
+ Value:J
+ Value:K
  BinaryOperator:=
 240 LET J = J + 1
  Reference:J
- ScalarValue:J
+ Value:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 250 LET B = A*X*Y
  Reference:B
- ScalarValue:A
- ScalarValue:X
+ Value:A
+ Value:X
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
  AssignmentOperator:=
 260 LET C = ((Y - B)*H) + Y
  Reference:C
- ScalarValue:Y
- ScalarValue:B
+ Value:Y
+ Value:B
  BinaryOperator:-
- ScalarValue:H
+ Value:H
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:+
  AssignmentOperator:=
 270 IF C < 0 THEN 390
- ScalarValue:C
+ Value:C
  NumericConstant:0
  BinaryOperator:<
 280 LET Y = C
  Reference:Y
- ScalarValue:C
+ Value:C
  AssignmentOperator:=
 290 LET D = (((X*Z) - B)*H) + X
  Reference:D
- ScalarValue:X
- ScalarValue:Z
+ Value:X
+ Value:Z
  BinaryOperator:*
- ScalarValue:B
+ Value:B
  BinaryOperator:-
- ScalarValue:H
+ Value:H
  BinaryOperator:*
- ScalarValue:X
+ Value:X
  BinaryOperator:+
  AssignmentOperator:=
 300 IF D < 0 THEN 410
- ScalarValue:D
+ Value:D
  NumericConstant:0
  BinaryOperator:<
 310 LET X = D
  Reference:X
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 320 LET M = INT(X)
  Reference:M
- ScalarValue:X
+ Value:X
  FunctionInt
  AssignmentOperator:=
 330 LET N = INT(Y)
  Reference:N
- ScalarValue:Y
+ Value:Y
  FunctionInt
  AssignmentOperator:=
 340 PRINT M,N
  ITEMS
- ScalarValue:M
+ Value:M
  CarriageControl:,
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 350 IF M = 0 THEN 370
- ScalarValue:M
+ Value:M
  NumericConstant:0
  BinaryOperator:=
 360 GOTO 230
  LineNumber:230
 370 IF N = 0 THEN 430
- ScalarValue:N
+ Value:N
  NumericConstant:0
  BinaryOperator:=
 380 GOTO 230
@@ -168,7 +168,7 @@
  ITEMS
  TextConstant:"NUMBER OF GENERATIONS = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 450 PRINT
  ITEMS
@@ -189,7 +189,7 @@
 500 INPUT W
  Reference:W
 510 IF W = 1 THEN 530
- ScalarValue:W
+ Value:W
  NumericConstant:1
  BinaryOperator:=
 520 GOTO 560
@@ -212,7 +212,7 @@
 580 INPUT W
  Reference:W
 590 IF W = 1 THEN 610
- ScalarValue:W
+ Value:W
  NumericConstant:1
  BinaryOperator:=
 600 STOP

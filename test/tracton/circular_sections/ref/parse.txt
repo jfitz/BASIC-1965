@@ -15,13 +15,13 @@
 60 LET D = 2*R
  Reference:D
  NumericConstant:2
- ScalarValue:R
+ Value:R
  BinaryOperator:*
  AssignmentOperator:=
 70 LET I = (P*(D^4))/64
  Reference:I
- ScalarValue:P
- ScalarValue:D
+ Value:P
+ Value:D
  NumericConstant:4
  BinaryOperator:^
  BinaryOperator:*
@@ -30,14 +30,14 @@
  AssignmentOperator:=
 80 LET J = I*2
  Reference:J
- ScalarValue:I
+ Value:I
  NumericConstant:2
  BinaryOperator:*
  AssignmentOperator:=
 90 LET A = (P*(D^2))/4
  Reference:A
- ScalarValue:P
- ScalarValue:D
+ Value:P
+ Value:D
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
@@ -48,19 +48,19 @@
  ITEMS
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
  ITEMS
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
  ITEMS
  TextConstant:"AREA OF SECTION = "
  CarriageControl:;
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 130 PRINT "*************************"
  ITEMS
@@ -73,7 +73,7 @@
 150 INPUT L
  Reference:L
 160 IF L = 1 THEN 180
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

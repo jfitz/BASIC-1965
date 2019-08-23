@@ -1,9 +1,9 @@
 10 DEF FNF(X) = X^2 + 3*X + 1
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:^
  NumericConstant:3
- ScalarValue:X
+ Value:X
  BinaryOperator:*
  BinaryOperator:+
  NumericConstant:1
@@ -22,18 +22,18 @@
  CarriageControl:NL
 40 LET H = B-A
  Reference:H
- ScalarValue:B
- ScalarValue:A
+ Value:B
+ Value:A
  BinaryOperator:-
  AssignmentOperator:=
 50 LET T = (FNF(A)+FNF(B))*H
  Reference:T
- ScalarValue:A
+ Value:A
  UserFunction
- ScalarValue:B
+ Value:B
  UserFunction
  BinaryOperator:+
- ScalarValue:H
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 60 LET M = 0
@@ -42,8 +42,8 @@
  AssignmentOperator:=
 100 LET T = (T+M)/2
  Reference:T
- ScalarValue:T
- ScalarValue:M
+ Value:T
+ Value:M
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -54,13 +54,13 @@
  AssignmentOperator:=
 130 FOR X = A+H/2 TO B STEP H
  control: Variable:X
- start:   ["ScalarValue:A", "ScalarValue:H", "NumericConstant:2", "BinaryOperator:/", "BinaryOperator:+"]
- end:     ["ScalarValue:B"]
- step:    ["ScalarValue:H"]
+ start:   ["Value:A", "Value:H", "NumericConstant:2", "BinaryOperator:/", "BinaryOperator:+"]
+ end:     ["Value:B"]
+ step:    ["Value:H"]
 140 LET M = M + FNF(X)
  Reference:M
- ScalarValue:M
- ScalarValue:X
+ Value:M
+ Value:X
  UserFunction
  BinaryOperator:+
  AssignmentOperator:=
@@ -68,15 +68,15 @@
  Variable:X
 160 LET M = M*H
  Reference:M
- ScalarValue:M
- ScalarValue:H
+ Value:M
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 170 LET S = (T + 2*M)/3
  Reference:S
- ScalarValue:T
+ Value:T
  NumericConstant:2
- ScalarValue:M
+ Value:M
  BinaryOperator:*
  BinaryOperator:+
  NumericConstant:3
@@ -84,27 +84,27 @@
  AssignmentOperator:=
 180 PRINT T, M, S
  ITEMS
- ScalarValue:T
+ Value:T
  CarriageControl:,
- ScalarValue:M
+ Value:M
  CarriageControl:,
- ScalarValue:S
+ Value:S
  CarriageControl:NL
 185 LET H = H/2
  Reference:H
- ScalarValue:H
+ Value:H
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 190 IF ABS(T-M)/ABS(S) > E THEN 100
- ScalarValue:T
- ScalarValue:M
+ Value:T
+ Value:M
  BinaryOperator:-
  FunctionAbs
- ScalarValue:S
+ Value:S
  FunctionAbs
  BinaryOperator:/
- ScalarValue:E
+ Value:E
  BinaryOperator:>
 900 DATA 1, 5
  NumericConstant:1

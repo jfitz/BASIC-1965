@@ -10,9 +10,9 @@
 40    GOSUB 2000
  LineNumber:2000
 50    LET H(C) = X
- ScalarValue:C
+ Value:C
  Reference:H
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 60 NEXT C
  Variable:C
@@ -22,42 +22,42 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:13"]
 109    IF I > 13-I THEN 180
- ScalarValue:I
+ Value:I
  NumericConstant:13
- ScalarValue:I
+ Value:I
  BinaryOperator:-
  BinaryOperator:>
 110    FOR J = I TO 13-I
  control: Variable:J
- start:   ["ScalarValue:I"]
- end:     ["NumericConstant:13", "ScalarValue:I", "BinaryOperator:-"]
+ start:   ["Value:I"]
+ end:     ["NumericConstant:13", "Value:I", "BinaryOperator:-"]
 120       LET X = H(J)
  Reference:X
- ScalarValue:J
- ScalarValue:H
+ Value:J
+ Value:H
  AssignmentOperator:=
 130       LET Y = H(J+1)
  Reference:Y
- ScalarValue:J
+ Value:J
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:H
+ Value:H
  AssignmentOperator:=
 140       IF X > Y THEN 170
- ScalarValue:X
- ScalarValue:Y
+ Value:X
+ Value:Y
  BinaryOperator:>
 150       LET H(J) = Y
- ScalarValue:J
+ Value:J
  Reference:H
- ScalarValue:Y
+ Value:Y
  AssignmentOperator:=
 160       LET H(J+1) = X
- ScalarValue:J
+ Value:J
  NumericConstant:1
  BinaryOperator:+
  Reference:H
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 170    NEXT J
  Variable:J
@@ -70,8 +70,8 @@
  end:     ["NumericConstant:13"]
 210    LET X = H(C)
  Reference:X
- ScalarValue:C
- ScalarValue:H
+ Value:C
+ Value:H
  AssignmentOperator:=
 220    GOSUB 3000
  LineNumber:3000
@@ -90,9 +90,9 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
 1030    LET L(I) = I
- ScalarValue:I
+ Value:I
  Reference:L
- ScalarValue:I
+ Value:I
  AssignmentOperator:=
 1040 NEXT I
  Variable:I
@@ -111,15 +111,15 @@
  AssignmentOperator:=
 2020 LET X = L(I)
  Reference:X
- ScalarValue:I
- ScalarValue:L
+ Value:I
+ Value:L
  AssignmentOperator:=
 2030 IF X < 0 THEN 2010
- ScalarValue:X
+ Value:X
  NumericConstant:0
  BinaryOperator:<
 2040 LET L(I) = -1
- ScalarValue:I
+ Value:I
  Reference:L
  NumericConstant:1
  UnaryOperator:-
@@ -131,21 +131,21 @@
  Remark:PRINT A CARD
 3010 LET S = INT(X/13)
  Reference:S
- ScalarValue:X
+ Value:X
  NumericConstant:13
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 3020 LET V = X - 13*S
  Reference:V
- ScalarValue:X
+ Value:X
  NumericConstant:13
- ScalarValue:S
+ Value:S
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 3030 IF S > 0 THEN 3060
- ScalarValue:S
+ Value:S
  NumericConstant:0
  BinaryOperator:>
 3040 PRINT "CLUB  ";
@@ -155,7 +155,7 @@
 3050 GOTO 3500
  LineNumber:3500
 3060 IF S > 1 THEN 3090
- ScalarValue:S
+ Value:S
  NumericConstant:1
  BinaryOperator:>
 3070 PRINT "DIAMOND  ";
@@ -165,7 +165,7 @@
 3080 GOTO 3500
  LineNumber:3500
 3090 IF S > 2 THEN 3120
- ScalarValue:S
+ Value:S
  NumericConstant:2
  BinaryOperator:>
 3100 PRINT "HEART  ";
@@ -180,19 +180,19 @@
  CarriageControl:;
 3130
 3500 IF V > 8 THEN 3530
- ScalarValue:V
+ Value:V
  NumericConstant:8
  BinaryOperator:>
 3510 PRINT V + 2
  ITEMS
- ScalarValue:V
+ Value:V
  NumericConstant:2
  BinaryOperator:+
  CarriageControl:NL
 3520 RETURN
  
 3530 IF V > 9 THEN 3560
- ScalarValue:V
+ Value:V
  NumericConstant:9
  BinaryOperator:>
 3540 PRINT "JACK"
@@ -202,7 +202,7 @@
 3550 RETURN
  
 3560 IF V > 10 THEN 3590
- ScalarValue:V
+ Value:V
  NumericConstant:10
  BinaryOperator:>
 3570 PRINT "QUEEN"
@@ -212,7 +212,7 @@
 3580 RETURN
  
 3590 IF V > 11 THEN 3620
- ScalarValue:V
+ Value:V
  NumericConstant:11
  BinaryOperator:>
 3600 PRINT "KING"

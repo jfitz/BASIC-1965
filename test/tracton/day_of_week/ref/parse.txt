@@ -25,7 +25,7 @@
  Reference:M
  Reference:Y
 120 IF Y > 1752 THEN 150
- ScalarValue:Y
+ Value:Y
  NumericConstant:1752
  BinaryOperator:>
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
@@ -38,47 +38,47 @@
  Reference:K
  NumericConstant:0.6
  NumericConstant:1
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  BinaryOperator:+
  FunctionInt
  AssignmentOperator:=
 160 LET L = Y - K
  Reference:L
- ScalarValue:Y
- ScalarValue:K
+ Value:Y
+ Value:K
  BinaryOperator:-
  AssignmentOperator:=
 170 LET O = M + 12*K
  Reference:O
- ScalarValue:M
+ Value:M
  NumericConstant:12
- ScalarValue:K
+ Value:K
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 180 LET P = L/100
  Reference:P
- ScalarValue:L
+ Value:L
  NumericConstant:100
  BinaryOperator:/
  AssignmentOperator:=
 190 LET Z1 = INT(P/4)
  Reference:Z1
- ScalarValue:P
+ Value:P
  NumericConstant:4
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 200 LET Z2 = INT(P)
  Reference:Z2
- ScalarValue:P
+ Value:P
  FunctionInt
  AssignmentOperator:=
 210 LET Z3 = INT((5*L)/4)
  Reference:Z3
  NumericConstant:5
- ScalarValue:L
+ Value:L
  BinaryOperator:*
  NumericConstant:4
  BinaryOperator:/
@@ -87,7 +87,7 @@
 220 LET Z4 = INT (13*(O + 1)/5)
  Reference:Z4
  NumericConstant:13
- ScalarValue:O
+ Value:O
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
@@ -97,23 +97,23 @@
  AssignmentOperator:=
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
  Reference:Z
- ScalarValue:Z4
- ScalarValue:Z3
+ Value:Z4
+ Value:Z3
  BinaryOperator:+
- ScalarValue:Z2
+ Value:Z2
  BinaryOperator:-
- ScalarValue:Z1
+ Value:Z1
  BinaryOperator:+
- ScalarValue:D
+ Value:D
  BinaryOperator:+
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 240 LET Z=Z - (7*INT(Z/7)) + 1
  Reference:Z
- ScalarValue:Z
+ Value:Z
  NumericConstant:7
- ScalarValue:Z
+ Value:Z
  NumericConstant:7
  BinaryOperator:/
  FunctionInt

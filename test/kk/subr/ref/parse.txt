@@ -22,28 +22,28 @@
 500 LET Y = 3*X
  Reference:Y
  NumericConstant:3
- ScalarValue:X
+ Value:X
  BinaryOperator:*
  AssignmentOperator:=
 510 LET Z = 1.2*EXP(Y)
  Reference:Z
  NumericConstant:1.2
- ScalarValue:Y
+ Value:Y
  FunctionExp
  BinaryOperator:*
  AssignmentOperator:=
 520 LET Y = SQR(Z+2)
  Reference:Y
- ScalarValue:Z
+ Value:Z
  NumericConstant:2
  BinaryOperator:+
  FunctionSqr
  AssignmentOperator:=
 530 PRINT X;Y
  ITEMS
- ScalarValue:X
+ Value:X
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 540 RETURN
  

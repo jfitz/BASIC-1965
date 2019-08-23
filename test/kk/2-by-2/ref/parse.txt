@@ -17,49 +17,49 @@
  Reference:D
 140 LET N = A+B+C+D
  Reference:N
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:+
- ScalarValue:C
+ Value:C
  BinaryOperator:+
- ScalarValue:D
+ Value:D
  BinaryOperator:+
  AssignmentOperator:=
 150 LET E = ABS(A*D - B*C) - N/2
  Reference:E
- ScalarValue:A
- ScalarValue:D
+ Value:A
+ Value:D
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:C
+ Value:B
+ Value:C
  BinaryOperator:*
  BinaryOperator:-
  FunctionAbs
- ScalarValue:N
+ Value:N
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:-
  AssignmentOperator:=
 160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
  Reference:X
- ScalarValue:N
- ScalarValue:E
+ Value:N
+ Value:E
  BinaryOperator:*
- ScalarValue:E
+ Value:E
  BinaryOperator:*
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:+
- ScalarValue:C
- ScalarValue:D
- BinaryOperator:+
- BinaryOperator:*
- ScalarValue:A
- ScalarValue:C
+ Value:C
+ Value:D
  BinaryOperator:+
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:D
+ Value:A
+ Value:C
+ BinaryOperator:+
+ BinaryOperator:*
+ Value:B
+ Value:D
  BinaryOperator:+
  BinaryOperator:*
  BinaryOperator:/
@@ -67,17 +67,17 @@
 170
 180 PRINT A,B
  ITEMS
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 190 PRINT C,D,X
  ITEMS
- ScalarValue:C
+ Value:C
  CarriageControl:,
- ScalarValue:D
+ Value:D
  CarriageControl:,
- ScalarValue:X
+ Value:X
  CarriageControl:NL
 200 GO TO 120
  LineNumber:120

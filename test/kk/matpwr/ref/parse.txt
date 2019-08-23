@@ -1,8 +1,8 @@
 10 READ N
  Reference:N
 20 MAT READ M(N,N)
- ScalarValue:N
- ScalarValue:N
+ Value:N
+ Value:N
  Reference:M
 30 FOR I = 1 TO 4
  control: Variable:I
@@ -13,22 +13,22 @@
  TextConstant:"POWER : "
  CarriageControl:
  NumericConstant:2
- ScalarValue:I
+ Value:I
  BinaryOperator:^
  CarriageControl:NL
 50 MAT A = M*M
  Reference:A
- MatrixValue:M
- MatrixValue:M
+ Value:M
+ Value:M
  BinaryOperator:*
  AssignmentOperator:=
 60 MAT PRINT A
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:,
 70 MAT M = A
  Reference:M
- MatrixValue:A
+ Value:A
  AssignmentOperator:=
 80 NEXT I
  Variable:I

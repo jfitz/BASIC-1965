@@ -12,7 +12,7 @@
  AssignmentOperator:=
 40 LET F=C*9/5+32
  Reference:F
- ScalarValue:C
+ Value:C
  NumericConstant:9
  BinaryOperator:*
  NumericConstant:5
@@ -22,18 +22,18 @@
  AssignmentOperator:=
 50 PRINT C,F
  ITEMS
- ScalarValue:C
+ Value:C
  CarriageControl:,
- ScalarValue:F
+ Value:F
  CarriageControl:NL
 60 LET C=C+1
  Reference:C
- ScalarValue:C
+ Value:C
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 70 IF C<=10 THEN 40
- ScalarValue:C
+ Value:C
  NumericConstant:10
  BinaryOperator:<=
 900 STOP

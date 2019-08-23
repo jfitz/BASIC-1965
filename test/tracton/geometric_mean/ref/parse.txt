@@ -21,26 +21,26 @@
 80 INPUT W
  Reference:W
 90 IF W = 0 THEN 160
- ScalarValue:W
+ Value:W
  NumericConstant:0
  BinaryOperator:=
 100 LET N = N + 1
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 110 LET Y = Y * W
  Reference:Y
- ScalarValue:Y
- ScalarValue:W
+ Value:Y
+ Value:W
  BinaryOperator:*
  AssignmentOperator:=
 120 LET G = Y^(1/N)
  Reference:G
- ScalarValue:Y
+ Value:Y
  NumericConstant:1
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  BinaryOperator:^
  AssignmentOperator:=
@@ -48,17 +48,17 @@
  ITEMS
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:;
- ScalarValue:N
+ Value:N
  CarriageControl:,
  TextConstant:"CURRENT SAMPLE = "
  CarriageControl:;
- ScalarValue:W
+ Value:W
  CarriageControl:NL
 140 PRINT "CURRENT MEAN = ";G
  ITEMS
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- ScalarValue:G
+ Value:G
  CarriageControl:NL
 150 GOTO 70
  LineNumber:70
@@ -72,7 +72,7 @@
 180 INPUT L
  Reference:L
 190 IF L = 1 THEN 210
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 200 STOP

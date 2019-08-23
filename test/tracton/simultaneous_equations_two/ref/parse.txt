@@ -23,40 +23,40 @@
  Reference:F
 70 LET M = (A*D) - (B*C)
  Reference:M
- ScalarValue:A
- ScalarValue:D
+ Value:A
+ Value:D
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:C
+ Value:B
+ Value:C
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 80 IF M = 0 THEN 140
- ScalarValue:M
+ Value:M
  NumericConstant:0
  BinaryOperator:=
 90 LET X = ((E*D) - (B*F))/M
  Reference:X
- ScalarValue:E
- ScalarValue:D
+ Value:E
+ Value:D
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:F
+ Value:B
+ Value:F
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 100 LET Y = ((A*F) - (E*C))/M
  Reference:Y
- ScalarValue:A
- ScalarValue:F
+ Value:A
+ Value:F
  BinaryOperator:*
- ScalarValue:E
- ScalarValue:C
+ Value:E
+ Value:C
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 110 PRINT "SOLUTION","X = ";X,"Y = ";Y
@@ -65,11 +65,11 @@
  CarriageControl:,
  TextConstant:"X = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 120 PRINT "********************"
  ITEMS
@@ -92,7 +92,7 @@
 170 INPUT L
  Reference:L
 180 IF L = 1 THEN 200
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 190 STOP

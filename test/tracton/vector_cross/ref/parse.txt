@@ -20,31 +20,31 @@
  Reference:B3
 70 LET X = (A2*B3) - (A3*B2)
  Reference:X
- ScalarValue:A2
- ScalarValue:B3
+ Value:A2
+ Value:B3
  BinaryOperator:*
- ScalarValue:A3
- ScalarValue:B2
+ Value:A3
+ Value:B2
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 80 LET Y = (A3*B1) - (A1*B3)
  Reference:Y
- ScalarValue:A3
- ScalarValue:B1
+ Value:A3
+ Value:B1
  BinaryOperator:*
- ScalarValue:A1
- ScalarValue:B3
+ Value:A1
+ Value:B3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 90 LET Z = (A1*B2) - (A2*B1)
  Reference:Z
- ScalarValue:A1
- ScalarValue:B2
+ Value:A1
+ Value:B2
  BinaryOperator:*
- ScalarValue:A2
- ScalarValue:B1
+ Value:A2
+ Value:B1
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
@@ -56,15 +56,15 @@
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:,
  TextConstant:"Z = "
  CarriageControl:;
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 120 PRINT "++++++++++++++++++++"
  ITEMS
@@ -77,7 +77,7 @@
 140 INPUT L
  Reference:L
 150 IF L = 1 THEN 170
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 160 STOP

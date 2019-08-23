@@ -5,13 +5,13 @@
  NumericConstant:3.14159625
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
- ScalarValue:X
- ScalarValue:P
+ Value:X
+ Value:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 130 DEF FNS(X) = SIN(FND(X))
- ScalarValue:X
+ Value:X
  UserFunction
  FunctionSin
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
@@ -33,42 +33,42 @@
 160 LET C = 180 - A - B
  Reference:C
  NumericConstant:180
- ScalarValue:A
+ Value:A
  BinaryOperator:-
- ScalarValue:B
+ Value:B
  BinaryOperator:-
  AssignmentOperator:=
 170 LET Y = X*FNS(B)/FNS(C)
  Reference:Y
- ScalarValue:X
- ScalarValue:B
+ Value:X
+ Value:B
  UserFunction
  BinaryOperator:*
- ScalarValue:C
+ Value:C
  UserFunction
  BinaryOperator:/
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
  Reference:Z
- ScalarValue:X
- ScalarValue:A
+ Value:X
+ Value:A
  UserFunction
  BinaryOperator:*
- ScalarValue:C
+ Value:C
  UserFunction
  BinaryOperator:/
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z
  ITEMS
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:B
+ Value:B
  CarriageControl:,
- ScalarValue:Y
+ Value:Y
  CarriageControl:,
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 200 GOTO 150
  LineNumber:150

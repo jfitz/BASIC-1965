@@ -3,17 +3,17 @@
  NumericConstant:3.14159625
  AssignmentOperator:=
 20 DEF FND(X) = X*P/180
- ScalarValue:X
- ScalarValue:P
+ Value:X
+ Value:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 30 DEF FNS(X) = SIN(FND(X))
- ScalarValue:X
+ Value:X
  UserFunction
  FunctionSin
 40 DEF FNC(X) = COS(FND(X))
- ScalarValue:X
+ Value:X
  UserFunction
  FunctionCos
 50 PRINT "DEGREES","SINE","COSINE"
@@ -31,12 +31,12 @@
  step:    ["NumericConstant:10"]
 70     PRINT X, FNS(X), FNC(X)
  ITEMS
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:X
+ Value:X
  UserFunction
  CarriageControl:,
- ScalarValue:X
+ Value:X
  UserFunction
  CarriageControl:NL
 80 NEXT X

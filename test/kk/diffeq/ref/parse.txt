@@ -1,9 +1,9 @@
 10 DEF FNF(X,Y) = SQR(X*X + Y*Y)
- ScalarValue:X
- ScalarValue:X
+ Value:X
+ Value:X
  BinaryOperator:*
- ScalarValue:Y
- ScalarValue:Y
+ Value:Y
+ Value:Y
  BinaryOperator:*
  BinaryOperator:+
  FunctionSqr
@@ -24,35 +24,35 @@
  CarriageControl:NL
 130 PRINT X0, Y0
  ITEMS
- ScalarValue:X0
+ Value:X0
  CarriageControl:,
- ScalarValue:Y0
+ Value:Y0
  CarriageControl:NL
 140 LET Y = Y0
  Reference:Y
- ScalarValue:Y0
+ Value:Y0
  AssignmentOperator:=
 150
 160 FOR X = X0 TO X1-H STEP H
  control: Variable:X
- start:   ["ScalarValue:X0"]
- end:     ["ScalarValue:X1", "ScalarValue:H", "BinaryOperator:-"]
- step:    ["ScalarValue:H"]
+ start:   ["Value:X0"]
+ end:     ["Value:X1", "Value:H", "BinaryOperator:-"]
+ step:    ["Value:H"]
 170 LET D1 = FNF(X,Y)
  Reference:D1
- ScalarValue:X
- ScalarValue:Y
+ Value:X
+ Value:Y
  UserFunction
  AssignmentOperator:=
 180 LET Y1 = Y
  Reference:Y1
- ScalarValue:Y
+ Value:Y
  AssignmentOperator:=
 190 LET Y = Y + D1*H/2
  Reference:Y
- ScalarValue:Y
- ScalarValue:D1
- ScalarValue:H
+ Value:Y
+ Value:D1
+ Value:H
  BinaryOperator:*
  NumericConstant:2
  BinaryOperator:/
@@ -60,29 +60,29 @@
  AssignmentOperator:=
 200 LET D2 = FNF(X+H/2,Y)
  Reference:D2
- ScalarValue:X
- ScalarValue:H
+ Value:X
+ Value:H
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
- ScalarValue:Y
+ Value:Y
  UserFunction
  AssignmentOperator:=
 210 LET Y = Y1 + D2*H
  Reference:Y
- ScalarValue:Y1
- ScalarValue:D2
- ScalarValue:H
+ Value:Y1
+ Value:D2
+ Value:H
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 220 PRINT X+H, Y
  ITEMS
- ScalarValue:X
- ScalarValue:H
+ Value:X
+ Value:H
  BinaryOperator:+
  CarriageControl:,
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 230 NEXT X
  Variable:X

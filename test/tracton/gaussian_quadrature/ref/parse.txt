@@ -8,7 +8,7 @@
  AssignmentOperator:=
 40 LET C2 = - C1
  Reference:C2
- ScalarValue:C1
+ Value:C1
  UnaryOperator:-
  AssignmentOperator:=
 50 LET C3 = .661209
@@ -17,7 +17,7 @@
  AssignmentOperator:=
 60 LET C4 = - C3
  Reference:C4
- ScalarValue:C3
+ Value:C3
  UnaryOperator:-
  AssignmentOperator:=
 70 LET C5 = .932470
@@ -26,7 +26,7 @@
  AssignmentOperator:=
 80 LET C6 = - C5
  Reference:C6
- ScalarValue:C5
+ Value:C5
  UnaryOperator:-
  AssignmentOperator:=
 90 LET D1 = .467914
@@ -55,10 +55,10 @@
  Reference:X
  NumericConstant:2
  NumericConstant:1
- ScalarValue:C1
+ Value:C1
  BinaryOperator:+
  BinaryOperator:/
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:+
@@ -68,31 +68,31 @@
 170 LET N = ((4*D1)/(1 + C1)^2)*Q
  Reference:N
  NumericConstant:4
- ScalarValue:D1
+ Value:D1
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:C1
+ Value:C1
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:/
- ScalarValue:Q
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 180 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 190 LET X = (2/(1 + C2)) + (A - 1)
  Reference:X
  NumericConstant:2
  NumericConstant:1
- ScalarValue:C2
+ Value:C2
  BinaryOperator:+
  BinaryOperator:/
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:+
@@ -102,31 +102,31 @@
 210 LET N = ((4*D1)/(1 + C2)^2)*Q
  Reference:N
  NumericConstant:4
- ScalarValue:D1
+ Value:D1
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:C2
+ Value:C2
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:/
- ScalarValue:Q
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 220 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 230 LET X = (2/(1 + C3)) + (A - 1)
  Reference:X
  NumericConstant:2
  NumericConstant:1
- ScalarValue:C3
+ Value:C3
  BinaryOperator:+
  BinaryOperator:/
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:+
@@ -136,31 +136,31 @@
 250 LET N = ((4*D2)/(1 + C3)^2)*Q
  Reference:N
  NumericConstant:4
- ScalarValue:D2
+ Value:D2
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:C3
+ Value:C3
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:/
- ScalarValue:Q
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 260 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 270 LET X = (2/(1 + C4)) + (A - 1)
  Reference:X
  NumericConstant:2
  NumericConstant:1
- ScalarValue:C4
+ Value:C4
  BinaryOperator:+
  BinaryOperator:/
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:+
@@ -170,31 +170,31 @@
 290 LET N = ((4*D2)/(1 + C4)^2)*Q
  Reference:N
  NumericConstant:4
- ScalarValue:D2
+ Value:D2
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:C4
+ Value:C4
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:/
- ScalarValue:Q
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 300 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 310 LET X = (2/(1 + C5)) + (A - 1)
  Reference:X
  NumericConstant:2
  NumericConstant:1
- ScalarValue:C5
+ Value:C5
  BinaryOperator:+
  BinaryOperator:/
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:+
@@ -204,31 +204,31 @@
 330 LET N = ((4*D3)/(1 + C5)^2)*Q
  Reference:N
  NumericConstant:4
- ScalarValue:D3
+ Value:D3
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:C5
+ Value:C5
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:/
- ScalarValue:Q
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 340 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 350 LET X = (2/(1 + C6)) + (A - 1)
  Reference:X
  NumericConstant:2
  NumericConstant:1
- ScalarValue:C6
+ Value:C6
  BinaryOperator:+
  BinaryOperator:/
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:+
@@ -238,26 +238,26 @@
 370 LET N = ((4*D3)/(1 + C6)^2)*Q
  Reference:N
  NumericConstant:4
- ScalarValue:D3
+ Value:D3
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:C6
+ Value:C6
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:/
- ScalarValue:Q
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 380 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 390 LET G = J/2
  Reference:G
- ScalarValue:J
+ Value:J
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
@@ -265,7 +265,7 @@
  ITEMS
  TextConstant:"INTEGRAL = "
  CarriageControl:;
- ScalarValue:G
+ Value:G
  CarriageControl:NL
 410 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  ITEMS
@@ -274,7 +274,7 @@
 420 INPUT L
  Reference:L
 430 IF L = 1 THEN 450
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 440 STOP
@@ -287,7 +287,7 @@
 470 LET Q = 2*X + 5
  Reference:Q
  NumericConstant:2
- ScalarValue:X
+ Value:X
  BinaryOperator:*
  NumericConstant:5
  BinaryOperator:+

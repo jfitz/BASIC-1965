@@ -9,7 +9,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
- ScalarValue:I
+ Value:I
  Reference:N
  NumericConstant:0
  AssignmentOperator:=
@@ -31,48 +31,48 @@
  step:    ["NumericConstant:2"]
 35    LET X = (P-1)/2
  Reference:X
- ScalarValue:P
+ Value:P
  NumericConstant:1
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 40    IF N(X) < 0 THEN 90
- ScalarValue:X
- ScalarValue:N
+ Value:X
+ Value:N
  NumericConstant:0
  BinaryOperator:<
 50    LET K = K+1
  Reference:K
- ScalarValue:K
+ Value:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 55    LET P(K) = P
- ScalarValue:K
+ Value:K
  Reference:P
- ScalarValue:P
+ Value:P
  AssignmentOperator:=
 56    IF P > SQR(2000) THEN 90
- ScalarValue:P
+ Value:P
  NumericConstant:2000
  FunctionSqr
  BinaryOperator:>
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I
- start:   ["ScalarValue:P"]
+ start:   ["Value:P"]
  end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2", "ScalarValue:P", "BinaryOperator:*"]
+ step:    ["NumericConstant:2", "Value:P", "BinaryOperator:*"]
 65       LET X = (I-1)/2
  Reference:X
- ScalarValue:I
+ Value:I
  NumericConstant:1
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 70       LET N(X) = -1
- ScalarValue:X
+ Value:X
  Reference:N
  NumericConstant:1
  UnaryOperator:-
@@ -84,11 +84,11 @@
 100 FOR I = 0 TO K
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:K"]
+ end:     ["Value:K"]
 110    PRINT P(I);
  ITEMS
- ScalarValue:I
- ScalarValue:P
+ Value:I
+ Value:P
  CarriageControl:;
 120 NEXT I
  Variable:I

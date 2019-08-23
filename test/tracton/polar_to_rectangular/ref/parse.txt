@@ -14,7 +14,7 @@
  Reference:W
 60 LET W = (W*3.14159)/180
  Reference:W
- ScalarValue:W
+ Value:W
  NumericConstant:3.14159
  BinaryOperator:*
  NumericConstant:180
@@ -28,15 +28,15 @@
  Reference:R
 90 LET X = R*COS(W)
  Reference:X
- ScalarValue:R
- ScalarValue:W
+ Value:R
+ Value:W
  FunctionCos
  BinaryOperator:*
  AssignmentOperator:=
 100 LET Y = R*SIN(W)
  Reference:Y
- ScalarValue:R
- ScalarValue:W
+ Value:R
+ Value:W
  FunctionSin
  BinaryOperator:*
  AssignmentOperator:=
@@ -48,11 +48,11 @@
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 130 PRINT
  ITEMS
@@ -64,7 +64,7 @@
 150 INPUT L
  Reference:L
 160 IF L = 1 THEN 180
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

@@ -13,28 +13,28 @@
 120 READ N
  Reference:N
 130 MAT READ A(N,N)
- ScalarValue:N
- ScalarValue:N
+ Value:N
+ Value:N
  Reference:A
 140 MAT READ B(N)
- ScalarValue:N
+ Value:N
  Reference:B
 150
 160 MAT C = INV(A)
  Reference:C
- MatrixValue:A
+ Value:A
  FunctionInv
  AssignmentOperator:=
 170 MAT X = C*B
  Reference:X
- MatrixValue:C
- MatrixValue:B
+ Value:C
+ Value:B
  BinaryOperator:*
  AssignmentOperator:=
 180
 190 MAT PRINT X
  ITEMS
- MatrixValue:X
+ Value:X
  CarriageControl:,
 200
 210 DATA 3

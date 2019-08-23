@@ -37,11 +37,11 @@
  LineNumber:470
 130 LET X = Y*((1 + I)^N)
  Reference:X
- ScalarValue:Y
+ Value:Y
  NumericConstant:1
- ScalarValue:I
+ Value:I
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
@@ -49,7 +49,7 @@
  ITEMS
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:NL
 150 GOTO 390
  LineNumber:390
@@ -61,11 +61,11 @@
  LineNumber:470
 190 LET Y = X*((1 + I)^N)
  Reference:Y
- ScalarValue:X
+ Value:X
  NumericConstant:1
- ScalarValue:I
+ Value:I
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
@@ -73,7 +73,7 @@
  ITEMS
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 210 GOTO 390
  LineNumber:390
@@ -85,10 +85,10 @@
  LineNumber:470
 250 LET L = Y*((1 + I^N) - 1)
  Reference:L
- ScalarValue:Y
+ Value:Y
  NumericConstant:1
- ScalarValue:I
- ScalarValue:N
+ Value:I
+ Value:N
  BinaryOperator:^
  BinaryOperator:+
  NumericConstant:1
@@ -99,7 +99,7 @@
  ITEMS
  TextConstant:"INTEREST = "
  CarriageControl:;
- ScalarValue:L
+ Value:L
  CarriageControl:NL
 270 GOTO 390
  LineNumber:390
@@ -111,11 +111,11 @@
  LineNumber:470
 310 LET I = ((X/Y)^(1/N)) - 1
  Reference:I
- ScalarValue:X
- ScalarValue:Y
+ Value:X
+ Value:Y
  BinaryOperator:/
  NumericConstant:1
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  BinaryOperator:^
  NumericConstant:1
@@ -125,7 +125,7 @@
  ITEMS
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 330 GOTO 390
  LineNumber:390
@@ -137,12 +137,12 @@
  LineNumber:440
 370 LET N = (LOG(X/Y))/(LOG(1 + I))
  Reference:N
- ScalarValue:X
- ScalarValue:Y
+ Value:X
+ Value:Y
  BinaryOperator:/
  FunctionLog
  NumericConstant:1
- ScalarValue:I
+ Value:I
  BinaryOperator:+
  FunctionLog
  BinaryOperator:/
@@ -151,7 +151,7 @@
  ITEMS
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 390 PRINT
  ITEMS
@@ -163,7 +163,7 @@
 401 INPUT L
  Reference:L
 402 IF L = 1 THEN 404
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 403 STOP

@@ -10,13 +10,13 @@
  Reference:B
 120 MAT P = A*B
  Reference:P
- MatrixValue:A
- MatrixValue:B
+ Value:A
+ Value:B
  BinaryOperator:*
  AssignmentOperator:=
 130 MAT T = TRN(A)
  Reference:T
- MatrixValue:A
+ Value:A
  FunctionTrn
  AssignmentOperator:=
 140
@@ -26,7 +26,7 @@
  CarriageControl:NL
 210 MAT PRINT A;
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:;
 220 PRINT "SECOND MATRIX"
  ITEMS
@@ -34,7 +34,7 @@
  CarriageControl:NL
 230 MAT PRINT B;
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:;
 240 PRINT "PRODUCT"
  ITEMS
@@ -42,7 +42,7 @@
  CarriageControl:NL
 250 MAT PRINT P;
  ITEMS
- MatrixValue:P
+ Value:P
  CarriageControl:;
 260 PRINT "TRANSPOSE OF FIRST MATRIX"
  ITEMS
@@ -50,7 +50,7 @@
  CarriageControl:NL
 270 MAT PRINT T;
  ITEMS
- MatrixValue:T
+ Value:T
  CarriageControl:;
 280
 900 DATA 1, 4, -2, 2, -1, 3

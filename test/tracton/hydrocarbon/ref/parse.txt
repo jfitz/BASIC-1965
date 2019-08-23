@@ -64,29 +64,29 @@
 200 LET E = 1 + (E/100)
  Reference:E
  NumericConstant:1
- ScalarValue:E
+ Value:E
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 210 LET O2 = C + S + (H/4) - (O/2)
  Reference:O2
- ScalarValue:C
- ScalarValue:S
+ Value:C
+ Value:S
  BinaryOperator:+
- ScalarValue:H
+ Value:H
  NumericConstant:4
  BinaryOperator:/
  BinaryOperator:+
- ScalarValue:O
+ Value:O
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:-
  AssignmentOperator:=
 220 LET A = O2*E*4.762
  Reference:A
- ScalarValue:O2
- ScalarValue:E
+ Value:O2
+ Value:E
  BinaryOperator:*
  NumericConstant:4.762
  BinaryOperator:*
@@ -94,105 +94,105 @@
 230 LET A1 = 1.8094*A
  Reference:A1
  NumericConstant:1.8094
- ScalarValue:A
+ Value:A
  BinaryOperator:*
  AssignmentOperator:=
 240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
  Reference:F
  NumericConstant:0.7507
- ScalarValue:C
+ Value:C
  BinaryOperator:*
  NumericConstant:0.063
- ScalarValue:H
+ Value:H
  BinaryOperator:*
  BinaryOperator:+
  NumericConstant:2.004
- ScalarValue:S
+ Value:S
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 250 LET F = (0.875*N) + O + F
  Reference:F
  NumericConstant:0.875
- ScalarValue:N
+ Value:N
  BinaryOperator:*
- ScalarValue:O
+ Value:O
  BinaryOperator:+
- ScalarValue:F
+ Value:F
  BinaryOperator:+
  AssignmentOperator:=
 260 LET A1 = A1/F
  Reference:A1
- ScalarValue:A1
- ScalarValue:F
+ Value:A1
+ Value:F
  BinaryOperator:/
  AssignmentOperator:=
 270 LET M = A + (H/4) + (O/2) + (N/2)
  Reference:M
- ScalarValue:A
- ScalarValue:H
+ Value:A
+ Value:H
  NumericConstant:4
  BinaryOperator:/
  BinaryOperator:+
- ScalarValue:O
+ Value:O
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 280 LET C2 = (C*100)/M
  Reference:C2
- ScalarValue:C
+ Value:C
  NumericConstant:100
  BinaryOperator:*
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 290 LET S2 = (S*100)/M
  Reference:S2
- ScalarValue:S
+ Value:S
  NumericConstant:100
  BinaryOperator:*
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 300 LET H2 = (H*100)/M
  Reference:H2
- ScalarValue:H
+ Value:H
  NumericConstant:100
  BinaryOperator:*
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 310 LET O3 = (100*(E-1)*O2)/M
  Reference:O3
  NumericConstant:100
- ScalarValue:E
+ Value:E
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:*
- ScalarValue:O2
+ Value:O2
  BinaryOperator:*
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
  Reference:N2
  NumericConstant:100
  NumericConstant:3.762
- ScalarValue:E
+ Value:E
  BinaryOperator:*
- ScalarValue:O2
+ Value:O2
  BinaryOperator:*
- ScalarValue:N
+ Value:N
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
  BinaryOperator:*
- ScalarValue:M
+ Value:M
  BinaryOperator:/
  AssignmentOperator:=
 330 PRINT
@@ -202,19 +202,19 @@
  ITEMS
  TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MOLES = "
  CarriageControl:;
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 350 PRINT "AIR-FUEL RATIO WITH RESPECT TO MASS = ";A1
  ITEMS
  TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MASS = "
  CarriageControl:;
- ScalarValue:A1
+ Value:A1
  CarriageControl:NL
 360 PRINT "TOTAL MOLES OF PRODUCT = ";M
  ITEMS
  TextConstant:"TOTAL MOLES OF PRODUCT = "
  CarriageControl:;
- ScalarValue:M
+ Value:M
  CarriageControl:NL
 370 PRINT "*****PERCENTAGE VOLUME OF PRODUCTS*****"
  ITEMS
@@ -224,7 +224,7 @@
  ITEMS
  TextConstant:"CARBON DIOXIDE = "
  CarriageControl:;
- ScalarValue:C2
+ Value:C2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -232,7 +232,7 @@
  ITEMS
  TextConstant:"SULPHUR DIOXIDE = "
  CarriageControl:;
- ScalarValue:S2
+ Value:S2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -240,7 +240,7 @@
  ITEMS
  TextConstant:"WATER = "
  CarriageControl:;
- ScalarValue:H2
+ Value:H2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -248,7 +248,7 @@
  ITEMS
  TextConstant:"OXYGEN = "
  CarriageControl:;
- ScalarValue:O3
+ Value:O3
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -256,7 +256,7 @@
  ITEMS
  TextConstant:"NITROGEN = "
  CarriageControl:;
- ScalarValue:N2
+ Value:N2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL

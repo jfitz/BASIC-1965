@@ -38,7 +38,7 @@
  CarriageControl:NL
 320 MAT PRINT B;
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:;
 330 PRINT "********************"
  ITEMS
@@ -50,7 +50,7 @@
 350 INPUT "CONTINUE (1=YES)", A
  Reference:A
 360 IF A <> 1 THEN 999
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:<>
 400 REM *** CALCULATE NEIGHBORS
@@ -88,26 +88,26 @@
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
- ScalarValue:I0
+ Value:I0
  FunctionAbs
- ScalarValue:J0
+ Value:J0
  FunctionAbs
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:=
 480 IF B(I+I0,J+J0) = 0 THEN 500
- ScalarValue:I
- ScalarValue:I0
+ Value:I
+ Value:I0
  BinaryOperator:+
- ScalarValue:J
- ScalarValue:J0
+ Value:J
+ Value:J0
  BinaryOperator:+
- ScalarValue:B
+ Value:B
  NumericConstant:0
  BinaryOperator:=
 490 LET C = C + 1
  Reference:C
- ScalarValue:C
+ Value:C
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -116,10 +116,10 @@
 510 NEXT I0
  Variable:I0
 512 LET N(I,J)=C
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:N
- ScalarValue:C
+ Value:C
  AssignmentOperator:=
 520 NEXT J
  Variable:J
@@ -142,28 +142,28 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 630 IF N(I,J)<2 THEN 660
- ScalarValue:I
- ScalarValue:J
- ScalarValue:N
+ Value:I
+ Value:J
+ Value:N
  NumericConstant:2
  BinaryOperator:<
 640 IF N(I,J)=2 THEN 720
- ScalarValue:I
- ScalarValue:J
- ScalarValue:N
+ Value:I
+ Value:J
+ Value:N
  NumericConstant:2
  BinaryOperator:=
 650 IF N(I,J)=3 THEN 690
- ScalarValue:I
- ScalarValue:J
- ScalarValue:N
+ Value:I
+ Value:J
+ Value:N
  NumericConstant:3
  BinaryOperator:=
 660 REM * CELL DIES
  Remark:* CELL DIES
 670 LET B(I,J)=0
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:B
  NumericConstant:0
  AssignmentOperator:=
@@ -172,8 +172,8 @@
 690 REM * CELL IS BORN
  Remark:* CELL IS BORN
 700 LET B(I,J)=1
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:B
  NumericConstant:1
  AssignmentOperator:=

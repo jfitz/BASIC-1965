@@ -89,8 +89,8 @@ class AbstractScalarFunction < AbstractFunction
     super
   end
 
-  def default_type
-    ScalarValue
+  def default_shape
+    :scalar
   end
 end
 
@@ -100,8 +100,8 @@ class AbstractArrayFunction < AbstractFunction
     super
   end
 
-  def default_type
-    ArrayValue
+  def default_shape
+    :array
   end
 end
 
@@ -111,8 +111,8 @@ class AbstractMatrixFunction < AbstractFunction
     super
   end
 
-  def default_type
-    MatrixValue
+  def default_shape
+    :matrix
   end
 
   def check_square(dims)

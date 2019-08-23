@@ -10,7 +10,7 @@
  Reference:A
 50 LET B = (A*3.14159)/180
  Reference:B
- ScalarValue:A
+ Value:A
  NumericConstant:3.14159
  BinaryOperator:*
  NumericConstant:180
@@ -32,37 +32,37 @@
  Reference:C
 100 LET Z = F - X
  Reference:Z
- ScalarValue:F
- ScalarValue:X
+ Value:F
+ Value:X
  BinaryOperator:-
  AssignmentOperator:=
 110 LET W = C - Y
  Reference:W
- ScalarValue:C
- ScalarValue:Y
+ Value:C
+ Value:Y
  BinaryOperator:-
  AssignmentOperator:=
 120 LET D = (Z*COS(B)) + (W*SIN(B))
  Reference:D
- ScalarValue:Z
- ScalarValue:B
+ Value:Z
+ Value:B
  FunctionCos
  BinaryOperator:*
- ScalarValue:W
- ScalarValue:B
+ Value:W
+ Value:B
  FunctionSin
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 130 LET E = - (Z*SIN(B)) + (W*COS(B))
  Reference:E
- ScalarValue:Z
- ScalarValue:B
+ Value:Z
+ Value:B
  FunctionSin
  BinaryOperator:*
  UnaryOperator:-
- ScalarValue:W
- ScalarValue:B
+ Value:W
+ Value:B
  FunctionCos
  BinaryOperator:*
  BinaryOperator:+
@@ -74,7 +74,7 @@
  ITEMS
  TextConstant:"SPECIFIED ROTATION ="
  CarriageControl:;
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 160 PRINT "NEW COORDINATES OF DATA POINT"
  ITEMS
@@ -84,13 +84,13 @@
  ITEMS
  TextConstant:"X2 = "
  CarriageControl:;
- ScalarValue:D
+ Value:D
  CarriageControl:NL
 180 PRINT "Y2 = ";E
  ITEMS
  TextConstant:"Y2 = "
  CarriageControl:;
- ScalarValue:E
+ Value:E
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -102,7 +102,7 @@
 210 INPUT L
  Reference:L
 220 IF L = 1 THEN 240
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 230 STOP

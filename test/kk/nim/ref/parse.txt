@@ -10,7 +10,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 150    LET N(P) = INT(10*RND(0))+6
- ScalarValue:P
+ Value:P
  Reference:N
  NumericConstant:10
  NumericConstant:0
@@ -42,16 +42,16 @@
  Reference:P
  Reference:N
 240 LET N(P) = N(P) - N
- ScalarValue:P
+ Value:P
  Reference:N
- ScalarValue:P
- ScalarValue:N
- ScalarValue:N
+ Value:P
+ Value:N
+ Value:N
  BinaryOperator:-
  AssignmentOperator:=
 250 IF N(P) >= 0 THEN 300
- ScalarValue:P
- ScalarValue:N
+ Value:P
+ Value:N
  NumericConstant:0
  BinaryOperator:>=
 260 PRINT "ILLEGAL MOVE"
@@ -59,11 +59,11 @@
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
 270 LET N(P) = N(P) + N
- ScalarValue:P
+ Value:P
  Reference:N
- ScalarValue:P
- ScalarValue:N
- ScalarValue:N
+ Value:P
+ Value:N
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 280 PRINT
@@ -73,12 +73,12 @@
  LineNumber:200
 300 IF N(1)+N(2)+N(3) > 0 THEN 370
  NumericConstant:1
- ScalarValue:N
+ Value:N
  NumericConstant:2
- ScalarValue:N
+ Value:N
  BinaryOperator:+
  NumericConstant:3
- ScalarValue:N
+ Value:N
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:>
@@ -106,8 +106,8 @@
  end:     ["NumericConstant:3"]
 390    LET X = N(P)
  Reference:X
- ScalarValue:P
- ScalarValue:N
+ Value:P
+ Value:N
  AssignmentOperator:=
 400    FOR J = 4 TO 1 STEP -1
  control: Variable:J
@@ -116,24 +116,24 @@
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 410       LET Y = INT(X/2)
  Reference:Y
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 420       LET B(P,J) = X - 2*Y
- ScalarValue:P
- ScalarValue:J
+ Value:P
+ Value:J
  Reference:B
- ScalarValue:X
+ Value:X
  NumericConstant:2
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 430       LET X = Y
  Reference:X
- ScalarValue:Y
+ Value:Y
  AssignmentOperator:=
 440    NEXT J
  Variable:J
@@ -147,28 +147,28 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 490    LET S(J) = B(1,J) + B(2,J) + B(3,J)
- ScalarValue:J
+ Value:J
  Reference:S
  NumericConstant:1
- ScalarValue:J
- ScalarValue:B
+ Value:J
+ Value:B
  NumericConstant:2
- ScalarValue:J
- ScalarValue:B
+ Value:J
+ Value:B
  BinaryOperator:+
  NumericConstant:3
- ScalarValue:J
- ScalarValue:B
+ Value:J
+ Value:B
  BinaryOperator:+
  AssignmentOperator:=
 500    LET S(J) = S(J) - 2*INT(S(J)/2)
- ScalarValue:J
+ Value:J
  Reference:S
- ScalarValue:J
- ScalarValue:S
+ Value:J
+ Value:S
  NumericConstant:2
- ScalarValue:J
- ScalarValue:S
+ Value:J
+ Value:S
  NumericConstant:2
  BinaryOperator:/
  FunctionInt
@@ -182,15 +182,15 @@
  Remark:IF ALL EVEN, MAKE RANDOM MOVE
 540 IF S(1)+S(2)+S(3)+S(4) > 0 THEN 610
  NumericConstant:1
- ScalarValue:S
+ Value:S
  NumericConstant:2
- ScalarValue:S
+ Value:S
  BinaryOperator:+
  NumericConstant:3
- ScalarValue:S
+ Value:S
  BinaryOperator:+
  NumericConstant:4
- ScalarValue:S
+ Value:S
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:>
@@ -199,14 +199,14 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 560    IF N(P) = 0 THEN 590
- ScalarValue:P
- ScalarValue:N
+ Value:P
+ Value:N
  NumericConstant:0
  BinaryOperator:=
 570    LET N = INT(N(P)*RND(0)) + 1
  Reference:N
- ScalarValue:P
- ScalarValue:N
+ Value:P
+ Value:N
  NumericConstant:0
  FunctionRnd
  BinaryOperator:*
@@ -226,8 +226,8 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 630    IF S(J) > 0 THEN 650
- ScalarValue:J
- ScalarValue:S
+ Value:J
+ Value:S
  NumericConstant:0
  BinaryOperator:>
 640 NEXT J
@@ -237,9 +237,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 660    IF B(P,J) = 1 THEN 680
- ScalarValue:P
- ScalarValue:J
- ScalarValue:B
+ Value:P
+ Value:J
+ Value:B
  NumericConstant:1
  BinaryOperator:=
 670 NEXT P
@@ -250,25 +250,25 @@
  AssignmentOperator:=
 690 FOR J = J TO 4
  control: Variable:J
- start:   ["ScalarValue:J"]
+ start:   ["Value:J"]
  end:     ["NumericConstant:4"]
 700    IF S(J) = 0 THEN 750
- ScalarValue:J
- ScalarValue:S
+ Value:J
+ Value:S
  NumericConstant:0
  BinaryOperator:=
 710    IF B(P,J) = 0 THEN 740
- ScalarValue:P
- ScalarValue:J
- ScalarValue:B
+ Value:P
+ Value:J
+ Value:B
  NumericConstant:0
  BinaryOperator:=
 720    LET N = N + 2^(4-J)
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:2
  NumericConstant:4
- ScalarValue:J
+ Value:J
  BinaryOperator:-
  BinaryOperator:^
  BinaryOperator:+
@@ -277,10 +277,10 @@
  LineNumber:750
 740    LET N = N - 2^(4-J)
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:2
  NumericConstant:4
- ScalarValue:J
+ Value:J
  BinaryOperator:-
  BinaryOperator:^
  BinaryOperator:-
@@ -297,31 +297,31 @@
  ITEMS
  TextConstant:"MY MOVE:"
  CarriageControl:
- ScalarValue:P
+ Value:P
  CarriageControl:;
  TextConstant:","
  CarriageControl:
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 800 PRINT
  ITEMS
  CarriageControl:NL
 810 LET N(P) = N(P) - N
- ScalarValue:P
+ Value:P
  Reference:N
- ScalarValue:P
- ScalarValue:N
- ScalarValue:N
+ Value:P
+ Value:N
+ Value:N
  BinaryOperator:-
  AssignmentOperator:=
 820 IF N(1)+N(2)+N(3) > 0 THEN 850
  NumericConstant:1
- ScalarValue:N
+ Value:N
  NumericConstant:2
- ScalarValue:N
+ Value:N
  BinaryOperator:+
  NumericConstant:3
- ScalarValue:N
+ Value:N
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:>
@@ -353,10 +353,10 @@
  ITEMS
  TextConstant:"PILE "
  CarriageControl:
- ScalarValue:P
+ Value:P
  CarriageControl:;
- ScalarValue:P
- ScalarValue:N
+ Value:P
+ Value:N
  CarriageControl:NL
 930 NEXT P
  Variable:P

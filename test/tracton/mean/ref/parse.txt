@@ -26,60 +26,60 @@
  Reference:X
  Reference:F
 90 IF F <= 0 THEN 170
- ScalarValue:F
+ Value:F
  NumericConstant:0
  BinaryOperator:<=
 100 LET A = A + 1
  Reference:A
- ScalarValue:A
+ Value:A
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 110 LET B = B + F
  Reference:B
- ScalarValue:B
- ScalarValue:F
+ Value:B
+ Value:F
  BinaryOperator:+
  AssignmentOperator:=
 120 LET G = X*F
  Reference:G
- ScalarValue:X
- ScalarValue:F
+ Value:X
+ Value:F
  BinaryOperator:*
  AssignmentOperator:=
 130 LET C = C + G
  Reference:C
- ScalarValue:C
- ScalarValue:G
+ Value:C
+ Value:G
  BinaryOperator:+
  AssignmentOperator:=
 140 LET E = (X^2)*F
  Reference:E
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:F
+ Value:F
  BinaryOperator:*
  AssignmentOperator:=
 150 LET D = D + E
  Reference:D
- ScalarValue:D
- ScalarValue:E
+ Value:D
+ Value:E
  BinaryOperator:+
  AssignmentOperator:=
 160 GOTO 70
  LineNumber:70
 170 LET H = C/B
  Reference:H
- ScalarValue:C
- ScalarValue:B
+ Value:C
+ Value:B
  BinaryOperator:/
  AssignmentOperator:=
 180 LET I = SQR(D - (B*(H^2)))
  Reference:I
- ScalarValue:D
- ScalarValue:B
- ScalarValue:H
+ Value:D
+ Value:B
+ Value:H
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
@@ -88,8 +88,8 @@
  AssignmentOperator:=
 190 LET J = I/SQR(B)
  Reference:J
- ScalarValue:I
- ScalarValue:B
+ Value:I
+ Value:B
  FunctionSqr
  BinaryOperator:/
  AssignmentOperator:=
@@ -100,25 +100,25 @@
  ITEMS
  TextConstant:"NUMBER OF SAMPLES ENTERED = "
  CarriageControl:;
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 220 PRINT "MEAN = ";H
  ITEMS
  TextConstant:"MEAN = "
  CarriageControl:;
- ScalarValue:H
+ Value:H
  CarriageControl:NL
 230 PRINT "STANDARD DEVIATION = ";I
  ITEMS
  TextConstant:"STANDARD DEVIATION = "
  CarriageControl:;
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 240 PRINT "STANDARD ERROR = ";J
  ITEMS
  TextConstant:"STANDARD ERROR = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 250 PRINT
  ITEMS
@@ -130,7 +130,7 @@
 270 INPUT L
  Reference:L
 280 IF L = 1 THEN 300
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 290 STOP

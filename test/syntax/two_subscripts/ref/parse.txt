@@ -7,11 +7,11 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
 30 LET A(I,J) = I * J
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:A
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:*
  AssignmentOperator:=
 40 NEXT J
@@ -36,13 +36,13 @@
  end:     ["NumericConstant:2"]
 80 PRINT I, J, A(I,J)
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:,
- ScalarValue:J
+ Value:J
  CarriageControl:,
- ScalarValue:I
- ScalarValue:J
- ScalarValue:A
+ Value:I
+ Value:J
+ Value:A
  CarriageControl:NL
 90 NEXT J
  Variable:J

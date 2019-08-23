@@ -16,42 +16,42 @@
 100 FOR Y1 = 1 TO Y
  control: Variable:Y1
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:Y"]
+ end:     ["Value:Y"]
 105    PRINT Y1,
  ITEMS
- ScalarValue:Y1
+ Value:Y1
  CarriageControl:,
 108    LET A1 = A
  Reference:A1
- ScalarValue:A
+ Value:A
  AssignmentOperator:=
 110    FOR I = 1 TO Y1-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:Y1", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:Y1", "NumericConstant:1", "BinaryOperator:-"]
 120       LET D(I) = A1*2/Y
- ScalarValue:I
+ Value:I
  Reference:D
- ScalarValue:A1
+ Value:A1
  NumericConstant:2
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:/
  AssignmentOperator:=
 130       LET A1 = A1 - D(I)
  Reference:A1
- ScalarValue:A1
- ScalarValue:I
- ScalarValue:D
+ Value:A1
+ Value:I
+ Value:D
  BinaryOperator:-
  AssignmentOperator:=
 150    NEXT I
  Variable:I
 160    LET D = A1/(Y-Y1+1)
  Reference:D
- ScalarValue:A1
- ScalarValue:Y
- ScalarValue:Y1
+ Value:A1
+ Value:Y
+ Value:Y1
  BinaryOperator:-
  NumericConstant:1
  BinaryOperator:+
@@ -59,12 +59,12 @@
  AssignmentOperator:=
 170    FOR I = Y1 TO Y
  control: Variable:I
- start:   ["ScalarValue:Y1"]
- end:     ["ScalarValue:Y"]
+ start:   ["Value:Y1"]
+ end:     ["Value:Y"]
 180       LET D(I) = D
- ScalarValue:I
+ Value:I
  Reference:D
- ScalarValue:D
+ Value:D
  AssignmentOperator:=
 190    NEXT I
  Variable:I
@@ -75,23 +75,23 @@
 210    FOR I = 1 TO Y
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:Y"]
+ end:     ["Value:Y"]
 220       LET S = S + D(I)*(T/100)*(1+R/100)^(Y-I)
  Reference:S
- ScalarValue:S
- ScalarValue:I
- ScalarValue:D
- ScalarValue:T
+ Value:S
+ Value:I
+ Value:D
+ Value:T
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:R
+ Value:R
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:+
- ScalarValue:Y
- ScalarValue:I
+ Value:Y
+ Value:I
  BinaryOperator:-
  BinaryOperator:^
  BinaryOperator:*
@@ -101,7 +101,7 @@
  Variable:I
 240    PRINT S
  ITEMS
- ScalarValue:S
+ Value:S
  CarriageControl:NL
 290 NEXT Y1
  Variable:Y1

@@ -27,20 +27,20 @@
 100 INPUT X
  Reference:X
 110 IF X = 0 THEN 150
- ScalarValue:X
+ Value:X
  NumericConstant:0
  BinaryOperator:=
 120 LET J = J + (X^T)
  Reference:J
- ScalarValue:J
- ScalarValue:X
- ScalarValue:T
+ Value:J
+ Value:X
+ Value:T
  BinaryOperator:^
  BinaryOperator:+
  AssignmentOperator:=
 130 LET N = N + 1
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -48,11 +48,11 @@
  LineNumber:90
 150 LET G = (J/N)^(1/T)
  Reference:G
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:/
  NumericConstant:1
- ScalarValue:T
+ Value:T
  BinaryOperator:/
  BinaryOperator:^
  AssignmentOperator:=
@@ -64,11 +64,11 @@
  ITEMS
  TextConstant:"M(T) = "
  CarriageControl:;
- ScalarValue:G
+ Value:G
  CarriageControl:,
  TextConstant:"WHERE T = "
  CarriageControl:;
- ScalarValue:T
+ Value:T
  CarriageControl:NL
 180 PRINT
  ITEMS
@@ -80,7 +80,7 @@
 200 INPUT L
  Reference:L
 210 IF L = 1 THEN 230
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 220 STOP

@@ -1,9 +1,9 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
- ScalarValue:X
+ Value:X
  NumericConstant:5
  BinaryOperator:^
  NumericConstant:2
- ScalarValue:X
+ Value:X
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:*
@@ -25,57 +25,57 @@
  LineNumber:200
 26 LET X(1+S) = A
  NumericConstant:1
- ScalarValue:S
+ Value:S
  BinaryOperator:+
  Reference:X
- ScalarValue:A
+ Value:A
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
- ScalarValue:S
+ Value:S
  BinaryOperator:-
  Reference:X
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 30 LET X = (X(0)+X(2))/2
  Reference:X
  NumericConstant:0
- ScalarValue:X
+ Value:X
  NumericConstant:2
- ScalarValue:X
+ Value:X
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 35 LET F = SGN(FNF(X))
  Reference:F
- ScalarValue:X
+ Value:X
  UserFunction
  FunctionSgn
  AssignmentOperator:=
 40 IF F = 0 THEN 100
- ScalarValue:F
+ Value:F
  NumericConstant:0
  BinaryOperator:=
 50 LET X(1+F) = X
  NumericConstant:1
- ScalarValue:F
+ Value:F
  BinaryOperator:+
  Reference:X
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericConstant:0
- ScalarValue:X
+ Value:X
  NumericConstant:2
- ScalarValue:X
+ Value:X
  BinaryOperator:-
  FunctionAbs
  NumericConstant:0
- ScalarValue:X
+ Value:X
  FunctionAbs
  NumericConstant:2
- ScalarValue:X
+ Value:X
  FunctionAbs
  BinaryOperator:+
  BinaryOperator:/
@@ -87,31 +87,31 @@
  ITEMS
  TextConstant:"ONE ZERO AT"
  CarriageControl:
- ScalarValue:X
+ Value:X
  CarriageControl:NL
 110 STOP
  
 200 LET S = SGN(FNF(A))
  Reference:S
- ScalarValue:A
+ Value:A
  UserFunction
  FunctionSgn
  AssignmentOperator:=
 210 LET T = SGN(FNF(B))
  Reference:T
- ScalarValue:B
+ Value:B
  UserFunction
  FunctionSgn
  AssignmentOperator:=
 220 IF S*T = 0 THEN 400
- ScalarValue:S
- ScalarValue:T
+ Value:S
+ Value:T
  BinaryOperator:*
  NumericConstant:0
  BinaryOperator:=
 230 IF S*T > 0 THEN 300
- ScalarValue:S
- ScalarValue:T
+ Value:S
+ Value:T
  BinaryOperator:*
  NumericConstant:0
  BinaryOperator:>
@@ -119,8 +119,8 @@
  
 300 LET L = B-A
  Reference:L
- ScalarValue:B
- ScalarValue:A
+ Value:B
+ Value:A
  BinaryOperator:-
  AssignmentOperator:=
 310 FOR I = 1 TO 1000
@@ -129,15 +129,15 @@
  end:     ["NumericConstant:1000"]
 320 LET X = A + RND()*L
  Reference:X
- ScalarValue:A
+ Value:A
  FunctionRnd
- ScalarValue:L
+ Value:L
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 330 IF S * SGN(FNF(X)) < 0 THEN 370
- ScalarValue:S
- ScalarValue:X
+ Value:S
+ Value:X
  UserFunction
  FunctionSgn
  BinaryOperator:*
@@ -153,23 +153,23 @@
  
 370 LET B = X
  Reference:B
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 380 RETURN
  
 400 IF S = 0 THEN 430
- ScalarValue:S
+ Value:S
  NumericConstant:0
  BinaryOperator:=
 410 LET X = B
  Reference:X
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 420 GOTO 100
  LineNumber:100
 430 LET X = A
  Reference:X
- ScalarValue:A
+ Value:A
  AssignmentOperator:=
 440 GOTO 100
  LineNumber:100

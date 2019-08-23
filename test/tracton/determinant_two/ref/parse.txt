@@ -18,38 +18,38 @@
  Reference:D
 70 LET E = (D*A) - (B*C)
  Reference:E
- ScalarValue:D
- ScalarValue:A
+ Value:D
+ Value:A
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:C
+ Value:B
+ Value:C
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 80 LET F = D/E
  Reference:F
- ScalarValue:D
- ScalarValue:E
+ Value:D
+ Value:E
  BinaryOperator:/
  AssignmentOperator:=
 90 LET G = - B/E
  Reference:G
- ScalarValue:B
+ Value:B
  UnaryOperator:-
- ScalarValue:E
+ Value:E
  BinaryOperator:/
  AssignmentOperator:=
 100 LET H = - C/E
  Reference:H
- ScalarValue:C
+ Value:C
  UnaryOperator:-
- ScalarValue:E
+ Value:E
  BinaryOperator:/
  AssignmentOperator:=
 110 LET I = A/E
  Reference:I
- ScalarValue:A
- ScalarValue:E
+ Value:A
+ Value:E
  BinaryOperator:/
  AssignmentOperator:=
 120 PRINT "ORIGINAL MATRIX"
@@ -58,15 +58,15 @@
  CarriageControl:NL
 130 PRINT A,B
  ITEMS
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 140 PRINT C,D
  ITEMS
- ScalarValue:C
+ Value:C
  CarriageControl:,
- ScalarValue:D
+ Value:D
  CarriageControl:NL
 150 PRINT
  ITEMS
@@ -77,15 +77,15 @@
  CarriageControl:NL
 170 PRINT F,G
  ITEMS
- ScalarValue:F
+ Value:F
  CarriageControl:,
- ScalarValue:G
+ Value:G
  CarriageControl:NL
 180 PRINT H,I
  ITEMS
- ScalarValue:H
+ Value:H
  CarriageControl:,
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -94,7 +94,7 @@
  ITEMS
  TextConstant:"DETERMINANT = "
  CarriageControl:;
- ScalarValue:E
+ Value:E
  CarriageControl:NL
 210 PRINT
  ITEMS
@@ -106,7 +106,7 @@
 230 INPUT L
  Reference:L
 240 IF L = 1 THEN 30
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 250 STOP

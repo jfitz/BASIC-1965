@@ -3,7 +3,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 20 READ P(I)
- ScalarValue:I
+ Value:I
  Reference:P
 30 NEXT I
  Variable:I
@@ -25,10 +25,10 @@
  Reference:N
 130 LET S = S + N*P(I)
  Reference:S
- ScalarValue:S
- ScalarValue:N
- ScalarValue:I
- ScalarValue:P
+ Value:S
+ Value:N
+ Value:I
+ Value:P
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
@@ -38,7 +38,7 @@
  ITEMS
  TextConstant:"TOTAL ORDER $"
  CarriageControl:
- ScalarValue:S
+ Value:S
  CarriageControl:NL
 900 DATA 5,3,0,2,2
  NumericConstant:5

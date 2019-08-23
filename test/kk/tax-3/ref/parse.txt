@@ -14,8 +14,8 @@
  CarriageControl:NL
 40 LET Y9 = Y*(Y+1)/2
  Reference:Y9
- ScalarValue:Y
- ScalarValue:Y
+ Value:Y
+ Value:Y
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
@@ -25,26 +25,26 @@
 100 FOR I = 1 TO Y
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:Y"]
+ end:     ["Value:Y"]
 110    LET D(I) = A*(Y-I+1)/Y9
- ScalarValue:I
+ Value:I
  Reference:D
- ScalarValue:A
- ScalarValue:Y
- ScalarValue:I
+ Value:A
+ Value:Y
+ Value:I
  BinaryOperator:-
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
- ScalarValue:Y9
+ Value:Y9
  BinaryOperator:/
  AssignmentOperator:=
 120    PRINT I, D(I)
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:,
- ScalarValue:I
- ScalarValue:D
+ Value:I
+ Value:D
  CarriageControl:NL
 130 NEXT I
  Variable:I
@@ -58,22 +58,22 @@
 210 FOR I = 1 TO Y
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:Y"]
+ end:     ["Value:Y"]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
  Reference:S
- ScalarValue:S
- ScalarValue:I
- ScalarValue:D
- ScalarValue:T
+ Value:S
+ Value:I
+ Value:D
+ Value:T
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:R
+ Value:R
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:+
- ScalarValue:Y
+ Value:Y
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:^
@@ -86,7 +86,7 @@
  ITEMS
  TextConstant:"SAVING = $"
  CarriageControl:
- ScalarValue:S
+ Value:S
  CarriageControl:NL
 900 DATA 5000,7,48,4.5
  NumericConstant:5000

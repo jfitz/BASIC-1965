@@ -5,18 +5,18 @@
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
- ScalarValue:X
- ScalarValue:P
+ Value:X
+ Value:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 130 DEF FNS(X) = SIN(FND(X))
- ScalarValue:X
+ Value:X
  UserFunction
  FunctionSin
 135 DEF FNR(X) = INT(100*X+0.5)/100
  NumericConstant:100
- ScalarValue:X
+ Value:X
  BinaryOperator:*
  NumericConstant:0.5
  BinaryOperator:+
@@ -41,27 +41,27 @@
  Reference:Y
 160 PRINT B,X,Y,
  ITEMS
- ScalarValue:B
+ Value:B
  CarriageControl:,
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:Y
+ Value:Y
  CarriageControl:,
 170 LET S = X*FNS(B)/Y
  Reference:S
- ScalarValue:X
- ScalarValue:B
+ Value:X
+ Value:B
  UserFunction
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:/
  AssignmentOperator:=
 180 IF S > 1 THEN 290
- ScalarValue:S
+ Value:S
  NumericConstant:1
  BinaryOperator:>
 190 IF FNR(S) = 1 THEN 320
- ScalarValue:S
+ Value:S
  UserFunction
  NumericConstant:1
  BinaryOperator:=
@@ -70,9 +70,9 @@
  Remark:TWO POINTS OF INTERSECTION
 210 LET T = S/SQR(1-S^2)
  Reference:T
- ScalarValue:S
+ Value:S
  NumericConstant:1
- ScalarValue:S
+ Value:S
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:-
@@ -81,19 +81,19 @@
  AssignmentOperator:=
 220 LET C = ATN(T)*180/P
  Reference:C
- ScalarValue:T
+ Value:T
  FunctionAtn
  NumericConstant:180
  BinaryOperator:*
- ScalarValue:P
+ Value:P
  BinaryOperator:/
  AssignmentOperator:=
 230 LET A = 180 - B - C
  Reference:A
  NumericConstant:180
- ScalarValue:B
+ Value:B
  BinaryOperator:-
- ScalarValue:C
+ Value:C
  BinaryOperator:-
  AssignmentOperator:=
 240 GOSUB 370
@@ -101,15 +101,15 @@
 250 LET C = 180 - C
  Reference:C
  NumericConstant:180
- ScalarValue:C
+ Value:C
  BinaryOperator:-
  AssignmentOperator:=
 260 LET A = 180 - B - C
  Reference:A
  NumericConstant:180
- ScalarValue:B
+ Value:B
  BinaryOperator:-
- ScalarValue:C
+ Value:C
  BinaryOperator:-
  AssignmentOperator:=
 270 GOSUB 370
@@ -136,7 +136,7 @@
 330 LET A = 90 - B
  Reference:A
  NumericConstant:90
- ScalarValue:B
+ Value:B
  BinaryOperator:-
  AssignmentOperator:=
 340 GOSUB 370
@@ -152,15 +152,15 @@
  Remark:ANGLE-SIDE-ANGLE ROUTINE
 380 LET Z = X*FNS(A)/S
  Reference:Z
- ScalarValue:X
- ScalarValue:A
+ Value:X
+ Value:A
  UserFunction
  BinaryOperator:*
- ScalarValue:S
+ Value:S
  BinaryOperator:/
  AssignmentOperator:=
 390 IF Z >= 0 THEN 420
- ScalarValue:Z
+ Value:Z
  NumericConstant:0
  BinaryOperator:>=
 400 PRINT "NONE",
@@ -171,7 +171,7 @@
  
 420 PRINT Z,
  ITEMS
- ScalarValue:Z
+ Value:Z
  CarriageControl:,
 430 RETURN
  

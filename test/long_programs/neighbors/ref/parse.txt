@@ -10,7 +10,7 @@
 120 READ N0
  Reference:N0
 122 DIM M(N0)
- ScalarValue:N0
+ Value:N0
  Declaration:M
 130 READ D0
  Reference:D0
@@ -20,27 +20,27 @@
  Reference:Z8
 136 LET Z0 = R0 * 2 + C0 * 2 + Z8
  Reference:Z0
- ScalarValue:R0
+ Value:R0
  NumericConstant:2
  BinaryOperator:*
- ScalarValue:C0
+ Value:C0
  NumericConstant:2
  BinaryOperator:*
  BinaryOperator:+
- ScalarValue:Z8
+ Value:Z8
  BinaryOperator:+
  AssignmentOperator:=
 150 PRINT "Board size:";R0+1;"x";C0+1
  ITEMS
  TextConstant:"Board size:"
  CarriageControl:;
- ScalarValue:R0
+ Value:R0
  NumericConstant:1
  BinaryOperator:+
  CarriageControl:;
  TextConstant:"x"
  CarriageControl:;
- ScalarValue:C0
+ Value:C0
  NumericConstant:1
  BinaryOperator:+
  CarriageControl:NL
@@ -48,25 +48,25 @@
  ITEMS
  TextConstant:"Number of populations:"
  CarriageControl:;
- ScalarValue:N0
+ Value:N0
  CarriageControl:NL
 154 PRINT "Discomfort threshold:";D0
  ITEMS
  TextConstant:"Discomfort threshold:"
  CarriageControl:;
- ScalarValue:D0
+ Value:D0
  CarriageControl:NL
 156 PRINT "Iteration threshold:";I0
  ITEMS
  TextConstant:"Iteration threshold:"
  CarriageControl:;
- ScalarValue:I0
+ Value:I0
  CarriageControl:NL
 158 PRINT "Number of zero cells:";Z0
  ITEMS
  TextConstant:"Number of zero cells:"
  CarriageControl:;
- ScalarValue:Z0
+ Value:Z0
  CarriageControl:NL
 200 REM configure initial board
  Remark:configure initial board
@@ -97,7 +97,7 @@
  ITEMS
  TextConstant:"Iteration"
  CarriageControl:;
- ScalarValue:I1
+ Value:I1
  CarriageControl:;
  TextConstant:":"
  CarriageControl:NL
@@ -109,12 +109,12 @@
 400 REM ask to continue
  Remark:ask to continue
 410 IF P2 < I0 THEN 900
- ScalarValue:P2
- ScalarValue:I0
+ Value:P2
+ Value:I0
  BinaryOperator:<
 430 LET I1 = I1 + 1
  Reference:I1
- ScalarValue:I1
+ Value:I1
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -136,48 +136,48 @@
  CarriageControl:;
 542 ARR PRINT M;
  ITEMS
- ArrayValue:M
+ Value:M
  CarriageControl:;
 550 LET M = 0
  Reference:M
  NumericConstant:0
  AssignmentOperator:=
 552 FOR I = 1 TO N0
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N0"]
+ end:     ["Value:N0"]
 554 LET M = M + M(I)
  Reference:M
- ScalarValue:M
- ScalarValue:I
- ScalarValue:M
+ Value:M
+ Value:I
+ Value:M
  BinaryOperator:+
  AssignmentOperator:=
 556 NEXT I
- VariableName:I
+ Variable:I
 558 LET T = (R0+1) * (C0+1) - Z0
  Reference:T
- ScalarValue:R0
+ Value:R0
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:C0
+ Value:C0
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
- ScalarValue:Z0
+ Value:Z0
  BinaryOperator:-
  AssignmentOperator:=
 560 LET P2 = M / T
  Reference:P2
- ScalarValue:M
- ScalarValue:T
+ Value:M
+ Value:T
  BinaryOperator:/
  AssignmentOperator:=
 562 PRINT "(";P2*100;"%)"
  ITEMS
  TextConstant:"("
  CarriageControl:;
- ScalarValue:P2
+ Value:P2
  NumericConstant:100
  BinaryOperator:*
  CarriageControl:;
@@ -202,7 +202,7 @@
  Remark:new board becomes the board
 710 MAT B = B1
  Reference:B
- MatrixValue:B1
+ Value:B1
  AssignmentOperator:=
 800 GOTO 300
  LineNumber:300
@@ -223,8 +223,8 @@
  Remark:SET EVERYTHING TO -1
 1112 MAT B = CON(R0,C0) * -1
  Reference:B
- ScalarValue:R0
- ScalarValue:C0
+ Value:R0
+ Value:C0
  FunctionCon
  NumericConstant:1
  UnaryOperator:-
@@ -233,98 +233,98 @@
 1120 REM SET HORIZONTAL BORDERS TO 0
  Remark:SET HORIZONTAL BORDERS TO 0
 1122 FOR C = 0 TO C0
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:C0"]
+ end:     ["Value:C0"]
 1124 LET B(0,C) = 0
  NumericConstant:0
- ScalarValue:C
+ Value:C
  Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1126 LET B(R0,C) = 0
- ScalarValue:R0
- ScalarValue:C
+ Value:R0
+ Value:C
  Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1128 NEXT C
- VariableName:C
+ Variable:C
 1130 REM SET VERTICAL BORDERS TO 0
  Remark:SET VERTICAL BORDERS TO 0
 1132 FOR R = 0 TO R0
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:R0"]
+ end:     ["Value:R0"]
 1134 LET B(R,0) = 0
- ScalarValue:R
+ Value:R
  NumericConstant:0
  Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1136 LET B(R,C0) = 0
- ScalarValue:R
- ScalarValue:C0
+ Value:R
+ Value:C0
  Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1138 NEXT R
- VariableName:R
+ Variable:R
 1140 REM SET INSIDE EMPTY AREAS TO 0
  Remark:SET INSIDE EMPTY AREAS TO 0
 1142 FOR I = 1 TO Z8
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:Z8"]
+ end:     ["Value:Z8"]
 1144 READ R,C
  Reference:R
  Reference:C
 1146 LET B(R,C) = 0
- ScalarValue:R
- ScalarValue:C
+ Value:R
+ Value:C
  Reference:B
  NumericConstant:0
  AssignmentOperator:=
 1148 NEXT I
- VariableName:I
+ Variable:I
 1150 REM SET REMAINING CELLS TO POPULATION GROUP
  Remark:SET REMAINING CELLS TO POPULATION GROUP
 1152 FOR R = 1 TO R0-1
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:R0", "NumericConstant:1", "BinaryOperator:-"]
 1153 FOR C = 1 TO C0-1
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:C0", "NumericConstant:1", "BinaryOperator:-"]
 1154 IF B(R,C) <> -1 THEN 1157
- ScalarValue:R
- ScalarValue:C
- ScalarValue:B
+ Value:R
+ Value:C
+ Value:B
  NumericConstant:1
  UnaryOperator:-
  BinaryOperator:<>
 1155 LET B(R,C)=INT(RND(N0)+1)
- ScalarValue:R
- ScalarValue:C
+ Value:R
+ Value:C
  Reference:B
- ScalarValue:N0
+ Value:N0
  FunctionRnd
  NumericConstant:1
  BinaryOperator:+
  FunctionInt
  AssignmentOperator:=
 1157 NEXT C
- VariableName:C
+ Variable:C
 1158 NEXT R
- VariableName:R
+ Variable:R
 1190 RETURN
  
 1200 REM display board
  Remark:display board
 1210 MAT PRINT B;
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:;
 1290 RETURN
  
@@ -332,24 +332,24 @@
  Remark:calculate comfort, count people who move
 1302 MAT B1 = B
  Reference:B1
- MatrixValue:B
+ Value:B
  AssignmentOperator:=
 1304 MAT M = ZER()
  Reference:M
  FunctionZer
  AssignmentOperator:=
 1310 FOR R = 1 TO R0-1
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:R0", "NumericConstant:1", "BinaryOperator:-"]
 1312 FOR C = 1 TO C0-1
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:C0", "NumericConstant:1", "BinaryOperator:-"]
 1314 IF B(R,C) = 0 THEN 1380
- ScalarValue:R
- ScalarValue:C
- ScalarValue:B
+ Value:R
+ Value:C
+ Value:B
  NumericConstant:0
  BinaryOperator:=
 1317 LET X7 = 0
@@ -361,38 +361,38 @@
  NumericConstant:0
  AssignmentOperator:=
 1320 FOR I9 = -1 TO 1
- control: VariableName:I9
+ control: Variable:I9
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
 1322 FOR J9 = -1 TO 1
- control: VariableName:J9
+ control: Variable:J9
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
 1330 IF B(R+I9,C+J9) = 0 THEN 1340
- ScalarValue:R
- ScalarValue:I9
+ Value:R
+ Value:I9
  BinaryOperator:+
- ScalarValue:C
- ScalarValue:J9
+ Value:C
+ Value:J9
  BinaryOperator:+
- ScalarValue:B
+ Value:B
  NumericConstant:0
  BinaryOperator:=
 1332 IF B(R+I9,C+J9) = B(R,C) THEN 1340
- ScalarValue:R
- ScalarValue:I9
+ Value:R
+ Value:I9
  BinaryOperator:+
- ScalarValue:C
- ScalarValue:J9
+ Value:C
+ Value:J9
  BinaryOperator:+
- ScalarValue:B
- ScalarValue:R
- ScalarValue:C
- ScalarValue:B
+ Value:B
+ Value:R
+ Value:C
+ Value:B
  BinaryOperator:=
 1334 LET X8 = X8 + 1
  Reference:X8
- ScalarValue:X8
+ Value:X8
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -400,97 +400,97 @@
  LineNumber:1350
 1340 LET X7 = X7 + 1
  Reference:X7
- ScalarValue:X7
+ Value:X7
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 1350 NEXT J9
- VariableName:J9
+ Variable:J9
 1352 NEXT I9
- VariableName:I9
+ Variable:I9
 1360 LET X = X8 / X7
  Reference:X
- ScalarValue:X8
- ScalarValue:X7
+ Value:X8
+ Value:X7
  BinaryOperator:/
  AssignmentOperator:=
 1370 IF X < D0 THEN 1380
- ScalarValue:X
- ScalarValue:D0
+ Value:X
+ Value:D0
  BinaryOperator:<
 1372 LET M(B(R,C)) = M(B(R,C)) + 1
- ScalarValue:R
- ScalarValue:C
- ScalarValue:B
+ Value:R
+ Value:C
+ Value:B
  Reference:M
- ScalarValue:R
- ScalarValue:C
- ScalarValue:B
- ScalarValue:M
+ Value:R
+ Value:C
+ Value:B
+ Value:M
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 1374 LET B1(R,C) = -1
- ScalarValue:R
- ScalarValue:C
+ Value:R
+ Value:C
  Reference:B1
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
 1380 NEXT C
- VariableName:C
+ Variable:C
 1382 NEXT R
- VariableName:R
+ Variable:R
 1390 RETURN
  
 1400 REM fill in new board
  Remark:fill in new board
 1410 FOR R = 1 TO R0-1
- control: VariableName:R
+ control: Variable:R
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:R0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:R0", "NumericConstant:1", "BinaryOperator:-"]
 1412 FOR C = 1 TO C0-1
- control: VariableName:C
+ control: Variable:C
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:C0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:C0", "NumericConstant:1", "BinaryOperator:-"]
 1420 IF B1(R,C) <> -1 THEN 1450
- ScalarValue:R
- ScalarValue:C
- ScalarValue:B1
+ Value:R
+ Value:C
+ Value:B1
  NumericConstant:1
  UnaryOperator:-
  BinaryOperator:<>
 1430 LET P = INT(RND(N0)+1)
  Reference:P
- ScalarValue:N0
+ Value:N0
  FunctionRnd
  NumericConstant:1
  BinaryOperator:+
  FunctionInt
  AssignmentOperator:=
 1432 IF M(P) <= 0 THEN 1430
- ScalarValue:P
- ScalarValue:M
+ Value:P
+ Value:M
  NumericConstant:0
  BinaryOperator:<=
 1440 LET B1(R,C) = P
- ScalarValue:R
- ScalarValue:C
+ Value:R
+ Value:C
  Reference:B1
- ScalarValue:P
+ Value:P
  AssignmentOperator:=
 1442 LET M(P) = M(P) - 1
- ScalarValue:P
+ Value:P
  Reference:M
- ScalarValue:P
- ScalarValue:M
+ Value:P
+ Value:M
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 1450 NEXT C
- VariableName:C
+ Variable:C
 1452 NEXT R
- VariableName:R
+ Variable:R
 1490 RETURN
  
 3000 REM NUMBER OF ROWS AND COLUMNS

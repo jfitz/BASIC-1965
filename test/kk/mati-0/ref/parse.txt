@@ -17,16 +17,16 @@
  CarriageControl:NL
 150 MAT PRINT A,B
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:,
- MatrixValue:B
+ Value:B
  CarriageControl:,
 160 READ P, Q
  Reference:P
  Reference:Q
 170 MAT READ A(P,Q)
- ScalarValue:P
- ScalarValue:Q
+ Value:P
+ Value:Q
  Reference:A
 180 PRINT "EXAMPLE 2"
  ITEMS
@@ -37,7 +37,7 @@
  CarriageControl:NL
 200 MAT PRINT A;
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:;
 900 DATA 1,2,3,4,5,6, 1,2,3,4,5,6, 6,5,4,3,2,1, 6,5,4,3,2,1
  NumericConstant:1

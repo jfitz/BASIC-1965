@@ -37,9 +37,9 @@
  AssignmentOperator:=
 120 PRINT K,A
  ITEMS
- ScalarValue:K
+ Value:K
  CarriageControl:,
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 130 LET K = 2
  Reference:K
@@ -47,39 +47,39 @@
  AssignmentOperator:=
 140 PRINT K,B
  ITEMS
- ScalarValue:K
+ Value:K
  CarriageControl:,
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 150 LET K = K + 1
  Reference:K
- ScalarValue:K
+ Value:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 160 LET Q = A + B
  Reference:Q
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:+
  AssignmentOperator:=
 170 PRINT K,Q
  ITEMS
- ScalarValue:K
+ Value:K
  CarriageControl:,
- ScalarValue:Q
+ Value:Q
  CarriageControl:NL
 180 LET A = B
  Reference:A
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 190 LET B = Q
  Reference:B
- ScalarValue:Q
+ Value:Q
  AssignmentOperator:=
 200 IF K > = N THEN 220
- ScalarValue:K
- ScalarValue:N
+ Value:K
+ Value:N
  BinaryOperator:>=
 210 GOTO 150
  LineNumber:150
@@ -97,7 +97,7 @@
 250 INPUT L
  Reference:L
 260 IF L = 1 THEN 280
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 270 STOP

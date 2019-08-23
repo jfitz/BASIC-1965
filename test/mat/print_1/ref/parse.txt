@@ -11,11 +11,11 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 40 LET A(I,J) = I + J
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:A
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:+
  AssignmentOperator:=
 50 NEXT J
@@ -24,7 +24,7 @@
  Variable:I
 70 MAT PRINT A
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:,
 99 END
  

@@ -4,25 +4,25 @@
  end:     ["NumericConstant:10"]
 20 LET A=ABS(I)
  Reference:A
- ScalarValue:I
+ Value:I
  FunctionAbs
  AssignmentOperator:=
 30 LET S=SQR(ABS(I))
  Reference:S
- ScalarValue:I
+ Value:I
  FunctionAbs
  FunctionSqr
  AssignmentOperator:=
 31 LET A1=ABS(I)+3
  Reference:A1
- ScalarValue:I
+ Value:I
  FunctionAbs
  NumericConstant:3
  BinaryOperator:+
  AssignmentOperator:=
 32 LET S1=SQR(ABS(I)+3)
  Reference:S1
- ScalarValue:I
+ Value:I
  FunctionAbs
  NumericConstant:3
  BinaryOperator:+
@@ -30,7 +30,7 @@
  AssignmentOperator:=
 34 LET S2=SQR(ABS(I)+3)*2
  Reference:S2
- ScalarValue:I
+ Value:I
  FunctionAbs
  NumericConstant:3
  BinaryOperator:+
@@ -40,17 +40,17 @@
  AssignmentOperator:=
 40 PRINT I, A, S, A1, S1, S2
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:,
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:S
+ Value:S
  CarriageControl:,
- ScalarValue:A1
+ Value:A1
  CarriageControl:,
- ScalarValue:S1
+ Value:S1
  CarriageControl:,
- ScalarValue:S2
+ Value:S2
  CarriageControl:NL
 50 NEXT I
  Variable:I

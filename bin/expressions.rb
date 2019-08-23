@@ -1,10 +1,3 @@
-# Scalar value (not a matrix)
-class ScalarValue < Value
-  def initialize(variable_name)
-    super(variable_name, :scalar)
-  end
-end
-
 # Array with values
 class BASICArray
   attr_reader :dimensions
@@ -544,20 +537,6 @@ class Matrix
   end
 end
 
-# Array value
-class ArrayValue < Value
-  def initialize(variable_name)
-    super(variable_name, :array)
-  end
-end
-
-# Matrix value
-class MatrixValue < Value
-  def initialize(variable_name)
-    super(variable_name, :matrix)
-  end
-end
-
 class XrefEntry
   attr_reader :variable
   attr_reader :n_dims
@@ -643,13 +622,13 @@ end
 
 # Expression parser
 class Parser
-  def initialize(default_type)
+  def initialize(default_shape)
     @parsed_expressions = []
     @operator_stack = []
     @expression_stack = []
     @current_expression = []
     @parens_stack = []
-    @type_stack = [default_type]
+    @shape_stack = [default_shape]
     @parens_group = []
     @previous_element = InitialOperator.new
   end
@@ -707,9 +686,9 @@ class Parser
 
   def start_group(element)
     if @previous_element.function?
-      start_associated_group(element, @previous_element.default_type)
+      start_associated_group(element, @previous_element.default_shape)
     elsif @previous_element.variable?
-      start_associated_group(element, ScalarValue)
+      start_associated_group(element, :scalar)
     else
       start_simple_group(element)
     end
@@ -717,20 +696,20 @@ class Parser
 
   # a group associated with a function or variable
   # (arguments or subscripts)
-  def start_associated_group(element, type)
+  def start_associated_group(element, shape)
     @expression_stack.push(@current_expression)
     @current_expression = []
     @operator_stack.push(ParamStart.new(element))
     @parens_stack << @parens_group
     @parens_group = []
-    @type_stack.push(type)
+    @shape_stack.push(shape)
   end
 
   def start_simple_group(element)
     @operator_stack.push(element)
     @parens_stack << @parens_group
     @parens_group = []
-    @type_stack.push(ScalarValue)
+    @shape_stack.push(:scalar)
   end
 
   # pop the operator stack until the corresponding left paren is found
@@ -763,7 +742,7 @@ class Parser
     end
 
     @parens_group = @parens_stack.pop
-    @type_stack.pop
+    @shape_stack.pop
   end
 
   # remove operators already on the stack that have higher
@@ -798,14 +777,18 @@ class Parser
   def start_variable(element)
     stack_to_precedence(@operator_stack, @current_expression, element)
     # push the variable onto the operator stack
-    variable_name = @type_stack[-1].new(element)
-    @operator_stack.push(variable_name)
+    if @shape_stack[-1] == :declaration
+      variable = Declaration.new(element)
+    else
+      variable = Value.new(element, @shape_stack[-1])
+    end
+    @operator_stack.push(variable)
   end
 end
 
 # base class for expressions
 class AbstractExpression
-  def initialize(tokens, default_type)
+  def initialize(tokens, default_shape)
     @unparsed_expression = tokens.map(&:to_s).join
     @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
     @text_constant = tokens.size == 1 && tokens[0].text_constant?
@@ -813,7 +796,7 @@ class AbstractExpression
     @carriage = false
 
     elements = tokens_to_elements(tokens)
-    parser = Parser.new(default_type)
+    parser = Parser.new(default_shape)
     elements.each { |element| parser.parse(element) }
     @parsed_expressions = parser.expressions
   end
@@ -1019,7 +1002,7 @@ end
 # Value scalar expression (an R-value)
 class ValueScalarExpression < AbstractExpression
   def initialize(tokens)
-    super(tokens, ScalarValue)
+    super(tokens, :scalar)
 
     @scalar = true
   end
@@ -1077,7 +1060,7 @@ end
 # Value array expression (an R-value)
 class ValueArrayExpression < ValueCompoundExpression
   def initialize(tokens)
-    super(tokens, ArrayValue)
+    super(tokens, :array)
 
     @shape = :array
   end
@@ -1086,7 +1069,7 @@ end
 # Value matrix expression (an R-value)
 class ValueMatrixExpression < ValueCompoundExpression
   def initialize(tokens)
-    super(tokens, MatrixValue)
+    super(tokens, :matrix)
 
     @shape = :matrix
   end
@@ -1095,7 +1078,7 @@ end
 # Declaration expression
 class DeclarationExpression < AbstractExpression
   def initialize(tokens)
-    super(tokens, Declaration)
+    super(tokens, :declaration)
 
     check_length
     check_all_lengths
@@ -1111,7 +1094,7 @@ class DeclarationExpression < AbstractExpression
 
   def check_all_lengths
     @parsed_expressions.each do |parsed_expression|
-      raise(BASICRuntimeError, 'Value is not assignable (length 0)') if
+      raise(BASICRuntimeError, 'Value is not declaration (length 0)') if
         parsed_expression.empty?
     end
   end
@@ -1120,7 +1103,7 @@ class DeclarationExpression < AbstractExpression
     @parsed_expressions.each do |parsed_expression|
       if parsed_expression[-1].class.to_s != 'Declaration'
         raise(BASICRuntimeError,
-              "Value is not assignable (type #{parsed_expression[-1].class})")
+              "Value is not declaration (type #{parsed_expression[-1].class})")
       end
     end
   end
@@ -1129,10 +1112,7 @@ end
 # Target expression
 class TargetExpression < AbstractExpression
   def initialize(tokens, shape)
-    valuetype = ScalarValue
-    valuetype = ArrayValue if shape == :array
-    valuetype = MatrixValue if shape == :matrix
-    super(tokens, valuetype)
+    super
 
     check_length
     check_all_lengths
@@ -1165,9 +1145,7 @@ class TargetExpression < AbstractExpression
 
   def check_resolve_types
     @parsed_expressions.each do |parsed_expression|
-      if parsed_expression[-1].class.to_s != 'ScalarValue' &&
-         parsed_expression[-1].class.to_s != 'ArrayValue' &&
-         parsed_expression[-1].class.to_s != 'MatrixValue' &&
+      if parsed_expression[-1].class.to_s != 'Value' &&
          parsed_expression[-1].class.to_s != 'UserFunction'
         raise(BASICRuntimeError,
               "Value is not assignable (type #{parsed_expression[-1].class})")

@@ -15,25 +15,25 @@
  end:     ["NumericConstant:5"]
 50 LET H(0,I) = I
  NumericConstant:0
- ScalarValue:I
+ Value:I
  Reference:H
- ScalarValue:I
+ Value:I
  AssignmentOperator:=
 52 LET V(I,0) = I
- ScalarValue:I
+ Value:I
  NumericConstant:0
  Reference:V
- ScalarValue:I
+ Value:I
  AssignmentOperator:=
 60 NEXT I
  Variable:I
 70 MAT PRINT H;
  ITEMS
- MatrixValue:H
+ Value:H
  CarriageControl:;
 72 MAT PRINT V;
  ITEMS
- MatrixValue:V
+ Value:V
  CarriageControl:;
 120 OPTION BASE 1
  NumericConstant:1
@@ -50,25 +50,25 @@
  end:     ["NumericConstant:5"]
 150 LET H(1,I) = I
  NumericConstant:1
- ScalarValue:I
+ Value:I
  Reference:H
- ScalarValue:I
+ Value:I
  AssignmentOperator:=
 152 LET V(I,1) = I
- ScalarValue:I
+ Value:I
  NumericConstant:1
  Reference:V
- ScalarValue:I
+ Value:I
  AssignmentOperator:=
 160 NEXT I
  Variable:I
 170 MAT PRINT H;
  ITEMS
- MatrixValue:H
+ Value:H
  CarriageControl:;
 172 MAT PRINT V;
  ITEMS
- MatrixValue:V
+ Value:V
  CarriageControl:;
 999 END
  

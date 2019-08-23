@@ -18,13 +18,13 @@
 120 READ N
  Reference:N
 130 MAT READ P(N,N)
- ScalarValue:N
- ScalarValue:N
+ Value:N
+ Value:N
  Reference:P
 140 MAT Z = IDN(N,N)
  Reference:Z
- ScalarValue:N
- ScalarValue:N
+ Value:N
+ Value:N
  FunctionIdn
  AssignmentOperator:=
 150
@@ -37,22 +37,22 @@
  CarriageControl:NL
 180 MAT PRINT P;
  ITEMS
- MatrixValue:P
+ Value:P
  CarriageControl:;
 190
 200 MAT Z = Z-P
  Reference:Z
- MatrixValue:Z
- MatrixValue:P
+ Value:Z
+ Value:P
  BinaryOperator:-
  AssignmentOperator:=
 210 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 220 LET Z(I,N) = 1
- ScalarValue:I
- ScalarValue:N
+ Value:I
+ Value:N
  Reference:Z
  NumericConstant:1
  AssignmentOperator:=
@@ -60,26 +60,26 @@
  Variable:I
 240 MAT M = INV(Z)
  Reference:M
- MatrixValue:Z
+ Value:Z
  FunctionInv
  AssignmentOperator:=
 245 MAT A = ZER(1,N)
  Reference:A
  NumericConstant:1
- ScalarValue:N
+ Value:N
  FunctionZer
  AssignmentOperator:=
 250 FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 260 LET A(1,J) = M(N,J)
  NumericConstant:1
- ScalarValue:J
+ Value:J
  Reference:A
- ScalarValue:N
- ScalarValue:J
- ScalarValue:M
+ Value:N
+ Value:J
+ Value:M
  AssignmentOperator:=
 270 NEXT J
  Variable:J
@@ -92,39 +92,39 @@
  CarriageControl:NL
 300 MAT PRINT A;
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:;
 310
 320 MAT M = IDN(N,N)
  Reference:M
- ScalarValue:N
- ScalarValue:N
+ Value:N
+ Value:N
  FunctionIdn
  AssignmentOperator:=
 330 MAT M = M-P
  Reference:M
- MatrixValue:M
- MatrixValue:P
+ Value:M
+ Value:P
  BinaryOperator:-
  AssignmentOperator:=
 340 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 350 FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 360 LET M(I,J) = M(I,J)+A(1,J)
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:M
- ScalarValue:I
- ScalarValue:J
- ScalarValue:M
+ Value:I
+ Value:J
+ Value:M
  NumericConstant:1
- ScalarValue:J
- ScalarValue:A
+ Value:J
+ Value:A
  BinaryOperator:+
  AssignmentOperator:=
 370 NEXT J
@@ -133,32 +133,32 @@
  Variable:I
 390 MAT Z = INV(M)
  Reference:Z
- MatrixValue:M
+ Value:M
  FunctionInv
  AssignmentOperator:=
 400
 410 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 420 FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 430 LET M(I,J) = (Z(J,J)-Z(I,J))/A(1,J)
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:M
- ScalarValue:J
- ScalarValue:J
- ScalarValue:Z
- ScalarValue:I
- ScalarValue:J
- ScalarValue:Z
+ Value:J
+ Value:J
+ Value:Z
+ Value:I
+ Value:J
+ Value:Z
  BinaryOperator:-
  NumericConstant:1
- ScalarValue:J
- ScalarValue:A
+ Value:J
+ Value:A
  BinaryOperator:/
  AssignmentOperator:=
 440 NEXT J
@@ -174,13 +174,13 @@
  CarriageControl:NL
 480 MAT PRINT M;
  ITEMS
- MatrixValue:M
+ Value:M
  CarriageControl:;
 490
 500 MAT B = A*M
  Reference:B
- MatrixValue:A
- MatrixValue:M
+ Value:A
+ Value:M
  BinaryOperator:*
  AssignmentOperator:=
 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
@@ -192,7 +192,7 @@
  CarriageControl:NL
 530 MAT PRINT B;
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:;
 540
 550 DATA 3

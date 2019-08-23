@@ -15,11 +15,11 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I,J) = I+J
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:A
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:+
  AssignmentOperator:=
 60 NEXT J
@@ -28,11 +28,11 @@
  Variable:I
 100 MAT B = A
  Reference:B
- MatrixValue:A
+ Value:A
  AssignmentOperator:=
 110 MAT PRINT B,
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:,
 115 OPTION BASE 1
  NumericConstant:1
@@ -49,11 +49,11 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 150 LET A(I,J) = I+J
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:A
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:+
  AssignmentOperator:=
 160 NEXT J
@@ -62,11 +62,11 @@
  Variable:I
 200 MAT B = A
  Reference:B
- MatrixValue:A
+ Value:A
  AssignmentOperator:=
 210 MAT PRINT B,
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:,
 999 END
  

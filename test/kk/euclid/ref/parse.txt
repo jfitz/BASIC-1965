@@ -11,40 +11,40 @@
  Reference:B
 30 PRINT A,B,
  ITEMS
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:B
+ Value:B
  CarriageControl:,
 40 LET Q = INT(A/B)
  Reference:Q
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 45 LET R = A - Q*B
  Reference:R
- ScalarValue:A
- ScalarValue:Q
- ScalarValue:B
+ Value:A
+ Value:Q
+ Value:B
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 50 LET A = B
  Reference:A
- ScalarValue:B
+ Value:B
  AssignmentOperator:=
 55 LET B = R
  Reference:B
- ScalarValue:R
+ Value:R
  AssignmentOperator:=
 60 IF R > 0 THEN 40
- ScalarValue:R
+ Value:R
  NumericConstant:0
  BinaryOperator:>
 70 PRINT A
  ITEMS
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 80 GOTO 20
  LineNumber:20

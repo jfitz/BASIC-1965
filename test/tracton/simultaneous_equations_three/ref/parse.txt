@@ -39,117 +39,117 @@
  Reference:D3
 110 LET E1 = ((B1*A2)/A1) - B2
  Reference:E1
- ScalarValue:B1
- ScalarValue:A2
+ Value:B1
+ Value:A2
  BinaryOperator:*
- ScalarValue:A1
+ Value:A1
  BinaryOperator:/
- ScalarValue:B2
+ Value:B2
  BinaryOperator:-
  AssignmentOperator:=
 120 LET E2 = ((C1*A2)/A1) - C2
  Reference:E2
- ScalarValue:C1
- ScalarValue:A2
+ Value:C1
+ Value:A2
  BinaryOperator:*
- ScalarValue:A1
+ Value:A1
  BinaryOperator:/
- ScalarValue:C2
+ Value:C2
  BinaryOperator:-
  AssignmentOperator:=
 130 LET E3 = ((B1*A3)/A1) - B3
  Reference:E3
- ScalarValue:B1
- ScalarValue:A3
+ Value:B1
+ Value:A3
  BinaryOperator:*
- ScalarValue:A1
+ Value:A1
  BinaryOperator:/
- ScalarValue:B3
+ Value:B3
  BinaryOperator:-
  AssignmentOperator:=
 140 LET E4 = ((C1*A3)/A1) - C3
  Reference:E4
- ScalarValue:C1
- ScalarValue:A3
+ Value:C1
+ Value:A3
  BinaryOperator:*
- ScalarValue:A1
+ Value:A1
  BinaryOperator:/
- ScalarValue:C3
+ Value:C3
  BinaryOperator:-
  AssignmentOperator:=
 150 LET E5 = ((E1*E4) - (E2*E3))
  Reference:E5
- ScalarValue:E1
- ScalarValue:E4
+ Value:E1
+ Value:E4
  BinaryOperator:*
- ScalarValue:E2
- ScalarValue:E3
+ Value:E2
+ Value:E3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 160 IF E5 = 0 THEN 250
- ScalarValue:E5
+ Value:E5
  NumericConstant:0
  BinaryOperator:=
 170 LET E6 = ((D1*A2)/A1) - D2
  Reference:E6
- ScalarValue:D1
- ScalarValue:A2
+ Value:D1
+ Value:A2
  BinaryOperator:*
- ScalarValue:A1
+ Value:A1
  BinaryOperator:/
- ScalarValue:D2
+ Value:D2
  BinaryOperator:-
  AssignmentOperator:=
 180 LET E7 = ((D1*A3)/A1) - D3
  Reference:E7
- ScalarValue:D1
- ScalarValue:A3
+ Value:D1
+ Value:A3
  BinaryOperator:*
- ScalarValue:A1
+ Value:A1
  BinaryOperator:/
- ScalarValue:D3
+ Value:D3
  BinaryOperator:-
  AssignmentOperator:=
 190 LET Y = ((E6*E4) - (E2*E7))/E5
  Reference:Y
- ScalarValue:E6
- ScalarValue:E4
+ Value:E6
+ Value:E4
  BinaryOperator:*
- ScalarValue:E2
- ScalarValue:E7
+ Value:E2
+ Value:E7
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:E5
+ Value:E5
  BinaryOperator:/
  AssignmentOperator:=
 200 LET Z = ((E1*E7) - (E6*E3))/E5
  Reference:Z
- ScalarValue:E1
- ScalarValue:E7
+ Value:E1
+ Value:E7
  BinaryOperator:*
- ScalarValue:E6
- ScalarValue:E3
+ Value:E6
+ Value:E3
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:E5
+ Value:E5
  BinaryOperator:/
  AssignmentOperator:=
 210 LET X = (D1/A1) - (B1/A1*Y) - ((C1/A1)*Z)
  Reference:X
- ScalarValue:D1
- ScalarValue:A1
+ Value:D1
+ Value:A1
  BinaryOperator:/
- ScalarValue:B1
- ScalarValue:A1
+ Value:B1
+ Value:A1
  BinaryOperator:/
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:C1
- ScalarValue:A1
+ Value:C1
+ Value:A1
  BinaryOperator:/
- ScalarValue:Z
+ Value:Z
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
@@ -161,15 +161,15 @@
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:,
  TextConstant:"Z = "
  CarriageControl:;
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 240 GOTO 260
  LineNumber:260
@@ -187,7 +187,7 @@
 280 INPUT L
  Reference:L
 290 IF L = 1 THEN 310
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 300 STOP

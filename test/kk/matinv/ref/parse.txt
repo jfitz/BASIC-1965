@@ -23,7 +23,7 @@
  CarriageControl:NL
 210 MAT PRINT A;
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:;
 220 PRINT "ALL ONES"
  ITEMS
@@ -31,7 +31,7 @@
  CarriageControl:NL
 230 MAT PRINT B;
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:;
 240 PRINT "IDENTITY MATRIX"
  ITEMS
@@ -39,7 +39,7 @@
  CarriageControl:NL
 250 MAT PRINT C;
  ITEMS
- MatrixValue:C
+ Value:C
  CarriageControl:;
 260
 300 MAT READ A
@@ -50,11 +50,11 @@
  CarriageControl:NL
 320 MAT PRINT A
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:,
 330 MAT B = INV(A)
  Reference:B
- MatrixValue:A
+ Value:A
  FunctionInv
  AssignmentOperator:=
 340 PRINT "ITS INVERSE"
@@ -63,19 +63,19 @@
  CarriageControl:NL
 350 MAT PRINT B
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:,
 360
 400 MAT R = A*B
  Reference:R
- MatrixValue:A
- MatrixValue:B
+ Value:A
+ Value:B
  BinaryOperator:*
  AssignmentOperator:=
 410 MAT R = R-C
  Reference:R
- MatrixValue:R
- MatrixValue:C
+ Value:R
+ Value:C
  BinaryOperator:-
  AssignmentOperator:=
 420 PRINT "ROUNDOFF ERRORS"
@@ -84,7 +84,7 @@
  CarriageControl:NL
 430 MAT PRINT R
  ITEMS
- MatrixValue:R
+ Value:R
  CarriageControl:,
 440
 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5

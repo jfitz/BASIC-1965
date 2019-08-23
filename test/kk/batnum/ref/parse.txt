@@ -5,7 +5,7 @@
  Reference:N
  NumericConstant:20
  NumericConstant:80
- ScalarValue:X
+ Value:X
  FunctionRnd
  BinaryOperator:*
  FunctionInt
@@ -15,7 +15,7 @@
  Reference:K
  NumericConstant:5
  NumericConstant:10
- ScalarValue:X
+ Value:X
  FunctionRnd
  BinaryOperator:*
  FunctionInt
@@ -29,7 +29,7 @@
  ITEMS
  TextConstant:"TAKE AWAY 1 THROUGH"
  CarriageControl:
- ScalarValue:K
+ Value:K
  CarriageControl:NL
 160 PRINT "LAST PERSON TO MOVE LOSES"
  ITEMS
@@ -42,7 +42,7 @@
  ITEMS
  TextConstant:"THE INITIAL NUMBER IS"
  CarriageControl:
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -57,16 +57,16 @@
 230 INPUT X
  Reference:X
 240 IF X > K THEN 270
- ScalarValue:X
- ScalarValue:K
+ Value:X
+ Value:K
  BinaryOperator:>
 250 IF X < 1 THEN 270
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:<
 260 IF X <= N THEN 310
- ScalarValue:X
- ScalarValue:N
+ Value:X
+ Value:N
  BinaryOperator:<=
 270 PRINT "ILLEGAL MOVE"
  ITEMS
@@ -82,12 +82,12 @@
  Remark:TEST FOR WIN
 320 LET N = N-X
  Reference:N
- ScalarValue:N
- ScalarValue:X
+ Value:N
+ Value:X
  BinaryOperator:-
  AssignmentOperator:=
 330 IF N > 0 THEN 410
- ScalarValue:N
+ Value:N
  NumericConstant:0
  BinaryOperator:>
 340 PRINT "I WIN ***"
@@ -114,10 +114,10 @@
  Remark:MACHINE'S MOVE
 420 LET Q = INT((N-1)/(K+1))
  Reference:Q
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
- ScalarValue:K
+ Value:K
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:/
@@ -125,44 +125,44 @@
  AssignmentOperator:=
 430 LET Y = N-1 - Q*(K+1)
  Reference:Y
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
- ScalarValue:Q
- ScalarValue:K
+ Value:Q
+ Value:K
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 440 IF Y = 0 THEN 530
- ScalarValue:Y
+ Value:Y
  NumericConstant:0
  BinaryOperator:=
 450 LET N = N - Y
  Reference:N
- ScalarValue:N
- ScalarValue:Y
+ Value:N
+ Value:Y
  BinaryOperator:-
  AssignmentOperator:=
 460 PRINT "MY MOVE:" Y
  ITEMS
  TextConstant:"MY MOVE:"
  CarriageControl:
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 470 PRINT
  ITEMS
  CarriageControl:NL
 480 IF N = 0 THEN 600
- ScalarValue:N
+ Value:N
  NumericConstant:0
  BinaryOperator:=
 490 PRINT "NEW TOTAL IS" N
  ITEMS
  TextConstant:"NEW TOTAL IS"
  CarriageControl:
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 500 PRINT
  ITEMS
@@ -173,7 +173,7 @@
 530 REM MAKE RANDOM MOVE
  Remark:MAKE RANDOM MOVE
 540 IF N > 1 THEN 570
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:>
 550 LET Y = 1
@@ -184,8 +184,8 @@
  LineNumber:450
 570 LET Y = I + INT(K*RND(0))
  Reference:Y
- ScalarValue:I
- ScalarValue:K
+ Value:I
+ Value:K
  NumericConstant:0
  FunctionRnd
  BinaryOperator:*

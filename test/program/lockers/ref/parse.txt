@@ -13,25 +13,25 @@
  ITEMS
  TextConstant:"INITIALIZING"
  CarriageControl:;
- ScalarValue:N
+ Value:N
  CarriageControl:;
  TextConstant:" LOCKERS..."
  CarriageControl:NL
 130 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 140 FOR J = I TO N STEP I
  control: Variable:J
- start:   ["ScalarValue:I"]
- end:     ["ScalarValue:N"]
- step:    ["ScalarValue:I"]
+ start:   ["Value:I"]
+ end:     ["Value:N"]
+ step:    ["Value:I"]
 150 LET L(J) = 1 - L(J)
- ScalarValue:J
+ Value:J
  Reference:L
  NumericConstant:1
- ScalarValue:J
- ScalarValue:L
+ Value:J
+ Value:L
  BinaryOperator:-
  AssignmentOperator:=
 160 NEXT J
@@ -47,15 +47,15 @@
 320 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 330 IF L(I) = 0 THEN 350
- ScalarValue:I
- ScalarValue:L
+ Value:I
+ Value:L
  NumericConstant:0
  BinaryOperator:=
 340 PRINT I;
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:;
 350 NEXT I
  Variable:I

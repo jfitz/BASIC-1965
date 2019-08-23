@@ -26,8 +26,8 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 120 READ A(I,J)
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:A
 130 NEXT J
  Variable:J
@@ -39,14 +39,14 @@
  CarriageControl:NL
 160 MAT PRINT A;
  ITEMS
- MatrixValue:A
+ Value:A
  CarriageControl:;
 200 FOR I = 1 TO 3
  control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 220 READ B(I)
- ScalarValue:I
+ Value:I
  Reference:B
 240 NEXT I
  Variable:I
@@ -56,12 +56,12 @@
  CarriageControl:NL
 260 MAT PRINT B;
  ITEMS
- MatrixValue:B
+ Value:B
  CarriageControl:;
 300 MAT C = A*B
  Reference:C
- MatrixValue:A
- MatrixValue:B
+ Value:A
+ Value:B
  BinaryOperator:*
  AssignmentOperator:=
 310 PRINT "MATRIX C"
@@ -70,7 +70,7 @@
  CarriageControl:NL
 320 MAT PRINT C;
  ITEMS
- MatrixValue:C
+ Value:C
  CarriageControl:;
 999 END
  

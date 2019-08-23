@@ -14,11 +14,11 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 40 LET A(I,J) = I + J
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:A
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:+
  AssignmentOperator:=
 50 NEXT J
@@ -34,11 +34,11 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 90 LET B(I,J) = I * J
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:B
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  BinaryOperator:*
  AssignmentOperator:=
 100 NEXT J
@@ -46,9 +46,9 @@
 110 NEXT I
  Variable:I
 120 MAT WRITE A;B;
- MatrixValue:A
+ Value:A
  CarriageControl:;
- MatrixValue:B
+ Value:B
  CarriageControl:;
 999 END
  

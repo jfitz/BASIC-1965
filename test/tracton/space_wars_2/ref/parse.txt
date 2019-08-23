@@ -232,7 +232,7 @@ Duplicate line number 2750
 625 GOSUB 580
  LineNumber:580
 630 IF D > 1E04 THEN 660
- ScalarValue:D
+ Value:D
  NumericConstant:10000
  BinaryOperator:>
 640 LET L = 1
@@ -259,7 +259,7 @@ Duplicate line number 2750
 680 LET E1 = 5000*H
  Reference:E1
  NumericConstant:5000
- ScalarValue:H
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 690 GOTO 720
@@ -278,13 +278,13 @@ Duplicate line number 2750
 710 LET E1 = 1000*H
  Reference:E1
  NumericConstant:1000
- ScalarValue:H
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 720 RETURN
  
 730 IF D > 5E03 THEN 760
- ScalarValue:D
+ Value:D
  NumericConstant:5000
  BinaryOperator:>
 740 LET K = 1
@@ -311,7 +311,7 @@ Duplicate line number 2750
 780 LET E2 = 8000*H
  Reference:E2
  NumericConstant:8000
- ScalarValue:H
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 790 GOTO 820
@@ -330,13 +330,13 @@ Duplicate line number 2750
 810 LET E2 = 3000*H
  Reference:E2
  NumericConstant:3000
- ScalarValue:H
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 830 RETURN
  
 840 IF D < 3E03 THEN 860
- ScalarValue:D
+ Value:D
  NumericConstant:3000
  BinaryOperator:<
 850 LET E3 = 0
@@ -357,23 +357,23 @@ Duplicate line number 2750
 870 LET E3 = 2E04*H
  Reference:E3
  NumericConstant:20000
- ScalarValue:H
+ Value:H
  BinaryOperator:*
  AssignmentOperator:=
 880 LET T1 = T1 - E1
  Reference:T1
- ScalarValue:T1
- ScalarValue:E1
+ Value:T1
+ Value:E1
  BinaryOperator:-
  AssignmentOperator:=
 890 LET T2 = T2 - E2
  Reference:T2
- ScalarValue:T2
- ScalarValue:E2
+ Value:T2
+ Value:E2
  BinaryOperator:-
  AssignmentOperator:=
 900 IF T1 <= 0 THEN 920
- ScalarValue:T1
+ Value:T1
  NumericConstant:0
  BinaryOperator:<=
 910 GOTO 950
@@ -393,7 +393,7 @@ Duplicate line number 2750
  NumericConstant:0
  AssignmentOperator:=
 960 IF T2 <= 0 THEN 980
- ScalarValue:T2
+ Value:T2
  NumericConstant:0
  BinaryOperator:<=
 970 GOTO 1010
@@ -414,12 +414,12 @@ Duplicate line number 2750
  AssignmentOperator:=
 1020 LET X1 = X1 - E1 - E2 - E3
  Reference:X1
- ScalarValue:X1
- ScalarValue:E1
+ Value:X1
+ Value:E1
  BinaryOperator:-
- ScalarValue:E2
+ Value:E2
  BinaryOperator:-
- ScalarValue:E3
+ Value:E3
  BinaryOperator:-
  AssignmentOperator:=
 1030 RETURN
@@ -428,16 +428,16 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"DISTANCE TO DEATH STAR IS NOW"
  CarriageControl:;
- ScalarValue:D
+ Value:D
  CarriageControl:;
  TextConstant:"KM"
  CarriageControl:NL
 1045 IF Y = 1 THEN 1100
- ScalarValue:Y
+ Value:Y
  NumericConstant:1
  BinaryOperator:=
 1050 IF L = 0 THEN 1080
- ScalarValue:L
+ Value:L
  NumericConstant:0
  BinaryOperator:=
 1060 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
@@ -457,13 +457,13 @@ Duplicate line number 2750
  TextConstant:"THE SKY FIGHTER IS OUT OF ACTION!!!"
  CarriageControl:NL
 1110 IF Z = 1 THEN 1180
- ScalarValue:Z
+ Value:Z
  NumericConstant:1
  BinaryOperator:=
 1120 GOTO 1220
  LineNumber:1220
 1130 IF K = 0 THEN 1160
- ScalarValue:K
+ Value:K
  NumericConstant:0
  BinaryOperator:=
 1140 PRINT "THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
@@ -542,7 +542,7 @@ Duplicate line number 2750
 1350 GOTO 1130
  LineNumber:1130
 1360 IF D <= 3E03 THEN 1380
- ScalarValue:D
+ Value:D
  NumericConstant:3000
  BinaryOperator:<=
 1370 GOTO 1410
@@ -566,12 +566,12 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"YOUR TOTAL ENERGY IS NOW"
  CarriageControl:;
- ScalarValue:X1
+ Value:X1
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL
 1420 IF X1 < 2E04 THEN 1440
- ScalarValue:X1
+ Value:X1
  NumericConstant:20000
  BinaryOperator:<
 1430 GOTO 1490
@@ -609,7 +609,7 @@ Duplicate line number 2750
  Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
  Unimplemented
 1540 IF D <= 1000 THEN 1590
- ScalarValue:D
+ Value:D
  NumericConstant:1000
  BinaryOperator:<=
 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
@@ -622,7 +622,7 @@ Duplicate line number 2750
  CarriageControl:NL
 1570 LET X1 = X1 - 2E04
  Reference:X1
- ScalarValue:X1
+ Value:X1
  NumericConstant:20000
  BinaryOperator:-
  AssignmentOperator:=
@@ -638,7 +638,7 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 1600 IF H > 50 THEN 1640
- ScalarValue:H
+ Value:H
  NumericConstant:50
  BinaryOperator:>
 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
@@ -647,7 +647,7 @@ Duplicate line number 2750
  CarriageControl:NL
 1620 LET X1 = X1 - 2E04
  Reference:X1
- ScalarValue:X1
+ Value:X1
  NumericConstant:20000
  BinaryOperator:-
  AssignmentOperator:=
@@ -715,16 +715,16 @@ Duplicate line number 2750
  LineNumber:1760
 1840 LET T1 = T1 - Q
  Reference:T1
- ScalarValue:T1
- ScalarValue:Q
+ Value:T1
+ Value:Q
  BinaryOperator:-
  AssignmentOperator:=
 1850 GOTO 1960
  LineNumber:1960
 1860 LET T2 = T2 - Q
  Reference:T2
- ScalarValue:T2
- ScalarValue:Q
+ Value:T2
+ Value:Q
  BinaryOperator:-
  AssignmentOperator:=
 1870 GOTO 1960
@@ -753,7 +753,7 @@ Duplicate line number 2750
  LineNumber:1880
 1960 LET X1 = X1 - 5000
  Reference:X1
- ScalarValue:X1
+ Value:X1
  NumericConstant:5000
  BinaryOperator:-
  AssignmentOperator:=
@@ -761,13 +761,13 @@ Duplicate line number 2750
  LineNumber:2660
 1980 LET T1 = T1 - Q
  Reference:T1
- ScalarValue:T1
- ScalarValue:Q
+ Value:T1
+ Value:Q
  BinaryOperator:-
  AssignmentOperator:=
 1982 LET X1 = X1 - 5000
  Reference:X1
- ScalarValue:X1
+ Value:X1
  NumericConstant:5000
  BinaryOperator:-
  AssignmentOperator:=
@@ -775,13 +775,13 @@ Duplicate line number 2750
  LineNumber:2010
 2000 LET T2 = T2 - Q
  Reference:T2
- ScalarValue:T2
- ScalarValue:Q
+ Value:T2
+ Value:Q
  BinaryOperator:-
  AssignmentOperator:=
 2010 LET X1 = X1 - 5000
  Reference:X1
- ScalarValue:X1
+ Value:X1
  NumericConstant:5000
  BinaryOperator:-
  AssignmentOperator:=
@@ -828,7 +828,7 @@ Duplicate line number 2750
 2150 INPUT C$
  Syntax error: "C$" is not a value or operator
 2160 IF J = 1 THEN 2190
- ScalarValue:J
+ Value:J
  NumericConstant:1
  BinaryOperator:=
 2170 LET Q = 1000*(1 + INT(RND)/100)
@@ -860,25 +860,25 @@ Duplicate line number 2750
  LineNumber:2130
 2240 LET T1 = T1 - Q
  Reference:T1
- ScalarValue:T1
- ScalarValue:Q
+ Value:T1
+ Value:Q
  BinaryOperator:-
  AssignmentOperator:=
 2250 GOTO 2270
  LineNumber:2270
 2260 LET T2 = T2 - Q
  Reference:T2
- ScalarValue:T2
- ScalarValue:Q
+ Value:T2
+ Value:Q
  BinaryOperator:-
  AssignmentOperator:=
 2270 IF J = 1 THEN 2300
- ScalarValue:J
+ Value:J
  NumericConstant:1
  BinaryOperator:=
 2280 LET X1 = X1 - 1000
  Reference:X1
- ScalarValue:X1
+ Value:X1
  NumericConstant:1000
  BinaryOperator:-
  AssignmentOperator:=
@@ -886,7 +886,7 @@ Duplicate line number 2750
  LineNumber:2660
 2300 LET X1 = X1 - 1500
  Reference:X1
- ScalarValue:X1
+ Value:X1
  NumericConstant:1500
  BinaryOperator:-
  AssignmentOperator:=
@@ -925,7 +925,7 @@ Duplicate line number 2750
 2400 INPUT C$
  Syntax error: "C$" is not a value or operator
 2410 IF F > 2.25E04 THEN 2470
- ScalarValue:F
+ Value:F
  NumericConstant:22500
  BinaryOperator:>
 2420 IF C$ = "A" THEN 2500
@@ -944,7 +944,7 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"YOU HAVE WASTED "
  CarriageControl:;
- ScalarValue:F
+ Value:F
  CarriageControl:;
  TextConstant:"UNITS OF ENERGY"
  CarriageControl:NL
@@ -956,12 +956,12 @@ Duplicate line number 2750
  LineNumber:2640
 2500 LET D = D + F
  Reference:D
- ScalarValue:D
- ScalarValue:F
+ Value:D
+ Value:F
  BinaryOperator:+
  AssignmentOperator:=
 2510 IF D > 1.5E05 THEN 2540
- ScalarValue:D
+ Value:D
  NumericConstant:150000
  BinaryOperator:>
 2520 GOTO 2640
@@ -998,18 +998,18 @@ Duplicate line number 2750
  LineNumber:2690
 2620 LET D = D - F
  Reference:D
- ScalarValue:D
- ScalarValue:F
+ Value:D
+ Value:F
  BinaryOperator:-
  AssignmentOperator:=
 2630 IF D <= 0 THEN 2570
- ScalarValue:D
+ Value:D
  NumericConstant:0
  BinaryOperator:<=
 2640 LET X1 = X1 - F
  Reference:X1
- ScalarValue:X1
- ScalarValue:F
+ Value:X1
+ Value:F
  BinaryOperator:-
  AssignmentOperator:=
 2650 GOTO 2680
@@ -1018,7 +1018,7 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"THE SKY FIGHTER'S ENERGY IS NOW"
  CarriageControl:;
- ScalarValue:T1
+ Value:T1
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL
@@ -1026,7 +1026,7 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"THE DARK LORD'S ENERGY IS"
  CarriageControl:;
- ScalarValue:T2
+ Value:T2
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL

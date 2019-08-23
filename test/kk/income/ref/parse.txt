@@ -3,7 +3,7 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 20 LET N(D) = 0
- ScalarValue:D
+ Value:D
  Reference:N
  NumericConstant:0
  AssignmentOperator:=
@@ -17,16 +17,16 @@
  Reference:X
 60 LET D = INT(X/1E4)
  Reference:D
- ScalarValue:X
+ Value:X
  NumericConstant:10000
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 70 LET N(D) = N(D) + 1
- ScalarValue:D
+ Value:D
  Reference:N
- ScalarValue:D
- ScalarValue:N
+ Value:D
+ Value:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -50,18 +50,18 @@
  end:     ["NumericConstant:5"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
  ITEMS
- ScalarValue:D
+ Value:D
  NumericConstant:10000
  BinaryOperator:*
  CarriageControl:,
- ScalarValue:D
+ Value:D
  NumericConstant:1
  BinaryOperator:+
  NumericConstant:10000
  BinaryOperator:*
  CarriageControl:,
- ScalarValue:D
- ScalarValue:N
+ Value:D
+ Value:N
  CarriageControl:NL
 140 NEXT D
  Variable:D

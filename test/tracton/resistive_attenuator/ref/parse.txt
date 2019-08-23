@@ -18,15 +18,15 @@
  Reference:R9
 80 LET Z = R1/R9
  Reference:Z
- ScalarValue:R1
- ScalarValue:R9
+ Value:R1
+ Value:R9
  BinaryOperator:/
  AssignmentOperator:=
 90 LET Q = (SQR(Z) + SQR(Z - 1))^2
  Reference:Q
- ScalarValue:Z
+ Value:Z
  FunctionSqr
- ScalarValue:Z
+ Value:Z
  NumericConstant:1
  BinaryOperator:-
  FunctionSqr
@@ -37,7 +37,7 @@
 100 LET M = 10*(LOG(Q)/LOG(10))
  Reference:M
  NumericConstant:10
- ScalarValue:Q
+ Value:Q
  FunctionLog
  NumericConstant:10
  FunctionLog
@@ -48,7 +48,7 @@
  ITEMS
  TextConstant:"MINIMUM SYSTEM LOSS IN DECIBELS = "
  CarriageControl:;
- ScalarValue:M
+ Value:M
  CarriageControl:NL
 120 PRINT "ENTERED DESIRED LOSS IN DECIBELS";
  ITEMS
@@ -58,7 +58,7 @@
  Reference:N
 135 LET N = INT(N)
  Reference:N
- ScalarValue:N
+ Value:N
  FunctionInt
  AssignmentOperator:=
 140 REM COMPUTE T NETWORK
@@ -66,44 +66,44 @@
 150 LET T3 = 2*(SQR(N*R1*R9))/(N-1)
  Reference:T3
  NumericConstant:2
- ScalarValue:N
- ScalarValue:R1
+ Value:N
+ Value:R1
  BinaryOperator:*
- ScalarValue:R9
+ Value:R9
  BinaryOperator:*
  FunctionSqr
  BinaryOperator:*
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  AssignmentOperator:=
 160 LET T1 = R1*((N+1)/(N-1)) - T3
  Reference:T1
- ScalarValue:R1
- ScalarValue:N
+ Value:R1
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
- ScalarValue:T3
+ Value:T3
  BinaryOperator:-
  AssignmentOperator:=
 170 LET T2 = R9*((N+1)/(N-1)) - T3
  Reference:T2
- ScalarValue:R9
- ScalarValue:N
+ Value:R9
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
- ScalarValue:T3
+ Value:T3
  BinaryOperator:-
  AssignmentOperator:=
 180 REM COMPUTE PI NETWORK
@@ -111,14 +111,14 @@
 190 LET P3 = 0.5*(N-1)*SQR((R1*R9)/N)
  Reference:P3
  NumericConstant:0.5
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:*
- ScalarValue:R1
- ScalarValue:R9
+ Value:R1
+ Value:R9
  BinaryOperator:*
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  FunctionSqr
  BinaryOperator:*
@@ -127,18 +127,18 @@
  Reference:P1
  NumericConstant:1
  NumericConstant:1
- ScalarValue:R1
+ Value:R1
  BinaryOperator:/
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:P3
+ Value:P3
  BinaryOperator:/
  BinaryOperator:-
  BinaryOperator:/
@@ -147,18 +147,18 @@
  Reference:P2
  NumericConstant:1
  NumericConstant:1
- ScalarValue:R9
+ Value:R9
  BinaryOperator:/
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
  NumericConstant:1
- ScalarValue:P3
+ Value:P3
  BinaryOperator:/
  BinaryOperator:-
  BinaryOperator:/
@@ -169,17 +169,17 @@
  ITEMS
  TextConstant:"R(IN) = "
  CarriageControl:;
- ScalarValue:R1
+ Value:R1
  CarriageControl:,
  TextConstant:"R(OUT) = "
  CarriageControl:;
- ScalarValue:R9
+ Value:R9
  CarriageControl:NL
 240 PRINT "DESIRED LOSS = ";N
  ITEMS
  TextConstant:"DESIRED LOSS = "
  CarriageControl:;
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 250 PRINT
  ITEMS
@@ -192,19 +192,19 @@
  ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
- ScalarValue:T1
+ Value:T1
  CarriageControl:NL
 280 PRINT "RESISTOR 2 = ";T2
  ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
- ScalarValue:T2
+ Value:T2
  CarriageControl:NL
 290 PRINT "RESISTOR 3 = ";T3
  ITEMS
  TextConstant:"RESISTOR 3 = "
  CarriageControl:;
- ScalarValue:T3
+ Value:T3
  CarriageControl:NL
 300 PRINT
  ITEMS
@@ -217,19 +217,19 @@
  ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
- ScalarValue:P1
+ Value:P1
  CarriageControl:NL
 330 PRINT "RESISTOR 2 = ";P2
  ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
- ScalarValue:P2
+ Value:P2
  CarriageControl:NL
 340 PRINT "RESISTOR 3 = ";P3
  ITEMS
  TextConstant:"RESISTOR 3 = "
  CarriageControl:;
- ScalarValue:P3
+ Value:P3
  CarriageControl:NL
 350 PRINT
  ITEMS
@@ -241,7 +241,7 @@
 370 INPUT Q
  Reference:Q
 380 IF Q = 1 THEN 400
- ScalarValue:Q
+ Value:Q
  NumericConstant:1
  BinaryOperator:=
 390 STOP

@@ -39,66 +39,66 @@
  ITEMS
  NumericConstant:0
  CarriageControl:,
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 220 FOR I = 1 TO P
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:P"]
+ end:     ["Value:P"]
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:T9", "ScalarValue:P", "BinaryOperator:/"]
- step:    ["ScalarValue:T8"]
+ end:     ["Value:T9", "Value:P", "BinaryOperator:/"]
+ step:    ["Value:T8"]
 240 LET X = X + (A*X - B*X*Y)*T8
  Reference:X
- ScalarValue:X
- ScalarValue:A
- ScalarValue:X
+ Value:X
+ Value:A
+ Value:X
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:X
+ Value:B
+ Value:X
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:T8
+ Value:T8
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Reference:Y
- ScalarValue:Y
- ScalarValue:C
- ScalarValue:X
+ Value:Y
+ Value:C
+ Value:X
  BinaryOperator:*
- ScalarValue:Y
+ Value:Y
  BinaryOperator:*
- ScalarValue:D
- ScalarValue:Y
+ Value:D
+ Value:Y
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:T8
+ Value:T8
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 255 LET T1 = T1 + T8
  Reference:T1
- ScalarValue:T1
- ScalarValue:T8
+ Value:T1
+ Value:T8
  BinaryOperator:+
  AssignmentOperator:=
 260 NEXT T
  Variable:T
 270 PRINT T1, X, Y
  ITEMS
- ScalarValue:T1
+ Value:T1
  CarriageControl:,
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 280 NEXT I
  Variable:I

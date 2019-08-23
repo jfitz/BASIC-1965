@@ -22,23 +22,23 @@
  Reference:X
 80 LET G = ((X2 - X)*Y1) + ((X - X1)*Y2)
  Reference:G
- ScalarValue:X2
- ScalarValue:X
+ Value:X2
+ Value:X
  BinaryOperator:-
- ScalarValue:Y1
+ Value:Y1
  BinaryOperator:*
- ScalarValue:X
- ScalarValue:X1
+ Value:X
+ Value:X1
  BinaryOperator:-
- ScalarValue:Y2
+ Value:Y2
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 90 LET F = G/(X2 - X1)
  Reference:F
- ScalarValue:G
- ScalarValue:X2
- ScalarValue:X1
+ Value:G
+ Value:X2
+ Value:X1
  BinaryOperator:-
  BinaryOperator:/
  AssignmentOperator:=
@@ -46,7 +46,7 @@
  ITEMS
  TextConstant:"INTERPOLATED F(X) = "
  CarriageControl:;
- ScalarValue:F
+ Value:F
  CarriageControl:NL
 110 PRINT
  ITEMS
@@ -58,7 +58,7 @@
 130 INPUT L
  Reference:L
 140 IF L = 1 THEN 160
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 150 STOP

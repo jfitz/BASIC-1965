@@ -5,13 +5,13 @@
 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
  Remark:CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
 51 DEF FNL(X1,X2,Y1,Y2) = SQR((X1-Y1)^2 + (X2-Y2)^2)
- ScalarValue:X1
- ScalarValue:Y1
+ Value:X1
+ Value:Y1
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:X2
- ScalarValue:Y2
+ Value:X2
+ Value:Y2
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
@@ -20,7 +20,7 @@
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
 61 DEF FNR(D) = D/180*3.1415926
- ScalarValue:D
+ Value:D
  NumericConstant:180
  BinaryOperator:/
  NumericConstant:3.1415926
@@ -40,8 +40,8 @@
  Reference:C2
 115 LET D5=D1-C1  ' RADIUS
  Reference:D5
- ScalarValue:D1
- ScalarValue:C1
+ Value:D1
+ Value:C1
  BinaryOperator:-
  AssignmentOperator:=
 121 READ Z9,Z8
@@ -53,8 +53,8 @@
  Remark:FIND POINT B
 201 LET B1=(A1+D1)/2
  Reference:B1
- ScalarValue:A1
- ScalarValue:D1
+ Value:A1
+ Value:D1
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -65,8 +65,8 @@
  AssignmentOperator:=
 203 LET I1=D1+D5
  Reference:I1
- ScalarValue:D1
- ScalarValue:D5
+ Value:D1
+ Value:D5
  BinaryOperator:+
  AssignmentOperator:=
 204 LET I2=0
@@ -95,94 +95,94 @@
  Remark:RATIO OF AC/BC
 221 LET F1 = FNL(A1,A2,C1,C2)
  Reference:F1
- ScalarValue:A1
- ScalarValue:A2
- ScalarValue:C1
- ScalarValue:C2
+ Value:A1
+ Value:A2
+ Value:C1
+ Value:C2
  UserFunction
  AssignmentOperator:=
 222 LET F2 = FNL(B1,B2,C1,C2)
  Reference:F2
- ScalarValue:B1
- ScalarValue:B2
- ScalarValue:C1
- ScalarValue:C2
+ Value:B1
+ Value:B2
+ Value:C1
+ Value:C2
  UserFunction
  AssignmentOperator:=
 223 LET R0 = F1/F2
  Reference:R0
- ScalarValue:F1
- ScalarValue:F2
+ Value:F1
+ Value:F2
  BinaryOperator:/
  AssignmentOperator:=
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
 231 LET G1 = FNL(A1,A2,I1,I2)
  Reference:G1
- ScalarValue:A1
- ScalarValue:A2
- ScalarValue:I1
- ScalarValue:I2
+ Value:A1
+ Value:A2
+ Value:I1
+ Value:I2
  UserFunction
  AssignmentOperator:=
 232 LET G2 = FNL(B1,B2,I1,I2)
  Reference:G2
- ScalarValue:B1
- ScalarValue:B2
- ScalarValue:I1
- ScalarValue:I2
+ Value:B1
+ Value:B2
+ Value:I1
+ Value:I2
  UserFunction
  AssignmentOperator:=
 233 LET R1 = G1/G2
  Reference:R1
- ScalarValue:G1
- ScalarValue:G2
+ Value:G1
+ Value:G2
  BinaryOperator:/
  AssignmentOperator:=
 239 PRINT B1,R0,R1,Z
  ITEMS
- ScalarValue:B1
+ Value:B1
  CarriageControl:,
- ScalarValue:R0
+ Value:R0
  CarriageControl:,
- ScalarValue:R1
+ Value:R1
  CarriageControl:,
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 240 IF ABS(R0-R1)<R9 THEN 300
- ScalarValue:R0
- ScalarValue:R1
+ Value:R0
+ Value:R1
  BinaryOperator:-
  FunctionAbs
- ScalarValue:R9
+ Value:R9
  BinaryOperator:<
 241 IF R0<R1 THEN 245
- ScalarValue:R0
- ScalarValue:R1
+ Value:R0
+ Value:R1
  BinaryOperator:<
 242 LET B1=B1+Z
  Reference:B1
- ScalarValue:B1
- ScalarValue:Z
+ Value:B1
+ Value:Z
  BinaryOperator:+
  AssignmentOperator:=
 243 GOTO 246
  LineNumber:246
 245 LET B1=B1-Z
  Reference:B1
- ScalarValue:B1
- ScalarValue:Z
+ Value:B1
+ Value:Z
  BinaryOperator:-
  AssignmentOperator:=
 246 LET Z=Z*Z8
  Reference:Z
- ScalarValue:Z
- ScalarValue:Z8
+ Value:Z
+ Value:Z8
  BinaryOperator:*
  AssignmentOperator:=
 247 IF Z>Z9 THEN 220
- ScalarValue:Z
- ScalarValue:Z9
+ Value:Z
+ Value:Z9
  BinaryOperator:>
 248 PRINT "CANNOT RESOLVE POINT B"
  ITEMS
@@ -196,43 +196,43 @@
  ITEMS
  TextConstant:"POINT C    :"
  CarriageControl:;
- ScalarValue:C1
+ Value:C1
  CarriageControl:;
- ScalarValue:C2
+ Value:C2
  CarriageControl:NL
 302 PRINT "POINT B    :";B1;B2
  ITEMS
  TextConstant:"POINT B    :"
  CarriageControl:;
- ScalarValue:B1
+ Value:B1
  CarriageControl:;
- ScalarValue:B2
+ Value:B2
  CarriageControl:NL
 303 PRINT "DISTANCE BC:";F2
  ITEMS
  TextConstant:"DISTANCE BC:"
  CarriageControl:;
- ScalarValue:F2
+ Value:F2
  CarriageControl:NL
 304 PRINT "POINT A    :";A1;A2
  ITEMS
  TextConstant:"POINT A    :"
  CarriageControl:;
- ScalarValue:A1
+ Value:A1
  CarriageControl:;
- ScalarValue:A2
+ Value:A2
  CarriageControl:NL
 305 PRINT "DISTANCE AC:";F1
  ITEMS
  TextConstant:"DISTANCE AC:"
  CarriageControl:;
- ScalarValue:F1
+ Value:F1
  CarriageControl:NL
 306 PRINT "RATIO AC/BC:";R0
  ITEMS
  TextConstant:"RATIO AC/BC:"
  CarriageControl:;
- ScalarValue:R0
+ Value:R0
  CarriageControl:NL
 400 REM PICK VALUES ON CIRCLE D
  Remark:PICK VALUES ON CIRCLE D
@@ -261,67 +261,67 @@
  Remark:PICK POINT ON CIRCLE D
 421 LET T = FNR(I)
  Reference:T
- ScalarValue:I
+ Value:I
  UserFunction
  AssignmentOperator:=
 422 LET I1 = D1 + COS(T)*D5
  Reference:I1
- ScalarValue:D1
- ScalarValue:T
+ Value:D1
+ Value:T
  FunctionCos
- ScalarValue:D5
+ Value:D5
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 423 LET I2 = D2 + SIN(T)*D5
  Reference:I2
- ScalarValue:D2
- ScalarValue:T
+ Value:D2
+ Value:T
  FunctionSin
- ScalarValue:D5
+ Value:D5
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 424 LET G1 = FNL(A1,A2,I1,I2)
  Reference:G1
- ScalarValue:A1
- ScalarValue:A2
- ScalarValue:I1
- ScalarValue:I2
+ Value:A1
+ Value:A2
+ Value:I1
+ Value:I2
  UserFunction
  AssignmentOperator:=
 425 LET G2 = FNL(B1,B2,I1,I2)
  Reference:G2
- ScalarValue:B1
- ScalarValue:B2
- ScalarValue:I1
- ScalarValue:I2
+ Value:B1
+ Value:B2
+ Value:I1
+ Value:I2
  UserFunction
  AssignmentOperator:=
 426 LET R1 = G1/G2
  Reference:R1
- ScalarValue:G1
- ScalarValue:G2
+ Value:G1
+ Value:G2
  BinaryOperator:/
  AssignmentOperator:=
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
 431 PRINT T,I1;I2,G1;G2,R1,R1-R0
  ITEMS
- ScalarValue:T
+ Value:T
  CarriageControl:,
- ScalarValue:I1
+ Value:I1
  CarriageControl:;
- ScalarValue:I2
+ Value:I2
  CarriageControl:,
- ScalarValue:G1
+ Value:G1
  CarriageControl:;
- ScalarValue:G2
+ Value:G2
  CarriageControl:,
- ScalarValue:R1
+ Value:R1
  CarriageControl:,
- ScalarValue:R1
- ScalarValue:R0
+ Value:R1
+ Value:R0
  BinaryOperator:-
  CarriageControl:NL
 441 NEXT I

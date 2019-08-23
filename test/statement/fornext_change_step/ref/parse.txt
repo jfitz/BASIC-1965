@@ -14,16 +14,16 @@
  AssignmentOperator:=
 50 FOR I = B TO E STEP S
  control: Variable:I
- start:   ["ScalarValue:B"]
- end:     ["ScalarValue:E"]
- step:    ["ScalarValue:S"]
+ start:   ["Value:B"]
+ end:     ["Value:E"]
+ step:    ["Value:S"]
 60 PRINT I
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 70 LET S = S + 1
  Reference:S
- ScalarValue:S
+ Value:S
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=

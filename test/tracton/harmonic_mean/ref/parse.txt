@@ -17,42 +17,42 @@
 60 INPUT X
  Reference:X
 70 IF X = 0 THEN 130
- ScalarValue:X
+ Value:X
  NumericConstant:0
  BinaryOperator:=
 80 LET N = N + 1
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 90 LET Z = Z + (1/X)
  Reference:Z
- ScalarValue:Z
+ Value:Z
  NumericConstant:1
- ScalarValue:X
+ Value:X
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 100 LET H = N/Z
  Reference:H
- ScalarValue:N
- ScalarValue:Z
+ Value:N
+ Value:Z
  BinaryOperator:/
  AssignmentOperator:=
 110 PRINT "N = ";N,"SAMPLE = ";X,"CURRENT MEAN = ";H
  ITEMS
  TextConstant:"N = "
  CarriageControl:;
- ScalarValue:N
+ Value:N
  CarriageControl:,
  TextConstant:"SAMPLE = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:,
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- ScalarValue:H
+ Value:H
  CarriageControl:NL
 120 GOTO 50
  LineNumber:50
@@ -66,7 +66,7 @@
 150 INPUT L
  Reference:L
 160 IF L = 1 THEN 180
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

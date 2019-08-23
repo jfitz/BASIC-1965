@@ -4,7 +4,7 @@
 120 FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:M"]
+ end:     ["Value:M"]
 130    LET S = 0
  Reference:S
  NumericConstant:0
@@ -12,25 +12,25 @@
 140    FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 150       READ O(I,J)
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:O
 160       LET S = S + O(I,J)
  Reference:S
- ScalarValue:S
- ScalarValue:I
- ScalarValue:J
- ScalarValue:O
+ Value:S
+ Value:I
+ Value:J
+ Value:O
  BinaryOperator:+
  AssignmentOperator:=
 170    NEXT J
  Variable:J
 180    LET R(I) = S
- ScalarValue:I
+ Value:I
  Reference:R
- ScalarValue:S
+ Value:S
  AssignmentOperator:=
 190 NEXT I
  Variable:I
@@ -42,7 +42,7 @@
 220 FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 230    LET S = 0
  Reference:S
  NumericConstant:0
@@ -50,26 +50,26 @@
 240    FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:M"]
+ end:     ["Value:M"]
 250       LET S = S + O(I,J)
  Reference:S
- ScalarValue:S
- ScalarValue:I
- ScalarValue:J
- ScalarValue:O
+ Value:S
+ Value:I
+ Value:J
+ Value:O
  BinaryOperator:+
  AssignmentOperator:=
 260    NEXT I
  Variable:I
 270    LET C(J) = S
- ScalarValue:J
+ Value:J
  Reference:C
- ScalarValue:S
+ Value:S
  AssignmentOperator:=
 280    LET S1 = S1 + S
  Reference:S1
- ScalarValue:S1
- ScalarValue:S
+ Value:S1
+ Value:S
  BinaryOperator:+
  AssignmentOperator:=
 290 NEXT J
@@ -85,40 +85,40 @@
 330 FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:M"]
+ end:     ["Value:M"]
 340    FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 350       LET E = R(I)*C(J)/S1
  Reference:E
- ScalarValue:I
- ScalarValue:R
- ScalarValue:J
- ScalarValue:C
+ Value:I
+ Value:R
+ Value:J
+ Value:C
  BinaryOperator:*
- ScalarValue:S1
+ Value:S1
  BinaryOperator:/
  AssignmentOperator:=
 360       LET C = C + (O(I,J) - E)^2/E
  Reference:C
- ScalarValue:C
- ScalarValue:I
- ScalarValue:J
- ScalarValue:O
- ScalarValue:E
+ Value:C
+ Value:I
+ Value:J
+ Value:O
+ Value:E
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:E
+ Value:E
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 370       PRINT O(I,J),
  ITEMS
- ScalarValue:I
- ScalarValue:J
- ScalarValue:O
+ Value:I
+ Value:J
+ Value:O
  CarriageControl:,
 380    NEXT J
  Variable:J
@@ -134,14 +134,14 @@
  ITEMS
  TextConstant:"CHI-SQUARE EQUALS"
  CarriageControl:;
- ScalarValue:C
+ Value:C
  CarriageControl:;
  TextConstant:"ON"
  CarriageControl:;
- ScalarValue:M
+ Value:M
  NumericConstant:1
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:*

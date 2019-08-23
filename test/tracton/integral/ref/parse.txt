@@ -8,7 +8,7 @@
  AssignmentOperator:=
 40 LET C2 = C1
  Reference:C2
- ScalarValue:C1
+ Value:C1
  AssignmentOperator:=
 50 LET C3 = .661209
  Reference:C3
@@ -16,7 +16,7 @@
  AssignmentOperator:=
 60 LET C4 = C3
  Reference:C4
- ScalarValue:C3
+ Value:C3
  AssignmentOperator:=
 70 LET C5 = .932470
  Reference:C5
@@ -24,7 +24,7 @@
  AssignmentOperator:=
 80 LET C6 = C5
  Reference:C6
- ScalarValue:C5
+ Value:C5
  AssignmentOperator:=
 90 LET D1 = .467914
  Reference:D1
@@ -51,22 +51,22 @@
  Reference:B
 150 LET Y = B - A
  Reference:Y
- ScalarValue:B
- ScalarValue:A
+ Value:B
+ Value:A
  BinaryOperator:-
  AssignmentOperator:=
 160 LET Z = B + A
  Reference:Z
- ScalarValue:B
- ScalarValue:A
+ Value:B
+ Value:A
  BinaryOperator:+
  AssignmentOperator:=
 170 LET X = ((C1*Y) +Z)/2
  Reference:X
- ScalarValue:C1
- ScalarValue:Y
+ Value:C1
+ Value:Y
  BinaryOperator:*
- ScalarValue:Z
+ Value:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -75,22 +75,22 @@
  LineNumber:500
 190 LET N = D1*Q
  Reference:N
- ScalarValue:D1
- ScalarValue:Q
+ Value:D1
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 200 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 210 LET X = ((C2*Y) + Z)/2
  Reference:X
- ScalarValue:C2
- ScalarValue:Y
+ Value:C2
+ Value:Y
  BinaryOperator:*
- ScalarValue:Z
+ Value:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -99,22 +99,22 @@
  LineNumber:500
 230 LET N = D1*Q
  Reference:N
- ScalarValue:D1
- ScalarValue:Q
+ Value:D1
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 240 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 250 LET X = ((C3*Y) + Z)/2
  Reference:X
- ScalarValue:C3
- ScalarValue:Y
+ Value:C3
+ Value:Y
  BinaryOperator:*
- ScalarValue:Z
+ Value:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -123,22 +123,22 @@
  LineNumber:500
 270 LET N = D2*Q
  Reference:N
- ScalarValue:D2
- ScalarValue:Q
+ Value:D2
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 280 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 290 LET X = ((C4*Y) + Z)/2
  Reference:X
- ScalarValue:C4
- ScalarValue:Y
+ Value:C4
+ Value:Y
  BinaryOperator:*
- ScalarValue:Z
+ Value:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -147,22 +147,22 @@
  LineNumber:500
 310 LET N = D2*Q
  Reference:N
- ScalarValue:D2
- ScalarValue:Q
+ Value:D2
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 320 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 330 LET X = ((C5*Y) + Z)/2
  Reference:X
- ScalarValue:C5
- ScalarValue:Y
+ Value:C5
+ Value:Y
  BinaryOperator:*
- ScalarValue:Z
+ Value:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -171,22 +171,22 @@
  LineNumber:500
 350 LET N = D3*Q
  Reference:N
- ScalarValue:D3
- ScalarValue:Q
+ Value:D3
+ Value:Q
  BinaryOperator:*
  AssignmentOperator:=
 360 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 370 LET X = ((C6*Y) + Z)/2
  Reference:X
- ScalarValue:C6
- ScalarValue:Y
+ Value:C6
+ Value:Y
  BinaryOperator:*
- ScalarValue:Z
+ Value:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -195,29 +195,29 @@
  LineNumber:500
 390 LET N = D3*Y
  Reference:N
- ScalarValue:D3
- ScalarValue:Y
+ Value:D3
+ Value:Y
  BinaryOperator:*
  AssignmentOperator:=
 400 LET J = J + N
  Reference:J
- ScalarValue:J
- ScalarValue:N
+ Value:J
+ Value:N
  BinaryOperator:+
  AssignmentOperator:=
 410 LET G = (Y/2)*J
  Reference:G
- ScalarValue:Y
+ Value:Y
  NumericConstant:2
  BinaryOperator:/
- ScalarValue:J
+ Value:J
  BinaryOperator:*
  AssignmentOperator:=
 420 PRINT "INTEGRAL = ";G
  ITEMS
  TextConstant:"INTEGRAL = "
  CarriageControl:;
- ScalarValue:G
+ Value:G
  CarriageControl:NL
 430 PRINT
  ITEMS
@@ -229,7 +229,7 @@
 450 INPUT L
  Reference:L
 460 IF L = 1 THEN 480
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 470 STOP
@@ -242,21 +242,21 @@
 500 LET Q = 13*X^2 - 6*X^2 + SIN(X) + 1/X
  Reference:Q
  NumericConstant:13
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
  NumericConstant:6
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:X
+ Value:X
  FunctionSin
  BinaryOperator:+
  NumericConstant:1
- ScalarValue:X
+ Value:X
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=

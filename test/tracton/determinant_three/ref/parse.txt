@@ -18,43 +18,43 @@
  Remark:COMPUTE DETERMINANT OF 3X3
 50 LET M = (A*E*I) + (B*F*G) + (C*H*D)
  Reference:M
- ScalarValue:A
- ScalarValue:E
+ Value:A
+ Value:E
  BinaryOperator:*
- ScalarValue:I
+ Value:I
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:F
+ Value:B
+ Value:F
  BinaryOperator:*
- ScalarValue:G
+ Value:G
  BinaryOperator:*
  BinaryOperator:+
- ScalarValue:C
- ScalarValue:H
+ Value:C
+ Value:H
  BinaryOperator:*
- ScalarValue:D
+ Value:D
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 60 LET N = M - (C*E*G) - (F*H*A) - (I*D*B)
  Reference:N
- ScalarValue:M
- ScalarValue:C
- ScalarValue:E
+ Value:M
+ Value:C
+ Value:E
  BinaryOperator:*
- ScalarValue:G
- BinaryOperator:*
- BinaryOperator:-
- ScalarValue:F
- ScalarValue:H
- BinaryOperator:*
- ScalarValue:A
+ Value:G
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:I
- ScalarValue:D
+ Value:F
+ Value:H
  BinaryOperator:*
- ScalarValue:B
+ Value:A
+ BinaryOperator:*
+ BinaryOperator:-
+ Value:I
+ Value:D
+ BinaryOperator:*
+ Value:B
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
@@ -62,110 +62,110 @@
  Remark:COMPUTE INVERSE
 80 LET O = ((E*I) - (H*F))/N
  Reference:O
- ScalarValue:E
- ScalarValue:I
+ Value:E
+ Value:I
  BinaryOperator:*
- ScalarValue:H
- ScalarValue:F
+ Value:H
+ Value:F
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 90 LET P = ((G*F) - (D*I))/N
  Reference:P
- ScalarValue:G
- ScalarValue:F
+ Value:G
+ Value:F
  BinaryOperator:*
- ScalarValue:D
- ScalarValue:I
+ Value:D
+ Value:I
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 100 LET Q = ((D*H) - (G*E))/N
  Reference:Q
- ScalarValue:D
- ScalarValue:H
+ Value:D
+ Value:H
  BinaryOperator:*
- ScalarValue:G
- ScalarValue:E
+ Value:G
+ Value:E
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 110 LET R = ((H*C) - (B*I))/N
  Reference:R
- ScalarValue:H
- ScalarValue:C
+ Value:H
+ Value:C
  BinaryOperator:*
- ScalarValue:B
- ScalarValue:I
+ Value:B
+ Value:I
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 120 LET S = ((A*I) - (G*C))/N
  Reference:S
- ScalarValue:A
- ScalarValue:I
+ Value:A
+ Value:I
  BinaryOperator:*
- ScalarValue:G
- ScalarValue:C
+ Value:G
+ Value:C
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 130 LET T = ((G*B) - (A*H))/N
  Reference:T
- ScalarValue:G
- ScalarValue:B
+ Value:G
+ Value:B
  BinaryOperator:*
- ScalarValue:A
- ScalarValue:H
+ Value:A
+ Value:H
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 140 LET U = ((B*F) - (E*C))/N
  Reference:U
- ScalarValue:B
- ScalarValue:F
+ Value:B
+ Value:F
  BinaryOperator:*
- ScalarValue:E
- ScalarValue:C
+ Value:E
+ Value:C
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 150 LET V = ((D*C) - (A*F))/N
  Reference:V
- ScalarValue:D
- ScalarValue:C
+ Value:D
+ Value:C
  BinaryOperator:*
- ScalarValue:A
- ScalarValue:F
+ Value:A
+ Value:F
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 160 LET W = ((A*E) - (D*B))/N
  Reference:W
- ScalarValue:A
- ScalarValue:E
+ Value:A
+ Value:E
  BinaryOperator:*
- ScalarValue:D
- ScalarValue:B
+ Value:D
+ Value:B
  BinaryOperator:*
  BinaryOperator:-
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 170 PRINT "ORIGINAL MATRIX"
@@ -174,27 +174,27 @@
  CarriageControl:NL
 180 PRINT A,B,C
  ITEMS
- ScalarValue:A
+ Value:A
  CarriageControl:,
- ScalarValue:B
+ Value:B
  CarriageControl:,
- ScalarValue:C
+ Value:C
  CarriageControl:NL
 190 PRINT D,E,F
  ITEMS
- ScalarValue:D
+ Value:D
  CarriageControl:,
- ScalarValue:E
+ Value:E
  CarriageControl:,
- ScalarValue:F
+ Value:F
  CarriageControl:NL
 200 PRINT G,H,I
  ITEMS
- ScalarValue:G
+ Value:G
  CarriageControl:,
- ScalarValue:H
+ Value:H
  CarriageControl:,
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 210 PRINT
  ITEMS
@@ -203,7 +203,7 @@
  ITEMS
  TextConstant:"DETERMINANT = "
  CarriageControl:;
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 230 PRINT
  ITEMS
@@ -214,27 +214,27 @@
  CarriageControl:NL
 250 PRINT O,R,U
  ITEMS
- ScalarValue:O
+ Value:O
  CarriageControl:,
- ScalarValue:R
+ Value:R
  CarriageControl:,
- ScalarValue:U
+ Value:U
  CarriageControl:NL
 260 PRINT P,S,V
  ITEMS
- ScalarValue:P
+ Value:P
  CarriageControl:,
- ScalarValue:S
+ Value:S
  CarriageControl:,
- ScalarValue:V
+ Value:V
  CarriageControl:NL
 270 PRINT Q,T,W
  ITEMS
- ScalarValue:Q
+ Value:Q
  CarriageControl:,
- ScalarValue:T
+ Value:T
  CarriageControl:,
- ScalarValue:W
+ Value:W
  CarriageControl:NL
 280 PRINT
  ITEMS
@@ -246,7 +246,7 @@
 300 INPUT L
  Reference:L
 310 IF L = 1 THEN 20
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 320 STOP

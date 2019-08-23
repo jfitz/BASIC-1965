@@ -11,46 +11,46 @@
  Reference:Y
  Reference:T
 26 IF T = 999 THEN 999
- ScalarValue:T
+ Value:T
  NumericConstant:999
  BinaryOperator:=
 30 IF A <= 0 THEN 100
- ScalarValue:A
+ Value:A
  NumericConstant:0
  BinaryOperator:<=
 40 IF R <= 0 THEN 100
- ScalarValue:R
+ Value:R
  NumericConstant:0
  BinaryOperator:<=
 50 IF Y <= 0 THEN 100
- ScalarValue:Y
+ Value:Y
  NumericConstant:0
  BinaryOperator:<=
 60 IF T <= 0 THEN 100
- ScalarValue:T
+ Value:T
  NumericConstant:0
  BinaryOperator:<=
 70 LET N = Y*T
  Reference:N
- ScalarValue:Y
- ScalarValue:T
+ Value:Y
+ Value:T
  BinaryOperator:*
  AssignmentOperator:=
 80 LET R1 = R/100/T
  Reference:R1
- ScalarValue:R
+ Value:R
  NumericConstant:100
  BinaryOperator:/
- ScalarValue:T
+ Value:T
  BinaryOperator:/
  AssignmentOperator:=
 90 LET B = A*(1+R1)^N
  Reference:B
- ScalarValue:A
+ Value:A
  NumericConstant:1
- ScalarValue:R1
+ Value:R1
  BinaryOperator:+
- ScalarValue:N
+ Value:N
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
@@ -58,7 +58,7 @@
  ITEMS
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
- ScalarValue:B
+ Value:B
  CarriageControl:NL
 96 GOTO 5
  LineNumber:5

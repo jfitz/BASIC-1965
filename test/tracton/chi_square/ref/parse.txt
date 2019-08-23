@@ -21,23 +21,23 @@
 80 INPUT E
  Reference:E
 90 IF E = 0 THEN 130
- ScalarValue:E
+ Value:E
  NumericConstant:0
  BinaryOperator:=
 100 LET K = ((D - E)^2)/E
  Reference:K
- ScalarValue:D
- ScalarValue:E
+ Value:D
+ Value:E
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:E
+ Value:E
  BinaryOperator:/
  AssignmentOperator:=
 110 LET J = J + K
  Reference:J
- ScalarValue:J
- ScalarValue:K
+ Value:J
+ Value:K
  BinaryOperator:+
  AssignmentOperator:=
 120 GOTO 50
@@ -46,7 +46,7 @@
  ITEMS
  TextConstant:"CHI-SQUARE = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 140 PRINT "*****************"
  ITEMS
@@ -59,7 +59,7 @@
 160 INPUT L
  Reference:L
 170 IF L = 1 THEN 190
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 180 STOP

@@ -30,16 +30,16 @@
  Reference:F
 120 LET A = Z1/Q
  Reference:A
- ScalarValue:Z1
- ScalarValue:Q
+ Value:Z1
+ Value:Q
  BinaryOperator:/
  AssignmentOperator:=
 130 LET C = ((Z2/Z1)*((Q^2) + 1)) - 1
  Reference:C
- ScalarValue:Z2
- ScalarValue:Z1
+ Value:Z2
+ Value:Z1
  BinaryOperator:/
- ScalarValue:Q
+ Value:Q
  NumericConstant:2
  BinaryOperator:^
  NumericConstant:1
@@ -50,16 +50,16 @@
  AssignmentOperator:=
 140 LET B = Z2/SQR(C)
  Reference:B
- ScalarValue:Z2
- ScalarValue:C
+ Value:Z2
+ Value:C
  FunctionSqr
  BinaryOperator:/
  AssignmentOperator:=
 150 LET E = (Z2/(Q*B)) + 1
  Reference:E
- ScalarValue:Z2
- ScalarValue:Q
- ScalarValue:B
+ Value:Z2
+ Value:Q
+ Value:B
  BinaryOperator:*
  BinaryOperator:/
  NumericConstant:1
@@ -67,11 +67,11 @@
  AssignmentOperator:=
 160 LET D = E*((Q*Z1)/((Q^2) + 1))
  Reference:D
- ScalarValue:E
- ScalarValue:Q
- ScalarValue:Z1
+ Value:E
+ Value:Q
+ Value:Z1
  BinaryOperator:*
- ScalarValue:Q
+ Value:Q
  NumericConstant:2
  BinaryOperator:^
  NumericConstant:1
@@ -86,28 +86,28 @@
 180 LET C1 = 1/(P*F*A)
  Reference:C1
  NumericConstant:1
- ScalarValue:P
- ScalarValue:F
+ Value:P
+ Value:F
  BinaryOperator:*
- ScalarValue:A
+ Value:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 190 LET C2 = 1/(P*F*B)
  Reference:C2
  NumericConstant:1
- ScalarValue:P
- ScalarValue:F
+ Value:P
+ Value:F
  BinaryOperator:*
- ScalarValue:B
+ Value:B
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 200 LET L = D/(P*F)
  Reference:L
- ScalarValue:D
- ScalarValue:P
- ScalarValue:F
+ Value:D
+ Value:P
+ Value:F
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -119,19 +119,19 @@
  ITEMS
  TextConstant:"CAPACITOR 1 = "
  CarriageControl:;
- ScalarValue:C1
+ Value:C1
  CarriageControl:NL
 230 PRINT "CAPACITOR 2 = ";C2
  ITEMS
  TextConstant:"CAPACITOR 2 = "
  CarriageControl:;
- ScalarValue:C2
+ Value:C2
  CarriageControl:NL
 240 PRINT "INDUCTOR = ";L
  ITEMS
  TextConstant:"INDUCTOR = "
  CarriageControl:;
- ScalarValue:L
+ Value:L
  CarriageControl:NL
 250 PRINT
  ITEMS
@@ -143,7 +143,7 @@
 270 INPUT X
  Reference:X
 280 IF X = 1 THEN 300
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:=
 290 STOP

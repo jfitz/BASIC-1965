@@ -8,11 +8,11 @@
  ITEMS
  CarriageControl:NL
 130 IF N = 0 THEN 999
- ScalarValue:N
+ Value:N
  NumericConstant:0
  BinaryOperator:=
 140 IF N = 2 THEN 250
- ScalarValue:N
+ Value:N
  NumericConstant:2
  BinaryOperator:=
 150 LET Z = 0
@@ -29,25 +29,25 @@
 190 FOR F = 3 TO SQR(N)+1 STEP 2
  control: Variable:F
  start:   ["NumericConstant:3"]
- end:     ["ScalarValue:N", "FunctionSqr", "NumericConstant:1", "BinaryOperator:+"]
+ end:     ["Value:N", "FunctionSqr", "NumericConstant:1", "BinaryOperator:+"]
  step:    ["NumericConstant:2"]
 200 GOSUB 300
  LineNumber:300
 210 NEXT F
  Variable:F
 220 IF Z = 0 THEN 250
- ScalarValue:Z
+ Value:Z
  NumericConstant:0
  BinaryOperator:=
 230 PRINT N;
  ITEMS
- ScalarValue:N
+ Value:N
  CarriageControl:;
 240 GOTO 500
  LineNumber:500
 250 PRINT N; "IS PRIME."
  ITEMS
- ScalarValue:N
+ Value:N
  CarriageControl:;
  TextConstant:"IS PRIME."
  CarriageControl:NL
@@ -57,21 +57,21 @@
 300 REM TESTS F AS A FACTOR
  Remark:TESTS F AS A FACTOR
 310 IF N/F <> INT(N/F) THEN 410
- ScalarValue:N
- ScalarValue:F
+ Value:N
+ Value:F
  BinaryOperator:/
- ScalarValue:N
- ScalarValue:F
+ Value:N
+ Value:F
  BinaryOperator:/
  FunctionInt
  BinaryOperator:<>
 330 IF Z > 0 THEN 370
- ScalarValue:Z
+ Value:Z
  NumericConstant:0
  BinaryOperator:>
 340 PRINT N; "HAS THE FACTORS:"
  ITEMS
- ScalarValue:N
+ Value:N
  CarriageControl:;
  TextConstant:"HAS THE FACTORS:"
  CarriageControl:NL
@@ -85,16 +85,16 @@
  AssignmentOperator:=
 370 PRINT F;
  ITEMS
- ScalarValue:F
+ Value:F
  CarriageControl:;
 380 LET N = N/F
  Reference:N
- ScalarValue:N
- ScalarValue:F
+ Value:N
+ Value:F
  BinaryOperator:/
  AssignmentOperator:=
 390 IF N = 1 THEN 500
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:=
 400 GOTO 310

@@ -1,5 +1,5 @@
 100 DEF FNR(X)=INT(X*1E3 + .5)/1E3
- ScalarValue:X
+ Value:X
  NumericConstant:1000
  BinaryOperator:*
  NumericConstant:0.5
@@ -23,13 +23,13 @@
  Reference:V
 130 MAT C = ZER(N,N)
  Reference:C
- ScalarValue:N
- ScalarValue:N
+ Value:N
+ Value:N
  FunctionZer
  AssignmentOperator:=
 150 MAT B = ZER(N)
  Reference:B
- ScalarValue:N
+ Value:N
  FunctionZer
  AssignmentOperator:=
 170 LET C(1,1) = 1
@@ -39,15 +39,15 @@
  NumericConstant:1
  AssignmentOperator:=
 180 LET C(N,N) = 1
- ScalarValue:N
- ScalarValue:N
+ Value:N
+ Value:N
  Reference:C
  NumericConstant:1
  AssignmentOperator:=
 190 LET B(1) = V
  NumericConstant:1
  Reference:B
- ScalarValue:V
+ Value:V
  AssignmentOperator:=
 200
 210 READ I,J,R
@@ -55,24 +55,24 @@
  Reference:J
  Reference:R
 220 IF I = -1 THEN 270
- ScalarValue:I
+ Value:I
  NumericConstant:1
  UnaryOperator:-
  BinaryOperator:=
 230 LET C(I,J) = 1/R
- ScalarValue:I
- ScalarValue:J
+ Value:I
+ Value:J
  Reference:C
  NumericConstant:1
- ScalarValue:R
+ Value:R
  BinaryOperator:/
  AssignmentOperator:=
 240 LET C(J,I) = 1/R
- ScalarValue:J
- ScalarValue:I
+ Value:J
+ Value:I
  Reference:C
  NumericConstant:1
- ScalarValue:R
+ Value:R
  BinaryOperator:/
  AssignmentOperator:=
 250 GOTO 210
@@ -81,7 +81,7 @@
 270 FOR I = 2 TO N-1
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 280    LET S = 0
  Reference:S
  NumericConstant:0
@@ -89,33 +89,33 @@
 290    FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 300       LET S = S+C(I,J)
  Reference:S
- ScalarValue:S
- ScalarValue:I
- ScalarValue:J
- ScalarValue:C
+ Value:S
+ Value:I
+ Value:J
+ Value:C
  BinaryOperator:+
  AssignmentOperator:=
 310    NEXT J
  Variable:J
 320    LET C(I,I) = -S
- ScalarValue:I
- ScalarValue:I
+ Value:I
+ Value:I
  Reference:C
- ScalarValue:S
+ Value:S
  UnaryOperator:-
  AssignmentOperator:=
 330    LET C(1,I) = 0
  NumericConstant:1
- ScalarValue:I
+ Value:I
  Reference:C
  NumericConstant:0
  AssignmentOperator:=
 340    LET C(N,I) = 0
- ScalarValue:N
- ScalarValue:I
+ Value:N
+ Value:I
  Reference:C
  NumericConstant:0
  AssignmentOperator:=
@@ -124,13 +124,13 @@
 360
 370 MAT U = INV(C)
  Reference:U
- MatrixValue:C
+ Value:C
  FunctionInv
  AssignmentOperator:=
 380 MAT P = U*B
  Reference:P
- MatrixValue:U
- MatrixValue:B
+ Value:U
+ Value:B
  BinaryOperator:*
  AssignmentOperator:=
 390
@@ -146,13 +146,13 @@
 420 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 430    PRINT I, FNR(P(I))
  ITEMS
- ScalarValue:I
+ Value:I
  CarriageControl:,
- ScalarValue:I
- ScalarValue:P
+ Value:I
+ Value:P
  UserFunction
  CarriageControl:NL
 440 NEXT I
@@ -178,26 +178,26 @@
 510 FOR I = 2 TO N-1
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 520    PRINT "NODE" I
  ITEMS
  TextConstant:"NODE"
  CarriageControl:
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 530    FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 540       PRINT FNR(C(I,J)*(P(I)-P(J))),
  ITEMS
- ScalarValue:I
- ScalarValue:J
- ScalarValue:C
- ScalarValue:I
- ScalarValue:P
- ScalarValue:J
- ScalarValue:P
+ Value:I
+ Value:J
+ Value:C
+ Value:I
+ Value:P
+ Value:J
+ Value:P
  BinaryOperator:-
  BinaryOperator:*
  UserFunction
@@ -206,14 +206,14 @@
  Variable:J
 560    LET S1 = S1 + C(I,N)*(P(I)-P(N))
  Reference:S1
- ScalarValue:S1
- ScalarValue:I
- ScalarValue:N
- ScalarValue:C
- ScalarValue:I
- ScalarValue:P
- ScalarValue:N
- ScalarValue:P
+ Value:S1
+ Value:I
+ Value:N
+ Value:C
+ Value:I
+ Value:P
+ Value:N
+ Value:P
  BinaryOperator:-
  BinaryOperator:*
  BinaryOperator:+
@@ -234,15 +234,15 @@
  ITEMS
  TextConstant:"TOTAL CURRENT = "
  CarriageControl:
- ScalarValue:S1
+ Value:S1
  UserFunction
  CarriageControl:NL
 630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V/S1)
  ITEMS
  TextConstant:"RESISTANCE OF CIRCUIT = "
  CarriageControl:
- ScalarValue:V
- ScalarValue:S1
+ Value:V
+ Value:S1
  BinaryOperator:/
  UserFunction
  CarriageControl:NL

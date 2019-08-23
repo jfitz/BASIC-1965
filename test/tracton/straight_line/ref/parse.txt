@@ -16,15 +16,15 @@
  Reference:B
 70 LET C = A/B
  Reference:C
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:/
  AssignmentOperator:=
 80 PRINT "YEARLY DEPRECIATION = ";C
  ITEMS
  TextConstant:"YEARLY DEPRECIATION = "
  CarriageControl:;
- ScalarValue:C
+ Value:C
  CarriageControl:NL
 90 PRINT
  ITEMS
@@ -41,18 +41,18 @@
  AssignmentOperator:=
 120 LET X = X + 1
  Reference:X
- ScalarValue:X
+ Value:X
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 130 LET A = A - C
  Reference:A
- ScalarValue:A
- ScalarValue:C
+ Value:A
+ Value:C
  BinaryOperator:-
  AssignmentOperator:=
 140 IF A < 0 THEN 160
- ScalarValue:A
+ Value:A
  NumericConstant:0
  BinaryOperator:<
 150 GOTO 170
@@ -63,13 +63,13 @@
  AssignmentOperator:=
 170 PRINT X,A
  ITEMS
- ScalarValue:X
+ Value:X
  CarriageControl:,
- ScalarValue:A
+ Value:A
  CarriageControl:NL
 180 IF X < B THEN 120
- ScalarValue:X
- ScalarValue:B
+ Value:X
+ Value:B
  BinaryOperator:<
 190 PRINT "********************"
  ITEMS
@@ -82,7 +82,7 @@
 210 INPUT L
  Reference:L
 220 IF L = 1 THEN 240
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 230 STOP

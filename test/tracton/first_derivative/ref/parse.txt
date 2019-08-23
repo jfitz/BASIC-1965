@@ -10,11 +10,11 @@
  Reference:X
 50 LET Y = X
  Reference:Y
- ScalarValue:X
+ Value:X
  AssignmentOperator:=
 60 LET Z = (X*(1E-04))/2
  Reference:Z
- ScalarValue:X
+ Value:X
  NumericConstant:0.0001
  BinaryOperator:*
  NumericConstant:2
@@ -22,53 +22,53 @@
  AssignmentOperator:=
 70 LET W = X + Z
  Reference:W
- ScalarValue:X
- ScalarValue:Z
+ Value:X
+ Value:Z
  BinaryOperator:+
  AssignmentOperator:=
 80 LET V = X - Z
  Reference:V
- ScalarValue:X
- ScalarValue:Z
+ Value:X
+ Value:Z
  BinaryOperator:-
  AssignmentOperator:=
 90 LET X = W
  Reference:X
- ScalarValue:W
+ Value:W
  AssignmentOperator:=
 100 GOSUB 280
  LineNumber:280
 110 LET A = P
  Reference:A
- ScalarValue:P
+ Value:P
  AssignmentOperator:=
 120 LET X = V
  Reference:X
- ScalarValue:V
+ Value:V
  AssignmentOperator:=
 130 GOSUB 280
  LineNumber:280
 140 LET B = P
  Reference:B
- ScalarValue:P
+ Value:P
  AssignmentOperator:=
 150 LET X = Y
  Reference:X
- ScalarValue:Y
+ Value:Y
  AssignmentOperator:=
 160 GOSUB 280
  LineNumber:280
 170 LET C = P
  Reference:C
- ScalarValue:P
+ Value:P
  AssignmentOperator:=
 180 LET F = (A - B)/(2*Z)
  Reference:F
- ScalarValue:A
- ScalarValue:B
+ Value:A
+ Value:B
  BinaryOperator:-
  NumericConstant:2
- ScalarValue:Z
+ Value:Z
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -76,17 +76,17 @@
  ITEMS
  TextConstant:"IF X = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:,
  TextConstant:"THEN F(X) = "
  CarriageControl:;
- ScalarValue:C
+ Value:C
  CarriageControl:NL
 200 PRINT "AND F'(X) = ";F
  ITEMS
  TextConstant:"AND F'(X) = "
  CarriageControl:;
- ScalarValue:F
+ Value:F
  CarriageControl:NL
 210 PRINT
  ITEMS
@@ -98,7 +98,7 @@
 230 INPUT L
  Reference:L
 240 IF L = 1 THEN 260
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 250 STOP
@@ -110,7 +110,7 @@
  LineNumber:40
 280 LET P = X^2
  Reference:P
- ScalarValue:X
+ Value:X
  NumericConstant:2
  BinaryOperator:^
  AssignmentOperator:=

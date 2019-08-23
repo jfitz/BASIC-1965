@@ -9,8 +9,8 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
 130    READ P(B,R)
- ScalarValue:B
- ScalarValue:R
+ Value:B
+ Value:R
  Reference:P
 140    NEXT R
  Variable:R
@@ -65,8 +65,8 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
 220       READ Q(R,C)
- ScalarValue:R
- ScalarValue:C
+ Value:R
+ Value:C
  Reference:Q
 230    NEXT C
  Variable:C
@@ -135,7 +135,7 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
 370    READ L(C)
- ScalarValue:C
+ Value:C
  Reference:L
 380 NEXT C
  Variable:C
@@ -155,7 +155,7 @@
  ITEMS
  TextConstant:"INNING"
  CarriageControl:
- ScalarValue:I
+ Value:I
  CarriageControl:NL
 450 LET S = 0
  Reference:S
@@ -173,7 +173,7 @@
 490 REM NEW BATTER
  Remark:NEW BATTER
 500 IF B < 9 THEN 520
- ScalarValue:B
+ Value:B
  NumericConstant:9
  BinaryOperator:<
 510 LET B = 0
@@ -182,7 +182,7 @@
  AssignmentOperator:=
 520 LET B = B+1
  Reference:B
- ScalarValue:B
+ Value:B
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -200,14 +200,14 @@
  end:     ["NumericConstant:3"]
 570 LET X = X - P(B,R)
  Reference:X
- ScalarValue:X
- ScalarValue:B
- ScalarValue:R
- ScalarValue:P
+ Value:X
+ Value:B
+ Value:R
+ Value:P
  BinaryOperator:-
  AssignmentOperator:=
 580 IF X < 0 THEN 620
- ScalarValue:X
+ Value:X
  NumericConstant:0
  BinaryOperator:<
 590 NEXT R
@@ -220,7 +220,7 @@
 620 REM PRINT OUTCOME
  Remark:PRINT OUTCOME
 630 IF R > 0 THEN 660
- ScalarValue:R
+ Value:R
  NumericConstant:0
  BinaryOperator:>
 640 PRINT "OUT   ";
@@ -230,7 +230,7 @@
 650 GOTO 770
  LineNumber:770
 660 IF R > 1 THEN 690
- ScalarValue:R
+ Value:R
  NumericConstant:1
  BinaryOperator:>
 670 PRINT "SINGLE   ";
@@ -240,7 +240,7 @@
 680 GOTO 770
  LineNumber:770
 690 IF R > 2 THEN 720
- ScalarValue:R
+ Value:R
  NumericConstant:2
  BinaryOperator:>
 700 PRINT "WALK   ";
@@ -250,7 +250,7 @@
 710 GOTO 770
  LineNumber:770
 720 IF R > 3 THEN 750
- ScalarValue:R
+ Value:R
  NumericConstant:3
  BinaryOperator:>
 730 PRINT "DOUBLE   ";
@@ -267,55 +267,55 @@
 770 REM DO BOOK-KEEPING
  Remark:DO BOOK-KEEPING
 780 IF R = 0 THEN 860
- ScalarValue:R
+ Value:R
  NumericConstant:0
  BinaryOperator:=
 790 IF R = 2 THEN 810
- ScalarValue:R
+ Value:R
  NumericConstant:2
  BinaryOperator:=
 800 LET H = H + 1
  Reference:H
- ScalarValue:H
+ Value:H
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 810 LET X = Q(R,C)
  Reference:X
- ScalarValue:R
- ScalarValue:C
- ScalarValue:Q
+ Value:R
+ Value:C
+ Value:Q
  AssignmentOperator:=
 820 LET Y = INT(X/10)
  Reference:Y
- ScalarValue:X
+ Value:X
  NumericConstant:10
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 830 LET C = X - Y*10
  Reference:C
- ScalarValue:X
- ScalarValue:Y
+ Value:X
+ Value:Y
  NumericConstant:10
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 840 LET S = S+Y
  Reference:S
- ScalarValue:S
- ScalarValue:Y
+ Value:S
+ Value:Y
  BinaryOperator:+
  AssignmentOperator:=
 850 GOTO 490
  LineNumber:490
 860 IF O = 2 THEN 890
- ScalarValue:O
+ Value:O
  NumericConstant:2
  BinaryOperator:=
 870 LET O = O+1
  Reference:O
- ScalarValue:O
+ Value:O
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -326,9 +326,9 @@
  Remark:END OF AN INNING
 895 LET L7 = L7 + L(C)
  Reference:L7
- ScalarValue:L7
- ScalarValue:C
- ScalarValue:L
+ Value:L7
+ Value:C
+ Value:L
  BinaryOperator:+
  AssignmentOperator:=
 900 PRINT
@@ -336,7 +336,7 @@
  CarriageControl:NL
 910 PRINT S; "RUNS"
  ITEMS
- ScalarValue:S
+ Value:S
  CarriageControl:;
  TextConstant:"RUNS"
  CarriageControl:NL
@@ -345,18 +345,18 @@
  CarriageControl:NL
 930 LET S1 = S1+S
  Reference:S1
- ScalarValue:S1
- ScalarValue:S
+ Value:S1
+ Value:S
  BinaryOperator:+
  AssignmentOperator:=
 940 LET I = I+1
  Reference:I
- ScalarValue:I
+ Value:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 945 IF I < 9 THEN 410
- ScalarValue:I
+ Value:I
  NumericConstant:9
  BinaryOperator:<
 950 
@@ -374,19 +374,19 @@
  CarriageControl:NL
 975 PRINT S1; "RUNS SCORED"
  ITEMS
- ScalarValue:S1
+ Value:S1
  CarriageControl:;
  TextConstant:"RUNS SCORED"
  CarriageControl:NL
 980 PRINT L7; "MEN LEFT ON BASE"
  ITEMS
- ScalarValue:L7
+ Value:L7
  CarriageControl:;
  TextConstant:"MEN LEFT ON BASE"
  CarriageControl:NL
 985 PRINT H; "HITS"
  ITEMS
- ScalarValue:H
+ Value:H
  CarriageControl:;
  TextConstant:"HITS"
  CarriageControl:NL

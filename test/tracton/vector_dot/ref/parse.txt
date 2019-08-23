@@ -22,14 +22,14 @@
  Remark:CALCULATE THE NORM OF A VECTOR
 80 LET X = SQR((A1^2) + (A2^2) + (A3^2))
  Reference:X
- ScalarValue:A1
+ Value:A1
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:A2
+ Value:A2
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
- ScalarValue:A3
+ Value:A3
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
@@ -39,14 +39,14 @@
  Remark:CALCULATE THE NORM OF B VECTOR
 100 LET Y = SQR((B1^2) + (B2^2) + (B3^2))
  Reference:Y
- ScalarValue:B1
+ Value:B1
  NumericConstant:2
  BinaryOperator:^
- ScalarValue:B2
+ Value:B2
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
- ScalarValue:B3
+ Value:B3
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
@@ -56,15 +56,15 @@
  Remark:CALCULATE DOT PRODUCT
 120 LET Z = (A1*B1) + (A2*B2) + (A3*B3)
  Reference:Z
- ScalarValue:A1
- ScalarValue:B1
+ Value:A1
+ Value:B1
  BinaryOperator:*
- ScalarValue:A2
- ScalarValue:B2
+ Value:A2
+ Value:B2
  BinaryOperator:*
  BinaryOperator:+
- ScalarValue:A3
- ScalarValue:B3
+ Value:A3
+ Value:B3
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
@@ -72,19 +72,19 @@
  ITEMS
  TextConstant:"DOT PRODUCT = "
  CarriageControl:;
- ScalarValue:Z
+ Value:Z
  CarriageControl:NL
 140 PRINT "NORM OF 1ST VECTOR = ";X
  ITEMS
  TextConstant:"NORM OF 1ST VECTOR = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:NL
 150 PRINT "NORM OF 2ND VECTOR = ";Y
  ITEMS
  TextConstant:"NORM OF 2ND VECTOR = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 160 PRINT "********************"
  ITEMS
@@ -97,7 +97,7 @@
 180 INPUT L
  Reference:L
 190 IF L = 1 THEN 210
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 200 STOP

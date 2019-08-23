@@ -28,27 +28,27 @@
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 50             LET X = P
  Reference:X
- ScalarValue:P
+ Value:P
  AssignmentOperator:=
 60             GOSUB 200
  LineNumber:200
 70             LET X = Q
  Reference:X
- ScalarValue:Q
+ Value:Q
  AssignmentOperator:=
 80             GOSUB 200
  LineNumber:200
 90             LET X = R
  Reference:X
- ScalarValue:R
+ Value:R
  AssignmentOperator:=
 95             GOSUB 200
  LineNumber:200
 100            LET X = P*SGN(Q+R)
  Reference:X
- ScalarValue:P
- ScalarValue:Q
- ScalarValue:R
+ Value:P
+ Value:Q
+ Value:R
  BinaryOperator:+
  FunctionSgn
  BinaryOperator:*
@@ -68,7 +68,7 @@
  
 170
 200 IF X > 0 THEN 250
- ScalarValue:X
+ Value:X
  NumericConstant:0
  BinaryOperator:>
 210 PRINT "FALSE",

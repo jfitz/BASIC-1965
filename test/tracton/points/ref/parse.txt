@@ -17,7 +17,7 @@
  Reference:W
 70 LET W = (W*3.14159)/180
  Reference:W
- ScalarValue:W
+ Value:W
  NumericConstant:3.14159
  BinaryOperator:*
  NumericConstant:180
@@ -38,7 +38,7 @@
 120 LET Z = 6.28319/N
  Reference:Z
  NumericConstant:6.28319
- ScalarValue:N
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 130 PRINT
@@ -49,16 +49,16 @@
  TextConstant:"COORDINATES"
  CarriageControl:NL
 150 FOR I = 0 TO N - 1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 160 LET X = X0 + (R*COS(W + (Z*I)))
  Reference:X
- ScalarValue:X0
- ScalarValue:R
- ScalarValue:W
- ScalarValue:Z
- ScalarValue:I
+ Value:X0
+ Value:R
+ Value:W
+ Value:Z
+ Value:I
  BinaryOperator:*
  BinaryOperator:+
  FunctionCos
@@ -67,11 +67,11 @@
  AssignmentOperator:=
 170 LET Y = Y0 + (R*SIN(W + (Z*I)))
  Reference:Y
- ScalarValue:Y0
- ScalarValue:R
- ScalarValue:W
- ScalarValue:Z
- ScalarValue:I
+ Value:Y0
+ Value:R
+ Value:W
+ Value:Z
+ Value:I
  BinaryOperator:*
  BinaryOperator:+
  FunctionSin
@@ -80,7 +80,7 @@
  AssignmentOperator:=
 180 LET P = I + 1
  Reference:P
- ScalarValue:I
+ Value:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -88,18 +88,18 @@
  ITEMS
  TextConstant:"POINT:"
  CarriageControl:;
- ScalarValue:P
+ Value:P
  CarriageControl:,
  TextConstant:"X = "
  CarriageControl:;
- ScalarValue:X
+ Value:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- ScalarValue:Y
+ Value:Y
  CarriageControl:NL
 200 NEXT I
- VariableName:I
+ Variable:I
 210 PRINT
  ITEMS
  CarriageControl:NL
@@ -110,7 +110,7 @@
 230 INPUT L
  Reference:L
 240 IF L = 1 THEN 260
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 250 STOP

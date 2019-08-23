@@ -14,18 +14,18 @@
 150 FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:M"]
+ end:     ["Value:M"]
 160    READ M(I)
- ScalarValue:I
+ Value:I
  Reference:M
 170 NEXT I
  Variable:I
 180 FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 190    READ Y(J)
- ScalarValue:J
+ Value:J
  Reference:Y
 200 NEXT J
  Variable:J
@@ -33,15 +33,15 @@
 250 FOR K = 1 TO M
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:M"]
+ end:     ["Value:M"]
 260    LET Z(K) = X(K)
- ScalarValue:K
+ Value:K
  Reference:Z
- ScalarValue:K
- ScalarValue:X
+ Value:K
+ Value:X
  AssignmentOperator:=
 270    LET T(K) = +1
- ScalarValue:K
+ Value:K
  Reference:T
  NumericConstant:1
  UnaryOperator:+
@@ -51,18 +51,18 @@
 290 FOR K = 1 TO N
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 300    LET Z(M+K) = Y(K)
- ScalarValue:M
- ScalarValue:K
+ Value:M
+ Value:K
  BinaryOperator:+
  Reference:Z
- ScalarValue:K
- ScalarValue:Y
+ Value:K
+ Value:Y
  AssignmentOperator:=
 310    LET T(M+K) = 0
- ScalarValue:M
- ScalarValue:K
+ Value:M
+ Value:K
  BinaryOperator:+
  Reference:T
  NumericConstant:0
@@ -73,48 +73,48 @@
 360 FOR K = 1 TO M+N-1
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:M", "Value:N", "BinaryOperator:+", "NumericConstant:1", "BinaryOperator:-"]
 370    FOR L = K+1 TO M+N
  control: Variable:L
- start:   ["ScalarValue:K", "NumericConstant:1", "BinaryOperator:+"]
- end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
+ start:   ["Value:K", "NumericConstant:1", "BinaryOperator:+"]
+ end:     ["Value:M", "Value:N", "BinaryOperator:+"]
 380       IF Z(K) <= Z(L) THEN 450
- ScalarValue:K
- ScalarValue:Z
- ScalarValue:L
- ScalarValue:Z
+ Value:K
+ Value:Z
+ Value:L
+ Value:Z
  BinaryOperator:<=
 390       LET T = Z(K)
  Reference:T
- ScalarValue:K
- ScalarValue:Z
+ Value:K
+ Value:Z
  AssignmentOperator:=
 400       LET Z(K) = Z(L)
- ScalarValue:K
+ Value:K
  Reference:Z
- ScalarValue:L
- ScalarValue:Z
+ Value:L
+ Value:Z
  AssignmentOperator:=
 410       LET Z(L) = T
- ScalarValue:L
+ Value:L
  Reference:Z
- ScalarValue:T
+ Value:T
  AssignmentOperator:=
 420       LET T = T(K)
  Reference:T
- ScalarValue:K
- ScalarValue:T
+ Value:K
+ Value:T
  AssignmentOperator:=
 430       LET T(K) = T(L)
- ScalarValue:K
+ Value:K
  Reference:T
- ScalarValue:L
- ScalarValue:T
+ Value:L
+ Value:T
  AssignmentOperator:=
 440       LET T(L) = T
- ScalarValue:L
+ Value:L
  Reference:T
- ScalarValue:T
+ Value:T
  AssignmentOperator:=
 450    NEXT L
  Variable:L
@@ -131,39 +131,39 @@
  AssignmentOperator:=
 520 LET B = J
  Reference:B
- ScalarValue:J
+ Value:J
  AssignmentOperator:=
 530 LET T = J
  Reference:T
- ScalarValue:J
+ Value:J
  AssignmentOperator:=
 540 LET J = J+1
  Reference:J
- ScalarValue:J
+ Value:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 550 IF J > M+N THEN 600
- ScalarValue:J
- ScalarValue:M
- ScalarValue:N
+ Value:J
+ Value:M
+ Value:N
  BinaryOperator:+
  BinaryOperator:>
 560 IF Z(J) > Z(B) THEN 600
- ScalarValue:J
- ScalarValue:Z
- ScalarValue:B
- ScalarValue:Z
+ Value:J
+ Value:Z
+ Value:B
+ Value:Z
  BinaryOperator:>
 570 LET T = T+J
  Reference:T
- ScalarValue:T
- ScalarValue:J
+ Value:T
+ Value:J
  BinaryOperator:+
  AssignmentOperator:=
 580 LET K = K+1
  Reference:K
- ScalarValue:K
+ Value:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -171,21 +171,21 @@
  LineNumber:540
 600 FOR L = B TO J-1
  control: Variable:L
- start:   ["ScalarValue:B"]
- end:     ["ScalarValue:J", "NumericConstant:1", "BinaryOperator:-"]
+ start:   ["Value:B"]
+ end:     ["Value:J", "NumericConstant:1", "BinaryOperator:-"]
 610    LET Z(L) = T/K
- ScalarValue:L
+ Value:L
  Reference:Z
- ScalarValue:T
- ScalarValue:K
+ Value:T
+ Value:K
  BinaryOperator:/
  AssignmentOperator:=
 620 NEXT L
  Variable:L
 630 IF J <= M+N THEN 510
- ScalarValue:J
- ScalarValue:M
- ScalarValue:N
+ Value:J
+ Value:M
+ Value:N
  BinaryOperator:+
  BinaryOperator:<=
 640
@@ -202,16 +202,16 @@
 760 FOR K = 1 TO M+N
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:M", "ScalarValue:N", "BinaryOperator:+"]
+ end:     ["Value:M", "Value:N", "BinaryOperator:+"]
 770    LET S(T(K)) = S(T(K)) + Z(K)
- ScalarValue:K
- ScalarValue:T
+ Value:K
+ Value:T
  Reference:S
- ScalarValue:K
- ScalarValue:T
- ScalarValue:S
- ScalarValue:K
- ScalarValue:Z
+ Value:K
+ Value:T
+ Value:S
+ Value:K
+ Value:Z
  BinaryOperator:+
  AssignmentOperator:=
 790 NEXT K
@@ -221,12 +221,12 @@
  TextConstant:"RANK SUM FOR X IS"
  CarriageControl:;
  NumericConstant:1
- ScalarValue:S
+ Value:S
  CarriageControl:,
  TextConstant:"FOR Y IS"
  CarriageControl:;
  NumericConstant:0
- ScalarValue:S
+ Value:S
  CarriageControl:NL
 810
 900 DATA 6, 4

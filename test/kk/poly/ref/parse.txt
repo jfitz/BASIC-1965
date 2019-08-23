@@ -11,9 +11,9 @@
 30 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 40 READ A(I)
- ScalarValue:I
+ Value:I
  Reference:A
 50 NEXT I
  Variable:I
@@ -22,9 +22,9 @@
 70 FOR J = 1 TO X9
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:X9"]
+ end:     ["Value:X9"]
 80 READ X(J)
- ScalarValue:J
+ Value:J
  Reference:X
 90 NEXT J
  Variable:J
@@ -72,23 +72,23 @@
 230 FOR J = 1 TO X9
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:X9"]
+ end:     ["Value:X9"]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
  ITEMS
- ScalarValue:J
- ScalarValue:X
+ Value:J
+ Value:X
  CarriageControl:,
- ScalarValue:J
+ Value:J
  NumericConstant:0
- ScalarValue:T
+ Value:T
  CarriageControl:,
- ScalarValue:J
+ Value:J
  NumericConstant:1
- ScalarValue:T
+ Value:T
  CarriageControl:,
- ScalarValue:J
+ Value:J
  NumericConstant:2
- ScalarValue:T
+ Value:T
  CarriageControl:NL
 250 NEXT J
  Variable:J
@@ -100,19 +100,19 @@
 510 FOR J = 1 TO X9
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:X9"]
+ end:     ["Value:X9"]
 520 LET X = X(J)
  Reference:X
- ScalarValue:J
- ScalarValue:X
+ Value:J
+ Value:X
  AssignmentOperator:=
 530 GOSUB 1000
  LineNumber:1000
 540 LET T(J,K) = Y
- ScalarValue:J
- ScalarValue:K
+ Value:J
+ Value:K
  Reference:T
- ScalarValue:Y
+ Value:Y
  AssignmentOperator:=
 550 NEXT J
  Variable:J
@@ -128,14 +128,14 @@
 1020 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 1030 LET Y = Y*X + A(I)
  Reference:Y
- ScalarValue:Y
- ScalarValue:X
+ Value:Y
+ Value:X
  BinaryOperator:*
- ScalarValue:I
- ScalarValue:A
+ Value:I
+ Value:A
  BinaryOperator:+
  AssignmentOperator:=
 1040 NEXT I
@@ -148,14 +148,14 @@
 2010 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 2020 LET A(I) = A(I)*(N-I)
- ScalarValue:I
+ Value:I
  Reference:A
- ScalarValue:I
- ScalarValue:A
- ScalarValue:N
- ScalarValue:I
+ Value:I
+ Value:A
+ Value:N
+ Value:I
  BinaryOperator:-
  BinaryOperator:*
  AssignmentOperator:=
@@ -163,7 +163,7 @@
  Variable:I
 2040 LET N = N-1
  Reference:N
- ScalarValue:N
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=

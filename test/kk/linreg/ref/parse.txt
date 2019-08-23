@@ -24,43 +24,43 @@
 170 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N"]
+ end:     ["Value:N"]
 180    READ X, Y
  Reference:X
  Reference:Y
 190    LET X1 = X1 + X
  Reference:X1
- ScalarValue:X1
- ScalarValue:X
+ Value:X1
+ Value:X
  BinaryOperator:+
  AssignmentOperator:=
 200    LET Y1 = Y1 + Y
  Reference:Y1
- ScalarValue:Y1
- ScalarValue:Y
+ Value:Y1
+ Value:Y
  BinaryOperator:+
  AssignmentOperator:=
 210    LET X2 = X2 + X*X
  Reference:X2
- ScalarValue:X2
- ScalarValue:X
- ScalarValue:X
+ Value:X2
+ Value:X
+ Value:X
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 220    LET Y2 = Y2 + Y*Y
  Reference:Y2
- ScalarValue:Y2
- ScalarValue:Y
- ScalarValue:Y
+ Value:Y2
+ Value:Y
+ Value:Y
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 230    LET Z = Z + X*Y
  Reference:Z
- ScalarValue:Z
- ScalarValue:X
- ScalarValue:Y
+ Value:Z
+ Value:X
+ Value:Y
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
@@ -69,66 +69,66 @@
 250
 260 LET X3 = X1/N
  Reference:X3
- ScalarValue:X1
- ScalarValue:N
+ Value:X1
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 265 LET Y3 = Y1/N
  Reference:Y3
- ScalarValue:Y1
- ScalarValue:N
+ Value:Y1
+ Value:N
  BinaryOperator:/
  AssignmentOperator:=
 270 LET S1 = X2 - X1*X3
  Reference:S1
- ScalarValue:X2
- ScalarValue:X1
- ScalarValue:X3
+ Value:X2
+ Value:X1
+ Value:X3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 280 LET S2 = Y2 - Y1*Y3
  Reference:S2
- ScalarValue:Y2
- ScalarValue:Y1
- ScalarValue:Y3
+ Value:Y2
+ Value:Y1
+ Value:Y3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 290 LET S = Z - X1*Y3
  Reference:S
- ScalarValue:Z
- ScalarValue:X1
- ScalarValue:Y3
+ Value:Z
+ Value:X1
+ Value:Y3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 300 LET B = S/S1
  Reference:B
- ScalarValue:S
- ScalarValue:S1
+ Value:S
+ Value:S1
  BinaryOperator:/
  AssignmentOperator:=
 310 LET B1 = Y3 - B*X3
  Reference:B1
- ScalarValue:Y3
- ScalarValue:B
- ScalarValue:X3
+ Value:Y3
+ Value:B
+ Value:X3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 320 LET S3 = S2 - B*S
  Reference:S3
- ScalarValue:S2
- ScalarValue:B
- ScalarValue:S
+ Value:S2
+ Value:B
+ Value:S
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 330 LET S4 = S3/(N-2)
  Reference:S4
- ScalarValue:S3
- ScalarValue:N
+ Value:S3
+ Value:N
  NumericConstant:2
  BinaryOperator:-
  BinaryOperator:/
@@ -138,27 +138,27 @@
  ITEMS
  TextConstant:"NUMBER = "
  CarriageControl:
- ScalarValue:N
+ Value:N
  CarriageControl:NL
 360 PRINT "MEAN OF X = "X3, "OF Y "Y3
  ITEMS
  TextConstant:"MEAN OF X = "
  CarriageControl:
- ScalarValue:X3
+ Value:X3
  CarriageControl:,
  TextConstant:"OF Y "
  CarriageControl:
- ScalarValue:Y3
+ Value:Y3
  CarriageControl:NL
 370 PRINT "SLOPE = "B, "Y-INTERCEPT = "B1
  ITEMS
  TextConstant:"SLOPE = "
  CarriageControl:
- ScalarValue:B
+ Value:B
  CarriageControl:,
  TextConstant:"Y-INTERCEPT = "
  CarriageControl:
- ScalarValue:B1
+ Value:B1
  CarriageControl:NL
 375 PRINT
  ITEMS
@@ -169,7 +169,7 @@
  CarriageControl:,
  TextConstant:"TOTAL"
  CarriageControl:,
- ScalarValue:Y2
+ Value:Y2
  CarriageControl:NL
 390 PRINT "    ", "MEAN", Y3*Y1
  ITEMS
@@ -177,8 +177,8 @@
  CarriageControl:,
  TextConstant:"MEAN"
  CarriageControl:,
- ScalarValue:Y3
- ScalarValue:Y1
+ Value:Y3
+ Value:Y1
  BinaryOperator:*
  CarriageControl:NL
 400 PRINT "    ", "SLOPE", B*S
@@ -187,8 +187,8 @@
  CarriageControl:,
  TextConstant:"SLOPE"
  CarriageControl:,
- ScalarValue:B
- ScalarValue:S
+ Value:B
+ Value:S
  BinaryOperator:*
  CarriageControl:NL
 410 PRINT "    ", "RESIDUAL", S3
@@ -197,7 +197,7 @@
  CarriageControl:,
  TextConstant:"RESIDUAL"
  CarriageControl:,
- ScalarValue:S3
+ Value:S3
  CarriageControl:NL
 415 PRINT
  ITEMS
@@ -212,8 +212,8 @@
  CarriageControl:,
  TextConstant:"X  "
  CarriageControl:,
- ScalarValue:S1
- ScalarValue:N
+ Value:S1
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
@@ -225,8 +225,8 @@
  CarriageControl:,
  TextConstant:"Y  "
  CarriageControl:,
- ScalarValue:S2
- ScalarValue:N
+ Value:S2
+ Value:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
@@ -238,7 +238,7 @@
  CarriageControl:,
  TextConstant:"ERROR"
  CarriageControl:,
- ScalarValue:S4
+ Value:S4
  FunctionSqr
  CarriageControl:NL
 460 PRINT "    ", "Y-BAR", SQR(S4/N)
@@ -247,8 +247,8 @@
  CarriageControl:,
  TextConstant:"Y-BAR"
  CarriageControl:,
- ScalarValue:S4
- ScalarValue:N
+ Value:S4
+ Value:N
  BinaryOperator:/
  FunctionSqr
  CarriageControl:NL
@@ -258,8 +258,8 @@
  CarriageControl:,
  TextConstant:"SLOPE"
  CarriageControl:,
- ScalarValue:S4
- ScalarValue:S1
+ Value:S4
+ Value:S1
  BinaryOperator:/
  FunctionSqr
  CarriageControl:NL
@@ -269,14 +269,14 @@
  CarriageControl:,
  TextConstant:"Y-INTER."
  CarriageControl:,
- ScalarValue:S4
+ Value:S4
  NumericConstant:1
- ScalarValue:N
+ Value:N
  BinaryOperator:/
- ScalarValue:X3
- ScalarValue:X3
+ Value:X3
+ Value:X3
  BinaryOperator:*
- ScalarValue:S1
+ Value:S1
  BinaryOperator:/
  BinaryOperator:+
  BinaryOperator:*
@@ -289,19 +289,19 @@
  ITEMS
  TextConstant:"F-RATIO FOR SLOPE = "
  CarriageControl:
- ScalarValue:B
- ScalarValue:S
+ Value:B
+ Value:S
  BinaryOperator:*
- ScalarValue:S4
+ Value:S4
  BinaryOperator:/
  CarriageControl:NL
 500 PRINT "CORRELATION COEFFICIENT = " S/SQR(S1*S2)
  ITEMS
  TextConstant:"CORRELATION COEFFICIENT = "
  CarriageControl:
- ScalarValue:S
- ScalarValue:S1
- ScalarValue:S2
+ Value:S
+ Value:S1
+ Value:S2
  BinaryOperator:*
  FunctionSqr
  BinaryOperator:/

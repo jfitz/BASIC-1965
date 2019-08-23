@@ -23,30 +23,30 @@
  NumericConstant:1
  AssignmentOperator:=
 80 FOR I = 1 TO N - 1
- control: VariableName:I
+ control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["ScalarValue:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
 90 LET K = 1 - (I/M)
  Reference:K
  NumericConstant:1
- ScalarValue:I
- ScalarValue:M
+ Value:I
+ Value:M
  BinaryOperator:/
  BinaryOperator:-
  AssignmentOperator:=
 100 LET J = J*K
  Reference:J
- ScalarValue:J
- ScalarValue:K
+ Value:J
+ Value:K
  BinaryOperator:*
  AssignmentOperator:=
 110 NEXT I
- VariableName:I
+ Variable:I
 120 PRINT "PROBABILITY = ";J
  ITEMS
  TextConstant:"PROBABILITY = "
  CarriageControl:;
- ScalarValue:J
+ Value:J
  CarriageControl:NL
 130 PRINT
  ITEMS
@@ -58,7 +58,7 @@
 150 INPUT L
  Reference:L
 160 IF L = 1 THEN 30
- ScalarValue:L
+ Value:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP
