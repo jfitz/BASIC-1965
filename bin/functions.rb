@@ -13,6 +13,10 @@ class AbstractFunction < AbstractElement
     self.class.to_s
   end
 
+  def to_s
+    @name
+  end
+
   private
 
   def default_args(interpreter)
@@ -124,6 +128,8 @@ end
 
 # User-defined function (provides a scalar value)
 class UserFunction < AbstractScalarFunction
+  attr_writer :valref
+
   def self.accept?(token)
     classes = %w(UserFunctionToken)
     classes.include?(token.class.to_s)
@@ -131,10 +137,51 @@ class UserFunction < AbstractScalarFunction
 
   def initialize(text)
     super
+    @valref = :value
+    @shape = :scalar
+  end
+
+  def to_s
+    @name.to_s
+  end
+
+  def content_type
+    :numeric
+  end
+
+  def compatible?(value)
+    numerics = [:numeric, :integer]
+    strings = [:string]
+
+    compatible = false
+
+    if content_type == :numeric
+      compatible = numerics.include?(value.content_type)
+    end
+
+    if content_type == :string
+      compatible = strings.include?(value.content_type)
+    end
+
+    if content_type == :integer
+      compatible = numerics.include?(value.content_type)
+    end
+
+    compatible
   end
 
   # return a single value
   def evaluate(interpreter, stack)
+    x = false
+    x = evaluate_value(interpreter, stack) if @valref == :value
+    x = evaluate_ref(interpreter, stack) if @valref == :reference
+    x
+  end
+
+  private
+
+  # return a single value
+  def evaluate_value(interpreter, stack)
     definition = interpreter.get_user_function(@name)
 
     # verify function is defined
@@ -159,6 +206,50 @@ class UserFunction < AbstractScalarFunction
 
     interpreter.clear_user_var_values
     results[0]
+  end
+
+  def evaluate_ref(interpreter, stack)
+    x = nil
+    x = evaluate_ref_scalar(interpreter, stack) if @shape == :scalar
+
+    x = evaluate_ref_compound(interpreter, stack) if
+      @shape == :array || @shape == :matrix
+    x
+  end
+  
+  # return a single value, a reference to this object
+  def evaluate_ref_scalar(interpreter, stack)
+    if previous_is_array(stack)
+      subscripts = stack.pop
+      @subscripts = interpreter.normalize_subscripts(subscripts)
+      num_args = @subscripts.length
+
+      if num_args.zero?
+        raise(BASICRuntimeError,
+              'Variable expects subscripts, found empty parentheses')
+      end
+
+      interpreter.check_subscripts(@variable_name, @subscripts)
+    end
+    self
+  end
+
+  # return a single value, a reference to this object
+  def evaluate_ref_compound(interpreter, stack)
+    if previous_is_array(stack)
+      subscripts = stack.pop
+      @subscripts = interpreter.normalize_subscripts(subscripts)
+      num_args = @subscripts.length
+
+      if num_args.zero?
+        raise(BASICRuntimeError,
+              'Variable expects subscripts, found empty parentheses')
+      end
+
+      interpreter.check_subscripts(@variable_name, @subscripts)
+    end
+
+    self
   end
 end
 

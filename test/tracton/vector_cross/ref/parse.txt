@@ -7,44 +7,44 @@
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
- Reference:A1
- Reference:A2
- Reference:A3
+ Variable:A1
+ Variable:A2
+ Variable:A3
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
  ITEMS
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
- Reference:B1
- Reference:B2
- Reference:B3
+ Variable:B1
+ Variable:B2
+ Variable:B3
 70 LET X = (A2*B3) - (A3*B2)
- Reference:X
- Value:A2
- Value:B3
+ Variable:X
+ Variable:A2
+ Variable:B3
  BinaryOperator:*
- Value:A3
- Value:B2
+ Variable:A3
+ Variable:B2
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 80 LET Y = (A3*B1) - (A1*B3)
- Reference:Y
- Value:A3
- Value:B1
+ Variable:Y
+ Variable:A3
+ Variable:B1
  BinaryOperator:*
- Value:A1
- Value:B3
+ Variable:A1
+ Variable:B3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 90 LET Z = (A1*B2) - (A2*B1)
- Reference:Z
- Value:A1
- Value:B2
+ Variable:Z
+ Variable:A1
+ Variable:B2
  BinaryOperator:*
- Value:A2
- Value:B1
+ Variable:A2
+ Variable:B1
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
@@ -56,15 +56,15 @@
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:,
  TextConstant:"Z = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 120 PRINT "++++++++++++++++++++"
  ITEMS
@@ -75,9 +75,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 140 INPUT L
- Reference:L
+ Variable:L
 150 IF L = 1 THEN 170
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 160 STOP

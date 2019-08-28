@@ -9,55 +9,55 @@
  TextConstant:"ENTER N,R"
  CarriageControl:;
 50 INPUT N,R
- Reference:N
- Reference:R
+ Variable:N
+ Variable:R
 60 IF N < R THEN 270
- Value:N
- Value:R
+ Variable:N
+ Variable:R
  BinaryOperator:<
 70 IF R < 0 THEN 290
- Value:R
+ Variable:R
  NumericConstant:0
  BinaryOperator:<
 80 LET T = N
- Reference:T
- Value:N
+ Variable:T
+ Variable:N
  AssignmentOperator:=
 90 GOSUB 310
  LineNumber:310
 100 LET A = T
- Reference:A
- Value:T
+ Variable:A
+ Variable:T
  AssignmentOperator:=
 110 LET T = N - R
- Reference:T
- Value:N
- Value:R
+ Variable:T
+ Variable:N
+ Variable:R
  BinaryOperator:-
  AssignmentOperator:=
 120 GOSUB 310
  LineNumber:310
 130 LET B = T
- Reference:B
- Value:T
+ Variable:B
+ Variable:T
  AssignmentOperator:=
 140 LET P = A/B
- Reference:P
- Value:A
- Value:B
+ Variable:P
+ Variable:A
+ Variable:B
  BinaryOperator:/
  AssignmentOperator:=
 150 LET T = R
- Reference:T
- Value:R
+ Variable:T
+ Variable:R
  AssignmentOperator:=
 160 GOSUB 310
  LineNumber:310
 170 LET C = A/(T*B)
- Reference:C
- Value:A
- Value:T
- Value:B
+ Variable:C
+ Variable:A
+ Variable:T
+ Variable:B
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -65,13 +65,13 @@
  ITEMS
  TextConstant:"PERMUTATIONS = "
  CarriageControl:;
- Value:P
+ Variable:P
  CarriageControl:NL
 190 PRINT "COMBINATIONS = ";C
  ITEMS
  TextConstant:"COMBINATIONS = "
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:NL
 200 PRINT
  ITEMS
@@ -81,9 +81,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 220 INPUT L
- Reference:L
+ Variable:L
 230 IF L = 1 THEN 250
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 240 STOP
@@ -106,37 +106,37 @@
 300 GOTO 40
  LineNumber:40
 310 IF T = 0 THEN 390
- Value:T
+ Variable:T
  NumericConstant:0
  BinaryOperator:=
 320 IF T = 1 THEN 390
- Value:T
+ Variable:T
  NumericConstant:1
  BinaryOperator:=
 330 LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 340 FOR I = 2 TO T
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["Value:T"]
+ end:     ["Variable:T"]
 350 LET J = J*I
- Reference:J
- Value:J
- Value:I
+ Variable:J
+ Variable:J
+ Variable:I
  BinaryOperator:*
  AssignmentOperator:=
 360 NEXT I
  Variable:I
 370 LET T = J
- Reference:T
- Value:J
+ Variable:T
+ Variable:J
  AssignmentOperator:=
 380 GOTO 400
  LineNumber:400
 390 LET T = 1
- Reference:T
+ Variable:T
  NumericConstant:1
  AssignmentOperator:=
 400 RETURN

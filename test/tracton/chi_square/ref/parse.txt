@@ -5,7 +5,7 @@
 30 REM EXPECTED FREQUENCIES
  Remark:EXPECTED FREQUENCIES
 40 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "OBSERVED FREQUENCIES = "
@@ -13,31 +13,31 @@
  TextConstant:"OBSERVED FREQUENCIES = "
  CarriageControl:NL
 60 INPUT D
- Reference:D
+ Variable:D
 70 PRINT "EXPECTED FREQUENCIES = "
  ITEMS
  TextConstant:"EXPECTED FREQUENCIES = "
  CarriageControl:NL
 80 INPUT E
- Reference:E
+ Variable:E
 90 IF E = 0 THEN 130
- Value:E
+ Variable:E
  NumericConstant:0
  BinaryOperator:=
 100 LET K = ((D - E)^2)/E
- Reference:K
- Value:D
- Value:E
+ Variable:K
+ Variable:D
+ Variable:E
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
- Value:E
+ Variable:E
  BinaryOperator:/
  AssignmentOperator:=
 110 LET J = J + K
- Reference:J
- Value:J
- Value:K
+ Variable:J
+ Variable:J
+ Variable:K
  BinaryOperator:+
  AssignmentOperator:=
 120 GOTO 50
@@ -46,7 +46,7 @@
  ITEMS
  TextConstant:"CHI-SQUARE = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 140 PRINT "*****************"
  ITEMS
@@ -57,9 +57,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 160 INPUT L
- Reference:L
+ Variable:L
 170 IF L = 1 THEN 190
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 180 STOP

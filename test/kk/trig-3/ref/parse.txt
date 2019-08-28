@@ -1,22 +1,22 @@
 100 REM ANGLE-SIDE-SIDE
  Remark:ANGLE-SIDE-SIDE
 110 LET P = 3.14159265
- Reference:P
+ Variable:P
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
- Value:X
- Value:P
+ Variable:X
+ Variable:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 130 DEF FNS(X) = SIN(FND(X))
- Value:X
+ Variable:X
  UserFunction
  FunctionSin
 135 DEF FNR(X) = INT(100*X+0.5)/100
  NumericConstant:100
- Value:X
+ Variable:X
  BinaryOperator:*
  NumericConstant:0.5
  BinaryOperator:+
@@ -36,32 +36,32 @@
  TextConstant:"CASE 2"
  CarriageControl:NL
 150 READ B,X,Y
- Reference:B
- Reference:X
- Reference:Y
+ Variable:B
+ Variable:X
+ Variable:Y
 160 PRINT B,X,Y,
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:,
- Value:X
+ Variable:X
  CarriageControl:,
- Value:Y
+ Variable:Y
  CarriageControl:,
 170 LET S = X*FNS(B)/Y
- Reference:S
- Value:X
- Value:B
+ Variable:S
+ Variable:X
+ Variable:B
  UserFunction
  BinaryOperator:*
- Value:Y
+ Variable:Y
  BinaryOperator:/
  AssignmentOperator:=
 180 IF S > 1 THEN 290
- Value:S
+ Variable:S
  NumericConstant:1
  BinaryOperator:>
 190 IF FNR(S) = 1 THEN 320
- Value:S
+ Variable:S
  UserFunction
  NumericConstant:1
  BinaryOperator:=
@@ -69,10 +69,10 @@
 200 REM TWO POINTS OF INTERSECTION
  Remark:TWO POINTS OF INTERSECTION
 210 LET T = S/SQR(1-S^2)
- Reference:T
- Value:S
+ Variable:T
+ Variable:S
  NumericConstant:1
- Value:S
+ Variable:S
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:-
@@ -80,36 +80,36 @@
  BinaryOperator:/
  AssignmentOperator:=
 220 LET C = ATN(T)*180/P
- Reference:C
- Value:T
+ Variable:C
+ Variable:T
  FunctionAtn
  NumericConstant:180
  BinaryOperator:*
- Value:P
+ Variable:P
  BinaryOperator:/
  AssignmentOperator:=
 230 LET A = 180 - B - C
- Reference:A
+ Variable:A
  NumericConstant:180
- Value:B
+ Variable:B
  BinaryOperator:-
- Value:C
+ Variable:C
  BinaryOperator:-
  AssignmentOperator:=
 240 GOSUB 370
  LineNumber:370
 250 LET C = 180 - C
- Reference:C
+ Variable:C
  NumericConstant:180
- Value:C
+ Variable:C
  BinaryOperator:-
  AssignmentOperator:=
 260 LET A = 180 - B - C
- Reference:A
+ Variable:A
  NumericConstant:180
- Value:B
+ Variable:B
  BinaryOperator:-
- Value:C
+ Variable:C
  BinaryOperator:-
  AssignmentOperator:=
 270 GOSUB 370
@@ -134,9 +134,9 @@
 320 REM ONE POINT OF INTERSECTION
  Remark:ONE POINT OF INTERSECTION
 330 LET A = 90 - B
- Reference:A
+ Variable:A
  NumericConstant:90
- Value:B
+ Variable:B
  BinaryOperator:-
  AssignmentOperator:=
 340 GOSUB 370
@@ -151,16 +151,16 @@
 370 REM ANGLE-SIDE-ANGLE ROUTINE
  Remark:ANGLE-SIDE-ANGLE ROUTINE
 380 LET Z = X*FNS(A)/S
- Reference:Z
- Value:X
- Value:A
+ Variable:Z
+ Variable:X
+ Variable:A
  UserFunction
  BinaryOperator:*
- Value:S
+ Variable:S
  BinaryOperator:/
  AssignmentOperator:=
 390 IF Z >= 0 THEN 420
- Value:Z
+ Variable:Z
  NumericConstant:0
  BinaryOperator:>=
 400 PRINT "NONE",
@@ -171,7 +171,7 @@
  
 420 PRINT Z,
  ITEMS
- Value:Z
+ Variable:Z
  CarriageControl:,
 430 RETURN
  

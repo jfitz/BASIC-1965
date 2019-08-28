@@ -21,11 +21,11 @@
  TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
 110 INPUT D,M,Y
- Reference:D
- Reference:M
- Reference:Y
+ Variable:D
+ Variable:M
+ Variable:Y
 120 IF Y > 1752 THEN 150
- Value:Y
+ Variable:Y
  NumericConstant:1752
  BinaryOperator:>
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
@@ -35,59 +35,59 @@
 140 GOTO 100
  LineNumber:100
 150 LET K = INT(0.6 + (1/M))
- Reference:K
+ Variable:K
  NumericConstant:0.6
  NumericConstant:1
- Value:M
+ Variable:M
  BinaryOperator:/
  BinaryOperator:+
  FunctionInt
  AssignmentOperator:=
 160 LET L = Y - K
- Reference:L
- Value:Y
- Value:K
+ Variable:L
+ Variable:Y
+ Variable:K
  BinaryOperator:-
  AssignmentOperator:=
 170 LET O = M + 12*K
- Reference:O
- Value:M
+ Variable:O
+ Variable:M
  NumericConstant:12
- Value:K
+ Variable:K
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 180 LET P = L/100
- Reference:P
- Value:L
+ Variable:P
+ Variable:L
  NumericConstant:100
  BinaryOperator:/
  AssignmentOperator:=
 190 LET Z1 = INT(P/4)
- Reference:Z1
- Value:P
+ Variable:Z1
+ Variable:P
  NumericConstant:4
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 200 LET Z2 = INT(P)
- Reference:Z2
- Value:P
+ Variable:Z2
+ Variable:P
  FunctionInt
  AssignmentOperator:=
 210 LET Z3 = INT((5*L)/4)
- Reference:Z3
+ Variable:Z3
  NumericConstant:5
- Value:L
+ Variable:L
  BinaryOperator:*
  NumericConstant:4
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 220 LET Z4 = INT (13*(O + 1)/5)
- Reference:Z4
+ Variable:Z4
  NumericConstant:13
- Value:O
+ Variable:O
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
@@ -96,24 +96,24 @@
  FunctionInt
  AssignmentOperator:=
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
- Reference:Z
- Value:Z4
- Value:Z3
+ Variable:Z
+ Variable:Z4
+ Variable:Z3
  BinaryOperator:+
- Value:Z2
+ Variable:Z2
  BinaryOperator:-
- Value:Z1
+ Variable:Z1
  BinaryOperator:+
- Value:D
+ Variable:D
  BinaryOperator:+
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 240 LET Z=Z - (7*INT(Z/7)) + 1
- Reference:Z
- Value:Z
+ Variable:Z
+ Variable:Z
  NumericConstant:7
- Value:Z
+ Variable:Z
  NumericConstant:7
  BinaryOperator:/
  FunctionInt

@@ -15,48 +15,48 @@
  TextConstant:"ENTER PARAMETERS A,B,C,D,E,F"
  CarriageControl:NL
 60 INPUT A,B,C,D,E,F
- Reference:A
- Reference:B
- Reference:C
- Reference:D
- Reference:E
- Reference:F
+ Variable:A
+ Variable:B
+ Variable:C
+ Variable:D
+ Variable:E
+ Variable:F
 70 LET M = (A*D) - (B*C)
- Reference:M
- Value:A
- Value:D
+ Variable:M
+ Variable:A
+ Variable:D
  BinaryOperator:*
- Value:B
- Value:C
+ Variable:B
+ Variable:C
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 80 IF M = 0 THEN 140
- Value:M
+ Variable:M
  NumericConstant:0
  BinaryOperator:=
 90 LET X = ((E*D) - (B*F))/M
- Reference:X
- Value:E
- Value:D
+ Variable:X
+ Variable:E
+ Variable:D
  BinaryOperator:*
- Value:B
- Value:F
+ Variable:B
+ Variable:F
  BinaryOperator:*
  BinaryOperator:-
- Value:M
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 100 LET Y = ((A*F) - (E*C))/M
- Reference:Y
- Value:A
- Value:F
+ Variable:Y
+ Variable:A
+ Variable:F
  BinaryOperator:*
- Value:E
- Value:C
+ Variable:E
+ Variable:C
  BinaryOperator:*
  BinaryOperator:-
- Value:M
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 110 PRINT "SOLUTION","X = ";X,"Y = ";Y
@@ -65,11 +65,11 @@
  CarriageControl:,
  TextConstant:"X = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:NL
 120 PRINT "********************"
  ITEMS
@@ -90,9 +90,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 170 INPUT L
- Reference:L
+ Variable:L
 180 IF L = 1 THEN 200
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 190 STOP

@@ -15,25 +15,25 @@
  end:     ["NumericConstant:5"]
 50 LET H(0,I) = I
  NumericConstant:0
- Value:I
- Reference:H
- Value:I
+ Variable:I
+ Variable:H
+ Variable:I
  AssignmentOperator:=
 52 LET V(I,0) = I
- Value:I
+ Variable:I
  NumericConstant:0
- Reference:V
- Value:I
+ Variable:V
+ Variable:I
  AssignmentOperator:=
 60 NEXT I
  Variable:I
 70 MAT PRINT H;
  ITEMS
- Value:H
+ Variable:H
  CarriageControl:;
 72 MAT PRINT V;
  ITEMS
- Value:V
+ Variable:V
  CarriageControl:;
 120 OPTION BASE 1
  NumericConstant:1
@@ -50,25 +50,25 @@
  end:     ["NumericConstant:5"]
 150 LET H(1,I) = I
  NumericConstant:1
- Value:I
- Reference:H
- Value:I
+ Variable:I
+ Variable:H
+ Variable:I
  AssignmentOperator:=
 152 LET V(I,1) = I
- Value:I
+ Variable:I
  NumericConstant:1
- Reference:V
- Value:I
+ Variable:V
+ Variable:I
  AssignmentOperator:=
 160 NEXT I
  Variable:I
 170 MAT PRINT H;
  ITEMS
- Value:H
+ Variable:H
  CarriageControl:;
 172 MAT PRINT V;
  ITEMS
- Value:V
+ Variable:V
  CarriageControl:;
 999 END
  

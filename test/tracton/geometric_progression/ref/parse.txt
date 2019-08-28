@@ -7,27 +7,27 @@
  TextConstant:"FIRST TERM = "
  CarriageControl:;
 40 INPUT A
- Reference:A
+ Variable:A
 50 PRINT "RATIO OF TERMS = ";
  ITEMS
  TextConstant:"RATIO OF TERMS = "
  CarriageControl:;
 60 INPUT R
- Reference:R
+ Variable:R
 70 PRINT "NUMBER OF TERMS = ";
  ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:;
 80 INPUT N
- Reference:N
+ Variable:N
 90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
  ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 100 INPUT C
- Reference:C
+ Variable:C
 110 IF C = 1 THEN 130
- Value:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:=
 120 GOTO 160
@@ -46,44 +46,44 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 160 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 0 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 180 LET K = I + 1
- Reference:K
- Value:I
+ Variable:K
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 190 LET L = A*(R^I)
- Reference:L
- Value:A
- Value:R
- Value:I
+ Variable:L
+ Variable:A
+ Variable:R
+ Variable:I
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
 200 LET J = J + L
- Reference:J
- Value:J
- Value:L
+ Variable:J
+ Variable:J
+ Variable:L
  BinaryOperator:+
  AssignmentOperator:=
 210 IF C = 1 THEN 230
- Value:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:=
 220 GOTO 240
  LineNumber:240
 230 PRINT K,L
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
- Value:L
+ Variable:L
  CarriageControl:NL
 240 NEXT I
  Variable:I
@@ -91,7 +91,7 @@
  ITEMS
  TextConstant:"SUM = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 260 PRINT
  ITEMS
@@ -101,9 +101,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT X
- Reference:X
+ Variable:X
 290 IF X = 1 THEN 310
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:=
 300 STOP

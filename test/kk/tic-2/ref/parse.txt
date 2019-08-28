@@ -12,9 +12,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 120        READ T(P,I)
- Value:P
- Value:I
- Reference:T
+ Variable:P
+ Variable:I
+ Variable:T
 130     NEXT I
  Variable:I
 140  NEXT P
@@ -53,9 +53,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 220        READ U(S,J)
- Value:S
- Value:J
- Reference:U
+ Variable:S
+ Variable:J
+ Variable:U
 230     NEXT J
  Variable:J
 240  NEXT S
@@ -99,7 +99,7 @@
  NumericConstant:7
  NumericConstant:8
 265  LET N = 0
- Reference:N
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 270  FOR S = 1 TO 9
@@ -107,13 +107,13 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 275     LET C(S) = 0
- Value:S
- Reference:C
+ Variable:S
+ Variable:C
  NumericConstant:0
  AssignmentOperator:=
 280     LET B(S) = 0
- Value:S
- Reference:B
+ Variable:S
+ Variable:B
  NumericConstant:0
  AssignmentOperator:=
 285  NEXT S
@@ -122,7 +122,7 @@
 300  REM WHO STARTS?
  Remark:WHO STARTS?
 310  IF RND(Z) < 1/2 THEN 350
- Value:Z
+ Variable:Z
  FunctionRnd
  NumericConstant:1
  NumericConstant:2
@@ -154,82 +154,82 @@
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 410  INPUT M
- Reference:M
+ Variable:M
 415  LET F = -1
- Reference:F
+ Variable:F
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
 420  IF M <> INT(M) THEN 550
- Value:M
- Value:M
+ Variable:M
+ Variable:M
  FunctionInt
  BinaryOperator:<>
 430  IF M < 1 THEN 500
- Value:M
+ Variable:M
  NumericConstant:1
  BinaryOperator:<
 440  IF M > 9 THEN 550
- Value:M
+ Variable:M
  NumericConstant:9
  BinaryOperator:>
 450  IF B(M) <> 0 THEN 500
- Value:M
- Value:B
+ Variable:M
+ Variable:B
  NumericConstant:0
  BinaryOperator:<>
 460  LET B(M) = F
- Value:M
- Reference:B
- Value:F
+ Variable:M
+ Variable:B
+ Variable:F
  AssignmentOperator:=
 470  FOR J = 1 TO 4
  control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 480     LET P = U(M,J)
- Reference:P
- Value:M
- Value:J
- Value:U
+ Variable:P
+ Variable:M
+ Variable:J
+ Variable:U
  AssignmentOperator:=
 490     IF P = 0 THEN 530
- Value:P
+ Variable:P
  NumericConstant:0
  BinaryOperator:=
 500     LET C(P) = C(P) + F
- Value:P
- Reference:C
- Value:P
- Value:C
- Value:F
+ Variable:P
+ Variable:C
+ Variable:P
+ Variable:C
+ Variable:F
  BinaryOperator:+
  AssignmentOperator:=
 510     IF C(P) = -3 THEN 860
- Value:P
- Value:C
+ Variable:P
+ Variable:C
  NumericConstant:3
  UnaryOperator:-
  BinaryOperator:=
 520     IF C(P) = 3 THEN 800
- Value:P
- Value:C
+ Variable:P
+ Variable:C
  NumericConstant:3
  BinaryOperator:=
 530  NEXT J
  Variable:J
 535  LET N = N+1
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 536  IF N = 9 THEN 880
- Value:N
+ Variable:N
  NumericConstant:9
  BinaryOperator:=
 537  IF F = 1 THEN 400
- Value:F
+ Variable:F
  NumericConstant:1
  BinaryOperator:=
 538  GOTO 600
@@ -251,10 +251,10 @@
  ITEMS
  TextConstant:"THE COMPUTER MOVES"
  CarriageControl:
- Value:M
+ Variable:M
  CarriageControl:NL
 630  LET F = 1
- Reference:F
+ Variable:F
  NumericConstant:1
  AssignmentOperator:=
 640  GOTO 460
@@ -297,8 +297,8 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 1020 IF C(P) = 2 THEN 1100
- Value:P
- Value:C
+ Variable:P
+ Variable:C
  NumericConstant:2
  BinaryOperator:=
 1030 NEXT P
@@ -308,8 +308,8 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 1050 IF C(P) = -2 THEN 1100
- Value:P
- Value:C
+ Variable:P
+ Variable:C
  NumericConstant:2
  UnaryOperator:-
  BinaryOperator:=
@@ -322,14 +322,14 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 1110    LET M = T(P,I)
- Reference:M
- Value:P
- Value:I
- Value:T
+ Variable:M
+ Variable:P
+ Variable:I
+ Variable:T
  AssignmentOperator:=
 1120    IF B(M) = 0 THEN 1999
- Value:M
- Value:B
+ Variable:M
+ Variable:B
  NumericConstant:0
  BinaryOperator:=
 1130 NEXT I
@@ -340,13 +340,13 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 1210    LET V(S) = 0
- Value:S
- Reference:V
+ Variable:S
+ Variable:V
  NumericConstant:0
  AssignmentOperator:=
 1215    IF B(S) <> 0 THEN 1270
- Value:S
- Value:B
+ Variable:S
+ Variable:B
  NumericConstant:0
  BinaryOperator:<>
 1220    FOR J = 1 TO 4
@@ -354,24 +354,24 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 1230       LET P = U(S,J)
- Reference:P
- Value:S
- Value:J
- Value:U
+ Variable:P
+ Variable:S
+ Variable:J
+ Variable:U
  AssignmentOperator:=
 1240       IF P = 0 THEN 1260
- Value:P
+ Variable:P
  NumericConstant:0
  BinaryOperator:=
 1250       LET V(S) = V(S) + 1 + ABS(C(P))
- Value:S
- Reference:V
- Value:S
- Value:V
+ Variable:S
+ Variable:V
+ Variable:S
+ Variable:V
  NumericConstant:1
  BinaryOperator:+
- Value:P
- Value:C
+ Variable:P
+ Variable:C
  FunctionAbs
  BinaryOperator:+
  AssignmentOperator:=
@@ -380,7 +380,7 @@
 1270 NEXT S
  Variable:S
 1300 LET V = 0
- Reference:V
+ Variable:V
  NumericConstant:0
  AssignmentOperator:=
 1310 FOR S = 1 TO 9
@@ -388,18 +388,18 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 1320    IF V(S) <= V THEN 1350
- Value:S
- Value:V
- Value:V
+ Variable:S
+ Variable:V
+ Variable:V
  BinaryOperator:<=
 1330    LET V = V(S)
- Reference:V
- Value:S
- Value:V
+ Variable:V
+ Variable:S
+ Variable:V
  AssignmentOperator:=
 1340    LET M = S
- Reference:M
- Value:S
+ Variable:M
+ Variable:S
  AssignmentOperator:=
 1350 NEXT S
  Variable:S

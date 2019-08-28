@@ -1,12 +1,12 @@
 100 READ A, B, C, D
- Reference:A
- Reference:B
- Reference:C
- Reference:D
+ Variable:A
+ Variable:B
+ Variable:C
+ Variable:D
 110 READ T8, T9, P
- Reference:T8
- Reference:T9
- Reference:P
+ Variable:T8
+ Variable:T9
+ Variable:P
 140 DATA 4, 2, 1, 3
  NumericConstant:4
  NumericConstant:2
@@ -17,7 +17,7 @@
  NumericConstant:4
  NumericConstant:35
 160 LET T1 = 0
- Reference:T1
+ Variable:T1
  NumericConstant:0
  AssignmentOperator:=
 170
@@ -33,72 +33,72 @@
  ITEMS
  CarriageControl:NL
 200 READ X, Y
- Reference:X
- Reference:Y
+ Variable:X
+ Variable:Y
 210 PRINT 0, X, Y
  ITEMS
  NumericConstant:0
  CarriageControl:,
- Value:X
+ Variable:X
  CarriageControl:,
- Value:Y
+ Variable:Y
  CarriageControl:NL
 220 FOR I = 1 TO P
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:P"]
+ end:     ["Variable:P"]
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T
  start:   ["NumericConstant:0"]
- end:     ["Value:T9", "Value:P", "BinaryOperator:/"]
- step:    ["Value:T8"]
+ end:     ["Variable:T9", "Variable:P", "BinaryOperator:/"]
+ step:    ["Variable:T8"]
 240 LET X = X + (A*X - B*X*Y)*T8
- Reference:X
- Value:X
- Value:A
- Value:X
+ Variable:X
+ Variable:X
+ Variable:A
+ Variable:X
  BinaryOperator:*
- Value:B
- Value:X
+ Variable:B
+ Variable:X
  BinaryOperator:*
- Value:Y
+ Variable:Y
  BinaryOperator:*
  BinaryOperator:-
- Value:T8
+ Variable:T8
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
- Reference:Y
- Value:Y
- Value:C
- Value:X
+ Variable:Y
+ Variable:Y
+ Variable:C
+ Variable:X
  BinaryOperator:*
- Value:Y
+ Variable:Y
  BinaryOperator:*
- Value:D
- Value:Y
+ Variable:D
+ Variable:Y
  BinaryOperator:*
  BinaryOperator:-
- Value:T8
+ Variable:T8
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 255 LET T1 = T1 + T8
- Reference:T1
- Value:T1
- Value:T8
+ Variable:T1
+ Variable:T1
+ Variable:T8
  BinaryOperator:+
  AssignmentOperator:=
 260 NEXT T
  Variable:T
 270 PRINT T1, X, Y
  ITEMS
- Value:T1
+ Variable:T1
  CarriageControl:,
- Value:X
+ Variable:X
  CarriageControl:,
- Value:Y
+ Variable:Y
  CarriageControl:NL
 280 NEXT I
  Variable:I

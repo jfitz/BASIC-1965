@@ -9,14 +9,14 @@
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
- Value:I
- Reference:N
+ Variable:I
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
  Variable:I
 26 LET K = 0
- Reference:K
+ Variable:K
  NumericConstant:0
  AssignmentOperator:=
 30 FOR P = 2 TO 1000
@@ -24,34 +24,34 @@
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:1000"]
 40    IF N(P) < 0 THEN 90
- Value:P
- Value:N
+ Variable:P
+ Variable:N
  NumericConstant:0
  BinaryOperator:<
 50    LET K = K+1
- Reference:K
- Value:K
+ Variable:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 55    LET P(K) = P
- Value:K
- Reference:P
- Value:P
+ Variable:K
+ Variable:P
+ Variable:P
  AssignmentOperator:=
 56    IF P > SQR(1000) THEN 90
- Value:P
+ Variable:P
  NumericConstant:1000
  FunctionSqr
  BinaryOperator:>
 60    FOR I = P TO 1000 STEP P
  control: Variable:I
- start:   ["Value:P"]
+ start:   ["Variable:P"]
  end:     ["NumericConstant:1000"]
- step:    ["Value:P"]
+ step:    ["Variable:P"]
 70       LET N(I) = -1
- Value:I
- Reference:N
+ Variable:I
+ Variable:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -62,11 +62,11 @@
 100 FOR I = 1 TO K
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:K"]
+ end:     ["Variable:K"]
 110    PRINT P(I);
  ITEMS
- Value:I
- Value:P
+ Variable:I
+ Variable:P
  CarriageControl:;
 120 NEXT I
  Variable:I

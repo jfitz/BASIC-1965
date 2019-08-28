@@ -7,33 +7,33 @@
  TextConstant:"VALUE OF A = "
  CarriageControl:NL
 40 INPUT A
- Reference:A
+ Variable:A
 50 PRINT "VALUE OF B = "
  ITEMS
  TextConstant:"VALUE OF B = "
  CarriageControl:NL
 60 INPUT B
- Reference:B
+ Variable:B
 70 PRINT "DIFFERENCE = "
  ITEMS
  TextConstant:"DIFFERENCE = "
  CarriageControl:NL
 80 INPUT D
- Reference:D
+ Variable:D
 90 PRINT "NUMBER OF TERMS = "
  ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:NL
 100 INPUT N
- Reference:N
+ Variable:N
 110 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
  ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 120 INPUT C
- Reference:C
+ Variable:C
 130 IF C = 1 THEN 150
- Value:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:=
 140 GOTO 170
@@ -49,46 +49,46 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 170 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 180 FOR I = 0 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 190 LET K = I + 1
- Reference:K
- Value:I
+ Variable:K
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 200 LET L = A/(B + (I*D))
- Reference:L
- Value:A
- Value:B
- Value:I
- Value:D
+ Variable:L
+ Variable:A
+ Variable:B
+ Variable:I
+ Variable:D
  BinaryOperator:*
  BinaryOperator:+
  BinaryOperator:/
  AssignmentOperator:=
 210 LET J = J + L
- Reference:J
- Value:J
- Value:L
+ Variable:J
+ Variable:J
+ Variable:L
  BinaryOperator:+
  AssignmentOperator:=
 220 IF C = 1 THEN 240
- Value:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:=
 230 GOTO 250
  LineNumber:250
 240 PRINT K,L
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
- Value:L
+ Variable:L
  CarriageControl:NL
 250 NEXT I
  Variable:I
@@ -96,7 +96,7 @@
  ITEMS
  TextConstant:"SUM = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 270 PRINT "********************"
  ITEMS
@@ -107,9 +107,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 290 INPUT X
- Reference:X
+ Variable:X
 300 IF X = 1 THEN 320
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:=
 310 STOP

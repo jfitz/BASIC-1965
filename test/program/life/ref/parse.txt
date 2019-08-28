@@ -15,19 +15,19 @@
 240 LET B(4,4)=1
  NumericConstant:4
  NumericConstant:4
- Reference:B
+ Variable:B
  NumericConstant:1
  AssignmentOperator:=
 241 LET B(4,5)=1
  NumericConstant:4
  NumericConstant:5
- Reference:B
+ Variable:B
  NumericConstant:1
  AssignmentOperator:=
 242 LET B(4,6)=1
  NumericConstant:4
  NumericConstant:6
- Reference:B
+ Variable:B
  NumericConstant:1
  AssignmentOperator:=
 300 REM *** DISPLAY BOARD
@@ -38,7 +38,7 @@
  CarriageControl:NL
 320 MAT PRINT B;
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:;
 330 PRINT "********************"
  ITEMS
@@ -48,15 +48,15 @@
  ITEMS
  CarriageControl:NL
 350 INPUT "CONTINUE (1=YES)", A
- Reference:A
+ Variable:A
 360 IF A <> 1 THEN 999
- Value:A
+ Variable:A
  NumericConstant:1
  BinaryOperator:<>
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
- Reference:N
+ Variable:N
  NumericConstant:10
  NumericConstant:10
  FunctionZer
@@ -76,7 +76,7 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 442 LET C = 0
- Reference:C
+ Variable:C
  NumericConstant:0
  AssignmentOperator:=
 450 FOR I0=-1 TO 1
@@ -88,26 +88,26 @@
  start:   ["NumericConstant:1", "UnaryOperator:-"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
- Value:I0
+ Variable:I0
  FunctionAbs
- Value:J0
+ Variable:J0
  FunctionAbs
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:=
 480 IF B(I+I0,J+J0) = 0 THEN 500
- Value:I
- Value:I0
+ Variable:I
+ Variable:I0
  BinaryOperator:+
- Value:J
- Value:J0
+ Variable:J
+ Variable:J0
  BinaryOperator:+
- Value:B
+ Variable:B
  NumericConstant:0
  BinaryOperator:=
 490 LET C = C + 1
- Reference:C
- Value:C
+ Variable:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -116,10 +116,10 @@
 510 NEXT I0
  Variable:I0
 512 LET N(I,J)=C
- Value:I
- Value:J
- Reference:N
- Value:C
+ Variable:I
+ Variable:J
+ Variable:N
+ Variable:C
  AssignmentOperator:=
 520 NEXT J
  Variable:J
@@ -142,29 +142,29 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 630 IF N(I,J)<2 THEN 660
- Value:I
- Value:J
- Value:N
+ Variable:I
+ Variable:J
+ Variable:N
  NumericConstant:2
  BinaryOperator:<
 640 IF N(I,J)=2 THEN 720
- Value:I
- Value:J
- Value:N
+ Variable:I
+ Variable:J
+ Variable:N
  NumericConstant:2
  BinaryOperator:=
 650 IF N(I,J)=3 THEN 690
- Value:I
- Value:J
- Value:N
+ Variable:I
+ Variable:J
+ Variable:N
  NumericConstant:3
  BinaryOperator:=
 660 REM * CELL DIES
  Remark:* CELL DIES
 670 LET B(I,J)=0
- Value:I
- Value:J
- Reference:B
+ Variable:I
+ Variable:J
+ Variable:B
  NumericConstant:0
  AssignmentOperator:=
 680 GOTO 730
@@ -172,9 +172,9 @@
 690 REM * CELL IS BORN
  Remark:* CELL IS BORN
 700 LET B(I,J)=1
- Value:I
- Value:J
- Reference:B
+ Variable:I
+ Variable:J
+ Variable:B
  NumericConstant:1
  AssignmentOperator:=
 710 GOTO 730

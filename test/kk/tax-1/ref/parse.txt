@@ -2,57 +2,57 @@
  NumericConstant:20
  Declaration:D
 20 READ A,Y
- Reference:A
- Reference:Y
+ Variable:A
+ Variable:Y
 100 FOR Y1 = 1 TO Y STEP 2
  control: Variable:Y1
  start:   ["NumericConstant:1"]
- end:     ["Value:Y"]
+ end:     ["Variable:Y"]
  step:    ["NumericConstant:2"]
 105    PRINT "CHANGE IN YEAR " Y1
  ITEMS
  TextConstant:"CHANGE IN YEAR "
  CarriageControl:
- Value:Y1
+ Variable:Y1
  CarriageControl:NL
 108    LET A1 = A
- Reference:A1
- Value:A
+ Variable:A1
+ Variable:A
  AssignmentOperator:=
 110    FOR I = 1 TO Y1-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:Y1", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:Y1", "NumericConstant:1", "BinaryOperator:-"]
 120       LET D(I) = A1*2/Y
- Value:I
- Reference:D
- Value:A1
+ Variable:I
+ Variable:D
+ Variable:A1
  NumericConstant:2
  BinaryOperator:*
- Value:Y
+ Variable:Y
  BinaryOperator:/
  AssignmentOperator:=
 130       LET A1 = A1 - D(I)
- Reference:A1
- Value:A1
- Value:I
- Value:D
+ Variable:A1
+ Variable:A1
+ Variable:I
+ Variable:D
  BinaryOperator:-
  AssignmentOperator:=
 140       PRINT I;D(I)
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:;
- Value:I
- Value:D
+ Variable:I
+ Variable:D
  CarriageControl:NL
 150    NEXT I
  Variable:I
 160    LET D = A1/(Y-Y1+1)
- Reference:D
- Value:A1
- Value:Y
- Value:Y1
+ Variable:D
+ Variable:A1
+ Variable:Y
+ Variable:Y1
  BinaryOperator:-
  NumericConstant:1
  BinaryOperator:+
@@ -60,19 +60,19 @@
  AssignmentOperator:=
 170    FOR I = Y1 TO Y
  control: Variable:I
- start:   ["Value:Y1"]
- end:     ["Value:Y"]
+ start:   ["Variable:Y1"]
+ end:     ["Variable:Y"]
 180       LET D(I) = D
- Value:I
- Reference:D
- Value:D
+ Variable:I
+ Variable:D
+ Variable:D
  AssignmentOperator:=
 185       PRINT I;D(I)
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:;
- Value:I
- Value:D
+ Variable:I
+ Variable:D
  CarriageControl:NL
 190    NEXT I
  Variable:I

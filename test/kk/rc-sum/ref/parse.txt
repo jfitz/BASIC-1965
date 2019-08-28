@@ -1,18 +1,18 @@
 10 READ R,C
- Reference:R
- Reference:C
+ Variable:R
+ Variable:C
 20 FOR I = 1 TO R
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:R"]
+ end:     ["Variable:R"]
 30 FOR J = 1 TO C
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:C"]
+ end:     ["Variable:C"]
 40 READ T(I,J)
- Value:I
- Value:J
- Reference:T
+ Variable:I
+ Variable:J
+ Variable:T
 50 NEXT J
  Variable:J
 60 NEXT I
@@ -20,21 +20,21 @@
 70 FOR I = 1 TO R
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:R"]
+ end:     ["Variable:R"]
 80 LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 90 FOR J = 1 TO C
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:C"]
+ end:     ["Variable:C"]
 100 LET S = S + T(I,J)
- Reference:S
- Value:S
- Value:I
- Value:J
- Value:T
+ Variable:S
+ Variable:S
+ Variable:I
+ Variable:J
+ Variable:T
  BinaryOperator:+
  AssignmentOperator:=
 110 NEXT J
@@ -43,11 +43,11 @@
  ITEMS
  TextConstant:"SUM OF ROW"
  CarriageControl:
- Value:I
+ Variable:I
  CarriageControl:;
  TextConstant:"EQUALS"
  CarriageControl:
- Value:S
+ Variable:S
  CarriageControl:NL
 130 NEXT I
  Variable:I
@@ -57,21 +57,21 @@
 150 FOR J = 1 TO C
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:C"]
+ end:     ["Variable:C"]
 160 LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 1 TO R
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:R"]
+ end:     ["Variable:R"]
 180 LET S = S + T(I,J)
- Reference:S
- Value:S
- Value:I
- Value:J
- Value:T
+ Variable:S
+ Variable:S
+ Variable:I
+ Variable:J
+ Variable:T
  BinaryOperator:+
  AssignmentOperator:=
 190 NEXT I
@@ -80,11 +80,11 @@
  ITEMS
  TextConstant:"SUM OF COLUMN"
  CarriageControl:
- Value:J
+ Variable:J
  CarriageControl:;
  TextConstant:"EQUALS"
  CarriageControl:
- Value:S
+ Variable:S
  CarriageControl:NL
 210 NEXT J
  Variable:J

@@ -1,5 +1,5 @@
 5 DEF FNR(X) = INT(X*1000 + 0.5)/1000
- Value:X
+ Variable:X
  NumericConstant:1000
  BinaryOperator:*
  NumericConstant:0.5
@@ -8,21 +8,21 @@
  NumericConstant:1000
  BinaryOperator:/
 10 LET P = 3.14159625
- Reference:P
+ Variable:P
  NumericConstant:3.14159625
  AssignmentOperator:=
 20 DEF FND(X) = X*P/180
- Value:X
- Value:P
+ Variable:X
+ Variable:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 30 DEF FNS(X) = SIN(FND(X))
- Value:X
+ Variable:X
  UserFunction
  FunctionSin
 40 DEF FNC(X) = COS(FND(X))
- Value:X
+ Variable:X
  UserFunction
  FunctionCos
 50 PRINT "DEGREES", "SINE", "COSINE"
@@ -40,13 +40,13 @@
  step:    ["NumericConstant:10"]
 70     PRINT X, FNR(FNS(X)), FNR(FNC(X))
  ITEMS
- Value:X
+ Variable:X
  CarriageControl:,
- Value:X
+ Variable:X
  UserFunction
  UserFunction
  CarriageControl:,
- Value:X
+ Variable:X
  UserFunction
  UserFunction
  CarriageControl:NL

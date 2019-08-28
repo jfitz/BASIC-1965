@@ -6,17 +6,17 @@
  NumericConstant:4
  Declaration:B
 110 MAT READ A, B
- Reference:A
- Reference:B
+ Variable:A
+ Variable:B
 120 MAT P = A*B
- Reference:P
- Value:A
- Value:B
+ Variable:P
+ Variable:A
+ Variable:B
  BinaryOperator:*
  AssignmentOperator:=
 130 MAT T = TRN(A)
- Reference:T
- Value:A
+ Variable:T
+ Variable:A
  FunctionTrn
  AssignmentOperator:=
 140
@@ -26,7 +26,7 @@
  CarriageControl:NL
 210 MAT PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 220 PRINT "SECOND MATRIX"
  ITEMS
@@ -34,7 +34,7 @@
  CarriageControl:NL
 230 MAT PRINT B;
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:;
 240 PRINT "PRODUCT"
  ITEMS
@@ -42,7 +42,7 @@
  CarriageControl:NL
 250 MAT PRINT P;
  ITEMS
- Value:P
+ Variable:P
  CarriageControl:;
 260 PRINT "TRANSPOSE OF FIRST MATRIX"
  ITEMS
@@ -50,7 +50,7 @@
  CarriageControl:NL
 270 MAT PRINT T;
  ITEMS
- Value:T
+ Variable:T
  CarriageControl:;
 280
 900 DATA 1, 4, -2, 2, -1, 3

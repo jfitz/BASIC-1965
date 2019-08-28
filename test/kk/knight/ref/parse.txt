@@ -8,8 +8,8 @@
 140 REMARK WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
  Remark:WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
 150 READ I0, J0
- Reference:I0
- Reference:J0
+ Variable:I0
+ Variable:J0
 160 PRINT "RANK  ";"FILE  ";"LENGTH"
  ITEMS
  TextConstant:"RANK  "
@@ -20,7 +20,7 @@
  CarriageControl:NL
 180
 182 LET Z0 = 0
- Reference:Z0
+ Variable:Z0
  NumericConstant:0
  AssignmentOperator:=
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
@@ -34,9 +34,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 220       LET B(I,J) = 0
- Value:I
- Value:J
- Reference:B
+ Variable:I
+ Variable:J
+ Variable:B
  NumericConstant:0
  AssignmentOperator:=
 230    NEXT J
@@ -44,21 +44,21 @@
 240 NEXT I
  Variable:I
 250 LET I = I0
- Reference:I
- Value:I0
+ Variable:I
+ Variable:I0
  AssignmentOperator:=
 260 LET J = J0
- Reference:J
- Value:J0
+ Variable:J
+ Variable:J0
  AssignmentOperator:=
 270 LET M = 1
- Reference:M
+ Variable:M
  NumericConstant:1
  AssignmentOperator:=
 280 LET B(I,J) = -1
- Value:I
- Value:J
- Reference:B
+ Variable:I
+ Variable:J
+ Variable:B
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -66,83 +66,83 @@
 300 REMARK WE NOW START THE SERIES OF MOVES
  Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
- Reference:C1
+ Variable:C1
  NumericConstant:9
  AssignmentOperator:=
 320 LET C = 0
- Reference:C
+ Variable:C
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I1 = I - 2 TO I + 2
  control: Variable:I1
- start:   ["Value:I", "NumericConstant:2", "BinaryOperator:-"]
- end:     ["Value:I", "NumericConstant:2", "BinaryOperator:+"]
+ start:   ["Variable:I", "NumericConstant:2", "BinaryOperator:-"]
+ end:     ["Variable:I", "NumericConstant:2", "BinaryOperator:+"]
 340    IF I1 = 1 THEN 480
- Value:I1
+ Variable:I1
  NumericConstant:1
  BinaryOperator:=
 350    IF ABS(I1 - 4.5) > 4 THEN 480
- Value:I1
+ Variable:I1
  NumericConstant:4.5
  BinaryOperator:-
  FunctionAbs
  NumericConstant:4
  BinaryOperator:>
 360    LET D1 = 3 - ABS(I1 - I)
- Reference:D1
+ Variable:D1
  NumericConstant:3
- Value:I1
- Value:I
+ Variable:I1
+ Variable:I
  BinaryOperator:-
  FunctionAbs
  BinaryOperator:-
  AssignmentOperator:=
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
  control: Variable:J1
- start:   ["Value:J", "Value:D1", "BinaryOperator:-"]
- end:     ["Value:J", "Value:D1", "BinaryOperator:+"]
- step:    ["NumericConstant:2", "Value:D1", "BinaryOperator:*"]
+ start:   ["Variable:J", "Variable:D1", "BinaryOperator:-"]
+ end:     ["Variable:J", "Variable:D1", "BinaryOperator:+"]
+ step:    ["NumericConstant:2", "Variable:D1", "BinaryOperator:*"]
 380       IF ABS(J1 - 4.5) > 4 THEN 470
- Value:J1
+ Variable:J1
  NumericConstant:4.5
  BinaryOperator:-
  FunctionAbs
  NumericConstant:4
  BinaryOperator:>
 390       IF B(I1,J1) < 0 THEN 470
- Value:I1
- Value:J1
- Value:B
+ Variable:I1
+ Variable:J1
+ Variable:B
  NumericConstant:0
  BinaryOperator:<
 400       LET C = C + 1
- Reference:C
- Value:C
+ Variable:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 410       IF C <> C1 THEN 470
- Value:C
- Value:C1
+ Variable:C
+ Variable:C1
  BinaryOperator:<>
 420       LET I = I1
- Reference:I
- Value:I1
+ Variable:I
+ Variable:I1
  AssignmentOperator:=
 430       LET J = J1
- Reference:J
- Value:J1
+ Variable:J
+ Variable:J1
  AssignmentOperator:=
 440       LET B(I,J) = -1
- Value:I
- Value:J
- Reference:B
+ Variable:I
+ Variable:J
+ Variable:B
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
 450       LET M = M + 1
- Reference:M
- Value:M
+ Variable:M
+ Variable:M
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -153,16 +153,16 @@
 480 NEXT I1
  Variable:I1
 490 IF C = 0 THEN 600
- Value:C
+ Variable:C
  NumericConstant:0
  BinaryOperator:=
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
  Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
 510 LET C1 = INT(RND(Z)*C + 1)
- Reference:C1
- Value:Z
+ Variable:C1
+ Variable:Z
  FunctionRnd
- Value:C
+ Variable:C
  BinaryOperator:*
  NumericConstant:1
  BinaryOperator:+
@@ -174,20 +174,20 @@
  Remark:WE HAVE GONE AS FAR AS WE CAN
 610 PRINT I; J; M
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:;
- Value:M
+ Variable:M
  CarriageControl:NL
 612 LET Z0 = Z0+1
- Reference:Z0
- Value:Z0
+ Variable:Z0
+ Variable:Z0
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 620 IF Z0 < 40 THEN 200
- Value:Z0
+ Variable:Z0
  NumericConstant:40
  BinaryOperator:<
 630 REMARK WE GO FOR ANOTHER TRIAL

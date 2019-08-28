@@ -5,35 +5,35 @@
 30 REM AND THE GENERALIZED FACTORIALS
  Remark:AND THE GENERALIZED FACTORIALS
 40 LET A = 0.57717
- Reference:A
+ Variable:A
  NumericConstant:0.57717
  AssignmentOperator:=
 50 LET B = 0.98821
- Reference:B
+ Variable:B
  NumericConstant:0.98821
  AssignmentOperator:=
 60 LET C = 0.89706
- Reference:C
+ Variable:C
  NumericConstant:0.89706
  AssignmentOperator:=
 70 LET D = 0.91821
- Reference:D
+ Variable:D
  NumericConstant:0.91821
  AssignmentOperator:=
 80 LET E = 0.7567
- Reference:E
+ Variable:E
  NumericConstant:0.7567
  AssignmentOperator:=
 90 LET F = 0.4822
- Reference:F
+ Variable:F
  NumericConstant:0.4822
  AssignmentOperator:=
 100 LET G = 0.19353
- Reference:G
+ Variable:G
  NumericConstant:0.19353
  AssignmentOperator:=
 110 LET H = 0.03587
- Reference:H
+ Variable:H
  NumericConstant:0.03587
  AssignmentOperator:=
 120 PRINT "TYPE G FOR GAMMA FUNCTION OR"
@@ -61,19 +61,19 @@
  TextConstant:"ENTER VALUE OF X"
  CarriageControl:NL
 200 INPUT X
- Reference:X
+ Variable:X
 210 LET K = X
- Reference:K
- Value:X
+ Variable:K
+ Variable:X
  AssignmentOperator:=
 220 LET K = K - 1
- Reference:K
- Value:K
+ Variable:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 230 IF K > = 0 THEN 260
- Value:K
+ Variable:K
  NumericConstant:0
  BinaryOperator:>=
 240 PRINT "X MUST BE EQUAL TO OR GREATER THAN 1"
@@ -85,10 +85,10 @@
 260 GOSUB 490
  LineNumber:490
 270 IF (X - 1) - INT(X - 1) THEN 410
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:-
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:-
  FunctionInt
@@ -102,13 +102,13 @@
  TextConstant:"ENTER VALUE OF X"
  CarriageControl:NL
 310 INPUT X
- Reference:X
+ Variable:X
 320 LET K = X
- Reference:K
- Value:X
+ Variable:K
+ Variable:X
  AssignmentOperator:=
 330 IF K > = 0 THEN 360
- Value:K
+ Variable:K
  NumericConstant:0
  BinaryOperator:>=
 340 PRINT "X MUST BE GREATER THAN OR EQUAL TO 0"
@@ -120,19 +120,19 @@
 360 GOSUB 490
  LineNumber:490
 370 IF X = INT(X) THEN 390
- Value:X
- Value:X
+ Variable:X
+ Variable:X
  FunctionInt
  BinaryOperator:=
 380 GOSUB 570
  LineNumber:570
 390 PRINT X;"! = ";K
  ITEMS
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:"! = "
  CarriageControl:;
- Value:K
+ Variable:K
  CarriageControl:NL
 400 GOTO 420
  LineNumber:420
@@ -140,11 +140,11 @@
  ITEMS
  TextConstant:"GAMMA ("
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:") = "
  CarriageControl:;
- Value:K
+ Variable:K
  CarriageControl:NL
 420 PRINT
  ITEMS
@@ -165,81 +165,81 @@
 480 GOTO 120
  LineNumber:120
 490 LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 500 LET J = J*K
- Reference:J
- Value:J
- Value:K
+ Variable:J
+ Variable:J
+ Variable:K
  BinaryOperator:*
  AssignmentOperator:=
 510 LET K = K - 1
- Reference:K
- Value:K
+ Variable:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 520 IF K < 1 THEN 540
- Value:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:<
 530 GOTO 500
  LineNumber:500
 540 LET L = K
- Reference:L
- Value:K
+ Variable:L
+ Variable:K
  AssignmentOperator:=
 550 LET K = J
- Reference:K
- Value:J
+ Variable:K
+ Variable:J
  AssignmentOperator:=
 560 RETURN
  
 570 LET A1 = 1 + (A*L) + (B*(L^2)) + C*(L^3))
  Too few operators
 580 LET A1 = A1 + (D*(L^4)) + (E*(L^5)) + (F*(L^6))
- Reference:A1
- Value:A1
- Value:D
- Value:L
+ Variable:A1
+ Variable:A1
+ Variable:D
+ Variable:L
  NumericConstant:4
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:+
- Value:E
- Value:L
+ Variable:E
+ Variable:L
  NumericConstant:5
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:+
- Value:F
- Value:L
+ Variable:F
+ Variable:L
  NumericConstant:6
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 590 LET A1 = A1 + (G*(L^7)) + (H*(L^8))
- Reference:A1
- Value:A1
- Value:G
- Value:L
+ Variable:A1
+ Variable:A1
+ Variable:G
+ Variable:L
  NumericConstant:7
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:+
- Value:H
- Value:L
+ Variable:H
+ Variable:L
  NumericConstant:8
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 600 LET K = A1*K
- Reference:K
- Value:A1
- Value:K
+ Variable:K
+ Variable:A1
+ Variable:K
  BinaryOperator:*
  AssignmentOperator:=
 610 RETURN

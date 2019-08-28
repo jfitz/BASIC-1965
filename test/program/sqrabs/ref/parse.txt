@@ -3,34 +3,34 @@
  start:   ["NumericConstant:5", "UnaryOperator:-"]
  end:     ["NumericConstant:10"]
 20 LET A=ABS(I)
- Reference:A
- Value:I
+ Variable:A
+ Variable:I
  FunctionAbs
  AssignmentOperator:=
 30 LET S=SQR(ABS(I))
- Reference:S
- Value:I
+ Variable:S
+ Variable:I
  FunctionAbs
  FunctionSqr
  AssignmentOperator:=
 31 LET A1=ABS(I)+3
- Reference:A1
- Value:I
+ Variable:A1
+ Variable:I
  FunctionAbs
  NumericConstant:3
  BinaryOperator:+
  AssignmentOperator:=
 32 LET S1=SQR(ABS(I)+3)
- Reference:S1
- Value:I
+ Variable:S1
+ Variable:I
  FunctionAbs
  NumericConstant:3
  BinaryOperator:+
  FunctionSqr
  AssignmentOperator:=
 34 LET S2=SQR(ABS(I)+3)*2
- Reference:S2
- Value:I
+ Variable:S2
+ Variable:I
  FunctionAbs
  NumericConstant:3
  BinaryOperator:+
@@ -40,17 +40,17 @@
  AssignmentOperator:=
 40 PRINT I, A, S, A1, S1, S2
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:,
- Value:A
+ Variable:A
  CarriageControl:,
- Value:S
+ Variable:S
  CarriageControl:,
- Value:A1
+ Variable:A1
  CarriageControl:,
- Value:S1
+ Variable:S1
  CarriageControl:,
- Value:S2
+ Variable:S2
  CarriageControl:NL
 50 NEXT I
  Variable:I

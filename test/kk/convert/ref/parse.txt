@@ -1,42 +1,42 @@
 100 READ M, C
- Reference:M
- Reference:C
+ Variable:M
+ Variable:C
 110 LET M1 = M + C/100
- Reference:M1
- Value:M
- Value:C
+ Variable:M1
+ Variable:M
+ Variable:C
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 120 LET I = M1 * 39.37
- Reference:I
- Value:M1
+ Variable:I
+ Variable:M1
  NumericConstant:39.37
  BinaryOperator:*
  AssignmentOperator:=
 130 LET F = INT(I/12)
- Reference:F
- Value:I
+ Variable:F
+ Variable:I
  NumericConstant:12
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 140 LET I = I - 12*F
- Reference:I
- Value:I
+ Variable:I
+ Variable:I
  NumericConstant:12
- Value:F
+ Variable:F
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 150 PRINT M, "METERS", C, "CENTIMETERS"
  ITEMS
- Value:M
+ Variable:M
  CarriageControl:,
  TextConstant:"METERS"
  CarriageControl:,
- Value:C
+ Variable:C
  CarriageControl:,
  TextConstant:"CENTIMETERS"
  CarriageControl:NL
@@ -45,18 +45,18 @@
  TextConstant:"CONVERTS TO"
  CarriageControl:NL
 170 IF F = 0 THEN 190
- Value:F
+ Variable:F
  NumericConstant:0
  BinaryOperator:=
 180 PRINT F, "FEET",
  ITEMS
- Value:F
+ Variable:F
  CarriageControl:,
  TextConstant:"FEET"
  CarriageControl:,
 190 PRINT I, "INCHES"
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:,
  TextConstant:"INCHES"
  CarriageControl:NL

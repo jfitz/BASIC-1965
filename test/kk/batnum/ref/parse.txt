@@ -2,20 +2,20 @@
  Remark:THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
 110
 120 LET N = 20 + INT(80*RND(X))
- Reference:N
+ Variable:N
  NumericConstant:20
  NumericConstant:80
- Value:X
+ Variable:X
  FunctionRnd
  BinaryOperator:*
  FunctionInt
  BinaryOperator:+
  AssignmentOperator:=
 130 LET K = 5 + INT(10*RND(X))
- Reference:K
+ Variable:K
  NumericConstant:5
  NumericConstant:10
- Value:X
+ Variable:X
  FunctionRnd
  BinaryOperator:*
  FunctionInt
@@ -29,7 +29,7 @@
  ITEMS
  TextConstant:"TAKE AWAY 1 THROUGH"
  CarriageControl:
- Value:K
+ Variable:K
  CarriageControl:NL
 160 PRINT "LAST PERSON TO MOVE LOSES"
  ITEMS
@@ -42,7 +42,7 @@
  ITEMS
  TextConstant:"THE INITIAL NUMBER IS"
  CarriageControl:
- Value:N
+ Variable:N
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -55,18 +55,18 @@
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 230 INPUT X
- Reference:X
+ Variable:X
 240 IF X > K THEN 270
- Value:X
- Value:K
+ Variable:X
+ Variable:K
  BinaryOperator:>
 250 IF X < 1 THEN 270
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:<
 260 IF X <= N THEN 310
- Value:X
- Value:N
+ Variable:X
+ Variable:N
  BinaryOperator:<=
 270 PRINT "ILLEGAL MOVE"
  ITEMS
@@ -81,13 +81,13 @@
 310 REM TEST FOR WIN
  Remark:TEST FOR WIN
 320 LET N = N-X
- Reference:N
- Value:N
- Value:X
+ Variable:N
+ Variable:N
+ Variable:X
  BinaryOperator:-
  AssignmentOperator:=
 330 IF N > 0 THEN 410
- Value:N
+ Variable:N
  NumericConstant:0
  BinaryOperator:>
 340 PRINT "I WIN ***"
@@ -113,56 +113,56 @@
 410 REM MACHINE'S MOVE
  Remark:MACHINE'S MOVE
 420 LET Q = INT((N-1)/(K+1))
- Reference:Q
- Value:N
+ Variable:Q
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
- Value:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 430 LET Y = N-1 - Q*(K+1)
- Reference:Y
- Value:N
+ Variable:Y
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
- Value:Q
- Value:K
+ Variable:Q
+ Variable:K
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 440 IF Y = 0 THEN 530
- Value:Y
+ Variable:Y
  NumericConstant:0
  BinaryOperator:=
 450 LET N = N - Y
- Reference:N
- Value:N
- Value:Y
+ Variable:N
+ Variable:N
+ Variable:Y
  BinaryOperator:-
  AssignmentOperator:=
 460 PRINT "MY MOVE:" Y
  ITEMS
  TextConstant:"MY MOVE:"
  CarriageControl:
- Value:Y
+ Variable:Y
  CarriageControl:NL
 470 PRINT
  ITEMS
  CarriageControl:NL
 480 IF N = 0 THEN 600
- Value:N
+ Variable:N
  NumericConstant:0
  BinaryOperator:=
 490 PRINT "NEW TOTAL IS" N
  ITEMS
  TextConstant:"NEW TOTAL IS"
  CarriageControl:
- Value:N
+ Variable:N
  CarriageControl:NL
 500 PRINT
  ITEMS
@@ -173,19 +173,19 @@
 530 REM MAKE RANDOM MOVE
  Remark:MAKE RANDOM MOVE
 540 IF N > 1 THEN 570
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:>
 550 LET Y = 1
- Reference:Y
+ Variable:Y
  NumericConstant:1
  AssignmentOperator:=
 560 GOTO 450
  LineNumber:450
 570 LET Y = I + INT(K*RND(0))
- Reference:Y
- Value:I
- Value:K
+ Variable:Y
+ Variable:I
+ Variable:K
  NumericConstant:0
  FunctionRnd
  BinaryOperator:*

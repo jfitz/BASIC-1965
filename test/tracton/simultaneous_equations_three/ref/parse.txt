@@ -15,141 +15,141 @@
  TextConstant:"ENTER THE 1ST EQUATION (A,B,C,D)"
  CarriageControl:NL
 60 INPUT A1,B1,C1,D1
- Reference:A1
- Reference:B1
- Reference:C1
- Reference:D1
+ Variable:A1
+ Variable:B1
+ Variable:C1
+ Variable:D1
 70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
  ITEMS
  TextConstant:"ENTER THE 2ND EQUATION (A,B,C,D)"
  CarriageControl:NL
 80 INPUT A2,B2,C2,D2
- Reference:A2
- Reference:B2
- Reference:C2
- Reference:D2
+ Variable:A2
+ Variable:B2
+ Variable:C2
+ Variable:D2
 90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
  ITEMS
  TextConstant:"ENTER THE 3RD EQUATION (A,B,C,D)"
  CarriageControl:NL
 100 INPUT A3,B3,C3,D3
- Reference:A3
- Reference:B3
- Reference:C3
- Reference:D3
+ Variable:A3
+ Variable:B3
+ Variable:C3
+ Variable:D3
 110 LET E1 = ((B1*A2)/A1) - B2
- Reference:E1
- Value:B1
- Value:A2
+ Variable:E1
+ Variable:B1
+ Variable:A2
  BinaryOperator:*
- Value:A1
+ Variable:A1
  BinaryOperator:/
- Value:B2
+ Variable:B2
  BinaryOperator:-
  AssignmentOperator:=
 120 LET E2 = ((C1*A2)/A1) - C2
- Reference:E2
- Value:C1
- Value:A2
+ Variable:E2
+ Variable:C1
+ Variable:A2
  BinaryOperator:*
- Value:A1
+ Variable:A1
  BinaryOperator:/
- Value:C2
+ Variable:C2
  BinaryOperator:-
  AssignmentOperator:=
 130 LET E3 = ((B1*A3)/A1) - B3
- Reference:E3
- Value:B1
- Value:A3
+ Variable:E3
+ Variable:B1
+ Variable:A3
  BinaryOperator:*
- Value:A1
+ Variable:A1
  BinaryOperator:/
- Value:B3
+ Variable:B3
  BinaryOperator:-
  AssignmentOperator:=
 140 LET E4 = ((C1*A3)/A1) - C3
- Reference:E4
- Value:C1
- Value:A3
+ Variable:E4
+ Variable:C1
+ Variable:A3
  BinaryOperator:*
- Value:A1
+ Variable:A1
  BinaryOperator:/
- Value:C3
+ Variable:C3
  BinaryOperator:-
  AssignmentOperator:=
 150 LET E5 = ((E1*E4) - (E2*E3))
- Reference:E5
- Value:E1
- Value:E4
+ Variable:E5
+ Variable:E1
+ Variable:E4
  BinaryOperator:*
- Value:E2
- Value:E3
+ Variable:E2
+ Variable:E3
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 160 IF E5 = 0 THEN 250
- Value:E5
+ Variable:E5
  NumericConstant:0
  BinaryOperator:=
 170 LET E6 = ((D1*A2)/A1) - D2
- Reference:E6
- Value:D1
- Value:A2
+ Variable:E6
+ Variable:D1
+ Variable:A2
  BinaryOperator:*
- Value:A1
+ Variable:A1
  BinaryOperator:/
- Value:D2
+ Variable:D2
  BinaryOperator:-
  AssignmentOperator:=
 180 LET E7 = ((D1*A3)/A1) - D3
- Reference:E7
- Value:D1
- Value:A3
+ Variable:E7
+ Variable:D1
+ Variable:A3
  BinaryOperator:*
- Value:A1
+ Variable:A1
  BinaryOperator:/
- Value:D3
+ Variable:D3
  BinaryOperator:-
  AssignmentOperator:=
 190 LET Y = ((E6*E4) - (E2*E7))/E5
- Reference:Y
- Value:E6
- Value:E4
+ Variable:Y
+ Variable:E6
+ Variable:E4
  BinaryOperator:*
- Value:E2
- Value:E7
+ Variable:E2
+ Variable:E7
  BinaryOperator:*
  BinaryOperator:-
- Value:E5
+ Variable:E5
  BinaryOperator:/
  AssignmentOperator:=
 200 LET Z = ((E1*E7) - (E6*E3))/E5
- Reference:Z
- Value:E1
- Value:E7
+ Variable:Z
+ Variable:E1
+ Variable:E7
  BinaryOperator:*
- Value:E6
- Value:E3
+ Variable:E6
+ Variable:E3
  BinaryOperator:*
  BinaryOperator:-
- Value:E5
+ Variable:E5
  BinaryOperator:/
  AssignmentOperator:=
 210 LET X = (D1/A1) - (B1/A1*Y) - ((C1/A1)*Z)
- Reference:X
- Value:D1
- Value:A1
+ Variable:X
+ Variable:D1
+ Variable:A1
  BinaryOperator:/
- Value:B1
- Value:A1
+ Variable:B1
+ Variable:A1
  BinaryOperator:/
- Value:Y
+ Variable:Y
  BinaryOperator:*
  BinaryOperator:-
- Value:C1
- Value:A1
+ Variable:C1
+ Variable:A1
  BinaryOperator:/
- Value:Z
+ Variable:Z
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
@@ -161,15 +161,15 @@
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:,
  TextConstant:"Z = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 240 GOTO 260
  LineNumber:260
@@ -185,9 +185,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT L
- Reference:L
+ Variable:L
 290 IF L = 1 THEN 310
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 300 STOP

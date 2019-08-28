@@ -11,55 +11,55 @@
  ITEMS
  CarriageControl:NL
 130 READ A,B,C,D
- Reference:A
- Reference:B
- Reference:C
- Reference:D
+ Variable:A
+ Variable:B
+ Variable:C
+ Variable:D
 140 LET N = A+B+C+D
- Reference:N
- Value:A
- Value:B
+ Variable:N
+ Variable:A
+ Variable:B
  BinaryOperator:+
- Value:C
+ Variable:C
  BinaryOperator:+
- Value:D
+ Variable:D
  BinaryOperator:+
  AssignmentOperator:=
 150 LET E = ABS(A*D - B*C) - N/2
- Reference:E
- Value:A
- Value:D
+ Variable:E
+ Variable:A
+ Variable:D
  BinaryOperator:*
- Value:B
- Value:C
+ Variable:B
+ Variable:C
  BinaryOperator:*
  BinaryOperator:-
  FunctionAbs
- Value:N
+ Variable:N
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:-
  AssignmentOperator:=
 160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
- Reference:X
- Value:N
- Value:E
+ Variable:X
+ Variable:N
+ Variable:E
  BinaryOperator:*
- Value:E
+ Variable:E
  BinaryOperator:*
- Value:A
- Value:B
+ Variable:A
+ Variable:B
  BinaryOperator:+
- Value:C
- Value:D
- BinaryOperator:+
- BinaryOperator:*
- Value:A
- Value:C
+ Variable:C
+ Variable:D
  BinaryOperator:+
  BinaryOperator:*
- Value:B
- Value:D
+ Variable:A
+ Variable:C
+ BinaryOperator:+
+ BinaryOperator:*
+ Variable:B
+ Variable:D
  BinaryOperator:+
  BinaryOperator:*
  BinaryOperator:/
@@ -67,17 +67,17 @@
 170
 180 PRINT A,B
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:,
- Value:B
+ Variable:B
  CarriageControl:NL
 190 PRINT C,D,X
  ITEMS
- Value:C
+ Variable:C
  CarriageControl:,
- Value:D
+ Variable:D
  CarriageControl:,
- Value:X
+ Variable:X
  CarriageControl:NL
 200 GO TO 120
  LineNumber:120

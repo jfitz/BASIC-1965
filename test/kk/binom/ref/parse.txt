@@ -1,31 +1,31 @@
 10 READ N,I
- Reference:N
- Reference:I
+ Variable:N
+ Variable:I
 20 LET B = 1
- Reference:B
+ Variable:B
  NumericConstant:1
  AssignmentOperator:=
 30 FOR K = 1 TO I
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["Value:I"]
+ end:     ["Variable:I"]
 40 LET B = B*(N-K+1)/K
- Reference:B
- Value:B
- Value:N
- Value:K
+ Variable:B
+ Variable:B
+ Variable:N
+ Variable:K
  BinaryOperator:-
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
- Value:K
+ Variable:K
  BinaryOperator:/
  AssignmentOperator:=
 50 NEXT K
  Variable:K
 60 PRINT B
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:NL
 70 STOP
  

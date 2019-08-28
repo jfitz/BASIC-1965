@@ -1,5 +1,5 @@
 10 LET A1=10*(3*(2+1))
- Reference:A1
+ Variable:A1
  NumericConstant:10
  NumericConstant:3
  NumericConstant:2
@@ -9,7 +9,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 20 LET A2=(3*(2+1))*10
- Reference:A2
+ Variable:A2
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
@@ -19,7 +19,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 30 LET B1=10*(3+(2*1))
- Reference:B1
+ Variable:B1
  NumericConstant:10
  NumericConstant:3
  NumericConstant:2
@@ -29,7 +29,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 40 LET B2=(3+(2*1))*10
- Reference:B2
+ Variable:B2
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
@@ -39,7 +39,7 @@
  BinaryOperator:*
  AssignmentOperator:=
 50 LET C1=10+(3*(2+1))
- Reference:C1
+ Variable:C1
  NumericConstant:10
  NumericConstant:3
  NumericConstant:2
@@ -49,7 +49,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 60 LET C2=(3*(2+1))+10
- Reference:C2
+ Variable:C2
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
@@ -60,17 +60,17 @@
  AssignmentOperator:=
 70 PRINT A1, A2, B1, B2, C1, C2
  ITEMS
- Value:A1
+ Variable:A1
  CarriageControl:,
- Value:A2
+ Variable:A2
  CarriageControl:,
- Value:B1
+ Variable:B1
  CarriageControl:,
- Value:B2
+ Variable:B2
  CarriageControl:,
- Value:C1
+ Variable:C1
  CarriageControl:,
- Value:C2
+ Variable:C2
  CarriageControl:NL
 90 STOP
  

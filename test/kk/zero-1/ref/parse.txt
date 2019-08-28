@@ -1,9 +1,9 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
- Value:X
+ Variable:X
  NumericConstant:5
  BinaryOperator:^
  NumericConstant:2
- Value:X
+ Variable:X
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:*
@@ -11,44 +11,44 @@
  NumericConstant:1
  BinaryOperator:-
 20 READ A,B
- Reference:A
- Reference:B
+ Variable:A
+ Variable:B
 30 LET X = (A+B)/2
- Reference:X
- Value:A
- Value:B
+ Variable:X
+ Variable:A
+ Variable:B
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 40 IF FNF(X) = 0 THEN 100
- Value:X
+ Variable:X
  UserFunction
  NumericConstant:0
  BinaryOperator:=
 50 IF FNF(X) < 0 THEN 70
- Value:X
+ Variable:X
  UserFunction
  NumericConstant:0
  BinaryOperator:<
 60 LET B = X
- Reference:B
- Value:X
+ Variable:B
+ Variable:X
  AssignmentOperator:=
 65 GOTO 80
  LineNumber:80
 70 LET A = X
- Reference:A
- Value:X
+ Variable:A
+ Variable:X
  AssignmentOperator:=
 80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.000005 THEN 100
- Value:A
- Value:B
+ Variable:A
+ Variable:B
  BinaryOperator:-
  FunctionAbs
- Value:A
+ Variable:A
  FunctionAbs
- Value:B
+ Variable:B
  FunctionAbs
  BinaryOperator:+
  BinaryOperator:/
@@ -60,7 +60,7 @@
  ITEMS
  TextConstant:"ONE ZERO AT"
  CarriageControl:
- Value:X
+ Variable:X
  CarriageControl:NL
 900 DATA 0,1
  NumericConstant:0

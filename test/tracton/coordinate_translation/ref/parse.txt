@@ -7,10 +7,10 @@
  TextConstant:"ANGLE OF ROTATION IN DEGREES = "
  CarriageControl:;
 40 INPUT A
- Reference:A
+ Variable:A
 50 LET B = (A*3.14159)/180
- Reference:B
- Value:A
+ Variable:B
+ Variable:A
  NumericConstant:3.14159
  BinaryOperator:*
  NumericConstant:180
@@ -21,48 +21,48 @@
  TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
  CarriageControl:;
 70 INPUT X,Y
- Reference:X
- Reference:Y
+ Variable:X
+ Variable:Y
 80 PRINT "OLD COORDINATES OF DATA POINT (X1,Y1) =";
  ITEMS
  TextConstant:"OLD COORDINATES OF DATA POINT (X1,Y1) ="
  CarriageControl:;
 90 INPUT F,C
- Reference:F
- Reference:C
+ Variable:F
+ Variable:C
 100 LET Z = F - X
- Reference:Z
- Value:F
- Value:X
+ Variable:Z
+ Variable:F
+ Variable:X
  BinaryOperator:-
  AssignmentOperator:=
 110 LET W = C - Y
- Reference:W
- Value:C
- Value:Y
+ Variable:W
+ Variable:C
+ Variable:Y
  BinaryOperator:-
  AssignmentOperator:=
 120 LET D = (Z*COS(B)) + (W*SIN(B))
- Reference:D
- Value:Z
- Value:B
+ Variable:D
+ Variable:Z
+ Variable:B
  FunctionCos
  BinaryOperator:*
- Value:W
- Value:B
+ Variable:W
+ Variable:B
  FunctionSin
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 130 LET E = - (Z*SIN(B)) + (W*COS(B))
- Reference:E
- Value:Z
- Value:B
+ Variable:E
+ Variable:Z
+ Variable:B
  FunctionSin
  BinaryOperator:*
  UnaryOperator:-
- Value:W
- Value:B
+ Variable:W
+ Variable:B
  FunctionCos
  BinaryOperator:*
  BinaryOperator:+
@@ -74,7 +74,7 @@
  ITEMS
  TextConstant:"SPECIFIED ROTATION ="
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:NL
 160 PRINT "NEW COORDINATES OF DATA POINT"
  ITEMS
@@ -84,13 +84,13 @@
  ITEMS
  TextConstant:"X2 = "
  CarriageControl:;
- Value:D
+ Variable:D
  CarriageControl:NL
 180 PRINT "Y2 = ";E
  ITEMS
  TextConstant:"Y2 = "
  CarriageControl:;
- Value:E
+ Variable:E
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -100,9 +100,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
- Reference:L
+ Variable:L
 220 IF L = 1 THEN 240
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 230 STOP

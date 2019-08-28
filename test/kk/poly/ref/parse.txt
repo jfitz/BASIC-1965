@@ -7,32 +7,32 @@
  NumericConstant:2
  Declaration:T
 20 READ N
- Reference:N
+ Variable:N
 30 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 40 READ A(I)
- Value:I
- Reference:A
+ Variable:I
+ Variable:A
 50 NEXT I
  Variable:I
 60 READ X9
- Reference:X9
+ Variable:X9
 70 FOR J = 1 TO X9
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:X9"]
+ end:     ["Variable:X9"]
 80 READ X(J)
- Value:J
- Reference:X
+ Variable:J
+ Variable:X
 90 NEXT J
  Variable:J
 95
 100 REM  MAIN ROUTINE.
  Remark: MAIN ROUTINE.
 110 LET K = 0
- Reference:K
+ Variable:K
  NumericConstant:0
  AssignmentOperator:=
 120 GOSUB 500
@@ -40,7 +40,7 @@
 130 GOSUB 2000
  LineNumber:2000
 140 LET K = 1
- Reference:K
+ Variable:K
  NumericConstant:1
  AssignmentOperator:=
 150 GOSUB 500
@@ -48,7 +48,7 @@
 160 GOSUB 2000
  LineNumber:2000
 170 LET K = 2
- Reference:K
+ Variable:K
  NumericConstant:2
  AssignmentOperator:=
 180 GOSUB 500
@@ -72,23 +72,23 @@
 230 FOR J = 1 TO X9
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:X9"]
+ end:     ["Variable:X9"]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
  ITEMS
- Value:J
- Value:X
+ Variable:J
+ Variable:X
  CarriageControl:,
- Value:J
+ Variable:J
  NumericConstant:0
- Value:T
+ Variable:T
  CarriageControl:,
- Value:J
+ Variable:J
  NumericConstant:1
- Value:T
+ Variable:T
  CarriageControl:,
- Value:J
+ Variable:J
  NumericConstant:2
- Value:T
+ Variable:T
  CarriageControl:NL
 250 NEXT J
  Variable:J
@@ -100,19 +100,19 @@
 510 FOR J = 1 TO X9
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:X9"]
+ end:     ["Variable:X9"]
 520 LET X = X(J)
- Reference:X
- Value:J
- Value:X
+ Variable:X
+ Variable:J
+ Variable:X
  AssignmentOperator:=
 530 GOSUB 1000
  LineNumber:1000
 540 LET T(J,K) = Y
- Value:J
- Value:K
- Reference:T
- Value:Y
+ Variable:J
+ Variable:K
+ Variable:T
+ Variable:Y
  AssignmentOperator:=
 550 NEXT J
  Variable:J
@@ -122,20 +122,20 @@
 1000 REM  EVALUATE.
  Remark: EVALUATE.
 1010 LET Y = 0
- Reference:Y
+ Variable:Y
  NumericConstant:0
  AssignmentOperator:=
 1020 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 1030 LET Y = Y*X + A(I)
- Reference:Y
- Value:Y
- Value:X
+ Variable:Y
+ Variable:Y
+ Variable:X
  BinaryOperator:*
- Value:I
- Value:A
+ Variable:I
+ Variable:A
  BinaryOperator:+
  AssignmentOperator:=
 1040 NEXT I
@@ -148,22 +148,22 @@
 2010 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 2020 LET A(I) = A(I)*(N-I)
- Value:I
- Reference:A
- Value:I
- Value:A
- Value:N
- Value:I
+ Variable:I
+ Variable:A
+ Variable:I
+ Variable:A
+ Variable:N
+ Variable:I
  BinaryOperator:-
  BinaryOperator:*
  AssignmentOperator:=
 2030 NEXT I
  Variable:I
 2040 LET N = N-1
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=

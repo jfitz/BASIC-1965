@@ -780,7 +780,7 @@ class Parser
     if @shape_stack[-1] == :declaration
       variable = Declaration.new(element)
     else
-      variable = Value.new(element, @shape_stack[-1], [])
+      variable = Variable.new(element, @shape_stack[-1], [])
     end
     @operator_stack.push(variable)
   end
@@ -1121,7 +1121,7 @@ class TargetExpression < AbstractExpression
     @target = true
 
     @parsed_expressions.each do |parsed_expression|
-      parsed_expression[-1] = Reference.new(parsed_expression[-1], shape, [])
+      parsed_expression[-1].valref = :reference
     end
   end
 
@@ -1145,7 +1145,7 @@ class TargetExpression < AbstractExpression
 
   def check_resolve_types
     @parsed_expressions.each do |parsed_expression|
-      if parsed_expression[-1].class.to_s != 'Value' &&
+      if parsed_expression[-1].class.to_s != 'Variable' &&
          parsed_expression[-1].class.to_s != 'UserFunction'
         raise(BASICRuntimeError,
               "Value is not assignable (type #{parsed_expression[-1].class})")

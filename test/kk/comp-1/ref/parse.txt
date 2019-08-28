@@ -6,51 +6,51 @@
  TextConstant:"A, R, Y, T"
  CarriageControl:;
 20 INPUT A, R, Y, T
- Reference:A
- Reference:R
- Reference:Y
- Reference:T
+ Variable:A
+ Variable:R
+ Variable:Y
+ Variable:T
 26 IF T = 999 THEN 999
- Value:T
+ Variable:T
  NumericConstant:999
  BinaryOperator:=
 30 IF A <= 0 THEN 100
- Value:A
+ Variable:A
  NumericConstant:0
  BinaryOperator:<=
 40 IF R <= 0 THEN 100
- Value:R
+ Variable:R
  NumericConstant:0
  BinaryOperator:<=
 50 IF Y <= 0 THEN 100
- Value:Y
+ Variable:Y
  NumericConstant:0
  BinaryOperator:<=
 60 IF T <= 0 THEN 100
- Value:T
+ Variable:T
  NumericConstant:0
  BinaryOperator:<=
 70 LET N = Y*T
- Reference:N
- Value:Y
- Value:T
+ Variable:N
+ Variable:Y
+ Variable:T
  BinaryOperator:*
  AssignmentOperator:=
 80 LET R1 = R/100/T
- Reference:R1
- Value:R
+ Variable:R1
+ Variable:R
  NumericConstant:100
  BinaryOperator:/
- Value:T
+ Variable:T
  BinaryOperator:/
  AssignmentOperator:=
 90 LET B = A*(1+R1)^N
- Reference:B
- Value:A
+ Variable:B
+ Variable:A
  NumericConstant:1
- Value:R1
+ Variable:R1
  BinaryOperator:+
- Value:N
+ Variable:N
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
@@ -58,7 +58,7 @@
  ITEMS
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
- Value:B
+ Variable:B
  CarriageControl:NL
 96 GOTO 5
  LineNumber:5

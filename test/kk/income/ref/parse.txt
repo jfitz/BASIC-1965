@@ -3,8 +3,8 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 20 LET N(D) = 0
- Value:D
- Reference:N
+ Variable:D
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 30 NEXT D
@@ -14,19 +14,19 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 50 READ X
- Reference:X
+ Variable:X
 60 LET D = INT(X/1E4)
- Reference:D
- Value:X
+ Variable:D
+ Variable:X
  NumericConstant:10000
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 70 LET N(D) = N(D) + 1
- Value:D
- Reference:N
- Value:D
- Value:N
+ Variable:D
+ Variable:N
+ Variable:D
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -50,18 +50,18 @@
  end:     ["NumericConstant:5"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
  ITEMS
- Value:D
+ Variable:D
  NumericConstant:10000
  BinaryOperator:*
  CarriageControl:,
- Value:D
+ Variable:D
  NumericConstant:1
  BinaryOperator:+
  NumericConstant:10000
  BinaryOperator:*
  CarriageControl:,
- Value:D
- Value:N
+ Variable:D
+ Variable:N
  CarriageControl:NL
 140 NEXT D
  Variable:D

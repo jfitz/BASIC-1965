@@ -547,7 +547,10 @@ class Interpreter
   end
 
   def get_value(variable)
-    legals = %w(VariableName Value ScalarValue)
+    legals = [
+      'VariableName',
+      'Variable'
+    ]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable") unless
@@ -607,10 +610,9 @@ class Interpreter
 
   def set_value(variable, value)
     legals = [
-      'Value',
       'Variable',
       'VariableName',
-      'Reference'
+      'UserFunction'
     ]
 
     raise(BASICRuntimeError,
@@ -656,7 +658,10 @@ class Interpreter
 
   def set_values(name, values)
     values.each do |coords, value|
-      variable = Variable.new(name, coords)
+      shape = :scalar
+      shape = :array if coords.size == 1
+      shape = :matrix if coords.size == 2
+      variable = Variable.new(name, shape, coords)
       set_value(variable, value)
     end
   end

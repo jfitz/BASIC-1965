@@ -5,27 +5,27 @@
  TextConstant:"FIRST TERM = "
  CarriageControl:;
 30 INPUT A
- Reference:A
+ Variable:A
 40 PRINT "COMMON DIFFERENCE = ";
  ITEMS
  TextConstant:"COMMON DIFFERENCE = "
  CarriageControl:;
 50 INPUT D
- Reference:D
+ Variable:D
 60 PRINT "NUMBER OF TERMS = ";
  ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:;
 70 INPUT N
- Reference:N
+ Variable:N
 80 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0";
  ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:;
 90 INPUT C
- Reference:C
+ Variable:C
 100 IF C = 1 THEN 120
- Value:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:=
 110 GOTO 140
@@ -41,44 +41,44 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 140 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 150 FOR I = 0 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 160 LET K = I + 1
- Reference:K
- Value:I
+ Variable:K
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 170 LET L = A + (I*D)
- Reference:L
- Value:A
- Value:I
- Value:D
+ Variable:L
+ Variable:A
+ Variable:I
+ Variable:D
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 180 LET J = J + L
- Reference:J
- Value:J
- Value:L
+ Variable:J
+ Variable:J
+ Variable:L
  BinaryOperator:+
  AssignmentOperator:=
 190 IF C = 1 THEN 210
- Value:C
+ Variable:C
  NumericConstant:1
  BinaryOperator:=
 200 GOTO 220
  LineNumber:220
 210 PRINT K, L
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
- Value:L
+ Variable:L
  CarriageControl:NL
 220 NEXT I
  Variable:I
@@ -86,7 +86,7 @@
  ITEMS
  TextConstant:"SUM = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 240 PRINT
  ITEMS
@@ -96,9 +96,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 260 INPUT X
- Reference:X
+ Variable:X
 270 IF X = 1 THEN 290
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:=
 290 STOP

@@ -29,7 +29,7 @@
  TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- Reference:C
+ Variable:C
 100 ON C GOTO 110,150,190,230,280,330
  Unknown statement 'ON C GOTO 110,150,190,230,280,330'
  Unimplemented
@@ -41,11 +41,11 @@
  ITEMS
  TextConstant:"SINH - 1"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 140 GOTO 370
  LineNumber:370
@@ -57,11 +57,11 @@
  ITEMS
  TextConstant:"COSH - 1"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 180 GOTO 370
  LineNumber:370
@@ -73,11 +73,11 @@
  ITEMS
  TextConstant:"TANH - 1"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 220 GOTO 370
  LineNumber:370
@@ -86,18 +86,18 @@
 240 GOSUB 470
  LineNumber:470
 250 LET X = A
- Reference:X
- Value:A
+ Variable:X
+ Variable:A
  AssignmentOperator:=
 260 PRINT "CSCH - 1";X;" = ";Z
  ITEMS
  TextConstant:"CSCH - 1"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 270 GOTO 370
  LineNumber:370
@@ -106,18 +106,18 @@
 290 GOSUB 490
  LineNumber:490
 300 LET X = A
- Reference:X
- Value:A
+ Variable:X
+ Variable:A
  AssignmentOperator:=
 310 PRINT "SECH - 1";X;" = ";Z
  ITEMS
  TextConstant:"SECH - 1"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 320 GOTO 370
  LineNumber:370
@@ -126,18 +126,18 @@
 340 GOSUB 510
  LineNumber:510
 350 LET X = A
- Reference:X
- Value:A
+ Variable:X
+ Variable:A
  AssignmentOperator:=
 360 PRINT "COTH - 1";X;" = ";Z
  ITEMS
  TextConstant:"COTH - 1"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 370 PRINT
  ITEMS
@@ -147,9 +147,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 390 INPUT L
- Reference:L
+ Variable:L
 400 IF L = 1 THEN 420
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 410 STOP
@@ -164,13 +164,13 @@
  TextConstant:"X = "
  CarriageControl:;
 450 INPUT X
- Reference:X
+ Variable:X
 460 RETURN
  
 470 LET Z = LOG(X + SQR((X^2) + 1))
- Reference:Z
- Value:X
- Value:X
+ Variable:Z
+ Variable:X
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
  NumericConstant:1
@@ -182,9 +182,9 @@
 480 RETURN
  
 490 LET Z = LOG(X + SQR((X^2) - 1))
- Reference:Z
- Value:X
- Value:X
+ Variable:Z
+ Variable:X
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
  NumericConstant:1
@@ -204,15 +204,15 @@
  TextConstant:"X = "
  CarriageControl:;
 540 INPUT X
- Reference:X
+ Variable:X
 550 LET A = X
- Reference:A
- Value:X
+ Variable:A
+ Variable:X
  AssignmentOperator:=
 560 LET X = 1/X
- Reference:X
+ Variable:X
  NumericConstant:1
- Value:X
+ Variable:X
  BinaryOperator:/
  AssignmentOperator:=
 570 RETURN

@@ -3,43 +3,43 @@
 20 REM THE LIMITS A AND B OF F(X)
  Remark:THE LIMITS A AND B OF F(X)
 30 LET C1 = .238619
- Reference:C1
+ Variable:C1
  NumericConstant:0.238619
  AssignmentOperator:=
 40 LET C2 = C1
- Reference:C2
- Value:C1
+ Variable:C2
+ Variable:C1
  AssignmentOperator:=
 50 LET C3 = .661209
- Reference:C3
+ Variable:C3
  NumericConstant:0.661209
  AssignmentOperator:=
 60 LET C4 = C3
- Reference:C4
- Value:C3
+ Variable:C4
+ Variable:C3
  AssignmentOperator:=
 70 LET C5 = .932470
- Reference:C5
+ Variable:C5
  NumericConstant:0.93247
  AssignmentOperator:=
 80 LET C6 = C5
- Reference:C6
- Value:C5
+ Variable:C6
+ Variable:C5
  AssignmentOperator:=
 90 LET D1 = .467914
- Reference:D1
+ Variable:D1
  NumericConstant:0.467914
  AssignmentOperator:=
 100 LET D2 = .360762
- Reference:D2
+ Variable:D2
  NumericConstant:0.360762
  AssignmentOperator:=
 110 LET D3 = .171324
- Reference:D3
+ Variable:D3
  NumericConstant:0.171324
  AssignmentOperator:=
 120 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 130 PRINT "ENTER ENDPOINTS A,B"
@@ -47,26 +47,26 @@
  TextConstant:"ENTER ENDPOINTS A,B"
  CarriageControl:NL
 140 INPUT A,B
- Reference:A
- Reference:B
+ Variable:A
+ Variable:B
 150 LET Y = B - A
- Reference:Y
- Value:B
- Value:A
+ Variable:Y
+ Variable:B
+ Variable:A
  BinaryOperator:-
  AssignmentOperator:=
 160 LET Z = B + A
- Reference:Z
- Value:B
- Value:A
+ Variable:Z
+ Variable:B
+ Variable:A
  BinaryOperator:+
  AssignmentOperator:=
 170 LET X = ((C1*Y) +Z)/2
- Reference:X
- Value:C1
- Value:Y
+ Variable:X
+ Variable:C1
+ Variable:Y
  BinaryOperator:*
- Value:Z
+ Variable:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -74,23 +74,23 @@
 180 GOSUB 500
  LineNumber:500
 190 LET N = D1*Q
- Reference:N
- Value:D1
- Value:Q
+ Variable:N
+ Variable:D1
+ Variable:Q
  BinaryOperator:*
  AssignmentOperator:=
 200 LET J = J + N
- Reference:J
- Value:J
- Value:N
+ Variable:J
+ Variable:J
+ Variable:N
  BinaryOperator:+
  AssignmentOperator:=
 210 LET X = ((C2*Y) + Z)/2
- Reference:X
- Value:C2
- Value:Y
+ Variable:X
+ Variable:C2
+ Variable:Y
  BinaryOperator:*
- Value:Z
+ Variable:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -98,23 +98,23 @@
 220 GOSUB 500
  LineNumber:500
 230 LET N = D1*Q
- Reference:N
- Value:D1
- Value:Q
+ Variable:N
+ Variable:D1
+ Variable:Q
  BinaryOperator:*
  AssignmentOperator:=
 240 LET J = J + N
- Reference:J
- Value:J
- Value:N
+ Variable:J
+ Variable:J
+ Variable:N
  BinaryOperator:+
  AssignmentOperator:=
 250 LET X = ((C3*Y) + Z)/2
- Reference:X
- Value:C3
- Value:Y
+ Variable:X
+ Variable:C3
+ Variable:Y
  BinaryOperator:*
- Value:Z
+ Variable:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -122,23 +122,23 @@
 260 GOSUB 500
  LineNumber:500
 270 LET N = D2*Q
- Reference:N
- Value:D2
- Value:Q
+ Variable:N
+ Variable:D2
+ Variable:Q
  BinaryOperator:*
  AssignmentOperator:=
 280 LET J = J + N
- Reference:J
- Value:J
- Value:N
+ Variable:J
+ Variable:J
+ Variable:N
  BinaryOperator:+
  AssignmentOperator:=
 290 LET X = ((C4*Y) + Z)/2
- Reference:X
- Value:C4
- Value:Y
+ Variable:X
+ Variable:C4
+ Variable:Y
  BinaryOperator:*
- Value:Z
+ Variable:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -146,23 +146,23 @@
 300 GOSUB 500
  LineNumber:500
 310 LET N = D2*Q
- Reference:N
- Value:D2
- Value:Q
+ Variable:N
+ Variable:D2
+ Variable:Q
  BinaryOperator:*
  AssignmentOperator:=
 320 LET J = J + N
- Reference:J
- Value:J
- Value:N
+ Variable:J
+ Variable:J
+ Variable:N
  BinaryOperator:+
  AssignmentOperator:=
 330 LET X = ((C5*Y) + Z)/2
- Reference:X
- Value:C5
- Value:Y
+ Variable:X
+ Variable:C5
+ Variable:Y
  BinaryOperator:*
- Value:Z
+ Variable:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -170,23 +170,23 @@
 340 GOSUB 500
  LineNumber:500
 350 LET N = D3*Q
- Reference:N
- Value:D3
- Value:Q
+ Variable:N
+ Variable:D3
+ Variable:Q
  BinaryOperator:*
  AssignmentOperator:=
 360 LET J = J + N
- Reference:J
- Value:J
- Value:N
+ Variable:J
+ Variable:J
+ Variable:N
  BinaryOperator:+
  AssignmentOperator:=
 370 LET X = ((C6*Y) + Z)/2
- Reference:X
- Value:C6
- Value:Y
+ Variable:X
+ Variable:C6
+ Variable:Y
  BinaryOperator:*
- Value:Z
+ Variable:Z
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
@@ -194,30 +194,30 @@
 380 GOSUB 500
  LineNumber:500
 390 LET N = D3*Y
- Reference:N
- Value:D3
- Value:Y
+ Variable:N
+ Variable:D3
+ Variable:Y
  BinaryOperator:*
  AssignmentOperator:=
 400 LET J = J + N
- Reference:J
- Value:J
- Value:N
+ Variable:J
+ Variable:J
+ Variable:N
  BinaryOperator:+
  AssignmentOperator:=
 410 LET G = (Y/2)*J
- Reference:G
- Value:Y
+ Variable:G
+ Variable:Y
  NumericConstant:2
  BinaryOperator:/
- Value:J
+ Variable:J
  BinaryOperator:*
  AssignmentOperator:=
 420 PRINT "INTEGRAL = ";G
  ITEMS
  TextConstant:"INTEGRAL = "
  CarriageControl:;
- Value:G
+ Variable:G
  CarriageControl:NL
 430 PRINT
  ITEMS
@@ -227,9 +227,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 450 INPUT L
- Reference:L
+ Variable:L
 460 IF L = 1 THEN 480
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 470 STOP
@@ -240,23 +240,23 @@
 490 GOTO 120
  LineNumber:120
 500 LET Q = 13*X^2 - 6*X^2 + SIN(X) + 1/X
- Reference:Q
+ Variable:Q
  NumericConstant:13
- Value:X
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
  NumericConstant:6
- Value:X
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:-
- Value:X
+ Variable:X
  FunctionSin
  BinaryOperator:+
  NumericConstant:1
- Value:X
+ Variable:X
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=

@@ -6,54 +6,54 @@
  TextConstant:"A, B, P, R, Y, T"
  CarriageControl:;
 20 INPUT A, B, P, R, Y, T
- Reference:A
- Reference:B
- Reference:P
- Reference:R
- Reference:Y
- Reference:T
+ Variable:A
+ Variable:B
+ Variable:P
+ Variable:R
+ Variable:Y
+ Variable:T
 21 IF A < 0 THEN 800
- Value:A
+ Variable:A
  NumericConstant:0
  BinaryOperator:<
 22 IF B < 0 THEN 800
- Value:B
+ Variable:B
  NumericConstant:0
  BinaryOperator:<
 23 IF R <= 0 THEN 800
- Value:R
+ Variable:R
  NumericConstant:0
  BinaryOperator:<=
 24 IF Y <= 0 THEN 800
- Value:Y
+ Variable:Y
  NumericConstant:0
  BinaryOperator:<=
 25 IF T <= 0 THEN 800
- Value:T
+ Variable:T
  NumericConstant:0
  BinaryOperator:<=
 26 IF T = 999 THEN 9999
- Value:T
+ Variable:T
  NumericConstant:999
  BinaryOperator:=
 30 IF A = 999 THEN 100
- Value:A
+ Variable:A
  NumericConstant:999
  BinaryOperator:=
 40 IF B = 999 THEN 200
- Value:B
+ Variable:B
  NumericConstant:999
  BinaryOperator:=
 50 IF P = 999 THEN 300
- Value:P
+ Variable:P
  NumericConstant:999
  BinaryOperator:=
 60 IF Y = 999 THEN 400
- Value:Y
+ Variable:Y
  NumericConstant:999
  BinaryOperator:=
 70 IF R = 999 THEN 500
- Value:R
+ Variable:R
  NumericConstant:999
  BinaryOperator:=
 80
@@ -62,24 +62,24 @@
 110 GOSUB 1000
  LineNumber:1000
 120 LET A = (B+P1)/R2 - P1
- Reference:A
- Value:B
- Value:P1
+ Variable:A
+ Variable:B
+ Variable:P1
  BinaryOperator:+
- Value:R2
+ Variable:R2
  BinaryOperator:/
- Value:P1
+ Variable:P1
  BinaryOperator:-
  AssignmentOperator:=
 125 IF A < 0 THEN 850
- Value:A
+ Variable:A
  NumericConstant:0
  BinaryOperator:<
 130 PRINT "ORIGINAL AMOUNT = $" A
  ITEMS
  TextConstant:"ORIGINAL AMOUNT = $"
  CarriageControl:
- Value:A
+ Variable:A
  CarriageControl:NL
 140 GOTO 5
  LineNumber:5
@@ -89,24 +89,24 @@
 210 GOSUB 1000
  LineNumber:1000
 220 LET B = (A+P1)*R2 - P1
- Reference:B
- Value:A
- Value:P1
+ Variable:B
+ Variable:A
+ Variable:P1
  BinaryOperator:+
- Value:R2
+ Variable:R2
  BinaryOperator:*
- Value:P1
+ Variable:P1
  BinaryOperator:-
  AssignmentOperator:=
 225 IF B < 0 THEN 850
- Value:B
+ Variable:B
  NumericConstant:0
  BinaryOperator:<
 230 PRINT "FINAL AMOUNT = $" B
  ITEMS
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
- Value:B
+ Variable:B
  CarriageControl:NL
 240 GOTO 5
  LineNumber:5
@@ -116,15 +116,15 @@
 310 GOSUB 1000
  LineNumber:1000
 320 LET P = R1*(B - A*R2)/(R2-1)
- Reference:P
- Value:R1
- Value:B
- Value:A
- Value:R2
+ Variable:P
+ Variable:R1
+ Variable:B
+ Variable:A
+ Variable:R2
  BinaryOperator:*
  BinaryOperator:-
  BinaryOperator:*
- Value:R2
+ Variable:R2
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
@@ -133,7 +133,7 @@
  ITEMS
  TextConstant:"PAYMENT = $"
  CarriageControl:
- Value:P
+ Variable:P
  CarriageControl:NL
 340 GOTO 5
  LineNumber:5
@@ -143,36 +143,36 @@
 410 GOSUB 1000
  LineNumber:1000
 415 LET Q = (B+P1)/(A+P1)
- Reference:Q
- Value:B
- Value:P1
+ Variable:Q
+ Variable:B
+ Variable:P1
  BinaryOperator:+
- Value:A
- Value:P1
+ Variable:A
+ Variable:P1
  BinaryOperator:+
  BinaryOperator:/
  AssignmentOperator:=
 416 IF Q <= 1 THEN 850
- Value:Q
+ Variable:Q
  NumericConstant:1
  BinaryOperator:<=
 420 LET Y = LOG(Q)/LOG(1+R1)/T
- Reference:Y
- Value:Q
+ Variable:Y
+ Variable:Q
  FunctionLog
  NumericConstant:1
- Value:R1
+ Variable:R1
  BinaryOperator:+
  FunctionLog
  BinaryOperator:/
- Value:T
+ Variable:T
  BinaryOperator:/
  AssignmentOperator:=
 430 PRINT "NUMBER OF YEARS = " Y
  ITEMS
  TextConstant:"NUMBER OF YEARS = "
  CarriageControl:
- Value:Y
+ Variable:Y
  CarriageControl:NL
 440 GOTO 5
  LineNumber:5
@@ -180,13 +180,13 @@
 500 REM FIND ANNUAL INTEREST
  Remark:FIND ANNUAL INTEREST
 505 LET S = B - (A+Y*T*P)
- Reference:S
- Value:B
- Value:A
- Value:Y
- Value:T
+ Variable:S
+ Variable:B
+ Variable:A
+ Variable:Y
+ Variable:T
  BinaryOperator:*
- Value:P
+ Variable:P
  BinaryOperator:*
  BinaryOperator:+
  BinaryOperator:-
@@ -199,26 +199,26 @@
 520    GOSUB 1000
  LineNumber:1000
 530    LET S1 = B - ((A+P1)*R2 - P1)
- Reference:S1
- Value:B
- Value:A
- Value:P1
+ Variable:S1
+ Variable:B
+ Variable:A
+ Variable:P1
  BinaryOperator:+
- Value:R2
+ Variable:R2
  BinaryOperator:*
- Value:P1
+ Variable:P1
  BinaryOperator:-
  BinaryOperator:-
  AssignmentOperator:=
 535    IF S*S1 <= 0 THEN 550
- Value:S
- Value:S1
+ Variable:S
+ Variable:S1
  BinaryOperator:*
  NumericConstant:0
  BinaryOperator:<=
 536    LET S = S1
- Reference:S
- Value:S1
+ Variable:S
+ Variable:S1
  AssignmentOperator:=
 540 NEXT R
  Variable:R
@@ -232,13 +232,13 @@
  ITEMS
  TextConstant:"ANNUAL INTEREST IS BETWEEN "
  CarriageControl:
- Value:R
+ Variable:R
  NumericConstant:0.1
  BinaryOperator:-
  CarriageControl:;
  TextConstant:"AND "
  CarriageControl:
- Value:R
+ Variable:R
  CarriageControl:;
  TextConstant:"PERCENT"
  CarriageControl:NL
@@ -263,31 +263,31 @@
 1000 REM COMPUTE BASIC QUANTITIES
  Remark:COMPUTE BASIC QUANTITIES
 1010 LET N = Y*T
- Reference:N
- Value:Y
- Value:T
+ Variable:N
+ Variable:Y
+ Variable:T
  BinaryOperator:*
  AssignmentOperator:=
 1020 LET R1 = R/100/T
- Reference:R1
- Value:R
+ Variable:R1
+ Variable:R
  NumericConstant:100
  BinaryOperator:/
- Value:T
+ Variable:T
  BinaryOperator:/
  AssignmentOperator:=
 1030 LET P1 = P/R1
- Reference:P1
- Value:P
- Value:R1
+ Variable:P1
+ Variable:P
+ Variable:R1
  BinaryOperator:/
  AssignmentOperator:=
 1040 LET R2 = (1+R1)^N
- Reference:R2
+ Variable:R2
  NumericConstant:1
- Value:R1
+ Variable:R1
  BinaryOperator:+
- Value:N
+ Variable:N
  BinaryOperator:^
  AssignmentOperator:=
 1099 RETURN

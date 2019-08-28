@@ -127,36 +127,36 @@
  Unknown statement 'RANDOMIZE'
  Unimplemented
 360 LET D = 0
- Reference:D
+ Variable:D
  NumericConstant:0
  AssignmentOperator:=
 370 LET P = D
- Reference:P
- Value:D
+ Variable:P
+ Variable:D
  AssignmentOperator:=
 380 GOSUB 820
  LineNumber:820
 390 LET D1 = C
- Reference:D1
- Value:C
+ Variable:D1
+ Variable:C
  AssignmentOperator:=
 400 GOSUB 820
  LineNumber:820
 410 LET D2 = C
- Reference:D2
- Value:C
+ Variable:D2
+ Variable:C
  AssignmentOperator:=
 420 GOSUB 820
  LineNumber:820
 430 LET P1 = C
- Reference:P1
- Value:C
+ Variable:P1
+ Variable:C
  AssignmentOperator:=
 440 GOSUB 820
  LineNumber:820
 450 LET P2 = C
- Reference:P2
- Value:C
+ Variable:P2
+ Variable:C
  AssignmentOperator:=
 460 PRINT
  ITEMS
@@ -165,7 +165,7 @@
  ITEMS
  TextConstant:"THE DEALER HAS A "
  CarriageControl:;
- Value:D1
+ Variable:D1
  CarriageControl:;
  TextConstant:" SHOWING"
  CarriageControl:NL
@@ -173,61 +173,61 @@
  ITEMS
  TextConstant:"YOU HAVE A "
  CarriageControl:;
- Value:P1
+ Variable:P1
  CarriageControl:;
  TextConstant:" AND A "
  CarriageControl:;
- Value:P2
+ Variable:P2
  CarriageControl:NL
 490 PRINT "YOUR TOTAL IS ";P1 + P2
  ITEMS
  TextConstant:"YOUR TOTAL IS "
  CarriageControl:;
- Value:P1
- Value:P2
+ Variable:P1
+ Variable:P2
  BinaryOperator:+
  CarriageControl:NL
 500 LET D = D1 + D2
- Reference:D
- Value:D1
- Value:D2
+ Variable:D
+ Variable:D1
+ Variable:D2
  BinaryOperator:+
  AssignmentOperator:=
 510 LET P = P1 + P2
- Reference:P
- Value:P1
- Value:P2
+ Variable:P
+ Variable:P1
+ Variable:P2
  BinaryOperator:+
  AssignmentOperator:=
 520 IF P = 21 THEN 640
- Value:P
+ Variable:P
  NumericConstant:21
  BinaryOperator:=
 530 GOSUB 960
  LineNumber:960
 540 IF L = 1 THEN 690
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 550 IF D <= 16 THEN 740
- Value:D
+ Variable:D
  NumericConstant:16
  BinaryOperator:<=
 560 PRINT "THE DEALER HAS ";D
  ITEMS
  TextConstant:"THE DEALER HAS "
  CarriageControl:;
- Value:D
+ Variable:D
  CarriageControl:NL
 570 PRINT "YOU HAVE ";P
  ITEMS
  TextConstant:"YOU HAVE "
  CarriageControl:;
- Value:P
+ Variable:P
  CarriageControl:NL
 580 IF P > D THEN 620
- Value:P
- Value:D
+ Variable:P
+ Variable:D
  BinaryOperator:>
 590 REM WIN OR LOSS STATEMENTS
  Remark:WIN OR LOSS STATEMENTS
@@ -248,7 +248,7 @@
  TextConstant:"***YOU HAVE BLACKJACK***"
  CarriageControl:NL
 650 IF D = 21 THEN 670
- Value:D
+ Variable:D
  NumericConstant:21
  BinaryOperator:=
 660 GOTO 560
@@ -265,16 +265,16 @@
  ITEMS
  TextConstant:"YOUR CARD IS "
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:NL
 710 LET P = P + C
- Reference:P
- Value:P
- Value:C
+ Variable:P
+ Variable:P
+ Variable:C
  BinaryOperator:+
  AssignmentOperator:=
 720 IF P > 21 THEN 600
- Value:P
+ Variable:P
  NumericConstant:21
  BinaryOperator:>
 730 GOTO 530
@@ -283,40 +283,40 @@
  ITEMS
  TextConstant:"THE DEALER HAS "
  CarriageControl:;
- Value:D
+ Variable:D
  CarriageControl:NL
 750 GOSUB 820
  LineNumber:820
 760 LET D = D + C
- Reference:D
- Value:D
- Value:C
+ Variable:D
+ Variable:D
+ Variable:C
  BinaryOperator:+
  AssignmentOperator:=
 770 PRINT "THE DEALER DRAWS A ";C
  ITEMS
  TextConstant:"THE DEALER DRAWS A "
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:NL
 780 PRINT "HIS TOTAL IS ";D
  ITEMS
  TextConstant:"HIS TOTAL IS "
  CarriageControl:;
- Value:D
+ Variable:D
  CarriageControl:NL
 790 IF D > 21 THEN 620
- Value:D
+ Variable:D
  NumericConstant:21
  BinaryOperator:>
 800 IF D <= 17 THEN 750
- Value:D
+ Variable:D
  NumericConstant:17
  BinaryOperator:<=
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
- Reference:C
+ Variable:C
  NumericConstant:1
  NumericConstant:11
  FunctionRnd
@@ -329,21 +329,21 @@
 840 GOTO 880
  LineNumber:880
 850 IF D + C > 21 THEN 870
- Value:D
- Value:C
+ Variable:D
+ Variable:C
  BinaryOperator:+
  NumericConstant:21
  BinaryOperator:>
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
- Reference:C
+ Variable:C
  NumericConstant:1
  AssignmentOperator:=
 880 RETURN
  
 890 LET C = 1 + INT(11*RND)
- Reference:C
+ Variable:C
  NumericConstant:1
  NumericConstant:11
  FunctionRnd
@@ -352,21 +352,21 @@
  BinaryOperator:+
  AssignmentOperator:=
 900 IF C = 11 THEN 920
- Value:C
+ Variable:C
  NumericConstant:11
  BinaryOperator:=
 910 GOTO 950
  LineNumber:950
 920 IF P + C > 21 THEN 940
- Value:P
- Value:C
+ Variable:P
+ Variable:C
  BinaryOperator:+
  NumericConstant:21
  BinaryOperator:>
 930 GOTO 950
  LineNumber:950
 940 LET C = 1
- Reference:C
+ Variable:C
  NumericConstant:1
  AssignmentOperator:=
 950 RETURN
@@ -388,13 +388,13 @@
 1010 GOTO 960
  LineNumber:960
 1020 LET L = 1
- Reference:L
+ Variable:L
  NumericConstant:1
  AssignmentOperator:=
 1030 GOTO 1050
  LineNumber:1050
 1040 LET L = 0
- Reference:L
+ Variable:L
  NumericConstant:0
  AssignmentOperator:=
 1050 RETURN

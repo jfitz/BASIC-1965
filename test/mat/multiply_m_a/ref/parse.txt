@@ -26,9 +26,9 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 120 READ A(I,J)
- Value:I
- Value:J
- Reference:A
+ Variable:I
+ Variable:J
+ Variable:A
 130 NEXT J
  Variable:J
 140 NEXT I
@@ -39,15 +39,15 @@
  CarriageControl:NL
 160 MAT PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 200 FOR I = 1 TO 3
  control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 220 READ B(I)
- Value:I
- Reference:B
+ Variable:I
+ Variable:B
 240 NEXT I
  Variable:I
 250 PRINT "MATRIX B"
@@ -56,12 +56,12 @@
  CarriageControl:NL
 260 MAT PRINT B;
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:;
 300 MAT C = A*B
- Reference:C
- Value:A
- Value:B
+ Variable:C
+ Variable:A
+ Variable:B
  BinaryOperator:*
  AssignmentOperator:=
 310 PRINT "MATRIX C"
@@ -70,7 +70,7 @@
  CarriageControl:NL
 320 MAT PRINT C;
  ITEMS
- Value:C
+ Variable:C
  CarriageControl:;
 999 END
  

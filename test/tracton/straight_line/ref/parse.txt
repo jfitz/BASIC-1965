@@ -7,24 +7,24 @@
  TextConstant:"ORIGINAL VALUE = "
  CarriageControl:;
 40 INPUT A
- Reference:A
+ Variable:A
 50 PRINT "LIFETIME IN YEARS = ";
  ITEMS
  TextConstant:"LIFETIME IN YEARS = "
  CarriageControl:;
 60 INPUT B
- Reference:B
+ Variable:B
 70 LET C = A/B
- Reference:C
- Value:A
- Value:B
+ Variable:C
+ Variable:A
+ Variable:B
  BinaryOperator:/
  AssignmentOperator:=
 80 PRINT "YEARLY DEPRECIATION = ";C
  ITEMS
  TextConstant:"YEARLY DEPRECIATION = "
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:NL
 90 PRINT
  ITEMS
@@ -36,40 +36,40 @@
  TextConstant:"VALUE"
  CarriageControl:NL
 110 LET X = 0
- Reference:X
+ Variable:X
  NumericConstant:0
  AssignmentOperator:=
 120 LET X = X + 1
- Reference:X
- Value:X
+ Variable:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 130 LET A = A - C
- Reference:A
- Value:A
- Value:C
+ Variable:A
+ Variable:A
+ Variable:C
  BinaryOperator:-
  AssignmentOperator:=
 140 IF A < 0 THEN 160
- Value:A
+ Variable:A
  NumericConstant:0
  BinaryOperator:<
 150 GOTO 170
  LineNumber:170
 160 LET A = 0
- Reference:A
+ Variable:A
  NumericConstant:0
  AssignmentOperator:=
 170 PRINT X,A
  ITEMS
- Value:X
+ Variable:X
  CarriageControl:,
- Value:A
+ Variable:A
  CarriageControl:NL
 180 IF X < B THEN 120
- Value:X
- Value:B
+ Variable:X
+ Variable:B
  BinaryOperator:<
 190 PRINT "********************"
  ITEMS
@@ -80,9 +80,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
- Reference:L
+ Variable:L
 220 IF L = 1 THEN 240
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 230 STOP

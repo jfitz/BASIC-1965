@@ -11,33 +11,33 @@
  TextConstant:"TOTAL POPULATION"
  CarriageControl:NL
 40 INPUT M
- Reference:M
+ Variable:M
 50 PRINT "SIZE OF SAMPLE"
  ITEMS
  TextConstant:"SIZE OF SAMPLE"
  CarriageControl:NL
 60 INPUT N
- Reference:N
+ Variable:N
 70 LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 80 FOR I = 1 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 90 LET K = 1 - (I/M)
- Reference:K
+ Variable:K
  NumericConstant:1
- Value:I
- Value:M
+ Variable:I
+ Variable:M
  BinaryOperator:/
  BinaryOperator:-
  AssignmentOperator:=
 100 LET J = J*K
- Reference:J
- Value:J
- Value:K
+ Variable:J
+ Variable:J
+ Variable:K
  BinaryOperator:*
  AssignmentOperator:=
 110 NEXT I
@@ -46,7 +46,7 @@
  ITEMS
  TextConstant:"PROBABILITY = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 130 PRINT
  ITEMS
@@ -56,9 +56,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Reference:L
+ Variable:L
 160 IF L = 1 THEN 30
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

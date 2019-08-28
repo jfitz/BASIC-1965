@@ -9,19 +9,19 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
- Value:I
- Reference:N
+ Variable:I
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
  Variable:I
 25 LET P(0) = 2
  NumericConstant:0
- Reference:P
+ Variable:P
  NumericConstant:2
  AssignmentOperator:=
 26 LET K = 0
- Reference:K
+ Variable:K
  NumericConstant:0
  AssignmentOperator:=
 30 FOR P = 3 TO 2000 STEP 2
@@ -30,50 +30,50 @@
  end:     ["NumericConstant:2000"]
  step:    ["NumericConstant:2"]
 35    LET X = (P-1)/2
- Reference:X
- Value:P
+ Variable:X
+ Variable:P
  NumericConstant:1
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 40    IF N(X) < 0 THEN 90
- Value:X
- Value:N
+ Variable:X
+ Variable:N
  NumericConstant:0
  BinaryOperator:<
 50    LET K = K+1
- Reference:K
- Value:K
+ Variable:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 55    LET P(K) = P
- Value:K
- Reference:P
- Value:P
+ Variable:K
+ Variable:P
+ Variable:P
  AssignmentOperator:=
 56    IF P > SQR(2000) THEN 90
- Value:P
+ Variable:P
  NumericConstant:2000
  FunctionSqr
  BinaryOperator:>
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I
- start:   ["Value:P"]
+ start:   ["Variable:P"]
  end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2", "Value:P", "BinaryOperator:*"]
+ step:    ["NumericConstant:2", "Variable:P", "BinaryOperator:*"]
 65       LET X = (I-1)/2
- Reference:X
- Value:I
+ Variable:X
+ Variable:I
  NumericConstant:1
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 70       LET N(X) = -1
- Value:X
- Reference:N
+ Variable:X
+ Variable:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -95,10 +95,10 @@
  TextConstant:"A = "
  CarriageControl:;
 120 INPUT A
- Reference:A
+ Variable:A
 125 LET S = SQR((A+2)*1E3)
- Reference:S
- Value:A
+ Variable:S
+ Variable:A
  NumericConstant:2
  BinaryOperator:+
  NumericConstant:1000
@@ -123,8 +123,8 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 206    LET N(I) = 0
- Value:I
- Reference:N
+ Variable:I
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 207 NEXT I
@@ -132,26 +132,26 @@
 210 FOR I = 1 TO K
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:K"]
+ end:     ["Variable:K"]
 220    LET F = P(I)
- Reference:F
- Value:I
- Value:P
+ Variable:F
+ Variable:I
+ Variable:P
  AssignmentOperator:=
 230    GOSUB 800
  LineNumber:800
 239    IF Z > 999 THEN 270
- Value:Z
+ Variable:Z
  NumericConstant:999
  BinaryOperator:>
 240    FOR J = Z TO 999 STEP F
  control: Variable:J
- start:   ["Value:Z"]
+ start:   ["Variable:Z"]
  end:     ["NumericConstant:999"]
- step:    ["Value:F"]
+ step:    ["Variable:F"]
 250       LET N(J) = -1
- Value:J
- Reference:N
+ Variable:J
+ Variable:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -163,46 +163,46 @@
 400 REM TEST REMAINING NUMBERS
  Remark:TEST REMAINING NUMBERS
 405 LET D = 2
- Reference:D
+ Variable:D
  NumericConstant:2
  AssignmentOperator:=
 410 LET F = 2003
- Reference:F
+ Variable:F
  NumericConstant:2003
  AssignmentOperator:=
 420    GOSUB 800
  LineNumber:800
 430    IF Z > 999 THEN 450
- Value:Z
+ Variable:Z
  NumericConstant:999
  BinaryOperator:>
 440    LET N(Z) = -1
- Value:Z
- Reference:N
+ Variable:Z
+ Variable:N
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
 450 LET F = F+D
- Reference:F
- Value:F
- Value:D
+ Variable:F
+ Variable:F
+ Variable:D
  BinaryOperator:+
  AssignmentOperator:=
 460 LET D = 6-D
- Reference:D
+ Variable:D
  NumericConstant:6
- Value:D
+ Variable:D
  BinaryOperator:-
  AssignmentOperator:=
 470 IF F <= S THEN 420
- Value:F
- Value:S
+ Variable:F
+ Variable:S
  BinaryOperator:<=
 480
 700 REM PRINT RESULT
  Remark:PRINT RESULT
 702 LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 705 FOR I = 0 TO 999
@@ -210,21 +210,21 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:999"]
 710    IF N(I) < 0 THEN 730
- Value:I
- Value:N
+ Variable:I
+ Variable:N
  NumericConstant:0
  BinaryOperator:<
 720    PRINT 2*I + 1;
  ITEMS
  NumericConstant:2
- Value:I
+ Variable:I
  BinaryOperator:*
  NumericConstant:1
  BinaryOperator:+
  CarriageControl:;
 725    LET S = S+1
- Reference:S
- Value:S
+ Variable:S
+ Variable:S
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -240,7 +240,7 @@
  ITEMS
  TextConstant:"THERE ARE "
  CarriageControl:
- Value:S
+ Variable:S
  CarriageControl:;
  TextConstant:"PRIMES IN THE RANGE."
  CarriageControl:NL
@@ -262,27 +262,27 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:998"]
 760    IF N(I) < 0 THEN 780
- Value:I
- Value:N
+ Variable:I
+ Variable:N
  NumericConstant:0
  BinaryOperator:<
 765    IF N(I+1) < 0 THEN 780
- Value:I
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
- Value:N
+ Variable:N
  NumericConstant:0
  BinaryOperator:<
 770    PRINT 2*I+1, 2*I+3
  ITEMS
  NumericConstant:2
- Value:I
+ Variable:I
  BinaryOperator:*
  NumericConstant:1
  BinaryOperator:+
  CarriageControl:,
  NumericConstant:2
- Value:I
+ Variable:I
  BinaryOperator:*
  NumericConstant:3
  BinaryOperator:+
@@ -295,29 +295,29 @@
 800 REM TEST FACTOR F
  Remark:TEST FACTOR F
 810 LET X = A - F*INT(A/F)
- Reference:X
- Value:A
- Value:F
- Value:A
- Value:F
+ Variable:X
+ Variable:A
+ Variable:F
+ Variable:A
+ Variable:F
  BinaryOperator:/
  FunctionInt
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 820 LET Y = A*1E3
- Reference:Y
- Value:A
+ Variable:Y
+ Variable:A
  NumericConstant:1000
  BinaryOperator:*
  AssignmentOperator:=
 830 LET X = F - (Y - F*INT(Y/F))
- Reference:X
- Value:F
- Value:Y
- Value:F
- Value:Y
- Value:F
+ Variable:X
+ Variable:F
+ Variable:Y
+ Variable:F
+ Variable:Y
+ Variable:F
  BinaryOperator:/
  FunctionInt
  BinaryOperator:*
@@ -325,23 +325,23 @@
  BinaryOperator:-
  AssignmentOperator:=
 840 IF X <> 2*INT(X/2) THEN 860
- Value:X
+ Variable:X
  NumericConstant:2
- Value:X
+ Variable:X
  NumericConstant:2
  BinaryOperator:/
  FunctionInt
  BinaryOperator:*
  BinaryOperator:<>
 850 LET X = X + F
- Reference:X
- Value:X
- Value:F
+ Variable:X
+ Variable:X
+ Variable:F
  BinaryOperator:+
  AssignmentOperator:=
 860 LET Z = (X-1)/2
- Reference:Z
- Value:X
+ Variable:Z
+ Variable:X
  NumericConstant:1
  BinaryOperator:-
  NumericConstant:2

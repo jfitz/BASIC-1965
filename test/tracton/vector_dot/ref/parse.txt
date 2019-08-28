@@ -7,29 +7,29 @@
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
- Reference:A1
- Reference:A2
- Reference:A3
+ Variable:A1
+ Variable:A2
+ Variable:A3
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
  ITEMS
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
- Reference:B1
- Reference:B2
- Reference:B3
+ Variable:B1
+ Variable:B2
+ Variable:B3
 70 REM CALCULATE THE NORM OF A VECTOR
  Remark:CALCULATE THE NORM OF A VECTOR
 80 LET X = SQR((A1^2) + (A2^2) + (A3^2))
- Reference:X
- Value:A1
+ Variable:X
+ Variable:A1
  NumericConstant:2
  BinaryOperator:^
- Value:A2
+ Variable:A2
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
- Value:A3
+ Variable:A3
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
@@ -38,15 +38,15 @@
 90 REM CALCULATE THE NORM OF B VECTOR
  Remark:CALCULATE THE NORM OF B VECTOR
 100 LET Y = SQR((B1^2) + (B2^2) + (B3^2))
- Reference:Y
- Value:B1
+ Variable:Y
+ Variable:B1
  NumericConstant:2
  BinaryOperator:^
- Value:B2
+ Variable:B2
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
- Value:B3
+ Variable:B3
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
@@ -55,16 +55,16 @@
 110 REM CALCULATE DOT PRODUCT
  Remark:CALCULATE DOT PRODUCT
 120 LET Z = (A1*B1) + (A2*B2) + (A3*B3)
- Reference:Z
- Value:A1
- Value:B1
+ Variable:Z
+ Variable:A1
+ Variable:B1
  BinaryOperator:*
- Value:A2
- Value:B2
+ Variable:A2
+ Variable:B2
  BinaryOperator:*
  BinaryOperator:+
- Value:A3
- Value:B3
+ Variable:A3
+ Variable:B3
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
@@ -72,19 +72,19 @@
  ITEMS
  TextConstant:"DOT PRODUCT = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 140 PRINT "NORM OF 1ST VECTOR = ";X
  ITEMS
  TextConstant:"NORM OF 1ST VECTOR = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:NL
 150 PRINT "NORM OF 2ND VECTOR = ";Y
  ITEMS
  TextConstant:"NORM OF 2ND VECTOR = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:NL
 160 PRINT "********************"
  ITEMS
@@ -95,9 +95,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- Reference:L
+ Variable:L
 190 IF L = 1 THEN 210
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 200 STOP

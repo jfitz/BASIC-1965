@@ -9,40 +9,40 @@
  Declaration:T
 110
 140 READ M, N
- Reference:M
- Reference:N
+ Variable:M
+ Variable:N
 150 FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:M"]
+ end:     ["Variable:M"]
 160    READ M(I)
- Value:I
- Reference:M
+ Variable:I
+ Variable:M
 170 NEXT I
  Variable:I
 180 FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 190    READ Y(J)
- Value:J
- Reference:Y
+ Variable:J
+ Variable:Y
 200 NEXT J
  Variable:J
 210
 250 FOR K = 1 TO M
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["Value:M"]
+ end:     ["Variable:M"]
 260    LET Z(K) = X(K)
- Value:K
- Reference:Z
- Value:K
- Value:X
+ Variable:K
+ Variable:Z
+ Variable:K
+ Variable:X
  AssignmentOperator:=
 270    LET T(K) = +1
- Value:K
- Reference:T
+ Variable:K
+ Variable:T
  NumericConstant:1
  UnaryOperator:+
  AssignmentOperator:=
@@ -51,20 +51,20 @@
 290 FOR K = 1 TO N
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 300    LET Z(M+K) = Y(K)
- Value:M
- Value:K
+ Variable:M
+ Variable:K
  BinaryOperator:+
- Reference:Z
- Value:K
- Value:Y
+ Variable:Z
+ Variable:K
+ Variable:Y
  AssignmentOperator:=
 310    LET T(M+K) = 0
- Value:M
- Value:K
+ Variable:M
+ Variable:K
  BinaryOperator:+
- Reference:T
+ Variable:T
  NumericConstant:0
  AssignmentOperator:=
 320 NEXT K
@@ -73,48 +73,48 @@
 360 FOR K = 1 TO M+N-1
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["Value:M", "Value:N", "BinaryOperator:+", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:M", "Variable:N", "BinaryOperator:+", "NumericConstant:1", "BinaryOperator:-"]
 370    FOR L = K+1 TO M+N
  control: Variable:L
- start:   ["Value:K", "NumericConstant:1", "BinaryOperator:+"]
- end:     ["Value:M", "Value:N", "BinaryOperator:+"]
+ start:   ["Variable:K", "NumericConstant:1", "BinaryOperator:+"]
+ end:     ["Variable:M", "Variable:N", "BinaryOperator:+"]
 380       IF Z(K) <= Z(L) THEN 450
- Value:K
- Value:Z
- Value:L
- Value:Z
+ Variable:K
+ Variable:Z
+ Variable:L
+ Variable:Z
  BinaryOperator:<=
 390       LET T = Z(K)
- Reference:T
- Value:K
- Value:Z
+ Variable:T
+ Variable:K
+ Variable:Z
  AssignmentOperator:=
 400       LET Z(K) = Z(L)
- Value:K
- Reference:Z
- Value:L
- Value:Z
+ Variable:K
+ Variable:Z
+ Variable:L
+ Variable:Z
  AssignmentOperator:=
 410       LET Z(L) = T
- Value:L
- Reference:Z
- Value:T
+ Variable:L
+ Variable:Z
+ Variable:T
  AssignmentOperator:=
 420       LET T = T(K)
- Reference:T
- Value:K
- Value:T
+ Variable:T
+ Variable:K
+ Variable:T
  AssignmentOperator:=
 430       LET T(K) = T(L)
- Value:K
- Reference:T
- Value:L
- Value:T
+ Variable:K
+ Variable:T
+ Variable:L
+ Variable:T
  AssignmentOperator:=
 440       LET T(L) = T
- Value:L
- Reference:T
- Value:T
+ Variable:L
+ Variable:T
+ Variable:T
  AssignmentOperator:=
 450    NEXT L
  Variable:L
@@ -122,48 +122,48 @@
  Variable:K
 470
 500 LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 510 LET K = 1
- Reference:K
+ Variable:K
  NumericConstant:1
  AssignmentOperator:=
 520 LET B = J
- Reference:B
- Value:J
+ Variable:B
+ Variable:J
  AssignmentOperator:=
 530 LET T = J
- Reference:T
- Value:J
+ Variable:T
+ Variable:J
  AssignmentOperator:=
 540 LET J = J+1
- Reference:J
- Value:J
+ Variable:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 550 IF J > M+N THEN 600
- Value:J
- Value:M
- Value:N
+ Variable:J
+ Variable:M
+ Variable:N
  BinaryOperator:+
  BinaryOperator:>
 560 IF Z(J) > Z(B) THEN 600
- Value:J
- Value:Z
- Value:B
- Value:Z
+ Variable:J
+ Variable:Z
+ Variable:B
+ Variable:Z
  BinaryOperator:>
 570 LET T = T+J
- Reference:T
- Value:T
- Value:J
+ Variable:T
+ Variable:T
+ Variable:J
  BinaryOperator:+
  AssignmentOperator:=
 580 LET K = K+1
- Reference:K
- Value:K
+ Variable:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -171,47 +171,47 @@
  LineNumber:540
 600 FOR L = B TO J-1
  control: Variable:L
- start:   ["Value:B"]
- end:     ["Value:J", "NumericConstant:1", "BinaryOperator:-"]
+ start:   ["Variable:B"]
+ end:     ["Variable:J", "NumericConstant:1", "BinaryOperator:-"]
 610    LET Z(L) = T/K
- Value:L
- Reference:Z
- Value:T
- Value:K
+ Variable:L
+ Variable:Z
+ Variable:T
+ Variable:K
  BinaryOperator:/
  AssignmentOperator:=
 620 NEXT L
  Variable:L
 630 IF J <= M+N THEN 510
- Value:J
- Value:M
- Value:N
+ Variable:J
+ Variable:M
+ Variable:N
  BinaryOperator:+
  BinaryOperator:<=
 640
 740 LET S(0) = 0
  NumericConstant:0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 750 LET S(1) = 0
  NumericConstant:1
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 760 FOR K = 1 TO M+N
  control: Variable:K
  start:   ["NumericConstant:1"]
- end:     ["Value:M", "Value:N", "BinaryOperator:+"]
+ end:     ["Variable:M", "Variable:N", "BinaryOperator:+"]
 770    LET S(T(K)) = S(T(K)) + Z(K)
- Value:K
- Value:T
- Reference:S
- Value:K
- Value:T
- Value:S
- Value:K
- Value:Z
+ Variable:K
+ Variable:T
+ Variable:S
+ Variable:K
+ Variable:T
+ Variable:S
+ Variable:K
+ Variable:Z
  BinaryOperator:+
  AssignmentOperator:=
 790 NEXT K
@@ -221,12 +221,12 @@
  TextConstant:"RANK SUM FOR X IS"
  CarriageControl:;
  NumericConstant:1
- Value:S
+ Variable:S
  CarriageControl:,
  TextConstant:"FOR Y IS"
  CarriageControl:;
  NumericConstant:0
- Value:S
+ Variable:S
  CarriageControl:NL
 810
 900 DATA 6, 4

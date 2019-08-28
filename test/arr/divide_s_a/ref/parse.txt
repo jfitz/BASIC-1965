@@ -8,18 +8,18 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I) = I+1
- Value:I
- Reference:A
- Value:I
+ Variable:I
+ Variable:A
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 70 NEXT I
  Variable:I
 100 ARR B = 1 / A
- Reference:B
+ Variable:B
  NumericConstant:1
- Value:A
+ Variable:A
  BinaryOperator:/
  AssignmentOperator:=
 110 PRINT "ARRAY A"
@@ -28,7 +28,7 @@
  CarriageControl:NL
 120 ARR PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 122 PRINT
  ITEMS
@@ -39,7 +39,7 @@
  CarriageControl:NL
 140 ARR PRINT B;
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:;
 142 PRINT
  ITEMS

@@ -7,68 +7,68 @@
  TextConstant:"VALUE OF X = "
  CarriageControl:;
 40 INPUT X
- Reference:X
+ Variable:X
 50 LET Y = X
- Reference:Y
- Value:X
+ Variable:Y
+ Variable:X
  AssignmentOperator:=
 60 LET Z = (X*(1E-04))/2
- Reference:Z
- Value:X
+ Variable:Z
+ Variable:X
  NumericConstant:0.0001
  BinaryOperator:*
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 70 LET W = X + Z
- Reference:W
- Value:X
- Value:Z
+ Variable:W
+ Variable:X
+ Variable:Z
  BinaryOperator:+
  AssignmentOperator:=
 80 LET V = X - Z
- Reference:V
- Value:X
- Value:Z
+ Variable:V
+ Variable:X
+ Variable:Z
  BinaryOperator:-
  AssignmentOperator:=
 90 LET X = W
- Reference:X
- Value:W
+ Variable:X
+ Variable:W
  AssignmentOperator:=
 100 GOSUB 280
  LineNumber:280
 110 LET A = P
- Reference:A
- Value:P
+ Variable:A
+ Variable:P
  AssignmentOperator:=
 120 LET X = V
- Reference:X
- Value:V
+ Variable:X
+ Variable:V
  AssignmentOperator:=
 130 GOSUB 280
  LineNumber:280
 140 LET B = P
- Reference:B
- Value:P
+ Variable:B
+ Variable:P
  AssignmentOperator:=
 150 LET X = Y
- Reference:X
- Value:Y
+ Variable:X
+ Variable:Y
  AssignmentOperator:=
 160 GOSUB 280
  LineNumber:280
 170 LET C = P
- Reference:C
- Value:P
+ Variable:C
+ Variable:P
  AssignmentOperator:=
 180 LET F = (A - B)/(2*Z)
- Reference:F
- Value:A
- Value:B
+ Variable:F
+ Variable:A
+ Variable:B
  BinaryOperator:-
  NumericConstant:2
- Value:Z
+ Variable:Z
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -76,17 +76,17 @@
  ITEMS
  TextConstant:"IF X = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:,
  TextConstant:"THEN F(X) = "
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:NL
 200 PRINT "AND F'(X) = ";F
  ITEMS
  TextConstant:"AND F'(X) = "
  CarriageControl:;
- Value:F
+ Variable:F
  CarriageControl:NL
 210 PRINT
  ITEMS
@@ -96,9 +96,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Reference:L
+ Variable:L
 240 IF L = 1 THEN 260
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 250 STOP
@@ -109,8 +109,8 @@
 270 GOTO 40
  LineNumber:40
 280 LET P = X^2
- Reference:P
- Value:X
+ Variable:P
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
  AssignmentOperator:=

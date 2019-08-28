@@ -1,17 +1,17 @@
 100 REM ANGLE-SIDE-ANGLE
  Remark:ANGLE-SIDE-ANGLE
 110 LET P = 3.14159625
- Reference:P
+ Variable:P
  NumericConstant:3.14159625
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
- Value:X
- Value:P
+ Variable:X
+ Variable:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 130 DEF FNS(X) = SIN(FND(X))
- Value:X
+ Variable:X
  UserFunction
  FunctionSin
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
@@ -27,48 +27,48 @@
  TextConstant:"THIRD SIDE"
  CarriageControl:NL
 150 READ A,X,B
- Reference:A
- Reference:X
- Reference:B
+ Variable:A
+ Variable:X
+ Variable:B
 160 LET C = 180 - A - B
- Reference:C
+ Variable:C
  NumericConstant:180
- Value:A
+ Variable:A
  BinaryOperator:-
- Value:B
+ Variable:B
  BinaryOperator:-
  AssignmentOperator:=
 170 LET Y = X*FNS(B)/FNS(C)
- Reference:Y
- Value:X
- Value:B
+ Variable:Y
+ Variable:X
+ Variable:B
  UserFunction
  BinaryOperator:*
- Value:C
+ Variable:C
  UserFunction
  BinaryOperator:/
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
- Reference:Z
- Value:X
- Value:A
+ Variable:Z
+ Variable:X
+ Variable:A
  UserFunction
  BinaryOperator:*
- Value:C
+ Variable:C
  UserFunction
  BinaryOperator:/
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:,
- Value:X
+ Variable:X
  CarriageControl:,
- Value:B
+ Variable:B
  CarriageControl:,
- Value:Y
+ Variable:Y
  CarriageControl:,
- Value:Z
+ Variable:Z
  CarriageControl:NL
 200 GOTO 150
  LineNumber:150

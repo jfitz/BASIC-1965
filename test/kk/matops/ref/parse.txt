@@ -1,15 +1,15 @@
 100 MAT READ A(2,3), B(2,3)
  NumericConstant:2
  NumericConstant:3
- Reference:A
+ Variable:A
  NumericConstant:2
  NumericConstant:3
- Reference:B
+ Variable:B
 110
 130 MAT S = A+B
- Reference:S
- Value:A
- Value:B
+ Variable:S
+ Variable:A
+ Variable:B
  BinaryOperator:+
  AssignmentOperator:=
 140 PRINT "THE SUM"
@@ -18,13 +18,13 @@
  CarriageControl:NL
 150 MAT PRINT S
  ITEMS
- Value:S
+ Variable:S
  CarriageControl:,
 160
 170 MAT D = A-B
- Reference:D
- Value:A
- Value:B
+ Variable:D
+ Variable:A
+ Variable:B
  BinaryOperator:-
  AssignmentOperator:=
 180 PRINT "THE DIFFERENCE"
@@ -33,15 +33,15 @@
  CarriageControl:NL
 190 MAT PRINT D
  ITEMS
- Value:D
+ Variable:D
  CarriageControl:,
 200
 210 MAT K = (1/4)*A
- Reference:K
+ Variable:K
  NumericConstant:1
  NumericConstant:4
  BinaryOperator:/
- Value:A
+ Variable:A
  BinaryOperator:*
  AssignmentOperator:=
 220 PRINT "SCALAR MULTIPLE"
@@ -50,7 +50,7 @@
  CarriageControl:NL
 230 MAT PRINT K
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
 240
 900 DATA 1, 4, 7, 3, 2, 1

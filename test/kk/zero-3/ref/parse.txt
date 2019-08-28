@@ -1,9 +1,9 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
- Value:X
+ Variable:X
  NumericConstant:5
  BinaryOperator:^
  NumericConstant:2
- Value:X
+ Variable:X
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:*
@@ -11,71 +11,71 @@
  NumericConstant:1
  BinaryOperator:-
 20 READ A,B
- Reference:A
- Reference:B
+ Variable:A
+ Variable:B
 22 LET S = SGN(FNF(A))
- Reference:S
- Value:A
+ Variable:S
+ Variable:A
  UserFunction
  FunctionSgn
  AssignmentOperator:=
 24 IF S = 0 THEN 95
- Value:S
+ Variable:S
  NumericConstant:0
  BinaryOperator:=
 26 LET X(1+S) = A
  NumericConstant:1
- Value:S
+ Variable:S
  BinaryOperator:+
- Reference:X
- Value:A
+ Variable:X
+ Variable:A
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
- Value:S
+ Variable:S
  BinaryOperator:-
- Reference:X
- Value:B
+ Variable:X
+ Variable:B
  AssignmentOperator:=
 30 LET X = (X(0)+X(2))/2
- Reference:X
+ Variable:X
  NumericConstant:0
- Value:X
+ Variable:X
  NumericConstant:2
- Value:X
+ Variable:X
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 35 LET F = SGN(FNF(X))
- Reference:F
- Value:X
+ Variable:F
+ Variable:X
  UserFunction
  FunctionSgn
  AssignmentOperator:=
 40 IF F = 0 THEN 100
- Value:F
+ Variable:F
  NumericConstant:0
  BinaryOperator:=
 50 LET X(1+F) = X
  NumericConstant:1
- Value:F
+ Variable:F
  BinaryOperator:+
- Reference:X
- Value:X
+ Variable:X
+ Variable:X
  AssignmentOperator:=
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericConstant:0
- Value:X
+ Variable:X
  NumericConstant:2
- Value:X
+ Variable:X
  BinaryOperator:-
  FunctionAbs
  NumericConstant:0
- Value:X
+ Variable:X
  FunctionAbs
  NumericConstant:2
- Value:X
+ Variable:X
  FunctionAbs
  BinaryOperator:+
  BinaryOperator:/
@@ -84,14 +84,14 @@
 90 GOTO 30
  LineNumber:30
 95 LET X = A
- Reference:X
- Value:A
+ Variable:X
+ Variable:A
  AssignmentOperator:=
 100 PRINT "ONE ZERO AT" X
  ITEMS
  TextConstant:"ONE ZERO AT"
  CarriageControl:
- Value:X
+ Variable:X
  CarriageControl:NL
 900 DATA 0,1
  NumericConstant:0

@@ -3,11 +3,11 @@
 20 REM OF SAMPLES ENTERED BY THE USER
  Remark:OF SAMPLES ENTERED BY THE USER
 30 LET Z = 0
- Reference:Z
+ Variable:Z
  NumericConstant:0
  AssignmentOperator:=
 40 LET N = 0
- Reference:N
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "SAMPLE = ";
@@ -15,44 +15,44 @@
  TextConstant:"SAMPLE = "
  CarriageControl:;
 60 INPUT X
- Reference:X
+ Variable:X
 70 IF X = 0 THEN 130
- Value:X
+ Variable:X
  NumericConstant:0
  BinaryOperator:=
 80 LET N = N + 1
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 90 LET Z = Z + (1/X)
- Reference:Z
- Value:Z
+ Variable:Z
+ Variable:Z
  NumericConstant:1
- Value:X
+ Variable:X
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 100 LET H = N/Z
- Reference:H
- Value:N
- Value:Z
+ Variable:H
+ Variable:N
+ Variable:Z
  BinaryOperator:/
  AssignmentOperator:=
 110 PRINT "N = ";N,"SAMPLE = ";X,"CURRENT MEAN = ";H
  ITEMS
  TextConstant:"N = "
  CarriageControl:;
- Value:N
+ Variable:N
  CarriageControl:,
  TextConstant:"SAMPLE = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:,
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- Value:H
+ Variable:H
  CarriageControl:NL
 120 GOTO 50
  LineNumber:50
@@ -64,9 +64,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Reference:L
+ Variable:L
 160 IF L = 1 THEN 180
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

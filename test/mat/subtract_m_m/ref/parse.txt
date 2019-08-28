@@ -16,19 +16,19 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 50 LET A(I,J) = I+J
- Value:I
- Value:J
- Reference:A
- Value:I
- Value:J
+ Variable:I
+ Variable:J
+ Variable:A
+ Variable:I
+ Variable:J
  BinaryOperator:+
  AssignmentOperator:=
 52 LET B(I,J) = I*J
- Value:I
- Value:J
- Reference:B
- Value:I
- Value:J
+ Variable:I
+ Variable:J
+ Variable:B
+ Variable:I
+ Variable:J
  BinaryOperator:*
  AssignmentOperator:=
 60 NEXT J
@@ -36,9 +36,9 @@
 70 NEXT I
  Variable:I
 100 MAT C = A - B
- Reference:C
- Value:A
- Value:B
+ Variable:C
+ Variable:A
+ Variable:B
  BinaryOperator:-
  AssignmentOperator:=
 110 PRINT "MATRIX A"
@@ -47,7 +47,7 @@
  CarriageControl:NL
 120 MAT PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 130 PRINT "MATRIX B"
  ITEMS
@@ -55,7 +55,7 @@
  CarriageControl:NL
 140 MAT PRINT B;
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:;
 150 PRINT "MATRIX C"
  ITEMS
@@ -63,7 +63,7 @@
  CarriageControl:NL
 160 MAT PRINT C;
  ITEMS
- Value:C
+ Variable:C
  CarriageControl:;
 999 END
  

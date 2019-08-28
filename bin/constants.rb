@@ -967,16 +967,18 @@ end
 
 # Hold a variable (name with possible subscripts and value)
 class Variable < AbstractElement
+  attr_writer :valref
   attr_reader :subscripts
 
-  def initialize(variable_name, subscripts)
+  def initialize(variable_name, shape, subscripts)
     super()
 
     raise(BASICSyntaxError, "'#{variable_name}' is not a variable name") if
-      variable_name.class.to_s != 'VariableName' &&
-      variable_name.class.to_s != 'UserFunctionToken'
+      variable_name.class.to_s != 'VariableName'
 
     @variable_name = variable_name
+    @valref = :value
+    @shape = shape
     @subscripts = normalize_subscripts(subscripts)
     @variable = true
     @operand = true
@@ -1040,7 +1042,31 @@ class Variable < AbstractElement
     end
   end
 
+  def evaluate(interpreter, stack)
+    x = false
+    x = evaluate_value(interpreter, stack) if @valref == :value
+    x = evaluate_ref(interpreter, stack) if @valref == :reference
+    x
+  end
+
   private
+
+  def evaluate_value(interpreter, stack)
+    x = nil
+    x = evaluate_value_scalar(interpreter, stack) if @shape == :scalar
+    x = evaluate_value_array(interpreter, stack) if @shape == :array
+    x = evaluate_value_matrix(interpreter, stack) if @shape == :matrix
+    x
+  end
+
+  def evaluate_ref(interpreter, stack)
+    x = nil
+    x = evaluate_ref_scalar(interpreter, stack) if @shape == :scalar
+
+    x = evaluate_ref_compound(interpreter, stack) if
+      @shape == :array || @shape == :matrix
+    x
+  end
 
   def normalize_subscripts(subscripts)
     raise(BASICSyntaxError, 'Invalid subscripts container') unless
@@ -1093,7 +1119,7 @@ class Variable < AbstractElement
     base = interpreter.base
     (base..n_cols).each do |col|
       coords = make_coord(col)
-      variable = Value.new(@variable_name, :array, coords)
+      variable = Variable.new(@variable_name, :array, coords)
       values[coords] = interpreter.get_value(variable)
     end
 
@@ -1124,7 +1150,7 @@ class Variable < AbstractElement
     
     (base..n_cols).each do |col|
       coords = make_coord(col)
-      variable = Value.new(@variable_name, :matrix, coords)
+      variable = Variable.new(@variable_name, :matrix, coords)
       values[coords] = interpreter.get_value(variable)
     end
 
@@ -1139,7 +1165,7 @@ class Variable < AbstractElement
     (base..n_rows).each do |row|
       (base..n_cols).each do |col|
         coords = make_coords(row, col)
-        variable = Value.new(@variable_name, :matrix, coords)
+        variable = Variable.new(@variable_name, :matrix, coords)
         values[coords] = interpreter.get_value(variable)
       end
     end
@@ -1180,38 +1206,6 @@ class Variable < AbstractElement
     end
 
     self
-  end
-end
-
-class Value < Variable
-  def initialize(name, shape, subscripts)
-    super(name, subscripts)
-
-    @valref = :value
-    @shape = shape
-  end
-
-  def evaluate(interpreter, stack)
-    x = evaluate_value_scalar(interpreter, stack) if @shape == :scalar
-    x = evaluate_value_array(interpreter, stack) if @shape == :array
-    x = evaluate_value_matrix(interpreter, stack) if @shape == :matrix
-    x
-  end
-end
-
-class Reference < Variable
-  def initialize(variable, shape, subscripts)
-    super(variable.name, subscripts)
-
-    @valref = :reference
-    @shape = shape
-  end
-
-  def evaluate(interpreter, stack)
-    x = evaluate_ref_scalar(interpreter, stack) if @shape == :scalar
-    x = evaluate_ref_compound(interpreter, stack) if
-      @shape == :array || @shape == :matrix
-    x
   end
 end
 

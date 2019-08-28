@@ -1,39 +1,39 @@
 100 LET N = 0
- Reference:N
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 110 LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 120 LET S2 = 0
- Reference:S2
+ Variable:S2
  NumericConstant:0
  AssignmentOperator:=
 130
 140 READ X
- Reference:X
+ Variable:X
 150 IF X = 999999 THEN 210
- Value:X
+ Variable:X
  NumericConstant:999999
  BinaryOperator:=
 160 LET N = N + 1
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 170 LET S = S + X
- Reference:S
- Value:S
- Value:X
+ Variable:S
+ Variable:S
+ Variable:X
  BinaryOperator:+
  AssignmentOperator:=
 180 LET S2 = S2 + X*X
- Reference:S2
- Value:S2
- Value:X
- Value:X
+ Variable:S2
+ Variable:S2
+ Variable:X
+ Variable:X
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
@@ -41,49 +41,49 @@
  LineNumber:140
 200
 210 LET M = S/N
- Reference:M
- Value:S
- Value:N
+ Variable:M
+ Variable:S
+ Variable:N
  BinaryOperator:/
  AssignmentOperator:=
 220 LET V = (N*S2 - S*S)/N/(N-1)
- Reference:V
- Value:N
- Value:S2
+ Variable:V
+ Variable:N
+ Variable:S2
  BinaryOperator:*
- Value:S
- Value:S
+ Variable:S
+ Variable:S
  BinaryOperator:*
  BinaryOperator:-
- Value:N
+ Variable:N
  BinaryOperator:/
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  AssignmentOperator:=
 230 LET D = SQR(V)
- Reference:D
- Value:V
+ Variable:D
+ Variable:V
  FunctionSqr
  AssignmentOperator:=
 240 LET P = .6745*D
- Reference:P
+ Variable:P
  NumericConstant:0.6745
- Value:D
+ Variable:D
  BinaryOperator:*
  AssignmentOperator:=
 250 LET E = SQR(V/N)
- Reference:E
- Value:V
- Value:N
+ Variable:E
+ Variable:V
+ Variable:N
  BinaryOperator:/
  FunctionSqr
  AssignmentOperator:=
 260 LET C = D/M
- Reference:C
- Value:D
- Value:M
+ Variable:C
+ Variable:D
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 270
@@ -101,15 +101,15 @@
  CarriageControl:NL
 290 PRINT N, S, S2, M, V
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:,
- Value:S
+ Variable:S
  CarriageControl:,
- Value:S2
+ Variable:S2
  CarriageControl:,
- Value:M
+ Variable:M
  CarriageControl:,
- Value:V
+ Variable:V
  CarriageControl:NL
 300 PRINT
  ITEMS
@@ -126,13 +126,13 @@
  CarriageControl:NL
 320 PRINT D, P, E, C
  ITEMS
- Value:D
+ Variable:D
  CarriageControl:,
- Value:P
+ Variable:P
  CarriageControl:,
- Value:E
+ Variable:E
  CarriageControl:,
- Value:C
+ Variable:C
  CarriageControl:NL
 330 PRINT
  ITEMS
@@ -142,21 +142,21 @@
  CarriageControl:NL
 350
 360 LET N = 0
- Reference:N
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 370 LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 380 LET S2 = 0
- Reference:S2
+ Variable:S2
  NumericConstant:0
  AssignmentOperator:=
 390 READ X
- Reference:X
+ Variable:X
 400 IF X <> 999999 THEN 160
- Value:X
+ Variable:X
  NumericConstant:999999
  BinaryOperator:<>
 410

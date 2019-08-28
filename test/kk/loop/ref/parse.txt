@@ -1,18 +1,18 @@
 10 LET I = 1
- Reference:I
+ Variable:I
  NumericConstant:1
  AssignmentOperator:=
 20 IF I > 1000 THEN 60
- Value:I
+ Variable:I
  NumericConstant:1000
  BinaryOperator:>
 30 PRINT I
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:NL
 40 LET I = I + 1
- Reference:I
- Value:I
+ Variable:I
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=

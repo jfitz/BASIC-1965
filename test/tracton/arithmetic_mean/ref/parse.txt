@@ -3,11 +3,11 @@
 20 REM MEAN
  Remark:MEAN
 30 LET X = 0
- Reference:X
+ Variable:X
  NumericConstant:0
  AssignmentOperator:=
 40 LET N = 0
- Reference:N
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "ENTER SAMPLE";
@@ -15,38 +15,38 @@
  TextConstant:"ENTER SAMPLE"
  CarriageControl:;
 60 INPUT W
- Reference:W
+ Variable:W
 70 LET N = N + 1
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 80 LET X = X + W
- Reference:X
- Value:X
- Value:W
+ Variable:X
+ Variable:X
+ Variable:W
  BinaryOperator:+
  AssignmentOperator:=
 90 LET A = X/N
- Reference:A
- Value:X
- Value:N
+ Variable:A
+ Variable:X
+ Variable:N
  BinaryOperator:/
  AssignmentOperator:=
 100 PRINT "N = "; N, "SAMPLE ="; W,"CURRENT MEAN = ";A
  ITEMS
  TextConstant:"N = "
  CarriageControl:;
- Value:N
+ Variable:N
  CarriageControl:,
  TextConstant:"SAMPLE ="
  CarriageControl:;
- Value:W
+ Variable:W
  CarriageControl:,
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:NL
 110 GOTO 50
  LineNumber:50

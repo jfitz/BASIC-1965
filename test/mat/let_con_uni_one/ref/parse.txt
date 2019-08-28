@@ -1,7 +1,7 @@
 10 REM TEST
  Remark:TEST
 20 MAT M = CON(4) * -1
- Reference:M
+ Variable:M
  NumericConstant:4
  FunctionCon
  NumericConstant:1
@@ -10,10 +10,10 @@
  AssignmentOperator:=
 30 MAT PRINT M
  ITEMS
- Value:M
+ Variable:M
  CarriageControl:,
 40 MAT M2 = CON(4,3) * -3
- Reference:M2
+ Variable:M2
  NumericConstant:4
  NumericConstant:3
  FunctionCon
@@ -23,7 +23,7 @@
  AssignmentOperator:=
 50 MAT PRINT M2
  ITEMS
- Value:M2
+ Variable:M2
  CarriageControl:,
 99 END
  

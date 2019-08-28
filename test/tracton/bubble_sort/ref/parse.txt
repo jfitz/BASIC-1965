@@ -17,49 +17,49 @@
 90 REM STATEMENT AND N SET AHEAD OF TIME
  Remark:STATEMENT AND N SET AHEAD OF TIME
 100 LET I = N - 1
- Reference:I
- Value:N
+ Variable:I
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 110 FOR J = 1 TO I
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:I"]
+ end:     ["Variable:I"]
 120 LET K = J + 1
- Reference:K
- Value:J
+ Variable:K
+ Variable:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 130 FOR L = N TO K STEP -1
  control: Variable:L
- start:   ["Value:N"]
- end:     ["Value:K"]
+ start:   ["Variable:N"]
+ end:     ["Variable:K"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 140 IF Z(L) > Z(J) THEN 210
- Value:L
- Value:Z
- Value:J
- Value:Z
+ Variable:L
+ Variable:Z
+ Variable:J
+ Variable:Z
  BinaryOperator:>
 150 REM SAVE FIRST VALUE
  Remark:SAVE FIRST VALUE
 160 LET T = Z(L)
- Reference:T
- Value:L
- Value:Z
+ Variable:T
+ Variable:L
+ Variable:Z
  AssignmentOperator:=
 170 LET Z(L) =Z(J)
- Value:L
- Reference:Z
- Value:J
- Value:Z
+ Variable:L
+ Variable:Z
+ Variable:J
+ Variable:Z
  AssignmentOperator:=
 180 LET Z(J) = T
- Value:J
- Reference:Z
- Value:T
+ Variable:J
+ Variable:Z
+ Variable:T
  AssignmentOperator:=
 190 REM IF Z IS THE KEY FOR SORTING MULTIPLE
  Remark:IF Z IS THE KEY FOR SORTING MULTIPLE

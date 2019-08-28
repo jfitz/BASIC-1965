@@ -24,8 +24,8 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 120 READ A(I)
- Value:I
- Reference:A
+ Variable:I
+ Variable:A
 140 NEXT I
  Variable:I
 150 PRINT "ARRAY A"
@@ -34,7 +34,7 @@
  CarriageControl:NL
 160 ARR PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 162 PRINT
  ITEMS
@@ -44,8 +44,8 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 220 READ B(I)
- Value:I
- Reference:B
+ Variable:I
+ Variable:B
 240 NEXT I
  Variable:I
 250 PRINT "ARRAY B"
@@ -54,15 +54,15 @@
  CarriageControl:NL
 260 ARR PRINT B;
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:;
 262 PRINT
  ITEMS
  CarriageControl:NL
 300 ARR C = A*B
- Reference:C
- Value:A
- Value:B
+ Variable:C
+ Variable:A
+ Variable:B
  BinaryOperator:*
  AssignmentOperator:=
 310 PRINT "ARRAY C"
@@ -71,7 +71,7 @@
  CarriageControl:NL
 320 ARR PRINT C;
  ITEMS
- Value:C
+ Variable:C
  CarriageControl:;
 322 PRINT
  ITEMS

@@ -7,10 +7,10 @@
  TextConstant:"X = "
  CarriageControl:;
 40 INPUT X
- Reference:X
+ Variable:X
 50 LET A = EXP(-(X^2)/2)
- Reference:A
- Value:X
+ Variable:A
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
  UnaryOperator:-
@@ -19,20 +19,20 @@
  FunctionExp
  AssignmentOperator:=
 60 LET B = .398942
- Reference:B
+ Variable:B
  NumericConstant:0.398942
  AssignmentOperator:=
 70 LET C = B*A
- Reference:C
- Value:B
- Value:A
+ Variable:C
+ Variable:B
+ Variable:A
  BinaryOperator:*
  AssignmentOperator:=
 80 PRINT "F(X) = ";C
  ITEMS
  TextConstant:"F(X) = "
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:NL
 90 PRINT
  ITEMS
@@ -42,9 +42,9 @@
  TextConstant:"TO CONTINUE TYPE 1, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- Reference:L
+ Variable:L
 120 IF L = 1 THEN 140
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 130 STOP

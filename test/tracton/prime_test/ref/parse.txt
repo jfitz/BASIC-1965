@@ -7,64 +7,64 @@
  TextConstant:"ENTER THE TEST NUMBER, ZERO TO STOP"
  CarriageControl:NL
 40 INPUT N
- Reference:N
+ Variable:N
 50 LET N = INT(N)
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  FunctionInt
  AssignmentOperator:=
 60 IF N = 0 THEN 220
- Value:N
+ Variable:N
  NumericConstant:0
  BinaryOperator:=
 70 IF N < 4 THEN 180
- Value:N
+ Variable:N
  NumericConstant:4
  BinaryOperator:<
 80 LET I = 0
- Reference:I
+ Variable:I
  NumericConstant:0
  AssignmentOperator:=
 90 LET T = 2
- Reference:T
+ Variable:T
  NumericConstant:2
  AssignmentOperator:=
 100 LET J = INT(N/T)
- Reference:J
- Value:N
- Value:T
+ Variable:J
+ Variable:N
+ Variable:T
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 110 LET K = J*T
- Reference:K
- Value:J
- Value:T
+ Variable:K
+ Variable:J
+ Variable:T
  BinaryOperator:*
  AssignmentOperator:=
 120 IF N = K THEN 200
- Value:N
- Value:K
+ Variable:N
+ Variable:K
  BinaryOperator:=
 130 LET I = I + 1
- Reference:I
- Value:I
+ Variable:I
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 140 LET L = T*T
- Reference:L
- Value:T
- Value:T
+ Variable:L
+ Variable:T
+ Variable:T
  BinaryOperator:*
  AssignmentOperator:=
 150 IF L > N THEN 180
- Value:L
- Value:N
+ Variable:L
+ Variable:N
  BinaryOperator:>
 160 LET T = (I*2) + 1
- Reference:T
- Value:I
+ Variable:T
+ Variable:I
  NumericConstant:2
  BinaryOperator:*
  NumericConstant:1
@@ -74,7 +74,7 @@
  LineNumber:100
 180 PRINT N;"IS A PRIME"
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:;
  TextConstant:"IS A PRIME"
  CarriageControl:NL
@@ -82,11 +82,11 @@
  LineNumber:30
 200 PRINT N;"IS NOT A PRIME:";T;"IS THE SMALLEST FACTOR"
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:;
  TextConstant:"IS NOT A PRIME:"
  CarriageControl:;
- Value:T
+ Variable:T
  CarriageControl:;
  TextConstant:"IS THE SMALLEST FACTOR"
  CarriageControl:NL

@@ -8,18 +8,18 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:100"]
 40    READ L(I)
- Value:I
- Reference:L
+ Variable:I
+ Variable:L
 50    IF L(I) < 0 THEN 70
- Value:I
- Value:L
+ Variable:I
+ Variable:L
  NumericConstant:0
  BinaryOperator:<
 60 NEXT I
  Variable:I
 70 LET I9 = I-1
- Reference:I9
- Value:I
+ Variable:I9
+ Variable:I
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
@@ -29,15 +29,15 @@
  CarriageControl:;
 110 INPUT K(1), K(2), K(3), K(4), K(5)
  NumericConstant:1
- Reference:K
+ Variable:K
  NumericConstant:2
- Reference:K
+ Variable:K
  NumericConstant:3
- Reference:K
+ Variable:K
  NumericConstant:4
- Reference:K
+ Variable:K
  NumericConstant:5
- Reference:K
+ Variable:K
 120 PRINT
  ITEMS
  CarriageControl:NL
@@ -46,12 +46,12 @@
  TextConstant:"TYPE '0' FOR ENCODING, '1' FOR DECODING"
  CarriageControl:;
 140 INPUT F
- Reference:F
+ Variable:F
 145 PRINT
  ITEMS
  CarriageControl:NL
 150 IF F = 0 THEN 200
- Value:F
+ Variable:F
  NumericConstant:0
  BinaryOperator:=
 160 PRINT "DECODED MESSAGE:"
@@ -63,11 +63,11 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 180    LET K(J) = 27-K(J)
- Value:J
- Reference:K
+ Variable:J
+ Variable:K
  NumericConstant:27
- Value:J
- Value:K
+ Variable:J
+ Variable:K
  BinaryOperator:-
  AssignmentOperator:=
 190 NEXT J
@@ -82,45 +82,45 @@
  ITEMS
  CarriageControl:NL
 215 LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 220 FOR I = 1 TO I9
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:I9"]
+ end:     ["Variable:I9"]
 230    LET X = L(I)+K(J)
- Reference:X
- Value:I
- Value:L
- Value:J
- Value:K
+ Variable:X
+ Variable:I
+ Variable:L
+ Variable:J
+ Variable:K
  BinaryOperator:+
  AssignmentOperator:=
 240    IF X <= 26 THEN 260
- Value:X
+ Variable:X
  NumericConstant:26
  BinaryOperator:<=
 250    LET X = X-27
- Reference:X
- Value:X
+ Variable:X
+ Variable:X
  NumericConstant:27
  BinaryOperator:-
  AssignmentOperator:=
 260    GOSUB 1000
  LineNumber:1000
 270    LET J = J+1
- Reference:J
- Value:J
+ Variable:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 280    IF J <= 5 THEN 300
- Value:J
+ Variable:J
  NumericConstant:5
  BinaryOperator:<=
 290    LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 300 NEXT I
@@ -129,47 +129,47 @@
  ITEMS
  CarriageControl:NL
 315 LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 320 FOR I = 1 TO I9
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:I9"]
+ end:     ["Variable:I9"]
 330    LET X = L(I)+K(J)
- Reference:X
- Value:I
- Value:L
- Value:J
- Value:K
+ Variable:X
+ Variable:I
+ Variable:L
+ Variable:J
+ Variable:K
  BinaryOperator:+
  AssignmentOperator:=
 340    IF X <= 26 THEN 360
- Value:X
+ Variable:X
  NumericConstant:26
  BinaryOperator:<=
 350    LET X = X-27
- Reference:X
- Value:X
+ Variable:X
+ Variable:X
  NumericConstant:27
  BinaryOperator:-
  AssignmentOperator:=
 360    PRINT X;
  ITEMS
- Value:X
+ Variable:X
  CarriageControl:;
 370    LET J = J+1
- Reference:J
- Value:J
+ Variable:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 380    IF J <= 5 THEN 400
- Value:J
+ Variable:J
  NumericConstant:5
  BinaryOperator:<=
 390    LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 400 NEXT I
@@ -236,7 +236,7 @@
 1000 REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
  Remark:THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
 1010 IF X>0 THEN 1040
- Value:X
+ Variable:X
  NumericConstant:0
  BinaryOperator:>
 1020 PRINT " ";
@@ -246,7 +246,7 @@
 1030 RETURN
  
 1040 IF X>1 THEN 1070
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:>
 1050 PRINT "A";
@@ -256,7 +256,7 @@
 1060 RETURN
  
 1070 IF X>2 THEN 1100
- Value:X
+ Variable:X
  NumericConstant:2
  BinaryOperator:>
 1080 PRINT "B";
@@ -266,7 +266,7 @@
 1090 RETURN
  
 1100 IF X>3 THEN 1130
- Value:X
+ Variable:X
  NumericConstant:3
  BinaryOperator:>
 1110 PRINT "C";
@@ -276,7 +276,7 @@
 1120 RETURN
  
 1130 IF X>4 THEN 1160
- Value:X
+ Variable:X
  NumericConstant:4
  BinaryOperator:>
 1140 PRINT "D";
@@ -286,7 +286,7 @@
 1150 RETURN
  
 1160 IF X>5 THEN 1190
- Value:X
+ Variable:X
  NumericConstant:5
  BinaryOperator:>
 1170 PRINT "E";
@@ -296,7 +296,7 @@
 1180 RETURN
  
 1190 IF X>6 THEN 1220
- Value:X
+ Variable:X
  NumericConstant:6
  BinaryOperator:>
 1200 PRINT "F";
@@ -306,7 +306,7 @@
 1210 RETURN
  
 1220 IF X>7 THEN 1250
- Value:X
+ Variable:X
  NumericConstant:7
  BinaryOperator:>
 1230 PRINT "G";
@@ -316,7 +316,7 @@
 1240 RETURN
  
 1250 IF X>8 THEN 1280
- Value:X
+ Variable:X
  NumericConstant:8
  BinaryOperator:>
 1260 PRINT "H";
@@ -326,7 +326,7 @@
 1270 RETURN
  
 1280 IF X>9 THEN 1310
- Value:X
+ Variable:X
  NumericConstant:9
  BinaryOperator:>
 1290 PRINT "I";
@@ -336,7 +336,7 @@
 1300 RETURN
  
 1310 IF X>10 THEN 1340
- Value:X
+ Variable:X
  NumericConstant:10
  BinaryOperator:>
 1320 PRINT "J";
@@ -346,7 +346,7 @@
 1330 RETURN
  
 1340 IF X>11 THEN 1370
- Value:X
+ Variable:X
  NumericConstant:11
  BinaryOperator:>
 1350 PRINT "K";
@@ -356,7 +356,7 @@
 1360 RETURN
  
 1370 IF X>12 THEN 1400
- Value:X
+ Variable:X
  NumericConstant:12
  BinaryOperator:>
 1380 PRINT "L";
@@ -366,7 +366,7 @@
 1390 RETURN
  
 1400 IF X>13 THEN 1430
- Value:X
+ Variable:X
  NumericConstant:13
  BinaryOperator:>
 1410 PRINT "M";
@@ -376,7 +376,7 @@
 1420 RETURN
  
 1430 IF X>14 THEN 1460
- Value:X
+ Variable:X
  NumericConstant:14
  BinaryOperator:>
 1440 PRINT "N";
@@ -386,7 +386,7 @@
 1450 RETURN
  
 1460 IF X>15 THEN 1490
- Value:X
+ Variable:X
  NumericConstant:15
  BinaryOperator:>
 1470 PRINT "O";
@@ -396,7 +396,7 @@
 1480 RETURN
  
 1490 IF X>16 THEN 1520
- Value:X
+ Variable:X
  NumericConstant:16
  BinaryOperator:>
 1500 PRINT "P";
@@ -406,7 +406,7 @@
 1510 RETURN
  
 1520 IF X>17 THEN 1550
- Value:X
+ Variable:X
  NumericConstant:17
  BinaryOperator:>
 1530 PRINT "Q";
@@ -416,7 +416,7 @@
 1540 RETURN
  
 1550 IF X>18 THEN 1580
- Value:X
+ Variable:X
  NumericConstant:18
  BinaryOperator:>
 1560 PRINT "R";
@@ -426,7 +426,7 @@
 1570 RETURN
  
 1580 IF X>19 THEN 1610
- Value:X
+ Variable:X
  NumericConstant:19
  BinaryOperator:>
 1590 PRINT "S";
@@ -436,7 +436,7 @@
 1600 RETURN
  
 1610 IF X>20 THEN 1640
- Value:X
+ Variable:X
  NumericConstant:20
  BinaryOperator:>
 1620 PRINT "T";
@@ -446,7 +446,7 @@
 1630 RETURN
  
 1640 IF X>21 THEN 1670
- Value:X
+ Variable:X
  NumericConstant:21
  BinaryOperator:>
 1650 PRINT "U";
@@ -456,7 +456,7 @@
 1660 RETURN
  
 1670 IF X>22 THEN 1700
- Value:X
+ Variable:X
  NumericConstant:22
  BinaryOperator:>
 1680 PRINT "V";
@@ -466,7 +466,7 @@
 1690 RETURN
  
 1700 IF X>23 THEN 1730
- Value:X
+ Variable:X
  NumericConstant:23
  BinaryOperator:>
 1710 PRINT "W";
@@ -476,7 +476,7 @@
 1720 RETURN
  
 1730 IF X>24 THEN 1760
- Value:X
+ Variable:X
  NumericConstant:24
  BinaryOperator:>
 1740 PRINT "X";
@@ -486,7 +486,7 @@
 1750 RETURN
  
 1760 IF X>25 THEN 1790
- Value:X
+ Variable:X
  NumericConstant:25
  BinaryOperator:>
 1770 PRINT "Y";

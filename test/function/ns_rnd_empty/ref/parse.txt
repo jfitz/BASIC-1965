@@ -5,14 +5,14 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 30 LET A = 100*RND()
- Reference:A
+ Variable:A
  NumericConstant:100
  FunctionRnd
  BinaryOperator:*
  AssignmentOperator:=
 40 PRINT A
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:NL
 50 NEXT I
  Variable:I

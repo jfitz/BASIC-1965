@@ -3,25 +3,25 @@
  TextConstant:"NUMBER TO BE FACTORED:"
  CarriageControl:;
 110 INPUT N
- Reference:N
+ Variable:N
 120 PRINT
  ITEMS
  CarriageControl:NL
 130 IF N = 0 THEN 999
- Value:N
+ Variable:N
  NumericConstant:0
  BinaryOperator:=
 140 IF N = 2 THEN 250
- Value:N
+ Variable:N
  NumericConstant:2
  BinaryOperator:=
 150 LET Z = 0
- Reference:Z
+ Variable:Z
  NumericConstant:0
  AssignmentOperator:=
 160
 170 LET F = 2
- Reference:F
+ Variable:F
  NumericConstant:2
  AssignmentOperator:=
 180 GOSUB 300
@@ -29,25 +29,25 @@
 190 FOR F = 3 TO SQR(N)+1 STEP 2
  control: Variable:F
  start:   ["NumericConstant:3"]
- end:     ["Value:N", "FunctionSqr", "NumericConstant:1", "BinaryOperator:+"]
+ end:     ["Variable:N", "FunctionSqr", "NumericConstant:1", "BinaryOperator:+"]
  step:    ["NumericConstant:2"]
 200 GOSUB 300
  LineNumber:300
 210 NEXT F
  Variable:F
 220 IF Z = 0 THEN 250
- Value:Z
+ Variable:Z
  NumericConstant:0
  BinaryOperator:=
 230 PRINT N;
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:;
 240 GOTO 500
  LineNumber:500
 250 PRINT N; "IS PRIME."
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:;
  TextConstant:"IS PRIME."
  CarriageControl:NL
@@ -57,21 +57,21 @@
 300 REM TESTS F AS A FACTOR
  Remark:TESTS F AS A FACTOR
 310 IF N/F <> INT(N/F) THEN 410
- Value:N
- Value:F
+ Variable:N
+ Variable:F
  BinaryOperator:/
- Value:N
- Value:F
+ Variable:N
+ Variable:F
  BinaryOperator:/
  FunctionInt
  BinaryOperator:<>
 330 IF Z > 0 THEN 370
- Value:Z
+ Variable:Z
  NumericConstant:0
  BinaryOperator:>
 340 PRINT N; "HAS THE FACTORS:"
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:;
  TextConstant:"HAS THE FACTORS:"
  CarriageControl:NL
@@ -80,21 +80,21 @@
  TextConstant:"     "
  CarriageControl:;
 360 LET Z = 1
- Reference:Z
+ Variable:Z
  NumericConstant:1
  AssignmentOperator:=
 370 PRINT F;
  ITEMS
- Value:F
+ Variable:F
  CarriageControl:;
 380 LET N = N/F
- Reference:N
- Value:N
- Value:F
+ Variable:N
+ Variable:N
+ Variable:F
  BinaryOperator:/
  AssignmentOperator:=
 390 IF N = 1 THEN 500
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:=
 400 GOTO 310

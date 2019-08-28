@@ -5,13 +5,13 @@
  TextConstant:"MAXIMUM TERM NUMBER"
  CarriageControl:NL
 30 INPUT N
- Reference:N
+ Variable:N
 40 LET K = 0
- Reference:K
+ Variable:K
  NumericConstant:0
  AssignmentOperator:=
 50 LET D = 0
- Reference:D
+ Variable:D
  NumericConstant:0
  AssignmentOperator:=
 60 PRINT "TERM NUMBER","TERM VALUE"
@@ -23,30 +23,30 @@
 70 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 80 LET K = I + 1
- Reference:K
- Value:I
+ Variable:K
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 90 LET C = 1/K
- Reference:C
+ Variable:C
  NumericConstant:1
- Value:K
+ Variable:K
  BinaryOperator:/
  AssignmentOperator:=
 100 LET D = D + C
- Reference:D
- Value:D
- Value:C
+ Variable:D
+ Variable:D
+ Variable:C
  BinaryOperator:+
  AssignmentOperator:=
 110 PRINT K,D
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
- Value:D
+ Variable:D
  CarriageControl:NL
 120 NEXT I
  Variable:I

@@ -7,17 +7,17 @@
  TextConstant:"CENTER OF CIRCLE (X0,Y0) = "
  CarriageControl:;
 40 INPUT X0,Y0
- Reference:X0
- Reference:Y0
+ Variable:X0
+ Variable:Y0
 50 PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
  ITEMS
  TextConstant:"ANGLE IN DEGREES OF 1ST POINT = "
  CarriageControl:;
 60 INPUT W
- Reference:W
+ Variable:W
 70 LET W = (W*3.14159)/180
- Reference:W
- Value:W
+ Variable:W
+ Variable:W
  NumericConstant:3.14159
  BinaryOperator:*
  NumericConstant:180
@@ -28,17 +28,17 @@
  TextConstant:"NUMBER OF POINTS DESIRED = "
  CarriageControl:;
 90 INPUT N
- Reference:N
+ Variable:N
 100 PRINT "RADIUS OF CIRCLE = ";
  ITEMS
  TextConstant:"RADIUS OF CIRCLE = "
  CarriageControl:;
 110 INPUT R
- Reference:R
+ Variable:R
 120 LET Z = 6.28319/N
- Reference:Z
+ Variable:Z
  NumericConstant:6.28319
- Value:N
+ Variable:N
  BinaryOperator:/
  AssignmentOperator:=
 130 PRINT
@@ -51,14 +51,14 @@
 150 FOR I = 0 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 160 LET X = X0 + (R*COS(W + (Z*I)))
- Reference:X
- Value:X0
- Value:R
- Value:W
- Value:Z
- Value:I
+ Variable:X
+ Variable:X0
+ Variable:R
+ Variable:W
+ Variable:Z
+ Variable:I
  BinaryOperator:*
  BinaryOperator:+
  FunctionCos
@@ -66,12 +66,12 @@
  BinaryOperator:+
  AssignmentOperator:=
 170 LET Y = Y0 + (R*SIN(W + (Z*I)))
- Reference:Y
- Value:Y0
- Value:R
- Value:W
- Value:Z
- Value:I
+ Variable:Y
+ Variable:Y0
+ Variable:R
+ Variable:W
+ Variable:Z
+ Variable:I
  BinaryOperator:*
  BinaryOperator:+
  FunctionSin
@@ -79,8 +79,8 @@
  BinaryOperator:+
  AssignmentOperator:=
 180 LET P = I + 1
- Reference:P
- Value:I
+ Variable:P
+ Variable:I
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
@@ -88,15 +88,15 @@
  ITEMS
  TextConstant:"POINT:"
  CarriageControl:;
- Value:P
+ Variable:P
  CarriageControl:,
  TextConstant:"X = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:NL
 200 NEXT I
  Variable:I
@@ -108,9 +108,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Reference:L
+ Variable:L
 240 IF L = 1 THEN 260
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 250 STOP

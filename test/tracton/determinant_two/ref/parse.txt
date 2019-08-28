@@ -7,49 +7,49 @@
  TextConstant:"ENTER A11, A12"
  CarriageControl:;
 40 INPUT A,B
- Reference:A
- Reference:B
+ Variable:A
+ Variable:B
 50 PRINT "A21, A22";
  ITEMS
  TextConstant:"A21, A22"
  CarriageControl:;
 60 INPUT C,D
- Reference:C
- Reference:D
+ Variable:C
+ Variable:D
 70 LET E = (D*A) - (B*C)
- Reference:E
- Value:D
- Value:A
+ Variable:E
+ Variable:D
+ Variable:A
  BinaryOperator:*
- Value:B
- Value:C
+ Variable:B
+ Variable:C
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 80 LET F = D/E
- Reference:F
- Value:D
- Value:E
+ Variable:F
+ Variable:D
+ Variable:E
  BinaryOperator:/
  AssignmentOperator:=
 90 LET G = - B/E
- Reference:G
- Value:B
+ Variable:G
+ Variable:B
  UnaryOperator:-
- Value:E
+ Variable:E
  BinaryOperator:/
  AssignmentOperator:=
 100 LET H = - C/E
- Reference:H
- Value:C
+ Variable:H
+ Variable:C
  UnaryOperator:-
- Value:E
+ Variable:E
  BinaryOperator:/
  AssignmentOperator:=
 110 LET I = A/E
- Reference:I
- Value:A
- Value:E
+ Variable:I
+ Variable:A
+ Variable:E
  BinaryOperator:/
  AssignmentOperator:=
 120 PRINT "ORIGINAL MATRIX"
@@ -58,15 +58,15 @@
  CarriageControl:NL
 130 PRINT A,B
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:,
- Value:B
+ Variable:B
  CarriageControl:NL
 140 PRINT C,D
  ITEMS
- Value:C
+ Variable:C
  CarriageControl:,
- Value:D
+ Variable:D
  CarriageControl:NL
 150 PRINT
  ITEMS
@@ -77,15 +77,15 @@
  CarriageControl:NL
 170 PRINT F,G
  ITEMS
- Value:F
+ Variable:F
  CarriageControl:,
- Value:G
+ Variable:G
  CarriageControl:NL
 180 PRINT H,I
  ITEMS
- Value:H
+ Variable:H
  CarriageControl:,
- Value:I
+ Variable:I
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -94,7 +94,7 @@
  ITEMS
  TextConstant:"DETERMINANT = "
  CarriageControl:;
- Value:E
+ Variable:E
  CarriageControl:NL
 210 PRINT
  ITEMS
@@ -104,9 +104,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Reference:L
+ Variable:L
 240 IF L = 1 THEN 30
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 250 STOP

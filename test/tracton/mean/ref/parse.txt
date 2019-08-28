@@ -3,19 +3,19 @@
 20 REM DEVIATION AND STANDARD ERROR FOR GROUPED DATA
  Remark:DEVIATION AND STANDARD ERROR FOR GROUPED DATA
 30 LET A = 0
- Reference:A
+ Variable:A
  NumericConstant:0
  AssignmentOperator:=
 40 LET B = 0
- Reference:B
+ Variable:B
  NumericConstant:0
  AssignmentOperator:=
 50 LET C = 0
- Reference:C
+ Variable:C
  NumericConstant:0
  AssignmentOperator:=
 60 LET D = 0
- Reference:D
+ Variable:D
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
@@ -23,63 +23,63 @@
  TextConstant:"ENTER SAMPLE VALUE AND FREQUENCY"
  CarriageControl:;
 80 INPUT X,F
- Reference:X
- Reference:F
+ Variable:X
+ Variable:F
 90 IF F <= 0 THEN 170
- Value:F
+ Variable:F
  NumericConstant:0
  BinaryOperator:<=
 100 LET A = A + 1
- Reference:A
- Value:A
+ Variable:A
+ Variable:A
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 110 LET B = B + F
- Reference:B
- Value:B
- Value:F
+ Variable:B
+ Variable:B
+ Variable:F
  BinaryOperator:+
  AssignmentOperator:=
 120 LET G = X*F
- Reference:G
- Value:X
- Value:F
+ Variable:G
+ Variable:X
+ Variable:F
  BinaryOperator:*
  AssignmentOperator:=
 130 LET C = C + G
- Reference:C
- Value:C
- Value:G
+ Variable:C
+ Variable:C
+ Variable:G
  BinaryOperator:+
  AssignmentOperator:=
 140 LET E = (X^2)*F
- Reference:E
- Value:X
+ Variable:E
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
- Value:F
+ Variable:F
  BinaryOperator:*
  AssignmentOperator:=
 150 LET D = D + E
- Reference:D
- Value:D
- Value:E
+ Variable:D
+ Variable:D
+ Variable:E
  BinaryOperator:+
  AssignmentOperator:=
 160 GOTO 70
  LineNumber:70
 170 LET H = C/B
- Reference:H
- Value:C
- Value:B
+ Variable:H
+ Variable:C
+ Variable:B
  BinaryOperator:/
  AssignmentOperator:=
 180 LET I = SQR(D - (B*(H^2)))
- Reference:I
- Value:D
- Value:B
- Value:H
+ Variable:I
+ Variable:D
+ Variable:B
+ Variable:H
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
@@ -87,9 +87,9 @@
  FunctionSqr
  AssignmentOperator:=
 190 LET J = I/SQR(B)
- Reference:J
- Value:I
- Value:B
+ Variable:J
+ Variable:I
+ Variable:B
  FunctionSqr
  BinaryOperator:/
  AssignmentOperator:=
@@ -100,25 +100,25 @@
  ITEMS
  TextConstant:"NUMBER OF SAMPLES ENTERED = "
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:NL
 220 PRINT "MEAN = ";H
  ITEMS
  TextConstant:"MEAN = "
  CarriageControl:;
- Value:H
+ Variable:H
  CarriageControl:NL
 230 PRINT "STANDARD DEVIATION = ";I
  ITEMS
  TextConstant:"STANDARD DEVIATION = "
  CarriageControl:;
- Value:I
+ Variable:I
  CarriageControl:NL
 240 PRINT "STANDARD ERROR = ";J
  ITEMS
  TextConstant:"STANDARD ERROR = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 250 PRINT
  ITEMS
@@ -128,9 +128,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 270 INPUT L
- Reference:L
+ Variable:L
 280 IF L = 1 THEN 300
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 290 STOP

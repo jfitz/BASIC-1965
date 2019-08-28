@@ -1,75 +1,75 @@
 110 READ M,N
- Reference:M
- Reference:N
+ Variable:M
+ Variable:N
 120 FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:M"]
+ end:     ["Variable:M"]
 130    LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 140    FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 150       READ O(I,J)
- Value:I
- Value:J
- Reference:O
+ Variable:I
+ Variable:J
+ Variable:O
 160       LET S = S + O(I,J)
- Reference:S
- Value:S
- Value:I
- Value:J
- Value:O
+ Variable:S
+ Variable:S
+ Variable:I
+ Variable:J
+ Variable:O
  BinaryOperator:+
  AssignmentOperator:=
 170    NEXT J
  Variable:J
 180    LET R(I) = S
- Value:I
- Reference:R
- Value:S
+ Variable:I
+ Variable:R
+ Variable:S
  AssignmentOperator:=
 190 NEXT I
  Variable:I
 200
 210 LET S1 = 0
- Reference:S1
+ Variable:S1
  NumericConstant:0
  AssignmentOperator:=
 220 FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 230    LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 240    FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:M"]
+ end:     ["Variable:M"]
 250       LET S = S + O(I,J)
- Reference:S
- Value:S
- Value:I
- Value:J
- Value:O
+ Variable:S
+ Variable:S
+ Variable:I
+ Variable:J
+ Variable:O
  BinaryOperator:+
  AssignmentOperator:=
 260    NEXT I
  Variable:I
 270    LET C(J) = S
- Value:J
- Reference:C
- Value:S
+ Variable:J
+ Variable:C
+ Variable:S
  AssignmentOperator:=
 280    LET S1 = S1 + S
- Reference:S1
- Value:S1
- Value:S
+ Variable:S1
+ Variable:S1
+ Variable:S
  BinaryOperator:+
  AssignmentOperator:=
 290 NEXT J
@@ -79,46 +79,46 @@
  ITEMS
  CarriageControl:NL
 320 LET C = 0
- Reference:C
+ Variable:C
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I = 1 TO M
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:M"]
+ end:     ["Variable:M"]
 340    FOR J = 1 TO N
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 350       LET E = R(I)*C(J)/S1
- Reference:E
- Value:I
- Value:R
- Value:J
- Value:C
+ Variable:E
+ Variable:I
+ Variable:R
+ Variable:J
+ Variable:C
  BinaryOperator:*
- Value:S1
+ Variable:S1
  BinaryOperator:/
  AssignmentOperator:=
 360       LET C = C + (O(I,J) - E)^2/E
- Reference:C
- Value:C
- Value:I
- Value:J
- Value:O
- Value:E
+ Variable:C
+ Variable:C
+ Variable:I
+ Variable:J
+ Variable:O
+ Variable:E
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
- Value:E
+ Variable:E
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 370       PRINT O(I,J),
  ITEMS
- Value:I
- Value:J
- Value:O
+ Variable:I
+ Variable:J
+ Variable:O
  CarriageControl:,
 380    NEXT J
  Variable:J
@@ -134,14 +134,14 @@
  ITEMS
  TextConstant:"CHI-SQUARE EQUALS"
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:;
  TextConstant:"ON"
  CarriageControl:;
- Value:M
+ Variable:M
  NumericConstant:1
  BinaryOperator:-
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:*

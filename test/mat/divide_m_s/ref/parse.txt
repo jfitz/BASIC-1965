@@ -13,11 +13,11 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 50 LET A(I,J) = I+J
- Value:I
- Value:J
- Reference:A
- Value:I
- Value:J
+ Variable:I
+ Variable:J
+ Variable:A
+ Variable:I
+ Variable:J
  BinaryOperator:+
  AssignmentOperator:=
 60 NEXT J
@@ -25,8 +25,8 @@
 70 NEXT I
  Variable:I
 100 MAT B = A / 2
- Reference:B
- Value:A
+ Variable:B
+ Variable:A
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
@@ -36,7 +36,7 @@
  CarriageControl:NL
 120 MAT PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 130 PRINT "MATRIX B"
  ITEMS
@@ -44,7 +44,7 @@
  CarriageControl:NL
 140 MAT PRINT B;
  ITEMS
- Value:B
+ Variable:B
  CarriageControl:;
 999 END
  

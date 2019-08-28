@@ -29,7 +29,7 @@
  TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- Reference:C
+ Variable:C
 100 ON C GOTO 110,160,210,270,320,370
  Unknown statement 'ON C GOTO 110,160,210,270,320,370'
  Unimplemented
@@ -38,8 +38,8 @@
 120 GOSUB 520
  LineNumber:520
 130 LET Z = Y/2
- Reference:Z
- Value:Y
+ Variable:Z
+ Variable:Y
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
@@ -47,11 +47,11 @@
  ITEMS
  TextConstant:"SINH"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 150 GOTO 420
  LineNumber:420
@@ -60,8 +60,8 @@
 170 GOSUB 540
  LineNumber:540
 180 LET Z = B/2
- Reference:Z
- Value:B
+ Variable:Z
+ Variable:B
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
@@ -69,11 +69,11 @@
  ITEMS
  TextConstant:"COSH"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 200 GOTO 420
  LineNumber:420
@@ -84,20 +84,20 @@
 230 GOSUB 540
  LineNumber:540
 240 LET Z = Y/B
- Reference:Z
- Value:Y
- Value:B
+ Variable:Z
+ Variable:Y
+ Variable:B
  BinaryOperator:/
  AssignmentOperator:=
 250 PRINT "TANH";X;" =";Z
  ITEMS
  TextConstant:"TANH"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 260 GOTO 420
  LineNumber:420
@@ -106,9 +106,9 @@
 280 GOSUB 520
  LineNumber:520
 290 LET Z = 1/(Y/2)
- Reference:Z
+ Variable:Z
  NumericConstant:1
- Value:Y
+ Variable:Y
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:/
@@ -117,11 +117,11 @@
  ITEMS
  TextConstant:"CSCH"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 310 GOTO 420
  LineNumber:420
@@ -130,9 +130,9 @@
 330 GOSUB 540
  LineNumber:540
 340 LET Z = 1/(B/2)
- Reference:Z
+ Variable:Z
  NumericConstant:1
- Value:B
+ Variable:B
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:/
@@ -141,11 +141,11 @@
  ITEMS
  TextConstant:"SECH"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 360 GOTO 420
  LineNumber:420
@@ -156,10 +156,10 @@
 390 GOSUB 540
  LineNumber:540
 400 LET Z = 1/(Y/B)
- Reference:Z
+ Variable:Z
  NumericConstant:1
- Value:Y
- Value:B
+ Variable:Y
+ Variable:B
  BinaryOperator:/
  BinaryOperator:/
  AssignmentOperator:=
@@ -167,11 +167,11 @@
  ITEMS
  TextConstant:"COTH"
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 420 PRINT
  ITEMS
@@ -181,9 +181,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 440 INPUT L
- Reference:L
+ Variable:L
 450 IF L = 1 THEN 470
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 460 STOP
@@ -198,14 +198,14 @@
  TextConstant:"X = "
  CarriageControl:NL
 500 INPUT X
- Reference:X
+ Variable:X
 510 RETURN
  
 520 LET Y = EXP(X) - EXP(-X)
- Reference:Y
- Value:X
+ Variable:Y
+ Variable:X
  FunctionExp
- Value:X
+ Variable:X
  UnaryOperator:-
  FunctionExp
  BinaryOperator:-
@@ -213,10 +213,10 @@
 530 RETURN
  
 540 LET B = EXP(X) + EXP(-X)
- Reference:B
- Value:X
+ Variable:B
+ Variable:X
  FunctionExp
- Value:X
+ Variable:X
  UnaryOperator:-
  FunctionExp
  BinaryOperator:+

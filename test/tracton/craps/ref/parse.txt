@@ -40,76 +40,76 @@
  TextConstant:"YOU LOSE AUTOMATICALLY"
  CarriageControl:NL
 140 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 150 GOSUB 460
  LineNumber:460
 160 LET D1 = N
- Reference:D1
- Value:N
+ Variable:D1
+ Variable:N
  AssignmentOperator:=
 170 GOSUB 460
  LineNumber:460
 180 LET D2 = N
- Reference:D2
- Value:N
+ Variable:D2
+ Variable:N
  AssignmentOperator:=
 190 LET D3 = D1 + D2
- Reference:D3
- Value:D1
- Value:D2
+ Variable:D3
+ Variable:D1
+ Variable:D2
  BinaryOperator:+
  AssignmentOperator:=
 200 LET J = J + 1
- Reference:J
- Value:J
+ Variable:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 210 IF J = 1 THEN 260
- Value:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:=
 220 IF D3 = D4 THEN 420
- Value:D3
- Value:D4
+ Variable:D3
+ Variable:D4
  BinaryOperator:=
 230 IF D3 = 7 THEN 440
- Value:D3
+ Variable:D3
  NumericConstant:7
  BinaryOperator:=
 240 PRINT "YOU THROW A ";D3
  ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Value:D3
+ Variable:D3
  CarriageControl:NL
 250 GOTO 150
  LineNumber:150
 260 IF D3 = 7 THEN 320
- Value:D3
+ Variable:D3
  NumericConstant:7
  BinaryOperator:=
 270 IF D3 = 2 THEN 340
- Value:D3
+ Variable:D3
  NumericConstant:2
  BinaryOperator:=
 280 IF D3 = 3 THEN 340
- Value:D3
+ Variable:D3
  NumericConstant:3
  BinaryOperator:=
 290 IF D3 = 12 THEN 340
- Value:D3
+ Variable:D3
  NumericConstant:12
  BinaryOperator:=
 300 IF D3 = 11 THEN 320
- Value:D3
+ Variable:D3
  NumericConstant:11
  BinaryOperator:=
 310 LET D4 = D3
- Reference:D4
- Value:D3
+ Variable:D4
+ Variable:D3
  AssignmentOperator:=
 315 GOTO 240
  LineNumber:240
@@ -117,7 +117,7 @@
  ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Value:D3
+ Variable:D3
  CarriageControl:;
  TextConstant:" YOU WIN"
  CarriageControl:NL
@@ -127,7 +127,7 @@
  ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Value:D3
+ Variable:D3
  CarriageControl:;
  TextConstant:" YOU LOSE"
  CarriageControl:NL
@@ -153,7 +153,7 @@
  ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Value:D3
+ Variable:D3
  CarriageControl:;
  TextConstant:"YOU WIN BY MATCHING"
  CarriageControl:NL
@@ -163,14 +163,14 @@
  ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Value:D3
+ Variable:D3
  CarriageControl:;
  TextConstant:" SORRY YOU LOSE"
  CarriageControl:NL
 450 GOTO 350
  LineNumber:350
 460 LET N = 1 + INT(6*RND)
- Reference:N
+ Variable:N
  NumericConstant:1
  NumericConstant:6
  FunctionRnd

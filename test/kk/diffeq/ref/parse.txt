@@ -1,18 +1,18 @@
 10 DEF FNF(X,Y) = SQR(X*X + Y*Y)
- Value:X
- Value:X
+ Variable:X
+ Variable:X
  BinaryOperator:*
- Value:Y
- Value:Y
+ Variable:Y
+ Variable:Y
  BinaryOperator:*
  BinaryOperator:+
  FunctionSqr
 20
 100 READ X0, X1, Y0, H
- Reference:X0
- Reference:X1
- Reference:Y0
- Reference:H
+ Variable:X0
+ Variable:X1
+ Variable:Y0
+ Variable:H
 110 PRINT " X", " Y"
  ITEMS
  TextConstant:" X"
@@ -24,65 +24,65 @@
  CarriageControl:NL
 130 PRINT X0, Y0
  ITEMS
- Value:X0
+ Variable:X0
  CarriageControl:,
- Value:Y0
+ Variable:Y0
  CarriageControl:NL
 140 LET Y = Y0
- Reference:Y
- Value:Y0
+ Variable:Y
+ Variable:Y0
  AssignmentOperator:=
 150
 160 FOR X = X0 TO X1-H STEP H
  control: Variable:X
- start:   ["Value:X0"]
- end:     ["Value:X1", "Value:H", "BinaryOperator:-"]
- step:    ["Value:H"]
+ start:   ["Variable:X0"]
+ end:     ["Variable:X1", "Variable:H", "BinaryOperator:-"]
+ step:    ["Variable:H"]
 170 LET D1 = FNF(X,Y)
- Reference:D1
- Value:X
- Value:Y
+ Variable:D1
+ Variable:X
+ Variable:Y
  UserFunction
  AssignmentOperator:=
 180 LET Y1 = Y
- Reference:Y1
- Value:Y
+ Variable:Y1
+ Variable:Y
  AssignmentOperator:=
 190 LET Y = Y + D1*H/2
- Reference:Y
- Value:Y
- Value:D1
- Value:H
+ Variable:Y
+ Variable:Y
+ Variable:D1
+ Variable:H
  BinaryOperator:*
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 200 LET D2 = FNF(X+H/2,Y)
- Reference:D2
- Value:X
- Value:H
+ Variable:D2
+ Variable:X
+ Variable:H
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
- Value:Y
+ Variable:Y
  UserFunction
  AssignmentOperator:=
 210 LET Y = Y1 + D2*H
- Reference:Y
- Value:Y1
- Value:D2
- Value:H
+ Variable:Y
+ Variable:Y1
+ Variable:D2
+ Variable:H
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 220 PRINT X+H, Y
  ITEMS
- Value:X
- Value:H
+ Variable:X
+ Variable:H
  BinaryOperator:+
  CarriageControl:,
- Value:Y
+ Variable:Y
  CarriageControl:NL
 230 NEXT X
  Variable:X

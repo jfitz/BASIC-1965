@@ -1,76 +1,76 @@
 10 REM Test different values
  Remark:Test different values
 20 LET A = 10
- Reference:A
+ Variable:A
  NumericConstant:10
  AssignmentOperator:=
 30 LET B = -5
- Reference:B
+ Variable:B
  NumericConstant:5
  UnaryOperator:-
  AssignmentOperator:=
 40 LET C = 20.25
- Reference:C
+ Variable:C
  NumericConstant:20.25
  AssignmentOperator:=
 50 LET D = -15.333
- Reference:D
+ Variable:D
  NumericConstant:15.333
  UnaryOperator:-
  AssignmentOperator:=
 60 LET E1 = 1.2E2
- Reference:E1
+ Variable:E1
  NumericConstant:120
  AssignmentOperator:=
 62 LET E2 = 1.2E+2
- Reference:E2
+ Variable:E2
  NumericConstant:120
  AssignmentOperator:=
 64 LET E3 = 1.2E-2
- Reference:E3
+ Variable:E3
  NumericConstant:0.012
  AssignmentOperator:=
 120 PRINT "A="; A
  ITEMS
  TextConstant:"A="
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:NL
 130 PRINT "B="; B
  ITEMS
  TextConstant:"B="
  CarriageControl:;
- Value:B
+ Variable:B
  CarriageControl:NL
 140 PRINT "C="; C
  ITEMS
  TextConstant:"C="
  CarriageControl:;
- Value:C
+ Variable:C
  CarriageControl:NL
 150 PRINT "D="; D
  ITEMS
  TextConstant:"D="
  CarriageControl:;
- Value:D
+ Variable:D
  CarriageControl:NL
 160 PRINT "E1="; E1
  ITEMS
  TextConstant:"E1="
  CarriageControl:;
- Value:E1
+ Variable:E1
  CarriageControl:NL
 162 PRINT "E2="; E2
  ITEMS
  TextConstant:"E2="
  CarriageControl:;
- Value:E2
+ Variable:E2
  CarriageControl:NL
 164 PRINT "E3="; E3
  ITEMS
  TextConstant:"E3="
  CarriageControl:;
- Value:E3
+ Variable:E3
  CarriageControl:NL
 999 END
  

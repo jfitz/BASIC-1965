@@ -13,39 +13,39 @@
  TextConstant:"NUMBER OF DESTROYERS (Y) = "
  CarriageControl:;
 70 INPUT Y
- Reference:Y
+ Variable:Y
 80 PRINT "NUMBER OF CREATORS (X) = ";
  ITEMS
  TextConstant:"NUMBER OF CREATORS (X) = "
  CarriageControl:;
 90 INPUT X
- Reference:X
+ Variable:X
 100 PRINT "PROPAGATION RATE OF X = ";
  ITEMS
  TextConstant:"PROPAGATION RATE OF X = "
  CarriageControl:;
 110 INPUT Z
- Reference:Z
+ Variable:Z
 120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
  ITEMS
  TextConstant:"CHANCE OF METTING BETWEEN X AND Y = "
  CarriageControl:;
 130 INPUT A
- Reference:A
+ Variable:A
 140 PRINT "TIME BETWEEN SAMPLES = ";
  ITEMS
  TextConstant:"TIME BETWEEN SAMPLES = "
  CarriageControl:;
 150 INPUT H
- Reference:H
+ Variable:H
 160 PRINT "MAXIMUM GENERATIONS = ";
  ITEMS
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 170 INPUT K
- Reference:K
+ Variable:K
 180 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 190 PRINT
@@ -65,97 +65,97 @@
  TextConstant:"DESTROYER"
  CarriageControl:NL
 230 IF J = K THEN 470
- Value:J
- Value:K
+ Variable:J
+ Variable:K
  BinaryOperator:=
 240 LET J = J + 1
- Reference:J
- Value:J
+ Variable:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 250 LET B = A*X*Y
- Reference:B
- Value:A
- Value:X
+ Variable:B
+ Variable:A
+ Variable:X
  BinaryOperator:*
- Value:Y
+ Variable:Y
  BinaryOperator:*
  AssignmentOperator:=
 260 LET C = ((Y - B)*H) + Y
- Reference:C
- Value:Y
- Value:B
+ Variable:C
+ Variable:Y
+ Variable:B
  BinaryOperator:-
- Value:H
+ Variable:H
  BinaryOperator:*
- Value:Y
+ Variable:Y
  BinaryOperator:+
  AssignmentOperator:=
 270 IF C < 0 THEN 390
- Value:C
+ Variable:C
  NumericConstant:0
  BinaryOperator:<
 280 LET Y = C
- Reference:Y
- Value:C
+ Variable:Y
+ Variable:C
  AssignmentOperator:=
 290 LET D = (((X*Z) - B)*H) + X
- Reference:D
- Value:X
- Value:Z
+ Variable:D
+ Variable:X
+ Variable:Z
  BinaryOperator:*
- Value:B
+ Variable:B
  BinaryOperator:-
- Value:H
+ Variable:H
  BinaryOperator:*
- Value:X
+ Variable:X
  BinaryOperator:+
  AssignmentOperator:=
 300 IF D < 0 THEN 410
- Value:D
+ Variable:D
  NumericConstant:0
  BinaryOperator:<
 310 LET X = D
- Reference:X
- Value:D
+ Variable:X
+ Variable:D
  AssignmentOperator:=
 320 LET M = INT(X)
- Reference:M
- Value:X
+ Variable:M
+ Variable:X
  FunctionInt
  AssignmentOperator:=
 330 LET N = INT(Y)
- Reference:N
- Value:Y
+ Variable:N
+ Variable:Y
  FunctionInt
  AssignmentOperator:=
 340 PRINT M,N
  ITEMS
- Value:M
+ Variable:M
  CarriageControl:,
- Value:N
+ Variable:N
  CarriageControl:NL
 350 IF M = 0 THEN 370
- Value:M
+ Variable:M
  NumericConstant:0
  BinaryOperator:=
 360 GOTO 230
  LineNumber:230
 370 IF N = 0 THEN 430
- Value:N
+ Variable:N
  NumericConstant:0
  BinaryOperator:=
 380 GOTO 230
  LineNumber:230
 390 LET Y = 0
- Reference:Y
+ Variable:Y
  NumericConstant:0
  AssignmentOperator:=
 400 GOTO 290
  LineNumber:290
 410 LET X = 0
- Reference:X
+ Variable:X
  NumericConstant:0
  AssignmentOperator:=
 420 GOTO 320
@@ -168,7 +168,7 @@
  ITEMS
  TextConstant:"NUMBER OF GENERATIONS = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 450 PRINT
  ITEMS
@@ -187,9 +187,9 @@
  TextConstant:"FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
  CarriageControl:NL
 500 INPUT W
- Reference:W
+ Variable:W
 510 IF W = 1 THEN 530
- Value:W
+ Variable:W
  NumericConstant:1
  BinaryOperator:=
 520 GOTO 560
@@ -199,7 +199,7 @@
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 540 INPUT K
- Reference:K
+ Variable:K
 550 GOTO 230
  LineNumber:230
 560 PRINT
@@ -210,9 +210,9 @@
  TextConstant:"FOR NEXT PATTERN TYPE 1, 0 TO STOP"
  CarriageControl:NL
 580 INPUT W
- Reference:W
+ Variable:W
 590 IF W = 1 THEN 610
- Value:W
+ Variable:W
  NumericConstant:1
  BinaryOperator:=
 600 STOP

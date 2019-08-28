@@ -25,7 +25,7 @@
  TextConstant:"ENTER 1 TO 5"
  CarriageControl:NL
 80 INPUT A
- Reference:A
+ Variable:A
 90 ON A GOTO 100,160,220,280,340
  Unknown statement 'ON A GOTO 100,160,220,280,340'
  Unimplemented
@@ -36,12 +36,12 @@
 120 GOSUB 470
  LineNumber:470
 130 LET X = Y*((1 + I)^N)
- Reference:X
- Value:Y
+ Variable:X
+ Variable:Y
  NumericConstant:1
- Value:I
+ Variable:I
  BinaryOperator:+
- Value:N
+ Variable:N
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
@@ -49,7 +49,7 @@
  ITEMS
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:NL
 150 GOTO 390
  LineNumber:390
@@ -60,12 +60,12 @@
 180 GOSUB 470
  LineNumber:470
 190 LET Y = X*((1 + I)^N)
- Reference:Y
- Value:X
+ Variable:Y
+ Variable:X
  NumericConstant:1
- Value:I
+ Variable:I
  BinaryOperator:+
- Value:N
+ Variable:N
  BinaryOperator:^
  BinaryOperator:*
  AssignmentOperator:=
@@ -73,7 +73,7 @@
  ITEMS
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:NL
 210 GOTO 390
  LineNumber:390
@@ -84,11 +84,11 @@
 240 GOSUB 470
  LineNumber:470
 250 LET L = Y*((1 + I^N) - 1)
- Reference:L
- Value:Y
+ Variable:L
+ Variable:Y
  NumericConstant:1
- Value:I
- Value:N
+ Variable:I
+ Variable:N
  BinaryOperator:^
  BinaryOperator:+
  NumericConstant:1
@@ -99,7 +99,7 @@
  ITEMS
  TextConstant:"INTEREST = "
  CarriageControl:;
- Value:L
+ Variable:L
  CarriageControl:NL
 270 GOTO 390
  LineNumber:390
@@ -110,12 +110,12 @@
 300 GOSUB 470
  LineNumber:470
 310 LET I = ((X/Y)^(1/N)) - 1
- Reference:I
- Value:X
- Value:Y
+ Variable:I
+ Variable:X
+ Variable:Y
  BinaryOperator:/
  NumericConstant:1
- Value:N
+ Variable:N
  BinaryOperator:/
  BinaryOperator:^
  NumericConstant:1
@@ -125,7 +125,7 @@
  ITEMS
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
- Value:I
+ Variable:I
  CarriageControl:NL
 330 GOTO 390
  LineNumber:390
@@ -136,13 +136,13 @@
 360 GOSUB 440
  LineNumber:440
 370 LET N = (LOG(X/Y))/(LOG(1 + I))
- Reference:N
- Value:X
- Value:Y
+ Variable:N
+ Variable:X
+ Variable:Y
  BinaryOperator:/
  FunctionLog
  NumericConstant:1
- Value:I
+ Variable:I
  BinaryOperator:+
  FunctionLog
  BinaryOperator:/
@@ -151,7 +151,7 @@
  ITEMS
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
- Value:N
+ Variable:N
  CarriageControl:NL
 390 PRINT
  ITEMS
@@ -161,9 +161,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 401 INPUT L
- Reference:L
+ Variable:L
 402 IF L = 1 THEN 404
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 403 STOP
@@ -178,7 +178,7 @@
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
 420 INPUT Y
- Reference:Y
+ Variable:Y
 430 RETURN
  
 440 PRINT "INTEREST RATE = ";
@@ -186,7 +186,7 @@
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
 450 INPUT I
- Reference:I
+ Variable:I
 460 RETURN
  
 470 PRINT "NUMBER OF TIME PERIODS = ";
@@ -194,7 +194,7 @@
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
 480 INPUT N
- Reference:N
+ Variable:N
 490 RETURN
  
 500 PRINT "FUTURE VALUE = ";
@@ -202,7 +202,7 @@
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
 510 INPUT X
- Reference:X
+ Variable:X
 520 RETURN
  
 530 END

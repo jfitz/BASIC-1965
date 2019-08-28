@@ -5,13 +5,13 @@
 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
  Remark:CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
 51 DEF FNL(X1,X2,Y1,Y2) = SQR((X1-Y1)^2 + (X2-Y2)^2)
- Value:X1
- Value:Y1
+ Variable:X1
+ Variable:Y1
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
- Value:X2
- Value:Y2
+ Variable:X2
+ Variable:Y2
  BinaryOperator:-
  NumericConstant:2
  BinaryOperator:^
@@ -20,7 +20,7 @@
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
 61 DEF FNR(D) = D/180*3.1415926
- Value:D
+ Variable:D
  NumericConstant:180
  BinaryOperator:/
  NumericConstant:3.1415926
@@ -28,49 +28,49 @@
 100 REM POINT A
  Remark:POINT A
 101 READ A1,A2
- Reference:A1
- Reference:A2
+ Variable:A1
+ Variable:A2
 110 REM CIRCLE AT POINT D WITH RADIUS DC
  Remark:CIRCLE AT POINT D WITH RADIUS DC
 111 READ D1,D2
- Reference:D1
- Reference:D2
+ Variable:D1
+ Variable:D2
 113 READ C1,C2
- Reference:C1
- Reference:C2
+ Variable:C1
+ Variable:C2
 115 LET D5=D1-C1  ' RADIUS
- Reference:D5
- Value:D1
- Value:C1
+ Variable:D5
+ Variable:D1
+ Variable:C1
  BinaryOperator:-
  AssignmentOperator:=
 121 READ Z9,Z8
- Reference:Z9
- Reference:Z8
+ Variable:Z9
+ Variable:Z8
 122 READ R9
- Reference:R9
+ Variable:R9
 200 REM FIND POINT B
  Remark:FIND POINT B
 201 LET B1=(A1+D1)/2
- Reference:B1
- Value:A1
- Value:D1
+ Variable:B1
+ Variable:A1
+ Variable:D1
  BinaryOperator:+
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 202 LET B2=0
- Reference:B2
+ Variable:B2
  NumericConstant:0
  AssignmentOperator:=
 203 LET I1=D1+D5
- Reference:I1
- Value:D1
- Value:D5
+ Variable:I1
+ Variable:D1
+ Variable:D5
  BinaryOperator:+
  AssignmentOperator:=
 204 LET I2=0
- Reference:I2
+ Variable:I2
  NumericConstant:0
  AssignmentOperator:=
 217 PRINT "IDENTIFYING POINT B"
@@ -88,101 +88,101 @@
  TextConstant:"Z"
  CarriageControl:NL
 219 LET Z=1
- Reference:Z
+ Variable:Z
  NumericConstant:1
  AssignmentOperator:=
 220 REM RATIO OF AC/BC
  Remark:RATIO OF AC/BC
 221 LET F1 = FNL(A1,A2,C1,C2)
- Reference:F1
- Value:A1
- Value:A2
- Value:C1
- Value:C2
+ Variable:F1
+ Variable:A1
+ Variable:A2
+ Variable:C1
+ Variable:C2
  UserFunction
  AssignmentOperator:=
 222 LET F2 = FNL(B1,B2,C1,C2)
- Reference:F2
- Value:B1
- Value:B2
- Value:C1
- Value:C2
+ Variable:F2
+ Variable:B1
+ Variable:B2
+ Variable:C1
+ Variable:C2
  UserFunction
  AssignmentOperator:=
 223 LET R0 = F1/F2
- Reference:R0
- Value:F1
- Value:F2
+ Variable:R0
+ Variable:F1
+ Variable:F2
  BinaryOperator:/
  AssignmentOperator:=
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
 231 LET G1 = FNL(A1,A2,I1,I2)
- Reference:G1
- Value:A1
- Value:A2
- Value:I1
- Value:I2
+ Variable:G1
+ Variable:A1
+ Variable:A2
+ Variable:I1
+ Variable:I2
  UserFunction
  AssignmentOperator:=
 232 LET G2 = FNL(B1,B2,I1,I2)
- Reference:G2
- Value:B1
- Value:B2
- Value:I1
- Value:I2
+ Variable:G2
+ Variable:B1
+ Variable:B2
+ Variable:I1
+ Variable:I2
  UserFunction
  AssignmentOperator:=
 233 LET R1 = G1/G2
- Reference:R1
- Value:G1
- Value:G2
+ Variable:R1
+ Variable:G1
+ Variable:G2
  BinaryOperator:/
  AssignmentOperator:=
 239 PRINT B1,R0,R1,Z
  ITEMS
- Value:B1
+ Variable:B1
  CarriageControl:,
- Value:R0
+ Variable:R0
  CarriageControl:,
- Value:R1
+ Variable:R1
  CarriageControl:,
- Value:Z
+ Variable:Z
  CarriageControl:NL
 240 IF ABS(R0-R1)<R9 THEN 300
- Value:R0
- Value:R1
+ Variable:R0
+ Variable:R1
  BinaryOperator:-
  FunctionAbs
- Value:R9
+ Variable:R9
  BinaryOperator:<
 241 IF R0<R1 THEN 245
- Value:R0
- Value:R1
+ Variable:R0
+ Variable:R1
  BinaryOperator:<
 242 LET B1=B1+Z
- Reference:B1
- Value:B1
- Value:Z
+ Variable:B1
+ Variable:B1
+ Variable:Z
  BinaryOperator:+
  AssignmentOperator:=
 243 GOTO 246
  LineNumber:246
 245 LET B1=B1-Z
- Reference:B1
- Value:B1
- Value:Z
+ Variable:B1
+ Variable:B1
+ Variable:Z
  BinaryOperator:-
  AssignmentOperator:=
 246 LET Z=Z*Z8
- Reference:Z
- Value:Z
- Value:Z8
+ Variable:Z
+ Variable:Z
+ Variable:Z8
  BinaryOperator:*
  AssignmentOperator:=
 247 IF Z>Z9 THEN 220
- Value:Z
- Value:Z9
+ Variable:Z
+ Variable:Z9
  BinaryOperator:>
 248 PRINT "CANNOT RESOLVE POINT B"
  ITEMS
@@ -196,43 +196,43 @@
  ITEMS
  TextConstant:"POINT C    :"
  CarriageControl:;
- Value:C1
+ Variable:C1
  CarriageControl:;
- Value:C2
+ Variable:C2
  CarriageControl:NL
 302 PRINT "POINT B    :";B1;B2
  ITEMS
  TextConstant:"POINT B    :"
  CarriageControl:;
- Value:B1
+ Variable:B1
  CarriageControl:;
- Value:B2
+ Variable:B2
  CarriageControl:NL
 303 PRINT "DISTANCE BC:";F2
  ITEMS
  TextConstant:"DISTANCE BC:"
  CarriageControl:;
- Value:F2
+ Variable:F2
  CarriageControl:NL
 304 PRINT "POINT A    :";A1;A2
  ITEMS
  TextConstant:"POINT A    :"
  CarriageControl:;
- Value:A1
+ Variable:A1
  CarriageControl:;
- Value:A2
+ Variable:A2
  CarriageControl:NL
 305 PRINT "DISTANCE AC:";F1
  ITEMS
  TextConstant:"DISTANCE AC:"
  CarriageControl:;
- Value:F1
+ Variable:F1
  CarriageControl:NL
 306 PRINT "RATIO AC/BC:";R0
  ITEMS
  TextConstant:"RATIO AC/BC:"
  CarriageControl:;
- Value:R0
+ Variable:R0
  CarriageControl:NL
 400 REM PICK VALUES ON CIRCLE D
  Remark:PICK VALUES ON CIRCLE D
@@ -260,68 +260,68 @@
 420 REM PICK POINT ON CIRCLE D
  Remark:PICK POINT ON CIRCLE D
 421 LET T = FNR(I)
- Reference:T
- Value:I
+ Variable:T
+ Variable:I
  UserFunction
  AssignmentOperator:=
 422 LET I1 = D1 + COS(T)*D5
- Reference:I1
- Value:D1
- Value:T
+ Variable:I1
+ Variable:D1
+ Variable:T
  FunctionCos
- Value:D5
+ Variable:D5
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 423 LET I2 = D2 + SIN(T)*D5
- Reference:I2
- Value:D2
- Value:T
+ Variable:I2
+ Variable:D2
+ Variable:T
  FunctionSin
- Value:D5
+ Variable:D5
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 424 LET G1 = FNL(A1,A2,I1,I2)
- Reference:G1
- Value:A1
- Value:A2
- Value:I1
- Value:I2
+ Variable:G1
+ Variable:A1
+ Variable:A2
+ Variable:I1
+ Variable:I2
  UserFunction
  AssignmentOperator:=
 425 LET G2 = FNL(B1,B2,I1,I2)
- Reference:G2
- Value:B1
- Value:B2
- Value:I1
- Value:I2
+ Variable:G2
+ Variable:B1
+ Variable:B2
+ Variable:I1
+ Variable:I2
  UserFunction
  AssignmentOperator:=
 426 LET R1 = G1/G2
- Reference:R1
- Value:G1
- Value:G2
+ Variable:R1
+ Variable:G1
+ Variable:G2
  BinaryOperator:/
  AssignmentOperator:=
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
 431 PRINT T,I1;I2,G1;G2,R1,R1-R0
  ITEMS
- Value:T
+ Variable:T
  CarriageControl:,
- Value:I1
+ Variable:I1
  CarriageControl:;
- Value:I2
+ Variable:I2
  CarriageControl:,
- Value:G1
+ Variable:G1
  CarriageControl:;
- Value:G2
+ Variable:G2
  CarriageControl:,
- Value:R1
+ Variable:R1
  CarriageControl:,
- Value:R1
- Value:R0
+ Variable:R1
+ Variable:R0
  BinaryOperator:-
  CarriageControl:NL
 441 NEXT I

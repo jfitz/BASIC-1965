@@ -11,48 +11,48 @@
  TextConstant:"X = "
  CarriageControl:;
 50 INPUT X
- Reference:X
+ Variable:X
 60 PRINT "Y = ";
  ITEMS
  TextConstant:"Y = "
  CarriageControl:;
 70 INPUT Y
- Reference:Y
+ Variable:Y
 80 IF X + Y = 0 THEN 180
- Value:X
- Value:Y
+ Variable:X
+ Variable:Y
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:=
 90 IF X = 0 THEN 180
- Value:X
+ Variable:X
  NumericConstant:0
  BinaryOperator:=
 100 IF Y = 0 THEN 250
- Value:Y
+ Variable:Y
  NumericConstant:0
  BinaryOperator:=
 110 LET W = ATN(Y/X)
- Reference:W
- Value:Y
- Value:X
+ Variable:W
+ Variable:Y
+ Variable:X
  BinaryOperator:/
  FunctionAtn
  AssignmentOperator:=
 120 LET W = (W*180)/3.14159
- Reference:W
- Value:W
+ Variable:W
+ Variable:W
  NumericConstant:180
  BinaryOperator:*
  NumericConstant:3.14159
  BinaryOperator:/
  AssignmentOperator:=
 130 LET R = SQR(X^2 + Y^2)
- Reference:R
- Value:X
+ Variable:R
+ Variable:X
  NumericConstant:2
  BinaryOperator:^
- Value:Y
+ Variable:Y
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
@@ -61,63 +61,63 @@
 140 GOTO 310
  LineNumber:310
 150 LET W = 0
- Reference:W
+ Variable:W
  NumericConstant:0
  AssignmentOperator:=
 160 LET R = 0
- Reference:R
+ Variable:R
  NumericConstant:0
  AssignmentOperator:=
 170 GOTO 310
  LineNumber:310
 180 IF Y > 0 THEN 220
- Value:Y
+ Variable:Y
  NumericConstant:0
  BinaryOperator:>
 190 LET W = - 90
- Reference:W
+ Variable:W
  NumericConstant:90
  UnaryOperator:-
  AssignmentOperator:=
 200 LET R = ABS(Y)
- Reference:R
- Value:Y
+ Variable:R
+ Variable:Y
  FunctionAbs
  AssignmentOperator:=
 210 GOTO 310
  LineNumber:310
 220 LET W = 90
- Reference:W
+ Variable:W
  NumericConstant:90
  AssignmentOperator:=
 230 LET R = Y
- Reference:R
- Value:Y
+ Variable:R
+ Variable:Y
  AssignmentOperator:=
 240 GOTO 310
  LineNumber:310
 250 IF X > 0 THEN 290
- Value:X
+ Variable:X
  NumericConstant:0
  BinaryOperator:>
 260 LET W = 180
- Reference:W
+ Variable:W
  NumericConstant:180
  AssignmentOperator:=
 270 LET R = ABS(X)
- Reference:R
- Value:X
+ Variable:R
+ Variable:X
  FunctionAbs
  AssignmentOperator:=
 280 GOTO 310
  LineNumber:310
 290 LET W = 0
- Reference:W
+ Variable:W
  NumericConstant:0
  AssignmentOperator:=
 300 LET R = X
- Reference:R
- Value:X
+ Variable:R
+ Variable:X
  AssignmentOperator:=
 310 PRINT "POLAR COORDINATES"
  ITEMS
@@ -127,13 +127,13 @@
  ITEMS
  TextConstant:"ANGLE IN DEGREES = "
  CarriageControl:;
- Value:W
+ Variable:W
  CarriageControl:NL
 330 PRINT "MAGNITUDE = ";R
  ITEMS
  TextConstant:"MAGNITUDE = "
  CarriageControl:;
- Value:R
+ Variable:R
  CarriageControl:NL
 340 PRINT "********************"
  ITEMS
@@ -144,9 +144,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 360 INPUT L
- Reference:L
+ Variable:L
 370 IF L = 1 THEN 390
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 380 STOP

@@ -1,24 +1,24 @@
 100 DEF FNF(X) = SIN(X)
- Value:X
+ Variable:X
  FunctionSin
 110 READ A,B,S
- Reference:A
- Reference:B
- Reference:S
+ Variable:A
+ Variable:B
+ Variable:S
 120 READ C,D,N
- Reference:C
- Reference:D
- Reference:N
+ Variable:C
+ Variable:D
+ Variable:N
 130 LET H = (D-C)/N
- Reference:H
- Value:D
- Value:C
+ Variable:H
+ Variable:D
+ Variable:C
  BinaryOperator:-
- Value:N
+ Variable:N
  BinaryOperator:/
  AssignmentOperator:=
 140 IF N <= 50 THEN 170
- Value:N
+ Variable:N
  NumericConstant:50
  BinaryOperator:<=
 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
@@ -28,7 +28,7 @@
 160 STOP
  
 170 DEF FNR(X) = INT(X+0.5)
- Value:X
+ Variable:X
  NumericConstant:0.5
  BinaryOperator:+
  FunctionInt
@@ -36,15 +36,15 @@
  ITEMS
  TextConstant:"Y-AXIS:  FROM "
  CarriageControl:
- Value:C
+ Variable:C
  CarriageControl:;
  TextConstant:"TO "
  CarriageControl:
- Value:D
+ Variable:D
  CarriageControl:;
  TextConstant:"IN STEPS OF "
  CarriageControl:
- Value:H
+ Variable:H
  CarriageControl:NL
 190 PRINT
  ITEMS
@@ -56,7 +56,7 @@
 210 FOR I = 1 TO N-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 220 PRINT "-";
  ITEMS
  TextConstant:"-"
@@ -69,30 +69,30 @@
  CarriageControl:NL
 250 FOR X = A TO B STEP S
  control: Variable:X
- start:   ["Value:A"]
- end:     ["Value:B"]
- step:    ["Value:S"]
+ start:   ["Variable:A"]
+ end:     ["Variable:B"]
+ step:    ["Variable:S"]
 270 LET Y = FNF(X)
- Reference:Y
- Value:X
+ Variable:Y
+ Variable:X
  UserFunction
  AssignmentOperator:=
 280 LET Y1 = FNR((Y-C)/H)
- Reference:Y1
- Value:Y
- Value:C
+ Variable:Y1
+ Variable:Y
+ Variable:C
  BinaryOperator:-
- Value:H
+ Variable:H
  BinaryOperator:/
  UserFunction
  AssignmentOperator:=
 290 FOR I = 0 TO N
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 292 IF I = Y1 THEN 302
- Value:I
- Value:Y1
+ Variable:I
+ Variable:Y1
  BinaryOperator:=
 300 PRINT " ";
  ITEMS
@@ -112,7 +112,7 @@
  CarriageControl:;
 320 PRINT X
  ITEMS
- Value:X
+ Variable:X
  CarriageControl:NL
 330 NEXT X
  Variable:X

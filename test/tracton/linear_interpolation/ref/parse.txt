@@ -5,40 +5,40 @@
  TextConstant:"KNOWN VALUE OF X (X1,X2) = "
  CarriageControl:;
 30 INPUT X1,X2
- Reference:X1
- Reference:X2
+ Variable:X1
+ Variable:X2
 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
  ITEMS
  TextConstant:"KNOWN VALUES OF Y (F(X1),F(X2)) = "
  CarriageControl:;
 50 INPUT Y1,Y2
- Reference:Y1
- Reference:Y2
+ Variable:Y1
+ Variable:Y2
 60 PRINT "INTERPOLATE F(X) AT X = ";
  ITEMS
  TextConstant:"INTERPOLATE F(X) AT X = "
  CarriageControl:;
 70 INPUT X
- Reference:X
+ Variable:X
 80 LET G = ((X2 - X)*Y1) + ((X - X1)*Y2)
- Reference:G
- Value:X2
- Value:X
+ Variable:G
+ Variable:X2
+ Variable:X
  BinaryOperator:-
- Value:Y1
+ Variable:Y1
  BinaryOperator:*
- Value:X
- Value:X1
+ Variable:X
+ Variable:X1
  BinaryOperator:-
- Value:Y2
+ Variable:Y2
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 90 LET F = G/(X2 - X1)
- Reference:F
- Value:G
- Value:X2
- Value:X1
+ Variable:F
+ Variable:G
+ Variable:X2
+ Variable:X1
  BinaryOperator:-
  BinaryOperator:/
  AssignmentOperator:=
@@ -46,7 +46,7 @@
  ITEMS
  TextConstant:"INTERPOLATED F(X) = "
  CarriageControl:;
- Value:F
+ Variable:F
  CarriageControl:NL
 110 PRINT
  ITEMS
@@ -56,9 +56,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 130 INPUT L
- Reference:L
+ Variable:L
 140 IF L = 1 THEN 160
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 150 STOP

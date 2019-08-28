@@ -2,10 +2,10 @@
  NumericConstant:20
  Declaration:D
 20 READ A,Y,T,R
- Reference:A
- Reference:Y
- Reference:T
- Reference:R
+ Variable:A
+ Variable:Y
+ Variable:T
+ Variable:R
 30 PRINT "YEAR", "DEPRECIATE"
  ITEMS
  TextConstant:"YEAR"
@@ -13,9 +13,9 @@
  TextConstant:"DEPRECIATE"
  CarriageControl:NL
 40 LET Y9 = Y*(Y+1)/2
- Reference:Y9
- Value:Y
- Value:Y
+ Variable:Y9
+ Variable:Y
+ Variable:Y
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
@@ -25,26 +25,26 @@
 100 FOR I = 1 TO Y
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:Y"]
+ end:     ["Variable:Y"]
 110    LET D(I) = A*(Y-I+1)/Y9
- Value:I
- Reference:D
- Value:A
- Value:Y
- Value:I
+ Variable:I
+ Variable:D
+ Variable:A
+ Variable:Y
+ Variable:I
  BinaryOperator:-
  NumericConstant:1
  BinaryOperator:+
  BinaryOperator:*
- Value:Y9
+ Variable:Y9
  BinaryOperator:/
  AssignmentOperator:=
 120    PRINT I, D(I)
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:,
- Value:I
- Value:D
+ Variable:I
+ Variable:D
  CarriageControl:NL
 130 NEXT I
  Variable:I
@@ -52,28 +52,28 @@
  ITEMS
  CarriageControl:NL
 200 LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 210 FOR I = 1 TO Y
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:Y"]
+ end:     ["Variable:Y"]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
- Reference:S
- Value:S
- Value:I
- Value:D
- Value:T
+ Variable:S
+ Variable:S
+ Variable:I
+ Variable:D
+ Variable:T
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:*
  NumericConstant:1
- Value:R
+ Variable:R
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:+
- Value:Y
+ Variable:Y
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:^
@@ -86,7 +86,7 @@
  ITEMS
  TextConstant:"SAVING = $"
  CarriageControl:
- Value:S
+ Variable:S
  CarriageControl:NL
 900 DATA 5000,7,48,4.5
  NumericConstant:5000

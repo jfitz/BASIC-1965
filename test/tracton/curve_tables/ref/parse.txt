@@ -15,13 +15,13 @@
  TextConstant:"STARTING VALUE OF X = "
  CarriageControl:;
 80 INPUT X
- Reference:X
+ Variable:X
 90 PRINT "END VALUE OF X = ";
  ITEMS
  TextConstant:"END VALUE OF X = "
  CarriageControl:;
 100 INPUT W
- Reference:W
+ Variable:W
 110 PRINT "TABLE"
  ITEMS
  TextConstant:"TABLE"
@@ -34,21 +34,21 @@
  CarriageControl:NL
 130 FOR I = X TO W
  control: Variable:I
- start:   ["Value:X"]
- end:     ["Value:W"]
+ start:   ["Variable:X"]
+ end:     ["Variable:W"]
 140 LET Y = 2*I + 6
- Reference:Y
+ Variable:Y
  NumericConstant:2
- Value:I
+ Variable:I
  BinaryOperator:*
  NumericConstant:6
  BinaryOperator:+
  AssignmentOperator:=
 150 PRINT I,Y
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:,
- Value:Y
+ Variable:Y
  CarriageControl:NL
 160 NEXT I
  Variable:I
@@ -60,9 +60,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 190 INPUT L
- Reference:L
+ Variable:L
 200 IF L = 1 THEN 220
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 210 STOP

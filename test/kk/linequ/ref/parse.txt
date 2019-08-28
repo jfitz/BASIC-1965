@@ -11,30 +11,30 @@
  Declaration:X
 110
 120 READ N
- Reference:N
+ Variable:N
 130 MAT READ A(N,N)
- Value:N
- Value:N
- Reference:A
+ Variable:N
+ Variable:N
+ Variable:A
 140 MAT READ B(N)
- Value:N
- Reference:B
+ Variable:N
+ Variable:B
 150
 160 MAT C = INV(A)
- Reference:C
- Value:A
+ Variable:C
+ Variable:A
  FunctionInv
  AssignmentOperator:=
 170 MAT X = C*B
- Reference:X
- Value:C
- Value:B
+ Variable:X
+ Variable:C
+ Variable:B
  BinaryOperator:*
  AssignmentOperator:=
 180
 190 MAT PRINT X
  ITEMS
- Value:X
+ Variable:X
  CarriageControl:,
 200
 210 DATA 3

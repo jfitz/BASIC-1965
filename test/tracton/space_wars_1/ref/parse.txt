@@ -78,15 +78,15 @@
  TextConstant:"MAY THE FORCE BE WITH YOU"
  CarriageControl:NL
 250 LET E1 = 1E04
- Reference:E1
+ Variable:E1
  NumericConstant:10000
  AssignmentOperator:=
 260 LET E2 = E1
- Reference:E2
- Value:E1
+ Variable:E2
+ Variable:E1
  AssignmentOperator:=
 270 LET D = 1E03 + INT(5E05*RND)
- Reference:D
+ Variable:D
  NumericConstant:1000
  NumericConstant:500000
  FunctionRnd
@@ -95,7 +95,7 @@
  BinaryOperator:+
  AssignmentOperator:=
 280 LET B = 1 + INT(180*RND)
- Reference:B
+ Variable:B
  NumericConstant:1
  NumericConstant:180
  FunctionRnd
@@ -108,9 +108,9 @@
 300 GOSUB 390
  LineNumber:390
 310 LET E1 = E1 - D1
- Reference:E1
- Value:E1
- Value:D1
+ Variable:E1
+ Variable:E1
+ Variable:D1
  BinaryOperator:-
  AssignmentOperator:=
 320 GOSUB 500
@@ -118,43 +118,43 @@
 330 GOTO 690
  LineNumber:690
 340 IF D >= 1E05 THEN 370
- Value:D
+ Variable:D
  NumericConstant:100000
  BinaryOperator:>=
 350 LET L = 1
- Reference:L
+ Variable:L
  NumericConstant:1
  AssignmentOperator:=
 360 GOTO 380
  LineNumber:380
 370 LET L = 0
- Reference:L
+ Variable:L
  NumericConstant:0
  AssignmentOperator:=
 380 RETURN
  
 390 IF L = 0 THEN 440
- Value:L
+ Variable:L
  NumericConstant:0
  BinaryOperator:=
 400 LET H2 = (1 + INT(100*RND)/100
  Too many operators
 410 LET D1 = 500*H2
- Reference:D1
+ Variable:D1
  NumericConstant:500
- Value:H2
+ Variable:H2
  BinaryOperator:*
  AssignmentOperator:=
 420 LET E2 = E2 - 500
- Reference:E2
- Value:E2
+ Variable:E2
+ Variable:E2
  NumericConstant:500
  BinaryOperator:-
  AssignmentOperator:=
 430 GOTO 490
  LineNumber:490
 440 LET M1 = 1 + INT(2*RND)
- Reference:M1
+ Variable:M1
  NumericConstant:1
  NumericConstant:2
  FunctionRnd
@@ -163,18 +163,18 @@
  BinaryOperator:+
  AssignmentOperator:=
 450 IF M1 = 1 THEN 470
- Value:M1
+ Variable:M1
  NumericConstant:1
  BinaryOperator:=
 460 GOTO 480
  LineNumber:480
 470 LET D1 = 0
- Reference:D1
+ Variable:D1
  NumericConstant:0
  AssignmentOperator:=
 480 LET E2 = E2 - 1000
- Reference:E2
- Value:E2
+ Variable:E2
+ Variable:E2
  NumericConstant:1000
  BinaryOperator:-
  AssignmentOperator:=
@@ -187,7 +187,7 @@
  ITEMS
  TextConstant:"DISTANCE TO ENEMY"
  CarriageControl:;
- Value:D
+ Variable:D
  CarriageControl:;
  TextConstant:"KM"
  CarriageControl:NL
@@ -195,12 +195,12 @@
  ITEMS
  TextConstant:"BEARING IS"
  CarriageControl:;
- Value:B
+ Variable:B
  CarriageControl:;
  TextConstant:"DEGREES"
  CarriageControl:NL
 530 IF L = 1 THEN 560
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 540 PRINT "THE SKY FIGHTER HAS FIRED THE LASER CANNON"
@@ -217,7 +217,7 @@
  ITEMS
  TextConstant:"YOUR TOTAL ENERGY IS NOW"
  CarriageControl:;
- Value:E1
+ Variable:E1
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL
@@ -225,16 +225,16 @@
  ITEMS
  TextConstant:"THE ENEMY HAS"
  CarriageControl:;
- Value:E2
+ Variable:E2
  CarriageControl:;
  TextConstant:"UNITS OF ENERGY LEFT"
  CarriageControl:NL
 590 IF E1 <= 0 THEN 620
- Value:E1
+ Variable:E1
  NumericConstant:0
  BinaryOperator:<=
 600 IF E2 <= 0 THEN 650
- Value:E2
+ Variable:E2
  NumericConstant:0
  BinaryOperator:<=
 610 GOTO 680
@@ -269,7 +269,7 @@
  TextConstant:"WHICH COMMAND DO YOU WISH TO EXECUTE"
  CarriageControl:NL
 710 INPUT C
- Reference:C
+ Variable:C
 720 ON C GOTO 730, 840, 1010, 1100, 1140
  Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
  Unimplemented
@@ -278,30 +278,30 @@
  TextConstant:"HOW MANY DEGREES OF ROTATION"
  CarriageControl:NL
 740 INPUT B1
- Reference:B1
+ Variable:B1
 750 IF B + B1 < 0 THEN 800
- Value:B
- Value:B1
+ Variable:B
+ Variable:B1
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:<
 760 IF B + B1 > 180 THEN 820
- Value:B
- Value:B1
+ Variable:B
+ Variable:B1
  BinaryOperator:+
  NumericConstant:180
  BinaryOperator:>
 770 LET B = B + B1
- Reference:B
- Value:B
- Value:B1
+ Variable:B
+ Variable:B
+ Variable:B1
  BinaryOperator:+
  AssignmentOperator:=
 780 LET E1 = E1 - (10*ABS(B1))
- Reference:E1
- Value:E1
+ Variable:E1
+ Variable:E1
  NumericConstant:10
- Value:B1
+ Variable:B1
  FunctionAbs
  BinaryOperator:*
  BinaryOperator:-
@@ -325,29 +325,29 @@
  TextConstant:"HOW MANY KM TO TRAVERSE"
  CarriageControl:NL
 850 INPUT K
- Reference:K
+ Variable:K
 860 IF D + K < 0 THEN 910
- Value:D
- Value:K
+ Variable:D
+ Variable:K
  BinaryOperator:+
  NumericConstant:0
  BinaryOperator:<
 870 IF D + K > 1E6 THEN 960
- Value:D
- Value:K
+ Variable:D
+ Variable:K
  BinaryOperator:+
  NumericConstant:1000000
  BinaryOperator:>
 880 LET D = D + K
- Reference:D
- Value:D
- Value:K
+ Variable:D
+ Variable:D
+ Variable:K
  BinaryOperator:+
  AssignmentOperator:=
 890 LET E1 = E1 - (ABS(K)/1000)
- Reference:E1
- Value:E1
- Value:K
+ Variable:E1
+ Variable:E1
+ Variable:K
  FunctionAbs
  NumericConstant:1000
  BinaryOperator:/
@@ -391,13 +391,13 @@
 1000 GOTO 840
  LineNumber:840
 1010 LET E1 = E1 - 1000
- Reference:E1
- Value:E1
+ Variable:E1
+ Variable:E1
  NumericConstant:1000
  BinaryOperator:-
  AssignmentOperator:=
 1020 IF B >= 80 THEN 1050
- Value:B
+ Variable:B
  NumericConstant:80
  BinaryOperator:>=
 1030 PRINT "YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
@@ -407,7 +407,7 @@
 1040 GOTO 290
  LineNumber:290
 1050 IF B <= 100 THEN 1080
- Value:B
+ Variable:B
  NumericConstant:100
  BinaryOperator:<=
 1060 PRINT "YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
@@ -417,21 +417,21 @@
 1070 GOTO 290
  LineNumber:290
 1080 LET E2 = E2 - 1000
- Reference:E2
- Value:E2
+ Variable:E2
+ Variable:E2
  NumericConstant:1000
  BinaryOperator:-
  AssignmentOperator:=
 1090 GOTO 290
  LineNumber:290
 1100 LET E1 = E1 - 500
- Reference:E1
- Value:E1
+ Variable:E1
+ Variable:E1
  NumericConstant:500
  BinaryOperator:-
  AssignmentOperator:=
 1110 LET D2 = (1 + INT(100*RND)/100)
- Reference:D2
+ Variable:D2
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -442,9 +442,9 @@
  BinaryOperator:+
  AssignmentOperator:=
 1120 LET E2 = E2 - (D2*500)
- Reference:E2
- Value:E2
- Value:D2
+ Variable:E2
+ Variable:E2
+ Variable:D2
  NumericConstant:500
  BinaryOperator:*
  BinaryOperator:-
@@ -464,7 +464,7 @@
  TextConstant:"CRITICAL, YOU HAVE GONE TO MEET THE FORCE"
  CarriageControl:NL
 1170 IF D <= 500 THEN 1200
- Value:D
+ Variable:D
  NumericConstant:500
  BinaryOperator:<=
 1180 PRINT "SPACE WARS IS OVER"

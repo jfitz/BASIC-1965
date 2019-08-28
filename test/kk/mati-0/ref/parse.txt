@@ -6,8 +6,8 @@
  NumericConstant:3
  Declaration:B
 120 MAT READ A,B
- Reference:A
- Reference:B
+ Variable:A
+ Variable:B
 130 PRINT "EXAMPLE 1"
  ITEMS
  TextConstant:"EXAMPLE 1"
@@ -17,17 +17,17 @@
  CarriageControl:NL
 150 MAT PRINT A,B
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:,
- Value:B
+ Variable:B
  CarriageControl:,
 160 READ P, Q
- Reference:P
- Reference:Q
+ Variable:P
+ Variable:Q
 170 MAT READ A(P,Q)
- Value:P
- Value:Q
- Reference:A
+ Variable:P
+ Variable:Q
+ Variable:A
 180 PRINT "EXAMPLE 2"
  ITEMS
  TextConstant:"EXAMPLE 2"
@@ -37,7 +37,7 @@
  CarriageControl:NL
 200 MAT PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 900 DATA 1,2,3,4,5,6, 1,2,3,4,5,6, 6,5,4,3,2,1, 6,5,4,3,2,1
  NumericConstant:1

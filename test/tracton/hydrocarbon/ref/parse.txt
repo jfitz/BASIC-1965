@@ -46,11 +46,11 @@
  TextConstant:"SULPHUR(S), NITROGEN(N) IN THAT ORDER"
  CarriageControl:NL
 160 INPUT C,H,O,S,N
- Reference:C
- Reference:H
- Reference:O
- Reference:S
- Reference:N
+ Variable:C
+ Variable:H
+ Variable:O
+ Variable:S
+ Variable:N
 170 PRINT "ENTER PERCENTAGE EXCESS AIR, IF ZERO"
  ITEMS
  TextConstant:"ENTER PERCENTAGE EXCESS AIR, IF ZERO"
@@ -60,139 +60,139 @@
  TextConstant:"ENTER 0. EXAMPLE: - 34% ENTER AS 34"
  CarriageControl:NL
 190 INPUT E
- Reference:E
+ Variable:E
 200 LET E = 1 + (E/100)
- Reference:E
+ Variable:E
  NumericConstant:1
- Value:E
+ Variable:E
  NumericConstant:100
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 210 LET O2 = C + S + (H/4) - (O/2)
- Reference:O2
- Value:C
- Value:S
+ Variable:O2
+ Variable:C
+ Variable:S
  BinaryOperator:+
- Value:H
+ Variable:H
  NumericConstant:4
  BinaryOperator:/
  BinaryOperator:+
- Value:O
+ Variable:O
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:-
  AssignmentOperator:=
 220 LET A = O2*E*4.762
- Reference:A
- Value:O2
- Value:E
+ Variable:A
+ Variable:O2
+ Variable:E
  BinaryOperator:*
  NumericConstant:4.762
  BinaryOperator:*
  AssignmentOperator:=
 230 LET A1 = 1.8094*A
- Reference:A1
+ Variable:A1
  NumericConstant:1.8094
- Value:A
+ Variable:A
  BinaryOperator:*
  AssignmentOperator:=
 240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
- Reference:F
+ Variable:F
  NumericConstant:0.7507
- Value:C
+ Variable:C
  BinaryOperator:*
  NumericConstant:0.063
- Value:H
+ Variable:H
  BinaryOperator:*
  BinaryOperator:+
  NumericConstant:2.004
- Value:S
+ Variable:S
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 250 LET F = (0.875*N) + O + F
- Reference:F
+ Variable:F
  NumericConstant:0.875
- Value:N
+ Variable:N
  BinaryOperator:*
- Value:O
+ Variable:O
  BinaryOperator:+
- Value:F
+ Variable:F
  BinaryOperator:+
  AssignmentOperator:=
 260 LET A1 = A1/F
- Reference:A1
- Value:A1
- Value:F
+ Variable:A1
+ Variable:A1
+ Variable:F
  BinaryOperator:/
  AssignmentOperator:=
 270 LET M = A + (H/4) + (O/2) + (N/2)
- Reference:M
- Value:A
- Value:H
+ Variable:M
+ Variable:A
+ Variable:H
  NumericConstant:4
  BinaryOperator:/
  BinaryOperator:+
- Value:O
+ Variable:O
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
- Value:N
+ Variable:N
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 280 LET C2 = (C*100)/M
- Reference:C2
- Value:C
+ Variable:C2
+ Variable:C
  NumericConstant:100
  BinaryOperator:*
- Value:M
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 290 LET S2 = (S*100)/M
- Reference:S2
- Value:S
+ Variable:S2
+ Variable:S
  NumericConstant:100
  BinaryOperator:*
- Value:M
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 300 LET H2 = (H*100)/M
- Reference:H2
- Value:H
+ Variable:H2
+ Variable:H
  NumericConstant:100
  BinaryOperator:*
- Value:M
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 310 LET O3 = (100*(E-1)*O2)/M
- Reference:O3
+ Variable:O3
  NumericConstant:100
- Value:E
+ Variable:E
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:*
- Value:O2
+ Variable:O2
  BinaryOperator:*
- Value:M
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
- Reference:N2
+ Variable:N2
  NumericConstant:100
  NumericConstant:3.762
- Value:E
+ Variable:E
  BinaryOperator:*
- Value:O2
+ Variable:O2
  BinaryOperator:*
- Value:N
+ Variable:N
  NumericConstant:2
  BinaryOperator:/
  BinaryOperator:+
  BinaryOperator:*
- Value:M
+ Variable:M
  BinaryOperator:/
  AssignmentOperator:=
 330 PRINT
@@ -202,19 +202,19 @@
  ITEMS
  TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MOLES = "
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:NL
 350 PRINT "AIR-FUEL RATIO WITH RESPECT TO MASS = ";A1
  ITEMS
  TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MASS = "
  CarriageControl:;
- Value:A1
+ Variable:A1
  CarriageControl:NL
 360 PRINT "TOTAL MOLES OF PRODUCT = ";M
  ITEMS
  TextConstant:"TOTAL MOLES OF PRODUCT = "
  CarriageControl:;
- Value:M
+ Variable:M
  CarriageControl:NL
 370 PRINT "*****PERCENTAGE VOLUME OF PRODUCTS*****"
  ITEMS
@@ -224,7 +224,7 @@
  ITEMS
  TextConstant:"CARBON DIOXIDE = "
  CarriageControl:;
- Value:C2
+ Variable:C2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -232,7 +232,7 @@
  ITEMS
  TextConstant:"SULPHUR DIOXIDE = "
  CarriageControl:;
- Value:S2
+ Variable:S2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -240,7 +240,7 @@
  ITEMS
  TextConstant:"WATER = "
  CarriageControl:;
- Value:H2
+ Variable:H2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -248,7 +248,7 @@
  ITEMS
  TextConstant:"OXYGEN = "
  CarriageControl:;
- Value:O3
+ Variable:O3
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
@@ -256,7 +256,7 @@
  ITEMS
  TextConstant:"NITROGEN = "
  CarriageControl:;
- Value:N2
+ Variable:N2
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL

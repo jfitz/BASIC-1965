@@ -15,25 +15,25 @@
  Declaration:U
 120
 130 READ M, N
- Reference:M
- Reference:N
+ Variable:M
+ Variable:N
 140 MAT READ Q(N,N)
- Value:N
- Value:N
- Reference:Q
+ Variable:N
+ Variable:N
+ Variable:Q
 150 MAT READ R(N,M)
- Value:N
- Value:M
- Reference:R
+ Variable:N
+ Variable:M
+ Variable:R
 160 MAT N = IDN(N,N)
- Reference:N
- Value:N
- Value:N
+ Variable:N
+ Variable:N
+ Variable:N
  FunctionIdn
  AssignmentOperator:=
 170 MAT U = CON(N)
- Reference:U
- Value:N
+ Variable:U
+ Variable:N
  FunctionCon
  AssignmentOperator:=
 180
@@ -46,7 +46,7 @@
  CarriageControl:NL
 210 MAT PRINT Q;
  ITEMS
- Value:Q
+ Variable:Q
  CarriageControl:;
 220
 230 PRINT "TRANSIENT TO ABSORBING PROBABILITIES"
@@ -58,18 +58,18 @@
  CarriageControl:NL
 250 MAT PRINT R;
  ITEMS
- Value:R
+ Variable:R
  CarriageControl:;
 260
 270 MAT Q = N-Q
- Reference:Q
- Value:N
- Value:Q
+ Variable:Q
+ Variable:N
+ Variable:Q
  BinaryOperator:-
  AssignmentOperator:=
 280 MAT N = INV(Q)
- Reference:N
- Value:Q
+ Variable:N
+ Variable:Q
  FunctionInv
  AssignmentOperator:=
 290 PRINT "FUNDAMENTAL MATRIX"
@@ -81,13 +81,13 @@
  CarriageControl:NL
 310 MAT PRINT N;
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:;
 320
 330 MAT T = N*U
- Reference:T
- Value:N
- Value:U
+ Variable:T
+ Variable:N
+ Variable:U
  BinaryOperator:*
  AssignmentOperator:=
 340 PRINT "ABSORBTION TIMES"
@@ -99,13 +99,13 @@
  CarriageControl:NL
 360 MAT PRINT T;
  ITEMS
- Value:T
+ Variable:T
  CarriageControl:;
 370
 380 MAT Q = N*R
- Reference:Q
- Value:N
- Value:R
+ Variable:Q
+ Variable:N
+ Variable:R
  BinaryOperator:*
  AssignmentOperator:=
 390 PRINT "ABSORBTION PROBABILITIES"
@@ -117,7 +117,7 @@
  CarriageControl:NL
 410 MAT PRINT Q;
  ITEMS
- Value:Q
+ Variable:Q
  CarriageControl:;
 420
 430 DATA 2, 4

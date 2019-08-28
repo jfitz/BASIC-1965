@@ -11,10 +11,10 @@
  TextConstant:"ANGLE IN DEGREES = "
  CarriageControl:;
 50 INPUT W
- Reference:W
+ Variable:W
 60 LET W = (W*3.14159)/180
- Reference:W
- Value:W
+ Variable:W
+ Variable:W
  NumericConstant:3.14159
  BinaryOperator:*
  NumericConstant:180
@@ -25,18 +25,18 @@
  TextConstant:"MAGNITUDE R = "
  CarriageControl:;
 80 INPUT R
- Reference:R
+ Variable:R
 90 LET X = R*COS(W)
- Reference:X
- Value:R
- Value:W
+ Variable:X
+ Variable:R
+ Variable:W
  FunctionCos
  BinaryOperator:*
  AssignmentOperator:=
 100 LET Y = R*SIN(W)
- Reference:Y
- Value:R
- Value:W
+ Variable:Y
+ Variable:R
+ Variable:W
  FunctionSin
  BinaryOperator:*
  AssignmentOperator:=
@@ -48,11 +48,11 @@
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:NL
 130 PRINT
  ITEMS
@@ -62,9 +62,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Reference:L
+ Variable:L
 160 IF L = 1 THEN 180
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

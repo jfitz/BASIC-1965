@@ -1,41 +1,41 @@
 10 READ X,N
- Reference:X
- Reference:N
+ Variable:X
+ Variable:N
 20 LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 25 LET F = 1
- Reference:F
+ Variable:F
  NumericConstant:1
  AssignmentOperator:=
 30 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 40 LET K = 2*I-1
- Reference:K
+ Variable:K
  NumericConstant:2
- Value:I
+ Variable:I
  BinaryOperator:*
  NumericConstant:1
  BinaryOperator:-
  AssignmentOperator:=
 50 LET S = S + F*X^K/K
- Reference:S
- Value:S
- Value:F
- Value:X
- Value:K
+ Variable:S
+ Variable:S
+ Variable:F
+ Variable:X
+ Variable:K
  BinaryOperator:^
  BinaryOperator:*
- Value:K
+ Variable:K
  BinaryOperator:/
  BinaryOperator:+
  AssignmentOperator:=
 60 LET F = -F
- Reference:F
- Value:F
+ Variable:F
+ Variable:F
  UnaryOperator:-
  AssignmentOperator:=
 70 NEXT I
@@ -44,20 +44,20 @@
  ITEMS
  TextConstant:"ATN OF "
  CarriageControl:
- Value:X
+ Variable:X
  CarriageControl:;
  TextConstant:"= "
  CarriageControl:
- Value:X
+ Variable:X
  FunctionAtn
  CarriageControl:NL
 85 PRINT N; "TERMS OF THE SERIES YIELD " S
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:;
  TextConstant:"TERMS OF THE SERIES YIELD "
  CarriageControl:
- Value:S
+ Variable:S
  CarriageControl:NL
 90 PRINT
  ITEMS

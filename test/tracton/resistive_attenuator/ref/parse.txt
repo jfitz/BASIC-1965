@@ -9,24 +9,24 @@
  TextConstant:"INPUT RESISTANCE R(IN) = "
  CarriageControl:;
 50 INPUT R1
- Reference:R1
+ Variable:R1
 60 PRINT "OUTPUT RESISTANCE R(OUT) = ";
  ITEMS
  TextConstant:"OUTPUT RESISTANCE R(OUT) = "
  CarriageControl:;
 70 INPUT R9
- Reference:R9
+ Variable:R9
 80 LET Z = R1/R9
- Reference:Z
- Value:R1
- Value:R9
+ Variable:Z
+ Variable:R1
+ Variable:R9
  BinaryOperator:/
  AssignmentOperator:=
 90 LET Q = (SQR(Z) + SQR(Z - 1))^2
- Reference:Q
- Value:Z
+ Variable:Q
+ Variable:Z
  FunctionSqr
- Value:Z
+ Variable:Z
  NumericConstant:1
  BinaryOperator:-
  FunctionSqr
@@ -35,9 +35,9 @@
  BinaryOperator:^
  AssignmentOperator:=
 100 LET M = 10*(LOG(Q)/LOG(10))
- Reference:M
+ Variable:M
  NumericConstant:10
- Value:Q
+ Variable:Q
  FunctionLog
  NumericConstant:10
  FunctionLog
@@ -48,117 +48,117 @@
  ITEMS
  TextConstant:"MINIMUM SYSTEM LOSS IN DECIBELS = "
  CarriageControl:;
- Value:M
+ Variable:M
  CarriageControl:NL
 120 PRINT "ENTERED DESIRED LOSS IN DECIBELS";
  ITEMS
  TextConstant:"ENTERED DESIRED LOSS IN DECIBELS"
  CarriageControl:;
 130 INPUT N
- Reference:N
+ Variable:N
 135 LET N = INT(N)
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  FunctionInt
  AssignmentOperator:=
 140 REM COMPUTE T NETWORK
  Remark:COMPUTE T NETWORK
 150 LET T3 = 2*(SQR(N*R1*R9))/(N-1)
- Reference:T3
+ Variable:T3
  NumericConstant:2
- Value:N
- Value:R1
+ Variable:N
+ Variable:R1
  BinaryOperator:*
- Value:R9
+ Variable:R9
  BinaryOperator:*
  FunctionSqr
  BinaryOperator:*
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  AssignmentOperator:=
 160 LET T1 = R1*((N+1)/(N-1)) - T3
- Reference:T1
- Value:R1
- Value:N
+ Variable:T1
+ Variable:R1
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
- Value:T3
+ Variable:T3
  BinaryOperator:-
  AssignmentOperator:=
 170 LET T2 = R9*((N+1)/(N-1)) - T3
- Reference:T2
- Value:R9
- Value:N
+ Variable:T2
+ Variable:R9
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
- Value:T3
+ Variable:T3
  BinaryOperator:-
  AssignmentOperator:=
 180 REM COMPUTE PI NETWORK
  Remark:COMPUTE PI NETWORK
 190 LET P3 = 0.5*(N-1)*SQR((R1*R9)/N)
- Reference:P3
+ Variable:P3
  NumericConstant:0.5
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:*
- Value:R1
- Value:R9
+ Variable:R1
+ Variable:R9
  BinaryOperator:*
- Value:N
+ Variable:N
  BinaryOperator:/
  FunctionSqr
  BinaryOperator:*
  AssignmentOperator:=
 200 LET P1 = 1/(1/R1*((N+1)/(N-1)) - (1/P3))
- Reference:P1
+ Variable:P1
  NumericConstant:1
  NumericConstant:1
- Value:R1
+ Variable:R1
  BinaryOperator:/
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
  NumericConstant:1
- Value:P3
+ Variable:P3
  BinaryOperator:/
  BinaryOperator:-
  BinaryOperator:/
  AssignmentOperator:=
 210 LET P2 = 1/(1/R9*((N+1)/(N-1)) - (1/P3))
- Reference:P2
+ Variable:P2
  NumericConstant:1
  NumericConstant:1
- Value:R9
+ Variable:R9
  BinaryOperator:/
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
- Value:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:-
  BinaryOperator:/
  BinaryOperator:*
  NumericConstant:1
- Value:P3
+ Variable:P3
  BinaryOperator:/
  BinaryOperator:-
  BinaryOperator:/
@@ -169,17 +169,17 @@
  ITEMS
  TextConstant:"R(IN) = "
  CarriageControl:;
- Value:R1
+ Variable:R1
  CarriageControl:,
  TextConstant:"R(OUT) = "
  CarriageControl:;
- Value:R9
+ Variable:R9
  CarriageControl:NL
 240 PRINT "DESIRED LOSS = ";N
  ITEMS
  TextConstant:"DESIRED LOSS = "
  CarriageControl:;
- Value:N
+ Variable:N
  CarriageControl:NL
 250 PRINT
  ITEMS
@@ -192,19 +192,19 @@
  ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
- Value:T1
+ Variable:T1
  CarriageControl:NL
 280 PRINT "RESISTOR 2 = ";T2
  ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
- Value:T2
+ Variable:T2
  CarriageControl:NL
 290 PRINT "RESISTOR 3 = ";T3
  ITEMS
  TextConstant:"RESISTOR 3 = "
  CarriageControl:;
- Value:T3
+ Variable:T3
  CarriageControl:NL
 300 PRINT
  ITEMS
@@ -217,19 +217,19 @@
  ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
- Value:P1
+ Variable:P1
  CarriageControl:NL
 330 PRINT "RESISTOR 2 = ";P2
  ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
- Value:P2
+ Variable:P2
  CarriageControl:NL
 340 PRINT "RESISTOR 3 = ";P3
  ITEMS
  TextConstant:"RESISTOR 3 = "
  CarriageControl:;
- Value:P3
+ Variable:P3
  CarriageControl:NL
 350 PRINT
  ITEMS
@@ -239,9 +239,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 370 INPUT Q
- Reference:Q
+ Variable:Q
 380 IF Q = 1 THEN 400
- Value:Q
+ Variable:Q
  NumericConstant:1
  BinaryOperator:=
 390 STOP

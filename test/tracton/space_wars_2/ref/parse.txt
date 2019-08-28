@@ -204,19 +204,19 @@ Duplicate line number 2750
 536 REM X-WING ENERGY AND SKY ENERGY
  Remark:X-WING ENERGY AND SKY ENERGY
 540 LET X1 = 5E05
- Reference:X1
+ Variable:X1
  NumericConstant:500000
  AssignmentOperator:=
 550 LET T1 = 1E04
- Reference:T1
+ Variable:T1
  NumericConstant:10000
  AssignmentOperator:=
 560 LET T2 = 5E04
- Reference:T2
+ Variable:T2
  NumericConstant:50000
  AssignmentOperator:=
 570 LET D = 1E05
- Reference:D
+ Variable:D
  NumericConstant:100000
  AssignmentOperator:=
 580 GOSUB 630
@@ -232,21 +232,21 @@ Duplicate line number 2750
 625 GOSUB 580
  LineNumber:580
 630 IF D > 1E04 THEN 660
- Value:D
+ Variable:D
  NumericConstant:10000
  BinaryOperator:>
 640 LET L = 1
- Reference:L
+ Variable:L
  NumericConstant:1
  AssignmentOperator:=
 650 GOTO 700
  LineNumber:700
 660 LET L = 0
- Reference:L
+ Variable:L
  NumericConstant:0
  AssignmentOperator:=
 670 LET H = (1 + INT(100*RND)/100)
- Reference:H
+ Variable:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -257,15 +257,15 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 680 LET E1 = 5000*H
- Reference:E1
+ Variable:E1
  NumericConstant:5000
- Value:H
+ Variable:H
  BinaryOperator:*
  AssignmentOperator:=
 690 GOTO 720
  LineNumber:720
 700 LET H = (1 + INT(100*RND)/100)
- Reference:H
+ Variable:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -276,29 +276,29 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 710 LET E1 = 1000*H
- Reference:E1
+ Variable:E1
  NumericConstant:1000
- Value:H
+ Variable:H
  BinaryOperator:*
  AssignmentOperator:=
 720 RETURN
  
 730 IF D > 5E03 THEN 760
- Value:D
+ Variable:D
  NumericConstant:5000
  BinaryOperator:>
 740 LET K = 1
- Reference:K
+ Variable:K
  NumericConstant:1
  AssignmentOperator:=
 750 GOTO 800
  LineNumber:800
 760 LET K = 0
- Reference:K
+ Variable:K
  NumericConstant:0
  AssignmentOperator:=
 770 LET H = (1 + INT(100*RND)/100)
- Reference:H
+ Variable:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -309,15 +309,15 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 780 LET E2 = 8000*H
- Reference:E2
+ Variable:E2
  NumericConstant:8000
- Value:H
+ Variable:H
  BinaryOperator:*
  AssignmentOperator:=
 790 GOTO 820
  LineNumber:820
 800 LET H = (1 + INT(100*RND)/100)
- Reference:H
+ Variable:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -328,23 +328,23 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 810 LET E2 = 3000*H
- Reference:E2
+ Variable:E2
  NumericConstant:3000
- Value:H
+ Variable:H
  BinaryOperator:*
  AssignmentOperator:=
 830 RETURN
  
 840 IF D < 3E03 THEN 860
- Value:D
+ Variable:D
  NumericConstant:3000
  BinaryOperator:<
 850 LET E3 = 0
- Reference:E3
+ Variable:E3
  NumericConstant:0
  AssignmentOperator:=
 860 LET H = (1 + INT(100*RND)/100)
- Reference:H
+ Variable:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -355,71 +355,71 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 870 LET E3 = 2E04*H
- Reference:E3
+ Variable:E3
  NumericConstant:20000
- Value:H
+ Variable:H
  BinaryOperator:*
  AssignmentOperator:=
 880 LET T1 = T1 - E1
- Reference:T1
- Value:T1
- Value:E1
+ Variable:T1
+ Variable:T1
+ Variable:E1
  BinaryOperator:-
  AssignmentOperator:=
 890 LET T2 = T2 - E2
- Reference:T2
- Value:T2
- Value:E2
+ Variable:T2
+ Variable:T2
+ Variable:E2
  BinaryOperator:-
  AssignmentOperator:=
 900 IF T1 <= 0 THEN 920
- Value:T1
+ Variable:T1
  NumericConstant:0
  BinaryOperator:<=
 910 GOTO 950
  LineNumber:950
 920 LET E1 = 0
- Reference:E1
+ Variable:E1
  NumericConstant:0
  AssignmentOperator:=
 930 LET Y = 1
- Reference:Y
+ Variable:Y
  NumericConstant:1
  AssignmentOperator:=
 940 GOTO 960
  LineNumber:960
 950 LET Y = 0
- Reference:Y
+ Variable:Y
  NumericConstant:0
  AssignmentOperator:=
 960 IF T2 <= 0 THEN 980
- Value:T2
+ Variable:T2
  NumericConstant:0
  BinaryOperator:<=
 970 GOTO 1010
  LineNumber:1010
 980 LET E2 = 0
- Reference:E2
+ Variable:E2
  NumericConstant:0
  AssignmentOperator:=
 990 LET Z = 1
- Reference:Z
+ Variable:Z
  NumericConstant:1
  AssignmentOperator:=
 1000 GOTO 1020
  LineNumber:1020
 1010 LET Z = 0
- Reference:Z
+ Variable:Z
  NumericConstant:0
  AssignmentOperator:=
 1020 LET X1 = X1 - E1 - E2 - E3
- Reference:X1
- Value:X1
- Value:E1
+ Variable:X1
+ Variable:X1
+ Variable:E1
  BinaryOperator:-
- Value:E2
+ Variable:E2
  BinaryOperator:-
- Value:E3
+ Variable:E3
  BinaryOperator:-
  AssignmentOperator:=
 1030 RETURN
@@ -428,16 +428,16 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"DISTANCE TO DEATH STAR IS NOW"
  CarriageControl:;
- Value:D
+ Variable:D
  CarriageControl:;
  TextConstant:"KM"
  CarriageControl:NL
 1045 IF Y = 1 THEN 1100
- Value:Y
+ Variable:Y
  NumericConstant:1
  BinaryOperator:=
 1050 IF L = 0 THEN 1080
- Value:L
+ Variable:L
  NumericConstant:0
  BinaryOperator:=
 1060 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
@@ -457,13 +457,13 @@ Duplicate line number 2750
  TextConstant:"THE SKY FIGHTER IS OUT OF ACTION!!!"
  CarriageControl:NL
 1110 IF Z = 1 THEN 1180
- Value:Z
+ Variable:Z
  NumericConstant:1
  BinaryOperator:=
 1120 GOTO 1220
  LineNumber:1220
 1130 IF K = 0 THEN 1160
- Value:K
+ Variable:K
  NumericConstant:0
  BinaryOperator:=
 1140 PRINT "THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
@@ -493,7 +493,7 @@ Duplicate line number 2750
 1210 GOTO 1360
  LineNumber:1360
 1220 LET C = 1 + (5*RND)
- Reference:C
+ Variable:C
  NumericConstant:1
  NumericConstant:5
  FunctionRnd
@@ -542,7 +542,7 @@ Duplicate line number 2750
 1350 GOTO 1130
  LineNumber:1130
 1360 IF D <= 3E03 THEN 1380
- Value:D
+ Variable:D
  NumericConstant:3000
  BinaryOperator:<=
 1370 GOTO 1410
@@ -566,12 +566,12 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"YOUR TOTAL ENERGY IS NOW"
  CarriageControl:;
- Value:X1
+ Variable:X1
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL
 1420 IF X1 < 2E04 THEN 1440
- Value:X1
+ Variable:X1
  NumericConstant:20000
  BinaryOperator:<
 1430 GOTO 1490
@@ -604,12 +604,12 @@ Duplicate line number 2750
  TextConstant:"WHICH COMMAND DO YOU WISH TO EXECUTE"
  CarriageControl:NL
 1520 INPUT B
- Reference:B
+ Variable:B
 1530 ON B GOTO 1540, 1690, 2030, 2320
  Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
  Unimplemented
 1540 IF D <= 1000 THEN 1590
- Value:D
+ Variable:D
  NumericConstant:1000
  BinaryOperator:<=
 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
@@ -621,15 +621,15 @@ Duplicate line number 2750
  TextConstant:"AWAY THAN 1000KM"
  CarriageControl:NL
 1570 LET X1 = X1 - 2E04
- Reference:X1
- Value:X1
+ Variable:X1
+ Variable:X1
  NumericConstant:20000
  BinaryOperator:-
  AssignmentOperator:=
 1580 GOTO 2680
  LineNumber:2680
 1590 LET H = 1 + (INT(100*RND))
- Reference:H
+ Variable:H
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
@@ -638,7 +638,7 @@ Duplicate line number 2750
  BinaryOperator:+
  AssignmentOperator:=
 1600 IF H > 50 THEN 1640
- Value:H
+ Variable:H
  NumericConstant:50
  BinaryOperator:>
 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
@@ -646,8 +646,8 @@ Duplicate line number 2750
  TextConstant:"YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  CarriageControl:NL
 1620 LET X1 = X1 - 2E04
- Reference:X1
- Value:X1
+ Variable:X1
+ Variable:X1
  NumericConstant:20000
  BinaryOperator:-
  AssignmentOperator:=
@@ -708,23 +708,23 @@ Duplicate line number 2750
 1810 GOTO 1760
  LineNumber:1760
 1820 LET Q = 5500
- Reference:Q
+ Variable:Q
  NumericConstant:5500
  AssignmentOperator:=
 1830 GOTO 1760
  LineNumber:1760
 1840 LET T1 = T1 - Q
- Reference:T1
- Value:T1
- Value:Q
+ Variable:T1
+ Variable:T1
+ Variable:Q
  BinaryOperator:-
  AssignmentOperator:=
 1850 GOTO 1960
  LineNumber:1960
 1860 LET T2 = T2 - Q
- Reference:T2
- Value:T2
- Value:Q
+ Variable:T2
+ Variable:T2
+ Variable:Q
  BinaryOperator:-
  AssignmentOperator:=
 1870 GOTO 1960
@@ -752,36 +752,36 @@ Duplicate line number 2750
 1950 GOTO 1880
  LineNumber:1880
 1960 LET X1 = X1 - 5000
- Reference:X1
- Value:X1
+ Variable:X1
+ Variable:X1
  NumericConstant:5000
  BinaryOperator:-
  AssignmentOperator:=
 1970 GOTO 2660
  LineNumber:2660
 1980 LET T1 = T1 - Q
- Reference:T1
- Value:T1
- Value:Q
+ Variable:T1
+ Variable:T1
+ Variable:Q
  BinaryOperator:-
  AssignmentOperator:=
 1982 LET X1 = X1 - 5000
- Reference:X1
- Value:X1
+ Variable:X1
+ Variable:X1
  NumericConstant:5000
  BinaryOperator:-
  AssignmentOperator:=
 1990 GOTO 2010
  LineNumber:2010
 2000 LET T2 = T2 - Q
- Reference:T2
- Value:T2
- Value:Q
+ Variable:T2
+ Variable:T2
+ Variable:Q
  BinaryOperator:-
  AssignmentOperator:=
 2010 LET X1 = X1 - 5000
- Reference:X1
- Value:X1
+ Variable:X1
+ Variable:X1
  NumericConstant:5000
  BinaryOperator:-
  AssignmentOperator:=
@@ -808,13 +808,13 @@ Duplicate line number 2750
 2090 GOTO 2040
  LineNumber:2040
 2100 LET J = 1
- Reference:J
+ Variable:J
  NumericConstant:1
  AssignmentOperator:=
 2110 GOTO 2130
  LineNumber:2130
 2120 LET J = 0
- Reference:J
+ Variable:J
  NumericConstant:0
  AssignmentOperator:=
 2130 PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
@@ -828,11 +828,11 @@ Duplicate line number 2750
 2150 INPUT C$
  Syntax error: "C$" is not a value or operator
 2160 IF J = 1 THEN 2190
- Value:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:=
 2170 LET Q = 1000*(1 + INT(RND)/100)
- Reference:Q
+ Variable:Q
  NumericConstant:1000
  NumericConstant:1
  FunctionRnd
@@ -845,7 +845,7 @@ Duplicate line number 2750
 2180 GOTO 2200
  LineNumber:2200
 2190 LET Q = 1000
- Reference:Q
+ Variable:Q
  NumericConstant:1000
  AssignmentOperator:=
 2200 IF C$ = "S" THEN 2240
@@ -859,34 +859,34 @@ Duplicate line number 2750
 2230 GOTO 2130
  LineNumber:2130
 2240 LET T1 = T1 - Q
- Reference:T1
- Value:T1
- Value:Q
+ Variable:T1
+ Variable:T1
+ Variable:Q
  BinaryOperator:-
  AssignmentOperator:=
 2250 GOTO 2270
  LineNumber:2270
 2260 LET T2 = T2 - Q
- Reference:T2
- Value:T2
- Value:Q
+ Variable:T2
+ Variable:T2
+ Variable:Q
  BinaryOperator:-
  AssignmentOperator:=
 2270 IF J = 1 THEN 2300
- Value:J
+ Variable:J
  NumericConstant:1
  BinaryOperator:=
 2280 LET X1 = X1 - 1000
- Reference:X1
- Value:X1
+ Variable:X1
+ Variable:X1
  NumericConstant:1000
  BinaryOperator:-
  AssignmentOperator:=
 2290 GOTO 2660
  LineNumber:2660
 2300 LET X1 = X1 - 1500
- Reference:X1
- Value:X1
+ Variable:X1
+ Variable:X1
  NumericConstant:1500
  BinaryOperator:-
  AssignmentOperator:=
@@ -913,7 +913,7 @@ Duplicate line number 2750
  TextConstant:"AT ANY ONE TIME"
  CarriageControl:NL
 2370 INPUT F
- Reference:F
+ Variable:F
 2380 PRINT "IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
  ITEMS
  TextConstant:"IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
@@ -925,7 +925,7 @@ Duplicate line number 2750
 2400 INPUT C$
  Syntax error: "C$" is not a value or operator
 2410 IF F > 2.25E04 THEN 2470
- Value:F
+ Variable:F
  NumericConstant:22500
  BinaryOperator:>
 2420 IF C$ = "A" THEN 2500
@@ -944,7 +944,7 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"YOU HAVE WASTED "
  CarriageControl:;
- Value:F
+ Variable:F
  CarriageControl:;
  TextConstant:"UNITS OF ENERGY"
  CarriageControl:NL
@@ -955,13 +955,13 @@ Duplicate line number 2750
 2490 GOTO 2640
  LineNumber:2640
 2500 LET D = D + F
- Reference:D
- Value:D
- Value:F
+ Variable:D
+ Variable:D
+ Variable:F
  BinaryOperator:+
  AssignmentOperator:=
 2510 IF D > 1.5E05 THEN 2540
- Value:D
+ Variable:D
  NumericConstant:150000
  BinaryOperator:>
 2520 GOTO 2640
@@ -997,19 +997,19 @@ Duplicate line number 2750
 2610 GOTO 2690
  LineNumber:2690
 2620 LET D = D - F
- Reference:D
- Value:D
- Value:F
+ Variable:D
+ Variable:D
+ Variable:F
  BinaryOperator:-
  AssignmentOperator:=
 2630 IF D <= 0 THEN 2570
- Value:D
+ Variable:D
  NumericConstant:0
  BinaryOperator:<=
 2640 LET X1 = X1 - F
- Reference:X1
- Value:X1
- Value:F
+ Variable:X1
+ Variable:X1
+ Variable:F
  BinaryOperator:-
  AssignmentOperator:=
 2650 GOTO 2680
@@ -1018,7 +1018,7 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"THE SKY FIGHTER'S ENERGY IS NOW"
  CarriageControl:;
- Value:T1
+ Variable:T1
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL
@@ -1026,7 +1026,7 @@ Duplicate line number 2750
  ITEMS
  TextConstant:"THE DARK LORD'S ENERGY IS"
  CarriageControl:;
- Value:T2
+ Variable:T2
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL

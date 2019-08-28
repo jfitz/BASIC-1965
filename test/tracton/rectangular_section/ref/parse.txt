@@ -7,17 +7,17 @@
  TextConstant:"BASE = "
  CarriageControl:;
 40 INPUT B
- Reference:B
+ Variable:B
 50 PRINT "HEIGHT = ";
  ITEMS
  TextConstant:"HEIGHT = "
  CarriageControl:;
 60 INPUT H
- Reference:H
+ Variable:H
 70 LET I = (B*(H^3))/12
- Reference:I
- Value:B
- Value:H
+ Variable:I
+ Variable:B
+ Variable:H
  NumericConstant:3
  BinaryOperator:^
  BinaryOperator:*
@@ -25,14 +25,14 @@
  BinaryOperator:/
  AssignmentOperator:=
 80 LET J = (B*H*(B^2 + H^2))/12
- Reference:J
- Value:B
- Value:H
+ Variable:J
+ Variable:B
+ Variable:H
  BinaryOperator:*
- Value:B
+ Variable:B
  NumericConstant:2
  BinaryOperator:^
- Value:H
+ Variable:H
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:+
@@ -41,28 +41,28 @@
  BinaryOperator:/
  AssignmentOperator:=
 90 LET A = B*H
- Reference:A
- Value:B
- Value:H
+ Variable:A
+ Variable:B
+ Variable:H
  BinaryOperator:*
  AssignmentOperator:=
 100 PRINT "MOMENT OF INERTIA = ";I
  ITEMS
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;
- Value:I
+ Variable:I
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
  ITEMS
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
  ITEMS
  TextConstant:"AREA OF SECTION = "
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:NL
 130 PRINT
  ITEMS
@@ -72,9 +72,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Reference:L
+ Variable:L
 160 IF L = 1 THEN 180
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

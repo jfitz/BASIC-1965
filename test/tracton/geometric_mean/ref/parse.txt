@@ -7,11 +7,11 @@
 40 REM IS PRINTED
  Remark:IS PRINTED
 50 LET Y = 1
- Reference:Y
+ Variable:Y
  NumericConstant:1
  AssignmentOperator:=
 60 LET N = 0
- Reference:N
+ Variable:N
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "SAMPLE = ";
@@ -19,28 +19,28 @@
  TextConstant:"SAMPLE = "
  CarriageControl:;
 80 INPUT W
- Reference:W
+ Variable:W
 90 IF W = 0 THEN 160
- Value:W
+ Variable:W
  NumericConstant:0
  BinaryOperator:=
 100 LET N = N + 1
- Reference:N
- Value:N
+ Variable:N
+ Variable:N
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 110 LET Y = Y * W
- Reference:Y
- Value:Y
- Value:W
+ Variable:Y
+ Variable:Y
+ Variable:W
  BinaryOperator:*
  AssignmentOperator:=
 120 LET G = Y^(1/N)
- Reference:G
- Value:Y
+ Variable:G
+ Variable:Y
  NumericConstant:1
- Value:N
+ Variable:N
  BinaryOperator:/
  BinaryOperator:^
  AssignmentOperator:=
@@ -48,17 +48,17 @@
  ITEMS
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:;
- Value:N
+ Variable:N
  CarriageControl:,
  TextConstant:"CURRENT SAMPLE = "
  CarriageControl:;
- Value:W
+ Variable:W
  CarriageControl:NL
 140 PRINT "CURRENT MEAN = ";G
  ITEMS
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- Value:G
+ Variable:G
  CarriageControl:NL
 150 GOTO 70
  LineNumber:70
@@ -70,9 +70,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- Reference:L
+ Variable:L
 190 IF L = 1 THEN 210
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 200 STOP

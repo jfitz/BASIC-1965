@@ -23,9 +23,9 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
 1030    LET L(I) = I
- Value:I
- Reference:L
- Value:I
+ Variable:I
+ Variable:L
+ Variable:I
  AssignmentOperator:=
 1040 NEXT I
  Variable:I
@@ -35,7 +35,7 @@
 2000 REM DEAL A CARD
  Remark:DEAL A CARD
 2010 LET I = INT(52*RND(1))
- Reference:I
+ Variable:I
  NumericConstant:52
  NumericConstant:1
  FunctionRnd
@@ -43,17 +43,17 @@
  FunctionInt
  AssignmentOperator:=
 2020 LET X = L(I)
- Reference:X
- Value:I
- Value:L
+ Variable:X
+ Variable:I
+ Variable:L
  AssignmentOperator:=
 2030 IF X < 0 THEN 2010
- Value:X
+ Variable:X
  NumericConstant:0
  BinaryOperator:<
 2040 LET L(I) = -1
- Value:I
- Reference:L
+ Variable:I
+ Variable:L
  NumericConstant:1
  UnaryOperator:-
  AssignmentOperator:=
@@ -63,22 +63,22 @@
 3000 REM PRINT A CARD
  Remark:PRINT A CARD
 3010 LET S = INT(X/13)
- Reference:S
- Value:X
+ Variable:S
+ Variable:X
  NumericConstant:13
  BinaryOperator:/
  FunctionInt
  AssignmentOperator:=
 3020 LET V = X - 13*S
- Reference:V
- Value:X
+ Variable:V
+ Variable:X
  NumericConstant:13
- Value:S
+ Variable:S
  BinaryOperator:*
  BinaryOperator:-
  AssignmentOperator:=
 3030 IF S > 0 THEN 3060
- Value:S
+ Variable:S
  NumericConstant:0
  BinaryOperator:>
 3040 PRINT "CLUB  ";
@@ -88,7 +88,7 @@
 3050 GOTO 3500
  LineNumber:3500
 3060 IF S > 1 THEN 3090
- Value:S
+ Variable:S
  NumericConstant:1
  BinaryOperator:>
 3070 PRINT "DIAMOND  ";
@@ -98,7 +98,7 @@
 3080 GOTO 3500
  LineNumber:3500
 3090 IF S > 2 THEN 3120
- Value:S
+ Variable:S
  NumericConstant:2
  BinaryOperator:>
 3100 PRINT "HEART  ";
@@ -113,19 +113,19 @@
  CarriageControl:;
 3130
 3500 IF V > 8 THEN 3530
- Value:V
+ Variable:V
  NumericConstant:8
  BinaryOperator:>
 3510 PRINT V + 2
  ITEMS
- Value:V
+ Variable:V
  NumericConstant:2
  BinaryOperator:+
  CarriageControl:NL
 3520 RETURN
  
 3530 IF V > 9 THEN 3560
- Value:V
+ Variable:V
  NumericConstant:9
  BinaryOperator:>
 3540 PRINT "JACK"
@@ -135,7 +135,7 @@
 3550 RETURN
  
 3560 IF V > 10 THEN 3590
- Value:V
+ Variable:V
  NumericConstant:10
  BinaryOperator:>
 3570 PRINT "QUEEN"
@@ -145,7 +145,7 @@
 3580 RETURN
  
 3590 IF V > 11 THEN 3620
- Value:V
+ Variable:V
  NumericConstant:11
  BinaryOperator:>
 3600 PRINT "KING"

@@ -7,54 +7,54 @@
  TextConstant:"ENTER VALUES FOR A, B AND C"
  CarriageControl:NL
 40 INPUT A,B,C
- Reference:A
- Reference:B
- Reference:C
+ Variable:A
+ Variable:B
+ Variable:C
 50 LET D = ((B^2) - (4*A*C))/(4*A^2)
- Reference:D
- Value:B
+ Variable:D
+ Variable:B
  NumericConstant:2
  BinaryOperator:^
  NumericConstant:4
- Value:A
+ Variable:A
  BinaryOperator:*
- Value:C
+ Variable:C
  BinaryOperator:*
  BinaryOperator:-
  NumericConstant:4
- Value:A
+ Variable:A
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 60 IF D > = 0 THEN 130
- Value:D
+ Variable:D
  NumericConstant:0
  BinaryOperator:>=
 70 LET X = -B/(2*A)
- Reference:X
- Value:B
+ Variable:X
+ Variable:B
  UnaryOperator:-
  NumericConstant:2
- Value:A
+ Variable:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
- Reference:Y
+ Variable:Y
  NumericConstant:4
- Value:A
+ Variable:A
  BinaryOperator:*
- Value:C
+ Variable:C
  BinaryOperator:*
- Value:B
+ Variable:B
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:-
  FunctionSqr
  NumericConstant:2
- Value:A
+ Variable:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -66,50 +66,50 @@
  ITEMS
  TextConstant:"REAL PART = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:NL
 110 PRINT "IMAGINARY PART = ";Y
  ITEMS
  TextConstant:"IMAGINARY PART = "
  CarriageControl:;
- Value:Y
+ Variable:Y
  CarriageControl:NL
 120 GOTO 220
  LineNumber:220
 130 LET E = - B/(2*A)
- Reference:E
- Value:B
+ Variable:E
+ Variable:B
  UnaryOperator:-
  NumericConstant:2
- Value:A
+ Variable:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
 140 IF E > = 0 THEN 170
- Value:E
+ Variable:E
  NumericConstant:0
  BinaryOperator:>=
 150 LET Z = E - SQR(D)
- Reference:Z
- Value:E
- Value:D
+ Variable:Z
+ Variable:E
+ Variable:D
  FunctionSqr
  BinaryOperator:-
  AssignmentOperator:=
 160 GOTO 180
  LineNumber:180
 170 LET Z = E + SQR(D)
- Reference:Z
- Value:E
- Value:D
+ Variable:Z
+ Variable:E
+ Variable:D
  FunctionSqr
  BinaryOperator:+
  AssignmentOperator:=
 180 LET W = C/(Z*A)
- Reference:W
- Value:C
- Value:Z
- Value:A
+ Variable:W
+ Variable:C
+ Variable:Z
+ Variable:A
  BinaryOperator:*
  BinaryOperator:/
  AssignmentOperator:=
@@ -121,13 +121,13 @@
  ITEMS
  TextConstant:"1ST ROOT = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 210 PRINT "2ND ROOT = ";W
  ITEMS
  TextConstant:"2ND ROOT = "
  CarriageControl:;
- Value:W
+ Variable:W
  CarriageControl:NL
 220 PRINT "********************"
  ITEMS
@@ -138,9 +138,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 240 INPUT L
- Reference:L
+ Variable:L
 250 IF L = 1 THEN 270
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 260 STOP

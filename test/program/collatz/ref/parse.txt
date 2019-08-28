@@ -1,34 +1,34 @@
 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
  Remark:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
 20 READ A, A0
- Reference:A
- Reference:A0
+ Variable:A
+ Variable:A0
 30 LET B = A + A0
- Reference:B
- Value:A
- Value:A0
+ Variable:B
+ Variable:A
+ Variable:A0
  BinaryOperator:+
  AssignmentOperator:=
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  ITEMS
  TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:;
  TextConstant:"TO"
  CarriageControl:;
- Value:B
+ Variable:B
  CarriageControl:NL
 50 PRINT
  ITEMS
  CarriageControl:NL
 100 FOR N = A TO B
  control: Variable:N
- start:   ["Value:A"]
- end:     ["Value:B"]
+ start:   ["Variable:A"]
+ end:     ["Variable:B"]
 110 LET N0 = N
- Reference:N0
- Value:N
+ Variable:N0
+ Variable:N
  AssignmentOperator:=
 120 GOSUB 400
  LineNumber:400
@@ -40,24 +40,24 @@
  Remark:PRINT INFO FOR ONE NUMBER
 410 PRINT N0;":";
  ITEMS
- Value:N0
+ Variable:N0
  CarriageControl:;
  TextConstant:":"
  CarriageControl:;
 420 IF N0 = 1 THEN 490
- Value:N0
+ Variable:N0
  NumericConstant:1
  BinaryOperator:=
 430 IF MOD(N0,2) = 0 THEN 460
- Value:N0
+ Variable:N0
  NumericConstant:2
  FunctionMod
  NumericConstant:0
  BinaryOperator:=
 440 LET N0 = 3*N0 + 1
- Reference:N0
+ Variable:N0
  NumericConstant:3
- Value:N0
+ Variable:N0
  BinaryOperator:*
  NumericConstant:1
  BinaryOperator:+
@@ -65,14 +65,14 @@
 450 GOTO 470
  LineNumber:470
 460 LET N0 = N0/2
- Reference:N0
- Value:N0
+ Variable:N0
+ Variable:N0
  NumericConstant:2
  BinaryOperator:/
  AssignmentOperator:=
 470 PRINT N0;
  ITEMS
- Value:N0
+ Variable:N0
  CarriageControl:;
 480 GOTO 420
  LineNumber:420

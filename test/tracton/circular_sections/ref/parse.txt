@@ -7,21 +7,21 @@
  TextConstant:"RADIUS"
  CarriageControl:NL
 40 INPUT R
- Reference:R
+ Variable:R
 50 LET P = 3.14159
- Reference:P
+ Variable:P
  NumericConstant:3.14159
  AssignmentOperator:=
 60 LET D = 2*R
- Reference:D
+ Variable:D
  NumericConstant:2
- Value:R
+ Variable:R
  BinaryOperator:*
  AssignmentOperator:=
 70 LET I = (P*(D^4))/64
- Reference:I
- Value:P
- Value:D
+ Variable:I
+ Variable:P
+ Variable:D
  NumericConstant:4
  BinaryOperator:^
  BinaryOperator:*
@@ -29,15 +29,15 @@
  BinaryOperator:/
  AssignmentOperator:=
 80 LET J = I*2
- Reference:J
- Value:I
+ Variable:J
+ Variable:I
  NumericConstant:2
  BinaryOperator:*
  AssignmentOperator:=
 90 LET A = (P*(D^2))/4
- Reference:A
- Value:P
- Value:D
+ Variable:A
+ Variable:P
+ Variable:D
  NumericConstant:2
  BinaryOperator:^
  BinaryOperator:*
@@ -48,19 +48,19 @@
  ITEMS
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;
- Value:I
+ Variable:I
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
  ITEMS
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
- Value:J
+ Variable:J
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
  ITEMS
  TextConstant:"AREA OF SECTION = "
  CarriageControl:;
- Value:A
+ Variable:A
  CarriageControl:NL
 130 PRINT "*************************"
  ITEMS
@@ -71,9 +71,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Reference:L
+ Variable:L
 160 IF L = 1 THEN 180
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 170 STOP

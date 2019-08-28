@@ -7,19 +7,19 @@
  TextConstant:"X = "
  CarriageControl:;
 40 INPUT X
- Reference:X
+ Variable:X
 50 LET Z = 1
- Reference:Z
+ Variable:Z
  NumericConstant:1
  AssignmentOperator:=
 60 FOR I = 1 TO X
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Value:X"]
+ end:     ["Variable:X"]
 70 LET Z = Z*I
- Reference:Z
- Value:Z
- Value:I
+ Variable:Z
+ Variable:Z
+ Variable:I
  BinaryOperator:*
  AssignmentOperator:=
 80 NEXT I
@@ -28,20 +28,20 @@
  ITEMS
  TextConstant:"X = "
  CarriageControl:;
- Value:X
+ Variable:X
  CarriageControl:,
  TextConstant:"X! = "
  CarriageControl:;
- Value:Z
+ Variable:Z
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- Reference:L
+ Variable:L
 120 IF L = 1 THEN 140
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 130 STOP

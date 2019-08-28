@@ -1,36 +1,36 @@
 10 READ N,B,P
- Reference:N
- Reference:B
- Reference:P
+ Variable:N
+ Variable:B
+ Variable:P
 20 FOR I = 2 TO N
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["Value:N"]
+ end:     ["Variable:N"]
 30    READ A,M
- Reference:A
- Reference:M
+ Variable:A
+ Variable:M
 40       FOR K = 0 TO M-1
  control: Variable:K
  start:   ["NumericConstant:0"]
- end:     ["Value:M", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:M", "NumericConstant:1", "BinaryOperator:-"]
 50       LET X = B + K*P
- Reference:X
- Value:B
- Value:K
- Value:P
+ Variable:X
+ Variable:B
+ Variable:K
+ Variable:P
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 60       IF X - M*INT(X/M) = A THEN 100
- Value:X
- Value:M
- Value:X
- Value:M
+ Variable:X
+ Variable:M
+ Variable:X
+ Variable:M
  BinaryOperator:/
  FunctionInt
  BinaryOperator:*
  BinaryOperator:-
- Value:A
+ Variable:A
  BinaryOperator:=
 70    NEXT K
  Variable:K
@@ -41,14 +41,14 @@
 90    STOP
  
 100 LET P = P*M
- Reference:P
- Value:P
- Value:M
+ Variable:P
+ Variable:P
+ Variable:M
  BinaryOperator:*
  AssignmentOperator:=
 110 LET B = X
- Reference:B
- Value:X
+ Variable:B
+ Variable:X
  AssignmentOperator:=
 120 NEXT I
  Variable:I
@@ -56,11 +56,11 @@
  ITEMS
  TextConstant:"X  IS CONGRUENT TO "
  CarriageControl:
- Value:B
+ Variable:B
  CarriageControl:;
  TextConstant:" MODULO "
  CarriageControl:
- Value:P
+ Variable:P
  CarriageControl:NL
 900 DATA 4
  NumericConstant:4

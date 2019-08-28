@@ -9,30 +9,30 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:100"]
 30    READ K
- Reference:K
+ Variable:K
 40    IF K = 999 THEN 100
- Value:K
+ Variable:K
  NumericConstant:999
  BinaryOperator:=
 50    LET T(I,0) = K
- Value:I
+ Variable:I
  NumericConstant:0
- Reference:T
- Value:K
+ Variable:T
+ Variable:K
  AssignmentOperator:=
 60    LET K1 = ABS(K)
- Reference:K1
- Value:K
+ Variable:K1
+ Variable:K
  FunctionAbs
  AssignmentOperator:=
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2", "Value:K1", "BinaryOperator:*", "NumericConstant:1", "BinaryOperator:+", "Value:K1", "FunctionSgn", "BinaryOperator:-"]
+ end:     ["NumericConstant:2", "Variable:K1", "BinaryOperator:*", "NumericConstant:1", "BinaryOperator:+", "Variable:K1", "FunctionSgn", "BinaryOperator:-"]
 80       READ T(I,J)
- Value:I
- Value:J
- Reference:T
+ Variable:I
+ Variable:J
+ Variable:T
 90    NEXT J
  Variable:J
 95 NEXT I
@@ -44,112 +44,112 @@
  CarriageControl:;
 105 FOR I = I-1 TO 0 STEP -1
  control: Variable:I
- start:   ["Value:I", "NumericConstant:1", "BinaryOperator:-"]
+ start:   ["Variable:I", "NumericConstant:1", "BinaryOperator:-"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperator:-"]
 110    LET K = T(I,0)
- Reference:K
- Value:I
+ Variable:K
+ Variable:I
  NumericConstant:0
- Value:T
+ Variable:T
  AssignmentOperator:=
 120    IF K > 0 THEN 200
- Value:K
+ Variable:K
  NumericConstant:0
  BinaryOperator:>
 130    IF K < 0 THEN 300
- Value:K
+ Variable:K
  NumericConstant:0
  BinaryOperator:<
 140    LET V(I) = T(I,1)
- Value:I
- Reference:V
- Value:I
+ Variable:I
+ Variable:V
+ Variable:I
  NumericConstant:1
- Value:T
+ Variable:T
  AssignmentOperator:=
 150    GOTO 399
  LineNumber:399
 200    LET S = 0
- Reference:S
+ Variable:S
  NumericConstant:0
  AssignmentOperator:=
 210    FOR J = 2 TO 2*K STEP 2
  control: Variable:J
  start:   ["NumericConstant:2"]
- end:     ["NumericConstant:2", "Value:K", "BinaryOperator:*"]
+ end:     ["NumericConstant:2", "Variable:K", "BinaryOperator:*"]
  step:    ["NumericConstant:2"]
 220       LET B = T(I,J)
- Reference:B
- Value:I
- Value:J
- Value:T
+ Variable:B
+ Variable:I
+ Variable:J
+ Variable:T
  AssignmentOperator:=
 230       LET S = S + T(I,J-1)*V(B)
- Reference:S
- Value:S
- Value:I
- Value:J
+ Variable:S
+ Variable:S
+ Variable:I
+ Variable:J
  NumericConstant:1
  BinaryOperator:-
- Value:T
- Value:B
- Value:V
+ Variable:T
+ Variable:B
+ Variable:V
  BinaryOperator:*
  BinaryOperator:+
  AssignmentOperator:=
 240    NEXT J
  Variable:J
 250    LET V(I) = S
- Value:I
- Reference:V
- Value:S
+ Variable:I
+ Variable:V
+ Variable:S
  AssignmentOperator:=
 260    GOTO 399
  LineNumber:399
 300    LET M = -999999999
- Reference:M
+ Variable:M
  NumericConstant:999999999
  UnaryOperator:-
  AssignmentOperator:=
 310    FOR J = 2 TO 2*ABS(K) STEP 2
  control: Variable:J
  start:   ["NumericConstant:2"]
- end:     ["NumericConstant:2", "Value:K", "FunctionAbs", "BinaryOperator:*"]
+ end:     ["NumericConstant:2", "Variable:K", "FunctionAbs", "BinaryOperator:*"]
  step:    ["NumericConstant:2"]
 320       LET V = V(T(I,J))
- Reference:V
- Value:I
- Value:J
- Value:T
- Value:V
+ Variable:V
+ Variable:I
+ Variable:J
+ Variable:T
+ Variable:V
  AssignmentOperator:=
 330       IF V <= M THEN 360
- Value:V
- Value:M
+ Variable:V
+ Variable:M
  BinaryOperator:<=
 340       LET M = V
- Reference:M
- Value:V
+ Variable:M
+ Variable:V
  AssignmentOperator:=
 350       LET A = T(I,J-1)
- Reference:A
- Value:I
- Value:J
+ Variable:A
+ Variable:I
+ Variable:J
  NumericConstant:1
  BinaryOperator:-
- Value:T
+ Variable:T
  AssignmentOperator:=
 360    NEXT J
  Variable:J
 370    PRINT A;
  ITEMS
- Value:A
+ Variable:A
  CarriageControl:;
 380    LET V(I) = M
- Value:I
- Reference:V
- Value:M
+ Variable:I
+ Variable:V
+ Variable:M
  AssignmentOperator:=
 399 NEXT I
  Variable:I
@@ -164,7 +164,7 @@
  TextConstant:"EXPECTED GAIN = $"
  CarriageControl:
  NumericConstant:0
- Value:V
+ Variable:V
  CarriageControl:NL
 430
 900 DATA -3,1,1,2,2,3,3

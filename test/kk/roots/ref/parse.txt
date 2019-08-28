@@ -14,7 +14,7 @@
  end:     ["NumericConstant:10"]
 30 PRINT N,
  ITEMS
- Value:N
+ Variable:N
  CarriageControl:,
 40 FOR R = 2 TO 4
  control: Variable:R
@@ -22,9 +22,9 @@
  end:     ["NumericConstant:4"]
 50 PRINT N^(1/R),
  ITEMS
- Value:N
+ Variable:N
  NumericConstant:1
- Value:R
+ Variable:R
  BinaryOperator:/
  BinaryOperator:^
  CarriageControl:,

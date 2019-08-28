@@ -9,43 +9,43 @@
  TextConstant:"1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
- Reference:Z1
+ Variable:Z1
 60 PRINT "2ND IMPEDANCE"
  ITEMS
  TextConstant:"2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
- Reference:Z2
+ Variable:Z2
 80 LET R1 = Z1*SQR(1 - (Z2/Z1))
- Reference:R1
- Value:Z1
+ Variable:R1
+ Variable:Z1
  NumericConstant:1
- Value:Z2
- Value:Z1
+ Variable:Z2
+ Variable:Z1
  BinaryOperator:/
  BinaryOperator:-
  FunctionSqr
  BinaryOperator:*
  AssignmentOperator:=
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
- Reference:R2
- Value:Z2
+ Variable:R2
+ Variable:Z2
  NumericConstant:1
- Value:Z2
- Value:Z1
+ Variable:Z2
+ Variable:Z1
  BinaryOperator:/
  BinaryOperator:-
  FunctionSqr
  BinaryOperator:/
  AssignmentOperator:=
 100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
- Reference:M
- Value:Z1
- Value:Z2
+ Variable:M
+ Variable:Z1
+ Variable:Z2
  BinaryOperator:/
  FunctionSqr
- Value:Z1
- Value:Z2
+ Variable:Z1
+ Variable:Z2
  BinaryOperator:/
  NumericConstant:1
  BinaryOperator:-
@@ -53,9 +53,9 @@
  BinaryOperator:+
  AssignmentOperator:=
 110 LET L = 20*(LOG(M)/LOG(10))
- Reference:L
+ Variable:L
  NumericConstant:20
- Value:M
+ Variable:M
  FunctionLog
  NumericConstant:10
  FunctionLog
@@ -70,19 +70,19 @@
  ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
- Value:R1
+ Variable:R1
  CarriageControl:NL
 140 PRINT "RESISTOR 2 = ";R2
  ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
- Value:R2
+ Variable:R2
  CarriageControl:NL
 150 PRINT "LOSS IN DECIBELS = ";L
  ITEMS
  TextConstant:"LOSS IN DECIBELS = "
  CarriageControl:;
- Value:L
+ Variable:L
  CarriageControl:NL
 160 PRINT
  ITEMS
@@ -92,9 +92,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT X
- Reference:X
+ Variable:X
 190 IF X = 1 THEN 210
- Value:X
+ Variable:X
  NumericConstant:1
  BinaryOperator:=
 200 STOP

@@ -5,33 +5,33 @@
 20    GOSUB 500
  LineNumber:500
 30    IF D < 4 THEN 300
- Value:D
+ Variable:D
  NumericConstant:4
  BinaryOperator:<
 40    IF D = 12 THEN 300
- Value:D
+ Variable:D
  NumericConstant:12
  BinaryOperator:=
 50    IF D = 7 THEN 400
- Value:D
+ Variable:D
  NumericConstant:7
  BinaryOperator:=
 60    IF D = 11 THEN 400
- Value:D
+ Variable:D
  NumericConstant:11
  BinaryOperator:=
 70    LET D9 = D
- Reference:D9
- Value:D
+ Variable:D9
+ Variable:D
  AssignmentOperator:=
 100   GOSUB 500
  LineNumber:500
 110   IF D = D9 THEN 200
- Value:D
- Value:D9
+ Variable:D
+ Variable:D9
  BinaryOperator:=
 120   IF D = 7 THEN 250
- Value:D
+ Variable:D
  NumericConstant:7
  BinaryOperator:=
 130   GOTO 100
@@ -66,7 +66,7 @@
 500 REM ROLL DICE
  Remark:ROLL DICE
 510 LET D1 = INT(6*RND(1)+1)
- Reference:D1
+ Variable:D1
  NumericConstant:6
  NumericConstant:1
  FunctionRnd
@@ -76,7 +76,7 @@
  FunctionInt
  AssignmentOperator:=
 520 LET D2 = INT(6*RND(1)+1)
- Reference:D2
+ Variable:D2
  NumericConstant:6
  NumericConstant:1
  FunctionRnd
@@ -89,14 +89,14 @@
  ITEMS
  TextConstant:"YOUR ROLL IS "
  CarriageControl:;
- Value:D1
+ Variable:D1
  CarriageControl:;
- Value:D2
+ Variable:D2
  CarriageControl:NL
 530 LET D = D1 + D2
- Reference:D
- Value:D1
- Value:D2
+ Variable:D
+ Variable:D1
+ Variable:D2
  BinaryOperator:+
  AssignmentOperator:=
 540 RETURN

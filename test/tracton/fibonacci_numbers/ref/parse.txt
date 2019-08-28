@@ -5,19 +5,19 @@
  TextConstant:"ENTER FIRST TERM"
  CarriageControl:NL
 30 INPUT A
- Reference:A
+ Variable:A
 40 PRINT "ENTER SECOND TERM"
  ITEMS
  TextConstant:"ENTER SECOND TERM"
  CarriageControl:NL
 50 INPUT B
- Reference:B
+ Variable:B
 60 PRINT "MAXIMUM NUMBER OF TERMS = "
  ITEMS
  TextConstant:"MAXIMUM NUMBER OF TERMS = "
  CarriageControl:NL
 70 INPUT N
- Reference:N
+ Variable:N
 80 PRINT
  ITEMS
  CarriageControl:NL
@@ -32,54 +32,54 @@
  TextConstant:"FIBONACCI NUMBER"
  CarriageControl:NL
 110 LET K = 1
- Reference:K
+ Variable:K
  NumericConstant:1
  AssignmentOperator:=
 120 PRINT K,A
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
- Value:A
+ Variable:A
  CarriageControl:NL
 130 LET K = 2
- Reference:K
+ Variable:K
  NumericConstant:2
  AssignmentOperator:=
 140 PRINT K,B
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
- Value:B
+ Variable:B
  CarriageControl:NL
 150 LET K = K + 1
- Reference:K
- Value:K
+ Variable:K
+ Variable:K
  NumericConstant:1
  BinaryOperator:+
  AssignmentOperator:=
 160 LET Q = A + B
- Reference:Q
- Value:A
- Value:B
+ Variable:Q
+ Variable:A
+ Variable:B
  BinaryOperator:+
  AssignmentOperator:=
 170 PRINT K,Q
  ITEMS
- Value:K
+ Variable:K
  CarriageControl:,
- Value:Q
+ Variable:Q
  CarriageControl:NL
 180 LET A = B
- Reference:A
- Value:B
+ Variable:A
+ Variable:B
  AssignmentOperator:=
 190 LET B = Q
- Reference:B
- Value:Q
+ Variable:B
+ Variable:Q
  AssignmentOperator:=
 200 IF K > = N THEN 220
- Value:K
- Value:N
+ Variable:K
+ Variable:N
  BinaryOperator:>=
 210 GOTO 150
  LineNumber:150
@@ -95,9 +95,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 250 INPUT L
- Reference:L
+ Variable:L
 260 IF L = 1 THEN 280
- Value:L
+ Variable:L
  NumericConstant:1
  BinaryOperator:=
 270 STOP

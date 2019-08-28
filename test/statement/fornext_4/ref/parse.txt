@@ -1,18 +1,18 @@
 10 LET L1 = 1
- Reference:L1
+ Variable:L1
  NumericConstant:1
  AssignmentOperator:=
 20 LET L2 = 10
- Reference:L2
+ Variable:L2
  NumericConstant:10
  AssignmentOperator:=
 30 FOR I = L1 TO L2
  control: Variable:I
- start:   ["Value:L1"]
- end:     ["Value:L2"]
+ start:   ["Variable:L1"]
+ end:     ["Variable:L2"]
 40 PRINT I
  ITEMS
- Value:I
+ Variable:I
  CarriageControl:NL
 50 NEXT I
  Variable:I
