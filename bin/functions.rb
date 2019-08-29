@@ -5,6 +5,7 @@ class AbstractFunction < AbstractElement
 
     @name = text
     @function = true
+    @valref = :value
     @operand = true
     @precedence = 7
   end
@@ -17,6 +18,14 @@ class AbstractFunction < AbstractElement
     @name
   end
 
+  def value?
+    @valref == :value
+  end
+
+  def reference?
+    @valref == :reference
+  end
+  
   private
 
   def default_args(interpreter)
@@ -137,7 +146,7 @@ class UserFunction < AbstractScalarFunction
 
   def initialize(text)
     super
-    @valref = :value
+    @user_function = true
     @shape = :scalar
   end
 

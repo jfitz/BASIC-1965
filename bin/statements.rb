@@ -176,6 +176,7 @@ class AbstractStatement
   attr_reader :numerics
   attr_reader :strings
   attr_reader :variables
+  attr_reader :functions
   attr_reader :linenums
 
   def self.extra_keywords
@@ -189,6 +190,7 @@ class AbstractStatement
     @numerics = []
     @strings = []
     @variables = []
+    @functions = []
     @linenums = []
     @profile_count = 0
     @profile_time = 0
@@ -256,12 +258,6 @@ class AbstractStatement
   end
 
   def renumber(_) end
-
-  def functions
-    funcs = @tokens.clone
-    funcs.keep_if(&:function?)
-    funcs.map(&:to_s)
-  end
 
   def userfuncs
     udfs = @tokens.clone
@@ -532,6 +528,7 @@ class DefineFunctionStatement < AbstractStatement
         @numerics = @definition.numerics
         @strings = @definition.strings
         @variables = @definition.variables
+        @functions = @definition.functions
       rescue BASICError => e
         puts e.message
         @errors << e.message
@@ -586,6 +583,7 @@ class DimStatement < AbstractStatement
     @expression_list.each { |expression| @numerics += expression.numerics }
     @expression_list.each { |expression| @strings += expression.strings }
     @expression_list.each { |expression| @variables += expression.variables }
+    @expression_list.each { |expression| @functions += expression.functions }
   end
 
   def dump
@@ -663,6 +661,7 @@ class FilesStatement < AbstractStatement
       @expressions = ValueScalarExpression.new(tokens_lists[0])
       @strings = @expressions.strings
       @variables = @expressions.variables
+      @functions = @expressions.functions
     else
       @errors << 'Syntax error'
     end
@@ -710,6 +709,7 @@ class ForStatement < AbstractStatement
         @strings = @start.strings + @end.strings
         control = XrefEntry.new(@control.to_s, 0, true)
         @variables = [control] + @start.variables + @end.variables
+        @functions = @start.functions + @end.functions
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -725,6 +725,7 @@ class ForStatement < AbstractStatement
         @strings = @start.strings + @end.strings + @step.strings
         control = XrefEntry.new(@control.to_s, 0, true)
         @variables = [control] + @start.variables + @end.variables + @step.variables
+        @functions = @start.functions + @end.functions + @step.functions
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -907,6 +908,7 @@ class IfStatement < AbstractStatement
       @numerics = @expression.numerics unless @expression.nil?
       @strings = @expression.strings unless @expression.nil?
       @variables = @expression.variables unless @expression.nil?
+      @functions = @expression.functions unless @expression.nil?
       @linenums = [@destination]
     else
       @errors << 'Syntax error'
@@ -1056,6 +1058,9 @@ class InputStatement < AbstractStatement
 
     @variables = @file_tokens.variables unless @file_tokens.nil?
     @input_items.each { |item| @variables += item.variables }
+
+    @functions = @file_tokens.functions unless @file_tokens.nil?
+    @input_items.each { |item| @functions += item.functions }
   end
 
   def first_token(input_items)
@@ -1188,6 +1193,7 @@ class AbstractScalarLetStatement < AbstractLetStatement
         @numerics = @assignment.numerics
         @strings = @assignment.strings
         @variables = @assignment.variables
+        @functions = @assignment.functions
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -1326,6 +1332,7 @@ class OptionStatement < AbstractStatement
       @numerics = @expression.numerics
       @strings = @expression.strings
       @variables = @expression.variables
+      @functions = @expression.functions
     else
       @errors << 'Syntax error'
     end
@@ -1371,10 +1378,15 @@ class AbstractPrintStatement < AbstractStatement
   def make_references
     @numerics = @file_tokens.numerics unless @file_tokens.nil?
     @print_items.each { |item| @numerics += item.numerics }
+
     @strings = @file_tokens.strings unless @file_tokens.nil?
     @print_items.each { |item| @strings += item.strings }
+
     @variables = @file_tokens.variables unless @file_tokens.nil?
     @print_items.each { |item| @variables += item.variables }
+
+    @functions = @file_tokens.functions unless @file_tokens.nil?
+    @print_items.each { |item| @functions += item.functions }
   end
 
   include FileFunctions
@@ -1462,10 +1474,15 @@ class AbstractReadStatement < AbstractStatement
   def make_references
     @numerics = @file_tokens.numerics unless @file_tokens.nil?
     @read_items.each { |item| @numerics += item.numerics }
+
     @strings = @file_tokens.strings unless @file_tokens.nil?
     @read_items.each { |item| @strings += item.strings }
+
     @variables = @file_tokens.variables unless @file_tokens.nil?
     @read_items.each { |item| @variables += item.variables }
+
+    @functions = @file_tokens.functions unless @file_tokens.nil?
+    @read_items.each { |item| @functions += item.functions }
   end
 
   include FileFunctions
@@ -1626,10 +1643,15 @@ class AbstractWriteStatement < AbstractStatement
   def make_references
     @numerics = @file_tokens.numerics unless @file_tokens.nil?
     @print_items.each { |item| @numerics += item.numerics }
+
     @strings = @file_tokens.strings unless @file_tokens.nil?
     @print_items.each { |item| @strings += item.strings }
+
     @variables = @file_tokens.variables unless @file_tokens.nil?
     @print_items.each { |item| @variables += item.variables }
+
+    @functions = @file_tokens.functions unless @file_tokens.nil?
+    @print_items.each { |item| @functions += item.functions }
   end
 
   include FileFunctions
@@ -1933,6 +1955,7 @@ class ArrLetStatement < AbstractLetStatement
         @numerics = @assignment.numerics
         @strings = @assignment.strings
         @variables = @assignment.variables
+        @functions = @assignment.functions
       rescue BASICError => e
         @errors << e.message
         @assignment = @rest
@@ -2224,6 +2247,7 @@ class MatLetStatement < AbstractLetStatement
         @numerics = @assignment.numerics
         @strings = @assignment.strings
         @variables = @assignment.variables
+        @functions = @assignment.functions
       rescue BASICError => e
         @errors << e.message
         @assignment = @rest
