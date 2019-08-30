@@ -5,12 +5,16 @@
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X)=X*P/180
+ UserFunctionName:FND
+ VariableName:X
  Variable:X
  Variable:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 130 DEF FNC(X)=COS(FND(X))
+ UserFunctionName:FNC
+ VariableName:X
  Variable:X
  UserFunction
  FunctionCos

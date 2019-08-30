@@ -611,8 +611,7 @@ class Interpreter
   def set_value(variable, value)
     legals = [
       'Variable',
-      'VariableName',
-      'UserFunction'
+      'VariableName'
     ]
 
     raise(BASICRuntimeError,

@@ -853,7 +853,7 @@ class CarriageControl
   end
 end
 
-# Hold a variable name (not a reference or value)
+# Hold a variable name
 class VariableName < AbstractElement
   def self.accept?(token)
     classes = %w(VariableToken)
@@ -867,8 +867,7 @@ class VariableName < AbstractElement
     super()
 
     raise(BASICSyntaxError, "'#{token}' is not a variable name") unless
-      token.class.to_s == 'VariableToken' ||
-      token.class.to_s == 'UserFunctionToken'
+      token.class.to_s == 'VariableToken'
 
     @name = token
     @variable = true
@@ -898,20 +897,68 @@ class VariableName < AbstractElement
   end
 
   def compatible?(value)
-    numerics = [:numeric]
-    strings = [:string]
+    value.content_type == :numeric
+  end
 
-    compatible = false
+  def subscripts
+    []
+  end
 
-    if content_type == :numeric
-      compatible = numerics.include?(value.content_type)
-    end
+  def to_s
+    @name.to_s
+  end
+end
 
-    if content_type == :string
-      compatible = strings.include?(value.content_type)
-    end
+# Hold a function name
+class UserFunctionName < AbstractElement
+  def self.accept?(token)
+    classes = %w(UserFunctionToken)
+    classes.include?(token.class.to_s)
+  end
 
-    compatible
+  attr_reader :name
+  attr_reader :content_type
+
+  def initialize(token)
+    super()
+
+    raise(BASICSyntaxError, "'#{token}' is not a function name") unless
+      token.class.to_s == 'UserFunctionToken'
+
+    @name = token
+    @function = true
+    @user_function = true
+    @operand = true
+    @precedence = 7
+    @content_type = @name.content_type
+  end
+
+  def eql?(other)
+    to_s == other.to_s
+  end
+
+  def ==(other)
+    to_s == other.to_s
+  end
+
+  def hash
+    @name.hash
+  end
+
+  def scalar?
+    true
+  end
+
+  def default_shape
+    :scalar
+  end
+
+  def dump
+    self.class.to_s + ':' + @name.to_s
+  end
+
+  def compatible?(value)
+    value.content_type == :numeric
   end
 
   def subscripts

@@ -5,16 +5,22 @@
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
+ UserFunctionName:FND
+ VariableName:X
  Variable:X
  Variable:P
  BinaryOperator:*
  NumericConstant:180
  BinaryOperator:/
 130 DEF FNS(X) = SIN(FND(X))
+ UserFunctionName:FNS
+ VariableName:X
  Variable:X
  UserFunction
  FunctionSin
 135 DEF FNR(X) = INT(100*X+0.5)/100
+ UserFunctionName:FNR
+ VariableName:X
  NumericConstant:100
  Variable:X
  BinaryOperator:*

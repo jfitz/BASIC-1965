@@ -288,9 +288,12 @@ end
 
 # user function token
 class UserFunctionToken < AbstractToken
+  attr_reader :content_type
+
   def initialize(text)
     super
     @is_user_function = true
+    @content_type = :numeric
   end
 
   def ==(other)

@@ -5,6 +5,11 @@
 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
  Remark:CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
 51 DEF FNL(X1,X2,Y1,Y2) = SQR((X1-Y1)^2 + (X2-Y2)^2)
+ UserFunctionName:FNL
+ VariableName:X1
+ VariableName:X2
+ VariableName:Y1
+ VariableName:Y2
  Variable:X1
  Variable:Y1
  BinaryOperator:-
@@ -20,6 +25,8 @@
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
 61 DEF FNR(D) = D/180*3.1415926
+ UserFunctionName:FNR
+ VariableName:D
  Variable:D
  NumericConstant:180
  BinaryOperator:/
