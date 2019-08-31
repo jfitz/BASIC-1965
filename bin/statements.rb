@@ -177,6 +177,7 @@ class AbstractStatement
   attr_reader :strings
   attr_reader :variables
   attr_reader :functions
+  attr_reader :userfuncs
   attr_reader :linenums
 
   def self.extra_keywords
@@ -191,6 +192,7 @@ class AbstractStatement
     @strings = []
     @variables = []
     @functions = []
+    @userfuncs = []
     @linenums = []
     @profile_count = 0
     @profile_time = 0
@@ -258,12 +260,6 @@ class AbstractStatement
   end
 
   def renumber(_) end
-
-  def userfuncs
-    udfs = @tokens.clone
-    udfs.keep_if(&:user_function?)
-    udfs.map(&:to_s)
-  end
 
   protected
 
@@ -490,6 +486,9 @@ class DataStatement < AbstractStatement
       @expressions = ValueScalarExpression.new(tokens_lists[0])
       @numerics = @expressions.numerics
       @strings = @expressions.strings
+      @variables = @expressions.variables
+      @functions = @expressions.functions
+      @userfuncs = @expressions.userfuncs
     else
       @errors << 'Syntax error'
     end
@@ -529,6 +528,7 @@ class DefineFunctionStatement < AbstractStatement
         @strings = @definition.strings
         @variables = @definition.variables
         @functions = @definition.functions
+        @userfuncs = @definition.userfuncs
       rescue BASICError => e
         puts e.message
         @errors << e.message
@@ -584,6 +584,7 @@ class DimStatement < AbstractStatement
     @expression_list.each { |expression| @strings += expression.strings }
     @expression_list.each { |expression| @variables += expression.variables }
     @expression_list.each { |expression| @functions += expression.functions }
+    @expression_list.each { |expression| @userfuncs += expression.userfuncs }
   end
 
   def dump
@@ -662,6 +663,7 @@ class FilesStatement < AbstractStatement
       @strings = @expressions.strings
       @variables = @expressions.variables
       @functions = @expressions.functions
+      @userfuncs = @expressions.userfuncs
     else
       @errors << 'Syntax error'
     end
@@ -710,6 +712,7 @@ class ForStatement < AbstractStatement
         control = XrefEntry.new(@control.to_s, 0, true)
         @variables = [control] + @start.variables + @end.variables
         @functions = @start.functions + @end.functions
+        @userfuncs = @start.userfuncs + @end.userfuncs
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -726,6 +729,7 @@ class ForStatement < AbstractStatement
         control = XrefEntry.new(@control.to_s, 0, true)
         @variables = [control] + @start.variables + @end.variables + @step.variables
         @functions = @start.functions + @end.functions + @step.functions
+        @userfuncs = @start.userfuncs + @end.userfuncs + @step.userfuncs
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -909,6 +913,7 @@ class IfStatement < AbstractStatement
       @strings = @expression.strings unless @expression.nil?
       @variables = @expression.variables unless @expression.nil?
       @functions = @expression.functions unless @expression.nil?
+      @userfuncs = @expression.userfuncs unless @expression.nil?
       @linenums = [@destination]
     else
       @errors << 'Syntax error'
@@ -1061,6 +1066,9 @@ class InputStatement < AbstractStatement
 
     @functions = @file_tokens.functions unless @file_tokens.nil?
     @input_items.each { |item| @functions += item.functions }
+
+    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
+    @input_items.each { |item| @userfuncs += item.userfuncs }
   end
 
   def first_token(input_items)
@@ -1194,6 +1202,7 @@ class AbstractScalarLetStatement < AbstractLetStatement
         @strings = @assignment.strings
         @variables = @assignment.variables
         @functions = @assignment.functions
+        @userfuncs = @assignment.userfuncs
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -1333,6 +1342,7 @@ class OptionStatement < AbstractStatement
       @strings = @expression.strings
       @variables = @expression.variables
       @functions = @expression.functions
+      @userfuncs = @expression.userfuncs
     else
       @errors << 'Syntax error'
     end
@@ -1387,6 +1397,9 @@ class AbstractPrintStatement < AbstractStatement
 
     @functions = @file_tokens.functions unless @file_tokens.nil?
     @print_items.each { |item| @functions += item.functions }
+
+    @userfuncs = @file_tokens.userfuncs unless @file_fokens.nil?
+    @print_items.each { |item| @userfuncs += item.userfuncs }
   end
 
   include FileFunctions
@@ -1483,6 +1496,9 @@ class AbstractReadStatement < AbstractStatement
 
     @functions = @file_tokens.functions unless @file_tokens.nil?
     @read_items.each { |item| @functions += item.functions }
+
+    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
+    @read_items.each { |item| @userfuncs += item.userfuncs }
   end
 
   include FileFunctions
@@ -1652,6 +1668,9 @@ class AbstractWriteStatement < AbstractStatement
 
     @functions = @file_tokens.functions unless @file_tokens.nil?
     @print_items.each { |item| @functions += item.functions }
+
+    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
+    @print_items.each { |item| @userfuncs += item.userfuncs }
   end
 
   include FileFunctions
