@@ -1312,10 +1312,10 @@ class OptionStatement < AbstractStatement
   def self.extra_keywords
     %w(
       BASE DECIMALS DEFAULT_PROMPT DETECT_INFINITE_LOOP
-      ECHO EPSILON
+      ECHO
       IGNORE_RND_ARG IMPLIED_SEMICOLON
       INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
-      PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
+      PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
       QMARK_AFTER_PROMPT REQUIRE_INITIALIZED SEMICOLON_ZONE_WIDTH
       TRACE ZONE_WIDTH
     )
@@ -1330,14 +1330,7 @@ class OptionStatement < AbstractStatement
     if check_template(tokens_lists, template)
       @key = tokens_lists[0].to_s.downcase
       expression_tokens = split_tokens(tokens_lists[1], true)
-
-      # OPTION statements do not respect the EPSILON value
-      # (so they can set new, smaller EPSILON values)
-      epsilon = $options['epsilon']
-      $options['epsilon'] = Option.new(float, 0.0)
       @expression = ValueScalarExpression.new(expression_tokens[0])
-      $options['epsilon'] = epsilon
-
       @numerics = @expression.numerics
       @strings = @expression.strings
       @variables = @expression.variables

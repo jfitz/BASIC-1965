@@ -312,10 +312,10 @@ def make_command_tokenbuilders
     BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
     PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DECIMALS DEFAULT_PROMPT DETECT_INFINITE_LOOP
-    ECHO EPSILON HEADING
+    ECHO HEADING
     IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
-    PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
+    PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
     QMARK_AFTER_PROMPT RANDOMIZE REQUIRE_INITIALIZED
     SEMICOLON_ZONE_WIDTH TIMING TRACE ZONE_WIDTH
   )
@@ -358,13 +358,13 @@ OptionParser.new do |opt|
   opt.on('--decimals DIGITS') { |o| options[:decimals] = o }
   opt.on('--no-detect-infinite-loop') { |o| options[:no_detect_infinite_loop] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
-  opt.on('--epsilon LIMIT') { |o| options[:epsilon] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
   opt.on('--int-floor') { |o| options[:int_floor] = o }
   opt.on('--lock-fornext') { |o| options[:lock_fornext] = o }
   opt.on('--match-fornext') { |o| options[:match_fornext] = o }
+  opt.on('--precision DIGITS') { |o| options[:precision] = o }
   opt.on('--print-width WIDTH') { |o| options[:print_width] = o }
   opt.on('--prompt-count') { |o| options[:prompt_count] = o }
   opt.on('--provenance') { |o| options[:provenance] = o }
@@ -391,6 +391,7 @@ boolean = { :type => :bool }
 string = { :type => :string }
 int = { :type => :int, :min => 0 }
 int_1_15 = { :type => :int, :max => 15, :min => 1 }
+int_1_16 = { :type => :int, :max => 16, :min => 1 }
 int_132 = { :type => :int, :max => 132, :min => 0 }
 int_40 = { :type => :int, :max => 40, :min => 0 }
 int_1 = { :type => :int, :max => 1, :min => 0 }
@@ -413,10 +414,6 @@ $options['detect_infinite_loop'] =
 
 $options['echo'] = Option.new(boolean, options.key?(:echo_input))
 
-epsilon = 1e-7
-epsilon = options[:epsilon].to_f if options.key?(:epsilon)
-$options['epsilon'] = Option.new(float, epsilon)
-
 $options['heading'] = Option.new(boolean, !options.key?(:no_heading))
 
 $options['ignore_rnd_arg'] =
@@ -436,6 +433,10 @@ $options['match_fornext'] =
 newline_speed = 0
 newline_speed = 10 if options.key?(:tty_lf)
 $options['newline_speed'] = Option.new(int, newline_speed)
+
+precision = 7
+precision = options[:precision].to_i if options.key?(:precision)
+$options['precision'] = Option.new(int_1_16, precision)
 
 print_speed = 0
 print_speed = 10 if options.key?(:tty)

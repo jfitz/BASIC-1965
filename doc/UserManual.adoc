@@ -112,13 +112,13 @@ When the BASIC program ends, BASIC-1965 ends.
 |--decimals digits |Sets the number of decimals printed. Default is 5, maximum is 15.
 |--no-detect-infinite-loop |Disables checks for infinite loops.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
-|--epsilon |Sets the minimum value for numeric variables. Values below epsilon are converted to zero. Default is 1E-7.
 |--no-heading |Supress the header and trailer messages.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
 |--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
 |--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
 |--lock-fornext |Lock control variables to FOR/NEXT loops. Variables can be read but not changed.
 |--match-fornext |Require exact pairing of FOR/NEXT loops. The default allows programs to jump out of an inner loop and continue the outer loop.
+|--precision |Sets the precision for numeric variables. Default is 7, maximum is 16.
 |--print-width width |Specifies a print width. Lines will wrap at the specified column. Default value is 72.
 |--prompt-count |INPUT statements prompt the user with the number of expected values.
 |--provenance |When displaying a variable in a trace, also display the line number where it was set.
@@ -358,13 +358,13 @@ The options that can be set are:
     DEFAULT_PROMPT
     DETECT_INFINITE_LOOP
     ECHO
-    EPSILON
     HEADING
     IGNORE_RND_ARG
     IMPLIED_SEMICOLON
     LOCK_FORNEXT
     MATCH_FORNEXT
     NEWLINE_SPEED
+    PRECISION
     PRINT_SPEED
     PRINT_WIDTH
     PROMPT_COUNT
@@ -387,13 +387,13 @@ The OPTION command overrides the command-line setting.
 |DEFAULT_PROMPT |String |"? " |Changes the prompt for INPUT statements
 |DETECT_INFINITE_LOOP |TRUE or FALSE |TRUE |Enables the detection of infinite loops
 |ECHO |TRUE or FALSE |FALSE |Echoes input (useful for testing)
-|EPSILON |numeric positive |1E-7 |Values below epsilon are converted to zero.
 |HEADING |TRUE or FALSE |TRUE |Displays the opening and closing lines that identify BASIC
 |IGNORE_RND_ARG |TRUE or FALSE |FALSE |Ignores the argument to RND(), needed for some old BASIC programs
 |IMPLIED_SEMICOLON |TRUE or FALSE |FALSE |Assume that a semicolon is specified between arguments to PRINT without intervening carriage control specified
 |INT_FLOOR |TRUE or FALSE |FALSE |Sets truncation towards negative infinity instead of towards zero
 |LOCK_FORNEXT |TRUE or FALSE |FALSE |Do not allow changes to FOR/NEXT control variables within the loop
 |NEWLINE_SPEED |numeric |0 |Limit printing speed only for newlines
+|PRECISION |numeric 1 to 16 |7 |Sets the precision for numeric values
 |PRINT_SPEED |numeric |0 |Limit printing speed (a value of 10 emulates an old TeleType)
 |PRINT_WIDTH |numeric |72 |Wrap output at the specified column; 0 disables wrapping
 |PROMPT_COUNT |TRUE or FALSE |FALSE |Displays the number of items to be input
@@ -553,7 +553,7 @@ Numeric values
 
 Numeric values are either integers or floating point.
 Integers are stored internally with Ruby's Fixnum class.
-Floating point numbers are stored as Ruby's Float with full precision and printed with six significant digits.
+Floating point numbers are stored as Ruby's Float with precision specified by PRECISION option and printed with decimal places specified by DECIMALS option.
 
 Numeric constants may be integer or real, and may use E-notation with unsigned exponents.
 The 'E' must be uppercase; a lowercase 'e' will be rejected.
@@ -897,12 +897,12 @@ Possible options are a subset of the options in the shell.
     DEFAULT_PROMPT
     DETECT_INFINITE_LOOP
     ECHO
-    EPSILON
     IGNORE_RND_ARG
     IMPLIED_SEMICOLON
     LOCK_FORNEXT
     MATCH_FORNEXT
     NEWLINE_SPEED
+    PRECISION
     PRINT_SPEED
     PRINT_WIDTH
     PROMPT_COUNT
@@ -965,9 +965,7 @@ The semicolon separator will force a small space between items.
 Between strings, there is no space.
 If semicolon zones are enabled (width greater than zero), then BASIC will advance to the next zone.
 
-Numbers are printed with automatic formatting.
-BASIC-1965 will print a number with the necessary number of decimal places.
-It is not possible to force a number of decimal places.
+The DECIMALS option sets the number of decimal places printed; trailing zeros are removed.
 
 Printing to files
 ^^^^^^^^^^^^^^^^^

@@ -1302,7 +1302,7 @@ SELECTED ACTS:
  T(20,1): 0.167
  B: 25
  V(25): 90
- S = 15.030000000000001
+ S = 15.03
 240: NEXT J
  J: 2
  terminated:false
@@ -1313,13 +1313,13 @@ SELECTED ACTS:
  T(20,4): 26
  B = 26
 230: LET S = S + T(I, J - 1) * V(B)
- S: 15.030000000000001
+ S: 15.03
  I: 20
  J: 4
  T(20,3): 0.333
  B: 26
  V(26): -10
- S = 11.700000000000001
+ S = 11.7
 240: NEXT J
  J: 4
  terminated:false
@@ -1330,7 +1330,7 @@ SELECTED ACTS:
  T(20,6): 27
  B = 27
 230: LET S = S + T(I, J - 1) * V(B)
- S: 11.700000000000001
+ S: 11.7
  I: 20
  J: 6
  T(20,5): 0.5
@@ -1394,7 +1394,7 @@ SELECTED ACTS:
  T(18,1): 0.167
  B: 22
  V(22): 90
- S = 15.030000000000001
+ S = 15.03
 240: NEXT J
  J: 2
  terminated:false
@@ -1405,13 +1405,13 @@ SELECTED ACTS:
  T(18,4): 23
  B = 23
 230: LET S = S + T(I, J - 1) * V(B)
- S: 15.030000000000001
+ S: 15.03
  I: 18
  J: 4
  T(18,3): 0.333
  B: 23
  V(23): -10
- S = 11.700000000000001
+ S = 11.7
 240: NEXT J
  J: 4
  terminated:false
@@ -1422,7 +1422,7 @@ SELECTED ACTS:
  T(18,6): 24
  B = 24
 230: LET S = S + T(I, J - 1) * V(B)
- S: 11.700000000000001
+ S: 11.7
  I: 18
  J: 6
  T(18,5): 0.5
@@ -1509,7 +1509,7 @@ SELECTED ACTS:
  K: -2
  K<0: true
 300: LET M = -999999999
- M = -999999999
+ M = -1000000000
 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -2
  J = 2
@@ -1523,7 +1523,7 @@ SELECTED ACTS:
  V = -43.3
 330: IF V <= M THEN 360
  V: -43.3
- M: -999999999
+ M: -1000000000
  V<=M: false
 340: LET M = V
  V: -43.3
@@ -1591,7 +1591,7 @@ SELECTED ACTS:
  K: -2
  K<0: true
 300: LET M = -999999999
- M = -999999999
+ M = -1000000000
 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -2
  J = 2
@@ -1605,7 +1605,7 @@ SELECTED ACTS:
  V = -43.3
 330: IF V <= M THEN 360
  V: -43.3
- M: -999999999
+ M: -1000000000
  V<=M: false
 340: LET M = V
  V: -43.3
@@ -1896,7 +1896,7 @@ SELECTED ACTS:
  K: -2
  K<0: true
 300: LET M = -999999999
- M = -999999999
+ M = -1000000000
 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -2
  J = 2
@@ -1910,7 +1910,7 @@ SELECTED ACTS:
  V = -33.3
 330: IF V <= M THEN 360
  V: -33.3
- M: -999999999
+ M: -1000000000
  V<=M: false
 340: LET M = V
  V: -33.3
@@ -1993,7 +1993,7 @@ SELECTED ACTS:
  T(3,1): 0.333
  B: 6
  V(6): 23.35
- S = 7.775550000000001
+ S = 7.77555
 240: NEXT J
  J: 2
  terminated:false
@@ -2004,13 +2004,13 @@ SELECTED ACTS:
  T(3,4): 7
  B = 7
 230: LET S = S + T(I, J - 1) * V(B)
- S: 7.775550000000001
+ S: 7.77555
  I: 3
  J: 4
  T(3,3): 0.167
  B: 7
  V(7): -10
- S = 6.105550000000001
+ S = 6.10555
 240: NEXT J
  J: 4
  terminated:false
@@ -2021,7 +2021,7 @@ SELECTED ACTS:
  T(3,6): 8
  B = 8
 230: LET S = S + T(I, J - 1) * V(B)
- S: 6.105550000000001
+ S: 6.10555
  I: 3
  J: 6
  T(3,5): 0.5
@@ -2126,7 +2126,7 @@ SELECTED ACTS:
  K: -3
  K<0: true
 300: LET M = -999999999
- M = -999999999
+ M = -1000000000
 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -3
  J = 2
@@ -2140,7 +2140,7 @@ SELECTED ACTS:
  V = 33.35
 330: IF V <= M THEN 360
  V: 33.35
- M: -999999999
+ M: -1000000000
  V<=M: false
 340: LET M = V
  V: 33.35

@@ -411,8 +411,16 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICRuntimeError, "'#{text}' is not a number") if f.nil?
 
-    epsilon = $options['epsilon'].value
-    f = 0 if f.abs < epsilon
+    precision = $options['precision'].value
+    if precision != 0
+      if f != 0
+        abs = f.abs
+        log = Math.log10(abs)
+        ceil = log.ceil
+        digits = -(ceil - precision)
+        f = f.round(digits)
+      end
+    end
 
     @token_chars = text.to_s
     @value = float_to_possible_int(f)

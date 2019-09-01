@@ -1,0 +1,163 @@
+100 OPTION BASE 0
+
+110 REM squares visited
+112 DIM V(64)
+114 MAT LET V = ZER(64)
+120 REM square at each level
+122 DIM S(64)
+130 REM possible moves for each level
+132 DIM P(64,8)
+
+200 REM Calculate row from square
+202 DEF FNR(S)=INT(S / 8) + 1
+
+210 REM Calculate column from square
+212 DEF FNC(S)=MOD(S, 8) + 1
+
+220 REM Calculate square from row and column
+222 DEF FNS(R,C)=(R - 1) * 8 + (C - 1)
+
+400 REM current level
+402 LET L = 0
+
+410 REM go to a square (a1, or 1,1, or 1)
+412 LET S = 0
+
+500 REM MAIN LOOP
+
+510 REM ENTER NEXT LEVEL
+512 LET L = L + 1
+513 REM PRINT "GOING TO LEVEL";L;" SQUARE";S;" (";FNR(S);",";FNC(S);")"
+514 LET S(L) = S
+515 LET V(S) = 1
+516 REM if level 64, we are done
+518 IF L = 64 THEN 800
+
+520 REM COMPUTE POSSIBLE MOVES
+522 GOSUB 600
+
+530 REM while possible move
+531 REM GOSUB 1520
+532 LET S2 = -1
+534 FOR I = 8 TO 1 STEP -1
+536 IF P(L,I) = -1 THEN 538
+537 LET S2 = P(L,I)
+538 NEXT I
+
+542 IF S2 = -1 THEN 550
+544 REM GO TO SQUARE S2
+546 LET S = S2
+548 GOTO 510
+
+550 REM MARK SQUARE AS NOT VISITED
+552 LET V(S) = 0
+
+560 REM revert to previous level
+562 LET L = L - 1
+564 IF L = 0 THEN 820
+
+570 REM mark first possible square as not possible
+572 FOR I = 1 TO 8
+574 IF P(L,I) <> S THEN 577 
+575 LET P(L,I) = -1
+577 NEXT I
+
+580 REM RETURN TO PREVIOUS SQUARE
+582 LET S = S(L)
+584 REM PRINT "REVERTING TO LEVEL";L;" SQUARE";S
+
+590 GOTO 530
+
+600 REM build possible moves
+602 LET R = FNR(S)
+604 LET C = FNC(S)
+
+610 REM up up left
+611 LET P = 1
+612 LET R5 = R - 2
+613 LET C5 = C - 1
+615 GOSUB 700
+
+620 REM up up right
+621 LET P = 2
+622 LET R5 = R - 2
+623 LET C5 = C + 1
+625 GOSUB 700
+
+630 REM down down left
+631 LET P = 3
+632 LET R5 = R + 2
+633 LET C5 = C - 1
+635 GOSUB 700
+
+640 REM down down right
+641 LET P = 4
+642 LET R5 = R + 2
+643 LET C5 = C + 1
+645 GOSUB 700
+
+650 REM left left up
+651 LET P = 5
+652 LET R5 = R - 1
+653 LET C5 = C - 2
+655 GOSUB 700
+
+660 REM left left down
+661 LET P = 6
+662 LET R5 = R + 1
+663 LET C5 = C - 2
+665 GOSUB 700
+
+670 REM right right up
+671 LET P = 7
+672 LET R5 = R - 1
+673 LET C5 = C + 2
+675 GOSUB 700
+
+680 REM right right down
+681 LET P = 8
+682 LET R5 = R + 1
+683 LET C5 = C + 2
+685 GOSUB 700
+
+690 RETURN
+
+700 REM VALIDATE POSSIBLE MOVE
+701 REM moves off the board are illegal
+710 IF R5 < 1 THEN 770
+715 IF R5 > 8 THEN 770
+720 IF C5 < 1 THEN 770
+725 IF C5 > 8 THEN 770
+730 REM moves to squares already visited are illegal
+732 LET S5 = FNS(R5, C5)
+734 IF V(S5) > 0 THEN 770
+750 REM THE MOVE IS LEGAL
+752 LET P(L,P) = S5
+755 GOTO 790
+770 REM THE MOVE IS NOT LEGAL
+772 LET P(L,P) = -1
+790 RETURN
+
+
+800 PRINT "SUCCESS!"
+810 GOTO 900
+
+820 PRINT "INCOMPLETE"
+
+900 PRINT "THE TOUR IS:"
+910 FOR I = 1 TO 64
+920 LET R = FNR(S(I))
+922 LET C = FNC(S(I))
+930 PRINT R;C
+940 PRINT "TOUR ENDS"
+950 STOP
+
+1520 REM PRINT POSSIBLE MOVES
+1523 PRINT "POSSIBLE MOVES:";
+1524 FOR I = 1 TO 8
+1525 PRINT P(L,I);
+1526 NEXT I
+1527 PRINT
+1529 RETURN
+
+1999 END
