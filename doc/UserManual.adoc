@@ -282,7 +282,10 @@ Syntax:	PROFILE [line specification]
 
 The line specification is the same as the line specification for the LIST and PRETTY commands.
 
-The profile information lists the total execution time for the statement, and the number of times the statement was executed.
+If option TIMING is TRUE, the profile information lists the total execution time for the statement and the number of times the statement was executed.
+If option TIMING is FALSE, the profile information lists only the number of times the statement was executed.
+The latter configuration is useful for regression tests.
+
 Counts are reset at the start of each execution.
 
 Profiling excludes the first phase of processing of certain lines (DATA, FILES, and DEF FN).
@@ -478,6 +481,7 @@ PROFILE
 ~~~~~~~
 
 Prints profile information.
+The TIMING option affects the format of the profile information.
 
 Variables
 ---------

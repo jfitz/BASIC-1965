@@ -11,3 +11,15 @@ Celcius         Fahrenheit
  9               48.2            48.2
  10              50              50
 STOP in line 900
+
+10 (1) REM Convert Celcius to Fahrenheit
+20 (1) PRINT "Celcius", "Fahrenheit"
+30 (1) LET C = 0
+40 (11) LET F = C * 9 / 5 + 32
+42 (11) LET F2 = 32 + (C * 9 / 5)
+50 (11) PRINT C, F, F2
+60 (11) LET C = C + 1
+70 (11) IF C <= 10 THEN 40
+900 (1) STOP
+999 (0) END
+

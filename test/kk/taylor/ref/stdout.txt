@@ -14,3 +14,19 @@ ATN OF  0.99 =  0.78037
  10 TERMS OF THE SERIES YIELD  0.75999
 
 Out of data in line 10
+
+10 (5) READ X, N
+20 (5) LET S = 0
+25 (5) LET F = 1
+30 (5) FOR I = 1 TO N
+40 (37) LET K = 2 * I - 1
+50 (37) LET S = S + F * X ^ K / K
+60 (37) LET F = -F
+70 (37) NEXT I
+80 (5) PRINT "ATN OF " X; "= " ATN(X)
+85 (5) PRINT N; "TERMS OF THE SERIES YIELD " S
+90 (5) PRINT
+91 (5) GOTO 10
+95 (0) DATA 0.5, 2, 0.5, 5, 0.5, 10, -0.75, 10, 0.99, 10
+99 (0) END
+

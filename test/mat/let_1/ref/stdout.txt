@@ -12,3 +12,25 @@
  6               7               8               9               10             
 
 STOP in line 999
+
+10 (1) REM MATRIX ASSIGNMENT
+15 (1) OPTION BASE 0
+20 (1) DIM A(5, 5)
+30 (1) FOR I = 0 TO 5
+40 (6) FOR J = 0 TO 5
+50 (36) LET A(I, J) = I + J
+60 (36) NEXT J
+70 (6) NEXT I
+100 (1) MAT B = A
+110 (1) MAT PRINT B,
+115 (1) OPTION BASE 1
+120 (1) DIM A(5, 5)
+130 (1) FOR I = 1 TO 5
+140 (5) FOR J = 1 TO 5
+150 (25) LET A(I, J) = I + J
+160 (25) NEXT J
+170 (5) NEXT I
+200 (1) MAT B = A
+210 (1) MAT PRINT B,
+999 (1) END
+

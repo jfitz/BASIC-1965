@@ -246,7 +246,7 @@ Iteration 5 :
  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
 
 Calculating moves... done.
-Moves:  0  333  292  317 ( 65.0552 %)
+Moves:  0  333  292  317 ( 65.0553 %)
 
 Filling in new board... done.
 
@@ -295,7 +295,7 @@ Iteration 6 :
  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
 
 Calculating moves... done.
-Moves:  0  335  298  309 ( 65.0552 %)
+Moves:  0  335  298  309 ( 65.0553 %)
 
 Filling in new board... done.
 
@@ -785,7 +785,7 @@ Iteration 16 :
  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
 
 Calculating moves... done.
-Moves:  0  199  186  218 ( 41.6436 %)
+Moves:  0  199  186  218 ( 41.6437 %)
 
 Filling in new board... done.
 
@@ -1177,7 +1177,7 @@ Iteration 24 :
  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
 
 Calculating moves... done.
-Moves:  0  142  139  141 ( 29.1436 %)
+Moves:  0  142  139  141 ( 29.1437 %)
 
 Filling in new board... done.
 
@@ -1324,7 +1324,7 @@ Iteration 27 :
  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
 
 Calculating moves... done.
-Moves:  0  111  114  123 ( 24.0331 %)
+Moves:  0  111  114  123 ( 24.0332 %)
 
 Filling in new board... done.
 
@@ -1912,7 +1912,7 @@ Iteration 39 :
  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
 
 Calculating moves... done.
-Moves:  0  69  58  63 ( 13.1215 %)
+Moves:  0  69  58  63 ( 13.1216 %)
 
 Filling in new board... done.
 
@@ -2551,3 +2551,142 @@ Iteration 52 :
 
 SIMULATION TERMINATED
 STOP in line 990
+
+10 (1) REM SIMULATION OF NEIGHBORS AND MOVES
+20 (1) OPTION BASE 0
+100 (1) REM collect data
+110 (1) READ R0, C0
+120 (1) READ N0
+122 (1) DIM M(N0)
+130 (1) READ D0
+132 (1) READ I0
+134 (1) READ Z8
+136 (1) LET Z0 = R0 * 2 + C0 * 2 + Z8
+150 (1) PRINT "Board size:"; R0 + 1; "x"; C0 + 1
+152 (1) PRINT "Number of populations:"; N0
+154 (1) PRINT "Discomfort threshold:"; D0
+156 (1) PRINT "Iteration threshold:"; I0
+158 (1) PRINT "Number of zero cells:"; Z0
+200 (1) REM configure initial board
+210 (1) PRINT "Initializing board... ";
+220 (1) GOSUB 1100
+230 (1) PRINT "done."
+240 (1) LET I1 = 1
+242 (1) LET P2 = 0.99
+300 (52) REM display board
+310 (52) PRINT
+312 (52) PRINT "Iteration"; I1; ":"
+314 (52) PRINT
+320 (52) GOSUB 1200
+400 (52) REM ask to continue
+410 (52) IF P2 < I0 THEN 900
+430 (51) LET I1 = I1 + 1
+500 (51) REM calculate comfort
+510 (51) PRINT "Calculating moves... ";
+520 (51) GOSUB 1300
+530 (51) PRINT "done."
+540 (51) PRINT "Moves: ";
+542 (51) ARR PRINT M;
+550 (51) LET M = 0
+552 (51) FOR I = 1 TO N0
+554 (153) LET M = M + M(I)
+556 (153) NEXT I
+558 (51) LET T = (R0 + 1) * (C0 + 1) - Z0
+560 (51) LET P2 = M / T
+562 (51) PRINT "("; P2 * 100; "%)"
+570 (51) PRINT
+600 (51) REM fill in new board
+610 (51) PRINT "Filling in new board... ";
+620 (51) GOSUB 1400
+630 (51) PRINT "done."
+700 (51) REM new board becomes the board
+710 (51) MAT B = B1
+800 (51) GOTO 300
+900 (1) REM End the simulation
+910 (1) PRINT
+920 (1) PRINT "SIMULATION TERMINATED"
+990 (1) STOP
+1100 (1) REM configure initial board
+1110 (1) REM SET EVERYTHING TO -1
+1112 (1) MAT B = CON(R0, C0) * -1
+1120 (1) REM SET HORIZONTAL BORDERS TO 0
+1122 (1) FOR C = 0 TO C0
+1124 (41) LET B(0, C) = 0
+1126 (41) LET B(R0, C) = 0
+1128 (41) NEXT C
+1130 (1) REM SET VERTICAL BORDERS TO 0
+1132 (1) FOR R = 0 TO R0
+1134 (41) LET B(R, 0) = 0
+1136 (41) LET B(R, C0) = 0
+1138 (41) NEXT R
+1140 (1) REM SET INSIDE EMPTY AREAS TO 0
+1142 (1) FOR I = 1 TO Z8
+1144 (73) READ R, C
+1146 (73) LET B(R, C) = 0
+1148 (73) NEXT I
+1150 (1) REM SET REMAINING CELLS TO POPULATION GROUP
+1152 (1) FOR R = 1 TO R0 - 1
+1153 (39) FOR C = 1 TO C0 - 1
+1154 (1521) IF B(R, C) <> -1 THEN 1157
+1155 (1448) LET B(R, C) = INT(RND(N0) + 1)
+1157 (1521) NEXT C
+1158 (39) NEXT R
+1190 (1) RETURN
+1200 (52) REM display board
+1210 (52) MAT PRINT B;
+1290 (52) RETURN
+1300 (51) REM calculate comfort, count people who move
+1302 (51) MAT B1 = B
+1304 (51) MAT M = ZER()
+1310 (51) FOR R = 1 TO R0 - 1
+1312 (1989) FOR C = 1 TO C0 - 1
+1314 (77571) IF B(R, C) = 0 THEN 1380
+1317 (73848) LET X7 = 0
+1318 (73848) LET X8 = 0
+1320 (73848) FOR I9 = -1 TO 1
+1322 (221544) FOR J9 = -1 TO 1
+1330 (664632) IF B(R + I9, C + J9) = 0 THEN 1340
+1332 (620058) IF B(R + I9, C + J9) = B(R, C) THEN 1340
+1334 (176554) LET X8 = X8 + 1
+1336 (176554) GOTO 1350
+1340 (488078) LET X7 = X7 + 1
+1350 (664632) NEXT J9
+1352 (221544) NEXT I9
+1360 (73848) LET X = X8 / X7
+1370 (73848) IF X < D0 THEN 1380
+1372 (23947) LET M(B(R, C)) = M(B(R, C)) + 1
+1374 (23947) LET B1(R, C) = -1
+1380 (77571) NEXT C
+1382 (1989) NEXT R
+1390 (51) RETURN
+1400 (51) REM fill in new board
+1410 (51) FOR R = 1 TO R0 - 1
+1412 (1989) FOR C = 1 TO C0 - 1
+1420 (77571) IF B1(R, C) <> -1 THEN 1450
+1430 (26080) LET P = INT(RND(N0) + 1)
+1432 (26080) IF M(P) <= 0 THEN 1430
+1440 (23947) LET B1(R, C) = P
+1442 (23947) LET M(P) = M(P) - 1
+1450 (77571) NEXT C
+1452 (1989) NEXT R
+1490 (51) RETURN
+3000 (0) REM NUMBER OF ROWS AND COLUMNS
+3005 (0) DATA 40, 40
+3010 (0) REM NUMBER OF POPULATION GROUPS
+3012 (0) DATA 3
+3020 (0) REM DISCOMFORT THRESHOLD, ITERATION THRESHOLD
+3022 (0) DATA 0.8, 0.10
+3030 (0) REM NUMBER OF ZERO-CELLS
+3032 (0) DATA 73
+3050 (0) REM COORDS FOR ZERO-CELLS
+3051 (0) DATA 1, 10, 2, 10, 3, 10, 4, 10, 5, 10
+3052 (0) DATA 39, 20, 38, 20, 37, 20, 36, 20, 35, 20, 34, 20, 33, 20, 32, 20, 31, 20, 30, 20
+3053 (0) DATA 29, 20, 28, 20, 27, 20, 26, 20, 25, 20
+3054 (0) DATA 6, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 18
+3055 (0) DATA 12, 1, 12, 2, 12, 3, 12, 4, 12, 5, 12, 6
+3056 (0) DATA 18, 39, 18, 38, 18, 37, 18, 36, 18, 35, 18, 34
+3057 (0) DATA 24, 19, 23, 18, 22, 17, 21, 16, 20, 15, 19, 14, 18, 13, 17, 12, 16, 11
+3058 (0) DATA 24, 21, 23, 22, 22, 23, 21, 24, 20, 25, 19, 26, 18, 27, 17, 28, 16, 29, 16, 30, 16, 31, 16, 32, 17, 33
+3059 (0) DATA 24, 20, 23, 20, 22, 20, 21, 20, 20, 20, 19, 20, 18, 20, 17, 20, 16, 20, 15, 20, 14, 19, 13, 19
+4999 (0) END
+

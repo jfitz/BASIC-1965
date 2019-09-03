@@ -24,6 +24,8 @@
 200 REM Calculate row from square
  Remark:Calculate row from square
 202 DEF FNR(S)=INT(S / 8) + 1
+ UserFunctionName:FNR
+ VariableName:S
  Variable:S
  NumericConstant:8
  BinaryOperator:/
@@ -33,6 +35,8 @@
 210 REM Calculate column from square
  Remark:Calculate column from square
 212 DEF FNC(S)=MOD(S, 8) + 1
+ UserFunctionName:FNC
+ VariableName:S
  Variable:S
  NumericConstant:8
  FunctionMod
@@ -41,6 +45,9 @@
 220 REM Calculate square from row and column
  Remark:Calculate square from row and column
 222 DEF FNS(R,C)=(R - 1) * 8 + (C - 1)
+ UserFunctionName:FNS
+ VariableName:R
+ VariableName:C
  Variable:R
  NumericConstant:1
  BinaryOperator:-

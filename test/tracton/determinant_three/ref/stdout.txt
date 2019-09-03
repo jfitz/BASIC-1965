@@ -15,3 +15,38 @@ INVERSE OF MATRIX
 TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
 STOP in line 320
+
+10 (1) REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+20 (1) PRINT "ENTER 3 X 3 MATRIX"
+30 (1) INPUT A, B, C, D, E, F, G, H, I
+40 (1) REM COMPUTE DETERMINANT OF 3X3
+50 (1) LET M = (A * E * I) + (B * F * G) + (C * H * D)
+60 (1) LET N = M - (C * E * G) - (F * H * A) - (I * D * B)
+70 (1) REM COMPUTE INVERSE
+80 (1) LET O = ((E * I) - (H * F)) / N
+90 (1) LET P = ((G * F) - (D * I)) / N
+100 (1) LET Q = ((D * H) - (G * E)) / N
+110 (1) LET R = ((H * C) - (B * I)) / N
+120 (1) LET S = ((A * I) - (G * C)) / N
+130 (1) LET T = ((G * B) - (A * H)) / N
+140 (1) LET U = ((B * F) - (E * C)) / N
+150 (1) LET V = ((D * C) - (A * F)) / N
+160 (1) LET W = ((A * E) - (D * B)) / N
+170 (1) PRINT "ORIGINAL MATRIX"
+180 (1) PRINT A, B, C
+190 (1) PRINT D, E, F
+200 (1) PRINT G, H, I
+210 (1) PRINT
+220 (1) PRINT "DETERMINANT = "; N
+230 (1) PRINT
+240 (1) PRINT "INVERSE OF MATRIX"
+250 (1) PRINT O, R, U
+260 (1) PRINT P, S, V
+270 (1) PRINT Q, T, W
+280 (1) PRINT
+290 (1) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+300 (1) INPUT L
+310 (1) IF L = 1 THEN 20
+320 (1) STOP
+330 (0) END
+

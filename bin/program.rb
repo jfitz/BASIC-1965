@@ -116,8 +116,8 @@ class Line
     @statements.each { |statement| texts << statement.dump }
   end
 
-  def profile
-    @statement.profile
+  def profile(show_profile)
+    @statement.profile(show_profile)
   end
 
   def renumber(renumber_map)
@@ -355,7 +355,7 @@ class Program
     interpreter.run(self)
   end
 
-  def profile(args)
+  def profile(args, show_timing)
     line_number_range = line_list_spec(args)
 
     if @lines.empty?
@@ -364,7 +364,7 @@ class Program
     end
 
     line_numbers = line_number_range.line_numbers
-    profile_lines_errors(line_numbers)
+    profile_lines_errors(line_numbers, show_timing)
   end
 
   private
@@ -463,16 +463,6 @@ class Program
     end
 
     save_file(filename)
-  end
-
-  def print_profile
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
-      number = line_number.to_s
-      profile = line.profile
-      text = number + profile
-      @console_io.print_line(text)
-    end
   end
 
   def delete(args)
@@ -769,13 +759,13 @@ class Program
     end
   end
 
-  def profile_lines_errors(line_numbers)
+  def profile_lines_errors(line_numbers, show_timing)
     line_numbers.each do |line_number|
       line = @lines[line_number]
       number = line_number.to_s
 
       # print the line
-      profile = line.profile
+      profile = line.profile(show_timing)
       @console_io.print_line(number + profile)
 
       # print the errors

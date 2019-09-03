@@ -254,9 +254,13 @@ class AbstractStatement
     @profile_count += 1
   end
 
-  def profile
+  def profile(show_timing)
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
-    ' (' + @profile_time.round(4).to_s + '/' + @profile_count.to_s + ')' + text
+    if show_timing
+      ' (' + @profile_time.round(4).to_s + '/' + @profile_count.to_s + ')' + text
+    else
+      ' (' + @profile_count.to_s + ')' + text
+    end
   end
 
   def renumber(_) end

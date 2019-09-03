@@ -11,3 +11,22 @@ SCALAR MULTIPLE
  0.75            0.5             0.25           
 
 STOP in line 999
+
+100 (1) MAT READ A(2, 3), B(2, 3)
+110 (1)
+130 (1) MAT S = A + B
+140 (1) PRINT "THE SUM"
+150 (1) MAT PRINT S
+160 (1)
+170 (1) MAT D = A - B
+180 (1) PRINT "THE DIFFERENCE"
+190 (1) MAT PRINT D
+200 (1)
+210 (1) MAT K = (1 / 4) * A
+220 (1) PRINT "SCALAR MULTIPLE"
+230 (1) MAT PRINT K
+240 (1)
+900 (1) DATA 1, 4, 7, 3, 2, 1
+910 (1) DATA 3, -2, 6, 2, -5, -1
+999 (1) END
+

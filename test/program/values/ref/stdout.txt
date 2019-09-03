@@ -6,3 +6,21 @@ E1= 120
 E2= 120
 E3= 0.012
 STOP in line 999
+
+10 (1) REM Test different values
+20 (1) LET A = 10
+30 (1) LET B = -5
+40 (1) LET C = 20.25
+50 (1) LET D = -15.333
+60 (1) LET E1 = 1.2E2
+62 (1) LET E2 = 1.2E+2
+64 (1) LET E3 = 1.2E-2
+120 (1) PRINT "A="; A
+130 (1) PRINT "B="; B
+140 (1) PRINT "C="; C
+150 (1) PRINT "D="; D
+160 (1) PRINT "E1="; E1
+162 (1) PRINT "E2="; E2
+164 (1) PRINT "E3="; E3
+999 (1) END
+
