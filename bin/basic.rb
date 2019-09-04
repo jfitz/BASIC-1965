@@ -316,7 +316,7 @@ def make_command_tokenbuilders
   keywords = %w(
     BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE PRETTY
     PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
-    BASE DECIMALS DEFAULT_PROMPT DETECT_INFINITE_LOOP
+    BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
     ECHO HEADING
     IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
@@ -358,7 +358,6 @@ OptionParser.new do |opt|
   opt.on('-c', '--crossref SOURCE') { |o| options[:cref_name] = o }
   opt.on('--parse SOURCE') { |o| options[:parse_name] = o }
   opt.on('--base BASE') { |o| options[:base] = o }
-  opt.on('--decimals DIGITS') { |o| options[:decimals] = o }
   opt.on('--no-detect-infinite-loop') { |o| options[:no_detect_infinite_loop] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
@@ -406,10 +405,6 @@ base = 0
 base = options[:base].to_i if options.key?(:base)
 $options['base'] = Option.new(int_1, base)
 
-decimals = 5
-decimals = options[:decimals] if options.key?(:decimals)
-$options['decimals'] = Option.new(int_1_15, decimals)
-
 $options['default_prompt'] = Option.new(string, '? ')
 
 $options['detect_infinite_loop'] =
@@ -437,7 +432,7 @@ newline_speed = 0
 newline_speed = 10 if options.key?(:tty_lf)
 $options['newline_speed'] = Option.new(int, newline_speed)
 
-precision = 7
+precision = 6
 precision = options[:precision].to_i if options.key?(:precision)
 $options['precision'] = Option.new(int_1_16, precision)
 

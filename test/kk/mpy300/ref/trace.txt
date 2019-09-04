@@ -1206,7 +1206,7 @@ EQUALS
  A(2): 456
  K: 2
  B(2): 654
- C(4) = 1076967
+ C(4) = 1076970
 390: NEXT K
  K: 2
  terminated:false
@@ -1257,7 +1257,7 @@ EQUALS
  I = 4
 380: LET C(I) = C(I) + A(J) * B(K)
  I: 4
- C(4): 1076967
+ C(4): 1076970
  J: 3
  A(3): 123
  K: 1
@@ -1392,23 +1392,23 @@ EQUALS
  I: 3
  C(4): 1116450
  M: 991
- C(4) = 1117441
+ C(4) = 1117440
 3070: NEXT I
  I: 3
  terminated:false
  I = 4
 3030: LET N = C(I)
  I: 4
- C(4): 1117441
- N = 1117441
+ C(4): 1117440
+ N = 1117440
 3040: LET M = INT(N / 1000)
- N: 1117441
+ N: 1117440
  M = 1117
 3050: LET C(I) = N - 1000 * M
  I: 4
- N: 1117441
+ N: 1117440
  M: 1117
- C(4) = 441
+ C(4) = 440
 3060: LET C(I + 1) = C(I + 1) + M
  I: 4
  C(5): 530514
@@ -1705,22 +1705,22 @@ EQUALS
  I = 4
 2220: LET N = C(I)
  I: 4
- C(4): 441
- N = 441
+ C(4): 440
+ N = 440
 2230: LET Q = 100
  Q = 100
 2240: FOR J = 1 TO 3
  J = 1
  terminated:false
 2250: LET M = INT(N / Q)
- N: 441
+ N: 440
  Q: 100
  M = 4
 2260: LET N = N - M * Q
- N: 441
+ N: 440
  M: 4
  Q: 100
- N = 41
+ N = 40
 2270: LET Q = Q / 10
  Q: 100
  Q = 10
@@ -1732,14 +1732,14 @@ EQUALS
  terminated:false
  J = 2
 2250: LET M = INT(N / Q)
- N: 41
+ N: 40
  Q: 10
  M = 4
 2260: LET N = N - M * Q
- N: 41
+ N: 40
  M: 4
  Q: 10
- N = 1
+ N = 0
 2270: LET Q = Q / 10
  Q: 10
  Q = 1
@@ -1751,20 +1751,20 @@ EQUALS
  terminated:false
  J = 3
 2250: LET M = INT(N / Q)
- N: 1
+ N: 0
  Q: 1
- M = 1
+ M = 0
 2260: LET N = N - M * Q
- N: 1
- M: 1
+ N: 0
+ M: 0
  Q: 1
  N = 0
 2270: LET Q = Q / 10
  Q: 1
  Q = 0.1
 2280: PRINT M;
- M: 1
- 1 
+ M: 0
+ 0 
 2290: NEXT J
  J: 3
  terminated:true
