@@ -278,6 +278,70 @@ class Program
     end
   end
 
+  def analyze
+    # build list of "gotos"
+    gotos = {}
+    @lines.keys.each do |line_number|
+      statement = @lines[line_number].statement
+      statement_gotos = statement.gotos
+
+      autonext = statement.autonext
+      if autonext
+        next_line_number = find_next_line_number(line_number)
+        statement_gotos << next_line_number unless next_line_number.nil?
+      end
+
+      gotos[line_number] = statement_gotos
+    end
+
+    # assume statements are dead until connected to a live statement
+    reachable = {}
+    @lines.keys.each { |line_number| reachable[line_number] = false }
+
+    # first line is live
+    first_line_number = @lines.keys.sort[0]
+    reachable[first_line_number] = true
+
+    # walk the entire tree and mark lines as live
+    # repeat until no changes
+    any_changes = true
+    while any_changes
+      any_changes = false
+
+      @lines.keys.each do |line_number|
+        if reachable[line_number]
+          # a live line updates its gotos to live
+          statement_gotos = gotos[line_number]
+          statement_gotos.each do |goto_number|
+            if !reachable[goto_number]
+              reachable[goto_number] = true
+              any_changes = true
+            end
+          end
+        end
+      end
+    end
+
+    # report the lines which are dead
+    @console_io.print_line('Unreachable code')
+    @console_io.newline
+
+    # gotos.keys.each { |line_number| puts("#{line_number}: #{gotos[line_number]}") }
+
+    printed_any = false
+    reachable.keys.each do |line_number|
+      statement = @lines[line_number].statement
+      if statement.executable? && !reachable[line_number]
+        @console_io.print_line("#{line_number}:#{statement.pretty}")
+        printed_any = true
+      end
+    end
+
+    puts('All executable lines are reachable.') if !printed_any
+
+    @console_io.newline
+  end
+
   def pretty(args)
     line_number_range = line_list_spec(args)
 

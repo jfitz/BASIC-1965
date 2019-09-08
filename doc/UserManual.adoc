@@ -107,7 +107,8 @@ When the BASIC program ends, BASIC-1965 ends.
 |--profile |Display profile information after a program is run.
 |--list filename |Specifies the file to load and list. May be abbreviated as -l
 |--pretty filename |Specifies the file to load and pretty-print. May be abbreviated as -p
-|--parse filename |specifies the file to load and parse.
+|--parse filename |Specifies the file to load and parse.
+|--analyze filename |Specifies the file to load and analyze.
 |--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
 |--no-detect-infinite-loop |Disables checks for infinite loops.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
@@ -339,6 +340,12 @@ Similar to LIST and TOKENS, the PARSE command displays a line or group of lines,
 Syntax:	PARSE [line specification]
 
 The line specification is the same as the line specification for the LIST command.
+
+ANALYZE
+~~~~~~~
+
+Analyzes the code and lists lines which are not reachable.
+That is, the listed lines can never be executed.
 
 OPTION
 ~~~~~~

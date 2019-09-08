@@ -67,6 +67,29 @@ then
     fi
 fi
 
+if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.txt" ]
+then
+    if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/data/analyze_options.txt" ]
+    then
+	ANALYZE_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/analyze_options.txt")
+    fi
+
+    echo Analyze program with options $GROUP_OPTIONS $TEST_OPTIONS $ANALYZE_OPTIONS
+    cd "$TESTBED/$TESTNAME"
+    ruby basic.rb --analyze $TESTNAME.bas --no-heading --print-width 0 >analyze.txt $GROUP_OPTIONS $TEST_OPTIONS $ANALYZE_OPTIONS
+    cd ../..
+
+    echo Compare analyze...
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.txt" "$TESTBED/$TESTNAME/analyze.txt"
+    ((ECODE=$?))
+
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/analyze.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.txt"
+    fi
+fi
+
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/pretty.txt" ]
 then
     if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/data/pretty_options.txt" ]

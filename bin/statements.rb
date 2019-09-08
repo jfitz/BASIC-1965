@@ -179,6 +179,7 @@ class AbstractStatement
   attr_reader :functions
   attr_reader :userfuncs
   attr_reader :linenums
+  attr_reader :autonext
 
   def self.extra_keywords
     []
@@ -186,6 +187,7 @@ class AbstractStatement
 
   def initialize(keywords, tokens_lists)
     @keywords = keywords
+    @executable = true
     @tokens = tokens_lists.flatten
     @errors = []
     @numerics = []
@@ -194,8 +196,13 @@ class AbstractStatement
     @functions = []
     @userfuncs = []
     @linenums = []
+    @autonext = true
     @profile_count = 0
     @profile_time = 0
+  end
+
+  def executable?
+    @executable
   end
 
   def pretty
@@ -205,6 +212,10 @@ class AbstractStatement
 
   def dump
     ['Unimplemented']
+  end
+
+  def gotos
+    []
   end
 
   def print_errors(console_io)
@@ -364,6 +375,7 @@ class InvalidStatement < AbstractStatement
   def initialize(text, tokens_lists, error)
     super([], tokens_lists)
 
+    @executable = false
     @text = text
     @errors << 'Invalid statement: ' + error.message
   end
@@ -386,6 +398,7 @@ class UnknownStatement < AbstractStatement
   def initialize(text)
     super([], [])
 
+    @executable = false
     @text = text
     @errors << "Unknown statement '#{@text.strip}'"
   end
@@ -401,6 +414,8 @@ end
 class EmptyStatement < AbstractStatement
   def initialize
     super([], [])
+
+    @executable = false
   end
 
   def dump
@@ -426,6 +441,7 @@ class RemarkStatement < AbstractStatement
   def initialize(keywords, tokens_lists)
     super
 
+    @executable = false
     @rest = Remark.new(nil)
     @rest = Remark.new(tokens_lists[0]) unless tokens_lists.empty?
   end
@@ -484,6 +500,8 @@ class DataStatement < AbstractStatement
   def initialize(keywords, tokens_lists)
     super
 
+    @executable = false
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -521,6 +539,8 @@ class DefineFunctionStatement < AbstractStatement
 
   def initialize(keywords, tokens_lists)
     super
+
+    @executable = false
 
     template = [[1, '>=']]
 
@@ -623,6 +643,9 @@ class EndStatement < AbstractStatement
   def initialize(keywords, tokens_lists)
     super
 
+    @autonext = false
+    @executable = false
+
     template = []
 
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
@@ -659,6 +682,8 @@ class FilesStatement < AbstractStatement
 
   def initialize(keywords, tokens_lists)
     super
+
+    @executable = false
 
     template = [[1, '>=']]
 
@@ -825,6 +850,10 @@ class GosubStatement < AbstractStatement
     [@destination.dump]
   end
 
+  def gotos
+    [@destination]
+  end
+
   def program_check(program, console_io, line_number)
     return true if program.line_number?(@destination)
     console_io.print_line("Line number #{@destination} not found in line #{line_number}")
@@ -854,6 +883,8 @@ class GotoStatement < AbstractStatement
   def initialize(keywords, tokens_lists)
     super
 
+    @autonext = false
+
     template = [[1]]
 
     if check_template(tokens_lists, template)
@@ -870,6 +901,10 @@ class GotoStatement < AbstractStatement
 
   def dump
     [@destination.dump]
+  end
+
+  def gotos
+    [@destination]
   end
 
   def program_check(program, console_io, line_number)
@@ -928,6 +963,10 @@ class IfStatement < AbstractStatement
     lines = []
     lines += @expression.dump unless @expression.nil?
     lines
+  end
+
+  def gotos
+    [@destination]
   end
 
   def program_check(program, console_io, line_number)
@@ -1600,6 +1639,8 @@ class ReturnStatement < AbstractStatement
 
   def initialize(keywords, tokens_lists)
     super
+    @autonext = false
+
     template = []
 
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
@@ -1624,6 +1665,8 @@ class StopStatement < AbstractStatement
 
   def initialize(keywords, tokens_lists)
     super
+    @autonext = false
+
     template = []
 
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
