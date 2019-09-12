@@ -279,6 +279,81 @@ class Program
   end
 
   def analyze
+    if !@lines.empty?
+      # report statistics
+      @console_io.print_line('Statistics')
+      @console_io.newline
+      lines = code_statistics
+      lines.each { |line| @console_io.print_line(line) }
+      @console_io.newline
+
+      # report complexity
+      @console_io.print_line('Complexity')
+      @console_io.newline
+      lines = code_complexity
+      lines.each { |line| @console_io.print_line(line) }
+      @console_io.newline
+
+      # report unreachable lines
+      @console_io.print_line('Unreachable code')
+      @console_io.newline
+      lines = unreachable_code
+      lines.each { |line| @console_io.print_line(line) }
+      @console_io.newline
+    else
+      @console_io.print_line('No program loaded')
+    end
+  end
+
+  def pretty(args)
+    line_number_range = line_list_spec(args)
+
+    if !@lines.empty?
+      line_numbers = line_number_range.line_numbers
+      pretty_lines_errors(line_numbers)
+      @errors.each { |error| @console_io.print_line(error) }
+    else
+      @console_io.print_line('No program loaded')
+    end
+  end
+
+  private
+
+  def reset_profile_metrics
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statement = line.statement
+      statement.reset_profile_metrics
+    end
+  end
+
+  def code_statistics
+    lines = []
+
+    lines << 'Number of lines: ' + @lines.size.to_s
+    lines << 'Number of valid statements: ' + number_valid_statements.to_s
+    lines << 'Number of comments: ' + number_comments.to_s
+  end
+
+  def number_valid_statements
+    num = 0
+    @lines.each do |line_number, line|
+      statement = line.statement
+      num += 1 if statement.valid
+    end
+    num
+  end
+
+  def number_comments
+    num = 0
+    @lines.each do |line_number, line|
+      statement = line.statement
+      num += 1 if statement.comment
+    end
+    num
+  end
+  
+  def unreachable_code
     # build list of "gotos"
     gotos = {}
     @lines.keys.each do |line_number|
@@ -309,6 +384,7 @@ class Program
       any_changes = false
 
       @lines.keys.each do |line_number|
+        # only reachable lines can reach other lines
         if reachable[line_number]
           # a live line updates its gotos to live
           statement_gotos = gotos[line_number]
@@ -322,46 +398,25 @@ class Program
       end
     end
 
-    # report the lines which are dead
-    @console_io.print_line('Unreachable code')
-    @console_io.newline
-
     # gotos.keys.each { |line_number| puts("#{line_number}: #{gotos[line_number]}") }
 
-    printed_any = false
+    # build list of lines that are not reachable
+    lines = []
     reachable.keys.each do |line_number|
       statement = @lines[line_number].statement
-      if statement.executable? && !reachable[line_number]
-        @console_io.print_line("#{line_number}:#{statement.pretty}")
-        printed_any = true
-      end
+      lines << "#{line_number}:#{statement.pretty}" if
+        statement.executable? && !reachable[line_number]
     end
 
-    puts('All executable lines are reachable.') if !printed_any
-
-    @console_io.newline
+    lines << 'All executable lines are reachable.' if lines.empty?
+    lines
   end
 
-  def pretty(args)
-    line_number_range = line_list_spec(args)
+  def code_complexity
+    lines = []
 
-    if !@lines.empty?
-      line_numbers = line_number_range.line_numbers
-      pretty_lines_errors(line_numbers)
-      @errors.each { |error| @console_io.print_line(error) }
-    else
-      @console_io.print_line('No program loaded')
-    end
-  end
-
-  private
-
-  def reset_profile_metrics
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
-      statement = line.statement
-      statement.reset_profile_metrics
-    end
+    density = number_comments.to_f / number_valid_statements.to_f
+    lines << 'Comment density: ' + ('%.3f' % density)
   end
 
   public

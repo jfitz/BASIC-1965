@@ -173,6 +173,8 @@ class AbstractStatement
   attr_reader :errors
   attr_reader :keywords
   attr_reader :tokens
+  attr_reader :valid
+  attr_reader :comment
   attr_reader :numerics
   attr_reader :strings
   attr_reader :variables
@@ -190,6 +192,8 @@ class AbstractStatement
     @executable = true
     @tokens = tokens_lists.flatten
     @errors = []
+    @valid = true
+    @comment = false
     @numerics = []
     @strings = []
     @variables = []
@@ -375,6 +379,7 @@ class InvalidStatement < AbstractStatement
   def initialize(text, tokens_lists, error)
     super([], tokens_lists)
 
+    @valid = false
     @executable = false
     @text = text
     @errors << 'Invalid statement: ' + error.message
@@ -398,6 +403,7 @@ class UnknownStatement < AbstractStatement
   def initialize(text)
     super([], [])
 
+    @valid = false
     @executable = false
     @text = text
     @errors << "Unknown statement '#{@text.strip}'"
@@ -415,6 +421,7 @@ class EmptyStatement < AbstractStatement
   def initialize
     super([], [])
 
+    @valid = false
     @executable = false
   end
 
@@ -441,6 +448,8 @@ class RemarkStatement < AbstractStatement
   def initialize(keywords, tokens_lists)
     super
 
+    @valid = false
+    @comment = true
     @executable = false
     @rest = Remark.new(nil)
     @rest = Remark.new(tokens_lists[0]) unless tokens_lists.empty?
