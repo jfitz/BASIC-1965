@@ -295,8 +295,8 @@ def make_interpreter_tokenbuilders
 
   tokenbuilders << BreakTokenBuilder.new
 
-  tokenbuilders << ListTokenBuilder.new(['(', '['], GroupStartToken)
-  tokenbuilders << ListTokenBuilder.new([')', ']'], GroupEndToken)
+  tokenbuilders << ListTokenBuilder.new(['('], GroupStartToken)
+  tokenbuilders << ListTokenBuilder.new([')'], GroupEndToken)
   tokenbuilders << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
 
   tokenbuilders <<
