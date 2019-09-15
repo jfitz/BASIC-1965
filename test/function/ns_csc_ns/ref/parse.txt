@@ -1,0 +1,36 @@
+10 LET P = 3.14159
+ Variable:P
+ NumericConstant:3.14159
+ AssignmentOperator:=
+20 PRINT "ANGLE","COSECANT"
+ ITEMS
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"COSECANT"
+ CarriageControl:NL
+30 FOR I = 0 TO 2 STEP 0.1
+ control: Variable:I
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:2"]
+ step:    ["NumericConstant:0.1"]
+40 LET A = I * P
+ Variable:A
+ Variable:I
+ Variable:P
+ BinaryOperator:*
+ AssignmentOperator:=
+50 LET C = CSC(A)
+ Variable:C
+ Variable:A
+ FunctionCsc
+ AssignmentOperator:=
+60 PRINT A, C
+ ITEMS
+ Variable:A
+ CarriageControl:,
+ Variable:C
+ CarriageControl:NL
+70 NEXT I
+ Variable:I
+99 END
+ 

@@ -1,0 +1,65 @@
+10 REM TEST ARCTAN 2 ARGS
+ Remark:TEST ARCTAN 2 ARGS
+20 PRINT "Y","X","ARCTAN"
+ ITEMS
+ TextConstant:"Y"
+ CarriageControl:,
+ TextConstant:"X"
+ CarriageControl:,
+ TextConstant:"ARCTAN"
+ CarriageControl:NL
+30 READ Y,X
+ Variable:Y
+ Variable:X
+40 IF X+Y = X*Y THEN 99
+ Variable:X
+ Variable:Y
+ BinaryOperator:+
+ Variable:X
+ Variable:Y
+ BinaryOperator:*
+ BinaryOperator:=
+54 LET A = ATN(Y,X)
+ Variable:A
+ Variable:Y
+ Variable:X
+ FunctionAtn
+ AssignmentOperator:=
+56 PRINT Y, X, A
+ ITEMS
+ Variable:Y
+ CarriageControl:,
+ Variable:X
+ CarriageControl:,
+ Variable:A
+ CarriageControl:NL
+60 GOTO 30
+ LineNumber:30
+90 DATA -0,-1, -1,-1, -1,0, -1,1, 0,1, 1,1, 1,0, 1,-1, 0,0
+ NumericConstant:0
+ UnaryOperator:-
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:0
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:1
+ NumericConstant:0
+ NumericConstant:1
+ NumericConstant:1
+ NumericConstant:1
+ NumericConstant:1
+ NumericConstant:0
+ NumericConstant:1
+ NumericConstant:1
+ UnaryOperator:-
+ NumericConstant:0
+ NumericConstant:0
+99 END
+ 

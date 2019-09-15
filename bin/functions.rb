@@ -285,16 +285,23 @@ class FunctionAtn < AbstractScalarFunction
   def initialize(text)
     super
 
-    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
+    @signature_2 = [
+      { 'type' => :numeric, 'shape' => :scalar },
+      { 'type' => :numeric, 'shape' => :scalar }
+    ]
   end
 
   def evaluate(_, stack)
     args = stack.pop
 
-    raise(BASICRuntimeError, 'Wrong arguments for function') unless
-      match_args_to_signature(args, @signature)
-
-    args[0].atn
+    if match_args_to_signature(args, @signature_1)
+      args[0].atn
+    elsif match_args_to_signature(args, @signature_2)
+      args[0].atn2(args[1])
+    else
+      raise(BASICRuntimeError, 'Wrong arguments for function')
+    end
   end
 end
 
@@ -352,6 +359,42 @@ class FunctionCos < AbstractScalarFunction
       match_args_to_signature(args, @signature)
 
     args[0].cos
+  end
+end
+
+# function COT
+class FunctionCot < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise(BASICRuntimeError, 'Wrong arguments for function') unless
+      match_args_to_signature(args, @signature)
+
+    args[0].cot
+  end
+end
+
+# function CSC
+class FunctionCsc < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise(BASICRuntimeError, 'Wrong arguments for function') unless
+      match_args_to_signature(args, @signature)
+
+    args[0].csc
   end
 end
 
@@ -585,6 +628,24 @@ class FunctionRnd < AbstractScalarFunction
   end
 end
 
+# function SEC
+class FunctionSec < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise(BASICRuntimeError, 'Wrong arguments for function') unless
+      match_args_to_signature(args, @signature)
+
+    args[0].sec
+  end
+end
+
 # function SGN
 class FunctionSgn < AbstractScalarFunction
   def initialize(text)
@@ -723,6 +784,8 @@ class FunctionFactory
     'ATN' => FunctionAtn,
     'CON' => FunctionCon,
     'COS' => FunctionCos,
+    'COT' => FunctionCot,
+    'CSC' => FunctionCsc,
     'DET' => FunctionDet,
     'EXP' => FunctionExp,
     'FRA' => FunctionFra,
@@ -733,6 +796,7 @@ class FunctionFactory
     'MOD' => FunctionMod,
     'RND' => FunctionRnd,
     'ROUND' => FunctionRound,
+    'SEC' => FunctionSec,
     'SGN' => FunctionSgn,
     'SIN' => FunctionSin,
     'SQR' => FunctionSqr,

@@ -390,6 +390,8 @@ class NumericConstant < AbstractValueElement
   private
 
   def float_to_possible_int(f)
+    return f if f == Float::INFINITY
+
     i = f.to_i
     frac = f - i
     frac.zero? || (!i.zero? && frac.abs < 1e-7) ? i : f
@@ -412,7 +414,7 @@ class NumericConstant < AbstractValueElement
     raise(BASICRuntimeError, "'#{text}' is not a number") if f.nil?
 
     precision = $options['precision'].value
-    if precision != 0
+    if precision != 0 && f != Float::INFINITY
       if f != 0
         abs = f.abs
         log = Math.log10(abs)
@@ -558,8 +560,34 @@ class NumericConstant < AbstractValueElement
     NumericConstant.new(@value >= 0 ? Math.tan(@value) : 0)
   end
 
+  def cot
+    cos = Math.cos(@value)
+    sin = Math.sin(@value)
+    cot = Float::INFINITY
+    cot = cos / sin if sin.nonzero?
+    NumericConstant.new(cot)
+  end
+
   def atn
     NumericConstant.new(Math.atan(@value))
+  end
+
+  def atn2(a2)
+    NumericConstant.new(Math.atan2(@value, a2.to_f))
+  end
+
+  def sec
+    cos = Math.cos(@value)
+    sec = Float::INFINITY
+    sec = 1 / cos if cos.nonzero?
+    NumericConstant.new(sec)
+  end
+
+  def csc
+    sin = Math.sin(@value)
+    csc = Float::INFINITY
+    csc = 1 / sin if sin.nonzero?
+    NumericConstant.new(csc)
   end
 
   def sign

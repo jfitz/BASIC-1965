@@ -1555,10 +1555,13 @@ Functions may be used in numeric expressions.
 |Function |Result
 |ABS(x) |Computes the absolute value of x.
 |ATN(x) |Computes the arctangent of x, providing the answer in radians.
+|ATN(y,x) |Computes the arctangent of y and x, providing the answer in radians.
 |CON(x) |Creates an array containing all ones, with x columns
 |CON(x,y) |Creates a matrix containing all ones, with x rows and y columns.
 |CON or CON() |Creates an array or matrix containins all ones, with dimensions based on the assignment target.
 |COS(x) |Computes the cosine of x, where x is in radians.
+|COT(x) |Computes the cotangent of x, where x is in radians.
+|CSC(x) |Computes the cosecant of x, where x is in radians.
 |DET(m)	|Computes the determinant of the matrix. The matrix must be square.
 |EXP(x) |Computes e to the x power.
 |FRAC(x) |numeric |Return the fraction part of a numeric value. Retains the sign of the original value.
@@ -1572,6 +1575,7 @@ Functions may be used in numeric expressions.
 |RND() |Equivalent to RND(1).
 |RND |Special form of RND, equivalent to RND(1).
 |ROUND(x,p) |Rounds the value x to p places.
+|SEC(x) |Computes the secant of x, where x is in radians.
 |SGN(x) |Returns 1, 0, or -1, for positive, zero, or negative values of x.
 |SIN(x) |Computes the sine of x, where x is in radians.
 |SQR(x) |Computes the square root of x. A negative value will cause an error.
