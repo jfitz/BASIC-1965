@@ -535,6 +535,27 @@ class FunctionMod < AbstractScalarFunction
   end
 end
 
+# function ROUND
+class FunctionRound < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [
+      { 'type' => :numeric, 'shape' => :scalar },
+      { 'type' => :numeric, 'shape' => :scalar }
+    ]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise(BASICRuntimeError, 'Wrong arguments for function') unless
+      match_args_to_signature(args, @signature)
+
+    args[0].round(args[1])
+  end
+end
+
 # function RND
 class FunctionRnd < AbstractScalarFunction
   def initialize(text)
@@ -711,6 +732,7 @@ class FunctionFactory
     'LOG' => FunctionLog,
     'MOD' => FunctionMod,
     'RND' => FunctionRnd,
+    'ROUND' => FunctionRound,
     'SGN' => FunctionSgn,
     'SIN' => FunctionSin,
     'SQR' => FunctionSqr,
