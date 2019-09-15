@@ -1,0 +1,62 @@
+10 REM This is a test
+ Remark:This is a test
+15 PRINT "NUMBER","ROUNDED"
+ ITEMS
+ TextConstant:"NUMBER"
+ CarriageControl:,
+ TextConstant:"ROUNDED"
+ CarriageControl:NL
+20 LET A=10.1234
+ Variable:A
+ NumericConstant:10.1234
+ AssignmentOperator:=
+22 LET A1=ROUND(A,3)
+ Variable:A1
+ Variable:A
+ NumericConstant:3
+ FunctionRound
+ AssignmentOperator:=
+25 PRINT A,A1
+ ITEMS
+ Variable:A
+ CarriageControl:,
+ Variable:A1
+ CarriageControl:NL
+30 LET B=-20.1234
+ Variable:B
+ NumericConstant:20.1234
+ UnaryOperator:-
+ AssignmentOperator:=
+32 LET B1=ROUND(B,2)
+ Variable:B1
+ Variable:B
+ NumericConstant:2
+ FunctionRound
+ AssignmentOperator:=
+35 PRINT B,B1
+ ITEMS
+ Variable:B
+ CarriageControl:,
+ Variable:B1
+ CarriageControl:NL
+40 LET C=1234
+ Variable:C
+ NumericConstant:1234
+ AssignmentOperator:=
+42 LET C1=ROUND(C,-1)
+ Variable:C1
+ Variable:C
+ NumericConstant:1
+ UnaryOperator:-
+ FunctionRound
+ AssignmentOperator:=
+45 PRINT C,C1
+ ITEMS
+ Variable:C
+ CarriageControl:,
+ Variable:C1
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
