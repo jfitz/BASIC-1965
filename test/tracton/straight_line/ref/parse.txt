@@ -3,13 +3,11 @@
 20 REM BY THE STRAIGHT LINE METHOD
  Remark:BY THE STRAIGHT LINE METHOD
 30 PRINT "ORIGINAL VALUE = ";
- ITEMS
  TextConstant:"ORIGINAL VALUE = "
  CarriageControl:;
 40 INPUT A
  Variable:A
 50 PRINT "LIFETIME IN YEARS = ";
- ITEMS
  TextConstant:"LIFETIME IN YEARS = "
  CarriageControl:;
 60 INPUT B
@@ -21,16 +19,13 @@
  BinaryOperator:/
  AssignmentOperator:=
 80 PRINT "YEARLY DEPRECIATION = ";C
- ITEMS
  TextConstant:"YEARLY DEPRECIATION = "
  CarriageControl:;
  Variable:C
  CarriageControl:NL
 90 PRINT
- ITEMS
  CarriageControl:NL
 100 PRINT "YEAR","VALUE"
- ITEMS
  TextConstant:"YEAR"
  CarriageControl:,
  TextConstant:"VALUE"
@@ -62,7 +57,6 @@
  NumericConstant:0
  AssignmentOperator:=
 170 PRINT X,A
- ITEMS
  Variable:X
  CarriageControl:,
  Variable:A
@@ -72,11 +66,9 @@
  Variable:B
  BinaryOperator:<
 190 PRINT "********************"
- ITEMS
  TextConstant:"********************"
  CarriageControl:NL
 200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
@@ -88,7 +80,6 @@
 230 STOP
  
 240 PRINT
- ITEMS
  CarriageControl:NL
 250 GOTO 30
  LineNumber:30

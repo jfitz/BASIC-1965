@@ -37,25 +37,21 @@
 130   GOTO 100
  LineNumber:100
 200   PRINT "YOU WIN -- BY MAKING YOUR POINT"
- ITEMS
  TextConstant:"YOU WIN -- BY MAKING YOUR POINT"
  CarriageControl:NL
 210   GOTO 410
  LineNumber:410
 250   PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
- ITEMS
  TextConstant:"YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
  CarriageControl:NL
 260   GOTO 410
  LineNumber:410
 300   PRINT "YOU LOSE ON FIRST ROLL"
- ITEMS
  TextConstant:"YOU LOSE ON FIRST ROLL"
  CarriageControl:NL
 310   GOTO 410
  LineNumber:410
 400   PRINT "YOU WIN ON FIRST ROLL"
- ITEMS
  TextConstant:"YOU WIN ON FIRST ROLL"
  CarriageControl:NL
 410 NEXT G
@@ -86,7 +82,6 @@
  FunctionInt
  AssignmentOperator:=
 525 PRINT "YOUR ROLL IS "; D1;D2
- ITEMS
  TextConstant:"YOUR ROLL IS "
  CarriageControl:;
  Variable:D1

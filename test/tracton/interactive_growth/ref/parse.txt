@@ -9,37 +9,31 @@
 50 REM THUS INCREASING THE NUMBER OF YS.
  Remark:THUS INCREASING THE NUMBER OF YS.
 60 PRINT "NUMBER OF DESTROYERS (Y) = ";
- ITEMS
  TextConstant:"NUMBER OF DESTROYERS (Y) = "
  CarriageControl:;
 70 INPUT Y
  Variable:Y
 80 PRINT "NUMBER OF CREATORS (X) = ";
- ITEMS
  TextConstant:"NUMBER OF CREATORS (X) = "
  CarriageControl:;
 90 INPUT X
  Variable:X
 100 PRINT "PROPAGATION RATE OF X = ";
- ITEMS
  TextConstant:"PROPAGATION RATE OF X = "
  CarriageControl:;
 110 INPUT Z
  Variable:Z
 120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
- ITEMS
  TextConstant:"CHANCE OF METTING BETWEEN X AND Y = "
  CarriageControl:;
 130 INPUT A
  Variable:A
 140 PRINT "TIME BETWEEN SAMPLES = ";
- ITEMS
  TextConstant:"TIME BETWEEN SAMPLES = "
  CarriageControl:;
 150 INPUT H
  Variable:H
 160 PRINT "MAXIMUM GENERATIONS = ";
- ITEMS
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 170 INPUT K
@@ -49,17 +43,13 @@
  NumericConstant:0
  AssignmentOperator:=
 190 PRINT
- ITEMS
  CarriageControl:NL
 200 PRINT "INTERACTIVE GROWTH PATTERNS"
- ITEMS
  TextConstant:"INTERACTIVE GROWTH PATTERNS"
  CarriageControl:NL
 210 PRINT
- ITEMS
  CarriageControl:NL
 220 PRINT "CREATOR","DESTROYER"
- ITEMS
  TextConstant:"CREATOR"
  CarriageControl:,
  TextConstant:"DESTROYER"
@@ -131,7 +121,6 @@
  FunctionInt
  AssignmentOperator:=
 340 PRINT M,N
- ITEMS
  Variable:M
  CarriageControl:,
  Variable:N
@@ -161,29 +150,23 @@
 420 GOTO 320
  LineNumber:320
 430 PRINT "ALL GROWTH ENDED"
- ITEMS
  TextConstant:"ALL GROWTH ENDED"
  CarriageControl:NL
 440 PRINT "NUMBER OF GENERATIONS = ";J
- ITEMS
  TextConstant:"NUMBER OF GENERATIONS = "
  CarriageControl:;
  Variable:J
  CarriageControl:NL
 450 PRINT
- ITEMS
  CarriageControl:NL
 460 GOTO 560
  LineNumber:560
 470 PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
- ITEMS
  TextConstant:"MAXIMUM NUMBER OF GENERATIONS REACHED"
  CarriageControl:NL
 480 PRINT
- ITEMS
  CarriageControl:NL
 490 PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
- ITEMS
  TextConstant:"FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
  CarriageControl:NL
 500 INPUT W
@@ -195,7 +178,6 @@
 520 GOTO 560
  LineNumber:560
 530 PRINT "MAXIMUM GENERATIONS = ";
- ITEMS
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 540 INPUT K
@@ -203,10 +185,8 @@
 550 GOTO 230
  LineNumber:230
 560 PRINT
- ITEMS
  CarriageControl:NL
 570 PRINT "FOR NEXT PATTERN TYPE 1, 0 TO STOP"
- ITEMS
  TextConstant:"FOR NEXT PATTERN TYPE 1, 0 TO STOP"
  CarriageControl:NL
 580 INPUT W
@@ -218,7 +198,6 @@
 600 STOP
  
 610 PRINT
- ITEMS
  CarriageControl:NL
 620 GOTO 60
  LineNumber:60

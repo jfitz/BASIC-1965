@@ -423,17 +423,14 @@
 790 RETURN
  
 800 PRINT "SUCCESS!"
- ITEMS
  TextConstant:"SUCCESS!"
  CarriageControl:NL
 810 GOTO 900
  LineNumber:900
 820 PRINT "INCOMPLETE"
- ITEMS
  TextConstant:"INCOMPLETE"
  CarriageControl:NL
 900 PRINT "THE TOUR IS:"
- ITEMS
  TextConstant:"THE TOUR IS:"
  CarriageControl:NL
 910 FOR I = 1 TO 64
@@ -453,13 +450,11 @@
  UserFunction
  AssignmentOperator:=
 930 PRINT R;C
- ITEMS
  Variable:R
  CarriageControl:;
  Variable:C
  CarriageControl:NL
 940 PRINT "TOUR ENDS"
- ITEMS
  TextConstant:"TOUR ENDS"
  CarriageControl:NL
 950 STOP
@@ -467,7 +462,6 @@
 1520 REM PRINT POSSIBLE MOVES
  Remark:PRINT POSSIBLE MOVES
 1523 PRINT "POSSIBLE MOVES:";
- ITEMS
  TextConstant:"POSSIBLE MOVES:"
  CarriageControl:;
 1524 FOR I = 1 TO 8
@@ -475,7 +469,6 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 1525 PRINT P(L,I);
- ITEMS
  Variable:L
  Variable:I
  Variable:P
@@ -483,7 +476,6 @@
 1526 NEXT I
  Variable:I
 1527 PRINT
- ITEMS
  CarriageControl:NL
 1529 RETURN
  

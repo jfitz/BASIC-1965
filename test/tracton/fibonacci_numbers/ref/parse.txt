@@ -1,32 +1,26 @@
 10 REM THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
  Remark:THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
 20 PRINT "ENTER FIRST TERM"
- ITEMS
  TextConstant:"ENTER FIRST TERM"
  CarriageControl:NL
 30 INPUT A
  Variable:A
 40 PRINT "ENTER SECOND TERM"
- ITEMS
  TextConstant:"ENTER SECOND TERM"
  CarriageControl:NL
 50 INPUT B
  Variable:B
 60 PRINT "MAXIMUM NUMBER OF TERMS = "
- ITEMS
  TextConstant:"MAXIMUM NUMBER OF TERMS = "
  CarriageControl:NL
 70 INPUT N
  Variable:N
 80 PRINT
- ITEMS
  CarriageControl:NL
 90 PRINT "TABLE OF FIBONACCI NUMBERS"
- ITEMS
  TextConstant:"TABLE OF FIBONACCI NUMBERS"
  CarriageControl:NL
 100 PRINT "TERM NO.","FIBONACCI NUMBER"
- ITEMS
  TextConstant:"TERM NO."
  CarriageControl:,
  TextConstant:"FIBONACCI NUMBER"
@@ -36,7 +30,6 @@
  NumericConstant:1
  AssignmentOperator:=
 120 PRINT K,A
- ITEMS
  Variable:K
  CarriageControl:,
  Variable:A
@@ -46,7 +39,6 @@
  NumericConstant:2
  AssignmentOperator:=
 140 PRINT K,B
- ITEMS
  Variable:K
  CarriageControl:,
  Variable:B
@@ -64,7 +56,6 @@
  BinaryOperator:+
  AssignmentOperator:=
 170 PRINT K,Q
- ITEMS
  Variable:K
  CarriageControl:,
  Variable:Q
@@ -84,14 +75,11 @@
 210 GOTO 150
  LineNumber:150
 220 PRINT "MAXIMUM NUMBER OF TERMS REACHED"
- ITEMS
  TextConstant:"MAXIMUM NUMBER OF TERMS REACHED"
  CarriageControl:NL
 230 PRINT
- ITEMS
  CarriageControl:NL
 240 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 250 INPUT L
@@ -103,7 +91,6 @@
 270 STOP
  
 280 PRINT
- ITEMS
  CarriageControl:NL
 290 GOTO 20
  LineNumber:20

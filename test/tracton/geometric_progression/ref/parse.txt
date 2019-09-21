@@ -3,25 +3,21 @@
 20 REM OF A GEOMETRIC PROGRESSION
  Remark:OF A GEOMETRIC PROGRESSION
 30 PRINT "FIRST TERM = ";
- ITEMS
  TextConstant:"FIRST TERM = "
  CarriageControl:;
 40 INPUT A
  Variable:A
 50 PRINT "RATIO OF TERMS = ";
- ITEMS
  TextConstant:"RATIO OF TERMS = "
  CarriageControl:;
 60 INPUT R
  Variable:R
 70 PRINT "NUMBER OF TERMS = ";
- ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:;
 80 INPUT N
  Variable:N
 90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
- ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 100 INPUT C
@@ -33,14 +29,11 @@
 120 GOTO 160
  LineNumber:160
 130 PRINT
- ITEMS
  CarriageControl:NL
 140 PRINT "GEOMETRIC PROGRESSION"
- ITEMS
  TextConstant:"GEOMETRIC PROGRESSION"
  CarriageControl:NL
 150 PRINT "TERM NUMBER","TERM VALUE"
- ITEMS
  TextConstant:"TERM NUMBER"
  CarriageControl:,
  TextConstant:"TERM VALUE"
@@ -80,7 +73,6 @@
 220 GOTO 240
  LineNumber:240
 230 PRINT K,L
- ITEMS
  Variable:K
  CarriageControl:,
  Variable:L
@@ -88,16 +80,13 @@
 240 NEXT I
  Variable:I
 250 PRINT "SUM = ";J
- ITEMS
  TextConstant:"SUM = "
  CarriageControl:;
  Variable:J
  CarriageControl:NL
 260 PRINT
- ITEMS
  CarriageControl:NL
 270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT X
@@ -109,7 +98,6 @@
 300 STOP
  
 310 PRINT
- ITEMS
  CarriageControl:NL
 320 GOTO 30
  LineNumber:30

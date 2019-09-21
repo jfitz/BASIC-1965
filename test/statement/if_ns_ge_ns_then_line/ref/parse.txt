@@ -7,25 +7,22 @@
  Variable:B
  Variable:C
 30 PRINT A,B,C
- ITEMS
  Variable:A
  CarriageControl:,
  Variable:B
  CarriageControl:,
  Variable:C
  CarriageControl:NL
-40 IF A>1 THEN 70
+40 IF A>=10 THEN 70
  Variable:A
- NumericConstant:1
- BinaryOperator:>
+ NumericConstant:10
+ BinaryOperator:>=
 50 PRINT A
- ITEMS
  Variable:A
  CarriageControl:NL
 60 GOTO 90
  LineNumber:90
 70 PRINT B
- ITEMS
  Variable:B
  CarriageControl:NL
 90 STOP

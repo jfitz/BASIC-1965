@@ -3,7 +3,6 @@
 20 REM TRANSLATION AND/OR ROTATION
  Remark:TRANSLATION AND/OR ROTATION
 30 PRINT "ANGLE OF ROTATION IN DEGREES = ";
- ITEMS
  TextConstant:"ANGLE OF ROTATION IN DEGREES = "
  CarriageControl:;
 40 INPUT A
@@ -17,14 +16,12 @@
  BinaryOperator:/
  AssignmentOperator:=
 60 PRINT "COORDINATES OF NEW ORIGIN (X0,Y0) =";
- ITEMS
  TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
  CarriageControl:;
 70 INPUT X,Y
  Variable:X
  Variable:Y
 80 PRINT "OLD COORDINATES OF DATA POINT (X1,Y1) =";
- ITEMS
  TextConstant:"OLD COORDINATES OF DATA POINT (X1,Y1) ="
  CarriageControl:;
 90 INPUT F,C
@@ -68,35 +65,28 @@
  BinaryOperator:+
  AssignmentOperator:=
 140 PRINT
- ITEMS
  CarriageControl:NL
 150 PRINT "SPECIFIED ROTATION =";A
- ITEMS
  TextConstant:"SPECIFIED ROTATION ="
  CarriageControl:;
  Variable:A
  CarriageControl:NL
 160 PRINT "NEW COORDINATES OF DATA POINT"
- ITEMS
  TextConstant:"NEW COORDINATES OF DATA POINT"
  CarriageControl:NL
 170 PRINT "X2 = ";D
- ITEMS
  TextConstant:"X2 = "
  CarriageControl:;
  Variable:D
  CarriageControl:NL
 180 PRINT "Y2 = ";E
- ITEMS
  TextConstant:"Y2 = "
  CarriageControl:;
  Variable:E
  CarriageControl:NL
 190 PRINT
- ITEMS
  CarriageControl:NL
 200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
@@ -108,7 +98,6 @@
 230 STOP
  
 240 PRINT
- ITEMS
  CarriageControl:NL
 250 GOTO 30
  LineNumber:30

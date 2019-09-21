@@ -31,7 +31,6 @@
  BinaryOperator:+
  AssignmentOperator:=
 150 PRINT "Board size:";R0+1;"x";C0+1
- ITEMS
  TextConstant:"Board size:"
  CarriageControl:;
  Variable:R0
@@ -45,25 +44,21 @@
  BinaryOperator:+
  CarriageControl:NL
 152 PRINT "Number of populations:";N0
- ITEMS
  TextConstant:"Number of populations:"
  CarriageControl:;
  Variable:N0
  CarriageControl:NL
 154 PRINT "Discomfort threshold:";D0
- ITEMS
  TextConstant:"Discomfort threshold:"
  CarriageControl:;
  Variable:D0
  CarriageControl:NL
 156 PRINT "Iteration threshold:";I0
- ITEMS
  TextConstant:"Iteration threshold:"
  CarriageControl:;
  Variable:I0
  CarriageControl:NL
 158 PRINT "Number of zero cells:";Z0
- ITEMS
  TextConstant:"Number of zero cells:"
  CarriageControl:;
  Variable:Z0
@@ -71,13 +66,11 @@
 200 REM configure initial board
  Remark:configure initial board
 210 PRINT "Initializing board... ";
- ITEMS
  TextConstant:"Initializing board... "
  CarriageControl:;
 220 GOSUB 1100
  LineNumber:1100
 230 PRINT "done."
- ITEMS
  TextConstant:"done."
  CarriageControl:NL
 240 LET I1 = 1
@@ -91,10 +84,8 @@
 300 REM display board
  Remark:display board
 310 PRINT
- ITEMS
  CarriageControl:NL
 312 PRINT "Iteration";I1;":"
- ITEMS
  TextConstant:"Iteration"
  CarriageControl:;
  Variable:I1
@@ -102,7 +93,6 @@
  TextConstant:":"
  CarriageControl:NL
 314 PRINT
- ITEMS
  CarriageControl:NL
 320 GOSUB 1200
  LineNumber:1200
@@ -121,21 +111,17 @@
 500 REM calculate comfort
  Remark:calculate comfort
 510 PRINT "Calculating moves... ";
- ITEMS
  TextConstant:"Calculating moves... "
  CarriageControl:;
 520 GOSUB 1300
  LineNumber:1300
 530 PRINT "done."
- ITEMS
  TextConstant:"done."
  CarriageControl:NL
 540 PRINT "Moves: ";
- ITEMS
  TextConstant:"Moves: "
  CarriageControl:;
 542 ARR PRINT M;
- ITEMS
  Variable:M
  CarriageControl:;
 550 LET M = 0
@@ -174,7 +160,6 @@
  BinaryOperator:/
  AssignmentOperator:=
 562 PRINT "(";P2*100;"%)"
- ITEMS
  TextConstant:"("
  CarriageControl:;
  Variable:P2
@@ -184,18 +169,15 @@
  TextConstant:"%)"
  CarriageControl:NL
 570 PRINT
- ITEMS
  CarriageControl:NL
 600 REM fill in new board
  Remark:fill in new board
 610 PRINT "Filling in new board... ";
- ITEMS
  TextConstant:"Filling in new board... "
  CarriageControl:;
 620 GOSUB 1400
  LineNumber:1400
 630 PRINT "done."
- ITEMS
  TextConstant:"done."
  CarriageControl:NL
 700 REM new board becomes the board
@@ -209,10 +191,8 @@
 900 REM End the simulation
  Remark:End the simulation
 910 PRINT
- ITEMS
  CarriageControl:NL
 920 PRINT "SIMULATION TERMINATED"
- ITEMS
  TextConstant:"SIMULATION TERMINATED"
  CarriageControl:NL
 990 STOP
@@ -323,7 +303,6 @@
 1200 REM display board
  Remark:display board
 1210 MAT PRINT B;
- ITEMS
  Variable:B
  CarriageControl:;
 1290 RETURN

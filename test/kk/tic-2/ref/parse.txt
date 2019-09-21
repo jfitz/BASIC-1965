@@ -129,20 +129,16 @@
  BinaryOperator:/
  BinaryOperator:<
 320  PRINT "YOU WILL MOVE FIRST."
- ITEMS
  TextConstant:"YOU WILL MOVE FIRST."
  CarriageControl:NL
 330  PRINT
- ITEMS
  CarriageControl:NL
 340  GOTO 400
  LineNumber:400
 350  PRINT "THE COMPUTER WILL MOVE FIRST."
- ITEMS
  TextConstant:"THE COMPUTER WILL MOVE FIRST."
  CarriageControl:NL
 360  PRINT
- ITEMS
  CarriageControl:NL
 370  GOTO 600
  LineNumber:600
@@ -150,7 +146,6 @@
 390  REM PLAYER'S MOVE.
  Remark:PLAYER'S MOVE.
 400  PRINT "YOUR MOVE";
- ITEMS
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 410  INPUT M
@@ -237,7 +232,6 @@
 540  GOTO 600
  LineNumber:600
 550  PRINT "ILLEGAL MOVE. TRY AGAIN."
- ITEMS
  TextConstant:"ILLEGAL MOVE. TRY AGAIN."
  CarriageControl:NL
 560  GOTO 400
@@ -248,7 +242,6 @@
 610  GOSUB 1000
  LineNumber:1000
 620  PRINT "THE COMPUTER MOVES" M
- ITEMS
  TextConstant:"THE COMPUTER MOVES"
  CarriageControl:
  Variable:M
@@ -262,29 +255,23 @@
 800  REM THE GAME IS OVER
  Remark:THE GAME IS OVER
 810  PRINT "AND THE COMPUTER WINS."
- ITEMS
  TextConstant:"AND THE COMPUTER WINS."
  CarriageControl:NL
 820  PRINT
- ITEMS
  CarriageControl:NL
 830  PRINT
- ITEMS
  CarriageControl:NL
 840  PRINT "NEW GAME."
- ITEMS
  TextConstant:"NEW GAME."
  CarriageControl:NL
 850  GO TO 265
  LineNumber:265
 860  PRINT "CONGRATULATIONS, YOU BEAT THE COMPUTER."
- ITEMS
  TextConstant:"CONGRATULATIONS, YOU BEAT THE COMPUTER."
  CarriageControl:NL
 870  GOTO 820
  LineNumber:820
 880  PRINT "THE GAME IS A DRAW."
- ITEMS
  TextConstant:"THE GAME IS A DRAW."
  CarriageControl:NL
 890  GOTO 820

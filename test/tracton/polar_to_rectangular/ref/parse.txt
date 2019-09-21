@@ -3,11 +3,9 @@
 20 REM INTO RECTANGULAR COORDINATES
  Remark:INTO RECTANGULAR COORDINATES
 30 PRINT "POLAR COORDINATES"
- ITEMS
  TextConstant:"POLAR COORDINATES"
  CarriageControl:NL
 40 PRINT "ANGLE IN DEGREES = ";
- ITEMS
  TextConstant:"ANGLE IN DEGREES = "
  CarriageControl:;
 50 INPUT W
@@ -21,7 +19,6 @@
  BinaryOperator:/
  AssignmentOperator:=
 70 PRINT "MAGNITUDE R = ";
- ITEMS
  TextConstant:"MAGNITUDE R = "
  CarriageControl:;
 80 INPUT R
@@ -41,11 +38,9 @@
  BinaryOperator:*
  AssignmentOperator:=
 110 PRINT "RECTANGULAR COORDINATES"
- ITEMS
  TextConstant:"RECTANGULAR COORDINATES"
  CarriageControl:NL
 120 PRINT "X = ";X,"Y = ";Y
- ITEMS
  TextConstant:"X = "
  CarriageControl:;
  Variable:X
@@ -55,10 +50,8 @@
  Variable:Y
  CarriageControl:NL
 130 PRINT
- ITEMS
  CarriageControl:NL
 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
@@ -70,7 +63,6 @@
 170 STOP
  
 180 PRINT
- ITEMS
  CarriageControl:NL
 190 GOTO 30
  LineNumber:30

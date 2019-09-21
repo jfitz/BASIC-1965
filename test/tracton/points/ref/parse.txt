@@ -3,14 +3,12 @@
 20 REM POINTS ON THE CIRCUMFERENCE OF A CIRCLE
  Remark:POINTS ON THE CIRCUMFERENCE OF A CIRCLE
 30 PRINT "CENTER OF CIRCLE (X0,Y0) = ";
- ITEMS
  TextConstant:"CENTER OF CIRCLE (X0,Y0) = "
  CarriageControl:;
 40 INPUT X0,Y0
  Variable:X0
  Variable:Y0
 50 PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
- ITEMS
  TextConstant:"ANGLE IN DEGREES OF 1ST POINT = "
  CarriageControl:;
 60 INPUT W
@@ -24,13 +22,11 @@
  BinaryOperator:/
  AssignmentOperator:=
 80 PRINT "NUMBER OF POINTS DESIRED = ";
- ITEMS
  TextConstant:"NUMBER OF POINTS DESIRED = "
  CarriageControl:;
 90 INPUT N
  Variable:N
 100 PRINT "RADIUS OF CIRCLE = ";
- ITEMS
  TextConstant:"RADIUS OF CIRCLE = "
  CarriageControl:;
 110 INPUT R
@@ -42,10 +38,8 @@
  BinaryOperator:/
  AssignmentOperator:=
 130 PRINT
- ITEMS
  CarriageControl:NL
 140 PRINT "COORDINATES"
- ITEMS
  TextConstant:"COORDINATES"
  CarriageControl:NL
 150 FOR I = 0 TO N - 1
@@ -85,7 +79,6 @@
  BinaryOperator:+
  AssignmentOperator:=
 190 PRINT "POINT:";P,"X = ";X,"Y = ";Y
- ITEMS
  TextConstant:"POINT:"
  CarriageControl:;
  Variable:P
@@ -101,10 +94,8 @@
 200 NEXT I
  Variable:I
 210 PRINT
- ITEMS
  CarriageControl:NL
 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
@@ -116,7 +107,6 @@
 250 STOP
  
 260 PRINT
- ITEMS
  CarriageControl:NL
 270 GOTO 30
  LineNumber:30

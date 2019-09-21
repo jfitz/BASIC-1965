@@ -19,17 +19,14 @@
  BinaryOperator:*
  BinaryOperator:-
 30 PRINT "NOTE NUMBER", "CHORD",
- ITEMS
  TextConstant:"NOTE NUMBER"
  CarriageControl:,
  TextConstant:"CHORD"
  CarriageControl:,
 40 PRINT " S     A     T     B"
- ITEMS
  TextConstant:" S     A     T     B"
  CarriageControl:NL
 50 PRINT
- ITEMS
  CarriageControl:NL
 60
 100 REM  INITIALIZE.
@@ -597,7 +594,6 @@
  Variable:N9
  BinaryOperator:<>
 5020 PRINT "STUCK"
- ITEMS
  TextConstant:"STUCK"
  CarriageControl:NL
 5030 STOP
@@ -640,7 +636,6 @@
 6000 REM  PRINT RESULTS
  Remark: PRINT RESULTS
 6001 PRINT N, S(0,N), S(1,N);S(2,N);S(3,N);S(4,N)
- ITEMS
  Variable:N
  CarriageControl:,
  NumericConstant:0

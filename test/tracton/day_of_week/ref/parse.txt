@@ -17,7 +17,6 @@
 90 LET J$(7) = "SATURDAY"
  Token 'InvalidToken:$' is not a value or operator
 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
- ITEMS
  TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
 110 INPUT D,M,Y
@@ -29,7 +28,6 @@
  NumericConstant:1752
  BinaryOperator:>
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
- ITEMS
  TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
  CarriageControl:NL
 140 GOTO 100
@@ -124,18 +122,14 @@
  AssignmentOperator:=
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
  Syntax error: "J$(Z)" is not a value or operator
- ITEMS
  TextConstant:"THE DAY OF THE WEEK IS "
  CarriageControl:;
 260 PRINT
- ITEMS
  CarriageControl:NL
 270 PRINT "FOR NEXT DATE TYPE IN YES, IF NOT"
- ITEMS
  TextConstant:"FOR NEXT DATE TYPE IN YES, IF NOT"
  CarriageControl:NL
 280 PRINT "TYPE NO"
- ITEMS
  TextConstant:"TYPE NO"
  CarriageControl:NL
 290 INPUT L$
@@ -145,18 +139,15 @@
 310 IF L$ = "NO" THEN 360
  Token 'InvalidToken:$' is not a value or operator
 320 PRINT "INVALID COMMAND"
- ITEMS
  TextConstant:"INVALID COMMAND"
  CarriageControl:NL
 330 GOTO 270
  LineNumber:270
 340 PRINT
- ITEMS
  CarriageControl:NL
 350 GOTO 30
  LineNumber:30
 360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
- ITEMS
  TextConstant:"DAY OF THE WEEK SAYS GOOD-BYE"
  CarriageControl:NL
 370 END

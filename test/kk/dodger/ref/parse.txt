@@ -152,7 +152,6 @@
 410 REM NEW INNING
  Remark:NEW INNING
 430 PRINT "INNING" I
- ITEMS
  TextConstant:"INNING"
  CarriageControl:
  Variable:I
@@ -224,7 +223,6 @@
  NumericConstant:0
  BinaryOperator:>
 640 PRINT "OUT   ";
- ITEMS
  TextConstant:"OUT   "
  CarriageControl:;
 650 GOTO 770
@@ -234,7 +232,6 @@
  NumericConstant:1
  BinaryOperator:>
 670 PRINT "SINGLE   ";
- ITEMS
  TextConstant:"SINGLE   "
  CarriageControl:;
 680 GOTO 770
@@ -244,7 +241,6 @@
  NumericConstant:2
  BinaryOperator:>
 700 PRINT "WALK   ";
- ITEMS
  TextConstant:"WALK   "
  CarriageControl:;
 710 GOTO 770
@@ -254,13 +250,11 @@
  NumericConstant:3
  BinaryOperator:>
 730 PRINT "DOUBLE   ";
- ITEMS
  TextConstant:"DOUBLE   "
  CarriageControl:;
 740 GOTO 770
  LineNumber:770
 750 PRINT "HOME RUN   ";
- ITEMS
  TextConstant:"HOME RUN   "
  CarriageControl:;
 760 
@@ -332,16 +326,13 @@
  BinaryOperator:+
  AssignmentOperator:=
 900 PRINT
- ITEMS
  CarriageControl:NL
 910 PRINT S; "RUNS"
- ITEMS
  Variable:S
  CarriageControl:;
  TextConstant:"RUNS"
  CarriageControl:NL
 920 PRINT
- ITEMS
  CarriageControl:NL
 930 LET S1 = S1+S
  Variable:S1
@@ -363,29 +354,23 @@
 955 REM PRINT RESULTS
  Remark:PRINT RESULTS
 960 PRINT
- ITEMS
  CarriageControl:NL
 965 PRINT "GAME TOTALS:"
- ITEMS
  TextConstant:"GAME TOTALS:"
  CarriageControl:NL
 970 PRINT
- ITEMS
  CarriageControl:NL
 975 PRINT S1; "RUNS SCORED"
- ITEMS
  Variable:S1
  CarriageControl:;
  TextConstant:"RUNS SCORED"
  CarriageControl:NL
 980 PRINT L7; "MEN LEFT ON BASE"
- ITEMS
  Variable:L7
  CarriageControl:;
  TextConstant:"MEN LEFT ON BASE"
  CarriageControl:NL
 985 PRINT H; "HITS"
- ITEMS
  Variable:H
  CarriageControl:;
  TextConstant:"HITS"

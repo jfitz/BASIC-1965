@@ -27,11 +27,9 @@
 140 NEXT I
  Variable:I
 150 PRINT "MATRIX A"
- ITEMS
  TextConstant:"MATRIX A"
  CarriageControl:NL
 160 MAT PRINT A;
- ITEMS
  Variable:A
  CarriageControl:;
 200 FOR I = 1 TO 3
@@ -51,11 +49,9 @@
 240 NEXT I
  Variable:I
 250 PRINT "MATRIX B"
- ITEMS
  TextConstant:"MATRIX B"
  CarriageControl:NL
 260 MAT PRINT B;
- ITEMS
  Variable:B
  CarriageControl:;
 300 MAT C = A*B
@@ -65,11 +61,9 @@
  BinaryOperator:*
  AssignmentOperator:=
 310 PRINT "MATRIX C"
- ITEMS
  TextConstant:"MATRIX C"
  CarriageControl:NL
 320 MAT PRINT C;
- ITEMS
  Variable:C
  CarriageControl:;
 999 END

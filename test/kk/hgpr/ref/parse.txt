@@ -84,14 +84,11 @@
 100 REM READ LEADING DIGITS
  Remark:READ LEADING DIGITS
 110 PRINT "SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
- ITEMS
  TextConstant:"SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
  CarriageControl:NL
 115 PRINT
- ITEMS
  CarriageControl:NL
 116 PRINT "A = ";
- ITEMS
  TextConstant:"A = "
  CarriageControl:;
 120 INPUT A
@@ -106,14 +103,11 @@
  FunctionSqr
  AssignmentOperator:=
 130 PRINT
- ITEMS
  CarriageControl:NL
 140 PRINT "B = "
- ITEMS
  TextConstant:"B = "
  CarriageControl:NL
 150 PRINT
- ITEMS
  CarriageControl:NL
 160
 200 REM TEST PRIMES TO 2000
@@ -215,7 +209,6 @@
  NumericConstant:0
  BinaryOperator:<
 720    PRINT 2*I + 1;
- ITEMS
  NumericConstant:2
  Variable:I
  BinaryOperator:*
@@ -231,13 +224,10 @@
 730 NEXT I
  Variable:I
 732 PRINT
- ITEMS
  CarriageControl:NL
 733 PRINT
- ITEMS
  CarriageControl:NL
 735 PRINT "THERE ARE " S; "PRIMES IN THE RANGE."
- ITEMS
  TextConstant:"THERE ARE "
  CarriageControl:
  Variable:S
@@ -245,17 +235,13 @@
  TextConstant:"PRIMES IN THE RANGE."
  CarriageControl:NL
 740 PRINT
- ITEMS
  CarriageControl:NL
 745 PRINT
- ITEMS
  CarriageControl:NL
 750 PRINT "TWIN PRIMES:"
- ITEMS
  TextConstant:"TWIN PRIMES:"
  CarriageControl:NL
 752 PRINT
- ITEMS
  CarriageControl:NL
 755 FOR I = 0 TO 998
  control: Variable:I
@@ -274,7 +260,6 @@
  NumericConstant:0
  BinaryOperator:<
 770    PRINT 2*I+1, 2*I+3
- ITEMS
  NumericConstant:2
  Variable:I
  BinaryOperator:*

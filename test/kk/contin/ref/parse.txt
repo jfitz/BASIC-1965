@@ -76,7 +76,6 @@
  Variable:J
 300
 310 PRINT
- ITEMS
  CarriageControl:NL
 320 LET C = 0
  Variable:C
@@ -115,7 +114,6 @@
  BinaryOperator:+
  AssignmentOperator:=
 370       PRINT O(I,J),
- ITEMS
  Variable:I
  Variable:J
  Variable:O
@@ -123,15 +121,12 @@
 380    NEXT J
  Variable:J
 390    PRINT
- ITEMS
  CarriageControl:NL
 400 NEXT I
  Variable:I
 410 PRINT
- ITEMS
  CarriageControl:NL
 420 PRINT "CHI-SQUARE EQUALS";C;"ON";(M-1)*(N-1);"DEGREES OF FREEDOM"
- ITEMS
  TextConstant:"CHI-SQUARE EQUALS"
  CarriageControl:;
  Variable:C

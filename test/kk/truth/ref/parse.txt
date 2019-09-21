@@ -1,5 +1,4 @@
 10 PRINT " P", " Q", " R", "FORMULA"
- ITEMS
  TextConstant:" P"
  CarriageControl:,
  TextConstant:" Q"
@@ -9,7 +8,6 @@
  TextConstant:"FORMULA"
  CarriageControl:NL
 15 PRINT
- ITEMS
  CarriageControl:NL
 20 FOR P = 1 TO 0 STEP -1
  control: Variable:P
@@ -56,7 +54,6 @@
 110            GOSUB 200
  LineNumber:200
 120            PRINT
- ITEMS
  CarriageControl:NL
 130        NEXT R
  Variable:R
@@ -72,13 +69,11 @@
  NumericConstant:0
  BinaryOperator:>
 210 PRINT "FALSE",
- ITEMS
  TextConstant:"FALSE"
  CarriageControl:,
 220 RETURN
  
 250 PRINT "TRUE",
- ITEMS
  TextConstant:"TRUE"
  CarriageControl:,
 260 RETURN

@@ -15,13 +15,11 @@
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "T = ";
- ITEMS
  TextConstant:"T = "
  CarriageControl:;
 80 INPUT T
  Variable:T
 90 PRINT "INPUT SAMPLE";
- ITEMS
  TextConstant:"INPUT SAMPLE"
  CarriageControl:;
 100 INPUT X
@@ -57,11 +55,9 @@
  BinaryOperator:^
  AssignmentOperator:=
 160 PRINT "GENERALIZED MEAN"
- ITEMS
  TextConstant:"GENERALIZED MEAN"
  CarriageControl:NL
 170 PRINT "M(T) = ";G, "WHERE T = ";T
- ITEMS
  TextConstant:"M(T) = "
  CarriageControl:;
  Variable:G
@@ -71,10 +67,8 @@
  Variable:T
  CarriageControl:NL
 180 PRINT
- ITEMS
  CarriageControl:NL
 190 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 200 INPUT L
@@ -86,7 +80,6 @@
 220 STOP
  
 230 PRINT
- ITEMS
  CarriageControl:NL
 240 GOTO 50
  LineNumber:50

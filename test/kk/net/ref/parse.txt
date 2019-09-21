@@ -137,20 +137,17 @@
  AssignmentOperator:=
 390
 400 PRINT "NODE", "VOLTAGE"
- ITEMS
  TextConstant:"NODE"
  CarriageControl:,
  TextConstant:"VOLTAGE"
  CarriageControl:NL
 410 PRINT
- ITEMS
  CarriageControl:NL
 420 FOR I = 1 TO N
  control: Variable:I
  start:   ["NumericConstant:1"]
  end:     ["Variable:N"]
 430    PRINT I, FNR(P(I))
- ITEMS
  Variable:I
  CarriageControl:,
  Variable:I
@@ -160,18 +157,14 @@
 440 NEXT I
  Variable:I
 450 PRINT
- ITEMS
  CarriageControl:NL
 460 PRINT
- ITEMS
  CarriageControl:NL
 470
 480 PRINT "CURRENT FLOW"
- ITEMS
  TextConstant:"CURRENT FLOW"
  CarriageControl:NL
 490 PRINT
- ITEMS
  CarriageControl:NL
 500 LET S1 = 0
  Variable:S1
@@ -182,7 +175,6 @@
  start:   ["NumericConstant:2"]
  end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 520    PRINT "NODE" I
- ITEMS
  TextConstant:"NODE"
  CarriageControl:
  Variable:I
@@ -192,7 +184,6 @@
  start:   ["NumericConstant:1"]
  end:     ["Variable:N"]
 540       PRINT FNR(C(I,J)*(P(I)-P(J))),
- ITEMS
  Variable:I
  Variable:J
  Variable:C
@@ -221,26 +212,21 @@
  BinaryOperator:+
  AssignmentOperator:=
 570    PRINT
- ITEMS
  CarriageControl:NL
 580    PRINT
- ITEMS
  CarriageControl:NL
 590 NEXT I
  Variable:I
 600 PRINT
- ITEMS
  CarriageControl:NL
 610
 620 PRINT "TOTAL CURRENT = " FNR(S1)
- ITEMS
  TextConstant:"TOTAL CURRENT = "
  CarriageControl:
  Variable:S1
  UserFunction
  CarriageControl:NL
 630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V/S1)
- ITEMS
  TextConstant:"RESISTANCE OF CIRCUIT = "
  CarriageControl:
  Variable:V

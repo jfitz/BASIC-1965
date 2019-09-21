@@ -4,7 +4,6 @@
  Unknown statement 'RANDOMIZE'
  Unimplemented
 30 PRINT " FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
- ITEMS
  TextConstant:" FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
  CarriageControl:NL
 40 INPUT R$
@@ -14,29 +13,23 @@
 60 IF R$ = "GO" THEN 140
  Token 'InvalidToken:$' is not a value or operator
 70 PRINT "INVALID COMMAND"
- ITEMS
  TextConstant:"INVALID COMMAND"
  CarriageControl:NL
 80 GOTO 30
  LineNumber:30
 90 PRINT "A 7 OR 11 ON THE FIRST THROW WINS"
- ITEMS
  TextConstant:"A 7 OR 11 ON THE FIRST THROW WINS"
  CarriageControl:NL
 100 PRINT "YOU CAN ALSO WIN BY THROWING A 4,5,6,8,9,10"
- ITEMS
  TextConstant:"YOU CAN ALSO WIN BY THROWING A 4,5,6,8,9,10"
  CarriageControl:NL
 110 PRINT "AND MATCHING IT BEFORE THROWING A 7. IF ON"
- ITEMS
  TextConstant:"AND MATCHING IT BEFORE THROWING A 7. IF ON"
  CarriageControl:NL
 120 PRINT "THE FIRST THROW 2,3 OR A 12 COMES UP"
- ITEMS
  TextConstant:"THE FIRST THROW 2,3 OR A 12 COMES UP"
  CarriageControl:NL
 130 PRINT "YOU LOSE AUTOMATICALLY"
- ITEMS
  TextConstant:"YOU LOSE AUTOMATICALLY"
  CarriageControl:NL
 140 LET J = 0
@@ -80,7 +73,6 @@
  NumericConstant:7
  BinaryOperator:=
 240 PRINT "YOU THROW A ";D3
- ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
  Variable:D3
@@ -114,7 +106,6 @@
 315 GOTO 240
  LineNumber:240
 320 PRINT "YOU THROW A ";D3;" YOU WIN"
- ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
  Variable:D3
@@ -124,7 +115,6 @@
 330 GOTO 350
  LineNumber:350
 340 PRINT "YOU THROW A ";D3;" YOU LOSE"
- ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
  Variable:D3
@@ -132,10 +122,8 @@
  TextConstant:" YOU LOSE"
  CarriageControl:NL
 350 PRINT
- ITEMS
  CarriageControl:NL
 360 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
- ITEMS
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 370 INPUT L$
@@ -145,12 +133,10 @@
 390 STOP
  
 400 PRINT
- ITEMS
  CarriageControl:NL
 410 GOTO 30
  LineNumber:30
 420 PRINT "YOU THROW A ";D3;"YOU WIN BY MATCHING"
- ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
  Variable:D3
@@ -160,7 +146,6 @@
 430 GOTO 350
  LineNumber:350
 440 PRINT "YOU THROW A ";D3;" SORRY YOU LOSE"
- ITEMS
  TextConstant:"YOU THROW A "
  CarriageControl:;
  Variable:D3

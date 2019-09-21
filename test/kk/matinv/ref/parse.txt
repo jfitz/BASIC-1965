@@ -18,38 +18,30 @@
  AssignmentOperator:=
 130
 200 PRINT "ALL ZEROES"
- ITEMS
  TextConstant:"ALL ZEROES"
  CarriageControl:NL
 210 MAT PRINT A;
- ITEMS
  Variable:A
  CarriageControl:;
 220 PRINT "ALL ONES"
- ITEMS
  TextConstant:"ALL ONES"
  CarriageControl:NL
 230 MAT PRINT B;
- ITEMS
  Variable:B
  CarriageControl:;
 240 PRINT "IDENTITY MATRIX"
- ITEMS
  TextConstant:"IDENTITY MATRIX"
  CarriageControl:NL
 250 MAT PRINT C;
- ITEMS
  Variable:C
  CarriageControl:;
 260
 300 MAT READ A
  Variable:A
 310 PRINT "SQUARE MATRIX"
- ITEMS
  TextConstant:"SQUARE MATRIX"
  CarriageControl:NL
 320 MAT PRINT A
- ITEMS
  Variable:A
  CarriageControl:,
 330 MAT B = INV(A)
@@ -58,11 +50,9 @@
  FunctionInv
  AssignmentOperator:=
 340 PRINT "ITS INVERSE"
- ITEMS
  TextConstant:"ITS INVERSE"
  CarriageControl:NL
 350 MAT PRINT B
- ITEMS
  Variable:B
  CarriageControl:,
 360
@@ -79,11 +69,9 @@
  BinaryOperator:-
  AssignmentOperator:=
 420 PRINT "ROUNDOFF ERRORS"
- ITEMS
  TextConstant:"ROUNDOFF ERRORS"
  CarriageControl:NL
 430 MAT PRINT R
- ITEMS
  Variable:R
  CarriageControl:,
 440

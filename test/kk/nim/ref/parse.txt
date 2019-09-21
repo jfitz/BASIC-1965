@@ -23,11 +23,9 @@
 160 NEXT P
  Variable:P
 170 PRINT "INITIAL CONFIGURATION:"
- ITEMS
  TextConstant:"INITIAL CONFIGURATION:"
  CarriageControl:NL
 180 PRINT
- ITEMS
  CarriageControl:NL
 190 GOSUB 900
  LineNumber:900
@@ -35,7 +33,6 @@
 210 REM OPPONENT'S MOVE
  Remark:OPPONENT'S MOVE
 220 PRINT "PILE, NUMBER TAKEN";
- ITEMS
  TextConstant:"PILE, NUMBER TAKEN"
  CarriageControl:;
 230 INPUT P, N
@@ -55,7 +52,6 @@
  NumericConstant:0
  BinaryOperator:>=
 260 PRINT "ILLEGAL MOVE"
- ITEMS
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
 270 LET N(P) = N(P) + N
@@ -67,7 +63,6 @@
  BinaryOperator:+
  AssignmentOperator:=
 280 PRINT
- ITEMS
  CarriageControl:NL
 290 GOTO 200
  LineNumber:200
@@ -83,17 +78,13 @@
  NumericConstant:0
  BinaryOperator:>
 310 PRINT
- ITEMS
  CarriageControl:NL
 320 PRINT "YOU WIN *****"
- ITEMS
  TextConstant:"YOU WIN *****"
  CarriageControl:NL
 330 PRINT
- ITEMS
  CarriageControl:NL
 340 PRINT
- ITEMS
  CarriageControl:NL
 350 GOTO 140
  LineNumber:140
@@ -291,10 +282,8 @@
 770 REM CARRY OUT MOVE
  Remark:CARRY OUT MOVE
 780 PRINT
- ITEMS
  CarriageControl:NL
 790 PRINT "MY MOVE:" P; "," N
- ITEMS
  TextConstant:"MY MOVE:"
  CarriageControl:
  Variable:P
@@ -304,7 +293,6 @@
  Variable:N
  CarriageControl:NL
 800 PRINT
- ITEMS
  CarriageControl:NL
 810 LET N(P) = N(P) - N
  Variable:P
@@ -326,17 +314,14 @@
  NumericConstant:0
  BinaryOperator:>
 830 PRINT "I WIN *****"
- ITEMS
  TextConstant:"I WIN *****"
  CarriageControl:NL
 840 GOTO 330
  LineNumber:330
 850 PRINT "NEW CONFIGURATION:"
- ITEMS
  TextConstant:"NEW CONFIGURATION:"
  CarriageControl:NL
 860 PRINT
- ITEMS
  CarriageControl:NL
 870 GOSUB 900
  LineNumber:900
@@ -350,7 +335,6 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 920    PRINT "PILE " P; N(P)
- ITEMS
  TextConstant:"PILE "
  CarriageControl:
  Variable:P
@@ -361,10 +345,8 @@
 930 NEXT P
  Variable:P
 940 PRINT
- ITEMS
  CarriageControl:NL
 950 PRINT
- ITEMS
  CarriageControl:NL
 960 RETURN
  

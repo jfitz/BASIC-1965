@@ -3,14 +3,12 @@
 20 REM INVERSE OF A 2 X 2 MATRIX
  Remark:INVERSE OF A 2 X 2 MATRIX
 30 PRINT "ENTER A11, A12";
- ITEMS
  TextConstant:"ENTER A11, A12"
  CarriageControl:;
 40 INPUT A,B
  Variable:A
  Variable:B
 50 PRINT "A21, A22";
- ITEMS
  TextConstant:"A21, A22"
  CarriageControl:;
 60 INPUT C,D
@@ -53,54 +51,43 @@
  BinaryOperator:/
  AssignmentOperator:=
 120 PRINT "ORIGINAL MATRIX"
- ITEMS
  TextConstant:"ORIGINAL MATRIX"
  CarriageControl:NL
 130 PRINT A,B
- ITEMS
  Variable:A
  CarriageControl:,
  Variable:B
  CarriageControl:NL
 140 PRINT C,D
- ITEMS
  Variable:C
  CarriageControl:,
  Variable:D
  CarriageControl:NL
 150 PRINT
- ITEMS
  CarriageControl:NL
 160 PRINT "INVERSE OF MATRIX"
- ITEMS
  TextConstant:"INVERSE OF MATRIX"
  CarriageControl:NL
 170 PRINT F,G
- ITEMS
  Variable:F
  CarriageControl:,
  Variable:G
  CarriageControl:NL
 180 PRINT H,I
- ITEMS
  Variable:H
  CarriageControl:,
  Variable:I
  CarriageControl:NL
 190 PRINT
- ITEMS
  CarriageControl:NL
 200 PRINT "DETERMINANT = ";E
- ITEMS
  TextConstant:"DETERMINANT = "
  CarriageControl:;
  Variable:E
  CarriageControl:NL
 210 PRINT
- ITEMS
  CarriageControl:NL
 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
@@ -112,7 +99,6 @@
 250 STOP
  
 260 PRINT
- ITEMS
  CarriageControl:NL
 270 GOTO 30
  LineNumber:30

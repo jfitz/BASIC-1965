@@ -5,25 +5,21 @@
 30 REM IMPEDANCES
  Remark:IMPEDANCES
 40 PRINT "ENTER 1ST IMPEDANCE"
- ITEMS
  TextConstant:"ENTER 1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
  Variable:Z1
 60 PRINT "ENTER 2ND IMPEDANCE"
- ITEMS
  TextConstant:"ENTER 2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
  Variable:Z2
 80 PRINT "ENTER DESIRED SYSTEM Q"
- ITEMS
  TextConstant:"ENTER DESIRED SYSTEM Q"
  CarriageControl:NL
 90 INPUT Q
  Variable:Q
 100 PRINT "ENTER OPERATING FREQUENCY"
- ITEMS
  TextConstant:"ENTER OPERATING FREQUENCY"
  CarriageControl:NL
 110 INPUT F
@@ -112,32 +108,26 @@
  BinaryOperator:/
  AssignmentOperator:=
 210 PRINT "COMPONENTS OF PI-NETWORK"
- ITEMS
  TextConstant:"COMPONENTS OF PI-NETWORK"
  CarriageControl:NL
 220 PRINT "CAPACITOR 1 = ";C1
- ITEMS
  TextConstant:"CAPACITOR 1 = "
  CarriageControl:;
  Variable:C1
  CarriageControl:NL
 230 PRINT "CAPACITOR 2 = ";C2
- ITEMS
  TextConstant:"CAPACITOR 2 = "
  CarriageControl:;
  Variable:C2
  CarriageControl:NL
 240 PRINT "INDUCTOR = ";L
- ITEMS
  TextConstant:"INDUCTOR = "
  CarriageControl:;
  Variable:L
  CarriageControl:NL
 250 PRINT
- ITEMS
  CarriageControl:NL
 260 PRINT "TO CONTINUE TYPE 1, IF NOT 0"
- ITEMS
  TextConstant:"TO CONTINUE TYPE 1, IF NOT 0"
  CarriageControl:NL
 270 INPUT X
@@ -149,7 +139,6 @@
 290 STOP
  
 300 PRINT
- ITEMS
  CarriageControl:NL
 310 GOTO 40
  LineNumber:40

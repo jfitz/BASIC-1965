@@ -3,7 +3,6 @@
 20 REM THE NORMS OF TWO VECTORS
  Remark:THE NORMS OF TWO VECTORS
 30 PRINT "ENTER 1ST VECTOR (A1,A2,A3)"
- ITEMS
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
@@ -11,7 +10,6 @@
  Variable:A2
  Variable:A3
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
- ITEMS
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
@@ -69,29 +67,24 @@
  BinaryOperator:+
  AssignmentOperator:=
 130 PRINT "DOT PRODUCT = ";Z
- ITEMS
  TextConstant:"DOT PRODUCT = "
  CarriageControl:;
  Variable:Z
  CarriageControl:NL
 140 PRINT "NORM OF 1ST VECTOR = ";X
- ITEMS
  TextConstant:"NORM OF 1ST VECTOR = "
  CarriageControl:;
  Variable:X
  CarriageControl:NL
 150 PRINT "NORM OF 2ND VECTOR = ";Y
- ITEMS
  TextConstant:"NORM OF 2ND VECTOR = "
  CarriageControl:;
  Variable:Y
  CarriageControl:NL
 160 PRINT "********************"
- ITEMS
  TextConstant:"********************"
  CarriageControl:NL
 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
@@ -103,7 +96,6 @@
 200 STOP
  
 210 PRINT
- ITEMS
  CarriageControl:NL
 220 GOTO 30
  LineNumber:30

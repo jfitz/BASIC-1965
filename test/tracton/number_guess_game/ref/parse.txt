@@ -20,26 +20,20 @@
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "A RANDOM NUMBER HAS BEEN PICKED"
- ITEMS
  TextConstant:"A RANDOM NUMBER HAS BEEN PICKED"
  CarriageControl:NL
 80 PRINT "TRY GUESSING IT, HINT THE NUMBER"
- ITEMS
  TextConstant:"TRY GUESSING IT, HINT THE NUMBER"
  CarriageControl:NL
 90 PRINT "IS FROM 1 TO 100"
- ITEMS
  TextConstant:"IS FROM 1 TO 100"
  CarriageControl:NL
 100 PRINT "GOOD LUCK!!!"
- ITEMS
  TextConstant:"GOOD LUCK!!!"
  CarriageControl:NL
 110 PRINT
- ITEMS
  CarriageControl:NL
 120 PRINT "YOUR GUESS IS = ";
- ITEMS
  TextConstant:"YOUR GUESS IS = "
  CarriageControl:;
 130 INPUT X
@@ -61,24 +55,19 @@
 170 GOTO 300
  LineNumber:300
 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
- ITEMS
  TextConstant:"NOT BAD!!!-YOU GOT IT!!!"
  CarriageControl:NL
 190 PRINT "YOUR NUMBER OF TRIES WERE";Y
- ITEMS
  TextConstant:"YOUR NUMBER OF TRIES WERE"
  CarriageControl:;
  Variable:Y
  CarriageControl:NL
 200 PRINT
- ITEMS
  CarriageControl:NL
 210 PRINT "IF YOU WANT TO TRY AGAIN, TYPE 1"
- ITEMS
  TextConstant:"IF YOU WANT TO TRY AGAIN, TYPE 1"
  CarriageControl:NL
 220 PRINT "IF NOT TYPE 0"
- ITEMS
  TextConstant:"IF NOT TYPE 0"
  CarriageControl:NL
 230 INPUT L
@@ -90,18 +79,15 @@
 250 STOP
  
 260 PRINT
- ITEMS
  CarriageControl:NL
 270 GOTO 50
  LineNumber:50
 280 PRINT "TOO HIGH, TRY AGAIN"
- ITEMS
  TextConstant:"TOO HIGH, TRY AGAIN"
  CarriageControl:NL
 290 GOTO 120
  LineNumber:120
 300 PRINT "TOO LOW, TRY AGAIN"
- ITEMS
  TextConstant:"TOO LOW, TRY AGAIN"
  CarriageControl:NL
 310 GOTO 120

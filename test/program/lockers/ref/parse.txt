@@ -10,7 +10,6 @@
 100 REM INITIALIZE LOCKERS TO OPEN
  Remark:INITIALIZE LOCKERS TO OPEN
 110 PRINT "INITIALIZING";N;" LOCKERS..."
- ITEMS
  TextConstant:"INITIALIZING"
  CarriageControl:;
  Variable:N
@@ -41,7 +40,6 @@
 200 REM PRINT LOCKER STATES
  Remark:PRINT LOCKER STATES
 310 PRINT "OPEN LOCKERS:";
- ITEMS
  TextConstant:"OPEN LOCKERS:"
  CarriageControl:;
 320 FOR I = 1 TO N
@@ -54,13 +52,11 @@
  NumericConstant:0
  BinaryOperator:=
 340 PRINT I;
- ITEMS
  Variable:I
  CarriageControl:;
 350 NEXT I
  Variable:I
 360 PRINT
- ITEMS
  CarriageControl:NL
 999 END
  

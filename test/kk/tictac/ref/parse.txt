@@ -31,10 +31,8 @@
 200 REM NOW WE START THE PROGRAM
  Remark:NOW WE START THE PROGRAM
 210 PRINT
- ITEMS
  CarriageControl:NL
 220 PRINT
- ITEMS
  CarriageControl:NL
 230 LET A = 9
  Variable:A
@@ -205,7 +203,6 @@
 610 GOSUB 700
  LineNumber:700
 620 PRINT "THE GAME IS DRAWN."
- ITEMS
  TextConstant:"THE GAME IS DRAWN."
  CarriageControl:NL
 630 GO TO 210
@@ -214,7 +211,6 @@
 650 GOSUB 700
  LineNumber:700
 660 PRINT "YOUR MOVE";
- ITEMS
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 670 INPUT M
@@ -223,7 +219,6 @@
  
 690
 700 PRINT "COMPUTER MOVES"; M
- ITEMS
  TextConstant:"COMPUTER MOVES"
  CarriageControl:;
  Variable:M
@@ -232,7 +227,6 @@
  
 720
 730 PRINT "AND WINS ********"
- ITEMS
  TextConstant:"AND WINS ********"
  CarriageControl:NL
 740 GO TO 210

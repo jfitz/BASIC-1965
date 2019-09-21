@@ -29,15 +29,12 @@
 140 NEXT I
  Variable:I
 150 PRINT "ARRAY A"
- ITEMS
  TextConstant:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A;
- ITEMS
  Variable:A
  CarriageControl:;
 162 PRINT
- ITEMS
  CarriageControl:NL
 200 FOR I = 0 TO 5
  control: Variable:I
@@ -49,15 +46,12 @@
 240 NEXT I
  Variable:I
 250 PRINT "ARRAY B"
- ITEMS
  TextConstant:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B;
- ITEMS
  Variable:B
  CarriageControl:;
 262 PRINT
- ITEMS
  CarriageControl:NL
 300 ARR C = A*B
  Variable:C
@@ -66,15 +60,12 @@
  BinaryOperator:*
  AssignmentOperator:=
 310 PRINT "ARRAY C"
- ITEMS
  TextConstant:"ARRAY C"
  CarriageControl:NL
 320 ARR PRINT C;
- ITEMS
  Variable:C
  CarriageControl:;
 322 PRINT
- ITEMS
  CarriageControl:NL
 999 END
  

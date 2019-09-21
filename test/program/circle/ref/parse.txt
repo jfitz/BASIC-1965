@@ -81,11 +81,9 @@
  NumericConstant:0
  AssignmentOperator:=
 217 PRINT "IDENTIFYING POINT B"
- ITEMS
  TextConstant:"IDENTIFYING POINT B"
  CarriageControl:NL
 218 PRINT "B","AC/BC","AI/BI","Z"
- ITEMS
  TextConstant:"B"
  CarriageControl:,
  TextConstant:"AC/BC"
@@ -147,7 +145,6 @@
  BinaryOperator:/
  AssignmentOperator:=
 239 PRINT B1,R0,R1,Z
- ITEMS
  Variable:B1
  CarriageControl:,
  Variable:R0
@@ -192,7 +189,6 @@
  Variable:Z9
  BinaryOperator:>
 248 PRINT "CANNOT RESOLVE POINT B"
- ITEMS
  TextConstant:"CANNOT RESOLVE POINT B"
  CarriageControl:NL
 249 STOP
@@ -200,7 +196,6 @@
 300 REM PRINT DEFINED VALUES
  Remark:PRINT DEFINED VALUES
 301 PRINT "POINT C    :";C1;C2
- ITEMS
  TextConstant:"POINT C    :"
  CarriageControl:;
  Variable:C1
@@ -208,7 +203,6 @@
  Variable:C2
  CarriageControl:NL
 302 PRINT "POINT B    :";B1;B2
- ITEMS
  TextConstant:"POINT B    :"
  CarriageControl:;
  Variable:B1
@@ -216,13 +210,11 @@
  Variable:B2
  CarriageControl:NL
 303 PRINT "DISTANCE BC:";F2
- ITEMS
  TextConstant:"DISTANCE BC:"
  CarriageControl:;
  Variable:F2
  CarriageControl:NL
 304 PRINT "POINT A    :";A1;A2
- ITEMS
  TextConstant:"POINT A    :"
  CarriageControl:;
  Variable:A1
@@ -230,13 +222,11 @@
  Variable:A2
  CarriageControl:NL
 305 PRINT "DISTANCE AC:";F1
- ITEMS
  TextConstant:"DISTANCE AC:"
  CarriageControl:;
  Variable:F1
  CarriageControl:NL
 306 PRINT "RATIO AC/BC:";R0
- ITEMS
  TextConstant:"RATIO AC/BC:"
  CarriageControl:;
  Variable:R0
@@ -244,7 +234,6 @@
 400 REM PICK VALUES ON CIRCLE D
  Remark:PICK VALUES ON CIRCLE D
 401 PRINT "ANGLE","POINT"," ","DISTANCES"," ","RATIO","DIFFERENCE"
- ITEMS
  TextConstant:"ANGLE"
  CarriageControl:,
  TextConstant:"POINT"
@@ -314,7 +303,6 @@
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
 431 PRINT T,I1;I2,G1;G2,R1,R1-R0
- ITEMS
  Variable:T
  CarriageControl:,
  Variable:I1

@@ -135,13 +135,11 @@
  AssignmentOperator:=
 340
 350 PRINT "NUMBER = "N
- ITEMS
  TextConstant:"NUMBER = "
  CarriageControl:
  Variable:N
  CarriageControl:NL
 360 PRINT "MEAN OF X = "X3, "OF Y "Y3
- ITEMS
  TextConstant:"MEAN OF X = "
  CarriageControl:
  Variable:X3
@@ -151,7 +149,6 @@
  Variable:Y3
  CarriageControl:NL
 370 PRINT "SLOPE = "B, "Y-INTERCEPT = "B1
- ITEMS
  TextConstant:"SLOPE = "
  CarriageControl:
  Variable:B
@@ -161,10 +158,8 @@
  Variable:B1
  CarriageControl:NL
 375 PRINT
- ITEMS
  CarriageControl:NL
 380 PRINT "SUM-OF-SQUARES ", "TOTAL", Y2
- ITEMS
  TextConstant:"SUM-OF-SQUARES "
  CarriageControl:,
  TextConstant:"TOTAL"
@@ -172,7 +167,6 @@
  Variable:Y2
  CarriageControl:NL
 390 PRINT "    ", "MEAN", Y3*Y1
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"MEAN"
@@ -182,7 +176,6 @@
  BinaryOperator:*
  CarriageControl:NL
 400 PRINT "    ", "SLOPE", B*S
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"SLOPE"
@@ -192,7 +185,6 @@
  BinaryOperator:*
  CarriageControl:NL
 410 PRINT "    ", "RESIDUAL", S3
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"RESIDUAL"
@@ -200,14 +192,11 @@
  Variable:S3
  CarriageControl:NL
 415 PRINT
- ITEMS
  CarriageControl:NL
 420 PRINT "STANDARD DEVIATIONS"
- ITEMS
  TextConstant:"STANDARD DEVIATIONS"
  CarriageControl:NL
 430 PRINT "    ", "X  ", SQR(S1/(N - 1))
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"X  "
@@ -220,7 +209,6 @@
  FunctionSqr
  CarriageControl:NL
 440 PRINT "    ", "Y  ", SQR(S2/(N-1))
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"Y  "
@@ -233,7 +221,6 @@
  FunctionSqr
  CarriageControl:NL
 450 PRINT "    ", "ERROR", SQR(S4)
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"ERROR"
@@ -242,7 +229,6 @@
  FunctionSqr
  CarriageControl:NL
 460 PRINT "    ", "Y-BAR", SQR(S4/N)
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"Y-BAR"
@@ -253,7 +239,6 @@
  FunctionSqr
  CarriageControl:NL
 470 PRINT "    ", "SLOPE", SQR(S4/S1)
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"SLOPE"
@@ -264,7 +249,6 @@
  FunctionSqr
  CarriageControl:NL
 480 PRINT "    ", "Y-INTER.", SQR(S4*(1/N + X3*X3/S1))
- ITEMS
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"Y-INTER."
@@ -283,10 +267,8 @@
  FunctionSqr
  CarriageControl:NL
 485 PRINT
- ITEMS
  CarriageControl:NL
 490 PRINT "F-RATIO FOR SLOPE = " B*S/S4
- ITEMS
  TextConstant:"F-RATIO FOR SLOPE = "
  CarriageControl:
  Variable:B
@@ -296,7 +278,6 @@
  BinaryOperator:/
  CarriageControl:NL
 500 PRINT "CORRELATION COEFFICIENT = " S/SQR(S1*S2)
- ITEMS
  TextConstant:"CORRELATION COEFFICIENT = "
  CarriageControl:
  Variable:S

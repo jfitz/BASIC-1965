@@ -1,11 +1,9 @@
 100 PRINT "NUMBER TO BE FACTORED:";
- ITEMS
  TextConstant:"NUMBER TO BE FACTORED:"
  CarriageControl:;
 110 INPUT N
  Variable:N
 120 PRINT
- ITEMS
  CarriageControl:NL
 130 IF N = 0 THEN 999
  Variable:N
@@ -40,13 +38,11 @@
  NumericConstant:0
  BinaryOperator:=
 230 PRINT N;
- ITEMS
  Variable:N
  CarriageControl:;
 240 GOTO 500
  LineNumber:500
 250 PRINT N; "IS PRIME."
- ITEMS
  Variable:N
  CarriageControl:;
  TextConstant:"IS PRIME."
@@ -70,13 +66,11 @@
  NumericConstant:0
  BinaryOperator:>
 340 PRINT N; "HAS THE FACTORS:"
- ITEMS
  Variable:N
  CarriageControl:;
  TextConstant:"HAS THE FACTORS:"
  CarriageControl:NL
 350 PRINT "     ";
- ITEMS
  TextConstant:"     "
  CarriageControl:;
 360 LET Z = 1
@@ -84,7 +78,6 @@
  NumericConstant:1
  AssignmentOperator:=
 370 PRINT F;
- ITEMS
  Variable:F
  CarriageControl:;
 380 LET N = N/F
@@ -105,13 +98,10 @@
 500 REM ALL DONE
  Remark:ALL DONE
 510 PRINT
- ITEMS
  CarriageControl:NL
 520 PRINT
- ITEMS
  CarriageControl:NL
 530 PRINT
- ITEMS
  CarriageControl:NL
 540 GOTO 100
  LineNumber:100

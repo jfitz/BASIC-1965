@@ -121,7 +121,6 @@
 330 NEXT I
  Variable:I
 340 PRINT
- ITEMS
  CarriageControl:NL
 350 GOTO 470
  LineNumber:470
@@ -136,13 +135,11 @@
  NumericConstant:0
  BinaryOperator:>
 380 PRINT " ";
- ITEMS
  TextConstant:" "
  CarriageControl:;
 390 GOTO 450
  LineNumber:450
 400 PRINT "*";
- ITEMS
  TextConstant:"*"
  CarriageControl:;
 410 FOR K = I+1 TO 60
@@ -162,7 +159,6 @@
 450 NEXT I
  Variable:I
 460 PRINT
- ITEMS
  CarriageControl:NL
 470 NEXT J
  Variable:J

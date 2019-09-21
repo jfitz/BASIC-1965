@@ -3,15 +3,12 @@
 20 REM A SYSTEM OF 3 EQUATIONS IN 3 UNKNOWNS
  Remark:A SYSTEM OF 3 EQUATIONS IN 3 UNKNOWNS
 30 PRINT "SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
- ITEMS
  TextConstant:"SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
  CarriageControl:NL
 40 PRINT "OF THE TYPE AX + BY + CZ = D"
- ITEMS
  TextConstant:"OF THE TYPE AX + BY + CZ = D"
  CarriageControl:NL
 50 PRINT "ENTER THE 1ST EQUATION (A,B,C,D)"
- ITEMS
  TextConstant:"ENTER THE 1ST EQUATION (A,B,C,D)"
  CarriageControl:NL
 60 INPUT A1,B1,C1,D1
@@ -20,7 +17,6 @@
  Variable:C1
  Variable:D1
 70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
- ITEMS
  TextConstant:"ENTER THE 2ND EQUATION (A,B,C,D)"
  CarriageControl:NL
 80 INPUT A2,B2,C2,D2
@@ -29,7 +25,6 @@
  Variable:C2
  Variable:D2
 90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
- ITEMS
  TextConstant:"ENTER THE 3RD EQUATION (A,B,C,D)"
  CarriageControl:NL
 100 INPUT A3,B3,C3,D3
@@ -154,11 +149,9 @@
  BinaryOperator:-
  AssignmentOperator:=
 220 PRINT "SOLUTION"
- ITEMS
  TextConstant:"SOLUTION"
  CarriageControl:NL
 230 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
- ITEMS
  TextConstant:"X = "
  CarriageControl:;
  Variable:X
@@ -174,14 +167,11 @@
 240 GOTO 260
  LineNumber:260
 250 PRINT "INSUFFICIENT OR ERRONEOUS DATA ENTERED"
- ITEMS
  TextConstant:"INSUFFICIENT OR ERRONEOUS DATA ENTERED"
  CarriageControl:NL
 260 PRINT
- ITEMS
  CarriageControl:NL
 270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT L
@@ -193,7 +183,6 @@
 300 STOP
  
 310 PRINT
- ITEMS
  CarriageControl:NL
 320 GOTO 30
  LineNumber:30

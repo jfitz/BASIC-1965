@@ -3,7 +3,6 @@
 20 REM OF TWO VECTORS
  Remark:OF TWO VECTORS
 30 PRINT "ENTER 1ST VECTOR (A1,A2,A3)"
- ITEMS
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
@@ -11,7 +10,6 @@
  Variable:A2
  Variable:A3
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
- ITEMS
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
@@ -49,11 +47,9 @@
  BinaryOperator:-
  AssignmentOperator:=
 100 PRINT "VECTOR CROSS PRODUCT"
- ITEMS
  TextConstant:"VECTOR CROSS PRODUCT"
  CarriageControl:NL
 110 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
- ITEMS
  TextConstant:"X = "
  CarriageControl:;
  Variable:X
@@ -67,11 +63,9 @@
  Variable:Z
  CarriageControl:NL
 120 PRINT "++++++++++++++++++++"
- ITEMS
  TextConstant:"++++++++++++++++++++"
  CarriageControl:NL
 130 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 140 INPUT L
@@ -83,7 +77,6 @@
 160 STOP
  
 170 PRINT
- ITEMS
  CarriageControl:NL
 180 GOTO 30
  LineNumber:30

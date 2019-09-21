@@ -57,7 +57,6 @@
 200 REM  PRINT ANSWERS.
  Remark: PRINT ANSWERS.
 210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
- ITEMS
  TextConstant:" X"
  CarriageControl:,
  TextConstant:"POLY."
@@ -67,14 +66,12 @@
  TextConstant:"2D DER."
  CarriageControl:NL
 220 PRINT
- ITEMS
  CarriageControl:NL
 230 FOR J = 1 TO X9
  control: Variable:J
  start:   ["NumericConstant:1"]
  end:     ["Variable:X9"]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
- ITEMS
  Variable:J
  Variable:X
  CarriageControl:,

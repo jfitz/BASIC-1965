@@ -1,27 +1,21 @@
 10 REM COMPOUNDED AMOUNTS
  Remark:COMPOUNDED AMOUNTS
 20 PRINT "FUTURE VALUE (1)"
- ITEMS
  TextConstant:"FUTURE VALUE (1)"
  CarriageControl:NL
 30 PRINT "PRESENT VALUE (2)"
- ITEMS
  TextConstant:"PRESENT VALUE (2)"
  CarriageControl:NL
 40 PRINT "INTEREST (3)"
- ITEMS
  TextConstant:"INTEREST (3)"
  CarriageControl:NL
 50 PRINT "PERIOD INTEREST RATE (4)"
- ITEMS
  TextConstant:"PERIOD INTEREST RATE (4)"
  CarriageControl:NL
 60 PRINT "NUMBER OF TIME PERIODS (5)"
- ITEMS
  TextConstant:"NUMBER OF TIME PERIODS (5)"
  CarriageControl:NL
 70 PRINT "ENTER 1 TO 5"
- ITEMS
  TextConstant:"ENTER 1 TO 5"
  CarriageControl:NL
 80 INPUT A
@@ -46,7 +40,6 @@
  BinaryOperator:*
  AssignmentOperator:=
 140 PRINT "FUTURE VALUE = ";X
- ITEMS
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
  Variable:X
@@ -70,7 +63,6 @@
  BinaryOperator:*
  AssignmentOperator:=
 200 PRINT "PRESENT VALUE = ";Y
- ITEMS
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
  Variable:Y
@@ -96,7 +88,6 @@
  BinaryOperator:*
  AssignmentOperator:=
 260 PRINT "INTEREST = ";L
- ITEMS
  TextConstant:"INTEREST = "
  CarriageControl:;
  Variable:L
@@ -122,7 +113,6 @@
  BinaryOperator:-
  AssignmentOperator:=
 320 PRINT "INTEREST RATE = ";I
- ITEMS
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
  Variable:I
@@ -148,16 +138,13 @@
  BinaryOperator:/
  AssignmentOperator:=
 380 PRINT "NUMBER OF TIME PERIODS = ";N
- ITEMS
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
  Variable:N
  CarriageControl:NL
 390 PRINT
- ITEMS
  CarriageControl:NL
 400 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 401 INPUT L
@@ -169,12 +156,10 @@
 403 STOP
  
 404 PRINT
- ITEMS
  CarriageControl:NL
 405 GOTO 70
  LineNumber:70
 410 PRINT "PRESENT VALUE = ";
- ITEMS
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
 420 INPUT Y
@@ -182,7 +167,6 @@
 430 RETURN
  
 440 PRINT "INTEREST RATE = ";
- ITEMS
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
 450 INPUT I
@@ -190,7 +174,6 @@
 460 RETURN
  
 470 PRINT "NUMBER OF TIME PERIODS = ";
- ITEMS
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
 480 INPUT N
@@ -198,7 +181,6 @@
 490 RETURN
  
 500 PRINT "FUTURE VALUE = ";
- ITEMS
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
 510 INPUT X

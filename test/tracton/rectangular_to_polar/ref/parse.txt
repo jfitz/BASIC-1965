@@ -3,17 +3,14 @@
 20 REM COORDINATES INTO POLAR COORDINATES
  Remark:COORDINATES INTO POLAR COORDINATES
 30 PRINT "RECTANGULAR COORDINATES"
- ITEMS
  TextConstant:"RECTANGULAR COORDINATES"
  CarriageControl:NL
 40 PRINT "X = ";
- ITEMS
  TextConstant:"X = "
  CarriageControl:;
 50 INPUT X
  Variable:X
 60 PRINT "Y = ";
- ITEMS
  TextConstant:"Y = "
  CarriageControl:;
 70 INPUT Y
@@ -120,27 +117,22 @@
  Variable:X
  AssignmentOperator:=
 310 PRINT "POLAR COORDINATES"
- ITEMS
  TextConstant:"POLAR COORDINATES"
  CarriageControl:NL
 320 PRINT "ANGLE IN DEGREES = ";W
- ITEMS
  TextConstant:"ANGLE IN DEGREES = "
  CarriageControl:;
  Variable:W
  CarriageControl:NL
 330 PRINT "MAGNITUDE = ";R
- ITEMS
  TextConstant:"MAGNITUDE = "
  CarriageControl:;
  Variable:R
  CarriageControl:NL
 340 PRINT "********************"
- ITEMS
  TextConstant:"********************"
  CarriageControl:NL
 350 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 360 INPUT L
@@ -152,7 +144,6 @@
 380 STOP
  
 390 PRINT
- ITEMS
  CarriageControl:NL
 400 GOTO 30
  LineNumber:30

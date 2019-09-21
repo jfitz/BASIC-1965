@@ -19,7 +19,6 @@
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "NUMBER OF SAMPLES = "
- ITEMS
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:NL
 80 INPUT N
@@ -29,7 +28,6 @@
  start:   ["NumericConstant:1"]
  end:     ["Variable:N"]
 100 PRINT "SAMPLE = "
- ITEMS
  TextConstant:"SAMPLE = "
  CarriageControl:NL
 110 INPUT X
@@ -155,35 +153,29 @@
  BinaryOperator:/
  AssignmentOperator:=
 240 PRINT "1ST MOMENT = ";J
- ITEMS
  TextConstant:"1ST MOMENT = "
  CarriageControl:;
  Variable:J
  CarriageControl:NL
 250 PRINT "2ND MOMENT = ";E
- ITEMS
  TextConstant:"2ND MOMENT = "
  CarriageControl:;
  Variable:E
  CarriageControl:NL
 260 PRINT "3RD MOMENT = ";F
- ITEMS
  TextConstant:"3RD MOMENT = "
  CarriageControl:;
  Variable:F
  CarriageControl:NL
 270 PRINT "4TH MOMENT = ";H
- ITEMS
  TextConstant:"4TH MOMENT = "
  CarriageControl:;
  Variable:H
  CarriageControl:NL
 280 PRINT "MOMENT COEFFICIENTS"
- ITEMS
  TextConstant:"MOMENT COEFFICIENTS"
  CarriageControl:NL
 290 PRINT "SKEWNESS = ";K,"KURTOSIS = ";L
- ITEMS
  TextConstant:"SKEWNESS = "
  CarriageControl:;
  Variable:K
@@ -193,11 +185,9 @@
  Variable:L
  CarriageControl:NL
 300 PRINT "**********************"
- ITEMS
  TextConstant:"**********************"
  CarriageControl:NL
 310 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 320 INPUT Z
@@ -209,7 +199,6 @@
 340 STOP
  
 350 PRINT
- ITEMS
  CarriageControl:NL
 360 GOTO 30
  LineNumber:30

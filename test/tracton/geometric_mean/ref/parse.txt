@@ -15,7 +15,6 @@
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "SAMPLE = ";
- ITEMS
  TextConstant:"SAMPLE = "
  CarriageControl:;
 80 INPUT W
@@ -45,7 +44,6 @@
  BinaryOperator:^
  AssignmentOperator:=
 130 PRINT "NUMBER OF SAMPLES = ";N,"CURRENT SAMPLE = ";W
- ITEMS
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:;
  Variable:N
@@ -55,7 +53,6 @@
  Variable:W
  CarriageControl:NL
 140 PRINT "CURRENT MEAN = ";G
- ITEMS
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
  Variable:G
@@ -63,10 +60,8 @@
 150 GOTO 70
  LineNumber:70
 160 PRINT
- ITEMS
  CarriageControl:NL
 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
@@ -78,7 +73,6 @@
 200 STOP
  
 210 PRINT
- ITEMS
  CarriageControl:NL
 220 GOTO 50
  LineNumber:50

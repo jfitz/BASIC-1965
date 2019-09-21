@@ -1,25 +1,21 @@
 10 REM THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
  Remark:THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
 20 PRINT "FIRST TERM = ";
- ITEMS
  TextConstant:"FIRST TERM = "
  CarriageControl:;
 30 INPUT A
  Variable:A
 40 PRINT "COMMON DIFFERENCE = ";
- ITEMS
  TextConstant:"COMMON DIFFERENCE = "
  CarriageControl:;
 50 INPUT D
  Variable:D
 60 PRINT "NUMBER OF TERMS = ";
- ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:;
 70 INPUT N
  Variable:N
 80 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0";
- ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:;
 90 INPUT C
@@ -31,11 +27,9 @@
 110 GOTO 140
  LineNumber:140
 120 PRINT "ARITHMETIC PROGRESSION"
- ITEMS
  TextConstant:"ARITHMETIC PROGRESSION"
  CarriageControl:NL
 130 PRINT "TERM NUMBER", "TERM VALUE"
- ITEMS
  TextConstant:"TERM NUMBER"
  CarriageControl:,
  TextConstant:"TERM VALUE"
@@ -75,7 +69,6 @@
 200 GOTO 220
  LineNumber:220
 210 PRINT K, L
- ITEMS
  Variable:K
  CarriageControl:,
  Variable:L
@@ -83,16 +76,13 @@
 220 NEXT I
  Variable:I
 230 PRINT "SUM = ";J
- ITEMS
  TextConstant:"SUM = "
  CarriageControl:;
  Variable:J
  CarriageControl:NL
 240 PRINT
- ITEMS
  CarriageControl:NL
 250 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 260 INPUT X

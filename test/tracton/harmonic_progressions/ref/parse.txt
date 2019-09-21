@@ -3,31 +3,26 @@
 20 REM PROGRESSIONS
  Remark:PROGRESSIONS
 30 PRINT "VALUE OF A = "
- ITEMS
  TextConstant:"VALUE OF A = "
  CarriageControl:NL
 40 INPUT A
  Variable:A
 50 PRINT "VALUE OF B = "
- ITEMS
  TextConstant:"VALUE OF B = "
  CarriageControl:NL
 60 INPUT B
  Variable:B
 70 PRINT "DIFFERENCE = "
- ITEMS
  TextConstant:"DIFFERENCE = "
  CarriageControl:NL
 80 INPUT D
  Variable:D
 90 PRINT "NUMBER OF TERMS = "
- ITEMS
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:NL
 100 INPUT N
  Variable:N
 110 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
- ITEMS
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 120 INPUT C
@@ -39,11 +34,9 @@
 140 GOTO 170
  LineNumber:170
 150 PRINT "HARMONIC PROGRESSION"
- ITEMS
  TextConstant:"HARMONIC PROGRESSION"
  CarriageControl:NL
 160 PRINT "TERM NUMBER","TERM VALUE"
- ITEMS
  TextConstant:"TERM NUMBER"
  CarriageControl:,
  TextConstant:"TERM VALUE"
@@ -85,7 +78,6 @@
 230 GOTO 250
  LineNumber:250
 240 PRINT K,L
- ITEMS
  Variable:K
  CarriageControl:,
  Variable:L
@@ -93,17 +85,14 @@
 250 NEXT I
  Variable:I
 260 PRINT "SUM = ";J
- ITEMS
  TextConstant:"SUM = "
  CarriageControl:;
  Variable:J
  CarriageControl:NL
 270 PRINT "********************"
- ITEMS
  TextConstant:"********************"
  CarriageControl:NL
 280 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 290 INPUT X
@@ -115,7 +104,6 @@
 310 STOP
  
 320 PRINT
- ITEMS
  CarriageControl:NL
 330 GOTO 30
  LineNumber:30

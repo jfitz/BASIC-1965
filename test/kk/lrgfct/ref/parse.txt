@@ -1,5 +1,4 @@
 10 PRINT "NUMBER", "LARGEST FACTOR"
- ITEMS
  TextConstant:"NUMBER"
  CarriageControl:,
  TextConstant:"LARGEST FACTOR"
@@ -10,7 +9,6 @@
  end:     ["NumericConstant:1020"]
  step:    ["NumericConstant:2"]
 30 PRINT N,
- ITEMS
  Variable:N
  CarriageControl:,
 40 FOR F = INT(N/2) TO 1 STEP -1
@@ -28,7 +26,6 @@
  FunctionInt
  BinaryOperator:<>
 60 PRINT F
- ITEMS
  Variable:F
  CarriageControl:NL
 70 GOTO 90

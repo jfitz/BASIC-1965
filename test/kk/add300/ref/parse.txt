@@ -69,11 +69,9 @@ Line 640 is out of sequence
  Variable:L
  AssignmentOperator:=
 170  PRINT "PLUS"
- ITEMS
  TextConstant:"PLUS"
  CarriageControl:NL
 180  PRINT
- ITEMS
  CarriageControl:NL
 210  GOSUB 1000
  LineNumber:1000
@@ -96,11 +94,9 @@ Line 640 is out of sequence
  Variable:L
  AssignmentOperator:=
 270  PRINT "EQUALS"
- ITEMS
  TextConstant:"EQUALS"
  CarriageControl:NL
 280  PRINT
- ITEMS
  CarriageControl:NL
 290 
 300  REM C = A + B
@@ -207,7 +203,6 @@ Line 640 is out of sequence
 1140 RETURN
  
 1200 PRINT "NUMBER TOO LONG"
- ITEMS
  TextConstant:"NUMBER TOO LONG"
  CarriageControl:NL
 1210 STOP
@@ -221,7 +216,6 @@ Line 640 is out of sequence
  NumericConstant:100
  BinaryOperator:>=
 2020 PRINT "      ";
- ITEMS
  TextConstant:"      "
  CarriageControl:;
 2030 IF C(L) >= 10 THEN 2100
@@ -230,11 +224,9 @@ Line 640 is out of sequence
  NumericConstant:10
  BinaryOperator:>=
 2040 PRINT "      ";
- ITEMS
  TextConstant:"      "
  CarriageControl:;
 2050 PRINT C(L); ",   ";
- ITEMS
  Variable:L
  Variable:C
  CarriageControl:;
@@ -267,7 +259,6 @@ Line 640 is out of sequence
  BinaryOperator:-
  AssignmentOperator:=
 2120 PRINT M;
- ITEMS
  Variable:M
  CarriageControl:;
 2130 GOTO 2050
@@ -316,7 +307,6 @@ Line 640 is out of sequence
  BinaryOperator:/
  AssignmentOperator:=
 2280         PRINT M;
- ITEMS
  Variable:M
  CarriageControl:;
 2290     NEXT J
@@ -326,16 +316,13 @@ Line 640 is out of sequence
  NumericConstant:0
  BinaryOperator:=
 2310     PRINT ",   ";
- ITEMS
  TextConstant:",   "
  CarriageControl:;
 2320 NEXT I
  Variable:I
 2400 PRINT
- ITEMS
  CarriageControl:NL
 2405 PRINT
- ITEMS
  CarriageControl:NL
 2410 RETURN
  

@@ -37,11 +37,9 @@
  NumericConstant:0.03587
  AssignmentOperator:=
 120 PRINT "TYPE G FOR GAMMA FUNCTION OR"
- ITEMS
  TextConstant:"TYPE G FOR GAMMA FUNCTION OR"
  CarriageControl:NL
 130 PRINT "TYPE F FOR THE GENERALIZED FACTORIAL"
- ITEMS
  TextConstant:"TYPE F FOR THE GENERALIZED FACTORIAL"
  CarriageControl:NL
 140 INPUT A$
@@ -51,13 +49,11 @@
 160 IF A$ = "F" THEN 300
  Token 'InvalidToken:$' is not a value or operator
 170 PRINT "INVALID RESPONSE"
- ITEMS
  TextConstant:"INVALID RESPONSE"
  CarriageControl:NL
 180 GOTO 120
  LineNumber:120
 190 PRINT "ENTER VALUE OF X"
- ITEMS
  TextConstant:"ENTER VALUE OF X"
  CarriageControl:NL
 200 INPUT X
@@ -77,7 +73,6 @@
  NumericConstant:0
  BinaryOperator:>=
 240 PRINT "X MUST BE EQUAL TO OR GREATER THAN 1"
- ITEMS
  TextConstant:"X MUST BE EQUAL TO OR GREATER THAN 1"
  CarriageControl:NL
 250 GOTO 190
@@ -98,7 +93,6 @@
 290 GOTO 410
  LineNumber:410
 300 PRINT "ENTER VALUE OF X"
- ITEMS
  TextConstant:"ENTER VALUE OF X"
  CarriageControl:NL
 310 INPUT X
@@ -112,7 +106,6 @@
  NumericConstant:0
  BinaryOperator:>=
 340 PRINT "X MUST BE GREATER THAN OR EQUAL TO 0"
- ITEMS
  TextConstant:"X MUST BE GREATER THAN OR EQUAL TO 0"
  CarriageControl:NL
 350 GOTO 300
@@ -127,7 +120,6 @@
 380 GOSUB 570
  LineNumber:570
 390 PRINT X;"! = ";K
- ITEMS
  Variable:X
  CarriageControl:;
  TextConstant:"! = "
@@ -137,7 +129,6 @@
 400 GOTO 420
  LineNumber:420
 410 PRINT "GAMMA (";X;") = ";K
- ITEMS
  TextConstant:"GAMMA ("
  CarriageControl:;
  Variable:X
@@ -147,10 +138,8 @@
  Variable:K
  CarriageControl:NL
 420 PRINT
- ITEMS
  CarriageControl:NL
 430 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
- ITEMS
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 440 INPUT L$
@@ -160,7 +149,6 @@
 460 STOP
  
 470 PRINT
- ITEMS
  CarriageControl:NL
 480 GOTO 120
  LineNumber:120

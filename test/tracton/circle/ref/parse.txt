@@ -3,21 +3,18 @@
 20 REM OF A CIRCLE FROM 3 NON-COLINEAR POINTS
  Remark:OF A CIRCLE FROM 3 NON-COLINEAR POINTS
 30 PRINT "INPUT X1,Y1";
- ITEMS
  TextConstant:"INPUT X1,Y1"
  CarriageControl:;
 40 INPUT X1, Y1
  Variable:X1
  Variable:Y1
 50 PRINT "INPUT X2,Y2";
- ITEMS
  TextConstant:"INPUT X2,Y2"
  CarriageControl:;
 60 INPUT X2, Y2
  Variable:X2
  Variable:Y2
 70 PRINT "INPUT X3,Y2";
- ITEMS
  TextConstant:"INPUT X3,Y2"
  CarriageControl:;
 80 INPUT X3, Y3
@@ -133,7 +130,6 @@
  FunctionSqr
  AssignmentOperator:=
 180 PRINT "CENTER X0,Y0 = ";X0;",";Y0
- ITEMS
  TextConstant:"CENTER X0,Y0 = "
  CarriageControl:;
  Variable:X0
@@ -143,16 +139,13 @@
  Variable:Y0
  CarriageControl:NL
 190 PRINT "RADIUS = ";R
- ITEMS
  TextConstant:"RADIUS = "
  CarriageControl:;
  Variable:R
  CarriageControl:NL
 200 PRINT
- ITEMS
  CarriageControl:NL
 210 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
- ITEMS
  TextConstant:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 220 INPUT L
@@ -164,7 +157,6 @@
 240 STOP
  
 250 PRINT
- ITEMS
  CarriageControl:NL
 260 GOTO 30
  LineNumber:30

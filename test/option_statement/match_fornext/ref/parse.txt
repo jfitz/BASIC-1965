@@ -1,7 +1,6 @@
 10 REM TEST OPTION MATCH_FORNEXT
  Remark:TEST OPTION MATCH_FORNEXT
 20 PRINT "OPTION MATCH_FORNEXT FALSE"
- ITEMS
  TextConstant:"OPTION MATCH_FORNEXT FALSE"
  CarriageControl:NL
 30 OPTION MATCH_FORNEXT FALSE
@@ -15,7 +14,6 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 60 PRINT I,J
- ITEMS
  Variable:I
  CarriageControl:,
  Variable:J
@@ -29,7 +27,6 @@
 90 NEXT I
  Variable:I
 120 PRINT "OPTION MATCH_FORNEXT TRUE"
- ITEMS
  TextConstant:"OPTION MATCH_FORNEXT TRUE"
  CarriageControl:NL
 130 OPTION MATCH_FORNEXT TRUE
@@ -43,7 +40,6 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 160 PRINT I,J
- ITEMS
  Variable:I
  CarriageControl:,
  Variable:J

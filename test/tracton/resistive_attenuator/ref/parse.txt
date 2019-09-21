@@ -5,13 +5,11 @@
 30 REM RESISTIVE ATTENUATOR
  Remark:RESISTIVE ATTENUATOR
 40 PRINT "INPUT RESISTANCE R(IN) = ";
- ITEMS
  TextConstant:"INPUT RESISTANCE R(IN) = "
  CarriageControl:;
 50 INPUT R1
  Variable:R1
 60 PRINT "OUTPUT RESISTANCE R(OUT) = ";
- ITEMS
  TextConstant:"OUTPUT RESISTANCE R(OUT) = "
  CarriageControl:;
 70 INPUT R9
@@ -45,13 +43,11 @@
  BinaryOperator:*
  AssignmentOperator:=
 110 PRINT "MINIMUM SYSTEM LOSS IN DECIBELS = ";M
- ITEMS
  TextConstant:"MINIMUM SYSTEM LOSS IN DECIBELS = "
  CarriageControl:;
  Variable:M
  CarriageControl:NL
 120 PRINT "ENTERED DESIRED LOSS IN DECIBELS";
- ITEMS
  TextConstant:"ENTERED DESIRED LOSS IN DECIBELS"
  CarriageControl:;
 130 INPUT N
@@ -166,7 +162,6 @@
 220 REM REPORT
  Remark:REPORT
 230 PRINT "R(IN) = ";R1,"R(OUT) = ";R9
- ITEMS
  TextConstant:"R(IN) = "
  CarriageControl:;
  Variable:R1
@@ -176,66 +171,53 @@
  Variable:R9
  CarriageControl:NL
 240 PRINT "DESIRED LOSS = ";N
- ITEMS
  TextConstant:"DESIRED LOSS = "
  CarriageControl:;
  Variable:N
  CarriageControl:NL
 250 PRINT
- ITEMS
  CarriageControl:NL
 260 PRINT "T ATTENUATOR"
- ITEMS
  TextConstant:"T ATTENUATOR"
  CarriageControl:NL
 270 PRINT "RESISTOR 1 = ";T1
- ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
  Variable:T1
  CarriageControl:NL
 280 PRINT "RESISTOR 2 = ";T2
- ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
  Variable:T2
  CarriageControl:NL
 290 PRINT "RESISTOR 3 = ";T3
- ITEMS
  TextConstant:"RESISTOR 3 = "
  CarriageControl:;
  Variable:T3
  CarriageControl:NL
 300 PRINT
- ITEMS
  CarriageControl:NL
 310 PRINT "PI ATTENUATOR"
- ITEMS
  TextConstant:"PI ATTENUATOR"
  CarriageControl:NL
 320 PRINT "RESISTOR 1 = ";P1
- ITEMS
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
  Variable:P1
  CarriageControl:NL
 330 PRINT "RESISTOR 2 = ";P2
- ITEMS
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
  Variable:P2
  CarriageControl:NL
 340 PRINT "RESISTOR 3 = ";P3
- ITEMS
  TextConstant:"RESISTOR 3 = "
  CarriageControl:;
  Variable:P3
  CarriageControl:NL
 350 PRINT
- ITEMS
  CarriageControl:NL
 360 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 370 INPUT Q
@@ -247,7 +229,6 @@
 390 STOP
  
 400 PRINT
- ITEMS
  CarriageControl:NL
 410 GOTO 40
  LineNumber:40

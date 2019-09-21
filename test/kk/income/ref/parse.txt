@@ -33,11 +33,9 @@
 80 NEXT I
  Variable:I
 100 PRINT "        INCOME"
- ITEMS
  TextConstant:"        INCOME"
  CarriageControl:NL
 110 PRINT "AT LEAST","BUT BELOW","NUMBER OF PEOPLE"
- ITEMS
  TextConstant:"AT LEAST"
  CarriageControl:,
  TextConstant:"BUT BELOW"
@@ -49,7 +47,6 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
- ITEMS
  Variable:D
  NumericConstant:10000
  BinaryOperator:*

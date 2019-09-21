@@ -1,8 +1,6 @@
 5  PRINT
- ITEMS
  CarriageControl:NL
 10 PRINT "A, B, P, R, Y, T";
- ITEMS
  TextConstant:"A, B, P, R, Y, T"
  CarriageControl:;
 20 INPUT A, B, P, R, Y, T
@@ -76,7 +74,6 @@
  NumericConstant:0
  BinaryOperator:<
 130 PRINT "ORIGINAL AMOUNT = $" A
- ITEMS
  TextConstant:"ORIGINAL AMOUNT = $"
  CarriageControl:
  Variable:A
@@ -103,7 +100,6 @@
  NumericConstant:0
  BinaryOperator:<
 230 PRINT "FINAL AMOUNT = $" B
- ITEMS
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
  Variable:B
@@ -130,7 +126,6 @@
  BinaryOperator:/
  AssignmentOperator:=
 330 PRINT "PAYMENT = $" P
- ITEMS
  TextConstant:"PAYMENT = $"
  CarriageControl:
  Variable:P
@@ -169,7 +164,6 @@
  BinaryOperator:/
  AssignmentOperator:=
 430 PRINT "NUMBER OF YEARS = " Y
- ITEMS
  TextConstant:"NUMBER OF YEARS = "
  CarriageControl:
  Variable:Y
@@ -223,13 +217,11 @@
 540 NEXT R
  Variable:R
 545 PRINT "NO ANSWER FOUND"
- ITEMS
  TextConstant:"NO ANSWER FOUND"
  CarriageControl:NL
 546 GOTO 5
  LineNumber:5
 550 PRINT "ANNUAL INTEREST IS BETWEEN " R-0.1; "AND " R; "PERCENT"
- ITEMS
  TextConstant:"ANNUAL INTEREST IS BETWEEN "
  CarriageControl:
  Variable:R
@@ -248,13 +240,11 @@
 800 REM ERROR ROUTINE
  Remark:ERROR ROUTINE
 810 PRINT "INCORRECT DATA. PLEASE RETYPE."
- ITEMS
  TextConstant:"INCORRECT DATA. PLEASE RETYPE."
  CarriageControl:NL
 820 GOTO 5
  LineNumber:5
 850 PRINT "ANSWER IS NEGATIVE."
- ITEMS
  TextConstant:"ANSWER IS NEGATIVE."
  CarriageControl:NL
 860 GOTO 5

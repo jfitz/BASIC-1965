@@ -39,7 +39,6 @@
  Variable:I
 99
 100 PRINT "SELECTED ACTS: ";
- ITEMS
  TextConstant:"SELECTED ACTS: "
  CarriageControl:;
 105 FOR I = I-1 TO 0 STEP -1
@@ -143,7 +142,6 @@
 360    NEXT J
  Variable:J
 370    PRINT A;
- ITEMS
  Variable:A
  CarriageControl:;
 380    LET V(I) = M
@@ -154,13 +152,10 @@
 399 NEXT I
  Variable:I
 400 PRINT
- ITEMS
  CarriageControl:NL
 410 PRINT
- ITEMS
  CarriageControl:NL
 420 PRINT "EXPECTED GAIN = $" V(0)
- ITEMS
  TextConstant:"EXPECTED GAIN = $"
  CarriageControl:
  NumericConstant:0

@@ -17,16 +17,13 @@
  Variable:Y0
  Variable:H
 110 PRINT " X", " Y"
- ITEMS
  TextConstant:" X"
  CarriageControl:,
  TextConstant:" Y"
  CarriageControl:NL
 120 PRINT
- ITEMS
  CarriageControl:NL
 130 PRINT X0, Y0
- ITEMS
  Variable:X0
  CarriageControl:,
  Variable:Y0
@@ -80,7 +77,6 @@
  BinaryOperator:+
  AssignmentOperator:=
 220 PRINT X+H, Y
- ITEMS
  Variable:X
  Variable:H
  BinaryOperator:+

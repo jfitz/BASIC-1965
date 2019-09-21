@@ -5,13 +5,11 @@
 30 REM BASE Y
  Remark:BASE Y
 40 PRINT "BASE = "
- ITEMS
  TextConstant:"BASE = "
  CarriageControl:NL
 50 INPUT Y
  Variable:Y
 60 PRINT "X = "
- ITEMS
  TextConstant:"X = "
  CarriageControl:NL
 70 INPUT X
@@ -25,7 +23,6 @@
  BinaryOperator:/
  AssignmentOperator:=
 90 PRINT "LOG";X;" = ";J
- ITEMS
  TextConstant:"LOG"
  CarriageControl:;
  Variable:X
@@ -35,7 +32,6 @@
  Variable:J
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
@@ -47,7 +43,6 @@
 130 STOP
  
 140 PRINT
- ITEMS
  CarriageControl:NL
 150 GOTO 40
  LineNumber:40

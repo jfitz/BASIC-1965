@@ -31,7 +31,6 @@
  BinaryOperator:-
  AssignmentOperator:=
 150 PRINT M, "METERS", C, "CENTIMETERS"
- ITEMS
  Variable:M
  CarriageControl:,
  TextConstant:"METERS"
@@ -41,7 +40,6 @@
  TextConstant:"CENTIMETERS"
  CarriageControl:NL
 160 PRINT "CONVERTS TO"
- ITEMS
  TextConstant:"CONVERTS TO"
  CarriageControl:NL
 170 IF F = 0 THEN 190
@@ -49,25 +47,20 @@
  NumericConstant:0
  BinaryOperator:=
 180 PRINT F, "FEET",
- ITEMS
  Variable:F
  CarriageControl:,
  TextConstant:"FEET"
  CarriageControl:,
 190 PRINT I, "INCHES"
- ITEMS
  Variable:I
  CarriageControl:,
  TextConstant:"INCHES"
  CarriageControl:NL
 200 PRINT
- ITEMS
  CarriageControl:NL
 210 PRINT
- ITEMS
  CarriageControl:NL
 220 PRINT
- ITEMS
  CarriageControl:NL
 230 GOTO 100
  LineNumber:100

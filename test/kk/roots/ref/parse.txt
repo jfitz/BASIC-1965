@@ -1,5 +1,4 @@
 10 PRINT "NUMBER", "SQUARE ROOT", "CUBE ROOT", "FOURTH ROOT"
- ITEMS
  TextConstant:"NUMBER"
  CarriageControl:,
  TextConstant:"SQUARE ROOT"
@@ -13,7 +12,6 @@
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 30 PRINT N,
- ITEMS
  Variable:N
  CarriageControl:,
 40 FOR R = 2 TO 4
@@ -21,7 +19,6 @@
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:4"]
 50 PRINT N^(1/R),
- ITEMS
  Variable:N
  NumericConstant:1
  Variable:R
@@ -31,7 +28,6 @@
 60 NEXT R
  Variable:R
 70 PRINT
- ITEMS
  CarriageControl:NL
 80 NEXT N
  Variable:N

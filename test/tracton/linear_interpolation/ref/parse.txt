@@ -1,21 +1,18 @@
 10 REM THIS PROGRAM COMPUTES LINEAR INTERPOLATION
  Remark:THIS PROGRAM COMPUTES LINEAR INTERPOLATION
 20 PRINT "KNOWN VALUE OF X (X1,X2) = ";
- ITEMS
  TextConstant:"KNOWN VALUE OF X (X1,X2) = "
  CarriageControl:;
 30 INPUT X1,X2
  Variable:X1
  Variable:X2
 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
- ITEMS
  TextConstant:"KNOWN VALUES OF Y (F(X1),F(X2)) = "
  CarriageControl:;
 50 INPUT Y1,Y2
  Variable:Y1
  Variable:Y2
 60 PRINT "INTERPOLATE F(X) AT X = ";
- ITEMS
  TextConstant:"INTERPOLATE F(X) AT X = "
  CarriageControl:;
 70 INPUT X
@@ -43,16 +40,13 @@
  BinaryOperator:/
  AssignmentOperator:=
 100 PRINT "INTERPOLATED F(X) = ";F
- ITEMS
  TextConstant:"INTERPOLATED F(X) = "
  CarriageControl:;
  Variable:F
  CarriageControl:NL
 110 PRINT
- ITEMS
  CarriageControl:NL
 120 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 130 INPUT L
@@ -64,7 +58,6 @@
 150 STOP
  
 160 PRINT
- ITEMS
  CarriageControl:NL
 170 GOTO 20
  LineNumber:20

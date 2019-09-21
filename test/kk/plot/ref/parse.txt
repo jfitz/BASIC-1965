@@ -24,7 +24,6 @@
  NumericConstant:50
  BinaryOperator:<=
 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
- ITEMS
  TextConstant:"ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
  CarriageControl:NL
 160 STOP
@@ -37,7 +36,6 @@
  BinaryOperator:+
  FunctionInt
 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
- ITEMS
  TextConstant:"Y-AXIS:  FROM "
  CarriageControl:
  Variable:C
@@ -51,10 +49,8 @@
  Variable:H
  CarriageControl:NL
 190 PRINT
- ITEMS
  CarriageControl:NL
 200 PRINT "'";
- ITEMS
  TextConstant:"'"
  CarriageControl:;
 210 FOR I = 1 TO N-1
@@ -62,13 +58,11 @@
  start:   ["NumericConstant:1"]
  end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
 220 PRINT "-";
- ITEMS
  TextConstant:"-"
  CarriageControl:;
 230 NEXT I
  Variable:I
 240 PRINT "'"
- ITEMS
  TextConstant:"'"
  CarriageControl:NL
 250 FOR X = A TO B STEP S
@@ -99,23 +93,19 @@
  Variable:Y1
  BinaryOperator:=
 300 PRINT " ";
- ITEMS
  TextConstant:" "
  CarriageControl:;
 301 GOTO 310
  LineNumber:310
 302 PRINT "*";
- ITEMS
  TextConstant:"*"
  CarriageControl:;
 310 NEXT I
  Variable:I
 315 PRINT "   ";
- ITEMS
  TextConstant:"   "
  CarriageControl:;
 320 PRINT X
- ITEMS
  Variable:X
  CarriageControl:NL
 330 NEXT X

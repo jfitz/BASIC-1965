@@ -1,8 +1,6 @@
 5 PRINT
- ITEMS
  CarriageControl:NL
 10 PRINT "A, R, Y, T";
- ITEMS
  TextConstant:"A, R, Y, T"
  CarriageControl:;
 20 INPUT A, R, Y, T
@@ -55,7 +53,6 @@
  BinaryOperator:*
  AssignmentOperator:=
 95 PRINT "FINAL AMOUNT = $" B
- ITEMS
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
  Variable:B
@@ -65,7 +62,6 @@
 100 REM ERROR ROUTINE
  Remark:ERROR ROUTINE
 110 PRINT "INCORRECT DATA. PLEASE RETYPE."
- ITEMS
  TextConstant:"INCORRECT DATA. PLEASE RETYPE."
  CarriageControl:NL
 120 GOTO 5

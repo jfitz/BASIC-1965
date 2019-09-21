@@ -30,7 +30,6 @@
  NumericConstant:100
  BinaryOperator:/
 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
- ITEMS
  TextConstant:"ANGLE"
  CarriageControl:,
  TextConstant:"SIDE"
@@ -46,7 +45,6 @@
  Variable:X
  Variable:Y
 160 PRINT B,X,Y,
- ITEMS
  Variable:B
  CarriageControl:,
  Variable:X
@@ -121,7 +119,6 @@
 270 GOSUB 370
  LineNumber:370
 275 PRINT
- ITEMS
  CarriageControl:NL
 280 GOTO 150
  LineNumber:150
@@ -129,7 +126,6 @@
 290 REM NO POINT OF INTERSECTION
  Remark:NO POINT OF INTERSECTION
 300 PRINT "NONE", "NONE"
- ITEMS
  TextConstant:"NONE"
  CarriageControl:,
  TextConstant:"NONE"
@@ -148,7 +144,6 @@
 340 GOSUB 370
  LineNumber:370
 350 PRINT "NONE"
- ITEMS
  TextConstant:"NONE"
  CarriageControl:NL
 360 GOTO 150
@@ -170,13 +165,11 @@
  NumericConstant:0
  BinaryOperator:>=
 400 PRINT "NONE",
- ITEMS
  TextConstant:"NONE"
  CarriageControl:,
 410 RETURN
  
 420 PRINT Z,
- ITEMS
  Variable:Z
  CarriageControl:,
 430 RETURN

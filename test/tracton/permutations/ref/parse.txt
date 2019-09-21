@@ -5,7 +5,6 @@
 30 REM ITEMS AND R = SIZE OF GROUP SELECTED
  Remark:ITEMS AND R = SIZE OF GROUP SELECTED
 40 PRINT "ENTER N,R";
- ITEMS
  TextConstant:"ENTER N,R"
  CarriageControl:;
 50 INPUT N,R
@@ -62,22 +61,18 @@
  BinaryOperator:/
  AssignmentOperator:=
 180 PRINT "PERMUTATIONS = ";P
- ITEMS
  TextConstant:"PERMUTATIONS = "
  CarriageControl:;
  Variable:P
  CarriageControl:NL
 190 PRINT "COMBINATIONS = ";C
- ITEMS
  TextConstant:"COMBINATIONS = "
  CarriageControl:;
  Variable:C
  CarriageControl:NL
 200 PRINT
- ITEMS
  CarriageControl:NL
 210 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 220 INPUT L
@@ -89,18 +84,15 @@
 240 STOP
  
 250 PRINT
- ITEMS
  CarriageControl:NL
 260 GOTO 40
  LineNumber:40
 270 PRINT "N < R, INVALID INPUT"
- ITEMS
  TextConstant:"N < R, INVALID INPUT"
  CarriageControl:NL
 280 GOTO 40
  LineNumber:40
 290 PRINT "R < 0, INVALID INPUT"
- ITEMS
  TextConstant:"R < 0, INVALID INPUT"
  CarriageControl:NL
 300 GOTO 40

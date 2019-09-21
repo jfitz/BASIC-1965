@@ -935,59 +935,10 @@ class GotoStatement < AbstractStatement
   end
 end
 
-# IF/THEN
-class IfStatement < AbstractStatement
-  def self.lead_keywords
-    [
-      [KeywordToken.new('IF')]
-    ]
-  end
-
-  def self.extra_keywords
-    ['THEN']
-  end
-
-  def initialize(keywords, tokens_lists)
+# common functions for IF statements
+class AbstractIfStatement < AbstractStatement
+  def initialize(_, _)
     super
-
-    template = [[1, '>='], 'THEN', [1]]
-
-    if check_template(tokens_lists, template)
-      condition = tokens_lists[0]
-
-      destination = tokens_lists[2]
-      parse_line(condition, destination[0])
-      @numerics = @expression.numerics unless @expression.nil?
-      @strings = @expression.strings unless @expression.nil?
-      @variables = @expression.variables unless @expression.nil?
-      @functions = @expression.functions unless @expression.nil?
-      @userfuncs = @expression.userfuncs unless @expression.nil?
-      @linenums = [@destination]
-    else
-      @errors << 'Syntax error'
-    end
-  end
-
-  def dump
-    lines = []
-    lines += @expression.dump unless @expression.nil?
-    lines
-  end
-
-  def gotos
-    [@destination]
-  end
-
-  def program_check(program, console_io, line_number)
-    return true if program.line_number?(@destination)
-
-    if @destination.nil?
-      console_io.print_line("Invalid or missing line number in line #{line_number}")
-    else
-      console_io.print_line("Line number #{@destination} not found in line #{line_number}")
-    end
-
-    false
   end
 
   def execute(interpreter)
@@ -1014,19 +965,67 @@ class IfStatement < AbstractStatement
     @tokens[-1] = NumericConstantToken.new(@destination.line_number)
   end
 
-  private
+  def dump
+    lines = []
+    lines += @expression.dump unless @expression.nil?
+    lines
+  end
 
-  def parse_line(expression, destination)
-    if destination.numeric_constant?
-      @destination = LineNumber.new(destination)
+  def gotos
+    [@destination]
+  end
+
+  def program_check(program, console_io, line_number)
+    return true if program.line_number?(@destination)
+
+    if @destination.nil?
+      console_io.print_line("Invalid or missing line number in line #{line_number}")
     else
-      @errors << "Invalid line number #{destination}"
+      console_io.print_line("Line number #{@destination} not found in line #{line_number}")
     end
 
-    begin
-      @expression = ValueScalarExpression.new(expression)
-    rescue BASICExpressionError => e
-      @errors << e.message
+    false
+  end
+end
+
+# IF/THEN
+class IfStatement < AbstractIfStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('IF')]
+    ]
+  end
+
+  def self.extra_keywords
+    ['THEN']
+  end
+
+  def initialize(keywords, tokens_lists)
+    super
+
+    template = [[1, '>='], 'THEN', [1]]
+
+    if check_template(tokens_lists, template)
+      begin
+        @destination = LineNumber.new(tokens_lists[2][0])
+      rescue BASICSyntaxError => e
+        @errors << e.message
+      end
+
+      begin
+        @expression = ValueScalarExpression.new(tokens_lists[0])
+      rescue BASICExpressionError => e
+        @errors << e.message
+      end
+
+      @numerics = @expression.numerics unless @expression.nil?
+      @strings = @expression.strings unless @expression.nil?
+      @variables = @expression.variables unless @expression.nil?
+      @functions = @expression.functions unless @expression.nil?
+      @userfuncs = @expression.userfuncs unless @expression.nil?
+      @linenums = [@destination]
+    else
+      @errors << 'Syntax error'
     end
   end
 end
@@ -1421,11 +1420,9 @@ class AbstractPrintStatement < AbstractStatement
     lines = []
 
     unless @file_tokens.nil?
-      lines << 'FILE'
       lines += @file_tokens.dump
     end
 
-    lines << 'ITEMS'
     @print_items.each { |item| lines += item.dump } unless @print_items.nil?
     lines
   end

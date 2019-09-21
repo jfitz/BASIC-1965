@@ -3,7 +3,6 @@
 20 REM CONNECTED WITH A CIRCULAR SECTION
  Remark:CONNECTED WITH A CIRCULAR SECTION
 30 PRINT "RADIUS"
- ITEMS
  TextConstant:"RADIUS"
  CarriageControl:NL
 40 INPUT R
@@ -45,29 +44,24 @@
  BinaryOperator:/
  AssignmentOperator:=
 100 PRINT "MOMENT OF INERTIA = ";I
- ITEMS
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;
  Variable:I
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
- ITEMS
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
  Variable:J
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
- ITEMS
  TextConstant:"AREA OF SECTION = "
  CarriageControl:;
  Variable:A
  CarriageControl:NL
 130 PRINT "*************************"
- ITEMS
  TextConstant:"*************************"
  CarriageControl:NL
 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
@@ -79,7 +73,6 @@
 170 STOP
  
 180 PRINT
- ITEMS
  CarriageControl:NL
 190 GOTO 30
  LineNumber:30

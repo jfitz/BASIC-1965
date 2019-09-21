@@ -22,36 +22,29 @@
  BinaryOperator:+
  AssignmentOperator:=
 140 PRINT "LEGAL MOVES ARE:"
- ITEMS
  TextConstant:"LEGAL MOVES ARE:"
  CarriageControl:NL
 150 PRINT "TAKE AWAY 1 THROUGH" K
- ITEMS
  TextConstant:"TAKE AWAY 1 THROUGH"
  CarriageControl:
  Variable:K
  CarriageControl:NL
 160 PRINT "LAST PERSON TO MOVE LOSES"
- ITEMS
  TextConstant:"LAST PERSON TO MOVE LOSES"
  CarriageControl:NL
 170 PRINT
- ITEMS
  CarriageControl:NL
 180 PRINT "THE INITIAL NUMBER IS" N
- ITEMS
  TextConstant:"THE INITIAL NUMBER IS"
  CarriageControl:
  Variable:N
  CarriageControl:NL
 190 PRINT
- ITEMS
  CarriageControl:NL
 200
 210 REM OPPONENT'S MOVE
  Remark:OPPONENT'S MOVE
 220 PRINT "YOUR MOVE";
- ITEMS
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 230 INPUT X
@@ -69,11 +62,9 @@
  Variable:N
  BinaryOperator:<=
 270 PRINT "ILLEGAL MOVE"
- ITEMS
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
 280 PRINT
- ITEMS
  CarriageControl:NL
 290 GOTO 210
  LineNumber:210
@@ -91,21 +82,16 @@
  NumericConstant:0
  BinaryOperator:>
 340 PRINT "I WIN ***"
- ITEMS
  TextConstant:"I WIN ***"
  CarriageControl:NL
 350 PRINT
- ITEMS
  CarriageControl:NL
 360 PRINT
- ITEMS
  CarriageControl:NL
 370 PRINT "NEW GAME."
- ITEMS
  TextConstant:"NEW GAME."
  CarriageControl:NL
 380 PRINT
- ITEMS
  CarriageControl:NL
 390 GOTO 120
  LineNumber:120
@@ -146,26 +132,22 @@
  BinaryOperator:-
  AssignmentOperator:=
 460 PRINT "MY MOVE:" Y
- ITEMS
  TextConstant:"MY MOVE:"
  CarriageControl:
  Variable:Y
  CarriageControl:NL
 470 PRINT
- ITEMS
  CarriageControl:NL
 480 IF N = 0 THEN 600
  Variable:N
  NumericConstant:0
  BinaryOperator:=
 490 PRINT "NEW TOTAL IS" N
- ITEMS
  TextConstant:"NEW TOTAL IS"
  CarriageControl:
  Variable:N
  CarriageControl:NL
 500 PRINT
- ITEMS
  CarriageControl:NL
 510 GOTO 210
  LineNumber:210
@@ -198,7 +180,6 @@
 600 REM MACHINE LOST
  Remark:MACHINE LOST
 610 PRINT "YOU WIN ***"
- ITEMS
  TextConstant:"YOU WIN ***"
  CarriageControl:NL
 620 GOTO 350

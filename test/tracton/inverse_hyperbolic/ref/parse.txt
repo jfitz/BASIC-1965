@@ -1,31 +1,24 @@
 10 REM THIS PROGRAM COMPUTES INVERSE HYPERBOLIC FUNCTIONS
  Remark:THIS PROGRAM COMPUTES INVERSE HYPERBOLIC FUNCTIONS
 20 PRINT "SINH - 1 (1)"
- ITEMS
  TextConstant:"SINH - 1 (1)"
  CarriageControl:NL
 30 PRINT "COSH - 1 (2)"
- ITEMS
  TextConstant:"COSH - 1 (2)"
  CarriageControl:NL
 40 PRINT "TANH - 1 (3)"
- ITEMS
  TextConstant:"TANH - 1 (3)"
  CarriageControl:NL
 50 PRINT "CSCH - 1 (4)"
- ITEMS
  TextConstant:"CSCH - 1 (4)"
  CarriageControl:NL
 60 PRINT "SECH - 1 (5)"
- ITEMS
  TextConstant:"SECH - 1 (5)"
  CarriageControl:NL
 70 PRINT "COTH - 1 (6)"
- ITEMS
  TextConstant:"COTH - 1 (6)"
  CarriageControl:NL
 80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
- ITEMS
  TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
@@ -38,7 +31,6 @@
 120 GOSUB 470
  LineNumber:470
 130 PRINT "SINH - 1";X;" = ";Z
- ITEMS
  TextConstant:"SINH - 1"
  CarriageControl:;
  Variable:X
@@ -54,7 +46,6 @@
 160 GOSUB 490
  LineNumber:490
 170 PRINT "COSH - 1";X;" = ";Z
- ITEMS
  TextConstant:"COSH - 1"
  CarriageControl:;
  Variable:X
@@ -70,7 +61,6 @@
 200 GOSUB 510
  LineNumber:510
 210 PRINT "TANH - 1";X;" = ";Z
- ITEMS
  TextConstant:"TANH - 1"
  CarriageControl:;
  Variable:X
@@ -90,7 +80,6 @@
  Variable:A
  AssignmentOperator:=
 260 PRINT "CSCH - 1";X;" = ";Z
- ITEMS
  TextConstant:"CSCH - 1"
  CarriageControl:;
  Variable:X
@@ -110,7 +99,6 @@
  Variable:A
  AssignmentOperator:=
 310 PRINT "SECH - 1";X;" = ";Z
- ITEMS
  TextConstant:"SECH - 1"
  CarriageControl:;
  Variable:X
@@ -130,7 +118,6 @@
  Variable:A
  AssignmentOperator:=
 360 PRINT "COTH - 1";X;" = ";Z
- ITEMS
  TextConstant:"COTH - 1"
  CarriageControl:;
  Variable:X
@@ -140,10 +127,8 @@
  Variable:Z
  CarriageControl:NL
 370 PRINT
- ITEMS
  CarriageControl:NL
 380 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- ITEMS
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 390 INPUT L
@@ -155,12 +140,10 @@
 410 STOP
  
 420 PRINT
- ITEMS
  CarriageControl:NL
 430 GOTO 80
  LineNumber:80
 440 PRINT "X = ";
- ITEMS
  TextConstant:"X = "
  CarriageControl:;
 450 INPUT X
@@ -200,7 +183,6 @@
 520 RETURN
  
 530 PRINT "X = ";
- ITEMS
  TextConstant:"X = "
  CarriageControl:;
 540 INPUT X
