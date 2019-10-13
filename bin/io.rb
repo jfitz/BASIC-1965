@@ -49,7 +49,7 @@ module Inputter
     verify_tokens(tokens)
 
     # convert from tokens to values
-    expressions = ValueScalarExpression.new(tokens)
+    expressions = ValueExpression.new(tokens, :scalar)
     expressions.evaluate(interpreter)
   end
 end
