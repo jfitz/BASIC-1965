@@ -1,0 +1,38 @@
+10 REM This is a test
+ Remark:This is a test
+20 DATA 10,20,30
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:30
+30 READ A,B,C
+ Variable:A
+ Variable:B
+ Variable:C
+40 PRINT A,B,C
+ Variable:A
+ CarriageControl:,
+ Variable:B
+ CarriageControl:,
+ Variable:C
+ CarriageControl:NL
+42 PRINT A,,B,,C
+ Variable:A
+ CarriageControl:,
+ CarriageControl:,
+ Variable:B
+ CarriageControl:,
+ CarriageControl:,
+ Variable:C
+ CarriageControl:NL
+44 PRINT ,A,B,C
+ CarriageControl:,
+ Variable:A
+ CarriageControl:,
+ Variable:B
+ CarriageControl:,
+ Variable:C
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 

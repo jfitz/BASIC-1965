@@ -192,6 +192,10 @@ class OperatorToken < AbstractToken
       @text == '>' || @text == '>=' ||
       @text == '=' || @text == '<>'
   end
+
+  def pound?
+    @text == '#'
+  end
 end
 
 # group start token

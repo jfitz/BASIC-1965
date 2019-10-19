@@ -1087,8 +1087,11 @@ class ValueExpression < AbstractExpression
   end
 
   def filehandle?
-    last_token = @parsed_expressions[0][-1]
-    last_token.operator? && last_token.to_s == '#'
+    return false if @parsed_expressions.empty?
+
+    parsed_expression = @parsed_expressions[0]
+    last_token = parsed_expression[-1]
+    last_token.operator? && last_token.pound?
   end
 
   def scalar?
@@ -1097,24 +1100,36 @@ class ValueExpression < AbstractExpression
 
   def print(printer, interpreter)
     numeric_constants = evaluate(interpreter)
+
+    return if numeric_constants.empty?
+
     numeric_constant = numeric_constants[0]
     numeric_constant.print(printer)
   end
 
   def write(printer, interpreter)
     numeric_constants = evaluate(interpreter)
+
+    return if numeric_constants.empty?
+
     numeric_constant = numeric_constants[0]
     numeric_constant.write(printer)
   end
 
   def compound_print(printer, interpreter, carriage)
     compounds = evaluate(interpreter)
+
+    return if compounds.empty?
+
     compound = compounds[0]
     compound.print(printer, interpreter, carriage)
   end
 
   def compound_write(printer, interpreter, carriage)
     compounds = evaluate(interpreter)
+
+    return if compounds.empty?
+
     compound = compounds[0]
     compound.write(printer, interpreter, carriage)
   end
