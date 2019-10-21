@@ -1098,22 +1098,26 @@ class ValueExpression < AbstractExpression
     @shape == :scalar
   end
 
-  def print(printer, interpreter)
+  def print(printer, interpreter, carriage)
     numeric_constants = evaluate(interpreter)
 
-    return if numeric_constants.empty?
-
-    numeric_constant = numeric_constants[0]
-    numeric_constant.print(printer)
+    if !numeric_constants.empty?
+      numeric_constant = numeric_constants[0]
+      numeric_constant.print(printer)
+    end
+    
+    carriage.print(printer, interpreter)
   end
 
-  def write(printer, interpreter)
+  def write(printer, interpreter, carriage)
     numeric_constants = evaluate(interpreter)
 
-    return if numeric_constants.empty?
-
-    numeric_constant = numeric_constants[0]
-    numeric_constant.write(printer)
+    if !numeric_constants.empty?
+      numeric_constant = numeric_constants[0]
+      numeric_constant.write(printer)
+    end
+    
+    carriage.write(printer, interpreter)
   end
 
   def compound_print(printer, interpreter, carriage)
