@@ -46,23 +46,23 @@ class BASICArray
     'ARRAY: ' + @values.to_s
   end
 
-  def print(printer, interpreter, carriage)
+  def print(printer, interpreter)
     case @dimensions.size
     when 0
       raise BASICRuntimeError, 'Need dimension in array'
     when 1
-      print_1(printer, interpreter, carriage)
+      print_1(printer, interpreter)
     else
       raise BASICRuntimeError, 'Too many dimensions in array'
     end
   end
 
-  def write(printer, interpreter, carriage)
+  def write(printer, interpreter)
     case @dimensions.size
     when 0
       raise BASICRuntimeError, 'Need dimension in array'
     when 1
-      write_1(printer, interpreter, carriage)
+      write_1(printer, interpreter)
     else
       raise BASICRuntimeError, 'Too many dimensions in array'
     end
@@ -74,44 +74,32 @@ class BASICArray
     [NumericConstant.new(c)]
   end
 
-  def print_1(printer, interpreter, carriage)
+  def print_1(printer, interpreter)
     n_cols = @dimensions[0].to_i
 
-    my_carriage = carriage
-    # override newline with comma, except for last
-    if carriage.to_s == ''
-      my_carriage = CarriageControl.new(',')
-    end
+    fs_carriage = CarriageControl.new($options['field_sep'].value)
 
     base = interpreter.base
     (base..n_cols).each do |col|
       value = get_value(col)
       value.print(printer)
       if col < n_cols
-        my_carriage.print(printer, interpreter)
-      else
-        carriage.print(printer, interpreter)
+        fs_carriage.print(printer, interpreter)
       end
     end
   end
 
-  def write_1(printer, interpreter, carriage)
+  def write_1(printer, interpreter)
     n_cols = @dimensions[0].to_i
 
-    my_carriage = carriage
-    # override newline with comma, except for last
-    if carriage.to_s == ''
-      my_carriage = CarriageControl.new(',')
-    end
+    fs_carriage = CarriageControl.new(',')
 
     base = interpreter.base
     (base..n_cols).each do |col|
       value = get_value(col)
       value.write(printer)
       if col < n_cols
-        my_carriage.write(printer, interpreter)
-      else
-        carriage.write(printer, interpreter)
+        fs_carriage.write(printer, interpreter)
       end
     end
   end
@@ -198,27 +186,27 @@ class Matrix
     'MATRIX: ' + @values.to_s
   end
 
-  def print(printer, interpreter, carriage)
+  def print(printer, interpreter)
     case @dimensions.size
     when 0
       raise BASICRuntimeError, 'Need dimensions in matrix'
     when 1
-      print_1(printer, interpreter, carriage)
+      print_1(printer, interpreter)
     when 2
-      print_2(printer, interpreter, carriage)
+      print_2(printer, interpreter)
     else
       raise BASICRuntimeError, 'Too many dimensions in matrix'
     end
   end
 
-  def write(printer, interpreter, carriage)
+  def write(printer, interpreter)
     case @dimensions.size
     when 0
       raise BASICRuntimeError, 'Need dimensions in matrix'
     when 1
-      write_1(printer, interpreter, carriage)
+      write_1(printer, interpreter)
     when 2
-      write_2(printer, interpreter, carriage)
+      write_2(printer, interpreter)
     else
       raise BASICRuntimeError, 'Too many dimensions in matrix'
     end
@@ -346,72 +334,94 @@ class Matrix
     values
   end
 
-  def print_1(printer, interpreter, carriage)
+  def print_1(printer, interpreter)
     n_cols = @dimensions[0].to_i
 
     base = $options['base'].value
+    fs_carriage = CarriageControl.new($options['field_sep'].value)
+    gs_carriage = CarriageControl.new('NL')
+    rs_carriage = CarriageControl.new('NL')
 
     (base..n_cols).each do |col|
       value = get_value_1(col)
       value.print(printer)
-      carriage.print(printer, interpreter)
+      if col < n_cols
+        fs_carriage.print(printer, interpreter)
+      end
     end
 
-    printer.newline
-    printer.newline
+    rs_carriage.print(printer, interpreter)
   end
 
-  def print_2(printer, interpreter, carriage)
+  def print_2(printer, interpreter)
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
 
     base = $options['base'].value
+    fs_carriage = CarriageControl.new($options['field_sep'].value)
+    gs_carriage = CarriageControl.new('NL')
+    rs_carriage = CarriageControl.new('NL')
 
     (base..n_rows).each do |row|
       (base..n_cols).each do |col|
         value = get_value_2(row, col)
         value.print(printer)
-        carriage.print(printer, interpreter)
+        if col < n_cols
+          fs_carriage.print(printer, interpreter)
+        end
       end
 
-      printer.newline
+      if row < n_rows
+        gs_carriage.print(printer, interpreter)
+      end
     end
 
-    printer.newline
+    rs_carriage.print(printer, interpreter)
   end
 
-  def write_1(printer, interpreter, carriage)
+  def write_1(printer, interpreter)
     n_cols = @dimensions[0].to_i
 
     base = $options['base'].value
+    fs_carriage = CarriageControl.new(',')
+    gs_carriage = CarriageControl.new(';')
+    rs_carriage = CarriageControl.new('NL')
 
     (base..n_cols).each do |col|
       value = get_value_1(col)
       value.write(printer)
-      carriage.write(printer, interpreter)
+      if col < n_cols
+        fs_carriage.write(printer, interpreter)
+      end
     end
 
-    printer.newline
-    printer.newline
+    rs_carriage.write(printer, interpreter)
   end
 
-  def write_2(printer, interpreter, carriage)
+  def write_2(printer, interpreter)
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
 
     base = $options['base'].value
+    fs_carriage = CarriageControl.new(',')
+    gs_carriage = CarriageControl.new(';')
+    rs_carriage = CarriageControl.new('NL')
 
     (base..n_rows).each do |row|
       (base..n_cols).each do |col|
         value = get_value_2(row, col)
         value.write(printer)
-        carriage.write(printer, interpreter)
+        if col < n_cols
+          fs_carriage.write(printer, interpreter)
+        end
       end
 
-      printer.newline
+      if row < n_rows
+        gs_carriage.write(printer, interpreter)
+      end
     end
 
-    printer.newline
+    rs_carriage.write(printer, interpreter)
   end
 
   def determinant_2
@@ -1098,44 +1108,40 @@ class ValueExpression < AbstractExpression
     @shape == :scalar
   end
 
-  def print(printer, interpreter, carriage)
+  def print(printer, interpreter)
     numeric_constants = evaluate(interpreter)
 
     if !numeric_constants.empty?
       numeric_constant = numeric_constants[0]
       numeric_constant.print(printer)
     end
-    
-    carriage.print(printer, interpreter)
   end
 
-  def write(printer, interpreter, carriage)
+  def write(printer, interpreter)
     numeric_constants = evaluate(interpreter)
 
     if !numeric_constants.empty?
       numeric_constant = numeric_constants[0]
       numeric_constant.write(printer)
     end
-    
-    carriage.write(printer, interpreter)
   end
 
-  def compound_print(printer, interpreter, carriage)
+  def compound_print(printer, interpreter)
     compounds = evaluate(interpreter)
 
     return if compounds.empty?
 
     compound = compounds[0]
-    compound.print(printer, interpreter, carriage)
+    compound.print(printer, interpreter)
   end
 
-  def compound_write(printer, interpreter, carriage)
+  def compound_write(printer, interpreter)
     compounds = evaluate(interpreter)
 
     return if compounds.empty?
 
     compound = compounds[0]
-    compound.write(printer, interpreter, carriage)
+    compound.write(printer, interpreter)
   end
 end
 

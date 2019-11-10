@@ -803,6 +803,9 @@ class CarriageControl
   end
 
   def initialize(token)
+    token = ',' if token == 'COMMA'
+    token = ';' if token == 'SEMI'
+    token = '' if token == 'NONE'
     @operator = token.to_s
     @carriage = true
     @file_handle = false

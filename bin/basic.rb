@@ -42,6 +42,8 @@ class Option
       @value.to_s
     when :string
       '"' + @value.to_s + '"'
+    when :list
+      '"' + @value.to_s + '"'
     end
   end
 
@@ -89,6 +91,16 @@ class Option
 
       raise(BASICRuntimeError, "Invalid type #{value.class} for string") unless
         legals.include?(value.class.to_s)
+    when :list
+      legal_types = %(String)
+
+      raise(BASICRuntimeError, "Invalid type #{value.class} for list") unless
+        legal_types.include?(value.class.to_s)
+
+      legal_values = @defs[:values]
+
+      raise(BASICRuntimeError, "Invalid value #{value} for list") unless
+        legal_values.include?(value.to_s)
     else
       raise(BASICRuntimeError, 'Unknown value type')
     end
@@ -319,7 +331,7 @@ def make_command_tokenbuilders
     ANALYZE BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE
     PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
-    ECHO HEADING
+    ECHO FIELD_SEP HEADING
     IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
     PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
@@ -363,6 +375,7 @@ OptionParser.new do |opt|
   opt.on('--base BASE') { |o| options[:base] = o }
   opt.on('--no-detect-infinite-loop') { |o| options[:no_detect_infinite_loop] = o }
   opt.on('--echo-input') { |o| options[:echo_input] = o }
+  opt.on('--field-sep-semi') { |o| options[:field_sep_semi] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
@@ -402,6 +415,7 @@ int_132 = { :type => :int, :max => 132, :min => 0 }
 int_40 = { :type => :int, :max => 40, :min => 0 }
 int_1 = { :type => :int, :max => 1, :min => 0 }
 float = { :type => :float, :min => 0 }
+separator = { :type => :list, :values => ['COMMA', 'SEMI', 'NL', 'NONE'] }
 
 $options = {}
 
@@ -415,6 +429,10 @@ $options['detect_infinite_loop'] =
   Option.new(boolean, !options.key?(:no_detect_infinite_loop))
 
 $options['echo'] = Option.new(boolean, options.key?(:echo_input))
+
+field_sep = Option.new(separator, 'COMMA')
+field_sep = Option.new(separator, 'SEMI') if options.key?(:field_sep_semi)
+$options['field_sep'] = field_sep
 
 $options['heading'] = Option.new(boolean, !options.key?(:no_heading))
 

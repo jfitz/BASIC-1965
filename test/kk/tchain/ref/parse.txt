@@ -42,18 +42,18 @@
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
-210 MAT PRINT Q;
+210 MAT PRINT Q
  Variable:Q
- CarriageControl:;
+ CarriageControl:NL
 220
 230 PRINT "TRANSIENT TO ABSORBING PROBABILITIES"
  TextConstant:"TRANSIENT TO ABSORBING PROBABILITIES"
  CarriageControl:NL
 240 PRINT
  CarriageControl:NL
-250 MAT PRINT R;
+250 MAT PRINT R
  Variable:R
- CarriageControl:;
+ CarriageControl:NL
 260
 270 MAT Q = N-Q
  Variable:Q
@@ -71,9 +71,9 @@
  CarriageControl:NL
 300 PRINT
  CarriageControl:NL
-310 MAT PRINT N;
+310 MAT PRINT N
  Variable:N
- CarriageControl:;
+ CarriageControl:NL
 320
 330 MAT T = N*U
  Variable:T
@@ -86,9 +86,9 @@
  CarriageControl:NL
 350 PRINT
  CarriageControl:NL
-360 MAT PRINT T;
+360 MAT PRINT T
  Variable:T
- CarriageControl:;
+ CarriageControl:NL
 370
 380 MAT Q = N*R
  Variable:Q
@@ -101,9 +101,9 @@
  CarriageControl:NL
 400 PRINT
  CarriageControl:NL
-410 MAT PRINT Q;
+410 MAT PRINT Q
  Variable:Q
- CarriageControl:;
+ CarriageControl:NL
 420
 430 DATA 2, 4
  NumericConstant:2

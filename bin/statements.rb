@@ -1383,7 +1383,7 @@ class OptionStatement < AbstractStatement
   def self.extra_keywords
     %w(
       BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
-      ECHO
+      ECHO FIELD_SEP
       IGNORE_RND_ARG IMPLIED_SEMICOLON
       INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
       PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
@@ -1505,7 +1505,8 @@ class PrintStatement < AbstractPrintStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.print(fhr, interpreter, carriage)
+        item.print(fhr, interpreter)
+        carriage.print(fhr, interpreter)
       end
 
       i += 1
@@ -1780,7 +1781,8 @@ class WriteStatement < AbstractWriteStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.write(fhr, interpreter, carriage)
+        item.write(fhr, interpreter)
+        carriage.write(fhr, interpreter)
       end
 
       i += 1
@@ -1847,7 +1849,8 @@ class ArrPrintStatement < AbstractPrintStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.compound_print(fhr, interpreter, carriage)
+        item.compound_print(fhr, interpreter)
+        carriage.print(fhr, interpreter)
       end
 
       i += 1
@@ -1971,6 +1974,7 @@ class ArrWriteStatement < AbstractWriteStatement
 
   def initialize(keywords, tokens_lists)
     super(keywords, tokens_lists, CarriageControl.new('NL'))
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1995,7 +1999,8 @@ class ArrWriteStatement < AbstractWriteStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.compound_write(fhr, interpreter, carriage)
+        item.compound_write(fhr, interpreter)
+        carriage.write(fhr, interpreter)
       end
 
       i += 1
@@ -2099,7 +2104,7 @@ class MatPrintStatement < AbstractPrintStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new(','))
+    super(keywords, tokens_lists, CarriageControl.new('NL'))
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2123,7 +2128,10 @@ class MatPrintStatement < AbstractPrintStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.compound_print(fhr, interpreter, carriage)
+        item.compound_print(fhr, interpreter)
+        # always print newline between items,
+        # regardless of carriage separators in program
+        @final.print(fhr, interpreter)
       end
 
       i += 1
@@ -2264,7 +2272,7 @@ class MatWriteStatement < AbstractWriteStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new(','))
+    super(keywords, tokens_lists, CarriageControl.new('NL'))
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2288,7 +2296,8 @@ class MatWriteStatement < AbstractWriteStatement
         carriage = @print_items[i + 1] if
           i < @print_items.size &&
           !@print_items[i + 1].printable?
-        item.compound_write(fhr, interpreter, carriage)
+        item.compound_write(fhr, interpreter)
+        carriage.write(fhr, interpreter)
       end
 
       i += 1

@@ -20,21 +20,21 @@
 200 PRINT "ALL ZEROES"
  TextConstant:"ALL ZEROES"
  CarriageControl:NL
-210 MAT PRINT A;
+210 MAT PRINT A
  Variable:A
- CarriageControl:;
+ CarriageControl:NL
 220 PRINT "ALL ONES"
  TextConstant:"ALL ONES"
  CarriageControl:NL
-230 MAT PRINT B;
+230 MAT PRINT B
  Variable:B
- CarriageControl:;
+ CarriageControl:NL
 240 PRINT "IDENTITY MATRIX"
  TextConstant:"IDENTITY MATRIX"
  CarriageControl:NL
-250 MAT PRINT C;
+250 MAT PRINT C
  Variable:C
- CarriageControl:;
+ CarriageControl:NL
 260
 300 MAT READ A
  Variable:A
@@ -43,7 +43,7 @@
  CarriageControl:NL
 320 MAT PRINT A
  Variable:A
- CarriageControl:,
+ CarriageControl:NL
 330 MAT B = INV(A)
  Variable:B
  Variable:A
@@ -54,7 +54,7 @@
  CarriageControl:NL
 350 MAT PRINT B
  Variable:B
- CarriageControl:,
+ CarriageControl:NL
 360
 400 MAT R = A*B
  Variable:R
@@ -73,7 +73,7 @@
  CarriageControl:NL
 430 MAT PRINT R
  Variable:R
- CarriageControl:,
+ CarriageControl:NL
 440
 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5
  NumericConstant:1
