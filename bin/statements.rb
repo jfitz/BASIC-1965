@@ -174,6 +174,7 @@ class AbstractStatement
   attr_reader :keywords
   attr_reader :tokens
   attr_reader :valid
+  attr_reader :executable
   attr_reader :comment
   attr_reader :numerics
   attr_reader :strings
@@ -203,10 +204,6 @@ class AbstractStatement
     @autonext = true
     @profile_count = 0
     @profile_time = 0
-  end
-
-  def executable?
-    @executable
   end
 
   def pretty
