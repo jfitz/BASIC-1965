@@ -263,11 +263,11 @@ class Program
       line_numbers = line_number_range.line_numbers
       list_lines_errors(line_numbers, list_tokens)
       @errors.each { |error| @console_io.print_line(error) }
-      @console_io.newline
     else
       @console_io.print_line('No program loaded')
-      @console_io.newline
     end
+
+    @console_io.newline
   end
 
   def parse(args)
@@ -276,11 +276,11 @@ class Program
     if !@lines.empty?
       line_numbers = line_number_range.line_numbers
       parse_lines_errors(line_numbers)
-      @console_io.newline
     else
       @console_io.print_line('No program loaded')
-      @console_io.newline
     end
+
+    @console_io.newline
   end
 
   def analyze
@@ -305,12 +305,11 @@ class Program
       lines = unreachable_code
       lines.each { |line| @console_io.print_line(line) }
       @console_io.newline
-
-      @console_io.newline
     else
       @console_io.print_line('No program loaded')
-      @console_io.newline
     end
+
+    @console_io.newline
   end
 
   def pretty(args)
@@ -320,11 +319,11 @@ class Program
       line_numbers = line_number_range.line_numbers
       pretty_lines_errors(line_numbers)
       @errors.each { |error| @console_io.print_line(error) }
-      @console_io.newline
     else
       @console_io.print_line('No program loaded')
-      @console_io.newline
     end
+
+    @console_io.newline
   end
 
   private
@@ -348,7 +347,7 @@ class Program
 
   def number_valid_statements
     num = 0
-    @lines.each do |line_number, line|
+    @lines.each do |_, line|
       statement = line.statement
       num += 1 if statement.valid
     end
@@ -357,7 +356,7 @@ class Program
 
   def number_exec_statements
     num = 0
-    @lines.each do |line_number, line|
+    @lines.each do |_, line|
       statement = line.statement
       num += 1 if statement.executable
     end
@@ -366,13 +365,13 @@ class Program
 
   def number_comments
     num = 0
-    @lines.each do |line_number, line|
+    @lines.each do |_, line|
       statement = line.statement
       num += 1 if statement.comment
     end
     num
   end
-  
+
   def unreachable_code
     # build list of "gotos"
     gotos = {}
@@ -417,8 +416,6 @@ class Program
         end
       end
     end
-
-    # gotos.keys.each { |line_number| puts("#{line_number}: #{gotos[line_number]}") }
 
     # build list of lines that are not reachable
     lines = []
@@ -727,7 +724,7 @@ class Program
       statement = line.statement
       refs[line_number] = statement.linenums
     end
- 
+
     refs
   end
 

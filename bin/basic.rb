@@ -226,9 +226,9 @@ class Shell
         options_2 = {}
         $options.each { |name, option| options_2[name] = duplicate(option) }
 
-        timing = Benchmark.measure {
+        timing = Benchmark.measure do
           @program.run(@interpreter)
-        }
+        end
 
         # restore options to undo any changes during the run
         options_2.each { |name, option| $options[name] = option }
@@ -373,7 +373,11 @@ OptionParser.new do |opt|
   opt.on('--parse SOURCE') { |o| options[:parse_name] = o }
   opt.on('--analyze SOURCE') { |o| options[:analyze_name] = o }
   opt.on('--base BASE') { |o| options[:base] = o }
-  opt.on('--no-detect-infinite-loop') { |o| options[:no_detect_infinite_loop] = o }
+
+  opt.on('--no-detect-infinite-loop') do |o|
+    options[:no_detect_infinite_loop] = o
+  end
+
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--field-sep-semi') { |o| options[:field_sep_semi] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
@@ -389,7 +393,11 @@ OptionParser.new do |opt|
   opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
   opt.on('--require-initialized') { |o| options[:require_initialized] = o }
-  opt.on('--semicolon-zone-width WIDTH') { |o| options[:semicolon_zone_width] = o }
+
+  opt.on('--semicolon-zone-width WIDTH') do |o|
+    options[:semicolon_zone_width] = o
+  end
+
   opt.on('--trace') { |o| options[:trace] = o }
   opt.on('--no-timing') { |o| options[:no_timing] = o }
   opt.on('--tty') { |o| options[:tty] = o }
@@ -406,16 +414,14 @@ run_filename = options[:run_name]
 cref_filename = options[:cref_name]
 show_profile = options.key?(:profile)
 
-boolean = { :type => :bool }
-string = { :type => :string }
-int = { :type => :int, :min => 0 }
-int_1_15 = { :type => :int, :max => 15, :min => 1 }
-int_1_16 = { :type => :int, :max => 16, :min => 1 }
-int_132 = { :type => :int, :max => 132, :min => 0 }
-int_40 = { :type => :int, :max => 40, :min => 0 }
-int_1 = { :type => :int, :max => 1, :min => 0 }
-float = { :type => :float, :min => 0 }
-separator = { :type => :list, :values => ['COMMA', 'SEMI', 'NL', 'NONE'] }
+boolean = { type: :bool }
+string = { type: :string }
+int = { type: :int, min: 0 }
+int_1_16 = { type: :int, max: 16, min: 1 }
+int_132 = { type: :int, max: 132, min: 0 }
+int_40 = { type: :int, max: 40, min: 0 }
+int_1 = { type: :int, max: 1, min: 0 }
+separator = { type: :list, values: ['COMMA', 'SEMI', 'NL', 'NONE'] }
 
 $options = {}
 
@@ -504,59 +510,59 @@ end
 program = Program.new(console_io, tokenbuilders)
 
 # list the source
-if !list_filename.nil?
+unless list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
   nametokens = [TextConstant.new(token)]
   program.list('', list_tokens) if program.load(nametokens)
 end
 
 # show parse dump
-if !parse_filename.nil?
+unless parse_filename.nil?
   token = TextConstantToken.new('"' + parse_filename + '"')
   nametokens = [TextConstant.new(token)]
   program.parse('') if program.load(nametokens)
 end
 
 # show analysis
-if !analyze_filename.nil?
+unless analyze_filename.nil?
   token = TextConstantToken.new('"' + analyze_filename + '"')
   nametokens = [TextConstant.new(token)]
   program.analyze if program.load(nametokens) && program.check
 end
 
 # pretty-print the source
-if !pretty_filename.nil?
+unless pretty_filename.nil?
   token = TextConstantToken.new('"' + pretty_filename + '"')
   nametokens = [TextConstant.new(token)]
   program.pretty('') if program.load(nametokens)
 end
 
 # cross-reference the source
-if !cref_filename.nil?
+unless cref_filename.nil?
   token = TextConstantToken.new('"' + cref_filename + '"')
   nametokens = [TextConstant.new(token)]
   program.crossref if program.load(nametokens)
 end
 
 # run the source
-if !run_filename.nil?
+unless run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   nametokens = [TextConstant.new(token)]
   if program.load(nametokens) && program.check
     interpreter = Interpreter.new(console_io)
     interpreter.set_default_args('RND', NumericConstant.new(1))
 
-    timing = Benchmark.measure {
+    timing = Benchmark.measure do
       program.run(interpreter)
       console_io.newline
-    }
+    end
 
     show_timing = $options['timing'].value
     if show_timing
       print_timing(timing, console_io)
       console_io.newline
     end
-    
+
     if show_profile
       program.profile('', show_timing)
       console_io.newline

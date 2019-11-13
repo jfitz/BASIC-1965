@@ -115,7 +115,7 @@ class AbstractElement
   def reference?
     @valref == :reference
   end
-  
+
   def numeric_constant?
     @numeric_constant
   end
@@ -253,67 +253,89 @@ class AbstractValueElement < AbstractElement
 
   def ==(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in =="
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     @value == other.to_v
   end
 
   def >(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in >"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     @value > other.to_v
   end
 
   def >=(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in >="
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     @value >= other.to_v
   end
 
   def <(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in <"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     @value < other.to_v
   end
 
   def <=(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in <="
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     @value <= other.to_v
   end
 
   def b_eq(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in b_eq()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     BooleanConstant.new(@value == other.to_v)
   end
 
   def b_ne(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in b_ne()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     BooleanConstant.new(@value != other.to_v)
   end
 
   def b_gt(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in b_gt()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     BooleanConstant.new(@value > other.to_v)
   end
 
   def b_ge(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in b_ge()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     BooleanConstant.new(@value >= other.to_v)
   end
 
   def b_lt(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in b_lt()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     BooleanConstant.new(@value < other.to_v)
   end
 
   def b_le(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in b_le()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     BooleanConstant.new(@value <= other.to_v)
   end
 
@@ -471,44 +493,62 @@ class NumericConstant < AbstractValueElement
 
   def +(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     NumericConstant.new(@value + other.to_v)
   end
 
   def -(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in -()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     NumericConstant.new(@value - other.to_v)
   end
 
   def add(other)
     message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     NumericConstant.new(@value + other.to_v)
   end
 
   def subtract(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in subtract()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in subtract()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     NumericConstant.new(@value - other.to_v)
   end
 
   def multiply(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in multiply()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in multiply()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     NumericConstant.new(@value * other.to_v)
   end
 
   def divide(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in divide()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in divide()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
     raise(BASICRuntimeError, 'Divide by zero') if other.zero?
+
     NumericConstant.new(@value.to_f / other.to_v.to_f)
   end
 
   def power(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in power()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in power()"
+
     raise(BASICRuntimeError, message) unless compatible?(other)
+
     NumericConstant.new(@value**other.to_v)
   end
 
@@ -649,7 +689,9 @@ class TextConstant < AbstractValueElement
 
     @value = nil
     @value = text.value if text.class.to_s == 'TextConstantToken'
+
     raise(BASICSyntaxError, "'#{text}' is not a text constant") if @value.nil?
+
     @text_constant = true
   end
 
@@ -1010,7 +1052,7 @@ class Declaration < AbstractElement
   def initialize(variable_name)
     super()
 
-    raise(Exception, #BASICSyntaxError,
+    raise(BASICSyntaxError,
           "'#{variable_name.class}:#{variable_name}' is not a variable name") if
       variable_name.class.to_s != 'VariableName'
 
@@ -1172,7 +1214,7 @@ class Variable < AbstractElement
 
     int_subscripts
   end
-  
+
   # return a single value
   def evaluate_value_scalar(interpreter, stack)
     if previous_is_array(stack)
@@ -1198,8 +1240,10 @@ class Variable < AbstractElement
 
   def evaluate_value_array(interpreter, _)
     dims = interpreter.get_dimensions(@variable_name)
+
     raise(BASICRuntimeError, 'Variable has no dimensions') if dims.nil?
     raise(BASICRuntimeError, 'Array requires one dimension') if dims.size != 1
+
     values = evaluate_value_array_1(interpreter, dims[0].to_i)
     BASICArray.new(dims, values)
   end
@@ -1218,14 +1262,18 @@ class Variable < AbstractElement
 
   def evaluate_value_matrix(interpreter, _)
     dims = interpreter.get_dimensions(@variable_name)
-   raise(BASICRuntimeError, 'Variable has no dimensions') if dims.nil?
+
+    raise(BASICRuntimeError, 'Variable has no dimensions') if dims.nil?
+
     values = evaluate_value_matrix_n(interpreter, dims)
     Matrix.new(dims, values)
   end
 
   def evaluate_value_matrix_n(interpreter, dims)
     values = {}
-    values = evaluate_value_matrix_1(interpreter, dims[0].to_i) if dims.size == 1
+
+    values = evaluate_value_matrix_1(interpreter, dims[0].to_i) if
+      dims.size == 1
 
     values = evaluate_value_matrix_2(interpreter, dims[0].to_i, dims[1].to_i) if
       dims.size == 2
@@ -1237,7 +1285,7 @@ class Variable < AbstractElement
     values = {}
 
     base = $options['base'].value
-    
+
     (base..n_cols).each do |col|
       coords = make_coord(col)
       variable = Variable.new(@variable_name, :matrix, coords)
@@ -1251,7 +1299,7 @@ class Variable < AbstractElement
     values = {}
 
     base = $options['base'].value
-    
+
     (base..n_rows).each do |row|
       (base..n_cols).each do |col|
         coords = make_coords(row, col)
@@ -1262,7 +1310,7 @@ class Variable < AbstractElement
 
     values
   end
-  
+
   # return a single value, a reference to this object
   def evaluate_ref_scalar(interpreter, stack)
     if previous_is_array(stack)
@@ -1319,8 +1367,8 @@ class List < AbstractElement
 
     @parsed_expressions.each do |expression|
       expression.each { |exp| lines << exp.dump }
-
     end
+
     lines
   end
 

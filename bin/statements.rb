@@ -255,7 +255,7 @@ class AbstractStatement
     @profile_time = 0
   end
 
-  def execute_a_statement(interpreter, current_line_number)
+  def execute_a_statement(interpreter, _)
     timing = Benchmark.measure { execute(interpreter) }
 
     user_time = timing.utime + timing.cutime
@@ -269,7 +269,8 @@ class AbstractStatement
   def profile(show_timing)
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
     if show_timing
-      ' (' + @profile_time.round(4).to_s + '/' + @profile_count.to_s + ')' + text
+      timing = @profile_time.round(4).to_s
+      ' (' + timing + '/' + @profile_count.to_s + ')' + text
     else
       ' (' + @profile_count.to_s + ')' + text
     end
@@ -545,7 +546,7 @@ class DataStatement < AbstractStatement
   def dump
     @expressions.dump
   end
-  
+
   def pre_execute(interpreter)
     ds = interpreter.get_data_store(nil)
     data_list = @expressions.evaluate(interpreter)
@@ -782,7 +783,10 @@ class ForStatement < AbstractStatement
         @numerics = @start.numerics + @end.numerics + @step.numerics
         @strings = @start.strings + @end.strings + @step.strings
         control = XrefEntry.new(@control.to_s, 0, true)
-        @variables = [control] + @start.variables + @end.variables + @step.variables
+
+        @variables =
+          [control] + @start.variables + @end.variables + @step.variables
+
         @functions = @start.functions + @end.functions + @step.functions
         @userfuncs = @start.userfuncs + @end.userfuncs + @step.userfuncs
       rescue BASICExpressionError => e
@@ -814,7 +818,9 @@ class ForStatement < AbstractStatement
     terminated = fornext_control.front_terminated?
 
     if terminated
-      interpreter.next_line_number = interpreter.find_closing_next(@control.name)
+      interpreter.next_line_number =
+        interpreter.find_closing_next(@control.name)
+
       interpreter.unlock_variable(@control.name)
       interpreter.exit_fornext
     end
@@ -882,7 +888,11 @@ class GosubStatement < AbstractStatement
 
   def program_check(program, console_io, line_number)
     return true if program.line_number?(@destination)
-    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+
+    console_io.print_line(
+      "Line number #{@destination} not found in line #{line_number}"
+    )
+
     false
   end
 
@@ -936,7 +946,9 @@ class GotoStatement < AbstractStatement
   def program_check(program, console_io, line_number)
     return true if program.line_number?(@destination)
 
-    console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+    console_io.print_line(
+      "Line number #{@destination} not found in line #{line_number}"
+    )
 
     false
   end
@@ -996,9 +1008,13 @@ class AbstractIfStatement < AbstractStatement
     return true if program.line_number?(@destination)
 
     if @destination.nil?
-      console_io.print_line("Invalid or missing line number in line #{line_number}")
+      console_io.print_line(
+        "Invalid or missing line number in line #{line_number}"
+      )
     else
-      console_io.print_line("Line number #{@destination} not found in line #{line_number}")
+      console_io.print_line(
+        "Line number #{@destination} not found in line #{line_number}"
+      )
     end
 
     false
@@ -1346,7 +1362,8 @@ class NextStatement < AbstractStatement
       expected = interpreter.top_fornext
       actual = fornext_control.control
       if actual != expected
-        raise(BASICRuntimeError, "Found NEXT #{actual} when expecting #{expected}")
+        raise(BASICRuntimeError,
+              "Found NEXT #{actual} when expecting #{expected}")
       end
     end
 
@@ -1393,7 +1410,6 @@ class OptionStatement < AbstractStatement
     super
 
     template = [OptionStatement.extra_keywords, [1, '>=']]
-    float = { :type => :float, :min => 0 }
 
     if check_template(tokens_lists, template)
       @key = tokens_lists[0].to_s.downcase
@@ -1416,8 +1432,6 @@ class OptionStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    console_io = interpreter.console_io
-
     values = @expression.evaluate(interpreter)
     value0 = values[0]
 
@@ -1522,7 +1536,9 @@ class PrintStatement < AbstractPrintStatement
           print_items << ValueExpression.new(tokens_list, :scalar)
         rescue BASICExpressionError
           line_text = tokens_list.map(&:to_s).join
-          @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
+
+          @errors <<
+            'Syntax error: "' + line_text + '" is not a value or operator'
         end
       elsif tokens_list.separator?
         add_needed_value(print_items, :scalar)
@@ -1798,7 +1814,9 @@ class WriteStatement < AbstractWriteStatement
           print_items << ValueExpression.new(tokens_list, :scalar)
         rescue BASICExpressionError
           line_text = tokens_list.map(&:to_s).join
-          @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
+
+          @errors <<
+            'Syntax error: "' + line_text + '" is not a value or operator'
         end
       elsif tokens_list.separator?
         add_needed_value(print_items, :scalar)
@@ -2120,11 +2138,9 @@ class MatPrintStatement < AbstractPrintStatement
 
     i = 0
     @print_items.each do |item|
-      if item.printable?
-        carriage = CarriageControl.new('')
-        carriage = @print_items[i + 1] if
-          i < @print_items.size &&
-          !@print_items[i + 1].printable?
+      if item.printable? &&
+         i < @print_items.size &&
+         !@print_items[i + 1].printable?
         item.compound_print(fhr, interpreter)
         # always print newline between items,
         # regardless of carriage separators in program

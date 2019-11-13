@@ -25,7 +25,7 @@ class AbstractFunction < AbstractElement
   def reference?
     @valref == :reference
   end
-  
+
   private
 
   def default_args(interpreter)
@@ -225,7 +225,7 @@ class UserFunction < AbstractScalarFunction
       @shape == :array || @shape == :matrix
     x
   end
-  
+
   # return a single value, a reference to this object
   def evaluate_ref_scalar(interpreter, stack)
     if previous_is_array(stack)
@@ -443,7 +443,7 @@ class FunctionFra < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless
@@ -568,7 +568,7 @@ class FunctionMod < AbstractScalarFunction
   end
 
   # return a single value
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     args = stack.pop
 
     raise(BASICRuntimeError, 'Wrong arguments for function') unless

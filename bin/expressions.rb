@@ -339,7 +339,7 @@ class Matrix
 
     base = $options['base'].value
     fs_carriage = CarriageControl.new($options['field_sep'].value)
-    gs_carriage = CarriageControl.new('NL')
+    # gs_carriage = CarriageControl.new('NL')
     rs_carriage = CarriageControl.new('NL')
 
     (base..n_cols).each do |col|
@@ -384,7 +384,7 @@ class Matrix
 
     base = $options['base'].value
     fs_carriage = CarriageControl.new(',')
-    gs_carriage = CarriageControl.new(';')
+    # gs_carriage = CarriageControl.new(';')
     rs_carriage = CarriageControl.new('NL')
 
     (base..n_cols).each do |col|
@@ -547,6 +547,7 @@ class Matrix
   end
 end
 
+# Entry for cross-reference list
 class XrefEntry
   attr_reader :variable
   attr_reader :n_dims
@@ -586,7 +587,7 @@ class XrefEntry
 
     return true if @n_dims > other.n_dims
     return false if @n_dims < other.n_dims
-    
+
     !@is_ref && other.is_ref
   end
 
@@ -596,7 +597,7 @@ class XrefEntry
 
     return true if @n_dims > other.n_dims
     return false if @n_dims < other.n_dims
-    
+
     !@is_ref && other.is_ref
   end
 
@@ -606,7 +607,7 @@ class XrefEntry
 
     return true if @n_dims < other.n_dims
     return false if @n_dims > other.n_dims
-    
+
     @is_ref && !other.is_ref
   end
 
@@ -616,14 +617,14 @@ class XrefEntry
 
     return true if @n_dims < other.n_dims
     return false if @n_dims > other.n_dims
-    
+
     @is_ref && !other.is_ref
   end
 
   def to_s
     dims = ''
-    dims = '(' + ',' * (@n_dims - 1)  + ')' if @n_dims > 0
-    
+    dims = '(' + ',' * (@n_dims - 1) + ')' if @n_dims > 0
+
     ref = ''
     ref = '=' if @is_ref
 
@@ -660,7 +661,8 @@ class Parser
   end
 
   def expressions
-    raise(BASICExpressionError, 'Too many operators') unless @operator_stack.empty?
+    raise(BASICExpressionError, 'Too many operators') unless
+      @operator_stack.empty?
 
     @parsed_expressions.concat @parens_group unless @parens_group.empty?
     @parsed_expressions << @current_expression unless @current_expression.empty?
@@ -875,11 +877,11 @@ class AbstractExpression
   def numerics
     parsed_expressions_numerics(@parsed_expressions)
   end
-  
+
   def strings
     parsed_expressions_strings(@parsed_expressions)
   end
-  
+
   def variables
     parsed_expressions_variables(@parsed_expressions)
   end
@@ -906,7 +908,10 @@ class AbstractExpression
           sublist = thing.list
           vars += parsed_expressions_numerics(sublist)
         elsif thing.numeric_constant?
-          if !previous.nil? && previous.operator? && previous.unary? && previous.to_s == '-'
+          if !previous.nil? &&
+             previous.operator? &&
+             previous.unary? &&
+             previous.to_s == '-'
             vars << thing.negate
           else
             vars << thing
@@ -954,7 +959,7 @@ class AbstractExpression
           n_dims = 2 if thing.matrix?
 
           n_dims = previous.size if
-            n_dims == 0 && !previous.nil? && previous.list?
+            n_dims.zero? && !previous.nil? && previous.list?
 
           is_ref = thing.reference?
 
@@ -982,10 +987,9 @@ class AbstractExpression
         elsif thing.function? && !thing.user_function?
           n_dims = 0
           n_dims = previous.size if !previous.nil? && previous.list?
-          xr =  XrefEntry.new(thing.to_s, n_dims, false)
 
           is_ref = thing.reference?
-          
+
           vars << XrefEntry.new(thing.to_s, n_dims, is_ref)
         end
 
@@ -999,7 +1003,7 @@ class AbstractExpression
   def parsed_expressions_userfuncs(parsed_expressions)
     vars = []
 
-   parsed_expressions.each do |expression|
+    parsed_expressions.each do |expression|
       previous = nil
 
       expression.each do |thing|
@@ -1111,19 +1115,19 @@ class ValueExpression < AbstractExpression
   def print(printer, interpreter)
     numeric_constants = evaluate(interpreter)
 
-    if !numeric_constants.empty?
-      numeric_constant = numeric_constants[0]
-      numeric_constant.print(printer)
-    end
+    return if numeric_constants.empty?
+
+    numeric_constant = numeric_constants[0]
+    numeric_constant.print(printer)
   end
 
   def write(printer, interpreter)
     numeric_constants = evaluate(interpreter)
 
-    if !numeric_constants.empty?
-      numeric_constant = numeric_constants[0]
-      numeric_constant.write(printer)
-    end
+    return if numeric_constants.empty?
+
+    numeric_constant = numeric_constants[0]
+    numeric_constant.write(printer)
   end
 
   def compound_print(printer, interpreter)

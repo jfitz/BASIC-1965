@@ -280,9 +280,11 @@ class FileHandler
       else
         raise(BASICRuntimeError, 'Invalid file mode')
       end
+
       @mode = mode
     else
-      raise(BASICRuntimeError, 'Inconsistent file operation') unless @mode == mode
+      raise(BASICRuntimeError, 'Inconsistent file operation') unless
+        @mode == mode
     end
   end
 

@@ -286,22 +286,24 @@ class Interpreter
         @current_line_number = @next_line_number
       end
     rescue BASICRuntimeError => e
+      @console_io.newline_when_needed
+
       if @current_line_number.nil?
-        @console_io.newline_when_needed
         @console_io.print_line(e.message)
       else
-        @console_io.newline_when_needed
         @console_io.print_line("#{e.message} in line #{@current_line_number}")
       end
+
       stop_running
     rescue BASICExpressionError => e
+      @console_io.newline_when_needed
+
       if @current_line_number.nil?
-        @console_io.newline_when_needed
         @console_io.print_line(e.message)
       else
-        @console_io.newline_when_needed
         @console_io.print_line("#{e.message} in line #{@current_line_number}")
       end
+
       stop_running
     end
   end
@@ -392,8 +394,6 @@ class Interpreter
 
   # returns an Array of values
   def evaluate(parsed_expressions)
-    trace = $options['trace'].value
-
     result_values = []
 
     parsed_expressions.each do |parsed_expression|
@@ -563,7 +563,6 @@ class Interpreter
     if length > 0
       names_and_values = @user_var_values[-1]
       value = names_and_values[variable]
-      line = nil
     end
 
     # then look in general table
@@ -699,7 +698,8 @@ class Interpreter
     raise(BASICRuntimeError, 'RETURN without GOSUB') if @return_stack.empty?
 
     # remove all lines from the subroutine in the 'visited' list
-    while !@previous_line_numbers.empty? && @previous_line_numbers[-1] != @return_stack[-1]
+    while !@previous_line_numbers.empty? &&
+          @previous_line_numbers[-1] != @return_stack[-1]
       @previous_line_numbers.pop
     end
 
@@ -733,7 +733,8 @@ class Interpreter
   end
 
   def top_fornext
-    raise(BASICRuntimeError, 'Implied NEXT without FOR') if @fornext_stack.empty?
+    raise(BASICRuntimeError, 'Implied NEXT without FOR') if
+      @fornext_stack.empty?
 
     @fornext_stack[-1]
   end
@@ -781,7 +782,7 @@ class Interpreter
     $options['match_fornext'].value
   end
 
-def base
+  def base
     $options['base'].value
   end
 end
