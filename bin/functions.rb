@@ -1,10 +1,13 @@
 # function (provides a scalar)
 class AbstractFunction < AbstractElement
+  attr_reader :content_type
+
   def initialize(text)
     super()
 
     @name = text
     @function = true
+    @content_type = :numeric
     @valref = :value
     @operand = true
     @precedence = 7

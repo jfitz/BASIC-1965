@@ -550,25 +550,53 @@ end
 # Entry for cross-reference list
 class XrefEntry
   attr_reader :variable
-  attr_reader :n_dims
+  attr_reader :signature
   attr_reader :is_ref
 
-  def initialize(variable, n_dims, is_ref)
+  def initialize(variable, arguments, is_ref)
     @variable = variable
-    @n_dims = n_dims
+    @signature = nil
+
+    unless arguments.nil?
+      sigil_chars = { numeric: '_', integer: '%', text: '$' }
+      sigils = []
+
+      arguments.each do |arg|
+        ## puts 'ARG: ' + arg.to_s
+        content_type = :empty
+        if arg.class.to_s == 'Array'
+          # an array is a parsed expression
+          if arg.size > 0
+            a0 = arg[-1]
+            content_type = a0.content_type
+          end
+        else
+          content_type = arg.content_type
+        end
+
+        sigils << sigil_chars[content_type]
+      end
+      @signature = sigils
+    end
+
     @is_ref = is_ref
   end
 
   def eql?(other)
     @variable == other.variable &&
-      @n_dims == other.n_dims &&
+      @signature == other.signature &&
       @is_ref == other.is_ref
   end
 
   def hash
-    @variable.hash + @n_dims.hash + @is_ref.hash
+    @variable.hash + @signature.hash + @is_ref.hash
   end
 
+  def asize(x)
+    return -1 if x.nil?
+    x.size
+  end
+  
   def <=>(other)
     return -1 if self < other
     return 1 if self > other
@@ -577,7 +605,7 @@ class XrefEntry
 
   def ==(other)
     @variable == other.variable &&
-      @n_dims == other.n_dims &&
+      @signature == other.signature &&
       @is_ref == other.is_ref
   end
 
@@ -585,8 +613,8 @@ class XrefEntry
     return true if @variable > other.variable
     return false if @variable < other.variable
 
-    return true if @n_dims > other.n_dims
-    return false if @n_dims < other.n_dims
+    return true if asize(@signature) > asize(other.signature)
+    return false if asize(@signature) < asize(other.signature)
 
     !@is_ref && other.is_ref
   end
@@ -595,8 +623,8 @@ class XrefEntry
     return true if @variable > other.variable
     return false if @variable < other.variable
 
-    return true if @n_dims > other.n_dims
-    return false if @n_dims < other.n_dims
+    return true if asize(@signature) > asize(other.signature)
+    return false if asize(@signature) < asize(other.signature)
 
     !@is_ref && other.is_ref
   end
@@ -605,8 +633,8 @@ class XrefEntry
     return true if @variable < other.variable
     return false if @variable > other.variable
 
-    return true if @n_dims < other.n_dims
-    return false if @n_dims > other.n_dims
+    return true if asize(@signature) < asize(other.signature)
+    return false if asize(@signature) > asize(other.signature)
 
     @is_ref && !other.is_ref
   end
@@ -615,15 +643,19 @@ class XrefEntry
     return true if @variable < other.variable
     return false if @variable > other.variable
 
-    return true if @n_dims < other.n_dims
-    return false if @n_dims > other.n_dims
+    return true if asize(@signature) < asize(other.signature)
+    return false if asize(@signature) > asize(other.signature)
 
     @is_ref && !other.is_ref
   end
 
+  def n_dims
+    @signature.size
+  end
+
   def to_s
     dims = ''
-    dims = '(' + ',' * (@n_dims - 1) + ')' if @n_dims > 0
+    dims = '(' + @signature.join(',') + ')' unless @signature.nil?
 
     ref = ''
     ref = '=' if @is_ref
@@ -782,6 +814,7 @@ class Parser
   # append them to the output list
   def start_user_function(element)
     stack_to_precedence(@operator_stack, @current_expression, element)
+
     # push the variable onto the operator stack
     variable = UserFunction.new(element)
     @operator_stack.push(variable)
@@ -792,6 +825,7 @@ class Parser
   # append them to the output list
   def start_function(element)
     stack_to_precedence(@operator_stack, @current_expression, element)
+
     # push the function onto the operator stack
     @operator_stack.push(element)
   end
@@ -807,6 +841,7 @@ class Parser
     else
       variable = Variable.new(element, @shape_stack[-1], [])
     end
+
     @operator_stack.push(variable)
   end
 end
@@ -824,6 +859,7 @@ class AbstractExpression
     parser = Parser.new(default_shape)
     elements.each { |element| parser.parse(element) }
     @parsed_expressions = parser.expressions
+    set_content_types_1(@parsed_expressions)
   end
 
   def to_s
@@ -896,6 +932,27 @@ class AbstractExpression
 
   private
 
+  def set_content_types_1(parsed_expressions)
+    parsed_expressions.each { |expression| set_content_types_2(expression) }
+  end
+
+  def set_content_types_2(parsed_expression)
+    content_type_stack = []
+
+    parsed_expression.each do |item|
+      if item.list?
+        set_content_types_1(item.list)
+      elsif item.content_type == :unknown
+        item.set_content_type(content_type_stack)
+      else
+        content_type_stack.push(item.content_type)
+      end
+    end
+
+    raise(BASICExpressionError, "Bad expression") if
+      content_type_stack.size > 1
+  end
+
   def parsed_expressions_numerics(parsed_expressions)
     vars = []
 
@@ -954,16 +1011,27 @@ class AbstractExpression
           sublist = thing.list
           vars += parsed_expressions_variables(sublist)
         elsif thing.variable?
-          n_dims = 0
-          n_dims = 1 if thing.array?
-          n_dims = 2 if thing.matrix?
+          arguments = nil
 
-          n_dims = previous.size if
-            n_dims.zero? && !previous.nil? && previous.list?
+          if thing.array?
+            token = NumericConstantToken.new("0")
+            constant = NumericConstant.new(token)
+            arguments = [constant]
+          end
+
+          if thing.matrix?
+            token = NumericConstantToken.new("0")
+            constant = NumericConstant.new(token)
+            arguments = [constant, constant]
+          end
+
+          if !previous.nil? && previous.list?
+            arguments = previous.list
+          end
 
           is_ref = thing.reference?
 
-          vars << XrefEntry.new(thing.to_s, n_dims, is_ref)
+          vars << XrefEntry.new(thing.to_s, arguments, is_ref)
         end
 
         previous = thing
@@ -985,12 +1053,15 @@ class AbstractExpression
           sublist = thing.list
           vars += parsed_expressions_functions(sublist)
         elsif thing.function? && !thing.user_function?
-          n_dims = 0
-          n_dims = previous.size if !previous.nil? && previous.list?
+          arguments = nil
+
+          if !previous.nil? && previous.list?
+            arguments = previous.list
+          end
 
           is_ref = thing.reference?
 
-          vars << XrefEntry.new(thing.to_s, n_dims, is_ref)
+          vars << XrefEntry.new(thing.to_s, arguments, is_ref)
         end
 
         previous = thing
@@ -1012,12 +1083,15 @@ class AbstractExpression
           sublist = thing.list
           vars += parsed_expressions_userfuncs(sublist)
         elsif thing.user_function?
-          n_dims = 0
-          n_dims = previous.size if !previous.nil? && previous.list?
+          arguments = nil
+
+          if !previous.nil? && previous.list?
+            arguments = previous.list
+          end
 
           is_ref = thing.reference?
 
-          vars << XrefEntry.new(thing.to_s, n_dims, is_ref)
+          vars << XrefEntry.new(thing.to_s, arguments, is_ref)
         end
 
         previous = thing
@@ -1256,7 +1330,9 @@ class UserFunctionDefinition
     @strings = @expression.strings
     @variables = @expression.variables
     @functions = @expression.functions
-    xr = XrefEntry.new(@name.to_s, @arguments.size, true)
+    signature = []
+    # TODO: detect type of argument
+    xr = XrefEntry.new(@name.to_s, @arguments, true)
     @userfuncs = [xr] + @expression.userfuncs
   end
 
