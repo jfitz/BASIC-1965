@@ -292,7 +292,7 @@ class BinaryOperator < AbstractElement
 
     raise(BASICExpressionError, "Bad expression") if other == :unknown
 
-    raise(BASICExpressionError, "Bad expression") if other != this
+    raise(BASICExpressionError, "Type mismatch") if other != this
 
     @content_type = @arguments[0].content_type if @content_type == :unknown
   end
