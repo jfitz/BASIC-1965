@@ -558,11 +558,15 @@ class XrefEntry
     @signature = nil
 
     unless arguments.nil?
-      sigil_chars = { numeric: '_', integer: '%', text: '$' }
+      sigil_chars = {
+        numeric: '_',
+        integer: '%',
+        text: '$',
+        boolean: '?'
+      }
       sigils = []
 
       arguments.each do |arg|
-        ## puts 'ARG: ' + arg.to_s
         content_type = :empty
         if arg.class.to_s == 'Array'
           # an array is a parsed expression
@@ -859,7 +863,7 @@ class AbstractExpression
     parser = Parser.new(default_shape)
     elements.each { |element| parser.parse(element) }
     @parsed_expressions = parser.expressions
-    set_content_types_1(@parsed_expressions)
+    set_arguments_1(@parsed_expressions)
   end
 
   def to_s
@@ -922,6 +926,10 @@ class AbstractExpression
     parsed_expressions_variables(@parsed_expressions)
   end
 
+  def operators
+    parsed_expressions_operators(@parsed_expressions)
+  end
+
   def functions
     parsed_expressions_functions(@parsed_expressions)
   end
@@ -932,20 +940,22 @@ class AbstractExpression
 
   private
 
-  def set_content_types_1(parsed_expressions)
-    parsed_expressions.each { |expression| set_content_types_2(expression) }
+  def set_arguments_1(parsed_expressions)
+    parsed_expressions.each { |expression| set_arguments_2(expression) }
   end
 
-  def set_content_types_2(parsed_expression)
+  def set_arguments_2(parsed_expression)
     content_type_stack = []
 
     parsed_expression.each do |item|
       if item.list?
-        set_content_types_1(item.list)
-      elsif item.content_type == :unknown
-        item.set_content_type(content_type_stack)
+        set_arguments_1(item.list)
+      elsif item.operator?
+        item.set_arguments(content_type_stack)
+        content_type_stack.push(item)
       else
-        content_type_stack.push(item.content_type)
+        item.pop_stack(content_type_stack)
+        content_type_stack.push(item)
       end
     end
 
@@ -1039,6 +1049,32 @@ class AbstractExpression
     end
 
     vars
+  end
+
+  def parsed_expressions_operators(parsed_expressions)
+    opers = []
+
+    parsed_expressions.each do |expression|
+      previous = nil
+
+      expression.each do |thing|
+        if thing.list?
+          # recurse into expressions in list
+          sublist = thing.list
+          opers += parsed_expressions_operators(sublist)
+        elsif thing.operator?
+          arguments = thing.arguments
+
+          is_ref = false
+
+          opers << XrefEntry.new(thing.to_s, arguments, is_ref)
+        end
+
+        previous = thing
+      end
+    end
+
+    opers
   end
 
   def parsed_expressions_functions(parsed_expressions)
@@ -1311,6 +1347,7 @@ class UserFunctionDefinition
   attr_reader :numerics
   attr_reader :strings
   attr_reader :variables
+  attr_reader :operators
   attr_reader :functions
   attr_reader :userfuncs
 
@@ -1329,11 +1366,20 @@ class UserFunctionDefinition
     @numerics = @expression.numerics
     @strings = @expression.strings
     @variables = @expression.variables
+    @operators = @expression.operators
     @functions = @expression.functions
     signature = []
     # TODO: detect type of argument
     xr = XrefEntry.new(@name.to_s, @arguments, true)
     @userfuncs = [xr] + @expression.userfuncs
+  end
+
+  def dump
+    lines = []
+    lines << @name.dump
+    @arguments.each { |arg| lines << arg.dump }
+    lines += @expression.dump
+    lines
   end
 
   def signature
@@ -1346,14 +1392,6 @@ class UserFunctionDefinition
     end
 
     sig
-  end
-
-  def dump
-    lines = []
-    lines << @name.dump
-    @arguments.each { |arg| lines << arg.dump }
-    lines += @expression.dump
-    lines
   end
 
   private
@@ -1430,19 +1468,43 @@ end
 # Assignment
 class Assignment
   attr_reader :target
+  attr_reader :numerics
+  attr_reader :strings
+  attr_reader :variables
+  attr_reader :operators
+  attr_reader :functions
+  attr_reader :userfuncs
 
   def initialize(tokens, shape)
     # parse into variable, '=', expression
     @token_lists = split_tokens(tokens)
+
     line_text = tokens.map(&:to_s).join
 
     raise(BASICSyntaxError, "'#{line_text}' is not a valid assignment") if
       @token_lists.size != 3 ||
       !(@token_lists[1].operator? && @token_lists[1].equals?)
 
+    @numerics = []
+    @strings = []
+    @variables = []
+    @operators = []
+    @functions = []
+    @userfuncs = []
+
     @target = TargetExpression.new(@token_lists[0], shape)
     @expression = ValueExpression.new(@token_lists[2], shape)
+    make_references
   end
+
+  def dump
+    lines = []
+    lines += @target.dump
+    lines += @expression.dump
+    lines << 'AssignmentOperator:='
+  end
+
+  private
 
   def split_tokens(tokens)
     results = []
@@ -1462,25 +1524,16 @@ class Assignment
     results
   end
 
-  def numerics
-    @target.numerics + @expression.numerics
+  def make_references
+    @numerics = @target.numerics + @expression.numerics
+    @strings = @target.strings + @expression.strings
+    @variables = @target.variables + @expression.variables
+    @operators = @target.operators + @expression.operators
+    @functions = @target.functions + @expression.functions
+    @userfuncs = @target.userfuncs + @expression.userfuncs
   end
 
-  def strings
-    @target.strings + @expression.strings
-  end
-
-  def variables
-    @target.variables + @expression.variables
-  end
-
-  def functions
-    @target.functions + @expression.functions
-  end
-
-  def userfuncs
-    @target.userfuncs + @expression.userfuncs
-  end
+  public
 
   def count_target
     @target.count
@@ -1496,13 +1549,6 @@ class Assignment
 
   def eval_target(interpreter)
     @target.evaluate(interpreter)
-  end
-
-  def dump
-    lines = []
-    lines += @target.dump
-    lines += @expression.dump
-    lines << 'AssignmentOperator:='
   end
 
   def to_s

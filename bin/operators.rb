@@ -20,22 +20,37 @@ class UnaryOperator < AbstractElement
   end
 
   attr_reader :content_type
+  attr_reader :arguments
 
   def initialize(text)
     super()
     @op = text.to_s
-    @content_type = :unknown
+    @content_types = { '#' => :filehandle, ':' => :filehandle }
+    @content_type = @content_types[@op]
+    @content_type = :unknown if @content_type.nil?
+    @arguments = nil
 
     raise(BASICExpressionError, "'#{text}' is not an operator") unless
       self.class.operator?(@op)
+
     @precedence = self.class.precedence(@op)
     @operator = true
   end
 
-  def set_content_type(stack)
-    @content_type = stack[-1]
+  def set_arguments(stack)
+    raise(BASICExpressionError, "Bad expression") if stack.size < 1
 
-    raise(BASICExpressionError, "Bad expression") if @content_type == :unknown
+    @arguments = stack.slice(-1, 1)
+    pop_stack(stack)
+
+    @content_type = @arguments[0].content_type if @content_type == :unknown
+
+    raise(BASICExpressionError, "Bad expression") if
+      @content_type == :unknown
+  end
+
+  def pop_stack(stack)
+    stack.pop
   end
 
   def dump
@@ -242,11 +257,19 @@ class BinaryOperator < AbstractElement
   end
 
   attr_reader :content_type
+  attr_reader :arguments
 
   def initialize(text)
     super()
     @op = text.to_s
-    @content_type = :unknown
+    @content_types = {
+      '=' => :boolean, '<>' => :boolean,
+      '>' => :boolean, '>=' => :boolean,
+      '<' => :boolean, '<=' => :boolean
+    }
+    @content_type = @content_types[@op]
+    @content_type = :unknown if @content_type.nil?
+    @arguments = nil
 
     raise(BASICExpressionError, "'#{text}' is not an operator") unless
       self.class.operator?(@op)
@@ -255,15 +278,28 @@ class BinaryOperator < AbstractElement
     @operator = true
   end
 
-  def set_content_type(stack)
-    @content_type = stack.pop
-    other = stack.pop
+  def set_arguments(stack)
+    raise(BASICExpressionError, "Bad expression") if stack.size < 2
 
-    raise(BASICExpressionError, "Bad expression") if @content_type == :unknown
+    @arguments = stack.slice(-2, 2)
+    pop_stack(stack)
 
-    raise(BASICExpressionError, "Bad expression") if other != @content_type
+    this = @arguments[0].content_type
 
-    stack.push(@content_type)
+    raise(BASICExpressionError, "Bad expression") if this == :unknown
+
+    other = @arguments[1].content_type
+
+    raise(BASICExpressionError, "Bad expression") if other == :unknown
+
+    raise(BASICExpressionError, "Bad expression") if other != this
+
+    @content_type = @arguments[0].content_type if @content_type == :unknown
+  end
+
+  def pop_stack(stack)
+    stack.pop
+    stack.pop
   end
 
   def dump

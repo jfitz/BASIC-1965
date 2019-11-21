@@ -157,10 +157,6 @@ class UserFunction < AbstractScalarFunction
     @name.to_s
   end
 
-  def content_type
-    :numeric
-  end
-
   def compatible?(value)
     numerics = [:numeric, :integer]
     strings = [:string]
