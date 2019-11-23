@@ -347,28 +347,45 @@ class Program
 
   def number_valid_statements
     num = 0
+
     @lines.each do |_, line|
       statement = line.statement
       num += 1 if statement.valid
     end
+
     num
   end
 
   def number_exec_statements
     num = 0
+
     @lines.each do |_, line|
       statement = line.statement
       num += 1 if statement.executable
     end
+
     num
   end
 
   def number_comments
     num = 0
+
     @lines.each do |_, line|
       statement = line.statement
       num += 1 if statement.comment
     end
+
+    num
+  end
+
+  def mccabe_complexity
+    num = 1
+
+    @lines.each do |_, line|
+      statement = line.statement
+      num += statement.mccabe
+    end
+
     num
   end
 
@@ -434,6 +451,8 @@ class Program
 
     density = number_comments.to_f / number_valid_statements.to_f
     lines << 'Comment density: ' + ('%.3f' % density)
+
+    lines << 'McCabe complexity: ' + mccabe_complexity.to_s
   end
 
   public
