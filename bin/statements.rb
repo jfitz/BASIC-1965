@@ -173,6 +173,7 @@ class AbstractStatement
   attr_reader :errors
   attr_reader :keywords
   attr_reader :tokens
+  attr_reader :separators
   attr_reader :valid
   attr_reader :executable
   attr_reader :comment
@@ -194,6 +195,7 @@ class AbstractStatement
     @keywords = keywords
     @executable = true
     @tokens = tokens_lists.flatten
+    @separators = get_separators(@tokens)
     @errors = []
     @valid = true
     @comment = false
@@ -249,6 +251,18 @@ class AbstractStatement
   end
 
   private
+
+  def get_separators(tokens)
+    wanted = ['(', ')', '[', ']', ',', ';']
+
+    separators = []
+
+    tokens.each do |token|
+      separators << token if wanted.include?(token.to_s)
+    end
+
+    separators
+  end
 
   def pre_execute(_) end
 

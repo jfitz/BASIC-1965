@@ -389,6 +389,83 @@ class Program
     num
   end
 
+  def halstead
+    list_operators = []
+    list_constants = []
+    list_variables = []
+    list_functions = []
+    list_linenums = []
+    list_separators = []
+
+    operator_keywords = %w(FOR GOTO GOSUB IF NEXT RETURN)
+    
+    @lines.each do |_, line|
+      statement = line.statement
+
+      list_operators += statement.operators
+
+      tokens = statement.keywords.flatten + statement.tokens
+      keywords = []
+      tokens.each do |token|
+        t = token.to_s
+        keywords << t if token.keyword?
+      end
+      keywords.each do |keyword|
+        list_operators << keyword if operator_keywords.include?(keyword)
+      end
+      
+      list_constants += statement.numerics
+      list_constants += statement.strings
+      list_variables += statement.variables
+      list_functions += statement.functions
+      list_functions += statement.userfuncs
+      list_linenums += statement.linenums
+
+      list_separators += statement.separators
+    end
+
+    num_operators = list_operators.size
+    num_distinct_operators = list_operators.uniq.size
+    
+    num_constants = list_constants.size
+    num_distinct_constants = list_constants.uniq.size
+    
+    num_variables = list_variables.size
+    num_distinct_variables = list_variables.uniq.size
+    
+    num_functions = list_functions.size
+    num_distinct_functions = list_functions.uniq.size
+
+    num_linenums = list_linenums.size
+    num_distinct_linenums = list_linenums.uniq.size
+
+    num_separators = list_separators.size
+    num_distinct_separators = list_separators.uniq.size
+    
+    # Halstead definitions
+    # number of operators
+    n1 = num_distinct_operators + num_distinct_functions = num_distinct_separators
+    n2 = num_distinct_constants + num_distinct_variables + num_distinct_linenums
+    nn1 = num_operators + num_functions + num_separators
+    nn2 = num_constants + num_variables + num_linenums
+    
+    # compute length, volume, abstraction level, effort
+    length = nn1 + nn2
+    vocabulary = n1 + n2
+    volume = 0
+    volume = length * Math.log(vocabulary) if vocabulary > 0
+    difficulty = 0
+    difficulty = (n1.to_f / 2) * (nn2.to_f / n2) if n2 > 0
+    effort = difficulty * volume
+    language_level = 0
+    language_level = volume / difficulty ** 2 if difficulty > 0
+    intelligence = 0
+    intelligence = volume / difficulty if difficulty > 0
+    time = effort / (60 * 18)  # 18 is the Stoud number for programming
+
+    return length, vocabulary, volume, difficulty, effort, language_level, intelligence, time    
+  end
+
   def unreachable_code
     # build list of "gotos"
     gotos = {}
@@ -449,10 +526,23 @@ class Program
   def code_complexity
     lines = []
 
-    density = number_comments.to_f / number_valid_statements.to_f
+    num_comm = number_comments
+    num_valid = number_valid_statements
+    density = 0
+    density = num_comm.to_f / num_valid.to_f if num_valid > 0
     lines << 'Comment density: ' + ('%.3f' % density)
 
     lines << 'McCabe complexity: ' + mccabe_complexity.to_s
+
+    lines << 'Halstead complexity:'
+    length, vocabulary, volume, difficulty, effort, language, intelligence, time = halstead
+    lines << ' length: ' + length.to_s
+    lines << ' volume: ' + ('%.3f' % volume)
+    lines << ' difficulty: ' + ('%.3f' % difficulty)
+    lines << ' effort: ' + ('%.3f' % effort)
+    lines << ' language: ' + ('%.3f' % language)
+    lines << ' intelligence: ' + ('%.3f' % intelligence)
+    lines << ' time: ' + ('%.3f' % time)
   end
 
   public
