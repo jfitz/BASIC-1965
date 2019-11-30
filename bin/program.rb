@@ -565,7 +565,7 @@ class Program
     false
   end
 
-  def find_closing_next(control_variable, current_line_number)
+  def find_closing_next(control, current_line_number)
     # starting with @next_line_number
     line_numbers = @lines.keys.sort
     forward_line_numbers =
@@ -578,7 +578,7 @@ class Program
 
       return line_number if
         statement.class.to_s == 'NextStatement' &&
-        statement.control == control_variable
+        statement.control == control
     end
 
     # if none found, error
