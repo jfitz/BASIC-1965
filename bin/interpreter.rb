@@ -716,8 +716,8 @@ class Interpreter
     fornext_control
   end
 
-  def retrieve_fornext(control_variable)
-    fornext = @fornexts[control_variable]
+  def retrieve_fornext(control)
+    fornext = @fornexts[control]
 
     raise(BASICRuntimeError, 'NEXT without FOR') if fornext.nil?
 

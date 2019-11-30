@@ -838,16 +838,14 @@ class ForStatement < AbstractStatement
     step = NumericConstant.new(1)
     step = @step.evaluate(interpreter)[0] unless @step.nil?
 
-    fornext_control = interpreter.assign_fornext(@control.name, from, to, step)
-    interpreter.lock_variable(@control.name)
-    interpreter.enter_fornext(@control.name)
+    fornext_control = interpreter.assign_fornext(@control, from, to, step)
+    interpreter.lock_variable(@control)
+    interpreter.enter_fornext(@control)
     terminated = fornext_control.front_terminated?
 
     if terminated
-      interpreter.next_line_number =
-        interpreter.find_closing_next(@control.name)
-
-      interpreter.unlock_variable(@control.name)
+      interpreter.next_line_number = interpreter.find_closing_next(@control)
+      interpreter.unlock_variable(@control)
       interpreter.exit_fornext
     end
 
@@ -1388,7 +1386,7 @@ class NextStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    fornext_control = interpreter.retrieve_fornext(@control.name)
+    fornext_control = interpreter.retrieve_fornext(@control)
 
     if interpreter.match_fornext?
       # check control variable matches current loop
@@ -1408,7 +1406,7 @@ class NextStatement < AbstractStatement
     io.trace_output(s)
 
     if terminated
-      interpreter.unlock_variable(@control.name)
+      interpreter.unlock_variable(@control)
       interpreter.exit_fornext
     else
       # set next line from top item
