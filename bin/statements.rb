@@ -1151,10 +1151,10 @@ class InputStatement < AbstractStatement
       zip(@input_items, values[0..@input_items.length])
 
     name_value_pairs.each do |hash|
-      l_values = hash['name'].evaluate(interpreter)
-      l_value = l_values[0]
+      variables = hash['name'].evaluate(interpreter)
+      variable = variables[0]
       value = hash['value']
-      interpreter.set_value(l_value, value)
+      interpreter.set_value(variable, value)
     end
 
     interpreter.clear_previous_lines
@@ -1344,6 +1344,8 @@ class LetStatement < AbstractScalarLetStatement
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
 
+    # allow multiple left-hand side values
+    # but only one right-hand side value
     l_values.each do |l_value|
       interpreter.set_value(l_value, r_value)
     end
