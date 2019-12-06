@@ -1229,7 +1229,7 @@ class Variable < AbstractElement
       interpreter.check_subscripts(@variable_name, @subscripts)
       interpreter.get_value(self)
     else
-      interpreter.get_value(@variable_name)
+      interpreter.get_value(self)
     end
   end
 
