@@ -533,25 +533,33 @@ module FileFunctions
     end
   end
 
-  def make_references
-    @numerics = @file_tokens.numerics unless @file_tokens.nil?
-    @items.each { |item| @numerics += item.numerics }
+  def make_references(items, file_tokens = nil, prompt = nil)
+    numerics = []
+    strings = []
+    variables = []
+    operators = []
+    functions = []
+    userfuncs = []
 
-    @strings = @prompt.strings unless @prompt.nil?
-    @strings += @file_tokens.strings unless @file_tokens.nil?
-    @items.each { |item| @strings += item.strings }
+    strings += prompt.strings unless prompt.nil?
 
-    @variables = @file_tokens.variables unless @file_tokens.nil?
-    @items.each { |item| @variables += item.variables }
+    unless file_tokens.nil?
+      numerics += file_tokens.numerics
+      strings += file_tokens.strings
+      variables += file_tokens.variables
+      operators += file_tokens.operators
+      functions += file_tokens.functions
+      userfuncs += file_tokens.userfuncs
+    end
 
-    @operators = @file_tokens.operators unless @file_tokens.nil?
-    @items.each { |item| @operators += item.operators }
+    items.each { |item| numerics += item.numerics }
+    items.each { |item| strings += item.strings }
+    items.each { |item| variables += item.variables }
+    items.each { |item| operators += item.operators }
+    items.each { |item| functions += item.functions }
+    items.each { |item| userfuncs += item.userfuncs }
 
-    @functions = @file_tokens.functions unless @file_tokens.nil?
-    @items.each { |item| @functions += item.functions }
-
-    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
-    @items.each { |item| @userfuncs += item.userfuncs }
+    [numerics, strings, variables, operators, functions, userfuncs]
   end
 
   def dump
@@ -1139,7 +1147,7 @@ class InputStatement < AbstractStatement
       items = tokens_to_expressions(items)
       @file_tokens, items = extract_file_handle(items)
       @prompt, @items = extract_prompt(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens, @prompt)
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -1503,7 +1511,7 @@ class PrintStatement < AbstractPrintStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       items = tokens_to_expressions(tokens_lists)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
     else
       @errors << 'Syntax error'
     end
@@ -1582,7 +1590,7 @@ class ReadStatement < AbstractReadStatement
       items = split_tokens(tokens_lists[0], false)
       items = tokens_to_expressions(items)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -1736,7 +1744,7 @@ class WriteStatement < AbstractWriteStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       items = tokens_to_expressions(tokens_lists)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
     else
       @errors << 'Syntax error'
     end
@@ -1806,7 +1814,7 @@ class ArrPrintStatement < AbstractPrintStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       items = tokens_to_expressions(tokens_lists)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
     else
       @errors << 'Syntax error'
     end
@@ -1867,7 +1875,7 @@ class ArrReadStatement < AbstractReadStatement
       items = split_tokens(tokens_lists[0], false)
       items = tokens_to_expressions(items)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -1957,7 +1965,7 @@ class ArrWriteStatement < AbstractWriteStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       items = tokens_to_expressions(tokens_lists)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
     else
       @errors << 'Syntax error'
     end
@@ -2088,7 +2096,7 @@ class MatPrintStatement < AbstractPrintStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       items = tokens_to_expressions(tokens_lists)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
     else
       @errors << 'Syntax error'
     end
@@ -2148,7 +2156,7 @@ class MatReadStatement < AbstractReadStatement
       items = split_tokens(tokens_lists[0], false)
       items = tokens_to_expressions(items)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -2255,7 +2263,7 @@ class MatWriteStatement < AbstractWriteStatement
       tokens_lists = split_tokens(tokens_lists[0], true)
       items = tokens_to_expressions(tokens_lists)
       @file_tokens, @items = extract_file_handle(items)
-      make_references
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@items, @file_tokens)
     else
       @errors << 'Syntax error'
     end
