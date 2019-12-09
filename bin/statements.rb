@@ -532,6 +532,38 @@ module FileFunctions
       add_final_carriage(items, CarriageControl.new('NL'))
     end
   end
+
+  def make_references
+    @numerics = @file_tokens.numerics unless @file_tokens.nil?
+    @items.each { |item| @numerics += item.numerics }
+
+    @strings = @prompt.strings unless @prompt.nil?
+    @strings += @file_tokens.strings unless @file_tokens.nil?
+    @items.each { |item| @strings += item.strings }
+
+    @variables = @file_tokens.variables unless @file_tokens.nil?
+    @items.each { |item| @variables += item.variables }
+
+    @operators = @file_tokens.operators unless @file_tokens.nil?
+    @items.each { |item| @operators += item.operators }
+
+    @functions = @file_tokens.functions unless @file_tokens.nil?
+    @items.each { |item| @functions += item.functions }
+
+    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
+    @items.each { |item| @userfuncs += item.userfuncs }
+  end
+
+  def dump
+    lines = []
+
+    unless @file_tokens.nil?
+      lines += @file_tokens.dump
+    end
+
+    @items.each { |item| lines += item.dump } unless @items.nil?
+    lines
+  end
 end
 
 # DATA
@@ -1107,23 +1139,11 @@ class InputStatement < AbstractStatement
       items = tokens_to_expressions(items)
       @file_tokens, items = extract_file_handle(items)
       @prompt, @items = extract_prompt(items)
-
-      if !@items.empty? && @items[0].text_constant?
-        @prompt = items[0]
-        @items = @items[1..-1]
-      end
-
       make_references
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
     end
-  end
-
-  def dump
-    lines = []
-    @items.each { |item| lines += item.dump } unless @items.nil?
-    lines
   end
 
   def execute(interpreter)
@@ -1163,27 +1183,6 @@ class InputStatement < AbstractStatement
   private
 
   include FileFunctions
-
-  def make_references
-    @numerics = @file_tokens.numerics unless @file_tokens.nil?
-    @items.each { |item| @numerics += item.numerics }
-
-    @strings = @prompt.strings unless @prompt.nil?
-    @strings += @file_tokens.strings unless @file_tokens.nil?
-    @items.each { |item| @strings += item.strings }
-
-    @variables = @file_tokens.variables unless @file_tokens.nil?
-    @items.each { |item| @variables += item.variables }
-
-    @operators = @file_tokens.operators unless @file_tokens.nil?
-    @items.each { |item| @operators += item.operators }
-
-    @functions = @file_tokens.functions unless @file_tokens.nil?
-    @items.each { |item| @functions += item.functions }
-
-    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
-    @items.each { |item| @userfuncs += item.userfuncs }
-  end
 
   def first_token(items)
     items[0][0]
@@ -1481,37 +1480,6 @@ class AbstractPrintStatement < AbstractStatement
     @final = final_carriage
   end
 
-  def dump
-    lines = []
-
-    unless @file_tokens.nil?
-      lines += @file_tokens.dump
-    end
-
-    @items.each { |item| lines += item.dump } unless @items.nil?
-    lines
-  end
-
-  def make_references
-    @numerics = @file_tokens.numerics unless @file_tokens.nil?
-    @items.each { |item| @numerics += item.numerics }
-
-    @strings = @file_tokens.strings unless @file_tokens.nil?
-    @items.each { |item| @strings += item.strings }
-
-    @variables = @file_tokens.variables unless @file_tokens.nil?
-    @items.each { |item| @variables += item.variables }
-
-    @operators = @file_tokens.operators unless @file_tokens.nil?
-    @items.each { |item| @operators += item.operators }
-
-    @functions = @file_tokens.functions unless @file_tokens.nil?
-    @items.each { |item| @functions += item.functions }
-
-    @userfuncs = @file_tokens.userfuncs unless @file_fokens.nil?
-    @items.each { |item| @userfuncs += item.userfuncs }
-  end
-
   include FileFunctions
 end
 
@@ -1593,32 +1561,6 @@ end
 class AbstractReadStatement < AbstractStatement
   def initialize(keywords, tokens_lists)
     super
-  end
-
-  def dump
-    lines = []
-    @items.each { |item| lines += item.dump } unless @items.nil?
-    lines
-  end
-
-  def make_references
-    @numerics = @file_tokens.numerics unless @file_tokens.nil?
-    @items.each { |item| @numerics += item.numerics }
-
-    @strings = @file_tokens.strings unless @file_tokens.nil?
-    @items.each { |item| @strings += item.strings }
-
-    @variables = @file_tokens.variables unless @file_tokens.nil?
-    @items.each { |item| @variables += item.variables }
-
-    @operators = @file_tokens.operators unless @file_tokens.nil?
-    @items.each { |item| @operators += item.operators }
-
-    @functions = @file_tokens.functions unless @file_tokens.nil?
-    @items.each { |item| @functions += item.functions }
-
-    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
-    @items.each { |item| @userfuncs += item.userfuncs }
   end
 
   include FileFunctions
@@ -1773,32 +1715,6 @@ class AbstractWriteStatement < AbstractStatement
   def initialize(keywords, tokens_lists, final_carriage)
     super(keywords, tokens_lists)
     @final = final_carriage
-  end
-
-  def dump
-    lines = []
-    @items.each { |item| lines += item.dump } unless @items.nil?
-    lines
-  end
-
-  def make_references
-    @numerics = @file_tokens.numerics unless @file_tokens.nil?
-    @items.each { |item| @numerics += item.numerics }
-
-    @strings = @file_tokens.strings unless @file_tokens.nil?
-    @items.each { |item| @strings += item.strings }
-
-    @variables = @file_tokens.variables unless @file_tokens.nil?
-    @items.each { |item| @variables += item.variables }
-
-    @operators = @file_tokens.operators unless @file_tokens.nil?
-    @items.each { |item| @operators += item.operators }
-
-    @functions = @file_tokens.functions unless @file_tokens.nil?
-    @items.each { |item| @functions += item.functions }
-
-    @userfuncs = @file_tokens.userfuncs unless @file_tokens.nil?
-    @items.each { |item| @userfuncs += item.userfuncs }
   end
 
   include FileFunctions
