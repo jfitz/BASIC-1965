@@ -381,6 +381,44 @@ class AbstractStatement
     results
   end
 
+  def make_references(items, exp1 = nil, exp2 = nil)
+    numerics = []
+    strings = []
+    variables = []
+    operators = []
+    functions = []
+    userfuncs = []
+
+    unless exp1.nil?
+      numerics += exp1.numerics
+      strings += exp1.strings
+      variables += exp1.variables
+      operators += exp1.operators
+      functions += exp1.functions
+      userfuncs += exp1.userfuncs
+    end
+
+    unless exp2.nil?
+      numerics += exp2.numerics
+      strings += exp2.strings
+      variables += exp2.variables
+      operators += exp2.operators
+      functions += exp2.functions
+      userfuncs += exp2.userfuncs
+    end
+
+    unless items.nil?
+      items.each { |item| numerics += item.numerics }
+      items.each { |item| strings += item.strings }
+      items.each { |item| variables += item.variables }
+      items.each { |item| operators += item.operators }
+      items.each { |item| functions += item.functions }
+      items.each { |item| userfuncs += item.userfuncs }
+    end
+
+    [numerics, strings, variables, operators, functions, userfuncs]
+  end
+
   def make_coord(c)
     [NumericConstant.new(c)]
   end
@@ -533,35 +571,6 @@ module FileFunctions
     end
   end
 
-  def make_references(items, file_tokens = nil, prompt = nil)
-    numerics = []
-    strings = []
-    variables = []
-    operators = []
-    functions = []
-    userfuncs = []
-
-    strings += prompt.strings unless prompt.nil?
-
-    unless file_tokens.nil?
-      numerics += file_tokens.numerics
-      strings += file_tokens.strings
-      variables += file_tokens.variables
-      operators += file_tokens.operators
-      functions += file_tokens.functions
-      userfuncs += file_tokens.userfuncs
-    end
-
-    items.each { |item| numerics += item.numerics }
-    items.each { |item| strings += item.strings }
-    items.each { |item| variables += item.variables }
-    items.each { |item| operators += item.operators }
-    items.each { |item| functions += item.functions }
-    items.each { |item| userfuncs += item.userfuncs }
-
-    [numerics, strings, variables, operators, functions, userfuncs]
-  end
-
   def dump
     lines = []
 
@@ -591,12 +600,7 @@ class DataStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       @expressions = ValueExpression.new(tokens_lists[0], :scalar)
-      @numerics = @expressions.numerics
-      @strings = @expressions.strings
-      @variables = @expressions.variables
-      @operators = @expressions.operators
-      @functions = @expressions.functions
-      @userfuncs = @expressions.userfuncs
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(nil, @expressions)
     else
       @errors << 'Syntax error'
     end
@@ -634,12 +638,7 @@ class DefineFunctionStatement < AbstractStatement
       @definition = nil
       begin
         @definition = UserFunctionDefinition.new(tokens_lists[0])
-        @numerics = @definition.numerics
-        @strings = @definition.strings
-        @variables = @definition.variables
-        @operators = @definition.operators
-        @functions = @definition.functions
-        @userfuncs = @definition.userfuncs
+        @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(nil, @definition)
       rescue BASICError => e
         puts e.message
         @errors << e.message
@@ -676,13 +675,13 @@ class DimStatement < AbstractStatement
 
     template = [[1, '>=']]
 
-    @expression_list = []
+    @expressions = []
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], false)
 
       tokens_lists.each do |tokens_list|
         begin
-          @expression_list << DeclarationExpression.new(tokens_list)
+          @expressions << DeclarationExpression.new(tokens_list)
         rescue BASICExpressionError
           @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
         end
@@ -691,22 +690,17 @@ class DimStatement < AbstractStatement
       @errors << 'Syntax error'
     end
 
-    @expression_list.each { |expression| @numerics += expression.numerics }
-    @expression_list.each { |expression| @strings += expression.strings }
-    @expression_list.each { |expression| @variables += expression.variables }
-    @expression_list.each { |expression| @operators += expression.operators }
-    @expression_list.each { |expression| @functions += expression.functions }
-    @expression_list.each { |expression| @userfuncs += expression.userfuncs }
+    @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(@expressions)
   end
 
   def dump
     lines = []
-    @expression_list.each { |expression| lines += expression.dump }
+    @expressions.each { |expression| lines += expression.dump }
     lines
   end
 
   def execute(interpreter)
-    @expression_list.each do |expression|
+    @expressions.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
@@ -1111,16 +1105,11 @@ class IfStatement < AbstractIfStatement
 
       begin
         @expression = ValueExpression.new(tokens_lists[0], :scalar)
+        @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(nil, @expression)
       rescue BASICExpressionError => e
         @errors << e.message
       end
 
-      @numerics = @expression.numerics unless @expression.nil?
-      @strings = @expression.strings unless @expression.nil?
-      @variables = @expression.variables unless @expression.nil?
-      @operators = @expression.operators unless @expression.nil?
-      @functions = @expression.functions unless @expression.nil?
-      @userfuncs = @expression.userfuncs unless @expression.nil?
       @linenums = [@destination]
       @mccabe = 1
     else
@@ -1319,12 +1308,7 @@ class AbstractScalarLetStatement < AbstractLetStatement
           @errors << 'Assignment must have only one right-hand value'
         end
 
-        @numerics = @assignment.numerics
-        @strings = @assignment.strings
-        @variables = @assignment.variables
-        @operators = @assignment.operators
-        @functions = @assignment.functions
-        @userfuncs = @assignment.userfuncs
+        @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(nil, @assignment)
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -1455,12 +1439,7 @@ class OptionStatement < AbstractStatement
       @key = tokens_lists[0].to_s.downcase
       expression_tokens = split_tokens(tokens_lists[1], true)
       @expression = ValueExpression.new(expression_tokens[0], :scalar)
-      @numerics = @expression.numerics
-      @strings = @expression.strings
-      @variables = @expression.variables
-      @operators = @expression.operators
-      @functions = @expression.functions
-      @userfuncs = @expression.userfuncs
+      @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(nil, @expression)
     else
       @errors << 'Syntax error'
     end
@@ -2035,11 +2014,7 @@ class ArrLetStatement < AbstractLetStatement
           @errors << 'Assignment must have only one right-hand value'
         end
 
-        @numerics = @assignment.numerics
-        @strings = @assignment.strings
-        @variables = @assignment.variables
-        @operators = @assignment.operators
-        @functions = @assignment.functions
+        @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(nil, @assignment)
       rescue BASICError => e
         @errors << e.message
         @assignment = @rest
@@ -2332,11 +2307,7 @@ class MatLetStatement < AbstractLetStatement
           @errors << 'Assignment must have only one right-hand value'
         end
 
-        @numerics = @assignment.numerics
-        @strings = @assignment.strings
-        @variables = @assignment.variables
-        @operators = @assignment.operators
-        @functions = @assignment.functions
+        @numerics, @strings, @variables, @operators, @functions, @userfuncs = make_references(nil, @assignment)
       rescue BASICError => e
         @errors << e.message
         @assignment = @rest
