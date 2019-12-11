@@ -583,6 +583,67 @@ module FileFunctions
   end
 end
 
+# common functions for INPUT statements
+module InputFunctions
+  def extract_prompt(items)
+    items = items.clone
+    prompt = nil
+
+    unless items.empty? ||
+           items[0].carriage_control?
+
+      candidate_prompt_tokens = items[0]
+
+      if candidate_prompt_tokens.text_constant?
+        prompt = items.shift
+
+        items.shift if
+          !items.empty? &&
+          items[0].carriage_control?
+      end
+    end
+
+    [prompt, items]
+  end
+
+  def tokens_to_expressions(tokens_lists)
+    items = []
+
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'Array'
+        add_expression(items, tokens_list)
+      end
+    end
+
+    items
+  end
+
+  def add_expression(items, tokens)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    elsif tokens[0].text_constant?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      items << TargetExpression.new(tokens, :scalar)
+    end
+
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
+  end
+
+  def zip(names, values)
+    raise(BASICRuntimeError, 'Too few items') if values.size < names.size
+
+    results = []
+    (0...names.size).each do |i|
+      results << { 'name' => names[i], 'value' => values[i] }
+    end
+
+    results
+  end
+end
+
 # DATA
 class DataStatement < AbstractStatement
   def self.lead_keywords
@@ -1126,6 +1187,13 @@ class InputStatement < AbstractStatement
     ]
   end
 
+  private
+
+  include FileFunctions
+  include InputFunctions
+
+  public
+
   def initialize(keywords, tokens_lists)
     super
 
@@ -1179,8 +1247,6 @@ class InputStatement < AbstractStatement
 
   private
 
-  include FileFunctions
-
   def first_token(items)
     items[0][0]
   end
@@ -1190,67 +1256,6 @@ class InputStatement < AbstractStatement
     expr = ValueExpression.new(first_list, :scalar)
     values = expr.evaluate(interpreter)
     values[0]
-  end
-
-  def extract_prompt(items)
-    items = items.clone
-    prompt = nil
-
-    unless items.empty? ||
-           items[0].carriage_control?
-
-      candidate_prompt_tokens = items[0]
-
-      if candidate_prompt_tokens.text_constant?
-        prompt = items.shift
-
-        items.shift if
-          !items.empty? &&
-          items[0].carriage_control?
-      end
-    end
-
-    [prompt, items]
-  end
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      end
-    end
-
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    elsif tokens[0].text_constant?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << TargetExpression.new(tokens, :scalar)
-    end
-
-  rescue BASICExpressionError
-    line_text = tokens.map(&:to_s).join
-    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
-  end
-
-  def zip(names, values)
-    raise(BASICRuntimeError, 'Too few values') if values.size < names.size
-
-    results = []
-    (0...names.size).each do |i|
-      raise(BASICRuntimeError, names[i].to_s + ' is not assignable') unless
-        names[i].target?
-
-      results << { 'name' => names[i], 'value' => values[i] }
-    end
-
-    results
   end
 
   def input_values(fhr, interpreter, prompt, count)
