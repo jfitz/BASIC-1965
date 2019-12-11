@@ -1461,10 +1461,8 @@ end
 
 # common for PRINT, ARR PRINT, MAT PRINT
 class AbstractPrintStatement < AbstractStatement
-  def initialize(keywords, tokens_lists, final_carriage)
-    super(keywords, tokens_lists)
-
-    @final = final_carriage
+  def initialize(keywords, tokens_lists)
+    super
   end
 
   include FileFunctions
@@ -1479,7 +1477,7 @@ class PrintStatement < AbstractPrintStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new('NL'))
+    super
 
     template1 = []
     template2 = [[1, '>=']]
@@ -1538,7 +1536,7 @@ class PrintStatement < AbstractPrintStatement
       end
     end
 
-    add_final_carriage(items, @final)
+    add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :scalar)
     items
   end
@@ -1699,9 +1697,8 @@ end
 
 # common for WRITE, ARR WRITE, MAT WRITE
 class AbstractWriteStatement < AbstractStatement
-  def initialize(keywords, tokens_lists, final_carriage)
-    super(keywords, tokens_lists)
-    @final = final_carriage
+  def initialize(keywords, tokens_lists)
+    super
   end
 
   include FileFunctions
@@ -1716,7 +1713,8 @@ class WriteStatement < AbstractWriteStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new('NL'))
+    super
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1771,7 +1769,7 @@ class WriteStatement < AbstractWriteStatement
       end
     end
 
-    add_final_carriage(items, @final)
+    add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :scalar)
     items
   end
@@ -1786,7 +1784,8 @@ class ArrPrintStatement < AbstractPrintStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new('NL'))
+    super
+    
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1832,7 +1831,7 @@ class ArrPrintStatement < AbstractPrintStatement
       end
     end
 
-    add_final_carriage(items, @final)
+    add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :array)
     items
   end
@@ -1848,6 +1847,7 @@ class ArrReadStatement < AbstractReadStatement
 
   def initialize(keywords, tokens_lists)
     super
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1936,7 +1936,7 @@ class ArrWriteStatement < AbstractWriteStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new('NL'))
+    super
 
     template = [[1, '>=']]
 
@@ -1983,7 +1983,7 @@ class ArrWriteStatement < AbstractWriteStatement
       end
     end
 
-    add_final_carriage(items, @final)
+    add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :array)
     items
   end
@@ -2000,6 +2000,7 @@ class ArrLetStatement < AbstractLetStatement
 
   def initialize(_, tokens_lists)
     super
+
     template = [[3, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2064,7 +2065,8 @@ class MatPrintStatement < AbstractPrintStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new('NL'))
+    super
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2082,14 +2084,12 @@ class MatPrintStatement < AbstractPrintStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
+
     @items.each do |item|
-      if item.printable? &&
-         i < @items.size &&
-         !@items[i + 1].printable?
+      if item.printable?
         item.compound_print(fhr, interpreter)
-        # always print newline between items,
-        # regardless of carriage separators in program
-        @final.print(fhr, interpreter)
+        carriage = CarriageControl.new('')
+        carriage.print(fhr, interpreter)
       end
 
       i += 1
@@ -2109,7 +2109,7 @@ class MatPrintStatement < AbstractPrintStatement
       end
     end
 
-    add_final_carriage(items, @final)
+    add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :matrix)
     items
   end
@@ -2125,6 +2125,7 @@ class MatReadStatement < AbstractReadStatement
 
   def initialize(keywords, tokens_lists)
     super
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2231,7 +2232,8 @@ class MatWriteStatement < AbstractWriteStatement
   end
 
   def initialize(keywords, tokens_lists)
-    super(keywords, tokens_lists, CarriageControl.new('NL'))
+    super
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2276,7 +2278,7 @@ class MatWriteStatement < AbstractWriteStatement
       end
     end
 
-    add_final_carriage(items, @final)
+    add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :matrix)
     items
   end
@@ -2293,6 +2295,7 @@ class MatLetStatement < AbstractLetStatement
 
   def initialize(_, tokens_lists)
     super
+
     template = [[3, '>=']]
 
     if check_template(tokens_lists, template)
