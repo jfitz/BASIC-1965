@@ -626,7 +626,6 @@ module InputFunctions
     else
       items << TargetExpression.new(tokens, :scalar)
     end
-
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -863,7 +862,7 @@ class ForStatement < AbstractStatement
   end
 
   def self.extra_keywords
-    %w(TO STEP)
+    %w[TO STEP]
   end
 
   def initialize(keywords, tokens_lists)
@@ -1187,12 +1186,8 @@ class InputStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
   include InputFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -1472,11 +1467,7 @@ class PrintStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -1552,11 +1543,7 @@ class ReadStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -1608,7 +1595,6 @@ class ReadStatement < AbstractStatement
     else
       items << TargetExpression.new(tokens, :scalar)
     end
-
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -1702,11 +1688,7 @@ class WriteStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -1779,11 +1761,7 @@ class ArrPrintStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -1847,11 +1825,7 @@ class ArrReadStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -1905,7 +1879,6 @@ class ArrReadStatement < AbstractStatement
     else
       items << TargetExpression.new(tokens, :array)
     end
-
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -1943,11 +1916,7 @@ class ArrWriteStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -2078,11 +2047,7 @@ class MatPrintStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -2143,11 +2108,7 @@ class MatReadStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super
@@ -2201,7 +2162,6 @@ class MatReadStatement < AbstractStatement
     else
       items << TargetExpression.new(tokens, :matrix)
     end
-
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
@@ -2257,11 +2217,7 @@ class MatWriteStatement < AbstractStatement
     ]
   end
 
-  private
-
   include FileFunctions
-
-  public
 
   def initialize(keywords, tokens_lists)
     super

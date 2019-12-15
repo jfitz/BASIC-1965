@@ -52,12 +52,12 @@ class Option
   def check_value(value)
     case @defs[:type]
     when :bool
-      legals = %w(TrueClass FalseClass)
+      legals = %w[TrueClass FalseClass]
 
       raise(BASICRuntimeError, "Invalid type #{value.class} for boolean") unless
         legals.include?(value.class.to_s)
     when :int
-      legals = %w(Fixnum Integer)
+      legals = %w[Fixnum Integer]
 
       raise(BASICRuntimeError, "Invalid type #{value.class} for integer") unless
         legals.include?(value.class.to_s)
@@ -72,7 +72,7 @@ class Option
         raise(BASICRuntimeError, "Value #{value} above maximum #{max}")
       end
     when :float
-      legals = %w(Fixnum Integer Float Rational)
+      legals = %w[Fixnum Integer Float Rational]
 
       raise(BASICRuntimeError, "Invalid type #{value.class} for float") unless
         legals.include?(value.class.to_s)
@@ -320,14 +320,14 @@ def make_interpreter_tokenbuilders
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new
   tokenbuilders << VariableTokenBuilder.new
-  tokenbuilders << ListTokenBuilder.new(%w(TRUE FALSE), BooleanConstantToken)
+  tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanConstantToken)
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
 def make_command_tokenbuilders
   tokenbuilders = []
 
-  keywords = %w(
+  keywords = %w[
     ANALYZE BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE
     PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
@@ -337,7 +337,7 @@ def make_command_tokenbuilders
     PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
     QMARK_AFTER_PROMPT RANDOMIZE REQUIRE_INITIALIZED
     SEMICOLON_ZONE_WIDTH TIMING TRACE ZONE_WIDTH
-  )
+  ]
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
@@ -350,7 +350,7 @@ def make_command_tokenbuilders
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new
 
-  tokenbuilders << ListTokenBuilder.new(%w(TRUE FALSE), BooleanConstantToken)
+  tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanConstantToken)
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
@@ -421,7 +421,7 @@ int_1_16 = { type: :int, max: 16, min: 1 }
 int_132 = { type: :int, max: 132, min: 0 }
 int_40 = { type: :int, max: 40, min: 0 }
 int_1 = { type: :int, max: 1, min: 0 }
-separator = { type: :list, values: ['COMMA', 'SEMI', 'NL', 'NONE'] }
+separator = { type: :list, values: %w[COMMA SEMI NL NONE] }
 
 $options = {}
 

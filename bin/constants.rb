@@ -128,7 +128,7 @@ class AbstractElement
     @boolean_constant
   end
 
-  def pop_stack(stack) ; end
+  def pop_stack(stack); end
 
   protected
 
@@ -144,7 +144,7 @@ end
 # beginning of a group
 class GroupStart < AbstractElement
   def self.accept?(token)
-    classes = %w(GroupStartToken)
+    classes = %w[GroupStartToken]
     classes.include?(token.class.to_s)
   end
 
@@ -165,7 +165,7 @@ end
 # end of a group
 class GroupEnd < AbstractElement
   def self.accept?(token)
-    classes = %w(GroupEndToken)
+    classes = %w[GroupEndToken]
     classes.include?(token.class.to_s)
   end
 
@@ -206,7 +206,7 @@ end
 # separator for group or params
 class ParamSeparator < AbstractElement
   def self.accept?(token)
-    classes = %w(ParamSeparatorToken)
+    classes = %w[ParamSeparatorToken]
     classes.include?(token.class.to_s)
   end
 
@@ -391,7 +391,7 @@ end
 # Numeric constants
 class NumericConstant < AbstractValueElement
   def self.accept?(token)
-    classes = %w(Fixnum Integer Bignum Float NumericConstantToken)
+    classes = %w[Fixnum Integer Bignum Float NumericConstantToken]
     classes.include?(token.class.to_s)
   end
 
@@ -428,8 +428,8 @@ class NumericConstant < AbstractValueElement
   def initialize(text)
     super()
 
-    numeric_classes = %w(Fixnum Integer Bignum Float)
-    float_classes = %w(Rational NumericConstantToken)
+    numeric_classes = %w[Fixnum Integer Bignum Float]
+    float_classes = %w[Rational NumericConstantToken]
 
     f = nil
     f = text.to_f if float_classes.include?(text.class.to_s)
@@ -555,7 +555,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def negate
-    NumericConstant.new(-(@value))
+    NumericConstant.new(-@value)
   end
 
   def truncate
@@ -750,7 +750,7 @@ end
 # Boolean constants
 class BooleanConstant < AbstractValueElement
   def self.accept?(token)
-    classes = %w(BooleanConstantToken)
+    classes = %w[BooleanConstantToken]
     classes.include?(token.class.to_s)
   end
 
@@ -818,7 +818,7 @@ class FileHandle < AbstractElement
     super()
 
     raise(BASICRuntimeError, 'Invalid file reference') unless
-      ['Fixnum', 'Integer'].include?(num.class.to_s)
+      %w[Fixnum Integer].include?(num.class.to_s)
 
     raise(BASICRuntimeError, 'Invalid file number') if num < 0
 
@@ -842,7 +842,7 @@ end
 # Carriage control for PRINT and MAT PRINT statements
 class CarriageControl
   def self.accept?(token)
-    classes = %w(ParamSeparatorToken)
+    classes = %w[ParamSeparatorToken]
     classes.include?(token.class.to_s)
   end
 
@@ -938,7 +938,7 @@ end
 # Hold a variable name
 class VariableName < AbstractElement
   def self.accept?(token)
-    classes = %w(VariableToken)
+    classes = %w[VariableToken]
     classes.include?(token.class.to_s)
   end
 
@@ -994,7 +994,7 @@ end
 # Hold a function name
 class UserFunctionName < AbstractElement
   def self.accept?(token)
-    classes = %w(UserFunctionToken)
+    classes = %w[UserFunctionToken]
     classes.include?(token.class.to_s)
   end
 
@@ -1052,6 +1052,7 @@ class UserFunctionName < AbstractElement
   end
 end
 
+# CLass for declaration (in a DIM statement)
 class Declaration < AbstractElement
   attr_reader :subscripts
 
@@ -1227,10 +1228,9 @@ class Variable < AbstractElement
       subscripts = get_subscripts(stack)
       @subscripts = interpreter.normalize_subscripts(subscripts)
       interpreter.check_subscripts(@variable_name, @subscripts)
-      interpreter.get_value(self)
-    else
-      interpreter.get_value(self)
     end
+
+    interpreter.get_value(self)
   end
 
   def get_subscripts(stack)

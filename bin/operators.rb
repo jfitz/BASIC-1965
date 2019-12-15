@@ -38,14 +38,14 @@ class UnaryOperator < AbstractElement
   end
 
   def set_arguments(stack)
-    raise(BASICExpressionError, "Bad expression") if stack.size < 1
+    raise(BASICExpressionError, 'Bad expression') if stack.empty?
 
     @arguments = stack.slice(-1, 1)
     pop_stack(stack)
 
     @content_type = @arguments[0].content_type if @content_type == :unknown
 
-    raise(BASICExpressionError, "Bad expression") if
+    raise(BASICExpressionError, 'Bad expression') if
       @content_type == :unknown
   end
 
@@ -279,20 +279,20 @@ class BinaryOperator < AbstractElement
   end
 
   def set_arguments(stack)
-    raise(BASICExpressionError, "Bad expression") if stack.size < 2
+    raise(BASICExpressionError, 'Bad expression') if stack.size < 2
 
     @arguments = stack.slice(-2, 2)
     pop_stack(stack)
 
     this = @arguments[0].content_type
 
-    raise(BASICExpressionError, "Bad expression") if this == :unknown
+    raise(BASICExpressionError, 'Bad expression') if this == :unknown
 
     other = @arguments[1].content_type
 
-    raise(BASICExpressionError, "Bad expression") if other == :unknown
+    raise(BASICExpressionError, 'Bad expression') if other == :unknown
 
-    raise(BASICExpressionError, "Type mismatch") if other != this
+    raise(BASICExpressionError, 'Type mismatch') if other != this
 
     @content_type = @arguments[0].content_type if @content_type == :unknown
   end
