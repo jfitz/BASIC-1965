@@ -13,6 +13,6 @@ mkdir "$TESTBED"
 for F in bin/*; do
     FP=${F##*/}
     FN=${FP%.*}
-    echo RUBOCOP of $F to "$TESTBED"/$FN.txt
-    rubocop $F >"$TESTBED"/$FN.txt
+    echo RUBOCOP of $F
+    rubocop $F | tee "$TESTBED"/$FN.txt | grep offenses | sed -e "s/^.*,//"
 done
