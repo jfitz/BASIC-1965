@@ -275,8 +275,44 @@ class FunctionAbs < AbstractScalarFunction
   end
 end
 
-# function ATN
-class FunctionAtn < AbstractScalarFunction
+# function ARCCOS
+class FunctionArcCos < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise(BASICRuntimeError, 'Wrong arguments for function') unless
+      match_args_to_signature(args, @signature)
+
+    args[0].arccos
+  end
+end
+
+# function ARCSIN
+class FunctionArcSin < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise(BASICRuntimeError, 'Wrong arguments for function') unless
+      match_args_to_signature(args, @signature)
+
+    args[0].arcsin
+  end
+end
+
+# function ARCTAN
+class FunctionArcTan < AbstractScalarFunction
   def initialize(text)
     super
 
@@ -776,7 +812,10 @@ end
 class FunctionFactory
   @functions = {
     'ABS' => FunctionAbs,
-    'ATN' => FunctionAtn,
+    'ARCCOS' => FunctionArcCos,
+    'ARCSIN' => FunctionArcSin,
+    'ARCTAN' => FunctionArcTan,
+    'ATN' => FunctionArcTan,
     'CON' => FunctionCon,
     'COS' => FunctionCos,
     'COT' => FunctionCot,

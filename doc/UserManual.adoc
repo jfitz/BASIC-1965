@@ -1547,8 +1547,12 @@ Functions may be used in numeric expressions.
 |==========
 |Function |Result
 |ABS(x) |Computes the absolute value of x.
-|ATN(x) |Computes the arctangent of x, providing the answer in radians.
-|ATN(y,x) |Computes the arctangent of y and x, providing the answer in radians.
+|ARCCOS(x) |Computes the arccosine of x, providing the answer in radians.
+|ARCSIN(x) |Computes the arcsine of x, providing the answer in radians.
+|ARCTAN(x) |Computes the arctangent of x, providing the answer in radians.
+|ARCTAN(y,x) |Computes the arctangent of y and x, providing the answer in radians.
+|ATN(x) |Synonym for ARCTAN(x)
+|ATN(y,x) |Synonym for ARCTAN(y,x)
 |CON(x) |Creates an array containing all ones, with x columns
 |CON(x,y) |Creates a matrix containing all ones, with x rows and y columns.
 |CON or CON() |Creates an array or matrix containins all ones, with dimensions based on the assignment target.
