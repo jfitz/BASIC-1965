@@ -2322,8 +2322,10 @@ class MatLetStatement < AbstractLetStatement
     l_value = l_values[0]
     l_dims = interpreter.get_dimensions(l_value.name)
 
+    interpreter.set_default_args('CON2', l_dims)
     interpreter.set_default_args('CON', l_dims)
     interpreter.set_default_args('IDN', l_dims)
+    interpreter.set_default_args('ZER2', l_dims)
     interpreter.set_default_args('ZER', l_dims)
 
     # evaluate, use default args if needed
@@ -2333,8 +2335,10 @@ class MatLetStatement < AbstractLetStatement
     raise(BASICRuntimeError, 'Expected Matrix') if
       r_value.class.to_s != 'Matrix'
 
+    interpreter.set_default_args('CON2', nil)
     interpreter.set_default_args('CON', nil)
     interpreter.set_default_args('IDN', nil)
+    interpreter.set_default_args('ZER2', nil)
     interpreter.set_default_args('ZER', nil)
 
     r_dims = r_value.dimensions
