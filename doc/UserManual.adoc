@@ -1553,9 +1553,11 @@ Functions may be used in numeric expressions.
 |ARCTAN(y,x) |Computes the arctangent of y and x, providing the answer in radians.
 |ATN(x) |Synonym for ARCTAN(x)
 |ATN(y,x) |Synonym for ARCTAN(y,x)
-|CON(x) |Creates an array containing all ones, with x columns
-|CON(x,y) |Creates a matrix containing all ones, with x rows and y columns.
-|CON or CON() |Creates an array or matrix containins all ones, with dimensions based on the assignment target.
+|CON2(n) |numeric matrix |Creates a matrix containing all ones, with n columns
+|CON(n) |numeric matrix |Synonym for CON2(n)
+|CON2(r,c) |Creates a matrix containing all ones, with r rows and c columns.
+|CON(r,c) |Synonym for CON2(r,c)
+|CON or CON() |numeric matrix |Creates a matrix containing all ones, with dimensions based on the assignment target.
 |COS(x) |Computes the cosine of x, where x is in radians.
 |COT(x) |Computes the cotangent of x, where x is in radians.
 |CSC(x) |Computes the cosecant of x, where x is in radians.
@@ -1578,9 +1580,11 @@ Functions may be used in numeric expressions.
 |SQR(x) |Computes the square root of x. A negative value will cause an error.
 |TAN(x) |Computes the tangent of x, where x is in radians.
 |TRN(m) |Transposes values in a matrix, exchanging rows and columns.
-|ZER(x) |Creates an array containing all zeros, with x columns
-|ZER(x,y) |Creates a matrix containing all zeros, with x rows and y columns.
-|ZER or ZER() |Creates an array or matrix containins all zeros, with dimensions based on the assignment target.
+|ZER2(n) |numeric matrix|Creates a matrix containing all zeros, with n columns
+|ZER(n) |numeric matrix|Synonym for ZER2(n)
+|ZER2(r,c) |Creates a matrix containing all zeros, with r rows and c columns.
+|ZER(r,c) |Synonym for ZER2(r,c)
+|ZER or ZER() |numeric matrix |Creates a matrix containins all zeros, with dimensions based on the assignment target.
 |===========
 
 Matrix function special forms
