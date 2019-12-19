@@ -1,0 +1,96 @@
+10 REM ARRAY FUNCTION ZER
+ Remark:ARRAY FUNCTION ZER
+15 DIM D(3)
+ NumericConstant:3
+ Declaration:D
+20 ARR A = ZER1(5)
+ Variable:A
+ NumericConstant:5
+ FunctionZer1
+ AssignmentOperator:=
+30 ARR B = ZER1(3)
+ Variable:B
+ NumericConstant:3
+ FunctionZer1
+ AssignmentOperator:=
+40 ARR C = ZER1(4)
+ Variable:C
+ NumericConstant:4
+ FunctionZer1
+ AssignmentOperator:=
+45 ARR D = ZER1
+ Variable:D
+ FunctionZer1
+ AssignmentOperator:=
+50 PRINT "ARRAY A"
+ TextConstant:"ARRAY A"
+ CarriageControl:NL
+60 ARR PRINT A
+ Variable:A
+ CarriageControl:NL
+70 PRINT "ARRAY B"
+ TextConstant:"ARRAY B"
+ CarriageControl:NL
+80 ARR PRINT B
+ Variable:B
+ CarriageControl:NL
+90 PRINT "ARRAY C"
+ TextConstant:"ARRAY C"
+ CarriageControl:NL
+100 ARR PRINT C
+ Variable:C
+ CarriageControl:NL
+110 PRINT "ARRAY D"
+ TextConstant:"ARRAY D"
+ CarriageControl:NL
+120 ARR PRINT D
+ Variable:D
+ CarriageControl:NL
+200 OPTION BASE 1
+ NumericConstant:1
+220 ARR A = ZER1(5)
+ Variable:A
+ NumericConstant:5
+ FunctionZer1
+ AssignmentOperator:=
+230 ARR B = ZER1(3)
+ Variable:B
+ NumericConstant:3
+ FunctionZer1
+ AssignmentOperator:=
+240 ARR C = ZER1(4)
+ Variable:C
+ NumericConstant:4
+ FunctionZer1
+ AssignmentOperator:=
+245 ARR D = ZER1()
+ Variable:D
+ FunctionZer1
+ AssignmentOperator:=
+250 PRINT "ARRAY A"
+ TextConstant:"ARRAY A"
+ CarriageControl:NL
+260 ARR PRINT A
+ Variable:A
+ CarriageControl:NL
+270 PRINT "ARRAY B"
+ TextConstant:"ARRAY B"
+ CarriageControl:NL
+280 ARR PRINT B
+ Variable:B
+ CarriageControl:NL
+290 PRINT "ARRAY C"
+ TextConstant:"ARRAY C"
+ CarriageControl:NL
+300 ARR PRINT C
+ Variable:C
+ CarriageControl:NL
+310 PRINT "ARRAY D"
+ TextConstant:"ARRAY D"
+ CarriageControl:NL
+320 ARR PRINT D
+ Variable:D
+ CarriageControl:NL
+999 END
+ 
+

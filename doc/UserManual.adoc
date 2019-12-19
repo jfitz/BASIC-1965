@@ -1554,6 +1554,7 @@ Functions may be used in numeric expressions.
 |ATN(x) |Synonym for ARCTAN(x)
 |ATN(y,x) |Synonym for ARCTAN(y,x)
 |CON2(n) |numeric matrix |Creates a matrix containing all ones, with n columns
+|CON1(n) |numeric array |Creates an array containing all ones, with n values
 |CON(n) |numeric matrix |Synonym for CON2(n)
 |CON2(r,c) |Creates a matrix containing all ones, with r rows and c columns.
 |CON(r,c) |Synonym for CON2(r,c)
@@ -1581,28 +1582,31 @@ Functions may be used in numeric expressions.
 |TAN(x) |Computes the tangent of x, where x is in radians.
 |TRN(m) |Transposes values in a matrix, exchanging rows and columns.
 |ZER2(n) |numeric matrix|Creates a matrix containing all zeros, with n columns
+|ZER1(n) |numeric array |Creates an array containing all zeros, with n values
 |ZER(n) |numeric matrix|Synonym for ZER2(n)
 |ZER2(r,c) |Creates a matrix containing all zeros, with r rows and c columns.
 |ZER(r,c) |Synonym for ZER2(r,c)
-|ZER or ZER() |numeric matrix |Creates a matrix containins all zeros, with dimensions based on the assignment target.
+|ZER or ZER() |numeric matrix |Creates a matrix containing all zeros, with dimensions based on the assignment target.
 |===========
 
-Matrix function special forms
+Array and matrix function special forms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The functions ZER, CON, and IDN have normal forms and special forms.
+The functions CON(), CON1(), CON2(), ZER(), ZER1(), ZER2(), and IDN() have normal forms and special forms.
 You can use the normal form in simple assignments without specifying dimensions of targets:
 
 	200 REM NO DIM STATEMENT FOR A OR B
 	240 MAT A = CON(3,4)
 	250 MAT B = IDN(4,4)
+	260 ARR C = ZER1(7)
 
 The special form allows for parameters to be omitted.
 
 	200 REM DIM STATEMENTS FOR A AND B ARE NECESSARY
-	230 DIM A(3,4), B(4,4)
+	230 DIM A(3,4), B(4,4), C(7)
 	240 MAT A = CON
 	250 MAT B = IDN
+	260 ARR C = ZER1
 
 In this special form, the target variable must already exist and have dimensions specified.
 

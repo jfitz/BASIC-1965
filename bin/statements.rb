@@ -2018,13 +2018,24 @@ class ArrLetStatement < AbstractLetStatement
   end
 
   def execute(interpreter)
+    l_values = @assignment.eval_target(interpreter)
+    l_value = l_values[0]
+    l_dims = interpreter.get_dimensions(l_value.name)
+    
+    interpreter.set_default_args('CON1', l_dims)
+    interpreter.set_default_args('ZER1', l_dims)
+
     r_value = first_value(interpreter)
-    dims = r_value.dimensions
+
+    interpreter.set_default_args('CON1', nil)
+    interpreter.set_default_args('ZER1', nil)
+
+    r_dims = r_value.dimensions
+
     values = r_value.values(interpreter)
 
-    l_values = @assignment.eval_target(interpreter)
     l_values.each do |l_value|
-      interpreter.set_dimensions(l_value, dims)
+      interpreter.set_dimensions(l_value, r_dims)
       interpreter.set_values(l_value.name, values)
     end
   end

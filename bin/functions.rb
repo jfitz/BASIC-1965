@@ -336,6 +336,37 @@ class FunctionArcTan < AbstractScalarFunction
   end
 end
 
+# function CON1
+class FunctionCon1 < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature_0 = []
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(interpreter, stack)
+    if previous_is_array(stack)
+      args = stack.pop
+
+      if match_args_to_signature(args, @signature_0)
+        arg = default_args(interpreter)
+        array = BASICArray.new(arg.clone, {})
+        BASICArray.new(array.dimensions, array.one_values)
+      elsif match_args_to_signature(args, @signature_1)
+        array = BASICArray.new(args.clone, {})
+        BASICArray.new(array.dimensions, array.one_values)
+      else
+        raise(BASICRuntimeError, 'Wrong arguments for function')
+      end
+    else
+      arg = default_args(interpreter)
+      array = BASICArray.new(arg.clone, {})
+      BASICArray.new(array.dimensions, array.one_values)
+    end
+  end
+end
+
 # function CON, CON2
 class FunctionCon2 < AbstractScalarFunction
   def initialize(text)
@@ -769,6 +800,37 @@ class FunctionTrn < AbstractMatrixFunction
   end
 end
 
+# function ZER1
+class FunctionZer1 < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature_0 = []
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(interpreter, stack)
+    if previous_is_array(stack)
+      args = stack.pop
+
+      if match_args_to_signature(args, @signature_0)
+        arg = default_args(interpreter)
+        array = BASICArray.new(arg.clone, {})
+        BASICArray.new(array.dimensions, array.zero_values)
+      elsif match_args_to_signature(args, @signature_1)
+        array = BASICArray.new(args.clone, {})
+        BASICArray.new(array.dimensions, array.zero_values)
+      else
+        raise(BASICRuntimeError, 'Wrong arguments for function')
+      end
+    else
+      arg = default_args(interpreter)
+      array = BASICArray.new(arg.clone, {})
+      BASICArray.new(array.dimensions, array.zero_values)
+    end
+  end
+end
+
 # function ZER. ZER2
 class FunctionZer2 < AbstractScalarFunction
   def initialize(text)
@@ -817,6 +879,7 @@ class FunctionFactory
     'ARCTAN' => FunctionArcTan,
     'ATN' => FunctionArcTan,
     'CON' => FunctionCon2,
+    'CON1' => FunctionCon1,
     'CON2' => FunctionCon2,
     'COS' => FunctionCos,
     'COT' => FunctionCot,
@@ -838,6 +901,7 @@ class FunctionFactory
     'TAN' => FunctionTan,
     'TRN' => FunctionTrn,
     'ZER' => FunctionZer2,
+    'ZER1' => FunctionZer1,
     'ZER2' => FunctionZer2
   }
 
