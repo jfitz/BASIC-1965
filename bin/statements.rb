@@ -1523,15 +1523,7 @@ class PrintStatement < AbstractStatement
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        begin
-          add_needed_carriage(items)
-          items << ValueExpression.new(tokens_list, :scalar)
-        rescue BASICExpressionError
-          line_text = tokens_list.map(&:to_s).join
-
-          @errors <<
-            'Syntax error: "' + line_text + '" is not a value or operator'
-        end
+        add_expression(items, tokens_list)
       elsif tokens_list.separator?
         add_needed_value(items, :scalar)
         items << CarriageControl.new(tokens_list.to_s)
@@ -1541,6 +1533,20 @@ class PrintStatement < AbstractStatement
     add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :scalar)
     items
+  end
+
+  def add_expression(items, tokens)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      add_needed_carriage(items)
+      items << ValueExpression.new(tokens, :scalar)
+    end
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+
+    @errors <<
+      'Syntax error: "' + line_text + '" is not a value or operator'
   end
 end
 
@@ -1741,15 +1747,7 @@ class WriteStatement < AbstractStatement
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        begin
-          add_needed_carriage(items)
-          items << ValueExpression.new(tokens_list, :scalar)
-        rescue BASICExpressionError
-          line_text = tokens_list.map(&:to_s).join
-
-          @errors <<
-            'Syntax error: "' + line_text + '" is not a value or operator'
-        end
+        add_expression(items, tokens_list)
       elsif tokens_list.separator?
         add_needed_value(items, :scalar)
         items << CarriageControl.new(tokens_list.to_s)
@@ -1759,6 +1757,20 @@ class WriteStatement < AbstractStatement
     add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :scalar)
     items
+  end
+
+  def add_expression(items, tokens)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      add_needed_carriage(items)
+      items << ValueExpression.new(tokens, :scalar)
+    end
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+
+    @errors <<
+      'Syntax error: "' + line_text + '" is not a value or operator'
   end
 end
 
@@ -1814,7 +1826,7 @@ class ArrPrintStatement < AbstractStatement
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        items << ValueExpression.new(tokens_list, :array)
+        add_expression(items, tokens_list)
       elsif tokens_list.separator?
         items << CarriageControl.new(tokens_list)
       end
@@ -1823,6 +1835,14 @@ class ArrPrintStatement < AbstractStatement
     add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :array)
     items
+  end
+
+  def add_expression(items, tokens)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      items << ValueExpression.new(tokens, :array)
+    end
   end
 end
 
@@ -1969,7 +1989,7 @@ class ArrWriteStatement < AbstractStatement
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        items << ValueExpression.new(tokens_list, :array)
+        add_expression(items, tokens_list)
       elsif tokens_list.separator?
         items << CarriageControl.new(tokens_list)
       end
@@ -1978,6 +1998,14 @@ class ArrWriteStatement < AbstractStatement
     add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :array)
     items
+  end
+
+  def add_expression(items, tokens)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      items << ValueExpression.new(tokens, :array)
+    end
   end
 end
 
@@ -2108,7 +2136,7 @@ class MatPrintStatement < AbstractStatement
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        items << ValueExpression.new(tokens_list, :matrix)
+        add_expression(items, tokens_list)
       elsif tokens_list.separator?
         items << CarriageControl.new(tokens_list)
       end
@@ -2117,6 +2145,14 @@ class MatPrintStatement < AbstractStatement
     add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :matrix)
     items
+  end
+
+  def add_expression(items, tokens)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      items << ValueExpression.new(tokens, :matrix)
+    end
   end
 end
 
@@ -2280,7 +2316,7 @@ class MatWriteStatement < AbstractStatement
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        items << ValueExpression.new(tokens_list, :matrix)
+        add_expression(items, tokens_list)
       elsif tokens_list.separator?
         items << CarriageControl.new(tokens_list)
       end
@@ -2289,6 +2325,14 @@ class MatWriteStatement < AbstractStatement
     add_final_carriage(items, CarriageControl.new('NL'))
     add_default_value_carriage(items, :matrix)
     items
+  end
+
+  def add_expression(items, tokens)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      items << ValueExpression.new(tokens, :matrix)
+    end
   end
 end
 
