@@ -619,25 +619,25 @@ module InputFunctions
     [prompt, items]
   end
 
-  def tokens_to_expressions(tokens_lists)
+  def tokens_to_expressions(tokens_lists, shape)
     items = []
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
+        add_expression(items, tokens_list, shape)
       end
     end
 
     items
   end
 
-  def add_expression(items, tokens)
+  def add_expression(items, tokens, shape)
     if tokens[0].operator? && tokens[0].pound?
       items << ValueExpression.new(tokens, :scalar)
     elsif tokens[0].text_constant?
       items << ValueExpression.new(tokens, :scalar)
     else
-      items << TargetExpression.new(tokens, :scalar)
+      items << TargetExpression.new(tokens, shape)
     end
   rescue BASICExpressionError
     line_text = tokens.map(&:to_s).join
@@ -653,6 +653,100 @@ module InputFunctions
     end
 
     results
+  end
+end
+
+# common functions for PRINT statements
+module PrintFunctions
+  def tokens_to_expressions(tokens_lists, shape)
+    items = []
+
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'Array'
+        add_expression(items, tokens_list, shape)
+      elsif tokens_list.separator?
+        add_needed_value(items, shape)
+        items << CarriageControl.new(tokens_list.to_s)
+      end
+    end
+
+    add_final_carriage(items, CarriageControl.new('NL'))
+    add_default_value_carriage(items, shape)
+    items
+  end
+
+  def add_expression(items, tokens, shape)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      add_needed_carriage(items)
+      items << ValueExpression.new(tokens, shape)
+    end
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+
+    @errors <<
+      'Syntax error: "' + line_text + '" is not a value or operator'
+  end
+end
+
+# common functions for READ statements
+module ReadFunctions
+  def tokens_to_expressions(tokens_lists, shape)
+    items = []
+
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'Array'
+        add_expression(items, tokens_list, shape)
+      end
+    end
+
+    items
+  end
+
+  def add_expression(items, tokens, shape)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      items << TargetExpression.new(tokens, shape)
+    end
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
+  end
+end
+
+# common functions for WRITE statements
+module WriteFunctions
+  def tokens_to_expressions(tokens_lists, shape)
+    items = []
+
+    tokens_lists.each do |tokens_list|
+      if tokens_list.class.to_s == 'Array'
+        add_expression(items, tokens_list, shape)
+      elsif tokens_list.separator?
+        add_needed_value(items, shape)
+        items << CarriageControl.new(tokens_list.to_s)
+      end
+    end
+
+    add_final_carriage(items, CarriageControl.new('NL'))
+    add_default_value_carriage(items, shape)
+    items
+  end
+
+  def add_expression(items, tokens, shape)
+    if tokens[0].operator? && tokens[0].pound?
+      items << ValueExpression.new(tokens, :scalar)
+    else
+      add_needed_carriage(items)
+      items << ValueExpression.new(tokens, shape)
+    end
+  rescue BASICExpressionError
+    line_text = tokens.map(&:to_s).join
+
+    @errors <<
+      'Syntax error: "' + line_text + '" is not a value or operator'
   end
 end
 
@@ -1205,7 +1299,7 @@ class InputStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      items = tokens_to_expressions(items)
+      items = tokens_to_expressions(items, :scalar)
       @file_tokens, items = extract_file_handle(items)
       @prompt, @items = extract_prompt(items)
       @elements = make_references(@items, @file_tokens, @prompt)
@@ -1477,6 +1571,7 @@ class PrintStatement < AbstractStatement
   end
 
   include FileFunctions
+  include PrintFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -1485,10 +1580,10 @@ class PrintStatement < AbstractStatement
     template2 = [[1, '>=']]
 
     if check_template(tokens_lists, template1)
-      @items = tokens_to_expressions([])
+      @items = tokens_to_expressions([], :scalar)
     elsif check_template(tokens_lists, template2)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      items = tokens_to_expressions(tokens_lists)
+      items = tokens_to_expressions(tokens_lists, :scalar)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
     else
@@ -1515,39 +1610,6 @@ class PrintStatement < AbstractStatement
       i += 1
     end
   end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      elsif tokens_list.separator?
-        add_needed_value(items, :scalar)
-        items << CarriageControl.new(tokens_list.to_s)
-      end
-    end
-
-    add_final_carriage(items, CarriageControl.new('NL'))
-    add_default_value_carriage(items, :scalar)
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      add_needed_carriage(items)
-      items << ValueExpression.new(tokens, :scalar)
-    end
-  rescue BASICExpressionError
-    line_text = tokens.map(&:to_s).join
-
-    @errors <<
-      'Syntax error: "' + line_text + '" is not a value or operator'
-  end
 end
 
 # READ
@@ -1559,6 +1621,7 @@ class ReadStatement < AbstractStatement
   end
 
   include FileFunctions
+  include ReadFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -1566,7 +1629,7 @@ class ReadStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      items = tokens_to_expressions(items)
+      items = tokens_to_expressions(items, :scalar)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
       @mccabe = @items.size
@@ -1588,31 +1651,6 @@ class ReadStatement < AbstractStatement
     end
 
     interpreter.clear_previous_lines
-  end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      end
-    end
-
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << TargetExpression.new(tokens, :scalar)
-    end
-  rescue BASICExpressionError
-    line_text = tokens.map(&:to_s).join
-    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
   end
 end
 
@@ -1704,6 +1742,7 @@ class WriteStatement < AbstractStatement
   end
 
   include FileFunctions
+  include WriteFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -1712,7 +1751,7 @@ class WriteStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      items = tokens_to_expressions(tokens_lists)
+      items = tokens_to_expressions(tokens_lists, :scalar)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
     else
@@ -1739,39 +1778,6 @@ class WriteStatement < AbstractStatement
       i += 1
     end
   end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      elsif tokens_list.separator?
-        add_needed_value(items, :scalar)
-        items << CarriageControl.new(tokens_list.to_s)
-      end
-    end
-
-    add_final_carriage(items, CarriageControl.new('NL'))
-    add_default_value_carriage(items, :scalar)
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      add_needed_carriage(items)
-      items << ValueExpression.new(tokens, :scalar)
-    end
-  rescue BASICExpressionError
-    line_text = tokens.map(&:to_s).join
-
-    @errors <<
-      'Syntax error: "' + line_text + '" is not a value or operator'
-  end
 end
 
 # ARR PRINT
@@ -1783,6 +1789,7 @@ class ArrPrintStatement < AbstractStatement
   end
 
   include FileFunctions
+  include PrintFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -1791,7 +1798,7 @@ class ArrPrintStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      items = tokens_to_expressions(tokens_lists)
+      items = tokens_to_expressions(tokens_lists, :array)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
     else
@@ -1818,32 +1825,6 @@ class ArrPrintStatement < AbstractStatement
       i += 1
     end
   end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      elsif tokens_list.separator?
-        items << CarriageControl.new(tokens_list)
-      end
-    end
-
-    add_final_carriage(items, CarriageControl.new('NL'))
-    add_default_value_carriage(items, :array)
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << ValueExpression.new(tokens, :array)
-    end
-  end
 end
 
 # ARR READ
@@ -1855,6 +1836,7 @@ class ArrReadStatement < AbstractStatement
   end
 
   include FileFunctions
+  include ReadFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -1863,7 +1845,7 @@ class ArrReadStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      items = tokens_to_expressions(items)
+      items = tokens_to_expressions(items, :array)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
       @mccabe = @items.size
@@ -1889,29 +1871,6 @@ class ArrReadStatement < AbstractStatement
   end
 
   private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      end
-    end
-
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << TargetExpression.new(tokens, :array)
-    end
-  rescue BASICExpressionError
-    line_text = tokens.map(&:to_s).join
-    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
-  end
 
   def read_values(name, interpreter, ds)
     dims = interpreter.get_dimensions(name)
@@ -1946,6 +1905,7 @@ class ArrWriteStatement < AbstractStatement
   end
 
   include FileFunctions
+  include WriteFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -1954,7 +1914,7 @@ class ArrWriteStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      items = tokens_to_expressions(tokens_lists)
+      items = tokens_to_expressions(tokens_lists, :array)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
     else
@@ -1979,32 +1939,6 @@ class ArrWriteStatement < AbstractStatement
       end
 
       i += 1
-    end
-  end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      elsif tokens_list.separator?
-        items << CarriageControl.new(tokens_list)
-      end
-    end
-
-    add_final_carriage(items, CarriageControl.new('NL'))
-    add_default_value_carriage(items, :array)
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << ValueExpression.new(tokens, :array)
     end
   end
 end
@@ -2096,6 +2030,7 @@ class MatPrintStatement < AbstractStatement
   end
 
   include FileFunctions
+  include PrintFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -2104,7 +2039,7 @@ class MatPrintStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      items = tokens_to_expressions(tokens_lists)
+      items = tokens_to_expressions(tokens_lists, :matrix)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
     else
@@ -2128,32 +2063,6 @@ class MatPrintStatement < AbstractStatement
       i += 1
     end
   end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      elsif tokens_list.separator?
-        items << CarriageControl.new(tokens_list)
-      end
-    end
-
-    add_final_carriage(items, CarriageControl.new('NL'))
-    add_default_value_carriage(items, :matrix)
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << ValueExpression.new(tokens, :matrix)
-    end
-  end
 end
 
 # MAT READ
@@ -2165,6 +2074,7 @@ class MatReadStatement < AbstractStatement
   end
 
   include FileFunctions
+  include ReadFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -2173,7 +2083,7 @@ class MatReadStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      items = tokens_to_expressions(items)
+      items = tokens_to_expressions(items, :matrix)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
       @mccabe = @items.size
@@ -2199,29 +2109,6 @@ class MatReadStatement < AbstractStatement
   end
 
   private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      end
-    end
-
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << TargetExpression.new(tokens, :matrix)
-    end
-  rescue BASICExpressionError
-    line_text = tokens.map(&:to_s).join
-    @errors << 'Syntax error: "' + line_text + '" is not a value or operator'
-  end
 
   def read_values(name, interpreter, ds)
     dims = interpreter.get_dimensions(name)
@@ -2274,6 +2161,7 @@ class MatWriteStatement < AbstractStatement
   end
 
   include FileFunctions
+  include WriteFunctions
 
   def initialize(keywords, tokens_lists)
     super
@@ -2282,7 +2170,7 @@ class MatWriteStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      items = tokens_to_expressions(tokens_lists)
+      items = tokens_to_expressions(tokens_lists, :matrix)
       @file_tokens, @items = extract_file_handle(items)
       @elements = make_references(@items, @file_tokens)
     else
@@ -2306,32 +2194,6 @@ class MatWriteStatement < AbstractStatement
       end
 
       i += 1
-    end
-  end
-
-  private
-
-  def tokens_to_expressions(tokens_lists)
-    items = []
-
-    tokens_lists.each do |tokens_list|
-      if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list)
-      elsif tokens_list.separator?
-        items << CarriageControl.new(tokens_list)
-      end
-    end
-
-    add_final_carriage(items, CarriageControl.new('NL'))
-    add_default_value_carriage(items, :matrix)
-    items
-  end
-
-  def add_expression(items, tokens)
-    if tokens[0].operator? && tokens[0].pound?
-      items << ValueExpression.new(tokens, :scalar)
-    else
-      items << ValueExpression.new(tokens, :matrix)
     end
   end
 end
