@@ -58,6 +58,7 @@ class StatementFactory
 
   def statement_classes
     [
+      ArrInputStatement,
       ArrPrintStatement,
       ArrReadStatement,
       ArrWriteStatement,
@@ -73,6 +74,7 @@ class StatementFactory
       IfStatement,
       InputStatement,
       LetStatement,
+      MatInputStatement,
       MatPrintStatement,
       MatReadStatement,
       MatWriteStatement,
@@ -653,6 +655,28 @@ module InputFunctions
     end
 
     results
+  end
+
+  def input_values(fhr, interpreter, prompt, count)
+    values = []
+
+    while values.size < count
+      remaining = count - values.size
+      fhr.prompt(prompt, remaining)
+      values += fhr.input(interpreter)
+
+      prompt = nil
+    end
+
+    values
+  end
+
+  def file_values(fhr, interpreter)
+    values = []
+
+    values += fhr.input(interpreter)
+
+    values
   end
 end
 
@@ -1320,62 +1344,39 @@ class InputStatement < AbstractStatement
       prompt = prompts[0]
     end
 
+    # create list of variables with subscripts
+    item_names = []
+
+    @items.each do |item|
+      targets = item.evaluate(interpreter)
+      targets.each do |target|
+        item_names << target
+      end
+    end
+
+    # get all of the needed values
     if fh.nil?
-      values = input_values(fhr, interpreter, prompt, @items.size)
+      # from console
+      values = input_values(fhr, interpreter, prompt, item_names.size)
       fhr.implied_newline
     else
+      # from file
       values = file_values(fhr, interpreter)
     end
 
     raise(BASICRuntimeError, 'Not enough values') if
-      values.size < @items.size
+      values.size < item_names.size
 
     name_value_pairs =
-      zip(@items, values[0..@items.length])
+      zip(item_names, values[0..item_names.length])
 
     name_value_pairs.each do |hash|
-      variables = hash['name'].evaluate(interpreter)
-      variable = variables[0]
+      variable = hash['name']
       value = hash['value']
       interpreter.set_value(variable, value)
     end
 
     interpreter.clear_previous_lines
-  end
-
-  private
-
-  def first_token(items)
-    items[0][0]
-  end
-
-  def first_value(items, interpreter)
-    first_list = items[0]
-    expr = ValueExpression.new(first_list, :scalar)
-    values = expr.evaluate(interpreter)
-    values[0]
-  end
-
-  def input_values(fhr, interpreter, prompt, count)
-    values = []
-
-    while values.size < count
-      remaining = count - values.size
-      fhr.prompt(prompt, remaining)
-      values += fhr.input(interpreter)
-
-      prompt = nil
-    end
-
-    values
-  end
-
-  def file_values(fhr, interpreter)
-    values = []
-
-    values += fhr.input(interpreter)
-
-    values
   end
 end
 
@@ -1780,6 +1781,97 @@ class WriteStatement < AbstractStatement
   end
 end
 
+# ARR INPUT
+class ArrInputStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('ARR'), KeywordToken.new('INPUT')]
+    ]
+  end
+
+  include FileFunctions
+  include InputFunctions
+
+  def initialize(keywords, tokens_lists)
+    super
+    
+    template = [[1, '>=']]
+
+    if check_template(tokens_lists, template)
+      tokens_lists = split_tokens(tokens_lists[0], true)
+      items = tokens_to_expressions(tokens_lists, :array)
+      @file_tokens, items = extract_file_handle(items)
+      @prompt, @items = extract_prompt(items)
+      @elements = make_references(@items, @file_tokens, @prompt)
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def execute(interpreter)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :read)
+
+    prompt = nil
+
+    unless @prompt.nil?
+      prompts = @prompt.evaluate(interpreter)
+      prompt = prompts[0]
+    end
+
+    # compute size based on variable dimensions
+    # create list of variables with subscripts
+    item_names = []
+
+    @items.each do |item|
+      targets = item.evaluate(interpreter)
+      targets.each do |target|
+        name = target.name
+
+        interpreter.set_dimensions(target, target.dimensions) if
+          target.dimensions?
+        
+        # make sure dimension is one
+        dims = interpreter.get_dimensions(name)
+        raise(BASICExpressionError, 'Not an array') unless dims.size == 1
+
+        # build names
+        base = interpreter.base
+        (base..dims[0].to_i).each do |col|
+          coord = make_coord(col)
+          variable = Variable.new(name, :array, coord)
+          item_names << variable
+        end
+      end
+    end
+
+    # get all of the needed values
+    if fh.nil?
+      # from console
+      values = input_values(fhr, interpreter, prompt, item_names.size)
+      fhr.implied_newline
+    else
+      # from file
+      values = file_values(fhr, interpreter)
+    end
+
+    raise(BASICRuntimeError, 'Not enough values') if
+      values.size < item_names.size
+
+    # use names based on variable dimensions
+    name_value_pairs =
+      zip(item_names, values[0..item_names.length])
+
+    name_value_pairs.each do |hash|
+      variable = hash['name']
+      value = hash['value']
+      interpreter.set_value(variable, value)
+    end
+
+    interpreter.clear_previous_lines
+  end
+end
+
 # ARR PRINT
 class ArrPrintStatement < AbstractStatement
   def self.lead_keywords
@@ -2018,6 +2110,111 @@ class ArrLetStatement < AbstractLetStatement
       r_value.class.to_s != 'BASICArray'
 
     r_value
+  end
+end
+
+# MAT INPUT
+class MatInputStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('MAT'), KeywordToken.new('INPUT')]
+    ]
+  end
+
+  include FileFunctions
+  include InputFunctions
+
+  def initialize(keywords, tokens_lists)
+    super
+    
+    template = [[1, '>=']]
+
+    if check_template(tokens_lists, template)
+      tokens_lists = split_tokens(tokens_lists[0], true)
+      items = tokens_to_expressions(tokens_lists, :array)
+      @file_tokens, items = extract_file_handle(items)
+      @prompt, @items = extract_prompt(items)
+      @elements = make_references(@items, @file_tokens, @prompt)
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def execute(interpreter)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :read)
+
+    prompt = nil
+
+    unless @prompt.nil?
+      prompts = @prompt.evaluate(interpreter)
+      prompt = prompts[0]
+    end
+
+    # compute size based on variable dimensions
+    # create list of variables with subscripts
+    item_names = []
+
+    @items.each do |item|
+      targets = item.evaluate(interpreter)
+      targets.each do |target|
+        name = target.name
+
+        interpreter.set_dimensions(target, target.dimensions) if
+          target.dimensions?
+        
+        # make sure dimension is one or two
+        dims = interpreter.get_dimensions(name)
+        raise(BASICExpressionError, 'Not an array') unless
+          dims.size == 1 || dims.size == 2
+
+        # build names
+        if dims.size == 1
+          base = interpreter.base
+          (base..dims[0].to_i).each do |col|
+            coord = make_coord(col)
+            variable = Variable.new(name, :matrix, coord)
+            item_names << variable
+          end
+        end
+        
+        if dims.size == 2
+          base = interpreter.base
+          (base..dims[0].to_i).each do |row|
+            (base..dims[1].to_i).each do |col|
+              coords = make_coords(row, col)
+              variable = Variable.new(name, :matrix, coords)
+              item_names << variable
+            end
+          end
+        end
+      end
+    end
+
+    # get all of the needed values
+    if fh.nil?
+      # from console
+      values = input_values(fhr, interpreter, prompt, item_names.size)
+      fhr.implied_newline
+    else
+      # from file
+      values = file_values(fhr, interpreter)
+    end
+
+    raise(BASICRuntimeError, 'Not enough values') if
+      values.size < item_names.size
+
+    # use names based on variable dimensions
+    name_value_pairs =
+      zip(item_names, values[0..item_names.length])
+
+    name_value_pairs.each do |hash|
+      variable = hash['name']
+      value = hash['value']
+      interpreter.set_value(variable, value)
+    end
+
+    interpreter.clear_previous_lines
   end
 end
 

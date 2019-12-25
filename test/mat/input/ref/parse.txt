@@ -1,0 +1,19 @@
+10 REM MATRIX ASSIGNMENT
+ Remark:MATRIX ASSIGNMENT
+20 OPTION BASE 0
+ NumericConstant:0
+30 DIM A(6,2)
+ NumericConstant:6
+ NumericConstant:2
+ Declaration:A
+100 MAT INPUT A
+ Variable:A
+150 PRINT "MATRIX A"
+ TextConstant:"MATRIX A"
+ CarriageControl:NL
+160 MAT PRINT A
+ Variable:A
+ CarriageControl:NL
+999 END
+ 
+

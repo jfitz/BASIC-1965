@@ -836,6 +836,11 @@ Examples:
 INPUT
 ~~~~~
 
+Loads variables with values from the user or from files.
+
+Inputting from the console
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Prompts the user and allows the user to enter a numeric value.
 Non-numeric values are invalid and cause execution to stop.
 
@@ -853,6 +858,21 @@ This prompt can be changed to any text value by specifying a text value as the f
 When multiple values are specified, they may be entered on one line with commas as separators.
 If an insufficient number of values is entered, BASIC will prompt for more data.
 These prompts are always the question mark, not the specified prompt.
+
+Inputting from files
+~~~~~~~~~~~~~~~~~~~~
+
+Syntax: INPUT #filenum; [prompt,] variable list
+
+Examples:
+
+	60 INPUT #1; U
+	65 INPUT #3; V1, V2, V3
+	70 INPUT #2; "Enter values: ", A, B
+
+An INPUT statement reads all values from a line of the input file.
+Extra values are discarded.
+If the line contains an insufficient number of values to fill all variables, BASIC reports an error.
 
 LET
 ~~~
@@ -1168,6 +1188,47 @@ ARR statements
 The ARR statements operate on one-dimensional arrays.
 Operations begin with the index specified in OPTION BASE.
 
+ARR INPUT
+~~~~~~~~~
+
+Loads array variables with values from the user or from files.
+
+Inputting from the console
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Prompts the user and allows the user to enter a numeric value.
+Non-numeric values are invalid and cause execution to stop.
+
+Syntax:	ARR INPUT [prompt,] variable list
+
+Examples:
+
+	60 ARR INPUT U
+	65 ARR INPUT V1, V2, V3
+	70 ARR INPUT "Enter values: ", A, B
+
+The default prompt is a single question mark (?) character.
+This prompt can be changed to any text value by specifying a text value as the first parameter.
+(This value must be a text constant.)
+When multiple values are specified, they may be entered on one line with commas as separators.
+If an insufficient number of values is entered, BASIC will prompt for more data.
+These prompts are always the question mark, not the specified prompt.
+
+Inputting from files
+~~~~~~~~~~~~~~~~~~~~
+
+Syntax: ARR INPUT #filenum; [prompt,] variable list
+
+Examples:
+
+	60 ARR INPUT #1; U
+	65 ARR INPUT #3; V1, V2, V3
+	70 ARR INPUT #2; "Enter values: ", A, B
+
+An INPUT statement reads all values from a line of the input file.
+Extra values are discarded.
+If the line contains an insufficient number of values to fill all variables, BASIC reports an error.
+
 ARR PRINT
 ~~~~~~~~~
 
@@ -1341,6 +1402,47 @@ MAT statements
 The MAT statements operate on matricies, which are either one- or two-dimensional arrays.
 Operations begin with the index specified in OPTION BASE.
 
+MAT INPUT
+~~~~~~~~~
+
+Loads matrix variables with values from the user or from files.
+
+Inputting from the console
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Prompts the user and allows the user to enter a numeric value.
+Non-numeric values are invalid and cause execution to stop.
+
+Syntax:	MAT INPUT [prompt,] variable list
+
+Examples:
+
+	60 MAT INPUT U
+	65 MAT INPUT V1, V2, V3
+	70 MAT INPUT "Enter values: ", A, B
+
+The default prompt is a single question mark (?) character.
+This prompt can be changed to any text value by specifying a text value as the first parameter.
+(This value must be a text constant.)
+When multiple values are specified, they may be entered on one line with commas as separators.
+If an insufficient number of values is entered, BASIC will prompt for more data.
+These prompts are always the question mark, not the specified prompt.
+
+Inputting from files
+~~~~~~~~~~~~~~~~~~~~
+
+Syntax: MAT INPUT #filenum; [prompt,] variable list
+
+Examples:
+
+	60 MAT INPUT #1; U
+	65 MAT INPUT #3; V1, V2, V3
+	70 MAT INPUT #2; "Enter values: ", A, B
+
+An INPUT statement reads all values from a line of the input file.
+Extra values are discarded.
+If the line contains an insufficient number of values to fill all variables, BASIC reports an error.
+
 MAT PRINT
 ~~~~~~~~~
 
@@ -1363,10 +1465,6 @@ The values must be defined with DIM statements prior to printing.
 For one-dimensional arrays, the values are printed sequentially with as many values as will fit on a line.
 
 For two-dimensional matrices, values for each row in the matrix are printed on a line and a new line is used for each row.
-
-For arrays and matrixes, the zero-index items are not printed.
-An array DIM(4) will print elements 1 through 4; a matrix DIM(3,5) will print three rows of elements 1 through 5.
-
 The FIELD_SEP option specifies the spacing between values.
 The FIELD_SEP SEMI option results in narrow columns, the FIELD_SEP COMMA option (the default) results in wide columns.
 

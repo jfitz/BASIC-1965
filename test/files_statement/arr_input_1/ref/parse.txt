@@ -1,0 +1,19 @@
+10 REM This is a test
+ Remark:This is a test
+15 DIM A(3)
+ NumericConstant:3
+ Declaration:A
+20 FILES "input.txt"
+ TextConstant:"input.txt"
+30 ARR INPUT #1;A
+ NumericConstant:1
+ UnaryOperator:#
+ Variable:A
+40 ARR PRINT A
+ Variable:A
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
+

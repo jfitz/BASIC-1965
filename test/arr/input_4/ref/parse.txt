@@ -1,0 +1,27 @@
+10 REM ARRAY ASSIGNMENT
+ Remark:ARRAY ASSIGNMENT
+15 OPTION BASE 1
+ NumericConstant:1
+20 DIM A(6)
+ NumericConstant:6
+ Declaration:A
+100 ARR INPUT A
+ Variable:A
+150 PRINT "ARRAY A"
+ TextConstant:"ARRAY A"
+ CarriageControl:NL
+160 ARR PRINT A
+ Variable:A
+ CarriageControl:NL
+200 ARR INPUT B(6)
+ NumericConstant:6
+ Variable:B
+250 PRINT "ARRAY B"
+ TextConstant:"ARRAY B"
+ CarriageControl:NL
+260 ARR PRINT B
+ Variable:B
+ CarriageControl:NL
+999 END
+ 
+
