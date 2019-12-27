@@ -157,21 +157,16 @@ class UserFunction < AbstractScalarFunction
     numerics = %i[numeric integer]
     strings = %i[string]
 
-    compatible = false
-
-    if content_type == :numeric
-      compatible = numerics.include?(value.content_type)
+    case content_type
+    when :numeric
+      numerics.include?(value.content_type)
+    when :string
+      strings.include?(value.content_type)
+    when :integer
+      numerics.include?(value.content_type)
+    else
+      false
     end
-
-    if content_type == :string
-      compatible = strings.include?(value.content_type)
-    end
-
-    if content_type == :integer
-      compatible = numerics.include?(value.content_type)
-    end
-
-    compatible
   end
 
   # return a single value

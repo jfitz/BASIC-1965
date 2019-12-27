@@ -444,7 +444,7 @@ class Program
 
     # Halstead definitions
     # number of operators
-    n1 = num_distinct_operators + num_distinct_functions = num_distinct_separators
+    n1 = num_distinct_operators + num_distinct_functions + num_distinct_separators
     n2 = num_distinct_constants + num_distinct_variables + num_distinct_linenums
     nn1 = num_operators + num_functions + num_separators
     nn2 = num_constants + num_variables + num_linenums
@@ -461,9 +461,18 @@ class Program
     language_level = volume / difficulty**2 if difficulty > 0
     intelligence = 0
     intelligence = volume / difficulty if difficulty > 0
-    time = effort / (60 * 18)  # 18 is the Stoud number for programming
+    time = effort / (60 * 18) # 18 is the Stoud number for programming
 
-    [length, vocabulary, volume, difficulty, effort, language_level, intelligence, time]    
+    [
+      length,
+      vocabulary,
+      volume,
+      difficulty,
+      effort,
+      language_level,
+      intelligence,
+      time
+    ]
   end
 
   def unreachable_code
@@ -498,14 +507,14 @@ class Program
 
       @lines.keys.each do |line_number|
         # only reachable lines can reach other lines
-        if reachable[line_number]
-          # a live line updates its gotos to live
-          statement_gotos = gotos[line_number]
-          statement_gotos.each do |goto_number|
-            if !reachable[goto_number]
-              reachable[goto_number] = true
-              any_changes = true
-            end
+        next unless reachable[line_number]
+
+        # a reachable line updates its targets to 'reachable'
+        statement_gotos = gotos[line_number]
+        statement_gotos.each do |goto_number|
+          unless reachable[goto_number]
+            reachable[goto_number] = true
+            any_changes = true
           end
         end
       end

@@ -195,7 +195,14 @@ class AbstractStatement
     @errors = []
     @valid = true
     @comment = false
-    @elements = {numerics: [], strings: [], variables: [], operators: [], functions: [], userfuncs: []}
+    @elements = {
+      numerics: [],
+      strings: [],
+      variables: [],
+      operators: [],
+      functions: [],
+      userfuncs: []
+    }
     @linenums = []
     @autonext = true
     @mccabe = 0
@@ -431,7 +438,14 @@ class AbstractStatement
       items.each { |item| userfuncs += item.userfuncs }
     end
 
-    {numerics: numerics, strings: strings, variables: variables, operators: operators, functions: functions, userfuncs: userfuncs}
+    {
+      numerics: numerics,
+      strings: strings,
+      variables: variables,
+      operators: operators,
+      functions: functions,
+      userfuncs: userfuncs
+    }
   end
 end
 
@@ -553,38 +567,31 @@ module FileFunctions
   end
 
   def add_needed_value(items, shape)
-    if items.empty? || !items[-1].printable?
-      items << ValueExpression.new([], shape)
-    end
+    items << ValueExpression.new([], shape) if
+      items.empty? || !items[-1].printable?
   end
 
   def add_needed_carriage(items)
-    if !items.empty? && items[-1].printable?
-      items << CarriageControl.new('')
-    end
+    items << CarriageControl.new('') if !items.empty? && items[-1].printable?
   end
 
   def add_final_carriage(items, final)
-    if !items.empty? && items[-1].printable?
-      items << final
-    end
+    items << final if !items.empty? && items[-1].printable?
   end
 
   def add_default_value_carriage(items, shape)
-    if items.empty?
-      add_needed_value(items, shape)
-      add_final_carriage(items, CarriageControl.new('NL'))
-    end
+    return unless items.empty?
+
+    add_needed_value(items, shape)
+    add_final_carriage(items, CarriageControl.new('NL'))
   end
 
   def dump
     lines = []
 
-    unless @file_tokens.nil?
-      lines += @file_tokens.dump
-    end
-
+    lines += @file_tokens.dump unless @file_tokens.nil?
     @items.each { |item| lines += item.dump } unless @items.nil?
+
     lines
   end
 end
@@ -1513,7 +1520,7 @@ class OptionStatement < AbstractStatement
   end
 
   def self.extra_keywords
-    %w(
+    %w[
       BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
       ECHO FIELD_SEP
       IGNORE_RND_ARG IMPLIED_SEMICOLON
@@ -1521,7 +1528,7 @@ class OptionStatement < AbstractStatement
       PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
       QMARK_AFTER_PROMPT REQUIRE_INITIALIZED SEMICOLON_ZONE_WIDTH
       TRACE ZONE_WIDTH
-    )
+    ]
   end
 
   def initialize(keywords, tokens_lists)
@@ -1784,7 +1791,7 @@ class ArrInputStatement < AbstractStatement
 
   def initialize(keywords, tokens_lists)
     super
-    
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1820,7 +1827,7 @@ class ArrInputStatement < AbstractStatement
 
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
-        
+
         # make sure dimension is one
         dims = interpreter.get_dimensions(name)
         raise(BASICExpressionError, 'Not an array') unless dims.size == 1
@@ -1875,7 +1882,7 @@ class ArrPrintStatement < AbstractStatement
 
   def initialize(keywords, tokens_lists)
     super
-    
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2065,7 +2072,7 @@ class ArrLetStatement < AbstractLetStatement
     l_values = @assignment.eval_target(interpreter)
     l_value = l_values[0]
     l_dims = interpreter.get_dimensions(l_value.name)
-    
+
     interpreter.set_default_args('CON1', l_dims)
     interpreter.set_default_args('ZER1', l_dims)
 
@@ -2116,7 +2123,7 @@ class MatInputStatement < AbstractStatement
 
   def initialize(keywords, tokens_lists)
     super
-    
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -2152,7 +2159,7 @@ class MatInputStatement < AbstractStatement
 
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
-        
+
         # make sure dimension is one or two
         dims = interpreter.get_dimensions(name)
         raise(BASICExpressionError, 'Not an array') unless
@@ -2167,7 +2174,7 @@ class MatInputStatement < AbstractStatement
             item_names << variable
           end
         end
-        
+
         if dims.size == 2
           base = interpreter.base
           (base..dims[0].to_i).each do |row|

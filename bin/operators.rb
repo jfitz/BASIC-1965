@@ -1,7 +1,7 @@
 # Unary scalar operators
 class UnaryOperator < AbstractElement
   def self.accept?(token)
-    classes = %w(OperatorToken)
+    classes = %w[OperatorToken]
     classes.include?(token.class.to_s)
   end
 
@@ -68,9 +68,10 @@ class UnaryOperator < AbstractElement
   def pound?
     @op == '#'
   end
-  
+
   def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+
     x = stack.pop
     if x.matrix?
       case @op
@@ -114,6 +115,7 @@ class UnaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = posate(value)
     end
+
     values
   end
 
@@ -127,6 +129,7 @@ class UnaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = posate(value)
     end
+
     values
   end
 
@@ -143,6 +146,7 @@ class UnaryOperator < AbstractElement
         values[coords] = posate(value)
       end
     end
+
     values
   end
 
@@ -156,6 +160,7 @@ class UnaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = negate(value)
     end
+
     values
   end
 
@@ -169,6 +174,7 @@ class UnaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = negate(value)
     end
+
     values
   end
 
@@ -185,6 +191,7 @@ class UnaryOperator < AbstractElement
         values[coords] = negate(value)
       end
     end
+
     values
   end
 
@@ -212,6 +219,7 @@ class UnaryOperator < AbstractElement
   def negate_array(a)
     dims = a.dimensions
     values = negate_a(a)
+
     BASICArray.new(dims, values)
   end
 
@@ -219,6 +227,7 @@ class UnaryOperator < AbstractElement
     dims = a.dimensions
     values = posate_1(a) if dims.size == 1
     values = posate_2(a) if dims.size == 2
+
     Matrix.new(dims, values)
   end
 
@@ -226,6 +235,7 @@ class UnaryOperator < AbstractElement
     dims = a.dimensions
     values = negate_1(a) if dims.size == 1
     values = negate_2(a) if dims.size == 2
+
     Matrix.new(dims, values)
   end
 end
@@ -233,7 +243,8 @@ end
 # Binary scalar operators
 class BinaryOperator < AbstractElement
   def self.accept?(token)
-    classes = %w(OperatorToken)
+    classes = %w[OperatorToken]
+
     classes.include?(token.class.to_s)
   end
 
@@ -313,11 +324,11 @@ class BinaryOperator < AbstractElement
   def binary?
     true
   end
-  
+
   def pound?
     @op == '#'
   end
-  
+
   def evaluate(interpreter, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
@@ -480,6 +491,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = a.send(op, b_value)
     end
+
     values
   end
 
@@ -497,6 +509,7 @@ class BinaryOperator < AbstractElement
         values[coords] = a.send(op, b_value)
       end
     end
+
     values
   end
 
@@ -504,6 +517,7 @@ class BinaryOperator < AbstractElement
     dims = b.dimensions
     values = op_scalar_matrix_1(op, a, b) if dims.size == 1
     values = op_scalar_matrix_2(op, a, b) if dims.size == 2
+
     Matrix.new(dims, values)
   end
 
@@ -518,6 +532,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = a_value.send(op, b)
     end
+
     values
   end
 
@@ -535,6 +550,7 @@ class BinaryOperator < AbstractElement
         values[coords] = a_value.send(op, b)
       end
     end
+
     values
   end
 
@@ -542,6 +558,7 @@ class BinaryOperator < AbstractElement
     dims = a.dimensions
     values = op_matrix_scalar_1(op, a, b) if dims.size == 1
     values = op_matrix_scalar_2(op, a, b) if dims.size == 2
+
     Matrix.new(dims, values)
   end
 
@@ -557,6 +574,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = a_value.send(:add, b_value)
     end
+
     values
   end
 
@@ -575,6 +593,7 @@ class BinaryOperator < AbstractElement
         values[coords] = a_value.send(:add, b_value)
       end
     end
+
     values
   end
 
@@ -582,9 +601,13 @@ class BinaryOperator < AbstractElement
     # verify dimensions match
     a_dims = a.dimensions
     b_dims = b.dimensions
-    raise(BASICExpressionError, 'Matrix dimensions do not match') if a_dims != b_dims
+
+    raise(BASICExpressionError, 'Matrix dimensions do not match') if
+      a_dims != b_dims
+
     values = add_matrix_matrix_1(a, b) if a_dims.size == 1
     values = add_matrix_matrix_2(a, b) if a_dims.size == 2
+
     Matrix.new(a_dims, values)
   end
 
@@ -600,6 +623,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = a_value.send(:subtract, b_value)
     end
+
     values
   end
 
@@ -618,6 +642,7 @@ class BinaryOperator < AbstractElement
         values[coords] = a_value.send(:subtract, b_value)
       end
     end
+
     values
   end
 
@@ -625,9 +650,13 @@ class BinaryOperator < AbstractElement
     # verify dimensions match
     a_dims = a.dimensions
     b_dims = b.dimensions
-    raise(BASICExpressionError, 'Matrix dimensions do not match') if a_dims != b_dims
+
+    raise(BASICExpressionError, 'Matrix dimensions do not match') if
+      a_dims != b_dims
+
     values = subtract_matrix_matrix_1(a, b) if a_dims.size == 1
     values = subtract_matrix_matrix_2(a, b) if a_dims.size == 2
+
     Matrix.new(a_dims, values)
   end
 
@@ -643,6 +672,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coords(base, col)
       new_values[coords] = value
     end
+
     Matrix.new(new_dims, new_values)
   end
 
@@ -659,6 +689,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       new_values[coords] = value
     end
+
     Matrix.new(new_dims, new_values)
   end
 
@@ -674,6 +705,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coords(col, base)
       new_values[coords] = value
     end
+
     Matrix.new(new_dims, new_values)
   end
 
@@ -690,6 +722,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(row)
       new_values[coords] = value
     end
+
     Matrix.new(new_dims, new_values)
   end
 
@@ -704,6 +737,7 @@ class BinaryOperator < AbstractElement
       b_value = b.get_value_2(a_col, r_col)
       f += a_value.to_f * b_value.to_f
     end
+
     NumericConstant.new(f)
   end
 
@@ -720,17 +754,21 @@ class BinaryOperator < AbstractElement
         values[coords] = multiply_matrix_matrix_value(a, b, r_row, r_col)
       end
     end
+
     values
   end
 
   def multiply_matrix_matrix_2_2(a, b)
     a_dims = a.dimensions
     b_dims = b.dimensions
+
     # number of columns in a must match number of rows in b
     raise(BASICExpressionError, 'Matrix dimensions do not match') if
       a_dims[1] != b_dims[0]
+
     r_dims = [a_dims[0], b_dims[1]]
     values = multiply_matrix_matrix_work(a, b)
+
     Matrix.new(r_dims, values)
   end
 
@@ -738,12 +776,15 @@ class BinaryOperator < AbstractElement
     a_dims = a.dimensions
     new_b = array_to_vertical(b)
     new_b_dims = new_b.dimensions
+
     # number of columns in a must match number of rows in b
     raise(BASICExpressionError, 'Matrix dimensions do not match') if
       a_dims[1] != new_b_dims[0]
+
     r_dims = [a_dims[0], new_b_dims[1]]
     values = multiply_matrix_matrix_work(a, new_b)
     m = Matrix.new(r_dims, values)
+
     vertical_to_array(m)
   end
 
@@ -751,12 +792,15 @@ class BinaryOperator < AbstractElement
     new_a = array_to_horizontal(a)
     new_a_dims = new_a.dimensions
     b_dims = b.dimensions
+
     # number of columns in a must match number of rows in b
     raise(BASICExpressionError, 'Matrix dimensions do not match') if
       new_a_dims[1] != b_dims[0]
+
     r_dims = [new_a_dims[0], b_dims[1]]
     values = multiply_matrix_matrix_work(new_a, b)
     m = Matrix.new(r_dims, values)
+
     horizontal_to_array(m)
   end
 
@@ -769,7 +813,8 @@ class BinaryOperator < AbstractElement
     elsif dim_counts == [2, 2]
       multiply_matrix_matrix_2_2(a, b)
     else
-      raise(BASICExpressionError, 'Matrix multiplication must have two matrices')
+      raise(BASICExpressionError,
+            'Matrix multiplication must have two matrices')
     end
   end
 
@@ -792,6 +837,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = a_value.send(op, b_value)
     end
+
     BASICArray.new(dims, values)
   end
 
@@ -804,6 +850,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = a.send(op, b_value)
     end
+
     BASICArray.new(dims, values)
   end
 
@@ -816,6 +863,7 @@ class BinaryOperator < AbstractElement
       coords = AbstractElement.make_coord(col)
       values[coords] = a_value.send(op, b)
     end
+
     BASICArray.new(dims, values)
   end
 
