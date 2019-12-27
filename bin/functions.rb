@@ -350,19 +350,22 @@ class FunctionCon1 < AbstractScalarFunction
       args = stack.pop
 
       if match_args_to_signature(args, @signature_0)
-        arg = default_args(interpreter)
-        array = BASICArray.new(arg.clone, {})
-        BASICArray.new(array.dimensions, array.one_values)
+        args = default_args(interpreter)
+        dims = args.clone
+        values = BASICArray.one_values(dims)
+        BASICArray.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
-        array = BASICArray.new(args.clone, {})
-        BASICArray.new(array.dimensions, array.one_values)
+        dims = args.clone
+        values = BASICArray.one_values(dims)
+        BASICArray.new(dims, values)
       else
         raise(BASICRuntimeError, 'Wrong arguments for function')
       end
     else
-      arg = default_args(interpreter)
-      array = BASICArray.new(arg.clone, {})
-      BASICArray.new(array.dimensions, array.one_values)
+      args = default_args(interpreter)
+      dims = args.clone
+      values = BASICArray.one_values(dims)
+      BASICArray.new(dims, values)
     end
   end
 end
@@ -386,22 +389,26 @@ class FunctionCon2 < AbstractScalarFunction
       args = stack.pop
 
       if match_args_to_signature(args, @signature_0)
-        arg = default_args(interpreter)
-        matrix = Matrix.new(arg.clone, {})
-        Matrix.new(matrix.dimensions, matrix.one_values)
+        args = default_args(interpreter)
+        dims = args.clone
+        values = Matrix.one_values(dims)
+        Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
-        matrix = Matrix.new(args.clone, {})
-        Matrix.new(matrix.dimensions, matrix.one_values)
+        dims = args.clone
+        values = Matrix.one_values(dims)
+        Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_2)
-        matrix = Matrix.new(args.clone, {})
-        Matrix.new(matrix.dimensions, matrix.one_values)
+        dims = args.clone
+        values = Matrix.one_values(dims)
+        Matrix.new(dims, values)
       else
         raise(BASICRuntimeError, 'Wrong arguments for function')
       end
     else
-      arg = default_args(interpreter)
-      matrix = Matrix.new(arg.clone, {})
-      Matrix.new(matrix.dimensions, matrix.one_values)
+      args = default_args(interpreter)
+      dims = args.clone
+      values = Matrix.one_values(dims)
+      Matrix.new(dims, values)
     end
   end
 end
@@ -534,29 +541,32 @@ class FunctionIdn < AbstractScalarFunction
       args = stack.pop
 
       if match_args_to_signature(args, @signature_0)
-        arg = default_args(interpreter)
-        matrix = Matrix.new(arg.clone, {})
-        Matrix.new(matrix.dimensions, matrix.one_values)
+        args = default_args(interpreter)
+        dims = args.clone
+        values = Matrix.one_values(dims)
+        Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
         dims = [args[0]] * 2
-        matrix = Matrix.new(dims, {})
-        Matrix.new(dims, matrix.identity_values)
+        values = Matrix.identity_values(dims)
+        Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_2)
         raise(BASICRuntimeError, @name + ' requires square matrix') unless
           args[1] == args[0]
 
-        matrix = Matrix.new(args, {})
-        Matrix.new(args, matrix.identity_values)
+        dims = args.clone
+        values = Matrix.identity_values(dims)
+        Matrix.new(dims, values)
       else
         raise(BASICRuntimeError, 'Wrong arguments for function')
       end
     else
-      arg = default_args(interpreter)
+      args = default_args(interpreter)
       raise(BASICRuntimeError, @name + ' requires square matrix') unless
-        arg.size == 2 && arg[1] == arg[0]
+        args.size == 2 && args[1] == args[0]
 
-      matrix = Matrix.new(arg.clone, {})
-      Matrix.new(matrix.dimensions, matrix.identity_values)
+      dims = args.clone
+      values = Matrix.identity_values(dims)
+      Matrix.new(dims, values)
     end
   end
 end
@@ -814,19 +824,22 @@ class FunctionZer1 < AbstractScalarFunction
       args = stack.pop
 
       if match_args_to_signature(args, @signature_0)
-        arg = default_args(interpreter)
-        array = BASICArray.new(arg.clone, {})
-        BASICArray.new(array.dimensions, array.zero_values)
+        args = default_args(interpreter)
+        dims = args.clone
+        values = BASICArray.zero_values(dims)
+        BASICArray.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
-        array = BASICArray.new(args.clone, {})
-        BASICArray.new(array.dimensions, array.zero_values)
+        dims = args.clone
+        values = BASICArray.zero_values(dims)
+        BASICArray.new(dims, values)
       else
         raise(BASICRuntimeError, 'Wrong arguments for function')
       end
     else
-      arg = default_args(interpreter)
-      array = BASICArray.new(arg.clone, {})
-      BASICArray.new(array.dimensions, array.zero_values)
+      args = default_args(interpreter)
+      dims = args.clone
+      values = BASICArray.zero_values(dims)
+      BASICArray.new(dims, values)
     end
   end
 end
@@ -850,22 +863,26 @@ class FunctionZer2 < AbstractScalarFunction
       args = stack.pop
 
       if match_args_to_signature(args, @signature_0)
-        arg = default_args(interpreter)
-        matrix = Matrix.new(arg.clone, {})
-        Matrix.new(matrix.dimensions, matrix.zero_values)
+        args = default_args(interpreter)
+        dims = args.clone
+        values = Matrix.zero_values(dims)
+        Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
-        matrix = Matrix.new(args.clone, {})
-        Matrix.new(matrix.dimensions, matrix.zero_values)
+        dims = args.clone
+        values = Matrix.zero_values(dims)
+        Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_2)
-        matrix = Matrix.new(args.clone, {})
-        Matrix.new(matrix.dimensions, matrix.zero_values)
+        dims = args.clone
+        values = Matrix.zero_values(dims)
+        Matrix.new(dims, values)
       else
         raise(BASICRuntimeError, 'Wrong arguments for function')
       end
     else
-      arg = default_args(interpreter)
-      matrix = Matrix.new(arg.clone, {})
-      Matrix.new(matrix.dimensions, matrix.zero_values)
+      args = default_args(interpreter)
+      dims = args.clone
+      values = Matrix.zero_values(dims)
+      Matrix.new(dims, values)
     end
   end
 end
