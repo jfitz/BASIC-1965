@@ -8,44 +8,44 @@
  I = 1
  M = 6
  terminated:false
-160: READ M(I)
+160: READ X(I)
  I: 1
- M(1) = 117
+ X(1) = 117
 170: NEXT I
  I: 1
  terminated:false
  I = 2
-160: READ M(I)
+160: READ X(I)
  I: 2
- M(2) = 145
+ X(2) = 145
 170: NEXT I
  I: 2
  terminated:false
  I = 3
-160: READ M(I)
+160: READ X(I)
  I: 3
- M(3) = 147
+ X(3) = 147
 170: NEXT I
  I: 3
  terminated:false
  I = 4
-160: READ M(I)
+160: READ X(I)
  I: 4
- M(4) = 120
+ X(4) = 120
 170: NEXT I
  I: 4
  terminated:false
  I = 5
-160: READ M(I)
+160: READ X(I)
  I: 5
- M(5) = 150
+ X(5) = 150
 170: NEXT I
  I: 5
  terminated:false
  I = 6
-160: READ M(I)
+160: READ X(I)
  I: 6
- M(6) = 120
+ X(6) = 120
 170: NEXT I
  I: 6
  terminated:true
@@ -89,8 +89,8 @@
  terminated:false
 260: LET Z(K) = X(K)
  K: 1
- X(1): 0
- Z(1) = 0
+ X(1): 117
+ Z(1) = 117
 270: LET T(K) = +1
  K: 1
  T(1) = 1
@@ -100,8 +100,8 @@
  K = 2
 260: LET Z(K) = X(K)
  K: 2
- X(2): 0
- Z(2) = 0
+ X(2): 145
+ Z(2) = 145
 270: LET T(K) = +1
  K: 2
  T(2) = 1
@@ -111,8 +111,8 @@
  K = 3
 260: LET Z(K) = X(K)
  K: 3
- X(3): 0
- Z(3) = 0
+ X(3): 147
+ Z(3) = 147
 270: LET T(K) = +1
  K: 3
  T(3) = 1
@@ -122,8 +122,8 @@
  K = 4
 260: LET Z(K) = X(K)
  K: 4
- X(4): 0
- Z(4) = 0
+ X(4): 120
+ Z(4) = 120
 270: LET T(K) = +1
  K: 4
  T(4) = 1
@@ -133,8 +133,8 @@
  K = 5
 260: LET Z(K) = X(K)
  K: 5
- X(5): 0
- Z(5) = 0
+ X(5): 150
+ Z(5) = 150
 270: LET T(K) = +1
  K: 5
  T(5) = 1
@@ -144,8 +144,8 @@
  K = 6
 260: LET Z(K) = X(K)
  K: 6
- X(6): 0
- Z(6) = 0
+ X(6): 120
+ Z(6) = 120
 270: LET T(K) = +1
  K: 6
  T(6) = 1
@@ -225,9 +225,9 @@
  terminated:false
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 2
- Z(2): 0
+ Z(2): 145
  Z(K)<=Z(L): true
 450: NEXT L
  L: 2
@@ -235,9 +235,9 @@
  L = 3
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 3
- Z(3): 0
+ Z(3): 147
  Z(K)<=Z(L): true
 450: NEXT L
  L: 3
@@ -245,9 +245,9 @@
  L = 4
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 4
- Z(4): 0
+ Z(4): 120
  Z(K)<=Z(L): true
 450: NEXT L
  L: 4
@@ -255,9 +255,9 @@
  L = 5
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 5
- Z(5): 0
+ Z(5): 150
  Z(K)<=Z(L): true
 450: NEXT L
  L: 5
@@ -265,9 +265,9 @@
  L = 6
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 6
- Z(6): 0
+ Z(6): 120
  Z(K)<=Z(L): true
 450: NEXT L
  L: 6
@@ -275,7 +275,7 @@
  L = 7
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 7
  Z(7): 160
  Z(K)<=Z(L): true
@@ -285,7 +285,7 @@
  L = 8
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 8
  Z(8): 160
  Z(K)<=Z(L): true
@@ -295,7 +295,7 @@
  L = 9
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 9
  Z(9): 140
  Z(K)<=Z(L): true
@@ -305,7 +305,7 @@
  L = 10
 380: IF Z(K) <= Z(L) THEN 450
  K: 1
- Z(1): 0
+ Z(1): 117
  L: 10
  Z(10): 190
  Z(K)<=Z(L): true
@@ -326,9 +326,9 @@
  terminated:false
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 145
  L: 3
- Z(3): 0
+ Z(3): 147
  Z(K)<=Z(L): true
 450: NEXT L
  L: 3
@@ -336,19 +336,45 @@
  L = 4
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 145
  L: 4
- Z(4): 0
- Z(K)<=Z(L): true
+ Z(4): 120
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 2
+ Z(2): 145
+ T = 145
+400: LET Z(K) = Z(L)
+ K: 2
+ L: 4
+ Z(4): 120
+ Z(2) = 120
+410: LET Z(L) = T
+ L: 4
+ T: 145
+ Z(4) = 145
+420: LET T = T(K)
+ K: 2
+ T(2): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 2
+ L: 4
+ T(4): 1
+ T(2) = 1
+440: LET T(L) = T
+ L: 4
+ T: 1
+ T(4) = 1
 450: NEXT L
  L: 4
  terminated:false
  L = 5
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 120
  L: 5
- Z(5): 0
+ Z(5): 150
  Z(K)<=Z(L): true
 450: NEXT L
  L: 5
@@ -356,9 +382,9 @@
  L = 6
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 120
  L: 6
- Z(6): 0
+ Z(6): 120
  Z(K)<=Z(L): true
 450: NEXT L
  L: 6
@@ -366,7 +392,7 @@
  L = 7
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 120
  L: 7
  Z(7): 160
  Z(K)<=Z(L): true
@@ -376,7 +402,7 @@
  L = 8
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 120
  L: 8
  Z(8): 160
  Z(K)<=Z(L): true
@@ -386,7 +412,7 @@
  L = 9
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 120
  L: 9
  Z(9): 140
  Z(K)<=Z(L): true
@@ -396,7 +422,7 @@
  L = 10
 380: IF Z(K) <= Z(L) THEN 450
  K: 2
- Z(2): 0
+ Z(2): 120
  L: 10
  Z(10): 190
  Z(K)<=Z(L): true
@@ -417,19 +443,45 @@
  terminated:false
 380: IF Z(K) <= Z(L) THEN 450
  K: 3
- Z(3): 0
+ Z(3): 147
  L: 4
- Z(4): 0
- Z(K)<=Z(L): true
+ Z(4): 145
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 3
+ Z(3): 147
+ T = 147
+400: LET Z(K) = Z(L)
+ K: 3
+ L: 4
+ Z(4): 145
+ Z(3) = 145
+410: LET Z(L) = T
+ L: 4
+ T: 147
+ Z(4) = 147
+420: LET T = T(K)
+ K: 3
+ T(3): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 3
+ L: 4
+ T(4): 1
+ T(3) = 1
+440: LET T(L) = T
+ L: 4
+ T: 1
+ T(4) = 1
 450: NEXT L
  L: 4
  terminated:false
  L = 5
 380: IF Z(K) <= Z(L) THEN 450
  K: 3
- Z(3): 0
+ Z(3): 145
  L: 5
- Z(5): 0
+ Z(5): 150
  Z(K)<=Z(L): true
 450: NEXT L
  L: 5
@@ -437,17 +489,43 @@
  L = 6
 380: IF Z(K) <= Z(L) THEN 450
  K: 3
- Z(3): 0
+ Z(3): 145
  L: 6
- Z(6): 0
- Z(K)<=Z(L): true
+ Z(6): 120
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 3
+ Z(3): 145
+ T = 145
+400: LET Z(K) = Z(L)
+ K: 3
+ L: 6
+ Z(6): 120
+ Z(3) = 120
+410: LET Z(L) = T
+ L: 6
+ T: 145
+ Z(6) = 145
+420: LET T = T(K)
+ K: 3
+ T(3): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 3
+ L: 6
+ T(6): 1
+ T(3) = 1
+440: LET T(L) = T
+ L: 6
+ T: 1
+ T(6) = 1
 450: NEXT L
  L: 6
  terminated:false
  L = 7
 380: IF Z(K) <= Z(L) THEN 450
  K: 3
- Z(3): 0
+ Z(3): 120
  L: 7
  Z(7): 160
  Z(K)<=Z(L): true
@@ -457,7 +535,7 @@
  L = 8
 380: IF Z(K) <= Z(L) THEN 450
  K: 3
- Z(3): 0
+ Z(3): 120
  L: 8
  Z(8): 160
  Z(K)<=Z(L): true
@@ -467,7 +545,7 @@
  L = 9
 380: IF Z(K) <= Z(L) THEN 450
  K: 3
- Z(3): 0
+ Z(3): 120
  L: 9
  Z(9): 140
  Z(K)<=Z(L): true
@@ -477,7 +555,7 @@
  L = 10
 380: IF Z(K) <= Z(L) THEN 450
  K: 3
- Z(3): 0
+ Z(3): 120
  L: 10
  Z(10): 190
  Z(K)<=Z(L): true
@@ -498,9 +576,9 @@
  terminated:false
 380: IF Z(K) <= Z(L) THEN 450
  K: 4
- Z(4): 0
+ Z(4): 147
  L: 5
- Z(5): 0
+ Z(5): 150
  Z(K)<=Z(L): true
 450: NEXT L
  L: 5
@@ -508,17 +586,43 @@
  L = 6
 380: IF Z(K) <= Z(L) THEN 450
  K: 4
- Z(4): 0
+ Z(4): 147
  L: 6
- Z(6): 0
- Z(K)<=Z(L): true
+ Z(6): 145
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 4
+ Z(4): 147
+ T = 147
+400: LET Z(K) = Z(L)
+ K: 4
+ L: 6
+ Z(6): 145
+ Z(4) = 145
+410: LET Z(L) = T
+ L: 6
+ T: 147
+ Z(6) = 147
+420: LET T = T(K)
+ K: 4
+ T(4): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 4
+ L: 6
+ T(6): 1
+ T(4) = 1
+440: LET T(L) = T
+ L: 6
+ T: 1
+ T(6) = 1
 450: NEXT L
  L: 6
  terminated:false
  L = 7
 380: IF Z(K) <= Z(L) THEN 450
  K: 4
- Z(4): 0
+ Z(4): 145
  L: 7
  Z(7): 160
  Z(K)<=Z(L): true
@@ -528,7 +632,7 @@
  L = 8
 380: IF Z(K) <= Z(L) THEN 450
  K: 4
- Z(4): 0
+ Z(4): 145
  L: 8
  Z(8): 160
  Z(K)<=Z(L): true
@@ -538,17 +642,43 @@
  L = 9
 380: IF Z(K) <= Z(L) THEN 450
  K: 4
- Z(4): 0
+ Z(4): 145
  L: 9
  Z(9): 140
- Z(K)<=Z(L): true
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 4
+ Z(4): 145
+ T = 145
+400: LET Z(K) = Z(L)
+ K: 4
+ L: 9
+ Z(9): 140
+ Z(4) = 140
+410: LET Z(L) = T
+ L: 9
+ T: 145
+ Z(9) = 145
+420: LET T = T(K)
+ K: 4
+ T(4): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 4
+ L: 9
+ T(9): 0
+ T(4) = 0
+440: LET T(L) = T
+ L: 9
+ T: 1
+ T(9) = 1
 450: NEXT L
  L: 9
  terminated:false
  L = 10
 380: IF Z(K) <= Z(L) THEN 450
  K: 4
- Z(4): 0
+ Z(4): 140
  L: 10
  Z(10): 190
  Z(K)<=Z(L): true
@@ -569,17 +699,43 @@
  terminated:false
 380: IF Z(K) <= Z(L) THEN 450
  K: 5
- Z(5): 0
+ Z(5): 150
  L: 6
- Z(6): 0
- Z(K)<=Z(L): true
+ Z(6): 147
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 5
+ Z(5): 150
+ T = 150
+400: LET Z(K) = Z(L)
+ K: 5
+ L: 6
+ Z(6): 147
+ Z(5) = 147
+410: LET Z(L) = T
+ L: 6
+ T: 150
+ Z(6) = 150
+420: LET T = T(K)
+ K: 5
+ T(5): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 5
+ L: 6
+ T(6): 1
+ T(5) = 1
+440: LET T(L) = T
+ L: 6
+ T: 1
+ T(6) = 1
 450: NEXT L
  L: 6
  terminated:false
  L = 7
 380: IF Z(K) <= Z(L) THEN 450
  K: 5
- Z(5): 0
+ Z(5): 147
  L: 7
  Z(7): 160
  Z(K)<=Z(L): true
@@ -589,7 +745,7 @@
  L = 8
 380: IF Z(K) <= Z(L) THEN 450
  K: 5
- Z(5): 0
+ Z(5): 147
  L: 8
  Z(8): 160
  Z(K)<=Z(L): true
@@ -599,17 +755,43 @@
  L = 9
 380: IF Z(K) <= Z(L) THEN 450
  K: 5
- Z(5): 0
+ Z(5): 147
  L: 9
- Z(9): 140
- Z(K)<=Z(L): true
+ Z(9): 145
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 5
+ Z(5): 147
+ T = 147
+400: LET Z(K) = Z(L)
+ K: 5
+ L: 9
+ Z(9): 145
+ Z(5) = 145
+410: LET Z(L) = T
+ L: 9
+ T: 147
+ Z(9) = 147
+420: LET T = T(K)
+ K: 5
+ T(5): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 5
+ L: 9
+ T(9): 1
+ T(5) = 1
+440: LET T(L) = T
+ L: 9
+ T: 1
+ T(9) = 1
 450: NEXT L
  L: 9
  terminated:false
  L = 10
 380: IF Z(K) <= Z(L) THEN 450
  K: 5
- Z(5): 0
+ Z(5): 145
  L: 10
  Z(10): 190
  Z(K)<=Z(L): true
@@ -630,7 +812,7 @@
  terminated:false
 380: IF Z(K) <= Z(L) THEN 450
  K: 6
- Z(6): 0
+ Z(6): 150
  L: 7
  Z(7): 160
  Z(K)<=Z(L): true
@@ -640,7 +822,7 @@
  L = 8
 380: IF Z(K) <= Z(L) THEN 450
  K: 6
- Z(6): 0
+ Z(6): 150
  L: 8
  Z(8): 160
  Z(K)<=Z(L): true
@@ -650,17 +832,43 @@
  L = 9
 380: IF Z(K) <= Z(L) THEN 450
  K: 6
- Z(6): 0
+ Z(6): 150
  L: 9
- Z(9): 140
- Z(K)<=Z(L): true
+ Z(9): 147
+ Z(K)<=Z(L): false
+390: LET T = Z(K)
+ K: 6
+ Z(6): 150
+ T = 150
+400: LET Z(K) = Z(L)
+ K: 6
+ L: 9
+ Z(9): 147
+ Z(6) = 147
+410: LET Z(L) = T
+ L: 9
+ T: 150
+ Z(9) = 150
+420: LET T = T(K)
+ K: 6
+ T(6): 1
+ T = 1
+430: LET T(K) = T(L)
+ K: 6
+ L: 9
+ T(9): 1
+ T(6) = 1
+440: LET T(L) = T
+ L: 9
+ T: 1
+ T(9) = 1
 450: NEXT L
  L: 9
  terminated:false
  L = 10
 380: IF Z(K) <= Z(L) THEN 450
  K: 6
- Z(6): 0
+ Z(6): 147
  L: 10
  Z(10): 190
  Z(K)<=Z(L): true
@@ -693,7 +901,7 @@
  K: 7
  Z(7): 160
  L: 9
- Z(9): 140
+ Z(9): 150
  Z(K)<=Z(L): false
 390: LET T = Z(K)
  K: 7
@@ -702,8 +910,8 @@
 400: LET Z(K) = Z(L)
  K: 7
  L: 9
- Z(9): 140
- Z(7) = 140
+ Z(9): 150
+ Z(7) = 150
 410: LET Z(L) = T
  L: 9
  T: 160
@@ -715,8 +923,8 @@
 430: LET T(K) = T(L)
  K: 7
  L: 9
- T(9): 0
- T(7) = 0
+ T(9): 1
+ T(7) = 1
 440: LET T(L) = T
  L: 9
  T: 0
@@ -727,7 +935,7 @@
  L = 10
 380: IF Z(K) <= Z(L) THEN 450
  K: 7
- Z(7): 140
+ Z(7): 150
  L: 10
  Z(10): 190
  Z(K)<=Z(L): true
@@ -810,18 +1018,38 @@
  J>M+N: false
 560: IF Z(J) > Z(B) THEN 600
  J: 2
- Z(2): 0
+ Z(2): 120
  B: 1
- Z(1): 0
- Z(J)>Z(B): false
-570: LET T = T + J
- T: 1
+ Z(1): 117
+ Z(J)>Z(B): true
+600: FOR L = B TO J - 1
+ B: 1
  J: 2
- T = 3
-580: LET K = K + 1
+ L = 1
+ B = 1
+ J-1 = 1
+ terminated:false
+610: LET Z(L) = T / K
+ L: 1
+ T: 1
  K: 1
- K = 2
-590: GOTO 540
+ Z(1) = 1
+620: NEXT L
+ L: 1
+ terminated:true
+630: IF J <= M + N THEN 510
+ J: 2
+ M: 6
+ N: 4
+ J<=M+N: true
+510: LET K = 1
+ K = 1
+520: LET B = J
+ J: 2
+ B = 2
+530: LET T = J
+ J: 2
+ T = 2
 540: LET J = J + 1
  J: 2
  J = 3
@@ -832,17 +1060,17 @@
  J>M+N: false
 560: IF Z(J) > Z(B) THEN 600
  J: 3
- Z(3): 0
- B: 1
- Z(1): 0
+ Z(3): 120
+ B: 2
+ Z(2): 120
  Z(J)>Z(B): false
 570: LET T = T + J
- T: 3
+ T: 2
  J: 3
- T = 6
+ T = 5
 580: LET K = K + 1
- K: 2
- K = 3
+ K: 1
+ K = 2
 590: GOTO 540
 540: LET J = J + 1
  J: 3
@@ -854,18 +1082,47 @@
  J>M+N: false
 560: IF Z(J) > Z(B) THEN 600
  J: 4
- Z(4): 0
- B: 1
- Z(1): 0
- Z(J)>Z(B): false
-570: LET T = T + J
- T: 6
+ Z(4): 140
+ B: 2
+ Z(2): 120
+ Z(J)>Z(B): true
+600: FOR L = B TO J - 1
+ B: 2
  J: 4
- T = 10
-580: LET K = K + 1
- K: 3
- K = 4
-590: GOTO 540
+ L = 2
+ B = 2
+ J-1 = 3
+ terminated:false
+610: LET Z(L) = T / K
+ L: 2
+ T: 5
+ K: 2
+ Z(2) = 2.5
+620: NEXT L
+ L: 2
+ terminated:false
+ L = 3
+610: LET Z(L) = T / K
+ L: 3
+ T: 5
+ K: 2
+ Z(3) = 2.5
+620: NEXT L
+ L: 3
+ terminated:true
+630: IF J <= M + N THEN 510
+ J: 4
+ M: 6
+ N: 4
+ J<=M+N: true
+510: LET K = 1
+ K = 1
+520: LET B = J
+ J: 4
+ B = 4
+530: LET T = J
+ J: 4
+ T = 4
 540: LET J = J + 1
  J: 4
  J = 5
@@ -876,18 +1133,38 @@
  J>M+N: false
 560: IF Z(J) > Z(B) THEN 600
  J: 5
- Z(5): 0
- B: 1
- Z(1): 0
- Z(J)>Z(B): false
-570: LET T = T + J
- T: 10
+ Z(5): 145
+ B: 4
+ Z(4): 140
+ Z(J)>Z(B): true
+600: FOR L = B TO J - 1
+ B: 4
  J: 5
- T = 15
-580: LET K = K + 1
- K: 4
- K = 5
-590: GOTO 540
+ L = 4
+ B = 4
+ J-1 = 4
+ terminated:false
+610: LET Z(L) = T / K
+ L: 4
+ T: 4
+ K: 1
+ Z(4) = 4
+620: NEXT L
+ L: 4
+ terminated:true
+630: IF J <= M + N THEN 510
+ J: 5
+ M: 6
+ N: 4
+ J<=M+N: true
+510: LET K = 1
+ K = 1
+520: LET B = J
+ J: 5
+ B = 5
+530: LET T = J
+ J: 5
+ T = 5
 540: LET J = J + 1
  J: 5
  J = 6
@@ -898,18 +1175,38 @@
  J>M+N: false
 560: IF Z(J) > Z(B) THEN 600
  J: 6
- Z(6): 0
- B: 1
- Z(1): 0
- Z(J)>Z(B): false
-570: LET T = T + J
- T: 15
+ Z(6): 147
+ B: 5
+ Z(5): 145
+ Z(J)>Z(B): true
+600: FOR L = B TO J - 1
+ B: 5
  J: 6
- T = 21
-580: LET K = K + 1
- K: 5
- K = 6
-590: GOTO 540
+ L = 5
+ B = 5
+ J-1 = 5
+ terminated:false
+610: LET Z(L) = T / K
+ L: 5
+ T: 5
+ K: 1
+ Z(5) = 5
+620: NEXT L
+ L: 5
+ terminated:true
+630: IF J <= M + N THEN 510
+ J: 6
+ M: 6
+ N: 4
+ J<=M+N: true
+510: LET K = 1
+ K = 1
+520: LET B = J
+ J: 6
+ B = 6
+530: LET T = J
+ J: 6
+ T = 6
 540: LET J = J + 1
  J: 6
  J = 7
@@ -920,67 +1217,22 @@
  J>M+N: false
 560: IF Z(J) > Z(B) THEN 600
  J: 7
- Z(7): 140
- B: 1
- Z(1): 0
+ Z(7): 150
+ B: 6
+ Z(6): 147
  Z(J)>Z(B): true
 600: FOR L = B TO J - 1
- B: 1
+ B: 6
  J: 7
- L = 1
- B = 1
+ L = 6
+ B = 6
  J-1 = 6
  terminated:false
 610: LET Z(L) = T / K
- L: 1
- T: 21
- K: 6
- Z(1) = 3.5
-620: NEXT L
- L: 1
- terminated:false
- L = 2
-610: LET Z(L) = T / K
- L: 2
- T: 21
- K: 6
- Z(2) = 3.5
-620: NEXT L
- L: 2
- terminated:false
- L = 3
-610: LET Z(L) = T / K
- L: 3
- T: 21
- K: 6
- Z(3) = 3.5
-620: NEXT L
- L: 3
- terminated:false
- L = 4
-610: LET Z(L) = T / K
- L: 4
- T: 21
- K: 6
- Z(4) = 3.5
-620: NEXT L
- L: 4
- terminated:false
- L = 5
-610: LET Z(L) = T / K
- L: 5
- T: 21
- K: 6
- Z(5) = 3.5
-620: NEXT L
- L: 5
- terminated:false
- L = 6
-610: LET Z(L) = T / K
  L: 6
- T: 21
- K: 6
- Z(6) = 3.5
+ T: 6
+ K: 1
+ Z(6) = 6
 620: NEXT L
  L: 6
  terminated:true
@@ -1009,7 +1261,7 @@
  J: 8
  Z(8): 160
  B: 7
- Z(7): 140
+ Z(7): 150
  Z(J)>Z(B): true
 600: FOR L = B TO J - 1
  B: 7
@@ -1155,8 +1407,8 @@
  K: 1
  T(1): 1
  S(1): 0
- Z(1): 3.5
- S(1) = 3.5
+ Z(1): 1
+ S(1) = 1
 790: NEXT K
  K: 1
  terminated:false
@@ -1164,9 +1416,9 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 2
  T(2): 1
- S(1): 3.5
- Z(2): 3.5
- S(1) = 7
+ S(1): 1
+ Z(2): 2.5
+ S(1) = 3.5
 790: NEXT K
  K: 2
  terminated:false
@@ -1174,19 +1426,19 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 3
  T(3): 1
- S(1): 7
- Z(3): 3.5
- S(1) = 10.5
+ S(1): 3.5
+ Z(3): 2.5
+ S(1) = 6
 790: NEXT K
  K: 3
  terminated:false
  K = 4
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 4
- T(4): 1
- S(1): 10.5
- Z(4): 3.5
- S(1) = 14
+ T(4): 0
+ S(0): 0
+ Z(4): 4
+ S(0) = 4
 790: NEXT K
  K: 4
  terminated:false
@@ -1194,9 +1446,9 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 5
  T(5): 1
- S(1): 14
- Z(5): 3.5
- S(1) = 17.5
+ S(1): 6
+ Z(5): 5
+ S(1) = 11
 790: NEXT K
  K: 5
  terminated:false
@@ -1204,19 +1456,19 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 6
  T(6): 1
- S(1): 17.5
- Z(6): 3.5
- S(1) = 21
+ S(1): 11
+ Z(6): 6
+ S(1) = 17
 790: NEXT K
  K: 6
  terminated:false
  K = 7
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 7
- T(7): 0
- S(0): 0
+ T(7): 1
+ S(1): 17
  Z(7): 7
- S(0) = 7
+ S(1) = 24
 790: NEXT K
  K: 7
  terminated:false
@@ -1224,9 +1476,9 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 8
  T(8): 0
- S(0): 7
+ S(0): 4
  Z(8): 8.5
- S(0) = 15.5
+ S(0) = 12.5
 790: NEXT K
  K: 8
  terminated:false
@@ -1234,9 +1486,9 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 9
  T(9): 0
- S(0): 15.5
+ S(0): 12.5
  Z(9): 8.5
- S(0) = 24
+ S(0) = 21
 790: NEXT K
  K: 9
  terminated:false
@@ -1244,18 +1496,18 @@
 770: LET S(T(K)) = S(T(K)) + Z(K)
  K: 10
  T(10): 0
- S(0): 24
+ S(0): 21
  Z(10): 10
- S(0) = 34
+ S(0) = 31
 790: NEXT K
  K: 10
  terminated:true
 800: PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
 RANK SUM FOR X IS
- S(1): 21
- 21             FOR Y IS
- S(0): 34
- 34
+ S(1): 24
+ 24             FOR Y IS
+ S(0): 31
+ 31
 810:
 900: DATA 6, 4
 910: DATA 117, 145, 147, 120, 150, 120

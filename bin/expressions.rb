@@ -668,6 +668,13 @@ class XrefEntry
 
     @variable.to_s + dims + ref
   end
+
+  def to_text
+    dims = ''
+    dims = '(' + @signature.join(',') + ')' unless @signature.nil?
+
+    @variable.to_s + dims
+  end
 end
 
 # Expression parser
@@ -1363,6 +1370,11 @@ class UserFunctionDefinition
     @operators = @expression.operators
     @functions = @expression.functions
 
+    # add parameters to function as references
+    @arguments.each do |argument|
+      @variables << XrefEntry.new(argument.to_s, nil, true)
+    end
+
     # TODO: detect type of argument
     xr = XrefEntry.new(@name.to_s, @arguments, true)
     @userfuncs = [xr] + @expression.userfuncs
@@ -1419,7 +1431,7 @@ class UserFunctionPrototype
   def initialize(tokens)
     check_tokens(tokens)
     @name = UserFunctionName.new(tokens[0])
-    @arguments = check_params(tokens[2..-2])
+    @arguments = variable_names(tokens[2..-2])
 
     # arguments must be unique
     names = @arguments.map(&:to_s)
@@ -1441,7 +1453,7 @@ class UserFunctionPrototype
   end
 
   # verify tokens variables and commas
-  def check_params(params)
+  def variable_names(params)
     name_tokens = params.values_at(* params.each_index.select(&:even?))
 
     variable_names = []

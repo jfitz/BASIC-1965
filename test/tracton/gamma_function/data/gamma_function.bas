@@ -54,7 +54,7 @@
 540 LET L = K
 550 LET K = J
 560 RETURN
-570 LET A1 = 1 + (A*L) + (B*(L^2)) + C*(L^3))
+570 LET A1 = 1 + (A*L) + (B*(L^2)) + (C*(L^3))
 580 LET A1 = A1 + (D*(L^4)) + (E*(L^5)) + (F*(L^6))
 590 LET A1 = A1 + (G*(L^7)) + (H*(L^8))
 600 LET K = A1*K

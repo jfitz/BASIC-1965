@@ -1,11 +1,11 @@
-RANK SUM FOR X IS 21            FOR Y IS 34
+RANK SUM FOR X IS 24            FOR Y IS 31
 STOP in line 999
 
 100 (1) DIM X(100), Y(100), Z(200), T(200)
 110 (1)
 140 (1) READ M, N
 150 (1) FOR I = 1 TO M
-160 (6) READ M(I)
+160 (6) READ X(I)
 170 (6) NEXT I
 180 (1) FOR J = 1 TO N
 190 (4) READ Y(J)
@@ -23,29 +23,29 @@ STOP in line 999
 360 (1) FOR K = 1 TO M + N - 1
 370 (9) FOR L = K + 1 TO M + N
 380 (45) IF Z(K) <= Z(L) THEN 450
-390 (1) LET T = Z(K)
-400 (1) LET Z(K) = Z(L)
-410 (1) LET Z(L) = T
-420 (1) LET T = T(K)
-430 (1) LET T(K) = T(L)
-440 (1) LET T(L) = T
+390 (9) LET T = Z(K)
+400 (9) LET Z(K) = Z(L)
+410 (9) LET Z(L) = T
+420 (9) LET T = T(K)
+430 (9) LET T(K) = T(L)
+440 (9) LET T(L) = T
 450 (45) NEXT L
 460 (9) NEXT K
 470 (1)
 500 (1) LET J = 1
-510 (4) LET K = 1
-520 (4) LET B = J
-530 (4) LET T = J
+510 (8) LET K = 1
+520 (8) LET B = J
+530 (8) LET T = J
 540 (10) LET J = J + 1
 550 (10) IF J > M + N THEN 600
 560 (9) IF Z(J) > Z(B) THEN 600
-570 (6) LET T = T + J
-580 (6) LET K = K + 1
-590 (6) GOTO 540
-600 (4) FOR L = B TO J - 1
+570 (2) LET T = T + J
+580 (2) LET K = K + 1
+590 (2) GOTO 540
+600 (8) FOR L = B TO J - 1
 610 (10) LET Z(L) = T / K
 620 (10) NEXT L
-630 (4) IF J <= M + N THEN 510
+630 (8) IF J <= M + N THEN 510
 640 (1)
 740 (1) LET S(0) = 0
 750 (1) LET S(1) = 0

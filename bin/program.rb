@@ -882,6 +882,41 @@ class Program
     @console_io.newline
   end
 
+  def print_unused(variables)
+    # split variable references into 'reference' and 'value' lists
+    vars_refs = []
+    vars_vals = []
+    variables.keys.sort.each do |xref|
+      if xref.is_ref
+        vars_refs << xref.to_text
+      else
+        vars_vals << xref.to_text
+      end
+    end
+
+    # identify variables assigned but not used
+    unused = []
+    vars_refs.each do |var_ref|
+      unused << var_ref unless vars_vals.include?(var_ref)
+    end
+
+    # identify variables used but not assigned
+    unassigned = []
+    vars_vals.each do |var_val|
+      unassigned << var_val unless vars_refs.include?(var_val)
+    end
+
+    unless unused.empty?
+      @console_io.print_line('Assigned but not used: ' + unused.join(', '))
+      @console_io.newline()
+    end
+
+    unless unassigned.empty?
+      @console_io.print_line('Used but not assigned: ' + unassigned.join(', '))
+      @console_io.newline()
+    end
+  end
+  
   def make_summary(list)
     summary = {}
 
@@ -923,6 +958,7 @@ class Program
     vars_list = variables_refs
     variables = make_summary(vars_list)
     print_object_refs('Variables:', variables)
+    print_unused(variables)
 
     opers_list = operators_refs
     operators = make_summary(opers_list)

@@ -184,8 +184,26 @@
  AssignmentOperator:=
 560 RETURN
  
-570 LET A1 = 1 + (A*L) + (B*(L^2)) + C*(L^3))
- Too few operators
+570 LET A1 = 1 + (A*L) + (B*(L^2)) + (C*(L^3))
+ Variable:A1
+ NumericConstant:1
+ Variable:A
+ Variable:L
+ BinaryOperator:*
+ BinaryOperator:+
+ Variable:B
+ Variable:L
+ NumericConstant:2
+ BinaryOperator:^
+ BinaryOperator:*
+ BinaryOperator:+
+ Variable:C
+ Variable:L
+ NumericConstant:3
+ BinaryOperator:^
+ BinaryOperator:*
+ BinaryOperator:+
+ AssignmentOperator:=
 580 LET A1 = A1 + (D*(L^4)) + (E*(L^5)) + (F*(L^6))
  Variable:A1
  Variable:A1
