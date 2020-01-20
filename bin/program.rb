@@ -3,9 +3,13 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    raise BASICSyntaxError, "Invalid line number '#{line_number}'" unless
-      line_number.class.to_s == 'NumericConstantToken'
+    raise BASICSyntaxError, "Invalid line number '#{line_number.class}:#{line_number}'" unless
+      %w[NumericConstantToken NumericConstant].include?(line_number.class.to_s)
+
     @line_number = line_number.to_i
+
+    ### TODO: check line number > 0
+    ### TODO: check line number < some limit (65535?)
   end
 
   def eql?(other)
