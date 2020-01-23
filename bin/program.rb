@@ -8,8 +8,11 @@ class LineNumber
 
     @line_number = line_number.to_i
 
-    ### TODO: check line number > 0
-    ### TODO: check line number < some limit (65535?)
+    raise BASICSyntaxError, "Invalid line number '#{line_number.class}:#{line_number}'" unless
+      @line_number >= $options['min_line_num']
+    
+    raise BASICSyntaxError, "Invalid line number '#{line_number.class}:#{line_number}'" unless
+      @line_number <= $options['max_line_num']
   end
 
   def eql?(other)
