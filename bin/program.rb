@@ -3,15 +3,15 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    raise BASICSyntaxError, "Invalid line number '#{line_number.class}:#{line_number}'" unless
+    raise BASICSyntaxError, "Invalid line number object '#{line_number}:#{line_number}'" unless
       %w[NumericConstantToken NumericConstant].include?(line_number.class.to_s)
 
     @line_number = line_number.to_i
 
-    raise BASICSyntaxError, "Invalid line number '#{line_number.class}:#{line_number}'" unless
+    raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
       @line_number >= $options['min_line_num']
     
-    raise BASICSyntaxError, "Invalid line number '#{line_number.class}:#{line_number}'" unless
+    raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
       @line_number <= $options['max_line_num']
   end
 
@@ -253,6 +253,32 @@ class Program
   def line_list_spec(tokens)
     line_numbers = @lines.keys.sort
     LineListSpec.new(tokens, line_numbers)
+  end
+
+  def renumber_spec(tokens)
+    start = 10
+    step = 10
+
+    i = 0
+    tokens.each do |token|
+      if token.class.to_s == 'NumericConstantToken'
+        case i
+        when 0
+          # first number is step
+          step = token.to_i
+          start = token.to_i
+          i += 1
+        when 1
+          # second number is start
+          start = token.to_i
+          i += 1
+        end
+      end
+    end
+
+    raise(BASICSyntaxError, 'Invalid renumber step') if step.zero?
+    
+    [start, step]
   end
 
   public
@@ -754,15 +780,16 @@ class Program
   end
 
   # generate new line numbers
-  def renumber
+  def renumber(args)
+    start, step = renumber_spec(args)
     renumber_map = {}
-    new_number = 10
+    new_number = start
 
     @lines.keys.sort.each do |line_number|
       number_token = NumericConstantToken.new(new_number)
       new_line_number = LineNumber.new(number_token)
       renumber_map[line_number] = new_line_number
-      new_number += 10
+      new_number += step
     end
 
     # assign new line numbers

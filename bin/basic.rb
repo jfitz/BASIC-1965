@@ -257,9 +257,13 @@ class Shell
       @program.profile(args, show_timing)
       @console_io.newline
     when 'RENUMBER'
-      if @program.check
-        renumber_map = @program.renumber
-        @interpreter.renumber_breakpoints(renumber_map)
+      begin
+        if @program.check
+          renumber_map = @program.renumber(args)
+          @interpreter.renumber_breakpoints(renumber_map)
+        end
+      rescue BASICSyntaxError => e
+        @console_io.print_line("Cannot renumber the program: #{e}")
       end
     when 'CROSSREF'
       @program.crossref if @program.check
@@ -283,7 +287,7 @@ class Shell
     end
 
     need_prompt
-  rescue BASICCommandError => e
+  rescue BASICCommandError, BASICRuntimeError, BASICSyntaxError => e
     @console_io.print_line(e.to_s)
     @console_io.newline
     true

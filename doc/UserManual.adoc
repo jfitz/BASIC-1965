@@ -299,10 +299,17 @@ RENUMBER
 Renumbers lines in the current program.
 
 Syntax: RENUMBER
+Syntax: RENUMBER step
+Syntax: RENUMBER step,start
 
 Modifies the current program, changing each line number.
-The first line is assigned line number 10.
-Each successive line is assgned a number 10 higher than the previous line.
+The first line is assigned the starting line number.
+Each successive line is assgned a number a step higher than the previous line.
+
+When no values are specified, the renumbering starts at 10 with steps of 10.
+When one value is specificed, the renumbering starts at that value and steps at that value.
+When two values are specified, the renumberind starts at the second value and steps at the first value.
+When more than two values are specified, only two are used and the rest are ignored.
 
 Each statement which contains a line number (GOTO, GOSUB, IF) is modified to use the corresponding new line number.
 
