@@ -219,7 +219,7 @@ class Shell
     when 'NEW'
       @program.cmd_new
       @interpreter.clear_variables
-      @interpreter.clear_breakpoints
+      @interpreter.clear_all_breakpoints
     when 'RUN'
       if @program.check
         # duplicate the options
@@ -241,8 +241,10 @@ class Shell
       end
     when 'BREAK'
       @interpreter.set_breakpoints(args)
+    when 'NOBREAK'
+      @interpreter.clear_breakpoints(args)
     when 'LOAD'
-      @interpreter.clear_breakpoints
+      @interpreter.clear_all_breakpoints
       @program.load(args)
     when 'SAVE'
       @program.save(args)
@@ -328,7 +330,7 @@ def make_command_tokenbuilders
   tokenbuilders = []
 
   keywords = %w[
-    ANALYZE BREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE
+    ANALYZE BREAK NOBREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE
     PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
     ECHO FIELD_SEP HEADING

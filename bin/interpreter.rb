@@ -74,7 +74,7 @@ class Interpreter
     @fornext_stack = []
     @get_value_seen = []
     @null_out = NullOut.new
-    @breakpoints = {}
+    @line_breakpoints = {}
     @running = false
   end
 
@@ -84,7 +84,11 @@ class Interpreter
     tokenbuilders = []
 
     keywords =
-      %w[GO STOP STEP BREAK LIST PRETTY DELETE PROFILE DIM GOTO LET PRINT]
+      %w[
+        GO STOP STEP BREAK NOBREAK
+        LIST PRETTY DELETE PROFILE
+        DIM GOTO LET PRINT
+      ]
 
     tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
@@ -193,6 +197,8 @@ class Interpreter
       @debug_done = true
     when 'BREAK'
       set_breakpoints(args)
+    when 'NOBREAK'
+      clear_breakpoints(args)
     when 'LIST'
       @program.list(args, false)
     when 'PRETTY'
@@ -265,8 +271,22 @@ class Interpreter
     next_line_number = nil
     next_line_number = @next_line_number.clone unless @next_line_number.nil?
 
+    # breakpoint may have already been set by another test
+    breakpoint = false
+
+    # look for line breakpoint
+    if @line_breakpoints.key?(@current_line_number)
+      # TODO if condition is present and condition is true
+      breakpoint = true
+    end
+
+    # check step mode
+    if @step_mode
+      breakpoint = true
+    end
+
     # debug shell may change @next_line_number
-    debug_shell if @step_mode || @breakpoints.key?(@current_line_number)
+    debug_shell if breakpoint
 
     # if next line number has changed, debug_shell executed a GOTO
     if @next_line_number != next_line_number
@@ -330,42 +350,75 @@ class Interpreter
   def set_breakpoints(tokens)
     if tokens.empty?
       # print breakpoints
-      bps = @breakpoints.keys.sort.map(&:to_s).join(', ')
-      @console_io.print_line('BREAKPOINTS: ' + bps)
+      @line_breakpoints.keys.sort.each do |line|
+        condition = @line_breakpoints[line]
+        @console_io.print_line(line.to_s + ': ' + condition)
+      end
     else
+      # kinds of breakpoints
+      #  line - break before execution of line
+      #  line condition - break before line if condition is true
+      #  condition - break on any line if condition is true
+      #  variable - break when contents change
       tokens_lists = split_breakpoint_tokens(tokens)
       tokens_lists.each do |tokens_list|
         if tokens_list.size == 1 &&
-           tokens_list[0].numeric_constant?
-          line_number = LineNumber.new(tokens_list[0])
-          condition = ''
-          @breakpoints[line_number] = condition
-        end
-
-        if tokens_list.size == 2 &&
-           tokens_list[0].text == '-' &&
-           tokens_list[1].numeric_constant?
-          line_number = LineNumber.new(tokens_list[1])
-          @breakpoints.delete(line_number)
+          begin
+            line_number = LineNumber.new(tokens_list[0])
+            condition = ''
+            @line_breakpoints[line_number] = condition
+          rescue BASICSyntaxError => e
+            tkns = tokens_list.map(&:to_s).join
+            @console_io.print_line('INVALID BREAKPOINT ' + tkns)
+          end
+        else
+          tkns = tokens_list.map(&:to_s).join
+          @console_io.print_line('INVALID BREAKPOINT ' + tkns)
         end
       end
     end
   end
 
-  def clear_breakpoints
-    @breakpoints = {}
+  def clear_breakpoints(tokens)
+    if tokens.empty?
+      # print breakpoints
+      @line_breakpoints.keys.sort.each do |line|
+        condition = @line_breakpoints[line]
+        @console_io.print_line(line.to_s + ': ' + condition)
+      end
+    else
+      tokens_lists = split_breakpoint_tokens(tokens)
+      tokens_lists.each do |tokens_list|
+        if tokens_list.size == 1
+          begin
+            line_number = LineNumber.new(tokens_list[0])
+            @line_breakpoints.delete(line_number)
+          rescue BASICSyntaxError => e
+            tkns = tokens_list.map(&:to_s).join
+            @console_io.print_line('INVALID BREAKPOINT ' + tkns)
+          end
+        else
+          tkns = tokens_list.map(&:to_s).join
+          @console_io.print_line('INVALID BREAKPOINT ' + tkns)
+        end
+      end
+    end
+  end
+
+  def clear_all_breakpoints
+    @line_breakpoints = {}
   end
 
   def renumber_breakpoints(renumber_map)
     new_breakpoints = {}
 
-    @breakpoints.each do |line_number, _|
-      condition = @breakpoints[line_number]
+    @line_breakpoints.each do |line_number, _|
+      condition = @line_breakpoints[line_number]
       new_line_number = renumber_map[line_number]
       new_breakpoints[new_line_number] = condition
     end
 
-    @breakpoints = new_breakpoints
+    @line_breakpoints = new_breakpoints
   end
 
   def line_number?(line_number)
