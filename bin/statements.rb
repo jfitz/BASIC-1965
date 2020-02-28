@@ -563,7 +563,7 @@ module FileFunctions
     return nil if file_tokens.nil?
 
     file_handles = file_tokens.evaluate(interpreter)
-    file_handles[0]
+    FileHandle.new(file_handles[0])
   end
 
   def add_needed_value(items, shape)

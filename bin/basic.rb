@@ -159,7 +159,7 @@ class Shell
     if args.empty?
       $options.each do |option|
         name = option[0].upcase
-        value = option[1].value.to_s.upcase
+        value = option[1].to_s.upcase
         @console_io.print_line(name + ' ' + value)
       end
     elsif args.size == 1
@@ -259,9 +259,13 @@ class Shell
       @program.profile(args, show_timing)
       @console_io.newline
     when 'RENUMBER'
-      if @program.check
-        renumber_map = @program.renumber
-        @interpreter.renumber_breakpoints(renumber_map)
+      begin
+        if @program.check
+          renumber_map = @program.renumber(args)
+          @interpreter.renumber_breakpoints(renumber_map)
+        end
+      rescue BASICSyntaxError => e
+        @console_io.print_line("Cannot renumber the program: #{e}")
       end
     when 'CROSSREF'
       @program.crossref if @program.check
@@ -285,7 +289,7 @@ class Shell
     end
 
     need_prompt
-  rescue BASICCommandError => e
+  rescue BASICCommandError, BASICRuntimeError, BASICSyntaxError => e
     @console_io.print_line(e.to_s)
     @console_io.newline
     true
@@ -457,6 +461,9 @@ $options['lock_fornext'] =
 
 $options['match_fornext'] =
   Option.new(boolean, options.key?(:match_fornext))
+
+$options['max_line_num'] = 9999
+$options['min_line_num'] = 1
 
 newline_speed = 0
 newline_speed = 10 if options.key?(:tty_lf)

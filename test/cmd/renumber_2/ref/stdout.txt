@@ -1,0 +1,104 @@
+BASIC-1965 interpreter version -1
+
+READY
+LOAD "renumber.bas"
+READY
+LIST
+2 REM TEST RENUMBER COMMAND
+4 GOTO 80
+6 GOSUB 50
+8 REM ON K GOTO 80,82
+10 REM ON G GOSUB 50,52
+12 REM GOTO N OF 80,82
+14 IF A < B THEN 70
+16 REM IF B = 7 THEN 72 ELSE 74
+50 REM GOSUB TARGET 1
+52 RETURN
+60 REM GOSUB TARGET 2
+62 RETURN
+70 REM IF THEN TARGET
+72 REM IF THEN TARGET
+74 REM IF ELSE TARGET
+80 REM GOTO TARGET 1
+82 REM GOTO TARGET 2
+99 END
+
+READY
+CROSSREF
+Cross reference
+
+Numeric constants:
+
+String constants:
+
+Functions:
+
+User-defined functions:
+
+Variables:
+A:	14
+B:	14
+
+Used but not assigned: A, B
+
+Operators:
+<(_,_):	14
+
+Line numbers:
+50:	6
+70:	14
+80:	4
+
+READY
+RENUMBER 5,7
+READY
+LIST
+7 REM TEST RENUMBER COMMAND
+12 GOTO 82
+17 GOSUB 47
+22 REM ON K GOTO 80,82
+27 REM ON G GOSUB 50,52
+32 REM GOTO N OF 80,82
+37 IF A < B THEN 67
+42 REM IF B = 7 THEN 72 ELSE 74
+47 REM GOSUB TARGET 1
+52 RETURN
+57 REM GOSUB TARGET 2
+62 RETURN
+67 REM IF THEN TARGET
+72 REM IF THEN TARGET
+77 REM IF ELSE TARGET
+82 REM GOTO TARGET 1
+87 REM GOTO TARGET 2
+92 END
+
+READY
+CROSSREF
+Cross reference
+
+Numeric constants:
+
+String constants:
+
+Functions:
+
+User-defined functions:
+
+Variables:
+A:	37
+B:	37
+
+Used but not assigned: A, B
+
+Operators:
+<(_,_):	37
+
+Line numbers:
+47:	17
+67:	37
+82:	12
+
+READY
+EXIT
+BASIC-1965 ended
+

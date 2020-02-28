@@ -261,6 +261,8 @@ end
 # reads values from file and writes values to file
 class FileHandler
   def initialize(file_name)
+    raise(BASICRuntimeError, 'No file name') if file_name.nil?
+
     @file_name = file_name
     @mode = nil
     @file = nil
@@ -311,8 +313,8 @@ class FileHandler
   end
 
   def last_was_numeric
-    # for a file, this function does nothing
     set_mode(:print)
+    # for a file, this function does nothing
   end
 
   def newline
@@ -321,8 +323,8 @@ class FileHandler
   end
 
   def implied_newline
-    # for a file, this function does nothing
     set_mode(:print)
+    # for a file, this function does nothing
   end
 
   def tab

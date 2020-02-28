@@ -825,12 +825,14 @@ class FileHandle < AbstractElement
   def initialize(num)
     super()
 
+    legals = %w[Fixnum Integer NumericConstant IntegerConstant FileHandle]
+
     raise(BASICRuntimeError, 'Invalid file reference') unless
-      %w[Fixnum Integer].include?(num.class.to_s)
+      legals.include?(num.class.to_s)
 
-    raise(BASICRuntimeError, 'Invalid file number') if num < 0
+    raise(BASICRuntimeError, 'Invalid file number') if num.to_i < 0
 
-    @number = num
+    @number = num.to_i
     @file_handle = true
   end
 
@@ -844,6 +846,10 @@ class FileHandle < AbstractElement
 
   def to_s
     '#' + @number.to_s
+  end
+
+  def to_i
+    @number
   end
 end
 
