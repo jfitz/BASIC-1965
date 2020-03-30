@@ -338,7 +338,7 @@ def make_command_tokenbuilders
     PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
     ECHO FIELD_SEP HEADING
-    IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
+    IF IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
     PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
     QMARK_AFTER_PROMPT RANDOMIZE REQUIRE_INITIALIZED
@@ -351,11 +351,21 @@ def make_command_tokenbuilders
   operators = (un_ops + bi_ops).uniq
   tokenbuilders << ListTokenBuilder.new(operators, OperatorToken)
 
+  tokenbuilders << BreakTokenBuilder.new
+
+  tokenbuilders << ListTokenBuilder.new(['('], GroupStartToken)
+  tokenbuilders << ListTokenBuilder.new([')'], GroupEndToken)
   tokenbuilders << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
+
+  tokenbuilders <<
+    ListTokenBuilder.new(FunctionFactory.function_names, FunctionToken)
+
+  tokenbuilders <<
+    ListTokenBuilder.new(FunctionFactory.user_function_names, UserFunctionToken)
 
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new
-
+  tokenbuilders << VariableTokenBuilder.new
   tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanConstantToken)
   tokenbuilders << WhitespaceTokenBuilder.new
 end

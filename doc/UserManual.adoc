@@ -214,15 +214,44 @@ The second phase executes statements, starting with the lowest-numbered statemen
 BREAK
 ~~~~~
 
-Sets, clears, or displays breakpoints.
+Sets or displays breakpoints.
 
-Syntax: BREAK line-number
-Syntax: BREAK -line-number
+Syntax: BREAK line-number [IF condition]
 Syntax: BREAK
 
 To set a breakpoint, type 'BREAK' followed by a line number.
-To clear a breakpoint, type 'BREAK' followed by a negative line number.
 To display breakpoints, type 'BREAK' with no arguments.
+
+Examples:
+
+	BREAK 100
+	BREAK 220 IF A <> 0
+	BREAK 302 IF LEN(A$) > 0 AND ABS(T) < 100
+	BREAK
+
+Multiple conditional breakpoints may be set for the same line.
+
+Breakpoints may be set for lines that do not exist.
+The RUN command checks for breakpoints set for lines that do not exist and reports an error.
+
+NOBREAK
+~~~~~~~
+
+Clears or displays breakpoints.
+
+Syntax: NOBREAK line-number [IF condition]
+Syntax: NOBREAK
+
+To clear a breakpoint, type 'NOBREAK' followed by a line number.
+To display breakpoints, type 'NOBREAK' with no arguments.
+
+Examples:
+
+	NOBREAK 100
+	NOBREAK 220
+	NOBREAK
+
+Clearing the breakpoints for a line clears all breakpoints, absolute and conditional, for that line.
 
 CROSSREF
 ~~~~~~~~
