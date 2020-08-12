@@ -555,36 +555,39 @@ class XrefEntry
   attr_reader :signature
   attr_reader :is_ref
 
-  def initialize(variable, arguments, is_ref)
-    @variable = variable
-    @signature = nil
+  def self.make_signature(arguments)
+    return nil if arguments.nil?
 
-    unless arguments.nil?
-      sigil_chars = {
-        numeric: '_',
-        integer: '%',
-        text: '$',
-        boolean: '?'
-      }
-      sigils = []
+    sigil_chars = {
+      numeric: '_',
+      integer: '%',
+      string: '$',
+      boolean: '?'
+    }
 
-      arguments.each do |arg|
-        content_type = :empty
-        if arg.class.to_s == 'Array'
-          # an array is a parsed expression
-          unless arg.empty?
-            a0 = arg[-1]
-            content_type = a0.content_type
-          end
-        else
-          content_type = arg.content_type
+    sigils = []
+
+    arguments.each do |arg|
+      content_type = :empty
+      if arg.class.to_s == 'Array'
+        # an array is a parsed expression
+        unless arg.empty?
+          a0 = arg[-1]
+          content_type = a0.content_type
         end
-
-        sigils << sigil_chars[content_type]
+      else
+        content_type = arg.content_type
       end
-      @signature = sigils
+
+      sigils << sigil_chars[content_type]
     end
 
+    return sigils
+  end
+  
+  def initialize(variable, signature, is_ref)
+    @variable = variable
+    @signature = signature
     @is_ref = is_ref
   end
 
@@ -1048,7 +1051,8 @@ class AbstractExpression
 
           is_ref = thing.reference?
 
-          vars << XrefEntry.new(thing.to_s, arguments, is_ref)
+          signature = XrefEntry.make_signature(arguments)
+          vars << XrefEntry.new(thing.to_s, signature, is_ref)
         end
 
         previous = thing
@@ -1074,7 +1078,8 @@ class AbstractExpression
 
           is_ref = false
 
-          opers << XrefEntry.new(thing.to_s, arguments, is_ref)
+          signature = XrefEntry.make_signature(arguments)
+          opers << XrefEntry.new(thing.to_s, signature, is_ref)
         end
 
         previous = thing
@@ -1101,7 +1106,8 @@ class AbstractExpression
 
           is_ref = thing.reference?
 
-          vars << XrefEntry.new(thing.to_s, arguments, is_ref)
+          signature = XrefEntry.make_signature(arguments)
+          vars << XrefEntry.new(thing.to_s, signature, is_ref)
         end
 
         previous = thing
@@ -1128,7 +1134,8 @@ class AbstractExpression
 
           is_ref = thing.reference?
 
-          vars << XrefEntry.new(thing.to_s, arguments, is_ref)
+          signature = XrefEntry.make_signature(arguments)
+          vars << XrefEntry.new(thing.to_s, signature, is_ref)
         end
 
         previous = thing
@@ -1375,8 +1382,8 @@ class UserFunctionDefinition
       @variables << XrefEntry.new(argument.to_s, nil, true)
     end
 
-    # TODO: detect type of argument
-    xr = XrefEntry.new(@name.to_s, @arguments, true)
+    signature = XrefEntry.make_signature(@arguments)
+    xr = XrefEntry.new(@name.to_s, signature, true)
     @userfuncs = [xr] + @expression.userfuncs
   end
 
@@ -1386,6 +1393,11 @@ class UserFunctionDefinition
     @arguments.each { |arg| lines << arg.dump }
     lines += @expression.dump
     lines
+  end
+
+  def to_s
+    vnames = @arguments.map(&:to_s).join(',')
+    @name.to_s + '(' + vnames + ')' + '=' + @expression.to_s
   end
 
   def signature
