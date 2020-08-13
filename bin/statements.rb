@@ -844,7 +844,8 @@ class DefineFunctionStatement < AbstractStatement
 
   def pre_execute(interpreter)
     name = @definition.name
-    interpreter.set_user_function(name, @definition)
+    signature = @definition.sig
+    interpreter.set_user_function(name, signature, @definition)
   end
 
   def execute(_) end

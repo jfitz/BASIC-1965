@@ -602,12 +602,16 @@ class Interpreter
     @dimensions[variable]
   end
 
-  def set_user_function(name, definition)
-    @user_functions[name] = definition
+  def set_user_function(name, signature, definition)
+    sig = signature.join(',')
+    tag = name.to_s + '(' + sig + ')'
+    @user_functions[tag] = definition
   end
 
-  def get_user_function(name)
-    @user_functions[name]
+  def get_user_function(name, signature)
+    sig = signature.join(',')
+    tag = name.to_s + '(' + sig + ')'
+    @user_functions[tag]
   end
 
   def define_user_var_values(names_and_values)

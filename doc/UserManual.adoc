@@ -83,6 +83,7 @@ I have changed a few things:
 - The RND(X) function uses the passed value as an upper bound for the result. K&K BASIC ignores this parameter. Use the –ignore-rnd-arg option to match K&K.
 - The MAT assignment statement dimensions the target variable, so an earlier DIM is not needed
 - User-defined functions may have multiple parameters
+- You may have multiple user-defined functions with the same names and different signatures
 - The ARR statements are not mentioned in Kemeny and Kurtz or in Coan
 
 Running BASIC-1965
@@ -690,7 +691,7 @@ User-defined functions have names in the form 'FNx' where 'x' is a single letter
 
 The parameters in the definition must be single letters.
 They are not variable names.
-The invokation of the function may provide a variable name.
+The invokation of the function must provide a variable name or a value.
 (See examples below.)
 
 The definition for a user-defined function is an expression, similar to the right-hand side of the assignment in a LET statement.
@@ -711,6 +712,14 @@ Examples:
 The DEF statement is processed before the program runs, and processed only once.
 Thus, it does not have to appear before it is used in a LET statement.
 (Although tradition is that the DEF is specified before the function is used.)
+
+Multiple functions may be defined with the same name, provided they have different signatures.
+
+Examples:
+
+	10 DEF FNA(A) = INT(A)
+	20 DEF FNA(C,B) = COS(C)/SIN(B)
+	30 DEF FNA(A,B,C) = COS(C)/SIN(A)
 
 DIM
 ~~~
