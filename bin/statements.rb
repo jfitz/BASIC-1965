@@ -34,7 +34,7 @@ class StatementFactory
   def create(text, all_tokens, comment)
     begin
       statement = create_statement(text, all_tokens)
-    rescue BASICError => e
+    rescue BASICExpressionError, BASICRuntimeError => e
       statement = InvalidStatement.new(text, all_tokens, e)
     end
 
@@ -465,11 +465,11 @@ class InvalidStatement < AbstractStatement
   end
 
   def execute(_)
-    raise(BASICRuntimeError, @errors[0])
+    raise(BASICSyntaxError, @errors[0])
   end
 
   def pre_execute(_)
-    raise(BASICRuntimeError, @errors[0])
+    raise(BASICSyntaxError, @errors[0])
   end
 end
 
@@ -644,7 +644,8 @@ module InputFunctions
   end
 
   def zip(names, values)
-    raise(BASICRuntimeError, 'Too few items') if values.size < names.size
+    raise BASICRuntimeError.new('Too few items', 112) if
+      values.size < names.size
 
     results = []
     (0...names.size).each do |i|
@@ -895,7 +896,7 @@ class DimStatement < AbstractStatement
       subscripts = variable.subscripts
 
       if subscripts.empty?
-        raise BASICRuntimeError, 'DIM statement requires subscript range'
+        raise BASICSyntaxError, 'DIM statement requires subscript range'
       end
 
       interpreter.set_dimensions(variable, subscripts)
@@ -973,6 +974,8 @@ class FilesStatement < AbstractStatement
   def pre_execute(interpreter)
     file_names = @expressions.evaluate(interpreter)
     interpreter.add_file_names(file_names)
+  rescue BASICRuntimeError => e
+    raise BASICPreexecuteError.new(e.message, e.code)
   end
 
   def execute(_) end
@@ -1216,12 +1219,12 @@ class AbstractIfStatement < AbstractStatement
   def execute(interpreter)
     values = @expression.evaluate(interpreter)
 
-    raise(BASICRuntimeError, 'Expression error') unless
+    raise(BASICExpressionError, 'Expression error') unless
       values.size == 1
 
     result = values[0]
 
-    raise(BASICRuntimeError, 'Expression error') unless
+    raise(BASICExpressionError, 'Expression error') unless
       result.class.to_s == 'BooleanConstant'
 
     interpreter.next_line_number = @destination if result.value
@@ -1362,7 +1365,7 @@ class InputStatement < AbstractStatement
       values = file_values(fhr, interpreter)
     end
 
-    raise(BASICRuntimeError, 'Not enough values') if
+    raise BASICRuntimeError.new('Not enough values', 112) if
       values.size < item_names.size
 
     name_value_pairs =
@@ -1488,7 +1491,7 @@ class NextStatement < AbstractStatement
       expected = interpreter.top_fornext
       actual = fornext_control.control
       if actual != expected
-        raise(BASICRuntimeError,
+        raise(BASICSyntaxError,
               "Found NEXT #{actual} when expecting #{expected}")
       end
     end
@@ -1853,7 +1856,7 @@ class ArrInputStatement < AbstractStatement
       values = file_values(fhr, interpreter)
     end
 
-    raise(BASICRuntimeError, 'Not enough values') if
+    raise BASICRuntimeError.new('Not enough values', 112) if
       values.size < item_names.size
 
     # use names based on variable dimensions
@@ -1969,7 +1972,7 @@ class ArrReadStatement < AbstractStatement
     when 1
       read_array(name, dims, interpreter, ds)
     else
-      raise(BASICRuntimeError, 'Dimensions for ARR READ must be 1')
+      raise(BASICSyntaxError, 'Dimensions for ARR READ must be 1')
     end
   end
 
@@ -2104,7 +2107,7 @@ class ArrLetStatement < AbstractLetStatement
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
 
-    raise(BASICRuntimeError, 'Expected Array') if
+    raise(BASICSyntaxError, 'Expected Array') if
       r_value.class.to_s != 'BASICArray'
 
     r_value
@@ -2199,7 +2202,7 @@ class MatInputStatement < AbstractStatement
       values = file_values(fhr, interpreter)
     end
 
-    raise(BASICRuntimeError, 'Not enough values') if
+    raise BASICRuntimeError.new('Not enough values', 112) if
       values.size < item_names.size
 
     # use names based on variable dimensions
@@ -2314,7 +2317,7 @@ class MatReadStatement < AbstractStatement
     when 2
       read_matrix(name, dims, interpreter, ds)
     else
-      raise(BASICRuntimeError, 'Dimensions for MAT READ must be 1 or 2')
+      raise(BASICSyntaxError, 'Dimensions for MAT READ must be 1 or 2')
     end
   end
 
@@ -2444,7 +2447,7 @@ class MatLetStatement < AbstractLetStatement
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
 
-    raise(BASICRuntimeError, 'Expected Matrix') if
+    raise(BASICSyntaxError, 'Expected Matrix') if
       r_value.class.to_s != 'Matrix'
 
     interpreter.set_default_args('CON2', nil)

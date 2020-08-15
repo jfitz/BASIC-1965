@@ -6,16 +6,16 @@ class BASICSyntaxError < BASICError; end
 
 class BASICExpressionError < BASICSyntaxError; end
 
-class BASICPreexecuteError < BASICError; end
+class BASICTrappableError < BASICError
+  attr_reader :code
 
-class BASICRuntimeError < BASICError; end
+  def initialize(message='unknown error', code=0)
+    super(message)
 
-class BASICIOError < BASICRuntimeError; end
+    @code = code
+  end
+end
 
-class BASICValueError < BASICRuntimeError; end
+class BASICRuntimeError < BASICTrappableError; end
 
-class BASICFunctionError < BASICRuntimeError; end
-
-class BASICStatementError < BASICRuntimeError; end
-
-class BASICVariableError < BASICRuntimeError; end
+class BASICPreexecuteError < BASICTrappableError; end

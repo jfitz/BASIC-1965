@@ -596,15 +596,18 @@ class Program
       @line_number = line_number
       line = @lines[line_number]
       statement = line.statement
-      okay &=
-        statement.preexecute_a_statement(line_number, interpreter, @console_io)
+      begin
+        okay &=
+          statement.preexecute_a_statement(line_number,
+                                           interpreter,
+                                           @console_io)
+      rescue BASICPreexecuteError => e
+        @console_io.print_line("Error #{e.code} #{e.message}")
+        okay = false
+      end
     end
 
     okay
-  rescue BASICRuntimeError => e
-    message = "#{e.message} in line #{@line_number}"
-    @console_io.print_line(message)
-    false
   end
 
   def find_closing_next(control, current_line_number)
@@ -624,7 +627,7 @@ class Program
     end
 
     # if none found, error
-    raise(BASICRuntimeError, 'FOR without NEXT')
+    raise(BASICSyntaxError, 'FOR without NEXT')
   end
 
   def run(interpreter)

@@ -54,55 +54,55 @@ class Option
     when :bool
       legals = %w[TrueClass FalseClass]
 
-      raise(BASICRuntimeError, "Invalid type #{value.class} for boolean") unless
+      raise(BASICSyntaxError, "Invalid type #{value.class} for boolean") unless
         legals.include?(value.class.to_s)
     when :int
       legals = %w[Fixnum Integer]
 
-      raise(BASICRuntimeError, "Invalid type #{value.class} for integer") unless
+      raise(BASICSyntaxError, "Invalid type #{value.class} for integer") unless
         legals.include?(value.class.to_s)
 
       min = @defs[:min]
       if !min.nil? && value < min
-        raise(BASICRuntimeError, "Value #{value} below minimum #{min}")
+        raise(BASICSyntaxError, "Value #{value} below minimum #{min}")
       end
 
       max = @defs[:max]
       if !max.nil? && value > max
-        raise(BASICRuntimeError, "Value #{value} above maximum #{max}")
+        raise(BASICSyntaxError, "Value #{value} above maximum #{max}")
       end
     when :float
       legals = %w[Fixnum Integer Float Rational]
 
-      raise(BASICRuntimeError, "Invalid type #{value.class} for float") unless
+      raise(BASICSyntaxError, "Invalid type #{value.class} for float") unless
         legals.include?(value.class.to_s)
 
       min = @defs[:min]
       if !min.nil? && value < min
-        raise(BASICRuntimeError, "Value #{value} below minimum #{min}")
+        raise(BASICSyntaxError, "Value #{value} below minimum #{min}")
       end
 
       max = @defs[:max]
       if !max.nil? && value > max
-        raise(BASICRuntimeError, "Value #{value} above maximum #{max}")
+        raise(BASICSyntaxError, "Value #{value} above maximum #{max}")
       end
     when :string
       legals = %(String)
 
-      raise(BASICRuntimeError, "Invalid type #{value.class} for string") unless
+      raise(BASICSyntaxError, "Invalid type #{value.class} for string") unless
         legals.include?(value.class.to_s)
     when :list
       legal_types = %(String)
 
-      raise(BASICRuntimeError, "Invalid type #{value.class} for list") unless
+      raise(BASICSyntaxError, "Invalid type #{value.class} for list") unless
         legal_types.include?(value.class.to_s)
 
       legal_values = @defs[:values]
 
-      raise(BASICRuntimeError, "Invalid value #{value} for list") unless
+      raise(BASICSyntaxError, "Invalid value #{value} for list") unless
         legal_values.include?(value.to_s)
     else
-      raise(BASICRuntimeError, 'Unknown value type')
+      raise(BASICSyntaxError, 'Unknown value type')
     end
   end
 end
@@ -191,8 +191,8 @@ class Shell
           else
             @console_io.print_line('Incorrect value type')
           end
-        rescue BASICRuntimeError => e
-          @console_io.print_line(e.to_s)
+        rescue BASICSyntaxError => e
+          @console_io.print_line("Error #{e.code} {e}")
         end
         value = $options[kwd_d].value.to_s.upcase
         @console_io.print_line("#{kwd} #{value}")

@@ -18,7 +18,7 @@ class BASICArray
     when 1
       BASICArray.make_array(dimensions, NumericConstant.new(0))
     when 2
-      raise BASICRuntimeError, 'Too many dimensions in array'
+      raise BASICSyntaxError, 'Too many dimensions in array'
     end
   end
 
@@ -27,7 +27,7 @@ class BASICArray
     when 1
       BASICArray.make_array(dimensions, NumericConstant.new(1))
     when 2
-      raise BASICRuntimeError, 'Too many dimensions in array'
+      raise BASICSyntaxError, 'Too many dimensions in array'
     end
   end
 
@@ -80,22 +80,22 @@ class BASICArray
   def print(printer, interpreter)
     case @dimensions.size
     when 0
-      raise BASICRuntimeError, 'Need dimension in array'
+      raise BASICSyntaxError, 'Need dimension in array'
     when 1
       print_1(printer, interpreter)
     else
-      raise BASICRuntimeError, 'Too many dimensions in array'
+      raise BASICSyntaxError, 'Too many dimensions in array'
     end
   end
 
   def write(printer, interpreter)
     case @dimensions.size
     when 0
-      raise BASICRuntimeError, 'Need dimension in array'
+      raise BASICSyntaxError, 'Need dimension in array'
     when 1
       write_1(printer, interpreter)
     else
-      raise BASICRuntimeError, 'Too many dimensions in array'
+      raise BASICSyntaxError, 'Too many dimensions in array'
     end
   end
 
@@ -272,31 +272,31 @@ class Matrix
   def print(printer, interpreter)
     case @dimensions.size
     when 0
-      raise BASICRuntimeError, 'Need dimensions in matrix'
+      raise BASICSyntaxError, 'Need dimensions in matrix'
     when 1
       print_1(printer, interpreter)
     when 2
       print_2(printer, interpreter)
     else
-      raise BASICRuntimeError, 'Too many dimensions in matrix'
+      raise BASICSyntaxError, 'Too many dimensions in matrix'
     end
   end
 
   def write(printer, interpreter)
     case @dimensions.size
     when 0
-      raise BASICRuntimeError, 'Need dimensions in matrix'
+      raise BASICSyntaxError, 'Need dimensions in matrix'
     when 1
       write_1(printer, interpreter)
     when 2
       write_2(printer, interpreter)
     else
-      raise BASICRuntimeError, 'Too many dimensions in matrix'
+      raise BASICSyntaxError, 'Too many dimensions in matrix'
     end
   end
 
   def transpose_values
-    raise(BASICRuntimeError, 'TRN requires matrix') unless @dimensions.size == 2
+    raise(BASICSyntaxError, 'TRN requires matrix') unless @dimensions.size == 2
     new_values = {}
 
     base = $options['base'].value
@@ -313,9 +313,10 @@ class Matrix
   end
 
   def determinant
-    raise(BASICRuntimeError, 'DET requires matrix') unless @dimensions.size == 2
-    raise(BASICRuntimeError, 'DET requires square matrix') if
+    raise(BASICSyntaxError, 'DET requires matrix') unless @dimensions.size == 2
+    raise BASICRuntimeError.new('DET requires square matrix', 114) if
       @dimensions[1] != @dimensions[0]
+
     case @dimensions[0].to_i
     when 1
       get_value_2(1, 1)
@@ -1280,13 +1281,13 @@ class DeclarationExpression < AbstractExpression
   private
 
   def check_length
-    raise(BASICRuntimeError, 'Value list is empty (length 0)') if
+    raise(BASICExpressionError, 'Value list is empty (length 0)') if
       @parsed_expressions.empty?
   end
 
   def check_all_lengths
     @parsed_expressions.each do |parsed_expression|
-      raise(BASICRuntimeError, 'Value is not declaration (length 0)') if
+      raise(BASICExpressionError, 'Value is not declaration (length 0)') if
         parsed_expression.empty?
     end
   end
@@ -1294,7 +1295,7 @@ class DeclarationExpression < AbstractExpression
   def check_resolve_types
     @parsed_expressions.each do |parsed_expression|
       if parsed_expression[-1].class.to_s != 'Declaration'
-        raise(BASICRuntimeError,
+        raise(BASICExpressionError,
               "Value is not declaration (type #{parsed_expression[-1].class})")
       end
     end
@@ -1324,13 +1325,13 @@ class TargetExpression < AbstractExpression
   private
 
   def check_length
-    raise(BASICRuntimeError, 'Value list is empty (length 0)') if
+    raise(BASICSyntaxError, 'Value list is empty (length 0)') if
       @parsed_expressions.empty?
   end
 
   def check_all_lengths
     @parsed_expressions.each do |parsed_expression|
-      raise(BASICRuntimeError, 'Value is not assignable (length 0)') if
+      raise(BASICExpressionError, 'Value is not assignable (length 0)') if
         parsed_expression.empty?
     end
   end
@@ -1339,7 +1340,7 @@ class TargetExpression < AbstractExpression
     @parsed_expressions.each do |parsed_expression|
       if parsed_expression[-1].class.to_s != 'Variable' &&
          parsed_expression[-1].class.to_s != 'UserFunction'
-        raise(BASICRuntimeError,
+        raise(BASICExpressionError,
               "Value is not assignable (type #{parsed_expression[-1].class})")
       end
     end

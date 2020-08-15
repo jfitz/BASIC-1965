@@ -118,12 +118,12 @@ class Interpreter
   end
 
   def verify_next_line_number
-    raise BASICRuntimeError, 'Program terminated without END' if
+    raise BASICSyntaxError, 'Program terminated without END' if
       @next_line_number.nil?
 
     return if @program.line_number?(@next_line_number)
 
-    raise(BASICRuntimeError, "Line number #{@next_line_number} not found")
+    raise(BASICSyntaxError, "Line number #{@next_line_number} not found")
   end
 
   public
@@ -168,7 +168,7 @@ class Interpreter
   def execute_a_statement
     detect = $options['detect_infinite_loop'].value
 
-    raise(BASICRuntimeError, 'Infinite loop detected') if
+    raise(BASICSyntaxError, 'Infinite loop detected') if
       detect && @previous_line_numbers.include?(@current_line_number)
 
     @previous_line_numbers << @current_line_number
@@ -319,17 +319,17 @@ class Interpreter
         verify_next_line_number
         @current_line_number = @next_line_number
       end
-    rescue BASICRuntimeError => e
+    rescue BASICTrappableError => e
       @console_io.newline_when_needed
 
       if @current_line_number.nil?
         @console_io.print_line(e.message)
       else
-        @console_io.print_line("#{e.message} in line #{@current_line_number}")
+        @console_io.print_line("Error #{e.code} #{e.message} in line #{@current_line_number}")
       end
 
       stop_running
-    rescue BASICExpressionError => e
+    rescue BASICSyntaxError => e
       @console_io.newline_when_needed
 
       if @current_line_number.nil?
@@ -514,7 +514,7 @@ class Interpreter
 
       act = stack.length
 
-      raise(BASICRuntimeError, 'Bad expression') if act != exp
+      raise(BASICExpressionError, 'Bad expression') if act != exp
 
       next if act.zero?
 
@@ -638,7 +638,7 @@ class Interpreter
     int_subscripts = normalize_subscripts(subscripts)
     dimensions = make_dimensions(variable, int_subscripts.size)
 
-    raise(BASICRuntimeError, 'Incorrect number of subscripts') if
+    raise(BASICSyntaxError, 'Incorrect number of subscripts') if
       int_subscripts.size != dimensions.size
 
     # lower bound
@@ -648,11 +648,13 @@ class Interpreter
     # check subscript value against lower and upper bounds
     int_subscripts.zip(dimensions).each do |pair|
       if pair[0] < lower
-        raise(BASICRuntimeError, "Subscript #{pair[0]} out of range")
+        raise BASICRuntimeError.new(
+                "Subscript #{pair[0]} out of range", 117)
       end
 
       if pair[0] > pair[1]
-        raise(BASICRuntimeError, "Subscript #{pair[0]} out of range #{pair[1]}")
+        raise BASICRuntimeError.new(
+                "Subscript #{pair[0]} out of range #{pair[1]}", 117)
       end
     end
   end
@@ -680,7 +682,7 @@ class Interpreter
       v = variable.to_s
       unless @variables.key?(v)
         if $options['require_initialized'].value
-          raise(BASICRuntimeError, "Uninitialized variable #{v}")
+          raise BASICRuntimeError.new("Uninitialized variable #{v}", 118)
         end
 
         # define a value for this variable
@@ -722,22 +724,22 @@ class Interpreter
       'Variable'
     ]
 
-    raise(BASICRuntimeError,
+    raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable name") unless
       legals.include?(variable.class.to_s)
 
-    raise(BASICRuntimeError,
+    raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a scalar variable name") if
       variable.class.to_s == 'VariableName' && !variable.scalar?
 
     if $options['lock_fornext'].value &&
        @locked_variables.include?(variable)
-      raise(BASICRuntimeError, "Cannot change locked variable #{variable}")
+      raise BASICRuntimeError.new("Cannot change locked variable #{variable}", 119)
     end
 
     # check that value type matches variable type
     unless variable.compatible?(value)
-      raise(BASICRuntimeError,
+      raise(BASICSyntaxError,
             "Type mismatch '#{value}' is not #{variable.content_type}")
     end
 
@@ -781,8 +783,8 @@ class Interpreter
     return unless $options['lock_fornext'].value
 
     if @locked_variables.include?(variable)
-      raise(BASICExeption,
-            "Attempt to lock an already locked variable #{variable}")
+      raise BASICRuntimeError.new(
+            "Attempt to lock an already locked variable #{variable}", 133)
     end
 
     @locked_variables << variable
@@ -792,8 +794,8 @@ class Interpreter
     return unless $options['lock_fornext'].value
 
     unless @locked_variables.include?(variable)
-      raise(BASICRuntimeError,
-            "Attempt to unlock a variable #{variable} not locked")
+      raise BASICRuntimeError.new(
+            "Attempt to unlock a variable #{variable} not locked", 121)
     end
 
     @locked_variables.delete(variable)
@@ -804,7 +806,8 @@ class Interpreter
   end
 
   def pop_return
-    raise(BASICRuntimeError, 'RETURN without GOSUB') if @return_stack.empty?
+    raise BASICRuntimeError.new('RETURN without GOSUB', 122) if
+      @return_stack.empty?
 
     # remove all lines from the subroutine in the 'visited' list
     while !@previous_line_numbers.empty? &&
@@ -828,7 +831,7 @@ class Interpreter
   def retrieve_fornext(control)
     fornext = @fornexts[control]
 
-    raise(BASICRuntimeError, 'NEXT without FOR') if fornext.nil?
+    raise BASICRuntimeError.new('NEXT without FOR', 123) if fornext.nil?
 
     fornext
   end
@@ -842,7 +845,7 @@ class Interpreter
   end
 
   def top_fornext
-    raise(BASICRuntimeError, 'Implied NEXT without FOR') if
+    raise BASICRuntimeError.new('Implied NEXT without FOR', 124) if
       @fornext_stack.empty?
 
     @fornext_stack[-1]
@@ -850,10 +853,10 @@ class Interpreter
 
   def add_file_names(file_names)
     file_names.each do |name|
-      raise(BASICRuntimeError, 'Invalid file name') unless
+      raise BASICRuntimeError.new('Invalid file name', 125) unless
         name.text_constant?
 
-      raise(BASICRuntimeError, "File '#{name.value}' not found") unless
+      raise BASICRuntimeError.new("File '#{name.value}' not found", 126) unless
         File.file?(name.value)
 
       file_handle = FileHandle.new(@file_handlers.size + 1)
@@ -864,7 +867,7 @@ class Interpreter
   def get_file_handler(file_handle, mode)
     return @console_io if file_handle.nil?
 
-    raise(BASICRuntimeError, 'Unknown file handle') unless
+    raise BASICRuntimeError.new('Unknown file handle', 127) unless
       @file_handlers.key?(file_handle)
 
     fh = @file_handlers[file_handle]
@@ -875,7 +878,7 @@ class Interpreter
   def get_data_store(file_handle)
     return @data_store if file_handle.nil?
 
-    raise(BASICRuntimeError, 'Unknown file handle') unless
+    raise BASICRuntimeError.new('Unknown file handle', 127) unless
       @file_handlers.key?(file_handle)
 
     fh = @file_handlers[file_handle]
