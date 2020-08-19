@@ -865,6 +865,8 @@ end
 
 # base class for expressions
 class AbstractExpression
+  attr_reader :comprehension_effort
+  
   def initialize(tokens, default_shape)
     @unparsed_expression = tokens.map(&:to_s).join
     @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
@@ -877,6 +879,16 @@ class AbstractExpression
     elements.each { |element| parser.parse(element) }
     @parsed_expressions = parser.expressions
     set_arguments_1(@parsed_expressions)
+
+    @comprehension_effort = 1
+    @parsed_expressions.each do |parsed_expression|
+      prev = nil
+      parsed_expression.each do |element|
+        @comprehension_effort += 1 if element.operator?
+        @comprehension_effort += 1 if element.operator? && !prev.nil? && prev.operator?
+        prev = element
+      end
+    end
   end
 
   def to_s
@@ -1360,6 +1372,7 @@ class UserFunctionDefinition
   attr_reader :operators
   attr_reader :functions
   attr_reader :userfuncs
+  attr_reader :comprehension_effort
 
   def initialize(tokens)
     # parse into name '=' expression
@@ -1388,6 +1401,8 @@ class UserFunctionDefinition
     signature = XrefEntry.make_signature(@arguments)
     xr = XrefEntry.new(@name.to_s, signature, true)
     @userfuncs = [xr] + @expression.userfuncs
+
+    @comprehension_effort = @expression.comprehension_effort
   end
 
   def dump
@@ -1495,6 +1510,7 @@ class Assignment
   attr_reader :operators
   attr_reader :functions
   attr_reader :userfuncs
+  attr_reader :comprehension_effort
 
   def initialize(tokens, shape)
     # parse into variable, '=', expression
@@ -1516,6 +1532,7 @@ class Assignment
     @target = TargetExpression.new(@token_lists[0], shape)
     @expression = ValueExpression.new(@token_lists[2], shape)
     make_references
+    @comprehension_effort = @target.comprehension_effort + @expression.comprehension_effort
   end
 
   def dump

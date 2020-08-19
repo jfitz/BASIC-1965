@@ -411,6 +411,17 @@ class Program
     num
   end
 
+  def comprehension_effort
+    num = 0
+
+    @lines.each do |_, line|
+      statement = line.statement
+      num += statement.comprehension_effort
+    end
+
+    num
+  end
+
   def mccabe_complexity
     num = 1
 
@@ -573,6 +584,8 @@ class Program
     density = 0
     density = num_comm.to_f / num_valid.to_f if num_valid > 0
     lines << 'Comment density: ' + ('%.3f' % density)
+
+    lines << 'Comprehension effort: ' + comprehension_effort.to_s
 
     lines << 'McCabe complexity: ' + mccabe_complexity.to_s
 
