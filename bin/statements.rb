@@ -807,6 +807,8 @@ class DataStatement < AbstractStatement
     ds = interpreter.get_data_store(nil)
     data_list = @expressions.evaluate(interpreter)
     ds.store(data_list)
+  rescue BASICRuntimeError => e
+    raise BASICPreexecuteError.new(e.message, e.code)
   end
 
   def execute(_) end
@@ -852,6 +854,8 @@ class DefineFunctionStatement < AbstractStatement
     name = @definition.name
     signature = @definition.sig
     interpreter.set_user_function(name, signature, @definition)
+  rescue BASICRuntimeError => e
+    raise BASICPreexecuteError.new(e.message, e.code)
   end
 
   def execute(_) end

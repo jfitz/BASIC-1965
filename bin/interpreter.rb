@@ -605,12 +605,20 @@ class Interpreter
   def set_user_function(name, signature, definition)
     sig = signature.join(',')
     tag = name.to_s + '(' + sig + ')'
+
+    raise BASICRuntimeError.new("Redefinition of #{tag}", 152) if
+      @user_functions.key?(tag)
+
     @user_functions[tag] = definition
   end
 
   def get_user_function(name, signature)
     sig = signature.join(',')
     tag = name.to_s + '(' + sig + ')'
+
+    raise BASICRuntimeError.new("Unknown function #{tag}", 150) unless
+      @user_functions.key?(tag)
+
     @user_functions[tag]
   end
 
