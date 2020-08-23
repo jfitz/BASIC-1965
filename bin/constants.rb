@@ -436,14 +436,12 @@ class NumericConstant < AbstractValueElement
     raise(BASICSyntaxError, "'#{text}' is not a number") if f.nil?
 
     precision = $options['precision'].value
-    if precision != 0 && f != Float::INFINITY
-      if f != 0
-        abs = f.abs
-        log = Math.log10(abs)
-        ceil = log.ceil
-        digits = -(ceil - precision)
-        f = f.round(digits)
-      end
+    if precision != 'INFINITE' && f != 0 && f != Float::INFINITY
+      abs_value = f.abs
+      log_value = Math.log10(abs_value)
+      ceil_value = log_value.ceil
+      num_digits = -(ceil_value - precision)
+      f = f.round(num_digits)
     end
 
     @token_chars = text.to_s

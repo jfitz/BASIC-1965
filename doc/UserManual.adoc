@@ -120,7 +120,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--int-floor |The INT function truncates towards negative infinity. (Normally towards zero.)
 |--lock-fornext |Lock control variables to FOR/NEXT loops. Variables can be read but not changed.
 |--match-fornext |Require exact pairing of FOR/NEXT loops. The default allows programs to jump out of an inner loop and continue the outer loop.
-|--precision |Sets the precision for numeric variables. Default is 6, maximum is 16.
+|--precision |Sets the precision for numeric variables. Default is 6, maximum is 16. Set to "INFINITE" for maximum precision provided by Ruby.
 |--print-width width |Specifies a print width. Lines will wrap at the specified column. Default value is 72.
 |--prompt-count |INPUT statements prompt the user with the number of expected values.
 |--provenance |When displaying a variable in a trace, also display the line number where it was set.
@@ -442,7 +442,7 @@ The OPTION command overrides the command-line setting.
 |INT_FLOOR |TRUE or FALSE |FALSE |Sets truncation towards negative infinity instead of towards zero
 |LOCK_FORNEXT |TRUE or FALSE |FALSE |Do not allow changes to FOR/NEXT control variables within the loop
 |NEWLINE_SPEED |numeric |0 |Limit printing speed only for newlines
-|PRECISION |numeric 1 to 16 |6 |Sets the precision for numeric values
+|PRECISION |numeric 1 to 16, or "INFINITE" |6 |Sets the precision for numeric values
 |PRINT_SPEED |numeric |0 |Limit printing speed (a value of 10 emulates an old TeleType)
 |PRINT_WIDTH |numeric |72 |Wrap output at the specified column; 0 disables wrapping
 |PROMPT_COUNT |TRUE or FALSE |FALSE |Displays the number of items to be input
