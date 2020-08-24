@@ -918,9 +918,23 @@ class Program
   def print_numeric_refs(title, refs)
     @console_io.print_line(title)
 
+    # find length of longest token
+    num_spaces = 0
     refs.keys.sort.each do |ref|
+      token = ref.symbol_text
+      size = token.size
+      num_spaces = size if size > num_spaces
+    end
+
+    # print each token and its referring lines
+    refs.keys.sort.each do |ref|
+      token = ref.symbol_text
+      n_spaces = num_spaces - token.size + 2
+      spaces = ' ' * n_spaces
       lines = refs[ref]
-      line = ref.token_chars + ":\t" + lines.map(&:to_s).uniq.join(', ')
+      line_refs = lines.map(&:to_s).uniq.join(', ')
+      line = token + ":" + spaces + line_refs
+
       @console_io.print_line(line)
     end
 
@@ -930,10 +944,36 @@ class Program
   def print_object_refs(title, refs)
     @console_io.print_line(title)
 
+    # find length of longest token
+    num_spaces = 0
     refs.keys.sort.each do |ref|
+      token = ref.to_s
+      size = token.size
+      # longer tokens list token and referrals on second line
+      num_spaces = size if size > num_spaces && size < 41
+    end
+
+    # print each token and its referring lines
+    refs.keys.sort.each do |ref|
+      token = ref.to_s
       lines = refs[ref]
-      line = ref.to_s + ":\t" + lines.map(&:to_s).uniq.join(', ')
-      @console_io.print_line(line)
+      line_refs = lines.map(&:to_s).uniq.join(', ')
+
+      if token.size < 41
+        n_spaces = num_spaces - token.size + 2
+        spaces = ' ' * n_spaces
+        line = token + ":" + spaces + line_refs
+        @console_io.print_line(line)
+      else
+        n_spaces = 5
+        spaces = ' ' * n_spaces
+
+        line = token + ":"
+        @console_io.print_line(line)
+
+        line = spaces + line_refs
+        @console_io.print_line(line)
+      end
     end
 
     @console_io.newline

@@ -421,7 +421,7 @@ class NumericConstant < AbstractValueElement
 
   public
 
-  attr_reader :token_chars
+  attr_reader :symbol_text
 
   def initialize(text)
     super()
@@ -444,7 +444,7 @@ class NumericConstant < AbstractValueElement
       f = f.round(num_digits)
     end
 
-    @token_chars = text.to_s
+    @symbol_text = text.to_s
     @value = float_to_possible_int(f)
     @numeric_constant = true
   end
@@ -466,7 +466,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def hash
-    @value.hash + @token_chars.hash
+    @value.hash + @symbol_text.hash
   end
 
   def <=>(other)
