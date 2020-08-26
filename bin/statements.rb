@@ -26,16 +26,16 @@ class StatementFactory
       comment = all_tokens.pop if
         !all_tokens.empty? && all_tokens[-1].comment?
 
-      line = create(line_text, all_tokens, comment)
+      line = create(line_number, line_text, all_tokens, comment)
     end
     [line_number, line]
   end
 
-  def create(text, all_tokens, comment)
+  def create(line_number, text, all_tokens, comment)
     begin
-      statement = create_statement(text, all_tokens)
-    rescue BASICExpressionError, BASICRuntimeError => e
-      statement = InvalidStatement.new(text, all_tokens, e)
+      statement = create_statement(line_number, text, all_tokens)
+    rescue BASICExpressionError => e
+      statement = InvalidStatement.new(line_number, text, all_tokens, e)
     end
 
     Line.new(text, statement, all_tokens, comment)
@@ -135,8 +135,8 @@ class StatementFactory
     results
   end
 
-  def create_statement(text, statement_tokens)
-    statement = EmptyStatement.new
+  def create_statement(line_number, text, statement_tokens)
+    statement = EmptyStatement.new(line_number)
 
     unless statement_tokens.empty?
       statement = nil
@@ -147,11 +147,13 @@ class StatementFactory
         if @statement_definitions.key?(keywords)
           tokens_lists = split_keywords(tokens)
 
+          statement_definition = @statement_definitions[keywords]
+
           statement =
-            @statement_definitions[keywords].new(keywords, tokens_lists)
+            statement_definition.new(line_number, keywords, tokens_lists)
         else
           if keywords.empty?
-            statement = UnknownStatement.new(text) if statement.nil?
+            statement = UnknownStatement.new(line_number, text) if statement.nil?
           else
             keyword = keywords.pop
             tokens.unshift(keyword)
@@ -188,7 +190,7 @@ class AbstractStatement
     []
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     @keywords = keywords
     @executable = true
     @tokens = tokens_lists.flatten
@@ -453,8 +455,8 @@ end
 
 # unparsed statement
 class InvalidStatement < AbstractStatement
-  def initialize(text, tokens_lists, error)
-    super([], tokens_lists)
+  def initialize(line_number, text, tokens_lists, error)
+    super(line_number, [], tokens_lists)
 
     @valid = false
     @executable = false
@@ -477,8 +479,8 @@ end
 
 # unknown statement
 class UnknownStatement < AbstractStatement
-  def initialize(text)
-    super([], [])
+  def initialize(line_number, text)
+    super(line_number, [], [])
 
     @valid = false
     @executable = false
@@ -495,8 +497,8 @@ end
 
 # empty statement (line number only)
 class EmptyStatement < AbstractStatement
-  def initialize
-    super([], [])
+  def initialize(line_number)
+    super(line_number, [], [])
 
     @valid = false
     @executable = false
@@ -523,7 +525,7 @@ class RemarkStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     @valid = false
@@ -783,7 +785,7 @@ class DataStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     @executable = false
@@ -822,7 +824,7 @@ class DefineFunctionStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     @executable = false
@@ -869,7 +871,7 @@ class DimStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -924,7 +926,7 @@ class EndStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     @autonext = false
@@ -964,7 +966,7 @@ class FilesStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     @executable = false
@@ -1007,7 +1009,7 @@ class ForStatement < AbstractStatement
     %w[TO STEP]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template1 = [[1, '>='], 'TO', [1, '>=']]
@@ -1127,7 +1129,7 @@ class GosubStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(line_number, keywords, tokens_lists)
     super
 
     template = [[1]]
@@ -1182,7 +1184,7 @@ class GotoStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(line_number, keywords, tokens_lists)
     super
 
     @autonext = false
@@ -1232,7 +1234,7 @@ end
 
 # common functions for IF statements
 class AbstractIfStatement < AbstractStatement
-  def initialize(_, _)
+  def initialize(_, text, tokens_lists)
     super
   end
 
@@ -1299,7 +1301,7 @@ class IfStatement < AbstractIfStatement
     ['THEN']
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>='], 'THEN', [1]]
@@ -1338,7 +1340,7 @@ class InputStatement < AbstractStatement
   include FileFunctions
   include InputFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -1405,7 +1407,7 @@ end
 
 # common functions for LET and LET-less statements
 class AbstractLetStatement < AbstractStatement
-  def initialize(_, _)
+  def initialize(_, _, _)
     super
   end
 
@@ -1418,7 +1420,7 @@ end
 
 # common functions for scalar LET and LET-less statement
 class AbstractScalarLetStatement < AbstractLetStatement
-  def initialize(_, tokens_lists)
+  def initialize(_, _, tokens_lists)
     super
 
     template = [[3, '>=']]
@@ -1454,7 +1456,7 @@ class LetStatement < AbstractScalarLetStatement
     ]
   end
 
-  def initialize(_, _)
+  def initialize(_, _, _)
     super
   end
 
@@ -1481,7 +1483,7 @@ class NextStatement < AbstractStatement
 
   attr_reader :control
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1]]
@@ -1558,7 +1560,7 @@ class OptionStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [OptionStatement.extra_keywords, [1, '>=']]
@@ -1600,7 +1602,7 @@ class PrintStatement < AbstractStatement
   include FileFunctions
   include PrintFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template1 = []
@@ -1652,8 +1654,9 @@ class ReadStatement < AbstractStatement
   include FileFunctions
   include ReadFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
+
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
@@ -1692,8 +1695,9 @@ class RestoreStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
+
     template = []
 
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
@@ -1717,8 +1721,9 @@ class ReturnStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
+
     @autonext = false
 
     template = []
@@ -1743,8 +1748,9 @@ class StopStatement < AbstractStatement
     ]
   end
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
+
     @autonext = false
 
     template = []
@@ -1774,7 +1780,7 @@ class WriteStatement < AbstractStatement
   include FileFunctions
   include WriteFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -1823,7 +1829,7 @@ class ArrInputStatement < AbstractStatement
   include FileFunctions
   include InputFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -1916,7 +1922,7 @@ class ArrPrintStatement < AbstractStatement
   include FileFunctions
   include PrintFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -1965,7 +1971,7 @@ class ArrReadStatement < AbstractStatement
   include FileFunctions
   include ReadFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -2036,7 +2042,7 @@ class ArrWriteStatement < AbstractStatement
   include FileFunctions
   include WriteFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -2083,7 +2089,7 @@ class ArrLetStatement < AbstractLetStatement
     ]
   end
 
-  def initialize(_, tokens_lists)
+  def initialize(_, _, tokens_lists)
     super
 
     template = [[3, '>=']]
@@ -2164,7 +2170,7 @@ class MatInputStatement < AbstractStatement
   include FileFunctions
   include InputFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -2271,7 +2277,7 @@ class MatPrintStatement < AbstractStatement
   include FileFunctions
   include PrintFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -2317,7 +2323,7 @@ class MatReadStatement < AbstractStatement
   include FileFunctions
   include ReadFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -2406,7 +2412,7 @@ class MatWriteStatement < AbstractStatement
   include FileFunctions
   include WriteFunctions
 
-  def initialize(keywords, tokens_lists)
+  def initialize(_, keywords, tokens_lists)
     super
 
     template = [[1, '>=']]
@@ -2452,7 +2458,7 @@ class MatLetStatement < AbstractLetStatement
     ]
   end
 
-  def initialize(_, tokens_lists)
+  def initialize(_, _, tokens_lists)
     super
 
     template = [[3, '>=']]
