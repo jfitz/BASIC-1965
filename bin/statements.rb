@@ -1138,6 +1138,12 @@ class GosubStatement < AbstractStatement
       if tokens_lists[0][0].numeric_constant?
         @destination = LineNumber.new(tokens_lists[0][0])
         @linenums = [@destination]
+
+        if @destination > line_number
+          @comprehension_effort += 1
+        else
+          @comprehension_effort += 2
+        end
       else
         @errors << "Invalid line number #{tokens[0]}"
       end
@@ -1195,6 +1201,12 @@ class GotoStatement < AbstractStatement
       if tokens_lists[0][0].numeric_constant?
         @destination = LineNumber.new(tokens_lists[0][0])
         @linenums = [@destination]
+
+        if @destination > line_number
+          @comprehension_effort += 1
+        else
+          @comprehension_effort += 2
+        end
       else
         @errors << "Invalid line number #{tokens[0]}"
       end
@@ -1301,7 +1313,7 @@ class IfStatement < AbstractIfStatement
     ['THEN']
   end
 
-  def initialize(_, keywords, tokens_lists)
+  def initialize(line_number, keywords, tokens_lists)
     super
 
     template = [[1, '>='], 'THEN', [1]]
@@ -1309,6 +1321,13 @@ class IfStatement < AbstractIfStatement
     if check_template(tokens_lists, template)
       begin
         @destination = LineNumber.new(tokens_lists[2][0])
+        @linenums = [@destination]
+
+        if @destination > line_number
+          @comprehension_effort += 1
+        else
+          @comprehension_effort += 2
+        end
       rescue BASICSyntaxError => e
         @errors << e.message
       end
@@ -1321,7 +1340,6 @@ class IfStatement < AbstractIfStatement
         @errors << e.message
       end
 
-      @linenums = [@destination]
       @mccabe = 1
     else
       @errors << 'Syntax error'
