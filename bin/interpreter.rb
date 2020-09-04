@@ -48,6 +48,7 @@ end
 
 # the interpreter
 class Interpreter
+  attr_writer :program
   attr_reader :current_line_number
   attr_accessor :next_line_number
   attr_reader :console_io
@@ -128,8 +129,23 @@ class Interpreter
 
   public
 
-  def run(program)
-    @program = program
+  def run
+    raise(BASICCommandError, 'No program loaded') if @program.empty?
+
+    unless @program.errors.empty?
+      text = @program.errors.join('\n')
+      raise(BASICCommandError, text)
+    end
+    
+    # if breakpoint error, raise error
+    errors = check_breakpoints(@program.lines)
+
+    unless errors.empty?
+      text = errors.join('\n')
+      raise(BASICCommandError, text)
+    end
+
+    @program.reset_profile_metrics
 
     @step_mode = false
     trace = $options['trace'].value
@@ -450,6 +466,7 @@ class Interpreter
 
   def check_breakpoints(lines)
     errors = []
+
     @line_breakpoints.keys.each do |bp_line|
       errors << 'Breakpoint for non-existent line ' + bp_line.to_s unless
         lines.key?(bp_line)

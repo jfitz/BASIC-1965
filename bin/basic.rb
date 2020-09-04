@@ -233,7 +233,8 @@ class Shell
         $options.each { |name, option| options_2[name] = duplicate(option) }
 
         timing = Benchmark.measure do
-          @program.run(@interpreter)
+          @interpreter.program = @program
+          @interpreter.run
         end
 
         # restore options to undo any changes during the run
@@ -532,6 +533,9 @@ console_io = ConsoleIo.new
 
 tokenbuilders = make_interpreter_tokenbuilders
 
+interpreter = Interpreter.new(console_io)
+interpreter.set_default_args('RND', NumericConstant.new(1))
+
 if $options['heading'].value
   console_io.print_line('BASIC-1965 interpreter version -1')
   console_io.newline
@@ -579,11 +583,9 @@ unless run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   nametokens = [TextConstant.new(token)]
   if program.load(nametokens) && program.check
-    interpreter = Interpreter.new(console_io)
-    interpreter.set_default_args('RND', NumericConstant.new(1))
-
     timing = Benchmark.measure do
-      program.run(interpreter)
+      interpreter.program = program
+      interpreter.run
       console_io.newline
     end
 
@@ -603,12 +605,9 @@ end
 # no command-line directives, so run BASIC shell
 if list_filename.nil? && parse_filename.nil? && analyze_filename.nil? &&
    pretty_filename.nil? && cref_filename.nil? && run_filename.nil?
-  interpreter = Interpreter.new(console_io)
-  interpreter.set_default_args('RND', NumericConstant.new(1))
   tokenbuilders = make_command_tokenbuilders
 
   shell = Shell.new(console_io, interpreter, program, tokenbuilders)
-
   shell.run
 end
 
