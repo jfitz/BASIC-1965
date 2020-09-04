@@ -255,7 +255,7 @@ class AbstractStatement
     @errors.each { |error| console_io.print_line(' ' + error) }
   end
 
-  def program_check(_, _, _)
+  def okay(_, _, _)
     true
   end
 
@@ -941,7 +941,7 @@ class EndStatement < AbstractStatement
     ['']
   end
 
-  def program_check(program, console_io, line_number)
+  def okay(program, console_io, line_number)
     next_line = program.find_next_line_number(line_number)
 
     return true if next_line.nil?
@@ -1160,7 +1160,7 @@ class GosubStatement < AbstractStatement
     [@destination]
   end
 
-  def program_check(program, console_io, line_number)
+  def okay(program, console_io, line_number)
     return true if program.line_number?(@destination)
 
     console_io.print_line(
@@ -1223,7 +1223,7 @@ class GotoStatement < AbstractStatement
     [@destination]
   end
 
-  def program_check(program, console_io, line_number)
+  def okay(program, console_io, line_number)
     return true if program.line_number?(@destination)
 
     console_io.print_line(
@@ -1284,7 +1284,7 @@ class AbstractIfStatement < AbstractStatement
     [@destination]
   end
 
-  def program_check(program, console_io, line_number)
+  def okay(program, console_io, line_number)
     return true if program.line_number?(@destination)
 
     if @destination.nil?

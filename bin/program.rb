@@ -135,8 +135,8 @@ class Line
     Line.new(text, @statement, keywords + tokens, @comment)
   end
 
-  def check(program, console_io, line_number)
-    @statement.program_check(program, console_io, line_number)
+  def okay(program, console_io, line_number)
+    @statement.okay(program, console_io, line_number)
   end
 end
 
@@ -233,8 +233,29 @@ class Program
     @statement_factory.tokenbuilders = tokenbuilders
   end
 
+  def clear
+    @lines = {}
+  end
+
   def empty?
     @lines.empty?
+  end
+
+  def okay
+    result = true
+
+    @lines.keys.sort.each do |line_number|
+      r = @lines[line_number].okay(self, @console_io, line_number)
+      result &&= r
+    end
+
+    result
+  end
+
+  def find_next_line_number(line_number)
+    line_numbers = @lines.keys.sort
+    index = line_numbers.index(line_number)
+    line_numbers[index + 1]
   end
 
   def line_number?(line_number)
@@ -1181,24 +1202,5 @@ class Program
       line_num, line = @statement_factory.parse(blank_line)
       @lines[line_num] = line
     end
-  end
-
-  public
-
-  def check
-    result = true
-
-    @lines.keys.sort.each do |line_number|
-      r = @lines[line_number].check(self, @console_io, line_number)
-      result &&= r
-    end
-
-    result
-  end
-
-  def find_next_line_number(line_number)
-    line_numbers = @lines.keys.sort
-    index = line_numbers.index(line_number)
-    line_numbers[index + 1]
   end
 end

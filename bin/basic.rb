@@ -227,7 +227,7 @@ class Shell
       @interpreter.clear_variables
       @interpreter.clear_all_breakpoints
     when 'RUN'
-      if @program.check
+      if @program.okay
         # duplicate the options
         options_2 = {}
         $options.each { |name, option| options_2[name] = duplicate(option) }
@@ -267,7 +267,7 @@ class Shell
       @console_io.newline
     when 'RENUMBER'
       begin
-        if @program.check
+        if @program.okay
           renumber_map = @program.renumber(args)
           @interpreter.renumber_breakpoints(renumber_map)
         end
@@ -275,13 +275,13 @@ class Shell
         @console_io.print_line("Cannot renumber the program: #{e}")
       end
     when 'CROSSREF'
-      @program.crossref if @program.check
+      @program.crossref if @program.okay
     when 'DIMS'
       @interpreter.dump_dims
     when 'PARSE'
       @program.parse(args)
     when 'ANALYZE'
-      @program.analyze if @program.check
+      @program.analyze if @program.okay
     when 'TOKENS'
       @program.list(args, true)
     when 'UDFS'
@@ -561,7 +561,7 @@ end
 unless analyze_filename.nil?
   token = TextConstantToken.new('"' + analyze_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.analyze if program.load(nametokens) && program.check
+  program.analyze if program.load(nametokens) && program.okay
 end
 
 # pretty-print the source
@@ -582,7 +582,7 @@ end
 unless run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   nametokens = [TextConstant.new(token)]
-  if program.load(nametokens) && program.check
+  if program.load(nametokens) && program.okay
     timing = Benchmark.measure do
       interpreter.program = program
       interpreter.run
