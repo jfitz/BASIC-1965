@@ -129,6 +129,43 @@ class Interpreter
 
   public
 
+  def program_load(tokens)
+    if tokens.empty?
+      @console_io.print_line('Filename not specified')
+      return false
+    end
+
+    if tokens.size > 1
+      @console_io.print_line('Too many items specified')
+      return false
+    end
+
+    token = tokens[0]
+
+    unless token.text_constant?
+      @console_io.print_line('File name must be quoted literal')
+      return false
+    end
+
+    filename = token.value.strip
+    if filename.empty?
+      @console_io.print_line('Filename not specified')
+      return false
+    end
+
+    begin
+      File.open(filename, 'r') do |file|
+        @program.clear
+        file.each_line do |line|
+          line = @console_io.ascii_printables(line)
+          @program.store_line(line, false)
+        end
+      end
+    rescue Errno::ENOENT
+      @console_io.print_line("File '#{filename}' not found")
+    end
+  end
+
   def run
     raise(BASICCommandError, 'No program loaded') if @program.empty?
 

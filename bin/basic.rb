@@ -137,7 +137,7 @@ class Shell
 
   def process_line(line)
     # starts with a number, so maybe it is a program line
-    return @program.store_program_line(line, true) if /\A\d/ =~ line
+    return @program.store_line(line, true) if /\A\d/ =~ line
 
     # immediate command -- tokenize and execute
     tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
@@ -233,7 +233,6 @@ class Shell
         $options.each { |name, option| options_2[name] = duplicate(option) }
 
         timing = Benchmark.measure do
-          @interpreter.program = @program
           @interpreter.run
         end
 
@@ -252,7 +251,7 @@ class Shell
       @interpreter.clear_breakpoints(args)
     when 'LOAD'
       @interpreter.clear_all_breakpoints
-      @program.load(args)
+      @interpreter.program_load(args)
     when 'SAVE'
       @program.save(args)
     when 'LIST'
@@ -542,49 +541,49 @@ if $options['heading'].value
 end
 
 program = Program.new(console_io, tokenbuilders)
+interpreter.program = program
 
 # list the source
 unless list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.list('', list_tokens) if program.load(nametokens)
+  program.list('', list_tokens) if interpreter.program_load(nametokens)
 end
 
 # show parse dump
 unless parse_filename.nil?
   token = TextConstantToken.new('"' + parse_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.parse('') if program.load(nametokens)
+  program.parse('') if interpreter.program_load(nametokens)
 end
 
 # show analysis
 unless analyze_filename.nil?
   token = TextConstantToken.new('"' + analyze_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.analyze if program.load(nametokens) && program.okay
+  program.analyze if interpreter.program_load(nametokens) && program.okay
 end
 
 # pretty-print the source
 unless pretty_filename.nil?
   token = TextConstantToken.new('"' + pretty_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.pretty('') if program.load(nametokens)
+  program.pretty('') if interpreter.program_load(nametokens)
 end
 
 # cross-reference the source
 unless cref_filename.nil?
   token = TextConstantToken.new('"' + cref_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.crossref if program.load(nametokens)
+  program.crossref if interpreter.program_load(nametokens)
 end
 
 # run the source
 unless run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   nametokens = [TextConstant.new(token)]
-  if program.load(nametokens) && program.okay
+  if interpreter.program_load(nametokens) && program.okay
     timing = Benchmark.measure do
-      interpreter.program = program
       interpreter.run
       console_io.newline
     end
