@@ -129,33 +129,61 @@ class Interpreter
 
   public
 
-  def program_load(tokens)
-    if tokens.empty?
-      @console_io.print_line('Filename not specified')
-      return false
-    end
+  def program_okay?
+    @program.okay?
+  end
 
-    if tokens.size > 1
-      @console_io.print_line('Too many items specified')
-      return false
-    end
+  def program_parse(args)
+    @program.parse(args)
+  end
+  
+  def program_list(args, list_tokens)
+    @program.list(args, list_tokens)
+  end
+  
+  def program_pretty(args)
+    @program.pretty(args)
+  end
+  
+  def program_delete(args)
+    @program.delete(args)
+  end
+  
+  def program_profile(args, show_timing)
+    @program.profile(args, show_timing)
+  end
+  
+  def program_crossref
+    @program.crossref
+  end
+  
+  def program_analyze
+    @program.analyze
+  end
+  
+  def parse_filename(tokens)
+    raise(BASICCommandError, 'Filename not specified') if tokens.empty?
 
     token = tokens[0]
 
-    unless token.text_constant?
-      @console_io.print_line('File name must be quoted literal')
-      return false
-    end
+    raise(BASICCommandError, 'Too many items specified') if
+      tokens.size > 1
+
+    raise(BASICCommandError, 'File name must be quoted literal') unless
+      token.text_constant?
 
     filename = token.value.strip
-    if filename.empty?
-      @console_io.print_line('Filename not specified')
-      return false
-    end
+
+    raise(BASICCommandError, 'Filename not specified') if filename.empty?
+
+    filename
+  end
+
+  def program_load(filename)
+    @program.clear
 
     begin
       File.open(filename, 'r') do |file|
-        @program.clear
         file.each_line do |line|
           line = @console_io.ascii_printables(line)
           @program.store_line(line, false)
@@ -164,6 +192,8 @@ class Interpreter
     rescue Errno::ENOENT
       @console_io.print_line("File '#{filename}' not found")
     end
+
+    @program.check
   end
 
   def run

@@ -227,7 +227,7 @@ class Shell
       @interpreter.clear_variables
       @interpreter.clear_all_breakpoints
     when 'RUN'
-      if @program.okay
+      if @interpreter.program_okay?
         # duplicate the options
         options_2 = {}
         $options.each { |name, option| options_2[name] = duplicate(option) }
@@ -251,22 +251,28 @@ class Shell
       @interpreter.clear_breakpoints(args)
     when 'LOAD'
       @interpreter.clear_all_breakpoints
-      @interpreter.program_load(args)
+      filename = @interpreter.parse_filename(args)
+      @interpreter.program_load(filename)
     when 'SAVE'
       @program.save(args)
     when 'LIST'
-      @program.list(args, false)
+      texts = @interpreter.program_list(args, false)
+      texts.each { |text| @console_io.print_line(text) }
+      @console_io.newline
     when 'PRETTY'
-      @program.pretty(args)
+      texts = @interpreter.program_pretty(args)
+      texts.each { |text| @console_io.print_line(text) }
+      @console_io.newline
     when 'DELETE'
-      @program.delete(args)
+      @interpreter.program_delete(args)
     when 'PROFILE'
       show_timing = $options['timing'].value
-      @program.profile(args, show_timing)
+      texts = @interpreter.program_profile(args, show_timing)
+      texts.each { |text| @console_io.print_line(text) }
       @console_io.newline
     when 'RENUMBER'
       begin
-        if @program.okay
+        if @interpreter.program_okay?
           renumber_map = @program.renumber(args)
           @interpreter.renumber_breakpoints(renumber_map)
         end
@@ -274,15 +280,24 @@ class Shell
         @console_io.print_line("Cannot renumber the program: #{e}")
       end
     when 'CROSSREF'
-      @program.crossref if @program.okay
+      if @interpreter.program_okay?
+        texts = @interpreter.program_crossref
+        texts.each { |text| @console_io.print_line(text) }
+      end
     when 'DIMS'
       @interpreter.dump_dims
     when 'PARSE'
-      @program.parse(args)
+      texts = @interpreter.program_parse(args)
+      texts.each { |text| @console_io.print_line(text) }
+      @console_io.newline
     when 'ANALYZE'
-      @program.analyze if @program.okay
+      if @interpreter.program_okay?
+        texts = @interpreter.program_analyze
+        texts.each { |text| @console_io.print_line(text) }
+      end
     when 'TOKENS'
-      @program.list(args, true)
+      texts = @interpreter.program_list(args, true)
+      texts.each { |text| @console_io.print_line(text) }
     when 'UDFS'
       @interpreter.dump_user_functions
     when 'VARS'
@@ -547,42 +562,74 @@ interpreter.program = program
 unless list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.list('', list_tokens) if interpreter.program_load(nametokens)
+
+  filename = interpreter.parse_filename(nametokens)
+  if interpreter.program_load(filename)
+    texts = interpreter.program_list('', list_tokens)
+    texts.each { |text| console_io.print_line(text) }
+  end
+
+  console_io.newline
 end
 
 # show parse dump
 unless parse_filename.nil?
   token = TextConstantToken.new('"' + parse_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.parse('') if interpreter.program_load(nametokens)
+
+  filename = interpreter.parse_filename(nametokens)
+  if interpreter.program_load(filename)
+    texts = interpreter.program_parse('')
+    texts.each { |text| console_io.print_line(text) }
+  end
+
+  console_io.newline
 end
 
 # show analysis
 unless analyze_filename.nil?
   token = TextConstantToken.new('"' + analyze_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.analyze if interpreter.program_load(nametokens) && program.okay
+  filename = interpreter.parse_filename(nametokens)
+  if interpreter.program_load(filename) && interpreter.program_okay?
+    texts = interpreter.program_analyze
+    texts.each { |text| console_io.print_line(text) }
+  end
 end
 
 # pretty-print the source
 unless pretty_filename.nil?
   token = TextConstantToken.new('"' + pretty_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.pretty('') if interpreter.program_load(nametokens)
+
+  filename = interpreter.parse_filename(nametokens)
+  if interpreter.program_load(filename)
+    texts = interpreter.program_pretty('')
+    texts.each { |text| console_io.print_line(text) }
+  end
+
+  console_io.newline
 end
 
 # cross-reference the source
 unless cref_filename.nil?
   token = TextConstantToken.new('"' + cref_filename + '"')
   nametokens = [TextConstant.new(token)]
-  program.crossref if interpreter.program_load(nametokens)
+
+  filename = interpreter.parse_filename(nametokens)
+  if interpreter.program_load(filename)
+    texts = interpreter.program_crossref
+    texts.each { |text| console_io.print_line(text) }
+  end
 end
 
 # run the source
 unless run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   nametokens = [TextConstant.new(token)]
-  if interpreter.program_load(nametokens) && program.okay
+
+  filename = interpreter.parse_filename(nametokens)
+  if interpreter.program_load(filename) && interpreter.program_okay?
     timing = Benchmark.measure do
       interpreter.run
       console_io.newline
@@ -595,7 +642,8 @@ unless run_filename.nil?
     end
 
     if show_profile
-      program.profile('', show_timing)
+      texts = interpreter.program_profile('', show_timing)
+      texts.each { |text| console_io.print_line(text) }
       console_io.newline
     end
   end

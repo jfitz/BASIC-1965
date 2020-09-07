@@ -245,7 +245,7 @@ class Program
     @errors = check_program
   end
 
-  def okay
+  def okay?
     result = true
 
     @lines.keys.sort.each do |line_number|
@@ -316,73 +316,75 @@ class Program
   end
 
   def list(args, list_tokens)
+    texts = []
     line_number_range = line_list_spec(args)
 
     if !@lines.empty?
       line_numbers = line_number_range.line_numbers
-      list_lines_errors(line_numbers, list_tokens)
-      @errors.each { |error| @console_io.print_line(error) }
+      texts += list_lines_errors(line_numbers, list_tokens)
+      texts += @errors
     else
-      @console_io.print_line('No program loaded')
+      texts << 'No program loaded'
     end
 
-    @console_io.newline
+    texts
   end
 
   def parse(args)
+    texts = []
     line_number_range = line_list_spec(args)
 
     if !@lines.empty?
       line_numbers = line_number_range.line_numbers
-      parse_lines_errors(line_numbers)
+      texts += parse_lines_errors(line_numbers)
     else
-      @console_io.print_line('No program loaded')
+      texts << 'No program loaded'
     end
 
-    @console_io.newline
+    texts
   end
 
   def analyze
+    texts = []
+    
     if !@lines.empty?
       # report statistics
-      @console_io.print_line('Statistics:')
-      @console_io.newline
-      lines = code_statistics
-      lines.each { |line| @console_io.print_line(line) }
-      @console_io.newline
+      texts << 'Statistics:'
+      texts << ''
+      texts += code_statistics
+      texts << ''
 
       # report complexity
-      @console_io.print_line('Complexity:')
-      @console_io.newline
-      lines = code_complexity
-      lines.each { |line| @console_io.print_line(line) }
-      @console_io.newline
+      texts << 'Complexity:'
+      texts << ''
+      texts += code_complexity
+      texts << ''
 
       # report unreachable lines
-      @console_io.print_line('Unreachable code:')
-      @console_io.newline
-      lines = unreachable_code
-      lines.each { |line| @console_io.print_line(line) }
-      @console_io.newline
+      texts << 'Unreachable code:'
+      texts << ''
+      texts += unreachable_code
+      texts << ''
     else
-      @console_io.print_line('No program loaded')
+      texts << 'No program loaded'
     end
 
-    @console_io.newline
+    texts
   end
 
   def pretty(args)
+    texts = []
     line_number_range = line_list_spec(args)
 
     if !@lines.empty?
       line_numbers = line_number_range.line_numbers
-      pretty_lines_errors(line_numbers)
-      @errors.each { |error| @console_io.print_line(error) }
+      texts += pretty_lines_errors(line_numbers)
+      texts += @errors
     else
-      @console_io.print_line('No program loaded')
+      texts << 'No program loaded'
     end
 
-    @console_io.newline
+    texts
   end
 
   def reset_profile_metrics
@@ -670,10 +672,11 @@ class Program
   end
 
   def profile(args, show_timing)
+    texts = []
     line_number_range = line_list_spec(args)
 
     if @lines.empty?
-      @console_io.print_line('No program loaded')
+      texts << 'No program loaded'
       return
     end
 
@@ -736,8 +739,7 @@ class Program
   def delete(args)
     line_number_range = line_list_spec(args)
 
-    raise(BASICCommandError, 'No program loaded') if
-      @lines.empty?
+    raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
     raise(BASICCommandError, 'Type NEW to delete an entire program') if
       line_number_range.range_type == :all
@@ -874,7 +876,7 @@ class Program
   end
 
   def print_numeric_refs(title, refs)
-    @console_io.print_line(title)
+    texts = [title]
 
     # find length of longest token
     num_spaces = 0
@@ -891,16 +893,15 @@ class Program
       spaces = ' ' * n_spaces
       lines = refs[ref]
       line_refs = lines.map(&:to_s).uniq.join(', ')
-      line = token + ":" + spaces + line_refs
 
-      @console_io.print_line(line)
+      texts << token + ":" + spaces + line_refs
     end
 
-    @console_io.newline
+    texts << ''
   end
 
   def print_object_refs(title, refs)
-    @console_io.print_line(title)
+    texts = [title]
 
     # find length of longest token
     num_spaces = 0
@@ -920,24 +921,23 @@ class Program
       if token.size < 41
         n_spaces = num_spaces - token.size + 2
         spaces = ' ' * n_spaces
-        line = token + ":" + spaces + line_refs
-        @console_io.print_line(line)
+
+        texts << line = token + ":" + spaces + line_refs
       else
         n_spaces = 5
         spaces = ' ' * n_spaces
 
-        line = token + ":"
-        @console_io.print_line(line)
-
-        line = spaces + line_refs
-        @console_io.print_line(line)
+        texts << token + ":"
+        texts << spaces + line_refs
       end
     end
 
-    @console_io.newline
+    texts << ''
   end
 
   def print_unused(variables)
+    texts = []
+    
     # split variable references into 'reference' and 'value' lists
     vars_refs = []
     vars_vals = []
@@ -962,14 +962,16 @@ class Program
     end
 
     unless unused.empty?
-      @console_io.print_line('Assigned but not used: ' + unused.join(', '))
-      @console_io.newline()
+      texts << 'Assigned but not used: ' + unused.join(', ')
+      texts << ''
     end
 
     unless unassigned.empty?
-      @console_io.print_line('Used but not assigned: ' + unassigned.join(', '))
-      @console_io.newline()
+      texts << 'Used but not assigned: ' + unassigned.join(', ')
+      texts << ''
     end
+
+    texts
   end
   
   def make_summary(list)
@@ -991,37 +993,41 @@ class Program
 
   # generate cross-reference list
   def crossref
-    @console_io.print_line('Cross reference')
-    @console_io.newline
+    texts = []
+    
+    texts << 'Cross reference'
+    texts << ''
 
     nums_list = numeric_refs
     numerics = make_summary(nums_list)
-    print_numeric_refs('Numeric constants:', numerics)
+    texts += print_numeric_refs('Numeric constants:', numerics)
 
     strs_list = strings_refs
     strings = make_summary(strs_list)
-    print_object_refs('String constants:', strings)
+    texts += print_object_refs('String constants:', strings)
 
     funcs_list = function_refs
     functions = make_summary(funcs_list)
-    print_object_refs('Functions:', functions)
+    texts += print_object_refs('Functions:', functions)
 
     udfs_list = user_function_refs
     userfuncs = make_summary(udfs_list)
-    print_object_refs('User-defined functions:', userfuncs)
+    texts += print_object_refs('User-defined functions:', userfuncs)
 
     vars_list = variables_refs
     variables = make_summary(vars_list)
-    print_object_refs('Variables:', variables)
-    print_unused(variables)
+    texts += print_object_refs('Variables:', variables)
+    texts += print_unused(variables)
 
     opers_list = operators_refs
     operators = make_summary(opers_list)
-    print_object_refs('Operators:', operators)
+    texts += print_object_refs('Operators:', operators)
 
     lines_list = linenums_refs
     linenums = make_summary(lines_list)
-    print_object_refs('Line numbers:', linenums)
+    texts += print_object_refs('Line numbers:', linenums)
+
+    texts
   end
 
   private
@@ -1070,69 +1076,81 @@ class Program
   private
 
   def list_lines_errors(line_numbers, list_tokens)
+    texts = []
+    
     line_numbers.each do |line_number|
       line = @lines[line_number]
 
       # print the line
-      @console_io.print_line(line_number.to_s + line.list)
+      texts << line_number.to_s + line.list
 
       # print the errors
       statement = line.statement
-      statement.errors.each { |error| @console_io.print_line(' ' + error) }
+      statement.errors.each { |error| texts << ' ' + error }
 
       next unless list_tokens
 
       tokens = line.tokens
-      text_tokens = tokens.map(&:to_s)
-      @console_io.print_line('TOKENS: ' + text_tokens.to_s)
+      text = tokens.map(&:to_s)
+      texts << 'TOKENS: ' + text.to_s
     end
+
+    texts
   end
 
   def parse_lines_errors(line_numbers)
+    texts = []
+    
     line_numbers.each do |line_number|
       line = @lines[line_number]
 
       # print the line
-      @console_io.print_line(line_number.to_s + line.list)
-      statement = line.statement
+      texts << line_number.to_s + line.list
 
       # print the errors
-      statement.errors.each { |error| @console_io.print_line(' ' + error) }
+      statement = line.statement
+      statement.errors.each { |error| texts << ' ' + error }
 
       # print the line components
-      texts = statement.dump
-      texts.each { |text| @console_io.print_line(' ' + text) }
+      parses = statement.dump
+      parses.each { |text| texts << ' ' + text }
     end
+
+    texts
   end
 
   def pretty_lines_errors(line_numbers)
+    texts = []
+    
     line_numbers.each do |line_number|
       line = @lines[line_number]
-      number = line_number.to_s
 
       # print the line
-      pretty = line.pretty
-      @console_io.print_line(number + pretty)
+      texts << line_number.to_s + line.pretty
 
       # print the errors
       statement = line.statement
-      statement.errors.each { |error| @console_io.print_line(' ' + error) }
+      statement.errors.each { |error| texts << ' ' + error }
     end
+
+    texts
   end
 
   def profile_lines_errors(line_numbers, show_timing)
+    texts = []
+    
     line_numbers.each do |line_number|
       line = @lines[line_number]
-      number = line_number.to_s
 
       # print the line
-      profile = line.profile(show_timing)
-      @console_io.print_line(number + profile)
+      texts << line_number.to_s + line.profile(show_timing)
 
       # print the errors
       statement = line.statement
-      statement.errors.each { |error| @console_io.print_line(' ' + error) }
+      statement.errors.each { |error| texts << ' ' + error }
     end
+
+    texts
   end
 
   def list_lines(line_numbers)
