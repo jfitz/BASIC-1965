@@ -223,9 +223,10 @@ class Shell
     when 'EXIT'
       @done = true
     when 'NEW'
-      @program.cmd_new
+      @interpreter.program_new
       @interpreter.clear_variables
       @interpreter.clear_all_breakpoints
+      @console_io.newline
     when 'RUN'
       if @interpreter.program_okay?
         # duplicate the options
@@ -298,6 +299,7 @@ class Shell
     when 'TOKENS'
       texts = @interpreter.program_list(args, true)
       texts.each { |text| @console_io.print_line(text) }
+      @console_io.newline
     when 'UDFS'
       @interpreter.dump_user_functions
     when 'VARS'
