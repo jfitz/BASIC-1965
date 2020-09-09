@@ -164,7 +164,12 @@ class Interpreter
   def program_analyze
     @program.analyze
   end
-  
+
+  def program_renumber(args)
+    renumber_map = @program.renumber(args)
+    renumber_breakpoints(renumber_map)
+  end
+
   def parse_filename(tokens)
     raise(BASICCommandError, 'Filename not specified') if tokens.empty?
 

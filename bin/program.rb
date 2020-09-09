@@ -303,7 +303,7 @@ class Program
       end
     end
 
-    raise(BASICSyntaxError, 'Invalid renumber step') if step.zero?
+    raise(BASICCommandError, 'Invalid renumber step') if step.zero?
     
     [start, step]
   end
@@ -745,8 +745,8 @@ class Program
     new_lines = {}
 
     @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
       new_line_number = renumber_map[line_number]
+      line = @lines[line_number]
       new_lines[new_line_number] = line.renumber(renumber_map)
     end
 

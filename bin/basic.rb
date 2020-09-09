@@ -273,11 +273,8 @@ class Shell
       @console_io.newline
     when 'RENUMBER'
       begin
-        if @interpreter.program_okay?
-          renumber_map = @program.renumber(args)
-          @interpreter.renumber_breakpoints(renumber_map)
-        end
-      rescue BASICSyntaxError => e
+        @interpreter.program_renumber(args) if @interpreter.program_okay?
+      rescue BASICCommandError, BASICSyntaxError => e
         @console_io.print_line("Cannot renumber the program: #{e}")
       end
     when 'CROSSREF'
