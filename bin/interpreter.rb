@@ -205,6 +205,10 @@ class Interpreter
     @program.check
   end
 
+  def program_save(filename)
+    @program.save(filename)
+  end
+  
   def run
     raise(BASICCommandError, 'No program loaded') if @program.empty?
 

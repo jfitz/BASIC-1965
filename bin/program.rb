@@ -651,9 +651,7 @@ class Program
     profile_lines_errors(line_numbers, show_timing)
   end
 
-  private
-
-  def save_file(filename)
+  def save(filename)
     line_numbers = @lines.keys.sort
 
     begin
@@ -667,37 +665,6 @@ class Program
     rescue Errno::ENOENT
       @console_io.print_line("File '#{filename}' not opened")
     end
-  end
-
-  public
-
-  def save(tokens)
-    raise(BASICCommandError, 'No program loaded') if @lines.empty?
-
-    if tokens.empty?
-      @console_io.print_line('Filename not specified')
-      return false
-    end
-
-    if tokens.size > 1
-      @console_io.print_line('Too many items specified')
-      return false
-    end
-
-    token = tokens[0]
-
-    unless token.text_constant?
-      @console_io.print_line('File name must be text')
-      return false
-    end
-
-    filename = token.value.strip
-    if filename.empty?
-      @console_io.print_line('Filename not specified')
-      return false
-    end
-
-    save_file(filename)
   end
 
   def delete(args)

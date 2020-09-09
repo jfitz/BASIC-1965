@@ -255,7 +255,8 @@ class Shell
       filename = @interpreter.parse_filename(args)
       @interpreter.program_load(filename)
     when 'SAVE'
-      @program.save(args)
+      filename = @interpreter.parse_filename(args)
+      @interpreter.program_save(filename)
     when 'LIST'
       texts = @interpreter.program_list(args, false)
       texts.each { |text| @console_io.print_line(text) }
