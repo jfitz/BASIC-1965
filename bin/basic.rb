@@ -115,10 +115,9 @@ end
 
 # interactive shell
 class Shell
-  def initialize(console_io, interpreter, program, tokenbuilders)
+  def initialize(console_io, interpreter, tokenbuilders)
     @console_io = console_io
     @interpreter = interpreter
-    @program = program
     @tokenbuilders = tokenbuilders
     @invalid_tokenbuilder = InvalidTokenBuilder.new
   end
@@ -137,7 +136,7 @@ class Shell
 
   def process_line(line)
     # starts with a number, so maybe it is a program line
-    return @program.store_line(line, true) if /\A\d/ =~ line
+    return @interpreter.program_store_line(line, true) if /\A\d/ =~ line
 
     # immediate command -- tokenize and execute
     tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
@@ -549,14 +548,13 @@ tokenbuilders = make_interpreter_tokenbuilders
 
 interpreter = Interpreter.new(console_io)
 interpreter.set_default_args('RND', NumericConstant.new(1))
+program = Program.new(console_io, tokenbuilders)
+interpreter.program = program
 
 if $options['heading'].value
   console_io.print_line('BASIC-1965 interpreter version -1')
   console_io.newline
 end
-
-program = Program.new(console_io, tokenbuilders)
-interpreter.program = program
 
 # list the source
 unless list_filename.nil?
@@ -654,7 +652,7 @@ if list_filename.nil? && parse_filename.nil? && analyze_filename.nil? &&
    pretty_filename.nil? && cref_filename.nil? && run_filename.nil?
   tokenbuilders = make_command_tokenbuilders
 
-  shell = Shell.new(console_io, interpreter, program, tokenbuilders)
+  shell = Shell.new(console_io, interpreter, tokenbuilders)
   shell.run
 end
 

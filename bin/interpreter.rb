@@ -188,6 +188,10 @@ class Interpreter
     filename
   end
 
+  def program_store_line(line, print_errors)
+    @program.store_line(line, print_errors)
+  end
+
   def program_load(filename)
     @program.clear
 
