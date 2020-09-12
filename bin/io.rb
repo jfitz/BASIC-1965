@@ -20,14 +20,14 @@ module Reader
     evens = tokens.values_at(* tokens.each_index.select(&:even?))
 
     evens.each do |token|
-      raise BASICRuntimeError.new('Invalid input', :te_inp_no_num_text) unless
+      raise BASICRuntimeError.new(:te_inp_no_num_text) unless
         token.numeric_constant?
     end
 
     odds = tokens.values_at(* tokens.each_index.select(&:odd?))
 
     odds.each do |token|
-      raise BASICRuntimeError.new('Invalid input', :te_exp_sep) unless token.separator?
+      raise BASICRuntimeError.new(:te_exp_sep) unless token.separator?
     end
   end
 end
@@ -68,7 +68,7 @@ class ConsoleIo
   def read_line
     input_text = gets
 
-    raise BASICRuntimeError.new('End of file', :te_eof) if input_text.nil?
+    raise BASICRuntimeError.new(:te_eof) if input_text.nil?
 
     ascii_text = ascii_printables(input_text)
 
@@ -249,7 +249,7 @@ class DataStore
   end
 
   def read
-    raise BASICRuntimeError.new('Out of data', :te_out_of_data) if
+    raise BASICRuntimeError.new(:te_out_of_data) if
       @data_index >= @data_store.size
 
     @data_index += 1
@@ -264,7 +264,7 @@ end
 # reads values from file and writes values to file
 class FileHandler
   def initialize(file_name)
-    raise BASICRuntimeError.new('No file name', :te_fname_no) if file_name.nil?
+    raise BASICRuntimeError.new(:te_fname_no) if file_name.nil?
 
     @file_name = file_name
     @mode = nil
@@ -283,12 +283,12 @@ class FileHandler
       when :read
         @file = File.new(@file_name, 'rt')
       else
-        raise BASICRuntimeError.new('Invalid file mode', :te_mode_inv)
+        raise BASICRuntimeError.new(:te_mode_inv)
       end
 
       @mode = mode
     else
-      raise BASICRuntimeError.new('Inconsistent file operation', :te_op_inc) unless
+      raise BASICRuntimeError.new(:te_op_inc) unless
         @mode == mode
     end
   end
@@ -304,7 +304,7 @@ class FileHandler
   def read_line
     input_text = @file.gets
 
-    raise BASICRuntimeError.new('End of file', :te_eof) if input_text.nil?
+    raise BASICRuntimeError.new(:te_eof) if input_text.nil?
 
     input_text = input_text.chomp
     ascii_printables(input_text)
@@ -359,7 +359,7 @@ class FileHandler
     while data_store.empty?
       line = file.gets
 
-      raise BASICRuntimeError.new('End of file', :te_eof) if line.nil?
+      raise BASICRuntimeError.new(:te_eof) if line.nil?
 
       line = line.chomp
 

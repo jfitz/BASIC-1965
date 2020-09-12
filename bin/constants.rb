@@ -536,7 +536,7 @@ class NumericConstant < AbstractValueElement
       "Type mismatch (#{content_type}/#{other.content_type}) in divide()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
-    raise BASICRuntimeError.new('Divide by zero', :te_div_zero) if other.zero?
+    raise BASICRuntimeError.new(:te_div_zero) if other.zero?
 
     NumericConstant.new(@value.to_f / other.to_v.to_f)
   end
@@ -828,7 +828,7 @@ class FileHandle < AbstractElement
     raise(BASICSyntaxError, 'Invalid file reference') unless
       legals.include?(num.class.to_s)
 
-    raise BASICRuntimeError.new('Invalid file number', :te_fnum_inv) if num.to_i < 0
+    raise BASICRuntimeError.new(:te_fnum_inv) if num.to_i < 0
 
     @number = num.to_i
     @file_handle = true
