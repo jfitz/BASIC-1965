@@ -707,7 +707,7 @@ class Interpreter
     sig = signature.join(',')
     tag = name.to_s + '(' + sig + ')'
 
-    raise BASICRuntimeError.new("Redefinition of #{tag}", 152) if
+    raise BASICRuntimeError.new("Redefinition of #{tag}", :te_func_alr) if
       @user_functions.key?(tag)
 
     @user_functions[tag] = definition
@@ -717,7 +717,7 @@ class Interpreter
     sig = signature.join(',')
     tag = name.to_s + '(' + sig + ')'
 
-    raise BASICRuntimeError.new("Unknown function #{tag}", 150) unless
+    raise BASICRuntimeError.new("Unknown function #{tag}", :te_func_no) unless
       @user_functions.key?(tag)
 
     @user_functions[tag]
@@ -758,12 +758,12 @@ class Interpreter
     int_subscripts.zip(dimensions).each do |pair|
       if pair[0] < lower
         raise BASICRuntimeError.new(
-                "Subscript #{pair[0]} out of range", 117)
+                "Subscript #{pair[0]} out of range", :te_subscript_out)
       end
 
       if pair[0] > pair[1]
         raise BASICRuntimeError.new(
-                "Subscript #{pair[0]} out of range #{pair[1]}", 117)
+                "Subscript #{pair[0]} out of range #{pair[1]}", :te_subscript_out)
       end
     end
   end
@@ -791,7 +791,7 @@ class Interpreter
       v = variable.to_s
       unless @variables.key?(v)
         if $options['require_initialized'].value
-          raise BASICRuntimeError.new("Uninitialized variable #{v}", 118)
+          raise BASICRuntimeError.new("Uninitialized variable #{v}", :te_var_uninin)
         end
 
         # define a value for this variable
@@ -843,7 +843,7 @@ class Interpreter
 
     if $options['lock_fornext'].value &&
        @locked_variables.include?(variable)
-      raise BASICRuntimeError.new("Cannot change locked variable #{variable}", 119)
+      raise BASICRuntimeError.new("Cannot change locked variable #{variable}", :te_var_locked)
     end
 
     # check that value type matches variable type
@@ -893,7 +893,7 @@ class Interpreter
 
     if @locked_variables.include?(variable)
       raise BASICRuntimeError.new(
-            "Attempt to lock an already locked variable #{variable}", 133)
+            "Attempt to lock an already locked variable #{variable}", :te_var_locked2)
     end
 
     @locked_variables << variable
@@ -904,7 +904,7 @@ class Interpreter
 
     unless @locked_variables.include?(variable)
       raise BASICRuntimeError.new(
-            "Attempt to unlock a variable #{variable} not locked", 121)
+            "Attempt to unlock a variable #{variable} not locked", :te_var_no_lock)
     end
 
     @locked_variables.delete(variable)
@@ -915,7 +915,7 @@ class Interpreter
   end
 
   def pop_return
-    raise BASICRuntimeError.new('RETURN without GOSUB', 122) if
+    raise BASICRuntimeError.new('RETURN without GOSUB', :te_ret_no_gos) if
       @return_stack.empty?
 
     # remove all lines from the subroutine in the 'visited' list
@@ -940,7 +940,7 @@ class Interpreter
   def retrieve_fornext(control)
     fornext = @fornexts[control]
 
-    raise BASICRuntimeError.new('NEXT without FOR', 123) if fornext.nil?
+    raise BASICRuntimeError.new('NEXT without FOR', :te_next_no_for) if fornext.nil?
 
     fornext
   end
@@ -954,7 +954,7 @@ class Interpreter
   end
 
   def top_fornext
-    raise BASICRuntimeError.new('Implied NEXT without FOR', 124) if
+    raise BASICRuntimeError.new('Implied NEXT without FOR', :te_inext_no_for) if
       @fornext_stack.empty?
 
     @fornext_stack[-1]
@@ -962,10 +962,10 @@ class Interpreter
 
   def add_file_names(file_names)
     file_names.each do |name|
-      raise BASICRuntimeError.new('Invalid file name', 125) unless
+      raise BASICRuntimeError.new('Invalid file name', :te_fname_inv) unless
         name.text_constant?
 
-      raise BASICRuntimeError.new("File '#{name.value}' not found", 126) unless
+      raise BASICRuntimeError.new("File '#{name.value}' not found", :te_file_no_fnd) unless
         File.file?(name.value)
 
       file_handle = FileHandle.new(@file_handlers.size + 1)
@@ -976,7 +976,7 @@ class Interpreter
   def get_file_handler(file_handle, mode)
     return @console_io if file_handle.nil?
 
-    raise BASICRuntimeError.new('Unknown file handle', 127) unless
+    raise BASICRuntimeError.new('Unknown file handle', :te_fh_unk) unless
       @file_handlers.key?(file_handle)
 
     fh = @file_handlers[file_handle]
@@ -987,7 +987,7 @@ class Interpreter
   def get_data_store(file_handle)
     return @data_store if file_handle.nil?
 
-    raise BASICRuntimeError.new('Unknown file handle', 127) unless
+    raise BASICRuntimeError.new('Unknown file handle', :te_fh_unk) unless
       @file_handlers.key?(file_handle)
 
     fh = @file_handlers[file_handle]

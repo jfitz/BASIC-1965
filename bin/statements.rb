@@ -649,7 +649,7 @@ module InputFunctions
   end
 
   def zip(names, values)
-    raise BASICRuntimeError.new('Too few items', 112) if
+    raise BASICRuntimeError.new('Too few items', :te_too_few) if
       values.size < names.size
 
     results = []
@@ -810,7 +810,7 @@ class DataStatement < AbstractStatement
     data_list = @expressions.evaluate(interpreter)
     ds.store(data_list)
   rescue BASICRuntimeError => e
-    raise BASICPreexecuteError.new(e.message, e.code)
+    raise BASICPreexecuteError.new(e.message, e.scode)
   end
 
   def execute(_) end
@@ -857,7 +857,7 @@ class DefineFunctionStatement < AbstractStatement
     signature = @definition.sig
     interpreter.set_user_function(name, signature, @definition)
   rescue BASICRuntimeError => e
-    raise BASICPreexecuteError.new(e.message, e.code)
+    raise BASICPreexecuteError.new(e.message, e.scode)
   end
 
   def execute(_) end
@@ -991,7 +991,7 @@ class FilesStatement < AbstractStatement
     file_names = @expressions.evaluate(interpreter)
     interpreter.add_file_names(file_names)
   rescue BASICRuntimeError => e
-    raise BASICPreexecuteError.new(e.message, e.code)
+    raise BASICPreexecuteError.new(e.message, e.scode)
   end
 
   def execute(_) end
@@ -1407,7 +1407,7 @@ class InputStatement < AbstractStatement
       values = file_values(fhr, interpreter)
     end
 
-    raise BASICRuntimeError.new('Not enough values', 112) if
+    raise BASICRuntimeError.new('Not enough values', :te_too_few) if
       values.size < item_names.size
 
     name_value_pairs =
@@ -1912,7 +1912,7 @@ class ArrInputStatement < AbstractStatement
       values = file_values(fhr, interpreter)
     end
 
-    raise BASICRuntimeError.new('Not enough values', 112) if
+    raise BASICRuntimeError.new('Not enough values', :te_too_few) if
       values.size < item_names.size
 
     # use names based on variable dimensions
@@ -2267,7 +2267,7 @@ class MatInputStatement < AbstractStatement
       values = file_values(fhr, interpreter)
     end
 
-    raise BASICRuntimeError.new('Not enough values', 112) if
+    raise BASICRuntimeError.new('Not enough values', :te_too_few) if
       values.size < item_names.size
 
     # use names based on variable dimensions

@@ -565,7 +565,7 @@ class Program
 
     # build list of lines that are not reachable
     lines = []
-    reachable.keys.each do |line_number|
+    reachable.keys.sort.each do |line_number|
       statement = @lines[line_number].statement
       lines << "#{line_number}:#{statement.pretty}" if
         statement.executable && !reachable[line_number]
@@ -727,7 +727,7 @@ class Program
   def numeric_refs
     refs = {}
 
-    @lines.keys.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
       refs[line_number] = statement.numerics
@@ -739,7 +739,7 @@ class Program
   def strings_refs
     refs = {}
 
-    @lines.keys.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
       refs[line_number] = statement.strings
@@ -751,7 +751,7 @@ class Program
   def function_refs
     refs = {}
 
-    @lines.keys.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
       refs[line_number] = statement.functions
@@ -763,7 +763,7 @@ class Program
   def user_function_refs
     refs = {}
 
-    @lines.keys.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
       refs[line_number] = statement.userfuncs
@@ -775,7 +775,7 @@ class Program
   def variables_refs
     refs = {}
 
-    @lines.keys.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
       refs[line_number] = statement.variables
@@ -787,7 +787,7 @@ class Program
   def operators_refs
     refs = {}
 
-    @lines.keys.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
       refs[line_number] = statement.operators
@@ -799,7 +799,7 @@ class Program
   def linenums_refs
     refs = {}
 
-    @lines.keys.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statement = line.statement
       refs[line_number] = statement.linenums
