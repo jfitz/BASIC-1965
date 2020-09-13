@@ -206,7 +206,14 @@ class Interpreter
       @console_io.print_line("File '#{filename}' not found")
     end
 
-    @program.check
+    errors = @program.check
+    errors.empty?
+  end
+
+  def print_program_errors
+    errors = @program.errors
+
+    errors.each { |error| @console_io.print_line(error) }
   end
 
   def program_save(filename)
@@ -707,7 +714,7 @@ class Interpreter
     sig = signature.join(',')
     tag = name.to_s + '(' + sig + ')'
 
-    raise BASICRuntimeError.new(:te_func_alr, "Redefinition of #{tag}") if
+    raise BASICRuntimeError.new(:te_func_alr, tag) if
       @user_functions.key?(tag)
 
     @user_functions[tag] = definition
@@ -717,7 +724,7 @@ class Interpreter
     sig = signature.join(',')
     tag = name.to_s + '(' + sig + ')'
 
-    raise BASICRuntimeError.new(:te_func_no, "Unknown function #{tag}") unless
+    raise BASICRuntimeError.new(:te_func_no, tag) unless
       @user_functions.key?(tag)
 
     @user_functions[tag]
@@ -757,15 +764,11 @@ class Interpreter
     # check subscript value against lower and upper bounds
     int_subscripts.zip(dimensions).each do |pair|
       if pair[0] < lower
-        raise BASICRuntimeError.new(
-                :te_subscript_out,
-                "Subscript #{pair[0]} out of range")
+        raise BASICRuntimeError.new(:te_subscript_out, pair[0].to_s)
       end
 
       if pair[0] > pair[1]
-        raise BASICRuntimeError.new(
-                :te_subscript_out,
-                "Subscript #{pair[0]} out of range #{pair[1]}")
+        raise BASICRuntimeError.new(:te_subscript_out, pair[0].to_s)
       end
     end
   end
@@ -793,7 +796,7 @@ class Interpreter
       v = variable.to_s
       unless @variables.key?(v)
         if $options['require_initialized'].value
-          raise BASICRuntimeError.new(:te_var_uninin, "Uninitialized variable #{v}")
+          raise BASICRuntimeError.new(:te_var_uninin, v.to_s)
         end
 
         # define a value for this variable
@@ -845,7 +848,7 @@ class Interpreter
 
     if $options['lock_fornext'].value &&
        @locked_variables.include?(variable)
-      raise BASICRuntimeError.new(:te_var_locked, "Cannot change locked variable #{variable}")
+      raise BASICRuntimeError.new(:te_var_locked, variable.to_s)
     end
 
     # check that value type matches variable type
@@ -894,9 +897,7 @@ class Interpreter
     return unless $options['lock_fornext'].value
 
     if @locked_variables.include?(variable)
-      raise BASICRuntimeError.new(
-              :te_var_locked2,
-              "Attempt to lock an already locked variable #{variable}")
+      raise BASICRuntimeError.new(:te_var_locked2, variable.to_s)
     end
 
     @locked_variables << variable
@@ -906,9 +907,7 @@ class Interpreter
     return unless $options['lock_fornext'].value
 
     unless @locked_variables.include?(variable)
-      raise BASICRuntimeError.new(
-              :te_var_no_lock,
-              "Attempt to unlock a variable #{variable} not locked")
+      raise BASICRuntimeError.new(:te_var_no_lock, variable.to_s)
     end
 
     @locked_variables.delete(variable)
@@ -965,10 +964,10 @@ class Interpreter
 
   def add_file_names(file_names)
     file_names.each do |name|
-      raise BASICRuntimeError.new(:te_fname_inv) unless
+      raise BASICRuntimeError.new(:te_fname_inv, name.to_s) unless
         name.text_constant?
 
-      raise BASICRuntimeError.new(:te_file_no_fnd, "File '#{name.value}' not found") unless
+      raise BASICRuntimeError.new(:te_file_no_fnd, name.value.to_s) unless
         File.file?(name.value)
 
       file_handle = FileHandle.new(@file_handlers.size + 1)

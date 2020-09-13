@@ -9,13 +9,24 @@ class BASICExpressionError < BASICSyntaxError; end
 class BASICTrappableError < BASICError
   attr_reader :scode
   attr_reader :code
+  attr_reader :extra
 
-  def initialize(scode, message=nil)
-    @scode = scode
-    message = $error_messages[scode] if message.nil?
-    @code = $error_codes[scode]
-    message = "Unknown error code #{scode}" if @code.nil?
+  def initialize(scode, extra=nil)
+    message = $error_messages[scode]
     super(message)
+
+    @scode = scode
+    @code = $error_codes[scode]
+    @extra = extra
+  end
+
+  def message
+    message = $error_messages[scode]
+    message = "Unknown error #{@scode}" if message.nil?
+    
+    return message if @extra.nil?
+
+    message + ' for ' + @extra
   end
 end
 

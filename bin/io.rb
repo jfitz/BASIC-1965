@@ -288,8 +288,7 @@ class FileHandler
 
       @mode = mode
     else
-      raise BASICRuntimeError.new(:te_op_inc) unless
-        @mode == mode
+      raise BASICRuntimeError.new(:te_op_inc) unless @mode == mode
     end
   end
 

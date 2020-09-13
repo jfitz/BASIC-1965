@@ -253,16 +253,20 @@ class Shell
       @interpreter.clear_all_breakpoints
       filename = @interpreter.parse_filename(args)
       @interpreter.program_load(filename)
+      @interpreter.print_program_errors
+      @console_io.newline
     when 'SAVE'
       filename = @interpreter.parse_filename(args)
       @interpreter.program_save(filename)
     when 'LIST'
       texts = @interpreter.program_list(args, false)
       texts.each { |text| @console_io.print_line(text) }
+      @interpreter.print_program_errors
       @console_io.newline
     when 'PRETTY'
       texts = @interpreter.program_pretty(args)
       texts.each { |text| @console_io.print_line(text) }
+      @interpreter.print_program_errors
       @console_io.newline
     when 'DELETE'
       @interpreter.program_delete(args)
@@ -270,6 +274,7 @@ class Shell
       show_timing = $options['timing'].value
       texts = @interpreter.program_profile(args, show_timing)
       texts.each { |text| @console_io.print_line(text) }
+      @interpreter.print_program_errors
       @console_io.newline
     when 'RENUMBER'
       begin
@@ -277,21 +282,28 @@ class Shell
       rescue BASICCommandError, BASICSyntaxError => e
         @console_io.print_line("Cannot renumber the program: #{e}")
       end
+      @interpreter.print_program_errors
+      @console_io.newline
     when 'CROSSREF'
       if @interpreter.program_okay?
         texts = @interpreter.program_crossref
         texts.each { |text| @console_io.print_line(text) }
+      else
+        @interpreter.print_program_errors
       end
     when 'DIMS'
       @interpreter.dump_dims
     when 'PARSE'
       texts = @interpreter.program_parse(args)
       texts.each { |text| @console_io.print_line(text) }
+      @interpreter.print_program_errors
       @console_io.newline
     when 'ANALYZE'
       if @interpreter.program_okay?
         texts = @interpreter.program_analyze
         texts.each { |text| @console_io.print_line(text) }
+      else
+        @interpreter.print_program_errors
       end
     when 'TOKENS'
       texts = @interpreter.program_list(args, true)
@@ -565,6 +577,8 @@ unless list_filename.nil?
   if interpreter.program_load(filename)
     texts = interpreter.program_list('', list_tokens)
     texts.each { |text| console_io.print_line(text) }
+  else
+    interpreter.print_program_errors
   end
 
   console_io.newline
@@ -579,6 +593,8 @@ unless parse_filename.nil?
   if interpreter.program_load(filename)
     texts = interpreter.program_parse('')
     texts.each { |text| console_io.print_line(text) }
+  else
+    interpreter.print_program_errors
   end
 
   console_io.newline
@@ -592,6 +608,8 @@ unless analyze_filename.nil?
   if interpreter.program_load(filename) && interpreter.program_okay?
     texts = interpreter.program_analyze
     texts.each { |text| console_io.print_line(text) }
+  else
+    interpreter.print_program_errors
   end
 end
 
@@ -604,6 +622,8 @@ unless pretty_filename.nil?
   if interpreter.program_load(filename)
     texts = interpreter.program_pretty('')
     texts.each { |text| console_io.print_line(text) }
+  else
+    interpreter.print_program_errors
   end
 
   console_io.newline
@@ -618,6 +638,8 @@ unless cref_filename.nil?
   if interpreter.program_load(filename)
     texts = interpreter.program_crossref
     texts.each { |text| console_io.print_line(text) }
+  else
+    interpreter.print_program_errors
   end
 end
 
@@ -644,6 +666,8 @@ unless run_filename.nil?
       texts.each { |text| console_io.print_line(text) }
       console_io.newline
     end
+  else
+    interpreter.print_program_errors
   end
 end
 
