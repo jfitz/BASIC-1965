@@ -121,8 +121,17 @@
  Variable:L
  NumericConstant:0
  BinaryOperator:=
-400 LET H2 = (1 + INT(100*RND)/100
- Too many operators
+400 LET H2 = (1 + INT(100*RND))/100
+ Variable:H2
+ NumericConstant:1
+ NumericConstant:100
+ FunctionRnd
+ BinaryOperator:*
+ FunctionInt
+ BinaryOperator:+
+ NumericConstant:100
+ BinaryOperator:/
+ AssignmentOperator:=
 410 LET D1 = 500*H2
  Variable:D1
  NumericConstant:500
