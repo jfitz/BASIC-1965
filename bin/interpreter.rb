@@ -170,24 +170,6 @@ class Interpreter
     renumber_breakpoints(renumber_map)
   end
 
-  def parse_filename(tokens)
-    raise(BASICCommandError, 'Filename not specified') if tokens.empty?
-
-    token = tokens[0]
-
-    raise(BASICCommandError, 'Too many items specified') if
-      tokens.size > 1
-
-    raise(BASICCommandError, 'File name must be quoted literal') unless
-      token.text_constant?
-
-    filename = token.value.strip
-
-    raise(BASICCommandError, 'Filename not specified') if filename.empty?
-
-    filename
-  end
-
   def program_store_line(line, print_errors)
     @program.store_line(line, print_errors)
   end
