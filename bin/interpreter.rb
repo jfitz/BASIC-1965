@@ -192,20 +192,11 @@ class Interpreter
     @program.store_line(line, print_errors)
   end
 
-  def program_load(filename)
+  def program_clear
     @program.clear
+  end
 
-    begin
-      File.open(filename, 'r') do |file|
-        file.each_line do |line|
-          line = @console_io.ascii_printables(line)
-          @program.store_line(line, false)
-        end
-      end
-    rescue Errno::ENOENT
-      @console_io.print_line("File '#{filename}' not found")
-    end
-
+  def program_check
     errors = @program.check
     errors.empty?
   end
@@ -216,8 +207,8 @@ class Interpreter
     errors.each { |error| @console_io.print_line(error) }
   end
 
-  def program_save(filename)
-    @program.save(filename)
+  def program_save
+    @program.save
   end
   
   def run

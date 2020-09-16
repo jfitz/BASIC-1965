@@ -651,20 +651,17 @@ class Program
     profile_lines_errors(line_numbers, show_timing)
   end
 
-  def save(filename)
+  def save
+    lines = []
+
     line_numbers = @lines.keys.sort
 
-    begin
-      File.open(filename, 'w') do |file|
-        line_numbers.each do |line_num|
-          line = @lines[line_num]
-          file.puts line_num.to_s + line.list
-        end
-        file.close
-      end
-    rescue Errno::ENOENT
-      @console_io.print_line("File '#{filename}' not opened")
+    line_numbers.each do |line_number|
+      line = @lines[line_number]
+      lines << line_number.to_s + line.list
     end
+
+    lines
   end
 
   def delete(args)
