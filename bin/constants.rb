@@ -1,4 +1,4 @@
-# token class
+# class for all constant classes
 class AbstractElement
   def self.make_coord(c)
     [NumericConstant.new(c)]
@@ -34,6 +34,10 @@ class AbstractElement
 
   def dump
     self.class.to_s + ':' + 'Unimplemented'
+  end
+
+  def keyword?
+    false
   end
 
   def operator?

@@ -34,5 +34,20 @@ then
 fi
 echo compare done
 
+if [ -e "test/$TESTGROUP/$TESTNAME/ref/out_files.txt" ]
+then
+    while read F ; do
+	echo Compare $F...
+	diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/$F" "$TESTBED/$TESTNAME/$F"
+	((ECODE=$?))
+
+	if [ $ECODE -ne 0 ]
+	then
+	    ((NUM_FAIL+=1))
+	    cp "$TESTBED/$TESTNAME/$F" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/$F"
+	fi
+    done <"$TESTROOT/$TESTGROUP/$TESTNAME/ref/out_files.txt"
+fi
+
 echo End test $TESTNAME
 exit $ECODE

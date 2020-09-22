@@ -167,7 +167,7 @@ class Shell
       $options.each do |option|
         name = option[0].upcase
         value = option[1].to_s.upcase
-        lines << name + ' ' + value
+        lines << 'OPTION ' + name + ' ' + value
       end
     elsif args.size == 1
       kwd = args[0].to_s
@@ -175,7 +175,7 @@ class Shell
 
       if $options.key?(kwd_d)
         value = $options[kwd_d].value.to_s.upcase
-        lines << kwd + ' ' + value
+        lines << 'OPTION ' + kwd + ' ' + value
       else
         raise BASICCommandError.new("Unknown option #{kwd}")
       end
@@ -198,7 +198,7 @@ class Shell
         end
 
         value = $options[kwd_d].value.to_s.upcase
-        lines << kwd + ' ' + value
+        lines << 'OPTION ' + kwd + ' ' + value
       else
         raise BASICCommandError.new("Unknown option #{kwd}")
       end
@@ -249,13 +249,23 @@ class Shell
       @interpreter.clear_breakpoints(args)
     when 'LOAD'
       @interpreter.clear_all_breakpoints
-      filename = parse_args(args)
+      filename, keywords = parse_args(args)
+
+      raise BASICCommandError.new('Filename not specified') if filename.nil?
+
       load_file(filename)
+
       @interpreter.print_program_errors
       @console_io.newline
     when 'SAVE'
-      filename = parse_args(args)
-      lines = @interpreter.program_save
+      filename, keywords = parse_args(args)
+
+      raise BASICCommandError.new('Filename not specified') if filename.nil?
+
+      lines = []
+      lines += option_command([]) if keywords.include?('OPTION')
+      lines += @interpreter.program_save
+
       save_file(filename, lines)
     when 'LIST'
       texts = @interpreter.program_list(args, false)
@@ -435,21 +445,15 @@ def print_timing(timing, console_io)
 end
 
 def parse_args(tokens)
-  raise(BASICCommandError, 'Filename not specified') if tokens.empty?
+  filename = nil
+  keywords = []
 
-  token = tokens[0]
+  tokens.each do |token|
+    keywords << token if token.keyword?
+    filename = token.value.strip if token.text_constant? && filename.nil?
+  end
 
-  raise(BASICCommandError, 'Too many items specified') if
-    tokens.size > 1
-
-  raise(BASICCommandError, 'File name must be quoted literal') unless
-    token.text_constant?
-
-  filename = token.value.strip
-
-  raise(BASICCommandError, 'Filename not specified') if filename.empty?
-
-  filename
+  return filename, keywords
 end
 
 def load_file(filename, interpreter, console_io)
@@ -627,9 +631,9 @@ end
 # list the source
 unless list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
-  nametokens = [TextConstant.new(token)]
+  args = [TextConstant.new(token)]
 
-  filename = parse_args(nametokens)
+  filename, keywords = parse_args(args)
 
   if load_file(filename, interpreter, console_io)
     texts = interpreter.program_list('', list_tokens)
@@ -644,9 +648,9 @@ end
 # show parse dump
 unless parse_filename.nil?
   token = TextConstantToken.new('"' + parse_filename + '"')
-  nametokens = [TextConstant.new(token)]
+  args = [TextConstant.new(token)]
 
-  filename = parse_args(nametokens)
+  filename, keywords = parse_args(args)
 
   if load_file(filename, interpreter, console_io)
     texts = interpreter.program_parse('')
@@ -661,9 +665,9 @@ end
 # show analysis
 unless analyze_filename.nil?
   token = TextConstantToken.new('"' + analyze_filename + '"')
-  nametokens = [TextConstant.new(token)]
+  args = [TextConstant.new(token)]
 
-  filename = parse_args(nametokens)
+  filename, keywords = parse_args(args)
 
   if load_file(filename, interpreter, console_io) &&
      interpreter.program_okay?
@@ -677,9 +681,9 @@ end
 # pretty-print the source
 unless pretty_filename.nil?
   token = TextConstantToken.new('"' + pretty_filename + '"')
-  nametokens = [TextConstant.new(token)]
+  args = [TextConstant.new(token)]
 
-  filename = parse_args(nametokens)
+  filename, keywords = parse_args(args)
 
   if load_file(filename, interpreter, console_io)
     texts = interpreter.program_pretty('')
@@ -694,9 +698,9 @@ end
 # cross-reference the source
 unless cref_filename.nil?
   token = TextConstantToken.new('"' + cref_filename + '"')
-  nametokens = [TextConstant.new(token)]
+  args = [TextConstant.new(token)]
 
-  filename = parse_args(nametokens)
+  filename, keywords = parse_args(args)
 
   if load_file(filename, interpreter, console_io)
     texts = interpreter.program_crossref
@@ -709,9 +713,9 @@ end
 # run the source
 unless run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
-  nametokens = [TextConstant.new(token)]
+  args = [TextConstant.new(token)]
 
-  filename = parse_args(nametokens)
+  filename, keywords = parse_args(args)
 
   if load_file(filename, interpreter, console_io) &&
      interpreter.program_okay?
