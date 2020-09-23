@@ -244,9 +244,11 @@ class Shell
         end
       end
     when 'BREAK'
-      @interpreter.set_breakpoints(args)
+      texts = @interpreter.set_breakpoints(args)
+      texts.each { |text| @console_io.print_line(text) }
     when 'NOBREAK'
-      @interpreter.clear_breakpoints(args)
+      texts = @interpreter.clear_breakpoints(args)
+      texts.each { |text| @console_io.print_line(text) }
     when 'LOAD'
       @interpreter.clear_all_breakpoints
       filename, keywords = parse_args(args)
@@ -265,6 +267,7 @@ class Shell
       lines = []
       lines += option_command([]) if keywords.include?('OPTION')
       lines += @interpreter.program_save
+      lines += @interpreter.set_breakpoints([]) if keywords.include?('BREAK')
 
       save_file(filename, lines)
     when 'LIST'

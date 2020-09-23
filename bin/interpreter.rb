@@ -442,15 +442,17 @@ class Interpreter
   end
 
   def set_breakpoints(tokens)
+    texts = []
+
     if tokens.empty?
       # print breakpoints
-      @line_breakpoints.keys.sort.each do |line|
-        @console_io.print_line(line.to_s)
+      @line_breakpoints.keys.sort.each do |bp|
+        texts << "BREAK #{bp}"
       end
-      @line_cond_breakpoints.keys.sort.each do |line|
-        expressions = @line_cond_breakpoints[line]
+      @line_cond_breakpoints.keys.sort.each do |bp|
+        expressions = @line_cond_breakpoints[bp]
         expressions.each do |expression|
-          @console_io.print_line("#{line} IF #{expression}")
+          texts << "BREAK #{bp} IF #{expression}"
         end
       end
     else
@@ -467,7 +469,7 @@ class Interpreter
             @line_breakpoints[line_number] = ''
           rescue BASICSyntaxError => e
             tkns = tokens_list.map(&:to_s).join
-            @console_io.print_line('INVALID BREAKPOINT ' + tkns)
+            raise BASICCommandError.new('INVALID BREAKPOINT ' + tkns)
           end
         else # tokens_list.size > 1
           begin
@@ -488,19 +490,28 @@ class Interpreter
             end
           rescue BASICSyntaxError, BASICExpressionError => e
             tkns = tokens_list.map(&:to_s).join
-            @console_io.print_line('INVALID BREAKPOINT ' + tkns)
+            raise BASICCommandError.new('INVALID BREAKPOINT ' + tkns)
           end
         end
       end
     end
+
+    texts
   end
 
   def clear_breakpoints(tokens)
+    texts = []
+
     if tokens.empty?
       # print breakpoints
-      @line_breakpoints.keys.sort.each do |line|
-        condition = @line_breakpoints[line]
-        @console_io.print_line(line.to_s + ': ' + condition)
+      @line_breakpoints.keys.sort.each do |bp|
+        texts << "BREAK #{bp}"
+      end
+      @line_cond_breakpoints.keys.sort.each do |bp|
+        expressions = @line_cond_breakpoints[bp]
+        expressions.each do |expression|
+          texts << "BREAK #{bp} IF #{expression}"
+        end
       end
     else
       tokens_lists = split_breakpoint_tokens(tokens)
@@ -508,19 +519,22 @@ class Interpreter
         if tokens_list.size == 1
           begin
             line_number = LineNumber.new(tokens_list[0])
+            # TODO: distinguish between line and condition breakpoints
             @line_breakpoints.delete(line_number)
             @line_cond_breakpoints.delete(line_number)
           rescue BASICSyntaxError => e
             tkns = tokens_list.map(&:to_s).join
-            @console_io.print_line('INVALID BREAKPOINT ' + tkns)
+            raise BASICCommandError.new('INVALID BREAKPOINT ' + tkns)
           end
         else
           # TODO: remove a conditional breakpoint
           tkns = tokens_list.map(&:to_s).join
-          @console_io.print_line('INVALID BREAKPOINT ' + tkns)
+          raise BASICCommandError.new('INVALID BREAKPOINT ' + tkns)
         end
       end
     end
+
+    texts
   end
 
   def clear_all_breakpoints

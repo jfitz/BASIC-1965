@@ -161,9 +161,11 @@ SAVE
 Saves the current program to disk.
 Will overwrite an existing file without prompting.
 
-Syntax:	SAVE filename
+Syntax:	SAVE filename [OPTION] [BREAK]
 
 The 'filename' argument must be enclosed in quotes.
+The OPTION option includes OPTION settings in the file.
+The BREAK option includes breakpoints and conditions in the file.
 
 NEW
 ~~~
