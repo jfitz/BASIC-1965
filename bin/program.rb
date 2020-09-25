@@ -9,10 +9,10 @@ class LineNumber
     @line_number = line_number.to_i
 
     raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
-      @line_number >= $options['min_line_num']
+      @line_number >= $options['min_line_num'].value
     
     raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
-      @line_number <= $options['max_line_num']
+      @line_number <= $options['max_line_num'].value
   end
 
   def eql?(other)
@@ -974,7 +974,7 @@ class Program
     # warn about duplicate lines when loading
     # but not when typing
     @console_io.print_line("Duplicate line number #{line_num}") if
-      @lines.key?(line_num) && !print_errors
+      @lines.key?(line_num) && print_errors
   end
 
   def check_line_sequence(line_num, print_errors)
@@ -983,7 +983,7 @@ class Program
     @console_io.print_line("Line #{line_num} is out of sequence") if
       !@lines.empty? &&
       line_num < @lines.max[0] &&
-      !print_errors
+      print_errors
   end
 
   public
