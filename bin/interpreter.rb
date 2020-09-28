@@ -783,7 +783,7 @@ class Interpreter
       v = variable.to_s
       unless @variables.key?(v)
         if $options['require_initialized'].value
-          raise BASICRuntimeError.new(:te_var_uninin, v.to_s)
+          raise BASICRuntimeError.new(:te_var_uninit, v.to_s)
         end
 
         # define a value for this variable

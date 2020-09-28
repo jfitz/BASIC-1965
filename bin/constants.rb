@@ -695,12 +695,15 @@ class TextConstant < AbstractValueElement
   end
 
   attr_reader :value
+  attr_reader :symbol_text
 
   def initialize(text)
     super()
 
     @value = nil
     @value = text.value if text.class.to_s == 'TextConstantToken'
+
+    @symbol_text = text.value
 
     raise(BASICSyntaxError, "'#{text}' is not a text constant") if @value.nil?
 
@@ -765,17 +768,23 @@ class BooleanConstant < AbstractValueElement
   end
 
   attr_reader :value
+  attr_reader :symbol_text
 
   def initialize(obj)
     super()
 
     obj_class = obj.class.to_s
+    @symbol_text = obj.to_s
 
     @value =
       (obj_class == 'BooleanConstantToken' && obj.to_s == 'TRUE') ||
       (obj_class == 'String' && obj.casecmp('TRUE').zero?) ||
+      (obj_class == 'NumericConstant' && !obj.to_f.zero?) ||
+      (obj_class == 'TextConstant' && !obj.value.strip.size.zero?) ||
       obj_class == 'TrueClass'
 
+    @operand = true
+    @precedence = 0
     @boolean_constant = true
   end
 
@@ -796,7 +805,7 @@ class BooleanConstant < AbstractValueElement
   end
 
   def <=>(other)
-    @value <=> other.to_v
+    to_i <=> other.to_i
   end
 
   def >(other)
@@ -815,8 +824,24 @@ class BooleanConstant < AbstractValueElement
     @value <= other.to_v
   end
 
+  def b_and(other)
+    BooleanConstant.new(@value && other.to_v)
+  end
+
+  def b_or(other)
+    BooleanConstant.new(@value || other.to_v)
+  end
+
+  def to_i
+    @value ? 1 : 0
+  end
+
   def to_s
     @value ? 'true' : 'false'
+  end
+
+  def to_b
+    @value
   end
 end
 
@@ -908,6 +933,10 @@ class CarriageControl
   end
 
   def strings
+    []
+  end
+
+  def booleans
     []
   end
 

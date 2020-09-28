@@ -201,6 +201,7 @@ class AbstractStatement
     @elements = {
       numerics: [],
       strings: [],
+      booleans: [],
       variables: [],
       operators: [],
       functions: [],
@@ -229,6 +230,10 @@ class AbstractStatement
 
   def strings
     @elements[:strings]
+  end
+
+  def booleans
+    @elements[:booleans]
   end
 
   def variables
@@ -410,6 +415,7 @@ class AbstractStatement
   def make_references(items, exp1 = nil, exp2 = nil)
     numerics = []
     strings = []
+    booleans = []
     variables = []
     operators = []
     functions = []
@@ -418,6 +424,7 @@ class AbstractStatement
     unless exp1.nil?
       numerics += exp1.numerics
       strings += exp1.strings
+      booleans += exp1.booleans
       variables += exp1.variables
       operators += exp1.operators
       functions += exp1.functions
@@ -427,6 +434,7 @@ class AbstractStatement
     unless exp2.nil?
       numerics += exp2.numerics
       strings += exp2.strings
+      booleans += exp2.booleans
       variables += exp2.variables
       operators += exp2.operators
       functions += exp2.functions
@@ -436,6 +444,7 @@ class AbstractStatement
     unless items.nil?
       items.each { |item| numerics += item.numerics }
       items.each { |item| strings += item.strings }
+      items.each { |item| booleans += item.booleans }
       items.each { |item| variables += item.variables }
       items.each { |item| operators += item.operators }
       items.each { |item| functions += item.functions }
@@ -445,6 +454,7 @@ class AbstractStatement
     {
       numerics: numerics,
       strings: strings,
+      booleans: booleans,
       variables: variables,
       operators: operators,
       functions: functions,
@@ -1024,6 +1034,7 @@ class ForStatement < AbstractStatement
         @step = nil
         @elements[:numerics] = @start.numerics + @end.numerics
         @elements[:strings] = @start.strings + @end.strings
+        @elements[:booleans] = @start.booleans + @end.booleans
         control = XrefEntry.new(@control.to_s, nil, true)
         @elements[:variables] = [control] + @start.variables + @end.variables
         @elements[:operators] = @start.operators + @end.operators
@@ -1045,6 +1056,7 @@ class ForStatement < AbstractStatement
         @step = ValueExpression.new(tokens_lists[4], :scalar)
         @elements[:numerics] = @start.numerics + @end.numerics + @step.numerics
         @elements[:strings] = @start.strings + @end.strings + @step.strings
+        @elements[:booleans] = @start.booleans + @end.booleans + @step.booleans
         control = XrefEntry.new(@control.to_s, nil, true)
 
         @elements[:variables] =
