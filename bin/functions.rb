@@ -195,7 +195,7 @@ class UserFunction < AbstractScalarFunction
     expression = definition.expression
     begin
       results = expression.evaluate(interpreter)
-    rescue BASICRuntimeException => e
+    rescue BASICRuntimeError => e
       interpreter.clear_user_var_values
       raise e
     end

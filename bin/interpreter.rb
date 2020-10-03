@@ -289,21 +289,21 @@ class Interpreter
     when 'PROFILE'
       @program.profile(args)
     when 'GOTO'
-      statement = GotoStatement.new([keyword], [args])
+      statement = GotoStatement.new(nil, [keyword], [args])
       if statement.errors.empty?
         statement.execute(self)
       else
         statement.errors.each { |error| @console_io.print_line(error) }
       end
     when 'LET'
-      statement = LetStatement.new([keyword], [args])
+      statement = LetStatement.new(nil, [keyword], [args])
       if statement.errors.empty?
         statement.execute(self)
       else
         statement.errors.each { |error| @console_io.print_line(error) }
       end
     when 'PRINT'
-      statement = PrintStatement.new([keyword], [args])
+      statement = PrintStatement.new(nil, [keyword], [args])
       if statement.errors.empty?
         statement.execute(self)
       else
