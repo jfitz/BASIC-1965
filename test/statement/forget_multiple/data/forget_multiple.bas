@@ -1,0 +1,7 @@
+10 REM Test the FORGET statement
+20 LET A = 10
+22 LET B = 22
+30 PRINT A,B
+40 FORGET A,B
+90 PRINT A,B
+99 END

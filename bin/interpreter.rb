@@ -783,7 +783,7 @@ class Interpreter
       v = variable.to_s
       unless @variables.key?(v)
         if $options['require_initialized'].value
-          raise BASICRuntimeError.new(:te_var_uninit, v.to_s)
+          raise BASICRuntimeError.new(:te_var_uninit, v)
         end
 
         # define a value for this variable
@@ -873,6 +873,113 @@ class Interpreter
       shape = :matrix if coords.size == 2
       variable = Variable.new(name, shape, coords)
       set_value(variable, value)
+    end
+  end
+
+  def forget_value(variable)
+    legals = [
+      'Variable'
+    ]
+
+    raise(BASICSyntaxError,
+          "#{variable.class}:#{variable} is not a variable name") unless
+      legals.include?(variable.class.to_s)
+
+    raise(BASICSyntaxError,
+          "#{variable.class}:#{variable} is not a scalar variable name") if
+      variable.class.to_s == 'VariableName' && !variable.scalar?
+
+    if $options['lock_fornext'].value &&
+       @locked_variables.include?(variable)
+      raise BASICRuntimeError.new(:te_var_locked, variable.to_s)
+    end
+
+    v = variable.to_s
+
+    unless @variables.key?(v)
+      if $options['require_initialized'].value
+        raise BASICRuntimeError.new(:te_var_uninit, v)
+      end
+    end
+
+    # removing a variable is a change
+    clear_previous_lines if @variables.key?(v)
+
+    @variables.delete(v)
+
+    @trace_out.newline_when_needed
+    @trace_out.print_line(' ' + v)
+  end
+
+  def forget_compound_values(variable)
+    legals = [
+      'Variable'
+    ]
+
+    raise(BASICSyntaxError,
+          "#{variable.class}:#{variable} is not a variable name") unless
+      legals.include?(variable.class.to_s)
+
+    raise(BASICSyntaxError,
+          "#{variable.class}:#{variable} is not a scalar variable name") if
+      variable.class.to_s == 'VariableName' && !(variable.array? || variable.matrix?)
+
+    variable_name = variable.name
+    vname_s = variable_name.to_s
+    puts "VNAME: #{vname_s}"
+    
+    if variable.array?
+      vs = []
+
+      # get names of known variables that start with variable name and no comma
+      @variables.keys.each do |v|
+        vs << v if v.start_with?(vname_s) && !v.include?(',')
+      end
+
+      # remove each one of them
+      vs.each do |v|
+        # example a3(14)
+        # remove close parens a3(14
+        v = v.chop
+        # split on open parens e4 12,65
+        vname_s, sub1_s = v.split('(')
+        variable_token = VariableToken.new(vname_s)
+        variable_name = VariableName.new(variable_token)
+        # convert subscript to numeric
+        sub1_token = NumericConstantToken.new(sub1_s)
+        sub1 = NumericConstant.new(sub1_token)
+        subscripts = [sub1]
+        variable = Variable.new(variable_name, :scalar, subscripts)
+        forget_value(variable)
+      end
+    end
+
+    if variable.matrix?
+      vs = []
+
+      # get names of known variables that start with variable name and no comma
+      @variables.keys.each { |v| vs << v if v.include?(',') }
+
+      # remove each one of them
+      vs.each do |v|
+        # example e4(12,65)
+        # remove close parens e4(12,65
+        v = v.chop
+        # split on open parens e4 12,65
+        vname_s, subs_s = v.split('(')
+        variable_token = VariableToken.new(vname_s)
+        variable_name = VariableName.new(variable_token)
+        # split [1] on comma e4 12 65
+        sub1_s, sub2_s = subs_s.split(',')
+        # convert subscripts to numerics
+        sub1_token = NumericConstantToken.new(sub1_s)
+        sub1 = NumericConstant.new(sub1_token)
+        sub2_token = NumericConstantToken.new(sub2_s)
+        sub2 = NumericConstant.new(sub2_token)
+        subscripts = [sub1, sub2]
+        variable = Variable.new(variable_name, :scalar, subscripts)
+        forget_value(variable)
+      end
     end
   end
 

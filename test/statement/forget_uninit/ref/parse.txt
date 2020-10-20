@@ -1,0 +1,19 @@
+10 REM Test the FORGET statement
+ Remark:Test the FORGET statement
+12 OPTION REQUIRE_INITIALIZED TRUE
+ BooleanConstant:true
+20 LET A = 10
+ Variable:A
+ NumericConstant:10
+ AssignmentOperator:=
+30 PRINT A
+ Variable:A
+ CarriageControl:NL
+40 FORGET B
+ Variable:B
+90 PRINT A
+ Variable:A
+ CarriageControl:NL
+99 END
+ 
+

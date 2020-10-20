@@ -1,0 +1,11 @@
+10: REM Test the FORGET statement
+12: OPTION LOCK_FORNEXT TRUE
+20: FOR I = 1 TO 5
+ I = 1
+ terminated:false
+30: PRINT I
+ I: 1
+ 1
+40: FORGET I
+Error 119 Variable is locked for I in line 40
+

@@ -1,0 +1,18 @@
+10 REM Test the FORGET statement
+ Remark:Test the FORGET statement
+12 OPTION LOCK_FORNEXT TRUE
+ BooleanConstant:true
+20 FOR I = 1 TO 5
+ control: Variable:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:5"]
+30 PRINT I
+ Variable:I
+ CarriageControl:NL
+40 FORGET I
+ Variable:I
+90 NEXT I
+ Variable:I
+99 END
+ 
+

@@ -80,7 +80,7 @@ I have changed a few things:
 - The single quote is used for a comment on a line
 - The PRINT statement semicolon operator spaces text items together and numeric items apart
 - The RND() function can have zero parameters
-- The RND(X) function uses the passed value as an upper bound for the result. K&K BASIC ignores this parameter. Use the –ignore-rnd-arg option to match K&K.
+- The RND(X) function uses the passed value as an upper bound for the result. K&K BASIC ignores this parameter. Use the -–ignore-rnd-arg option to match K&K.
 - The MAT assignment statement dimensions the target variable, so an earlier DIM is not needed
 - User-defined functions may have multiple parameters
 - You may have multiple user-defined functions with the same names and different signatures
@@ -823,8 +823,8 @@ It is possible to change the value of the control value within the loop. You can
 
 This will lock the program into a permanent loop, as the value of I will never reach 10.
 
-The --lock-fornext option prevents such changes.
-When --lock-fornext is specified, an attempt to change a control variable causes an error.
+The LOCK_FORNEXT option prevents such changes.
+When LOCK_FORNEXT is specified, an attempt to change a control variable causes an error.
 The variable may be changed after the FOR/NEXT loop terminates.
 Note that a GOTO to outside of the FOR/NEXT loop does not terminate the loop or unlock the variable.
 
@@ -832,6 +832,21 @@ Variables may be used to indicate the loop start, end, and step values.
 The start, end, and step values are calculated at the beginning of the loop.
 They are not re-calculated during the loop execution.
 If variables are used, assignments to those variables in the loop will have no affect on the loop.
+
+FORGET
+~~~~~~
+
+Removes a variable (or group of variables) from memory.
+
+Syntax: FORGET variable [, variable...]
+
+Examples:
+	100 FORGET A
+	120 FORGET B,C
+
+The FORGET command is useful with the REQUIRE_INITIALIZED option.
+It is a way to force a variable 'out of scope' or to be forgotten.
+Forgotten variables are not initialized, and references to them will cause an error.
 
 GO TO
 ~~~~~
@@ -846,8 +861,7 @@ Examples:
 	300 GO TO 100
 
 Notice that the command "350 GO TO 350" is legal but not sensible.
-The interpreter will execute line 350 repeatedly with no output.
-(This is called a "locked loop" or more humorously a "dynamic halt".)
+BASIC will detect an infinite loop and stop the program.
 
 GOSUB
 ~~~~~
@@ -861,9 +875,7 @@ Examples:
 	300 GOSUB 400
 
 Notice that the command "350 GOSUB 350" is legal but not sensible.
-The interpreter will execute line 350 repeatedly with no output.
-Unlike the '350 GOTO 350' example, this command will evantually stop, as each iteration adds a return address to an internal stack.
-Eventually, the underlying Ruby process will exhaust available memory and halt.
+BASIC will detect an infinite loop and stop the program.
 
 IF/THEN
 ~~~~~~~
@@ -1237,6 +1249,25 @@ ARR statements
 The ARR statements operate on one-dimensional arrays.
 Operations begin with the index specified in OPTION BASE.
 
+ARR FORGET
+~~~~~~~~~~
+
+Removes an array variable (or group of array variables) from memory.
+
+Syntax: ARR FORGET variable [, variable...]
+
+Examples:
+        100 DIM A(10), B(20), C(33)
+	110 REM lots of code here
+	400 ARR FORGET A
+	420 ARR FORGET B,C
+
+The FORGET command is useful with the REQUIRE_INITIALIZED option.
+It is a way to force a variable 'out of scope' or to be forgotten.
+Forgotten variables are not initialized, and references to them will cause an error.
+
+The ARR FORGET statement leaves the dimensions for the variable unchanged.
+
 ARR INPUT
 ~~~~~~~~~
 
@@ -1450,6 +1481,25 @@ MAT statements
 
 The MAT statements operate on matricies, which are either one- or two-dimensional arrays.
 Operations begin with the index specified in OPTION BASE.
+
+MAT FORGET
+~~~~~~~~~~
+
+Removes a maxtrix variable (or group of matrix variables) from memory.
+
+Syntax: MAT FORGET variable [, variable...]
+
+Examples:
+	100 DIM A(3,4), B(10,4), C(100,22)
+	110 REM lots of code here
+	400 MAT FORGET A
+	420 MAT FORGET B,C
+
+The FORGET command is useful with the REQUIRE_INITIALIZED option.
+It is a way to force a variable 'out of scope' or to be forgotten.
+Forgotten variables are not initialized, and references to them will cause an error.
+
+The MAT FORGET statement leaves the dimensions for the variable unchanged.
 
 MAT INPUT
 ~~~~~~~~~

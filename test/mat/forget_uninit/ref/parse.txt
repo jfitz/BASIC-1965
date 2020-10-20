@@ -1,0 +1,41 @@
+10 REM Test the FORGET statement
+ Remark:Test the FORGET statement
+11 OPTION BASE 1
+ NumericConstant:1
+12 OPTION REQUIRE_INITIALIZED TRUE
+ BooleanConstant:true
+20 DIM A(3,4)
+ NumericConstant:3
+ NumericConstant:4
+ Declaration:A
+21 FOR I = 1 TO 3
+ control: Variable:I
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:3"]
+22 FOR J = 1 TO 4
+ control: Variable:J
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+23 LET A(I,J) = I*J
+ Variable:I
+ Variable:J
+ Variable:A
+ Variable:I
+ Variable:J
+ BinaryOperator:*
+ AssignmentOperator:=
+24 NEXT J
+ Variable:J
+25 NEXT I
+ Variable:I
+30 MAT PRINT A
+ Variable:A
+ CarriageControl:NL
+40 MAT FORGET B
+ Variable:B
+90 MAT PRINT A
+ Variable:A
+ CarriageControl:NL
+99 END
+ 
+
