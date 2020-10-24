@@ -455,7 +455,7 @@ def make_command_tokenbuilders
     ANALYZE BREAK NOBREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE
     PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
-    ECHO FIELD_SEP HEADING
+    ECHO FIELD_SEP FORGET_FORNEXT HEADING
     IF IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT MAX_LINE_NUM MIN_LINE_NUM
     NEWLINE_SPEED
@@ -541,6 +541,7 @@ OptionParser.new do |opt|
 
   opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--field-sep-semi') { |o| options[:field_sep_semi] = o }
+  opt.on('--forget-fornext') { |o| options[:forget_fornext] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
   opt.on('--ignore-rnd-arg') { |o| options[:ignore_rnd_arg] = o }
   opt.on('--implied-semicolon') { |o| options[:implied_semicolon] = o }
@@ -602,6 +603,7 @@ field_sep = Option.new(separator, 'COMMA')
 field_sep = Option.new(separator, 'SEMI') if options.key?(:field_sep_semi)
 $options['field_sep'] = field_sep
 
+$options['forget_fornext'] = Option.new(boolean, options.key?(:forget_fornext))
 $options['heading'] = Option.new(boolean, !options.key?(:no_heading))
 
 $options['ignore_rnd_arg'] =

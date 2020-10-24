@@ -3,13 +3,15 @@ class ForNextControl
   attr_reader :control
   attr_reader :loop_start_number
   attr_reader :end
+  attr_reader :forget
 
-  def initialize(control, start, endv, step, loop_start_number)
+  def initialize(control, start, endv, step, loop_start_number, forget)
     @control = control
     @start = start
     @end = endv
     @step = step
     @loop_start_number = loop_start_number
+    @forget = forget
   end
 
   def bump_control(interpreter)
@@ -926,7 +928,6 @@ class Interpreter
 
     variable_name = variable.name
     vname_s = variable_name.to_s
-    puts "VNAME: #{vname_s}"
     
     if variable.array?
       vs = []
@@ -1024,8 +1025,11 @@ class Interpreter
   end
 
   def assign_fornext(control, from, to, step)
+    v = control.to_s
+    forget = !@variables.key?(v)
+
     fornext_control =
-      ForNextControl.new(control, from, to, step, @next_line_number)
+      ForNextControl.new(control, from, to, step, @next_line_number, forget)
 
     @fornexts[control] = fornext_control
     set_value(control, from)
@@ -1045,8 +1049,14 @@ class Interpreter
     @fornext_stack.push(variable)
   end
 
-  def exit_fornext
+  def exit_fornext(forget, control)
+    raise BASICRuntimeError.new(:te_next_no_for) if @fornext_stack.empty?
+
     @fornext_stack.pop
+
+    if $options['forget_fornext'].value && forget
+      forget_value(control)
+    end
   end
 
   def top_fornext

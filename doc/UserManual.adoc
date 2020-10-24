@@ -114,6 +114,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--no-detect-infinite-loop |Disables checks for infinite loops.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
 |--field-sep-semi |Sets field separator for ARR PRINT and MAT PRINT statements to semicolon, which provides narrow spacing.
+|--forget-fornext |Forgets the control value when a FOR/NEXT loop terminates, if it was undefined when the loop started.
 |--no-heading |Supress the header and trailer messages.
 |--ignore-rnd-arg |The RND function ignores its argument and provides a number between zero and one. This matches the behavior of certain BASICs, including K&K.
 |--implied-semicolon |When printing items not delimited by a comma or semicolon, provide spacing as if a semicolon was provided. (Normally the items have no spaces between them.)
@@ -409,6 +410,7 @@ The options that can be set are:
     DETECT_INFINITE_LOOP
     ECHO
     FIELD_SEP
+    FORGET_FORNEXT
     HEADING
     IGNORE_RND_ARG
     IMPLIED_SEMICOLON
@@ -438,11 +440,13 @@ The OPTION command overrides the command-line setting.
 |DETECT_INFINITE_LOOP |TRUE or FALSE |TRUE |Enables the detection of infinite loops
 |ECHO |TRUE or FALSE |FALSE |Echoes input (useful for testing)
 |FIELD_SEP |COMMA, SEMI, NL, or NONE |COMMA |Controls spacing of values in ARR PRINT and MAT PRINT statements
+|FORGET_FORNEXT |TRUE or FALSE |FALSE |Forgets value of control value after final NEXT, if value was not defined at start
 |HEADING |TRUE or FALSE |TRUE |Displays the opening and closing lines that identify BASIC
 |IGNORE_RND_ARG |TRUE or FALSE |FALSE |Ignores the argument to RND(), needed for some old BASIC programs
 |IMPLIED_SEMICOLON |TRUE or FALSE |FALSE |Assume that a semicolon is specified between arguments to PRINT without intervening carriage control specified
 |INT_FLOOR |TRUE or FALSE |FALSE |Sets truncation towards negative infinity instead of towards zero
 |LOCK_FORNEXT |TRUE or FALSE |FALSE |Do not allow changes to FOR/NEXT control variables within the loop
+|MATCH_FORNEXT | TRUE or FALSE |FALSE |Requires execution of NEXT to match FOR
 |NEWLINE_SPEED |numeric |0 |Limit printing speed only for newlines
 |PRECISION |numeric 1 to 16, or "INFINITE" |6 |Sets the precision for numeric values
 |PRINT_SPEED |numeric |0 |Limit printing speed (a value of 10 emulates an old TeleType)
@@ -976,6 +980,12 @@ You can GOTO out of a loop and later GOTO back into it.
 BASIC-1965 will remember the state of the loop.
 If you GOTO into a FOR/NEXT loop (without activating it by the FOR statement), the eventual NEXT statement will cause an error.
 
+The FORGET_FORNEXT option causes the interpreter to forget the value of the control variable when the loop terminates.
+This effectively limits the scope of the variable to the FOR/NEXT loop.
+Useful when REQUIRE_INITIALIZED is TRUE; a later reference to the control variable will be an error.
+BASIC forgets the variable only if it was not defined.
+If the variable was defined prior to the FOR, the variable is left defined but modified by the FOR/NEXT loop.
+
 OPTION
 ~~~~~~
 
@@ -989,6 +999,7 @@ Possible options are a subset of the options in the shell.
     DETECT_INFINITE_LOOP
     ECHO
     FIELD_SEPS
+    FORGET_FORNEXT
     IGNORE_RND_ARG
     IMPLIED_SEMICOLON
     LOCK_FORNEXT

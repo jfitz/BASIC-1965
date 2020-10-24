@@ -1119,15 +1119,15 @@ class ForStatement < AbstractStatement
     step = NumericConstant.new(1)
     step = @step.evaluate(interpreter)[0] unless @step.nil?
 
-    fornext_control = interpreter.assign_fornext(@control, from, to, step)
+    fornext_control =
+      interpreter.assign_fornext(@control, from, to, step)
+
     interpreter.lock_variable(@control)
     interpreter.enter_fornext(@control)
     terminated = fornext_control.front_terminated?
 
     if terminated
       interpreter.next_line_number = interpreter.find_closing_next(@control)
-      interpreter.unlock_variable(@control)
-      interpreter.exit_fornext
     end
 
     io = interpreter.trace_out
@@ -1632,7 +1632,7 @@ class NextStatement < AbstractStatement
 
     if terminated
       interpreter.unlock_variable(@control)
-      interpreter.exit_fornext
+      interpreter.exit_fornext(fornext_control.forget, fornext_control.control)
     else
       # set next line from top item
       interpreter.next_line_number = fornext_control.loop_start_number
@@ -1653,7 +1653,7 @@ class OptionStatement < AbstractStatement
   def self.extra_keywords
     %w[
       BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
-      ECHO FIELD_SEP
+      ECHO FIELD_SEP FORGET_FORNEXT
       IGNORE_RND_ARG IMPLIED_SEMICOLON
       INT_FLOOR LOCK_FORNEXT MATCH_FORNEXT NEWLINE_SPEED
       PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
