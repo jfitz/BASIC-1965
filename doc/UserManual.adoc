@@ -1578,6 +1578,10 @@ For two-dimensional matrices, values for each row in the matrix are printed on a
 The FIELD_SEP option specifies the spacing between values.
 The FIELD_SEP SEMI option results in narrow columns, the FIELD_SEP COMMA option (the default) results in wide columns.
 
+A newline is printed at the end of each line, so the carriage control characters of ',' and ';' have different meanings.
+A comma adds an additional blank line after the matrix is printed.
+A semicolon adds no blank line; it does nothing.
+
 Printing to a file
 ^^^^^^^^^^^^^^^^^^
 
@@ -1595,6 +1599,10 @@ The values must be defined with DIM statements prior to printing.
 For one-dimensional arrays, the values are printed on one line.
 
 For two-dimensional matrices, values for each row in the matrix are printed on a line and a new line is used for each row.
+
+A newline is printed at the end of each line, so the carriage control characters of ',' and ';' have different meanings.
+A comma adds an additional blank line after the matrix is printed.
+A semicolon adds no blank line; it does nothing.
 
 MAT READ
 ~~~~~~~~

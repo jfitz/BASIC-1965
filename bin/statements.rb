@@ -2526,7 +2526,26 @@ class MatPrintStatement < AbstractStatement
 
         item.compound_print(fhr, interpreter)
       else
-        item.print(fhr, interpreter)
+        # MAT PRINT has different operations for carriage controls
+        carriage = CarriageControl.new('')
+
+        case item.to_s
+        when ', '
+          # a comma prints a newline
+          carriage = CarriageControl.new('NL')
+        when '; '
+          # a semi does nothing, even after numerics
+          carriage = CarriageControl.new('')
+        when ''
+          # a newline prints a newline (which is normal)
+          carriage = item
+        when ' '
+          # an implied carriage control does nothing
+          carriage = CarriageControl.new('')
+        end
+
+        # print the revised carriage control
+        carriage.print(fhr, interpreter)
       end
 
       last_was_printable = item.printable?
