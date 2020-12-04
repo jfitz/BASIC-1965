@@ -790,8 +790,9 @@ FOR
 
 Performs a sequence of statements for a specific number of times.
 
-Syntax:	PRINT control variable = starting value TO ending value
-Syntax:	PRINT control variable = starting value TO ending value STEP iteration value
+Syntax:	FOR control variable = starting value TO ending value
+Syntax:	FOR control variable = starting value TO ending value STEP iteration value
+Syntax:	FOR control variable = starting value STEP iteration value TO ending value
 
 The statements after the FOR statement (up to the accompanying NEXT statement) are repeated.
 The control variable may not have subscripts.
@@ -810,7 +811,7 @@ Examples:
 	20 PRINT I
 	30 NEXT I
 
-	10 FOR I = 1 TO 10.5 STEP 0.5
+	10 FOR I = 1 STEP 0.5 TO 10.5
 	20 PRINT I
 	30 NEXT I
 
