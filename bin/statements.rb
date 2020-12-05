@@ -1134,13 +1134,12 @@ class ForStatement < AbstractStatement
     to = @end.evaluate(interpreter)[0]
     step = NumericConstant.new(1)
     step = @step.evaluate(interpreter)[0] unless @step.nil?
-
-    fornext_control =
-      interpreter.assign_fornext(@control, from, to, step)
+    fornext_control = ForToControl.new(@control, from, step, to)
+    interpreter.assign_fornext(fornext_control)
 
     interpreter.lock_variable(@control) if $options['lock_fornext'].value
     interpreter.enter_fornext(@control)
-    terminated = fornext_control.front_terminated?
+    terminated = fornext_control.front_terminated?(interpreter)
 
     if terminated
       interpreter.next_line_number = interpreter.find_closing_next(@control)
