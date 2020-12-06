@@ -13,6 +13,10 @@ class AbstractForControl
     @forget = false
   end
 
+  def bump_early?
+    true
+  end
+
   def bump_control(interpreter)
     current_value = interpreter.get_value(@control)
     current_value += @step
@@ -31,6 +35,10 @@ class ForToControl < AbstractForControl
     super(control, start, step)
 
     @end = endv
+  end
+
+  def bump_early?
+    false
   end
 
   def front_terminated?(_)
@@ -56,6 +64,45 @@ class ForToControl < AbstractForControl
     else
       false
     end
+  end
+end
+
+# Helper class for FOR-UNTIL/NEXT
+class ForUntilControl < AbstractForControl
+  attr_reader :end
+
+  def initialize(control, start, step, expression)
+    super(control, start, step)
+
+    @expression = expression
+  end
+
+  def front_terminated?(interpreter)
+    values = @expression.evaluate(interpreter)
+
+    raise(BASICExpressionError, 'Expression error') unless
+      values.size == 1
+
+    result = values[0]
+
+    raise(BASICExpressionError, 'Expression error') unless
+      result.class.to_s == 'BooleanConstant'
+
+    result.value
+  end
+
+  def terminated?(interpreter)
+    values = @expression.evaluate(interpreter)
+
+    raise(BASICExpressionError, 'Expression error') unless
+      values.size == 1
+
+    result = values[0]
+
+    raise(BASICExpressionError, 'Expression error') unless
+      result.class.to_s == 'BooleanConstant'
+
+    result.value
   end
 end
 

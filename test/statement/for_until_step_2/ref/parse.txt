@@ -1,0 +1,15 @@
+10 FOR I = 1 UNTIL I > 10 STEP 2
+ control: Variable:I
+ start:   ["NumericConstant:1"]
+ step:    ["NumericConstant:2"]
+ until:   ["Variable:I", "NumericConstant:10", "BinaryOperator:>"]
+20 PRINT I
+ Variable:I
+ CarriageControl:NL
+30 NEXT I
+ Variable:I
+90 STOP
+ 
+99 END
+ 
+
