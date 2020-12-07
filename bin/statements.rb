@@ -1041,7 +1041,7 @@ class ForStatement < AbstractStatement
   end
 
   def self.extra_keywords
-    %w[TO STEP UNTIL]
+    %w[TO STEP UNTIL WHILE]
   end
 
   def initialize(_, keywords, tokens_lists)
@@ -1053,6 +1053,9 @@ class ForStatement < AbstractStatement
     template_until = [[1, '>='], 'UNTIL', [1, '>=']]
     template_until_step = [[1, '>='], 'UNTIL', [1, '>='], 'STEP', [1, '>=']]
     template_step_until = [[1, '>='], 'STEP', [1, '>='], 'UNTIL', [1, '>=']]
+    template_while = [[1, '>='], 'WHILE', [1, '>=']]
+    template_while_step = [[1, '>='], 'WHILE', [1, '>='], 'STEP', [1, '>=']]
+    template_step_while = [[1, '>='], 'STEP', [1, '>='], 'WHILE', [1, '>=']]
 
     if check_template(tokens_lists, template_to)
       begin
@@ -1082,8 +1085,8 @@ class ForStatement < AbstractStatement
         variable_name = VariableName.new(tokens1[0])
         @control = Variable.new(variable_name, :scalar, [])
         @start = ValueExpression.new(tokens2, :scalar)
-        @end = ValueExpression.new(tokens_lists[4], :scalar)
         @step = ValueExpression.new(tokens_lists[2], :scalar)
+        @end = ValueExpression.new(tokens_lists[4], :scalar)
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -1114,8 +1117,40 @@ class ForStatement < AbstractStatement
         variable_name = VariableName.new(tokens1[0])
         @control = Variable.new(variable_name, :scalar, [])
         @start = ValueExpression.new(tokens2, :scalar)
-        @step = ValueExpression.new(tokens_lists[4], :scalar)
         @until = ValueExpression.new(tokens_lists[2], :scalar)
+        @step = ValueExpression.new(tokens_lists[4], :scalar)
+      rescue BASICExpressionError => e
+        @errors << e.message
+      end
+    elsif check_template(tokens_lists, template_while)
+      begin
+        tokens1, tokens2 = control_and_start(tokens_lists[0])
+        variable_name = VariableName.new(tokens1[0])
+        @control = Variable.new(variable_name, :scalar, [])
+        @start = ValueExpression.new(tokens2, :scalar)
+        @while = ValueExpression.new(tokens_lists[2], :scalar)
+      rescue BASICExpressionError => e
+        @errors << e.message
+      end
+    elsif check_template(tokens_lists, template_while_step)
+      begin
+        tokens1, tokens2 = control_and_start(tokens_lists[0])
+        variable_name = VariableName.new(tokens1[0])
+        @control = Variable.new(variable_name, :scalar, [])
+        @start = ValueExpression.new(tokens2, :scalar)
+        @while = ValueExpression.new(tokens_lists[2], :scalar)
+        @step = ValueExpression.new(tokens_lists[4], :scalar)
+      rescue BASICExpressionError => e
+        @errors << e.message
+      end
+    elsif check_template(tokens_lists, template_step_while)
+      begin
+        tokens1, tokens2 = control_and_start(tokens_lists[0])
+        variable_name = VariableName.new(tokens1[0])
+        @control = Variable.new(variable_name, :scalar, [])
+        @start = ValueExpression.new(tokens2, :scalar)
+        @while = ValueExpression.new(tokens_lists[2], :scalar)
+        @step = ValueExpression.new(tokens_lists[4], :scalar)
       rescue BASICExpressionError => e
         @errors << e.message
       end
@@ -1165,10 +1200,21 @@ class ForStatement < AbstractStatement
       @elements[:userfuncs] += @until.userfuncs
     end
 
+    if !@while.nil?
+      @elements[:numerics] += @while.numerics
+      @elements[:strings] += @while.strings
+      @elements[:booleans] += @while.booleans
+      @elements[:variables] += @while.variables
+      @elements[:operators] += @while.operators
+      @elements[:functions] += @while.functions
+      @elements[:userfuncs] += @while.userfuncs
+    end
+
     @comprehension_effort += @start.comprehension_effort
     @comprehension_effort += @end.comprehension_effort unless @end.nil?
     @comprehension_effort += @step.comprehension_effort unless @step.nil?
     @comprehension_effort += @until.comprehension_effort unless @until.nil?
+    @comprehension_effort += @while.comprehension_effort unless @while.nil?
   end
 
   def dump
@@ -1178,6 +1224,7 @@ class ForStatement < AbstractStatement
     lines << 'end:     ' + @end.dump.to_s unless @end.nil?
     lines << 'step:    ' + @step.dump.to_s unless @step.nil?
     lines << 'until:   ' + @until.dump.to_s unless @until.nil?
+    lines << 'while:   ' + @while.dump.to_s unless @while.nil?
     lines
   end
 
@@ -1195,6 +1242,10 @@ class ForStatement < AbstractStatement
       fornext_control = ForUntilControl.new(@control, from, step, @until)
     end
 
+    if !@while.nil?
+      fornext_control = ForWhileControl.new(@control, from, step, @while)
+    end
+
     interpreter.assign_fornext(fornext_control)
 
     interpreter.lock_variable(@control) if $options['lock_fornext'].value
@@ -1207,8 +1258,10 @@ class ForStatement < AbstractStatement
 
     untilv = nil
     untilv = @until.evaluate(interpreter)[0] unless @until.nil?
+    whilev = nil
+    whilev = @while.evaluate(interpreter)[0] unless @while.nil?
     io = interpreter.trace_out
-    print_more_trace_info(io, from, to, step, untilv, terminated)
+    print_more_trace_info(io, from, to, step, untilv, whilev, terminated)
   end
 
   private
@@ -1226,13 +1279,14 @@ class ForStatement < AbstractStatement
     [parts[0], parts[2]]
   end
 
-  def print_more_trace_info(io, from, to, step, untilv, terminated)
+  def print_more_trace_info(io, from, to, step, untilv, whilev, terminated)
     io.trace_output(" #{@start} = #{from}") unless @start.numeric_constant?
     io.trace_output(" #{@end} = #{to}") unless
       @end.nil? || @end.numeric_constant?
     io.trace_output(" #{@step} = #{step}") unless
       @step.nil? || @step.numeric_constant?
     io.trace_output(" #{@until} = #{untilv}") unless @until.nil?
+    io.trace_output(" #{@while} = #{whilev}") unless @while.nil?
     io.trace_output(" terminated:#{terminated}")
   end
 end

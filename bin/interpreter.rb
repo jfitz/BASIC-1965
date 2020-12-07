@@ -106,6 +106,45 @@ class ForUntilControl < AbstractForControl
   end
 end
 
+# Helper class for FOR-WHILE/NEXT
+class ForWhileControl < AbstractForControl
+  attr_reader :end
+
+  def initialize(control, start, step, expression)
+    super(control, start, step)
+
+    @expression = expression
+  end
+
+  def front_terminated?(interpreter)
+    values = @expression.evaluate(interpreter)
+
+    raise(BASICExpressionError, 'Expression error') unless
+      values.size == 1
+
+    result = values[0]
+
+    raise(BASICExpressionError, 'Expression error') unless
+      result.class.to_s == 'BooleanConstant'
+
+    !result.value
+  end
+
+  def terminated?(interpreter)
+    values = @expression.evaluate(interpreter)
+
+    raise(BASICExpressionError, 'Expression error') unless
+      values.size == 1
+
+    result = values[0]
+
+    raise(BASICExpressionError, 'Expression error') unless
+      result.class.to_s == 'BooleanConstant'
+
+    !result.value
+  end
+end
+
 # the interpreter
 class Interpreter
   attr_writer :program

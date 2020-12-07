@@ -796,6 +796,9 @@ Syntax:	FOR control variable = starting value STEP iteration value TO ending val
 Syntax: FOR control variable = starting value UNTIL condition
 Syntax: FOR control variable = starting value UNTIL condition STEP iteration value
 Syntax: FOR control variable = starting value STEP iteration value UNTIL condition
+Syntax: FOR control variable = starting value WHILE condition
+Syntax: FOR control variable = starting value WHILE condition STEP iteration value
+Syntax: FOR control variable = starting value STEP iteration value WHILE condition
 
 The statements after the FOR statement (up to the accompanying NEXT statement) are repeated.
 The control variable may not have subscripts.
@@ -831,6 +834,18 @@ Examples:
 	30 NEXT I
 
 	10 FOR I = 1 STEP 2 UNTIL I = 10
+	20 PRINT I
+	30 NEXT I
+
+	10 FOR I = 1 WHILE I < 10
+	20 PRINT I
+	30 NEXT I
+
+	10 FOR I = 1 WHILE I < 10 STEP 2
+	20 PRINT I
+	30 NEXT I
+
+	10 FOR I = 1 STEP 2 WHILE I < 10
 	20 PRINT I
 	30 NEXT I
 
