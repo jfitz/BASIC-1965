@@ -6,25 +6,29 @@ This version is a primitive form of BASIC, less powerful than Microsoft BASIC.
 
 Features of the language:
 - Numeric variables only; no string variables
-- Functions ABS, ATN, COS, EXP, LOG, RND, SGN, SIN, TAN
+- Functions ABS, EXP, FRAC, INT, LOG, LOG10, LOG2, MOD, RND, SGN, SQR
+- Trigonometric functions ARCCOS, ARCSIN, ARCTAN, ATN, COS, COT, CSC, SEC, SIN, TAN
 - Matrix functions CON, DET, IDN, INV, TRN, ZER
 - User-defined functions in form FNx(X)
 - Statements DATA, DIM, DEF FN, END, FOR, GOSUB, GOTO, IF, INPUT, LET, NEXT, OPTION, PRINT, READ, REMARK, RETURN, STOP, WRITE
 - The LET statement must include the LET keyword
-- Matrix operations with MAT, MAT READ, MAT PRINT
-- Array operations with ARR, ARR READ, ARR PRINT
+- Matrix operations MAT (assignment), MAT INPUT, MAT READ, MAT PRINT, MAT WRITE
+- Array operations ARR (assignment), ARR INPUT, ARR READ, ARR PRINT, ARR WRITE
 - Only one statement on each line
 - Comments with single quote (') character
 - File operations with the FILES statement (not OPEN and CLOSE statements)
-- No IF/THEN/ELSE. IF/THEN is supported, and that only with a target line number, not a target statement
+- IF/THEN, but no IF/THEN/ELSE
 
 Features of the interpreter:
 - Interactive mode and command-line mode
 - Option for slow output to simulate Teletype
 - Trace ability to print lines as they are executed
-- Provenence to indicate the lines in which variables were assigned
+- Provenence for trace output to indicate the lines in which variables were assigned
 - Profile information with execution time and counts for each line
 - Cross-reference listing
 - Rudimentary debugger
 - Rudimentary checks for infinite loop
 - McCabe and Halstead complexity measurements
+- Options for numeric precision
+- Option to forget variable after FOR/NEXT loop
+- Option to lock variable during FOR/NEXT loop

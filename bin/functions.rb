@@ -620,6 +620,42 @@ class FunctionLog < AbstractScalarFunction
   end
 end
 
+# function LOG10
+class FunctionLog10 < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature)
+
+    args[0].log10
+  end
+end
+
+# function LOG2
+class FunctionLog2 < AbstractScalarFunction
+  def initialize(text)
+    super
+
+    @signature = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, stack)
+    args = stack.pop
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature)
+
+    args[0].log2
+  end
+end
+
 # function MOD
 class FunctionMod < AbstractScalarFunction
   def initialize(text)
@@ -900,6 +936,8 @@ class FunctionFactory
     'INT' => FunctionInt,
     'INV' => FunctionInv,
     'LOG' => FunctionLog,
+    'LOG10' => FunctionLog10,
+    'LOG2' => FunctionLog2,
     'MOD' => FunctionMod,
     'RND' => FunctionRnd,
     'ROUND' => FunctionRound,
