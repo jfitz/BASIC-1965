@@ -1,26 +1,14 @@
 # Unary scalar operators
 class UnaryOperator < AbstractElement
-  def self.accept?(token)
-    classes = %w[OperatorToken]
-    classes.include?(token.class.to_s)
-  end
-
-  @operators = { '+' => 6, '-' => 6, '#' => 4 }
-
-  def self.operator?(op)
-    @operators.key?(op)
-  end
-
-  def self.precedence(op)
-    @operators[op]
-  end
+  @operators = [ '+', '-', '#' ]
 
   def self.operators
-    @operators.keys
+    @operators
   end
 
   attr_reader :content_type
   attr_reader :arguments
+  attr_reader :precedence
 
   def initialize(text)
     super()
@@ -29,11 +17,6 @@ class UnaryOperator < AbstractElement
     @content_type = @content_types[@op]
     @content_type = :unknown if @content_type.nil?
     @arguments = nil
-
-    raise(BASICExpressionError, "'#{text}' is not an operator") unless
-      self.class.operator?(@op)
-
-    @precedence = self.class.precedence(@op)
     @operator = true
   end
 
@@ -66,177 +49,11 @@ class UnaryOperator < AbstractElement
   end
 
   def pound?
-    @op == '#'
-  end
-
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
-
-    x = stack.pop
-    if x.matrix?
-      case @op
-      when '+'
-        posate_matrix(x)
-      when '-'
-        negate_matrix(x)
-      end
-    elsif x.array?
-      case @op
-      when '+'
-        posate_array(x)
-      when '-'
-        negate_array(x)
-      end
-    else
-      case @op
-      when '+'
-        posate(x)
-      when '-'
-        negate(x)
-      when '#'
-        file_handle(x)
-      end
-    end
+    false
   end
 
   def to_s
     @op
-  end
-
-  private
-
-  def posate_a(source)
-    n_cols = source.dimensions[0].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      value = source.get_value(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = posate(value)
-    end
-
-    values
-  end
-
-  def posate_1(source)
-    n_cols = source.dimensions[0].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      value = source.get_value_1(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = posate(value)
-    end
-
-    values
-  end
-
-  def posate_2(source)
-    n_rows = source.dimensions[0].to_i
-    n_cols = source.dimensions[1].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_rows).each do |row|
-      (base..n_cols).each do |col|
-        value = source.get_value_2(row, col)
-        coords = AbstractElement.make_coords(row, col)
-        values[coords] = posate(value)
-      end
-    end
-
-    values
-  end
-
-  def negate_a(source)
-    n_cols = source.dimensions[0].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      value = source.get_value(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = negate(value)
-    end
-
-    values
-  end
-
-  def negate_1(source)
-    n_cols = source.dimensions[0].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      value = source.get_value_1(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = negate(value)
-    end
-
-    values
-  end
-
-  def negate_2(source)
-    n_rows = source.dimensions[0].to_i
-    n_cols = source.dimensions[1].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_rows).each do |row|
-      (base..n_cols).each do |col|
-        value = source.get_value_2(row, col)
-        coords = AbstractElement.make_coords(row, col)
-        values[coords] = negate(value)
-      end
-    end
-
-    values
-  end
-
-  def posate(a)
-    f = a.to_f
-    NumericConstant.new(f)
-  end
-
-  def negate(a)
-    f = -a.to_f
-    NumericConstant.new(f)
-  end
-
-  def file_handle(a)
-    num = a.to_i
-    FileHandle.new(num)
-  end
-
-  def posate_array(a)
-    dims = a.dimensions
-    values = posate_a(a)
-    BASICArray.new(dims, values)
-  end
-
-  def negate_array(a)
-    dims = a.dimensions
-    values = negate_a(a)
-
-    BASICArray.new(dims, values)
-  end
-
-  def posate_matrix(a)
-    dims = a.dimensions
-    values = posate_1(a) if dims.size == 1
-    values = posate_2(a) if dims.size == 2
-
-    Matrix.new(dims, values)
-  end
-
-  def negate_matrix(a)
-    dims = a.dimensions
-    values = negate_1(a) if dims.size == 1
-    values = negate_2(a) if dims.size == 2
-
-    Matrix.new(dims, values)
   end
 end
 
@@ -903,6 +720,7 @@ end
 class TerminalOperator < AbstractElement
   def initialize
     super()
+
     @operator = true
     @terminal = true
     @precedence = 0
@@ -910,5 +728,228 @@ class TerminalOperator < AbstractElement
 
   def to_s
     'TERM'
+  end
+end
+
+class UnaryOperatorPlus < UnaryOperator
+  def self.accept?(token)
+    classes = %w[OperatorToken]
+    classes.include?(token.class.to_s) && token.to_s == '+'
+  end
+
+  def initialize(text)
+    super
+
+    @precedence = 6
+  end
+
+  def evaluate(_, stack)
+    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+
+    x = stack.pop
+
+    if x.matrix?
+      posate_matrix(x)
+    elsif x.array?
+      posate_array(x)
+    else
+      posate(x)
+    end
+  end
+
+  private
+
+  def posate_a(source)
+    n_cols = source.dimensions[0].to_i
+    values = {}
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
+      value = source.get_value(col)
+      coords = AbstractElement.make_coord(col)
+      values[coords] = posate(value)
+    end
+
+    values
+  end
+
+  def posate_1(source)
+    n_cols = source.dimensions[0].to_i
+    values = {}
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
+      value = source.get_value_1(col)
+      coords = AbstractElement.make_coord(col)
+      values[coords] = posate(value)
+    end
+
+    values
+  end
+
+  def posate_2(source)
+    n_rows = source.dimensions[0].to_i
+    n_cols = source.dimensions[1].to_i
+    values = {}
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
+        value = source.get_value_2(row, col)
+        coords = AbstractElement.make_coords(row, col)
+        values[coords] = posate(value)
+      end
+    end
+
+    values
+  end
+
+  def posate(a)
+    f = a.to_f
+    NumericConstant.new(f)
+  end
+
+  def posate_array(a)
+    dims = a.dimensions
+    values = posate_a(a)
+    BASICArray.new(dims, values)
+  end
+
+  def posate_matrix(a)
+    dims = a.dimensions
+    values = posate_1(a) if dims.size == 1
+    values = posate_2(a) if dims.size == 2
+
+    Matrix.new(dims, values)
+  end
+end
+
+class UnaryOperatorMinus < UnaryOperator
+  def self.accept?(token)
+    classes = %w[OperatorToken]
+    classes.include?(token.class.to_s) && token.to_s == '-'
+  end
+
+  def initialize(text)
+    super
+
+    @precedence = 6
+  end
+
+  def evaluate(_, stack)
+    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+
+    x = stack.pop
+
+    if x.matrix?
+      negate_matrix(x)
+    elsif x.array?
+      negate_array(x)
+    else
+      negate(x)
+    end
+  end
+
+  private
+  
+  def negate_a(source)
+    n_cols = source.dimensions[0].to_i
+    values = {}
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
+      value = source.get_value(col)
+      coords = AbstractElement.make_coord(col)
+      values[coords] = negate(value)
+    end
+
+    values
+  end
+
+  def negate_1(source)
+    n_cols = source.dimensions[0].to_i
+    values = {}
+    base = $options['base'].value
+
+    (base..n_cols).each do |col|
+      value = source.get_value_1(col)
+      coords = AbstractElement.make_coord(col)
+      values[coords] = negate(value)
+    end
+
+    values
+  end
+
+  def negate_2(source)
+    n_rows = source.dimensions[0].to_i
+    n_cols = source.dimensions[1].to_i
+    values = {}
+    base = $options['base'].value
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
+        value = source.get_value_2(row, col)
+        coords = AbstractElement.make_coords(row, col)
+        values[coords] = negate(value)
+      end
+    end
+
+    values
+  end
+
+  def negate(a)
+    f = -a.to_f
+    NumericConstant.new(f)
+  end
+
+  def negate_array(a)
+    dims = a.dimensions
+    values = negate_a(a)
+
+    BASICArray.new(dims, values)
+  end
+
+  def negate_matrix(a)
+    dims = a.dimensions
+    values = negate_1(a) if dims.size == 1
+    values = negate_2(a) if dims.size == 2
+
+    Matrix.new(dims, values)
+  end
+end
+
+class UnaryOperatorHash < UnaryOperator
+  def self.accept?(token)
+    classes = %w[OperatorToken]
+    classes.include?(token.class.to_s) && token.to_s == '#'
+  end
+
+  def initialize(text)
+    super
+
+    @precedence = 4
+  end
+
+  def pound?
+    true
+  end
+
+  def evaluate(_, stack)
+    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+
+    x = stack.pop
+
+    if x.matrix?
+    elsif x.array?
+    else
+      file_handle(x)
+    end
+  end
+
+  private
+
+  def file_handle(a)
+    num = a.to_i
+    FileHandle.new(num)
   end
 end

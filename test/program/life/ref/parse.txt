@@ -79,11 +79,11 @@
  AssignmentOperator:=
 450 FOR I0=-1 TO 1
  control: Variable:I0
- start:   ["NumericConstant:1", "UnaryOperator:-"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-"]
  end:     ["NumericConstant:1"]
 460 FOR J0=-1 TO 1
  control: Variable:J0
- start:   ["NumericConstant:1", "UnaryOperator:-"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
  Variable:I0

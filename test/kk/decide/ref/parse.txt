@@ -45,7 +45,7 @@
  control: Variable:I
  start:   ["Variable:I", "NumericConstant:1", "BinaryOperator:-"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperator:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-"]
 110    LET K = T(I,0)
  Variable:K
  Variable:I
@@ -109,7 +109,7 @@
 300    LET M = -999999999
  Variable:M
  NumericConstant:1000000000
- UnaryOperator:-
+ UnaryOperatorMinus:-
  AssignmentOperator:=
 310    FOR J = 2 TO 2*ABS(K) STEP 2
  control: Variable:J
@@ -164,7 +164,7 @@
 430
 900 DATA -3,1,1,2,2,3,3
  NumericConstant:3
- UnaryOperator:-
+ UnaryOperatorMinus:-
  NumericConstant:1
  NumericConstant:1
  NumericConstant:2
@@ -193,7 +193,7 @@
  NumericConstant:100
 905 DATA -2,4,9,5,10
  NumericConstant:2
- UnaryOperator:-
+ UnaryOperatorMinus:-
  NumericConstant:4
  NumericConstant:9
  NumericConstant:5
@@ -207,7 +207,7 @@
 907 DATA 0,-10
  NumericConstant:0
  NumericConstant:10
- UnaryOperator:-
+ UnaryOperatorMinus:-
 908 DATA 2,0.75,13,0.25,14
  NumericConstant:2
  NumericConstant:0.75
@@ -225,13 +225,13 @@
 910 DATA 0,-100
  NumericConstant:0
  NumericConstant:100
- UnaryOperator:-
+ UnaryOperatorMinus:-
 911 DATA 0,90
  NumericConstant:0
  NumericConstant:90
 912 DATA -2,6,18,7,19
  NumericConstant:2
- UnaryOperator:-
+ UnaryOperatorMinus:-
  NumericConstant:6
  NumericConstant:18
  NumericConstant:7
@@ -241,7 +241,7 @@
  NumericConstant:90
 914 DATA -2,8,20,9,21
  NumericConstant:2
- UnaryOperator:-
+ UnaryOperatorMinus:-
  NumericConstant:8
  NumericConstant:20
  NumericConstant:9
@@ -255,7 +255,7 @@
 917 DATA 0,-100
  NumericConstant:0
  NumericConstant:100
- UnaryOperator:-
+ UnaryOperatorMinus:-
 918 DATA 3,0.167,22,0.333,23,0.5,24
  NumericConstant:3
  NumericConstant:0.167
@@ -267,7 +267,7 @@
 919 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperator:-
+ UnaryOperatorMinus:-
 920 DATA 3,0.167,25,0.333,26,0.5,27
  NumericConstant:3
  NumericConstant:0.167
@@ -279,29 +279,29 @@
 921 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperator:-
+ UnaryOperatorMinus:-
 922 DATA 0,90
  NumericConstant:0
  NumericConstant:90
 923 DATA 0,-10
  NumericConstant:0
  NumericConstant:10
- UnaryOperator:-
+ UnaryOperatorMinus:-
 924 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperator:-
+ UnaryOperatorMinus:-
 925 DATA 0,90
  NumericConstant:0
  NumericConstant:90
 926 DATA 0,-10
  NumericConstant:0
  NumericConstant:10
- UnaryOperator:-
+ UnaryOperatorMinus:-
 927 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperator:-
+ UnaryOperatorMinus:-
 998 DATA 999
  NumericConstant:999
 999 END

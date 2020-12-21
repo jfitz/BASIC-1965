@@ -15,7 +15,7 @@
  control: Variable:F
  start:   ["Variable:N", "NumericConstant:2", "BinaryOperator:/", "FunctionInt"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperator:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-"]
 50 IF N/F <> INT(N/F) THEN 80
  Variable:N
  Variable:F
