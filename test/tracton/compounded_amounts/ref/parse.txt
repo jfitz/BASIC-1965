@@ -34,10 +34,10 @@
  Variable:Y
  NumericConstant:1
  Variable:I
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
- BinaryOperator:^
- BinaryOperator:*
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 140 PRINT "FUTURE VALUE = ";X
  TextConstant:"FUTURE VALUE = "
@@ -57,10 +57,10 @@
  Variable:X
  NumericConstant:1
  Variable:I
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
- BinaryOperator:^
- BinaryOperator:*
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 200 PRINT "PRESENT VALUE = ";Y
  TextConstant:"PRESENT VALUE = "
@@ -81,11 +81,11 @@
  NumericConstant:1
  Variable:I
  Variable:N
- BinaryOperator:^
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorPlus:+
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 260 PRINT "INTEREST = ";L
  TextConstant:"INTEREST = "
@@ -104,13 +104,13 @@
  Variable:I
  Variable:X
  Variable:Y
- BinaryOperator:/
+ BinaryOperatorDivide:/
  NumericConstant:1
  Variable:N
- BinaryOperator:/
- BinaryOperator:^
+ BinaryOperatorDivide:/
+ BinaryOperatorPower:^
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 320 PRINT "INTEREST RATE = ";I
  TextConstant:"INTEREST RATE = "
@@ -129,13 +129,13 @@
  Variable:N
  Variable:X
  Variable:Y
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionLog
  NumericConstant:1
  Variable:I
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionLog
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 380 PRINT "NUMBER OF TIME PERIODS = ";N
  TextConstant:"NUMBER OF TIME PERIODS = "
@@ -152,7 +152,7 @@
 402 IF L = 1 THEN 404
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 403 STOP
  
 404 PRINT

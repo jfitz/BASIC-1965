@@ -9,9 +9,9 @@
  VariableName:X
  Variable:X
  Variable:P
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:180
- BinaryOperator:/
+ BinaryOperatorDivide:/
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X
@@ -23,12 +23,12 @@
  VariableName:X
  NumericConstant:100
  Variable:X
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:0.5
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionInt
  NumericConstant:100
- BinaryOperator:/
+ BinaryOperatorDivide:/
 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -56,19 +56,19 @@
  Variable:X
  Variable:B
  UserFunction
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Y
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 180 IF S > 1 THEN 290
  Variable:S
  NumericConstant:1
- BinaryOperator:>
+ BinaryOperatorGreater:>
 190 IF FNR(S) = 1 THEN 320
  Variable:S
  UserFunction
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 195
 200 REM TWO POINTS OF INTERSECTION
  Remark:TWO POINTS OF INTERSECTION
@@ -78,27 +78,27 @@
  NumericConstant:1
  Variable:S
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:-
+ BinaryOperatorPower:^
+ BinaryOperatorMinus:-
  FunctionSqr
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 220 LET C = ATN(T)*180/P
  Variable:C
  Variable:T
  FunctionArcTan
  NumericConstant:180
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:P
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 230 LET A = 180 - B - C
  Variable:A
  NumericConstant:180
  Variable:B
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:C
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 240 GOSUB 370
  LineNumber:370
@@ -106,15 +106,15 @@
  Variable:C
  NumericConstant:180
  Variable:C
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 260 LET A = 180 - B - C
  Variable:A
  NumericConstant:180
  Variable:B
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:C
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 270 GOSUB 370
  LineNumber:370
@@ -139,7 +139,7 @@
  Variable:A
  NumericConstant:90
  Variable:B
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 340 GOSUB 370
  LineNumber:370
@@ -156,14 +156,14 @@
  Variable:X
  Variable:A
  UserFunction
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:S
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 390 IF Z >= 0 THEN 420
  Variable:Z
  NumericConstant:0
- BinaryOperator:>=
+ BinaryOperatorGreaterEqual:>=
 400 PRINT "NONE",
  TextConstant:"NONE"
  CarriageControl:,

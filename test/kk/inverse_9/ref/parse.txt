@@ -3,27 +3,27 @@
 20 FOR I = 1 TO N-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 30 FOR J = 1 TO N-1
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 40 LET P(I,J) = I*J - INT(I*J/N)*N
  Variable:I
  Variable:J
  Variable:P
  Variable:I
  Variable:J
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:I
  Variable:J
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  Variable:N
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 50 NEXT J
  Variable:J
@@ -32,17 +32,17 @@
 70 FOR I = 1 TO N-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 80 FOR J = 1 TO N-1
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 90 IF P(I,J) = 1 THEN 140
  Variable:I
  Variable:J
  Variable:P
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 100 NEXT J
  Variable:J
 110 PRINT I; "DOES NOT HAVE AN INVERSE"

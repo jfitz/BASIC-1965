@@ -20,7 +20,7 @@
  Variable:I
  Variable:N
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 110 FOR J = 1 TO I
  control: Variable:J
@@ -30,7 +30,7 @@
  Variable:K
  Variable:J
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 130 FOR L = N TO K STEP -1
  control: Variable:L
@@ -42,7 +42,7 @@
  Variable:Z
  Variable:J
  Variable:Z
- BinaryOperator:>
+ BinaryOperatorGreater:>
 150 REM SAVE FIRST VALUE
  Remark:SAVE FIRST VALUE
 160 LET T = Z(L)

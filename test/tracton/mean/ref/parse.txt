@@ -27,44 +27,44 @@
 90 IF F <= 0 THEN 170
  Variable:F
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 100 LET A = A + 1
  Variable:A
  Variable:A
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 110 LET B = B + F
  Variable:B
  Variable:B
  Variable:F
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 120 LET G = X*F
  Variable:G
  Variable:X
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 130 LET C = C + G
  Variable:C
  Variable:C
  Variable:G
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 140 LET E = (X^2)*F
  Variable:E
  Variable:X
  NumericConstant:2
- BinaryOperator:^
+ BinaryOperatorPower:^
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 150 LET D = D + E
  Variable:D
  Variable:D
  Variable:E
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 160 GOTO 70
  LineNumber:70
@@ -72,7 +72,7 @@
  Variable:H
  Variable:C
  Variable:B
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 180 LET I = SQR(D - (B*(H^2)))
  Variable:I
@@ -80,9 +80,9 @@
  Variable:B
  Variable:H
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  FunctionSqr
  AssignmentOperator:=
 190 LET J = I/SQR(B)
@@ -90,7 +90,7 @@
  Variable:I
  Variable:B
  FunctionSqr
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 200 PRINT
  CarriageControl:NL
@@ -124,7 +124,7 @@
 280 IF L = 1 THEN 300
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 290 STOP
  
 300 PRINT

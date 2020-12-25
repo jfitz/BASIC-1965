@@ -17,50 +17,50 @@
  Variable:N
  Variable:A
  Variable:B
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:C
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:D
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 150 LET E = ABS(A*D - B*C) - N/2
  Variable:E
  Variable:A
  Variable:D
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
  Variable:C
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  FunctionAbs
  Variable:N
  NumericConstant:2
- BinaryOperator:/
- BinaryOperator:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
  Variable:X
  Variable:N
  Variable:E
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:E
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A
  Variable:B
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:C
  Variable:D
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  Variable:A
  Variable:C
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  Variable:B
  Variable:D
- BinaryOperator:+
- BinaryOperator:*
- BinaryOperator:/
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 170
 180 PRINT A,B

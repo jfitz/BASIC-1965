@@ -26,7 +26,7 @@
 120 IF Y > 1752 THEN 150
  Variable:Y
  NumericConstant:1752
- BinaryOperator:>
+ BinaryOperatorGreater:>
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
  TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
  CarriageControl:NL
@@ -37,35 +37,35 @@
  NumericConstant:0.6
  NumericConstant:1
  Variable:M
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  FunctionInt
  AssignmentOperator:=
 160 LET L = Y - K
  Variable:L
  Variable:Y
  Variable:K
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 170 LET O = M + 12*K
  Variable:O
  Variable:M
  NumericConstant:12
  Variable:K
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 180 LET P = L/100
  Variable:P
  Variable:L
  NumericConstant:100
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 190 LET Z1 = INT(P/4)
  Variable:Z1
  Variable:P
  NumericConstant:4
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 200 LET Z2 = INT(P)
@@ -77,9 +77,9 @@
  Variable:Z3
  NumericConstant:5
  Variable:L
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:4
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 220 LET Z4 = INT (13*(O + 1)/5)
@@ -87,25 +87,25 @@
  NumericConstant:13
  Variable:O
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  NumericConstant:5
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
  Variable:Z
  Variable:Z4
  Variable:Z3
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:Z2
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:Z1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:D
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 240 LET Z=Z - (7*INT(Z/7)) + 1
  Variable:Z
@@ -113,12 +113,12 @@
  NumericConstant:7
  Variable:Z
  NumericConstant:7
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
  Syntax error: "J$(Z)" is not a value or operator

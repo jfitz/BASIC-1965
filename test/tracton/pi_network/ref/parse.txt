@@ -28,52 +28,52 @@
  Variable:A
  Variable:Z1
  Variable:Q
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 130 LET C = ((Z2/Z1)*((Q^2) + 1)) - 1
  Variable:C
  Variable:Z2
  Variable:Z1
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:Q
  NumericConstant:2
- BinaryOperator:^
+ BinaryOperatorPower:^
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 140 LET B = Z2/SQR(C)
  Variable:B
  Variable:Z2
  Variable:C
  FunctionSqr
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 150 LET E = (Z2/(Q*B)) + 1
  Variable:E
  Variable:Z2
  Variable:Q
  Variable:B
- BinaryOperator:*
- BinaryOperator:/
+ BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 160 LET D = E*((Q*Z1)/((Q^2) + 1))
  Variable:D
  Variable:E
  Variable:Q
  Variable:Z1
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Q
  NumericConstant:2
- BinaryOperator:^
+ BinaryOperatorPower:^
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:/
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorDivide:/
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 170 LET P = 6.28319
  Variable:P
@@ -84,28 +84,28 @@
  NumericConstant:1
  Variable:P
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A
- BinaryOperator:*
- BinaryOperator:/
+ BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 190 LET C2 = 1/(P*F*B)
  Variable:C2
  NumericConstant:1
  Variable:P
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
- BinaryOperator:*
- BinaryOperator:/
+ BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 200 LET L = D/(P*F)
  Variable:L
  Variable:D
  Variable:P
  Variable:F
- BinaryOperator:*
- BinaryOperator:/
+ BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 210 PRINT "COMPONENTS OF PI-NETWORK"
  TextConstant:"COMPONENTS OF PI-NETWORK"
@@ -135,7 +135,7 @@
 280 IF X = 1 THEN 300
  Variable:X
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 290 STOP
  
 300 PRINT

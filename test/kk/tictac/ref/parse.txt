@@ -20,12 +20,12 @@
  NumericConstant:8
  Variable:X
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:8
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
 190 REM
  Remark:
 200 REM NOW WE START THE PROGRAM
@@ -52,7 +52,7 @@
  Variable:B
  Variable:P
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 280 LET M = B
@@ -69,14 +69,14 @@
  Variable:Q
  Variable:B
  NumericConstant:4
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
- BinaryOperator:=
+ BinaryOperatorEqual:=
 320    LET C = FNM(B+4)
  Variable:C
  Variable:B
  NumericConstant:4
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 330    LET M = C
@@ -91,7 +91,7 @@
  Variable:C
  Variable:B
  NumericConstant:2
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 370 LET M = C
@@ -108,14 +108,14 @@
  Variable:R
  Variable:C
  NumericConstant:4
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
- BinaryOperator:=
+ BinaryOperatorEqual:=
 410    LET D = FNM(C+4)
  Variable:D
  Variable:C
  NumericConstant:4
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 420    LET M = D
@@ -129,17 +129,17 @@
 450 IF P/2 <> INT(P/2) THEN 500
  Variable:P
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:P
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
- BinaryOperator:<>
+ BinaryOperatorNotEqual:<>
 460    LET D = FNM(C+7)
  Variable:D
  Variable:C
  NumericConstant:7
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 470    LET M = D
@@ -154,7 +154,7 @@
  Variable:D
  Variable:C
  NumericConstant:3
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 510 LET M = D
@@ -171,14 +171,14 @@
  Variable:S
  Variable:D
  NumericConstant:4
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
- BinaryOperator:=
+ BinaryOperatorEqual:=
 550    LET E = FNM(D+4)
  Variable:E
  Variable:D
  NumericConstant:4
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 560    LET M = E
@@ -193,7 +193,7 @@
  Variable:E
  Variable:D
  NumericConstant:6
- BinaryOperator:+
+ BinaryOperatorPlus:+
  UserFunction
  AssignmentOperator:=
 600 LET M = E

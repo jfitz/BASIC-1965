@@ -152,34 +152,34 @@
  CarriageControl:;
  Variable:P1
  Variable:P2
- BinaryOperator:+
+ BinaryOperatorPlus:+
  CarriageControl:NL
 500 LET D = D1 + D2
  Variable:D
  Variable:D1
  Variable:D2
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 510 LET P = P1 + P2
  Variable:P
  Variable:P1
  Variable:P2
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 520 IF P = 21 THEN 640
  Variable:P
  NumericConstant:21
- BinaryOperator:=
+ BinaryOperatorEqual:=
 530 GOSUB 960
  LineNumber:960
 540 IF L = 1 THEN 690
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 550 IF D <= 16 THEN 740
  Variable:D
  NumericConstant:16
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 560 PRINT "THE DEALER HAS ";D
  TextConstant:"THE DEALER HAS "
  CarriageControl:;
@@ -193,7 +193,7 @@
 580 IF P > D THEN 620
  Variable:P
  Variable:D
- BinaryOperator:>
+ BinaryOperatorGreater:>
 590 REM WIN OR LOSS STATEMENTS
  Remark:WIN OR LOSS STATEMENTS
 600 PRINT "THE DEALER HAS WON!!!"
@@ -212,7 +212,7 @@
 650 IF D = 21 THEN 670
  Variable:D
  NumericConstant:21
- BinaryOperator:=
+ BinaryOperatorEqual:=
 660 GOTO 560
  LineNumber:560
 670 PRINT "THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
@@ -231,12 +231,12 @@
  Variable:P
  Variable:P
  Variable:C
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 720 IF P > 21 THEN 600
  Variable:P
  NumericConstant:21
- BinaryOperator:>
+ BinaryOperatorGreater:>
 730 GOTO 530
  LineNumber:530
 740 PRINT "THE DEALER HAS ";D
@@ -250,7 +250,7 @@
  Variable:D
  Variable:D
  Variable:C
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 770 PRINT "THE DEALER DRAWS A ";C
  TextConstant:"THE DEALER DRAWS A "
@@ -265,11 +265,11 @@
 790 IF D > 21 THEN 620
  Variable:D
  NumericConstant:21
- BinaryOperator:>
+ BinaryOperatorGreater:>
 800 IF D <= 17 THEN 750
  Variable:D
  NumericConstant:17
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
@@ -277,9 +277,9 @@
  NumericConstant:1
  NumericConstant:11
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 830 IF C == 11 THEN 850
  Token 'OperatorToken:=' is not a value or operator
@@ -288,9 +288,9 @@
 850 IF D + C > 21 THEN 870
  Variable:D
  Variable:C
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:21
- BinaryOperator:>
+ BinaryOperatorGreater:>
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
@@ -304,22 +304,22 @@
  NumericConstant:1
  NumericConstant:11
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 900 IF C = 11 THEN 920
  Variable:C
  NumericConstant:11
- BinaryOperator:=
+ BinaryOperatorEqual:=
 910 GOTO 950
  LineNumber:950
 920 IF P + C > 21 THEN 940
  Variable:P
  Variable:C
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:21
- BinaryOperator:>
+ BinaryOperatorGreater:>
 930 GOTO 950
  LineNumber:950
 940 LET C = 1

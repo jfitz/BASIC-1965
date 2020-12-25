@@ -3,12 +3,12 @@
  VariableName:X
  Variable:X
  NumericConstant:1000
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:0.5
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionInt
  NumericConstant:1000
- BinaryOperator:/
+ BinaryOperatorDivide:/
 110 DIM C(20,20), U(20,20), B(20), P(20)
  NumericConstant:20
  NumericConstant:20
@@ -60,14 +60,14 @@
  Variable:I
  NumericConstant:1
  UnaryOperatorMinus:-
- BinaryOperator:=
+ BinaryOperatorEqual:=
 230 LET C(I,J) = 1/R
  Variable:I
  Variable:J
  Variable:C
  NumericConstant:1
  Variable:R
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 240 LET C(J,I) = 1/R
  Variable:J
@@ -75,7 +75,7 @@
  Variable:C
  NumericConstant:1
  Variable:R
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 250 GOTO 210
  LineNumber:210
@@ -83,7 +83,7 @@
 270 FOR I = 2 TO N-1
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 280    LET S = 0
  Variable:S
  NumericConstant:0
@@ -98,7 +98,7 @@
  Variable:I
  Variable:J
  Variable:C
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 310    NEXT J
  Variable:J
@@ -133,7 +133,7 @@
  Variable:P
  Variable:U
  Variable:B
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 390
 400 PRINT "NODE", "VOLTAGE"
@@ -173,7 +173,7 @@
 510 FOR I = 2 TO N-1
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 520    PRINT "NODE" I
  TextConstant:"NODE"
  CarriageControl:
@@ -191,8 +191,8 @@
  Variable:P
  Variable:J
  Variable:P
- BinaryOperator:-
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorMultiply:*
  UserFunction
  CarriageControl:,
 550    NEXT J
@@ -207,9 +207,9 @@
  Variable:P
  Variable:N
  Variable:P
- BinaryOperator:-
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMinus:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 570    PRINT
  CarriageControl:NL
@@ -231,7 +231,7 @@
  CarriageControl:
  Variable:V
  Variable:S1
- BinaryOperator:/
+ BinaryOperatorDivide:/
  UserFunction
  CarriageControl:NL
 640

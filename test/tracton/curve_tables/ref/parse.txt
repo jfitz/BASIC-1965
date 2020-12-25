@@ -36,9 +36,9 @@
  Variable:Y
  NumericConstant:2
  Variable:I
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:6
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 150 PRINT I,Y
  Variable:I
@@ -57,7 +57,7 @@
 200 IF L = 1 THEN 220
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 210 STOP
  
 220 PRINT

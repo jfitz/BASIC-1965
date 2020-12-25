@@ -11,46 +11,46 @@
 26 IF T = 999 THEN 999
  Variable:T
  NumericConstant:999
- BinaryOperator:=
+ BinaryOperatorEqual:=
 30 IF A <= 0 THEN 100
  Variable:A
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 40 IF R <= 0 THEN 100
  Variable:R
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 50 IF Y <= 0 THEN 100
  Variable:Y
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 60 IF T <= 0 THEN 100
  Variable:T
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 70 LET N = Y*T
  Variable:N
  Variable:Y
  Variable:T
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 80 LET R1 = R/100/T
  Variable:R1
  Variable:R
  NumericConstant:100
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:T
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 90 LET B = A*(1+R1)^N
  Variable:B
  Variable:A
  NumericConstant:1
  Variable:R1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
- BinaryOperator:^
- BinaryOperator:*
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 95 PRINT "FINAL AMOUNT = $" B
  TextConstant:"FINAL AMOUNT = $"

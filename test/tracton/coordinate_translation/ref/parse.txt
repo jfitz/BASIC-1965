@@ -11,9 +11,9 @@
  Variable:B
  Variable:A
  NumericConstant:3.14159
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:180
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 60 PRINT "COORDINATES OF NEW ORIGIN (X0,Y0) =";
  TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
@@ -31,38 +31,38 @@
  Variable:Z
  Variable:F
  Variable:X
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 110 LET W = C - Y
  Variable:W
  Variable:C
  Variable:Y
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 120 LET D = (Z*COS(B)) + (W*SIN(B))
  Variable:D
  Variable:Z
  Variable:B
  FunctionCos
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:W
  Variable:B
  FunctionSin
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 130 LET E = - (Z*SIN(B)) + (W*COS(B))
  Variable:E
  Variable:Z
  Variable:B
  FunctionSin
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  UnaryOperatorMinus:-
  Variable:W
  Variable:B
  FunctionCos
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 140 PRINT
  CarriageControl:NL
@@ -94,7 +94,7 @@
 220 IF L = 1 THEN 240
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 230 STOP
  
 240 PRINT

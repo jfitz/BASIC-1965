@@ -47,9 +47,9 @@
  Variable:P
  Variable:Q
  Variable:R
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionSgn
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 110            GOSUB 200
  LineNumber:200
@@ -67,7 +67,7 @@
 200 IF X > 0 THEN 250
  Variable:X
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>
 210 PRINT "FALSE",
  TextConstant:"FALSE"
  CarriageControl:,

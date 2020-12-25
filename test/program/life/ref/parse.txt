@@ -50,7 +50,7 @@
 360 IF A <> 1 THEN 999
  Variable:A
  NumericConstant:1
- BinaryOperator:<>
+ BinaryOperatorNotEqual:<>
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
@@ -90,24 +90,24 @@
  FunctionAbs
  Variable:J0
  FunctionAbs
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 480 IF B(I+I0,J+J0) = 0 THEN 500
  Variable:I
  Variable:I0
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:J
  Variable:J0
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:B
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 490 LET C = C + 1
  Variable:C
  Variable:C
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 500 NEXT J0
  Variable:J0
@@ -144,19 +144,19 @@
  Variable:J
  Variable:N
  NumericConstant:2
- BinaryOperator:<
+ BinaryOperatorLess:<
 640 IF N(I,J)=2 THEN 720
  Variable:I
  Variable:J
  Variable:N
  NumericConstant:2
- BinaryOperator:=
+ BinaryOperatorEqual:=
 650 IF N(I,J)=3 THEN 690
  Variable:I
  Variable:J
  Variable:N
  NumericConstant:3
- BinaryOperator:=
+ BinaryOperatorEqual:=
 660 REM * CELL DIES
  Remark:* CELL DIES
 670 LET B(I,J)=0

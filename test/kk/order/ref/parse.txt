@@ -20,7 +20,7 @@
 200    FOR J = 1 TO N-1
  control: Variable:J
  start:   ["NumericConstant:1"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 210       LET X = S(J)
  Variable:X
  Variable:J
@@ -30,13 +30,13 @@
  Variable:Y
  Variable:J
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:S
  AssignmentOperator:=
 230       IF X <= Y THEN 300
  Variable:X
  Variable:Y
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 240       LET S(J) = Y
  Variable:J
  Variable:S
@@ -45,7 +45,7 @@
 250       LET S(J+1) = X
  Variable:J
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:S
  Variable:X
  AssignmentOperator:=

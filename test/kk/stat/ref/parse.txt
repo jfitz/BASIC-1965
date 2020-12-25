@@ -16,26 +16,26 @@
 150 IF X = 999999 THEN 210
  Variable:X
  NumericConstant:999999
- BinaryOperator:=
+ BinaryOperatorEqual:=
 160 LET N = N + 1
  Variable:N
  Variable:N
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 170 LET S = S + X
  Variable:S
  Variable:S
  Variable:X
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 180 LET S2 = S2 + X*X
  Variable:S2
  Variable:S2
  Variable:X
  Variable:X
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 190 GO TO 140
  LineNumber:140
@@ -44,23 +44,23 @@
  Variable:M
  Variable:S
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 220 LET V = (N*S2 - S*S)/N/(N-1)
  Variable:V
  Variable:N
  Variable:S2
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:S
  Variable:S
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:/
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 230 LET D = SQR(V)
  Variable:D
@@ -71,20 +71,20 @@
  Variable:P
  NumericConstant:0.6745
  Variable:D
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 250 LET E = SQR(V/N)
  Variable:E
  Variable:V
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionSqr
  AssignmentOperator:=
 260 LET C = D/M
  Variable:C
  Variable:D
  Variable:M
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 270
 280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
@@ -151,7 +151,7 @@
 400 IF X <> 999999 THEN 160
  Variable:X
  NumericConstant:999999
- BinaryOperator:<>
+ BinaryOperatorNotEqual:<>
 410
 900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
  NumericConstant:1

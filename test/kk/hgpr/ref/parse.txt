@@ -33,20 +33,20 @@
  Variable:X
  Variable:P
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 40    IF N(X) < 0 THEN 90
  Variable:X
  Variable:N
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 50    LET K = K+1
  Variable:K
  Variable:K
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 55    LET P(K) = P
  Variable:K
@@ -57,19 +57,19 @@
  Variable:P
  NumericConstant:2000
  FunctionSqr
- BinaryOperator:>
+ BinaryOperatorGreater:>
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I
  start:   ["Variable:P"]
  end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2", "Variable:P", "BinaryOperator:*"]
+ step:    ["NumericConstant:2", "Variable:P", "BinaryOperatorMultiply:*"]
 65       LET X = (I-1)/2
  Variable:X
  Variable:I
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 70       LET N(X) = -1
  Variable:X
@@ -97,9 +97,9 @@
  Variable:S
  Variable:A
  NumericConstant:2
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:1000
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionSqr
  AssignmentOperator:=
 130 PRINT
@@ -137,7 +137,7 @@
 239    IF Z > 999 THEN 270
  Variable:Z
  NumericConstant:999
- BinaryOperator:>
+ BinaryOperatorGreater:>
 240    FOR J = Z TO 999 STEP F
  control: Variable:J
  start:   ["Variable:Z"]
@@ -169,7 +169,7 @@
 430    IF Z > 999 THEN 450
  Variable:Z
  NumericConstant:999
- BinaryOperator:>
+ BinaryOperatorGreater:>
 440    LET N(Z) = -1
  Variable:Z
  Variable:N
@@ -180,18 +180,18 @@
  Variable:F
  Variable:F
  Variable:D
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 460 LET D = 6-D
  Variable:D
  NumericConstant:6
  Variable:D
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 470 IF F <= S THEN 420
  Variable:F
  Variable:S
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 480
 700 REM PRINT RESULT
  Remark:PRINT RESULT
@@ -207,19 +207,19 @@
  Variable:I
  Variable:N
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 720    PRINT 2*I + 1;
  NumericConstant:2
  Variable:I
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  CarriageControl:;
 725    LET S = S+1
  Variable:S
  Variable:S
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 730 NEXT I
  Variable:I
@@ -251,26 +251,26 @@
  Variable:I
  Variable:N
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 765    IF N(I+1) < 0 THEN 780
  Variable:I
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 770    PRINT 2*I+1, 2*I+3
  NumericConstant:2
  Variable:I
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  CarriageControl:,
  NumericConstant:2
  Variable:I
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:3
- BinaryOperator:+
+ BinaryOperatorPlus:+
  CarriageControl:NL
 780 NEXT I
  Variable:I
@@ -285,16 +285,16 @@
  Variable:F
  Variable:A
  Variable:F
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 820 LET Y = A*1E3
  Variable:Y
  Variable:A
  NumericConstant:1000
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 830 LET X = F - (Y - F*INT(Y/F))
  Variable:X
@@ -303,34 +303,34 @@
  Variable:F
  Variable:Y
  Variable:F
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
- BinaryOperator:*
- BinaryOperator:-
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 840 IF X <> 2*INT(X/2) THEN 860
  Variable:X
  NumericConstant:2
  Variable:X
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
- BinaryOperator:*
- BinaryOperator:<>
+ BinaryOperatorMultiply:*
+ BinaryOperatorNotEqual:<>
 850 LET X = X + F
  Variable:X
  Variable:X
  Variable:F
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 860 LET Z = (X-1)/2
  Variable:Z
  Variable:X
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 870 RETURN
  

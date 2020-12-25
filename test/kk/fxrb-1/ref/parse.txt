@@ -29,9 +29,9 @@
  VariableName:X
  NumericConstant:4
  Variable:X
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:0.5
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionInt
 170
 200 READ X,Y
@@ -40,7 +40,7 @@
 210 LET G(FNR(X*1.5),FNR(Y)) = 1
  Variable:X
  NumericConstant:1.5
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  UserFunction
  Variable:Y
  UserFunction
@@ -54,46 +54,46 @@
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T
  start:   ["NumericConstant:0"]
- end:     ["Variable:T9", "Variable:P", "BinaryOperator:/"]
+ end:     ["Variable:T9", "Variable:P", "BinaryOperatorDivide:/"]
  step:    ["Variable:T8"]
 240 LET X = X + (A*X - B*X*Y)*T8
  Variable:X
  Variable:X
  Variable:A
  Variable:X
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
  Variable:X
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Y
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:T8
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Variable:Y
  Variable:Y
  Variable:C
  Variable:X
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:D
  Variable:Y
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:T8
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 260 NEXT T
  Variable:T
 270 LET G(FNR(X*1.5),FNR(Y)) = 1
  Variable:X
  NumericConstant:1.5
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  UserFunction
  Variable:Y
  UserFunction
@@ -117,7 +117,7 @@
  Variable:J
  Variable:G
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>
 330 NEXT I
  Variable:I
 340 PRINT
@@ -133,7 +133,7 @@
  Variable:J
  Variable:G
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>
 380 PRINT " ";
  TextConstant:" "
  CarriageControl:;
@@ -144,14 +144,14 @@
  CarriageControl:;
 410 FOR K = I+1 TO 60
  control: Variable:K
- start:   ["Variable:I", "NumericConstant:1", "BinaryOperator:+"]
+ start:   ["Variable:I", "NumericConstant:1", "BinaryOperatorPlus:+"]
  end:     ["NumericConstant:60"]
 420 IF G(K,J) > 0 THEN 450
  Variable:K
  Variable:J
  Variable:G
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>
 430 NEXT K
  Variable:K
 440 GOTO 460

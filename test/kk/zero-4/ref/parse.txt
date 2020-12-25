@@ -3,15 +3,15 @@
  VariableName:X
  Variable:X
  NumericConstant:5
- BinaryOperator:^
+ BinaryOperatorPower:^
  NumericConstant:2
  Variable:X
  NumericConstant:3
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
  Remark:DEF FNF(X) = -3*X^5 + X^3 + 1
 12 REM DEF FNF(X) = X^2 + 1
@@ -28,14 +28,14 @@
 26 LET X(1+S) = A
  NumericConstant:1
  Variable:S
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:X
  Variable:A
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
  Variable:S
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:X
  Variable:B
  AssignmentOperator:=
@@ -45,9 +45,9 @@
  Variable:X
  NumericConstant:2
  Variable:X
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 35 LET F = SGN(FNF(X))
  Variable:F
@@ -58,11 +58,11 @@
 40 IF F = 0 THEN 100
  Variable:F
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 50 LET X(1+F) = X
  NumericConstant:1
  Variable:F
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:X
  Variable:X
  AssignmentOperator:=
@@ -71,7 +71,7 @@
  Variable:X
  NumericConstant:2
  Variable:X
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionAbs
  NumericConstant:0
  Variable:X
@@ -79,10 +79,10 @@
  NumericConstant:2
  Variable:X
  FunctionAbs
- BinaryOperator:+
- BinaryOperator:/
+ BinaryOperatorPlus:+
+ BinaryOperatorDivide:/
  NumericConstant:5.0e-07
- BinaryOperator:<
+ BinaryOperatorLess:<
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
@@ -107,22 +107,22 @@
 220 IF S*T = 0 THEN 400
  Variable:S
  Variable:T
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 230 IF S*T > 0 THEN 300
  Variable:S
  Variable:T
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>
 240 RETURN
  
 300 LET L = B-A
  Variable:L
  Variable:B
  Variable:A
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 310 FOR I = 1 TO 1000
  control: Variable:I
@@ -133,17 +133,17 @@
  Variable:A
  FunctionRnd
  Variable:L
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 330 IF S * SGN(FNF(X)) < 0 THEN 370
  Variable:S
  Variable:X
  UserFunction
  FunctionSgn
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 340 NEXT I
  Variable:I
 350 PRINT "NO CHANGE OF SIGN FOUND"
@@ -160,7 +160,7 @@
 400 IF S = 0 THEN 430
  Variable:S
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 410 LET X = B
  Variable:X
  Variable:B

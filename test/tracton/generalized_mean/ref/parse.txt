@@ -27,20 +27,20 @@
 110 IF X = 0 THEN 150
  Variable:X
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 120 LET J = J + (X^T)
  Variable:J
  Variable:J
  Variable:X
  Variable:T
- BinaryOperator:^
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 130 LET N = N + 1
  Variable:N
  Variable:N
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 140 GOTO 90
  LineNumber:90
@@ -48,11 +48,11 @@
  Variable:G
  Variable:J
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  NumericConstant:1
  Variable:T
- BinaryOperator:/
- BinaryOperator:^
+ BinaryOperatorDivide:/
+ BinaryOperatorPower:^
  AssignmentOperator:=
 160 PRINT "GENERALIZED MEAN"
  TextConstant:"GENERALIZED MEAN"
@@ -76,7 +76,7 @@
 210 IF L = 1 THEN 230
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 220 STOP
  
 230 PRINT

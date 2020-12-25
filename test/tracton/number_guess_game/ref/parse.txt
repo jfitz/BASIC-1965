@@ -11,9 +11,9 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 60 LET Y = 0
  Variable:Y
@@ -42,16 +42,16 @@
  Variable:Y
  Variable:Y
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 150 IF X = R THEN 180
  Variable:X
  Variable:R
- BinaryOperator:=
+ BinaryOperatorEqual:=
 160 IF X > R THEN 280
  Variable:X
  Variable:R
- BinaryOperator:>
+ BinaryOperatorGreater:>
 170 GOTO 300
  LineNumber:300
 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
@@ -75,7 +75,7 @@
 240 IF L = 1 THEN 260
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 250 STOP
  
 260 PRINT

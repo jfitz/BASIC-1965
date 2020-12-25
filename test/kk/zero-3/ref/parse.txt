@@ -3,15 +3,15 @@
  VariableName:X
  Variable:X
  NumericConstant:5
- BinaryOperator:^
+ BinaryOperatorPower:^
  NumericConstant:2
  Variable:X
  NumericConstant:3
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
 20 READ A,B
  Variable:A
  Variable:B
@@ -24,18 +24,18 @@
 24 IF S = 0 THEN 95
  Variable:S
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 26 LET X(1+S) = A
  NumericConstant:1
  Variable:S
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:X
  Variable:A
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
  Variable:S
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:X
  Variable:B
  AssignmentOperator:=
@@ -45,9 +45,9 @@
  Variable:X
  NumericConstant:2
  Variable:X
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 35 LET F = SGN(FNF(X))
  Variable:F
@@ -58,11 +58,11 @@
 40 IF F = 0 THEN 100
  Variable:F
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 50 LET X(1+F) = X
  NumericConstant:1
  Variable:F
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:X
  Variable:X
  AssignmentOperator:=
@@ -71,7 +71,7 @@
  Variable:X
  NumericConstant:2
  Variable:X
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionAbs
  NumericConstant:0
  Variable:X
@@ -79,10 +79,10 @@
  NumericConstant:2
  Variable:X
  FunctionAbs
- BinaryOperator:+
- BinaryOperator:/
+ BinaryOperatorPlus:+
+ BinaryOperatorDivide:/
  NumericConstant:5.0e-07
- BinaryOperator:<
+ BinaryOperatorLess:<
 90 GOTO 30
  LineNumber:30
 95 LET X = A

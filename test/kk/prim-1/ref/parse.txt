@@ -27,12 +27,12 @@
  Variable:P
  Variable:N
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 50    LET K = K+1
  Variable:K
  Variable:K
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 55    LET P(K) = P
  Variable:K
@@ -43,7 +43,7 @@
  Variable:P
  NumericConstant:1000
  FunctionSqr
- BinaryOperator:>
+ BinaryOperatorGreater:>
 60    FOR I = P TO 1000 STEP P
  control: Variable:I
  start:   ["Variable:P"]

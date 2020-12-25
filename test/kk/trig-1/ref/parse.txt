@@ -9,9 +9,9 @@
  VariableName:X
  Variable:X
  Variable:P
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:180
- BinaryOperator:/
+ BinaryOperatorDivide:/
 130 DEF FNC(X)=COS(FND(X))
  UserFunctionName:FNC
  VariableName:X
@@ -35,20 +35,20 @@
  Variable:Z
  Variable:X
  NumericConstant:2
- BinaryOperator:^
+ BinaryOperatorPower:^
  Variable:Y
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorPlus:+
  NumericConstant:2
  Variable:X
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A
  UserFunction
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  FunctionSqr
  AssignmentOperator:=
 170 PRINT X,A,Y,Z

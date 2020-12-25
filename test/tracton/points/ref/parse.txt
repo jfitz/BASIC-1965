@@ -17,9 +17,9 @@
  Variable:W
  Variable:W
  NumericConstant:3.14159
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:180
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 80 PRINT "NUMBER OF POINTS DESIRED = ";
  TextConstant:"NUMBER OF POINTS DESIRED = "
@@ -35,7 +35,7 @@
  Variable:Z
  NumericConstant:6.28319
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 130 PRINT
  CarriageControl:NL
@@ -45,7 +45,7 @@
 150 FOR I = 0 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
 160 LET X = X0 + (R*COS(W + (Z*I)))
  Variable:X
  Variable:X0
@@ -53,11 +53,11 @@
  Variable:W
  Variable:Z
  Variable:I
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  FunctionCos
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 170 LET Y = Y0 + (R*SIN(W + (Z*I)))
  Variable:Y
@@ -66,17 +66,17 @@
  Variable:W
  Variable:Z
  Variable:I
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  FunctionSin
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 180 LET P = I + 1
  Variable:P
  Variable:I
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 190 PRINT "POINT:";P,"X = ";X,"Y = ";Y
  TextConstant:"POINT:"
@@ -103,7 +103,7 @@
 240 IF L = 1 THEN 260
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 250 STOP
  
 260 PRINT

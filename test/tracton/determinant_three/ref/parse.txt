@@ -19,43 +19,43 @@
  Variable:M
  Variable:A
  Variable:E
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:I
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:G
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  Variable:C
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:D
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 60 LET N = M - (C*E*G) - (F*H*A) - (I*D*B)
  Variable:N
  Variable:M
  Variable:C
  Variable:E
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:G
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:F
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:I
  Variable:D
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 70 REM COMPUTE INVERSE
  Remark:COMPUTE INVERSE
@@ -63,109 +63,109 @@
  Variable:O
  Variable:E
  Variable:I
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:H
  Variable:F
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 90 LET P = ((G*F) - (D*I))/N
  Variable:P
  Variable:G
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:D
  Variable:I
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 100 LET Q = ((D*H) - (G*E))/N
  Variable:Q
  Variable:D
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:G
  Variable:E
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 110 LET R = ((H*C) - (B*I))/N
  Variable:R
  Variable:H
  Variable:C
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
  Variable:I
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 120 LET S = ((A*I) - (G*C))/N
  Variable:S
  Variable:A
  Variable:I
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:G
  Variable:C
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 130 LET T = ((G*B) - (A*H))/N
  Variable:T
  Variable:G
  Variable:B
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A
  Variable:H
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 140 LET U = ((B*F) - (E*C))/N
  Variable:U
  Variable:B
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:E
  Variable:C
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 150 LET V = ((D*C) - (A*F))/N
  Variable:V
  Variable:D
  Variable:C
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A
  Variable:F
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 160 LET W = ((A*E) - (D*B))/N
  Variable:W
  Variable:A
  Variable:E
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:D
  Variable:B
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 170 PRINT "ORIGINAL MATRIX"
  TextConstant:"ORIGINAL MATRIX"
@@ -234,7 +234,7 @@
 310 IF L = 1 THEN 20
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 320 STOP
  
 330 END

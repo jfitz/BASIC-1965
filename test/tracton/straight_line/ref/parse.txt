@@ -16,7 +16,7 @@
  Variable:C
  Variable:A
  Variable:B
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 80 PRINT "YEARLY DEPRECIATION = ";C
  TextConstant:"YEARLY DEPRECIATION = "
@@ -38,18 +38,18 @@
  Variable:X
  Variable:X
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 130 LET A = A - C
  Variable:A
  Variable:A
  Variable:C
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 140 IF A < 0 THEN 160
  Variable:A
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 150 GOTO 170
  LineNumber:170
 160 LET A = 0
@@ -64,7 +64,7 @@
 180 IF X < B THEN 120
  Variable:X
  Variable:B
- BinaryOperator:<
+ BinaryOperatorLess:<
 190 PRINT "********************"
  TextConstant:"********************"
  CarriageControl:NL
@@ -76,7 +76,7 @@
 220 IF L = 1 THEN 240
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 230 STOP
  
 240 PRINT

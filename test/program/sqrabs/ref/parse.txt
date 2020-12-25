@@ -18,14 +18,14 @@
  Variable:I
  FunctionAbs
  NumericConstant:3
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 32 LET S1=SQR(ABS(I)+3)
  Variable:S1
  Variable:I
  FunctionAbs
  NumericConstant:3
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionSqr
  AssignmentOperator:=
 34 LET S2=SQR(ABS(I)+3)*2
@@ -33,10 +33,10 @@
  Variable:I
  FunctionAbs
  NumericConstant:3
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionSqr
  NumericConstant:2
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 40 PRINT I, A, S, A1, S1, S2
  Variable:I

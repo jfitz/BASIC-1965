@@ -20,10 +20,10 @@
  NumericConstant:1
  Variable:Z2
  Variable:Z1
- BinaryOperator:/
- BinaryOperator:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMinus:-
  FunctionSqr
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
  Variable:R2
@@ -31,24 +31,24 @@
  NumericConstant:1
  Variable:Z2
  Variable:Z1
- BinaryOperator:/
- BinaryOperator:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMinus:-
  FunctionSqr
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
  Variable:M
  Variable:Z1
  Variable:Z2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionSqr
  Variable:Z1
  Variable:Z2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionSqr
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 110 LET L = 20*(LOG(M)/LOG(10))
  Variable:L
@@ -57,8 +57,8 @@
  FunctionLog
  NumericConstant:10
  FunctionLog
- BinaryOperator:/
- BinaryOperator:*
+ BinaryOperatorDivide:/
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 120 PRINT "COMPONENTS OF THE L-PAD"
  TextConstant:"COMPONENTS OF THE L-PAD"
@@ -88,7 +88,7 @@
 190 IF X = 1 THEN 210
  Variable:X
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 200 STOP
  
 210 PRINT

@@ -41,7 +41,7 @@
  Variable:Z
  Variable:Z
  Variable:P
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 210 FOR I = 1 TO N
  control: Variable:I
@@ -99,7 +99,7 @@
  Variable:M
  Variable:M
  Variable:P
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 340 FOR I = 1 TO N
  control: Variable:I
@@ -119,7 +119,7 @@
  NumericConstant:1
  Variable:J
  Variable:A
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 370 NEXT J
  Variable:J
@@ -149,11 +149,11 @@
  Variable:I
  Variable:J
  Variable:Z
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:1
  Variable:J
  Variable:A
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 440 NEXT J
  Variable:J
@@ -172,7 +172,7 @@
  Variable:B
  Variable:A
  Variable:M
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
  TextConstant:"FIRST PASSAGE TIME IN EQUILIBRIUM"

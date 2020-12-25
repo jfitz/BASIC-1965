@@ -17,7 +17,7 @@
  Variable:Q
  Variable:A
  Variable:B
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 45 LET R = A - Q*B
@@ -25,8 +25,8 @@
  Variable:A
  Variable:Q
  Variable:B
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 50 LET A = B
  Variable:A
@@ -39,7 +39,7 @@
 60 IF R > 0 THEN 40
  Variable:R
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>
 70 PRINT A
  Variable:A
  CarriageControl:NL

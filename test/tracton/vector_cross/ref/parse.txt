@@ -20,31 +20,31 @@
  Variable:X
  Variable:A2
  Variable:B3
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A3
  Variable:B2
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 80 LET Y = (A3*B1) - (A1*B3)
  Variable:Y
  Variable:A3
  Variable:B1
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A1
  Variable:B3
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 90 LET Z = (A1*B2) - (A2*B1)
  Variable:Z
  Variable:A1
  Variable:B2
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:A2
  Variable:B1
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 100 PRINT "VECTOR CROSS PRODUCT"
  TextConstant:"VECTOR CROSS PRODUCT"
@@ -73,7 +73,7 @@
 150 IF L = 1 THEN 170
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 160 STOP
  
 170 PRINT

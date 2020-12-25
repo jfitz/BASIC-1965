@@ -23,7 +23,7 @@
  Variable:I
  Variable:J
  Variable:O
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 170    NEXT J
  Variable:J
@@ -57,7 +57,7 @@
  Variable:I
  Variable:J
  Variable:O
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 260    NEXT I
  Variable:I
@@ -70,7 +70,7 @@
  Variable:S1
  Variable:S1
  Variable:S
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 290 NEXT J
  Variable:J
@@ -95,9 +95,9 @@
  Variable:R
  Variable:J
  Variable:C
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:S1
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 360       LET C = C + (O(I,J) - E)^2/E
  Variable:C
@@ -106,12 +106,12 @@
  Variable:J
  Variable:O
  Variable:E
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:2
- BinaryOperator:^
+ BinaryOperatorPower:^
  Variable:E
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 370       PRINT O(I,J),
  Variable:I
@@ -135,11 +135,11 @@
  CarriageControl:;
  Variable:M
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorMultiply:*
  CarriageControl:;
  TextConstant:"DEGREES OF FREEDOM"
  CarriageControl:NL

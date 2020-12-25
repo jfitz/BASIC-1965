@@ -66,12 +66,12 @@
  Variable:K
  Variable:K
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 230 IF K > = 0 THEN 260
  Variable:K
  NumericConstant:0
- BinaryOperator:>=
+ BinaryOperatorGreaterEqual:>=
 240 PRINT "X MUST BE EQUAL TO OR GREATER THAN 1"
  TextConstant:"X MUST BE EQUAL TO OR GREATER THAN 1"
  CarriageControl:NL
@@ -82,12 +82,12 @@
 270 IF (X - 1) - INT(X - 1) THEN 410
  Variable:X
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:X
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionInt
- BinaryOperator:-
+ BinaryOperatorMinus:-
 280 GOSUB 570
  LineNumber:570
 290 GOTO 410
@@ -104,7 +104,7 @@
 330 IF K > = 0 THEN 360
  Variable:K
  NumericConstant:0
- BinaryOperator:>=
+ BinaryOperatorGreaterEqual:>=
 340 PRINT "X MUST BE GREATER THAN OR EQUAL TO 0"
  TextConstant:"X MUST BE GREATER THAN OR EQUAL TO 0"
  CarriageControl:NL
@@ -116,7 +116,7 @@
  Variable:X
  Variable:X
  FunctionInt
- BinaryOperator:=
+ BinaryOperatorEqual:=
 380 GOSUB 570
  LineNumber:570
 390 PRINT X;"! = ";K
@@ -160,18 +160,18 @@
  Variable:J
  Variable:J
  Variable:K
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 510 LET K = K - 1
  Variable:K
  Variable:K
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 520 IF K < 1 THEN 540
  Variable:K
  NumericConstant:1
- BinaryOperator:<
+ BinaryOperatorLess:<
 530 GOTO 500
  LineNumber:500
 540 LET L = K
@@ -189,20 +189,20 @@
  NumericConstant:1
  Variable:A
  Variable:L
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  Variable:B
  Variable:L
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  Variable:C
  Variable:L
  NumericConstant:3
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 580 LET A1 = A1 + (D*(L^4)) + (E*(L^5)) + (F*(L^6))
  Variable:A1
@@ -210,21 +210,21 @@
  Variable:D
  Variable:L
  NumericConstant:4
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  Variable:E
  Variable:L
  NumericConstant:5
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  Variable:F
  Variable:L
  NumericConstant:6
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 590 LET A1 = A1 + (G*(L^7)) + (H*(L^8))
  Variable:A1
@@ -232,21 +232,21 @@
  Variable:G
  Variable:L
  NumericConstant:7
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  Variable:H
  Variable:L
  NumericConstant:8
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 600 LET K = A1*K
  Variable:K
  Variable:A1
  Variable:K
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 610 RETURN
  

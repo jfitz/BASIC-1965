@@ -52,23 +52,23 @@
  Variable:Y
  Variable:B
  Variable:A
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 160 LET Z = B + A
  Variable:Z
  Variable:B
  Variable:A
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 170 LET X = ((C1*Y) +Z)/2
  Variable:X
  Variable:C1
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Z
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 180 GOSUB 500
  LineNumber:500
@@ -76,23 +76,23 @@
  Variable:N
  Variable:D1
  Variable:Q
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 200 LET J = J + N
  Variable:J
  Variable:J
  Variable:N
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 210 LET X = ((C2*Y) + Z)/2
  Variable:X
  Variable:C2
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Z
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 220 GOSUB 500
  LineNumber:500
@@ -100,23 +100,23 @@
  Variable:N
  Variable:D1
  Variable:Q
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 240 LET J = J + N
  Variable:J
  Variable:J
  Variable:N
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 250 LET X = ((C3*Y) + Z)/2
  Variable:X
  Variable:C3
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Z
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 260 GOSUB 500
  LineNumber:500
@@ -124,23 +124,23 @@
  Variable:N
  Variable:D2
  Variable:Q
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 280 LET J = J + N
  Variable:J
  Variable:J
  Variable:N
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 290 LET X = ((C4*Y) + Z)/2
  Variable:X
  Variable:C4
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Z
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 300 GOSUB 500
  LineNumber:500
@@ -148,23 +148,23 @@
  Variable:N
  Variable:D2
  Variable:Q
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 320 LET J = J + N
  Variable:J
  Variable:J
  Variable:N
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 330 LET X = ((C5*Y) + Z)/2
  Variable:X
  Variable:C5
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Z
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 340 GOSUB 500
  LineNumber:500
@@ -172,23 +172,23 @@
  Variable:N
  Variable:D3
  Variable:Q
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 360 LET J = J + N
  Variable:J
  Variable:J
  Variable:N
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 370 LET X = ((C6*Y) + Z)/2
  Variable:X
  Variable:C6
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Z
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 380 GOSUB 500
  LineNumber:500
@@ -196,21 +196,21 @@
  Variable:N
  Variable:D3
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 400 LET J = J + N
  Variable:J
  Variable:J
  Variable:N
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 410 LET G = (Y/2)*J
  Variable:G
  Variable:Y
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:J
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 420 PRINT "INTEGRAL = ";G
  TextConstant:"INTEGRAL = "
@@ -227,7 +227,7 @@
 460 IF L = 1 THEN 480
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 470 STOP
  
 480 PRINT
@@ -239,21 +239,21 @@
  NumericConstant:13
  Variable:X
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:*
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
  NumericConstant:6
  Variable:X
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:X
  FunctionSin
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:1
  Variable:X
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 510 RETURN
  

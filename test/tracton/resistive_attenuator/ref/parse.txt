@@ -18,7 +18,7 @@
  Variable:Z
  Variable:R1
  Variable:R9
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 90 LET Q = (SQR(Z) + SQR(Z - 1))^2
  Variable:Q
@@ -26,11 +26,11 @@
  FunctionSqr
  Variable:Z
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionSqr
- BinaryOperator:+
+ BinaryOperatorPlus:+
  NumericConstant:2
- BinaryOperator:^
+ BinaryOperatorPower:^
  AssignmentOperator:=
 100 LET M = 10*(LOG(Q)/LOG(10))
  Variable:M
@@ -39,8 +39,8 @@
  FunctionLog
  NumericConstant:10
  FunctionLog
- BinaryOperator:/
- BinaryOperator:*
+ BinaryOperatorDivide:/
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 110 PRINT "MINIMUM SYSTEM LOSS IN DECIBELS = ";M
  TextConstant:"MINIMUM SYSTEM LOSS IN DECIBELS = "
@@ -64,43 +64,43 @@
  NumericConstant:2
  Variable:N
  Variable:R1
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:R9
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionSqr
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:/
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 160 LET T1 = R1*((N+1)/(N-1)) - T3
  Variable:T1
  Variable:R1
  Variable:N
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:/
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMultiply:*
  Variable:T3
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 170 LET T2 = R9*((N+1)/(N-1)) - T3
  Variable:T2
  Variable:R9
  Variable:N
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:/
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMultiply:*
  Variable:T3
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 180 REM COMPUTE PI NETWORK
  Remark:COMPUTE PI NETWORK
@@ -109,55 +109,55 @@
  NumericConstant:0.5
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorMultiply:*
  Variable:R1
  Variable:R9
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionSqr
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 200 LET P1 = 1/(1/R1*((N+1)/(N-1)) - (1/P3))
  Variable:P1
  NumericConstant:1
  NumericConstant:1
  Variable:R1
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:N
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:/
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMultiply:*
  NumericConstant:1
  Variable:P3
- BinaryOperator:/
- BinaryOperator:-
- BinaryOperator:/
+ BinaryOperatorDivide:/
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 210 LET P2 = 1/(1/R9*((N+1)/(N-1)) - (1/P3))
  Variable:P2
  NumericConstant:1
  NumericConstant:1
  Variable:R9
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:N
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:N
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:/
- BinaryOperator:*
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMultiply:*
  NumericConstant:1
  Variable:P3
- BinaryOperator:/
- BinaryOperator:-
- BinaryOperator:/
+ BinaryOperatorDivide:/
+ BinaryOperatorMinus:-
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 220 REM REPORT
  Remark:REPORT
@@ -225,7 +225,7 @@
 380 IF Q = 1 THEN 400
  Variable:Q
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 390 STOP
  
 400 PRINT

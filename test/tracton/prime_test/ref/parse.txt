@@ -15,11 +15,11 @@
 60 IF N = 0 THEN 220
  Variable:N
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 70 IF N < 4 THEN 180
  Variable:N
  NumericConstant:4
- BinaryOperator:<
+ BinaryOperatorLess:<
 80 LET I = 0
  Variable:I
  NumericConstant:0
@@ -32,42 +32,42 @@
  Variable:J
  Variable:N
  Variable:T
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 110 LET K = J*T
  Variable:K
  Variable:J
  Variable:T
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 120 IF N = K THEN 200
  Variable:N
  Variable:K
- BinaryOperator:=
+ BinaryOperatorEqual:=
 130 LET I = I + 1
  Variable:I
  Variable:I
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 140 LET L = T*T
  Variable:L
  Variable:T
  Variable:T
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 150 IF L > N THEN 180
  Variable:L
  Variable:N
- BinaryOperator:>
+ BinaryOperatorGreater:>
 160 LET T = (I*2) + 1
  Variable:T
  Variable:I
  NumericConstant:2
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 170 GOTO 100
  LineNumber:100

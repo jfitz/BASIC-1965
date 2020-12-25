@@ -6,20 +6,20 @@
  Variable:M
  Variable:C
  NumericConstant:100
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 120 LET I = M1 * 39.37
  Variable:I
  Variable:M1
  NumericConstant:39.37
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 130 LET F = INT(I/12)
  Variable:F
  Variable:I
  NumericConstant:12
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 140 LET I = I - 12*F
@@ -27,8 +27,8 @@
  Variable:I
  NumericConstant:12
  Variable:F
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 150 PRINT M, "METERS", C, "CENTIMETERS"
  Variable:M
@@ -45,7 +45,7 @@
 170 IF F = 0 THEN 190
  Variable:F
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 180 PRINT F, "FEET",
  Variable:F
  CarriageControl:,

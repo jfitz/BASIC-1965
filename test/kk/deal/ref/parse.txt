@@ -39,7 +39,7 @@
  NumericConstant:52
  NumericConstant:1
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
  AssignmentOperator:=
 2020 LET X = L(I)
@@ -50,7 +50,7 @@
 2030 IF X < 0 THEN 2010
  Variable:X
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 2040 LET L(I) = -1
  Variable:I
  Variable:L
@@ -66,7 +66,7 @@
  Variable:S
  Variable:X
  NumericConstant:13
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 3020 LET V = X - 13*S
@@ -74,13 +74,13 @@
  Variable:X
  NumericConstant:13
  Variable:S
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 3030 IF S > 0 THEN 3060
  Variable:S
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>
 3040 PRINT "CLUB  ";
  TextConstant:"CLUB  "
  CarriageControl:;
@@ -89,7 +89,7 @@
 3060 IF S > 1 THEN 3090
  Variable:S
  NumericConstant:1
- BinaryOperator:>
+ BinaryOperatorGreater:>
 3070 PRINT "DIAMOND  ";
  TextConstant:"DIAMOND  "
  CarriageControl:;
@@ -98,7 +98,7 @@
 3090 IF S > 2 THEN 3120
  Variable:S
  NumericConstant:2
- BinaryOperator:>
+ BinaryOperatorGreater:>
 3100 PRINT "HEART  ";
  TextConstant:"HEART  "
  CarriageControl:;
@@ -111,18 +111,18 @@
 3500 IF V > 8 THEN 3530
  Variable:V
  NumericConstant:8
- BinaryOperator:>
+ BinaryOperatorGreater:>
 3510 PRINT V + 2
  Variable:V
  NumericConstant:2
- BinaryOperator:+
+ BinaryOperatorPlus:+
  CarriageControl:NL
 3520 RETURN
  
 3530 IF V > 9 THEN 3560
  Variable:V
  NumericConstant:9
- BinaryOperator:>
+ BinaryOperatorGreater:>
 3540 PRINT "JACK"
  TextConstant:"JACK"
  CarriageControl:NL
@@ -131,7 +131,7 @@
 3560 IF V > 10 THEN 3590
  Variable:V
  NumericConstant:10
- BinaryOperator:>
+ BinaryOperatorGreater:>
 3570 PRINT "QUEEN"
  TextConstant:"QUEEN"
  CarriageControl:NL
@@ -140,7 +140,7 @@
 3590 IF V > 11 THEN 3620
  Variable:V
  NumericConstant:11
- BinaryOperator:>
+ BinaryOperatorGreater:>
 3600 PRINT "KING"
  TextConstant:"KING"
  CarriageControl:NL

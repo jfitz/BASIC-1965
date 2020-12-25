@@ -36,31 +36,31 @@
  Variable:A
  Variable:A
  Variable:X
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 130 LET B = B + (X^2)
  Variable:B
  Variable:B
  Variable:X
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 140 LET C = C + (X^3)
  Variable:C
  Variable:C
  Variable:X
  NumericConstant:3
- BinaryOperator:^
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 150 LET D = D + (X^4)
  Variable:D
  Variable:D
  Variable:X
  NumericConstant:4
- BinaryOperator:^
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 160 NEXT I
  Variable:I
@@ -68,51 +68,51 @@
  Variable:J
  Variable:A
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 180 LET E = (B/N) - (J^2)
  Variable:E
  Variable:B
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  Variable:J
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:-
+ BinaryOperatorPower:^
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 190 LET F = (C/N) - ((3*J*B)/N) + (2*(J^3))
  Variable:F
  Variable:C
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  NumericConstant:3
  Variable:J
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:N
- BinaryOperator:/
- BinaryOperator:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMinus:-
  NumericConstant:2
  Variable:J
  NumericConstant:3
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 200 LET G = (D/N) - ((4*J*C)/N)
  Variable:G
  Variable:D
  Variable:N
- BinaryOperator:/
+ BinaryOperatorDivide:/
  NumericConstant:4
  Variable:J
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:C
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:N
- BinaryOperator:/
- BinaryOperator:-
+ BinaryOperatorDivide:/
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 210 LET H = G + ((6*(J^2)*B)/N) - (3*(J^4))
  Variable:H
@@ -120,19 +120,19 @@
  NumericConstant:6
  Variable:J
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:*
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
  Variable:B
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:N
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  NumericConstant:3
  Variable:J
  NumericConstant:4
- BinaryOperator:^
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorPower:^
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 220 LET K = F/(E^(3/2))
  Variable:K
@@ -140,17 +140,17 @@
  Variable:E
  NumericConstant:3
  NumericConstant:2
- BinaryOperator:/
- BinaryOperator:^
- BinaryOperator:/
+ BinaryOperatorDivide:/
+ BinaryOperatorPower:^
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 230 LET L = H/(E^2)
  Variable:L
  Variable:H
  Variable:E
  NumericConstant:2
- BinaryOperator:^
- BinaryOperator:/
+ BinaryOperatorPower:^
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 240 PRINT "1ST MOMENT = ";J
  TextConstant:"1ST MOMENT = "
@@ -195,7 +195,7 @@
 330 IF Z = 1 THEN 350
  Variable:Z
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 340 STOP
  
 350 PRINT

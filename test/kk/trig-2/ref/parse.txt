@@ -9,9 +9,9 @@
  VariableName:X
  Variable:X
  Variable:P
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:180
- BinaryOperator:/
+ BinaryOperatorDivide:/
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X
@@ -37,29 +37,29 @@
  Variable:C
  NumericConstant:180
  Variable:A
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:B
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 170 LET Y = X*FNS(B)/FNS(C)
  Variable:Y
  Variable:X
  Variable:B
  UserFunction
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:C
  UserFunction
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
  Variable:Z
  Variable:X
  Variable:A
  UserFunction
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:C
  UserFunction
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z
  Variable:A

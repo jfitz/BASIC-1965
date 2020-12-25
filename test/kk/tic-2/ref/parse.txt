@@ -126,8 +126,8 @@
  FunctionRnd
  NumericConstant:1
  NumericConstant:2
- BinaryOperator:/
- BinaryOperator:<
+ BinaryOperatorDivide:/
+ BinaryOperatorLess:<
 320  PRINT "YOU WILL MOVE FIRST."
  TextConstant:"YOU WILL MOVE FIRST."
  CarriageControl:NL
@@ -159,20 +159,20 @@
  Variable:M
  Variable:M
  FunctionInt
- BinaryOperator:<>
+ BinaryOperatorNotEqual:<>
 430  IF M < 1 THEN 500
  Variable:M
  NumericConstant:1
- BinaryOperator:<
+ BinaryOperatorLess:<
 440  IF M > 9 THEN 550
  Variable:M
  NumericConstant:9
- BinaryOperator:>
+ BinaryOperatorGreater:>
 450  IF B(M) <> 0 THEN 500
  Variable:M
  Variable:B
  NumericConstant:0
- BinaryOperator:<>
+ BinaryOperatorNotEqual:<>
 460  LET B(M) = F
  Variable:M
  Variable:B
@@ -191,42 +191,42 @@
 490     IF P = 0 THEN 530
  Variable:P
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 500     LET C(P) = C(P) + F
  Variable:P
  Variable:C
  Variable:P
  Variable:C
  Variable:F
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 510     IF C(P) = -3 THEN 860
  Variable:P
  Variable:C
  NumericConstant:3
  UnaryOperatorMinus:-
- BinaryOperator:=
+ BinaryOperatorEqual:=
 520     IF C(P) = 3 THEN 800
  Variable:P
  Variable:C
  NumericConstant:3
- BinaryOperator:=
+ BinaryOperatorEqual:=
 530  NEXT J
  Variable:J
 535  LET N = N+1
  Variable:N
  Variable:N
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 536  IF N = 9 THEN 880
  Variable:N
  NumericConstant:9
- BinaryOperator:=
+ BinaryOperatorEqual:=
 537  IF F = 1 THEN 400
  Variable:F
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 538  GOTO 600
  LineNumber:600
 540  GOTO 600
@@ -287,7 +287,7 @@
  Variable:P
  Variable:C
  NumericConstant:2
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1030 NEXT P
  Variable:P
 1040 FOR P = 1 TO 8
@@ -299,7 +299,7 @@
  Variable:C
  NumericConstant:2
  UnaryOperatorMinus:-
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1060 NEXT P
  Variable:P
 1070 GOTO 1200
@@ -318,7 +318,7 @@
  Variable:M
  Variable:B
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1130 NEXT I
  Variable:I
 1140
@@ -335,7 +335,7 @@
  Variable:S
  Variable:B
  NumericConstant:0
- BinaryOperator:<>
+ BinaryOperatorNotEqual:<>
 1220    FOR J = 1 TO 4
  control: Variable:J
  start:   ["NumericConstant:1"]
@@ -349,18 +349,18 @@
 1240       IF P = 0 THEN 1260
  Variable:P
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1250       LET V(S) = V(S) + 1 + ABS(C(P))
  Variable:S
  Variable:V
  Variable:S
  Variable:V
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:P
  Variable:C
  FunctionAbs
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 1260    NEXT J
  Variable:J
@@ -378,7 +378,7 @@
  Variable:S
  Variable:V
  Variable:V
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 1330    LET V = V(S)
  Variable:V
  Variable:S

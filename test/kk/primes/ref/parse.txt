@@ -33,20 +33,20 @@
  Variable:X
  Variable:P
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 40    IF N(X) < 0 THEN 90
  Variable:X
  Variable:N
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 50    LET K = K+1
  Variable:K
  Variable:K
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 55    LET P(K) = P
  Variable:K
@@ -57,19 +57,19 @@
  Variable:P
  NumericConstant:2000
  FunctionSqr
- BinaryOperator:>
+ BinaryOperatorGreater:>
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I
  start:   ["Variable:P"]
  end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2", "Variable:P", "BinaryOperator:*"]
+ step:    ["NumericConstant:2", "Variable:P", "BinaryOperatorMultiply:*"]
 65       LET X = (I-1)/2
  Variable:X
  Variable:I
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  NumericConstant:2
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 70       LET N(X) = -1
  Variable:X

@@ -22,39 +22,39 @@
  Variable:M
  Variable:A
  Variable:D
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
  Variable:C
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 80 IF M = 0 THEN 140
  Variable:M
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 90 LET X = ((E*D) - (B*F))/M
  Variable:X
  Variable:E
  Variable:D
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
  Variable:F
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:M
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 100 LET Y = ((A*F) - (E*C))/M
  Variable:Y
  Variable:A
  Variable:F
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:E
  Variable:C
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  Variable:M
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 110 PRINT "SOLUTION","X = ";X,"Y = ";Y
  TextConstant:"SOLUTION"
@@ -86,7 +86,7 @@
 180 IF L = 1 THEN 200
  Variable:L
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 190 STOP
  
 200 PRINT

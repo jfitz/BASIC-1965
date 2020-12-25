@@ -13,21 +13,21 @@
  Variable:F
  Variable:C
  NumericConstant:9
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:5
- BinaryOperator:/
+ BinaryOperatorDivide:/
  NumericConstant:32
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 42 LET F2=32+(C*9/5)
  Variable:F2
  NumericConstant:32
  Variable:C
  NumericConstant:9
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:5
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 50 PRINT C,F,F2
  Variable:C
@@ -40,12 +40,12 @@
  Variable:C
  Variable:C
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 70 IF C<=10 THEN 40
  Variable:C
  NumericConstant:10
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 900 STOP
  
 999 END

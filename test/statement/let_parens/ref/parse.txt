@@ -4,19 +4,19 @@
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:*
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 20 LET A2=(3*(2+1))*10
  Variable:A2
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  NumericConstant:10
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 30 LET B1=10*(3+(2*1))
  Variable:B1
@@ -24,19 +24,19 @@
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperator:*
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 40 LET B2=(3+(2*1))*10
  Variable:B2
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  NumericConstant:10
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 50 LET C1=10+(3*(2+1))
  Variable:C1
@@ -44,19 +44,19 @@
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 60 LET C2=(3*(2+1))+10
  Variable:C2
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  NumericConstant:10
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 70 PRINT A1, A2, B1, B2, C1, C2
  Variable:A1

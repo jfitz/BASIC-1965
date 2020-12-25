@@ -57,35 +57,35 @@
 230 IF J = K THEN 470
  Variable:J
  Variable:K
- BinaryOperator:=
+ BinaryOperatorEqual:=
 240 LET J = J + 1
  Variable:J
  Variable:J
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 250 LET B = A*X*Y
  Variable:B
  Variable:A
  Variable:X
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Y
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 260 LET C = ((Y - B)*H) + Y
  Variable:C
  Variable:Y
  Variable:B
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:Y
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 270 IF C < 0 THEN 390
  Variable:C
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 280 LET Y = C
  Variable:Y
  Variable:C
@@ -94,18 +94,18 @@
  Variable:D
  Variable:X
  Variable:Z
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:B
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  Variable:X
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 300 IF D < 0 THEN 410
  Variable:D
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 310 LET X = D
  Variable:X
  Variable:D
@@ -128,13 +128,13 @@
 350 IF M = 0 THEN 370
  Variable:M
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 360 GOTO 230
  LineNumber:230
 370 IF N = 0 THEN 430
  Variable:N
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 380 GOTO 230
  LineNumber:230
 390 LET Y = 0
@@ -174,7 +174,7 @@
 510 IF W = 1 THEN 530
  Variable:W
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 520 GOTO 560
  LineNumber:560
 530 PRINT "MAXIMUM GENERATIONS = ";
@@ -194,7 +194,7 @@
 590 IF W = 1 THEN 610
  Variable:W
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 600 STOP
  
 610 PRINT

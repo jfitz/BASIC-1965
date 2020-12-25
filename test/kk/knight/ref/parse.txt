@@ -74,56 +74,56 @@
  AssignmentOperator:=
 330 FOR I1 = I - 2 TO I + 2
  control: Variable:I1
- start:   ["Variable:I", "NumericConstant:2", "BinaryOperator:-"]
- end:     ["Variable:I", "NumericConstant:2", "BinaryOperator:+"]
+ start:   ["Variable:I", "NumericConstant:2", "BinaryOperatorMinus:-"]
+ end:     ["Variable:I", "NumericConstant:2", "BinaryOperatorPlus:+"]
 340    IF I1 = 1 THEN 480
  Variable:I1
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 350    IF ABS(I1 - 4.5) > 4 THEN 480
  Variable:I1
  NumericConstant:4.5
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionAbs
  NumericConstant:4
- BinaryOperator:>
+ BinaryOperatorGreater:>
 360    LET D1 = 3 - ABS(I1 - I)
  Variable:D1
  NumericConstant:3
  Variable:I1
  Variable:I
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionAbs
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
  control: Variable:J1
- start:   ["Variable:J", "Variable:D1", "BinaryOperator:-"]
- end:     ["Variable:J", "Variable:D1", "BinaryOperator:+"]
- step:    ["NumericConstant:2", "Variable:D1", "BinaryOperator:*"]
+ start:   ["Variable:J", "Variable:D1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:J", "Variable:D1", "BinaryOperatorPlus:+"]
+ step:    ["NumericConstant:2", "Variable:D1", "BinaryOperatorMultiply:*"]
 380       IF ABS(J1 - 4.5) > 4 THEN 470
  Variable:J1
  NumericConstant:4.5
- BinaryOperator:-
+ BinaryOperatorMinus:-
  FunctionAbs
  NumericConstant:4
- BinaryOperator:>
+ BinaryOperatorGreater:>
 390       IF B(I1,J1) < 0 THEN 470
  Variable:I1
  Variable:J1
  Variable:B
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 400       LET C = C + 1
  Variable:C
  Variable:C
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 410       IF C <> C1 THEN 470
  Variable:C
  Variable:C1
- BinaryOperator:<>
+ BinaryOperatorNotEqual:<>
 420       LET I = I1
  Variable:I
  Variable:I1
@@ -143,7 +143,7 @@
  Variable:M
  Variable:M
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 460       GOTO 310
  LineNumber:310
@@ -154,7 +154,7 @@
 490 IF C = 0 THEN 600
  Variable:C
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
  Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
 510 LET C1 = INT(RND(Z)*C + 1)
@@ -162,9 +162,9 @@
  Variable:Z
  FunctionRnd
  Variable:C
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  FunctionInt
  AssignmentOperator:=
 520 GOTO 320
@@ -182,12 +182,12 @@
  Variable:Z0
  Variable:Z0
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 620 IF Z0 < 40 THEN 200
  Variable:Z0
  NumericConstant:40
- BinaryOperator:<
+ BinaryOperatorLess:<
 630 REMARK WE GO FOR ANOTHER TRIAL
  Remark:WE GO FOR ANOTHER TRIAL
 880

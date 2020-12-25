@@ -187,7 +187,7 @@
 630 IF D > 1E04 THEN 660
  Variable:D
  NumericConstant:10000
- BinaryOperator:>
+ BinaryOperatorGreater:>
 640 LET L = 1
  Variable:L
  NumericConstant:1
@@ -203,17 +203,17 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
  NumericConstant:100
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 680 LET E1 = 5000*H
  Variable:E1
  NumericConstant:5000
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 690 GOTO 720
  LineNumber:720
@@ -222,24 +222,24 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
  NumericConstant:100
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 710 LET E1 = 1000*H
  Variable:E1
  NumericConstant:1000
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 720 RETURN
  
 730 IF D > 5E03 THEN 760
  Variable:D
  NumericConstant:5000
- BinaryOperator:>
+ BinaryOperatorGreater:>
 740 LET K = 1
  Variable:K
  NumericConstant:1
@@ -255,17 +255,17 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
  NumericConstant:100
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 780 LET E2 = 8000*H
  Variable:E2
  NumericConstant:8000
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 790 GOTO 820
  LineNumber:820
@@ -274,24 +274,24 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
  NumericConstant:100
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 810 LET E2 = 3000*H
  Variable:E2
  NumericConstant:3000
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 820 RETURN
  
 840 IF D < 3E03 THEN 860
  Variable:D
  NumericConstant:3000
- BinaryOperator:<
+ BinaryOperatorLess:<
 850 LET E3 = 0
  Variable:E3
  NumericConstant:0
@@ -301,34 +301,34 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
  NumericConstant:100
- BinaryOperator:/
- BinaryOperator:+
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 870 LET E3 = 2E04*H
  Variable:E3
  NumericConstant:20000
  Variable:H
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 880 LET T1 = T1 - E1
  Variable:T1
  Variable:T1
  Variable:E1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 890 LET T2 = T2 - E2
  Variable:T2
  Variable:T2
  Variable:E2
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 900 IF T1 <= 0 THEN 920
  Variable:T1
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 910 GOTO 950
  LineNumber:950
 920 LET E1 = 0
@@ -348,7 +348,7 @@
 960 IF T2 <= 0 THEN 980
  Variable:T2
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 970 GOTO 1010
  LineNumber:1010
 980 LET E2 = 0
@@ -369,11 +369,11 @@
  Variable:X1
  Variable:X1
  Variable:E1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:E2
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:E3
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1030 RETURN
  
@@ -387,11 +387,11 @@
 1045 IF Y = 1 THEN 1100
  Variable:Y
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1050 IF L = 0 THEN 1080
  Variable:L
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1060 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
  TextConstant:"THE SKY FIGHTER HAS FIRED HIS LASER"
  CarriageControl:NL
@@ -408,13 +408,13 @@
 1110 IF Z = 1 THEN 1180
  Variable:Z
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1120 GOTO 1220
  LineNumber:1220
 1130 IF K = 0 THEN 1160
  Variable:K
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 1140 PRINT "THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
  TextConstant:"THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
  CarriageControl:NL
@@ -441,8 +441,8 @@
  NumericConstant:1
  NumericConstant:5
  FunctionRnd
- BinaryOperator:*
- BinaryOperator:+
+ BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 1230 ON C GOTO 1240, 1270, 1290, 1330
  Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
@@ -481,7 +481,7 @@
 1360 IF D <= 3E03 THEN 1380
  Variable:D
  NumericConstant:3000
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 1370 GOTO 1410
  LineNumber:1410
 1380 PRINT "YOU ARE CLOSER THAN 3000KM TO THE SPACE STATION"
@@ -505,7 +505,7 @@
 1420 IF X1 < 2E04 THEN 1440
  Variable:X1
  NumericConstant:20000
- BinaryOperator:<
+ BinaryOperatorLess:<
 1430 GOTO 1490
  LineNumber:1490
 1440 PRINT "YOU HAVE DEPLETED YOUR ENERGY SUPPLY, THE DEATH"
@@ -537,7 +537,7 @@
 1540 IF D <= 1000 THEN 1590
  Variable:D
  NumericConstant:1000
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
  TextConstant:"YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
  CarriageControl:NL
@@ -548,7 +548,7 @@
  Variable:X1
  Variable:X1
  NumericConstant:20000
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1580 GOTO 2680
  LineNumber:2680
@@ -557,14 +557,14 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd
- BinaryOperator:*
+ BinaryOperatorMultiply:*
  FunctionInt
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 1600 IF H > 50 THEN 1640
  Variable:H
  NumericConstant:50
- BinaryOperator:>
+ BinaryOperatorGreater:>
 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  TextConstant:"YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  CarriageControl:NL
@@ -572,7 +572,7 @@
  Variable:X1
  Variable:X1
  NumericConstant:20000
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1630 GOTO 2680
  LineNumber:2680
@@ -631,7 +631,7 @@
  Variable:T1
  Variable:T1
  Variable:Q
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1850 GOTO 1960
  LineNumber:1960
@@ -639,7 +639,7 @@
  Variable:T2
  Variable:T2
  Variable:Q
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1870 GOTO 1960
  LineNumber:1960
@@ -666,7 +666,7 @@
  Variable:X1
  Variable:X1
  NumericConstant:5000
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1970 GOTO 2660
  LineNumber:2660
@@ -674,13 +674,13 @@
  Variable:T1
  Variable:T1
  Variable:Q
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1982 LET X1 = X1 - 5000
  Variable:X1
  Variable:X1
  NumericConstant:5000
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1990 GOTO 2010
  LineNumber:2010
@@ -688,13 +688,13 @@
  Variable:T2
  Variable:T2
  Variable:Q
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2010 LET X1 = X1 - 5000
  Variable:X1
  Variable:X1
  NumericConstant:5000
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2020 GOTO 2660
  LineNumber:2660
@@ -736,7 +736,7 @@
 2160 IF J = 1 THEN 2190
  Variable:J
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 2170 LET Q = 1000*(1 + INT(RND)/100)
  Variable:Q
  NumericConstant:1000
@@ -744,9 +744,9 @@
  FunctionRnd
  FunctionInt
  NumericConstant:100
- BinaryOperator:/
- BinaryOperator:+
- BinaryOperator:*
+ BinaryOperatorDivide:/
+ BinaryOperatorPlus:+
+ BinaryOperatorMultiply:*
  AssignmentOperator:=
 2180 GOTO 2200
  LineNumber:2200
@@ -767,7 +767,7 @@
  Variable:T1
  Variable:T1
  Variable:Q
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2250 GOTO 2270
  LineNumber:2270
@@ -775,17 +775,17 @@
  Variable:T2
  Variable:T2
  Variable:Q
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2270 IF J = 1 THEN 2300
  Variable:J
  NumericConstant:1
- BinaryOperator:=
+ BinaryOperatorEqual:=
 2280 LET X1 = X1 - 1000
  Variable:X1
  Variable:X1
  NumericConstant:1000
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2290 GOTO 2660
  LineNumber:2660
@@ -793,7 +793,7 @@
  Variable:X1
  Variable:X1
  NumericConstant:1500
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2310 GOTO 2660
  LineNumber:2660
@@ -825,7 +825,7 @@
 2410 IF F > 2.25E04 THEN 2470
  Variable:F
  NumericConstant:22500
- BinaryOperator:>
+ BinaryOperatorGreater:>
 2420 IF C$ = "A" THEN 2500
  Token 'InvalidToken:$' is not a value or operator
 2430 IF C$ = "T" THEN 2620
@@ -853,12 +853,12 @@
  Variable:D
  Variable:D
  Variable:F
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 2510 IF D > 1.5E05 THEN 2540
  Variable:D
  NumericConstant:150000
- BinaryOperator:>
+ BinaryOperatorGreater:>
 2520 GOTO 2640
  LineNumber:2640
 2530 REM WENT TOO FAR
@@ -889,17 +889,17 @@
  Variable:D
  Variable:D
  Variable:F
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2630 IF D <= 0 THEN 2570
  Variable:D
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=
 2640 LET X1 = X1 - F
  Variable:X1
  Variable:X1
  Variable:F
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2650 GOTO 2680
  LineNumber:2680

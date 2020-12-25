@@ -65,14 +65,14 @@
 310  IF L1 < L2 THEN 420
  Variable:L1
  Variable:L2
- BinaryOperator:<
+ BinaryOperatorLess:<
 320  LET L = L1
  Variable:L
  Variable:L1
  AssignmentOperator:=
 330  FOR I = L2+1 TO L
  control: Variable:I
- start:   ["Variable:L2", "NumericConstant:1", "BinaryOperator:+"]
+ start:   ["Variable:L2", "NumericConstant:1", "BinaryOperatorPlus:+"]
  end:     ["Variable:L"]
 340      LET B(I) = 0
  Variable:I
@@ -89,7 +89,7 @@
  AssignmentOperator:=
 430  FOR I = L1+1 TO L
  control: Variable:I
- start:   ["Variable:L1", "NumericConstant:1", "BinaryOperator:+"]
+ start:   ["Variable:L1", "NumericConstant:1", "BinaryOperatorPlus:+"]
  end:     ["Variable:L"]
 440      LET A(I) = 0
  Variable:I
@@ -109,7 +109,7 @@
  Variable:A
  Variable:I
  Variable:B
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 520  NEXT I
  Variable:I
@@ -136,7 +136,7 @@
  Variable:I
  Variable:X
  NumericConstant:0
- BinaryOperator:<
+ BinaryOperatorLess:<
 1040 NEXT I
  Variable:I
 1050 GOTO 1200
@@ -145,7 +145,7 @@
  Variable:L
  Variable:I
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 1110 FOR I = 0 TO L
  control: Variable:I
@@ -156,7 +156,7 @@
  Variable:C
  Variable:L
  Variable:I
- BinaryOperator:-
+ BinaryOperatorMinus:-
  Variable:X
  AssignmentOperator:=
 1130 NEXT I
@@ -175,7 +175,7 @@
  Variable:L
  Variable:C
  NumericConstant:100
- BinaryOperator:>=
+ BinaryOperatorGreaterEqual:>=
 2020 PRINT "      ";
  TextConstant:"      "
  CarriageControl:;
@@ -183,7 +183,7 @@
  Variable:L
  Variable:C
  NumericConstant:10
- BinaryOperator:>=
+ BinaryOperatorGreaterEqual:>=
 2040 PRINT "      ";
  TextConstant:"      "
  CarriageControl:;
@@ -197,7 +197,7 @@
  Variable:L9
  Variable:L
  NumericConstant:1
- BinaryOperator:-
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2070 GOTO 2210
  LineNumber:2210
@@ -206,7 +206,7 @@
  Variable:L
  Variable:C
  NumericConstant:10
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 2110 LET C(L) = C(L) - 10*M
@@ -216,8 +216,8 @@
  Variable:C
  NumericConstant:10
  Variable:M
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2120 PRINT M;
  Variable:M
@@ -250,7 +250,7 @@
  Variable:M
  Variable:N
  Variable:Q
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 2260         LET N = N - M*Q
@@ -258,14 +258,14 @@
  Variable:N
  Variable:M
  Variable:Q
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 2270         LET Q = Q/10
  Variable:Q
  Variable:Q
  NumericConstant:10
- BinaryOperator:/
+ BinaryOperatorDivide:/
  AssignmentOperator:=
 2280         PRINT M;
  Variable:M
@@ -275,7 +275,7 @@
 2300     IF I = 0 THEN 2400
  Variable:I
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 2310     PRINT ",   ";
  TextConstant:",   "
  CarriageControl:;
@@ -293,7 +293,7 @@
 3010 LET C(L+1) = 0
  Variable:L
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:C
  NumericConstant:0
  AssignmentOperator:=
@@ -310,7 +310,7 @@
  Variable:M
  Variable:N
  NumericConstant:1000
- BinaryOperator:/
+ BinaryOperatorDivide:/
  FunctionInt
  AssignmentOperator:=
 3050     LET C(I) = N - 1000*M
@@ -319,32 +319,32 @@
  Variable:N
  NumericConstant:1000
  Variable:M
- BinaryOperator:*
- BinaryOperator:-
+ BinaryOperatorMultiply:*
+ BinaryOperatorMinus:-
  AssignmentOperator:=
 3060     LET C(I+1) = C(I+1) + M
  Variable:I
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:C
  Variable:I
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  Variable:C
  Variable:M
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 3070 NEXT I
  Variable:I
 3080 IF M = 0 THEN 3100
  Variable:M
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=
 3090 LET L = L+1
  Variable:L
  Variable:L
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+
  AssignmentOperator:=
 3100 RETURN
  
