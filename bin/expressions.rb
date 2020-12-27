@@ -684,7 +684,6 @@ end
 # Expression parser
 class Parser
   def initialize(default_shape)
-    @parsed_expressions = []
     @operator_stack = []
     @expression_stack = []
     @current_expression = []
@@ -713,9 +712,10 @@ class Parser
     raise(BASICExpressionError, 'Too many operators') unless
       @operator_stack.empty?
 
-    @parsed_expressions.concat @parens_group unless @parens_group.empty?
-    @parsed_expressions << @current_expression unless @current_expression.empty?
-    @parsed_expressions
+    parsed_expressions = []
+    parsed_expressions.concat @parens_group unless @parens_group.empty?
+    parsed_expressions << @current_expression unless @current_expression.empty?
+    parsed_expressions
   end
 
   private
