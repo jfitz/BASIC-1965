@@ -65,27 +65,18 @@ class BinaryOperator < AbstractElement
     classes.include?(token.class.to_s)
   end
 
-  @operators = {
-    '=' => 2, '<>' => 2,
-    '>' => 2, '>=' => 2,
-    '<' => 2, '<=' => 2,
-    '+' => 3, '-' => 3, '*' => 4, '/' => 4, '^' => 5
-  }
-
-  def self.operator?(op)
-    @operators.key?(op)
-  end
-
-  def self.precedence(op)
-    @operators[op]
-  end
+  @operators = [
+    '=', '<>', '>', '>=', '<', '<=',
+    '+', '-', '*', '/', '^'
+  ]
 
   def self.operators
-    @operators.keys
+    @operators
   end
 
   attr_reader :content_type
   attr_reader :arguments
+  attr_reader :precedence
 
   def initialize(text)
     super()
@@ -98,11 +89,6 @@ class BinaryOperator < AbstractElement
     @content_type = @content_types[@op]
     @content_type = :unknown if @content_type.nil?
     @arguments = nil
-
-    raise(BASICExpressionError, "'#{text}' is not an operator") unless
-      self.class.operator?(@op)
-
-    @precedence = self.class.precedence(@op)
     @operator = true
   end
 
@@ -120,7 +106,8 @@ class BinaryOperator < AbstractElement
 
     raise(BASICExpressionError, 'Bad expression') if other == :unknown
 
-    raise(BASICExpressionError, 'Type mismatch') if other != this
+    raise(BASICExpressionError, 'Type mismatch') unless
+      compatible(this, other)
 
     @content_type = @arguments[0].content_type if @content_type == :unknown
   end
@@ -859,10 +846,8 @@ class BinaryOperatorPlus < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -935,10 +920,8 @@ class BinaryOperatorMinus < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1087,10 +1070,8 @@ class BinaryOperatorDivide < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1163,10 +1144,8 @@ class BinaryOperatorPower < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1239,10 +1218,8 @@ class BinaryOperatorEqual < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1315,10 +1292,8 @@ class BinaryOperatorNotEqual < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1391,10 +1366,8 @@ class BinaryOperatorLess < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1467,10 +1440,8 @@ class BinaryOperatorLessEqual < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1543,10 +1514,8 @@ class BinaryOperatorGreater < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1619,10 +1588,8 @@ class BinaryOperatorGreaterEqual < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.compatible?(y)
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
