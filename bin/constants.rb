@@ -1310,7 +1310,7 @@ class Variable < AbstractElement
 
   def evaluate_value_array_1(interpreter, n_cols)
     values = {}
-    base = interpreter.base
+    base = $options['base'].value
     (base..n_cols).each do |col|
       coords = AbstractElement.make_coord(col)
       variable = Variable.new(@variable_name, :array, coords)

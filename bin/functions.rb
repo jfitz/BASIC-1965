@@ -578,7 +578,7 @@ class FunctionInt < AbstractScalarFunction
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature)
 
-    interpreter.int_floor? ? args[0].floor : args[0].truncate
+    $options['int_floor'].value ? args[0].floor : args[0].truncate
   end
 end
 

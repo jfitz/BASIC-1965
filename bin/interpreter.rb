@@ -1190,16 +1190,4 @@ class Interpreter
     fh.set_mode(:read)
     fh
   end
-
-  def int_floor?
-    $options['int_floor'].value
-  end
-
-  def match_fornext?
-    $options['match_fornext'].value
-  end
-
-  def base
-    $options['base'].value
-  end
 end

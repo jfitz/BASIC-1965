@@ -57,7 +57,7 @@ class BASICArray
   def values(interpreter)
     values = {}
 
-    base = interpreter.base
+    base = $options['base'].value
     (base..@dimensions[0].to_i).each do |col|
       value = get_value(col)
       coords = AbstractElement.make_coord(col)
@@ -106,7 +106,7 @@ class BASICArray
 
     fs_carriage = CarriageControl.new($options['field_sep'].value)
 
-    base = interpreter.base
+    base = $options['base'].value
     (base..n_cols).each do |col|
       value = get_value(col)
       value.print(printer)
@@ -119,7 +119,7 @@ class BASICArray
 
     fs_carriage = CarriageControl.new(',')
 
-    base = interpreter.base
+    base = $options['base'].value
     (base..n_cols).each do |col|
       value = get_value(col)
       value.write(printer)

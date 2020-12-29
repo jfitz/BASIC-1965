@@ -1652,7 +1652,7 @@ class NextStatement < AbstractStatement
   def execute(interpreter)
     fornext_control = interpreter.retrieve_fornext(@control)
 
-    if interpreter.match_fornext?
+    if $options['match_fornext'].value
       # check control variable matches current loop
       expected = interpreter.top_fornext
       actual = fornext_control.control
@@ -2076,7 +2076,7 @@ class ArrInputStatement < AbstractStatement
         raise(BASICExpressionError, 'Not an array') unless dims.size == 1
 
         # build names
-        base = interpreter.base
+        base = $options['base'].value
         (base..dims[0].to_i).each do |col|
           coord = AbstractElement.make_coord(col)
           variable = Variable.new(name, :array, coord)
@@ -2227,7 +2227,7 @@ class ArrReadStatement < AbstractStatement
   def read_array(name, dims, interpreter, ds)
     values = {}
 
-    base = interpreter.base
+    base = $options['base'].value
     (base..dims[0].to_i).each do |col|
       coord = AbstractElement.make_coord(col)
       values[coord] = ds.read
@@ -2477,7 +2477,7 @@ class MatInputStatement < AbstractStatement
 
         # build names
         if dims.size == 1
-          base = interpreter.base
+          base = $options['base'].value
           (base..dims[0].to_i).each do |col|
             coord = AbstractElement.make_coord(col)
             variable = Variable.new(name, :matrix, coord)
@@ -2486,7 +2486,7 @@ class MatInputStatement < AbstractStatement
         end
 
         if dims.size == 2
-          base = interpreter.base
+          base = $options['base'].value
           (base..dims[0].to_i).each do |row|
             (base..dims[1].to_i).each do |col|
               coords = AbstractElement.make_coords(row, col)

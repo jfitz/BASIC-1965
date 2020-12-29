@@ -826,13 +826,13 @@ class BinaryOperatorPlus < BinaryOperator
     @precedence = 3
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -900,13 +900,13 @@ class BinaryOperatorMinus < BinaryOperator
     @precedence = 3
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -974,13 +974,13 @@ class BinaryOperatorMultiply < BinaryOperator
     @precedence = 4
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1050,13 +1050,13 @@ class BinaryOperatorDivide < BinaryOperator
     @precedence = 4
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1124,13 +1124,13 @@ class BinaryOperatorPower < BinaryOperator
     @precedence = 5
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1198,13 +1198,13 @@ class BinaryOperatorEqual < BinaryOperator
     @precedence = 2
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1272,13 +1272,13 @@ class BinaryOperatorNotEqual < BinaryOperator
     @precedence = 2
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1346,13 +1346,13 @@ class BinaryOperatorLess < BinaryOperator
     @precedence = 2
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1420,13 +1420,13 @@ class BinaryOperatorLessEqual < BinaryOperator
     @precedence = 2
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1494,13 +1494,13 @@ class BinaryOperatorGreater < BinaryOperator
     @precedence = 2
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
@@ -1568,13 +1568,13 @@ class BinaryOperatorGreaterEqual < BinaryOperator
     @precedence = 2
   end
 
-  def evaluate(interpreter, stack)
+  def evaluate(_, stack)
     raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
 
     y = stack.pop
     x = stack.pop
 
-    base = interpreter.base
+    base = $options['base'].value
 
     if x.matrix? && y.matrix?
       matrix_matrix(x, y)
