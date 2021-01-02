@@ -161,15 +161,25 @@ class Shell
   end
 
   def process_line_load_command(line)
+    return if line.empty?
+
+    # starts with a '.', so is an immediate command
+    if line[0] == '.'
+      tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
+      nline = line[1..-1]
+      tokens = tokenizer.tokenize(nline)
+      tokens.delete_if(&:whitespace?)
+
+      process_command_load_command(tokens, line)
+      return
+    end
+    
     # starts with a number, so maybe it is a program line
     return @interpreter.program_store_line(line, true) if /\A[ \t]*\d/ =~ line
 
-    # immediate command -- tokenize and execute
-    tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
-    tokens = tokenizer.tokenize(line)
-    tokens.delete_if(&:whitespace?)
-
-    process_command_load_command(tokens, line)
+    # unknown line (probably a continuation of previous line)
+    @console_io.print_line("Unknown command '#{line}'")
+    @console_io.newline
   end
 
   def process_command_load_command(tokens, line)
@@ -291,10 +301,23 @@ class Shell
       raise BASICCommandError.new('Filename not specified') if filename.nil?
 
       lines = []
-      lines += option_command([], false) if keywords.include?('OPTION')
-      lines += @interpreter.program_save
-      lines += @interpreter.set_breakpoints([]) if keywords.include?('BREAK')
 
+      if keywords.include?('OPTION')
+        option_lines = option_command([], false)
+        option_lines.each do |line|
+          lines << '.' + line
+        end
+      end
+
+      lines += @interpreter.program_save
+
+      if keywords.include?('BREAK')
+        break_lines = @interpreter.set_breakpoints([])
+        break_lines.each do |line|
+          lines << '.' + line
+        end
+      end
+      
       save_file(filename, lines)
     when 'LIST'
       texts = @interpreter.program_list(args, false)
