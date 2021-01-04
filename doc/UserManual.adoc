@@ -416,6 +416,8 @@ The options that can be set are:
     IMPLIED_SEMICOLON
     LOCK_FORNEXT
     MATCH_FORNEXT
+    MAX_LINE_NUM
+    MIN_LINE_NUM
     NEWLINE_SPEED
     PRECISION
     PRINT_SPEED
@@ -434,31 +436,36 @@ These options can be initialized on the command line.
 The OPTION command overrides the command-line setting.
 
 |==========
-|Option |Type |Default |Effect
-|BASE |numeric |0 |Sets the base for arrays and matrices to either 0 or 1
-|DEFAULT_PROMPT |String |"? " |Changes the prompt for INPUT statements
-|DETECT_INFINITE_LOOP |TRUE or FALSE |TRUE |Enables the detection of infinite loops
-|ECHO |TRUE or FALSE |FALSE |Echoes input (useful for testing)
-|FIELD_SEP |COMMA, SEMI, NL, or NONE |COMMA |Controls spacing of values in ARR PRINT and MAT PRINT statements
-|FORGET_FORNEXT |TRUE or FALSE |FALSE |Forgets value of control value after final NEXT, if value was not defined at start
-|HEADING |TRUE or FALSE |TRUE |Displays the opening and closing lines that identify BASIC
-|IGNORE_RND_ARG |TRUE or FALSE |FALSE |Ignores the argument to RND(), needed for some old BASIC programs
-|IMPLIED_SEMICOLON |TRUE or FALSE |FALSE |Assume that a semicolon is specified between arguments to PRINT without intervening carriage control specified
-|INT_FLOOR |TRUE or FALSE |FALSE |Sets truncation towards negative infinity instead of towards zero
-|LOCK_FORNEXT |TRUE or FALSE |FALSE |Do not allow changes to FOR/NEXT control variables within the loop
-|MATCH_FORNEXT | TRUE or FALSE |FALSE |Requires execution of NEXT to match FOR
-|NEWLINE_SPEED |numeric |0 |Limit printing speed only for newlines
-|PRECISION |numeric 1 to 16, or "INFINITE" |6 |Sets the precision for numeric values
-|PRINT_SPEED |numeric |0 |Limit printing speed (a value of 10 emulates an old TeleType)
-|PRINT_WIDTH |numeric |72 |Wrap output at the specified column; 0 disables wrapping
-|PROMPT_COUNT |TRUE or FALSE |FALSE |Displays the number of items to be input
-|PROVENANCE |TRUE or FALSE |FALSE |Expands trace display to include the line in which a variable was assigned its value
-|QMARK_AFTER_PROMPT |TRUE or FALSE |FALSE |Display '?' after a prompt in an INPUT statement
-|RANDOMIZE |TRUE or FALSE |FALSE |Randomize RND(); same as 'RANDOMIZE' statement 
-|REQUIRE_INITIALIZED |TRUE or FALSE |FALSE |Variables must be initialized before use
-|TIMING |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
-|TRACE |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
-|ZONE_WIDTH |numeric |16 |Width of print zones for comma separators
+|Option |Settable |Data Type |Default |Effect
+|BASE |NLP |numeric |0 |Sets the base for arrays and matrices to either 0 or 1
+|DEFAULT_PROMPT |NLP |String |"? " |Changes the prompt for INPUT statements
+|DETECT_INFINITE_LOOP |NLP |TRUE or FALSE |TRUE |Enables the detection of infinite loops
+|ECHO |NLP |TRUE or FALSE |FALSE |Echoes input (useful for testing)
+|FIELD_SEP |NLP |COMMA, SEMI, NL, or NONE |COMMA |Controls spacing of values in ARR PRINT and MAT PRINT statements
+|FORGET_FORNEXT |NLP |TRUE or FALSE |FALSE |Forgets value of control value after final NEXT, if value was not defined at start
+|HEADING |NLP |TRUE or FALSE |TRUE |Displays the opening and closing lines that identify BASIC
+|IGNORE_RND_ARG |NLP |TRUE or FALSE |FALSE |Ignores the argument to RND(), needed for some old BASIC programs
+|IMPLIED_SEMICOLON |NLP |TRUE or FALSE |FALSE |Assume that a semicolon is specified between arguments to PRINT without intervening carriage control specified
+|INT_FLOOR |NLP |TRUE or FALSE |FALSE |Sets truncation towards negative infinity instead of towards zero
+|LOCK_FORNEXT |NLP |TRUE or FALSE |FALSE |Do not allow changes to FOR/NEXT control variables within the loop
+|MATCH_FORNEXT |NLP |TRUE or FALSE |FALSE |Requires execution of NEXT to match FOR
+|MAX_LINE_NUM |N |numeric |9999 |Maximum line number allowed
+|MIN_LINE_NUM |N |numeric |1 |Minimum line number allowed
+|NEWLINE_SPEED |NLP |numeric |0 |Limit printing speed only for newlines
+|PRECISION |NLP |numeric 1 to 16, or "INFINITE" |6 |Sets the precision for numeric values
+|PRINT_SPEED |NLP |numeric |0 |Limit printing speed (a value of 10 emulates an old TeleType)
+|PRINT_WIDTH |NLP |numeric |72 |Wrap output at the specified column; 0 disables wrapping
+|PROMPT_COUNT |NLP |TRUE or FALSE |FALSE |Displays the number of items to be input
+|PROVENANCE |NLP |TRUE or FALSE |FALSE |Expands trace display to include the line in which a variable was assigned its value
+|QMARK_AFTER_PROMPT |NLP |TRUE or FALSE |FALSE |Display '?' after a prompt in an INPUT statement
+|RANDOMIZE |NLP |TRUE or FALSE |FALSE |Randomize RND(); without this each run uses the same random sequence
+|REQUIRE_INITIALIZED |NLP |TRUE or FALSE |FALSE |Variables must be initialized before use
+|TIMING |NLP |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
+|TRACE |NLP |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
+|ZONE_WIDTH |NLP |numeric |16 |Width of print zones for comma separators
+
+Options can be changed when no program is loaded ('N'), when a program is loaded ('L'), or when a program is running ('P').
+Options that affect the parsing or analyzing of programs can be changed only when no program is loaded.
 
 Debug shell
 -----------
@@ -995,27 +1002,7 @@ Sets an option for the interpreter.
 Syntax: OPTION option expression
 
 Possible options are a subset of the options in the shell.
-
-    DEFAULT_PROMPT
-    DETECT_INFINITE_LOOP
-    ECHO
-    FIELD_SEPS
-    FORGET_FORNEXT
-    IGNORE_RND_ARG
-    IMPLIED_SEMICOLON
-    LOCK_FORNEXT
-    MATCH_FORNEXT
-    NEWLINE_SPEED
-    PRECISION
-    PRINT_SPEED
-    PRINT_WIDTH
-    PROMPT_COUNT
-    PROVENANCE
-    QMARK_AFTER_PROMPT
-    REQUIRE_INITIALIZED
-    SEMICOLON_ZONE_WIDTH
-    TRACE
-    ZONE_WIDTH
+Refer to the OPTION command for options that can be set in the program.
 
 Expression must evaluate to a value approprate for the option.
 It may be a literal, a variable, or a more complex expression.

@@ -232,6 +232,10 @@ class Interpreter
     @program.clear
   end
 
+  def program_loaded?
+    !@program.lines.empty?
+  end
+
   def program_okay?
     @program.okay?
   end

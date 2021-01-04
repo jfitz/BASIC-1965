@@ -20,8 +20,10 @@ require_relative 'program'
 # option class
 class Option
   attr_reader :value
+  attr_reader :types
 
-  def initialize(defs, value)
+  def initialize(types, defs, value)
+    @types = types
     @defs = defs
     check_value(value)
     @value = value
@@ -219,25 +221,29 @@ class Shell
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
-      if $options.key?(kwd_d)
-        if args[1].boolean_constant?
-          boolean = BooleanConstant.new(args[1])
-          $options[kwd_d].set(boolean.to_v)
-        elsif args[1].numeric_constant?
-          numeric = NumericConstant.new(args[1])
-          $options[kwd_d].set(numeric.to_v)
-        elsif args[1].text_constant?
-          text = TextConstant.new(args[1])
-          $options[kwd_d].set(text.to_v)
-        else
-          raise BASICCommandError.new('Incorrect value type')
-        end
+      raise BASICCommandError.new("Unknown option #{kwd}") unless
+        $options.key?(kwd_d)
 
-        value = $options[kwd_d].value.to_s.upcase
-        lines << 'OPTION ' + kwd + ' ' + value.to_s if echo_set
-      else
-        raise BASICCommandError.new("Unknown option #{kwd}")
+      if @interpreter.program_loaded? &&
+         !$options[kwd_d].types.include?(:loaded)
+        raise BASICCommandError.new("Cannot change #{kwd} when program is loaded")
       end
+      
+      if args[1].boolean_constant?
+        boolean = BooleanConstant.new(args[1])
+        $options[kwd_d].set(boolean.to_v)
+      elsif args[1].numeric_constant?
+        numeric = NumericConstant.new(args[1])
+        $options[kwd_d].set(numeric.to_v)
+      elsif args[1].text_constant?
+        text = TextConstant.new(args[1])
+        $options[kwd_d].set(text.to_v)
+      else
+        raise BASICCommandError.new('Incorrect value type')
+      end
+
+      value = $options[kwd_d].value.to_s.upcase
+      lines << 'OPTION ' + kwd + ' ' + value.to_s if echo_set
     else
       raise BASICCommandError.new("Too many arguments")
     end
@@ -609,46 +615,56 @@ int_1 = { type: :int, max: 1, min: 0 }
 int_9999 = { type: :int, max: 9999, min: 999 }
 separator = { type: :list, values: %w[COMMA SEMI NL NONE] }
 
+all_types = [:new, :loaded, :prog]
+only_new = [:new] 
+
 $options = {}
 
 base = 0
 base = options[:base].to_i if options.key?(:base)
-$options['base'] = Option.new(int_1, base)
+$options['base'] = Option.new(all_types, int_1, base)
 
-$options['default_prompt'] = Option.new(string, '? ')
+$options['default_prompt'] = Option.new(all_types, string, '? ')
 
 $options['detect_infinite_loop'] =
-  Option.new(boolean, !options.key?(:no_detect_infinite_loop))
+  Option.new(all_types, boolean, !options.key?(:no_detect_infinite_loop))
 
-$options['echo'] = Option.new(boolean, options.key?(:echo_input))
+$options['echo'] =
+  Option.new(all_types, boolean, options.key?(:echo_input))
 
-field_sep = Option.new(separator, 'COMMA')
-field_sep = Option.new(separator, 'SEMI') if options.key?(:field_sep_semi)
+field_sep = Option.new(all_types, separator, 'COMMA')
+field_sep = Option.new(all_types, separator, 'SEMI') if
+  options.key?(:field_sep_semi)
 $options['field_sep'] = field_sep
 
-$options['forget_fornext'] = Option.new(boolean, options.key?(:forget_fornext))
-$options['heading'] = Option.new(boolean, !options.key?(:no_heading))
+$options['forget_fornext'] =
+  Option.new(all_types, boolean, options.key?(:forget_fornext))
+
+$options['heading'] =
+  Option.new(all_types, boolean, !options.key?(:no_heading))
 
 $options['ignore_rnd_arg'] =
-  Option.new(boolean, options.key?(:ignore_rnd_arg))
+  Option.new(all_types, boolean, options.key?(:ignore_rnd_arg))
 
 $options['implied_semicolon'] =
-  Option.new(boolean, options.key?(:implied_semicolon))
+  Option.new(all_types, boolean, options.key?(:implied_semicolon))
 
-$options['int_floor'] = Option.new(boolean, options.key?(:int_floor))
+$options['int_floor'] =
+  Option.new(all_types, boolean, options.key?(:int_floor))
 
 $options['lock_fornext'] =
-  Option.new(boolean, options.key?(:lock_fornext))
+  Option.new(all_types, boolean, options.key?(:lock_fornext))
 
 $options['match_fornext'] =
-  Option.new(boolean, options.key?(:match_fornext))
+  Option.new(all_types, boolean, options.key?(:match_fornext))
 
-$options['max_line_num'] = Option.new(int_9999, 9999)
-$options['min_line_num'] = Option.new(int_1, 1)
+$options['max_line_num'] = Option.new(only_new, int_9999, 9999)
+$options['min_line_num'] = Option.new(only_new, int_1, 1)
 
 newline_speed = 0
 newline_speed = 10 if options.key?(:tty_lf)
-$options['newline_speed'] = Option.new(int, newline_speed)
+$options['newline_speed'] =
+  Option.new(all_types, int, newline_speed)
 
 precision = 6
 if options.key?(:precision)
@@ -657,41 +673,47 @@ if options.key?(:precision)
     precision = precision.to_i
   end
 end
-$options['precision'] = Option.new(int_1_16, precision)
+$options['precision'] = Option.new(all_types, int_1_16, precision)
 
 print_speed = 0
 print_speed = 10 if options.key?(:tty)
-$options['print_speed'] = Option.new(int, print_speed)
+$options['print_speed'] = Option.new(all_types, int, print_speed)
 
 print_width = 72
 print_width = options[:print_width].to_i if options.key?(:print_width)
-$options['print_width'] = Option.new(int_132, print_width)
+$options['print_width'] = Option.new(all_types, int_132, print_width)
 
-$options['prompt_count'] = Option.new(boolean, options.key?(:prompt_count))
+$options['prompt_count'] =
+  Option.new(all_types, boolean, options.key?(:prompt_count))
 
-$options['provenance'] = Option.new(boolean, options.key?(:provenance))
+$options['provenance'] =
+  Option.new(all_types, boolean, options.key?(:provenance))
 
 $options['qmark_after_prompt'] =
-  Option.new(boolean, options.key?(:qmark_after_prompt))
+  Option.new(all_types, boolean, options.key?(:qmark_after_prompt))
 
-$options['randomize'] = Option.new(boolean, options.key?(:randomize))
+$options['randomize'] =
+  Option.new(all_types, boolean, options.key?(:randomize))
 
 $options['require_initialized'] =
-  Option.new(boolean, options.key?(:require_initialized))
+  Option.new(all_types, boolean, options.key?(:require_initialized))
 
 semicolon_zone_width = 0
 if options.key?(:semicolon_zone_width)
   semicolon_zone_width = options[:semicolon_zone_width].to_i
 end
 
-$options['semicolon_zone_width'] = Option.new(int, semicolon_zone_width)
+$options['semicolon_zone_width'] =
+  Option.new(all_types, int, semicolon_zone_width)
 
-$options['timing'] = Option.new(boolean, !options.key?(:no_timing))
-$options['trace'] = Option.new(boolean, options.key?(:trace))
+$options['timing'] =
+  Option.new(all_types, boolean, !options.key?(:no_timing))
+
+$options['trace'] = Option.new(all_types, boolean, options.key?(:trace))
 
 zone_width = 16
 zone_width = options[:zone_width].to_i if options.key?(:zone_width)
-$options['zone_width'] = Option.new(int_40, zone_width)
+$options['zone_width'] = Option.new(all_types, int_40, zone_width)
 
 console_io = ConsoleIo.new
 
