@@ -82,7 +82,8 @@ $error_codes = {
   te_no_fmt: 144,
   te_few_fmt: 145,
   te_func_no: 150,
-  te_func_alr: 152
+  te_func_alr: 152,
+  te_option_no_run: 170
 }
 
 $error_messages = {
@@ -133,5 +134,6 @@ $error_messages = {
   te_no_fmt: 'No format for USING',
   te_few_fmt: 'Too few items for USING',
   te_func_no: 'Function not defined',
-  te_func_alr: 'Function already defined'
+  te_func_alr: 'Function already defined',
+  te_option_no_run: 'Cannot set option'
 }
