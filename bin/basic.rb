@@ -138,7 +138,7 @@ class Shell
 
   def process_line_keyboard(line)
     # starts with a number, so maybe it is a program line
-    return @interpreter.program_store_line(line, false) if /\A[ \t]*\d/ =~ line
+    return @interpreter.program_store_line(line, true) if /\A[ \t]*\d/ =~ line
 
     # immediate command -- tokenize and execute
     tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
