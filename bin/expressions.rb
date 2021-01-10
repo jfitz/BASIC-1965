@@ -883,10 +883,15 @@ class AbstractExpression
     @comprehension_effort = 1
     @parsed_expressions.each do |parsed_expression|
       prev = nil
+
       parsed_expression.each do |element|
         @comprehension_effort += 1 if element.operator?
-        @comprehension_effort += 1 if element.operator? && !prev.nil? && prev.operator?
+
+        @comprehension_effort += 1 if
+          element.operator? && !prev.nil? && prev.operator?
+
         @comprehension_effort += 1 if element.function?
+
         # function? includes user-defined funcs,
         # so the next line makes comprehension effort 2
         @comprehension_effort += 1 if element.user_function?
@@ -940,7 +945,7 @@ class AbstractExpression
 
   # returns an Array of values
   def evaluate(interpreter)
-    interpreter.evaluate(@parsed_expressions)
+    interpreter.evaluate_n(@parsed_expressions)
   end
 
   def numerics
@@ -1262,6 +1267,7 @@ end
 class ValueExpression < AbstractExpression
   def initialize(_, shape)
     super
+
     @shape = shape
   end
 

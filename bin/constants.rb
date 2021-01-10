@@ -1433,7 +1433,7 @@ class List < AbstractElement
   end
 
   def evaluate(interpreter, _)
-    interpreter.evaluate(@parsed_expressions)
+    interpreter.evaluate_n(@parsed_expressions)
   end
 
   def to_s
