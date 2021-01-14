@@ -1,0 +1,101 @@
+10 REM MATRIX FUNCTION ZER
+ Remark:MATRIX FUNCTION ZER
+15 DIM D(2,3)
+ NumericConstant:2
+ NumericConstant:3
+ Declaration:D
+20 MAT A = ZER2(3,5)
+ Variable:A
+ NumericConstant:3
+ NumericConstant:5
+ FunctionZer2
+ AssignmentOperator:=
+30 MAT B = ZER2(5,3)
+ Variable:B
+ NumericConstant:5
+ NumericConstant:3
+ FunctionZer2
+ AssignmentOperator:=
+40 MAT C = ZER2(4)
+ Variable:C
+ NumericConstant:4
+ FunctionZer2
+ AssignmentOperator:=
+45 MAT D = ZER2
+ Variable:D
+ FunctionZer2
+ AssignmentOperator:=
+50 PRINT "MATRIX A"
+ TextConstant:"MATRIX A"
+ CarriageControl:NL
+60 MAT PRINT A;
+ Variable:A
+ CarriageControl:;
+70 PRINT "MATRIX B"
+ TextConstant:"MATRIX B"
+ CarriageControl:NL
+80 MAT PRINT B;
+ Variable:B
+ CarriageControl:;
+90 PRINT "ARRAY C"
+ TextConstant:"ARRAY C"
+ CarriageControl:NL
+100 MAT PRINT C;
+ Variable:C
+ CarriageControl:;
+110 PRINT "MATRIX D"
+ TextConstant:"MATRIX D"
+ CarriageControl:NL
+120 MAT PRINT D;
+ Variable:D
+ CarriageControl:;
+200 OPTION BASE 1
+ NumericConstant:1
+220 MAT A = ZER2(3,5)
+ Variable:A
+ NumericConstant:3
+ NumericConstant:5
+ FunctionZer2
+ AssignmentOperator:=
+230 MAT B = ZER2(5,3)
+ Variable:B
+ NumericConstant:5
+ NumericConstant:3
+ FunctionZer2
+ AssignmentOperator:=
+240 MAT C = ZER2(4)
+ Variable:C
+ NumericConstant:4
+ FunctionZer2
+ AssignmentOperator:=
+245 MAT D = ZER2()
+ Variable:D
+ FunctionZer2
+ AssignmentOperator:=
+250 PRINT "MATRIX A"
+ TextConstant:"MATRIX A"
+ CarriageControl:NL
+260 MAT PRINT A;
+ Variable:A
+ CarriageControl:;
+270 PRINT "MATRIX B"
+ TextConstant:"MATRIX B"
+ CarriageControl:NL
+280 MAT PRINT B;
+ Variable:B
+ CarriageControl:;
+290 PRINT "ARRAY C"
+ TextConstant:"ARRAY C"
+ CarriageControl:NL
+300 MAT PRINT C;
+ Variable:C
+ CarriageControl:;
+310 PRINT "MATRIX D"
+ TextConstant:"MATRIX D"
+ CarriageControl:NL
+320 MAT PRINT D;
+ Variable:D
+ CarriageControl:;
+999 END
+ 
+

@@ -867,7 +867,7 @@ end
 class AbstractExpression
   attr_reader :comprehension_effort
   
-  def initialize(tokens, default_shape)
+  def initialize(tokens, shape)
     @unparsed_expression = tokens.map(&:to_s).join
     @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
     @text_constant = tokens.size == 1 && tokens[0].text_constant?
@@ -875,10 +875,12 @@ class AbstractExpression
     @carriage = false
 
     elements = tokens_to_elements(tokens)
-    parser = Parser.new(default_shape)
+    parser = Parser.new(shape)
     elements.each { |element| parser.parse(element) }
     @parsed_expressions = parser.expressions
     set_arguments_1(@parsed_expressions)
+
+    @shape = shape
 
     @comprehension_effort = 1
     @parsed_expressions.each do |parsed_expression|
@@ -1265,10 +1267,25 @@ end
 
 # Value expression (an R-value)
 class ValueExpression < AbstractExpression
+  def self.content_type(parsed_expression)
+    stack = []
+
+    parsed_expression.each do |element|
+      element.set_content_type(stack)
+      stack.push element.content_type
+    end
+
+    stack[0]
+  end
+
   def initialize(_, shape)
     super
 
-    @shape = shape
+    types = []
+    @parsed_expressions.each do |parsed_expression|
+      type = ValueExpression.content_type(parsed_expression)
+      types << type
+    end
   end
 
   def printable?

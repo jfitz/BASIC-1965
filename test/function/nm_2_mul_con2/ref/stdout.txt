@@ -1,0 +1,64 @@
+MATRIX A
+ 2               2               2               2               2               2
+ 2               2               2               2               2               2
+ 2               2               2               2               2               2
+ 2               2               2               2               2               2
+MATRIX B
+ 2               2               2               2
+ 2               2               2               2
+ 2               2               2               2
+ 2               2               2               2
+ 2               2               2               2
+ 2               2               2               2
+ARRAY C
+ 2               2               2               2               2
+MATRIX D
+ 2               2               2               2
+ 2               2               2               2
+ 2               2               2               2
+MATRIX A
+ 3               3               3               3               3
+ 3               3               3               3               3
+ 3               3               3               3               3
+MATRIX B
+ 3               3               3
+ 3               3               3
+ 3               3               3
+ 3               3               3
+ 3               3               3
+ARRAY C
+ 3               3               3               3
+MATRIX D
+ 3               3               3
+ 3               3               3
+STOP in line 999
+
+10 (1) REM MATRIX FUNCTION CON
+15 (1) DIM D(2, 3)
+20 (1) MAT A = 2 * CON2(3, 5)
+30 (1) MAT B = 2 * CON2(5, 3)
+40 (1) MAT C = 2 * CON2(4)
+45 (1) MAT D = 2 * CON2
+50 (1) PRINT "MATRIX A"
+60 (1) MAT PRINT A;
+70 (1) PRINT "MATRIX B"
+80 (1) MAT PRINT B;
+90 (1) PRINT "ARRAY C"
+100 (1) MAT PRINT C;
+110 (1) PRINT "MATRIX D"
+120 (1) MAT PRINT D;
+200 (1) OPTION BASE 1
+220 (1) MAT A = 3 * CON2(3, 5)
+230 (1) MAT B = 3 * CON2(5, 3)
+240 (1) MAT C = 3 * CON2(4)
+245 (1) MAT D = 3 * CON2()
+250 (1) PRINT "MATRIX A"
+260 (1) MAT PRINT A;
+270 (1) PRINT "MATRIX B"
+280 (1) MAT PRINT B;
+290 (1) PRINT "ARRAY C"
+300 (1) MAT PRINT C;
+310 (1) PRINT "MATRIX D"
+320 (1) MAT PRINT D;
+999 (1) END
+
