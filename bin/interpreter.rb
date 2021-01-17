@@ -698,10 +698,10 @@ class Interpreter
   end
 
   # returns a single value
-  def evaluate_1(parsed_expression)
+  def evaluate_1(expression)
     stack = []
 
-    parsed_expression.each do |element|
+    expression.each do |element|
       value = element.evaluate(self, stack)
       stack.push value
     end
@@ -710,13 +710,13 @@ class Interpreter
   end
 
   # returns an Array of values
-  def evaluate_n(parsed_expressions)
+  def evaluate_n(expressions)
     result_values = []
 
-    parsed_expressions.each do |parsed_expression|
-      stack = evaluate_1(parsed_expression)
+    expressions.each do |expression|
+      stack = evaluate_1(expression)
       act = stack.length
-      exp = parsed_expression.empty? ? 0 : 1
+      exp = expression.empty? ? 0 : 1
 
       raise(BASICExpressionError, 'Bad expression') if act != exp
 

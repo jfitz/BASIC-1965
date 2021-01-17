@@ -1429,23 +1429,23 @@ end
 
 # A list (needed because it has precedence value)
 class List < AbstractElement
-  def initialize(parsed_expressions)
+  def initialize(expressions)
     super()
 
     @list = true
-    @parsed_expressions = parsed_expressions
+    @expressions = expressions
     @variable = true
     @precedence = 7
   end
 
   def list
-    @parsed_expressions
+    @expressions
   end
 
   def dump
     lines = []
 
-    @parsed_expressions.each do |expression|
+    @expressions.each do |expression|
       expression.each { |exp| lines << exp.dump }
     end
 
@@ -1459,19 +1459,19 @@ class List < AbstractElement
   def set_content_type(_) ; end
 
   def evaluate(interpreter, _)
-    interpreter.evaluate_n(@parsed_expressions)
+    interpreter.evaluate_n(@expressions)
   end
 
   def to_s
-    "[#{@parsed_expressions.join('] [')}]"
+    "[#{@expressions.join('] [')}]"
   end
 
   def size
-    @parsed_expressions.size
+    @expressions.size
   end
 
   def count
-    @parsed_expressions.count
+    @expressions.count
   end
 end
 
