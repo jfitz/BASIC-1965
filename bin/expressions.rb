@@ -712,10 +712,10 @@ class Parser
     raise(BASICExpressionError, 'Too many operators') unless
       @operator_stack.empty?
 
-    parsed_expressions = []
-    @parens_group.each { |expression| parsed_expressions << expression }
-    parsed_expressions << @current_expression unless @current_expression.empty?
-    parsed_expressions
+    expressions = []
+    @parens_group.each { |expression| expressions << expression }
+    expressions << @current_expression unless @current_expression.empty?
+    expressions
   end
 
   private
@@ -868,12 +868,13 @@ class AbstractExpression
   attr_reader :comprehension_effort
   
   def initialize(tokens, shape)
-    @unparsed_expression = tokens.map(&:to_s).join
+    @tokens = tokens
     @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
     @text_constant = tokens.size == 1 && tokens[0].text_constant?
     @target = false
     @carriage = false
 
+    # build elements and parse into expression
     elements = tokens_to_elements(tokens)
     parser = Parser.new(shape)
     elements.each { |element| parser.parse(element) }
@@ -901,17 +902,17 @@ class AbstractExpression
       end
     end
 
-    @parsed_expressions = parsed_tokens
+    @expressions = parsed_tokens
   end
 
   def to_s
-    @unparsed_expression
+    @tokens.map(&:to_s).join
   end
 
   def dump
     lines = []
 
-    @parsed_expressions.each do |expression|
+    @expressions.each do |expression|
       x = expression.map(&:dump)
       if x.class.to_s == 'Array'
         lines += x.flatten
@@ -928,7 +929,7 @@ class AbstractExpression
   end
 
   def count
-    @parsed_expressions.length
+    @expressions.length
   end
 
   def numeric_constant?
@@ -945,47 +946,47 @@ class AbstractExpression
 
   # returns an Array of values
   def evaluate(interpreter)
-    interpreter.evaluate_n(@parsed_expressions)
+    interpreter.evaluate_n(@expressions)
   end
 
   def numerics
-    parsed_expressions_numerics(@parsed_expressions)
+    parsed_expressions_numerics(@expressions)
   end
 
   def strings
-    parsed_expressions_strings(@parsed_expressions)
+    parsed_expressions_strings(@expressions)
   end
 
   def booleans
-    parsed_expressions_booleans(@parsed_expressions)
+    parsed_expressions_booleans(@expressions)
   end
 
   def variables
-    parsed_expressions_variables(@parsed_expressions)
+    parsed_expressions_variables(@expressions)
   end
 
   def operators
-    parsed_expressions_operators(@parsed_expressions)
+    parsed_expressions_operators(@expressions)
   end
 
   def functions
-    parsed_expressions_functions(@parsed_expressions)
+    parsed_expressions_functions(@expressions)
   end
 
   def userfuncs
-    parsed_expressions_userfuncs(@parsed_expressions)
+    parsed_expressions_userfuncs(@expressions)
   end
 
   private
 
-  def set_arguments_1(parsed_expressions)
-    parsed_expressions.each { |expression| set_arguments_2(expression) }
+  def set_arguments_1(expressions)
+    expressions.each { |expression| set_arguments_2(expression) }
   end
 
-  def set_arguments_2(parsed_expression)
+  def set_arguments_2(expression)
     content_type_stack = []
 
-    parsed_expression.each do |item|
+    expression.each do |item|
       if item.list?
         set_arguments_1(item.list)
       elsif item.operator?
@@ -1265,10 +1266,10 @@ end
 
 # Value expression (an R-value)
 class ValueExpression < AbstractExpression
-  def self.set_content_type(parsed_expression)
+  def self.set_content_type(expression)
     stack = []
 
-    parsed_expression.each do |element|
+    expression.each do |element|
       element.set_content_type(stack)
       stack.push element.content_type
     end
@@ -1280,8 +1281,8 @@ class ValueExpression < AbstractExpression
     super
 
     types = []
-    @parsed_expressions.each do |parsed_expression|
-      type = ValueExpression.set_content_type(parsed_expression)
+    @expressions.each do |expression|
+      type = ValueExpression.set_content_type(expression)
       types << type
     end
   end
@@ -1291,10 +1292,10 @@ class ValueExpression < AbstractExpression
   end
 
   def filehandle?
-    return false if @parsed_expressions.empty?
+    return false if @expressions.empty?
 
-    parsed_expression = @parsed_expressions[0]
-    last_token = parsed_expression[-1]
+    expression = @expressions[0]
+    last_token = expression[-1]
     last_token.operator? && last_token.pound?
   end
 
@@ -1353,21 +1354,21 @@ class DeclarationExpression < AbstractExpression
 
   def check_length
     raise(BASICExpressionError, 'Value list is empty (length 0)') if
-      @parsed_expressions.empty?
+      @expressions.empty?
   end
 
   def check_all_lengths
-    @parsed_expressions.each do |parsed_expression|
+    @expressions.each do |expression|
       raise(BASICExpressionError, 'Value is not declaration (length 0)') if
-        parsed_expression.empty?
+        expression.empty?
     end
   end
 
   def check_resolve_types
-    @parsed_expressions.each do |parsed_expression|
-      if parsed_expression[-1].class.to_s != 'Declaration'
+    @expressions.each do |expression|
+      if expression[-1].class.to_s != 'Declaration'
         raise(BASICExpressionError,
-              "Value is not declaration (type #{parsed_expression[-1].class})")
+              "Value is not declaration (type #{expression[-1].class})")
       end
     end
   end
@@ -1384,8 +1385,8 @@ class TargetExpression < AbstractExpression
 
     @target = true
 
-    @parsed_expressions.each do |parsed_expression|
-      parsed_expression[-1].valref = :reference
+    @expressions.each do |expression|
+      expression[-1].valref = :reference
     end
   end
 
@@ -1397,22 +1398,22 @@ class TargetExpression < AbstractExpression
 
   def check_length
     raise(BASICSyntaxError, 'Value list is empty (length 0)') if
-      @parsed_expressions.empty?
+      @expressions.empty?
   end
 
   def check_all_lengths
-    @parsed_expressions.each do |parsed_expression|
+    @expressions.each do |expression|
       raise(BASICExpressionError, 'Value is not assignable (length 0)') if
-        parsed_expression.empty?
+        expression.empty?
     end
   end
 
   def check_resolve_types
-    @parsed_expressions.each do |parsed_expression|
-      if parsed_expression[-1].class.to_s != 'Variable' &&
-         parsed_expression[-1].class.to_s != 'UserFunction'
+    @expressions.each do |expression|
+      if expression[-1].class.to_s != 'Variable' &&
+         expression[-1].class.to_s != 'UserFunction'
         raise(BASICExpressionError,
-              "Value is not assignable (type #{parsed_expression[-1].class})")
+              "Value is not assignable (type #{expression[-1].class})")
       end
     end
   end
