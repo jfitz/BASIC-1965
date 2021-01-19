@@ -713,7 +713,8 @@ class TextConstant < AbstractValueElement
 
     @symbol_text = text.value
 
-    raise(BASICSyntaxError, "'#{text}' is not a text constant") if @value.nil?
+    raise(BASICSyntaxError, "'#{text}' is not a text constant") if
+      @value.nil?
 
     @text_constant = true
   end
@@ -866,7 +867,7 @@ class FileHandle < AbstractElement
 
     legals = %w[Fixnum Integer NumericConstant IntegerConstant FileHandle]
 
-    raise(BASICSyntaxError, 'Invalid file reference') unless
+    raise BASICRuntimeError.new(:te_fh_inv) unless
       legals.include?(num.class.to_s)
 
     raise BASICRuntimeError.new(:te_fnum_inv) if num.to_i < 0
@@ -905,6 +906,7 @@ class CarriageControl
     token = ',' if token == 'COMMA'
     token = ';' if token == 'SEMI'
     token = '' if token == 'NONE'
+
     @operator = token.to_s
     @carriage = true
     @file_handle = false
@@ -1113,60 +1115,6 @@ class UserFunctionName < AbstractElement
 
   def to_s
     @name.to_s
-  end
-end
-
-# CLass for declaration (in a DIM statement)
-class Declaration < AbstractElement
-  attr_reader :subscripts
-
-  def initialize(variable_name)
-    super()
-
-    raise(BASICSyntaxError,
-          "'#{variable_name.class}:#{variable_name}' is not a variable name") if
-      variable_name.class.to_s != 'VariableName'
-
-    @variable_name = variable_name
-    @subscripts = []
-    @variable = true
-  end
-
-  def dump
-    self.class.to_s + ':' + @variable_name.to_s
-  end
-
-  def name
-    @variable_name
-  end
-
-  def content_type
-    @variable_name.content_type
-  end
-
-  def set_content_type(stack) ; end
-
-  def to_s
-    if subscripts.empty?
-      @variable_name.to_s
-    else
-      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
-    end
-  end
-
-  # return a single value, a reference to this object
-  def evaluate(_, stack)
-    if previous_is_array(stack)
-      @subscripts = stack.pop
-      num_args = @subscripts.length
-
-      if num_args.zero?
-        raise(BASICExpressionError,
-              'Variable expects subscripts, found empty parentheses')
-      end
-    end
-
-    self
   end
 end
 
@@ -1427,6 +1375,60 @@ class Variable < AbstractElement
   end
 end
 
+# Class for declaration (in a DIM statement)
+class Declaration < AbstractElement
+  attr_reader :subscripts
+
+  def initialize(variable_name)
+    super()
+
+    raise(BASICSyntaxError,
+          "'#{variable_name.class}:#{variable_name}' is not a variable name") if
+      variable_name.class.to_s != 'VariableName'
+
+    @variable_name = variable_name
+    @subscripts = []
+    @variable = true
+  end
+
+  def dump
+    self.class.to_s + ':' + @variable_name.to_s
+  end
+
+  def name
+    @variable_name
+  end
+
+  def content_type
+    @variable_name.content_type
+  end
+
+  def set_content_type(stack) ; end
+
+  def to_s
+    if subscripts.empty?
+      @variable_name.to_s
+    else
+      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
+    end
+  end
+
+  # return a single value, a reference to this object
+  def evaluate(_, stack)
+    if previous_is_array(stack)
+      @subscripts = stack.pop
+      num_args = @subscripts.length
+
+      if num_args.zero?
+        raise(BASICExpressionError,
+              'Variable expects subscripts, found empty parentheses')
+      end
+    end
+
+    self
+  end
+end
+
 # A list (needed because it has precedence value)
 class List < AbstractElement
   def initialize(expressions)
@@ -1446,7 +1448,7 @@ class List < AbstractElement
     lines = []
 
     @expressions.each do |expression|
-      expression.each { |exp| lines << exp.dump }
+      lines.concat expression.dump
     end
 
     lines
