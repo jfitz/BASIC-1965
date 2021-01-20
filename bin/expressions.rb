@@ -915,6 +915,174 @@ class Expression
 
     lines
   end
+
+  def numerics
+    vars = []
+    previous = nil
+
+    # backwards so the unary operator (if any) is seen first
+    @elements.reverse_each do |element|
+      if element.list?
+        # recurse into expressions in list
+        sublist = element.list
+        vars += AbstractExpression.parsed_expressions_numerics(sublist)
+      elsif element.numeric_constant?
+        if !previous.nil? &&
+           previous.operator? &&
+           previous.unary? &&
+           previous.to_s == '-'
+          vars << element.negate
+        else
+          vars << element
+        end
+      end
+      previous = element
+    end
+
+    vars
+  end
+
+  def strings
+    strs = []
+
+    @elements.each do |element|
+      if element.list?
+        # recurse into expressions in list
+        sublist = element.list
+        strs += AbstractExpression.parsed_expressions_strings(sublist)
+      elsif element.text_constant?
+        strs << element
+      end
+    end
+
+    strs
+  end
+
+  def booleans
+    bools = []
+
+    @elements.each do |element|
+      if element.list?
+        # recurse into expressions in list
+        sublist = element.list
+        bools += AbstractExpression.parsed_expressions_booleans(sublist)
+      elsif element.boolean_constant?
+        bools << element
+      end
+    end
+
+    bools
+  end
+
+  def variables
+    vars = []
+    previous = nil
+
+    @elements.each do |element|
+      if element.list?
+        # recurse into expressions in list
+        sublist = element.list
+        vars += AbstractExpression.parsed_expressions_variables(sublist)
+      elsif element.variable?
+        arguments = nil
+
+        if element.array?
+          token = NumericConstantToken.new('0')
+          constant = NumericConstant.new(token)
+          arguments = [constant]
+        end
+
+        if element.matrix?
+          token = NumericConstantToken.new('0')
+          constant = NumericConstant.new(token)
+          arguments = [constant, constant]
+        end
+
+        arguments = previous.list if !previous.nil? && previous.list?
+
+        is_ref = element.reference?
+
+        signature = XrefEntry.make_signature(arguments)
+        vars << XrefEntry.new(element.to_s, signature, is_ref)
+      end
+
+      previous = element
+    end
+
+    vars
+  end
+
+  def operators
+    opers = []
+
+    @elements.each do |element|
+      if element.list?
+        # recurse into expressions in list
+        sublist = element.list
+        opers += AbstractExpression.parsed_expressions_operators(sublist)
+      elsif element.operator?
+        arguments = element.arguments
+
+        is_ref = false
+
+        signature = XrefEntry.make_signature(arguments)
+        opers << XrefEntry.new(element.to_s, signature, is_ref)
+      end
+    end
+
+    opers
+  end
+
+  def functions
+    vars = []
+    previous = nil
+
+    @elements.each do |element|
+      if element.list?
+        # recurse into expressions in list
+        sublist = element.list
+        vars += AbstractExpression.parsed_expressions_functions(sublist)
+      elsif element.function? && !element.user_function?
+        arguments = nil
+        arguments = previous.list if !previous.nil? && previous.list?
+
+        is_ref = element.reference?
+
+        signature = XrefEntry.make_signature(arguments)
+        vars << XrefEntry.new(element.to_s, signature, is_ref)
+      end
+
+      previous = element
+    end
+
+    vars
+  end
+
+  def userfuncs
+    vars = []
+
+    previous = nil
+
+    @elements.each do |element|
+      if element.list?
+        # recurse into expressions in list
+        sublist = element.list
+        vars += AbstractExpression.parsed_expressions_userfuncs(sublist)
+      elsif element.user_function?
+        arguments = nil
+        arguments = previous.list if !previous.nil? && previous.list?
+
+        is_ref = element.reference?
+
+        signature = XrefEntry.make_signature(arguments)
+        vars << XrefEntry.new(element.to_s, signature, is_ref)
+      end
+
+      previous = element
+    end
+
+    vars
+  end
 end
 
 # base class for expressions
@@ -1007,31 +1175,31 @@ class AbstractExpression
   end
 
   def numerics
-    parsed_expressions_numerics(@expressions)
+    AbstractExpression.parsed_expressions_numerics(@expressions)
   end
 
   def strings
-    parsed_expressions_strings(@expressions)
+    AbstractExpression.parsed_expressions_strings(@expressions)
   end
 
   def booleans
-    parsed_expressions_booleans(@expressions)
+    AbstractExpression.parsed_expressions_booleans(@expressions)
   end
 
   def variables
-    parsed_expressions_variables(@expressions)
+    AbstractExpression.parsed_expressions_variables(@expressions)
   end
 
   def operators
-    parsed_expressions_operators(@expressions)
+    AbstractExpression.parsed_expressions_operators(@expressions)
   end
 
   def functions
-    parsed_expressions_functions(@expressions)
+    AbstractExpression.parsed_expressions_functions(@expressions)
   end
 
   def userfuncs
-    parsed_expressions_userfuncs(@expressions)
+    AbstractExpression.parsed_expressions_userfuncs(@expressions)
   end
 
   private
@@ -1063,200 +1231,71 @@ class AbstractExpression
       content_type_stack.size > 1
   end
 
-  def parsed_expressions_numerics(expressions)
+  def self.parsed_expressions_numerics(expressions)
     vars = []
 
     expressions.each do |expression|
-      previous = nil
-
-      elements = expression.elements
-
-      # backwards so the unary operator (if any) is seen first
-      elements.reverse_each do |element|
-        if element.list?
-          # recurse into expressions in list
-          sublist = element.list
-          vars += parsed_expressions_numerics(sublist)
-        elsif element.numeric_constant?
-          if !previous.nil? &&
-             previous.operator? &&
-             previous.unary? &&
-             previous.to_s == '-'
-            vars << element.negate
-          else
-            vars << element
-          end
-        end
-        previous = element
-      end
+      vars.concat expression.numerics
     end
 
     vars
   end
 
-  def parsed_expressions_strings(expressions)
+  def self.parsed_expressions_strings(expressions)
     strs = []
 
     expressions.each do |expression|
-      elements = expression.elements
-
-      elements.each do |element|
-        if element.list?
-          # recurse into expressions in list
-          sublist = element.list
-          strs += parsed_expressions_strings(sublist)
-        elsif element.text_constant?
-          strs << element
-        end
-      end
+      strs.concat expression.strings
     end
 
     strs
   end
 
-  def parsed_expressions_booleans(expressions)
+  def self.parsed_expressions_booleans(expressions)
     bools = []
 
     expressions.each do |expression|
-      elements = expression.elements
-
-      elements.each do |element|
-        if element.list?
-          # recurse into expressions in list
-          sublist = element.list
-          bools += parsed_expressions_booleans(sublist)
-        elsif element.boolean_constant?
-          bools << element
-        end
-      end
+      bools.concat expression.booleans
     end
 
     bools
   end
 
-  def parsed_expressions_variables(expressions)
+  def self.parsed_expressions_variables(expressions)
     vars = []
 
     expressions.each do |expression|
-      previous = nil
-
-      elements = expression.elements
-
-      elements.each do |element|
-        if element.list?
-          # recurse into expressions in list
-          sublist = element.list
-          vars += parsed_expressions_variables(sublist)
-        elsif element.variable?
-          arguments = nil
-
-          if element.array?
-            token = NumericConstantToken.new('0')
-            constant = NumericConstant.new(token)
-            arguments = [constant]
-          end
-
-          if element.matrix?
-            token = NumericConstantToken.new('0')
-            constant = NumericConstant.new(token)
-            arguments = [constant, constant]
-          end
-
-          arguments = previous.list if !previous.nil? && previous.list?
-
-          is_ref = element.reference?
-
-          signature = XrefEntry.make_signature(arguments)
-          vars << XrefEntry.new(element.to_s, signature, is_ref)
-        end
-
-        previous = element
-      end
+      vars.concat expression.variables
     end
 
     vars
   end
 
-  def parsed_expressions_operators(expressions)
+  def self.parsed_expressions_operators(expressions)
     opers = []
 
     expressions.each do |expression|
-      elements = expression.elements
-
-      elements.each do |element|
-        if element.list?
-          # recurse into expressions in list
-          sublist = element.list
-          opers += parsed_expressions_operators(sublist)
-        elsif element.operator?
-          arguments = element.arguments
-
-          is_ref = false
-
-          signature = XrefEntry.make_signature(arguments)
-          opers << XrefEntry.new(element.to_s, signature, is_ref)
-        end
-      end
+      opers.concat expression.operators
     end
 
     opers
   end
 
-  def parsed_expressions_functions(expressions)
+  def self.parsed_expressions_functions(expressions)
     vars = []
 
     expressions.each do |expression|
-      previous = nil
-
-      elements = expression.elements
-
-      elements.each do |element|
-        if element.list?
-          # recurse into expressions in list
-          sublist = element.list
-          vars += parsed_expressions_functions(sublist)
-        elsif element.function? && !element.user_function?
-          arguments = nil
-          arguments = previous.list if !previous.nil? && previous.list?
-
-          is_ref = element.reference?
-
-          signature = XrefEntry.make_signature(arguments)
-          vars << XrefEntry.new(element.to_s, signature, is_ref)
-        end
-
-        previous = element
-      end
+      vars.concat expression.functions
     end
 
     vars
   end
 
-  def parsed_expressions_userfuncs(expressions)
+  def self.parsed_expressions_userfuncs(expressions)
     vars = []
 
     expressions.each do |expression|
-      previous = nil
-
-      elements = expression.elements
-
-      elements.each do |element|
-        if element.list?
-          # recurse into expressions in list
-          sublist = element.list
-          vars += parsed_expressions_userfuncs(sublist)
-        elsif element.user_function?
-          arguments = nil
-          arguments = previous.list if !previous.nil? && previous.list?
-
-          is_ref = element.reference?
-
-          signature = XrefEntry.make_signature(arguments)
-          vars << XrefEntry.new(element.to_s, signature, is_ref)
-        end
-
-        previous = element
-      end
+      vars.concat expression.userfuncs
     end
 
     vars
