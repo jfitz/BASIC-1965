@@ -697,35 +697,19 @@ class Interpreter
     @default_args[name] = args
   end
 
-  # returns a single value
-  def evaluate_1(expression)
-    stack = []
-
-    elements = expression.elements
-
-    elements.each do |element|
-      value = element.evaluate(self, stack)
-      stack.push value
-    end
-
-    stack
-  end
-
   # returns an Array of values
-  def evaluate_n(expressions)
+  def evaluate(expressions)
     result_values = []
 
     expressions.each do |expression|
-      stack = evaluate_1(expression)
+      stack = expression.evaluate(self)
       act = stack.length
       exp = expression.empty? ? 0 : 1
 
       raise(BASICExpressionError, 'Bad expression') if act != exp
 
-      next if act.zero?
-
       # verify each item is of correct type
-      result_values << stack[0]
+      result_values.concat stack
     end
 
     result_values
