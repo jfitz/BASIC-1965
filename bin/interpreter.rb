@@ -585,7 +585,7 @@ class Interpreter
               tokens_list.size > 2
             
             expr_tokens = tokens_list[2..-1]
-            expression = ValueExpression.new(expr_tokens, :scalar)
+            expression = ValueExpressionSet.new(expr_tokens, :scalar)
             if @line_cond_breakpoints.key?(line_number)
               @line_cond_breakpoints[line_number] << expression
             else
