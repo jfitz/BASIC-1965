@@ -889,6 +889,76 @@ end
 class Expression
   attr_reader :elements
 
+  def self.parsed_expressions_numerics(expressions)
+    vars = []
+
+    expressions.each do |expression|
+      vars.concat expression.numerics
+    end
+
+    vars
+  end
+
+  def self.parsed_expressions_strings(expressions)
+    strs = []
+
+    expressions.each do |expression|
+      strs.concat expression.strings
+    end
+
+    strs
+  end
+
+  def self.parsed_expressions_booleans(expressions)
+    bools = []
+
+    expressions.each do |expression|
+      bools.concat expression.booleans
+    end
+
+    bools
+  end
+
+  def self.parsed_expressions_variables(expressions)
+    vars = []
+
+    expressions.each do |expression|
+      vars.concat expression.variables
+    end
+
+    vars
+  end
+
+  def self.parsed_expressions_operators(expressions)
+    opers = []
+
+    expressions.each do |expression|
+      opers.concat expression.operators
+    end
+
+    opers
+  end
+
+  def self.parsed_expressions_functions(expressions)
+    vars = []
+
+    expressions.each do |expression|
+      vars.concat expression.functions
+    end
+
+    vars
+  end
+
+  def self.parsed_expressions_userfuncs(expressions)
+    vars = []
+
+    expressions.each do |expression|
+      vars.concat expression.userfuncs
+    end
+
+    vars
+  end
+
   def initialize(elements)
     @elements = elements
   end
@@ -925,7 +995,7 @@ class Expression
       if element.list?
         # recurse into expressions in list
         sublist = element.list
-        vars += AbstractExpression.parsed_expressions_numerics(sublist)
+        vars += Expression.parsed_expressions_numerics(sublist)
       elsif element.numeric_constant?
         if !previous.nil? &&
            previous.operator? &&
@@ -949,7 +1019,7 @@ class Expression
       if element.list?
         # recurse into expressions in list
         sublist = element.list
-        strs += AbstractExpression.parsed_expressions_strings(sublist)
+        strs += Expression.parsed_expressions_strings(sublist)
       elsif element.text_constant?
         strs << element
       end
@@ -965,7 +1035,7 @@ class Expression
       if element.list?
         # recurse into expressions in list
         sublist = element.list
-        bools += AbstractExpression.parsed_expressions_booleans(sublist)
+        bools += Expression.parsed_expressions_booleans(sublist)
       elsif element.boolean_constant?
         bools << element
       end
@@ -982,7 +1052,7 @@ class Expression
       if element.list?
         # recurse into expressions in list
         sublist = element.list
-        vars += AbstractExpression.parsed_expressions_variables(sublist)
+        vars += Expression.parsed_expressions_variables(sublist)
       elsif element.variable?
         arguments = nil
 
@@ -1019,7 +1089,7 @@ class Expression
       if element.list?
         # recurse into expressions in list
         sublist = element.list
-        opers += AbstractExpression.parsed_expressions_operators(sublist)
+        opers += Expression.parsed_expressions_operators(sublist)
       elsif element.operator?
         arguments = element.arguments
 
@@ -1041,7 +1111,7 @@ class Expression
       if element.list?
         # recurse into expressions in list
         sublist = element.list
-        vars += AbstractExpression.parsed_expressions_functions(sublist)
+        vars += Expression.parsed_expressions_functions(sublist)
       elsif element.function? && !element.user_function?
         arguments = nil
         arguments = previous.list if !previous.nil? && previous.list?
@@ -1067,7 +1137,7 @@ class Expression
       if element.list?
         # recurse into expressions in list
         sublist = element.list
-        vars += AbstractExpression.parsed_expressions_userfuncs(sublist)
+        vars += Expression.parsed_expressions_userfuncs(sublist)
       elsif element.user_function?
         arguments = nil
         arguments = previous.list if !previous.nil? && previous.list?
@@ -1175,31 +1245,31 @@ class AbstractExpression
   end
 
   def numerics
-    AbstractExpression.parsed_expressions_numerics(@expressions)
+    Expression.parsed_expressions_numerics(@expressions)
   end
 
   def strings
-    AbstractExpression.parsed_expressions_strings(@expressions)
+    Expression.parsed_expressions_strings(@expressions)
   end
 
   def booleans
-    AbstractExpression.parsed_expressions_booleans(@expressions)
+    Expression.parsed_expressions_booleans(@expressions)
   end
 
   def variables
-    AbstractExpression.parsed_expressions_variables(@expressions)
+    Expression.parsed_expressions_variables(@expressions)
   end
 
   def operators
-    AbstractExpression.parsed_expressions_operators(@expressions)
+    Expression.parsed_expressions_operators(@expressions)
   end
 
   def functions
-    AbstractExpression.parsed_expressions_functions(@expressions)
+    Expression.parsed_expressions_functions(@expressions)
   end
 
   def userfuncs
-    AbstractExpression.parsed_expressions_userfuncs(@expressions)
+    Expression.parsed_expressions_userfuncs(@expressions)
   end
 
   private
@@ -1229,76 +1299,6 @@ class AbstractExpression
 
     raise(BASICExpressionError, 'Bad expression') if
       content_type_stack.size > 1
-  end
-
-  def self.parsed_expressions_numerics(expressions)
-    vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.numerics
-    end
-
-    vars
-  end
-
-  def self.parsed_expressions_strings(expressions)
-    strs = []
-
-    expressions.each do |expression|
-      strs.concat expression.strings
-    end
-
-    strs
-  end
-
-  def self.parsed_expressions_booleans(expressions)
-    bools = []
-
-    expressions.each do |expression|
-      bools.concat expression.booleans
-    end
-
-    bools
-  end
-
-  def self.parsed_expressions_variables(expressions)
-    vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.variables
-    end
-
-    vars
-  end
-
-  def self.parsed_expressions_operators(expressions)
-    opers = []
-
-    expressions.each do |expression|
-      opers.concat expression.operators
-    end
-
-    opers
-  end
-
-  def self.parsed_expressions_functions(expressions)
-    vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.functions
-    end
-
-    vars
-  end
-
-  def self.parsed_expressions_userfuncs(expressions)
-    vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.userfuncs
-    end
-
-    vars
   end
 
   def tokens_to_elements(tokens)
