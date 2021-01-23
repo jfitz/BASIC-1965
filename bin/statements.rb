@@ -911,22 +911,22 @@ class DimStatement < AbstractStatement
 
     template = [[1, '>=']]
 
-    @expressions = []
+    @declaration_sets = []
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], false)
 
       tokens_lists.each do |tokens_list|
         begin
-          @expressions << DeclarationExpressionSet.new(tokens_list)
+          @declaration_sets << DeclarationExpressionSet.new(tokens_list)
         rescue BASICExpressionError
           @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
         end
       end
 
-      @elements = make_references(@expressions)
+      @elements = make_references(@declaration_sets)
 
-      @expressions.each do |expression|
-        @comprehension_effort += expression.comprehension_effort
+      @declaration_sets.each do |declaration_set|
+        @comprehension_effort += declaration_set.comprehension_effort
       end
     else
       @errors << 'Syntax error'
@@ -935,13 +935,17 @@ class DimStatement < AbstractStatement
 
   def dump
     lines = []
-    @expressions.each { |expression| lines += expression.dump }
+
+    @declaration_sets.each do |declaration_set|
+      lines += declaration_set.dump
+    end
+
     lines
   end
 
   def execute(interpreter)
-    @expressions.each do |expression|
-      variables = expression.evaluate(interpreter)
+    @declaration_sets.each do |declaration_set|
+      variables = declaration_set.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
 

@@ -1181,13 +1181,13 @@ class AbstractExpressionSet
     elements = tokens_to_elements(tokens)
     parser = Parser.new(shape)
     elements.each { |element| parser.parse(element) }
-    expressions = parser.expressions
-    set_arguments_1(expressions)
+    @expressions = parser.expressions
+    set_arguments_1(@expressions)
 
     @shape = shape
 
     @comprehension_effort = 1
-    expressions.each do |expression|
+    @expressions.each do |expression|
       prev = nil
 
       elements = expression.elements
@@ -1205,8 +1205,6 @@ class AbstractExpressionSet
         prev = element
       end
     end
-
-    @expressions = expressions
   end
 
   def to_s
@@ -1472,21 +1470,18 @@ class DeclarationExpressionSet < AbstractExpressionSet
   def initialize(tokens)
     super(tokens, :declaration)
 
-    check_length
+    raise(BASICExpressionError, 'Expression list is empty') if
+      @expressions.empty?
+
     check_all_lengths
     check_resolve_types
   end
 
   private
 
-  def check_length
-    raise(BASICExpressionError, 'Value list is empty (length 0)') if
-      @expressions.empty?
-  end
-
   def check_all_lengths
     @expressions.each do |expression|
-      raise(BASICExpressionError, 'Value is not declaration (length 0)') if
+      raise(BASICExpressionError, 'Empty expression is not declaration') if
         expression.empty?
     end
   end
@@ -1495,9 +1490,10 @@ class DeclarationExpressionSet < AbstractExpressionSet
     @expressions.each do |expression|
       elements = expression.elements
       last_element = elements[-1]
+
       if last_element.class.to_s != 'Declaration'
         raise(BASICExpressionError,
-              "Value is not declaration (type #{last_element.class})")
+              "Expression is not declaration (type #{last_element.class})")
       end
     end
   end
