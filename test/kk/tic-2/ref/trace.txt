@@ -1,0 +1,6046 @@
+70: REM THIS IS PROGRAM TIC-2
+80:
+90: REM INITIALIZER
+100: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 1
+ I: 1
+ T(1,1) = 1
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 1
+ I: 2
+ T(1,2) = 2
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 1
+ I: 3
+ T(1,3) = 3
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 2
+ I: 1
+ T(2,1) = 8
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 2
+ I: 2
+ T(2,2) = 9
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 2
+ I: 3
+ T(2,3) = 4
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 3
+ I: 1
+ T(3,1) = 7
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 3
+ I: 2
+ T(3,2) = 6
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 3
+ I: 3
+ T(3,3) = 5
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 4
+ I: 1
+ T(4,1) = 1
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 4
+ I: 2
+ T(4,2) = 8
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 4
+ I: 3
+ T(4,3) = 7
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 5
+ I: 1
+ T(5,1) = 2
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 5
+ I: 2
+ T(5,2) = 9
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 5
+ I: 3
+ T(5,3) = 6
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 6
+ I: 1
+ T(6,1) = 3
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 6
+ I: 2
+ T(6,2) = 4
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 6
+ I: 3
+ T(6,3) = 5
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 7
+ I: 1
+ T(7,1) = 1
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 7
+ I: 2
+ T(7,2) = 9
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 7
+ I: 3
+ T(7,3) = 5
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+110: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+120: READ T(P, I)
+ P: 8
+ I: 1
+ T(8,1) = 7
+130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+120: READ T(P, I)
+ P: 8
+ I: 2
+ T(8,2) = 9
+130: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+120: READ T(P, I)
+ P: 8
+ I: 3
+ T(8,3) = 3
+130: NEXT I
+ I: 3
+ terminated:true
+140: NEXT P
+ P: 8
+ terminated:true
+150: DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
+200: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 1
+ J: 1
+ U(1,1) = 1
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 1
+ J: 2
+ U(1,2) = 4
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 1
+ J: 3
+ U(1,3) = 7
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 1
+ J: 4
+ U(1,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 2
+ J: 1
+ U(2,1) = 1
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 2
+ J: 2
+ U(2,2) = 5
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 2
+ J: 3
+ U(2,3) = 0
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 2
+ J: 4
+ U(2,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 3
+ J: 1
+ U(3,1) = 1
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 3
+ J: 2
+ U(3,2) = 6
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 3
+ J: 3
+ U(3,3) = 8
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 3
+ J: 4
+ U(3,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 4
+ J: 1
+ U(4,1) = 2
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 4
+ J: 2
+ U(4,2) = 6
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 4
+ J: 3
+ U(4,3) = 0
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 4
+ J: 4
+ U(4,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 5
+ J: 1
+ U(5,1) = 3
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 5
+ J: 2
+ U(5,2) = 6
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 5
+ J: 3
+ U(5,3) = 7
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 5
+ J: 4
+ U(5,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 6
+ J: 1
+ U(6,1) = 3
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 6
+ J: 2
+ U(6,2) = 5
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 6
+ J: 3
+ U(6,3) = 0
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 6
+ J: 4
+ U(6,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 7
+ J: 1
+ U(7,1) = 3
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 7
+ J: 2
+ U(7,2) = 4
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 7
+ J: 3
+ U(7,3) = 8
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 7
+ J: 4
+ U(7,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 8
+ J: 1
+ U(8,1) = 2
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 8
+ J: 2
+ U(8,2) = 4
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 8
+ J: 3
+ U(8,3) = 0
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 8
+ J: 4
+ U(8,4) = 0
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+210: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+220: READ U(S, J)
+ S: 9
+ J: 1
+ U(9,1) = 2
+230: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+220: READ U(S, J)
+ S: 9
+ J: 2
+ U(9,2) = 5
+230: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+220: READ U(S, J)
+ S: 9
+ J: 3
+ U(9,3) = 7
+230: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+220: READ U(S, J)
+ S: 9
+ J: 4
+ U(9,4) = 8
+230: NEXT J
+ J: 4
+ terminated:true
+240: NEXT S
+ S: 9
+ terminated:true
+250: DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
+260: DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
+265: LET N = 0
+ N = 0
+270: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+275: LET C(S) = 0
+ S: 1
+ C(1) = 0
+280: LET B(S) = 0
+ S: 1
+ B(1) = 0
+285: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+275: LET C(S) = 0
+ S: 2
+ C(2) = 0
+280: LET B(S) = 0
+ S: 2
+ B(2) = 0
+285: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+275: LET C(S) = 0
+ S: 3
+ C(3) = 0
+280: LET B(S) = 0
+ S: 3
+ B(3) = 0
+285: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+275: LET C(S) = 0
+ S: 4
+ C(4) = 0
+280: LET B(S) = 0
+ S: 4
+ B(4) = 0
+285: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+275: LET C(S) = 0
+ S: 5
+ C(5) = 0
+280: LET B(S) = 0
+ S: 5
+ B(5) = 0
+285: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+275: LET C(S) = 0
+ S: 6
+ C(6) = 0
+280: LET B(S) = 0
+ S: 6
+ B(6) = 0
+285: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+275: LET C(S) = 0
+ S: 7
+ C(7) = 0
+280: LET B(S) = 0
+ S: 7
+ B(7) = 0
+285: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+275: LET C(S) = 0
+ S: 8
+ C(8) = 0
+280: LET B(S) = 0
+ S: 8
+ B(8) = 0
+285: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+275: LET C(S) = 0
+ S: 9
+ C(9) = 0
+280: LET B(S) = 0
+ S: 9
+ B(9) = 0
+285: NEXT S
+ S: 9
+ terminated:true
+290:
+300: REM WHO STARTS?
+310: IF RND(Z) < 1 / 2 THEN 350
+ Z: 0
+ RND(Z)<1/2: true
+350: PRINT "THE COMPUTER WILL MOVE FIRST."
+THE COMPUTER WILL MOVE FIRST.
+360: PRINT
+
+370: GOTO 600
+600: REM MACHINE'S MOVE
+610: GOSUB 1000
+1000: REM SELECT A MOVE
+1010: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1020: IF C(P) = 2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1020: IF C(P) = 2 THEN 1100
+ P: 2
+ C(2): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1020: IF C(P) = 2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1020: IF C(P) = 2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1020: IF C(P) = 2 THEN 1100
+ P: 5
+ C(5): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1020: IF C(P) = 2 THEN 1100
+ P: 6
+ C(6): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1020: IF C(P) = 2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1020: IF C(P) = 2 THEN 1100
+ P: 8
+ C(8): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 8
+ terminated:true
+1040: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1050: IF C(P) = -2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1050: IF C(P) = -2 THEN 1100
+ P: 2
+ C(2): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1050: IF C(P) = -2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1050: IF C(P) = -2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1050: IF C(P) = -2 THEN 1100
+ P: 5
+ C(5): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1050: IF C(P) = -2 THEN 1100
+ P: 6
+ C(6): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1050: IF C(P) = -2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1050: IF C(P) = -2 THEN 1100
+ P: 8
+ C(8): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 8
+ terminated:true
+1070: GOTO 1200
+1200: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1210: LET V(S) = 0
+ S: 1
+ V(1) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 1
+ B(1): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 1
+ J: 1
+ U(1,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 0
+ P: 1
+ C(1): 0
+ V(1) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 1
+ J: 2
+ U(1,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 1
+ P: 4
+ C(4): 0
+ V(1) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 1
+ J: 3
+ U(1,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 2
+ P: 7
+ C(7): 0
+ V(1) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 1
+ J: 4
+ U(1,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1210: LET V(S) = 0
+ S: 2
+ V(2) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 2
+ B(2): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 2
+ J: 1
+ U(2,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 0
+ P: 1
+ C(1): 0
+ V(2) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 2
+ J: 2
+ U(2,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 1
+ P: 5
+ C(5): 0
+ V(2) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 2
+ J: 3
+ U(2,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 2
+ J: 4
+ U(2,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1210: LET V(S) = 0
+ S: 3
+ V(3) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 3
+ B(3): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 3
+ J: 1
+ U(3,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 0
+ P: 1
+ C(1): 0
+ V(3) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 3
+ J: 2
+ U(3,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 1
+ P: 6
+ C(6): 0
+ V(3) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 3
+ J: 3
+ U(3,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 2
+ P: 8
+ C(8): 0
+ V(3) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 3
+ J: 4
+ U(3,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1210: LET V(S) = 0
+ S: 4
+ V(4) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 4
+ B(4): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 4
+ J: 1
+ U(4,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 0
+ P: 2
+ C(2): 0
+ V(4) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 4
+ J: 2
+ U(4,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 1
+ P: 6
+ C(6): 0
+ V(4) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 4
+ J: 3
+ U(4,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 4
+ J: 4
+ U(4,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1210: LET V(S) = 0
+ S: 5
+ V(5) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 5
+ B(5): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 5
+ J: 1
+ U(5,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 0
+ P: 3
+ C(3): 0
+ V(5) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 5
+ J: 2
+ U(5,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 1
+ P: 6
+ C(6): 0
+ V(5) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 5
+ J: 3
+ U(5,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 2
+ P: 7
+ C(7): 0
+ V(5) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 5
+ J: 4
+ U(5,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1210: LET V(S) = 0
+ S: 6
+ V(6) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 6
+ B(6): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 6
+ J: 1
+ U(6,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 0
+ P: 3
+ C(3): 0
+ V(6) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 6
+ J: 2
+ U(6,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 1
+ P: 5
+ C(5): 0
+ V(6) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 6
+ J: 3
+ U(6,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 6
+ J: 4
+ U(6,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1210: LET V(S) = 0
+ S: 7
+ V(7) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 7
+ B(7): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 7
+ J: 1
+ U(7,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 0
+ P: 3
+ C(3): 0
+ V(7) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 7
+ J: 2
+ U(7,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 1
+ P: 4
+ C(4): 0
+ V(7) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 7
+ J: 3
+ U(7,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 2
+ P: 8
+ C(8): 0
+ V(7) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 7
+ J: 4
+ U(7,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1210: LET V(S) = 0
+ S: 8
+ V(8) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 8
+ B(8): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 8
+ J: 1
+ U(8,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 0
+ P: 2
+ C(2): 0
+ V(8) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 8
+ J: 2
+ U(8,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 1
+ P: 4
+ C(4): 0
+ V(8) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 8
+ J: 3
+ U(8,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 8
+ J: 4
+ U(8,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1210: LET V(S) = 0
+ S: 9
+ V(9) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 9
+ B(9): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 9
+ J: 1
+ U(9,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 0
+ P: 2
+ C(2): 0
+ V(9) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 9
+ J: 2
+ U(9,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 1
+ P: 5
+ C(5): 0
+ V(9) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 9
+ J: 3
+ U(9,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 2
+ P: 7
+ C(7): 0
+ V(9) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 9
+ J: 4
+ U(9,4): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 3
+ P: 8
+ C(8): 0
+ V(9) = 4
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 9
+ terminated:true
+1300: LET V = 0
+ V = 0
+1310: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1320: IF V(S) <= V THEN 1350
+ S: 1
+ V(1): 3
+ V: 0
+ V(S)<=V: false
+1330: LET V = V(S)
+ S: 1
+ V(1): 3
+ V = 3
+1340: LET M = S
+ S: 1
+ M = 1
+1350: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1320: IF V(S) <= V THEN 1350
+ S: 2
+ V(2): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1320: IF V(S) <= V THEN 1350
+ S: 3
+ V(3): 3
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1320: IF V(S) <= V THEN 1350
+ S: 4
+ V(4): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1320: IF V(S) <= V THEN 1350
+ S: 5
+ V(5): 3
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1320: IF V(S) <= V THEN 1350
+ S: 6
+ V(6): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1320: IF V(S) <= V THEN 1350
+ S: 7
+ V(7): 3
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1320: IF V(S) <= V THEN 1350
+ S: 8
+ V(8): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1320: IF V(S) <= V THEN 1350
+ S: 9
+ V(9): 4
+ V: 3
+ V(S)<=V: false
+1330: LET V = V(S)
+ S: 9
+ V(9): 4
+ V = 4
+1340: LET M = S
+ S: 9
+ M = 9
+1350: NEXT S
+ S: 9
+ terminated:true
+1999: RETURN
+620: PRINT "THE COMPUTER MOVES" M
+THE COMPUTER MOVES
+ M: 9
+ 9
+630: LET F = 1
+ F = 1
+640: GOTO 460
+460: LET B(M) = F
+ M: 9
+ F: 1
+ B(9) = 1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 9
+ J: 1
+ U(9,1): 2
+ P = 2
+490: IF P = 0 THEN 530
+ P: 2
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 2
+ C(2): 0
+ F: 1
+ C(2) = 1
+510: IF C(P) = -3 THEN 860
+ P: 2
+ C(2): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 2
+ C(2): 1
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 9
+ J: 2
+ U(9,2): 5
+ P = 5
+490: IF P = 0 THEN 530
+ P: 5
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 5
+ C(5): 0
+ F: 1
+ C(5) = 1
+510: IF C(P) = -3 THEN 860
+ P: 5
+ C(5): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 5
+ C(5): 1
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 9
+ J: 3
+ U(9,3): 7
+ P = 7
+490: IF P = 0 THEN 530
+ P: 7
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 7
+ C(7): 0
+ F: 1
+ C(7) = 1
+510: IF C(P) = -3 THEN 860
+ P: 7
+ C(7): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 7
+ C(7): 1
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 9
+ J: 4
+ U(9,4): 8
+ P = 8
+490: IF P = 0 THEN 530
+ P: 8
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 8
+ C(8): 0
+ F: 1
+ C(8) = 1
+510: IF C(P) = -3 THEN 860
+ P: 8
+ C(8): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 8
+ C(8): 1
+ C(P)=3: false
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 0
+ N = 1
+536: IF N = 9 THEN 880
+ N: 1
+ N=9: false
+537: IF F = 1 THEN 400
+ F: 1
+ F=1: true
+400: PRINT "YOUR MOVE";
+YOUR MOVE
+410: INPUT M
+? 5
+ M = 5
+415: LET F = -1
+ F = -1
+420: IF M <> INT(M) THEN 550
+ M: 5
+ M<>INT(M): false
+430: IF M < 1 THEN 500
+ M: 5
+ M<1: false
+440: IF M > 9 THEN 550
+ M: 5
+ M>9: false
+450: IF B(M) <> 0 THEN 500
+ M: 5
+ B(5): 0
+ B(M)<>0: false
+460: LET B(M) = F
+ M: 5
+ F: -1
+ B(5) = -1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 5
+ J: 1
+ U(5,1): 3
+ P = 3
+490: IF P = 0 THEN 530
+ P: 3
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 3
+ C(3): 0
+ F: -1
+ C(3) = -1
+510: IF C(P) = -3 THEN 860
+ P: 3
+ C(3): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 3
+ C(3): -1
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 5
+ J: 2
+ U(5,2): 6
+ P = 6
+490: IF P = 0 THEN 530
+ P: 6
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 6
+ C(6): 0
+ F: -1
+ C(6) = -1
+510: IF C(P) = -3 THEN 860
+ P: 6
+ C(6): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 6
+ C(6): -1
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 5
+ J: 3
+ U(5,3): 7
+ P = 7
+490: IF P = 0 THEN 530
+ P: 7
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 7
+ C(7): 1
+ F: -1
+ C(7) = 0
+510: IF C(P) = -3 THEN 860
+ P: 7
+ C(7): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 7
+ C(7): 0
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 5
+ J: 4
+ U(5,4): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 1
+ N = 2
+536: IF N = 9 THEN 880
+ N: 2
+ N=9: false
+537: IF F = 1 THEN 400
+ F: -1
+ F=1: false
+538: GOTO 600
+600: REM MACHINE'S MOVE
+610: GOSUB 1000
+1000: REM SELECT A MOVE
+1010: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1020: IF C(P) = 2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1020: IF C(P) = 2 THEN 1100
+ P: 2
+ C(2): 1
+ C(P)=2: false
+1030: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1020: IF C(P) = 2 THEN 1100
+ P: 3
+ C(3): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1020: IF C(P) = 2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1020: IF C(P) = 2 THEN 1100
+ P: 5
+ C(5): 1
+ C(P)=2: false
+1030: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1020: IF C(P) = 2 THEN 1100
+ P: 6
+ C(6): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1020: IF C(P) = 2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1020: IF C(P) = 2 THEN 1100
+ P: 8
+ C(8): 1
+ C(P)=2: false
+1030: NEXT P
+ P: 8
+ terminated:true
+1040: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1050: IF C(P) = -2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1050: IF C(P) = -2 THEN 1100
+ P: 2
+ C(2): 1
+ C(P)=-2: false
+1060: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1050: IF C(P) = -2 THEN 1100
+ P: 3
+ C(3): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1050: IF C(P) = -2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1050: IF C(P) = -2 THEN 1100
+ P: 5
+ C(5): 1
+ C(P)=-2: false
+1060: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1050: IF C(P) = -2 THEN 1100
+ P: 6
+ C(6): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1050: IF C(P) = -2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1050: IF C(P) = -2 THEN 1100
+ P: 8
+ C(8): 1
+ C(P)=-2: false
+1060: NEXT P
+ P: 8
+ terminated:true
+1070: GOTO 1200
+1200: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1210: LET V(S) = 0
+ S: 1
+ V(1) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 1
+ B(1): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 1
+ J: 1
+ U(1,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 0
+ P: 1
+ C(1): 0
+ V(1) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 1
+ J: 2
+ U(1,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 1
+ P: 4
+ C(4): 0
+ V(1) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 1
+ J: 3
+ U(1,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 2
+ P: 7
+ C(7): 0
+ V(1) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 1
+ J: 4
+ U(1,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1210: LET V(S) = 0
+ S: 2
+ V(2) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 2
+ B(2): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 2
+ J: 1
+ U(2,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 0
+ P: 1
+ C(1): 0
+ V(2) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 2
+ J: 2
+ U(2,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 1
+ P: 5
+ C(5): 1
+ V(2) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 2
+ J: 3
+ U(2,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 2
+ J: 4
+ U(2,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1210: LET V(S) = 0
+ S: 3
+ V(3) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 3
+ B(3): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 3
+ J: 1
+ U(3,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 0
+ P: 1
+ C(1): 0
+ V(3) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 3
+ J: 2
+ U(3,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 1
+ P: 6
+ C(6): -1
+ V(3) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 3
+ J: 3
+ U(3,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 3
+ P: 8
+ C(8): 1
+ V(3) = 5
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 3
+ J: 4
+ U(3,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1210: LET V(S) = 0
+ S: 4
+ V(4) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 4
+ B(4): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 4
+ J: 1
+ U(4,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 0
+ P: 2
+ C(2): 1
+ V(4) = 2
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 4
+ J: 2
+ U(4,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 2
+ P: 6
+ C(6): -1
+ V(4) = 4
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 4
+ J: 3
+ U(4,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 4
+ J: 4
+ U(4,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1210: LET V(S) = 0
+ S: 5
+ V(5) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 5
+ B(5): -1
+ B(S)<>0: true
+1270: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1210: LET V(S) = 0
+ S: 6
+ V(6) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 6
+ B(6): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 6
+ J: 1
+ U(6,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 0
+ P: 3
+ C(3): -1
+ V(6) = 2
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 6
+ J: 2
+ U(6,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 2
+ P: 5
+ C(5): 1
+ V(6) = 4
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 6
+ J: 3
+ U(6,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 6
+ J: 4
+ U(6,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1210: LET V(S) = 0
+ S: 7
+ V(7) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 7
+ B(7): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 7
+ J: 1
+ U(7,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 0
+ P: 3
+ C(3): -1
+ V(7) = 2
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 7
+ J: 2
+ U(7,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 2
+ P: 4
+ C(4): 0
+ V(7) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 7
+ J: 3
+ U(7,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 3
+ P: 8
+ C(8): 1
+ V(7) = 5
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 7
+ J: 4
+ U(7,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1210: LET V(S) = 0
+ S: 8
+ V(8) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 8
+ B(8): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 8
+ J: 1
+ U(8,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 0
+ P: 2
+ C(2): 1
+ V(8) = 2
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 8
+ J: 2
+ U(8,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 2
+ P: 4
+ C(4): 0
+ V(8) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 8
+ J: 3
+ U(8,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 8
+ J: 4
+ U(8,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1210: LET V(S) = 0
+ S: 9
+ V(9) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 9
+ B(9): 1
+ B(S)<>0: true
+1270: NEXT S
+ S: 9
+ terminated:true
+1300: LET V = 0
+ V = 0
+1310: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1320: IF V(S) <= V THEN 1350
+ S: 1
+ V(1): 3
+ V: 0
+ V(S)<=V: false
+1330: LET V = V(S)
+ S: 1
+ V(1): 3
+ V = 3
+1340: LET M = S
+ S: 1
+ M = 1
+1350: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1320: IF V(S) <= V THEN 1350
+ S: 2
+ V(2): 3
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1320: IF V(S) <= V THEN 1350
+ S: 3
+ V(3): 5
+ V: 3
+ V(S)<=V: false
+1330: LET V = V(S)
+ S: 3
+ V(3): 5
+ V = 5
+1340: LET M = S
+ S: 3
+ M = 3
+1350: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1320: IF V(S) <= V THEN 1350
+ S: 4
+ V(4): 4
+ V: 5
+ V(S)<=V: true
+1350: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1320: IF V(S) <= V THEN 1350
+ S: 5
+ V(5): 0
+ V: 5
+ V(S)<=V: true
+1350: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1320: IF V(S) <= V THEN 1350
+ S: 6
+ V(6): 4
+ V: 5
+ V(S)<=V: true
+1350: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1320: IF V(S) <= V THEN 1350
+ S: 7
+ V(7): 5
+ V: 5
+ V(S)<=V: true
+1350: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1320: IF V(S) <= V THEN 1350
+ S: 8
+ V(8): 3
+ V: 5
+ V(S)<=V: true
+1350: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1320: IF V(S) <= V THEN 1350
+ S: 9
+ V(9): 0
+ V: 5
+ V(S)<=V: true
+1350: NEXT S
+ S: 9
+ terminated:true
+1999: RETURN
+620: PRINT "THE COMPUTER MOVES" M
+THE COMPUTER MOVES
+ M: 3
+ 3
+630: LET F = 1
+ F = 1
+640: GOTO 460
+460: LET B(M) = F
+ M: 3
+ F: 1
+ B(3) = 1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 3
+ J: 1
+ U(3,1): 1
+ P = 1
+490: IF P = 0 THEN 530
+ P: 1
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 1
+ C(1): 0
+ F: 1
+ C(1) = 1
+510: IF C(P) = -3 THEN 860
+ P: 1
+ C(1): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 1
+ C(1): 1
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 3
+ J: 2
+ U(3,2): 6
+ P = 6
+490: IF P = 0 THEN 530
+ P: 6
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 6
+ C(6): -1
+ F: 1
+ C(6) = 0
+510: IF C(P) = -3 THEN 860
+ P: 6
+ C(6): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 6
+ C(6): 0
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 3
+ J: 3
+ U(3,3): 8
+ P = 8
+490: IF P = 0 THEN 530
+ P: 8
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 8
+ C(8): 1
+ F: 1
+ C(8) = 2
+510: IF C(P) = -3 THEN 860
+ P: 8
+ C(8): 2
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 8
+ C(8): 2
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 3
+ J: 4
+ U(3,4): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 2
+ N = 3
+536: IF N = 9 THEN 880
+ N: 3
+ N=9: false
+537: IF F = 1 THEN 400
+ F: 1
+ F=1: true
+400: PRINT "YOUR MOVE";
+YOUR MOVE
+410: INPUT M
+? 2
+ M = 2
+415: LET F = -1
+ F = -1
+420: IF M <> INT(M) THEN 550
+ M: 2
+ M<>INT(M): false
+430: IF M < 1 THEN 500
+ M: 2
+ M<1: false
+440: IF M > 9 THEN 550
+ M: 2
+ M>9: false
+450: IF B(M) <> 0 THEN 500
+ M: 2
+ B(2): 0
+ B(M)<>0: false
+460: LET B(M) = F
+ M: 2
+ F: -1
+ B(2) = -1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 2
+ J: 1
+ U(2,1): 1
+ P = 1
+490: IF P = 0 THEN 530
+ P: 1
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 1
+ C(1): 1
+ F: -1
+ C(1) = 0
+510: IF C(P) = -3 THEN 860
+ P: 1
+ C(1): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 1
+ C(1): 0
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 2
+ J: 2
+ U(2,2): 5
+ P = 5
+490: IF P = 0 THEN 530
+ P: 5
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 5
+ C(5): 1
+ F: -1
+ C(5) = 0
+510: IF C(P) = -3 THEN 860
+ P: 5
+ C(5): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 5
+ C(5): 0
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 2
+ J: 3
+ U(2,3): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 2
+ J: 4
+ U(2,4): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 3
+ N = 4
+536: IF N = 9 THEN 880
+ N: 4
+ N=9: false
+537: IF F = 1 THEN 400
+ F: -1
+ F=1: false
+538: GOTO 600
+600: REM MACHINE'S MOVE
+610: GOSUB 1000
+1000: REM SELECT A MOVE
+1010: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1020: IF C(P) = 2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1020: IF C(P) = 2 THEN 1100
+ P: 2
+ C(2): 1
+ C(P)=2: false
+1030: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1020: IF C(P) = 2 THEN 1100
+ P: 3
+ C(3): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1020: IF C(P) = 2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1020: IF C(P) = 2 THEN 1100
+ P: 5
+ C(5): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1020: IF C(P) = 2 THEN 1100
+ P: 6
+ C(6): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1020: IF C(P) = 2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1020: IF C(P) = 2 THEN 1100
+ P: 8
+ C(8): 2
+ C(P)=2: true
+1100: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+1110: LET M = T(P, I)
+ P: 8
+ I: 1
+ T(8,1): 7
+ M = 7
+1120: IF B(M) = 0 THEN 1999
+ M: 7
+ B(7): 0
+ B(M)=0: true
+1999: RETURN
+620: PRINT "THE COMPUTER MOVES" M
+THE COMPUTER MOVES
+ M: 7
+ 7
+630: LET F = 1
+ F = 1
+640: GOTO 460
+460: LET B(M) = F
+ M: 7
+ F: 1
+ B(7) = 1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 7
+ J: 1
+ U(7,1): 3
+ P = 3
+490: IF P = 0 THEN 530
+ P: 3
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 3
+ C(3): -1
+ F: 1
+ C(3) = 0
+510: IF C(P) = -3 THEN 860
+ P: 3
+ C(3): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 3
+ C(3): 0
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 7
+ J: 2
+ U(7,2): 4
+ P = 4
+490: IF P = 0 THEN 530
+ P: 4
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 4
+ C(4): 0
+ F: 1
+ C(4) = 1
+510: IF C(P) = -3 THEN 860
+ P: 4
+ C(4): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 4
+ C(4): 1
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 7
+ J: 3
+ U(7,3): 8
+ P = 8
+490: IF P = 0 THEN 530
+ P: 8
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 8
+ C(8): 2
+ F: 1
+ C(8) = 3
+510: IF C(P) = -3 THEN 860
+ P: 8
+ C(8): 3
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 8
+ C(8): 3
+ C(P)=3: true
+800: REM THE GAME IS OVER
+810: PRINT "AND THE COMPUTER WINS."
+AND THE COMPUTER WINS.
+820: PRINT
+
+830: PRINT
+
+840: PRINT "NEW GAME."
+NEW GAME.
+850: GOTO 265
+265: LET N = 0
+ N = 0
+270: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+275: LET C(S) = 0
+ S: 1
+ C(1) = 0
+280: LET B(S) = 0
+ S: 1
+ B(1) = 0
+285: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+275: LET C(S) = 0
+ S: 2
+ C(2) = 0
+280: LET B(S) = 0
+ S: 2
+ B(2) = 0
+285: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+275: LET C(S) = 0
+ S: 3
+ C(3) = 0
+280: LET B(S) = 0
+ S: 3
+ B(3) = 0
+285: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+275: LET C(S) = 0
+ S: 4
+ C(4) = 0
+280: LET B(S) = 0
+ S: 4
+ B(4) = 0
+285: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+275: LET C(S) = 0
+ S: 5
+ C(5) = 0
+280: LET B(S) = 0
+ S: 5
+ B(5) = 0
+285: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+275: LET C(S) = 0
+ S: 6
+ C(6) = 0
+280: LET B(S) = 0
+ S: 6
+ B(6) = 0
+285: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+275: LET C(S) = 0
+ S: 7
+ C(7) = 0
+280: LET B(S) = 0
+ S: 7
+ B(7) = 0
+285: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+275: LET C(S) = 0
+ S: 8
+ C(8) = 0
+280: LET B(S) = 0
+ S: 8
+ B(8) = 0
+285: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+275: LET C(S) = 0
+ S: 9
+ C(9) = 0
+280: LET B(S) = 0
+ S: 9
+ B(9) = 0
+285: NEXT S
+ S: 9
+ terminated:true
+290:
+300: REM WHO STARTS?
+310: IF RND(Z) < 1 / 2 THEN 350
+ Z: 0
+ RND(Z)<1/2: false
+320: PRINT "YOU WILL MOVE FIRST."
+YOU WILL MOVE FIRST.
+330: PRINT
+
+340: GOTO 400
+400: PRINT "YOUR MOVE";
+YOUR MOVE
+410: INPUT M
+? 9
+ M = 9
+415: LET F = -1
+ F = -1
+420: IF M <> INT(M) THEN 550
+ M: 9
+ M<>INT(M): false
+430: IF M < 1 THEN 500
+ M: 9
+ M<1: false
+440: IF M > 9 THEN 550
+ M: 9
+ M>9: false
+450: IF B(M) <> 0 THEN 500
+ M: 9
+ B(9): 0
+ B(M)<>0: false
+460: LET B(M) = F
+ M: 9
+ F: -1
+ B(9) = -1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 9
+ J: 1
+ U(9,1): 2
+ P = 2
+490: IF P = 0 THEN 530
+ P: 2
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 2
+ C(2): 0
+ F: -1
+ C(2) = -1
+510: IF C(P) = -3 THEN 860
+ P: 2
+ C(2): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 2
+ C(2): -1
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 9
+ J: 2
+ U(9,2): 5
+ P = 5
+490: IF P = 0 THEN 530
+ P: 5
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 5
+ C(5): 0
+ F: -1
+ C(5) = -1
+510: IF C(P) = -3 THEN 860
+ P: 5
+ C(5): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 5
+ C(5): -1
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 9
+ J: 3
+ U(9,3): 7
+ P = 7
+490: IF P = 0 THEN 530
+ P: 7
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 7
+ C(7): 0
+ F: -1
+ C(7) = -1
+510: IF C(P) = -3 THEN 860
+ P: 7
+ C(7): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 7
+ C(7): -1
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 9
+ J: 4
+ U(9,4): 8
+ P = 8
+490: IF P = 0 THEN 530
+ P: 8
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 8
+ C(8): 0
+ F: -1
+ C(8) = -1
+510: IF C(P) = -3 THEN 860
+ P: 8
+ C(8): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 8
+ C(8): -1
+ C(P)=3: false
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 0
+ N = 1
+536: IF N = 9 THEN 880
+ N: 1
+ N=9: false
+537: IF F = 1 THEN 400
+ F: -1
+ F=1: false
+538: GOTO 600
+600: REM MACHINE'S MOVE
+610: GOSUB 1000
+1000: REM SELECT A MOVE
+1010: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1020: IF C(P) = 2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1020: IF C(P) = 2 THEN 1100
+ P: 2
+ C(2): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1020: IF C(P) = 2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1020: IF C(P) = 2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1020: IF C(P) = 2 THEN 1100
+ P: 5
+ C(5): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1020: IF C(P) = 2 THEN 1100
+ P: 6
+ C(6): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1020: IF C(P) = 2 THEN 1100
+ P: 7
+ C(7): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1020: IF C(P) = 2 THEN 1100
+ P: 8
+ C(8): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 8
+ terminated:true
+1040: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1050: IF C(P) = -2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1050: IF C(P) = -2 THEN 1100
+ P: 2
+ C(2): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1050: IF C(P) = -2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1050: IF C(P) = -2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1050: IF C(P) = -2 THEN 1100
+ P: 5
+ C(5): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1050: IF C(P) = -2 THEN 1100
+ P: 6
+ C(6): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1050: IF C(P) = -2 THEN 1100
+ P: 7
+ C(7): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1050: IF C(P) = -2 THEN 1100
+ P: 8
+ C(8): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 8
+ terminated:true
+1070: GOTO 1200
+1200: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1210: LET V(S) = 0
+ S: 1
+ V(1) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 1
+ B(1): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 1
+ J: 1
+ U(1,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 0
+ P: 1
+ C(1): 0
+ V(1) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 1
+ J: 2
+ U(1,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 1
+ P: 4
+ C(4): 0
+ V(1) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 1
+ J: 3
+ U(1,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 2
+ P: 7
+ C(7): -1
+ V(1) = 4
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 1
+ J: 4
+ U(1,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1210: LET V(S) = 0
+ S: 2
+ V(2) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 2
+ B(2): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 2
+ J: 1
+ U(2,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 0
+ P: 1
+ C(1): 0
+ V(2) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 2
+ J: 2
+ U(2,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 1
+ P: 5
+ C(5): -1
+ V(2) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 2
+ J: 3
+ U(2,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 2
+ J: 4
+ U(2,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1210: LET V(S) = 0
+ S: 3
+ V(3) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 3
+ B(3): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 3
+ J: 1
+ U(3,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 0
+ P: 1
+ C(1): 0
+ V(3) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 3
+ J: 2
+ U(3,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 1
+ P: 6
+ C(6): 0
+ V(3) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 3
+ J: 3
+ U(3,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 2
+ P: 8
+ C(8): -1
+ V(3) = 4
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 3
+ J: 4
+ U(3,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1210: LET V(S) = 0
+ S: 4
+ V(4) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 4
+ B(4): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 4
+ J: 1
+ U(4,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 0
+ P: 2
+ C(2): -1
+ V(4) = 2
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 4
+ J: 2
+ U(4,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 2
+ P: 6
+ C(6): 0
+ V(4) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 4
+ J: 3
+ U(4,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 4
+ J: 4
+ U(4,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1210: LET V(S) = 0
+ S: 5
+ V(5) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 5
+ B(5): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 5
+ J: 1
+ U(5,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 0
+ P: 3
+ C(3): 0
+ V(5) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 5
+ J: 2
+ U(5,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 1
+ P: 6
+ C(6): 0
+ V(5) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 5
+ J: 3
+ U(5,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 2
+ P: 7
+ C(7): -1
+ V(5) = 4
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 5
+ J: 4
+ U(5,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1210: LET V(S) = 0
+ S: 6
+ V(6) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 6
+ B(6): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 6
+ J: 1
+ U(6,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 0
+ P: 3
+ C(3): 0
+ V(6) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 6
+ J: 2
+ U(6,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 1
+ P: 5
+ C(5): -1
+ V(6) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 6
+ J: 3
+ U(6,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 6
+ J: 4
+ U(6,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1210: LET V(S) = 0
+ S: 7
+ V(7) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 7
+ B(7): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 7
+ J: 1
+ U(7,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 0
+ P: 3
+ C(3): 0
+ V(7) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 7
+ J: 2
+ U(7,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 1
+ P: 4
+ C(4): 0
+ V(7) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 7
+ J: 3
+ U(7,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 2
+ P: 8
+ C(8): -1
+ V(7) = 4
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 7
+ J: 4
+ U(7,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1210: LET V(S) = 0
+ S: 8
+ V(8) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 8
+ B(8): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 8
+ J: 1
+ U(8,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 0
+ P: 2
+ C(2): -1
+ V(8) = 2
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 8
+ J: 2
+ U(8,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 2
+ P: 4
+ C(4): 0
+ V(8) = 3
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 8
+ J: 3
+ U(8,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 8
+ J: 4
+ U(8,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1210: LET V(S) = 0
+ S: 9
+ V(9) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 9
+ B(9): -1
+ B(S)<>0: true
+1270: NEXT S
+ S: 9
+ terminated:true
+1300: LET V = 0
+ V = 0
+1310: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1320: IF V(S) <= V THEN 1350
+ S: 1
+ V(1): 4
+ V: 0
+ V(S)<=V: false
+1330: LET V = V(S)
+ S: 1
+ V(1): 4
+ V = 4
+1340: LET M = S
+ S: 1
+ M = 1
+1350: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1320: IF V(S) <= V THEN 1350
+ S: 2
+ V(2): 3
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1320: IF V(S) <= V THEN 1350
+ S: 3
+ V(3): 4
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1320: IF V(S) <= V THEN 1350
+ S: 4
+ V(4): 3
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1320: IF V(S) <= V THEN 1350
+ S: 5
+ V(5): 4
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1320: IF V(S) <= V THEN 1350
+ S: 6
+ V(6): 3
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1320: IF V(S) <= V THEN 1350
+ S: 7
+ V(7): 4
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1320: IF V(S) <= V THEN 1350
+ S: 8
+ V(8): 3
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1320: IF V(S) <= V THEN 1350
+ S: 9
+ V(9): 0
+ V: 4
+ V(S)<=V: true
+1350: NEXT S
+ S: 9
+ terminated:true
+1999: RETURN
+620: PRINT "THE COMPUTER MOVES" M
+THE COMPUTER MOVES
+ M: 1
+ 1
+630: LET F = 1
+ F = 1
+640: GOTO 460
+460: LET B(M) = F
+ M: 1
+ F: 1
+ B(1) = 1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 1
+ J: 1
+ U(1,1): 1
+ P = 1
+490: IF P = 0 THEN 530
+ P: 1
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 1
+ C(1): 0
+ F: 1
+ C(1) = 1
+510: IF C(P) = -3 THEN 860
+ P: 1
+ C(1): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 1
+ C(1): 1
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 1
+ J: 2
+ U(1,2): 4
+ P = 4
+490: IF P = 0 THEN 530
+ P: 4
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 4
+ C(4): 0
+ F: 1
+ C(4) = 1
+510: IF C(P) = -3 THEN 860
+ P: 4
+ C(4): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 4
+ C(4): 1
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 1
+ J: 3
+ U(1,3): 7
+ P = 7
+490: IF P = 0 THEN 530
+ P: 7
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 7
+ C(7): -1
+ F: 1
+ C(7) = 0
+510: IF C(P) = -3 THEN 860
+ P: 7
+ C(7): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 7
+ C(7): 0
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 1
+ J: 4
+ U(1,4): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 1
+ N = 2
+536: IF N = 9 THEN 880
+ N: 2
+ N=9: false
+537: IF F = 1 THEN 400
+ F: 1
+ F=1: true
+400: PRINT "YOUR MOVE";
+YOUR MOVE
+410: INPUT M
+? 3
+ M = 3
+415: LET F = -1
+ F = -1
+420: IF M <> INT(M) THEN 550
+ M: 3
+ M<>INT(M): false
+430: IF M < 1 THEN 500
+ M: 3
+ M<1: false
+440: IF M > 9 THEN 550
+ M: 3
+ M>9: false
+450: IF B(M) <> 0 THEN 500
+ M: 3
+ B(3): 0
+ B(M)<>0: false
+460: LET B(M) = F
+ M: 3
+ F: -1
+ B(3) = -1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 3
+ J: 1
+ U(3,1): 1
+ P = 1
+490: IF P = 0 THEN 530
+ P: 1
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 1
+ C(1): 1
+ F: -1
+ C(1) = 0
+510: IF C(P) = -3 THEN 860
+ P: 1
+ C(1): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 1
+ C(1): 0
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 3
+ J: 2
+ U(3,2): 6
+ P = 6
+490: IF P = 0 THEN 530
+ P: 6
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 6
+ C(6): 0
+ F: -1
+ C(6) = -1
+510: IF C(P) = -3 THEN 860
+ P: 6
+ C(6): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 6
+ C(6): -1
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 3
+ J: 3
+ U(3,3): 8
+ P = 8
+490: IF P = 0 THEN 530
+ P: 8
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 8
+ C(8): -1
+ F: -1
+ C(8) = -2
+510: IF C(P) = -3 THEN 860
+ P: 8
+ C(8): -2
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 8
+ C(8): -2
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 3
+ J: 4
+ U(3,4): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 2
+ N = 3
+536: IF N = 9 THEN 880
+ N: 3
+ N=9: false
+537: IF F = 1 THEN 400
+ F: -1
+ F=1: false
+538: GOTO 600
+600: REM MACHINE'S MOVE
+610: GOSUB 1000
+1000: REM SELECT A MOVE
+1010: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1020: IF C(P) = 2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1020: IF C(P) = 2 THEN 1100
+ P: 2
+ C(2): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1020: IF C(P) = 2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1020: IF C(P) = 2 THEN 1100
+ P: 4
+ C(4): 1
+ C(P)=2: false
+1030: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1020: IF C(P) = 2 THEN 1100
+ P: 5
+ C(5): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1020: IF C(P) = 2 THEN 1100
+ P: 6
+ C(6): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1020: IF C(P) = 2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1020: IF C(P) = 2 THEN 1100
+ P: 8
+ C(8): -2
+ C(P)=2: false
+1030: NEXT P
+ P: 8
+ terminated:true
+1040: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1050: IF C(P) = -2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1050: IF C(P) = -2 THEN 1100
+ P: 2
+ C(2): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1050: IF C(P) = -2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1050: IF C(P) = -2 THEN 1100
+ P: 4
+ C(4): 1
+ C(P)=-2: false
+1060: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1050: IF C(P) = -2 THEN 1100
+ P: 5
+ C(5): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1050: IF C(P) = -2 THEN 1100
+ P: 6
+ C(6): -1
+ C(P)=-2: false
+1060: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1050: IF C(P) = -2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1050: IF C(P) = -2 THEN 1100
+ P: 8
+ C(8): -2
+ C(P)=-2: true
+1100: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+1110: LET M = T(P, I)
+ P: 8
+ I: 1
+ T(8,1): 7
+ M = 7
+1120: IF B(M) = 0 THEN 1999
+ M: 7
+ B(7): 0
+ B(M)=0: true
+1999: RETURN
+620: PRINT "THE COMPUTER MOVES" M
+THE COMPUTER MOVES
+ M: 7
+ 7
+630: LET F = 1
+ F = 1
+640: GOTO 460
+460: LET B(M) = F
+ M: 7
+ F: 1
+ B(7) = 1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 7
+ J: 1
+ U(7,1): 3
+ P = 3
+490: IF P = 0 THEN 530
+ P: 3
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 3
+ C(3): 0
+ F: 1
+ C(3) = 1
+510: IF C(P) = -3 THEN 860
+ P: 3
+ C(3): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 3
+ C(3): 1
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 7
+ J: 2
+ U(7,2): 4
+ P = 4
+490: IF P = 0 THEN 530
+ P: 4
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 4
+ C(4): 1
+ F: 1
+ C(4) = 2
+510: IF C(P) = -3 THEN 860
+ P: 4
+ C(4): 2
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 4
+ C(4): 2
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 7
+ J: 3
+ U(7,3): 8
+ P = 8
+490: IF P = 0 THEN 530
+ P: 8
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 8
+ C(8): -2
+ F: 1
+ C(8) = -1
+510: IF C(P) = -3 THEN 860
+ P: 8
+ C(8): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 8
+ C(8): -1
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 7
+ J: 4
+ U(7,4): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 3
+ N = 4
+536: IF N = 9 THEN 880
+ N: 4
+ N=9: false
+537: IF F = 1 THEN 400
+ F: 1
+ F=1: true
+400: PRINT "YOUR MOVE";
+YOUR MOVE
+410: INPUT M
+? 5
+ M = 5
+415: LET F = -1
+ F = -1
+420: IF M <> INT(M) THEN 550
+ M: 5
+ M<>INT(M): false
+430: IF M < 1 THEN 500
+ M: 5
+ M<1: false
+440: IF M > 9 THEN 550
+ M: 5
+ M>9: false
+450: IF B(M) <> 0 THEN 500
+ M: 5
+ B(5): 0
+ B(M)<>0: false
+460: LET B(M) = F
+ M: 5
+ F: -1
+ B(5) = -1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 5
+ J: 1
+ U(5,1): 3
+ P = 3
+490: IF P = 0 THEN 530
+ P: 3
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 3
+ C(3): 1
+ F: -1
+ C(3) = 0
+510: IF C(P) = -3 THEN 860
+ P: 3
+ C(3): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 3
+ C(3): 0
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 5
+ J: 2
+ U(5,2): 6
+ P = 6
+490: IF P = 0 THEN 530
+ P: 6
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 6
+ C(6): -1
+ F: -1
+ C(6) = -2
+510: IF C(P) = -3 THEN 860
+ P: 6
+ C(6): -2
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 6
+ C(6): -2
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 5
+ J: 3
+ U(5,3): 7
+ P = 7
+490: IF P = 0 THEN 530
+ P: 7
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 7
+ C(7): 0
+ F: -1
+ C(7) = -1
+510: IF C(P) = -3 THEN 860
+ P: 7
+ C(7): -1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 7
+ C(7): -1
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 5
+ J: 4
+ U(5,4): 0
+ P = 0
+490: IF P = 0 THEN 530
+ P: 0
+ P=0: true
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 4
+ N = 5
+536: IF N = 9 THEN 880
+ N: 5
+ N=9: false
+537: IF F = 1 THEN 400
+ F: -1
+ F=1: false
+538: GOTO 600
+600: REM MACHINE'S MOVE
+610: GOSUB 1000
+1000: REM SELECT A MOVE
+1010: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1020: IF C(P) = 2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1020: IF C(P) = 2 THEN 1100
+ P: 2
+ C(2): -1
+ C(P)=2: false
+1030: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1020: IF C(P) = 2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1020: IF C(P) = 2 THEN 1100
+ P: 4
+ C(4): 2
+ C(P)=2: true
+1100: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+1110: LET M = T(P, I)
+ P: 4
+ I: 1
+ T(4,1): 1
+ M = 1
+1120: IF B(M) = 0 THEN 1999
+ M: 1
+ B(1): 1
+ B(M)=0: false
+1130: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+1110: LET M = T(P, I)
+ P: 4
+ I: 2
+ T(4,2): 8
+ M = 8
+1120: IF B(M) = 0 THEN 1999
+ M: 8
+ B(8): 0
+ B(M)=0: true
+1999: RETURN
+620: PRINT "THE COMPUTER MOVES" M
+THE COMPUTER MOVES
+ M: 8
+ 8
+630: LET F = 1
+ F = 1
+640: GOTO 460
+460: LET B(M) = F
+ M: 8
+ F: 1
+ B(8) = 1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 8
+ J: 1
+ U(8,1): 2
+ P = 2
+490: IF P = 0 THEN 530
+ P: 2
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 2
+ C(2): -1
+ F: 1
+ C(2) = 0
+510: IF C(P) = -3 THEN 860
+ P: 2
+ C(2): 0
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 2
+ C(2): 0
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 8
+ J: 2
+ U(8,2): 4
+ P = 4
+490: IF P = 0 THEN 530
+ P: 4
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 4
+ C(4): 2
+ F: 1
+ C(4) = 3
+510: IF C(P) = -3 THEN 860
+ P: 4
+ C(4): 3
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 4
+ C(4): 3
+ C(P)=3: true
+800: REM THE GAME IS OVER
+810: PRINT "AND THE COMPUTER WINS."
+AND THE COMPUTER WINS.
+820: PRINT
+
+830: PRINT
+
+840: PRINT "NEW GAME."
+NEW GAME.
+850: GOTO 265
+265: LET N = 0
+ N = 0
+270: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+275: LET C(S) = 0
+ S: 1
+ C(1) = 0
+280: LET B(S) = 0
+ S: 1
+ B(1) = 0
+285: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+275: LET C(S) = 0
+ S: 2
+ C(2) = 0
+280: LET B(S) = 0
+ S: 2
+ B(2) = 0
+285: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+275: LET C(S) = 0
+ S: 3
+ C(3) = 0
+280: LET B(S) = 0
+ S: 3
+ B(3) = 0
+285: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+275: LET C(S) = 0
+ S: 4
+ C(4) = 0
+280: LET B(S) = 0
+ S: 4
+ B(4) = 0
+285: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+275: LET C(S) = 0
+ S: 5
+ C(5) = 0
+280: LET B(S) = 0
+ S: 5
+ B(5) = 0
+285: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+275: LET C(S) = 0
+ S: 6
+ C(6) = 0
+280: LET B(S) = 0
+ S: 6
+ B(6) = 0
+285: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+275: LET C(S) = 0
+ S: 7
+ C(7) = 0
+280: LET B(S) = 0
+ S: 7
+ B(7) = 0
+285: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+275: LET C(S) = 0
+ S: 8
+ C(8) = 0
+280: LET B(S) = 0
+ S: 8
+ B(8) = 0
+285: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+275: LET C(S) = 0
+ S: 9
+ C(9) = 0
+280: LET B(S) = 0
+ S: 9
+ B(9) = 0
+285: NEXT S
+ S: 9
+ terminated:true
+290:
+300: REM WHO STARTS?
+310: IF RND(Z) < 1 / 2 THEN 350
+ Z: 0
+ RND(Z)<1/2: true
+350: PRINT "THE COMPUTER WILL MOVE FIRST."
+THE COMPUTER WILL MOVE FIRST.
+360: PRINT
+
+370: GOTO 600
+600: REM MACHINE'S MOVE
+610: GOSUB 1000
+1000: REM SELECT A MOVE
+1010: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1020: IF C(P) = 2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1020: IF C(P) = 2 THEN 1100
+ P: 2
+ C(2): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1020: IF C(P) = 2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1020: IF C(P) = 2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1020: IF C(P) = 2 THEN 1100
+ P: 5
+ C(5): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1020: IF C(P) = 2 THEN 1100
+ P: 6
+ C(6): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1020: IF C(P) = 2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1020: IF C(P) = 2 THEN 1100
+ P: 8
+ C(8): 0
+ C(P)=2: false
+1030: NEXT P
+ P: 8
+ terminated:true
+1040: FOR P = 1 TO 8
+ P = 1
+ terminated:false
+1050: IF C(P) = -2 THEN 1100
+ P: 1
+ C(1): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 1
+ terminated:false
+ P = 2
+1050: IF C(P) = -2 THEN 1100
+ P: 2
+ C(2): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 2
+ terminated:false
+ P = 3
+1050: IF C(P) = -2 THEN 1100
+ P: 3
+ C(3): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 3
+ terminated:false
+ P = 4
+1050: IF C(P) = -2 THEN 1100
+ P: 4
+ C(4): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 4
+ terminated:false
+ P = 5
+1050: IF C(P) = -2 THEN 1100
+ P: 5
+ C(5): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 5
+ terminated:false
+ P = 6
+1050: IF C(P) = -2 THEN 1100
+ P: 6
+ C(6): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 6
+ terminated:false
+ P = 7
+1050: IF C(P) = -2 THEN 1100
+ P: 7
+ C(7): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 7
+ terminated:false
+ P = 8
+1050: IF C(P) = -2 THEN 1100
+ P: 8
+ C(8): 0
+ C(P)=-2: false
+1060: NEXT P
+ P: 8
+ terminated:true
+1070: GOTO 1200
+1200: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1210: LET V(S) = 0
+ S: 1
+ V(1) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 1
+ B(1): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 1
+ J: 1
+ U(1,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 0
+ P: 1
+ C(1): 0
+ V(1) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 1
+ J: 2
+ U(1,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 1
+ P: 4
+ C(4): 0
+ V(1) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 1
+ J: 3
+ U(1,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 1
+ V(1): 2
+ P: 7
+ C(7): 0
+ V(1) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 1
+ J: 4
+ U(1,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1210: LET V(S) = 0
+ S: 2
+ V(2) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 2
+ B(2): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 2
+ J: 1
+ U(2,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 0
+ P: 1
+ C(1): 0
+ V(2) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 2
+ J: 2
+ U(2,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 2
+ V(2): 1
+ P: 5
+ C(5): 0
+ V(2) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 2
+ J: 3
+ U(2,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 2
+ J: 4
+ U(2,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1210: LET V(S) = 0
+ S: 3
+ V(3) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 3
+ B(3): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 3
+ J: 1
+ U(3,1): 1
+ P = 1
+1240: IF P = 0 THEN 1260
+ P: 1
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 0
+ P: 1
+ C(1): 0
+ V(3) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 3
+ J: 2
+ U(3,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 1
+ P: 6
+ C(6): 0
+ V(3) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 3
+ J: 3
+ U(3,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 3
+ V(3): 2
+ P: 8
+ C(8): 0
+ V(3) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 3
+ J: 4
+ U(3,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1210: LET V(S) = 0
+ S: 4
+ V(4) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 4
+ B(4): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 4
+ J: 1
+ U(4,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 0
+ P: 2
+ C(2): 0
+ V(4) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 4
+ J: 2
+ U(4,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 4
+ V(4): 1
+ P: 6
+ C(6): 0
+ V(4) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 4
+ J: 3
+ U(4,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 4
+ J: 4
+ U(4,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1210: LET V(S) = 0
+ S: 5
+ V(5) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 5
+ B(5): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 5
+ J: 1
+ U(5,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 0
+ P: 3
+ C(3): 0
+ V(5) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 5
+ J: 2
+ U(5,2): 6
+ P = 6
+1240: IF P = 0 THEN 1260
+ P: 6
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 1
+ P: 6
+ C(6): 0
+ V(5) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 5
+ J: 3
+ U(5,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 5
+ V(5): 2
+ P: 7
+ C(7): 0
+ V(5) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 5
+ J: 4
+ U(5,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1210: LET V(S) = 0
+ S: 6
+ V(6) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 6
+ B(6): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 6
+ J: 1
+ U(6,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 0
+ P: 3
+ C(3): 0
+ V(6) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 6
+ J: 2
+ U(6,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 6
+ V(6): 1
+ P: 5
+ C(5): 0
+ V(6) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 6
+ J: 3
+ U(6,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 6
+ J: 4
+ U(6,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1210: LET V(S) = 0
+ S: 7
+ V(7) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 7
+ B(7): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 7
+ J: 1
+ U(7,1): 3
+ P = 3
+1240: IF P = 0 THEN 1260
+ P: 3
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 0
+ P: 3
+ C(3): 0
+ V(7) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 7
+ J: 2
+ U(7,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 1
+ P: 4
+ C(4): 0
+ V(7) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 7
+ J: 3
+ U(7,3): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 7
+ V(7): 2
+ P: 8
+ C(8): 0
+ V(7) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 7
+ J: 4
+ U(7,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1210: LET V(S) = 0
+ S: 8
+ V(8) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 8
+ B(8): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 8
+ J: 1
+ U(8,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 0
+ P: 2
+ C(2): 0
+ V(8) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 8
+ J: 2
+ U(8,2): 4
+ P = 4
+1240: IF P = 0 THEN 1260
+ P: 4
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 8
+ V(8): 1
+ P: 4
+ C(4): 0
+ V(8) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 8
+ J: 3
+ U(8,3): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 8
+ J: 4
+ U(8,4): 0
+ P = 0
+1240: IF P = 0 THEN 1260
+ P: 0
+ P=0: true
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1210: LET V(S) = 0
+ S: 9
+ V(9) = 0
+1215: IF B(S) <> 0 THEN 1270
+ S: 9
+ B(9): 0
+ B(S)<>0: false
+1220: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+1230: LET P = U(S, J)
+ S: 9
+ J: 1
+ U(9,1): 2
+ P = 2
+1240: IF P = 0 THEN 1260
+ P: 2
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 0
+ P: 2
+ C(2): 0
+ V(9) = 1
+1260: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+1230: LET P = U(S, J)
+ S: 9
+ J: 2
+ U(9,2): 5
+ P = 5
+1240: IF P = 0 THEN 1260
+ P: 5
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 1
+ P: 5
+ C(5): 0
+ V(9) = 2
+1260: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+1230: LET P = U(S, J)
+ S: 9
+ J: 3
+ U(9,3): 7
+ P = 7
+1240: IF P = 0 THEN 1260
+ P: 7
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 2
+ P: 7
+ C(7): 0
+ V(9) = 3
+1260: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+1230: LET P = U(S, J)
+ S: 9
+ J: 4
+ U(9,4): 8
+ P = 8
+1240: IF P = 0 THEN 1260
+ P: 8
+ P=0: false
+1250: LET V(S) = V(S) + 1 + ABS(C(P))
+ S: 9
+ V(9): 3
+ P: 8
+ C(8): 0
+ V(9) = 4
+1260: NEXT J
+ J: 4
+ terminated:true
+1270: NEXT S
+ S: 9
+ terminated:true
+1300: LET V = 0
+ V = 0
+1310: FOR S = 1 TO 9
+ S = 1
+ terminated:false
+1320: IF V(S) <= V THEN 1350
+ S: 1
+ V(1): 3
+ V: 0
+ V(S)<=V: false
+1330: LET V = V(S)
+ S: 1
+ V(1): 3
+ V = 3
+1340: LET M = S
+ S: 1
+ M = 1
+1350: NEXT S
+ S: 1
+ terminated:false
+ S = 2
+1320: IF V(S) <= V THEN 1350
+ S: 2
+ V(2): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 2
+ terminated:false
+ S = 3
+1320: IF V(S) <= V THEN 1350
+ S: 3
+ V(3): 3
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 3
+ terminated:false
+ S = 4
+1320: IF V(S) <= V THEN 1350
+ S: 4
+ V(4): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 4
+ terminated:false
+ S = 5
+1320: IF V(S) <= V THEN 1350
+ S: 5
+ V(5): 3
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 5
+ terminated:false
+ S = 6
+1320: IF V(S) <= V THEN 1350
+ S: 6
+ V(6): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 6
+ terminated:false
+ S = 7
+1320: IF V(S) <= V THEN 1350
+ S: 7
+ V(7): 3
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 7
+ terminated:false
+ S = 8
+1320: IF V(S) <= V THEN 1350
+ S: 8
+ V(8): 2
+ V: 3
+ V(S)<=V: true
+1350: NEXT S
+ S: 8
+ terminated:false
+ S = 9
+1320: IF V(S) <= V THEN 1350
+ S: 9
+ V(9): 4
+ V: 3
+ V(S)<=V: false
+1330: LET V = V(S)
+ S: 9
+ V(9): 4
+ V = 4
+1340: LET M = S
+ S: 9
+ M = 9
+1350: NEXT S
+ S: 9
+ terminated:true
+1999: RETURN
+620: PRINT "THE COMPUTER MOVES" M
+THE COMPUTER MOVES
+ M: 9
+ 9
+630: LET F = 1
+ F = 1
+640: GOTO 460
+460: LET B(M) = F
+ M: 9
+ F: 1
+ B(9) = 1
+470: FOR J = 1 TO 4
+ J = 1
+ terminated:false
+480: LET P = U(M, J)
+ M: 9
+ J: 1
+ U(9,1): 2
+ P = 2
+490: IF P = 0 THEN 530
+ P: 2
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 2
+ C(2): 0
+ F: 1
+ C(2) = 1
+510: IF C(P) = -3 THEN 860
+ P: 2
+ C(2): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 2
+ C(2): 1
+ C(P)=3: false
+530: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+480: LET P = U(M, J)
+ M: 9
+ J: 2
+ U(9,2): 5
+ P = 5
+490: IF P = 0 THEN 530
+ P: 5
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 5
+ C(5): 0
+ F: 1
+ C(5) = 1
+510: IF C(P) = -3 THEN 860
+ P: 5
+ C(5): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 5
+ C(5): 1
+ C(P)=3: false
+530: NEXT J
+ J: 2
+ terminated:false
+ J = 3
+480: LET P = U(M, J)
+ M: 9
+ J: 3
+ U(9,3): 7
+ P = 7
+490: IF P = 0 THEN 530
+ P: 7
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 7
+ C(7): 0
+ F: 1
+ C(7) = 1
+510: IF C(P) = -3 THEN 860
+ P: 7
+ C(7): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 7
+ C(7): 1
+ C(P)=3: false
+530: NEXT J
+ J: 3
+ terminated:false
+ J = 4
+480: LET P = U(M, J)
+ M: 9
+ J: 4
+ U(9,4): 8
+ P = 8
+490: IF P = 0 THEN 530
+ P: 8
+ P=0: false
+500: LET C(P) = C(P) + F
+ P: 8
+ C(8): 0
+ F: 1
+ C(8) = 1
+510: IF C(P) = -3 THEN 860
+ P: 8
+ C(8): 1
+ C(P)=-3: false
+520: IF C(P) = 3 THEN 800
+ P: 8
+ C(8): 1
+ C(P)=3: false
+530: NEXT J
+ J: 4
+ terminated:true
+535: LET N = N + 1
+ N: 0
+ N = 1
+536: IF N = 9 THEN 880
+ N: 1
+ N=9: false
+537: IF F = 1 THEN 400
+ F: 1
+ F=1: true
+400: PRINT "YOUR MOVE";
+YOUR MOVE
+410: INPUT M
+? 
+Error 102 End of file in line 410
+
