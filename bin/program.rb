@@ -526,6 +526,7 @@ class Program
       statement_gotos = statement.gotos
 
       autonext = statement.autonext
+
       if autonext
         next_line_number = find_next_line_number(line_number)
         statement_gotos << next_line_number unless next_line_number.nil?
