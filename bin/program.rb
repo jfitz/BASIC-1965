@@ -965,8 +965,10 @@ class Program
 
     udfs_list = user_function_refs
     userfuncs = make_summary(udfs_list)
-    texts += print_object_refs('User-defined functions:', userfuncs) unless
-      userfuncs.empty?
+    unless userfuncs.empty?
+      texts += print_object_refs('User-defined functions:', userfuncs)
+      texts += print_unused(userfuncs)
+    end
 
     vars_list = variables_refs
     variables = make_summary(vars_list)
