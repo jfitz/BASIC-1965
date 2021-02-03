@@ -820,7 +820,7 @@ class Parser
     if start_op.param_start?
       expressions = []
       @parens_group.each { |group| expressions << Expression.new(group) }
-      list = List.new(expressions)
+      list = ExpressionList.new(expressions)
       @operator_stack.push(list)
       @current_elements = @elements_stack.pop
     end
@@ -1018,7 +1018,7 @@ class Expression
     @elements.reverse_each do |element|
       if element.list?
         # recurse into expressions in list
-        sublist = element.list
+        sublist = element.expressions
         vars += Expression.parsed_expressions_numerics(sublist)
       elsif element.numeric_constant?
         if !previous.nil? &&
@@ -1042,7 +1042,7 @@ class Expression
     @elements.each do |element|
       if element.list?
         # recurse into expressions in list
-        sublist = element.list
+        sublist = element.expressions
         strs += Expression.parsed_expressions_strings(sublist)
       elsif element.text_constant?
         strs << element
@@ -1058,7 +1058,7 @@ class Expression
     @elements.each do |element|
       if element.list?
         # recurse into expressions in list
-        sublist = element.list
+        sublist = element.expressions
         bools += Expression.parsed_expressions_booleans(sublist)
       elsif element.boolean_constant?
         bools << element
@@ -1075,7 +1075,7 @@ class Expression
     @elements.each do |element|
       if element.list?
         # recurse into expressions in list
-        sublist = element.list
+        sublist = element.expressions
         vars += Expression.parsed_expressions_variables(sublist)
       elsif element.variable?
         arguments = nil
@@ -1092,7 +1092,7 @@ class Expression
           arguments = [constant, constant]
         end
 
-        arguments = previous.list if !previous.nil? && previous.list?
+        arguments = previous.expressions if !previous.nil? && previous.list?
 
         is_ref = element.reference?
 
@@ -1112,7 +1112,7 @@ class Expression
     @elements.each do |element|
       if element.list?
         # recurse into expressions in list
-        sublist = element.list
+        sublist = element.expressions
         opers += Expression.parsed_expressions_operators(sublist)
       elsif element.operator?
         arguments = element.arguments
@@ -1134,11 +1134,11 @@ class Expression
     @elements.each do |element|
       if element.list?
         # recurse into expressions in list
-        sublist = element.list
+        sublist = element.expressions
         vars += Expression.parsed_expressions_functions(sublist)
       elsif element.function? && !element.user_function?
         arguments = nil
-        arguments = previous.list if !previous.nil? && previous.list?
+        arguments = previous.expressions if !previous.nil? && previous.list?
 
         is_ref = element.reference?
 
@@ -1160,11 +1160,11 @@ class Expression
     @elements.each do |element|
       if element.list?
         # recurse into expressions in list
-        sublist = element.list
+        sublist = element.expressions
         vars += Expression.parsed_expressions_userfuncs(sublist)
       elsif element.user_function?
         arguments = nil
-        arguments = previous.list if !previous.nil? && previous.list?
+        arguments = previous.expressions if !previous.nil? && previous.list?
 
         is_ref = element.reference?
 
@@ -1309,7 +1309,7 @@ class AbstractExpressionSet
 
     elements.each do |element|
       if element.list?
-        set_arguments_1(element.list)
+        set_arguments_1(element.expressions)
       elsif element.operator?
         element.set_arguments(content_type_stack)
         content_type_stack.push(element)
