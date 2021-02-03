@@ -55,134 +55,134 @@
  NumericConstant:1
  Variable:E
  NumericConstant:100
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 210 LET O2 = C + S + (H/4) - (O/2)
  Variable:O2
  Variable:C
  Variable:S
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:H
  NumericConstant:4
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:O
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorMinus:-
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 220 LET A = O2*E*4.762
  Variable:A
  Variable:O2
  Variable:E
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:4.762
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 230 LET A1 = 1.8094*A
  Variable:A1
  NumericConstant:1.8094
  Variable:A
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
  Variable:F
  NumericConstant:0.7507
  Variable:C
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:0.063
  Variable:H
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  NumericConstant:2.004
  Variable:S
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 250 LET F = (0.875*N) + O + F
  Variable:F
  NumericConstant:0.875
  Variable:N
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:O
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:F
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 260 LET A1 = A1/F
  Variable:A1
  Variable:A1
  Variable:F
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 270 LET M = A + (H/4) + (O/2) + (N/2)
  Variable:M
  Variable:A
  Variable:H
  NumericConstant:4
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:O
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:N
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 280 LET C2 = (C*100)/M
  Variable:C2
  Variable:C
  NumericConstant:100
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:M
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 290 LET S2 = (S*100)/M
  Variable:S2
  Variable:S
  NumericConstant:100
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:M
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 300 LET H2 = (H*100)/M
  Variable:H2
  Variable:H
  NumericConstant:100
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:M
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 310 LET O3 = (100*(E-1)*O2)/M
  Variable:O3
  NumericConstant:100
  Variable:E
  NumericConstant:1
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
  Variable:O2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:M
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
  Variable:N2
  NumericConstant:100
  NumericConstant:3.762
  Variable:E
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:O2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:N
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
  Variable:M
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 330 PRINT
  CarriageControl:NL

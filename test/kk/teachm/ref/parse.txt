@@ -29,7 +29,7 @@ Syntax error: Invalid line number '0'
 150 IF X = C THEN 200
  Variable:X
  Variable:C
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 160 PRINT "LET'S TRY THAT ONE AGAIN."
  TextConstant:"LET'S TRY THAT ONE AGAIN."
  CarriageControl:NL
@@ -56,11 +56,11 @@ Syntax error: Invalid line number '0'
 240 IF C = X THEN 300
  Variable:C
  Variable:X
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 250 IF X = 1 THEN 280
  Variable:X
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 260 PRINT "ANOTHER RETRY -- OKAY?"
  TextConstant:"ANOTHER RETRY -- OKAY?"
  CarriageControl:NL
@@ -103,11 +103,11 @@ Syntax error: Invalid line number '0'
 370 IF C = X THEN 400
  Variable:C
  Variable:X
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 375 IF X <> 1 THEN 390
  Variable:X
  NumericConstant:1
- BinaryOperatorNotEqual:<>
+ BinaryOperatorNotEqual:<> boolean
 380 PRINT "BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
  TextConstant:"BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
  CarriageControl:NL
@@ -135,11 +135,11 @@ Syntax error: Invalid line number '0'
 440 IF C = X THEN 500
  Variable:C
  Variable:X
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 450 IF X = 1 THEN 470
  Variable:X
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 460 PRINT "THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
  TextConstant:"THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
  CarriageControl:NL
@@ -177,11 +177,11 @@ Syntax error: Invalid line number '0'
 550 IF C = X THEN 600
  Variable:C
  Variable:X
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 560 IF C = 3 THEN 580
  Variable:C
  NumericConstant:3
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 570 PRINT "THIS ONE INCREASES THE VALUE OF X BY T UNITS."
  TextConstant:"THIS ONE INCREASES THE VALUE OF X BY T UNITS."
  CarriageControl:NL
@@ -211,7 +211,7 @@ Syntax error: Invalid line number '0'
 8020 IF C <> X THEN 8050
  Variable:C
  Variable:X
- BinaryOperatorNotEqual:<>
+ BinaryOperatorNotEqual:<> boolean
 8030 PRINT "CORRECT"
  TextConstant:"CORRECT"
  CarriageControl:NL

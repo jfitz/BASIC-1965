@@ -13,11 +13,11 @@
  Variable:F
  Variable:C
  NumericConstant:9
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:5
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  NumericConstant:32
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 50 PRINT C,F
  Variable:C
@@ -28,12 +28,12 @@
  Variable:C
  Variable:C
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 70 IF C<=10 THEN 40
  Variable:C
  NumericConstant:10
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 900 STOP
  
 999 END

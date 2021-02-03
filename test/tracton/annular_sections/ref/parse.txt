@@ -17,34 +17,34 @@
  Variable:P
  Variable:D2
  NumericConstant:4
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:D1
  NumericConstant:4
- BinaryOperatorPower:^
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:64
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 80  LET J=I*2
  Variable:J
  Variable:I
  NumericConstant:2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 100  LET A = (P*((D2 ^ 2) - (D1 ^ 2)))/4
  Variable:A
  Variable:P
  Variable:D2
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:D1
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:4
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 110  PRINT "MOMENT OF INERTIA = " I
  TextConstant:"MOMENT OF INERTIA = "
@@ -71,7 +71,7 @@
 170  IF L=1 THEN 190
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 180  STOP
  
 190  PRINT

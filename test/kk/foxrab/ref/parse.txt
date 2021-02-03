@@ -47,45 +47,45 @@
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T
  start:   ["NumericConstant:0"]
- end:     ["Variable:T9", "Variable:P", "BinaryOperatorDivide:/"]
+ end:     ["Variable:T9", "Variable:P", "BinaryOperatorDivide:/ numeric"]
  step:    ["Variable:T8"]
 240 LET X = X + (A*X - B*X*Y)*T8
  Variable:X
  Variable:X
  Variable:A
  Variable:X
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:B
  Variable:X
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:Y
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  Variable:T8
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Variable:Y
  Variable:Y
  Variable:C
  Variable:X
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:Y
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:D
  Variable:Y
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  Variable:T8
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 255 LET T1 = T1 + T8
  Variable:T1
  Variable:T1
  Variable:T8
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 260 NEXT T
  Variable:T

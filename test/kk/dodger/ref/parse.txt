@@ -174,7 +174,7 @@
 500 IF B < 9 THEN 520
  Variable:B
  NumericConstant:9
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 510 LET B = 0
  Variable:B
  NumericConstant:0
@@ -183,7 +183,7 @@
  Variable:B
  Variable:B
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 530
 540 REM DETERMINE OUTCOME
@@ -203,12 +203,12 @@
  Variable:B
  Variable:R
  Variable:P
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 580 IF X < 0 THEN 620
  Variable:X
  NumericConstant:0
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 590 NEXT R
  Variable:R
 600 LET R = 4
@@ -221,7 +221,7 @@
 630 IF R > 0 THEN 660
  Variable:R
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 640 PRINT "OUT   ";
  TextConstant:"OUT   "
  CarriageControl:;
@@ -230,7 +230,7 @@
 660 IF R > 1 THEN 690
  Variable:R
  NumericConstant:1
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 670 PRINT "SINGLE   ";
  TextConstant:"SINGLE   "
  CarriageControl:;
@@ -239,7 +239,7 @@
 690 IF R > 2 THEN 720
  Variable:R
  NumericConstant:2
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 700 PRINT "WALK   ";
  TextConstant:"WALK   "
  CarriageControl:;
@@ -248,7 +248,7 @@
 720 IF R > 3 THEN 750
  Variable:R
  NumericConstant:3
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 730 PRINT "DOUBLE   ";
  TextConstant:"DOUBLE   "
  CarriageControl:;
@@ -263,16 +263,16 @@
 780 IF R = 0 THEN 860
  Variable:R
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 790 IF R = 2 THEN 810
  Variable:R
  NumericConstant:2
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 800 LET H = H + 1
  Variable:H
  Variable:H
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 810 LET X = Q(R,C)
  Variable:X
@@ -284,7 +284,7 @@
  Variable:Y
  Variable:X
  NumericConstant:10
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
  AssignmentOperator:=
 830 LET C = X - Y*10
@@ -292,26 +292,26 @@
  Variable:X
  Variable:Y
  NumericConstant:10
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 840 LET S = S+Y
  Variable:S
  Variable:S
  Variable:Y
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 850 GOTO 490
  LineNumber:490
 860 IF O = 2 THEN 890
  Variable:O
  NumericConstant:2
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 870 LET O = O+1
  Variable:O
  Variable:O
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 880 GOTO 490
  LineNumber:490
@@ -323,7 +323,7 @@
  Variable:L7
  Variable:C
  Variable:L
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 900 PRINT
  CarriageControl:NL
@@ -338,18 +338,18 @@
  Variable:S1
  Variable:S1
  Variable:S
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 940 LET I = I+1
  Variable:I
  Variable:I
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 945 IF I < 9 THEN 410
  Variable:I
  NumericConstant:9
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 950 
 955 REM PRINT RESULTS
  Remark:PRINT RESULTS

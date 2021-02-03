@@ -18,41 +18,41 @@
 80 IF X + Y = 0 THEN 180
  Variable:X
  Variable:Y
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 90 IF X = 0 THEN 180
  Variable:X
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 100 IF Y = 0 THEN 250
  Variable:Y
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 110 LET W = ATN(Y/X)
  Variable:W
  Variable:Y
  Variable:X
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionArcTan
  AssignmentOperator:=
 120 LET W = (W*180)/3.14159
  Variable:W
  Variable:W
  NumericConstant:180
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:3.14159
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 130 LET R = SQR(X^2 + Y^2)
  Variable:R
  Variable:X
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:Y
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
  AssignmentOperator:=
 140 GOTO 310
@@ -70,11 +70,11 @@
 180 IF Y > 0 THEN 220
  Variable:Y
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 190 LET W = - 90
  Variable:W
  NumericConstant:90
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  AssignmentOperator:=
 200 LET R = ABS(Y)
  Variable:R
@@ -96,7 +96,7 @@
 250 IF X > 0 THEN 290
  Variable:X
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 260 LET W = 180
  Variable:W
  NumericConstant:180
@@ -140,7 +140,7 @@
 370 IF L = 1 THEN 390
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 380 STOP
  
 390 PRINT

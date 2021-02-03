@@ -18,37 +18,37 @@
  Variable:E
  Variable:D
  Variable:A
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:B
  Variable:C
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 80 LET F = D/E
  Variable:F
  Variable:D
  Variable:E
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 90 LET G = - B/E
  Variable:G
  Variable:B
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  Variable:E
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 100 LET H = - C/E
  Variable:H
  Variable:C
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  Variable:E
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 110 LET I = A/E
  Variable:I
  Variable:A
  Variable:E
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 120 PRINT "ORIGINAL MATRIX"
  TextConstant:"ORIGINAL MATRIX"
@@ -95,7 +95,7 @@
 240 IF L = 1 THEN 30
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 250 STOP
  
 260 PRINT

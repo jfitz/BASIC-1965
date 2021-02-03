@@ -13,17 +13,17 @@
  control: Variable:P
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
 30     FOR Q = 1 TO 0 STEP -1
  control: Variable:Q
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
 40         FOR R = 1 TO 0 STEP -1
  control: Variable:R
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
 50             LET X = P
  Variable:X
  Variable:P
@@ -47,9 +47,9 @@
  Variable:P
  Variable:Q
  Variable:R
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionSgn
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 110            GOSUB 200
  LineNumber:200
@@ -67,7 +67,7 @@
 200 IF X > 0 THEN 250
  Variable:X
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 210 PRINT "FALSE",
  TextConstant:"FALSE"
  CarriageControl:,

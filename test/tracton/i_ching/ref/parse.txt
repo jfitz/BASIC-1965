@@ -21,18 +21,18 @@
  Variable:M
  Variable:D
  NumericConstant:30
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:Y
  NumericConstant:100
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:H
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:M1
  NumericConstant:60
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 80 FOR I = 1 TO 6
  control: Variable:I
@@ -43,14 +43,14 @@
  Variable:N
  NumericConstant:0
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 100 LET K = K - INT(K)
  Variable:K
  Variable:K
  Variable:K
  FunctionInt
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 110 LET C(I) = 1 + INT(2*K)
  Variable:I
@@ -58,9 +58,9 @@
  NumericConstant:1
  NumericConstant:2
  Variable:K
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  FunctionInt
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 120 NEXT I
  Variable:I
@@ -72,7 +72,7 @@
  Variable:I
  Variable:C
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 150 PRINT "---"
  TextConstant:"---"
  CarriageControl:NL

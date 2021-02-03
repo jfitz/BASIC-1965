@@ -15,33 +15,33 @@
  Variable:D
  NumericConstant:2
  Variable:R
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 70 LET I = (P*(D^4))/64
  Variable:I
  Variable:P
  Variable:D
  NumericConstant:4
- BinaryOperatorPower:^
- BinaryOperatorMultiply:*
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:64
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 80 LET J = I*2
  Variable:J
  Variable:I
  NumericConstant:2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 90 LET A = (P*(D^2))/4
  Variable:A
  Variable:P
  Variable:D
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorMultiply:*
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:4
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 100 PRINT "MOMENT OF INERTIA = ";I
  TextConstant:"MOMENT OF INERTIA = "
@@ -69,7 +69,7 @@
 160 IF L = 1 THEN 180
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 170 STOP
  
 180 PRINT

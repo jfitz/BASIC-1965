@@ -24,39 +24,39 @@
  Variable:A
  Variable:Y2
  Variable:Y1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:X2
  Variable:X1
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 100 LET B = (Y3 - Y1)/(X3 - X1)
  Variable:B
  Variable:Y3
  Variable:Y1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:X3
  Variable:X1
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 110 LET C = ((X2 - X1)*(X2 + X1)) + ((Y2 - Y1)*(Y2 + Y1))
  Variable:C
  Variable:X2
  Variable:X1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:X2
  Variable:X1
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
  Variable:Y2
  Variable:Y1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:Y2
  Variable:Y1
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 120 LET D = C/(2*(X2 - X1))
  Variable:D
@@ -64,27 +64,27 @@
  NumericConstant:2
  Variable:X2
  Variable:X1
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 130 LET E = ((X3 - X1)*(X3 + X1)) + ((Y3 - Y1)*(Y3 + Y1))
  Variable:E
  Variable:X3
  Variable:X1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:X3
  Variable:X1
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
  Variable:Y3
  Variable:Y1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:Y3
  Variable:Y1
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 140 LET F = E/(2*(X3 - X1))
  Variable:F
@@ -92,41 +92,41 @@
  NumericConstant:2
  Variable:X3
  Variable:X1
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 150 LET Y0 = (F - D)/(B - A)
  Variable:Y0
  Variable:F
  Variable:D
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:B
  Variable:A
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 160 LET X0 = F - (B*Y0)
  Variable:X0
  Variable:F
  Variable:B
  Variable:Y0
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 170 LET R = SQR((X3 - X0)^2 + (Y3 - Y0)^2)
  Variable:R
  Variable:X3
  Variable:X0
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:Y3
  Variable:Y0
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
  AssignmentOperator:=
 180 PRINT "CENTER X0,Y0 = ";X0;",";Y0
@@ -153,7 +153,7 @@
 230 IF L = 1 THEN 250
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 240 STOP
  
 250 PRINT

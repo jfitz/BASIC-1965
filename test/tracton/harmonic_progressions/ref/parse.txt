@@ -30,7 +30,7 @@
 130 IF C = 1 THEN 150
  Variable:C
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 140 GOTO 170
  LineNumber:170
 150 PRINT "HARMONIC PROGRESSION"
@@ -48,12 +48,12 @@
 180 FOR I = 0 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
 190 LET K = I + 1
  Variable:K
  Variable:I
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 200 LET L = A/(B + (I*D))
  Variable:L
@@ -61,20 +61,20 @@
  Variable:B
  Variable:I
  Variable:D
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
- BinaryOperatorDivide:/
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 210 LET J = J + L
  Variable:J
  Variable:J
  Variable:L
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 220 IF C = 1 THEN 240
  Variable:C
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 230 GOTO 250
  LineNumber:250
 240 PRINT K,L
@@ -100,7 +100,7 @@
 300 IF X = 1 THEN 320
  Variable:X
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 310 STOP
  
 320 PRINT

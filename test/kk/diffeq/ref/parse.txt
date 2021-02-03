@@ -4,11 +4,11 @@
  VariableName:Y
  Variable:X
  Variable:X
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:Y
  Variable:Y
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
 20
 100 READ X0, X1, Y0, H
@@ -36,7 +36,7 @@
 160 FOR X = X0 TO X1-H STEP H
  control: Variable:X
  start:   ["Variable:X0"]
- end:     ["Variable:X1", "Variable:H", "BinaryOperatorMinus:-"]
+ end:     ["Variable:X1", "Variable:H", "BinaryOperatorMinus:- numeric"]
  step:    ["Variable:H"]
 170 LET D1 = FNF(X,Y)
  Variable:D1
@@ -53,18 +53,18 @@
  Variable:Y
  Variable:D1
  Variable:H
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 200 LET D2 = FNF(X+H/2,Y)
  Variable:D2
  Variable:X
  Variable:H
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:Y
  UserFunction
  AssignmentOperator:=
@@ -73,13 +73,13 @@
  Variable:Y1
  Variable:D2
  Variable:H
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 220 PRINT X+H, Y
  Variable:X
  Variable:H
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  CarriageControl:,
  Variable:Y
  CarriageControl:NL

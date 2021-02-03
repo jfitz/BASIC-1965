@@ -21,23 +21,23 @@
  Variable:G
  Variable:X2
  Variable:X
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:Y1
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:X
  Variable:X1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:Y2
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 90 LET F = G/(X2 - X1)
  Variable:F
  Variable:G
  Variable:X2
  Variable:X1
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 100 PRINT "INTERPOLATED F(X) = ";F
  TextConstant:"INTERPOLATED F(X) = "
@@ -54,7 +54,7 @@
 140 IF L = 1 THEN 160
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 150 STOP
  
 160 PRINT

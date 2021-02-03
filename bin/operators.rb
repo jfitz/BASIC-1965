@@ -14,38 +14,39 @@ class UnaryOperator < AbstractElement
     super()
     @op = text.to_s
     @content_type = :unknown
+    @precedence = 9
     @arguments = nil
     @operator = true
   end
 
-  def set_arguments(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+  def set_arguments(arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.empty?
 
-    @arguments = stack.slice(-1, 1)
-    pop_stack(stack)
+    @arguments = arg_stack.slice(-1, 1)
+    pop_stack(arg_stack)
 
     @content_type = @arguments[0].content_type if @content_type == :unknown
 
-    raise(BASICExpressionError, 'Bad expression') if
-      @content_type == :unknown
+    raise(BASICExpressionError, 'Bad expression') if @content_type == :unknown
   end
 
   def pop_stack(stack)
     stack.pop
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.empty?
 
-    type = stack.pop
+    type = type_stack.pop
 
     raise(BASICExpressionError, 'Bad expression') if type != :numeric
     
     @content_type = :numeric
+    type_stack.push(@content_type)
   end
 
   def dump
-    self.class.to_s + ':' + @op
+    self.class.to_s + ':' + @op + ' ' + @content_type.to_s
   end
 
   def unary?
@@ -95,22 +96,22 @@ class BinaryOperator < AbstractElement
     @operator = true
   end
 
-  def set_arguments(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_arguments(arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    @arguments = stack.slice(-2, 2)
-    pop_stack(stack)
+    @arguments = arg_stack.slice(-2, 2)
+    pop_stack(arg_stack)
 
-    this = @arguments[0].content_type
+    this_type = @arguments[0].content_type
 
-    raise(BASICExpressionError, 'Bad expression') if this == :unknown
+    raise(BASICExpressionError, 'Bad expression') if this_type == :unknown
 
-    other = @arguments[1].content_type
+    other_type = @arguments[1].content_type
 
-    raise(BASICExpressionError, 'Bad expression') if other == :unknown
+    raise(BASICExpressionError, 'Bad expression') if other_type == :unknown
 
     raise(BASICExpressionError, 'Type mismatch') unless
-      compatible(this, other)
+      compatible(this_type, other_type)
 
     @content_type = @arguments[0].content_type if @content_type == :unknown
   end
@@ -121,7 +122,7 @@ class BinaryOperator < AbstractElement
   end
 
   def dump
-    self.class.to_s + ':' + @op
+    self.class.to_s + ':' + @op + ' ' + @content_type.to_s
   end
 
   def unary?
@@ -598,10 +599,10 @@ class UnaryOperatorPlus < UnaryOperator
     @precedence = 6
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.empty?
 
-    x = stack.pop
+    x = arg_stack.pop
 
     if x.matrix?
       posate_matrix(x)
@@ -691,10 +692,10 @@ class UnaryOperatorMinus < UnaryOperator
     @precedence = 6
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.empty?
 
-    x = stack.pop
+    x = arg_stack.pop
 
     if x.matrix?
       negate_matrix(x)
@@ -782,6 +783,7 @@ class UnaryOperatorHash < UnaryOperator
   def initialize(text)
     super
 
+    @content_type = :filehandle
     @precedence = 4
   end
 
@@ -789,10 +791,21 @@ class UnaryOperatorHash < UnaryOperator
     true
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.empty?
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.empty?
 
-    x = stack.pop
+    type = type_stack.pop
+
+    raise(BASICExpressionError, 'Bad expression') if type != :numeric
+    
+    @content_type = :filehandle
+    type_stack.push(@content_type)
+  end
+
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.empty?
+
+    x = arg_stack.pop
 
     if x.matrix?
     elsif x.array?
@@ -829,24 +842,27 @@ class BinaryOperatorPlus < BinaryOperator
     @precedence = 3
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands +') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a + #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a + #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression + b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression + b #{b_type}") if
+      b_type != :numeric
     
     @content_type = :numeric
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -916,24 +932,27 @@ class BinaryOperatorMinus < BinaryOperator
     @precedence = 3
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands -') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a - #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a - #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression - b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression - b #{b_type}") if
+      b_type != :numeric
     
     @content_type = :numeric
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1003,24 +1022,27 @@ class BinaryOperatorMultiply < BinaryOperator
     @precedence = 4
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands *') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a * #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a * #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression * b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression * b #{b_type}") if
+      b_type != :numeric
     
     @content_type = :numeric
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1092,24 +1114,27 @@ class BinaryOperatorDivide < BinaryOperator
     @precedence = 4
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands /') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a / #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a / #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression / b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression / b #{b_type}") if
+      b_type != :numeric
    
     @content_type = :numeric
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1179,24 +1204,27 @@ class BinaryOperatorPower < BinaryOperator
     @precedence = 5
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a ^ #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a ^ #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression ^ b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression ^ b #{b_type}") if
+      b_type != :numeric
 
     @content_type = :numeric
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1266,24 +1294,27 @@ class BinaryOperatorEqual < BinaryOperator
     @precedence = 2
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a = #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a = #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression = b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression = b #{b_type}") if
+      b_type != :numeric
 
     @content_type = :boolean
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1353,24 +1384,27 @@ class BinaryOperatorNotEqual < BinaryOperator
     @precedence = 2
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a <> #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a <> #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression <> b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression <> b #{b_type}") if
+      b_type != :numeric
  
     @content_type = :boolean
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1440,24 +1474,27 @@ class BinaryOperatorLess < BinaryOperator
     @precedence = 2
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a < #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a < #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression < b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression < b #{b_type}") if
+      b_type != :numeric
 
     @content_type = :boolean
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1527,24 +1564,27 @@ class BinaryOperatorLessEqual < BinaryOperator
     @precedence = 2
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a <= #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a <= #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression <= b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression <= b #{b_type}") if
+      b_type != :numeric
  
     @content_type = :boolean
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1614,24 +1654,27 @@ class BinaryOperatorGreater < BinaryOperator
     @precedence = 2
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a > #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a > #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression > b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression > b #{b_type}") if
+      b_type != :numeric
 
     @content_type = :boolean
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 
@@ -1701,24 +1744,27 @@ class BinaryOperatorGreaterEqual < BinaryOperator
     @precedence = 2
   end
 
-  def set_content_type(stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def set_content_type(type_stack)
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = stack.pop
-    b_type = stack.pop
+    a_type = type_stack.pop
+    b_type = type_stack.pop
     
-    raise(BASICExpressionError, "Bad expression a >= #{a_type}") if a_type != :numeric
+    raise(BASICExpressionError, "Bad expression a >= #{a_type}") if
+      a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression >= b #{b_type}") if b_type != :numeric
+    raise(BASICExpressionError, "Bad expression >= b #{b_type}") if
+      b_type != :numeric
 
     @content_type = :boolean
+    type_stack.push(@content_type)
   end
 
-  def evaluate(_, stack)
-    raise(BASICExpressionError, 'Not enough operands') if stack.size < 2
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
-    y = stack.pop
-    x = stack.pop
+    y = arg_stack.pop
+    x = arg_stack.pop
 
     base = $options['base'].value
 

@@ -14,10 +14,10 @@
  NumericConstant:7
  Variable:X
  NumericConstant:7
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
 30 PRINT "NOTE NUMBER", "CHORD",
  TextConstant:"NOTE NUMBER"
  CarriageControl:,
@@ -126,11 +126,11 @@
  NumericConstant:1
  NumericConstant:0
  NumericConstant:3
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:5
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:7
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
 240 LET C2 = 1
  Variable:C2
  NumericConstant:1
@@ -140,11 +140,11 @@
  control: Variable:N
  start:   ["Variable:N9"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
 460 IF N = N9 THEN 6000
  Variable:N
  Variable:N9
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 500 REM  TEST CHORDS.
  Remark: TEST CHORDS.
 505 LET I1 = 1
@@ -186,21 +186,21 @@
  Variable:D
  Variable:C2
  NumericConstant:8
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 560 LET D(2) = C2-15
  NumericConstant:2
  Variable:D
  Variable:C2
  NumericConstant:15
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 565 LET D = S(4,N+1)
  Variable:D
  NumericConstant:4
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
  AssignmentOperator:=
 570 FOR J = 1 TO 2
@@ -211,15 +211,15 @@
  Variable:J
  Variable:D
  Variable:D
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  FunctionAbs
  NumericConstant:5
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 590 LET R = D(3-J)
  Variable:R
  NumericConstant:3
  Variable:J
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:D
  AssignmentOperator:=
 600 GOTO 660
@@ -231,9 +231,9 @@
  NumericConstant:1
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 630 LET R = D(1)
  Variable:R
  NumericConstant:1
@@ -268,30 +268,30 @@
  Variable:S
  Variable:R
  Variable:K
- BinaryOperatorPlus:+
- BinaryOperatorMinus:-
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMinus:- numeric
  UserFunction
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 730 LET B(J) = R+K
  Variable:J
  Variable:B
  Variable:R
  Variable:K
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 740 LET J = J+1
  Variable:J
  Variable:J
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 750 NEXT K
  Variable:K
 760 IF J > 3 THEN 4000
  Variable:J
  NumericConstant:3
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 770
 800 FOR L = 0 TO 6
  control: Variable:L
@@ -335,7 +335,7 @@
  Variable:B
  Variable:A
  NumericConstant:7
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 880 NEXT L
  Variable:L
@@ -361,28 +361,28 @@
  Variable:V
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  FunctionAbs
  NumericConstant:5
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 1050 IF B > 17-4*V THEN 1260
  Variable:B
  NumericConstant:17
  NumericConstant:4
  Variable:V
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
- BinaryOperatorGreater:>
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorGreater:> boolean
 1060 IF B < 5-4*V THEN 1260
  Variable:B
  NumericConstant:5
  NumericConstant:4
  Variable:V
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
- BinaryOperatorLess:<
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorLess:< boolean
 1070 LET S(V,N) = B
  Variable:V
  Variable:N
@@ -392,19 +392,19 @@
 1080 IF S(2*V-3,N) <= S(2*V-2,N) THEN 1260
  NumericConstant:2
  Variable:V
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:3
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:N
  Variable:S
  NumericConstant:2
  Variable:V
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:2
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:N
  Variable:S
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 1090 NEXT V
  Variable:V
 1095
@@ -413,39 +413,39 @@
 1102 IF C1 = C2 THEN 1200
  Variable:C1
  Variable:C2
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 1105 FOR V1 = 1 TO 4
  control: Variable:V1
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 1110 FOR V2 = V1+1 TO 4
  control: Variable:V2
- start:   ["Variable:V1", "NumericConstant:1", "BinaryOperatorPlus:+"]
+ start:   ["Variable:V1", "NumericConstant:1", "BinaryOperatorPlus:+ numeric"]
  end:     ["NumericConstant:4"]
 1115 LET D = S(V1,N+1)-S(V2,N+1)
  Variable:D
  Variable:V1
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
  Variable:V2
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 1120 IF FNC(D) = 0 THEN 1145
  Variable:D
  UserFunction
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 1130 IF FNC(D) = 4 THEN 1145
  Variable:D
  UserFunction
  NumericConstant:4
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 1140 GOTO 1160
  LineNumber:1160
 1145 LET S1 = S(V1,N)-S(V1,N+1)
@@ -456,9 +456,9 @@
  Variable:V1
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 1150 LET S2 = S(V2,N)-S(V2,N+1)
  Variable:S2
@@ -468,14 +468,14 @@
  Variable:V2
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 1155 IF S1 = S2 THEN 1260
  Variable:S1
  Variable:S2
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 1160 NEXT V2
  Variable:V2
 1165 NEXT V1
@@ -496,9 +496,9 @@
  Variable:V
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  FunctionAbs
  AssignmentOperator:=
 1230 NEXT V
@@ -511,7 +511,7 @@
  Variable:D
  NumericConstant:3
  Variable:D
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 1250 GOTO 1261
  LineNumber:1261
@@ -543,7 +543,7 @@
 1540 IF M1 > M THEN 1590
  Variable:M1
  Variable:M
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 1550 LET M = M1
  Variable:M
  Variable:M1
@@ -557,7 +557,7 @@
 1600 IF M = 999 THEN 4000
  Variable:M
  NumericConstant:999
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 1610 LET S(2,N) = W(2,L9)
  NumericConstant:2
  Variable:N
@@ -587,12 +587,12 @@
  Variable:N
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 5010 IF N <> N9 THEN 5100
  Variable:N
  Variable:N9
- BinaryOperatorNotEqual:<>
+ BinaryOperatorNotEqual:<> boolean
 5020 PRINT "STUCK"
  TextConstant:"STUCK"
  CarriageControl:NL
@@ -609,7 +609,7 @@
  NumericConstant:0
  Variable:N
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:S
  AssignmentOperator:=
 5120 FOR I = 1 TO 6
@@ -621,14 +621,14 @@
  Variable:C1
  Variable:I
  Variable:P
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 5140 NEXT I
  Variable:I
 5200 LET I1 = I+1
  Variable:I1
  Variable:I
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 5210 GOTO 510
  LineNumber:510

@@ -3,13 +3,13 @@
  VariableName:X
  Variable:X
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  NumericConstant:3
  Variable:X
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
 20 READ A, B, E
  Variable:A
  Variable:B
@@ -25,7 +25,7 @@
  Variable:H
  Variable:B
  Variable:A
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 50 LET T = (FNF(A)+FNF(B))*H
  Variable:T
@@ -33,9 +33,9 @@
  UserFunction
  Variable:B
  UserFunction
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:H
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 60 LET M = 0
  Variable:M
@@ -45,9 +45,9 @@
  Variable:T
  Variable:T
  Variable:M
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 120 LET M = 0
  Variable:M
@@ -55,7 +55,7 @@
  AssignmentOperator:=
 130 FOR X = A+H/2 TO B STEP H
  control: Variable:X
- start:   ["Variable:A", "Variable:H", "NumericConstant:2", "BinaryOperatorDivide:/", "BinaryOperatorPlus:+"]
+ start:   ["Variable:A", "Variable:H", "NumericConstant:2", "BinaryOperatorDivide:/ numeric", "BinaryOperatorPlus:+ numeric"]
  end:     ["Variable:B"]
  step:    ["Variable:H"]
 140 LET M = M + FNF(X)
@@ -63,7 +63,7 @@
  Variable:M
  Variable:X
  UserFunction
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 150 NEXT X
  Variable:X
@@ -71,17 +71,17 @@
  Variable:M
  Variable:M
  Variable:H
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 170 LET S = (T + 2*M)/3
  Variable:S
  Variable:T
  NumericConstant:2
  Variable:M
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  NumericConstant:3
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 180 PRINT T, M, S
  Variable:T
@@ -94,18 +94,18 @@
  Variable:H
  Variable:H
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 190 IF ABS(T-M)/ABS(S) > E THEN 100
  Variable:T
  Variable:M
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  FunctionAbs
  Variable:S
  FunctionAbs
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  Variable:E
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 900 DATA 1, 5
  NumericConstant:1
  NumericConstant:5

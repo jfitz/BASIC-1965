@@ -13,49 +13,49 @@
  Variable:D
  Variable:B
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  NumericConstant:4
  Variable:A
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:C
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  NumericConstant:4
  Variable:A
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 60 IF D > = 0 THEN 130
  Variable:D
  NumericConstant:0
- BinaryOperatorGreaterEqual:>=
+ BinaryOperatorGreaterEqual:>= boolean
 70 LET X = -B/(2*A)
  Variable:X
  Variable:B
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:2
  Variable:A
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
  Variable:Y
  NumericConstant:4
  Variable:A
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:C
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:B
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorMinus:-
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMinus:- numeric
  FunctionSqr
  NumericConstant:2
  Variable:A
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 90 PRINT "ROOTS ARE COMPLEX"
  TextConstant:"ROOTS ARE COMPLEX"
@@ -75,22 +75,22 @@
 130 LET E = - B/(2*A)
  Variable:E
  Variable:B
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:2
  Variable:A
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 140 IF E > = 0 THEN 170
  Variable:E
  NumericConstant:0
- BinaryOperatorGreaterEqual:>=
+ BinaryOperatorGreaterEqual:>= boolean
 150 LET Z = E - SQR(D)
  Variable:Z
  Variable:E
  Variable:D
  FunctionSqr
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 160 GOTO 180
  LineNumber:180
@@ -99,15 +99,15 @@
  Variable:E
  Variable:D
  FunctionSqr
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 180 LET W = C/(Z*A)
  Variable:W
  Variable:C
  Variable:Z
  Variable:A
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 190 PRINT "ROOTS ARE REAL"
  TextConstant:"ROOTS ARE REAL"
@@ -133,7 +133,7 @@
 250 IF L = 1 THEN 270
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 260 STOP
  
 270 PRINT

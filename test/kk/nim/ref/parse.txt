@@ -15,10 +15,10 @@
  NumericConstant:10
  NumericConstant:0
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  FunctionInt
  NumericConstant:6
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 160 NEXT P
  Variable:P
@@ -44,13 +44,13 @@
  Variable:P
  Variable:N
  Variable:N
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 250 IF N(P) >= 0 THEN 300
  Variable:P
  Variable:N
  NumericConstant:0
- BinaryOperatorGreaterEqual:>=
+ BinaryOperatorGreaterEqual:>= boolean
 260 PRINT "ILLEGAL MOVE"
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
@@ -60,7 +60,7 @@
  Variable:P
  Variable:N
  Variable:N
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 280 PRINT
  CarriageControl:NL
@@ -71,12 +71,12 @@
  Variable:N
  NumericConstant:2
  Variable:N
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:3
  Variable:N
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 310 PRINT
  CarriageControl:NL
 320 PRINT "YOU WIN *****"
@@ -104,12 +104,12 @@
  control: Variable:J
  start:   ["NumericConstant:4"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
 410       LET Y = INT(X/2)
  Variable:Y
  Variable:X
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
  AssignmentOperator:=
 420       LET B(P,J) = X - 2*Y
@@ -119,8 +119,8 @@
  Variable:X
  NumericConstant:2
  Variable:Y
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 430       LET X = Y
  Variable:X
@@ -146,11 +146,11 @@
  NumericConstant:2
  Variable:J
  Variable:B
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:3
  Variable:J
  Variable:B
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 500    LET S(J) = S(J) - 2*INT(S(J)/2)
  Variable:J
@@ -161,10 +161,10 @@
  Variable:J
  Variable:S
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 510 NEXT J
  Variable:J
@@ -176,15 +176,15 @@
  Variable:S
  NumericConstant:2
  Variable:S
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:3
  Variable:S
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:4
  Variable:S
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 550 FOR P = 1 TO 3
  control: Variable:P
  start:   ["NumericConstant:1"]
@@ -193,17 +193,17 @@
  Variable:P
  Variable:N
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 570    LET N = INT(N(P)*RND(0)) + 1
  Variable:N
  Variable:P
  Variable:N
  NumericConstant:0
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  FunctionInt
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 580    GOTO 770
  LineNumber:770
@@ -220,7 +220,7 @@
  Variable:J
  Variable:S
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 640 NEXT J
  Variable:J
 650 FOR P = 1 TO 3
@@ -232,7 +232,7 @@
  Variable:J
  Variable:B
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 670 NEXT P
  Variable:P
 680 LET N = 0
@@ -247,22 +247,22 @@
  Variable:J
  Variable:S
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 710    IF B(P,J) = 0 THEN 740
  Variable:P
  Variable:J
  Variable:B
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 720    LET N = N + 2^(4-J)
  Variable:N
  Variable:N
  NumericConstant:2
  NumericConstant:4
  Variable:J
- BinaryOperatorMinus:-
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 730    GOTO 750
  LineNumber:750
@@ -272,9 +272,9 @@
  NumericConstant:2
  NumericConstant:4
  Variable:J
- BinaryOperatorMinus:-
- BinaryOperatorPower:^
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 750 NEXT J
  Variable:J
@@ -300,19 +300,19 @@
  Variable:P
  Variable:N
  Variable:N
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 820 IF N(1)+N(2)+N(3) > 0 THEN 850
  NumericConstant:1
  Variable:N
  NumericConstant:2
  Variable:N
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:3
  Variable:N
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 830 PRINT "I WIN *****"
  TextConstant:"I WIN *****"
  CarriageControl:NL

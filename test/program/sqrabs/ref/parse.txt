@@ -1,6 +1,6 @@
 10 FOR I=-5 TO 10
  control: Variable:I
- start:   ["NumericConstant:5", "UnaryOperatorMinus:-"]
+ start:   ["NumericConstant:5", "UnaryOperatorMinus:- numeric"]
  end:     ["NumericConstant:10"]
 20 LET A=ABS(I)
  Variable:A
@@ -18,14 +18,14 @@
  Variable:I
  FunctionAbs
  NumericConstant:3
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 32 LET S1=SQR(ABS(I)+3)
  Variable:S1
  Variable:I
  FunctionAbs
  NumericConstant:3
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
  AssignmentOperator:=
 34 LET S2=SQR(ABS(I)+3)*2
@@ -33,10 +33,10 @@
  Variable:I
  FunctionAbs
  NumericConstant:3
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
  NumericConstant:2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 40 PRINT I, A, S, A1, S1, S2
  Variable:I

@@ -32,37 +32,37 @@
  Variable:X1
  Variable:X1
  Variable:X
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 200    LET Y1 = Y1 + Y
  Variable:Y1
  Variable:Y1
  Variable:Y
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 210    LET X2 = X2 + X*X
  Variable:X2
  Variable:X2
  Variable:X
  Variable:X
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 220    LET Y2 = Y2 + Y*Y
  Variable:Y2
  Variable:Y2
  Variable:Y
  Variable:Y
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 230    LET Z = Z + X*Y
  Variable:Z
  Variable:Z
  Variable:X
  Variable:Y
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 240 NEXT I
  Variable:I
@@ -71,67 +71,67 @@
  Variable:X3
  Variable:X1
  Variable:N
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 265 LET Y3 = Y1/N
  Variable:Y3
  Variable:Y1
  Variable:N
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 270 LET S1 = X2 - X1*X3
  Variable:S1
  Variable:X2
  Variable:X1
  Variable:X3
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 280 LET S2 = Y2 - Y1*Y3
  Variable:S2
  Variable:Y2
  Variable:Y1
  Variable:Y3
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 290 LET S = Z - X1*Y3
  Variable:S
  Variable:Z
  Variable:X1
  Variable:Y3
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 300 LET B = S/S1
  Variable:B
  Variable:S
  Variable:S1
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 310 LET B1 = Y3 - B*X3
  Variable:B1
  Variable:Y3
  Variable:B
  Variable:X3
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 320 LET S3 = S2 - B*S
  Variable:S3
  Variable:S2
  Variable:B
  Variable:S
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 330 LET S4 = S3/(N-2)
  Variable:S4
  Variable:S3
  Variable:N
  NumericConstant:2
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 340
 350 PRINT "NUMBER = "N
@@ -173,7 +173,7 @@
  CarriageControl:,
  Variable:Y3
  Variable:Y1
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  CarriageControl:NL
 400 PRINT "    ", "SLOPE", B*S
  TextConstant:"    "
@@ -182,7 +182,7 @@
  CarriageControl:,
  Variable:B
  Variable:S
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  CarriageControl:NL
 410 PRINT "    ", "RESIDUAL", S3
  TextConstant:"    "
@@ -204,8 +204,8 @@
  Variable:S1
  Variable:N
  NumericConstant:1
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  FunctionSqr
  CarriageControl:NL
 440 PRINT "    ", "Y  ", SQR(S2/(N-1))
@@ -216,8 +216,8 @@
  Variable:S2
  Variable:N
  NumericConstant:1
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  FunctionSqr
  CarriageControl:NL
 450 PRINT "    ", "ERROR", SQR(S4)
@@ -235,7 +235,7 @@
  CarriageControl:,
  Variable:S4
  Variable:N
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionSqr
  CarriageControl:NL
 470 PRINT "    ", "SLOPE", SQR(S4/S1)
@@ -245,7 +245,7 @@
  CarriageControl:,
  Variable:S4
  Variable:S1
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionSqr
  CarriageControl:NL
 480 PRINT "    ", "Y-INTER.", SQR(S4*(1/N + X3*X3/S1))
@@ -256,14 +256,14 @@
  Variable:S4
  NumericConstant:1
  Variable:N
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  Variable:X3
  Variable:X3
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:S1
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
  FunctionSqr
  CarriageControl:NL
 485 PRINT
@@ -273,9 +273,9 @@
  CarriageControl:
  Variable:B
  Variable:S
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:S4
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  CarriageControl:NL
 500 PRINT "CORRELATION COEFFICIENT = " S/SQR(S1*S2)
  TextConstant:"CORRELATION COEFFICIENT = "
@@ -283,9 +283,9 @@
  Variable:S
  Variable:S1
  Variable:S2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  FunctionSqr
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  CarriageControl:NL
 510
 900 DATA 5

@@ -12,26 +12,26 @@
 40       FOR K = 0 TO M-1
  control: Variable:K
  start:   ["NumericConstant:0"]
- end:     ["Variable:M", "NumericConstant:1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:M", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
 50       LET X = B + K*P
  Variable:X
  Variable:B
  Variable:K
  Variable:P
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 60       IF X - M*INT(X/M) = A THEN 100
  Variable:X
  Variable:M
  Variable:X
  Variable:M
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  Variable:A
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 70    NEXT K
  Variable:K
 80    PRINT "ERROR"
@@ -43,7 +43,7 @@
  Variable:P
  Variable:P
  Variable:M
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 110 LET B = X
  Variable:B

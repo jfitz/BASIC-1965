@@ -22,20 +22,20 @@
 80 FOR I = 1 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
 90 LET K = 1 - (I/M)
  Variable:K
  NumericConstant:1
  Variable:I
  Variable:M
- BinaryOperatorDivide:/
- BinaryOperatorMinus:-
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 100 LET J = J*K
  Variable:J
  Variable:J
  Variable:K
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 110 NEXT I
  Variable:I
@@ -54,7 +54,7 @@
 160 IF L = 1 THEN 30
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 170 STOP
  
 180 END

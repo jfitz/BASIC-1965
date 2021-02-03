@@ -12,15 +12,15 @@
  VariableName:Y2
  Variable:X1
  Variable:Y1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:X2
  Variable:Y2
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
@@ -29,9 +29,9 @@
  VariableName:D
  Variable:D
  NumericConstant:180
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  NumericConstant:3.14159
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
 100 REM POINT A
  Remark:POINT A
 101 READ A1,A2
@@ -49,7 +49,7 @@
  Variable:D5
  Variable:D1
  Variable:C1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 121 READ Z9,Z8
  Variable:Z9
@@ -62,9 +62,9 @@
  Variable:B1
  Variable:A1
  Variable:D1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 202 LET B2=0
  Variable:B2
@@ -74,7 +74,7 @@
  Variable:I1
  Variable:D1
  Variable:D5
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 204 LET I2=0
  Variable:I2
@@ -118,7 +118,7 @@
  Variable:R0
  Variable:F1
  Variable:F2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
@@ -142,7 +142,7 @@
  Variable:R1
  Variable:G1
  Variable:G2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 239 PRINT B1,R0,R1,Z
  Variable:B1
@@ -156,19 +156,19 @@
 240 IF ABS(R0-R1)<R9 THEN 300
  Variable:R0
  Variable:R1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  FunctionAbs
  Variable:R9
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 241 IF R0<R1 THEN 245
  Variable:R0
  Variable:R1
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 242 LET B1=B1+Z
  Variable:B1
  Variable:B1
  Variable:Z
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 243 GOTO 246
  LineNumber:246
@@ -176,18 +176,18 @@
  Variable:B1
  Variable:B1
  Variable:Z
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 246 LET Z=Z*Z8
  Variable:Z
  Variable:Z
  Variable:Z8
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 247 IF Z>Z9 THEN 220
  Variable:Z
  Variable:Z9
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 248 PRINT "CANNOT RESOLVE POINT B"
  TextConstant:"CANNOT RESOLVE POINT B"
  CarriageControl:NL
@@ -266,8 +266,8 @@
  Variable:T
  FunctionCos
  Variable:D5
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 423 LET I2 = D2 + SIN(T)*D5
  Variable:I2
@@ -275,8 +275,8 @@
  Variable:T
  FunctionSin
  Variable:D5
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 424 LET G1 = FNL(A1,A2,I1,I2)
  Variable:G1
@@ -298,7 +298,7 @@
  Variable:R1
  Variable:G1
  Variable:G2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
@@ -317,7 +317,7 @@
  CarriageControl:,
  Variable:R1
  Variable:R0
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  CarriageControl:NL
 441 NEXT I
  Variable:I

@@ -26,22 +26,22 @@
 110    FOR I = 1 TO Y1-1
  control: Variable:I
  start:   ["NumericConstant:1"]
- end:     ["Variable:Y1", "NumericConstant:1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:Y1", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
 120       LET D(I) = A1*2/Y
  Variable:I
  Variable:D
  Variable:A1
  NumericConstant:2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:Y
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 130       LET A1 = A1 - D(I)
  Variable:A1
  Variable:A1
  Variable:I
  Variable:D
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 150    NEXT I
  Variable:I
@@ -50,10 +50,10 @@
  Variable:A1
  Variable:Y
  Variable:Y1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  NumericConstant:1
- BinaryOperatorPlus:+
- BinaryOperatorDivide:/
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 170    FOR I = Y1 TO Y
  control: Variable:I
@@ -81,19 +81,19 @@
  Variable:D
  Variable:T
  NumericConstant:100
- BinaryOperatorDivide:/
- BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:1
  Variable:R
  NumericConstant:100
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:Y
  Variable:I
- BinaryOperatorMinus:-
- BinaryOperatorPower:^
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 230    NEXT I
  Variable:I

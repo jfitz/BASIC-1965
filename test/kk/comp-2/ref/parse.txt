@@ -13,47 +13,47 @@
 21 IF A < 0 THEN 800
  Variable:A
  NumericConstant:0
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 22 IF B < 0 THEN 800
  Variable:B
  NumericConstant:0
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 23 IF R <= 0 THEN 800
  Variable:R
  NumericConstant:0
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 24 IF Y <= 0 THEN 800
  Variable:Y
  NumericConstant:0
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 25 IF T <= 0 THEN 800
  Variable:T
  NumericConstant:0
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 26 IF T = 999 THEN 9999
  Variable:T
  NumericConstant:999
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 30 IF A = 999 THEN 100
  Variable:A
  NumericConstant:999
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 40 IF B = 999 THEN 200
  Variable:B
  NumericConstant:999
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 50 IF P = 999 THEN 300
  Variable:P
  NumericConstant:999
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 60 IF Y = 999 THEN 400
  Variable:Y
  NumericConstant:999
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 70 IF R = 999 THEN 500
  Variable:R
  NumericConstant:999
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 80
 100 REM FIND ORIGINAL AMOUNT
  Remark:FIND ORIGINAL AMOUNT
@@ -63,16 +63,16 @@
  Variable:A
  Variable:B
  Variable:P1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:R2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  Variable:P1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 125 IF A < 0 THEN 850
  Variable:A
  NumericConstant:0
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 130 PRINT "ORIGINAL AMOUNT = $" A
  TextConstant:"ORIGINAL AMOUNT = $"
  CarriageControl:
@@ -89,16 +89,16 @@
  Variable:B
  Variable:A
  Variable:P1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:R2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:P1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 225 IF B < 0 THEN 850
  Variable:B
  NumericConstant:0
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 230 PRINT "FINAL AMOUNT = $" B
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
@@ -117,13 +117,13 @@
  Variable:B
  Variable:A
  Variable:R2
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
  Variable:R2
  NumericConstant:1
- BinaryOperatorMinus:-
- BinaryOperatorDivide:/
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 330 PRINT "PAYMENT = $" P
  TextConstant:"PAYMENT = $"
@@ -141,27 +141,27 @@
  Variable:Q
  Variable:B
  Variable:P1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:A
  Variable:P1
- BinaryOperatorPlus:+
- BinaryOperatorDivide:/
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 416 IF Q <= 1 THEN 850
  Variable:Q
  NumericConstant:1
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 420 LET Y = LOG(Q)/LOG(1+R1)/T
  Variable:Y
  Variable:Q
  FunctionLog
  NumericConstant:1
  Variable:R1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionLog
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  Variable:T
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 430 PRINT "NUMBER OF YEARS = " Y
  TextConstant:"NUMBER OF YEARS = "
@@ -179,11 +179,11 @@
  Variable:A
  Variable:Y
  Variable:T
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:P
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 510 FOR R = 0.1 TO 100 STEP 0.1
  control: Variable:R
@@ -197,19 +197,19 @@
  Variable:B
  Variable:A
  Variable:P1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:R2
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:P1
- BinaryOperatorMinus:-
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 535    IF S*S1 <= 0 THEN 550
  Variable:S
  Variable:S1
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:0
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 536    LET S = S1
  Variable:S
  Variable:S1
@@ -226,7 +226,7 @@
  CarriageControl:
  Variable:R
  NumericConstant:0.1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  CarriageControl:;
  TextConstant:"AND "
  CarriageControl:
@@ -256,29 +256,29 @@
  Variable:N
  Variable:Y
  Variable:T
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 1020 LET R1 = R/100/T
  Variable:R1
  Variable:R
  NumericConstant:100
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  Variable:T
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 1030 LET P1 = P/R1
  Variable:P1
  Variable:P
  Variable:R1
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 1040 LET R2 = (1+R1)^N
  Variable:R2
  NumericConstant:1
  Variable:R1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:N
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  AssignmentOperator:=
 1099 RETURN
  

@@ -3,12 +3,12 @@
  VariableName:X
  Variable:X
  NumericConstant:1000
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:0.5
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionInt
  NumericConstant:1000
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
 110 DIM C(20,20), U(20,20), B(20), P(20)
  NumericConstant:20
  NumericConstant:20
@@ -59,15 +59,15 @@
 220 IF I = -1 THEN 270
  Variable:I
  NumericConstant:1
- UnaryOperatorMinus:-
- BinaryOperatorEqual:=
+ UnaryOperatorMinus:- numeric
+ BinaryOperatorEqual:= boolean
 230 LET C(I,J) = 1/R
  Variable:I
  Variable:J
  Variable:C
  NumericConstant:1
  Variable:R
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 240 LET C(J,I) = 1/R
  Variable:J
@@ -75,7 +75,7 @@
  Variable:C
  NumericConstant:1
  Variable:R
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 250 GOTO 210
  LineNumber:210
@@ -83,7 +83,7 @@
 270 FOR I = 2 TO N-1
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
 280    LET S = 0
  Variable:S
  NumericConstant:0
@@ -98,7 +98,7 @@
  Variable:I
  Variable:J
  Variable:C
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 310    NEXT J
  Variable:J
@@ -107,7 +107,7 @@
  Variable:I
  Variable:C
  Variable:S
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  AssignmentOperator:=
 330    LET C(1,I) = 0
  NumericConstant:1
@@ -133,7 +133,7 @@
  Variable:P
  Variable:U
  Variable:B
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 390
 400 PRINT "NODE", "VOLTAGE"
@@ -173,7 +173,7 @@
 510 FOR I = 2 TO N-1
  control: Variable:I
  start:   ["NumericConstant:2"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
 520    PRINT "NODE" I
  TextConstant:"NODE"
  CarriageControl:
@@ -191,8 +191,8 @@
  Variable:P
  Variable:J
  Variable:P
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
  UserFunction
  CarriageControl:,
 550    NEXT J
@@ -207,9 +207,9 @@
  Variable:P
  Variable:N
  Variable:P
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 570    PRINT
  CarriageControl:NL
@@ -231,7 +231,7 @@
  CarriageControl:
  Variable:V
  Variable:S1
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  UserFunction
  CarriageControl:NL
 640
@@ -269,7 +269,7 @@
  NumericConstant:40
 680 DATA -1,0,0
  NumericConstant:1
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:0
  NumericConstant:0
 690 END

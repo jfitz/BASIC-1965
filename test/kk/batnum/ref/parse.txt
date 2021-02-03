@@ -7,9 +7,9 @@
  NumericConstant:80
  Variable:X
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  FunctionInt
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 130 LET K = 5 + INT(10*RND(X))
  Variable:K
@@ -17,9 +17,9 @@
  NumericConstant:10
  Variable:X
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  FunctionInt
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 140 PRINT "LEGAL MOVES ARE:"
  TextConstant:"LEGAL MOVES ARE:"
@@ -52,15 +52,15 @@
 240 IF X > K THEN 270
  Variable:X
  Variable:K
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 250 IF X < 1 THEN 270
  Variable:X
  NumericConstant:1
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 260 IF X <= N THEN 310
  Variable:X
  Variable:N
- BinaryOperatorLessEqual:<=
+ BinaryOperatorLessEqual:<= boolean
 270 PRINT "ILLEGAL MOVE"
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
@@ -75,12 +75,12 @@
  Variable:N
  Variable:N
  Variable:X
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 330 IF N > 0 THEN 410
  Variable:N
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 340 PRINT "I WIN ***"
  TextConstant:"I WIN ***"
  CarriageControl:NL
@@ -102,34 +102,34 @@
  Variable:Q
  Variable:N
  NumericConstant:1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:K
  NumericConstant:1
- BinaryOperatorPlus:+
- BinaryOperatorDivide:/
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorDivide:/ numeric
  FunctionInt
  AssignmentOperator:=
 430 LET Y = N-1 - Q*(K+1)
  Variable:Y
  Variable:N
  NumericConstant:1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:Q
  Variable:K
  NumericConstant:1
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 440 IF Y = 0 THEN 530
  Variable:Y
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 450 LET N = N - Y
  Variable:N
  Variable:N
  Variable:Y
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 460 PRINT "MY MOVE:" Y
  TextConstant:"MY MOVE:"
@@ -141,7 +141,7 @@
 480 IF N = 0 THEN 600
  Variable:N
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 490 PRINT "NEW TOTAL IS" N
  TextConstant:"NEW TOTAL IS"
  CarriageControl:
@@ -157,7 +157,7 @@
 540 IF N > 1 THEN 570
  Variable:N
  NumericConstant:1
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 550 LET Y = 1
  Variable:Y
  NumericConstant:1
@@ -170,9 +170,9 @@
  Variable:K
  NumericConstant:0
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  FunctionInt
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 580 GOTO 450
  LineNumber:450

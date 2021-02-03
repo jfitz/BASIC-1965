@@ -15,21 +15,21 @@
  Variable:Z
  Variable:X
  NumericConstant:0.0001
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 70 LET W = X + Z
  Variable:W
  Variable:X
  Variable:Z
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 80 LET V = X - Z
  Variable:V
  Variable:X
  Variable:Z
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 90 LET X = W
  Variable:X
@@ -65,11 +65,11 @@
  Variable:F
  Variable:A
  Variable:B
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  NumericConstant:2
  Variable:Z
- BinaryOperatorMultiply:*
- BinaryOperatorDivide:/
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 190 PRINT "IF X = ";Y,"THEN F(X) = ";C
  TextConstant:"IF X = "
@@ -95,7 +95,7 @@
 240 IF L = 1 THEN 260
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 250 STOP
  
 260 PRINT
@@ -106,7 +106,7 @@
  Variable:P
  Variable:X
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  AssignmentOperator:=
 290 RETURN
  

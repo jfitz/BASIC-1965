@@ -136,7 +136,7 @@
 400 IF L = 1 THEN 420
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 410 STOP
  
 420 PRINT
@@ -155,11 +155,11 @@
  Variable:X
  Variable:X
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionLog
  AssignmentOperator:=
 480 RETURN
@@ -169,17 +169,28 @@
  Variable:X
  Variable:X
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  NumericConstant:1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  FunctionSqr
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionLog
  AssignmentOperator:=
 500 RETURN
  
-510 LET Z = (LOG((1 + X/(1 - X)))/2
- Too many operators
+510 LET Z = (LOG((1 + X)/(1 - X)))/2
+ Variable:Z
+ NumericConstant:1
+ Variable:X
+ BinaryOperatorPlus:+ numeric
+ NumericConstant:1
+ Variable:X
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric
+ FunctionLog
+ NumericConstant:2
+ BinaryOperatorDivide:/ numeric
+ AssignmentOperator:=
 520 RETURN
  
 530 PRINT "X = ";
@@ -195,7 +206,7 @@
  Variable:X
  NumericConstant:1
  Variable:X
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 570 RETURN
  

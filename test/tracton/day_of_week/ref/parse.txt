@@ -26,7 +26,7 @@
 120 IF Y > 1752 THEN 150
  Variable:Y
  NumericConstant:1752
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
  TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
  CarriageControl:NL
@@ -37,35 +37,35 @@
  NumericConstant:0.6
  NumericConstant:1
  Variable:M
- BinaryOperatorDivide:/
- BinaryOperatorPlus:+
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric
  FunctionInt
  AssignmentOperator:=
 160 LET L = Y - K
  Variable:L
  Variable:Y
  Variable:K
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 170 LET O = M + 12*K
  Variable:O
  Variable:M
  NumericConstant:12
  Variable:K
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 180 LET P = L/100
  Variable:P
  Variable:L
  NumericConstant:100
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 190 LET Z1 = INT(P/4)
  Variable:Z1
  Variable:P
  NumericConstant:4
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
  AssignmentOperator:=
 200 LET Z2 = INT(P)
@@ -77,9 +77,9 @@
  Variable:Z3
  NumericConstant:5
  Variable:L
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:4
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
  AssignmentOperator:=
 220 LET Z4 = INT (13*(O + 1)/5)
@@ -87,25 +87,25 @@
  NumericConstant:13
  Variable:O
  NumericConstant:1
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:5
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
  AssignmentOperator:=
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
  Variable:Z
  Variable:Z4
  Variable:Z3
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:Z2
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:Z1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:D
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 240 LET Z=Z - (7*INT(Z/7)) + 1
  Variable:Z
@@ -113,12 +113,12 @@
  NumericConstant:7
  Variable:Z
  NumericConstant:7
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
- BinaryOperatorMultiply:*
- BinaryOperatorMinus:-
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorMinus:- numeric
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
  Syntax error: "J$(Z)" is not a value or operator

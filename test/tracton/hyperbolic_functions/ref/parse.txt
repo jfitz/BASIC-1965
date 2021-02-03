@@ -34,7 +34,7 @@
  Variable:Z
  Variable:Y
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 140 PRINT "SINH";X;" =";Z
  TextConstant:"SINH"
@@ -55,7 +55,7 @@
  Variable:Z
  Variable:B
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 190 PRINT "COSH";X;" =";Z
  TextConstant:"COSH"
@@ -78,7 +78,7 @@
  Variable:Z
  Variable:Y
  Variable:B
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 250 PRINT "TANH";X;" =";Z
  TextConstant:"TANH"
@@ -100,8 +100,8 @@
  NumericConstant:1
  Variable:Y
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 300 PRINT "CSCH";X;" =";Z
  TextConstant:"CSCH"
@@ -123,8 +123,8 @@
  NumericConstant:1
  Variable:B
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 350 PRINT "SECH";X;" =";Z
  TextConstant:"SECH"
@@ -148,8 +148,8 @@
  NumericConstant:1
  Variable:Y
  Variable:B
- BinaryOperatorDivide:/
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 410 PRINT "COTH";X;" =";Z
  TextConstant:"COTH"
@@ -170,7 +170,7 @@
 450 IF L = 1 THEN 470
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 460 STOP
  
 470 PRINT
@@ -189,9 +189,9 @@
  Variable:X
  FunctionExp
  Variable:X
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  FunctionExp
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 530 RETURN
  
@@ -200,9 +200,9 @@
  Variable:X
  FunctionExp
  Variable:X
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  FunctionExp
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 550 RETURN
  

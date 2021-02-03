@@ -22,15 +22,15 @@
  Variable:X
  Variable:A1
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:A2
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:A3
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
  AssignmentOperator:=
 90 REM CALCULATE THE NORM OF B VECTOR
@@ -39,15 +39,15 @@
  Variable:Y
  Variable:B1
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:B2
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  Variable:B3
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
  AssignmentOperator:=
 110 REM CALCULATE DOT PRODUCT
@@ -56,15 +56,15 @@
  Variable:Z
  Variable:A1
  Variable:B1
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:A2
  Variable:B2
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  Variable:A3
  Variable:B3
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 130 PRINT "DOT PRODUCT = ";Z
  TextConstant:"DOT PRODUCT = "
@@ -92,7 +92,7 @@
 190 IF L = 1 THEN 210
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 200 STOP
  
 210 PRINT

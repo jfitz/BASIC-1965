@@ -7,19 +7,19 @@
 30    IF D < 4 THEN 300
  Variable:D
  NumericConstant:4
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 40    IF D = 12 THEN 300
  Variable:D
  NumericConstant:12
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 50    IF D = 7 THEN 400
  Variable:D
  NumericConstant:7
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 60    IF D = 11 THEN 400
  Variable:D
  NumericConstant:11
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 70    LET D9 = D
  Variable:D9
  Variable:D
@@ -29,11 +29,11 @@
 110   IF D = D9 THEN 200
  Variable:D
  Variable:D9
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 120   IF D = 7 THEN 250
  Variable:D
  NumericConstant:7
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 130   GOTO 100
  LineNumber:100
 200   PRINT "YOU WIN -- BY MAKING YOUR POINT"
@@ -66,9 +66,9 @@
  NumericConstant:6
  NumericConstant:1
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionInt
  AssignmentOperator:=
 520 LET D2 = INT(6*RND(1)+1)
@@ -76,9 +76,9 @@
  NumericConstant:6
  NumericConstant:1
  FunctionRnd
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionInt
  AssignmentOperator:=
 525 PRINT "YOUR ROLL IS "; D1;D2
@@ -92,7 +92,7 @@
  Variable:D
  Variable:D1
  Variable:D2
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 540 RETURN
  

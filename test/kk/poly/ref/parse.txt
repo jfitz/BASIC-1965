@@ -130,10 +130,10 @@
  Variable:Y
  Variable:Y
  Variable:X
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:I
  Variable:A
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 1040 NEXT I
  Variable:I
@@ -153,8 +153,8 @@
  Variable:A
  Variable:N
  Variable:I
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 2030 NEXT I
  Variable:I
@@ -162,7 +162,7 @@
  Variable:N
  Variable:N
  NumericConstant:1
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 2050 RETURN
  
@@ -171,14 +171,14 @@
  NumericConstant:2
  NumericConstant:2
  NumericConstant:3
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:1
 9100 DATA 8, -3, -1, 0, 0.5, 0.75, 1, 2.5, 5
  NumericConstant:8
  NumericConstant:3
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:1
- UnaryOperatorMinus:-
+ UnaryOperatorMinus:- numeric
  NumericConstant:0
  NumericConstant:0.5
  NumericConstant:0.75

@@ -17,32 +17,32 @@
  Variable:B
  Variable:H
  NumericConstant:3
- BinaryOperatorPower:^
- BinaryOperatorMultiply:*
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:12
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 80 LET J = (B*H*(B^2 + H^2))/12
  Variable:J
  Variable:B
  Variable:H
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:B
  NumericConstant:2
- BinaryOperatorPower:^
+ BinaryOperatorPower:^ numeric
  Variable:H
  NumericConstant:2
- BinaryOperatorPower:^
- BinaryOperatorPlus:+
- BinaryOperatorMultiply:*
+ BinaryOperatorPower:^ numeric
+ BinaryOperatorPlus:+ numeric
+ BinaryOperatorMultiply:* numeric
  NumericConstant:12
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 90 LET A = B*H
  Variable:A
  Variable:B
  Variable:H
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 100 PRINT "MOMENT OF INERTIA = ";I
  TextConstant:"MOMENT OF INERTIA = "
@@ -69,7 +69,7 @@
 160 IF L = 1 THEN 180
  Variable:L
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 170 STOP
  
 180 PRINT

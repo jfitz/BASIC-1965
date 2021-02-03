@@ -7,7 +7,7 @@
  Variable:B
  Variable:A
  Variable:A0
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
@@ -44,20 +44,20 @@
 420 IF N0 = 1 THEN 490
  Variable:N0
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 430 IF MOD(N0,2) = 0 THEN 460
  Variable:N0
  NumericConstant:2
  FunctionMod
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 440 LET N0 = 3*N0 + 1
  Variable:N0
  NumericConstant:3
  Variable:N0
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 450 GOTO 470
  LineNumber:470
@@ -65,7 +65,7 @@
  Variable:N0
  Variable:N0
  NumericConstant:2
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 470 PRINT N0;
  Variable:N0

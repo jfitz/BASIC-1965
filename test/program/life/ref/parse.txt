@@ -50,7 +50,7 @@
 360 IF A <> 1 THEN 999
  Variable:A
  NumericConstant:1
- BinaryOperatorNotEqual:<>
+ BinaryOperatorNotEqual:<> boolean
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
@@ -79,35 +79,35 @@
  AssignmentOperator:=
 450 FOR I0=-1 TO 1
  control: Variable:I0
- start:   ["NumericConstant:1", "UnaryOperatorMinus:-"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
  end:     ["NumericConstant:1"]
 460 FOR J0=-1 TO 1
  control: Variable:J0
- start:   ["NumericConstant:1", "UnaryOperatorMinus:-"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
  Variable:I0
  FunctionAbs
  Variable:J0
  FunctionAbs
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 480 IF B(I+I0,J+J0) = 0 THEN 500
  Variable:I
  Variable:I0
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:J
  Variable:J0
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  Variable:B
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 490 LET C = C + 1
  Variable:C
  Variable:C
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 500 NEXT J0
  Variable:J0
@@ -144,19 +144,19 @@
  Variable:J
  Variable:N
  NumericConstant:2
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 640 IF N(I,J)=2 THEN 720
  Variable:I
  Variable:J
  Variable:N
  NumericConstant:2
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 650 IF N(I,J)=3 THEN 690
  Variable:I
  Variable:J
  Variable:N
  NumericConstant:3
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 660 REM * CELL DIES
  Remark:* CELL DIES
 670 LET B(I,J)=0

@@ -23,20 +23,20 @@
  Variable:Y
  NumericConstant:3
  Variable:X
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 510 LET Z = 1.2*EXP(Y)
  Variable:Z
  NumericConstant:1.2
  Variable:Y
  FunctionExp
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 520 LET Y = SQR(Z+2)
  Variable:Y
  Variable:Z
  NumericConstant:2
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  FunctionSqr
  AssignmentOperator:=
 530 PRINT X;Y

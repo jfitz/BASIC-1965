@@ -57,35 +57,35 @@
 230 IF J = K THEN 470
  Variable:J
  Variable:K
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 240 LET J = J + 1
  Variable:J
  Variable:J
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 250 LET B = A*X*Y
  Variable:B
  Variable:A
  Variable:X
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:Y
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 260 LET C = ((Y - B)*H) + Y
  Variable:C
  Variable:Y
  Variable:B
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:H
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:Y
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 270 IF C < 0 THEN 390
  Variable:C
  NumericConstant:0
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 280 LET Y = C
  Variable:Y
  Variable:C
@@ -94,18 +94,18 @@
  Variable:D
  Variable:X
  Variable:Z
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:B
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  Variable:H
- BinaryOperatorMultiply:*
+ BinaryOperatorMultiply:* numeric
  Variable:X
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 300 IF D < 0 THEN 410
  Variable:D
  NumericConstant:0
- BinaryOperatorLess:<
+ BinaryOperatorLess:< boolean
 310 LET X = D
  Variable:X
  Variable:D
@@ -128,13 +128,13 @@
 350 IF M = 0 THEN 370
  Variable:M
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 360 GOTO 230
  LineNumber:230
 370 IF N = 0 THEN 430
  Variable:N
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 380 GOTO 230
  LineNumber:230
 390 LET Y = 0
@@ -174,7 +174,7 @@
 510 IF W = 1 THEN 530
  Variable:W
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 520 GOTO 560
  LineNumber:560
 530 PRINT "MAXIMUM GENERATIONS = ";
@@ -194,7 +194,7 @@
 590 IF W = 1 THEN 610
  Variable:W
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 600 STOP
  
 610 PRINT

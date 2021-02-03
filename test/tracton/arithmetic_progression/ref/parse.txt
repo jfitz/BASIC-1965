@@ -23,7 +23,7 @@
 100 IF C = 1 THEN 120
  Variable:C
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 110 GOTO 140
  LineNumber:140
 120 PRINT "ARITHMETIC PROGRESSION"
@@ -41,31 +41,31 @@
 150 FOR I = 0 TO N - 1
  control: Variable:I
  start:   ["NumericConstant:0"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:-"]
+ end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
 160 LET K = I + 1
  Variable:K
  Variable:I
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 170 LET L = A + (I*D)
  Variable:L
  Variable:A
  Variable:I
  Variable:D
- BinaryOperatorMultiply:*
- BinaryOperatorPlus:+
+ BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 180 LET J = J + L
  Variable:J
  Variable:J
  Variable:L
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 190 IF C = 1 THEN 210
  Variable:C
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 200 GOTO 220
  LineNumber:220
 210 PRINT K, L
@@ -90,7 +90,7 @@
 270 IF X = 1 THEN 290
  Variable:X
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 290 STOP
  
 300 GOTO 20

@@ -8,11 +8,11 @@
 130 IF N = 0 THEN 999
  Variable:N
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 140 IF N = 2 THEN 250
  Variable:N
  NumericConstant:2
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 150 LET Z = 0
  Variable:Z
  NumericConstant:0
@@ -27,7 +27,7 @@
 190 FOR F = 3 TO SQR(N)+1 STEP 2
  control: Variable:F
  start:   ["NumericConstant:3"]
- end:     ["Variable:N", "FunctionSqr", "NumericConstant:1", "BinaryOperatorPlus:+"]
+ end:     ["Variable:N", "FunctionSqr", "NumericConstant:1", "BinaryOperatorPlus:+ numeric"]
  step:    ["NumericConstant:2"]
 200 GOSUB 300
  LineNumber:300
@@ -36,7 +36,7 @@
 220 IF Z = 0 THEN 250
  Variable:Z
  NumericConstant:0
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 230 PRINT N;
  Variable:N
  CarriageControl:;
@@ -55,16 +55,16 @@
 310 IF N/F <> INT(N/F) THEN 410
  Variable:N
  Variable:F
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  Variable:N
  Variable:F
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  FunctionInt
- BinaryOperatorNotEqual:<>
+ BinaryOperatorNotEqual:<> boolean
 330 IF Z > 0 THEN 370
  Variable:Z
  NumericConstant:0
- BinaryOperatorGreater:>
+ BinaryOperatorGreater:> boolean
 340 PRINT N; "HAS THE FACTORS:"
  Variable:N
  CarriageControl:;
@@ -84,12 +84,12 @@
  Variable:N
  Variable:N
  Variable:F
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 390 IF N = 1 THEN 500
  Variable:N
  NumericConstant:1
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 400 GOTO 310
  LineNumber:310
 410 RETURN

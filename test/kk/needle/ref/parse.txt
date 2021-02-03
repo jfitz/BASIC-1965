@@ -26,23 +26,23 @@
  Variable:R
  NumericConstant:1
  NumericConstant:2
- BinaryOperatorDivide:/
- BinaryOperatorMinus:-
- BinaryOperatorMultiply:*
+ BinaryOperatorDivide:/ numeric
+ BinaryOperatorMinus:- numeric
+ BinaryOperatorMultiply:* numeric
  AssignmentOperator:=
 160    LET Y1 = Y - COS(A)
  Variable:Y1
  Variable:Y
  Variable:A
  FunctionCos
- BinaryOperatorMinus:-
+ BinaryOperatorMinus:- numeric
  AssignmentOperator:=
 170    LET Y2 = Y + COS(A)
  Variable:Y2
  Variable:Y
  Variable:A
  FunctionCos
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 172    LET C2 = COS(A)
  Variable:C2
@@ -54,12 +54,12 @@
  FunctionSgn
  Variable:Y2
  FunctionSgn
- BinaryOperatorEqual:=
+ BinaryOperatorEqual:= boolean
 190    LET C = C+1
  Variable:C
  Variable:C
  NumericConstant:1
- BinaryOperatorPlus:+
+ BinaryOperatorPlus:+ numeric
  AssignmentOperator:=
 200 NEXT N
  Variable:N
@@ -67,7 +67,7 @@
  Variable:F
  Variable:C
  Variable:N
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  AssignmentOperator:=
 220 PRINT "FRACTION OF CROSSINGS = " F
  TextConstant:"FRACTION OF CROSSINGS = "
@@ -79,7 +79,7 @@
  CarriageControl:
  NumericConstant:2
  Variable:F
- BinaryOperatorDivide:/
+ BinaryOperatorDivide:/ numeric
  CarriageControl:NL
 240 END
  
