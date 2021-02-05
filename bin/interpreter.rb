@@ -273,8 +273,8 @@ class Interpreter
     renumber_breakpoints(renumber_map)
   end
 
-  def program_store_line(line, print_errors)
-    @program.store_line(line, print_errors)
+  def program_store_line(line, print_seq_errors, print_errors)
+    @program.store_line(line, print_seq_errors, print_errors)
   end
 
   def program_clear

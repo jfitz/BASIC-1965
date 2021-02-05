@@ -138,7 +138,8 @@ class Shell
 
   def process_line_keyboard(line)
     # starts with a number, so maybe it is a program line
-    return @interpreter.program_store_line(line, true) if /\A[ \t]*\d/ =~ line
+    return @interpreter.program_store_line(line, false, true) if
+      /\A[ \t]*\d/ =~ line
 
     # immediate command -- tokenize and execute
     tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
@@ -177,7 +178,8 @@ class Shell
     end
     
     # starts with a number, so maybe it is a program line
-    return @interpreter.program_store_line(line, true) if /\A[ \t]*\d/ =~ line
+    return @interpreter.program_store_line(line, true, true) if
+      /\A[ \t]*\d/ =~ line
 
     # unknown line (probably a continuation of previous line)
     @console_io.print_line("Unknown command '#{line}'")
@@ -543,7 +545,7 @@ def load_file_command_line(filename, interpreter, console_io)
     interpreter.program_clear
     file.each_line do |line|
       line = console_io.ascii_printables(line)
-      interpreter.program_store_line(line, false)
+      interpreter.program_store_line(line, false, false)
     end
   end
   interpreter.program_check

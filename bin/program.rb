@@ -1016,14 +1016,15 @@ class Program
 
   public
 
-  def store_line(cmd, print_errors)
+  def store_line(cmd, print_seq_errors, print_errors)
     line_num, line = parse_line(cmd)
 
     if !line_num.nil? && !line.nil?
-      check_line_duplicate(line_num, print_errors)
-      check_line_sequence(line_num, print_errors)
+      check_line_duplicate(line_num, print_seq_errors)
+      check_line_sequence(line_num, print_seq_errors)
       @lines[line_num] = line
       statement = line.statement
+
       statement.errors.each { |error| @console_io.print_line(error) } if
         print_errors
 
