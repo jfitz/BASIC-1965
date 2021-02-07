@@ -107,6 +107,7 @@ class Line
 
   def pretty
     text = AbstractToken.pretty_tokens([], @tokens)
+    text = ' ' + text unless text.empty?
 
     unless @comment.nil?
       space = @text.size - (text.size + @comment.to_s.size)
@@ -123,8 +124,8 @@ class Line
     @statements.each { |statement| texts << statement.dump }
   end
 
-  def profile(show_profile)
-    @statement.profile(show_profile)
+  def profile(show_timing)
+    @statement.profile(show_timing)
   end
 
   def renumber(renumber_map)
@@ -132,6 +133,7 @@ class Line
     keywords = @statement.keywords
     tokens = @statement.tokens
     text = AbstractToken.pretty_tokens(keywords, tokens)
+    text = ' ' + text unless text.empty?
     Line.new(text, @statement, keywords + tokens, @comment)
   end
 
@@ -568,8 +570,11 @@ class Program
     lines = []
     reachable.keys.sort.each do |line_number|
       statement = @lines[line_number].statement
-      lines << "#{line_number}:#{statement.pretty}" if
-        statement.executable && !reachable[line_number]
+      
+      if statement.executable && !reachable[line_number]
+        text = statement.pretty
+        lines << "#{line_number}: #{text}" unless text.empty?
+      end
     end
 
     lines << 'All executable lines are reachable.' if lines.empty?

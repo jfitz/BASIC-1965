@@ -71,14 +71,14 @@
 190: LET B(1) = V
  V: 24
  B(1) = 24
-200:
+200: 
 210: READ I, J, R
  I = 1
  J = 2
  R = 100
 220: IF I = -1 THEN 270
  I: 1
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 1
  J: 2
@@ -96,7 +96,7 @@
  R = 50
 220: IF I = -1 THEN 270
  I: 2
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 2
  J: 7
@@ -114,7 +114,7 @@
  R = 25
 220: IF I = -1 THEN 270
  I: 2
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 2
  J: 3
@@ -132,7 +132,7 @@
  R = 16
 220: IF I = -1 THEN 270
  I: 1
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 1
  J: 4
@@ -150,7 +150,7 @@
  R = 20
 220: IF I = -1 THEN 270
  I: 3
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 3
  J: 4
@@ -168,7 +168,7 @@
  R = 40
 220: IF I = -1 THEN 270
  I: 3
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 3
  J: 6
@@ -186,7 +186,7 @@
  R = 60
 220: IF I = -1 THEN 270
  I: 4
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 4
  J: 5
@@ -204,7 +204,7 @@
  R = 60
 220: IF I = -1 THEN 270
  I: 5
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 5
  J: 6
@@ -222,7 +222,7 @@
  R = 40
 220: IF I = -1 THEN 270
  I: 6
- I=-1: false
+ I = -1: false
 230: LET C(I, J) = 1 / R
  I: 6
  J: 7
@@ -240,11 +240,11 @@
  R = 0
 220: IF I = -1 THEN 270
  I: -1
- I=-1: true
+ I = -1: true
 270: FOR I = 2 TO N - 1
  N: 7
  I = 2
- N-1 = 6
+ N - 1 = 6
  terminated:false
 280: LET S = 0
  S = 0
@@ -700,7 +700,7 @@
 350: NEXT I
  I: 6
  terminated:true
-360:
+360: 
 370: MAT U = INV(C)
  C(1,1): 1
  C(1,2): 0
@@ -864,7 +864,7 @@
  P(5) = 13.7839
  P(6) = 8.72606
  P(7) = 0
-390:
+390: 
 400: PRINT "NODE", "VOLTAGE"
 NODE            VOLTAGE
 410: PRINT
@@ -947,7 +947,7 @@ NODE            VOLTAGE
 
 460: PRINT
 
-470:
+470: 
 480: PRINT "CURRENT FLOW"
 CURRENT FLOW
 490: PRINT
@@ -957,7 +957,7 @@ CURRENT FLOW
 510: FOR I = 2 TO N - 1
  N: 7
  I = 2
- N-1 = 6
+ N - 1 = 6
  terminated:false
 520: PRINT "NODE" I
 NODE
@@ -1495,7 +1495,7 @@ NODE
  terminated:true
 600: PRINT
 
-610:
+610: 
 620: PRINT "TOTAL CURRENT = " FNR(S1)
 TOTAL CURRENT = 
  S1: 0.44764
@@ -1507,7 +1507,7 @@ RESISTANCE OF CIRCUIT =
  S1: 0.44764
  X: 53.6145
  53.615
-640:
+640: 
 650: DATA 7, 24
 660: DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
 670: DATA 4, 5, 60, 5, 6, 60, 6, 7, 40

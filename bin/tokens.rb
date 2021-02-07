@@ -3,13 +3,17 @@ class AbstractToken
   def self.pretty_tokens(keywords, tokens)
     pretty_tokens = []
 
+    token1 = NullToken.new
+    token2 = NullToken.new
+
     keywords.each do |token|
-      pretty_tokens << WhitespaceToken.new(' ')
+      pretty_tokens << WhitespaceToken.new(' ') unless pretty_tokens.empty?
       pretty_tokens << token
+
+      token2 = token1
+      token1 = token
     end
 
-    token1 = WhitespaceToken.new(' ')
-    token2 = WhitespaceToken.new(' ')
     tokens.each do |token|
       prev_is_variable = token1.variable? ||
                          token1.function? ||
@@ -21,7 +25,9 @@ class AbstractToken
         (token.groupstart? && prev_is_variable) ||
         token.groupend? ||
         token1.groupstart? ||
-        (token1.operator? && !prev2_is_operand)
+        (token1.operator? && !prev2_is_operand) ||
+        token1.whitespace? ||
+        token1.null?
 
       pretty_tokens << token
 
@@ -36,6 +42,7 @@ class AbstractToken
 
   def initialize(text)
     @text = text
+    @is_null = false
     @is_break = false
     @is_whitespace = false
     @is_comment = false
@@ -66,6 +73,10 @@ class AbstractToken
 
   def to_s
     @text
+  end
+
+  def null?
+    @is_null
   end
 
   def break?
@@ -137,10 +148,20 @@ class InvalidToken < AbstractToken
   end
 end
 
+# null token used for pretty()
+class NullToken < AbstractToken
+  def initialize
+    super('')
+
+    @is_null = true
+  end
+end
+
 # break token
 class BreakToken < AbstractToken
   def initialize(text)
     super
+
     @is_break = true
   end
 end
@@ -149,6 +170,7 @@ end
 class WhitespaceToken < AbstractToken
   def initialize(text)
     super
+
     @is_whitespace = true
   end
 end
@@ -157,6 +179,7 @@ end
 class KeywordToken < AbstractToken
   def initialize(text)
     super
+
     @is_keyword = true
   end
 end
@@ -165,6 +188,7 @@ end
 class CommentToken < AbstractToken
   def initialize(text)
     super
+
     @is_comment = true
   end
 end
@@ -180,6 +204,7 @@ end
 class OperatorToken < AbstractToken
   def initialize(text)
     super
+
     @is_operator = true
   end
 
@@ -202,6 +227,7 @@ end
 class GroupStartToken < AbstractToken
   def initialize(text)
     super
+
     @is_groupstart = true
   end
 end
@@ -210,6 +236,7 @@ end
 class GroupEndToken < AbstractToken
   def initialize(text)
     super
+
     @is_groupend = true
   end
 end
@@ -218,6 +245,7 @@ end
 class ParamSeparatorToken < AbstractToken
   def initialize(text)
     super
+
     @is_separator = true
   end
 end
@@ -226,6 +254,7 @@ end
 class FunctionToken < AbstractToken
   def initialize(text)
     super
+
     @is_function = true
   end
 
@@ -246,6 +275,7 @@ end
 class TextConstantToken < AbstractToken
   def initialize(text)
     super
+
     @is_text_constant = true
   end
 
@@ -262,6 +292,7 @@ end
 class NumericConstantToken < AbstractToken
   def initialize(text)
     super
+
     @is_numeric_constant = true
   end
 
@@ -286,6 +317,7 @@ end
 class BooleanConstantToken < AbstractToken
   def initialize(text)
     super
+
     @is_boolean_constant = true
   end
 end
@@ -317,6 +349,7 @@ end
 class VariableToken < AbstractToken
   def initialize(text)
     super
+
     @is_variable = true
   end
 

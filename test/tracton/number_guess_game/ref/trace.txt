@@ -27,11 +27,11 @@ YOUR GUESS IS =
 150: IF X = R THEN 180
  X: 45
  R: 42
- X=R: false
+ X = R: false
 160: IF X > R THEN 280
  X: 45
  R: 42
- X>R: true
+ X > R: true
 280: PRINT "TOO HIGH, TRY AGAIN"
 TOO HIGH, TRY AGAIN
 290: GOTO 120
@@ -46,11 +46,11 @@ YOUR GUESS IS =
 150: IF X = R THEN 180
  X: 25
  R: 42
- X=R: false
+ X = R: false
 160: IF X > R THEN 280
  X: 25
  R: 42
- X>R: false
+ X > R: false
 170: GOTO 300
 300: PRINT "TOO LOW, TRY AGAIN"
 TOO LOW, TRY AGAIN
@@ -66,11 +66,11 @@ YOUR GUESS IS =
 150: IF X = R THEN 180
  X: 35
  R: 42
- X=R: false
+ X = R: false
 160: IF X > R THEN 280
  X: 35
  R: 42
- X>R: false
+ X > R: false
 170: GOTO 300
 300: PRINT "TOO LOW, TRY AGAIN"
 TOO LOW, TRY AGAIN
@@ -86,7 +86,7 @@ YOUR GUESS IS =
 150: IF X = R THEN 180
  X: 42
  R: 42
- X=R: true
+ X = R: true
 180: PRINT "NOT BAD!!!-YOU GOT IT!!!"
 NOT BAD!!!-YOU GOT IT!!!
 190: PRINT "YOUR NUMBER OF TRIES WERE"; Y
@@ -104,7 +104,7 @@ IF NOT TYPE 0
  L = 0
 240: IF L = 1 THEN 260
  L: 0
- L=1: false
+ L = 1: false
 250: STOP
 STOP in line 250
 

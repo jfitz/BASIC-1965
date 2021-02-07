@@ -10,20 +10,20 @@ ENTER N,R
 60: IF N < R THEN 270
  N: 12
  R: 5
- N<R: false
+ N < R: false
 70: IF R < 0 THEN 290
  R: 5
- R<0: false
+ R < 0: false
 80: LET T = N
  N: 12
  T = 12
 90: GOSUB 310
 310: IF T = 0 THEN 390
  T: 12
- T=0: false
+ T = 0: false
 320: IF T = 1 THEN 390
  T: 12
- T=1: false
+ T = 1: false
 330: LET J = 1
  J = 1
 340: FOR I = 2 TO T
@@ -133,10 +133,10 @@ ENTER N,R
 120: GOSUB 310
 310: IF T = 0 THEN 390
  T: 7
- T=0: false
+ T = 0: false
 320: IF T = 1 THEN 390
  T: 7
- T=1: false
+ T = 1: false
 330: LET J = 1
  J = 1
 340: FOR I = 2 TO T
@@ -209,10 +209,10 @@ ENTER N,R
 160: GOSUB 310
 310: IF T = 0 THEN 390
  T: 5
- T=0: false
+ T = 0: false
 320: IF T = 1 THEN 390
  T: 5
- T=1: false
+ T = 1: false
 330: LET J = 1
  J = 1
 340: FOR I = 2 TO T
@@ -278,7 +278,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 1
 230: IF L = 1 THEN 250
  L: 1
- L=1: true
+ L = 1: true
 250: PRINT
 
 260: GOTO 40
@@ -291,20 +291,20 @@ ENTER N,R
 60: IF N < R THEN 270
  N: 23
  R: 21
- N<R: false
+ N < R: false
 70: IF R < 0 THEN 290
  R: 21
- R<0: false
+ R < 0: false
 80: LET T = N
  N: 23
  T = 23
 90: GOSUB 310
 310: IF T = 0 THEN 390
  T: 23
- T=0: false
+ T = 0: false
 320: IF T = 1 THEN 390
  T: 23
- T=1: false
+ T = 1: false
 330: LET J = 1
  J = 1
 340: FOR I = 2 TO T
@@ -502,10 +502,10 @@ ENTER N,R
 120: GOSUB 310
 310: IF T = 0 THEN 390
  T: 2
- T=0: false
+ T = 0: false
 320: IF T = 1 THEN 390
  T: 2
- T=1: false
+ T = 1: false
 330: LET J = 1
  J = 1
 340: FOR I = 2 TO T
@@ -538,10 +538,10 @@ ENTER N,R
 160: GOSUB 310
 310: IF T = 0 THEN 390
  T: 21
- T=0: false
+ T = 0: false
 320: IF T = 1 THEN 390
  T: 21
- T=1: false
+ T = 1: false
 330: LET J = 1
  J = 1
 340: FOR I = 2 TO T
@@ -735,7 +735,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 0
 230: IF L = 1 THEN 250
  L: 0
- L=1: false
+ L = 1: false
 240: STOP
 STOP in line 240
 

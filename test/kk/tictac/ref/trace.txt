@@ -4,7 +4,7 @@
 130: REM                       8  9  4
 140: REM                       7  6  5
 150: REM FOLLOWS THE BLOCK DIAGRAM
-160:
+160: 
 170: REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
 180: DEF FNM(X) = X - 8 * INT((X - 1) / 8)
 190: REM
@@ -63,7 +63,7 @@ YOUR MOVE
  B: 2
  X: 6
  X: 6
- Q=FNM(B+4): true
+ Q = FNM(B + 4): true
 360: LET C = FNM(B + 2)
  B: 2
  X: 4
@@ -93,10 +93,10 @@ YOUR MOVE
  C: 4
  X: 8
  X: 8
- R=FNM(C+4): true
+ R = FNM(C + 4): true
 450: IF P / 2 <> INT(P / 2) THEN 500
  P: 1
- P/2<>INT(P/2): true
+ P / 2 <> INT(P / 2): true
 500: LET D = FNM(C + 3)
  C: 4
  X: 7
@@ -126,7 +126,7 @@ YOUR MOVE
  D: 7
  X: 11
  X: 11
- S=FNM(D+4): true
+ S = FNM(D + 4): true
 590: LET E = FNM(D + 6)
  D: 7
  X: 13

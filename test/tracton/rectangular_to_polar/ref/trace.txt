@@ -15,13 +15,13 @@ Y =
 80: IF X + Y = 0 THEN 180
  X: 10
  Y: 10
- X+Y=0: false
+ X + Y = 0: false
 90: IF X = 0 THEN 180
  X: 10
- X=0: false
+ X = 0: false
 100: IF Y = 0 THEN 250
  Y: 10
- Y=0: false
+ Y = 0: false
 110: LET W = ATN(Y / X)
  Y: 10
  X: 10
@@ -53,7 +53,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 1
 370: IF L = 1 THEN 390
  L: 1
- L=1: true
+ L = 1: true
 390: PRINT
 
 400: GOTO 30
@@ -72,13 +72,13 @@ Y =
 80: IF X + Y = 0 THEN 180
  X: 34
  Y: 32
- X+Y=0: false
+ X + Y = 0: false
 90: IF X = 0 THEN 180
  X: 34
- X=0: false
+ X = 0: false
 100: IF Y = 0 THEN 250
  Y: 32
- Y=0: false
+ Y = 0: false
 110: LET W = ATN(Y / X)
  Y: 32
  X: 34
@@ -110,7 +110,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 0
 370: IF L = 1 THEN 390
  L: 0
- L=1: false
+ L = 1: false
 380: STOP
 STOP in line 380
 

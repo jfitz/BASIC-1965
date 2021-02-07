@@ -27,7 +27,7 @@ ANGLE           SIDE            SIDE            THIRD SIDE      CASE 2
  S = 1.082531754
 180: IF S > 1 THEN 290
  S: 1.082531754
- S>1: true
+ S > 1: true
 290: REM NO POINT OF INTERSECTION
 300: PRINT "NONE", "NONE"
 NONE            NONE
@@ -53,12 +53,12 @@ NONE            NONE
  S = 0.962250448
 180: IF S > 1 THEN 290
  S: 0.962250448
- S>1: false
+ S > 1: false
 190: IF FNR(S) = 1 THEN 320
  S: 0.962250448
  X: 0.962250448
- FNR(S)=1: false
-195:
+ FNR(S) = 1: false
+195: 
 200: REM TWO POINTS OF INTERSECTION
 210: LET T = S / SQR(1 - S ^ 2)
  S: 0.962250448
@@ -83,7 +83,7 @@ NONE            NONE
  Z = 7.449489749
 390: IF Z >= 0 THEN 420
  Z: 7.449489749
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 7.449489749
  7.449489749    
@@ -107,7 +107,7 @@ NONE            NONE
  Z = 2.550510247
 390: IF Z >= 0 THEN 420
  Z: 2.550510247
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 2.550510247
  2.550510247    
@@ -136,12 +136,12 @@ NONE            NONE
  S = 0.7872958211
 180: IF S > 1 THEN 290
  S: 0.7872958211
- S>1: false
+ S > 1: false
 190: IF FNR(S) = 1 THEN 320
  S: 0.7872958211
  X: 0.7872958211
- FNR(S)=1: false
-195:
+ FNR(S) = 1: false
+195: 
 200: REM TWO POINTS OF INTERSECTION
 210: LET T = S / SQR(1 - S ^ 2)
  S: 0.7872958211
@@ -166,7 +166,7 @@ NONE            NONE
  Z = 11.78232999
 390: IF Z >= 0 THEN 420
  Z: 11.78232999
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 11.78232999
  11.78232999    
@@ -190,7 +190,7 @@ NONE            NONE
  Z = -1.78232998
 390: IF Z >= 0 THEN 420
  Z: -1.78232998
- Z>=0: false
+ Z >= 0: false
 400: PRINT "NONE",
 NONE            
 410: RETURN
@@ -218,7 +218,7 @@ NONE
  S = 1.082531756
 180: IF S > 1 THEN 290
  S: 1.082531756
- S>1: true
+ S > 1: true
 290: REM NO POINT OF INTERSECTION
 300: PRINT "NONE", "NONE"
 NONE            NONE
@@ -244,12 +244,12 @@ NONE            NONE
  S = 0.96225045
 180: IF S > 1 THEN 290
  S: 0.96225045
- S>1: false
+ S > 1: false
 190: IF FNR(S) = 1 THEN 320
  S: 0.96225045
  X: 0.96225045
- FNR(S)=1: false
-195:
+ FNR(S) = 1: false
+195: 
 200: REM TWO POINTS OF INTERSECTION
 210: LET T = S / SQR(1 - S ^ 2)
  S: 0.96225045
@@ -274,7 +274,7 @@ NONE            NONE
  Z = -2.550510318
 390: IF Z >= 0 THEN 420
  Z: -2.550510318
- Z>=0: false
+ Z >= 0: false
 400: PRINT "NONE",
 NONE            
 410: RETURN
@@ -297,7 +297,7 @@ NONE
  Z = -7.449489681
 390: IF Z >= 0 THEN 420
  Z: -7.449489681
- Z>=0: false
+ Z >= 0: false
 400: PRINT "NONE",
 NONE            
 410: RETURN
@@ -325,12 +325,12 @@ NONE
  S = 0.7872958227
 180: IF S > 1 THEN 290
  S: 0.7872958227
- S>1: false
+ S > 1: false
 190: IF FNR(S) = 1 THEN 320
  S: 0.7872958227
  X: 0.7872958227
- FNR(S)=1: false
-195:
+ FNR(S) = 1: false
+195: 
 200: REM TWO POINTS OF INTERSECTION
 210: LET T = S / SQR(1 - S ^ 2)
  S: 0.7872958227
@@ -355,7 +355,7 @@ NONE
  Z = 1.782329943
 390: IF Z >= 0 THEN 420
  Z: 1.782329943
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 1.782329943
  1.782329943    
@@ -379,7 +379,7 @@ NONE
  Z = -11.78232995
 390: IF Z >= 0 THEN 420
  Z: -11.78232995
- Z>=0: false
+ Z >= 0: false
 400: PRINT "NONE",
 NONE            
 410: RETURN
@@ -407,12 +407,12 @@ NONE
  S = 0.6
 180: IF S > 1 THEN 290
  S: 0.6
- S>1: false
+ S > 1: false
 190: IF FNR(S) = 1 THEN 320
  S: 0.6
  X: 0.6
- FNR(S)=1: false
-195:
+ FNR(S) = 1: false
+195: 
 200: REM TWO POINTS OF INTERSECTION
 210: LET T = S / SQR(1 - S ^ 2)
  S: 0.6
@@ -437,7 +437,7 @@ NONE
  Z = 3.999999995
 390: IF Z >= 0 THEN 420
  Z: 3.999999995
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 3.999999995
  3.999999995    
@@ -461,7 +461,7 @@ NONE
  Z = -3.999999995
 390: IF Z >= 0 THEN 420
  Z: -3.999999995
- Z>=0: false
+ Z >= 0: false
 400: PRINT "NONE",
 NONE            
 410: RETURN
@@ -489,12 +489,12 @@ NONE
  S = 0.8660254032
 180: IF S > 1 THEN 290
  S: 0.8660254032
- S>1: false
+ S > 1: false
 190: IF FNR(S) = 1 THEN 320
  S: 0.8660254032
  X: 0.8660254032
- FNR(S)=1: false
-195:
+ FNR(S) = 1: false
+195: 
 200: REM TWO POINTS OF INTERSECTION
 210: LET T = S / SQR(1 - S ^ 2)
  S: 0.8660254032
@@ -519,7 +519,7 @@ NONE
  Z = 5
 390: IF Z >= 0 THEN 420
  Z: 5
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 5
  5              
@@ -543,7 +543,7 @@ NONE
  Z = 0
 390: IF Z >= 0 THEN 420
  Z: 0
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 0
  0              
@@ -572,11 +572,11 @@ NONE
  S = 0.999999999
 180: IF S > 1 THEN 290
  S: 0.999999999
- S>1: false
+ S > 1: false
 190: IF FNR(S) = 1 THEN 320
  S: 0.999999999
  X: 0.999999999
- FNR(S)=1: true
+ FNR(S) = 1: true
 320: REM ONE POINT OF INTERSECTION
 330: LET A = 90 - B
  B: 30
@@ -593,7 +593,7 @@ NONE
  Z = 8.660254041
 390: IF Z >= 0 THEN 420
  Z: 8.660254041
- Z>=0: true
+ Z >= 0: true
 420: PRINT Z,
  Z: 8.660254041
  8.660254041    

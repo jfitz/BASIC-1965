@@ -34,7 +34,7 @@ COORDINATES
 150: FOR I = 0 TO N - 1
  N: 2
  I = 0
- N-1 = 1
+ N - 1 = 1
  terminated:false
 160: LET X = X0 + (R * COS(W + (Z * I)))
  X0: 2
@@ -102,7 +102,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 1
 240: IF L = 1 THEN 260
  L: 1
- L=1: true
+ L = 1: true
 260: PRINT
 
 270: GOTO 30
@@ -140,7 +140,7 @@ COORDINATES
 150: FOR I = 0 TO N - 1
  N: 12
  I = 0
- N-1 = 11
+ N - 1 = 11
  terminated:false
 160: LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
@@ -498,7 +498,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 0
 240: IF L = 1 THEN 260
  L: 0
- L=1: false
+ L = 1: false
 250: STOP
 STOP in line 250
 

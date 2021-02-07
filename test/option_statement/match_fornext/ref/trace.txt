@@ -15,7 +15,7 @@ OPTION MATCH_FORNEXT FALSE
  1
 70: IF J = 2 THEN 90
  J: 1
- J=2: false
+ J = 2: false
 80: NEXT J
  J: 1
  terminated:false
@@ -27,7 +27,7 @@ OPTION MATCH_FORNEXT FALSE
  2
 70: IF J = 2 THEN 90
  J: 2
- J=2: true
+ J = 2: true
 90: NEXT I
  I: 1
  terminated:false
@@ -42,7 +42,7 @@ OPTION MATCH_FORNEXT FALSE
  1
 70: IF J = 2 THEN 90
  J: 1
- J=2: false
+ J = 2: false
 80: NEXT J
  J: 1
  terminated:false
@@ -54,7 +54,7 @@ OPTION MATCH_FORNEXT FALSE
  2
 70: IF J = 2 THEN 90
  J: 2
- J=2: true
+ J = 2: true
 90: NEXT I
  I: 2
  terminated:false
@@ -69,7 +69,7 @@ OPTION MATCH_FORNEXT FALSE
  1
 70: IF J = 2 THEN 90
  J: 1
- J=2: false
+ J = 2: false
 80: NEXT J
  J: 1
  terminated:false
@@ -81,7 +81,7 @@ OPTION MATCH_FORNEXT FALSE
  2
 70: IF J = 2 THEN 90
  J: 2
- J=2: true
+ J = 2: true
 90: NEXT I
  I: 3
  terminated:true
@@ -101,7 +101,7 @@ OPTION MATCH_FORNEXT TRUE
  1
 170: IF J = 2 THEN 190
  J: 1
- J=2: false
+ J = 2: false
 180: NEXT J
  J: 1
  terminated:false
@@ -113,7 +113,7 @@ OPTION MATCH_FORNEXT TRUE
  2
 170: IF J = 2 THEN 190
  J: 2
- J=2: true
+ J = 2: true
 190: NEXT I
 Found NEXT I when expecting J in line 190
 

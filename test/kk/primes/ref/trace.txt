@@ -7015,7 +7015,7 @@
 40: IF N(X) < 0 THEN 90
  X: 1
  N(1): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 0
  K = 1
@@ -7025,12 +7025,12 @@
  P(1) = 3
 56: IF P > SQR(2000) THEN 90
  P: 3
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 3
  I = 3
  P = 3
- 2*P = 6
+ 2 * P = 6
  terminated:false
 65: LET X = (I - 1) / 2
  I: 3
@@ -10371,7 +10371,7 @@
 40: IF N(X) < 0 THEN 90
  X: 2
  N(2): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 1
  K = 2
@@ -10381,12 +10381,12 @@
  P(2) = 5
 56: IF P > SQR(2000) THEN 90
  P: 5
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 5
  I = 5
  P = 5
- 2*P = 10
+ 2 * P = 10
  terminated:false
 65: LET X = (I - 1) / 2
  I: 5
@@ -12397,7 +12397,7 @@
 40: IF N(X) < 0 THEN 90
  X: 3
  N(3): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 2
  K = 3
@@ -12407,12 +12407,12 @@
  P(3) = 7
 56: IF P > SQR(2000) THEN 90
  P: 7
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 7
  I = 7
  P = 7
- 2*P = 14
+ 2 * P = 14
  terminated:false
 65: LET X = (I - 1) / 2
  I: 7
@@ -13853,7 +13853,7 @@
 40: IF N(X) < 0 THEN 90
  X: 4
  N(4): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 9
  terminated:false
@@ -13864,7 +13864,7 @@
 40: IF N(X) < 0 THEN 90
  X: 5
  N(5): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 3
  K = 4
@@ -13874,12 +13874,12 @@
  P(4) = 11
 56: IF P > SQR(2000) THEN 90
  P: 11
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 11
  I = 11
  P = 11
- 2*P = 22
+ 2 * P = 22
  terminated:false
 65: LET X = (I - 1) / 2
  I: 11
@@ -14800,7 +14800,7 @@
 40: IF N(X) < 0 THEN 90
  X: 6
  N(6): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 4
  K = 5
@@ -14810,12 +14810,12 @@
  P(5) = 13
 56: IF P > SQR(2000) THEN 90
  P: 13
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 13
  I = 13
  P = 13
- 2*P = 26
+ 2 * P = 26
  terminated:false
 65: LET X = (I - 1) / 2
  I: 13
@@ -15596,7 +15596,7 @@
 40: IF N(X) < 0 THEN 90
  X: 7
  N(7): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 15
  terminated:false
@@ -15607,7 +15607,7 @@
 40: IF N(X) < 0 THEN 90
  X: 8
  N(8): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 5
  K = 6
@@ -15617,12 +15617,12 @@
  P(6) = 17
 56: IF P > SQR(2000) THEN 90
  P: 17
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 17
  I = 17
  P = 17
- 2*P = 34
+ 2 * P = 34
  terminated:false
 65: LET X = (I - 1) / 2
  I: 17
@@ -16223,7 +16223,7 @@
 40: IF N(X) < 0 THEN 90
  X: 9
  N(9): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 6
  K = 7
@@ -16233,12 +16233,12 @@
  P(7) = 19
 56: IF P > SQR(2000) THEN 90
  P: 19
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 19
  I = 19
  P = 19
- 2*P = 38
+ 2 * P = 38
  terminated:false
 65: LET X = (I - 1) / 2
  I: 19
@@ -16779,7 +16779,7 @@
 40: IF N(X) < 0 THEN 90
  X: 10
  N(10): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 21
  terminated:false
@@ -16790,7 +16790,7 @@
 40: IF N(X) < 0 THEN 90
  X: 11
  N(11): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 7
  K = 8
@@ -16800,12 +16800,12 @@
  P(8) = 23
 56: IF P > SQR(2000) THEN 90
  P: 23
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 23
  I = 23
  P = 23
- 2*P = 46
+ 2 * P = 46
  terminated:false
 65: LET X = (I - 1) / 2
  I: 23
@@ -17246,7 +17246,7 @@
 40: IF N(X) < 0 THEN 90
  X: 12
  N(12): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 25
  terminated:false
@@ -17257,7 +17257,7 @@
 40: IF N(X) < 0 THEN 90
  X: 13
  N(13): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 27
  terminated:false
@@ -17268,7 +17268,7 @@
 40: IF N(X) < 0 THEN 90
  X: 14
  N(14): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 8
  K = 9
@@ -17278,12 +17278,12 @@
  P(9) = 29
 56: IF P > SQR(2000) THEN 90
  P: 29
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 29
  I = 29
  P = 29
- 2*P = 58
+ 2 * P = 58
  terminated:false
 65: LET X = (I - 1) / 2
  I: 29
@@ -17634,7 +17634,7 @@
 40: IF N(X) < 0 THEN 90
  X: 15
  N(15): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 9
  K = 10
@@ -17644,12 +17644,12 @@
  P(10) = 31
 56: IF P > SQR(2000) THEN 90
  P: 31
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 31
  I = 31
  P = 31
- 2*P = 62
+ 2 * P = 62
  terminated:false
 65: LET X = (I - 1) / 2
  I: 31
@@ -17980,7 +17980,7 @@
 40: IF N(X) < 0 THEN 90
  X: 16
  N(16): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 33
  terminated:false
@@ -17991,7 +17991,7 @@
 40: IF N(X) < 0 THEN 90
  X: 17
  N(17): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 35
  terminated:false
@@ -18002,7 +18002,7 @@
 40: IF N(X) < 0 THEN 90
  X: 18
  N(18): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 10
  K = 11
@@ -18012,12 +18012,12 @@
  P(11) = 37
 56: IF P > SQR(2000) THEN 90
  P: 37
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 37
  I = 37
  P = 37
- 2*P = 74
+ 2 * P = 74
  terminated:false
 65: LET X = (I - 1) / 2
  I: 37
@@ -18298,7 +18298,7 @@
 40: IF N(X) < 0 THEN 90
  X: 19
  N(19): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 39
  terminated:false
@@ -18309,7 +18309,7 @@
 40: IF N(X) < 0 THEN 90
  X: 20
  N(20): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 11
  K = 12
@@ -18319,12 +18319,12 @@
  P(12) = 41
 56: IF P > SQR(2000) THEN 90
  P: 41
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 41
  I = 41
  P = 41
- 2*P = 82
+ 2 * P = 82
  terminated:false
 65: LET X = (I - 1) / 2
  I: 41
@@ -18575,7 +18575,7 @@
 40: IF N(X) < 0 THEN 90
  X: 21
  N(21): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 12
  K = 13
@@ -18585,12 +18585,12 @@
  P(13) = 43
 56: IF P > SQR(2000) THEN 90
  P: 43
- P>SQR(2000): false
+ P > SQR(2000): false
 60: FOR I = P TO 2000 STEP 2 * P
  P: 43
  I = 43
  P = 43
- 2*P = 86
+ 2 * P = 86
  terminated:false
 65: LET X = (I - 1) / 2
  I: 43
@@ -18831,7 +18831,7 @@
 40: IF N(X) < 0 THEN 90
  X: 22
  N(22): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 45
  terminated:false
@@ -18842,7 +18842,7 @@
 40: IF N(X) < 0 THEN 90
  X: 23
  N(23): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 13
  K = 14
@@ -18852,7 +18852,7 @@
  P(14) = 47
 56: IF P > SQR(2000) THEN 90
  P: 47
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 47
  terminated:false
@@ -18863,7 +18863,7 @@
 40: IF N(X) < 0 THEN 90
  X: 24
  N(24): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 49
  terminated:false
@@ -18874,7 +18874,7 @@
 40: IF N(X) < 0 THEN 90
  X: 25
  N(25): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 51
  terminated:false
@@ -18885,7 +18885,7 @@
 40: IF N(X) < 0 THEN 90
  X: 26
  N(26): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 14
  K = 15
@@ -18895,7 +18895,7 @@
  P(15) = 53
 56: IF P > SQR(2000) THEN 90
  P: 53
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 53
  terminated:false
@@ -18906,7 +18906,7 @@
 40: IF N(X) < 0 THEN 90
  X: 27
  N(27): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 55
  terminated:false
@@ -18917,7 +18917,7 @@
 40: IF N(X) < 0 THEN 90
  X: 28
  N(28): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 57
  terminated:false
@@ -18928,7 +18928,7 @@
 40: IF N(X) < 0 THEN 90
  X: 29
  N(29): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 15
  K = 16
@@ -18938,7 +18938,7 @@
  P(16) = 59
 56: IF P > SQR(2000) THEN 90
  P: 59
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 59
  terminated:false
@@ -18949,7 +18949,7 @@
 40: IF N(X) < 0 THEN 90
  X: 30
  N(30): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 16
  K = 17
@@ -18959,7 +18959,7 @@
  P(17) = 61
 56: IF P > SQR(2000) THEN 90
  P: 61
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 61
  terminated:false
@@ -18970,7 +18970,7 @@
 40: IF N(X) < 0 THEN 90
  X: 31
  N(31): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 63
  terminated:false
@@ -18981,7 +18981,7 @@
 40: IF N(X) < 0 THEN 90
  X: 32
  N(32): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 65
  terminated:false
@@ -18992,7 +18992,7 @@
 40: IF N(X) < 0 THEN 90
  X: 33
  N(33): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 17
  K = 18
@@ -19002,7 +19002,7 @@
  P(18) = 67
 56: IF P > SQR(2000) THEN 90
  P: 67
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 67
  terminated:false
@@ -19013,7 +19013,7 @@
 40: IF N(X) < 0 THEN 90
  X: 34
  N(34): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 69
  terminated:false
@@ -19024,7 +19024,7 @@
 40: IF N(X) < 0 THEN 90
  X: 35
  N(35): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 18
  K = 19
@@ -19034,7 +19034,7 @@
  P(19) = 71
 56: IF P > SQR(2000) THEN 90
  P: 71
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 71
  terminated:false
@@ -19045,7 +19045,7 @@
 40: IF N(X) < 0 THEN 90
  X: 36
  N(36): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 19
  K = 20
@@ -19055,7 +19055,7 @@
  P(20) = 73
 56: IF P > SQR(2000) THEN 90
  P: 73
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 73
  terminated:false
@@ -19066,7 +19066,7 @@
 40: IF N(X) < 0 THEN 90
  X: 37
  N(37): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 75
  terminated:false
@@ -19077,7 +19077,7 @@
 40: IF N(X) < 0 THEN 90
  X: 38
  N(38): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 77
  terminated:false
@@ -19088,7 +19088,7 @@
 40: IF N(X) < 0 THEN 90
  X: 39
  N(39): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 20
  K = 21
@@ -19098,7 +19098,7 @@
  P(21) = 79
 56: IF P > SQR(2000) THEN 90
  P: 79
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 79
  terminated:false
@@ -19109,7 +19109,7 @@
 40: IF N(X) < 0 THEN 90
  X: 40
  N(40): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 81
  terminated:false
@@ -19120,7 +19120,7 @@
 40: IF N(X) < 0 THEN 90
  X: 41
  N(41): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 21
  K = 22
@@ -19130,7 +19130,7 @@
  P(22) = 83
 56: IF P > SQR(2000) THEN 90
  P: 83
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 83
  terminated:false
@@ -19141,7 +19141,7 @@
 40: IF N(X) < 0 THEN 90
  X: 42
  N(42): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 85
  terminated:false
@@ -19152,7 +19152,7 @@
 40: IF N(X) < 0 THEN 90
  X: 43
  N(43): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 87
  terminated:false
@@ -19163,7 +19163,7 @@
 40: IF N(X) < 0 THEN 90
  X: 44
  N(44): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 22
  K = 23
@@ -19173,7 +19173,7 @@
  P(23) = 89
 56: IF P > SQR(2000) THEN 90
  P: 89
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 89
  terminated:false
@@ -19184,7 +19184,7 @@
 40: IF N(X) < 0 THEN 90
  X: 45
  N(45): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 91
  terminated:false
@@ -19195,7 +19195,7 @@
 40: IF N(X) < 0 THEN 90
  X: 46
  N(46): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 93
  terminated:false
@@ -19206,7 +19206,7 @@
 40: IF N(X) < 0 THEN 90
  X: 47
  N(47): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 95
  terminated:false
@@ -19217,7 +19217,7 @@
 40: IF N(X) < 0 THEN 90
  X: 48
  N(48): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 23
  K = 24
@@ -19227,7 +19227,7 @@
  P(24) = 97
 56: IF P > SQR(2000) THEN 90
  P: 97
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 97
  terminated:false
@@ -19238,7 +19238,7 @@
 40: IF N(X) < 0 THEN 90
  X: 49
  N(49): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 99
  terminated:false
@@ -19249,7 +19249,7 @@
 40: IF N(X) < 0 THEN 90
  X: 50
  N(50): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 24
  K = 25
@@ -19259,7 +19259,7 @@
  P(25) = 101
 56: IF P > SQR(2000) THEN 90
  P: 101
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 101
  terminated:false
@@ -19270,7 +19270,7 @@
 40: IF N(X) < 0 THEN 90
  X: 51
  N(51): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 25
  K = 26
@@ -19280,7 +19280,7 @@
  P(26) = 103
 56: IF P > SQR(2000) THEN 90
  P: 103
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 103
  terminated:false
@@ -19291,7 +19291,7 @@
 40: IF N(X) < 0 THEN 90
  X: 52
  N(52): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 105
  terminated:false
@@ -19302,7 +19302,7 @@
 40: IF N(X) < 0 THEN 90
  X: 53
  N(53): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 26
  K = 27
@@ -19312,7 +19312,7 @@
  P(27) = 107
 56: IF P > SQR(2000) THEN 90
  P: 107
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 107
  terminated:false
@@ -19323,7 +19323,7 @@
 40: IF N(X) < 0 THEN 90
  X: 54
  N(54): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 27
  K = 28
@@ -19333,7 +19333,7 @@
  P(28) = 109
 56: IF P > SQR(2000) THEN 90
  P: 109
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 109
  terminated:false
@@ -19344,7 +19344,7 @@
 40: IF N(X) < 0 THEN 90
  X: 55
  N(55): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 111
  terminated:false
@@ -19355,7 +19355,7 @@
 40: IF N(X) < 0 THEN 90
  X: 56
  N(56): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 28
  K = 29
@@ -19365,7 +19365,7 @@
  P(29) = 113
 56: IF P > SQR(2000) THEN 90
  P: 113
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 113
  terminated:false
@@ -19376,7 +19376,7 @@
 40: IF N(X) < 0 THEN 90
  X: 57
  N(57): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 115
  terminated:false
@@ -19387,7 +19387,7 @@
 40: IF N(X) < 0 THEN 90
  X: 58
  N(58): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 117
  terminated:false
@@ -19398,7 +19398,7 @@
 40: IF N(X) < 0 THEN 90
  X: 59
  N(59): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 119
  terminated:false
@@ -19409,7 +19409,7 @@
 40: IF N(X) < 0 THEN 90
  X: 60
  N(60): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 121
  terminated:false
@@ -19420,7 +19420,7 @@
 40: IF N(X) < 0 THEN 90
  X: 61
  N(61): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 123
  terminated:false
@@ -19431,7 +19431,7 @@
 40: IF N(X) < 0 THEN 90
  X: 62
  N(62): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 125
  terminated:false
@@ -19442,7 +19442,7 @@
 40: IF N(X) < 0 THEN 90
  X: 63
  N(63): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 29
  K = 30
@@ -19452,7 +19452,7 @@
  P(30) = 127
 56: IF P > SQR(2000) THEN 90
  P: 127
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 127
  terminated:false
@@ -19463,7 +19463,7 @@
 40: IF N(X) < 0 THEN 90
  X: 64
  N(64): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 129
  terminated:false
@@ -19474,7 +19474,7 @@
 40: IF N(X) < 0 THEN 90
  X: 65
  N(65): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 30
  K = 31
@@ -19484,7 +19484,7 @@
  P(31) = 131
 56: IF P > SQR(2000) THEN 90
  P: 131
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 131
  terminated:false
@@ -19495,7 +19495,7 @@
 40: IF N(X) < 0 THEN 90
  X: 66
  N(66): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 133
  terminated:false
@@ -19506,7 +19506,7 @@
 40: IF N(X) < 0 THEN 90
  X: 67
  N(67): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 135
  terminated:false
@@ -19517,7 +19517,7 @@
 40: IF N(X) < 0 THEN 90
  X: 68
  N(68): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 31
  K = 32
@@ -19527,7 +19527,7 @@
  P(32) = 137
 56: IF P > SQR(2000) THEN 90
  P: 137
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 137
  terminated:false
@@ -19538,7 +19538,7 @@
 40: IF N(X) < 0 THEN 90
  X: 69
  N(69): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 32
  K = 33
@@ -19548,7 +19548,7 @@
  P(33) = 139
 56: IF P > SQR(2000) THEN 90
  P: 139
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 139
  terminated:false
@@ -19559,7 +19559,7 @@
 40: IF N(X) < 0 THEN 90
  X: 70
  N(70): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 141
  terminated:false
@@ -19570,7 +19570,7 @@
 40: IF N(X) < 0 THEN 90
  X: 71
  N(71): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 143
  terminated:false
@@ -19581,7 +19581,7 @@
 40: IF N(X) < 0 THEN 90
  X: 72
  N(72): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 145
  terminated:false
@@ -19592,7 +19592,7 @@
 40: IF N(X) < 0 THEN 90
  X: 73
  N(73): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 147
  terminated:false
@@ -19603,7 +19603,7 @@
 40: IF N(X) < 0 THEN 90
  X: 74
  N(74): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 33
  K = 34
@@ -19613,7 +19613,7 @@
  P(34) = 149
 56: IF P > SQR(2000) THEN 90
  P: 149
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 149
  terminated:false
@@ -19624,7 +19624,7 @@
 40: IF N(X) < 0 THEN 90
  X: 75
  N(75): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 34
  K = 35
@@ -19634,7 +19634,7 @@
  P(35) = 151
 56: IF P > SQR(2000) THEN 90
  P: 151
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 151
  terminated:false
@@ -19645,7 +19645,7 @@
 40: IF N(X) < 0 THEN 90
  X: 76
  N(76): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 153
  terminated:false
@@ -19656,7 +19656,7 @@
 40: IF N(X) < 0 THEN 90
  X: 77
  N(77): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 155
  terminated:false
@@ -19667,7 +19667,7 @@
 40: IF N(X) < 0 THEN 90
  X: 78
  N(78): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 35
  K = 36
@@ -19677,7 +19677,7 @@
  P(36) = 157
 56: IF P > SQR(2000) THEN 90
  P: 157
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 157
  terminated:false
@@ -19688,7 +19688,7 @@
 40: IF N(X) < 0 THEN 90
  X: 79
  N(79): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 159
  terminated:false
@@ -19699,7 +19699,7 @@
 40: IF N(X) < 0 THEN 90
  X: 80
  N(80): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 161
  terminated:false
@@ -19710,7 +19710,7 @@
 40: IF N(X) < 0 THEN 90
  X: 81
  N(81): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 36
  K = 37
@@ -19720,7 +19720,7 @@
  P(37) = 163
 56: IF P > SQR(2000) THEN 90
  P: 163
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 163
  terminated:false
@@ -19731,7 +19731,7 @@
 40: IF N(X) < 0 THEN 90
  X: 82
  N(82): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 165
  terminated:false
@@ -19742,7 +19742,7 @@
 40: IF N(X) < 0 THEN 90
  X: 83
  N(83): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 37
  K = 38
@@ -19752,7 +19752,7 @@
  P(38) = 167
 56: IF P > SQR(2000) THEN 90
  P: 167
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 167
  terminated:false
@@ -19763,7 +19763,7 @@
 40: IF N(X) < 0 THEN 90
  X: 84
  N(84): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 169
  terminated:false
@@ -19774,7 +19774,7 @@
 40: IF N(X) < 0 THEN 90
  X: 85
  N(85): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 171
  terminated:false
@@ -19785,7 +19785,7 @@
 40: IF N(X) < 0 THEN 90
  X: 86
  N(86): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 38
  K = 39
@@ -19795,7 +19795,7 @@
  P(39) = 173
 56: IF P > SQR(2000) THEN 90
  P: 173
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 173
  terminated:false
@@ -19806,7 +19806,7 @@
 40: IF N(X) < 0 THEN 90
  X: 87
  N(87): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 175
  terminated:false
@@ -19817,7 +19817,7 @@
 40: IF N(X) < 0 THEN 90
  X: 88
  N(88): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 177
  terminated:false
@@ -19828,7 +19828,7 @@
 40: IF N(X) < 0 THEN 90
  X: 89
  N(89): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 39
  K = 40
@@ -19838,7 +19838,7 @@
  P(40) = 179
 56: IF P > SQR(2000) THEN 90
  P: 179
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 179
  terminated:false
@@ -19849,7 +19849,7 @@
 40: IF N(X) < 0 THEN 90
  X: 90
  N(90): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 40
  K = 41
@@ -19859,7 +19859,7 @@
  P(41) = 181
 56: IF P > SQR(2000) THEN 90
  P: 181
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 181
  terminated:false
@@ -19870,7 +19870,7 @@
 40: IF N(X) < 0 THEN 90
  X: 91
  N(91): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 183
  terminated:false
@@ -19881,7 +19881,7 @@
 40: IF N(X) < 0 THEN 90
  X: 92
  N(92): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 185
  terminated:false
@@ -19892,7 +19892,7 @@
 40: IF N(X) < 0 THEN 90
  X: 93
  N(93): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 187
  terminated:false
@@ -19903,7 +19903,7 @@
 40: IF N(X) < 0 THEN 90
  X: 94
  N(94): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 189
  terminated:false
@@ -19914,7 +19914,7 @@
 40: IF N(X) < 0 THEN 90
  X: 95
  N(95): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 41
  K = 42
@@ -19924,7 +19924,7 @@
  P(42) = 191
 56: IF P > SQR(2000) THEN 90
  P: 191
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 191
  terminated:false
@@ -19935,7 +19935,7 @@
 40: IF N(X) < 0 THEN 90
  X: 96
  N(96): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 42
  K = 43
@@ -19945,7 +19945,7 @@
  P(43) = 193
 56: IF P > SQR(2000) THEN 90
  P: 193
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 193
  terminated:false
@@ -19956,7 +19956,7 @@
 40: IF N(X) < 0 THEN 90
  X: 97
  N(97): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 195
  terminated:false
@@ -19967,7 +19967,7 @@
 40: IF N(X) < 0 THEN 90
  X: 98
  N(98): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 43
  K = 44
@@ -19977,7 +19977,7 @@
  P(44) = 197
 56: IF P > SQR(2000) THEN 90
  P: 197
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 197
  terminated:false
@@ -19988,7 +19988,7 @@
 40: IF N(X) < 0 THEN 90
  X: 99
  N(99): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 44
  K = 45
@@ -19998,7 +19998,7 @@
  P(45) = 199
 56: IF P > SQR(2000) THEN 90
  P: 199
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 199
  terminated:false
@@ -20009,7 +20009,7 @@
 40: IF N(X) < 0 THEN 90
  X: 100
  N(100): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 201
  terminated:false
@@ -20020,7 +20020,7 @@
 40: IF N(X) < 0 THEN 90
  X: 101
  N(101): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 203
  terminated:false
@@ -20031,7 +20031,7 @@
 40: IF N(X) < 0 THEN 90
  X: 102
  N(102): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 205
  terminated:false
@@ -20042,7 +20042,7 @@
 40: IF N(X) < 0 THEN 90
  X: 103
  N(103): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 207
  terminated:false
@@ -20053,7 +20053,7 @@
 40: IF N(X) < 0 THEN 90
  X: 104
  N(104): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 209
  terminated:false
@@ -20064,7 +20064,7 @@
 40: IF N(X) < 0 THEN 90
  X: 105
  N(105): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 45
  K = 46
@@ -20074,7 +20074,7 @@
  P(46) = 211
 56: IF P > SQR(2000) THEN 90
  P: 211
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 211
  terminated:false
@@ -20085,7 +20085,7 @@
 40: IF N(X) < 0 THEN 90
  X: 106
  N(106): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 213
  terminated:false
@@ -20096,7 +20096,7 @@
 40: IF N(X) < 0 THEN 90
  X: 107
  N(107): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 215
  terminated:false
@@ -20107,7 +20107,7 @@
 40: IF N(X) < 0 THEN 90
  X: 108
  N(108): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 217
  terminated:false
@@ -20118,7 +20118,7 @@
 40: IF N(X) < 0 THEN 90
  X: 109
  N(109): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 219
  terminated:false
@@ -20129,7 +20129,7 @@
 40: IF N(X) < 0 THEN 90
  X: 110
  N(110): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 221
  terminated:false
@@ -20140,7 +20140,7 @@
 40: IF N(X) < 0 THEN 90
  X: 111
  N(111): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 46
  K = 47
@@ -20150,7 +20150,7 @@
  P(47) = 223
 56: IF P > SQR(2000) THEN 90
  P: 223
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 223
  terminated:false
@@ -20161,7 +20161,7 @@
 40: IF N(X) < 0 THEN 90
  X: 112
  N(112): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 225
  terminated:false
@@ -20172,7 +20172,7 @@
 40: IF N(X) < 0 THEN 90
  X: 113
  N(113): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 47
  K = 48
@@ -20182,7 +20182,7 @@
  P(48) = 227
 56: IF P > SQR(2000) THEN 90
  P: 227
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 227
  terminated:false
@@ -20193,7 +20193,7 @@
 40: IF N(X) < 0 THEN 90
  X: 114
  N(114): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 48
  K = 49
@@ -20203,7 +20203,7 @@
  P(49) = 229
 56: IF P > SQR(2000) THEN 90
  P: 229
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 229
  terminated:false
@@ -20214,7 +20214,7 @@
 40: IF N(X) < 0 THEN 90
  X: 115
  N(115): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 231
  terminated:false
@@ -20225,7 +20225,7 @@
 40: IF N(X) < 0 THEN 90
  X: 116
  N(116): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 49
  K = 50
@@ -20235,7 +20235,7 @@
  P(50) = 233
 56: IF P > SQR(2000) THEN 90
  P: 233
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 233
  terminated:false
@@ -20246,7 +20246,7 @@
 40: IF N(X) < 0 THEN 90
  X: 117
  N(117): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 235
  terminated:false
@@ -20257,7 +20257,7 @@
 40: IF N(X) < 0 THEN 90
  X: 118
  N(118): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 237
  terminated:false
@@ -20268,7 +20268,7 @@
 40: IF N(X) < 0 THEN 90
  X: 119
  N(119): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 50
  K = 51
@@ -20278,7 +20278,7 @@
  P(51) = 239
 56: IF P > SQR(2000) THEN 90
  P: 239
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 239
  terminated:false
@@ -20289,7 +20289,7 @@
 40: IF N(X) < 0 THEN 90
  X: 120
  N(120): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 51
  K = 52
@@ -20299,7 +20299,7 @@
  P(52) = 241
 56: IF P > SQR(2000) THEN 90
  P: 241
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 241
  terminated:false
@@ -20310,7 +20310,7 @@
 40: IF N(X) < 0 THEN 90
  X: 121
  N(121): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 243
  terminated:false
@@ -20321,7 +20321,7 @@
 40: IF N(X) < 0 THEN 90
  X: 122
  N(122): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 245
  terminated:false
@@ -20332,7 +20332,7 @@
 40: IF N(X) < 0 THEN 90
  X: 123
  N(123): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 247
  terminated:false
@@ -20343,7 +20343,7 @@
 40: IF N(X) < 0 THEN 90
  X: 124
  N(124): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 249
  terminated:false
@@ -20354,7 +20354,7 @@
 40: IF N(X) < 0 THEN 90
  X: 125
  N(125): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 52
  K = 53
@@ -20364,7 +20364,7 @@
  P(53) = 251
 56: IF P > SQR(2000) THEN 90
  P: 251
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 251
  terminated:false
@@ -20375,7 +20375,7 @@
 40: IF N(X) < 0 THEN 90
  X: 126
  N(126): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 253
  terminated:false
@@ -20386,7 +20386,7 @@
 40: IF N(X) < 0 THEN 90
  X: 127
  N(127): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 255
  terminated:false
@@ -20397,7 +20397,7 @@
 40: IF N(X) < 0 THEN 90
  X: 128
  N(128): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 53
  K = 54
@@ -20407,7 +20407,7 @@
  P(54) = 257
 56: IF P > SQR(2000) THEN 90
  P: 257
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 257
  terminated:false
@@ -20418,7 +20418,7 @@
 40: IF N(X) < 0 THEN 90
  X: 129
  N(129): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 259
  terminated:false
@@ -20429,7 +20429,7 @@
 40: IF N(X) < 0 THEN 90
  X: 130
  N(130): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 261
  terminated:false
@@ -20440,7 +20440,7 @@
 40: IF N(X) < 0 THEN 90
  X: 131
  N(131): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 54
  K = 55
@@ -20450,7 +20450,7 @@
  P(55) = 263
 56: IF P > SQR(2000) THEN 90
  P: 263
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 263
  terminated:false
@@ -20461,7 +20461,7 @@
 40: IF N(X) < 0 THEN 90
  X: 132
  N(132): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 265
  terminated:false
@@ -20472,7 +20472,7 @@
 40: IF N(X) < 0 THEN 90
  X: 133
  N(133): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 267
  terminated:false
@@ -20483,7 +20483,7 @@
 40: IF N(X) < 0 THEN 90
  X: 134
  N(134): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 55
  K = 56
@@ -20493,7 +20493,7 @@
  P(56) = 269
 56: IF P > SQR(2000) THEN 90
  P: 269
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 269
  terminated:false
@@ -20504,7 +20504,7 @@
 40: IF N(X) < 0 THEN 90
  X: 135
  N(135): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 56
  K = 57
@@ -20514,7 +20514,7 @@
  P(57) = 271
 56: IF P > SQR(2000) THEN 90
  P: 271
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 271
  terminated:false
@@ -20525,7 +20525,7 @@
 40: IF N(X) < 0 THEN 90
  X: 136
  N(136): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 273
  terminated:false
@@ -20536,7 +20536,7 @@
 40: IF N(X) < 0 THEN 90
  X: 137
  N(137): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 275
  terminated:false
@@ -20547,7 +20547,7 @@
 40: IF N(X) < 0 THEN 90
  X: 138
  N(138): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 57
  K = 58
@@ -20557,7 +20557,7 @@
  P(58) = 277
 56: IF P > SQR(2000) THEN 90
  P: 277
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 277
  terminated:false
@@ -20568,7 +20568,7 @@
 40: IF N(X) < 0 THEN 90
  X: 139
  N(139): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 279
  terminated:false
@@ -20579,7 +20579,7 @@
 40: IF N(X) < 0 THEN 90
  X: 140
  N(140): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 58
  K = 59
@@ -20589,7 +20589,7 @@
  P(59) = 281
 56: IF P > SQR(2000) THEN 90
  P: 281
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 281
  terminated:false
@@ -20600,7 +20600,7 @@
 40: IF N(X) < 0 THEN 90
  X: 141
  N(141): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 59
  K = 60
@@ -20610,7 +20610,7 @@
  P(60) = 283
 56: IF P > SQR(2000) THEN 90
  P: 283
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 283
  terminated:false
@@ -20621,7 +20621,7 @@
 40: IF N(X) < 0 THEN 90
  X: 142
  N(142): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 285
  terminated:false
@@ -20632,7 +20632,7 @@
 40: IF N(X) < 0 THEN 90
  X: 143
  N(143): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 287
  terminated:false
@@ -20643,7 +20643,7 @@
 40: IF N(X) < 0 THEN 90
  X: 144
  N(144): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 289
  terminated:false
@@ -20654,7 +20654,7 @@
 40: IF N(X) < 0 THEN 90
  X: 145
  N(145): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 291
  terminated:false
@@ -20665,7 +20665,7 @@
 40: IF N(X) < 0 THEN 90
  X: 146
  N(146): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 60
  K = 61
@@ -20675,7 +20675,7 @@
  P(61) = 293
 56: IF P > SQR(2000) THEN 90
  P: 293
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 293
  terminated:false
@@ -20686,7 +20686,7 @@
 40: IF N(X) < 0 THEN 90
  X: 147
  N(147): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 295
  terminated:false
@@ -20697,7 +20697,7 @@
 40: IF N(X) < 0 THEN 90
  X: 148
  N(148): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 297
  terminated:false
@@ -20708,7 +20708,7 @@
 40: IF N(X) < 0 THEN 90
  X: 149
  N(149): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 299
  terminated:false
@@ -20719,7 +20719,7 @@
 40: IF N(X) < 0 THEN 90
  X: 150
  N(150): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 301
  terminated:false
@@ -20730,7 +20730,7 @@
 40: IF N(X) < 0 THEN 90
  X: 151
  N(151): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 303
  terminated:false
@@ -20741,7 +20741,7 @@
 40: IF N(X) < 0 THEN 90
  X: 152
  N(152): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 305
  terminated:false
@@ -20752,7 +20752,7 @@
 40: IF N(X) < 0 THEN 90
  X: 153
  N(153): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 61
  K = 62
@@ -20762,7 +20762,7 @@
  P(62) = 307
 56: IF P > SQR(2000) THEN 90
  P: 307
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 307
  terminated:false
@@ -20773,7 +20773,7 @@
 40: IF N(X) < 0 THEN 90
  X: 154
  N(154): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 309
  terminated:false
@@ -20784,7 +20784,7 @@
 40: IF N(X) < 0 THEN 90
  X: 155
  N(155): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 62
  K = 63
@@ -20794,7 +20794,7 @@
  P(63) = 311
 56: IF P > SQR(2000) THEN 90
  P: 311
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 311
  terminated:false
@@ -20805,7 +20805,7 @@
 40: IF N(X) < 0 THEN 90
  X: 156
  N(156): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 63
  K = 64
@@ -20815,7 +20815,7 @@
  P(64) = 313
 56: IF P > SQR(2000) THEN 90
  P: 313
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 313
  terminated:false
@@ -20826,7 +20826,7 @@
 40: IF N(X) < 0 THEN 90
  X: 157
  N(157): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 315
  terminated:false
@@ -20837,7 +20837,7 @@
 40: IF N(X) < 0 THEN 90
  X: 158
  N(158): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 64
  K = 65
@@ -20847,7 +20847,7 @@
  P(65) = 317
 56: IF P > SQR(2000) THEN 90
  P: 317
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 317
  terminated:false
@@ -20858,7 +20858,7 @@
 40: IF N(X) < 0 THEN 90
  X: 159
  N(159): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 319
  terminated:false
@@ -20869,7 +20869,7 @@
 40: IF N(X) < 0 THEN 90
  X: 160
  N(160): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 321
  terminated:false
@@ -20880,7 +20880,7 @@
 40: IF N(X) < 0 THEN 90
  X: 161
  N(161): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 323
  terminated:false
@@ -20891,7 +20891,7 @@
 40: IF N(X) < 0 THEN 90
  X: 162
  N(162): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 325
  terminated:false
@@ -20902,7 +20902,7 @@
 40: IF N(X) < 0 THEN 90
  X: 163
  N(163): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 327
  terminated:false
@@ -20913,7 +20913,7 @@
 40: IF N(X) < 0 THEN 90
  X: 164
  N(164): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 329
  terminated:false
@@ -20924,7 +20924,7 @@
 40: IF N(X) < 0 THEN 90
  X: 165
  N(165): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 65
  K = 66
@@ -20934,7 +20934,7 @@
  P(66) = 331
 56: IF P > SQR(2000) THEN 90
  P: 331
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 331
  terminated:false
@@ -20945,7 +20945,7 @@
 40: IF N(X) < 0 THEN 90
  X: 166
  N(166): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 333
  terminated:false
@@ -20956,7 +20956,7 @@
 40: IF N(X) < 0 THEN 90
  X: 167
  N(167): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 335
  terminated:false
@@ -20967,7 +20967,7 @@
 40: IF N(X) < 0 THEN 90
  X: 168
  N(168): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 66
  K = 67
@@ -20977,7 +20977,7 @@
  P(67) = 337
 56: IF P > SQR(2000) THEN 90
  P: 337
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 337
  terminated:false
@@ -20988,7 +20988,7 @@
 40: IF N(X) < 0 THEN 90
  X: 169
  N(169): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 339
  terminated:false
@@ -20999,7 +20999,7 @@
 40: IF N(X) < 0 THEN 90
  X: 170
  N(170): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 341
  terminated:false
@@ -21010,7 +21010,7 @@
 40: IF N(X) < 0 THEN 90
  X: 171
  N(171): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 343
  terminated:false
@@ -21021,7 +21021,7 @@
 40: IF N(X) < 0 THEN 90
  X: 172
  N(172): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 345
  terminated:false
@@ -21032,7 +21032,7 @@
 40: IF N(X) < 0 THEN 90
  X: 173
  N(173): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 67
  K = 68
@@ -21042,7 +21042,7 @@
  P(68) = 347
 56: IF P > SQR(2000) THEN 90
  P: 347
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 347
  terminated:false
@@ -21053,7 +21053,7 @@
 40: IF N(X) < 0 THEN 90
  X: 174
  N(174): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 68
  K = 69
@@ -21063,7 +21063,7 @@
  P(69) = 349
 56: IF P > SQR(2000) THEN 90
  P: 349
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 349
  terminated:false
@@ -21074,7 +21074,7 @@
 40: IF N(X) < 0 THEN 90
  X: 175
  N(175): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 351
  terminated:false
@@ -21085,7 +21085,7 @@
 40: IF N(X) < 0 THEN 90
  X: 176
  N(176): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 69
  K = 70
@@ -21095,7 +21095,7 @@
  P(70) = 353
 56: IF P > SQR(2000) THEN 90
  P: 353
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 353
  terminated:false
@@ -21106,7 +21106,7 @@
 40: IF N(X) < 0 THEN 90
  X: 177
  N(177): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 355
  terminated:false
@@ -21117,7 +21117,7 @@
 40: IF N(X) < 0 THEN 90
  X: 178
  N(178): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 357
  terminated:false
@@ -21128,7 +21128,7 @@
 40: IF N(X) < 0 THEN 90
  X: 179
  N(179): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 70
  K = 71
@@ -21138,7 +21138,7 @@
  P(71) = 359
 56: IF P > SQR(2000) THEN 90
  P: 359
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 359
  terminated:false
@@ -21149,7 +21149,7 @@
 40: IF N(X) < 0 THEN 90
  X: 180
  N(180): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 361
  terminated:false
@@ -21160,7 +21160,7 @@
 40: IF N(X) < 0 THEN 90
  X: 181
  N(181): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 363
  terminated:false
@@ -21171,7 +21171,7 @@
 40: IF N(X) < 0 THEN 90
  X: 182
  N(182): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 365
  terminated:false
@@ -21182,7 +21182,7 @@
 40: IF N(X) < 0 THEN 90
  X: 183
  N(183): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 71
  K = 72
@@ -21192,7 +21192,7 @@
  P(72) = 367
 56: IF P > SQR(2000) THEN 90
  P: 367
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 367
  terminated:false
@@ -21203,7 +21203,7 @@
 40: IF N(X) < 0 THEN 90
  X: 184
  N(184): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 369
  terminated:false
@@ -21214,7 +21214,7 @@
 40: IF N(X) < 0 THEN 90
  X: 185
  N(185): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 371
  terminated:false
@@ -21225,7 +21225,7 @@
 40: IF N(X) < 0 THEN 90
  X: 186
  N(186): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 72
  K = 73
@@ -21235,7 +21235,7 @@
  P(73) = 373
 56: IF P > SQR(2000) THEN 90
  P: 373
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 373
  terminated:false
@@ -21246,7 +21246,7 @@
 40: IF N(X) < 0 THEN 90
  X: 187
  N(187): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 375
  terminated:false
@@ -21257,7 +21257,7 @@
 40: IF N(X) < 0 THEN 90
  X: 188
  N(188): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 377
  terminated:false
@@ -21268,7 +21268,7 @@
 40: IF N(X) < 0 THEN 90
  X: 189
  N(189): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 73
  K = 74
@@ -21278,7 +21278,7 @@
  P(74) = 379
 56: IF P > SQR(2000) THEN 90
  P: 379
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 379
  terminated:false
@@ -21289,7 +21289,7 @@
 40: IF N(X) < 0 THEN 90
  X: 190
  N(190): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 381
  terminated:false
@@ -21300,7 +21300,7 @@
 40: IF N(X) < 0 THEN 90
  X: 191
  N(191): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 74
  K = 75
@@ -21310,7 +21310,7 @@
  P(75) = 383
 56: IF P > SQR(2000) THEN 90
  P: 383
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 383
  terminated:false
@@ -21321,7 +21321,7 @@
 40: IF N(X) < 0 THEN 90
  X: 192
  N(192): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 385
  terminated:false
@@ -21332,7 +21332,7 @@
 40: IF N(X) < 0 THEN 90
  X: 193
  N(193): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 387
  terminated:false
@@ -21343,7 +21343,7 @@
 40: IF N(X) < 0 THEN 90
  X: 194
  N(194): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 75
  K = 76
@@ -21353,7 +21353,7 @@
  P(76) = 389
 56: IF P > SQR(2000) THEN 90
  P: 389
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 389
  terminated:false
@@ -21364,7 +21364,7 @@
 40: IF N(X) < 0 THEN 90
  X: 195
  N(195): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 391
  terminated:false
@@ -21375,7 +21375,7 @@
 40: IF N(X) < 0 THEN 90
  X: 196
  N(196): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 393
  terminated:false
@@ -21386,7 +21386,7 @@
 40: IF N(X) < 0 THEN 90
  X: 197
  N(197): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 395
  terminated:false
@@ -21397,7 +21397,7 @@
 40: IF N(X) < 0 THEN 90
  X: 198
  N(198): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 76
  K = 77
@@ -21407,7 +21407,7 @@
  P(77) = 397
 56: IF P > SQR(2000) THEN 90
  P: 397
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 397
  terminated:false
@@ -21418,7 +21418,7 @@
 40: IF N(X) < 0 THEN 90
  X: 199
  N(199): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 399
  terminated:false
@@ -21429,7 +21429,7 @@
 40: IF N(X) < 0 THEN 90
  X: 200
  N(200): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 77
  K = 78
@@ -21439,7 +21439,7 @@
  P(78) = 401
 56: IF P > SQR(2000) THEN 90
  P: 401
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 401
  terminated:false
@@ -21450,7 +21450,7 @@
 40: IF N(X) < 0 THEN 90
  X: 201
  N(201): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 403
  terminated:false
@@ -21461,7 +21461,7 @@
 40: IF N(X) < 0 THEN 90
  X: 202
  N(202): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 405
  terminated:false
@@ -21472,7 +21472,7 @@
 40: IF N(X) < 0 THEN 90
  X: 203
  N(203): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 407
  terminated:false
@@ -21483,7 +21483,7 @@
 40: IF N(X) < 0 THEN 90
  X: 204
  N(204): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 78
  K = 79
@@ -21493,7 +21493,7 @@
  P(79) = 409
 56: IF P > SQR(2000) THEN 90
  P: 409
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 409
  terminated:false
@@ -21504,7 +21504,7 @@
 40: IF N(X) < 0 THEN 90
  X: 205
  N(205): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 411
  terminated:false
@@ -21515,7 +21515,7 @@
 40: IF N(X) < 0 THEN 90
  X: 206
  N(206): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 413
  terminated:false
@@ -21526,7 +21526,7 @@
 40: IF N(X) < 0 THEN 90
  X: 207
  N(207): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 415
  terminated:false
@@ -21537,7 +21537,7 @@
 40: IF N(X) < 0 THEN 90
  X: 208
  N(208): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 417
  terminated:false
@@ -21548,7 +21548,7 @@
 40: IF N(X) < 0 THEN 90
  X: 209
  N(209): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 79
  K = 80
@@ -21558,7 +21558,7 @@
  P(80) = 419
 56: IF P > SQR(2000) THEN 90
  P: 419
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 419
  terminated:false
@@ -21569,7 +21569,7 @@
 40: IF N(X) < 0 THEN 90
  X: 210
  N(210): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 80
  K = 81
@@ -21579,7 +21579,7 @@
  P(81) = 421
 56: IF P > SQR(2000) THEN 90
  P: 421
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 421
  terminated:false
@@ -21590,7 +21590,7 @@
 40: IF N(X) < 0 THEN 90
  X: 211
  N(211): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 423
  terminated:false
@@ -21601,7 +21601,7 @@
 40: IF N(X) < 0 THEN 90
  X: 212
  N(212): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 425
  terminated:false
@@ -21612,7 +21612,7 @@
 40: IF N(X) < 0 THEN 90
  X: 213
  N(213): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 427
  terminated:false
@@ -21623,7 +21623,7 @@
 40: IF N(X) < 0 THEN 90
  X: 214
  N(214): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 429
  terminated:false
@@ -21634,7 +21634,7 @@
 40: IF N(X) < 0 THEN 90
  X: 215
  N(215): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 81
  K = 82
@@ -21644,7 +21644,7 @@
  P(82) = 431
 56: IF P > SQR(2000) THEN 90
  P: 431
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 431
  terminated:false
@@ -21655,7 +21655,7 @@
 40: IF N(X) < 0 THEN 90
  X: 216
  N(216): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 82
  K = 83
@@ -21665,7 +21665,7 @@
  P(83) = 433
 56: IF P > SQR(2000) THEN 90
  P: 433
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 433
  terminated:false
@@ -21676,7 +21676,7 @@
 40: IF N(X) < 0 THEN 90
  X: 217
  N(217): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 435
  terminated:false
@@ -21687,7 +21687,7 @@
 40: IF N(X) < 0 THEN 90
  X: 218
  N(218): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 437
  terminated:false
@@ -21698,7 +21698,7 @@
 40: IF N(X) < 0 THEN 90
  X: 219
  N(219): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 83
  K = 84
@@ -21708,7 +21708,7 @@
  P(84) = 439
 56: IF P > SQR(2000) THEN 90
  P: 439
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 439
  terminated:false
@@ -21719,7 +21719,7 @@
 40: IF N(X) < 0 THEN 90
  X: 220
  N(220): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 441
  terminated:false
@@ -21730,7 +21730,7 @@
 40: IF N(X) < 0 THEN 90
  X: 221
  N(221): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 84
  K = 85
@@ -21740,7 +21740,7 @@
  P(85) = 443
 56: IF P > SQR(2000) THEN 90
  P: 443
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 443
  terminated:false
@@ -21751,7 +21751,7 @@
 40: IF N(X) < 0 THEN 90
  X: 222
  N(222): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 445
  terminated:false
@@ -21762,7 +21762,7 @@
 40: IF N(X) < 0 THEN 90
  X: 223
  N(223): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 447
  terminated:false
@@ -21773,7 +21773,7 @@
 40: IF N(X) < 0 THEN 90
  X: 224
  N(224): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 85
  K = 86
@@ -21783,7 +21783,7 @@
  P(86) = 449
 56: IF P > SQR(2000) THEN 90
  P: 449
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 449
  terminated:false
@@ -21794,7 +21794,7 @@
 40: IF N(X) < 0 THEN 90
  X: 225
  N(225): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 451
  terminated:false
@@ -21805,7 +21805,7 @@
 40: IF N(X) < 0 THEN 90
  X: 226
  N(226): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 453
  terminated:false
@@ -21816,7 +21816,7 @@
 40: IF N(X) < 0 THEN 90
  X: 227
  N(227): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 455
  terminated:false
@@ -21827,7 +21827,7 @@
 40: IF N(X) < 0 THEN 90
  X: 228
  N(228): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 86
  K = 87
@@ -21837,7 +21837,7 @@
  P(87) = 457
 56: IF P > SQR(2000) THEN 90
  P: 457
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 457
  terminated:false
@@ -21848,7 +21848,7 @@
 40: IF N(X) < 0 THEN 90
  X: 229
  N(229): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 459
  terminated:false
@@ -21859,7 +21859,7 @@
 40: IF N(X) < 0 THEN 90
  X: 230
  N(230): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 87
  K = 88
@@ -21869,7 +21869,7 @@
  P(88) = 461
 56: IF P > SQR(2000) THEN 90
  P: 461
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 461
  terminated:false
@@ -21880,7 +21880,7 @@
 40: IF N(X) < 0 THEN 90
  X: 231
  N(231): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 88
  K = 89
@@ -21890,7 +21890,7 @@
  P(89) = 463
 56: IF P > SQR(2000) THEN 90
  P: 463
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 463
  terminated:false
@@ -21901,7 +21901,7 @@
 40: IF N(X) < 0 THEN 90
  X: 232
  N(232): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 465
  terminated:false
@@ -21912,7 +21912,7 @@
 40: IF N(X) < 0 THEN 90
  X: 233
  N(233): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 89
  K = 90
@@ -21922,7 +21922,7 @@
  P(90) = 467
 56: IF P > SQR(2000) THEN 90
  P: 467
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 467
  terminated:false
@@ -21933,7 +21933,7 @@
 40: IF N(X) < 0 THEN 90
  X: 234
  N(234): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 469
  terminated:false
@@ -21944,7 +21944,7 @@
 40: IF N(X) < 0 THEN 90
  X: 235
  N(235): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 471
  terminated:false
@@ -21955,7 +21955,7 @@
 40: IF N(X) < 0 THEN 90
  X: 236
  N(236): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 473
  terminated:false
@@ -21966,7 +21966,7 @@
 40: IF N(X) < 0 THEN 90
  X: 237
  N(237): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 475
  terminated:false
@@ -21977,7 +21977,7 @@
 40: IF N(X) < 0 THEN 90
  X: 238
  N(238): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 477
  terminated:false
@@ -21988,7 +21988,7 @@
 40: IF N(X) < 0 THEN 90
  X: 239
  N(239): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 90
  K = 91
@@ -21998,7 +21998,7 @@
  P(91) = 479
 56: IF P > SQR(2000) THEN 90
  P: 479
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 479
  terminated:false
@@ -22009,7 +22009,7 @@
 40: IF N(X) < 0 THEN 90
  X: 240
  N(240): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 481
  terminated:false
@@ -22020,7 +22020,7 @@
 40: IF N(X) < 0 THEN 90
  X: 241
  N(241): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 483
  terminated:false
@@ -22031,7 +22031,7 @@
 40: IF N(X) < 0 THEN 90
  X: 242
  N(242): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 485
  terminated:false
@@ -22042,7 +22042,7 @@
 40: IF N(X) < 0 THEN 90
  X: 243
  N(243): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 91
  K = 92
@@ -22052,7 +22052,7 @@
  P(92) = 487
 56: IF P > SQR(2000) THEN 90
  P: 487
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 487
  terminated:false
@@ -22063,7 +22063,7 @@
 40: IF N(X) < 0 THEN 90
  X: 244
  N(244): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 489
  terminated:false
@@ -22074,7 +22074,7 @@
 40: IF N(X) < 0 THEN 90
  X: 245
  N(245): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 92
  K = 93
@@ -22084,7 +22084,7 @@
  P(93) = 491
 56: IF P > SQR(2000) THEN 90
  P: 491
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 491
  terminated:false
@@ -22095,7 +22095,7 @@
 40: IF N(X) < 0 THEN 90
  X: 246
  N(246): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 493
  terminated:false
@@ -22106,7 +22106,7 @@
 40: IF N(X) < 0 THEN 90
  X: 247
  N(247): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 495
  terminated:false
@@ -22117,7 +22117,7 @@
 40: IF N(X) < 0 THEN 90
  X: 248
  N(248): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 497
  terminated:false
@@ -22128,7 +22128,7 @@
 40: IF N(X) < 0 THEN 90
  X: 249
  N(249): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 93
  K = 94
@@ -22138,7 +22138,7 @@
  P(94) = 499
 56: IF P > SQR(2000) THEN 90
  P: 499
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 499
  terminated:false
@@ -22149,7 +22149,7 @@
 40: IF N(X) < 0 THEN 90
  X: 250
  N(250): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 501
  terminated:false
@@ -22160,7 +22160,7 @@
 40: IF N(X) < 0 THEN 90
  X: 251
  N(251): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 94
  K = 95
@@ -22170,7 +22170,7 @@
  P(95) = 503
 56: IF P > SQR(2000) THEN 90
  P: 503
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 503
  terminated:false
@@ -22181,7 +22181,7 @@
 40: IF N(X) < 0 THEN 90
  X: 252
  N(252): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 505
  terminated:false
@@ -22192,7 +22192,7 @@
 40: IF N(X) < 0 THEN 90
  X: 253
  N(253): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 507
  terminated:false
@@ -22203,7 +22203,7 @@
 40: IF N(X) < 0 THEN 90
  X: 254
  N(254): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 95
  K = 96
@@ -22213,7 +22213,7 @@
  P(96) = 509
 56: IF P > SQR(2000) THEN 90
  P: 509
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 509
  terminated:false
@@ -22224,7 +22224,7 @@
 40: IF N(X) < 0 THEN 90
  X: 255
  N(255): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 511
  terminated:false
@@ -22235,7 +22235,7 @@
 40: IF N(X) < 0 THEN 90
  X: 256
  N(256): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 513
  terminated:false
@@ -22246,7 +22246,7 @@
 40: IF N(X) < 0 THEN 90
  X: 257
  N(257): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 515
  terminated:false
@@ -22257,7 +22257,7 @@
 40: IF N(X) < 0 THEN 90
  X: 258
  N(258): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 517
  terminated:false
@@ -22268,7 +22268,7 @@
 40: IF N(X) < 0 THEN 90
  X: 259
  N(259): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 519
  terminated:false
@@ -22279,7 +22279,7 @@
 40: IF N(X) < 0 THEN 90
  X: 260
  N(260): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 96
  K = 97
@@ -22289,7 +22289,7 @@
  P(97) = 521
 56: IF P > SQR(2000) THEN 90
  P: 521
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 521
  terminated:false
@@ -22300,7 +22300,7 @@
 40: IF N(X) < 0 THEN 90
  X: 261
  N(261): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 97
  K = 98
@@ -22310,7 +22310,7 @@
  P(98) = 523
 56: IF P > SQR(2000) THEN 90
  P: 523
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 523
  terminated:false
@@ -22321,7 +22321,7 @@
 40: IF N(X) < 0 THEN 90
  X: 262
  N(262): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 525
  terminated:false
@@ -22332,7 +22332,7 @@
 40: IF N(X) < 0 THEN 90
  X: 263
  N(263): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 527
  terminated:false
@@ -22343,7 +22343,7 @@
 40: IF N(X) < 0 THEN 90
  X: 264
  N(264): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 529
  terminated:false
@@ -22354,7 +22354,7 @@
 40: IF N(X) < 0 THEN 90
  X: 265
  N(265): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 531
  terminated:false
@@ -22365,7 +22365,7 @@
 40: IF N(X) < 0 THEN 90
  X: 266
  N(266): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 533
  terminated:false
@@ -22376,7 +22376,7 @@
 40: IF N(X) < 0 THEN 90
  X: 267
  N(267): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 535
  terminated:false
@@ -22387,7 +22387,7 @@
 40: IF N(X) < 0 THEN 90
  X: 268
  N(268): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 537
  terminated:false
@@ -22398,7 +22398,7 @@
 40: IF N(X) < 0 THEN 90
  X: 269
  N(269): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 539
  terminated:false
@@ -22409,7 +22409,7 @@
 40: IF N(X) < 0 THEN 90
  X: 270
  N(270): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 98
  K = 99
@@ -22419,7 +22419,7 @@
  P(99) = 541
 56: IF P > SQR(2000) THEN 90
  P: 541
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 541
  terminated:false
@@ -22430,7 +22430,7 @@
 40: IF N(X) < 0 THEN 90
  X: 271
  N(271): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 543
  terminated:false
@@ -22441,7 +22441,7 @@
 40: IF N(X) < 0 THEN 90
  X: 272
  N(272): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 545
  terminated:false
@@ -22452,7 +22452,7 @@
 40: IF N(X) < 0 THEN 90
  X: 273
  N(273): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 99
  K = 100
@@ -22462,7 +22462,7 @@
  P(100) = 547
 56: IF P > SQR(2000) THEN 90
  P: 547
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 547
  terminated:false
@@ -22473,7 +22473,7 @@
 40: IF N(X) < 0 THEN 90
  X: 274
  N(274): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 549
  terminated:false
@@ -22484,7 +22484,7 @@
 40: IF N(X) < 0 THEN 90
  X: 275
  N(275): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 551
  terminated:false
@@ -22495,7 +22495,7 @@
 40: IF N(X) < 0 THEN 90
  X: 276
  N(276): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 553
  terminated:false
@@ -22506,7 +22506,7 @@
 40: IF N(X) < 0 THEN 90
  X: 277
  N(277): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 555
  terminated:false
@@ -22517,7 +22517,7 @@
 40: IF N(X) < 0 THEN 90
  X: 278
  N(278): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 100
  K = 101
@@ -22527,7 +22527,7 @@
  P(101) = 557
 56: IF P > SQR(2000) THEN 90
  P: 557
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 557
  terminated:false
@@ -22538,7 +22538,7 @@
 40: IF N(X) < 0 THEN 90
  X: 279
  N(279): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 559
  terminated:false
@@ -22549,7 +22549,7 @@
 40: IF N(X) < 0 THEN 90
  X: 280
  N(280): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 561
  terminated:false
@@ -22560,7 +22560,7 @@
 40: IF N(X) < 0 THEN 90
  X: 281
  N(281): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 101
  K = 102
@@ -22570,7 +22570,7 @@
  P(102) = 563
 56: IF P > SQR(2000) THEN 90
  P: 563
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 563
  terminated:false
@@ -22581,7 +22581,7 @@
 40: IF N(X) < 0 THEN 90
  X: 282
  N(282): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 565
  terminated:false
@@ -22592,7 +22592,7 @@
 40: IF N(X) < 0 THEN 90
  X: 283
  N(283): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 567
  terminated:false
@@ -22603,7 +22603,7 @@
 40: IF N(X) < 0 THEN 90
  X: 284
  N(284): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 102
  K = 103
@@ -22613,7 +22613,7 @@
  P(103) = 569
 56: IF P > SQR(2000) THEN 90
  P: 569
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 569
  terminated:false
@@ -22624,7 +22624,7 @@
 40: IF N(X) < 0 THEN 90
  X: 285
  N(285): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 103
  K = 104
@@ -22634,7 +22634,7 @@
  P(104) = 571
 56: IF P > SQR(2000) THEN 90
  P: 571
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 571
  terminated:false
@@ -22645,7 +22645,7 @@
 40: IF N(X) < 0 THEN 90
  X: 286
  N(286): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 573
  terminated:false
@@ -22656,7 +22656,7 @@
 40: IF N(X) < 0 THEN 90
  X: 287
  N(287): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 575
  terminated:false
@@ -22667,7 +22667,7 @@
 40: IF N(X) < 0 THEN 90
  X: 288
  N(288): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 104
  K = 105
@@ -22677,7 +22677,7 @@
  P(105) = 577
 56: IF P > SQR(2000) THEN 90
  P: 577
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 577
  terminated:false
@@ -22688,7 +22688,7 @@
 40: IF N(X) < 0 THEN 90
  X: 289
  N(289): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 579
  terminated:false
@@ -22699,7 +22699,7 @@
 40: IF N(X) < 0 THEN 90
  X: 290
  N(290): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 581
  terminated:false
@@ -22710,7 +22710,7 @@
 40: IF N(X) < 0 THEN 90
  X: 291
  N(291): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 583
  terminated:false
@@ -22721,7 +22721,7 @@
 40: IF N(X) < 0 THEN 90
  X: 292
  N(292): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 585
  terminated:false
@@ -22732,7 +22732,7 @@
 40: IF N(X) < 0 THEN 90
  X: 293
  N(293): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 105
  K = 106
@@ -22742,7 +22742,7 @@
  P(106) = 587
 56: IF P > SQR(2000) THEN 90
  P: 587
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 587
  terminated:false
@@ -22753,7 +22753,7 @@
 40: IF N(X) < 0 THEN 90
  X: 294
  N(294): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 589
  terminated:false
@@ -22764,7 +22764,7 @@
 40: IF N(X) < 0 THEN 90
  X: 295
  N(295): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 591
  terminated:false
@@ -22775,7 +22775,7 @@
 40: IF N(X) < 0 THEN 90
  X: 296
  N(296): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 106
  K = 107
@@ -22785,7 +22785,7 @@
  P(107) = 593
 56: IF P > SQR(2000) THEN 90
  P: 593
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 593
  terminated:false
@@ -22796,7 +22796,7 @@
 40: IF N(X) < 0 THEN 90
  X: 297
  N(297): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 595
  terminated:false
@@ -22807,7 +22807,7 @@
 40: IF N(X) < 0 THEN 90
  X: 298
  N(298): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 597
  terminated:false
@@ -22818,7 +22818,7 @@
 40: IF N(X) < 0 THEN 90
  X: 299
  N(299): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 107
  K = 108
@@ -22828,7 +22828,7 @@
  P(108) = 599
 56: IF P > SQR(2000) THEN 90
  P: 599
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 599
  terminated:false
@@ -22839,7 +22839,7 @@
 40: IF N(X) < 0 THEN 90
  X: 300
  N(300): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 108
  K = 109
@@ -22849,7 +22849,7 @@
  P(109) = 601
 56: IF P > SQR(2000) THEN 90
  P: 601
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 601
  terminated:false
@@ -22860,7 +22860,7 @@
 40: IF N(X) < 0 THEN 90
  X: 301
  N(301): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 603
  terminated:false
@@ -22871,7 +22871,7 @@
 40: IF N(X) < 0 THEN 90
  X: 302
  N(302): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 605
  terminated:false
@@ -22882,7 +22882,7 @@
 40: IF N(X) < 0 THEN 90
  X: 303
  N(303): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 109
  K = 110
@@ -22892,7 +22892,7 @@
  P(110) = 607
 56: IF P > SQR(2000) THEN 90
  P: 607
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 607
  terminated:false
@@ -22903,7 +22903,7 @@
 40: IF N(X) < 0 THEN 90
  X: 304
  N(304): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 609
  terminated:false
@@ -22914,7 +22914,7 @@
 40: IF N(X) < 0 THEN 90
  X: 305
  N(305): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 611
  terminated:false
@@ -22925,7 +22925,7 @@
 40: IF N(X) < 0 THEN 90
  X: 306
  N(306): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 110
  K = 111
@@ -22935,7 +22935,7 @@
  P(111) = 613
 56: IF P > SQR(2000) THEN 90
  P: 613
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 613
  terminated:false
@@ -22946,7 +22946,7 @@
 40: IF N(X) < 0 THEN 90
  X: 307
  N(307): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 615
  terminated:false
@@ -22957,7 +22957,7 @@
 40: IF N(X) < 0 THEN 90
  X: 308
  N(308): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 111
  K = 112
@@ -22967,7 +22967,7 @@
  P(112) = 617
 56: IF P > SQR(2000) THEN 90
  P: 617
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 617
  terminated:false
@@ -22978,7 +22978,7 @@
 40: IF N(X) < 0 THEN 90
  X: 309
  N(309): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 112
  K = 113
@@ -22988,7 +22988,7 @@
  P(113) = 619
 56: IF P > SQR(2000) THEN 90
  P: 619
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 619
  terminated:false
@@ -22999,7 +22999,7 @@
 40: IF N(X) < 0 THEN 90
  X: 310
  N(310): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 621
  terminated:false
@@ -23010,7 +23010,7 @@
 40: IF N(X) < 0 THEN 90
  X: 311
  N(311): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 623
  terminated:false
@@ -23021,7 +23021,7 @@
 40: IF N(X) < 0 THEN 90
  X: 312
  N(312): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 625
  terminated:false
@@ -23032,7 +23032,7 @@
 40: IF N(X) < 0 THEN 90
  X: 313
  N(313): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 627
  terminated:false
@@ -23043,7 +23043,7 @@
 40: IF N(X) < 0 THEN 90
  X: 314
  N(314): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 629
  terminated:false
@@ -23054,7 +23054,7 @@
 40: IF N(X) < 0 THEN 90
  X: 315
  N(315): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 113
  K = 114
@@ -23064,7 +23064,7 @@
  P(114) = 631
 56: IF P > SQR(2000) THEN 90
  P: 631
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 631
  terminated:false
@@ -23075,7 +23075,7 @@
 40: IF N(X) < 0 THEN 90
  X: 316
  N(316): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 633
  terminated:false
@@ -23086,7 +23086,7 @@
 40: IF N(X) < 0 THEN 90
  X: 317
  N(317): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 635
  terminated:false
@@ -23097,7 +23097,7 @@
 40: IF N(X) < 0 THEN 90
  X: 318
  N(318): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 637
  terminated:false
@@ -23108,7 +23108,7 @@
 40: IF N(X) < 0 THEN 90
  X: 319
  N(319): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 639
  terminated:false
@@ -23119,7 +23119,7 @@
 40: IF N(X) < 0 THEN 90
  X: 320
  N(320): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 114
  K = 115
@@ -23129,7 +23129,7 @@
  P(115) = 641
 56: IF P > SQR(2000) THEN 90
  P: 641
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 641
  terminated:false
@@ -23140,7 +23140,7 @@
 40: IF N(X) < 0 THEN 90
  X: 321
  N(321): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 115
  K = 116
@@ -23150,7 +23150,7 @@
  P(116) = 643
 56: IF P > SQR(2000) THEN 90
  P: 643
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 643
  terminated:false
@@ -23161,7 +23161,7 @@
 40: IF N(X) < 0 THEN 90
  X: 322
  N(322): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 645
  terminated:false
@@ -23172,7 +23172,7 @@
 40: IF N(X) < 0 THEN 90
  X: 323
  N(323): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 116
  K = 117
@@ -23182,7 +23182,7 @@
  P(117) = 647
 56: IF P > SQR(2000) THEN 90
  P: 647
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 647
  terminated:false
@@ -23193,7 +23193,7 @@
 40: IF N(X) < 0 THEN 90
  X: 324
  N(324): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 649
  terminated:false
@@ -23204,7 +23204,7 @@
 40: IF N(X) < 0 THEN 90
  X: 325
  N(325): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 651
  terminated:false
@@ -23215,7 +23215,7 @@
 40: IF N(X) < 0 THEN 90
  X: 326
  N(326): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 117
  K = 118
@@ -23225,7 +23225,7 @@
  P(118) = 653
 56: IF P > SQR(2000) THEN 90
  P: 653
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 653
  terminated:false
@@ -23236,7 +23236,7 @@
 40: IF N(X) < 0 THEN 90
  X: 327
  N(327): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 655
  terminated:false
@@ -23247,7 +23247,7 @@
 40: IF N(X) < 0 THEN 90
  X: 328
  N(328): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 657
  terminated:false
@@ -23258,7 +23258,7 @@
 40: IF N(X) < 0 THEN 90
  X: 329
  N(329): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 118
  K = 119
@@ -23268,7 +23268,7 @@
  P(119) = 659
 56: IF P > SQR(2000) THEN 90
  P: 659
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 659
  terminated:false
@@ -23279,7 +23279,7 @@
 40: IF N(X) < 0 THEN 90
  X: 330
  N(330): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 119
  K = 120
@@ -23289,7 +23289,7 @@
  P(120) = 661
 56: IF P > SQR(2000) THEN 90
  P: 661
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 661
  terminated:false
@@ -23300,7 +23300,7 @@
 40: IF N(X) < 0 THEN 90
  X: 331
  N(331): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 663
  terminated:false
@@ -23311,7 +23311,7 @@
 40: IF N(X) < 0 THEN 90
  X: 332
  N(332): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 665
  terminated:false
@@ -23322,7 +23322,7 @@
 40: IF N(X) < 0 THEN 90
  X: 333
  N(333): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 667
  terminated:false
@@ -23333,7 +23333,7 @@
 40: IF N(X) < 0 THEN 90
  X: 334
  N(334): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 669
  terminated:false
@@ -23344,7 +23344,7 @@
 40: IF N(X) < 0 THEN 90
  X: 335
  N(335): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 671
  terminated:false
@@ -23355,7 +23355,7 @@
 40: IF N(X) < 0 THEN 90
  X: 336
  N(336): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 120
  K = 121
@@ -23365,7 +23365,7 @@
  P(121) = 673
 56: IF P > SQR(2000) THEN 90
  P: 673
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 673
  terminated:false
@@ -23376,7 +23376,7 @@
 40: IF N(X) < 0 THEN 90
  X: 337
  N(337): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 675
  terminated:false
@@ -23387,7 +23387,7 @@
 40: IF N(X) < 0 THEN 90
  X: 338
  N(338): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 121
  K = 122
@@ -23397,7 +23397,7 @@
  P(122) = 677
 56: IF P > SQR(2000) THEN 90
  P: 677
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 677
  terminated:false
@@ -23408,7 +23408,7 @@
 40: IF N(X) < 0 THEN 90
  X: 339
  N(339): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 679
  terminated:false
@@ -23419,7 +23419,7 @@
 40: IF N(X) < 0 THEN 90
  X: 340
  N(340): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 681
  terminated:false
@@ -23430,7 +23430,7 @@
 40: IF N(X) < 0 THEN 90
  X: 341
  N(341): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 122
  K = 123
@@ -23440,7 +23440,7 @@
  P(123) = 683
 56: IF P > SQR(2000) THEN 90
  P: 683
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 683
  terminated:false
@@ -23451,7 +23451,7 @@
 40: IF N(X) < 0 THEN 90
  X: 342
  N(342): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 685
  terminated:false
@@ -23462,7 +23462,7 @@
 40: IF N(X) < 0 THEN 90
  X: 343
  N(343): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 687
  terminated:false
@@ -23473,7 +23473,7 @@
 40: IF N(X) < 0 THEN 90
  X: 344
  N(344): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 689
  terminated:false
@@ -23484,7 +23484,7 @@
 40: IF N(X) < 0 THEN 90
  X: 345
  N(345): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 123
  K = 124
@@ -23494,7 +23494,7 @@
  P(124) = 691
 56: IF P > SQR(2000) THEN 90
  P: 691
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 691
  terminated:false
@@ -23505,7 +23505,7 @@
 40: IF N(X) < 0 THEN 90
  X: 346
  N(346): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 693
  terminated:false
@@ -23516,7 +23516,7 @@
 40: IF N(X) < 0 THEN 90
  X: 347
  N(347): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 695
  terminated:false
@@ -23527,7 +23527,7 @@
 40: IF N(X) < 0 THEN 90
  X: 348
  N(348): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 697
  terminated:false
@@ -23538,7 +23538,7 @@
 40: IF N(X) < 0 THEN 90
  X: 349
  N(349): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 699
  terminated:false
@@ -23549,7 +23549,7 @@
 40: IF N(X) < 0 THEN 90
  X: 350
  N(350): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 124
  K = 125
@@ -23559,7 +23559,7 @@
  P(125) = 701
 56: IF P > SQR(2000) THEN 90
  P: 701
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 701
  terminated:false
@@ -23570,7 +23570,7 @@
 40: IF N(X) < 0 THEN 90
  X: 351
  N(351): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 703
  terminated:false
@@ -23581,7 +23581,7 @@
 40: IF N(X) < 0 THEN 90
  X: 352
  N(352): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 705
  terminated:false
@@ -23592,7 +23592,7 @@
 40: IF N(X) < 0 THEN 90
  X: 353
  N(353): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 707
  terminated:false
@@ -23603,7 +23603,7 @@
 40: IF N(X) < 0 THEN 90
  X: 354
  N(354): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 125
  K = 126
@@ -23613,7 +23613,7 @@
  P(126) = 709
 56: IF P > SQR(2000) THEN 90
  P: 709
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 709
  terminated:false
@@ -23624,7 +23624,7 @@
 40: IF N(X) < 0 THEN 90
  X: 355
  N(355): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 711
  terminated:false
@@ -23635,7 +23635,7 @@
 40: IF N(X) < 0 THEN 90
  X: 356
  N(356): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 713
  terminated:false
@@ -23646,7 +23646,7 @@
 40: IF N(X) < 0 THEN 90
  X: 357
  N(357): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 715
  terminated:false
@@ -23657,7 +23657,7 @@
 40: IF N(X) < 0 THEN 90
  X: 358
  N(358): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 717
  terminated:false
@@ -23668,7 +23668,7 @@
 40: IF N(X) < 0 THEN 90
  X: 359
  N(359): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 126
  K = 127
@@ -23678,7 +23678,7 @@
  P(127) = 719
 56: IF P > SQR(2000) THEN 90
  P: 719
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 719
  terminated:false
@@ -23689,7 +23689,7 @@
 40: IF N(X) < 0 THEN 90
  X: 360
  N(360): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 721
  terminated:false
@@ -23700,7 +23700,7 @@
 40: IF N(X) < 0 THEN 90
  X: 361
  N(361): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 723
  terminated:false
@@ -23711,7 +23711,7 @@
 40: IF N(X) < 0 THEN 90
  X: 362
  N(362): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 725
  terminated:false
@@ -23722,7 +23722,7 @@
 40: IF N(X) < 0 THEN 90
  X: 363
  N(363): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 127
  K = 128
@@ -23732,7 +23732,7 @@
  P(128) = 727
 56: IF P > SQR(2000) THEN 90
  P: 727
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 727
  terminated:false
@@ -23743,7 +23743,7 @@
 40: IF N(X) < 0 THEN 90
  X: 364
  N(364): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 729
  terminated:false
@@ -23754,7 +23754,7 @@
 40: IF N(X) < 0 THEN 90
  X: 365
  N(365): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 731
  terminated:false
@@ -23765,7 +23765,7 @@
 40: IF N(X) < 0 THEN 90
  X: 366
  N(366): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 128
  K = 129
@@ -23775,7 +23775,7 @@
  P(129) = 733
 56: IF P > SQR(2000) THEN 90
  P: 733
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 733
  terminated:false
@@ -23786,7 +23786,7 @@
 40: IF N(X) < 0 THEN 90
  X: 367
  N(367): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 735
  terminated:false
@@ -23797,7 +23797,7 @@
 40: IF N(X) < 0 THEN 90
  X: 368
  N(368): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 737
  terminated:false
@@ -23808,7 +23808,7 @@
 40: IF N(X) < 0 THEN 90
  X: 369
  N(369): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 129
  K = 130
@@ -23818,7 +23818,7 @@
  P(130) = 739
 56: IF P > SQR(2000) THEN 90
  P: 739
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 739
  terminated:false
@@ -23829,7 +23829,7 @@
 40: IF N(X) < 0 THEN 90
  X: 370
  N(370): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 741
  terminated:false
@@ -23840,7 +23840,7 @@
 40: IF N(X) < 0 THEN 90
  X: 371
  N(371): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 130
  K = 131
@@ -23850,7 +23850,7 @@
  P(131) = 743
 56: IF P > SQR(2000) THEN 90
  P: 743
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 743
  terminated:false
@@ -23861,7 +23861,7 @@
 40: IF N(X) < 0 THEN 90
  X: 372
  N(372): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 745
  terminated:false
@@ -23872,7 +23872,7 @@
 40: IF N(X) < 0 THEN 90
  X: 373
  N(373): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 747
  terminated:false
@@ -23883,7 +23883,7 @@
 40: IF N(X) < 0 THEN 90
  X: 374
  N(374): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 749
  terminated:false
@@ -23894,7 +23894,7 @@
 40: IF N(X) < 0 THEN 90
  X: 375
  N(375): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 131
  K = 132
@@ -23904,7 +23904,7 @@
  P(132) = 751
 56: IF P > SQR(2000) THEN 90
  P: 751
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 751
  terminated:false
@@ -23915,7 +23915,7 @@
 40: IF N(X) < 0 THEN 90
  X: 376
  N(376): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 753
  terminated:false
@@ -23926,7 +23926,7 @@
 40: IF N(X) < 0 THEN 90
  X: 377
  N(377): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 755
  terminated:false
@@ -23937,7 +23937,7 @@
 40: IF N(X) < 0 THEN 90
  X: 378
  N(378): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 132
  K = 133
@@ -23947,7 +23947,7 @@
  P(133) = 757
 56: IF P > SQR(2000) THEN 90
  P: 757
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 757
  terminated:false
@@ -23958,7 +23958,7 @@
 40: IF N(X) < 0 THEN 90
  X: 379
  N(379): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 759
  terminated:false
@@ -23969,7 +23969,7 @@
 40: IF N(X) < 0 THEN 90
  X: 380
  N(380): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 133
  K = 134
@@ -23979,7 +23979,7 @@
  P(134) = 761
 56: IF P > SQR(2000) THEN 90
  P: 761
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 761
  terminated:false
@@ -23990,7 +23990,7 @@
 40: IF N(X) < 0 THEN 90
  X: 381
  N(381): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 763
  terminated:false
@@ -24001,7 +24001,7 @@
 40: IF N(X) < 0 THEN 90
  X: 382
  N(382): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 765
  terminated:false
@@ -24012,7 +24012,7 @@
 40: IF N(X) < 0 THEN 90
  X: 383
  N(383): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 767
  terminated:false
@@ -24023,7 +24023,7 @@
 40: IF N(X) < 0 THEN 90
  X: 384
  N(384): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 134
  K = 135
@@ -24033,7 +24033,7 @@
  P(135) = 769
 56: IF P > SQR(2000) THEN 90
  P: 769
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 769
  terminated:false
@@ -24044,7 +24044,7 @@
 40: IF N(X) < 0 THEN 90
  X: 385
  N(385): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 771
  terminated:false
@@ -24055,7 +24055,7 @@
 40: IF N(X) < 0 THEN 90
  X: 386
  N(386): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 135
  K = 136
@@ -24065,7 +24065,7 @@
  P(136) = 773
 56: IF P > SQR(2000) THEN 90
  P: 773
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 773
  terminated:false
@@ -24076,7 +24076,7 @@
 40: IF N(X) < 0 THEN 90
  X: 387
  N(387): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 775
  terminated:false
@@ -24087,7 +24087,7 @@
 40: IF N(X) < 0 THEN 90
  X: 388
  N(388): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 777
  terminated:false
@@ -24098,7 +24098,7 @@
 40: IF N(X) < 0 THEN 90
  X: 389
  N(389): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 779
  terminated:false
@@ -24109,7 +24109,7 @@
 40: IF N(X) < 0 THEN 90
  X: 390
  N(390): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 781
  terminated:false
@@ -24120,7 +24120,7 @@
 40: IF N(X) < 0 THEN 90
  X: 391
  N(391): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 783
  terminated:false
@@ -24131,7 +24131,7 @@
 40: IF N(X) < 0 THEN 90
  X: 392
  N(392): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 785
  terminated:false
@@ -24142,7 +24142,7 @@
 40: IF N(X) < 0 THEN 90
  X: 393
  N(393): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 136
  K = 137
@@ -24152,7 +24152,7 @@
  P(137) = 787
 56: IF P > SQR(2000) THEN 90
  P: 787
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 787
  terminated:false
@@ -24163,7 +24163,7 @@
 40: IF N(X) < 0 THEN 90
  X: 394
  N(394): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 789
  terminated:false
@@ -24174,7 +24174,7 @@
 40: IF N(X) < 0 THEN 90
  X: 395
  N(395): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 791
  terminated:false
@@ -24185,7 +24185,7 @@
 40: IF N(X) < 0 THEN 90
  X: 396
  N(396): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 793
  terminated:false
@@ -24196,7 +24196,7 @@
 40: IF N(X) < 0 THEN 90
  X: 397
  N(397): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 795
  terminated:false
@@ -24207,7 +24207,7 @@
 40: IF N(X) < 0 THEN 90
  X: 398
  N(398): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 137
  K = 138
@@ -24217,7 +24217,7 @@
  P(138) = 797
 56: IF P > SQR(2000) THEN 90
  P: 797
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 797
  terminated:false
@@ -24228,7 +24228,7 @@
 40: IF N(X) < 0 THEN 90
  X: 399
  N(399): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 799
  terminated:false
@@ -24239,7 +24239,7 @@
 40: IF N(X) < 0 THEN 90
  X: 400
  N(400): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 801
  terminated:false
@@ -24250,7 +24250,7 @@
 40: IF N(X) < 0 THEN 90
  X: 401
  N(401): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 803
  terminated:false
@@ -24261,7 +24261,7 @@
 40: IF N(X) < 0 THEN 90
  X: 402
  N(402): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 805
  terminated:false
@@ -24272,7 +24272,7 @@
 40: IF N(X) < 0 THEN 90
  X: 403
  N(403): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 807
  terminated:false
@@ -24283,7 +24283,7 @@
 40: IF N(X) < 0 THEN 90
  X: 404
  N(404): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 138
  K = 139
@@ -24293,7 +24293,7 @@
  P(139) = 809
 56: IF P > SQR(2000) THEN 90
  P: 809
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 809
  terminated:false
@@ -24304,7 +24304,7 @@
 40: IF N(X) < 0 THEN 90
  X: 405
  N(405): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 139
  K = 140
@@ -24314,7 +24314,7 @@
  P(140) = 811
 56: IF P > SQR(2000) THEN 90
  P: 811
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 811
  terminated:false
@@ -24325,7 +24325,7 @@
 40: IF N(X) < 0 THEN 90
  X: 406
  N(406): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 813
  terminated:false
@@ -24336,7 +24336,7 @@
 40: IF N(X) < 0 THEN 90
  X: 407
  N(407): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 815
  terminated:false
@@ -24347,7 +24347,7 @@
 40: IF N(X) < 0 THEN 90
  X: 408
  N(408): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 817
  terminated:false
@@ -24358,7 +24358,7 @@
 40: IF N(X) < 0 THEN 90
  X: 409
  N(409): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 819
  terminated:false
@@ -24369,7 +24369,7 @@
 40: IF N(X) < 0 THEN 90
  X: 410
  N(410): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 140
  K = 141
@@ -24379,7 +24379,7 @@
  P(141) = 821
 56: IF P > SQR(2000) THEN 90
  P: 821
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 821
  terminated:false
@@ -24390,7 +24390,7 @@
 40: IF N(X) < 0 THEN 90
  X: 411
  N(411): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 141
  K = 142
@@ -24400,7 +24400,7 @@
  P(142) = 823
 56: IF P > SQR(2000) THEN 90
  P: 823
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 823
  terminated:false
@@ -24411,7 +24411,7 @@
 40: IF N(X) < 0 THEN 90
  X: 412
  N(412): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 825
  terminated:false
@@ -24422,7 +24422,7 @@
 40: IF N(X) < 0 THEN 90
  X: 413
  N(413): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 142
  K = 143
@@ -24432,7 +24432,7 @@
  P(143) = 827
 56: IF P > SQR(2000) THEN 90
  P: 827
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 827
  terminated:false
@@ -24443,7 +24443,7 @@
 40: IF N(X) < 0 THEN 90
  X: 414
  N(414): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 143
  K = 144
@@ -24453,7 +24453,7 @@
  P(144) = 829
 56: IF P > SQR(2000) THEN 90
  P: 829
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 829
  terminated:false
@@ -24464,7 +24464,7 @@
 40: IF N(X) < 0 THEN 90
  X: 415
  N(415): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 831
  terminated:false
@@ -24475,7 +24475,7 @@
 40: IF N(X) < 0 THEN 90
  X: 416
  N(416): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 833
  terminated:false
@@ -24486,7 +24486,7 @@
 40: IF N(X) < 0 THEN 90
  X: 417
  N(417): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 835
  terminated:false
@@ -24497,7 +24497,7 @@
 40: IF N(X) < 0 THEN 90
  X: 418
  N(418): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 837
  terminated:false
@@ -24508,7 +24508,7 @@
 40: IF N(X) < 0 THEN 90
  X: 419
  N(419): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 144
  K = 145
@@ -24518,7 +24518,7 @@
  P(145) = 839
 56: IF P > SQR(2000) THEN 90
  P: 839
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 839
  terminated:false
@@ -24529,7 +24529,7 @@
 40: IF N(X) < 0 THEN 90
  X: 420
  N(420): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 841
  terminated:false
@@ -24540,7 +24540,7 @@
 40: IF N(X) < 0 THEN 90
  X: 421
  N(421): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 843
  terminated:false
@@ -24551,7 +24551,7 @@
 40: IF N(X) < 0 THEN 90
  X: 422
  N(422): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 845
  terminated:false
@@ -24562,7 +24562,7 @@
 40: IF N(X) < 0 THEN 90
  X: 423
  N(423): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 847
  terminated:false
@@ -24573,7 +24573,7 @@
 40: IF N(X) < 0 THEN 90
  X: 424
  N(424): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 849
  terminated:false
@@ -24584,7 +24584,7 @@
 40: IF N(X) < 0 THEN 90
  X: 425
  N(425): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 851
  terminated:false
@@ -24595,7 +24595,7 @@
 40: IF N(X) < 0 THEN 90
  X: 426
  N(426): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 145
  K = 146
@@ -24605,7 +24605,7 @@
  P(146) = 853
 56: IF P > SQR(2000) THEN 90
  P: 853
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 853
  terminated:false
@@ -24616,7 +24616,7 @@
 40: IF N(X) < 0 THEN 90
  X: 427
  N(427): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 855
  terminated:false
@@ -24627,7 +24627,7 @@
 40: IF N(X) < 0 THEN 90
  X: 428
  N(428): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 146
  K = 147
@@ -24637,7 +24637,7 @@
  P(147) = 857
 56: IF P > SQR(2000) THEN 90
  P: 857
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 857
  terminated:false
@@ -24648,7 +24648,7 @@
 40: IF N(X) < 0 THEN 90
  X: 429
  N(429): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 147
  K = 148
@@ -24658,7 +24658,7 @@
  P(148) = 859
 56: IF P > SQR(2000) THEN 90
  P: 859
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 859
  terminated:false
@@ -24669,7 +24669,7 @@
 40: IF N(X) < 0 THEN 90
  X: 430
  N(430): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 861
  terminated:false
@@ -24680,7 +24680,7 @@
 40: IF N(X) < 0 THEN 90
  X: 431
  N(431): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 148
  K = 149
@@ -24690,7 +24690,7 @@
  P(149) = 863
 56: IF P > SQR(2000) THEN 90
  P: 863
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 863
  terminated:false
@@ -24701,7 +24701,7 @@
 40: IF N(X) < 0 THEN 90
  X: 432
  N(432): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 865
  terminated:false
@@ -24712,7 +24712,7 @@
 40: IF N(X) < 0 THEN 90
  X: 433
  N(433): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 867
  terminated:false
@@ -24723,7 +24723,7 @@
 40: IF N(X) < 0 THEN 90
  X: 434
  N(434): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 869
  terminated:false
@@ -24734,7 +24734,7 @@
 40: IF N(X) < 0 THEN 90
  X: 435
  N(435): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 871
  terminated:false
@@ -24745,7 +24745,7 @@
 40: IF N(X) < 0 THEN 90
  X: 436
  N(436): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 873
  terminated:false
@@ -24756,7 +24756,7 @@
 40: IF N(X) < 0 THEN 90
  X: 437
  N(437): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 875
  terminated:false
@@ -24767,7 +24767,7 @@
 40: IF N(X) < 0 THEN 90
  X: 438
  N(438): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 149
  K = 150
@@ -24777,7 +24777,7 @@
  P(150) = 877
 56: IF P > SQR(2000) THEN 90
  P: 877
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 877
  terminated:false
@@ -24788,7 +24788,7 @@
 40: IF N(X) < 0 THEN 90
  X: 439
  N(439): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 879
  terminated:false
@@ -24799,7 +24799,7 @@
 40: IF N(X) < 0 THEN 90
  X: 440
  N(440): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 150
  K = 151
@@ -24809,7 +24809,7 @@
  P(151) = 881
 56: IF P > SQR(2000) THEN 90
  P: 881
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 881
  terminated:false
@@ -24820,7 +24820,7 @@
 40: IF N(X) < 0 THEN 90
  X: 441
  N(441): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 151
  K = 152
@@ -24830,7 +24830,7 @@
  P(152) = 883
 56: IF P > SQR(2000) THEN 90
  P: 883
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 883
  terminated:false
@@ -24841,7 +24841,7 @@
 40: IF N(X) < 0 THEN 90
  X: 442
  N(442): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 885
  terminated:false
@@ -24852,7 +24852,7 @@
 40: IF N(X) < 0 THEN 90
  X: 443
  N(443): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 152
  K = 153
@@ -24862,7 +24862,7 @@
  P(153) = 887
 56: IF P > SQR(2000) THEN 90
  P: 887
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 887
  terminated:false
@@ -24873,7 +24873,7 @@
 40: IF N(X) < 0 THEN 90
  X: 444
  N(444): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 889
  terminated:false
@@ -24884,7 +24884,7 @@
 40: IF N(X) < 0 THEN 90
  X: 445
  N(445): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 891
  terminated:false
@@ -24895,7 +24895,7 @@
 40: IF N(X) < 0 THEN 90
  X: 446
  N(446): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 893
  terminated:false
@@ -24906,7 +24906,7 @@
 40: IF N(X) < 0 THEN 90
  X: 447
  N(447): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 895
  terminated:false
@@ -24917,7 +24917,7 @@
 40: IF N(X) < 0 THEN 90
  X: 448
  N(448): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 897
  terminated:false
@@ -24928,7 +24928,7 @@
 40: IF N(X) < 0 THEN 90
  X: 449
  N(449): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 899
  terminated:false
@@ -24939,7 +24939,7 @@
 40: IF N(X) < 0 THEN 90
  X: 450
  N(450): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 901
  terminated:false
@@ -24950,7 +24950,7 @@
 40: IF N(X) < 0 THEN 90
  X: 451
  N(451): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 903
  terminated:false
@@ -24961,7 +24961,7 @@
 40: IF N(X) < 0 THEN 90
  X: 452
  N(452): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 905
  terminated:false
@@ -24972,7 +24972,7 @@
 40: IF N(X) < 0 THEN 90
  X: 453
  N(453): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 153
  K = 154
@@ -24982,7 +24982,7 @@
  P(154) = 907
 56: IF P > SQR(2000) THEN 90
  P: 907
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 907
  terminated:false
@@ -24993,7 +24993,7 @@
 40: IF N(X) < 0 THEN 90
  X: 454
  N(454): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 909
  terminated:false
@@ -25004,7 +25004,7 @@
 40: IF N(X) < 0 THEN 90
  X: 455
  N(455): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 154
  K = 155
@@ -25014,7 +25014,7 @@
  P(155) = 911
 56: IF P > SQR(2000) THEN 90
  P: 911
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 911
  terminated:false
@@ -25025,7 +25025,7 @@
 40: IF N(X) < 0 THEN 90
  X: 456
  N(456): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 913
  terminated:false
@@ -25036,7 +25036,7 @@
 40: IF N(X) < 0 THEN 90
  X: 457
  N(457): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 915
  terminated:false
@@ -25047,7 +25047,7 @@
 40: IF N(X) < 0 THEN 90
  X: 458
  N(458): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 917
  terminated:false
@@ -25058,7 +25058,7 @@
 40: IF N(X) < 0 THEN 90
  X: 459
  N(459): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 155
  K = 156
@@ -25068,7 +25068,7 @@
  P(156) = 919
 56: IF P > SQR(2000) THEN 90
  P: 919
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 919
  terminated:false
@@ -25079,7 +25079,7 @@
 40: IF N(X) < 0 THEN 90
  X: 460
  N(460): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 921
  terminated:false
@@ -25090,7 +25090,7 @@
 40: IF N(X) < 0 THEN 90
  X: 461
  N(461): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 923
  terminated:false
@@ -25101,7 +25101,7 @@
 40: IF N(X) < 0 THEN 90
  X: 462
  N(462): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 925
  terminated:false
@@ -25112,7 +25112,7 @@
 40: IF N(X) < 0 THEN 90
  X: 463
  N(463): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 927
  terminated:false
@@ -25123,7 +25123,7 @@
 40: IF N(X) < 0 THEN 90
  X: 464
  N(464): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 156
  K = 157
@@ -25133,7 +25133,7 @@
  P(157) = 929
 56: IF P > SQR(2000) THEN 90
  P: 929
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 929
  terminated:false
@@ -25144,7 +25144,7 @@
 40: IF N(X) < 0 THEN 90
  X: 465
  N(465): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 931
  terminated:false
@@ -25155,7 +25155,7 @@
 40: IF N(X) < 0 THEN 90
  X: 466
  N(466): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 933
  terminated:false
@@ -25166,7 +25166,7 @@
 40: IF N(X) < 0 THEN 90
  X: 467
  N(467): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 935
  terminated:false
@@ -25177,7 +25177,7 @@
 40: IF N(X) < 0 THEN 90
  X: 468
  N(468): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 157
  K = 158
@@ -25187,7 +25187,7 @@
  P(158) = 937
 56: IF P > SQR(2000) THEN 90
  P: 937
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 937
  terminated:false
@@ -25198,7 +25198,7 @@
 40: IF N(X) < 0 THEN 90
  X: 469
  N(469): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 939
  terminated:false
@@ -25209,7 +25209,7 @@
 40: IF N(X) < 0 THEN 90
  X: 470
  N(470): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 158
  K = 159
@@ -25219,7 +25219,7 @@
  P(159) = 941
 56: IF P > SQR(2000) THEN 90
  P: 941
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 941
  terminated:false
@@ -25230,7 +25230,7 @@
 40: IF N(X) < 0 THEN 90
  X: 471
  N(471): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 943
  terminated:false
@@ -25241,7 +25241,7 @@
 40: IF N(X) < 0 THEN 90
  X: 472
  N(472): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 945
  terminated:false
@@ -25252,7 +25252,7 @@
 40: IF N(X) < 0 THEN 90
  X: 473
  N(473): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 159
  K = 160
@@ -25262,7 +25262,7 @@
  P(160) = 947
 56: IF P > SQR(2000) THEN 90
  P: 947
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 947
  terminated:false
@@ -25273,7 +25273,7 @@
 40: IF N(X) < 0 THEN 90
  X: 474
  N(474): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 949
  terminated:false
@@ -25284,7 +25284,7 @@
 40: IF N(X) < 0 THEN 90
  X: 475
  N(475): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 951
  terminated:false
@@ -25295,7 +25295,7 @@
 40: IF N(X) < 0 THEN 90
  X: 476
  N(476): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 160
  K = 161
@@ -25305,7 +25305,7 @@
  P(161) = 953
 56: IF P > SQR(2000) THEN 90
  P: 953
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 953
  terminated:false
@@ -25316,7 +25316,7 @@
 40: IF N(X) < 0 THEN 90
  X: 477
  N(477): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 955
  terminated:false
@@ -25327,7 +25327,7 @@
 40: IF N(X) < 0 THEN 90
  X: 478
  N(478): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 957
  terminated:false
@@ -25338,7 +25338,7 @@
 40: IF N(X) < 0 THEN 90
  X: 479
  N(479): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 959
  terminated:false
@@ -25349,7 +25349,7 @@
 40: IF N(X) < 0 THEN 90
  X: 480
  N(480): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 961
  terminated:false
@@ -25360,7 +25360,7 @@
 40: IF N(X) < 0 THEN 90
  X: 481
  N(481): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 963
  terminated:false
@@ -25371,7 +25371,7 @@
 40: IF N(X) < 0 THEN 90
  X: 482
  N(482): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 965
  terminated:false
@@ -25382,7 +25382,7 @@
 40: IF N(X) < 0 THEN 90
  X: 483
  N(483): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 161
  K = 162
@@ -25392,7 +25392,7 @@
  P(162) = 967
 56: IF P > SQR(2000) THEN 90
  P: 967
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 967
  terminated:false
@@ -25403,7 +25403,7 @@
 40: IF N(X) < 0 THEN 90
  X: 484
  N(484): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 969
  terminated:false
@@ -25414,7 +25414,7 @@
 40: IF N(X) < 0 THEN 90
  X: 485
  N(485): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 162
  K = 163
@@ -25424,7 +25424,7 @@
  P(163) = 971
 56: IF P > SQR(2000) THEN 90
  P: 971
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 971
  terminated:false
@@ -25435,7 +25435,7 @@
 40: IF N(X) < 0 THEN 90
  X: 486
  N(486): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 973
  terminated:false
@@ -25446,7 +25446,7 @@
 40: IF N(X) < 0 THEN 90
  X: 487
  N(487): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 975
  terminated:false
@@ -25457,7 +25457,7 @@
 40: IF N(X) < 0 THEN 90
  X: 488
  N(488): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 163
  K = 164
@@ -25467,7 +25467,7 @@
  P(164) = 977
 56: IF P > SQR(2000) THEN 90
  P: 977
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 977
  terminated:false
@@ -25478,7 +25478,7 @@
 40: IF N(X) < 0 THEN 90
  X: 489
  N(489): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 979
  terminated:false
@@ -25489,7 +25489,7 @@
 40: IF N(X) < 0 THEN 90
  X: 490
  N(490): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 981
  terminated:false
@@ -25500,7 +25500,7 @@
 40: IF N(X) < 0 THEN 90
  X: 491
  N(491): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 164
  K = 165
@@ -25510,7 +25510,7 @@
  P(165) = 983
 56: IF P > SQR(2000) THEN 90
  P: 983
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 983
  terminated:false
@@ -25521,7 +25521,7 @@
 40: IF N(X) < 0 THEN 90
  X: 492
  N(492): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 985
  terminated:false
@@ -25532,7 +25532,7 @@
 40: IF N(X) < 0 THEN 90
  X: 493
  N(493): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 987
  terminated:false
@@ -25543,7 +25543,7 @@
 40: IF N(X) < 0 THEN 90
  X: 494
  N(494): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 989
  terminated:false
@@ -25554,7 +25554,7 @@
 40: IF N(X) < 0 THEN 90
  X: 495
  N(495): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 165
  K = 166
@@ -25564,7 +25564,7 @@
  P(166) = 991
 56: IF P > SQR(2000) THEN 90
  P: 991
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 991
  terminated:false
@@ -25575,7 +25575,7 @@
 40: IF N(X) < 0 THEN 90
  X: 496
  N(496): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 993
  terminated:false
@@ -25586,7 +25586,7 @@
 40: IF N(X) < 0 THEN 90
  X: 497
  N(497): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 995
  terminated:false
@@ -25597,7 +25597,7 @@
 40: IF N(X) < 0 THEN 90
  X: 498
  N(498): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 166
  K = 167
@@ -25607,7 +25607,7 @@
  P(167) = 997
 56: IF P > SQR(2000) THEN 90
  P: 997
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 997
  terminated:false
@@ -25618,7 +25618,7 @@
 40: IF N(X) < 0 THEN 90
  X: 499
  N(499): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 999
  terminated:false
@@ -25629,7 +25629,7 @@
 40: IF N(X) < 0 THEN 90
  X: 500
  N(500): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1001
  terminated:false
@@ -25640,7 +25640,7 @@
 40: IF N(X) < 0 THEN 90
  X: 501
  N(501): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1003
  terminated:false
@@ -25651,7 +25651,7 @@
 40: IF N(X) < 0 THEN 90
  X: 502
  N(502): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1005
  terminated:false
@@ -25662,7 +25662,7 @@
 40: IF N(X) < 0 THEN 90
  X: 503
  N(503): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1007
  terminated:false
@@ -25673,7 +25673,7 @@
 40: IF N(X) < 0 THEN 90
  X: 504
  N(504): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 167
  K = 168
@@ -25683,7 +25683,7 @@
  P(168) = 1009
 56: IF P > SQR(2000) THEN 90
  P: 1009
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1009
  terminated:false
@@ -25694,7 +25694,7 @@
 40: IF N(X) < 0 THEN 90
  X: 505
  N(505): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1011
  terminated:false
@@ -25705,7 +25705,7 @@
 40: IF N(X) < 0 THEN 90
  X: 506
  N(506): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 168
  K = 169
@@ -25715,7 +25715,7 @@
  P(169) = 1013
 56: IF P > SQR(2000) THEN 90
  P: 1013
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1013
  terminated:false
@@ -25726,7 +25726,7 @@
 40: IF N(X) < 0 THEN 90
  X: 507
  N(507): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1015
  terminated:false
@@ -25737,7 +25737,7 @@
 40: IF N(X) < 0 THEN 90
  X: 508
  N(508): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1017
  terminated:false
@@ -25748,7 +25748,7 @@
 40: IF N(X) < 0 THEN 90
  X: 509
  N(509): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 169
  K = 170
@@ -25758,7 +25758,7 @@
  P(170) = 1019
 56: IF P > SQR(2000) THEN 90
  P: 1019
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1019
  terminated:false
@@ -25769,7 +25769,7 @@
 40: IF N(X) < 0 THEN 90
  X: 510
  N(510): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 170
  K = 171
@@ -25779,7 +25779,7 @@
  P(171) = 1021
 56: IF P > SQR(2000) THEN 90
  P: 1021
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1021
  terminated:false
@@ -25790,7 +25790,7 @@
 40: IF N(X) < 0 THEN 90
  X: 511
  N(511): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1023
  terminated:false
@@ -25801,7 +25801,7 @@
 40: IF N(X) < 0 THEN 90
  X: 512
  N(512): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1025
  terminated:false
@@ -25812,7 +25812,7 @@
 40: IF N(X) < 0 THEN 90
  X: 513
  N(513): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1027
  terminated:false
@@ -25823,7 +25823,7 @@
 40: IF N(X) < 0 THEN 90
  X: 514
  N(514): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1029
  terminated:false
@@ -25834,7 +25834,7 @@
 40: IF N(X) < 0 THEN 90
  X: 515
  N(515): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 171
  K = 172
@@ -25844,7 +25844,7 @@
  P(172) = 1031
 56: IF P > SQR(2000) THEN 90
  P: 1031
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1031
  terminated:false
@@ -25855,7 +25855,7 @@
 40: IF N(X) < 0 THEN 90
  X: 516
  N(516): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 172
  K = 173
@@ -25865,7 +25865,7 @@
  P(173) = 1033
 56: IF P > SQR(2000) THEN 90
  P: 1033
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1033
  terminated:false
@@ -25876,7 +25876,7 @@
 40: IF N(X) < 0 THEN 90
  X: 517
  N(517): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1035
  terminated:false
@@ -25887,7 +25887,7 @@
 40: IF N(X) < 0 THEN 90
  X: 518
  N(518): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1037
  terminated:false
@@ -25898,7 +25898,7 @@
 40: IF N(X) < 0 THEN 90
  X: 519
  N(519): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 173
  K = 174
@@ -25908,7 +25908,7 @@
  P(174) = 1039
 56: IF P > SQR(2000) THEN 90
  P: 1039
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1039
  terminated:false
@@ -25919,7 +25919,7 @@
 40: IF N(X) < 0 THEN 90
  X: 520
  N(520): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1041
  terminated:false
@@ -25930,7 +25930,7 @@
 40: IF N(X) < 0 THEN 90
  X: 521
  N(521): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1043
  terminated:false
@@ -25941,7 +25941,7 @@
 40: IF N(X) < 0 THEN 90
  X: 522
  N(522): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1045
  terminated:false
@@ -25952,7 +25952,7 @@
 40: IF N(X) < 0 THEN 90
  X: 523
  N(523): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1047
  terminated:false
@@ -25963,7 +25963,7 @@
 40: IF N(X) < 0 THEN 90
  X: 524
  N(524): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 174
  K = 175
@@ -25973,7 +25973,7 @@
  P(175) = 1049
 56: IF P > SQR(2000) THEN 90
  P: 1049
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1049
  terminated:false
@@ -25984,7 +25984,7 @@
 40: IF N(X) < 0 THEN 90
  X: 525
  N(525): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 175
  K = 176
@@ -25994,7 +25994,7 @@
  P(176) = 1051
 56: IF P > SQR(2000) THEN 90
  P: 1051
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1051
  terminated:false
@@ -26005,7 +26005,7 @@
 40: IF N(X) < 0 THEN 90
  X: 526
  N(526): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1053
  terminated:false
@@ -26016,7 +26016,7 @@
 40: IF N(X) < 0 THEN 90
  X: 527
  N(527): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1055
  terminated:false
@@ -26027,7 +26027,7 @@
 40: IF N(X) < 0 THEN 90
  X: 528
  N(528): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1057
  terminated:false
@@ -26038,7 +26038,7 @@
 40: IF N(X) < 0 THEN 90
  X: 529
  N(529): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1059
  terminated:false
@@ -26049,7 +26049,7 @@
 40: IF N(X) < 0 THEN 90
  X: 530
  N(530): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 176
  K = 177
@@ -26059,7 +26059,7 @@
  P(177) = 1061
 56: IF P > SQR(2000) THEN 90
  P: 1061
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1061
  terminated:false
@@ -26070,7 +26070,7 @@
 40: IF N(X) < 0 THEN 90
  X: 531
  N(531): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 177
  K = 178
@@ -26080,7 +26080,7 @@
  P(178) = 1063
 56: IF P > SQR(2000) THEN 90
  P: 1063
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1063
  terminated:false
@@ -26091,7 +26091,7 @@
 40: IF N(X) < 0 THEN 90
  X: 532
  N(532): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1065
  terminated:false
@@ -26102,7 +26102,7 @@
 40: IF N(X) < 0 THEN 90
  X: 533
  N(533): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1067
  terminated:false
@@ -26113,7 +26113,7 @@
 40: IF N(X) < 0 THEN 90
  X: 534
  N(534): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 178
  K = 179
@@ -26123,7 +26123,7 @@
  P(179) = 1069
 56: IF P > SQR(2000) THEN 90
  P: 1069
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1069
  terminated:false
@@ -26134,7 +26134,7 @@
 40: IF N(X) < 0 THEN 90
  X: 535
  N(535): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1071
  terminated:false
@@ -26145,7 +26145,7 @@
 40: IF N(X) < 0 THEN 90
  X: 536
  N(536): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1073
  terminated:false
@@ -26156,7 +26156,7 @@
 40: IF N(X) < 0 THEN 90
  X: 537
  N(537): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1075
  terminated:false
@@ -26167,7 +26167,7 @@
 40: IF N(X) < 0 THEN 90
  X: 538
  N(538): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1077
  terminated:false
@@ -26178,7 +26178,7 @@
 40: IF N(X) < 0 THEN 90
  X: 539
  N(539): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1079
  terminated:false
@@ -26189,7 +26189,7 @@
 40: IF N(X) < 0 THEN 90
  X: 540
  N(540): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1081
  terminated:false
@@ -26200,7 +26200,7 @@
 40: IF N(X) < 0 THEN 90
  X: 541
  N(541): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1083
  terminated:false
@@ -26211,7 +26211,7 @@
 40: IF N(X) < 0 THEN 90
  X: 542
  N(542): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1085
  terminated:false
@@ -26222,7 +26222,7 @@
 40: IF N(X) < 0 THEN 90
  X: 543
  N(543): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 179
  K = 180
@@ -26232,7 +26232,7 @@
  P(180) = 1087
 56: IF P > SQR(2000) THEN 90
  P: 1087
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1087
  terminated:false
@@ -26243,7 +26243,7 @@
 40: IF N(X) < 0 THEN 90
  X: 544
  N(544): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1089
  terminated:false
@@ -26254,7 +26254,7 @@
 40: IF N(X) < 0 THEN 90
  X: 545
  N(545): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 180
  K = 181
@@ -26264,7 +26264,7 @@
  P(181) = 1091
 56: IF P > SQR(2000) THEN 90
  P: 1091
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1091
  terminated:false
@@ -26275,7 +26275,7 @@
 40: IF N(X) < 0 THEN 90
  X: 546
  N(546): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 181
  K = 182
@@ -26285,7 +26285,7 @@
  P(182) = 1093
 56: IF P > SQR(2000) THEN 90
  P: 1093
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1093
  terminated:false
@@ -26296,7 +26296,7 @@
 40: IF N(X) < 0 THEN 90
  X: 547
  N(547): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1095
  terminated:false
@@ -26307,7 +26307,7 @@
 40: IF N(X) < 0 THEN 90
  X: 548
  N(548): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 182
  K = 183
@@ -26317,7 +26317,7 @@
  P(183) = 1097
 56: IF P > SQR(2000) THEN 90
  P: 1097
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1097
  terminated:false
@@ -26328,7 +26328,7 @@
 40: IF N(X) < 0 THEN 90
  X: 549
  N(549): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1099
  terminated:false
@@ -26339,7 +26339,7 @@
 40: IF N(X) < 0 THEN 90
  X: 550
  N(550): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1101
  terminated:false
@@ -26350,7 +26350,7 @@
 40: IF N(X) < 0 THEN 90
  X: 551
  N(551): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 183
  K = 184
@@ -26360,7 +26360,7 @@
  P(184) = 1103
 56: IF P > SQR(2000) THEN 90
  P: 1103
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1103
  terminated:false
@@ -26371,7 +26371,7 @@
 40: IF N(X) < 0 THEN 90
  X: 552
  N(552): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1105
  terminated:false
@@ -26382,7 +26382,7 @@
 40: IF N(X) < 0 THEN 90
  X: 553
  N(553): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1107
  terminated:false
@@ -26393,7 +26393,7 @@
 40: IF N(X) < 0 THEN 90
  X: 554
  N(554): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 184
  K = 185
@@ -26403,7 +26403,7 @@
  P(185) = 1109
 56: IF P > SQR(2000) THEN 90
  P: 1109
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1109
  terminated:false
@@ -26414,7 +26414,7 @@
 40: IF N(X) < 0 THEN 90
  X: 555
  N(555): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1111
  terminated:false
@@ -26425,7 +26425,7 @@
 40: IF N(X) < 0 THEN 90
  X: 556
  N(556): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1113
  terminated:false
@@ -26436,7 +26436,7 @@
 40: IF N(X) < 0 THEN 90
  X: 557
  N(557): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1115
  terminated:false
@@ -26447,7 +26447,7 @@
 40: IF N(X) < 0 THEN 90
  X: 558
  N(558): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 185
  K = 186
@@ -26457,7 +26457,7 @@
  P(186) = 1117
 56: IF P > SQR(2000) THEN 90
  P: 1117
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1117
  terminated:false
@@ -26468,7 +26468,7 @@
 40: IF N(X) < 0 THEN 90
  X: 559
  N(559): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1119
  terminated:false
@@ -26479,7 +26479,7 @@
 40: IF N(X) < 0 THEN 90
  X: 560
  N(560): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1121
  terminated:false
@@ -26490,7 +26490,7 @@
 40: IF N(X) < 0 THEN 90
  X: 561
  N(561): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 186
  K = 187
@@ -26500,7 +26500,7 @@
  P(187) = 1123
 56: IF P > SQR(2000) THEN 90
  P: 1123
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1123
  terminated:false
@@ -26511,7 +26511,7 @@
 40: IF N(X) < 0 THEN 90
  X: 562
  N(562): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1125
  terminated:false
@@ -26522,7 +26522,7 @@
 40: IF N(X) < 0 THEN 90
  X: 563
  N(563): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1127
  terminated:false
@@ -26533,7 +26533,7 @@
 40: IF N(X) < 0 THEN 90
  X: 564
  N(564): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 187
  K = 188
@@ -26543,7 +26543,7 @@
  P(188) = 1129
 56: IF P > SQR(2000) THEN 90
  P: 1129
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1129
  terminated:false
@@ -26554,7 +26554,7 @@
 40: IF N(X) < 0 THEN 90
  X: 565
  N(565): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1131
  terminated:false
@@ -26565,7 +26565,7 @@
 40: IF N(X) < 0 THEN 90
  X: 566
  N(566): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1133
  terminated:false
@@ -26576,7 +26576,7 @@
 40: IF N(X) < 0 THEN 90
  X: 567
  N(567): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1135
  terminated:false
@@ -26587,7 +26587,7 @@
 40: IF N(X) < 0 THEN 90
  X: 568
  N(568): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1137
  terminated:false
@@ -26598,7 +26598,7 @@
 40: IF N(X) < 0 THEN 90
  X: 569
  N(569): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1139
  terminated:false
@@ -26609,7 +26609,7 @@
 40: IF N(X) < 0 THEN 90
  X: 570
  N(570): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1141
  terminated:false
@@ -26620,7 +26620,7 @@
 40: IF N(X) < 0 THEN 90
  X: 571
  N(571): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1143
  terminated:false
@@ -26631,7 +26631,7 @@
 40: IF N(X) < 0 THEN 90
  X: 572
  N(572): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1145
  terminated:false
@@ -26642,7 +26642,7 @@
 40: IF N(X) < 0 THEN 90
  X: 573
  N(573): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1147
  terminated:false
@@ -26653,7 +26653,7 @@
 40: IF N(X) < 0 THEN 90
  X: 574
  N(574): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1149
  terminated:false
@@ -26664,7 +26664,7 @@
 40: IF N(X) < 0 THEN 90
  X: 575
  N(575): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 188
  K = 189
@@ -26674,7 +26674,7 @@
  P(189) = 1151
 56: IF P > SQR(2000) THEN 90
  P: 1151
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1151
  terminated:false
@@ -26685,7 +26685,7 @@
 40: IF N(X) < 0 THEN 90
  X: 576
  N(576): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 189
  K = 190
@@ -26695,7 +26695,7 @@
  P(190) = 1153
 56: IF P > SQR(2000) THEN 90
  P: 1153
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1153
  terminated:false
@@ -26706,7 +26706,7 @@
 40: IF N(X) < 0 THEN 90
  X: 577
  N(577): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1155
  terminated:false
@@ -26717,7 +26717,7 @@
 40: IF N(X) < 0 THEN 90
  X: 578
  N(578): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1157
  terminated:false
@@ -26728,7 +26728,7 @@
 40: IF N(X) < 0 THEN 90
  X: 579
  N(579): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1159
  terminated:false
@@ -26739,7 +26739,7 @@
 40: IF N(X) < 0 THEN 90
  X: 580
  N(580): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1161
  terminated:false
@@ -26750,7 +26750,7 @@
 40: IF N(X) < 0 THEN 90
  X: 581
  N(581): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 190
  K = 191
@@ -26760,7 +26760,7 @@
  P(191) = 1163
 56: IF P > SQR(2000) THEN 90
  P: 1163
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1163
  terminated:false
@@ -26771,7 +26771,7 @@
 40: IF N(X) < 0 THEN 90
  X: 582
  N(582): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1165
  terminated:false
@@ -26782,7 +26782,7 @@
 40: IF N(X) < 0 THEN 90
  X: 583
  N(583): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1167
  terminated:false
@@ -26793,7 +26793,7 @@
 40: IF N(X) < 0 THEN 90
  X: 584
  N(584): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1169
  terminated:false
@@ -26804,7 +26804,7 @@
 40: IF N(X) < 0 THEN 90
  X: 585
  N(585): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 191
  K = 192
@@ -26814,7 +26814,7 @@
  P(192) = 1171
 56: IF P > SQR(2000) THEN 90
  P: 1171
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1171
  terminated:false
@@ -26825,7 +26825,7 @@
 40: IF N(X) < 0 THEN 90
  X: 586
  N(586): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1173
  terminated:false
@@ -26836,7 +26836,7 @@
 40: IF N(X) < 0 THEN 90
  X: 587
  N(587): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1175
  terminated:false
@@ -26847,7 +26847,7 @@
 40: IF N(X) < 0 THEN 90
  X: 588
  N(588): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1177
  terminated:false
@@ -26858,7 +26858,7 @@
 40: IF N(X) < 0 THEN 90
  X: 589
  N(589): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1179
  terminated:false
@@ -26869,7 +26869,7 @@
 40: IF N(X) < 0 THEN 90
  X: 590
  N(590): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 192
  K = 193
@@ -26879,7 +26879,7 @@
  P(193) = 1181
 56: IF P > SQR(2000) THEN 90
  P: 1181
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1181
  terminated:false
@@ -26890,7 +26890,7 @@
 40: IF N(X) < 0 THEN 90
  X: 591
  N(591): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1183
  terminated:false
@@ -26901,7 +26901,7 @@
 40: IF N(X) < 0 THEN 90
  X: 592
  N(592): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1185
  terminated:false
@@ -26912,7 +26912,7 @@
 40: IF N(X) < 0 THEN 90
  X: 593
  N(593): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 193
  K = 194
@@ -26922,7 +26922,7 @@
  P(194) = 1187
 56: IF P > SQR(2000) THEN 90
  P: 1187
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1187
  terminated:false
@@ -26933,7 +26933,7 @@
 40: IF N(X) < 0 THEN 90
  X: 594
  N(594): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1189
  terminated:false
@@ -26944,7 +26944,7 @@
 40: IF N(X) < 0 THEN 90
  X: 595
  N(595): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1191
  terminated:false
@@ -26955,7 +26955,7 @@
 40: IF N(X) < 0 THEN 90
  X: 596
  N(596): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 194
  K = 195
@@ -26965,7 +26965,7 @@
  P(195) = 1193
 56: IF P > SQR(2000) THEN 90
  P: 1193
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1193
  terminated:false
@@ -26976,7 +26976,7 @@
 40: IF N(X) < 0 THEN 90
  X: 597
  N(597): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1195
  terminated:false
@@ -26987,7 +26987,7 @@
 40: IF N(X) < 0 THEN 90
  X: 598
  N(598): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1197
  terminated:false
@@ -26998,7 +26998,7 @@
 40: IF N(X) < 0 THEN 90
  X: 599
  N(599): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1199
  terminated:false
@@ -27009,7 +27009,7 @@
 40: IF N(X) < 0 THEN 90
  X: 600
  N(600): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 195
  K = 196
@@ -27019,7 +27019,7 @@
  P(196) = 1201
 56: IF P > SQR(2000) THEN 90
  P: 1201
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1201
  terminated:false
@@ -27030,7 +27030,7 @@
 40: IF N(X) < 0 THEN 90
  X: 601
  N(601): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1203
  terminated:false
@@ -27041,7 +27041,7 @@
 40: IF N(X) < 0 THEN 90
  X: 602
  N(602): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1205
  terminated:false
@@ -27052,7 +27052,7 @@
 40: IF N(X) < 0 THEN 90
  X: 603
  N(603): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1207
  terminated:false
@@ -27063,7 +27063,7 @@
 40: IF N(X) < 0 THEN 90
  X: 604
  N(604): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1209
  terminated:false
@@ -27074,7 +27074,7 @@
 40: IF N(X) < 0 THEN 90
  X: 605
  N(605): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1211
  terminated:false
@@ -27085,7 +27085,7 @@
 40: IF N(X) < 0 THEN 90
  X: 606
  N(606): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 196
  K = 197
@@ -27095,7 +27095,7 @@
  P(197) = 1213
 56: IF P > SQR(2000) THEN 90
  P: 1213
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1213
  terminated:false
@@ -27106,7 +27106,7 @@
 40: IF N(X) < 0 THEN 90
  X: 607
  N(607): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1215
  terminated:false
@@ -27117,7 +27117,7 @@
 40: IF N(X) < 0 THEN 90
  X: 608
  N(608): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 197
  K = 198
@@ -27127,7 +27127,7 @@
  P(198) = 1217
 56: IF P > SQR(2000) THEN 90
  P: 1217
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1217
  terminated:false
@@ -27138,7 +27138,7 @@
 40: IF N(X) < 0 THEN 90
  X: 609
  N(609): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1219
  terminated:false
@@ -27149,7 +27149,7 @@
 40: IF N(X) < 0 THEN 90
  X: 610
  N(610): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1221
  terminated:false
@@ -27160,7 +27160,7 @@
 40: IF N(X) < 0 THEN 90
  X: 611
  N(611): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 198
  K = 199
@@ -27170,7 +27170,7 @@
  P(199) = 1223
 56: IF P > SQR(2000) THEN 90
  P: 1223
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1223
  terminated:false
@@ -27181,7 +27181,7 @@
 40: IF N(X) < 0 THEN 90
  X: 612
  N(612): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1225
  terminated:false
@@ -27192,7 +27192,7 @@
 40: IF N(X) < 0 THEN 90
  X: 613
  N(613): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1227
  terminated:false
@@ -27203,7 +27203,7 @@
 40: IF N(X) < 0 THEN 90
  X: 614
  N(614): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 199
  K = 200
@@ -27213,7 +27213,7 @@
  P(200) = 1229
 56: IF P > SQR(2000) THEN 90
  P: 1229
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1229
  terminated:false
@@ -27224,7 +27224,7 @@
 40: IF N(X) < 0 THEN 90
  X: 615
  N(615): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 200
  K = 201
@@ -27234,7 +27234,7 @@
  P(201) = 1231
 56: IF P > SQR(2000) THEN 90
  P: 1231
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1231
  terminated:false
@@ -27245,7 +27245,7 @@
 40: IF N(X) < 0 THEN 90
  X: 616
  N(616): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1233
  terminated:false
@@ -27256,7 +27256,7 @@
 40: IF N(X) < 0 THEN 90
  X: 617
  N(617): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1235
  terminated:false
@@ -27267,7 +27267,7 @@
 40: IF N(X) < 0 THEN 90
  X: 618
  N(618): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 201
  K = 202
@@ -27277,7 +27277,7 @@
  P(202) = 1237
 56: IF P > SQR(2000) THEN 90
  P: 1237
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1237
  terminated:false
@@ -27288,7 +27288,7 @@
 40: IF N(X) < 0 THEN 90
  X: 619
  N(619): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1239
  terminated:false
@@ -27299,7 +27299,7 @@
 40: IF N(X) < 0 THEN 90
  X: 620
  N(620): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1241
  terminated:false
@@ -27310,7 +27310,7 @@
 40: IF N(X) < 0 THEN 90
  X: 621
  N(621): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1243
  terminated:false
@@ -27321,7 +27321,7 @@
 40: IF N(X) < 0 THEN 90
  X: 622
  N(622): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1245
  terminated:false
@@ -27332,7 +27332,7 @@
 40: IF N(X) < 0 THEN 90
  X: 623
  N(623): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1247
  terminated:false
@@ -27343,7 +27343,7 @@
 40: IF N(X) < 0 THEN 90
  X: 624
  N(624): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 202
  K = 203
@@ -27353,7 +27353,7 @@
  P(203) = 1249
 56: IF P > SQR(2000) THEN 90
  P: 1249
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1249
  terminated:false
@@ -27364,7 +27364,7 @@
 40: IF N(X) < 0 THEN 90
  X: 625
  N(625): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1251
  terminated:false
@@ -27375,7 +27375,7 @@
 40: IF N(X) < 0 THEN 90
  X: 626
  N(626): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1253
  terminated:false
@@ -27386,7 +27386,7 @@
 40: IF N(X) < 0 THEN 90
  X: 627
  N(627): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1255
  terminated:false
@@ -27397,7 +27397,7 @@
 40: IF N(X) < 0 THEN 90
  X: 628
  N(628): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1257
  terminated:false
@@ -27408,7 +27408,7 @@
 40: IF N(X) < 0 THEN 90
  X: 629
  N(629): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 203
  K = 204
@@ -27418,7 +27418,7 @@
  P(204) = 1259
 56: IF P > SQR(2000) THEN 90
  P: 1259
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1259
  terminated:false
@@ -27429,7 +27429,7 @@
 40: IF N(X) < 0 THEN 90
  X: 630
  N(630): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1261
  terminated:false
@@ -27440,7 +27440,7 @@
 40: IF N(X) < 0 THEN 90
  X: 631
  N(631): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1263
  terminated:false
@@ -27451,7 +27451,7 @@
 40: IF N(X) < 0 THEN 90
  X: 632
  N(632): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1265
  terminated:false
@@ -27462,7 +27462,7 @@
 40: IF N(X) < 0 THEN 90
  X: 633
  N(633): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1267
  terminated:false
@@ -27473,7 +27473,7 @@
 40: IF N(X) < 0 THEN 90
  X: 634
  N(634): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1269
  terminated:false
@@ -27484,7 +27484,7 @@
 40: IF N(X) < 0 THEN 90
  X: 635
  N(635): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1271
  terminated:false
@@ -27495,7 +27495,7 @@
 40: IF N(X) < 0 THEN 90
  X: 636
  N(636): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1273
  terminated:false
@@ -27506,7 +27506,7 @@
 40: IF N(X) < 0 THEN 90
  X: 637
  N(637): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1275
  terminated:false
@@ -27517,7 +27517,7 @@
 40: IF N(X) < 0 THEN 90
  X: 638
  N(638): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 204
  K = 205
@@ -27527,7 +27527,7 @@
  P(205) = 1277
 56: IF P > SQR(2000) THEN 90
  P: 1277
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1277
  terminated:false
@@ -27538,7 +27538,7 @@
 40: IF N(X) < 0 THEN 90
  X: 639
  N(639): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 205
  K = 206
@@ -27548,7 +27548,7 @@
  P(206) = 1279
 56: IF P > SQR(2000) THEN 90
  P: 1279
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1279
  terminated:false
@@ -27559,7 +27559,7 @@
 40: IF N(X) < 0 THEN 90
  X: 640
  N(640): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1281
  terminated:false
@@ -27570,7 +27570,7 @@
 40: IF N(X) < 0 THEN 90
  X: 641
  N(641): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 206
  K = 207
@@ -27580,7 +27580,7 @@
  P(207) = 1283
 56: IF P > SQR(2000) THEN 90
  P: 1283
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1283
  terminated:false
@@ -27591,7 +27591,7 @@
 40: IF N(X) < 0 THEN 90
  X: 642
  N(642): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1285
  terminated:false
@@ -27602,7 +27602,7 @@
 40: IF N(X) < 0 THEN 90
  X: 643
  N(643): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1287
  terminated:false
@@ -27613,7 +27613,7 @@
 40: IF N(X) < 0 THEN 90
  X: 644
  N(644): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 207
  K = 208
@@ -27623,7 +27623,7 @@
  P(208) = 1289
 56: IF P > SQR(2000) THEN 90
  P: 1289
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1289
  terminated:false
@@ -27634,7 +27634,7 @@
 40: IF N(X) < 0 THEN 90
  X: 645
  N(645): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 208
  K = 209
@@ -27644,7 +27644,7 @@
  P(209) = 1291
 56: IF P > SQR(2000) THEN 90
  P: 1291
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1291
  terminated:false
@@ -27655,7 +27655,7 @@
 40: IF N(X) < 0 THEN 90
  X: 646
  N(646): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1293
  terminated:false
@@ -27666,7 +27666,7 @@
 40: IF N(X) < 0 THEN 90
  X: 647
  N(647): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1295
  terminated:false
@@ -27677,7 +27677,7 @@
 40: IF N(X) < 0 THEN 90
  X: 648
  N(648): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 209
  K = 210
@@ -27687,7 +27687,7 @@
  P(210) = 1297
 56: IF P > SQR(2000) THEN 90
  P: 1297
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1297
  terminated:false
@@ -27698,7 +27698,7 @@
 40: IF N(X) < 0 THEN 90
  X: 649
  N(649): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1299
  terminated:false
@@ -27709,7 +27709,7 @@
 40: IF N(X) < 0 THEN 90
  X: 650
  N(650): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 210
  K = 211
@@ -27719,7 +27719,7 @@
  P(211) = 1301
 56: IF P > SQR(2000) THEN 90
  P: 1301
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1301
  terminated:false
@@ -27730,7 +27730,7 @@
 40: IF N(X) < 0 THEN 90
  X: 651
  N(651): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 211
  K = 212
@@ -27740,7 +27740,7 @@
  P(212) = 1303
 56: IF P > SQR(2000) THEN 90
  P: 1303
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1303
  terminated:false
@@ -27751,7 +27751,7 @@
 40: IF N(X) < 0 THEN 90
  X: 652
  N(652): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1305
  terminated:false
@@ -27762,7 +27762,7 @@
 40: IF N(X) < 0 THEN 90
  X: 653
  N(653): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 212
  K = 213
@@ -27772,7 +27772,7 @@
  P(213) = 1307
 56: IF P > SQR(2000) THEN 90
  P: 1307
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1307
  terminated:false
@@ -27783,7 +27783,7 @@
 40: IF N(X) < 0 THEN 90
  X: 654
  N(654): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1309
  terminated:false
@@ -27794,7 +27794,7 @@
 40: IF N(X) < 0 THEN 90
  X: 655
  N(655): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1311
  terminated:false
@@ -27805,7 +27805,7 @@
 40: IF N(X) < 0 THEN 90
  X: 656
  N(656): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1313
  terminated:false
@@ -27816,7 +27816,7 @@
 40: IF N(X) < 0 THEN 90
  X: 657
  N(657): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1315
  terminated:false
@@ -27827,7 +27827,7 @@
 40: IF N(X) < 0 THEN 90
  X: 658
  N(658): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1317
  terminated:false
@@ -27838,7 +27838,7 @@
 40: IF N(X) < 0 THEN 90
  X: 659
  N(659): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 213
  K = 214
@@ -27848,7 +27848,7 @@
  P(214) = 1319
 56: IF P > SQR(2000) THEN 90
  P: 1319
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1319
  terminated:false
@@ -27859,7 +27859,7 @@
 40: IF N(X) < 0 THEN 90
  X: 660
  N(660): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 214
  K = 215
@@ -27869,7 +27869,7 @@
  P(215) = 1321
 56: IF P > SQR(2000) THEN 90
  P: 1321
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1321
  terminated:false
@@ -27880,7 +27880,7 @@
 40: IF N(X) < 0 THEN 90
  X: 661
  N(661): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1323
  terminated:false
@@ -27891,7 +27891,7 @@
 40: IF N(X) < 0 THEN 90
  X: 662
  N(662): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1325
  terminated:false
@@ -27902,7 +27902,7 @@
 40: IF N(X) < 0 THEN 90
  X: 663
  N(663): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 215
  K = 216
@@ -27912,7 +27912,7 @@
  P(216) = 1327
 56: IF P > SQR(2000) THEN 90
  P: 1327
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1327
  terminated:false
@@ -27923,7 +27923,7 @@
 40: IF N(X) < 0 THEN 90
  X: 664
  N(664): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1329
  terminated:false
@@ -27934,7 +27934,7 @@
 40: IF N(X) < 0 THEN 90
  X: 665
  N(665): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1331
  terminated:false
@@ -27945,7 +27945,7 @@
 40: IF N(X) < 0 THEN 90
  X: 666
  N(666): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1333
  terminated:false
@@ -27956,7 +27956,7 @@
 40: IF N(X) < 0 THEN 90
  X: 667
  N(667): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1335
  terminated:false
@@ -27967,7 +27967,7 @@
 40: IF N(X) < 0 THEN 90
  X: 668
  N(668): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1337
  terminated:false
@@ -27978,7 +27978,7 @@
 40: IF N(X) < 0 THEN 90
  X: 669
  N(669): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1339
  terminated:false
@@ -27989,7 +27989,7 @@
 40: IF N(X) < 0 THEN 90
  X: 670
  N(670): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1341
  terminated:false
@@ -28000,7 +28000,7 @@
 40: IF N(X) < 0 THEN 90
  X: 671
  N(671): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1343
  terminated:false
@@ -28011,7 +28011,7 @@
 40: IF N(X) < 0 THEN 90
  X: 672
  N(672): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1345
  terminated:false
@@ -28022,7 +28022,7 @@
 40: IF N(X) < 0 THEN 90
  X: 673
  N(673): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1347
  terminated:false
@@ -28033,7 +28033,7 @@
 40: IF N(X) < 0 THEN 90
  X: 674
  N(674): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1349
  terminated:false
@@ -28044,7 +28044,7 @@
 40: IF N(X) < 0 THEN 90
  X: 675
  N(675): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1351
  terminated:false
@@ -28055,7 +28055,7 @@
 40: IF N(X) < 0 THEN 90
  X: 676
  N(676): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1353
  terminated:false
@@ -28066,7 +28066,7 @@
 40: IF N(X) < 0 THEN 90
  X: 677
  N(677): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1355
  terminated:false
@@ -28077,7 +28077,7 @@
 40: IF N(X) < 0 THEN 90
  X: 678
  N(678): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1357
  terminated:false
@@ -28088,7 +28088,7 @@
 40: IF N(X) < 0 THEN 90
  X: 679
  N(679): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1359
  terminated:false
@@ -28099,7 +28099,7 @@
 40: IF N(X) < 0 THEN 90
  X: 680
  N(680): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 216
  K = 217
@@ -28109,7 +28109,7 @@
  P(217) = 1361
 56: IF P > SQR(2000) THEN 90
  P: 1361
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1361
  terminated:false
@@ -28120,7 +28120,7 @@
 40: IF N(X) < 0 THEN 90
  X: 681
  N(681): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1363
  terminated:false
@@ -28131,7 +28131,7 @@
 40: IF N(X) < 0 THEN 90
  X: 682
  N(682): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1365
  terminated:false
@@ -28142,7 +28142,7 @@
 40: IF N(X) < 0 THEN 90
  X: 683
  N(683): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 217
  K = 218
@@ -28152,7 +28152,7 @@
  P(218) = 1367
 56: IF P > SQR(2000) THEN 90
  P: 1367
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1367
  terminated:false
@@ -28163,7 +28163,7 @@
 40: IF N(X) < 0 THEN 90
  X: 684
  N(684): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1369
  terminated:false
@@ -28174,7 +28174,7 @@
 40: IF N(X) < 0 THEN 90
  X: 685
  N(685): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1371
  terminated:false
@@ -28185,7 +28185,7 @@
 40: IF N(X) < 0 THEN 90
  X: 686
  N(686): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 218
  K = 219
@@ -28195,7 +28195,7 @@
  P(219) = 1373
 56: IF P > SQR(2000) THEN 90
  P: 1373
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1373
  terminated:false
@@ -28206,7 +28206,7 @@
 40: IF N(X) < 0 THEN 90
  X: 687
  N(687): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1375
  terminated:false
@@ -28217,7 +28217,7 @@
 40: IF N(X) < 0 THEN 90
  X: 688
  N(688): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1377
  terminated:false
@@ -28228,7 +28228,7 @@
 40: IF N(X) < 0 THEN 90
  X: 689
  N(689): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1379
  terminated:false
@@ -28239,7 +28239,7 @@
 40: IF N(X) < 0 THEN 90
  X: 690
  N(690): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 219
  K = 220
@@ -28249,7 +28249,7 @@
  P(220) = 1381
 56: IF P > SQR(2000) THEN 90
  P: 1381
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1381
  terminated:false
@@ -28260,7 +28260,7 @@
 40: IF N(X) < 0 THEN 90
  X: 691
  N(691): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1383
  terminated:false
@@ -28271,7 +28271,7 @@
 40: IF N(X) < 0 THEN 90
  X: 692
  N(692): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1385
  terminated:false
@@ -28282,7 +28282,7 @@
 40: IF N(X) < 0 THEN 90
  X: 693
  N(693): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1387
  terminated:false
@@ -28293,7 +28293,7 @@
 40: IF N(X) < 0 THEN 90
  X: 694
  N(694): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1389
  terminated:false
@@ -28304,7 +28304,7 @@
 40: IF N(X) < 0 THEN 90
  X: 695
  N(695): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1391
  terminated:false
@@ -28315,7 +28315,7 @@
 40: IF N(X) < 0 THEN 90
  X: 696
  N(696): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1393
  terminated:false
@@ -28326,7 +28326,7 @@
 40: IF N(X) < 0 THEN 90
  X: 697
  N(697): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1395
  terminated:false
@@ -28337,7 +28337,7 @@
 40: IF N(X) < 0 THEN 90
  X: 698
  N(698): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1397
  terminated:false
@@ -28348,7 +28348,7 @@
 40: IF N(X) < 0 THEN 90
  X: 699
  N(699): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 220
  K = 221
@@ -28358,7 +28358,7 @@
  P(221) = 1399
 56: IF P > SQR(2000) THEN 90
  P: 1399
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1399
  terminated:false
@@ -28369,7 +28369,7 @@
 40: IF N(X) < 0 THEN 90
  X: 700
  N(700): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1401
  terminated:false
@@ -28380,7 +28380,7 @@
 40: IF N(X) < 0 THEN 90
  X: 701
  N(701): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1403
  terminated:false
@@ -28391,7 +28391,7 @@
 40: IF N(X) < 0 THEN 90
  X: 702
  N(702): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1405
  terminated:false
@@ -28402,7 +28402,7 @@
 40: IF N(X) < 0 THEN 90
  X: 703
  N(703): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1407
  terminated:false
@@ -28413,7 +28413,7 @@
 40: IF N(X) < 0 THEN 90
  X: 704
  N(704): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 221
  K = 222
@@ -28423,7 +28423,7 @@
  P(222) = 1409
 56: IF P > SQR(2000) THEN 90
  P: 1409
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1409
  terminated:false
@@ -28434,7 +28434,7 @@
 40: IF N(X) < 0 THEN 90
  X: 705
  N(705): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1411
  terminated:false
@@ -28445,7 +28445,7 @@
 40: IF N(X) < 0 THEN 90
  X: 706
  N(706): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1413
  terminated:false
@@ -28456,7 +28456,7 @@
 40: IF N(X) < 0 THEN 90
  X: 707
  N(707): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1415
  terminated:false
@@ -28467,7 +28467,7 @@
 40: IF N(X) < 0 THEN 90
  X: 708
  N(708): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1417
  terminated:false
@@ -28478,7 +28478,7 @@
 40: IF N(X) < 0 THEN 90
  X: 709
  N(709): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1419
  terminated:false
@@ -28489,7 +28489,7 @@
 40: IF N(X) < 0 THEN 90
  X: 710
  N(710): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1421
  terminated:false
@@ -28500,7 +28500,7 @@
 40: IF N(X) < 0 THEN 90
  X: 711
  N(711): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 222
  K = 223
@@ -28510,7 +28510,7 @@
  P(223) = 1423
 56: IF P > SQR(2000) THEN 90
  P: 1423
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1423
  terminated:false
@@ -28521,7 +28521,7 @@
 40: IF N(X) < 0 THEN 90
  X: 712
  N(712): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1425
  terminated:false
@@ -28532,7 +28532,7 @@
 40: IF N(X) < 0 THEN 90
  X: 713
  N(713): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 223
  K = 224
@@ -28542,7 +28542,7 @@
  P(224) = 1427
 56: IF P > SQR(2000) THEN 90
  P: 1427
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1427
  terminated:false
@@ -28553,7 +28553,7 @@
 40: IF N(X) < 0 THEN 90
  X: 714
  N(714): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 224
  K = 225
@@ -28563,7 +28563,7 @@
  P(225) = 1429
 56: IF P > SQR(2000) THEN 90
  P: 1429
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1429
  terminated:false
@@ -28574,7 +28574,7 @@
 40: IF N(X) < 0 THEN 90
  X: 715
  N(715): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1431
  terminated:false
@@ -28585,7 +28585,7 @@
 40: IF N(X) < 0 THEN 90
  X: 716
  N(716): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 225
  K = 226
@@ -28595,7 +28595,7 @@
  P(226) = 1433
 56: IF P > SQR(2000) THEN 90
  P: 1433
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1433
  terminated:false
@@ -28606,7 +28606,7 @@
 40: IF N(X) < 0 THEN 90
  X: 717
  N(717): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1435
  terminated:false
@@ -28617,7 +28617,7 @@
 40: IF N(X) < 0 THEN 90
  X: 718
  N(718): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1437
  terminated:false
@@ -28628,7 +28628,7 @@
 40: IF N(X) < 0 THEN 90
  X: 719
  N(719): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 226
  K = 227
@@ -28638,7 +28638,7 @@
  P(227) = 1439
 56: IF P > SQR(2000) THEN 90
  P: 1439
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1439
  terminated:false
@@ -28649,7 +28649,7 @@
 40: IF N(X) < 0 THEN 90
  X: 720
  N(720): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1441
  terminated:false
@@ -28660,7 +28660,7 @@
 40: IF N(X) < 0 THEN 90
  X: 721
  N(721): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1443
  terminated:false
@@ -28671,7 +28671,7 @@
 40: IF N(X) < 0 THEN 90
  X: 722
  N(722): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1445
  terminated:false
@@ -28682,7 +28682,7 @@
 40: IF N(X) < 0 THEN 90
  X: 723
  N(723): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 227
  K = 228
@@ -28692,7 +28692,7 @@
  P(228) = 1447
 56: IF P > SQR(2000) THEN 90
  P: 1447
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1447
  terminated:false
@@ -28703,7 +28703,7 @@
 40: IF N(X) < 0 THEN 90
  X: 724
  N(724): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1449
  terminated:false
@@ -28714,7 +28714,7 @@
 40: IF N(X) < 0 THEN 90
  X: 725
  N(725): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 228
  K = 229
@@ -28724,7 +28724,7 @@
  P(229) = 1451
 56: IF P > SQR(2000) THEN 90
  P: 1451
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1451
  terminated:false
@@ -28735,7 +28735,7 @@
 40: IF N(X) < 0 THEN 90
  X: 726
  N(726): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 229
  K = 230
@@ -28745,7 +28745,7 @@
  P(230) = 1453
 56: IF P > SQR(2000) THEN 90
  P: 1453
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1453
  terminated:false
@@ -28756,7 +28756,7 @@
 40: IF N(X) < 0 THEN 90
  X: 727
  N(727): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1455
  terminated:false
@@ -28767,7 +28767,7 @@
 40: IF N(X) < 0 THEN 90
  X: 728
  N(728): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1457
  terminated:false
@@ -28778,7 +28778,7 @@
 40: IF N(X) < 0 THEN 90
  X: 729
  N(729): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 230
  K = 231
@@ -28788,7 +28788,7 @@
  P(231) = 1459
 56: IF P > SQR(2000) THEN 90
  P: 1459
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1459
  terminated:false
@@ -28799,7 +28799,7 @@
 40: IF N(X) < 0 THEN 90
  X: 730
  N(730): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1461
  terminated:false
@@ -28810,7 +28810,7 @@
 40: IF N(X) < 0 THEN 90
  X: 731
  N(731): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1463
  terminated:false
@@ -28821,7 +28821,7 @@
 40: IF N(X) < 0 THEN 90
  X: 732
  N(732): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1465
  terminated:false
@@ -28832,7 +28832,7 @@
 40: IF N(X) < 0 THEN 90
  X: 733
  N(733): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1467
  terminated:false
@@ -28843,7 +28843,7 @@
 40: IF N(X) < 0 THEN 90
  X: 734
  N(734): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1469
  terminated:false
@@ -28854,7 +28854,7 @@
 40: IF N(X) < 0 THEN 90
  X: 735
  N(735): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 231
  K = 232
@@ -28864,7 +28864,7 @@
  P(232) = 1471
 56: IF P > SQR(2000) THEN 90
  P: 1471
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1471
  terminated:false
@@ -28875,7 +28875,7 @@
 40: IF N(X) < 0 THEN 90
  X: 736
  N(736): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1473
  terminated:false
@@ -28886,7 +28886,7 @@
 40: IF N(X) < 0 THEN 90
  X: 737
  N(737): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1475
  terminated:false
@@ -28897,7 +28897,7 @@
 40: IF N(X) < 0 THEN 90
  X: 738
  N(738): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1477
  terminated:false
@@ -28908,7 +28908,7 @@
 40: IF N(X) < 0 THEN 90
  X: 739
  N(739): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1479
  terminated:false
@@ -28919,7 +28919,7 @@
 40: IF N(X) < 0 THEN 90
  X: 740
  N(740): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 232
  K = 233
@@ -28929,7 +28929,7 @@
  P(233) = 1481
 56: IF P > SQR(2000) THEN 90
  P: 1481
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1481
  terminated:false
@@ -28940,7 +28940,7 @@
 40: IF N(X) < 0 THEN 90
  X: 741
  N(741): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 233
  K = 234
@@ -28950,7 +28950,7 @@
  P(234) = 1483
 56: IF P > SQR(2000) THEN 90
  P: 1483
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1483
  terminated:false
@@ -28961,7 +28961,7 @@
 40: IF N(X) < 0 THEN 90
  X: 742
  N(742): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1485
  terminated:false
@@ -28972,7 +28972,7 @@
 40: IF N(X) < 0 THEN 90
  X: 743
  N(743): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 234
  K = 235
@@ -28982,7 +28982,7 @@
  P(235) = 1487
 56: IF P > SQR(2000) THEN 90
  P: 1487
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1487
  terminated:false
@@ -28993,7 +28993,7 @@
 40: IF N(X) < 0 THEN 90
  X: 744
  N(744): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 235
  K = 236
@@ -29003,7 +29003,7 @@
  P(236) = 1489
 56: IF P > SQR(2000) THEN 90
  P: 1489
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1489
  terminated:false
@@ -29014,7 +29014,7 @@
 40: IF N(X) < 0 THEN 90
  X: 745
  N(745): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1491
  terminated:false
@@ -29025,7 +29025,7 @@
 40: IF N(X) < 0 THEN 90
  X: 746
  N(746): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 236
  K = 237
@@ -29035,7 +29035,7 @@
  P(237) = 1493
 56: IF P > SQR(2000) THEN 90
  P: 1493
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1493
  terminated:false
@@ -29046,7 +29046,7 @@
 40: IF N(X) < 0 THEN 90
  X: 747
  N(747): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1495
  terminated:false
@@ -29057,7 +29057,7 @@
 40: IF N(X) < 0 THEN 90
  X: 748
  N(748): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1497
  terminated:false
@@ -29068,7 +29068,7 @@
 40: IF N(X) < 0 THEN 90
  X: 749
  N(749): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 237
  K = 238
@@ -29078,7 +29078,7 @@
  P(238) = 1499
 56: IF P > SQR(2000) THEN 90
  P: 1499
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1499
  terminated:false
@@ -29089,7 +29089,7 @@
 40: IF N(X) < 0 THEN 90
  X: 750
  N(750): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1501
  terminated:false
@@ -29100,7 +29100,7 @@
 40: IF N(X) < 0 THEN 90
  X: 751
  N(751): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1503
  terminated:false
@@ -29111,7 +29111,7 @@
 40: IF N(X) < 0 THEN 90
  X: 752
  N(752): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1505
  terminated:false
@@ -29122,7 +29122,7 @@
 40: IF N(X) < 0 THEN 90
  X: 753
  N(753): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1507
  terminated:false
@@ -29133,7 +29133,7 @@
 40: IF N(X) < 0 THEN 90
  X: 754
  N(754): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1509
  terminated:false
@@ -29144,7 +29144,7 @@
 40: IF N(X) < 0 THEN 90
  X: 755
  N(755): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 238
  K = 239
@@ -29154,7 +29154,7 @@
  P(239) = 1511
 56: IF P > SQR(2000) THEN 90
  P: 1511
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1511
  terminated:false
@@ -29165,7 +29165,7 @@
 40: IF N(X) < 0 THEN 90
  X: 756
  N(756): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1513
  terminated:false
@@ -29176,7 +29176,7 @@
 40: IF N(X) < 0 THEN 90
  X: 757
  N(757): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1515
  terminated:false
@@ -29187,7 +29187,7 @@
 40: IF N(X) < 0 THEN 90
  X: 758
  N(758): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1517
  terminated:false
@@ -29198,7 +29198,7 @@
 40: IF N(X) < 0 THEN 90
  X: 759
  N(759): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1519
  terminated:false
@@ -29209,7 +29209,7 @@
 40: IF N(X) < 0 THEN 90
  X: 760
  N(760): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1521
  terminated:false
@@ -29220,7 +29220,7 @@
 40: IF N(X) < 0 THEN 90
  X: 761
  N(761): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 239
  K = 240
@@ -29230,7 +29230,7 @@
  P(240) = 1523
 56: IF P > SQR(2000) THEN 90
  P: 1523
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1523
  terminated:false
@@ -29241,7 +29241,7 @@
 40: IF N(X) < 0 THEN 90
  X: 762
  N(762): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1525
  terminated:false
@@ -29252,7 +29252,7 @@
 40: IF N(X) < 0 THEN 90
  X: 763
  N(763): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1527
  terminated:false
@@ -29263,7 +29263,7 @@
 40: IF N(X) < 0 THEN 90
  X: 764
  N(764): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1529
  terminated:false
@@ -29274,7 +29274,7 @@
 40: IF N(X) < 0 THEN 90
  X: 765
  N(765): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 240
  K = 241
@@ -29284,7 +29284,7 @@
  P(241) = 1531
 56: IF P > SQR(2000) THEN 90
  P: 1531
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1531
  terminated:false
@@ -29295,7 +29295,7 @@
 40: IF N(X) < 0 THEN 90
  X: 766
  N(766): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1533
  terminated:false
@@ -29306,7 +29306,7 @@
 40: IF N(X) < 0 THEN 90
  X: 767
  N(767): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1535
  terminated:false
@@ -29317,7 +29317,7 @@
 40: IF N(X) < 0 THEN 90
  X: 768
  N(768): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1537
  terminated:false
@@ -29328,7 +29328,7 @@
 40: IF N(X) < 0 THEN 90
  X: 769
  N(769): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1539
  terminated:false
@@ -29339,7 +29339,7 @@
 40: IF N(X) < 0 THEN 90
  X: 770
  N(770): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1541
  terminated:false
@@ -29350,7 +29350,7 @@
 40: IF N(X) < 0 THEN 90
  X: 771
  N(771): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 241
  K = 242
@@ -29360,7 +29360,7 @@
  P(242) = 1543
 56: IF P > SQR(2000) THEN 90
  P: 1543
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1543
  terminated:false
@@ -29371,7 +29371,7 @@
 40: IF N(X) < 0 THEN 90
  X: 772
  N(772): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1545
  terminated:false
@@ -29382,7 +29382,7 @@
 40: IF N(X) < 0 THEN 90
  X: 773
  N(773): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1547
  terminated:false
@@ -29393,7 +29393,7 @@
 40: IF N(X) < 0 THEN 90
  X: 774
  N(774): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 242
  K = 243
@@ -29403,7 +29403,7 @@
  P(243) = 1549
 56: IF P > SQR(2000) THEN 90
  P: 1549
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1549
  terminated:false
@@ -29414,7 +29414,7 @@
 40: IF N(X) < 0 THEN 90
  X: 775
  N(775): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1551
  terminated:false
@@ -29425,7 +29425,7 @@
 40: IF N(X) < 0 THEN 90
  X: 776
  N(776): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 243
  K = 244
@@ -29435,7 +29435,7 @@
  P(244) = 1553
 56: IF P > SQR(2000) THEN 90
  P: 1553
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1553
  terminated:false
@@ -29446,7 +29446,7 @@
 40: IF N(X) < 0 THEN 90
  X: 777
  N(777): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1555
  terminated:false
@@ -29457,7 +29457,7 @@
 40: IF N(X) < 0 THEN 90
  X: 778
  N(778): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1557
  terminated:false
@@ -29468,7 +29468,7 @@
 40: IF N(X) < 0 THEN 90
  X: 779
  N(779): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 244
  K = 245
@@ -29478,7 +29478,7 @@
  P(245) = 1559
 56: IF P > SQR(2000) THEN 90
  P: 1559
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1559
  terminated:false
@@ -29489,7 +29489,7 @@
 40: IF N(X) < 0 THEN 90
  X: 780
  N(780): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1561
  terminated:false
@@ -29500,7 +29500,7 @@
 40: IF N(X) < 0 THEN 90
  X: 781
  N(781): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1563
  terminated:false
@@ -29511,7 +29511,7 @@
 40: IF N(X) < 0 THEN 90
  X: 782
  N(782): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1565
  terminated:false
@@ -29522,7 +29522,7 @@
 40: IF N(X) < 0 THEN 90
  X: 783
  N(783): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 245
  K = 246
@@ -29532,7 +29532,7 @@
  P(246) = 1567
 56: IF P > SQR(2000) THEN 90
  P: 1567
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1567
  terminated:false
@@ -29543,7 +29543,7 @@
 40: IF N(X) < 0 THEN 90
  X: 784
  N(784): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1569
  terminated:false
@@ -29554,7 +29554,7 @@
 40: IF N(X) < 0 THEN 90
  X: 785
  N(785): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 246
  K = 247
@@ -29564,7 +29564,7 @@
  P(247) = 1571
 56: IF P > SQR(2000) THEN 90
  P: 1571
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1571
  terminated:false
@@ -29575,7 +29575,7 @@
 40: IF N(X) < 0 THEN 90
  X: 786
  N(786): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1573
  terminated:false
@@ -29586,7 +29586,7 @@
 40: IF N(X) < 0 THEN 90
  X: 787
  N(787): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1575
  terminated:false
@@ -29597,7 +29597,7 @@
 40: IF N(X) < 0 THEN 90
  X: 788
  N(788): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1577
  terminated:false
@@ -29608,7 +29608,7 @@
 40: IF N(X) < 0 THEN 90
  X: 789
  N(789): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 247
  K = 248
@@ -29618,7 +29618,7 @@
  P(248) = 1579
 56: IF P > SQR(2000) THEN 90
  P: 1579
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1579
  terminated:false
@@ -29629,7 +29629,7 @@
 40: IF N(X) < 0 THEN 90
  X: 790
  N(790): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1581
  terminated:false
@@ -29640,7 +29640,7 @@
 40: IF N(X) < 0 THEN 90
  X: 791
  N(791): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 248
  K = 249
@@ -29650,7 +29650,7 @@
  P(249) = 1583
 56: IF P > SQR(2000) THEN 90
  P: 1583
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1583
  terminated:false
@@ -29661,7 +29661,7 @@
 40: IF N(X) < 0 THEN 90
  X: 792
  N(792): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1585
  terminated:false
@@ -29672,7 +29672,7 @@
 40: IF N(X) < 0 THEN 90
  X: 793
  N(793): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1587
  terminated:false
@@ -29683,7 +29683,7 @@
 40: IF N(X) < 0 THEN 90
  X: 794
  N(794): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1589
  terminated:false
@@ -29694,7 +29694,7 @@
 40: IF N(X) < 0 THEN 90
  X: 795
  N(795): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1591
  terminated:false
@@ -29705,7 +29705,7 @@
 40: IF N(X) < 0 THEN 90
  X: 796
  N(796): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1593
  terminated:false
@@ -29716,7 +29716,7 @@
 40: IF N(X) < 0 THEN 90
  X: 797
  N(797): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1595
  terminated:false
@@ -29727,7 +29727,7 @@
 40: IF N(X) < 0 THEN 90
  X: 798
  N(798): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 249
  K = 250
@@ -29737,7 +29737,7 @@
  P(250) = 1597
 56: IF P > SQR(2000) THEN 90
  P: 1597
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1597
  terminated:false
@@ -29748,7 +29748,7 @@
 40: IF N(X) < 0 THEN 90
  X: 799
  N(799): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1599
  terminated:false
@@ -29759,7 +29759,7 @@
 40: IF N(X) < 0 THEN 90
  X: 800
  N(800): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 250
  K = 251
@@ -29769,7 +29769,7 @@
  P(251) = 1601
 56: IF P > SQR(2000) THEN 90
  P: 1601
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1601
  terminated:false
@@ -29780,7 +29780,7 @@
 40: IF N(X) < 0 THEN 90
  X: 801
  N(801): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1603
  terminated:false
@@ -29791,7 +29791,7 @@
 40: IF N(X) < 0 THEN 90
  X: 802
  N(802): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1605
  terminated:false
@@ -29802,7 +29802,7 @@
 40: IF N(X) < 0 THEN 90
  X: 803
  N(803): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 251
  K = 252
@@ -29812,7 +29812,7 @@
  P(252) = 1607
 56: IF P > SQR(2000) THEN 90
  P: 1607
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1607
  terminated:false
@@ -29823,7 +29823,7 @@
 40: IF N(X) < 0 THEN 90
  X: 804
  N(804): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 252
  K = 253
@@ -29833,7 +29833,7 @@
  P(253) = 1609
 56: IF P > SQR(2000) THEN 90
  P: 1609
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1609
  terminated:false
@@ -29844,7 +29844,7 @@
 40: IF N(X) < 0 THEN 90
  X: 805
  N(805): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1611
  terminated:false
@@ -29855,7 +29855,7 @@
 40: IF N(X) < 0 THEN 90
  X: 806
  N(806): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 253
  K = 254
@@ -29865,7 +29865,7 @@
  P(254) = 1613
 56: IF P > SQR(2000) THEN 90
  P: 1613
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1613
  terminated:false
@@ -29876,7 +29876,7 @@
 40: IF N(X) < 0 THEN 90
  X: 807
  N(807): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1615
  terminated:false
@@ -29887,7 +29887,7 @@
 40: IF N(X) < 0 THEN 90
  X: 808
  N(808): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1617
  terminated:false
@@ -29898,7 +29898,7 @@
 40: IF N(X) < 0 THEN 90
  X: 809
  N(809): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 254
  K = 255
@@ -29908,7 +29908,7 @@
  P(255) = 1619
 56: IF P > SQR(2000) THEN 90
  P: 1619
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1619
  terminated:false
@@ -29919,7 +29919,7 @@
 40: IF N(X) < 0 THEN 90
  X: 810
  N(810): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 255
  K = 256
@@ -29929,7 +29929,7 @@
  P(256) = 1621
 56: IF P > SQR(2000) THEN 90
  P: 1621
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1621
  terminated:false
@@ -29940,7 +29940,7 @@
 40: IF N(X) < 0 THEN 90
  X: 811
  N(811): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1623
  terminated:false
@@ -29951,7 +29951,7 @@
 40: IF N(X) < 0 THEN 90
  X: 812
  N(812): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1625
  terminated:false
@@ -29962,7 +29962,7 @@
 40: IF N(X) < 0 THEN 90
  X: 813
  N(813): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 256
  K = 257
@@ -29972,7 +29972,7 @@
  P(257) = 1627
 56: IF P > SQR(2000) THEN 90
  P: 1627
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1627
  terminated:false
@@ -29983,7 +29983,7 @@
 40: IF N(X) < 0 THEN 90
  X: 814
  N(814): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1629
  terminated:false
@@ -29994,7 +29994,7 @@
 40: IF N(X) < 0 THEN 90
  X: 815
  N(815): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1631
  terminated:false
@@ -30005,7 +30005,7 @@
 40: IF N(X) < 0 THEN 90
  X: 816
  N(816): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1633
  terminated:false
@@ -30016,7 +30016,7 @@
 40: IF N(X) < 0 THEN 90
  X: 817
  N(817): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1635
  terminated:false
@@ -30027,7 +30027,7 @@
 40: IF N(X) < 0 THEN 90
  X: 818
  N(818): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 257
  K = 258
@@ -30037,7 +30037,7 @@
  P(258) = 1637
 56: IF P > SQR(2000) THEN 90
  P: 1637
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1637
  terminated:false
@@ -30048,7 +30048,7 @@
 40: IF N(X) < 0 THEN 90
  X: 819
  N(819): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1639
  terminated:false
@@ -30059,7 +30059,7 @@
 40: IF N(X) < 0 THEN 90
  X: 820
  N(820): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1641
  terminated:false
@@ -30070,7 +30070,7 @@
 40: IF N(X) < 0 THEN 90
  X: 821
  N(821): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1643
  terminated:false
@@ -30081,7 +30081,7 @@
 40: IF N(X) < 0 THEN 90
  X: 822
  N(822): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1645
  terminated:false
@@ -30092,7 +30092,7 @@
 40: IF N(X) < 0 THEN 90
  X: 823
  N(823): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1647
  terminated:false
@@ -30103,7 +30103,7 @@
 40: IF N(X) < 0 THEN 90
  X: 824
  N(824): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1649
  terminated:false
@@ -30114,7 +30114,7 @@
 40: IF N(X) < 0 THEN 90
  X: 825
  N(825): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1651
  terminated:false
@@ -30125,7 +30125,7 @@
 40: IF N(X) < 0 THEN 90
  X: 826
  N(826): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1653
  terminated:false
@@ -30136,7 +30136,7 @@
 40: IF N(X) < 0 THEN 90
  X: 827
  N(827): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1655
  terminated:false
@@ -30147,7 +30147,7 @@
 40: IF N(X) < 0 THEN 90
  X: 828
  N(828): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 258
  K = 259
@@ -30157,7 +30157,7 @@
  P(259) = 1657
 56: IF P > SQR(2000) THEN 90
  P: 1657
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1657
  terminated:false
@@ -30168,7 +30168,7 @@
 40: IF N(X) < 0 THEN 90
  X: 829
  N(829): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1659
  terminated:false
@@ -30179,7 +30179,7 @@
 40: IF N(X) < 0 THEN 90
  X: 830
  N(830): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1661
  terminated:false
@@ -30190,7 +30190,7 @@
 40: IF N(X) < 0 THEN 90
  X: 831
  N(831): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 259
  K = 260
@@ -30200,7 +30200,7 @@
  P(260) = 1663
 56: IF P > SQR(2000) THEN 90
  P: 1663
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1663
  terminated:false
@@ -30211,7 +30211,7 @@
 40: IF N(X) < 0 THEN 90
  X: 832
  N(832): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1665
  terminated:false
@@ -30222,7 +30222,7 @@
 40: IF N(X) < 0 THEN 90
  X: 833
  N(833): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 260
  K = 261
@@ -30232,7 +30232,7 @@
  P(261) = 1667
 56: IF P > SQR(2000) THEN 90
  P: 1667
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1667
  terminated:false
@@ -30243,7 +30243,7 @@
 40: IF N(X) < 0 THEN 90
  X: 834
  N(834): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 261
  K = 262
@@ -30253,7 +30253,7 @@
  P(262) = 1669
 56: IF P > SQR(2000) THEN 90
  P: 1669
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1669
  terminated:false
@@ -30264,7 +30264,7 @@
 40: IF N(X) < 0 THEN 90
  X: 835
  N(835): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1671
  terminated:false
@@ -30275,7 +30275,7 @@
 40: IF N(X) < 0 THEN 90
  X: 836
  N(836): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1673
  terminated:false
@@ -30286,7 +30286,7 @@
 40: IF N(X) < 0 THEN 90
  X: 837
  N(837): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1675
  terminated:false
@@ -30297,7 +30297,7 @@
 40: IF N(X) < 0 THEN 90
  X: 838
  N(838): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1677
  terminated:false
@@ -30308,7 +30308,7 @@
 40: IF N(X) < 0 THEN 90
  X: 839
  N(839): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1679
  terminated:false
@@ -30319,7 +30319,7 @@
 40: IF N(X) < 0 THEN 90
  X: 840
  N(840): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1681
  terminated:false
@@ -30330,7 +30330,7 @@
 40: IF N(X) < 0 THEN 90
  X: 841
  N(841): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1683
  terminated:false
@@ -30341,7 +30341,7 @@
 40: IF N(X) < 0 THEN 90
  X: 842
  N(842): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1685
  terminated:false
@@ -30352,7 +30352,7 @@
 40: IF N(X) < 0 THEN 90
  X: 843
  N(843): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1687
  terminated:false
@@ -30363,7 +30363,7 @@
 40: IF N(X) < 0 THEN 90
  X: 844
  N(844): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1689
  terminated:false
@@ -30374,7 +30374,7 @@
 40: IF N(X) < 0 THEN 90
  X: 845
  N(845): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1691
  terminated:false
@@ -30385,7 +30385,7 @@
 40: IF N(X) < 0 THEN 90
  X: 846
  N(846): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 262
  K = 263
@@ -30395,7 +30395,7 @@
  P(263) = 1693
 56: IF P > SQR(2000) THEN 90
  P: 1693
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1693
  terminated:false
@@ -30406,7 +30406,7 @@
 40: IF N(X) < 0 THEN 90
  X: 847
  N(847): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1695
  terminated:false
@@ -30417,7 +30417,7 @@
 40: IF N(X) < 0 THEN 90
  X: 848
  N(848): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 263
  K = 264
@@ -30427,7 +30427,7 @@
  P(264) = 1697
 56: IF P > SQR(2000) THEN 90
  P: 1697
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1697
  terminated:false
@@ -30438,7 +30438,7 @@
 40: IF N(X) < 0 THEN 90
  X: 849
  N(849): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 264
  K = 265
@@ -30448,7 +30448,7 @@
  P(265) = 1699
 56: IF P > SQR(2000) THEN 90
  P: 1699
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1699
  terminated:false
@@ -30459,7 +30459,7 @@
 40: IF N(X) < 0 THEN 90
  X: 850
  N(850): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1701
  terminated:false
@@ -30470,7 +30470,7 @@
 40: IF N(X) < 0 THEN 90
  X: 851
  N(851): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1703
  terminated:false
@@ -30481,7 +30481,7 @@
 40: IF N(X) < 0 THEN 90
  X: 852
  N(852): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1705
  terminated:false
@@ -30492,7 +30492,7 @@
 40: IF N(X) < 0 THEN 90
  X: 853
  N(853): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1707
  terminated:false
@@ -30503,7 +30503,7 @@
 40: IF N(X) < 0 THEN 90
  X: 854
  N(854): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 265
  K = 266
@@ -30513,7 +30513,7 @@
  P(266) = 1709
 56: IF P > SQR(2000) THEN 90
  P: 1709
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1709
  terminated:false
@@ -30524,7 +30524,7 @@
 40: IF N(X) < 0 THEN 90
  X: 855
  N(855): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1711
  terminated:false
@@ -30535,7 +30535,7 @@
 40: IF N(X) < 0 THEN 90
  X: 856
  N(856): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1713
  terminated:false
@@ -30546,7 +30546,7 @@
 40: IF N(X) < 0 THEN 90
  X: 857
  N(857): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1715
  terminated:false
@@ -30557,7 +30557,7 @@
 40: IF N(X) < 0 THEN 90
  X: 858
  N(858): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1717
  terminated:false
@@ -30568,7 +30568,7 @@
 40: IF N(X) < 0 THEN 90
  X: 859
  N(859): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1719
  terminated:false
@@ -30579,7 +30579,7 @@
 40: IF N(X) < 0 THEN 90
  X: 860
  N(860): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 266
  K = 267
@@ -30589,7 +30589,7 @@
  P(267) = 1721
 56: IF P > SQR(2000) THEN 90
  P: 1721
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1721
  terminated:false
@@ -30600,7 +30600,7 @@
 40: IF N(X) < 0 THEN 90
  X: 861
  N(861): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 267
  K = 268
@@ -30610,7 +30610,7 @@
  P(268) = 1723
 56: IF P > SQR(2000) THEN 90
  P: 1723
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1723
  terminated:false
@@ -30621,7 +30621,7 @@
 40: IF N(X) < 0 THEN 90
  X: 862
  N(862): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1725
  terminated:false
@@ -30632,7 +30632,7 @@
 40: IF N(X) < 0 THEN 90
  X: 863
  N(863): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1727
  terminated:false
@@ -30643,7 +30643,7 @@
 40: IF N(X) < 0 THEN 90
  X: 864
  N(864): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1729
  terminated:false
@@ -30654,7 +30654,7 @@
 40: IF N(X) < 0 THEN 90
  X: 865
  N(865): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1731
  terminated:false
@@ -30665,7 +30665,7 @@
 40: IF N(X) < 0 THEN 90
  X: 866
  N(866): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 268
  K = 269
@@ -30675,7 +30675,7 @@
  P(269) = 1733
 56: IF P > SQR(2000) THEN 90
  P: 1733
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1733
  terminated:false
@@ -30686,7 +30686,7 @@
 40: IF N(X) < 0 THEN 90
  X: 867
  N(867): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1735
  terminated:false
@@ -30697,7 +30697,7 @@
 40: IF N(X) < 0 THEN 90
  X: 868
  N(868): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1737
  terminated:false
@@ -30708,7 +30708,7 @@
 40: IF N(X) < 0 THEN 90
  X: 869
  N(869): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1739
  terminated:false
@@ -30719,7 +30719,7 @@
 40: IF N(X) < 0 THEN 90
  X: 870
  N(870): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 269
  K = 270
@@ -30729,7 +30729,7 @@
  P(270) = 1741
 56: IF P > SQR(2000) THEN 90
  P: 1741
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1741
  terminated:false
@@ -30740,7 +30740,7 @@
 40: IF N(X) < 0 THEN 90
  X: 871
  N(871): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1743
  terminated:false
@@ -30751,7 +30751,7 @@
 40: IF N(X) < 0 THEN 90
  X: 872
  N(872): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1745
  terminated:false
@@ -30762,7 +30762,7 @@
 40: IF N(X) < 0 THEN 90
  X: 873
  N(873): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 270
  K = 271
@@ -30772,7 +30772,7 @@
  P(271) = 1747
 56: IF P > SQR(2000) THEN 90
  P: 1747
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1747
  terminated:false
@@ -30783,7 +30783,7 @@
 40: IF N(X) < 0 THEN 90
  X: 874
  N(874): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1749
  terminated:false
@@ -30794,7 +30794,7 @@
 40: IF N(X) < 0 THEN 90
  X: 875
  N(875): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1751
  terminated:false
@@ -30805,7 +30805,7 @@
 40: IF N(X) < 0 THEN 90
  X: 876
  N(876): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 271
  K = 272
@@ -30815,7 +30815,7 @@
  P(272) = 1753
 56: IF P > SQR(2000) THEN 90
  P: 1753
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1753
  terminated:false
@@ -30826,7 +30826,7 @@
 40: IF N(X) < 0 THEN 90
  X: 877
  N(877): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1755
  terminated:false
@@ -30837,7 +30837,7 @@
 40: IF N(X) < 0 THEN 90
  X: 878
  N(878): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1757
  terminated:false
@@ -30848,7 +30848,7 @@
 40: IF N(X) < 0 THEN 90
  X: 879
  N(879): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 272
  K = 273
@@ -30858,7 +30858,7 @@
  P(273) = 1759
 56: IF P > SQR(2000) THEN 90
  P: 1759
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1759
  terminated:false
@@ -30869,7 +30869,7 @@
 40: IF N(X) < 0 THEN 90
  X: 880
  N(880): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1761
  terminated:false
@@ -30880,7 +30880,7 @@
 40: IF N(X) < 0 THEN 90
  X: 881
  N(881): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1763
  terminated:false
@@ -30891,7 +30891,7 @@
 40: IF N(X) < 0 THEN 90
  X: 882
  N(882): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1765
  terminated:false
@@ -30902,7 +30902,7 @@
 40: IF N(X) < 0 THEN 90
  X: 883
  N(883): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1767
  terminated:false
@@ -30913,7 +30913,7 @@
 40: IF N(X) < 0 THEN 90
  X: 884
  N(884): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1769
  terminated:false
@@ -30924,7 +30924,7 @@
 40: IF N(X) < 0 THEN 90
  X: 885
  N(885): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1771
  terminated:false
@@ -30935,7 +30935,7 @@
 40: IF N(X) < 0 THEN 90
  X: 886
  N(886): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1773
  terminated:false
@@ -30946,7 +30946,7 @@
 40: IF N(X) < 0 THEN 90
  X: 887
  N(887): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1775
  terminated:false
@@ -30957,7 +30957,7 @@
 40: IF N(X) < 0 THEN 90
  X: 888
  N(888): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 273
  K = 274
@@ -30967,7 +30967,7 @@
  P(274) = 1777
 56: IF P > SQR(2000) THEN 90
  P: 1777
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1777
  terminated:false
@@ -30978,7 +30978,7 @@
 40: IF N(X) < 0 THEN 90
  X: 889
  N(889): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1779
  terminated:false
@@ -30989,7 +30989,7 @@
 40: IF N(X) < 0 THEN 90
  X: 890
  N(890): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1781
  terminated:false
@@ -31000,7 +31000,7 @@
 40: IF N(X) < 0 THEN 90
  X: 891
  N(891): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 274
  K = 275
@@ -31010,7 +31010,7 @@
  P(275) = 1783
 56: IF P > SQR(2000) THEN 90
  P: 1783
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1783
  terminated:false
@@ -31021,7 +31021,7 @@
 40: IF N(X) < 0 THEN 90
  X: 892
  N(892): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1785
  terminated:false
@@ -31032,7 +31032,7 @@
 40: IF N(X) < 0 THEN 90
  X: 893
  N(893): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 275
  K = 276
@@ -31042,7 +31042,7 @@
  P(276) = 1787
 56: IF P > SQR(2000) THEN 90
  P: 1787
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1787
  terminated:false
@@ -31053,7 +31053,7 @@
 40: IF N(X) < 0 THEN 90
  X: 894
  N(894): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 276
  K = 277
@@ -31063,7 +31063,7 @@
  P(277) = 1789
 56: IF P > SQR(2000) THEN 90
  P: 1789
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1789
  terminated:false
@@ -31074,7 +31074,7 @@
 40: IF N(X) < 0 THEN 90
  X: 895
  N(895): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1791
  terminated:false
@@ -31085,7 +31085,7 @@
 40: IF N(X) < 0 THEN 90
  X: 896
  N(896): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1793
  terminated:false
@@ -31096,7 +31096,7 @@
 40: IF N(X) < 0 THEN 90
  X: 897
  N(897): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1795
  terminated:false
@@ -31107,7 +31107,7 @@
 40: IF N(X) < 0 THEN 90
  X: 898
  N(898): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1797
  terminated:false
@@ -31118,7 +31118,7 @@
 40: IF N(X) < 0 THEN 90
  X: 899
  N(899): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1799
  terminated:false
@@ -31129,7 +31129,7 @@
 40: IF N(X) < 0 THEN 90
  X: 900
  N(900): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 277
  K = 278
@@ -31139,7 +31139,7 @@
  P(278) = 1801
 56: IF P > SQR(2000) THEN 90
  P: 1801
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1801
  terminated:false
@@ -31150,7 +31150,7 @@
 40: IF N(X) < 0 THEN 90
  X: 901
  N(901): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1803
  terminated:false
@@ -31161,7 +31161,7 @@
 40: IF N(X) < 0 THEN 90
  X: 902
  N(902): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1805
  terminated:false
@@ -31172,7 +31172,7 @@
 40: IF N(X) < 0 THEN 90
  X: 903
  N(903): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1807
  terminated:false
@@ -31183,7 +31183,7 @@
 40: IF N(X) < 0 THEN 90
  X: 904
  N(904): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1809
  terminated:false
@@ -31194,7 +31194,7 @@
 40: IF N(X) < 0 THEN 90
  X: 905
  N(905): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 278
  K = 279
@@ -31204,7 +31204,7 @@
  P(279) = 1811
 56: IF P > SQR(2000) THEN 90
  P: 1811
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1811
  terminated:false
@@ -31215,7 +31215,7 @@
 40: IF N(X) < 0 THEN 90
  X: 906
  N(906): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1813
  terminated:false
@@ -31226,7 +31226,7 @@
 40: IF N(X) < 0 THEN 90
  X: 907
  N(907): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1815
  terminated:false
@@ -31237,7 +31237,7 @@
 40: IF N(X) < 0 THEN 90
  X: 908
  N(908): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1817
  terminated:false
@@ -31248,7 +31248,7 @@
 40: IF N(X) < 0 THEN 90
  X: 909
  N(909): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1819
  terminated:false
@@ -31259,7 +31259,7 @@
 40: IF N(X) < 0 THEN 90
  X: 910
  N(910): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1821
  terminated:false
@@ -31270,7 +31270,7 @@
 40: IF N(X) < 0 THEN 90
  X: 911
  N(911): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 279
  K = 280
@@ -31280,7 +31280,7 @@
  P(280) = 1823
 56: IF P > SQR(2000) THEN 90
  P: 1823
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1823
  terminated:false
@@ -31291,7 +31291,7 @@
 40: IF N(X) < 0 THEN 90
  X: 912
  N(912): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1825
  terminated:false
@@ -31302,7 +31302,7 @@
 40: IF N(X) < 0 THEN 90
  X: 913
  N(913): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1827
  terminated:false
@@ -31313,7 +31313,7 @@
 40: IF N(X) < 0 THEN 90
  X: 914
  N(914): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1829
  terminated:false
@@ -31324,7 +31324,7 @@
 40: IF N(X) < 0 THEN 90
  X: 915
  N(915): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 280
  K = 281
@@ -31334,7 +31334,7 @@
  P(281) = 1831
 56: IF P > SQR(2000) THEN 90
  P: 1831
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1831
  terminated:false
@@ -31345,7 +31345,7 @@
 40: IF N(X) < 0 THEN 90
  X: 916
  N(916): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1833
  terminated:false
@@ -31356,7 +31356,7 @@
 40: IF N(X) < 0 THEN 90
  X: 917
  N(917): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1835
  terminated:false
@@ -31367,7 +31367,7 @@
 40: IF N(X) < 0 THEN 90
  X: 918
  N(918): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1837
  terminated:false
@@ -31378,7 +31378,7 @@
 40: IF N(X) < 0 THEN 90
  X: 919
  N(919): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1839
  terminated:false
@@ -31389,7 +31389,7 @@
 40: IF N(X) < 0 THEN 90
  X: 920
  N(920): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1841
  terminated:false
@@ -31400,7 +31400,7 @@
 40: IF N(X) < 0 THEN 90
  X: 921
  N(921): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1843
  terminated:false
@@ -31411,7 +31411,7 @@
 40: IF N(X) < 0 THEN 90
  X: 922
  N(922): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1845
  terminated:false
@@ -31422,7 +31422,7 @@
 40: IF N(X) < 0 THEN 90
  X: 923
  N(923): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 281
  K = 282
@@ -31432,7 +31432,7 @@
  P(282) = 1847
 56: IF P > SQR(2000) THEN 90
  P: 1847
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1847
  terminated:false
@@ -31443,7 +31443,7 @@
 40: IF N(X) < 0 THEN 90
  X: 924
  N(924): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1849
  terminated:false
@@ -31454,7 +31454,7 @@
 40: IF N(X) < 0 THEN 90
  X: 925
  N(925): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1851
  terminated:false
@@ -31465,7 +31465,7 @@
 40: IF N(X) < 0 THEN 90
  X: 926
  N(926): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1853
  terminated:false
@@ -31476,7 +31476,7 @@
 40: IF N(X) < 0 THEN 90
  X: 927
  N(927): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1855
  terminated:false
@@ -31487,7 +31487,7 @@
 40: IF N(X) < 0 THEN 90
  X: 928
  N(928): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1857
  terminated:false
@@ -31498,7 +31498,7 @@
 40: IF N(X) < 0 THEN 90
  X: 929
  N(929): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1859
  terminated:false
@@ -31509,7 +31509,7 @@
 40: IF N(X) < 0 THEN 90
  X: 930
  N(930): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 282
  K = 283
@@ -31519,7 +31519,7 @@
  P(283) = 1861
 56: IF P > SQR(2000) THEN 90
  P: 1861
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1861
  terminated:false
@@ -31530,7 +31530,7 @@
 40: IF N(X) < 0 THEN 90
  X: 931
  N(931): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1863
  terminated:false
@@ -31541,7 +31541,7 @@
 40: IF N(X) < 0 THEN 90
  X: 932
  N(932): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1865
  terminated:false
@@ -31552,7 +31552,7 @@
 40: IF N(X) < 0 THEN 90
  X: 933
  N(933): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 283
  K = 284
@@ -31562,7 +31562,7 @@
  P(284) = 1867
 56: IF P > SQR(2000) THEN 90
  P: 1867
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1867
  terminated:false
@@ -31573,7 +31573,7 @@
 40: IF N(X) < 0 THEN 90
  X: 934
  N(934): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1869
  terminated:false
@@ -31584,7 +31584,7 @@
 40: IF N(X) < 0 THEN 90
  X: 935
  N(935): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 284
  K = 285
@@ -31594,7 +31594,7 @@
  P(285) = 1871
 56: IF P > SQR(2000) THEN 90
  P: 1871
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1871
  terminated:false
@@ -31605,7 +31605,7 @@
 40: IF N(X) < 0 THEN 90
  X: 936
  N(936): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 285
  K = 286
@@ -31615,7 +31615,7 @@
  P(286) = 1873
 56: IF P > SQR(2000) THEN 90
  P: 1873
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1873
  terminated:false
@@ -31626,7 +31626,7 @@
 40: IF N(X) < 0 THEN 90
  X: 937
  N(937): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1875
  terminated:false
@@ -31637,7 +31637,7 @@
 40: IF N(X) < 0 THEN 90
  X: 938
  N(938): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 286
  K = 287
@@ -31647,7 +31647,7 @@
  P(287) = 1877
 56: IF P > SQR(2000) THEN 90
  P: 1877
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1877
  terminated:false
@@ -31658,7 +31658,7 @@
 40: IF N(X) < 0 THEN 90
  X: 939
  N(939): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 287
  K = 288
@@ -31668,7 +31668,7 @@
  P(288) = 1879
 56: IF P > SQR(2000) THEN 90
  P: 1879
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1879
  terminated:false
@@ -31679,7 +31679,7 @@
 40: IF N(X) < 0 THEN 90
  X: 940
  N(940): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1881
  terminated:false
@@ -31690,7 +31690,7 @@
 40: IF N(X) < 0 THEN 90
  X: 941
  N(941): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1883
  terminated:false
@@ -31701,7 +31701,7 @@
 40: IF N(X) < 0 THEN 90
  X: 942
  N(942): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1885
  terminated:false
@@ -31712,7 +31712,7 @@
 40: IF N(X) < 0 THEN 90
  X: 943
  N(943): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1887
  terminated:false
@@ -31723,7 +31723,7 @@
 40: IF N(X) < 0 THEN 90
  X: 944
  N(944): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 288
  K = 289
@@ -31733,7 +31733,7 @@
  P(289) = 1889
 56: IF P > SQR(2000) THEN 90
  P: 1889
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1889
  terminated:false
@@ -31744,7 +31744,7 @@
 40: IF N(X) < 0 THEN 90
  X: 945
  N(945): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1891
  terminated:false
@@ -31755,7 +31755,7 @@
 40: IF N(X) < 0 THEN 90
  X: 946
  N(946): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1893
  terminated:false
@@ -31766,7 +31766,7 @@
 40: IF N(X) < 0 THEN 90
  X: 947
  N(947): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1895
  terminated:false
@@ -31777,7 +31777,7 @@
 40: IF N(X) < 0 THEN 90
  X: 948
  N(948): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1897
  terminated:false
@@ -31788,7 +31788,7 @@
 40: IF N(X) < 0 THEN 90
  X: 949
  N(949): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1899
  terminated:false
@@ -31799,7 +31799,7 @@
 40: IF N(X) < 0 THEN 90
  X: 950
  N(950): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 289
  K = 290
@@ -31809,7 +31809,7 @@
  P(290) = 1901
 56: IF P > SQR(2000) THEN 90
  P: 1901
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1901
  terminated:false
@@ -31820,7 +31820,7 @@
 40: IF N(X) < 0 THEN 90
  X: 951
  N(951): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1903
  terminated:false
@@ -31831,7 +31831,7 @@
 40: IF N(X) < 0 THEN 90
  X: 952
  N(952): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1905
  terminated:false
@@ -31842,7 +31842,7 @@
 40: IF N(X) < 0 THEN 90
  X: 953
  N(953): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 290
  K = 291
@@ -31852,7 +31852,7 @@
  P(291) = 1907
 56: IF P > SQR(2000) THEN 90
  P: 1907
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1907
  terminated:false
@@ -31863,7 +31863,7 @@
 40: IF N(X) < 0 THEN 90
  X: 954
  N(954): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1909
  terminated:false
@@ -31874,7 +31874,7 @@
 40: IF N(X) < 0 THEN 90
  X: 955
  N(955): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1911
  terminated:false
@@ -31885,7 +31885,7 @@
 40: IF N(X) < 0 THEN 90
  X: 956
  N(956): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 291
  K = 292
@@ -31895,7 +31895,7 @@
  P(292) = 1913
 56: IF P > SQR(2000) THEN 90
  P: 1913
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1913
  terminated:false
@@ -31906,7 +31906,7 @@
 40: IF N(X) < 0 THEN 90
  X: 957
  N(957): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1915
  terminated:false
@@ -31917,7 +31917,7 @@
 40: IF N(X) < 0 THEN 90
  X: 958
  N(958): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1917
  terminated:false
@@ -31928,7 +31928,7 @@
 40: IF N(X) < 0 THEN 90
  X: 959
  N(959): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1919
  terminated:false
@@ -31939,7 +31939,7 @@
 40: IF N(X) < 0 THEN 90
  X: 960
  N(960): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1921
  terminated:false
@@ -31950,7 +31950,7 @@
 40: IF N(X) < 0 THEN 90
  X: 961
  N(961): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1923
  terminated:false
@@ -31961,7 +31961,7 @@
 40: IF N(X) < 0 THEN 90
  X: 962
  N(962): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1925
  terminated:false
@@ -31972,7 +31972,7 @@
 40: IF N(X) < 0 THEN 90
  X: 963
  N(963): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1927
  terminated:false
@@ -31983,7 +31983,7 @@
 40: IF N(X) < 0 THEN 90
  X: 964
  N(964): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1929
  terminated:false
@@ -31994,7 +31994,7 @@
 40: IF N(X) < 0 THEN 90
  X: 965
  N(965): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 292
  K = 293
@@ -32004,7 +32004,7 @@
  P(293) = 1931
 56: IF P > SQR(2000) THEN 90
  P: 1931
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1931
  terminated:false
@@ -32015,7 +32015,7 @@
 40: IF N(X) < 0 THEN 90
  X: 966
  N(966): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 293
  K = 294
@@ -32025,7 +32025,7 @@
  P(294) = 1933
 56: IF P > SQR(2000) THEN 90
  P: 1933
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1933
  terminated:false
@@ -32036,7 +32036,7 @@
 40: IF N(X) < 0 THEN 90
  X: 967
  N(967): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1935
  terminated:false
@@ -32047,7 +32047,7 @@
 40: IF N(X) < 0 THEN 90
  X: 968
  N(968): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1937
  terminated:false
@@ -32058,7 +32058,7 @@
 40: IF N(X) < 0 THEN 90
  X: 969
  N(969): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1939
  terminated:false
@@ -32069,7 +32069,7 @@
 40: IF N(X) < 0 THEN 90
  X: 970
  N(970): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1941
  terminated:false
@@ -32080,7 +32080,7 @@
 40: IF N(X) < 0 THEN 90
  X: 971
  N(971): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1943
  terminated:false
@@ -32091,7 +32091,7 @@
 40: IF N(X) < 0 THEN 90
  X: 972
  N(972): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1945
  terminated:false
@@ -32102,7 +32102,7 @@
 40: IF N(X) < 0 THEN 90
  X: 973
  N(973): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1947
  terminated:false
@@ -32113,7 +32113,7 @@
 40: IF N(X) < 0 THEN 90
  X: 974
  N(974): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 294
  K = 295
@@ -32123,7 +32123,7 @@
  P(295) = 1949
 56: IF P > SQR(2000) THEN 90
  P: 1949
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1949
  terminated:false
@@ -32134,7 +32134,7 @@
 40: IF N(X) < 0 THEN 90
  X: 975
  N(975): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 295
  K = 296
@@ -32144,7 +32144,7 @@
  P(296) = 1951
 56: IF P > SQR(2000) THEN 90
  P: 1951
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1951
  terminated:false
@@ -32155,7 +32155,7 @@
 40: IF N(X) < 0 THEN 90
  X: 976
  N(976): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1953
  terminated:false
@@ -32166,7 +32166,7 @@
 40: IF N(X) < 0 THEN 90
  X: 977
  N(977): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1955
  terminated:false
@@ -32177,7 +32177,7 @@
 40: IF N(X) < 0 THEN 90
  X: 978
  N(978): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1957
  terminated:false
@@ -32188,7 +32188,7 @@
 40: IF N(X) < 0 THEN 90
  X: 979
  N(979): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1959
  terminated:false
@@ -32199,7 +32199,7 @@
 40: IF N(X) < 0 THEN 90
  X: 980
  N(980): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1961
  terminated:false
@@ -32210,7 +32210,7 @@
 40: IF N(X) < 0 THEN 90
  X: 981
  N(981): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1963
  terminated:false
@@ -32221,7 +32221,7 @@
 40: IF N(X) < 0 THEN 90
  X: 982
  N(982): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1965
  terminated:false
@@ -32232,7 +32232,7 @@
 40: IF N(X) < 0 THEN 90
  X: 983
  N(983): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1967
  terminated:false
@@ -32243,7 +32243,7 @@
 40: IF N(X) < 0 THEN 90
  X: 984
  N(984): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1969
  terminated:false
@@ -32254,7 +32254,7 @@
 40: IF N(X) < 0 THEN 90
  X: 985
  N(985): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1971
  terminated:false
@@ -32265,7 +32265,7 @@
 40: IF N(X) < 0 THEN 90
  X: 986
  N(986): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 296
  K = 297
@@ -32275,7 +32275,7 @@
  P(297) = 1973
 56: IF P > SQR(2000) THEN 90
  P: 1973
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1973
  terminated:false
@@ -32286,7 +32286,7 @@
 40: IF N(X) < 0 THEN 90
  X: 987
  N(987): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1975
  terminated:false
@@ -32297,7 +32297,7 @@
 40: IF N(X) < 0 THEN 90
  X: 988
  N(988): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1977
  terminated:false
@@ -32308,7 +32308,7 @@
 40: IF N(X) < 0 THEN 90
  X: 989
  N(989): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 297
  K = 298
@@ -32318,7 +32318,7 @@
  P(298) = 1979
 56: IF P > SQR(2000) THEN 90
  P: 1979
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1979
  terminated:false
@@ -32329,7 +32329,7 @@
 40: IF N(X) < 0 THEN 90
  X: 990
  N(990): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1981
  terminated:false
@@ -32340,7 +32340,7 @@
 40: IF N(X) < 0 THEN 90
  X: 991
  N(991): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1983
  terminated:false
@@ -32351,7 +32351,7 @@
 40: IF N(X) < 0 THEN 90
  X: 992
  N(992): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1985
  terminated:false
@@ -32362,7 +32362,7 @@
 40: IF N(X) < 0 THEN 90
  X: 993
  N(993): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 298
  K = 299
@@ -32372,7 +32372,7 @@
  P(299) = 1987
 56: IF P > SQR(2000) THEN 90
  P: 1987
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1987
  terminated:false
@@ -32383,7 +32383,7 @@
 40: IF N(X) < 0 THEN 90
  X: 994
  N(994): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1989
  terminated:false
@@ -32394,7 +32394,7 @@
 40: IF N(X) < 0 THEN 90
  X: 995
  N(995): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1991
  terminated:false
@@ -32405,7 +32405,7 @@
 40: IF N(X) < 0 THEN 90
  X: 996
  N(996): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 299
  K = 300
@@ -32415,7 +32415,7 @@
  P(300) = 1993
 56: IF P > SQR(2000) THEN 90
  P: 1993
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1993
  terminated:false
@@ -32426,7 +32426,7 @@
 40: IF N(X) < 0 THEN 90
  X: 997
  N(997): -1
- N(X)<0: true
+ N(X) < 0: true
 90: NEXT P
  P: 1995
  terminated:false
@@ -32437,7 +32437,7 @@
 40: IF N(X) < 0 THEN 90
  X: 998
  N(998): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 300
  K = 301
@@ -32447,7 +32447,7 @@
  P(301) = 1997
 56: IF P > SQR(2000) THEN 90
  P: 1997
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1997
  terminated:false
@@ -32458,7 +32458,7 @@
 40: IF N(X) < 0 THEN 90
  X: 999
  N(999): 0
- N(X)<0: false
+ N(X) < 0: false
 50: LET K = K + 1
  K: 301
  K = 302
@@ -32468,7 +32468,7 @@
  P(302) = 1999
 56: IF P > SQR(2000) THEN 90
  P: 1999
- P>SQR(2000): true
+ P > SQR(2000): true
 90: NEXT P
  P: 1999
  terminated:true

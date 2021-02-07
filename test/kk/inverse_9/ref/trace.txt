@@ -3,12 +3,12 @@
 20: FOR I = 1 TO N - 1
  N: 9
  I = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 1
@@ -88,7 +88,7 @@
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 2
@@ -168,7 +168,7 @@
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 3
@@ -248,7 +248,7 @@
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 4
@@ -328,7 +328,7 @@
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 5
@@ -408,7 +408,7 @@
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 6
@@ -488,7 +488,7 @@
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 7
@@ -568,7 +568,7 @@
 30: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 40: LET P(I, J) = I * J - INT(I * J / N) * N
  I: 8
@@ -647,18 +647,18 @@
 70: FOR I = 1 TO N - 1
  N: 9
  I = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 1
  J: 1
  P(1,1): 1
- P(I,J)=1: true
+ P(I, J) = 1: true
 140: PRINT I; "HAS AN INVERSE" J
  I: 1
  1 HAS AN INVERSE
@@ -672,13 +672,13 @@
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 2
  J: 1
  P(2,1): 2
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 1
  terminated:false
@@ -687,7 +687,7 @@
  I: 2
  J: 2
  P(2,2): 4
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 2
  terminated:false
@@ -696,7 +696,7 @@
  I: 2
  J: 3
  P(2,3): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 3
  terminated:false
@@ -705,7 +705,7 @@
  I: 2
  J: 4
  P(2,4): 8
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 4
  terminated:false
@@ -714,7 +714,7 @@
  I: 2
  J: 5
  P(2,5): 1
- P(I,J)=1: true
+ P(I, J) = 1: true
 140: PRINT I; "HAS AN INVERSE" J
  I: 2
  2 HAS AN INVERSE
@@ -728,13 +728,13 @@
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 3
  J: 1
  P(3,1): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 1
  terminated:false
@@ -743,7 +743,7 @@
  I: 3
  J: 2
  P(3,2): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 2
  terminated:false
@@ -752,7 +752,7 @@
  I: 3
  J: 3
  P(3,3): 0
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 3
  terminated:false
@@ -761,7 +761,7 @@
  I: 3
  J: 4
  P(3,4): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 4
  terminated:false
@@ -770,7 +770,7 @@
  I: 3
  J: 5
  P(3,5): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 5
  terminated:false
@@ -779,7 +779,7 @@
  I: 3
  J: 6
  P(3,6): 0
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 6
  terminated:false
@@ -788,7 +788,7 @@
  I: 3
  J: 7
  P(3,7): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 7
  terminated:false
@@ -797,7 +797,7 @@
  I: 3
  J: 8
  P(3,8): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 8
  terminated:true
@@ -811,13 +811,13 @@
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 4
  J: 1
  P(4,1): 4
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 1
  terminated:false
@@ -826,7 +826,7 @@
  I: 4
  J: 2
  P(4,2): 8
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 2
  terminated:false
@@ -835,7 +835,7 @@
  I: 4
  J: 3
  P(4,3): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 3
  terminated:false
@@ -844,7 +844,7 @@
  I: 4
  J: 4
  P(4,4): 7
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 4
  terminated:false
@@ -853,7 +853,7 @@
  I: 4
  J: 5
  P(4,5): 2
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 5
  terminated:false
@@ -862,7 +862,7 @@
  I: 4
  J: 6
  P(4,6): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 6
  terminated:false
@@ -871,7 +871,7 @@
  I: 4
  J: 7
  P(4,7): 1
- P(I,J)=1: true
+ P(I, J) = 1: true
 140: PRINT I; "HAS AN INVERSE" J
  I: 4
  4 HAS AN INVERSE
@@ -885,13 +885,13 @@
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 5
  J: 1
  P(5,1): 5
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 1
  terminated:false
@@ -900,7 +900,7 @@
  I: 5
  J: 2
  P(5,2): 1
- P(I,J)=1: true
+ P(I, J) = 1: true
 140: PRINT I; "HAS AN INVERSE" J
  I: 5
  5 HAS AN INVERSE
@@ -914,13 +914,13 @@
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 6
  J: 1
  P(6,1): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 1
  terminated:false
@@ -929,7 +929,7 @@
  I: 6
  J: 2
  P(6,2): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 2
  terminated:false
@@ -938,7 +938,7 @@
  I: 6
  J: 3
  P(6,3): 0
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 3
  terminated:false
@@ -947,7 +947,7 @@
  I: 6
  J: 4
  P(6,4): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 4
  terminated:false
@@ -956,7 +956,7 @@
  I: 6
  J: 5
  P(6,5): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 5
  terminated:false
@@ -965,7 +965,7 @@
  I: 6
  J: 6
  P(6,6): 0
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 6
  terminated:false
@@ -974,7 +974,7 @@
  I: 6
  J: 7
  P(6,7): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 7
  terminated:false
@@ -983,7 +983,7 @@
  I: 6
  J: 8
  P(6,8): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 8
  terminated:true
@@ -997,13 +997,13 @@
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 7
  J: 1
  P(7,1): 7
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 1
  terminated:false
@@ -1012,7 +1012,7 @@
  I: 7
  J: 2
  P(7,2): 5
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 2
  terminated:false
@@ -1021,7 +1021,7 @@
  I: 7
  J: 3
  P(7,3): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 3
  terminated:false
@@ -1030,7 +1030,7 @@
  I: 7
  J: 4
  P(7,4): 1
- P(I,J)=1: true
+ P(I, J) = 1: true
 140: PRINT I; "HAS AN INVERSE" J
  I: 7
  7 HAS AN INVERSE
@@ -1044,13 +1044,13 @@
 80: FOR J = 1 TO N - 1
  N: 9
  J = 1
- N-1 = 8
+ N - 1 = 8
  terminated:false
 90: IF P(I, J) = 1 THEN 140
  I: 8
  J: 1
  P(8,1): 8
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 1
  terminated:false
@@ -1059,7 +1059,7 @@
  I: 8
  J: 2
  P(8,2): 7
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 2
  terminated:false
@@ -1068,7 +1068,7 @@
  I: 8
  J: 3
  P(8,3): 6
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 3
  terminated:false
@@ -1077,7 +1077,7 @@
  I: 8
  J: 4
  P(8,4): 5
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 4
  terminated:false
@@ -1086,7 +1086,7 @@
  I: 8
  J: 5
  P(8,5): 4
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 5
  terminated:false
@@ -1095,7 +1095,7 @@
  I: 8
  J: 6
  P(8,6): 3
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 6
  terminated:false
@@ -1104,7 +1104,7 @@
  I: 8
  J: 7
  P(8,7): 2
- P(I,J)=1: false
+ P(I, J) = 1: false
 100: NEXT J
  J: 7
  terminated:false
@@ -1113,7 +1113,7 @@
  I: 8
  J: 8
  P(8,8): 1
- P(I,J)=1: true
+ P(I, J) = 1: true
 140: PRINT I; "HAS AN INVERSE" J
  I: 8
  8 HAS AN INVERSE

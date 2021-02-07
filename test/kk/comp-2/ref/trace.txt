@@ -12,28 +12,28 @@ A, B, P, R, Y, T
  T = 4
 21: IF A < 0 THEN 800
  A: 1000
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 999
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 4.5
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 10
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 4
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 4
- T=999: false
+ T = 999: false
 30: IF A = 999 THEN 100
  A: 1000
- A=999: false
+ A = 999: false
 40: IF B = 999 THEN 200
  B: 999
- B=999: true
+ B = 999: true
 200: REM FIND FINAL AMOUNT
 210: GOSUB 1000
 1000: REM COMPUTE BASIC QUANTITIES
@@ -61,7 +61,7 @@ A, B, P, R, Y, T
  B = 1564.38
 225: IF B < 0 THEN 850
  B: 1564.38
- B<0: false
+ B < 0: false
 230: PRINT "FINAL AMOUNT = $" B
 FINAL AMOUNT = $
  B: 1564.38
@@ -81,28 +81,28 @@ A, B, P, R, Y, T
  T = 12
 21: IF A < 0 THEN 800
  A: 0
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 999
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 5
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 20
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 12
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 12
- T=999: false
+ T = 999: false
 30: IF A = 999 THEN 100
  A: 0
- A=999: false
+ A = 999: false
 40: IF B = 999 THEN 200
  B: 999
- B=999: true
+ B = 999: true
 200: REM FIND FINAL AMOUNT
 210: GOSUB 1000
 1000: REM COMPUTE BASIC QUANTITIES
@@ -130,7 +130,7 @@ A, B, P, R, Y, T
  B = 4115.52
 225: IF B < 0 THEN 850
  B: 4115.52
- B<0: false
+ B < 0: false
 230: PRINT "FINAL AMOUNT = $" B
 FINAL AMOUNT = $
  B: 4115.52
@@ -150,25 +150,25 @@ A, B, P, R, Y, T
  T = 4
 21: IF A < 0 THEN 800
  A: 999
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 1000
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 5
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 10
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 4
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 4
- T=999: false
+ T = 999: false
 30: IF A = 999 THEN 100
  A: 999
- A=999: true
+ A = 999: true
 100: REM FIND ORIGINAL AMOUNT
 110: GOSUB 1000
 1000: REM COMPUTE BASIC QUANTITIES
@@ -196,7 +196,7 @@ A, B, P, R, Y, T
  A = -174.76
 125: IF A < 0 THEN 850
  A: -174.76
- A<0: true
+ A < 0: true
 850: PRINT "ANSWER IS NEGATIVE."
 ANSWER IS NEGATIVE.
 860: GOTO 5
@@ -214,25 +214,25 @@ A, B, P, R, Y, T
  T = 1
 21: IF A < 0 THEN 800
  A: 999
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 0
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 5
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 20
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 1
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 1
- T=999: false
+ T = 999: false
 30: IF A = 999 THEN 100
  A: 999
- A=999: true
+ A = 999: true
 100: REM FIND ORIGINAL AMOUNT
 110: GOSUB 1000
 1000: REM COMPUTE BASIC QUANTITIES
@@ -260,7 +260,7 @@ A, B, P, R, Y, T
  A = 74773.3
 125: IF A < 0 THEN 850
  A: 74773.3
- A<0: false
+ A < 0: false
 130: PRINT "ORIGINAL AMOUNT = $" A
 ORIGINAL AMOUNT = $
  A: 74773.3
@@ -280,37 +280,37 @@ A, B, P, R, Y, T
  T = 12
 21: IF A < 0 THEN 800
  A: 2000
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 0
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 999
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 2
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 12
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 12
- T=999: false
+ T = 999: false
 30: IF A = 999 THEN 100
  A: 2000
- A=999: false
+ A = 999: false
 40: IF B = 999 THEN 200
  B: 0
- B=999: false
+ B = 999: false
 50: IF P = 999 THEN 300
  P: -92.62
- P=999: false
+ P = 999: false
 60: IF Y = 999 THEN 400
  Y: 2
- Y=999: false
+ Y = 999: false
 70: IF R = 999 THEN 500
  R: 999
- R=999: true
+ R = 999: true
 500: REM FIND ANNUAL INTEREST
 505: LET S = B - (A + Y * T * P)
  B: 0
@@ -350,7 +350,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 222.88
  S1: 130
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 130
  S = 130
@@ -386,7 +386,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 130
  S1: 265
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 265
  S = 265
@@ -422,7 +422,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 265
  S1: 218
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 218
  S = 218
@@ -458,7 +458,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 218
  S1: 193
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 193
  S = 193
@@ -494,7 +494,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 193
  S1: 232
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 232
  S = 232
@@ -530,7 +530,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 232
  S1: 212
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 212
  S = 212
@@ -566,7 +566,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 212
  S1: 196
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 196
  S = 196
@@ -602,7 +602,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 196
  S1: 218
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 218
  S = 218
@@ -638,7 +638,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 218
  S1: 206
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 206
  S = 206
@@ -674,7 +674,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 206
  S1: 195
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 195
  S = 195
@@ -710,7 +710,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 195
  S1: 211
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 211
  S = 211
@@ -746,7 +746,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 211
  S1: 200.3
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 200.3
  S = 200.3
@@ -782,7 +782,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 200.3
  S1: 190.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 190.9
  S = 190.9
@@ -818,7 +818,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 190.9
  S1: 202.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 202.5
  S = 202.5
@@ -854,7 +854,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 202.5
  S1: 194.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 194.6
  S = 194.6
@@ -890,7 +890,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 194.6
  S1: 186.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 186.5
  S = 186.5
@@ -926,7 +926,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 186.5
  S1: 195.4
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 195.4
  S = 195.4
@@ -962,7 +962,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 195.4
  S1: 188.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 188.5
  S = 188.5
@@ -998,7 +998,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 188.5
  S1: 181.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 181.9
  S = 181.9
@@ -1034,7 +1034,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 181.9
  S1: 188.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 188.9
  S = 188.9
@@ -1070,7 +1070,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 188.9
  S1: 182.7
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 182.7
  S = 182.7
@@ -1106,7 +1106,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 182.7
  S1: 176.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 176.6
  S = 176.6
@@ -1142,7 +1142,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 176.6
  S1: 182.3
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 182.3
  S = 182.3
@@ -1178,7 +1178,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 182.3
  S1: 176.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 176.5
  S = 176.5
@@ -1214,7 +1214,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 176.5
  S1: 170.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 170.9
  S = 170.9
@@ -1250,7 +1250,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 170.9
  S1: 175.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 175.9
  S = 175.9
@@ -1286,7 +1286,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 175.9
  S1: 170.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 170.5
  S = 170.5
@@ -1322,7 +1322,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 170.5
  S1: 165.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 165.2
  S = 165.2
@@ -1358,7 +1358,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 165.2
  S1: 169.7
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 169.7
  S = 169.7
@@ -1394,7 +1394,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 169.7
  S1: 164.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 164.6
  S = 164.6
@@ -1430,7 +1430,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 164.6
  S1: 159.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 159.5
  S = 159.5
@@ -1466,7 +1466,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 159.5
  S1: 163.3
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 163.3
  S = 163.3
@@ -1502,7 +1502,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 163.3
  S1: 158.4
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 158.4
  S = 158.4
@@ -1538,7 +1538,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 158.4
  S1: 153.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 153.8
  S = 153.8
@@ -1574,7 +1574,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 153.8
  S1: 156.7
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 156.7
  S = 156.7
@@ -1610,7 +1610,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 156.7
  S1: 152.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 152.2
  S = 152.2
@@ -1646,7 +1646,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 152.2
  S1: 147.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 147.8
  S = 147.8
@@ -1682,7 +1682,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 147.8
  S1: 150.4
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 150.4
  S = 150.4
@@ -1718,7 +1718,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 150.4
  S1: 146.1
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 146.1
  S = 146.1
@@ -1754,7 +1754,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 146.1
  S1: 141.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 141.8
  S = 141.8
@@ -1790,7 +1790,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 141.8
  S1: 144
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 144
  S = 144
@@ -1826,7 +1826,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 144
  S1: 139.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 139.8
  S = 139.8
@@ -1862,7 +1862,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 139.8
  S1: 135.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 135.5
  S = 135.5
@@ -1898,7 +1898,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 135.5
  S1: 137.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 137.6
  S = 137.6
@@ -1934,7 +1934,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 137.6
  S1: 133.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 133.5
  S = 133.5
@@ -1970,7 +1970,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 133.5
  S1: 129.3
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 129.3
  S = 129.3
@@ -2006,7 +2006,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 129.3
  S1: 131.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 131.2
  S = 131.2
@@ -2042,7 +2042,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 131.2
  S1: 127.1
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 127.1
  S = 127.1
@@ -2078,7 +2078,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 127.1
  S1: 123.1
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 123.1
  S = 123.1
@@ -2114,7 +2114,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 123.1
  S1: 124.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 124.6
  S = 124.6
@@ -2150,7 +2150,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 124.6
  S1: 120.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 120.6
  S = 120.6
@@ -2186,7 +2186,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 120.6
  S1: 116.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 116.8
  S = 116.8
@@ -2222,7 +2222,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 116.8
  S1: 118.1
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 118.1
  S = 118.1
@@ -2258,7 +2258,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 118.1
  S1: 114.3
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 114.3
  S = 114.3
@@ -2294,7 +2294,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 114.3
  S1: 110.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 110.5
  S = 110.5
@@ -2330,7 +2330,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 110.5
  S1: 111.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 111.5
  S = 111.5
@@ -2366,7 +2366,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 111.5
  S1: 107.7
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 107.7
  S = 107.7
@@ -2402,7 +2402,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 107.7
  S1: 104
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 104
  S = 104
@@ -2438,7 +2438,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 104
  S1: 104.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 104.9
  S = 104.9
@@ -2474,7 +2474,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 104.9
  S1: 101.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 101.2
  S = 101.2
@@ -2510,7 +2510,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 101.2
  S1: 97.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 97.6
  S = 97.6
@@ -2546,7 +2546,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 97.6
  S1: 98.1
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 98.1
  S = 98.1
@@ -2582,7 +2582,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 98.1
  S1: 94.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 94.6
  S = 94.6
@@ -2618,7 +2618,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 94.6
  S1: 91
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 91
  S = 91
@@ -2654,7 +2654,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 91
  S1: 91.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 91.5
  S = 91.5
@@ -2690,7 +2690,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 91.5
  S1: 88
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 88
  S = 88
@@ -2726,7 +2726,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 88
  S1: 84.4
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 84.4
  S = 84.4
@@ -2762,7 +2762,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 84.4
  S1: 84.7
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 84.7
  S = 84.7
@@ -2798,7 +2798,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 84.7
  S1: 81.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 81.2
  S = 81.2
@@ -2834,7 +2834,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 81.2
  S1: 77.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 77.6
  S = 77.6
@@ -2870,7 +2870,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 77.6
  S1: 78
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 78
  S = 78
@@ -2906,7 +2906,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 78
  S1: 74.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 74.5
  S = 74.5
@@ -2942,7 +2942,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 74.5
  S1: 70.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 70.9
  S = 70.9
@@ -2978,7 +2978,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 70.9
  S1: 71.1
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 71.1
  S = 71.1
@@ -3014,7 +3014,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 71.1
  S1: 67.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 67.6
  S = 67.6
@@ -3050,7 +3050,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 67.6
  S1: 64.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 64.2
  S = 64.2
@@ -3086,7 +3086,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 64.2
  S1: 64.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 64.2
  S = 64.2
@@ -3122,7 +3122,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 64.2
  S1: 60.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 60.8
  S = 60.8
@@ -3158,7 +3158,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 60.8
  S1: 57.4
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 57.4
  S = 57.4
@@ -3194,7 +3194,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 57.4
  S1: 57.3
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 57.3
  S = 57.3
@@ -3230,7 +3230,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 57.3
  S1: 53.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 53.8
  S = 53.8
@@ -3266,7 +3266,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 53.8
  S1: 50.4
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 50.4
  S = 50.4
@@ -3302,7 +3302,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 50.4
  S1: 50.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 50.2
  S = 50.2
@@ -3338,7 +3338,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 50.2
  S1: 46.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 46.8
  S = 46.8
@@ -3374,7 +3374,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 46.8
  S1: 43.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 43.5
  S = 43.5
@@ -3410,7 +3410,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 43.5
  S1: 43.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 43.2
  S = 43.2
@@ -3446,7 +3446,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 43.2
  S1: 39.9
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 39.9
  S = 39.9
@@ -3482,7 +3482,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 39.9
  S1: 36.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 36.5
  S = 36.5
@@ -3518,7 +3518,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 36.5
  S1: 36.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 36.2
  S = 36.2
@@ -3554,7 +3554,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 36.2
  S1: 32.7
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 32.7
  S = 32.7
@@ -3590,7 +3590,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 32.7
  S1: 29.4
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 29.4
  S = 29.4
@@ -3626,7 +3626,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 29.4
  S1: 29
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 29
  S = 29
@@ -3662,7 +3662,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 29
  S1: 25.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 25.6
  S = 25.6
@@ -3698,7 +3698,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 25.6
  S1: 22.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 22.2
  S = 22.2
@@ -3734,7 +3734,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 22.2
  S1: 21.7
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 21.7
  S = 21.7
@@ -3770,7 +3770,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 21.7
  S1: 18.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 18.5
  S = 18.5
@@ -3806,7 +3806,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 18.5
  S1: 15
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 15
  S = 15
@@ -3842,7 +3842,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 15
  S1: 14.5
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 14.5
  S = 14.5
@@ -3878,7 +3878,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 14.5
  S1: 11.1
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 11.1
  S = 11.1
@@ -3914,7 +3914,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 11.1
  S1: 7.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 7.8
  S = 7.8
@@ -3950,7 +3950,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 7.8
  S1: 7.2
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 7.2
  S = 7.2
@@ -3986,7 +3986,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 7.2
  S1: 3.8
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 3.8
  S = 3.8
@@ -4022,7 +4022,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 3.8
  S1: 0.6
- S*S1<=0: false
+ S * S1 <= 0: false
 536: LET S = S1
  S1: 0.6
  S = 0.6
@@ -4058,7 +4058,7 @@ A, B, P, R, Y, T
 535: IF S * S1 <= 0 THEN 550
  S: 0.6
  S1: -0.2
- S*S1<=0: true
+ S * S1 <= 0: true
 550: PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
 ANNUAL INTEREST IS BETWEEN 
  R: 10.4
@@ -4078,34 +4078,34 @@ A, B, P, R, Y, T
  T = 1
 21: IF A < 0 THEN 800
  A: 30000
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 0
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 5
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 999
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 1
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 1
- T=999: false
+ T = 999: false
 30: IF A = 999 THEN 100
  A: 30000
- A=999: false
+ A = 999: false
 40: IF B = 999 THEN 200
  B: 0
- B=999: false
+ B = 999: false
 50: IF P = 999 THEN 300
  P: -2000
- P=999: false
+ P = 999: false
 60: IF Y = 999 THEN 400
  Y: 999
- Y=999: true
+ Y = 999: true
 400: REM FIND NUMBER OF YEARS
 410: GOSUB 1000
 1000: REM COMPUTE BASIC QUANTITIES
@@ -4133,7 +4133,7 @@ A, B, P, R, Y, T
  Q = 4
 416: IF Q <= 1 THEN 850
  Q: 4
- Q<=1: false
+ Q <= 1: false
 420: LET Y = LOG(Q) / LOG(1 + R1) / T
  Q: 4
  R1: 0.05
@@ -4158,34 +4158,34 @@ A, B, P, R, Y, T
  T = 12
 21: IF A < 0 THEN 800
  A: 1000
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 500
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 5
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 999
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 12
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 12
- T=999: false
+ T = 999: false
 30: IF A = 999 THEN 100
  A: 1000
- A=999: false
+ A = 999: false
 40: IF B = 999 THEN 200
  B: 500
- B=999: false
+ B = 999: false
 50: IF P = 999 THEN 300
  P: 10
- P=999: false
+ P = 999: false
 60: IF Y = 999 THEN 400
  Y: 999
- Y=999: true
+ Y = 999: true
 400: REM FIND NUMBER OF YEARS
 410: GOSUB 1000
 1000: REM COMPUTE BASIC QUANTITIES
@@ -4213,7 +4213,7 @@ A, B, P, R, Y, T
  Q = 0.852941
 416: IF Q <= 1 THEN 850
  Q: 0.852941
- Q<=1: true
+ Q <= 1: true
 850: PRINT "ANSWER IS NEGATIVE."
 ANSWER IS NEGATIVE.
 860: GOTO 5
@@ -4231,22 +4231,22 @@ A, B, P, R, Y, T
  T = 999
 21: IF A < 0 THEN 800
  A: 9
- A<0: false
+ A < 0: false
 22: IF B < 0 THEN 800
  B: 9
- B<0: false
+ B < 0: false
 23: IF R <= 0 THEN 800
  R: 9
- R<=0: false
+ R <= 0: false
 24: IF Y <= 0 THEN 800
  Y: 9
- Y<=0: false
+ Y <= 0: false
 25: IF T <= 0 THEN 800
  T: 999
- T<=0: false
+ T <= 0: false
 26: IF T = 999 THEN 9999
  T: 999
- T=999: true
+ T = 999: true
 9999: END
 STOP in line 9999
 

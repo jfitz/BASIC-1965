@@ -1,5 +1,5 @@
 100: REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
-110:
+110: 
 120: LET N = 20 + INT(80 * RND(X))
  X: 0
  N = 53
@@ -22,7 +22,7 @@ THE INITIAL NUMBER IS
  53
 190: PRINT
 
-200:
+200: 
 210: REM OPPONENT'S MOVE
 220: PRINT "YOUR MOVE";
 YOUR MOVE
@@ -32,14 +32,14 @@ YOUR MOVE
 240: IF X > K THEN 270
  X: 12
  K: 12
- X>K: false
+ X > K: false
 250: IF X < 1 THEN 270
  X: 12
- X<1: false
+ X < 1: false
 260: IF X <= N THEN 310
  X: 12
  N: 53
- X<=N: true
+ X <= N: true
 310: REM TEST FOR WIN
 320: LET N = N - X
  N: 53
@@ -47,7 +47,7 @@ YOUR MOVE
  N = 41
 330: IF N > 0 THEN 410
  N: 41
- N>0: true
+ N > 0: true
 410: REM MACHINE'S MOVE
 420: LET Q = INT((N - 1) / (K + 1))
  N: 41
@@ -60,7 +60,7 @@ YOUR MOVE
  Y = 1
 440: IF Y = 0 THEN 530
  Y: 1
- Y=0: false
+ Y = 0: false
 450: LET N = N - Y
  N: 41
  Y: 1
@@ -73,7 +73,7 @@ MY MOVE:
 
 480: IF N = 0 THEN 600
  N: 40
- N=0: false
+ N = 0: false
 490: PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
  N: 40
@@ -90,14 +90,14 @@ YOUR MOVE
 240: IF X > K THEN 270
  X: 12
  K: 12
- X>K: false
+ X > K: false
 250: IF X < 1 THEN 270
  X: 12
- X<1: false
+ X < 1: false
 260: IF X <= N THEN 310
  X: 12
  N: 40
- X<=N: true
+ X <= N: true
 310: REM TEST FOR WIN
 320: LET N = N - X
  N: 40
@@ -105,7 +105,7 @@ YOUR MOVE
  N = 28
 330: IF N > 0 THEN 410
  N: 28
- N>0: true
+ N > 0: true
 410: REM MACHINE'S MOVE
 420: LET Q = INT((N - 1) / (K + 1))
  N: 28
@@ -118,7 +118,7 @@ YOUR MOVE
  Y = 1
 440: IF Y = 0 THEN 530
  Y: 1
- Y=0: false
+ Y = 0: false
 450: LET N = N - Y
  N: 28
  Y: 1
@@ -131,7 +131,7 @@ MY MOVE:
 
 480: IF N = 0 THEN 600
  N: 27
- N=0: false
+ N = 0: false
 490: PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
  N: 27
@@ -148,14 +148,14 @@ YOUR MOVE
 240: IF X > K THEN 270
  X: 12
  K: 12
- X>K: false
+ X > K: false
 250: IF X < 1 THEN 270
  X: 12
- X<1: false
+ X < 1: false
 260: IF X <= N THEN 310
  X: 12
  N: 27
- X<=N: true
+ X <= N: true
 310: REM TEST FOR WIN
 320: LET N = N - X
  N: 27
@@ -163,7 +163,7 @@ YOUR MOVE
  N = 15
 330: IF N > 0 THEN 410
  N: 15
- N>0: true
+ N > 0: true
 410: REM MACHINE'S MOVE
 420: LET Q = INT((N - 1) / (K + 1))
  N: 15
@@ -176,7 +176,7 @@ YOUR MOVE
  Y = 1
 440: IF Y = 0 THEN 530
  Y: 1
- Y=0: false
+ Y = 0: false
 450: LET N = N - Y
  N: 15
  Y: 1
@@ -189,7 +189,7 @@ MY MOVE:
 
 480: IF N = 0 THEN 600
  N: 14
- N=0: false
+ N = 0: false
 490: PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
  N: 14
@@ -206,14 +206,14 @@ YOUR MOVE
 240: IF X > K THEN 270
  X: 11
  K: 12
- X>K: false
+ X > K: false
 250: IF X < 1 THEN 270
  X: 11
- X<1: false
+ X < 1: false
 260: IF X <= N THEN 310
  X: 11
  N: 14
- X<=N: true
+ X <= N: true
 310: REM TEST FOR WIN
 320: LET N = N - X
  N: 14
@@ -221,7 +221,7 @@ YOUR MOVE
  N = 3
 330: IF N > 0 THEN 410
  N: 3
- N>0: true
+ N > 0: true
 410: REM MACHINE'S MOVE
 420: LET Q = INT((N - 1) / (K + 1))
  N: 3
@@ -234,7 +234,7 @@ YOUR MOVE
  Y = 2
 440: IF Y = 0 THEN 530
  Y: 2
- Y=0: false
+ Y = 0: false
 450: LET N = N - Y
  N: 3
  Y: 2
@@ -247,7 +247,7 @@ MY MOVE:
 
 480: IF N = 0 THEN 600
  N: 1
- N=0: false
+ N = 0: false
 490: PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
  N: 1
@@ -264,14 +264,14 @@ YOUR MOVE
 240: IF X > K THEN 270
  X: 1
  K: 12
- X>K: false
+ X > K: false
 250: IF X < 1 THEN 270
  X: 1
- X<1: false
+ X < 1: false
 260: IF X <= N THEN 310
  X: 1
  N: 1
- X<=N: true
+ X <= N: true
 310: REM TEST FOR WIN
 320: LET N = N - X
  N: 1
@@ -279,7 +279,7 @@ YOUR MOVE
  N = 0
 330: IF N > 0 THEN 410
  N: 0
- N>0: false
+ N > 0: false
 340: PRINT "I WIN ***"
 I WIN ***
 350: PRINT
@@ -313,7 +313,7 @@ THE INITIAL NUMBER IS
  20
 190: PRINT
 
-200:
+200: 
 210: REM OPPONENT'S MOVE
 220: PRINT "YOUR MOVE";
 YOUR MOVE

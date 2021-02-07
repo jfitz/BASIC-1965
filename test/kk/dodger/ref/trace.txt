@@ -346,7 +346,7 @@
 160: DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
 170: DATA 0.641, 0.244, 0.05, 0.038, 0.673, 0.153, 0.073, 0.038, 0.651, 0.182, 0.106, 0.038
 180: DATA 0.704, 0.162, 0.079, 0.036, 0.709, 0.162, 0.071, 0.04, 0.836, 0.09, 0.053, 0.016
-190:
+190: 
 200: FOR R = 1 TO 4
  R = 1
  terminated:false
@@ -633,7 +633,7 @@
 260: DATA 1, 3, 3, 7, 5, 7, 7, 17
 270: DATA 2, 12, 12, 22, 12, 22, 22, 32
 280: DATA 10, 20, 20, 30, 20, 30, 30, 40
-290:
+290: 
 300: LET S1 = 0
  S1 = 0
 310: LET B = 0
@@ -644,7 +644,7 @@
  L7 = 0
 340: LET I = 1
  I = 1
-350:
+350: 
 360: FOR C = 0 TO 7
  C = 0
  terminated:false
@@ -704,7 +704,7 @@
  C: 7
  terminated:true
 390: DATA 0, 1, 1, 2, 1, 2, 2, 3
-400:
+400: 
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -716,15 +716,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 0
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 0
  B = 1
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.417022
@@ -739,21 +739,21 @@ INNING
  X = -0.226978
 580: IF X < 0 THEN 620
  X: -0.226978
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -761,11 +761,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 1
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 1
  B = 2
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.720324
@@ -780,7 +780,7 @@ OUT
  X = 0.076324
 580: IF X < 0 THEN 620
  X: 0.076324
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -793,24 +793,24 @@ OUT
  X = -0.113676
 580: IF X < 0 THEN 620
  X: -0.113676
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 1
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 1
- R>1: false
+ R > 1: false
 670: PRINT "SINGLE   ";
 SINGLE   
 680: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 1
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 1
- R=2: false
+ R = 2: false
 800: LET H = H + 1
  H: 0
  H = 1
@@ -834,11 +834,11 @@ SINGLE
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 2
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 2
  B = 3
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.000114375
@@ -853,21 +853,21 @@ SINGLE
  X = -0.719886
 580: IF X < 0 THEN 620
  X: -0.719886
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -875,11 +875,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 3
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 3
  B = 4
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.302333
@@ -894,21 +894,21 @@ OUT
  X = -0.338667
 580: IF X < 0 THEN 620
  X: -0.338667
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 0
@@ -931,7 +931,7 @@ OUT
  I = 2
 945: IF I < 9 THEN 410
  I: 2
- I<9: true
+ I < 9: true
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -943,15 +943,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 4
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 4
  B = 5
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.146756
@@ -966,21 +966,21 @@ INNING
  X = -0.526244
 580: IF X < 0 THEN 620
  X: -0.526244
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -988,11 +988,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 5
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 5
  B = 6
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.0923386
@@ -1007,21 +1007,21 @@ OUT
  X = -0.558661
 580: IF X < 0 THEN 620
  X: -0.558661
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -1029,11 +1029,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 6
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 6
  B = 7
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.18626
@@ -1048,21 +1048,21 @@ OUT
  X = -0.51774
 580: IF X < 0 THEN 620
  X: -0.51774
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 1
@@ -1085,7 +1085,7 @@ OUT
  I = 3
 945: IF I < 9 THEN 410
  I: 3
- I<9: true
+ I < 9: true
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -1097,15 +1097,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 7
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 7
  B = 8
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.345561
@@ -1120,21 +1120,21 @@ INNING
  X = -0.363439
 580: IF X < 0 THEN 620
  X: -0.363439
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -1142,11 +1142,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 8
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 8
  B = 9
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.396767
@@ -1161,21 +1161,21 @@ OUT
  X = -0.439233
 580: IF X < 0 THEN 620
  X: -0.439233
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -1183,13 +1183,13 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 9
- B<9: false
+ B < 9: false
 510: LET B = 0
  B = 0
 520: LET B = B + 1
  B: 0
  B = 1
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.538817
@@ -1204,21 +1204,21 @@ OUT
  X = -0.105183
 580: IF X < 0 THEN 620
  X: -0.105183
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 1
@@ -1241,7 +1241,7 @@ OUT
  I = 4
 945: IF I < 9 THEN 410
  I: 4
- I<9: true
+ I < 9: true
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -1253,15 +1253,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 1
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 1
  B = 2
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.419195
@@ -1276,21 +1276,21 @@ INNING
  X = -0.224805
 580: IF X < 0 THEN 620
  X: -0.224805
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -1298,11 +1298,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 2
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 2
  B = 3
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.68522
@@ -1317,21 +1317,21 @@ OUT
  X = -0.03478
 580: IF X < 0 THEN 620
  X: -0.03478
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -1339,11 +1339,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 3
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 3
  B = 4
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.204452
@@ -1358,21 +1358,21 @@ OUT
  X = -0.436548
 580: IF X < 0 THEN 620
  X: -0.436548
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 1
@@ -1395,7 +1395,7 @@ OUT
  I = 5
 945: IF I < 9 THEN 410
  I: 5
- I<9: true
+ I < 9: true
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -1407,15 +1407,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 4
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 4
  B = 5
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.878117
@@ -1430,7 +1430,7 @@ INNING
  X = 0.205117
 580: IF X < 0 THEN 620
  X: 0.205117
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -1443,7 +1443,7 @@ INNING
  X = 0.052117
 580: IF X < 0 THEN 620
  X: 0.052117
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 1
  terminated:false
@@ -1456,27 +1456,27 @@ INNING
  X = -0.020883
 580: IF X < 0 THEN 620
  X: -0.020883
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 2
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 2
- R>1: true
+ R > 1: true
 690: IF R > 2 THEN 720
  R: 2
- R>2: false
+ R > 2: false
 700: PRINT "WALK   ";
 WALK   
 710: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 2
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 2
- R=2: true
+ R = 2: true
 810: LET X = Q(R, C)
  R: 2
  C: 0
@@ -1497,11 +1497,11 @@ WALK
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 5
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 5
  B = 6
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.0273876
@@ -1516,21 +1516,21 @@ WALK
  X = -0.623612
 580: IF X < 0 THEN 620
  X: -0.623612
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -1538,11 +1538,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 6
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 6
  B = 7
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.670468
@@ -1557,21 +1557,21 @@ OUT
  X = -0.033532
 580: IF X < 0 THEN 620
  X: -0.033532
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -1579,11 +1579,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 7
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 7
  B = 8
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.417305
@@ -1598,21 +1598,21 @@ OUT
  X = -0.291695
 580: IF X < 0 THEN 620
  X: -0.291695
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 1
@@ -1635,7 +1635,7 @@ OUT
  I = 6
 945: IF I < 9 THEN 410
  I: 6
- I<9: true
+ I < 9: true
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -1647,15 +1647,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 8
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 8
  B = 9
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.55869
@@ -1670,21 +1670,21 @@ INNING
  X = -0.27731
 580: IF X < 0 THEN 620
  X: -0.27731
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -1692,13 +1692,13 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 9
- B<9: false
+ B < 9: false
 510: LET B = 0
  B = 0
 520: LET B = B + 1
  B: 0
  B = 1
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.140387
@@ -1713,21 +1713,21 @@ OUT
  X = -0.503613
 580: IF X < 0 THEN 620
  X: -0.503613
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -1735,11 +1735,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 1
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 1
  B = 2
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.198101
@@ -1754,21 +1754,21 @@ OUT
  X = -0.445899
 580: IF X < 0 THEN 620
  X: -0.445899
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 2
@@ -1791,7 +1791,7 @@ OUT
  I = 7
 945: IF I < 9 THEN 410
  I: 7
- I<9: true
+ I < 9: true
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -1803,15 +1803,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 2
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 2
  B = 3
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.800745
@@ -1826,7 +1826,7 @@ INNING
  X = 0.080745
 580: IF X < 0 THEN 620
  X: 0.080745
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -1839,24 +1839,24 @@ INNING
  X = -0.086255
 580: IF X < 0 THEN 620
  X: -0.086255
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 1
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 1
- R>1: false
+ R > 1: false
 670: PRINT "SINGLE   ";
 SINGLE   
 680: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 1
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 1
- R=2: false
+ R = 2: false
 800: LET H = H + 1
  H: 1
  H = 2
@@ -1880,11 +1880,11 @@ SINGLE
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 3
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 3
  B = 4
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.968262
@@ -1899,7 +1899,7 @@ SINGLE
  X = 0.327262
 580: IF X < 0 THEN 620
  X: 0.327262
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -1912,7 +1912,7 @@ SINGLE
  X = 0.083262
 580: IF X < 0 THEN 620
  X: 0.083262
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 1
  terminated:false
@@ -1925,7 +1925,7 @@ SINGLE
  X = 0.033262
 580: IF X < 0 THEN 620
  X: 0.033262
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 2
  terminated:false
@@ -1938,30 +1938,30 @@ SINGLE
  X = -0.004738
 580: IF X < 0 THEN 620
  X: -0.004738
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 3
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 3
- R>1: true
+ R > 1: true
 690: IF R > 2 THEN 720
  R: 3
- R>2: true
+ R > 2: true
 720: IF R > 3 THEN 750
  R: 3
- R>3: false
+ R > 3: false
 730: PRINT "DOUBLE   ";
 DOUBLE   
 740: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 3
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 3
- R=2: false
+ R = 2: false
 800: LET H = H + 1
  H: 2
  H = 3
@@ -1985,11 +1985,11 @@ DOUBLE
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 4
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 4
  B = 5
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.313424
@@ -2004,21 +2004,21 @@ DOUBLE
  X = -0.359576
 580: IF X < 0 THEN 620
  X: -0.359576
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -2026,11 +2026,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 5
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 5
  B = 6
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.692323
@@ -2045,7 +2045,7 @@ OUT
  X = 0.041323
 580: IF X < 0 THEN 620
  X: 0.041323
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -2058,24 +2058,24 @@ OUT
  X = -0.140677
 580: IF X < 0 THEN 620
  X: -0.140677
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 1
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 1
- R>1: false
+ R > 1: false
 670: PRINT "SINGLE   ";
 SINGLE   
 680: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 1
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 1
- R=2: false
+ R = 2: false
 800: LET H = H + 1
  H: 3
  H = 4
@@ -2099,11 +2099,11 @@ SINGLE
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 6
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 6
  B = 7
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.876389
@@ -2118,7 +2118,7 @@ SINGLE
  X = 0.172389
 580: IF X < 0 THEN 620
  X: 0.172389
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -2131,7 +2131,7 @@ SINGLE
  X = 0.010389
 580: IF X < 0 THEN 620
  X: 0.010389
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 1
  terminated:false
@@ -2144,27 +2144,27 @@ SINGLE
  X = -0.068611
 580: IF X < 0 THEN 620
  X: -0.068611
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 2
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 2
- R>1: true
+ R > 1: true
 690: IF R > 2 THEN 720
  R: 2
- R>2: false
+ R > 2: false
 700: PRINT "WALK   ";
 WALK   
 710: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 2
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 2
- R=2: true
+ R = 2: true
 810: LET X = Q(R, C)
  R: 2
  C: 1
@@ -2185,11 +2185,11 @@ WALK
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 7
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 7
  B = 8
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.894607
@@ -2204,7 +2204,7 @@ WALK
  X = 0.185607
 580: IF X < 0 THEN 620
  X: 0.185607
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -2217,7 +2217,7 @@ WALK
  X = 0.023607
 580: IF X < 0 THEN 620
  X: 0.023607
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 1
  terminated:false
@@ -2230,27 +2230,27 @@ WALK
  X = -0.047393
 580: IF X < 0 THEN 620
  X: -0.047393
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 2
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 2
- R>1: true
+ R > 1: true
 690: IF R > 2 THEN 720
  R: 2
- R>2: false
+ R > 2: false
 700: PRINT "WALK   ";
 WALK   
 710: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 2
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 2
- R=2: true
+ R = 2: true
 810: LET X = Q(R, C)
  R: 2
  C: 3
@@ -2271,11 +2271,11 @@ WALK
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 8
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 8
  B = 9
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.0850442
@@ -2290,21 +2290,21 @@ WALK
  X = -0.750956
 580: IF X < 0 THEN 620
  X: -0.750956
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -2312,13 +2312,13 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 9
- B<9: false
+ B < 9: false
 510: LET B = 0
  B = 0
 520: LET B = B + 1
  B: 0
  B = 1
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.0390548
@@ -2333,21 +2333,21 @@ OUT
  X = -0.604945
 580: IF X < 0 THEN 620
  X: -0.604945
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 2
@@ -2370,7 +2370,7 @@ OUT
  I = 8
 945: IF I < 9 THEN 410
  I: 8
- I<9: true
+ I < 9: true
 410: REM NEW INNING
 430: PRINT "INNING" I
 INNING
@@ -2382,15 +2382,15 @@ INNING
  O = 0
 470: LET C = 0
  C = 0
-480:
+480: 
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 1
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 1
  B = 2
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.16983
@@ -2405,21 +2405,21 @@ INNING
  X = -0.47417
 580: IF X < 0 THEN 620
  X: -0.47417
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 0
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 0
  O = 1
@@ -2427,11 +2427,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 2
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 2
  B = 3
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.878143
@@ -2446,7 +2446,7 @@ OUT
  X = 0.158143
 580: IF X < 0 THEN 620
  X: 0.158143
- X<0: false
+ X < 0: false
 590: NEXT R
  R: 0
  terminated:false
@@ -2459,24 +2459,24 @@ OUT
  X = -0.008857
 580: IF X < 0 THEN 620
  X: -0.008857
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 1
- R>0: true
+ R > 0: true
 660: IF R > 1 THEN 690
  R: 1
- R>1: false
+ R > 1: false
 670: PRINT "SINGLE   ";
 SINGLE   
 680: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 1
- R=0: false
+ R = 0: false
 790: IF R = 2 THEN 810
  R: 1
- R=2: false
+ R = 2: false
 800: LET H = H + 1
  H: 4
  H = 5
@@ -2500,11 +2500,11 @@ SINGLE
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 3
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 3
  B = 4
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.0983468
@@ -2519,21 +2519,21 @@ SINGLE
  X = -0.542653
 580: IF X < 0 THEN 620
  X: -0.542653
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 1
- O=2: false
+ O = 2: false
 870: LET O = O + 1
  O: 1
  O = 2
@@ -2541,11 +2541,11 @@ OUT
 490: REM NEW BATTER
 500: IF B < 9 THEN 520
  B: 4
- B<9: true
+ B < 9: true
 520: LET B = B + 1
  B: 4
  B = 5
-530:
+530: 
 540: REM DETERMINE OUTCOME
 550: LET X = RND(0)
  X = 0.421108
@@ -2560,21 +2560,21 @@ OUT
  X = -0.251892
 580: IF X < 0 THEN 620
  X: -0.251892
- X<0: true
+ X < 0: true
 620: REM PRINT OUTCOME
 630: IF R > 0 THEN 660
  R: 0
- R>0: false
+ R > 0: false
 640: PRINT "OUT   ";
 OUT   
 650: GOTO 770
 770: REM DO BOOK-KEEPING
 780: IF R = 0 THEN 860
  R: 0
- R=0: true
+ R = 0: true
 860: IF O = 2 THEN 890
  O: 2
- O=2: true
+ O = 2: true
 890: REM END OF AN INNING
 895: LET L7 = L7 + L(C)
  L7: 5
@@ -2597,8 +2597,8 @@ OUT
  I = 9
 945: IF I < 9 THEN 410
  I: 9
- I<9: false
-950:
+ I < 9: false
+950: 
 955: REM PRINT RESULTS
 960: PRINT
 

@@ -1,5 +1,5 @@
 70: REM THIS IS PROGRAM TIC-2
-80:
+80: 
 90: REM INITIALIZER
 100: FOR P = 1 TO 8
  P = 1
@@ -684,11 +684,11 @@
 285: NEXT S
  S: 9
  terminated:true
-290:
+290: 
 300: REM WHO STARTS?
 310: IF RND(Z) < 1 / 2 THEN 350
  Z: 0
- RND(Z)<1/2: true
+ RND(Z) < 1 / 2: true
 350: PRINT "THE COMPUTER WILL MOVE FIRST."
 THE COMPUTER WILL MOVE FIRST.
 360: PRINT
@@ -703,7 +703,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 1
  terminated:false
@@ -711,7 +711,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 2
  C(2): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 2
  terminated:false
@@ -719,7 +719,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 3
  terminated:false
@@ -727,7 +727,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 4
  terminated:false
@@ -735,7 +735,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 5
  C(5): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 5
  terminated:false
@@ -743,7 +743,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 6
  terminated:false
@@ -751,7 +751,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 7
  terminated:false
@@ -759,7 +759,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 8
  C(8): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 8
  terminated:true
@@ -769,7 +769,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 1
  terminated:false
@@ -777,7 +777,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 2
  C(2): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 2
  terminated:false
@@ -785,7 +785,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 3
  terminated:false
@@ -793,7 +793,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 4
  terminated:false
@@ -801,7 +801,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 5
  C(5): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 5
  terminated:false
@@ -809,7 +809,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 6
  C(6): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 6
  terminated:false
@@ -817,7 +817,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 7
  terminated:false
@@ -825,7 +825,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 8
  C(8): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 8
  terminated:true
@@ -839,7 +839,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -850,7 +850,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
@@ -868,7 +868,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
@@ -886,7 +886,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
@@ -904,7 +904,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -918,7 +918,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -929,7 +929,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
@@ -947,7 +947,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
@@ -965,7 +965,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -977,7 +977,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -991,7 +991,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1002,7 +1002,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
@@ -1020,7 +1020,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
@@ -1038,7 +1038,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 2
@@ -1056,7 +1056,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -1070,7 +1070,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1081,7 +1081,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
@@ -1099,7 +1099,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 1
@@ -1117,7 +1117,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -1129,7 +1129,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -1143,7 +1143,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 5
  B(5): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1154,7 +1154,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 0
@@ -1172,7 +1172,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 1
@@ -1190,7 +1190,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 2
@@ -1208,7 +1208,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -1222,7 +1222,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1233,7 +1233,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
@@ -1251,7 +1251,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 1
@@ -1269,7 +1269,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -1281,7 +1281,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -1295,7 +1295,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1306,7 +1306,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
@@ -1324,7 +1324,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 1
@@ -1342,7 +1342,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
@@ -1360,7 +1360,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -1374,7 +1374,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1385,7 +1385,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
@@ -1403,7 +1403,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 1
@@ -1421,7 +1421,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -1433,7 +1433,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -1447,7 +1447,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 9
  B(9): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1458,7 +1458,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 0
@@ -1476,7 +1476,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 1
@@ -1494,7 +1494,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 2
@@ -1512,7 +1512,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 3
@@ -1534,7 +1534,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 1
  V(1): 3
  V: 0
- V(S)<=V: false
+ V(S) <= V: false
 1330: LET V = V(S)
  S: 1
  V(1): 3
@@ -1550,7 +1550,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 2
  V(2): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 2
  terminated:false
@@ -1559,7 +1559,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 3
  V(3): 3
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 3
  terminated:false
@@ -1568,7 +1568,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 4
  V(4): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 4
  terminated:false
@@ -1577,7 +1577,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 5
  V(5): 3
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 5
  terminated:false
@@ -1586,7 +1586,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 6
  V(6): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 6
  terminated:false
@@ -1595,7 +1595,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 7
  V(7): 3
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 7
  terminated:false
@@ -1604,7 +1604,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 8
  V(8): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 8
  terminated:false
@@ -1613,7 +1613,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 9
  V(9): 4
  V: 3
- V(S)<=V: false
+ V(S) <= V: false
 1330: LET V = V(S)
  S: 9
  V(9): 4
@@ -1646,7 +1646,7 @@ THE COMPUTER MOVES
  P = 2
 490: IF P = 0 THEN 530
  P: 2
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 2
  C(2): 0
@@ -1655,11 +1655,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 2
  C(2): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 2
  C(2): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -1671,7 +1671,7 @@ THE COMPUTER MOVES
  P = 5
 490: IF P = 0 THEN 530
  P: 5
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 5
  C(5): 0
@@ -1680,11 +1680,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 5
  C(5): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 5
  C(5): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -1696,7 +1696,7 @@ THE COMPUTER MOVES
  P = 7
 490: IF P = 0 THEN 530
  P: 7
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 7
  C(7): 0
@@ -1705,11 +1705,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 7
  C(7): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 7
  C(7): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -1721,7 +1721,7 @@ THE COMPUTER MOVES
  P = 8
 490: IF P = 0 THEN 530
  P: 8
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 8
  C(8): 0
@@ -1730,11 +1730,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 8
  C(8): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 8
  C(8): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 4
  terminated:true
@@ -1743,10 +1743,10 @@ THE COMPUTER MOVES
  N = 1
 536: IF N = 9 THEN 880
  N: 1
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: 1
- F=1: true
+ F = 1: true
 400: PRINT "YOUR MOVE";
 YOUR MOVE
 410: INPUT M
@@ -1756,17 +1756,17 @@ YOUR MOVE
  F = -1
 420: IF M <> INT(M) THEN 550
  M: 5
- M<>INT(M): false
+ M <> INT(M): false
 430: IF M < 1 THEN 500
  M: 5
- M<1: false
+ M < 1: false
 440: IF M > 9 THEN 550
  M: 5
- M>9: false
+ M > 9: false
 450: IF B(M) <> 0 THEN 500
  M: 5
  B(5): 0
- B(M)<>0: false
+ B(M) <> 0: false
 460: LET B(M) = F
  M: 5
  F: -1
@@ -1781,7 +1781,7 @@ YOUR MOVE
  P = 3
 490: IF P = 0 THEN 530
  P: 3
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 3
  C(3): 0
@@ -1790,11 +1790,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 3
  C(3): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 3
  C(3): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -1806,7 +1806,7 @@ YOUR MOVE
  P = 6
 490: IF P = 0 THEN 530
  P: 6
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 6
  C(6): 0
@@ -1815,11 +1815,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 6
  C(6): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 6
  C(6): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -1831,7 +1831,7 @@ YOUR MOVE
  P = 7
 490: IF P = 0 THEN 530
  P: 7
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 7
  C(7): 1
@@ -1840,11 +1840,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 7
  C(7): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 7
  C(7): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -1856,7 +1856,7 @@ YOUR MOVE
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 4
  terminated:true
@@ -1865,10 +1865,10 @@ YOUR MOVE
  N = 2
 536: IF N = 9 THEN 880
  N: 2
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: -1
- F=1: false
+ F = 1: false
 538: GOTO 600
 600: REM MACHINE'S MOVE
 610: GOSUB 1000
@@ -1879,7 +1879,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 1
  terminated:false
@@ -1887,7 +1887,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 2
  C(2): 1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 2
  terminated:false
@@ -1895,7 +1895,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 3
  C(3): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 3
  terminated:false
@@ -1903,7 +1903,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 4
  terminated:false
@@ -1911,7 +1911,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 5
  C(5): 1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 5
  terminated:false
@@ -1919,7 +1919,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 6
  C(6): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 6
  terminated:false
@@ -1927,7 +1927,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 7
  terminated:false
@@ -1935,7 +1935,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 8
  C(8): 1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 8
  terminated:true
@@ -1945,7 +1945,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 1
  terminated:false
@@ -1953,7 +1953,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 2
  C(2): 1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 2
  terminated:false
@@ -1961,7 +1961,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 3
  C(3): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 3
  terminated:false
@@ -1969,7 +1969,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 4
  terminated:false
@@ -1977,7 +1977,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 5
  C(5): 1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 5
  terminated:false
@@ -1985,7 +1985,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 6
  C(6): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 6
  terminated:false
@@ -1993,7 +1993,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 7
  terminated:false
@@ -2001,7 +2001,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 8
  C(8): 1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 8
  terminated:true
@@ -2015,7 +2015,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2026,7 +2026,7 @@ YOUR MOVE
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
@@ -2044,7 +2044,7 @@ YOUR MOVE
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
@@ -2062,7 +2062,7 @@ YOUR MOVE
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
@@ -2080,7 +2080,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -2094,7 +2094,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2105,7 +2105,7 @@ YOUR MOVE
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
@@ -2123,7 +2123,7 @@ YOUR MOVE
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
@@ -2141,7 +2141,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -2153,7 +2153,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -2167,7 +2167,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2178,7 +2178,7 @@ YOUR MOVE
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
@@ -2196,7 +2196,7 @@ YOUR MOVE
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
@@ -2214,7 +2214,7 @@ YOUR MOVE
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 3
@@ -2232,7 +2232,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -2246,7 +2246,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2257,7 +2257,7 @@ YOUR MOVE
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
@@ -2275,7 +2275,7 @@ YOUR MOVE
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 2
@@ -2293,7 +2293,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -2305,7 +2305,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -2319,7 +2319,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 5
  B(5): -1
- B(S)<>0: true
+ B(S) <> 0: true
 1270: NEXT S
  S: 5
  terminated:false
@@ -2330,7 +2330,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2341,7 +2341,7 @@ YOUR MOVE
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
@@ -2359,7 +2359,7 @@ YOUR MOVE
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 2
@@ -2377,7 +2377,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -2389,7 +2389,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -2403,7 +2403,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2414,7 +2414,7 @@ YOUR MOVE
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
@@ -2432,7 +2432,7 @@ YOUR MOVE
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
@@ -2450,7 +2450,7 @@ YOUR MOVE
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 3
@@ -2468,7 +2468,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -2482,7 +2482,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2493,7 +2493,7 @@ YOUR MOVE
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
@@ -2511,7 +2511,7 @@ YOUR MOVE
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 2
@@ -2529,7 +2529,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -2541,7 +2541,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -2555,7 +2555,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 9
  B(9): 1
- B(S)<>0: true
+ B(S) <> 0: true
 1270: NEXT S
  S: 9
  terminated:true
@@ -2568,7 +2568,7 @@ YOUR MOVE
  S: 1
  V(1): 3
  V: 0
- V(S)<=V: false
+ V(S) <= V: false
 1330: LET V = V(S)
  S: 1
  V(1): 3
@@ -2584,7 +2584,7 @@ YOUR MOVE
  S: 2
  V(2): 3
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 2
  terminated:false
@@ -2593,7 +2593,7 @@ YOUR MOVE
  S: 3
  V(3): 5
  V: 3
- V(S)<=V: false
+ V(S) <= V: false
 1330: LET V = V(S)
  S: 3
  V(3): 5
@@ -2609,7 +2609,7 @@ YOUR MOVE
  S: 4
  V(4): 4
  V: 5
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 4
  terminated:false
@@ -2618,7 +2618,7 @@ YOUR MOVE
  S: 5
  V(5): 0
  V: 5
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 5
  terminated:false
@@ -2627,7 +2627,7 @@ YOUR MOVE
  S: 6
  V(6): 4
  V: 5
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 6
  terminated:false
@@ -2636,7 +2636,7 @@ YOUR MOVE
  S: 7
  V(7): 5
  V: 5
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 7
  terminated:false
@@ -2645,7 +2645,7 @@ YOUR MOVE
  S: 8
  V(8): 3
  V: 5
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 8
  terminated:false
@@ -2654,7 +2654,7 @@ YOUR MOVE
  S: 9
  V(9): 0
  V: 5
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 9
  terminated:true
@@ -2680,7 +2680,7 @@ THE COMPUTER MOVES
  P = 1
 490: IF P = 0 THEN 530
  P: 1
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 1
  C(1): 0
@@ -2689,11 +2689,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 1
  C(1): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 1
  C(1): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -2705,7 +2705,7 @@ THE COMPUTER MOVES
  P = 6
 490: IF P = 0 THEN 530
  P: 6
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 6
  C(6): -1
@@ -2714,11 +2714,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 6
  C(6): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 6
  C(6): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -2730,7 +2730,7 @@ THE COMPUTER MOVES
  P = 8
 490: IF P = 0 THEN 530
  P: 8
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 8
  C(8): 1
@@ -2739,11 +2739,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 8
  C(8): 2
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 8
  C(8): 2
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -2755,7 +2755,7 @@ THE COMPUTER MOVES
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 4
  terminated:true
@@ -2764,10 +2764,10 @@ THE COMPUTER MOVES
  N = 3
 536: IF N = 9 THEN 880
  N: 3
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: 1
- F=1: true
+ F = 1: true
 400: PRINT "YOUR MOVE";
 YOUR MOVE
 410: INPUT M
@@ -2777,17 +2777,17 @@ YOUR MOVE
  F = -1
 420: IF M <> INT(M) THEN 550
  M: 2
- M<>INT(M): false
+ M <> INT(M): false
 430: IF M < 1 THEN 500
  M: 2
- M<1: false
+ M < 1: false
 440: IF M > 9 THEN 550
  M: 2
- M>9: false
+ M > 9: false
 450: IF B(M) <> 0 THEN 500
  M: 2
  B(2): 0
- B(M)<>0: false
+ B(M) <> 0: false
 460: LET B(M) = F
  M: 2
  F: -1
@@ -2802,7 +2802,7 @@ YOUR MOVE
  P = 1
 490: IF P = 0 THEN 530
  P: 1
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 1
  C(1): 1
@@ -2811,11 +2811,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 1
  C(1): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 1
  C(1): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -2827,7 +2827,7 @@ YOUR MOVE
  P = 5
 490: IF P = 0 THEN 530
  P: 5
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 5
  C(5): 1
@@ -2836,11 +2836,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 5
  C(5): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 5
  C(5): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -2852,7 +2852,7 @@ YOUR MOVE
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 3
  terminated:false
@@ -2864,7 +2864,7 @@ YOUR MOVE
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 4
  terminated:true
@@ -2873,10 +2873,10 @@ YOUR MOVE
  N = 4
 536: IF N = 9 THEN 880
  N: 4
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: -1
- F=1: false
+ F = 1: false
 538: GOTO 600
 600: REM MACHINE'S MOVE
 610: GOSUB 1000
@@ -2887,7 +2887,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 1
  terminated:false
@@ -2895,7 +2895,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 2
  C(2): 1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 2
  terminated:false
@@ -2903,7 +2903,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 3
  C(3): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 3
  terminated:false
@@ -2911,7 +2911,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 4
  terminated:false
@@ -2919,7 +2919,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 5
  C(5): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 5
  terminated:false
@@ -2927,7 +2927,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 6
  terminated:false
@@ -2935,7 +2935,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 7
  terminated:false
@@ -2943,7 +2943,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 8
  C(8): 2
- C(P)=2: true
+ C(P) = 2: true
 1100: FOR I = 1 TO 3
  I = 1
  terminated:false
@@ -2955,7 +2955,7 @@ YOUR MOVE
 1120: IF B(M) = 0 THEN 1999
  M: 7
  B(7): 0
- B(M)=0: true
+ B(M) = 0: true
 1999: RETURN
 620: PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
@@ -2978,7 +2978,7 @@ THE COMPUTER MOVES
  P = 3
 490: IF P = 0 THEN 530
  P: 3
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 3
  C(3): -1
@@ -2987,11 +2987,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 3
  C(3): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 3
  C(3): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -3003,7 +3003,7 @@ THE COMPUTER MOVES
  P = 4
 490: IF P = 0 THEN 530
  P: 4
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 4
  C(4): 0
@@ -3012,11 +3012,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 4
  C(4): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 4
  C(4): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -3028,7 +3028,7 @@ THE COMPUTER MOVES
  P = 8
 490: IF P = 0 THEN 530
  P: 8
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 8
  C(8): 2
@@ -3037,11 +3037,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 8
  C(8): 3
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 8
  C(8): 3
- C(P)=3: true
+ C(P) = 3: true
 800: REM THE GAME IS OVER
 810: PRINT "AND THE COMPUTER WINS."
 AND THE COMPUTER WINS.
@@ -3146,11 +3146,11 @@ NEW GAME.
 285: NEXT S
  S: 9
  terminated:true
-290:
+290: 
 300: REM WHO STARTS?
 310: IF RND(Z) < 1 / 2 THEN 350
  Z: 0
- RND(Z)<1/2: false
+ RND(Z) < 1 / 2: false
 320: PRINT "YOU WILL MOVE FIRST."
 YOU WILL MOVE FIRST.
 330: PRINT
@@ -3165,17 +3165,17 @@ YOUR MOVE
  F = -1
 420: IF M <> INT(M) THEN 550
  M: 9
- M<>INT(M): false
+ M <> INT(M): false
 430: IF M < 1 THEN 500
  M: 9
- M<1: false
+ M < 1: false
 440: IF M > 9 THEN 550
  M: 9
- M>9: false
+ M > 9: false
 450: IF B(M) <> 0 THEN 500
  M: 9
  B(9): 0
- B(M)<>0: false
+ B(M) <> 0: false
 460: LET B(M) = F
  M: 9
  F: -1
@@ -3190,7 +3190,7 @@ YOUR MOVE
  P = 2
 490: IF P = 0 THEN 530
  P: 2
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 2
  C(2): 0
@@ -3199,11 +3199,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 2
  C(2): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 2
  C(2): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -3215,7 +3215,7 @@ YOUR MOVE
  P = 5
 490: IF P = 0 THEN 530
  P: 5
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 5
  C(5): 0
@@ -3224,11 +3224,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 5
  C(5): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 5
  C(5): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -3240,7 +3240,7 @@ YOUR MOVE
  P = 7
 490: IF P = 0 THEN 530
  P: 7
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 7
  C(7): 0
@@ -3249,11 +3249,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 7
  C(7): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 7
  C(7): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -3265,7 +3265,7 @@ YOUR MOVE
  P = 8
 490: IF P = 0 THEN 530
  P: 8
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 8
  C(8): 0
@@ -3274,11 +3274,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 8
  C(8): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 8
  C(8): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 4
  terminated:true
@@ -3287,10 +3287,10 @@ YOUR MOVE
  N = 1
 536: IF N = 9 THEN 880
  N: 1
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: -1
- F=1: false
+ F = 1: false
 538: GOTO 600
 600: REM MACHINE'S MOVE
 610: GOSUB 1000
@@ -3301,7 +3301,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 1
  terminated:false
@@ -3309,7 +3309,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 2
  C(2): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 2
  terminated:false
@@ -3317,7 +3317,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 3
  terminated:false
@@ -3325,7 +3325,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 4
  terminated:false
@@ -3333,7 +3333,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 5
  C(5): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 5
  terminated:false
@@ -3341,7 +3341,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 6
  terminated:false
@@ -3349,7 +3349,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 7
  C(7): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 7
  terminated:false
@@ -3357,7 +3357,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 8
  C(8): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 8
  terminated:true
@@ -3367,7 +3367,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 1
  terminated:false
@@ -3375,7 +3375,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 2
  C(2): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 2
  terminated:false
@@ -3383,7 +3383,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 3
  terminated:false
@@ -3391,7 +3391,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 4
  terminated:false
@@ -3399,7 +3399,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 5
  C(5): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 5
  terminated:false
@@ -3407,7 +3407,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 6
  C(6): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 6
  terminated:false
@@ -3415,7 +3415,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 7
  C(7): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 7
  terminated:false
@@ -3423,7 +3423,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 8
  C(8): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 8
  terminated:true
@@ -3437,7 +3437,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3448,7 +3448,7 @@ YOUR MOVE
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
@@ -3466,7 +3466,7 @@ YOUR MOVE
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
@@ -3484,7 +3484,7 @@ YOUR MOVE
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
@@ -3502,7 +3502,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -3516,7 +3516,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3527,7 +3527,7 @@ YOUR MOVE
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
@@ -3545,7 +3545,7 @@ YOUR MOVE
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
@@ -3563,7 +3563,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -3575,7 +3575,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -3589,7 +3589,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3600,7 +3600,7 @@ YOUR MOVE
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
@@ -3618,7 +3618,7 @@ YOUR MOVE
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
@@ -3636,7 +3636,7 @@ YOUR MOVE
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 2
@@ -3654,7 +3654,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -3668,7 +3668,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3679,7 +3679,7 @@ YOUR MOVE
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
@@ -3697,7 +3697,7 @@ YOUR MOVE
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 2
@@ -3715,7 +3715,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -3727,7 +3727,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -3741,7 +3741,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 5
  B(5): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3752,7 +3752,7 @@ YOUR MOVE
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 0
@@ -3770,7 +3770,7 @@ YOUR MOVE
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 1
@@ -3788,7 +3788,7 @@ YOUR MOVE
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 2
@@ -3806,7 +3806,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -3820,7 +3820,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3831,7 +3831,7 @@ YOUR MOVE
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
@@ -3849,7 +3849,7 @@ YOUR MOVE
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 1
@@ -3867,7 +3867,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -3879,7 +3879,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -3893,7 +3893,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3904,7 +3904,7 @@ YOUR MOVE
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
@@ -3922,7 +3922,7 @@ YOUR MOVE
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 1
@@ -3940,7 +3940,7 @@ YOUR MOVE
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
@@ -3958,7 +3958,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -3972,7 +3972,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3983,7 +3983,7 @@ YOUR MOVE
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
@@ -4001,7 +4001,7 @@ YOUR MOVE
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 2
@@ -4019,7 +4019,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -4031,7 +4031,7 @@ YOUR MOVE
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -4045,7 +4045,7 @@ YOUR MOVE
 1215: IF B(S) <> 0 THEN 1270
  S: 9
  B(9): -1
- B(S)<>0: true
+ B(S) <> 0: true
 1270: NEXT S
  S: 9
  terminated:true
@@ -4058,7 +4058,7 @@ YOUR MOVE
  S: 1
  V(1): 4
  V: 0
- V(S)<=V: false
+ V(S) <= V: false
 1330: LET V = V(S)
  S: 1
  V(1): 4
@@ -4074,7 +4074,7 @@ YOUR MOVE
  S: 2
  V(2): 3
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 2
  terminated:false
@@ -4083,7 +4083,7 @@ YOUR MOVE
  S: 3
  V(3): 4
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 3
  terminated:false
@@ -4092,7 +4092,7 @@ YOUR MOVE
  S: 4
  V(4): 3
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 4
  terminated:false
@@ -4101,7 +4101,7 @@ YOUR MOVE
  S: 5
  V(5): 4
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 5
  terminated:false
@@ -4110,7 +4110,7 @@ YOUR MOVE
  S: 6
  V(6): 3
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 6
  terminated:false
@@ -4119,7 +4119,7 @@ YOUR MOVE
  S: 7
  V(7): 4
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 7
  terminated:false
@@ -4128,7 +4128,7 @@ YOUR MOVE
  S: 8
  V(8): 3
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 8
  terminated:false
@@ -4137,7 +4137,7 @@ YOUR MOVE
  S: 9
  V(9): 0
  V: 4
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 9
  terminated:true
@@ -4163,7 +4163,7 @@ THE COMPUTER MOVES
  P = 1
 490: IF P = 0 THEN 530
  P: 1
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 1
  C(1): 0
@@ -4172,11 +4172,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 1
  C(1): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 1
  C(1): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -4188,7 +4188,7 @@ THE COMPUTER MOVES
  P = 4
 490: IF P = 0 THEN 530
  P: 4
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 4
  C(4): 0
@@ -4197,11 +4197,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 4
  C(4): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 4
  C(4): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -4213,7 +4213,7 @@ THE COMPUTER MOVES
  P = 7
 490: IF P = 0 THEN 530
  P: 7
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 7
  C(7): -1
@@ -4222,11 +4222,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 7
  C(7): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 7
  C(7): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -4238,7 +4238,7 @@ THE COMPUTER MOVES
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 4
  terminated:true
@@ -4247,10 +4247,10 @@ THE COMPUTER MOVES
  N = 2
 536: IF N = 9 THEN 880
  N: 2
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: 1
- F=1: true
+ F = 1: true
 400: PRINT "YOUR MOVE";
 YOUR MOVE
 410: INPUT M
@@ -4260,17 +4260,17 @@ YOUR MOVE
  F = -1
 420: IF M <> INT(M) THEN 550
  M: 3
- M<>INT(M): false
+ M <> INT(M): false
 430: IF M < 1 THEN 500
  M: 3
- M<1: false
+ M < 1: false
 440: IF M > 9 THEN 550
  M: 3
- M>9: false
+ M > 9: false
 450: IF B(M) <> 0 THEN 500
  M: 3
  B(3): 0
- B(M)<>0: false
+ B(M) <> 0: false
 460: LET B(M) = F
  M: 3
  F: -1
@@ -4285,7 +4285,7 @@ YOUR MOVE
  P = 1
 490: IF P = 0 THEN 530
  P: 1
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 1
  C(1): 1
@@ -4294,11 +4294,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 1
  C(1): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 1
  C(1): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -4310,7 +4310,7 @@ YOUR MOVE
  P = 6
 490: IF P = 0 THEN 530
  P: 6
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 6
  C(6): 0
@@ -4319,11 +4319,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 6
  C(6): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 6
  C(6): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -4335,7 +4335,7 @@ YOUR MOVE
  P = 8
 490: IF P = 0 THEN 530
  P: 8
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 8
  C(8): -1
@@ -4344,11 +4344,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 8
  C(8): -2
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 8
  C(8): -2
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -4360,7 +4360,7 @@ YOUR MOVE
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 4
  terminated:true
@@ -4369,10 +4369,10 @@ YOUR MOVE
  N = 3
 536: IF N = 9 THEN 880
  N: 3
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: -1
- F=1: false
+ F = 1: false
 538: GOTO 600
 600: REM MACHINE'S MOVE
 610: GOSUB 1000
@@ -4383,7 +4383,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 1
  terminated:false
@@ -4391,7 +4391,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 2
  C(2): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 2
  terminated:false
@@ -4399,7 +4399,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 3
  terminated:false
@@ -4407,7 +4407,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 4
  C(4): 1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 4
  terminated:false
@@ -4415,7 +4415,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 5
  C(5): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 5
  terminated:false
@@ -4423,7 +4423,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 6
  C(6): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 6
  terminated:false
@@ -4431,7 +4431,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 7
  terminated:false
@@ -4439,7 +4439,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 8
  C(8): -2
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 8
  terminated:true
@@ -4449,7 +4449,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 1
  terminated:false
@@ -4457,7 +4457,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 2
  C(2): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 2
  terminated:false
@@ -4465,7 +4465,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 3
  terminated:false
@@ -4473,7 +4473,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 4
  C(4): 1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 4
  terminated:false
@@ -4481,7 +4481,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 5
  C(5): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 5
  terminated:false
@@ -4489,7 +4489,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 6
  C(6): -1
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 6
  terminated:false
@@ -4497,7 +4497,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 7
  terminated:false
@@ -4505,7 +4505,7 @@ YOUR MOVE
 1050: IF C(P) = -2 THEN 1100
  P: 8
  C(8): -2
- C(P)=-2: true
+ C(P) = -2: true
 1100: FOR I = 1 TO 3
  I = 1
  terminated:false
@@ -4517,7 +4517,7 @@ YOUR MOVE
 1120: IF B(M) = 0 THEN 1999
  M: 7
  B(7): 0
- B(M)=0: true
+ B(M) = 0: true
 1999: RETURN
 620: PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
@@ -4540,7 +4540,7 @@ THE COMPUTER MOVES
  P = 3
 490: IF P = 0 THEN 530
  P: 3
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 3
  C(3): 0
@@ -4549,11 +4549,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 3
  C(3): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 3
  C(3): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -4565,7 +4565,7 @@ THE COMPUTER MOVES
  P = 4
 490: IF P = 0 THEN 530
  P: 4
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 4
  C(4): 1
@@ -4574,11 +4574,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 4
  C(4): 2
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 4
  C(4): 2
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -4590,7 +4590,7 @@ THE COMPUTER MOVES
  P = 8
 490: IF P = 0 THEN 530
  P: 8
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 8
  C(8): -2
@@ -4599,11 +4599,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 8
  C(8): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 8
  C(8): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -4615,7 +4615,7 @@ THE COMPUTER MOVES
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 4
  terminated:true
@@ -4624,10 +4624,10 @@ THE COMPUTER MOVES
  N = 4
 536: IF N = 9 THEN 880
  N: 4
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: 1
- F=1: true
+ F = 1: true
 400: PRINT "YOUR MOVE";
 YOUR MOVE
 410: INPUT M
@@ -4637,17 +4637,17 @@ YOUR MOVE
  F = -1
 420: IF M <> INT(M) THEN 550
  M: 5
- M<>INT(M): false
+ M <> INT(M): false
 430: IF M < 1 THEN 500
  M: 5
- M<1: false
+ M < 1: false
 440: IF M > 9 THEN 550
  M: 5
- M>9: false
+ M > 9: false
 450: IF B(M) <> 0 THEN 500
  M: 5
  B(5): 0
- B(M)<>0: false
+ B(M) <> 0: false
 460: LET B(M) = F
  M: 5
  F: -1
@@ -4662,7 +4662,7 @@ YOUR MOVE
  P = 3
 490: IF P = 0 THEN 530
  P: 3
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 3
  C(3): 1
@@ -4671,11 +4671,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 3
  C(3): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 3
  C(3): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -4687,7 +4687,7 @@ YOUR MOVE
  P = 6
 490: IF P = 0 THEN 530
  P: 6
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 6
  C(6): -1
@@ -4696,11 +4696,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 6
  C(6): -2
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 6
  C(6): -2
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -4712,7 +4712,7 @@ YOUR MOVE
  P = 7
 490: IF P = 0 THEN 530
  P: 7
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 7
  C(7): 0
@@ -4721,11 +4721,11 @@ YOUR MOVE
 510: IF C(P) = -3 THEN 860
  P: 7
  C(7): -1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 7
  C(7): -1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -4737,7 +4737,7 @@ YOUR MOVE
  P = 0
 490: IF P = 0 THEN 530
  P: 0
- P=0: true
+ P = 0: true
 530: NEXT J
  J: 4
  terminated:true
@@ -4746,10 +4746,10 @@ YOUR MOVE
  N = 5
 536: IF N = 9 THEN 880
  N: 5
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: -1
- F=1: false
+ F = 1: false
 538: GOTO 600
 600: REM MACHINE'S MOVE
 610: GOSUB 1000
@@ -4760,7 +4760,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 1
  terminated:false
@@ -4768,7 +4768,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 2
  C(2): -1
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 2
  terminated:false
@@ -4776,7 +4776,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 3
  terminated:false
@@ -4784,7 +4784,7 @@ YOUR MOVE
 1020: IF C(P) = 2 THEN 1100
  P: 4
  C(4): 2
- C(P)=2: true
+ C(P) = 2: true
 1100: FOR I = 1 TO 3
  I = 1
  terminated:false
@@ -4796,7 +4796,7 @@ YOUR MOVE
 1120: IF B(M) = 0 THEN 1999
  M: 1
  B(1): 1
- B(M)=0: false
+ B(M) = 0: false
 1130: NEXT I
  I: 1
  terminated:false
@@ -4809,7 +4809,7 @@ YOUR MOVE
 1120: IF B(M) = 0 THEN 1999
  M: 8
  B(8): 0
- B(M)=0: true
+ B(M) = 0: true
 1999: RETURN
 620: PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
@@ -4832,7 +4832,7 @@ THE COMPUTER MOVES
  P = 2
 490: IF P = 0 THEN 530
  P: 2
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 2
  C(2): -1
@@ -4841,11 +4841,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 2
  C(2): 0
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 2
  C(2): 0
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -4857,7 +4857,7 @@ THE COMPUTER MOVES
  P = 4
 490: IF P = 0 THEN 530
  P: 4
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 4
  C(4): 2
@@ -4866,11 +4866,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 4
  C(4): 3
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 4
  C(4): 3
- C(P)=3: true
+ C(P) = 3: true
 800: REM THE GAME IS OVER
 810: PRINT "AND THE COMPUTER WINS."
 AND THE COMPUTER WINS.
@@ -4975,11 +4975,11 @@ NEW GAME.
 285: NEXT S
  S: 9
  terminated:true
-290:
+290: 
 300: REM WHO STARTS?
 310: IF RND(Z) < 1 / 2 THEN 350
  Z: 0
- RND(Z)<1/2: true
+ RND(Z) < 1 / 2: true
 350: PRINT "THE COMPUTER WILL MOVE FIRST."
 THE COMPUTER WILL MOVE FIRST.
 360: PRINT
@@ -4994,7 +4994,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 1
  terminated:false
@@ -5002,7 +5002,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 2
  C(2): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 2
  terminated:false
@@ -5010,7 +5010,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 3
  terminated:false
@@ -5018,7 +5018,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 4
  terminated:false
@@ -5026,7 +5026,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 5
  C(5): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 5
  terminated:false
@@ -5034,7 +5034,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 6
  terminated:false
@@ -5042,7 +5042,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 7
  terminated:false
@@ -5050,7 +5050,7 @@ THE COMPUTER WILL MOVE FIRST.
 1020: IF C(P) = 2 THEN 1100
  P: 8
  C(8): 0
- C(P)=2: false
+ C(P) = 2: false
 1030: NEXT P
  P: 8
  terminated:true
@@ -5060,7 +5060,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 1
  terminated:false
@@ -5068,7 +5068,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 2
  C(2): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 2
  terminated:false
@@ -5076,7 +5076,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 3
  terminated:false
@@ -5084,7 +5084,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 4
  terminated:false
@@ -5092,7 +5092,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 5
  C(5): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 5
  terminated:false
@@ -5100,7 +5100,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 6
  C(6): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 6
  terminated:false
@@ -5108,7 +5108,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 7
  terminated:false
@@ -5116,7 +5116,7 @@ THE COMPUTER WILL MOVE FIRST.
 1050: IF C(P) = -2 THEN 1100
  P: 8
  C(8): 0
- C(P)=-2: false
+ C(P) = -2: false
 1060: NEXT P
  P: 8
  terminated:true
@@ -5130,7 +5130,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5141,7 +5141,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
@@ -5159,7 +5159,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
@@ -5177,7 +5177,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
@@ -5195,7 +5195,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5209,7 +5209,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5220,7 +5220,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
@@ -5238,7 +5238,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
@@ -5256,7 +5256,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -5268,7 +5268,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5282,7 +5282,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5293,7 +5293,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 1
 1240: IF P = 0 THEN 1260
  P: 1
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
@@ -5311,7 +5311,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
@@ -5329,7 +5329,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 2
@@ -5347,7 +5347,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5361,7 +5361,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5372,7 +5372,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
@@ -5390,7 +5390,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 1
@@ -5408,7 +5408,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -5420,7 +5420,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5434,7 +5434,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 5
  B(5): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5445,7 +5445,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 0
@@ -5463,7 +5463,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 6
 1240: IF P = 0 THEN 1260
  P: 6
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 1
@@ -5481,7 +5481,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 2
@@ -5499,7 +5499,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5513,7 +5513,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5524,7 +5524,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
@@ -5542,7 +5542,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 1
@@ -5560,7 +5560,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -5572,7 +5572,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5586,7 +5586,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5597,7 +5597,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 3
 1240: IF P = 0 THEN 1260
  P: 3
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
@@ -5615,7 +5615,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 1
@@ -5633,7 +5633,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
@@ -5651,7 +5651,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5665,7 +5665,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5676,7 +5676,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
@@ -5694,7 +5694,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 4
 1240: IF P = 0 THEN 1260
  P: 4
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 1
@@ -5712,7 +5712,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 3
  terminated:false
@@ -5724,7 +5724,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 0
 1240: IF P = 0 THEN 1260
  P: 0
- P=0: true
+ P = 0: true
 1260: NEXT J
  J: 4
  terminated:true
@@ -5738,7 +5738,7 @@ THE COMPUTER WILL MOVE FIRST.
 1215: IF B(S) <> 0 THEN 1270
  S: 9
  B(9): 0
- B(S)<>0: false
+ B(S) <> 0: false
 1220: FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -5749,7 +5749,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 2
 1240: IF P = 0 THEN 1260
  P: 2
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 0
@@ -5767,7 +5767,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 5
 1240: IF P = 0 THEN 1260
  P: 5
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 1
@@ -5785,7 +5785,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 7
 1240: IF P = 0 THEN 1260
  P: 7
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 2
@@ -5803,7 +5803,7 @@ THE COMPUTER WILL MOVE FIRST.
  P = 8
 1240: IF P = 0 THEN 1260
  P: 8
- P=0: false
+ P = 0: false
 1250: LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 3
@@ -5825,7 +5825,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 1
  V(1): 3
  V: 0
- V(S)<=V: false
+ V(S) <= V: false
 1330: LET V = V(S)
  S: 1
  V(1): 3
@@ -5841,7 +5841,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 2
  V(2): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 2
  terminated:false
@@ -5850,7 +5850,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 3
  V(3): 3
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 3
  terminated:false
@@ -5859,7 +5859,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 4
  V(4): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 4
  terminated:false
@@ -5868,7 +5868,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 5
  V(5): 3
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 5
  terminated:false
@@ -5877,7 +5877,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 6
  V(6): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 6
  terminated:false
@@ -5886,7 +5886,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 7
  V(7): 3
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 7
  terminated:false
@@ -5895,7 +5895,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 8
  V(8): 2
  V: 3
- V(S)<=V: true
+ V(S) <= V: true
 1350: NEXT S
  S: 8
  terminated:false
@@ -5904,7 +5904,7 @@ THE COMPUTER WILL MOVE FIRST.
  S: 9
  V(9): 4
  V: 3
- V(S)<=V: false
+ V(S) <= V: false
 1330: LET V = V(S)
  S: 9
  V(9): 4
@@ -5937,7 +5937,7 @@ THE COMPUTER MOVES
  P = 2
 490: IF P = 0 THEN 530
  P: 2
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 2
  C(2): 0
@@ -5946,11 +5946,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 2
  C(2): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 2
  C(2): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 1
  terminated:false
@@ -5962,7 +5962,7 @@ THE COMPUTER MOVES
  P = 5
 490: IF P = 0 THEN 530
  P: 5
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 5
  C(5): 0
@@ -5971,11 +5971,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 5
  C(5): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 5
  C(5): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 2
  terminated:false
@@ -5987,7 +5987,7 @@ THE COMPUTER MOVES
  P = 7
 490: IF P = 0 THEN 530
  P: 7
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 7
  C(7): 0
@@ -5996,11 +5996,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 7
  C(7): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 7
  C(7): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 3
  terminated:false
@@ -6012,7 +6012,7 @@ THE COMPUTER MOVES
  P = 8
 490: IF P = 0 THEN 530
  P: 8
- P=0: false
+ P = 0: false
 500: LET C(P) = C(P) + F
  P: 8
  C(8): 0
@@ -6021,11 +6021,11 @@ THE COMPUTER MOVES
 510: IF C(P) = -3 THEN 860
  P: 8
  C(8): 1
- C(P)=-3: false
+ C(P) = -3: false
 520: IF C(P) = 3 THEN 800
  P: 8
  C(8): 1
- C(P)=3: false
+ C(P) = 3: false
 530: NEXT J
  J: 4
  terminated:true
@@ -6034,10 +6034,10 @@ THE COMPUTER MOVES
  N = 1
 536: IF N = 9 THEN 880
  N: 1
- N=9: false
+ N = 9: false
 537: IF F = 1 THEN 400
  F: 1
- F=1: true
+ F = 1: true
 400: PRINT "YOUR MOVE";
 YOUR MOVE
 410: INPUT M

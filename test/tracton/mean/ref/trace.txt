@@ -16,7 +16,7 @@ ENTER SAMPLE VALUE AND FREQUENCY
  F = 2
 90: IF F <= 0 THEN 170
  F: 2
- F<=0: false
+ F <= 0: false
 100: LET A = A + 1
  A: 0
  A = 1
@@ -49,7 +49,7 @@ ENTER SAMPLE VALUE AND FREQUENCY
  F = 3
 90: IF F <= 0 THEN 170
  F: 3
- F<=0: false
+ F <= 0: false
 100: LET A = A + 1
  A: 1
  A = 2
@@ -82,7 +82,7 @@ ENTER SAMPLE VALUE AND FREQUENCY
  F = 1
 90: IF F <= 0 THEN 170
  F: 1
- F<=0: false
+ F <= 0: false
 100: LET A = A + 1
  A: 2
  A = 3
@@ -115,7 +115,7 @@ ENTER SAMPLE VALUE AND FREQUENCY
  F = 0
 90: IF F <= 0 THEN 170
  F: 0
- F<=0: true
+ F <= 0: true
 170: LET H = C / B
  C: 46
  B: 6
@@ -156,7 +156,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 0
 280: IF L = 1 THEN 300
  L: 0
- L=1: false
+ L = 1: false
 290: STOP
 STOP in line 290
 

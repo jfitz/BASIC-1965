@@ -20,16 +20,16 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 8
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 8
- D=12: false
+ D = 12: false
 50: IF D = 7 THEN 400
  D: 8
- D=7: false
+ D = 7: false
 60: IF D = 11 THEN 400
  D: 8
- D=11: false
+ D = 11: false
 70: LET D9 = D
  D: 8
  D9 = 8
@@ -53,10 +53,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 3
  D9: 8
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 3
- D=7: false
+ D = 7: false
 130: GOTO 100
 100: GOSUB 500
 500: REM ROLL DICE
@@ -78,10 +78,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 2
  D9: 8
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 2
- D=7: false
+ D = 7: false
 130: GOTO 100
 100: GOSUB 500
 500: REM ROLL DICE
@@ -103,10 +103,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 5
  D9: 8
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 5
- D=7: false
+ D = 7: false
 130: GOTO 100
 100: GOSUB 500
 500: REM ROLL DICE
@@ -128,10 +128,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 7
  D9: 8
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 7
- D=7: true
+ D = 7: true
 250: PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
 YOU LOSE -- BY FAILING TO MAKE YOUR POINT
 260: GOTO 410
@@ -158,16 +158,16 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 8
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 8
- D=12: false
+ D = 12: false
 50: IF D = 7 THEN 400
  D: 8
- D=7: false
+ D = 7: false
 60: IF D = 11 THEN 400
  D: 8
- D=11: false
+ D = 11: false
 70: LET D9 = D
  D: 8
  D9 = 8
@@ -191,7 +191,7 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 8
  D9: 8
- D=D9: true
+ D = D9: true
 200: PRINT "YOU WIN -- BY MAKING YOUR POINT"
 YOU WIN -- BY MAKING YOUR POINT
 210: GOTO 410
@@ -218,16 +218,16 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 6
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 6
- D=12: false
+ D = 12: false
 50: IF D = 7 THEN 400
  D: 6
- D=7: false
+ D = 7: false
 60: IF D = 11 THEN 400
  D: 6
- D=11: false
+ D = 11: false
 70: LET D9 = D
  D: 6
  D9 = 6
@@ -251,10 +251,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 7
  D9: 6
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 7
- D=7: true
+ D = 7: true
 250: PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
 YOU LOSE -- BY FAILING TO MAKE YOUR POINT
 260: GOTO 410
@@ -281,7 +281,7 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 3
- D<4: true
+ D < 4: true
 300: PRINT "YOU LOSE ON FIRST ROLL"
 YOU LOSE ON FIRST ROLL
 310: GOTO 410
@@ -308,16 +308,16 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 11
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 11
- D=12: false
+ D = 12: false
 50: IF D = 7 THEN 400
  D: 11
- D=7: false
+ D = 7: false
 60: IF D = 11 THEN 400
  D: 11
- D=11: true
+ D = 11: true
 400: PRINT "YOU WIN ON FIRST ROLL"
 YOU WIN ON FIRST ROLL
 410: NEXT G
@@ -343,13 +343,13 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 7
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 7
- D=12: false
+ D = 12: false
 50: IF D = 7 THEN 400
  D: 7
- D=7: true
+ D = 7: true
 400: PRINT "YOU WIN ON FIRST ROLL"
 YOU WIN ON FIRST ROLL
 410: NEXT G
@@ -375,10 +375,10 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 12
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 12
- D=12: true
+ D = 12: true
 300: PRINT "YOU LOSE ON FIRST ROLL"
 YOU LOSE ON FIRST ROLL
 310: GOTO 410
@@ -405,7 +405,7 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 2
- D<4: true
+ D < 4: true
 300: PRINT "YOU LOSE ON FIRST ROLL"
 YOU LOSE ON FIRST ROLL
 310: GOTO 410
@@ -432,16 +432,16 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 8
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 8
- D=12: false
+ D = 12: false
 50: IF D = 7 THEN 400
  D: 8
- D=7: false
+ D = 7: false
 60: IF D = 11 THEN 400
  D: 8
- D=11: false
+ D = 11: false
 70: LET D9 = D
  D: 8
  D9 = 8
@@ -465,10 +465,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 4
  D9: 8
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 4
- D=7: false
+ D = 7: false
 130: GOTO 100
 100: GOSUB 500
 500: REM ROLL DICE
@@ -490,10 +490,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 10
  D9: 8
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 10
- D=7: false
+ D = 7: false
 130: GOTO 100
 100: GOSUB 500
 500: REM ROLL DICE
@@ -515,10 +515,10 @@ YOUR ROLL IS
 110: IF D = D9 THEN 200
  D: 7
  D9: 8
- D=D9: false
+ D = D9: false
 120: IF D = 7 THEN 250
  D: 7
- D=7: true
+ D = 7: true
 250: PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
 YOU LOSE -- BY FAILING TO MAKE YOUR POINT
 260: GOTO 410
@@ -545,16 +545,16 @@ YOUR ROLL IS
 540: RETURN
 30: IF D < 4 THEN 300
  D: 11
- D<4: false
+ D < 4: false
 40: IF D = 12 THEN 300
  D: 11
- D=12: false
+ D = 12: false
 50: IF D = 7 THEN 400
  D: 11
- D=7: false
+ D = 7: false
 60: IF D = 11 THEN 400
  D: 11
- D=11: true
+ D = 11: true
 400: PRINT "YOU WIN ON FIRST ROLL"
 YOU WIN ON FIRST ROLL
 410: NEXT G

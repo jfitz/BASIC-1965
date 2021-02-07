@@ -11,7 +11,7 @@
 1030: IF X(I) < 0 THEN 1100
  I: 0
  X(0): 123
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 0
  terminated:false
@@ -22,7 +22,7 @@
 1030: IF X(I) < 0 THEN 1100
  I: 1
  X(1): 456
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 1
  terminated:false
@@ -33,7 +33,7 @@
 1030: IF X(I) < 0 THEN 1100
  I: 2
  X(2): 789
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 2
  terminated:false
@@ -44,7 +44,7 @@
 1030: IF X(I) < 0 THEN 1100
  I: 3
  X(3): 333
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 3
  terminated:false
@@ -55,7 +55,7 @@
 1030: IF X(I) < 0 THEN 1100
  I: 4
  X(4): -1
- X(I)<0: true
+ X(I) < 0: true
 1100: LET L = I - 1
  I: 4
  L = 3
@@ -105,7 +105,7 @@
 2010: IF C(L) >= 100 THEN 2200
  L: 3
  C(3): 123
- C(L)>=100: true
+ C(L) >= 100: true
 2200: LET L9 = L
  L: 3
  L9 = 3
@@ -182,7 +182,7 @@
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 3
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -256,7 +256,7 @@
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 2
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -330,7 +330,7 @@
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 1
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -404,7 +404,7 @@
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 0
- I=0: true
+ I = 0: true
 2400: PRINT
 
 2405: PRINT
@@ -464,7 +464,7 @@ TIMES
 1030: IF X(I) < 0 THEN 1100
  I: 0
  X(0): 987
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 0
  terminated:false
@@ -475,7 +475,7 @@ TIMES
 1030: IF X(I) < 0 THEN 1100
  I: 1
  X(1): 654
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 1
  terminated:false
@@ -486,7 +486,7 @@ TIMES
 1030: IF X(I) < 0 THEN 1100
  I: 2
  X(2): 321
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 2
  terminated:false
@@ -497,7 +497,7 @@ TIMES
 1030: IF X(I) < 0 THEN 1100
  I: 3
  X(3): 0
- X(I)<0: false
+ X(I) < 0: false
 1040: NEXT I
  I: 3
  terminated:false
@@ -508,7 +508,7 @@ TIMES
 1030: IF X(I) < 0 THEN 1100
  I: 4
  X(4): -1
- X(I)<0: true
+ X(I) < 0: true
 1100: LET L = I - 1
  I: 4
  L = 3
@@ -558,7 +558,7 @@ TIMES
 2010: IF C(L) >= 100 THEN 2200
  L: 3
  C(3): 987
- C(L)>=100: true
+ C(L) >= 100: true
 2200: LET L9 = L
  L: 3
  L9 = 3
@@ -635,7 +635,7 @@ TIMES
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 3
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -709,7 +709,7 @@ TIMES
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 2
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -783,7 +783,7 @@ TIMES
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 1
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -857,7 +857,7 @@ TIMES
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 0
- I=0: true
+ I = 0: true
 2400: PRINT
 
 2405: PRINT
@@ -906,7 +906,7 @@ TIMES
 EQUALS
 280: PRINT
 
-290:
+290: 
 300: REM C = A * B
 310: LET L = L1 + L2
  L1: 3
@@ -1417,7 +1417,7 @@ EQUALS
  terminated:true
 3080: IF M = 0 THEN 3100
  M: 121
- M=0: false
+ M = 0: false
 3090: LET L = L + 1
  L: 6
  L = 7
@@ -1427,7 +1427,7 @@ EQUALS
 2010: IF C(L) >= 100 THEN 2200
  L: 7
  C(7): 121
- C(L)>=100: true
+ C(L) >= 100: true
 2200: LET L9 = L
  L: 7
  L9 = 7
@@ -1504,7 +1504,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 7
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -1578,7 +1578,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 6
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -1652,7 +1652,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 5
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -1726,7 +1726,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 4
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -1800,7 +1800,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 3
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -1874,7 +1874,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 2
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -1948,7 +1948,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 1
- I=0: false
+ I = 0: false
 2310: PRINT ",   ";
 ,   
 2320: NEXT I
@@ -2022,7 +2022,7 @@ EQUALS
  terminated:true
 2300: IF I = 0 THEN 2400
  I: 0
- I=0: true
+ I = 0: true
 2400: PRINT
 
 2405: PRINT

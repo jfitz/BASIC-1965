@@ -33,7 +33,7 @@ YEAR            VALUE
  A = 9166.67
 140: IF A < 0 THEN 160
  A: 9166.67
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 1
@@ -43,7 +43,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 1
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 1
  X = 2
@@ -53,7 +53,7 @@ YEAR            VALUE
  A = 8333.34
 140: IF A < 0 THEN 160
  A: 8333.34
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 2
@@ -63,7 +63,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 2
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 2
  X = 3
@@ -73,7 +73,7 @@ YEAR            VALUE
  A = 7500.01
 140: IF A < 0 THEN 160
  A: 7500.01
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 3
@@ -83,7 +83,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 3
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 3
  X = 4
@@ -93,7 +93,7 @@ YEAR            VALUE
  A = 6666.68
 140: IF A < 0 THEN 160
  A: 6666.68
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 4
@@ -103,7 +103,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 4
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 4
  X = 5
@@ -113,7 +113,7 @@ YEAR            VALUE
  A = 5833.35
 140: IF A < 0 THEN 160
  A: 5833.35
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 5
@@ -123,7 +123,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 5
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 5
  X = 6
@@ -133,7 +133,7 @@ YEAR            VALUE
  A = 5000.02
 140: IF A < 0 THEN 160
  A: 5000.02
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 6
@@ -143,7 +143,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 6
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 6
  X = 7
@@ -153,7 +153,7 @@ YEAR            VALUE
  A = 4166.69
 140: IF A < 0 THEN 160
  A: 4166.69
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 7
@@ -163,7 +163,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 7
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 7
  X = 8
@@ -173,7 +173,7 @@ YEAR            VALUE
  A = 3333.36
 140: IF A < 0 THEN 160
  A: 3333.36
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 8
@@ -183,7 +183,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 8
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 8
  X = 9
@@ -193,7 +193,7 @@ YEAR            VALUE
  A = 2500.03
 140: IF A < 0 THEN 160
  A: 2500.03
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 9
@@ -203,7 +203,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 9
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 9
  X = 10
@@ -213,7 +213,7 @@ YEAR            VALUE
  A = 1666.7
 140: IF A < 0 THEN 160
  A: 1666.7
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 10
@@ -223,7 +223,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 10
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 10
  X = 11
@@ -233,7 +233,7 @@ YEAR            VALUE
  A = 833.367
 140: IF A < 0 THEN 160
  A: 833.367
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 11
@@ -243,7 +243,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 11
  B: 12
- X<B: true
+ X < B: true
 120: LET X = X + 1
  X: 11
  X = 12
@@ -253,7 +253,7 @@ YEAR            VALUE
  A = 0.034
 140: IF A < 0 THEN 160
  A: 0.034
- A<0: false
+ A < 0: false
 150: GOTO 170
 170: PRINT X, A
  X: 12
@@ -263,7 +263,7 @@ YEAR            VALUE
 180: IF X < B THEN 120
  X: 12
  B: 12
- X<B: false
+ X < B: false
 190: PRINT "********************"
 ********************
 200: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
@@ -273,7 +273,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 0
 220: IF L = 1 THEN 240
  L: 0
- L=1: false
+ L = 1: false
 230: STOP
 STOP in line 230
 

@@ -22,7 +22,7 @@ ENTER PARAMETERS A,B,C,D,E,F
  M = -670
 80: IF M = 0 THEN 140
  M: -670
- M=0: false
+ M = 0: false
 90: LET X = ((E * D) - (B * F)) / M
  E: 56
  D: 23
@@ -53,7 +53,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 1
 180: IF L = 1 THEN 200
  L: 1
- L=1: true
+ L = 1: true
 200: PRINT
 
 210: GOTO 30
@@ -79,7 +79,7 @@ ENTER PARAMETERS A,B,C,D,E,F
  M = -7870
 80: IF M = 0 THEN 140
  M: -7870
- M=0: false
+ M = 0: false
 90: LET X = ((E * D) - (B * F)) / M
  E: 2
  D: 2
@@ -110,7 +110,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
  L = 0
 180: IF L = 1 THEN 200
  L: 0
- L=1: false
+ L = 1: false
 190: STOP
 STOP in line 190
 

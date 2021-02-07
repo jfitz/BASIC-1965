@@ -381,7 +381,7 @@
  X = 21
 2030: IF X < 0 THEN 2010
  X: 21
- X<0: false
+ X < 0: false
 2040: LET L(I) = -1
  I: 21
  L(21) = -1
@@ -397,16 +397,16 @@
  V = 8
 3030: IF S > 0 THEN 3060
  S: 1
- S>0: true
+ S > 0: true
 3060: IF S > 1 THEN 3090
  S: 1
- S>1: false
+ S > 1: false
 3070: PRINT "DIAMOND  ";
 DIAMOND  
 3080: GOTO 3500
 3500: IF V > 8 THEN 3530
  V: 8
- V>8: false
+ V > 8: false
 3510: PRINT V + 2
  V: 8
  10
@@ -425,7 +425,7 @@ DIAMOND
  X = 37
 2030: IF X < 0 THEN 2010
  X: 37
- X<0: false
+ X < 0: false
 2040: LET L(I) = -1
  I: 37
  L(37) = -1
@@ -441,28 +441,28 @@ DIAMOND
  V = 11
 3030: IF S > 0 THEN 3060
  S: 2
- S>0: true
+ S > 0: true
 3060: IF S > 1 THEN 3090
  S: 2
- S>1: true
+ S > 1: true
 3090: IF S > 2 THEN 3120
  S: 2
- S>2: false
+ S > 2: false
 3100: PRINT "HEART  ";
 HEART  
 3110: GOTO 3500
 3500: IF V > 8 THEN 3530
  V: 11
- V>8: true
+ V > 8: true
 3530: IF V > 9 THEN 3560
  V: 11
- V>9: true
+ V > 9: true
 3560: IF V > 10 THEN 3590
  V: 11
- V>10: true
+ V > 10: true
 3590: IF V > 11 THEN 3620
  V: 11
- V>11: false
+ V > 11: false
 3600: PRINT "KING"
 KING
 3610: RETURN
@@ -480,7 +480,7 @@ KING
  X = 0
 2030: IF X < 0 THEN 2010
  X: 0
- X<0: false
+ X < 0: false
 2040: LET L(I) = -1
  I: 0
  L(0) = -1
@@ -496,13 +496,13 @@ KING
  V = 0
 3030: IF S > 0 THEN 3060
  S: 0
- S>0: false
+ S > 0: false
 3040: PRINT "CLUB  ";
 CLUB  
 3050: GOTO 3500
 3500: IF V > 8 THEN 3530
  V: 0
- V>8: false
+ V > 8: false
 3510: PRINT V + 2
  V: 0
  2
@@ -521,7 +521,7 @@ CLUB
  X = 15
 2030: IF X < 0 THEN 2010
  X: 15
- X<0: false
+ X < 0: false
 2040: LET L(I) = -1
  I: 15
  L(15) = -1
@@ -537,16 +537,16 @@ CLUB
  V = 2
 3030: IF S > 0 THEN 3060
  S: 1
- S>0: true
+ S > 0: true
 3060: IF S > 1 THEN 3090
  S: 1
- S>1: false
+ S > 1: false
 3070: PRINT "DIAMOND  ";
 DIAMOND  
 3080: GOTO 3500
 3500: IF V > 8 THEN 3530
  V: 2
- V>8: false
+ V > 8: false
 3510: PRINT V + 2
  V: 2
  4
@@ -565,7 +565,7 @@ DIAMOND
  X = 7
 2030: IF X < 0 THEN 2010
  X: 7
- X<0: false
+ X < 0: false
 2040: LET L(I) = -1
  I: 7
  L(7) = -1
@@ -581,13 +581,13 @@ DIAMOND
  V = 7
 3030: IF S > 0 THEN 3060
  S: 0
- S>0: false
+ S > 0: false
 3040: PRINT "CLUB  ";
 CLUB  
 3050: GOTO 3500
 3500: IF V > 8 THEN 3530
  V: 7
- V>8: false
+ V > 8: false
 3510: PRINT V + 2
  V: 7
  9

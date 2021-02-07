@@ -1221,7 +1221,7 @@ class AbstractExpressionSet
   end
 
   def to_s
-    @tokens.map(&:to_s).join
+    AbstractToken.pretty_tokens([], @tokens)
   end
 
   def dump

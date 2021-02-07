@@ -1,5 +1,5 @@
 10: DEF FNF(X, Y) = SQR(X * X + Y * Y)
-20:
+20: 
 100: READ X0, X1, Y0, H
  X0 = 0
  X1 = 1
@@ -17,14 +17,14 @@
 140: LET Y = Y0
  Y0: 1
  Y = 1
-150:
+150: 
 160: FOR X = X0 TO X1 - H STEP H
  X0: 0
  H: 0.1
  X1: 1
  X = 0
  X0 = 0
- X1-H = 0.9
+ X1 - H = 0.9
  H = 0.1
  terminated:false
 170: LET D1 = FNF(X, Y)
@@ -426,7 +426,7 @@
 230: NEXT X
  X: 0.9
  terminated:true
-240:
+240: 
 900: DATA 0, 1, 1
 910: DATA 0.1
 999: END

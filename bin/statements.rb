@@ -219,8 +219,7 @@ class AbstractStatement
   end
 
   def pretty
-    list = [AbstractToken.pretty_tokens(@keywords, @tokens)]
-    list.join(' ')
+    AbstractToken.pretty_tokens(@keywords, @tokens)
   end
 
   def dump
@@ -280,7 +279,7 @@ class AbstractStatement
 
   def print_trace_info(trace_out, current_line_number)
     trace_out.newline_when_needed
-    trace_out.print_out current_line_number.to_s + ':' + pretty
+    trace_out.print_out current_line_number.to_s + ': ' + pretty
     trace_out.newline
   end
 
@@ -320,6 +319,8 @@ class AbstractStatement
 
   def profile(show_timing)
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
+    text = ' ' + text unless text.empty?
+
     if show_timing
       timing = @profile_time.round(4).to_s
       ' (' + timing + '/' + @profile_count.to_s + ')' + text
