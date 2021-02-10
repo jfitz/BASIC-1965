@@ -2,6 +2,7 @@
 module Reader
   def ascii_printables(text)
     ascii_text = ''
+
     text.each_char do |c|
       ascii_text += c if c >= ' ' && c <= '~'
     end
@@ -270,6 +271,9 @@ class FileHandler
     @mode = nil
     @file = nil
     @data_store = []
+    @record = ''
+    @records = []
+    @rec_number = -1
   end
 
   include Reader
@@ -279,9 +283,13 @@ class FileHandler
     if @mode.nil?
       case mode
       when :print
-        @file = File.new(@file_name, 'wt')
+        @record = ''
+        @records = []
+        @rec_number = 0
       when :read
-        @file = File.new(@file_name, 'rt')
+        @record = ''
+        @records = read_file(@file_name)
+        @rec_number = 0
       else
         raise BASICRuntimeError.new(:te_mode_inv)
       end
@@ -293,6 +301,18 @@ class FileHandler
   end
 
   def close
+    if @mode == :memory || @mode == :print
+      unless @record.empty?
+        @records << '' while @records.size <= @rec_number
+        @records[@rec_number] = @record
+        @record = ''
+      end
+      
+      write_file(@file_name, @records)
+      @records = []
+      @rec_number = -1
+    end
+
     @file.close unless @file.nil?
   end
 
@@ -301,66 +321,76 @@ class FileHandler
   end
 
   def read_line
-    input_text = @file.gets
+    raise BASICRuntimeError.new(:te_eof) if @rec_number >= @records.size
 
-    raise BASICRuntimeError.new(:te_eof) if input_text.nil?
-
-    input_text = input_text.chomp
+    input_text = @records[@rec_number]
+    @rec_number += 1
     ascii_printables(input_text)
   end
 
   def print_item(text)
     set_mode(:print)
-    @file.print text
+
+    @record += text
   end
 
   def last_was_numeric
     set_mode(:print)
+
     # for a file, this function does nothing
   end
 
   def newline
     set_mode(:print)
-    @file.puts
+
+    @records << '' while @records.size <= @rec_number
+    @records[@rec_number] = @record
+    @record = ''
+    @rec_number += 1
   end
 
   def implied_newline
     set_mode(:print)
+
     # for a file, this function does nothing
   end
 
   def tab
     set_mode(:print)
-    @file.putc ' '
+
+    @record += ' '
   end
 
   def semicolon
     set_mode(:print)
-    @file.putc ' '
+
+    @record += ' '
   end
 
   def implied
     set_mode(:print)
-    @file.putc ' '
+
+    @record += ' '
   end
 
   def read
     set_mode(:read)
     tokenbuilders = make_tokenbuilders
     tokenizer = Tokenizer.new(tokenbuilders, InvalidTokenBuilder.new)
-    @data_store = refill(@data_store, @file, tokenizer)
+    @data_store = refill(@data_store, tokenizer)
     @data_store.shift
   end
 
   private
 
-  def refill(data_store, file, tokenizer)
+  def refill(data_store, tokenizer)
     while data_store.empty?
-      line = file.gets
+      raise BASICRuntimeError.new(:te_eof) if @rec_number >= @records.size
 
-      raise BASICRuntimeError.new(:te_eof) if line.nil?
+      line = @records[@rec_number]
+      @rec_number += 1
 
-      line = line.chomp
+      line = line.strip
 
       tokens = tokenizer.tokenize(line)
       tokens.delete_if { |token| token.separator? || token.whitespace? }
@@ -375,11 +405,27 @@ class FileHandler
   def read_convert(tokens)
     converted = []
 
-    tokens.each do |token|
-      t = NumericConstant.new(token)
-      converted << t
-    end
+    tokens.each { |token| converted << NumericConstant.new(token) }
 
     converted
+  end
+
+  def read_file(file_name)
+    lines = []
+    file = File.open(file_name, 'rt')
+    file.each_line { |line| lines << line.strip }
+    file.close
+  rescue Exception => e
+    raise BASICRuntimeError.new(:te_file_no_read, file_name)
+  else
+    lines
+  end
+
+  def write_file(file_name, lines)
+    file = File.open(file_name, 'wt')
+    lines.each { |line| file.puts(line) }
+    file.close
+  rescue Exception => e
+    raise BASICRuntimeError.new(:te_file_no_write, file_name)
   end
 end
