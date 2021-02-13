@@ -6,56 +6,56 @@
  TextConstant:"ENTER VALUES FOR A, B AND C"
  CarriageControl:NL
 40 INPUT A,B,C
- Variable:A
- Variable:B
- Variable:C
+ Variable:A scalar
+ Variable:B scalar
+ Variable:C scalar
 50 LET D = ((B^2) - (4*A*C))/(4*A^2)
- Variable:D
- Variable:B
+ Variable:D scalar
+ Variable:B scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
+ BinaryOperatorPower:^ numeric scalar
  NumericConstant:4
- Variable:A
- BinaryOperatorMultiply:* numeric
- Variable:C
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  NumericConstant:4
- Variable:A
+ Variable:A scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 60 IF D > = 0 THEN 130
- Variable:D
+ Variable:D scalar
  NumericConstant:0
- BinaryOperatorGreaterEqual:>= boolean
+ BinaryOperatorGreaterEqual:>= boolean scalar
 70 LET X = -B/(2*A)
- Variable:X
- Variable:B
- UnaryOperatorMinus:- numeric
+ Variable:X scalar
+ Variable:B scalar
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:2
- Variable:A
- BinaryOperatorMultiply:* numeric
- BinaryOperatorDivide:/ numeric
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
- Variable:Y
+ Variable:Y scalar
  NumericConstant:4
- Variable:A
- BinaryOperatorMultiply:* numeric
- Variable:C
- BinaryOperatorMultiply:* numeric
- Variable:B
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorMinus:- numeric
- FunctionSqr
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionSqr scalar
  NumericConstant:2
- Variable:A
- BinaryOperatorMultiply:* numeric
- BinaryOperatorDivide:/ numeric
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 90 PRINT "ROOTS ARE COMPLEX"
  TextConstant:"ROOTS ARE COMPLEX"
@@ -63,51 +63,51 @@
 100 PRINT "REAL PART = ";X
  TextConstant:"REAL PART = "
  CarriageControl:;
- Variable:X
+ Variable:X scalar
  CarriageControl:NL
 110 PRINT "IMAGINARY PART = ";Y
  TextConstant:"IMAGINARY PART = "
  CarriageControl:;
- Variable:Y
+ Variable:Y scalar
  CarriageControl:NL
 120 GOTO 220
  LineNumber:220
 130 LET E = - B/(2*A)
- Variable:E
- Variable:B
- UnaryOperatorMinus:- numeric
+ Variable:E scalar
+ Variable:B scalar
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:2
- Variable:A
- BinaryOperatorMultiply:* numeric
- BinaryOperatorDivide:/ numeric
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 140 IF E > = 0 THEN 170
- Variable:E
+ Variable:E scalar
  NumericConstant:0
- BinaryOperatorGreaterEqual:>= boolean
+ BinaryOperatorGreaterEqual:>= boolean scalar
 150 LET Z = E - SQR(D)
- Variable:Z
- Variable:E
- Variable:D
- FunctionSqr
- BinaryOperatorMinus:- numeric
+ Variable:Z scalar
+ Variable:E scalar
+ Variable:D scalar
+ FunctionSqr scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 160 GOTO 180
  LineNumber:180
 170 LET Z = E + SQR(D)
- Variable:Z
- Variable:E
- Variable:D
- FunctionSqr
- BinaryOperatorPlus:+ numeric
+ Variable:Z scalar
+ Variable:E scalar
+ Variable:D scalar
+ FunctionSqr scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 180 LET W = C/(Z*A)
- Variable:W
- Variable:C
- Variable:Z
- Variable:A
- BinaryOperatorMultiply:* numeric
- BinaryOperatorDivide:/ numeric
+ Variable:W scalar
+ Variable:C scalar
+ Variable:Z scalar
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 190 PRINT "ROOTS ARE REAL"
  TextConstant:"ROOTS ARE REAL"
@@ -115,12 +115,12 @@
 200 PRINT "1ST ROOT = ";Z
  TextConstant:"1ST ROOT = "
  CarriageControl:;
- Variable:Z
+ Variable:Z scalar
  CarriageControl:NL
 210 PRINT "2ND ROOT = ";W
  TextConstant:"2ND ROOT = "
  CarriageControl:;
- Variable:W
+ Variable:W scalar
  CarriageControl:NL
 220 PRINT "********************"
  TextConstant:"********************"
@@ -129,11 +129,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 240 INPUT L
- Variable:L
+ Variable:L scalar
 250 IF L = 1 THEN 270
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 260 STOP
  
 270 PRINT

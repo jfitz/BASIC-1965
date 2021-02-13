@@ -1,41 +1,41 @@
 100 READ M, C
- Variable:M
- Variable:C
+ Variable:M scalar
+ Variable:C scalar
 110 LET M1 = M + C/100
- Variable:M1
- Variable:M
- Variable:C
+ Variable:M1 scalar
+ Variable:M scalar
+ Variable:C scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 120 LET I = M1 * 39.37
- Variable:I
- Variable:M1
+ Variable:I scalar
+ Variable:M1 scalar
  NumericConstant:39.37
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 130 LET F = INT(I/12)
- Variable:F
- Variable:I
+ Variable:F scalar
+ Variable:I scalar
  NumericConstant:12
- BinaryOperatorDivide:/ numeric
- FunctionInt
+ BinaryOperatorDivide:/ numeric scalar
+ FunctionInt scalar
  AssignmentOperator:=
 140 LET I = I - 12*F
- Variable:I
- Variable:I
+ Variable:I scalar
+ Variable:I scalar
  NumericConstant:12
- Variable:F
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 150 PRINT M, "METERS", C, "CENTIMETERS"
- Variable:M
+ Variable:M scalar
  CarriageControl:,
  TextConstant:"METERS"
  CarriageControl:,
- Variable:C
+ Variable:C scalar
  CarriageControl:,
  TextConstant:"CENTIMETERS"
  CarriageControl:NL
@@ -43,16 +43,16 @@
  TextConstant:"CONVERTS TO"
  CarriageControl:NL
 170 IF F = 0 THEN 190
- Variable:F
+ Variable:F scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 180 PRINT F, "FEET",
- Variable:F
+ Variable:F scalar
  CarriageControl:,
  TextConstant:"FEET"
  CarriageControl:,
 190 PRINT I, "INCHES"
- Variable:I
+ Variable:I scalar
  CarriageControl:,
  TextConstant:"INCHES"
  CarriageControl:NL

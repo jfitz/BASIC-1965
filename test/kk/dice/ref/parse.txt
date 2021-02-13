@@ -1,39 +1,39 @@
 10 FOR G = 1 TO 10
- control: Variable:G
+ control: Variable:G scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 20    GOSUB 500
  LineNumber:500
 30    IF D < 4 THEN 300
- Variable:D
+ Variable:D scalar
  NumericConstant:4
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 40    IF D = 12 THEN 300
- Variable:D
+ Variable:D scalar
  NumericConstant:12
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 50    IF D = 7 THEN 400
- Variable:D
+ Variable:D scalar
  NumericConstant:7
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 60    IF D = 11 THEN 400
- Variable:D
+ Variable:D scalar
  NumericConstant:11
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 70    LET D9 = D
- Variable:D9
- Variable:D
+ Variable:D9 scalar
+ Variable:D scalar
  AssignmentOperator:=
 100   GOSUB 500
  LineNumber:500
 110   IF D = D9 THEN 200
- Variable:D
- Variable:D9
- BinaryOperatorEqual:= boolean
+ Variable:D scalar
+ Variable:D9 scalar
+ BinaryOperatorEqual:= boolean scalar
 120   IF D = 7 THEN 250
- Variable:D
+ Variable:D scalar
  NumericConstant:7
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 130   GOTO 100
  LineNumber:100
 200   PRINT "YOU WIN -- BY MAKING YOUR POINT"
@@ -55,44 +55,44 @@
  TextConstant:"YOU WIN ON FIRST ROLL"
  CarriageControl:NL
 410 NEXT G
- Variable:G
+ Variable:G scalar
 420 STOP
  
 499
 500 REM ROLL DICE
  Remark:ROLL DICE
 510 LET D1 = INT(6*RND(1)+1)
- Variable:D1
+ Variable:D1 scalar
  NumericConstant:6
  NumericConstant:1
- FunctionRnd
- BinaryOperatorMultiply:* numeric
+ FunctionRnd scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
- FunctionInt
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionInt scalar
  AssignmentOperator:=
 520 LET D2 = INT(6*RND(1)+1)
- Variable:D2
+ Variable:D2 scalar
  NumericConstant:6
  NumericConstant:1
- FunctionRnd
- BinaryOperatorMultiply:* numeric
+ FunctionRnd scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
- FunctionInt
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionInt scalar
  AssignmentOperator:=
 525 PRINT "YOUR ROLL IS "; D1;D2
  TextConstant:"YOUR ROLL IS "
  CarriageControl:;
- Variable:D1
+ Variable:D1 scalar
  CarriageControl:;
- Variable:D2
+ Variable:D2 scalar
  CarriageControl:NL
 530 LET D = D1 + D2
- Variable:D
- Variable:D1
- Variable:D2
- BinaryOperatorPlus:+ numeric
+ Variable:D scalar
+ Variable:D1 scalar
+ Variable:D2 scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 540 RETURN
  

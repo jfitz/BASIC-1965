@@ -1,72 +1,72 @@
 100 DIM A(2,3), B(3,4)
  NumericConstant:2
  NumericConstant:3
- Declaration:A
+ Declaration:A scalar
  NumericConstant:3
  NumericConstant:4
- Declaration:B
+ Declaration:B scalar
 110 MAT READ A, B
- Variable:A
- Variable:B
+ Variable:A matrix
+ Variable:B matrix
 120 MAT P = A*B
- Variable:P
- Variable:A
- Variable:B
- BinaryOperatorMultiply:* numeric
+ Variable:P matrix
+ Variable:A matrix
+ Variable:B matrix
+ BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 130 MAT T = TRN(A)
- Variable:T
- Variable:A
- FunctionTrn
+ Variable:T matrix
+ Variable:A matrix
+ FunctionTrn matrix
  AssignmentOperator:=
 140
 200 PRINT "FIRST MATRIX"
  TextConstant:"FIRST MATRIX"
  CarriageControl:NL
 210 MAT PRINT A
- Variable:A
+ Variable:A matrix
  CarriageControl:NL
 220 PRINT "SECOND MATRIX"
  TextConstant:"SECOND MATRIX"
  CarriageControl:NL
 230 MAT PRINT B
- Variable:B
+ Variable:B matrix
  CarriageControl:NL
 240 PRINT "PRODUCT"
  TextConstant:"PRODUCT"
  CarriageControl:NL
 250 MAT PRINT P
- Variable:P
+ Variable:P matrix
  CarriageControl:NL
 260 PRINT "TRANSPOSE OF FIRST MATRIX"
  TextConstant:"TRANSPOSE OF FIRST MATRIX"
  CarriageControl:NL
 270 MAT PRINT T
- Variable:T
+ Variable:T matrix
  CarriageControl:NL
 280
 900 DATA 1, 4, -2, 2, -1, 3
  NumericConstant:1
  NumericConstant:4
  NumericConstant:2
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:2
  NumericConstant:1
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:3
 910 DATA 1, -3, 4, -1,6, -1, 3, -5, 7, 0, 2, 0
  NumericConstant:1
  NumericConstant:3
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:4
  NumericConstant:1
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:6
  NumericConstant:1
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:3
  NumericConstant:5
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:7
  NumericConstant:0
  NumericConstant:2

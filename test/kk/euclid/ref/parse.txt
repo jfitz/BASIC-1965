@@ -6,42 +6,42 @@
  TextConstant:"G.C.D."
  CarriageControl:NL
 20 READ A,B
- Variable:A
- Variable:B
+ Variable:A scalar
+ Variable:B scalar
 30 PRINT A,B,
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:,
 40 LET Q = INT(A/B)
- Variable:Q
- Variable:A
- Variable:B
- BinaryOperatorDivide:/ numeric
- FunctionInt
+ Variable:Q scalar
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorDivide:/ numeric scalar
+ FunctionInt scalar
  AssignmentOperator:=
 45 LET R = A - Q*B
- Variable:R
- Variable:A
- Variable:Q
- Variable:B
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
+ Variable:R scalar
+ Variable:A scalar
+ Variable:Q scalar
+ Variable:B scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 50 LET A = B
- Variable:A
- Variable:B
+ Variable:A scalar
+ Variable:B scalar
  AssignmentOperator:=
 55 LET B = R
- Variable:B
- Variable:R
+ Variable:B scalar
+ Variable:R scalar
  AssignmentOperator:=
 60 IF R > 0 THEN 40
- Variable:R
+ Variable:R scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 70 PRINT A
- Variable:A
+ Variable:A scalar
  CarriageControl:NL
 80 GOTO 20
  LineNumber:20

@@ -1,74 +1,74 @@
 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
  Remark:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
 20 READ A, A0
- Variable:A
- Variable:A0
+ Variable:A scalar
+ Variable:A0 scalar
 30 LET B = A + A0
- Variable:B
- Variable:A
- Variable:A0
- BinaryOperatorPlus:+ numeric
+ Variable:B scalar
+ Variable:A scalar
+ Variable:A0 scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
  CarriageControl:;
- Variable:A
+ Variable:A scalar
  CarriageControl:;
  TextConstant:"TO"
  CarriageControl:;
- Variable:B
+ Variable:B scalar
  CarriageControl:NL
 50 PRINT
  CarriageControl:NL
 100 FOR N = A TO B
- control: Variable:N
- start:   ["Variable:A"]
- end:     ["Variable:B"]
+ control: Variable:N scalar
+ start:   ["Variable:A scalar"]
+ end:     ["Variable:B scalar"]
 110 LET N0 = N
- Variable:N0
- Variable:N
+ Variable:N0 scalar
+ Variable:N scalar
  AssignmentOperator:=
 120 GOSUB 400
  LineNumber:400
 130 NEXT N
- Variable:N
+ Variable:N scalar
 140 STOP
  
 400 REM PRINT INFO FOR ONE NUMBER
  Remark:PRINT INFO FOR ONE NUMBER
 410 PRINT N0;":";
- Variable:N0
+ Variable:N0 scalar
  CarriageControl:;
  TextConstant:":"
  CarriageControl:;
 420 IF N0 = 1 THEN 490
- Variable:N0
+ Variable:N0 scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 430 IF MOD(N0,2) = 0 THEN 460
- Variable:N0
+ Variable:N0 scalar
  NumericConstant:2
- FunctionMod
+ FunctionMod scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 440 LET N0 = 3*N0 + 1
- Variable:N0
+ Variable:N0 scalar
  NumericConstant:3
- Variable:N0
- BinaryOperatorMultiply:* numeric
+ Variable:N0 scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 450 GOTO 470
  LineNumber:470
 460 LET N0 = N0/2
- Variable:N0
- Variable:N0
+ Variable:N0 scalar
+ Variable:N0 scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 470 PRINT N0;
- Variable:N0
+ Variable:N0 scalar
  CarriageControl:;
 480 GOTO 420
  LineNumber:420

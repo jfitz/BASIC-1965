@@ -6,26 +6,26 @@
  TextConstant:"FIRST TERM = "
  CarriageControl:;
 40 INPUT A
- Variable:A
+ Variable:A scalar
 50 PRINT "RATIO OF TERMS = ";
  TextConstant:"RATIO OF TERMS = "
  CarriageControl:;
 60 INPUT R
- Variable:R
+ Variable:R scalar
 70 PRINT "NUMBER OF TERMS = ";
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:;
 80 INPUT N
- Variable:N
+ Variable:N scalar
 90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 100 INPUT C
- Variable:C
+ Variable:C scalar
 110 IF C = 1 THEN 130
- Variable:C
+ Variable:C scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 120 GOTO 160
  LineNumber:160
 130 PRINT
@@ -39,50 +39,50 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 160 LET J = 0
- Variable:J
+ Variable:J scalar
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 0 TO N - 1
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
+ end:     ["Variable:N scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 180 LET K = I + 1
- Variable:K
- Variable:I
+ Variable:K scalar
+ Variable:I scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 190 LET L = A*(R^I)
- Variable:L
- Variable:A
- Variable:R
- Variable:I
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
+ Variable:L scalar
+ Variable:A scalar
+ Variable:R scalar
+ Variable:I scalar
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 200 LET J = J + L
- Variable:J
- Variable:J
- Variable:L
- BinaryOperatorPlus:+ numeric
+ Variable:J scalar
+ Variable:J scalar
+ Variable:L scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 210 IF C = 1 THEN 230
- Variable:C
+ Variable:C scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 220 GOTO 240
  LineNumber:240
 230 PRINT K,L
- Variable:K
+ Variable:K scalar
  CarriageControl:,
- Variable:L
+ Variable:L scalar
  CarriageControl:NL
 240 NEXT I
- Variable:I
+ Variable:I scalar
 250 PRINT "SUM = ";J
  TextConstant:"SUM = "
  CarriageControl:;
- Variable:J
+ Variable:J scalar
  CarriageControl:NL
 260 PRINT
  CarriageControl:NL
@@ -90,11 +90,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT X
- Variable:X
+ Variable:X scalar
 290 IF X = 1 THEN 310
- Variable:X
+ Variable:X scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 300 STOP
  
 310 PRINT

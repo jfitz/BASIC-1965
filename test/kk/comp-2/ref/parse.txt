@@ -4,79 +4,79 @@
  TextConstant:"A, B, P, R, Y, T"
  CarriageControl:;
 20 INPUT A, B, P, R, Y, T
- Variable:A
- Variable:B
- Variable:P
- Variable:R
- Variable:Y
- Variable:T
+ Variable:A scalar
+ Variable:B scalar
+ Variable:P scalar
+ Variable:R scalar
+ Variable:Y scalar
+ Variable:T scalar
 21 IF A < 0 THEN 800
- Variable:A
+ Variable:A scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 22 IF B < 0 THEN 800
- Variable:B
+ Variable:B scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 23 IF R <= 0 THEN 800
- Variable:R
+ Variable:R scalar
  NumericConstant:0
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 24 IF Y <= 0 THEN 800
- Variable:Y
+ Variable:Y scalar
  NumericConstant:0
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 25 IF T <= 0 THEN 800
- Variable:T
+ Variable:T scalar
  NumericConstant:0
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 26 IF T = 999 THEN 9999
- Variable:T
+ Variable:T scalar
  NumericConstant:999
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 30 IF A = 999 THEN 100
- Variable:A
+ Variable:A scalar
  NumericConstant:999
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 40 IF B = 999 THEN 200
- Variable:B
+ Variable:B scalar
  NumericConstant:999
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 50 IF P = 999 THEN 300
- Variable:P
+ Variable:P scalar
  NumericConstant:999
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 60 IF Y = 999 THEN 400
- Variable:Y
+ Variable:Y scalar
  NumericConstant:999
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 70 IF R = 999 THEN 500
- Variable:R
+ Variable:R scalar
  NumericConstant:999
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 80
 100 REM FIND ORIGINAL AMOUNT
  Remark:FIND ORIGINAL AMOUNT
 110 GOSUB 1000
  LineNumber:1000
 120 LET A = (B+P1)/R2 - P1
- Variable:A
- Variable:B
- Variable:P1
- BinaryOperatorPlus:+ numeric
- Variable:R2
- BinaryOperatorDivide:/ numeric
- Variable:P1
- BinaryOperatorMinus:- numeric
+ Variable:A scalar
+ Variable:B scalar
+ Variable:P1 scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:R2 scalar
+ BinaryOperatorDivide:/ numeric scalar
+ Variable:P1 scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 125 IF A < 0 THEN 850
- Variable:A
+ Variable:A scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 130 PRINT "ORIGINAL AMOUNT = $" A
  TextConstant:"ORIGINAL AMOUNT = $"
  CarriageControl:
- Variable:A
+ Variable:A scalar
  CarriageControl:NL
 140 GOTO 5
  LineNumber:5
@@ -86,23 +86,23 @@
 210 GOSUB 1000
  LineNumber:1000
 220 LET B = (A+P1)*R2 - P1
- Variable:B
- Variable:A
- Variable:P1
- BinaryOperatorPlus:+ numeric
- Variable:R2
- BinaryOperatorMultiply:* numeric
- Variable:P1
- BinaryOperatorMinus:- numeric
+ Variable:B scalar
+ Variable:A scalar
+ Variable:P1 scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:R2 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:P1 scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 225 IF B < 0 THEN 850
- Variable:B
+ Variable:B scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 230 PRINT "FINAL AMOUNT = $" B
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
- Variable:B
+ Variable:B scalar
  CarriageControl:NL
 240 GOTO 5
  LineNumber:5
@@ -112,23 +112,23 @@
 310 GOSUB 1000
  LineNumber:1000
 320 LET P = R1*(B - A*R2)/(R2-1)
- Variable:P
- Variable:R1
- Variable:B
- Variable:A
- Variable:R2
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- BinaryOperatorMultiply:* numeric
- Variable:R2
+ Variable:P scalar
+ Variable:R1 scalar
+ Variable:B scalar
+ Variable:A scalar
+ Variable:R2 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:R2 scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 330 PRINT "PAYMENT = $" P
  TextConstant:"PAYMENT = $"
  CarriageControl:
- Variable:P
+ Variable:P scalar
  CarriageControl:NL
 340 GOTO 5
  LineNumber:5
@@ -138,35 +138,35 @@
 410 GOSUB 1000
  LineNumber:1000
 415 LET Q = (B+P1)/(A+P1)
- Variable:Q
- Variable:B
- Variable:P1
- BinaryOperatorPlus:+ numeric
- Variable:A
- Variable:P1
- BinaryOperatorPlus:+ numeric
- BinaryOperatorDivide:/ numeric
+ Variable:Q scalar
+ Variable:B scalar
+ Variable:P1 scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:A scalar
+ Variable:P1 scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 416 IF Q <= 1 THEN 850
- Variable:Q
+ Variable:Q scalar
  NumericConstant:1
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 420 LET Y = LOG(Q)/LOG(1+R1)/T
- Variable:Y
- Variable:Q
- FunctionLog
+ Variable:Y scalar
+ Variable:Q scalar
+ FunctionLog scalar
  NumericConstant:1
- Variable:R1
- BinaryOperatorPlus:+ numeric
- FunctionLog
- BinaryOperatorDivide:/ numeric
- Variable:T
- BinaryOperatorDivide:/ numeric
+ Variable:R1 scalar
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionLog scalar
+ BinaryOperatorDivide:/ numeric scalar
+ Variable:T scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 430 PRINT "NUMBER OF YEARS = " Y
  TextConstant:"NUMBER OF YEARS = "
  CarriageControl:
- Variable:Y
+ Variable:Y scalar
  CarriageControl:NL
 440 GOTO 5
  LineNumber:5
@@ -174,48 +174,48 @@
 500 REM FIND ANNUAL INTEREST
  Remark:FIND ANNUAL INTEREST
 505 LET S = B - (A+Y*T*P)
- Variable:S
- Variable:B
- Variable:A
- Variable:Y
- Variable:T
- BinaryOperatorMultiply:* numeric
- Variable:P
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
- BinaryOperatorMinus:- numeric
+ Variable:S scalar
+ Variable:B scalar
+ Variable:A scalar
+ Variable:Y scalar
+ Variable:T scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:P scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 510 FOR R = 0.1 TO 100 STEP 0.1
- control: Variable:R
+ control: Variable:R scalar
  start:   ["NumericConstant:0.1"]
  end:     ["NumericConstant:100"]
  step:    ["NumericConstant:0.1"]
 520    GOSUB 1000
  LineNumber:1000
 530    LET S1 = B - ((A+P1)*R2 - P1)
- Variable:S1
- Variable:B
- Variable:A
- Variable:P1
- BinaryOperatorPlus:+ numeric
- Variable:R2
- BinaryOperatorMultiply:* numeric
- Variable:P1
- BinaryOperatorMinus:- numeric
- BinaryOperatorMinus:- numeric
+ Variable:S1 scalar
+ Variable:B scalar
+ Variable:A scalar
+ Variable:P1 scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:R2 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:P1 scalar
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 535    IF S*S1 <= 0 THEN 550
- Variable:S
- Variable:S1
- BinaryOperatorMultiply:* numeric
+ Variable:S scalar
+ Variable:S1 scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 536    LET S = S1
- Variable:S
- Variable:S1
+ Variable:S scalar
+ Variable:S1 scalar
  AssignmentOperator:=
 540 NEXT R
- Variable:R
+ Variable:R scalar
 545 PRINT "NO ANSWER FOUND"
  TextConstant:"NO ANSWER FOUND"
  CarriageControl:NL
@@ -224,13 +224,13 @@
 550 PRINT "ANNUAL INTEREST IS BETWEEN " R-0.1; "AND " R; "PERCENT"
  TextConstant:"ANNUAL INTEREST IS BETWEEN "
  CarriageControl:
- Variable:R
+ Variable:R scalar
  NumericConstant:0.1
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric scalar
  CarriageControl:;
  TextConstant:"AND "
  CarriageControl:
- Variable:R
+ Variable:R scalar
  CarriageControl:;
  TextConstant:"PERCENT"
  CarriageControl:NL
@@ -253,32 +253,32 @@
 1000 REM COMPUTE BASIC QUANTITIES
  Remark:COMPUTE BASIC QUANTITIES
 1010 LET N = Y*T
- Variable:N
- Variable:Y
- Variable:T
- BinaryOperatorMultiply:* numeric
+ Variable:N scalar
+ Variable:Y scalar
+ Variable:T scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 1020 LET R1 = R/100/T
- Variable:R1
- Variable:R
+ Variable:R1 scalar
+ Variable:R scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
- Variable:T
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
+ Variable:T scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 1030 LET P1 = P/R1
- Variable:P1
- Variable:P
- Variable:R1
- BinaryOperatorDivide:/ numeric
+ Variable:P1 scalar
+ Variable:P scalar
+ Variable:R1 scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 1040 LET R2 = (1+R1)^N
- Variable:R2
+ Variable:R2 scalar
  NumericConstant:1
- Variable:R1
- BinaryOperatorPlus:+ numeric
- Variable:N
- BinaryOperatorPower:^ numeric
+ Variable:R1 scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:N scalar
+ BinaryOperatorPower:^ numeric scalar
  AssignmentOperator:=
 1099 RETURN
  

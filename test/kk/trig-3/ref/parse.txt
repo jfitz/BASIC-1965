@@ -1,34 +1,34 @@
 100 REM ANGLE-SIDE-SIDE
  Remark:ANGLE-SIDE-SIDE
 110 LET P = 3.14159265
- Variable:P
+ Variable:P scalar
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
  UserFunctionName:FND
  VariableName:X
- Variable:X
- Variable:P
- BinaryOperatorMultiply:* numeric
+ Variable:X scalar
+ Variable:P scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X
- Variable:X
- UserFunction
- FunctionSin
+ Variable:X scalar
+ UserFunction scalar
+ FunctionSin scalar
 135 DEF FNR(X) = INT(100*X+0.5)/100
  UserFunctionName:FNR
  VariableName:X
  NumericConstant:100
- Variable:X
- BinaryOperatorMultiply:* numeric
+ Variable:X scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0.5
- BinaryOperatorPlus:+ numeric
- FunctionInt
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionInt scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -41,80 +41,80 @@
  TextConstant:"CASE 2"
  CarriageControl:NL
 150 READ B,X,Y
- Variable:B
- Variable:X
- Variable:Y
+ Variable:B scalar
+ Variable:X scalar
+ Variable:Y scalar
 160 PRINT B,X,Y,
- Variable:B
+ Variable:B scalar
  CarriageControl:,
- Variable:X
+ Variable:X scalar
  CarriageControl:,
- Variable:Y
+ Variable:Y scalar
  CarriageControl:,
 170 LET S = X*FNS(B)/Y
- Variable:S
- Variable:X
- Variable:B
- UserFunction
- BinaryOperatorMultiply:* numeric
- Variable:Y
- BinaryOperatorDivide:/ numeric
+ Variable:S scalar
+ Variable:X scalar
+ Variable:B scalar
+ UserFunction scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:Y scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 IF S > 1 THEN 290
- Variable:S
+ Variable:S scalar
  NumericConstant:1
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 190 IF FNR(S) = 1 THEN 320
- Variable:S
- UserFunction
+ Variable:S scalar
+ UserFunction scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 195
 200 REM TWO POINTS OF INTERSECTION
  Remark:TWO POINTS OF INTERSECTION
 210 LET T = S/SQR(1-S^2)
- Variable:T
- Variable:S
+ Variable:T scalar
+ Variable:S scalar
  NumericConstant:1
- Variable:S
+ Variable:S scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorMinus:- numeric
- FunctionSqr
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionSqr scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 220 LET C = ATN(T)*180/P
- Variable:C
- Variable:T
- FunctionArcTan
+ Variable:C scalar
+ Variable:T scalar
+ FunctionArcTan scalar
  NumericConstant:180
- BinaryOperatorMultiply:* numeric
- Variable:P
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:P scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 230 LET A = 180 - B - C
- Variable:A
+ Variable:A scalar
  NumericConstant:180
- Variable:B
- BinaryOperatorMinus:- numeric
- Variable:C
- BinaryOperatorMinus:- numeric
+ Variable:B scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:C scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 240 GOSUB 370
  LineNumber:370
 250 LET C = 180 - C
- Variable:C
+ Variable:C scalar
  NumericConstant:180
- Variable:C
- BinaryOperatorMinus:- numeric
+ Variable:C scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 260 LET A = 180 - B - C
- Variable:A
+ Variable:A scalar
  NumericConstant:180
- Variable:B
- BinaryOperatorMinus:- numeric
- Variable:C
- BinaryOperatorMinus:- numeric
+ Variable:B scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:C scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 270 GOSUB 370
  LineNumber:370
@@ -136,10 +136,10 @@
 320 REM ONE POINT OF INTERSECTION
  Remark:ONE POINT OF INTERSECTION
 330 LET A = 90 - B
- Variable:A
+ Variable:A scalar
  NumericConstant:90
- Variable:B
- BinaryOperatorMinus:- numeric
+ Variable:B scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 340 GOSUB 370
  LineNumber:370
@@ -152,25 +152,25 @@
 370 REM ANGLE-SIDE-ANGLE ROUTINE
  Remark:ANGLE-SIDE-ANGLE ROUTINE
 380 LET Z = X*FNS(A)/S
- Variable:Z
- Variable:X
- Variable:A
- UserFunction
- BinaryOperatorMultiply:* numeric
- Variable:S
- BinaryOperatorDivide:/ numeric
+ Variable:Z scalar
+ Variable:X scalar
+ Variable:A scalar
+ UserFunction scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:S scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 390 IF Z >= 0 THEN 420
- Variable:Z
+ Variable:Z scalar
  NumericConstant:0
- BinaryOperatorGreaterEqual:>= boolean
+ BinaryOperatorGreaterEqual:>= boolean scalar
 400 PRINT "NONE",
  TextConstant:"NONE"
  CarriageControl:,
 410 RETURN
  
 420 PRINT Z,
- Variable:Z
+ Variable:Z scalar
  CarriageControl:,
 430 RETURN
  

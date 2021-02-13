@@ -3,44 +3,44 @@
 20 DIM A(5,5)
  NumericConstant:5
  NumericConstant:5
- Declaration:A
+ Declaration:A scalar
 30 FOR I = 1 TO 5
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 40 FOR J = 1 TO 5
- control: Variable:J
+ control: Variable:J scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 50 LET A(I,J) = I+J
- Variable:I
- Variable:J
- Variable:A
- Variable:I
- Variable:J
- BinaryOperatorPlus:+ numeric
+ Variable:I scalar
+ Variable:J scalar
+ Variable:A scalar
+ Variable:I scalar
+ Variable:J scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 60 NEXT J
- Variable:J
+ Variable:J scalar
 70 NEXT I
- Variable:I
+ Variable:I scalar
 100 MAT B = A - 1
- Variable:B
- Variable:A
+ Variable:B matrix
+ Variable:A matrix
  NumericConstant:1
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric matrix
  AssignmentOperator:=
 110 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 120 MAT PRINT A
- Variable:A
+ Variable:A matrix
  CarriageControl:NL
 130 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 140 MAT PRINT B
- Variable:B
+ Variable:B matrix
  CarriageControl:NL
 999 END
  

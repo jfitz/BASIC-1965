@@ -6,80 +6,80 @@
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
- Variable:A1
- Variable:A2
- Variable:A3
+ Variable:A1 scalar
+ Variable:A2 scalar
+ Variable:A3 scalar
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
- Variable:B1
- Variable:B2
- Variable:B3
+ Variable:B1 scalar
+ Variable:B2 scalar
+ Variable:B3 scalar
 70 REM CALCULATE THE NORM OF A VECTOR
  Remark:CALCULATE THE NORM OF A VECTOR
 80 LET X = SQR((A1^2) + (A2^2) + (A3^2))
- Variable:X
- Variable:A1
+ Variable:X scalar
+ Variable:A1 scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- Variable:A2
+ BinaryOperatorPower:^ numeric scalar
+ Variable:A2 scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
- Variable:A3
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:A3 scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
- FunctionSqr
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionSqr scalar
  AssignmentOperator:=
 90 REM CALCULATE THE NORM OF B VECTOR
  Remark:CALCULATE THE NORM OF B VECTOR
 100 LET Y = SQR((B1^2) + (B2^2) + (B3^2))
- Variable:Y
- Variable:B1
+ Variable:Y scalar
+ Variable:B1 scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- Variable:B2
+ BinaryOperatorPower:^ numeric scalar
+ Variable:B2 scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
- Variable:B3
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:B3 scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
- FunctionSqr
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionSqr scalar
  AssignmentOperator:=
 110 REM CALCULATE DOT PRODUCT
  Remark:CALCULATE DOT PRODUCT
 120 LET Z = (A1*B1) + (A2*B2) + (A3*B3)
- Variable:Z
- Variable:A1
- Variable:B1
- BinaryOperatorMultiply:* numeric
- Variable:A2
- Variable:B2
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
- Variable:A3
- Variable:B3
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:Z scalar
+ Variable:A1 scalar
+ Variable:B1 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:A2 scalar
+ Variable:B2 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:A3 scalar
+ Variable:B3 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 PRINT "DOT PRODUCT = ";Z
  TextConstant:"DOT PRODUCT = "
  CarriageControl:;
- Variable:Z
+ Variable:Z scalar
  CarriageControl:NL
 140 PRINT "NORM OF 1ST VECTOR = ";X
  TextConstant:"NORM OF 1ST VECTOR = "
  CarriageControl:;
- Variable:X
+ Variable:X scalar
  CarriageControl:NL
 150 PRINT "NORM OF 2ND VECTOR = ";Y
  TextConstant:"NORM OF 2ND VECTOR = "
  CarriageControl:;
- Variable:Y
+ Variable:Y scalar
  CarriageControl:NL
 160 PRINT "********************"
  TextConstant:"********************"
@@ -88,11 +88,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- Variable:L
+ Variable:L scalar
 190 IF L = 1 THEN 210
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 200 STOP
  
 210 PRINT

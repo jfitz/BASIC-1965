@@ -3,54 +3,54 @@
 20 REM OF SAMPLES ENTERED BY THE USER
  Remark:OF SAMPLES ENTERED BY THE USER
 30 LET Z = 0
- Variable:Z
+ Variable:Z scalar
  NumericConstant:0
  AssignmentOperator:=
 40 LET N = 0
- Variable:N
+ Variable:N scalar
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "SAMPLE = ";
  TextConstant:"SAMPLE = "
  CarriageControl:;
 60 INPUT X
- Variable:X
+ Variable:X scalar
 70 IF X = 0 THEN 130
- Variable:X
+ Variable:X scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 80 LET N = N + 1
- Variable:N
- Variable:N
+ Variable:N scalar
+ Variable:N scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 90 LET Z = Z + (1/X)
- Variable:Z
- Variable:Z
+ Variable:Z scalar
+ Variable:Z scalar
  NumericConstant:1
- Variable:X
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
+ Variable:X scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 100 LET H = N/Z
- Variable:H
- Variable:N
- Variable:Z
- BinaryOperatorDivide:/ numeric
+ Variable:H scalar
+ Variable:N scalar
+ Variable:Z scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 110 PRINT "N = ";N,"SAMPLE = ";X,"CURRENT MEAN = ";H
  TextConstant:"N = "
  CarriageControl:;
- Variable:N
+ Variable:N scalar
  CarriageControl:,
  TextConstant:"SAMPLE = "
  CarriageControl:;
- Variable:X
+ Variable:X scalar
  CarriageControl:,
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- Variable:H
+ Variable:H scalar
  CarriageControl:NL
 120 GOTO 50
  LineNumber:50
@@ -60,11 +60,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L
+ Variable:L scalar
 160 IF L = 1 THEN 180
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 170 STOP
  
 180 PRINT

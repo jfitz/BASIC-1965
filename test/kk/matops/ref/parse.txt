@@ -1,50 +1,50 @@
 100 MAT READ A(2,3), B(2,3)
  NumericConstant:2
  NumericConstant:3
- Variable:A
+ Variable:A matrix
  NumericConstant:2
  NumericConstant:3
- Variable:B
+ Variable:B matrix
 110
 130 MAT S = A+B
- Variable:S
- Variable:A
- Variable:B
- BinaryOperatorPlus:+ numeric
+ Variable:S matrix
+ Variable:A matrix
+ Variable:B matrix
+ BinaryOperatorPlus:+ numeric matrix
  AssignmentOperator:=
 140 PRINT "THE SUM"
  TextConstant:"THE SUM"
  CarriageControl:NL
 150 MAT PRINT S
- Variable:S
+ Variable:S matrix
  CarriageControl:NL
 160
 170 MAT D = A-B
- Variable:D
- Variable:A
- Variable:B
- BinaryOperatorMinus:- numeric
+ Variable:D matrix
+ Variable:A matrix
+ Variable:B matrix
+ BinaryOperatorMinus:- numeric matrix
  AssignmentOperator:=
 180 PRINT "THE DIFFERENCE"
  TextConstant:"THE DIFFERENCE"
  CarriageControl:NL
 190 MAT PRINT D
- Variable:D
+ Variable:D matrix
  CarriageControl:NL
 200
 210 MAT K = (1/4)*A
- Variable:K
+ Variable:K matrix
  NumericConstant:1
  NumericConstant:4
- BinaryOperatorDivide:/ numeric
- Variable:A
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric scalar
+ Variable:A matrix
+ BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 220 PRINT "SCALAR MULTIPLE"
  TextConstant:"SCALAR MULTIPLE"
  CarriageControl:NL
 230 MAT PRINT K
- Variable:K
+ Variable:K matrix
  CarriageControl:NL
 240
 900 DATA 1, 4, 7, 3, 2, 1
@@ -57,13 +57,13 @@
 910 DATA 3, -2, 6, 2, -5, -1
  NumericConstant:3
  NumericConstant:2
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:6
  NumericConstant:2
  NumericConstant:5
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:1
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 999 END
  
 

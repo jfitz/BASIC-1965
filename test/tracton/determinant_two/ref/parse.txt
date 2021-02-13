@@ -6,62 +6,62 @@
  TextConstant:"ENTER A11, A12"
  CarriageControl:;
 40 INPUT A,B
- Variable:A
- Variable:B
+ Variable:A scalar
+ Variable:B scalar
 50 PRINT "A21, A22";
  TextConstant:"A21, A22"
  CarriageControl:;
 60 INPUT C,D
- Variable:C
- Variable:D
+ Variable:C scalar
+ Variable:D scalar
 70 LET E = (D*A) - (B*C)
- Variable:E
- Variable:D
- Variable:A
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:C
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
+ Variable:E scalar
+ Variable:D scalar
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 80 LET F = D/E
- Variable:F
- Variable:D
- Variable:E
- BinaryOperatorDivide:/ numeric
+ Variable:F scalar
+ Variable:D scalar
+ Variable:E scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 90 LET G = - B/E
- Variable:G
- Variable:B
- UnaryOperatorMinus:- numeric
- Variable:E
- BinaryOperatorDivide:/ numeric
+ Variable:G scalar
+ Variable:B scalar
+ UnaryOperatorMinus:- numeric scalar
+ Variable:E scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 LET H = - C/E
- Variable:H
- Variable:C
- UnaryOperatorMinus:- numeric
- Variable:E
- BinaryOperatorDivide:/ numeric
+ Variable:H scalar
+ Variable:C scalar
+ UnaryOperatorMinus:- numeric scalar
+ Variable:E scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 110 LET I = A/E
- Variable:I
- Variable:A
- Variable:E
- BinaryOperatorDivide:/ numeric
+ Variable:I scalar
+ Variable:A scalar
+ Variable:E scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 120 PRINT "ORIGINAL MATRIX"
  TextConstant:"ORIGINAL MATRIX"
  CarriageControl:NL
 130 PRINT A,B
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:NL
 140 PRINT C,D
- Variable:C
+ Variable:C scalar
  CarriageControl:,
- Variable:D
+ Variable:D scalar
  CarriageControl:NL
 150 PRINT
  CarriageControl:NL
@@ -69,21 +69,21 @@
  TextConstant:"INVERSE OF MATRIX"
  CarriageControl:NL
 170 PRINT F,G
- Variable:F
+ Variable:F scalar
  CarriageControl:,
- Variable:G
+ Variable:G scalar
  CarriageControl:NL
 180 PRINT H,I
- Variable:H
+ Variable:H scalar
  CarriageControl:,
- Variable:I
+ Variable:I scalar
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
 200 PRINT "DETERMINANT = ";E
  TextConstant:"DETERMINANT = "
  CarriageControl:;
- Variable:E
+ Variable:E scalar
  CarriageControl:NL
 210 PRINT
  CarriageControl:NL
@@ -91,11 +91,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Variable:L
+ Variable:L scalar
 240 IF L = 1 THEN 30
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 250 STOP
  
 260 PRINT

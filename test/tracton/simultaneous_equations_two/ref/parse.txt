@@ -12,60 +12,60 @@
  TextConstant:"ENTER PARAMETERS A,B,C,D,E,F"
  CarriageControl:NL
 60 INPUT A,B,C,D,E,F
- Variable:A
- Variable:B
- Variable:C
- Variable:D
- Variable:E
- Variable:F
+ Variable:A scalar
+ Variable:B scalar
+ Variable:C scalar
+ Variable:D scalar
+ Variable:E scalar
+ Variable:F scalar
 70 LET M = (A*D) - (B*C)
- Variable:M
- Variable:A
- Variable:D
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:C
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
+ Variable:M scalar
+ Variable:A scalar
+ Variable:D scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 80 IF M = 0 THEN 140
- Variable:M
+ Variable:M scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 90 LET X = ((E*D) - (B*F))/M
- Variable:X
- Variable:E
- Variable:D
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:F
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:M
- BinaryOperatorDivide:/ numeric
+ Variable:X scalar
+ Variable:E scalar
+ Variable:D scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:M scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 LET Y = ((A*F) - (E*C))/M
- Variable:Y
- Variable:A
- Variable:F
- BinaryOperatorMultiply:* numeric
- Variable:E
- Variable:C
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:M
- BinaryOperatorDivide:/ numeric
+ Variable:Y scalar
+ Variable:A scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:E scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:M scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 110 PRINT "SOLUTION","X = ";X,"Y = ";Y
  TextConstant:"SOLUTION"
  CarriageControl:,
  TextConstant:"X = "
  CarriageControl:;
- Variable:X
+ Variable:X scalar
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Variable:Y
+ Variable:Y scalar
  CarriageControl:NL
 120 PRINT "********************"
  TextConstant:"********************"
@@ -82,11 +82,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 170 INPUT L
- Variable:L
+ Variable:L scalar
 180 IF L = 1 THEN 200
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 190 STOP
  
 200 PRINT

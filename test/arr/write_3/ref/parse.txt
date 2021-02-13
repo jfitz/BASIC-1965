@@ -1,34 +1,34 @@
 10 DIM A(6), B(3)
  NumericConstant:6
- Declaration:A
+ Declaration:A scalar
  NumericConstant:3
- Declaration:B
+ Declaration:B scalar
 20 FOR I = 0 TO 6
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
 40 LET A(I) = I
- Variable:I
- Variable:A
- Variable:I
+ Variable:I scalar
+ Variable:A scalar
+ Variable:I scalar
  AssignmentOperator:=
 60 NEXT I
- Variable:I
+ Variable:I scalar
 70 FOR I = 0 TO 3
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
 90 LET B(I) = I
- Variable:I
- Variable:B
- Variable:I
+ Variable:I scalar
+ Variable:B scalar
+ Variable:I scalar
  AssignmentOperator:=
 110 NEXT I
- Variable:I
+ Variable:I scalar
 120 ARR WRITE A;B;
- Variable:A
+ Variable:A array
  CarriageControl:;
- Variable:B
+ Variable:B array
  CarriageControl:;
 122 PRINT
  CarriageControl:NL

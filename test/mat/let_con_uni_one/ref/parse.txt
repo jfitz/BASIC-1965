@@ -1,27 +1,27 @@
 10 REM TEST
  Remark:TEST
 20 MAT M = CON(4) * -1
- Variable:M
+ Variable:M matrix
  NumericConstant:4
- FunctionCon2
+ FunctionCon2 matrix
  NumericConstant:1
- UnaryOperatorMinus:- numeric
- BinaryOperatorMultiply:* numeric
+ UnaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 30 MAT PRINT M
- Variable:M
+ Variable:M matrix
  CarriageControl:NL
 40 MAT M2 = CON(4,3) * -3
- Variable:M2
+ Variable:M2 matrix
  NumericConstant:4
  NumericConstant:3
- FunctionCon2
+ FunctionCon2 matrix
  NumericConstant:3
- UnaryOperatorMinus:- numeric
- BinaryOperatorMultiply:* numeric
+ UnaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 50 MAT PRINT M2
- Variable:M2
+ Variable:M2 matrix
  CarriageControl:NL
 99 END
  

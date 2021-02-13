@@ -2,7 +2,7 @@
  Remark:This is a test
 15 DIM A(3)
  NumericConstant:3
- Declaration:A
+ Declaration:A scalar
 20 DATA 10,20,30,40
  NumericConstant:10
  NumericConstant:20
@@ -11,11 +11,11 @@
 25 FILES "output.txt"
  TextConstant:"output.txt"
 30 ARR READ A
- Variable:A
+ Variable:A array
 40 ARR WRITE #1;A
  NumericConstant:1
- UnaryOperatorHash:# filehandle
- Variable:A
+ UnaryOperatorHash:# filehandle scalar
+ Variable:A array
  CarriageControl:NL
 90 STOP
  

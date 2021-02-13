@@ -10,74 +10,74 @@
  VariableName:X2
  VariableName:Y1
  VariableName:Y2
- Variable:X1
- Variable:Y1
- BinaryOperatorMinus:- numeric
+ Variable:X1 scalar
+ Variable:Y1 scalar
+ BinaryOperatorMinus:- numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- Variable:X2
- Variable:Y2
- BinaryOperatorMinus:- numeric
+ BinaryOperatorPower:^ numeric scalar
+ Variable:X2 scalar
+ Variable:Y2 scalar
+ BinaryOperatorMinus:- numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
- FunctionSqr
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionSqr scalar
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
 61 DEF FNR(D) = D/180*3.1415926
  UserFunctionName:FNR
  VariableName:D
- Variable:D
+ Variable:D scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  NumericConstant:3.14159
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorMultiply:* numeric scalar
 100 REM POINT A
  Remark:POINT A
 101 READ A1,A2
- Variable:A1
- Variable:A2
+ Variable:A1 scalar
+ Variable:A2 scalar
 110 REM CIRCLE AT POINT D WITH RADIUS DC
  Remark:CIRCLE AT POINT D WITH RADIUS DC
 111 READ D1,D2
- Variable:D1
- Variable:D2
+ Variable:D1 scalar
+ Variable:D2 scalar
 113 READ C1,C2
- Variable:C1
- Variable:C2
+ Variable:C1 scalar
+ Variable:C2 scalar
 115 LET D5=D1-C1  ' RADIUS
- Variable:D5
- Variable:D1
- Variable:C1
- BinaryOperatorMinus:- numeric
+ Variable:D5 scalar
+ Variable:D1 scalar
+ Variable:C1 scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 121 READ Z9,Z8
- Variable:Z9
- Variable:Z8
+ Variable:Z9 scalar
+ Variable:Z8 scalar
 122 READ R9
- Variable:R9
+ Variable:R9 scalar
 200 REM FIND POINT B
  Remark:FIND POINT B
 201 LET B1=(A1+D1)/2
- Variable:B1
- Variable:A1
- Variable:D1
- BinaryOperatorPlus:+ numeric
+ Variable:B1 scalar
+ Variable:A1 scalar
+ Variable:D1 scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 202 LET B2=0
- Variable:B2
+ Variable:B2 scalar
  NumericConstant:0
  AssignmentOperator:=
 203 LET I1=D1+D5
- Variable:I1
- Variable:D1
- Variable:D5
- BinaryOperatorPlus:+ numeric
+ Variable:I1 scalar
+ Variable:D1 scalar
+ Variable:D5 scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 204 LET I2=0
- Variable:I2
+ Variable:I2 scalar
  NumericConstant:0
  AssignmentOperator:=
 217 PRINT "IDENTIFYING POINT B"
@@ -93,101 +93,101 @@
  TextConstant:"Z"
  CarriageControl:NL
 219 LET Z=1
- Variable:Z
+ Variable:Z scalar
  NumericConstant:1
  AssignmentOperator:=
 220 REM RATIO OF AC/BC
  Remark:RATIO OF AC/BC
 221 LET F1 = FNL(A1,A2,C1,C2)
- Variable:F1
- Variable:A1
- Variable:A2
- Variable:C1
- Variable:C2
- UserFunction
+ Variable:F1 scalar
+ Variable:A1 scalar
+ Variable:A2 scalar
+ Variable:C1 scalar
+ Variable:C2 scalar
+ UserFunction scalar
  AssignmentOperator:=
 222 LET F2 = FNL(B1,B2,C1,C2)
- Variable:F2
- Variable:B1
- Variable:B2
- Variable:C1
- Variable:C2
- UserFunction
+ Variable:F2 scalar
+ Variable:B1 scalar
+ Variable:B2 scalar
+ Variable:C1 scalar
+ Variable:C2 scalar
+ UserFunction scalar
  AssignmentOperator:=
 223 LET R0 = F1/F2
- Variable:R0
- Variable:F1
- Variable:F2
- BinaryOperatorDivide:/ numeric
+ Variable:R0 scalar
+ Variable:F1 scalar
+ Variable:F2 scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
 231 LET G1 = FNL(A1,A2,I1,I2)
- Variable:G1
- Variable:A1
- Variable:A2
- Variable:I1
- Variable:I2
- UserFunction
+ Variable:G1 scalar
+ Variable:A1 scalar
+ Variable:A2 scalar
+ Variable:I1 scalar
+ Variable:I2 scalar
+ UserFunction scalar
  AssignmentOperator:=
 232 LET G2 = FNL(B1,B2,I1,I2)
- Variable:G2
- Variable:B1
- Variable:B2
- Variable:I1
- Variable:I2
- UserFunction
+ Variable:G2 scalar
+ Variable:B1 scalar
+ Variable:B2 scalar
+ Variable:I1 scalar
+ Variable:I2 scalar
+ UserFunction scalar
  AssignmentOperator:=
 233 LET R1 = G1/G2
- Variable:R1
- Variable:G1
- Variable:G2
- BinaryOperatorDivide:/ numeric
+ Variable:R1 scalar
+ Variable:G1 scalar
+ Variable:G2 scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 239 PRINT B1,R0,R1,Z
- Variable:B1
+ Variable:B1 scalar
  CarriageControl:,
- Variable:R0
+ Variable:R0 scalar
  CarriageControl:,
- Variable:R1
+ Variable:R1 scalar
  CarriageControl:,
- Variable:Z
+ Variable:Z scalar
  CarriageControl:NL
 240 IF ABS(R0-R1)<R9 THEN 300
- Variable:R0
- Variable:R1
- BinaryOperatorMinus:- numeric
- FunctionAbs
- Variable:R9
- BinaryOperatorLess:< boolean
+ Variable:R0 scalar
+ Variable:R1 scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionAbs scalar
+ Variable:R9 scalar
+ BinaryOperatorLess:< boolean scalar
 241 IF R0<R1 THEN 245
- Variable:R0
- Variable:R1
- BinaryOperatorLess:< boolean
+ Variable:R0 scalar
+ Variable:R1 scalar
+ BinaryOperatorLess:< boolean scalar
 242 LET B1=B1+Z
- Variable:B1
- Variable:B1
- Variable:Z
- BinaryOperatorPlus:+ numeric
+ Variable:B1 scalar
+ Variable:B1 scalar
+ Variable:Z scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 243 GOTO 246
  LineNumber:246
 245 LET B1=B1-Z
- Variable:B1
- Variable:B1
- Variable:Z
- BinaryOperatorMinus:- numeric
+ Variable:B1 scalar
+ Variable:B1 scalar
+ Variable:Z scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 246 LET Z=Z*Z8
- Variable:Z
- Variable:Z
- Variable:Z8
- BinaryOperatorMultiply:* numeric
+ Variable:Z scalar
+ Variable:Z scalar
+ Variable:Z8 scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 247 IF Z>Z9 THEN 220
- Variable:Z
- Variable:Z9
- BinaryOperatorGreater:> boolean
+ Variable:Z scalar
+ Variable:Z9 scalar
+ BinaryOperatorGreater:> boolean scalar
 248 PRINT "CANNOT RESOLVE POINT B"
  TextConstant:"CANNOT RESOLVE POINT B"
  CarriageControl:NL
@@ -198,38 +198,38 @@
 301 PRINT "POINT C    :";C1;C2
  TextConstant:"POINT C    :"
  CarriageControl:;
- Variable:C1
+ Variable:C1 scalar
  CarriageControl:;
- Variable:C2
+ Variable:C2 scalar
  CarriageControl:NL
 302 PRINT "POINT B    :";B1;B2
  TextConstant:"POINT B    :"
  CarriageControl:;
- Variable:B1
+ Variable:B1 scalar
  CarriageControl:;
- Variable:B2
+ Variable:B2 scalar
  CarriageControl:NL
 303 PRINT "DISTANCE BC:";F2
  TextConstant:"DISTANCE BC:"
  CarriageControl:;
- Variable:F2
+ Variable:F2 scalar
  CarriageControl:NL
 304 PRINT "POINT A    :";A1;A2
  TextConstant:"POINT A    :"
  CarriageControl:;
- Variable:A1
+ Variable:A1 scalar
  CarriageControl:;
- Variable:A2
+ Variable:A2 scalar
  CarriageControl:NL
 305 PRINT "DISTANCE AC:";F1
  TextConstant:"DISTANCE AC:"
  CarriageControl:;
- Variable:F1
+ Variable:F1 scalar
  CarriageControl:NL
 306 PRINT "RATIO AC/BC:";R0
  TextConstant:"RATIO AC/BC:"
  CarriageControl:;
- Variable:R0
+ Variable:R0 scalar
  CarriageControl:NL
 400 REM PICK VALUES ON CIRCLE D
  Remark:PICK VALUES ON CIRCLE D
@@ -249,78 +249,78 @@
  TextConstant:"DIFFERENCE"
  CarriageControl:NL
 410 FOR I = 0 TO 365 STEP 5
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:365"]
  step:    ["NumericConstant:5"]
 420 REM PICK POINT ON CIRCLE D
  Remark:PICK POINT ON CIRCLE D
 421 LET T = FNR(I)
- Variable:T
- Variable:I
- UserFunction
+ Variable:T scalar
+ Variable:I scalar
+ UserFunction scalar
  AssignmentOperator:=
 422 LET I1 = D1 + COS(T)*D5
- Variable:I1
- Variable:D1
- Variable:T
- FunctionCos
- Variable:D5
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:I1 scalar
+ Variable:D1 scalar
+ Variable:T scalar
+ FunctionCos scalar
+ Variable:D5 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 423 LET I2 = D2 + SIN(T)*D5
- Variable:I2
- Variable:D2
- Variable:T
- FunctionSin
- Variable:D5
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:I2 scalar
+ Variable:D2 scalar
+ Variable:T scalar
+ FunctionSin scalar
+ Variable:D5 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 424 LET G1 = FNL(A1,A2,I1,I2)
- Variable:G1
- Variable:A1
- Variable:A2
- Variable:I1
- Variable:I2
- UserFunction
+ Variable:G1 scalar
+ Variable:A1 scalar
+ Variable:A2 scalar
+ Variable:I1 scalar
+ Variable:I2 scalar
+ UserFunction scalar
  AssignmentOperator:=
 425 LET G2 = FNL(B1,B2,I1,I2)
- Variable:G2
- Variable:B1
- Variable:B2
- Variable:I1
- Variable:I2
- UserFunction
+ Variable:G2 scalar
+ Variable:B1 scalar
+ Variable:B2 scalar
+ Variable:I1 scalar
+ Variable:I2 scalar
+ UserFunction scalar
  AssignmentOperator:=
 426 LET R1 = G1/G2
- Variable:R1
- Variable:G1
- Variable:G2
- BinaryOperatorDivide:/ numeric
+ Variable:R1 scalar
+ Variable:G1 scalar
+ Variable:G2 scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
 431 PRINT T,I1;I2,G1;G2,R1,R1-R0
- Variable:T
+ Variable:T scalar
  CarriageControl:,
- Variable:I1
+ Variable:I1 scalar
  CarriageControl:;
- Variable:I2
+ Variable:I2 scalar
  CarriageControl:,
- Variable:G1
+ Variable:G1 scalar
  CarriageControl:;
- Variable:G2
+ Variable:G2 scalar
  CarriageControl:,
- Variable:R1
+ Variable:R1 scalar
  CarriageControl:,
- Variable:R1
- Variable:R0
- BinaryOperatorMinus:- numeric
+ Variable:R1 scalar
+ Variable:R0 scalar
+ BinaryOperatorMinus:- numeric scalar
  CarriageControl:NL
 441 NEXT I
- Variable:I
+ Variable:I scalar
 900 REM DATA - POINT A, POINT D, POINT C
  Remark:DATA - POINT A, POINT D, POINT C
 901 DATA 0,0,100,0,75,0,0.00001,0.995,0.00001

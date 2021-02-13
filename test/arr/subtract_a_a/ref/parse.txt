@@ -2,38 +2,38 @@
  Remark:ARRAY ASSIGNMENT
 20 DIM A(5),B(5)
  NumericConstant:5
- Declaration:A
+ Declaration:A scalar
  NumericConstant:5
- Declaration:B
+ Declaration:B scalar
 30 FOR I = 0 TO 5
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
- Variable:I
- Variable:A
- Variable:I
+ Variable:I scalar
+ Variable:A scalar
+ Variable:I scalar
  AssignmentOperator:=
 52 LET B(I) = I*3
- Variable:I
- Variable:B
- Variable:I
+ Variable:I scalar
+ Variable:B scalar
+ Variable:I scalar
  NumericConstant:3
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 70 NEXT I
- Variable:I
+ Variable:I scalar
 100 ARR C = A - B
- Variable:C
- Variable:A
- Variable:B
- BinaryOperatorMinus:- numeric
+ Variable:C array
+ Variable:A array
+ Variable:B array
+ BinaryOperatorMinus:- numeric array
  AssignmentOperator:=
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
 120 ARR PRINT A;
- Variable:A
+ Variable:A array
  CarriageControl:;
 122 PRINT
  CarriageControl:NL
@@ -41,7 +41,7 @@
  TextConstant:"ARRAY B"
  CarriageControl:NL
 140 ARR PRINT B;
- Variable:B
+ Variable:B array
  CarriageControl:;
 142 PRINT
  CarriageControl:NL
@@ -49,7 +49,7 @@
  TextConstant:"ARRAY C"
  CarriageControl:NL
 160 ARR PRINT C;
- Variable:C
+ Variable:C array
  CarriageControl:;
 162 PRINT
  CarriageControl:NL

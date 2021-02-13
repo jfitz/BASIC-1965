@@ -1,35 +1,35 @@
 10 READ N
- Variable:N
+ Variable:N scalar
 20 MAT READ M(N,N)
- Variable:N
- Variable:N
- Variable:M
+ Variable:N scalar
+ Variable:N scalar
+ Variable:M matrix
 30 FOR I = 1 TO 4
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 40 PRINT "POWER : " 2^I
  TextConstant:"POWER : "
  CarriageControl:
  NumericConstant:2
- Variable:I
- BinaryOperatorPower:^ numeric
+ Variable:I scalar
+ BinaryOperatorPower:^ numeric scalar
  CarriageControl:NL
 50 MAT A = M*M
- Variable:A
- Variable:M
- Variable:M
- BinaryOperatorMultiply:* numeric
+ Variable:A matrix
+ Variable:M matrix
+ Variable:M matrix
+ BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 60 MAT PRINT A
- Variable:A
+ Variable:A matrix
  CarriageControl:NL
 70 MAT M = A
- Variable:M
- Variable:A
+ Variable:M matrix
+ Variable:A matrix
  AssignmentOperator:=
 80 NEXT I
- Variable:I
+ Variable:I scalar
 90 DATA 3
  NumericConstant:3
 91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5

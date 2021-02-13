@@ -2,9 +2,9 @@
  Remark:ARRAY ASSIGNMENT
 20 DIM A(6), B(6)
  NumericConstant:6
- Declaration:A
+ Declaration:A scalar
  NumericConstant:6
- Declaration:B
+ Declaration:B scalar
 30 DATA 1,2,3,4,5,6
  NumericConstant:1
  NumericConstant:2
@@ -20,50 +20,50 @@
  NumericConstant:11
  NumericConstant:12
 100 FOR I = 0 TO 5
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 120 READ A(I)
- Variable:I
- Variable:A
+ Variable:I scalar
+ Variable:A scalar
 140 NEXT I
- Variable:I
+ Variable:I scalar
 150 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A;
- Variable:A
+ Variable:A array
  CarriageControl:;
 162 PRINT
  CarriageControl:NL
 200 FOR I = 0 TO 5
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 220 READ B(I)
- Variable:I
- Variable:B
+ Variable:I scalar
+ Variable:B scalar
 240 NEXT I
- Variable:I
+ Variable:I scalar
 250 PRINT "ARRAY B"
  TextConstant:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B;
- Variable:B
+ Variable:B array
  CarriageControl:;
 262 PRINT
  CarriageControl:NL
 300 ARR C = A*B
- Variable:C
- Variable:A
- Variable:B
- BinaryOperatorMultiply:* numeric
+ Variable:C array
+ Variable:A array
+ Variable:B array
+ BinaryOperatorMultiply:* numeric array
  AssignmentOperator:=
 310 PRINT "ARRAY C"
  TextConstant:"ARRAY C"
  CarriageControl:NL
 320 ARR PRINT C;
- Variable:C
+ Variable:C array
  CarriageControl:;
 322 PRINT
  CarriageControl:NL

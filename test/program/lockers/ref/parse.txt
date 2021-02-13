@@ -2,9 +2,9 @@
  Remark:TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
 20 DIM L(1000)
  NumericConstant:1000
- Declaration:L
+ Declaration:L scalar
 30 LET N = 1000
- Variable:N
+ Variable:N scalar
  NumericConstant:1000
  AssignmentOperator:=
 100 REM INITIALIZE LOCKERS TO OPEN
@@ -12,50 +12,50 @@
 110 PRINT "INITIALIZING";N;" LOCKERS..."
  TextConstant:"INITIALIZING"
  CarriageControl:;
- Variable:N
+ Variable:N scalar
  CarriageControl:;
  TextConstant:" LOCKERS..."
  CarriageControl:NL
 130 FOR I = 1 TO N
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N"]
+ end:     ["Variable:N scalar"]
 140 FOR J = I TO N STEP I
- control: Variable:J
- start:   ["Variable:I"]
- end:     ["Variable:N"]
- step:    ["Variable:I"]
+ control: Variable:J scalar
+ start:   ["Variable:I scalar"]
+ end:     ["Variable:N scalar"]
+ step:    ["Variable:I scalar"]
 150 LET L(J) = 1 - L(J)
- Variable:J
- Variable:L
+ Variable:J scalar
+ Variable:L scalar
  NumericConstant:1
- Variable:J
- Variable:L
- BinaryOperatorMinus:- numeric
+ Variable:J scalar
+ Variable:L scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 160 NEXT J
- Variable:J
+ Variable:J scalar
 180 NEXT I
- Variable:I
+ Variable:I scalar
 200 REM PRINT LOCKER STATES
  Remark:PRINT LOCKER STATES
 310 PRINT "OPEN LOCKERS:";
  TextConstant:"OPEN LOCKERS:"
  CarriageControl:;
 320 FOR I = 1 TO N
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N"]
+ end:     ["Variable:N scalar"]
 330 IF L(I) = 0 THEN 350
- Variable:I
- Variable:L
+ Variable:I scalar
+ Variable:L scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 340 PRINT I;
- Variable:I
+ Variable:I scalar
  CarriageControl:;
 350 NEXT I
- Variable:I
+ Variable:I scalar
 360 PRINT
  CarriageControl:NL
 999 END

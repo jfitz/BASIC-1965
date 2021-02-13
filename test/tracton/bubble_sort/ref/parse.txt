@@ -17,58 +17,58 @@
 90 REM STATEMENT AND N SET AHEAD OF TIME
  Remark:STATEMENT AND N SET AHEAD OF TIME
 100 LET I = N - 1
- Variable:I
- Variable:N
+ Variable:I scalar
+ Variable:N scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 110 FOR J = 1 TO I
- control: Variable:J
+ control: Variable:J scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:I"]
+ end:     ["Variable:I scalar"]
 120 LET K = J + 1
- Variable:K
- Variable:J
+ Variable:K scalar
+ Variable:J scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 FOR L = N TO K STEP -1
- control: Variable:L
- start:   ["Variable:N"]
- end:     ["Variable:K"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
+ control: Variable:L scalar
+ start:   ["Variable:N scalar"]
+ end:     ["Variable:K scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
 140 IF Z(L) > Z(J) THEN 210
- Variable:L
- Variable:Z
- Variable:J
- Variable:Z
- BinaryOperatorGreater:> boolean
+ Variable:L scalar
+ Variable:Z scalar
+ Variable:J scalar
+ Variable:Z scalar
+ BinaryOperatorGreater:> boolean scalar
 150 REM SAVE FIRST VALUE
  Remark:SAVE FIRST VALUE
 160 LET T = Z(L)
- Variable:T
- Variable:L
- Variable:Z
+ Variable:T scalar
+ Variable:L scalar
+ Variable:Z scalar
  AssignmentOperator:=
 170 LET Z(L) =Z(J)
- Variable:L
- Variable:Z
- Variable:J
- Variable:Z
+ Variable:L scalar
+ Variable:Z scalar
+ Variable:J scalar
+ Variable:Z scalar
  AssignmentOperator:=
 180 LET Z(J) = T
- Variable:J
- Variable:Z
- Variable:T
+ Variable:J scalar
+ Variable:Z scalar
+ Variable:T scalar
  AssignmentOperator:=
 190 REM IF Z IS THE KEY FOR SORTING MULTIPLE
  Remark:IF Z IS THE KEY FOR SORTING MULTIPLE
 200 REM ARRAYS AND EXTRA CODE HERE
  Remark:ARRAYS AND EXTRA CODE HERE
 210 NEXT L
- Variable:L
+ Variable:L scalar
 220 NEXT J
- Variable:J
+ Variable:J scalar
 230 RETURN
  
 

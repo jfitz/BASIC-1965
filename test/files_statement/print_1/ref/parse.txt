@@ -7,17 +7,17 @@
 25 FILES "output.txt"
  TextConstant:"output.txt"
 30 READ A,B,C
- Variable:A
- Variable:B
- Variable:C
+ Variable:A scalar
+ Variable:B scalar
+ Variable:C scalar
 40 PRINT #1;A,B,C
  NumericConstant:1
- UnaryOperatorHash:# filehandle
- Variable:A
+ UnaryOperatorHash:# filehandle scalar
+ Variable:A scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:,
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 90 STOP
  

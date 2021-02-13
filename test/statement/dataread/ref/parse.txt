@@ -1,21 +1,21 @@
 10 REM This is a test
  Remark:This is a test
 20 READ A,B,C
- Variable:A
- Variable:B
- Variable:C
+ Variable:A scalar
+ Variable:B scalar
+ Variable:C scalar
 30 PRINT A,B,C
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:,
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 40 DATA 10,20,-30
  NumericConstant:10
  NumericConstant:20
  NumericConstant:30
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 90 STOP
  
 99 END

@@ -3,16 +3,16 @@
 12 OPTION LOCK_FORNEXT TRUE
  BooleanConstant:true
 20 FOR I = 1 TO 5
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 30 PRINT I
- Variable:I
+ Variable:I scalar
  CarriageControl:NL
 40 FORGET I
- Variable:I
+ Variable:I scalar
 90 NEXT I
- Variable:I
+ Variable:I scalar
 99 END
  
 

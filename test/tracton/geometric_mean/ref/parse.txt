@@ -7,55 +7,55 @@
 40 REM IS PRINTED
  Remark:IS PRINTED
 50 LET Y = 1
- Variable:Y
+ Variable:Y scalar
  NumericConstant:1
  AssignmentOperator:=
 60 LET N = 0
- Variable:N
+ Variable:N scalar
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "SAMPLE = ";
  TextConstant:"SAMPLE = "
  CarriageControl:;
 80 INPUT W
- Variable:W
+ Variable:W scalar
 90 IF W = 0 THEN 160
- Variable:W
+ Variable:W scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 100 LET N = N + 1
- Variable:N
- Variable:N
+ Variable:N scalar
+ Variable:N scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 110 LET Y = Y * W
- Variable:Y
- Variable:Y
- Variable:W
- BinaryOperatorMultiply:* numeric
+ Variable:Y scalar
+ Variable:Y scalar
+ Variable:W scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 120 LET G = Y^(1/N)
- Variable:G
- Variable:Y
+ Variable:G scalar
+ Variable:Y scalar
  NumericConstant:1
- Variable:N
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPower:^ numeric
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPower:^ numeric scalar
  AssignmentOperator:=
 130 PRINT "NUMBER OF SAMPLES = ";N,"CURRENT SAMPLE = ";W
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:;
- Variable:N
+ Variable:N scalar
  CarriageControl:,
  TextConstant:"CURRENT SAMPLE = "
  CarriageControl:;
- Variable:W
+ Variable:W scalar
  CarriageControl:NL
 140 PRINT "CURRENT MEAN = ";G
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- Variable:G
+ Variable:G scalar
  CarriageControl:NL
 150 GOTO 70
  LineNumber:70
@@ -65,11 +65,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- Variable:L
+ Variable:L scalar
 190 IF L = 1 THEN 210
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 200 STOP
  
 210 PRINT

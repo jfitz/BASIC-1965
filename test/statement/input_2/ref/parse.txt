@@ -1,38 +1,38 @@
 10 REM TEST FOR INPUT STATEMENT
  Remark:TEST FOR INPUT STATEMENT
 20 INPUT "LEADING SPACES:"; N1
- Variable:N1
+ Variable:N1 scalar
 25 PRINT "THE NUMBER WAS"; N1
  TextConstant:"THE NUMBER WAS"
  CarriageControl:;
- Variable:N1
+ Variable:N1 scalar
  CarriageControl:NL
 30 INPUT "TRAILING SPACES:"; N2
- Variable:N2
+ Variable:N2 scalar
 35 PRINT "THE NUMBER WAS"; N2
  TextConstant:"THE NUMBER WAS"
  CarriageControl:;
- Variable:N2
+ Variable:N2 scalar
  CarriageControl:NL
 40 INPUT "LEADING AND TRAILING SPACES:"; N3
- Variable:N3
+ Variable:N3 scalar
 45 PRINT "THE NUMBERS WAS"; N3
  TextConstant:"THE NUMBERS WAS"
  CarriageControl:;
- Variable:N3
+ Variable:N3 scalar
  CarriageControl:NL
 50 INPUT "LEADING, LEADING AND TRAILING, TRAILING"; N4, N5, N6
- Variable:N4
- Variable:N5
- Variable:N6
+ Variable:N4 scalar
+ Variable:N5 scalar
+ Variable:N6 scalar
 55 PRINT "THE NUMBERS WERE"; N4; N5; N6
  TextConstant:"THE NUMBERS WERE"
  CarriageControl:;
- Variable:N4
+ Variable:N4 scalar
  CarriageControl:;
- Variable:N5
+ Variable:N5 scalar
  CarriageControl:;
- Variable:N6
+ Variable:N6 scalar
  CarriageControl:NL
 99 END
  

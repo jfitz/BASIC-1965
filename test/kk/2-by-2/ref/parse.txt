@@ -9,71 +9,71 @@
 120 PRINT
  CarriageControl:NL
 130 READ A,B,C,D
- Variable:A
- Variable:B
- Variable:C
- Variable:D
+ Variable:A scalar
+ Variable:B scalar
+ Variable:C scalar
+ Variable:D scalar
 140 LET N = A+B+C+D
- Variable:N
- Variable:A
- Variable:B
- BinaryOperatorPlus:+ numeric
- Variable:C
- BinaryOperatorPlus:+ numeric
- Variable:D
- BinaryOperatorPlus:+ numeric
+ Variable:N scalar
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:C scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:D scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 150 LET E = ABS(A*D - B*C) - N/2
- Variable:E
- Variable:A
- Variable:D
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:C
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- FunctionAbs
- Variable:N
+ Variable:E scalar
+ Variable:A scalar
+ Variable:D scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionAbs scalar
+ Variable:N scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMinus:- numeric
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
- Variable:X
- Variable:N
- Variable:E
- BinaryOperatorMultiply:* numeric
- Variable:E
- BinaryOperatorMultiply:* numeric
- Variable:A
- Variable:B
- BinaryOperatorPlus:+ numeric
- Variable:C
- Variable:D
- BinaryOperatorPlus:+ numeric
- BinaryOperatorMultiply:* numeric
- Variable:A
- Variable:C
- BinaryOperatorPlus:+ numeric
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:D
- BinaryOperatorPlus:+ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorDivide:/ numeric
+ Variable:X scalar
+ Variable:N scalar
+ Variable:E scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:E scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:C scalar
+ Variable:D scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:A scalar
+ Variable:C scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:D scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 170
 180 PRINT A,B
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:NL
 190 PRINT C,D,X
- Variable:C
+ Variable:C scalar
  CarriageControl:,
- Variable:D
+ Variable:D scalar
  CarriageControl:,
- Variable:X
+ Variable:X scalar
  CarriageControl:NL
 200 GO TO 120
  LineNumber:120

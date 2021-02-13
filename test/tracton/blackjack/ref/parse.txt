@@ -7,7 +7,7 @@
  TextConstant:"IF NOT TYPE NO"
  CarriageControl:NL
 40 INPUT C$
- Syntax error: "C$" is not a value or operator
+ Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 50 IF C$ = "YES" THEN 90
  Token 'InvalidToken:$' is not a value or operator
 60 IF C$ = "NO " THEN 340
@@ -98,102 +98,102 @@
  Unknown statement 'RANDOMIZE'
  Unimplemented
 360 LET D = 0
- Variable:D
+ Variable:D scalar
  NumericConstant:0
  AssignmentOperator:=
 370 LET P = D
- Variable:P
- Variable:D
+ Variable:P scalar
+ Variable:D scalar
  AssignmentOperator:=
 380 GOSUB 820
  LineNumber:820
 390 LET D1 = C
- Variable:D1
- Variable:C
+ Variable:D1 scalar
+ Variable:C scalar
  AssignmentOperator:=
 400 GOSUB 820
  LineNumber:820
 410 LET D2 = C
- Variable:D2
- Variable:C
+ Variable:D2 scalar
+ Variable:C scalar
  AssignmentOperator:=
 420 GOSUB 820
  LineNumber:820
 430 LET P1 = C
- Variable:P1
- Variable:C
+ Variable:P1 scalar
+ Variable:C scalar
  AssignmentOperator:=
 440 GOSUB 820
  LineNumber:820
 450 LET P2 = C
- Variable:P2
- Variable:C
+ Variable:P2 scalar
+ Variable:C scalar
  AssignmentOperator:=
 460 PRINT
  CarriageControl:NL
 470 PRINT "THE DEALER HAS A ";D1;" SHOWING"
  TextConstant:"THE DEALER HAS A "
  CarriageControl:;
- Variable:D1
+ Variable:D1 scalar
  CarriageControl:;
  TextConstant:" SHOWING"
  CarriageControl:NL
 480 PRINT "YOU HAVE A ";P1;" AND A ";P2
  TextConstant:"YOU HAVE A "
  CarriageControl:;
- Variable:P1
+ Variable:P1 scalar
  CarriageControl:;
  TextConstant:" AND A "
  CarriageControl:;
- Variable:P2
+ Variable:P2 scalar
  CarriageControl:NL
 490 PRINT "YOUR TOTAL IS ";P1 + P2
  TextConstant:"YOUR TOTAL IS "
  CarriageControl:;
- Variable:P1
- Variable:P2
- BinaryOperatorPlus:+ numeric
+ Variable:P1 scalar
+ Variable:P2 scalar
+ BinaryOperatorPlus:+ numeric scalar
  CarriageControl:NL
 500 LET D = D1 + D2
- Variable:D
- Variable:D1
- Variable:D2
- BinaryOperatorPlus:+ numeric
+ Variable:D scalar
+ Variable:D1 scalar
+ Variable:D2 scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 510 LET P = P1 + P2
- Variable:P
- Variable:P1
- Variable:P2
- BinaryOperatorPlus:+ numeric
+ Variable:P scalar
+ Variable:P1 scalar
+ Variable:P2 scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 520 IF P = 21 THEN 640
- Variable:P
+ Variable:P scalar
  NumericConstant:21
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 530 GOSUB 960
  LineNumber:960
 540 IF L = 1 THEN 690
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 550 IF D <= 16 THEN 740
- Variable:D
+ Variable:D scalar
  NumericConstant:16
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 560 PRINT "THE DEALER HAS ";D
  TextConstant:"THE DEALER HAS "
  CarriageControl:;
- Variable:D
+ Variable:D scalar
  CarriageControl:NL
 570 PRINT "YOU HAVE ";P
  TextConstant:"YOU HAVE "
  CarriageControl:;
- Variable:P
+ Variable:P scalar
  CarriageControl:NL
 580 IF P > D THEN 620
- Variable:P
- Variable:D
- BinaryOperatorGreater:> boolean
+ Variable:P scalar
+ Variable:D scalar
+ BinaryOperatorGreater:> boolean scalar
 590 REM WIN OR LOSS STATEMENTS
  Remark:WIN OR LOSS STATEMENTS
 600 PRINT "THE DEALER HAS WON!!!"
@@ -210,9 +210,9 @@
  TextConstant:"***YOU HAVE BLACKJACK***"
  CarriageControl:NL
 650 IF D = 21 THEN 670
- Variable:D
+ Variable:D scalar
  NumericConstant:21
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 660 GOTO 560
  LineNumber:560
 670 PRINT "THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
@@ -225,105 +225,105 @@
 700 PRINT "YOUR CARD IS ";C
  TextConstant:"YOUR CARD IS "
  CarriageControl:;
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 710 LET P = P + C
- Variable:P
- Variable:P
- Variable:C
- BinaryOperatorPlus:+ numeric
+ Variable:P scalar
+ Variable:P scalar
+ Variable:C scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 720 IF P > 21 THEN 600
- Variable:P
+ Variable:P scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 730 GOTO 530
  LineNumber:530
 740 PRINT "THE DEALER HAS ";D
  TextConstant:"THE DEALER HAS "
  CarriageControl:;
- Variable:D
+ Variable:D scalar
  CarriageControl:NL
 750 GOSUB 820
  LineNumber:820
 760 LET D = D + C
- Variable:D
- Variable:D
- Variable:C
- BinaryOperatorPlus:+ numeric
+ Variable:D scalar
+ Variable:D scalar
+ Variable:C scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 770 PRINT "THE DEALER DRAWS A ";C
  TextConstant:"THE DEALER DRAWS A "
  CarriageControl:;
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 780 PRINT "HIS TOTAL IS ";D
  TextConstant:"HIS TOTAL IS "
  CarriageControl:;
- Variable:D
+ Variable:D scalar
  CarriageControl:NL
 790 IF D > 21 THEN 620
- Variable:D
+ Variable:D scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 800 IF D <= 17 THEN 750
- Variable:D
+ Variable:D scalar
  NumericConstant:17
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
- Variable:C
+ Variable:C scalar
  NumericConstant:1
  NumericConstant:11
- FunctionRnd
- BinaryOperatorMultiply:* numeric
- FunctionInt
- BinaryOperatorPlus:+ numeric
+ FunctionRnd scalar
+ BinaryOperatorMultiply:* numeric scalar
+ FunctionInt scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 830 IF C == 11 THEN 850
  Token 'OperatorToken:=' is not a value or operator
 840 GOTO 880
  LineNumber:880
 850 IF D + C > 21 THEN 870
- Variable:D
- Variable:C
- BinaryOperatorPlus:+ numeric
+ Variable:D scalar
+ Variable:C scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
- Variable:C
+ Variable:C scalar
  NumericConstant:1
  AssignmentOperator:=
 880 RETURN
  
 890 LET C = 1 + INT(11*RND)
- Variable:C
+ Variable:C scalar
  NumericConstant:1
  NumericConstant:11
- FunctionRnd
- BinaryOperatorMultiply:* numeric
- FunctionInt
- BinaryOperatorPlus:+ numeric
+ FunctionRnd scalar
+ BinaryOperatorMultiply:* numeric scalar
+ FunctionInt scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 900 IF C = 11 THEN 920
- Variable:C
+ Variable:C scalar
  NumericConstant:11
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 910 GOTO 950
  LineNumber:950
 920 IF P + C > 21 THEN 940
- Variable:P
- Variable:C
- BinaryOperatorPlus:+ numeric
+ Variable:P scalar
+ Variable:C scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 930 GOTO 950
  LineNumber:950
 940 LET C = 1
- Variable:C
+ Variable:C scalar
  NumericConstant:1
  AssignmentOperator:=
 950 RETURN
@@ -332,7 +332,7 @@
  TextConstant:"DO YOU WANT A HIT, OR DO YOU STAND"
  CarriageControl:NL
 970 INPUT Q$
- Syntax error: "Q$" is not a value or operator
+ Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
 980 IF Q$ = "HIT" THEN 1020
  Token 'InvalidToken:$' is not a value or operator
 990 IF Q$ = "STAND" THEN 1040
@@ -343,13 +343,13 @@
 1010 GOTO 960
  LineNumber:960
 1020 LET L = 1
- Variable:L
+ Variable:L scalar
  NumericConstant:1
  AssignmentOperator:=
 1030 GOTO 1050
  LineNumber:1050
 1040 LET L = 0
- Variable:L
+ Variable:L scalar
  NumericConstant:0
  AssignmentOperator:=
 1050 RETURN
@@ -363,7 +363,7 @@
  TextConstant:"TYPE YES OR NO"
  CarriageControl:NL
 1090 INPUT L$
- Syntax error: "L$" is not a value or operator
+ Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 1100 IF L$ = "YES" THEN 1130
  Token 'InvalidToken:$' is not a value or operator
 1110 PRINT "BLACKJACK SAYS GOOD-BYE"

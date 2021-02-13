@@ -6,21 +6,21 @@
  TextConstant:"LOG(X)"
  CarriageControl:NL
 20 FOR X = 1 TO 3.5 STEP 0.5
- control: Variable:X
+ control: Variable:X scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3.5"]
  step:    ["NumericConstant:0.5"]
 30 PRINT X, EXP(X), LOG(X)
- Variable:X
+ Variable:X scalar
  CarriageControl:,
- Variable:X
- FunctionExp
+ Variable:X scalar
+ FunctionExp scalar
  CarriageControl:,
- Variable:X
- FunctionLog
+ Variable:X scalar
+ FunctionLog scalar
  CarriageControl:NL
 40 NEXT X
- Variable:X
+ Variable:X scalar
 99 END
  
 

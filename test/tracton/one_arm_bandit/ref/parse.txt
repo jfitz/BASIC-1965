@@ -9,7 +9,7 @@
  TextConstant:"TYPE EITHER YES OR NO"
  CarriageControl:NL
 50 INPUT L$
- Syntax error: "L$" is not a value or operator
+ Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 60 IF L$ = "YES" THEN 100
  Token 'InvalidToken:$' is not a value or operator
 70 IF L$ = "NO" THEN 170
@@ -41,7 +41,7 @@
  TextConstant:"EARN $10. EACH TURN COSTS $1. GOOD-LUCK"
  CarriageControl:NL
 170 LET J = 0
- Variable:J
+ Variable:J scalar
  NumericConstant:0
  AssignmentOperator:=
 180 PRINT
@@ -49,40 +49,40 @@
 190 GOSUB 590
  LineNumber:590
 200 LET S1 = S
- Variable:S1
- Variable:S
+ Variable:S1 scalar
+ Variable:S scalar
  AssignmentOperator:=
 210 GOSUB 590
  LineNumber:590
 220 LET S2 = S
- Variable:S2
- Variable:S
+ Variable:S2 scalar
+ Variable:S scalar
  AssignmentOperator:=
 230 GOSUB 590
  LineNumber:590
 240 LET S3 = S
- Variable:S3
- Variable:S
+ Variable:S3 scalar
+ Variable:S scalar
  AssignmentOperator:=
 250 LET S = S1
- Variable:S
- Variable:S1
+ Variable:S scalar
+ Variable:S1 scalar
  AssignmentOperator:=
 260 GOSUB 610
  LineNumber:610
 270 LET S1$ = S$
  Token 'InvalidToken:$' is not a value or operator
 280 LET S = S2
- Variable:S
- Variable:S2
+ Variable:S scalar
+ Variable:S2 scalar
  AssignmentOperator:=
 290 GOSUB 610
  LineNumber:610
 300 LET S2$ = S$
  Token 'InvalidToken:$' is not a value or operator
 310 LET S = S3
- Variable:S
- Variable:S3
+ Variable:S scalar
+ Variable:S3 scalar
  AssignmentOperator:=
 320 GOSUB 610
  LineNumber:610
@@ -113,49 +113,49 @@
 450 IF S3$ = "CHERRY" THEN 540
  Token 'InvalidToken:$' is not a value or operator
 460 LET J = J - 1
- Variable:J
- Variable:J
+ Variable:J scalar
+ Variable:J scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 470 GOTO 550
  LineNumber:550
 480 LET J = J + 89
- Variable:J
- Variable:J
+ Variable:J scalar
+ Variable:J scalar
  NumericConstant:89
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 490 GOTO 550
  LineNumber:550
 500 LET J = J + 2
- Variable:J
- Variable:J
+ Variable:J scalar
+ Variable:J scalar
  NumericConstant:2
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 510 GOTO 550
  LineNumber:550
 520 LET J = J + 1
- Variable:J
- Variable:J
+ Variable:J scalar
+ Variable:J scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 530 GOTO 550
  LineNumber:550
 540 LET J = J + 9
- Variable:J
- Variable:J
+ Variable:J scalar
+ Variable:J scalar
  NumericConstant:9
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 550 PRINT
  CarriageControl:NL
 560 PRINT S1$;" ";S2$;" ";S3$
- Syntax error: "S1$" is not a value or operator
- Syntax error: "S2$" is not a value or operator
- Syntax error: "S3$" is not a value or operator
+ Syntax error: "S1$" Token 'InvalidToken:$' is not a value or operator
+ Syntax error: "S2$" Token 'InvalidToken:$' is not a value or operator
+ Syntax error: "S3$" Token 'InvalidToken:$' is not a value or operator
  CarriageControl:;
  TextConstant:" "
  CarriageControl:;
@@ -165,18 +165,18 @@
 570 PRINT "YOUR EARNINGS ARE NOW $";J
  TextConstant:"YOUR EARNINGS ARE NOW $"
  CarriageControl:;
- Variable:J
+ Variable:J scalar
  CarriageControl:NL
 580 GOTO 720
  LineNumber:720
 590 LET S = 1 + INT(5*RND)
- Variable:S
+ Variable:S scalar
  NumericConstant:1
  NumericConstant:5
- FunctionRnd
- BinaryOperatorMultiply:* numeric
- FunctionInt
- BinaryOperatorPlus:+ numeric
+ FunctionRnd scalar
+ BinaryOperatorMultiply:* numeric scalar
+ FunctionInt scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 600 600 RETURN
  Unknown statement '600 RETURN'
@@ -210,7 +210,7 @@
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 740 INPUT Z$
- Syntax error: "Z$" is not a value or operator
+ Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
 750 IF Z$ = "Y" THEN 780
  Token 'InvalidToken:$' is not a value or operator
 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"

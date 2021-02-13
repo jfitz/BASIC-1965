@@ -1,78 +1,78 @@
 100 MAT A = ZER(3,3)
- Variable:A
+ Variable:A matrix
  NumericConstant:3
  NumericConstant:3
- FunctionZer2
+ FunctionZer2 matrix
  AssignmentOperator:=
 110 MAT B = CON(3,3)
- Variable:B
+ Variable:B matrix
  NumericConstant:3
  NumericConstant:3
- FunctionCon2
+ FunctionCon2 matrix
  AssignmentOperator:=
 120 MAT C = IDN(3,3)
- Variable:C
+ Variable:C matrix
  NumericConstant:3
  NumericConstant:3
- FunctionIdn
+ FunctionIdn matrix
  AssignmentOperator:=
 130
 200 PRINT "ALL ZEROES"
  TextConstant:"ALL ZEROES"
  CarriageControl:NL
 210 MAT PRINT A
- Variable:A
+ Variable:A matrix
  CarriageControl:NL
 220 PRINT "ALL ONES"
  TextConstant:"ALL ONES"
  CarriageControl:NL
 230 MAT PRINT B
- Variable:B
+ Variable:B matrix
  CarriageControl:NL
 240 PRINT "IDENTITY MATRIX"
  TextConstant:"IDENTITY MATRIX"
  CarriageControl:NL
 250 MAT PRINT C
- Variable:C
+ Variable:C matrix
  CarriageControl:NL
 260
 300 MAT READ A
- Variable:A
+ Variable:A matrix
 310 PRINT "SQUARE MATRIX"
  TextConstant:"SQUARE MATRIX"
  CarriageControl:NL
 320 MAT PRINT A
- Variable:A
+ Variable:A matrix
  CarriageControl:NL
 330 MAT B = INV(A)
- Variable:B
- Variable:A
- FunctionInv
+ Variable:B matrix
+ Variable:A matrix
+ FunctionInv matrix
  AssignmentOperator:=
 340 PRINT "ITS INVERSE"
  TextConstant:"ITS INVERSE"
  CarriageControl:NL
 350 MAT PRINT B
- Variable:B
+ Variable:B matrix
  CarriageControl:NL
 360
 400 MAT R = A*B
- Variable:R
- Variable:A
- Variable:B
- BinaryOperatorMultiply:* numeric
+ Variable:R matrix
+ Variable:A matrix
+ Variable:B matrix
+ BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 410 MAT R = R-C
- Variable:R
- Variable:R
- Variable:C
- BinaryOperatorMinus:- numeric
+ Variable:R matrix
+ Variable:R matrix
+ Variable:C matrix
+ BinaryOperatorMinus:- numeric matrix
  AssignmentOperator:=
 420 PRINT "ROUNDOFF ERRORS"
  TextConstant:"ROUNDOFF ERRORS"
  CarriageControl:NL
 430 MAT PRINT R
- Variable:R
+ Variable:R matrix
  CarriageControl:NL
 440
 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5

@@ -6,41 +6,41 @@
  TextConstant:"X = "
  CarriageControl:;
 40 INPUT X
- Variable:X
+ Variable:X scalar
 50 LET Z = 1
- Variable:Z
+ Variable:Z scalar
  NumericConstant:1
  AssignmentOperator:=
 60 FOR I = 1 TO X
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:X"]
+ end:     ["Variable:X scalar"]
 70 LET Z = Z*I
- Variable:Z
- Variable:Z
- Variable:I
- BinaryOperatorMultiply:* numeric
+ Variable:Z scalar
+ Variable:Z scalar
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 80 NEXT I
- Variable:I
+ Variable:I scalar
 90 PRINT "X = ";X,"X! = ";Z
  TextConstant:"X = "
  CarriageControl:;
- Variable:X
+ Variable:X scalar
  CarriageControl:,
  TextConstant:"X! = "
  CarriageControl:;
- Variable:Z
+ Variable:Z scalar
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- Variable:L
+ Variable:L scalar
 120 IF L = 1 THEN 140
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 130 STOP
  
 140 PRINT

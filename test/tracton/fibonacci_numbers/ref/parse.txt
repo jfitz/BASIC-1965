@@ -4,17 +4,17 @@
  TextConstant:"ENTER FIRST TERM"
  CarriageControl:NL
 30 INPUT A
- Variable:A
+ Variable:A scalar
 40 PRINT "ENTER SECOND TERM"
  TextConstant:"ENTER SECOND TERM"
  CarriageControl:NL
 50 INPUT B
- Variable:B
+ Variable:B scalar
 60 PRINT "MAXIMUM NUMBER OF TERMS = "
  TextConstant:"MAXIMUM NUMBER OF TERMS = "
  CarriageControl:NL
 70 INPUT N
- Variable:N
+ Variable:N scalar
 80 PRINT
  CarriageControl:NL
 90 PRINT "TABLE OF FIBONACCI NUMBERS"
@@ -26,52 +26,52 @@
  TextConstant:"FIBONACCI NUMBER"
  CarriageControl:NL
 110 LET K = 1
- Variable:K
+ Variable:K scalar
  NumericConstant:1
  AssignmentOperator:=
 120 PRINT K,A
- Variable:K
+ Variable:K scalar
  CarriageControl:,
- Variable:A
+ Variable:A scalar
  CarriageControl:NL
 130 LET K = 2
- Variable:K
+ Variable:K scalar
  NumericConstant:2
  AssignmentOperator:=
 140 PRINT K,B
- Variable:K
+ Variable:K scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:NL
 150 LET K = K + 1
- Variable:K
- Variable:K
+ Variable:K scalar
+ Variable:K scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 160 LET Q = A + B
- Variable:Q
- Variable:A
- Variable:B
- BinaryOperatorPlus:+ numeric
+ Variable:Q scalar
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 170 PRINT K,Q
- Variable:K
+ Variable:K scalar
  CarriageControl:,
- Variable:Q
+ Variable:Q scalar
  CarriageControl:NL
 180 LET A = B
- Variable:A
- Variable:B
+ Variable:A scalar
+ Variable:B scalar
  AssignmentOperator:=
 190 LET B = Q
- Variable:B
- Variable:Q
+ Variable:B scalar
+ Variable:Q scalar
  AssignmentOperator:=
 200 IF K > = N THEN 220
- Variable:K
- Variable:N
- BinaryOperatorGreaterEqual:>= boolean
+ Variable:K scalar
+ Variable:N scalar
+ BinaryOperatorGreaterEqual:>= boolean scalar
 210 GOTO 150
  LineNumber:150
 220 PRINT "MAXIMUM NUMBER OF TERMS REACHED"
@@ -83,11 +83,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 250 INPUT L
- Variable:L
+ Variable:L scalar
 260 IF L = 1 THEN 280
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 270 STOP
  
 280 PRINT

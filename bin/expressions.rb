@@ -699,13 +699,6 @@ class Parser
   end
 
   def parse(element)
-    ## puts "ELEMENT: #{element}"
-    ## puts "OP STK: #{@operator_stack.map(&:to_s)}"
-    ## puts "ELEM STK: #{@elements_stack.map(&:to_s)}"
-    ## puts "CURR ELEM: #{@current_elements.map(&:to_s)}"
-    ## puts "PAREN STK: #{@parens_stack.map(&:to_s)}"
-    ## puts "SHAPE STK: #{@shape_stack.map(&:to_s)}"
-    ## puts "PARENS GR: #{@parens_group.map(&:to_s)}"
     if element.group_separator?
       group_separator(element)
     elsif element.operator?
@@ -721,7 +714,6 @@ class Parser
   end
 
   def expressions
-    ## puts "OP STK: #{@operator_stack.map(&:to_s)}"
     raise(BASICExpressionError, 'Too many operators') unless
       @operator_stack.empty?
 
@@ -987,6 +979,25 @@ class Expression
     end
   end
 
+  def shape
+    my_shape = :scalar
+
+    unless @elements.empty?
+      element0 = @elements[-1]
+      my_shape = element0.shape
+    end
+
+    my_shape
+  end
+
+  def set_shape
+    stack = []
+
+    @elements.each do |element|
+      element.set_shape(stack)
+    end
+  end
+
   def dump
     lines = []
 
@@ -1183,7 +1194,7 @@ end
 class AbstractExpressionSet
   attr_reader :comprehension_effort
 
-  def initialize(tokens, shape)
+  def initialize(tokens, my_shape)
     @tokens = tokens
     @numeric_constant = tokens.size == 1 && tokens[0].numeric_constant?
     @text_constant = tokens.size == 1 && tokens[0].text_constant?
@@ -1192,12 +1203,12 @@ class AbstractExpressionSet
 
     # build elements and parse into expression
     elements = tokens_to_elements(tokens)
-    parser = Parser.new(shape)
+    parser = Parser.new(my_shape)
     elements.each { |element| parser.parse(element) }
     @expressions = parser.expressions
     set_arguments_1(@expressions)
 
-    @shape = shape
+    @shape = my_shape
 
     @comprehension_effort = 1
     @expressions.each do |expression|
@@ -1319,7 +1330,7 @@ class AbstractExpressionSet
       end
     end
 
-    raise(BASICExpressionError, 'Bad expression') if
+    raise(BASICExpressionError, 'Bad expression 1') if
       content_type_stack.size > 1
   end
 
@@ -1399,11 +1410,15 @@ end
 
 # Value expression (an R-value)
 class ValueExpressionSet < AbstractExpressionSet
-  def initialize(_, shape)
+  def initialize(_, my_shape)
     super
 
     @expressions.each do |expression|
       expression.set_content_type
+    end
+
+    @expressions.each do |expression|
+      expression.set_shape
     end
   end
 
@@ -1472,6 +1487,14 @@ class DeclarationExpressionSet < AbstractExpressionSet
 
     check_all_lengths
     check_resolve_types
+
+    @expressions.each do |expression|
+      expression.set_content_type
+    end
+
+    @expressions.each do |expression|
+      expression.set_shape
+    end
   end
 
   private
@@ -1498,7 +1521,7 @@ end
 
 # Target expression
 class TargetExpressionSet < AbstractExpressionSet
-  def initialize(tokens, shape)
+  def initialize(tokens, my_shape)
     super
 
     check_length
@@ -1511,6 +1534,14 @@ class TargetExpressionSet < AbstractExpressionSet
       elements = expression.elements
 
       elements[-1].valref = :reference
+    end
+
+    @expressions.each do |expression|
+      expression.set_content_type
+    end
+
+    @expressions.each do |expression|
+      expression.set_shape
     end
   end
 
@@ -1703,7 +1734,7 @@ class Assignment
   attr_reader :userfuncs
   attr_reader :comprehension_effort
 
-  def initialize(tokens, shape)
+  def initialize(tokens, my_shape)
     # parse into variable, '=', expression
     @token_lists = split_tokens(tokens)
 
@@ -1721,8 +1752,8 @@ class Assignment
     @functions = []
     @userfuncs = []
 
-    @target = TargetExpressionSet.new(@token_lists[0], shape)
-    @expression = ValueExpressionSet.new(@token_lists[2], shape)
+    @target = TargetExpressionSet.new(@token_lists[0], my_shape)
+    @expression = ValueExpressionSet.new(@token_lists[2], my_shape)
     make_references
     @comprehension_effort = @target.comprehension_effort + @expression.comprehension_effort
   end

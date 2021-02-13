@@ -1,88 +1,88 @@
 10 DIM D(20)
  NumericConstant:20
- Declaration:D
+ Declaration:D scalar
 20 READ A,Y,T,R
- Variable:A
- Variable:Y
- Variable:T
- Variable:R
+ Variable:A scalar
+ Variable:Y scalar
+ Variable:T scalar
+ Variable:R scalar
 30 PRINT "YEAR", "DEPRECIATE"
  TextConstant:"YEAR"
  CarriageControl:,
  TextConstant:"DEPRECIATE"
  CarriageControl:NL
 40 LET Y9 = Y*(Y+1)/2
- Variable:Y9
- Variable:Y
- Variable:Y
+ Variable:Y9 scalar
+ Variable:Y scalar
+ Variable:Y scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 FOR I = 1 TO Y
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:Y"]
+ end:     ["Variable:Y scalar"]
 110    LET D(I) = A*(Y-I+1)/Y9
- Variable:I
- Variable:D
- Variable:A
- Variable:Y
- Variable:I
- BinaryOperatorMinus:- numeric
+ Variable:I scalar
+ Variable:D scalar
+ Variable:A scalar
+ Variable:Y scalar
+ Variable:I scalar
+ BinaryOperatorMinus:- numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
- BinaryOperatorMultiply:* numeric
- Variable:Y9
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:Y9 scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 120    PRINT I, D(I)
- Variable:I
+ Variable:I scalar
  CarriageControl:,
- Variable:I
- Variable:D
+ Variable:I scalar
+ Variable:D scalar
  CarriageControl:NL
 130 NEXT I
- Variable:I
+ Variable:I scalar
 140 PRINT
  CarriageControl:NL
 200 LET S = 0
- Variable:S
+ Variable:S scalar
  NumericConstant:0
  AssignmentOperator:=
 210 FOR I = 1 TO Y
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:Y"]
+ end:     ["Variable:Y scalar"]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
- Variable:S
- Variable:S
- Variable:I
- Variable:D
- Variable:T
+ Variable:S scalar
+ Variable:S scalar
+ Variable:I scalar
+ Variable:D scalar
+ Variable:T scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- Variable:R
+ Variable:R scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
- Variable:Y
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:Y scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 230 NEXT I
- Variable:I
+ Variable:I scalar
 240 PRINT "SAVING = $" S
  TextConstant:"SAVING = $"
  CarriageControl:
- Variable:S
+ Variable:S scalar
  CarriageControl:NL
 900 DATA 5000,7,48,4.5
  NumericConstant:5000

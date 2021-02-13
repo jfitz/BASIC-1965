@@ -1,17 +1,17 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
  UserFunctionName:FNF
  VariableName:X
- Variable:X
+ Variable:X scalar
  NumericConstant:5
- BinaryOperatorPower:^ numeric
+ BinaryOperatorPower:^ numeric scalar
  NumericConstant:2
- Variable:X
+ Variable:X scalar
  NumericConstant:3
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric scalar
 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
  Remark:DEF FNF(X) = -3*X^5 + X^3 + 1
 12 REM DEF FNF(X) = X^2 + 1
@@ -21,155 +21,155 @@
 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
  Remark:DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
 20 READ A,B
- Variable:A
- Variable:B
+ Variable:A scalar
+ Variable:B scalar
 22 GOSUB 200
  LineNumber:200
 26 LET X(1+S) = A
  NumericConstant:1
- Variable:S
- BinaryOperatorPlus:+ numeric
- Variable:X
- Variable:A
+ Variable:S scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:X scalar
+ Variable:A scalar
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
- Variable:S
- BinaryOperatorMinus:- numeric
- Variable:X
- Variable:B
+ Variable:S scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:X scalar
+ Variable:B scalar
  AssignmentOperator:=
 30 LET X = (X(0)+X(2))/2
- Variable:X
+ Variable:X scalar
  NumericConstant:0
- Variable:X
+ Variable:X scalar
  NumericConstant:2
- Variable:X
- BinaryOperatorPlus:+ numeric
+ Variable:X scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 35 LET F = SGN(FNF(X))
- Variable:F
- Variable:X
- UserFunction
- FunctionSgn
+ Variable:F scalar
+ Variable:X scalar
+ UserFunction scalar
+ FunctionSgn scalar
  AssignmentOperator:=
 40 IF F = 0 THEN 100
- Variable:F
+ Variable:F scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 50 LET X(1+F) = X
  NumericConstant:1
- Variable:F
- BinaryOperatorPlus:+ numeric
- Variable:X
- Variable:X
+ Variable:F scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:X scalar
+ Variable:X scalar
  AssignmentOperator:=
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericConstant:0
- Variable:X
+ Variable:X scalar
  NumericConstant:2
- Variable:X
- BinaryOperatorMinus:- numeric
- FunctionAbs
+ Variable:X scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionAbs scalar
  NumericConstant:0
- Variable:X
- FunctionAbs
+ Variable:X scalar
+ FunctionAbs scalar
  NumericConstant:2
- Variable:X
- FunctionAbs
- BinaryOperatorPlus:+ numeric
- BinaryOperatorDivide:/ numeric
+ Variable:X scalar
+ FunctionAbs scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  NumericConstant:5.0e-07
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
  TextConstant:"ONE ZERO AT"
  CarriageControl:
- Variable:X
+ Variable:X scalar
  CarriageControl:NL
 110 STOP
  
 200 LET S = SGN(FNF(A))
- Variable:S
- Variable:A
- UserFunction
- FunctionSgn
+ Variable:S scalar
+ Variable:A scalar
+ UserFunction scalar
+ FunctionSgn scalar
  AssignmentOperator:=
 210 LET T = SGN(FNF(B))
- Variable:T
- Variable:B
- UserFunction
- FunctionSgn
+ Variable:T scalar
+ Variable:B scalar
+ UserFunction scalar
+ FunctionSgn scalar
  AssignmentOperator:=
 220 IF S*T = 0 THEN 400
- Variable:S
- Variable:T
- BinaryOperatorMultiply:* numeric
+ Variable:S scalar
+ Variable:T scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 230 IF S*T > 0 THEN 300
- Variable:S
- Variable:T
- BinaryOperatorMultiply:* numeric
+ Variable:S scalar
+ Variable:T scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 240 RETURN
  
 300 LET L = B-A
- Variable:L
- Variable:B
- Variable:A
- BinaryOperatorMinus:- numeric
+ Variable:L scalar
+ Variable:B scalar
+ Variable:A scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 310 FOR I = 1 TO 1000
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:1000"]
 320 LET X = A + RND()*L
- Variable:X
- Variable:A
- FunctionRnd
- Variable:L
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:X scalar
+ Variable:A scalar
+ FunctionRnd scalar
+ Variable:L scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 330 IF S * SGN(FNF(X)) < 0 THEN 370
- Variable:S
- Variable:X
- UserFunction
- FunctionSgn
- BinaryOperatorMultiply:* numeric
+ Variable:S scalar
+ Variable:X scalar
+ UserFunction scalar
+ FunctionSgn scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 340 NEXT I
- Variable:I
+ Variable:I scalar
 350 PRINT "NO CHANGE OF SIGN FOUND"
  TextConstant:"NO CHANGE OF SIGN FOUND"
  CarriageControl:NL
 360 STOP
  
 370 LET B = X
- Variable:B
- Variable:X
+ Variable:B scalar
+ Variable:X scalar
  AssignmentOperator:=
 380 RETURN
  
 400 IF S = 0 THEN 430
- Variable:S
+ Variable:S scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 410 LET X = B
- Variable:X
- Variable:B
+ Variable:X scalar
+ Variable:B scalar
  AssignmentOperator:=
 420 GOTO 100
  LineNumber:100
 430 LET X = A
- Variable:X
- Variable:A
+ Variable:X scalar
+ Variable:A scalar
  AssignmentOperator:=
 440 GOTO 100
  LineNumber:100

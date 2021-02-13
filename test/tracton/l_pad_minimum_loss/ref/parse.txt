@@ -8,57 +8,57 @@
  TextConstant:"1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
- Variable:Z1
+ Variable:Z1 scalar
 60 PRINT "2ND IMPEDANCE"
  TextConstant:"2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
- Variable:Z2
+ Variable:Z2 scalar
 80 LET R1 = Z1*SQR(1 - (Z2/Z1))
- Variable:R1
- Variable:Z1
+ Variable:R1 scalar
+ Variable:Z1 scalar
  NumericConstant:1
- Variable:Z2
- Variable:Z1
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMinus:- numeric
- FunctionSqr
- BinaryOperatorMultiply:* numeric
+ Variable:Z2 scalar
+ Variable:Z1 scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionSqr scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
- Variable:R2
- Variable:Z2
+ Variable:R2 scalar
+ Variable:Z2 scalar
  NumericConstant:1
- Variable:Z2
- Variable:Z1
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMinus:- numeric
- FunctionSqr
- BinaryOperatorDivide:/ numeric
+ Variable:Z2 scalar
+ Variable:Z1 scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionSqr scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
- Variable:M
- Variable:Z1
- Variable:Z2
- BinaryOperatorDivide:/ numeric
- FunctionSqr
- Variable:Z1
- Variable:Z2
- BinaryOperatorDivide:/ numeric
+ Variable:M scalar
+ Variable:Z1 scalar
+ Variable:Z2 scalar
+ BinaryOperatorDivide:/ numeric scalar
+ FunctionSqr scalar
+ Variable:Z1 scalar
+ Variable:Z2 scalar
+ BinaryOperatorDivide:/ numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
- FunctionSqr
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorMinus:- numeric scalar
+ FunctionSqr scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 110 LET L = 20*(LOG(M)/LOG(10))
- Variable:L
+ Variable:L scalar
  NumericConstant:20
- Variable:M
- FunctionLog
+ Variable:M scalar
+ FunctionLog scalar
  NumericConstant:10
- FunctionLog
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMultiply:* numeric
+ FunctionLog scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 120 PRINT "COMPONENTS OF THE L-PAD"
  TextConstant:"COMPONENTS OF THE L-PAD"
@@ -66,17 +66,17 @@
 130 PRINT "RESISTOR 1 = ";R1
  TextConstant:"RESISTOR 1 = "
  CarriageControl:;
- Variable:R1
+ Variable:R1 scalar
  CarriageControl:NL
 140 PRINT "RESISTOR 2 = ";R2
  TextConstant:"RESISTOR 2 = "
  CarriageControl:;
- Variable:R2
+ Variable:R2 scalar
  CarriageControl:NL
 150 PRINT "LOSS IN DECIBELS = ";L
  TextConstant:"LOSS IN DECIBELS = "
  CarriageControl:;
- Variable:L
+ Variable:L scalar
  CarriageControl:NL
 160 PRINT
  CarriageControl:NL
@@ -84,11 +84,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT X
- Variable:X
+ Variable:X scalar
 190 IF X = 1 THEN 210
- Variable:X
+ Variable:X scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 200 STOP
  
 210 PRINT

@@ -8,42 +8,42 @@
  TextConstant:"SQR(15+X)-SQR(X)"
  CarriageControl:NL
 30 FOR X = 1 TO 100
- control: Variable:X
+ control: Variable:X scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:100"]
 40 LET A1 = SQR(15+X)
- Variable:A1
+ Variable:A1 scalar
  NumericConstant:15
- Variable:X
- BinaryOperatorPlus:+ numeric
- FunctionSqr
+ Variable:X scalar
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionSqr scalar
  AssignmentOperator:=
 50 LET A2 = SQR(X)
- Variable:A2
- Variable:X
- FunctionSqr
+ Variable:A2 scalar
+ Variable:X scalar
+ FunctionSqr scalar
  AssignmentOperator:=
 60 LET A = A1+A2
- Variable:A
- Variable:A1
- Variable:A2
- BinaryOperatorPlus:+ numeric
+ Variable:A scalar
+ Variable:A1 scalar
+ Variable:A2 scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 70 LET B = A1-A2
- Variable:B
- Variable:A1
- Variable:A2
- BinaryOperatorMinus:- numeric
+ Variable:B scalar
+ Variable:A1 scalar
+ Variable:A2 scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 80 PRINT X,A,B
- Variable:X
+ Variable:X scalar
  CarriageControl:,
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:NL
 90 NEXT X
- Variable:X
+ Variable:X scalar
 99 END
  
 

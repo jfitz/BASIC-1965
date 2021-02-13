@@ -2,15 +2,15 @@
  Remark:This is a test
 15 DIM A(3)
  NumericConstant:3
- Declaration:A
+ Declaration:A scalar
 20 FILES "input.txt"
  TextConstant:"input.txt"
 30 ARR INPUT #1;A
  NumericConstant:1
- UnaryOperatorHash:# filehandle
- Variable:A
+ UnaryOperatorHash:# filehandle scalar
+ Variable:A array
 40 ARR PRINT A
- Variable:A
+ Variable:A array
  CarriageControl:NL
 90 STOP
  

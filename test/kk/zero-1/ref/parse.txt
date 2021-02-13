@@ -1,67 +1,67 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
  UserFunctionName:FNF
  VariableName:X
- Variable:X
+ Variable:X scalar
  NumericConstant:5
- BinaryOperatorPower:^ numeric
+ BinaryOperatorPower:^ numeric scalar
  NumericConstant:2
- Variable:X
+ Variable:X scalar
  NumericConstant:3
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric scalar
 20 READ A,B
- Variable:A
- Variable:B
+ Variable:A scalar
+ Variable:B scalar
 30 LET X = (A+B)/2
- Variable:X
- Variable:A
- Variable:B
- BinaryOperatorPlus:+ numeric
+ Variable:X scalar
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 40 IF FNF(X) = 0 THEN 100
- Variable:X
- UserFunction
+ Variable:X scalar
+ UserFunction scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 50 IF FNF(X) < 0 THEN 70
- Variable:X
- UserFunction
+ Variable:X scalar
+ UserFunction scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 60 LET B = X
- Variable:B
- Variable:X
+ Variable:B scalar
+ Variable:X scalar
  AssignmentOperator:=
 65 GOTO 80
  LineNumber:80
 70 LET A = X
- Variable:A
- Variable:X
+ Variable:A scalar
+ Variable:X scalar
  AssignmentOperator:=
 80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.000005 THEN 100
- Variable:A
- Variable:B
- BinaryOperatorMinus:- numeric
- FunctionAbs
- Variable:A
- FunctionAbs
- Variable:B
- FunctionAbs
- BinaryOperatorPlus:+ numeric
- BinaryOperatorDivide:/ numeric
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionAbs scalar
+ Variable:A scalar
+ FunctionAbs scalar
+ Variable:B scalar
+ FunctionAbs scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  NumericConstant:5.0e-06
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
  TextConstant:"ONE ZERO AT"
  CarriageControl:
- Variable:X
+ Variable:X scalar
  CarriageControl:NL
 900 DATA 0,1
  NumericConstant:0

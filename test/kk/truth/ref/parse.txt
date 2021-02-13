@@ -10,64 +10,64 @@
 15 PRINT
  CarriageControl:NL
 20 FOR P = 1 TO 0 STEP -1
- control: Variable:P
+ control: Variable:P scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
 30     FOR Q = 1 TO 0 STEP -1
- control: Variable:Q
+ control: Variable:Q scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
 40         FOR R = 1 TO 0 STEP -1
- control: Variable:R
+ control: Variable:R scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
 50             LET X = P
- Variable:X
- Variable:P
+ Variable:X scalar
+ Variable:P scalar
  AssignmentOperator:=
 60             GOSUB 200
  LineNumber:200
 70             LET X = Q
- Variable:X
- Variable:Q
+ Variable:X scalar
+ Variable:Q scalar
  AssignmentOperator:=
 80             GOSUB 200
  LineNumber:200
 90             LET X = R
- Variable:X
- Variable:R
+ Variable:X scalar
+ Variable:R scalar
  AssignmentOperator:=
 95             GOSUB 200
  LineNumber:200
 100            LET X = P*SGN(Q+R)
- Variable:X
- Variable:P
- Variable:Q
- Variable:R
- BinaryOperatorPlus:+ numeric
- FunctionSgn
- BinaryOperatorMultiply:* numeric
+ Variable:X scalar
+ Variable:P scalar
+ Variable:Q scalar
+ Variable:R scalar
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionSgn scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 110            GOSUB 200
  LineNumber:200
 120            PRINT
  CarriageControl:NL
 130        NEXT R
- Variable:R
+ Variable:R scalar
 140    NEXT Q
- Variable:Q
+ Variable:Q scalar
 150 NEXT P
- Variable:P
+ Variable:P scalar
 160 STOP
  
 170
 200 IF X > 0 THEN 250
- Variable:X
+ Variable:X scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 210 PRINT "FALSE",
  TextConstant:"FALSE"
  CarriageControl:,

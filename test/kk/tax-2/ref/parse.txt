@@ -1,107 +1,107 @@
 10 DIM D(20)
  NumericConstant:20
- Declaration:D
+ Declaration:D scalar
 20 READ A,Y
- Variable:A
- Variable:Y
+ Variable:A scalar
+ Variable:Y scalar
 30 READ T,R
- Variable:T
- Variable:R
+ Variable:T scalar
+ Variable:R scalar
 40 PRINT "YEAR", "SAVING"
  TextConstant:"YEAR"
  CarriageControl:,
  TextConstant:"SAVING"
  CarriageControl:NL
 100 FOR Y1 = 1 TO Y
- control: Variable:Y1
+ control: Variable:Y1 scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:Y"]
+ end:     ["Variable:Y scalar"]
 105    PRINT Y1,
- Variable:Y1
+ Variable:Y1 scalar
  CarriageControl:,
 108    LET A1 = A
- Variable:A1
- Variable:A
+ Variable:A1 scalar
+ Variable:A scalar
  AssignmentOperator:=
 110    FOR I = 1 TO Y1-1
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:Y1", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
+ end:     ["Variable:Y1 scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 120       LET D(I) = A1*2/Y
- Variable:I
- Variable:D
- Variable:A1
+ Variable:I scalar
+ Variable:D scalar
+ Variable:A1 scalar
  NumericConstant:2
- BinaryOperatorMultiply:* numeric
- Variable:Y
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:Y scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 130       LET A1 = A1 - D(I)
- Variable:A1
- Variable:A1
- Variable:I
- Variable:D
- BinaryOperatorMinus:- numeric
+ Variable:A1 scalar
+ Variable:A1 scalar
+ Variable:I scalar
+ Variable:D scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 150    NEXT I
- Variable:I
+ Variable:I scalar
 160    LET D = A1/(Y-Y1+1)
- Variable:D
- Variable:A1
- Variable:Y
- Variable:Y1
- BinaryOperatorMinus:- numeric
+ Variable:D scalar
+ Variable:A1 scalar
+ Variable:Y scalar
+ Variable:Y1 scalar
+ BinaryOperatorMinus:- numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 170    FOR I = Y1 TO Y
- control: Variable:I
- start:   ["Variable:Y1"]
- end:     ["Variable:Y"]
+ control: Variable:I scalar
+ start:   ["Variable:Y1 scalar"]
+ end:     ["Variable:Y scalar"]
 180       LET D(I) = D
- Variable:I
- Variable:D
- Variable:D
+ Variable:I scalar
+ Variable:D scalar
+ Variable:D scalar
  AssignmentOperator:=
 190    NEXT I
- Variable:I
+ Variable:I scalar
 200    LET S = 0
- Variable:S
+ Variable:S scalar
  NumericConstant:0
  AssignmentOperator:=
 210    FOR I = 1 TO Y
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:Y"]
+ end:     ["Variable:Y scalar"]
 220       LET S = S + D(I)*(T/100)*(1+R/100)^(Y-I)
- Variable:S
- Variable:S
- Variable:I
- Variable:D
- Variable:T
+ Variable:S scalar
+ Variable:S scalar
+ Variable:I scalar
+ Variable:D scalar
+ Variable:T scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- Variable:R
+ Variable:R scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
- Variable:Y
- Variable:I
- BinaryOperatorMinus:- numeric
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:Y scalar
+ Variable:I scalar
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 230    NEXT I
- Variable:I
+ Variable:I scalar
 240    PRINT S
- Variable:S
+ Variable:S scalar
  CarriageControl:NL
 290 NEXT Y1
- Variable:Y1
+ Variable:Y1 scalar
 900 DATA 5000,7
  NumericConstant:5000
  NumericConstant:7

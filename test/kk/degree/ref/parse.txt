@@ -2,21 +2,21 @@
  TextConstant:"FAHRENHEIT"
  CarriageControl:;
 110 INPUT F
- Variable:F
+ Variable:F scalar
 120 LET C = (F-32)*5/9
- Variable:C
- Variable:F
+ Variable:C scalar
+ Variable:F scalar
  NumericConstant:32
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric scalar
  NumericConstant:5
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:9
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 130 PRINT "CENTIGRADE:" C
  TextConstant:"CENTIGRADE:"
  CarriageControl:
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 140 PRINT
  CarriageControl:NL

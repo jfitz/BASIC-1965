@@ -1,12 +1,12 @@
 100 READ A, B, C, D
- Variable:A
- Variable:B
- Variable:C
- Variable:D
+ Variable:A scalar
+ Variable:B scalar
+ Variable:C scalar
+ Variable:D scalar
 110 READ T8, T9, P
- Variable:T8
- Variable:T9
- Variable:P
+ Variable:T8 scalar
+ Variable:T9 scalar
+ Variable:P scalar
 140 DATA 4, 2, 1, 3
  NumericConstant:4
  NumericConstant:2
@@ -17,7 +17,7 @@
  NumericConstant:4
  NumericConstant:35
 160 LET T1 = 0
- Variable:T1
+ Variable:T1 scalar
  NumericConstant:0
  AssignmentOperator:=
 170
@@ -31,73 +31,73 @@
 190 PRINT
  CarriageControl:NL
 200 READ X, Y
- Variable:X
- Variable:Y
+ Variable:X scalar
+ Variable:Y scalar
 210 PRINT 0, X, Y
  NumericConstant:0
  CarriageControl:,
- Variable:X
+ Variable:X scalar
  CarriageControl:,
- Variable:Y
+ Variable:Y scalar
  CarriageControl:NL
 220 FOR I = 1 TO P
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:P"]
+ end:     ["Variable:P scalar"]
 230 FOR T = 0 TO T9/P STEP T8
- control: Variable:T
+ control: Variable:T scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:T9", "Variable:P", "BinaryOperatorDivide:/ numeric"]
- step:    ["Variable:T8"]
+ end:     ["Variable:T9 scalar", "Variable:P scalar", "BinaryOperatorDivide:/ numeric scalar"]
+ step:    ["Variable:T8 scalar"]
 240 LET X = X + (A*X - B*X*Y)*T8
- Variable:X
- Variable:X
- Variable:A
- Variable:X
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:X
- BinaryOperatorMultiply:* numeric
- Variable:Y
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:T8
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:X scalar
+ Variable:X scalar
+ Variable:A scalar
+ Variable:X scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:X scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:Y scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:T8 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
- Variable:Y
- Variable:Y
- Variable:C
- Variable:X
- BinaryOperatorMultiply:* numeric
- Variable:Y
- BinaryOperatorMultiply:* numeric
- Variable:D
- Variable:Y
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:T8
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:Y scalar
+ Variable:Y scalar
+ Variable:C scalar
+ Variable:X scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:Y scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:D scalar
+ Variable:Y scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:T8 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 255 LET T1 = T1 + T8
- Variable:T1
- Variable:T1
- Variable:T8
- BinaryOperatorPlus:+ numeric
+ Variable:T1 scalar
+ Variable:T1 scalar
+ Variable:T8 scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 260 NEXT T
- Variable:T
+ Variable:T scalar
 270 PRINT T1, X, Y
- Variable:T1
+ Variable:T1 scalar
  CarriageControl:,
- Variable:X
+ Variable:X scalar
  CarriageControl:,
- Variable:Y
+ Variable:Y scalar
  CarriageControl:NL
 280 NEXT I
- Variable:I
+ Variable:I scalar
 290
 900 DATA 3,.5
  NumericConstant:3

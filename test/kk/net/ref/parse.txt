@@ -1,139 +1,139 @@
 100 DEF FNR(X)=INT(X*1E3 + .5)/1E3
  UserFunctionName:FNR
  VariableName:X
- Variable:X
+ Variable:X scalar
  NumericConstant:1000
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0.5
- BinaryOperatorPlus:+ numeric
- FunctionInt
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionInt scalar
  NumericConstant:1000
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
 110 DIM C(20,20), U(20,20), B(20), P(20)
  NumericConstant:20
  NumericConstant:20
- Declaration:C
+ Declaration:C scalar
  NumericConstant:20
  NumericConstant:20
- Declaration:U
+ Declaration:U scalar
  NumericConstant:20
- Declaration:B
+ Declaration:B scalar
  NumericConstant:20
- Declaration:P
+ Declaration:P scalar
 120 READ N,V
- Variable:N
- Variable:V
+ Variable:N scalar
+ Variable:V scalar
 130 MAT C = ZER(N,N)
- Variable:C
- Variable:N
- Variable:N
- FunctionZer2
+ Variable:C matrix
+ Variable:N scalar
+ Variable:N scalar
+ FunctionZer2 matrix
  AssignmentOperator:=
 150 MAT B = ZER(N)
- Variable:B
- Variable:N
- FunctionZer2
+ Variable:B matrix
+ Variable:N scalar
+ FunctionZer2 matrix
  AssignmentOperator:=
 170 LET C(1,1) = 1
  NumericConstant:1
  NumericConstant:1
- Variable:C
+ Variable:C scalar
  NumericConstant:1
  AssignmentOperator:=
 180 LET C(N,N) = 1
- Variable:N
- Variable:N
- Variable:C
+ Variable:N scalar
+ Variable:N scalar
+ Variable:C scalar
  NumericConstant:1
  AssignmentOperator:=
 190 LET B(1) = V
  NumericConstant:1
- Variable:B
- Variable:V
+ Variable:B scalar
+ Variable:V scalar
  AssignmentOperator:=
 200
 210 READ I,J,R
- Variable:I
- Variable:J
- Variable:R
+ Variable:I scalar
+ Variable:J scalar
+ Variable:R scalar
 220 IF I = -1 THEN 270
- Variable:I
+ Variable:I scalar
  NumericConstant:1
- UnaryOperatorMinus:- numeric
- BinaryOperatorEqual:= boolean
+ UnaryOperatorMinus:- numeric scalar
+ BinaryOperatorEqual:= boolean scalar
 230 LET C(I,J) = 1/R
- Variable:I
- Variable:J
- Variable:C
+ Variable:I scalar
+ Variable:J scalar
+ Variable:C scalar
  NumericConstant:1
- Variable:R
- BinaryOperatorDivide:/ numeric
+ Variable:R scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 240 LET C(J,I) = 1/R
- Variable:J
- Variable:I
- Variable:C
+ Variable:J scalar
+ Variable:I scalar
+ Variable:C scalar
  NumericConstant:1
- Variable:R
- BinaryOperatorDivide:/ numeric
+ Variable:R scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 250 GOTO 210
  LineNumber:210
 260
 270 FOR I = 2 TO N-1
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:2"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
+ end:     ["Variable:N scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 280    LET S = 0
- Variable:S
+ Variable:S scalar
  NumericConstant:0
  AssignmentOperator:=
 290    FOR J = 1 TO N
- control: Variable:J
+ control: Variable:J scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N"]
+ end:     ["Variable:N scalar"]
 300       LET S = S+C(I,J)
- Variable:S
- Variable:S
- Variable:I
- Variable:J
- Variable:C
- BinaryOperatorPlus:+ numeric
+ Variable:S scalar
+ Variable:S scalar
+ Variable:I scalar
+ Variable:J scalar
+ Variable:C scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 310    NEXT J
- Variable:J
+ Variable:J scalar
 320    LET C(I,I) = -S
- Variable:I
- Variable:I
- Variable:C
- Variable:S
- UnaryOperatorMinus:- numeric
+ Variable:I scalar
+ Variable:I scalar
+ Variable:C scalar
+ Variable:S scalar
+ UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 330    LET C(1,I) = 0
  NumericConstant:1
- Variable:I
- Variable:C
+ Variable:I scalar
+ Variable:C scalar
  NumericConstant:0
  AssignmentOperator:=
 340    LET C(N,I) = 0
- Variable:N
- Variable:I
- Variable:C
+ Variable:N scalar
+ Variable:I scalar
+ Variable:C scalar
  NumericConstant:0
  AssignmentOperator:=
 350 NEXT I
- Variable:I
+ Variable:I scalar
 360
 370 MAT U = INV(C)
- Variable:U
- Variable:C
- FunctionInv
+ Variable:U matrix
+ Variable:C matrix
+ FunctionInv matrix
  AssignmentOperator:=
 380 MAT P = U*B
- Variable:P
- Variable:U
- Variable:B
- BinaryOperatorMultiply:* numeric
+ Variable:P matrix
+ Variable:U matrix
+ Variable:B matrix
+ BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 390
 400 PRINT "NODE", "VOLTAGE"
@@ -144,18 +144,18 @@
 410 PRINT
  CarriageControl:NL
 420 FOR I = 1 TO N
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N"]
+ end:     ["Variable:N scalar"]
 430    PRINT I, FNR(P(I))
- Variable:I
+ Variable:I scalar
  CarriageControl:,
- Variable:I
- Variable:P
- UserFunction
+ Variable:I scalar
+ Variable:P scalar
+ UserFunction scalar
  CarriageControl:NL
 440 NEXT I
- Variable:I
+ Variable:I scalar
 450 PRINT
  CarriageControl:NL
 460 PRINT
@@ -167,72 +167,72 @@
 490 PRINT
  CarriageControl:NL
 500 LET S1 = 0
- Variable:S1
+ Variable:S1 scalar
  NumericConstant:0
  AssignmentOperator:=
 510 FOR I = 2 TO N-1
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:2"]
- end:     ["Variable:N", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
+ end:     ["Variable:N scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 520    PRINT "NODE" I
  TextConstant:"NODE"
  CarriageControl:
- Variable:I
+ Variable:I scalar
  CarriageControl:NL
 530    FOR J = 1 TO N
- control: Variable:J
+ control: Variable:J scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N"]
+ end:     ["Variable:N scalar"]
 540       PRINT FNR(C(I,J)*(P(I)-P(J))),
- Variable:I
- Variable:J
- Variable:C
- Variable:I
- Variable:P
- Variable:J
- Variable:P
- BinaryOperatorMinus:- numeric
- BinaryOperatorMultiply:* numeric
- UserFunction
+ Variable:I scalar
+ Variable:J scalar
+ Variable:C scalar
+ Variable:I scalar
+ Variable:P scalar
+ Variable:J scalar
+ Variable:P scalar
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ UserFunction scalar
  CarriageControl:,
 550    NEXT J
- Variable:J
+ Variable:J scalar
 560    LET S1 = S1 + C(I,N)*(P(I)-P(N))
- Variable:S1
- Variable:S1
- Variable:I
- Variable:N
- Variable:C
- Variable:I
- Variable:P
- Variable:N
- Variable:P
- BinaryOperatorMinus:- numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:S1 scalar
+ Variable:S1 scalar
+ Variable:I scalar
+ Variable:N scalar
+ Variable:C scalar
+ Variable:I scalar
+ Variable:P scalar
+ Variable:N scalar
+ Variable:P scalar
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 570    PRINT
  CarriageControl:NL
 580    PRINT
  CarriageControl:NL
 590 NEXT I
- Variable:I
+ Variable:I scalar
 600 PRINT
  CarriageControl:NL
 610
 620 PRINT "TOTAL CURRENT = " FNR(S1)
  TextConstant:"TOTAL CURRENT = "
  CarriageControl:
- Variable:S1
- UserFunction
+ Variable:S1 scalar
+ UserFunction scalar
  CarriageControl:NL
 630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V/S1)
  TextConstant:"RESISTANCE OF CIRCUIT = "
  CarriageControl:
- Variable:V
- Variable:S1
- BinaryOperatorDivide:/ numeric
- UserFunction
+ Variable:V scalar
+ Variable:S1 scalar
+ BinaryOperatorDivide:/ numeric scalar
+ UserFunction scalar
  CarriageControl:NL
 640
 650 DATA 7,24
@@ -269,7 +269,7 @@
  NumericConstant:40
 680 DATA -1,0,0
  NumericConstant:1
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:0
  NumericConstant:0
 690 END

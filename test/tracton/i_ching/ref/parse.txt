@@ -7,72 +7,72 @@
  TextConstant:"ENTER DATE AS M,D,Y"
  CarriageControl:NL
 40 INPUT M,D,Y
- Variable:M
- Variable:D
- Variable:Y
+ Variable:M scalar
+ Variable:D scalar
+ Variable:Y scalar
 50 PRINT "ENTER TIME AS H,M(24 HOUR CLOCK)"
  TextConstant:"ENTER TIME AS H,M(24 HOUR CLOCK)"
  CarriageControl:NL
 60 INPUT H,M1
- Variable:H
- Variable:M1
+ Variable:H scalar
+ Variable:M1 scalar
 70 LET N = M + (D/30) + (Y/100) + H + (M1/60)
- Variable:N
- Variable:M
- Variable:D
+ Variable:N scalar
+ Variable:M scalar
+ Variable:D scalar
  NumericConstant:30
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
- Variable:Y
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:Y scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
- Variable:H
- BinaryOperatorPlus:+ numeric
- Variable:M1
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:H scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:M1 scalar
  NumericConstant:60
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 80 FOR I = 1 TO 6
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
 90 LET K = N*RND(0)
- Variable:K
- Variable:N
+ Variable:K scalar
+ Variable:N scalar
  NumericConstant:0
- FunctionRnd
- BinaryOperatorMultiply:* numeric
+ FunctionRnd scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 100 LET K = K - INT(K)
- Variable:K
- Variable:K
- Variable:K
- FunctionInt
- BinaryOperatorMinus:- numeric
+ Variable:K scalar
+ Variable:K scalar
+ Variable:K scalar
+ FunctionInt scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 110 LET C(I) = 1 + INT(2*K)
- Variable:I
- Variable:C
+ Variable:I scalar
+ Variable:C scalar
  NumericConstant:1
  NumericConstant:2
- Variable:K
- BinaryOperatorMultiply:* numeric
- FunctionInt
- BinaryOperatorPlus:+ numeric
+ Variable:K scalar
+ BinaryOperatorMultiply:* numeric scalar
+ FunctionInt scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 120 NEXT I
- Variable:I
+ Variable:I scalar
 130 FOR I = 1 TO 6
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
 140 IF C(I) = 1 THEN 170
- Variable:I
- Variable:C
+ Variable:I scalar
+ Variable:C scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 150 PRINT "---"
  TextConstant:"---"
  CarriageControl:NL
@@ -82,14 +82,14 @@
  TextConstant:"- -"
  CarriageControl:NL
 180 NEXT I
- Variable:I
+ Variable:I scalar
 190 PRINT
  CarriageControl:NL
 200 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 210 INPUT L$
- Syntax error: "L$" is not a value or operator
+ Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 220 IF L$ = "Y" THEN 250
  Token 'InvalidToken:$' is not a value or operator
 230 PRINT "THE I CHING SAYS GOOD-BYE"

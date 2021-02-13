@@ -6,22 +6,22 @@
  TextConstant:"ORIGINAL VALUE = "
  CarriageControl:;
 40 INPUT A
- Variable:A
+ Variable:A scalar
 50 PRINT "LIFETIME IN YEARS = ";
  TextConstant:"LIFETIME IN YEARS = "
  CarriageControl:;
 60 INPUT B
- Variable:B
+ Variable:B scalar
 70 LET C = A/B
- Variable:C
- Variable:A
- Variable:B
- BinaryOperatorDivide:/ numeric
+ Variable:C scalar
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 80 PRINT "YEARLY DEPRECIATION = ";C
  TextConstant:"YEARLY DEPRECIATION = "
  CarriageControl:;
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
@@ -31,40 +31,40 @@
  TextConstant:"VALUE"
  CarriageControl:NL
 110 LET X = 0
- Variable:X
+ Variable:X scalar
  NumericConstant:0
  AssignmentOperator:=
 120 LET X = X + 1
- Variable:X
- Variable:X
+ Variable:X scalar
+ Variable:X scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 LET A = A - C
- Variable:A
- Variable:A
- Variable:C
- BinaryOperatorMinus:- numeric
+ Variable:A scalar
+ Variable:A scalar
+ Variable:C scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 140 IF A < 0 THEN 160
- Variable:A
+ Variable:A scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 150 GOTO 170
  LineNumber:170
 160 LET A = 0
- Variable:A
+ Variable:A scalar
  NumericConstant:0
  AssignmentOperator:=
 170 PRINT X,A
- Variable:X
+ Variable:X scalar
  CarriageControl:,
- Variable:A
+ Variable:A scalar
  CarriageControl:NL
 180 IF X < B THEN 120
- Variable:X
- Variable:B
- BinaryOperatorLess:< boolean
+ Variable:X scalar
+ Variable:B scalar
+ BinaryOperatorLess:< boolean scalar
 190 PRINT "********************"
  TextConstant:"********************"
  CarriageControl:NL
@@ -72,11 +72,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
- Variable:L
+ Variable:L scalar
 220 IF L = 1 THEN 240
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 230 STOP
  
 240 PRINT

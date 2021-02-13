@@ -3,174 +3,174 @@
 20 REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
  Remark:FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
 30 LET A = 0
- Variable:A
+ Variable:A scalar
  NumericConstant:0
  AssignmentOperator:=
 40 LET B = 0
- Variable:B
+ Variable:B scalar
  NumericConstant:0
  AssignmentOperator:=
 50 LET C = 0
- Variable:C
+ Variable:C scalar
  NumericConstant:0
  AssignmentOperator:=
 60 LET D = 0
- Variable:D
+ Variable:D scalar
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "NUMBER OF SAMPLES = "
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:NL
 80 INPUT N
- Variable:N
+ Variable:N scalar
 90 FOR I = 1 TO N
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N"]
+ end:     ["Variable:N scalar"]
 100 PRINT "SAMPLE = "
  TextConstant:"SAMPLE = "
  CarriageControl:NL
 110 INPUT X
- Variable:X
+ Variable:X scalar
 120 LET A = A + X
- Variable:A
- Variable:A
- Variable:X
- BinaryOperatorPlus:+ numeric
+ Variable:A scalar
+ Variable:A scalar
+ Variable:X scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 LET B = B + (X^2)
- Variable:B
- Variable:B
- Variable:X
+ Variable:B scalar
+ Variable:B scalar
+ Variable:X scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 LET C = C + (X^3)
- Variable:C
- Variable:C
- Variable:X
+ Variable:C scalar
+ Variable:C scalar
+ Variable:X scalar
  NumericConstant:3
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 150 LET D = D + (X^4)
- Variable:D
- Variable:D
- Variable:X
+ Variable:D scalar
+ Variable:D scalar
+ Variable:X scalar
  NumericConstant:4
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 160 NEXT I
- Variable:I
+ Variable:I scalar
 170 LET J = A/N
- Variable:J
- Variable:A
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:J scalar
+ Variable:A scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 LET E = (B/N) - (J^2)
- Variable:E
- Variable:B
- Variable:N
- BinaryOperatorDivide:/ numeric
- Variable:J
+ Variable:E scalar
+ Variable:B scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
+ Variable:J scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorMinus:- numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 190 LET F = (C/N) - ((3*J*B)/N) + (2*(J^3))
- Variable:F
- Variable:C
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:F scalar
+ Variable:C scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  NumericConstant:3
- Variable:J
- BinaryOperatorMultiply:* numeric
- Variable:B
- BinaryOperatorMultiply:* numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMinus:- numeric
+ Variable:J scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  NumericConstant:2
- Variable:J
+ Variable:J scalar
  NumericConstant:3
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 200 LET G = (D/N) - ((4*J*C)/N)
- Variable:G
- Variable:D
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:G scalar
+ Variable:D scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  NumericConstant:4
- Variable:J
- BinaryOperatorMultiply:* numeric
- Variable:C
- BinaryOperatorMultiply:* numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
- BinaryOperatorMinus:- numeric
+ Variable:J scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 210 LET H = G + ((6*(J^2)*B)/N) - (3*(J^4))
- Variable:H
- Variable:G
+ Variable:H scalar
+ Variable:G scalar
  NumericConstant:6
- Variable:J
+ Variable:J scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- Variable:B
- BinaryOperatorMultiply:* numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  NumericConstant:3
- Variable:J
+ Variable:J scalar
  NumericConstant:4
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 220 LET K = F/(E^(3/2))
- Variable:K
- Variable:F
- Variable:E
+ Variable:K scalar
+ Variable:F scalar
+ Variable:E scalar
  NumericConstant:3
  NumericConstant:2
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPower:^ numeric
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 230 LET L = H/(E^2)
- Variable:L
- Variable:H
- Variable:E
+ Variable:L scalar
+ Variable:H scalar
+ Variable:E scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 240 PRINT "1ST MOMENT = ";J
  TextConstant:"1ST MOMENT = "
  CarriageControl:;
- Variable:J
+ Variable:J scalar
  CarriageControl:NL
 250 PRINT "2ND MOMENT = ";E
  TextConstant:"2ND MOMENT = "
  CarriageControl:;
- Variable:E
+ Variable:E scalar
  CarriageControl:NL
 260 PRINT "3RD MOMENT = ";F
  TextConstant:"3RD MOMENT = "
  CarriageControl:;
- Variable:F
+ Variable:F scalar
  CarriageControl:NL
 270 PRINT "4TH MOMENT = ";H
  TextConstant:"4TH MOMENT = "
  CarriageControl:;
- Variable:H
+ Variable:H scalar
  CarriageControl:NL
 280 PRINT "MOMENT COEFFICIENTS"
  TextConstant:"MOMENT COEFFICIENTS"
@@ -178,11 +178,11 @@
 290 PRINT "SKEWNESS = ";K,"KURTOSIS = ";L
  TextConstant:"SKEWNESS = "
  CarriageControl:;
- Variable:K
+ Variable:K scalar
  CarriageControl:,
  TextConstant:"KURTOSIS = "
  CarriageControl:;
- Variable:L
+ Variable:L scalar
  CarriageControl:NL
 300 PRINT "**********************"
  TextConstant:"**********************"
@@ -191,11 +191,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 320 INPUT Z
- Variable:Z
+ Variable:Z scalar
 330 IF Z = 1 THEN 350
- Variable:Z
+ Variable:Z scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 340 STOP
  
 350 PRINT

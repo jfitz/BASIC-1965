@@ -1,61 +1,61 @@
 10 READ X,N
- Variable:X
- Variable:N
+ Variable:X scalar
+ Variable:N scalar
 20 LET S = 0
- Variable:S
+ Variable:S scalar
  NumericConstant:0
  AssignmentOperator:=
 25 LET F = 1
- Variable:F
+ Variable:F scalar
  NumericConstant:1
  AssignmentOperator:=
 30 FOR I = 1 TO N
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N"]
+ end:     ["Variable:N scalar"]
 40 LET K = 2*I-1
- Variable:K
+ Variable:K scalar
  NumericConstant:2
- Variable:I
- BinaryOperatorMultiply:* numeric
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 50 LET S = S + F*X^K/K
- Variable:S
- Variable:S
- Variable:F
- Variable:X
- Variable:K
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- Variable:K
- BinaryOperatorDivide:/ numeric
- BinaryOperatorPlus:+ numeric
+ Variable:S scalar
+ Variable:S scalar
+ Variable:F scalar
+ Variable:X scalar
+ Variable:K scalar
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:K scalar
+ BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 60 LET F = -F
- Variable:F
- Variable:F
- UnaryOperatorMinus:- numeric
+ Variable:F scalar
+ Variable:F scalar
+ UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 70 NEXT I
- Variable:I
+ Variable:I scalar
 80 PRINT "ATN OF " X; "= " ATN(X)
  TextConstant:"ATN OF "
  CarriageControl:
- Variable:X
+ Variable:X scalar
  CarriageControl:;
  TextConstant:"= "
  CarriageControl:
- Variable:X
- FunctionArcTan
+ Variable:X scalar
+ FunctionArcTan scalar
  CarriageControl:NL
 85 PRINT N; "TERMS OF THE SERIES YIELD " S
- Variable:N
+ Variable:N scalar
  CarriageControl:;
  TextConstant:"TERMS OF THE SERIES YIELD "
  CarriageControl:
- Variable:S
+ Variable:S scalar
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
@@ -69,7 +69,7 @@
  NumericConstant:0.5
  NumericConstant:10
  NumericConstant:0.75
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:10
  NumericConstant:0.99
  NumericConstant:10

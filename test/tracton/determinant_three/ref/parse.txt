@@ -4,199 +4,199 @@
  TextConstant:"ENTER 3 X 3 MATRIX"
  CarriageControl:NL
 30 INPUT A,B,C,D,E,F,G,H,I
- Variable:A
- Variable:B
- Variable:C
- Variable:D
- Variable:E
- Variable:F
- Variable:G
- Variable:H
- Variable:I
+ Variable:A scalar
+ Variable:B scalar
+ Variable:C scalar
+ Variable:D scalar
+ Variable:E scalar
+ Variable:F scalar
+ Variable:G scalar
+ Variable:H scalar
+ Variable:I scalar
 40 REM COMPUTE DETERMINANT OF 3X3
  Remark:COMPUTE DETERMINANT OF 3X3
 50 LET M = (A*E*I) + (B*F*G) + (C*H*D)
- Variable:M
- Variable:A
- Variable:E
- BinaryOperatorMultiply:* numeric
- Variable:I
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:F
- BinaryOperatorMultiply:* numeric
- Variable:G
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
- Variable:C
- Variable:H
- BinaryOperatorMultiply:* numeric
- Variable:D
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:M scalar
+ Variable:A scalar
+ Variable:E scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:G scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ Variable:C scalar
+ Variable:H scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:D scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 60 LET N = M - (C*E*G) - (F*H*A) - (I*D*B)
- Variable:N
- Variable:M
- Variable:C
- Variable:E
- BinaryOperatorMultiply:* numeric
- Variable:G
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:F
- Variable:H
- BinaryOperatorMultiply:* numeric
- Variable:A
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:I
- Variable:D
- BinaryOperatorMultiply:* numeric
- Variable:B
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
+ Variable:N scalar
+ Variable:M scalar
+ Variable:C scalar
+ Variable:E scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:G scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:F scalar
+ Variable:H scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:A scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:I scalar
+ Variable:D scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 70 REM COMPUTE INVERSE
  Remark:COMPUTE INVERSE
 80 LET O = ((E*I) - (H*F))/N
- Variable:O
- Variable:E
- Variable:I
- BinaryOperatorMultiply:* numeric
- Variable:H
- Variable:F
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:O scalar
+ Variable:E scalar
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:H scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 90 LET P = ((G*F) - (D*I))/N
- Variable:P
- Variable:G
- Variable:F
- BinaryOperatorMultiply:* numeric
- Variable:D
- Variable:I
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:P scalar
+ Variable:G scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:D scalar
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 LET Q = ((D*H) - (G*E))/N
- Variable:Q
- Variable:D
- Variable:H
- BinaryOperatorMultiply:* numeric
- Variable:G
- Variable:E
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:Q scalar
+ Variable:D scalar
+ Variable:H scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:G scalar
+ Variable:E scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 110 LET R = ((H*C) - (B*I))/N
- Variable:R
- Variable:H
- Variable:C
- BinaryOperatorMultiply:* numeric
- Variable:B
- Variable:I
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:R scalar
+ Variable:H scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 120 LET S = ((A*I) - (G*C))/N
- Variable:S
- Variable:A
- Variable:I
- BinaryOperatorMultiply:* numeric
- Variable:G
- Variable:C
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:S scalar
+ Variable:A scalar
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:G scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 130 LET T = ((G*B) - (A*H))/N
- Variable:T
- Variable:G
- Variable:B
- BinaryOperatorMultiply:* numeric
- Variable:A
- Variable:H
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:T scalar
+ Variable:G scalar
+ Variable:B scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:A scalar
+ Variable:H scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 140 LET U = ((B*F) - (E*C))/N
- Variable:U
- Variable:B
- Variable:F
- BinaryOperatorMultiply:* numeric
- Variable:E
- Variable:C
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:U scalar
+ Variable:B scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:E scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 150 LET V = ((D*C) - (A*F))/N
- Variable:V
- Variable:D
- Variable:C
- BinaryOperatorMultiply:* numeric
- Variable:A
- Variable:F
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:V scalar
+ Variable:D scalar
+ Variable:C scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:A scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 160 LET W = ((A*E) - (D*B))/N
- Variable:W
- Variable:A
- Variable:E
- BinaryOperatorMultiply:* numeric
- Variable:D
- Variable:B
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- Variable:N
- BinaryOperatorDivide:/ numeric
+ Variable:W scalar
+ Variable:A scalar
+ Variable:E scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:D scalar
+ Variable:B scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:N scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 170 PRINT "ORIGINAL MATRIX"
  TextConstant:"ORIGINAL MATRIX"
  CarriageControl:NL
 180 PRINT A,B,C
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:,
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 190 PRINT D,E,F
- Variable:D
+ Variable:D scalar
  CarriageControl:,
- Variable:E
+ Variable:E scalar
  CarriageControl:,
- Variable:F
+ Variable:F scalar
  CarriageControl:NL
 200 PRINT G,H,I
- Variable:G
+ Variable:G scalar
  CarriageControl:,
- Variable:H
+ Variable:H scalar
  CarriageControl:,
- Variable:I
+ Variable:I scalar
  CarriageControl:NL
 210 PRINT
  CarriageControl:NL
 220 PRINT "DETERMINANT = ";N
  TextConstant:"DETERMINANT = "
  CarriageControl:;
- Variable:N
+ Variable:N scalar
  CarriageControl:NL
 230 PRINT
  CarriageControl:NL
@@ -204,25 +204,25 @@
  TextConstant:"INVERSE OF MATRIX"
  CarriageControl:NL
 250 PRINT O,R,U
- Variable:O
+ Variable:O scalar
  CarriageControl:,
- Variable:R
+ Variable:R scalar
  CarriageControl:,
- Variable:U
+ Variable:U scalar
  CarriageControl:NL
 260 PRINT P,S,V
- Variable:P
+ Variable:P scalar
  CarriageControl:,
- Variable:S
+ Variable:S scalar
  CarriageControl:,
- Variable:V
+ Variable:V scalar
  CarriageControl:NL
 270 PRINT Q,T,W
- Variable:Q
+ Variable:Q scalar
  CarriageControl:,
- Variable:T
+ Variable:T scalar
  CarriageControl:,
- Variable:W
+ Variable:W scalar
  CarriageControl:NL
 280 PRINT
  CarriageControl:NL
@@ -230,11 +230,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 300 INPUT L
- Variable:L
+ Variable:L scalar
 310 IF L = 1 THEN 20
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 320 STOP
  
 330 END

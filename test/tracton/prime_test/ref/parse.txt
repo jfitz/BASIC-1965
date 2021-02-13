@@ -6,84 +6,84 @@
  TextConstant:"ENTER THE TEST NUMBER, ZERO TO STOP"
  CarriageControl:NL
 40 INPUT N
- Variable:N
+ Variable:N scalar
 50 LET N = INT(N)
- Variable:N
- Variable:N
- FunctionInt
+ Variable:N scalar
+ Variable:N scalar
+ FunctionInt scalar
  AssignmentOperator:=
 60 IF N = 0 THEN 220
- Variable:N
+ Variable:N scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 70 IF N < 4 THEN 180
- Variable:N
+ Variable:N scalar
  NumericConstant:4
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 80 LET I = 0
- Variable:I
+ Variable:I scalar
  NumericConstant:0
  AssignmentOperator:=
 90 LET T = 2
- Variable:T
+ Variable:T scalar
  NumericConstant:2
  AssignmentOperator:=
 100 LET J = INT(N/T)
- Variable:J
- Variable:N
- Variable:T
- BinaryOperatorDivide:/ numeric
- FunctionInt
+ Variable:J scalar
+ Variable:N scalar
+ Variable:T scalar
+ BinaryOperatorDivide:/ numeric scalar
+ FunctionInt scalar
  AssignmentOperator:=
 110 LET K = J*T
- Variable:K
- Variable:J
- Variable:T
- BinaryOperatorMultiply:* numeric
+ Variable:K scalar
+ Variable:J scalar
+ Variable:T scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 120 IF N = K THEN 200
- Variable:N
- Variable:K
- BinaryOperatorEqual:= boolean
+ Variable:N scalar
+ Variable:K scalar
+ BinaryOperatorEqual:= boolean scalar
 130 LET I = I + 1
- Variable:I
- Variable:I
+ Variable:I scalar
+ Variable:I scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 LET L = T*T
- Variable:L
- Variable:T
- Variable:T
- BinaryOperatorMultiply:* numeric
+ Variable:L scalar
+ Variable:T scalar
+ Variable:T scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 150 IF L > N THEN 180
- Variable:L
- Variable:N
- BinaryOperatorGreater:> boolean
+ Variable:L scalar
+ Variable:N scalar
+ BinaryOperatorGreater:> boolean scalar
 160 LET T = (I*2) + 1
- Variable:T
- Variable:I
+ Variable:T scalar
+ Variable:I scalar
  NumericConstant:2
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 170 GOTO 100
  LineNumber:100
 180 PRINT N;"IS A PRIME"
- Variable:N
+ Variable:N scalar
  CarriageControl:;
  TextConstant:"IS A PRIME"
  CarriageControl:NL
 190 GOTO 30
  LineNumber:30
 200 PRINT N;"IS NOT A PRIME:";T;"IS THE SMALLEST FACTOR"
- Variable:N
+ Variable:N scalar
  CarriageControl:;
  TextConstant:"IS NOT A PRIME:"
  CarriageControl:;
- Variable:T
+ Variable:T scalar
  CarriageControl:;
  TextConstant:"IS THE SMALLEST FACTOR"
  CarriageControl:NL

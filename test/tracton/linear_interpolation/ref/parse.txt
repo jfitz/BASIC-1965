@@ -4,45 +4,45 @@
  TextConstant:"KNOWN VALUE OF X (X1,X2) = "
  CarriageControl:;
 30 INPUT X1,X2
- Variable:X1
- Variable:X2
+ Variable:X1 scalar
+ Variable:X2 scalar
 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
  TextConstant:"KNOWN VALUES OF Y (F(X1),F(X2)) = "
  CarriageControl:;
 50 INPUT Y1,Y2
- Variable:Y1
- Variable:Y2
+ Variable:Y1 scalar
+ Variable:Y2 scalar
 60 PRINT "INTERPOLATE F(X) AT X = ";
  TextConstant:"INTERPOLATE F(X) AT X = "
  CarriageControl:;
 70 INPUT X
- Variable:X
+ Variable:X scalar
 80 LET G = ((X2 - X)*Y1) + ((X - X1)*Y2)
- Variable:G
- Variable:X2
- Variable:X
- BinaryOperatorMinus:- numeric
- Variable:Y1
- BinaryOperatorMultiply:* numeric
- Variable:X
- Variable:X1
- BinaryOperatorMinus:- numeric
- Variable:Y2
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:G scalar
+ Variable:X2 scalar
+ Variable:X scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:Y1 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:X scalar
+ Variable:X1 scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:Y2 scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 90 LET F = G/(X2 - X1)
- Variable:F
- Variable:G
- Variable:X2
- Variable:X1
- BinaryOperatorMinus:- numeric
- BinaryOperatorDivide:/ numeric
+ Variable:F scalar
+ Variable:G scalar
+ Variable:X2 scalar
+ Variable:X1 scalar
+ BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 PRINT "INTERPOLATED F(X) = ";F
  TextConstant:"INTERPOLATED F(X) = "
  CarriageControl:;
- Variable:F
+ Variable:F scalar
  CarriageControl:NL
 110 PRINT
  CarriageControl:NL
@@ -50,11 +50,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 130 INPUT L
- Variable:L
+ Variable:L scalar
 140 IF L = 1 THEN 160
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 150 STOP
  
 160 PRINT

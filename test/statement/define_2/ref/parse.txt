@@ -2,39 +2,39 @@
  UserFunctionName:FNL
  VariableName:A
  VariableName:B
- Variable:A
- FunctionLog
- Variable:B
- FunctionLog
- BinaryOperatorDivide:/ numeric
+ Variable:A scalar
+ FunctionLog scalar
+ Variable:B scalar
+ FunctionLog scalar
+ BinaryOperatorDivide:/ numeric scalar
 20 DEF FNL(A)=LOG(A)/LOG(10)
  UserFunctionName:FNL
  VariableName:A
- Variable:A
- FunctionLog
+ Variable:A scalar
+ FunctionLog scalar
  NumericConstant:10
- FunctionLog
- BinaryOperatorDivide:/ numeric
+ FunctionLog scalar
+ BinaryOperatorDivide:/ numeric scalar
 30 FOR N = 2 TO 10 STEP 2
- control: Variable:N
+ control: Variable:N scalar
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:10"]
  step:    ["NumericConstant:2"]
 40 PRINT N, LOG(N), FNL(N,10), FNL(N)
- Variable:N
+ Variable:N scalar
  CarriageControl:,
- Variable:N
- FunctionLog
+ Variable:N scalar
+ FunctionLog scalar
  CarriageControl:,
- Variable:N
+ Variable:N scalar
  NumericConstant:10
- UserFunction
+ UserFunction scalar
  CarriageControl:,
- Variable:N
- UserFunction
+ Variable:N scalar
+ UserFunction scalar
  CarriageControl:NL
 50 NEXT N
- Variable:N
+ Variable:N scalar
 99 END
  
 

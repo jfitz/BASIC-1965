@@ -1,38 +1,38 @@
 10 REM TEST OPTION PROMPT_COUNT
  Remark:TEST OPTION PROMPT_COUNT
 110 INPUT "ENTER 4 NUMBERS: "; A1, A2, A3, A4
- Variable:A1
- Variable:A2
- Variable:A3
- Variable:A4
+ Variable:A1 scalar
+ Variable:A2 scalar
+ Variable:A3 scalar
+ Variable:A4 scalar
 120 PRINT "YOU ENTERED: "; A1; A2; A3; A4
  TextConstant:"YOU ENTERED: "
  CarriageControl:;
- Variable:A1
+ Variable:A1 scalar
  CarriageControl:;
- Variable:A2
+ Variable:A2 scalar
  CarriageControl:;
- Variable:A3
+ Variable:A3 scalar
  CarriageControl:;
- Variable:A4
+ Variable:A4 scalar
  CarriageControl:NL
 200 OPTION PROMPT_COUNT TRUE
  BooleanConstant:true
 210 INPUT "ENTER 4 NUMBERS: "; B1, B2, B3, B4
- Variable:B1
- Variable:B2
- Variable:B3
- Variable:B4
+ Variable:B1 scalar
+ Variable:B2 scalar
+ Variable:B3 scalar
+ Variable:B4 scalar
 220 PRINT "YOU ENTERED: "; B1; B2; B3; B4
  TextConstant:"YOU ENTERED: "
  CarriageControl:;
- Variable:B1
+ Variable:B1 scalar
  CarriageControl:;
- Variable:B2
+ Variable:B2 scalar
  CarriageControl:;
- Variable:B3
+ Variable:B3 scalar
  CarriageControl:;
- Variable:B4
+ Variable:B4 scalar
  CarriageControl:NL
 999 END
  

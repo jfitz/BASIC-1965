@@ -8,67 +8,67 @@
  TextConstant:"ENTER N,R"
  CarriageControl:;
 50 INPUT N,R
- Variable:N
- Variable:R
+ Variable:N scalar
+ Variable:R scalar
 60 IF N < R THEN 270
- Variable:N
- Variable:R
- BinaryOperatorLess:< boolean
+ Variable:N scalar
+ Variable:R scalar
+ BinaryOperatorLess:< boolean scalar
 70 IF R < 0 THEN 290
- Variable:R
+ Variable:R scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 80 LET T = N
- Variable:T
- Variable:N
+ Variable:T scalar
+ Variable:N scalar
  AssignmentOperator:=
 90 GOSUB 310
  LineNumber:310
 100 LET A = T
- Variable:A
- Variable:T
+ Variable:A scalar
+ Variable:T scalar
  AssignmentOperator:=
 110 LET T = N - R
- Variable:T
- Variable:N
- Variable:R
- BinaryOperatorMinus:- numeric
+ Variable:T scalar
+ Variable:N scalar
+ Variable:R scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 120 GOSUB 310
  LineNumber:310
 130 LET B = T
- Variable:B
- Variable:T
+ Variable:B scalar
+ Variable:T scalar
  AssignmentOperator:=
 140 LET P = A/B
- Variable:P
- Variable:A
- Variable:B
- BinaryOperatorDivide:/ numeric
+ Variable:P scalar
+ Variable:A scalar
+ Variable:B scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 150 LET T = R
- Variable:T
- Variable:R
+ Variable:T scalar
+ Variable:R scalar
  AssignmentOperator:=
 160 GOSUB 310
  LineNumber:310
 170 LET C = A/(T*B)
- Variable:C
- Variable:A
- Variable:T
- Variable:B
- BinaryOperatorMultiply:* numeric
- BinaryOperatorDivide:/ numeric
+ Variable:C scalar
+ Variable:A scalar
+ Variable:T scalar
+ Variable:B scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 PRINT "PERMUTATIONS = ";P
  TextConstant:"PERMUTATIONS = "
  CarriageControl:;
- Variable:P
+ Variable:P scalar
  CarriageControl:NL
 190 PRINT "COMBINATIONS = ";C
  TextConstant:"COMBINATIONS = "
  CarriageControl:;
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
@@ -76,11 +76,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 220 INPUT L
- Variable:L
+ Variable:L scalar
 230 IF L = 1 THEN 250
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 240 STOP
  
 250 PRINT
@@ -98,37 +98,37 @@
 300 GOTO 40
  LineNumber:40
 310 IF T = 0 THEN 390
- Variable:T
+ Variable:T scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 320 IF T = 1 THEN 390
- Variable:T
+ Variable:T scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 330 LET J = 1
- Variable:J
+ Variable:J scalar
  NumericConstant:1
  AssignmentOperator:=
 340 FOR I = 2 TO T
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:2"]
- end:     ["Variable:T"]
+ end:     ["Variable:T scalar"]
 350 LET J = J*I
- Variable:J
- Variable:J
- Variable:I
- BinaryOperatorMultiply:* numeric
+ Variable:J scalar
+ Variable:J scalar
+ Variable:I scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 360 NEXT I
- Variable:I
+ Variable:I scalar
 370 LET T = J
- Variable:T
- Variable:J
+ Variable:T scalar
+ Variable:J scalar
  AssignmentOperator:=
 380 GOTO 400
  LineNumber:400
 390 LET T = 1
- Variable:T
+ Variable:T scalar
  NumericConstant:1
  AssignmentOperator:=
 400 RETURN

@@ -6,70 +6,70 @@
  TextConstant:"ANGLE OF ROTATION IN DEGREES = "
  CarriageControl:;
 40 INPUT A
- Variable:A
+ Variable:A scalar
 50 LET B = (A*3.14159)/180
- Variable:B
- Variable:A
+ Variable:B scalar
+ Variable:A scalar
  NumericConstant:3.14159
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 60 PRINT "COORDINATES OF NEW ORIGIN (X0,Y0) =";
  TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
  CarriageControl:;
 70 INPUT X,Y
- Variable:X
- Variable:Y
+ Variable:X scalar
+ Variable:Y scalar
 80 PRINT "OLD COORDINATES OF DATA POINT (X1,Y1) =";
  TextConstant:"OLD COORDINATES OF DATA POINT (X1,Y1) ="
  CarriageControl:;
 90 INPUT F,C
- Variable:F
- Variable:C
+ Variable:F scalar
+ Variable:C scalar
 100 LET Z = F - X
- Variable:Z
- Variable:F
- Variable:X
- BinaryOperatorMinus:- numeric
+ Variable:Z scalar
+ Variable:F scalar
+ Variable:X scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 110 LET W = C - Y
- Variable:W
- Variable:C
- Variable:Y
- BinaryOperatorMinus:- numeric
+ Variable:W scalar
+ Variable:C scalar
+ Variable:Y scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 120 LET D = (Z*COS(B)) + (W*SIN(B))
- Variable:D
- Variable:Z
- Variable:B
- FunctionCos
- BinaryOperatorMultiply:* numeric
- Variable:W
- Variable:B
- FunctionSin
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:D scalar
+ Variable:Z scalar
+ Variable:B scalar
+ FunctionCos scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:W scalar
+ Variable:B scalar
+ FunctionSin scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 LET E = - (Z*SIN(B)) + (W*COS(B))
- Variable:E
- Variable:Z
- Variable:B
- FunctionSin
- BinaryOperatorMultiply:* numeric
- UnaryOperatorMinus:- numeric
- Variable:W
- Variable:B
- FunctionCos
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ Variable:E scalar
+ Variable:Z scalar
+ Variable:B scalar
+ FunctionSin scalar
+ BinaryOperatorMultiply:* numeric scalar
+ UnaryOperatorMinus:- numeric scalar
+ Variable:W scalar
+ Variable:B scalar
+ FunctionCos scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 PRINT
  CarriageControl:NL
 150 PRINT "SPECIFIED ROTATION =";A
  TextConstant:"SPECIFIED ROTATION ="
  CarriageControl:;
- Variable:A
+ Variable:A scalar
  CarriageControl:NL
 160 PRINT "NEW COORDINATES OF DATA POINT"
  TextConstant:"NEW COORDINATES OF DATA POINT"
@@ -77,12 +77,12 @@
 170 PRINT "X2 = ";D
  TextConstant:"X2 = "
  CarriageControl:;
- Variable:D
+ Variable:D scalar
  CarriageControl:NL
 180 PRINT "Y2 = ";E
  TextConstant:"Y2 = "
  CarriageControl:;
- Variable:E
+ Variable:E scalar
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
@@ -90,11 +90,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
- Variable:L
+ Variable:L scalar
 220 IF L = 1 THEN 240
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 230 STOP
  
 240 PRINT

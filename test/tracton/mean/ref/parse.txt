@@ -3,116 +3,116 @@
 20 REM DEVIATION AND STANDARD ERROR FOR GROUPED DATA
  Remark:DEVIATION AND STANDARD ERROR FOR GROUPED DATA
 30 LET A = 0
- Variable:A
+ Variable:A scalar
  NumericConstant:0
  AssignmentOperator:=
 40 LET B = 0
- Variable:B
+ Variable:B scalar
  NumericConstant:0
  AssignmentOperator:=
 50 LET C = 0
- Variable:C
+ Variable:C scalar
  NumericConstant:0
  AssignmentOperator:=
 60 LET D = 0
- Variable:D
+ Variable:D scalar
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
  TextConstant:"ENTER SAMPLE VALUE AND FREQUENCY"
  CarriageControl:;
 80 INPUT X,F
- Variable:X
- Variable:F
+ Variable:X scalar
+ Variable:F scalar
 90 IF F <= 0 THEN 170
- Variable:F
+ Variable:F scalar
  NumericConstant:0
- BinaryOperatorLessEqual:<= boolean
+ BinaryOperatorLessEqual:<= boolean scalar
 100 LET A = A + 1
- Variable:A
- Variable:A
+ Variable:A scalar
+ Variable:A scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 110 LET B = B + F
- Variable:B
- Variable:B
- Variable:F
- BinaryOperatorPlus:+ numeric
+ Variable:B scalar
+ Variable:B scalar
+ Variable:F scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 120 LET G = X*F
- Variable:G
- Variable:X
- Variable:F
- BinaryOperatorMultiply:* numeric
+ Variable:G scalar
+ Variable:X scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 130 LET C = C + G
- Variable:C
- Variable:C
- Variable:G
- BinaryOperatorPlus:+ numeric
+ Variable:C scalar
+ Variable:C scalar
+ Variable:G scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 LET E = (X^2)*F
- Variable:E
- Variable:X
+ Variable:E scalar
+ Variable:X scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- Variable:F
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorPower:^ numeric scalar
+ Variable:F scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 150 LET D = D + E
- Variable:D
- Variable:D
- Variable:E
- BinaryOperatorPlus:+ numeric
+ Variable:D scalar
+ Variable:D scalar
+ Variable:E scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 160 GOTO 70
  LineNumber:70
 170 LET H = C/B
- Variable:H
- Variable:C
- Variable:B
- BinaryOperatorDivide:/ numeric
+ Variable:H scalar
+ Variable:C scalar
+ Variable:B scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 LET I = SQR(D - (B*(H^2)))
- Variable:I
- Variable:D
- Variable:B
- Variable:H
+ Variable:I scalar
+ Variable:D scalar
+ Variable:B scalar
+ Variable:H scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
- BinaryOperatorMinus:- numeric
- FunctionSqr
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:- numeric scalar
+ FunctionSqr scalar
  AssignmentOperator:=
 190 LET J = I/SQR(B)
- Variable:J
- Variable:I
- Variable:B
- FunctionSqr
- BinaryOperatorDivide:/ numeric
+ Variable:J scalar
+ Variable:I scalar
+ Variable:B scalar
+ FunctionSqr scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 200 PRINT
  CarriageControl:NL
 210 PRINT "NUMBER OF SAMPLES ENTERED = ";A
  TextConstant:"NUMBER OF SAMPLES ENTERED = "
  CarriageControl:;
- Variable:A
+ Variable:A scalar
  CarriageControl:NL
 220 PRINT "MEAN = ";H
  TextConstant:"MEAN = "
  CarriageControl:;
- Variable:H
+ Variable:H scalar
  CarriageControl:NL
 230 PRINT "STANDARD DEVIATION = ";I
  TextConstant:"STANDARD DEVIATION = "
  CarriageControl:;
- Variable:I
+ Variable:I scalar
  CarriageControl:NL
 240 PRINT "STANDARD ERROR = ";J
  TextConstant:"STANDARD ERROR = "
  CarriageControl:;
- Variable:J
+ Variable:J scalar
  CarriageControl:NL
 250 PRINT
  CarriageControl:NL
@@ -120,11 +120,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 270 INPUT L
- Variable:L
+ Variable:L scalar
 280 IF L = 1 THEN 300
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 290 STOP
  
 300 PRINT

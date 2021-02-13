@@ -1,28 +1,28 @@
 10 REM TEST FOR LOOP
  Remark:TEST FOR LOOP
 20 LET B = 10
- Variable:B
+ Variable:B scalar
  NumericConstant:10
  AssignmentOperator:=
 21 LET E = 1
- Variable:E
+ Variable:E scalar
  NumericConstant:1
  AssignmentOperator:=
 22 LET S = -1
- Variable:S
+ Variable:S scalar
  NumericConstant:1
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 30 FOR I = B TO E STEP S
- control: Variable:I
- start:   ["Variable:B"]
- end:     ["Variable:E"]
- step:    ["Variable:S"]
+ control: Variable:I scalar
+ start:   ["Variable:B scalar"]
+ end:     ["Variable:E scalar"]
+ step:    ["Variable:S scalar"]
 40 PRINT I
- Variable:I
+ Variable:I scalar
  CarriageControl:NL
 50 NEXT I
- Variable:I
+ Variable:I scalar
 90 STOP
  
 99 END

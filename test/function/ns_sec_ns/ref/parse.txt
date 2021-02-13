@@ -1,5 +1,5 @@
 10 LET P = 3.14159
- Variable:P
+ Variable:P scalar
  NumericConstant:3.14159
  AssignmentOperator:=
 20 PRINT "ANGLE","SECANT"
@@ -8,28 +8,28 @@
  TextConstant:"SECANT"
  CarriageControl:NL
 30 FOR I = 0 TO 2 STEP 0.1
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:2"]
  step:    ["NumericConstant:0.1"]
 40 LET A = I * P
- Variable:A
- Variable:I
- Variable:P
- BinaryOperatorMultiply:* numeric
+ Variable:A scalar
+ Variable:I scalar
+ Variable:P scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 50 LET C = SEC(A)
- Variable:C
- Variable:A
- FunctionSec
+ Variable:C scalar
+ Variable:A scalar
+ FunctionSec scalar
  AssignmentOperator:=
 60 PRINT A, C
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:C
+ Variable:C scalar
  CarriageControl:NL
 70 NEXT I
- Variable:I
+ Variable:I scalar
 99 END
  
 

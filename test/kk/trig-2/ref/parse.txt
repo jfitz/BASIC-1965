@@ -1,23 +1,23 @@
 100 REM ANGLE-SIDE-ANGLE
  Remark:ANGLE-SIDE-ANGLE
 110 LET P = 3.14159625
- Variable:P
+ Variable:P scalar
  NumericConstant:3.14159625
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
  UserFunctionName:FND
  VariableName:X
- Variable:X
- Variable:P
- BinaryOperatorMultiply:* numeric
+ Variable:X scalar
+ Variable:P scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X
- Variable:X
- UserFunction
- FunctionSin
+ Variable:X scalar
+ UserFunction scalar
+ FunctionSin scalar
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -30,47 +30,47 @@
  TextConstant:"THIRD SIDE"
  CarriageControl:NL
 150 READ A,X,B
- Variable:A
- Variable:X
- Variable:B
+ Variable:A scalar
+ Variable:X scalar
+ Variable:B scalar
 160 LET C = 180 - A - B
- Variable:C
+ Variable:C scalar
  NumericConstant:180
- Variable:A
- BinaryOperatorMinus:- numeric
- Variable:B
- BinaryOperatorMinus:- numeric
+ Variable:A scalar
+ BinaryOperatorMinus:- numeric scalar
+ Variable:B scalar
+ BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 170 LET Y = X*FNS(B)/FNS(C)
- Variable:Y
- Variable:X
- Variable:B
- UserFunction
- BinaryOperatorMultiply:* numeric
- Variable:C
- UserFunction
- BinaryOperatorDivide:/ numeric
+ Variable:Y scalar
+ Variable:X scalar
+ Variable:B scalar
+ UserFunction scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:C scalar
+ UserFunction scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
- Variable:Z
- Variable:X
- Variable:A
- UserFunction
- BinaryOperatorMultiply:* numeric
- Variable:C
- UserFunction
- BinaryOperatorDivide:/ numeric
+ Variable:Z scalar
+ Variable:X scalar
+ Variable:A scalar
+ UserFunction scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:C scalar
+ UserFunction scalar
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z
- Variable:A
+ Variable:A scalar
  CarriageControl:,
- Variable:X
+ Variable:X scalar
  CarriageControl:,
- Variable:B
+ Variable:B scalar
  CarriageControl:,
- Variable:Y
+ Variable:Y scalar
  CarriageControl:,
- Variable:Z
+ Variable:Z scalar
  CarriageControl:NL
 200 GOTO 150
  LineNumber:150

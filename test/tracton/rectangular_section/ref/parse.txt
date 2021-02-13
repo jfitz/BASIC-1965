@@ -6,58 +6,58 @@
  TextConstant:"BASE = "
  CarriageControl:;
 40 INPUT B
- Variable:B
+ Variable:B scalar
 50 PRINT "HEIGHT = ";
  TextConstant:"HEIGHT = "
  CarriageControl:;
 60 INPUT H
- Variable:H
+ Variable:H scalar
 70 LET I = (B*(H^3))/12
- Variable:I
- Variable:B
- Variable:H
+ Variable:I scalar
+ Variable:B scalar
+ Variable:H scalar
  NumericConstant:3
- BinaryOperatorPower:^ numeric
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:12
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 80 LET J = (B*H*(B^2 + H^2))/12
- Variable:J
- Variable:B
- Variable:H
- BinaryOperatorMultiply:* numeric
- Variable:B
+ Variable:J scalar
+ Variable:B scalar
+ Variable:H scalar
+ BinaryOperatorMultiply:* numeric scalar
+ Variable:B scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- Variable:H
+ BinaryOperatorPower:^ numeric scalar
+ Variable:H scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric
- BinaryOperatorPlus:+ numeric
- BinaryOperatorMultiply:* numeric
+ BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:12
- BinaryOperatorDivide:/ numeric
+ BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 90 LET A = B*H
- Variable:A
- Variable:B
- Variable:H
- BinaryOperatorMultiply:* numeric
+ Variable:A scalar
+ Variable:B scalar
+ Variable:H scalar
+ BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 100 PRINT "MOMENT OF INERTIA = ";I
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;
- Variable:I
+ Variable:I scalar
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
- Variable:J
+ Variable:J scalar
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
  TextConstant:"AREA OF SECTION = "
  CarriageControl:;
- Variable:A
+ Variable:A scalar
  CarriageControl:NL
 130 PRINT
  CarriageControl:NL
@@ -65,11 +65,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L
+ Variable:L scalar
 160 IF L = 1 THEN 180
- Variable:L
+ Variable:L scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 170 STOP
  
 180 PRINT

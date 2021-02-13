@@ -1,18 +1,18 @@
 10 FOR I = 1 TO 30
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:30"]
 20    PRINT INT(6*RND(1)+1),
  NumericConstant:6
  NumericConstant:1
- FunctionRnd
- BinaryOperatorMultiply:* numeric
+ FunctionRnd scalar
+ BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric
- FunctionInt
+ BinaryOperatorPlus:+ numeric scalar
+ FunctionInt scalar
  CarriageControl:,
 30 NEXT I
- Variable:I
+ Variable:I scalar
 99 END
  
 

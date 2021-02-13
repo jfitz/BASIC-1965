@@ -1,156 +1,156 @@
 10 DIM T(100,10), V(100)
  NumericConstant:100
  NumericConstant:10
- Declaration:T
+ Declaration:T scalar
  NumericConstant:100
- Declaration:V
+ Declaration:V scalar
 20 FOR I = 0 TO 100
- control: Variable:I
+ control: Variable:I scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:100"]
 30    READ K
- Variable:K
+ Variable:K scalar
 40    IF K = 999 THEN 100
- Variable:K
+ Variable:K scalar
  NumericConstant:999
- BinaryOperatorEqual:= boolean
+ BinaryOperatorEqual:= boolean scalar
 50    LET T(I,0) = K
- Variable:I
+ Variable:I scalar
  NumericConstant:0
- Variable:T
- Variable:K
+ Variable:T scalar
+ Variable:K scalar
  AssignmentOperator:=
 60    LET K1 = ABS(K)
- Variable:K1
- Variable:K
- FunctionAbs
+ Variable:K1 scalar
+ Variable:K scalar
+ FunctionAbs scalar
  AssignmentOperator:=
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
- control: Variable:J
+ control: Variable:J scalar
  start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2", "Variable:K1", "BinaryOperatorMultiply:* numeric", "NumericConstant:1", "BinaryOperatorPlus:+ numeric", "Variable:K1", "FunctionSgn", "BinaryOperatorMinus:- numeric"]
+ end:     ["NumericConstant:2", "Variable:K1 scalar", "BinaryOperatorMultiply:* numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar", "Variable:K1 scalar", "FunctionSgn scalar", "BinaryOperatorMinus:- numeric scalar"]
 80       READ T(I,J)
- Variable:I
- Variable:J
- Variable:T
+ Variable:I scalar
+ Variable:J scalar
+ Variable:T scalar
 90    NEXT J
- Variable:J
+ Variable:J scalar
 95 NEXT I
- Variable:I
+ Variable:I scalar
 99
 100 PRINT "SELECTED ACTS: ";
  TextConstant:"SELECTED ACTS: "
  CarriageControl:;
 105 FOR I = I-1 TO 0 STEP -1
- control: Variable:I
- start:   ["Variable:I", "NumericConstant:1", "BinaryOperatorMinus:- numeric"]
+ control: Variable:I scalar
+ start:   ["Variable:I scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
 110    LET K = T(I,0)
- Variable:K
- Variable:I
+ Variable:K scalar
+ Variable:I scalar
  NumericConstant:0
- Variable:T
+ Variable:T scalar
  AssignmentOperator:=
 120    IF K > 0 THEN 200
- Variable:K
+ Variable:K scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean
+ BinaryOperatorGreater:> boolean scalar
 130    IF K < 0 THEN 300
- Variable:K
+ Variable:K scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean
+ BinaryOperatorLess:< boolean scalar
 140    LET V(I) = T(I,1)
- Variable:I
- Variable:V
- Variable:I
+ Variable:I scalar
+ Variable:V scalar
+ Variable:I scalar
  NumericConstant:1
- Variable:T
+ Variable:T scalar
  AssignmentOperator:=
 150    GOTO 399
  LineNumber:399
 200    LET S = 0
- Variable:S
+ Variable:S scalar
  NumericConstant:0
  AssignmentOperator:=
 210    FOR J = 2 TO 2*K STEP 2
- control: Variable:J
+ control: Variable:J scalar
  start:   ["NumericConstant:2"]
- end:     ["NumericConstant:2", "Variable:K", "BinaryOperatorMultiply:* numeric"]
+ end:     ["NumericConstant:2", "Variable:K scalar", "BinaryOperatorMultiply:* numeric scalar"]
  step:    ["NumericConstant:2"]
 220       LET B = T(I,J)
- Variable:B
- Variable:I
- Variable:J
- Variable:T
+ Variable:B scalar
+ Variable:I scalar
+ Variable:J scalar
+ Variable:T scalar
  AssignmentOperator:=
 230       LET S = S + T(I,J-1)*V(B)
- Variable:S
- Variable:S
- Variable:I
- Variable:J
+ Variable:S scalar
+ Variable:S scalar
+ Variable:I scalar
+ Variable:J scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
- Variable:T
- Variable:B
- Variable:V
- BinaryOperatorMultiply:* numeric
- BinaryOperatorPlus:+ numeric
+ BinaryOperatorMinus:- numeric scalar
+ Variable:T scalar
+ Variable:B scalar
+ Variable:V scalar
+ BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 240    NEXT J
- Variable:J
+ Variable:J scalar
 250    LET V(I) = S
- Variable:I
- Variable:V
- Variable:S
+ Variable:I scalar
+ Variable:V scalar
+ Variable:S scalar
  AssignmentOperator:=
 260    GOTO 399
  LineNumber:399
 300    LET M = -999999999
- Variable:M
+ Variable:M scalar
  NumericConstant:1000000000
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 310    FOR J = 2 TO 2*ABS(K) STEP 2
- control: Variable:J
+ control: Variable:J scalar
  start:   ["NumericConstant:2"]
- end:     ["NumericConstant:2", "Variable:K", "FunctionAbs", "BinaryOperatorMultiply:* numeric"]
+ end:     ["NumericConstant:2", "Variable:K scalar", "FunctionAbs scalar", "BinaryOperatorMultiply:* numeric scalar"]
  step:    ["NumericConstant:2"]
 320       LET V = V(T(I,J))
- Variable:V
- Variable:I
- Variable:J
- Variable:T
- Variable:V
+ Variable:V scalar
+ Variable:I scalar
+ Variable:J scalar
+ Variable:T scalar
+ Variable:V scalar
  AssignmentOperator:=
 330       IF V <= M THEN 360
- Variable:V
- Variable:M
- BinaryOperatorLessEqual:<= boolean
+ Variable:V scalar
+ Variable:M scalar
+ BinaryOperatorLessEqual:<= boolean scalar
 340       LET M = V
- Variable:M
- Variable:V
+ Variable:M scalar
+ Variable:V scalar
  AssignmentOperator:=
 350       LET A = T(I,J-1)
- Variable:A
- Variable:I
- Variable:J
+ Variable:A scalar
+ Variable:I scalar
+ Variable:J scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric
- Variable:T
+ BinaryOperatorMinus:- numeric scalar
+ Variable:T scalar
  AssignmentOperator:=
 360    NEXT J
- Variable:J
+ Variable:J scalar
 370    PRINT A;
- Variable:A
+ Variable:A scalar
  CarriageControl:;
 380    LET V(I) = M
- Variable:I
- Variable:V
- Variable:M
+ Variable:I scalar
+ Variable:V scalar
+ Variable:M scalar
  AssignmentOperator:=
 399 NEXT I
- Variable:I
+ Variable:I scalar
 400 PRINT
  CarriageControl:NL
 410 PRINT
@@ -159,12 +159,12 @@
  TextConstant:"EXPECTED GAIN = $"
  CarriageControl:
  NumericConstant:0
- Variable:V
+ Variable:V scalar
  CarriageControl:NL
 430
 900 DATA -3,1,1,2,2,3,3
  NumericConstant:3
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:1
  NumericConstant:1
  NumericConstant:2
@@ -193,7 +193,7 @@
  NumericConstant:100
 905 DATA -2,4,9,5,10
  NumericConstant:2
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:4
  NumericConstant:9
  NumericConstant:5
@@ -207,7 +207,7 @@
 907 DATA 0,-10
  NumericConstant:0
  NumericConstant:10
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 908 DATA 2,0.75,13,0.25,14
  NumericConstant:2
  NumericConstant:0.75
@@ -225,13 +225,13 @@
 910 DATA 0,-100
  NumericConstant:0
  NumericConstant:100
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 911 DATA 0,90
  NumericConstant:0
  NumericConstant:90
 912 DATA -2,6,18,7,19
  NumericConstant:2
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:6
  NumericConstant:18
  NumericConstant:7
@@ -241,7 +241,7 @@
  NumericConstant:90
 914 DATA -2,8,20,9,21
  NumericConstant:2
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
  NumericConstant:8
  NumericConstant:20
  NumericConstant:9
@@ -255,7 +255,7 @@
 917 DATA 0,-100
  NumericConstant:0
  NumericConstant:100
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 918 DATA 3,0.167,22,0.333,23,0.5,24
  NumericConstant:3
  NumericConstant:0.167
@@ -267,7 +267,7 @@
 919 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 920 DATA 3,0.167,25,0.333,26,0.5,27
  NumericConstant:3
  NumericConstant:0.167
@@ -279,29 +279,29 @@
 921 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 922 DATA 0,90
  NumericConstant:0
  NumericConstant:90
 923 DATA 0,-10
  NumericConstant:0
  NumericConstant:10
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 924 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 925 DATA 0,90
  NumericConstant:0
  NumericConstant:90
 926 DATA 0,-10
  NumericConstant:0
  NumericConstant:10
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 927 DATA 0,-110
  NumericConstant:0
  NumericConstant:110
- UnaryOperatorMinus:- numeric
+ UnaryOperatorMinus:- numeric scalar
 998 DATA 999
  NumericConstant:999
 999 END
