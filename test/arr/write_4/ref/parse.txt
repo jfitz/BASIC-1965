@@ -4,18 +4,18 @@
  NumericConstant:6
  Declaration:A scalar
 20 FOR I = 1 TO 6
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:6"]
 40 LET A(I) = I
- Variable:I scalar
- Variable:A scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 60 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 70 ARR WRITE A
- Variable:A array
+ Variable:A numeric array
  CarriageControl:NL
 99 END
  

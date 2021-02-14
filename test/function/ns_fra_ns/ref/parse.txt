@@ -1,0 +1,36 @@
+10 REM This is a test
+ Remark:This is a test
+20 LET A=10.5
+ Variable:A numeric scalar
+ NumericConstant:10.5
+ AssignmentOperator:=
+30 LET B=FRA(A)
+ Variable:B numeric scalar
+ Variable:A numeric scalar
+ FunctionFra:FRA numeric scalar
+ AssignmentOperator:=
+40 PRINT A,B
+ Variable:A numeric scalar
+ CarriageControl:,
+ Variable:B numeric scalar
+ CarriageControl:NL
+50 LET A=-12.75
+ Variable:A numeric scalar
+ NumericConstant:12.75
+ UnaryOperatorMinus:- numeric scalar
+ AssignmentOperator:=
+60 LET B=FRA(A)
+ Variable:B numeric scalar
+ Variable:A numeric scalar
+ FunctionFra:FRA numeric scalar
+ AssignmentOperator:=
+70 PRINT A,B
+ Variable:A numeric scalar
+ CarriageControl:,
+ Variable:B numeric scalar
+ CarriageControl:NL
+190 STOP
+ 
+199 END
+ 
+

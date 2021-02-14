@@ -6,51 +6,51 @@
  TextConstant:"ROUNDED"
  CarriageControl:NL
 20 LET A=10.1234
- Variable:A scalar
+ Variable:A numeric scalar
  NumericConstant:10.1234
  AssignmentOperator:=
 22 LET A1=ROUND(A,3)
- Variable:A1 scalar
- Variable:A scalar
+ Variable:A1 numeric scalar
+ Variable:A numeric scalar
  NumericConstant:3
- FunctionRound scalar
+ FunctionRound:ROUND numeric scalar
  AssignmentOperator:=
 25 PRINT A,A1
- Variable:A scalar
+ Variable:A numeric scalar
  CarriageControl:,
- Variable:A1 scalar
+ Variable:A1 numeric scalar
  CarriageControl:NL
 30 LET B=-20.1234
- Variable:B scalar
+ Variable:B numeric scalar
  NumericConstant:20.1234
  UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 32 LET B1=ROUND(B,2)
- Variable:B1 scalar
- Variable:B scalar
+ Variable:B1 numeric scalar
+ Variable:B numeric scalar
  NumericConstant:2
- FunctionRound scalar
+ FunctionRound:ROUND numeric scalar
  AssignmentOperator:=
 35 PRINT B,B1
- Variable:B scalar
+ Variable:B numeric scalar
  CarriageControl:,
- Variable:B1 scalar
+ Variable:B1 numeric scalar
  CarriageControl:NL
 40 LET C=1234
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:1234
  AssignmentOperator:=
 42 LET C1=ROUND(C,-1)
- Variable:C1 scalar
- Variable:C scalar
+ Variable:C1 numeric scalar
+ Variable:C numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:- numeric scalar
- FunctionRound scalar
+ FunctionRound:ROUND numeric scalar
  AssignmentOperator:=
 45 PRINT C,C1
- Variable:C scalar
+ Variable:C numeric scalar
  CarriageControl:,
- Variable:C1 scalar
+ Variable:C1 numeric scalar
  CarriageControl:NL
 90 STOP
  

@@ -11,29 +11,29 @@
  Declaration:X scalar
 110
 120 READ N
- Variable:N scalar
+ Variable:N numeric scalar
 130 MAT READ A(N,N)
- Variable:N scalar
- Variable:N scalar
- Variable:A matrix
+ Variable:N numeric scalar
+ Variable:N numeric scalar
+ Variable:A numeric matrix
 140 MAT READ B(N)
- Variable:N scalar
- Variable:B matrix
+ Variable:N numeric scalar
+ Variable:B numeric matrix
 150
 160 MAT C = INV(A)
- Variable:C matrix
- Variable:A matrix
- FunctionInv matrix
+ Variable:C numeric matrix
+ Variable:A numeric matrix
+ FunctionInv:INV numeric matrix
  AssignmentOperator:=
 170 MAT X = C*B
- Variable:X matrix
- Variable:C matrix
- Variable:B matrix
+ Variable:X numeric matrix
+ Variable:C numeric matrix
+ Variable:B numeric matrix
  BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 180
 190 MAT PRINT X
- Variable:X matrix
+ Variable:X numeric matrix
  CarriageControl:NL
 200
 210 DATA 3

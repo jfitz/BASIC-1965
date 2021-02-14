@@ -1,37 +1,37 @@
 10 FOR D = 0 TO 5
- control: Variable:D scalar
+ control: Variable:D numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 20 LET N(D) = 0
- Variable:D scalar
- Variable:N scalar
+ Variable:D numeric scalar
+ Variable:N numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 30 NEXT D
- Variable:D scalar
+ Variable:D numeric scalar
 40 FOR I = 1 TO 10
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 50 READ X
- Variable:X scalar
+ Variable:X numeric scalar
 60 LET D = INT(X/1E4)
- Variable:D scalar
- Variable:X scalar
+ Variable:D numeric scalar
+ Variable:X numeric scalar
  NumericConstant:10000
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  AssignmentOperator:=
 70 LET N(D) = N(D) + 1
- Variable:D scalar
- Variable:N scalar
- Variable:D scalar
- Variable:N scalar
+ Variable:D numeric scalar
+ Variable:N numeric scalar
+ Variable:D numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 80 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 100 PRINT "        INCOME"
  TextConstant:"        INCOME"
  CarriageControl:NL
@@ -43,25 +43,25 @@
  TextConstant:"NUMBER OF PEOPLE"
  CarriageControl:NL
 120 FOR D = 0 TO 5
- control: Variable:D scalar
+ control: Variable:D numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
- Variable:D scalar
+ Variable:D numeric scalar
  NumericConstant:10000
  BinaryOperatorMultiply:* numeric scalar
  CarriageControl:,
- Variable:D scalar
+ Variable:D numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  NumericConstant:10000
  BinaryOperatorMultiply:* numeric scalar
  CarriageControl:,
- Variable:D scalar
- Variable:N scalar
+ Variable:D numeric scalar
+ Variable:N numeric scalar
  CarriageControl:NL
 140 NEXT D
- Variable:D scalar
+ Variable:D numeric scalar
 900 DATA 15000,22500,7350,32700,51000,8400,12700,8100,29000,35460
  NumericConstant:15000
  NumericConstant:22500

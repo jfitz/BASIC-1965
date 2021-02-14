@@ -7,16 +7,16 @@
 40 REM NUMBER IN AS FEW GUESSES AS POSSIBLE
  Remark:NUMBER IN AS FEW GUESSES AS POSSIBLE
 50 LET R = 1 + INT(100*RND)
- Variable:R scalar
+ Variable:R numeric scalar
  NumericConstant:1
  NumericConstant:100
- FunctionRnd scalar
+ FunctionRnd:RND numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 60 LET Y = 0
- Variable:Y scalar
+ Variable:Y numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "A RANDOM NUMBER HAS BEEN PICKED"
@@ -37,20 +37,20 @@
  TextConstant:"YOUR GUESS IS = "
  CarriageControl:;
 130 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 140 LET Y = Y + 1
- Variable:Y scalar
- Variable:Y scalar
+ Variable:Y numeric scalar
+ Variable:Y numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 150 IF X = R THEN 180
- Variable:X scalar
- Variable:R scalar
+ Variable:X numeric scalar
+ Variable:R numeric scalar
  BinaryOperatorEqual:= boolean scalar
 160 IF X > R THEN 280
- Variable:X scalar
- Variable:R scalar
+ Variable:X numeric scalar
+ Variable:R numeric scalar
  BinaryOperatorGreater:> boolean scalar
 170 GOTO 300
  LineNumber:300
@@ -60,7 +60,7 @@
 190 PRINT "YOUR NUMBER OF TRIES WERE";Y
  TextConstant:"YOUR NUMBER OF TRIES WERE"
  CarriageControl:;
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
@@ -71,9 +71,9 @@
  TextConstant:"IF NOT TYPE 0"
  CarriageControl:NL
 230 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 240 IF L = 1 THEN 260
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 250 STOP

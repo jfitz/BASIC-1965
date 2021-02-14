@@ -4,58 +4,58 @@
  TextConstant:"A, R, Y, T"
  CarriageControl:;
 20 INPUT A, R, Y, T
- Variable:A scalar
- Variable:R scalar
- Variable:Y scalar
- Variable:T scalar
+ Variable:A numeric scalar
+ Variable:R numeric scalar
+ Variable:Y numeric scalar
+ Variable:T numeric scalar
 26 IF T = 999 THEN 999
- Variable:T scalar
+ Variable:T numeric scalar
  NumericConstant:999
  BinaryOperatorEqual:= boolean scalar
 30 IF A <= 0 THEN 100
- Variable:A scalar
+ Variable:A numeric scalar
  NumericConstant:0
  BinaryOperatorLessEqual:<= boolean scalar
 40 IF R <= 0 THEN 100
- Variable:R scalar
+ Variable:R numeric scalar
  NumericConstant:0
  BinaryOperatorLessEqual:<= boolean scalar
 50 IF Y <= 0 THEN 100
- Variable:Y scalar
+ Variable:Y numeric scalar
  NumericConstant:0
  BinaryOperatorLessEqual:<= boolean scalar
 60 IF T <= 0 THEN 100
- Variable:T scalar
+ Variable:T numeric scalar
  NumericConstant:0
  BinaryOperatorLessEqual:<= boolean scalar
 70 LET N = Y*T
- Variable:N scalar
- Variable:Y scalar
- Variable:T scalar
+ Variable:N numeric scalar
+ Variable:Y numeric scalar
+ Variable:T numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 80 LET R1 = R/100/T
- Variable:R1 scalar
- Variable:R scalar
+ Variable:R1 numeric scalar
+ Variable:R numeric scalar
  NumericConstant:100
  BinaryOperatorDivide:/ numeric scalar
- Variable:T scalar
+ Variable:T numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 90 LET B = A*(1+R1)^N
- Variable:B scalar
- Variable:A scalar
+ Variable:B numeric scalar
+ Variable:A numeric scalar
  NumericConstant:1
- Variable:R1 scalar
+ Variable:R1 numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- Variable:N scalar
+ Variable:N numeric scalar
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 95 PRINT "FINAL AMOUNT = $" B
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:
- Variable:B scalar
+ Variable:B numeric scalar
  CarriageControl:NL
 96 GOTO 5
  LineNumber:5

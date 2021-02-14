@@ -7,50 +7,50 @@
 40 REM THEN M(T) IS EQUAL TO THE HARMONIC MEAN
  Remark:THEN M(T) IS EQUAL TO THE HARMONIC MEAN
 50 LET J = 0
- Variable:J scalar
+ Variable:J numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 60 LET N = 0
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "T = ";
  TextConstant:"T = "
  CarriageControl:;
 80 INPUT T
- Variable:T scalar
+ Variable:T numeric scalar
 90 PRINT "INPUT SAMPLE";
  TextConstant:"INPUT SAMPLE"
  CarriageControl:;
 100 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 110 IF X = 0 THEN 150
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar
 120 LET J = J + (X^T)
- Variable:J scalar
- Variable:J scalar
- Variable:X scalar
- Variable:T scalar
+ Variable:J numeric scalar
+ Variable:J numeric scalar
+ Variable:X numeric scalar
+ Variable:T numeric scalar
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 LET N = N + 1
- Variable:N scalar
- Variable:N scalar
+ Variable:N numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 GOTO 90
  LineNumber:90
 150 LET G = (J/N)^(1/T)
- Variable:G scalar
- Variable:J scalar
- Variable:N scalar
+ Variable:G numeric scalar
+ Variable:J numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  NumericConstant:1
- Variable:T scalar
+ Variable:T numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPower:^ numeric scalar
  AssignmentOperator:=
@@ -60,11 +60,11 @@
 170 PRINT "M(T) = ";G, "WHERE T = ";T
  TextConstant:"M(T) = "
  CarriageControl:;
- Variable:G scalar
+ Variable:G numeric scalar
  CarriageControl:,
  TextConstant:"WHERE T = "
  CarriageControl:;
- Variable:T scalar
+ Variable:T numeric scalar
  CarriageControl:NL
 180 PRINT
  CarriageControl:NL
@@ -72,9 +72,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 200 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 210 IF L = 1 THEN 230
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 220 STOP

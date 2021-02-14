@@ -5,20 +5,20 @@
 30  REM SECTION
  Remark:SECTION
 40  INPUT "INSIDE DIAMETER (D1) = ", D1
- Variable:D1 scalar
+ Variable:D1 numeric scalar
 50  INPUT "OUTSIDE DIAMETER (D2) = "; D2
- Variable:D2 scalar
+ Variable:D2 numeric scalar
 60  LET P=3.14159
- Variable:P scalar
+ Variable:P numeric scalar
  NumericConstant:3.14159
  AssignmentOperator:=
 70  LET I = (P*((D2 ^ 4) - (D1 ^ 4)))/64
- Variable:I scalar
- Variable:P scalar
- Variable:D2 scalar
+ Variable:I numeric scalar
+ Variable:P numeric scalar
+ Variable:D2 numeric scalar
  NumericConstant:4
  BinaryOperatorPower:^ numeric scalar
- Variable:D1 scalar
+ Variable:D1 numeric scalar
  NumericConstant:4
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMinus:- numeric scalar
@@ -27,18 +27,18 @@
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 80  LET J=I*2
- Variable:J scalar
- Variable:I scalar
+ Variable:J numeric scalar
+ Variable:I numeric scalar
  NumericConstant:2
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 100  LET A = (P*((D2 ^ 2) - (D1 ^ 2)))/4
- Variable:A scalar
- Variable:P scalar
- Variable:D2 scalar
+ Variable:A numeric scalar
+ Variable:P numeric scalar
+ Variable:D2 numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
- Variable:D1 scalar
+ Variable:D1 numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMinus:- numeric scalar
@@ -49,17 +49,17 @@
 110  PRINT "MOMENT OF INERTIA = " I
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 120  PRINT "POLAR MOMENT OF INERTIA = " J
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:
- Variable:J scalar
+ Variable:J numeric scalar
  CarriageControl:NL
 130  PRINT "AREA OF SECTION = " A
  TextConstant:"AREA OF SECTION = "
  CarriageControl:
- Variable:A scalar
+ Variable:A numeric scalar
  CarriageControl:NL
 140  PRINT
  CarriageControl:NL
@@ -67,9 +67,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:;
 160  INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 170  IF L=1 THEN 190
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 180  STOP

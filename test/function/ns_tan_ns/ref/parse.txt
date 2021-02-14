@@ -1,0 +1,35 @@
+10 LET P = 3.14159
+ Variable:P numeric scalar
+ NumericConstant:3.14159
+ AssignmentOperator:=
+20 PRINT "ANGLE","TAN"
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"TAN"
+ CarriageControl:NL
+30 FOR I = 0 TO 2 STEP 0.1
+ control: Variable:I numeric scalar
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:2"]
+ step:    ["NumericConstant:0.1"]
+40 LET A = I * P
+ Variable:A numeric scalar
+ Variable:I numeric scalar
+ Variable:P numeric scalar
+ BinaryOperatorMultiply:* numeric scalar
+ AssignmentOperator:=
+50 LET S = TAN(A)
+ Variable:S numeric scalar
+ Variable:A numeric scalar
+ FunctionTan:TAN numeric scalar
+ AssignmentOperator:=
+60 PRINT A, S
+ Variable:A numeric scalar
+ CarriageControl:,
+ Variable:S numeric scalar
+ CarriageControl:NL
+70 NEXT I
+ Variable:I numeric scalar
+99 END
+ 
+

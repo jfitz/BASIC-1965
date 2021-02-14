@@ -8,39 +8,39 @@
 21 OPTION FORGET_FORNEXT FALSE
  BooleanConstant:false
 22 FOR I = 1 TO 3
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 23 PRINT I
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 24 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 25 PRINT "I IS NOW";I
  TextConstant:"I IS NOW"
  CarriageControl:;
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 26 FORGET I
- Variable:I scalar
+ Variable:I numeric scalar
 30 PRINT "OPTION FORGET_FORNEXT TRUE"
  TextConstant:"OPTION FORGET_FORNEXT TRUE"
  CarriageControl:NL
 31 OPTION FORGET_FORNEXT TRUE
  BooleanConstant:true
 32 FOR I = 1 TO 3
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 33 PRINT I
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 34 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 35 PRINT "I IS NOW";I
  TextConstant:"I IS NOW"
  CarriageControl:;
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 99 END
  

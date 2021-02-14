@@ -17,58 +17,58 @@
 90 REM STATEMENT AND N SET AHEAD OF TIME
  Remark:STATEMENT AND N SET AHEAD OF TIME
 100 LET I = N - 1
- Variable:I scalar
- Variable:N scalar
+ Variable:I numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 110 FOR J = 1 TO I
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:I scalar"]
+ end:     ["Variable:I numeric scalar"]
 120 LET K = J + 1
- Variable:K scalar
- Variable:J scalar
+ Variable:K numeric scalar
+ Variable:J numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 FOR L = N TO K STEP -1
- control: Variable:L scalar
- start:   ["Variable:N scalar"]
- end:     ["Variable:K scalar"]
+ control: Variable:L numeric scalar
+ start:   ["Variable:N numeric scalar"]
+ end:     ["Variable:K numeric scalar"]
  step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
 140 IF Z(L) > Z(J) THEN 210
- Variable:L scalar
- Variable:Z scalar
- Variable:J scalar
- Variable:Z scalar
+ Variable:L numeric scalar
+ Variable:Z numeric scalar
+ Variable:J numeric scalar
+ Variable:Z numeric scalar
  BinaryOperatorGreater:> boolean scalar
 150 REM SAVE FIRST VALUE
  Remark:SAVE FIRST VALUE
 160 LET T = Z(L)
- Variable:T scalar
- Variable:L scalar
- Variable:Z scalar
+ Variable:T numeric scalar
+ Variable:L numeric scalar
+ Variable:Z numeric scalar
  AssignmentOperator:=
 170 LET Z(L) =Z(J)
- Variable:L scalar
- Variable:Z scalar
- Variable:J scalar
- Variable:Z scalar
+ Variable:L numeric scalar
+ Variable:Z numeric scalar
+ Variable:J numeric scalar
+ Variable:Z numeric scalar
  AssignmentOperator:=
 180 LET Z(J) = T
- Variable:J scalar
- Variable:Z scalar
- Variable:T scalar
+ Variable:J numeric scalar
+ Variable:Z numeric scalar
+ Variable:T numeric scalar
  AssignmentOperator:=
 190 REM IF Z IS THE KEY FOR SORTING MULTIPLE
  Remark:IF Z IS THE KEY FOR SORTING MULTIPLE
 200 REM ARRAYS AND EXTRA CODE HERE
  Remark:ARRAYS AND EXTRA CODE HERE
 210 NEXT L
- Variable:L scalar
+ Variable:L numeric scalar
 220 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 230 RETURN
  
 

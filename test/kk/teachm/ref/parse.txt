@@ -21,14 +21,14 @@ Syntax error: Invalid line number '0'
  TextConstant:"(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
  CarriageControl:NL
 130 LET C = 1
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 140 GOSUB 8000
  LineNumber:8000
 150 IF X = C THEN 200
- Variable:X scalar
- Variable:C scalar
+ Variable:X numeric scalar
+ Variable:C numeric scalar
  BinaryOperatorEqual:= boolean scalar
 160 PRINT "LET'S TRY THAT ONE AGAIN."
  TextConstant:"LET'S TRY THAT ONE AGAIN."
@@ -48,17 +48,17 @@ Syntax error: Invalid line number '0'
  TextConstant:"4. NONE OF THESE.)"
  CarriageControl:NL
 220 LET C = 3
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:3
  AssignmentOperator:=
 230 GOSUB 8000
  LineNumber:8000
 240 IF C = X THEN 300
- Variable:C scalar
- Variable:X scalar
+ Variable:C numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorEqual:= boolean scalar
 250 IF X = 1 THEN 280
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 260 PRINT "ANOTHER RETRY -- OKAY?"
@@ -95,17 +95,17 @@ Syntax error: Invalid line number '0'
  TextConstant:"4. NONE OF THESE.)"
  CarriageControl:NL
 350 LET C = 2
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:2
  AssignmentOperator:=
 360 GOSUB 8000
  LineNumber:8000
 370 IF C = X THEN 400
- Variable:C scalar
- Variable:X scalar
+ Variable:C numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorEqual:= boolean scalar
 375 IF X <> 1 THEN 390
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:1
  BinaryOperatorNotEqual:<> boolean scalar
 380 PRINT "BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
@@ -127,17 +127,17 @@ Syntax error: Invalid line number '0'
  TextConstant:"(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
  CarriageControl:NL
 420 LET C = 3
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:3
  AssignmentOperator:=
 430 GOSUB 8000
  LineNumber:8000
 440 IF C = X THEN 500
- Variable:C scalar
- Variable:X scalar
+ Variable:C numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorEqual:= boolean scalar
 450 IF X = 1 THEN 470
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 460 PRINT "THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
@@ -169,17 +169,17 @@ Syntax error: Invalid line number '0'
  TextConstant:"(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
  CarriageControl:NL
 530 LET C = 1
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 540 GOSUB 8000
  LineNumber:8000
 550 IF C = X THEN 600
- Variable:C scalar
- Variable:X scalar
+ Variable:C numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorEqual:= boolean scalar
 560 IF C = 3 THEN 580
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:3
  BinaryOperatorEqual:= boolean scalar
 570 PRINT "THIS ONE INCREASES THE VALUE OF X BY T UNITS."
@@ -207,10 +207,10 @@ Syntax error: Invalid line number '0'
  TextConstant:"YOUR ANSWER"
  CarriageControl:;
 8010 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 8020 IF C <> X THEN 8050
- Variable:C scalar
- Variable:X scalar
+ Variable:C numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorNotEqual:<> boolean scalar
 8030 PRINT "CORRECT"
  TextConstant:"CORRECT"
@@ -220,7 +220,7 @@ Syntax error: Invalid line number '0'
 8050 PRINT "INCORRECT. CORRECT ANSWER IS "; C
  TextConstant:"INCORRECT. CORRECT ANSWER IS "
  CarriageControl:;
- Variable:C scalar
+ Variable:C numeric scalar
  CarriageControl:NL
 8060 RETURN
  

@@ -1,34 +1,34 @@
 100 DEF FNF(X) = SIN(X)
  UserFunctionName:FNF
  VariableName:X
- Variable:X scalar
- FunctionSin scalar
+ Variable:X numeric scalar
+ FunctionSin:SIN numeric scalar
 105 DEF FNG(X) = LOG(X)/LOG(10)
  UserFunctionName:FNG
  VariableName:X
- Variable:X scalar
- FunctionLog scalar
+ Variable:X numeric scalar
+ FunctionLog:LOG numeric scalar
  NumericConstant:10
- FunctionLog scalar
+ FunctionLog:LOG numeric scalar
  BinaryOperatorDivide:/ numeric scalar
 110 READ A,B,S
- Variable:A scalar
- Variable:B scalar
- Variable:S scalar
+ Variable:A numeric scalar
+ Variable:B numeric scalar
+ Variable:S numeric scalar
 120 READ C,D,N
- Variable:C scalar
- Variable:D scalar
- Variable:N scalar
+ Variable:C numeric scalar
+ Variable:D numeric scalar
+ Variable:N numeric scalar
 130 LET H = (D-C)/N
- Variable:H scalar
- Variable:D scalar
- Variable:C scalar
+ Variable:H numeric scalar
+ Variable:D numeric scalar
+ Variable:C numeric scalar
  BinaryOperatorMinus:- numeric scalar
- Variable:N scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 140 IF N <= 50 THEN 170
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:50
  BinaryOperatorLessEqual:<= boolean scalar
 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
@@ -39,22 +39,22 @@
 170 DEF FNR(X) = INT(X+0.5)
  UserFunctionName:FNR
  VariableName:X
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:0.5
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
  TextConstant:"Y-AXIS:  FROM "
  CarriageControl:
- Variable:C scalar
+ Variable:C numeric scalar
  CarriageControl:;
  TextConstant:"TO "
  CarriageControl:
- Variable:D scalar
+ Variable:D numeric scalar
  CarriageControl:;
  TextConstant:"IN STEPS OF "
  CarriageControl:
- Variable:H scalar
+ Variable:H numeric scalar
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
@@ -62,61 +62,61 @@
  TextConstant:"'"
  CarriageControl:;
 210 FOR I = 1 TO N-1
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 220 PRINT "-";
  TextConstant:"-"
  CarriageControl:;
 230 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 240 PRINT "'"
  TextConstant:"'"
  CarriageControl:NL
 250 FOR X = A TO B STEP S
- control: Variable:X scalar
- start:   ["Variable:A scalar"]
- end:     ["Variable:B scalar"]
- step:    ["Variable:S scalar"]
+ control: Variable:X numeric scalar
+ start:   ["Variable:A numeric scalar"]
+ end:     ["Variable:B numeric scalar"]
+ step:    ["Variable:S numeric scalar"]
 270 LET Y = FNF(X)
- Variable:Y scalar
- Variable:X scalar
- UserFunction scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
+ UserFunction:FNF numeric scalar
  AssignmentOperator:=
 280 LET Y1 = FNR((Y-C)/H)
- Variable:Y1 scalar
- Variable:Y scalar
- Variable:C scalar
+ Variable:Y1 numeric scalar
+ Variable:Y numeric scalar
+ Variable:C numeric scalar
  BinaryOperatorMinus:- numeric scalar
- Variable:H scalar
+ Variable:H numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- UserFunction scalar
+ UserFunction:FNR numeric scalar
  AssignmentOperator:=
 282 LET Y = FNG(X)
- Variable:Y scalar
- Variable:X scalar
- UserFunction scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
+ UserFunction:FNG numeric scalar
  AssignmentOperator:=
 284 LET Y2 = FNR((Y-C)/H)
- Variable:Y2 scalar
- Variable:Y scalar
- Variable:C scalar
+ Variable:Y2 numeric scalar
+ Variable:Y numeric scalar
+ Variable:C numeric scalar
  BinaryOperatorMinus:- numeric scalar
- Variable:H scalar
+ Variable:H numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- UserFunction scalar
+ UserFunction:FNR numeric scalar
  AssignmentOperator:=
 290 FOR I = 0 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 292 IF I = Y1 THEN 302
- Variable:I scalar
- Variable:Y1 scalar
+ Variable:I numeric scalar
+ Variable:Y1 numeric scalar
  BinaryOperatorEqual:= boolean scalar
 294 IF I = Y2 THEN 304
- Variable:I scalar
- Variable:Y2 scalar
+ Variable:I numeric scalar
+ Variable:Y2 numeric scalar
  BinaryOperatorEqual:= boolean scalar
 300 PRINT " ";
  TextConstant:" "
@@ -132,15 +132,15 @@
  TextConstant:"+"
  CarriageControl:;
 310 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 315 PRINT "   ";
  TextConstant:"   "
  CarriageControl:;
 320 PRINT X
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:NL
 330 NEXT X
- Variable:X scalar
+ Variable:X numeric scalar
 340 DATA 1,10.01,0.3
  NumericConstant:1
  NumericConstant:10.01

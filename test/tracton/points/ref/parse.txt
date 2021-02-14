@@ -6,16 +6,16 @@
  TextConstant:"CENTER OF CIRCLE (X0,Y0) = "
  CarriageControl:;
 40 INPUT X0,Y0
- Variable:X0 scalar
- Variable:Y0 scalar
+ Variable:X0 numeric scalar
+ Variable:Y0 numeric scalar
 50 PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
  TextConstant:"ANGLE IN DEGREES OF 1ST POINT = "
  CarriageControl:;
 60 INPUT W
- Variable:W scalar
+ Variable:W numeric scalar
 70 LET W = (W*3.14159)/180
- Variable:W scalar
- Variable:W scalar
+ Variable:W numeric scalar
+ Variable:W numeric scalar
  NumericConstant:3.14159
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:180
@@ -25,16 +25,16 @@
  TextConstant:"NUMBER OF POINTS DESIRED = "
  CarriageControl:;
 90 INPUT N
- Variable:N scalar
+ Variable:N numeric scalar
 100 PRINT "RADIUS OF CIRCLE = ";
  TextConstant:"RADIUS OF CIRCLE = "
  CarriageControl:;
 110 INPUT R
- Variable:R scalar
+ Variable:R numeric scalar
 120 LET Z = 6.28319/N
- Variable:Z scalar
+ Variable:Z numeric scalar
  NumericConstant:6.28319
- Variable:N scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 130 PRINT
@@ -43,65 +43,65 @@
  TextConstant:"COORDINATES"
  CarriageControl:NL
 150 FOR I = 0 TO N - 1
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 160 LET X = X0 + (R*COS(W + (Z*I)))
- Variable:X scalar
- Variable:X0 scalar
- Variable:R scalar
- Variable:W scalar
- Variable:Z scalar
- Variable:I scalar
+ Variable:X numeric scalar
+ Variable:X0 numeric scalar
+ Variable:R numeric scalar
+ Variable:W numeric scalar
+ Variable:Z numeric scalar
+ Variable:I numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionCos scalar
+ FunctionCos:COS numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 170 LET Y = Y0 + (R*SIN(W + (Z*I)))
- Variable:Y scalar
- Variable:Y0 scalar
- Variable:R scalar
- Variable:W scalar
- Variable:Z scalar
- Variable:I scalar
+ Variable:Y numeric scalar
+ Variable:Y0 numeric scalar
+ Variable:R numeric scalar
+ Variable:W numeric scalar
+ Variable:Z numeric scalar
+ Variable:I numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionSin scalar
+ FunctionSin:SIN numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 180 LET P = I + 1
- Variable:P scalar
- Variable:I scalar
+ Variable:P numeric scalar
+ Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 190 PRINT "POINT:";P,"X = ";X,"Y = ";Y
  TextConstant:"POINT:"
  CarriageControl:;
- Variable:P scalar
+ Variable:P numeric scalar
  CarriageControl:,
  TextConstant:"X = "
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:NL
 200 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 210 PRINT
  CarriageControl:NL
 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 240 IF L = 1 THEN 260
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 250 STOP

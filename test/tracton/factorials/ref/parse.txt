@@ -6,39 +6,39 @@
  TextConstant:"X = "
  CarriageControl:;
 40 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 50 LET Z = 1
- Variable:Z scalar
+ Variable:Z numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 60 FOR I = 1 TO X
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:X scalar"]
+ end:     ["Variable:X numeric scalar"]
 70 LET Z = Z*I
- Variable:Z scalar
- Variable:Z scalar
- Variable:I scalar
+ Variable:Z numeric scalar
+ Variable:Z numeric scalar
+ Variable:I numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 80 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 90 PRINT "X = ";X,"X! = ";Z
  TextConstant:"X = "
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:,
  TextConstant:"X! = "
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 120 IF L = 1 THEN 140
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 130 STOP

@@ -1,0 +1,30 @@
+10 REM This is a test
+ Remark:This is a test
+20 READ A
+ Variable:A numeric scalar
+30 LET B=INT(A)
+ Variable:B numeric scalar
+ Variable:A numeric scalar
+ FunctionInt:INT numeric scalar
+ AssignmentOperator:=
+40 PRINT A,B
+ Variable:A numeric scalar
+ CarriageControl:,
+ Variable:B numeric scalar
+ CarriageControl:NL
+50 GOTO 20
+ LineNumber:20
+80 DATA 10.2,5.5,1.8,0,-1.8,-5.5,-10.2
+ NumericConstant:10.2
+ NumericConstant:5.5
+ NumericConstant:1.8
+ NumericConstant:0
+ NumericConstant:1.8
+ UnaryOperatorMinus:- numeric scalar
+ NumericConstant:5.5
+ UnaryOperatorMinus:- numeric scalar
+ NumericConstant:10.2
+ UnaryOperatorMinus:- numeric scalar
+99 END
+ 
+

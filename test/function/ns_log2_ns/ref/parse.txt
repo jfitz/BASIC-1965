@@ -1,0 +1,23 @@
+10 REM TEST LOG2() FUNCTION
+ Remark:TEST LOG2() FUNCTION
+20 PRINT "I","LOG2(I)"
+ TextConstant:"I"
+ CarriageControl:,
+ TextConstant:"LOG2(I)"
+ CarriageControl:NL
+30 FOR I = 7 TO 9 STEP 0.1
+ control: Variable:I numeric scalar
+ start:   ["NumericConstant:7"]
+ end:     ["NumericConstant:9"]
+ step:    ["NumericConstant:0.1"]
+40 PRINT I, LOG2(I)
+ Variable:I numeric scalar
+ CarriageControl:,
+ Variable:I numeric scalar
+ FunctionLog2:LOG2 numeric scalar
+ CarriageControl:NL
+50 NEXT I
+ Variable:I numeric scalar
+99 END
+ 
+

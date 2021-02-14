@@ -14,20 +14,20 @@
 120  GOSUB 2000
  LineNumber:2000
 130  FOR I = 0 TO L
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:L scalar"]
+ end:     ["Variable:L numeric scalar"]
 140      LET A(I) = C(I)
- Variable:I scalar
- Variable:A scalar
- Variable:I scalar
- Variable:C scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
+ Variable:I numeric scalar
+ Variable:C numeric scalar
  AssignmentOperator:=
 150  NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 160  LET L1 = L
- Variable:L1 scalar
- Variable:L scalar
+ Variable:L1 numeric scalar
+ Variable:L numeric scalar
  AssignmentOperator:=
 170  PRINT "PLUS"
  TextConstant:"PLUS"
@@ -39,20 +39,20 @@
 220  GOSUB 2000
  LineNumber:2000
 230  FOR I = 0 TO L
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:L scalar"]
+ end:     ["Variable:L numeric scalar"]
 240      LET B(I) = C(I)
- Variable:I scalar
- Variable:B scalar
- Variable:I scalar
- Variable:C scalar
+ Variable:I numeric scalar
+ Variable:B numeric scalar
+ Variable:I numeric scalar
+ Variable:C numeric scalar
  AssignmentOperator:=
 250  NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 260  LET L2 = L
- Variable:L2 scalar
- Variable:L scalar
+ Variable:L2 numeric scalar
+ Variable:L numeric scalar
  AssignmentOperator:=
 270  PRINT "EQUALS"
  TextConstant:"EQUALS"
@@ -63,56 +63,56 @@
 300  REM C = A + B
  Remark:C = A + B
 310  IF L1 < L2 THEN 420
- Variable:L1 scalar
- Variable:L2 scalar
+ Variable:L1 numeric scalar
+ Variable:L2 numeric scalar
  BinaryOperatorLess:< boolean scalar
 320  LET L = L1
- Variable:L scalar
- Variable:L1 scalar
+ Variable:L numeric scalar
+ Variable:L1 numeric scalar
  AssignmentOperator:=
 330  FOR I = L2+1 TO L
- control: Variable:I scalar
- start:   ["Variable:L2 scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
- end:     ["Variable:L scalar"]
+ control: Variable:I numeric scalar
+ start:   ["Variable:L2 numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
+ end:     ["Variable:L numeric scalar"]
 340      LET B(I) = 0
- Variable:I scalar
- Variable:B scalar
+ Variable:I numeric scalar
+ Variable:B numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 350  NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 360  GOTO 500
  LineNumber:500
 420  LET L = L2
- Variable:L scalar
- Variable:L2 scalar
+ Variable:L numeric scalar
+ Variable:L2 numeric scalar
  AssignmentOperator:=
 430  FOR I = L1+1 TO L
- control: Variable:I scalar
- start:   ["Variable:L1 scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
- end:     ["Variable:L scalar"]
+ control: Variable:I numeric scalar
+ start:   ["Variable:L1 numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
+ end:     ["Variable:L numeric scalar"]
 440      LET A(I) = 0
- Variable:I scalar
- Variable:A scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 450  NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 500  FOR I = 0 TO L
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:L scalar"]
+ end:     ["Variable:L numeric scalar"]
 510      LET C(I) = A(I) + B(I)
- Variable:I scalar
- Variable:C scalar
- Variable:I scalar
- Variable:A scalar
- Variable:I scalar
- Variable:B scalar
+ Variable:I numeric scalar
+ Variable:C numeric scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
+ Variable:I numeric scalar
+ Variable:B numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 520  NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 530
 600  REM CARRY, PRINT ANSWER
  Remark:CARRY, PRINT ANSWER
@@ -126,41 +126,41 @@
 1000 REM READ A NUMBER C
  Remark:READ A NUMBER C
 1010 FOR I = 0 TO 100
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:100"]
 1020     READ X(I)
- Variable:I scalar
- Variable:X scalar
+ Variable:I numeric scalar
+ Variable:X numeric scalar
 1030     IF X(I) < 0 THEN 1100
- Variable:I scalar
- Variable:X scalar
+ Variable:I numeric scalar
+ Variable:X numeric scalar
  NumericConstant:0
  BinaryOperatorLess:< boolean scalar
 1040 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 1050 GOTO 1200
  LineNumber:1200
 1100 LET L = I-1
- Variable:L scalar
- Variable:I scalar
+ Variable:L numeric scalar
+ Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 1110 FOR I = 0 TO L
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:L scalar"]
+ end:     ["Variable:L numeric scalar"]
 1120     LET C(I) = X(L-I)
- Variable:I scalar
- Variable:C scalar
- Variable:L scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:C numeric scalar
+ Variable:L numeric scalar
+ Variable:I numeric scalar
  BinaryOperatorMinus:- numeric scalar
- Variable:X scalar
+ Variable:X numeric scalar
  AssignmentOperator:=
 1130 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 1140 RETURN
  
 1200 PRINT "NUMBER TOO LONG"
@@ -172,115 +172,115 @@
 2000 REM PRINT A NUMBER C
  Remark:PRINT A NUMBER C
 2010 IF C(L) >= 100 THEN 2200
- Variable:L scalar
- Variable:C scalar
+ Variable:L numeric scalar
+ Variable:C numeric scalar
  NumericConstant:100
  BinaryOperatorGreaterEqual:>= boolean scalar
 2020 PRINT "      ";
  TextConstant:"      "
  CarriageControl:;
 2030 IF C(L) >= 10 THEN 2100
- Variable:L scalar
- Variable:C scalar
+ Variable:L numeric scalar
+ Variable:C numeric scalar
  NumericConstant:10
  BinaryOperatorGreaterEqual:>= boolean scalar
 2040 PRINT "      ";
  TextConstant:"      "
  CarriageControl:;
 2050 PRINT C(L); ",   ";
- Variable:L scalar
- Variable:C scalar
+ Variable:L numeric scalar
+ Variable:C numeric scalar
  CarriageControl:;
  TextConstant:",   "
  CarriageControl:;
 2060 LET L9 = L-1
- Variable:L9 scalar
- Variable:L scalar
+ Variable:L9 numeric scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 2070 GOTO 2210
  LineNumber:2210
 2100 LET M = INT(C(L)/10)
- Variable:M scalar
- Variable:L scalar
- Variable:C scalar
+ Variable:M numeric scalar
+ Variable:L numeric scalar
+ Variable:C numeric scalar
  NumericConstant:10
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  AssignmentOperator:=
 2110 LET C(L) = C(L) - 10*M
- Variable:L scalar
- Variable:C scalar
- Variable:L scalar
- Variable:C scalar
+ Variable:L numeric scalar
+ Variable:C numeric scalar
+ Variable:L numeric scalar
+ Variable:C numeric scalar
  NumericConstant:10
- Variable:M scalar
+ Variable:M numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 2120 PRINT M;
- Variable:M scalar
+ Variable:M numeric scalar
  CarriageControl:;
 2130 GOTO 2050
  LineNumber:2050
 2200 LET L9 = L
- Variable:L9 scalar
- Variable:L scalar
+ Variable:L9 numeric scalar
+ Variable:L numeric scalar
  AssignmentOperator:=
 2210 FOR I = L9 TO 0 STEP -1
- control: Variable:I scalar
- start:   ["Variable:L9 scalar"]
+ control: Variable:I numeric scalar
+ start:   ["Variable:L9 numeric scalar"]
  end:     ["NumericConstant:0"]
  step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
 2220     LET N = C(I)
- Variable:N scalar
- Variable:I scalar
- Variable:C scalar
+ Variable:N numeric scalar
+ Variable:I numeric scalar
+ Variable:C numeric scalar
  AssignmentOperator:=
 2230     LET Q = 100
- Variable:Q scalar
+ Variable:Q numeric scalar
  NumericConstant:100
  AssignmentOperator:=
 2240         FOR J = 1 TO 3
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 2250         LET M = INT(N/Q)
- Variable:M scalar
- Variable:N scalar
- Variable:Q scalar
+ Variable:M numeric scalar
+ Variable:N numeric scalar
+ Variable:Q numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  AssignmentOperator:=
 2260         LET N = N - M*Q
- Variable:N scalar
- Variable:N scalar
- Variable:M scalar
- Variable:Q scalar
+ Variable:N numeric scalar
+ Variable:N numeric scalar
+ Variable:M numeric scalar
+ Variable:Q numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 2270         LET Q = Q/10
- Variable:Q scalar
- Variable:Q scalar
+ Variable:Q numeric scalar
+ Variable:Q numeric scalar
  NumericConstant:10
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 2280         PRINT M;
- Variable:M scalar
+ Variable:M numeric scalar
  CarriageControl:;
 2290     NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 2300     IF I = 0 THEN 2400
- Variable:I scalar
+ Variable:I numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar
 2310     PRINT ",   ";
  TextConstant:",   "
  CarriageControl:;
 2320 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 2400 PRINT
  CarriageControl:NL
 2405 PRINT
@@ -291,58 +291,58 @@
 3000 REM CARRY IS IN NUMBER C
  Remark:CARRY IS IN NUMBER C
 3010 LET C(L+1) = 0
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 3020 FOR I = 0 TO L
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:L scalar"]
+ end:     ["Variable:L numeric scalar"]
 3030     LET N = C(I)
- Variable:N scalar
- Variable:I scalar
- Variable:C scalar
+ Variable:N numeric scalar
+ Variable:I numeric scalar
+ Variable:C numeric scalar
  AssignmentOperator:=
 3040     LET M = INT(N/1000)
- Variable:M scalar
- Variable:N scalar
+ Variable:M numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1000
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  AssignmentOperator:=
 3050     LET C(I) = N - 1000*M
- Variable:I scalar
- Variable:C scalar
- Variable:N scalar
+ Variable:I numeric scalar
+ Variable:C numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1000
- Variable:M scalar
+ Variable:M numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 3060     LET C(I+1) = C(I+1) + M
- Variable:I scalar
+ Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- Variable:C scalar
- Variable:I scalar
+ Variable:C numeric scalar
+ Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- Variable:C scalar
- Variable:M scalar
+ Variable:C numeric scalar
+ Variable:M numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 3070 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 3080 IF M = 0 THEN 3100
- Variable:M scalar
+ Variable:M numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar
 3090 LET L = L+1
- Variable:L scalar
- Variable:L scalar
+ Variable:L numeric scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=

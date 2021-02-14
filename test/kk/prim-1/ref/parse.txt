@@ -5,70 +5,70 @@
  NumericConstant:200
  Declaration:P scalar
 20 FOR I = 2 TO 1000
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
- Variable:I scalar
- Variable:N scalar
+ Variable:I numeric scalar
+ Variable:N numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 26 LET K = 0
- Variable:K scalar
+ Variable:K numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 30 FOR P = 2 TO 1000
- control: Variable:P scalar
+ control: Variable:P numeric scalar
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:1000"]
 40    IF N(P) < 0 THEN 90
- Variable:P scalar
- Variable:N scalar
+ Variable:P numeric scalar
+ Variable:N numeric scalar
  NumericConstant:0
  BinaryOperatorLess:< boolean scalar
 50    LET K = K+1
- Variable:K scalar
- Variable:K scalar
+ Variable:K numeric scalar
+ Variable:K numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 55    LET P(K) = P
- Variable:K scalar
- Variable:P scalar
- Variable:P scalar
+ Variable:K numeric scalar
+ Variable:P numeric scalar
+ Variable:P numeric scalar
  AssignmentOperator:=
 56    IF P > SQR(1000) THEN 90
- Variable:P scalar
+ Variable:P numeric scalar
  NumericConstant:1000
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  BinaryOperatorGreater:> boolean scalar
 60    FOR I = P TO 1000 STEP P
- control: Variable:I scalar
- start:   ["Variable:P scalar"]
+ control: Variable:I numeric scalar
+ start:   ["Variable:P numeric scalar"]
  end:     ["NumericConstant:1000"]
- step:    ["Variable:P scalar"]
+ step:    ["Variable:P numeric scalar"]
 70       LET N(I) = -1
- Variable:I scalar
- Variable:N scalar
+ Variable:I numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 80    NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 90 NEXT P
- Variable:P scalar
+ Variable:P numeric scalar
 100 FOR I = 1 TO K
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:K scalar"]
+ end:     ["Variable:K numeric scalar"]
 110    PRINT P(I);
- Variable:I scalar
- Variable:P scalar
+ Variable:I numeric scalar
+ Variable:P numeric scalar
  CarriageControl:;
 120 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 999 END
  
 

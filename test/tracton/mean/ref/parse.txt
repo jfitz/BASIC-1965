@@ -3,93 +3,93 @@
 20 REM DEVIATION AND STANDARD ERROR FOR GROUPED DATA
  Remark:DEVIATION AND STANDARD ERROR FOR GROUPED DATA
 30 LET A = 0
- Variable:A scalar
+ Variable:A numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 40 LET B = 0
- Variable:B scalar
+ Variable:B numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 50 LET C = 0
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 60 LET D = 0
- Variable:D scalar
+ Variable:D numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
  TextConstant:"ENTER SAMPLE VALUE AND FREQUENCY"
  CarriageControl:;
 80 INPUT X,F
- Variable:X scalar
- Variable:F scalar
+ Variable:X numeric scalar
+ Variable:F numeric scalar
 90 IF F <= 0 THEN 170
- Variable:F scalar
+ Variable:F numeric scalar
  NumericConstant:0
  BinaryOperatorLessEqual:<= boolean scalar
 100 LET A = A + 1
- Variable:A scalar
- Variable:A scalar
+ Variable:A numeric scalar
+ Variable:A numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 110 LET B = B + F
- Variable:B scalar
- Variable:B scalar
- Variable:F scalar
+ Variable:B numeric scalar
+ Variable:B numeric scalar
+ Variable:F numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 120 LET G = X*F
- Variable:G scalar
- Variable:X scalar
- Variable:F scalar
+ Variable:G numeric scalar
+ Variable:X numeric scalar
+ Variable:F numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 130 LET C = C + G
- Variable:C scalar
- Variable:C scalar
- Variable:G scalar
+ Variable:C numeric scalar
+ Variable:C numeric scalar
+ Variable:G numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 LET E = (X^2)*F
- Variable:E scalar
- Variable:X scalar
+ Variable:E numeric scalar
+ Variable:X numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
- Variable:F scalar
+ Variable:F numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 150 LET D = D + E
- Variable:D scalar
- Variable:D scalar
- Variable:E scalar
+ Variable:D numeric scalar
+ Variable:D numeric scalar
+ Variable:E numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 160 GOTO 70
  LineNumber:70
 170 LET H = C/B
- Variable:H scalar
- Variable:C scalar
- Variable:B scalar
+ Variable:H numeric scalar
+ Variable:C numeric scalar
+ Variable:B numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 LET I = SQR(D - (B*(H^2)))
- Variable:I scalar
- Variable:D scalar
- Variable:B scalar
- Variable:H scalar
+ Variable:I numeric scalar
+ Variable:D numeric scalar
+ Variable:B numeric scalar
+ Variable:H numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  AssignmentOperator:=
 190 LET J = I/SQR(B)
- Variable:J scalar
- Variable:I scalar
- Variable:B scalar
- FunctionSqr scalar
+ Variable:J numeric scalar
+ Variable:I numeric scalar
+ Variable:B numeric scalar
+ FunctionSqr:SQR numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 200 PRINT
@@ -97,22 +97,22 @@
 210 PRINT "NUMBER OF SAMPLES ENTERED = ";A
  TextConstant:"NUMBER OF SAMPLES ENTERED = "
  CarriageControl:;
- Variable:A scalar
+ Variable:A numeric scalar
  CarriageControl:NL
 220 PRINT "MEAN = ";H
  TextConstant:"MEAN = "
  CarriageControl:;
- Variable:H scalar
+ Variable:H numeric scalar
  CarriageControl:NL
 230 PRINT "STANDARD DEVIATION = ";I
  TextConstant:"STANDARD DEVIATION = "
  CarriageControl:;
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 240 PRINT "STANDARD ERROR = ";J
  TextConstant:"STANDARD ERROR = "
  CarriageControl:;
- Variable:J scalar
+ Variable:J numeric scalar
  CarriageControl:NL
 250 PRINT
  CarriageControl:NL
@@ -120,9 +120,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 270 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 280 IF L = 1 THEN 300
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 290 STOP

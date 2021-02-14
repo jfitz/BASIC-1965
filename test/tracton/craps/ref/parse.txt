@@ -33,82 +33,82 @@
  TextConstant:"YOU LOSE AUTOMATICALLY"
  CarriageControl:NL
 140 LET J = 0
- Variable:J scalar
+ Variable:J numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 150 GOSUB 460
  LineNumber:460
 160 LET D1 = N
- Variable:D1 scalar
- Variable:N scalar
+ Variable:D1 numeric scalar
+ Variable:N numeric scalar
  AssignmentOperator:=
 170 GOSUB 460
  LineNumber:460
 180 LET D2 = N
- Variable:D2 scalar
- Variable:N scalar
+ Variable:D2 numeric scalar
+ Variable:N numeric scalar
  AssignmentOperator:=
 190 LET D3 = D1 + D2
- Variable:D3 scalar
- Variable:D1 scalar
- Variable:D2 scalar
+ Variable:D3 numeric scalar
+ Variable:D1 numeric scalar
+ Variable:D2 numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 200 LET J = J + 1
- Variable:J scalar
- Variable:J scalar
+ Variable:J numeric scalar
+ Variable:J numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 210 IF J = 1 THEN 260
- Variable:J scalar
+ Variable:J numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 220 IF D3 = D4 THEN 420
- Variable:D3 scalar
- Variable:D4 scalar
+ Variable:D3 numeric scalar
+ Variable:D4 numeric scalar
  BinaryOperatorEqual:= boolean scalar
 230 IF D3 = 7 THEN 440
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  NumericConstant:7
  BinaryOperatorEqual:= boolean scalar
 240 PRINT "YOU THROW A ";D3
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  CarriageControl:NL
 250 GOTO 150
  LineNumber:150
 260 IF D3 = 7 THEN 320
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  NumericConstant:7
  BinaryOperatorEqual:= boolean scalar
 270 IF D3 = 2 THEN 340
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  NumericConstant:2
  BinaryOperatorEqual:= boolean scalar
 280 IF D3 = 3 THEN 340
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  NumericConstant:3
  BinaryOperatorEqual:= boolean scalar
 290 IF D3 = 12 THEN 340
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  NumericConstant:12
  BinaryOperatorEqual:= boolean scalar
 300 IF D3 = 11 THEN 320
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  NumericConstant:11
  BinaryOperatorEqual:= boolean scalar
 310 LET D4 = D3
- Variable:D4 scalar
- Variable:D3 scalar
+ Variable:D4 numeric scalar
+ Variable:D3 numeric scalar
  AssignmentOperator:=
 315 GOTO 240
  LineNumber:240
 320 PRINT "YOU THROW A ";D3;" YOU WIN"
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  CarriageControl:;
  TextConstant:" YOU WIN"
  CarriageControl:NL
@@ -117,7 +117,7 @@
 340 PRINT "YOU THROW A ";D3;" YOU LOSE"
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  CarriageControl:;
  TextConstant:" YOU LOSE"
  CarriageControl:NL
@@ -139,7 +139,7 @@
 420 PRINT "YOU THROW A ";D3;"YOU WIN BY MATCHING"
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  CarriageControl:;
  TextConstant:"YOU WIN BY MATCHING"
  CarriageControl:NL
@@ -148,19 +148,19 @@
 440 PRINT "YOU THROW A ";D3;" SORRY YOU LOSE"
  TextConstant:"YOU THROW A "
  CarriageControl:;
- Variable:D3 scalar
+ Variable:D3 numeric scalar
  CarriageControl:;
  TextConstant:" SORRY YOU LOSE"
  CarriageControl:NL
 450 GOTO 350
  LineNumber:350
 460 LET N = 1 + INT(6*RND)
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:1
  NumericConstant:6
- FunctionRnd scalar
+ FunctionRnd:RND numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 470 RETURN

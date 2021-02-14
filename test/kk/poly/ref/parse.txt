@@ -7,32 +7,32 @@
  NumericConstant:2
  Declaration:T scalar
 20 READ N
- Variable:N scalar
+ Variable:N numeric scalar
 30 FOR I = 0 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 40 READ A(I)
- Variable:I scalar
- Variable:A scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
 50 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 60 READ X9
- Variable:X9 scalar
+ Variable:X9 numeric scalar
 70 FOR J = 1 TO X9
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:X9 scalar"]
+ end:     ["Variable:X9 numeric scalar"]
 80 READ X(J)
- Variable:J scalar
- Variable:X scalar
+ Variable:J numeric scalar
+ Variable:X numeric scalar
 90 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 95
 100 REM  MAIN ROUTINE.
  Remark: MAIN ROUTINE.
 110 LET K = 0
- Variable:K scalar
+ Variable:K numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 120 GOSUB 500
@@ -40,7 +40,7 @@
 130 GOSUB 2000
  LineNumber:2000
 140 LET K = 1
- Variable:K scalar
+ Variable:K numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 150 GOSUB 500
@@ -48,7 +48,7 @@
 160 GOSUB 2000
  LineNumber:2000
 170 LET K = 2
- Variable:K scalar
+ Variable:K numeric scalar
  NumericConstant:2
  AssignmentOperator:=
 180 GOSUB 500
@@ -68,99 +68,99 @@
 220 PRINT
  CarriageControl:NL
 230 FOR J = 1 TO X9
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:X9 scalar"]
+ end:     ["Variable:X9 numeric scalar"]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
- Variable:J scalar
- Variable:X scalar
+ Variable:J numeric scalar
+ Variable:X numeric scalar
  CarriageControl:,
- Variable:J scalar
+ Variable:J numeric scalar
  NumericConstant:0
- Variable:T scalar
+ Variable:T numeric scalar
  CarriageControl:,
- Variable:J scalar
+ Variable:J numeric scalar
  NumericConstant:1
- Variable:T scalar
+ Variable:T numeric scalar
  CarriageControl:,
- Variable:J scalar
+ Variable:J numeric scalar
  NumericConstant:2
- Variable:T scalar
+ Variable:T numeric scalar
  CarriageControl:NL
 250 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 260 STOP
  
 270
 500 REM  RUN THROUGH X-VALUES
  Remark: RUN THROUGH X-VALUES
 510 FOR J = 1 TO X9
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:X9 scalar"]
+ end:     ["Variable:X9 numeric scalar"]
 520 LET X = X(J)
- Variable:X scalar
- Variable:J scalar
- Variable:X scalar
+ Variable:X numeric scalar
+ Variable:J numeric scalar
+ Variable:X numeric scalar
  AssignmentOperator:=
 530 GOSUB 1000
  LineNumber:1000
 540 LET T(J,K) = Y
- Variable:J scalar
- Variable:K scalar
- Variable:T scalar
- Variable:Y scalar
+ Variable:J numeric scalar
+ Variable:K numeric scalar
+ Variable:T numeric scalar
+ Variable:Y numeric scalar
  AssignmentOperator:=
 550 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 560 RETURN
  
 570
 1000 REM  EVALUATE.
  Remark: EVALUATE.
 1010 LET Y = 0
- Variable:Y scalar
+ Variable:Y numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 1020 FOR I = 0 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 1030 LET Y = Y*X + A(I)
- Variable:Y scalar
- Variable:Y scalar
- Variable:X scalar
+ Variable:Y numeric scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:I scalar
- Variable:A scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 1040 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 1050 RETURN
  
 1060
 2000 REM  DIFFERENTIATE.
  Remark: DIFFERENTIATE.
 2010 FOR I = 0 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 2020 LET A(I) = A(I)*(N-I)
- Variable:I scalar
- Variable:A scalar
- Variable:I scalar
- Variable:A scalar
- Variable:N scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
+ Variable:N numeric scalar
+ Variable:I numeric scalar
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 2030 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 2040 LET N = N-1
- Variable:N scalar
- Variable:N scalar
+ Variable:N numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=

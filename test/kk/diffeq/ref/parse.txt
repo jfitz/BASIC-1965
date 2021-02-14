@@ -2,20 +2,20 @@
  UserFunctionName:FNF
  VariableName:X
  VariableName:Y
- Variable:X scalar
- Variable:X scalar
+ Variable:X numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:Y scalar
- Variable:Y scalar
+ Variable:Y numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
 20
 100 READ X0, X1, Y0, H
- Variable:X0 scalar
- Variable:X1 scalar
- Variable:Y0 scalar
- Variable:H scalar
+ Variable:X0 numeric scalar
+ Variable:X1 numeric scalar
+ Variable:Y0 numeric scalar
+ Variable:H numeric scalar
 110 PRINT " X", " Y"
  TextConstant:" X"
  CarriageControl:,
@@ -24,67 +24,67 @@
 120 PRINT
  CarriageControl:NL
 130 PRINT X0, Y0
- Variable:X0 scalar
+ Variable:X0 numeric scalar
  CarriageControl:,
- Variable:Y0 scalar
+ Variable:Y0 numeric scalar
  CarriageControl:NL
 140 LET Y = Y0
- Variable:Y scalar
- Variable:Y0 scalar
+ Variable:Y numeric scalar
+ Variable:Y0 numeric scalar
  AssignmentOperator:=
 150
 160 FOR X = X0 TO X1-H STEP H
- control: Variable:X scalar
- start:   ["Variable:X0 scalar"]
- end:     ["Variable:X1 scalar", "Variable:H scalar", "BinaryOperatorMinus:- numeric scalar"]
- step:    ["Variable:H scalar"]
+ control: Variable:X numeric scalar
+ start:   ["Variable:X0 numeric scalar"]
+ end:     ["Variable:X1 numeric scalar", "Variable:H numeric scalar", "BinaryOperatorMinus:- numeric scalar"]
+ step:    ["Variable:H numeric scalar"]
 170 LET D1 = FNF(X,Y)
- Variable:D1 scalar
- Variable:X scalar
- Variable:Y scalar
- UserFunction scalar
+ Variable:D1 numeric scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
+ UserFunction:FNF numeric scalar
  AssignmentOperator:=
 180 LET Y1 = Y
- Variable:Y1 scalar
- Variable:Y scalar
+ Variable:Y1 numeric scalar
+ Variable:Y numeric scalar
  AssignmentOperator:=
 190 LET Y = Y + D1*H/2
- Variable:Y scalar
- Variable:Y scalar
- Variable:D1 scalar
- Variable:H scalar
+ Variable:Y numeric scalar
+ Variable:Y numeric scalar
+ Variable:D1 numeric scalar
+ Variable:H numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 200 LET D2 = FNF(X+H/2,Y)
- Variable:D2 scalar
- Variable:X scalar
- Variable:H scalar
+ Variable:D2 numeric scalar
+ Variable:X numeric scalar
+ Variable:H numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- Variable:Y scalar
- UserFunction scalar
+ Variable:Y numeric scalar
+ UserFunction:FNF numeric scalar
  AssignmentOperator:=
 210 LET Y = Y1 + D2*H
- Variable:Y scalar
- Variable:Y1 scalar
- Variable:D2 scalar
- Variable:H scalar
+ Variable:Y numeric scalar
+ Variable:Y1 numeric scalar
+ Variable:D2 numeric scalar
+ Variable:H numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 220 PRINT X+H, Y
- Variable:X scalar
- Variable:H scalar
+ Variable:X numeric scalar
+ Variable:H numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  CarriageControl:,
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:NL
 230 NEXT X
- Variable:X scalar
+ Variable:X numeric scalar
 240
 900 DATA 0, 1, 1
  NumericConstant:0

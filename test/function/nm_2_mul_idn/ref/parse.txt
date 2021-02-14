@@ -1,0 +1,89 @@
+10 REM MATRIX FUNCTION IDN
+ Remark:MATRIX FUNCTION IDN
+15 DIM D(4,4)
+ NumericConstant:4
+ NumericConstant:4
+ Declaration:D scalar
+20 MAT A = 2 * IDN(3)
+ Variable:A numeric matrix
+ NumericConstant:2
+ NumericConstant:3
+ FunctionIdn:IDN numeric matrix
+ BinaryOperatorMultiply:* numeric matrix
+ AssignmentOperator:=
+30 MAT B = 2 * IDN(5,5)
+ Variable:B numeric matrix
+ NumericConstant:2
+ NumericConstant:5
+ NumericConstant:5
+ FunctionIdn:IDN numeric matrix
+ BinaryOperatorMultiply:* numeric matrix
+ AssignmentOperator:=
+35 MAT D = 2 * IDN
+ Variable:D numeric matrix
+ NumericConstant:2
+ FunctionIdn:IDN numeric matrix
+ BinaryOperatorMultiply:* numeric matrix
+ AssignmentOperator:=
+40 PRINT "MATRIX A"
+ TextConstant:"MATRIX A"
+ CarriageControl:NL
+50 MAT PRINT A;
+ Variable:A numeric matrix
+ CarriageControl:;
+60 PRINT "MATRIX B"
+ TextConstant:"MATRIX B"
+ CarriageControl:NL
+70 MAT PRINT B;
+ Variable:B numeric matrix
+ CarriageControl:;
+80 PRINT "MATRIX D"
+ TextConstant:"MATRIX D"
+ CarriageControl:NL
+90 MAT PRINT D;
+ Variable:D numeric matrix
+ CarriageControl:;
+100 OPTION BASE 1
+ NumericConstant:1
+120 MAT A = 3 * IDN(3)
+ Variable:A numeric matrix
+ NumericConstant:3
+ NumericConstant:3
+ FunctionIdn:IDN numeric matrix
+ BinaryOperatorMultiply:* numeric matrix
+ AssignmentOperator:=
+130 MAT B = 3 * IDN(5,5)
+ Variable:B numeric matrix
+ NumericConstant:3
+ NumericConstant:5
+ NumericConstant:5
+ FunctionIdn:IDN numeric matrix
+ BinaryOperatorMultiply:* numeric matrix
+ AssignmentOperator:=
+135 MAT D = 3 * IDN()
+ Variable:D numeric matrix
+ NumericConstant:3
+ FunctionIdn:IDN numeric matrix
+ BinaryOperatorMultiply:* numeric matrix
+ AssignmentOperator:=
+140 PRINT "MATRIX A"
+ TextConstant:"MATRIX A"
+ CarriageControl:NL
+150 MAT PRINT A;
+ Variable:A numeric matrix
+ CarriageControl:;
+160 PRINT "MATRIX B"
+ TextConstant:"MATRIX B"
+ CarriageControl:NL
+170 MAT PRINT B;
+ Variable:B numeric matrix
+ CarriageControl:;
+180 PRINT "MATRIX D"
+ TextConstant:"MATRIX D"
+ CarriageControl:NL
+190 MAT PRINT D;
+ Variable:D numeric matrix
+ CarriageControl:;
+999 END
+ 
+

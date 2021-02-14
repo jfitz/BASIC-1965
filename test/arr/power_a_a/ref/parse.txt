@@ -6,32 +6,32 @@
  NumericConstant:5
  Declaration:B scalar
 30 FOR I = 0 TO 5
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
- Variable:I scalar
- Variable:A scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 52 LET B(I) = I
- Variable:I scalar
- Variable:B scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:B numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 70 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 100 ARR C = A ^ B
- Variable:C array
- Variable:A array
- Variable:B array
+ Variable:C numeric array
+ Variable:A numeric array
+ Variable:B numeric array
  BinaryOperatorPower:^ numeric array
  AssignmentOperator:=
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
 120 ARR PRINT A;
- Variable:A array
+ Variable:A numeric array
  CarriageControl:;
 122 PRINT
  CarriageControl:NL
@@ -39,7 +39,7 @@
  TextConstant:"ARRAY B"
  CarriageControl:NL
 140 ARR PRINT B;
- Variable:B array
+ Variable:B numeric array
  CarriageControl:;
 142 PRINT
  CarriageControl:NL
@@ -47,7 +47,7 @@
  TextConstant:"ARRAY C"
  CarriageControl:NL
 160 ARR PRINT C;
- Variable:C array
+ Variable:C numeric array
  CarriageControl:;
 162 PRINT
  CarriageControl:NL

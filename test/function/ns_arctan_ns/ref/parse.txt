@@ -1,0 +1,25 @@
+20 PRINT "ANGLE","ARCTAN"
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"ARCTAN"
+ CarriageControl:NL
+30 FOR I = 0 TO 2 STEP 0.1
+ control: Variable:I numeric scalar
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:2"]
+ step:    ["NumericConstant:0.1"]
+50 LET S = ARCTAN(I)
+ Variable:S numeric scalar
+ Variable:I numeric scalar
+ FunctionArcTan:ARCTAN numeric scalar
+ AssignmentOperator:=
+60 PRINT I, S
+ Variable:I numeric scalar
+ CarriageControl:,
+ Variable:S numeric scalar
+ CarriageControl:NL
+70 NEXT I
+ Variable:I numeric scalar
+99 END
+ 
+

@@ -9,223 +9,223 @@
  Declaration:T scalar
 110
 140 READ M, N
- Variable:M scalar
- Variable:N scalar
+ Variable:M numeric scalar
+ Variable:N numeric scalar
 150 FOR I = 1 TO M
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M scalar"]
+ end:     ["Variable:M numeric scalar"]
 160    READ X(I)
- Variable:I scalar
- Variable:X scalar
+ Variable:I numeric scalar
+ Variable:X numeric scalar
 170 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 180 FOR J = 1 TO N
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 190    READ Y(J)
- Variable:J scalar
- Variable:Y scalar
+ Variable:J numeric scalar
+ Variable:Y numeric scalar
 200 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 210
 250 FOR K = 1 TO M
- control: Variable:K scalar
+ control: Variable:K numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M scalar"]
+ end:     ["Variable:M numeric scalar"]
 260    LET Z(K) = X(K)
- Variable:K scalar
- Variable:Z scalar
- Variable:K scalar
- Variable:X scalar
+ Variable:K numeric scalar
+ Variable:Z numeric scalar
+ Variable:K numeric scalar
+ Variable:X numeric scalar
  AssignmentOperator:=
 270    LET T(K) = +1
- Variable:K scalar
- Variable:T scalar
+ Variable:K numeric scalar
+ Variable:T numeric scalar
  NumericConstant:1
  UnaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 280 NEXT K
- Variable:K scalar
+ Variable:K numeric scalar
 290 FOR K = 1 TO N
- control: Variable:K scalar
+ control: Variable:K numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 300    LET Z(M+K) = Y(K)
- Variable:M scalar
- Variable:K scalar
+ Variable:M numeric scalar
+ Variable:K numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- Variable:Z scalar
- Variable:K scalar
- Variable:Y scalar
+ Variable:Z numeric scalar
+ Variable:K numeric scalar
+ Variable:Y numeric scalar
  AssignmentOperator:=
 310    LET T(M+K) = 0
- Variable:M scalar
- Variable:K scalar
+ Variable:M numeric scalar
+ Variable:K numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- Variable:T scalar
+ Variable:T numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 320 NEXT K
- Variable:K scalar
+ Variable:K numeric scalar
 330
 360 FOR K = 1 TO M+N-1
- control: Variable:K scalar
+ control: Variable:K numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M scalar", "Variable:N scalar", "BinaryOperatorPlus:+ numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+ numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 370    FOR L = K+1 TO M+N
- control: Variable:L scalar
- start:   ["Variable:K scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
- end:     ["Variable:M scalar", "Variable:N scalar", "BinaryOperatorPlus:+ numeric scalar"]
+ control: Variable:L numeric scalar
+ start:   ["Variable:K numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
+ end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+ numeric scalar"]
 380       IF Z(K) <= Z(L) THEN 450
- Variable:K scalar
- Variable:Z scalar
- Variable:L scalar
- Variable:Z scalar
+ Variable:K numeric scalar
+ Variable:Z numeric scalar
+ Variable:L numeric scalar
+ Variable:Z numeric scalar
  BinaryOperatorLessEqual:<= boolean scalar
 390       LET T = Z(K)
- Variable:T scalar
- Variable:K scalar
- Variable:Z scalar
+ Variable:T numeric scalar
+ Variable:K numeric scalar
+ Variable:Z numeric scalar
  AssignmentOperator:=
 400       LET Z(K) = Z(L)
- Variable:K scalar
- Variable:Z scalar
- Variable:L scalar
- Variable:Z scalar
+ Variable:K numeric scalar
+ Variable:Z numeric scalar
+ Variable:L numeric scalar
+ Variable:Z numeric scalar
  AssignmentOperator:=
 410       LET Z(L) = T
- Variable:L scalar
- Variable:Z scalar
- Variable:T scalar
+ Variable:L numeric scalar
+ Variable:Z numeric scalar
+ Variable:T numeric scalar
  AssignmentOperator:=
 420       LET T = T(K)
- Variable:T scalar
- Variable:K scalar
- Variable:T scalar
+ Variable:T numeric scalar
+ Variable:K numeric scalar
+ Variable:T numeric scalar
  AssignmentOperator:=
 430       LET T(K) = T(L)
- Variable:K scalar
- Variable:T scalar
- Variable:L scalar
- Variable:T scalar
+ Variable:K numeric scalar
+ Variable:T numeric scalar
+ Variable:L numeric scalar
+ Variable:T numeric scalar
  AssignmentOperator:=
 440       LET T(L) = T
- Variable:L scalar
- Variable:T scalar
- Variable:T scalar
+ Variable:L numeric scalar
+ Variable:T numeric scalar
+ Variable:T numeric scalar
  AssignmentOperator:=
 450    NEXT L
- Variable:L scalar
+ Variable:L numeric scalar
 460 NEXT K
- Variable:K scalar
+ Variable:K numeric scalar
 470
 500 LET J = 1
- Variable:J scalar
+ Variable:J numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 510 LET K = 1
- Variable:K scalar
+ Variable:K numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 520 LET B = J
- Variable:B scalar
- Variable:J scalar
+ Variable:B numeric scalar
+ Variable:J numeric scalar
  AssignmentOperator:=
 530 LET T = J
- Variable:T scalar
- Variable:J scalar
+ Variable:T numeric scalar
+ Variable:J numeric scalar
  AssignmentOperator:=
 540 LET J = J+1
- Variable:J scalar
- Variable:J scalar
+ Variable:J numeric scalar
+ Variable:J numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 550 IF J > M+N THEN 600
- Variable:J scalar
- Variable:M scalar
- Variable:N scalar
+ Variable:J numeric scalar
+ Variable:M numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorGreater:> boolean scalar
 560 IF Z(J) > Z(B) THEN 600
- Variable:J scalar
- Variable:Z scalar
- Variable:B scalar
- Variable:Z scalar
+ Variable:J numeric scalar
+ Variable:Z numeric scalar
+ Variable:B numeric scalar
+ Variable:Z numeric scalar
  BinaryOperatorGreater:> boolean scalar
 570 LET T = T+J
- Variable:T scalar
- Variable:T scalar
- Variable:J scalar
+ Variable:T numeric scalar
+ Variable:T numeric scalar
+ Variable:J numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 580 LET K = K+1
- Variable:K scalar
- Variable:K scalar
+ Variable:K numeric scalar
+ Variable:K numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 590 GO TO 540
  LineNumber:540
 600 FOR L = B TO J-1
- control: Variable:L scalar
- start:   ["Variable:B scalar"]
- end:     ["Variable:J scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ control: Variable:L numeric scalar
+ start:   ["Variable:B numeric scalar"]
+ end:     ["Variable:J numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
 610    LET Z(L) = T/K
- Variable:L scalar
- Variable:Z scalar
- Variable:T scalar
- Variable:K scalar
+ Variable:L numeric scalar
+ Variable:Z numeric scalar
+ Variable:T numeric scalar
+ Variable:K numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 620 NEXT L
- Variable:L scalar
+ Variable:L numeric scalar
 630 IF J <= M+N THEN 510
- Variable:J scalar
- Variable:M scalar
- Variable:N scalar
+ Variable:J numeric scalar
+ Variable:M numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorLessEqual:<= boolean scalar
 640
 740 LET S(0) = 0
  NumericConstant:0
- Variable:S scalar
+ Variable:S numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 750 LET S(1) = 0
  NumericConstant:1
- Variable:S scalar
+ Variable:S numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 760 FOR K = 1 TO M+N
- control: Variable:K scalar
+ control: Variable:K numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M scalar", "Variable:N scalar", "BinaryOperatorPlus:+ numeric scalar"]
+ end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+ numeric scalar"]
 770    LET S(T(K)) = S(T(K)) + Z(K)
- Variable:K scalar
- Variable:T scalar
- Variable:S scalar
- Variable:K scalar
- Variable:T scalar
- Variable:S scalar
- Variable:K scalar
- Variable:Z scalar
+ Variable:K numeric scalar
+ Variable:T numeric scalar
+ Variable:S numeric scalar
+ Variable:K numeric scalar
+ Variable:T numeric scalar
+ Variable:S numeric scalar
+ Variable:K numeric scalar
+ Variable:Z numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 790 NEXT K
- Variable:K scalar
+ Variable:K numeric scalar
 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
  TextConstant:"RANK SUM FOR X IS"
  CarriageControl:;
  NumericConstant:1
- Variable:S scalar
+ Variable:S numeric scalar
  CarriageControl:,
  TextConstant:"FOR Y IS"
  CarriageControl:;
  NumericConstant:0
- Variable:S scalar
+ Variable:S numeric scalar
  CarriageControl:NL
 810
 900 DATA 6, 4

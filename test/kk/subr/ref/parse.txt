@@ -1,17 +1,17 @@
 100 LET X = 5
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:5
  AssignmentOperator:=
 110 GOSUB 500
  LineNumber:500
 120 LET X = 7
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:7
  AssignmentOperator:=
 130 GOSUB 500
  LineNumber:500
 140 LET X = 11
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:11
  AssignmentOperator:=
 150 GOSUB 500
@@ -20,29 +20,29 @@
  
 170
 500 LET Y = 3*X
- Variable:Y scalar
+ Variable:Y numeric scalar
  NumericConstant:3
- Variable:X scalar
+ Variable:X numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 510 LET Z = 1.2*EXP(Y)
- Variable:Z scalar
+ Variable:Z numeric scalar
  NumericConstant:1.2
- Variable:Y scalar
- FunctionExp scalar
+ Variable:Y numeric scalar
+ FunctionExp:EXP numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 520 LET Y = SQR(Z+2)
- Variable:Y scalar
- Variable:Z scalar
+ Variable:Y numeric scalar
+ Variable:Z numeric scalar
  NumericConstant:2
  BinaryOperatorPlus:+ numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  AssignmentOperator:=
 530 PRINT X;Y
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:NL
 540 RETURN
  

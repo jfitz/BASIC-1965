@@ -20,50 +20,50 @@
  NumericConstant:11
  NumericConstant:12
 100 FOR I = 0 TO 5
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 120 READ A(I)
- Variable:I scalar
- Variable:A scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
 140 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 150 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A;
- Variable:A array
+ Variable:A numeric array
  CarriageControl:;
 162 PRINT
  CarriageControl:NL
 200 FOR I = 0 TO 5
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 220 READ B(I)
- Variable:I scalar
- Variable:B scalar
+ Variable:I numeric scalar
+ Variable:B numeric scalar
 240 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 250 PRINT "ARRAY B"
  TextConstant:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B;
- Variable:B array
+ Variable:B numeric array
  CarriageControl:;
 262 PRINT
  CarriageControl:NL
 300 ARR C = A*B
- Variable:C array
- Variable:A array
- Variable:B array
+ Variable:C numeric array
+ Variable:A numeric array
+ Variable:B numeric array
  BinaryOperatorMultiply:* numeric array
  AssignmentOperator:=
 310 PRINT "ARRAY C"
  TextConstant:"ARRAY C"
  CarriageControl:NL
 320 ARR PRINT C;
- Variable:C array
+ Variable:C numeric array
  CarriageControl:;
 322 PRINT
  CarriageControl:NL

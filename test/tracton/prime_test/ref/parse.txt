@@ -6,64 +6,64 @@
  TextConstant:"ENTER THE TEST NUMBER, ZERO TO STOP"
  CarriageControl:NL
 40 INPUT N
- Variable:N scalar
+ Variable:N numeric scalar
 50 LET N = INT(N)
- Variable:N scalar
- Variable:N scalar
- FunctionInt scalar
+ Variable:N numeric scalar
+ Variable:N numeric scalar
+ FunctionInt:INT numeric scalar
  AssignmentOperator:=
 60 IF N = 0 THEN 220
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar
 70 IF N < 4 THEN 180
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:4
  BinaryOperatorLess:< boolean scalar
 80 LET I = 0
- Variable:I scalar
+ Variable:I numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 90 LET T = 2
- Variable:T scalar
+ Variable:T numeric scalar
  NumericConstant:2
  AssignmentOperator:=
 100 LET J = INT(N/T)
- Variable:J scalar
- Variable:N scalar
- Variable:T scalar
+ Variable:J numeric scalar
+ Variable:N numeric scalar
+ Variable:T numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  AssignmentOperator:=
 110 LET K = J*T
- Variable:K scalar
- Variable:J scalar
- Variable:T scalar
+ Variable:K numeric scalar
+ Variable:J numeric scalar
+ Variable:T numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 120 IF N = K THEN 200
- Variable:N scalar
- Variable:K scalar
+ Variable:N numeric scalar
+ Variable:K numeric scalar
  BinaryOperatorEqual:= boolean scalar
 130 LET I = I + 1
- Variable:I scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 LET L = T*T
- Variable:L scalar
- Variable:T scalar
- Variable:T scalar
+ Variable:L numeric scalar
+ Variable:T numeric scalar
+ Variable:T numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 150 IF L > N THEN 180
- Variable:L scalar
- Variable:N scalar
+ Variable:L numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorGreater:> boolean scalar
 160 LET T = (I*2) + 1
- Variable:T scalar
- Variable:I scalar
+ Variable:T numeric scalar
+ Variable:I numeric scalar
  NumericConstant:2
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
@@ -72,18 +72,18 @@
 170 GOTO 100
  LineNumber:100
 180 PRINT N;"IS A PRIME"
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:;
  TextConstant:"IS A PRIME"
  CarriageControl:NL
 190 GOTO 30
  LineNumber:30
 200 PRINT N;"IS NOT A PRIME:";T;"IS THE SMALLEST FACTOR"
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:;
  TextConstant:"IS NOT A PRIME:"
  CarriageControl:;
- Variable:T scalar
+ Variable:T numeric scalar
  CarriageControl:;
  TextConstant:"IS THE SMALLEST FACTOR"
  CarriageControl:NL

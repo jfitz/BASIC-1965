@@ -8,8 +8,8 @@
 140 REMARK WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
  Remark:WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
 150 READ I0, J0
- Variable:I0 scalar
- Variable:J0 scalar
+ Variable:I0 numeric scalar
+ Variable:J0 numeric scalar
 160 PRINT "RANK  ";"FILE  ";"LENGTH"
  TextConstant:"RANK  "
  CarriageControl:;
@@ -19,45 +19,45 @@
  CarriageControl:NL
 180
 182 LET Z0 = 0
- Variable:Z0 scalar
+ Variable:Z0 numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
  Remark:WE ZERO THE BOARD AND INITIALIZE
 200 FOR I = 1 TO 8
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 210    FOR J = 1 TO 8
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 220       LET B(I,J) = 0
- Variable:I scalar
- Variable:J scalar
- Variable:B scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:B numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 230    NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 240 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 250 LET I = I0
- Variable:I scalar
- Variable:I0 scalar
+ Variable:I numeric scalar
+ Variable:I0 numeric scalar
  AssignmentOperator:=
 260 LET J = J0
- Variable:J scalar
- Variable:J0 scalar
+ Variable:J numeric scalar
+ Variable:J0 numeric scalar
  AssignmentOperator:=
 270 LET M = 1
- Variable:M scalar
+ Variable:M numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 280 LET B(I,J) = -1
- Variable:I scalar
- Variable:J scalar
- Variable:B scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:B numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
@@ -65,127 +65,127 @@
 300 REMARK WE NOW START THE SERIES OF MOVES
  Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
- Variable:C1 scalar
+ Variable:C1 numeric scalar
  NumericConstant:9
  AssignmentOperator:=
 320 LET C = 0
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I1 = I - 2 TO I + 2
- control: Variable:I1 scalar
- start:   ["Variable:I scalar", "NumericConstant:2", "BinaryOperatorMinus:- numeric scalar"]
- end:     ["Variable:I scalar", "NumericConstant:2", "BinaryOperatorPlus:+ numeric scalar"]
+ control: Variable:I1 numeric scalar
+ start:   ["Variable:I numeric scalar", "NumericConstant:2", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:I numeric scalar", "NumericConstant:2", "BinaryOperatorPlus:+ numeric scalar"]
 340    IF I1 = 1 THEN 480
- Variable:I1 scalar
+ Variable:I1 numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 350    IF ABS(I1 - 4.5) > 4 THEN 480
- Variable:I1 scalar
+ Variable:I1 numeric scalar
  NumericConstant:4.5
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs scalar
+ FunctionAbs:ABS numeric scalar
  NumericConstant:4
  BinaryOperatorGreater:> boolean scalar
 360    LET D1 = 3 - ABS(I1 - I)
- Variable:D1 scalar
+ Variable:D1 numeric scalar
  NumericConstant:3
- Variable:I1 scalar
- Variable:I scalar
+ Variable:I1 numeric scalar
+ Variable:I numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs scalar
+ FunctionAbs:ABS numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
- control: Variable:J1 scalar
- start:   ["Variable:J scalar", "Variable:D1 scalar", "BinaryOperatorMinus:- numeric scalar"]
- end:     ["Variable:J scalar", "Variable:D1 scalar", "BinaryOperatorPlus:+ numeric scalar"]
- step:    ["NumericConstant:2", "Variable:D1 scalar", "BinaryOperatorMultiply:* numeric scalar"]
+ control: Variable:J1 numeric scalar
+ start:   ["Variable:J numeric scalar", "Variable:D1 numeric scalar", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:J numeric scalar", "Variable:D1 numeric scalar", "BinaryOperatorPlus:+ numeric scalar"]
+ step:    ["NumericConstant:2", "Variable:D1 numeric scalar", "BinaryOperatorMultiply:* numeric scalar"]
 380       IF ABS(J1 - 4.5) > 4 THEN 470
- Variable:J1 scalar
+ Variable:J1 numeric scalar
  NumericConstant:4.5
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs scalar
+ FunctionAbs:ABS numeric scalar
  NumericConstant:4
  BinaryOperatorGreater:> boolean scalar
 390       IF B(I1,J1) < 0 THEN 470
- Variable:I1 scalar
- Variable:J1 scalar
- Variable:B scalar
+ Variable:I1 numeric scalar
+ Variable:J1 numeric scalar
+ Variable:B numeric scalar
  NumericConstant:0
  BinaryOperatorLess:< boolean scalar
 400       LET C = C + 1
- Variable:C scalar
- Variable:C scalar
+ Variable:C numeric scalar
+ Variable:C numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 410       IF C <> C1 THEN 470
- Variable:C scalar
- Variable:C1 scalar
+ Variable:C numeric scalar
+ Variable:C1 numeric scalar
  BinaryOperatorNotEqual:<> boolean scalar
 420       LET I = I1
- Variable:I scalar
- Variable:I1 scalar
+ Variable:I numeric scalar
+ Variable:I1 numeric scalar
  AssignmentOperator:=
 430       LET J = J1
- Variable:J scalar
- Variable:J1 scalar
+ Variable:J numeric scalar
+ Variable:J1 numeric scalar
  AssignmentOperator:=
 440       LET B(I,J) = -1
- Variable:I scalar
- Variable:J scalar
- Variable:B scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:B numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 450       LET M = M + 1
- Variable:M scalar
- Variable:M scalar
+ Variable:M numeric scalar
+ Variable:M numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 460       GOTO 310
  LineNumber:310
 470    NEXT J1
- Variable:J1 scalar
+ Variable:J1 numeric scalar
 480 NEXT I1
- Variable:I1 scalar
+ Variable:I1 numeric scalar
 490 IF C = 0 THEN 600
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
  Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
 510 LET C1 = INT(RND(Z)*C + 1)
- Variable:C1 scalar
- Variable:Z scalar
- FunctionRnd scalar
- Variable:C scalar
+ Variable:C1 numeric scalar
+ Variable:Z numeric scalar
+ FunctionRnd:RND numeric scalar
+ Variable:C numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  AssignmentOperator:=
 520 GOTO 320
  LineNumber:320
 600 REMARK WE HAVE GONE AS FAR AS WE CAN
  Remark:WE HAVE GONE AS FAR AS WE CAN
 610 PRINT I; J; M
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:;
- Variable:J scalar
+ Variable:J numeric scalar
  CarriageControl:;
- Variable:M scalar
+ Variable:M numeric scalar
  CarriageControl:NL
 612 LET Z0 = Z0+1
- Variable:Z0 scalar
- Variable:Z0 scalar
+ Variable:Z0 numeric scalar
+ Variable:Z0 numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 620 IF Z0 < 40 THEN 200
- Variable:Z0 scalar
+ Variable:Z0 numeric scalar
  NumericConstant:40
  BinaryOperatorLess:< boolean scalar
 630 REMARK WE GO FOR ANOTHER TRIAL

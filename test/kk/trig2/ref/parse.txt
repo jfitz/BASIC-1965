@@ -1,38 +1,38 @@
 5 DEF FNR(X) = INT(X*1000 + 0.5)/1000
  UserFunctionName:FNR
  VariableName:X
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:1000
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0.5
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt scalar
+ FunctionInt:INT numeric scalar
  NumericConstant:1000
  BinaryOperatorDivide:/ numeric scalar
 10 LET P = 3.14159625
- Variable:P scalar
+ Variable:P numeric scalar
  NumericConstant:3.14159625
  AssignmentOperator:=
 20 DEF FND(X) = X*P/180
  UserFunctionName:FND
  VariableName:X
- Variable:X scalar
- Variable:P scalar
+ Variable:X numeric scalar
+ Variable:P numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:180
  BinaryOperatorDivide:/ numeric scalar
 30 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X
- Variable:X scalar
- UserFunction scalar
- FunctionSin scalar
+ Variable:X numeric scalar
+ UserFunction:FND numeric scalar
+ FunctionSin:SIN numeric scalar
 40 DEF FNC(X) = COS(FND(X))
  UserFunctionName:FNC
  VariableName:X
- Variable:X scalar
- UserFunction scalar
- FunctionCos scalar
+ Variable:X numeric scalar
+ UserFunction:FND numeric scalar
+ FunctionCos:COS numeric scalar
 50 PRINT "DEGREES", "SINE", "COSINE"
  TextConstant:"DEGREES"
  CarriageControl:,
@@ -41,23 +41,23 @@
  TextConstant:"COSINE"
  CarriageControl:NL
 60 FOR X = 0 TO 90 STEP 10
- control: Variable:X scalar
+ control: Variable:X numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:90"]
  step:    ["NumericConstant:10"]
 70     PRINT X, FNR(FNS(X)), FNR(FNC(X))
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:,
- Variable:X scalar
- UserFunction scalar
- UserFunction scalar
+ Variable:X numeric scalar
+ UserFunction:FNS numeric scalar
+ UserFunction:FNR numeric scalar
  CarriageControl:,
- Variable:X scalar
- UserFunction scalar
- UserFunction scalar
+ Variable:X numeric scalar
+ UserFunction:FNC numeric scalar
+ UserFunction:FNR numeric scalar
  CarriageControl:NL
 80 NEXT X
- Variable:X scalar
+ Variable:X numeric scalar
 99 END
  
 

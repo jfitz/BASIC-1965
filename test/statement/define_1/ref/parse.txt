@@ -2,28 +2,28 @@
  UserFunctionName:FNL
  VariableName:A
  VariableName:B
- Variable:A scalar
- FunctionLog scalar
- Variable:B scalar
- FunctionLog scalar
+ Variable:A numeric scalar
+ FunctionLog:LOG numeric scalar
+ Variable:B numeric scalar
+ FunctionLog:LOG numeric scalar
  BinaryOperatorDivide:/ numeric scalar
 20 FOR N = 2 TO 10 STEP 2
- control: Variable:N scalar
+ control: Variable:N numeric scalar
  start:   ["NumericConstant:2"]
  end:     ["NumericConstant:10"]
  step:    ["NumericConstant:2"]
 30 PRINT N, LOG(N), FNL(N,10)
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:,
- Variable:N scalar
- FunctionLog scalar
+ Variable:N numeric scalar
+ FunctionLog:LOG numeric scalar
  CarriageControl:,
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:10
- UserFunction scalar
+ UserFunction:FNL numeric scalar
  CarriageControl:NL
 40 NEXT N
- Variable:N scalar
+ Variable:N numeric scalar
 99 END
  
 

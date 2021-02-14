@@ -6,43 +6,43 @@
  TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
- Variable:A1 scalar
- Variable:A2 scalar
- Variable:A3 scalar
+ Variable:A1 numeric scalar
+ Variable:A2 numeric scalar
+ Variable:A3 numeric scalar
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
  TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
- Variable:B1 scalar
- Variable:B2 scalar
- Variable:B3 scalar
+ Variable:B1 numeric scalar
+ Variable:B2 numeric scalar
+ Variable:B3 numeric scalar
 70 LET X = (A2*B3) - (A3*B2)
- Variable:X scalar
- Variable:A2 scalar
- Variable:B3 scalar
+ Variable:X numeric scalar
+ Variable:A2 numeric scalar
+ Variable:B3 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:A3 scalar
- Variable:B2 scalar
+ Variable:A3 numeric scalar
+ Variable:B2 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 80 LET Y = (A3*B1) - (A1*B3)
- Variable:Y scalar
- Variable:A3 scalar
- Variable:B1 scalar
+ Variable:Y numeric scalar
+ Variable:A3 numeric scalar
+ Variable:B1 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:A1 scalar
- Variable:B3 scalar
+ Variable:A1 numeric scalar
+ Variable:B3 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 90 LET Z = (A1*B2) - (A2*B1)
- Variable:Z scalar
- Variable:A1 scalar
- Variable:B2 scalar
+ Variable:Z numeric scalar
+ Variable:A1 numeric scalar
+ Variable:B2 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:A2 scalar
- Variable:B1 scalar
+ Variable:A2 numeric scalar
+ Variable:B1 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
@@ -52,15 +52,15 @@
 110 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
  TextConstant:"X = "
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:,
  TextConstant:"Z = "
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 120 PRINT "++++++++++++++++++++"
  TextConstant:"++++++++++++++++++++"
@@ -69,9 +69,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 140 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 150 IF L = 1 THEN 170
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 160 STOP

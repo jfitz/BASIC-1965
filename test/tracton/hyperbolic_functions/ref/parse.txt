@@ -22,7 +22,7 @@
  TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- Variable:C scalar
+ Variable:C numeric scalar
 100 ON C GOTO 110,160,210,270,320,370
  Unknown statement 'ON C GOTO 110,160,210,270,320,370'
  Unimplemented
@@ -31,19 +31,19 @@
 120 GOSUB 520
  LineNumber:520
 130 LET Z = Y/2
- Variable:Z scalar
- Variable:Y scalar
+ Variable:Z numeric scalar
+ Variable:Y numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 140 PRINT "SINH";X;" =";Z
  TextConstant:"SINH"
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 150 GOTO 420
  LineNumber:420
@@ -52,19 +52,19 @@
 170 GOSUB 540
  LineNumber:540
 180 LET Z = B/2
- Variable:Z scalar
- Variable:B scalar
+ Variable:Z numeric scalar
+ Variable:B numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 190 PRINT "COSH";X;" =";Z
  TextConstant:"COSH"
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 200 GOTO 420
  LineNumber:420
@@ -75,19 +75,19 @@
 230 GOSUB 540
  LineNumber:540
 240 LET Z = Y/B
- Variable:Z scalar
- Variable:Y scalar
- Variable:B scalar
+ Variable:Z numeric scalar
+ Variable:Y numeric scalar
+ Variable:B numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 250 PRINT "TANH";X;" =";Z
  TextConstant:"TANH"
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 260 GOTO 420
  LineNumber:420
@@ -96,9 +96,9 @@
 280 GOSUB 520
  LineNumber:520
 290 LET Z = 1/(Y/2)
- Variable:Z scalar
+ Variable:Z numeric scalar
  NumericConstant:1
- Variable:Y scalar
+ Variable:Y numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorDivide:/ numeric scalar
@@ -106,11 +106,11 @@
 300 PRINT "CSCH";X;" =";Z
  TextConstant:"CSCH"
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 310 GOTO 420
  LineNumber:420
@@ -119,9 +119,9 @@
 330 GOSUB 540
  LineNumber:540
 340 LET Z = 1/(B/2)
- Variable:Z scalar
+ Variable:Z numeric scalar
  NumericConstant:1
- Variable:B scalar
+ Variable:B numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorDivide:/ numeric scalar
@@ -129,11 +129,11 @@
 350 PRINT "SECH";X;" =";Z
  TextConstant:"SECH"
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 360 GOTO 420
  LineNumber:420
@@ -144,21 +144,21 @@
 390 GOSUB 540
  LineNumber:540
 400 LET Z = 1/(Y/B)
- Variable:Z scalar
+ Variable:Z numeric scalar
  NumericConstant:1
- Variable:Y scalar
- Variable:B scalar
+ Variable:Y numeric scalar
+ Variable:B numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 410 PRINT "COTH";X;" =";Z
  TextConstant:"COTH"
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
  TextConstant:" ="
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 420 PRINT
  CarriageControl:NL
@@ -166,9 +166,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 440 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 450 IF L = 1 THEN 470
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 460 STOP
@@ -181,27 +181,27 @@
  TextConstant:"X = "
  CarriageControl:NL
 500 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 510 RETURN
  
 520 LET Y = EXP(X) - EXP(-X)
- Variable:Y scalar
- Variable:X scalar
- FunctionExp scalar
- Variable:X scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
+ FunctionExp:EXP numeric scalar
+ Variable:X numeric scalar
  UnaryOperatorMinus:- numeric scalar
- FunctionExp scalar
+ FunctionExp:EXP numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 530 RETURN
  
 540 LET B = EXP(X) + EXP(-X)
- Variable:B scalar
- Variable:X scalar
- FunctionExp scalar
- Variable:X scalar
+ Variable:B numeric scalar
+ Variable:X numeric scalar
+ FunctionExp:EXP numeric scalar
+ Variable:X numeric scalar
  UnaryOperatorMinus:- numeric scalar
- FunctionExp scalar
+ FunctionExp:EXP numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 550 RETURN

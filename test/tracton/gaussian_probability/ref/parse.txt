@@ -6,31 +6,31 @@
  TextConstant:"X = "
  CarriageControl:;
 40 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 50 LET A = EXP(-(X^2)/2)
- Variable:A scalar
- Variable:X scalar
+ Variable:A numeric scalar
+ Variable:X numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  UnaryOperatorMinus:- numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
- FunctionExp scalar
+ FunctionExp:EXP numeric scalar
  AssignmentOperator:=
 60 LET B = .398942
- Variable:B scalar
+ Variable:B numeric scalar
  NumericConstant:0.398942
  AssignmentOperator:=
 70 LET C = B*A
- Variable:C scalar
- Variable:B scalar
- Variable:A scalar
+ Variable:C numeric scalar
+ Variable:B numeric scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 80 PRINT "F(X) = ";C
  TextConstant:"F(X) = "
  CarriageControl:;
- Variable:C scalar
+ Variable:C numeric scalar
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
@@ -38,9 +38,9 @@
  TextConstant:"TO CONTINUE TYPE 1, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 120 IF L = 1 THEN 140
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 130 STOP

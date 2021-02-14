@@ -8,28 +8,28 @@
  TextConstant:"ARCTAN"
  CarriageControl:NL
 30 READ Y,X
- Variable:Y scalar
- Variable:X scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
 40 IF X+Y = X*Y THEN 99
- Variable:X scalar
- Variable:Y scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- Variable:X scalar
- Variable:Y scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorEqual:= boolean scalar
 54 LET A = ARCTAN(Y,X)
- Variable:A scalar
- Variable:Y scalar
- Variable:X scalar
- FunctionArcTan scalar
+ Variable:A numeric scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
+ FunctionArcTan:ARCTAN numeric scalar
  AssignmentOperator:=
 56 PRINT Y, X, A
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:,
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:,
- Variable:A scalar
+ Variable:A numeric scalar
  CarriageControl:NL
 60 GOTO 30
  LineNumber:30

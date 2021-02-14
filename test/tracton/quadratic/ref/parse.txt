@@ -6,54 +6,54 @@
  TextConstant:"ENTER VALUES FOR A, B AND C"
  CarriageControl:NL
 40 INPUT A,B,C
- Variable:A scalar
- Variable:B scalar
- Variable:C scalar
+ Variable:A numeric scalar
+ Variable:B numeric scalar
+ Variable:C numeric scalar
 50 LET D = ((B^2) - (4*A*C))/(4*A^2)
- Variable:D scalar
- Variable:B scalar
+ Variable:D numeric scalar
+ Variable:B numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  NumericConstant:4
- Variable:A scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:C scalar
+ Variable:C numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  NumericConstant:4
- Variable:A scalar
+ Variable:A numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 60 IF D > = 0 THEN 130
- Variable:D scalar
+ Variable:D numeric scalar
  NumericConstant:0
  BinaryOperatorGreaterEqual:>= boolean scalar
 70 LET X = -B/(2*A)
- Variable:X scalar
- Variable:B scalar
+ Variable:X numeric scalar
+ Variable:B numeric scalar
  UnaryOperatorMinus:- numeric scalar
  NumericConstant:2
- Variable:A scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
- Variable:Y scalar
+ Variable:Y numeric scalar
  NumericConstant:4
- Variable:A scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:C scalar
+ Variable:C numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:B scalar
+ Variable:B numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  NumericConstant:2
- Variable:A scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
@@ -63,49 +63,49 @@
 100 PRINT "REAL PART = ";X
  TextConstant:"REAL PART = "
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:NL
 110 PRINT "IMAGINARY PART = ";Y
  TextConstant:"IMAGINARY PART = "
  CarriageControl:;
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:NL
 120 GOTO 220
  LineNumber:220
 130 LET E = - B/(2*A)
- Variable:E scalar
- Variable:B scalar
+ Variable:E numeric scalar
+ Variable:B numeric scalar
  UnaryOperatorMinus:- numeric scalar
  NumericConstant:2
- Variable:A scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 140 IF E > = 0 THEN 170
- Variable:E scalar
+ Variable:E numeric scalar
  NumericConstant:0
  BinaryOperatorGreaterEqual:>= boolean scalar
 150 LET Z = E - SQR(D)
- Variable:Z scalar
- Variable:E scalar
- Variable:D scalar
- FunctionSqr scalar
+ Variable:Z numeric scalar
+ Variable:E numeric scalar
+ Variable:D numeric scalar
+ FunctionSqr:SQR numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 160 GOTO 180
  LineNumber:180
 170 LET Z = E + SQR(D)
- Variable:Z scalar
- Variable:E scalar
- Variable:D scalar
- FunctionSqr scalar
+ Variable:Z numeric scalar
+ Variable:E numeric scalar
+ Variable:D numeric scalar
+ FunctionSqr:SQR numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 180 LET W = C/(Z*A)
- Variable:W scalar
- Variable:C scalar
- Variable:Z scalar
- Variable:A scalar
+ Variable:W numeric scalar
+ Variable:C numeric scalar
+ Variable:Z numeric scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
@@ -115,12 +115,12 @@
 200 PRINT "1ST ROOT = ";Z
  TextConstant:"1ST ROOT = "
  CarriageControl:;
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 210 PRINT "2ND ROOT = ";W
  TextConstant:"2ND ROOT = "
  CarriageControl:;
- Variable:W scalar
+ Variable:W numeric scalar
  CarriageControl:NL
 220 PRINT "********************"
  TextConstant:"********************"
@@ -129,9 +129,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 240 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 250 IF L = 1 THEN 270
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 260 STOP

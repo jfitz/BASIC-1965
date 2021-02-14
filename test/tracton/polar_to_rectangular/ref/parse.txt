@@ -9,10 +9,10 @@
  TextConstant:"ANGLE IN DEGREES = "
  CarriageControl:;
 50 INPUT W
- Variable:W scalar
+ Variable:W numeric scalar
 60 LET W = (W*3.14159)/180
- Variable:W scalar
- Variable:W scalar
+ Variable:W numeric scalar
+ Variable:W numeric scalar
  NumericConstant:3.14159
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:180
@@ -22,19 +22,19 @@
  TextConstant:"MAGNITUDE R = "
  CarriageControl:;
 80 INPUT R
- Variable:R scalar
+ Variable:R numeric scalar
 90 LET X = R*COS(W)
- Variable:X scalar
- Variable:R scalar
- Variable:W scalar
- FunctionCos scalar
+ Variable:X numeric scalar
+ Variable:R numeric scalar
+ Variable:W numeric scalar
+ FunctionCos:COS numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 100 LET Y = R*SIN(W)
- Variable:Y scalar
- Variable:R scalar
- Variable:W scalar
- FunctionSin scalar
+ Variable:Y numeric scalar
+ Variable:R numeric scalar
+ Variable:W numeric scalar
+ FunctionSin:SIN numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 110 PRINT "RECTANGULAR COORDINATES"
@@ -43,11 +43,11 @@
 120 PRINT "X = ";X,"Y = ";Y
  TextConstant:"X = "
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:NL
 130 PRINT
  CarriageControl:NL
@@ -55,9 +55,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 160 IF L = 1 THEN 180
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 170 STOP

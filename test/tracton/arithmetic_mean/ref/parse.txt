@@ -3,48 +3,48 @@
 20 REM MEAN
  Remark:MEAN
 30 LET X = 0
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 40 LET N = 0
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "ENTER SAMPLE";
  TextConstant:"ENTER SAMPLE"
  CarriageControl:;
 60 INPUT W
- Variable:W scalar
+ Variable:W numeric scalar
 70 LET N = N + 1
- Variable:N scalar
- Variable:N scalar
+ Variable:N numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 80 LET X = X + W
- Variable:X scalar
- Variable:X scalar
- Variable:W scalar
+ Variable:X numeric scalar
+ Variable:X numeric scalar
+ Variable:W numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 90 LET A = X/N
- Variable:A scalar
- Variable:X scalar
- Variable:N scalar
+ Variable:A numeric scalar
+ Variable:X numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 PRINT "N = "; N, "SAMPLE ="; W,"CURRENT MEAN = ";A
  TextConstant:"N = "
  CarriageControl:;
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:,
  TextConstant:"SAMPLE ="
  CarriageControl:;
- Variable:W scalar
+ Variable:W numeric scalar
  CarriageControl:,
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- Variable:A scalar
+ Variable:A numeric scalar
  CarriageControl:NL
 110 GOTO 50
  LineNumber:50

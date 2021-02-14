@@ -1,30 +1,30 @@
 10 READ N,I
- Variable:N scalar
- Variable:I scalar
+ Variable:N numeric scalar
+ Variable:I numeric scalar
 20 LET B = 1
- Variable:B scalar
+ Variable:B numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 30 FOR K = 1 TO I
- control: Variable:K scalar
+ control: Variable:K numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:I scalar"]
+ end:     ["Variable:I numeric scalar"]
 40 LET B = B*(N-K+1)/K
- Variable:B scalar
- Variable:B scalar
- Variable:N scalar
- Variable:K scalar
+ Variable:B numeric scalar
+ Variable:B numeric scalar
+ Variable:N numeric scalar
+ Variable:K numeric scalar
  BinaryOperatorMinus:- numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:K scalar
+ Variable:K numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 50 NEXT K
- Variable:K scalar
+ Variable:K numeric scalar
 60 PRINT B
- Variable:B scalar
+ Variable:B numeric scalar
  CarriageControl:NL
 70 STOP
  

@@ -4,7 +4,7 @@
  NumericConstant:1000
  Declaration:L scalar
 30 LET N = 1000
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:1000
  AssignmentOperator:=
 100 REM INITIALIZE LOCKERS TO OPEN
@@ -12,50 +12,50 @@
 110 PRINT "INITIALIZING";N;" LOCKERS..."
  TextConstant:"INITIALIZING"
  CarriageControl:;
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:;
  TextConstant:" LOCKERS..."
  CarriageControl:NL
 130 FOR I = 1 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 140 FOR J = I TO N STEP I
- control: Variable:J scalar
- start:   ["Variable:I scalar"]
- end:     ["Variable:N scalar"]
- step:    ["Variable:I scalar"]
+ control: Variable:J numeric scalar
+ start:   ["Variable:I numeric scalar"]
+ end:     ["Variable:N numeric scalar"]
+ step:    ["Variable:I numeric scalar"]
 150 LET L(J) = 1 - L(J)
- Variable:J scalar
- Variable:L scalar
+ Variable:J numeric scalar
+ Variable:L numeric scalar
  NumericConstant:1
- Variable:J scalar
- Variable:L scalar
+ Variable:J numeric scalar
+ Variable:L numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 160 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 180 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 200 REM PRINT LOCKER STATES
  Remark:PRINT LOCKER STATES
 310 PRINT "OPEN LOCKERS:";
  TextConstant:"OPEN LOCKERS:"
  CarriageControl:;
 320 FOR I = 1 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 330 IF L(I) = 0 THEN 350
- Variable:I scalar
- Variable:L scalar
+ Variable:I numeric scalar
+ Variable:L numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar
 340 PRINT I;
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:;
 350 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 360 PRINT
  CarriageControl:NL
 999 END

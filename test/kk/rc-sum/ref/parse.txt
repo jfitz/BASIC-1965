@@ -1,90 +1,90 @@
 10 READ R,C
- Variable:R scalar
- Variable:C scalar
+ Variable:R numeric scalar
+ Variable:C numeric scalar
 20 FOR I = 1 TO R
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:R scalar"]
+ end:     ["Variable:R numeric scalar"]
 30 FOR J = 1 TO C
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:C scalar"]
+ end:     ["Variable:C numeric scalar"]
 40 READ T(I,J)
- Variable:I scalar
- Variable:J scalar
- Variable:T scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:T numeric scalar
 50 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 60 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 70 FOR I = 1 TO R
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:R scalar"]
+ end:     ["Variable:R numeric scalar"]
 80 LET S = 0
- Variable:S scalar
+ Variable:S numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 90 FOR J = 1 TO C
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:C scalar"]
+ end:     ["Variable:C numeric scalar"]
 100 LET S = S + T(I,J)
- Variable:S scalar
- Variable:S scalar
- Variable:I scalar
- Variable:J scalar
- Variable:T scalar
+ Variable:S numeric scalar
+ Variable:S numeric scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:T numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 110 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 120 PRINT "SUM OF ROW" I; "EQUALS" S
  TextConstant:"SUM OF ROW"
  CarriageControl:
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:;
  TextConstant:"EQUALS"
  CarriageControl:
- Variable:S scalar
+ Variable:S numeric scalar
  CarriageControl:NL
 130 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 140 PRINT
  CarriageControl:NL
 150 FOR J = 1 TO C
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:C scalar"]
+ end:     ["Variable:C numeric scalar"]
 160 LET S = 0
- Variable:S scalar
+ Variable:S numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 170 FOR I = 1 TO R
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:R scalar"]
+ end:     ["Variable:R numeric scalar"]
 180 LET S = S + T(I,J)
- Variable:S scalar
- Variable:S scalar
- Variable:I scalar
- Variable:J scalar
- Variable:T scalar
+ Variable:S numeric scalar
+ Variable:S numeric scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:T numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 190 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 200 PRINT "SUM OF COLUMN" J; "EQUALS" S
  TextConstant:"SUM OF COLUMN"
  CarriageControl:
- Variable:J scalar
+ Variable:J numeric scalar
  CarriageControl:;
  TextConstant:"EQUALS"
  CarriageControl:
- Variable:S scalar
+ Variable:S numeric scalar
  CarriageControl:NL
 210 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 220 DATA 3,5
  NumericConstant:3
  NumericConstant:5

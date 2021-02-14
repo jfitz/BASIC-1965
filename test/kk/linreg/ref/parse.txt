@@ -1,134 +1,134 @@
 100 LET X1 = 0
- Variable:X1 scalar
+ Variable:X1 numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 110 LET X2 = 0
- Variable:X2 scalar
+ Variable:X2 numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 120 LET Y1 = 0
- Variable:Y1 scalar
+ Variable:Y1 numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 130 LET Y2 = 0
- Variable:Y2 scalar
+ Variable:Y2 numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 140 LET Z = 0
- Variable:Z scalar
+ Variable:Z numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 150
 160 READ N
- Variable:N scalar
+ Variable:N numeric scalar
 170 FOR I = 1 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 180    READ X, Y
- Variable:X scalar
- Variable:Y scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
 190    LET X1 = X1 + X
- Variable:X1 scalar
- Variable:X1 scalar
- Variable:X scalar
+ Variable:X1 numeric scalar
+ Variable:X1 numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 200    LET Y1 = Y1 + Y
- Variable:Y1 scalar
- Variable:Y1 scalar
- Variable:Y scalar
+ Variable:Y1 numeric scalar
+ Variable:Y1 numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 210    LET X2 = X2 + X*X
- Variable:X2 scalar
- Variable:X2 scalar
- Variable:X scalar
- Variable:X scalar
+ Variable:X2 numeric scalar
+ Variable:X2 numeric scalar
+ Variable:X numeric scalar
+ Variable:X numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 220    LET Y2 = Y2 + Y*Y
- Variable:Y2 scalar
- Variable:Y2 scalar
- Variable:Y scalar
- Variable:Y scalar
+ Variable:Y2 numeric scalar
+ Variable:Y2 numeric scalar
+ Variable:Y numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 230    LET Z = Z + X*Y
- Variable:Z scalar
- Variable:Z scalar
- Variable:X scalar
- Variable:Y scalar
+ Variable:Z numeric scalar
+ Variable:Z numeric scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 240 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 250
 260 LET X3 = X1/N
- Variable:X3 scalar
- Variable:X1 scalar
- Variable:N scalar
+ Variable:X3 numeric scalar
+ Variable:X1 numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 265 LET Y3 = Y1/N
- Variable:Y3 scalar
- Variable:Y1 scalar
- Variable:N scalar
+ Variable:Y3 numeric scalar
+ Variable:Y1 numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 270 LET S1 = X2 - X1*X3
- Variable:S1 scalar
- Variable:X2 scalar
- Variable:X1 scalar
- Variable:X3 scalar
+ Variable:S1 numeric scalar
+ Variable:X2 numeric scalar
+ Variable:X1 numeric scalar
+ Variable:X3 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 280 LET S2 = Y2 - Y1*Y3
- Variable:S2 scalar
- Variable:Y2 scalar
- Variable:Y1 scalar
- Variable:Y3 scalar
+ Variable:S2 numeric scalar
+ Variable:Y2 numeric scalar
+ Variable:Y1 numeric scalar
+ Variable:Y3 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 290 LET S = Z - X1*Y3
- Variable:S scalar
- Variable:Z scalar
- Variable:X1 scalar
- Variable:Y3 scalar
+ Variable:S numeric scalar
+ Variable:Z numeric scalar
+ Variable:X1 numeric scalar
+ Variable:Y3 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 300 LET B = S/S1
- Variable:B scalar
- Variable:S scalar
- Variable:S1 scalar
+ Variable:B numeric scalar
+ Variable:S numeric scalar
+ Variable:S1 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 310 LET B1 = Y3 - B*X3
- Variable:B1 scalar
- Variable:Y3 scalar
- Variable:B scalar
- Variable:X3 scalar
+ Variable:B1 numeric scalar
+ Variable:Y3 numeric scalar
+ Variable:B numeric scalar
+ Variable:X3 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 320 LET S3 = S2 - B*S
- Variable:S3 scalar
- Variable:S2 scalar
- Variable:B scalar
- Variable:S scalar
+ Variable:S3 numeric scalar
+ Variable:S2 numeric scalar
+ Variable:B numeric scalar
+ Variable:S numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 330 LET S4 = S3/(N-2)
- Variable:S4 scalar
- Variable:S3 scalar
- Variable:N scalar
+ Variable:S4 numeric scalar
+ Variable:S3 numeric scalar
+ Variable:N numeric scalar
  NumericConstant:2
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorDivide:/ numeric scalar
@@ -137,25 +137,25 @@
 350 PRINT "NUMBER = "N
  TextConstant:"NUMBER = "
  CarriageControl:
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:NL
 360 PRINT "MEAN OF X = "X3, "OF Y "Y3
  TextConstant:"MEAN OF X = "
  CarriageControl:
- Variable:X3 scalar
+ Variable:X3 numeric scalar
  CarriageControl:,
  TextConstant:"OF Y "
  CarriageControl:
- Variable:Y3 scalar
+ Variable:Y3 numeric scalar
  CarriageControl:NL
 370 PRINT "SLOPE = "B, "Y-INTERCEPT = "B1
  TextConstant:"SLOPE = "
  CarriageControl:
- Variable:B scalar
+ Variable:B numeric scalar
  CarriageControl:,
  TextConstant:"Y-INTERCEPT = "
  CarriageControl:
- Variable:B1 scalar
+ Variable:B1 numeric scalar
  CarriageControl:NL
 375 PRINT
  CarriageControl:NL
@@ -164,15 +164,15 @@
  CarriageControl:,
  TextConstant:"TOTAL"
  CarriageControl:,
- Variable:Y2 scalar
+ Variable:Y2 numeric scalar
  CarriageControl:NL
 390 PRINT "    ", "MEAN", Y3*Y1
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"MEAN"
  CarriageControl:,
- Variable:Y3 scalar
- Variable:Y1 scalar
+ Variable:Y3 numeric scalar
+ Variable:Y1 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  CarriageControl:NL
 400 PRINT "    ", "SLOPE", B*S
@@ -180,8 +180,8 @@
  CarriageControl:,
  TextConstant:"SLOPE"
  CarriageControl:,
- Variable:B scalar
- Variable:S scalar
+ Variable:B numeric scalar
+ Variable:S numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  CarriageControl:NL
 410 PRINT "    ", "RESIDUAL", S3
@@ -189,7 +189,7 @@
  CarriageControl:,
  TextConstant:"RESIDUAL"
  CarriageControl:,
- Variable:S3 scalar
+ Variable:S3 numeric scalar
  CarriageControl:NL
 415 PRINT
  CarriageControl:NL
@@ -201,90 +201,90 @@
  CarriageControl:,
  TextConstant:"X  "
  CarriageControl:,
- Variable:S1 scalar
- Variable:N scalar
+ Variable:S1 numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  CarriageControl:NL
 440 PRINT "    ", "Y  ", SQR(S2/(N-1))
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"Y  "
  CarriageControl:,
- Variable:S2 scalar
- Variable:N scalar
+ Variable:S2 numeric scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  CarriageControl:NL
 450 PRINT "    ", "ERROR", SQR(S4)
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"ERROR"
  CarriageControl:,
- Variable:S4 scalar
- FunctionSqr scalar
+ Variable:S4 numeric scalar
+ FunctionSqr:SQR numeric scalar
  CarriageControl:NL
 460 PRINT "    ", "Y-BAR", SQR(S4/N)
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"Y-BAR"
  CarriageControl:,
- Variable:S4 scalar
- Variable:N scalar
+ Variable:S4 numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  CarriageControl:NL
 470 PRINT "    ", "SLOPE", SQR(S4/S1)
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"SLOPE"
  CarriageControl:,
- Variable:S4 scalar
- Variable:S1 scalar
+ Variable:S4 numeric scalar
+ Variable:S1 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  CarriageControl:NL
 480 PRINT "    ", "Y-INTER.", SQR(S4*(1/N + X3*X3/S1))
  TextConstant:"    "
  CarriageControl:,
  TextConstant:"Y-INTER."
  CarriageControl:,
- Variable:S4 scalar
+ Variable:S4 numeric scalar
  NumericConstant:1
- Variable:N scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- Variable:X3 scalar
- Variable:X3 scalar
+ Variable:X3 numeric scalar
+ Variable:X3 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:S1 scalar
+ Variable:S1 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  CarriageControl:NL
 485 PRINT
  CarriageControl:NL
 490 PRINT "F-RATIO FOR SLOPE = " B*S/S4
  TextConstant:"F-RATIO FOR SLOPE = "
  CarriageControl:
- Variable:B scalar
- Variable:S scalar
+ Variable:B numeric scalar
+ Variable:S numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:S4 scalar
+ Variable:S4 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  CarriageControl:NL
 500 PRINT "CORRELATION COEFFICIENT = " S/SQR(S1*S2)
  TextConstant:"CORRELATION COEFFICIENT = "
  CarriageControl:
- Variable:S scalar
- Variable:S1 scalar
- Variable:S2 scalar
+ Variable:S numeric scalar
+ Variable:S1 numeric scalar
+ Variable:S2 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionSqr scalar
+ FunctionSqr:SQR numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  CarriageControl:NL
 510

@@ -1,23 +1,23 @@
 100 REM ANGLE-SIDE-ANGLE
  Remark:ANGLE-SIDE-ANGLE
 110 LET P = 3.14159625
- Variable:P scalar
+ Variable:P numeric scalar
  NumericConstant:3.14159625
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
  UserFunctionName:FND
  VariableName:X
- Variable:X scalar
- Variable:P scalar
+ Variable:X numeric scalar
+ Variable:P numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:180
  BinaryOperatorDivide:/ numeric scalar
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X
- Variable:X scalar
- UserFunction scalar
- FunctionSin scalar
+ Variable:X numeric scalar
+ UserFunction:FND numeric scalar
+ FunctionSin:SIN numeric scalar
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -30,47 +30,47 @@
  TextConstant:"THIRD SIDE"
  CarriageControl:NL
 150 READ A,X,B
- Variable:A scalar
- Variable:X scalar
- Variable:B scalar
+ Variable:A numeric scalar
+ Variable:X numeric scalar
+ Variable:B numeric scalar
 160 LET C = 180 - A - B
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:180
- Variable:A scalar
+ Variable:A numeric scalar
  BinaryOperatorMinus:- numeric scalar
- Variable:B scalar
+ Variable:B numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 170 LET Y = X*FNS(B)/FNS(C)
- Variable:Y scalar
- Variable:X scalar
- Variable:B scalar
- UserFunction scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
+ Variable:B numeric scalar
+ UserFunction:FNS numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:C scalar
- UserFunction scalar
+ Variable:C numeric scalar
+ UserFunction:FNS numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
- Variable:Z scalar
- Variable:X scalar
- Variable:A scalar
- UserFunction scalar
+ Variable:Z numeric scalar
+ Variable:X numeric scalar
+ Variable:A numeric scalar
+ UserFunction:FNS numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:C scalar
- UserFunction scalar
+ Variable:C numeric scalar
+ UserFunction:FNS numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z
- Variable:A scalar
+ Variable:A numeric scalar
  CarriageControl:,
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:,
- Variable:B scalar
+ Variable:B numeric scalar
  CarriageControl:,
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:,
- Variable:Z scalar
+ Variable:Z numeric scalar
  CarriageControl:NL
 200 GOTO 150
  LineNumber:150

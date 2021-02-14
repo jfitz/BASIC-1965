@@ -4,13 +4,13 @@
  TextConstant:"MAXIMUM TERM NUMBER"
  CarriageControl:NL
 30 INPUT N
- Variable:N scalar
+ Variable:N numeric scalar
 40 LET K = 0
- Variable:K scalar
+ Variable:K numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 50 LET D = 0
- Variable:D scalar
+ Variable:D numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 60 PRINT "TERM NUMBER","TERM VALUE"
@@ -19,34 +19,34 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 70 FOR I = 0 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 80 LET K = I + 1
- Variable:K scalar
- Variable:I scalar
+ Variable:K numeric scalar
+ Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 90 LET C = 1/K
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:1
- Variable:K scalar
+ Variable:K numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 100 LET D = D + C
- Variable:D scalar
- Variable:D scalar
- Variable:C scalar
+ Variable:D numeric scalar
+ Variable:D numeric scalar
+ Variable:C numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 110 PRINT K,D
- Variable:K scalar
+ Variable:K numeric scalar
  CarriageControl:,
- Variable:D scalar
+ Variable:D numeric scalar
  CarriageControl:NL
 120 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 130 PRINT
  CarriageControl:NL
 140 END

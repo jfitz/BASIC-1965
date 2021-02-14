@@ -4,19 +4,19 @@
  NumericConstant:5
  Declaration:A scalar
 30 FOR I = 0 TO 5
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
- Variable:I scalar
- Variable:A scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:A numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 70 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 100 ARR B = A - 1
- Variable:B array
- Variable:A array
+ Variable:B numeric array
+ Variable:A numeric array
  NumericConstant:1
  BinaryOperatorMinus:- numeric array
  AssignmentOperator:=
@@ -24,7 +24,7 @@
  TextConstant:"ARRAY A"
  CarriageControl:NL
 120 ARR PRINT A;
- Variable:A array
+ Variable:A numeric array
  CarriageControl:;
 122 PRINT
  CarriageControl:NL
@@ -32,7 +32,7 @@
  TextConstant:"ARRAY B"
  CarriageControl:NL
 140 ARR PRINT B;
- Variable:B array
+ Variable:B numeric array
  CarriageControl:;
 142 PRINT
  CarriageControl:NL

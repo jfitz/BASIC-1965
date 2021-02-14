@@ -19,7 +19,7 @@
  TextConstant:"ENTER 1 TO 5"
  CarriageControl:NL
 80 INPUT A
- Variable:A scalar
+ Variable:A numeric scalar
 90 ON A GOTO 100,160,220,280,340
  Unknown statement 'ON A GOTO 100,160,220,280,340'
  Unimplemented
@@ -30,19 +30,19 @@
 120 GOSUB 470
  LineNumber:470
 130 LET X = Y*((1 + I)^N)
- Variable:X scalar
- Variable:Y scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
  NumericConstant:1
- Variable:I scalar
+ Variable:I numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- Variable:N scalar
+ Variable:N numeric scalar
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 140 PRINT "FUTURE VALUE = ";X
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:NL
 150 GOTO 390
  LineNumber:390
@@ -53,19 +53,19 @@
 180 GOSUB 470
  LineNumber:470
 190 LET Y = X*((1 + I)^N)
- Variable:Y scalar
- Variable:X scalar
+ Variable:Y numeric scalar
+ Variable:X numeric scalar
  NumericConstant:1
- Variable:I scalar
+ Variable:I numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- Variable:N scalar
+ Variable:N numeric scalar
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 200 PRINT "PRESENT VALUE = ";Y
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
- Variable:Y scalar
+ Variable:Y numeric scalar
  CarriageControl:NL
 210 GOTO 390
  LineNumber:390
@@ -76,11 +76,11 @@
 240 GOSUB 470
  LineNumber:470
 250 LET L = Y*((1 + I^N) - 1)
- Variable:L scalar
- Variable:Y scalar
+ Variable:L numeric scalar
+ Variable:Y numeric scalar
  NumericConstant:1
- Variable:I scalar
- Variable:N scalar
+ Variable:I numeric scalar
+ Variable:N numeric scalar
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  NumericConstant:1
@@ -90,7 +90,7 @@
 260 PRINT "INTEREST = ";L
  TextConstant:"INTEREST = "
  CarriageControl:;
- Variable:L scalar
+ Variable:L numeric scalar
  CarriageControl:NL
 270 GOTO 390
  LineNumber:390
@@ -101,12 +101,12 @@
 300 GOSUB 470
  LineNumber:470
 310 LET I = ((X/Y)^(1/N)) - 1
- Variable:I scalar
- Variable:X scalar
- Variable:Y scalar
+ Variable:I numeric scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  NumericConstant:1
- Variable:N scalar
+ Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPower:^ numeric scalar
  NumericConstant:1
@@ -115,7 +115,7 @@
 320 PRINT "INTEREST RATE = ";I
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 330 GOTO 390
  LineNumber:390
@@ -126,21 +126,21 @@
 360 GOSUB 440
  LineNumber:440
 370 LET N = (LOG(X/Y))/(LOG(1 + I))
- Variable:N scalar
- Variable:X scalar
- Variable:Y scalar
+ Variable:N numeric scalar
+ Variable:X numeric scalar
+ Variable:Y numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionLog scalar
+ FunctionLog:LOG numeric scalar
  NumericConstant:1
- Variable:I scalar
+ Variable:I numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionLog scalar
+ FunctionLog:LOG numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 380 PRINT "NUMBER OF TIME PERIODS = ";N
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:NL
 390 PRINT
  CarriageControl:NL
@@ -148,9 +148,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 401 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 402 IF L = 1 THEN 404
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 403 STOP
@@ -163,28 +163,28 @@
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
 420 INPUT Y
- Variable:Y scalar
+ Variable:Y numeric scalar
 430 RETURN
  
 440 PRINT "INTEREST RATE = ";
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
 450 INPUT I
- Variable:I scalar
+ Variable:I numeric scalar
 460 RETURN
  
 470 PRINT "NUMBER OF TIME PERIODS = ";
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
 480 INPUT N
- Variable:N scalar
+ Variable:N numeric scalar
 490 RETURN
  
 500 PRINT "FUTURE VALUE = ";
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
 510 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 520 RETURN
  
 530 END

@@ -6,21 +6,21 @@
  TextConstant:"RADIUS"
  CarriageControl:NL
 40 INPUT R
- Variable:R scalar
+ Variable:R numeric scalar
 50 LET P = 3.14159
- Variable:P scalar
+ Variable:P numeric scalar
  NumericConstant:3.14159
  AssignmentOperator:=
 60 LET D = 2*R
- Variable:D scalar
+ Variable:D numeric scalar
  NumericConstant:2
- Variable:R scalar
+ Variable:R numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 70 LET I = (P*(D^4))/64
- Variable:I scalar
- Variable:P scalar
- Variable:D scalar
+ Variable:I numeric scalar
+ Variable:P numeric scalar
+ Variable:D numeric scalar
  NumericConstant:4
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
@@ -28,15 +28,15 @@
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 80 LET J = I*2
- Variable:J scalar
- Variable:I scalar
+ Variable:J numeric scalar
+ Variable:I numeric scalar
  NumericConstant:2
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 90 LET A = (P*(D^2))/4
- Variable:A scalar
- Variable:P scalar
- Variable:D scalar
+ Variable:A numeric scalar
+ Variable:P numeric scalar
+ Variable:D numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
@@ -46,17 +46,17 @@
 100 PRINT "MOMENT OF INERTIA = ";I
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;
- Variable:I scalar
+ Variable:I numeric scalar
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
- Variable:J scalar
+ Variable:J numeric scalar
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
  TextConstant:"AREA OF SECTION = "
  CarriageControl:;
- Variable:A scalar
+ Variable:A numeric scalar
  CarriageControl:NL
 130 PRINT "*************************"
  TextConstant:"*************************"
@@ -65,9 +65,9 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L scalar
+ Variable:L numeric scalar
 160 IF L = 1 THEN 180
- Variable:L scalar
+ Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 170 STOP

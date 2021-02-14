@@ -8,34 +8,34 @@
  TextConstant:"ENTER 1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
- Variable:Z1 scalar
+ Variable:Z1 numeric scalar
 60 PRINT "ENTER 2ND IMPEDANCE"
  TextConstant:"ENTER 2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
- Variable:Z2 scalar
+ Variable:Z2 numeric scalar
 80 PRINT "ENTER DESIRED SYSTEM Q"
  TextConstant:"ENTER DESIRED SYSTEM Q"
  CarriageControl:NL
 90 INPUT Q
- Variable:Q scalar
+ Variable:Q numeric scalar
 100 PRINT "ENTER OPERATING FREQUENCY"
  TextConstant:"ENTER OPERATING FREQUENCY"
  CarriageControl:NL
 110 INPUT F
- Variable:F scalar
+ Variable:F numeric scalar
 120 LET A = Z1/Q
- Variable:A scalar
- Variable:Z1 scalar
- Variable:Q scalar
+ Variable:A numeric scalar
+ Variable:Z1 numeric scalar
+ Variable:Q numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 130 LET C = ((Z2/Z1)*((Q^2) + 1)) - 1
- Variable:C scalar
- Variable:Z2 scalar
- Variable:Z1 scalar
+ Variable:C numeric scalar
+ Variable:Z2 numeric scalar
+ Variable:Z1 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- Variable:Q scalar
+ Variable:Q numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  NumericConstant:1
@@ -45,29 +45,29 @@
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 140 LET B = Z2/SQR(C)
- Variable:B scalar
- Variable:Z2 scalar
- Variable:C scalar
- FunctionSqr scalar
+ Variable:B numeric scalar
+ Variable:Z2 numeric scalar
+ Variable:C numeric scalar
+ FunctionSqr:SQR numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 150 LET E = (Z2/(Q*B)) + 1
- Variable:E scalar
- Variable:Z2 scalar
- Variable:Q scalar
- Variable:B scalar
+ Variable:E numeric scalar
+ Variable:Z2 numeric scalar
+ Variable:Q numeric scalar
+ Variable:B numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 160 LET D = E*((Q*Z1)/((Q^2) + 1))
- Variable:D scalar
- Variable:E scalar
- Variable:Q scalar
- Variable:Z1 scalar
+ Variable:D numeric scalar
+ Variable:E numeric scalar
+ Variable:Q numeric scalar
+ Variable:Z1 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:Q scalar
+ Variable:Q numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  NumericConstant:1
@@ -76,34 +76,34 @@
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 170 LET P = 6.28319
- Variable:P scalar
+ Variable:P numeric scalar
  NumericConstant:6.28319
  AssignmentOperator:=
 180 LET C1 = 1/(P*F*A)
- Variable:C1 scalar
+ Variable:C1 numeric scalar
  NumericConstant:1
- Variable:P scalar
- Variable:F scalar
+ Variable:P numeric scalar
+ Variable:F numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:A scalar
+ Variable:A numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 190 LET C2 = 1/(P*F*B)
- Variable:C2 scalar
+ Variable:C2 numeric scalar
  NumericConstant:1
- Variable:P scalar
- Variable:F scalar
+ Variable:P numeric scalar
+ Variable:F numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:B scalar
+ Variable:B numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 200 LET L = D/(P*F)
- Variable:L scalar
- Variable:D scalar
- Variable:P scalar
- Variable:F scalar
+ Variable:L numeric scalar
+ Variable:D numeric scalar
+ Variable:P numeric scalar
+ Variable:F numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
@@ -113,17 +113,17 @@
 220 PRINT "CAPACITOR 1 = ";C1
  TextConstant:"CAPACITOR 1 = "
  CarriageControl:;
- Variable:C1 scalar
+ Variable:C1 numeric scalar
  CarriageControl:NL
 230 PRINT "CAPACITOR 2 = ";C2
  TextConstant:"CAPACITOR 2 = "
  CarriageControl:;
- Variable:C2 scalar
+ Variable:C2 numeric scalar
  CarriageControl:NL
 240 PRINT "INDUCTOR = ";L
  TextConstant:"INDUCTOR = "
  CarriageControl:;
- Variable:L scalar
+ Variable:L numeric scalar
  CarriageControl:NL
 250 PRINT
  CarriageControl:NL
@@ -131,9 +131,9 @@
  TextConstant:"TO CONTINUE TYPE 1, IF NOT 0"
  CarriageControl:NL
 270 INPUT X
- Variable:X scalar
+ Variable:X numeric scalar
 280 IF X = 1 THEN 300
- Variable:X scalar
+ Variable:X numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 290 STOP

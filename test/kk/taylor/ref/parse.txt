@@ -1,61 +1,61 @@
 10 READ X,N
- Variable:X scalar
- Variable:N scalar
+ Variable:X numeric scalar
+ Variable:N numeric scalar
 20 LET S = 0
- Variable:S scalar
+ Variable:S numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 25 LET F = 1
- Variable:F scalar
+ Variable:F numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 30 FOR I = 1 TO N
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 40 LET K = 2*I-1
- Variable:K scalar
+ Variable:K numeric scalar
  NumericConstant:2
- Variable:I scalar
+ Variable:I numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 50 LET S = S + F*X^K/K
- Variable:S scalar
- Variable:S scalar
- Variable:F scalar
- Variable:X scalar
- Variable:K scalar
+ Variable:S numeric scalar
+ Variable:S numeric scalar
+ Variable:F numeric scalar
+ Variable:X numeric scalar
+ Variable:K numeric scalar
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:K scalar
+ Variable:K numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 60 LET F = -F
- Variable:F scalar
- Variable:F scalar
+ Variable:F numeric scalar
+ Variable:F numeric scalar
  UnaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 70 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 80 PRINT "ATN OF " X; "= " ATN(X)
  TextConstant:"ATN OF "
  CarriageControl:
- Variable:X scalar
+ Variable:X numeric scalar
  CarriageControl:;
  TextConstant:"= "
  CarriageControl:
- Variable:X scalar
- FunctionArcTan scalar
+ Variable:X numeric scalar
+ FunctionArcTan:ATN numeric scalar
  CarriageControl:NL
 85 PRINT N; "TERMS OF THE SERIES YIELD " S
- Variable:N scalar
+ Variable:N numeric scalar
  CarriageControl:;
  TextConstant:"TERMS OF THE SERIES YIELD "
  CarriageControl:
- Variable:S scalar
+ Variable:S numeric scalar
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL

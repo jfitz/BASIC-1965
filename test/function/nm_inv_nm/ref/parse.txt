@@ -1,0 +1,89 @@
+10 REM COMPUTE DETERMINANT
+ Remark:COMPUTE DETERMINANT
+20 OPTION BASE 1
+ NumericConstant:1
+50 DATA 2, 2
+ NumericConstant:2
+ NumericConstant:2
+52 DATA 4, 7, 2, 6
+ NumericConstant:4
+ NumericConstant:7
+ NumericConstant:2
+ NumericConstant:6
+60 GOSUB 400
+ LineNumber:400
+70 DATA 3, 3
+ NumericConstant:3
+ NumericConstant:3
+72 DATA 3, 2, -5, 1, -3, 2, 5, -1, 4
+ NumericConstant:3
+ NumericConstant:2
+ NumericConstant:5
+ UnaryOperatorMinus:- numeric scalar
+ NumericConstant:1
+ NumericConstant:3
+ UnaryOperatorMinus:- numeric scalar
+ NumericConstant:2
+ NumericConstant:5
+ NumericConstant:1
+ UnaryOperatorMinus:- numeric scalar
+ NumericConstant:4
+80 GOSUB 400
+ LineNumber:400
+100 OPTION BASE 0
+ NumericConstant:0
+110 RESTORE
+ 
+120 GOSUB 400
+ LineNumber:400
+130 GOSUB 400
+ LineNumber:400
+199 STOP
+ 
+400 READ R,C
+ Variable:R numeric scalar
+ Variable:C numeric scalar
+405 DIM M1(R,C)
+ Variable:R numeric scalar
+ Variable:C numeric scalar
+ Declaration:M1 scalar
+410 FOR I = 1 TO R
+ control: Variable:I numeric scalar
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:R numeric scalar"]
+420 FOR J = 1 TO C
+ control: Variable:J numeric scalar
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:C numeric scalar"]
+430 READ M1(I,J)
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:M1 numeric scalar
+440 NEXT J
+ Variable:J numeric scalar
+450 NEXT I
+ Variable:I numeric scalar
+460 PRINT "MATRIX:"
+ TextConstant:"MATRIX:"
+ CarriageControl:NL
+470 MAT PRINT M1;
+ Variable:M1 numeric matrix
+ CarriageControl:;
+480 MAT M2 = INV(M1)
+ Variable:M2 numeric matrix
+ Variable:M1 numeric matrix
+ FunctionInv:INV numeric matrix
+ AssignmentOperator:=
+490 PRINT "INVERSE:"
+ TextConstant:"INVERSE:"
+ CarriageControl:NL
+492 MAT PRINT M2;
+ Variable:M2 numeric matrix
+ CarriageControl:;
+495 PRINT
+ CarriageControl:NL
+499 RETURN
+ 
+999 END
+ 
+

@@ -1,142 +1,142 @@
 110 READ M,N
- Variable:M scalar
- Variable:N scalar
+ Variable:M numeric scalar
+ Variable:N numeric scalar
 120 FOR I = 1 TO M
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M scalar"]
+ end:     ["Variable:M numeric scalar"]
 130    LET S = 0
- Variable:S scalar
+ Variable:S numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 140    FOR J = 1 TO N
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 150       READ O(I,J)
- Variable:I scalar
- Variable:J scalar
- Variable:O scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:O numeric scalar
 160       LET S = S + O(I,J)
- Variable:S scalar
- Variable:S scalar
- Variable:I scalar
- Variable:J scalar
- Variable:O scalar
+ Variable:S numeric scalar
+ Variable:S numeric scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:O numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 170    NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 180    LET R(I) = S
- Variable:I scalar
- Variable:R scalar
- Variable:S scalar
+ Variable:I numeric scalar
+ Variable:R numeric scalar
+ Variable:S numeric scalar
  AssignmentOperator:=
 190 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 200
 210 LET S1 = 0
- Variable:S1 scalar
+ Variable:S1 numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 220 FOR J = 1 TO N
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 230    LET S = 0
- Variable:S scalar
+ Variable:S numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 240    FOR I = 1 TO M
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M scalar"]
+ end:     ["Variable:M numeric scalar"]
 250       LET S = S + O(I,J)
- Variable:S scalar
- Variable:S scalar
- Variable:I scalar
- Variable:J scalar
- Variable:O scalar
+ Variable:S numeric scalar
+ Variable:S numeric scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:O numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 260    NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 270    LET C(J) = S
- Variable:J scalar
- Variable:C scalar
- Variable:S scalar
+ Variable:J numeric scalar
+ Variable:C numeric scalar
+ Variable:S numeric scalar
  AssignmentOperator:=
 280    LET S1 = S1 + S
- Variable:S1 scalar
- Variable:S1 scalar
- Variable:S scalar
+ Variable:S1 numeric scalar
+ Variable:S1 numeric scalar
+ Variable:S numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 290 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 300
 310 PRINT
  CarriageControl:NL
 320 LET C = 0
- Variable:C scalar
+ Variable:C numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 330 FOR I = 1 TO M
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M scalar"]
+ end:     ["Variable:M numeric scalar"]
 340    FOR J = 1 TO N
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N scalar"]
+ end:     ["Variable:N numeric scalar"]
 350       LET E = R(I)*C(J)/S1
- Variable:E scalar
- Variable:I scalar
- Variable:R scalar
- Variable:J scalar
- Variable:C scalar
+ Variable:E numeric scalar
+ Variable:I numeric scalar
+ Variable:R numeric scalar
+ Variable:J numeric scalar
+ Variable:C numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- Variable:S1 scalar
+ Variable:S1 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 360       LET C = C + (O(I,J) - E)^2/E
- Variable:C scalar
- Variable:C scalar
- Variable:I scalar
- Variable:J scalar
- Variable:O scalar
- Variable:E scalar
+ Variable:C numeric scalar
+ Variable:C numeric scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:O numeric scalar
+ Variable:E numeric scalar
  BinaryOperatorMinus:- numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
- Variable:E scalar
+ Variable:E numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 370       PRINT O(I,J),
- Variable:I scalar
- Variable:J scalar
- Variable:O scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:O numeric scalar
  CarriageControl:,
 380    NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 390    PRINT
  CarriageControl:NL
 400 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 410 PRINT
  CarriageControl:NL
 420 PRINT "CHI-SQUARE EQUALS";C;"ON";(M-1)*(N-1);"DEGREES OF FREEDOM"
  TextConstant:"CHI-SQUARE EQUALS"
  CarriageControl:;
- Variable:C scalar
+ Variable:C numeric scalar
  CarriageControl:;
  TextConstant:"ON"
  CarriageControl:;
- Variable:M scalar
+ Variable:M numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
- Variable:N scalar
+ Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorMultiply:* numeric scalar
