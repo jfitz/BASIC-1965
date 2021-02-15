@@ -21,7 +21,8 @@ class AbstractFunction < AbstractElement
     unless type_stack.empty?
       type = type_stack.pop
 
-      raise(BASICExpressionError, "Bad expression #{@name} #{type}") if type != :list
+      raise(BASICExpressionError, "Bad expression #{@name} #{type}") unless
+        type.class.to_s == 'Array'
     end
 
     type_stack.push(content_type)
@@ -31,7 +32,8 @@ class AbstractFunction < AbstractElement
     unless shape_stack.empty?
       my_shape = shape_stack.pop
 
-      raise(BASICExpressionError, "Bad expression #{@name} #{shape}") if my_shape != :list
+      raise(BASICExpressionError, "Bad expression #{@name} #{shape}") unless
+        my_shape.class.to_s == 'Array'
     end
 
     shape_stack.push(shape)
@@ -362,7 +364,7 @@ class FunctionCon1 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      type_stack.pop if type_stack[-1] == :list
+      type_stack.pop if type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(content_type)
@@ -370,7 +372,7 @@ class FunctionCon1 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1] == :list
+      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(shape)
@@ -418,7 +420,7 @@ class FunctionCon2 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      type_stack.pop if type_stack[-1] == :list
+      type_stack.pop if type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(content_type)
@@ -426,7 +428,7 @@ class FunctionCon2 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1] == :list
+      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(shape)
@@ -593,7 +595,7 @@ class FunctionIdn < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      type_stack.pop if type_stack[-1] == :list
+      type_stack.pop if type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(content_type)
@@ -601,7 +603,7 @@ class FunctionIdn < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1] == :list
+      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(shape)
@@ -797,7 +799,7 @@ class FunctionRnd < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      type_stack.pop if type_stack[-1] == :list
+      type_stack.pop if type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(content_type)
@@ -805,7 +807,7 @@ class FunctionRnd < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1] == :list
+      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(shape)
@@ -959,7 +961,7 @@ class FunctionZer1 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      type_stack.pop if type_stack[-1] == :list
+      type_stack.pop if type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(content_type)
@@ -967,7 +969,7 @@ class FunctionZer1 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1] == :list
+      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(shape)
@@ -1015,7 +1017,7 @@ class FunctionZer2 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      type_stack.pop if type_stack[-1] == :list
+      type_stack.pop if type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(content_type)
@@ -1023,7 +1025,7 @@ class FunctionZer2 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1] == :list
+      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(shape)

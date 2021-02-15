@@ -1187,14 +1187,14 @@ class Variable < AbstractElement
 
   def set_content_type(type_stack)
     type = type_stack[-1]
-    type_stack.pop if type == :list
+    type_stack.pop if type.class.to_s == 'Array'
 
     type_stack.push(content_type)
   end
 
   def set_shape(shape_stack)
     my_shape = shape_stack[-1]
-    shape_stack.pop if my_shape == :list
+    shape_stack.pop if my_shape.class.to_s == 'Array'
 
     shape_stack.push(@shape)
   end
@@ -1515,7 +1515,7 @@ class ExpressionList < AbstractElement
   end
 
   def content_type
-    :list
+    []
   end
 
   def set_content_type(type_stack)
@@ -1525,7 +1525,7 @@ class ExpressionList < AbstractElement
   end
 
   def shape
-    :list
+    []
   end
 
   def set_shape(shape_stack)
