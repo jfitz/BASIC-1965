@@ -1164,6 +1164,7 @@ end
 # Hold a variable (name with possible subscripts and value)
 class Variable < AbstractElement
   attr_writer :valref
+  attr_reader :shape
   attr_reader :subscripts
 
   def initialize(variable_name, my_shape, subscripts)
@@ -1515,7 +1516,11 @@ class ExpressionList < AbstractElement
   end
 
   def content_type
-    []
+    types = []
+
+    @expressions.each { |expression| types << expression.content_type }
+
+    types
   end
 
   def set_content_type(type_stack)
@@ -1525,7 +1530,11 @@ class ExpressionList < AbstractElement
   end
 
   def shape
-    []
+    shapes = []
+
+    @expressions.each { |expression| shapes << expression.shape }
+
+    shapes
   end
 
   def set_shape(shape_stack)
