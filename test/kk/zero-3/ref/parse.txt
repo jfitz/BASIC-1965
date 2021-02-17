@@ -18,8 +18,8 @@
 22 LET S = SGN(FNF(A))
  Variable:S numeric scalar
  Variable:A numeric scalar
- UserFunction:FNF numeric scalar
- FunctionSgn:SGN numeric scalar
+ UserFunction:FNF(_) numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  AssignmentOperator:=
 24 IF S = 0 THEN 95
  Variable:S numeric scalar
@@ -52,8 +52,8 @@
 35 LET F = SGN(FNF(X))
  Variable:F numeric scalar
  Variable:X numeric scalar
- UserFunction:FNF numeric scalar
- FunctionSgn:SGN numeric scalar
+ UserFunction:FNF(_) numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  AssignmentOperator:=
 40 IF F = 0 THEN 100
  Variable:F numeric scalar
@@ -72,13 +72,13 @@
  NumericConstant:2
  Variable:X numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:0
  Variable:X numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:2
  Variable:X numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  NumericConstant:5.0e-07

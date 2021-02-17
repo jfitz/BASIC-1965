@@ -13,12 +13,12 @@
 130    LET Y = RND(Z)
  Variable:Y numeric scalar
  Variable:Z numeric scalar
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  AssignmentOperator:=
 140    LET R = RND(Z)
  Variable:R numeric scalar
  Variable:Z numeric scalar
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  AssignmentOperator:=
 150    LET A = P*(R-1/2)
  Variable:A numeric scalar
@@ -34,26 +34,26 @@
  Variable:Y1 numeric scalar
  Variable:Y numeric scalar
  Variable:A numeric scalar
- FunctionCos:COS numeric scalar
+ FunctionCos:COS(_) numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 170    LET Y2 = Y + COS(A)
  Variable:Y2 numeric scalar
  Variable:Y numeric scalar
  Variable:A numeric scalar
- FunctionCos:COS numeric scalar
+ FunctionCos:COS(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 172    LET C2 = COS(A)
  Variable:C2 numeric scalar
  Variable:A numeric scalar
- FunctionCos:COS numeric scalar
+ FunctionCos:COS(_) numeric scalar
  AssignmentOperator:=
 180    IF SGN(Y1) = SGN(Y2) THEN 200
  Variable:Y1 numeric scalar
- FunctionSgn:SGN numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  Variable:Y2 numeric scalar
- FunctionSgn:SGN numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  BinaryOperatorEqual:= boolean scalar
 190    LET C = C+1
  Variable:C numeric scalar

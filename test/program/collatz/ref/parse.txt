@@ -48,7 +48,7 @@
 430 IF MOD(N0,2) = 0 THEN 460
  Variable:N0 numeric scalar
  NumericConstant:2
- FunctionMod:MOD numeric scalar
+ FunctionMod:MOD(_,_) numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar
 440 LET N0 = 3*N0 + 1

@@ -84,7 +84,7 @@
  Variable:I1 numeric scalar
  NumericConstant:4.5
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:4
  BinaryOperatorGreater:> boolean scalar
 360    LET D1 = 3 - ABS(I1 - I)
@@ -93,7 +93,7 @@
  Variable:I1 numeric scalar
  Variable:I numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
@@ -105,7 +105,7 @@
  Variable:J1 numeric scalar
  NumericConstant:4.5
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:4
  BinaryOperatorGreater:> boolean scalar
 390       IF B(I1,J1) < 0 THEN 470
@@ -160,12 +160,12 @@
 510 LET C1 = INT(RND(Z)*C + 1)
  Variable:C1 numeric scalar
  Variable:Z numeric scalar
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  Variable:C numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 520 GOTO 320
  LineNumber:320

@@ -46,7 +46,7 @@ class AbstractFunction < AbstractElement
   end
   
   def dump
-    "#{self.class}:#{@name} #{@content_type} #{@shape}"
+    "#{self.class}:#{@name}#{@signature} #{@content_type} #{@shape}"
   end
 
   def to_s

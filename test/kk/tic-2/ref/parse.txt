@@ -123,7 +123,7 @@
  Remark:WHO STARTS?
 310  IF RND(Z) < 1/2 THEN 350
  Variable:Z numeric scalar
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  NumericConstant:1
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
@@ -158,7 +158,7 @@
 420  IF M <> INT(M) THEN 550
  Variable:M numeric scalar
  Variable:M numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorNotEqual:<> boolean scalar
 430  IF M < 1 THEN 500
  Variable:M numeric scalar
@@ -359,7 +359,7 @@
  BinaryOperatorPlus:+ numeric scalar
  Variable:P numeric scalar
  Variable:C numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 1260    NEXT J

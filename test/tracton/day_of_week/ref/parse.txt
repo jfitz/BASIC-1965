@@ -39,7 +39,7 @@
  Variable:M numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 160 LET L = Y - K
  Variable:L numeric scalar
@@ -66,12 +66,12 @@
  Variable:P numeric scalar
  NumericConstant:4
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 200 LET Z2 = INT(P)
  Variable:Z2 numeric scalar
  Variable:P numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 210 LET Z3 = INT((5*L)/4)
  Variable:Z3 numeric scalar
@@ -80,7 +80,7 @@
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:4
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 220 LET Z4 = INT (13*(O + 1)/5)
  Variable:Z4 numeric scalar
@@ -91,7 +91,7 @@
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:5
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
  Variable:Z numeric scalar
@@ -114,7 +114,7 @@
  Variable:Z numeric scalar
  NumericConstant:7
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  NumericConstant:1

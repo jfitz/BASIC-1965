@@ -27,7 +27,7 @@
 190 FOR F = 3 TO SQR(N)+1 STEP 2
  control: Variable:F numeric scalar
  start:   ["NumericConstant:3"]
- end:     ["Variable:N numeric scalar", "FunctionSqr:SQR numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
+ end:     ["Variable:N numeric scalar", "FunctionSqr:SQR(_) numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
  step:    ["NumericConstant:2"]
 200 GOSUB 300
  LineNumber:300
@@ -59,7 +59,7 @@
  Variable:N numeric scalar
  Variable:F numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorNotEqual:<> boolean scalar
 330 IF Z > 0 THEN 370
  Variable:Z numeric scalar

@@ -83,13 +83,13 @@
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 190 LET J = I/SQR(B)
  Variable:J numeric scalar
  Variable:I numeric scalar
  Variable:B numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 200 PRINT

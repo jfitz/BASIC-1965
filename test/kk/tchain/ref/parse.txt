@@ -29,12 +29,12 @@
  Variable:N numeric matrix
  Variable:N numeric scalar
  Variable:N numeric scalar
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  AssignmentOperator:=
 170 MAT U = CON(N)
  Variable:U numeric matrix
  Variable:N numeric scalar
- FunctionCon2:CON numeric matrix
+ FunctionCon2:CON(_) numeric matrix
  AssignmentOperator:=
 180
 190 PRINT "TRANSIENT TO TRANSIENT PROBABILITIES"
@@ -64,7 +64,7 @@
 280 MAT N = INV(Q)
  Variable:N numeric matrix
  Variable:Q numeric matrix
- FunctionInv:INV numeric matrix
+ FunctionInv:INV(_) numeric matrix
  AssignmentOperator:=
 290 PRINT "FUNDAMENTAL MATRIX"
  TextConstant:"FUNDAMENTAL MATRIX"

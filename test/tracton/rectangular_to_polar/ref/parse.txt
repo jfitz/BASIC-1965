@@ -34,7 +34,7 @@
  Variable:Y numeric scalar
  Variable:X numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionArcTan:ATN numeric scalar
+ FunctionArcTan:ATN(_) numeric scalar
  AssignmentOperator:=
 120 LET W = (W*180)/3.14159
  Variable:W numeric scalar
@@ -53,7 +53,7 @@
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 140 GOTO 310
  LineNumber:310
@@ -79,7 +79,7 @@
 200 LET R = ABS(Y)
  Variable:R numeric scalar
  Variable:Y numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  AssignmentOperator:=
 210 GOTO 310
  LineNumber:310
@@ -104,7 +104,7 @@
 270 LET R = ABS(X)
  Variable:R numeric scalar
  Variable:X numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  AssignmentOperator:=
 280 GOTO 310
  LineNumber:310

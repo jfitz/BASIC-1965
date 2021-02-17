@@ -16,8 +16,8 @@
  UserFunctionName:FNC
  VariableName:X
  Variable:X numeric scalar
- UserFunction:FND numeric scalar
- FunctionCos:COS numeric scalar
+ UserFunction:FND(_) numeric scalar
+ FunctionCos:COS(_) numeric scalar
 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
  TextConstant:"SIDE"
  CarriageControl:,
@@ -46,10 +46,10 @@
  Variable:Y numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  Variable:A numeric scalar
- UserFunction:FNC numeric scalar
+ UserFunction:FNC(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 170 PRINT X,A,Y,Z
  Variable:X numeric scalar

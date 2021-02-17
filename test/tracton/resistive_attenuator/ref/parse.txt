@@ -23,11 +23,11 @@
 90 LET Q = (SQR(Z) + SQR(Z - 1))^2
  Variable:Q numeric scalar
  Variable:Z numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  Variable:Z numeric scalar
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
@@ -36,9 +36,9 @@
  Variable:M numeric scalar
  NumericConstant:10
  Variable:Q numeric scalar
- FunctionLog:LOG numeric scalar
+ FunctionLog:LOG(_) numeric scalar
  NumericConstant:10
- FunctionLog:LOG numeric scalar
+ FunctionLog:LOG(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
@@ -55,7 +55,7 @@
 135 LET N = INT(N)
  Variable:N numeric scalar
  Variable:N numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 140 REM COMPUTE T NETWORK
  Remark:COMPUTE T NETWORK
@@ -67,7 +67,7 @@
  BinaryOperatorMultiply:* numeric scalar
  Variable:R9 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
@@ -116,7 +116,7 @@
  BinaryOperatorMultiply:* numeric scalar
  Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 200 LET P1 = 1/(1/R1*((N+1)/(N-1)) - (1/P3))

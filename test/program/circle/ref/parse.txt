@@ -21,7 +21,7 @@
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
 61 DEF FNR(D) = D/180*3.1415926
@@ -104,7 +104,7 @@
  Variable:A2 numeric scalar
  Variable:C1 numeric scalar
  Variable:C2 numeric scalar
- UserFunction:FNL numeric scalar
+ UserFunction:FNL(_,_,_,_) numeric scalar
  AssignmentOperator:=
 222 LET F2 = FNL(B1,B2,C1,C2)
  Variable:F2 numeric scalar
@@ -112,7 +112,7 @@
  Variable:B2 numeric scalar
  Variable:C1 numeric scalar
  Variable:C2 numeric scalar
- UserFunction:FNL numeric scalar
+ UserFunction:FNL(_,_,_,_) numeric scalar
  AssignmentOperator:=
 223 LET R0 = F1/F2
  Variable:R0 numeric scalar
@@ -128,7 +128,7 @@
  Variable:A2 numeric scalar
  Variable:I1 numeric scalar
  Variable:I2 numeric scalar
- UserFunction:FNL numeric scalar
+ UserFunction:FNL(_,_,_,_) numeric scalar
  AssignmentOperator:=
 232 LET G2 = FNL(B1,B2,I1,I2)
  Variable:G2 numeric scalar
@@ -136,7 +136,7 @@
  Variable:B2 numeric scalar
  Variable:I1 numeric scalar
  Variable:I2 numeric scalar
- UserFunction:FNL numeric scalar
+ UserFunction:FNL(_,_,_,_) numeric scalar
  AssignmentOperator:=
 233 LET R1 = G1/G2
  Variable:R1 numeric scalar
@@ -157,7 +157,7 @@
  Variable:R0 numeric scalar
  Variable:R1 numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  Variable:R9 numeric scalar
  BinaryOperatorLess:< boolean scalar
 241 IF R0<R1 THEN 245
@@ -258,13 +258,13 @@
 421 LET T = FNR(I)
  Variable:T numeric scalar
  Variable:I numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  AssignmentOperator:=
 422 LET I1 = D1 + COS(T)*D5
  Variable:I1 numeric scalar
  Variable:D1 numeric scalar
  Variable:T numeric scalar
- FunctionCos:COS numeric scalar
+ FunctionCos:COS(_) numeric scalar
  Variable:D5 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
@@ -273,7 +273,7 @@
  Variable:I2 numeric scalar
  Variable:D2 numeric scalar
  Variable:T numeric scalar
- FunctionSin:SIN numeric scalar
+ FunctionSin:SIN(_) numeric scalar
  Variable:D5 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
@@ -284,7 +284,7 @@
  Variable:A2 numeric scalar
  Variable:I1 numeric scalar
  Variable:I2 numeric scalar
- UserFunction:FNL numeric scalar
+ UserFunction:FNL(_,_,_,_) numeric scalar
  AssignmentOperator:=
 425 LET G2 = FNL(B1,B2,I1,I2)
  Variable:G2 numeric scalar
@@ -292,7 +292,7 @@
  Variable:B2 numeric scalar
  Variable:I1 numeric scalar
  Variable:I2 numeric scalar
- UserFunction:FNL numeric scalar
+ UserFunction:FNL(_,_,_,_) numeric scalar
  AssignmentOperator:=
 426 LET R1 = G1/G2
  Variable:R1 numeric scalar

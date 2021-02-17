@@ -5,11 +5,11 @@
 20    PRINT INT(6*RND(1)+1),
  NumericConstant:6
  NumericConstant:1
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  CarriageControl:,
 30 NEXT I
  Variable:I numeric scalar

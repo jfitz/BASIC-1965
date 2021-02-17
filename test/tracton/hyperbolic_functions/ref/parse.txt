@@ -187,10 +187,10 @@
 520 LET Y = EXP(X) - EXP(-X)
  Variable:Y numeric scalar
  Variable:X numeric scalar
- FunctionExp:EXP numeric scalar
+ FunctionExp:EXP(_) numeric scalar
  Variable:X numeric scalar
  UnaryOperatorMinus:- numeric scalar
- FunctionExp:EXP numeric scalar
+ FunctionExp:EXP(_) numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 530 RETURN
@@ -198,10 +198,10 @@
 540 LET B = EXP(X) + EXP(-X)
  Variable:B numeric scalar
  Variable:X numeric scalar
- FunctionExp:EXP numeric scalar
+ FunctionExp:EXP(_) numeric scalar
  Variable:X numeric scalar
  UnaryOperatorMinus:- numeric scalar
- FunctionExp:EXP numeric scalar
+ FunctionExp:EXP(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 550 RETURN

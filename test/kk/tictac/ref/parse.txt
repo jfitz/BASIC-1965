@@ -23,7 +23,7 @@
  BinaryOperatorMinus:- numeric scalar
  NumericConstant:8
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
 190 REM
@@ -53,7 +53,7 @@
  Variable:P numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 280 LET M = B
  Variable:M numeric scalar
@@ -70,14 +70,14 @@
  Variable:B numeric scalar
  NumericConstant:4
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  BinaryOperatorEqual:= boolean scalar
 320    LET C = FNM(B+4)
  Variable:C numeric scalar
  Variable:B numeric scalar
  NumericConstant:4
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 330    LET M = C
  Variable:M numeric scalar
@@ -92,7 +92,7 @@
  Variable:B numeric scalar
  NumericConstant:2
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 370 LET M = C
  Variable:M numeric scalar
@@ -109,14 +109,14 @@
  Variable:C numeric scalar
  NumericConstant:4
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  BinaryOperatorEqual:= boolean scalar
 410    LET D = FNM(C+4)
  Variable:D numeric scalar
  Variable:C numeric scalar
  NumericConstant:4
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 420    LET M = D
  Variable:M numeric scalar
@@ -133,14 +133,14 @@
  Variable:P numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorNotEqual:<> boolean scalar
 460    LET D = FNM(C+7)
  Variable:D numeric scalar
  Variable:C numeric scalar
  NumericConstant:7
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 470    LET M = D
  Variable:M numeric scalar
@@ -155,7 +155,7 @@
  Variable:C numeric scalar
  NumericConstant:3
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 510 LET M = D
  Variable:M numeric scalar
@@ -172,14 +172,14 @@
  Variable:D numeric scalar
  NumericConstant:4
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  BinaryOperatorEqual:= boolean scalar
 550    LET E = FNM(D+4)
  Variable:E numeric scalar
  Variable:D numeric scalar
  NumericConstant:4
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 560    LET M = E
  Variable:M numeric scalar
@@ -194,7 +194,7 @@
  Variable:D numeric scalar
  NumericConstant:6
  BinaryOperatorPlus:+ numeric scalar
- UserFunction:FNM numeric scalar
+ UserFunction:FNM(_) numeric scalar
  AssignmentOperator:=
 600 LET M = E
  Variable:M numeric scalar

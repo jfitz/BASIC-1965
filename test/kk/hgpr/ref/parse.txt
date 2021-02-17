@@ -56,7 +56,7 @@
 56    IF P > SQR(2000) THEN 90
  Variable:P numeric scalar
  NumericConstant:2000
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  BinaryOperatorGreater:> boolean scalar
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I numeric scalar
@@ -100,7 +100,7 @@
  BinaryOperatorPlus:+ numeric scalar
  NumericConstant:1000
  BinaryOperatorMultiply:* numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 130 PRINT
  CarriageControl:NL
@@ -286,7 +286,7 @@
  Variable:A numeric scalar
  Variable:F numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
@@ -304,7 +304,7 @@
  Variable:Y numeric scalar
  Variable:F numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorMinus:- numeric scalar
@@ -315,7 +315,7 @@
  Variable:X numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorNotEqual:<> boolean scalar
 850 LET X = X + F

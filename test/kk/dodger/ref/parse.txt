@@ -191,7 +191,7 @@
 550 LET X = RND(0)
  Variable:X numeric scalar
  NumericConstant:0
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  AssignmentOperator:=
 560 FOR R = 0 TO 3
  control: Variable:R numeric scalar
@@ -285,7 +285,7 @@
  Variable:X numeric scalar
  NumericConstant:10
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 830 LET C = X - Y*10
  Variable:C numeric scalar

@@ -2,14 +2,14 @@
  UserFunctionName:FNF
  VariableName:X
  Variable:X numeric scalar
- FunctionSin:SIN numeric scalar
+ FunctionSin:SIN(_) numeric scalar
 105 DEF FNG(X) = LOG(X)/LOG(10)
  UserFunctionName:FNG
  VariableName:X
  Variable:X numeric scalar
- FunctionLog:LOG numeric scalar
+ FunctionLog:LOG(_) numeric scalar
  NumericConstant:10
- FunctionLog:LOG numeric scalar
+ FunctionLog:LOG(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
 110 READ A,B,S
  Variable:A numeric scalar
@@ -42,7 +42,7 @@
  Variable:X numeric scalar
  NumericConstant:0.5
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
  TextConstant:"Y-AXIS:  FROM "
  CarriageControl:
@@ -81,7 +81,7 @@
 270 LET Y = FNF(X)
  Variable:Y numeric scalar
  Variable:X numeric scalar
- UserFunction:FNF numeric scalar
+ UserFunction:FNF(_) numeric scalar
  AssignmentOperator:=
 280 LET Y1 = FNR((Y-C)/H)
  Variable:Y1 numeric scalar
@@ -90,12 +90,12 @@
  BinaryOperatorMinus:- numeric scalar
  Variable:H numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  AssignmentOperator:=
 282 LET Y = FNG(X)
  Variable:Y numeric scalar
  Variable:X numeric scalar
- UserFunction:FNG numeric scalar
+ UserFunction:FNG(_) numeric scalar
  AssignmentOperator:=
 284 LET Y2 = FNR((Y-C)/H)
  Variable:Y2 numeric scalar
@@ -104,7 +104,7 @@
  BinaryOperatorMinus:- numeric scalar
  Variable:H numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  AssignmentOperator:=
 290 FOR I = 0 TO N
  control: Variable:I numeric scalar

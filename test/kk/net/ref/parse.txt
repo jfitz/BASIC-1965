@@ -6,7 +6,7 @@
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0.5
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  NumericConstant:1000
  BinaryOperatorDivide:/ numeric scalar
 110 DIM C(20,20), U(20,20), B(20), P(20)
@@ -27,12 +27,12 @@
  Variable:C numeric matrix
  Variable:N numeric scalar
  Variable:N numeric scalar
- FunctionZer2:ZER numeric matrix
+ FunctionZer2:ZER(_,_) numeric matrix
  AssignmentOperator:=
 150 MAT B = ZER(N)
  Variable:B numeric matrix
  Variable:N numeric scalar
- FunctionZer2:ZER numeric matrix
+ FunctionZer2:ZER(_) numeric matrix
  AssignmentOperator:=
 170 LET C(1,1) = 1
  NumericConstant:1
@@ -127,7 +127,7 @@
 370 MAT U = INV(C)
  Variable:U numeric matrix
  Variable:C numeric matrix
- FunctionInv:INV numeric matrix
+ FunctionInv:INV(_) numeric matrix
  AssignmentOperator:=
 380 MAT P = U*B
  Variable:P numeric matrix
@@ -152,7 +152,7 @@
  CarriageControl:,
  Variable:I numeric scalar
  Variable:P numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  CarriageControl:NL
 440 NEXT I
  Variable:I numeric scalar
@@ -193,7 +193,7 @@
  Variable:P numeric scalar
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  CarriageControl:,
 550    NEXT J
  Variable:J numeric scalar
@@ -224,7 +224,7 @@
  TextConstant:"TOTAL CURRENT = "
  CarriageControl:
  Variable:S1 numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  CarriageControl:NL
 630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V/S1)
  TextConstant:"RESISTANCE OF CIRCUIT = "
@@ -232,7 +232,7 @@
  Variable:V numeric scalar
  Variable:S1 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  CarriageControl:NL
 640
 650 DATA 7,24

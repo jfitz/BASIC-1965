@@ -16,8 +16,8 @@
  UserFunctionName:FNS
  VariableName:X
  Variable:X numeric scalar
- UserFunction:FND numeric scalar
- FunctionSin:SIN numeric scalar
+ UserFunction:FND(_) numeric scalar
+ FunctionSin:SIN(_) numeric scalar
 135 DEF FNR(X) = INT(100*X+0.5)/100
  UserFunctionName:FNR
  VariableName:X
@@ -26,7 +26,7 @@
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0.5
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  NumericConstant:100
  BinaryOperatorDivide:/ numeric scalar
 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
@@ -55,7 +55,7 @@
  Variable:S numeric scalar
  Variable:X numeric scalar
  Variable:B numeric scalar
- UserFunction:FNS numeric scalar
+ UserFunction:FNS(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  Variable:Y numeric scalar
  BinaryOperatorDivide:/ numeric scalar
@@ -66,7 +66,7 @@
  BinaryOperatorGreater:> boolean scalar
 190 IF FNR(S) = 1 THEN 320
  Variable:S numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:= boolean scalar
 195
@@ -80,13 +80,13 @@
  NumericConstant:2
  BinaryOperatorPower:^ numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 220 LET C = ATN(T)*180/P
  Variable:C numeric scalar
  Variable:T numeric scalar
- FunctionArcTan:ATN numeric scalar
+ FunctionArcTan:ATN(_) numeric scalar
  NumericConstant:180
  BinaryOperatorMultiply:* numeric scalar
  Variable:P numeric scalar
@@ -155,7 +155,7 @@
  Variable:Z numeric scalar
  Variable:X numeric scalar
  Variable:A numeric scalar
- UserFunction:FNS numeric scalar
+ UserFunction:FNS(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  Variable:S numeric scalar
  BinaryOperatorDivide:/ numeric scalar

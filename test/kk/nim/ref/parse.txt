@@ -14,9 +14,9 @@
  Variable:N numeric scalar
  NumericConstant:10
  NumericConstant:0
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  NumericConstant:6
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
@@ -110,7 +110,7 @@
  Variable:X numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 420       LET B(P,J) = X - 2*Y
  Variable:P numeric scalar
@@ -162,7 +162,7 @@
  Variable:S numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
@@ -199,9 +199,9 @@
  Variable:P numeric scalar
  Variable:N numeric scalar
  NumericConstant:0
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=

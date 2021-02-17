@@ -75,7 +75,7 @@
  NumericConstant:500000
  FunctionRnd:RND numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 280 LET B = 1 + INT(180*RND)
@@ -84,7 +84,7 @@
  NumericConstant:180
  FunctionRnd:RND numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 290 GOSUB 340
@@ -127,7 +127,7 @@
  NumericConstant:100
  FunctionRnd:RND numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  NumericConstant:100
  BinaryOperatorDivide:/ numeric scalar
@@ -152,7 +152,7 @@
  NumericConstant:2
  FunctionRnd:RND numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 450 IF M1 = 1 THEN 470
@@ -281,7 +281,7 @@
  Variable:E1 numeric scalar
  NumericConstant:10
  Variable:B1 numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
@@ -324,7 +324,7 @@
  Variable:E1 numeric scalar
  Variable:E1 numeric scalar
  Variable:K numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:1000
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorMinus:- numeric scalar
@@ -402,7 +402,7 @@
  NumericConstant:100
  FunctionRnd:RND numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  NumericConstant:100
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar

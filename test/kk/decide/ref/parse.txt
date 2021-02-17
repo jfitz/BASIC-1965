@@ -23,12 +23,12 @@
 60    LET K1 = ABS(K)
  Variable:K1 numeric scalar
  Variable:K numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  AssignmentOperator:=
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
  control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2", "Variable:K1 numeric scalar", "BinaryOperatorMultiply:* numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar", "Variable:K1 numeric scalar", "FunctionSgn:SGN numeric scalar", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["NumericConstant:2", "Variable:K1 numeric scalar", "BinaryOperatorMultiply:* numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar", "Variable:K1 numeric scalar", "FunctionSgn:SGN(_) numeric scalar", "BinaryOperatorMinus:- numeric scalar"]
 80       READ T(I,J)
  Variable:I numeric scalar
  Variable:J numeric scalar
@@ -114,7 +114,7 @@
 310    FOR J = 2 TO 2*ABS(K) STEP 2
  control: Variable:J numeric scalar
  start:   ["NumericConstant:2"]
- end:     ["NumericConstant:2", "Variable:K numeric scalar", "FunctionAbs:ABS numeric scalar", "BinaryOperatorMultiply:* numeric scalar"]
+ end:     ["NumericConstant:2", "Variable:K numeric scalar", "FunctionAbs:ABS(_) numeric scalar", "BinaryOperatorMultiply:* numeric scalar"]
  step:    ["NumericConstant:2"]
 320       LET V = V(T(I,J))
  Variable:V numeric scalar

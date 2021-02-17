@@ -9,7 +9,7 @@
  Variable:Y numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
 20
 100 READ X0, X1, Y0, H
  Variable:X0 numeric scalar
@@ -42,7 +42,7 @@
  Variable:D1 numeric scalar
  Variable:X numeric scalar
  Variable:Y numeric scalar
- UserFunction:FNF numeric scalar
+ UserFunction:FNF(_,_) numeric scalar
  AssignmentOperator:=
 180 LET Y1 = Y
  Variable:Y1 numeric scalar
@@ -66,7 +66,7 @@
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  Variable:Y numeric scalar
- UserFunction:FNF numeric scalar
+ UserFunction:FNF(_,_) numeric scalar
  AssignmentOperator:=
 210 LET Y = Y1 + D2*H
  Variable:Y numeric scalar

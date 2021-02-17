@@ -16,8 +16,8 @@
  UserFunctionName:FNS
  VariableName:X
  Variable:X numeric scalar
- UserFunction:FND numeric scalar
- FunctionSin:SIN numeric scalar
+ UserFunction:FND(_) numeric scalar
+ FunctionSin:SIN(_) numeric scalar
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -45,20 +45,20 @@
  Variable:Y numeric scalar
  Variable:X numeric scalar
  Variable:B numeric scalar
- UserFunction:FNS numeric scalar
+ UserFunction:FNS(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  Variable:C numeric scalar
- UserFunction:FNS numeric scalar
+ UserFunction:FNS(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
  Variable:Z numeric scalar
  Variable:X numeric scalar
  Variable:A numeric scalar
- UserFunction:FNS numeric scalar
+ UserFunction:FNS(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  Variable:C numeric scalar
- UserFunction:FNS numeric scalar
+ UserFunction:FNS(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z

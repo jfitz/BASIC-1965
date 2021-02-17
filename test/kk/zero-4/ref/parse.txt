@@ -52,8 +52,8 @@
 35 LET F = SGN(FNF(X))
  Variable:F numeric scalar
  Variable:X numeric scalar
- UserFunction:FNF numeric scalar
- FunctionSgn:SGN numeric scalar
+ UserFunction:FNF(_) numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  AssignmentOperator:=
 40 IF F = 0 THEN 100
  Variable:F numeric scalar
@@ -72,13 +72,13 @@
  NumericConstant:2
  Variable:X numeric scalar
  BinaryOperatorMinus:- numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:0
  Variable:X numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:2
  Variable:X numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  NumericConstant:5.0e-07
@@ -95,14 +95,14 @@
 200 LET S = SGN(FNF(A))
  Variable:S numeric scalar
  Variable:A numeric scalar
- UserFunction:FNF numeric scalar
- FunctionSgn:SGN numeric scalar
+ UserFunction:FNF(_) numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  AssignmentOperator:=
 210 LET T = SGN(FNF(B))
  Variable:T numeric scalar
  Variable:B numeric scalar
- UserFunction:FNF numeric scalar
- FunctionSgn:SGN numeric scalar
+ UserFunction:FNF(_) numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  AssignmentOperator:=
 220 IF S*T = 0 THEN 400
  Variable:S numeric scalar
@@ -131,7 +131,7 @@
 320 LET X = A + RND()*L
  Variable:X numeric scalar
  Variable:A numeric scalar
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND() numeric scalar
  Variable:L numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  BinaryOperatorPlus:+ numeric scalar
@@ -139,8 +139,8 @@
 330 IF S * SGN(FNF(X)) < 0 THEN 370
  Variable:S numeric scalar
  Variable:X numeric scalar
- UserFunction:FNF numeric scalar
- FunctionSgn:SGN numeric scalar
+ UserFunction:FNF(_) numeric scalar
+ FunctionSgn:SGN(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0
  BinaryOperatorLess:< boolean scalar

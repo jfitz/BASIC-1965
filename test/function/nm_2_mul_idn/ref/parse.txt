@@ -8,7 +8,7 @@
  Variable:A numeric matrix
  NumericConstant:2
  NumericConstant:3
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_) numeric matrix
  BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 30 MAT B = 2 * IDN(5,5)
@@ -16,7 +16,7 @@
  NumericConstant:2
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 35 MAT D = 2 * IDN
@@ -49,7 +49,7 @@
  Variable:A numeric matrix
  NumericConstant:3
  NumericConstant:3
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_) numeric matrix
  BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 130 MAT B = 3 * IDN(5,5)
@@ -57,13 +57,13 @@
  NumericConstant:3
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 135 MAT D = 3 * IDN()
  Variable:D numeric matrix
  NumericConstant:3
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN() numeric matrix
  BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 140 PRINT "MATRIX A"

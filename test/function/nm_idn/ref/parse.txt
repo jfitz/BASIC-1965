@@ -7,13 +7,13 @@
 20 MAT A = IDN(3)
  Variable:A numeric matrix
  NumericConstant:3
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_) numeric matrix
  AssignmentOperator:=
 30 MAT B = IDN(5,5)
  Variable:B numeric matrix
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  AssignmentOperator:=
 35 MAT D = IDN
  Variable:D numeric matrix
@@ -42,17 +42,17 @@
 120 MAT A = IDN(3)
  Variable:A numeric matrix
  NumericConstant:3
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_) numeric matrix
  AssignmentOperator:=
 130 MAT B = IDN(5,5)
  Variable:B numeric matrix
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  AssignmentOperator:=
 135 MAT D = IDN()
  Variable:D numeric matrix
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN() numeric matrix
  AssignmentOperator:=
 140 PRINT "MATRIX A"
  TextConstant:"MATRIX A"

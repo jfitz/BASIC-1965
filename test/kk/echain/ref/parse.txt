@@ -25,7 +25,7 @@
  Variable:Z numeric matrix
  Variable:N numeric scalar
  Variable:N numeric scalar
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  AssignmentOperator:=
 150
 160 PRINT "TRANSITION PROBABILITIES"
@@ -58,13 +58,13 @@
 240 MAT M = INV(Z)
  Variable:M numeric matrix
  Variable:Z numeric matrix
- FunctionInv:INV numeric matrix
+ FunctionInv:INV(_) numeric matrix
  AssignmentOperator:=
 245 MAT A = ZER(1,N)
  Variable:A numeric matrix
  NumericConstant:1
  Variable:N numeric scalar
- FunctionZer2:ZER numeric matrix
+ FunctionZer2:ZER(_,_) numeric matrix
  AssignmentOperator:=
 250 FOR J = 1 TO N
  control: Variable:J numeric scalar
@@ -93,7 +93,7 @@
  Variable:M numeric matrix
  Variable:N numeric scalar
  Variable:N numeric scalar
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  AssignmentOperator:=
 330 MAT M = M-P
  Variable:M numeric matrix
@@ -128,7 +128,7 @@
 390 MAT Z = INV(M)
  Variable:Z numeric matrix
  Variable:M numeric matrix
- FunctionInv:INV numeric matrix
+ FunctionInv:INV(_) numeric matrix
  AssignmentOperator:=
 400
 410 FOR I = 1 TO N

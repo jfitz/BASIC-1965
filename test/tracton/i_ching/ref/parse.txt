@@ -42,14 +42,14 @@
  Variable:K numeric scalar
  Variable:N numeric scalar
  NumericConstant:0
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
 100 LET K = K - INT(K)
  Variable:K numeric scalar
  Variable:K numeric scalar
  Variable:K numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorMinus:- numeric scalar
  AssignmentOperator:=
 110 LET C(I) = 1 + INT(2*K)
@@ -59,7 +59,7 @@
  NumericConstant:2
  Variable:K numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 120 NEXT I

@@ -57,7 +57,7 @@
  Variable:N numeric matrix
  NumericConstant:10
  NumericConstant:10
- FunctionZer2:ZER numeric matrix
+ FunctionZer2:ZER(_,_) numeric matrix
  AssignmentOperator:=
 415 OPTION BASE 0
  NumericConstant:0
@@ -87,9 +87,9 @@
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
  Variable:I0 numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  Variable:J0 numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:= boolean scalar

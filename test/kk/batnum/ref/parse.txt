@@ -6,9 +6,9 @@
  NumericConstant:20
  NumericConstant:80
  Variable:X numeric scalar
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 130 LET K = 5 + INT(10*RND(X))
@@ -16,9 +16,9 @@
  NumericConstant:5
  NumericConstant:10
  Variable:X numeric scalar
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 140 PRINT "LEGAL MOVES ARE:"
@@ -107,7 +107,7 @@
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 430 LET Y = N-1 - Q*(K+1)
  Variable:Y numeric scalar
@@ -169,9 +169,9 @@
  NumericConstant:1
  Variable:K numeric scalar
  NumericConstant:0
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 580 GOTO 450

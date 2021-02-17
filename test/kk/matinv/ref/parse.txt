@@ -2,19 +2,19 @@
  Variable:A numeric matrix
  NumericConstant:3
  NumericConstant:3
- FunctionZer2:ZER numeric matrix
+ FunctionZer2:ZER(_,_) numeric matrix
  AssignmentOperator:=
 110 MAT B = CON(3,3)
  Variable:B numeric matrix
  NumericConstant:3
  NumericConstant:3
- FunctionCon2:CON numeric matrix
+ FunctionCon2:CON(_,_) numeric matrix
  AssignmentOperator:=
 120 MAT C = IDN(3,3)
  Variable:C numeric matrix
  NumericConstant:3
  NumericConstant:3
- FunctionIdn:IDN numeric matrix
+ FunctionIdn:IDN(_,_) numeric matrix
  AssignmentOperator:=
 130
 200 PRINT "ALL ZEROES"
@@ -47,7 +47,7 @@
 330 MAT B = INV(A)
  Variable:B numeric matrix
  Variable:A numeric matrix
- FunctionInv:INV numeric matrix
+ FunctionInv:INV(_) numeric matrix
  AssignmentOperator:=
 340 PRINT "ITS INVERSE"
  TextConstant:"ITS INVERSE"

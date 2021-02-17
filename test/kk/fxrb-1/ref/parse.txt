@@ -32,7 +32,7 @@
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:0.5
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
 170
 200 READ X,Y
  Variable:X numeric scalar
@@ -41,9 +41,9 @@
  Variable:X numeric scalar
  NumericConstant:1.5
  BinaryOperatorMultiply:* numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  Variable:Y numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  Variable:G numeric scalar
  NumericConstant:1
  AssignmentOperator:=
@@ -94,9 +94,9 @@
  Variable:X numeric scalar
  NumericConstant:1.5
  BinaryOperatorMultiply:* numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  Variable:Y numeric scalar
- UserFunction:FNR numeric scalar
+ UserFunction:FNR(_) numeric scalar
  Variable:G numeric scalar
  NumericConstant:1
  AssignmentOperator:=

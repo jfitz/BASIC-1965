@@ -206,7 +206,7 @@
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  CarriageControl:NL
 440 PRINT "    ", "Y  ", SQR(S2/(N-1))
  TextConstant:"    "
@@ -218,7 +218,7 @@
  NumericConstant:1
  BinaryOperatorMinus:- numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  CarriageControl:NL
 450 PRINT "    ", "ERROR", SQR(S4)
  TextConstant:"    "
@@ -226,7 +226,7 @@
  TextConstant:"ERROR"
  CarriageControl:,
  Variable:S4 numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  CarriageControl:NL
 460 PRINT "    ", "Y-BAR", SQR(S4/N)
  TextConstant:"    "
@@ -236,7 +236,7 @@
  Variable:S4 numeric scalar
  Variable:N numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  CarriageControl:NL
 470 PRINT "    ", "SLOPE", SQR(S4/S1)
  TextConstant:"    "
@@ -246,7 +246,7 @@
  Variable:S4 numeric scalar
  Variable:S1 numeric scalar
  BinaryOperatorDivide:/ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  CarriageControl:NL
 480 PRINT "    ", "Y-INTER.", SQR(S4*(1/N + X3*X3/S1))
  TextConstant:"    "
@@ -264,7 +264,7 @@
  BinaryOperatorDivide:/ numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  CarriageControl:NL
 485 PRINT
  CarriageControl:NL
@@ -284,7 +284,7 @@
  Variable:S1 numeric scalar
  Variable:S2 numeric scalar
  BinaryOperatorMultiply:* numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
  CarriageControl:NL
 510

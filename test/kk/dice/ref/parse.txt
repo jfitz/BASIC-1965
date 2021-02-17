@@ -65,21 +65,21 @@
  Variable:D1 numeric scalar
  NumericConstant:6
  NumericConstant:1
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 520 LET D2 = INT(6*RND(1)+1)
  Variable:D2 numeric scalar
  NumericConstant:6
  NumericConstant:1
- FunctionRnd:RND numeric scalar
+ FunctionRnd:RND(_) numeric scalar
  BinaryOperatorMultiply:* numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+ numeric scalar
- FunctionInt:INT numeric scalar
+ FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 525 PRINT "YOUR ROLL IS "; D1;D2
  TextConstant:"YOUR ROLL IS "

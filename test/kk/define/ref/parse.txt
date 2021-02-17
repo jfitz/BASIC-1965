@@ -2,9 +2,9 @@
  UserFunctionName:FNL
  VariableName:A
  Variable:A numeric scalar
- FunctionLog:LOG numeric scalar
+ FunctionLog:LOG(_) numeric scalar
  NumericConstant:10
- FunctionLog:LOG numeric scalar
+ FunctionLog:LOG(_) numeric scalar
  BinaryOperatorDivide:/ numeric scalar
 20 FOR N = 2 TO 10 STEP 2
  control: Variable:N numeric scalar
@@ -15,10 +15,10 @@
  Variable:N numeric scalar
  CarriageControl:,
  Variable:N numeric scalar
- FunctionLog:LOG numeric scalar
+ FunctionLog:LOG(_) numeric scalar
  CarriageControl:,
  Variable:N numeric scalar
- UserFunction:FNL numeric scalar
+ UserFunction:FNL(_) numeric scalar
  CarriageControl:NL
 40 NEXT N
  Variable:N numeric scalar

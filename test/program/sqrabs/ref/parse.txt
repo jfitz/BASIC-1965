@@ -5,36 +5,36 @@
 20 LET A=ABS(I)
  Variable:A numeric scalar
  Variable:I numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  AssignmentOperator:=
 30 LET S=SQR(ABS(I))
  Variable:S numeric scalar
  Variable:I numeric scalar
- FunctionAbs:ABS numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 31 LET A1=ABS(I)+3
  Variable:A1 numeric scalar
  Variable:I numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:3
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 32 LET S1=SQR(ABS(I)+3)
  Variable:S1 numeric scalar
  Variable:I numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:3
  BinaryOperatorPlus:+ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 34 LET S2=SQR(ABS(I)+3)*2
  Variable:S2 numeric scalar
  Variable:I numeric scalar
- FunctionAbs:ABS numeric scalar
+ FunctionAbs:ABS(_) numeric scalar
  NumericConstant:3
  BinaryOperatorPlus:+ numeric scalar
- FunctionSqr:SQR numeric scalar
+ FunctionSqr:SQR(_) numeric scalar
  NumericConstant:2
  BinaryOperatorMultiply:* numeric scalar
  AssignmentOperator:=
