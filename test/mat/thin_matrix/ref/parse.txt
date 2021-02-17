@@ -10,28 +10,28 @@
  NumericConstant:0
  Declaration:V scalar
 40 FOR I = 0 TO 5
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET H(0,I) = I
  NumericConstant:0
- Variable:I scalar
- Variable:H scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:H numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 52 LET V(I,0) = I
- Variable:I scalar
+ Variable:I numeric scalar
  NumericConstant:0
- Variable:V scalar
- Variable:I scalar
+ Variable:V numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 60 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 70 MAT PRINT H
- Variable:H matrix
+ Variable:H numeric matrix
  CarriageControl:NL
 72 MAT PRINT V
- Variable:V matrix
+ Variable:V numeric matrix
  CarriageControl:NL
 120 OPTION BASE 1
  NumericConstant:1
@@ -43,28 +43,28 @@
  NumericConstant:1
  Declaration:V scalar
 140 FOR I = 1 TO 5
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 150 LET H(1,I) = I
  NumericConstant:1
- Variable:I scalar
- Variable:H scalar
- Variable:I scalar
+ Variable:I numeric scalar
+ Variable:H numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 152 LET V(I,1) = I
- Variable:I scalar
+ Variable:I numeric scalar
  NumericConstant:1
- Variable:V scalar
- Variable:I scalar
+ Variable:V numeric scalar
+ Variable:I numeric scalar
  AssignmentOperator:=
 160 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 170 MAT PRINT H
- Variable:H matrix
+ Variable:H numeric matrix
  CarriageControl:NL
 172 MAT PRINT V
- Variable:V matrix
+ Variable:V numeric matrix
  CarriageControl:NL
 999 END
  

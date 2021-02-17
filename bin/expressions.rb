@@ -42,6 +42,16 @@ class BASICArray
     Array.new(@dimensions.clone, @values.clone)
   end
 
+  def numeric_constant?
+    value = get_value(0)
+    value.numeric_constant?
+  end
+
+  def text_constant?
+    value = get_value(0)
+    value.text_constant?
+  end
+
   def scalar?
     false
   end
@@ -296,7 +306,9 @@ class Matrix
   end
 
   def transpose_values
-    raise(BASICSyntaxError, 'TRN requires matrix') unless @dimensions.size == 2
+    raise(BASICExpressionError, 'TRN requires matrix') unless
+      @dimensions.size == 2
+
     new_values = {}
 
     base = $options['base'].value
@@ -313,7 +325,8 @@ class Matrix
   end
 
   def determinant
-    raise(BASICExpressionError, 'DET requires matrix') unless @dimensions.size == 2
+    raise(BASICExpressionError, 'DET requires matrix') unless
+      @dimensions.size == 2
 
     raise BASICRuntimeError.new(:te_mat_no_sq, 'DET') if
       @dimensions[1] != @dimensions[0]
@@ -441,9 +454,9 @@ class Matrix
     sign = NumericConstant.new(1)
     det = NumericConstant.new(0)
 
-    # for each element in first row
     base = $options['base'].value
 
+    # for each element in first row
     (base..@dimensions[1].to_i).each do |col|
       v = get_value_2(1, col)
       # create submatrix
@@ -560,7 +573,7 @@ class XrefEntry
   attr_reader :signature
   attr_reader :is_ref
 
-  def self.make_signature(arguments)
+  def self.make_sigils(arguments)
     return nil if arguments.nil?
 
     sigil_chars = {
@@ -867,6 +880,7 @@ class Parser
   # append them to the output list
   def start_variable(element)
     stack_to_precedence(@operator_stack, @current_elements, element)
+
     # push the variable onto the operator stack
     if @shape_stack[-1] == :declaration
       variable = Declaration.new(element)
@@ -1018,7 +1032,7 @@ class Expression
   end
 
   def to_s
-    '[' + @elements.map(&:to_s).join(', ') + ']'
+    AbstractToken.pretty_tokens([], @tokens)
   end
 
   def numerics
@@ -1041,6 +1055,7 @@ class Expression
           vars << element
         end
       end
+
       previous = element
     end
 
@@ -1107,8 +1122,8 @@ class Expression
 
         is_ref = element.reference?
 
-        signature = XrefEntry.make_signature(arguments)
-        vars << XrefEntry.new(element.to_s, signature, is_ref)
+        sigils = XrefEntry.make_sigils(arguments)
+        vars << XrefEntry.new(element.to_s, sigils, is_ref)
       end
 
       previous = element
@@ -1130,8 +1145,8 @@ class Expression
 
         is_ref = false
 
-        signature = XrefEntry.make_signature(arguments)
-        opers << XrefEntry.new(element.to_s, signature, is_ref)
+        sigils = XrefEntry.make_sigils(arguments)
+        opers << XrefEntry.new(element.to_s, sigils, is_ref)
       end
     end
 
@@ -1153,8 +1168,8 @@ class Expression
 
         is_ref = element.reference?
 
-        signature = XrefEntry.make_signature(arguments)
-        vars << XrefEntry.new(element.to_s, signature, is_ref)
+        sigils = element.sigils
+        vars << XrefEntry.new(element.to_s, sigils, is_ref)
       end
 
       previous = element
@@ -1179,8 +1194,8 @@ class Expression
 
         is_ref = element.reference?
 
-        signature = XrefEntry.make_signature(arguments)
-        vars << XrefEntry.new(element.to_s, signature, is_ref)
+        sigils = element.sigils
+        vars << XrefEntry.new(element.to_s, sigils, is_ref)
       end
 
       previous = element
@@ -1330,7 +1345,7 @@ class AbstractExpressionSet
       end
     end
 
-    raise(BASICExpressionError, 'Bad expression 1') if
+    raise(BASICExpressionError, 'Bad expression') if
       content_type_stack.size > 1
   end
 
@@ -1410,7 +1425,7 @@ end
 
 # Value expression (an R-value)
 class ValueExpressionSet < AbstractExpressionSet
-  def initialize(_, my_shape)
+  def initialize(_, _)
     super
 
     @expressions.each do |expression|
@@ -1426,18 +1441,18 @@ class ValueExpressionSet < AbstractExpressionSet
     true
   end
 
+  def scalar?
+    @shape == :scalar
+  end
+
   def filehandle?
     return false if @expressions.empty?
 
     expression = @expressions[0]
     elements = expression.elements
     element = elements[0]
-    last_token = elements[-1]
-    last_token.operator? && last_token.pound?
-  end
-
-  def scalar?
-    @shape == :scalar
+    last_element = elements[-1]
+    last_element.operator? && last_element.pound?
   end
 
   def print(printer, interpreter)
@@ -1521,7 +1536,7 @@ end
 
 # Target expression
 class TargetExpressionSet < AbstractExpressionSet
-  def initialize(tokens, my_shape)
+  def initialize(_, _)
     super
 
     check_length
@@ -1552,7 +1567,7 @@ class TargetExpressionSet < AbstractExpressionSet
   private
 
   def check_length
-    raise(BASICSyntaxError, 'Value list is empty (length 0)') if
+    raise(BASICExpressionError, 'Value list is empty (length 0)') if
       @expressions.empty?
   end
 
@@ -1583,7 +1598,7 @@ end
 class UserFunctionDefinition
   attr_reader :name
   attr_reader :arguments
-  attr_reader :sig
+  attr_reader :sigils
   attr_reader :expression
   attr_reader :numerics
   attr_reader :strings
@@ -1605,22 +1620,24 @@ class UserFunctionDefinition
     user_function_prototype = UserFunctionPrototype.new(parts[0])
     @name = user_function_prototype.name
     @arguments = user_function_prototype.arguments
-    @sig = XrefEntry.make_signature(@arguments)
+    @sigils = XrefEntry.make_sigils(@arguments)
     @expression = ValueExpressionSet.new(parts[2], :scalar)
+
     @numerics = @expression.numerics
     @strings = @expression.strings
     @booleans = @expression.booleans
     @variables = @expression.variables
     @operators = @expression.operators
     @functions = @expression.functions
+    xr = XrefEntry.new(@name.to_s, @sigils, true)
+    @userfuncs = [xr] + @expression.userfuncs
 
     # add parameters to function as references
     @arguments.each do |argument|
       @variables << XrefEntry.new(argument.to_s, nil, true)
     end
 
-    signature = XrefEntry.make_signature(@arguments)
-    xr = XrefEntry.new(@name.to_s, signature, true)
+    xr = XrefEntry.new(@name.to_s, @sigils, true)
     @userfuncs = [xr] + @expression.userfuncs
 
     @comprehension_effort = @expression.comprehension_effort
@@ -1640,15 +1657,7 @@ class UserFunctionDefinition
   end
 
   def signature
-    numeric_spec = { 'type' => :numeric, 'shape' => :scalar }
-    sig = []
-
-    @arguments.each do
-      # arguments can only be numeric and scalar
-      sig << numeric_spec
-    end
-
-    sig
+    @sigils
   end
 
   private
@@ -1713,6 +1722,7 @@ class UserFunctionPrototype
     end
 
     separators = params.values_at(* params.each_index.select(&:odd?))
+
     separators.each do |separator|
       raise(BASICSyntaxError, 'Invalid list separator') unless
         separator.separator?
@@ -1740,7 +1750,7 @@ class Assignment
 
     line_text = tokens.map(&:to_s).join
 
-    raise(BASICSyntaxError, "'#{line_text}' is not a valid assignment") if
+    raise(BASICExpressionError, "'#{line_text}' is not a valid assignment") if
       @token_lists.size != 3 ||
       !(@token_lists[1].operator? && @token_lists[1].equals?)
 

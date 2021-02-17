@@ -5,42 +5,42 @@
  NumericConstant:5
  Declaration:A scalar
 30 FOR I = 1 TO 5
- control: Variable:I scalar
+ control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 40 FOR J = 1 TO 5
- control: Variable:J scalar
+ control: Variable:J numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 50 LET A(I,J) = I+J
- Variable:I scalar
- Variable:J scalar
- Variable:A scalar
- Variable:I scalar
- Variable:J scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
+ Variable:A numeric scalar
+ Variable:I numeric scalar
+ Variable:J numeric scalar
  BinaryOperatorPlus:+ numeric scalar
  AssignmentOperator:=
 60 NEXT J
- Variable:J scalar
+ Variable:J numeric scalar
 70 NEXT I
- Variable:I scalar
+ Variable:I numeric scalar
 100 MAT B = 2 * A
- Variable:B matrix
+ Variable:B numeric matrix
  NumericConstant:2
- Variable:A matrix
+ Variable:A numeric matrix
  BinaryOperatorMultiply:* numeric matrix
  AssignmentOperator:=
 110 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 120 MAT PRINT A
- Variable:A matrix
+ Variable:A numeric matrix
  CarriageControl:NL
 130 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 140 MAT PRINT B
- Variable:B matrix
+ Variable:B numeric matrix
  CarriageControl:NL
 999 END
  

@@ -566,7 +566,7 @@ class Interpreter
       #  variable - break when contents change
       tokens_lists = split_breakpoint_tokens(tokens)
       tokens_lists.each do |tokens_list|
-        if tokens_list.size == 1 &&
+        if tokens_list.size == 1
           begin
             line_number = LineNumber.new(tokens_list[0])
             @line_breakpoints[line_number] = ''
@@ -791,24 +791,22 @@ class Interpreter
     @dimensions[variable]
   end
 
-  def set_user_function(name, signature, definition)
-    sig = signature.join(',')
-    tag = name.to_s + '(' + sig + ')'
+  def set_user_function(name, sigils, definition)
+    signature = name.to_s + '(' + sigils.join(',') + ')'
 
-    raise BASICRuntimeError.new(:te_func_alr, tag) if
-      @user_functions.key?(tag)
+    raise BASICRuntimeError.new(:te_func_alr, signature) if
+      @user_functions.key?(signature)
 
-    @user_functions[tag] = definition
+    @user_functions[signature] = definition
   end
 
-  def get_user_function(name, signature)
-    sig = signature.join(',')
-    tag = name.to_s + '(' + sig + ')'
+  def get_user_function(name, sigils)
+    signature = name.to_s + '(' + sigils.join(',') + ')'
 
-    raise BASICRuntimeError.new(:te_func_no, tag) unless
-      @user_functions.key?(tag)
+    raise BASICRuntimeError.new(:te_func_no, signature) unless
+      @user_functions.key?(signature)
 
-    @user_functions[tag]
+    @user_functions[signature]
   end
 
   def define_user_var_values(names_and_values)
