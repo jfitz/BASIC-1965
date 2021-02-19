@@ -19,7 +19,7 @@
  Variable:D numeric scalar
  Variable:X numeric scalar
  NumericConstant:10000
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 70 LET N(D) = N(D) + 1
@@ -28,7 +28,7 @@
  Variable:D numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 80 NEXT I
  Variable:I numeric scalar
@@ -49,13 +49,13 @@
 130 PRINT D*1E4,(D+1)*1E4,N(D)
  Variable:D numeric scalar
  NumericConstant:10000
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  CarriageControl:,
  Variable:D numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:10000
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  CarriageControl:,
  Variable:D numeric scalar
  Variable:N numeric scalar

@@ -23,7 +23,7 @@
 100 IF C = 1 THEN 120
  Variable:C numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 110 GOTO 140
  LineNumber:140
 120 PRINT "ARITHMETIC PROGRESSION"
@@ -41,31 +41,31 @@
 150 FOR I = 0 TO N - 1
  control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
 160 LET K = I + 1
  Variable:K numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 170 LET L = A + (I*D)
  Variable:L numeric scalar
  Variable:A numeric scalar
  Variable:I numeric scalar
  Variable:D numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 180 LET J = J + L
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:L numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 190 IF C = 1 THEN 210
  Variable:C numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 200 GOTO 220
  LineNumber:220
 210 PRINT K, L
@@ -90,7 +90,7 @@
 270 IF X = 1 THEN 290
  Variable:X numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 290 STOP
  
 300 GOTO 20

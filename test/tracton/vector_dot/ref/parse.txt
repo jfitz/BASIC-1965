@@ -22,15 +22,15 @@
  Variable:X numeric scalar
  Variable:A1 numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  Variable:A2 numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:A3 numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 90 REM CALCULATE THE NORM OF B VECTOR
@@ -39,15 +39,15 @@
  Variable:Y numeric scalar
  Variable:B1 numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  Variable:B2 numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:B3 numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 110 REM CALCULATE DOT PRODUCT
@@ -56,15 +56,15 @@
  Variable:Z numeric scalar
  Variable:A1 numeric scalar
  Variable:B1 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:A2 numeric scalar
  Variable:B2 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:A3 numeric scalar
  Variable:B3 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 130 PRINT "DOT PRODUCT = ";Z
  TextConstant:"DOT PRODUCT = "
@@ -92,7 +92,7 @@
 190 IF L = 1 THEN 210
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 200 STOP
  
 210 PRINT

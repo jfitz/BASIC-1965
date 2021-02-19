@@ -52,23 +52,23 @@
  Variable:Y numeric scalar
  Variable:B numeric scalar
  Variable:A numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 160 LET Z = B + A
  Variable:Z numeric scalar
  Variable:B numeric scalar
  Variable:A numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 170 LET X = ((C1*Y) +Z)/2
  Variable:X numeric scalar
  Variable:C1 numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 180 GOSUB 500
  LineNumber:500
@@ -76,23 +76,23 @@
  Variable:N numeric scalar
  Variable:D1 numeric scalar
  Variable:Q numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 200 LET J = J + N
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 210 LET X = ((C2*Y) + Z)/2
  Variable:X numeric scalar
  Variable:C2 numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 220 GOSUB 500
  LineNumber:500
@@ -100,23 +100,23 @@
  Variable:N numeric scalar
  Variable:D1 numeric scalar
  Variable:Q numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 240 LET J = J + N
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 250 LET X = ((C3*Y) + Z)/2
  Variable:X numeric scalar
  Variable:C3 numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 260 GOSUB 500
  LineNumber:500
@@ -124,23 +124,23 @@
  Variable:N numeric scalar
  Variable:D2 numeric scalar
  Variable:Q numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 280 LET J = J + N
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 290 LET X = ((C4*Y) + Z)/2
  Variable:X numeric scalar
  Variable:C4 numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 300 GOSUB 500
  LineNumber:500
@@ -148,23 +148,23 @@
  Variable:N numeric scalar
  Variable:D2 numeric scalar
  Variable:Q numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 320 LET J = J + N
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 330 LET X = ((C5*Y) + Z)/2
  Variable:X numeric scalar
  Variable:C5 numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 340 GOSUB 500
  LineNumber:500
@@ -172,23 +172,23 @@
  Variable:N numeric scalar
  Variable:D3 numeric scalar
  Variable:Q numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 360 LET J = J + N
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 370 LET X = ((C6*Y) + Z)/2
  Variable:X numeric scalar
  Variable:C6 numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 380 GOSUB 500
  LineNumber:500
@@ -196,21 +196,21 @@
  Variable:N numeric scalar
  Variable:D3 numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 400 LET J = J + N
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 410 LET G = (Y/2)*J
  Variable:G numeric scalar
  Variable:Y numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  Variable:J numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 420 PRINT "INTEGRAL = ";G
  TextConstant:"INTEGRAL = "
@@ -227,7 +227,7 @@
 460 IF L = 1 THEN 480
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 470 STOP
  
 480 PRINT
@@ -239,21 +239,21 @@
  NumericConstant:13
  Variable:X numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:6
  Variable:X numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:X numeric scalar
  FunctionSin:SIN(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:1
  Variable:X numeric scalar
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 510 RETURN
  

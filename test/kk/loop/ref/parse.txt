@@ -5,7 +5,7 @@
 20 IF I > 1000 THEN 60
  Variable:I numeric scalar
  NumericConstant:1000
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 30 PRINT I
  Variable:I numeric scalar
  CarriageControl:NL
@@ -13,7 +13,7 @@
  Variable:I numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 50 GOTO 20
  LineNumber:20

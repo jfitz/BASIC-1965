@@ -18,41 +18,41 @@
 80 IF X + Y = 0 THEN 180
  Variable:X numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 90 IF X = 0 THEN 180
  Variable:X numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 100 IF Y = 0 THEN 250
  Variable:Y numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 110 LET W = ATN(Y/X)
  Variable:W numeric scalar
  Variable:Y numeric scalar
  Variable:X numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionArcTan:ATN(_) numeric scalar
  AssignmentOperator:=
 120 LET W = (W*180)/3.14159
  Variable:W numeric scalar
  Variable:W numeric scalar
  NumericConstant:180
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:3.14159
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 130 LET R = SQR(X^2 + Y^2)
  Variable:R numeric scalar
  Variable:X numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  Variable:Y numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 140 GOTO 310
@@ -70,11 +70,11 @@
 180 IF Y > 0 THEN 220
  Variable:Y numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 190 LET W = - 90
  Variable:W numeric scalar
  NumericConstant:90
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
 200 LET R = ABS(Y)
  Variable:R numeric scalar
@@ -96,7 +96,7 @@
 250 IF X > 0 THEN 290
  Variable:X numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 260 LET W = 180
  Variable:W numeric scalar
  NumericConstant:180
@@ -140,7 +140,7 @@
 370 IF L = 1 THEN 390
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 380 STOP
  
 390 PRINT

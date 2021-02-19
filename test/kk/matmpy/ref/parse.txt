@@ -12,7 +12,7 @@
  Variable:P numeric matrix
  Variable:A numeric matrix
  Variable:B numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 130 MAT T = TRN(A)
  Variable:T numeric matrix
@@ -49,24 +49,24 @@
  NumericConstant:1
  NumericConstant:4
  NumericConstant:2
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:2
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:3
 910 DATA 1, -3, 4, -1,6, -1, 3, -5, 7, 0, 2, 0
  NumericConstant:1
  NumericConstant:3
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:4
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:6
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:3
  NumericConstant:5
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:7
  NumericConstant:0
  NumericConstant:2

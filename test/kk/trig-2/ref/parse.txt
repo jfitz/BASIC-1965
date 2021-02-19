@@ -9,9 +9,9 @@
  VariableName:X
  Variable:X numeric scalar
  Variable:P numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X
@@ -37,29 +37,29 @@
  Variable:C numeric scalar
  NumericConstant:180
  Variable:A numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:B numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 170 LET Y = X*FNS(B)/FNS(C)
  Variable:Y numeric scalar
  Variable:X numeric scalar
  Variable:B numeric scalar
  UserFunction:FNS(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:C numeric scalar
  UserFunction:FNS(_) numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
  Variable:Z numeric scalar
  Variable:X numeric scalar
  Variable:A numeric scalar
  UserFunction:FNS(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:C numeric scalar
  UserFunction:FNS(_) numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z
  Variable:A numeric scalar

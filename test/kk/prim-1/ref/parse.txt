@@ -27,12 +27,12 @@
  Variable:P numeric scalar
  Variable:N numeric scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 50    LET K = K+1
  Variable:K numeric scalar
  Variable:K numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 55    LET P(K) = P
  Variable:K numeric scalar
@@ -43,7 +43,7 @@
  Variable:P numeric scalar
  NumericConstant:1000
  FunctionSqr:SQR(_) numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 60    FOR I = P TO 1000 STEP P
  control: Variable:I numeric scalar
  start:   ["Variable:P numeric scalar"]
@@ -53,7 +53,7 @@
  Variable:I numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
 80    NEXT I
  Variable:I numeric scalar

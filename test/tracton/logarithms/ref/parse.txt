@@ -20,7 +20,7 @@
  FunctionLog:LOG(_) numeric scalar
  Variable:Y numeric scalar
  FunctionLog:LOG(_) numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 90 PRINT "LOG";X;" = ";J
  TextConstant:"LOG"
@@ -39,7 +39,7 @@
 120 IF L =1 THEN 140
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 130 STOP
  
 140 PRINT

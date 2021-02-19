@@ -34,7 +34,7 @@
  Variable:Z numeric scalar
  Variable:Y numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 140 PRINT "SINH";X;" =";Z
  TextConstant:"SINH"
@@ -55,7 +55,7 @@
  Variable:Z numeric scalar
  Variable:B numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 190 PRINT "COSH";X;" =";Z
  TextConstant:"COSH"
@@ -78,7 +78,7 @@
  Variable:Z numeric scalar
  Variable:Y numeric scalar
  Variable:B numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 250 PRINT "TANH";X;" =";Z
  TextConstant:"TANH"
@@ -100,8 +100,8 @@
  NumericConstant:1
  Variable:Y numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 300 PRINT "CSCH";X;" =";Z
  TextConstant:"CSCH"
@@ -123,8 +123,8 @@
  NumericConstant:1
  Variable:B numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 350 PRINT "SECH";X;" =";Z
  TextConstant:"SECH"
@@ -148,8 +148,8 @@
  NumericConstant:1
  Variable:Y numeric scalar
  Variable:B numeric scalar
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 410 PRINT "COTH";X;" =";Z
  TextConstant:"COTH"
@@ -170,7 +170,7 @@
 450 IF L = 1 THEN 470
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 460 STOP
  
 470 PRINT
@@ -189,9 +189,9 @@
  Variable:X numeric scalar
  FunctionExp:EXP(_) numeric scalar
  Variable:X numeric scalar
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  FunctionExp:EXP(_) numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 530 RETURN
  
@@ -200,9 +200,9 @@
  Variable:X numeric scalar
  FunctionExp:EXP(_) numeric scalar
  Variable:X numeric scalar
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  FunctionExp:EXP(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 550 RETURN
  

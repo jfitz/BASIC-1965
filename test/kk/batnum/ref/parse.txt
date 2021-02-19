@@ -7,9 +7,9 @@
  NumericConstant:80
  Variable:X numeric scalar
  FunctionRnd:RND(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 130 LET K = 5 + INT(10*RND(X))
  Variable:K numeric scalar
@@ -17,9 +17,9 @@
  NumericConstant:10
  Variable:X numeric scalar
  FunctionRnd:RND(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 140 PRINT "LEGAL MOVES ARE:"
  TextConstant:"LEGAL MOVES ARE:"
@@ -52,15 +52,15 @@
 240 IF X > K THEN 270
  Variable:X numeric scalar
  Variable:K numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 250 IF X < 1 THEN 270
  Variable:X numeric scalar
  NumericConstant:1
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 260 IF X <= N THEN 310
  Variable:X numeric scalar
  Variable:N numeric scalar
- BinaryOperatorLessEqual:<= boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) boolean scalar
 270 PRINT "ILLEGAL MOVE"
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
@@ -75,12 +75,12 @@
  Variable:N numeric scalar
  Variable:N numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 330 IF N > 0 THEN 410
  Variable:N numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 340 PRINT "I WIN ***"
  TextConstant:"I WIN ***"
  CarriageControl:NL
@@ -102,34 +102,34 @@
  Variable:Q numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:K numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 430 LET Y = N-1 - Q*(K+1)
  Variable:Y numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:Q numeric scalar
  Variable:K numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 440 IF Y = 0 THEN 530
  Variable:Y numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 450 LET N = N - Y
  Variable:N numeric scalar
  Variable:N numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 460 PRINT "MY MOVE:" Y
  TextConstant:"MY MOVE:"
@@ -141,7 +141,7 @@
 480 IF N = 0 THEN 600
  Variable:N numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 490 PRINT "NEW TOTAL IS" N
  TextConstant:"NEW TOTAL IS"
  CarriageControl:
@@ -157,7 +157,7 @@
 540 IF N > 1 THEN 570
  Variable:N numeric scalar
  NumericConstant:1
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 550 LET Y = 1
  Variable:Y numeric scalar
  NumericConstant:1
@@ -170,9 +170,9 @@
  Variable:K numeric scalar
  NumericConstant:0
  FunctionRnd:RND(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 580 GOTO 450
  LineNumber:450

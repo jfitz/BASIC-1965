@@ -13,18 +13,18 @@
  CarriageControl:,
 40 FOR F = INT(N/2) TO 1 STEP -1
  control: Variable:F numeric scalar
- start:   ["Variable:N numeric scalar", "NumericConstant:2", "BinaryOperatorDivide:/ numeric scalar", "FunctionInt:INT(_) numeric scalar"]
+ start:   ["Variable:N numeric scalar", "NumericConstant:2", "BinaryOperatorDivide:/(_,_) numeric scalar", "FunctionInt:INT(_) numeric scalar"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
 50 IF N/F <> INT(N/F) THEN 80
  Variable:N numeric scalar
  Variable:F numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  Variable:N numeric scalar
  Variable:F numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorNotEqual:<> boolean scalar
+ BinaryOperatorNotEqual:<>(_,_) boolean scalar
 60 PRINT F
  Variable:F numeric scalar
  CarriageControl:NL

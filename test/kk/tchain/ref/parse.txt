@@ -59,7 +59,7 @@
  Variable:Q numeric matrix
  Variable:N numeric matrix
  Variable:Q numeric matrix
- BinaryOperatorMinus:- numeric matrix
+ BinaryOperatorMinus:-(_,_) numeric matrix
  AssignmentOperator:=
 280 MAT N = INV(Q)
  Variable:N numeric matrix
@@ -79,7 +79,7 @@
  Variable:T numeric matrix
  Variable:N numeric matrix
  Variable:U numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 340 PRINT "ABSORBTION TIMES"
  TextConstant:"ABSORBTION TIMES"
@@ -94,7 +94,7 @@
  Variable:Q numeric matrix
  Variable:N numeric matrix
  Variable:R numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 390 PRINT "ABSORBTION PROBABILITIES"
  TextConstant:"ABSORBTION PROBABILITIES"

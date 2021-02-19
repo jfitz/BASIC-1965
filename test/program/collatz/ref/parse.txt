@@ -7,7 +7,7 @@
  Variable:B numeric scalar
  Variable:A numeric scalar
  Variable:A0 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
@@ -44,20 +44,20 @@
 420 IF N0 = 1 THEN 490
  Variable:N0 numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 430 IF MOD(N0,2) = 0 THEN 460
  Variable:N0 numeric scalar
  NumericConstant:2
  FunctionMod:MOD(_,_) numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 440 LET N0 = 3*N0 + 1
  Variable:N0 numeric scalar
  NumericConstant:3
  Variable:N0 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 450 GOTO 470
  LineNumber:470
@@ -65,7 +65,7 @@
  Variable:N0 numeric scalar
  Variable:N0 numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 470 PRINT N0;
  Variable:N0 numeric scalar

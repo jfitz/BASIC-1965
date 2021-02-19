@@ -13,13 +13,13 @@
  CarriageControl:
  NumericConstant:2
  Variable:I numeric scalar
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  CarriageControl:NL
 50 MAT A = M*M
  Variable:A numeric matrix
  Variable:M numeric matrix
  Variable:M numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 60 MAT PRINT A
  Variable:A numeric matrix

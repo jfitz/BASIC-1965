@@ -8,11 +8,11 @@
 130 IF N = 0 THEN 999
  Variable:N numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 140 IF N = 2 THEN 250
  Variable:N numeric scalar
  NumericConstant:2
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 150 LET Z = 0
  Variable:Z numeric scalar
  NumericConstant:0
@@ -27,7 +27,7 @@
 190 FOR F = 3 TO SQR(N)+1 STEP 2
  control: Variable:F numeric scalar
  start:   ["NumericConstant:3"]
- end:     ["Variable:N numeric scalar", "FunctionSqr:SQR(_) numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
+ end:     ["Variable:N numeric scalar", "FunctionSqr:SQR(_) numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) numeric scalar"]
  step:    ["NumericConstant:2"]
 200 GOSUB 300
  LineNumber:300
@@ -36,7 +36,7 @@
 220 IF Z = 0 THEN 250
  Variable:Z numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 230 PRINT N;
  Variable:N numeric scalar
  CarriageControl:;
@@ -55,16 +55,16 @@
 310 IF N/F <> INT(N/F) THEN 410
  Variable:N numeric scalar
  Variable:F numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  Variable:N numeric scalar
  Variable:F numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorNotEqual:<> boolean scalar
+ BinaryOperatorNotEqual:<>(_,_) boolean scalar
 330 IF Z > 0 THEN 370
  Variable:Z numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 340 PRINT N; "HAS THE FACTORS:"
  Variable:N numeric scalar
  CarriageControl:;
@@ -84,12 +84,12 @@
  Variable:N numeric scalar
  Variable:N numeric scalar
  Variable:F numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 390 IF N = 1 THEN 500
  Variable:N numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 400 GOTO 310
  LineNumber:310
 410 RETURN

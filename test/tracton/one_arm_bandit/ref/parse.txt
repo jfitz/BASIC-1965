@@ -116,7 +116,7 @@
  Variable:J numeric scalar
  Variable:J numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 470 GOTO 550
  LineNumber:550
@@ -124,7 +124,7 @@
  Variable:J numeric scalar
  Variable:J numeric scalar
  NumericConstant:89
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 490 GOTO 550
  LineNumber:550
@@ -132,7 +132,7 @@
  Variable:J numeric scalar
  Variable:J numeric scalar
  NumericConstant:2
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 510 GOTO 550
  LineNumber:550
@@ -140,7 +140,7 @@
  Variable:J numeric scalar
  Variable:J numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 530 GOTO 550
  LineNumber:550
@@ -148,7 +148,7 @@
  Variable:J numeric scalar
  Variable:J numeric scalar
  NumericConstant:9
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 550 PRINT
  CarriageControl:NL
@@ -174,9 +174,9 @@
  NumericConstant:1
  NumericConstant:5
  FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 600 600 RETURN
  Unknown statement '600 RETURN'

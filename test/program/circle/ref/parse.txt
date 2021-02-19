@@ -12,15 +12,15 @@
  VariableName:Y2
  Variable:X1 numeric scalar
  Variable:Y1 numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  Variable:X2 numeric scalar
  Variable:Y2 numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionSqr:SQR(_) numeric scalar
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
@@ -29,9 +29,9 @@
  VariableName:D
  Variable:D numeric scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  NumericConstant:3.14159
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
 100 REM POINT A
  Remark:POINT A
 101 READ A1,A2
@@ -49,7 +49,7 @@
  Variable:D5 numeric scalar
  Variable:D1 numeric scalar
  Variable:C1 numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 121 READ Z9,Z8
  Variable:Z9 numeric scalar
@@ -62,9 +62,9 @@
  Variable:B1 numeric scalar
  Variable:A1 numeric scalar
  Variable:D1 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 202 LET B2=0
  Variable:B2 numeric scalar
@@ -74,7 +74,7 @@
  Variable:I1 numeric scalar
  Variable:D1 numeric scalar
  Variable:D5 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 204 LET I2=0
  Variable:I2 numeric scalar
@@ -118,7 +118,7 @@
  Variable:R0 numeric scalar
  Variable:F1 numeric scalar
  Variable:F2 numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
@@ -142,7 +142,7 @@
  Variable:R1 numeric scalar
  Variable:G1 numeric scalar
  Variable:G2 numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 239 PRINT B1,R0,R1,Z
  Variable:B1 numeric scalar
@@ -156,19 +156,19 @@
 240 IF ABS(R0-R1)<R9 THEN 300
  Variable:R0 numeric scalar
  Variable:R1 numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  FunctionAbs:ABS(_) numeric scalar
  Variable:R9 numeric scalar
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 241 IF R0<R1 THEN 245
  Variable:R0 numeric scalar
  Variable:R1 numeric scalar
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 242 LET B1=B1+Z
  Variable:B1 numeric scalar
  Variable:B1 numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 243 GOTO 246
  LineNumber:246
@@ -176,18 +176,18 @@
  Variable:B1 numeric scalar
  Variable:B1 numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 246 LET Z=Z*Z8
  Variable:Z numeric scalar
  Variable:Z numeric scalar
  Variable:Z8 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 247 IF Z>Z9 THEN 220
  Variable:Z numeric scalar
  Variable:Z9 numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 248 PRINT "CANNOT RESOLVE POINT B"
  TextConstant:"CANNOT RESOLVE POINT B"
  CarriageControl:NL
@@ -266,8 +266,8 @@
  Variable:T numeric scalar
  FunctionCos:COS(_) numeric scalar
  Variable:D5 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 423 LET I2 = D2 + SIN(T)*D5
  Variable:I2 numeric scalar
@@ -275,8 +275,8 @@
  Variable:T numeric scalar
  FunctionSin:SIN(_) numeric scalar
  Variable:D5 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 424 LET G1 = FNL(A1,A2,I1,I2)
  Variable:G1 numeric scalar
@@ -298,7 +298,7 @@
  Variable:R1 numeric scalar
  Variable:G1 numeric scalar
  Variable:G2 numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
@@ -317,7 +317,7 @@
  CarriageControl:,
  Variable:R1 numeric scalar
  Variable:R0 numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  CarriageControl:NL
 441 NEXT I
  Variable:I numeric scalar

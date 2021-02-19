@@ -22,26 +22,26 @@
 90 IF W = 0 THEN 160
  Variable:W numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 100 LET N = N + 1
  Variable:N numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 110 LET Y = Y * W
  Variable:Y numeric scalar
  Variable:Y numeric scalar
  Variable:W numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 120 LET G = Y^(1/N)
  Variable:G numeric scalar
  Variable:Y numeric scalar
  NumericConstant:1
  Variable:N numeric scalar
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  AssignmentOperator:=
 130 PRINT "NUMBER OF SAMPLES = ";N,"CURRENT SAMPLE = ";W
  TextConstant:"NUMBER OF SAMPLES = "
@@ -69,7 +69,7 @@
 190 IF L = 1 THEN 210
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 200 STOP
  
 210 PRINT

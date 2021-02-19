@@ -18,7 +18,7 @@
  Variable:A numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 60 NEXT J
  Variable:J numeric scalar
@@ -27,7 +27,7 @@
 100 MAT B = +A
  Variable:B numeric matrix
  Variable:A numeric matrix
- UnaryOperatorPlus:+ numeric matrix
+ UnaryOperatorPlus:+(_) numeric matrix
  AssignmentOperator:=
 110 MAT PRINT B
  Variable:B numeric matrix

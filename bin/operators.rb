@@ -42,6 +42,9 @@ class UnaryOperator < AbstractElement
     type = type_stack.pop
 
     raise(BASICExpressionError, 'Bad expression') if type != :numeric
+
+    @sigils = make_sigils([type])
+    @signature = make_signature([type])
     
     @content_type = :numeric
     type_stack.push(@content_type)
@@ -56,7 +59,7 @@ class UnaryOperator < AbstractElement
   end
 
   def dump
-    "#{self.class}:#{@op} #{@content_type} #{@shape}"
+    "#{self.class}:#{@op}#{@signature} #{@content_type} #{@shape}"
   end
 
   def unary?
@@ -161,7 +164,7 @@ class BinaryOperator < AbstractElement
   end
 
   def dump
-    "#{self.class}:#{@op} #{@content_type} #{@shape}"
+    "#{self.class}:#{@op}#{@signature} #{@content_type} #{@shape}"
   end
 
   def unary?
@@ -837,6 +840,9 @@ class UnaryOperatorHash < UnaryOperator
 
     raise(BASICExpressionError, 'Bad expression') if type != :numeric
 
+    @sigils = make_sigils([type])
+    @signature = make_signature([type])
+    
     @content_type = :filehandle
     type_stack.push(@content_type)
   end
@@ -884,14 +890,17 @@ class BinaryOperatorPlus < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands +') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a + #{a_type}") if
       a_type != :numeric
     
     raise(BASICExpressionError, "Bad expression + b #{b_type}") if
       b_type != :numeric
+    
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
     
     @content_type = :numeric
     type_stack.push(@content_type)
@@ -974,14 +983,17 @@ class BinaryOperatorMinus < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands -') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a - #{a_type}") if
       a_type != :numeric
     
     raise(BASICExpressionError, "Bad expression - b #{b_type}") if
       b_type != :numeric
+    
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
     
     @content_type = :numeric
     type_stack.push(@content_type)
@@ -1064,14 +1076,17 @@ class BinaryOperatorMultiply < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands *') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a * #{a_type}") if
       a_type != :numeric
     
     raise(BASICExpressionError, "Bad expression * b #{b_type}") if
       b_type != :numeric
+    
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
     
     @content_type = :numeric
     type_stack.push(@content_type)
@@ -1156,8 +1171,8 @@ class BinaryOperatorDivide < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands /') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a / #{a_type}") if
       a_type != :numeric
@@ -1165,6 +1180,9 @@ class BinaryOperatorDivide < BinaryOperator
     raise(BASICExpressionError, "Bad expression / b #{b_type}") if
       b_type != :numeric
    
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :numeric
     type_stack.push(@content_type)
   end
@@ -1246,8 +1264,8 @@ class BinaryOperatorPower < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a ^ #{a_type}") if
       a_type != :numeric
@@ -1255,6 +1273,9 @@ class BinaryOperatorPower < BinaryOperator
     raise(BASICExpressionError, "Bad expression ^ b #{b_type}") if
       b_type != :numeric
 
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :numeric
     type_stack.push(@content_type)
   end
@@ -1336,8 +1357,8 @@ class BinaryOperatorEqual < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a = #{a_type}") if
       a_type != :numeric
@@ -1345,6 +1366,9 @@ class BinaryOperatorEqual < BinaryOperator
     raise(BASICExpressionError, "Bad expression = b #{b_type}") if
       b_type != :numeric
 
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :boolean
     type_stack.push(@content_type)
   end
@@ -1426,8 +1450,8 @@ class BinaryOperatorNotEqual < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a <> #{a_type}") if
       a_type != :numeric
@@ -1435,6 +1459,9 @@ class BinaryOperatorNotEqual < BinaryOperator
     raise(BASICExpressionError, "Bad expression <> b #{b_type}") if
       b_type != :numeric
  
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :boolean
     type_stack.push(@content_type)
   end
@@ -1516,8 +1543,8 @@ class BinaryOperatorLess < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a < #{a_type}") if
       a_type != :numeric
@@ -1525,6 +1552,9 @@ class BinaryOperatorLess < BinaryOperator
     raise(BASICExpressionError, "Bad expression < b #{b_type}") if
       b_type != :numeric
 
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :boolean
     type_stack.push(@content_type)
   end
@@ -1606,8 +1636,8 @@ class BinaryOperatorLessEqual < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a <= #{a_type}") if
       a_type != :numeric
@@ -1615,6 +1645,9 @@ class BinaryOperatorLessEqual < BinaryOperator
     raise(BASICExpressionError, "Bad expression <= b #{b_type}") if
       b_type != :numeric
  
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :boolean
     type_stack.push(@content_type)
   end
@@ -1696,8 +1729,8 @@ class BinaryOperatorGreater < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a > #{a_type}") if
       a_type != :numeric
@@ -1705,6 +1738,9 @@ class BinaryOperatorGreater < BinaryOperator
     raise(BASICExpressionError, "Bad expression > b #{b_type}") if
       b_type != :numeric
 
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :boolean
     type_stack.push(@content_type)
   end
@@ -1786,8 +1822,8 @@ class BinaryOperatorGreaterEqual < BinaryOperator
   def set_content_type(type_stack)
     raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
-    a_type = type_stack.pop
     b_type = type_stack.pop
+    a_type = type_stack.pop
     
     raise(BASICExpressionError, "Bad expression a >= #{a_type}") if
       a_type != :numeric
@@ -1795,6 +1831,9 @@ class BinaryOperatorGreaterEqual < BinaryOperator
     raise(BASICExpressionError, "Bad expression >= b #{b_type}") if
       b_type != :numeric
 
+    @sigils = make_sigils([a_type, b_type])
+    @signature = make_signature([a_type, b_type])
+    
     @content_type = :boolean
     type_stack.push(@content_type)
   end

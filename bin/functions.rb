@@ -70,29 +70,6 @@ class AbstractFunction < AbstractElement
 
     arg
   end
-
-  def make_sigils(types)
-    sigil_chars = {
-      numeric: '_',
-      integer: '%',
-      string: '$',
-      boolean: '?'
-    }
-
-    sigils = []
-
-    types.each do |type|
-      sigils << sigil_chars[type]
-    end
-
-    sigils
-  end
-
-  def make_signature(types)
-    sigils = make_sigils(types)
-
-    '(' + sigils.join(',') + ')'
-  end
   
   def counts_to_text(counts)
     words = %w[zero one two]

@@ -50,7 +50,7 @@
 360 IF A <> 1 THEN 999
  Variable:A numeric scalar
  NumericConstant:1
- BinaryOperatorNotEqual:<> boolean scalar
+ BinaryOperatorNotEqual:<>(_,_) boolean scalar
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
@@ -79,35 +79,35 @@
  AssignmentOperator:=
 450 FOR I0=-1 TO 1
  control: Variable:I0 numeric scalar
- start:   ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
  end:     ["NumericConstant:1"]
 460 FOR J0=-1 TO 1
  control: Variable:J0 numeric scalar
- start:   ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
  Variable:I0 numeric scalar
  FunctionAbs:ABS(_) numeric scalar
  Variable:J0 numeric scalar
  FunctionAbs:ABS(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 480 IF B(I+I0,J+J0) = 0 THEN 500
  Variable:I numeric scalar
  Variable:I0 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:J numeric scalar
  Variable:J0 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:B numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 490 LET C = C + 1
  Variable:C numeric scalar
  Variable:C numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 500 NEXT J0
  Variable:J0 numeric scalar
@@ -144,19 +144,19 @@
  Variable:J numeric scalar
  Variable:N numeric scalar
  NumericConstant:2
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 640 IF N(I,J)=2 THEN 720
  Variable:I numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
  NumericConstant:2
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 650 IF N(I,J)=3 THEN 690
  Variable:I numeric scalar
  Variable:J numeric scalar
  Variable:N numeric scalar
  NumericConstant:3
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 660 REM * CELL DIES
  Remark:* CELL DIES
 670 LET B(I,J)=0

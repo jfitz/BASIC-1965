@@ -41,7 +41,7 @@
  Variable:Z numeric matrix
  Variable:Z numeric matrix
  Variable:P numeric matrix
- BinaryOperatorMinus:- numeric matrix
+ BinaryOperatorMinus:-(_,_) numeric matrix
  AssignmentOperator:=
 210 FOR I = 1 TO N
  control: Variable:I numeric scalar
@@ -99,7 +99,7 @@
  Variable:M numeric matrix
  Variable:M numeric matrix
  Variable:P numeric matrix
- BinaryOperatorMinus:- numeric matrix
+ BinaryOperatorMinus:-(_,_) numeric matrix
  AssignmentOperator:=
 340 FOR I = 1 TO N
  control: Variable:I numeric scalar
@@ -119,7 +119,7 @@
  NumericConstant:1
  Variable:J numeric scalar
  Variable:A numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 370 NEXT J
  Variable:J numeric scalar
@@ -149,11 +149,11 @@
  Variable:I numeric scalar
  Variable:J numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  NumericConstant:1
  Variable:J numeric scalar
  Variable:A numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 440 NEXT J
  Variable:J numeric scalar
@@ -172,7 +172,7 @@
  Variable:B numeric matrix
  Variable:A numeric matrix
  Variable:M numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
  TextConstant:"FIRST PASSAGE TIME IN EQUILIBRIUM"

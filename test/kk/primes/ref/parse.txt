@@ -33,20 +33,20 @@
  Variable:X numeric scalar
  Variable:P numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 40    IF N(X) < 0 THEN 90
  Variable:X numeric scalar
  Variable:N numeric scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 50    LET K = K+1
  Variable:K numeric scalar
  Variable:K numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 55    LET P(K) = P
  Variable:K numeric scalar
@@ -57,25 +57,25 @@
  Variable:P numeric scalar
  NumericConstant:2000
  FunctionSqr:SQR(_) numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I numeric scalar
  start:   ["Variable:P numeric scalar"]
  end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2", "Variable:P numeric scalar", "BinaryOperatorMultiply:* numeric scalar"]
+ step:    ["NumericConstant:2", "Variable:P numeric scalar", "BinaryOperatorMultiply:*(_,_) numeric scalar"]
 65       LET X = (I-1)/2
  Variable:X numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 70       LET N(X) = -1
  Variable:X numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
 80    NEXT I
  Variable:I numeric scalar

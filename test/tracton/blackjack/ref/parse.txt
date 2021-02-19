@@ -152,34 +152,34 @@
  CarriageControl:;
  Variable:P1 numeric scalar
  Variable:P2 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  CarriageControl:NL
 500 LET D = D1 + D2
  Variable:D numeric scalar
  Variable:D1 numeric scalar
  Variable:D2 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 510 LET P = P1 + P2
  Variable:P numeric scalar
  Variable:P1 numeric scalar
  Variable:P2 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 520 IF P = 21 THEN 640
  Variable:P numeric scalar
  NumericConstant:21
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 530 GOSUB 960
  LineNumber:960
 540 IF L = 1 THEN 690
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 550 IF D <= 16 THEN 740
  Variable:D numeric scalar
  NumericConstant:16
- BinaryOperatorLessEqual:<= boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) boolean scalar
 560 PRINT "THE DEALER HAS ";D
  TextConstant:"THE DEALER HAS "
  CarriageControl:;
@@ -193,7 +193,7 @@
 580 IF P > D THEN 620
  Variable:P numeric scalar
  Variable:D numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 590 REM WIN OR LOSS STATEMENTS
  Remark:WIN OR LOSS STATEMENTS
 600 PRINT "THE DEALER HAS WON!!!"
@@ -212,7 +212,7 @@
 650 IF D = 21 THEN 670
  Variable:D numeric scalar
  NumericConstant:21
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 660 GOTO 560
  LineNumber:560
 670 PRINT "THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
@@ -231,12 +231,12 @@
  Variable:P numeric scalar
  Variable:P numeric scalar
  Variable:C numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 720 IF P > 21 THEN 600
  Variable:P numeric scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 730 GOTO 530
  LineNumber:530
 740 PRINT "THE DEALER HAS ";D
@@ -250,7 +250,7 @@
  Variable:D numeric scalar
  Variable:D numeric scalar
  Variable:C numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 770 PRINT "THE DEALER DRAWS A ";C
  TextConstant:"THE DEALER DRAWS A "
@@ -265,11 +265,11 @@
 790 IF D > 21 THEN 620
  Variable:D numeric scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 800 IF D <= 17 THEN 750
  Variable:D numeric scalar
  NumericConstant:17
- BinaryOperatorLessEqual:<= boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) boolean scalar
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
@@ -277,9 +277,9 @@
  NumericConstant:1
  NumericConstant:11
  FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 830 IF C == 11 THEN 850
  Token 'OperatorToken:=' is not a value or operator
@@ -288,9 +288,9 @@
 850 IF D + C > 21 THEN 870
  Variable:D numeric scalar
  Variable:C numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
@@ -304,22 +304,22 @@
  NumericConstant:1
  NumericConstant:11
  FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 900 IF C = 11 THEN 920
  Variable:C numeric scalar
  NumericConstant:11
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 910 GOTO 950
  LineNumber:950
 920 IF P + C > 21 THEN 940
  Variable:P numeric scalar
  Variable:C numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:21
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 930 GOTO 950
  LineNumber:950
 940 LET C = 1

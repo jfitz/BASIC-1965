@@ -17,7 +17,7 @@
  Variable:Q numeric scalar
  Variable:A numeric scalar
  Variable:B numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 45 LET R = A - Q*B
@@ -25,8 +25,8 @@
  Variable:A numeric scalar
  Variable:Q numeric scalar
  Variable:B numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 50 LET A = B
  Variable:A numeric scalar
@@ -39,7 +39,7 @@
 60 IF R > 0 THEN 40
  Variable:R numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 70 PRINT A
  Variable:A numeric scalar
  CarriageControl:NL

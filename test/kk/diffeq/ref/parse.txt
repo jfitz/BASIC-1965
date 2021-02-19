@@ -4,11 +4,11 @@
  VariableName:Y
  Variable:X numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Y numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionSqr:SQR(_) numeric scalar
 20
 100 READ X0, X1, Y0, H
@@ -36,7 +36,7 @@
 160 FOR X = X0 TO X1-H STEP H
  control: Variable:X numeric scalar
  start:   ["Variable:X0 numeric scalar"]
- end:     ["Variable:X1 numeric scalar", "Variable:H numeric scalar", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:X1 numeric scalar", "Variable:H numeric scalar", "BinaryOperatorMinus:-(_,_) numeric scalar"]
  step:    ["Variable:H numeric scalar"]
 170 LET D1 = FNF(X,Y)
  Variable:D1 numeric scalar
@@ -53,18 +53,18 @@
  Variable:Y numeric scalar
  Variable:D1 numeric scalar
  Variable:H numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 200 LET D2 = FNF(X+H/2,Y)
  Variable:D2 numeric scalar
  Variable:X numeric scalar
  Variable:H numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:Y numeric scalar
  UserFunction:FNF(_,_) numeric scalar
  AssignmentOperator:=
@@ -73,13 +73,13 @@
  Variable:Y1 numeric scalar
  Variable:D2 numeric scalar
  Variable:H numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 220 PRINT X+H, Y
  Variable:X numeric scalar
  Variable:H numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  CarriageControl:,
  Variable:Y numeric scalar
  CarriageControl:NL

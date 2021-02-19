@@ -47,13 +47,13 @@
  Variable:K numeric scalar
  Variable:K numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 160 LET Q = A + B
  Variable:Q numeric scalar
  Variable:A numeric scalar
  Variable:B numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 170 PRINT K,Q
  Variable:K numeric scalar
@@ -71,7 +71,7 @@
 200 IF K > = N THEN 220
  Variable:K numeric scalar
  Variable:N numeric scalar
- BinaryOperatorGreaterEqual:>= boolean scalar
+ BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
 210 GOTO 150
  LineNumber:150
 220 PRINT "MAXIMUM NUMBER OF TERMS REACHED"
@@ -87,7 +87,7 @@
 260 IF L = 1 THEN 280
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 270 STOP
  
 280 PRINT

@@ -10,7 +10,7 @@
  FunctionLog:LOG(_) numeric scalar
  NumericConstant:10
  FunctionLog:LOG(_) numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
 110 READ A,B,S
  Variable:A numeric scalar
  Variable:B numeric scalar
@@ -23,14 +23,14 @@
  Variable:H numeric scalar
  Variable:D numeric scalar
  Variable:C numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:N numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 140 IF N <= 50 THEN 170
  Variable:N numeric scalar
  NumericConstant:50
- BinaryOperatorLessEqual:<= boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) boolean scalar
 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
  TextConstant:"ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
  CarriageControl:NL
@@ -41,7 +41,7 @@
  VariableName:X
  Variable:X numeric scalar
  NumericConstant:0.5
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
  TextConstant:"Y-AXIS:  FROM "
@@ -64,7 +64,7 @@
 210 FOR I = 1 TO N-1
  control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
 220 PRINT "-";
  TextConstant:"-"
  CarriageControl:;
@@ -87,9 +87,9 @@
  Variable:Y1 numeric scalar
  Variable:Y numeric scalar
  Variable:C numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:H numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  UserFunction:FNR(_) numeric scalar
  AssignmentOperator:=
 282 LET Y = FNG(X)
@@ -101,9 +101,9 @@
  Variable:Y2 numeric scalar
  Variable:Y numeric scalar
  Variable:C numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:H numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  UserFunction:FNR(_) numeric scalar
  AssignmentOperator:=
 290 FOR I = 0 TO N
@@ -113,11 +113,11 @@
 292 IF I = Y1 THEN 302
  Variable:I numeric scalar
  Variable:Y1 numeric scalar
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 294 IF I = Y2 THEN 304
  Variable:I numeric scalar
  Variable:Y2 numeric scalar
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 300 PRINT " ";
  TextConstant:" "
  CarriageControl:;
@@ -147,7 +147,7 @@
  NumericConstant:0.3
 350 DATA -1,1,50
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:1
  NumericConstant:50
 360 END

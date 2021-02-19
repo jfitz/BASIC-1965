@@ -27,44 +27,44 @@
 90 IF F <= 0 THEN 170
  Variable:F numeric scalar
  NumericConstant:0
- BinaryOperatorLessEqual:<= boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) boolean scalar
 100 LET A = A + 1
  Variable:A numeric scalar
  Variable:A numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 110 LET B = B + F
  Variable:B numeric scalar
  Variable:B numeric scalar
  Variable:F numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 120 LET G = X*F
  Variable:G numeric scalar
  Variable:X numeric scalar
  Variable:F numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 130 LET C = C + G
  Variable:C numeric scalar
  Variable:C numeric scalar
  Variable:G numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 140 LET E = (X^2)*F
  Variable:E numeric scalar
  Variable:X numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  Variable:F numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 150 LET D = D + E
  Variable:D numeric scalar
  Variable:D numeric scalar
  Variable:E numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 160 GOTO 70
  LineNumber:70
@@ -72,7 +72,7 @@
  Variable:H numeric scalar
  Variable:C numeric scalar
  Variable:B numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 180 LET I = SQR(D - (B*(H^2)))
  Variable:I numeric scalar
@@ -80,9 +80,9 @@
  Variable:B numeric scalar
  Variable:H numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  FunctionSqr:SQR(_) numeric scalar
  AssignmentOperator:=
 190 LET J = I/SQR(B)
@@ -90,7 +90,7 @@
  Variable:I numeric scalar
  Variable:B numeric scalar
  FunctionSqr:SQR(_) numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 200 PRINT
  CarriageControl:NL
@@ -124,7 +124,7 @@
 280 IF L = 1 THEN 300
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 290 STOP
  
 300 PRINT

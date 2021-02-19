@@ -13,17 +13,17 @@
  control: Variable:P numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
 30     FOR Q = 1 TO 0 STEP -1
  control: Variable:Q numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
 40         FOR R = 1 TO 0 STEP -1
  control: Variable:R numeric scalar
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
 50             LET X = P
  Variable:X numeric scalar
  Variable:P numeric scalar
@@ -47,9 +47,9 @@
  Variable:P numeric scalar
  Variable:Q numeric scalar
  Variable:R numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionSgn:SGN(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 110            GOSUB 200
  LineNumber:200
@@ -67,7 +67,7 @@
 200 IF X > 0 THEN 250
  Variable:X numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 210 PRINT "FALSE",
  TextConstant:"FALSE"
  CarriageControl:,

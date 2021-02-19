@@ -19,19 +19,19 @@
  Variable:N numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 80 LET X = X + W
  Variable:X numeric scalar
  Variable:X numeric scalar
  Variable:W numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 90 LET A = X/N
  Variable:A numeric scalar
  Variable:X numeric scalar
  Variable:N numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 100 PRINT "N = "; N, "SAMPLE ="; W,"CURRENT MEAN = ";A
  TextConstant:"N = "

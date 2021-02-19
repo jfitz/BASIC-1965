@@ -16,7 +16,7 @@
  Variable:C numeric scalar
  Variable:A numeric scalar
  Variable:B numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 80 PRINT "YEARLY DEPRECIATION = ";C
  TextConstant:"YEARLY DEPRECIATION = "
@@ -38,18 +38,18 @@
  Variable:X numeric scalar
  Variable:X numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 130 LET A = A - C
  Variable:A numeric scalar
  Variable:A numeric scalar
  Variable:C numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 140 IF A < 0 THEN 160
  Variable:A numeric scalar
  NumericConstant:0
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 150 GOTO 170
  LineNumber:170
 160 LET A = 0
@@ -64,7 +64,7 @@
 180 IF X < B THEN 120
  Variable:X numeric scalar
  Variable:B numeric scalar
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 190 PRINT "********************"
  TextConstant:"********************"
  CarriageControl:NL
@@ -76,7 +76,7 @@
 220 IF L = 1 THEN 240
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 230 STOP
  
 240 PRINT

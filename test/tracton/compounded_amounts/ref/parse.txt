@@ -34,10 +34,10 @@
  Variable:Y numeric scalar
  NumericConstant:1
  Variable:I numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 140 PRINT "FUTURE VALUE = ";X
  TextConstant:"FUTURE VALUE = "
@@ -57,10 +57,10 @@
  Variable:X numeric scalar
  NumericConstant:1
  Variable:I numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 200 PRINT "PRESENT VALUE = ";Y
  TextConstant:"PRESENT VALUE = "
@@ -81,11 +81,11 @@
  NumericConstant:1
  Variable:I numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 260 PRINT "INTEREST = ";L
  TextConstant:"INTEREST = "
@@ -104,13 +104,13 @@
  Variable:I numeric scalar
  Variable:X numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  NumericConstant:1
  Variable:N numeric scalar
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 320 PRINT "INTEREST RATE = ";I
  TextConstant:"INTEREST RATE = "
@@ -129,13 +129,13 @@
  Variable:N numeric scalar
  Variable:X numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionLog:LOG(_) numeric scalar
  NumericConstant:1
  Variable:I numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionLog:LOG(_) numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 380 PRINT "NUMBER OF TIME PERIODS = ";N
  TextConstant:"NUMBER OF TIME PERIODS = "
@@ -152,7 +152,7 @@
 402 IF L = 1 THEN 404
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 403 STOP
  
 404 PRINT

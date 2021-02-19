@@ -11,9 +11,9 @@
  NumericConstant:1
  NumericConstant:100
  FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 60 LET Y = 0
  Variable:Y numeric scalar
@@ -42,16 +42,16 @@
  Variable:Y numeric scalar
  Variable:Y numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 150 IF X = R THEN 180
  Variable:X numeric scalar
  Variable:R numeric scalar
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 160 IF X > R THEN 280
  Variable:X numeric scalar
  Variable:R numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 170 GOTO 300
  LineNumber:300
 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
@@ -75,7 +75,7 @@
 240 IF L = 1 THEN 260
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 250 STOP
  
 260 PRINT

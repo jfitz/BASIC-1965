@@ -36,9 +36,9 @@
  Variable:Y numeric scalar
  NumericConstant:2
  Variable:I numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:6
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 150 PRINT I,Y
  Variable:I numeric scalar
@@ -57,7 +57,7 @@
 200 IF L = 1 THEN 220
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 210 STOP
  
 220 PRINT

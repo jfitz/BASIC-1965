@@ -10,7 +10,7 @@
  Variable:S numeric matrix
  Variable:A numeric matrix
  Variable:B numeric matrix
- BinaryOperatorPlus:+ numeric matrix
+ BinaryOperatorPlus:+(_,_) numeric matrix
  AssignmentOperator:=
 140 PRINT "THE SUM"
  TextConstant:"THE SUM"
@@ -23,7 +23,7 @@
  Variable:D numeric matrix
  Variable:A numeric matrix
  Variable:B numeric matrix
- BinaryOperatorMinus:- numeric matrix
+ BinaryOperatorMinus:-(_,_) numeric matrix
  AssignmentOperator:=
 180 PRINT "THE DIFFERENCE"
  TextConstant:"THE DIFFERENCE"
@@ -36,9 +36,9 @@
  Variable:K numeric matrix
  NumericConstant:1
  NumericConstant:4
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  Variable:A numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 220 PRINT "SCALAR MULTIPLE"
  TextConstant:"SCALAR MULTIPLE"
@@ -57,13 +57,13 @@
 910 DATA 3, -2, 6, 2, -5, -1
  NumericConstant:3
  NumericConstant:2
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:6
  NumericConstant:2
  NumericConstant:5
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
 999 END
  
 

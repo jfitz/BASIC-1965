@@ -11,10 +11,10 @@
  Variable:A numeric scalar
  Variable:X numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
- UnaryOperatorMinus:- numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:2
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionExp:EXP(_) numeric scalar
  AssignmentOperator:=
 60 LET B = .398942
@@ -25,7 +25,7 @@
  Variable:C numeric scalar
  Variable:B numeric scalar
  Variable:A numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 80 PRINT "F(X) = ";C
  TextConstant:"F(X) = "
@@ -42,7 +42,7 @@
 120 IF L = 1 THEN 140
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 130 STOP
  
 140 PRINT

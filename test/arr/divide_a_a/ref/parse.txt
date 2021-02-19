@@ -19,9 +19,9 @@
  Variable:B numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 70 NEXT I
  Variable:I numeric scalar
@@ -29,7 +29,7 @@
  Variable:C numeric array
  Variable:A numeric array
  Variable:B numeric array
- BinaryOperatorDivide:/ numeric array
+ BinaryOperatorDivide:/(_,_) numeric array
  AssignmentOperator:=
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"

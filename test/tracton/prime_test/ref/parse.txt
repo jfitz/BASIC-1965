@@ -15,11 +15,11 @@
 60 IF N = 0 THEN 220
  Variable:N numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 70 IF N < 4 THEN 180
  Variable:N numeric scalar
  NumericConstant:4
- BinaryOperatorLess:< boolean scalar
+ BinaryOperatorLess:<(_,_) boolean scalar
 80 LET I = 0
  Variable:I numeric scalar
  NumericConstant:0
@@ -32,42 +32,42 @@
  Variable:J numeric scalar
  Variable:N numeric scalar
  Variable:T numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 110 LET K = J*T
  Variable:K numeric scalar
  Variable:J numeric scalar
  Variable:T numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 120 IF N = K THEN 200
  Variable:N numeric scalar
  Variable:K numeric scalar
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 130 LET I = I + 1
  Variable:I numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 140 LET L = T*T
  Variable:L numeric scalar
  Variable:T numeric scalar
  Variable:T numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 150 IF L > N THEN 180
  Variable:L numeric scalar
  Variable:N numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 160 LET T = (I*2) + 1
  Variable:T numeric scalar
  Variable:I numeric scalar
  NumericConstant:2
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 170 GOTO 100
  LineNumber:100

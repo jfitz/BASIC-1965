@@ -29,9 +29,9 @@
  VariableName:X
  NumericConstant:4
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:0.5
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
 170
 200 READ X,Y
@@ -40,7 +40,7 @@
 210 LET G(FNR(X*1.5),FNR(Y)) = 1
  Variable:X numeric scalar
  NumericConstant:1.5
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  UserFunction:FNR(_) numeric scalar
  Variable:Y numeric scalar
  UserFunction:FNR(_) numeric scalar
@@ -54,46 +54,46 @@
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:T9 numeric scalar", "Variable:P numeric scalar", "BinaryOperatorDivide:/ numeric scalar"]
+ end:     ["Variable:T9 numeric scalar", "Variable:P numeric scalar", "BinaryOperatorDivide:/(_,_) numeric scalar"]
  step:    ["Variable:T8 numeric scalar"]
 240 LET X = X + (A*X - B*X*Y)*T8
  Variable:X numeric scalar
  Variable:X numeric scalar
  Variable:A numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:B numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:T8 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Variable:Y numeric scalar
  Variable:Y numeric scalar
  Variable:C numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:D numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:T8 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 260 NEXT T
  Variable:T numeric scalar
 270 LET G(FNR(X*1.5),FNR(Y)) = 1
  Variable:X numeric scalar
  NumericConstant:1.5
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  UserFunction:FNR(_) numeric scalar
  Variable:Y numeric scalar
  UserFunction:FNR(_) numeric scalar
@@ -107,7 +107,7 @@
  control: Variable:J numeric scalar
  start:   ["NumericConstant:20"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:- numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
 310 FOR I = 1 TO 60
  control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
@@ -117,7 +117,7 @@
  Variable:J numeric scalar
  Variable:G numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 330 NEXT I
  Variable:I numeric scalar
 340 PRINT
@@ -133,7 +133,7 @@
  Variable:J numeric scalar
  Variable:G numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 380 PRINT " ";
  TextConstant:" "
  CarriageControl:;
@@ -144,14 +144,14 @@
  CarriageControl:;
 410 FOR K = I+1 TO 60
  control: Variable:K numeric scalar
- start:   ["Variable:I numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
+ start:   ["Variable:I numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) numeric scalar"]
  end:     ["NumericConstant:60"]
 420 IF G(K,J) > 0 THEN 450
  Variable:K numeric scalar
  Variable:J numeric scalar
  Variable:G numeric scalar
  NumericConstant:0
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 430 NEXT K
  Variable:K numeric scalar
 440 GOTO 460

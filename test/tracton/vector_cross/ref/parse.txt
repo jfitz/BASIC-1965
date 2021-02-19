@@ -20,31 +20,31 @@
  Variable:X numeric scalar
  Variable:A2 numeric scalar
  Variable:B3 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:A3 numeric scalar
  Variable:B2 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 80 LET Y = (A3*B1) - (A1*B3)
  Variable:Y numeric scalar
  Variable:A3 numeric scalar
  Variable:B1 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:A1 numeric scalar
  Variable:B3 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 90 LET Z = (A1*B2) - (A2*B1)
  Variable:Z numeric scalar
  Variable:A1 numeric scalar
  Variable:B2 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:A2 numeric scalar
  Variable:B1 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 100 PRINT "VECTOR CROSS PRODUCT"
  TextConstant:"VECTOR CROSS PRODUCT"
@@ -73,7 +73,7 @@
 150 IF L = 1 THEN 170
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 160 STOP
  
 170 PRINT

@@ -18,7 +18,7 @@
  Variable:A numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 60 NEXT J
  Variable:J numeric scalar
@@ -28,7 +28,7 @@
  Variable:B numeric matrix
  NumericConstant:2
  Variable:A numeric matrix
- BinaryOperatorPower:^ numeric matrix
+ BinaryOperatorPower:^(_,_) numeric matrix
  AssignmentOperator:=
 110 PRINT "MATRIX A"
  TextConstant:"MATRIX A"

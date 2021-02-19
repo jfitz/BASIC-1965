@@ -17,9 +17,9 @@
  Variable:K numeric scalar
  NumericConstant:2
  Variable:I numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:1
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 50 LET S = S + F*X^K/K
  Variable:S numeric scalar
@@ -27,16 +27,16 @@
  Variable:F numeric scalar
  Variable:X numeric scalar
  Variable:K numeric scalar
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:K numeric scalar
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 60 LET F = -F
  Variable:F numeric scalar
  Variable:F numeric scalar
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
 70 NEXT I
  Variable:I numeric scalar
@@ -69,7 +69,7 @@
  NumericConstant:0.5
  NumericConstant:10
  NumericConstant:0.75
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:10
  NumericConstant:0.99
  NumericConstant:10

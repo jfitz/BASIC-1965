@@ -47,45 +47,45 @@
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:T9 numeric scalar", "Variable:P numeric scalar", "BinaryOperatorDivide:/ numeric scalar"]
+ end:     ["Variable:T9 numeric scalar", "Variable:P numeric scalar", "BinaryOperatorDivide:/(_,_) numeric scalar"]
  step:    ["Variable:T8 numeric scalar"]
 240 LET X = X + (A*X - B*X*Y)*T8
  Variable:X numeric scalar
  Variable:X numeric scalar
  Variable:A numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:B numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:T8 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Variable:Y numeric scalar
  Variable:Y numeric scalar
  Variable:C numeric scalar
  Variable:X numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:D numeric scalar
  Variable:Y numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:T8 numeric scalar
- BinaryOperatorMultiply:* numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 255 LET T1 = T1 + T8
  Variable:T1 numeric scalar
  Variable:T1 numeric scalar
  Variable:T8 numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 260 NEXT T
  Variable:T numeric scalar

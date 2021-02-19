@@ -26,19 +26,19 @@
  Variable:K numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 90 LET C = 1/K
  Variable:C numeric scalar
  NumericConstant:1
  Variable:K numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 100 LET D = D + C
  Variable:D numeric scalar
  Variable:D numeric scalar
  Variable:C numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 110 PRINT K,D
  Variable:K numeric scalar

@@ -19,7 +19,7 @@
  Variable:Z numeric scalar
  Variable:Z numeric scalar
  Variable:I numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 80 NEXT I
  Variable:I numeric scalar
@@ -40,7 +40,7 @@
 120 IF L = 1 THEN 140
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 130 STOP
  
 140 PRINT

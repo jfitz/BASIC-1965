@@ -44,7 +44,7 @@
  Variable:K numeric scalar
  Variable:T numeric scalar
  NumericConstant:1
- UnaryOperatorPlus:+ numeric scalar
+ UnaryOperatorPlus:+(_) numeric scalar
  AssignmentOperator:=
 280 NEXT K
  Variable:K numeric scalar
@@ -55,7 +55,7 @@
 300    LET Z(M+K) = Y(K)
  Variable:M numeric scalar
  Variable:K numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:Z numeric scalar
  Variable:K numeric scalar
  Variable:Y numeric scalar
@@ -63,7 +63,7 @@
 310    LET T(M+K) = 0
  Variable:M numeric scalar
  Variable:K numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:T numeric scalar
  NumericConstant:0
  AssignmentOperator:=
@@ -73,17 +73,17 @@
 360 FOR K = 1 TO M+N-1
  control: Variable:K numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+ numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+(_,_) numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
 370    FOR L = K+1 TO M+N
  control: Variable:L numeric scalar
- start:   ["Variable:K numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+ numeric scalar"]
- end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+ numeric scalar"]
+ start:   ["Variable:K numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) numeric scalar"]
+ end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+(_,_) numeric scalar"]
 380       IF Z(K) <= Z(L) THEN 450
  Variable:K numeric scalar
  Variable:Z numeric scalar
  Variable:L numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorLessEqual:<= boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) boolean scalar
 390       LET T = Z(K)
  Variable:T numeric scalar
  Variable:K numeric scalar
@@ -141,44 +141,44 @@
  Variable:J numeric scalar
  Variable:J numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 550 IF J > M+N THEN 600
  Variable:J numeric scalar
  Variable:M numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 560 IF Z(J) > Z(B) THEN 600
  Variable:J numeric scalar
  Variable:Z numeric scalar
  Variable:B numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorGreater:> boolean scalar
+ BinaryOperatorGreater:>(_,_) boolean scalar
 570 LET T = T+J
  Variable:T numeric scalar
  Variable:T numeric scalar
  Variable:J numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 580 LET K = K+1
  Variable:K numeric scalar
  Variable:K numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 590 GO TO 540
  LineNumber:540
 600 FOR L = B TO J-1
  control: Variable:L numeric scalar
  start:   ["Variable:B numeric scalar"]
- end:     ["Variable:J numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:J numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
 610    LET Z(L) = T/K
  Variable:L numeric scalar
  Variable:Z numeric scalar
  Variable:T numeric scalar
  Variable:K numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 620 NEXT L
  Variable:L numeric scalar
@@ -186,8 +186,8 @@
  Variable:J numeric scalar
  Variable:M numeric scalar
  Variable:N numeric scalar
- BinaryOperatorPlus:+ numeric scalar
- BinaryOperatorLessEqual:<= boolean scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorLessEqual:<=(_,_) boolean scalar
 640
 740 LET S(0) = 0
  NumericConstant:0
@@ -202,7 +202,7 @@
 760 FOR K = 1 TO M+N
  control: Variable:K numeric scalar
  start:   ["NumericConstant:1"]
- end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+ numeric scalar"]
+ end:     ["Variable:M numeric scalar", "Variable:N numeric scalar", "BinaryOperatorPlus:+(_,_) numeric scalar"]
 770    LET S(T(K)) = S(T(K)) + Z(K)
  Variable:K numeric scalar
  Variable:T numeric scalar
@@ -212,7 +212,7 @@
  Variable:S numeric scalar
  Variable:K numeric scalar
  Variable:Z numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 790 NEXT K
  Variable:K numeric scalar

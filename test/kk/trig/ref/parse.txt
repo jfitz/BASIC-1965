@@ -7,9 +7,9 @@
  VariableName:X
  Variable:X numeric scalar
  Variable:P numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
 30 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS
  VariableName:X

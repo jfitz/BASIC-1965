@@ -14,9 +14,9 @@
  Variable:W numeric scalar
  Variable:W numeric scalar
  NumericConstant:3.14159
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:180
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 70 PRINT "MAGNITUDE R = ";
  TextConstant:"MAGNITUDE R = "
@@ -28,14 +28,14 @@
  Variable:R numeric scalar
  Variable:W numeric scalar
  FunctionCos:COS(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 100 LET Y = R*SIN(W)
  Variable:Y numeric scalar
  Variable:R numeric scalar
  Variable:W numeric scalar
  FunctionSin:SIN(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 110 PRINT "RECTANGULAR COORDINATES"
  TextConstant:"RECTANGULAR COORDINATES"
@@ -59,7 +59,7 @@
 160 IF L = 1 THEN 180
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 170 STOP
  
 180 PRINT

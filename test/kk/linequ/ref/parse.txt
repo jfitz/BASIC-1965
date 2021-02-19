@@ -29,7 +29,7 @@
  Variable:X numeric matrix
  Variable:C numeric matrix
  Variable:B numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 180
 190 MAT PRINT X
@@ -41,20 +41,20 @@
 220 DATA 2, -4, 3
  NumericConstant:2
  NumericConstant:4
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:3
 230 DATA 3, 0, -1
  NumericConstant:3
  NumericConstant:0
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
 240 DATA 2, 5, 1
  NumericConstant:2
  NumericConstant:5
  NumericConstant:1
 250 DATA -9, 4, 11
  NumericConstant:9
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:4
  NumericConstant:11
 999 END

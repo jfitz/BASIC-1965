@@ -141,6 +141,31 @@ class AbstractElement
   end
 
   def pop_stack(stack); end
+
+  private
+  
+  def make_sigils(types)
+    sigil_chars = {
+      numeric: '_',
+      integer: '%',
+      string: '$',
+      boolean: '?'
+    }
+
+    sigils = []
+
+    types.each do |type|
+      sigils << sigil_chars[type]
+    end
+
+    sigils
+  end
+
+  def make_signature(types)
+    sigils = make_sigils(types)
+
+    '(' + sigils.join(',') + ')'
+  end
 end
 
 # beginning of a group

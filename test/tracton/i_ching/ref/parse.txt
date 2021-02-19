@@ -21,18 +21,18 @@
  Variable:M numeric scalar
  Variable:D numeric scalar
  NumericConstant:30
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:Y numeric scalar
  NumericConstant:100
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:H numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  Variable:M1 numeric scalar
  NumericConstant:60
- BinaryOperatorDivide:/ numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 80 FOR I = 1 TO 6
  control: Variable:I numeric scalar
@@ -43,14 +43,14 @@
  Variable:N numeric scalar
  NumericConstant:0
  FunctionRnd:RND(_) numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 100 LET K = K - INT(K)
  Variable:K numeric scalar
  Variable:K numeric scalar
  Variable:K numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 110 LET C(I) = 1 + INT(2*K)
  Variable:I numeric scalar
@@ -58,9 +58,9 @@
  NumericConstant:1
  NumericConstant:2
  Variable:K numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 120 NEXT I
  Variable:I numeric scalar
@@ -72,7 +72,7 @@
  Variable:I numeric scalar
  Variable:C numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 150 PRINT "---"
  TextConstant:"---"
  CarriageControl:NL

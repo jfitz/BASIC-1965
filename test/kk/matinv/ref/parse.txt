@@ -60,13 +60,13 @@
  Variable:R numeric matrix
  Variable:A numeric matrix
  Variable:B numeric matrix
- BinaryOperatorMultiply:* numeric matrix
+ BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 410 MAT R = R-C
  Variable:R numeric matrix
  Variable:R numeric matrix
  Variable:C numeric matrix
- BinaryOperatorMinus:- numeric matrix
+ BinaryOperatorMinus:-(_,_) numeric matrix
  AssignmentOperator:=
 420 PRINT "ROUNDOFF ERRORS"
  TextConstant:"ROUNDOFF ERRORS"

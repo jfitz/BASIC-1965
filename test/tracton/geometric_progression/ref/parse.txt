@@ -25,7 +25,7 @@
 110 IF C = 1 THEN 130
  Variable:C numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 120 GOTO 160
  LineNumber:160
 130 PRINT
@@ -45,31 +45,31 @@
 170 FOR I = 0 TO N - 1
  control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
- end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:- numeric scalar"]
+ end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
 180 LET K = I + 1
  Variable:K numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 190 LET L = A*(R^I)
  Variable:L numeric scalar
  Variable:A numeric scalar
  Variable:R numeric scalar
  Variable:I numeric scalar
- BinaryOperatorPower:^ numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 200 LET J = J + L
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:L numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 210 IF C = 1 THEN 230
  Variable:C numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 220 GOTO 240
  LineNumber:240
 230 PRINT K,L
@@ -94,7 +94,7 @@
 290 IF X = 1 THEN 310
  Variable:X numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 300 STOP
  
 310 PRINT

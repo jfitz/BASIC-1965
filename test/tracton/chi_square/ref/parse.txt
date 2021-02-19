@@ -21,22 +21,22 @@
 90 IF E = 0 THEN 130
  Variable:E numeric scalar
  NumericConstant:0
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 100 LET K = ((D - E)^2)/E
  Variable:K numeric scalar
  Variable:D numeric scalar
  Variable:E numeric scalar
- BinaryOperatorMinus:- numeric scalar
+ BinaryOperatorMinus:-(_,_) numeric scalar
  NumericConstant:2
- BinaryOperatorPower:^ numeric scalar
+ BinaryOperatorPower:^(_,_) numeric scalar
  Variable:E numeric scalar
- BinaryOperatorDivide:/ numeric scalar
+ BinaryOperatorDivide:/(_,_) numeric scalar
  AssignmentOperator:=
 110 LET J = J + K
  Variable:J numeric scalar
  Variable:J numeric scalar
  Variable:K numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 120 GOTO 50
  LineNumber:50
@@ -56,7 +56,7 @@
 170 IF L = 1 THEN 190
  Variable:L numeric scalar
  NumericConstant:1
- BinaryOperatorEqual:= boolean scalar
+ BinaryOperatorEqual:=(_,_) boolean scalar
 180 STOP
  
 190 PRINT
