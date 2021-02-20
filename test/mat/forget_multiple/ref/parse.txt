@@ -17,7 +17,7 @@
 23 LET A(I,J) = I*J
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_,_) numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
@@ -41,7 +41,7 @@
 33 LET B(I,J) = I/J
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
  BinaryOperatorDivide:/(_,_) numeric scalar
@@ -51,19 +51,19 @@
 35 NEXT I
  Variable:I numeric scalar
 40 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 41 MAT PRINT B
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:NL
 50 MAT FORGET A,B
  Variable:A numeric matrix
  Variable:B numeric matrix
 90 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 91 MAT PRINT B
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:NL
 99 END
  

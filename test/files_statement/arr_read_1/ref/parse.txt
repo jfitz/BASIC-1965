@@ -7,10 +7,10 @@
  TextConstant:"input.txt"
 30 ARR READ #1;A
  NumericConstant:1
- UnaryOperatorHash:# filehandle scalar
- Variable:A numeric array
+ UnaryOperatorHash:#(_) filehandle scalar
+ Variable:A() numeric array
 40 ARR PRINT A
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:NL
 90 STOP
  

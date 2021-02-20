@@ -24,31 +24,31 @@
  Variable:N numeric scalar
  Variable:V numeric scalar
 130 MAT C = ZER(N,N)
- Variable:C numeric matrix
+ Variable:C(,) numeric matrix
  Variable:N numeric scalar
  Variable:N numeric scalar
  FunctionZer2:ZER(_,_) numeric matrix
  AssignmentOperator:=
 150 MAT B = ZER(N)
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  Variable:N numeric scalar
  FunctionZer2:ZER(_) numeric matrix
  AssignmentOperator:=
 170 LET C(1,1) = 1
  NumericConstant:1
  NumericConstant:1
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 180 LET C(N,N) = 1
  Variable:N numeric scalar
  Variable:N numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 190 LET B(1) = V
  NumericConstant:1
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  Variable:V numeric scalar
  AssignmentOperator:=
 200
@@ -64,7 +64,7 @@
 230 LET C(I,J) = 1/R
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  NumericConstant:1
  Variable:R numeric scalar
  BinaryOperatorDivide:/(_,_) numeric scalar
@@ -72,7 +72,7 @@
 240 LET C(J,I) = 1/R
  Variable:J numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  NumericConstant:1
  Variable:R numeric scalar
  BinaryOperatorDivide:/(_,_) numeric scalar
@@ -97,7 +97,7 @@
  Variable:S numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 310    NEXT J
@@ -105,34 +105,34 @@
 320    LET C(I,I) = -S
  Variable:I numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  Variable:S numeric scalar
  UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
 330    LET C(1,I) = 0
  NumericConstant:1
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 340    LET C(N,I) = 0
  Variable:N numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 350 NEXT I
  Variable:I numeric scalar
 360
 370 MAT U = INV(C)
- Variable:U numeric matrix
- Variable:C numeric matrix
+ Variable:U(,) numeric matrix
+ Variable:C(,) numeric matrix
  FunctionInv:INV(_) numeric matrix
  AssignmentOperator:=
 380 MAT P = U*B
- Variable:P numeric matrix
- Variable:U numeric matrix
- Variable:B numeric matrix
+ Variable:P(,) numeric matrix
+ Variable:U(,) numeric matrix
+ Variable:B(,) numeric matrix
  BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 390
@@ -151,7 +151,7 @@
  Variable:I numeric scalar
  CarriageControl:,
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  UserFunction:FNR(_) numeric scalar
  CarriageControl:NL
 440 NEXT I
@@ -186,11 +186,11 @@
 540       PRINT FNR(C(I,J)*(P(I)-P(J))),
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  Variable:J numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
  UserFunction:FNR(_) numeric scalar
@@ -202,11 +202,11 @@
  Variable:S1 numeric scalar
  Variable:I numeric scalar
  Variable:N numeric scalar
- Variable:C numeric scalar
+ Variable:C(_,_) numeric scalar
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  Variable:N numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar

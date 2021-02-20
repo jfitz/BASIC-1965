@@ -17,19 +17,19 @@
 240 LET B(4,4)=1
  NumericConstant:4
  NumericConstant:4
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 241 LET B(4,5)=1
  NumericConstant:4
  NumericConstant:5
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 242 LET B(4,6)=1
  NumericConstant:4
  NumericConstant:6
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 300 REM *** DISPLAY BOARD
@@ -38,7 +38,7 @@
  TextConstant:"********************"
  CarriageControl:NL
 320 MAT PRINT B;
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:;
 330 PRINT "********************"
  TextConstant:"********************"
@@ -54,7 +54,7 @@
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
- Variable:N numeric matrix
+ Variable:N(,) numeric matrix
  NumericConstant:10
  NumericConstant:10
  FunctionZer2:ZER(_,_) numeric matrix
@@ -100,7 +100,7 @@
  Variable:J numeric scalar
  Variable:J0 numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) boolean scalar
 490 LET C = C + 1
@@ -116,7 +116,7 @@
 512 LET N(I,J)=C
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:N numeric scalar
+ Variable:N(_,_) numeric scalar
  Variable:C numeric scalar
  AssignmentOperator:=
 520 NEXT J
@@ -142,19 +142,19 @@
 630 IF N(I,J)<2 THEN 660
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:N numeric scalar
+ Variable:N(_,_) numeric scalar
  NumericConstant:2
  BinaryOperatorLess:<(_,_) boolean scalar
 640 IF N(I,J)=2 THEN 720
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:N numeric scalar
+ Variable:N(_,_) numeric scalar
  NumericConstant:2
  BinaryOperatorEqual:=(_,_) boolean scalar
 650 IF N(I,J)=3 THEN 690
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:N numeric scalar
+ Variable:N(_,_) numeric scalar
  NumericConstant:3
  BinaryOperatorEqual:=(_,_) boolean scalar
 660 REM * CELL DIES
@@ -162,7 +162,7 @@
 670 LET B(I,J)=0
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 680 GOTO 730
@@ -172,7 +172,7 @@
 700 LET B(I,J)=1
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 710 GOTO 730

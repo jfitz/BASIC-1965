@@ -27,10 +27,10 @@
  step:    ["Variable:I numeric scalar"]
 150 LET L(J) = 1 - L(J)
  Variable:J numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  NumericConstant:1
  Variable:J numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 160 NEXT J
@@ -48,7 +48,7 @@
  end:     ["Variable:N numeric scalar"]
 330 IF L(I) = 0 THEN 350
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) boolean scalar
 340 PRINT I;

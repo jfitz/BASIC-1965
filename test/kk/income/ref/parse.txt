@@ -4,7 +4,7 @@
  end:     ["NumericConstant:5"]
 20 LET N(D) = 0
  Variable:D numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 30 NEXT D
@@ -24,9 +24,9 @@
  AssignmentOperator:=
 70 LET N(D) = N(D) + 1
  Variable:D numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  Variable:D numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
@@ -58,7 +58,7 @@
  BinaryOperatorMultiply:*(_,_) numeric scalar
  CarriageControl:,
  Variable:D numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  CarriageControl:NL
 140 NEXT D
  Variable:D numeric scalar

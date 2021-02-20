@@ -13,18 +13,18 @@
  end:     ["NumericConstant:10"]
 22 LET A(I) = I
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:I numeric scalar
  AssignmentOperator:=
 23 NEXT I
  Variable:I numeric scalar
 30 ARR PRINT A
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:NL
 40 ARR FORGET B
  Variable:B numeric array
 90 ARR PRINT A
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:NL
 99 END
  

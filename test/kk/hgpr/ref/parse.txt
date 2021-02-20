@@ -10,14 +10,14 @@
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
  Variable:I numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
  Variable:I numeric scalar
 25 LET P(0) = 2
  NumericConstant:0
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  NumericConstant:2
  AssignmentOperator:=
 26 LET K = 0
@@ -39,7 +39,7 @@
  AssignmentOperator:=
 40    IF N(X) < 0 THEN 90
  Variable:X numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  BinaryOperatorLess:<(_,_) boolean scalar
 50    LET K = K+1
@@ -50,7 +50,7 @@
  AssignmentOperator:=
 55    LET P(K) = P
  Variable:K numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  Variable:P numeric scalar
  AssignmentOperator:=
 56    IF P > SQR(2000) THEN 90
@@ -73,7 +73,7 @@
  AssignmentOperator:=
 70       LET N(X) = -1
  Variable:X numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
@@ -118,7 +118,7 @@
  end:     ["NumericConstant:1000"]
 206    LET N(I) = 0
  Variable:I numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 207 NEXT I
@@ -130,7 +130,7 @@
 220    LET F = P(I)
  Variable:F numeric scalar
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  AssignmentOperator:=
 230    GOSUB 800
  LineNumber:800
@@ -145,7 +145,7 @@
  step:    ["Variable:F numeric scalar"]
 250       LET N(J) = -1
  Variable:J numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
@@ -172,7 +172,7 @@
  BinaryOperatorGreater:>(_,_) boolean scalar
 440    LET N(Z) = -1
  Variable:Z numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
@@ -205,7 +205,7 @@
  end:     ["NumericConstant:999"]
 710    IF N(I) < 0 THEN 730
  Variable:I numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  BinaryOperatorLess:<(_,_) boolean scalar
 720    PRINT 2*I + 1;
@@ -249,14 +249,14 @@
  end:     ["NumericConstant:998"]
 760    IF N(I) < 0 THEN 780
  Variable:I numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  BinaryOperatorLess:<(_,_) boolean scalar
 765    IF N(I+1) < 0 THEN 780
  Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  BinaryOperatorLess:<(_,_) boolean scalar
 770    PRINT 2*I+1, 2*I+3

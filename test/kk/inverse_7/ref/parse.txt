@@ -11,7 +11,7 @@
 40 LET P(I,J) = I*J - INT(I*J/N)*N
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:P numeric scalar
+ Variable:P(_,_) numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
@@ -40,7 +40,7 @@
 90 IF P(I,J) = 1 THEN 140
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:P numeric scalar
+ Variable:P(_,_) numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) boolean scalar
 100 NEXT J

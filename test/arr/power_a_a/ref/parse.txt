@@ -11,27 +11,27 @@
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:I numeric scalar
  AssignmentOperator:=
 52 LET B(I) = I
  Variable:I numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  Variable:I numeric scalar
  AssignmentOperator:=
 70 NEXT I
  Variable:I numeric scalar
 100 ARR C = A ^ B
- Variable:C numeric array
- Variable:A numeric array
- Variable:B numeric array
+ Variable:C() numeric array
+ Variable:A() numeric array
+ Variable:B() numeric array
  BinaryOperatorPower:^(_,_) numeric array
  AssignmentOperator:=
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
 120 ARR PRINT A;
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:;
 122 PRINT
  CarriageControl:NL
@@ -39,7 +39,7 @@
  TextConstant:"ARRAY B"
  CarriageControl:NL
 140 ARR PRINT B;
- Variable:B numeric array
+ Variable:B() numeric array
  CarriageControl:;
 142 PRINT
  CarriageControl:NL
@@ -47,7 +47,7 @@
  TextConstant:"ARRAY C"
  CarriageControl:NL
 160 ARR PRINT C;
- Variable:C numeric array
+ Variable:C() numeric array
  CarriageControl:;
 162 PRINT
  CarriageControl:NL

@@ -17,7 +17,7 @@
 23 LET A(I,J) = I*J
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_,_) numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
@@ -27,12 +27,12 @@
 25 NEXT I
  Variable:I numeric scalar
 30 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 40 MAT FORGET A
  Variable:A numeric matrix
 90 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 99 END
  

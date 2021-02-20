@@ -19,9 +19,9 @@
  end:     ["Variable:L numeric scalar"]
 140      LET A(I) = C(I)
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  AssignmentOperator:=
 150  NEXT I
  Variable:I numeric scalar
@@ -44,9 +44,9 @@
  end:     ["Variable:L numeric scalar"]
 240      LET B(I) = C(I)
  Variable:I numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  AssignmentOperator:=
 250  NEXT I
  Variable:I numeric scalar
@@ -74,7 +74,7 @@
  end:     ["Variable:L numeric scalar"]
 330      LET C(I) = 0
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 340  NEXT I
@@ -95,13 +95,13 @@
  AssignmentOperator:=
 380          LET C(I) = C(I) + A(J)*B(K)
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:K numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
@@ -121,7 +121,7 @@
  end:     ["Variable:L numeric scalar"]
 440  LET A(I) = 0
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 450  NEXT I
@@ -132,11 +132,11 @@
  end:     ["Variable:L numeric scalar"]
 510      LET C(I) = A(I) + B(I)
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:I numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 520  NEXT I
@@ -159,10 +159,10 @@
  end:     ["NumericConstant:100"]
 1020     READ X(I)
  Variable:I numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
 1030     IF X(I) < 0 THEN 1100
  Variable:I numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  NumericConstant:0
  BinaryOperatorLess:<(_,_) boolean scalar
 1040 NEXT I
@@ -181,11 +181,11 @@
  end:     ["Variable:L numeric scalar"]
 1120     LET C(I) = X(L-I)
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:L numeric scalar
  Variable:I numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  AssignmentOperator:=
 1130 NEXT I
  Variable:I numeric scalar
@@ -201,7 +201,7 @@
  Remark:PRINT A NUMBER C
 2010 IF C(L) >= 100 THEN 2200
  Variable:L numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:100
  BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
 2020 PRINT "      ";
@@ -209,7 +209,7 @@
  CarriageControl:;
 2030 IF C(L) >= 10 THEN 2100
  Variable:L numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:10
  BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
 2040 PRINT "      ";
@@ -217,7 +217,7 @@
  CarriageControl:;
 2050 PRINT C(L); ",   ";
  Variable:L numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  CarriageControl:;
  TextConstant:",   "
  CarriageControl:;
@@ -232,16 +232,16 @@
 2100 LET M = INT(C(K)/10)
  Variable:M numeric scalar
  Variable:K numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:10
  BinaryOperatorDivide:/(_,_) numeric scalar
  FunctionInt:INT(_) numeric scalar
  AssignmentOperator:=
 2110 LET C(L) = C(L) - 10*M
  Variable:L numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:L numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:10
  Variable:M numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
@@ -264,7 +264,7 @@
 2220     LET N = C(I)
  Variable:N numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  AssignmentOperator:=
 2230     LET Q = 100
  Variable:Q numeric scalar
@@ -322,7 +322,7 @@
  Variable:L numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 3020 FOR I = 0 TO L
@@ -332,7 +332,7 @@
 3030     LET N = C(I)
  Variable:N numeric scalar
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  AssignmentOperator:=
 3040     LET M = INT(N/1000)
  Variable:M numeric scalar
@@ -343,7 +343,7 @@
  AssignmentOperator:=
 3050     LET C(I) = N - 1000*M
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:N numeric scalar
  NumericConstant:1000
  Variable:M numeric scalar
@@ -354,11 +354,11 @@
  Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:I numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:M numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=

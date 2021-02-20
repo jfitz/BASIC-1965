@@ -25,14 +25,14 @@
  end:     ["NumericConstant:5"]
 120 READ A(I)
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
 140 NEXT I
  Variable:I numeric scalar
 150 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A;
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:;
 162 PRINT
  CarriageControl:NL
@@ -42,28 +42,28 @@
  end:     ["NumericConstant:5"]
 220 READ B(I)
  Variable:I numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
 240 NEXT I
  Variable:I numeric scalar
 250 PRINT "ARRAY B"
  TextConstant:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B;
- Variable:B numeric array
+ Variable:B() numeric array
  CarriageControl:;
 262 PRINT
  CarriageControl:NL
 300 ARR C = A*B
- Variable:C numeric array
- Variable:A numeric array
- Variable:B numeric array
+ Variable:C() numeric array
+ Variable:A() numeric array
+ Variable:B() numeric array
  BinaryOperatorMultiply:*(_,_) numeric array
  AssignmentOperator:=
 310 PRINT "ARRAY C"
  TextConstant:"ARRAY C"
  CarriageControl:NL
 320 ARR PRINT C;
- Variable:C numeric array
+ Variable:C() numeric array
  CarriageControl:;
 322 PRINT
  CarriageControl:NL

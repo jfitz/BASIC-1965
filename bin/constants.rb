@@ -1212,15 +1212,28 @@ class Variable < AbstractElement
   end
 
   def set_content_type(type_stack)
-    type = type_stack[-1]
-    type_stack.pop if type.class.to_s == 'Array'
+    unless type_stack.empty?
+      types = type_stack[-1]
+
+      if types.class.to_s == 'Array'
+        type_stack.pop
+
+        @sigils = make_sigils(types)
+        @signature = make_signature(types)
+      end
+    end
 
     type_stack.push(content_type)
   end
 
   def set_shape(shape_stack)
-    my_shape = shape_stack[-1]
-    shape_stack.pop if my_shape.class.to_s == 'Array'
+    unless shape_stack.empty?
+      shapes = shape_stack[-1]
+      shape_stack.pop if shapes.class.to_s == 'Array'
+    end
+
+    @signature = '()' if @shape == :array
+    @signature = '(,)' if @shape == :matrix
 
     shape_stack.push(@shape)
   end
@@ -1238,7 +1251,7 @@ class Variable < AbstractElement
   end
 
   def dump
-    "#{self.class}:#{@variable_name} #{content_type} #{@shape}"
+    "#{self.class}:#{@variable_name}#{@signature} #{content_type} #{@shape}"
   end
 
   def name
@@ -1251,10 +1264,6 @@ class Variable < AbstractElement
 
   def dimensions
     @subscripts
-  end
-
-  def content_type
-    @variable_name.content_type
   end
 
   def compatible?(value)

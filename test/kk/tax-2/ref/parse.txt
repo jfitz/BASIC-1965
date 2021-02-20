@@ -29,7 +29,7 @@
  end:     ["Variable:Y1 numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
 120       LET D(I) = A1*2/Y
  Variable:I numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:A1 numeric scalar
  NumericConstant:2
  BinaryOperatorMultiply:*(_,_) numeric scalar
@@ -40,7 +40,7 @@
  Variable:A1 numeric scalar
  Variable:A1 numeric scalar
  Variable:I numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 150    NEXT I
@@ -61,7 +61,7 @@
  end:     ["Variable:Y numeric scalar"]
 180       LET D(I) = D
  Variable:I numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:D numeric scalar
  AssignmentOperator:=
 190    NEXT I
@@ -78,7 +78,7 @@
  Variable:S numeric scalar
  Variable:S numeric scalar
  Variable:I numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:T numeric scalar
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) numeric scalar

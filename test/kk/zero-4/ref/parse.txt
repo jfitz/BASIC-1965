@@ -29,22 +29,22 @@
  NumericConstant:1
  Variable:S numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  Variable:A numeric scalar
  AssignmentOperator:=
 28 LET X(1-S) = B
  NumericConstant:1
  Variable:S numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  Variable:B numeric scalar
  AssignmentOperator:=
 30 LET X = (X(0)+X(2))/2
  Variable:X numeric scalar
  NumericConstant:0
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  NumericConstant:2
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) numeric scalar
@@ -63,21 +63,21 @@
  NumericConstant:1
  Variable:F numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  Variable:X numeric scalar
  AssignmentOperator:=
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericConstant:0
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  NumericConstant:2
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  FunctionAbs:ABS(_) numeric scalar
  NumericConstant:0
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  FunctionAbs:ABS(_) numeric scalar
  NumericConstant:2
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  FunctionAbs:ABS(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  BinaryOperatorDivide:/(_,_) numeric scalar

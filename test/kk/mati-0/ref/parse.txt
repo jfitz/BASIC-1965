@@ -6,17 +6,17 @@
  NumericConstant:3
  Declaration:B scalar
 120 MAT READ A,B
- Variable:A numeric matrix
- Variable:B numeric matrix
+ Variable:A(,) numeric matrix
+ Variable:B(,) numeric matrix
 130 PRINT "EXAMPLE 1"
  TextConstant:"EXAMPLE 1"
  CarriageControl:NL
 140 PRINT
  CarriageControl:NL
 150 MAT PRINT A,B
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:,
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:NL
 160 READ P, Q
  Variable:P numeric scalar
@@ -24,14 +24,14 @@
 170 MAT READ A(P,Q)
  Variable:P numeric scalar
  Variable:Q numeric scalar
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
 180 PRINT "EXAMPLE 2"
  TextConstant:"EXAMPLE 2"
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
 200 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 900 DATA 1,2,3,4,5,6, 1,2,3,4,5,6, 6,5,4,3,2,1, 6,5,4,3,2,1
  NumericConstant:1

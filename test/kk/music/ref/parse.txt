@@ -34,7 +34,7 @@
 105 OPTION BASE 1
  NumericConstant:1
 110 MAT READ P
- Variable:P numeric matrix
+ Variable:P(,) numeric matrix
 111 DATA 5,4,1,6,2,3, 6,4,2,1,5,3, 6,4,3,1,2,5
  NumericConstant:5
  NumericConstant:4
@@ -77,7 +77,7 @@
  Variable:N9 numeric scalar
 130 MAT READ M(N9)
  Variable:N9 numeric scalar
- Variable:M numeric matrix
+ Variable:M(,) numeric matrix
 140 DATA 28
  NumericConstant:28
 150 DATA 2,1,0,2,1,0,7,5,7,4,2,0,1
@@ -119,7 +119,7 @@
 200    READ S(V,N9)
  Variable:V numeric scalar
  Variable:N9 numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
 210 NEXT V
  Variable:V numeric scalar
 220 DATA 1,0,-3,-5,-7
@@ -159,23 +159,23 @@
  Variable:C2 numeric scalar
  Variable:C1 numeric scalar
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_,_) numeric scalar
  AssignmentOperator:=
 525 LET S(0,N) = C2
  NumericConstant:0
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:C2 numeric scalar
  AssignmentOperator:=
 530 LET S = M(N)
  Variable:S numeric scalar
  Variable:N numeric scalar
- Variable:M numeric scalar
+ Variable:M(_) numeric scalar
  AssignmentOperator:=
 540 LET S(1,N) = S
  NumericConstant:1
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:S numeric scalar
  AssignmentOperator:=
 542
@@ -183,14 +183,14 @@
  Remark: FIX ROOT
 550 LET D(1) = C2-8
  NumericConstant:1
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:C2 numeric scalar
  NumericConstant:8
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 560 LET D(2) = C2-15
  NumericConstant:2
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:C2 numeric scalar
  NumericConstant:15
  BinaryOperatorMinus:-(_,_) numeric scalar
@@ -201,7 +201,7 @@
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  AssignmentOperator:=
 570 FOR J = 1 TO 2
  control: Variable:J numeric scalar
@@ -209,7 +209,7 @@
  end:     ["NumericConstant:2"]
 580 IF ABS(D(J)-D) <= 5 THEN 610
  Variable:J numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:D numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  FunctionAbs:ABS(_) numeric scalar
@@ -220,7 +220,7 @@
  NumericConstant:3
  Variable:J numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  AssignmentOperator:=
 600 GOTO 660
  LineNumber:660
@@ -232,24 +232,24 @@
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  BinaryOperatorGreater:>(_,_) boolean scalar
 630 LET R = D(1)
  Variable:R numeric scalar
  NumericConstant:1
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  AssignmentOperator:=
 640 GOTO 660
  LineNumber:660
 650 LET R = D(2)
  Variable:R numeric scalar
  NumericConstant:2
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  AssignmentOperator:=
 660 LET S(4,N) = R
  NumericConstant:4
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:R numeric scalar
  AssignmentOperator:=
 670
@@ -275,7 +275,7 @@
  BinaryOperatorEqual:=(_,_) boolean scalar
 730 LET B(J) = R+K
  Variable:J numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  Variable:R numeric scalar
  Variable:K numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
@@ -300,39 +300,39 @@
 810 LET A = B(1)
  Variable:A numeric scalar
  NumericConstant:1
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  AssignmentOperator:=
 820 LET B = B(2)
  Variable:B numeric scalar
  NumericConstant:2
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  AssignmentOperator:=
 830 LET W(0,L) = 0
  NumericConstant:0
  Variable:L numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 840 LET W(2,L) = B
  NumericConstant:2
  Variable:L numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  Variable:B numeric scalar
  AssignmentOperator:=
 850 LET W(3,L) = A
  NumericConstant:3
  Variable:L numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  Variable:A numeric scalar
  AssignmentOperator:=
 860 LET B(1) = B
  NumericConstant:1
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  Variable:B numeric scalar
  AssignmentOperator:=
 870 LET B(2) = A+7
  NumericConstant:2
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  Variable:A numeric scalar
  NumericConstant:7
  BinaryOperatorPlus:+(_,_) numeric scalar
@@ -354,7 +354,7 @@
  Variable:B numeric scalar
  Variable:V numeric scalar
  Variable:L numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  AssignmentOperator:=
 1040 IF ABS(B-S(V,N+1)) > 5 THEN 1260
  Variable:B numeric scalar
@@ -362,7 +362,7 @@
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  FunctionAbs:ABS(_) numeric scalar
  NumericConstant:5
@@ -386,7 +386,7 @@
 1070 LET S(V,N) = B
  Variable:V numeric scalar
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:B numeric scalar
  AssignmentOperator:=
 1080 IF S(2*V-3,N) <= S(2*V-2,N) THEN 1260
@@ -396,14 +396,14 @@
  NumericConstant:3
  BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  NumericConstant:2
  Variable:V numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
  NumericConstant:2
  BinaryOperatorMinus:-(_,_) numeric scalar
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  BinaryOperatorLessEqual:<=(_,_) boolean scalar
 1090 NEXT V
  Variable:V numeric scalar
@@ -428,12 +428,12 @@
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:V2 numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 1120 IF FNC(D) = 0 THEN 1145
@@ -452,24 +452,24 @@
  Variable:S1 numeric scalar
  Variable:V1 numeric scalar
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:V1 numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 1150 LET S2 = S(V2,N)-S(V2,N+1)
  Variable:S2 numeric scalar
  Variable:V2 numeric scalar
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:V2 numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 1155 IF S1 = S2 THEN 1260
@@ -489,15 +489,15 @@
  end:     ["NumericConstant:3"]
 1220 LET D(V) = ABS(S(V,N)-S(V,N+1))
  Variable:V numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:V numeric scalar
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  Variable:V numeric scalar
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  FunctionAbs:ABS(_) numeric scalar
  AssignmentOperator:=
@@ -506,11 +506,11 @@
 1240 LET W(0,L) = D(2)+D(3)
  NumericConstant:0
  Variable:L numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  NumericConstant:2
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  NumericConstant:3
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 1250 GOTO 1261
@@ -518,7 +518,7 @@
 1260 LET W(0,L) = 999
  NumericConstant:0
  Variable:L numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  NumericConstant:999
  AssignmentOperator:=
 1261 NEXT L
@@ -538,7 +538,7 @@
  Variable:M1 numeric scalar
  NumericConstant:0
  Variable:L numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  AssignmentOperator:=
 1540 IF M1 > M THEN 1590
  Variable:M1 numeric scalar
@@ -561,18 +561,18 @@
 1610 LET S(2,N) = W(2,L9)
  NumericConstant:2
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  NumericConstant:2
  Variable:L9 numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  AssignmentOperator:=
 1620 LET S(3,N) = W(3,L9)
  NumericConstant:3
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  NumericConstant:3
  Variable:L9 numeric scalar
- Variable:W numeric scalar
+ Variable:W(_,_) numeric scalar
  AssignmentOperator:=
 1630 GOTO 6000
  LineNumber:6000
@@ -602,7 +602,7 @@
  Variable:C2 numeric scalar
  NumericConstant:0
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  AssignmentOperator:=
 5110 LET C1 = S(0,N+1)
  Variable:C1 numeric scalar
@@ -610,7 +610,7 @@
  Variable:N numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  AssignmentOperator:=
 5120 FOR I = 1 TO 6
  control: Variable:I numeric scalar
@@ -620,7 +620,7 @@
  Variable:C2 numeric scalar
  Variable:C1 numeric scalar
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_,_) numeric scalar
  BinaryOperatorEqual:=(_,_) boolean scalar
 5140 NEXT I
  Variable:I numeric scalar
@@ -640,23 +640,23 @@
  CarriageControl:,
  NumericConstant:0
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  CarriageControl:,
  NumericConstant:1
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  CarriageControl:;
  NumericConstant:2
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  CarriageControl:;
  NumericConstant:3
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  CarriageControl:;
  NumericConstant:4
  Variable:N numeric scalar
- Variable:S numeric scalar
+ Variable:S(_,_) numeric scalar
  CarriageControl:NL
 6002 LET C1 = C2
  Variable:C1 numeric scalar

@@ -11,7 +11,7 @@
  LineNumber:2000
 50    LET H(C) = X
  Variable:C numeric scalar
- Variable:H numeric scalar
+ Variable:H(_) numeric scalar
  Variable:X numeric scalar
  AssignmentOperator:=
 60 NEXT C
@@ -34,14 +34,14 @@
 120       LET X = H(J)
  Variable:X numeric scalar
  Variable:J numeric scalar
- Variable:H numeric scalar
+ Variable:H(_) numeric scalar
  AssignmentOperator:=
 130       LET Y = H(J+1)
  Variable:Y numeric scalar
  Variable:J numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:H numeric scalar
+ Variable:H(_) numeric scalar
  AssignmentOperator:=
 140       IF X > Y THEN 170
  Variable:X numeric scalar
@@ -49,14 +49,14 @@
  BinaryOperatorGreater:>(_,_) boolean scalar
 150       LET H(J) = Y
  Variable:J numeric scalar
- Variable:H numeric scalar
+ Variable:H(_) numeric scalar
  Variable:Y numeric scalar
  AssignmentOperator:=
 160       LET H(J+1) = X
  Variable:J numeric scalar
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:H numeric scalar
+ Variable:H(_) numeric scalar
  Variable:X numeric scalar
  AssignmentOperator:=
 170    NEXT J
@@ -71,7 +71,7 @@
 210    LET X = H(C)
  Variable:X numeric scalar
  Variable:C numeric scalar
- Variable:H numeric scalar
+ Variable:H(_) numeric scalar
  AssignmentOperator:=
 220    GOSUB 3000
  LineNumber:3000
@@ -91,7 +91,7 @@
  end:     ["NumericConstant:51"]
 1030    LET L(I) = I
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  Variable:I numeric scalar
  AssignmentOperator:=
 1040 NEXT I
@@ -112,7 +112,7 @@
 2020 LET X = L(I)
  Variable:X numeric scalar
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  AssignmentOperator:=
 2030 IF X < 0 THEN 2010
  Variable:X numeric scalar
@@ -120,7 +120,7 @@
  BinaryOperatorLess:<(_,_) boolean scalar
 2040 LET L(I) = -1
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=

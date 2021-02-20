@@ -9,7 +9,7 @@
  end:     ["NumericConstant:6"]
 40 LET A(I) = I
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:I numeric scalar
  AssignmentOperator:=
 60 NEXT I
@@ -20,15 +20,15 @@
  end:     ["NumericConstant:3"]
 90 LET B(I) = I
  Variable:I numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  Variable:I numeric scalar
  AssignmentOperator:=
 110 NEXT I
  Variable:I numeric scalar
 120 ARR PRINT A;B;
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:;
- Variable:B numeric array
+ Variable:B() numeric array
  CarriageControl:;
 122 PRINT
  CarriageControl:NL

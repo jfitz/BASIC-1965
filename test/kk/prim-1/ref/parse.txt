@@ -10,7 +10,7 @@
  end:     ["NumericConstant:1000"]
 21    LET N(I) = 0
  Variable:I numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  AssignmentOperator:=
 22 NEXT I
@@ -25,7 +25,7 @@
  end:     ["NumericConstant:1000"]
 40    IF N(P) < 0 THEN 90
  Variable:P numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:0
  BinaryOperatorLess:<(_,_) boolean scalar
 50    LET K = K+1
@@ -36,7 +36,7 @@
  AssignmentOperator:=
 55    LET P(K) = P
  Variable:K numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  Variable:P numeric scalar
  AssignmentOperator:=
 56    IF P > SQR(1000) THEN 90
@@ -51,7 +51,7 @@
  step:    ["Variable:P numeric scalar"]
 70       LET N(I) = -1
  Variable:I numeric scalar
- Variable:N numeric scalar
+ Variable:N(_) numeric scalar
  NumericConstant:1
  UnaryOperatorMinus:-(_) numeric scalar
  AssignmentOperator:=
@@ -65,7 +65,7 @@
  end:     ["Variable:K numeric scalar"]
 110    PRINT P(I);
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  CarriageControl:;
 120 NEXT I
  Variable:I numeric scalar

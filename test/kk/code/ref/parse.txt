@@ -9,10 +9,10 @@
  end:     ["NumericConstant:100"]
 40    READ L(I)
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
 50    IF L(I) < 0 THEN 70
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  NumericConstant:0
  BinaryOperatorLess:<(_,_) boolean scalar
 60 NEXT I
@@ -28,15 +28,15 @@
  CarriageControl:;
 110 INPUT K(1), K(2), K(3), K(4), K(5)
  NumericConstant:1
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  NumericConstant:2
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  NumericConstant:3
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  NumericConstant:4
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  NumericConstant:5
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
 120 PRINT
  CarriageControl:NL
 130 PRINT "TYPE '0' FOR ENCODING, '1' FOR DECODING";
@@ -59,10 +59,10 @@
  end:     ["NumericConstant:5"]
 180    LET K(J) = 27-K(J)
  Variable:J numeric scalar
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  NumericConstant:27
  Variable:J numeric scalar
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 190 NEXT J
@@ -85,9 +85,9 @@
 230    LET X = L(I)+K(J)
  Variable:X numeric scalar
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  Variable:J numeric scalar
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 240    IF X <= 26 THEN 260
@@ -131,9 +131,9 @@
 330    LET X = L(I)+K(J)
  Variable:X numeric scalar
  Variable:I numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  Variable:J numeric scalar
- Variable:K numeric scalar
+ Variable:K(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 340    IF X <= 26 THEN 360

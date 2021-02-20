@@ -13,12 +13,12 @@
 40 LET A(I,J) = I*10 + J
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_,_) numeric scalar
  Variable:I numeric scalar
  NumericConstant:10
- BinaryOperatorMultiply:* numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:J numeric scalar
- BinaryOperatorPlus:+ numeric scalar
+ BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 50 NEXT J
  Variable:J numeric scalar

@@ -54,7 +54,7 @@
  AssignmentOperator:=
 110 LET C(I) = 1 + INT(2*K)
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:1
  NumericConstant:2
  Variable:K numeric scalar
@@ -70,7 +70,7 @@
  end:     ["NumericConstant:6"]
 140 IF C(I) = 1 THEN 170
  Variable:I numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) boolean scalar
 150 PRINT "---"

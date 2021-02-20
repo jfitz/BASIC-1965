@@ -27,7 +27,7 @@
  end:     ["Variable:Y numeric scalar"]
 110    LET D(I) = A*(Y-I+1)/Y9
  Variable:I numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:A numeric scalar
  Variable:Y numeric scalar
  Variable:I numeric scalar
@@ -42,7 +42,7 @@
  Variable:I numeric scalar
  CarriageControl:,
  Variable:I numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  CarriageControl:NL
 130 NEXT I
  Variable:I numeric scalar
@@ -60,7 +60,7 @@
  Variable:S numeric scalar
  Variable:S numeric scalar
  Variable:I numeric scalar
- Variable:D numeric scalar
+ Variable:D(_) numeric scalar
  Variable:T numeric scalar
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) numeric scalar

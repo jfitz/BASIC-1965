@@ -19,14 +19,14 @@
  NumericConstant:3
  NumericConstant:2
  NumericConstant:5
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:1
  NumericConstant:3
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:2
  NumericConstant:5
  NumericConstant:1
- UnaryOperatorMinus:- numeric scalar
+ UnaryOperatorMinus:-(_) numeric scalar
  NumericConstant:4
 80 GOSUB 400
  LineNumber:400
@@ -58,7 +58,7 @@
 430 READ M1(I,J)
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:M1 numeric scalar
+ Variable:M1(_,_) numeric scalar
 440 NEXT J
  Variable:J numeric scalar
 450 NEXT I

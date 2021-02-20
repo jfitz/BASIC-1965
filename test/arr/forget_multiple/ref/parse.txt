@@ -13,7 +13,7 @@
  end:     ["NumericConstant:10"]
 22 LET A(I) = 1
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 23 NEXT I
@@ -24,7 +24,7 @@
  end:     ["NumericConstant:8"]
 25 LET B(I) = 8 - I
  Variable:I numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
  NumericConstant:8
  Variable:I numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
@@ -32,19 +32,19 @@
 26 NEXT I
  Variable:I numeric scalar
 30 ARR PRINT A
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:NL
 31 ARR PRINT B
- Variable:B numeric array
+ Variable:B() numeric array
  CarriageControl:NL
 40 ARR FORGET A,B
  Variable:A numeric array
  Variable:B numeric array
 90 ARR PRINT A
- Variable:A numeric array
+ Variable:A() numeric array
  CarriageControl:NL
 91 ARR PRINT B
- Variable:B numeric array
+ Variable:B() numeric array
  CarriageControl:NL
 99 END
  

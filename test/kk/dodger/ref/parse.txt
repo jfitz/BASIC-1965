@@ -11,7 +11,7 @@
 130    READ P(B,R)
  Variable:B numeric scalar
  Variable:R numeric scalar
- Variable:P numeric scalar
+ Variable:P(_,_) numeric scalar
 140    NEXT R
  Variable:R numeric scalar
 150 NEXT B
@@ -67,7 +67,7 @@
 220       READ Q(R,C)
  Variable:R numeric scalar
  Variable:C numeric scalar
- Variable:Q numeric scalar
+ Variable:Q(_,_) numeric scalar
 230    NEXT C
  Variable:C numeric scalar
 240 NEXT R
@@ -136,7 +136,7 @@
  end:     ["NumericConstant:7"]
 370    READ L(C)
  Variable:C numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
 380 NEXT C
  Variable:C numeric scalar
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
@@ -202,7 +202,7 @@
  Variable:X numeric scalar
  Variable:B numeric scalar
  Variable:R numeric scalar
- Variable:P numeric scalar
+ Variable:P(_,_) numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  AssignmentOperator:=
 580 IF X < 0 THEN 620
@@ -278,7 +278,7 @@
  Variable:X numeric scalar
  Variable:R numeric scalar
  Variable:C numeric scalar
- Variable:Q numeric scalar
+ Variable:Q(_,_) numeric scalar
  AssignmentOperator:=
 820 LET Y = INT(X/10)
  Variable:Y numeric scalar
@@ -322,7 +322,7 @@
  Variable:L7 numeric scalar
  Variable:L7 numeric scalar
  Variable:C numeric scalar
- Variable:L numeric scalar
+ Variable:L(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 900 PRINT

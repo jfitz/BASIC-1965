@@ -16,20 +16,20 @@
 150       READ O(I,J)
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:O numeric scalar
+ Variable:O(_,_) numeric scalar
 160       LET S = S + O(I,J)
  Variable:S numeric scalar
  Variable:S numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:O numeric scalar
+ Variable:O(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 170    NEXT J
  Variable:J numeric scalar
 180    LET R(I) = S
  Variable:I numeric scalar
- Variable:R numeric scalar
+ Variable:R(_) numeric scalar
  Variable:S numeric scalar
  AssignmentOperator:=
 190 NEXT I
@@ -56,14 +56,14 @@
  Variable:S numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:O numeric scalar
+ Variable:O(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 260    NEXT I
  Variable:I numeric scalar
 270    LET C(J) = S
  Variable:J numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  Variable:S numeric scalar
  AssignmentOperator:=
 280    LET S1 = S1 + S
@@ -92,9 +92,9 @@
 350       LET E = R(I)*C(J)/S1
  Variable:E numeric scalar
  Variable:I numeric scalar
- Variable:R numeric scalar
+ Variable:R(_) numeric scalar
  Variable:J numeric scalar
- Variable:C numeric scalar
+ Variable:C(_) numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:S1 numeric scalar
  BinaryOperatorDivide:/(_,_) numeric scalar
@@ -104,7 +104,7 @@
  Variable:C numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:O numeric scalar
+ Variable:O(_,_) numeric scalar
  Variable:E numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar
  NumericConstant:2
@@ -116,7 +116,7 @@
 370       PRINT O(I,J),
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:O numeric scalar
+ Variable:O(_,_) numeric scalar
  CarriageControl:,
 380    NEXT J
  Variable:J numeric scalar

@@ -39,26 +39,26 @@
  step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
 140 IF Z(L) > Z(J) THEN 210
  Variable:L numeric scalar
- Variable:Z numeric scalar
+ Variable:Z(_) numeric scalar
  Variable:J numeric scalar
- Variable:Z numeric scalar
+ Variable:Z(_) numeric scalar
  BinaryOperatorGreater:>(_,_) boolean scalar
 150 REM SAVE FIRST VALUE
  Remark:SAVE FIRST VALUE
 160 LET T = Z(L)
  Variable:T numeric scalar
  Variable:L numeric scalar
- Variable:Z numeric scalar
+ Variable:Z(_) numeric scalar
  AssignmentOperator:=
 170 LET Z(L) =Z(J)
  Variable:L numeric scalar
- Variable:Z numeric scalar
+ Variable:Z(_) numeric scalar
  Variable:J numeric scalar
- Variable:Z numeric scalar
+ Variable:Z(_) numeric scalar
  AssignmentOperator:=
 180 LET Z(J) = T
  Variable:J numeric scalar
- Variable:Z numeric scalar
+ Variable:Z(_) numeric scalar
  Variable:T numeric scalar
  AssignmentOperator:=
 190 REM IF Z IS THE KEY FOR SORTING MULTIPLE

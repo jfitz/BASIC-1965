@@ -28,7 +28,7 @@
 120 READ A(I,J)
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_,_) numeric scalar
 130 NEXT J
  Variable:J numeric scalar
 140 NEXT I
@@ -37,7 +37,7 @@
  TextConstant:"MATRIX A"
  CarriageControl:NL
 160 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 200 FOR I = 1 TO 3
  control: Variable:I numeric scalar
@@ -45,26 +45,26 @@
  end:     ["NumericConstant:3"]
 220 READ B(I)
  Variable:I numeric scalar
- Variable:B numeric scalar
+ Variable:B(_) numeric scalar
 240 NEXT I
  Variable:I numeric scalar
 250 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 260 MAT PRINT B
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:NL
 300 MAT C = A*B
- Variable:C numeric matrix
- Variable:A numeric matrix
- Variable:B numeric matrix
+ Variable:C(,) numeric matrix
+ Variable:A(,) numeric matrix
+ Variable:B(,) numeric matrix
  BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 310 PRINT "MATRIX C"
  TextConstant:"MATRIX C"
  CarriageControl:NL
 320 MAT PRINT C
- Variable:C numeric matrix
+ Variable:C(,) numeric matrix
  CarriageControl:NL
 999 END
  

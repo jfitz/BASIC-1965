@@ -14,7 +14,7 @@
  end:     ["Variable:N numeric scalar"]
 40 READ A(I)
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
 50 NEXT I
  Variable:I numeric scalar
 60 READ X9
@@ -25,7 +25,7 @@
  end:     ["Variable:X9 numeric scalar"]
 80 READ X(J)
  Variable:J numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
 90 NEXT J
  Variable:J numeric scalar
 95
@@ -73,19 +73,19 @@
  end:     ["Variable:X9 numeric scalar"]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
  Variable:J numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  CarriageControl:,
  Variable:J numeric scalar
  NumericConstant:0
- Variable:T numeric scalar
+ Variable:T(_,_) numeric scalar
  CarriageControl:,
  Variable:J numeric scalar
  NumericConstant:1
- Variable:T numeric scalar
+ Variable:T(_,_) numeric scalar
  CarriageControl:,
  Variable:J numeric scalar
  NumericConstant:2
- Variable:T numeric scalar
+ Variable:T(_,_) numeric scalar
  CarriageControl:NL
 250 NEXT J
  Variable:J numeric scalar
@@ -101,14 +101,14 @@
 520 LET X = X(J)
  Variable:X numeric scalar
  Variable:J numeric scalar
- Variable:X numeric scalar
+ Variable:X(_) numeric scalar
  AssignmentOperator:=
 530 GOSUB 1000
  LineNumber:1000
 540 LET T(J,K) = Y
  Variable:J numeric scalar
  Variable:K numeric scalar
- Variable:T numeric scalar
+ Variable:T(_,_) numeric scalar
  Variable:Y numeric scalar
  AssignmentOperator:=
 550 NEXT J
@@ -132,7 +132,7 @@
  Variable:X numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 1040 NEXT I
@@ -148,9 +148,9 @@
  end:     ["Variable:N numeric scalar"]
 2020 LET A(I) = A(I)*(N-I)
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:I numeric scalar
- Variable:A numeric scalar
+ Variable:A(_) numeric scalar
  Variable:N numeric scalar
  Variable:I numeric scalar
  BinaryOperatorMinus:-(_,_) numeric scalar

@@ -12,7 +12,7 @@
  NumericConstant:20
  Declaration:G scalar
 130 MAT G = ZER
- Variable:G numeric matrix
+ Variable:G(,) numeric matrix
  FunctionZer2:ZER numeric matrix
  AssignmentOperator:=
 140 DATA 4,2,1,3
@@ -44,7 +44,7 @@
  UserFunction:FNR(_) numeric scalar
  Variable:Y numeric scalar
  UserFunction:FNR(_) numeric scalar
- Variable:G numeric scalar
+ Variable:G(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 220 FOR I = 1 TO P
@@ -97,7 +97,7 @@
  UserFunction:FNR(_) numeric scalar
  Variable:Y numeric scalar
  UserFunction:FNR(_) numeric scalar
- Variable:G numeric scalar
+ Variable:G(_,_) numeric scalar
  NumericConstant:1
  AssignmentOperator:=
 280 NEXT I
@@ -115,7 +115,7 @@
 320 IF G(I,J) > 0 THEN 360
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:G numeric scalar
+ Variable:G(_,_) numeric scalar
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) boolean scalar
 330 NEXT I
@@ -131,7 +131,7 @@
 370 IF G(I,J) > 0 THEN 400
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:G numeric scalar
+ Variable:G(_,_) numeric scalar
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) boolean scalar
 380 PRINT " ";
@@ -149,7 +149,7 @@
 420 IF G(K,J) > 0 THEN 450
  Variable:K numeric scalar
  Variable:J numeric scalar
- Variable:G numeric scalar
+ Variable:G(_,_) numeric scalar
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) boolean scalar
 430 NEXT K

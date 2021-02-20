@@ -18,7 +18,7 @@
 50 LET A(I,J) = I+J
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_,_) numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
@@ -26,7 +26,7 @@
 52 LET B(I,J) = I*J
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:B numeric scalar
+ Variable:B(_,_) numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
@@ -36,28 +36,28 @@
 70 NEXT I
  Variable:I numeric scalar
 100 MAT C = A - B
- Variable:C numeric matrix
- Variable:A numeric matrix
- Variable:B numeric matrix
+ Variable:C(,) numeric matrix
+ Variable:A(,) numeric matrix
+ Variable:B(,) numeric matrix
  BinaryOperatorMinus:-(_,_) numeric matrix
  AssignmentOperator:=
 110 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 120 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 130 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 140 MAT PRINT B
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:NL
 150 PRINT "MATRIX C"
  TextConstant:"MATRIX C"
  CarriageControl:NL
 160 MAT PRINT C
- Variable:C numeric matrix
+ Variable:C(,) numeric matrix
  CarriageControl:NL
 999 END
  

@@ -4,7 +4,7 @@
  end:     ["NumericConstant:5"]
 20 READ P(I)
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
 30 NEXT I
  Variable:I numeric scalar
 40 DATA 1.20,2.15,0.65,4.30,2.00
@@ -28,7 +28,7 @@
  Variable:S numeric scalar
  Variable:N numeric scalar
  Variable:I numeric scalar
- Variable:P numeric scalar
+ Variable:P(_) numeric scalar
  BinaryOperatorMultiply:*(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=

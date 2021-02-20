@@ -9,10 +9,10 @@
 30 LET A(I,J) = I * J
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_,_) numeric scalar
  Variable:I numeric scalar
- Variable:J numeric scalar
- BinaryOperatorMultiply:* numeric scalar
+ Variable:J() numeric scalar
+ BinaryOperatorMultiply:*(_,_) numeric scalar
  AssignmentOperator:=
 40 NEXT J
  Variable:J numeric scalar
@@ -40,7 +40,7 @@
  CarriageControl:,
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:A numeric scalar
+ Variable:A(_,_) numeric scalar
  CarriageControl:NL
 90 NEXT J
  Variable:J numeric scalar

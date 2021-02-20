@@ -12,7 +12,7 @@
 40 READ T(I,J)
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:T numeric scalar
+ Variable:T(_,_) numeric scalar
 50 NEXT J
  Variable:J numeric scalar
 60 NEXT I
@@ -34,7 +34,7 @@
  Variable:S numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:T numeric scalar
+ Variable:T(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 110 NEXT J
@@ -69,7 +69,7 @@
  Variable:S numeric scalar
  Variable:I numeric scalar
  Variable:J numeric scalar
- Variable:T numeric scalar
+ Variable:T(_,_) numeric scalar
  BinaryOperatorPlus:+(_,_) numeric scalar
  AssignmentOperator:=
 190 NEXT I

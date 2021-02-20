@@ -20,14 +20,14 @@
 25 FILES "output.txt"
  TextConstant:"output.txt"
 30 ARR READ A,B
- Variable:A numeric array
- Variable:B numeric array
+ Variable:A() numeric array
+ Variable:B() numeric array
 40 ARR WRITE #1;A,B
  NumericConstant:1
- UnaryOperatorHash:# filehandle scalar
- Variable:A numeric array
+ UnaryOperatorHash:#(_) filehandle scalar
+ Variable:A() numeric array
  CarriageControl:,
- Variable:B numeric array
+ Variable:B() numeric array
  CarriageControl:NL
 90 STOP
  

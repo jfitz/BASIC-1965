@@ -6,17 +6,17 @@
  NumericConstant:4
  Declaration:B scalar
 110 MAT READ A, B
- Variable:A numeric matrix
- Variable:B numeric matrix
+ Variable:A(,) numeric matrix
+ Variable:B(,) numeric matrix
 120 MAT P = A*B
- Variable:P numeric matrix
- Variable:A numeric matrix
- Variable:B numeric matrix
+ Variable:P(,) numeric matrix
+ Variable:A(,) numeric matrix
+ Variable:B(,) numeric matrix
  BinaryOperatorMultiply:*(_,_) numeric matrix
  AssignmentOperator:=
 130 MAT T = TRN(A)
- Variable:T numeric matrix
- Variable:A numeric matrix
+ Variable:T(,) numeric matrix
+ Variable:A(,) numeric matrix
  FunctionTrn:TRN(_) numeric matrix
  AssignmentOperator:=
 140
@@ -24,25 +24,25 @@
  TextConstant:"FIRST MATRIX"
  CarriageControl:NL
 210 MAT PRINT A
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:NL
 220 PRINT "SECOND MATRIX"
  TextConstant:"SECOND MATRIX"
  CarriageControl:NL
 230 MAT PRINT B
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:NL
 240 PRINT "PRODUCT"
  TextConstant:"PRODUCT"
  CarriageControl:NL
 250 MAT PRINT P
- Variable:P numeric matrix
+ Variable:P(,) numeric matrix
  CarriageControl:NL
 260 PRINT "TRANSPOSE OF FIRST MATRIX"
  TextConstant:"TRANSPOSE OF FIRST MATRIX"
  CarriageControl:NL
 270 MAT PRINT T
- Variable:T numeric matrix
+ Variable:T(,) numeric matrix
  CarriageControl:NL
 280
 900 DATA 1, 4, -2, 2, -1, 3
