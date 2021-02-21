@@ -1,6 +1,6 @@
 10 DIM H(13)
  NumericConstant:13
- Declaration:H scalar
+ Declaration:H() array
 20 GOSUB 1000
  LineNumber:1000
 30 FOR C = 1 TO 13
@@ -84,7 +84,7 @@
  Remark:SET UP DECK
 1010 DIM L(51)
  NumericConstant:51
- Declaration:L scalar
+ Declaration:L() array
 1020 FOR I = 0 TO 51
  control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]

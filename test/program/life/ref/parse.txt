@@ -11,7 +11,7 @@
 220 DIM B(10,10)
  NumericConstant:10
  NumericConstant:10
- Declaration:B scalar
+ Declaration:B(,) matrix
 230 REM *** INITIAL PATTERN
  Remark:*** INITIAL PATTERN
 240 LET B(4,4)=1
@@ -64,7 +64,7 @@
 420 DIM B(11,11)
  NumericConstant:11
  NumericConstant:11
- Declaration:B scalar
+ Declaration:B(,) matrix
 430 FOR I=1 TO 10
  control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
@@ -128,7 +128,7 @@
 540 DIM B(10,10)
  NumericConstant:10
  NumericConstant:10
- Declaration:B scalar
+ Declaration:B(,) matrix
 600 REM *** CALCULATE NEW BOARD
  Remark:*** CALCULATE NEW BOARD
 610 FOR I=1 TO 10

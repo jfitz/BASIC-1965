@@ -5,10 +5,10 @@
 30 DIM H(0,5), V(5,0)
  NumericConstant:0
  NumericConstant:5
- Declaration:H scalar
+ Declaration:H(,) matrix
  NumericConstant:5
  NumericConstant:0
- Declaration:V scalar
+ Declaration:V(,) matrix
 40 FOR I = 0 TO 5
  control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
@@ -38,10 +38,10 @@
 130 DIM H(1,5), V(5,1)
  NumericConstant:1
  NumericConstant:5
- Declaration:H scalar
+ Declaration:H(,) matrix
  NumericConstant:5
  NumericConstant:1
- Declaration:V scalar
+ Declaration:V(,) matrix
 140 FOR I = 1 TO 5
  control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]

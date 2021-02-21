@@ -1,7 +1,7 @@
 10 DIM A(6,5)
  NumericConstant:6
  NumericConstant:5
- Declaration:A scalar
+ Declaration:A(,) matrix
 20 FOR I = 0 TO 6
  control: Variable:I numeric scalar
  start:   ["NumericConstant:0"]
@@ -28,18 +28,18 @@
  TextConstant:"MATRIX A"
  CarriageControl:NL
 72 MAT PRINT A;
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:;
 80 MAT B = TRN(A)
- Variable:B numeric matrix
- Variable:A numeric matrix
+ Variable:B(,) numeric matrix
+ Variable:A(,) numeric matrix
  FunctionTrn:TRN(_) numeric matrix
  AssignmentOperator:=
 90 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 92 MAT PRINT B;
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:;
 100 OPTION BASE 1
  NumericConstant:1
@@ -47,18 +47,18 @@
  TextConstant:"MATRIX A"
  CarriageControl:NL
 172 MAT PRINT A;
- Variable:A numeric matrix
+ Variable:A(,) numeric matrix
  CarriageControl:;
 180 MAT B = TRN(A)
- Variable:B numeric matrix
- Variable:A numeric matrix
+ Variable:B(,) numeric matrix
+ Variable:A(,) numeric matrix
  FunctionTrn:TRN(_) numeric matrix
  AssignmentOperator:=
 190 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 192 MAT PRINT B;
- Variable:B numeric matrix
+ Variable:B(,) numeric matrix
  CarriageControl:;
 199 END
  

@@ -46,7 +46,7 @@
 405 DIM M1(R,C)
  Variable:R numeric scalar
  Variable:C numeric scalar
- Declaration:M1 scalar
+ Declaration:M1(,) matrix
 410 FOR I = 1 TO R
  control: Variable:I numeric scalar
  start:   ["NumericConstant:1"]
@@ -67,18 +67,18 @@
  TextConstant:"MATRIX:"
  CarriageControl:NL
 470 MAT PRINT M1;
- Variable:M1 numeric matrix
+ Variable:M1(,) numeric matrix
  CarriageControl:;
 480 MAT M2 = INV(M1)
- Variable:M2 numeric matrix
- Variable:M1 numeric matrix
+ Variable:M2(,) numeric matrix
+ Variable:M1(,) numeric matrix
  FunctionInv:INV(_) numeric matrix
  AssignmentOperator:=
 490 PRINT "INVERSE:"
  TextConstant:"INVERSE:"
  CarriageControl:NL
 492 MAT PRINT M2;
- Variable:M2 numeric matrix
+ Variable:M2(,) numeric matrix
  CarriageControl:;
 495 PRINT
  CarriageControl:NL

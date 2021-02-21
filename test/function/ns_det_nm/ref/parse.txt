@@ -88,7 +88,7 @@
 405 DIM M1(R,C)
  Variable:R numeric scalar
  Variable:C numeric scalar
- Declaration:M1 scalar
+ Declaration:M1(,) matrix
 410 FOR I = B TO R
  control: Variable:I numeric scalar
  start:   ["Variable:B numeric scalar"]
@@ -109,11 +109,11 @@
  TextConstant:"MATRIX:"
  CarriageControl:NL
 470 MAT PRINT M1;
- Variable:M1 numeric matrix
+ Variable:M1(,) numeric matrix
  CarriageControl:;
 480 LET D = DET(M1)
  Variable:D numeric scalar
- Variable:M1 numeric matrix
+ Variable:M1(,) numeric matrix
  FunctionDet:DET(_) numeric scalar
  AssignmentOperator:=
 490 PRINT "DETERMINANT:" D

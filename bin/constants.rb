@@ -1481,7 +1481,7 @@ class Declaration < AbstractElement
   end
 
   def dump
-    "#{self.class}:#{@variable_name} #{@shape}"
+    "#{self.class}:#{@variable_name}#{@signature} #{@shape}"
   end
 
   def name
@@ -1497,9 +1497,20 @@ class Declaration < AbstractElement
   end
 
   def set_shape(shape_stack)
+    raise(BASICExpressionError, "Bad expression #{@name}") if
+      shape_stack.empty?
+
+    shapes = shape_stack.pop
+
+    raise(BASICExpressionError, "Bad expression #{@name} #{shapes}") unless
+      shapes.class.to_s == 'Array'
+
     @shape = :scalar
-    @shape = :array if @subscripts.size == 1
-    @shape = :matrix if @subscripts.size == 2
+    @shape = :array if shapes.size == 1
+    @shape = :matrix if shapes.size == 2
+
+    @signature = '()' if @shape == :array
+    @signature = '(,)' if @shape == :matrix
 
     shape_stack.push(@shape)
   end
