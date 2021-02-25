@@ -6,31 +6,31 @@
  TextConstant:"X = "
  CarriageControl:;
 40 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 50 LET A = EXP(-(X^2)/2)
- Variable:A numeric scalar
- Variable:X numeric scalar
+ Variable:A -> _
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- UnaryOperatorMinus:-(_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionExp:EXP(_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionExp:EXP(_) -> _
  AssignmentOperator:=
 60 LET B = .398942
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:0.398942
  AssignmentOperator:=
 70 LET C = B*A
- Variable:C numeric scalar
- Variable:B numeric scalar
- Variable:A numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:C -> _
+ Variable:B -> _
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 80 PRINT "F(X) = ";C
  TextConstant:"F(X) = "
  CarriageControl:;
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
@@ -38,11 +38,11 @@
  TextConstant:"TO CONTINUE TYPE 1, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 120 IF L = 1 THEN 140
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 130 STOP
  
 140 PRINT

@@ -14,12 +14,12 @@
  TextConstant:"STARTING VALUE OF X = "
  CarriageControl:;
 80 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 90 PRINT "END VALUE OF X = ";
  TextConstant:"END VALUE OF X = "
  CarriageControl:;
 100 INPUT W
- Variable:W numeric scalar
+ Variable:W -> _
 110 PRINT "TABLE"
  TextConstant:"TABLE"
  CarriageControl:NL
@@ -29,35 +29,35 @@
  TextConstant:"Y"
  CarriageControl:NL
 130 FOR I = X TO W
- control: Variable:I numeric scalar
- start:   ["Variable:X numeric scalar"]
- end:     ["Variable:W numeric scalar"]
+ control: Variable:I -> _
+ start:   ["Variable:X -> _"]
+ end:     ["Variable:W -> _"]
 140 LET Y = 2*I + 6
- Variable:Y numeric scalar
+ Variable:Y -> _
  NumericConstant:2
- Variable:I numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:6
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 150 PRINT I,Y
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:NL
 160 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 170 PRINT
  CarriageControl:NL
 180 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 190 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 200 IF L = 1 THEN 220
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 210 STOP
  
 220 PRINT

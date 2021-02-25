@@ -4,43 +4,43 @@
  TextConstant:"input.txt"
 30 READ #1;A,B,C,D
  NumericConstant:1
- UnaryOperatorHash:#(_) filehandle scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
- Variable:D numeric scalar
+ UnaryOperatorHash:#(_) -> FH
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+ Variable:D -> _
 40 PRINT A;B;C;D
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:;
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:;
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:;
- Variable:D numeric scalar
+ Variable:D -> _
  CarriageControl:NL
 50 READ #1;A,B,C,D
  NumericConstant:1
- UnaryOperatorHash:#(_) filehandle scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
- Variable:D numeric scalar
+ UnaryOperatorHash:#(_) -> FH
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+ Variable:D -> _
 60 PRINT A;B;C;D
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:;
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:;
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:;
- Variable:D numeric scalar
+ Variable:D -> _
  CarriageControl:NL
 70 READ #1;A,B,C,D
  NumericConstant:1
- UnaryOperatorHash:#(_) filehandle scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
- Variable:D numeric scalar
+ UnaryOperatorHash:#(_) -> FH
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+ Variable:D -> _
 90 STOP
  
 99 END

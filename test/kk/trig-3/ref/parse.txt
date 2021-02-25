@@ -1,34 +1,34 @@
 100 REM ANGLE-SIDE-SIDE
  Remark:ANGLE-SIDE-SIDE
 110 LET P = 3.14159265
- Variable:P numeric scalar
+ Variable:P -> _
  NumericConstant:3.14159265
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
- UserFunctionName:FND
- VariableName:X
- Variable:X numeric scalar
- Variable:P numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ UserFunctionName:FND -> _
+ VariableName:X -> _
+ Variable:X -> _
+ Variable:P -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:180
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
 130 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS
- VariableName:X
- Variable:X numeric scalar
- UserFunction:FND(_) numeric scalar
- FunctionSin:SIN(_) numeric scalar
+ UserFunctionName:FNS -> _
+ VariableName:X -> _
+ Variable:X -> _
+ UserFunction:FND(_) -> _
+ FunctionSin:SIN(_) -> _
 135 DEF FNR(X) = INT(100*X+0.5)/100
- UserFunctionName:FNR
- VariableName:X
+ UserFunctionName:FNR -> _
+ VariableName:X -> _
  NumericConstant:100
- Variable:X numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:0.5
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -41,80 +41,80 @@
  TextConstant:"CASE 2"
  CarriageControl:NL
 150 READ B,X,Y
- Variable:B numeric scalar
- Variable:X numeric scalar
- Variable:Y numeric scalar
+ Variable:B -> _
+ Variable:X -> _
+ Variable:Y -> _
 160 PRINT B,X,Y,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:,
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:,
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:,
 170 LET S = X*FNS(B)/Y
- Variable:S numeric scalar
- Variable:X numeric scalar
- Variable:B numeric scalar
- UserFunction:FNS(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:S -> _
+ Variable:X -> _
+ Variable:B -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 180 IF S > 1 THEN 290
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:1
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 190 IF FNR(S) = 1 THEN 320
- Variable:S numeric scalar
- UserFunction:FNR(_) numeric scalar
+ Variable:S -> _
+ UserFunction:FNR(_) -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 195
 200 REM TWO POINTS OF INTERSECTION
  Remark:TWO POINTS OF INTERSECTION
 210 LET T = S/SQR(1-S^2)
- Variable:T numeric scalar
- Variable:S numeric scalar
+ Variable:T -> _
+ Variable:S -> _
  NumericConstant:1
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- FunctionSqr:SQR(_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 220 LET C = ATN(T)*180/P
- Variable:C numeric scalar
- Variable:T numeric scalar
- FunctionArcTan:ATN(_) numeric scalar
+ Variable:C -> _
+ Variable:T -> _
+ FunctionArcTan:ATN(_) -> _
  NumericConstant:180
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:P numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:P -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 230 LET A = 180 - B - C
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:180
- Variable:B numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:C -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 240 GOSUB 370
  LineNumber:370
 250 LET C = 180 - C
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:180
- Variable:C numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:C -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 260 LET A = 180 - B - C
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:180
- Variable:B numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:C -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 270 GOSUB 370
  LineNumber:370
@@ -136,10 +136,10 @@
 320 REM ONE POINT OF INTERSECTION
  Remark:ONE POINT OF INTERSECTION
 330 LET A = 90 - B
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:90
- Variable:B numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 340 GOSUB 370
  LineNumber:370
@@ -152,25 +152,25 @@
 370 REM ANGLE-SIDE-ANGLE ROUTINE
  Remark:ANGLE-SIDE-ANGLE ROUTINE
 380 LET Z = X*FNS(A)/S
- Variable:Z numeric scalar
- Variable:X numeric scalar
- Variable:A numeric scalar
- UserFunction:FNS(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:S numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:A -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 390 IF Z >= 0 THEN 420
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:0
- BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
 400 PRINT "NONE",
  TextConstant:"NONE"
  CarriageControl:,
 410 RETURN
  
 420 PRINT Z,
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:,
 430 RETURN
  

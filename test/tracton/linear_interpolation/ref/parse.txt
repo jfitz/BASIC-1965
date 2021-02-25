@@ -4,45 +4,45 @@
  TextConstant:"KNOWN VALUE OF X (X1,X2) = "
  CarriageControl:;
 30 INPUT X1,X2
- Variable:X1 numeric scalar
- Variable:X2 numeric scalar
+ Variable:X1 -> _
+ Variable:X2 -> _
 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
  TextConstant:"KNOWN VALUES OF Y (F(X1),F(X2)) = "
  CarriageControl:;
 50 INPUT Y1,Y2
- Variable:Y1 numeric scalar
- Variable:Y2 numeric scalar
+ Variable:Y1 -> _
+ Variable:Y2 -> _
 60 PRINT "INTERPOLATE F(X) AT X = ";
  TextConstant:"INTERPOLATE F(X) AT X = "
  CarriageControl:;
 70 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 80 LET G = ((X2 - X)*Y1) + ((X - X1)*Y2)
- Variable:G numeric scalar
- Variable:X2 numeric scalar
- Variable:X numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:Y1 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:X numeric scalar
- Variable:X1 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:Y2 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:G -> _
+ Variable:X2 -> _
+ Variable:X -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:Y1 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:X -> _
+ Variable:X1 -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:Y2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 90 LET F = G/(X2 - X1)
- Variable:F numeric scalar
- Variable:G numeric scalar
- Variable:X2 numeric scalar
- Variable:X1 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:F -> _
+ Variable:G -> _
+ Variable:X2 -> _
+ Variable:X1 -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 100 PRINT "INTERPOLATED F(X) = ";F
  TextConstant:"INTERPOLATED F(X) = "
  CarriageControl:;
- Variable:F numeric scalar
+ Variable:F -> _
  CarriageControl:NL
 110 PRINT
  CarriageControl:NL
@@ -50,11 +50,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 130 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 140 IF L = 1 THEN 160
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 150 STOP
  
 160 PRINT

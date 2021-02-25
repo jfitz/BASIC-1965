@@ -1765,7 +1765,9 @@ class Assignment
     @target = TargetExpressionSet.new(@token_lists[0], my_shape)
     @expression = ValueExpressionSet.new(@token_lists[2], my_shape)
     make_references
-    @comprehension_effort = @target.comprehension_effort + @expression.comprehension_effort
+
+    @comprehension_effort =
+      @target.comprehension_effort + @expression.comprehension_effort
   end
 
   def dump

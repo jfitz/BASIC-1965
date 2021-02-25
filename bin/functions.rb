@@ -46,7 +46,8 @@ class AbstractFunction < AbstractElement
   end
   
   def dump
-    "#{self.class}:#{@name}#{@signature} #{@content_type} #{@shape}"
+    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
+    "#{self.class}:#{@name}#{@signature} -> #{result}"
   end
 
   def to_s

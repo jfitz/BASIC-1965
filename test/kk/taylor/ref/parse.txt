@@ -1,61 +1,61 @@
 10 READ X,N
- Variable:X numeric scalar
- Variable:N numeric scalar
+ Variable:X -> _
+ Variable:N -> _
 20 LET S = 0
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:0
  AssignmentOperator:=
 25 LET F = 1
- Variable:F numeric scalar
+ Variable:F -> _
  NumericConstant:1
  AssignmentOperator:=
 30 FOR I = 1 TO N
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 40 LET K = 2*I-1
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:2
- Variable:I numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 50 LET S = S + F*X^K/K
- Variable:S numeric scalar
- Variable:S numeric scalar
- Variable:F numeric scalar
- Variable:X numeric scalar
- Variable:K numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:K numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S -> _
+ Variable:S -> _
+ Variable:F -> _
+ Variable:X -> _
+ Variable:K -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:K -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 60 LET F = -F
- Variable:F numeric scalar
- Variable:F numeric scalar
- UnaryOperatorMinus:-(_) numeric scalar
+ Variable:F -> _
+ Variable:F -> _
+ UnaryOperatorMinus:-(_) -> _
  AssignmentOperator:=
 70 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 80 PRINT "ATN OF " X; "= " ATN(X)
  TextConstant:"ATN OF "
  CarriageControl:
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:"= "
  CarriageControl:
- Variable:X numeric scalar
- FunctionArcTan:ATN(_) numeric scalar
+ Variable:X -> _
+ FunctionArcTan:ATN(_) -> _
  CarriageControl:NL
 85 PRINT N; "TERMS OF THE SERIES YIELD " S
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:;
  TextConstant:"TERMS OF THE SERIES YIELD "
  CarriageControl:
- Variable:S numeric scalar
+ Variable:S -> _
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
@@ -69,7 +69,7 @@
  NumericConstant:0.5
  NumericConstant:10
  NumericConstant:0.75
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:10
  NumericConstant:0.99
  NumericConstant:10

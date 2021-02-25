@@ -1,29 +1,29 @@
 10 REM TEST FOR/NEXT WITH CHANGE TO INDEX
  Remark:TEST FOR/NEXT WITH CHANGE TO INDEX
 20 FOR I = 1 TO 5
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 30 PRINT "BEFORE: ";I
  TextConstant:"BEFORE: "
  CarriageControl:;
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 40 LET I = 3
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:3
  AssignmentOperator:=
 50 PRINT "AFTER: ";I
  TextConstant:"AFTER: "
  CarriageControl:;
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 60 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 70 PRINT "FINAL: ";I
  TextConstant:"FINAL: "
  CarriageControl:;
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 90 END
  

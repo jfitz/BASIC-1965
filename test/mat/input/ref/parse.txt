@@ -5,14 +5,14 @@
 30 DIM A(6,2)
  NumericConstant:6
  NumericConstant:2
- Declaration:A(,) matrix
+ Declaration:A(,) -> _(,)
 100 MAT INPUT A
- Variable:A() numeric array
+ Variable:A() -> _()
 150 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 160 MAT PRINT A
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:NL
 999 END
  

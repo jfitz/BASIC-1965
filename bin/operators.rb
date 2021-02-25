@@ -59,7 +59,8 @@ class UnaryOperator < AbstractElement
   end
 
   def dump
-    "#{self.class}:#{@op}#{@signature} #{@content_type} #{@shape}"
+    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
+    "#{self.class}:#{@op}#{@signature} -> #{result}"
   end
 
   def unary?
@@ -164,7 +165,8 @@ class BinaryOperator < AbstractElement
   end
 
   def dump
-    "#{self.class}:#{@op}#{@signature} #{@content_type} #{@shape}"
+    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
+    "#{self.class}:#{@op}#{@signature} -> #{result}"
   end
 
   def unary?

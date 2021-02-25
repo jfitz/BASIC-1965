@@ -1,23 +1,23 @@
 10 FOR I = 1 TO 3
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 20 FOR J = 1 TO 2
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
 30 LET A(I,J) = I * J
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:A(_,_) numeric scalar
- Variable:I numeric scalar
- Variable:J numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:A(_,_) -> _
+ Variable:I -> _
+ Variable:J -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 40 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 50 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 55 PRINT "I","J","PRODUCT"
  TextConstant:"I"
  CarriageControl:,
@@ -26,26 +26,26 @@
  TextConstant:"PRODUCT"
  CarriageControl:NL
 60 FOR I = 1 TO 3
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 70 FOR J = 1 TO 2
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:2"]
 80 PRINT I, J, A(I,J)
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:,
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:A(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:A(_,_) -> _
  CarriageControl:NL
 90 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 100 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 999 END
  
 

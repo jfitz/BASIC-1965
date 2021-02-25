@@ -7,16 +7,16 @@
 40 REM NUMBER IN AS FEW GUESSES AS POSSIBLE
  Remark:NUMBER IN AS FEW GUESSES AS POSSIBLE
 50 LET R = 1 + INT(100*RND)
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:1
  NumericConstant:100
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 60 LET Y = 0
- Variable:Y numeric scalar
+ Variable:Y -> _
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "A RANDOM NUMBER HAS BEEN PICKED"
@@ -37,21 +37,21 @@
  TextConstant:"YOUR GUESS IS = "
  CarriageControl:;
 130 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 140 LET Y = Y + 1
- Variable:Y numeric scalar
- Variable:Y numeric scalar
+ Variable:Y -> _
+ Variable:Y -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 150 IF X = R THEN 180
- Variable:X numeric scalar
- Variable:R numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:X -> _
+ Variable:R -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 160 IF X > R THEN 280
- Variable:X numeric scalar
- Variable:R numeric scalar
- BinaryOperatorGreater:>(_,_) boolean scalar
+ Variable:X -> _
+ Variable:R -> _
+ BinaryOperatorGreater:>(_,_) -> ?
 170 GOTO 300
  LineNumber:300
 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
@@ -60,7 +60,7 @@
 190 PRINT "YOUR NUMBER OF TRIES WERE";Y
  TextConstant:"YOUR NUMBER OF TRIES WERE"
  CarriageControl:;
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
@@ -71,11 +71,11 @@
  TextConstant:"IF NOT TYPE 0"
  CarriageControl:NL
 230 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 240 IF L = 1 THEN 260
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 250 STOP
  
 260 PRINT

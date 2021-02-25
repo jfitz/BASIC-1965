@@ -6,84 +6,84 @@
  TextConstant:"VALUE OF X = "
  CarriageControl:;
 40 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 50 LET Y = X
- Variable:Y numeric scalar
- Variable:X numeric scalar
+ Variable:Y -> _
+ Variable:X -> _
  AssignmentOperator:=
 60 LET Z = (X*(1E-04))/2
- Variable:Z numeric scalar
- Variable:X numeric scalar
+ Variable:Z -> _
+ Variable:X -> _
  NumericConstant:0.0001
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 70 LET W = X + Z
- Variable:W numeric scalar
- Variable:X numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:W -> _
+ Variable:X -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 80 LET V = X - Z
- Variable:V numeric scalar
- Variable:X numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:V -> _
+ Variable:X -> _
+ Variable:Z -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 90 LET X = W
- Variable:X numeric scalar
- Variable:W numeric scalar
+ Variable:X -> _
+ Variable:W -> _
  AssignmentOperator:=
 100 GOSUB 280
  LineNumber:280
 110 LET A = P
- Variable:A numeric scalar
- Variable:P numeric scalar
+ Variable:A -> _
+ Variable:P -> _
  AssignmentOperator:=
 120 LET X = V
- Variable:X numeric scalar
- Variable:V numeric scalar
+ Variable:X -> _
+ Variable:V -> _
  AssignmentOperator:=
 130 GOSUB 280
  LineNumber:280
 140 LET B = P
- Variable:B numeric scalar
- Variable:P numeric scalar
+ Variable:B -> _
+ Variable:P -> _
  AssignmentOperator:=
 150 LET X = Y
- Variable:X numeric scalar
- Variable:Y numeric scalar
+ Variable:X -> _
+ Variable:Y -> _
  AssignmentOperator:=
 160 GOSUB 280
  LineNumber:280
 170 LET C = P
- Variable:C numeric scalar
- Variable:P numeric scalar
+ Variable:C -> _
+ Variable:P -> _
  AssignmentOperator:=
 180 LET F = (A - B)/(2*Z)
- Variable:F numeric scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:F -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:2
- Variable:Z numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:Z -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 190 PRINT "IF X = ";Y,"THEN F(X) = ";C
  TextConstant:"IF X = "
  CarriageControl:;
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:,
  TextConstant:"THEN F(X) = "
  CarriageControl:;
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 200 PRINT "AND F'(X) = ";F
  TextConstant:"AND F'(X) = "
  CarriageControl:;
- Variable:F numeric scalar
+ Variable:F -> _
  CarriageControl:NL
 210 PRINT
  CarriageControl:NL
@@ -91,11 +91,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 240 IF L = 1 THEN 260
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 250 STOP
  
 260 PRINT
@@ -103,10 +103,10 @@
 270 GOTO 40
  LineNumber:40
 280 LET P = X^2
- Variable:P numeric scalar
- Variable:X numeric scalar
+ Variable:P -> _
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
  AssignmentOperator:=
 290 RETURN
  

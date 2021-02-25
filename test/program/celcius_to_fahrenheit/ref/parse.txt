@@ -6,34 +6,34 @@
  TextConstant:"Fahrenheit"
  CarriageControl:NL
 30 LET C=0
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:0
  AssignmentOperator:=
 40 LET F=C*9/5+32
- Variable:F numeric scalar
- Variable:C numeric scalar
+ Variable:F -> _
+ Variable:C -> _
  NumericConstant:9
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:5
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  NumericConstant:32
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 50 PRINT C,F
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:,
- Variable:F numeric scalar
+ Variable:F -> _
  CarriageControl:NL
 60 LET C=C+1
- Variable:C numeric scalar
- Variable:C numeric scalar
+ Variable:C -> _
+ Variable:C -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 70 IF C<=10 THEN 40
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:10
- BinaryOperatorLessEqual:<=(_,_) boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 900 STOP
  
 999 END

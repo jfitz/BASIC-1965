@@ -1,7 +1,7 @@
 10 GOSUB 1000
  LineNumber:1000
 20 FOR C = 1 TO 5
- control: Variable:C numeric scalar
+ control: Variable:C -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 30    GOSUB 2000
@@ -9,7 +9,7 @@
 40    GOSUB 3000
  LineNumber:3000
 50 NEXT C
- Variable:C numeric scalar
+ Variable:C -> _
 60 STOP
  
 70
@@ -17,45 +17,45 @@
  Remark:SET UP DECK
 1010 DIM L(51)
  NumericConstant:51
- Declaration:L() array
+ Declaration:L() -> _()
 1020 FOR I = 0 TO 51
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:51"]
 1030    LET L(I) = I
- Variable:I numeric scalar
- Variable:L(_) numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:L(_) -> _
+ Variable:I -> _
  AssignmentOperator:=
 1040 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 1050 RETURN
  
 1060
 2000 REM DEAL A CARD
  Remark:DEAL A CARD
 2010 LET I = INT(52*RND(1))
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:52
  NumericConstant:1
- FunctionRnd:RND(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 2020 LET X = L(I)
- Variable:X numeric scalar
- Variable:I numeric scalar
- Variable:L(_) numeric scalar
+ Variable:X -> _
+ Variable:I -> _
+ Variable:L(_) -> _
  AssignmentOperator:=
 2030 IF X < 0 THEN 2010
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:0
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 2040 LET L(I) = -1
- Variable:I numeric scalar
- Variable:L(_) numeric scalar
+ Variable:I -> _
+ Variable:L(_) -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  AssignmentOperator:=
 2050 RETURN
  
@@ -63,42 +63,42 @@
 3000 REM PRINT A CARD
  Remark:PRINT A CARD
 3010 LET S = INT(X/13)
- Variable:S numeric scalar
- Variable:X numeric scalar
+ Variable:S -> _
+ Variable:X -> _
  NumericConstant:13
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 3020 LET V = X - 13*S
- Variable:V numeric scalar
- Variable:X numeric scalar
+ Variable:V -> _
+ Variable:X -> _
  NumericConstant:13
- Variable:S numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 3030 IF S > 0 THEN 3060
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 3040 PRINT "CLUB  ";
  TextConstant:"CLUB  "
  CarriageControl:;
 3050 GOTO 3500
  LineNumber:3500
 3060 IF S > 1 THEN 3090
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:1
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 3070 PRINT "DIAMOND  ";
  TextConstant:"DIAMOND  "
  CarriageControl:;
 3080 GOTO 3500
  LineNumber:3500
 3090 IF S > 2 THEN 3120
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:2
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 3100 PRINT "HEART  ";
  TextConstant:"HEART  "
  CarriageControl:;
@@ -109,38 +109,38 @@
  CarriageControl:;
 3130
 3500 IF V > 8 THEN 3530
- Variable:V numeric scalar
+ Variable:V -> _
  NumericConstant:8
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 3510 PRINT V + 2
- Variable:V numeric scalar
+ Variable:V -> _
  NumericConstant:2
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  CarriageControl:NL
 3520 RETURN
  
 3530 IF V > 9 THEN 3560
- Variable:V numeric scalar
+ Variable:V -> _
  NumericConstant:9
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 3540 PRINT "JACK"
  TextConstant:"JACK"
  CarriageControl:NL
 3550 RETURN
  
 3560 IF V > 10 THEN 3590
- Variable:V numeric scalar
+ Variable:V -> _
  NumericConstant:10
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 3570 PRINT "QUEEN"
  TextConstant:"QUEEN"
  CarriageControl:NL
 3580 RETURN
  
 3590 IF V > 11 THEN 3620
- Variable:V numeric scalar
+ Variable:V -> _
  NumericConstant:11
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 3600 PRINT "KING"
  TextConstant:"KING"
  CarriageControl:NL

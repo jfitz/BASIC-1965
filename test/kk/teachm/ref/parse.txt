@@ -21,15 +21,15 @@ Syntax error: Invalid line number '0'
  TextConstant:"(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
  CarriageControl:NL
 130 LET C = 1
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:1
  AssignmentOperator:=
 140 GOSUB 8000
  LineNumber:8000
 150 IF X = C THEN 200
- Variable:X numeric scalar
- Variable:C numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:X -> _
+ Variable:C -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 160 PRINT "LET'S TRY THAT ONE AGAIN."
  TextConstant:"LET'S TRY THAT ONE AGAIN."
  CarriageControl:NL
@@ -48,19 +48,19 @@ Syntax error: Invalid line number '0'
  TextConstant:"4. NONE OF THESE.)"
  CarriageControl:NL
 220 LET C = 3
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:3
  AssignmentOperator:=
 230 GOSUB 8000
  LineNumber:8000
 240 IF C = X THEN 300
- Variable:C numeric scalar
- Variable:X numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:C -> _
+ Variable:X -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 250 IF X = 1 THEN 280
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 260 PRINT "ANOTHER RETRY -- OKAY?"
  TextConstant:"ANOTHER RETRY -- OKAY?"
  CarriageControl:NL
@@ -95,19 +95,19 @@ Syntax error: Invalid line number '0'
  TextConstant:"4. NONE OF THESE.)"
  CarriageControl:NL
 350 LET C = 2
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:2
  AssignmentOperator:=
 360 GOSUB 8000
  LineNumber:8000
 370 IF C = X THEN 400
- Variable:C numeric scalar
- Variable:X numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:C -> _
+ Variable:X -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 375 IF X <> 1 THEN 390
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorNotEqual:<>(_,_) boolean scalar
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 380 PRINT "BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
  TextConstant:"BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
  CarriageControl:NL
@@ -127,19 +127,19 @@ Syntax error: Invalid line number '0'
  TextConstant:"(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
  CarriageControl:NL
 420 LET C = 3
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:3
  AssignmentOperator:=
 430 GOSUB 8000
  LineNumber:8000
 440 IF C = X THEN 500
- Variable:C numeric scalar
- Variable:X numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:C -> _
+ Variable:X -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 450 IF X = 1 THEN 470
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 460 PRINT "THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
  TextConstant:"THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
  CarriageControl:NL
@@ -169,19 +169,19 @@ Syntax error: Invalid line number '0'
  TextConstant:"(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
  CarriageControl:NL
 530 LET C = 1
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:1
  AssignmentOperator:=
 540 GOSUB 8000
  LineNumber:8000
 550 IF C = X THEN 600
- Variable:C numeric scalar
- Variable:X numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:C -> _
+ Variable:X -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 560 IF C = 3 THEN 580
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:3
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 570 PRINT "THIS ONE INCREASES THE VALUE OF X BY T UNITS."
  TextConstant:"THIS ONE INCREASES THE VALUE OF X BY T UNITS."
  CarriageControl:NL
@@ -207,11 +207,11 @@ Syntax error: Invalid line number '0'
  TextConstant:"YOUR ANSWER"
  CarriageControl:;
 8010 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 8020 IF C <> X THEN 8050
- Variable:C numeric scalar
- Variable:X numeric scalar
- BinaryOperatorNotEqual:<>(_,_) boolean scalar
+ Variable:C -> _
+ Variable:X -> _
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 8030 PRINT "CORRECT"
  TextConstant:"CORRECT"
  CarriageControl:NL
@@ -220,7 +220,7 @@ Syntax error: Invalid line number '0'
 8050 PRINT "INCORRECT. CORRECT ANSWER IS "; C
  TextConstant:"INCORRECT. CORRECT ANSWER IS "
  CarriageControl:;
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 8060 RETURN
  

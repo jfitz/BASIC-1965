@@ -3,22 +3,22 @@
 20 OPTION BASE 0
  NumericConstant:0
 30 LET R = 6
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:6
  AssignmentOperator:=
 40 LET C = 2
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:2
  AssignmentOperator:=
 100 MAT INPUT A(R,C)
- Variable:R numeric scalar
- Variable:C numeric scalar
- Variable:A() numeric array
+ Variable:R -> _
+ Variable:C -> _
+ Variable:A() -> _()
 150 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 160 MAT PRINT A
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:NL
 999 END
  

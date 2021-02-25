@@ -2,48 +2,48 @@
  TextConstant:"NUMBER TO BE FACTORED:"
  CarriageControl:;
 110 INPUT N
- Variable:N numeric scalar
+ Variable:N -> _
 120 PRINT
  CarriageControl:NL
 130 IF N = 0 THEN 999
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 140 IF N = 2 THEN 250
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:2
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 150 LET Z = 0
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:0
  AssignmentOperator:=
 160
 170 LET F = 2
- Variable:F numeric scalar
+ Variable:F -> _
  NumericConstant:2
  AssignmentOperator:=
 180 GOSUB 300
  LineNumber:300
 190 FOR F = 3 TO SQR(N)+1 STEP 2
- control: Variable:F numeric scalar
+ control: Variable:F -> _
  start:   ["NumericConstant:3"]
- end:     ["Variable:N numeric scalar", "FunctionSqr:SQR(_) numeric scalar", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) numeric scalar"]
+ end:     ["Variable:N -> _", "FunctionSqr:SQR(_) -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
  step:    ["NumericConstant:2"]
 200 GOSUB 300
  LineNumber:300
 210 NEXT F
- Variable:F numeric scalar
+ Variable:F -> _
 220 IF Z = 0 THEN 250
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 230 PRINT N;
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:;
 240 GOTO 500
  LineNumber:500
 250 PRINT N; "IS PRIME."
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:;
  TextConstant:"IS PRIME."
  CarriageControl:NL
@@ -53,20 +53,20 @@
 300 REM TESTS F AS A FACTOR
  Remark:TESTS F AS A FACTOR
 310 IF N/F <> INT(N/F) THEN 410
- Variable:N numeric scalar
- Variable:F numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:N numeric scalar
- Variable:F numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorNotEqual:<>(_,_) boolean scalar
+ Variable:N -> _
+ Variable:F -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:N -> _
+ Variable:F -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 330 IF Z > 0 THEN 370
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 340 PRINT N; "HAS THE FACTORS:"
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:;
  TextConstant:"HAS THE FACTORS:"
  CarriageControl:NL
@@ -74,22 +74,22 @@
  TextConstant:"     "
  CarriageControl:;
 360 LET Z = 1
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:1
  AssignmentOperator:=
 370 PRINT F;
- Variable:F numeric scalar
+ Variable:F -> _
  CarriageControl:;
 380 LET N = N/F
- Variable:N numeric scalar
- Variable:N numeric scalar
- Variable:F numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:N -> _
+ Variable:N -> _
+ Variable:F -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 390 IF N = 1 THEN 500
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 400 GOTO 310
  LineNumber:310
 410 RETURN

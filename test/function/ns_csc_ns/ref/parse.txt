@@ -1,5 +1,5 @@
 10 LET P = 3.14159
- Variable:P numeric scalar
+ Variable:P -> _
  NumericConstant:3.14159
  AssignmentOperator:=
 20 PRINT "ANGLE","COSECANT"
@@ -8,28 +8,28 @@
  TextConstant:"COSECANT"
  CarriageControl:NL
 30 FOR I = 0 TO 2 STEP 0.1
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:2"]
  step:    ["NumericConstant:0.1"]
 40 LET A = I * P
- Variable:A numeric scalar
- Variable:I numeric scalar
- Variable:P numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:A -> _
+ Variable:I -> _
+ Variable:P -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 50 LET C = CSC(A)
- Variable:C numeric scalar
- Variable:A numeric scalar
- FunctionCsc:CSC(_) numeric scalar
+ Variable:C -> _
+ Variable:A -> _
+ FunctionCsc:CSC(_) -> _
  AssignmentOperator:=
 60 PRINT A, C
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 70 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 99 END
  
 

@@ -3,7 +3,7 @@
 20 OPTION BASE 0
  NumericConstant:0
 22 LET B = 0
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:0
  AssignmentOperator:=
 50 DATA 1, 1
@@ -24,7 +24,7 @@
  NumericConstant:0
  NumericConstant:2
  NumericConstant:1
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:3
  NumericConstant:0
  NumericConstant:0
@@ -33,7 +33,7 @@
  NumericConstant:1
  NumericConstant:4
  NumericConstant:3
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:1
  NumericConstant:0
  NumericConstant:5
@@ -43,7 +43,7 @@
 120 OPTION BASE 1
  NumericConstant:1
 122 LET B = 1
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:1
  AssignmentOperator:=
 150 DATA 2, 2
@@ -64,7 +64,7 @@
  NumericConstant:0
  NumericConstant:2
  NumericConstant:1
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:3
  NumericConstant:0
  NumericConstant:0
@@ -73,7 +73,7 @@
  NumericConstant:1
  NumericConstant:4
  NumericConstant:3
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:1
  NumericConstant:0
  NumericConstant:5
@@ -83,43 +83,43 @@
 199 STOP
  
 400 READ R,C
- Variable:R numeric scalar
- Variable:C numeric scalar
+ Variable:R -> _
+ Variable:C -> _
 405 DIM M1(R,C)
- Variable:R numeric scalar
- Variable:C numeric scalar
- Declaration:M1(,) matrix
+ Variable:R -> _
+ Variable:C -> _
+ Declaration:M1(,) -> _(,)
 410 FOR I = B TO R
- control: Variable:I numeric scalar
- start:   ["Variable:B numeric scalar"]
- end:     ["Variable:R numeric scalar"]
+ control: Variable:I -> _
+ start:   ["Variable:B -> _"]
+ end:     ["Variable:R -> _"]
 420 FOR J = B TO C
- control: Variable:J numeric scalar
- start:   ["Variable:B numeric scalar"]
- end:     ["Variable:C numeric scalar"]
+ control: Variable:J -> _
+ start:   ["Variable:B -> _"]
+ end:     ["Variable:C -> _"]
 430 READ M1(I,J)
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:M1(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:M1(_,_) -> _
 440 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 450 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 460 PRINT "MATRIX:"
  TextConstant:"MATRIX:"
  CarriageControl:NL
 470 MAT PRINT M1;
- Variable:M1(,) numeric matrix
+ Variable:M1(,) -> _(,)
  CarriageControl:;
 480 LET D = DET(M1)
- Variable:D numeric scalar
- Variable:M1(,) numeric matrix
- FunctionDet:DET(_) numeric scalar
+ Variable:D -> _
+ Variable:M1(,) -> _(,)
+ FunctionDet:DET(_) -> _
  AssignmentOperator:=
 490 PRINT "DETERMINANT:" D
  TextConstant:"DETERMINANT:"
  CarriageControl:
- Variable:D numeric scalar
+ Variable:D -> _
  CarriageControl:NL
 495 PRINT
  CarriageControl:NL

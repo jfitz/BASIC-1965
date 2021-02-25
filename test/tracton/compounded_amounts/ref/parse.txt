@@ -19,7 +19,7 @@
  TextConstant:"ENTER 1 TO 5"
  CarriageControl:NL
 80 INPUT A
- Variable:A numeric scalar
+ Variable:A -> _
 90 ON A GOTO 100,160,220,280,340
  Unknown statement 'ON A GOTO 100,160,220,280,340'
  Unimplemented
@@ -30,19 +30,19 @@
 120 GOSUB 470
  LineNumber:470
 130 LET X = Y*((1 + I)^N)
- Variable:X numeric scalar
- Variable:Y numeric scalar
+ Variable:X -> _
+ Variable:Y -> _
  NumericConstant:1
- Variable:I numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:I -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 140 PRINT "FUTURE VALUE = ";X
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:NL
 150 GOTO 390
  LineNumber:390
@@ -53,19 +53,19 @@
 180 GOSUB 470
  LineNumber:470
 190 LET Y = X*((1 + I)^N)
- Variable:Y numeric scalar
- Variable:X numeric scalar
+ Variable:Y -> _
+ Variable:X -> _
  NumericConstant:1
- Variable:I numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:I -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 200 PRINT "PRESENT VALUE = ";Y
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:NL
 210 GOTO 390
  LineNumber:390
@@ -76,21 +76,21 @@
 240 GOSUB 470
  LineNumber:470
 250 LET L = Y*((1 + I^N) - 1)
- Variable:L numeric scalar
- Variable:Y numeric scalar
+ Variable:L -> _
+ Variable:Y -> _
  NumericConstant:1
- Variable:I numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:I -> _
+ Variable:N -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 260 PRINT "INTEREST = ";L
  TextConstant:"INTEREST = "
  CarriageControl:;
- Variable:L numeric scalar
+ Variable:L -> _
  CarriageControl:NL
 270 GOTO 390
  LineNumber:390
@@ -101,21 +101,21 @@
 300 GOSUB 470
  LineNumber:470
 310 LET I = ((X/Y)^(1/N)) - 1
- Variable:I numeric scalar
- Variable:X numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:I -> _
+ Variable:X -> _
+ Variable:Y -> _
+ BinaryOperatorDivide:/(_,_) -> _
  NumericConstant:1
- Variable:N numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPower:^(_,_) -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 320 PRINT "INTEREST RATE = ";I
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 330 GOTO 390
  LineNumber:390
@@ -126,21 +126,21 @@
 360 GOSUB 440
  LineNumber:440
 370 LET N = (LOG(X/Y))/(LOG(1 + I))
- Variable:N numeric scalar
- Variable:X numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionLog:LOG(_) numeric scalar
+ Variable:N -> _
+ Variable:X -> _
+ Variable:Y -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionLog:LOG(_) -> _
  NumericConstant:1
- Variable:I numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionLog:LOG(_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:I -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionLog:LOG(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 380 PRINT "NUMBER OF TIME PERIODS = ";N
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:NL
 390 PRINT
  CarriageControl:NL
@@ -148,11 +148,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 401 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 402 IF L = 1 THEN 404
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 403 STOP
  
 404 PRINT
@@ -163,28 +163,28 @@
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
 420 INPUT Y
- Variable:Y numeric scalar
+ Variable:Y -> _
 430 RETURN
  
 440 PRINT "INTEREST RATE = ";
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
 450 INPUT I
- Variable:I numeric scalar
+ Variable:I -> _
 460 RETURN
  
 470 PRINT "NUMBER OF TIME PERIODS = ";
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
 480 INPUT N
- Variable:N numeric scalar
+ Variable:N -> _
 490 RETURN
  
 500 PRINT "FUTURE VALUE = ";
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
 510 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 520 RETURN
  
 530 END

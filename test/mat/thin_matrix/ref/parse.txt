@@ -5,66 +5,66 @@
 30 DIM H(0,5), V(5,0)
  NumericConstant:0
  NumericConstant:5
- Declaration:H(,) matrix
+ Declaration:H(,) -> _(,)
  NumericConstant:5
  NumericConstant:0
- Declaration:V(,) matrix
+ Declaration:V(,) -> _(,)
 40 FOR I = 0 TO 5
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET H(0,I) = I
  NumericConstant:0
- Variable:I numeric scalar
- Variable:H(_,_) numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:H(_,_) -> _
+ Variable:I -> _
  AssignmentOperator:=
 52 LET V(I,0) = I
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:0
- Variable:V(_,_) numeric scalar
- Variable:I numeric scalar
+ Variable:V(_,_) -> _
+ Variable:I -> _
  AssignmentOperator:=
 60 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 70 MAT PRINT H
- Variable:H(,) numeric matrix
+ Variable:H(,) -> _(,)
  CarriageControl:NL
 72 MAT PRINT V
- Variable:V(,) numeric matrix
+ Variable:V(,) -> _(,)
  CarriageControl:NL
 120 OPTION BASE 1
  NumericConstant:1
 130 DIM H(1,5), V(5,1)
  NumericConstant:1
  NumericConstant:5
- Declaration:H(,) matrix
+ Declaration:H(,) -> _(,)
  NumericConstant:5
  NumericConstant:1
- Declaration:V(,) matrix
+ Declaration:V(,) -> _(,)
 140 FOR I = 1 TO 5
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:5"]
 150 LET H(1,I) = I
  NumericConstant:1
- Variable:I numeric scalar
- Variable:H(_,_) numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:H(_,_) -> _
+ Variable:I -> _
  AssignmentOperator:=
 152 LET V(I,1) = I
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:1
- Variable:V(_,_) numeric scalar
- Variable:I numeric scalar
+ Variable:V(_,_) -> _
+ Variable:I -> _
  AssignmentOperator:=
 160 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 170 MAT PRINT H
- Variable:H(,) numeric matrix
+ Variable:H(,) -> _(,)
  CarriageControl:NL
 172 MAT PRINT V
- Variable:V(,) numeric matrix
+ Variable:V(,) -> _(,)
  CarriageControl:NL
 999 END
  

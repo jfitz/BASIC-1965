@@ -1,75 +1,75 @@
 10 LET A1=10*(3*(2+1))
- Variable:A1 numeric scalar
+ Variable:A1 -> _
  NumericConstant:10
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 20 LET A2=(3*(2+1))*10
- Variable:A2 numeric scalar
+ Variable:A2 -> _
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:10
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 30 LET B1=10*(3+(2*1))
- Variable:B1 numeric scalar
+ Variable:B1 -> _
  NumericConstant:10
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 40 LET B2=(3+(2*1))*10
- Variable:B2 numeric scalar
+ Variable:B2 -> _
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:10
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 50 LET C1=10+(3*(2+1))
- Variable:C1 numeric scalar
+ Variable:C1 -> _
  NumericConstant:10
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 60 LET C2=(3*(2+1))+10
- Variable:C2 numeric scalar
+ Variable:C2 -> _
  NumericConstant:3
  NumericConstant:2
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:10
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 70 PRINT A1, A2, B1, B2, C1, C2
- Variable:A1 numeric scalar
+ Variable:A1 -> _
  CarriageControl:,
- Variable:A2 numeric scalar
+ Variable:A2 -> _
  CarriageControl:,
- Variable:B1 numeric scalar
+ Variable:B1 -> _
  CarriageControl:,
- Variable:B2 numeric scalar
+ Variable:B2 -> _
  CarriageControl:,
- Variable:C1 numeric scalar
+ Variable:C1 -> _
  CarriageControl:,
- Variable:C2 numeric scalar
+ Variable:C2 -> _
  CarriageControl:NL
 90 STOP
  

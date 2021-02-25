@@ -5,15 +5,15 @@
 15 DIM A(3,4)
  NumericConstant:3
  NumericConstant:4
- Declaration:A(,) matrix
+ Declaration:A(,) -> _(,)
 20 FILES "input.txt"
  TextConstant:"input.txt"
 30 MAT INPUT #1;A
  NumericConstant:1
- UnaryOperatorHash:#(_) filehandle scalar
- Variable:A() numeric array
+ UnaryOperatorHash:#(_) -> FH
+ Variable:A() -> _()
 40 MAT PRINT A
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:NL
 90 STOP
  

@@ -6,84 +6,84 @@
  TextConstant:"ENTER THE TEST NUMBER, ZERO TO STOP"
  CarriageControl:NL
 40 INPUT N
- Variable:N numeric scalar
+ Variable:N -> _
 50 LET N = INT(N)
- Variable:N numeric scalar
- Variable:N numeric scalar
- FunctionInt:INT(_) numeric scalar
+ Variable:N -> _
+ Variable:N -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 60 IF N = 0 THEN 220
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 70 IF N < 4 THEN 180
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:4
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 80 LET I = 0
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:0
  AssignmentOperator:=
 90 LET T = 2
- Variable:T numeric scalar
+ Variable:T -> _
  NumericConstant:2
  AssignmentOperator:=
 100 LET J = INT(N/T)
- Variable:J numeric scalar
- Variable:N numeric scalar
- Variable:T numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ Variable:J -> _
+ Variable:N -> _
+ Variable:T -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 110 LET K = J*T
- Variable:K numeric scalar
- Variable:J numeric scalar
- Variable:T numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:K -> _
+ Variable:J -> _
+ Variable:T -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 120 IF N = K THEN 200
- Variable:N numeric scalar
- Variable:K numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:N -> _
+ Variable:K -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 130 LET I = I + 1
- Variable:I numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:I -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 140 LET L = T*T
- Variable:L numeric scalar
- Variable:T numeric scalar
- Variable:T numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:L -> _
+ Variable:T -> _
+ Variable:T -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 150 IF L > N THEN 180
- Variable:L numeric scalar
- Variable:N numeric scalar
- BinaryOperatorGreater:>(_,_) boolean scalar
+ Variable:L -> _
+ Variable:N -> _
+ BinaryOperatorGreater:>(_,_) -> ?
 160 LET T = (I*2) + 1
- Variable:T numeric scalar
- Variable:I numeric scalar
+ Variable:T -> _
+ Variable:I -> _
  NumericConstant:2
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 170 GOTO 100
  LineNumber:100
 180 PRINT N;"IS A PRIME"
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:;
  TextConstant:"IS A PRIME"
  CarriageControl:NL
 190 GOTO 30
  LineNumber:30
 200 PRINT N;"IS NOT A PRIME:";T;"IS THE SMALLEST FACTOR"
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:;
  TextConstant:"IS NOT A PRIME:"
  CarriageControl:;
- Variable:T numeric scalar
+ Variable:T -> _
  CarriageControl:;
  TextConstant:"IS THE SMALLEST FACTOR"
  CarriageControl:NL

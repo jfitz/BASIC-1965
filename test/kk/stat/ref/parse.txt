@@ -1,90 +1,90 @@
 100 LET N = 0
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:0
  AssignmentOperator:=
 110 LET S = 0
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:0
  AssignmentOperator:=
 120 LET S2 = 0
- Variable:S2 numeric scalar
+ Variable:S2 -> _
  NumericConstant:0
  AssignmentOperator:=
 130
 140 READ X
- Variable:X numeric scalar
+ Variable:X -> _
 150 IF X = 999999 THEN 210
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:999999
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 160 LET N = N + 1
- Variable:N numeric scalar
- Variable:N numeric scalar
+ Variable:N -> _
+ Variable:N -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 170 LET S = S + X
- Variable:S numeric scalar
- Variable:S numeric scalar
- Variable:X numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S -> _
+ Variable:S -> _
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 180 LET S2 = S2 + X*X
- Variable:S2 numeric scalar
- Variable:S2 numeric scalar
- Variable:X numeric scalar
- Variable:X numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S2 -> _
+ Variable:S2 -> _
+ Variable:X -> _
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 190 GO TO 140
  LineNumber:140
 200
 210 LET M = S/N
- Variable:M numeric scalar
- Variable:S numeric scalar
- Variable:N numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:M -> _
+ Variable:S -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 220 LET V = (N*S2 - S*S)/N/(N-1)
- Variable:V numeric scalar
- Variable:N numeric scalar
- Variable:S2 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:S numeric scalar
- Variable:S numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:N numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:N numeric scalar
+ Variable:V -> _
+ Variable:N -> _
+ Variable:S2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S -> _
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:N -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 230 LET D = SQR(V)
- Variable:D numeric scalar
- Variable:V numeric scalar
- FunctionSqr:SQR(_) numeric scalar
+ Variable:D -> _
+ Variable:V -> _
+ FunctionSqr:SQR(_) -> _
  AssignmentOperator:=
 240 LET P = .6745*D
- Variable:P numeric scalar
+ Variable:P -> _
  NumericConstant:0.6745
- Variable:D numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 250 LET E = SQR(V/N)
- Variable:E numeric scalar
- Variable:V numeric scalar
- Variable:N numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionSqr:SQR(_) numeric scalar
+ Variable:E -> _
+ Variable:V -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionSqr:SQR(_) -> _
  AssignmentOperator:=
 260 LET C = D/M
- Variable:C numeric scalar
- Variable:D numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:C -> _
+ Variable:D -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 270
 280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
@@ -99,15 +99,15 @@
  TextConstant:"VARIANCE"
  CarriageControl:NL
 290 PRINT N, S, S2, M, V
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:,
- Variable:S numeric scalar
+ Variable:S -> _
  CarriageControl:,
- Variable:S2 numeric scalar
+ Variable:S2 -> _
  CarriageControl:,
- Variable:M numeric scalar
+ Variable:M -> _
  CarriageControl:,
- Variable:V numeric scalar
+ Variable:V -> _
  CarriageControl:NL
 300 PRINT
  CarriageControl:NL
@@ -121,13 +121,13 @@
  TextConstant:"COEFF. VAR."
  CarriageControl:NL
 320 PRINT D, P, E, C
- Variable:D numeric scalar
+ Variable:D -> _
  CarriageControl:,
- Variable:P numeric scalar
+ Variable:P -> _
  CarriageControl:,
- Variable:E numeric scalar
+ Variable:E -> _
  CarriageControl:,
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 330 PRINT
  CarriageControl:NL
@@ -135,23 +135,23 @@
  CarriageControl:NL
 350
 360 LET N = 0
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:0
  AssignmentOperator:=
 370 LET S = 0
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:0
  AssignmentOperator:=
 380 LET S2 = 0
- Variable:S2 numeric scalar
+ Variable:S2 -> _
  NumericConstant:0
  AssignmentOperator:=
 390 READ X
- Variable:X numeric scalar
+ Variable:X -> _
 400 IF X <> 999999 THEN 160
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:999999
- BinaryOperatorNotEqual:<>(_,_) boolean scalar
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 410
 900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
  NumericConstant:1

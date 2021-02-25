@@ -2,46 +2,46 @@
  Remark:TEST THE OPTION STATEMENT
 20 DIM A(10)
  NumericConstant:10
- Declaration:A() array
+ Declaration:A() -> _()
 30 FOR I = 1 TO 10
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 40 LET A(I) = I
- Variable:I numeric scalar
- Variable:A(_) numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:A(_) -> _
+ Variable:I -> _
  AssignmentOperator:=
 50 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 100 OPTION BASE 0
  NumericConstant:0
 110 FOR I = 0 TO 10
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:10"]
 120 PRINT I;A(I)
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:;
- Variable:I numeric scalar
- Variable:A(_) numeric scalar
+ Variable:I -> _
+ Variable:A(_) -> _
  CarriageControl:NL
 130 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 200 OPTION BASE 1
  NumericConstant:1
 210 FOR I = 0 TO 10
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:10"]
 220 PRINT I;A(I)
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:;
- Variable:I numeric scalar
- Variable:A(_) numeric scalar
+ Variable:I -> _
+ Variable:A(_) -> _
  CarriageControl:NL
 230 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 999 END
  
 

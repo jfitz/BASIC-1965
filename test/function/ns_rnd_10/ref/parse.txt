@@ -1,19 +1,19 @@
 10 REM PRINT RANDOM NUMBERS
  Remark:PRINT RANDOM NUMBERS
 20 FOR I = 1 TO 10
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 30 LET A = RND(10)
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:10
- FunctionRnd:RND(_) numeric scalar
+ FunctionRnd:RND(_) -> _
  AssignmentOperator:=
 40 PRINT A
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:NL
 50 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 99 END
  
 

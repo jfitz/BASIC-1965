@@ -6,18 +6,18 @@
  TextConstant:"LOG10(I)"
  CarriageControl:NL
 30 FOR I = 0.5 TO 1.5 STEP 0.1
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0.5"]
  end:     ["NumericConstant:1.5"]
  step:    ["NumericConstant:0.1"]
 40 PRINT I, LOG(I)
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
- Variable:I numeric scalar
- FunctionLog:LOG(_) numeric scalar
+ Variable:I -> _
+ FunctionLog:LOG(_) -> _
  CarriageControl:NL
 50 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 99 END
  
 

@@ -157,19 +157,19 @@
 536 REM X-WING ENERGY AND SKY ENERGY
  Remark:X-WING ENERGY AND SKY ENERGY
 540 LET X1 = 5E05
- Variable:X1 numeric scalar
+ Variable:X1 -> _
  NumericConstant:500000
  AssignmentOperator:=
 550 LET T1 = 1E04
- Variable:T1 numeric scalar
+ Variable:T1 -> _
  NumericConstant:10000
  AssignmentOperator:=
 560 LET T2 = 5E04
- Variable:T2 numeric scalar
+ Variable:T2 -> _
  NumericConstant:50000
  AssignmentOperator:=
 570 LET D = 1E05
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:100000
  AssignmentOperator:=
 580 GOSUB 630
@@ -185,213 +185,213 @@
 625 GOSUB 580
  LineNumber:580
 630 IF D > 1E04 THEN 660
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:10000
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 640 LET L = 1
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
  AssignmentOperator:=
 650 GOTO 700
  LineNumber:700
 660 LET L = 0
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:0
  AssignmentOperator:=
 670 LET H = (1 + INT(100*RND)/100)
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:1
  NumericConstant:100
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 680 LET E1 = 5000*H
- Variable:E1 numeric scalar
+ Variable:E1 -> _
  NumericConstant:5000
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 690 GOTO 720
  LineNumber:720
 700 LET H = (1 + INT(100*RND)/100)
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:1
  NumericConstant:100
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 710 LET E1 = 1000*H
- Variable:E1 numeric scalar
+ Variable:E1 -> _
  NumericConstant:1000
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 720 RETURN
  
 730 IF D > 5E03 THEN 760
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:5000
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 740 LET K = 1
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:1
  AssignmentOperator:=
 750 GOTO 800
  LineNumber:800
 760 LET K = 0
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:0
  AssignmentOperator:=
 770 LET H = (1 + INT(100*RND)/100)
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:1
  NumericConstant:100
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 780 LET E2 = 8000*H
- Variable:E2 numeric scalar
+ Variable:E2 -> _
  NumericConstant:8000
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 790 GOTO 820
  LineNumber:820
 800 LET H = (1 + INT(100*RND)/100)
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:1
  NumericConstant:100
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 810 LET E2 = 3000*H
- Variable:E2 numeric scalar
+ Variable:E2 -> _
  NumericConstant:3000
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 820 RETURN
  
 840 IF D < 3E03 THEN 860
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:3000
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 850 LET E3 = 0
- Variable:E3 numeric scalar
+ Variable:E3 -> _
  NumericConstant:0
  AssignmentOperator:=
 860 LET H = (1 + INT(100*RND)/100)
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:1
  NumericConstant:100
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 870 LET E3 = 2E04*H
- Variable:E3 numeric scalar
+ Variable:E3 -> _
  NumericConstant:20000
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 880 LET T1 = T1 - E1
- Variable:T1 numeric scalar
- Variable:T1 numeric scalar
- Variable:E1 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T1 -> _
+ Variable:T1 -> _
+ Variable:E1 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 890 LET T2 = T2 - E2
- Variable:T2 numeric scalar
- Variable:T2 numeric scalar
- Variable:E2 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T2 -> _
+ Variable:T2 -> _
+ Variable:E2 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 900 IF T1 <= 0 THEN 920
- Variable:T1 numeric scalar
+ Variable:T1 -> _
  NumericConstant:0
- BinaryOperatorLessEqual:<=(_,_) boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 910 GOTO 950
  LineNumber:950
 920 LET E1 = 0
- Variable:E1 numeric scalar
+ Variable:E1 -> _
  NumericConstant:0
  AssignmentOperator:=
 930 LET Y = 1
- Variable:Y numeric scalar
+ Variable:Y -> _
  NumericConstant:1
  AssignmentOperator:=
 940 GOTO 960
  LineNumber:960
 950 LET Y = 0
- Variable:Y numeric scalar
+ Variable:Y -> _
  NumericConstant:0
  AssignmentOperator:=
 960 IF T2 <= 0 THEN 980
- Variable:T2 numeric scalar
+ Variable:T2 -> _
  NumericConstant:0
- BinaryOperatorLessEqual:<=(_,_) boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 970 GOTO 1010
  LineNumber:1010
 980 LET E2 = 0
- Variable:E2 numeric scalar
+ Variable:E2 -> _
  NumericConstant:0
  AssignmentOperator:=
 990 LET Z = 1
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:1
  AssignmentOperator:=
 1000 GOTO 1020
  LineNumber:1020
 1010 LET Z = 0
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:0
  AssignmentOperator:=
 1020 LET X1 = X1 - E1 - E2 - E3
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
- Variable:E1 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:E2 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:E3 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
+ Variable:E1 -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:E2 -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:E3 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1030 RETURN
  
 1040 PRINT "DISTANCE TO DEATH STAR IS NOW";D;"KM"
  TextConstant:"DISTANCE TO DEATH STAR IS NOW"
  CarriageControl:;
- Variable:D numeric scalar
+ Variable:D -> _
  CarriageControl:;
  TextConstant:"KM"
  CarriageControl:NL
 1045 IF Y = 1 THEN 1100
- Variable:Y numeric scalar
+ Variable:Y -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 1050 IF L = 0 THEN 1080
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 1060 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
  TextConstant:"THE SKY FIGHTER HAS FIRED HIS LASER"
  CarriageControl:NL
@@ -406,15 +406,15 @@
  TextConstant:"THE SKY FIGHTER IS OUT OF ACTION!!!"
  CarriageControl:NL
 1110 IF Z = 1 THEN 1180
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 1120 GOTO 1220
  LineNumber:1220
 1130 IF K = 0 THEN 1160
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 1140 PRINT "THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
  TextConstant:"THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
  CarriageControl:NL
@@ -437,12 +437,12 @@
 1210 GOTO 1360
  LineNumber:1360
 1220 LET C = 1 + (5*RND)
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:1
  NumericConstant:5
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 1230 ON C GOTO 1240, 1270, 1290, 1330
  Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
@@ -479,9 +479,9 @@
 1350 GOTO 1130
  LineNumber:1130
 1360 IF D <= 3E03 THEN 1380
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:3000
- BinaryOperatorLessEqual:<=(_,_) boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 1370 GOTO 1410
  LineNumber:1410
 1380 PRINT "YOU ARE CLOSER THAN 3000KM TO THE SPACE STATION"
@@ -498,14 +498,14 @@
 1415 PRINT "YOUR TOTAL ENERGY IS NOW";X1;"UNITS"
  TextConstant:"YOUR TOTAL ENERGY IS NOW"
  CarriageControl:;
- Variable:X1 numeric scalar
+ Variable:X1 -> _
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL
 1420 IF X1 < 2E04 THEN 1440
- Variable:X1 numeric scalar
+ Variable:X1 -> _
  NumericConstant:20000
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 1430 GOTO 1490
  LineNumber:1490
 1440 PRINT "YOU HAVE DEPLETED YOUR ENERGY SUPPLY, THE DEATH"
@@ -530,14 +530,14 @@
  TextConstant:"WHICH COMMAND DO YOU WISH TO EXECUTE"
  CarriageControl:NL
 1520 INPUT B
- Variable:B numeric scalar
+ Variable:B -> _
 1530 ON B GOTO 1540, 1690, 2030, 2320
  Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
  Unimplemented
 1540 IF D <= 1000 THEN 1590
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:1000
- BinaryOperatorLessEqual:<=(_,_) boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
  TextConstant:"YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
  CarriageControl:NL
@@ -545,34 +545,34 @@
  TextConstant:"AWAY THAN 1000KM"
  CarriageControl:NL
 1570 LET X1 = X1 - 2E04
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
  NumericConstant:20000
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1580 GOTO 2680
  LineNumber:2680
 1590 LET H = 1 + (INT(100*RND))
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:1
  NumericConstant:100
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 1600 IF H > 50 THEN 1640
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:50
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  TextConstant:"YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  CarriageControl:NL
 1620 LET X1 = X1 - 2E04
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
  NumericConstant:20000
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1630 GOTO 2680
  LineNumber:2680
@@ -622,24 +622,24 @@
 1810 GOTO 1760
  LineNumber:1760
 1820 LET Q = 5500
- Variable:Q numeric scalar
+ Variable:Q -> _
  NumericConstant:5500
  AssignmentOperator:=
 1830 GOTO 1760
  LineNumber:1760
 1840 LET T1 = T1 - Q
- Variable:T1 numeric scalar
- Variable:T1 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T1 -> _
+ Variable:T1 -> _
+ Variable:Q -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1850 GOTO 1960
  LineNumber:1960
 1860 LET T2 = T2 - Q
- Variable:T2 numeric scalar
- Variable:T2 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T2 -> _
+ Variable:T2 -> _
+ Variable:Q -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1870 GOTO 1960
  LineNumber:1960
@@ -663,38 +663,38 @@
 1950 GOTO 1880
  LineNumber:1880
 1960 LET X1 = X1 - 5000
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
  NumericConstant:5000
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1970 GOTO 2660
  LineNumber:2660
 1980 LET T1 = T1 - Q
- Variable:T1 numeric scalar
- Variable:T1 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T1 -> _
+ Variable:T1 -> _
+ Variable:Q -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1982 LET X1 = X1 - 5000
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
  NumericConstant:5000
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 1990 GOTO 2010
  LineNumber:2010
 2000 LET T2 = T2 - Q
- Variable:T2 numeric scalar
- Variable:T2 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T2 -> _
+ Variable:T2 -> _
+ Variable:Q -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2010 LET X1 = X1 - 5000
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
  NumericConstant:5000
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2020 GOTO 2660
  LineNumber:2660
@@ -716,13 +716,13 @@
 2090 GOTO 2040
  LineNumber:2040
 2100 LET J = 1
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:1
  AssignmentOperator:=
 2110 GOTO 2130
  LineNumber:2130
 2120 LET J = 0
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:0
  AssignmentOperator:=
 2130 PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
@@ -734,24 +734,24 @@
 2150 INPUT C$
  Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 2160 IF J = 1 THEN 2190
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 2170 LET Q = 1000*(1 + INT(RND)/100)
- Variable:Q numeric scalar
+ Variable:Q -> _
  NumericConstant:1000
  NumericConstant:1
- FunctionRnd:RND numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 2180 GOTO 2200
  LineNumber:2200
 2190 LET Q = 1000
- Variable:Q numeric scalar
+ Variable:Q -> _
  NumericConstant:1000
  AssignmentOperator:=
 2200 IF C$ = "S" THEN 2240
@@ -764,36 +764,36 @@
 2230 GOTO 2130
  LineNumber:2130
 2240 LET T1 = T1 - Q
- Variable:T1 numeric scalar
- Variable:T1 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T1 -> _
+ Variable:T1 -> _
+ Variable:Q -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2250 GOTO 2270
  LineNumber:2270
 2260 LET T2 = T2 - Q
- Variable:T2 numeric scalar
- Variable:T2 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T2 -> _
+ Variable:T2 -> _
+ Variable:Q -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2270 IF J = 1 THEN 2300
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 2280 LET X1 = X1 - 1000
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
  NumericConstant:1000
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2290 GOTO 2660
  LineNumber:2660
 2300 LET X1 = X1 - 1500
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
  NumericConstant:1500
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2310 GOTO 2660
  LineNumber:2660
@@ -813,7 +813,7 @@
  TextConstant:"AT ANY ONE TIME"
  CarriageControl:NL
 2370 INPUT F
- Variable:F numeric scalar
+ Variable:F -> _
 2380 PRINT "IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
  TextConstant:"IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
  CarriageControl:NL
@@ -823,9 +823,9 @@
 2400 INPUT C$
  Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 2410 IF F > 2.25E04 THEN 2470
- Variable:F numeric scalar
+ Variable:F -> _
  NumericConstant:22500
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 2420 IF C$ = "A" THEN 2500
  Token 'InvalidToken:$' is not a value or operator
 2430 IF C$ = "T" THEN 2620
@@ -840,7 +840,7 @@
 2470 PRINT "YOU HAVE WASTED ";F;"UNITS OF ENERGY"
  TextConstant:"YOU HAVE WASTED "
  CarriageControl:;
- Variable:F numeric scalar
+ Variable:F -> _
  CarriageControl:;
  TextConstant:"UNITS OF ENERGY"
  CarriageControl:NL
@@ -850,15 +850,15 @@
 2490 GOTO 2640
  LineNumber:2640
 2500 LET D = D + F
- Variable:D numeric scalar
- Variable:D numeric scalar
- Variable:F numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:D -> _
+ Variable:D -> _
+ Variable:F -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 2510 IF D > 1.5E05 THEN 2540
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:150000
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 2520 GOTO 2640
  LineNumber:2640
 2530 REM WENT TOO FAR
@@ -886,34 +886,34 @@
 2610 GOTO 2690
  LineNumber:2690
 2620 LET D = D - F
- Variable:D numeric scalar
- Variable:D numeric scalar
- Variable:F numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:D -> _
+ Variable:D -> _
+ Variable:F -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2630 IF D <= 0 THEN 2570
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:0
- BinaryOperatorLessEqual:<=(_,_) boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 2640 LET X1 = X1 - F
- Variable:X1 numeric scalar
- Variable:X1 numeric scalar
- Variable:F numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:X1 -> _
+ Variable:X1 -> _
+ Variable:F -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 2650 GOTO 2680
  LineNumber:2680
 2660 PRINT "THE SKY FIGHTER'S ENERGY IS NOW";T1;"UNITS"
  TextConstant:"THE SKY FIGHTER'S ENERGY IS NOW"
  CarriageControl:;
- Variable:T1 numeric scalar
+ Variable:T1 -> _
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL
 2670 PRINT "THE DARK LORD'S ENERGY IS";T2;"UNITS"
  TextConstant:"THE DARK LORD'S ENERGY IS"
  CarriageControl:;
- Variable:T2 numeric scalar
+ Variable:T2 -> _
  CarriageControl:;
  TextConstant:"UNITS"
  CarriageControl:NL

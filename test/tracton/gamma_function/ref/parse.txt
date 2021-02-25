@@ -5,35 +5,35 @@
 30 REM AND THE GENERALIZED FACTORIALS
  Remark:AND THE GENERALIZED FACTORIALS
 40 LET A = 0.57717
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:0.57717
  AssignmentOperator:=
 50 LET B = 0.98821
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:0.98821
  AssignmentOperator:=
 60 LET C = 0.89706
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:0.89706
  AssignmentOperator:=
 70 LET D = 0.91821
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:0.91821
  AssignmentOperator:=
 80 LET E = 0.7567
- Variable:E numeric scalar
+ Variable:E -> _
  NumericConstant:0.7567
  AssignmentOperator:=
 90 LET F = 0.4822
- Variable:F numeric scalar
+ Variable:F -> _
  NumericConstant:0.4822
  AssignmentOperator:=
 100 LET G = 0.19353
- Variable:G numeric scalar
+ Variable:G -> _
  NumericConstant:0.19353
  AssignmentOperator:=
 110 LET H = 0.03587
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:0.03587
  AssignmentOperator:=
 120 PRINT "TYPE G FOR GAMMA FUNCTION OR"
@@ -57,21 +57,21 @@
  TextConstant:"ENTER VALUE OF X"
  CarriageControl:NL
 200 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 210 LET K = X
- Variable:K numeric scalar
- Variable:X numeric scalar
+ Variable:K -> _
+ Variable:X -> _
  AssignmentOperator:=
 220 LET K = K - 1
- Variable:K numeric scalar
- Variable:K numeric scalar
+ Variable:K -> _
+ Variable:K -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 230 IF K > = 0 THEN 260
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:0
- BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
 240 PRINT "X MUST BE EQUAL TO OR GREATER THAN 1"
  TextConstant:"X MUST BE EQUAL TO OR GREATER THAN 1"
  CarriageControl:NL
@@ -80,14 +80,14 @@
 260 GOSUB 490
  LineNumber:490
 270 IF (X - 1) - INT(X - 1) THEN 410
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:X numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
 280 GOSUB 570
  LineNumber:570
 290 GOTO 410
@@ -96,15 +96,15 @@
  TextConstant:"ENTER VALUE OF X"
  CarriageControl:NL
 310 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 320 LET K = X
- Variable:K numeric scalar
- Variable:X numeric scalar
+ Variable:K -> _
+ Variable:X -> _
  AssignmentOperator:=
 330 IF K > = 0 THEN 360
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:0
- BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
 340 PRINT "X MUST BE GREATER THAN OR EQUAL TO 0"
  TextConstant:"X MUST BE GREATER THAN OR EQUAL TO 0"
  CarriageControl:NL
@@ -113,29 +113,29 @@
 360 GOSUB 490
  LineNumber:490
 370 IF X = INT(X) THEN 390
- Variable:X numeric scalar
- Variable:X numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:X -> _
+ Variable:X -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 380 GOSUB 570
  LineNumber:570
 390 PRINT X;"! = ";K
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:"! = "
  CarriageControl:;
- Variable:K numeric scalar
+ Variable:K -> _
  CarriageControl:NL
 400 GOTO 420
  LineNumber:420
 410 PRINT "GAMMA (";X;") = ";K
  TextConstant:"GAMMA ("
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:") = "
  CarriageControl:;
- Variable:K numeric scalar
+ Variable:K -> _
  CarriageControl:NL
 420 PRINT
  CarriageControl:NL
@@ -153,100 +153,100 @@
 480 GOTO 120
  LineNumber:120
 490 LET J = 1
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:1
  AssignmentOperator:=
 500 LET J = J*K
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:K numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:K -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 510 LET K = K - 1
- Variable:K numeric scalar
- Variable:K numeric scalar
+ Variable:K -> _
+ Variable:K -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 520 IF K < 1 THEN 540
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:1
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 530 GOTO 500
  LineNumber:500
 540 LET L = K
- Variable:L numeric scalar
- Variable:K numeric scalar
+ Variable:L -> _
+ Variable:K -> _
  AssignmentOperator:=
 550 LET K = J
- Variable:K numeric scalar
- Variable:J numeric scalar
+ Variable:K -> _
+ Variable:J -> _
  AssignmentOperator:=
 560 RETURN
  
 570 LET A1 = 1 + (A*L) + (B*(L^2)) + (C*(L^3))
- Variable:A1 numeric scalar
+ Variable:A1 -> _
  NumericConstant:1
- Variable:A numeric scalar
- Variable:L numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:B numeric scalar
- Variable:L numeric scalar
+ Variable:A -> _
+ Variable:L -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:B -> _
+ Variable:L -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:C numeric scalar
- Variable:L numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C -> _
+ Variable:L -> _
  NumericConstant:3
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 580 LET A1 = A1 + (D*(L^4)) + (E*(L^5)) + (F*(L^6))
- Variable:A1 numeric scalar
- Variable:A1 numeric scalar
- Variable:D numeric scalar
- Variable:L numeric scalar
+ Variable:A1 -> _
+ Variable:A1 -> _
+ Variable:D -> _
+ Variable:L -> _
  NumericConstant:4
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:E numeric scalar
- Variable:L numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:E -> _
+ Variable:L -> _
  NumericConstant:5
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:F numeric scalar
- Variable:L numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:F -> _
+ Variable:L -> _
  NumericConstant:6
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 590 LET A1 = A1 + (G*(L^7)) + (H*(L^8))
- Variable:A1 numeric scalar
- Variable:A1 numeric scalar
- Variable:G numeric scalar
- Variable:L numeric scalar
+ Variable:A1 -> _
+ Variable:A1 -> _
+ Variable:G -> _
+ Variable:L -> _
  NumericConstant:7
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:H numeric scalar
- Variable:L numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:H -> _
+ Variable:L -> _
  NumericConstant:8
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 600 LET K = A1*K
- Variable:K numeric scalar
- Variable:A1 numeric scalar
- Variable:K numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:K -> _
+ Variable:A1 -> _
+ Variable:K -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 610 RETURN
  

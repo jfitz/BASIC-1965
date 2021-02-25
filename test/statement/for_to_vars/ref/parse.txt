@@ -1,20 +1,20 @@
 10 LET L1 = 1
- Variable:L1 numeric scalar
+ Variable:L1 -> _
  NumericConstant:1
  AssignmentOperator:=
 20 LET L2 = 10
- Variable:L2 numeric scalar
+ Variable:L2 -> _
  NumericConstant:10
  AssignmentOperator:=
 30 FOR I = L1 TO L2
- control: Variable:I numeric scalar
- start:   ["Variable:L1 numeric scalar"]
- end:     ["Variable:L2 numeric scalar"]
+ control: Variable:I -> _
+ start:   ["Variable:L1 -> _"]
+ end:     ["Variable:L2 -> _"]
 40 PRINT I
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 50 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 90 STOP
  
 99 END

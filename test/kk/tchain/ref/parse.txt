@@ -1,40 +1,40 @@
 100 DIM Q(20,20), N(20,20), R(20,20)
  NumericConstant:20
  NumericConstant:20
- Declaration:Q(,) matrix
+ Declaration:Q(,) -> _(,)
  NumericConstant:20
  NumericConstant:20
- Declaration:N(,) matrix
+ Declaration:N(,) -> _(,)
  NumericConstant:20
  NumericConstant:20
- Declaration:R(,) matrix
+ Declaration:R(,) -> _(,)
 110 DIM T(20), U(20)
  NumericConstant:20
- Declaration:T() array
+ Declaration:T() -> _()
  NumericConstant:20
- Declaration:U() array
+ Declaration:U() -> _()
 120
 130 READ M, N
- Variable:M numeric scalar
- Variable:N numeric scalar
+ Variable:M -> _
+ Variable:N -> _
 140 MAT READ Q(N,N)
- Variable:N numeric scalar
- Variable:N numeric scalar
- Variable:Q(,) numeric matrix
+ Variable:N -> _
+ Variable:N -> _
+ Variable:Q(,) -> _(,)
 150 MAT READ R(N,M)
- Variable:N numeric scalar
- Variable:M numeric scalar
- Variable:R(,) numeric matrix
+ Variable:N -> _
+ Variable:M -> _
+ Variable:R(,) -> _(,)
 160 MAT N = IDN(N,N)
- Variable:N(,) numeric matrix
- Variable:N numeric scalar
- Variable:N numeric scalar
- FunctionIdn:IDN(_,_) numeric matrix
+ Variable:N(,) -> _(,)
+ Variable:N -> _
+ Variable:N -> _
+ FunctionIdn:IDN(_,_) -> _(,)
  AssignmentOperator:=
 170 MAT U = CON(N)
- Variable:U(,) numeric matrix
- Variable:N numeric scalar
- FunctionCon2:CON(_) numeric matrix
+ Variable:U(,) -> _(,)
+ Variable:N -> _
+ FunctionCon2:CON(_) -> _(,)
  AssignmentOperator:=
 180
 190 PRINT "TRANSIENT TO TRANSIENT PROBABILITIES"
@@ -43,7 +43,7 @@
 200 PRINT
  CarriageControl:NL
 210 MAT PRINT Q
- Variable:Q(,) numeric matrix
+ Variable:Q(,) -> _(,)
  CarriageControl:NL
 220
 230 PRINT "TRANSIENT TO ABSORBING PROBABILITIES"
@@ -52,19 +52,19 @@
 240 PRINT
  CarriageControl:NL
 250 MAT PRINT R
- Variable:R(,) numeric matrix
+ Variable:R(,) -> _(,)
  CarriageControl:NL
 260
 270 MAT Q = N-Q
- Variable:Q(,) numeric matrix
- Variable:N(,) numeric matrix
- Variable:Q(,) numeric matrix
- BinaryOperatorMinus:-(_,_) numeric matrix
+ Variable:Q(,) -> _(,)
+ Variable:N(,) -> _(,)
+ Variable:Q(,) -> _(,)
+ BinaryOperatorMinus:-(_,_) -> _(,)
  AssignmentOperator:=
 280 MAT N = INV(Q)
- Variable:N(,) numeric matrix
- Variable:Q(,) numeric matrix
- FunctionInv:INV(_) numeric matrix
+ Variable:N(,) -> _(,)
+ Variable:Q(,) -> _(,)
+ FunctionInv:INV(_) -> _(,)
  AssignmentOperator:=
 290 PRINT "FUNDAMENTAL MATRIX"
  TextConstant:"FUNDAMENTAL MATRIX"
@@ -72,14 +72,14 @@
 300 PRINT
  CarriageControl:NL
 310 MAT PRINT N
- Variable:N(,) numeric matrix
+ Variable:N(,) -> _(,)
  CarriageControl:NL
 320
 330 MAT T = N*U
- Variable:T(,) numeric matrix
- Variable:N(,) numeric matrix
- Variable:U(,) numeric matrix
- BinaryOperatorMultiply:*(_,_) numeric matrix
+ Variable:T(,) -> _(,)
+ Variable:N(,) -> _(,)
+ Variable:U(,) -> _(,)
+ BinaryOperatorMultiply:*(_,_) -> _(,)
  AssignmentOperator:=
 340 PRINT "ABSORBTION TIMES"
  TextConstant:"ABSORBTION TIMES"
@@ -87,14 +87,14 @@
 350 PRINT
  CarriageControl:NL
 360 MAT PRINT T
- Variable:T(,) numeric matrix
+ Variable:T(,) -> _(,)
  CarriageControl:NL
 370
 380 MAT Q = N*R
- Variable:Q(,) numeric matrix
- Variable:N(,) numeric matrix
- Variable:R(,) numeric matrix
- BinaryOperatorMultiply:*(_,_) numeric matrix
+ Variable:Q(,) -> _(,)
+ Variable:N(,) -> _(,)
+ Variable:R(,) -> _(,)
+ BinaryOperatorMultiply:*(_,_) -> _(,)
  AssignmentOperator:=
 390 PRINT "ABSORBTION PROBABILITIES"
  TextConstant:"ABSORBTION PROBABILITIES"
@@ -102,7 +102,7 @@
 400 PRINT
  CarriageControl:NL
 410 MAT PRINT Q
- Variable:Q(,) numeric matrix
+ Variable:Q(,) -> _(,)
  CarriageControl:NL
 420
 430 DATA 2, 4

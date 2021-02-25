@@ -1,41 +1,41 @@
 100 READ M, C
- Variable:M numeric scalar
- Variable:C numeric scalar
+ Variable:M -> _
+ Variable:C -> _
 110 LET M1 = M + C/100
- Variable:M1 numeric scalar
- Variable:M numeric scalar
- Variable:C numeric scalar
+ Variable:M1 -> _
+ Variable:M -> _
+ Variable:C -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 120 LET I = M1 * 39.37
- Variable:I numeric scalar
- Variable:M1 numeric scalar
+ Variable:I -> _
+ Variable:M1 -> _
  NumericConstant:39.37
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 130 LET F = INT(I/12)
- Variable:F numeric scalar
- Variable:I numeric scalar
+ Variable:F -> _
+ Variable:I -> _
  NumericConstant:12
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 140 LET I = I - 12*F
- Variable:I numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:I -> _
  NumericConstant:12
- Variable:F numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 150 PRINT M, "METERS", C, "CENTIMETERS"
- Variable:M numeric scalar
+ Variable:M -> _
  CarriageControl:,
  TextConstant:"METERS"
  CarriageControl:,
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:,
  TextConstant:"CENTIMETERS"
  CarriageControl:NL
@@ -43,16 +43,16 @@
  TextConstant:"CONVERTS TO"
  CarriageControl:NL
 170 IF F = 0 THEN 190
- Variable:F numeric scalar
+ Variable:F -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 180 PRINT F, "FEET",
- Variable:F numeric scalar
+ Variable:F -> _
  CarriageControl:,
  TextConstant:"FEET"
  CarriageControl:,
 190 PRINT I, "INCHES"
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
  TextConstant:"INCHES"
  CarriageControl:NL

@@ -3,20 +3,20 @@
 20 OPTION TRACE TRUE
  BooleanConstant:true
 30 READ A,B,C
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
 40 PRINT A,B,C
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:,
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 50 OPTION TRACE 1 = 0
  NumericConstant:1
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 90 DATA 1,2,3
  NumericConstant:1
  NumericConstant:2

@@ -3,27 +3,27 @@
 20 R E M A R K THIS IS THE FIRST TEST
  Remark:THIS IS THE FIRST TEST
 30 LET A = 5
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:5
  AssignmentOperator:=
 40 L E T A 2 = A * 2
- Variable:A2 numeric scalar
- Variable:A numeric scalar
+ Variable:A2 -> _
+ Variable:A -> _
  NumericConstant:2
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 50LETA5=A*5
- Variable:A5 numeric scalar
- Variable:A numeric scalar
+ Variable:A5 -> _
+ Variable:A -> _
  NumericConstant:5
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 60 PRI NT A,A2,A5
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:A2 numeric scalar
+ Variable:A2 -> _
  CarriageControl:,
- Variable:A5 numeric scalar
+ Variable:A5 -> _
  CarriageControl:NL
 99 END
  

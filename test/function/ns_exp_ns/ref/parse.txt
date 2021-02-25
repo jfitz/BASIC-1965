@@ -4,22 +4,22 @@
  TextConstant:"EXP"
  CarriageControl:NL
 20 FOR I = 0 TO 2 STEP 0.1
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:2"]
  step:    ["NumericConstant:0.1"]
 30 LET E = EXP(I)
- Variable:E numeric scalar
- Variable:I numeric scalar
- FunctionExp:EXP(_) numeric scalar
+ Variable:E -> _
+ Variable:I -> _
+ FunctionExp:EXP(_) -> _
  AssignmentOperator:=
 40 PRINT I, E
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
- Variable:E numeric scalar
+ Variable:E -> _
  CarriageControl:NL
 50 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 99 END
  
 

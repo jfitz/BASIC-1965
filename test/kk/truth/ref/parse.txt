@@ -10,64 +10,64 @@
 15 PRINT
  CarriageControl:NL
 20 FOR P = 1 TO 0 STEP -1
- control: Variable:P numeric scalar
+ control: Variable:P -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
 30     FOR Q = 1 TO 0 STEP -1
- control: Variable:Q numeric scalar
+ control: Variable:Q -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
 40         FOR R = 1 TO 0 STEP -1
- control: Variable:R numeric scalar
+ control: Variable:R -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
 50             LET X = P
- Variable:X numeric scalar
- Variable:P numeric scalar
+ Variable:X -> _
+ Variable:P -> _
  AssignmentOperator:=
 60             GOSUB 200
  LineNumber:200
 70             LET X = Q
- Variable:X numeric scalar
- Variable:Q numeric scalar
+ Variable:X -> _
+ Variable:Q -> _
  AssignmentOperator:=
 80             GOSUB 200
  LineNumber:200
 90             LET X = R
- Variable:X numeric scalar
- Variable:R numeric scalar
+ Variable:X -> _
+ Variable:R -> _
  AssignmentOperator:=
 95             GOSUB 200
  LineNumber:200
 100            LET X = P*SGN(Q+R)
- Variable:X numeric scalar
- Variable:P numeric scalar
- Variable:Q numeric scalar
- Variable:R numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionSgn:SGN(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:X -> _
+ Variable:P -> _
+ Variable:Q -> _
+ Variable:R -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionSgn:SGN(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 110            GOSUB 200
  LineNumber:200
 120            PRINT
  CarriageControl:NL
 130        NEXT R
- Variable:R numeric scalar
+ Variable:R -> _
 140    NEXT Q
- Variable:Q numeric scalar
+ Variable:Q -> _
 150 NEXT P
- Variable:P numeric scalar
+ Variable:P -> _
 160 STOP
  
 170
 200 IF X > 0 THEN 250
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 210 PRINT "FALSE",
  TextConstant:"FALSE"
  CarriageControl:,

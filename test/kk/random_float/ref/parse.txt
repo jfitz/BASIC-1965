@@ -1,13 +1,13 @@
 10 FOR I = 1 TO 30
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:30"]
 20    PRINT RND(1),
  NumericConstant:1
- FunctionRnd:RND(_) numeric scalar
+ FunctionRnd:RND(_) -> _
  CarriageControl:,
 30 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 99 END
  
 

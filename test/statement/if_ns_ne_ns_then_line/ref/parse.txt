@@ -3,27 +3,27 @@
  NumericConstant:20
  NumericConstant:30
 20 READ A,B,C
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
 30 PRINT A,B,C
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:,
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 40 IF A<>20 THEN 70
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:20
- BinaryOperatorNotEqual:<>(_,_) boolean scalar
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 50 PRINT A
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:NL
 60 GOTO 90
  LineNumber:90
 70 PRINT B
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:NL
 90 STOP
  

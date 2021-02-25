@@ -4,22 +4,22 @@
  TextConstant:"ARCTAN"
  CarriageControl:NL
 30 FOR I = 0 TO 2 STEP 0.1
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:2"]
  step:    ["NumericConstant:0.1"]
 50 LET S = ATN(I)
- Variable:S numeric scalar
- Variable:I numeric scalar
- FunctionArcTan:ATN(_) numeric scalar
+ Variable:S -> _
+ Variable:I -> _
+ FunctionArcTan:ATN(_) -> _
  AssignmentOperator:=
 60 PRINT I, S
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
- Variable:S numeric scalar
+ Variable:S -> _
  CarriageControl:NL
 70 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 99 END
  
 

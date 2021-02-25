@@ -1,50 +1,50 @@
 100 MAT READ A(2,3), B(2,3)
  NumericConstant:2
  NumericConstant:3
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  NumericConstant:2
  NumericConstant:3
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
 110
 130 MAT S = A+B
- Variable:S(,) numeric matrix
- Variable:A(,) numeric matrix
- Variable:B(,) numeric matrix
- BinaryOperatorPlus:+(_,_) numeric matrix
+ Variable:S(,) -> _(,)
+ Variable:A(,) -> _(,)
+ Variable:B(,) -> _(,)
+ BinaryOperatorPlus:+(_,_) -> _(,)
  AssignmentOperator:=
 140 PRINT "THE SUM"
  TextConstant:"THE SUM"
  CarriageControl:NL
 150 MAT PRINT S
- Variable:S(,) numeric matrix
+ Variable:S(,) -> _(,)
  CarriageControl:NL
 160
 170 MAT D = A-B
- Variable:D(,) numeric matrix
- Variable:A(,) numeric matrix
- Variable:B(,) numeric matrix
- BinaryOperatorMinus:-(_,_) numeric matrix
+ Variable:D(,) -> _(,)
+ Variable:A(,) -> _(,)
+ Variable:B(,) -> _(,)
+ BinaryOperatorMinus:-(_,_) -> _(,)
  AssignmentOperator:=
 180 PRINT "THE DIFFERENCE"
  TextConstant:"THE DIFFERENCE"
  CarriageControl:NL
 190 MAT PRINT D
- Variable:D(,) numeric matrix
+ Variable:D(,) -> _(,)
  CarriageControl:NL
 200
 210 MAT K = (1/4)*A
- Variable:K(,) numeric matrix
+ Variable:K(,) -> _(,)
  NumericConstant:1
  NumericConstant:4
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:A(,) numeric matrix
- BinaryOperatorMultiply:*(_,_) numeric matrix
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:A(,) -> _(,)
+ BinaryOperatorMultiply:*(_,_) -> _(,)
  AssignmentOperator:=
 220 PRINT "SCALAR MULTIPLE"
  TextConstant:"SCALAR MULTIPLE"
  CarriageControl:NL
 230 MAT PRINT K
- Variable:K(,) numeric matrix
+ Variable:K(,) -> _(,)
  CarriageControl:NL
 240
 900 DATA 1, 4, 7, 3, 2, 1
@@ -57,13 +57,13 @@
 910 DATA 3, -2, 6, 2, -5, -1
  NumericConstant:3
  NumericConstant:2
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:6
  NumericConstant:2
  NumericConstant:5
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
 999 END
  
 

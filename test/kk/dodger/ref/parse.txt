@@ -1,21 +1,21 @@
 100 REM INITIALIZE
  Remark:INITIALIZE
 110 FOR B = 1 TO 9
- control: Variable:B numeric scalar
+ control: Variable:B -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:9"]
 120    FOR R = 0 TO 3
- control: Variable:R numeric scalar
+ control: Variable:R -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
 130    READ P(B,R)
- Variable:B numeric scalar
- Variable:R numeric scalar
- Variable:P(_,_) numeric scalar
+ Variable:B -> _
+ Variable:R -> _
+ Variable:P(_,_) -> _
 140    NEXT R
- Variable:R numeric scalar
+ Variable:R -> _
 150 NEXT B
- Variable:B numeric scalar
+ Variable:B -> _
 160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
  NumericConstant:0.644
  NumericConstant:0.24
@@ -57,21 +57,21 @@
  NumericConstant:0.016
 190
 200 FOR R = 1 TO 4
- control: Variable:R numeric scalar
+ control: Variable:R -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 210    FOR C = 0 TO 7
- control: Variable:C numeric scalar
+ control: Variable:C -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
 220       READ Q(R,C)
- Variable:R numeric scalar
- Variable:C numeric scalar
- Variable:Q(_,_) numeric scalar
+ Variable:R -> _
+ Variable:C -> _
+ Variable:Q(_,_) -> _
 230    NEXT C
- Variable:C numeric scalar
+ Variable:C -> _
 240 NEXT R
- Variable:R numeric scalar
+ Variable:R -> _
 250 DATA 1, 5, 11, 15, 11, 15, 21, 25
  NumericConstant:1
  NumericConstant:5
@@ -110,35 +110,35 @@
  NumericConstant:40
 290
 300 LET S1 = 0
- Variable:S1 numeric scalar
+ Variable:S1 -> _
  NumericConstant:0
  AssignmentOperator:=
 310 LET B = 0
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:0
  AssignmentOperator:=
 320 LET H = 0
- Variable:H numeric scalar
+ Variable:H -> _
  NumericConstant:0
  AssignmentOperator:=
 330 LET L7 = 0
- Variable:L7 numeric scalar
+ Variable:L7 -> _
  NumericConstant:0
  AssignmentOperator:=
 340 LET I = 1
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:1
  AssignmentOperator:=
 350
 360 FOR C = 0 TO 7
- control: Variable:C numeric scalar
+ control: Variable:C -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:7"]
 370    READ L(C)
- Variable:C numeric scalar
- Variable:L(_) numeric scalar
+ Variable:C -> _
+ Variable:L(_) -> _
 380 NEXT C
- Variable:C numeric scalar
+ Variable:C -> _
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
  NumericConstant:0
  NumericConstant:1
@@ -154,101 +154,101 @@
 430 PRINT "INNING" I
  TextConstant:"INNING"
  CarriageControl:
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 450 LET S = 0
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:0
  AssignmentOperator:=
 460 LET O = 0
- Variable:O numeric scalar
+ Variable:O -> _
  NumericConstant:0
  AssignmentOperator:=
 470 LET C = 0
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:0
  AssignmentOperator:=
 480
 490 REM NEW BATTER
  Remark:NEW BATTER
 500 IF B < 9 THEN 520
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:9
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 510 LET B = 0
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:0
  AssignmentOperator:=
 520 LET B = B+1
- Variable:B numeric scalar
- Variable:B numeric scalar
+ Variable:B -> _
+ Variable:B -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 530
 540 REM DETERMINE OUTCOME
  Remark:DETERMINE OUTCOME
 550 LET X = RND(0)
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:0
- FunctionRnd:RND(_) numeric scalar
+ FunctionRnd:RND(_) -> _
  AssignmentOperator:=
 560 FOR R = 0 TO 3
- control: Variable:R numeric scalar
+ control: Variable:R -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:3"]
 570 LET X = X - P(B,R)
- Variable:X numeric scalar
- Variable:X numeric scalar
- Variable:B numeric scalar
- Variable:R numeric scalar
- Variable:P(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:X -> _
+ Variable:X -> _
+ Variable:B -> _
+ Variable:R -> _
+ Variable:P(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 580 IF X < 0 THEN 620
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:0
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 590 NEXT R
- Variable:R numeric scalar
+ Variable:R -> _
 600 LET R = 4
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:4
  AssignmentOperator:=
 610
 620 REM PRINT OUTCOME
  Remark:PRINT OUTCOME
 630 IF R > 0 THEN 660
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 640 PRINT "OUT   ";
  TextConstant:"OUT   "
  CarriageControl:;
 650 GOTO 770
  LineNumber:770
 660 IF R > 1 THEN 690
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:1
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 670 PRINT "SINGLE   ";
  TextConstant:"SINGLE   "
  CarriageControl:;
 680 GOTO 770
  LineNumber:770
 690 IF R > 2 THEN 720
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:2
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 700 PRINT "WALK   ";
  TextConstant:"WALK   "
  CarriageControl:;
 710 GOTO 770
  LineNumber:770
 720 IF R > 3 THEN 750
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:3
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 730 PRINT "DOUBLE   ";
  TextConstant:"DOUBLE   "
  CarriageControl:;
@@ -261,57 +261,57 @@
 770 REM DO BOOK-KEEPING
  Remark:DO BOOK-KEEPING
 780 IF R = 0 THEN 860
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 790 IF R = 2 THEN 810
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:2
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 800 LET H = H + 1
- Variable:H numeric scalar
- Variable:H numeric scalar
+ Variable:H -> _
+ Variable:H -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 810 LET X = Q(R,C)
- Variable:X numeric scalar
- Variable:R numeric scalar
- Variable:C numeric scalar
- Variable:Q(_,_) numeric scalar
+ Variable:X -> _
+ Variable:R -> _
+ Variable:C -> _
+ Variable:Q(_,_) -> _
  AssignmentOperator:=
 820 LET Y = INT(X/10)
- Variable:Y numeric scalar
- Variable:X numeric scalar
+ Variable:Y -> _
+ Variable:X -> _
  NumericConstant:10
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 830 LET C = X - Y*10
- Variable:C numeric scalar
- Variable:X numeric scalar
- Variable:Y numeric scalar
+ Variable:C -> _
+ Variable:X -> _
+ Variable:Y -> _
  NumericConstant:10
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 840 LET S = S+Y
- Variable:S numeric scalar
- Variable:S numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S -> _
+ Variable:S -> _
+ Variable:Y -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 850 GOTO 490
  LineNumber:490
 860 IF O = 2 THEN 890
- Variable:O numeric scalar
+ Variable:O -> _
  NumericConstant:2
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 870 LET O = O+1
- Variable:O numeric scalar
- Variable:O numeric scalar
+ Variable:O -> _
+ Variable:O -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 880 GOTO 490
  LineNumber:490
@@ -319,37 +319,37 @@
 890 REM END OF AN INNING
  Remark:END OF AN INNING
 895 LET L7 = L7 + L(C)
- Variable:L7 numeric scalar
- Variable:L7 numeric scalar
- Variable:C numeric scalar
- Variable:L(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:L7 -> _
+ Variable:L7 -> _
+ Variable:C -> _
+ Variable:L(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 900 PRINT
  CarriageControl:NL
 910 PRINT S; "RUNS"
- Variable:S numeric scalar
+ Variable:S -> _
  CarriageControl:;
  TextConstant:"RUNS"
  CarriageControl:NL
 920 PRINT
  CarriageControl:NL
 930 LET S1 = S1+S
- Variable:S1 numeric scalar
- Variable:S1 numeric scalar
- Variable:S numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S1 -> _
+ Variable:S1 -> _
+ Variable:S -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 940 LET I = I+1
- Variable:I numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:I -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 945 IF I < 9 THEN 410
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:9
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 950 
 955 REM PRINT RESULTS
  Remark:PRINT RESULTS
@@ -361,17 +361,17 @@
 970 PRINT
  CarriageControl:NL
 975 PRINT S1; "RUNS SCORED"
- Variable:S1 numeric scalar
+ Variable:S1 -> _
  CarriageControl:;
  TextConstant:"RUNS SCORED"
  CarriageControl:NL
 980 PRINT L7; "MEN LEFT ON BASE"
- Variable:L7 numeric scalar
+ Variable:L7 -> _
  CarriageControl:;
  TextConstant:"MEN LEFT ON BASE"
  CarriageControl:NL
 985 PRINT H; "HITS"
- Variable:H numeric scalar
+ Variable:H -> _
  CarriageControl:;
  TextConstant:"HITS"
  CarriageControl:NL

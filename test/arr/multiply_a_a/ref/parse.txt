@@ -2,9 +2,9 @@
  Remark:ARRAY ASSIGNMENT
 20 DIM A(6), B(6)
  NumericConstant:6
- Declaration:A() array
+ Declaration:A() -> _()
  NumericConstant:6
- Declaration:B() array
+ Declaration:B() -> _()
 30 DATA 1,2,3,4,5,6
  NumericConstant:1
  NumericConstant:2
@@ -20,50 +20,50 @@
  NumericConstant:11
  NumericConstant:12
 100 FOR I = 0 TO 5
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 120 READ A(I)
- Variable:I numeric scalar
- Variable:A(_) numeric scalar
+ Variable:I -> _
+ Variable:A(_) -> _
 140 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 150 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A;
- Variable:A() numeric array
+ Variable:A() -> _()
  CarriageControl:;
 162 PRINT
  CarriageControl:NL
 200 FOR I = 0 TO 5
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 220 READ B(I)
- Variable:I numeric scalar
- Variable:B(_) numeric scalar
+ Variable:I -> _
+ Variable:B(_) -> _
 240 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 250 PRINT "ARRAY B"
  TextConstant:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B;
- Variable:B() numeric array
+ Variable:B() -> _()
  CarriageControl:;
 262 PRINT
  CarriageControl:NL
 300 ARR C = A*B
- Variable:C() numeric array
- Variable:A() numeric array
- Variable:B() numeric array
- BinaryOperatorMultiply:*(_,_) numeric array
+ Variable:C() -> _()
+ Variable:A() -> _()
+ Variable:B() -> _()
+ BinaryOperatorMultiply:*(_,_) -> _()
  AssignmentOperator:=
 310 PRINT "ARRAY C"
  TextConstant:"ARRAY C"
  CarriageControl:NL
 320 ARR PRINT C;
- Variable:C() numeric array
+ Variable:C() -> _()
  CarriageControl:;
 322 PRINT
  CarriageControl:NL

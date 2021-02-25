@@ -12,141 +12,141 @@
  TextConstant:"ENTER THE 1ST EQUATION (A,B,C,D)"
  CarriageControl:NL
 60 INPUT A1,B1,C1,D1
- Variable:A1 numeric scalar
- Variable:B1 numeric scalar
- Variable:C1 numeric scalar
- Variable:D1 numeric scalar
+ Variable:A1 -> _
+ Variable:B1 -> _
+ Variable:C1 -> _
+ Variable:D1 -> _
 70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
  TextConstant:"ENTER THE 2ND EQUATION (A,B,C,D)"
  CarriageControl:NL
 80 INPUT A2,B2,C2,D2
- Variable:A2 numeric scalar
- Variable:B2 numeric scalar
- Variable:C2 numeric scalar
- Variable:D2 numeric scalar
+ Variable:A2 -> _
+ Variable:B2 -> _
+ Variable:C2 -> _
+ Variable:D2 -> _
 90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
  TextConstant:"ENTER THE 3RD EQUATION (A,B,C,D)"
  CarriageControl:NL
 100 INPUT A3,B3,C3,D3
- Variable:A3 numeric scalar
- Variable:B3 numeric scalar
- Variable:C3 numeric scalar
- Variable:D3 numeric scalar
+ Variable:A3 -> _
+ Variable:B3 -> _
+ Variable:C3 -> _
+ Variable:D3 -> _
 110 LET E1 = ((B1*A2)/A1) - B2
- Variable:E1 numeric scalar
- Variable:B1 numeric scalar
- Variable:A2 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:B2 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E1 -> _
+ Variable:B1 -> _
+ Variable:A2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:B2 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 120 LET E2 = ((C1*A2)/A1) - C2
- Variable:E2 numeric scalar
- Variable:C1 numeric scalar
- Variable:A2 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:C2 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E2 -> _
+ Variable:C1 -> _
+ Variable:A2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:C2 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 130 LET E3 = ((B1*A3)/A1) - B3
- Variable:E3 numeric scalar
- Variable:B1 numeric scalar
- Variable:A3 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:B3 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E3 -> _
+ Variable:B1 -> _
+ Variable:A3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:B3 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 140 LET E4 = ((C1*A3)/A1) - C3
- Variable:E4 numeric scalar
- Variable:C1 numeric scalar
- Variable:A3 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:C3 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E4 -> _
+ Variable:C1 -> _
+ Variable:A3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:C3 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 150 LET E5 = ((E1*E4) - (E2*E3))
- Variable:E5 numeric scalar
- Variable:E1 numeric scalar
- Variable:E4 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:E2 numeric scalar
- Variable:E3 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E5 -> _
+ Variable:E1 -> _
+ Variable:E4 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:E2 -> _
+ Variable:E3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 160 IF E5 = 0 THEN 250
- Variable:E5 numeric scalar
+ Variable:E5 -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 170 LET E6 = ((D1*A2)/A1) - D2
- Variable:E6 numeric scalar
- Variable:D1 numeric scalar
- Variable:A2 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:D2 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E6 -> _
+ Variable:D1 -> _
+ Variable:A2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:D2 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 180 LET E7 = ((D1*A3)/A1) - D3
- Variable:E7 numeric scalar
- Variable:D1 numeric scalar
- Variable:A3 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:D3 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E7 -> _
+ Variable:D1 -> _
+ Variable:A3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:D3 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 190 LET Y = ((E6*E4) - (E2*E7))/E5
- Variable:Y numeric scalar
- Variable:E6 numeric scalar
- Variable:E4 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:E2 numeric scalar
- Variable:E7 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:E5 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:Y -> _
+ Variable:E6 -> _
+ Variable:E4 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:E2 -> _
+ Variable:E7 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:E5 -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 200 LET Z = ((E1*E7) - (E6*E3))/E5
- Variable:Z numeric scalar
- Variable:E1 numeric scalar
- Variable:E7 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:E6 numeric scalar
- Variable:E3 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:E5 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:Z -> _
+ Variable:E1 -> _
+ Variable:E7 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:E6 -> _
+ Variable:E3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:E5 -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 210 LET X = (D1/A1) - (B1/A1*Y) - ((C1/A1)*Z)
- Variable:X numeric scalar
- Variable:D1 numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:B1 numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:C1 numeric scalar
- Variable:A1 numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:X -> _
+ Variable:D1 -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:B1 -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:C1 -> _
+ Variable:A1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Z -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 220 PRINT "SOLUTION"
  TextConstant:"SOLUTION"
@@ -154,15 +154,15 @@
 230 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
  TextConstant:"X = "
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:,
  TextConstant:"Z = "
  CarriageControl:;
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 240 GOTO 260
  LineNumber:260
@@ -175,11 +175,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 290 IF L = 1 THEN 310
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 300 STOP
  
 310 PRINT

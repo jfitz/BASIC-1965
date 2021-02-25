@@ -8,67 +8,67 @@
  TextConstant:"ENTER N,R"
  CarriageControl:;
 50 INPUT N,R
- Variable:N numeric scalar
- Variable:R numeric scalar
+ Variable:N -> _
+ Variable:R -> _
 60 IF N < R THEN 270
- Variable:N numeric scalar
- Variable:R numeric scalar
- BinaryOperatorLess:<(_,_) boolean scalar
+ Variable:N -> _
+ Variable:R -> _
+ BinaryOperatorLess:<(_,_) -> ?
 70 IF R < 0 THEN 290
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:0
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 80 LET T = N
- Variable:T numeric scalar
- Variable:N numeric scalar
+ Variable:T -> _
+ Variable:N -> _
  AssignmentOperator:=
 90 GOSUB 310
  LineNumber:310
 100 LET A = T
- Variable:A numeric scalar
- Variable:T numeric scalar
+ Variable:A -> _
+ Variable:T -> _
  AssignmentOperator:=
 110 LET T = N - R
- Variable:T numeric scalar
- Variable:N numeric scalar
- Variable:R numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:T -> _
+ Variable:N -> _
+ Variable:R -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 120 GOSUB 310
  LineNumber:310
 130 LET B = T
- Variable:B numeric scalar
- Variable:T numeric scalar
+ Variable:B -> _
+ Variable:T -> _
  AssignmentOperator:=
 140 LET P = A/B
- Variable:P numeric scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:P -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 150 LET T = R
- Variable:T numeric scalar
- Variable:R numeric scalar
+ Variable:T -> _
+ Variable:R -> _
  AssignmentOperator:=
 160 GOSUB 310
  LineNumber:310
 170 LET C = A/(T*B)
- Variable:C numeric scalar
- Variable:A numeric scalar
- Variable:T numeric scalar
- Variable:B numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:C -> _
+ Variable:A -> _
+ Variable:T -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 180 PRINT "PERMUTATIONS = ";P
  TextConstant:"PERMUTATIONS = "
  CarriageControl:;
- Variable:P numeric scalar
+ Variable:P -> _
  CarriageControl:NL
 190 PRINT "COMBINATIONS = ";C
  TextConstant:"COMBINATIONS = "
  CarriageControl:;
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
@@ -76,11 +76,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 220 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 230 IF L = 1 THEN 250
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 240 STOP
  
 250 PRINT
@@ -98,37 +98,37 @@
 300 GOTO 40
  LineNumber:40
 310 IF T = 0 THEN 390
- Variable:T numeric scalar
+ Variable:T -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 320 IF T = 1 THEN 390
- Variable:T numeric scalar
+ Variable:T -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 330 LET J = 1
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:1
  AssignmentOperator:=
 340 FOR I = 2 TO T
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:2"]
- end:     ["Variable:T numeric scalar"]
+ end:     ["Variable:T -> _"]
 350 LET J = J*I
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:I numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 360 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 370 LET T = J
- Variable:T numeric scalar
- Variable:J numeric scalar
+ Variable:T -> _
+ Variable:J -> _
  AssignmentOperator:=
 380 GOTO 400
  LineNumber:400
 390 LET T = 1
- Variable:T numeric scalar
+ Variable:T -> _
  NumericConstant:1
  AssignmentOperator:=
 400 RETURN

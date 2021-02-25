@@ -1,60 +1,60 @@
 100 DEF FNF(X) = SIN(X)
- UserFunctionName:FNF
- VariableName:X
- Variable:X numeric scalar
- FunctionSin:SIN(_) numeric scalar
+ UserFunctionName:FNF -> _
+ VariableName:X -> _
+ Variable:X -> _
+ FunctionSin:SIN(_) -> _
 105 DEF FNG(X) = LOG(X)/LOG(10)
- UserFunctionName:FNG
- VariableName:X
- Variable:X numeric scalar
- FunctionLog:LOG(_) numeric scalar
+ UserFunctionName:FNG -> _
+ VariableName:X -> _
+ Variable:X -> _
+ FunctionLog:LOG(_) -> _
  NumericConstant:10
- FunctionLog:LOG(_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ FunctionLog:LOG(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
 110 READ A,B,S
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:S numeric scalar
+ Variable:A -> _
+ Variable:B -> _
+ Variable:S -> _
 120 READ C,D,N
- Variable:C numeric scalar
- Variable:D numeric scalar
- Variable:N numeric scalar
+ Variable:C -> _
+ Variable:D -> _
+ Variable:N -> _
 130 LET H = (D-C)/N
- Variable:H numeric scalar
- Variable:D numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:N numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:H -> _
+ Variable:D -> _
+ Variable:C -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 140 IF N <= 50 THEN 170
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:50
- BinaryOperatorLessEqual:<=(_,_) boolean scalar
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
  TextConstant:"ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
  CarriageControl:NL
 160 STOP
  
 170 DEF FNR(X) = INT(X+0.5)
- UserFunctionName:FNR
- VariableName:X
- Variable:X numeric scalar
+ UserFunctionName:FNR -> _
+ VariableName:X -> _
+ Variable:X -> _
  NumericConstant:0.5
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionInt:INT(_) -> _
 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
  TextConstant:"Y-AXIS:  FROM "
  CarriageControl:
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:;
  TextConstant:"TO "
  CarriageControl:
- Variable:D numeric scalar
+ Variable:D -> _
  CarriageControl:;
  TextConstant:"IN STEPS OF "
  CarriageControl:
- Variable:H numeric scalar
+ Variable:H -> _
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
@@ -62,62 +62,62 @@
  TextConstant:"'"
  CarriageControl:;
 210 FOR I = 1 TO N-1
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
+ end:     ["Variable:N -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 220 PRINT "-";
  TextConstant:"-"
  CarriageControl:;
 230 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 240 PRINT "'"
  TextConstant:"'"
  CarriageControl:NL
 250 FOR X = A TO B STEP S
- control: Variable:X numeric scalar
- start:   ["Variable:A numeric scalar"]
- end:     ["Variable:B numeric scalar"]
- step:    ["Variable:S numeric scalar"]
+ control: Variable:X -> _
+ start:   ["Variable:A -> _"]
+ end:     ["Variable:B -> _"]
+ step:    ["Variable:S -> _"]
 270 LET Y = FNF(X)
- Variable:Y numeric scalar
- Variable:X numeric scalar
- UserFunction:FNF(_) numeric scalar
+ Variable:Y -> _
+ Variable:X -> _
+ UserFunction:FNF(_) -> _
  AssignmentOperator:=
 280 LET Y1 = FNR((Y-C)/H)
- Variable:Y1 numeric scalar
- Variable:Y numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:H numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- UserFunction:FNR(_) numeric scalar
+ Variable:Y1 -> _
+ Variable:Y -> _
+ Variable:C -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:H -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ UserFunction:FNR(_) -> _
  AssignmentOperator:=
 282 LET Y = FNG(X)
- Variable:Y numeric scalar
- Variable:X numeric scalar
- UserFunction:FNG(_) numeric scalar
+ Variable:Y -> _
+ Variable:X -> _
+ UserFunction:FNG(_) -> _
  AssignmentOperator:=
 284 LET Y2 = FNR((Y-C)/H)
- Variable:Y2 numeric scalar
- Variable:Y numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:H numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- UserFunction:FNR(_) numeric scalar
+ Variable:Y2 -> _
+ Variable:Y -> _
+ Variable:C -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:H -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ UserFunction:FNR(_) -> _
  AssignmentOperator:=
 290 FOR I = 0 TO N
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 292 IF I = Y1 THEN 302
- Variable:I numeric scalar
- Variable:Y1 numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:I -> _
+ Variable:Y1 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 294 IF I = Y2 THEN 304
- Variable:I numeric scalar
- Variable:Y2 numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:I -> _
+ Variable:Y2 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 300 PRINT " ";
  TextConstant:" "
  CarriageControl:;
@@ -132,22 +132,22 @@
  TextConstant:"+"
  CarriageControl:;
 310 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 315 PRINT "   ";
  TextConstant:"   "
  CarriageControl:;
 320 PRINT X
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:NL
 330 NEXT X
- Variable:X numeric scalar
+ Variable:X -> _
 340 DATA 1,10.01,0.3
  NumericConstant:1
  NumericConstant:10.01
  NumericConstant:0.3
 350 DATA -1,1,50
  NumericConstant:1
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:1
  NumericConstant:50
 360 END

@@ -1,19 +1,19 @@
 10 LET I = 1
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:1
  AssignmentOperator:=
 20 IF I > 1000 THEN 60
- Variable:I numeric scalar
+ Variable:I -> _
  NumericConstant:1000
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 30 PRINT I
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 40 LET I = I + 1
- Variable:I numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:I -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 50 GOTO 20
  LineNumber:20

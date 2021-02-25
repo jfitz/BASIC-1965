@@ -2,24 +2,24 @@
  Remark:ARRAY ASSIGNMENT
 20 DIM A(5)
  NumericConstant:5
- Declaration:A() array
+ Declaration:A() -> _()
 30 FOR I = 0 TO 5
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:5"]
 50 LET A(I) = I
- Variable:I numeric scalar
- Variable:A(_) numeric scalar
- Variable:I numeric scalar
+ Variable:I -> _
+ Variable:A(_) -> _
+ Variable:I -> _
  AssignmentOperator:=
 70 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 100 ARR B = A
- Variable:B() numeric array
- Variable:A() numeric array
+ Variable:B() -> _()
+ Variable:A() -> _()
  AssignmentOperator:=
 110 ARR PRINT B,
- Variable:B() numeric array
+ Variable:B() -> _()
  CarriageControl:,
 112 PRINT
  CarriageControl:NL

@@ -19,14 +19,14 @@
  NumericConstant:3
  NumericConstant:2
  NumericConstant:5
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:1
  NumericConstant:3
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:2
  NumericConstant:5
  NumericConstant:1
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:4
 80 GOSUB 400
  LineNumber:400
@@ -41,44 +41,44 @@
 199 STOP
  
 400 READ R,C
- Variable:R numeric scalar
- Variable:C numeric scalar
+ Variable:R -> _
+ Variable:C -> _
 405 DIM M1(R,C)
- Variable:R numeric scalar
- Variable:C numeric scalar
- Declaration:M1(,) matrix
+ Variable:R -> _
+ Variable:C -> _
+ Declaration:M1(,) -> _(,)
 410 FOR I = 1 TO R
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:R numeric scalar"]
+ end:     ["Variable:R -> _"]
 420 FOR J = 1 TO C
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:C numeric scalar"]
+ end:     ["Variable:C -> _"]
 430 READ M1(I,J)
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:M1(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:M1(_,_) -> _
 440 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 450 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 460 PRINT "MATRIX:"
  TextConstant:"MATRIX:"
  CarriageControl:NL
 470 MAT PRINT M1;
- Variable:M1(,) numeric matrix
+ Variable:M1(,) -> _(,)
  CarriageControl:;
 480 MAT M2 = INV(M1)
- Variable:M2(,) numeric matrix
- Variable:M1(,) numeric matrix
- FunctionInv:INV(_) numeric matrix
+ Variable:M2(,) -> _(,)
+ Variable:M1(,) -> _(,)
+ FunctionInv:INV(_) -> _(,)
  AssignmentOperator:=
 490 PRINT "INVERSE:"
  TextConstant:"INVERSE:"
  CarriageControl:NL
 492 MAT PRINT M2;
- Variable:M2(,) numeric matrix
+ Variable:M2(,) -> _(,)
  CarriageControl:;
 495 PRINT
  CarriageControl:NL

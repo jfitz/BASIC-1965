@@ -8,42 +8,42 @@
  TextConstant:"SQR(15+X)-SQR(X)"
  CarriageControl:NL
 30 FOR X = 1 TO 100
- control: Variable:X numeric scalar
+ control: Variable:X -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:100"]
 40 LET A1 = SQR(15+X)
- Variable:A1 numeric scalar
+ Variable:A1 -> _
  NumericConstant:15
- Variable:X numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionSqr:SQR(_) numeric scalar
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionSqr:SQR(_) -> _
  AssignmentOperator:=
 50 LET A2 = SQR(X)
- Variable:A2 numeric scalar
- Variable:X numeric scalar
- FunctionSqr:SQR(_) numeric scalar
+ Variable:A2 -> _
+ Variable:X -> _
+ FunctionSqr:SQR(_) -> _
  AssignmentOperator:=
 60 LET A = A1+A2
- Variable:A numeric scalar
- Variable:A1 numeric scalar
- Variable:A2 numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:A -> _
+ Variable:A1 -> _
+ Variable:A2 -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 70 LET B = A1-A2
- Variable:B numeric scalar
- Variable:A1 numeric scalar
- Variable:A2 numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:B -> _
+ Variable:A1 -> _
+ Variable:A2 -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 80 PRINT X,A,B
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:,
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:NL
 90 NEXT X
- Variable:X numeric scalar
+ Variable:X -> _
 99 END
  
 

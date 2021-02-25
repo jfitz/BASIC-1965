@@ -1,33 +1,33 @@
 10 REM TEST FOR/NEXT STATEMENTS
  Remark:TEST FOR/NEXT STATEMENTS
 20 LET B = 1
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:1
  AssignmentOperator:=
 30 LET E = 5
- Variable:E numeric scalar
+ Variable:E -> _
  NumericConstant:5
  AssignmentOperator:=
 40 LET S = 1
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:1
  AssignmentOperator:=
 50 FOR I = B TO E STEP S
- control: Variable:I numeric scalar
- start:   ["Variable:B numeric scalar"]
- end:     ["Variable:E numeric scalar"]
- step:    ["Variable:S numeric scalar"]
+ control: Variable:I -> _
+ start:   ["Variable:B -> _"]
+ end:     ["Variable:E -> _"]
+ step:    ["Variable:S -> _"]
 60 PRINT I
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 70 LET E = E + 1
- Variable:E numeric scalar
- Variable:E numeric scalar
+ Variable:E -> _
+ Variable:E -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 80 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 99 END
  
 

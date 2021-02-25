@@ -1,39 +1,39 @@
 100 DIM A(20,20), C(20,20), B(20), X(20)
  NumericConstant:20
  NumericConstant:20
- Declaration:A(,) matrix
+ Declaration:A(,) -> _(,)
  NumericConstant:20
  NumericConstant:20
- Declaration:C(,) matrix
+ Declaration:C(,) -> _(,)
  NumericConstant:20
- Declaration:B() array
+ Declaration:B() -> _()
  NumericConstant:20
- Declaration:X() array
+ Declaration:X() -> _()
 110
 120 READ N
- Variable:N numeric scalar
+ Variable:N -> _
 130 MAT READ A(N,N)
- Variable:N numeric scalar
- Variable:N numeric scalar
- Variable:A(,) numeric matrix
+ Variable:N -> _
+ Variable:N -> _
+ Variable:A(,) -> _(,)
 140 MAT READ B(N)
- Variable:N numeric scalar
- Variable:B(,) numeric matrix
+ Variable:N -> _
+ Variable:B(,) -> _(,)
 150
 160 MAT C = INV(A)
- Variable:C(,) numeric matrix
- Variable:A(,) numeric matrix
- FunctionInv:INV(_) numeric matrix
+ Variable:C(,) -> _(,)
+ Variable:A(,) -> _(,)
+ FunctionInv:INV(_) -> _(,)
  AssignmentOperator:=
 170 MAT X = C*B
- Variable:X(,) numeric matrix
- Variable:C(,) numeric matrix
- Variable:B(,) numeric matrix
- BinaryOperatorMultiply:*(_,_) numeric matrix
+ Variable:X(,) -> _(,)
+ Variable:C(,) -> _(,)
+ Variable:B(,) -> _(,)
+ BinaryOperatorMultiply:*(_,_) -> _(,)
  AssignmentOperator:=
 180
 190 MAT PRINT X
- Variable:X(,) numeric matrix
+ Variable:X(,) -> _(,)
  CarriageControl:NL
 200
 210 DATA 3
@@ -41,20 +41,20 @@
 220 DATA 2, -4, 3
  NumericConstant:2
  NumericConstant:4
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:3
 230 DATA 3, 0, -1
  NumericConstant:3
  NumericConstant:0
  NumericConstant:1
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
 240 DATA 2, 5, 1
  NumericConstant:2
  NumericConstant:5
  NumericConstant:1
 250 DATA -9, 4, 11
  NumericConstant:9
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  NumericConstant:4
  NumericConstant:11
 999 END

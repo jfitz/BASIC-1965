@@ -6,22 +6,22 @@
 130 REM INITIALIZE
  Remark:INITIALIZE
 140 FOR P = 1 TO 3
- control: Variable:P numeric scalar
+ control: Variable:P -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 150    LET N(P) = INT(10*RND(0))+6
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
+ Variable:P -> _
+ Variable:N(_) -> _
  NumericConstant:10
  NumericConstant:0
- FunctionRnd:RND(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:6
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 160 NEXT P
- Variable:P numeric scalar
+ Variable:P -> _
 170 PRINT "INITIAL CONFIGURATION:"
  TextConstant:"INITIAL CONFIGURATION:"
  CarriageControl:NL
@@ -36,31 +36,31 @@
  TextConstant:"PILE, NUMBER TAKEN"
  CarriageControl:;
 230 INPUT P, N
- Variable:P numeric scalar
- Variable:N numeric scalar
+ Variable:P -> _
+ Variable:N -> _
 240 LET N(P) = N(P) - N
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
- Variable:N numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:P -> _
+ Variable:N(_) -> _
+ Variable:P -> _
+ Variable:N(_) -> _
+ Variable:N -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 250 IF N(P) >= 0 THEN 300
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
+ Variable:P -> _
+ Variable:N(_) -> _
  NumericConstant:0
- BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
 260 PRINT "ILLEGAL MOVE"
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
 270 LET N(P) = N(P) + N
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:P -> _
+ Variable:N(_) -> _
+ Variable:P -> _
+ Variable:N(_) -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 280 PRINT
  CarriageControl:NL
@@ -68,15 +68,15 @@
  LineNumber:200
 300 IF N(1)+N(2)+N(3) > 0 THEN 370
  NumericConstant:1
- Variable:N(_) numeric scalar
+ Variable:N(_) -> _
  NumericConstant:2
- Variable:N(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:N(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:3
- Variable:N(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:N(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 310 PRINT
  CarriageControl:NL
 320 PRINT "YOU WIN *****"
@@ -92,192 +92,192 @@
 370 REM SET UP BIT-PATTERNS
  Remark:SET UP BIT-PATTERNS
 380 FOR P = 1 TO 3
- control: Variable:P numeric scalar
+ control: Variable:P -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 390    LET X = N(P)
- Variable:X numeric scalar
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
+ Variable:X -> _
+ Variable:P -> _
+ Variable:N(_) -> _
  AssignmentOperator:=
 400    FOR J = 4 TO 1 STEP -1
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:4"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
 410       LET Y = INT(X/2)
- Variable:Y numeric scalar
- Variable:X numeric scalar
+ Variable:Y -> _
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 420       LET B(P,J) = X - 2*Y
- Variable:P numeric scalar
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
- Variable:X numeric scalar
+ Variable:P -> _
+ Variable:J -> _
+ Variable:B(_,_) -> _
+ Variable:X -> _
  NumericConstant:2
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 430       LET X = Y
- Variable:X numeric scalar
- Variable:Y numeric scalar
+ Variable:X -> _
+ Variable:Y -> _
  AssignmentOperator:=
 440    NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 450 NEXT P
- Variable:P numeric scalar
+ Variable:P -> _
 460
 470 REM FIND COLUMN PARITIES
  Remark:FIND COLUMN PARITIES
 480 FOR J = 1 TO 4
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 490    LET S(J) = B(1,J) + B(2,J) + B(3,J)
- Variable:J numeric scalar
- Variable:S(_) numeric scalar
+ Variable:J -> _
+ Variable:S(_) -> _
  NumericConstant:1
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
+ Variable:J -> _
+ Variable:B(_,_) -> _
  NumericConstant:2
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:B(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:3
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:B(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 500    LET S(J) = S(J) - 2*INT(S(J)/2)
- Variable:J numeric scalar
- Variable:S(_) numeric scalar
- Variable:J numeric scalar
- Variable:S(_) numeric scalar
+ Variable:J -> _
+ Variable:S(_) -> _
+ Variable:J -> _
+ Variable:S(_) -> _
  NumericConstant:2
- Variable:J numeric scalar
- Variable:S(_) numeric scalar
+ Variable:J -> _
+ Variable:S(_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 510 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 520
 530 REM IF ALL EVEN, MAKE RANDOM MOVE
  Remark:IF ALL EVEN, MAKE RANDOM MOVE
 540 IF S(1)+S(2)+S(3)+S(4) > 0 THEN 610
  NumericConstant:1
- Variable:S(_) numeric scalar
+ Variable:S(_) -> _
  NumericConstant:2
- Variable:S(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:3
- Variable:S(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:4
- Variable:S(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 550 FOR P = 1 TO 3
- control: Variable:P numeric scalar
+ control: Variable:P -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 560    IF N(P) = 0 THEN 590
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
+ Variable:P -> _
+ Variable:N(_) -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 570    LET N = INT(N(P)*RND(0)) + 1
- Variable:N numeric scalar
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
+ Variable:N -> _
+ Variable:P -> _
+ Variable:N(_) -> _
  NumericConstant:0
- FunctionRnd:RND(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ FunctionRnd:RND(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 580    GOTO 770
  LineNumber:770
 590 NEXT P
- Variable:P numeric scalar
+ Variable:P -> _
 600
 610 REM MAKE OPTIMAL MOVE
  Remark:MAKE OPTIMAL MOVE
 620 FOR J = 1 TO 4
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 630    IF S(J) > 0 THEN 650
- Variable:J numeric scalar
- Variable:S(_) numeric scalar
+ Variable:J -> _
+ Variable:S(_) -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 640 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 650 FOR P = 1 TO 3
- control: Variable:P numeric scalar
+ control: Variable:P -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 660    IF B(P,J) = 1 THEN 680
- Variable:P numeric scalar
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
+ Variable:P -> _
+ Variable:J -> _
+ Variable:B(_,_) -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 670 NEXT P
- Variable:P numeric scalar
+ Variable:P -> _
 680 LET N = 0
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:0
  AssignmentOperator:=
 690 FOR J = J TO 4
- control: Variable:J numeric scalar
- start:   ["Variable:J numeric scalar"]
+ control: Variable:J -> _
+ start:   ["Variable:J -> _"]
  end:     ["NumericConstant:4"]
 700    IF S(J) = 0 THEN 750
- Variable:J numeric scalar
- Variable:S(_) numeric scalar
+ Variable:J -> _
+ Variable:S(_) -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 710    IF B(P,J) = 0 THEN 740
- Variable:P numeric scalar
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
+ Variable:P -> _
+ Variable:J -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 720    LET N = N + 2^(4-J)
- Variable:N numeric scalar
- Variable:N numeric scalar
+ Variable:N -> _
+ Variable:N -> _
  NumericConstant:2
  NumericConstant:4
- Variable:J numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 730    GOTO 750
  LineNumber:750
 740    LET N = N - 2^(4-J)
- Variable:N numeric scalar
- Variable:N numeric scalar
+ Variable:N -> _
+ Variable:N -> _
  NumericConstant:2
  NumericConstant:4
- Variable:J numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:J -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 750 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 760
 770 REM CARRY OUT MOVE
  Remark:CARRY OUT MOVE
@@ -286,33 +286,33 @@
 790 PRINT "MY MOVE:" P; "," N
  TextConstant:"MY MOVE:"
  CarriageControl:
- Variable:P numeric scalar
+ Variable:P -> _
  CarriageControl:;
  TextConstant:","
  CarriageControl:
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:NL
 800 PRINT
  CarriageControl:NL
 810 LET N(P) = N(P) - N
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
- Variable:N numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:P -> _
+ Variable:N(_) -> _
+ Variable:P -> _
+ Variable:N(_) -> _
+ Variable:N -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 820 IF N(1)+N(2)+N(3) > 0 THEN 850
  NumericConstant:1
- Variable:N(_) numeric scalar
+ Variable:N(_) -> _
  NumericConstant:2
- Variable:N(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:N(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:3
- Variable:N(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:N(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 830 PRINT "I WIN *****"
  TextConstant:"I WIN *****"
  CarriageControl:NL
@@ -331,19 +331,19 @@
 900 REM PRINT CONFIGURATION
  Remark:PRINT CONFIGURATION
 910 FOR P = 1 TO 3
- control: Variable:P numeric scalar
+ control: Variable:P -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 920    PRINT "PILE " P; N(P)
  TextConstant:"PILE "
  CarriageControl:
- Variable:P numeric scalar
+ Variable:P -> _
  CarriageControl:;
- Variable:P numeric scalar
- Variable:N(_) numeric scalar
+ Variable:P -> _
+ Variable:N(_) -> _
  CarriageControl:NL
 930 NEXT P
- Variable:P numeric scalar
+ Variable:P -> _
 940 PRINT
  CarriageControl:NL
 950 PRINT

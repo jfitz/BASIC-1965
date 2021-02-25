@@ -12,34 +12,34 @@
  TextConstant:"NUMBER OF DESTROYERS (Y) = "
  CarriageControl:;
 70 INPUT Y
- Variable:Y numeric scalar
+ Variable:Y -> _
 80 PRINT "NUMBER OF CREATORS (X) = ";
  TextConstant:"NUMBER OF CREATORS (X) = "
  CarriageControl:;
 90 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 100 PRINT "PROPAGATION RATE OF X = ";
  TextConstant:"PROPAGATION RATE OF X = "
  CarriageControl:;
 110 INPUT Z
- Variable:Z numeric scalar
+ Variable:Z -> _
 120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
  TextConstant:"CHANCE OF METTING BETWEEN X AND Y = "
  CarriageControl:;
 130 INPUT A
- Variable:A numeric scalar
+ Variable:A -> _
 140 PRINT "TIME BETWEEN SAMPLES = ";
  TextConstant:"TIME BETWEEN SAMPLES = "
  CarriageControl:;
 150 INPUT H
- Variable:H numeric scalar
+ Variable:H -> _
 160 PRINT "MAXIMUM GENERATIONS = ";
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 170 INPUT K
- Variable:K numeric scalar
+ Variable:K -> _
 180 LET J = 0
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:0
  AssignmentOperator:=
 190 PRINT
@@ -55,96 +55,96 @@
  TextConstant:"DESTROYER"
  CarriageControl:NL
 230 IF J = K THEN 470
- Variable:J numeric scalar
- Variable:K numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:J -> _
+ Variable:K -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 240 LET J = J + 1
- Variable:J numeric scalar
- Variable:J numeric scalar
+ Variable:J -> _
+ Variable:J -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 250 LET B = A*X*Y
- Variable:B numeric scalar
- Variable:A numeric scalar
- Variable:X numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:B -> _
+ Variable:A -> _
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 260 LET C = ((Y - B)*H) + Y
- Variable:C numeric scalar
- Variable:Y numeric scalar
- Variable:B numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:C -> _
+ Variable:Y -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 270 IF C < 0 THEN 390
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:0
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 280 LET Y = C
- Variable:Y numeric scalar
- Variable:C numeric scalar
+ Variable:Y -> _
+ Variable:C -> _
  AssignmentOperator:=
 290 LET D = (((X*Z) - B)*H) + X
- Variable:D numeric scalar
- Variable:X numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:B numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:X numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:D -> _
+ Variable:X -> _
+ Variable:Z -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 300 IF D < 0 THEN 410
- Variable:D numeric scalar
+ Variable:D -> _
  NumericConstant:0
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 310 LET X = D
- Variable:X numeric scalar
- Variable:D numeric scalar
+ Variable:X -> _
+ Variable:D -> _
  AssignmentOperator:=
 320 LET M = INT(X)
- Variable:M numeric scalar
- Variable:X numeric scalar
- FunctionInt:INT(_) numeric scalar
+ Variable:M -> _
+ Variable:X -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 330 LET N = INT(Y)
- Variable:N numeric scalar
- Variable:Y numeric scalar
- FunctionInt:INT(_) numeric scalar
+ Variable:N -> _
+ Variable:Y -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 340 PRINT M,N
- Variable:M numeric scalar
+ Variable:M -> _
  CarriageControl:,
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:NL
 350 IF M = 0 THEN 370
- Variable:M numeric scalar
+ Variable:M -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 360 GOTO 230
  LineNumber:230
 370 IF N = 0 THEN 430
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 380 GOTO 230
  LineNumber:230
 390 LET Y = 0
- Variable:Y numeric scalar
+ Variable:Y -> _
  NumericConstant:0
  AssignmentOperator:=
 400 GOTO 290
  LineNumber:290
 410 LET X = 0
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:0
  AssignmentOperator:=
 420 GOTO 320
@@ -155,7 +155,7 @@
 440 PRINT "NUMBER OF GENERATIONS = ";J
  TextConstant:"NUMBER OF GENERATIONS = "
  CarriageControl:;
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 450 PRINT
  CarriageControl:NL
@@ -170,18 +170,18 @@
  TextConstant:"FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
  CarriageControl:NL
 500 INPUT W
- Variable:W numeric scalar
+ Variable:W -> _
 510 IF W = 1 THEN 530
- Variable:W numeric scalar
+ Variable:W -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 520 GOTO 560
  LineNumber:560
 530 PRINT "MAXIMUM GENERATIONS = ";
  TextConstant:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 540 INPUT K
- Variable:K numeric scalar
+ Variable:K -> _
 550 GOTO 230
  LineNumber:230
 560 PRINT
@@ -190,11 +190,11 @@
  TextConstant:"FOR NEXT PATTERN TYPE 1, 0 TO STOP"
  CarriageControl:NL
 580 INPUT W
- Variable:W numeric scalar
+ Variable:W -> _
 590 IF W = 1 THEN 610
- Variable:W numeric scalar
+ Variable:W -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 600 STOP
  
 610 PRINT

@@ -1,74 +1,74 @@
 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
  Remark:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
 20 READ A, A0
- Variable:A numeric scalar
- Variable:A0 numeric scalar
+ Variable:A -> _
+ Variable:A0 -> _
 30 LET B = A + A0
- Variable:B numeric scalar
- Variable:A numeric scalar
- Variable:A0 numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:B -> _
+ Variable:A -> _
+ Variable:A0 -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
  CarriageControl:;
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:;
  TextConstant:"TO"
  CarriageControl:;
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:NL
 50 PRINT
  CarriageControl:NL
 100 FOR N = A TO B
- control: Variable:N numeric scalar
- start:   ["Variable:A numeric scalar"]
- end:     ["Variable:B numeric scalar"]
+ control: Variable:N -> _
+ start:   ["Variable:A -> _"]
+ end:     ["Variable:B -> _"]
 110 LET N0 = N
- Variable:N0 numeric scalar
- Variable:N numeric scalar
+ Variable:N0 -> _
+ Variable:N -> _
  AssignmentOperator:=
 120 GOSUB 400
  LineNumber:400
 130 NEXT N
- Variable:N numeric scalar
+ Variable:N -> _
 140 STOP
  
 400 REM PRINT INFO FOR ONE NUMBER
  Remark:PRINT INFO FOR ONE NUMBER
 410 PRINT N0;":";
- Variable:N0 numeric scalar
+ Variable:N0 -> _
  CarriageControl:;
  TextConstant:":"
  CarriageControl:;
 420 IF N0 = 1 THEN 490
- Variable:N0 numeric scalar
+ Variable:N0 -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 430 IF MOD(N0,2) = 0 THEN 460
- Variable:N0 numeric scalar
+ Variable:N0 -> _
  NumericConstant:2
- FunctionMod:MOD(_,_) numeric scalar
+ FunctionMod:MOD(_,_) -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 440 LET N0 = 3*N0 + 1
- Variable:N0 numeric scalar
+ Variable:N0 -> _
  NumericConstant:3
- Variable:N0 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:N0 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 450 GOTO 470
  LineNumber:470
 460 LET N0 = N0/2
- Variable:N0 numeric scalar
- Variable:N0 numeric scalar
+ Variable:N0 -> _
+ Variable:N0 -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 470 PRINT N0;
- Variable:N0 numeric scalar
+ Variable:N0 -> _
  CarriageControl:;
 480 GOTO 420
  LineNumber:420

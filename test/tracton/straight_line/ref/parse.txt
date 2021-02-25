@@ -6,22 +6,22 @@
  TextConstant:"ORIGINAL VALUE = "
  CarriageControl:;
 40 INPUT A
- Variable:A numeric scalar
+ Variable:A -> _
 50 PRINT "LIFETIME IN YEARS = ";
  TextConstant:"LIFETIME IN YEARS = "
  CarriageControl:;
 60 INPUT B
- Variable:B numeric scalar
+ Variable:B -> _
 70 LET C = A/B
- Variable:C numeric scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:C -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 80 PRINT "YEARLY DEPRECIATION = ";C
  TextConstant:"YEARLY DEPRECIATION = "
  CarriageControl:;
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
@@ -31,40 +31,40 @@
  TextConstant:"VALUE"
  CarriageControl:NL
 110 LET X = 0
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:0
  AssignmentOperator:=
 120 LET X = X + 1
- Variable:X numeric scalar
- Variable:X numeric scalar
+ Variable:X -> _
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 130 LET A = A - C
- Variable:A numeric scalar
- Variable:A numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:A -> _
+ Variable:A -> _
+ Variable:C -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 140 IF A < 0 THEN 160
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:0
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 150 GOTO 170
  LineNumber:170
 160 LET A = 0
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:0
  AssignmentOperator:=
 170 PRINT X,A
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:,
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:NL
 180 IF X < B THEN 120
- Variable:X numeric scalar
- Variable:B numeric scalar
- BinaryOperatorLess:<(_,_) boolean scalar
+ Variable:X -> _
+ Variable:B -> _
+ BinaryOperatorLess:<(_,_) -> ?
 190 PRINT "********************"
  TextConstant:"********************"
  CarriageControl:NL
@@ -72,11 +72,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 220 IF L = 1 THEN 240
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 230 STOP
  
 240 PRINT

@@ -7,55 +7,55 @@
 40 REM IS PRINTED
  Remark:IS PRINTED
 50 LET Y = 1
- Variable:Y numeric scalar
+ Variable:Y -> _
  NumericConstant:1
  AssignmentOperator:=
 60 LET N = 0
- Variable:N numeric scalar
+ Variable:N -> _
  NumericConstant:0
  AssignmentOperator:=
 70 PRINT "SAMPLE = ";
  TextConstant:"SAMPLE = "
  CarriageControl:;
 80 INPUT W
- Variable:W numeric scalar
+ Variable:W -> _
 90 IF W = 0 THEN 160
- Variable:W numeric scalar
+ Variable:W -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 100 LET N = N + 1
- Variable:N numeric scalar
- Variable:N numeric scalar
+ Variable:N -> _
+ Variable:N -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 110 LET Y = Y * W
- Variable:Y numeric scalar
- Variable:Y numeric scalar
- Variable:W numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:Y -> _
+ Variable:Y -> _
+ Variable:W -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 120 LET G = Y^(1/N)
- Variable:G numeric scalar
- Variable:Y numeric scalar
+ Variable:G -> _
+ Variable:Y -> _
  NumericConstant:1
- Variable:N numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPower:^(_,_) numeric scalar
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPower:^(_,_) -> _
  AssignmentOperator:=
 130 PRINT "NUMBER OF SAMPLES = ";N,"CURRENT SAMPLE = ";W
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:;
- Variable:N numeric scalar
+ Variable:N -> _
  CarriageControl:,
  TextConstant:"CURRENT SAMPLE = "
  CarriageControl:;
- Variable:W numeric scalar
+ Variable:W -> _
  CarriageControl:NL
 140 PRINT "CURRENT MEAN = ";G
  TextConstant:"CURRENT MEAN = "
  CarriageControl:;
- Variable:G numeric scalar
+ Variable:G -> _
  CarriageControl:NL
 150 GOTO 70
  LineNumber:70
@@ -65,11 +65,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 190 IF L = 1 THEN 210
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 200 STOP
  
 210 PRINT

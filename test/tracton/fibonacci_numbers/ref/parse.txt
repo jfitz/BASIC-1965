@@ -4,17 +4,17 @@
  TextConstant:"ENTER FIRST TERM"
  CarriageControl:NL
 30 INPUT A
- Variable:A numeric scalar
+ Variable:A -> _
 40 PRINT "ENTER SECOND TERM"
  TextConstant:"ENTER SECOND TERM"
  CarriageControl:NL
 50 INPUT B
- Variable:B numeric scalar
+ Variable:B -> _
 60 PRINT "MAXIMUM NUMBER OF TERMS = "
  TextConstant:"MAXIMUM NUMBER OF TERMS = "
  CarriageControl:NL
 70 INPUT N
- Variable:N numeric scalar
+ Variable:N -> _
 80 PRINT
  CarriageControl:NL
 90 PRINT "TABLE OF FIBONACCI NUMBERS"
@@ -26,52 +26,52 @@
  TextConstant:"FIBONACCI NUMBER"
  CarriageControl:NL
 110 LET K = 1
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:1
  AssignmentOperator:=
 120 PRINT K,A
- Variable:K numeric scalar
+ Variable:K -> _
  CarriageControl:,
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:NL
 130 LET K = 2
- Variable:K numeric scalar
+ Variable:K -> _
  NumericConstant:2
  AssignmentOperator:=
 140 PRINT K,B
- Variable:K numeric scalar
+ Variable:K -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:NL
 150 LET K = K + 1
- Variable:K numeric scalar
- Variable:K numeric scalar
+ Variable:K -> _
+ Variable:K -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 160 LET Q = A + B
- Variable:Q numeric scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:Q -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 170 PRINT K,Q
- Variable:K numeric scalar
+ Variable:K -> _
  CarriageControl:,
- Variable:Q numeric scalar
+ Variable:Q -> _
  CarriageControl:NL
 180 LET A = B
- Variable:A numeric scalar
- Variable:B numeric scalar
+ Variable:A -> _
+ Variable:B -> _
  AssignmentOperator:=
 190 LET B = Q
- Variable:B numeric scalar
- Variable:Q numeric scalar
+ Variable:B -> _
+ Variable:Q -> _
  AssignmentOperator:=
 200 IF K > = N THEN 220
- Variable:K numeric scalar
- Variable:N numeric scalar
- BinaryOperatorGreaterEqual:>=(_,_) boolean scalar
+ Variable:K -> _
+ Variable:N -> _
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
 210 GOTO 150
  LineNumber:150
 220 PRINT "MAXIMUM NUMBER OF TERMS REACHED"
@@ -83,11 +83,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 250 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 260 IF L = 1 THEN 280
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 270 STOP
  
 280 PRINT

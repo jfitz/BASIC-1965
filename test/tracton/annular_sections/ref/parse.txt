@@ -5,61 +5,61 @@
 30  REM SECTION
  Remark:SECTION
 40  INPUT "INSIDE DIAMETER (D1) = ", D1
- Variable:D1 numeric scalar
+ Variable:D1 -> _
 50  INPUT "OUTSIDE DIAMETER (D2) = "; D2
- Variable:D2 numeric scalar
+ Variable:D2 -> _
 60  LET P=3.14159
- Variable:P numeric scalar
+ Variable:P -> _
  NumericConstant:3.14159
  AssignmentOperator:=
 70  LET I = (P*((D2 ^ 4) - (D1 ^ 4)))/64
- Variable:I numeric scalar
- Variable:P numeric scalar
- Variable:D2 numeric scalar
+ Variable:I -> _
+ Variable:P -> _
+ Variable:D2 -> _
  NumericConstant:4
- BinaryOperatorPower:^(_,_) numeric scalar
- Variable:D1 numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ Variable:D1 -> _
  NumericConstant:4
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:64
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 80  LET J=I*2
- Variable:J numeric scalar
- Variable:I numeric scalar
+ Variable:J -> _
+ Variable:I -> _
  NumericConstant:2
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 100  LET A = (P*((D2 ^ 2) - (D1 ^ 2)))/4
- Variable:A numeric scalar
- Variable:P numeric scalar
- Variable:D2 numeric scalar
+ Variable:A -> _
+ Variable:P -> _
+ Variable:D2 -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- Variable:D1 numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ Variable:D1 -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:4
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 110  PRINT "MOMENT OF INERTIA = " I
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 120  PRINT "POLAR MOMENT OF INERTIA = " J
  TextConstant:"POLAR MOMENT OF INERTIA = "
  CarriageControl:
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 130  PRINT "AREA OF SECTION = " A
  TextConstant:"AREA OF SECTION = "
  CarriageControl:
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:NL
 140  PRINT
  CarriageControl:NL
@@ -67,11 +67,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:;
 160  INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 170  IF L=1 THEN 190
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 180  STOP
  
 190  PRINT

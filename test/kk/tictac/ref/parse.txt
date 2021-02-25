@@ -14,18 +14,18 @@
 170 REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
  Remark:THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
 180 DEF FNM(X) = X - 8*INT((X-1)/8)
- UserFunctionName:FNM
- VariableName:X
- Variable:X numeric scalar
+ UserFunctionName:FNM -> _
+ VariableName:X -> _
+ Variable:X -> _
  NumericConstant:8
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:8
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
 190 REM
  Remark:
 200 REM NOW WE START THE PROGRAM
@@ -35,170 +35,170 @@
 220 PRINT
  CarriageControl:NL
 230 LET A = 9
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:9
  AssignmentOperator:=
 240 LET M = A
- Variable:M numeric scalar
- Variable:A numeric scalar
+ Variable:M -> _
+ Variable:A -> _
  AssignmentOperator:=
 250 GOSUB 650
  LineNumber:650
 260 LET P = M
- Variable:P numeric scalar
- Variable:M numeric scalar
+ Variable:P -> _
+ Variable:M -> _
  AssignmentOperator:=
 270 LET B = FNM(P+1)
- Variable:B numeric scalar
- Variable:P numeric scalar
+ Variable:B -> _
+ Variable:P -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 280 LET M = B
- Variable:M numeric scalar
- Variable:B numeric scalar
+ Variable:M -> _
+ Variable:B -> _
  AssignmentOperator:=
 290 GOSUB 650
  LineNumber:650
 300 LET Q = M
- Variable:Q numeric scalar
- Variable:M numeric scalar
+ Variable:Q -> _
+ Variable:M -> _
  AssignmentOperator:=
 310 IF Q = FNM(B+4) THEN 360
- Variable:Q numeric scalar
- Variable:B numeric scalar
+ Variable:Q -> _
+ Variable:B -> _
  NumericConstant:4
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 320    LET C = FNM(B+4)
- Variable:C numeric scalar
- Variable:B numeric scalar
+ Variable:C -> _
+ Variable:B -> _
  NumericConstant:4
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 330    LET M = C
- Variable:M numeric scalar
- Variable:C numeric scalar
+ Variable:M -> _
+ Variable:C -> _
  AssignmentOperator:=
 340    GOSUB 700
  LineNumber:700
 350    GO TO 730
  LineNumber:730
 360 LET C = FNM(B+2)
- Variable:C numeric scalar
- Variable:B numeric scalar
+ Variable:C -> _
+ Variable:B -> _
  NumericConstant:2
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 370 LET M = C
- Variable:M numeric scalar
- Variable:C numeric scalar
+ Variable:M -> _
+ Variable:C -> _
  AssignmentOperator:=
 380 GOSUB 650
  LineNumber:650
 390 LET R = M
- Variable:R numeric scalar
- Variable:M numeric scalar
+ Variable:R -> _
+ Variable:M -> _
  AssignmentOperator:=
 400 IF R = FNM(C+4) THEN 450
- Variable:R numeric scalar
- Variable:C numeric scalar
+ Variable:R -> _
+ Variable:C -> _
  NumericConstant:4
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 410    LET D = FNM(C+4)
- Variable:D numeric scalar
- Variable:C numeric scalar
+ Variable:D -> _
+ Variable:C -> _
  NumericConstant:4
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 420    LET M = D
- Variable:M numeric scalar
- Variable:D numeric scalar
+ Variable:M -> _
+ Variable:D -> _
  AssignmentOperator:=
 430    GOSUB 700
  LineNumber:700
 440    GO TO 730
  LineNumber:730
 450 IF P/2 <> INT(P/2) THEN 500
- Variable:P numeric scalar
+ Variable:P -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:P numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:P -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorNotEqual:<>(_,_) boolean scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 460    LET D = FNM(C+7)
- Variable:D numeric scalar
- Variable:C numeric scalar
+ Variable:D -> _
+ Variable:C -> _
  NumericConstant:7
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 470    LET M = D
- Variable:M numeric scalar
- Variable:D numeric scalar
+ Variable:M -> _
+ Variable:D -> _
  AssignmentOperator:=
 480    GOSUB 700
  LineNumber:700
 490    GO TO 730
  LineNumber:730
 500 LET D = FNM(C+3)
- Variable:D numeric scalar
- Variable:C numeric scalar
+ Variable:D -> _
+ Variable:C -> _
  NumericConstant:3
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 510 LET M = D
- Variable:M numeric scalar
- Variable:D numeric scalar
+ Variable:M -> _
+ Variable:D -> _
  AssignmentOperator:=
 520 GOSUB 650
  LineNumber:650
 530 LET S = M
- Variable:S numeric scalar
- Variable:M numeric scalar
+ Variable:S -> _
+ Variable:M -> _
  AssignmentOperator:=
 540 IF S = FNM(D+4) THEN 590
- Variable:S numeric scalar
- Variable:D numeric scalar
+ Variable:S -> _
+ Variable:D -> _
  NumericConstant:4
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 550    LET E = FNM(D+4)
- Variable:E numeric scalar
- Variable:D numeric scalar
+ Variable:E -> _
+ Variable:D -> _
  NumericConstant:4
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 560    LET M = E
- Variable:M numeric scalar
- Variable:E numeric scalar
+ Variable:M -> _
+ Variable:E -> _
  AssignmentOperator:=
 570    GOSUB 700
  LineNumber:700
 580    GO TO 730
  LineNumber:730
 590 LET E = FNM(D+6)
- Variable:E numeric scalar
- Variable:D numeric scalar
+ Variable:E -> _
+ Variable:D -> _
  NumericConstant:6
- BinaryOperatorPlus:+(_,_) numeric scalar
- UserFunction:FNM(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ UserFunction:FNM(_) -> _
  AssignmentOperator:=
 600 LET M = E
- Variable:M numeric scalar
- Variable:E numeric scalar
+ Variable:M -> _
+ Variable:E -> _
  AssignmentOperator:=
 610 GOSUB 700
  LineNumber:700
@@ -214,14 +214,14 @@
  TextConstant:"YOUR MOVE"
  CarriageControl:;
 670 INPUT M
- Variable:M numeric scalar
+ Variable:M -> _
 680 RETURN
  
 690
 700 PRINT "COMPUTER MOVES"; M
  TextConstant:"COMPUTER MOVES"
  CarriageControl:;
- Variable:M numeric scalar
+ Variable:M -> _
  CarriageControl:NL
 710 RETURN
  

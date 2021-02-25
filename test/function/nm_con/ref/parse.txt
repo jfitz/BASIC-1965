@@ -3,98 +3,98 @@
 15 DIM D(2,3)
  NumericConstant:2
  NumericConstant:3
- Declaration:D(,) matrix
+ Declaration:D(,) -> _(,)
 20 MAT A = CON(3,5)
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  NumericConstant:3
  NumericConstant:5
- FunctionCon2:CON(_,_) numeric matrix
+ FunctionCon2:CON(_,_) -> _(,)
  AssignmentOperator:=
 30 MAT B = CON(5,3)
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  NumericConstant:5
  NumericConstant:3
- FunctionCon2:CON(_,_) numeric matrix
+ FunctionCon2:CON(_,_) -> _(,)
  AssignmentOperator:=
 40 MAT C = CON(4)
- Variable:C(,) numeric matrix
+ Variable:C(,) -> _(,)
  NumericConstant:4
- FunctionCon2:CON(_) numeric matrix
+ FunctionCon2:CON(_) -> _(,)
  AssignmentOperator:=
 45 MAT D = CON
- Variable:D(,) numeric matrix
- FunctionCon2:CON numeric matrix
+ Variable:D(,) -> _(,)
+ FunctionCon2:CON -> _(,)
  AssignmentOperator:=
 50 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 60 MAT PRINT A;
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:;
 70 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 80 MAT PRINT B;
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  CarriageControl:;
 90 PRINT "ARRAY C"
  TextConstant:"ARRAY C"
  CarriageControl:NL
 100 MAT PRINT C;
- Variable:C(,) numeric matrix
+ Variable:C(,) -> _(,)
  CarriageControl:;
 110 PRINT "MATRIX D"
  TextConstant:"MATRIX D"
  CarriageControl:NL
 120 MAT PRINT D;
- Variable:D(,) numeric matrix
+ Variable:D(,) -> _(,)
  CarriageControl:;
 200 OPTION BASE 1
  NumericConstant:1
 220 MAT A = CON(3,5)
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  NumericConstant:3
  NumericConstant:5
- FunctionCon2:CON(_,_) numeric matrix
+ FunctionCon2:CON(_,_) -> _(,)
  AssignmentOperator:=
 230 MAT B = CON(5,3)
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  NumericConstant:5
  NumericConstant:3
- FunctionCon2:CON(_,_) numeric matrix
+ FunctionCon2:CON(_,_) -> _(,)
  AssignmentOperator:=
 240 MAT C = CON(4)
- Variable:C(,) numeric matrix
+ Variable:C(,) -> _(,)
  NumericConstant:4
- FunctionCon2:CON(_) numeric matrix
+ FunctionCon2:CON(_) -> _(,)
  AssignmentOperator:=
 245 MAT D = CON()
- Variable:D(,) numeric matrix
- FunctionCon2:CON() numeric matrix
+ Variable:D(,) -> _(,)
+ FunctionCon2:CON() -> _(,)
  AssignmentOperator:=
 250 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 260 MAT PRINT A;
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:;
 270 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 280 MAT PRINT B;
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  CarriageControl:;
 290 PRINT "ARRAY C"
  TextConstant:"ARRAY C"
  CarriageControl:NL
 300 MAT PRINT C;
- Variable:C(,) numeric matrix
+ Variable:C(,) -> _(,)
  CarriageControl:;
 310 PRINT "MATRIX D"
  TextConstant:"MATRIX D"
  CarriageControl:NL
 320 MAT PRINT D;
- Variable:D(,) numeric matrix
+ Variable:D(,) -> _(,)
  CarriageControl:;
 999 END
  

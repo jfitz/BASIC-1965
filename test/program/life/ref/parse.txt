@@ -11,25 +11,25 @@
 220 DIM B(10,10)
  NumericConstant:10
  NumericConstant:10
- Declaration:B(,) matrix
+ Declaration:B(,) -> _(,)
 230 REM *** INITIAL PATTERN
  Remark:*** INITIAL PATTERN
 240 LET B(4,4)=1
  NumericConstant:4
  NumericConstant:4
- Variable:B(_,_) numeric scalar
+ Variable:B(_,_) -> _
  NumericConstant:1
  AssignmentOperator:=
 241 LET B(4,5)=1
  NumericConstant:4
  NumericConstant:5
- Variable:B(_,_) numeric scalar
+ Variable:B(_,_) -> _
  NumericConstant:1
  AssignmentOperator:=
 242 LET B(4,6)=1
  NumericConstant:4
  NumericConstant:6
- Variable:B(_,_) numeric scalar
+ Variable:B(_,_) -> _
  NumericConstant:1
  AssignmentOperator:=
 300 REM *** DISPLAY BOARD
@@ -38,7 +38,7 @@
  TextConstant:"********************"
  CarriageControl:NL
 320 MAT PRINT B;
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  CarriageControl:;
 330 PRINT "********************"
  TextConstant:"********************"
@@ -46,123 +46,123 @@
 340 PRINT
  CarriageControl:NL
 350 INPUT "CONTINUE (1=YES)", A
- Variable:A numeric scalar
+ Variable:A -> _
 360 IF A <> 1 THEN 999
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:1
- BinaryOperatorNotEqual:<>(_,_) boolean scalar
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
- Variable:N(,) numeric matrix
+ Variable:N(,) -> _(,)
  NumericConstant:10
  NumericConstant:10
- FunctionZer2:ZER(_,_) numeric matrix
+ FunctionZer2:ZER(_,_) -> _(,)
  AssignmentOperator:=
 415 OPTION BASE 0
  NumericConstant:0
 420 DIM B(11,11)
  NumericConstant:11
  NumericConstant:11
- Declaration:B(,) matrix
+ Declaration:B(,) -> _(,)
 430 FOR I=1 TO 10
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 440 FOR J=1 TO 10
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 442 LET C = 0
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:0
  AssignmentOperator:=
 450 FOR I0=-1 TO 1
- control: Variable:I0 numeric scalar
- start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
+ control: Variable:I0 -> _
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
  end:     ["NumericConstant:1"]
 460 FOR J0=-1 TO 1
- control: Variable:J0 numeric scalar
- start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) numeric scalar"]
+ control: Variable:J0 -> _
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
- Variable:I0 numeric scalar
- FunctionAbs:ABS(_) numeric scalar
- Variable:J0 numeric scalar
- FunctionAbs:ABS(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:I0 -> _
+ FunctionAbs:ABS(_) -> _
+ Variable:J0 -> _
+ FunctionAbs:ABS(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 480 IF B(I+I0,J+J0) = 0 THEN 500
- Variable:I numeric scalar
- Variable:I0 numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:J numeric scalar
- Variable:J0 numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:B(_,_) numeric scalar
+ Variable:I -> _
+ Variable:I0 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:J -> _
+ Variable:J0 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 490 LET C = C + 1
- Variable:C numeric scalar
- Variable:C numeric scalar
+ Variable:C -> _
+ Variable:C -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 500 NEXT J0
- Variable:J0 numeric scalar
+ Variable:J0 -> _
 510 NEXT I0
- Variable:I0 numeric scalar
+ Variable:I0 -> _
 512 LET N(I,J)=C
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:N(_,_) numeric scalar
- Variable:C numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:N(_,_) -> _
+ Variable:C -> _
  AssignmentOperator:=
 520 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 530 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 535 OPTION BASE 1
  NumericConstant:1
 540 DIM B(10,10)
  NumericConstant:10
  NumericConstant:10
- Declaration:B(,) matrix
+ Declaration:B(,) -> _(,)
 600 REM *** CALCULATE NEW BOARD
  Remark:*** CALCULATE NEW BOARD
 610 FOR I=1 TO 10
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 620 FOR J=1 TO 10
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:10"]
 630 IF N(I,J)<2 THEN 660
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:N(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:N(_,_) -> _
  NumericConstant:2
- BinaryOperatorLess:<(_,_) boolean scalar
+ BinaryOperatorLess:<(_,_) -> ?
 640 IF N(I,J)=2 THEN 720
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:N(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:N(_,_) -> _
  NumericConstant:2
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 650 IF N(I,J)=3 THEN 690
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:N(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:N(_,_) -> _
  NumericConstant:3
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 660 REM * CELL DIES
  Remark:* CELL DIES
 670 LET B(I,J)=0
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
  AssignmentOperator:=
 680 GOTO 730
@@ -170,9 +170,9 @@
 690 REM * CELL IS BORN
  Remark:* CELL IS BORN
 700 LET B(I,J)=1
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:B(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:B(_,_) -> _
  NumericConstant:1
  AssignmentOperator:=
 710 GOTO 730
@@ -180,9 +180,9 @@
 720 REM * CELL REMAINS UNCHANGED
  Remark:* CELL REMAINS UNCHANGED
 730 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 740 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 800 REM *** NEXT ITERATION
  Remark:*** NEXT ITERATION
 810 GOTO 300

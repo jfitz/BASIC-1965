@@ -3,74 +3,74 @@
 15 DIM D(4,4)
  NumericConstant:4
  NumericConstant:4
- Declaration:D(,) matrix
+ Declaration:D(,) -> _(,)
 20 MAT A = IDN(3)
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  NumericConstant:3
- FunctionIdn:IDN(_) numeric matrix
+ FunctionIdn:IDN(_) -> _(,)
  AssignmentOperator:=
 30 MAT B = IDN(5,5)
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN(_,_) numeric matrix
+ FunctionIdn:IDN(_,_) -> _(,)
  AssignmentOperator:=
 35 MAT D = IDN
- Variable:D(,) numeric matrix
- FunctionIdn:IDN numeric matrix
+ Variable:D(,) -> _(,)
+ FunctionIdn:IDN -> _(,)
  AssignmentOperator:=
 40 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 50 MAT PRINT A;
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:;
 60 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 70 MAT PRINT B;
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  CarriageControl:;
 80 PRINT "MATRIX D"
  TextConstant:"MATRIX D"
  CarriageControl:NL
 90 MAT PRINT D;
- Variable:D(,) numeric matrix
+ Variable:D(,) -> _(,)
  CarriageControl:;
 100 OPTION BASE 1
  NumericConstant:1
 120 MAT A = IDN(3)
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  NumericConstant:3
- FunctionIdn:IDN(_) numeric matrix
+ FunctionIdn:IDN(_) -> _(,)
  AssignmentOperator:=
 130 MAT B = IDN(5,5)
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN(_,_) numeric matrix
+ FunctionIdn:IDN(_,_) -> _(,)
  AssignmentOperator:=
 135 MAT D = IDN()
- Variable:D(,) numeric matrix
- FunctionIdn:IDN() numeric matrix
+ Variable:D(,) -> _(,)
+ FunctionIdn:IDN() -> _(,)
  AssignmentOperator:=
 140 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
 150 MAT PRINT A;
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:;
 160 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
 170 MAT PRINT B;
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  CarriageControl:;
 180 PRINT "MATRIX D"
  TextConstant:"MATRIX D"
  CarriageControl:NL
 190 MAT PRINT D;
- Variable:D(,) numeric matrix
+ Variable:D(,) -> _(,)
  CarriageControl:;
 999 END
  

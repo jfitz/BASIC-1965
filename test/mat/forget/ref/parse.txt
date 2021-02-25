@@ -5,34 +5,34 @@
 20 DIM A(3,4)
  NumericConstant:3
  NumericConstant:4
- Declaration:A(,) matrix
+ Declaration:A(,) -> _(,)
 21 FOR I = 1 TO 3
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 22 FOR J = 1 TO 4
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 23 LET A(I,J) = I*J
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:A(_,_) numeric scalar
- Variable:I numeric scalar
- Variable:J numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:A(_,_) -> _
+ Variable:I -> _
+ Variable:J -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 24 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 25 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 30 MAT PRINT A
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:NL
 40 MAT FORGET A
- Variable:A numeric matrix
+ Variable:A -> _(,)
 90 MAT PRINT A
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:NL
 99 END
  

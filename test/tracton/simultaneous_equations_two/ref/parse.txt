@@ -12,60 +12,60 @@
  TextConstant:"ENTER PARAMETERS A,B,C,D,E,F"
  CarriageControl:NL
 60 INPUT A,B,C,D,E,F
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
- Variable:D numeric scalar
- Variable:E numeric scalar
- Variable:F numeric scalar
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+ Variable:D -> _
+ Variable:E -> _
+ Variable:F -> _
 70 LET M = (A*D) - (B*C)
- Variable:M numeric scalar
- Variable:A numeric scalar
- Variable:D numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:M -> _
+ Variable:A -> _
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 80 IF M = 0 THEN 140
- Variable:M numeric scalar
+ Variable:M -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 90 LET X = ((E*D) - (B*F))/M
- Variable:X numeric scalar
- Variable:E numeric scalar
- Variable:D numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:B numeric scalar
- Variable:F numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:X -> _
+ Variable:E -> _
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 100 LET Y = ((A*F) - (E*C))/M
- Variable:Y numeric scalar
- Variable:A numeric scalar
- Variable:F numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:E numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:Y -> _
+ Variable:A -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:E -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 110 PRINT "SOLUTION","X = ";X,"Y = ";Y
  TextConstant:"SOLUTION"
  CarriageControl:,
  TextConstant:"X = "
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:,
  TextConstant:"Y = "
  CarriageControl:;
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:NL
 120 PRINT "********************"
  TextConstant:"********************"
@@ -82,11 +82,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 170 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 180 IF L = 1 THEN 200
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 190 STOP
  
 200 PRINT

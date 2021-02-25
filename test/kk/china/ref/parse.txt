@@ -1,64 +1,64 @@
 10 READ N,B,P
- Variable:N numeric scalar
- Variable:B numeric scalar
- Variable:P numeric scalar
+ Variable:N -> _
+ Variable:B -> _
+ Variable:P -> _
 20 FOR I = 2 TO N
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:2"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 30    READ A,M
- Variable:A numeric scalar
- Variable:M numeric scalar
+ Variable:A -> _
+ Variable:M -> _
 40       FOR K = 0 TO M-1
- control: Variable:K numeric scalar
+ control: Variable:K -> _
  start:   ["NumericConstant:0"]
- end:     ["Variable:M numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
+ end:     ["Variable:M -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 50       LET X = B + K*P
- Variable:X numeric scalar
- Variable:B numeric scalar
- Variable:K numeric scalar
- Variable:P numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ Variable:B -> _
+ Variable:K -> _
+ Variable:P -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 60       IF X - M*INT(X/M) = A THEN 100
- Variable:X numeric scalar
- Variable:M numeric scalar
- Variable:X numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:A numeric scalar
- BinaryOperatorEqual:=(_,_) boolean scalar
+ Variable:X -> _
+ Variable:M -> _
+ Variable:X -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:A -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 70    NEXT K
- Variable:K numeric scalar
+ Variable:K -> _
 80    PRINT "ERROR"
  TextConstant:"ERROR"
  CarriageControl:NL
 90    STOP
  
 100 LET P = P*M
- Variable:P numeric scalar
- Variable:P numeric scalar
- Variable:M numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:P -> _
+ Variable:P -> _
+ Variable:M -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 110 LET B = X
- Variable:B numeric scalar
- Variable:X numeric scalar
+ Variable:B -> _
+ Variable:X -> _
  AssignmentOperator:=
 120 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
  TextConstant:"X  IS CONGRUENT TO "
  CarriageControl:
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:;
  TextConstant:" MODULO "
  CarriageControl:
- Variable:P numeric scalar
+ Variable:P -> _
  CarriageControl:NL
 900 DATA 4
  NumericConstant:4

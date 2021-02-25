@@ -1,23 +1,23 @@
 100 REM ANGLE-SIDE-ANGLE
  Remark:ANGLE-SIDE-ANGLE
 110 LET P = 3.14159625
- Variable:P numeric scalar
+ Variable:P -> _
  NumericConstant:3.14159625
  AssignmentOperator:=
 120 DEF FND(X) = X*P/180
- UserFunctionName:FND
- VariableName:X
- Variable:X numeric scalar
- Variable:P numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ UserFunctionName:FND -> _
+ VariableName:X -> _
+ Variable:X -> _
+ Variable:P -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:180
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
 130 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS
- VariableName:X
- Variable:X numeric scalar
- UserFunction:FND(_) numeric scalar
- FunctionSin:SIN(_) numeric scalar
+ UserFunctionName:FNS -> _
+ VariableName:X -> _
+ Variable:X -> _
+ UserFunction:FND(_) -> _
+ FunctionSin:SIN(_) -> _
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -30,47 +30,47 @@
  TextConstant:"THIRD SIDE"
  CarriageControl:NL
 150 READ A,X,B
- Variable:A numeric scalar
- Variable:X numeric scalar
- Variable:B numeric scalar
+ Variable:A -> _
+ Variable:X -> _
+ Variable:B -> _
 160 LET C = 180 - A - B
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:180
- Variable:A numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:B numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:A -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 170 LET Y = X*FNS(B)/FNS(C)
- Variable:Y numeric scalar
- Variable:X numeric scalar
- Variable:B numeric scalar
- UserFunction:FNS(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:C numeric scalar
- UserFunction:FNS(_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:Y -> _
+ Variable:X -> _
+ Variable:B -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 180 LET Z = X*FNS(A)/FNS(C)
- Variable:Z numeric scalar
- Variable:X numeric scalar
- Variable:A numeric scalar
- UserFunction:FNS(_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:C numeric scalar
- UserFunction:FNS(_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:A -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 190 PRINT A,X,B,Y,Z
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:,
- Variable:Y numeric scalar
+ Variable:Y -> _
  CarriageControl:,
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 200 GOTO 150
  LineNumber:150

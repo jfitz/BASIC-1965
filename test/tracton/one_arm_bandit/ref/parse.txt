@@ -41,7 +41,7 @@
  TextConstant:"EARN $10. EACH TURN COSTS $1. GOOD-LUCK"
  CarriageControl:NL
 170 LET J = 0
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:0
  AssignmentOperator:=
 180 PRINT
@@ -49,40 +49,40 @@
 190 GOSUB 590
  LineNumber:590
 200 LET S1 = S
- Variable:S1 numeric scalar
- Variable:S numeric scalar
+ Variable:S1 -> _
+ Variable:S -> _
  AssignmentOperator:=
 210 GOSUB 590
  LineNumber:590
 220 LET S2 = S
- Variable:S2 numeric scalar
- Variable:S numeric scalar
+ Variable:S2 -> _
+ Variable:S -> _
  AssignmentOperator:=
 230 GOSUB 590
  LineNumber:590
 240 LET S3 = S
- Variable:S3 numeric scalar
- Variable:S numeric scalar
+ Variable:S3 -> _
+ Variable:S -> _
  AssignmentOperator:=
 250 LET S = S1
- Variable:S numeric scalar
- Variable:S1 numeric scalar
+ Variable:S -> _
+ Variable:S1 -> _
  AssignmentOperator:=
 260 GOSUB 610
  LineNumber:610
 270 LET S1$ = S$
  Token 'InvalidToken:$' is not a value or operator
 280 LET S = S2
- Variable:S numeric scalar
- Variable:S2 numeric scalar
+ Variable:S -> _
+ Variable:S2 -> _
  AssignmentOperator:=
 290 GOSUB 610
  LineNumber:610
 300 LET S2$ = S$
  Token 'InvalidToken:$' is not a value or operator
 310 LET S = S3
- Variable:S numeric scalar
- Variable:S3 numeric scalar
+ Variable:S -> _
+ Variable:S3 -> _
  AssignmentOperator:=
 320 GOSUB 610
  LineNumber:610
@@ -113,42 +113,42 @@
 450 IF S3$ = "CHERRY" THEN 540
  Token 'InvalidToken:$' is not a value or operator
 460 LET J = J - 1
- Variable:J numeric scalar
- Variable:J numeric scalar
+ Variable:J -> _
+ Variable:J -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 470 GOTO 550
  LineNumber:550
 480 LET J = J + 89
- Variable:J numeric scalar
- Variable:J numeric scalar
+ Variable:J -> _
+ Variable:J -> _
  NumericConstant:89
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 490 GOTO 550
  LineNumber:550
 500 LET J = J + 2
- Variable:J numeric scalar
- Variable:J numeric scalar
+ Variable:J -> _
+ Variable:J -> _
  NumericConstant:2
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 510 GOTO 550
  LineNumber:550
 520 LET J = J + 1
- Variable:J numeric scalar
- Variable:J numeric scalar
+ Variable:J -> _
+ Variable:J -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 530 GOTO 550
  LineNumber:550
 540 LET J = J + 9
- Variable:J numeric scalar
- Variable:J numeric scalar
+ Variable:J -> _
+ Variable:J -> _
  NumericConstant:9
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 550 PRINT
  CarriageControl:NL
@@ -165,18 +165,18 @@
 570 PRINT "YOUR EARNINGS ARE NOW $";J
  TextConstant:"YOUR EARNINGS ARE NOW $"
  CarriageControl:;
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 580 GOTO 720
  LineNumber:720
 590 LET S = 1 + INT(5*RND)
- Variable:S numeric scalar
+ Variable:S -> _
  NumericConstant:1
  NumericConstant:5
- FunctionRnd:RND numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ FunctionRnd:RND -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 600 600 RETURN
  Unknown statement '600 RETURN'

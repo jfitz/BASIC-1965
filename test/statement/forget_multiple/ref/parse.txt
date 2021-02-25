@@ -1,25 +1,25 @@
 10 REM Test the FORGET statement
  Remark:Test the FORGET statement
 20 LET A = 10
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:10
  AssignmentOperator:=
 22 LET B = 22
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:22
  AssignmentOperator:=
 30 PRINT A,B
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:NL
 40 FORGET A,B
- Variable:A numeric scalar
- Variable:B numeric scalar
+ Variable:A -> _
+ Variable:B -> _
 90 PRINT A,B
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:NL
 99 END
  

@@ -6,47 +6,47 @@
  TextConstant:"ABSOLUTE"
  CarriageControl:NL
 20 LET A=10
- Variable:A numeric scalar
+ Variable:A -> _
  NumericConstant:10
  AssignmentOperator:=
 22 LET A1=ABS(A)
- Variable:A1 numeric scalar
- Variable:A numeric scalar
- FunctionAbs:ABS(_) numeric scalar
+ Variable:A1 -> _
+ Variable:A -> _
+ FunctionAbs:ABS(_) -> _
  AssignmentOperator:=
 25 PRINT A,A1
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:A1 numeric scalar
+ Variable:A1 -> _
  CarriageControl:NL
 30 LET B=-20
- Variable:B numeric scalar
+ Variable:B -> _
  NumericConstant:20
- UnaryOperatorMinus:-(_) numeric scalar
+ UnaryOperatorMinus:-(_) -> _
  AssignmentOperator:=
 32 LET B1=ABS(B)
- Variable:B1 numeric scalar
- Variable:B numeric scalar
- FunctionAbs:ABS(_) numeric scalar
+ Variable:B1 -> _
+ Variable:B -> _
+ FunctionAbs:ABS(_) -> _
  AssignmentOperator:=
 35 PRINT B,B1
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:,
- Variable:B1 numeric scalar
+ Variable:B1 -> _
  CarriageControl:NL
 40 LET C=0
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:0
  AssignmentOperator:=
 42 LET C1=ABS(C)
- Variable:C1 numeric scalar
- Variable:C numeric scalar
- FunctionAbs:ABS(_) numeric scalar
+ Variable:C1 -> _
+ Variable:C -> _
+ FunctionAbs:ABS(_) -> _
  AssignmentOperator:=
 45 PRINT C,C1
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:,
- Variable:C1 numeric scalar
+ Variable:C1 -> _
  CarriageControl:NL
 90 STOP
  

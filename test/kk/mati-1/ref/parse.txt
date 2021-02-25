@@ -1,20 +1,20 @@
 100 DIM A(6), B(2)
  NumericConstant:6
- Declaration:A() array
+ Declaration:A() -> _()
  NumericConstant:2
- Declaration:B() array
+ Declaration:B() -> _()
 120 MAT READ A,B
- Variable:A(,) numeric matrix
- Variable:B(,) numeric matrix
+ Variable:A(,) -> _(,)
+ Variable:B(,) -> _(,)
 130 PRINT "EXAMPLE 1"
  TextConstant:"EXAMPLE 1"
  CarriageControl:NL
 140 PRINT
  CarriageControl:NL
 150 MAT PRINT A,B
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:,
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  CarriageControl:NL
 900 DATA 21,22,23,24,25,26, 11,12
  NumericConstant:21

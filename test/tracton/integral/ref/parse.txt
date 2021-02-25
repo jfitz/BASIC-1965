@@ -3,219 +3,219 @@
 20 REM THE LIMITS A AND B OF F(X)
  Remark:THE LIMITS A AND B OF F(X)
 30 LET C1 = .238619
- Variable:C1 numeric scalar
+ Variable:C1 -> _
  NumericConstant:0.238619
  AssignmentOperator:=
 40 LET C2 = C1
- Variable:C2 numeric scalar
- Variable:C1 numeric scalar
+ Variable:C2 -> _
+ Variable:C1 -> _
  AssignmentOperator:=
 50 LET C3 = .661209
- Variable:C3 numeric scalar
+ Variable:C3 -> _
  NumericConstant:0.661209
  AssignmentOperator:=
 60 LET C4 = C3
- Variable:C4 numeric scalar
- Variable:C3 numeric scalar
+ Variable:C4 -> _
+ Variable:C3 -> _
  AssignmentOperator:=
 70 LET C5 = .932470
- Variable:C5 numeric scalar
+ Variable:C5 -> _
  NumericConstant:0.93247
  AssignmentOperator:=
 80 LET C6 = C5
- Variable:C6 numeric scalar
- Variable:C5 numeric scalar
+ Variable:C6 -> _
+ Variable:C5 -> _
  AssignmentOperator:=
 90 LET D1 = .467914
- Variable:D1 numeric scalar
+ Variable:D1 -> _
  NumericConstant:0.467914
  AssignmentOperator:=
 100 LET D2 = .360762
- Variable:D2 numeric scalar
+ Variable:D2 -> _
  NumericConstant:0.360762
  AssignmentOperator:=
 110 LET D3 = .171324
- Variable:D3 numeric scalar
+ Variable:D3 -> _
  NumericConstant:0.171324
  AssignmentOperator:=
 120 LET J = 0
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:0
  AssignmentOperator:=
 130 PRINT "ENTER ENDPOINTS A,B"
  TextConstant:"ENTER ENDPOINTS A,B"
  CarriageControl:NL
 140 INPUT A,B
- Variable:A numeric scalar
- Variable:B numeric scalar
+ Variable:A -> _
+ Variable:B -> _
 150 LET Y = B - A
- Variable:Y numeric scalar
- Variable:B numeric scalar
- Variable:A numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:Y -> _
+ Variable:B -> _
+ Variable:A -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 160 LET Z = B + A
- Variable:Z numeric scalar
- Variable:B numeric scalar
- Variable:A numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:Z -> _
+ Variable:B -> _
+ Variable:A -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 170 LET X = ((C1*Y) +Z)/2
- Variable:X numeric scalar
- Variable:C1 numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ Variable:C1 -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 180 GOSUB 500
  LineNumber:500
 190 LET N = D1*Q
- Variable:N numeric scalar
- Variable:D1 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:N -> _
+ Variable:D1 -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 200 LET J = J + N
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 210 LET X = ((C2*Y) + Z)/2
- Variable:X numeric scalar
- Variable:C2 numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ Variable:C2 -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 220 GOSUB 500
  LineNumber:500
 230 LET N = D1*Q
- Variable:N numeric scalar
- Variable:D1 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:N -> _
+ Variable:D1 -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 240 LET J = J + N
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 250 LET X = ((C3*Y) + Z)/2
- Variable:X numeric scalar
- Variable:C3 numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ Variable:C3 -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 260 GOSUB 500
  LineNumber:500
 270 LET N = D2*Q
- Variable:N numeric scalar
- Variable:D2 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:N -> _
+ Variable:D2 -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 280 LET J = J + N
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 290 LET X = ((C4*Y) + Z)/2
- Variable:X numeric scalar
- Variable:C4 numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ Variable:C4 -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 300 GOSUB 500
  LineNumber:500
 310 LET N = D2*Q
- Variable:N numeric scalar
- Variable:D2 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:N -> _
+ Variable:D2 -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 320 LET J = J + N
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 330 LET X = ((C5*Y) + Z)/2
- Variable:X numeric scalar
- Variable:C5 numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ Variable:C5 -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 340 GOSUB 500
  LineNumber:500
 350 LET N = D3*Q
- Variable:N numeric scalar
- Variable:D3 numeric scalar
- Variable:Q numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:N -> _
+ Variable:D3 -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 360 LET J = J + N
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 370 LET X = ((C6*Y) + Z)/2
- Variable:X numeric scalar
- Variable:C6 numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:Z numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ Variable:C6 -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 380 GOSUB 500
  LineNumber:500
 390 LET N = D3*Y
- Variable:N numeric scalar
- Variable:D3 numeric scalar
- Variable:Y numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:N -> _
+ Variable:D3 -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 400 LET J = J + N
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:N numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 410 LET G = (Y/2)*J
- Variable:G numeric scalar
- Variable:Y numeric scalar
+ Variable:G -> _
+ Variable:Y -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:J numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:J -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 420 PRINT "INTEGRAL = ";G
  TextConstant:"INTEGRAL = "
  CarriageControl:;
- Variable:G numeric scalar
+ Variable:G -> _
  CarriageControl:NL
 430 PRINT
  CarriageControl:NL
@@ -223,11 +223,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 450 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 460 IF L = 1 THEN 480
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 470 STOP
  
 480 PRINT
@@ -235,25 +235,25 @@
 490 GOTO 120
  LineNumber:120
 500 LET Q = 13*X^2 - 6*X^2 + SIN(X) + 1/X
- Variable:Q numeric scalar
+ Variable:Q -> _
  NumericConstant:13
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:6
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- Variable:X numeric scalar
- FunctionSin:SIN(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:X -> _
+ FunctionSin:SIN(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:1
- Variable:X numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 510 RETURN
  

@@ -6,42 +6,42 @@
  TextConstant:"G.C.D."
  CarriageControl:NL
 20 READ A,B
- Variable:A numeric scalar
- Variable:B numeric scalar
+ Variable:A -> _
+ Variable:B -> _
 30 PRINT A,B,
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:,
 40 LET Q = INT(A/B)
- Variable:Q numeric scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionInt:INT(_) numeric scalar
+ Variable:Q -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
  AssignmentOperator:=
 45 LET R = A - Q*B
- Variable:R numeric scalar
- Variable:A numeric scalar
- Variable:Q numeric scalar
- Variable:B numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:R -> _
+ Variable:A -> _
+ Variable:Q -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 50 LET A = B
- Variable:A numeric scalar
- Variable:B numeric scalar
+ Variable:A -> _
+ Variable:B -> _
  AssignmentOperator:=
 55 LET B = R
- Variable:B numeric scalar
- Variable:R numeric scalar
+ Variable:B -> _
+ Variable:R -> _
  AssignmentOperator:=
 60 IF R > 0 THEN 40
- Variable:R numeric scalar
+ Variable:R -> _
  NumericConstant:0
- BinaryOperatorGreater:>(_,_) boolean scalar
+ BinaryOperatorGreater:>(_,_) -> ?
 70 PRINT A
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:NL
 80 GOTO 20
  LineNumber:20

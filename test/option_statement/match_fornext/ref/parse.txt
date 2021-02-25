@@ -6,52 +6,52 @@
 30 OPTION MATCH_FORNEXT FALSE
  BooleanConstant:false
 40 FOR I = 1 TO 3
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 50 FOR J = 1 TO 3
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 60 PRINT I,J
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 70 IF J = 2 THEN 90
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:2
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 80 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 90 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 120 PRINT "OPTION MATCH_FORNEXT TRUE"
  TextConstant:"OPTION MATCH_FORNEXT TRUE"
  CarriageControl:NL
 130 OPTION MATCH_FORNEXT TRUE
  BooleanConstant:true
 140 FOR I = 1 TO 3
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 150 FOR J = 1 TO 3
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:3"]
 160 PRINT I,J
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:,
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 170 IF J = 2 THEN 190
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:2
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 180 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 190 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 999 END
  
 

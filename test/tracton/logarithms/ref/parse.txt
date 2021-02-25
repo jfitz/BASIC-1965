@@ -8,38 +8,38 @@
  TextConstant:"BASE = "
  CarriageControl:NL
 50 INPUT Y
- Variable:Y numeric scalar
+ Variable:Y -> _
 60 PRINT "X = "
  TextConstant:"X = "
  CarriageControl:NL
 70 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 80 LET J = LOG(X)/LOG(Y)
- Variable:J numeric scalar
- Variable:X numeric scalar
- FunctionLog:LOG(_) numeric scalar
- Variable:Y numeric scalar
- FunctionLog:LOG(_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:J -> _
+ Variable:X -> _
+ FunctionLog:LOG(_) -> _
+ Variable:Y -> _
+ FunctionLog:LOG(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 90 PRINT "LOG";X;" = ";J
  TextConstant:"LOG"
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 120 IF L =1 THEN 140
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 130 STOP
  
 140 PRINT

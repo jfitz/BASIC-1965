@@ -6,31 +6,31 @@
  TextConstant:"VALUE OF A = "
  CarriageControl:NL
 40 INPUT A
- Variable:A numeric scalar
+ Variable:A -> _
 50 PRINT "VALUE OF B = "
  TextConstant:"VALUE OF B = "
  CarriageControl:NL
 60 INPUT B
- Variable:B numeric scalar
+ Variable:B -> _
 70 PRINT "DIFFERENCE = "
  TextConstant:"DIFFERENCE = "
  CarriageControl:NL
 80 INPUT D
- Variable:D numeric scalar
+ Variable:D -> _
 90 PRINT "NUMBER OF TERMS = "
  TextConstant:"NUMBER OF TERMS = "
  CarriageControl:NL
 100 INPUT N
- Variable:N numeric scalar
+ Variable:N -> _
 110 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
  TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 120 INPUT C
- Variable:C numeric scalar
+ Variable:C -> _
 130 IF C = 1 THEN 150
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 140 GOTO 170
  LineNumber:170
 150 PRINT "HARMONIC PROGRESSION"
@@ -42,52 +42,52 @@
  TextConstant:"TERM VALUE"
  CarriageControl:NL
 170 LET J = 0
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:0
  AssignmentOperator:=
 180 FOR I = 0 TO N - 1
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:0"]
- end:     ["Variable:N numeric scalar", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) numeric scalar"]
+ end:     ["Variable:N -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 190 LET K = I + 1
- Variable:K numeric scalar
- Variable:I numeric scalar
+ Variable:K -> _
+ Variable:I -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 200 LET L = A/(B + (I*D))
- Variable:L numeric scalar
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:I numeric scalar
- Variable:D numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:L -> _
+ Variable:A -> _
+ Variable:B -> _
+ Variable:I -> _
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 210 LET J = J + L
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:L numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:L -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 220 IF C = 1 THEN 240
- Variable:C numeric scalar
+ Variable:C -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 230 GOTO 250
  LineNumber:250
 240 PRINT K,L
- Variable:K numeric scalar
+ Variable:K -> _
  CarriageControl:,
- Variable:L numeric scalar
+ Variable:L -> _
  CarriageControl:NL
 250 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 260 PRINT "SUM = ";J
  TextConstant:"SUM = "
  CarriageControl:;
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 270 PRINT "********************"
  TextConstant:"********************"
@@ -96,11 +96,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 290 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 300 IF X = 1 THEN 320
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 310 STOP
  
 320 PRINT

@@ -834,7 +834,11 @@ class DataStatement < AbstractStatement
   end
 
   def dump
-    @expressions.dump
+    lines = []
+
+    lines += @expressions.dump unless @expressions.nil?
+
+    lines
   end
 
   def pre_execute(interpreter)

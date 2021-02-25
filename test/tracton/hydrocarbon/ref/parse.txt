@@ -37,11 +37,11 @@
  TextConstant:"SULPHUR(S), NITROGEN(N) IN THAT ORDER"
  CarriageControl:NL
 160 INPUT C,H,O,S,N
- Variable:C numeric scalar
- Variable:H numeric scalar
- Variable:O numeric scalar
- Variable:S numeric scalar
- Variable:N numeric scalar
+ Variable:C -> _
+ Variable:H -> _
+ Variable:O -> _
+ Variable:S -> _
+ Variable:N -> _
 170 PRINT "ENTER PERCENTAGE EXCESS AIR, IF ZERO"
  TextConstant:"ENTER PERCENTAGE EXCESS AIR, IF ZERO"
  CarriageControl:NL
@@ -49,157 +49,157 @@
  TextConstant:"ENTER 0. EXAMPLE: - 34% ENTER AS 34"
  CarriageControl:NL
 190 INPUT E
- Variable:E numeric scalar
+ Variable:E -> _
 200 LET E = 1 + (E/100)
- Variable:E numeric scalar
+ Variable:E -> _
  NumericConstant:1
- Variable:E numeric scalar
+ Variable:E -> _
  NumericConstant:100
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 210 LET O2 = C + S + (H/4) - (O/2)
- Variable:O2 numeric scalar
- Variable:C numeric scalar
- Variable:S numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:H numeric scalar
+ Variable:O2 -> _
+ Variable:C -> _
+ Variable:S -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:H -> _
  NumericConstant:4
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:O numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:O -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 220 LET A = O2*E*4.762
- Variable:A numeric scalar
- Variable:O2 numeric scalar
- Variable:E numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:A -> _
+ Variable:O2 -> _
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:4.762
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 230 LET A1 = 1.8094*A
- Variable:A1 numeric scalar
+ Variable:A1 -> _
  NumericConstant:1.8094
- Variable:A numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
- Variable:F numeric scalar
+ Variable:F -> _
  NumericConstant:0.7507
- Variable:C numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:0.063
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2.004
- Variable:S numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 250 LET F = (0.875*N) + O + F
- Variable:F numeric scalar
+ Variable:F -> _
  NumericConstant:0.875
- Variable:N numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:O numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:F numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:N -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:O -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:F -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 260 LET A1 = A1/F
- Variable:A1 numeric scalar
- Variable:A1 numeric scalar
- Variable:F numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:A1 -> _
+ Variable:A1 -> _
+ Variable:F -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 270 LET M = A + (H/4) + (O/2) + (N/2)
- Variable:M numeric scalar
- Variable:A numeric scalar
- Variable:H numeric scalar
+ Variable:M -> _
+ Variable:A -> _
+ Variable:H -> _
  NumericConstant:4
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:O numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:O -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:N numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:N -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 280 LET C2 = (C*100)/M
- Variable:C2 numeric scalar
- Variable:C numeric scalar
+ Variable:C2 -> _
+ Variable:C -> _
  NumericConstant:100
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 290 LET S2 = (S*100)/M
- Variable:S2 numeric scalar
- Variable:S numeric scalar
+ Variable:S2 -> _
+ Variable:S -> _
  NumericConstant:100
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 300 LET H2 = (H*100)/M
- Variable:H2 numeric scalar
- Variable:H numeric scalar
+ Variable:H2 -> _
+ Variable:H -> _
  NumericConstant:100
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 310 LET O3 = (100*(E-1)*O2)/M
- Variable:O3 numeric scalar
+ Variable:O3 -> _
  NumericConstant:100
- Variable:E numeric scalar
+ Variable:E -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:O2 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:O2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
- Variable:N2 numeric scalar
+ Variable:N2 -> _
  NumericConstant:100
  NumericConstant:3.762
- Variable:E numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:O2 numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:N numeric scalar
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:O2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:N -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:M numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 330 PRINT
  CarriageControl:NL
 340 PRINT "AIR-FUEL RATIO WITH RESPECT TO MOLES = ";A
  TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MOLES = "
  CarriageControl:;
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:NL
 350 PRINT "AIR-FUEL RATIO WITH RESPECT TO MASS = ";A1
  TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MASS = "
  CarriageControl:;
- Variable:A1 numeric scalar
+ Variable:A1 -> _
  CarriageControl:NL
 360 PRINT "TOTAL MOLES OF PRODUCT = ";M
  TextConstant:"TOTAL MOLES OF PRODUCT = "
  CarriageControl:;
- Variable:M numeric scalar
+ Variable:M -> _
  CarriageControl:NL
 370 PRINT "*****PERCENTAGE VOLUME OF PRODUCTS*****"
  TextConstant:"*****PERCENTAGE VOLUME OF PRODUCTS*****"
@@ -207,35 +207,35 @@
 380 PRINT "CARBON DIOXIDE = ";C2;"%"
  TextConstant:"CARBON DIOXIDE = "
  CarriageControl:;
- Variable:C2 numeric scalar
+ Variable:C2 -> _
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
 390 PRINT "SULPHUR DIOXIDE = ";S2;"%"
  TextConstant:"SULPHUR DIOXIDE = "
  CarriageControl:;
- Variable:S2 numeric scalar
+ Variable:S2 -> _
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
 400 PRINT "WATER = ";H2;"%"
  TextConstant:"WATER = "
  CarriageControl:;
- Variable:H2 numeric scalar
+ Variable:H2 -> _
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
 410 PRINT "OXYGEN = ";O3;"%"
  TextConstant:"OXYGEN = "
  CarriageControl:;
- Variable:O3 numeric scalar
+ Variable:O3 -> _
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL
 420 PRINT "NITROGEN = ";N2;"%"
  TextConstant:"NITROGEN = "
  CarriageControl:;
- Variable:N2 numeric scalar
+ Variable:N2 -> _
  CarriageControl:;
  TextConstant:"%"
  CarriageControl:NL

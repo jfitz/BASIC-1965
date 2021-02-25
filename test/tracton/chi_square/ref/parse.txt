@@ -5,45 +5,45 @@
 30 REM EXPECTED FREQUENCIES
  Remark:EXPECTED FREQUENCIES
 40 LET J = 0
- Variable:J numeric scalar
+ Variable:J -> _
  NumericConstant:0
  AssignmentOperator:=
 50 PRINT "OBSERVED FREQUENCIES = "
  TextConstant:"OBSERVED FREQUENCIES = "
  CarriageControl:NL
 60 INPUT D
- Variable:D numeric scalar
+ Variable:D -> _
 70 PRINT "EXPECTED FREQUENCIES = "
  TextConstant:"EXPECTED FREQUENCIES = "
  CarriageControl:NL
 80 INPUT E
- Variable:E numeric scalar
+ Variable:E -> _
 90 IF E = 0 THEN 130
- Variable:E numeric scalar
+ Variable:E -> _
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 100 LET K = ((D - E)^2)/E
- Variable:K numeric scalar
- Variable:D numeric scalar
- Variable:E numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:K -> _
+ Variable:D -> _
+ Variable:E -> _
+ BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
- Variable:E numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 110 LET J = J + K
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:K numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:J -> _
+ Variable:K -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 120 GOTO 50
  LineNumber:50
 130 PRINT "CHI-SQUARE = ";J
  TextConstant:"CHI-SQUARE = "
  CarriageControl:;
- Variable:J numeric scalar
+ Variable:J -> _
  CarriageControl:NL
 140 PRINT "*****************"
  TextConstant:"*****************"
@@ -52,11 +52,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 160 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 170 IF L = 1 THEN 190
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 180 STOP
  
 190 PRINT

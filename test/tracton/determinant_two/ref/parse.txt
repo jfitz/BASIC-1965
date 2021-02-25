@@ -6,62 +6,62 @@
  TextConstant:"ENTER A11, A12"
  CarriageControl:;
 40 INPUT A,B
- Variable:A numeric scalar
- Variable:B numeric scalar
+ Variable:A -> _
+ Variable:B -> _
 50 PRINT "A21, A22";
  TextConstant:"A21, A22"
  CarriageControl:;
 60 INPUT C,D
- Variable:C numeric scalar
- Variable:D numeric scalar
+ Variable:C -> _
+ Variable:D -> _
 70 LET E = (D*A) - (B*C)
- Variable:E numeric scalar
- Variable:D numeric scalar
- Variable:A numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- Variable:B numeric scalar
- Variable:C numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:E -> _
+ Variable:D -> _
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 80 LET F = D/E
- Variable:F numeric scalar
- Variable:D numeric scalar
- Variable:E numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:F -> _
+ Variable:D -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 90 LET G = - B/E
- Variable:G numeric scalar
- Variable:B numeric scalar
- UnaryOperatorMinus:-(_) numeric scalar
- Variable:E numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:G -> _
+ Variable:B -> _
+ UnaryOperatorMinus:-(_) -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 100 LET H = - C/E
- Variable:H numeric scalar
- Variable:C numeric scalar
- UnaryOperatorMinus:-(_) numeric scalar
- Variable:E numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:H -> _
+ Variable:C -> _
+ UnaryOperatorMinus:-(_) -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 110 LET I = A/E
- Variable:I numeric scalar
- Variable:A numeric scalar
- Variable:E numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:I -> _
+ Variable:A -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 120 PRINT "ORIGINAL MATRIX"
  TextConstant:"ORIGINAL MATRIX"
  CarriageControl:NL
 130 PRINT A,B
- Variable:A numeric scalar
+ Variable:A -> _
  CarriageControl:,
- Variable:B numeric scalar
+ Variable:B -> _
  CarriageControl:NL
 140 PRINT C,D
- Variable:C numeric scalar
+ Variable:C -> _
  CarriageControl:,
- Variable:D numeric scalar
+ Variable:D -> _
  CarriageControl:NL
 150 PRINT
  CarriageControl:NL
@@ -69,21 +69,21 @@
  TextConstant:"INVERSE OF MATRIX"
  CarriageControl:NL
 170 PRINT F,G
- Variable:F numeric scalar
+ Variable:F -> _
  CarriageControl:,
- Variable:G numeric scalar
+ Variable:G -> _
  CarriageControl:NL
 180 PRINT H,I
- Variable:H numeric scalar
+ Variable:H -> _
  CarriageControl:,
- Variable:I numeric scalar
+ Variable:I -> _
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
 200 PRINT "DETERMINANT = ";E
  TextConstant:"DETERMINANT = "
  CarriageControl:;
- Variable:E numeric scalar
+ Variable:E -> _
  CarriageControl:NL
 210 PRINT
  CarriageControl:NL
@@ -91,11 +91,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 240 IF L = 1 THEN 30
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 250 STOP
  
 260 PRINT

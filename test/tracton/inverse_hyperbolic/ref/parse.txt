@@ -22,7 +22,7 @@
  TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- Variable:C numeric scalar
+ Variable:C -> _
 100 ON C GOTO 110,150,190,230,280,330
  Unknown statement 'ON C GOTO 110,150,190,230,280,330'
  Unimplemented
@@ -33,11 +33,11 @@
 130 PRINT "SINH - 1";X;" = ";Z
  TextConstant:"SINH - 1"
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 140 GOTO 370
  LineNumber:370
@@ -48,11 +48,11 @@
 170 PRINT "COSH - 1";X;" = ";Z
  TextConstant:"COSH - 1"
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 180 GOTO 370
  LineNumber:370
@@ -63,11 +63,11 @@
 210 PRINT "TANH - 1";X;" = ";Z
  TextConstant:"TANH - 1"
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 220 GOTO 370
  LineNumber:370
@@ -76,17 +76,17 @@
 240 GOSUB 470
  LineNumber:470
 250 LET X = A
- Variable:X numeric scalar
- Variable:A numeric scalar
+ Variable:X -> _
+ Variable:A -> _
  AssignmentOperator:=
 260 PRINT "CSCH - 1";X;" = ";Z
  TextConstant:"CSCH - 1"
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 270 GOTO 370
  LineNumber:370
@@ -95,17 +95,17 @@
 290 GOSUB 490
  LineNumber:490
 300 LET X = A
- Variable:X numeric scalar
- Variable:A numeric scalar
+ Variable:X -> _
+ Variable:A -> _
  AssignmentOperator:=
 310 PRINT "SECH - 1";X;" = ";Z
  TextConstant:"SECH - 1"
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 320 GOTO 370
  LineNumber:370
@@ -114,17 +114,17 @@
 340 GOSUB 510
  LineNumber:510
 350 LET X = A
- Variable:X numeric scalar
- Variable:A numeric scalar
+ Variable:X -> _
+ Variable:A -> _
  AssignmentOperator:=
 360 PRINT "COTH - 1";X;" = ";Z
  TextConstant:"COTH - 1"
  CarriageControl:;
- Variable:X numeric scalar
+ Variable:X -> _
  CarriageControl:;
  TextConstant:" = "
  CarriageControl:;
- Variable:Z numeric scalar
+ Variable:Z -> _
  CarriageControl:NL
 370 PRINT
  CarriageControl:NL
@@ -132,11 +132,11 @@
  TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 390 INPUT L
- Variable:L numeric scalar
+ Variable:L -> _
 400 IF L = 1 THEN 420
- Variable:L numeric scalar
+ Variable:L -> _
  NumericConstant:1
- BinaryOperatorEqual:=(_,_) boolean scalar
+ BinaryOperatorEqual:=(_,_) -> ?
 410 STOP
  
 420 PRINT
@@ -147,49 +147,49 @@
  TextConstant:"X = "
  CarriageControl:;
 450 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 460 RETURN
  
 470 LET Z = LOG(X + SQR((X^2) + 1))
- Variable:Z numeric scalar
- Variable:X numeric scalar
- Variable:X numeric scalar
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionSqr:SQR(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionLog:LOG(_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionLog:LOG(_) -> _
  AssignmentOperator:=
 480 RETURN
  
 490 LET Z = LOG(X + SQR((X^2) - 1))
- Variable:Z numeric scalar
- Variable:X numeric scalar
- Variable:X numeric scalar
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
  NumericConstant:1
- BinaryOperatorMinus:-(_,_) numeric scalar
- FunctionSqr:SQR(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- FunctionLog:LOG(_) numeric scalar
+ BinaryOperatorMinus:-(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionLog:LOG(_) -> _
  AssignmentOperator:=
 500 RETURN
  
 510 LET Z = (LOG((1 + X)/(1 - X)))/2
- Variable:Z numeric scalar
+ Variable:Z -> _
  NumericConstant:1
- Variable:X numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:1
- Variable:X numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- FunctionLog:LOG(_) numeric scalar
+ Variable:X -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionLog:LOG(_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 520 RETURN
  
@@ -197,16 +197,16 @@
  TextConstant:"X = "
  CarriageControl:;
 540 INPUT X
- Variable:X numeric scalar
+ Variable:X -> _
 550 LET A = X
- Variable:A numeric scalar
- Variable:X numeric scalar
+ Variable:A -> _
+ Variable:X -> _
  AssignmentOperator:=
 560 LET X = 1/X
- Variable:X numeric scalar
+ Variable:X -> _
  NumericConstant:1
- Variable:X numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:X -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 570 RETURN
  

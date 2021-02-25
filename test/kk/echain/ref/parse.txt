@@ -1,31 +1,31 @@
 100 DIM P(20,20), M(20,20), Z(20,20), A(1,20), B(1,20)
  NumericConstant:20
  NumericConstant:20
- Declaration:P(,) matrix
+ Declaration:P(,) -> _(,)
  NumericConstant:20
  NumericConstant:20
- Declaration:M(,) matrix
+ Declaration:M(,) -> _(,)
  NumericConstant:20
  NumericConstant:20
- Declaration:Z(,) matrix
+ Declaration:Z(,) -> _(,)
  NumericConstant:1
  NumericConstant:20
- Declaration:A(,) matrix
+ Declaration:A(,) -> _(,)
  NumericConstant:1
  NumericConstant:20
- Declaration:B(,) matrix
+ Declaration:B(,) -> _(,)
 110
 120 READ N
- Variable:N numeric scalar
+ Variable:N -> _
 130 MAT READ P(N,N)
- Variable:N numeric scalar
- Variable:N numeric scalar
- Variable:P(,) numeric matrix
+ Variable:N -> _
+ Variable:N -> _
+ Variable:P(,) -> _(,)
 140 MAT Z = IDN(N,N)
- Variable:Z(,) numeric matrix
- Variable:N numeric scalar
- Variable:N numeric scalar
- FunctionIdn:IDN(_,_) numeric matrix
+ Variable:Z(,) -> _(,)
+ Variable:N -> _
+ Variable:N -> _
+ FunctionIdn:IDN(_,_) -> _(,)
  AssignmentOperator:=
 150
 160 PRINT "TRANSITION PROBABILITIES"
@@ -34,145 +34,145 @@
 170 PRINT
  CarriageControl:NL
 180 MAT PRINT P
- Variable:P(,) numeric matrix
+ Variable:P(,) -> _(,)
  CarriageControl:NL
 190
 200 MAT Z = Z-P
- Variable:Z(,) numeric matrix
- Variable:Z(,) numeric matrix
- Variable:P(,) numeric matrix
- BinaryOperatorMinus:-(_,_) numeric matrix
+ Variable:Z(,) -> _(,)
+ Variable:Z(,) -> _(,)
+ Variable:P(,) -> _(,)
+ BinaryOperatorMinus:-(_,_) -> _(,)
  AssignmentOperator:=
 210 FOR I = 1 TO N
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 220 LET Z(I,N) = 1
- Variable:I numeric scalar
- Variable:N numeric scalar
- Variable:Z(_,_) numeric scalar
+ Variable:I -> _
+ Variable:N -> _
+ Variable:Z(_,_) -> _
  NumericConstant:1
  AssignmentOperator:=
 230 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 240 MAT M = INV(Z)
- Variable:M(,) numeric matrix
- Variable:Z(,) numeric matrix
- FunctionInv:INV(_) numeric matrix
+ Variable:M(,) -> _(,)
+ Variable:Z(,) -> _(,)
+ FunctionInv:INV(_) -> _(,)
  AssignmentOperator:=
 245 MAT A = ZER(1,N)
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  NumericConstant:1
- Variable:N numeric scalar
- FunctionZer2:ZER(_,_) numeric matrix
+ Variable:N -> _
+ FunctionZer2:ZER(_,_) -> _(,)
  AssignmentOperator:=
 250 FOR J = 1 TO N
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 260 LET A(1,J) = M(N,J)
  NumericConstant:1
- Variable:J numeric scalar
- Variable:A(_,_) numeric scalar
- Variable:N numeric scalar
- Variable:J numeric scalar
- Variable:M(_,_) numeric scalar
+ Variable:J -> _
+ Variable:A(_,_) -> _
+ Variable:N -> _
+ Variable:J -> _
+ Variable:M(_,_) -> _
  AssignmentOperator:=
 270 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 280 PRINT "LIMITING PROBABILITIES"
  TextConstant:"LIMITING PROBABILITIES"
  CarriageControl:NL
 290 PRINT
  CarriageControl:NL
 300 MAT PRINT A
- Variable:A(,) numeric matrix
+ Variable:A(,) -> _(,)
  CarriageControl:NL
 310
 320 MAT M = IDN(N,N)
- Variable:M(,) numeric matrix
- Variable:N numeric scalar
- Variable:N numeric scalar
- FunctionIdn:IDN(_,_) numeric matrix
+ Variable:M(,) -> _(,)
+ Variable:N -> _
+ Variable:N -> _
+ FunctionIdn:IDN(_,_) -> _(,)
  AssignmentOperator:=
 330 MAT M = M-P
- Variable:M(,) numeric matrix
- Variable:M(,) numeric matrix
- Variable:P(,) numeric matrix
- BinaryOperatorMinus:-(_,_) numeric matrix
+ Variable:M(,) -> _(,)
+ Variable:M(,) -> _(,)
+ Variable:P(,) -> _(,)
+ BinaryOperatorMinus:-(_,_) -> _(,)
  AssignmentOperator:=
 340 FOR I = 1 TO N
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 350 FOR J = 1 TO N
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 360 LET M(I,J) = M(I,J)+A(1,J)
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:M(_,_) numeric scalar
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:M(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:M(_,_) -> _
+ Variable:I -> _
+ Variable:J -> _
+ Variable:M(_,_) -> _
  NumericConstant:1
- Variable:J numeric scalar
- Variable:A(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:J -> _
+ Variable:A(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 370 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 380 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 390 MAT Z = INV(M)
- Variable:Z(,) numeric matrix
- Variable:M(,) numeric matrix
- FunctionInv:INV(_) numeric matrix
+ Variable:Z(,) -> _(,)
+ Variable:M(,) -> _(,)
+ FunctionInv:INV(_) -> _(,)
  AssignmentOperator:=
 400
 410 FOR I = 1 TO N
- control: Variable:I numeric scalar
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 420 FOR J = 1 TO N
- control: Variable:J numeric scalar
+ control: Variable:J -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N numeric scalar"]
+ end:     ["Variable:N -> _"]
 430 LET M(I,J) = (Z(J,J)-Z(I,J))/A(1,J)
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:M(_,_) numeric scalar
- Variable:J numeric scalar
- Variable:J numeric scalar
- Variable:Z(_,_) numeric scalar
- Variable:I numeric scalar
- Variable:J numeric scalar
- Variable:Z(_,_) numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:I -> _
+ Variable:J -> _
+ Variable:M(_,_) -> _
+ Variable:J -> _
+ Variable:J -> _
+ Variable:Z(_,_) -> _
+ Variable:I -> _
+ Variable:J -> _
+ Variable:Z(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:1
- Variable:J numeric scalar
- Variable:A(_,_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
+ Variable:J -> _
+ Variable:A(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 440 NEXT J
- Variable:J numeric scalar
+ Variable:J -> _
 450 NEXT I
- Variable:I numeric scalar
+ Variable:I -> _
 460 PRINT "MEAN PASSAGE TIMES"
  TextConstant:"MEAN PASSAGE TIMES"
  CarriageControl:NL
 470 PRINT
  CarriageControl:NL
 480 MAT PRINT M
- Variable:M(,) numeric matrix
+ Variable:M(,) -> _(,)
  CarriageControl:NL
 490
 500 MAT B = A*M
- Variable:B(,) numeric matrix
- Variable:A(,) numeric matrix
- Variable:M(,) numeric matrix
- BinaryOperatorMultiply:*(_,_) numeric matrix
+ Variable:B(,) -> _(,)
+ Variable:A(,) -> _(,)
+ Variable:M(,) -> _(,)
+ BinaryOperatorMultiply:*(_,_) -> _(,)
  AssignmentOperator:=
 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
  TextConstant:"FIRST PASSAGE TIME IN EQUILIBRIUM"
@@ -180,7 +180,7 @@
 520 PRINT
  CarriageControl:NL
 530 MAT PRINT B
- Variable:B(,) numeric matrix
+ Variable:B(,) -> _(,)
  CarriageControl:NL
 540
 550 DATA 3

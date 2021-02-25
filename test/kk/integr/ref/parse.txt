@@ -1,19 +1,19 @@
 10 DEF FNF(X) = X^2 + 3*X + 1
- UserFunctionName:FNF
- VariableName:X
- Variable:X numeric scalar
+ UserFunctionName:FNF -> _
+ VariableName:X -> _
+ Variable:X -> _
  NumericConstant:2
- BinaryOperatorPower:^(_,_) numeric scalar
+ BinaryOperatorPower:^(_,_) -> _
  NumericConstant:3
- Variable:X numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:1
- BinaryOperatorPlus:+(_,_) numeric scalar
+ BinaryOperatorPlus:+(_,_) -> _
 20 READ A, B, E
- Variable:A numeric scalar
- Variable:B numeric scalar
- Variable:E numeric scalar
+ Variable:A -> _
+ Variable:B -> _
+ Variable:E -> _
 30 PRINT "TRAPEZOID", "MIDPOINT", "SIMPSON"
  TextConstant:"TRAPEZOID"
  CarriageControl:,
@@ -22,90 +22,90 @@
  TextConstant:"SIMPSON"
  CarriageControl:NL
 40 LET H = B-A
- Variable:H numeric scalar
- Variable:B numeric scalar
- Variable:A numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
+ Variable:H -> _
+ Variable:B -> _
+ Variable:A -> _
+ BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:=
 50 LET T = (FNF(A)+FNF(B))*H
- Variable:T numeric scalar
- Variable:A numeric scalar
- UserFunction:FNF(_) numeric scalar
- Variable:B numeric scalar
- UserFunction:FNF(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:T -> _
+ Variable:A -> _
+ UserFunction:FNF(_) -> _
+ Variable:B -> _
+ UserFunction:FNF(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 60 LET M = 0
- Variable:M numeric scalar
+ Variable:M -> _
  NumericConstant:0
  AssignmentOperator:=
 100 LET T = (T+M)/2
- Variable:T numeric scalar
- Variable:T numeric scalar
- Variable:M numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:T -> _
+ Variable:T -> _
+ Variable:M -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 120 LET M = 0
- Variable:M numeric scalar
+ Variable:M -> _
  NumericConstant:0
  AssignmentOperator:=
 130 FOR X = A+H/2 TO B STEP H
- control: Variable:X numeric scalar
- start:   ["Variable:A numeric scalar", "Variable:H numeric scalar", "NumericConstant:2", "BinaryOperatorDivide:/(_,_) numeric scalar", "BinaryOperatorPlus:+(_,_) numeric scalar"]
- end:     ["Variable:B numeric scalar"]
- step:    ["Variable:H numeric scalar"]
+ control: Variable:X -> _
+ start:   ["Variable:A -> _", "Variable:H -> _", "NumericConstant:2", "BinaryOperatorDivide:/(_,_) -> _", "BinaryOperatorPlus:+(_,_) -> _"]
+ end:     ["Variable:B -> _"]
+ step:    ["Variable:H -> _"]
 140 LET M = M + FNF(X)
- Variable:M numeric scalar
- Variable:M numeric scalar
- Variable:X numeric scalar
- UserFunction:FNF(_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:M -> _
+ Variable:M -> _
+ Variable:X -> _
+ UserFunction:FNF(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:=
 150 NEXT X
- Variable:X numeric scalar
+ Variable:X -> _
 160 LET M = M*H
- Variable:M numeric scalar
- Variable:M numeric scalar
- Variable:H numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
+ Variable:M -> _
+ Variable:M -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:=
 170 LET S = (T + 2*M)/3
- Variable:S numeric scalar
- Variable:T numeric scalar
+ Variable:S -> _
+ Variable:T -> _
  NumericConstant:2
- Variable:M numeric scalar
- BinaryOperatorMultiply:*(_,_) numeric scalar
- BinaryOperatorPlus:+(_,_) numeric scalar
+ Variable:M -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:3
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 180 PRINT T, M, S
- Variable:T numeric scalar
+ Variable:T -> _
  CarriageControl:,
- Variable:M numeric scalar
+ Variable:M -> _
  CarriageControl:,
- Variable:S numeric scalar
+ Variable:S -> _
  CarriageControl:NL
 185 LET H = H/2
- Variable:H numeric scalar
- Variable:H numeric scalar
+ Variable:H -> _
+ Variable:H -> _
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) numeric scalar
+ BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:=
 190 IF ABS(T-M)/ABS(S) > E THEN 100
- Variable:T numeric scalar
- Variable:M numeric scalar
- BinaryOperatorMinus:-(_,_) numeric scalar
- FunctionAbs:ABS(_) numeric scalar
- Variable:S numeric scalar
- FunctionAbs:ABS(_) numeric scalar
- BinaryOperatorDivide:/(_,_) numeric scalar
- Variable:E numeric scalar
- BinaryOperatorGreater:>(_,_) boolean scalar
+ Variable:T -> _
+ Variable:M -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ FunctionAbs:ABS(_) -> _
+ Variable:S -> _
+ FunctionAbs:ABS(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:E -> _
+ BinaryOperatorGreater:>(_,_) -> ?
 900 DATA 1, 5
  NumericConstant:1
  NumericConstant:5
