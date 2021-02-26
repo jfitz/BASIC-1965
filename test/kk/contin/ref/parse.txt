@@ -8,7 +8,7 @@
 130    LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140    FOR J = 1 TO N
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -24,21 +24,21 @@
  Variable:J -> _
  Variable:O(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170    NEXT J
  Variable:J -> _
 180    LET R(I) = S
  Variable:I -> _
  Variable:R(_) -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 NEXT I
  Variable:I -> _
 200
 210 LET S1 = 0
  Variable:S1 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 FOR J = 1 TO N
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -46,7 +46,7 @@
 230    LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240    FOR I = 1 TO M
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -58,20 +58,20 @@
  Variable:J -> _
  Variable:O(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260    NEXT I
  Variable:I -> _
 270    LET C(J) = S
  Variable:J -> _
  Variable:C(_) -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280    LET S1 = S1 + S
  Variable:S1 -> _
  Variable:S1 -> _
  Variable:S -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290 NEXT J
  Variable:J -> _
 300
@@ -80,7 +80,7 @@
 320 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 FOR I = 1 TO M
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -98,7 +98,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:S1 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 360       LET C = C + (O(I,J) - E)^2/E
  Variable:C -> _
  Variable:C -> _
@@ -112,7 +112,7 @@
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 370       PRINT O(I,J),
  Variable:I -> _
  Variable:J -> _

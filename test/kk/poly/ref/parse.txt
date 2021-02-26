@@ -34,7 +34,7 @@
 110 LET K = 0
  Variable:K -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 GOSUB 500
  LineNumber:500
 130 GOSUB 2000
@@ -42,7 +42,7 @@
 140 LET K = 1
  Variable:K -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 GOSUB 500
  LineNumber:500
 160 GOSUB 2000
@@ -50,7 +50,7 @@
 170 LET K = 2
  Variable:K -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 GOSUB 500
  LineNumber:500
 190
@@ -102,7 +102,7 @@
  Variable:X -> _
  Variable:J -> _
  Variable:X(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 530 GOSUB 1000
  LineNumber:1000
 540 LET T(J,K) = Y
@@ -110,7 +110,7 @@
  Variable:K -> _
  Variable:T(_,_) -> _
  Variable:Y -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 550 NEXT J
  Variable:J -> _
 560 RETURN
@@ -121,7 +121,7 @@
 1010 LET Y = 0
  Variable:Y -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1020 FOR I = 0 TO N
  control: Variable:I -> _
  start:   ["NumericConstant:0"]
@@ -134,7 +134,7 @@
  Variable:I -> _
  Variable:A(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1040 NEXT I
  Variable:I -> _
 1050 RETURN
@@ -155,7 +155,7 @@
  Variable:I -> _
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2030 NEXT I
  Variable:I -> _
 2040 LET N = N-1
@@ -163,7 +163,7 @@
  Variable:N -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2050 RETURN
  
 2060

@@ -16,12 +16,12 @@
 150 LET Z = 0
  Variable:Z -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160
 170 LET F = 2
  Variable:F -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 GOSUB 300
  LineNumber:300
 190 FOR F = 3 TO SQR(N)+1 STEP 2
@@ -76,7 +76,7 @@
 360 LET Z = 1
  Variable:Z -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 370 PRINT F;
  Variable:F -> _
  CarriageControl:;
@@ -85,7 +85,7 @@
  Variable:N -> _
  Variable:F -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 390 IF N = 1 THEN 500
  Variable:N -> _
  NumericConstant:1

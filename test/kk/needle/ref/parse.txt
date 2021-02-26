@@ -1,11 +1,11 @@
 100 LET P = 3.14159265
  Variable:P -> _
  NumericConstant:3.14159
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 FOR N = 1 TO 1000
  control: Variable:N -> _
  start:   ["NumericConstant:1"]
@@ -14,12 +14,12 @@
  Variable:Y -> _
  Variable:Z -> _
  FunctionRnd:RND(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140    LET R = RND(Z)
  Variable:R -> _
  Variable:Z -> _
  FunctionRnd:RND(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150    LET A = P*(R-1/2)
  Variable:A -> _
  Variable:P -> _
@@ -29,26 +29,26 @@
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160    LET Y1 = Y - COS(A)
  Variable:Y1 -> _
  Variable:Y -> _
  Variable:A -> _
  FunctionCos:COS(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170    LET Y2 = Y + COS(A)
  Variable:Y2 -> _
  Variable:Y -> _
  Variable:A -> _
  FunctionCos:COS(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 172    LET C2 = COS(A)
  Variable:C2 -> _
  Variable:A -> _
  FunctionCos:COS(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180    IF SGN(Y1) = SGN(Y2) THEN 200
  Variable:Y1 -> _
  FunctionSgn:SGN(_) -> _
@@ -60,7 +60,7 @@
  Variable:C -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 NEXT N
  Variable:N -> _
 210 LET F = C/N
@@ -68,7 +68,7 @@
  Variable:C -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 PRINT "FRACTION OF CROSSINGS = " F
  TextConstant:"FRACTION OF CROSSINGS = "
  CarriageControl:

@@ -41,7 +41,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:B2 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET E2 = ((C1*A2)/A1) - C2
  Variable:E2 -> _
  Variable:C1 -> _
@@ -51,7 +51,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:C2 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET E3 = ((B1*A3)/A1) - B3
  Variable:E3 -> _
  Variable:B1 -> _
@@ -61,7 +61,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:B3 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 LET E4 = ((C1*A3)/A1) - C3
  Variable:E4 -> _
  Variable:C1 -> _
@@ -71,7 +71,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:C3 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 LET E5 = ((E1*E4) - (E2*E3))
  Variable:E5 -> _
  Variable:E1 -> _
@@ -81,7 +81,7 @@
  Variable:E3 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 IF E5 = 0 THEN 250
  Variable:E5 -> _
  NumericConstant:0
@@ -95,7 +95,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:D2 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET E7 = ((D1*A3)/A1) - D3
  Variable:E7 -> _
  Variable:D1 -> _
@@ -105,7 +105,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:D3 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 LET Y = ((E6*E4) - (E2*E7))/E5
  Variable:Y -> _
  Variable:E6 -> _
@@ -117,7 +117,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:E5 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 LET Z = ((E1*E7) - (E6*E3))/E5
  Variable:Z -> _
  Variable:E1 -> _
@@ -129,7 +129,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:E5 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 LET X = (D1/A1) - (B1/A1*Y) - ((C1/A1)*Z)
  Variable:X -> _
  Variable:D1 -> _
@@ -147,7 +147,7 @@
  Variable:Z -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 PRINT "SOLUTION"
  TextConstant:"SOLUTION"
  CarriageControl:NL

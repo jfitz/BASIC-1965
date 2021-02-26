@@ -25,14 +25,14 @@
  Variable:X -> _
  Variable:J -> _
  Variable:S(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220       LET Y = S(J+1)
  Variable:Y -> _
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230       IF X <= Y THEN 300
  Variable:X -> _
  Variable:Y -> _
@@ -41,14 +41,14 @@
  Variable:J -> _
  Variable:S(_) -> _
  Variable:Y -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250       LET S(J+1) = X
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_) -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 300    NEXT J
  Variable:J -> _
 310 NEXT I

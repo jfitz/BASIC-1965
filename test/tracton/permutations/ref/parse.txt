@@ -21,35 +21,35 @@
 80 LET T = N
  Variable:T -> _
  Variable:N -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 GOSUB 310
  LineNumber:310
 100 LET A = T
  Variable:A -> _
  Variable:T -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET T = N - R
  Variable:T -> _
  Variable:N -> _
  Variable:R -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 GOSUB 310
  LineNumber:310
 130 LET B = T
  Variable:B -> _
  Variable:T -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 LET P = A/B
  Variable:P -> _
  Variable:A -> _
  Variable:B -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 LET T = R
  Variable:T -> _
  Variable:R -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 GOSUB 310
  LineNumber:310
 170 LET C = A/(T*B)
@@ -59,7 +59,7 @@
  Variable:B -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 PRINT "PERMUTATIONS = ";P
  TextConstant:"PERMUTATIONS = "
  CarriageControl:;
@@ -108,7 +108,7 @@
 330 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 340 FOR I = 2 TO T
  control: Variable:I -> _
  start:   ["NumericConstant:2"]
@@ -118,19 +118,19 @@
  Variable:J -> _
  Variable:I -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 360 NEXT I
  Variable:I -> _
 370 LET T = J
  Variable:T -> _
  Variable:J -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 380 GOTO 400
  LineNumber:400
 390 LET T = 1
  Variable:T -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 400 RETURN
  
 410 END

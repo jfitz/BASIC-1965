@@ -9,11 +9,11 @@
 50 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET N = 0
  Variable:N -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 PRINT "T = ";
  TextConstant:"T = "
  CarriageControl:;
@@ -35,13 +35,13 @@
  Variable:T -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET N = N + 1
  Variable:N -> _
  Variable:N -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 GOTO 90
  LineNumber:90
 150 LET G = (J/N)^(1/T)
@@ -53,7 +53,7 @@
  Variable:T -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPower:^(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 PRINT "GENERALIZED MEAN"
  TextConstant:"GENERALIZED MEAN"
  CarriageControl:NL

@@ -4,7 +4,7 @@
 20 LET B = 1
  Variable:B -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 FOR K = 1 TO I
  control: Variable:K -> _
  start:   ["NumericConstant:1"]
@@ -20,7 +20,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:K -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 NEXT K
  Variable:K -> _
 60 PRINT B

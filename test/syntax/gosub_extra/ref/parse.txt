@@ -1,0 +1,23 @@
+10 REM TEST OF RETURN WITH EXTRA TEXT
+ Remark:TEST OF RETURN WITH EXTRA TEXT
+20 PRINT "START"
+ TextConstant:"START"
+ CarriageControl:NL
+30 GOSUB 100
+ LineNumber:100
+40 PRINT "DONE"
+ TextConstant:"DONE"
+ CarriageControl:NL
+50 STOP
+ 
+100 REM SUBROUTINE
+ Remark:SUBROUTINE
+110 PRINT "IN SUBROUTINE"
+ TextConstant:"IN SUBROUTINE"
+ CarriageControl:NL
+120 RETURN HOME
+ Syntax error
+ 
+900 END
+ 
+

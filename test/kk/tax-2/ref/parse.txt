@@ -22,7 +22,7 @@
 108    LET A1 = A
  Variable:A1 -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110    FOR I = 1 TO Y1-1
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -35,14 +35,14 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Y -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130       LET A1 = A1 - D(I)
  Variable:A1 -> _
  Variable:A1 -> _
  Variable:I -> _
  Variable:D(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150    NEXT I
  Variable:I -> _
 160    LET D = A1/(Y-Y1+1)
@@ -54,7 +54,7 @@
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170    FOR I = Y1 TO Y
  control: Variable:I -> _
  start:   ["Variable:Y1 -> _"]
@@ -63,13 +63,13 @@
  Variable:I -> _
  Variable:D(_) -> _
  Variable:D -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190    NEXT I
  Variable:I -> _
 200    LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210    FOR I = 1 TO Y
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -94,7 +94,7 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230    NEXT I
  Variable:I -> _
 240    PRINT S

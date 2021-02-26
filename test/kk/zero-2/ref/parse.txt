@@ -29,7 +29,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 IF FNF(A) = 0 THEN 100
  Variable:A -> _
  UserFunction:FNF(_) -> _
@@ -43,13 +43,13 @@
 60 LET B = X
  Variable:B -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 65 GOTO 80
  LineNumber:80
 70 LET A = X
  Variable:A -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.0000005 THEN 100
  Variable:A -> _
  Variable:B -> _
@@ -80,7 +80,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240 IF FNF(X) = 0 THEN 100
  Variable:X -> _
  UserFunction:FNF(_) -> _
@@ -94,13 +94,13 @@
 260 LET A = X
  Variable:A -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 265 GOTO 280
  LineNumber:280
 270 LET B = X
  Variable:B -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.0000005 THEN 100
  Variable:A -> _
  Variable:B -> _

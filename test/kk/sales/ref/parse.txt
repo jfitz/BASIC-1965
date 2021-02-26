@@ -16,7 +16,7 @@
 100 LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 FOR I = 1 TO 5
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -31,7 +31,7 @@
  Variable:P(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 NEXT I
  Variable:I -> _
 150 PRINT "TOTAL ORDER $" S

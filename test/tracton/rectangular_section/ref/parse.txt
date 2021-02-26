@@ -21,7 +21,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:12
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 LET J = (B*H*(B^2 + H^2))/12
  Variable:J -> _
  Variable:B -> _
@@ -37,13 +37,13 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:12
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET A = B*H
  Variable:A -> _
  Variable:B -> _
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 PRINT "MOMENT OF INERTIA = ";I
  TextConstant:"MOMENT OF INERTIA = "
  CarriageControl:;

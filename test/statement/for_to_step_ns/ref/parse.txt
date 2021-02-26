@@ -3,16 +3,16 @@
 20 LET B = 10
  Variable:B -> _
  NumericConstant:10
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 21 LET E = 1
  Variable:E -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 22 LET S = -1
  Variable:S -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 FOR I = B TO E STEP S
  control: Variable:I -> _
  start:   ["Variable:B -> _"]

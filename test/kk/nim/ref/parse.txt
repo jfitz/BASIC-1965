@@ -19,7 +19,7 @@
  FunctionInt:INT(_) -> _
  NumericConstant:6
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 NEXT P
  Variable:P -> _
 170 PRINT "INITIAL CONFIGURATION:"
@@ -45,7 +45,7 @@
  Variable:N(_) -> _
  Variable:N -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 IF N(P) >= 0 THEN 300
  Variable:P -> _
  Variable:N(_) -> _
@@ -61,7 +61,7 @@
  Variable:N(_) -> _
  Variable:N -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 PRINT
  CarriageControl:NL
 290 GOTO 200
@@ -99,7 +99,7 @@
  Variable:X -> _
  Variable:P -> _
  Variable:N(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 400    FOR J = 4 TO 1 STEP -1
  control: Variable:J -> _
  start:   ["NumericConstant:4"]
@@ -111,7 +111,7 @@
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420       LET B(P,J) = X - 2*Y
  Variable:P -> _
  Variable:J -> _
@@ -121,11 +121,11 @@
  Variable:Y -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430       LET X = Y
  Variable:X -> _
  Variable:Y -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 440    NEXT J
  Variable:J -> _
 450 NEXT P
@@ -151,7 +151,7 @@
  Variable:J -> _
  Variable:B(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 500    LET S(J) = S(J) - 2*INT(S(J)/2)
  Variable:J -> _
  Variable:S(_) -> _
@@ -165,7 +165,7 @@
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510 NEXT J
  Variable:J -> _
 520
@@ -204,7 +204,7 @@
  FunctionInt:INT(_) -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 580    GOTO 770
  LineNumber:770
 590 NEXT P
@@ -238,7 +238,7 @@
 680 LET N = 0
  Variable:N -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 690 FOR J = J TO 4
  control: Variable:J -> _
  start:   ["Variable:J -> _"]
@@ -263,7 +263,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 730    GOTO 750
  LineNumber:750
 740    LET N = N - 2^(4-J)
@@ -275,7 +275,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 750 NEXT J
  Variable:J -> _
 760
@@ -301,7 +301,7 @@
  Variable:N(_) -> _
  Variable:N -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 820 IF N(1)+N(2)+N(3) > 0 THEN 850
  NumericConstant:1
  Variable:N(_) -> _

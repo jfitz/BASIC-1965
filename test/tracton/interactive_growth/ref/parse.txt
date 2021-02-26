@@ -41,7 +41,7 @@
 180 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 PRINT
  CarriageControl:NL
 200 PRINT "INTERACTIVE GROWTH PATTERNS"
@@ -63,7 +63,7 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 LET B = A*X*Y
  Variable:B -> _
  Variable:A -> _
@@ -71,7 +71,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Y -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 LET C = ((Y - B)*H) + Y
  Variable:C -> _
  Variable:Y -> _
@@ -81,7 +81,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Y -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270 IF C < 0 THEN 390
  Variable:C -> _
  NumericConstant:0
@@ -89,7 +89,7 @@
 280 LET Y = C
  Variable:Y -> _
  Variable:C -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290 LET D = (((X*Z) - B)*H) + X
  Variable:D -> _
  Variable:X -> _
@@ -101,7 +101,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:X -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 300 IF D < 0 THEN 410
  Variable:D -> _
  NumericConstant:0
@@ -109,17 +109,17 @@
 310 LET X = D
  Variable:X -> _
  Variable:D -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 LET M = INT(X)
  Variable:M -> _
  Variable:X -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 LET N = INT(Y)
  Variable:N -> _
  Variable:Y -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 340 PRINT M,N
  Variable:M -> _
  CarriageControl:,
@@ -140,13 +140,13 @@
 390 LET Y = 0
  Variable:Y -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 400 GOTO 290
  LineNumber:290
 410 LET X = 0
  Variable:X -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420 GOTO 320
  LineNumber:320
 430 PRINT "ALL GROWTH ENDED"

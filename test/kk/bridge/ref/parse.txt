@@ -13,7 +13,7 @@
  Variable:C -> _
  Variable:H(_) -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 NEXT C
  Variable:C -> _
 70
@@ -35,14 +35,14 @@
  Variable:X -> _
  Variable:J -> _
  Variable:H(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130       LET Y = H(J+1)
  Variable:Y -> _
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:H(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140       IF X > Y THEN 170
  Variable:X -> _
  Variable:Y -> _
@@ -51,14 +51,14 @@
  Variable:J -> _
  Variable:H(_) -> _
  Variable:Y -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160       LET H(J+1) = X
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:H(_) -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170    NEXT J
  Variable:J -> _
 180 NEXT I
@@ -72,7 +72,7 @@
  Variable:X -> _
  Variable:C -> _
  Variable:H(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220    GOSUB 3000
  LineNumber:3000
 230 NEXT C
@@ -93,7 +93,7 @@
  Variable:I -> _
  Variable:L(_) -> _
  Variable:I -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1040 NEXT I
  Variable:I -> _
 1050 RETURN
@@ -108,12 +108,12 @@
  FunctionRnd:RND(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2020 LET X = L(I)
  Variable:X -> _
  Variable:I -> _
  Variable:L(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2030 IF X < 0 THEN 2010
  Variable:X -> _
  NumericConstant:0
@@ -123,7 +123,7 @@
  Variable:L(_) -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2050 RETURN
  
 2060
@@ -135,7 +135,7 @@
  NumericConstant:13
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3020 LET V = X - 13*S
  Variable:V -> _
  Variable:X -> _
@@ -143,7 +143,7 @@
  Variable:S -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3030 IF S > 0 THEN 3060
  Variable:S -> _
  NumericConstant:0

@@ -17,7 +17,7 @@
  Variable:A -> _
  Variable:B -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 PRINT "YEARLY DEPRECIATION = ";C
  TextConstant:"YEARLY DEPRECIATION = "
  CarriageControl:;
@@ -33,19 +33,19 @@
 110 LET X = 0
  Variable:X -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET X = X + 1
  Variable:X -> _
  Variable:X -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET A = A - C
  Variable:A -> _
  Variable:A -> _
  Variable:C -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 IF A < 0 THEN 160
  Variable:A -> _
  NumericConstant:0
@@ -55,7 +55,7 @@
 160 LET A = 0
  Variable:A -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 PRINT X,A
  Variable:X -> _
  CarriageControl:,

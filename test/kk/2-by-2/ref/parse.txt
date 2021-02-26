@@ -22,7 +22,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:D -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 LET E = ABS(A*D - B*C) - N/2
  Variable:E -> _
  Variable:A -> _
@@ -37,7 +37,7 @@
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
  Variable:X -> _
  Variable:N -> _
@@ -61,7 +61,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170
 180 PRINT A,B
  Variable:A -> _

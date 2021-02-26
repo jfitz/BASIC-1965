@@ -11,7 +11,7 @@
  Variable:I -> _
  Variable:A(_) -> _
  Variable:I -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 NEXT I
  Variable:I -> _
 100 ARR B = A * 2
@@ -19,7 +19,7 @@
  Variable:A() -> _()
  NumericConstant:2
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL

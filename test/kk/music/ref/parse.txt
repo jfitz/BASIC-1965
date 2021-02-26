@@ -134,7 +134,7 @@
 240 LET C2 = 1
  Variable:C2 -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250
 450 FOR N = N9 TO 1 STEP -1
  control: Variable:N -> _
@@ -150,7 +150,7 @@
 505 LET I1 = 1
  Variable:I1 -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510 FOR I = I1 TO 6
  control: Variable:I -> _
  start:   ["Variable:I1 -> _"]
@@ -160,24 +160,24 @@
  Variable:C1 -> _
  Variable:I -> _
  Variable:P(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 525 LET S(0,N) = C2
  NumericConstant:0
  Variable:N -> _
  Variable:S(_,_) -> _
  Variable:C2 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 530 LET S = M(N)
  Variable:S -> _
  Variable:N -> _
  Variable:M(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 540 LET S(1,N) = S
  NumericConstant:1
  Variable:N -> _
  Variable:S(_,_) -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 542
 545 REM  FIX ROOT
  Remark: FIX ROOT
@@ -187,14 +187,14 @@
  Variable:C2 -> _
  NumericConstant:8
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560 LET D(2) = C2-15
  NumericConstant:2
  Variable:D(_) -> _
  Variable:C2 -> _
  NumericConstant:15
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 565 LET D = S(4,N+1)
  Variable:D -> _
  NumericConstant:4
@@ -202,7 +202,7 @@
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 570 FOR J = 1 TO 2
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -221,7 +221,7 @@
  Variable:J -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:D(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 600 GOTO 660
  LineNumber:660
 610 NEXT J
@@ -238,27 +238,27 @@
  Variable:R -> _
  NumericConstant:1
  Variable:D(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 640 GOTO 660
  LineNumber:660
 650 LET R = D(2)
  Variable:R -> _
  NumericConstant:2
  Variable:D(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 660 LET S(4,N) = R
  NumericConstant:4
  Variable:N -> _
  Variable:S(_,_) -> _
  Variable:R -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 670
 700 REM  FIND OTHER NOTES
  Remark: FIND OTHER NOTES
 705 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 710 FOR K = 0 TO 4 STEP 2
  control: Variable:K -> _
  start:   ["NumericConstant:0"]
@@ -279,13 +279,13 @@
  Variable:R -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 740 LET J = J+1
  Variable:J -> _
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 750 NEXT K
  Variable:K -> _
 760 IF J > 3 THEN 4000
@@ -301,42 +301,42 @@
  Variable:A -> _
  NumericConstant:1
  Variable:B(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 820 LET B = B(2)
  Variable:B -> _
  NumericConstant:2
  Variable:B(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 830 LET W(0,L) = 0
  NumericConstant:0
  Variable:L -> _
  Variable:W(_,_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 840 LET W(2,L) = B
  NumericConstant:2
  Variable:L -> _
  Variable:W(_,_) -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 850 LET W(3,L) = A
  NumericConstant:3
  Variable:L -> _
  Variable:W(_,_) -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 860 LET B(1) = B
  NumericConstant:1
  Variable:B(_) -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 870 LET B(2) = A+7
  NumericConstant:2
  Variable:B(_) -> _
  Variable:A -> _
  NumericConstant:7
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 880 NEXT L
  Variable:L -> _
 899
@@ -355,7 +355,7 @@
  Variable:V -> _
  Variable:L -> _
  Variable:W(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1040 IF ABS(B-S(V,N+1)) > 5 THEN 1260
  Variable:B -> _
  Variable:V -> _
@@ -388,7 +388,7 @@
  Variable:N -> _
  Variable:S(_,_) -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1080 IF S(2*V-3,N) <= S(2*V-2,N) THEN 1260
  NumericConstant:2
  Variable:V -> _
@@ -435,7 +435,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1120 IF FNC(D) = 0 THEN 1145
  Variable:D -> _
  UserFunction:FNC(_) -> _
@@ -459,7 +459,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1150 LET S2 = S(V2,N)-S(V2,N+1)
  Variable:S2 -> _
  Variable:V2 -> _
@@ -471,7 +471,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1155 IF S1 = S2 THEN 1260
  Variable:S1 -> _
  Variable:S2 -> _
@@ -500,7 +500,7 @@
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1230 NEXT V
  Variable:V -> _
 1240 LET W(0,L) = D(2)+D(3)
@@ -512,7 +512,7 @@
  NumericConstant:3
  Variable:D(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1250 GOTO 1261
  LineNumber:1261
 1260 LET W(0,L) = 999
@@ -520,7 +520,7 @@
  Variable:L -> _
  Variable:W(_,_) -> _
  NumericConstant:999
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1261 NEXT L
  Variable:L -> _
 1262
@@ -529,7 +529,7 @@
 1510 LET M = 999
  Variable:M -> _
  NumericConstant:999
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1520 FOR L = 0 TO 6
  control: Variable:L -> _
  start:   ["NumericConstant:0"]
@@ -539,7 +539,7 @@
  NumericConstant:0
  Variable:L -> _
  Variable:W(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1540 IF M1 > M THEN 1590
  Variable:M1 -> _
  Variable:M -> _
@@ -547,11 +547,11 @@
 1550 LET M = M1
  Variable:M -> _
  Variable:M1 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1560 LET L9 = L
  Variable:L9 -> _
  Variable:L -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1590 NEXT L
  Variable:L -> _
 1600 IF M = 999 THEN 4000
@@ -565,7 +565,7 @@
  NumericConstant:2
  Variable:L9 -> _
  Variable:W(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1620 LET S(3,N) = W(3,L9)
  NumericConstant:3
  Variable:N -> _
@@ -573,7 +573,7 @@
  NumericConstant:3
  Variable:L9 -> _
  Variable:W(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1630 GOTO 6000
  LineNumber:6000
 1640
@@ -588,7 +588,7 @@
  Variable:N -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 5010 IF N <> N9 THEN 5100
  Variable:N -> _
  Variable:N9 -> _
@@ -603,7 +603,7 @@
  NumericConstant:0
  Variable:N -> _
  Variable:S(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 5110 LET C1 = S(0,N+1)
  Variable:C1 -> _
  NumericConstant:0
@@ -611,7 +611,7 @@
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 5120 FOR I = 1 TO 6
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -629,7 +629,7 @@
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 5210 GOTO 510
  LineNumber:510
 5220
@@ -661,7 +661,7 @@
 6002 LET C1 = C2
  Variable:C1 -> _
  Variable:C2 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 6003 NEXT N
  Variable:N -> _
 6004

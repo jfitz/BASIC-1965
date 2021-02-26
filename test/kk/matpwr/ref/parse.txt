@@ -20,14 +20,14 @@
  Variable:M(,) -> _(,)
  Variable:M(,) -> _(,)
  BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 60 MAT PRINT A
  Variable:A(,) -> _(,)
  CarriageControl:NL
 70 MAT M = A
  Variable:M(,) -> _(,)
  Variable:A(,) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 80 NEXT I
  Variable:I -> _
 90 DATA 3

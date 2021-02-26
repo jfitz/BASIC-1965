@@ -19,12 +19,12 @@
  NumericConstant:0
  Variable:T(_,_) -> _
  Variable:K -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60    LET K1 = ABS(K)
  Variable:K1 -> _
  Variable:K -> _
  FunctionAbs:ABS(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -51,7 +51,7 @@
  Variable:I -> _
  NumericConstant:0
  Variable:T(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120    IF K > 0 THEN 200
  Variable:K -> _
  NumericConstant:0
@@ -66,13 +66,13 @@
  Variable:I -> _
  NumericConstant:1
  Variable:T(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150    GOTO 399
  LineNumber:399
 200    LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210    FOR J = 2 TO 2*K STEP 2
  control: Variable:J -> _
  start:   ["NumericConstant:2"]
@@ -83,7 +83,7 @@
  Variable:I -> _
  Variable:J -> _
  Variable:T(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230       LET S = S + T(I,J-1)*V(B)
  Variable:S -> _
  Variable:S -> _
@@ -96,21 +96,21 @@
  Variable:V(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240    NEXT J
  Variable:J -> _
 250    LET V(I) = S
  Variable:I -> _
  Variable:V(_) -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260    GOTO 399
  LineNumber:399
 300    LET M = -999999999
  Variable:M -> _
  NumericConstant:1000000000
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 310    FOR J = 2 TO 2*ABS(K) STEP 2
  control: Variable:J -> _
  start:   ["NumericConstant:2"]
@@ -122,7 +122,7 @@
  Variable:J -> _
  Variable:T(_,_) -> _
  Variable:V(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330       IF V <= M THEN 360
  Variable:V -> _
  Variable:M -> _
@@ -130,7 +130,7 @@
 340       LET M = V
  Variable:M -> _
  Variable:V -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 350       LET A = T(I,J-1)
  Variable:A -> _
  Variable:I -> _
@@ -138,7 +138,7 @@
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
  Variable:T(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 360    NEXT J
  Variable:J -> _
 370    PRINT A;
@@ -148,7 +148,7 @@
  Variable:I -> _
  Variable:V(_) -> _
  Variable:M -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 399 NEXT I
  Variable:I -> _
 400 PRINT

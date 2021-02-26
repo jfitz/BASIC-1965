@@ -1,0 +1,30 @@
+10 DATA 10,20,30
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:30
+20 READ A,B,C
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+30 PRINT A,B,C
+ Variable:A -> _
+ CarriageControl:,
+ Variable:B -> _
+ CarriageControl:,
+ Variable:C -> _
+ CarriageControl:NL
+40 IF A= THEN 70
+ Not enough operands
+50 PRINT A
+ Variable:A -> _
+ CarriageControl:NL
+60 GOTO 90
+ LineNumber:90
+70 PRINT B
+ Variable:B -> _
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
+

@@ -35,31 +35,31 @@
 140 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 GOSUB 460
  LineNumber:460
 160 LET D1 = N
  Variable:D1 -> _
  Variable:N -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 GOSUB 460
  LineNumber:460
 180 LET D2 = N
  Variable:D2 -> _
  Variable:N -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 LET D3 = D1 + D2
  Variable:D3 -> _
  Variable:D1 -> _
  Variable:D2 -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 LET J = J + 1
  Variable:J -> _
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 IF J = 1 THEN 260
  Variable:J -> _
  NumericConstant:1
@@ -102,7 +102,7 @@
 310 LET D4 = D3
  Variable:D4 -> _
  Variable:D3 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 315 GOTO 240
  LineNumber:240
 320 PRINT "YOU THROW A ";D3;" YOU WIN"
@@ -162,7 +162,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 470 RETURN
  
 480 END

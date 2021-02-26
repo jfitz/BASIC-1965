@@ -1,0 +1,18 @@
+10 REM TEST INFINITE LOOP CHECK
+ Remark:TEST INFINITE LOOP CHECK
+20 GOSUB 20
+ LineNumber:20
+30 GOSUB 100
+ LineNumber:100
+90 STOP
+ 
+100 REM PRINT STARS
+ Remark:PRINT STARS
+110 PRINT "******"
+ TextConstant:"******"
+ CarriageControl:NL
+120 RETURN
+ 
+999 END
+ 
+

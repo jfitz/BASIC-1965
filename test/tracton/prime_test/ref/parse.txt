@@ -11,7 +11,7 @@
  Variable:N -> _
  Variable:N -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 IF N = 0 THEN 220
  Variable:N -> _
  NumericConstant:0
@@ -23,24 +23,24 @@
 80 LET I = 0
  Variable:I -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET T = 2
  Variable:T -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET J = INT(N/T)
  Variable:J -> _
  Variable:N -> _
  Variable:T -> _
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET K = J*T
  Variable:K -> _
  Variable:J -> _
  Variable:T -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 IF N = K THEN 200
  Variable:N -> _
  Variable:K -> _
@@ -50,13 +50,13 @@
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 LET L = T*T
  Variable:L -> _
  Variable:T -> _
  Variable:T -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 IF L > N THEN 180
  Variable:L -> _
  Variable:N -> _
@@ -68,7 +68,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 GOTO 100
  LineNumber:100
 180 PRINT N;"IS A PRIME"

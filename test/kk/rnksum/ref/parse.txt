@@ -39,13 +39,13 @@
  Variable:Z(_) -> _
  Variable:K -> _
  Variable:X(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270    LET T(K) = +1
  Variable:K -> _
  Variable:T(_) -> _
  NumericConstant:1
  UnaryOperatorPlus:+(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 NEXT K
  Variable:K -> _
 290 FOR K = 1 TO N
@@ -59,14 +59,14 @@
  Variable:Z(_) -> _
  Variable:K -> _
  Variable:Y(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 310    LET T(M+K) = 0
  Variable:M -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:T(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 NEXT K
  Variable:K -> _
 330
@@ -88,34 +88,34 @@
  Variable:T -> _
  Variable:K -> _
  Variable:Z(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 400       LET Z(K) = Z(L)
  Variable:K -> _
  Variable:Z(_) -> _
  Variable:L -> _
  Variable:Z(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 410       LET Z(L) = T
  Variable:L -> _
  Variable:Z(_) -> _
  Variable:T -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420       LET T = T(K)
  Variable:T -> _
  Variable:K -> _
  Variable:T(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430       LET T(K) = T(L)
  Variable:K -> _
  Variable:T(_) -> _
  Variable:L -> _
  Variable:T(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 440       LET T(L) = T
  Variable:L -> _
  Variable:T(_) -> _
  Variable:T -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 450    NEXT L
  Variable:L -> _
 460 NEXT K
@@ -124,25 +124,25 @@
 500 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510 LET K = 1
  Variable:K -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520 LET B = J
  Variable:B -> _
  Variable:J -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 530 LET T = J
  Variable:T -> _
  Variable:J -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 540 LET J = J+1
  Variable:J -> _
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 550 IF J > M+N THEN 600
  Variable:J -> _
  Variable:M -> _
@@ -160,13 +160,13 @@
  Variable:T -> _
  Variable:J -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 580 LET K = K+1
  Variable:K -> _
  Variable:K -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 590 GO TO 540
  LineNumber:540
 600 FOR L = B TO J-1
@@ -179,7 +179,7 @@
  Variable:T -> _
  Variable:K -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 620 NEXT L
  Variable:L -> _
 630 IF J <= M+N THEN 510
@@ -193,12 +193,12 @@
  NumericConstant:0
  Variable:S(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 750 LET S(1) = 0
  NumericConstant:1
  Variable:S(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 760 FOR K = 1 TO M+N
  control: Variable:K -> _
  start:   ["NumericConstant:1"]
@@ -213,7 +213,7 @@
  Variable:K -> _
  Variable:Z(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 790 NEXT K
  Variable:K -> _
 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)

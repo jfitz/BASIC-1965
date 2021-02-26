@@ -22,13 +22,13 @@
  Variable:A(_) -> _
  Variable:I -> _
  Variable:C(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150  NEXT I
  Variable:I -> _
 160  LET L1 = L
  Variable:L1 -> _
  Variable:L -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170  PRINT "PLUS"
  TextConstant:"PLUS"
  CarriageControl:NL
@@ -47,13 +47,13 @@
  Variable:B(_) -> _
  Variable:I -> _
  Variable:C(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250  NEXT I
  Variable:I -> _
 260  LET L2 = L
  Variable:L2 -> _
  Variable:L -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270  PRINT "EQUALS"
  TextConstant:"EQUALS"
  CarriageControl:NL
@@ -69,7 +69,7 @@
 320  LET L = L1
  Variable:L -> _
  Variable:L1 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330  FOR I = L2+1 TO L
  control: Variable:I -> _
  start:   ["Variable:L2 -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
@@ -78,7 +78,7 @@
  Variable:I -> _
  Variable:B(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 350  NEXT I
  Variable:I -> _
 360  GOTO 500
@@ -86,7 +86,7 @@
 420  LET L = L2
  Variable:L -> _
  Variable:L2 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430  FOR I = L1+1 TO L
  control: Variable:I -> _
  start:   ["Variable:L1 -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
@@ -95,7 +95,7 @@
  Variable:I -> _
  Variable:A(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 450  NEXT I
  Variable:I -> _
 500  FOR I = 0 TO L
@@ -110,7 +110,7 @@
  Variable:I -> _
  Variable:B(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520  NEXT I
  Variable:I -> _
 530
@@ -146,7 +146,7 @@
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1110 FOR I = 0 TO L
  control: Variable:I -> _
  start:   ["NumericConstant:0"]
@@ -158,7 +158,7 @@
  Variable:I -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:X(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1130 NEXT I
  Variable:I -> _
 1140 RETURN
@@ -198,7 +198,7 @@
  Variable:L -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2070 GOTO 2210
  LineNumber:2210
 2100 LET M = INT(C(L)/10)
@@ -208,7 +208,7 @@
  NumericConstant:10
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2110 LET C(L) = C(L) - 10*M
  Variable:L -> _
  Variable:C(_) -> _
@@ -218,7 +218,7 @@
  Variable:M -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2120 PRINT M;
  Variable:M -> _
  CarriageControl:;
@@ -227,7 +227,7 @@
 2200 LET L9 = L
  Variable:L9 -> _
  Variable:L -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2210 FOR I = L9 TO 0 STEP -1
  control: Variable:I -> _
  start:   ["Variable:L9 -> _"]
@@ -237,11 +237,11 @@
  Variable:N -> _
  Variable:I -> _
  Variable:C(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2230     LET Q = 100
  Variable:Q -> _
  NumericConstant:100
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2240         FOR J = 1 TO 3
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -252,7 +252,7 @@
  Variable:Q -> _
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2260         LET N = N - M*Q
  Variable:N -> _
  Variable:N -> _
@@ -260,13 +260,13 @@
  Variable:Q -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2270         LET Q = Q/10
  Variable:Q -> _
  Variable:Q -> _
  NumericConstant:10
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2280         PRINT M;
  Variable:M -> _
  CarriageControl:;
@@ -296,7 +296,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:C(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3020 FOR I = 0 TO L
  control: Variable:I -> _
  start:   ["NumericConstant:0"]
@@ -305,14 +305,14 @@
  Variable:N -> _
  Variable:I -> _
  Variable:C(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3040     LET M = INT(N/1000)
  Variable:M -> _
  Variable:N -> _
  NumericConstant:1000
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3050     LET C(I) = N - 1000*M
  Variable:I -> _
  Variable:C(_) -> _
@@ -321,7 +321,7 @@
  Variable:M -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3060     LET C(I+1) = C(I+1) + M
  Variable:I -> _
  NumericConstant:1
@@ -333,7 +333,7 @@
  Variable:C(_) -> _
  Variable:M -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3070 NEXT I
  Variable:I -> _
 3080 IF M = 0 THEN 3100
@@ -345,7 +345,7 @@
  Variable:L -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 3100 RETURN
  
 3110

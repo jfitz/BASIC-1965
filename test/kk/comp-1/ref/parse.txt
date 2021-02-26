@@ -33,7 +33,7 @@
  Variable:Y -> _
  Variable:T -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 LET R1 = R/100/T
  Variable:R1 -> _
  Variable:R -> _
@@ -41,7 +41,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:T -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET B = A*(1+R1)^N
  Variable:B -> _
  Variable:A -> _
@@ -51,7 +51,7 @@
  Variable:N -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 95 PRINT "FINAL AMOUNT = $" B
  TextConstant:"FINAL AMOUNT = $"
  CarriageControl:

@@ -20,7 +20,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 FOR I = 1 TO Y
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -37,7 +37,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Y9 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120    PRINT I, D(I)
  Variable:I -> _
  CarriageControl:,
@@ -51,7 +51,7 @@
 200 LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 FOR I = 1 TO Y
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -76,7 +76,7 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 NEXT I
  Variable:I -> _
 240 PRINT "SAVING = $" S

@@ -3,15 +3,15 @@
 20 LET B = 1
  Variable:B -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET E = 5
  Variable:E -> _
  NumericConstant:5
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 LET S = 1
  Variable:S -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 FOR I = B TO E STEP S
  control: Variable:I -> _
  start:   ["Variable:B -> _"]
@@ -25,7 +25,7 @@
  Variable:B -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 NEXT I
  Variable:I -> _
 99 END

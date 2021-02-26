@@ -3,12 +3,12 @@
 20 LET A=10.5
  Variable:A -> _
  NumericConstant:10.5
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET B=INT(A)
  Variable:B -> _
  Variable:A -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 PRINT A,B
  Variable:A -> _
  CarriageControl:,

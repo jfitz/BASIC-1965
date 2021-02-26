@@ -38,7 +38,7 @@
  Variable:N -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 PRINT "FUTURE VALUE = ";X
  TextConstant:"FUTURE VALUE = "
  CarriageControl:;
@@ -61,7 +61,7 @@
  Variable:N -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 PRINT "PRESENT VALUE = ";Y
  TextConstant:"PRESENT VALUE = "
  CarriageControl:;
@@ -86,7 +86,7 @@
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 PRINT "INTEREST = ";L
  TextConstant:"INTEREST = "
  CarriageControl:;
@@ -111,7 +111,7 @@
  BinaryOperatorPower:^(_,_) -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 PRINT "INTEREST RATE = ";I
  TextConstant:"INTEREST RATE = "
  CarriageControl:;
@@ -136,7 +136,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  FunctionLog:LOG(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 380 PRINT "NUMBER OF TIME PERIODS = ";N
  TextConstant:"NUMBER OF TIME PERIODS = "
  CarriageControl:;

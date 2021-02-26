@@ -1142,8 +1142,8 @@ class ForStatement < AbstractStatement
 
   def dump
     lines = []
-    lines << 'control: ' + @control.dump
-    lines << 'start:   ' + @start.dump.to_s
+    lines << 'control: ' + @control.dump unless @control.nil?
+    lines << 'start:   ' + @start.dump.to_s unless @start.nil?
     lines << 'end:     ' + @end.dump.to_s unless @end.nil?
     lines << 'step:    ' + @step.dump.to_s unless @step.nil?
     lines

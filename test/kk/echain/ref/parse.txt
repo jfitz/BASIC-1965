@@ -26,7 +26,7 @@
  Variable:N -> _
  Variable:N -> _
  FunctionIdn:IDN(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 150
 160 PRINT "TRANSITION PROBABILITIES"
  TextConstant:"TRANSITION PROBABILITIES"
@@ -42,7 +42,7 @@
  Variable:Z(,) -> _(,)
  Variable:P(,) -> _(,)
  BinaryOperatorMinus:-(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 210 FOR I = 1 TO N
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -52,20 +52,20 @@
  Variable:N -> _
  Variable:Z(_,_) -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 NEXT I
  Variable:I -> _
 240 MAT M = INV(Z)
  Variable:M(,) -> _(,)
  Variable:Z(,) -> _(,)
  FunctionInv:INV(_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 245 MAT A = ZER(1,N)
  Variable:A(,) -> _(,)
  NumericConstant:1
  Variable:N -> _
  FunctionZer2:ZER(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 250 FOR J = 1 TO N
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -77,7 +77,7 @@
  Variable:N -> _
  Variable:J -> _
  Variable:M(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270 NEXT J
  Variable:J -> _
 280 PRINT "LIMITING PROBABILITIES"
@@ -94,13 +94,13 @@
  Variable:N -> _
  Variable:N -> _
  FunctionIdn:IDN(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 330 MAT M = M-P
  Variable:M(,) -> _(,)
  Variable:M(,) -> _(,)
  Variable:P(,) -> _(,)
  BinaryOperatorMinus:-(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 340 FOR I = 1 TO N
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -120,7 +120,7 @@
  Variable:J -> _
  Variable:A(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 370 NEXT J
  Variable:J -> _
 380 NEXT I
@@ -129,7 +129,7 @@
  Variable:Z(,) -> _(,)
  Variable:M(,) -> _(,)
  FunctionInv:INV(_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 400
 410 FOR I = 1 TO N
  control: Variable:I -> _
@@ -154,7 +154,7 @@
  Variable:J -> _
  Variable:A(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 440 NEXT J
  Variable:J -> _
 450 NEXT I
@@ -173,7 +173,7 @@
  Variable:A(,) -> _(,)
  Variable:M(,) -> _(,)
  BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
  TextConstant:"FIRST PASSAGE TIME IN EQUILIBRIUM"
  CarriageControl:NL

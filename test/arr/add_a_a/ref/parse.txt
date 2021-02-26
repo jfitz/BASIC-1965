@@ -13,14 +13,14 @@
  Variable:I -> _
  Variable:A(_) -> _
  Variable:I -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 52 LET B(I) = I*2
  Variable:I -> _
  Variable:B(_) -> _
  Variable:I -> _
  NumericConstant:2
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 NEXT I
  Variable:I -> _
 100 ARR C = A + B
@@ -28,7 +28,7 @@
  Variable:A() -> _()
  Variable:B() -> _()
  BinaryOperatorPlus:+(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL

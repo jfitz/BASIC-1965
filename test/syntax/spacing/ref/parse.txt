@@ -5,19 +5,19 @@
 30 LET A = 5
  Variable:A -> _
  NumericConstant:5
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 L E T A 2 = A * 2
  Variable:A2 -> _
  Variable:A -> _
  NumericConstant:2
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50LETA5=A*5
  Variable:A5 -> _
  Variable:A -> _
  NumericConstant:5
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 PRI NT A,A2,A5
  Variable:A -> _
  CarriageControl:,

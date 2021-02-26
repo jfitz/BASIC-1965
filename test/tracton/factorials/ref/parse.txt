@@ -10,7 +10,7 @@
 50 LET Z = 1
  Variable:Z -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 FOR I = 1 TO X
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -20,7 +20,7 @@
  Variable:Z -> _
  Variable:I -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 NEXT I
  Variable:I -> _
 90 PRINT "X = ";X,"X! = ";Z

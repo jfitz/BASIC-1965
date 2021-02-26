@@ -14,7 +14,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:180
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 PRINT "COORDINATES OF NEW ORIGIN (X0,Y0) =";
  TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
  CarriageControl:;
@@ -32,13 +32,13 @@
  Variable:F -> _
  Variable:X -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET W = C - Y
  Variable:W -> _
  Variable:C -> _
  Variable:Y -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET D = (Z*COS(B)) + (W*SIN(B))
  Variable:D -> _
  Variable:Z -> _
@@ -50,7 +50,7 @@
  FunctionSin:SIN(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET E = - (Z*SIN(B)) + (W*COS(B))
  Variable:E -> _
  Variable:Z -> _
@@ -63,7 +63,7 @@
  FunctionCos:COS(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 PRINT
  CarriageControl:NL
 150 PRINT "SPECIFIED ROTATION =";A

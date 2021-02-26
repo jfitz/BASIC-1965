@@ -40,13 +40,13 @@
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 LET L = Y - K
  Variable:L -> _
  Variable:Y -> _
  Variable:K -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 LET O = M + 12*K
  Variable:O -> _
  Variable:M -> _
@@ -54,25 +54,25 @@
  Variable:K -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET P = L/100
  Variable:P -> _
  Variable:L -> _
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 LET Z1 = INT(P/4)
  Variable:Z1 -> _
  Variable:P -> _
  NumericConstant:4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 LET Z2 = INT(P)
  Variable:Z2 -> _
  Variable:P -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 LET Z3 = INT((5*L)/4)
  Variable:Z3 -> _
  NumericConstant:5
@@ -81,7 +81,7 @@
  NumericConstant:4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 LET Z4 = INT (13*(O + 1)/5)
  Variable:Z4 -> _
  NumericConstant:13
@@ -92,7 +92,7 @@
  NumericConstant:5
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
  Variable:Z -> _
  Variable:Z4 -> _
@@ -106,7 +106,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240 LET Z=Z - (7*INT(Z/7)) + 1
  Variable:Z -> _
  Variable:Z -> _
@@ -119,7 +119,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
  Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
  TextConstant:"THE DAY OF THE WEEK IS "

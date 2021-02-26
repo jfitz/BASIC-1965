@@ -3,7 +3,7 @@
 110 LET P = 3.14159625
  Variable:P -> _
  NumericConstant:3.14159625
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 DEF FND(X) = X*P/180
  UserFunctionName:FND -> _
  VariableName:X -> _
@@ -40,7 +40,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:B -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 LET Y = X*FNS(B)/FNS(C)
  Variable:Y -> _
  Variable:X -> _
@@ -50,7 +50,7 @@
  Variable:C -> _
  UserFunction:FNS(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET Z = X*FNS(A)/FNS(C)
  Variable:Z -> _
  Variable:X -> _
@@ -60,7 +60,7 @@
  Variable:C -> _
  UserFunction:FNS(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 PRINT A,X,B,Y,Z
  Variable:A -> _
  CarriageControl:,

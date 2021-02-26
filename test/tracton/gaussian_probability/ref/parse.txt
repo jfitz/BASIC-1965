@@ -16,17 +16,17 @@
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
  FunctionExp:EXP(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET B = .398942
  Variable:B -> _
  NumericConstant:0.398942
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 LET C = B*A
  Variable:C -> _
  Variable:B -> _
  Variable:A -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 PRINT "F(X) = ";C
  TextConstant:"F(X) = "
  CarriageControl:;

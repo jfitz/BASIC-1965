@@ -18,7 +18,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 IF N <= 50 THEN 170
  Variable:N -> _
  NumericConstant:50
@@ -74,7 +74,7 @@
  Variable:Y -> _
  Variable:X -> _
  UserFunction:FNF(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 LET Y1 = FNR((Y-C)/H)
  Variable:Y1 -> _
  Variable:Y -> _
@@ -83,7 +83,7 @@
  Variable:H -> _
  BinaryOperatorDivide:/(_,_) -> _
  UserFunction:FNR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290 FOR I = 0 TO N
  control: Variable:I -> _
  start:   ["NumericConstant:0"]

@@ -23,7 +23,7 @@
 70    LET D9 = D
  Variable:D9 -> _
  Variable:D -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100   GOSUB 500
  LineNumber:500
 110   IF D = D9 THEN 200
@@ -70,7 +70,7 @@
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520 LET D2 = INT(6*RND(1)+1)
  Variable:D2 -> _
  NumericConstant:6
@@ -80,7 +80,7 @@
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 525 PRINT "YOUR ROLL IS "; D1;D2
  TextConstant:"YOUR ROLL IS "
  CarriageControl:;
@@ -93,7 +93,7 @@
  Variable:D1 -> _
  Variable:D2 -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 540 RETURN
  
 999 END

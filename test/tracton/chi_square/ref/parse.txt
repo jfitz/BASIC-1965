@@ -7,7 +7,7 @@
 40 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 PRINT "OBSERVED FREQUENCIES = "
  TextConstant:"OBSERVED FREQUENCIES = "
  CarriageControl:NL
@@ -31,13 +31,13 @@
  BinaryOperatorPower:^(_,_) -> _
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET J = J + K
  Variable:J -> _
  Variable:J -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 GOTO 50
  LineNumber:50
 130 PRINT "CHI-SQUARE = ";J

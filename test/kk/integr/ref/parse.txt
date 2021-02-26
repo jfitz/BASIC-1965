@@ -26,7 +26,7 @@
  Variable:B -> _
  Variable:A -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 LET T = (FNF(A)+FNF(B))*H
  Variable:T -> _
  Variable:A -> _
@@ -36,11 +36,11 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET M = 0
  Variable:M -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET T = (T+M)/2
  Variable:T -> _
  Variable:T -> _
@@ -48,11 +48,11 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET M = 0
  Variable:M -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 FOR X = A+H/2 TO B STEP H
  control: Variable:X -> _
  start:   ["Variable:A -> _", "Variable:H -> _", "NumericConstant:2", "BinaryOperatorDivide:/(_,_) -> _", "BinaryOperatorPlus:+(_,_) -> _"]
@@ -64,7 +64,7 @@
  Variable:X -> _
  UserFunction:FNF(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 NEXT X
  Variable:X -> _
 160 LET M = M*H
@@ -72,7 +72,7 @@
  Variable:M -> _
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 LET S = (T + 2*M)/3
  Variable:S -> _
  Variable:T -> _
@@ -82,7 +82,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:3
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 PRINT T, M, S
  Variable:T -> _
  CarriageControl:,
@@ -95,7 +95,7 @@
  Variable:H -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 IF ABS(T-M)/ABS(S) > E THEN 100
  Variable:T -> _
  Variable:M -> _

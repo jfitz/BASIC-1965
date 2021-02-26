@@ -25,7 +25,7 @@
  Variable:B2 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 LET Y = (A3*B1) - (A1*B3)
  Variable:Y -> _
  Variable:A3 -> _
@@ -35,7 +35,7 @@
  Variable:B3 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET Z = (A1*B2) - (A2*B1)
  Variable:Z -> _
  Variable:A1 -> _
@@ -45,7 +45,7 @@
  Variable:B1 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 PRINT "VECTOR CROSS PRODUCT"
  TextConstant:"VECTOR CROSS PRODUCT"
  CarriageControl:NL

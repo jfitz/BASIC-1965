@@ -20,7 +20,7 @@
  Variable:P -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60       IF X - M*INT(X/M) = A THEN 100
  Variable:X -> _
  Variable:M -> _
@@ -44,11 +44,11 @@
  Variable:P -> _
  Variable:M -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET B = X
  Variable:B -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 NEXT I
  Variable:I -> _
 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P

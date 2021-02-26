@@ -24,7 +24,7 @@
 80 LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 FOR J = 1 TO C
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -36,7 +36,7 @@
  Variable:J -> _
  Variable:T(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 NEXT J
  Variable:J -> _
 120 PRINT "SUM OF ROW" I; "EQUALS" S
@@ -59,7 +59,7 @@
 160 LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 FOR I = 1 TO R
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -71,7 +71,7 @@
  Variable:J -> _
  Variable:T(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 NEXT I
  Variable:I -> _
 200 PRINT "SUM OF COLUMN" J; "EQUALS" S

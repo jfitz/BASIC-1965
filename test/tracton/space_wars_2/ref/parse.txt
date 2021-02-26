@@ -159,19 +159,19 @@
 540 LET X1 = 5E05
  Variable:X1 -> _
  NumericConstant:500000
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 550 LET T1 = 1E04
  Variable:T1 -> _
  NumericConstant:10000
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560 LET T2 = 5E04
  Variable:T2 -> _
  NumericConstant:50000
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 570 LET D = 1E05
  Variable:D -> _
  NumericConstant:100000
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 580 GOSUB 630
  LineNumber:630
 590 GOSUB 730
@@ -191,13 +191,13 @@
 640 LET L = 1
  Variable:L -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 650 GOTO 700
  LineNumber:700
 660 LET L = 0
  Variable:L -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 670 LET H = (1 + INT(100*RND)/100)
  Variable:H -> _
  NumericConstant:1
@@ -208,13 +208,13 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 680 LET E1 = 5000*H
  Variable:E1 -> _
  NumericConstant:5000
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 690 GOTO 720
  LineNumber:720
 700 LET H = (1 + INT(100*RND)/100)
@@ -227,13 +227,13 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 710 LET E1 = 1000*H
  Variable:E1 -> _
  NumericConstant:1000
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 720 RETURN
  
 730 IF D > 5E03 THEN 760
@@ -243,13 +243,13 @@
 740 LET K = 1
  Variable:K -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 750 GOTO 800
  LineNumber:800
 760 LET K = 0
  Variable:K -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 770 LET H = (1 + INT(100*RND)/100)
  Variable:H -> _
  NumericConstant:1
@@ -260,13 +260,13 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 780 LET E2 = 8000*H
  Variable:E2 -> _
  NumericConstant:8000
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 790 GOTO 820
  LineNumber:820
 800 LET H = (1 + INT(100*RND)/100)
@@ -279,13 +279,13 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 810 LET E2 = 3000*H
  Variable:E2 -> _
  NumericConstant:3000
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 820 RETURN
  
 840 IF D < 3E03 THEN 860
@@ -295,7 +295,7 @@
 850 LET E3 = 0
  Variable:E3 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 860 LET H = (1 + INT(100*RND)/100)
  Variable:H -> _
  NumericConstant:1
@@ -306,25 +306,25 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 870 LET E3 = 2E04*H
  Variable:E3 -> _
  NumericConstant:20000
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 880 LET T1 = T1 - E1
  Variable:T1 -> _
  Variable:T1 -> _
  Variable:E1 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 890 LET T2 = T2 - E2
  Variable:T2 -> _
  Variable:T2 -> _
  Variable:E2 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 900 IF T1 <= 0 THEN 920
  Variable:T1 -> _
  NumericConstant:0
@@ -334,17 +334,17 @@
 920 LET E1 = 0
  Variable:E1 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 930 LET Y = 1
  Variable:Y -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 940 GOTO 960
  LineNumber:960
 950 LET Y = 0
  Variable:Y -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 960 IF T2 <= 0 THEN 980
  Variable:T2 -> _
  NumericConstant:0
@@ -354,17 +354,17 @@
 980 LET E2 = 0
  Variable:E2 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 990 LET Z = 1
  Variable:Z -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1000 GOTO 1020
  LineNumber:1020
 1010 LET Z = 0
  Variable:Z -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1020 LET X1 = X1 - E1 - E2 - E3
  Variable:X1 -> _
  Variable:X1 -> _
@@ -374,7 +374,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:E3 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1030 RETURN
  
 1040 PRINT "DISTANCE TO DEATH STAR IS NOW";D;"KM"
@@ -443,7 +443,7 @@
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1230 ON C GOTO 1240, 1270, 1290, 1330
  Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
  Unimplemented
@@ -549,7 +549,7 @@
  Variable:X1 -> _
  NumericConstant:20000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1580 GOTO 2680
  LineNumber:2680
 1590 LET H = 1 + (INT(100*RND))
@@ -560,7 +560,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1600 IF H > 50 THEN 1640
  Variable:H -> _
  NumericConstant:50
@@ -573,7 +573,7 @@
  Variable:X1 -> _
  NumericConstant:20000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1630 GOTO 2680
  LineNumber:2680
 1640 PRINT "THE FORCE WAS WITH YOU, YOU HAVE SINGLE-HANDED"
@@ -624,7 +624,7 @@
 1820 LET Q = 5500
  Variable:Q -> _
  NumericConstant:5500
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1830 GOTO 1760
  LineNumber:1760
 1840 LET T1 = T1 - Q
@@ -632,7 +632,7 @@
  Variable:T1 -> _
  Variable:Q -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1850 GOTO 1960
  LineNumber:1960
 1860 LET T2 = T2 - Q
@@ -640,7 +640,7 @@
  Variable:T2 -> _
  Variable:Q -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1870 GOTO 1960
  LineNumber:1960
 1880 PRINT "DO YOU WISH TO FIRE ON GARTH RADER (R) OR"
@@ -667,7 +667,7 @@
  Variable:X1 -> _
  NumericConstant:5000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1970 GOTO 2660
  LineNumber:2660
 1980 LET T1 = T1 - Q
@@ -675,13 +675,13 @@
  Variable:T1 -> _
  Variable:Q -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1982 LET X1 = X1 - 5000
  Variable:X1 -> _
  Variable:X1 -> _
  NumericConstant:5000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1990 GOTO 2010
  LineNumber:2010
 2000 LET T2 = T2 - Q
@@ -689,13 +689,13 @@
  Variable:T2 -> _
  Variable:Q -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2010 LET X1 = X1 - 5000
  Variable:X1 -> _
  Variable:X1 -> _
  NumericConstant:5000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2020 GOTO 2660
  LineNumber:2660
 2030 PRINT "YOU HAVE DECIDED ON USING THE LASER"
@@ -718,13 +718,13 @@
 2100 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2110 GOTO 2130
  LineNumber:2130
 2120 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2130 PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
  TextConstant:"WHICH FIGHTER THE SKY (S) OR RADER (R)"
  CarriageControl:NL
@@ -747,13 +747,13 @@
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2180 GOTO 2200
  LineNumber:2200
 2190 LET Q = 1000
  Variable:Q -> _
  NumericConstant:1000
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2200 IF C$ = "S" THEN 2240
  Token 'InvalidToken:$' is not a value or operator
 2210 IF C$ = "R" THEN 2260
@@ -768,7 +768,7 @@
  Variable:T1 -> _
  Variable:Q -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2250 GOTO 2270
  LineNumber:2270
 2260 LET T2 = T2 - Q
@@ -776,7 +776,7 @@
  Variable:T2 -> _
  Variable:Q -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2270 IF J = 1 THEN 2300
  Variable:J -> _
  NumericConstant:1
@@ -786,7 +786,7 @@
  Variable:X1 -> _
  NumericConstant:1000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2290 GOTO 2660
  LineNumber:2660
 2300 LET X1 = X1 - 1500
@@ -794,7 +794,7 @@
  Variable:X1 -> _
  NumericConstant:1500
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2310 GOTO 2660
  LineNumber:2660
 2320 PRINT "HOW MANY UNITS OF ENERGY DO YOU WISH TO FEED TO"
@@ -854,7 +854,7 @@
  Variable:D -> _
  Variable:F -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2510 IF D > 1.5E05 THEN 2540
  Variable:D -> _
  NumericConstant:150000
@@ -890,7 +890,7 @@
  Variable:D -> _
  Variable:F -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2630 IF D <= 0 THEN 2570
  Variable:D -> _
  NumericConstant:0
@@ -900,7 +900,7 @@
  Variable:X1 -> _
  Variable:F -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 2650 GOTO 2680
  LineNumber:2680
 2660 PRINT "THE SKY FIGHTER'S ENERGY IS NOW";T1;"UNITS"

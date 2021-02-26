@@ -8,7 +8,7 @@
  Variable:A -> _
  Variable:A0 -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
  CarriageControl:;
@@ -27,7 +27,7 @@
 110 LET N0 = N
  Variable:N0 -> _
  Variable:N -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 120 GOSUB 400
  LineNumber:400
 130 NEXT N
@@ -58,7 +58,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 450 GOTO 470
  LineNumber:470
 460 LET N0 = N0/2
@@ -66,7 +66,7 @@
  Variable:N0 -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 470 PRINT N0;
  Variable:N0 -> _
  CarriageControl:;

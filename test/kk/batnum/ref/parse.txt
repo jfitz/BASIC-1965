@@ -10,7 +10,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET K = 5 + INT(10*RND(X))
  Variable:K -> _
  NumericConstant:5
@@ -20,7 +20,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 PRINT "LEGAL MOVES ARE:"
  TextConstant:"LEGAL MOVES ARE:"
  CarriageControl:NL
@@ -76,7 +76,7 @@
  Variable:N -> _
  Variable:X -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 IF N > 0 THEN 410
  Variable:N -> _
  NumericConstant:0
@@ -108,7 +108,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430 LET Y = N-1 - Q*(K+1)
  Variable:Y -> _
  Variable:N -> _
@@ -120,7 +120,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 440 IF Y = 0 THEN 530
  Variable:Y -> _
  NumericConstant:0
@@ -130,7 +130,7 @@
  Variable:N -> _
  Variable:Y -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 460 PRINT "MY MOVE:" Y
  TextConstant:"MY MOVE:"
  CarriageControl:
@@ -161,7 +161,7 @@
 550 LET Y = 1
  Variable:Y -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560 GOTO 450
  LineNumber:450
 570 LET Y = 1 + INT(K*RND(0))
@@ -173,7 +173,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 580 GOTO 450
  LineNumber:450
 590

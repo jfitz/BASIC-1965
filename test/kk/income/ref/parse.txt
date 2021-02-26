@@ -6,7 +6,7 @@
  Variable:D -> _
  Variable:N(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 NEXT D
  Variable:D -> _
 40 FOR I = 1 TO 10
@@ -21,7 +21,7 @@
  NumericConstant:10000
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 LET N(D) = N(D) + 1
  Variable:D -> _
  Variable:N(_) -> _
@@ -29,7 +29,7 @@
  Variable:N(_) -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 NEXT I
  Variable:I -> _
 100 PRINT "        INCOME"

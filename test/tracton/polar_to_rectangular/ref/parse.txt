@@ -17,7 +17,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:180
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 PRINT "MAGNITUDE R = ";
  TextConstant:"MAGNITUDE R = "
  CarriageControl:;
@@ -29,14 +29,14 @@
  Variable:W -> _
  FunctionCos:COS(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET Y = R*SIN(W)
  Variable:Y -> _
  Variable:R -> _
  Variable:W -> _
  FunctionSin:SIN(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 PRINT "RECTANGULAR COORDINATES"
  TextConstant:"RECTANGULAR COORDINATES"
  CarriageControl:NL

@@ -1,7 +1,7 @@
 10 LET P = 3.14159
  Variable:P -> _
  NumericConstant:3.14159
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 20 PRINT "ANGLE","TAN"
  TextConstant:"ANGLE"
  CarriageControl:,
@@ -17,12 +17,12 @@
  Variable:I -> _
  Variable:P -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 LET S = TAN(A)
  Variable:S -> _
  Variable:A -> _
  FunctionTan:TAN(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 PRINT A, S
  Variable:A -> _
  CarriageControl:,

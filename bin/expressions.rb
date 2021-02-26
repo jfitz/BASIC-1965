@@ -1250,6 +1250,38 @@ class AbstractExpressionSet
     AbstractToken.pretty_tokens([], @tokens)
   end
 
+  def make_type_sigil(type)
+    sigil_chars = {
+      numeric: '_',
+      integer: '%',
+      string: '$',
+      boolean: '?',
+      filehandle: 'FH'
+    }
+
+    sigil_chars[type]
+  end
+
+  def make_shape_sigil(shape)
+    sigil = ''
+    sigil = '()' if shape == :array
+    sigil = '(,)' if shape == :matrix
+    sigil
+  end
+
+  def signature
+    sigs = []
+
+    @expressions.each do |expression|
+      type = expression.content_type
+      shape = expression.shape
+      sig = make_type_sigil(type) + make_shape_sigil(shape)
+      sigs << sig
+    end
+
+    sigs
+  end
+
   def dump
     lines = []
 
@@ -1774,7 +1806,9 @@ class Assignment
     lines = []
     lines += @target.dump
     lines += @expression.dump
-    lines << 'AssignmentOperator:='
+    ts = @target.signature
+    es = @expression.signature
+    lines << "AssignmentOperator:= #{es.join(',')} -> #{ts.join(',')}"
   end
 
   private

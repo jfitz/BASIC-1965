@@ -3,19 +3,19 @@
  NumericConstant:3
  NumericConstant:3
  FunctionZer2:ZER(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 110 MAT B = CON(3,3)
  Variable:B(,) -> _(,)
  NumericConstant:3
  NumericConstant:3
  FunctionCon2:CON(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 120 MAT C = IDN(3,3)
  Variable:C(,) -> _(,)
  NumericConstant:3
  NumericConstant:3
  FunctionIdn:IDN(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 130
 200 PRINT "ALL ZEROES"
  TextConstant:"ALL ZEROES"
@@ -48,7 +48,7 @@
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
  FunctionInv:INV(_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 340 PRINT "ITS INVERSE"
  TextConstant:"ITS INVERSE"
  CarriageControl:NL
@@ -61,13 +61,13 @@
  Variable:A(,) -> _(,)
  Variable:B(,) -> _(,)
  BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 410 MAT R = R-C
  Variable:R(,) -> _(,)
  Variable:R(,) -> _(,)
  Variable:C(,) -> _(,)
  BinaryOperatorMinus:-(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 420 PRINT "ROUNDOFF ERRORS"
  TextConstant:"ROUNDOFF ERRORS"
  CarriageControl:NL

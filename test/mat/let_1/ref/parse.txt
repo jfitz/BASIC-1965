@@ -21,7 +21,7 @@
  Variable:I -> _
  Variable:J -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 NEXT J
  Variable:J -> _
 70 NEXT I
@@ -29,7 +29,7 @@
 100 MAT B = A
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 110 MAT PRINT B
  Variable:B(,) -> _(,)
  CarriageControl:NL
@@ -54,7 +54,7 @@
  Variable:I -> _
  Variable:J -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 NEXT J
  Variable:J -> _
 170 NEXT I
@@ -62,7 +62,7 @@
 200 MAT B = A
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 210 MAT PRINT B
  Variable:B(,) -> _(,)
  CarriageControl:NL

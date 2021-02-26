@@ -20,7 +20,7 @@
  Variable:A -> _
  UserFunction:FNF(_) -> _
  FunctionSgn:SGN(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 24 IF S = 0 THEN 95
  Variable:S -> _
  NumericConstant:0
@@ -31,14 +31,14 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:X(_) -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 28 LET X(1-S) = B
  NumericConstant:1
  Variable:S -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:X(_) -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET X = (X(0)+X(2))/2
  Variable:X -> _
  NumericConstant:0
@@ -48,13 +48,13 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 35 LET F = SGN(FNF(X))
  Variable:F -> _
  Variable:X -> _
  UserFunction:FNF(_) -> _
  FunctionSgn:SGN(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 IF F = 0 THEN 100
  Variable:F -> _
  NumericConstant:0
@@ -65,7 +65,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:X(_) -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericConstant:0
  Variable:X(_) -> _
@@ -88,7 +88,7 @@
 95 LET X = A
  Variable:X -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 PRINT "ONE ZERO AT" X
  TextConstant:"ONE ZERO AT"
  CarriageControl:

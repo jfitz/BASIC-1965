@@ -1,0 +1,22 @@
+10 REM TEST BLANK TOKENS FOR PARSING
+ Remark:TEST BLANK TOKENS FOR PARSING
+20 LET S = 1
+ Variable:S -> _
+ NumericConstant:1
+ AssignmentOperator:= _ -> _
+30 LET P = 10
+ Variable:P -> _
+ NumericConstant:10
+ AssignmentOperator:= _ -> _
+40 FOR I = S _ TO P
+ control: Variable:I -> _
+ start:   ["Variable:S -> _"]
+ end:     ["Variable:P -> _"]
+50 PRINT I
+ Variable:I -> _
+ CarriageControl:NL
+60 NEXT I
+ Variable:I -> _
+99 END
+ 
+

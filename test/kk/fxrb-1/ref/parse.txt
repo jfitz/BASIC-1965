@@ -14,7 +14,7 @@
 130 MAT G = ZER
  Variable:G(,) -> _(,)
  FunctionZer2:ZER -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 140 DATA 4,2,1,3
  NumericConstant:4
  NumericConstant:2
@@ -46,7 +46,7 @@
  UserFunction:FNR(_) -> _
  Variable:G(_,_) -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 FOR I = 1 TO P
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -71,7 +71,7 @@
  Variable:T8 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Variable:Y -> _
  Variable:Y -> _
@@ -87,7 +87,7 @@
  Variable:T8 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 NEXT T
  Variable:T -> _
 270 LET G(FNR(X*1.5),FNR(Y)) = 1
@@ -99,7 +99,7 @@
  UserFunction:FNR(_) -> _
  Variable:G(_,_) -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 NEXT I
  Variable:I -> _
 290

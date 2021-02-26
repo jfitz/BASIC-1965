@@ -8,12 +8,12 @@
 20 LET A=10
  Variable:A -> _
  NumericConstant:10
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 22 LET A1=ABS(A)
  Variable:A1 -> _
  Variable:A -> _
  FunctionAbs:ABS(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 25 PRINT A,A1
  Variable:A -> _
  CarriageControl:,
@@ -23,12 +23,12 @@
  Variable:B -> _
  NumericConstant:20
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 32 LET B1=ABS(B)
  Variable:B1 -> _
  Variable:B -> _
  FunctionAbs:ABS(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 35 PRINT B,B1
  Variable:B -> _
  CarriageControl:,
@@ -37,12 +37,12 @@
 40 LET C=0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 42 LET C1=ABS(C)
  Variable:C1 -> _
  Variable:C -> _
  FunctionAbs:ABS(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 45 PRINT C,C1
  Variable:C -> _
  CarriageControl:,

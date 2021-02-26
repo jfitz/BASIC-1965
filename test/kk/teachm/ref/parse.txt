@@ -23,7 +23,7 @@ Syntax error: Invalid line number '0'
 130 LET C = 1
  Variable:C -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 GOSUB 8000
  LineNumber:8000
 150 IF X = C THEN 200
@@ -50,7 +50,7 @@ Syntax error: Invalid line number '0'
 220 LET C = 3
  Variable:C -> _
  NumericConstant:3
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 GOSUB 8000
  LineNumber:8000
 240 IF C = X THEN 300
@@ -97,7 +97,7 @@ Syntax error: Invalid line number '0'
 350 LET C = 2
  Variable:C -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 360 GOSUB 8000
  LineNumber:8000
 370 IF C = X THEN 400
@@ -129,7 +129,7 @@ Syntax error: Invalid line number '0'
 420 LET C = 3
  Variable:C -> _
  NumericConstant:3
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430 GOSUB 8000
  LineNumber:8000
 440 IF C = X THEN 500
@@ -171,7 +171,7 @@ Syntax error: Invalid line number '0'
 530 LET C = 1
  Variable:C -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 540 GOSUB 8000
  LineNumber:8000
 550 IF C = X THEN 600

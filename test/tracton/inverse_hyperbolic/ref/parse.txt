@@ -78,7 +78,7 @@
 250 LET X = A
  Variable:X -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 PRINT "CSCH - 1";X;" = ";Z
  TextConstant:"CSCH - 1"
  CarriageControl:;
@@ -97,7 +97,7 @@
 300 LET X = A
  Variable:X -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 310 PRINT "SECH - 1";X;" = ";Z
  TextConstant:"SECH - 1"
  CarriageControl:;
@@ -116,7 +116,7 @@
 350 LET X = A
  Variable:X -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 360 PRINT "COTH - 1";X;" = ";Z
  TextConstant:"COTH - 1"
  CarriageControl:;
@@ -161,7 +161,7 @@
  FunctionSqr:SQR(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionLog:LOG(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 480 RETURN
  
 490 LET Z = LOG(X + SQR((X^2) - 1))
@@ -175,7 +175,7 @@
  FunctionSqr:SQR(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionLog:LOG(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 500 RETURN
  
 510 LET Z = (LOG((1 + X)/(1 - X)))/2
@@ -190,7 +190,7 @@
  FunctionLog:LOG(_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520 RETURN
  
 530 PRINT "X = ";
@@ -201,13 +201,13 @@
 550 LET A = X
  Variable:A -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560 LET X = 1/X
  Variable:X -> _
  NumericConstant:1
  Variable:X -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 570 RETURN
  
 580 END

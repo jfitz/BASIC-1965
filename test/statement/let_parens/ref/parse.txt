@@ -7,7 +7,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 20 LET A2=(3*(2+1))*10
  Variable:A2 -> _
  NumericConstant:3
@@ -17,7 +17,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:10
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET B1=10*(3+(2*1))
  Variable:B1 -> _
  NumericConstant:10
@@ -27,7 +27,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 LET B2=(3+(2*1))*10
  Variable:B2 -> _
  NumericConstant:3
@@ -37,7 +37,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:10
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 LET C1=10+(3*(2+1))
  Variable:C1 -> _
  NumericConstant:10
@@ -47,7 +47,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET C2=(3*(2+1))+10
  Variable:C2 -> _
  NumericConstant:3
@@ -57,7 +57,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:10
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 PRINT A1, A2, B1, B2, C1, C2
  Variable:A1 -> _
  CarriageControl:,

@@ -19,7 +19,7 @@
 160 LET T1 = 0
  Variable:T1 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170
 180 PRINT "TIME", " X", " Y"
  TextConstant:"TIME"
@@ -64,7 +64,7 @@
  Variable:T8 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 LET Y = Y + (C*X*Y - D*Y)*T8
  Variable:Y -> _
  Variable:Y -> _
@@ -80,13 +80,13 @@
  Variable:T8 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 255 LET T1 = T1 + T8
  Variable:T1 -> _
  Variable:T1 -> _
  Variable:T8 -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 NEXT T
  Variable:T -> _
 270 PRINT T1, X, Y

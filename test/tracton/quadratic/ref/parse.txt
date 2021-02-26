@@ -26,7 +26,7 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 IF D > = 0 THEN 130
  Variable:D -> _
  NumericConstant:0
@@ -39,7 +39,7 @@
  Variable:A -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
  Variable:Y -> _
  NumericConstant:4
@@ -56,7 +56,7 @@
  Variable:A -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 PRINT "ROOTS ARE COMPLEX"
  TextConstant:"ROOTS ARE COMPLEX"
  CarriageControl:NL
@@ -80,7 +80,7 @@
  Variable:A -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 IF E > = 0 THEN 170
  Variable:E -> _
  NumericConstant:0
@@ -91,7 +91,7 @@
  Variable:D -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 GOTO 180
  LineNumber:180
 170 LET Z = E + SQR(D)
@@ -100,7 +100,7 @@
  Variable:D -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET W = C/(Z*A)
  Variable:W -> _
  Variable:C -> _
@@ -108,7 +108,7 @@
  Variable:A -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 PRINT "ROOTS ARE REAL"
  TextConstant:"ROOTS ARE REAL"
  CarriageControl:NL

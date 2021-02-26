@@ -5,7 +5,7 @@
 22 LET B = 0
  Variable:B -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 DATA 1, 1
  NumericConstant:1
  NumericConstant:1
@@ -45,7 +45,7 @@
 122 LET B = 1
  Variable:B -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 DATA 2, 2
  NumericConstant:2
  NumericConstant:2
@@ -115,7 +115,7 @@
  Variable:D -> _
  Variable:M1(,) -> _(,)
  FunctionDet:DET(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 490 PRINT "DETERMINANT:" D
  TextConstant:"DETERMINANT:"
  CarriageControl:

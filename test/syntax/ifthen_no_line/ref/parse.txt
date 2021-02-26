@@ -1,0 +1,19 @@
+10 REM TEST TARGET LINE NUMBER PRECHECK
+ Remark:TEST TARGET LINE NUMBER PRECHECK
+20 PRINT "START PROGRAM"
+ TextConstant:"START PROGRAM"
+ CarriageControl:NL
+30 LET A = 20
+ Variable:A -> _
+ NumericConstant:20
+ AssignmentOperator:= _ -> _
+80 IF A=10 THEN 100
+ Variable:A -> _
+ NumericConstant:10
+ BinaryOperatorEqual:=(_,_) -> ?
+90 PRINT "END PROGRAM"
+ TextConstant:"END PROGRAM"
+ CarriageControl:NL
+99 END
+ 
+

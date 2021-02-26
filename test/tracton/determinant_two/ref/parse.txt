@@ -23,33 +23,33 @@
  Variable:C -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 LET F = D/E
  Variable:F -> _
  Variable:D -> _
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET G = - B/E
  Variable:G -> _
  Variable:B -> _
  UnaryOperatorMinus:-(_) -> _
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET H = - C/E
  Variable:H -> _
  Variable:C -> _
  UnaryOperatorMinus:-(_) -> _
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET I = A/E
  Variable:I -> _
  Variable:A -> _
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 PRINT "ORIGINAL MATRIX"
  TextConstant:"ORIGINAL MATRIX"
  CarriageControl:NL

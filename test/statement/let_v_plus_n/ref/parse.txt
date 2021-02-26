@@ -3,13 +3,13 @@
 20 LET A=10
  Variable:A -> _
  NumericConstant:10
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET B=A+10
  Variable:B -> _
  Variable:A -> _
  NumericConstant:10
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 PRINT A,B
  Variable:A -> _
  CarriageControl:,

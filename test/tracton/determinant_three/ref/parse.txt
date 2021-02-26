@@ -34,7 +34,7 @@
  Variable:D -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET N = M - (C*E*G) - (F*H*A) - (I*D*B)
  Variable:N -> _
  Variable:M -> _
@@ -56,7 +56,7 @@
  Variable:B -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 REM COMPUTE INVERSE
  Remark:COMPUTE INVERSE
 80 LET O = ((E*I) - (H*F))/N
@@ -70,7 +70,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET P = ((G*F) - (D*I))/N
  Variable:P -> _
  Variable:G -> _
@@ -82,7 +82,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET Q = ((D*H) - (G*E))/N
  Variable:Q -> _
  Variable:D -> _
@@ -94,7 +94,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET R = ((H*C) - (B*I))/N
  Variable:R -> _
  Variable:H -> _
@@ -106,7 +106,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET S = ((A*I) - (G*C))/N
  Variable:S -> _
  Variable:A -> _
@@ -118,7 +118,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET T = ((G*B) - (A*H))/N
  Variable:T -> _
  Variable:G -> _
@@ -130,7 +130,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 LET U = ((B*F) - (E*C))/N
  Variable:U -> _
  Variable:B -> _
@@ -142,7 +142,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 LET V = ((D*C) - (A*F))/N
  Variable:V -> _
  Variable:D -> _
@@ -154,7 +154,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 LET W = ((A*E) - (D*B))/N
  Variable:W -> _
  Variable:A -> _
@@ -166,7 +166,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 PRINT "ORIGINAL MATRIX"
  TextConstant:"ORIGINAL MATRIX"
  CarriageControl:NL

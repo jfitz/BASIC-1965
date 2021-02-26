@@ -33,7 +33,7 @@
  NumericConstant:60
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 FOR I = 1 TO 6
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -44,14 +44,14 @@
  NumericConstant:0
  FunctionRnd:RND(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET K = K - INT(K)
  Variable:K -> _
  Variable:K -> _
  Variable:K -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET C(I) = 1 + INT(2*K)
  Variable:I -> _
  Variable:C(_) -> _
@@ -61,7 +61,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 NEXT I
  Variable:I -> _
 130 FOR I = 1 TO 6

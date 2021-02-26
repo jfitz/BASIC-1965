@@ -27,7 +27,7 @@
  Variable:C -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 IF M = 0 THEN 140
  Variable:M -> _
  NumericConstant:0
@@ -43,7 +43,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET Y = ((A*F) - (E*C))/M
  Variable:Y -> _
  Variable:A -> _
@@ -55,7 +55,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 PRINT "SOLUTION","X = ";X,"Y = ";Y
  TextConstant:"SOLUTION"
  CarriageControl:,

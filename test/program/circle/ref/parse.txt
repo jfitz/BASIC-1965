@@ -50,7 +50,7 @@
  Variable:D1 -> _
  Variable:C1 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 121 READ Z9,Z8
  Variable:Z9 -> _
  Variable:Z8 -> _
@@ -65,21 +65,21 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 202 LET B2=0
  Variable:B2 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 203 LET I1=D1+D5
  Variable:I1 -> _
  Variable:D1 -> _
  Variable:D5 -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 204 LET I2=0
  Variable:I2 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 217 PRINT "IDENTIFYING POINT B"
  TextConstant:"IDENTIFYING POINT B"
  CarriageControl:NL
@@ -95,7 +95,7 @@
 219 LET Z=1
  Variable:Z -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 220 REM RATIO OF AC/BC
  Remark:RATIO OF AC/BC
 221 LET F1 = FNL(A1,A2,C1,C2)
@@ -105,7 +105,7 @@
  Variable:C1 -> _
  Variable:C2 -> _
  UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 222 LET F2 = FNL(B1,B2,C1,C2)
  Variable:F2 -> _
  Variable:B1 -> _
@@ -113,13 +113,13 @@
  Variable:C1 -> _
  Variable:C2 -> _
  UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 223 LET R0 = F1/F2
  Variable:R0 -> _
  Variable:F1 -> _
  Variable:F2 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
 231 LET G1 = FNL(A1,A2,I1,I2)
@@ -129,7 +129,7 @@
  Variable:I1 -> _
  Variable:I2 -> _
  UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 232 LET G2 = FNL(B1,B2,I1,I2)
  Variable:G2 -> _
  Variable:B1 -> _
@@ -137,13 +137,13 @@
  Variable:I1 -> _
  Variable:I2 -> _
  UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 233 LET R1 = G1/G2
  Variable:R1 -> _
  Variable:G1 -> _
  Variable:G2 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 239 PRINT B1,R0,R1,Z
  Variable:B1 -> _
  CarriageControl:,
@@ -169,7 +169,7 @@
  Variable:B1 -> _
  Variable:Z -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 243 GOTO 246
  LineNumber:246
 245 LET B1=B1-Z
@@ -177,13 +177,13 @@
  Variable:B1 -> _
  Variable:Z -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 246 LET Z=Z*Z8
  Variable:Z -> _
  Variable:Z -> _
  Variable:Z8 -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 247 IF Z>Z9 THEN 220
  Variable:Z -> _
  Variable:Z9 -> _
@@ -259,7 +259,7 @@
  Variable:T -> _
  Variable:I -> _
  UserFunction:FNR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 422 LET I1 = D1 + COS(T)*D5
  Variable:I1 -> _
  Variable:D1 -> _
@@ -268,7 +268,7 @@
  Variable:D5 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 423 LET I2 = D2 + SIN(T)*D5
  Variable:I2 -> _
  Variable:D2 -> _
@@ -277,7 +277,7 @@
  Variable:D5 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 424 LET G1 = FNL(A1,A2,I1,I2)
  Variable:G1 -> _
  Variable:A1 -> _
@@ -285,7 +285,7 @@
  Variable:I1 -> _
  Variable:I2 -> _
  UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 425 LET G2 = FNL(B1,B2,I1,I2)
  Variable:G2 -> _
  Variable:B1 -> _
@@ -293,13 +293,13 @@
  Variable:I1 -> _
  Variable:I2 -> _
  UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 426 LET R1 = G1/G2
  Variable:R1 -> _
  Variable:G1 -> _
  Variable:G2 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
 431 PRINT T,I1;I2,G1;G2,R1,R1-R0

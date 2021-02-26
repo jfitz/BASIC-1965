@@ -19,7 +19,7 @@
  Variable:B -> _
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 45 LET R = A - Q*B
  Variable:R -> _
  Variable:A -> _
@@ -27,15 +27,15 @@
  Variable:B -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 LET A = B
  Variable:A -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 55 LET B = R
  Variable:B -> _
  Variable:R -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 IF R > 0 THEN 40
  Variable:R -> _
  NumericConstant:0

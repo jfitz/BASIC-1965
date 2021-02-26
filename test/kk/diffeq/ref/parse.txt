@@ -31,7 +31,7 @@
 140 LET Y = Y0
  Variable:Y -> _
  Variable:Y0 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150
 160 FOR X = X0 TO X1-H STEP H
  control: Variable:X -> _
@@ -43,11 +43,11 @@
  Variable:X -> _
  Variable:Y -> _
  UserFunction:FNF(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET Y1 = Y
  Variable:Y1 -> _
  Variable:Y -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 LET Y = Y + D1*H/2
  Variable:Y -> _
  Variable:Y -> _
@@ -57,7 +57,7 @@
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 LET D2 = FNF(X+H/2,Y)
  Variable:D2 -> _
  Variable:X -> _
@@ -67,7 +67,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:Y -> _
  UserFunction:FNF(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 LET Y = Y1 + D2*H
  Variable:Y -> _
  Variable:Y1 -> _
@@ -75,7 +75,7 @@
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 PRINT X+H, Y
  Variable:X -> _
  Variable:H -> _

@@ -5,11 +5,11 @@
 30 LET Z = 0
  Variable:Z -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 LET N = 0
  Variable:N -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 PRINT "SAMPLE = ";
  TextConstant:"SAMPLE = "
  CarriageControl:;
@@ -24,7 +24,7 @@
  Variable:N -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET Z = Z + (1/X)
  Variable:Z -> _
  Variable:Z -> _
@@ -32,13 +32,13 @@
  Variable:X -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET H = N/Z
  Variable:H -> _
  Variable:N -> _
  Variable:Z -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 PRINT "N = ";N,"SAMPLE = ";X,"CURRENT MEAN = ";H
  TextConstant:"N = "
  CarriageControl:;

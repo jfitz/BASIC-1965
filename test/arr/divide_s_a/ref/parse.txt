@@ -13,7 +13,7 @@
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 NEXT I
  Variable:I -> _
 100 ARR B = 1 / A
@@ -21,7 +21,7 @@
  NumericConstant:1
  Variable:A() -> _()
  BinaryOperatorDivide:/(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL

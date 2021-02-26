@@ -3,7 +3,7 @@
 110 LET P = 3.14159265
  Variable:P -> _
  NumericConstant:3.14159265
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 DEF FND(X) = X*P/180
  UserFunctionName:FND -> _
  VariableName:X -> _
@@ -59,7 +59,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Y -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 IF S > 1 THEN 290
  Variable:S -> _
  NumericConstant:1
@@ -82,7 +82,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 LET C = ATN(T)*180/P
  Variable:C -> _
  Variable:T -> _
@@ -91,7 +91,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:P -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 LET A = 180 - B - C
  Variable:A -> _
  NumericConstant:180
@@ -99,7 +99,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:C -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240 GOSUB 370
  LineNumber:370
 250 LET C = 180 - C
@@ -107,7 +107,7 @@
  NumericConstant:180
  Variable:C -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 LET A = 180 - B - C
  Variable:A -> _
  NumericConstant:180
@@ -115,7 +115,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  Variable:C -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270 GOSUB 370
  LineNumber:370
 275 PRINT
@@ -140,7 +140,7 @@
  NumericConstant:90
  Variable:B -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 340 GOSUB 370
  LineNumber:370
 350 PRINT "NONE"
@@ -159,7 +159,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:S -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 390 IF Z >= 0 THEN 420
  Variable:Z -> _
  NumericConstant:0

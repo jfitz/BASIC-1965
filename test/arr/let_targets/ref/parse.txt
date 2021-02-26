@@ -11,14 +11,14 @@
  Variable:I -> _
  Variable:A(_) -> _
  Variable:I -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 NEXT I
  Variable:I -> _
 100 ARR B,C = A
  Variable:B() -> _()
  Variable:C() -> _()
  Variable:A() -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _(),_()
 105 PRINT "ARRAY B:"
  TextConstant:"ARRAY B:"
  CarriageControl:NL

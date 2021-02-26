@@ -21,7 +21,7 @@
 182 LET Z0 = 0
  Variable:Z0 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
  Remark:WE ZERO THE BOARD AND INITIALIZE
 200 FOR I = 1 TO 8
@@ -37,7 +37,7 @@
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230    NEXT J
  Variable:J -> _
 240 NEXT I
@@ -45,33 +45,33 @@
 250 LET I = I0
  Variable:I -> _
  Variable:I0 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 LET J = J0
  Variable:J -> _
  Variable:J0 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270 LET M = 1
  Variable:M -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 LET B(I,J) = -1
  Variable:I -> _
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290
 300 REMARK WE NOW START THE SERIES OF MOVES
  Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
  Variable:C1 -> _
  NumericConstant:9
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 FOR I1 = I - 2 TO I + 2
  control: Variable:I1 -> _
  start:   ["Variable:I -> _", "NumericConstant:2", "BinaryOperatorMinus:-(_,_) -> _"]
@@ -95,7 +95,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
  control: Variable:J1 -> _
  start:   ["Variable:J -> _", "Variable:D1 -> _", "BinaryOperatorMinus:-(_,_) -> _"]
@@ -119,7 +119,7 @@
  Variable:C -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 410       IF C <> C1 THEN 470
  Variable:C -> _
  Variable:C1 -> _
@@ -127,24 +127,24 @@
 420       LET I = I1
  Variable:I -> _
  Variable:I1 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430       LET J = J1
  Variable:J -> _
  Variable:J1 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 440       LET B(I,J) = -1
  Variable:I -> _
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 450       LET M = M + 1
  Variable:M -> _
  Variable:M -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 460       GOTO 310
  LineNumber:310
 470    NEXT J1
@@ -166,7 +166,7 @@
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520 GOTO 320
  LineNumber:320
 600 REMARK WE HAVE GONE AS FAR AS WE CAN
@@ -183,7 +183,7 @@
  Variable:Z0 -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 620 IF Z0 < 40 THEN 200
  Variable:Z0 -> _
  NumericConstant:40

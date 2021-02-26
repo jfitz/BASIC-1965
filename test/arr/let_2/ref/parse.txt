@@ -11,13 +11,13 @@
  Variable:I -> _
  Variable:A(_) -> _
  Variable:I -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 NEXT I
  Variable:I -> _
 100 ARR LET B = A
  Variable:B() -> _()
  Variable:A() -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 110 ARR PRINT B,
  Variable:B() -> _()
  CarriageControl:,

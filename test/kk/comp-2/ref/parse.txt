@@ -68,7 +68,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:P1 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 125 IF A < 0 THEN 850
  Variable:A -> _
  NumericConstant:0
@@ -94,7 +94,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:P1 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 225 IF B < 0 THEN 850
  Variable:B -> _
  NumericConstant:0
@@ -124,7 +124,7 @@
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 PRINT "PAYMENT = $" P
  TextConstant:"PAYMENT = $"
  CarriageControl:
@@ -146,7 +146,7 @@
  Variable:P1 -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 416 IF Q <= 1 THEN 850
  Variable:Q -> _
  NumericConstant:1
@@ -162,7 +162,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:T -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430 PRINT "NUMBER OF YEARS = " Y
  TextConstant:"NUMBER OF YEARS = "
  CarriageControl:
@@ -184,7 +184,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510 FOR R = 0.1 TO 100 STEP 0.1
  control: Variable:R -> _
  start:   ["NumericConstant:0.1"]
@@ -203,7 +203,7 @@
  Variable:P1 -> _
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 535    IF S*S1 <= 0 THEN 550
  Variable:S -> _
  Variable:S1 -> _
@@ -213,7 +213,7 @@
 536    LET S = S1
  Variable:S -> _
  Variable:S1 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 540 NEXT R
  Variable:R -> _
 545 PRINT "NO ANSWER FOUND"
@@ -257,7 +257,7 @@
  Variable:Y -> _
  Variable:T -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1020 LET R1 = R/100/T
  Variable:R1 -> _
  Variable:R -> _
@@ -265,13 +265,13 @@
  BinaryOperatorDivide:/(_,_) -> _
  Variable:T -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1030 LET P1 = P/R1
  Variable:P1 -> _
  Variable:P -> _
  Variable:R1 -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1040 LET R2 = (1+R1)^N
  Variable:R2 -> _
  NumericConstant:1
@@ -279,7 +279,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:N -> _
  BinaryOperatorPower:^(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1099 RETURN
  
 9999 END

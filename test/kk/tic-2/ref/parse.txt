@@ -101,7 +101,7 @@
 265  LET N = 0
  Variable:N -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270  FOR S = 1 TO 9
  control: Variable:S -> _
  start:   ["NumericConstant:1"]
@@ -110,12 +110,12 @@
  Variable:S -> _
  Variable:C(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280     LET B(S) = 0
  Variable:S -> _
  Variable:B(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 285  NEXT S
  Variable:S -> _
 290
@@ -154,7 +154,7 @@
  Variable:F -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420  IF M <> INT(M) THEN 550
  Variable:M -> _
  Variable:M -> _
@@ -177,7 +177,7 @@
  Variable:M -> _
  Variable:B(_) -> _
  Variable:F -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 470  FOR J = 1 TO 4
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -187,7 +187,7 @@
  Variable:M -> _
  Variable:J -> _
  Variable:U(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 490     IF P = 0 THEN 530
  Variable:P -> _
  NumericConstant:0
@@ -199,7 +199,7 @@
  Variable:C(_) -> _
  Variable:F -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510     IF C(P) = -3 THEN 860
  Variable:P -> _
  Variable:C(_) -> _
@@ -218,7 +218,7 @@
  Variable:N -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 536  IF N = 9 THEN 880
  Variable:N -> _
  NumericConstant:9
@@ -249,7 +249,7 @@
 630  LET F = 1
  Variable:F -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 640  GOTO 460
  LineNumber:460
 800  REM THE GAME IS OVER
@@ -313,7 +313,7 @@
  Variable:P -> _
  Variable:I -> _
  Variable:T(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1120    IF B(M) = 0 THEN 1999
  Variable:M -> _
  Variable:B(_) -> _
@@ -330,7 +330,7 @@
  Variable:S -> _
  Variable:V(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1215    IF B(S) <> 0 THEN 1270
  Variable:S -> _
  Variable:B(_) -> _
@@ -345,7 +345,7 @@
  Variable:S -> _
  Variable:J -> _
  Variable:U(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1240       IF P = 0 THEN 1260
  Variable:P -> _
  NumericConstant:0
@@ -361,7 +361,7 @@
  Variable:C(_) -> _
  FunctionAbs:ABS(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1260    NEXT J
  Variable:J -> _
 1270 NEXT S
@@ -369,7 +369,7 @@
 1300 LET V = 0
  Variable:V -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1310 FOR S = 1 TO 9
  control: Variable:S -> _
  start:   ["NumericConstant:1"]
@@ -383,11 +383,11 @@
  Variable:V -> _
  Variable:S -> _
  Variable:V(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1340    LET M = S
  Variable:M -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1350 NEXT S
  Variable:S -> _
 1999 RETURN

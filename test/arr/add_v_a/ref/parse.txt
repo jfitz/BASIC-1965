@@ -11,19 +11,19 @@
  Variable:I -> _
  Variable:A(_) -> _
  Variable:I -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 NEXT I
  Variable:I -> _
 90 LET C = 5
  Variable:C -> _
  NumericConstant:5
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 ARR B = (C) + A
  Variable:B() -> _()
  Variable:C -> _
  Variable:A() -> _()
  BinaryOperatorPlus:+(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 110 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL

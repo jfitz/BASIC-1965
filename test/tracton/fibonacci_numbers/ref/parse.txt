@@ -28,7 +28,7 @@
 110 LET K = 1
  Variable:K -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 PRINT K,A
  Variable:K -> _
  CarriageControl:,
@@ -37,7 +37,7 @@
 130 LET K = 2
  Variable:K -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 PRINT K,B
  Variable:K -> _
  CarriageControl:,
@@ -48,13 +48,13 @@
  Variable:K -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 LET Q = A + B
  Variable:Q -> _
  Variable:A -> _
  Variable:B -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 PRINT K,Q
  Variable:K -> _
  CarriageControl:,
@@ -63,11 +63,11 @@
 180 LET A = B
  Variable:A -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 LET B = Q
  Variable:B -> _
  Variable:Q -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 IF K > = N THEN 220
  Variable:K -> _
  Variable:N -> _

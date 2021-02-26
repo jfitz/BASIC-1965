@@ -12,18 +12,18 @@
  Variable:I -> _
  Variable:N(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 22 NEXT I
  Variable:I -> _
 25 LET P(0) = 2
  NumericConstant:0
  Variable:P(_) -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 26 LET K = 0
  Variable:K -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 FOR P = 3 TO 2000 STEP 2
  control: Variable:P -> _
  start:   ["NumericConstant:3"]
@@ -36,7 +36,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40    IF N(X) < 0 THEN 90
  Variable:X -> _
  Variable:N(_) -> _
@@ -47,12 +47,12 @@
  Variable:K -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 55    LET P(K) = P
  Variable:K -> _
  Variable:P(_) -> _
  Variable:P -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 56    IF P > SQR(2000) THEN 90
  Variable:P -> _
  NumericConstant:2000
@@ -70,13 +70,13 @@
  BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70       LET N(X) = -1
  Variable:X -> _
  Variable:N(_) -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80    NEXT I
  Variable:I -> _
 90 NEXT P
@@ -101,7 +101,7 @@
  NumericConstant:1000
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 PRINT
  CarriageControl:NL
 140 PRINT "B = "
@@ -120,7 +120,7 @@
  Variable:I -> _
  Variable:N(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 207 NEXT I
  Variable:I -> _
 210 FOR I = 1 TO K
@@ -131,7 +131,7 @@
  Variable:F -> _
  Variable:I -> _
  Variable:P(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230    GOSUB 800
  LineNumber:800
 239    IF Z > 999 THEN 270
@@ -148,7 +148,7 @@
  Variable:N(_) -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260    NEXT J
  Variable:J -> _
 270 NEXT I
@@ -159,11 +159,11 @@
 405 LET D = 2
  Variable:D -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 410 LET F = 2003
  Variable:F -> _
  NumericConstant:2003
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420    GOSUB 800
  LineNumber:800
 430    IF Z > 999 THEN 450
@@ -175,19 +175,19 @@
  Variable:N(_) -> _
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 450 LET F = F+D
  Variable:F -> _
  Variable:F -> _
  Variable:D -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 460 LET D = 6-D
  Variable:D -> _
  NumericConstant:6
  Variable:D -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 470 IF F <= S THEN 420
  Variable:F -> _
  Variable:S -> _
@@ -198,7 +198,7 @@
 702 LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 705 FOR I = 0 TO 999
  control: Variable:I -> _
  start:   ["NumericConstant:0"]
@@ -220,7 +220,7 @@
  Variable:S -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 730 NEXT I
  Variable:I -> _
 732 PRINT
@@ -289,13 +289,13 @@
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 820 LET Y = A*1E3
  Variable:Y -> _
  Variable:A -> _
  NumericConstant:1000
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 830 LET X = F - (Y - F*INT(Y/F))
  Variable:X -> _
  Variable:F -> _
@@ -308,7 +308,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 840 IF X <> 2*INT(X/2) THEN 860
  Variable:X -> _
  NumericConstant:2
@@ -323,7 +323,7 @@
  Variable:X -> _
  Variable:F -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 860 LET Z = (X-1)/2
  Variable:Z -> _
  Variable:X -> _
@@ -331,7 +331,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 870 RETURN
  
 999 END

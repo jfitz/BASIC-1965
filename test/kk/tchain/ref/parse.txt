@@ -30,12 +30,12 @@
  Variable:N -> _
  Variable:N -> _
  FunctionIdn:IDN(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 170 MAT U = CON(N)
  Variable:U(,) -> _(,)
  Variable:N -> _
  FunctionCon2:CON(_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 180
 190 PRINT "TRANSIENT TO TRANSIENT PROBABILITIES"
  TextConstant:"TRANSIENT TO TRANSIENT PROBABILITIES"
@@ -60,12 +60,12 @@
  Variable:N(,) -> _(,)
  Variable:Q(,) -> _(,)
  BinaryOperatorMinus:-(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 280 MAT N = INV(Q)
  Variable:N(,) -> _(,)
  Variable:Q(,) -> _(,)
  FunctionInv:INV(_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 290 PRINT "FUNDAMENTAL MATRIX"
  TextConstant:"FUNDAMENTAL MATRIX"
  CarriageControl:NL
@@ -80,7 +80,7 @@
  Variable:N(,) -> _(,)
  Variable:U(,) -> _(,)
  BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 340 PRINT "ABSORBTION TIMES"
  TextConstant:"ABSORBTION TIMES"
  CarriageControl:NL
@@ -95,7 +95,7 @@
  Variable:N(,) -> _(,)
  Variable:R(,) -> _(,)
  BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 390 PRINT "ABSORBTION PROBABILITIES"
  TextConstant:"ABSORBTION PROBABILITIES"
  CarriageControl:NL

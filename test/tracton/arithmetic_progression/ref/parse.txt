@@ -37,7 +37,7 @@
 140 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 FOR I = 0 TO N - 1
  control: Variable:I -> _
  start:   ["NumericConstant:0"]
@@ -47,7 +47,7 @@
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 LET L = A + (I*D)
  Variable:L -> _
  Variable:A -> _
@@ -55,13 +55,13 @@
  Variable:D -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET J = J + L
  Variable:J -> _
  Variable:J -> _
  Variable:L -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 IF C = 1 THEN 210
  Variable:C -> _
  NumericConstant:1

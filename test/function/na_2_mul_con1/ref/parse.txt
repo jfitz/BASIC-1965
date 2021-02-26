@@ -9,27 +9,27 @@
  NumericConstant:5
  FunctionCon1:CON1(_) -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 30 ARR B = 2 * CON1(3)
  Variable:B() -> _()
  NumericConstant:2
  NumericConstant:3
  FunctionCon1:CON1(_) -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 40 ARR C = 2 * CON1(4)
  Variable:C() -> _()
  NumericConstant:2
  NumericConstant:4
  FunctionCon1:CON1(_) -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 45 ARR D = 2 * CON1
  Variable:D() -> _()
  NumericConstant:2
  FunctionCon1:CON1 -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 50 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL
@@ -62,27 +62,27 @@
  NumericConstant:5
  FunctionCon1:CON1(_) -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 230 ARR B = 3 * CON1(3)
  Variable:B() -> _()
  NumericConstant:3
  NumericConstant:3
  FunctionCon1:CON1(_) -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 240 ARR C = 3 * CON1(4)
  Variable:C() -> _()
  NumericConstant:3
  NumericConstant:4
  FunctionCon1:CON1(_) -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 245 ARR D = 3 * CON1()
  Variable:D() -> _()
  NumericConstant:3
  FunctionCon1:CON1() -> _()
  BinaryOperatorMultiply:*(_,_) -> _()
- AssignmentOperator:=
+ AssignmentOperator:= _() -> _()
 250 PRINT "ARRAY A"
  TextConstant:"ARRAY A"
  CarriageControl:NL

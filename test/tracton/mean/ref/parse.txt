@@ -5,19 +5,19 @@
 30 LET A = 0
  Variable:A -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 LET B = 0
  Variable:B -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET D = 0
  Variable:D -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
  TextConstant:"ENTER SAMPLE VALUE AND FREQUENCY"
  CarriageControl:;
@@ -33,25 +33,25 @@
  Variable:A -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET B = B + F
  Variable:B -> _
  Variable:B -> _
  Variable:F -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET G = X*F
  Variable:G -> _
  Variable:X -> _
  Variable:F -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET C = C + G
  Variable:C -> _
  Variable:C -> _
  Variable:G -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 LET E = (X^2)*F
  Variable:E -> _
  Variable:X -> _
@@ -59,13 +59,13 @@
  BinaryOperatorPower:^(_,_) -> _
  Variable:F -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 LET D = D + E
  Variable:D -> _
  Variable:D -> _
  Variable:E -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 160 GOTO 70
  LineNumber:70
 170 LET H = C/B
@@ -73,7 +73,7 @@
  Variable:C -> _
  Variable:B -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET I = SQR(D - (B*(H^2)))
  Variable:I -> _
  Variable:D -> _
@@ -84,14 +84,14 @@
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 LET J = I/SQR(B)
  Variable:J -> _
  Variable:I -> _
  Variable:B -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 200 PRINT
  CarriageControl:NL
 210 PRINT "NUMBER OF SAMPLES ENTERED = ";A

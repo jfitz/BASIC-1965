@@ -3,7 +3,7 @@
 110 LET P = 3.14159265
  Variable:P -> _
  NumericConstant:3.14159265
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 DEF FND(X)=X*P/180
  UserFunctionName:FND -> _
  VariableName:X -> _
@@ -50,7 +50,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 PRINT X,A,Y,Z
  Variable:X -> _
  CarriageControl:,

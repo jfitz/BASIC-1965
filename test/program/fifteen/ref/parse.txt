@@ -17,24 +17,24 @@
  Variable:X -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 50 LET A2 = SQR(X)
  Variable:A2 -> _
  Variable:X -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 60 LET A = A1+A2
  Variable:A -> _
  Variable:A1 -> _
  Variable:A2 -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 70 LET B = A1-A2
  Variable:B -> _
  Variable:A1 -> _
  Variable:A2 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator: _ = _
 80 PRINT X,A,B
  Variable:X -> _
  CarriageControl:,

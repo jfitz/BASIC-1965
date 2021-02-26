@@ -24,7 +24,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
  Variable:R2 -> _
  Variable:Z2 -> _
@@ -35,7 +35,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
  Variable:M -> _
  Variable:Z1 -> _
@@ -49,7 +49,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET L = 20*(LOG(M)/LOG(10))
  Variable:L -> _
  NumericConstant:20
@@ -59,7 +59,7 @@
  FunctionLog:LOG(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 PRINT "COMPONENTS OF THE L-PAD"
  TextConstant:"COMPONENTS OF THE L-PAD"
  CarriageControl:NL

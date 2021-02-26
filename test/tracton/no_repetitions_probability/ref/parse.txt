@@ -18,7 +18,7 @@
 70 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 FOR I = 1 TO N - 1
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -30,13 +30,13 @@
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET J = J*K
  Variable:J -> _
  Variable:J -> _
  Variable:K -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 NEXT I
  Variable:I -> _
 120 PRINT "PROBABILITY = ";J

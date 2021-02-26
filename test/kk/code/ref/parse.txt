@@ -22,7 +22,7 @@
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 PRINT "PLEASE TYPE KEY";
  TextConstant:"PLEASE TYPE KEY"
  CarriageControl:;
@@ -64,7 +64,7 @@
  Variable:J -> _
  Variable:K(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 NEXT J
  Variable:J -> _
 195 GOTO 210
@@ -77,7 +77,7 @@
 215 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 FOR I = 1 TO I9
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -89,7 +89,7 @@
  Variable:J -> _
  Variable:K(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240    IF X <= 26 THEN 260
  Variable:X -> _
  NumericConstant:26
@@ -99,7 +99,7 @@
  Variable:X -> _
  NumericConstant:27
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260    GOSUB 1000
  LineNumber:1000
 270    LET J = J+1
@@ -107,7 +107,7 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280    IF J <= 5 THEN 300
  Variable:J -> _
  NumericConstant:5
@@ -115,7 +115,7 @@
 290    LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 300 NEXT I
  Variable:I -> _
 310 PRINT
@@ -123,7 +123,7 @@
 315 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 FOR I = 1 TO I9
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -135,7 +135,7 @@
  Variable:J -> _
  Variable:K(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 340    IF X <= 26 THEN 360
  Variable:X -> _
  NumericConstant:26
@@ -145,7 +145,7 @@
  Variable:X -> _
  NumericConstant:27
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 360    PRINT X;
  Variable:X -> _
  CarriageControl:;
@@ -154,7 +154,7 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 380    IF J <= 5 THEN 400
  Variable:J -> _
  NumericConstant:5
@@ -162,7 +162,7 @@
 390    LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 400 NEXT I
  Variable:I -> _
 800 STOP

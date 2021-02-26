@@ -15,7 +15,7 @@
  Variable:I -> _
  Variable:A(_) -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 23 NEXT I
  Variable:I -> _
 24 FOR I = 1 TO 8
@@ -28,7 +28,7 @@
  NumericConstant:8
  Variable:I -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 26 NEXT I
  Variable:I -> _
 30 ARR PRINT A

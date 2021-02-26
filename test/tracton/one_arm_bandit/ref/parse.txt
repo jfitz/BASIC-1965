@@ -43,7 +43,7 @@
 170 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 PRINT
  CarriageControl:NL
 190 GOSUB 590
@@ -51,23 +51,23 @@
 200 LET S1 = S
  Variable:S1 -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 GOSUB 590
  LineNumber:590
 220 LET S2 = S
  Variable:S2 -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 GOSUB 590
  LineNumber:590
 240 LET S3 = S
  Variable:S3 -> _
  Variable:S -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 LET S = S1
  Variable:S -> _
  Variable:S1 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 GOSUB 610
  LineNumber:610
 270 LET S1$ = S$
@@ -75,7 +75,7 @@
 280 LET S = S2
  Variable:S -> _
  Variable:S2 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290 GOSUB 610
  LineNumber:610
 300 LET S2$ = S$
@@ -83,7 +83,7 @@
 310 LET S = S3
  Variable:S -> _
  Variable:S3 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 GOSUB 610
  LineNumber:610
 330 LET S3$ = S$
@@ -117,7 +117,7 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 470 GOTO 550
  LineNumber:550
 480 LET J = J + 89
@@ -125,7 +125,7 @@
  Variable:J -> _
  NumericConstant:89
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 490 GOTO 550
  LineNumber:550
 500 LET J = J + 2
@@ -133,7 +133,7 @@
  Variable:J -> _
  NumericConstant:2
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510 GOTO 550
  LineNumber:550
 520 LET J = J + 1
@@ -141,7 +141,7 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 530 GOTO 550
  LineNumber:550
 540 LET J = J + 9
@@ -149,7 +149,7 @@
  Variable:J -> _
  NumericConstant:9
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 550 PRINT
  CarriageControl:NL
 560 PRINT S1$;" ";S2$;" ";S3$
@@ -177,7 +177,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 600 600 RETURN
  Unknown statement '600 RETURN'
  Unimplemented

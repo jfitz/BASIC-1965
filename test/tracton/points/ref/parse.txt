@@ -20,7 +20,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:180
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 PRINT "NUMBER OF POINTS DESIRED = ";
  TextConstant:"NUMBER OF POINTS DESIRED = "
  CarriageControl:;
@@ -36,7 +36,7 @@
  NumericConstant:6.28319
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 PRINT
  CarriageControl:NL
 140 PRINT "COORDINATES"
@@ -58,7 +58,7 @@
  FunctionCos:COS(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 170 LET Y = Y0 + (R*SIN(W + (Z*I)))
  Variable:Y -> _
  Variable:Y0 -> _
@@ -71,13 +71,13 @@
  FunctionSin:SIN(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 180 LET P = I + 1
  Variable:P -> _
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 190 PRINT "POINT:";P,"X = ";X,"Y = ";Y
  TextConstant:"POINT:"
  CarriageControl:;

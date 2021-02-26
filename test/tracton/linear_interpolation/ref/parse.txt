@@ -30,7 +30,7 @@
  Variable:Y2 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET F = G/(X2 - X1)
  Variable:F -> _
  Variable:G -> _
@@ -38,7 +38,7 @@
  Variable:X1 -> _
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 PRINT "INTERPOLATED F(X) = ";F
  TextConstant:"INTERPOLATED F(X) = "
  CarriageControl:;

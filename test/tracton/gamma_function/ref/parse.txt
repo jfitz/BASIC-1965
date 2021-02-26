@@ -7,35 +7,35 @@
 40 LET A = 0.57717
  Variable:A -> _
  NumericConstant:0.57717
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 LET B = 0.98821
  Variable:B -> _
  NumericConstant:0.98821
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET C = 0.89706
  Variable:C -> _
  NumericConstant:0.89706
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 LET D = 0.91821
  Variable:D -> _
  NumericConstant:0.91821
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 LET E = 0.7567
  Variable:E -> _
  NumericConstant:0.7567
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 LET F = 0.4822
  Variable:F -> _
  NumericConstant:0.4822
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 LET G = 0.19353
  Variable:G -> _
  NumericConstant:0.19353
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET H = 0.03587
  Variable:H -> _
  NumericConstant:0.03587
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 PRINT "TYPE G FOR GAMMA FUNCTION OR"
  TextConstant:"TYPE G FOR GAMMA FUNCTION OR"
  CarriageControl:NL
@@ -61,13 +61,13 @@
 210 LET K = X
  Variable:K -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 LET K = K - 1
  Variable:K -> _
  Variable:K -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 IF K > = 0 THEN 260
  Variable:K -> _
  NumericConstant:0
@@ -100,7 +100,7 @@
 320 LET K = X
  Variable:K -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 IF K > = 0 THEN 360
  Variable:K -> _
  NumericConstant:0
@@ -155,19 +155,19 @@
 490 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 500 LET J = J*K
  Variable:J -> _
  Variable:J -> _
  Variable:K -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510 LET K = K - 1
  Variable:K -> _
  Variable:K -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520 IF K < 1 THEN 540
  Variable:K -> _
  NumericConstant:1
@@ -177,11 +177,11 @@
 540 LET L = K
  Variable:L -> _
  Variable:K -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 550 LET K = J
  Variable:K -> _
  Variable:J -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560 RETURN
  
 570 LET A1 = 1 + (A*L) + (B*(L^2)) + (C*(L^3))
@@ -203,7 +203,7 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 580 LET A1 = A1 + (D*(L^4)) + (E*(L^5)) + (F*(L^6))
  Variable:A1 -> _
  Variable:A1 -> _
@@ -225,7 +225,7 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 590 LET A1 = A1 + (G*(L^7)) + (H*(L^8))
  Variable:A1 -> _
  Variable:A1 -> _
@@ -241,13 +241,13 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 600 LET K = A1*K
  Variable:K -> _
  Variable:A1 -> _
  Variable:K -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 610 RETURN
  
 620 END

@@ -9,11 +9,11 @@
 50 LET Y = 1
  Variable:Y -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET N = 0
  Variable:N -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 PRINT "SAMPLE = ";
  TextConstant:"SAMPLE = "
  CarriageControl:;
@@ -28,13 +28,13 @@
  Variable:N -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 LET Y = Y * W
  Variable:Y -> _
  Variable:Y -> _
  Variable:W -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET G = Y^(1/N)
  Variable:G -> _
  Variable:Y -> _
@@ -42,7 +42,7 @@
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPower:^(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 PRINT "NUMBER OF SAMPLES = ";N,"CURRENT SAMPLE = ";W
  TextConstant:"NUMBER OF SAMPLES = "
  CarriageControl:;

@@ -32,7 +32,7 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 90 REM CALCULATE THE NORM OF B VECTOR
  Remark:CALCULATE THE NORM OF B VECTOR
 100 LET Y = SQR((B1^2) + (B2^2) + (B3^2))
@@ -49,7 +49,7 @@
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 110 REM CALCULATE DOT PRODUCT
  Remark:CALCULATE DOT PRODUCT
 120 LET Z = (A1*B1) + (A2*B2) + (A3*B3)
@@ -65,7 +65,7 @@
  Variable:B3 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 PRINT "DOT PRODUCT = ";Z
  TextConstant:"DOT PRODUCT = "
  CarriageControl:;

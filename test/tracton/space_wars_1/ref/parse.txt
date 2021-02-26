@@ -64,11 +64,11 @@
 250 LET E1 = 1E04
  Variable:E1 -> _
  NumericConstant:10000
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 LET E2 = E1
  Variable:E2 -> _
  Variable:E1 -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270 LET D = 1E03 + INT(5E05*RND)
  Variable:D -> _
  NumericConstant:1000
@@ -77,7 +77,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 LET B = 1 + INT(180*RND)
  Variable:B -> _
  NumericConstant:1
@@ -86,7 +86,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290 GOSUB 340
  LineNumber:340
 300 GOSUB 390
@@ -96,7 +96,7 @@
  Variable:E1 -> _
  Variable:D1 -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 GOSUB 500
  LineNumber:500
 330 GOTO 690
@@ -108,13 +108,13 @@
 350 LET L = 1
  Variable:L -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 360 GOTO 380
  LineNumber:380
 370 LET L = 0
  Variable:L -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 380 RETURN
  
 390 IF L = 0 THEN 440
@@ -131,19 +131,19 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 410 LET D1 = 500*H2
  Variable:D1 -> _
  NumericConstant:500
  Variable:H2 -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420 LET E2 = E2 - 500
  Variable:E2 -> _
  Variable:E2 -> _
  NumericConstant:500
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430 GOTO 490
  LineNumber:490
 440 LET M1 = 1 + INT(2*RND)
@@ -154,7 +154,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 450 IF M1 = 1 THEN 470
  Variable:M1 -> _
  NumericConstant:1
@@ -164,13 +164,13 @@
 470 LET D1 = 0
  Variable:D1 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 480 LET E2 = E2 - 1000
  Variable:E2 -> _
  Variable:E2 -> _
  NumericConstant:1000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 490 RETURN
  
 500 PRINT
@@ -275,7 +275,7 @@
  Variable:B -> _
  Variable:B1 -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 780 LET E1 = E1 - (10*ABS(B1))
  Variable:E1 -> _
  Variable:E1 -> _
@@ -284,7 +284,7 @@
  FunctionAbs:ABS(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 790 GOTO 290
  LineNumber:290
 800 PRINT "YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
@@ -319,7 +319,7 @@
  Variable:D -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 890 LET E1 = E1 - (ABS(K)/1000)
  Variable:E1 -> _
  Variable:E1 -> _
@@ -328,7 +328,7 @@
  NumericConstant:1000
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 900 GOTO 290
  LineNumber:290
 910 PRINT "YOU HAVE TRIED TO CLOSE THE DISTANCE TO LESS THAN ZERO"
@@ -363,7 +363,7 @@
  Variable:E1 -> _
  NumericConstant:1000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1020 IF B >= 80 THEN 1050
  Variable:B -> _
  NumericConstant:80
@@ -387,7 +387,7 @@
  Variable:E2 -> _
  NumericConstant:1000
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1090 GOTO 290
  LineNumber:290
 1100 LET E1 = E1 - 500
@@ -395,7 +395,7 @@
  Variable:E1 -> _
  NumericConstant:500
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1110 LET D2 = (1 + INT(100*RND)/100)
  Variable:D2 -> _
  NumericConstant:1
@@ -406,7 +406,7 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1120 LET E2 = E2 - (D2*500)
  Variable:E2 -> _
  Variable:E2 -> _
@@ -414,7 +414,7 @@
  NumericConstant:500
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1130 GOTO 290
  LineNumber:290
 1140 PRINT "YOU HAVE INSTRUCTED THE ON-BOARD COMPUTER"

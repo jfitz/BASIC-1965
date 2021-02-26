@@ -19,7 +19,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:J -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 NEXT J
  Variable:J -> _
 60 NEXT I
@@ -34,7 +34,7 @@
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
  FunctionTrn:TRN(_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 90 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL
@@ -53,7 +53,7 @@
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
  FunctionTrn:TRN(_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 190 PRINT "MATRIX B"
  TextConstant:"MATRIX B"
  CarriageControl:NL

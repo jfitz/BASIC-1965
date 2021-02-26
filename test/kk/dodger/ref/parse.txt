@@ -112,23 +112,23 @@
 300 LET S1 = 0
  Variable:S1 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 310 LET B = 0
  Variable:B -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 LET H = 0
  Variable:H -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 LET L7 = 0
  Variable:L7 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 340 LET I = 1
  Variable:I -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 350
 360 FOR C = 0 TO 7
  control: Variable:C -> _
@@ -159,15 +159,15 @@
 450 LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 460 LET O = 0
  Variable:O -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 470 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 480
 490 REM NEW BATTER
  Remark:NEW BATTER
@@ -178,13 +178,13 @@
 510 LET B = 0
  Variable:B -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520 LET B = B+1
  Variable:B -> _
  Variable:B -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 530
 540 REM DETERMINE OUTCOME
  Remark:DETERMINE OUTCOME
@@ -192,7 +192,7 @@
  Variable:X -> _
  NumericConstant:0
  FunctionRnd:RND(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560 FOR R = 0 TO 3
  control: Variable:R -> _
  start:   ["NumericConstant:0"]
@@ -204,7 +204,7 @@
  Variable:R -> _
  Variable:P(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 580 IF X < 0 THEN 620
  Variable:X -> _
  NumericConstant:0
@@ -214,7 +214,7 @@
 600 LET R = 4
  Variable:R -> _
  NumericConstant:4
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 610
 620 REM PRINT OUTCOME
  Remark:PRINT OUTCOME
@@ -273,20 +273,20 @@
  Variable:H -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 810 LET X = Q(R,C)
  Variable:X -> _
  Variable:R -> _
  Variable:C -> _
  Variable:Q(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 820 LET Y = INT(X/10)
  Variable:Y -> _
  Variable:X -> _
  NumericConstant:10
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 830 LET C = X - Y*10
  Variable:C -> _
  Variable:X -> _
@@ -294,13 +294,13 @@
  NumericConstant:10
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 840 LET S = S+Y
  Variable:S -> _
  Variable:S -> _
  Variable:Y -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 850 GOTO 490
  LineNumber:490
 860 IF O = 2 THEN 890
@@ -312,7 +312,7 @@
  Variable:O -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 880 GOTO 490
  LineNumber:490
 885
@@ -324,7 +324,7 @@
  Variable:C -> _
  Variable:L(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 900 PRINT
  CarriageControl:NL
 910 PRINT S; "RUNS"
@@ -339,13 +339,13 @@
  Variable:S1 -> _
  Variable:S -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 940 LET I = I+1
  Variable:I -> _
  Variable:I -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 945 IF I < 9 THEN 410
  Variable:I -> _
  NumericConstant:9

@@ -14,11 +14,11 @@
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET Y = 0
  Variable:Y -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 70 PRINT "A RANDOM NUMBER HAS BEEN PICKED"
  TextConstant:"A RANDOM NUMBER HAS BEEN PICKED"
  CarriageControl:NL
@@ -43,7 +43,7 @@
  Variable:Y -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 IF X = R THEN 180
  Variable:X -> _
  Variable:R -> _

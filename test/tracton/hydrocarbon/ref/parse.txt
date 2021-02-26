@@ -57,7 +57,7 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 LET O2 = C + S + (H/4) - (O/2)
  Variable:O2 -> _
  Variable:C -> _
@@ -71,7 +71,7 @@
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 LET A = O2*E*4.762
  Variable:A -> _
  Variable:O2 -> _
@@ -79,13 +79,13 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:4.762
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 230 LET A1 = 1.8094*A
  Variable:A1 -> _
  NumericConstant:1.8094
  Variable:A -> _
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
  Variable:F -> _
  NumericConstant:0.7507
@@ -99,7 +99,7 @@
  Variable:S -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 LET F = (0.875*N) + O + F
  Variable:F -> _
  NumericConstant:0.875
@@ -109,13 +109,13 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:F -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 260 LET A1 = A1/F
  Variable:A1 -> _
  Variable:A1 -> _
  Variable:F -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270 LET M = A + (H/4) + (O/2) + (N/2)
  Variable:M -> _
  Variable:A -> _
@@ -131,7 +131,7 @@
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 LET C2 = (C*100)/M
  Variable:C2 -> _
  Variable:C -> _
@@ -139,7 +139,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290 LET S2 = (S*100)/M
  Variable:S2 -> _
  Variable:S -> _
@@ -147,7 +147,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 300 LET H2 = (H*100)/M
  Variable:H2 -> _
  Variable:H -> _
@@ -155,7 +155,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 310 LET O3 = (100*(E-1)*O2)/M
  Variable:O3 -> _
  NumericConstant:100
@@ -167,7 +167,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
  Variable:N2 -> _
  NumericConstant:100
@@ -183,7 +183,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 PRINT
  CarriageControl:NL
 340 PRINT "AIR-FUEL RATIO WITH RESPECT TO MOLES = ";A

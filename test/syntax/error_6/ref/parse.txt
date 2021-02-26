@@ -1,0 +1,15 @@
+10 REM SYNTAX ERROR
+ Remark:SYNTAX ERROR
+20 FOR I = 1 TO 5
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:5"]
+30 READ N
+ Variable:N -> _
+40 NEXT I
+ Variable:I -> _
+80 DATA 1,2,3,STOP,5
+ Syntax error
+99 END
+ 
+

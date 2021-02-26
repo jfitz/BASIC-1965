@@ -8,20 +8,20 @@
  NumericConstant:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 LET I = M1 * 39.37
  Variable:I -> _
  Variable:M1 -> _
  NumericConstant:39.37
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 130 LET F = INT(I/12)
  Variable:F -> _
  Variable:I -> _
  NumericConstant:12
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 140 LET I = I - 12*F
  Variable:I -> _
  Variable:I -> _
@@ -29,7 +29,7 @@
  Variable:F -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 150 PRINT M, "METERS", C, "CENTIMETERS"
  Variable:M -> _
  CarriageControl:,

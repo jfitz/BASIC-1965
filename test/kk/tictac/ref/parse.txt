@@ -37,34 +37,34 @@
 230 LET A = 9
  Variable:A -> _
  NumericConstant:9
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 240 LET M = A
  Variable:M -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 250 GOSUB 650
  LineNumber:650
 260 LET P = M
  Variable:P -> _
  Variable:M -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 270 LET B = FNM(P+1)
  Variable:B -> _
  Variable:P -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 280 LET M = B
  Variable:M -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 290 GOSUB 650
  LineNumber:650
 300 LET Q = M
  Variable:Q -> _
  Variable:M -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 310 IF Q = FNM(B+4) THEN 360
  Variable:Q -> _
  Variable:B -> _
@@ -78,11 +78,11 @@
  NumericConstant:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330    LET M = C
  Variable:M -> _
  Variable:C -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 340    GOSUB 700
  LineNumber:700
 350    GO TO 730
@@ -93,17 +93,17 @@
  NumericConstant:2
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 370 LET M = C
  Variable:M -> _
  Variable:C -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 380 GOSUB 650
  LineNumber:650
 390 LET R = M
  Variable:R -> _
  Variable:M -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 400 IF R = FNM(C+4) THEN 450
  Variable:R -> _
  Variable:C -> _
@@ -117,11 +117,11 @@
  NumericConstant:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420    LET M = D
  Variable:M -> _
  Variable:D -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 430    GOSUB 700
  LineNumber:700
 440    GO TO 730
@@ -141,11 +141,11 @@
  NumericConstant:7
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 470    LET M = D
  Variable:M -> _
  Variable:D -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 480    GOSUB 700
  LineNumber:700
 490    GO TO 730
@@ -156,17 +156,17 @@
  NumericConstant:3
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 510 LET M = D
  Variable:M -> _
  Variable:D -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 520 GOSUB 650
  LineNumber:650
 530 LET S = M
  Variable:S -> _
  Variable:M -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 540 IF S = FNM(D+4) THEN 590
  Variable:S -> _
  Variable:D -> _
@@ -180,11 +180,11 @@
  NumericConstant:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560    LET M = E
  Variable:M -> _
  Variable:E -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 570    GOSUB 700
  LineNumber:700
 580    GO TO 730
@@ -195,11 +195,11 @@
  NumericConstant:6
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 600 LET M = E
  Variable:M -> _
  Variable:E -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 610 GOSUB 700
  LineNumber:700
 620 PRINT "THE GAME IS DRAWN."

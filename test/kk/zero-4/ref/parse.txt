@@ -31,14 +31,14 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:X(_) -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 28 LET X(1-S) = B
  NumericConstant:1
  Variable:S -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:X(_) -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET X = (X(0)+X(2))/2
  Variable:X -> _
  NumericConstant:0
@@ -48,13 +48,13 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:2
  BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 35 LET F = SGN(FNF(X))
  Variable:F -> _
  Variable:X -> _
  UserFunction:FNF(_) -> _
  FunctionSgn:SGN(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 IF F = 0 THEN 100
  Variable:F -> _
  NumericConstant:0
@@ -65,7 +65,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:X(_) -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericConstant:0
  Variable:X(_) -> _
@@ -97,13 +97,13 @@
  Variable:A -> _
  UserFunction:FNF(_) -> _
  FunctionSgn:SGN(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 210 LET T = SGN(FNF(B))
  Variable:T -> _
  Variable:B -> _
  UserFunction:FNF(_) -> _
  FunctionSgn:SGN(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 220 IF S*T = 0 THEN 400
  Variable:S -> _
  Variable:T -> _
@@ -123,7 +123,7 @@
  Variable:B -> _
  Variable:A -> _
  BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 310 FOR I = 1 TO 1000
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -135,7 +135,7 @@
  Variable:L -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 330 IF S * SGN(FNF(X)) < 0 THEN 370
  Variable:S -> _
  Variable:X -> _
@@ -154,7 +154,7 @@
 370 LET B = X
  Variable:B -> _
  Variable:X -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 380 RETURN
  
 400 IF S = 0 THEN 430
@@ -164,13 +164,13 @@
 410 LET X = B
  Variable:X -> _
  Variable:B -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 420 GOTO 100
  LineNumber:100
 430 LET X = A
  Variable:X -> _
  Variable:A -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 440 GOTO 100
  LineNumber:100
 900 REM DATA 0,1

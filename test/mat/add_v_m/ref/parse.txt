@@ -19,7 +19,7 @@
  Variable:I -> _
  Variable:J -> _
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 NEXT J
  Variable:J -> _
 70 NEXT I
@@ -27,13 +27,13 @@
 90 LET C = 5
  Variable:C -> _
  NumericConstant:5
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 100 MAT B = (C) + A
  Variable:B(,) -> _(,)
  Variable:C -> _
  Variable:A(,) -> _(,)
  BinaryOperatorPlus:+(_,_) -> _(,)
- AssignmentOperator:=
+ AssignmentOperator:= _(,) -> _(,)
 110 PRINT "MATRIX A"
  TextConstant:"MATRIX A"
  CarriageControl:NL
