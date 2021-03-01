@@ -3,33 +3,33 @@
 20 LET A = 10
  Variable:A -> _
  NumericConstant:10
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET B = -5
  Variable:B -> _
  NumericConstant:5
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 LET C = 20.25
  Variable:C -> _
  NumericConstant:20.25
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 50 LET D = -15.333
  Variable:D -> _
  NumericConstant:15.333
  UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 60 LET E1 = 1.2E2
  Variable:E1 -> _
  NumericConstant:120
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 62 LET E2 = 1.2E+2
  Variable:E2 -> _
  NumericConstant:120
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 64 LET E3 = 1.2E-2
  Variable:E3 -> _
  NumericConstant:0.012
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 120 PRINT "A="; A
  TextConstant:"A="
  CarriageControl:;

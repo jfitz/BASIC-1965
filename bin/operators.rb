@@ -16,7 +16,7 @@ class UnaryOperator < AbstractElement
     @op = text.to_s
     @content_type = :unknown
     @shape = :unknown
-    @precedence = 9
+    @precedence = 0
     @arguments = nil
     @operator = true
   end
@@ -109,6 +109,7 @@ class BinaryOperator < AbstractElement
     @content_type = :unknown
     @shape = :unknown
     @arguments = nil
+    @precedence = 0
     @operator = true
   end
 
@@ -640,7 +641,7 @@ class UnaryOperatorPlus < UnaryOperator
   def initialize(text)
     super
 
-    @precedence = 6
+    @precedence = 9
   end
 
   def evaluate(_, arg_stack)
@@ -733,7 +734,7 @@ class UnaryOperatorMinus < UnaryOperator
   def initialize(text)
     super
 
-    @precedence = 6
+    @precedence = 9
   end
 
   def evaluate(_, arg_stack)
@@ -828,7 +829,7 @@ class UnaryOperatorHash < UnaryOperator
     super
 
     @content_type = :filehandle
-    @precedence = 4
+    @precedence = 9
   end
 
   def pound?
@@ -879,14 +880,10 @@ class BinaryOperatorPlus < BinaryOperator
     op == '+'
   end
 
-  def self.precedence(op)
-    3
-  end
-
   def initialize(text)
     super
 
-    @precedence = 3
+    @precedence = 6
   end
 
   def set_content_type(type_stack)
@@ -972,14 +969,10 @@ class BinaryOperatorMinus < BinaryOperator
     op == '-'
   end
 
-  def self.precedence(op)
-    3
-  end
-
   def initialize(text)
     super
 
-    @precedence = 3
+    @precedence = 6
   end
 
   def set_content_type(type_stack)
@@ -1065,14 +1058,10 @@ class BinaryOperatorMultiply < BinaryOperator
     op == '*'
   end
 
-  def self.precedence(op)
-    4
-  end
-
   def initialize(text)
     super
 
-    @precedence = 4
+    @precedence = 7
   end
 
   def set_content_type(type_stack)
@@ -1160,14 +1149,10 @@ class BinaryOperatorDivide < BinaryOperator
     op == '/'
   end
 
-  def self.precedence(op)
-    4
-  end
-
   def initialize(text)
     super
 
-    @precedence = 4
+    @precedence = 7
   end
 
   def set_content_type(type_stack)
@@ -1253,14 +1238,10 @@ class BinaryOperatorPower < BinaryOperator
     op == '^'
   end
 
-  def self.precedence(op)
-    5
-  end
-
   def initialize(text)
     super
 
-    @precedence = 5
+    @precedence = 8
   end
 
   def set_content_type(type_stack)
@@ -1346,14 +1327,10 @@ class BinaryOperatorEqual < BinaryOperator
     op == '='
   end
 
-  def self.precedence(op)
-    2
-  end
-
   def initialize(text)
     super
 
-    @precedence = 2
+    @precedence = 4
   end
 
   def set_content_type(type_stack)
@@ -1439,14 +1416,10 @@ class BinaryOperatorNotEqual < BinaryOperator
     op == '<>'
   end
 
-  def self.precedence(op)
-    2
-  end
-
   def initialize(text)
     super
 
-    @precedence = 2
+    @precedence = 4
   end
 
   def set_content_type(type_stack)
@@ -1532,14 +1505,10 @@ class BinaryOperatorLess < BinaryOperator
     op == '<'
   end
 
-  def self.precedence(op)
-    2
-  end
-
   def initialize(text)
     super
 
-    @precedence = 2
+    @precedence = 4
   end
 
   def set_content_type(type_stack)
@@ -1625,14 +1594,10 @@ class BinaryOperatorLessEqual < BinaryOperator
     op == '<='
   end
 
-  def self.precedence(op)
-    2
-  end
-
   def initialize(text)
     super
 
-    @precedence = 2
+    @precedence = 4
   end
 
   def set_content_type(type_stack)
@@ -1718,14 +1683,10 @@ class BinaryOperatorGreater < BinaryOperator
     op == '>'
   end
 
-  def self.precedence(op)
-    2
-  end
-
   def initialize(text)
     super
 
-    @precedence = 2
+    @precedence = 4
   end
 
   def set_content_type(type_stack)
@@ -1811,14 +1772,10 @@ class BinaryOperatorGreaterEqual < BinaryOperator
     op == '>='
   end
 
-  def self.precedence(op)
-    2
-  end
-
   def initialize(text)
     super
 
-    @precedence = 2
+    @precedence = 4
   end
 
   def set_content_type(type_stack)

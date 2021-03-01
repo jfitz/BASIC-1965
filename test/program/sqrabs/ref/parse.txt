@@ -6,20 +6,20 @@
  Variable:A -> _
  Variable:I -> _
  FunctionAbs:ABS(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 30 LET S=SQR(ABS(I))
  Variable:S -> _
  Variable:I -> _
  FunctionAbs:ABS(_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 31 LET A1=ABS(I)+3
  Variable:A1 -> _
  Variable:I -> _
  FunctionAbs:ABS(_) -> _
  NumericConstant:3
  BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 32 LET S1=SQR(ABS(I)+3)
  Variable:S1 -> _
  Variable:I -> _
@@ -27,7 +27,7 @@
  NumericConstant:3
  BinaryOperatorPlus:+(_,_) -> _
  FunctionSqr:SQR(_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 34 LET S2=SQR(ABS(I)+3)*2
  Variable:S2 -> _
  Variable:I -> _
@@ -37,7 +37,7 @@
  FunctionSqr:SQR(_) -> _
  NumericConstant:2
  BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 40 PRINT I, A, S, A1, S1, S2
  Variable:I -> _
  CarriageControl:,

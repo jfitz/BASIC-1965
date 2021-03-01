@@ -378,7 +378,7 @@ class AbstractStatement
 
     tokens.each do |token|
       if token.operand? &&
-         (!list.empty? && (list[-1].operand? || list[-1].groupend?))
+         (!list.empty? && (list[-1].operand? || list[-1].group_end?))
         lists << list unless list.empty?
         list = [token]
       elsif token.separator? && parens_level.zero?
@@ -388,8 +388,8 @@ class AbstractStatement
       else
         list << token
       end
-      parens_level += 1 if token.groupstart?
-      parens_level -= 1 if token.groupend? && !parens_level.zero?
+      parens_level += 1 if token.group_start?
+      parens_level -= 1 if token.group_end? && !parens_level.zero?
     end
 
     lists << list unless list.empty?

@@ -17,7 +17,7 @@ class AbstractFunction < AbstractElement
     @shape = nil
     @valref = :value
     @operand = true
-    @precedence = 7
+    @precedence = 10
   end
 
   def set_content_type(type_stack)

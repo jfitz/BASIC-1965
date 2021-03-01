@@ -1741,7 +1741,7 @@ class UserFunctionPrototype
   def check_tokens(tokens)
     raise(BASICSyntaxError, 'Invalid function specification') unless
       tokens.size >= 3 && tokens[0].user_function? &&
-      tokens[1].groupstart? && tokens[-1].groupend?
+      tokens[1].group_start? && tokens[-1].group_end?
   end
 
   # verify tokens variables and commas
