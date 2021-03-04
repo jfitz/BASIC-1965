@@ -347,10 +347,13 @@ end
 
 # variable token
 class VariableToken < AbstractToken
+  attr_reader :content_type
+
   def initialize(text)
     super
 
     @is_variable = true
+    @content_type = :numeric
   end
 
   def ==(other)

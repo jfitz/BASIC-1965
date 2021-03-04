@@ -504,7 +504,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def set_content_type(type_stack)
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -548,7 +548,8 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    NumericConstant.new(@value + other.to_v)
+    value = @value + other.to_numeric.to_v
+    NumericConstant.new(value)
   end
 
   def -(other)
@@ -556,7 +557,17 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    NumericConstant.new(@value - other.to_v)
+    value = @value - other.to_numeric.to_v
+    NumericConstant.new(value)
+  end
+
+  def *(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in *()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value * other.to_numeric.to_v
+    NumericConstant.new(value)
   end
 
   def add(other)
@@ -564,7 +575,8 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    NumericConstant.new(@value + other.to_v)
+    value = @value + other.to_numeric.to_v
+    NumericConstant.new(value)
   end
 
   def subtract(other)
@@ -573,7 +585,8 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    NumericConstant.new(@value - other.to_v)
+    value = @value - other.to_numeric.to_v
+    NumericConstant.new(value)
   end
 
   def multiply(other)
@@ -582,7 +595,8 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    NumericConstant.new(@value * other.to_v)
+    value = @value * other.to_numeric.to_v
+    NumericConstant.new(value)
   end
 
   def divide(other)
@@ -592,7 +606,8 @@ class NumericConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
     raise BASICRuntimeError.new(:te_div_zero) if other.zero?
 
-    NumericConstant.new(@value.to_f / other.to_v.to_f)
+    value = @value.to_f / other.to_numeric.to_f
+    NumericConstant.new(value)
   end
 
   def power(other)
@@ -601,7 +616,8 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    NumericConstant.new(@value**other.to_v)
+    value = @value**other.to_numeric.to_v
+    NumericConstant.new(value)
   end
 
   def negate
@@ -609,35 +625,43 @@ class NumericConstant < AbstractValueElement
   end
 
   def truncate
-    NumericConstant.new(@value.to_i)
+    value = @value.to_i
+    NumericConstant.new(value)
   end
 
   def floor
-    NumericConstant.new(@value.floor)
+    value = @value.floor
+    NumericConstant.new(value)
   end
 
   def exp
-    NumericConstant.new(Math.exp(@value))
+    value = Math.exp(@value)
+    NumericConstant.new(value)
   end
 
   def log
-    NumericConstant.new(@value > 0 ? Math.log(@value) : 0)
+    value = @value > 0 ? Math.log(@value) : 0
+    NumericConstant.new(value)
   end
 
   def log10
-    NumericConstant.new(@value > 0 ? Math.log10(@value) : 0)
+    value = @value > 0 ? Math.log10(@value) : 0
+    NumericConstant.new(value)
   end
 
   def log2
-    NumericConstant.new(@value > 0 ? Math.log2(@value) : 0)
+    value = @value > 0 ? Math.log2(@value) : 0
+    NumericConstant.new(value)
   end
 
   def mod(other)
-    NumericConstant.new(other.to_v != 0 ? @value % other.to_v : 0)
+    value = other.to_v != 0 ? @value % other.to_v : 0
+    NumericConstant.new(value)
   end
 
   def abs
-    NumericConstant.new(@value >= 0 ? @value : -@value)
+    value = @value >= 0 ? @value : -@value
+    NumericConstant.new(value)
   end
 
   def round(places)
@@ -645,11 +669,13 @@ class NumericConstant < AbstractValueElement
   end
 
   def sqrt
-    NumericConstant.new(@value > 0 ? Math.sqrt(@value) : 0)
+    value = @value > 0 ? Math.sqrt(@value) : 0
+    NumericConstant.new(value)
   end
 
   def sin
-    NumericConstant.new(Math.sin(@value))
+    value = Math.sin(@value)
+    NumericConstant.new(value)
   end
 
   def arcsin
@@ -658,7 +684,8 @@ class NumericConstant < AbstractValueElement
   end
 
   def cos
-    NumericConstant.new(Math.cos(@value))
+    value = Math.cos(@value)
+    NumericConstant.new(value)
   end
 
   def arccos
@@ -667,7 +694,8 @@ class NumericConstant < AbstractValueElement
   end
 
   def tan
-    NumericConstant.new(@value >= 0 ? Math.tan(@value) : 0)
+    value = @value >= 0 ? Math.tan(@value) : 0
+    NumericConstant.new(value)
   end
 
   def cot
@@ -679,11 +707,13 @@ class NumericConstant < AbstractValueElement
   end
 
   def atn
-    NumericConstant.new(Math.atan(@value))
+    value = Math.atan(@value)
+    NumericConstant.new(value)
   end
 
   def atn2(a2)
-    NumericConstant.new(Math.atan2(@value, a2.to_f))
+    value = Math.atan2(@value, a2.to_f)
+    NumericConstant.new(value)
   end
 
   def sec
@@ -719,6 +749,14 @@ class NumericConstant < AbstractValueElement
     @value.to_s
   end
 
+  def to_b
+    !@value.to_f.zero?
+  end
+
+  def to_numeric
+    NumericConstant.new(@value)
+  end
+
   def print(printer)
     s = to_formatted_s
     s = s.upcase
@@ -748,7 +786,7 @@ end
 # Text constants
 class TextConstant < AbstractValueElement
   def self.accept?(token)
-    classes = %w(TextConstantToken)
+    classes = %w[TextConstantToken]
     classes.include?(token.class.to_s)
   end
 
@@ -763,18 +801,17 @@ class TextConstant < AbstractValueElement
     @value = nil
     @value = text.value if text.class.to_s == 'TextConstantToken'
 
+    raise(BASICSyntaxError, "'#{text}' is not a text constant") if @value.nil?
+
     @content_type = :string
     @shape = :scalar
     @symbol_text = text.value
-
-    raise(BASICSyntaxError, "'#{text}' is not a text constant") if
-      @value.nil?
 
     @text_constant = true
   end
 
   def set_content_type(type_stack)
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -813,8 +850,34 @@ class TextConstant < AbstractValueElement
     @value <= other.to_v
   end
 
+  def +(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    unquoted = @value + other.to_v
+    quoted = '"' + unquoted + '"'
+    token = TextConstantToken.new(quoted)
+    TextConstant.new(token)
+  end
+
+  def add(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    unquoted = @value + other.to_v
+    quoted = '"' + unquoted + '"'
+    token = TextConstantToken.new(quoted)
+    TextConstant.new(token)
+  end
+
   def to_s
     "\"#{@value}\""
+  end
+
+  def to_b
+    !@value.size.zero?
   end
 
   def print(printer)
@@ -854,13 +917,11 @@ class BooleanConstant < AbstractValueElement
 
     @content_type = :boolean
     @shape = :scalar
-    @operand = true
-    @precedence = 0
     @boolean_constant = true
   end
 
   def set_content_type(type_stack)
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -900,23 +961,58 @@ class BooleanConstant < AbstractValueElement
   end
 
   def b_and(other)
-    BooleanConstant.new(@value && other.to_v)
+    BooleanConstant.new(@value && other.to_b)
   end
 
   def b_or(other)
-    BooleanConstant.new(@value || other.to_v)
+    BooleanConstant.new(@value || other.to_b)
   end
 
   def to_i
     @value ? 1 : 0
   end
 
+  def to_f
+    @value ? 1.0 : 0.0
+  end
+
   def to_s
+    @value ? 'true' : 'false'
+  end
+
+  def to_formatted_s
     @value ? 'true' : 'false'
   end
 
   def to_b
     @value
+  end
+
+  def to_numeric
+    @value ? NumericConstant.new(-1) : NumericConstant.new(0)
+  end
+
+  def print(printer)
+    s = to_formatted_s
+    s = s.upcase
+    printer.print_item s
+    printer.last_was_numeric
+  end
+
+  def write(printer)
+    s = to_formatted_s
+    s = s.upcase
+    printer.print_item s
+  end
+
+  def compatible?(other)
+    other.numeric_constant? || other.boolean_constant?
+  end
+
+  private
+
+  def numeric_value
+    @value ? -1 : 0
   end
 end
 
@@ -1066,8 +1162,8 @@ class VariableName < AbstractElement
     classes.include?(token.class.to_s)
   end
 
-  attr_reader :content_type
   attr_reader :name
+  attr_reader :content_type
 
   def initialize(token)
     super()
@@ -1079,11 +1175,11 @@ class VariableName < AbstractElement
     @variable = true
     @operand = true
     @precedence = 10
-    @content_type = :numeric
+    @content_type = @name.content_type
   end
 
-  def set_content_type(stack)
-    stack.push(content_type)
+  def set_content_type(type_stack)
+    type_stack.push(@content_type)
   end
 
   def eql?(other)
@@ -1103,7 +1199,7 @@ class VariableName < AbstractElement
   end
 
   def dump
-    result = make_type_sigil(content_type)
+    result = make_type_sigil(@content_type)
     "#{self.class}:#{@name} -> #{result}"
   end
 
@@ -1147,7 +1243,7 @@ class UserFunctionName < AbstractElement
   end
 
   def set_content_type(type_stack)
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -1206,9 +1302,9 @@ class Variable < AbstractElement
       variable_name.class.to_s != 'VariableName'
 
     @variable_name = variable_name
-    @valref = :value
     @content_type = @variable_name.content_type
     @shape = my_shape
+    @valref = :value
     @subscripts = normalize_subscripts(subscripts)
     @variable = true
     @operand = true
@@ -1227,7 +1323,7 @@ class Variable < AbstractElement
       end
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -1255,7 +1351,7 @@ class Variable < AbstractElement
   end
 
   def dump
-    result = make_type_sigil(content_type) + make_shape_sigil(@shape)
+    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
     "#{self.class}:#{@variable_name}#{@signature} -> #{result}"
   end
 
@@ -1272,20 +1368,19 @@ class Variable < AbstractElement
   end
 
   def compatible?(value)
-    numerics = [:numeric]
-    strings = [:string]
+    numerics = %i[numeric]
+    strings = %i[string]
 
-    compatible = false
-
-    if content_type == :numeric
-      compatible = numerics.include?(value.content_type)
+    case content_type
+    when :numeric
+      numerics.include?(value.content_type)
+    when :string
+      strings.include?(value.content_type)
+    when :integer
+      numerics.include?(value.content_type)
+    else
+      false
     end
-
-    if content_type == :string
-      compatible = strings.include?(value.content_type)
-    end
-
-    compatible
   end
 
   def to_s
@@ -1363,7 +1458,8 @@ class Variable < AbstractElement
     dims = interpreter.get_dimensions(@variable_name)
 
     raise(BASICExpressionError, 'Variable has no dimensions') if dims.nil?
-    raise(BASICExpressionError, 'Array requires one dimension') if dims.size != 1
+    raise(BASICExpressionError, 'Array requires one dimension') if
+      dims.size != 1
 
     values = evaluate_value_array_1(interpreter, dims[0].to_i)
     BASICArray.new(dims, values)
@@ -1371,7 +1467,9 @@ class Variable < AbstractElement
 
   def evaluate_value_array_1(interpreter, n_cols)
     values = {}
+
     base = $options['base'].value
+
     (base..n_cols).each do |col|
       coords = AbstractElement.make_coord(col)
       variable = Variable.new(@variable_name, :array, coords)
@@ -1386,23 +1484,23 @@ class Variable < AbstractElement
 
     raise(BASICExpressionError, 'Variable has no dimensions') if dims.nil?
 
-    values = evaluate_value_matrix_n(interpreter, dims)
+    values = evaluate_matrix_n(interpreter, dims)
     Matrix.new(dims, values)
   end
 
-  def evaluate_value_matrix_n(interpreter, dims)
+  def evaluate_matrix_n(interpreter, dims)
     values = {}
 
-    values = evaluate_value_matrix_1(interpreter, dims[0].to_i) if
+    values = evaluate_matrix_1(interpreter, dims[0].to_i) if
       dims.size == 1
 
-    values = evaluate_value_matrix_2(interpreter, dims[0].to_i, dims[1].to_i) if
+    values = evaluate_matrix_2(interpreter, dims[0].to_i, dims[1].to_i) if
       dims.size == 2
 
     values
   end
 
-  def evaluate_value_matrix_1(interpreter, n_cols)
+  def evaluate_matrix_1(interpreter, n_cols)
     values = {}
 
     base = $options['base'].value
@@ -1416,7 +1514,7 @@ class Variable < AbstractElement
     values
   end
 
-  def evaluate_value_matrix_2(interpreter, n_rows, n_cols)
+  def evaluate_matrix_2(interpreter, n_rows, n_cols)
     values = {}
 
     base = $options['base'].value
@@ -1477,8 +1575,8 @@ class Declaration < AbstractElement
   def initialize(variable_name)
     super()
 
-    raise(BASICSyntaxError, "'#{variable_name}' is not a variable name") if
-      variable_name.class.to_s != 'VariableName'
+    raise(BASICSyntaxError, "'#{variable_name}' is not a variable name") unless
+      variable_name.class.to_s == 'VariableName'
 
     @variable_name = variable_name
     @subscripts = []
@@ -1492,7 +1590,7 @@ class Declaration < AbstractElement
   end
 
   def set_content_type(type_stack)
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -1515,7 +1613,7 @@ class Declaration < AbstractElement
   end
 
   def dump
-    result = make_type_sigil(content_type) + make_shape_sigil(@shape)
+    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
     "#{self.class}:#{@variable_name}#{@signature} -> #{result}"
   end
 

@@ -1477,6 +1477,20 @@ class ValueExpressionSet < AbstractExpressionSet
     @shape == :scalar
   end
 
+  def content_type
+    expression = @expressions[0]
+    elements = expression.elements
+    last_element = elements[-1]
+    last_element.content_type
+  end
+
+  def shape
+    expression = @expressions[0]
+    elements = expression.elements
+    last_element = elements[-1]
+    last_element.shape
+  end
+
   def filehandle?
     return false if @expressions.empty?
 
