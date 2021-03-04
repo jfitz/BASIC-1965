@@ -187,7 +187,7 @@ class Matrix
   end
 
   def self.identity_values(dimensions)
-    new_values = Matrix.make_matrix(dimensions, NumericConstant.new(0))
+    new_values = make_matrix(dimensions, NumericConstant.new(0))
     one = NumericConstant.new(1)
 
     base = $options['base'].value
@@ -1287,8 +1287,8 @@ class AbstractExpressionSet
 
     @expressions.each do |expression|
       elements = expression.elements
-      # TODO: remove Array check
       x = elements.map(&:dump)
+      # TODO: remove Array check
       if x.class.to_s == 'Array'
         lines += x.flatten
       else
@@ -1573,7 +1573,7 @@ class DeclarationExpressionSet < AbstractExpressionSet
       last_element = elements[-1]
 
       if last_element.class.to_s != 'Declaration'
-        raise(BASICExpressionError,
+        raise(BASICSyntaxError,
               "Expression is not declaration (type #{last_element.class})")
       end
     end
@@ -1633,7 +1633,7 @@ class TargetExpressionSet < AbstractExpressionSet
       if elements[-1].class.to_s != 'Variable' &&
          elements[-1].class.to_s != 'UserFunction'
         raise(BASICExpressionError,
-              "Value is not assignable (type #{expression[-1].class})")
+              "Value is not assignable (type #{elements[-1].class})")
       end
     end
   end
@@ -1699,7 +1699,9 @@ class UserFunctionDefinition
 
   def to_s
     vnames = @arguments.map(&:to_s).join(',')
-    @name.to_s + '(' + vnames + ')' + '=' + @expression.to_s
+    s = @name.to_s + '(' + vnames + ')'
+    s += '=' + @expression.to_s unless @expression.nil?
+    s
   end
 
   def signature
