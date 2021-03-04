@@ -158,24 +158,26 @@ class Interpreter
     randomize_option = $options['randomize']
     @randomizer = Random.new if randomize_option.value
 
-    @tokenbuilders = make_debug_tokenbuilders
     @console_io = console_io
+    @tokenbuilders = make_debug_tokenbuilders
 
+    @null_out = NullOut.new
+
+    @line_breakpoints = {}
+    @line_cond_breakpoints = {}
+    @locked_variables = []
+    @fornext_stack = []
     @data_store = DataStore.new
     @file_handlers = {}
     @return_stack = []
     @fornexts = {}
     @dimensions = {}
     @default_args = {}
-    @user_functions = {}
-    @user_var_values = []
     @variables = {}
-    @locked_variables = []
-    @fornext_stack = []
+    @user_function_defs = {}
+    @user_var_values = []
+
     @get_value_seen = []
-    @null_out = NullOut.new
-    @line_breakpoints = {}
-    @line_cond_breakpoints = {}
     @running = false
   end
 
@@ -319,6 +321,8 @@ class Interpreter
     @trace_out = trace ? @console_io : @null_out
 
     @variables = {}
+    @data_store.reset
+    @user_function_defs = {}
 
     clear_previous_lines
     run_program
@@ -725,7 +729,7 @@ class Interpreter
   end
 
   def dump_user_functions
-    @user_functions.each do |name, expression|
+    @user_function_defs.each do |name, expression|
       @console_io.print_line("#{name}: #{expression}")
     end
 
@@ -795,18 +799,18 @@ class Interpreter
     signature = name.to_s + '(' + sigils.join(',') + ')'
 
     raise BASICRuntimeError.new(:te_func_alr, signature) if
-      @user_functions.key?(signature)
+      @user_function_defs.key?(signature)
 
-    @user_functions[signature] = definition
+    @user_function_defs[signature] = definition
   end
 
   def get_user_function(name, sigils)
     signature = name.to_s + '(' + sigils.join(',') + ')'
 
     raise BASICRuntimeError.new(:te_func_no, signature) unless
-      @user_functions.key?(signature)
+      @user_function_defs.key?(signature)
 
-    @user_functions[signature]
+    @user_function_defs[signature]
   end
 
   def define_user_var_values(names_and_values)
@@ -936,15 +940,15 @@ class Interpreter
             "Type mismatch '#{value}' is not #{variable.content_type}")
     end
 
-    v = variable.to_s
+    var = variable.to_s
 
-    if @variables.key?(v)
-      dict = @variables[v]
+    if @variables.key?(var)
+      dict = @variables[var]
       old_value = dict['value']
       old_provenance = dict['provenance']
       # a different value resets 'infinite loop' check
       if value != old_value || @current_line_number != old_provenance
-        @previous_line_numbers = []
+        clear_previous_lines
       end
     else
       # no prior value is a new value
@@ -952,7 +956,7 @@ class Interpreter
     end
 
     dict = { 'provenance' => @current_line_number, 'value' => value }
-    @variables[v] = dict
+    @variables[var] = dict
 
     @trace_out.newline_when_needed
     @trace_out.print_line(' ' + variable.to_s + ' = ' + value.to_s)
@@ -1143,8 +1147,7 @@ class Interpreter
   end
 
   def top_fornext
-    raise BASICRuntimeError.new(:te_inext_no_for) if
-      @fornext_stack.empty?
+    raise BASICRuntimeError.new(:te_inext_no_for) if @fornext_stack.empty?
 
     @fornext_stack[-1]
   end
