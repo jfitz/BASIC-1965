@@ -13,6 +13,7 @@ class UnaryOperator < AbstractElement
 
   def initialize(text)
     super()
+
     @op = text.to_s
     @content_type = :unknown
     @shape = :unknown
@@ -40,13 +41,11 @@ class UnaryOperator < AbstractElement
     raise(BASICExpressionError, 'Not enough operands') if type_stack.empty?
 
     type = type_stack.pop
-
-    raise(BASICExpressionError, 'Bad expression') if type != :numeric
-
+    
     @sigils = make_sigils([type])
     @signature = make_signature([type])
     
-    @content_type = :numeric
+    @content_type = type
     type_stack.push(@content_type)
   end
 
@@ -134,7 +133,8 @@ class BinaryOperator < AbstractElement
   end
 
   def set_shape(shape_stack)
-    raise(BASICExpressionError, 'Not enough operands +') if shape_stack.size < 2
+    raise(BASICExpressionError, 'Not enough operands') if
+      shape_stack.size < 2
 
     b_shape = shape_stack.pop
     a_shape = shape_stack.pop
@@ -546,7 +546,9 @@ class BinaryOperator < AbstractElement
 
   def op_array_array(op, a, b, base)
     dims = b.dimensions
+
     raise BASICRuntimeError.new(:te_arr_dif_siz) if a.dimensions != dims
+
     n_cols = dims[0].to_i
     values = {}
     (base..n_cols).each do |col|
@@ -605,7 +607,8 @@ end
 # not a real operator, used only for parsing
 class InitialOperator < AbstractElement
   def initialize
-    super()
+    super
+
     @operator = true
     @terminal = true
     @precedence = 0
@@ -620,7 +623,7 @@ end
 # not a real operator, used only for parsing
 class TerminalOperator < AbstractElement
   def initialize
-    super()
+    super
 
     @operator = true
     @terminal = true
@@ -876,10 +879,6 @@ class BinaryOperatorPlus < BinaryOperator
     classes.include?(token.class.to_s) && token.to_s == '+'
   end
 
-  def self.operator?(op)
-    op == '+'
-  end
-
   def initialize(text)
     super
 
@@ -887,7 +886,7 @@ class BinaryOperatorPlus < BinaryOperator
   end
 
   def set_content_type(type_stack)
-    raise(BASICExpressionError, 'Not enough operands +') if type_stack.size < 2
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
     b_type = type_stack.pop
     a_type = type_stack.pop
@@ -965,10 +964,6 @@ class BinaryOperatorMinus < BinaryOperator
     classes.include?(token.class.to_s) && token.to_s == '-'
   end
 
-  def self.operator?(op)
-    op == '-'
-  end
-
   def initialize(text)
     super
 
@@ -976,7 +971,7 @@ class BinaryOperatorMinus < BinaryOperator
   end
 
   def set_content_type(type_stack)
-    raise(BASICExpressionError, 'Not enough operands -') if type_stack.size < 2
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
     b_type = type_stack.pop
     a_type = type_stack.pop
@@ -1054,10 +1049,6 @@ class BinaryOperatorMultiply < BinaryOperator
     classes.include?(token.class.to_s) && token.to_s == '*'
   end
 
-  def self.operator?(op)
-    op == '*'
-  end
-
   def initialize(text)
     super
 
@@ -1065,7 +1056,7 @@ class BinaryOperatorMultiply < BinaryOperator
   end
 
   def set_content_type(type_stack)
-    raise(BASICExpressionError, 'Not enough operands *') if type_stack.size < 2
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
     b_type = type_stack.pop
     a_type = type_stack.pop
@@ -1103,10 +1094,8 @@ class BinaryOperatorMultiply < BinaryOperator
       array_scalar(x, y, base)
     elsif x.scalar? && y.array?
       scalar_array(x, y, base)
-    elsif x.content_type == y.content_type
-      op_scalar_scalar(x, y)
     else
-      raise(BASICExpressionError, 'Type mismatch')
+      op_scalar_scalar(x, y)
     end
   end
 
@@ -1145,10 +1134,6 @@ class BinaryOperatorDivide < BinaryOperator
     classes.include?(token.class.to_s) && token.to_s == '/'
   end
 
-  def self.operator?(op)
-    op == '/'
-  end
-
   def initialize(text)
     super
 
@@ -1156,7 +1141,7 @@ class BinaryOperatorDivide < BinaryOperator
   end
 
   def set_content_type(type_stack)
-    raise(BASICExpressionError, 'Not enough operands /') if type_stack.size < 2
+    raise(BASICExpressionError, 'Not enough operands') if type_stack.size < 2
 
     b_type = type_stack.pop
     a_type = type_stack.pop
@@ -1232,10 +1217,6 @@ class BinaryOperatorPower < BinaryOperator
   def self.accept?(token)
     classes = %w[OperatorToken]
     classes.include?(token.class.to_s) && token.to_s == '^'
-  end
-
-  def self.operator?(op)
-    op == '^'
   end
 
   def initialize(text)
@@ -1323,10 +1304,6 @@ class BinaryOperatorEqual < BinaryOperator
     classes.include?(token.class.to_s) && token.to_s == '='
   end
 
-  def self.operator?(op)
-    op == '='
-  end
-
   def initialize(text)
     super
 
@@ -1410,10 +1387,6 @@ class BinaryOperatorNotEqual < BinaryOperator
   def self.accept?(token)
     classes = %w[OperatorToken]
     classes.include?(token.class.to_s) && token.to_s == '<>'
-  end
-
-  def self.operator?(op)
-    op == '<>'
   end
 
   def initialize(text)
@@ -1501,10 +1474,6 @@ class BinaryOperatorLess < BinaryOperator
     classes.include?(token.class.to_s) && token.to_s == '<'
   end
 
-  def self.operator?(op)
-    op == '<'
-  end
-
   def initialize(text)
     super
 
@@ -1588,10 +1557,6 @@ class BinaryOperatorLessEqual < BinaryOperator
   def self.accept?(token)
     classes = %w[OperatorToken]
     classes.include?(token.class.to_s) && token.to_s == '<='
-  end
-
-  def self.operator?(op)
-    op == '<='
   end
 
   def initialize(text)
@@ -1679,10 +1644,6 @@ class BinaryOperatorGreater < BinaryOperator
     classes.include?(token.class.to_s) && token.to_s == '>'
   end
 
-  def self.operator?(op)
-    op == '>'
-  end
-
   def initialize(text)
     super
 
@@ -1766,10 +1727,6 @@ class BinaryOperatorGreaterEqual < BinaryOperator
   def self.accept?(token)
     classes = %w[OperatorToken]
     classes.include?(token.class.to_s) && token.to_s == '>='
-  end
-
-  def self.operator?(op)
-    op == '>='
   end
 
   def initialize(text)
