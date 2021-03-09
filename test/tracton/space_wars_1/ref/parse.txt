@@ -64,7 +64,7 @@
 250 LET E1 = 1E04
  Variable:E1 -> _
  NumericConstant:10000
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 260 LET E2 = E1
  Variable:E2 -> _
  Variable:E1 -> _
@@ -108,13 +108,13 @@
 350 LET L = 1
  Variable:L -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 360 GOTO 380
  LineNumber:380
 370 LET L = 0
  Variable:L -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 380 RETURN
  
 390 IF L = 0 THEN 440
@@ -164,7 +164,7 @@
 470 LET D1 = 0
  Variable:D1 -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 480 LET E2 = E2 - 1000
  Variable:E2 -> _
  Variable:E2 -> _

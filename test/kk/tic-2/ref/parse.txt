@@ -101,7 +101,7 @@
 265  LET N = 0
  Variable:N -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 270  FOR S = 1 TO 9
  control: Variable:S -> _
  start:   ["NumericConstant:1"]
@@ -110,12 +110,12 @@
  Variable:S -> _
  Variable:C(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 280     LET B(S) = 0
  Variable:S -> _
  Variable:B(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 285  NEXT S
  Variable:S -> _
 290
@@ -126,7 +126,7 @@
  FunctionRnd:RND(_) -> _
  NumericConstant:1
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> =_
  BinaryOperatorLess:<(_,_) -> ?
 320  PRINT "YOU WILL MOVE FIRST."
  TextConstant:"YOU WILL MOVE FIRST."
@@ -153,8 +153,8 @@
 415  LET F = -1
  Variable:F -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 420  IF M <> INT(M) THEN 550
  Variable:M -> _
  Variable:M -> _
@@ -204,7 +204,7 @@
  Variable:P -> _
  Variable:C(_) -> _
  NumericConstant:3
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  BinaryOperatorEqual:=(_,_) -> ?
 520     IF C(P) = 3 THEN 800
  Variable:P -> _
@@ -249,7 +249,7 @@
 630  LET F = 1
  Variable:F -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 640  GOTO 460
  LineNumber:460
 800  REM THE GAME IS OVER
@@ -298,7 +298,7 @@
  Variable:P -> _
  Variable:C(_) -> _
  NumericConstant:2
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  BinaryOperatorEqual:=(_,_) -> ?
 1060 NEXT P
  Variable:P -> _
@@ -330,7 +330,7 @@
  Variable:S -> _
  Variable:V(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1215    IF B(S) <> 0 THEN 1270
  Variable:S -> _
  Variable:B(_) -> _
@@ -369,7 +369,7 @@
 1300 LET V = 0
  Variable:V -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1310 FOR S = 1 TO 9
  control: Variable:S -> _
  start:   ["NumericConstant:1"]

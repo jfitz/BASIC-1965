@@ -9,24 +9,24 @@
  NumericConstant:2
  NumericConstant:3
  NumericConstant:5
- FunctionCon2:CON2(_,_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionCon2:CON2(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 30 MAT B = 2 * CON2(5,3)
  Variable:B(,) -> _(,)
  NumericConstant:2
  NumericConstant:5
  NumericConstant:3
- FunctionCon2:CON2(_,_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionCon2:CON2(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 40 MAT C = 2 * CON2(4)
  Variable:C(,) -> _(,)
  NumericConstant:2
  NumericConstant:4
- FunctionCon2:CON2(_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionCon2:CON2(_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 45 MAT D = 2 * CON2
  Variable:D(,) -> _(,)
  NumericConstant:2
@@ -64,24 +64,24 @@
  NumericConstant:3
  NumericConstant:3
  NumericConstant:5
- FunctionCon2:CON2(_,_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionCon2:CON2(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 230 MAT B = 3 * CON2(5,3)
  Variable:B(,) -> _(,)
  NumericConstant:3
  NumericConstant:5
  NumericConstant:3
- FunctionCon2:CON2(_,_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionCon2:CON2(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 240 MAT C = 3 * CON2(4)
  Variable:C(,) -> _(,)
  NumericConstant:3
  NumericConstant:4
- FunctionCon2:CON2(_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionCon2:CON2(_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 245 MAT D = 3 * CON2()
  Variable:D(,) -> _(,)
  NumericConstant:3

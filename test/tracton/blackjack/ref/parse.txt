@@ -100,7 +100,7 @@
 360 LET D = 0
  Variable:D -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 370 LET P = D
  Variable:P -> _
  Variable:D -> _
@@ -296,7 +296,7 @@
 870 LET C = 1
  Variable:C -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 880 RETURN
  
 890 LET C = 1 + INT(11*RND)
@@ -325,7 +325,7 @@
 940 LET C = 1
  Variable:C -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 950 RETURN
  
 960 PRINT "DO YOU WANT A HIT, OR DO YOU STAND"
@@ -345,13 +345,13 @@
 1020 LET L = 1
  Variable:L -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1030 GOTO 1050
  LineNumber:1050
 1040 LET L = 0
  Variable:L -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1050 RETURN
  
 1060 PRINT

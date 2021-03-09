@@ -15,7 +15,7 @@
  control: Variable:F -> _
  start:   ["Variable:N -> _", "NumericConstant:2", "BinaryOperatorDivide:/(_,_) -> _", "FunctionInt:INT(_) -> _"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
 50 IF N/F <> INT(N/F) THEN 80
  Variable:N -> _
  Variable:F -> _

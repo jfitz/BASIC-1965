@@ -159,19 +159,19 @@
 540 LET X1 = 5E05
  Variable:X1 -> _
  NumericConstant:500000
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 550 LET T1 = 1E04
  Variable:T1 -> _
  NumericConstant:10000
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 560 LET T2 = 5E04
  Variable:T2 -> _
  NumericConstant:50000
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 570 LET D = 1E05
  Variable:D -> _
  NumericConstant:100000
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 580 GOSUB 630
  LineNumber:630
 590 GOSUB 730
@@ -191,13 +191,13 @@
 640 LET L = 1
  Variable:L -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 650 GOTO 700
  LineNumber:700
 660 LET L = 0
  Variable:L -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 670 LET H = (1 + INT(100*RND)/100)
  Variable:H -> _
  NumericConstant:1
@@ -243,13 +243,13 @@
 740 LET K = 1
  Variable:K -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 750 GOTO 800
  LineNumber:800
 760 LET K = 0
  Variable:K -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 770 LET H = (1 + INT(100*RND)/100)
  Variable:H -> _
  NumericConstant:1
@@ -295,7 +295,7 @@
 850 LET E3 = 0
  Variable:E3 -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 860 LET H = (1 + INT(100*RND)/100)
  Variable:H -> _
  NumericConstant:1
@@ -334,17 +334,17 @@
 920 LET E1 = 0
  Variable:E1 -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 930 LET Y = 1
  Variable:Y -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 940 GOTO 960
  LineNumber:960
 950 LET Y = 0
  Variable:Y -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 960 IF T2 <= 0 THEN 980
  Variable:T2 -> _
  NumericConstant:0
@@ -354,17 +354,17 @@
 980 LET E2 = 0
  Variable:E2 -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 990 LET Z = 1
  Variable:Z -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1000 GOTO 1020
  LineNumber:1020
 1010 LET Z = 0
  Variable:Z -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1020 LET X1 = X1 - E1 - E2 - E3
  Variable:X1 -> _
  Variable:X1 -> _
@@ -624,7 +624,7 @@
 1820 LET Q = 5500
  Variable:Q -> _
  NumericConstant:5500
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1830 GOTO 1760
  LineNumber:1760
 1840 LET T1 = T1 - Q
@@ -718,13 +718,13 @@
 2100 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 2110 GOTO 2130
  LineNumber:2130
 2120 LET J = 0
  Variable:J -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 2130 PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
  TextConstant:"WHICH FIGHTER THE SKY (S) OR RADER (R)"
  CarriageControl:NL
@@ -753,7 +753,7 @@
 2190 LET Q = 1000
  Variable:Q -> _
  NumericConstant:1000
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 2200 IF C$ = "S" THEN 2240
  Token 'InvalidToken:$' is not a value or operator
 2210 IF C$ = "R" THEN 2260

@@ -60,11 +60,11 @@
 150 LET W = 0
  Variable:W -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 160 LET R = 0
  Variable:R -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 170 GOTO 310
  LineNumber:310
 180 IF Y > 0 THEN 220
@@ -74,8 +74,8 @@
 190 LET W = - 90
  Variable:W -> _
  NumericConstant:90
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 200 LET R = ABS(Y)
  Variable:R -> _
  Variable:Y -> _
@@ -86,7 +86,7 @@
 220 LET W = 90
  Variable:W -> _
  NumericConstant:90
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 230 LET R = Y
  Variable:R -> _
  Variable:Y -> _
@@ -100,7 +100,7 @@
 260 LET W = 180
  Variable:W -> _
  NumericConstant:180
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 270 LET R = ABS(X)
  Variable:R -> _
  Variable:X -> _
@@ -111,7 +111,7 @@
 290 LET W = 0
  Variable:W -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 300 LET R = X
  Variable:R -> _
  Variable:X -> _

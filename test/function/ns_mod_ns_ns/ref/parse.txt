@@ -10,11 +10,11 @@
 20 LET A=12
  Variable:A -> _
  NumericConstant:12
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 21 LET B=7
  Variable:B -> _
  NumericConstant:7
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 22 LET Q=A/B
  Variable:Q -> _
  Variable:A -> _
@@ -39,12 +39,12 @@
 30 LET A=-12
  Variable:A -> _
  NumericConstant:12
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 31 LET B=7
  Variable:B -> _
  NumericConstant:7
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 32 LET Q=A/B
  Variable:Q -> _
  Variable:A -> _
@@ -69,12 +69,12 @@
 40 LET A=12
  Variable:A -> _
  NumericConstant:12
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 41 LET B=-7
  Variable:B -> _
  NumericConstant:7
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 42 LET Q=A/B
  Variable:Q -> _
  Variable:A -> _
@@ -99,13 +99,13 @@
 50 LET A=-12
  Variable:A -> _
  NumericConstant:12
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 51 LET B=-7
  Variable:B -> _
  NumericConstant:7
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 52 LET Q=A/B
  Variable:Q -> _
  Variable:A -> _

@@ -7,7 +7,7 @@
  CarriageControl:NL
 30 FOR I = -1 TO 1 STEP 0.1
  control: Variable:I -> _
- start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
  end:     ["NumericConstant:1"]
  step:    ["NumericConstant:0.1"]
 50 LET A = ARCCOS(I)

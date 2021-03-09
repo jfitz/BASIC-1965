@@ -6,6 +6,7 @@ class AbstractFunction < AbstractElement
   attr_reader :sigils
   attr_reader :content_type
   attr_reader :shape
+  attr_reader :constant
 
   def initialize(text)
     super()
@@ -15,6 +16,7 @@ class AbstractFunction < AbstractElement
     @default_shape = :unknown
     @content_type = :numeric
     @shape = nil
+    @constant = false
     @valref = :value
     @operand = true
     @precedence = 10
@@ -31,23 +33,42 @@ class AbstractFunction < AbstractElement
       @signature = make_signature(types)
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      my_shape = shape_stack.pop
+      my_shapes = shape_stack.pop
 
-      raise(BASICExpressionError, "Bad expression #{@name} #{shape}") unless
-        my_shape.class.to_s == 'Array'
+      raise(BASICExpressionError, "Bad expression #{@name} #{my_shape}") unless
+        my_shapes.class.to_s == 'Array'
     end
 
-    shape_stack.push(shape)
+    shape_stack.push(@shape)
   end
   
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      constants = constant_stack.pop
+
+      raise(BASICExpressionError, "Bad expression #{@name} #{constants}") unless
+        constants.class.to_s == 'Array'
+
+      if constants.empty?
+        @constant = false
+      else
+        @constant = true
+        constants.each { |c| @constant &&= c }
+      end
+    end
+
+    constant_stack.push(@constant)
+  end
+
   def dump
     result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
-    "#{self.class}:#{@name}#{@signature} -> #{result}"
+    const = @constant ? '=' : ''
+    "#{self.class}:#{@name}#{@signature} -> #{const}#{result}"
   end
 
   def to_s
@@ -181,10 +202,42 @@ class UserFunction < AbstractScalarFunction
 
     @user_function = true
     @shape = :scalar
+    @constant = false
   end
 
   def to_s
     @name.to_s
+  end
+
+  def set_content_type(type_stack)
+    unless type_stack.empty?
+      if type_stack[-1].class.to_s == 'Array'
+        types = type_stack.pop
+        @sigils = make_sigils(types)
+        @signature = make_signature(types)
+      end
+    end
+
+    type_stack.push(@content_type)
+  end
+
+  def set_shape(shape_stack)
+    unless shape_stack.empty?
+      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+    end
+
+    shape_stack.push(@shape)
+  end
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      constant_stack.pop if constant_stack[-1].class.to_s == 'Array'
+    end
+
+    # user function is never const, as it can be re-assigned
+    @constant = false
+
+    constant_stack.push(@constant)
   end
 
   def compatible?(value)
@@ -203,7 +256,6 @@ class UserFunction < AbstractScalarFunction
     end
   end
 
-  # return a single value
   def evaluate(interpreter, arg_stack)
     x = false
     x = evaluate_value(interpreter, arg_stack) if @valref == :value
@@ -225,8 +277,8 @@ class UserFunction < AbstractScalarFunction
     names_and_values = Hash[param_names_values]
     interpreter.define_user_var_values(names_and_values)
 
-    expression = definition.expression
     begin
+      expression = definition.expression
       results = expression.evaluate(interpreter)
     rescue BASICRuntimeError => e
       interpreter.clear_user_var_values
@@ -240,7 +292,9 @@ class UserFunction < AbstractScalarFunction
 
   def evaluate_ref(interpreter, arg_stack)
     x = nil
-    x = evaluate_ref_scalar(interpreter, arg_stack) if @default_shape == :scalar
+
+    x = evaluate_ref_scalar(interpreter, arg_stack) if
+      @default_shape == :scalar
 
     x = evaluate_ref_compound(interpreter, arg_stack) if
       @default_shape == :array || @default_shape == :matrix
@@ -390,7 +444,7 @@ class FunctionCon1 < AbstractScalarFunction
       end
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -398,7 +452,24 @@ class FunctionCon1 < AbstractScalarFunction
       shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
-    shape_stack.push(shape)
+    shape_stack.push(@shape)
+  end
+  
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      if constant_stack[-1].class.to_s == 'Array'
+        constants = constant_stack.pop
+
+        if constants.empty?
+          @constant = false
+        else
+          @constant = true
+          constants.each { |c| @constant &&= c }
+        end
+      end
+    end
+
+    constant_stack.push(@constant)
   end
   
   def evaluate(interpreter, arg_stack)
@@ -451,7 +522,7 @@ class FunctionCon2 < AbstractScalarFunction
       end
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -459,9 +530,26 @@ class FunctionCon2 < AbstractScalarFunction
       shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
-    shape_stack.push(shape)
+    shape_stack.push(@shape)
   end
-  
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      if constant_stack[-1].class.to_s == 'Array'
+        constants = constant_stack.pop
+
+        if constants.empty?
+          @constant = false
+        else
+          @constant = true
+          constants.each { |c| @constant &&= c }
+        end
+      end
+    end
+
+    constant_stack.push(@constant)
+  end
+
   def evaluate(interpreter, arg_stack)
     if previous_is_array(arg_stack)
       args = arg_stack.pop
@@ -637,7 +725,7 @@ class FunctionIdn < AbstractScalarFunction
       end
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -645,9 +733,26 @@ class FunctionIdn < AbstractScalarFunction
       shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
-    shape_stack.push(shape)
+    shape_stack.push(@shape)
   end
-  
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      if constant_stack[-1].class.to_s == 'Array'
+        constants = constant_stack.pop
+
+        if constants.empty?
+          @constant = false
+        else
+          @constant = true
+          constants.each { |c| @constant &&= c }
+        end
+      end
+    end
+
+    constant_stack.push(@constant)
+  end
+
   def evaluate(interpreter, arg_stack)
     if previous_is_array(arg_stack)
       args = arg_stack.pop
@@ -843,6 +948,7 @@ class FunctionRnd < AbstractScalarFunction
     @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
 
     @shape = :scalar
+    @constant = false
   end
 
   def set_content_type(type_stack)
@@ -854,7 +960,7 @@ class FunctionRnd < AbstractScalarFunction
       end
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -862,7 +968,17 @@ class FunctionRnd < AbstractScalarFunction
       shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
-    shape_stack.push(shape)
+    shape_stack.push(@shape)
+  end
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      constant_stack.pop if constant_stack[-1].class.to_s == 'Array'
+    end
+
+    # RND() is never constant
+    
+    constant_stack.push(@constant)
   end
   
   # return a single value
@@ -1027,7 +1143,7 @@ class FunctionZer1 < AbstractScalarFunction
       end
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -1035,9 +1151,26 @@ class FunctionZer1 < AbstractScalarFunction
       shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
-    shape_stack.push(shape)
+    shape_stack.push(@shape)
   end
-  
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      if constant_stack[-1].class.to_s == 'Array'
+        constants = constant_stack.pop
+
+        if constants.empty?
+          @constant = false
+        else
+          @constant = true
+          constants.each { |c| @constant &&= c }
+        end
+      end
+    end
+
+    constant_stack.push(@constant)
+  end
+
   def evaluate(interpreter, arg_stack)
     if previous_is_array(arg_stack)
       args = arg_stack.pop
@@ -1088,7 +1221,7 @@ class FunctionZer2 < AbstractScalarFunction
       end
     end
 
-    type_stack.push(content_type)
+    type_stack.push(@content_type)
   end
 
   def set_shape(shape_stack)
@@ -1096,9 +1229,26 @@ class FunctionZer2 < AbstractScalarFunction
       shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
-    shape_stack.push(shape)
+    shape_stack.push(@shape)
   end
-  
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      if constant_stack[-1].class.to_s == 'Array'
+        constants = constant_stack.pop
+
+        if constants.empty?
+          @constant = false
+        else
+          @constant = true
+          constants.each { |c| @constant &&= c }
+        end
+      end
+    end
+
+    constant_stack.push(@constant)
+  end
+
   def evaluate(interpreter, arg_stack)
     if previous_is_array(arg_stack)
       args = arg_stack.pop

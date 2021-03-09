@@ -39,13 +39,13 @@
  NumericConstant:1
  Variable:C(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 180 LET C(N,N) = 1
  Variable:N -> _
  Variable:N -> _
  Variable:C(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 190 LET B(1) = V
  NumericConstant:1
  Variable:B(_) -> _
@@ -59,7 +59,7 @@
 220 IF I = -1 THEN 270
  Variable:I -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  BinaryOperatorEqual:=(_,_) -> ?
 230 LET C(I,J) = 1/R
  Variable:I -> _
@@ -87,7 +87,7 @@
 280    LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 290    FOR J = 1 TO N
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -114,13 +114,13 @@
  Variable:I -> _
  Variable:C(_,_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 340    LET C(N,I) = 0
  Variable:N -> _
  Variable:I -> _
  Variable:C(_,_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 350 NEXT I
  Variable:I -> _
 360
@@ -169,7 +169,7 @@
 500 LET S1 = 0
  Variable:S1 -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 510 FOR I = 2 TO N-1
  control: Variable:I -> _
  start:   ["NumericConstant:2"]
@@ -269,7 +269,7 @@
  NumericConstant:40
 680 DATA -1,0,0
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:0
  NumericConstant:0
 690 END

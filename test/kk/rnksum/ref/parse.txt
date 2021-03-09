@@ -44,8 +44,8 @@
  Variable:K -> _
  Variable:T(_) -> _
  NumericConstant:1
- UnaryOperatorPlus:+(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorPlus:+(_) -> =_
+ AssignmentOperator:= =_ -> _
 280 NEXT K
  Variable:K -> _
 290 FOR K = 1 TO N
@@ -66,7 +66,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:T(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 320 NEXT K
  Variable:K -> _
 330
@@ -124,11 +124,11 @@
 500 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 510 LET K = 1
  Variable:K -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 520 LET B = J
  Variable:B -> _
  Variable:J -> _
@@ -193,12 +193,12 @@
  NumericConstant:0
  Variable:S(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 750 LET S(1) = 0
  NumericConstant:1
  Variable:S(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 760 FOR K = 1 TO M+N
  control: Variable:K -> _
  start:   ["NumericConstant:1"]

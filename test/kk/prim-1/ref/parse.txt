@@ -12,13 +12,13 @@
  Variable:I -> _
  Variable:N(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 22 NEXT I
  Variable:I -> _
 26 LET K = 0
  Variable:K -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 30 FOR P = 2 TO 1000
  control: Variable:P -> _
  start:   ["NumericConstant:2"]
@@ -42,7 +42,7 @@
 56    IF P > SQR(1000) THEN 90
  Variable:P -> _
  NumericConstant:1000
- FunctionSqr:SQR(_) -> _
+ FunctionSqr:SQR(_) -> =_
  BinaryOperatorGreater:>(_,_) -> ?
 60    FOR I = P TO 1000 STEP P
  control: Variable:I -> _
@@ -53,8 +53,8 @@
  Variable:I -> _
  Variable:N(_) -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 80    NEXT I
  Variable:I -> _
 90 NEXT P

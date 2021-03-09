@@ -36,7 +36,7 @@
  Variable:K(,) -> _(,)
  NumericConstant:1
  NumericConstant:4
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> =_
  Variable:A(,) -> _(,)
  BinaryOperatorMultiply:*(_,_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
@@ -57,13 +57,13 @@
 910 DATA 3, -2, 6, 2, -5, -1
  NumericConstant:3
  NumericConstant:2
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:6
  NumericConstant:2
  NumericConstant:5
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
 999 END
  
 

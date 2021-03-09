@@ -46,7 +46,7 @@
  UserFunction:FNR(_) -> _
  Variable:G(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 220 FOR I = 1 TO P
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -99,7 +99,7 @@
  UserFunction:FNR(_) -> _
  Variable:G(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 280 NEXT I
  Variable:I -> _
 290
@@ -107,7 +107,7 @@
  control: Variable:J -> _
  start:   ["NumericConstant:20"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
 310 FOR I = 1 TO 60
  control: Variable:I -> _
  start:   ["NumericConstant:1"]

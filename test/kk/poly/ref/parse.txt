@@ -34,7 +34,7 @@
 110 LET K = 0
  Variable:K -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 120 GOSUB 500
  LineNumber:500
 130 GOSUB 2000
@@ -42,7 +42,7 @@
 140 LET K = 1
  Variable:K -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 150 GOSUB 500
  LineNumber:500
 160 GOSUB 2000
@@ -50,7 +50,7 @@
 170 LET K = 2
  Variable:K -> _
  NumericConstant:2
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 180 GOSUB 500
  LineNumber:500
 190
@@ -121,7 +121,7 @@
 1010 LET Y = 0
  Variable:Y -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 1020 FOR I = 0 TO N
  control: Variable:I -> _
  start:   ["NumericConstant:0"]
@@ -171,14 +171,14 @@
  NumericConstant:2
  NumericConstant:2
  NumericConstant:3
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:1
 9100 DATA 8, -3, -1, 0, 0.5, 0.75, 1, 2.5, 5
  NumericConstant:8
  NumericConstant:3
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:0
  NumericConstant:0.5
  NumericConstant:0.75

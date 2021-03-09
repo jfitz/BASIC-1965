@@ -9,7 +9,7 @@
  Variable:X -> _
  FunctionLog:LOG(_) -> _
  NumericConstant:10
- FunctionLog:LOG(_) -> _
+ FunctionLog:LOG(_) -> =_
  BinaryOperatorDivide:/(_,_) -> _
 110 READ A,B,S
  Variable:A -> _
@@ -147,7 +147,7 @@
  NumericConstant:0.3
 350 DATA -1,1,50
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:1
  NumericConstant:50
 360 END

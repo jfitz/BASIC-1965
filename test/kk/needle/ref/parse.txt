@@ -1,11 +1,11 @@
 100 LET P = 3.14159265
  Variable:P -> _
  NumericConstant:3.14159
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 110 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 120 FOR N = 1 TO 1000
  control: Variable:N -> _
  start:   ["NumericConstant:1"]
@@ -26,7 +26,7 @@
  Variable:R -> _
  NumericConstant:1
  NumericConstant:2
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> =_
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _

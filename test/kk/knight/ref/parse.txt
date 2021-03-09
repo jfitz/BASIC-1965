@@ -21,7 +21,7 @@
 182 LET Z0 = 0
  Variable:Z0 -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
  Remark:WE ZERO THE BOARD AND INITIALIZE
 200 FOR I = 1 TO 8
@@ -37,7 +37,7 @@
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 230    NEXT J
  Variable:J -> _
 240 NEXT I
@@ -53,25 +53,25 @@
 270 LET M = 1
  Variable:M -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 280 LET B(I,J) = -1
  Variable:I -> _
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 290
 300 REMARK WE NOW START THE SERIES OF MOVES
  Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
  Variable:C1 -> _
  NumericConstant:9
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 320 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 330 FOR I1 = I - 2 TO I + 2
  control: Variable:I1 -> _
  start:   ["Variable:I -> _", "NumericConstant:2", "BinaryOperatorMinus:-(_,_) -> _"]
@@ -137,8 +137,8 @@
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 450       LET M = M + 1
  Variable:M -> _
  Variable:M -> _

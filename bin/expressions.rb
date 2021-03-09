@@ -1012,6 +1012,25 @@ class Expression
     end
   end
 
+  def constant
+    constant = false
+
+    unless @elements.empty?
+      element0 = @elements[-1]
+      constant = element0.constant
+    end
+
+    constant
+  end
+
+  def set_constant
+    stack = []
+
+    @elements.each do |element|
+      element.set_constant(stack)
+    end
+  end
+
   def dump
     lines = []
 
@@ -1032,7 +1051,11 @@ class Expression
   end
 
   def to_s
-    AbstractToken.pretty_tokens([], @tokens)
+    '[' + @elements.map(&:to_s).join(', ') + ']'
+  end
+
+  def pretty
+    AbstractToken.pretty_tokens([], @elements)
   end
 
   def numerics
@@ -1145,8 +1168,7 @@ class Expression
 
         is_ref = false
 
-        sigils = XrefEntry.make_sigils(arguments)
-        opers << XrefEntry.new(element.to_s, sigils, is_ref)
+        opers << XrefEntry.new(element.to_s, element.sigils, is_ref)
       end
     end
 
@@ -1168,8 +1190,7 @@ class Expression
 
         is_ref = element.reference?
 
-        sigils = element.sigils
-        vars << XrefEntry.new(element.to_s, sigils, is_ref)
+        vars << XrefEntry.new(element.to_s, element.sigils, is_ref)
       end
 
       previous = element
@@ -1194,8 +1215,7 @@ class Expression
 
         is_ref = element.reference?
 
-        sigils = element.sigils
-        vars << XrefEntry.new(element.to_s, sigils, is_ref)
+        vars << XrefEntry.new(element.to_s, element.sigils, is_ref)
       end
 
       previous = element
@@ -1221,7 +1241,6 @@ class AbstractExpressionSet
     parser = Parser.new(my_shape)
     elements.each { |element| parser.parse(element) }
     @expressions = parser.expressions
-    set_arguments_1(@expressions)
 
     @shape = my_shape
 
@@ -1354,33 +1373,6 @@ class AbstractExpressionSet
 
   private
 
-  def set_arguments_1(expressions)
-    expressions.each do |expression|
-      set_arguments_2(expression)
-    end
-  end
-
-  def set_arguments_2(expression)
-    content_type_stack = []
-
-    elements = expression.elements
-
-    elements.each do |element|
-      if element.list?
-        set_arguments_1(element.expressions)
-      elsif element.operator?
-        element.set_arguments(content_type_stack)
-        content_type_stack.push(element)
-      else
-        element.pop_stack(content_type_stack)
-        content_type_stack.push(element)
-      end
-    end
-
-    raise(BASICExpressionError, 'Bad expression') if
-      content_type_stack.size > 1
-  end
-
   def tokens_to_elements(tokens)
     elements = []
 
@@ -1467,6 +1459,10 @@ class ValueExpressionSet < AbstractExpressionSet
     @expressions.each do |expression|
       expression.set_shape
     end
+
+    @expressions.each do |expression|
+      expression.set_constant
+    end
   end
 
   def printable?
@@ -1489,6 +1485,13 @@ class ValueExpressionSet < AbstractExpressionSet
     elements = expression.elements
     last_element = elements[-1]
     last_element.shape
+  end
+
+  def constant
+    expression = @expressions[0]
+    elements = expression.elements
+    last_element = elements[-1]
+    last_element.constant
   end
 
   def filehandle?
@@ -1556,6 +1559,10 @@ class DeclarationExpressionSet < AbstractExpressionSet
     @expressions.each do |expression|
       expression.set_shape
     end
+
+    @expressions.each do |expression|
+      expression.set_constant
+    end
   end
 
   private
@@ -1603,6 +1610,10 @@ class TargetExpressionSet < AbstractExpressionSet
 
     @expressions.each do |expression|
       expression.set_shape
+    end
+
+    @expressions.each do |expression|
+      expression.set_constant
     end
   end
 
@@ -1824,7 +1835,8 @@ class Assignment
     lines += @expression.dump
     ts = @target.signature
     es = @expression.signature
-    lines << "AssignmentOperator:= #{es.join(',')} -> #{ts.join(',')}"
+    es_const = @expression.constant ? '=' : ''
+    lines << "AssignmentOperator:= #{es_const}#{es.join(',')} -> #{ts.join(',')}"
   end
 
   private

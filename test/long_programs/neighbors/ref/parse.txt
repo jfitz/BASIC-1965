@@ -2,66 +2,68 @@
  Remark:SIMULATION OF NEIGHBORS AND MOVES
 20 OPTION BASE 0
  NumericConstant:0
+21 OPTION FIELD_SEP "SEMI"
+ TextConstant:"SEMI"
 100 REM collect data
  Remark:collect data
 110 READ R0,C0
- Variable:R0
- Variable:C0
+ Variable:R0 -> _
+ Variable:C0 -> _
 120 READ N0
- Variable:N0
+ Variable:N0 -> _
 122 DIM M(N0)
- Variable:N0
- Declaration:M
+ Variable:N0 -> _
+ Declaration:M() -> _()
 130 READ D0
- Variable:D0
+ Variable:D0 -> _
 132 READ I0
- Variable:I0
+ Variable:I0 -> _
 134 READ Z8
- Variable:Z8
+ Variable:Z8 -> _
 136 LET Z0 = R0 * 2 + C0 * 2 + Z8
- Variable:Z0
- Variable:R0
+ Variable:Z0 -> _
+ Variable:R0 -> _
  NumericConstant:2
- BinaryOperator:*
- Variable:C0
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C0 -> _
  NumericConstant:2
- BinaryOperator:*
- BinaryOperator:+
- Variable:Z8
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:Z8 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 150 PRINT "Board size:";R0+1;"x";C0+1
  TextConstant:"Board size:"
  CarriageControl:;
- Variable:R0
+ Variable:R0 -> _
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+(_,_) -> _
  CarriageControl:;
  TextConstant:"x"
  CarriageControl:;
- Variable:C0
+ Variable:C0 -> _
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+(_,_) -> _
  CarriageControl:NL
 152 PRINT "Number of populations:";N0
  TextConstant:"Number of populations:"
  CarriageControl:;
- Variable:N0
+ Variable:N0 -> _
  CarriageControl:NL
 154 PRINT "Discomfort threshold:";D0
  TextConstant:"Discomfort threshold:"
  CarriageControl:;
- Variable:D0
+ Variable:D0 -> _
  CarriageControl:NL
 156 PRINT "Iteration threshold:";I0
  TextConstant:"Iteration threshold:"
  CarriageControl:;
- Variable:I0
+ Variable:I0 -> _
  CarriageControl:NL
 158 PRINT "Number of zero cells:";Z0
  TextConstant:"Number of zero cells:"
  CarriageControl:;
- Variable:Z0
+ Variable:Z0 -> _
  CarriageControl:NL
 200 REM configure initial board
  Remark:configure initial board
@@ -74,13 +76,13 @@
  TextConstant:"done."
  CarriageControl:NL
 240 LET I1 = 1
- Variable:I1
+ Variable:I1 -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 242 LET P2 = 0.99
- Variable:P2
+ Variable:P2 -> _
  NumericConstant:0.99
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 300 REM display board
  Remark:display board
 310 PRINT
@@ -88,7 +90,7 @@
 312 PRINT "Iteration";I1;":"
  TextConstant:"Iteration"
  CarriageControl:;
- Variable:I1
+ Variable:I1 -> _
  CarriageControl:;
  TextConstant:":"
  CarriageControl:NL
@@ -99,15 +101,15 @@
 400 REM ask to continue
  Remark:ask to continue
 410 IF P2 < I0 THEN 900
- Variable:P2
- Variable:I0
- BinaryOperator:<
+ Variable:P2 -> _
+ Variable:I0 -> _
+ BinaryOperatorLess:<(_,_) -> ?
 430 LET I1 = I1 + 1
- Variable:I1
- Variable:I1
+ Variable:I1 -> _
+ Variable:I1 -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 500 REM calculate comfort
  Remark:calculate comfort
 510 PRINT "Calculating moves... ";
@@ -122,49 +124,49 @@
  TextConstant:"Moves: "
  CarriageControl:;
 542 ARR PRINT M;
- Variable:M
+ Variable:M() -> _()
  CarriageControl:;
 550 LET M = 0
- Variable:M
+ Variable:M -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 552 FOR I = 1 TO N0
- control: Variable:I
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:N0"]
+ end:     ["Variable:N0 -> _"]
 554 LET M = M + M(I)
- Variable:M
- Variable:M
- Variable:I
- Variable:M
- BinaryOperator:+
- AssignmentOperator:=
+ Variable:M -> _
+ Variable:M -> _
+ Variable:I -> _
+ Variable:M(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 556 NEXT I
- Variable:I
+ Variable:I -> _
 558 LET T = (R0+1) * (C0+1) - Z0
- Variable:T
- Variable:R0
+ Variable:T -> _
+ Variable:R0 -> _
  NumericConstant:1
- BinaryOperator:+
- Variable:C0
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C0 -> _
  NumericConstant:1
- BinaryOperator:+
- BinaryOperator:*
- Variable:Z0
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Z0 -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 560 LET P2 = M / T
- Variable:P2
- Variable:M
- Variable:T
- BinaryOperator:/
- AssignmentOperator:=
+ Variable:P2 -> _
+ Variable:M -> _
+ Variable:T -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
 562 PRINT "(";P2*100;"%)"
  TextConstant:"("
  CarriageControl:;
- Variable:P2
+ Variable:P2 -> _
  NumericConstant:100
- BinaryOperator:*
+ BinaryOperatorMultiply:*(_,_) -> _
  CarriageControl:;
  TextConstant:"%)"
  CarriageControl:NL
@@ -183,9 +185,9 @@
 700 REM new board becomes the board
  Remark:new board becomes the board
 710 MAT B = B1
- Variable:B
- Variable:B1
- AssignmentOperator:=
+ Variable:B(,) -> _(,)
+ Variable:B1(,) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
 800 GOTO 300
  LineNumber:300
 900 REM End the simulation
@@ -202,274 +204,274 @@
 1110 REM SET EVERYTHING TO -1
  Remark:SET EVERYTHING TO -1
 1112 MAT B = CON(R0,C0) * -1
- Variable:B
- Variable:R0
- Variable:C0
- FunctionCon
+ Variable:B(,) -> _(,)
+ Variable:R0 -> _
+ Variable:C0 -> _
+ FunctionCon2:CON(_,_) -> _(,)
  NumericConstant:1
- UnaryOperator:-
- BinaryOperator:*
- AssignmentOperator:=
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorMultiply:*(_,_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
 1120 REM SET HORIZONTAL BORDERS TO 0
  Remark:SET HORIZONTAL BORDERS TO 0
 1122 FOR C = 0 TO C0
- control: Variable:C
+ control: Variable:C -> _
  start:   ["NumericConstant:0"]
- end:     ["Variable:C0"]
+ end:     ["Variable:C0 -> _"]
 1124 LET B(0,C) = 0
  NumericConstant:0
- Variable:C
- Variable:B
+ Variable:C -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1126 LET B(R0,C) = 0
- Variable:R0
- Variable:C
- Variable:B
+ Variable:R0 -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1128 NEXT C
- Variable:C
+ Variable:C -> _
 1130 REM SET VERTICAL BORDERS TO 0
  Remark:SET VERTICAL BORDERS TO 0
 1132 FOR R = 0 TO R0
- control: Variable:R
+ control: Variable:R -> _
  start:   ["NumericConstant:0"]
- end:     ["Variable:R0"]
+ end:     ["Variable:R0 -> _"]
 1134 LET B(R,0) = 0
- Variable:R
+ Variable:R -> _
  NumericConstant:0
- Variable:B
+ Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1136 LET B(R,C0) = 0
- Variable:R
- Variable:C0
- Variable:B
+ Variable:R -> _
+ Variable:C0 -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1138 NEXT R
- Variable:R
+ Variable:R -> _
 1140 REM SET INSIDE EMPTY AREAS TO 0
  Remark:SET INSIDE EMPTY AREAS TO 0
 1142 FOR I = 1 TO Z8
- control: Variable:I
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:Z8"]
+ end:     ["Variable:Z8 -> _"]
 1144 READ R,C
- Variable:R
- Variable:C
+ Variable:R -> _
+ Variable:C -> _
 1146 LET B(R,C) = 0
- Variable:R
- Variable:C
- Variable:B
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1148 NEXT I
- Variable:I
+ Variable:I -> _
 1150 REM SET REMAINING CELLS TO POPULATION GROUP
  Remark:SET REMAINING CELLS TO POPULATION GROUP
 1152 FOR R = 1 TO R0-1
- control: Variable:R
+ control: Variable:R -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:R0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:R0 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 1153 FOR C = 1 TO C0-1
- control: Variable:C
+ control: Variable:C -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:C0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:C0 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 1154 IF B(R,C) <> -1 THEN 1157
- Variable:R
- Variable:C
- Variable:B
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
  NumericConstant:1
- UnaryOperator:-
- BinaryOperator:<>
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 1155 LET B(R,C)=INT(RND(N0)+1)
- Variable:R
- Variable:C
- Variable:B
- Variable:N0
- FunctionRnd
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
+ Variable:N0 -> _
+ FunctionRnd:RND(_) -> _
  NumericConstant:1
- BinaryOperator:+
- FunctionInt
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
 1157 NEXT C
- Variable:C
+ Variable:C -> _
 1158 NEXT R
- Variable:R
+ Variable:R -> _
 1190 RETURN
  
 1200 REM display board
  Remark:display board
 1210 MAT PRINT B;
- Variable:B
+ Variable:B(,) -> _(,)
  CarriageControl:;
 1290 RETURN
  
 1300 REM calculate comfort, count people who move
  Remark:calculate comfort, count people who move
 1302 MAT B1 = B
- Variable:B1
- Variable:B
- AssignmentOperator:=
-1304 MAT M = ZER()
- Variable:M
- FunctionZer
- AssignmentOperator:=
+ Variable:B1(,) -> _(,)
+ Variable:B(,) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+1304 ARR M = ZER1()
+ Variable:M() -> _()
+ FunctionZer1:ZER1() -> _()
+ AssignmentOperator:= _() -> _()
 1310 FOR R = 1 TO R0-1
- control: Variable:R
+ control: Variable:R -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:R0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:R0 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 1312 FOR C = 1 TO C0-1
- control: Variable:C
+ control: Variable:C -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:C0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:C0 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 1314 IF B(R,C) = 0 THEN 1380
- Variable:R
- Variable:C
- Variable:B
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=(_,_) -> ?
 1317 LET X7 = 0
- Variable:X7
+ Variable:X7 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1318 LET X8 = 0
- Variable:X8
+ Variable:X8 -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 1320 FOR I9 = -1 TO 1
- control: Variable:I9
- start:   ["NumericConstant:1", "UnaryOperator:-"]
+ control: Variable:I9 -> _
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
  end:     ["NumericConstant:1"]
 1322 FOR J9 = -1 TO 1
- control: Variable:J9
- start:   ["NumericConstant:1", "UnaryOperator:-"]
+ control: Variable:J9 -> _
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
  end:     ["NumericConstant:1"]
 1330 IF B(R+I9,C+J9) = 0 THEN 1340
- Variable:R
- Variable:I9
- BinaryOperator:+
- Variable:C
- Variable:J9
- BinaryOperator:+
- Variable:B
+ Variable:R -> _
+ Variable:I9 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C -> _
+ Variable:J9 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:B(_,_) -> _
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=(_,_) -> ?
 1332 IF B(R+I9,C+J9) = B(R,C) THEN 1340
- Variable:R
- Variable:I9
- BinaryOperator:+
- Variable:C
- Variable:J9
- BinaryOperator:+
- Variable:B
- Variable:R
- Variable:C
- Variable:B
- BinaryOperator:=
+ Variable:R -> _
+ Variable:I9 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C -> _
+ Variable:J9 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:B(_,_) -> _
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 1334 LET X8 = X8 + 1
- Variable:X8
- Variable:X8
+ Variable:X8 -> _
+ Variable:X8 -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 1336 GOTO 1350
  LineNumber:1350
 1340 LET X7 = X7 + 1
- Variable:X7
- Variable:X7
+ Variable:X7 -> _
+ Variable:X7 -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 1350 NEXT J9
- Variable:J9
+ Variable:J9 -> _
 1352 NEXT I9
- Variable:I9
+ Variable:I9 -> _
 1360 LET X = X8 / X7
- Variable:X
- Variable:X8
- Variable:X7
- BinaryOperator:/
- AssignmentOperator:=
+ Variable:X -> _
+ Variable:X8 -> _
+ Variable:X7 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
 1370 IF X < D0 THEN 1380
- Variable:X
- Variable:D0
- BinaryOperator:<
+ Variable:X -> _
+ Variable:D0 -> _
+ BinaryOperatorLess:<(_,_) -> ?
 1372 LET M(B(R,C)) = M(B(R,C)) + 1
- Variable:R
- Variable:C
- Variable:B
- Variable:M
- Variable:R
- Variable:C
- Variable:B
- Variable:M
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
+ Variable:M(_) -> _
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B(_,_) -> _
+ Variable:M(_) -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 1374 LET B1(R,C) = -1
- Variable:R
- Variable:C
- Variable:B1
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B1(_,_) -> _
  NumericConstant:1
- UnaryOperator:-
- AssignmentOperator:=
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= _ -> _
 1380 NEXT C
- Variable:C
+ Variable:C -> _
 1382 NEXT R
- Variable:R
+ Variable:R -> _
 1390 RETURN
  
 1400 REM fill in new board
  Remark:fill in new board
 1410 FOR R = 1 TO R0-1
- control: Variable:R
+ control: Variable:R -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:R0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:R0 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 1412 FOR C = 1 TO C0-1
- control: Variable:C
+ control: Variable:C -> _
  start:   ["NumericConstant:1"]
- end:     ["Variable:C0", "NumericConstant:1", "BinaryOperator:-"]
+ end:     ["Variable:C0 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
 1420 IF B1(R,C) <> -1 THEN 1450
- Variable:R
- Variable:C
- Variable:B1
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B1(_,_) -> _
  NumericConstant:1
- UnaryOperator:-
- BinaryOperator:<>
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 1430 LET P = INT(RND(N0)+1)
- Variable:P
- Variable:N0
- FunctionRnd
+ Variable:P -> _
+ Variable:N0 -> _
+ FunctionRnd:RND(_) -> _
  NumericConstant:1
- BinaryOperator:+
- FunctionInt
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
 1432 IF M(P) <= 0 THEN 1430
- Variable:P
- Variable:M
+ Variable:P -> _
+ Variable:M(_) -> _
  NumericConstant:0
- BinaryOperator:<=
+ BinaryOperatorLessEqual:<=(_,_) -> ?
 1440 LET B1(R,C) = P
- Variable:R
- Variable:C
- Variable:B1
- Variable:P
- AssignmentOperator:=
+ Variable:R -> _
+ Variable:C -> _
+ Variable:B1(_,_) -> _
+ Variable:P -> _
+ AssignmentOperator:= _ -> _
 1442 LET M(P) = M(P) - 1
- Variable:P
- Variable:M
- Variable:P
- Variable:M
+ Variable:P -> _
+ Variable:M(_) -> _
+ Variable:P -> _
+ Variable:M(_) -> _
  NumericConstant:1
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 1450 NEXT C
- Variable:C
+ Variable:C -> _
 1452 NEXT R
- Variable:R
+ Variable:R -> _
 1490 RETURN
  
 3000 REM NUMBER OF ROWS AND COLUMNS
@@ -651,3 +653,4 @@
  NumericConstant:19
 4999 END
  
+

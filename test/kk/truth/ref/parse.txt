@@ -13,17 +13,17 @@
  control: Variable:P -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
 30     FOR Q = 1 TO 0 STEP -1
  control: Variable:Q -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
 40         FOR R = 1 TO 0 STEP -1
  control: Variable:R -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
 50             LET X = P
  Variable:X -> _
  Variable:P -> _

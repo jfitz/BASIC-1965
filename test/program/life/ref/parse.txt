@@ -19,19 +19,19 @@
  NumericConstant:4
  Variable:B(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 241 LET B(4,5)=1
  NumericConstant:4
  NumericConstant:5
  Variable:B(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 242 LET B(4,6)=1
  NumericConstant:4
  NumericConstant:6
  Variable:B(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 300 REM *** DISPLAY BOARD
  Remark:*** DISPLAY BOARD
 310 PRINT "********************"
@@ -57,8 +57,8 @@
  Variable:N(,) -> _(,)
  NumericConstant:10
  NumericConstant:10
- FunctionZer2:ZER(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionZer2:ZER(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 415 OPTION BASE 0
  NumericConstant:0
 420 DIM B(11,11)
@@ -76,14 +76,14 @@
 442 LET C = 0
  Variable:C -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 450 FOR I0=-1 TO 1
  control: Variable:I0 -> _
- start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
  end:     ["NumericConstant:1"]
 460 FOR J0=-1 TO 1
  control: Variable:J0 -> _
- start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ start:   ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
  end:     ["NumericConstant:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
  Variable:I0 -> _
@@ -164,7 +164,7 @@
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 680 GOTO 730
  LineNumber:730
 690 REM * CELL IS BORN
@@ -174,7 +174,7 @@
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 710 GOTO 730
  LineNumber:730
 720 REM * CELL REMAINS UNCHANGED

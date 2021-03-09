@@ -1,6 +1,6 @@
 10 FOR I=-5 TO 10
  control: Variable:I -> _
- start:   ["NumericConstant:5", "UnaryOperatorMinus:-(_) -> _"]
+ start:   ["NumericConstant:5", "UnaryOperatorMinus:-(_) -> =_"]
  end:     ["NumericConstant:10"]
 20 LET A=ABS(I)
  Variable:A -> _

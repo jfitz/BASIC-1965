@@ -8,7 +8,7 @@
 20 LET A=10.1234
  Variable:A -> _
  NumericConstant:10.1234
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 22 LET A1=ROUND(A,3)
  Variable:A1 -> _
  Variable:A -> _
@@ -23,8 +23,8 @@
 30 LET B=-20.1234
  Variable:B -> _
  NumericConstant:20.1234
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
 32 LET B1=ROUND(B,2)
  Variable:B1 -> _
  Variable:B -> _
@@ -39,12 +39,12 @@
 40 LET C=1234
  Variable:C -> _
  NumericConstant:1234
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 42 LET C1=ROUND(C,-1)
  Variable:C1 -> _
  Variable:C -> _
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  FunctionRound:ROUND(_,_) -> _
  AssignmentOperator:= _ -> _
 45 PRINT C,C1

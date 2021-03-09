@@ -3,11 +3,11 @@
 20 MAT M = CON(4) * -1
  Variable:M(,) -> _(,)
  NumericConstant:4
- FunctionCon2:CON(_) -> _(,)
+ FunctionCon2:CON(_) -> =_(,)
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 30 MAT PRINT M
  Variable:M(,) -> _(,)
  CarriageControl:NL
@@ -15,11 +15,11 @@
  Variable:M2(,) -> _(,)
  NumericConstant:4
  NumericConstant:3
- FunctionCon2:CON(_,_) -> _(,)
+ FunctionCon2:CON(_,_) -> =_(,)
  NumericConstant:3
- UnaryOperatorMinus:-(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 50 MAT PRINT M2
  Variable:M2(,) -> _(,)
  CarriageControl:NL

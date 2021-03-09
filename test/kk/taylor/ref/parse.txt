@@ -4,11 +4,11 @@
 20 LET S = 0
  Variable:S -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 25 LET F = 1
  Variable:F -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 30 FOR I = 1 TO N
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -69,7 +69,7 @@
  NumericConstant:0.5
  NumericConstant:10
  NumericConstant:0.75
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
  NumericConstant:10
  NumericConstant:0.99
  NumericConstant:10

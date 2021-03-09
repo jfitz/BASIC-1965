@@ -40,7 +40,7 @@
 60 LET M = 0
  Variable:M -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 100 LET T = (T+M)/2
  Variable:T -> _
  Variable:T -> _
@@ -52,7 +52,7 @@
 120 LET M = 0
  Variable:M -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 130 FOR X = A+H/2 TO B STEP H
  control: Variable:X -> _
  start:   ["Variable:A -> _", "Variable:H -> _", "NumericConstant:2", "BinaryOperatorDivide:/(_,_) -> _", "BinaryOperatorPlus:+(_,_) -> _"]

@@ -8,17 +8,17 @@
  Variable:A(,) -> _(,)
  NumericConstant:2
  NumericConstant:3
- FunctionIdn:IDN(_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionIdn:IDN(_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 30 MAT B = 2 * IDN(5,5)
  Variable:B(,) -> _(,)
  NumericConstant:2
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN(_,_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionIdn:IDN(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 35 MAT D = 2 * IDN
  Variable:D(,) -> _(,)
  NumericConstant:2
@@ -49,17 +49,17 @@
  Variable:A(,) -> _(,)
  NumericConstant:3
  NumericConstant:3
- FunctionIdn:IDN(_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionIdn:IDN(_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 130 MAT B = 3 * IDN(5,5)
  Variable:B(,) -> _(,)
  NumericConstant:3
  NumericConstant:5
  NumericConstant:5
- FunctionIdn:IDN(_,_) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionIdn:IDN(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_,_) -> =_(,)
+ AssignmentOperator:= =_(,) -> _(,)
 135 MAT D = 3 * IDN()
  Variable:D(,) -> _(,)
  NumericConstant:3

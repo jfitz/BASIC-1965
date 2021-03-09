@@ -77,7 +77,7 @@
 215 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 220 FOR I = 1 TO I9
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -115,7 +115,7 @@
 290    LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 300 NEXT I
  Variable:I -> _
 310 PRINT
@@ -123,7 +123,7 @@
 315 LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 320 FOR I = 1 TO I9
  control: Variable:I -> _
  start:   ["NumericConstant:1"]
@@ -162,7 +162,7 @@
 390    LET J = 1
  Variable:J -> _
  NumericConstant:1
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 400 NEXT I
  Variable:I -> _
 800 STOP
@@ -223,7 +223,7 @@
  Remark:DATA 9,23,22,14,12,1,11,14,19,16,23,10,13,20,5,1,23,18,14
 999 DATA -1
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
 1000 REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
  Remark:THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
 1010 IF X>0 THEN 1040

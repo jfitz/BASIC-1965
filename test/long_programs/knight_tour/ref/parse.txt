@@ -1,102 +1,119 @@
 100 OPTION BASE 0
  NumericConstant:0
-110 REM squares visited
- Remark:squares visited
-112 DIM V(64)
- NumericConstant:64
- Declaration:V
-114 MAT LET V = ZER(64)
- Variable:V
- NumericConstant:64
- FunctionZer
- AssignmentOperator:=
-120 REM square at each level
- Remark:square at each level
-122 DIM S(64)
- NumericConstant:64
- Declaration:S
-130 REM possible moves for each level
- Remark:possible moves for each level
-132 DIM P(64,8)
- NumericConstant:64
+110 REM size of board
+ Remark:size of board
+112 LET R0 = 8
+ Variable:R0 -> _
  NumericConstant:8
- Declaration:P
+ AssignmentOperator:= _ -> _
+114 LET C0 = 8
+ Variable:C0 -> _
+ NumericConstant:8
+ AssignmentOperator:= _ -> _
+116 LET B0 = R0*C0
+ Variable:B0 -> _
+ Variable:R0 -> _
+ Variable:C0 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+120 REM squares visited
+ Remark:squares visited
+122 DIM V(B0)
+ Variable:B0 -> _
+ Declaration:V() -> _()
+130 REM square at each level
+ Remark:square at each level
+132 DIM S(B0)
+ Variable:B0 -> _
+ Declaration:S() -> _()
+140 REM possible moves for each level
+ Remark:possible moves for each level
+142 DIM P(B0,8)
+ Variable:B0 -> _
+ NumericConstant:8
+ Declaration:P(,) -> _(,)
+150 REM stop at this level
+ Remark:stop at this level
+152 LET L0 = 57
+ Variable:L0 -> _
+ NumericConstant:57
+ AssignmentOperator:= _ -> _
 200 REM Calculate row from square
  Remark:Calculate row from square
-202 DEF FNR(S)=INT(S / 8) + 1
- UserFunctionName:FNR
- VariableName:S
- Variable:S
- NumericConstant:8
- BinaryOperator:/
- FunctionInt
+202 DEF FNR(S)=INT(S / C0) + 1
+ UserFunctionName:FNR -> _
+ VariableName:S -> _
+ Variable:S -> _
+ Variable:C0 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+(_,_) -> _
 210 REM Calculate column from square
  Remark:Calculate column from square
-212 DEF FNC(S)=MOD(S, 8) + 1
- UserFunctionName:FNC
- VariableName:S
- Variable:S
- NumericConstant:8
- FunctionMod
+212 DEF FNC(S)=MOD(S, C0) + 1
+ UserFunctionName:FNC -> _
+ VariableName:S -> _
+ Variable:S -> _
+ Variable:C0 -> _
+ FunctionMod:MOD(_,_) -> _
  NumericConstant:1
- BinaryOperator:+
+ BinaryOperatorPlus:+(_,_) -> _
 220 REM Calculate square from row and column
  Remark:Calculate square from row and column
-222 DEF FNS(R,C)=(R - 1) * 8 + (C - 1)
- UserFunctionName:FNS
- VariableName:R
- VariableName:C
- Variable:R
+222 DEF FNS(R,C)=(R - 1) * C0 + (C - 1)
+ UserFunctionName:FNS -> _
+ VariableName:R -> _
+ VariableName:C -> _
+ Variable:R -> _
  NumericConstant:1
- BinaryOperator:-
- NumericConstant:8
- BinaryOperator:*
- Variable:C
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:C0 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
  NumericConstant:1
- BinaryOperator:-
- BinaryOperator:+
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
 400 REM current level
  Remark:current level
 402 LET L = 0
- Variable:L
+ Variable:L -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 410 REM go to a square (a1, or 1,1, or 1)
  Remark:go to a square (a1, or 1,1, or 1)
 412 LET S = 0
- Variable:S
+ Variable:S -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 500 REM MAIN LOOP
  Remark:MAIN LOOP
 510 REM ENTER NEXT LEVEL
  Remark:ENTER NEXT LEVEL
 512 LET L = L + 1
- Variable:L
- Variable:L
+ Variable:L -> _
+ Variable:L -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 513 REM PRINT "GOING TO LEVEL";L;" SQUARE";S;" (";FNR(S);",";FNC(S);")"
  Remark:PRINT "GOING TO LEVEL";L;" SQUARE";S;" (";FNR(S);",";FNC(S);")"
 514 LET S(L) = S
- Variable:L
- Variable:S
- Variable:S
- AssignmentOperator:=
+ Variable:L -> _
+ Variable:S(_) -> _
+ Variable:S -> _
+ AssignmentOperator:= _ -> _
 515 LET V(S) = 1
- Variable:S
- Variable:V
+ Variable:S -> _
+ Variable:V(_) -> _
  NumericConstant:1
- AssignmentOperator:=
-516 REM if level 64, we are done
- Remark:if level 64, we are done
-518 IF L = 64 THEN 800
- Variable:L
- NumericConstant:64
- BinaryOperator:=
+ AssignmentOperator:= _ -> _
+516 REM if top level, we are done
+ Remark:if top level, we are done
+518 IF L = L0 THEN 800
+ Variable:L -> _
+ Variable:L0 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
 520 REM COMPUTE POSSIBLE MOVES
  Remark:COMPUTE POSSIBLE MOVES
 522 GOSUB 600
@@ -106,90 +123,90 @@
 531 REM GOSUB 1520
  Remark:GOSUB 1520
 532 LET S2 = -1
- Variable:S2
+ Variable:S2 -> _
  NumericConstant:1
- UnaryOperator:-
- AssignmentOperator:=
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= _ -> _
 534 FOR I = 8 TO 1 STEP -1
- control: Variable:I
+ control: Variable:I -> _
  start:   ["NumericConstant:8"]
  end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperator:-"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
 536 IF P(L,I) = -1 THEN 538
- Variable:L
- Variable:I
- Variable:P
+ Variable:L -> _
+ Variable:I -> _
+ Variable:P(_,_) -> _
  NumericConstant:1
- UnaryOperator:-
- BinaryOperator:=
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorEqual:=(_,_) -> ?
 537 LET S2 = P(L,I)
- Variable:S2
- Variable:L
- Variable:I
- Variable:P
- AssignmentOperator:=
+ Variable:S2 -> _
+ Variable:L -> _
+ Variable:I -> _
+ Variable:P(_,_) -> _
+ AssignmentOperator:= _ -> _
 538 NEXT I
- Variable:I
+ Variable:I -> _
 542 IF S2 = -1 THEN 550
- Variable:S2
+ Variable:S2 -> _
  NumericConstant:1
- UnaryOperator:-
- BinaryOperator:=
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorEqual:=(_,_) -> ?
 544 REM GO TO SQUARE S2
  Remark:GO TO SQUARE S2
 546 LET S = S2
- Variable:S
- Variable:S2
- AssignmentOperator:=
+ Variable:S -> _
+ Variable:S2 -> _
+ AssignmentOperator:= _ -> _
 548 GOTO 510
  LineNumber:510
 550 REM MARK SQUARE AS NOT VISITED
  Remark:MARK SQUARE AS NOT VISITED
 552 LET V(S) = 0
- Variable:S
- Variable:V
+ Variable:S -> _
+ Variable:V(_) -> _
  NumericConstant:0
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 560 REM revert to previous level
  Remark:revert to previous level
 562 LET L = L - 1
- Variable:L
- Variable:L
+ Variable:L -> _
+ Variable:L -> _
  NumericConstant:1
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 564 IF L = 0 THEN 820
- Variable:L
+ Variable:L -> _
  NumericConstant:0
- BinaryOperator:=
+ BinaryOperatorEqual:=(_,_) -> ?
 570 REM mark first possible square as not possible
  Remark:mark first possible square as not possible
 572 FOR I = 1 TO 8
- control: Variable:I
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 574 IF P(L,I) <> S THEN 577 
- Variable:L
- Variable:I
- Variable:P
- Variable:S
- BinaryOperator:<>
+ Variable:L -> _
+ Variable:I -> _
+ Variable:P(_,_) -> _
+ Variable:S -> _
+ BinaryOperatorNotEqual:<>(_,_) -> ?
 575 LET P(L,I) = -1
- Variable:L
- Variable:I
- Variable:P
+ Variable:L -> _
+ Variable:I -> _
+ Variable:P(_,_) -> _
  NumericConstant:1
- UnaryOperator:-
- AssignmentOperator:=
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= _ -> _
 577 NEXT I
- Variable:I
+ Variable:I -> _
 580 REM RETURN TO PREVIOUS SQUARE
  Remark:RETURN TO PREVIOUS SQUARE
 582 LET S = S(L)
- Variable:S
- Variable:L
- Variable:S
- AssignmentOperator:=
+ Variable:S -> _
+ Variable:L -> _
+ Variable:S(_) -> _
+ AssignmentOperator:= _ -> _
 584 REM PRINT "REVERTING TO LEVEL";L;" SQUARE";S
  Remark:PRINT "REVERTING TO LEVEL";L;" SQUARE";S
 590 GOTO 530
@@ -197,173 +214,173 @@
 600 REM build possible moves
  Remark:build possible moves
 602 LET R = FNR(S)
- Variable:R
- Variable:S
- UserFunction
- AssignmentOperator:=
+ Variable:R -> _
+ Variable:S -> _
+ UserFunction:FNR(_) -> _
+ AssignmentOperator:= _ -> _
 604 LET C = FNC(S)
- Variable:C
- Variable:S
- UserFunction
- AssignmentOperator:=
+ Variable:C -> _
+ Variable:S -> _
+ UserFunction:FNC(_) -> _
+ AssignmentOperator:= _ -> _
 610 REM up up left
  Remark:up up left
 611 LET P = 1
- Variable:P
+ Variable:P -> _
  NumericConstant:1
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 612 LET R5 = R - 2
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:2
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 613 LET C5 = C - 1
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:1
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 615 GOSUB 700
  LineNumber:700
 620 REM up up right
  Remark:up up right
 621 LET P = 2
- Variable:P
+ Variable:P -> _
  NumericConstant:2
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 622 LET R5 = R - 2
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:2
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 623 LET C5 = C + 1
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 625 GOSUB 700
  LineNumber:700
 630 REM down down left
  Remark:down down left
 631 LET P = 3
- Variable:P
+ Variable:P -> _
  NumericConstant:3
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 632 LET R5 = R + 2
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:2
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 633 LET C5 = C - 1
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:1
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 635 GOSUB 700
  LineNumber:700
 640 REM down down right
  Remark:down down right
 641 LET P = 4
- Variable:P
+ Variable:P -> _
  NumericConstant:4
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 642 LET R5 = R + 2
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:2
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 643 LET C5 = C + 1
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 645 GOSUB 700
  LineNumber:700
 650 REM left left up
  Remark:left left up
 651 LET P = 5
- Variable:P
+ Variable:P -> _
  NumericConstant:5
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 652 LET R5 = R - 1
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:1
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 653 LET C5 = C - 2
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:2
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 655 GOSUB 700
  LineNumber:700
 660 REM left left down
  Remark:left left down
 661 LET P = 6
- Variable:P
+ Variable:P -> _
  NumericConstant:6
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 662 LET R5 = R + 1
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 663 LET C5 = C - 2
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:2
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 665 GOSUB 700
  LineNumber:700
 670 REM right right up
  Remark:right right up
 671 LET P = 7
- Variable:P
+ Variable:P -> _
  NumericConstant:7
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 672 LET R5 = R - 1
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:1
- BinaryOperator:-
- AssignmentOperator:=
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
 673 LET C5 = C + 2
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:2
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 675 GOSUB 700
  LineNumber:700
 680 REM right right down
  Remark:right right down
 681 LET P = 8
- Variable:P
+ Variable:P -> _
  NumericConstant:8
- AssignmentOperator:=
+ AssignmentOperator:= _ -> _
 682 LET R5 = R + 1
- Variable:R5
- Variable:R
+ Variable:R5 -> _
+ Variable:R -> _
  NumericConstant:1
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 683 LET C5 = C + 2
- Variable:C5
- Variable:C
+ Variable:C5 -> _
+ Variable:C -> _
  NumericConstant:2
- BinaryOperator:+
- AssignmentOperator:=
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
 685 GOSUB 700
  LineNumber:700
 690 RETURN
@@ -373,91 +390,100 @@
 701 REM moves off the board are illegal
  Remark:moves off the board are illegal
 710 IF R5 < 1 THEN 770
- Variable:R5
+ Variable:R5 -> _
  NumericConstant:1
- BinaryOperator:<
-715 IF R5 > 8 THEN 770
- Variable:R5
- NumericConstant:8
- BinaryOperator:>
+ BinaryOperatorLess:<(_,_) -> ?
+715 IF R5 > R0 THEN 770
+ Variable:R5 -> _
+ Variable:R0 -> _
+ BinaryOperatorGreater:>(_,_) -> ?
 720 IF C5 < 1 THEN 770
- Variable:C5
+ Variable:C5 -> _
  NumericConstant:1
- BinaryOperator:<
-725 IF C5 > 8 THEN 770
- Variable:C5
- NumericConstant:8
- BinaryOperator:>
+ BinaryOperatorLess:<(_,_) -> ?
+725 IF C5 > C0 THEN 770
+ Variable:C5 -> _
+ Variable:C0 -> _
+ BinaryOperatorGreater:>(_,_) -> ?
 730 REM moves to squares already visited are illegal
  Remark:moves to squares already visited are illegal
 732 LET S5 = FNS(R5, C5)
- Variable:S5
- Variable:R5
- Variable:C5
- UserFunction
- AssignmentOperator:=
+ Variable:S5 -> _
+ Variable:R5 -> _
+ Variable:C5 -> _
+ UserFunction:FNS(_,_) -> _
+ AssignmentOperator:= _ -> _
 734 IF V(S5) > 0 THEN 770
- Variable:S5
- Variable:V
+ Variable:S5 -> _
+ Variable:V(_) -> _
  NumericConstant:0
- BinaryOperator:>
+ BinaryOperatorGreater:>(_,_) -> ?
 750 REM THE MOVE IS LEGAL
  Remark:THE MOVE IS LEGAL
 752 LET P(L,P) = S5
- Variable:L
- Variable:P
- Variable:P
- Variable:S5
- AssignmentOperator:=
+ Variable:L -> _
+ Variable:P -> _
+ Variable:P(_,_) -> _
+ Variable:S5 -> _
+ AssignmentOperator:= _ -> _
 755 GOTO 790
  LineNumber:790
 770 REM THE MOVE IS NOT LEGAL
  Remark:THE MOVE IS NOT LEGAL
 772 LET P(L,P) = -1
- Variable:L
- Variable:P
- Variable:P
+ Variable:L -> _
+ Variable:P -> _
+ Variable:P(_,_) -> _
  NumericConstant:1
- UnaryOperator:-
- AssignmentOperator:=
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= _ -> _
 790 RETURN
  
 800 PRINT "SUCCESS!"
  TextConstant:"SUCCESS!"
  CarriageControl:NL
-810 GOTO 900
+810 GOSUB 900
  LineNumber:900
+812 STOP
+ 
 820 PRINT "INCOMPLETE"
  TextConstant:"INCOMPLETE"
  CarriageControl:NL
-900 PRINT "THE TOUR IS:"
- TextConstant:"THE TOUR IS:"
- CarriageControl:NL
-910 FOR I = 1 TO 64
- control: Variable:I
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:64"]
-920 LET R = FNR(S(I))
- Variable:R
- Variable:I
- Variable:S
- UserFunction
- AssignmentOperator:=
-922 LET C = FNC(S(I))
- Variable:C
- Variable:I
- Variable:S
- UserFunction
- AssignmentOperator:=
-930 PRINT R;C
- Variable:R
+830 GOSUB 900
+ LineNumber:900
+832 STOP
+ 
+900 PRINT "TOUR: ";
+ TextConstant:"TOUR: "
  CarriageControl:;
- Variable:C
+910 FOR I = 1 TO L
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:L -> _"]
+920 LET R = FNR(S(I))
+ Variable:R -> _
+ Variable:I -> _
+ Variable:S(_) -> _
+ UserFunction:FNR(_) -> _
+ AssignmentOperator:= _ -> _
+922 LET C = FNC(S(I))
+ Variable:C -> _
+ Variable:I -> _
+ Variable:S(_) -> _
+ UserFunction:FNC(_) -> _
+ AssignmentOperator:= _ -> _
+930 REM PRINT STR$(R);",";STR$(C);"; ";
+ Remark:PRINT STR$(R);",";STR$(C);"; ";
+932 PRINT S(I);
+ Variable:I -> _
+ Variable:S(_) -> _
+ CarriageControl:;
+940 NEXT I
+ Variable:I -> _
+950 PRINT "END"
+ TextConstant:"END"
  CarriageControl:NL
-940 PRINT "TOUR ENDS"
- TextConstant:"TOUR ENDS"
- CarriageControl:NL
-950 STOP
+960 RETURN
  
 1520 REM PRINT POSSIBLE MOVES
  Remark:PRINT POSSIBLE MOVES
@@ -465,19 +491,20 @@
  TextConstant:"POSSIBLE MOVES:"
  CarriageControl:;
 1524 FOR I = 1 TO 8
- control: Variable:I
+ control: Variable:I -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:8"]
 1525 PRINT P(L,I);
- Variable:L
- Variable:I
- Variable:P
+ Variable:L -> _
+ Variable:I -> _
+ Variable:P(_,_) -> _
  CarriageControl:;
 1526 NEXT I
- Variable:I
+ Variable:I -> _
 1527 PRINT
  CarriageControl:NL
 1529 RETURN
  
 1999 END
  
+

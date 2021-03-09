@@ -76,7 +76,7 @@
  Variable:I -> _
  Variable:C(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 340  NEXT I
  Variable:I -> _
 350  FOR J = 0 TO L1
@@ -123,7 +123,7 @@
  Variable:I -> _
  Variable:A(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 450  NEXT I
  Variable:I -> _
 500  FOR I = 0 TO L
@@ -260,7 +260,7 @@
  control: Variable:I -> _
  start:   ["Variable:L9 -> _"]
  end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> _"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
 2220     LET N = C(I)
  Variable:N -> _
  Variable:I -> _
@@ -269,7 +269,7 @@
 2230     LET Q = 100
  Variable:Q -> _
  NumericConstant:100
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 2240     FOR J = 1 TO 3
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -324,7 +324,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:C(_) -> _
  NumericConstant:0
- AssignmentOperator:= _ -> _
+ AssignmentOperator:= =_ -> _
 3020 FOR I = 0 TO L
  control: Variable:I -> _
  start:   ["NumericConstant:0"]
@@ -383,14 +383,14 @@
  NumericConstant:789
  NumericConstant:333
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
 9010 DATA 987,654,321,000,-1
  NumericConstant:987
  NumericConstant:654
  NumericConstant:321
  NumericConstant:0
  NumericConstant:1
- UnaryOperatorMinus:-(_) -> _
+ UnaryOperatorMinus:-(_) -> =_
 9999 END
  
 

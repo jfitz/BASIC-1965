@@ -1,17 +1,22 @@
 100 OPTION BASE 0
-110 REM squares visited
-112 DIM V(64)
-114 MAT LET V = ZER(64)
-120 REM square at each level
-122 DIM S(64)
-130 REM possible moves for each level
-132 DIM P(64, 8)
+110 REM size of board
+112 LET R0 = 8
+114 LET C0 = 8
+116 LET B0 = R0 * C0
+120 REM squares visited
+122 DIM V(B0)
+130 REM square at each level
+132 DIM S(B0)
+140 REM possible moves for each level
+142 DIM P(B0, 8)
+150 REM stop at this level
+152 LET L0 = 57
 200 REM Calculate row from square
-202 DEF FNR(S) = INT(S / 8) + 1
+202 DEF FNR(S) = INT(S / C0) + 1
 210 REM Calculate column from square
-212 DEF FNC(S) = MOD(S, 8) + 1
+212 DEF FNC(S) = MOD(S, C0) + 1
 220 REM Calculate square from row and column
-222 DEF FNS(R, C) = (R - 1) * 8 + (C - 1)
+222 DEF FNS(R, C) = (R - 1) * C0 + (C - 1)
 400 REM current level
 402 LET L = 0
 410 REM go to a square (a1, or 1,1, or 1)
@@ -22,8 +27,8 @@
 513 REM PRINT "GOING TO LEVEL";L;" SQUARE";S;" (";FNR(S);",";FNC(S);")"
 514 LET S(L) = S
 515 LET V(S) = 1
-516 REM if level 64, we are done
-518 IF L = 64 THEN 800
+516 REM if top level, we are done
+518 IF L = L0 THEN 800
 520 REM COMPUTE POSSIBLE MOVES
 522 GOSUB 600
 530 REM while possible move
@@ -98,9 +103,9 @@
 700 REM VALIDATE POSSIBLE MOVE
 701 REM moves off the board are illegal
 710 IF R5 < 1 THEN 770
-715 IF R5 > 8 THEN 770
+715 IF R5 > R0 THEN 770
 720 IF C5 < 1 THEN 770
-725 IF C5 > 8 THEN 770
+725 IF C5 > C0 THEN 770
 730 REM moves to squares already visited are illegal
 732 LET S5 = FNS(R5, C5)
 734 IF V(S5) > 0 THEN 770
@@ -111,15 +116,20 @@
 772 LET P(L, P) = -1
 790 RETURN
 800 PRINT "SUCCESS!"
-810 GOTO 900
+810 GOSUB 900
+812 STOP
 820 PRINT "INCOMPLETE"
-900 PRINT "THE TOUR IS:"
-910 FOR I = 1 TO 64
+830 GOSUB 900
+832 STOP
+900 PRINT "TOUR: ";
+910 FOR I = 1 TO L
 920 LET R = FNR(S(I))
 922 LET C = FNC(S(I))
-930 PRINT R; C
-940 PRINT "TOUR ENDS"
-950 STOP
+930 REM PRINT STR$(R);",";STR$(C);"; ";
+932 PRINT S(I);
+940 NEXT I
+950 PRINT "END"
+960 RETURN
 1520 REM PRINT POSSIBLE MOVES
 1523 PRINT "POSSIBLE MOVES:";
 1524 FOR I = 1 TO 8
@@ -128,3 +138,4 @@
 1527 PRINT
 1529 RETURN
 1999 END
+
