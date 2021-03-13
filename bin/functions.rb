@@ -2,8 +2,6 @@
 class AbstractFunction < AbstractElement
   attr_reader :name
   attr_reader :default_shape
-  attr_reader :signature
-  attr_reader :sigils
   attr_reader :content_type
   attr_reader :shape
   attr_reader :constant
@@ -20,6 +18,9 @@ class AbstractFunction < AbstractElement
     @valref = :value
     @operand = true
     @precedence = 10
+    @arg_types = nil
+    @arg_shapes = []
+    @arg_consts = []
   end
 
   def set_content_type(type_stack)
@@ -29,8 +30,7 @@ class AbstractFunction < AbstractElement
       raise(BASICExpressionError, "Bad expression #{@name} #{type}") unless
         types.class.to_s == 'Array'
 
-      @sigils = make_sigils(types)
-      @signature = make_signature(types)
+      @arg_types = types
     end
 
     type_stack.push(@content_type)
@@ -65,10 +65,22 @@ class AbstractFunction < AbstractElement
     constant_stack.push(@constant)
   end
 
+  def sigils
+    make_sigils(@arg_types, @arg_shapes)
+  end
+
+  def signature
+    make_signature(@arg_types, @arg_shapes)
+  end
+
+  def pop_stack(stack)
+    stack.pop
+  end
+
   def dump
     result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
     const = @constant ? '=' : ''
-    "#{self.class}:#{@name}#{@signature} -> #{const}#{result}"
+    "#{self.class}:#{@name}#{signature} -> #{const}#{result}"
   end
 
   def to_s
@@ -211,11 +223,8 @@ class UserFunction < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      if type_stack[-1].class.to_s == 'Array'
-        types = type_stack.pop
-        @sigils = make_sigils(types)
-        @signature = make_signature(types)
-      end
+      @arg_types = type_stack.pop if
+        type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(@content_type)
@@ -437,11 +446,8 @@ class FunctionCon1 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      if type_stack[-1].class.to_s == 'Array'
-        types = type_stack.pop
-        @sigils = make_sigils(types)
-        @signature = make_signature(types)
-      end
+      @arg_types = type_stack.pop if
+        type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(@content_type)
@@ -515,12 +521,9 @@ class FunctionCon2 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      if type_stack[-1].class.to_s == 'Array'
-        types = type_stack.pop
-        @sigils = make_sigils(types)
-        @signature = make_signature(types)
-      end
-    end
+      @arg_types = type_stack.pop if
+        type_stack[-1].class.to_s == 'Array'
+  end
 
     type_stack.push(@content_type)
   end
@@ -718,11 +721,8 @@ class FunctionIdn < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      if type_stack[-1].class.to_s == 'Array'
-        types = type_stack.pop
-        @sigils = make_sigils(types)
-        @signature = make_signature(types)
-      end
+      @arg_types = type_stack.pop if
+        type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(@content_type)
@@ -953,11 +953,8 @@ class FunctionRnd < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      if type_stack[-1].class.to_s == 'Array'
-        types = type_stack.pop
-        @sigils = make_sigils(types)
-        @signature = make_signature(types)
-      end
+      @arg_types = type_stack.pop if
+        type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(@content_type)
@@ -1136,11 +1133,8 @@ class FunctionZer1 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      if type_stack[-1].class.to_s == 'Array'
-        types = type_stack.pop
-        @sigils = make_sigils(types)
-        @signature = make_signature(types)
-      end
+      @arg_types = type_stack.pop if
+        type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(@content_type)
@@ -1214,11 +1208,8 @@ class FunctionZer2 < AbstractScalarFunction
 
   def set_content_type(type_stack)
     unless type_stack.empty?
-      if type_stack[-1].class.to_s == 'Array'
-        types = type_stack.pop
-        @sigils = make_sigils(types)
-        @signature = make_signature(types)
-      end
+      @arg_types = type_stack.pop if
+        type_stack[-1].class.to_s == 'Array'
     end
 
     type_stack.push(@content_type)
