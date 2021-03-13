@@ -1050,9 +1050,13 @@ class Program
       # print the line
       texts << line_number.to_s + line.list
 
-      # print the errors
       statement = line.statement
+
+      # print the errors
       statement.errors.each { |error| texts << ' ' + error }
+
+      # print the warnings
+      statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
 
       next unless list_tokens
 
@@ -1073,9 +1077,13 @@ class Program
       # print the line
       texts << line_number.to_s + line.list
 
-      # print the errors
       statement = line.statement
+
+      # print the errors
       statement.errors.each { |error| texts << ' ' + error }
+
+      # print the warnings
+      statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
 
       # print the line components
       parses = statement.dump
@@ -1094,9 +1102,13 @@ class Program
       # print the line
       texts << line_number.to_s + line.pretty
 
-      # print the errors
       statement = line.statement
+
+      # print the errors
       statement.errors.each { |error| texts << ' ' + error }
+
+      # print the warnings
+      statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
     end
 
     texts
@@ -1110,10 +1122,6 @@ class Program
 
       # print the line
       texts << line_number.to_s + line.profile(show_timing)
-
-      # print the errors
-      statement = line.statement
-      statement.errors.each { |error| texts << ' ' + error }
     end
 
     texts

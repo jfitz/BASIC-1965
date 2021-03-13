@@ -178,6 +178,7 @@ end
 # parent of all statement classes
 class AbstractStatement
   attr_reader :errors
+  attr_reader :warnings
   attr_reader :keywords
   attr_reader :tokens
   attr_reader :separators
@@ -199,6 +200,7 @@ class AbstractStatement
     @tokens = tokens_lists.flatten
     @separators = get_separators(@tokens)
     @errors = []
+    @warnings = []
     @valid = true
     @comment = false
     @elements = {
@@ -1463,6 +1465,7 @@ class IfStatement < AbstractIfStatement
 
       begin
         @expression = ValueExpressionSet.new(tokens_lists[0], :scalar)
+        @warnings << 'Constant expression' if @expression.constant
         @elements = make_references(nil, @expression)
         @comprehension_effort += @expression.comprehension_effort
       rescue BASICExpressionError => e

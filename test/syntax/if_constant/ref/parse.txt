@@ -1,0 +1,13 @@
+10 REM TEST OF CONSTANT EXPRESSION
+ Remark:TEST OF CONSTANT EXPRESSION
+20 IF 3 < 7 THEN 90
+ WARNING: Constant expression
+ NumericConstant:3
+ NumericConstant:7
+ BinaryOperatorLess:<(_,_) -> =?
+30 PRINT "FAILURE"
+ TextConstant:"FAILURE"
+ CarriageControl:NL
+99 END
+ 
+
