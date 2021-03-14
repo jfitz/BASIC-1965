@@ -1,0 +1,5 @@
+10 REM This is a test
+20 LET A,A=10
+40 PRINT A,B
+90 STOP
+99 END
