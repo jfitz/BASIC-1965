@@ -128,9 +128,14 @@ class Shell
     need_prompt = true
     @done = false
     until @done
-      @console_io.print_line('READY') if need_prompt
+      prompt = $options['prompt'].value
+      if need_prompt
+        @console_io.print_item(prompt)
+        @console_io.newline if prompt.size > 1
+      end
       cmd = @console_io.read_line
       need_prompt = process_line_keyboard(cmd)
+      need_prompt = true if prompt.size == 1
     end
   end
 
@@ -214,7 +219,7 @@ class Shell
       kwd_d = kwd.downcase
 
       if $options.key?(kwd_d)
-        value = $options[kwd_d].value.to_s.upcase
+        value = $options[kwd_d].to_s.upcase
         lines << 'OPTION ' + kwd + ' ' + value
       else
         raise BASICCommandError.new("Unknown option #{kwd}")
@@ -483,14 +488,14 @@ def make_command_tokenbuilders
   tokenbuilders = []
 
   keywords = %w[
-    ANALYZE BREAK NOBREAK CROSSREF DELETE DIMS EXIT LIST LOAD NEW OPTION PARSE
-    PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
+    ANALYZE BREAK NOBREAK CROSSREF DELETE DIMS EXIT IF LIST LOAD
+    NEW OPTION PARSE PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
     ECHO FIELD_SEP FORGET_FORNEXT HEADING
-    IF IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
+    IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT MAX_LINE_NUM MIN_LINE_NUM
     NEWLINE_SPEED
-    PRECISION PRINT_SPEED PRINT_WIDTH PROMPT_COUNT PROVENANCE
+    PRECISION PRINT_SPEED PRINT_WIDTH PROMPT PROMPTD PROMPT_COUNT PROVENANCE
     QMARK_AFTER_PROMPT RANDOMIZE REQUIRE_INITIALIZED
     SEMICOLON_ZONE_WIDTH TIMING TRACE ZONE_WIDTH
   ]
@@ -581,7 +586,9 @@ OptionParser.new do |opt|
   opt.on('--match-fornext') { |o| options[:match_fornext] = o }
   opt.on('--precision DIGITS') { |o| options[:precision] = o }
   opt.on('--print-width WIDTH') { |o| options[:print_width] = o }
+  opt.on('--prompt PROMPT') { |o| options[:prompt] = o }
   opt.on('--prompt-count') { |o| options[:prompt_count] = o }
+  opt.on('--promptd PROMPT') { |o| options[:promptd] = o }
   opt.on('--provenance') { |o| options[:provenance] = o }
   opt.on('--qmark-after-prompt') { |o| options[:qmark_after_prompt] = o }
   opt.on('--randomize') { |o| options[:randomize] = o }
@@ -618,7 +625,8 @@ int_9999 = { type: :int, max: 9999, min: 999 }
 separator = { type: :list, values: %w[COMMA SEMI NL NONE] }
 
 all_types = [:new, :loaded, :runtime]
-only_new = [:new] 
+loaded = [:new, :loaded]
+only_new = [:new]
 
 $options = {}
 
@@ -684,6 +692,18 @@ $options['print_speed'] = Option.new(all_types, int, print_speed)
 print_width = 72
 print_width = options[:print_width].to_i if options.key?(:print_width)
 $options['print_width'] = Option.new(all_types, int_132, print_width)
+
+$options['prompt'] = Option.new(loaded, string, 'READY')
+if options.key?(:prompt)
+  prompt = options[:prompt]
+  $options['prompt'] = Option.new(loaded, string, prompt)
+end
+
+$options['promptd'] = Option.new(loaded, string, 'DEBUG')
+if options.key?(:promptd)
+  promptd = options[:promptd]
+  $options['promptd'] = Option.new(loaded, string, promptd)
+end
 
 $options['prompt_count'] =
   Option.new(all_types, boolean, options.key?(:prompt_count))

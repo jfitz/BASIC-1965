@@ -1,0 +1,39 @@
+BASIC-1965 interpreter version -1
+
+READY
+OPTION PROMPT "OK"
+OPTION PROMPT OK
+
+OK
+10 REM TEST PROGRAM
+20 LET A = 10
+30 PRINT A
+99 END
+LIST
+10 REM TEST PROGRAM
+20 LET A = 10
+30 PRINT A
+99 END
+
+OK
+PARSE
+10 REM TEST PROGRAM
+ Remark:TEST PROGRAM
+20 LET A = 10
+ Variable:A -> _
+ NumericConstant:10
+ AssignmentOperator:= =_ -> _
+30 PRINT A
+ Variable:A -> _
+ CarriageControl:NL
+99 END
+ 
+
+OK
+RUN
+ 10
+STOP in line 99
+OK
+EXIT
+BASIC-1965 ended
+

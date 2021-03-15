@@ -431,7 +431,9 @@ class Interpreter
     @debug_done = false
 
     until @debug_done
-      @console_io.print_line('DEBUG')
+      promptd = $options['promptd'].value
+      @console_io.print_item(promptd)
+      @console_io.newline if promptd.size > 1
       cmd = @console_io.read_line
 
       # tokenize

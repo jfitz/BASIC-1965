@@ -95,6 +95,12 @@ Interactive mode
 This is the classic mode, in which the user may edit programs and run them in the BASIC environment.
 You may use any of the immediate commands (see below).
 
+Interactive mode displays a prompt when it is ready for input.
+The default prompt is 'READY'.
+The prompt may be changed with the --prompt command-line option and the 'OPTION PROMPT' command.
+Short prompts (length of one character) are displayed when BASIC is ready for input.
+Long prompts (more than one character) are displayed when BASIC is ready for input but not after the entry of a program line.
+
 Run mode
 ~~~~~~~~
 
@@ -123,6 +129,8 @@ When the BASIC program ends, BASIC-1965 ends.
 |--match-fornext |Require exact pairing of FOR/NEXT loops. The default allows programs to jump out of an inner loop and continue the outer loop.
 |--precision |Sets the precision for numeric variables. Default is 6, maximum is 16. Set to "INFINITE" for maximum precision provided by Ruby.
 |--print-width width |Specifies a print width. Lines will wrap at the specified column. Default value is 72.
+|--prompt PROMPT |Specifies the command prompt. Single-character prompts have no linefeed and occur more often.
+|--promptd PROMPT |Specifies the debugger prompt. Single-character prompts have no linefeed and occur more often.
 |--prompt-count |INPUT statements prompt the user with the number of expected values.
 |--provenance |When displaying a variable in a trace, also display the line number where it was set.
 |--qmark-after-prompt |On an INPUT line, print the question mark after the prompt.
@@ -403,35 +411,6 @@ The first form ('OPTION' by itself) lists the options and their current values.
 The second form lists a specific option and its current value.
 The final form sets the value for an option.
 
-The options that can be set are:
-
-    BASE
-    DEFAULT_PROMPT
-    DETECT_INFINITE_LOOP
-    ECHO
-    FIELD_SEP
-    FORGET_FORNEXT
-    HEADING
-    IGNORE_RND_ARG
-    IMPLIED_SEMICOLON
-    LOCK_FORNEXT
-    MATCH_FORNEXT
-    MAX_LINE_NUM
-    MIN_LINE_NUM
-    NEWLINE_SPEED
-    PRECISION
-    PRINT_SPEED
-    PRINT_WIDTH
-    PROMPT_COUNT
-    PROVENANCE
-    QMARK_AFTER_PROMPT
-    RANDOMIZE
-    REQUIRE_INITIALIZED
-    SEMICOLON_ZONE_WIDTH
-    TIMING
-    TRACE
-    ZONE_WIDTH
-
 These options can be initialized on the command line.
 The OPTION command overrides the command-line setting.
 
@@ -455,6 +434,8 @@ The OPTION command overrides the command-line setting.
 |PRECISION |NLP |numeric 1 to 16, or "INFINITE" |6 |Sets the precision for numeric values
 |PRINT_SPEED |NLP |numeric |0 |Limit printing speed (a value of 10 emulates an old TeleType)
 |PRINT_WIDTH |NLP |numeric |72 |Wrap output at the specified column; 0 disables wrapping
+|PROMPT |NL |string |READY |Sets the text of the command prompt
+|PROMPTD |NL |string |DEBUG |Sets the text of the debugger prompt
 |PROMPT_COUNT |NLP |TRUE or FALSE |FALSE |Displays the number of items to be input
 |PROVENANCE |NLP |TRUE or FALSE |FALSE |Expands trace display to include the line in which a variable was assigned its value
 |QMARK_AFTER_PROMPT |NLP |TRUE or FALSE |FALSE |Display '?' after a prompt in an INPUT statement
