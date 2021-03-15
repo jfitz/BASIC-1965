@@ -1629,6 +1629,10 @@ class Declaration < AbstractElement
   end
 
   def set_content_type(type_stack)
+    unless type_stack.empty?
+      type_stack.pop if type_stack[-1].class.to_s == 'Array'
+    end
+
     type_stack.push(@content_type)
   end
 
@@ -1649,6 +1653,10 @@ class Declaration < AbstractElement
   end
 
   def set_constant(constant_stack)
+    unless constant_stack.empty?
+      constant_stack.pop if constant_stack[-1].class.to_s == 'Array'
+    end
+
     constant_stack.push(@constant)
   end
 

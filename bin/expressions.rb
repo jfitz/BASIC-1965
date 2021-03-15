@@ -988,6 +988,9 @@ class Expression
     @elements.each do |element|
       element.set_content_type(stack)
     end
+
+    raise BASICExpressionError.new('Too many operands') if
+      stack.size > 1
   end
 
   def shape
