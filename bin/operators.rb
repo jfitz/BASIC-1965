@@ -123,6 +123,7 @@ class BinaryOperator < AbstractElement
     super()
 
     @op = text.to_s
+    @operation = nil
     @content_type = :unknown
     @shape = :unknown
     @constant =  false
@@ -209,7 +210,60 @@ class BinaryOperator < AbstractElement
     @op
   end
 
+  def evaluate(_, arg_stack)
+    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
+
+    y = arg_stack.pop
+    x = arg_stack.pop
+
+    base = $options['base'].value
+
+    if x.matrix? && y.matrix?
+      matrix_matrix(x, y)
+    elsif x.matrix? && y.scalar?
+      matrix_scalar(x, y)
+    elsif x.scalar? && y.matrix?
+      scalar_matrix(x, y)
+    elsif x.array? && y.array?
+      array_array(x, y, base)
+    elsif x.array? && y.scalar?
+      array_scalar(x, y, base)
+    elsif x.scalar? && y.array?
+      scalar_array(x, y, base)
+    else
+      op_scalar_scalar(x, y)
+    end
+  end
+
   private
+
+  def matrix_matrix(x, y)
+    op_matrix_matrix(@operation, x, y)
+  end
+
+  def matrix_scalar(x, y)
+    op_matrix_scalar(@operation, x, y)
+  end
+
+  def scalar_matrix(x, y)
+    op_scalar_matrix(@operation, x, y)
+  end
+
+  def array_array(x, y, base)
+    op_array_array(@operation, x, y, base)
+  end
+
+  def array_scalar(x, y, base)
+    op_array_scalar(@operation, x, y, base)
+  end
+
+  def scalar_array(x, y, base)
+    op_scalar_array(@operation, x, y, base)
+  end
+
+  def op_scalar_scalar(x, y)
+    x.public_send(@operation, y)
+  end
 
   def compatible(type1, type2)
     return true if type1 == type2
@@ -903,6 +957,7 @@ class BinaryOperatorPlus < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :add
     @precedence = 6
   end
 
@@ -922,59 +977,6 @@ class BinaryOperatorPlus < BinaryOperator
     @content_type = :numeric
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:add, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:add, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:add, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:add, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:add, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:add, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:add, y)
-  end
 end
 
 class BinaryOperatorMinus < BinaryOperator
@@ -986,6 +988,7 @@ class BinaryOperatorMinus < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :subtract
     @precedence = 6
   end
 
@@ -1005,59 +1008,6 @@ class BinaryOperatorMinus < BinaryOperator
     @content_type = :numeric
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:subtract, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:subtract, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:subtract, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:subtract, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:subtract, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:subtract, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:subtract, y)
-  end
 end
 
 class BinaryOperatorMultiply < BinaryOperator
@@ -1069,6 +1019,7 @@ class BinaryOperatorMultiply < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :multiply
     @precedence = 7
   end
 
@@ -1088,59 +1039,6 @@ class BinaryOperatorMultiply < BinaryOperator
     @content_type = :numeric
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:multiply, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:multiply, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:multiply, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:multiply, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:multiply, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:multiply, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:multiply, y)
-  end
 end
 
 class BinaryOperatorDivide < BinaryOperator
@@ -1152,6 +1050,7 @@ class BinaryOperatorDivide < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :divide
     @precedence = 7
   end
 
@@ -1171,59 +1070,6 @@ class BinaryOperatorDivide < BinaryOperator
     @content_type = :numeric
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:divide, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:divide, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:divide, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:divide, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:divide, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:divide, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:divide, y)
-  end
 end
 
 class BinaryOperatorPower < BinaryOperator
@@ -1235,6 +1081,7 @@ class BinaryOperatorPower < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :power
     @precedence = 8
   end
 
@@ -1254,59 +1101,6 @@ class BinaryOperatorPower < BinaryOperator
     @content_type = :numeric
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:power, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:power, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:power, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:power, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:power, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:power, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:power, y)
-  end
 end
 
 class BinaryOperatorEqual < BinaryOperator
@@ -1318,6 +1112,7 @@ class BinaryOperatorEqual < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :b_eq
     @precedence = 4
   end
 
@@ -1337,59 +1132,6 @@ class BinaryOperatorEqual < BinaryOperator
     @content_type = :boolean
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:b_eq, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:b_eq, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:b_eq, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:b_eq, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:b_eq, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:b_eq, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:b_eq, y)
-  end
 end
 
 class BinaryOperatorNotEqual < BinaryOperator
@@ -1401,6 +1143,7 @@ class BinaryOperatorNotEqual < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :b_ne
     @precedence = 4
   end
 
@@ -1420,59 +1163,6 @@ class BinaryOperatorNotEqual < BinaryOperator
     @content_type = :boolean
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:b_ne, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:b_ne, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:b_ne, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:b_ne, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:b_ne, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:b_ne, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:b_ne, y)
-  end
 end
 
 class BinaryOperatorLess < BinaryOperator
@@ -1484,6 +1174,7 @@ class BinaryOperatorLess < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :b_lt
     @precedence = 4
   end
 
@@ -1503,59 +1194,6 @@ class BinaryOperatorLess < BinaryOperator
     @content_type = :boolean
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:b_lt, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:b_lt, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:b_lt, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:b_lt, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:b_lt, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:b_lt, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:b_lt, y)
-  end
 end
 
 class BinaryOperatorLessEqual < BinaryOperator
@@ -1567,6 +1205,7 @@ class BinaryOperatorLessEqual < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :b_le
     @precedence = 4
   end
 
@@ -1586,59 +1225,6 @@ class BinaryOperatorLessEqual < BinaryOperator
     @content_type = :boolean
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:b_le, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:b_le, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:b_le, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:b_le, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:b_le, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:b_le, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:b_le, y)
-  end
 end
 
 class BinaryOperatorGreater < BinaryOperator
@@ -1650,6 +1236,7 @@ class BinaryOperatorGreater < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :b_gt
     @precedence = 4
   end
 
@@ -1669,59 +1256,6 @@ class BinaryOperatorGreater < BinaryOperator
     @content_type = :boolean
     type_stack.push(@content_type)
   end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:b_gt, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:b_gt, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:b_gt, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:b_gt, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:b_gt, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:b_gt, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:b_gt, y)
-  end
 end
 
 class BinaryOperatorGreaterEqual < BinaryOperator
@@ -1733,6 +1267,7 @@ class BinaryOperatorGreaterEqual < BinaryOperator
   def initialize(text)
     super
 
+    @operation = :b_ge
     @precedence = 4
   end
 
@@ -1751,58 +1286,5 @@ class BinaryOperatorGreaterEqual < BinaryOperator
 
     @content_type = :boolean
     type_stack.push(@content_type)
-  end
-
-  def evaluate(_, arg_stack)
-    raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
-
-    y = arg_stack.pop
-    x = arg_stack.pop
-
-    base = $options['base'].value
-
-    if x.matrix? && y.matrix?
-      matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      array_array(x, y, base)
-    elsif x.array? && y.scalar?
-      array_scalar(x, y, base)
-    elsif x.scalar? && y.array?
-      scalar_array(x, y, base)
-    else
-      op_scalar_scalar(x, y)
-    end
-  end
-
-  def matrix_matrix(x, y)
-    op_matrix_matrix(:b_ge, x, y)
-  end
-
-  def matrix_scalar(x, y)
-    op_matrix_scalar(:b_ge, x, y)
-  end
-
-  def scalar_matrix(x, y)
-    op_scalar_matrix(:b_ge, x, y)
-  end
-
-  def array_array(x, y, base)
-    op_array_array(:b_ge, x, y, base)
-  end
-
-  def array_scalar(x, y, base)
-    op_array_scalar(:b_ge, x, y, base)
-  end
-
-  def scalar_array(x, y, base)
-    op_scalar_array(:b_ge, x, y, base)
-  end
-
-  def op_scalar_scalar(x, y)
-    x.public_send(:b_ge, y)
   end
 end
