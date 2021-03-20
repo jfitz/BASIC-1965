@@ -732,80 +732,7 @@ class UnaryOperatorPlus < UnaryOperator
     raise(BASICExpressionError, 'Not enough operands') if arg_stack.empty?
 
     x = arg_stack.pop
-
-    if x.matrix?
-      posate_matrix(x)
-    elsif x.array?
-      posate_array(x)
-    else
-      posate(x)
-    end
-  end
-
-  private
-
-  def posate_a(source)
-    n_cols = source.dimensions[0].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      value = source.get_value(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = posate(value)
-    end
-
-    values
-  end
-
-  def posate_1(source)
-    n_cols = source.dimensions[0].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      value = source.get_value_1(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = posate(value)
-    end
-
-    values
-  end
-
-  def posate_2(source)
-    n_rows = source.dimensions[0].to_i
-    n_cols = source.dimensions[1].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_rows).each do |row|
-      (base..n_cols).each do |col|
-        value = source.get_value_2(row, col)
-        coords = AbstractElement.make_coords(row, col)
-        values[coords] = posate(value)
-      end
-    end
-
-    values
-  end
-
-  def posate(a)
-    f = a.to_f
-    NumericConstant.new(f)
-  end
-
-  def posate_array(a)
-    dims = a.dimensions
-    values = posate_a(a)
-    BASICArray.new(dims, values)
-  end
-
-  def posate_matrix(a)
-    dims = a.dimensions
-    values = posate_1(a) if dims.size == 1
-    values = posate_2(a) if dims.size == 2
-
-    Matrix.new(dims, values)
+    x.posate
   end
 end
 
@@ -825,14 +752,7 @@ class UnaryOperatorMinus < UnaryOperator
     raise(BASICExpressionError, 'Not enough operands') if arg_stack.empty?
 
     x = arg_stack.pop
-
-    if x.matrix?
-      negate_matrix(x)
-    elsif x.array?
-      negate_array(x)
-    else
-      negate(x)
-    end
+    x.negate
   end
 
   private
@@ -936,12 +856,7 @@ class UnaryOperatorHash < UnaryOperator
     raise(BASICExpressionError, 'Not enough operands') if arg_stack.empty?
 
     x = arg_stack.pop
-
-    if x.matrix?
-    elsif x.array?
-    else
-      file_handle(x)
-    end
+    x.filehandle
   end
 
   private

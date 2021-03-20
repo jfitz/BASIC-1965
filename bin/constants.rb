@@ -396,6 +396,18 @@ class AbstractValueElement < AbstractElement
     BooleanConstant.new(@value <= other.to_v)
   end
 
+  def posate
+    raise(BASICExpressionError, 'Invalid operator +')
+  end
+
+  def negate
+    raise(BASICExpressionError, 'Invalid operator -')
+  end
+
+  def filehandle
+    raise(BASICExpressionError, 'Invalid operator #')
+  end
+
   def +(_)
     raise(BASICExpressionError, 'Invalid operator +')
   end
@@ -553,6 +565,21 @@ class NumericConstant < AbstractValueElement
 
   def <=(other)
     @value <= other.to_v
+  end
+
+  def posate
+    f = to_f
+    NumericConstant.new(f)
+  end
+
+  def negate
+    f = -to_f
+    NumericConstant.new(f)
+  end
+
+  def filehandle
+    num = to_i
+    FileHandle.new(num)
   end
 
   def +(other)
