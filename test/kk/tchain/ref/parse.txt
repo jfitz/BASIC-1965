@@ -59,12 +59,12 @@
  Variable:Q(,) -> _(,)
  Variable:N(,) -> _(,)
  Variable:Q(,) -> _(,)
- BinaryOperatorMinus:-(_,_) -> _(,)
+ BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 280 MAT N = INV(Q)
  Variable:N(,) -> _(,)
  Variable:Q(,) -> _(,)
- FunctionInv:INV(_) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 290 PRINT "FUNDAMENTAL MATRIX"
  TextConstant:"FUNDAMENTAL MATRIX"
@@ -79,7 +79,7 @@
  Variable:T(,) -> _(,)
  Variable:N(,) -> _(,)
  Variable:U(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 340 PRINT "ABSORBTION TIMES"
  TextConstant:"ABSORBTION TIMES"
@@ -94,7 +94,7 @@
  Variable:Q(,) -> _(,)
  Variable:N(,) -> _(,)
  Variable:R(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 390 PRINT "ABSORBTION PROBABILITIES"
  TextConstant:"ABSORBTION PROBABILITIES"

@@ -6,7 +6,7 @@
  FunctionCon2:CON(_) -> =_(,)
  NumericConstant:1
  UnaryOperatorMinus:-(_) -> =_
- BinaryOperatorMultiply:*(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_(,),_) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 30 MAT PRINT M
  Variable:M(,) -> _(,)
@@ -18,7 +18,7 @@
  FunctionCon2:CON(_,_) -> =_(,)
  NumericConstant:3
  UnaryOperatorMinus:-(_) -> =_
- BinaryOperatorMultiply:*(_,_) -> =_(,)
+ BinaryOperatorMultiply:*(_(,),_) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 50 MAT PRINT M2
  Variable:M2(,) -> _(,)

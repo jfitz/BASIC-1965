@@ -12,12 +12,12 @@
  Variable:P(,) -> _(,)
  Variable:A(,) -> _(,)
  Variable:B(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 130 MAT T = TRN(A)
  Variable:T(,) -> _(,)
  Variable:A(,) -> _(,)
- FunctionTrn:TRN(_) -> _(,)
+ FunctionTrn:TRN(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 140
 200 PRINT "FIRST MATRIX"

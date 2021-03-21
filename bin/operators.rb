@@ -46,6 +46,8 @@ class UnaryOperator < AbstractElement
 
     @shape = shape_stack.pop
 
+    @arg_shapes = [@shape]
+
     shape_stack.push(@shape)
   end
 
@@ -141,6 +143,8 @@ class BinaryOperator < AbstractElement
 
     b_shape = shape_stack.pop
     a_shape = shape_stack.pop
+
+    @arg_shapes = [a_shape, b_shape]
 
     table =
     {

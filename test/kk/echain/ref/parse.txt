@@ -41,7 +41,7 @@
  Variable:Z(,) -> _(,)
  Variable:Z(,) -> _(,)
  Variable:P(,) -> _(,)
- BinaryOperatorMinus:-(_,_) -> _(,)
+ BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 210 FOR I = 1 TO N
  control: Variable:I -> _
@@ -58,7 +58,7 @@
 240 MAT M = INV(Z)
  Variable:M(,) -> _(,)
  Variable:Z(,) -> _(,)
- FunctionInv:INV(_) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 245 MAT A = ZER(1,N)
  Variable:A(,) -> _(,)
@@ -99,7 +99,7 @@
  Variable:M(,) -> _(,)
  Variable:M(,) -> _(,)
  Variable:P(,) -> _(,)
- BinaryOperatorMinus:-(_,_) -> _(,)
+ BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 340 FOR I = 1 TO N
  control: Variable:I -> _
@@ -128,7 +128,7 @@
 390 MAT Z = INV(M)
  Variable:Z(,) -> _(,)
  Variable:M(,) -> _(,)
- FunctionInv:INV(_) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 400
 410 FOR I = 1 TO N
@@ -172,7 +172,7 @@
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
  Variable:M(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
  TextConstant:"FIRST PASSAGE TIME IN EQUILIBRIUM"

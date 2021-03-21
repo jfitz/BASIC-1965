@@ -27,7 +27,7 @@ class AbstractFunction < AbstractElement
     unless type_stack.empty?
       types = type_stack.pop
 
-      raise(BASICExpressionError, "Bad expression #{@name} #{type}") unless
+      raise(BASICExpressionError, "Bad expression #{@name} #{types}") unless
         types.class.to_s == 'Array'
 
       @arg_types = types
@@ -38,10 +38,12 @@ class AbstractFunction < AbstractElement
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      my_shapes = shape_stack.pop
+      shapes = shape_stack.pop
 
-      raise(BASICExpressionError, "Bad expression #{@name} #{my_shape}") unless
-        my_shapes.class.to_s == 'Array'
+      raise(BASICExpressionError, "Bad expression #{@name} #{shapes}") unless
+        shapes.class.to_s == 'Array'
+
+      @arg_shapes = shapes
     end
 
     shape_stack.push(@shape)
@@ -232,7 +234,7 @@ class UserFunction < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+      @arg_shapes = shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(@shape)
@@ -455,7 +457,7 @@ class FunctionCon1 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+      @arg_shapes = shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(@shape)
@@ -530,7 +532,7 @@ class FunctionCon2 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+      @arg_shapes = shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(@shape)
@@ -730,7 +732,7 @@ class FunctionIdn < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+      @arg_shapes = shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(@shape)
@@ -962,7 +964,7 @@ class FunctionRnd < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+      @arg_shapes = shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(@shape)
@@ -1142,7 +1144,7 @@ class FunctionZer1 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+      @arg_shapes = shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(@shape)
@@ -1217,7 +1219,7 @@ class FunctionZer2 < AbstractScalarFunction
 
   def set_shape(shape_stack)
     unless shape_stack.empty?
-      shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
+      @arg_shapes = shape_stack.pop if shape_stack[-1].class.to_s == 'Array'
     end
 
     shape_stack.push(@shape)

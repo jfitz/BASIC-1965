@@ -47,7 +47,7 @@
 330 MAT B = INV(A)
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
- FunctionInv:INV(_) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 340 PRINT "ITS INVERSE"
  TextConstant:"ITS INVERSE"
@@ -60,13 +60,13 @@
  Variable:R(,) -> _(,)
  Variable:A(,) -> _(,)
  Variable:B(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 410 MAT R = R-C
  Variable:R(,) -> _(,)
  Variable:R(,) -> _(,)
  Variable:C(,) -> _(,)
- BinaryOperatorMinus:-(_,_) -> _(,)
+ BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 420 PRINT "ROUNDOFF ERRORS"
  TextConstant:"ROUNDOFF ERRORS"

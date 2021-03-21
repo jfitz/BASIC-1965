@@ -127,13 +127,13 @@
 370 MAT U = INV(C)
  Variable:U(,) -> _(,)
  Variable:C(,) -> _(,)
- FunctionInv:INV(_) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 380 MAT P = U*B
  Variable:P(,) -> _(,)
  Variable:U(,) -> _(,)
  Variable:B(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 390
 400 PRINT "NODE", "VOLTAGE"

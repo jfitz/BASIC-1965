@@ -23,13 +23,13 @@
 160 MAT C = INV(A)
  Variable:C(,) -> _(,)
  Variable:A(,) -> _(,)
- FunctionInv:INV(_) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 170 MAT X = C*B
  Variable:X(,) -> _(,)
  Variable:C(,) -> _(,)
  Variable:B(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 180
 190 MAT PRINT X

@@ -147,6 +147,10 @@ class AbstractElement
   def make_sigils(types, shapes)
     return nil if types.nil? || shapes.nil?
 
+    msg = "Different number of types (#{types.count}) and shapes (#{shapes.count})"
+    raise BASICExpressionError.new(msg) unless
+      types.count == shapes.count
+
     sigil_chars = {
       numeric: '_',
       integer: '%',
@@ -156,8 +160,11 @@ class AbstractElement
 
     sigils = []
 
-    types.each do |type|
-      sigils << sigil_chars[type]
+    types.each_with_index do |type, index|
+      sigil = sigil_chars[type]
+      sigil += '()' if shapes[index] == :array
+      sigil += '(,)' if shapes[index] == :matrix
+      sigils << sigil
     end
 
     sigils

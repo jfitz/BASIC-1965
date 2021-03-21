@@ -10,7 +10,7 @@
  Variable:S(,) -> _(,)
  Variable:A(,) -> _(,)
  Variable:B(,) -> _(,)
- BinaryOperatorPlus:+(_,_) -> _(,)
+ BinaryOperatorPlus:+(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 140 PRINT "THE SUM"
  TextConstant:"THE SUM"
@@ -23,7 +23,7 @@
  Variable:D(,) -> _(,)
  Variable:A(,) -> _(,)
  Variable:B(,) -> _(,)
- BinaryOperatorMinus:-(_,_) -> _(,)
+ BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 180 PRINT "THE DIFFERENCE"
  TextConstant:"THE DIFFERENCE"
@@ -38,7 +38,7 @@
  NumericConstant:4
  BinaryOperatorDivide:/(_,_) -> =_
  Variable:A(,) -> _(,)
- BinaryOperatorMultiply:*(_,_) -> _(,)
+ BinaryOperatorMultiply:*(_,_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 220 PRINT "SCALAR MULTIPLE"
  TextConstant:"SCALAR MULTIPLE"
