@@ -1618,13 +1618,10 @@ class LetStatement < AbstractScalarLetStatement
 
     # more left-hand values -> repeat last rhs
     # more rhs -> drop extra values
-    i = 0
-    l_values.each do |l_value|
-      j = [i, r_values.count - 1].min
+    l_values.each_with_index do |l_value, index|
+      j = [index, r_values.count - 1].min
       r_value = r_values[j]
       interpreter.set_value(l_value, r_value)
-
-      i += 1
     end
   end
 end

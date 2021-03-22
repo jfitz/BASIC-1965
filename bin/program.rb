@@ -121,7 +121,10 @@ class Line
 
   def parse
     texts = []
+
     @statements.each { |statement| texts << statement.dump }
+
+    texts
   end
 
   def profile(show_timing)
@@ -651,7 +654,6 @@ class Program
   def profile(args, show_timing)
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
-    texts = []
     line_number_range = line_list_spec(args)
     line_numbers = line_number_range.line_numbers
     profile_lines_errors(line_numbers, show_timing)
@@ -870,7 +872,7 @@ class Program
         n_spaces = num_spaces - token.size + 2
         spaces = ' ' * n_spaces
 
-        texts << line = token + ":" + spaces + line_refs
+        texts << token + ":" + spaces + line_refs
       else
         n_spaces = 5
         spaces = ' ' * n_spaces
@@ -1061,8 +1063,9 @@ class Program
       next unless list_tokens
 
       tokens = line.tokens
-      text = tokens.map(&:to_s)
-      texts << 'TOKENS: ' + text.to_s
+      text_tokens = tokens.map(&:to_s)
+
+      texts << 'TOKENS: ' + text_tokens.to_s
     end
 
     texts

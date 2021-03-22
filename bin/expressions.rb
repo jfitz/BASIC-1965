@@ -1368,6 +1368,7 @@ end
 # base class for expressions
 class AbstractExpressionSet
   attr_reader :comprehension_effort
+  attr_reader :expressions
 
   def initialize(tokens, my_shape)
     @tokens = tokens
@@ -1921,7 +1922,7 @@ end
 
 # Assignment
 class Assignment
-  attr_reader :target
+  attr_reader :warnings
   attr_reader :numerics
   attr_reader :strings
   attr_reader :booleans
@@ -1932,7 +1933,7 @@ class Assignment
   attr_reader :comprehension_effort
 
   def initialize(tokens, my_shape)
-    # parse into variable, '=', expression
+    # parse into variables, '=', expressions
     @token_lists = split_tokens(tokens)
 
     line_text = tokens.map(&:to_s).join
@@ -1941,6 +1942,7 @@ class Assignment
       @token_lists.size != 3 ||
       !(@token_lists[1].operator? && @token_lists[1].equals?)
 
+    @warnings = []
     @numerics = []
     @strings = []
     @booleans = []
@@ -1949,26 +1951,28 @@ class Assignment
     @functions = []
     @userfuncs = []
 
-    @target = TargetExpressionSet.new(@token_lists[0], my_shape)
+    @targets = TargetExpressionSet.new(@token_lists[0], my_shape)
 
     raise(BASICExpressionError, 'Duplicate targets') unless
-      @target.to_ss.uniq.size == @target.to_ss.size
+      @targets.to_ss.uniq.size == @targets.to_ss.size
 
-    @expression = ValueExpressionSet.new(@token_lists[2], my_shape)
+    @expressions = ValueExpressionSet.new(@token_lists[2], my_shape)
+
+    check_types
     make_references
 
     @comprehension_effort =
-      @target.comprehension_effort + @expression.comprehension_effort
+      @targets.comprehension_effort + @expressions.comprehension_effort
   end
 
   def dump
     lines = []
 
-    lines += @target.dump
-    lines += @expression.dump
+    lines += @targets.dump
+    lines += @expressions.dump
 
-    ts = @target.signature
-    es = @expression.signature
+    ts = @targets.signature
+    es = @expressions.signature
     lines << "AssignmentOperator:= #{es} -> #{ts}"
   end
 
@@ -1992,35 +1996,69 @@ class Assignment
     results
   end
 
+  def compatible(type1, type2)
+    return true if type1 == type2
+
+    numerics = [:numeric]
+
+    return true if numerics.include?(type1) && numerics.include?(type2)
+
+    false
+  end
+
+  def check_types
+    # more left-hand values -> repeat last rhs
+    # more rhs -> drop extra values
+    targets = @targets.expressions
+    expressions = @expressions.expressions
+    
+    targets.each_with_index do |target, index|
+      j = [index, expressions.count - 1].min
+      expression = expressions[j]
+
+      t_type = target.content_type
+      e_type = expression.content_type
+      msg = "Target type (#{t_type}) does not match expression type (#{e_type})."
+      raise BASICExpressionError.new(msg) unless compatible(e_type, t_type)
+
+      @warnings << msg unless e_type == t_type
+      
+      t_shape = target.shape
+      e_shape = expression.shape
+      msg = "Target shape (#{t_shape}) does not match expression shape (#{e_shape})."
+      raise BASICExpressionError.new(msg) unless e_shape == t_shape
+    end
+  end
+
   def make_references
-    @numerics = @target.numerics + @expression.numerics
-    @strings = @target.strings + @expression.strings
-    @booleans = @target.booleans + @expression.booleans
-    @variables = @target.variables + @expression.variables
-    @operators = @target.operators + @expression.operators
-    @functions = @target.functions + @expression.functions
-    @userfuncs = @target.userfuncs + @expression.userfuncs
+    @numerics = @targets.numerics + @expressions.numerics
+    @strings = @targets.strings + @expressions.strings
+    @booleans = @targets.booleans + @expressions.booleans
+    @variables = @targets.variables + @expressions.variables
+    @operators = @targets.operators + @expressions.operators
+    @functions = @targets.functions + @expressions.functions
+    @userfuncs = @targets.userfuncs + @expressions.userfuncs
   end
 
   public
 
   def count_target
-    @target.count
+    @targets.count
   end
 
   def count_value
-    @expression.count
+    @expressions.count
   end
 
   def eval_value(interpreter)
-    @expression.evaluate(interpreter)
+    @expressions.evaluate(interpreter)
   end
 
   def eval_target(interpreter)
-    @target.evaluate(interpreter)
+    @targets.evaluate(interpreter)
   end
 
   def to_s
-    @target.to_s + ' = ' + @expression.to_s
+    @targets.to_s + ' = ' + @expressions.to_s
   end
 end
