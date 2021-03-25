@@ -27,6 +27,7 @@ class AbstractElement
     @list = false
     @carriage = false
     @valref = nil
+    @set_dims = false
     @numeric_constant = false
     @text_constant = false
     @boolean_constant = false
@@ -1354,6 +1355,7 @@ end
 # Hold a variable (name with possible subscripts and value)
 class Variable < AbstractElement
   attr_writer :valref
+  attr_writer :set_dims
   attr_reader :content_type
   attr_reader :shape
   attr_reader :constant
@@ -1629,7 +1631,7 @@ class Variable < AbstractElement
               'Variable expects subscripts, found empty parentheses')
       end
 
-      interpreter.check_subscripts(@variable_name, @subscripts)
+      interpreter.check_subscripts(@variable_name, @subscripts) unless @set_dims
     end
 
     self

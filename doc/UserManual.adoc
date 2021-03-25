@@ -1729,49 +1729,53 @@ Functions may be used in numeric expressions.
 
 |==========
 |Function |Result
-|ABS(x) |Computes the absolute value of x.
-|ARCCOS(x) |Computes the arccosine of x, providing the answer in radians.
-|ARCSIN(x) |Computes the arcsine of x, providing the answer in radians.
-|ARCTAN(x) |Computes the arctangent of x, providing the answer in radians.
-|ARCTAN(y,x) |Computes the arctangent of y and x, providing the answer in radians.
-|ATN(x) |Synonym for ARCTAN(x)
-|ATN(y,x) |Synonym for ARCTAN(y,x)
-|CON2(n) |numeric matrix |Creates a matrix containing all ones, with n columns
-|CON1(n) |numeric array |Creates an array containing all ones, with n values
-|CON(n) |numeric matrix |Synonym for CON2(n)
-|CON2(r,c) |Creates a matrix containing all ones, with r rows and c columns.
-|CON(r,c) |Synonym for CON2(r,c)
-|CON or CON() |numeric matrix |Creates a matrix containing all ones, with dimensions based on the assignment target.
-|COS(x) |Computes the cosine of x, where x is in radians.
-|COT(x) |Computes the cotangent of x, where x is in radians.
-|CSC(x) |Computes the cosecant of x, where x is in radians.
-|DET(m)	|Computes the determinant of the matrix. The matrix must be square.
-|EXP(x) |Computes e to the x power.
+|ABS(x) |numeric scalar |Computes the absolute value of x.
+|ARCCOS(x) |numeric scalar |Computes the arccosine of x, providing the answer in radians.
+|ARCSIN(x) |numeric scalar |Computes the arcsine of x, providing the answer in radians.
+|ARCTAN(x) |numeric scalar |Computes the arctangent of x, providing the answer in radians.
+|ARCTAN(y,x) |numeric scalar |Computes the arctangent of y and x, providing the answer in radians.
+|ATN(x) |numeric scalar |Synonym for ARCTAN(x).
+|ATN(y,x) |numeric scalar |Synonym for ARCTAN(y,x).
+|CON2(n) |numeric matrix |Creates a matrix containing all ones, with n columns.
+|CON1(n) |numeric array |Creates an array containing all ones, with n values.
+|CON(n) |numeric matrix |Synonym for CON2(n).
+|CON2(r,c) |numeric matrix |Creates a matrix containing all ones, with r rows and c columns.
+|CON(r,c) |numeric matrix |Synonym for CON2(r,c).
+|CON() |numeric matrix |Creates a matrix containing all ones, with dimensions based on the assignment target.
+|CON |numeric matrix |Special form of CON().
+|COS(x) |numeric scalar |Computes the cosine of x, where x is in radians.
+|COT(x) |numeric scalar |Computes the cotangent of x, where x is in radians.
+|CSC(x) |numeric scalar |Computes the cosecant of x, where x is in radians.
+|DET(m)	|numeric scalar |Computes the determinant of the matrix. The matrix must be square.
+|EXP(x) |numeric scalar |Computes e to the x power.
 |FRAC(x) |numeric |Return the fraction part of a numeric value. Retains the sign of the original value.
-|IDN(x) |Creates an identity matrix (all zeros except for ones on the diagonal).
-|IDN(x,x) |Same as IDN(x). The two values must be identical, as identity matrices are always square.
-|IDN or IDN() |Creates an identity matrix with dimensions based on the assignment target.
-|INT(x) |Return the integer part of a numeric value.
-|LOG(x) |Computes the natural log of x. A value of zero or a negative value will cause an error.
-|LOG10(x) |Computes the base-10 log of x. A value of zero or a negative value will cause an error.
-|LOG2(x) |Computes the base-2 log of x. A value of zero or a negative value will cause an error.
-|MOD(a,b) |Computes 'a modulus b'.
-|RND(x) |Return a random number from zero to x. The value is a floating-point value; RND(1) can return any value from zero to 1. A value of zero or less than zero is considered to be 1.
-|RND() |Equivalent to RND(1).
-|RND |Special form of RND, equivalent to RND(1).
-|ROUND(x,p) |Rounds the value x to p places.
-|SEC(x) |Computes the secant of x, where x is in radians.
-|SGN(x) |Returns 1, 0, or -1, for positive, zero, or negative values of x.
-|SIN(x) |Computes the sine of x, where x is in radians.
-|SQR(x) |Computes the square root of x. A negative value will cause an error.
-|TAN(x) |Computes the tangent of x, where x is in radians.
-|TRN(m) |Transposes values in a matrix, exchanging rows and columns.
+|IDN(x) |numeric matrix |Creates an identity matrix (all zeros except for ones on the diagonal).
+|IDN(x,x) |numeric matrix |Same as IDN(x). The two values must be identical, as identity matrices are always square.
+|IDN or IDN() |numeric matrix |Creates an identity matrix with dimensions based on the assignment target.
+|INT(x) |numeric scalar |Return the integer part of a numeric value.
+|INV(m) |numeric matrix |Inverts matrix m.
+|LOG(x) |numeric scalar |Computes the natural log of x. A value of zero or a negative value will cause an error.
+|LOG10(x) |numeric scalar |Computes the base-10 log of x. A value of zero or a negative value will cause an error.
+|LOG2(x) |numeric scalar |Computes the base-2 log of x. A value of zero or a negative value will cause an error.
+|MOD(a,b) |numeric scalar |Computes 'a modulus b'.
+|NELEM(a) |numeric scalar |Number of elements in array a.
+|RND(x) |numeric scalar |Return a random number from zero to x. The value is a floating-point value; RND(1) can return any value from zero to 1. A value of zero or less than zero is considered to be 1.
+|RND() |numeric scalar |Equivalent to RND(1).
+|RND |numeric scalar |Special form of RND, equivalent to RND(1).
+|ROUND(x,p) |numeric scalar |Rounds the value x to p places.
+|SEC(x) |numeric scalar |Computes the secant of x, where x is in radians.
+|SGN(x) |numeric scalar |Returns 1, 0, or -1, for positive, zero, or negative values of x.
+|SIN(x) |numeric scalar |Computes the sine of x, where x is in radians.
+|SQR(x) |numeric scalar |Computes the square root of x. A negative value will cause an error.
+|TAN(x) |numeric scalar |Computes the tangent of x, where x is in radians.
+|TRN(m) |numeric matrix |Transposes values in a matrix, exchanging rows and columns.
 |ZER2(n) |numeric matrix|Creates a matrix containing all zeros, with n columns
 |ZER1(n) |numeric array |Creates an array containing all zeros, with n values
 |ZER(n) |numeric matrix|Synonym for ZER2(n)
-|ZER2(r,c) |Creates a matrix containing all zeros, with r rows and c columns.
-|ZER(r,c) |Synonym for ZER2(r,c)
-|ZER or ZER() |numeric matrix |Creates a matrix containing all zeros, with dimensions based on the assignment target.
+|ZER2(r,c) |numeric matrix |Creates a matrix containing all zeros, with r rows and c columns.
+|ZER(r,c) |numeric matrix |Synonym for ZER2(r,c).
+|ZER() |numeric matrix |Creates a matrix containing all zeros, with dimensions based on the assignment target.
+|ZER |numeric matrix |Special form of ZER().
 |===========
 
 Array and matrix function special forms

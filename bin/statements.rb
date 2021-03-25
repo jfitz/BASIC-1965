@@ -662,25 +662,25 @@ module InputFunctions
     prompt
   end
 
-  def tokens_to_expressions(tokens_lists, shape)
+  def tokens_to_expressions(tokens_lists, shape, set_dims)
     items = []
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list, shape)
+        add_expression(items, tokens_list, shape, set_dims)
       end
     end
 
     items
   end
 
-  def add_expression(items, tokens, shape)
+  def add_expression(items, tokens, shape, set_dims)
     if tokens[0].operator? && tokens[0].pound?
       items << ValueExpressionSet.new(tokens, :scalar)
     elsif tokens[0].text_constant?
       items << ValueExpressionSet.new(tokens, :scalar)
     else
-      items << TargetExpressionSet.new(tokens, shape)
+      items << TargetExpressionSet.new(tokens, shape, set_dims)
     end
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
@@ -755,23 +755,23 @@ end
 
 # common functions for READ statements
 module ReadFunctions
-  def tokens_to_expressions(tokens_lists, shape)
+  def tokens_to_expressions(tokens_lists, shape, set_dims)
     items = []
 
     tokens_lists.each do |tokens_list|
       if tokens_list.class.to_s == 'Array'
-        add_expression(items, tokens_list, shape)
+        add_expression(items, tokens_list, shape, set_dims)
       end
     end
 
     items
   end
 
-  def add_expression(items, tokens, shape)
+  def add_expression(items, tokens, shape, set_dims)
     if tokens[0].operator? && tokens[0].pound?
       items << ValueExpressionSet.new(tokens, :scalar)
     else
-      items << TargetExpressionSet.new(tokens, shape)
+      items << TargetExpressionSet.new(tokens, shape, set_dims)
     end
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
@@ -1497,7 +1497,7 @@ class InputStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      @items = tokens_to_expressions(items, :scalar)
+      @items = tokens_to_expressions(items, :scalar, false)
       @file_tokens = extract_file_handle(@items)
       @prompt = extract_prompt(@items)
       @elements = make_references(@items, @file_tokens, @prompt)
@@ -1822,7 +1822,7 @@ class ReadStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      @items = tokens_to_expressions(items, :scalar)
+      @items = tokens_to_expressions(items, :scalar, false)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
       @mccabe = @items.size
@@ -2048,7 +2048,7 @@ class ArrInputStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      @items = tokens_to_expressions(tokens_lists, :array)
+      @items = tokens_to_expressions(tokens_lists, :array, true)
       @file_tokens = extract_file_handle(@items)
       @prompt = extract_prompt(@items)
       @elements = make_references(@items, @file_tokens, @prompt)
@@ -2195,7 +2195,7 @@ class ArrReadStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      @items = tokens_to_expressions(items, :array)
+      @items = tokens_to_expressions(items, :array, true)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
@@ -2209,8 +2209,8 @@ class ArrReadStatement < AbstractStatement
     fh = get_file_handle(interpreter, @file_tokens)
     ds = interpreter.get_data_store(fh)
 
-    @items.each do |item|
-      targets = item.evaluate(interpreter)
+    @items.each do |expression|
+      targets = expression.evaluate(interpreter)
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
@@ -2447,7 +2447,7 @@ class MatInputStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], true)
-      @items = tokens_to_expressions(tokens_lists, :array)
+      @items = tokens_to_expressions(tokens_lists, :array, true)
       @file_tokens = extract_file_handle(@items)
       @prompt = extract_prompt(@items)
       @elements = make_references(@items, @file_tokens, @prompt)
@@ -2627,7 +2627,7 @@ class MatReadStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
-      @items = tokens_to_expressions(items, :matrix)
+      @items = tokens_to_expressions(items, :matrix, true)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
       @items.each { |item| @comprehension_effort += item.comprehension_effort }

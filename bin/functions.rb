@@ -911,6 +911,27 @@ class FunctionMod < AbstractFunction
   end
 end
 
+# function NELEM
+class FunctionNelem < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :array
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    args[0].size
+  end
+end
+
 # function ROUND
 class FunctionRound < AbstractFunction
   def initialize(text)
@@ -1298,6 +1319,7 @@ class FunctionFactory
     'LOG10' => FunctionLog10,
     'LOG2' => FunctionLog2,
     'MOD' => FunctionMod,
+    'NELEM' => FunctionNelem,
     'RND' => FunctionRnd,
     'ROUND' => FunctionRound,
     'SEC' => FunctionSec,
