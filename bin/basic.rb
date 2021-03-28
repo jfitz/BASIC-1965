@@ -490,7 +490,7 @@ def make_command_tokenbuilders
   keywords = %w[
     ANALYZE BREAK NOBREAK CROSSREF DELETE DIMS EXIT IF LIST LOAD
     NEW OPTION PARSE PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
-    BASE DEFAULT_PROMPT DETECT_INFINITE_LOOP
+    BASE CACHE_CONST_EXPR DEFAULT_PROMPT DETECT_INFINITE_LOOP
     ECHO FIELD_SEP FORGET_FORNEXT HEADING
     IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT MATCH_FORNEXT MAX_LINE_NUM MIN_LINE_NUM
@@ -571,6 +571,8 @@ OptionParser.new do |opt|
   opt.on('--analyze SOURCE') { |o| options[:analyze_name] = o }
   opt.on('--base BASE') { |o| options[:base] = o }
 
+  opt.on('--no-cache-const-expr') { |o| options[:no_cache_const_expr] = o }
+
   opt.on('--no-detect-infinite-loop') do |o|
     options[:no_detect_infinite_loop] = o
   end
@@ -633,6 +635,9 @@ $options = {}
 base = 0
 base = options[:base].to_i if options.key?(:base)
 $options['base'] = Option.new(all_types, int_1, base)
+
+$options['cache_const_expr'] =
+  Option.new(all_types, boolean, !options.key?(:no_cache_const_expr))
 
 $options['default_prompt'] = Option.new(all_types, string, '? ')
 

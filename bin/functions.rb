@@ -242,10 +242,15 @@ class UserFunction < AbstractFunction
   end
 
   def evaluate(interpreter, arg_stack)
-    x = false
-    x = evaluate_value(interpreter, arg_stack) if @valref == :value
-    x = evaluate_ref(interpreter, arg_stack) if @valref == :reference
-    x
+
+    return @cached unless @cached.nil?
+
+    res = false
+    res = evaluate_value(interpreter, arg_stack) if @valref == :value
+    res = evaluate_ref(interpreter, arg_stack) if @valref == :reference
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 
   private
@@ -336,10 +341,15 @@ class FunctionAbs < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].abs
+    res = args[0].abs
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -357,10 +367,15 @@ class FunctionArcCos < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].arccos
+    res = args[0].arccos
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -378,10 +393,15 @@ class FunctionArcSin < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].arcsin
+    res = args[0].arcsin
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -403,13 +423,18 @@ class FunctionArcTan < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     if match_args_to_signature(args, @signature_1)
-      args[0].atn
+      res = args[0].atn
     elsif match_args_to_signature(args, @signature_2)
-      args[0].atn2(args[1])
+      res = args[0].atn2(args[1])
     else
       raise BASICRuntimeError.new(:te_args_no_match, @name)
     end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -463,15 +488,17 @@ class FunctionCon1 < AbstractFunction
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
+      return @cached unless @cached.nil?
+
       if match_args_to_signature(args, @signature_0)
         args = default_args(interpreter)
         dims = args.clone
         values = BASICArray.one_values(dims)
-        BASICArray.new(dims, values)
+        res = BASICArray.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
         dims = args.clone
         values = BASICArray.one_values(dims)
-        BASICArray.new(dims, values)
+        res = BASICArray.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
       end
@@ -479,8 +506,11 @@ class FunctionCon1 < AbstractFunction
       args = default_args(interpreter)
       dims = args.clone
       values = BASICArray.one_values(dims)
-      BASICArray.new(dims, values)
+      res = BASICArray.new(dims, values)
     end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -539,19 +569,21 @@ class FunctionCon2 < AbstractFunction
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
+      return @cached unless @cached.nil?
+
       if match_args_to_signature(args, @signature_0)
         args = default_args(interpreter)
         dims = args.clone
         values = Matrix.one_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
         dims = args.clone
         values = Matrix.one_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_2)
         dims = args.clone
         values = Matrix.one_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
       end
@@ -559,8 +591,11 @@ class FunctionCon2 < AbstractFunction
       args = default_args(interpreter)
       dims = args.clone
       values = Matrix.one_values(dims)
-      Matrix.new(dims, values)
+      res = Matrix.new(dims, values)
     end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -578,10 +613,15 @@ class FunctionCos < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].cos
+    res = args[0].cos
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -599,10 +639,15 @@ class FunctionCot < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].cot
+    res = args[0].cot
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -620,10 +665,15 @@ class FunctionCsc < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].csc
+    res = args[0].csc
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -641,10 +691,15 @@ class FunctionDet < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].determinant
+    res = args[0].determinant
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -662,10 +717,15 @@ class FunctionExp < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].exp
+    res = args[0].exp
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -684,10 +744,15 @@ class FunctionFra < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0] - args[0].truncate
+    res = args[0] - args[0].truncate
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -746,22 +811,24 @@ class FunctionIdn < AbstractFunction
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
+      return @cached unless @cached.nil?
+
       if match_args_to_signature(args, @signature_0)
         args = default_args(interpreter)
         dims = args.clone
         values = Matrix.identity_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
         dims = [args[0]] * 2
         values = Matrix.identity_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_2)
         raise BASICRuntimeError.new(:te_mat_no_sq, @name) unless
           args[1] == args[0]
 
         dims = args.clone
         values = Matrix.identity_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
       end
@@ -773,8 +840,11 @@ class FunctionIdn < AbstractFunction
 
       dims = args.clone
       values = Matrix.identity_values(dims)
-      Matrix.new(dims, values)
+      res = Matrix.new(dims, values)
     end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -793,10 +863,15 @@ class FunctionInt < AbstractFunction
   def evaluate(interpreter, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    $options['int_floor'].value ? args[0].floor : args[0].truncate
+    res = $options['int_floor'].value ? args[0].floor : args[0].truncate
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -814,12 +889,17 @@ class FunctionInv < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
     dims = args[0].dimensions
     check_square(dims)
-    Matrix.new(dims.clone, args[0].inverse_values)
+    res = Matrix.new(dims.clone, args[0].inverse_values)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -837,10 +917,15 @@ class FunctionLog < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].log
+    res = args[0].log
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -858,10 +943,15 @@ class FunctionLog10 < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].log10
+    res = args[0].log10
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -879,10 +969,15 @@ class FunctionLog2 < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].log2
+    res = args[0].log2
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -904,10 +999,15 @@ class FunctionMod < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_2)
 
-    args[0].mod(args[1])
+    res = args[0].mod(args[1])
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -925,10 +1025,15 @@ class FunctionNelem < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].size
+    res = args[0].size
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -949,10 +1054,15 @@ class FunctionRound < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_2)
 
-    args[0].round(args[1])
+    res = args[0].round(args[1])
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -975,7 +1085,10 @@ class FunctionRnd < AbstractFunction
         type_stack[-1].class.to_s == 'Array'
     end
 
-    type_stack.push(@content_type)
+    res = type_stack.push(@content_type)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 
   def set_shape(shape_stack)
@@ -993,7 +1106,10 @@ class FunctionRnd < AbstractFunction
 
     # RND() is never constant
     
-    constant_stack.push(@constant)
+    res = constant_stack.push(@constant)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
   
   # return a single value
@@ -1001,18 +1117,23 @@ class FunctionRnd < AbstractFunction
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
+      return @cached unless @cached.nil?
+
       if match_args_to_signature(args, @signature_0)
         arg = default_args(interpreter)
-        interpreter.rand(arg)
+        res = interpreter.rand(arg)
       elsif match_args_to_signature(args, @signature_1)
-        interpreter.rand(args[0])
+        res = interpreter.rand(args[0])
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
       end
     else
       arg = default_args(interpreter)
-      interpreter.rand(arg)
+      res = interpreter.rand(arg)
     end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1030,10 +1151,15 @@ class FunctionSec < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].sec
+    res = args[0].sec
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1051,10 +1177,15 @@ class FunctionSgn < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].sign
+    res = args[0].sign
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1072,10 +1203,15 @@ class FunctionSin < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].sin
+    res = args[0].sin
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1093,10 +1229,15 @@ class FunctionSqr < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].sqrt
+    res = args[0].sqrt
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1114,10 +1255,15 @@ class FunctionTan < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    args[0].tan
+    res = args[0].tan
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1135,12 +1281,17 @@ class FunctionTrn < AbstractFunction
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
+    return @cached unless @cached.nil?
+
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
     dims = args[0].dimensions
     new_dims = [dims[1], dims[0]]
-    Matrix.new(new_dims, args[0].transpose_values)
+    res = Matrix.new(new_dims, args[0].transpose_values)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1194,15 +1345,17 @@ class FunctionZer1 < AbstractFunction
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
+      return @cached unless @cached.nil?
+
       if match_args_to_signature(args, @signature_0)
         args = default_args(interpreter)
         dims = args.clone
         values = BASICArray.zero_values(dims)
-        BASICArray.new(dims, values)
+        res = BASICArray.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
         dims = args.clone
         values = BASICArray.zero_values(dims)
-        BASICArray.new(dims, values)
+        res = BASICArray.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
       end
@@ -1210,8 +1363,11 @@ class FunctionZer1 < AbstractFunction
       args = default_args(interpreter)
       dims = args.clone
       values = BASICArray.zero_values(dims)
-      BASICArray.new(dims, values)
+      res = BASICArray.new(dims, values)
     end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 
@@ -1270,19 +1426,21 @@ class FunctionZer2 < AbstractFunction
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
+      return @cached unless @cached.nil?
+
       if match_args_to_signature(args, @signature_0)
         args = default_args(interpreter)
         dims = args.clone
         values = Matrix.zero_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_1)
         dims = args.clone
         values = Matrix.zero_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature_2)
         dims = args.clone
         values = Matrix.zero_values(dims)
-        Matrix.new(dims, values)
+        res = Matrix.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
       end
@@ -1290,8 +1448,11 @@ class FunctionZer2 < AbstractFunction
       args = default_args(interpreter)
       dims = args.clone
       values = Matrix.zero_values(dims)
-      Matrix.new(dims, values)
+      res = Matrix.new(dims, values)
     end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
   end
 end
 

@@ -220,6 +220,8 @@ class AbstractStatement
     @profile_time = 0
   end
 
+  def uncache ; end
+
   def pretty
     AbstractToken.pretty_tokens(@keywords, @tokens)
   end
@@ -712,6 +714,10 @@ module InputFunctions
     values
   end
 
+  def uncache
+    @items.each {|item| item.uncache }
+  end
+
   def file_values(fhr, interpreter)
     values = []
 
@@ -751,6 +757,10 @@ module PrintFunctions
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" ' + e.to_s
   end
+
+  def uncache
+    @items.each {|item| item.uncache }
+  end
 end
 
 # common functions for READ statements
@@ -776,6 +786,10 @@ module ReadFunctions
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" ' + e.to_s
+  end
+
+  def uncache
+    @items.each {|item| item.uncache }
   end
 end
 
@@ -809,6 +823,10 @@ module WriteFunctions
     line_text = tokens.map(&:to_s).join
     @errors << 'Syntax error: "' + line_text + '" ' + e.to_s
   end
+
+  def uncache
+    @items.each {|item| item.uncache }
+  end
 end
 
 # DATA
@@ -833,6 +851,10 @@ class DataStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
+  end
+
+  def uncache
+    @expressions.uncache
   end
 
   def dump
@@ -914,41 +936,45 @@ class DimStatement < AbstractStatement
 
     template = [[1, '>=']]
 
-    @declaration_sets = []
+    @declarations = []
     if check_template(tokens_lists, template)
       tokens_lists = split_tokens(tokens_lists[0], false)
 
       tokens_lists.each do |tokens_list|
         begin
-          @declaration_sets << DeclarationExpressionSet.new(tokens_list)
+          @declarations << DeclarationExpressionSet.new(tokens_list)
         rescue BASICExpressionError
           @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
         end
       end
 
-      @elements = make_references(@declaration_sets)
+      @elements = make_references(@declarations)
 
-      @declaration_sets.each do |declaration_set|
-        @comprehension_effort += declaration_set.comprehension_effort
+      @declarations.each do |expression|
+        @comprehension_effort += expression.comprehension_effort
       end
     else
       @errors << 'Syntax error'
     end
   end
 
+  def uncache
+    @declarations.each { |expression| expression.uncache }
+  end
+
   def dump
     lines = []
 
-    @declaration_sets.each do |declaration_set|
-      lines += declaration_set.dump
+    @declarations.each do |expression|
+      lines += expression.dump
     end
 
     lines
   end
 
   def execute(interpreter)
-    @declaration_sets.each do |declaration_set|
-      variables = declaration_set.evaluate(interpreter)
+    @declarations.each do |expression|
+      variables = expression.evaluate(interpreter)
       variable = variables[0]
       subscripts = variable.subscripts
 
@@ -1023,6 +1049,10 @@ class FilesStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
+  end
+
+  def uncache
+    @expressions.uncache
   end
 
   def dump
@@ -1140,6 +1170,12 @@ class ForStatement < AbstractStatement
     @comprehension_effort += @start.comprehension_effort unless @start.nil?
     @comprehension_effort += @end.comprehension_effort unless @end.nil?
     @comprehension_effort += @step.comprehension_effort unless @step.nil?
+  end
+
+  def uncache
+    @start.uncache unless @start.nil?
+    @step.uncache unless @step.nil?
+    @end.uncache unless @end.nil?
   end
 
   def dump
@@ -1405,6 +1441,10 @@ class AbstractIfStatement < AbstractStatement
     @tokens[-1] = NumericConstantToken.new(@destination.line_number)
   end
 
+  def uncache
+    @expression.uncache
+  end
+
   def dump
     lines = []
     lines += @expression.dump unless @expression.nil?
@@ -1558,6 +1598,10 @@ end
 class AbstractLetStatement < AbstractStatement
   def initialize(_, _, _)
     super
+  end
+
+  def uncache
+    @assignment.uncache
   end
 
   def dump
@@ -1730,6 +1774,10 @@ class OptionStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
+  end
+
+  def uncache
+    @expression.uncache
   end
 
   def dump

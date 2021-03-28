@@ -315,6 +315,15 @@ class Program
 
   public
 
+  def uncache
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statement = line.statement
+
+      statement.uncache
+    end
+  end
+
   def list(args, list_tokens)
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 

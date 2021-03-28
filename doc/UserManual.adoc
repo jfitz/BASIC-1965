@@ -16,10 +16,8 @@ Initial impressions
 BASIC-1965 is really primitive!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-BASIC-1965 is an interpreter with no optimization.
-Each line is interpreted each time it is executed.
-If a line is executed ten times, it is interpreted ten times.
-There is some up-front parsing that occurs, but not much.
+BASIC-1965 is an interpreter.
+BASIC-1965 caches the results of constant operations (such as 3 / 5).
 
 The BASIC-1965 language has no exception handling.
 Invalid input, dividing by zero, and numeric overflow or underflow will cause execution to stop.
@@ -27,7 +25,7 @@ There are no try/catch, no begin/rescue, no ON ERROR capabilities.
 
 BASIC-1965 is designed for processing numeric data.
 There are no capabilities for text variables ("string" variables), no MID$() function, no text input.
-(The PRINT statement handles text constants, and that's the only place for text values.)
+(The PRINT and WRITE statements handle text literals, and the INPUT statement allows for a text literal as a prompt.)
 
 Space characters are insignificant in most places.
 When loading a program (or accepting new statements from the user), BASIC-1965 removes all spaces and then parses the line.
@@ -37,7 +35,7 @@ The two places that BASIC-1965 preserves spaces from the original statement are 
 BASIC-1965 is really fussy!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 BASIC-1965 keeps the spirit of the original BASIC language, as much as possible.
-Everything must be in upper case, except for text constants in PRINT statements.
+Everything must be in upper case, except for text literals in PRINT, WRITE, and INPUT statements.
 Commands ("RUN", "LIST"), statements ("PRINT", "LET"), function names, and variable names must be in upper case.
 Lower case causes an error.
 
@@ -117,6 +115,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--parse filename |Specifies the file to load and parse.
 |--analyze filename |Specifies the file to load and analyze.
 |--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
+|--no-cache-const-expr |Disables caching of results of constant expressions.
 |--no-detect-infinite-loop |Disables checks for infinite loops.
 |--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
 |--field-sep-semi |Sets field separator for ARR PRINT and MAT PRINT statements to semicolon, which provides narrow spacing.
@@ -268,7 +267,7 @@ Clearing the breakpoints for a line clears all breakpoints, absolute and conditi
 CROSSREF
 ~~~~~~~~
 
-Lists the numeric constants, text constants, functions, and variables used in the program, along with the line numbers on which they appear.
+Lists the numeric literals, text literals, functions, and variables used in the program, along with the line numbers on which they appear.
 For variables, assignments are listed on one line and references are listed on a second line.
 The line with assignments shows the variable and an equals sign.
 
@@ -299,7 +298,7 @@ The DELETE command with no specification (implying the entire program) does not 
 PRETTY
 ~~~~~~
 
-Lists the current program on the screen, adjusting the spacing between keywords, variable names, and constants.
+Lists the current program on the screen, adjusting the spacing between keywords, variable names, and literals.
 
 Syntax:	PRETTY [line specification]
 
@@ -417,6 +416,7 @@ The OPTION command overrides the command-line setting.
 |==========
 |Option |Settable |Data Type |Default |Effect
 |BASE |NLP |numeric |0 |Sets the base for arrays and matrices to either 0 or 1
+|CACHE_CONST_EXPR |NLP |TRUE or FALSE |TRUE |Cache result of operations on constant values and re-use instead of re-calculate
 |DEFAULT_PROMPT |NLP |String |"? " |Changes the prompt for INPUT statements
 |DETECT_INFINITE_LOOP |NLP |TRUE or FALSE |TRUE |Enables the detection of infinite loops
 |ECHO |NLP |TRUE or FALSE |FALSE |Echoes input (useful for testing)
@@ -447,6 +447,9 @@ The OPTION command overrides the command-line setting.
 
 Options can be changed when no program is loaded ('N'), when a program is loaded ('L'), or when a program is running ('P').
 Options that affect the parsing or analyzing of programs can be changed only when no program is loaded.
+
+When values to constant expressions are cached, setting the PRECISION or BASE options clear the cache of all values.
+This is because calculations of constant values can be different after those options change.
 
 Debug shell
 -----------
@@ -510,7 +513,7 @@ LET
 ~~~
 
 Assigns a value or values to a variable or variables.
-The assigned value may be a constant or an expression.
+The assigned value may be a literal or an expression.
 
 PRINT
 ~~~~~
@@ -599,12 +602,12 @@ Numeric values are either integers or floating point.
 Integers are stored internally with Ruby's Fixnum class.
 Floating point numbers are stored as Ruby's Float with precision specified by the PRECISION option.
 
-Numeric constants may be integer or real, and may use E-notation with unsigned exponents.
+Numeric literals may be integer or real, and may use E-notation with unsigned exponents.
 The 'E' must be uppercase; a lowercase 'e' will be rejected.
 Exponents may be signed or unsigned.
 
 |==========
-|Numeric constant |Valid or reason not valid
+|Numeric literal |Valid or reason not valid
 |0 |
 |1 |
 |2 |
@@ -669,12 +672,12 @@ Thus, it may appear at the end of the program, and does not have to appear befor
 But the side effect from processing the statement only once is ... the statement is processed only once (per run).
 A DATA statement inside a FOR/NEXT loop is processed only once, not once for each loop execution.
 
-The common behavior for all BASICs is to parse the values as numeric constants.
+The common behavior for all BASICs is to parse the values as numeric literals.
 BASIC-1965 parses the values as numeric expressions, due to its parsing of unary operators as separate from numeric values.
 The value '-1' is parsed as a unary minus and the value 1, which must be evaluated as an expression.
 This behavior of BASIC-1965 allows for any expression in DATA statements, including the use of variables and functions, but since DATA statements are interpreted before the program is run (and interpreted only once even if contained by a loop) variables will evaluate to zero.
 
-You can use expressions with only numeric constants, such as 3/4 or SIN(0.25).
+You can use expressions with only numeric literals, operators and functions. Examples are: 3/4 and SIN(0.25).
 
 DEF
 ~~~
@@ -876,7 +879,7 @@ Syntax:	IF boolean expression THEN line number
 
 The boolean expression must be in the form "expression operator expression" where operator is limited to the comparion operations listed above.
 Boolean operators such as "and" or "or" are not permitted.
-The two arguments in the boolean expression may be numeric constants, variables, or arithmetic expressions.
+The two arguments in the boolean expression may be numeric literals, variables, or arithmetic expressions.
 Text values are not allowed.
 
 The "target" after the THEN keyword must be a line number; it cannot be a statement.
@@ -908,7 +911,7 @@ Examples:
 
 The default prompt is a single question mark (?) character.
 This prompt can be changed to any text value by specifying a text value as the first parameter.
-(This value must be a text constant.)
+(This value must be a text literal.)
 When multiple values are specified, they may be entered on one line with commas as separators.
 If an insufficient number of values is entered, BASIC will prompt for more data.
 These prompts are always the question mark, not the specified prompt.
@@ -1010,7 +1013,7 @@ Each will be executed as a normal statement, in its sequence.
 PRINT
 ~~~~~
 
-Displays a set of variables and constants to the console, with a newline character.
+Displays a set of variables and literals to the console, with a newline character.
 
 Printing to console
 ^^^^^^^^^^^^^^^^^^^
@@ -1169,7 +1172,7 @@ Examples:
 WRITE
 ~~~~~
 
-Displays a set of variables and constants to the console, with a newline character. The same as the PRINT command, except that WRITE also provides delimiters between values.
+Displays a set of variables and literals to the console, with a newline character. The same as the PRINT command, except that WRITE also provides delimiters between values.
 
 Writing to console
 ^^^^^^^^^^^^^^^^^^
@@ -1276,7 +1279,7 @@ Examples:
 
 The default prompt is a single question mark (?) character.
 This prompt can be changed to any text value by specifying a text value as the first parameter.
-(This value must be a text constant.)
+(This value must be a text literal.)
 When multiple values are specified, they may be entered on one line with commas as separators.
 If an insufficient number of values is entered, BASIC will prompt for more data.
 These prompts are always the question mark, not the specified prompt.
@@ -1353,7 +1356,7 @@ Dimensions may be supplied or omitted in ARR READ statements.
 When supplied, they override any previous DIM or ARR READ or MAT READ statement.
 When omitted, the variable must have dimensions specified in earlier DIM or ARR READ or MAT READ statements.
 
-The values for dimensions may be numeric constants or expressions.
+The values for dimensions may be numeric literals or expressions.
 The expression is evaluated at run-time, like any other expression.
 
 Data is read from DATA statements, as with the READ statement.
@@ -1509,7 +1512,7 @@ Examples:
 
 The default prompt is a single question mark (?) character.
 This prompt can be changed to any text value by specifying a text value as the first parameter.
-(This value must be a text constant.)
+(This value must be a text literal.)
 When multiple values are specified, they may be entered on one line with commas as separators.
 If an insufficient number of values is entered, BASIC will prompt for more data.
 These prompts are always the question mark, not the specified prompt.
@@ -1601,7 +1604,7 @@ Dimensions may be supplied or omitted in MAT READ statements.
 When supplied, they override any previous DIM or ARR READ or MAT READ statement.
 When omitted, the variable must have dimensions specified in earlier DIM or ARR READ or MAT READ statements.
 
-The values for dimensions may be numeric constants ot expressions.
+The values for dimensions may be numeric literals ot expressions.
 The expression is evaluated at run-time, like any other expression.
 
 Data is read from DATA statements, as with the READ statement.
