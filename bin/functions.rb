@@ -1268,6 +1268,33 @@ class FunctionSqr < AbstractFunction
   end
 end
 
+# function SUM
+class FunctionSum < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :array
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    sum = args[0].sum
+    res = NumericConstant.new(sum)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function TAN
 class FunctionTan < AbstractFunction
   def initialize(text)
@@ -1515,6 +1542,7 @@ class FunctionFactory
     'SGN' => FunctionSgn,
     'SIN' => FunctionSin,
     'SQR' => FunctionSqr,
+    'SUM' => FunctionSum,
     'TAN' => FunctionTan,
     'TRN' => FunctionTrn,
     'ZER' => FunctionZer2,

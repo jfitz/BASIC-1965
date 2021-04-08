@@ -1,0 +1,29 @@
+10 REM This is a test
+ Remark:This is a test
+20 ARR READ A(6)
+ NumericConstant:6
+ Variable:A(_) -> _()
+30 LET B=SUM(A)
+ Variable:B -> _
+ Variable:A() -> _()
+ FunctionSum:SUM(_()) -> _
+ AssignmentOperator:= _ -> _
+40 PRINT "SUM IS "; B
+ TextConstant:"SUM IS "
+ CarriageControl:;
+ Variable:B -> _
+ CarriageControl:NL
+90 DATA 10.2,5.5,1.8,0,-12.8,-52.5,-12.2
+ NumericConstant:10.2
+ NumericConstant:5.5
+ NumericConstant:1.8
+ NumericConstant:0
+ NumericConstant:12.8
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:52.5
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:12.2
+ UnaryOperatorMinus:-(_) -> =_
+99 END
+ 
+
