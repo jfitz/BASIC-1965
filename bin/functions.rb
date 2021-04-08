@@ -729,6 +729,33 @@ class FunctionExp < AbstractFunction
   end
 end
 
+# function FIX
+class FunctionFix < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :scalar
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  # return a single value
+  def evaluate(interpreter, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    res = args[0].floor
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function FRA
 class FunctionFra < AbstractFunction
   def initialize(text)
@@ -1472,6 +1499,7 @@ class FunctionFactory
     'CSC' => FunctionCsc,
     'DET' => FunctionDet,
     'EXP' => FunctionExp,
+    'FIX' => FunctionFix,
     'FRA' => FunctionFra,
     'IDN' => FunctionIdn,
     'INT' => FunctionInt,

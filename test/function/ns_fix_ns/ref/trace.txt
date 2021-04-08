@@ -1,0 +1,81 @@
+10: REM This is a test
+20: READ A
+ A = 10.2
+30: LET B = FIX(A)
+ A: 10.2
+ B = 10
+40: PRINT A, B
+ A: 10.2
+ 10.2           
+ B: 10
+ 10
+50: GOTO 20
+20: READ A
+ A = 5.5
+30: LET B = FIX(A)
+ A: 5.5
+ B = 5
+40: PRINT A, B
+ A: 5.5
+ 5.5            
+ B: 5
+ 5
+50: GOTO 20
+20: READ A
+ A = 1.8
+30: LET B = FIX(A)
+ A: 1.8
+ B = 1
+40: PRINT A, B
+ A: 1.8
+ 1.8            
+ B: 1
+ 1
+50: GOTO 20
+20: READ A
+ A = 0
+30: LET B = FIX(A)
+ A: 0
+ B = 0
+40: PRINT A, B
+ A: 0
+ 0              
+ B: 0
+ 0
+50: GOTO 20
+20: READ A
+ A = -1.8
+30: LET B = FIX(A)
+ A: -1.8
+ B = -2
+40: PRINT A, B
+ A: -1.8
+-1.8            
+ B: -2
+-2
+50: GOTO 20
+20: READ A
+ A = -5.5
+30: LET B = FIX(A)
+ A: -5.5
+ B = -6
+40: PRINT A, B
+ A: -5.5
+-5.5            
+ B: -6
+-6
+50: GOTO 20
+20: READ A
+ A = -10.2
+30: LET B = FIX(A)
+ A: -10.2
+ B = -11
+40: PRINT A, B
+ A: -10.2
+-10.2           
+ B: -11
+-11
+50: GOTO 20
+20: READ A
+Error 103 Out of data in line 20
+
