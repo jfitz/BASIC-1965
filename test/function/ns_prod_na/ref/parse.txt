@@ -1,0 +1,24 @@
+10 REM This is a test
+ Remark:This is a test
+20 ARR READ A(3)
+ NumericConstant:3
+ Variable:A(_) -> _()
+30 LET B=PROD(A)
+ Variable:B -> _
+ Variable:A() -> _()
+ FunctionProd:PROD(_()) -> _
+ AssignmentOperator:= _ -> _
+40 PRINT "PRODUCT IS "; B
+ TextConstant:"PRODUCT IS "
+ CarriageControl:;
+ Variable:B -> _
+ CarriageControl:NL
+90 DATA 10.2,5.5,-1.8,17
+ NumericConstant:10.2
+ NumericConstant:5.5
+ NumericConstant:1.8
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:17
+99 END
+ 
+

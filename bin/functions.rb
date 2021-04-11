@@ -438,6 +438,33 @@ class FunctionArcTan < AbstractFunction
   end
 end
 
+# function AVG
+class FunctionAvg < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :array
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    sum = args[0].sum / args[0].size
+    res = NumericConstant.new(sum)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function CON1
 class FunctionCon1 < AbstractFunction
   def initialize(text)
@@ -1057,7 +1084,34 @@ class FunctionNelem < AbstractFunction
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature_1)
 
-    res = args[0].size
+    res = NumericConstant.new(args[0].size)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
+# function PROD
+class FunctionProd < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :array
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    sum = args[0].prod
+    res = NumericConstant.new(sum)
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -1518,6 +1572,7 @@ class FunctionFactory
     'ARCSIN' => FunctionArcSin,
     'ARCTAN' => FunctionArcTan,
     'ATN' => FunctionArcTan,
+    'AVG' => FunctionAvg,
     'CON' => FunctionCon2,
     'CON1' => FunctionCon1,
     'CON2' => FunctionCon2,
@@ -1536,6 +1591,7 @@ class FunctionFactory
     'LOG2' => FunctionLog2,
     'MOD' => FunctionMod,
     'NELEM' => FunctionNelem,
+    'PROD' => FunctionProd,
     'RND' => FunctionRnd,
     'ROUND' => FunctionRound,
     'SEC' => FunctionSec,

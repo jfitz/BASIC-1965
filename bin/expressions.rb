@@ -67,7 +67,7 @@ class BASICArray
   def size
     base = $options['base'].value
 
-    NumericConstant.new(@dimensions[0].to_i - base + 1)
+    @dimensions[0].to_i - base + 1
   end
 
   def values(interpreter)
@@ -101,6 +101,10 @@ class BASICArray
 
   def sum
     sum_1
+  end
+
+  def prod
+    prod_1
   end
 
   def to_s
@@ -172,6 +176,21 @@ class BASICArray
     end
 
     sum
+  end
+
+  def prod_1
+    n_cols = @dimensions[0].to_i
+    base = $options['base'].value
+
+    prod = 1
+
+    (base..n_cols).each do |col|
+      value = get_value(col)
+      coords = AbstractElement.make_coord(col)
+      prod *= value.to_f
+    end
+
+    prod
   end
 
   def print_1(printer, interpreter)

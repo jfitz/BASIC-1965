@@ -1739,6 +1739,7 @@ Functions may be used in numeric expressions.
 |ARCTAN(y,x) |numeric |Computes the arctangent of y and x, providing the answer in radians.
 |ATN(x) |numeric |Synonym for ARCTAN(x).
 |ATN(y,x) |numeric |Synonym for ARCTAN(y,x).
+|AVG(a) |numeric |Computes average of elements in array.
 |CON2(n) |numeric matrix |Creates a matrix containing all ones, with n columns.
 |CON1(n) |numeric array |Creates an array containing all ones, with n values.
 |CON(n) |numeric matrix |Synonym for CON2(n).
@@ -1763,6 +1764,7 @@ Functions may be used in numeric expressions.
 |LOG2(x) |numeric |Computes the base-2 log of x. A value of zero or a negative value will cause an error.
 |MOD(a,b) |numeric |Computes 'a modulus b'.
 |NELEM(a) |numeric |Number of elements in array a.
+|PROD(a) |numeric |Computes product of elements in array.
 |RND(x) |numeric |Return a random number from zero to x. The value is a floating-point value; RND(1) can return any value from zero to 1. A value of zero or less than zero is considered to be 1.
 |RND() |numeric |Equivalent to RND(1).
 |RND |numeric |Special form of RND, equivalent to RND(1).
