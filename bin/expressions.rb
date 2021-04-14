@@ -65,6 +65,8 @@ class BASICArray
   end
 
   def size
+    return 0 if @dimensions.size < 1
+
     base = $options['base'].value
 
     @dimensions[0].to_i - base + 1
@@ -313,6 +315,22 @@ class Matrix
   def text_constant?
     value = get_value_2(0, 0)
     value.text_constant?
+  end
+
+  def nrow
+    return 0 if @dimensions.size < 1
+
+    base = $options['base'].value
+
+    @dimensions[0].to_i - base + 1
+  end
+
+  def ncol
+    return 0 if @dimensions.size < 2
+
+    base = $options['base'].value
+
+    @dimensions[1].to_i - base + 1
   end
 
   def values_1

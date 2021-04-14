@@ -1065,6 +1065,45 @@ class FunctionMod < AbstractFunction
   end
 end
 
+# function NCOL
+class FunctionNcol < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :matrix
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :matrix }]
+  end
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      constant_stack.pop if constant_stack[-1].class.to_s == 'Array'
+    end
+
+    # NCOL() is never constant
+
+    res = constant_stack.push(@constant)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    res = NumericConstant.new(args[0].ncol)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function NELEM
 class FunctionNelem < AbstractFunction
   def initialize(text)
@@ -1076,6 +1115,19 @@ class FunctionNelem < AbstractFunction
     @signature_1 = [{ 'type' => :numeric, 'shape' => :array }]
   end
 
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      constant_stack.pop if constant_stack[-1].class.to_s == 'Array'
+    end
+
+    # NELEM() is never constant
+
+    res = constant_stack.push(@constant)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+
   def evaluate(_, arg_stack)
     args = arg_stack.pop
 
@@ -1085,6 +1137,45 @@ class FunctionNelem < AbstractFunction
       match_args_to_signature(args, @signature_1)
 
     res = NumericConstant.new(args[0].size)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
+# function NROW
+class FunctionNrow < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :matrix
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :matrix }]
+  end
+
+  def set_constant(constant_stack)
+    unless constant_stack.empty?
+      constant_stack.pop if constant_stack[-1].class.to_s == 'Array'
+    end
+
+    # NROW() is never constant
+
+    res = constant_stack.push(@constant)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    res = NumericConstant.new(args[0].nrow)
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -1590,7 +1681,9 @@ class FunctionFactory
     'LOG10' => FunctionLog10,
     'LOG2' => FunctionLog2,
     'MOD' => FunctionMod,
+    'NCOL' => FunctionNcol,
     'NELEM' => FunctionNelem,
+    'NROW' => FunctionNrow,
     'PROD' => FunctionProd,
     'RND' => FunctionRnd,
     'ROUND' => FunctionRound,
