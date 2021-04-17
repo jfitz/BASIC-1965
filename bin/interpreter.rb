@@ -798,6 +798,36 @@ class Interpreter
     int_subscripts
   end
 
+  def wrap_subscripts(variable_name, subscripts)
+    raise(BASICSyntaxError, 'Invalid subscripts container') unless
+      subscripts.class.to_s == 'Array'
+
+    count = subscripts.count
+
+    # upper bounds
+    upper_values = make_dimensions(variable_name, count)
+    uppers = []
+    upper_values.each { |uv| uppers << uv.to_i }
+
+    # lower bound
+    lower = $options['base'].value
+
+    wrapped_subscripts = []
+
+    subscripts.each_with_index do |subscript, index|
+      raise(BASICExpressionError, "Invalid subscript #{subscript}") unless
+        subscript.numeric_constant?
+
+      span = uppers[index] - lower + 1
+      wrapped = subscript.to_i
+      wrapped -= span if wrapped > uppers[index]
+      wrapped += span if wrapped < lower
+      wrapped_subscripts << NumericConstant.new(wrapped)
+    end
+
+    wrapped_subscripts
+  end
+
   def get_dimensions(variable)
     @dimensions[variable]
   end
@@ -830,9 +860,9 @@ class Interpreter
 
   private
 
-  def make_dimensions(variable, count)
-    if @dimensions.key?(variable)
-      @dimensions[variable]
+  def make_dimensions(variable_name, count)
+    if @dimensions.key?(variable_name)
+      @dimensions[variable_name]
     else
       Array.new(count, NumericConstant.new(10))
     end
@@ -840,9 +870,11 @@ class Interpreter
 
   public
 
-  def check_subscripts(variable, subscripts)
+  def check_subscripts(variable_name, subscripts, wrapped_subscripts)
     int_subscripts = normalize_subscripts(subscripts)
-    dimensions = make_dimensions(variable, int_subscripts.size)
+
+    # upper bounds
+    dimensions = make_dimensions(variable_name, int_subscripts.size)
 
     raise(BASICSyntaxError, 'Incorrect number of subscripts') if
       int_subscripts.size != dimensions.size
@@ -851,14 +883,17 @@ class Interpreter
     lower_value = $options['base'].value
     lower = NumericConstant.new(lower_value)
 
+    ss = subscripts
+    ss = wrapped_subscripts if $options['wrap'].value
+    
     # check subscript value against lower and upper bounds
-    int_subscripts.zip(dimensions).each do |pair|
-      if pair[0] < lower
-        raise BASICRuntimeError.new(:te_subscript_out, pair[0].to_s)
+    ss.each_with_index do |subscript, index|
+      if subscript < lower
+        raise BASICRuntimeError.new(:te_subscript_out, subscript.to_s)
       end
 
-      if pair[0] > pair[1]
-        raise BASICRuntimeError.new(:te_subscript_out, pair[0].to_s)
+      if subscript > dimensions[index]
+        raise BASICRuntimeError.new(:te_subscript_out, subscript.to_s)
       end
     end
   end
@@ -883,21 +918,22 @@ class Interpreter
 
     # then look in general table
     if value.nil?
-      v = variable.to_s
-      unless @variables.key?(v)
+      var = variable.to_sw
+
+      unless @variables.key?(var)
         if $options['require_initialized'].value
-          raise BASICRuntimeError.new(:te_var_uninit, v)
+          raise BASICRuntimeError.new(:te_var_uninit, var)
         end
 
         # define a value for this variable
-        @variables[v] =
+        @variables[var] =
           {
             'provenance' => @current_line_number,
             'value' => NumericConstant.new(0)
           }
       end
 
-      dict = @variables[v]
+      dict = @variables[var]
       value = dict['value']
       provenance = dict['provenance']
 
@@ -947,7 +983,7 @@ class Interpreter
             "Type mismatch '#{value}' is not #{variable.content_type}")
     end
 
-    var = variable.to_s
+    var = variable.to_sw
 
     if @variables.key?(var)
       dict = @variables[var]
@@ -974,7 +1010,8 @@ class Interpreter
       shape = :scalar
       shape = :array if coords.size == 1
       shape = :matrix if coords.size == 2
-      variable = Variable.new(name, shape, coords)
+      wcoords = wrap_subscripts(name, coords)
+      variable = Variable.new(name, shape, coords, wcoords)
       set_value(variable, value)
     end
   end
@@ -1051,7 +1088,8 @@ class Interpreter
         sub1_token = NumericConstantToken.new(sub1_s)
         sub1 = NumericConstant.new(sub1_token)
         subscripts = [sub1]
-        variable = Variable.new(variable_name, :scalar, subscripts)
+        wsubscripts = wrap_subscripts(variable_name, subscripts)
+        variable = Variable.new(variable_name, :scalar, subscripts, wsubscripts)
         forget_value(variable)
       end
     end
@@ -1079,7 +1117,8 @@ class Interpreter
         sub2_token = NumericConstantToken.new(sub2_s)
         sub2 = NumericConstant.new(sub2_token)
         subscripts = [sub1, sub2]
-        variable = Variable.new(variable_name, :scalar, subscripts)
+        wsubscripts = wrap_subscripts(variable_name, subscripts)
+        variable = Variable.new(variable_name, :scalar, subscripts, wsubscripts)
         forget_value(variable)
       end
     end

@@ -139,6 +139,7 @@ When the BASIC program ends, BASIC-1965 ends.
 |--trace |Print each statement prior to executing it (useful for debugging). Does the same thing as the 'OPTION TRACE TRUE' command in interactive mode, but from the command line.
 |--tty |Print output slowly, emulating the speed of an ASR-33 Teletype. Provides a better experience with some programs (often games) in which slow output lets your anticipation build. The fast output of modern computers displays information quickly, and TTY mode lets you read each line as it is "printed".
 |--tty-lf |Similar to --tty but delays only the newline characters, not each individual character. Useful with --trace when debugging.
+|--wrap |Wraps subscripts out of range back into range.
 |--zone-width width |Specifies a zone width. PRINT statements will position output separated by commas in zones. Default is 16.
 |==========
 
@@ -443,6 +444,7 @@ The OPTION command overrides the command-line setting.
 |REQUIRE_INITIALIZED |NLP |TRUE or FALSE |FALSE |Variables must be initialized before use
 |TIMING |NLP |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
 |TRACE |NLP |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
+|WRAP |NLP |TRUE or FALSE |FALSE |When TRUE, subscripts beyond lower or upper bounds are wrapped
 |ZONE_WIDTH |NLP |numeric |16 |Width of print zones for comma separators
 
 Options can be changed when no program is loaded ('N'), when a program is loaded ('L'), or when a program is running ('P').
@@ -731,7 +733,7 @@ Examples:
 	10 DIM A(20)
 	20 DIM B(15), C(20,30)
 
-Arrays are zero-based, so the DIM A(20) statement allows for values A(0) through A(20).
+When arrays are zero-based, the DIM A(20) statement allows for values A(0) through A(20).
 
 OPTION BASE 1 changes arrays to one-based, but does not change the upper bound.
 With OPTION BASE 1, the statement DIM A(20) allows for values A(1) through A(20).

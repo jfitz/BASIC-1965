@@ -1092,7 +1092,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control = Variable.new(variable_name, :scalar, [])
+        @control = Variable.new(variable_name, :scalar, [], [])
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @end = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @step = nil
@@ -1103,7 +1103,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control = Variable.new(variable_name, :scalar, [])
+        @control = Variable.new(variable_name, :scalar, [], [])
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @end = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @step = ValueExpressionSet.new(tokens_lists[4], :scalar)
@@ -1114,7 +1114,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control = Variable.new(variable_name, :scalar, [])
+        @control = Variable.new(variable_name, :scalar, [], [])
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @step = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @end = ValueExpressionSet.new(tokens_lists[4], :scalar)
@@ -1262,7 +1262,7 @@ class ForgetStatement < AbstractStatement
         if tokens[0].variable?
           variable_name = VariableName.new(tokens[0])
           # FIX: parse subscripts
-          variable = Variable.new(variable_name, :scalar, [])
+          variable = Variable.new(variable_name, :scalar, [], [])
           @variables << variable
           variablex = XrefEntry.new(variable.to_s, nil, false)
           @elements[:variables] += [variablex]
@@ -1690,7 +1690,7 @@ class NextStatement < AbstractStatement
       @control = nil
       if tokens_lists[0][0].variable?
         variable_name = VariableName.new(tokens_lists[0][0])
-        @control = Variable.new(variable_name, :scalar, [])
+        @control = Variable.new(variable_name, :scalar, [], [])
         controlx = XrefEntry.new(@control.to_s, nil, false)
         @elements[:variables] = [controlx]
       else
@@ -2052,7 +2052,7 @@ class ArrForgetStatement < AbstractStatement
       tokens_list.each do |tokens|
         if tokens[0].variable?
           variable_name = VariableName.new(tokens[0])
-          variable = Variable.new(variable_name, :array, [])
+          variable = Variable.new(variable_name, :array, [], [])
           @variables << variable
           variablex = XrefEntry.new(variable.to_s, nil, false)
           @elements[:variables] += [variablex]
@@ -2137,7 +2137,8 @@ class ArrInputStatement < AbstractStatement
         base = $options['base'].value
         (base..dims[0].to_i).each do |col|
           coord = AbstractElement.make_coord(col)
-          variable = Variable.new(name, :array, coord)
+          wcoord = interpreter.wrap_subscripts(name, coord)
+          variable = Variable.new(name, :array, coord, wcoord)
           item_names << variable
         end
       end
@@ -2451,7 +2452,7 @@ class MatForgetStatement < AbstractStatement
       tokens_list.each do |tokens|
         if tokens[0].variable?
           variable_name = VariableName.new(tokens[0])
-          variable = Variable.new(variable_name, :matrix, [])
+          variable = Variable.new(variable_name, :matrix, [], [])
           @variables << variable
           variablex = XrefEntry.new(variable.to_s, nil, false)
           @elements[:variables] += [variablex]
@@ -2538,7 +2539,8 @@ class MatInputStatement < AbstractStatement
           base = $options['base'].value
           (base..dims[0].to_i).each do |col|
             coord = AbstractElement.make_coord(col)
-            variable = Variable.new(name, :matrix, coord)
+            wcoord = interpreter.wrap_subscripts(name, coord)
+            variable = Variable.new(name, :matrix, coord, wcoord)
             item_names << variable
           end
         end
@@ -2548,7 +2550,8 @@ class MatInputStatement < AbstractStatement
           (base..dims[0].to_i).each do |row|
             (base..dims[1].to_i).each do |col|
               coords = AbstractElement.make_coords(row, col)
-              variable = Variable.new(name, :matrix, coords)
+              wcoords = interpreter.wrap_subscripts(name, coords)
+              variable = Variable.new(name, :matrix, coords, wcoords)
               item_names << variable
             end
           end

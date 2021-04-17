@@ -1,0 +1,26 @@
+10 REM TEST THE OPTION STATEMENT
+ Remark:TEST THE OPTION STATEMENT
+20 OPTION TRACE TRUE
+ BooleanConstant:true
+30 READ A,B,C
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+40 PRINT A,B,C
+ Variable:A -> _
+ CarriageControl:,
+ Variable:B -> _
+ CarriageControl:,
+ Variable:C -> _
+ CarriageControl:NL
+50 OPTION TRACE 1 = 0
+ NumericConstant:1
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> =?
+90 DATA 1,2,3
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:3
+99 END
+ 
+
