@@ -13,20 +13,54 @@ class BASICArray
     values
   end
 
+  def self.make_rnd_array(dims, interpreter, upper_bound)
+    values = {}
+
+    base = $options['base'].value
+
+    (base..dims[0].to_i).each do |col|
+      coords = AbstractElement.make_coord(col)
+      values[coords] = NumericConstant.new(interpreter.rand(upper_bound))
+    end
+
+    values
+  end
+
   def self.zero_values(dimensions)
     case dimensions.size
+    when 0
+      raise BASICSyntaxError, 'No dimensions in array'
     when 1
       BASICArray.make_array(dimensions, NumericConstant.new(0))
     when 2
+      raise BASICSyntaxError, 'Too many dimensions in array'
+    else
       raise BASICSyntaxError, 'Too many dimensions in array'
     end
   end
 
   def self.one_values(dimensions)
     case dimensions.size
+    when 0
+      raise BASICSyntaxError, 'No dimensions in array'
     when 1
       BASICArray.make_array(dimensions, NumericConstant.new(1))
     when 2
+      raise BASICSyntaxError, 'Too many dimensions in array'
+    else
+      raise BASICSyntaxError, 'Too many dimensions in array'
+    end
+  end
+
+  def self.rnd_values(dimensions, interpreter, upper_bound)
+    case dimensions.size
+    when 0
+      raise BASICSyntaxError, 'No dimensions in array'
+    when 1
+      BASICArray.make_rnd_array(dimensions, interpreter, upper_bound)
+    when 2
+      raise BASICSyntaxError, 'Too many dimensions in array'
+    else
       raise BASICSyntaxError, 'Too many dimensions in array'
     end
   end
@@ -237,6 +271,19 @@ class Matrix
     values
   end
 
+  def self.make_rnd_array(dims, interpreter, upper_bound)
+    values = {}
+
+    base = $options['base'].value
+
+    (base..dims[0].to_i).each do |col|
+      coords = AbstractElement.make_coord(col)
+      values[coords] = NumericConstant.new(interpreter.rand(upper_bound))
+    end
+
+    values
+  end
+
   def self.make_matrix(dims, init_value)
     values = {}
 
@@ -252,21 +299,57 @@ class Matrix
     values
   end
 
+  def self.make_rnd_matrix(dims, interpreter, upper_bound)
+    values = {}
+
+    base = $options['base'].value
+
+    (base..dims[0].to_i).each do |row|
+      (base..dims[1].to_i).each do |col|
+        coords = AbstractElement.make_coords(row, col)
+        values[coords] = NumericConstant.new(interpreter.rand(upper_bound))
+      end
+    end
+
+    values
+  end
+
   def self.zero_values(dimensions)
     case dimensions.size
+    when 0
+      raise BASICSyntaxError, 'No dimensions in matrix'
     when 1
       Matrix.make_array(dimensions, NumericConstant.new(0))
     when 2
       Matrix.make_matrix(dimensions, NumericConstant.new(0))
+    else
+      raise BASICSyntaxError, 'Too many dimensions in matrix'
     end
   end
 
   def self.one_values(dimensions)
     case dimensions.size
+    when 0
+      raise BASICSyntaxError, 'No dimensions in matrix'
     when 1
       Matrix.make_array(dimensions, NumericConstant.new(1))
     when 2
       Matrix.make_matrix(dimensions, NumericConstant.new(1))
+    else
+      raise BASICSyntaxError, 'Too many dimensions in matrix'
+    end
+  end
+
+  def self.rnd_values(dimensions, interpreter, upper_bound)
+    case dimensions.size
+    when 0
+      raise BASICSyntaxError, 'No dimensions in matrix'
+    when 1
+      Matrix.make_rnd_array(dimensions, interpreter, upper_bound)
+    when 2
+      Matrix.make_rnd_matrix(dimensions, interpreter, upper_bound)
+    else
+      raise BASICSyntaxError, 'Too many dimensions in matrix'
     end
   end
 

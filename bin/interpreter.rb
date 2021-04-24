@@ -769,7 +769,7 @@ class Interpreter
 
     clear_previous_lines
 
-    NumericConstant.new(@randomizer.rand(upper_bound))
+    @randomizer.rand(upper_bound)
   end
 
   def find_closing_next(control)

@@ -1,0 +1,82 @@
+10 REM ARRAY FUNCTION RND1()
+ Remark:ARRAY FUNCTION RND1()
+15 DIM D(3)
+ NumericConstant:3
+ Declaration:D() -> _()
+20 ARR A = RND1(5, 10)
+ Variable:A() -> _()
+ NumericConstant:5
+ NumericConstant:10
+ FunctionRnd1:RND1(_,_) -> _()
+ AssignmentOperator:= _() -> _()
+30 ARR B = RND1(3, 2)
+ Variable:B() -> _()
+ NumericConstant:3
+ NumericConstant:2
+ FunctionRnd1:RND1(_,_) -> _()
+ AssignmentOperator:= _() -> _()
+40 ARR C = RND1(4, 0.5)
+ Variable:C() -> _()
+ NumericConstant:4
+ NumericConstant:0.5
+ FunctionRnd1:RND1(_,_) -> _()
+ AssignmentOperator:= _() -> _()
+50 PRINT "ARRAY A"
+ TextConstant:"ARRAY A"
+ CarriageControl:NL
+60 ARR PRINT A
+ Variable:A() -> _()
+ CarriageControl:NL
+70 PRINT "ARRAY B"
+ TextConstant:"ARRAY B"
+ CarriageControl:NL
+80 ARR PRINT B
+ Variable:B() -> _()
+ CarriageControl:NL
+90 PRINT "ARRAY C"
+ TextConstant:"ARRAY C"
+ CarriageControl:NL
+100 ARR PRINT C
+ Variable:C() -> _()
+ CarriageControl:NL
+200 OPTION BASE 1
+ NumericConstant:1
+220 ARR A = RND1(5, 10)
+ Variable:A() -> _()
+ NumericConstant:5
+ NumericConstant:10
+ FunctionRnd1:RND1(_,_) -> _()
+ AssignmentOperator:= _() -> _()
+230 ARR B = RND1(3, 2)
+ Variable:B() -> _()
+ NumericConstant:3
+ NumericConstant:2
+ FunctionRnd1:RND1(_,_) -> _()
+ AssignmentOperator:= _() -> _()
+240 ARR C = RND1(4, 0.5)
+ Variable:C() -> _()
+ NumericConstant:4
+ NumericConstant:0.5
+ FunctionRnd1:RND1(_,_) -> _()
+ AssignmentOperator:= _() -> _()
+250 PRINT "ARRAY A"
+ TextConstant:"ARRAY A"
+ CarriageControl:NL
+260 ARR PRINT A
+ Variable:A() -> _()
+ CarriageControl:NL
+270 PRINT "ARRAY B"
+ TextConstant:"ARRAY B"
+ CarriageControl:NL
+280 ARR PRINT B
+ Variable:B() -> _()
+ CarriageControl:NL
+290 PRINT "ARRAY C"
+ TextConstant:"ARRAY C"
+ CarriageControl:NL
+300 ARR PRINT C
+ Variable:C() -> _()
+ CarriageControl:NL
+999 END
+ 
+

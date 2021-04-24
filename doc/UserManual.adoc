@@ -1730,65 +1730,6 @@ You may write:
 Functions
 ---------
 
-Functions may be used in numeric expressions.
-
-|==========
-|Function |Result
-|ABS(x) |numeric |Computes the absolute value of x.
-|ARCCOS(x) |numeric |Computes the arccosine of x, providing the answer in radians.
-|ARCSIN(x) |numeric |Computes the arcsine of x, providing the answer in radians.
-|ARCTAN(x) |numeric |Computes the arctangent of x, providing the answer in radians.
-|ARCTAN(y,x) |numeric |Computes the arctangent of y and x, providing the answer in radians.
-|ATN(x) |numeric |Synonym for ARCTAN(x).
-|ATN(y,x) |numeric |Synonym for ARCTAN(y,x).
-|AVG(a) |numeric |Computes average of elements in array.
-|CON2(n) |numeric matrix |Creates a matrix containing all ones, with n columns.
-|CON1(n) |numeric array |Creates an array containing all ones, with n values.
-|CON(n) |numeric matrix |Synonym for CON2(n).
-|CON2(r,c) |numeric matrix |Creates a matrix containing all ones, with r rows and c columns.
-|CON(r,c) |numeric matrix |Synonym for CON2(r,c).
-|CON() |numeric matrix |Creates a matrix containing all ones, with dimensions based on the assignment target.
-|CON |numeric matrix |Special form of CON().
-|COS(x) |numeric |Computes the cosine of x, where x is in radians.
-|COT(x) |numeric |Computes the cotangent of x, where x is in radians.
-|CSC(x) |numeric |Computes the cosecant of x, where x is in radians.
-|DET(m)	|numeric |Computes the determinant of the matrix. The matrix must be square.
-|EXP(x) |numeric |Computes e to the x power.
-|FIX(x) |numeric |Returns the integer part of a number. Truncates towards negative infinity.
-|FRAC(x) |numeric |Return the fraction part of a numeric value. Retains the sign of the original value.
-|IDN(x) |numeric matrix |Creates an identity matrix (all zeros except for ones on the diagonal).
-|IDN(x,x) |numeric matrix |Same as IDN(x). The two values must be identical, as identity matrices are always square.
-|IDN or IDN() |numeric matrix |Creates an identity matrix with dimensions based on the assignment target.
-|INT(x) |numeric |Return the integer part of a numeric value. Truncates towards zero.
-|INV(m) |numeric matrix |Inverts matrix m.
-|LOG(x) |numeric |Computes the natural log of x. A value of zero or a negative value will cause an error.
-|LOG10(x) |numeric |Computes the base-10 log of x. A value of zero or a negative value will cause an error.
-|LOG2(x) |numeric |Computes the base-2 log of x. A value of zero or a negative value will cause an error.
-|MOD(a,b) |numeric |Computes 'a modulus b'.
-|NCOL(m) |numeric |Number of columns in matrix m.
-|NELEM(a) |numeric |Number of elements in array a.
-|NROW(m) |numeric |Number of rows in matrix m.
-|PROD(a) |numeric |Computes product of elements in array.
-|RND(x) |numeric |Return a random number from zero to x. The value is a floating-point value; RND(1) can return any value from zero to 1. A value of zero or less than zero is considered to be 1.
-|RND() |numeric |Equivalent to RND(1).
-|RND |numeric |Special form of RND, equivalent to RND(1).
-|ROUND(x,p) |numeric |Rounds the value x to p places.
-|SEC(x) |numeric |Computes the secant of x, where x is in radians.
-|SGN(x) |numeric |Returns 1, 0, or -1, for positive, zero, or negative values of x.
-|SIN(x) |numeric |Computes the sine of x, where x is in radians.
-|SQR(x) |numeric |Computes the square root of x. A negative value will cause an error.
-|SUM(a) |numeric |Computes sum of elements in array.
-|TAN(x) |numeric |Computes the tangent of x, where x is in radians.
-|TRN(m) |numeric matrix |Transposes values in a matrix, exchanging rows and columns.
-|ZER2(n) |numeric matrix|Creates a matrix containing all zeros, with n columns
-|ZER1(n) |numeric array |Creates an array containing all zeros, with n values
-|ZER(n) |numeric matrix|Synonym for ZER2(n)
-|ZER2(r,c) |numeric matrix |Creates a matrix containing all zeros, with r rows and c columns.
-|ZER(r,c) |numeric matrix |Synonym for ZER2(r,c).
-|ZER() |numeric matrix |Creates a matrix containing all zeros, with dimensions based on the assignment target.
-|ZER |numeric matrix |Special form of ZER().
-|===========
-
 Array and matrix function special forms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1855,25 +1796,25 @@ AVG(a)
 
 Computes average of elements in array a.
 
+CON1(n)
+~~~~~~~
+
+Creates an array containing all ones, with n elements.
+
 CON2(n)
 ~~~~~~~
 
 Creates a matrix containing all ones, with n rows and n columns.
 
-CON1(n)
-~~~~~~~
+CON2(r,c)
+~~~~~~~~~
 
-Creates an array containing all ones, with n values.
+Creates a matrix containing all ones, with r rows and c columns.
 
 CON(n)
 ~~~~~~
 
 Synonym for CON2(n).
-
-CON2(r,c)
-~~~~~~~~~
-
-Creates a matrix containing all ones, with r rows and c columns.
 
 CON(r,c)
 ~~~~~~~~
@@ -2012,6 +1953,26 @@ RND
 
 Special form of RND, equivalent to RND(1).
 
+RND1(n)
+~~~~~~~~~
+
+Creates an array containing random values from zero to one, with n elements.
+
+RND1(n,x)
+~~~~~~~~~
+
+Creates an array containing random values from zero to x, with n elements.
+
+RND2(r,c)
+~~~~~~~~~
+
+Creates a matrix containing random values from zero to one, with r rows and c columns.
+
+RND2(r,c,x)
+~~~~~~~~~~~
+
+Creates a matrix containing random values from zero to x, with r rows and c columns.
+
 ROUND(x,p)
 ~~~~~~~~~~
 
@@ -2056,7 +2017,7 @@ Transposes values in a matrix, exchanging rows and columns.
 ZER1(n)
 ~~~~~~~
 
-Creates an array containing all zeros, with n values.
+Creates an array containing all zeros, with n elements.
 
 ZER2(n)
 ~~~~~~~
