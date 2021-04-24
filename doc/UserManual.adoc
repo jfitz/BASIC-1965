@@ -1810,6 +1810,285 @@ The special form allows for parameters to be omitted.
 
 In this special form, the target variable must already exist and have dimensions specified.
 
+ABS(n)
+~~~~~~
+
+Computes the absolute value of n.
+
+ARCCOS(n)
+~~~~~~~~~
+
+Computes the arccosine of n, providing the answer in radians.
+
+ARCSIN(n)
+~~~~~~~~~
+
+Computes the arcsine of n, providing the answer in radians.
+
+
+ARCTAN(n)
+~~~~~~~~~
+
+Computes the arctangent of n, providing the answer in radians.
+Provides inexact answers for small n; use ARCTAN(y, x) for small angles.
+
+ARCTAN(y,x)
+~~~~~~~~~~~
+
+Computes the arctangent of y and x, providing the answer in radians.
+
+
+ATN(n)
+~~~~~~
+
+Synonym for ARCTAN(n).
+
+
+ATN(y,x)
+~~~~~~~~
+
+Synonym for ARCTAN(y,x).
+
+
+AVG(a)
+~~~~~~
+
+Computes average of elements in array a.
+
+CON2(n)
+~~~~~~~
+
+Creates a matrix containing all ones, with n rows and n columns.
+
+CON1(n)
+~~~~~~~
+
+Creates an array containing all ones, with n values.
+
+CON(n)
+~~~~~~
+
+Synonym for CON2(n).
+
+CON2(r,c)
+~~~~~~~~~
+
+Creates a matrix containing all ones, with r rows and c columns.
+
+CON(r,c)
+~~~~~~~~
+
+Synonym for CON2(r,c).
+
+CON()
+~~~~~
+
+Creates a matrix containing all ones, with dimensions based on the assignment target.
+
+CON
+~~~
+
+Special form of CON().
+
+COS(r)
+~~~~~~
+
+Computes the cosine of r, where r is in radians.
+
+COT(r)
+~~~~~~
+
+Computes the cotangent of r, where r is in radians.
+
+CSC(r)
+~~~~~~
+
+Computes the cosecant of r, where r is in radians.
+
+DET(m)
+~~~~~~
+
+Computes the determinant of the matrix. The matrix must be square.
+
+EXP(x)
+~~~~~~
+
+Computes e to the x power.
+
+FIX(n)
+~~~~~~
+
+Returns the integer part of a number. Truncates towards negative infinity.
+
+FRAC(n)
+~~~~~~~
+
+Return the fraction part of a numeric value. Retains the sign of the original value.
+
+IDN(n)
+~~~~~~
+
+Creates an identity matrix (all zeros except for ones on the diagonal) with n rows and n columns.
+
+IDN(n,n)
+~~~~~~~~
+
+Same as IDN(n). The two values must be identical, as identity matrices are always square.
+
+IDN()
+~~~~~
+
+Creates an identity matrix with dimensions based on the assignment target.
+
+IDN
+~~~
+
+Special form of IDN().
+
+INT(x)
+~~~~~~
+
+Return the integer part of a numeric value. Truncates towards zero.
+
+INV(m)
+~~~~~~
+
+Inverts matrix m.
+
+LOG(x)
+~~~~~~
+
+Computes the natural log of x. A value of zero or a negative value for x will cause an error.
+
+LOG10(x)
+~~~~~~~~
+
+Computes the base-10 log of x. A value of zero or a negative value for x will cause an error.
+
+LOG2(x)
+~~~~~~~
+
+Computes the base-2 log of x. A value of zero or a negative value for x will cause an error.
+
+MOD(a,b)
+~~~~~~~~
+
+Computes 'a modulus b'.
+
+NCOL(m)
+~~~~~~~
+
+Number of columns in matrix m.
+
+NELEM(a)
+~~~~~~~~
+
+Number of elements in array a.
+
+NROW(m)
+~~~~~~~
+
+Number of rows in matrix m.
+
+PROD(a)
+~~~~~~~
+
+Computes product of elements in array.
+
+RND(x)
+~~~~~~
+
+Return a random number from zero to x.
+The value is a floating-point value; RND(1) can return any value from zero to 1.
+A value of zero or less than zero is considered to be 1.
+
+RND()
+~~~~~
+
+Equivalent to RND(1).
+
+RND
+~~~
+
+Special form of RND, equivalent to RND(1).
+
+ROUND(x,p)
+~~~~~~~~~~
+
+Rounds the value x to p places.
+
+SEC(r)
+~~~~~~
+
+Computes the secant of r, where r is in radians.
+
+SGN(n)
+~~~~~~
+
+Returns 1, 0, or -1, for positive, zero, or negative values of n.
+
+SIN(r)
+~~~~~~
+
+Computes the sine of r, where r is in radians.
+
+SQR(x)
+~~~~~~
+
+Computes the square root of x.
+A negative value will cause an error.
+
+SUM(a)
+~~~~~~
+
+Computes sum of elements in array.
+
+TAN(r)
+~~~~~~
+
+Computes the tangent of r, where r is in radians.
+
+TRN(m)
+~~~~~~
+
+Transposes values in a matrix, exchanging rows and columns.
+
+ZER1(n)
+~~~~~~~
+
+Creates an array containing all zeros, with n values.
+
+ZER2(n)
+~~~~~~~
+
+Creates a matrix containing all zeros, with n columns and n rows.
+
+ZER(n)
+~~~~~~
+
+Synonym for ZER2(n).
+
+ZER2(r,c)
+~~~~~~~~~
+
+Creates a matrix containing all zeros, with r rows and c columns.
+
+ZER(r,c)
+~~~~~~~~
+
+Synonym for ZER2(r,c).
+
+ZER()
+~~~~~
+
+Creates a matrix containing all zeros, with dimensions based on the assignment target.
+
+ZER
+~~~
+
+Special form of ZER().
+
+
 Editing programs
 ----------------
 
