@@ -9,6 +9,7 @@ class UnaryOperator < AbstractElement
   attr_reader :content_type
   attr_reader :shape
   attr_reader :constant
+  attr_reader :warnings
   attr_reader :arguments
   attr_reader :precedence
 
@@ -19,6 +20,7 @@ class UnaryOperator < AbstractElement
     @content_type = :unknown
     @shape = :unknown
     @constant = false
+    @warnings = []
     @precedence = 0
     @arguments = nil
     @operator = true
@@ -118,6 +120,7 @@ class BinaryOperator < AbstractElement
   attr_reader :content_type
   attr_reader :shape
   attr_reader :constant
+  attr_reader :warnings
   attr_reader :arguments
   attr_reader :precedence
 
@@ -129,6 +132,7 @@ class BinaryOperator < AbstractElement
     @content_type = :unknown
     @shape = :unknown
     @constant =  false
+    @warnings = []
     @arguments = nil
     @precedence = 0
     @operator = true
@@ -914,10 +918,10 @@ class BinaryOperatorPlus < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a + #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression + b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
     
     @content_type = :numeric
@@ -945,10 +949,10 @@ class BinaryOperatorMinus < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a - #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression - b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
     
     @content_type = :numeric
@@ -976,10 +980,10 @@ class BinaryOperatorMultiply < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a * #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression * b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
     
     @content_type = :numeric
@@ -1007,10 +1011,10 @@ class BinaryOperatorDivide < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a / #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression / b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
    
     @content_type = :numeric
@@ -1038,10 +1042,10 @@ class BinaryOperatorPower < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a ^ #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression ^ b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
 
     @content_type = :numeric
@@ -1069,10 +1073,10 @@ class BinaryOperatorEqual < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a = #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression = b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
 
     @content_type = :boolean
@@ -1100,10 +1104,10 @@ class BinaryOperatorNotEqual < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a <> #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression <> b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
  
     @content_type = :boolean
@@ -1131,10 +1135,10 @@ class BinaryOperatorLess < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a < #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression < b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
 
     @content_type = :boolean
@@ -1162,10 +1166,10 @@ class BinaryOperatorLessEqual < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a <= #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression <= b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
  
     @content_type = :boolean
@@ -1193,10 +1197,10 @@ class BinaryOperatorGreater < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a > #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression > b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
 
     @content_type = :boolean
@@ -1224,10 +1228,10 @@ class BinaryOperatorGreaterEqual < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a >= #{a_type}") if
+    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
       a_type != :numeric
     
-    raise(BASICExpressionError, "Bad expression >= b #{b_type}") if
+    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
       b_type != :numeric
 
     @content_type = :boolean
