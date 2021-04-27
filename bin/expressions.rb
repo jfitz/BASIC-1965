@@ -20,7 +20,7 @@ class BASICArray
 
     (base..dims[0].to_i).each do |col|
       coords = AbstractElement.make_coord(col)
-      values[coords] = NumericConstant.new(interpreter.rand(upper_bound))
+      values[coords] = NumericConstant.new_rand(interpreter, upper_bound)
     end
 
     values
@@ -278,7 +278,7 @@ class Matrix
 
     (base..dims[0].to_i).each do |col|
       coords = AbstractElement.make_coord(col)
-      values[coords] = NumericConstant.new(interpreter.rand(upper_bound))
+      values[coords] = NumericConstant.new_rand(interpreter, upper_bound)
     end
 
     values
@@ -307,7 +307,7 @@ class Matrix
     (base..dims[0].to_i).each do |row|
       (base..dims[1].to_i).each do |col|
         coords = AbstractElement.make_coords(row, col)
-        values[coords] = NumericConstant.new(interpreter.rand(upper_bound))
+        values[coords] = NumericConstant.new_rand(interpreter, upper_bound)
       end
     end
 

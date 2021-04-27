@@ -1276,18 +1276,16 @@ class FunctionRnd < AbstractFunction
 
       if match_args_to_signature(args, @signature_0)
         arg = default_args(interpreter)
-        value = interpreter.rand(arg)
+        res = NumericConstant.new_rand(interpreter, arg)
       elsif match_args_to_signature(args, @signature_1)
-        value = interpreter.rand(args[0])
+        res = NumericConstant.new_rand(interpreter, args[0])
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
       end
     else
       arg = default_args(interpreter)
-      value = interpreter.rand(arg)
+      res = NumericConstant.new_rand(interpreter, arg)
     end
-
-    res = NumericConstant.new(value)
 
     @cached = res if @constant && $options['cache_const_expr']
     res

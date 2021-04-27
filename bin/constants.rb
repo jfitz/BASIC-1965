@@ -490,6 +490,11 @@ class NumericConstant < AbstractValueElement
     end
   end
 
+  def self.new_rand(interpreter, upper_bound)
+    v = interpreter.rand(upper_bound)
+    NumericConstant.new(v)
+  end
+
   private
 
   def float_to_possible_int(f)
