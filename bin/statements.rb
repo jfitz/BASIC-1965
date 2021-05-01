@@ -1757,7 +1757,8 @@ class OptionStatement < AbstractStatement
   def initialize(_, keywords, tokens_lists)
     super
 
-    template = [OptionStatement.extra_keywords, [1, '>=']]
+    extras = OptionStatement.extra_keywords
+    template = [extras, [1, '>=']]
 
     if check_template(tokens_lists, template)
       kwd = tokens_lists[0].to_s.upcase
@@ -1771,13 +1772,20 @@ class OptionStatement < AbstractStatement
       else
         @errors << 'Cannot set option ' + kwd
       end
+    elsif tokens_lists.size == 1 &&
+          extras.include?(tokens_lists[0].to_s)
+      kwd = tokens_lists[0].to_s.upcase
+      @key = kwd.downcase
+
+      @errors << 'Cannot set option ' + kwd unless
+        $options[@key].types.include?(:runtime)
     else
       @errors << 'Syntax error'
     end
   end
 
   def uncache
-    @expression.uncache
+    @expression.uncache unless @expression.nil?
   end
 
   def dump
@@ -1787,10 +1795,14 @@ class OptionStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    values = @expression.evaluate(interpreter)
-    value0 = values[0]
+    if @expression.nil?
+      interpreter.pop_option(@key)
+    else
+      values = @expression.evaluate(interpreter)
+      value0 = values[0]
 
-    interpreter.set_action(@key, value0.to_v)
+      interpreter.push_option(@key, value0.to_v)
+    end
   end
 end
 

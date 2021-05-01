@@ -1,26 +1,47 @@
 10 REM TEST THE OPTION STATEMENT
  Remark:TEST THE OPTION STATEMENT
-20 OPTION TRACE TRUE
- BooleanConstant:true
-30 READ A,B,C
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
-40 PRINT A,B,C
- Variable:A -> _
- CarriageControl:,
- Variable:B -> _
- CarriageControl:,
- Variable:C -> _
- CarriageControl:NL
-50 OPTION TRACE 1 = 0
+20 OPTION BASE 1
  NumericConstant:1
+30 DIM A(5)
+ NumericConstant:5
+ Declaration:A() -> _()
+40 ARR READ A
+ Variable:A() -> _()
+50 ARR PRINT A
+ Variable:A() -> _()
+ CarriageControl:NL
+100 OPTION WRAP TRUE
+ BooleanConstant:true
+110 PRINT "LAST: ";A(0);" FIRST: ";A(6)
+ TextConstant:"LAST: "
+ CarriageControl:;
  NumericConstant:0
- BinaryOperatorEqual:=(_,_) -> =?
-90 DATA 1,2,3
+ Variable:A(_) -> _
+ CarriageControl:;
+ TextConstant:" FIRST: "
+ CarriageControl:;
+ NumericConstant:6
+ Variable:A(_) -> _
+ CarriageControl:NL
+120 OPTION WRAP FALSE
+ BooleanConstant:false
+130 PRINT "LAST: ";A(0);" FIRST: ";A(6)
+ TextConstant:"LAST: "
+ CarriageControl:;
+ NumericConstant:0
+ Variable:A(_) -> _
+ CarriageControl:;
+ TextConstant:" FIRST: "
+ CarriageControl:;
+ NumericConstant:6
+ Variable:A(_) -> _
+ CarriageControl:NL
+190 DATA 1,2,3,4,5
  NumericConstant:1
  NumericConstant:2
  NumericConstant:3
-99 END
+ NumericConstant:4
+ NumericConstant:5
+199 END
  
 

@@ -1,5 +1,7 @@
 10 REM TEST CALCULATIONS WITH CONSTANT VALUES
  Remark:TEST CALCULATIONS WITH CONSTANT VALUES
+11 OPTION CACHE_CONST_EXPR TRUE
+ BooleanConstant:true
 12 DEF FNR(D) = D * 3.1415 / 180
  UserFunctionName:FNR -> _
  VariableName:D -> _
@@ -28,30 +30,42 @@
  
 100 REM PROC A
  Remark:PROC A
-110 LET S1 = SIN(FNR(30))
+110 LET S1 = SIN(30 * 3.1415 / 180)
  Variable:S1 -> _
  NumericConstant:30
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
-120 LET S2 = SIN(FNR(45))
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
+120 LET S2 = SIN(45 * 3.1415 / 180)
  Variable:S2 -> _
  NumericConstant:45
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
-130 LET S3 = SIN(FNR(60))
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
+130 LET S3 = SIN(60 * 3.1415 / 180)
  Variable:S3 -> _
  NumericConstant:60
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
-140 LET S4 = SIN(FNR(90))
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
+140 LET S4 = SIN(90 * 3.1415 / 180)
  Variable:S4 -> _
  NumericConstant:90
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
 150 PRINT S1, S2, S3, S4
  Variable:S1 -> _
  CarriageControl:,
@@ -65,30 +79,42 @@
  
 200 REM PROC B
  Remark:PROC B
-210 LET S1 = SIN(FNR(30))
+210 LET S1 = SIN(30 * 3.1415 / 180)
  Variable:S1 -> _
  NumericConstant:30
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
-220 LET S2 = SIN(FNR(45))
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
+220 LET S2 = SIN(45 * 3.1415 / 180)
  Variable:S2 -> _
  NumericConstant:45
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
-230 LET S3 = SIN(FNR(60))
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
+230 LET S3 = SIN(60 * 3.1415 / 180)
  Variable:S3 -> _
  NumericConstant:60
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
-240 LET S4 = SIN(FNR(90))
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
+240 LET S4 = SIN(90 * 3.1415 / 180)
  Variable:S4 -> _
  NumericConstant:90
- UserFunction:FNR(_) -> _
- FunctionSin:SIN(_) -> _
- AssignmentOperator:= _ -> _
+ NumericConstant:3.1415
+ BinaryOperatorMultiply:*(_,_) -> =_
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> =_
+ FunctionSin:SIN(_) -> =_
+ AssignmentOperator:= =_ -> _
 250 PRINT S1, S2, S3, S4
  Variable:S1 -> _
  CarriageControl:,

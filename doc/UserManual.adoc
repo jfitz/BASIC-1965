@@ -450,8 +450,12 @@ The OPTION command overrides the command-line setting.
 Options can be changed when no program is loaded ('N'), when a program is loaded ('L'), or when a program is running ('P').
 Options that affect the parsing or analyzing of programs can be changed only when no program is loaded.
 
-When values to constant expressions are cached, setting the PRECISION or BASE options clear the cache of all values.
+When values to constant expressions are cached, setting the BASE, PRECISION, or WRAP option clears the cached values.
 This is because calculations of constant values can be different after those options change.
+
+When a program is running, BASIC maintains a stack of values for each option.
+At the command prompt, there is no stack.
+Only the last option set is stored.
 
 Debug shell
 -----------
@@ -990,9 +994,10 @@ If the variable was defined prior to the FOR, the variable is left defined but m
 OPTION
 ~~~~~~
 
-Sets an option for the interpreter.
+Sets or restores an option for the interpreter.
 
 Syntax: OPTION option expression
+Syntax: OPTION option
 
 Possible options are a subset of the options in the shell.
 Refer to the OPTION command for options that can be set in the program.
@@ -1006,11 +1011,24 @@ Examples:
 	40 OPTION PROVENANCE A > 0
 	100 OPTION BASE 1
 
+	100 OPTION PRINT_WIDTH 80
+	110 ARR PRINT A
+	120 OPTION PRINT_WIDTH
+	130 REM print width is now back to previous setting
+
+
 Unlike other interpreters, the OPTION statement is executed in-line.
 It is not a setting prior to the execution of the program.
 
 A program may contain multiple OPTION statements.
 Each will be executed as a normal statement, in its sequence.
+
+BASIC stores a stack of values for each option.
+The stack starts with one value, set by the command shell.
+Each 'OPTION option value' statement pushes a new value onto the stack.
+An 'OPTION option' statement (with no value) removes the most recent value from the stack, which restores the previous value.
+The bottom value on the stack is permanent, and never removed.
+Therefore there is always a value for each option, even when a program executes too many 'OPTION option' statements.
 
 PRINT
 ~~~~~

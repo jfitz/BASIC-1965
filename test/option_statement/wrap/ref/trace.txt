@@ -1,16 +1,28 @@
 10: REM TEST THE OPTION STATEMENT
-20: OPTION TRACE TRUE
-30: READ A, B, C
- A = 1
- B = 2
- C = 3
-40: PRINT A, B, C
- A: 1
- 1              
- B: 2
- 2              
- C: 3
- 3
-50: OPTION TRACE 1 = 0
-STOP in line 99
+20: OPTION BASE 1
+30: DIM A(5)
+40: ARR READ A
+ A(1) = 1
+ A(2) = 2
+ A(3) = 3
+ A(4) = 4
+ A(5) = 5
+50: ARR PRINT A
+ A(1): 1
+ A(2): 2
+ A(3): 3
+ A(4): 4
+ A(5): 5
+ 1               2               3               4               5
+100: OPTION WRAP TRUE
+110: PRINT "LAST: "; A(0); " FIRST: "; A(6)
+LAST: 
+ A(0): 5
+ 5  FIRST: 
+ A(6): 1
+ 1
+120: OPTION WRAP FALSE
+130: PRINT "LAST: "; A(0); " FIRST: "; A(6)
+LAST: 
+Error 117 Subscript out of range for 0 in line 130
 
