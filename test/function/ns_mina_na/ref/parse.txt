@@ -1,0 +1,27 @@
+10 REM TEST THE MINA() FUNCTION
+ Remark:TEST THE MINA() FUNCTION
+20 ARR READ A(6)
+ NumericConstant:6
+ Variable:A(_) -> _()
+30 LET B=MINA(A)
+ Variable:B -> _
+ Variable:A() -> _()
+ FunctionMinA:MINA(_()) -> _
+ AssignmentOperator:= _ -> _
+40 PRINT "MINIMUM IS "; B
+ TextConstant:"MINIMUM IS "
+ CarriageControl:;
+ Variable:B -> _
+ CarriageControl:NL
+90 DATA 10.2,5.5,1.8,22,17,-19,7
+ NumericConstant:10.2
+ NumericConstant:5.5
+ NumericConstant:1.8
+ NumericConstant:22
+ NumericConstant:17
+ NumericConstant:19
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:7
+99 END
+ 
+
