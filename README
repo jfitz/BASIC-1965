@@ -6,14 +6,15 @@ This version is a primitive form of BASIC, less powerful than Microsoft BASIC.
 
 Features of the language:
 - Numeric variables only; no string variables
-- Functions ABS, EXP, FRAC, INT, LOG, LOG10, LOG2, MOD, RND, SGN, SQR
+- Functions ABS, EXP, FIX, FRAC, INT, LOG, LOG10, LOG2, MOD, RND, ROUND, SGN, SQR
 - Trigonometric functions ARCCOS, ARCSIN, ARCTAN, ATN, COS, COT, CSC, SEC, SIN, TAN
-- Matrix functions CON, DET, IDN, INV, TRN, ZER
+- Matrix functions CON, DET, IDN, INV, MAXM, MINM, NCOL, NROW, TRN, ZER
+- Array functions AVG, MAXA, MINA, NELEM, PROD, SUM
 - User-defined functions in form FNx(X)
 - Statements DATA, DIM, DEF FN, END, FOR, GOSUB, GOTO, IF, INPUT, LET, NEXT, OPTION, PRINT, READ, REMARK, RETURN, STOP, WRITE
 - The LET statement must include the LET keyword
-- Matrix operations MAT (assignment), MAT INPUT, MAT READ, MAT PRINT, MAT WRITE
-- Array operations ARR (assignment), ARR INPUT, ARR READ, ARR PRINT, ARR WRITE
+- Matrix statements MAT LET, MAT INPUT, MAT PRINT, MAT READ, MAT WRITE
+- Array statements ARR LET, ARR INPUT, ARR PLOT, ARR PRINT, ARR READ, ARR WRITE
 - Only one statement on each line
 - Comments with single quote (') character
 - File operations with the FILES statement (not OPEN and CLOSE statements)

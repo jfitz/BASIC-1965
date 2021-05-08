@@ -159,6 +159,17 @@ class BASICArray
     'ARRAY: ' + @values.to_s
   end
 
+  def plot(printer, interpreter)
+    case @dimensions.size
+    when 0
+      raise BASICSyntaxError, 'Need dimension in array'
+    when 1
+      plot_1(printer, interpreter)
+    else
+      raise BASICSyntaxError, 'Too many dimensions in array'
+    end
+  end
+
   def print(printer, interpreter)
     case @dimensions.size
     when 0
@@ -265,6 +276,116 @@ class BASICArray
     end
 
     min_value
+  end
+
+  def plot_1(printer, interpreter)
+    base = $options['base'].value
+    upper = @dimensions[0].to_i - base
+    n_cols = upper + 1
+
+    # height above x-axis
+    max_value = max_1
+    max_value = 0 if max_value < 0
+    min_value = min_1
+    min_value = 0 if min_value > 0
+    
+    value_span = max_value - min_value
+
+    factor = 1.0
+
+    while value_span > 10
+      value_span /= 10
+      factor *= 10
+    end
+
+    while value_span < 1
+      value_span *= 10
+      factor /= 10
+    end
+
+    span = value_span.to_i + 1
+    # span = value_span.to_i if max_value > 0 && min_value < 0
+
+    value_span = value_span.to_i + 1
+    value_span *= factor
+
+    # adjust height and depth
+    if span < 3
+      span *= 10
+    elsif span < 5
+      span *= 5
+    elsif span < 10
+      span *= 2
+    end
+
+    height = (max_value / value_span * span).to_i
+    depth = -(span - height) + 1
+    
+    y_delta = value_span / span
+    upper_value = (y_delta * height).round(6)
+    lower_value = (y_delta * depth).round(6)
+
+    # stub width
+    w_p = upper_value.to_s.size
+    w_n = lower_value.to_s.size - 1
+    stub_width = [w_p, w_n].max + 2
+
+    print_width = $options['print_width'].value
+    print_width = 72 if print_width == 0
+    print_width -= 1
+
+    plot_width = print_width - stub_width - 1
+
+    ## error when plot width < number of data points
+    raise BASICRuntimeError.new(:te_too_many, 'PLOT') if
+      plot_width < n_cols
+
+    spacer = (plot_width / n_cols).to_i
+    plot_width = spacer * n_cols
+
+    if factor > 1
+      text = upper_value.to_s.rjust(stub_width) + '|'
+    else
+      text = upper_value.round(4).to_s.rjust(stub_width) + '|'
+    end
+
+    plot_text = ''
+    plot_text = '-' * plot_width if upper_value == 0
+    text += plot_text
+
+    tc = TextConstant.new(text)
+    tc.print(printer)
+    printer.newline
+
+    ## this fails when Y value is negative
+    (depth..height).reverse_each do |row|
+      upper_bound = y_delta * row
+      lower_bound = upper_bound - y_delta
+
+      if factor > 1
+        text = lower_bound.to_s.rjust(stub_width) + '|'
+      else
+        text = lower_bound.round(4).to_s.rjust(stub_width) + '|'
+      end
+
+      plot_text = ' ' * plot_width
+      plot_text = '-' * plot_width if lower_bound == 0
+
+      (base..upper).each do |col|
+        value = get_value(col).to_f
+
+        if value >= lower_bound && value < upper_bound
+          pos = col * spacer
+          plot_text[pos] = '*'
+        end
+      end
+
+      text += plot_text
+
+      tc = TextConstant.new(text.rstrip)
+      tc.print(printer)
+      printer.newline
+    end
   end
 
   def print_1(printer, interpreter)
@@ -1850,6 +1971,15 @@ class ValueExpressionSet < AbstractExpressionSet
 
     numeric_constant = numeric_constants[0]
     numeric_constant.write(printer)
+  end
+
+  def compound_plot(printer, interpreter)
+    compounds = evaluate(interpreter)
+
+    return if compounds.empty?
+
+    compound = compounds[0]
+    compound.plot(printer, interpreter)
   end
 
   def compound_print(printer, interpreter)

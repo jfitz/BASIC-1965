@@ -1319,6 +1319,51 @@ An INPUT statement reads all values from a line of the input file.
 Extra values are discarded.
 If the line contains an insufficient number of values to fill all variables, BASIC reports an error.
 
+ARR PLOT
+~~~~~~~~
+
+Printing to console
+^^^^^^^^^^^^^^^^^^^
+
+Plots an array of values.
+
+Examples:
+
+	100 ARR PLOT A
+	110 ARR PLOT C, D
+
+At least one variable must be specified.
+When multiple variables are specified, each variable is printed in its own plot.
+The separators between variables have no effect.
+
+Plots are printed in ASCII.
+Plots are auto-scaled, with the X-axis at zero.
+Values are printed for the Y-axis.
+No values are printed for the X-axis.
+No titles or legends are printed.
+
+Printing to files
+^^^^^^^^^^^^^^^^^
+ 
+Syntax:	ARR PRINT #filenum; variable list
+
+Examples:
+
+	100 ARR PRINT #1; A
+	110 ARR PRINT #2, B;
+	120 ARR PRINT #3; A; B;
+	130 ARR PRINT #4; C, D
+
+At least one variable must be specified.
+When multiple variables are specified, each variable is printed in its own plot.
+The separators between variables have no effect.
+
+Plots are printed in ASCII.
+Plots are auto-scaled, with the X-axis at zero.
+Values are printed for the Y-axis.
+No values are printed for the X-axis.
+No titles or legends are printed.
+
 ARR PRINT
 ~~~~~~~~~
 

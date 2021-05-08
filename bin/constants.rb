@@ -844,7 +844,7 @@ end
 # Text constants
 class TextConstant < AbstractValueElement
   def self.accept?(token)
-    classes = %w[TextConstantToken]
+    classes = %w[TextConstantToken String]
     classes.include?(token.class.to_s)
   end
 
@@ -855,6 +855,7 @@ class TextConstant < AbstractValueElement
     super()
 
     @value = nil
+    @value = text if text.class.to_s == 'String'
     @value = text.value if text.class.to_s == 'TextConstantToken'
 
     raise(BASICSyntaxError, "'#{text}' is not a text constant") if @value.nil?
@@ -862,7 +863,6 @@ class TextConstant < AbstractValueElement
     @content_type = :string
     @shape = :scalar
     @constant = true
-    @symbol_text = text.value
 
     @text_constant = true
   end
@@ -1226,6 +1226,10 @@ class CarriageControl
     when ''
       printer.print_item(',')
     end
+  end
+
+  def compound_plot(printer, _)
+    printer.newline
   end
 end
 
