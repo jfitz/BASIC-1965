@@ -1021,6 +1021,35 @@ class FunctionLog2 < AbstractFunction
   end
 end
 
+# function MAXM
+class FunctionMaxM < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :matrix
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :matrix }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    raise BASICRunTimeError.new(:te_too_few, @name) if
+      args[0].empty?
+
+    res = args[0].max
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function MAXA
 class FunctionMaxA < AbstractFunction
   def initialize(text)
@@ -1044,6 +1073,35 @@ class FunctionMaxA < AbstractFunction
       args[0].empty?
 
     res = args[0].max
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
+# function MINM
+class FunctionMinM < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :matrix
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :matrix }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    raise BASICRunTimeError.new(:te_too_few, @name) if
+      args[0].empty?
+
+    res = args[0].min
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -1900,7 +1958,9 @@ class FunctionFactory
     'LOG10' => FunctionLog10,
     'LOG2' => FunctionLog2,
     'MAXA' => FunctionMaxA,
+    'MAXM' => FunctionMaxM,
     'MINA' => FunctionMinA,
+    'MINM' => FunctionMinM,
     'MOD' => FunctionMod,
     'NCOL' => FunctionNcol,
     'NELEM' => FunctionNelem,

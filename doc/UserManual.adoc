@@ -1322,18 +1322,11 @@ If the line contains an insufficient number of values to fill all variables, BAS
 ARR PLOT
 ~~~~~~~~
 
-Printing to console
-^^^^^^^^^^^^^^^^^^^
-
 Plots an array of values.
-
-Examples:
-
-	100 ARR PLOT A
-	110 ARR PLOT C, D
 
 At least one variable must be specified.
 When multiple variables are specified, each variable is printed in its own plot.
+If you want multiple series in one plot, use the MAT PLOT statement.
 The separators between variables have no effect.
 
 Plots are printed in ASCII.
@@ -1341,6 +1334,14 @@ Plots are auto-scaled, with the X-axis at zero.
 Values are printed for the Y-axis.
 No values are printed for the X-axis.
 No titles or legends are printed.
+
+Printing to console
+^^^^^^^^^^^^^^^^^^^
+
+Examples:
+
+	100 ARR PLOT A
+	110 ARR PLOT C, D
 
 Printing to files
 ^^^^^^^^^^^^^^^^^
@@ -1349,20 +1350,8 @@ Syntax:	ARR PRINT #filenum; variable list
 
 Examples:
 
-	100 ARR PRINT #1; A
-	110 ARR PRINT #2, B;
-	120 ARR PRINT #3; A; B;
-	130 ARR PRINT #4; C, D
-
-At least one variable must be specified.
-When multiple variables are specified, each variable is printed in its own plot.
-The separators between variables have no effect.
-
-Plots are printed in ASCII.
-Plots are auto-scaled, with the X-axis at zero.
-Values are printed for the Y-axis.
-No values are printed for the X-axis.
-No titles or legends are printed.
+	100 ARR PLOT #1; A
+	110 ARR PLOT #3; C, D
 
 ARR PRINT
 ~~~~~~~~~
@@ -1596,6 +1585,45 @@ Examples:
 An INPUT statement reads all values from a line of the input file.
 Extra values are discarded.
 If the line contains an insufficient number of values to fill all variables, BASIC reports an error.
+
+MAT PLOT
+~~~~~~~~
+
+Plots a matrix of values.
+
+Each row in a matrix is one series of data.
+Each series is plotted with a marker digit (1 through 9, and 0).
+The source matrix may have at most 10 rows.
+
+Plots are printed in ASCII.
+Plots are auto-scaled, with the X-axis at zero.
+Values are printed for the Y-axis.
+No values are printed for the X-axis.
+No titles or legends are printed.
+
+At least one variable must be specified.
+When multiple variables are specified, each variable is printed in its own plot.
+The separators between variables have no effect.
+
+Printing to console
+^^^^^^^^^^^^^^^^^^^
+
+Syntax:	MAT PRINT variable list
+
+Examples:
+
+	100 MAT PLOT A
+	110 MAT PLOT C, D
+
+Printing to files
+^^^^^^^^^^^^^^^^^
+ 
+Syntax:	MAT PRINT #filenum; variable list
+
+Examples:
+
+	100 MAT PLOT #1; A
+	110 MAT PLOT #3; C, D
 
 MAT PRINT
 ~~~~~~~~~
@@ -1981,12 +2009,26 @@ numeric
 
 Returns maximum value of elements in array.
 
+MAXM(m)
+~~~~~~~
+
+numeric
+
+Returns maximum value of elements in matrix.
+
 MINA(a)
 ~~~~~~~
 
 numeric
 
 Returns minimum value of elements in array.
+
+MINM(m)
+~~~~~~~
+
+numeric
+
+Returns minimum value of elements in matrix.
 
 MOD(a,b)
 ~~~~~~~~

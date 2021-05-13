@@ -79,6 +79,7 @@ class StatementFactory
       LetStatement,
       MatForgetStatement,
       MatInputStatement,
+      MatPlotStatement,
       MatPrintStatement,
       MatReadStatement,
       MatWriteStatement,
@@ -2647,6 +2648,44 @@ class MatInputStatement < AbstractStatement
     end
 
     interpreter.clear_previous_lines
+  end
+end
+
+# MAT PLOT
+class MatPlotStatement < AbstractStatement
+  def self.lead_keywords
+    [
+      [KeywordToken.new('MAT'), KeywordToken.new('PLOT')]
+    ]
+  end
+
+  include FileFunctions
+  include PrintFunctions
+
+  def initialize(_, keywords, tokens_lists)
+    super
+
+    template2 = [[1, '>=']]
+
+    if check_template(tokens_lists, template2)
+      items = split_tokens(tokens_lists[0], false)
+      @items = tokens_to_expressions_2(items, :matrix)
+      @file_tokens = extract_file_handle(@items)
+      @elements = make_references(@items, @file_tokens)
+      @items.each { |item| @comprehension_effort += item.comprehension_effort }
+      @mccabe = @items.size
+    else
+      @errors << 'Syntax error'
+    end
+  end
+
+  def execute(interpreter)
+    fh = get_file_handle(interpreter, @file_tokens)
+    fhr = interpreter.get_file_handler(fh, :print)
+
+    @items.each do |item|
+      item.compound_plot(fhr, interpreter)
+    end
   end
 end
 

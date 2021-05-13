@@ -77,12 +77,16 @@ class BASICArray
   end
 
   def numeric_constant?
-    value = get_value(0)
+    base = $options['base'].value
+
+    value = get_value(base)
     value.numeric_constant?
   end
 
   def text_constant?
-    value = get_value(0)
+    base = $options['base'].value
+
+    value = get_value(base)
     value.text_constant?
   end
 
@@ -254,7 +258,7 @@ class BASICArray
     n_cols = @dimensions[0].to_i
     base = $options['base'].value
 
-    max_value = get_value(0).to_v
+    max_value = get_value(base).to_v
 
     (base..n_cols).each do |col|
       value = get_value(col).to_v
@@ -268,7 +272,7 @@ class BASICArray
     n_cols = @dimensions[0].to_i
     base = $options['base'].value
 
-    min_value = get_value(0).to_v
+    min_value = get_value(base).to_v
 
     (base..n_cols).each do |col|
       value = get_value(col).to_v
@@ -550,12 +554,16 @@ class Matrix
   end
 
   def numeric_constant?
-    value = get_value_2(0, 0)
+    base = $options['base'].value
+
+    value = get_value_2(base, base)
     value.numeric_constant?
   end
 
   def text_constant?
-    value = get_value_2(0, 0)
+    base = $options['base'].value
+
+    value = get_value_2(base, base)
     value.text_constant?
   end
 
@@ -573,6 +581,16 @@ class Matrix
     base = $options['base'].value
 
     @dimensions[1].to_i - base + 1
+  end
+
+  def size
+    return 0 if @dimensions.size < 1
+
+    nrow * ncol
+  end
+
+  def empty?
+    return size == 0
   end
 
   def values_1
@@ -631,8 +649,31 @@ class Matrix
     Matrix.new(@dimensions, values)
   end
 
+  def max
+    NumericConstant.new(max_1) if @dimensions.size == 1
+    NumericConstant.new(max_2) if @dimensions.size == 2
+  end
+
+  def min
+    NumericConstant.new(min_1) if @dimensions.size == 1
+    NumericConstant.new(min_2) if @dimensions.size == 2
+  end
+
   def to_s
     'MATRIX: ' + @values.to_s
+  end
+
+  def plot(printer, interpreter)
+    case @dimensions.size
+    when 0
+      raise BASICSyntaxError, 'Need dimension in matrix'
+    when 1
+      plot_1(printer, interpreter)
+    when 2
+      plot_2(printer, interpreter)
+    else
+      raise BASICSyntaxError, 'Too many dimensions in matrix'
+    end
   end
 
   def print(printer, interpreter)
@@ -779,6 +820,301 @@ class Matrix
     end
 
     values
+  end
+
+  def max_1
+    n_cols = @dimensions[0].to_i
+    base = $options['base'].value
+
+    max_value = get_value_1(base).to_v
+
+    (base..n_cols).each do |col|
+      value = get_value_1(col).to_v
+      max_value = value if value > max_value
+    end
+
+    max_value
+  end
+
+  def max_2
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
+    base = $options['base'].value
+
+    max_value = get_value_2(base, base).to_v
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
+        value = get_value_2(row, col).to_v
+        max_value = value if value > max_value
+      end
+    end
+
+    max_value
+  end
+
+  def min_1
+    n_cols = @dimensions[0].to_i
+    base = $options['base'].value
+
+    min_value = get_value_1(base).to_v
+
+    (base..n_cols).each do |col|
+      value = get_value_1(col).to_v
+      min_value = value if value < min_value
+    end
+
+    min_value
+  end
+
+  def min_2
+    n_rows = @dimensions[0].to_i
+    n_cols = @dimensions[1].to_i
+    base = $options['base'].value
+
+    min_value = get_value_2(base, base).to_v
+
+    (base..n_rows).each do |row|
+      (base..n_cols).each do |col|
+        value = get_value_2(row, col).to_v
+        min_value = value if value < min_value
+      end
+    end
+
+    min_value
+  end
+
+  def plot_1(printer, interpreter)
+    base = $options['base'].value
+    upper = @dimensions[0].to_i - base
+    n_cols = upper + 1
+
+    # height above x-axis
+    max_value = max_1
+    max_value = 0 if max_value < 0
+    min_value = min_1
+    min_value = 0 if min_value > 0
+    
+    value_span = max_value - min_value
+
+    factor = 1.0
+
+    while value_span > 10
+      value_span /= 10
+      factor *= 10
+    end
+
+    while value_span < 1
+      value_span *= 10
+      factor /= 10
+    end
+
+    span = value_span.to_i + 1
+    # span = value_span.to_i if max_value > 0 && min_value < 0
+
+    value_span = value_span.to_i + 1
+    value_span *= factor
+
+    # adjust height and depth
+    if span < 3
+      span *= 10
+    elsif span < 5
+      span *= 5
+    elsif span < 10
+      span *= 2
+    end
+
+    height = (max_value / value_span * span).to_i
+    depth = -(span - height) + 1
+    
+    y_delta = value_span / span
+    upper_value = (y_delta * height).round(6)
+    lower_value = (y_delta * depth).round(6)
+
+    # stub width
+    w_p = upper_value.to_s.size
+    w_n = lower_value.to_s.size - 1
+    stub_width = [w_p, w_n].max + 2
+
+    print_width = $options['print_width'].value
+    print_width = 72 if print_width == 0
+    print_width -= 1
+
+    plot_width = print_width - stub_width - 1
+
+    ## error when plot width < number of data points
+    raise BASICRuntimeError.new(:te_too_many, 'PLOT') if
+      plot_width < n_cols
+
+    spacer = (plot_width / n_cols).to_i
+    plot_width = spacer * n_cols
+
+    if factor > 1
+      text = upper_value.to_s.rjust(stub_width) + '|'
+    else
+      text = upper_value.round(4).to_s.rjust(stub_width) + '|'
+    end
+
+    plot_text = ''
+    plot_text = '-' * plot_width if upper_value == 0
+    text += plot_text
+
+    tc = TextConstant.new(text)
+    tc.print(printer)
+    printer.newline
+
+    ## this fails when Y value is negative
+    (depth..height).reverse_each do |row|
+      upper_bound = y_delta * row
+      lower_bound = upper_bound - y_delta
+
+      if factor > 1
+        text = lower_bound.to_s.rjust(stub_width) + '|'
+      else
+        text = lower_bound.round(4).to_s.rjust(stub_width) + '|'
+      end
+
+      plot_text = ' ' * plot_width
+      plot_text = '-' * plot_width if lower_bound == 0
+
+      (base..upper).each do |col|
+        value = get_value_2(row, col).to_f
+
+        if value >= lower_bound && value < upper_bound
+          pos = col * spacer
+          plot_text[pos] = marker
+        end
+      end
+
+      text += plot_text
+
+      tc = TextConstant.new(text.rstrip)
+      tc.print(printer)
+      printer.newline
+    end
+  end
+
+  def plot_2(printer, interpreter)
+    base = $options['base'].value
+    upper_r = @dimensions[0].to_i - base
+    upper_c = @dimensions[1].to_i - base
+
+    markers = '1234567890'
+    
+    # max of 10 rows of data
+    raise BASICRuntimeError.new(:te_too_many, 'PLOT') if
+      upper_r > markers.size
+
+    n_rows = upper_r + 1
+    n_cols = upper_c + 1
+
+    # height above x-axis
+    max_value = max_2
+    max_value = 0 if max_value < 0
+    min_value = min_2
+    min_value = 0 if min_value > 0
+    
+    value_span = max_value - min_value
+
+    factor = 1.0
+
+    while value_span > 10
+      value_span /= 10
+      factor *= 10
+    end
+
+    while value_span < 1
+      value_span *= 10
+      factor /= 10
+    end
+
+    span = value_span.to_i + 1
+    # span = value_span.to_i if max_value > 0 && min_value < 0
+
+    value_span = value_span.to_i + 1
+    value_span *= factor
+
+    # adjust height and depth
+    if span < 3
+      span *= 10
+    elsif span < 5
+      span *= 5
+    elsif span < 10
+      span *= 2
+    end
+
+    height = (max_value / value_span * span).to_i
+    depth = -(span - height) + 1
+    
+    y_delta = value_span / span
+    upper_value = (y_delta * height).round(6)
+    lower_value = (y_delta * depth).round(6)
+
+    # stub width
+    w_p = upper_value.to_s.size
+    w_n = lower_value.to_s.size - 1
+    stub_width = [w_p, w_n].max + 2
+
+    print_width = $options['print_width'].value
+    print_width = 72 if print_width == 0
+    print_width -= 1
+
+    plot_width = print_width - stub_width - 1
+
+    ## error when plot width < number of data points
+    raise BASICRuntimeError.new(:te_too_many, 'PLOT') if
+      plot_width < n_cols
+
+    spacer = (plot_width / n_cols).to_i
+    plot_width = spacer * n_cols
+
+    if factor > 1
+      text = upper_value.to_s.rjust(stub_width) + '|'
+    else
+      text = upper_value.round(4).to_s.rjust(stub_width) + '|'
+    end
+
+    plot_text = ''
+    plot_text = '-' * plot_width if upper_value == 0
+    text += plot_text
+
+    tc = TextConstant.new(text)
+    tc.print(printer)
+    printer.newline
+
+    ## this fails when Y value is negative
+    (depth..height).reverse_each do |row|
+      upper_bound = y_delta * row
+      lower_bound = upper_bound - y_delta
+
+      if factor > 1
+        text = lower_bound.to_s.rjust(stub_width) + '|'
+      else
+        text = lower_bound.round(4).to_s.rjust(stub_width) + '|'
+      end
+
+      plot_text = ' ' * plot_width
+      plot_text = '-' * plot_width if lower_bound == 0
+
+      (base..upper_r).each_with_index do |row, index|
+        marker = markers[index]
+
+        (base..upper_c).each do |col|
+          value = get_value_2(row, col).to_f
+
+          if value >= lower_bound && value < upper_bound
+            pos = col * spacer
+            plot_text[pos] = marker
+          end
+        end
+      end
+
+      text += plot_text
+
+      tc = TextConstant.new(text.rstrip)
+      tc.print(printer)
+      printer.newline
+    end
   end
 
   def print_1(printer, interpreter)

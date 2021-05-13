@@ -1,0 +1,55 @@
+10 REM TEST THE MINM() FUNCTION
+ Remark:TEST THE MINM() FUNCTION
+20 MAT READ A(3,6)
+ NumericConstant:3
+ NumericConstant:6
+ Variable:A(_,_) -> _(,)
+30 LET B=MINM(A)
+ Variable:B -> _
+ Variable:A(,) -> _(,)
+ FunctionMinM:MINM(_(,)) -> _
+ AssignmentOperator:= _ -> _
+40 PRINT "MINIMUM IS "; B
+ TextConstant:"MINIMUM IS "
+ CarriageControl:;
+ Variable:B -> _
+ CarriageControl:NL
+90 DATA 10.2,5.5,1.8,22,17,-19,7
+ NumericConstant:10.2
+ NumericConstant:5.5
+ NumericConstant:1.8
+ NumericConstant:22
+ NumericConstant:17
+ NumericConstant:19
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:7
+91 DATA 11.2,6.5,2.8,23,18,-20,8
+ NumericConstant:11.2
+ NumericConstant:6.5
+ NumericConstant:2.8
+ NumericConstant:23
+ NumericConstant:18
+ NumericConstant:20
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:8
+92 DATA 12.2,7.5,3.8,24,19,-21,9
+ NumericConstant:12.2
+ NumericConstant:7.5
+ NumericConstant:3.8
+ NumericConstant:24
+ NumericConstant:19
+ NumericConstant:21
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:9
+93 DATA 13.2,8.5,4.8,25,20,-22,10
+ NumericConstant:13.2
+ NumericConstant:8.5
+ NumericConstant:4.8
+ NumericConstant:25
+ NumericConstant:20
+ NumericConstant:22
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:10
+99 END
+ 
+

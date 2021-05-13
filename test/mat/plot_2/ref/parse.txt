@@ -1,0 +1,36 @@
+10 MAT LET A = RND2(4, 40, 400)
+ Variable:A(,) -> _(,)
+ NumericConstant:4
+ NumericConstant:40
+ NumericConstant:400
+ FunctionRnd2:RND2(_,_,_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+20 MAT LET A1 = A - 100
+ Variable:A1(,) -> _(,)
+ Variable:A(,) -> _(,)
+ NumericConstant:100
+ BinaryOperatorMinus:-(_(,),_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+30 MAT LET A2 = A - 390
+ Variable:A2(,) -> _(,)
+ Variable:A(,) -> _(,)
+ NumericConstant:390
+ BinaryOperatorMinus:-(_(,),_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+40 MAT LET A3 = A - 700
+ Variable:A3(,) -> _(,)
+ Variable:A(,) -> _(,)
+ NumericConstant:700
+ BinaryOperatorMinus:-(_(,),_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+90 MAT PLOT A, A1, A2, A3
+ Variable:A(,) -> _(,)
+ CarriageControl:
+ Variable:A1(,) -> _(,)
+ CarriageControl:
+ Variable:A2(,) -> _(,)
+ CarriageControl:
+ Variable:A3(,) -> _(,)
+99 END
+ 
+
