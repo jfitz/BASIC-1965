@@ -642,8 +642,8 @@ class BinaryOperator < AbstractElement
     n_cols = dims[0].to_i
     values = {}
     (base..n_cols).each do |col|
-      a_value = a.get_value(col)
-      b_value = b.get_value(col)
+      a_value = a.get_value_1(col)
+      b_value = b.get_value_1(col)
       coords = AbstractElement.make_coord(col)
       values[coords] = a_value.send(op, b_value)
     end
@@ -658,7 +658,7 @@ class BinaryOperator < AbstractElement
     n_cols = dims[0].to_i
     values = {}
     (base..n_cols).each do |col|
-      b_value = b.get_value(col)
+      b_value = b.get_value_1(col)
       coords = AbstractElement.make_coord(col)
       values[coords] = a.send(op, b_value)
     end
@@ -673,7 +673,7 @@ class BinaryOperator < AbstractElement
     n_cols = dims[0].to_i
     values = {}
     (base..n_cols).each do |col|
-      a_value = a.get_value(col)
+      a_value = a.get_value_1(col)
       coords = AbstractElement.make_coord(col)
       values[coords] = a_value.send(op, b)
     end
@@ -782,20 +782,6 @@ class UnaryOperatorMinus < UnaryOperator
 
   private
   
-  def negate_a(source)
-    n_cols = source.dimensions[0].to_i
-    values = {}
-    base = $options['base'].value
-
-    (base..n_cols).each do |col|
-      value = source.get_value(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = negate(value)
-    end
-
-    values
-  end
-
   def negate_1(source)
     n_cols = source.dimensions[0].to_i
     values = {}
@@ -834,7 +820,7 @@ class UnaryOperatorMinus < UnaryOperator
 
   def negate_array(a)
     dims = a.dimensions
-    values = negate_a(a)
+    values = negate_1(a)
 
     BASICArray.new(dims, values)
   end
