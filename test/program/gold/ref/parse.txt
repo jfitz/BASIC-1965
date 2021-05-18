@@ -1,0 +1,119 @@
+10 REM PLOT PRICES OF GOLD
+ Remark:PLOT PRICES OF GOLD
+20 OPTION BASE 1
+ NumericConstant:1
+30 MAT READ G(5,13)
+ NumericConstant:5
+ NumericConstant:13
+ Variable:G(_,_) -> _(,)
+40 MAT PLOT G
+ Variable:G(,) -> _(,)
+90 DATA -0.599, -1.413, -0.442, -0.576, -0.528, -0.628, -0.467, -0.533, -0.511, -0.555, -0.539, -0.51, -0.501
+ NumericConstant:0.599
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:1.413
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.442
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.576
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.528
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.628
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.467
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.533
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.511
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.555
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.539
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.51
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.501
+ UnaryOperatorMinus:-(_) -> =_
+91 DATA -0.236, -0.421, -0.172, -0.214, -0.2, -0.270, -0.216, -0.185, -0.17, -0.195, -0.191, -0.196, -0.192
+ NumericConstant:0.236
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.421
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.172
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.214
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.2
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.27
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.216
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.185
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.17
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.195
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.191
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.196
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.192
+ UnaryOperatorMinus:-(_) -> =_
+92 DATA 0.002, -0.069, -0.003, -0.015, -0.037, -0.025, -0.026, -0.033, 0.001, 0.031, -0.018, -0.023, -0.008
+ NumericConstant:0.002
+ NumericConstant:0.069
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.003
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.015
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.037
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.025
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.026
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.033
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.001
+ NumericConstant:0.031
+ NumericConstant:0.018
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.023
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0.008
+ UnaryOperatorMinus:-(_) -> =_
+93 DATA 0.177, 0.439, 0.118, 0.169, 0.144, 0.127, 0.139, 0.134, 0.135, 0.141, 0.179, 0.129, 0.154
+ NumericConstant:0.177
+ NumericConstant:0.439
+ NumericConstant:0.118
+ NumericConstant:0.169
+ NumericConstant:0.144
+ NumericConstant:0.127
+ NumericConstant:0.139
+ NumericConstant:0.134
+ NumericConstant:0.135
+ NumericConstant:0.141
+ NumericConstant:0.179
+ NumericConstant:0.129
+ NumericConstant:0.154
+94 DATA 0.501, 1.372, 0.409, 0.565, 0.514, 0.592, 0.482, 0.521, 0.46, 0.486, 0.523, 0.497, 0.448
+ NumericConstant:0.501
+ NumericConstant:1.372
+ NumericConstant:0.409
+ NumericConstant:0.565
+ NumericConstant:0.514
+ NumericConstant:0.592
+ NumericConstant:0.482
+ NumericConstant:0.521
+ NumericConstant:0.46
+ NumericConstant:0.486
+ NumericConstant:0.523
+ NumericConstant:0.497
+ NumericConstant:0.448
+99 END
+ 
+
