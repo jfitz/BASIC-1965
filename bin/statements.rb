@@ -2470,7 +2470,7 @@ class ArrLetStatement < AbstractLetStatement
 
     r_dims = r_value.dimensions
 
-    values = r_value.values(interpreter)
+    values = r_value.values_1
 
     l_values.each do |l_value|
       interpreter.set_dimensions(l_value, r_dims)
@@ -2972,6 +2972,7 @@ class MatLetStatement < AbstractLetStatement
     interpreter.set_default_args('ZER', nil)
 
     r_dims = r_value.dimensions
+
     values = r_value.values_1 if r_dims.size == 1
     values = r_value.values_2 if r_dims.size == 2
 

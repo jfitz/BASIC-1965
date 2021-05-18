@@ -160,6 +160,36 @@ class AbstractCompound
     NumericConstant.new(0)
   end
 
+  def values_1
+    values = {}
+
+    base = $options['base'].value
+
+    (base..@dimensions[0].to_i).each do |col|
+      value = get_value_1(col)
+      coords = AbstractElement.make_coord(col)
+      values[coords] = value
+    end
+
+    values
+  end
+
+  def values_2
+    values = {}
+
+    base = $options['base'].value
+
+    (base..@dimensions[0].to_i).each do |row|
+      (base..@dimensions[1].to_i).each do |col|
+        value = get_value_2(row, col)
+        coords = AbstractElement.make_coords(row, col)
+        values[coords] = value
+      end
+    end
+
+    values
+  end
+
   private
 
   def posate_1
@@ -574,20 +604,6 @@ class BASICArray < AbstractCompound
     return size == 0
   end
 
-  def values(interpreter)
-    values = {}
-
-    base = $options['base'].value
-
-    (base..@dimensions[0].to_i).each do |col|
-      value = get_value_1(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = value
-    end
-
-    values
-  end
-
   def posate
     values = posate_1
     BASICArray.new(@dimensions, values)
@@ -734,36 +750,6 @@ class Matrix < AbstractCompound
 
   def empty?
     return size == 0
-  end
-
-  def values_1
-    values = {}
-
-    base = $options['base'].value
-
-    (base..@dimensions[0].to_i).each do |col|
-      value = get_value_1(col)
-      coords = AbstractElement.make_coord(col)
-      values[coords] = value
-    end
-
-    values
-  end
-
-  def values_2
-    values = {}
-
-    base = $options['base'].value
-
-    (base..@dimensions[0].to_i).each do |row|
-      (base..@dimensions[1].to_i).each do |col|
-        value = get_value_2(row, col)
-        coords = AbstractElement.make_coords(row, col)
-        values[coords] = value
-      end
-    end
-
-    values
   end
 
   def posate
