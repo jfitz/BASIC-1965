@@ -690,6 +690,34 @@ class FunctionCsc < AbstractFunction
   end
 end
 
+# function DEG
+class FunctionDeg < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :scalar
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    v = args[0].to_v
+    v1 = v * 180 / 3.14156926
+    res = NumericConstant.new(v1)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function DET
 class FunctionDet < AbstractFunction
   def initialize(text)
@@ -1021,35 +1049,6 @@ class FunctionLog2 < AbstractFunction
   end
 end
 
-# function MAXM
-class FunctionMaxM < AbstractFunction
-  def initialize(text)
-    super
-
-    @shape = :scalar
-
-    @default_shape = :matrix
-    @signature_1 = [{ 'type' => :numeric, 'shape' => :matrix }]
-  end
-
-  def evaluate(_, arg_stack)
-    args = arg_stack.pop
-
-    return @cached unless @cached.nil?
-
-    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
-      match_args_to_signature(args, @signature_1)
-
-    raise BASICRunTimeError.new(:te_too_few, @name) if
-      args[0].empty?
-
-    res = args[0].max
-
-    @cached = res if @constant && $options['cache_const_expr']
-    res
-  end
-end
-
 # function MAXA
 class FunctionMaxA < AbstractFunction
   def initialize(text)
@@ -1079,8 +1078,8 @@ class FunctionMaxA < AbstractFunction
   end
 end
 
-# function MINM
-class FunctionMinM < AbstractFunction
+# function MAXM
+class FunctionMaxM < AbstractFunction
   def initialize(text)
     super
 
@@ -1101,7 +1100,7 @@ class FunctionMinM < AbstractFunction
     raise BASICRunTimeError.new(:te_too_few, @name) if
       args[0].empty?
 
-    res = args[0].min
+    res = args[0].max
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -1117,6 +1116,35 @@ class FunctionMinA < AbstractFunction
 
     @default_shape = :array
     @signature_1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    raise BASICRunTimeError.new(:te_too_few, @name) if
+      args[0].empty?
+
+    res = args[0].min
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
+# function MINM
+class FunctionMinM < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :matrix
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :matrix }]
   end
 
   def evaluate(_, arg_stack)
@@ -1305,6 +1333,34 @@ class FunctionProd < AbstractFunction
 
     sum = args[0].prod
     res = NumericConstant.new(sum)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
+# function RAD
+class FunctionRad < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :scalar
+    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
+  end
+
+  def evaluate(_, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature_1)
+
+    v = args[0].to_v
+    v1 = v * 3.14156926 / 180
+    res = NumericConstant.new(v1)
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -1947,6 +2003,7 @@ class FunctionFactory
     'COS' => FunctionCos,
     'COT' => FunctionCot,
     'CSC' => FunctionCsc,
+    'DEG' => FunctionDeg,
     'DET' => FunctionDet,
     'EXP' => FunctionExp,
     'FIX' => FunctionFix,
@@ -1966,6 +2023,7 @@ class FunctionFactory
     'NELEM' => FunctionNelem,
     'NROW' => FunctionNrow,
     'PROD' => FunctionProd,
+    'RAD' => FunctionRad,
     'RND' => FunctionRnd,
     'RND1' => FunctionRnd1,
     'RND2' => FunctionRnd2,
