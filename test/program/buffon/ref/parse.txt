@@ -1,0 +1,131 @@
+10 REM BUFFON NEEDLE SIMULATION
+ Remark:BUFFON NEEDLE SIMULATION
+30 LET L0 = 2 ' DISTANCE BETWEEN LINES
+ Variable:L0 -> _
+ NumericConstant:2
+ AssignmentOperator:= =_ -> _
+32 LET L = 1' NEEDLE SIZE
+ Variable:L -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+40 READ N,M
+ Variable:N -> _
+ Variable:M -> _
+100 PRINT "COUNT","HITS","RATIO","INVERSE"
+ TextConstant:"COUNT"
+ CarriageControl:,
+ TextConstant:"HITS"
+ CarriageControl:,
+ TextConstant:"RATIO"
+ CarriageControl:,
+ TextConstant:"INVERSE"
+ CarriageControl:NL
+110 REM MAIN LOOP
+ Remark:MAIN LOOP
+120 LET C = 0
+ Variable:C -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+130 FOR I = 1 TO N
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:N -> _"]
+140 GOSUB 200
+ LineNumber:200
+150 IF MOD(I, M) <> 0 THEN 170
+ Variable:I -> _
+ Variable:M -> _
+ FunctionMod:MOD(_,_) -> _
+ NumericConstant:0
+ BinaryOperatorNotEqual:<>(_,_) -> ?
+160 GOSUB 300
+ LineNumber:300
+170 REM CONTINUE
+ Remark:CONTINUE
+180 NEXT I
+ Variable:I -> _
+190 GOSUB 300
+ LineNumber:300
+199 STOP
+ 
+200 REM PROCEDURE A
+ Remark:PROCEDURE A
+210 LET D = RND(L0)
+ Variable:D -> _
+ Variable:L0 -> _
+ FunctionRnd:RND(_) -> _
+ AssignmentOperator:= _ -> _
+211 IF D < 0.5 * L0 THEN 220
+ Variable:D -> _
+ NumericConstant:0.5
+ Variable:L0 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorLess:<(_,_) -> ?
+212 LET D = L0 - D
+ Variable:D -> _
+ Variable:L0 -> _
+ Variable:D -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+220 LET T0 = RND(180)
+ Variable:T0 -> _
+ NumericConstant:180
+ FunctionRnd:RND(_) -> _
+ AssignmentOperator:= _ -> _
+230 LET T1 = RAD(T0)
+ Variable:T1 -> _
+ Variable:T0 -> _
+ FunctionRad:RAD(_) -> _
+ AssignmentOperator:= _ -> _
+240 LET X = 0.5*SIN(T1)
+ Variable:X -> _
+ NumericConstant:0.5
+ Variable:T1 -> _
+ FunctionSin:SIN(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+250 IF D > X THEN 270
+ Variable:D -> _
+ Variable:X -> _
+ BinaryOperatorGreater:>(_,_) -> ?
+260 LET C = C + 1
+ Variable:C -> _
+ Variable:C -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+270 REM CONTINUE
+ Remark:CONTINUE
+290 RETURN
+ 
+300 REM PROCEDURE B
+ Remark:PROCEDURE B
+310 LET R = C / I
+ Variable:R -> _
+ Variable:C -> _
+ Variable:I -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+320 LET R1 = 1 / R
+ Variable:R1 -> _
+ NumericConstant:1
+ Variable:R -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+330 PRINT I,C,R,R1
+ Variable:I -> _
+ CarriageControl:,
+ Variable:C -> _
+ CarriageControl:,
+ Variable:R -> _
+ CarriageControl:,
+ Variable:R1 -> _
+ CarriageControl:NL
+390 RETURN
+ 
+900 DATA 10000,500
+ NumericConstant:10000
+ NumericConstant:500
+999 END
+ 
+
