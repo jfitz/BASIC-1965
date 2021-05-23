@@ -738,9 +738,7 @@ Examples:
 	10 DIM A(20)
 	20 DIM B(15), C(20,30)
 
-When arrays are zero-based, the DIM A(20) statement allows for values A(0) through A(20).
-
-OPTION BASE 1 changes arrays to one-based, but does not change the upper bound.
+With OPTION BASE 0, the statement DIM A(20) allows for values A(0) through A(20).
 With OPTION BASE 1, the statement DIM A(20) allows for values A(1) through A(20).
 
 The DIM statement allows expressions, which can be used as follows:
@@ -749,6 +747,26 @@ The DIM statement allows expressions, which can be used as follows:
     20 DIM A(N)
     30 REM more code
     90 DATA 4, 1,2,3,4,5
+
+The DIM statement is executed in-line.
+Arrays and matrices may be re-dimensioned.
+The following code is legal:
+
+    10 DIM A(20)
+    20 REM code with A and entries 0 to 20
+    30 DIM A(30)
+    40 REM code with A and entries 0 to 30
+
+The DIM statement sets the upper bound (or upper bounds for a matrix) for a variable.
+It does not change the contents of elements of the variable.
+A program may set the upper bounds lower, and then raise them, and the original values will remain.
+
+    10 DIM A(20,10)
+    20 REM code with A - set A(11,7) to 5
+    30 DIM A(10,6)
+    40 REM code with A and smaller dimensions - A(10,6) is allowed, but not A(11,7)
+    50 DIM A(20,10)
+    60 PRINT A(11,7) ' prints 5
 
 END
 ~~~
