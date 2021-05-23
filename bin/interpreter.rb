@@ -1091,7 +1091,7 @@ class Interpreter
     variable_name = variable.name
     vname_s = variable_name.to_s
 
-    dims = get_dimensions(variable_name)
+    dims = @dimensions[variable_name]
 
     raise BASICRuntimeError.new(:te_var_uninit, vname_s) if
       dims.nil? && $options['require_initialized']
@@ -1112,15 +1112,15 @@ class Interpreter
         v = v.chop
         # split on open parens e4 12,65
         vname1_s, subs_s = v.split('(')
-        variable_token = VariableToken.new(vname1_s)
-        variable_name = VariableName.new(variable_token)
+        vtoken1 = VariableToken.new(vname1_s)
+        vname1 = VariableName.new(vtoken1)
         # convert subscript to numeric
         sub1_token = NumericConstantToken.new(subs_s)
         sub1 = NumericConstant.new(sub1_token)
         subscripts = [sub1]
         # don't wrap subscripts for FORGET
         wsubscripts = subscripts
-        variable = Variable.new(variable_name, :scalar, subscripts, wsubscripts)
+        variable = Variable.new(vname1, :scalar, subscripts, wsubscripts)
         forget_value(variable)
       end
     end
@@ -1141,8 +1141,8 @@ class Interpreter
         v = v.chop
         # split on open parens e4 12,65
         vname1_s, subs_s = v.split('(')
-        variable_token = VariableToken.new(vname1_s)
-        variable_name = VariableName.new(variable_token)
+        vtoken1 = VariableToken.new(vname1_s)
+        vname1 = VariableName.new(vtoken1)
         # split [1] on comma e4 12 65
         sub1_s, sub2_s = subs_s.split(',')
         # convert subscripts to numerics
@@ -1153,10 +1153,12 @@ class Interpreter
         subscripts = [sub1, sub2]
         # don't wrap subscripts for FORGET
         wsubscripts = subscripts
-        variable = Variable.new(variable_name, :scalar, subscripts, wsubscripts)
+        variable = Variable.new(vname1, :scalar, subscripts, wsubscripts)
         forget_value(variable)
       end
     end
+
+    @dimensions.delete(variable_name)
   end
 
   def clear_previous_lines

@@ -8,11 +8,7 @@
  1               0.5             0.333333        0.25            0.2             0.166667
  2               1               0.666667        0.5             0.4             0.333333
 
- 0               0               0               0
- 0               0               0               0
- 0               0               0               0
-
-STOP in line 99
+Variable A has no dimensions in line 91
 
 10 (1) REM Test the FORGET statement
 11 (1) OPTION BASE 1
@@ -32,6 +28,6 @@ STOP in line 99
 41 (1) MAT PRINT A1
 50 (1) MAT FORGET A
 90 (1) MAT PRINT A1
-91 (1) MAT PRINT A
-99 (1) END
+91 (0) MAT PRINT A
+99 (0) END
 

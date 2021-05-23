@@ -1,8 +1,6 @@
  1               1               1               1               1               1               1               1               1               1
  7               6               5               4               3               2               1               0
- 0               0               0               0               0               0               0               0               0               0
- 0               0               0               0               0               0               0               0
-STOP in line 99
+Variable A has no dimensions in line 90
 
 10 (1) REM Test the FORGET statement
 11 (1) OPTION BASE 1
@@ -16,7 +14,7 @@ STOP in line 99
 30 (1) ARR PRINT A
 31 (1) ARR PRINT B
 40 (1) ARR FORGET A, B
-90 (1) ARR PRINT A
-91 (1) ARR PRINT B
-99 (1) END
+90 (0) ARR PRINT A
+91 (0) ARR PRINT B
+99 (0) END
 
