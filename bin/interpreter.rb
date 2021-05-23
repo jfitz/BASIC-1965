@@ -768,10 +768,10 @@ class Interpreter
   end
 
   def dump_dims
-    @dimensions.each do |key, value|
+    @dimensions.each do |variable_name, value|
       dims = []
       value.each { |nc| dims << nc.to_v }
-      @console_io.print_line("#{key.class}:#{key} (#{dims.join(', ')})")
+      @console_io.print_line("#{variable_name} (#{dims.join(', ')})")
     end
   end
 
@@ -801,9 +801,9 @@ class Interpreter
   end
 
   def set_dimensions(variable, subscripts)
-    name = variable.name
+    variable_name = variable.name
     int_subscripts = normalize_subscripts(subscripts)
-    @dimensions[name] = int_subscripts
+    @dimensions[variable_name] = int_subscripts
   end
 
   def normalize_subscripts(subscripts)
@@ -852,8 +852,8 @@ class Interpreter
     wrapped_subscripts
   end
 
-  def get_dimensions(variable)
-    @dimensions[variable]
+  def get_dimensions(variable_name)
+    @dimensions[variable_name]
   end
 
   def set_user_function(name, sigils, definition)
@@ -1090,13 +1090,19 @@ class Interpreter
 
     variable_name = variable.name
     vname_s = variable_name.to_s
+
+    dims = get_dimensions(variable_name)
+
+    raise BASICRuntimeError.new(:te_var_uninit, vname_s) if
+      dims.nil? && $options['require_initialized']
     
     if variable.array?
       vs = []
 
       # get names of known variables that start with variable name and no comma
       @variables.keys.each do |v|
-        vs << v if v.start_with?(vname_s) && !v.include?(',')
+        vname1_s, subs_s = v.split('(')
+        vs << v if vname1_s == vname_s && !subs_s.include?(',')
       end
 
       # remove each one of them
@@ -1105,14 +1111,15 @@ class Interpreter
         # remove close parens a3(14
         v = v.chop
         # split on open parens e4 12,65
-        vname_s, sub1_s = v.split('(')
-        variable_token = VariableToken.new(vname_s)
+        vname1_s, subs_s = v.split('(')
+        variable_token = VariableToken.new(vname1_s)
         variable_name = VariableName.new(variable_token)
         # convert subscript to numeric
-        sub1_token = NumericConstantToken.new(sub1_s)
+        sub1_token = NumericConstantToken.new(subs_s)
         sub1 = NumericConstant.new(sub1_token)
         subscripts = [sub1]
-        wsubscripts = wrap_subscripts(variable_name, subscripts)
+        # don't wrap subscripts for FORGET
+        wsubscripts = subscripts
         variable = Variable.new(variable_name, :scalar, subscripts, wsubscripts)
         forget_value(variable)
       end
@@ -1122,7 +1129,10 @@ class Interpreter
       vs = []
 
       # get names of known variables that start with variable name and no comma
-      @variables.keys.each { |v| vs << v if v.include?(',') }
+      @variables.keys.each do |v|
+        vname1_s, subs_s = v.split('(')
+        vs << v if vname1_s == vname_s && subs_s.include?(',')
+      end
 
       # remove each one of them
       vs.each do |v|
@@ -1130,8 +1140,8 @@ class Interpreter
         # remove close parens e4(12,65
         v = v.chop
         # split on open parens e4 12,65
-        vname_s, subs_s = v.split('(')
-        variable_token = VariableToken.new(vname_s)
+        vname1_s, subs_s = v.split('(')
+        variable_token = VariableToken.new(vname1_s)
         variable_name = VariableName.new(variable_token)
         # split [1] on comma e4 12 65
         sub1_s, sub2_s = subs_s.split(',')
@@ -1141,7 +1151,8 @@ class Interpreter
         sub2_token = NumericConstantToken.new(sub2_s)
         sub2 = NumericConstant.new(sub2_token)
         subscripts = [sub1, sub2]
-        wsubscripts = wrap_subscripts(variable_name, subscripts)
+        # don't wrap subscripts for FORGET
+        wsubscripts = subscripts
         variable = Variable.new(variable_name, :scalar, subscripts, wsubscripts)
         forget_value(variable)
       end

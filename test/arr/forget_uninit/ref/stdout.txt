@@ -1,6 +1,5 @@
  1               2               3               4               5               6               7               8               9               10
- 1               2               3               4               5               6               7               8               9               10
-STOP in line 99
+Error 118 Variable not initialized for B in line 40
 
 10 (1) REM Test the FORGET statement
 11 (1) OPTION BASE 1
@@ -10,7 +9,7 @@ STOP in line 99
 22 (10) LET A(I) = I
 23 (10) NEXT I
 30 (1) ARR PRINT A
-40 (1) ARR FORGET B
-90 (1) ARR PRINT A
-99 (1) END
+40 (0) ARR FORGET B
+90 (0) ARR PRINT A
+99 (0) END
 
