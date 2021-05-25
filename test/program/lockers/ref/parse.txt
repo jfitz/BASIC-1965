@@ -1,12 +1,12 @@
 10 REM TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
  Remark:TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
-20 DIM L(1000)
- NumericConstant:1000
- Declaration:L() -> _()
-30 LET N = 1000
+20 LET N = 1000
  Variable:N -> _
  NumericConstant:1000
  AssignmentOperator:= =_ -> _
+30 DIM L(N)
+ Variable:N -> _
+ Declaration:L() -> _()
 100 REM INITIALIZE LOCKERS TO OPEN
  Remark:INITIALIZE LOCKERS TO OPEN
 110 PRINT "INITIALIZING";N;" LOCKERS..."

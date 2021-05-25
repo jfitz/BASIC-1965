@@ -430,6 +430,7 @@ The OPTION command overrides the command-line setting.
 |INT_FLOOR |NLP |TRUE or FALSE |FALSE |Sets truncation towards negative infinity instead of towards zero
 |LOCK_FORNEXT |NLP |TRUE or FALSE |FALSE |Do not allow changes to FOR/NEXT control variables within the loop
 |MATCH_FORNEXT |NLP |TRUE or FALSE |FALSE |Requires execution of NEXT to match FOR
+|MAX_DIM |NLP |numeric |50 |Limits the dimensions of arrays and matrices
 |MAX_LINE_NUM |N |numeric |9999 |Maximum line number allowed
 |MIN_LINE_NUM |N |numeric |1 |Minimum line number allowed
 |NEWLINE_SPEED |NLP |numeric |0 |Limit printing speed only for newlines
@@ -767,6 +768,9 @@ A program may set the upper bounds lower, and then raise them, and the original 
     40 REM code with A and smaller dimensions - A(10,6) is allowed, but not A(11,7)
     50 DIM A(20,10)
     60 PRINT A(11,7) ' prints 5
+
+The MAX_DIM option specifies the limit for dimensions.
+The default limit is 50.
 
 END
 ~~~
@@ -1823,7 +1827,7 @@ Certain operations are available for certain combinations of operands:
 |First operand |Operation |Second operand |Restrictions |Actions
 |Matrix |Addition |Matrix |Matrices must have identical dimensions |Corresponding elements are added
 |Matrix |Subtraction |Matrix |Matrices must have identical dimensions |Elements from second matrix are subtracted from corresponding element in first matrix
-|Matrix |Multiplication |Matrix |Number of columns in second matrix must equal number of rows in first matrix |Computes dot product, which contains the number of columns of the first matrix and the number of rows in the second matrix
+|Matrix |Multiplication |Matrix |Number of columns in second matrix must equal number of rows in first matrix |Computes product, which contains the number of columns of the first matrix and the number of rows in the second matrix
 |Matrix |Division |Matrix |Not allowed |
 |Matrix |Power |Matrix |Not allowed |
 |Scalar |Addition |Matrix ||Elements from the matrix are added to the scalar value
@@ -1971,7 +1975,8 @@ Converts r from radians to degrees.
 DET(m)
 ~~~~~~
 
-Computes the determinant of the matrix. The matrix must be square.
+Computes the determinant of the matrix.
+The matrix must be square.
 
 EXP(x)
 ~~~~~~
@@ -1981,12 +1986,14 @@ Computes e to the x power.
 FIX(n)
 ~~~~~~
 
-Returns the integer part of a number. Truncates towards negative infinity.
+Returns the integer part of a number.
+Truncates towards negative infinity.
 
 FRAC(n)
 ~~~~~~~
 
-Return the fraction part of a numeric value. Retains the sign of the original value.
+Return the fraction part of a numeric value.
+Retains the sign of the original value.
 
 IDN(n)
 ~~~~~~
@@ -1996,7 +2003,8 @@ Creates an identity matrix (all zeros except for ones on the diagonal) with n ro
 IDN(n,n)
 ~~~~~~~~
 
-Same as IDN(n). The two values must be identical, as identity matrices are always square.
+Same as IDN(n).
+The two values must be identical, as identity matrices are always square.
 
 IDN()
 ~~~~~
@@ -2011,7 +2019,8 @@ Special form of IDN().
 INT(x)
 ~~~~~~
 
-Return the integer part of a numeric value. Truncates towards zero.
+Return the integer part of a numeric value.
+Truncates towards zero.
 
 INV(m)
 ~~~~~~
@@ -2021,17 +2030,20 @@ Inverts matrix m.
 LOG(x)
 ~~~~~~
 
-Computes the natural log of x. A value of zero or a negative value for x will cause an error.
+Computes the natural log of x.
+A value of zero or a negative value for x will cause an error.
 
 LOG10(x)
 ~~~~~~~~
 
-Computes the base-10 log of x. A value of zero or a negative value for x will cause an error.
+Computes the base-10 log of x.
+A value of zero or a negative value for x will cause an error.
 
 LOG2(x)
 ~~~~~~~
 
-Computes the base-2 log of x. A value of zero or a negative value for x will cause an error.
+Computes the base-2 log of x.
+A value of zero or a negative value for x will cause an error.
 
 MAXA(a)
 ~~~~~~~

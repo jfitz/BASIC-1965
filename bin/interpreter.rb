@@ -803,6 +803,12 @@ class Interpreter
   def set_dimensions(variable, subscripts)
     variable_name = variable.name
     int_subscripts = normalize_subscripts(subscripts)
+
+    int_subscripts.each do |subscript|
+      raise BASICRuntimeError.new(:te_subscript_out, variable_name.to_s) if
+        subscript.to_i > $options['max_dim'].value
+    end
+
     @dimensions[variable_name] = int_subscripts
   end
 
