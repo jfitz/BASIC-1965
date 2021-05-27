@@ -1,0 +1,30 @@
+ARRAY A
+ 0               10              20              30              40              50              60
+ARRAY B
+ 60              50              40              30              20              10              0
+ARRAY A
+ 0               10              20              30              40              50              60
+ARRAY B
+ 60              60              50              40              30              20              10
+STOP in line 790
+
+10 (1) OPTION BASE 0
+20 (1) DIM A(6)
+30 (1) FOR I = 0 TO 6
+40 (7) LET A(I) = I * 10
+50 (7) NEXT I
+100 (1) ARR B = REV1(A)
+110 (1) GOSUB 800
+120 (1) OPTION BASE 1
+130 (1) ARR B = REV1(A)
+140 (1) OPTION BASE 0
+150 (1) GOSUB 800
+790 (1) STOP
+800 (2) REM PROCEDURE A
+810 (2) PRINT "ARRAY A"
+820 (2) ARR PRINT A
+830 (2) PRINT "ARRAY B"
+840 (2) ARR PRINT B
+890 (2) RETURN
+999 (0) END
+

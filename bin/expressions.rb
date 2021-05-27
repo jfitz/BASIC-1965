@@ -638,6 +638,24 @@ class BASICArray < AbstractCompound
     end
   end
 
+  def reverse_values
+    new_values = {}
+
+    base = $options['base'].value
+
+    index = @dimensions[0].to_i
+    (base..@dimensions[0].to_i).each do |col|
+      value = get_value_1(col)
+      coord = AbstractElement.make_coord(index)
+
+      new_values[coord] = value
+
+      index = index - 1
+    end
+
+    new_values
+  end
+
   private
 
   def print_1(printer, interpreter)
