@@ -702,13 +702,9 @@ class NumericConstant < AbstractValueElement
     NumericConstant.new(value)
   end
 
-  def log10
-    value = @value > 0 ? Math.log10(@value) : 0
-    NumericConstant.new(value)
-  end
-
-  def log2
-    value = @value > 0 ? Math.log2(@value) : 0
+  def logb(lbase)
+    lbase_v = lbase.to_v
+    value = @value > 0 ? Math.log(@value, lbase_v) : 0
     NumericConstant.new(value)
   end
 

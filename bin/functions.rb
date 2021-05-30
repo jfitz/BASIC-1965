@@ -980,6 +980,10 @@ class FunctionLog < AbstractFunction
 
     @default_shape = :scalar
     @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
+    @signature_2 = [
+      { 'type' => :numeric, 'shape' => :scalar },
+      { 'type' => :numeric, 'shape' => :scalar }
+    ]
   end
 
   def evaluate(_, arg_stack)
@@ -987,62 +991,13 @@ class FunctionLog < AbstractFunction
 
     return @cached unless @cached.nil?
 
-    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
-      match_args_to_signature(args, @signature_1)
-
-    res = args[0].log
-
-    @cached = res if @constant && $options['cache_const_expr']
-    res
-  end
-end
-
-# function LOG10
-class FunctionLog10 < AbstractFunction
-  def initialize(text)
-    super
-
-    @shape = :scalar
-
-    @default_shape = :scalar
-    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
-  end
-
-  def evaluate(_, arg_stack)
-    args = arg_stack.pop
-
-    return @cached unless @cached.nil?
-
-    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
-      match_args_to_signature(args, @signature_1)
-
-    res = args[0].log10
-
-    @cached = res if @constant && $options['cache_const_expr']
-    res
-  end
-end
-
-# function LOG2
-class FunctionLog2 < AbstractFunction
-  def initialize(text)
-    super
-
-    @shape = :scalar
-
-    @default_shape = :scalar
-    @signature_1 = [{ 'type' => :numeric, 'shape' => :scalar }]
-  end
-
-  def evaluate(_, arg_stack)
-    args = arg_stack.pop
-
-    return @cached unless @cached.nil?
-
-    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
-      match_args_to_signature(args, @signature_1)
-
-    res = args[0].log2
+    if match_args_to_signature(args, @signature_1)
+      res = args[0].log
+    elsif match_args_to_signature(args, @signature_2)
+      res = args[0].logb(args[1])
+    else
+      raise BASICRuntimeError.new(:te_args_no_match, @name)
+    end
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -2039,8 +1994,6 @@ class FunctionFactory
     'INT' => FunctionInt,
     'INV' => FunctionInv,
     'LOG' => FunctionLog,
-    'LOG10' => FunctionLog10,
-    'LOG2' => FunctionLog2,
     'MAXA' => FunctionMaxA,
     'MAXM' => FunctionMaxM,
     'MINA' => FunctionMinA,
