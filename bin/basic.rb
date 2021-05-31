@@ -194,7 +194,7 @@ class Shell
       process_command_load_command(tokens, line)
       return
     end
-    
+
     # starts with a number, so maybe it is a program line
     return @interpreter.program_store_line(line, true, true) if
       /\A[ \t]*\d/ =~ line
@@ -220,7 +220,7 @@ class Shell
 
   def option_command(args, echo_set)
     lines = []
-    
+
     if args.empty?
       $options.each do |option|
         name = option[0].upcase
@@ -231,12 +231,11 @@ class Shell
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
-      if $options.key?(kwd_d)
-        value = $options[kwd_d].to_s.upcase
-        lines << 'OPTION ' + kwd + ' ' + value
-      else
-        raise BASICCommandError.new("Unknown option #{kwd}")
-      end
+      raise BASICCommandError.new("Unknown option #{kwd}") unless
+        $options.key?(kwd_d)
+
+      value = $options[kwd_d].to_s.upcase
+      lines << 'OPTION ' + kwd + ' ' + value
     elsif args.size == 2
       kwd = args[0].to_s
       kwd_d = kwd.downcase
@@ -248,7 +247,7 @@ class Shell
          !$options[kwd_d].types.include?(:loaded)
         raise BASICCommandError.new("Cannot change #{kwd} when program is loaded")
       end
-      
+
       if args[1].boolean_constant?
         boolean = BooleanConstant.new(args[1])
         $options[kwd_d].set(boolean.to_v)
@@ -313,7 +312,7 @@ class Shell
       texts.each { |text| @console_io.print_line(text) }
     when 'LOAD'
       @interpreter.clear_all_breakpoints
-      filename, keywords = parse_args(args)
+      filename, _keywords = parse_args(args)
 
       raise BASICCommandError.new('Filename not specified') if filename.nil?
 
@@ -343,7 +342,7 @@ class Shell
           lines << '.' + line
         end
       end
-      
+
       save_file(filename, lines)
     when 'LIST'
       texts = @interpreter.program_list(args, false)
@@ -450,7 +449,7 @@ class Shell
   rescue Errno::ENOENT, Errno::EISDIR
     @console_io.print_line("File '#{filename}' not found")
   end
-    
+
   def save_file(filename, lines)
     File.open(filename, 'w') do |file|
       lines.each do |line|
@@ -555,7 +554,7 @@ def parse_args(tokens)
     filename = token.value.strip if token.text_constant? && filename.nil?
   end
 
-  return filename, keywords
+  [filename, keywords]
 end
 
 def load_file_command_line(filename, interpreter, console_io)
@@ -641,9 +640,9 @@ int_1 = { type: :int, max: 1, min: 0 }
 int_9999 = { type: :int, max: 9999, min: 999 }
 separator = { type: :list, values: %w[COMMA SEMI NL NONE] }
 
-all_types = [:new, :loaded, :runtime]
-loaded = [:new, :loaded]
-only_new = [:new]
+all_types = %i[new, loaded, runtime]
+loaded = %i[new, loaded]
+only_new = %i[new]
 
 $options = {}
 
@@ -703,9 +702,7 @@ $options['newline_speed'] =
 precision = 6
 if options.key?(:precision)
   precision = options[:precision]
-  if precision.match(/\A\d+\z/)
-    precision = precision.to_i
-  end
+  precision = precision.to_i if precision =~ /\A\d+\z/
 end
 $options['precision'] = Option.new(all_types, int_1_16, precision)
 
@@ -781,7 +778,7 @@ unless list_filename.nil?
   token = TextConstantToken.new('"' + list_filename + '"')
   args = [TextConstant.new(token)]
 
-  filename, keywords = parse_args(args)
+  filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
     texts = interpreter.program_list('', list_tokens)
@@ -798,7 +795,7 @@ unless parse_filename.nil?
   token = TextConstantToken.new('"' + parse_filename + '"')
   args = [TextConstant.new(token)]
 
-  filename, keywords = parse_args(args)
+  filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
     texts = interpreter.program_parse('')
@@ -815,7 +812,7 @@ unless analyze_filename.nil?
   token = TextConstantToken.new('"' + analyze_filename + '"')
   args = [TextConstant.new(token)]
 
-  filename, keywords = parse_args(args)
+  filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io) &&
      interpreter.program_okay?
@@ -831,7 +828,7 @@ unless pretty_filename.nil?
   token = TextConstantToken.new('"' + pretty_filename + '"')
   args = [TextConstant.new(token)]
 
-  filename, keywords = parse_args(args)
+  filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
     texts = interpreter.program_pretty('')
@@ -848,7 +845,7 @@ unless cref_filename.nil?
   token = TextConstantToken.new('"' + cref_filename + '"')
   args = [TextConstant.new(token)]
 
-  filename, keywords = parse_args(args)
+  filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
     texts = interpreter.program_crossref
@@ -863,7 +860,7 @@ unless run_filename.nil?
   token = TextConstantToken.new('"' + run_filename + '"')
   args = [TextConstant.new(token)]
 
-  filename, keywords = parse_args(args)
+  filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io) &&
      interpreter.program_okay?
