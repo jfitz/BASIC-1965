@@ -1,0 +1,34 @@
+10 ARR LET A = RND1(0)
+ Variable:A() -> _()
+ NumericConstant:0
+ FunctionRnd1:RND1(_) -> _()
+ AssignmentOperator:= _() -> _()
+20 ARR LET A1 = A - 0.5
+ Variable:A1() -> _()
+ Variable:A() -> _()
+ NumericConstant:0.5
+ BinaryOperatorMinus:-(_(),_) -> _()
+ AssignmentOperator:= _() -> _()
+30 ARR LET A2 = A - 0.9
+ Variable:A2() -> _()
+ Variable:A() -> _()
+ NumericConstant:0.9
+ BinaryOperatorMinus:-(_(),_) -> _()
+ AssignmentOperator:= _() -> _()
+40 ARR LET A3 = A - 20
+ Variable:A3() -> _()
+ Variable:A() -> _()
+ NumericConstant:20
+ BinaryOperatorMinus:-(_(),_) -> _()
+ AssignmentOperator:= _() -> _()
+90 ARR PLOT A,A1,A2,A3
+ Variable:A() -> _()
+ CarriageControl:
+ Variable:A1() -> _()
+ CarriageControl:
+ Variable:A2() -> _()
+ CarriageControl:
+ Variable:A3() -> _()
+99 END
+ 
+
