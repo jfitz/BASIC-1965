@@ -10,7 +10,7 @@ class LineNumber
 
     raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
       @line_number >= $options['min_line_num'].value
-    
+
     raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
       @line_number <= $options['max_line_num'].value
   end
@@ -309,7 +309,7 @@ class Program
     end
 
     raise(BASICCommandError, 'Invalid renumber step') if step.zero?
-    
+
     [start, step]
   end
 
@@ -344,7 +344,7 @@ class Program
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
     texts = []
-    
+
     # report statistics
     texts << 'Statistics:'
     texts << ''
@@ -582,7 +582,7 @@ class Program
     lines = []
     reachable.keys.sort.each do |line_number|
       statement = @lines[line_number].statement
-      
+
       if statement.executable && !reachable[line_number]
         text = statement.pretty
         lines << "#{line_number}: #{text}" unless text.empty?
@@ -853,7 +853,7 @@ class Program
       lines = refs[ref]
       line_refs = lines.map(&:to_s).uniq.join(', ')
 
-      texts << token + ":" + spaces + line_refs
+      texts << token + ':' + spaces + line_refs
     end
 
     texts << ''
@@ -881,12 +881,12 @@ class Program
         n_spaces = num_spaces - token.size + 2
         spaces = ' ' * n_spaces
 
-        texts << token + ":" + spaces + line_refs
+        texts << token + ':' + spaces + line_refs
       else
         n_spaces = 5
         spaces = ' ' * n_spaces
 
-        texts << token + ":"
+        texts << token + ':'
         texts << spaces + line_refs
       end
     end
@@ -896,7 +896,7 @@ class Program
 
   def print_unused(variables)
     texts = []
-    
+
     # split variable references into 'reference' and 'value' lists
     vars_refs = []
     vars_vals = []
@@ -932,7 +932,7 @@ class Program
 
     texts
   end
-  
+
   def make_summary(list)
     summary = {}
 
@@ -955,7 +955,7 @@ class Program
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
     texts = []
-    
+
     texts << 'Cross reference'
     texts << ''
 
@@ -1054,7 +1054,7 @@ class Program
 
   def list_lines_errors(line_numbers, list_tokens)
     texts = []
-    
+
     line_numbers.each do |line_number|
       line = @lines[line_number]
 
@@ -1082,7 +1082,7 @@ class Program
 
   def parse_lines_errors(line_numbers)
     texts = []
-    
+
     line_numbers.each do |line_number|
       line = @lines[line_number]
 
@@ -1107,7 +1107,7 @@ class Program
 
   def pretty_lines_errors(line_numbers)
     texts = []
-    
+
     line_numbers.each do |line_number|
       line = @lines[line_number]
 
@@ -1128,7 +1128,7 @@ class Program
 
   def profile_lines_errors(line_numbers, show_timing)
     texts = []
-    
+
     line_numbers.each do |line_number|
       line = @lines[line_number]
 

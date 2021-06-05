@@ -344,7 +344,7 @@ class AbstractCompound
     prod
   end
 
-  def plot_1(printer, interpreter)
+  def plot_1(printer, _interpreter)
     base = $options['base'].value
     upper = @dimensions[0].to_i
 
@@ -355,7 +355,7 @@ class AbstractCompound
     max_value = 0 if max_value < 0
     min_value = min_1
     min_value = 0 if min_value > 0
-    
+
     value_span = max_value - min_value
 
     factor = 1.0
@@ -387,7 +387,7 @@ class AbstractCompound
 
     height = (max_value / value_span * span).to_i + 2
     depth = -(span - height) - 1
-    
+
     y_delta = value_span / span
     upper_value = (y_delta * height).round(6)
     lower_value = (y_delta * depth).round(6)
@@ -398,7 +398,7 @@ class AbstractCompound
     stub_width = [w_p, w_n].max + 2
 
     print_width = $options['print_width'].value
-    print_width = 72 if print_width == 0
+    print_width = 72 if print_width.zero?
     print_width -= 1
 
     plot_width = print_width - stub_width - 1
@@ -421,7 +421,7 @@ class AbstractCompound
       end
 
       plot_text = ' ' * plot_width
-      plot_text = '-' * plot_width if lower_bound == 0
+      plot_text = '-' * plot_width if lower_bound.zero?
 
       (base..upper).each do |col|
         value = get_value_1(col).to_f
@@ -440,18 +440,18 @@ class AbstractCompound
     end
   end
 
-  def plot_2(printer, interpreter)
+  def plot_2(printer, _interpreter)
     base = $options['base'].value
     upper_r = @dimensions[0].to_i
     upper_c = @dimensions[1].to_i
 
     markers = '1234567890'
-    
+
     # max of 10 rows of data
     raise BASICRuntimeError.new(:te_too_many, 'PLOT') if
       upper_r > markers.size
 
-    n_rows = upper_r + 1 - base
+    # n_rows = upper_r + 1 - base
     n_cols = upper_c + 1 - base
 
     # height above x-axis
@@ -459,7 +459,7 @@ class AbstractCompound
     max_value = 0 if max_value < 0
     min_value = min_2
     min_value = 0 if min_value > 0
-    
+
     value_span = max_value - min_value
 
     factor = 1.0
@@ -491,7 +491,7 @@ class AbstractCompound
 
     height = (max_value / value_span * span).to_i + 2
     depth = -(span - height) - 1
-    
+
     y_delta = value_span / span
     upper_value = (y_delta * height).round(6)
     lower_value = (y_delta * depth).round(6)
@@ -502,7 +502,7 @@ class AbstractCompound
     stub_width = [w_p, w_n].max + 2
 
     print_width = $options['print_width'].value
-    print_width = 72 if print_width == 0
+    print_width = 72 if print_width.zero?
     print_width -= 1
 
     plot_width = print_width - stub_width - 1
@@ -514,8 +514,8 @@ class AbstractCompound
     spacer = (plot_width / n_cols).to_i
     plot_width = spacer * n_cols
 
-    (depth..height).reverse_each do |row|
-      upper_bound = y_delta * row
+    (depth..height).reverse_each do |plot_row|
+      upper_bound = y_delta * plot_row
       lower_bound = upper_bound - y_delta
 
       if factor > 1
@@ -525,7 +525,7 @@ class AbstractCompound
       end
 
       plot_text = ' ' * plot_width
-      plot_text = '-' * plot_width if lower_bound == 0
+      plot_text = '-' * plot_width if lower_bound.zero?
 
       (base..upper_r).each_with_index do |row, index|
         marker = markers[index]
@@ -572,7 +572,7 @@ class BASICArray < AbstractCompound
   end
 
   def empty?
-    return size == 0
+    size.zero?
   end
 
   def posate
@@ -650,7 +650,7 @@ class BASICArray < AbstractCompound
 
       new_values[coord] = value
 
-      index = index - 1
+      index -= 1
     end
 
     new_values
@@ -738,7 +738,7 @@ class Matrix < AbstractCompound
   end
 
   def empty?
-    return size == 0
+    size.zero?
   end
 
   def posate
@@ -1106,9 +1106,9 @@ class XrefEntry
       sigils << sigil_chars[content_type]
     end
 
-    return sigils
+    sigils
   end
-  
+
   def initialize(variable, sigils, is_ref)
     @variable = variable
     @sigils = sigils
@@ -1547,7 +1547,7 @@ class Expression
   end
 
   def uncache
-    @elements.each { |element| element.uncache }
+    @elements.each(&:uncache)
   end
 
   def make_type_sigil(type)
@@ -1703,8 +1703,6 @@ class Expression
         sublist = element.expressions
         opers += Expression.parsed_expressions_operators(sublist)
       elsif element.operator?
-        arguments = element.arguments
-
         is_ref = false
 
         opers << XrefEntry.new(element.to_s, element.sigils, is_ref)
@@ -1724,9 +1722,6 @@ class Expression
         sublist = element.expressions
         vars += Expression.parsed_expressions_functions(sublist)
       elsif element.function? && !element.user_function?
-        arguments = nil
-        arguments = previous.expressions if !previous.nil? && previous.list?
-
         is_ref = element.reference?
 
         vars << XrefEntry.new(element.to_s, element.sigils, is_ref)
@@ -1749,9 +1744,6 @@ class Expression
         sublist = element.expressions
         vars += Expression.parsed_expressions_userfuncs(sublist)
       elsif element.user_function?
-        arguments = nil
-        arguments = previous.expressions if !previous.nil? && previous.list?
-
         is_ref = element.reference?
 
         vars << XrefEntry.new(element.to_s, element.sigils, is_ref)
@@ -1808,7 +1800,7 @@ class AbstractExpressionSet
   end
 
   def uncache
-    @expressions.each {|expression| expression.uncache }
+    @expressions.each(&:uncache)
   end
 
   def to_s
@@ -1986,17 +1978,9 @@ class ValueExpressionSet < AbstractExpressionSet
   def initialize(_, _)
     super
 
-    @expressions.each do |expression|
-      expression.set_content_type
-    end
-
-    @expressions.each do |expression|
-      expression.set_shape
-    end
-
-    @expressions.each do |expression|
-      expression.set_constant
-    end
+    @expressions.each(&:set_content_type)
+    @expressions.each(&:set_shape)
+    @expressions.each(&:set_constant)
 
     @expressions.each do |expression|
       @warnings += expression.warnings
@@ -2037,7 +2021,6 @@ class ValueExpressionSet < AbstractExpressionSet
 
     expression = @expressions[0]
     elements = expression.elements
-    element = elements[0]
     last_element = elements[-1]
     last_element.operator? && last_element.pound?
   end
@@ -2099,17 +2082,9 @@ class DeclarationExpressionSet < AbstractExpressionSet
     check_all_lengths
     check_resolve_types
 
-    @expressions.each do |expression|
-      expression.set_content_type
-    end
-
-    @expressions.each do |expression|
-      expression.set_shape
-    end
-
-    @expressions.each do |expression|
-      expression.set_constant
-    end
+    @expressions.each(&:set_content_type)
+    @expressions.each(&:set_shape)
+    @expressions.each(&:set_constant)
 
     @expressions.each do |expression|
       @warnings += expression.warnings
@@ -2156,17 +2131,9 @@ class TargetExpressionSet < AbstractExpressionSet
       elements[-1].set_dims = set_dims
     end
 
-    @expressions.each do |expression|
-      expression.set_content_type
-    end
-
-    @expressions.each do |expression|
-      expression.set_shape
-    end
-
-    @expressions.each do |expression|
-      expression.set_constant
-    end
+    @expressions.each(&:set_content_type)
+    @expressions.each(&:set_shape)
+    @expressions.each(&:set_constant)
 
     @expressions.each do |expression|
       @warnings += expression.warnings
@@ -2446,7 +2413,7 @@ class Assignment
     # more rhs -> drop extra values
     targets = @targetset.expressions
     expressions = @expressionset.expressions
-    
+
     targets.each_with_index do |target, index|
       j = [index, expressions.count - 1].min
       expression = expressions[j]
@@ -2457,7 +2424,7 @@ class Assignment
       raise BASICExpressionError.new(msg) unless compatible(e_type, t_type)
 
       @warnings << msg unless e_type == t_type
-      
+
       t_shape = target.shape
       e_shape = expression.shape
       msg = "Target shape (#{t_shape}) does not match expression shape (#{e_shape})."

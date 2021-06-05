@@ -148,7 +148,7 @@ class AbstractElement
   def pop_stack(stack); end
 
   private
-  
+
   def make_sigils(types, shapes)
     return nil if types.nil? || shapes.nil?
 
@@ -186,7 +186,7 @@ class AbstractElement
 
     sigil_chars[type]
   end
-  
+
   def make_shape_sigil(shape)
     sigil = ''
     sigil = '()' if shape == :array
@@ -587,13 +587,11 @@ class NumericConstant < AbstractValueElement
   end
 
   def posate
-    f = to_f
-    NumericConstant.new(f)
+    NumericConstant.new(@value)
   end
 
   def negate
-    f = -to_f
-    NumericConstant.new(f)
+    NumericConstant.new(-@value)
   end
 
   def filehandle
@@ -676,10 +674,6 @@ class NumericConstant < AbstractValueElement
 
     value = @value**other.to_numeric.to_v
     NumericConstant.new(value)
-  end
-
-  def negate
-    NumericConstant.new(-@value)
   end
 
   def truncate
@@ -1139,7 +1133,7 @@ class CarriageControl
     []
   end
 
-  def uncache ; end
+  def uncache; end
 
   def printable?
     false
@@ -1598,7 +1592,7 @@ class Variable < AbstractElement
     msg = "Variable #{@variable_name} has no dimensions"
     raise BASICExpressionError.new(msg) if dims.nil?
 
-    msg = "Matrix #{@variable_name} requires two dimensions"
+    # msg = "Matrix #{@variable_name} requires two dimensions"
     # raise BASICExpressionError.new(msg) if dims.size != 2
 
     values = evaluate_matrix_n(interpreter, dims)
@@ -1817,8 +1811,8 @@ class ExpressionList < AbstractElement
   end
 
   def set_content_type(type_stack)
-    @expressions.each { |expression| expression.set_content_type }
-    
+    @expressions.each(&:set_content_type)
+
     type_stack.push(content_type)
   end
 
@@ -1831,7 +1825,7 @@ class ExpressionList < AbstractElement
   end
 
   def set_shape(shape_stack)
-    @expressions.each { |expression| expression.set_shape }
+    @expressions.each(&:set_shape)
 
     shape_stack.push(shape)
   end
@@ -1845,7 +1839,7 @@ class ExpressionList < AbstractElement
   end
 
   def set_constant(constant_stack)
-    @expressions.each { |expression| expression.set_constant }
+    @expressions.each(&:set_constant)
 
     constant_stack.push(constant)
   end

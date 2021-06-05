@@ -122,7 +122,7 @@ class ConsoleIo
 
     zone_width = $options['zone_width'].value
 
-    if zone_width > 0
+    unless zone_width.zero?
       print_item(' ') while @column % zone_width != 0
     end
 
@@ -135,7 +135,7 @@ class ConsoleIo
 
     zone_width = $options['semicolon_zone_width'].value
 
-    if zone_width > 0
+    unless zone_width.zero?
       print_item(' ') while @column % zone_width != 0
     end
 
@@ -307,7 +307,7 @@ class FileHandler
         @records[@rec_number] = @record
         @record = ''
       end
-      
+
       write_file(@file_name, @records)
       @records = []
       @rec_number = -1
@@ -415,7 +415,7 @@ class FileHandler
     file = File.open(file_name, 'rt')
     file.each_line { |line| lines << line.strip }
     file.close
-  rescue Exception => e
+  rescue Exception
     raise BASICRuntimeError.new(:te_file_no_read, file_name)
   else
     lines
@@ -425,7 +425,7 @@ class FileHandler
     file = File.open(file_name, 'wt')
     lines.each { |line| file.puts(line) }
     file.close
-  rescue Exception => e
+  rescue Exception
     raise BASICRuntimeError.new(:te_file_no_write, file_name)
   end
 end

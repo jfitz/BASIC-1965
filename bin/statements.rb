@@ -688,7 +688,7 @@ module InputFunctions
     end
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
-    @errors << 'Syntax error: "' + line_text + '" ' + e.to_s 
+    @errors << 'Syntax error: "' + line_text + '" ' + e.to_s
   end
 
   def zip(names, values)
@@ -717,7 +717,7 @@ module InputFunctions
   end
 
   def uncache
-    @items.each {|item| item.uncache }
+    @items.each(&:uncache)
   end
 
   def file_values(fhr, interpreter)
@@ -773,7 +773,7 @@ module PrintFunctions
   end
 
   def uncache
-    @items.each {|item| item.uncache }
+    @items.each(&:uncache)
   end
 end
 
@@ -803,7 +803,7 @@ module ReadFunctions
   end
 
   def uncache
-    @items.each {|item| item.uncache }
+    @items.each(&:uncache)
   end
 end
 
@@ -839,7 +839,7 @@ module WriteFunctions
   end
 
   def uncache
-    @items.each {|item| item.uncache }
+    @items.each(&:uncache)
   end
 end
 
@@ -973,7 +973,7 @@ class DimStatement < AbstractStatement
   end
 
   def uncache
-    @declarations.each { |expression| expression.uncache }
+    @declarations.each(&:uncache)
   end
 
   def dump
@@ -1151,7 +1151,7 @@ class ForStatement < AbstractStatement
     @elements[:functions] = []
     @elements[:userfuncs] = []
 
-    if !@start.nil?
+    unless @start.nil?
       @elements[:numerics] += @start.numerics
       @elements[:strings] += @start.strings
       @elements[:booleans] += @start.booleans
@@ -1160,8 +1160,8 @@ class ForStatement < AbstractStatement
       @elements[:functions] += @start.functions
       @elements[:userfuncs] += @start.userfuncs
     end
-    
-    if !@end.nil?
+
+    unless @end.nil?
       @elements[:numerics] += @end.numerics
       @elements[:strings] += @end.strings
       @elements[:booleans] += @end.booleans
@@ -1171,7 +1171,7 @@ class ForStatement < AbstractStatement
       @elements[:userfuncs] += @end.userfuncs
     end
 
-    if !@step.nil?
+    unless @step.nil?
       @elements[:numerics] += @step.numerics
       @elements[:strings] += @step.strings
       @elements[:booleans] += @step.booleans
@@ -1206,7 +1206,7 @@ class ForStatement < AbstractStatement
     step = NumericConstant.new(1)
     step = @step.evaluate(interpreter)[0] unless @step.nil?
 
-    if !@end.nil?
+    unless @end.nil?
       to = @end.evaluate(interpreter)[0]
       fornext_control = ForToControl.new(@control, from, step, to)
     end
@@ -1646,7 +1646,7 @@ class AbstractScalarLetStatement < AbstractLetStatement
 
         @warnings << 'Extra values ignored' if
           @assignment.count_value > @assignment.count_target
-        
+
         @elements = make_references(nil, @assignment)
         @comprehension_effort += @assignment.comprehension_effort
       rescue BASICExpressionError => e
@@ -1733,7 +1733,7 @@ class NextStatement < AbstractStatement
     end
 
     bump_early = fornext_control.bump_early?
-    
+
     # change control variable value for FOR-WHILE and FOR-UNTIL
     fornext_control.bump_control(interpreter) if bump_early
 
@@ -1866,7 +1866,7 @@ class PrintStatement < AbstractStatement
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
-          carriable.print(fhr, interpreter)
+          carriage.print(fhr, interpreter)
         end
       end
 
@@ -2044,7 +2044,7 @@ class WriteStatement < AbstractStatement
       if item.printable?
         if last_was_printable
           # insert an implicit carriage control
-          carriage = CarriageControl.new('')
+          # carriage = CarriageControl.new('')
           carriable.write(fhr, interpreter)
         end
       end
@@ -2455,8 +2455,8 @@ class ArrLetStatement < AbstractLetStatement
 
   def execute(interpreter)
     l_values = @assignment.eval_target(interpreter)
-    l_value = l_values[0]
-    l_dims = interpreter.get_dimensions(l_value.name)
+    l_value0 = l_values[0]
+    l_dims = interpreter.get_dimensions(l_value0.name)
 
     interpreter.set_default_args('CON1', l_dims)
     interpreter.set_default_args('RND1', l_dims)
@@ -2947,8 +2947,8 @@ class MatLetStatement < AbstractLetStatement
 
   def execute(interpreter)
     l_values = @assignment.eval_target(interpreter)
-    l_value = l_values[0]
-    l_dims = interpreter.get_dimensions(l_value.name)
+    l_value0 = l_values[0]
+    l_dims = interpreter.get_dimensions(l_value0.name)
 
     interpreter.set_default_args('CON2', l_dims)
     interpreter.set_default_args('CON', l_dims)
