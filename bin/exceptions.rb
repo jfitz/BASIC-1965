@@ -11,7 +11,7 @@ class BASICTrappableError < BASICError
   attr_reader :code
   attr_reader :extra
 
-  def initialize(scode, extra=nil)
+  def initialize(scode, extra = nil)
     message = $error_messages[scode]
     super(message)
 
@@ -23,7 +23,7 @@ class BASICTrappableError < BASICError
   def message
     message = $error_messages[scode]
     message = "Unknown error #{@scode}" if message.nil?
-    
+
     return message if @extra.nil?
 
     message + ' for ' + @extra
