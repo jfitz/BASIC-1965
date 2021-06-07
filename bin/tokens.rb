@@ -313,6 +313,26 @@ class NumericConstantToken < AbstractToken
   end
 end
 
+# numeric symbol token
+class NumericSymbolToken < AbstractToken
+  def initialize(text)
+    super
+
+    @is_numeric_constant = true
+    @is_symbol_constant = true
+
+    @values = {
+      'PI' => 3.14159265358979,
+      'EUL' => 2.71828182845905,
+      'AUR' => 1.61803398874989
+    }
+  end
+
+  def value
+    @values[@text]
+  end
+end
+
 # boolean constant token
 class BooleanConstantToken < AbstractToken
   def initialize(text)

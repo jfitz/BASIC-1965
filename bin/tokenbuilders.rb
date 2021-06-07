@@ -315,6 +315,36 @@ class NumberTokenBuilder
   end
 end
 
+# token reader for numeric symbols
+class NumericSymbolTokenBuilder
+  attr_reader :count
+
+  def try(text)
+    legals = %w(PI EUL AUR)
+
+    candidate = ''
+    i = 0
+
+    legals.each do |symbol|
+      if text.start_with?(symbol) && symbol.size > candidate.size
+        candidate = symbol
+        i = symbol.size
+      end
+    end
+
+    @token = ''
+    @token = candidate if legals.include?(candidate)
+
+    @count = 0
+    @count = i unless @token.empty?
+    !@count.zero?
+  end
+
+  def token
+    NumericSymbolToken.new(@token)
+  end
+end
+
 # token reader for variables
 class VariableTokenBuilder
   attr_reader :count

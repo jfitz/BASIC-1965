@@ -470,7 +470,9 @@ end
 # Numeric constants
 class NumericConstant < AbstractValueElement
   def self.accept?(token)
-    classes = %w[Fixnum Integer Bignum Float NumericConstantToken]
+    classes =
+      %w[Fixnum Integer Bignum Float NumericConstantToken NumericSymbolToken]
+
     classes.include?(token.class.to_s)
   end
 
@@ -518,6 +520,11 @@ class NumericConstant < AbstractValueElement
     f = nil
     f = text.to_f if float_classes.include?(text.class.to_s)
     f = text if numeric_classes.include?(text.class.to_s)
+
+    if text.class.to_s == 'NumericSymbolToken'
+      f = text.value
+      @symbol = true
+    end
 
     raise(BASICSyntaxError, "'#{text}' is not a number") if f.nil?
 
