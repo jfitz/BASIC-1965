@@ -1,0 +1,56 @@
+10 DIM A(6)
+ NumericConstant:6
+ Declaration:A() -> _()
+20 OPTION BASE 0
+ NumericConstant:0
+30 ARR READ A
+ Variable:A() -> _()
+40 ARR B = UNIQ1(A)
+ Variable:B() -> _()
+ Variable:A() -> _()
+ FunctionUniq1:UNIQ1(_()) -> _()
+ AssignmentOperator:= _() -> _()
+50 GOSUB 800
+ LineNumber:800
+100 RESTORE
+ 
+120 OPTION BASE 1
+ NumericConstant:1
+130 ARR READ A
+ Variable:A() -> _()
+140 ARR B = UNIQ1(A)
+ Variable:B() -> _()
+ Variable:A() -> _()
+ FunctionUniq1:UNIQ1(_()) -> _()
+ AssignmentOperator:= _() -> _()
+150 GOSUB 800
+ LineNumber:800
+790 STOP
+ 
+800 REM PROCEDURE A
+ Remark:PROCEDURE A
+810 PRINT "ARRAY A"
+ TextConstant:"ARRAY A"
+ CarriageControl:NL
+820 ARR PRINT A
+ Variable:A() -> _()
+ CarriageControl:NL
+830 PRINT "ARRAY B"
+ TextConstant:"ARRAY B"
+ CarriageControl:NL
+840 ARR PRINT B
+ Variable:B() -> _()
+ CarriageControl:NL
+890 RETURN
+ 
+900 DATA 10,20,10,20,30,40,50
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:10
+ NumericConstant:20
+ NumericConstant:30
+ NumericConstant:40
+ NumericConstant:50
+999 END
+ 
+

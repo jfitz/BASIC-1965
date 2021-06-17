@@ -1,0 +1,92 @@
+10: DIM A(6)
+20: OPTION BASE 0
+30: ARR READ A
+ A(0) = 10
+ A(1) = 20
+ A(2) = 10
+ A(3) = 20
+ A(4) = 30
+ A(5) = 40
+ A(6) = 50
+40: ARR B = UNIQ1(A)
+ A(0): 10
+ A(1): 20
+ A(2): 10
+ A(3): 20
+ A(4): 30
+ A(5): 40
+ A(6): 50
+ B(0) = 10
+ B(1) = 20
+ B(2) = 30
+ B(3) = 40
+ B(4) = 50
+ B(5) = 0
+50: GOSUB 800
+800: REM PROCEDURE A
+810: PRINT "ARRAY A"
+ARRAY A
+820: ARR PRINT A
+ A(0): 10
+ A(1): 20
+ A(2): 10
+ A(3): 20
+ A(4): 30
+ A(5): 40
+ A(6): 50
+ 10              20              10              20              30              40              50
+830: PRINT "ARRAY B"
+ARRAY B
+840: ARR PRINT B
+ B(0): 10
+ B(1): 20
+ B(2): 30
+ B(3): 40
+ B(4): 50
+ B(5): 0
+ 10              20              30              40              50              0
+890: RETURN
+100: RESTORE
+120: OPTION BASE 1
+130: ARR READ A
+ A(1) = 10
+ A(2) = 20
+ A(3) = 10
+ A(4) = 20
+ A(5) = 30
+ A(6) = 40
+140: ARR B = UNIQ1(A)
+ A(1): 10
+ A(2): 20
+ A(3): 10
+ A(4): 20
+ A(5): 30
+ A(6): 40
+ B(1) = 10
+ B(2) = 20
+ B(3) = 30
+ B(4) = 40
+150: GOSUB 800
+800: REM PROCEDURE A
+810: PRINT "ARRAY A"
+ARRAY A
+820: ARR PRINT A
+ A(1): 10
+ A(2): 20
+ A(3): 10
+ A(4): 20
+ A(5): 30
+ A(6): 40
+ 10              20              10              20              30              40
+830: PRINT "ARRAY B"
+ARRAY B
+840: ARR PRINT B
+ B(1): 10
+ B(2): 20
+ B(3): 30
+ B(4): 40
+ 10              20              30              40
+890: RETURN
+790: STOP
+STOP in line 790
+

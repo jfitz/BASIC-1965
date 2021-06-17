@@ -1808,6 +1808,34 @@ class FunctionTrn < AbstractFunction
   end
 end
 
+# function UNIQ1
+class FunctionUniq1 < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :array
+
+    @default_shape = :array
+    @signature1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_intepreter, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature1)
+
+    values = args[0].unique_values
+    dims = [NumericConstant.new(values.size)]
+    res = BASICArray.new(dims, values)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function ZER1
 class FunctionZer1 < AbstractFunction
   def initialize(text)
@@ -2015,6 +2043,7 @@ class FunctionFactory
     'SUM' => FunctionSum,
     'TAN' => FunctionTan,
     'TRN' => FunctionTrn,
+    'UNIQ1' => FunctionUniq1,
     'ZER' => FunctionZer2,
     'ZER1' => FunctionZer1,
     'ZER2' => FunctionZer2

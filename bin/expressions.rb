@@ -656,6 +656,27 @@ class BASICArray < AbstractCompound
     new_values
   end
 
+  def unique_values
+    new_values = {}
+    seen = []
+
+    base = $options['base'].value
+
+    index = base
+    (base..@dimensions[0].to_i).each do |col|
+      value = get_value_1(col)
+      coord = AbstractElement.make_coord(index)
+
+      unless seen.include?(value)
+        new_values[coord] = value
+        seen << value
+        index += 1
+      end
+    end
+
+    new_values
+  end
+
   private
 
   def print_1(printer, interpreter)
