@@ -656,6 +656,31 @@ class BASICArray < AbstractCompound
     new_values
   end
 
+  def sort_values
+    base = $options['base'].value
+
+    # get all values
+    values = []
+
+    (base..@dimensions[0].to_i).each do |col|
+      values << get_value_1(col)
+    end
+
+    # sort
+    values_sorted = values.sort
+
+    # set all values
+    new_values = {}
+
+    values_sorted.each_with_index do |value, index|
+      col = index + base
+      coord = AbstractElement.make_coord(col)
+      new_values[coord] = value
+    end
+
+    new_values
+  end
+
   def unique_values
     new_values = {}
     seen = []

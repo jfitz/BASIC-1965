@@ -1,0 +1,30 @@
+ARRAY A
+ 10              20              10              20              30              40              50
+ARRAY B
+ 10              10              20              20              30              40              50
+ARRAY A
+ 10              20              10              20              30              40
+ARRAY B
+ 10              10              20              20              30              40
+STOP in line 790
+
+10 (1) DIM A(6)
+20 (1) OPTION BASE 0
+30 (1) ARR READ A
+40 (1) ARR B = SORT1(A)
+50 (1) GOSUB 800
+100 (1) RESTORE
+120 (1) OPTION BASE 1
+130 (1) ARR READ A
+140 (1) ARR B = SORT1(A)
+150 (1) GOSUB 800
+790 (1) STOP
+800 (2) REM PROCEDURE A
+810 (2) PRINT "ARRAY A"
+820 (2) ARR PRINT A
+830 (2) PRINT "ARRAY B"
+840 (2) ARR PRINT B
+890 (2) RETURN
+900 (0) DATA 10, 20, 10, 20, 30, 40, 50
+999 (0) END
+

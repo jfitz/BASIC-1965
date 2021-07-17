@@ -1701,6 +1701,34 @@ class FunctionSin < AbstractFunction
   end
 end
 
+# function SORT1
+class FunctionSort1 < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :array
+
+    @default_shape = :array
+    @signature1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_intepreter, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature1)
+
+    values = args[0].sort_values
+    dims = args[0].dimensions
+    res = BASICArray.new(dims, values)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function SQR
 class FunctionSqr < AbstractFunction
   def initialize(text)
@@ -2039,6 +2067,7 @@ class FunctionFactory
     'SEC' => FunctionSec,
     'SGN' => FunctionSgn,
     'SIN' => FunctionSin,
+    'SORT1' => FunctionSort1,
     'SQR' => FunctionSqr,
     'SUM' => FunctionSum,
     'TAN' => FunctionTan,
