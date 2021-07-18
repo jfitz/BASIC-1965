@@ -2152,8 +2152,11 @@ class ArrInputStatement < AbstractStatement
       targets.each do |target|
         name = target.name
 
-        interpreter.set_dimensions(target, target.dimensions) if
+        interpreter.set_dimensions(target.name, target.dimensions) if
           target.dimensions?
+
+        raise BASICRuntimeError.new(:te_arr_no_dim) unless
+          interpreter.dimensions?(target.name)
 
         # make sure dimension is one
         dims = interpreter.get_dimensions(name)
@@ -2327,6 +2330,10 @@ class ArrReadStatement < AbstractStatement
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
+
+        raise BASICRuntimeError.new(:te_arr_no_dim) unless
+          interpreter.dimensions?(target.name)
+
         read_values(target.name, interpreter, ds)
       end
     end
@@ -2595,6 +2602,9 @@ class MatInputStatement < AbstractStatement
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
 
+        raise BASICRuntimeError.new(:te_mat_no_dim) unless
+          interpreter.dimensions?(target.name)
+
         # make sure dimension is one or two
         dims = interpreter.get_dimensions(name)
         raise(BASICExpressionError, 'Not an array') unless
@@ -2801,6 +2811,10 @@ class MatReadStatement < AbstractStatement
       targets.each do |target|
         interpreter.set_dimensions(target, target.dimensions) if
           target.dimensions?
+
+        raise BASICRuntimeError.new(:te_mat_no_dim) unless
+          interpreter.dimensions?(target.name)
+
         read_values(target.name, interpreter, ds)
       end
     end

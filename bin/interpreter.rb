@@ -843,6 +843,10 @@ class Interpreter
     @dimensions[variable_name]
   end
 
+  def dimensions?(variable_name)
+    @dimensions.key?(variable_name)
+  end
+
   def set_user_function(name, sigils, definition)
     signature = name.to_s + '(' + sigils.join(',') + ')'
 
