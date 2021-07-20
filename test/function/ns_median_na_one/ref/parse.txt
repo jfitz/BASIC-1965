@@ -1,0 +1,39 @@
+10 REM This is a test
+ Remark:This is a test
+20 ARR A = CON1(0)
+ Variable:A() -> _()
+ NumericConstant:0
+ FunctionCon1:CON1(_) -> =_()
+ AssignmentOperator:= =_() -> _()
+22 PRINT "ARRAY IS:";
+ TextConstant:"ARRAY IS:"
+ CarriageControl:;
+23 ARR PRINT A
+ Variable:A() -> _()
+ CarriageControl:NL
+30 ARR LET B = SORT1(A)
+ Variable:B() -> _()
+ Variable:A() -> _()
+ FunctionSort1:SORT1(_()) -> _()
+ AssignmentOperator:= _() -> _()
+32 PRINT "SORTED IS:";
+ TextConstant:"SORTED IS:"
+ CarriageControl:;
+33 ARR PRINT B
+ Variable:B() -> _()
+ CarriageControl:NL
+40 LET M=MEDIAN(A)
+ Variable:M -> _
+ Variable:A() -> _()
+ FunctionMedian:MEDIAN(_()) -> _
+ AssignmentOperator:= _ -> _
+42 PRINT "MEDIAN IS "; M
+ TextConstant:"MEDIAN IS "
+ CarriageControl:;
+ Variable:M -> _
+ CarriageControl:NL
+89 STOP
+ 
+99 END
+ 
+

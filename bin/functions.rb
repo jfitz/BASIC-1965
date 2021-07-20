@@ -1061,6 +1061,36 @@ class FunctionMaxM < AbstractFunction
   end
 end
 
+# function MEDIAN
+class FunctionMedian < AbstractFunction
+  def initialize(text)
+    super
+
+    @shape = :scalar
+
+    @default_shape = :array
+    @signature1 = [{ 'type' => :numeric, 'shape' => :array }]
+  end
+
+  def evaluate(_intepreter, arg_stack)
+    args = arg_stack.pop
+
+    return @cached unless @cached.nil?
+
+    raise BASICRuntimeError.new(:te_args_no_match, @name) unless
+      match_args_to_signature(args, @signature1)
+
+    raise BASICRunTimeError.new(:te_too_few, @name) if
+      args[0].empty?
+
+    med = args[0].median
+    res = NumericConstant.new(med)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function MINA
 class FunctionMinA < AbstractFunction
   def initialize(text)
@@ -2051,6 +2081,7 @@ class FunctionFactory
     'LOG' => FunctionLog,
     'MAXA' => FunctionMaxA,
     'MAXM' => FunctionMaxM,
+    'MEDIAN' => FunctionMedian,
     'MINA' => FunctionMinA,
     'MINM' => FunctionMinM,
     'MOD' => FunctionMod,

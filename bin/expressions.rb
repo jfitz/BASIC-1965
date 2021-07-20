@@ -344,6 +344,35 @@ class AbstractCompound
     prod
   end
 
+  def median_1
+    base = $options['base'].value
+
+    # get all values
+    values = []
+
+    (base..@dimensions[0].to_i).each do |col|
+      values << get_value_1(col)
+    end
+
+    # sort
+    values_sorted = values.sort
+
+    n = values_sorted.size
+    mid = (n / 2).to_i
+    
+    if n.odd?
+      # if odd number of values, take center value
+      value = values_sorted[mid].to_v
+    else
+      # else even number of values, take average of center two
+      value0 = values_sorted[mid].to_v
+      value1 = values_sorted[mid + 1].to_v
+      value = (value0 + value1) / 2
+    end
+
+    value
+  end
+
   def plot_1(printer, _interpreter)
     base = $options['base'].value
     upper = @dimensions[0].to_i
@@ -599,6 +628,10 @@ class BASICArray < AbstractCompound
 
   def min
     NumericConstant.new(min_1)
+  end
+
+  def median
+    median_1
   end
 
   def to_s
