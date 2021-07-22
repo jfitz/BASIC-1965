@@ -497,6 +497,8 @@ class FunctionCon1 < AbstractFunction
   end
 
   def evaluate(interpreter, arg_stack)
+    new_value = NumericConstant.new(1)
+
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
@@ -505,11 +507,11 @@ class FunctionCon1 < AbstractFunction
       if match_args_to_signature(args, @signature0)
         args = default_args(interpreter)
         dims = args.clone
-        values = BASICArray.one_values(dims)
+        values = BASICArray.make_array(dims, new_value)
         res = BASICArray.new(dims, values)
       elsif match_args_to_signature(args, @signature1)
         dims = args.clone
-        values = BASICArray.one_values(dims)
+        values = BASICArray.make_array(dims, new_value)
         res = BASICArray.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
@@ -517,7 +519,7 @@ class FunctionCon1 < AbstractFunction
     else
       args = default_args(interpreter)
       dims = args.clone
-      values = BASICArray.one_values(dims)
+      values = BASICArray.make_array(dims, new_value)
       res = BASICArray.new(dims, values)
     end
 
@@ -578,6 +580,8 @@ class FunctionCon2 < AbstractFunction
   end
 
   def evaluate(interpreter, arg_stack)
+    new_value = NumericConstant.new(1)
+
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
@@ -586,15 +590,18 @@ class FunctionCon2 < AbstractFunction
       if match_args_to_signature(args, @signature0)
         args = default_args(interpreter)
         dims = args.clone
-        values = Matrix.one_values(dims)
+        values = Matrix.make_array(dims, new_value) if dims.size == 1
+        values = Matrix.make_matrix(dims, new_value) if dims.size == 2
         res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature1)
         dims = args.clone
-        values = Matrix.one_values(dims)
+        values = Matrix.make_array(dims, new_value) if dims.size ==1
+        values = Matrix.make_matrix(dims, new_value) if dims.size == 2
         res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature2)
         dims = args.clone
-        values = Matrix.one_values(dims)
+        values = Matrix.make_array(dims, new_value) if dims.size == 1
+        values = Matrix.make_matrix(dims, new_value) if dims.size == 2
         res = Matrix.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
@@ -602,7 +609,8 @@ class FunctionCon2 < AbstractFunction
     else
       args = default_args(interpreter)
       dims = args.clone
-      values = Matrix.one_values(dims)
+      values = Matrix.make_array(dims, new_value) if dims.size == 1
+      values = Matrix.make_matrix(dims, new_value) if dims.size == 2
       res = Matrix.new(dims, values)
     end
 
@@ -1941,6 +1949,8 @@ class FunctionZer1 < AbstractFunction
   end
 
   def evaluate(interpreter, arg_stack)
+    new_value = NumericConstant.new(0)
+
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
@@ -1949,11 +1959,11 @@ class FunctionZer1 < AbstractFunction
       if match_args_to_signature(args, @signature0)
         args = default_args(interpreter)
         dims = args.clone
-        values = BASICArray.zero_values(dims)
+        values = BASICArray.make_array(dims, new_value)
         res = BASICArray.new(dims, values)
       elsif match_args_to_signature(args, @signature1)
         dims = args.clone
-        values = BASICArray.zero_values(dims)
+        values = BASICArray.make_array(dims, new_value)
         res = BASICArray.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
@@ -1961,7 +1971,7 @@ class FunctionZer1 < AbstractFunction
     else
       args = default_args(interpreter)
       dims = args.clone
-      values = BASICArray.zero_values(dims)
+      values = BASICArray.make_array(dims, new_value)
       res = BASICArray.new(dims, values)
     end
 
@@ -2022,6 +2032,8 @@ class FunctionZer2 < AbstractFunction
   end
 
   def evaluate(interpreter, arg_stack)
+    new_value = NumericConstant.new(0)
+
     if previous_is_array(arg_stack)
       args = arg_stack.pop
 
@@ -2030,15 +2042,18 @@ class FunctionZer2 < AbstractFunction
       if match_args_to_signature(args, @signature0)
         args = default_args(interpreter)
         dims = args.clone
-        values = Matrix.zero_values(dims)
+        values = BASICArray.make_array(dims, new_value) if dims.size == 1
+        values = BASICArray.make_matrix(dims, new_value) if dims.size == 2
         res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature1)
         dims = args.clone
-        values = Matrix.zero_values(dims)
+        values = BASICArray.make_array(dims, new_value) if dims.size == 1
+        values = BASICArray.make_matrix(dims, new_value) if dims.size == 2
         res = Matrix.new(dims, values)
       elsif match_args_to_signature(args, @signature2)
         dims = args.clone
-        values = Matrix.zero_values(dims)
+        values = BASICArray.make_array(dims, new_value) if dims.size == 1
+        values = BASICArray.make_matrix(dims, new_value) if dims.size == 2
         res = Matrix.new(dims, values)
       else
         raise BASICRuntimeError.new(:te_args_no_match, @name)
@@ -2046,7 +2061,8 @@ class FunctionZer2 < AbstractFunction
     else
       args = default_args(interpreter)
       dims = args.clone
-      values = Matrix.zero_values(dims)
+      values = BASICArray.make_array(dims, new_value) if dims.size == 1
+      values = BASICArray.make_matrix(dims, new_value) if dims.size == 2
       res = Matrix.new(dims, values)
     end
 

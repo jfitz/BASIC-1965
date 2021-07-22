@@ -56,32 +56,6 @@ class AbstractCompound
     values
   end
 
-  def self.zero_values(dimensions)
-    case dimensions.size
-    when 0
-      raise BASICSyntaxError, 'No dimensions in variable'
-    when 1
-      AbstractCompound.make_array(dimensions, NumericConstant.new(0))
-    when 2
-      AbstractCompound.make_matrix(dimensions, NumericConstant.new(0))
-    else
-      raise BASICSyntaxError, 'Too many dimensions in variable'
-    end
-  end
-
-  def self.one_values(dimensions)
-    case dimensions.size
-    when 0
-      raise BASICSyntaxError, 'No dimensions in variable'
-    when 1
-      AbstractCompound.make_array(dimensions, NumericConstant.new(1))
-    when 2
-      AbstractCompound.make_matrix(dimensions, NumericConstant.new(1))
-    else
-      raise BASICSyntaxError, 'Too many dimensions in variable'
-    end
-  end
-
   def self.rnd_values(dimensions, interpreter, upper_bound)
     case dimensions.size
     when 0
