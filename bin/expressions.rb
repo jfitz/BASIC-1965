@@ -2040,10 +2040,6 @@ class ValueExpressionSet < AbstractExpressionSet
     end
   end
 
-  def printable?
-    true
-  end
-
   def scalar?
     @shape == :scalar
   end

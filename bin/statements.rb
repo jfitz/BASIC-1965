@@ -616,15 +616,17 @@ module FileFunctions
 
   def add_needed_value(items, shape)
     items << ValueExpressionSet.new([], shape) if
-      items.empty? || !items[-1].printable?
+      items.empty? || items[-1].carriage_control?
   end
 
   def add_needed_carriage(items)
-    items << CarriageControl.new('') if !items.empty? && items[-1].printable?
+    items << CarriageControl.new('') if
+      !items.empty? && !items[-1].carriage_control?
   end
 
   def add_final_carriage(items, final)
-    items << final if !items.empty? && items[-1].printable?
+    items << final if
+      !items.empty? && !items[-1].carriage_control?
   end
 
   def add_default_value_carriage(items, shape)
@@ -1862,7 +1864,7 @@ class PrintStatement < AbstractStatement
     while i < @items.size
       item = @items[i]
 
-      if item.printable?
+      unless item.carriage_control?
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
@@ -1871,7 +1873,7 @@ class PrintStatement < AbstractStatement
       end
 
       item.print(fhr, interpreter)
-      last_was_printable = item.printable?
+      last_was_printable = !item.carriage_control?
 
       i += 1
     end
@@ -2041,7 +2043,7 @@ class WriteStatement < AbstractStatement
     while i < @items.size
       item = @items[i]
 
-      if item.printable?
+      unless item.carriage_control?
         if last_was_printable
           # insert an implicit carriage control
           # carriage = CarriageControl.new('')
@@ -2050,7 +2052,7 @@ class WriteStatement < AbstractStatement
       end
 
       item.write(fhr, interpreter)
-      last_was_printable = item.printable?
+      last_was_printable = !item.carriage_control?
 
       i += 1
     end
@@ -2274,7 +2276,7 @@ class ArrPrintStatement < AbstractStatement
     while i < @items.size
       item = @items[i]
 
-      if item.printable?
+      unless item.carriage_control?
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
@@ -2286,7 +2288,7 @@ class ArrPrintStatement < AbstractStatement
         item.print(fhr, interpreter)
       end
 
-      last_was_printable = item.printable?
+      last_was_printable = !item.carriage_control?
 
       i += 1
     end
@@ -2404,7 +2406,7 @@ class ArrWriteStatement < AbstractStatement
     while i < @items.size
       item = @items[i]
 
-      if item.printable?
+      unless item.carriage_control?
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
@@ -2416,7 +2418,7 @@ class ArrWriteStatement < AbstractStatement
         item.write(fhr, interpreter)
       end
 
-      last_was_printable = item.printable?
+      last_was_printable = !item.carriage_control?
 
       i += 1
     end
@@ -2736,7 +2738,7 @@ class MatPrintStatement < AbstractStatement
     while i < @items.size
       item = @items[i]
 
-      if item.printable?
+      unless item.carriage_control?
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
@@ -2767,7 +2769,7 @@ class MatPrintStatement < AbstractStatement
         carriage.print(fhr, interpreter)
       end
 
-      last_was_printable = item.printable?
+      last_was_printable = !item.carriage_control?
 
       i += 1
     end
@@ -2903,7 +2905,7 @@ class MatWriteStatement < AbstractStatement
     while i < @items.size
       item = @items[i]
 
-      if item.printable?
+      unless item.carriage_control?
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
@@ -2915,7 +2917,7 @@ class MatWriteStatement < AbstractStatement
         item.write(fhr, interpreter)
       end
 
-      last_was_printable = item.printable?
+      last_was_printable = !item.carriage_control?
 
       i += 1
     end
