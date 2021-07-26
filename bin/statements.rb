@@ -1868,12 +1868,12 @@ class PrintStatement < AbstractStatement
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
-          carriage.print(fhr, interpreter)
+          carriage.print(fhr)
         end
       end
 
       if item.carriage_control?
-        item.print(fhr, interpreter)
+        item.print(fhr)
       else
         item.print(fhr, interpreter)
       end
@@ -2052,12 +2052,12 @@ class WriteStatement < AbstractStatement
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
-          carriage.write(fhr, interpreter)
+          carriage.write(fhr)
         end
       end
 
       if item.carriage_control?
-        item.write(fhr, interpreter)
+        item.write(fhr)
       else
         item.write(fhr, interpreter)
       end
@@ -2290,12 +2290,12 @@ class ArrPrintStatement < AbstractStatement
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
-          carriage.print(fhr, interpreter)
+          carriage.print(fhr)
         end
       end
 
       if item.carriage_control?
-        item.print(fhr, interpreter)
+        item.print(fhr)
       else
         item.compound_print(fhr, interpreter)
       end
@@ -2422,12 +2422,12 @@ class ArrWriteStatement < AbstractStatement
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
-          carriage.write(fhr, interpreter)
+          carriage.write(fhr)
         end
       end
 
       if item.carriage_control?
-        item.write(fhr, interpreter)
+        item.write(fhr)
       else
         item.compound_write(fhr, interpreter)
       end
@@ -2756,31 +2756,14 @@ class MatPrintStatement < AbstractStatement
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
-          carriage.print(fhr, interpreter)
+          carriage.print(fhr)
         end
       end
 
       if item.carriage_control?
         # MAT PRINT has different operations for carriage controls
-        carriage = CarriageControl.new('')
-
-        case item.to_s
-        when ', '
-          # a comma prints a newline
-          carriage = CarriageControl.new('NL')
-        when '; '
-          # a semi does nothing, even after numerics
-          carriage = CarriageControl.new('')
-        when ''
-          # a newline prints a newline (which is normal)
-          carriage = item
-        when ' '
-          # an implied carriage control does nothing
-          carriage = CarriageControl.new('')
-        end
-
-        # print the revised carriage control
-        carriage.print(fhr, interpreter)
+        carriage = map_carriage(item)
+        carriage.print(fhr)
       else
         item.compound_print(fhr, interpreter)
       end
@@ -2789,6 +2772,27 @@ class MatPrintStatement < AbstractStatement
 
       i += 1
     end
+  end
+
+  def map_carriage(it)
+    carriage = CarriageControl.new('')
+
+    case it.to_s
+    when ', '
+      # a comma prints a newline
+      carriage = CarriageControl.new('NL')
+    when '; '
+      # a semi does nothing, even after numerics
+      carriage = CarriageControl.new('')
+    when ''
+      # a newline prints a newline (which is normal)
+      carriage = it
+    when ' '
+      # an implied carriage control does nothing
+      carriage = CarriageControl.new('')
+    end
+
+    carriage
   end
 end
 
@@ -2925,12 +2929,12 @@ class MatWriteStatement < AbstractStatement
         if last_was_printable
           # insert an implicit carriage control
           carriage = CarriageControl.new('')
-          carriage.write(fhr, interpreter)
+          carriage.write(fhr)
         end
       end
 
       if item.carriage_control?
-        item.write(fhr, interpreter)
+        item.write(fhr)
       else
         item.compound_write(fhr, interpreter)
       end
