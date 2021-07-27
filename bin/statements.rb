@@ -1859,18 +1859,13 @@ class PrintStatement < AbstractStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
-    last_was_printable = false
+    last_was_carriage = true
 
     while i < @items.size
       item = @items[i]
 
-      unless item.carriage_control?
-        if last_was_printable
-          # insert an implicit carriage control
-          carriage = CarriageControl.new('')
-          carriage.print(fhr)
-        end
-      end
+      # insert an implicit carriage control
+      fhr.implied unless item.carriage_control? || last_was_carriage
 
       if item.carriage_control?
         item.print(fhr)
@@ -1878,7 +1873,7 @@ class PrintStatement < AbstractStatement
         item.print(fhr, interpreter)
       end
 
-      last_was_printable = !item.carriage_control?
+      last_was_carriage = item.carriage_control?
 
       i += 1
     end
@@ -2043,18 +2038,13 @@ class WriteStatement < AbstractStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
-    last_was_printable = false
+    last_was_carriage = true
 
     while i < @items.size
       item = @items[i]
 
-      unless item.carriage_control?
-        if last_was_printable
-          # insert an implicit carriage control
-          carriage = CarriageControl.new('')
-          carriage.write(fhr)
-        end
-      end
+      # insert an implicit carriage control
+      fhr.print_item(',') unless item.carriage_control? || last_was_carriage
 
       if item.carriage_control?
         item.write(fhr)
@@ -2062,7 +2052,7 @@ class WriteStatement < AbstractStatement
         item.write(fhr, interpreter)
       end
 
-      last_was_printable = !item.carriage_control?
+      last_was_carriage = item.carriage_control?
 
       i += 1
     end
@@ -2281,18 +2271,13 @@ class ArrPrintStatement < AbstractStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
-    last_was_printable = false
+    last_was_carriage = true
 
     while i < @items.size
       item = @items[i]
 
-      unless item.carriage_control?
-        if last_was_printable
-          # insert an implicit carriage control
-          carriage = CarriageControl.new('')
-          carriage.print(fhr)
-        end
-      end
+      # insert an implicit carriage control
+      fhr.implied unless item.carriage_control? || last_was_carriage
 
       if item.carriage_control?
         item.print(fhr)
@@ -2300,7 +2285,7 @@ class ArrPrintStatement < AbstractStatement
         item.compound_print(fhr, interpreter)
       end
 
-      last_was_printable = !item.carriage_control?
+      last_was_carriage = item.carriage_control?
 
       i += 1
     end
@@ -2413,18 +2398,13 @@ class ArrWriteStatement < AbstractStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
-    last_was_printable = false
+    last_was_carriage = true
 
     while i < @items.size
       item = @items[i]
 
-      unless item.carriage_control?
-        if last_was_printable
-          # insert an implicit carriage control
-          carriage = CarriageControl.new('')
-          carriage.write(fhr)
-        end
-      end
+      # insert an implicit carriage control
+      fhr.print_item(',') unless item.carriage_control? || last_was_carriage
 
       if item.carriage_control?
         item.write(fhr)
@@ -2432,7 +2412,7 @@ class ArrWriteStatement < AbstractStatement
         item.compound_write(fhr, interpreter)
       end
 
-      last_was_printable = !item.carriage_control?
+      last_was_carriage = item.carriage_control?
 
       i += 1
     end
@@ -2747,18 +2727,13 @@ class MatPrintStatement < AbstractStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
-    last_was_printable = false
+    last_was_carriage = true
 
     while i < @items.size
       item = @items[i]
 
-      unless item.carriage_control?
-        if last_was_printable
-          # insert an implicit carriage control
-          carriage = CarriageControl.new('')
-          carriage.print(fhr)
-        end
-      end
+      # insert an implicit carriage control
+      fhr.implied unless item.carriage_control? || last_was_carriage
 
       if item.carriage_control?
         # MAT PRINT has different operations for carriage controls
@@ -2768,7 +2743,7 @@ class MatPrintStatement < AbstractStatement
         item.compound_print(fhr, interpreter)
       end
 
-      last_was_printable = !item.carriage_control?
+      last_was_carriage = item.carriage_control?
 
       i += 1
     end
@@ -2920,18 +2895,13 @@ class MatWriteStatement < AbstractStatement
     fhr = interpreter.get_file_handler(fh, :print)
 
     i = 0
-    last_was_printable = false
+    last_was_carriage = true
 
     while i < @items.size
       item = @items[i]
 
-      unless item.carriage_control?
-        if last_was_printable
-          # insert an implicit carriage control
-          carriage = CarriageControl.new('')
-          carriage.write(fhr)
-        end
-      end
+      # insert an implicit carriage control
+      fhr.print_item(',') unless item.carriage_control? || last_was_carriage
 
       if item.carriage_control?
         item.write(fhr)
@@ -2939,7 +2909,7 @@ class MatWriteStatement < AbstractStatement
         item.compound_write(fhr, interpreter)
       end
 
-      last_was_printable = !item.carriage_control?
+      last_was_carriage = item.carriage_control?
 
       i += 1
     end
