@@ -19,6 +19,24 @@ Halstead complexity:
  intelligence: 23.632
  time: 1.872
 
+(0 2) 5 PRINT
+(0 2) 10 PRINT "A, R, Y, T";
+(4 5) 20 INPUT A, R, Y, T
+(1 4) 26 IF T = 999 THEN 999
+(1 4) 30 IF A <= 0 THEN 100
+(1 4) 40 IF R <= 0 THEN 100
+(1 4) 50 IF Y <= 0 THEN 100
+(1 4) 60 IF T <= 0 THEN 100
+(0 4) 70 LET N = Y * T
+(0 5) 80 LET R1 = R / 100 / T
+(0 7) 90 LET B = A * (1 + R1) ^ N
+(0 3) 95 PRINT "FINAL AMOUNT = $" B
+(0 3) 96 GOTO 5
+(0 1) 100 REM ERROR ROUTINE
+(0 2) 110 PRINT "INCORRECT DATA. PLEASE RETYPE."
+(0 3) 120 GOTO 5
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

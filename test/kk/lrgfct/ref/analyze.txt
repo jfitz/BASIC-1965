@@ -19,6 +19,17 @@ Halstead complexity:
  intelligence: 14.308
  time: 1.046
 
+(0 3) 10 PRINT "NUMBER", "LARGEST FACTOR"
+(1 4) 20 FOR N = 1001 TO 1020 STEP 2
+(0 2) 30 PRINT N,
+(1 6) 40 FOR F = INT(N / 2) TO 1 STEP -1
+(1 6) 50 IF N / F <> INT(N / F) THEN 80
+(0 2) 60 PRINT F
+(0 2) 70 GOTO 90
+(0 1) 80 NEXT F
+(0 1) 90 NEXT N
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

@@ -19,6 +19,60 @@ Halstead complexity:
  intelligence: 49.207
  time: 9.545
 
+(0 4) 10 DIM A(100), X(100), T(100, 2)
+(1 2) 20 READ N
+(1 3) 30 FOR I = 0 TO N
+(1 2) 40 READ A(I)
+(0 1) 50 NEXT I
+(1 2) 60 READ X9
+(1 3) 70 FOR J = 1 TO X9
+(1 2) 80 READ X(J)
+(0 1) 90 NEXT J
+(0 0) 95 
+(0 1) 100 REM  MAIN ROUTINE.
+(0 3) 110 LET K = 0
+(0 2) 120 GOSUB 500
+(0 2) 130 GOSUB 2000
+(0 3) 140 LET K = 1
+(0 2) 150 GOSUB 500
+(0 2) 160 GOSUB 2000
+(0 3) 170 LET K = 2
+(0 2) 180 GOSUB 500
+(0 0) 190 
+(0 1) 200 REM  PRINT ANSWERS.
+(0 5) 210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
+(0 2) 220 PRINT
+(1 3) 230 FOR J = 1 TO X9
+(0 5) 240 PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+(0 1) 250 NEXT J
+(0 1) 260 STOP
+(0 0) 270 
+(0 1) 500 REM  RUN THROUGH X-VALUES
+(1 3) 510 FOR J = 1 TO X9
+(0 3) 520 LET X = X(J)
+(0 2) 530 GOSUB 1000
+(0 3) 540 LET T(J, K) = Y
+(0 1) 550 NEXT J
+(0 1) 560 RETURN
+(0 0) 570 
+(0 1) 1000 REM  EVALUATE.
+(0 3) 1010 LET Y = 0
+(1 3) 1020 FOR I = 0 TO N
+(0 5) 1030 LET Y = Y * X + A(I)
+(0 1) 1040 NEXT I
+(0 1) 1050 RETURN
+(0 0) 1060 
+(0 1) 2000 REM  DIFFERENTIATE.
+(1 3) 2010 FOR I = 0 TO N
+(0 6) 2020 LET A(I) = A(I) * (N - I)
+(0 1) 2030 NEXT I
+(0 4) 2040 LET N = N - 1
+(0 1) 2050 RETURN
+(0 0) 2060 
+(0 3) 9000 DATA 2, 2, -3, 1
+(0 4) 9100 DATA 8, -3, -1, 0, 0.5, 0.75, 1, 2.5, 5
+(0 1) 9999 END
+
 Unreachable code:
 
 All executable lines are reachable.

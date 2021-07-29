@@ -67,7 +67,7 @@ class Option
   def check_value(value)
     check_value_and_type(value)
   rescue BASICSyntaxError => e
-    raise e unless @defs.key?(:off) && v == @defs[:off]
+    raise e unless @defs.key?(:off) && value == @defs[:off]
   end
 
   def check_value_and_type(value)

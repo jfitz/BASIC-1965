@@ -19,6 +19,14 @@ Halstead complexity:
  intelligence: 13.761
  time: 0.156
 
+(0 2) 100 PRINT "FAHRENHEIT";
+(1 2) 110 INPUT F
+(0 6) 120 LET C = (F - 32) * 5 / 9
+(0 3) 130 PRINT "CENTIGRADE:" C
+(0 2) 140 PRINT
+(0 3) 150 GOTO 100
+(0 1) 160 END
+
 Unreachable code:
 
 All executable lines are reachable.

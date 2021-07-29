@@ -19,6 +19,33 @@ Halstead complexity:
  intelligence: 26.712
  time: 1.190
 
+(0 1) 10 REM THIS PROGRAM COMPUTES VALUE DEPRECIATION
+(0 1) 20 REM BY THE STRAIGHT LINE METHOD
+(0 2) 30 PRINT "ORIGINAL VALUE = ";
+(1 2) 40 INPUT A
+(0 2) 50 PRINT "LIFETIME IN YEARS = ";
+(1 2) 60 INPUT B
+(0 4) 70 LET C = A / B
+(0 3) 80 PRINT "YEARLY DEPRECIATION = "; C
+(0 2) 90 PRINT
+(0 3) 100 PRINT "YEAR", "VALUE"
+(0 3) 110 LET X = 0
+(0 4) 120 LET X = X + 1
+(0 4) 130 LET A = A - C
+(1 4) 140 IF A < 0 THEN 160
+(0 2) 150 GOTO 170
+(0 3) 160 LET A = 0
+(0 3) 170 PRINT X, A
+(1 5) 180 IF X < B THEN 120
+(0 2) 190 PRINT "********************"
+(0 2) 200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 210 INPUT L
+(1 4) 220 IF L = 1 THEN 240
+(0 1) 230 STOP
+(0 2) 240 PRINT
+(0 3) 250 GOTO 30
+(0 1) 260 END
+
 Unreachable code:
 
 All executable lines are reachable.

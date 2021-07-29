@@ -19,6 +19,64 @@ Halstead complexity:
  intelligence: 47.926
  time: 26.307
 
+(0 5) 100 DIM X(100), Y(100), Z(200), T(200)
+(0 0) 110 
+(2 3) 140 READ M, N
+(1 3) 150 FOR I = 1 TO M
+(1 2) 160 READ X(I)
+(0 1) 170 NEXT I
+(1 3) 180 FOR J = 1 TO N
+(1 2) 190 READ Y(J)
+(0 1) 200 NEXT J
+(0 0) 210 
+(1 3) 250 FOR K = 1 TO M
+(0 3) 260 LET Z(K) = X(K)
+(0 4) 270 LET T(K) = +1
+(0 1) 280 NEXT K
+(1 3) 290 FOR K = 1 TO N
+(0 3) 300 LET Z(M + K) = Y(K)
+(0 3) 310 LET T(M + K) = 0
+(0 1) 320 NEXT K
+(0 0) 330 
+(1 5) 360 FOR K = 1 TO M + N - 1
+(1 5) 370 FOR L = K + 1 TO M + N
+(1 4) 380 IF Z(K) <= Z(L) THEN 450
+(0 3) 390 LET T = Z(K)
+(0 3) 400 LET Z(K) = Z(L)
+(0 3) 410 LET Z(L) = T
+(0 3) 420 LET T = T(K)
+(0 3) 430 LET T(K) = T(L)
+(0 3) 440 LET T(L) = T
+(0 1) 450 NEXT L
+(0 1) 460 NEXT K
+(0 0) 470 
+(0 3) 500 LET J = 1
+(0 3) 510 LET K = 1
+(0 3) 520 LET B = J
+(0 3) 530 LET T = J
+(0 4) 540 LET J = J + 1
+(1 6) 550 IF J > M + N THEN 600
+(1 4) 560 IF Z(J) > Z(B) THEN 600
+(0 4) 570 LET T = T + J
+(0 4) 580 LET K = K + 1
+(0 3) 590 GOTO 540
+(1 4) 600 FOR L = B TO J - 1
+(0 4) 610 LET Z(L) = T / K
+(0 1) 620 NEXT L
+(1 7) 630 IF J <= M + N THEN 510
+(0 0) 640 
+(0 3) 740 LET S(0) = 0
+(0 3) 750 LET S(1) = 0
+(1 4) 760 FOR K = 1 TO M + N
+(0 4) 770 LET S(T(K)) = S(T(K)) + Z(K)
+(0 1) 790 NEXT K
+(0 5) 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
+(0 0) 810 
+(0 2) 900 DATA 6, 4
+(0 2) 910 DATA 117, 145, 147, 120, 150, 120
+(0 2) 920 DATA 160, 160, 140, 190
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

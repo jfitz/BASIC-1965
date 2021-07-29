@@ -19,6 +19,29 @@ Halstead complexity:
  intelligence: 52.082
  time: 1.905
 
+(0 1) 10 REM THIS PROGRAM COMPUTES TO SIMULTANEOUS EQUATIONS
+(0 1) 20 REM IN TWO UNKNOWNS
+(0 2) 30 PRINT "AX + BY = E"
+(0 2) 40 PRINT "CX + DY = F"
+(0 2) 50 PRINT "ENTER PARAMETERS A,B,C,D,E,F"
+(6 7) 60 INPUT A, B, C, D, E, F
+(0 7) 70 LET M = (A * D) - (B * C)
+(1 4) 80 IF M = 0 THEN 140
+(0 8) 90 LET X = ((E * D) - (B * F)) / M
+(0 8) 100 LET Y = ((A * F) - (E * C)) / M
+(0 6) 110 PRINT "SOLUTION", "X = "; X, "Y = "; Y
+(0 2) 120 PRINT "********************"
+(0 2) 130 GOTO 160
+(0 2) 140 PRINT "NO SOLUTION, OR NO UNIQUE SOLUTION EXISTS"
+(0 2) 150 PRINT "********************"
+(0 2) 160 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 170 INPUT L
+(1 4) 180 IF L = 1 THEN 200
+(0 1) 190 STOP
+(0 2) 200 PRINT
+(0 3) 210 GOTO 30
+(0 1) 220 END
+
 Unreachable code:
 
 All executable lines are reachable.

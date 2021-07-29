@@ -19,6 +19,27 @@ Halstead complexity:
  intelligence: 23.384
  time: 1.122
 
+(0 1) 10 REM THIS PROGRAM COMPUTES THE HARMONIC MEAN
+(0 1) 20 REM OF SAMPLES ENTERED BY THE USER
+(0 3) 30 LET Z = 0
+(0 3) 40 LET N = 0
+(0 2) 50 PRINT "SAMPLE = ";
+(1 2) 60 INPUT X
+(1 4) 70 IF X = 0 THEN 130
+(0 4) 80 LET N = N + 1
+(0 6) 90 LET Z = Z + (1 / X)
+(0 4) 100 LET H = N / Z
+(0 7) 110 PRINT "N = "; N, "SAMPLE = "; X, "CURRENT MEAN = "; H
+(0 3) 120 GOTO 50
+(0 2) 130 PRINT
+(0 2) 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 150 INPUT L
+(1 4) 160 IF L = 1 THEN 180
+(0 1) 170 STOP
+(0 2) 180 PRINT
+(0 3) 190 GOTO 30
+(0 1) 200 END
+
 Unreachable code:
 
 All executable lines are reachable.

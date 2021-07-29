@@ -19,6 +19,56 @@ Halstead complexity:
  intelligence: 60.299
  time: 22.015
 
+(0 1) 10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+(0 1) 20 REM AND INFINITY BY GAUSSIAN QUADRATURE
+(0 3) 30 LET C1 = .238619
+(0 4) 40 LET C2 = -C1
+(0 3) 50 LET C3 = .661209
+(0 4) 60 LET C4 = -C3
+(0 3) 70 LET C5 = .932470
+(0 4) 80 LET C6 = -C5
+(0 3) 90 LET D1 = .467914
+(0 3) 100 LET D2 = .360762
+(0 3) 110 LET D3 = .171324
+(0 3) 120 LET J = 0
+(0 2) 130 PRINT "ENDPOINT A = ";
+(1 2) 140 INPUT A
+(0 9) 150 LET X = (2 / (1 + C1)) + (A - 1)
+(0 2) 160 GOSUB 470
+(0 9) 170 LET N = ((4 * D1) / (1 + C1) ^ 2) * Q
+(0 4) 180 LET J = J + N
+(0 9) 190 LET X = (2 / (1 + C2)) + (A - 1)
+(0 2) 200 GOSUB 470
+(0 9) 210 LET N = ((4 * D1) / (1 + C2) ^ 2) * Q
+(0 4) 220 LET J = J + N
+(0 9) 230 LET X = (2 / (1 + C3)) + (A - 1)
+(0 2) 240 GOSUB 470
+(0 9) 250 LET N = ((4 * D2) / (1 + C3) ^ 2) * Q
+(0 4) 260 LET J = J + N
+(0 9) 270 LET X = (2 / (1 + C4)) + (A - 1)
+(0 2) 280 GOSUB 470
+(0 9) 290 LET N = ((4 * D2) / (1 + C4) ^ 2) * Q
+(0 4) 300 LET J = J + N
+(0 9) 310 LET X = (2 / (1 + C5)) + (A - 1)
+(0 2) 320 GOSUB 470
+(0 9) 330 LET N = ((4 * D3) / (1 + C5) ^ 2) * Q
+(0 4) 340 LET J = J + N
+(0 9) 350 LET X = (2 / (1 + C6)) + (A - 1)
+(0 2) 360 GOSUB 470
+(0 9) 370 LET N = ((4 * D3) / (1 + C6) ^ 2) * Q
+(0 4) 380 LET J = J + N
+(0 4) 390 LET G = J / 2
+(0 3) 400 PRINT "INTEGRAL = "; G
+(0 2) 410 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 420 INPUT L
+(1 4) 430 IF L = 1 THEN 450
+(0 1) 440 STOP
+(0 2) 450 PRINT
+(0 3) 460 GOTO 120
+(0 5) 470 LET Q = 2 * X + 5
+(0 1) 480 RETURN
+(0 1) 490 END
+
 Unreachable code:
 
 All executable lines are reachable.

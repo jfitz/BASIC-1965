@@ -19,6 +19,27 @@ Halstead complexity:
  intelligence: 25.383
  time: 3.384
 
+(0 3) 10 DEF FNF(X, Y) = SQR(X * X + Y * Y)
+(0 0) 20 
+(4 5) 100 READ X0, X1, Y0, H
+(0 3) 110 PRINT " X", " Y"
+(0 2) 120 PRINT
+(0 3) 130 PRINT X0, Y0
+(0 3) 140 LET Y = Y0
+(0 0) 150 
+(1 5) 160 FOR X = X0 TO X1 - H STEP H
+(0 5) 170 LET D1 = FNF(X, Y)
+(0 3) 180 LET Y1 = Y
+(0 7) 190 LET Y = Y + D1 * H / 2
+(0 5) 200 LET D2 = FNF(X + H / 2, Y)
+(0 6) 210 LET Y = Y1 + D2 * H
+(0 4) 220 PRINT X + H, Y
+(0 1) 230 NEXT X
+(0 0) 240 
+(0 2) 900 DATA 0, 1, 1
+(0 2) 910 DATA 0.1
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

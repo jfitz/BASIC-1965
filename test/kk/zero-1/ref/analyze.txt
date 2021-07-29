@@ -19,6 +19,20 @@ Halstead complexity:
  intelligence: 17.282
  time: 3.815
 
+(0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+(2 3) 20 READ A, B
+(0 5) 30 LET X = (A + B) / 2
+(1 6) 40 IF FNF(X) = 0 THEN 100
+(1 6) 50 IF FNF(X) < 0 THEN 70
+(0 3) 60 LET B = X
+(0 2) 65 GOTO 80
+(0 3) 70 LET A = X
+(1 10) 80 IF ABS(A - B) / (ABS(A) + ABS(B)) < 0.000005 THEN 100
+(0 3) 90 GOTO 30
+(0 3) 100 PRINT "ONE ZERO AT" X
+(0 2) 900 DATA 0, 1
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

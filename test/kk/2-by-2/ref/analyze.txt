@@ -19,6 +19,20 @@ Halstead complexity:
  intelligence: 36.215
  time: 2.599
 
+(0 4) 100 PRINT "TABLE", "   ", "CHI-SQUARE"
+(0 0) 110 
+(0 2) 120 PRINT
+(4 5) 130 READ A, B, C, D
+(0 6) 140 LET N = A + B + C + D
+(0 7) 150 LET E = ABS(A * D - B * C) - N / 2
+(0 17) 160 LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
+(0 0) 170 
+(0 3) 180 PRINT A, B
+(0 4) 190 PRINT C, D, X
+(0 3) 200 GOTO 120
+(0 2) 900 DATA 6, 0, 2, 6, 6, 0, 1, 3
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

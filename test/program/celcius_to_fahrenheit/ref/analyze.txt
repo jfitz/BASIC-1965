@@ -19,6 +19,16 @@ Halstead complexity:
  intelligence: 18.764
  time: 0.267
 
+(0 1) 10 REM Convert Celcius to Fahrenheit
+(0 3) 20 PRINT "Celcius", "Fahrenheit"
+(0 3) 30 LET C = 0
+(0 6) 40 LET F = C * 9 / 5 + 32
+(0 3) 50 PRINT C, F
+(0 4) 60 LET C = C + 1
+(1 5) 70 IF C <= 10 THEN 40
+(0 1) 900 STOP
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

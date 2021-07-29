@@ -19,6 +19,30 @@ Halstead complexity:
  intelligence: 18.994
  time: 2.560
 
+(0 1) 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
+(2 3) 20 READ A, A0
+(0 4) 30 LET B = A + A0
+(0 5) 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM"; A; "TO"; B
+(0 2) 50 PRINT
+(1 3) 100 FOR N = A TO B
+(0 3) 110 LET N0 = N
+(0 2) 120 GOSUB 400
+(0 1) 130 NEXT N
+(0 1) 140 STOP
+(0 1) 400 REM PRINT INFO FOR ONE NUMBER
+(0 3) 410 PRINT N0; ":";
+(1 4) 420 IF N0 = 1 THEN 490
+(1 5) 430 IF MOD(N0, 2) = 0 THEN 460
+(0 5) 440 LET N0 = 3 * N0 + 1
+(0 2) 450 GOTO 470
+(0 4) 460 LET N0 = N0 / 2
+(0 2) 470 PRINT N0;
+(0 3) 480 GOTO 420
+(0 2) 490 PRINT
+(0 1) 500 RETURN
+(0 2) 900 DATA 1, 998
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

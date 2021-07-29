@@ -19,6 +19,36 @@ Halstead complexity:
  intelligence: 42.458
  time: 5.955
 
+(0 1) 10 REM THIS PROGRAM COMPUTES THE SOLUTION TO A
+(0 1) 20 REM QUADRATIC EQUATION
+(0 2) 30 PRINT "ENTER VALUES FOR A, B AND C"
+(3 4) 40 INPUT A, B, C
+(0 13) 50 LET D = ((B ^ 2) - (4 * A * C)) / (4 * A ^ 2)
+(1 4) 60 IF D >= 0 THEN 130
+(0 7) 70 LET X = -B / (2 * A)
+(0 7) 80 LET Y = (SQR((4 * A * C) - B ^ 2)) / (2 * A)
+(0 2) 90 PRINT "ROOTS ARE COMPLEX"
+(0 3) 100 PRINT "REAL PART = "; X
+(0 3) 110 PRINT "IMAGINARY PART = "; Y
+(0 2) 120 GOTO 220
+(0 7) 130 LET E = -B / (2 * A)
+(1 4) 140 IF E >= 0 THEN 170
+(0 5) 150 LET Z = E - SQR(D)
+(0 2) 160 GOTO 180
+(0 5) 170 LET Z = E + SQR(D)
+(0 6) 180 LET W = C / (Z * A)
+(0 2) 190 PRINT "ROOTS ARE REAL"
+(0 3) 200 PRINT "1ST ROOT = "; Z
+(0 3) 210 PRINT "2ND ROOT = "; W
+(0 2) 220 PRINT "********************"
+(0 2) 230 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 240 INPUT L
+(1 4) 250 IF L = 1 THEN 270
+(0 1) 260 STOP
+(0 2) 270 PRINT
+(0 3) 280 GOTO 30
+(0 1) 290 END
+
 Unreachable code:
 
 All executable lines are reachable.

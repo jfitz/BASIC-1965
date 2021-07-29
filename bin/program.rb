@@ -357,10 +357,32 @@ class Program
     texts += code_complexity
     texts << ''
 
+    texts += analyze_pretty
+
     # report unreachable lines
     texts << 'Unreachable code:'
     texts << ''
     texts += unreachable_code
+    texts << ''
+  end
+
+  def analyze_pretty
+    raise(BASICCommandError, 'No program loaded') if @lines.empty?
+
+    texts = []
+
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+
+      statement = line.statement
+
+      mccabe = statement.mccabe
+      effort = statement.comprehension_effort
+
+      text = "(#{mccabe} #{effort}) #{line_number} " + statement.pretty
+      texts << text
+    end
+
     texts << ''
   end
 

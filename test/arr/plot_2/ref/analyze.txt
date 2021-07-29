@@ -19,6 +19,13 @@ Halstead complexity:
  intelligence: 24.424
  time: 0.214
 
+(0 4) 10 ARR LET A = RND1(40, 400)
+(0 4) 20 ARR LET A1 = A - 100
+(0 4) 30 ARR LET A2 = A - 390
+(0 4) 40 ARR LET A3 = A - 700
+(7 5) 90 ARR PLOT A, A1, A2, A3
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

@@ -19,6 +19,16 @@ Halstead complexity:
  intelligence: 20.520
  time: 0.096
 
+(0 1) 10 REM TEST FOR/NEXT STATEMENTS
+(0 3) 20 LET B = 1
+(0 3) 30 LET E = 5
+(0 3) 40 LET S = 1
+(1 4) 50 FOR I = B TO E STEP S
+(0 2) 60 PRINT I
+(0 4) 70 LET S = S + 1
+(0 1) 80 NEXT I
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

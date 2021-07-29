@@ -281,19 +281,19 @@ class UserFunction < AbstractFunction
     results[0]
   end
 
-  def evaluate_ref(interpreter, arg_stack)
+  def evaluate_ref(_interpreter, arg_stack)
     x = nil
 
-    x = evaluate_ref_scalar(interpreter, arg_stack) if
+    x = evaluate_ref_scalar(arg_stack) if
       @default_shape == :scalar
 
-    x = evaluate_ref_compound(interpreter, arg_stack) if
-      @default_shape == :array || @default_shape == :matrix
+    x = evaluate_ref_compound(arg_stack) if
+      %i(array matrix).includes?(@default_shape)
     x
   end
 
   # return a single value, a reference to this object
-  def evaluate_ref_scalar(_interpreter, arg_stack)
+  def evaluate_ref_scalar(arg_stack)
     raise BASICSyntaxError.new('function evaluated with arguments') if
       previous_is_array(arg_stack)
 
@@ -301,7 +301,7 @@ class UserFunction < AbstractFunction
   end
 
   # return a single value, a reference to this object
-  def evaluate_ref_compound(_interpreter, arg_stack)
+  def evaluate_ref_compound(arg_stack)
     raise BASICSyntaxError.new('function evaluated with arguments') if
       previous_is_array(arg_stack)
 

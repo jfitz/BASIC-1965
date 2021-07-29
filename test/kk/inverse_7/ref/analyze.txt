@@ -19,6 +19,24 @@ Halstead complexity:
  intelligence: 12.338
  time: 4.344
 
+(1 2) 10 READ N
+(1 4) 20 FOR I = 1 TO N - 1
+(1 4) 30 FOR J = 1 TO N - 1
+(0 8) 40 LET P(I, J) = I * J - INT(I * J / N) * N
+(0 1) 50 NEXT J
+(0 1) 60 NEXT I
+(1 4) 70 FOR I = 1 TO N - 1
+(1 4) 80 FOR J = 1 TO N - 1
+(1 4) 90 IF P(I, J) = 1 THEN 140
+(0 1) 100 NEXT J
+(0 3) 110 PRINT I; "DOES NOT HAVE AN INVERSE"
+(0 1) 120 NEXT I
+(0 1) 130 STOP
+(0 4) 140 PRINT I; "HAS AN INVERSE" J
+(0 3) 150 GOTO 120
+(0 2) 160 DATA 7
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

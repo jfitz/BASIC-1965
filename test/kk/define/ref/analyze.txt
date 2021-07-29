@@ -19,6 +19,12 @@ Halstead complexity:
  intelligence: 10.176
  time: 0.641
 
+(0 5) 10 DEF FNL(A) = LOG(A) / LOG(10)
+(1 4) 20 FOR N = 2 TO 10 STEP 2
+(0 7) 30 PRINT N, LOG(N), FNL(N)
+(0 1) 40 NEXT N
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

@@ -19,6 +19,142 @@ Halstead complexity:
  intelligence: 76.394
  time: 168.089
 
+(0 4) 10 DIM S(4, 100), P(6, 6), M(100)
+(0 6) 20 DEF FNC(X) = X - 7 * INT(X / 7)
+(0 3) 30 PRINT "NOTE NUMBER", "CHORD",
+(0 2) 40 PRINT " S     A     T     B"
+(0 2) 50 PRINT
+(0 0) 60 
+(0 1) 100 REM  INITIALIZE.
+(0 2) 105 OPTION BASE 1
+(1 2) 110 MAT READ P
+(0 2) 111 DATA 5, 4, 1, 6, 2, 3, 6, 4, 2, 1, 5, 3, 6, 4, 3, 1, 2, 5
+(0 2) 112 DATA 1, 5, 4, 6, 3, 2, 2, 6, 5, 4, 1, 3, 1, 5, 3, 6, 2, 4
+(1 2) 120 READ N9
+(1 2) 130 MAT READ M(N9)
+(0 2) 140 DATA 28
+(0 2) 150 DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1
+(0 2) 160 DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1, 1, 0
+(0 2) 170 OPTION BASE 0
+(1 3) 190 FOR V = 0 TO 4
+(1 2) 200 READ S(V, N9)
+(0 1) 210 NEXT V
+(0 5) 220 DATA 1, 0, -3, -5, -7
+(0 3) 240 LET C2 = 1
+(0 0) 250 
+(1 5) 450 FOR N = N9 TO 1 STEP -1
+(1 4) 460 IF N = N9 THEN 6000
+(0 1) 500 REM  TEST CHORDS.
+(0 3) 505 LET I1 = 1
+(1 3) 510 FOR I = I1 TO 6
+(0 3) 520 LET C2 = P(C1, I)
+(0 3) 525 LET S(0, N) = C2
+(0 3) 530 LET S = M(N)
+(0 3) 540 LET S(1, N) = S
+(0 0) 542 
+(0 1) 545 REM  FIX ROOT
+(0 4) 550 LET D(1) = C2 - 8
+(0 4) 560 LET D(2) = C2 - 15
+(0 3) 565 LET D = S(4, N + 1)
+(1 3) 570 FOR J = 1 TO 2
+(1 5) 580 IF ABS(D(J) - D) <= 5 THEN 610
+(0 3) 590 LET R = D(3 - J)
+(0 2) 600 GOTO 660
+(0 1) 610 NEXT J
+(1 4) 620 IF S > S(1, N + 1) THEN 650
+(0 3) 630 LET R = D(1)
+(0 2) 640 GOTO 660
+(0 3) 650 LET R = D(2)
+(0 3) 660 LET S(4, N) = R
+(0 0) 670 
+(0 1) 700 REM  FIND OTHER NOTES
+(0 3) 705 LET J = 1
+(1 4) 710 FOR K = 0 TO 4 STEP 2
+(1 6) 720 IF FNC(S - (R + K)) = 0 THEN 750
+(0 4) 730 LET B(J) = R + K
+(0 4) 740 LET J = J + 1
+(0 1) 750 NEXT K
+(1 4) 760 IF J > 3 THEN 4000
+(0 0) 770 
+(1 3) 800 FOR L = 0 TO 6
+(0 3) 810 LET A = B(1)
+(0 3) 820 LET B = B(2)
+(0 3) 830 LET W(0, L) = 0
+(0 3) 840 LET W(2, L) = B
+(0 3) 850 LET W(3, L) = A
+(0 3) 860 LET B(1) = B
+(0 4) 870 LET B(2) = A + 7
+(0 1) 880 NEXT L
+(0 0) 899 
+(0 1) 1000 REM  TEST CASES IN W-TABLE
+(1 3) 1010 FOR L = 0 TO 6
+(1 3) 1020 FOR V = 2 TO 3
+(0 3) 1030 LET B = W(V, L)
+(1 5) 1040 IF ABS(B - S(V, N + 1)) > 5 THEN 1260
+(1 8) 1050 IF B > 17 - 4 * V THEN 1260
+(1 8) 1060 IF B < 5 - 4 * V THEN 1260
+(0 3) 1070 LET S(V, N) = B
+(1 4) 1080 IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
+(0 1) 1090 NEXT V
+(0 0) 1095 
+(0 1) 1100 REM  CHECK FOR BAD TRANSITIONS
+(1 4) 1102 IF C1 = C2 THEN 1200
+(1 3) 1105 FOR V1 = 1 TO 4
+(1 4) 1110 FOR V2 = V1 + 1 TO 4
+(0 4) 1115 LET D = S(V1, N + 1) - S(V2, N + 1)
+(1 6) 1120 IF FNC(D) = 0 THEN 1145
+(1 6) 1130 IF FNC(D) = 4 THEN 1145
+(0 2) 1140 GOTO 1160
+(0 4) 1145 LET S1 = S(V1, N) - S(V1, N + 1)
+(0 4) 1150 LET S2 = S(V2, N) - S(V2, N + 1)
+(1 4) 1155 IF S1 = S2 THEN 1260
+(0 1) 1160 NEXT V2
+(0 1) 1165 NEXT V1
+(0 0) 1170 
+(0 1) 1200 REM COMPUTE DISTANCE
+(1 3) 1210 FOR V = 2 TO 3
+(0 4) 1220 LET D(V) = ABS(S(V, N) - S(V, N + 1))
+(0 1) 1230 NEXT V
+(0 4) 1240 LET W(0, L) = D(2) + D(3)
+(0 2) 1250 GOTO 1261
+(0 3) 1260 LET W(0, L) = 999
+(0 1) 1261 NEXT L
+(0 0) 1262 
+(0 1) 1500 REM  SELECT CHORD
+(0 3) 1510 LET M = 999
+(1 3) 1520 FOR L = 0 TO 6
+(0 3) 1530 LET M1 = W(0, L)
+(1 4) 1540 IF M1 > M THEN 1590
+(0 3) 1550 LET M = M1
+(0 3) 1560 LET L9 = L
+(0 1) 1590 NEXT L
+(1 4) 1600 IF M = 999 THEN 4000
+(0 3) 1610 LET S(2, N) = W(2, L9)
+(0 3) 1620 LET S(3, N) = W(3, L9)
+(0 2) 1630 GOTO 6000
+(0 0) 1640 
+(0 1) 4000 REM  REJECT CHORD
+(0 1) 4001 NEXT I
+(0 1) 5000 REM  BACK UP
+(0 4) 5005 LET N = N + 1
+(1 4) 5010 IF N <> N9 THEN 5100
+(0 2) 5020 PRINT "STUCK"
+(0 1) 5030 STOP
+(0 3) 5100 LET C2 = S(0, N)
+(0 3) 5110 LET C1 = S(0, N + 1)
+(1 3) 5120 FOR I = 1 TO 6
+(1 4) 5130 IF C2 = P(C1, I) THEN 5200
+(0 1) 5140 NEXT I
+(0 4) 5200 LET I1 = I + 1
+(0 3) 5210 GOTO 510
+(0 0) 5220 
+(0 1) 6000 REM  PRINT RESULTS
+(0 7) 6001 PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
+(0 3) 6002 LET C1 = C2
+(0 1) 6003 NEXT N
+(0 0) 6004 
+(0 1) 9999 END
+
 Unreachable code:
 
 All executable lines are reachable.

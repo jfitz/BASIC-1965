@@ -19,6 +19,28 @@ Halstead complexity:
  intelligence: 35.813
  time: 4.065
 
+(0 2) 5 DIM S(100)
+(1 2) 10 READ N
+(1 3) 20 FOR I = 1 TO N
+(1 2) 30 READ S(I)
+(0 1) 40 NEXT I
+(0 0) 50 
+(1 3) 100 FOR I = 1 TO N
+(1 4) 200 FOR J = 1 TO N - 1
+(0 3) 210 LET X = S(J)
+(0 3) 220 LET Y = S(J + 1)
+(1 4) 230 IF X <= Y THEN 300
+(0 3) 240 LET S(J) = Y
+(0 3) 250 LET S(J + 1) = X
+(0 1) 300 NEXT J
+(0 1) 310 NEXT I
+(1 3) 400 FOR I = 1 TO N
+(0 2) 410 PRINT S(I);
+(0 1) 420 NEXT I
+(0 2) 900 DATA 20
+(0 2) 910 DATA 5, 2, 7, 3, 8, 1, 9, 11, 3, 15, 20, 4, 0, 10, 2, 16, 2, 8, 9, 1
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

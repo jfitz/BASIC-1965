@@ -19,6 +19,13 @@ Halstead complexity:
  intelligence: 27.158
  time: 0.232
 
+(0 4) 10 MAT LET A = RND2(4, 40, 400)
+(0 4) 20 MAT LET A1 = A - 100
+(0 4) 30 MAT LET A2 = A - 390
+(0 4) 40 MAT LET A3 = A - 700
+(7 5) 90 MAT PLOT A, A1, A2, A3
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

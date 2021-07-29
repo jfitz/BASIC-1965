@@ -19,6 +19,14 @@ Halstead complexity:
  intelligence: 22.514
  time: 0.026
 
+(0 3) 10 LET L1 = 1
+(0 3) 20 LET L2 = 10
+(1 3) 30 FOR I = L1 TO L2
+(0 2) 40 PRINT I
+(0 1) 50 NEXT I
+(0 1) 90 STOP
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

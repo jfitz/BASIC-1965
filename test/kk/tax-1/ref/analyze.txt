@@ -19,6 +19,26 @@ Halstead complexity:
  intelligence: 22.578
  time: 2.886
 
+(0 2) 10 DIM D(20)
+(2 3) 20 READ A, Y
+(1 4) 100 FOR Y1 = 1 TO Y STEP 2
+(0 3) 105 PRINT "CHANGE IN YEAR " Y1
+(0 3) 108 LET A1 = A
+(1 4) 110 FOR I = 1 TO Y1 - 1
+(0 5) 120 LET D(I) = A1 * 2 / Y
+(0 4) 130 LET A1 = A1 - D(I)
+(0 3) 140 PRINT I; D(I)
+(0 1) 150 NEXT I
+(0 7) 160 LET D = A1 / (Y - Y1 + 1)
+(1 3) 170 FOR I = Y1 TO Y
+(0 3) 180 LET D(I) = D
+(0 3) 185 PRINT I; D(I)
+(0 1) 190 NEXT I
+(0 2) 195 PRINT
+(0 1) 290 NEXT Y1
+(0 2) 900 DATA 5000, 7
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

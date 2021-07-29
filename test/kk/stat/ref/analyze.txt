@@ -19,6 +19,43 @@ Halstead complexity:
  intelligence: 52.880
  time: 6.463
 
+(0 3) 100 LET N = 0
+(0 3) 110 LET S = 0
+(0 3) 120 LET S2 = 0
+(0 0) 130 
+(1 2) 140 READ X
+(1 4) 150 IF X = 999999 THEN 210
+(0 4) 160 LET N = N + 1
+(0 4) 170 LET S = S + X
+(0 6) 180 LET S2 = S2 + X * X
+(0 3) 190 GOTO 140
+(0 0) 200 
+(0 4) 210 LET M = S / N
+(0 11) 220 LET V = (N * S2 - S * S) / N / (N - 1)
+(0 4) 230 LET D = SQR(V)
+(0 4) 240 LET P = .6745 * D
+(0 4) 250 LET E = SQR(V / N)
+(0 4) 260 LET C = D / M
+(0 0) 270 
+(0 6) 280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
+(0 6) 290 PRINT N, S, S2, M, V
+(0 2) 300 PRINT
+(0 5) 310 PRINT "STD. DEV.", "PROB. ERR.", "STD.ERR. MN.", "COEFF. VAR."
+(0 5) 320 PRINT D, P, E, C
+(0 2) 330 PRINT
+(0 2) 340 PRINT
+(0 0) 350 
+(0 3) 360 LET N = 0
+(0 3) 370 LET S = 0
+(0 3) 380 LET S2 = 0
+(1 2) 390 READ X
+(1 5) 400 IF X <> 999999 THEN 160
+(0 0) 410 
+(0 2) 900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
+(0 2) 910 DATA 4, 3, 9, 15, 21, 6, 999999
+(0 2) 998 DATA 999999
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

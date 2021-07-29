@@ -19,6 +19,24 @@ Halstead complexity:
  intelligence: 33.012
  time: 1.168
 
+(2 3) 100 MAT READ A(2, 3), B(2, 3)
+(0 0) 110 
+(0 4) 130 MAT S = A + B
+(0 2) 140 PRINT "THE SUM"
+(0 2) 150 MAT PRINT S
+(0 0) 160 
+(0 4) 170 MAT D = A - B
+(0 2) 180 PRINT "THE DIFFERENCE"
+(0 2) 190 MAT PRINT D
+(0 0) 200 
+(0 5) 210 MAT K = (1 / 4) * A
+(0 2) 220 PRINT "SCALAR MULTIPLE"
+(0 2) 230 MAT PRINT K
+(0 0) 240 
+(0 2) 900 DATA 1, 4, 7, 3, 2, 1
+(0 5) 910 DATA 3, -2, 6, 2, -5, -1
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

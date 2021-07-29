@@ -19,6 +19,25 @@ Halstead complexity:
  intelligence: 30.454
  time: 1.080
 
+(0 1) 10 REM THIS PROGRAM COMPUTES LINEAR INTERPOLATION
+(0 2) 20 PRINT "KNOWN VALUE OF X (X1,X2) = ";
+(2 3) 30 INPUT X1, X2
+(0 2) 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
+(2 3) 50 INPUT Y1, Y2
+(0 2) 60 PRINT "INTERPOLATE F(X) AT X = ";
+(1 2) 70 INPUT X
+(0 9) 80 LET G = ((X2 - X) * Y1) + ((X - X1) * Y2)
+(0 6) 90 LET F = G / (X2 - X1)
+(0 3) 100 PRINT "INTERPOLATED F(X) = "; F
+(0 2) 110 PRINT
+(0 2) 120 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 130 INPUT L
+(1 4) 140 IF L = 1 THEN 160
+(0 1) 150 STOP
+(0 2) 160 PRINT
+(0 3) 170 GOTO 20
+(0 1) 180 END
+
 Unreachable code:
 
 All executable lines are reachable.

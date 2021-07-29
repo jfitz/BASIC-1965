@@ -19,6 +19,32 @@ Halstead complexity:
  intelligence: 17.329
  time: 2.712
 
+(0 5) 10 PRINT " P", " Q", " R", "FORMULA"
+(0 2) 15 PRINT
+(1 5) 20 FOR P = 1 TO 0 STEP -1
+(1 5) 30 FOR Q = 1 TO 0 STEP -1
+(1 5) 40 FOR R = 1 TO 0 STEP -1
+(0 3) 50 LET X = P
+(0 2) 60 GOSUB 200
+(0 3) 70 LET X = Q
+(0 2) 80 GOSUB 200
+(0 3) 90 LET X = R
+(0 2) 95 GOSUB 200
+(0 5) 100 LET X = P * SGN(Q + R)
+(0 2) 110 GOSUB 200
+(0 2) 120 PRINT
+(0 1) 130 NEXT R
+(0 1) 140 NEXT Q
+(0 1) 150 NEXT P
+(0 1) 160 STOP
+(0 0) 170 
+(1 4) 200 IF X > 0 THEN 250
+(0 2) 210 PRINT "FALSE",
+(0 1) 220 RETURN
+(0 2) 250 PRINT "TRUE",
+(0 1) 260 RETURN
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

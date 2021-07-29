@@ -19,6 +19,59 @@ Halstead complexity:
  intelligence: 52.179
  time: 13.592
 
+(0 1) 10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN
+(0 1) 20 REM THE LIMITS A AND B OF F(X)
+(0 3) 30 LET C1 = .238619
+(0 3) 40 LET C2 = C1
+(0 3) 50 LET C3 = .661209
+(0 3) 60 LET C4 = C3
+(0 3) 70 LET C5 = .932470
+(0 3) 80 LET C6 = C5
+(0 3) 90 LET D1 = .467914
+(0 3) 100 LET D2 = .360762
+(0 3) 110 LET D3 = .171324
+(0 3) 120 LET J = 0
+(0 2) 130 PRINT "ENTER ENDPOINTS A,B"
+(2 3) 140 INPUT A, B
+(0 4) 150 LET Y = B - A
+(0 4) 160 LET Z = B + A
+(0 6) 170 LET X = ((C1 * Y) + Z) / 2
+(0 2) 180 GOSUB 500
+(0 4) 190 LET N = D1 * Q
+(0 4) 200 LET J = J + N
+(0 6) 210 LET X = ((C2 * Y) + Z) / 2
+(0 2) 220 GOSUB 500
+(0 4) 230 LET N = D1 * Q
+(0 4) 240 LET J = J + N
+(0 6) 250 LET X = ((C3 * Y) + Z) / 2
+(0 2) 260 GOSUB 500
+(0 4) 270 LET N = D2 * Q
+(0 4) 280 LET J = J + N
+(0 6) 290 LET X = ((C4 * Y) + Z) / 2
+(0 2) 300 GOSUB 500
+(0 4) 310 LET N = D2 * Q
+(0 4) 320 LET J = J + N
+(0 6) 330 LET X = ((C5 * Y) + Z) / 2
+(0 2) 340 GOSUB 500
+(0 4) 350 LET N = D3 * Q
+(0 4) 360 LET J = J + N
+(0 6) 370 LET X = ((C6 * Y) + Z) / 2
+(0 2) 380 GOSUB 500
+(0 4) 390 LET N = D3 * Y
+(0 4) 400 LET J = J + N
+(0 5) 410 LET G = (Y / 2) * J
+(0 3) 420 PRINT "INTEGRAL = "; G
+(0 2) 430 PRINT
+(0 2) 440 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 450 INPUT L
+(1 4) 460 IF L = 1 THEN 480
+(0 1) 470 STOP
+(0 2) 480 PRINT
+(0 3) 490 GOTO 120
+(0 16) 500 LET Q = 13 * X ^ 2 - 6 * X ^ 2 + SIN(X) + 1 / X
+(0 1) 510 RETURN
+(0 1) 520 END
+
 Unreachable code:
 
 All executable lines are reachable.

@@ -19,6 +19,15 @@ Halstead complexity:
  intelligence: 15.351
  time: 0.032
 
+(0 1) 10 REM This is a test
+(0 3) 20 LET A = 10
+(0 2) 30 GOSUB 100
+(0 3) 40 PRINT A, B
+(0 1) 90 STOP
+(0 3) 100 LET B = 20
+(0 1) 110 RETURN
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

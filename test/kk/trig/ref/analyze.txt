@@ -19,6 +19,16 @@ Halstead complexity:
  intelligence: 14.062
  time: 2.243
 
+(0 3) 10 LET P = 3.14159625
+(0 4) 20 DEF FND(X) = X * P / 180
+(0 3) 30 DEF FNS(X) = SIN(FND(X))
+(0 3) 40 DEF FNC(X) = COS(FND(X))
+(0 4) 50 PRINT "DEGREES", "SINE", "COSINE"
+(1 4) 60 FOR X = 0 TO 90 STEP 10
+(0 8) 70 PRINT X, FNS(X), FNC(X)
+(0 1) 80 NEXT X
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

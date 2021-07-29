@@ -19,6 +19,15 @@ Halstead complexity:
  intelligence: 40.285
  time: 0.104
 
+(0 1) 10 REM This is a test
+(0 2) 20 DATA 10, 20, 30
+(3 4) 30 READ A, B, C
+(0 4) 40 PRINT A; B; C
+(0 6) 42 PRINT A;; B;; C
+(0 5) 44 PRINT; A; B; C
+(0 1) 90 STOP
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

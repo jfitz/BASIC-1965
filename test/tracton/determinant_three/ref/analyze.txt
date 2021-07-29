@@ -19,6 +19,40 @@ Halstead complexity:
  intelligence: 90.623
  time: 10.960
 
+(0 1) 10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+(0 2) 20 PRINT "ENTER 3 X 3 MATRIX"
+(9 10) 30 INPUT A, B, C, D, E, F, G, H, I
+(0 1) 40 REM COMPUTE DETERMINANT OF 3X3
+(0 13) 50 LET M = (A * E * I) + (B * F * G) + (C * H * D)
+(0 15) 60 LET N = M - (C * E * G) - (F * H * A) - (I * D * B)
+(0 1) 70 REM COMPUTE INVERSE
+(0 8) 80 LET O = ((E * I) - (H * F)) / N
+(0 8) 90 LET P = ((G * F) - (D * I)) / N
+(0 8) 100 LET Q = ((D * H) - (G * E)) / N
+(0 8) 110 LET R = ((H * C) - (B * I)) / N
+(0 8) 120 LET S = ((A * I) - (G * C)) / N
+(0 8) 130 LET T = ((G * B) - (A * H)) / N
+(0 8) 140 LET U = ((B * F) - (E * C)) / N
+(0 8) 150 LET V = ((D * C) - (A * F)) / N
+(0 8) 160 LET W = ((A * E) - (D * B)) / N
+(0 2) 170 PRINT "ORIGINAL MATRIX"
+(0 4) 180 PRINT A, B, C
+(0 4) 190 PRINT D, E, F
+(0 4) 200 PRINT G, H, I
+(0 2) 210 PRINT
+(0 3) 220 PRINT "DETERMINANT = "; N
+(0 2) 230 PRINT
+(0 2) 240 PRINT "INVERSE OF MATRIX"
+(0 4) 250 PRINT O, R, U
+(0 4) 260 PRINT P, S, V
+(0 4) 270 PRINT Q, T, W
+(0 2) 280 PRINT
+(0 2) 290 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 300 INPUT L
+(1 5) 310 IF L = 1 THEN 20
+(0 1) 320 STOP
+(0 1) 330 END
+
 Unreachable code:
 
 All executable lines are reachable.

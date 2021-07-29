@@ -19,6 +19,37 @@ Halstead complexity:
  intelligence: 28.523
  time: 2.853
 
+(0 1) 10 REM THIS PROGRAM COMPUTES THE FIRST DERIVATIVE
+(0 1) 20 REM OF A FUNCTION ENTERED BY THE USER
+(0 2) 30 PRINT "VALUE OF X = ";
+(1 2) 40 INPUT X
+(0 3) 50 LET Y = X
+(0 5) 60 LET Z = (X * (1E-04)) / 2
+(0 4) 70 LET W = X + Z
+(0 4) 80 LET V = X - Z
+(0 3) 90 LET X = W
+(0 2) 100 GOSUB 280
+(0 3) 110 LET A = P
+(0 3) 120 LET X = V
+(0 2) 130 GOSUB 280
+(0 3) 140 LET B = P
+(0 3) 150 LET X = Y
+(0 2) 160 GOSUB 280
+(0 3) 170 LET C = P
+(0 7) 180 LET F = (A - B) / (2 * Z)
+(0 5) 190 PRINT "IF X = "; Y, "THEN F(X) = "; C
+(0 3) 200 PRINT "AND F'(X) = "; F
+(0 2) 210 PRINT
+(0 2) 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 230 INPUT L
+(1 4) 240 IF L = 1 THEN 260
+(0 1) 250 STOP
+(0 2) 260 PRINT
+(0 3) 270 GOTO 40
+(0 4) 280 LET P = X ^ 2
+(0 1) 290 RETURN
+(0 1) 300 END
+
 Unreachable code:
 
 All executable lines are reachable.

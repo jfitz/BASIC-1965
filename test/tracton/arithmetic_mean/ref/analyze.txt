@@ -19,6 +19,19 @@ Halstead complexity:
  intelligence: 26.145
  time: 0.325
 
+(0 1) 10 REM THIS PROGRAM COMPUTES THE ARITHMETIC
+(0 1) 20 REM MEAN
+(0 3) 30 LET X = 0
+(0 3) 40 LET N = 0
+(0 2) 50 PRINT "ENTER SAMPLE";
+(1 2) 60 INPUT W
+(0 4) 70 LET N = N + 1
+(0 4) 80 LET X = X + W
+(0 4) 90 LET A = X / N
+(0 7) 100 PRINT "N = "; N, "SAMPLE ="; W, "CURRENT MEAN = "; A
+(0 3) 110 GOTO 50
+(0 1) 120 END
+
 Unreachable code:
 
 All executable lines are reachable.

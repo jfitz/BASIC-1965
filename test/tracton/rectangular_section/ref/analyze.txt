@@ -19,6 +19,27 @@ Halstead complexity:
  intelligence: 30.679
  time: 1.263
 
+(0 1) 10 REM THIS PROGRAM COMPUTES THE VARIOUS PARAMETERS
+(0 1) 20 REM CONNECTED WITH A RECTANGULAR SECTION
+(0 2) 30 PRINT "BASE = ";
+(1 2) 40 INPUT B
+(0 2) 50 PRINT "HEIGHT = ";
+(1 2) 60 INPUT H
+(0 7) 70 LET I = (B * (H ^ 3)) / 12
+(0 11) 80 LET J = (B * H * (B ^ 2 + H ^ 2)) / 12
+(0 4) 90 LET A = B * H
+(0 3) 100 PRINT "MOMENT OF INERTIA = "; I
+(0 3) 110 PRINT "POLAR MOMENT OF INERTIA = "; J
+(0 3) 120 PRINT "AREA OF SECTION = "; A
+(0 2) 130 PRINT
+(0 2) 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+(1 2) 150 INPUT L
+(1 4) 160 IF L = 1 THEN 180
+(0 1) 170 STOP
+(0 2) 180 PRINT
+(0 3) 190 GOTO 30
+(0 1) 200 END
+
 Unreachable code:
 
 All executable lines are reachable.

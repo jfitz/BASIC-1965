@@ -19,6 +19,21 @@ Halstead complexity:
  intelligence: 15.180
  time: 0.674
 
+(0 3) 100 LET X = 5
+(0 2) 110 GOSUB 500
+(0 3) 120 LET X = 7
+(0 2) 130 GOSUB 500
+(0 3) 140 LET X = 11
+(0 2) 150 GOSUB 500
+(0 1) 160 STOP
+(0 0) 170 
+(0 4) 500 LET Y = 3 * X
+(0 5) 510 LET Z = 1.2 * EXP(Y)
+(0 4) 520 LET Y = SQR(Z + 2)
+(0 3) 530 PRINT X; Y
+(0 1) 540 RETURN
+(0 1) 550 END
+
 Unreachable code:
 
 All executable lines are reachable.

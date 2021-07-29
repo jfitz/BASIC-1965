@@ -1659,6 +1659,7 @@ class Variable < AbstractElement
 
       interpreter.check_subscripts(@variable_name, @subscripts, @wrapped_subscripts)
     end
+
     self
   end
 

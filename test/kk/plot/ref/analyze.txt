@@ -19,6 +19,37 @@ Halstead complexity:
  intelligence: 32.711
  time: 6.600
 
+(0 3) 100 DEF FNF(X) = SIN(X)
+(3 4) 110 READ A, B, S
+(3 4) 120 READ C, D, N
+(0 5) 130 LET H = (D - C) / N
+(1 4) 140 IF N <= 50 THEN 170
+(0 2) 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
+(0 1) 160 STOP
+(0 3) 170 DEF FNR(X) = INT(X + 0.5)
+(0 7) 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
+(0 2) 190 PRINT
+(0 2) 200 PRINT "'";
+(1 4) 210 FOR I = 1 TO N - 1
+(0 2) 220 PRINT "-";
+(0 1) 230 NEXT I
+(0 2) 240 PRINT "'"
+(1 4) 250 FOR X = A TO B STEP S
+(0 5) 270 LET Y = FNF(X)
+(0 5) 280 LET Y1 = FNR((Y - C) / H)
+(1 3) 290 FOR I = 0 TO N
+(1 4) 292 IF I = Y1 THEN 302
+(0 2) 300 PRINT " ";
+(0 2) 301 GOTO 310
+(0 2) 302 PRINT "*";
+(0 1) 310 NEXT I
+(0 2) 315 PRINT "   ";
+(0 2) 320 PRINT X
+(0 1) 330 NEXT X
+(0 2) 340 DATA 0, 6.401, 0.2
+(0 3) 350 DATA -1, 1, 40
+(0 1) 360 END
+
 Unreachable code:
 
 All executable lines are reachable.

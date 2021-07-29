@@ -19,6 +19,13 @@ Halstead complexity:
  intelligence: 23.212
  time: 0.263
 
+(0 1) 10 REM TEST MAT PLOT
+(0 4) 20 MAT LET A = RND2(6, 30)
+(0 4) 22 MAT LET B = RND2(6, 30, 20)
+(0 4) 24 MAT LET C = RND2(6, 30, 1000)
+(5 4) 30 MAT PLOT A, B, C
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

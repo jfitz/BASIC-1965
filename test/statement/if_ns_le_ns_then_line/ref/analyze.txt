@@ -19,6 +19,16 @@ Halstead complexity:
  intelligence: 23.831
  time: 0.164
 
+(0 2) 10 DATA 10, 20, 30
+(3 4) 20 READ A, B, C
+(0 4) 30 PRINT A, B, C
+(1 4) 40 IF A <= 10 THEN 70
+(0 2) 50 PRINT A
+(0 2) 60 GOTO 90
+(0 2) 70 PRINT B
+(0 1) 90 STOP
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

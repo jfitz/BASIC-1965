@@ -19,6 +19,17 @@ Halstead complexity:
  intelligence: 11.032
  time: 0.610
 
+(2 3) 10 READ N, I
+(0 3) 20 LET B = 1
+(1 3) 30 FOR K = 1 TO I
+(0 8) 40 LET B = B * (N - K + 1) / K
+(0 1) 50 NEXT K
+(0 2) 60 PRINT B
+(0 1) 70 STOP
+(0 2) 90 DATA 10, 4
+(0 1) 98 RETURN
+(0 1) 100 END
+
 Unreachable code:
 
 98: RETURN

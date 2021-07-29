@@ -19,6 +19,29 @@ Halstead complexity:
  intelligence: 18.712
  time: 6.255
 
+(0 2) 10 DIM N(1000)
+(0 2) 11 DIM P(350)
+(1 3) 20 FOR I = 1 TO 1000
+(0 3) 21 LET N(I) = 0
+(0 1) 22 NEXT I
+(0 3) 25 LET P(0) = 2
+(0 3) 26 LET K = 0
+(1 4) 30 FOR P = 3 TO 2000 STEP 2
+(0 5) 35 LET X = (P - 1) / 2
+(1 4) 40 IF N(X) < 0 THEN 90
+(0 4) 50 LET K = K + 1
+(0 3) 55 LET P(K) = P
+(1 5) 56 IF P > SQR(2000) THEN 90
+(1 5) 60 FOR I = P TO 2000 STEP 2 * P
+(0 5) 65 LET X = (I - 1) / 2
+(0 4) 70 LET N(X) = -1
+(0 1) 80 NEXT I
+(0 1) 90 NEXT P
+(1 3) 100 FOR I = 0 TO K
+(0 2) 110 PRINT P(I);
+(0 1) 120 NEXT I
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

@@ -19,6 +19,20 @@ Halstead complexity:
  intelligence: 36.039
  time: 3.047
 
+(0 1) 100 REM ANGLE-SIDE-ANGLE
+(0 3) 110 LET P = 3.14159625
+(0 4) 120 DEF FND(X) = X * P / 180
+(0 3) 130 DEF FNS(X) = SIN(FND(X))
+(0 6) 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
+(3 4) 150 READ A, X, B
+(0 5) 160 LET C = 180 - A - B
+(0 9) 170 LET Y = X * FNS(B) / FNS(C)
+(0 9) 180 LET Z = X * FNS(A) / FNS(C)
+(0 6) 190 PRINT A, X, B, Y, Z
+(0 3) 200 GOTO 150
+(0 2) 210 DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
+(0 1) 220 END
+
 Unreachable code:
 
 All executable lines are reachable.

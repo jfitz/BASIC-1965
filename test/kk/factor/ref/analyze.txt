@@ -19,6 +19,43 @@ Halstead complexity:
  intelligence: 17.406
  time: 5.328
 
+(0 2) 100 PRINT "NUMBER TO BE FACTORED:";
+(1 2) 110 INPUT N
+(0 2) 120 PRINT
+(1 4) 130 IF N = 0 THEN 999
+(1 4) 140 IF N = 2 THEN 250
+(0 3) 150 LET Z = 0
+(0 0) 160 
+(0 3) 170 LET F = 2
+(0 2) 180 GOSUB 300
+(1 6) 190 FOR F = 3 TO SQR(N) + 1 STEP 2
+(0 2) 200 GOSUB 300
+(0 1) 210 NEXT F
+(1 4) 220 IF Z = 0 THEN 250
+(0 2) 230 PRINT N;
+(0 2) 240 GOTO 500
+(0 3) 250 PRINT N; "IS PRIME."
+(0 2) 260 GOTO 500
+(0 0) 270 
+(0 1) 300 REM TESTS F AS A FACTOR
+(1 6) 310 IF N / F <> INT(N / F) THEN 410
+(1 4) 330 IF Z > 0 THEN 370
+(0 3) 340 PRINT N; "HAS THE FACTORS:"
+(0 2) 350 PRINT "     ";
+(0 3) 360 LET Z = 1
+(0 2) 370 PRINT F;
+(0 4) 380 LET N = N / F
+(1 4) 390 IF N = 1 THEN 500
+(0 3) 400 GOTO 310
+(0 1) 410 RETURN
+(0 0) 420 
+(0 1) 500 REM ALL DONE
+(0 2) 510 PRINT
+(0 2) 520 PRINT
+(0 2) 530 PRINT
+(0 3) 540 GOTO 100
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

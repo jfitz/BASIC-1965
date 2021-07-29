@@ -19,6 +19,25 @@ Halstead complexity:
  intelligence: 19.723
  time: 1.248
 
+(0 1) 10 REM TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
+(0 3) 20 LET N = 1000
+(0 2) 30 DIM L(N)
+(0 1) 100 REM INITIALIZE LOCKERS TO OPEN
+(0 4) 110 PRINT "INITIALIZING"; N; " LOCKERS..."
+(1 3) 130 FOR I = 1 TO N
+(1 4) 140 FOR J = I TO N STEP I
+(0 4) 150 LET L(J) = 1 - L(J)
+(0 1) 160 NEXT J
+(0 1) 180 NEXT I
+(0 1) 200 REM PRINT LOCKER STATES
+(0 2) 310 PRINT "OPEN LOCKERS:";
+(1 3) 320 FOR I = 1 TO N
+(1 4) 330 IF L(I) = 0 THEN 350
+(0 2) 340 PRINT I;
+(0 1) 350 NEXT I
+(0 2) 360 PRINT
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

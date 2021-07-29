@@ -19,6 +19,24 @@ Halstead complexity:
  intelligence: 87.403
  time: 2.060
 
+(0 3) 100 DIM A(6, 6), B(2, 3)
+(2 3) 120 MAT READ A, B
+(0 2) 130 PRINT "EXAMPLE 1"
+(0 2) 140 PRINT
+(0 3) 150 MAT PRINT A, B
+(2 3) 160 READ P, Q
+(1 2) 170 MAT READ A(P, Q)
+(0 2) 180 PRINT "EXAMPLE 2"
+(0 2) 190 PRINT
+(0 2) 200 MAT PRINT A
+(0 2) 900 DATA 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1, 6, 5, 4, 3, 2, 1
+(0 2) 901 DATA 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5
+(0 2) 910 DATA 1, 2, 3, 4, 5, 6
+(0 2) 920 DATA 3, 4
+(0 2) 930 DATA 1, 2, 3, 4, 5, 6
+(0 2) 940 DATA 7, 8, 9, 10, 11, 12
+(0 1) 999 END
+
 Unreachable code:
 
 All executable lines are reachable.

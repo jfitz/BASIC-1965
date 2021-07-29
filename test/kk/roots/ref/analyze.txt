@@ -19,6 +19,16 @@ Halstead complexity:
  intelligence: 18.298
  time: 0.369
 
+(0 5) 10 PRINT "NUMBER", "SQUARE ROOT", "CUBE ROOT", "FOURTH ROOT"
+(1 3) 20 FOR N = 1 TO 10
+(0 2) 30 PRINT N,
+(1 3) 40 FOR R = 2 TO 4
+(0 5) 50 PRINT N ^ (1 / R),
+(0 1) 60 NEXT R
+(0 2) 70 PRINT
+(0 1) 80 NEXT N
+(0 1) 99 END
+
 Unreachable code:
 
 All executable lines are reachable.

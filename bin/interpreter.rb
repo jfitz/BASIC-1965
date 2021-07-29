@@ -390,7 +390,7 @@ class Interpreter
     when 'DELETE'
       @program.enblank(args)
     when 'PROFILE'
-      @program.profile(args)
+      @program.profile(args, false)
     when 'GOTO'
       statement = GotoStatement.new(nil, [keyword], [args])
       if statement.errors.empty?
