@@ -612,7 +612,7 @@ class BASICArray < AbstractCompound
     'ARRAY: ' + @values.to_s
   end
 
-  def plot(printer, _)
+  def plot(printer)
     case @dimensions.size
     when 0
       raise BASICSyntaxError, 'Need dimension in array'
@@ -623,7 +623,7 @@ class BASICArray < AbstractCompound
     end
   end
 
-  def print(printer, _)
+  def print(printer)
     case @dimensions.size
     when 0
       raise BASICSyntaxError, 'Need dimension in array'
@@ -634,7 +634,7 @@ class BASICArray < AbstractCompound
     end
   end
 
-  def write(printer, _)
+  def write(printer)
     case @dimensions.size
     when 0
       raise BASICSyntaxError, 'Need dimension in array'
@@ -822,7 +822,7 @@ class Matrix < AbstractCompound
     'MATRIX: ' + @values.to_s
   end
 
-  def plot(printer, _)
+  def plot(printer)
     case @dimensions.size
     when 0
       raise BASICSyntaxError, 'Need dimension in matrix'
@@ -835,7 +835,7 @@ class Matrix < AbstractCompound
     end
   end
 
-  def print(printer, _)
+  def print(printer)
     case @dimensions.size
     when 0
       raise BASICSyntaxError, 'Need dimensions in matrix'
@@ -848,7 +848,7 @@ class Matrix < AbstractCompound
     end
   end
 
-  def write(printer, _)
+  def write(printer)
     case @dimensions.size
     when 0
       raise BASICSyntaxError, 'Need dimensions in matrix'
@@ -2098,7 +2098,7 @@ class ValueExpressionSet < AbstractExpressionSet
     return if compounds.empty?
 
     compound = compounds[0]
-    compound.plot(printer, interpreter)
+    compound.plot(printer)
   end
 
   def compound_print(printer, interpreter)
@@ -2107,7 +2107,7 @@ class ValueExpressionSet < AbstractExpressionSet
     return if compounds.empty?
 
     compound = compounds[0]
-    compound.print(printer, interpreter)
+    compound.print(printer)
   end
 
   def compound_write(printer, interpreter)
@@ -2116,7 +2116,7 @@ class ValueExpressionSet < AbstractExpressionSet
     return if compounds.empty?
 
     compound = compounds[0]
-    compound.write(printer, interpreter)
+    compound.write(printer)
   end
 end
 
