@@ -2074,49 +2074,31 @@ class ValueExpressionSet < AbstractExpressionSet
     last_element.operator? && last_element.pound?
   end
 
+  def plot(printer, interpreter)
+    values = evaluate(interpreter)
+
+    return if values.empty?
+
+    value = values[0]
+    value.plot(printer)
+  end
+
   def print(printer, interpreter)
-    numeric_constants = evaluate(interpreter)
+    values = evaluate(interpreter)
 
-    return if numeric_constants.empty?
+    return if values.empty?
 
-    numeric_constant = numeric_constants[0]
-    numeric_constant.print(printer)
+    value = values[0]
+    value.print(printer)
   end
 
   def write(printer, interpreter)
-    numeric_constants = evaluate(interpreter)
+    values = evaluate(interpreter)
 
-    return if numeric_constants.empty?
+    return if values.empty?
 
-    numeric_constant = numeric_constants[0]
-    numeric_constant.write(printer)
-  end
-
-  def compound_plot(printer, interpreter)
-    compounds = evaluate(interpreter)
-
-    return if compounds.empty?
-
-    compound = compounds[0]
-    compound.plot(printer)
-  end
-
-  def compound_print(printer, interpreter)
-    compounds = evaluate(interpreter)
-
-    return if compounds.empty?
-
-    compound = compounds[0]
-    compound.print(printer)
-  end
-
-  def compound_write(printer, interpreter)
-    compounds = evaluate(interpreter)
-
-    return if compounds.empty?
-
-    compound = compounds[0]
-    compound.write(printer)
+    value = values[0]
+    value.write(printer)
   end
 end
 
