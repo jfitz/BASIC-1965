@@ -101,6 +101,34 @@ class Line
     @comment = comment
   end
 
+  def uncache
+    @statement.uncache
+  end
+
+  def reset_profile_metrics
+    @statement.reset_profile_metrics
+  end
+
+  def number_valid_statements
+    @statement.valid ? 1 : 0
+  end
+
+  def number_exec_statements
+    @statement.executable ? 1 : 0
+  end
+
+  def number_comments
+    @statement.comment ? 1 : 0
+  end
+
+  def comprehension_effort
+    @statement.comprehension_effort
+  end
+
+  def mccabe_complexity
+    @statement.mccabe
+  end
+
   def list
     @text
   end
@@ -117,6 +145,10 @@ class Line
     end
 
     text
+  end
+
+  def analyze_pretty(number)
+    @statement.analyze_pretty(number)
   end
 
   def parse
@@ -318,9 +350,7 @@ class Program
   def uncache
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-
-      statement.uncache
+      line.uncache
     end
   end
 
@@ -374,13 +404,9 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
 
-      statement = line.statement
-
-      mccabe = statement.mccabe
-      effort = statement.comprehension_effort
-
-      text = "(#{mccabe} #{effort}) #{line_number} " + statement.pretty
-      texts << text
+      number = line_number.to_s
+      
+      texts += line.analyze_pretty(number)
     end
 
     texts << ''
@@ -397,8 +423,7 @@ class Program
   def reset_profile_metrics
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      statement.reset_profile_metrics
+      line.reset_profile_metrics
     end
   end
 
@@ -417,8 +442,7 @@ class Program
     num = 0
 
     @lines.each do |_, line|
-      statement = line.statement
-      num += 1 if statement.valid
+      num += line.number_valid_statements
     end
 
     num
@@ -428,8 +452,7 @@ class Program
     num = 0
 
     @lines.each do |_, line|
-      statement = line.statement
-      num += 1 if statement.executable
+      num += line.number_exec_statements
     end
 
     num
@@ -439,8 +462,7 @@ class Program
     num = 0
 
     @lines.each do |_, line|
-      statement = line.statement
-      num += 1 if statement.comment
+      num += line.number_comments
     end
 
     num
@@ -450,8 +472,7 @@ class Program
     num = 0
 
     @lines.each do |_, line|
-      statement = line.statement
-      num += statement.comprehension_effort
+      num += line.comprehension_effort
     end
 
     num
@@ -461,8 +482,7 @@ class Program
     num = 1
 
     @lines.each do |_, line|
-      statement = line.statement
-      num += statement.mccabe
+      num += line.mccabe_complexity
     end
 
     num

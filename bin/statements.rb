@@ -189,8 +189,8 @@ class AbstractStatement
   attr_reader :comment
   attr_reader :linenums
   attr_reader :autonext
-  attr_reader :comprehension_effort
   attr_reader :mccabe
+  attr_reader :comprehension_effort
 
   def self.extra_keywords
     []
@@ -226,6 +226,16 @@ class AbstractStatement
 
   def pretty
     AbstractToken.pretty_tokens(@keywords, @tokens)
+  end
+
+  def analyze_pretty(number)
+    texts = []
+
+    texts << "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
+
+    number = ' ' * number.size
+
+    texts
   end
 
   def dump
