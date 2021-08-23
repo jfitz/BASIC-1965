@@ -26,6 +26,15 @@ Halstead complexity:
  intelligence: 15.596
  time: 0.026
 
+(0 1) 10 REM TEST OF ANALYZE COMMAND
+(0 2) 20 PRINT "START"
+(0 3) 30 LET B = 10
+(0 2) 40 GOTO 90
+(0 2) 50 PRINT B
+(0 4) 60 LET A = B / 10
+(0 1) 90 STOP
+(0 1) 99 END
+
 Unreachable code:
 
 50: PRINT B

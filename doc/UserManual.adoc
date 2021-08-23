@@ -140,6 +140,8 @@ When the BASIC program ends, BASIC-1965 ends.
 |--trace |Print each statement prior to executing it (useful for debugging). Does the same thing as the 'OPTION TRACE TRUE' command in interactive mode, but from the command line.
 |--tty |Print output slowly, emulating the speed of an ASR-33 Teletype. Provides a better experience with some programs (often games) in which slow output lets your anticipation build. The fast output of modern computers displays information quickly, and TTY mode lets you read each line as it is "printed".
 |--tty-lf |Similar to --tty but delays only the newline characters, not each individual character. Useful with --trace when debugging.
+|--warn-list-width WIDTH |Specifies a width for source lines as shown in LIST command. Zero disables these warnings.
+|--warn-pretty-width WIDTH |Specifies a width for source lines as shown in PRETTY command. Zero disables these warnings.
 |--wrap |Wraps subscripts out of range back into range.
 |--zone-width width |Specifies a zone width. PRINT statements will position output separated by commas in zones. Default is 16.
 |==========
@@ -446,6 +448,8 @@ The OPTION command overrides the command-line setting.
 |REQUIRE_INITIALIZED |NLP |TRUE or FALSE |FALSE |Variables must be initialized before use
 |TIMING |NLP |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
 |TRACE |NLP |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
+|WARN_LIST_WIDTH |N |numeric 0 to 132 |72 |Sets the limit for program lines as shown by LIST; 0 disables warnings
+|WARN_PRETTY_WIDTH |N |numeric 0 to 132 |72 |Sets the limit for program lines as shown by PRETTY; 0 disables warnings
 |WRAP |NLP |TRUE or FALSE |FALSE |When TRUE, subscripts beyond lower or upper bounds are wrapped
 |ZONE_WIDTH |NLP |numeric |16 |Width of print zones for comma separators
 

@@ -510,7 +510,8 @@ def make_command_tokenbuilders
     NEWLINE_SPEED
     PRECISION PRINT_SPEED PRINT_WIDTH PROMPT PROMPTD PROMPT_COUNT PROVENANCE
     QMARK_AFTER_PROMPT RANDOMIZE REQUIRE_INITIALIZED
-    SEMICOLON_ZONE_WIDTH TIMING TRACE WRAP ZONE_WIDTH
+    SEMICOLON_ZONE_WIDTH TIMING TRACE
+    WARN_LIST_WIDTH WARN_PRETTY_WIDTH WRAP ZONE_WIDTH
   ]
   tokenbuilders << ListTokenBuilder.new(keywords, KeywordToken)
 
@@ -618,6 +619,8 @@ OptionParser.new do |opt|
   opt.on('--no-timing') { |o| options[:no_timing] = o }
   opt.on('--tty') { |o| options[:tty] = o }
   opt.on('--tty-lf') { |o| options[:tty_lf] = o }
+  opt.on('--warn-list-width WIDTH') { |o| options[:warn_list_width] = o }
+  opt.on('--warn-pretty-width WIDTH') { |o| options[:warn_pretty_width] = o }
   opt.on('--wrap') { |o| options[:wrap] = o }
   opt.on('--zone-width WIDTH') { |o| options[:zone_width] = o }
 end.parse!
@@ -754,6 +757,15 @@ $options['timing'] =
   Option.new(all_types, boolean, !options.key?(:no_timing))
 
 $options['trace'] = Option.new(all_types, boolean, options.key?(:trace))
+
+warn_list_width = 72
+warn_list_width = options[:warn_list_width].to_i if options.key?(:warn_list_width)
+$options['warn_list_width'] = Option.new(only_new, int132, warn_list_width)
+
+warn_pretty_width = 72
+warn_pretty_width = options[:warn_pretty_width].to_i if options.key?(:warn_pretty_width)
+$options['warn_pretty_width'] = Option.new(only_new, int132, warn_pretty_width)
+
 $options['wrap'] = Option.new(all_types, boolean, options.key?(:wrap))
 
 zone_width = 16
