@@ -20,37 +20,101 @@ Halstead complexity:
  time: 3.860
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE MEAN, STANDARD
+  Origs: 
+  Dests: 20
 (0 1) 20 REM DEVIATION AND STANDARD ERROR FOR GROUPED DATA
+  Origs: 10
+  Dests: 30
 (0 3) 30 LET A = 0
+  Origs: 20, 310
+  Dests: 40
 (0 3) 40 LET B = 0
+  Origs: 30
+  Dests: 50
 (0 3) 50 LET C = 0
+  Origs: 40
+  Dests: 60
 (0 3) 60 LET D = 0
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
+  Origs: 60, 160
+  Dests: 80
 (2 3) 80 INPUT X, F
+  Origs: 70
+  Dests: 90
 (1 4) 90 IF F <= 0 THEN 170
+  Origs: 80
+  Dests: 100, 170
 (0 4) 100 LET A = A + 1
+  Origs: 90
+  Dests: 110
 (0 4) 110 LET B = B + F
+  Origs: 100
+  Dests: 120
 (0 4) 120 LET G = X * F
+  Origs: 110
+  Dests: 130
 (0 4) 130 LET C = C + G
+  Origs: 120
+  Dests: 140
 (0 5) 140 LET E = (X ^ 2) * F
+  Origs: 130
+  Dests: 150
 (0 4) 150 LET D = D + E
+  Origs: 140
+  Dests: 160
 (0 3) 160 GOTO 70
+  Origs: 150
+  Dests: 70
 (0 4) 170 LET H = C / B
+  Origs: 90
+  Dests: 180
 (0 4) 180 LET I = SQR(D - (B * (H ^ 2)))
+  Origs: 170
+  Dests: 190
 (0 5) 190 LET J = I / SQR(B)
+  Origs: 180
+  Dests: 200
 (0 2) 200 PRINT
+  Origs: 190
+  Dests: 210
 (0 3) 210 PRINT "NUMBER OF SAMPLES ENTERED = "; A
+  Origs: 200
+  Dests: 220
 (0 3) 220 PRINT "MEAN = "; H
+  Origs: 210
+  Dests: 230
 (0 3) 230 PRINT "STANDARD DEVIATION = "; I
+  Origs: 220
+  Dests: 240
 (0 3) 240 PRINT "STANDARD ERROR = "; J
+  Origs: 230
+  Dests: 250
 (0 2) 250 PRINT
+  Origs: 240
+  Dests: 260
 (0 2) 260 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 250
+  Dests: 270
 (1 2) 270 INPUT L
+  Origs: 260
+  Dests: 280
 (1 4) 280 IF L = 1 THEN 300
+  Origs: 270
+  Dests: 290, 300
 (0 1) 290 STOP
+  Origs: 280
+  Dests: 
 (0 2) 300 PRINT
+  Origs: 280
+  Dests: 310
 (0 3) 310 GOTO 30
+  Origs: 300
+  Dests: 30
 (0 1) 320 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

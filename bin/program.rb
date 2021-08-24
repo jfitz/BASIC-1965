@@ -409,14 +409,39 @@ class Program
   def analyze_pretty
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
+    gotos = build_destinations
+
+    origins = {}
+
+    gotos.each do |orig, dests|
+      dests.each do |dest|
+        origins[dest] = [] unless origins.key?(dest)
+        origins[dest] << orig
+      end
+    end
+
     texts = []
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
 
+      # pretty-print the line with complexity statistics
       number = line_number.to_s
       
       texts += line.analyze_pretty(number)
+
+      # print origins to this line
+
+      # print destinations from this line
+      statement = line.statement
+      statement_gotos = gotos[line_number]
+      dests = statement_gotos.sort.map(&:to_s).join(', ')
+      statement_origins = origins[line_number]
+      statement_origins = [] if statement_origins.nil?
+      origs = statement_origins.sort.map(&:to_s).join(', ')
+
+      texts << '  Origs: ' + origs
+      texts << '  Dests: ' + dests
     end
 
     texts << ''
@@ -584,22 +609,34 @@ class Program
     ]
   end
 
-  def unreachable_code
+  def build_statement_destinations(line_number, statement)
+    statement_gotos = statement.gotos
+
+    autonext = statement.autonext
+
+    if autonext
+      next_line_number = find_next_line_number(line_number)
+      statement_gotos << next_line_number unless next_line_number.nil?
+    end
+
+    statement_gotos
+  end
+
+  def build_destinations
     # build list of "gotos"
     gotos = {}
     @lines.keys.each do |line_number|
       statement = @lines[line_number].statement
-      statement_gotos = statement.gotos
-
-      autonext = statement.autonext
-
-      if autonext
-        next_line_number = find_next_line_number(line_number)
-        statement_gotos << next_line_number unless next_line_number.nil?
-      end
+      statement_gotos = build_statement_destinations(line_number, statement)
 
       gotos[line_number] = statement_gotos
     end
+
+    gotos
+  end
+
+  def unreachable_code
+    gotos = build_destinations
 
     # assume statements are dead until connected to a live statement
     reachable = {}

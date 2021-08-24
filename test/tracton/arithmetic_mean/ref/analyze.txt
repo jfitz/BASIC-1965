@@ -20,17 +20,41 @@ Halstead complexity:
  time: 0.325
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE ARITHMETIC
+  Origs: 
+  Dests: 20
 (0 1) 20 REM MEAN
+  Origs: 10
+  Dests: 30
 (0 3) 30 LET X = 0
+  Origs: 20
+  Dests: 40
 (0 3) 40 LET N = 0
+  Origs: 30
+  Dests: 50
 (0 2) 50 PRINT "ENTER SAMPLE";
+  Origs: 40, 110
+  Dests: 60
 (1 2) 60 INPUT W
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET N = N + 1
+  Origs: 60
+  Dests: 80
 (0 4) 80 LET X = X + W
+  Origs: 70
+  Dests: 90
 (0 4) 90 LET A = X / N
+  Origs: 80
+  Dests: 100
 (0 7) 100 PRINT "N = "; N, "SAMPLE ="; W, "CURRENT MEAN = "; A
+  Origs: 90
+  Dests: 110
 (0 3) 110 GOTO 50
+  Origs: 100
+  Dests: 50
 (0 1) 120 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

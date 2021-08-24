@@ -20,22 +20,56 @@ Halstead complexity:
  time: 1.872
 
 (0 2) 5 PRINT
+  Origs: 96, 120
+  Dests: 10
 (0 2) 10 PRINT "A, R, Y, T";
+  Origs: 5
+  Dests: 20
 (4 5) 20 INPUT A, R, Y, T
+  Origs: 10
+  Dests: 26
 (1 4) 26 IF T = 999 THEN 999
+  Origs: 20
+  Dests: 30, 999
 (1 4) 30 IF A <= 0 THEN 100
+  Origs: 26
+  Dests: 40, 100
 (1 4) 40 IF R <= 0 THEN 100
+  Origs: 30
+  Dests: 50, 100
 (1 4) 50 IF Y <= 0 THEN 100
+  Origs: 40
+  Dests: 60, 100
 (1 4) 60 IF T <= 0 THEN 100
+  Origs: 50
+  Dests: 70, 100
 (0 4) 70 LET N = Y * T
+  Origs: 60
+  Dests: 80
 (0 5) 80 LET R1 = R / 100 / T
+  Origs: 70
+  Dests: 90
 (0 7) 90 LET B = A * (1 + R1) ^ N
+  Origs: 80
+  Dests: 95
 (0 3) 95 PRINT "FINAL AMOUNT = $" B
+  Origs: 90
+  Dests: 96
 (0 3) 96 GOTO 5
+  Origs: 95
+  Dests: 5
 (0 1) 100 REM ERROR ROUTINE
+  Origs: 30, 40, 50, 60
+  Dests: 110
 (0 2) 110 PRINT "INCORRECT DATA. PLEASE RETYPE."
+  Origs: 100
+  Dests: 120
 (0 3) 120 GOTO 5
+  Origs: 110
+  Dests: 5
 (0 1) 999 END
+  Origs: 26
+  Dests: 
 
 Unreachable code:
 

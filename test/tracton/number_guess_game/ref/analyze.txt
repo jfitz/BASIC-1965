@@ -20,37 +20,101 @@ Halstead complexity:
  time: 1.259
 
 (0 1) 10 REM THE COMPUTER CHOOSES A NUMBER FROM
+  Origs: 
+  Dests: 20
 (0 1) 20 REM 1 TO 100 AT RANDOM, THE OBJECT OF
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM THE GAME IS TO GUESS THE CHOSEN
+  Origs: 20
+  Dests: 40
 (0 1) 40 REM NUMBER IN AS FEW GUESSES AS POSSIBLE
+  Origs: 30
+  Dests: 50
 (0 5) 50 LET R = 1 + INT(100 * RND)
+  Origs: 40, 270
+  Dests: 60
 (0 3) 60 LET Y = 0
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "A RANDOM NUMBER HAS BEEN PICKED"
+  Origs: 60
+  Dests: 80
 (0 2) 80 PRINT "TRY GUESSING IT, HINT THE NUMBER"
+  Origs: 70
+  Dests: 90
 (0 2) 90 PRINT "IS FROM 1 TO 100"
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "GOOD LUCK!!!"
+  Origs: 90
+  Dests: 110
 (0 2) 110 PRINT
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT "YOUR GUESS IS = ";
+  Origs: 110, 290, 310
+  Dests: 130
 (1 2) 130 INPUT X
+  Origs: 120
+  Dests: 140
 (0 4) 140 LET Y = Y + 1
+  Origs: 130
+  Dests: 150
 (1 4) 150 IF X = R THEN 180
+  Origs: 140
+  Dests: 160, 180
 (1 4) 160 IF X > R THEN 280
+  Origs: 150
+  Dests: 170, 280
 (0 2) 170 GOTO 300
+  Origs: 160
+  Dests: 300
 (0 2) 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
+  Origs: 150
+  Dests: 190
 (0 3) 190 PRINT "YOUR NUMBER OF TRIES WERE"; Y
+  Origs: 180
+  Dests: 200
 (0 2) 200 PRINT
+  Origs: 190
+  Dests: 210
 (0 2) 210 PRINT "IF YOU WANT TO TRY AGAIN, TYPE 1"
+  Origs: 200
+  Dests: 220
 (0 2) 220 PRINT "IF NOT TYPE 0"
+  Origs: 210
+  Dests: 230
 (1 2) 230 INPUT L
+  Origs: 220
+  Dests: 240
 (1 4) 240 IF L = 1 THEN 260
+  Origs: 230
+  Dests: 250, 260
 (0 1) 250 STOP
+  Origs: 240
+  Dests: 
 (0 2) 260 PRINT
+  Origs: 240
+  Dests: 270
 (0 3) 270 GOTO 50
+  Origs: 260
+  Dests: 50
 (0 2) 280 PRINT "TOO HIGH, TRY AGAIN"
+  Origs: 160
+  Dests: 290
 (0 3) 290 GOTO 120
+  Origs: 280
+  Dests: 120
 (0 2) 300 PRINT "TOO LOW, TRY AGAIN"
+  Origs: 170
+  Dests: 310
 (0 3) 310 GOTO 120
+  Origs: 300
+  Dests: 120
 (0 1) 320 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

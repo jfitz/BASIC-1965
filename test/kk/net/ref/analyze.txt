@@ -20,63 +20,179 @@ Halstead complexity:
  time: 37.656
 
 (0 4) 100 DEF FNR(X) = INT(X * 1E3 + .5) / 1E3
+  Origs: 
+  Dests: 110
 (0 5) 110 DIM C(20, 20), U(20, 20), B(20), P(20)
+  Origs: 100
+  Dests: 120
 (2 3) 120 READ N, V
+  Origs: 110
+  Dests: 130
 (0 4) 130 MAT C = ZER(N, N)
+  Origs: 120
+  Dests: 150
 (0 4) 150 MAT B = ZER(N)
+  Origs: 130
+  Dests: 170
 (0 3) 170 LET C(1, 1) = 1
+  Origs: 150
+  Dests: 180
 (0 3) 180 LET C(N, N) = 1
+  Origs: 170
+  Dests: 190
 (0 3) 190 LET B(1) = V
+  Origs: 180
+  Dests: 200
 (0 0) 200 
+  Origs: 190
+  Dests: 210
 (3 4) 210 READ I, J, R
+  Origs: 200, 250
+  Dests: 220
 (1 6) 220 IF I = -1 THEN 270
+  Origs: 210
+  Dests: 230, 270
 (0 4) 230 LET C(I, J) = 1 / R
+  Origs: 220
+  Dests: 240
 (0 4) 240 LET C(J, I) = 1 / R
+  Origs: 230
+  Dests: 250
 (0 3) 250 GOTO 210
+  Origs: 240
+  Dests: 210
 (0 0) 260 
+  Origs: 
+  Dests: 270
 (1 4) 270 FOR I = 2 TO N - 1
+  Origs: 220, 260
+  Dests: 280
 (0 3) 280 LET S = 0
+  Origs: 270
+  Dests: 290
 (1 3) 290 FOR J = 1 TO N
+  Origs: 280
+  Dests: 300
 (0 4) 300 LET S = S + C(I, J)
+  Origs: 290
+  Dests: 310
 (0 1) 310 NEXT J
+  Origs: 300
+  Dests: 320
 (0 4) 320 LET C(I, I) = -S
+  Origs: 310
+  Dests: 330
 (0 3) 330 LET C(1, I) = 0
+  Origs: 320
+  Dests: 340
 (0 3) 340 LET C(N, I) = 0
+  Origs: 330
+  Dests: 350
 (0 1) 350 NEXT I
+  Origs: 340
+  Dests: 360
 (0 0) 360 
+  Origs: 350
+  Dests: 370
 (0 4) 370 MAT U = INV(C)
+  Origs: 360
+  Dests: 380
 (0 4) 380 MAT P = U * B
+  Origs: 370
+  Dests: 390
 (0 0) 390 
+  Origs: 380
+  Dests: 400
 (0 3) 400 PRINT "NODE", "VOLTAGE"
+  Origs: 390
+  Dests: 410
 (0 2) 410 PRINT
+  Origs: 400
+  Dests: 420
 (1 3) 420 FOR I = 1 TO N
+  Origs: 410
+  Dests: 430
 (0 5) 430 PRINT I, FNR(P(I))
+  Origs: 420
+  Dests: 440
 (0 1) 440 NEXT I
+  Origs: 430
+  Dests: 450
 (0 2) 450 PRINT
+  Origs: 440
+  Dests: 460
 (0 2) 460 PRINT
+  Origs: 450
+  Dests: 470
 (0 0) 470 
+  Origs: 460
+  Dests: 480
 (0 2) 480 PRINT "CURRENT FLOW"
+  Origs: 470
+  Dests: 490
 (0 2) 490 PRINT
+  Origs: 480
+  Dests: 500
 (0 3) 500 LET S1 = 0
+  Origs: 490
+  Dests: 510
 (1 4) 510 FOR I = 2 TO N - 1
+  Origs: 500
+  Dests: 520
 (0 3) 520 PRINT "NODE" I
+  Origs: 510
+  Dests: 530
 (1 3) 530 FOR J = 1 TO N
+  Origs: 520
+  Dests: 540
 (0 4) 540 PRINT FNR(C(I, J) * (P(I) - P(J))),
+  Origs: 530
+  Dests: 550
 (0 1) 550 NEXT J
+  Origs: 540
+  Dests: 560
 (0 8) 560 LET S1 = S1 + C(I, N) * (P(I) - P(N))
+  Origs: 550
+  Dests: 570
 (0 2) 570 PRINT
+  Origs: 560
+  Dests: 580
 (0 2) 580 PRINT
+  Origs: 570
+  Dests: 590
 (0 1) 590 NEXT I
+  Origs: 580
+  Dests: 600
 (0 2) 600 PRINT
+  Origs: 590
+  Dests: 610
 (0 0) 610 
+  Origs: 600
+  Dests: 620
 (0 5) 620 PRINT "TOTAL CURRENT = " FNR(S1)
+  Origs: 610
+  Dests: 630
 (0 5) 630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V / S1)
+  Origs: 620
+  Dests: 640
 (0 0) 640 
+  Origs: 630
+  Dests: 650
 (0 2) 650 DATA 7, 24
+  Origs: 640
+  Dests: 660
 (0 2) 660 DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
+  Origs: 650
+  Dests: 670
 (0 2) 670 DATA 4, 5, 60, 5, 6, 60, 6, 7, 40
+  Origs: 660
+  Dests: 680
 (0 3) 680 DATA -1, 0, 0
+  Origs: 670
+  Dests: 690
 (0 1) 690 END
+  Origs: 680
+  Dests: 
 
 Unreachable code:
 

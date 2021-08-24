@@ -20,41 +20,113 @@ Halstead complexity:
  time: 5.328
 
 (0 2) 100 PRINT "NUMBER TO BE FACTORED:";
+  Origs: 540
+  Dests: 110
 (1 2) 110 INPUT N
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT
+  Origs: 110
+  Dests: 130
 (1 4) 130 IF N = 0 THEN 999
+  Origs: 120
+  Dests: 140, 999
 (1 4) 140 IF N = 2 THEN 250
+  Origs: 130
+  Dests: 150, 250
 (0 3) 150 LET Z = 0
+  Origs: 140
+  Dests: 160
 (0 0) 160 
+  Origs: 150
+  Dests: 170
 (0 3) 170 LET F = 2
+  Origs: 160
+  Dests: 180
 (0 2) 180 GOSUB 300
+  Origs: 170
+  Dests: 190, 300
 (1 6) 190 FOR F = 3 TO SQR(N) + 1 STEP 2
+  Origs: 180
+  Dests: 200
 (0 2) 200 GOSUB 300
+  Origs: 190
+  Dests: 210, 300
 (0 1) 210 NEXT F
+  Origs: 200
+  Dests: 220
 (1 4) 220 IF Z = 0 THEN 250
+  Origs: 210
+  Dests: 230, 250
 (0 2) 230 PRINT N;
+  Origs: 220
+  Dests: 240
 (0 2) 240 GOTO 500
+  Origs: 230
+  Dests: 500
 (0 3) 250 PRINT N; "IS PRIME."
+  Origs: 140, 220
+  Dests: 260
 (0 2) 260 GOTO 500
+  Origs: 250
+  Dests: 500
 (0 0) 270 
+  Origs: 
+  Dests: 300
 (0 1) 300 REM TESTS F AS A FACTOR
+  Origs: 180, 200, 270
+  Dests: 310
 (1 6) 310 IF N / F <> INT(N / F) THEN 410
+  Origs: 300, 400
+  Dests: 330, 410
 (1 4) 330 IF Z > 0 THEN 370
+  Origs: 310
+  Dests: 340, 370
 (0 3) 340 PRINT N; "HAS THE FACTORS:"
+  Origs: 330
+  Dests: 350
 (0 2) 350 PRINT "     ";
+  Origs: 340
+  Dests: 360
 (0 3) 360 LET Z = 1
+  Origs: 350
+  Dests: 370
 (0 2) 370 PRINT F;
+  Origs: 330, 360
+  Dests: 380
 (0 4) 380 LET N = N / F
+  Origs: 370
+  Dests: 390
 (1 4) 390 IF N = 1 THEN 500
+  Origs: 380
+  Dests: 400, 500
 (0 3) 400 GOTO 310
+  Origs: 390
+  Dests: 310
 (0 1) 410 RETURN
+  Origs: 310
+  Dests: 
 (0 0) 420 
+  Origs: 
+  Dests: 500
 (0 1) 500 REM ALL DONE
+  Origs: 240, 260, 390, 420
+  Dests: 510
 (0 2) 510 PRINT
+  Origs: 500
+  Dests: 520
 (0 2) 520 PRINT
+  Origs: 510
+  Dests: 530
 (0 2) 530 PRINT
+  Origs: 520
+  Dests: 540
 (0 3) 540 GOTO 100
+  Origs: 530
+  Dests: 100
 (0 1) 999 END
+  Origs: 130
+  Dests: 
 
 Unreachable code:
 

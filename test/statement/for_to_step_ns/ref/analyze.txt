@@ -20,14 +20,32 @@ Halstead complexity:
  time: 0.060
 
 (0 1) 10 REM TEST FOR LOOP
+  Origs: 
+  Dests: 20
 (0 3) 20 LET B = 10
+  Origs: 10
+  Dests: 21
 (0 3) 21 LET E = 1
+  Origs: 20
+  Dests: 22
 (0 4) 22 LET S = -1
+  Origs: 21
+  Dests: 30
 (1 4) 30 FOR I = B TO E STEP S
+  Origs: 22
+  Dests: 40
 (0 2) 40 PRINT I
+  Origs: 30
+  Dests: 50
 (0 1) 50 NEXT I
+  Origs: 40
+  Dests: 90
 (0 1) 90 STOP
+  Origs: 50
+  Dests: 
 (0 1) 99 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

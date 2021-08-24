@@ -20,59 +20,167 @@ Halstead complexity:
  time: 7.518
 
 (0 1) 100 REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
+  Origs: 
+  Dests: 110
 (0 0) 110 
+  Origs: 100
+  Dests: 120
 (0 5) 120 LET N = 20 + INT(80 * RND(X))
+  Origs: 110, 390
+  Dests: 130
 (0 5) 130 LET K = 5 + INT(10 * RND(X))
+  Origs: 120
+  Dests: 140
 (0 2) 140 PRINT "LEGAL MOVES ARE:"
+  Origs: 130
+  Dests: 150
 (0 3) 150 PRINT "TAKE AWAY 1 THROUGH" K
+  Origs: 140
+  Dests: 160
 (0 2) 160 PRINT "LAST PERSON TO MOVE LOSES"
+  Origs: 150
+  Dests: 170
 (0 2) 170 PRINT
+  Origs: 160
+  Dests: 180
 (0 3) 180 PRINT "THE INITIAL NUMBER IS" N
+  Origs: 170
+  Dests: 190
 (0 2) 190 PRINT
+  Origs: 180
+  Dests: 200
 (0 0) 200 
+  Origs: 190
+  Dests: 210
 (0 1) 210 REM OPPONENT'S MOVE
+  Origs: 200, 290, 510
+  Dests: 220
 (0 2) 220 PRINT "YOUR MOVE";
+  Origs: 210
+  Dests: 230
 (1 2) 230 INPUT X
+  Origs: 220
+  Dests: 240
 (1 4) 240 IF X > K THEN 270
+  Origs: 230
+  Dests: 250, 270
 (1 4) 250 IF X < 1 THEN 270
+  Origs: 240
+  Dests: 260, 270
 (1 4) 260 IF X <= N THEN 310
+  Origs: 250
+  Dests: 270, 310
 (0 2) 270 PRINT "ILLEGAL MOVE"
+  Origs: 240, 250, 260
+  Dests: 280
 (0 2) 280 PRINT
+  Origs: 270
+  Dests: 290
 (0 3) 290 GOTO 210
+  Origs: 280
+  Dests: 210
 (0 0) 300 
+  Origs: 
+  Dests: 310
 (0 1) 310 REM TEST FOR WIN
+  Origs: 260, 300
+  Dests: 320
 (0 4) 320 LET N = N - X
+  Origs: 310
+  Dests: 330
 (1 4) 330 IF N > 0 THEN 410
+  Origs: 320
+  Dests: 340, 410
 (0 2) 340 PRINT "I WIN ***"
+  Origs: 330
+  Dests: 350
 (0 2) 350 PRINT
+  Origs: 340, 620
+  Dests: 360
 (0 2) 360 PRINT
+  Origs: 350
+  Dests: 370
 (0 2) 370 PRINT "NEW GAME."
+  Origs: 360
+  Dests: 380
 (0 2) 380 PRINT
+  Origs: 370
+  Dests: 390
 (0 3) 390 GOTO 120
+  Origs: 380
+  Dests: 120
 (0 0) 400 
+  Origs: 
+  Dests: 410
 (0 1) 410 REM MACHINE'S MOVE
+  Origs: 330, 400
+  Dests: 420
 (0 4) 420 LET Q = INT((N - 1) / (K + 1))
+  Origs: 410
+  Dests: 430
 (0 9) 430 LET Y = N - 1 - Q * (K + 1)
+  Origs: 420
+  Dests: 440
 (1 4) 440 IF Y = 0 THEN 530
+  Origs: 430
+  Dests: 450, 530
 (0 4) 450 LET N = N - Y
+  Origs: 440, 560, 580
+  Dests: 460
 (0 3) 460 PRINT "MY MOVE:" Y
+  Origs: 450
+  Dests: 470
 (0 2) 470 PRINT
+  Origs: 460
+  Dests: 480
 (1 4) 480 IF N = 0 THEN 600
+  Origs: 470
+  Dests: 490, 600
 (0 3) 490 PRINT "NEW TOTAL IS" N
+  Origs: 480
+  Dests: 500
 (0 2) 500 PRINT
+  Origs: 490
+  Dests: 510
 (0 3) 510 GOTO 210
+  Origs: 500
+  Dests: 210
 (0 0) 520 
+  Origs: 
+  Dests: 530
 (0 1) 530 REM MAKE RANDOM MOVE
+  Origs: 440, 520
+  Dests: 540
 (1 4) 540 IF N > 1 THEN 570
+  Origs: 530
+  Dests: 550, 570
 (0 3) 550 LET Y = 1
+  Origs: 540
+  Dests: 560
 (0 3) 560 GOTO 450
+  Origs: 550
+  Dests: 450
 (0 5) 570 LET Y = 1 + INT(K * RND(0))
+  Origs: 540
+  Dests: 580
 (0 3) 580 GOTO 450
+  Origs: 570
+  Dests: 450
 (0 0) 590 
+  Origs: 
+  Dests: 600
 (0 1) 600 REM MACHINE LOST
+  Origs: 480, 590
+  Dests: 610
 (0 2) 610 PRINT "YOU WIN ***"
+  Origs: 600
+  Dests: 620
 (0 3) 620 GOTO 350
+  Origs: 610
+  Dests: 350
 (0 1) 630 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

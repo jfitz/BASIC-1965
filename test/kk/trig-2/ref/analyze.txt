@@ -20,18 +20,44 @@ Halstead complexity:
  time: 3.047
 
 (0 1) 100 REM ANGLE-SIDE-ANGLE
+  Origs: 
+  Dests: 110
 (0 3) 110 LET P = 3.14159625
+  Origs: 100
+  Dests: 120
 (0 4) 120 DEF FND(X) = X * P / 180
+  Origs: 110
+  Dests: 130
 (0 3) 130 DEF FNS(X) = SIN(FND(X))
+  Origs: 120
+  Dests: 140
 (0 6) 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
+  Origs: 130
+  Dests: 150
 (3 4) 150 READ A, X, B
+  Origs: 140, 200
+  Dests: 160
 (0 5) 160 LET C = 180 - A - B
+  Origs: 150
+  Dests: 170
 (0 9) 170 LET Y = X * FNS(B) / FNS(C)
+  Origs: 160
+  Dests: 180
 (0 9) 180 LET Z = X * FNS(A) / FNS(C)
+  Origs: 170
+  Dests: 190
 (0 6) 190 PRINT A, X, B, Y, Z
+  Origs: 180
+  Dests: 200
 (0 3) 200 GOTO 150
+  Origs: 190
+  Dests: 150
 (0 2) 210 DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
+  Origs: 
+  Dests: 220
 (0 1) 220 END
+  Origs: 210
+  Dests: 
 
 Unreachable code:
 

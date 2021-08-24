@@ -20,38 +20,104 @@ Halstead complexity:
  time: 5.652
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE SOLUTION TO
+  Origs: 
+  Dests: 20
 (0 1) 20 REM A SYSTEM OF 3 EQUATIONS IN 3 UNKNOWNS
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
+  Origs: 20, 320
+  Dests: 40
 (0 2) 40 PRINT "OF THE TYPE AX + BY + CZ = D"
+  Origs: 30
+  Dests: 50
 (0 2) 50 PRINT "ENTER THE 1ST EQUATION (A,B,C,D)"
+  Origs: 40
+  Dests: 60
 (4 5) 60 INPUT A1, B1, C1, D1
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
+  Origs: 60
+  Dests: 80
 (4 5) 80 INPUT A2, B2, C2, D2
+  Origs: 70
+  Dests: 90
 (0 2) 90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
+  Origs: 80
+  Dests: 100
 (4 5) 100 INPUT A3, B3, C3, D3
+  Origs: 90
+  Dests: 110
 (0 6) 110 LET E1 = ((B1 * A2) / A1) - B2
+  Origs: 100
+  Dests: 120
 (0 6) 120 LET E2 = ((C1 * A2) / A1) - C2
+  Origs: 110
+  Dests: 130
 (0 6) 130 LET E3 = ((B1 * A3) / A1) - B3
+  Origs: 120
+  Dests: 140
 (0 6) 140 LET E4 = ((C1 * A3) / A1) - C3
+  Origs: 130
+  Dests: 150
 (0 7) 150 LET E5 = ((E1 * E4) - (E2 * E3))
+  Origs: 140
+  Dests: 160
 (1 4) 160 IF E5 = 0 THEN 250
+  Origs: 150
+  Dests: 170, 250
 (0 6) 170 LET E6 = ((D1 * A2) / A1) - D2
+  Origs: 160
+  Dests: 180
 (0 6) 180 LET E7 = ((D1 * A3) / A1) - D3
+  Origs: 170
+  Dests: 190
 (0 8) 190 LET Y = ((E6 * E4) - (E2 * E7)) / E5
+  Origs: 180
+  Dests: 200
 (0 8) 200 LET Z = ((E1 * E7) - (E6 * E3)) / E5
+  Origs: 190
+  Dests: 210
 (0 12) 210 LET X = (D1 / A1) - (B1 / A1 * Y) - ((C1 / A1) * Z)
+  Origs: 200
+  Dests: 220
 (0 2) 220 PRINT "SOLUTION"
+  Origs: 210
+  Dests: 230
 (0 7) 230 PRINT "X = "; X, "Y = "; Y, "Z = "; Z
+  Origs: 220
+  Dests: 240
 (0 2) 240 GOTO 260
+  Origs: 230
+  Dests: 260
 (0 2) 250 PRINT "INSUFFICIENT OR ERRONEOUS DATA ENTERED"
+  Origs: 160
+  Dests: 260
 (0 2) 260 PRINT
+  Origs: 240, 250
+  Dests: 270
 (0 2) 270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 260
+  Dests: 280
 (1 2) 280 INPUT L
+  Origs: 270
+  Dests: 290
 (1 4) 290 IF L = 1 THEN 310
+  Origs: 280
+  Dests: 300, 310
 (0 1) 300 STOP
+  Origs: 290
+  Dests: 
 (0 2) 310 PRINT
+  Origs: 290
+  Dests: 320
 (0 3) 320 GOTO 30
+  Origs: 310
+  Dests: 30
 (0 1) 330 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

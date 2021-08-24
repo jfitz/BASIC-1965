@@ -20,35 +20,95 @@ Halstead complexity:
  time: 2.853
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE FIRST DERIVATIVE
+  Origs: 
+  Dests: 20
 (0 1) 20 REM OF A FUNCTION ENTERED BY THE USER
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "VALUE OF X = ";
+  Origs: 20
+  Dests: 40
 (1 2) 40 INPUT X
+  Origs: 30, 270
+  Dests: 50
 (0 3) 50 LET Y = X
+  Origs: 40
+  Dests: 60
 (0 5) 60 LET Z = (X * (1E-04)) / 2
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET W = X + Z
+  Origs: 60
+  Dests: 80
 (0 4) 80 LET V = X - Z
+  Origs: 70
+  Dests: 90
 (0 3) 90 LET X = W
+  Origs: 80
+  Dests: 100
 (0 2) 100 GOSUB 280
+  Origs: 90
+  Dests: 110, 280
 (0 3) 110 LET A = P
+  Origs: 100
+  Dests: 120
 (0 3) 120 LET X = V
+  Origs: 110
+  Dests: 130
 (0 2) 130 GOSUB 280
+  Origs: 120
+  Dests: 140, 280
 (0 3) 140 LET B = P
+  Origs: 130
+  Dests: 150
 (0 3) 150 LET X = Y
+  Origs: 140
+  Dests: 160
 (0 2) 160 GOSUB 280
+  Origs: 150
+  Dests: 170, 280
 (0 3) 170 LET C = P
+  Origs: 160
+  Dests: 180
 (0 7) 180 LET F = (A - B) / (2 * Z)
+  Origs: 170
+  Dests: 190
 (0 5) 190 PRINT "IF X = "; Y, "THEN F(X) = "; C
+  Origs: 180
+  Dests: 200
 (0 3) 200 PRINT "AND F'(X) = "; F
+  Origs: 190
+  Dests: 210
 (0 2) 210 PRINT
+  Origs: 200
+  Dests: 220
 (0 2) 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 210
+  Dests: 230
 (1 2) 230 INPUT L
+  Origs: 220
+  Dests: 240
 (1 4) 240 IF L = 1 THEN 260
+  Origs: 230
+  Dests: 250, 260
 (0 1) 250 STOP
+  Origs: 240
+  Dests: 
 (0 2) 260 PRINT
+  Origs: 240
+  Dests: 270
 (0 3) 270 GOTO 40
+  Origs: 260
+  Dests: 40
 (0 4) 280 LET P = X ^ 2
+  Origs: 100, 130, 160
+  Dests: 290
 (0 1) 290 RETURN
+  Origs: 280
+  Dests: 
 (0 1) 300 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

@@ -20,54 +20,152 @@ Halstead complexity:
  time: 4.450
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THE GAME OF CRAPS
+  Origs: 
+  Dests: 20
 (0 1) 20 
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT " FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
+  Origs: 20, 80, 410
+  Dests: 40
 (0 1) 40 INPUT R $
+  Origs: 30
+  Dests: 50
 (1 2) 50 IF R $ ="RULES" THEN 90
+  Origs: 40
+  Dests: 60, 90
 (1 2) 60 IF R $ ="GO" THEN 140
+  Origs: 50
+  Dests: 70, 140
 (0 2) 70 PRINT "INVALID COMMAND"
+  Origs: 60
+  Dests: 80
 (0 3) 80 GOTO 30
+  Origs: 70
+  Dests: 30
 (0 2) 90 PRINT "A 7 OR 11 ON THE FIRST THROW WINS"
+  Origs: 50
+  Dests: 100
 (0 2) 100 PRINT "YOU CAN ALSO WIN BY THROWING A 4,5,6,8,9,10"
+  Origs: 90
+  Dests: 110
 (0 2) 110 PRINT "AND MATCHING IT BEFORE THROWING A 7. IF ON"
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT "THE FIRST THROW 2,3 OR A 12 COMES UP"
+  Origs: 110
+  Dests: 130
 (0 2) 130 PRINT "YOU LOSE AUTOMATICALLY"
+  Origs: 120
+  Dests: 140
 (0 3) 140 LET J = 0
+  Origs: 60, 130
+  Dests: 150
 (0 2) 150 GOSUB 460
+  Origs: 140, 250
+  Dests: 160, 460
 (0 3) 160 LET D1 = N
+  Origs: 150
+  Dests: 170
 (0 2) 170 GOSUB 460
+  Origs: 160
+  Dests: 180, 460
 (0 3) 180 LET D2 = N
+  Origs: 170
+  Dests: 190
 (0 4) 190 LET D3 = D1 + D2
+  Origs: 180
+  Dests: 200
 (0 4) 200 LET J = J + 1
+  Origs: 190
+  Dests: 210
 (1 4) 210 IF J = 1 THEN 260
+  Origs: 200
+  Dests: 220, 260
 (1 4) 220 IF D3 = D4 THEN 420
+  Origs: 210
+  Dests: 230, 420
 (1 4) 230 IF D3 = 7 THEN 440
+  Origs: 220
+  Dests: 240, 440
 (0 3) 240 PRINT "YOU THROW A "; D3
+  Origs: 230, 315
+  Dests: 250
 (0 3) 250 GOTO 150
+  Origs: 240
+  Dests: 150
 (1 4) 260 IF D3 = 7 THEN 320
+  Origs: 210
+  Dests: 270, 320
 (1 4) 270 IF D3 = 2 THEN 340
+  Origs: 260
+  Dests: 280, 340
 (1 4) 280 IF D3 = 3 THEN 340
+  Origs: 270
+  Dests: 290, 340
 (1 4) 290 IF D3 = 12 THEN 340
+  Origs: 280
+  Dests: 300, 340
 (1 4) 300 IF D3 = 11 THEN 320
+  Origs: 290
+  Dests: 310, 320
 (0 3) 310 LET D4 = D3
+  Origs: 300
+  Dests: 315
 (0 3) 315 GOTO 240
+  Origs: 310
+  Dests: 240
 (0 4) 320 PRINT "YOU THROW A "; D3; " YOU WIN"
+  Origs: 260, 300
+  Dests: 330
 (0 2) 330 GOTO 350
+  Origs: 320
+  Dests: 350
 (0 4) 340 PRINT "YOU THROW A "; D3; " YOU LOSE"
+  Origs: 270, 280, 290
+  Dests: 350
 (0 2) 350 PRINT
+  Origs: 330, 340, 430, 450
+  Dests: 360
 (0 2) 360 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+  Origs: 350
+  Dests: 370
 (0 1) 370 INPUT L $
+  Origs: 360
+  Dests: 380
 (1 2) 380 IF L $ ="Y" THEN 400
+  Origs: 370
+  Dests: 390, 400
 (0 1) 390 STOP
+  Origs: 380
+  Dests: 
 (0 2) 400 PRINT
+  Origs: 380
+  Dests: 410
 (0 3) 410 GOTO 30
+  Origs: 400
+  Dests: 30
 (0 4) 420 PRINT "YOU THROW A "; D3; "YOU WIN BY MATCHING"
+  Origs: 220
+  Dests: 430
 (0 3) 430 GOTO 350
+  Origs: 420
+  Dests: 350
 (0 4) 440 PRINT "YOU THROW A "; D3; " SORRY YOU LOSE"
+  Origs: 230
+  Dests: 450
 (0 3) 450 GOTO 350
+  Origs: 440
+  Dests: 350
 (0 5) 460 LET N = 1 + INT(6 * RND)
+  Origs: 150, 170
+  Dests: 470
 (0 1) 470 RETURN
+  Origs: 460
+  Dests: 
 (0 1) 480 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

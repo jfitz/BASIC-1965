@@ -20,20 +20,50 @@ Halstead complexity:
  time: 2.041
 
 (1 3) 10 FOR D = 0 TO 5
+  Origs: 
+  Dests: 20
 (0 3) 20 LET N(D) = 0
+  Origs: 10
+  Dests: 30
 (0 1) 30 NEXT D
+  Origs: 20
+  Dests: 40
 (1 3) 40 FOR I = 1 TO 10
+  Origs: 30
+  Dests: 50
 (1 2) 50 READ X
+  Origs: 40
+  Dests: 60
 (0 4) 60 LET D = INT(X / 1E4)
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET N(D) = N(D) + 1
+  Origs: 60
+  Dests: 80
 (0 1) 80 NEXT I
+  Origs: 70
+  Dests: 100
 (0 2) 100 PRINT "        INCOME"
+  Origs: 80
+  Dests: 110
 (0 4) 110 PRINT "AT LEAST", "BUT BELOW", "NUMBER OF PEOPLE"
+  Origs: 100
+  Dests: 120
 (1 3) 120 FOR D = 0 TO 5
+  Origs: 110
+  Dests: 130
 (0 7) 130 PRINT D * 1E4, (D + 1) * 1E4, N(D)
+  Origs: 120
+  Dests: 140
 (0 1) 140 NEXT D
+  Origs: 130
+  Dests: 900
 (0 2) 900 DATA 15000, 22500, 7350, 32700, 51000, 8400, 12700, 8100, 29000, 35460
+  Origs: 140
+  Dests: 999
 (0 1) 999 END
+  Origs: 900
+  Dests: 
 
 Unreachable code:
 

@@ -20,28 +20,74 @@ Halstead complexity:
  time: 2.329
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE VALUES OF
+  Origs: 
+  Dests: 20
 (0 1) 20 REM THE TWO RESISTANCES REQUIRED TO CONSTRUCT A
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM L-PAD OF MINIMUM LOSS
+  Origs: 20
+  Dests: 40
 (0 2) 40 PRINT "1ST IMPEDANCE"
+  Origs: 30, 220
+  Dests: 50
 (1 2) 50 INPUT Z1
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "2ND IMPEDANCE"
+  Origs: 50
+  Dests: 70
 (1 2) 70 INPUT Z2
+  Origs: 60
+  Dests: 80
 (0 5) 80 LET R1 = Z1 * SQR(1 - (Z2 / Z1))
+  Origs: 70
+  Dests: 90
 (0 5) 90 LET R2 = Z2 / SQR(1 - (Z2 / Z1))
+  Origs: 80
+  Dests: 100
 (0 6) 100 LET M = SQR(Z1 / Z2) + SQR((Z1 / Z2) - 1)
+  Origs: 90
+  Dests: 110
 (0 8) 110 LET L = 20 * (LOG(M) / LOG(10))
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT "COMPONENTS OF THE L-PAD"
+  Origs: 110
+  Dests: 130
 (0 3) 130 PRINT "RESISTOR 1 = "; R1
+  Origs: 120
+  Dests: 140
 (0 3) 140 PRINT "RESISTOR 2 = "; R2
+  Origs: 130
+  Dests: 150
 (0 3) 150 PRINT "LOSS IN DECIBELS = "; L
+  Origs: 140
+  Dests: 160
 (0 2) 160 PRINT
+  Origs: 150
+  Dests: 170
 (0 2) 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 160
+  Dests: 180
 (1 2) 180 INPUT X
+  Origs: 170
+  Dests: 190
 (1 4) 190 IF X = 1 THEN 210
+  Origs: 180
+  Dests: 200, 210
 (0 1) 200 STOP
+  Origs: 190
+  Dests: 
 (0 2) 210 PRINT
+  Origs: 190
+  Dests: 220
 (0 3) 220 GOTO 40
+  Origs: 210
+  Dests: 40
 (0 1) 230 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

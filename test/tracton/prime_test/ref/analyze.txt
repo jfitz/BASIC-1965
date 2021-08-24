@@ -20,28 +20,74 @@ Halstead complexity:
  time: 2.682
 
 (0 1) 10 REM THIS PROGRAM TESTS IF A NUMBER IS PRIME
+  Origs: 
+  Dests: 20
 (0 1) 20 REM IT CONTINUES TO CYCLE UNTIL ZERO IS ENTERED
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
+  Origs: 20, 190, 210
+  Dests: 40
 (1 2) 40 INPUT N
+  Origs: 30
+  Dests: 50
 (0 4) 50 LET N = INT(N)
+  Origs: 40
+  Dests: 60
 (1 4) 60 IF N = 0 THEN 220
+  Origs: 50
+  Dests: 70, 220
 (1 4) 70 IF N < 4 THEN 180
+  Origs: 60
+  Dests: 80, 180
 (0 3) 80 LET I = 0
+  Origs: 70
+  Dests: 90
 (0 3) 90 LET T = 2
+  Origs: 80
+  Dests: 100
 (0 4) 100 LET J = INT(N / T)
+  Origs: 90, 170
+  Dests: 110
 (0 4) 110 LET K = J * T
+  Origs: 100
+  Dests: 120
 (1 4) 120 IF N = K THEN 200
+  Origs: 110
+  Dests: 130, 200
 (0 4) 130 LET I = I + 1
+  Origs: 120
+  Dests: 140
 (0 4) 140 LET L = T * T
+  Origs: 130
+  Dests: 150
 (1 4) 150 IF L > N THEN 180
+  Origs: 140
+  Dests: 160, 180
 (0 5) 160 LET T = (I * 2) + 1
+  Origs: 150
+  Dests: 170
 (0 3) 170 GOTO 100
+  Origs: 160
+  Dests: 100
 (0 3) 180 PRINT N; "IS A PRIME"
+  Origs: 70, 150
+  Dests: 190
 (0 3) 190 GOTO 30
+  Origs: 180
+  Dests: 30
 (0 5) 200 PRINT N; "IS NOT A PRIME:"; T; "IS THE SMALLEST FACTOR"
+  Origs: 120
+  Dests: 210
 (0 3) 210 GOTO 30
+  Origs: 200
+  Dests: 30
 (0 2) 220 PRINT "GOOD-BYE FROM THE PRIME TESTER"
+  Origs: 60
+  Dests: 230
 (0 1) 230 END
+  Origs: 220
+  Dests: 
 
 Unreachable code:
 

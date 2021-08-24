@@ -20,11 +20,23 @@ Halstead complexity:
  time: 0.214
 
 (0 4) 10 MAT LET A = RND2(5, 0)
+  Origs: 
+  Dests: 20
 (0 4) 20 MAT LET A1 = A - 0.5
+  Origs: 10
+  Dests: 30
 (0 4) 30 MAT LET A2 = A - 0.9
+  Origs: 20
+  Dests: 40
 (0 4) 40 MAT LET A3 = A - 20
+  Origs: 30
+  Dests: 90
 (7 5) 90 MAT PLOT A, A1, A2, A3
+  Origs: 40
+  Dests: 99
 (0 1) 99 END
+  Origs: 90
+  Dests: 
 
 Unreachable code:
 

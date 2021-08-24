@@ -20,30 +20,80 @@ Halstead complexity:
  time: 1.824
 
 (0 4) 100 MAT A = ZER(3, 3)
+  Origs: 
+  Dests: 110
 (0 4) 110 MAT B = CON(3, 3)
+  Origs: 100
+  Dests: 120
 (0 4) 120 MAT C = IDN(3, 3)
+  Origs: 110
+  Dests: 130
 (0 0) 130 
+  Origs: 120
+  Dests: 200
 (0 2) 200 PRINT "ALL ZEROES"
+  Origs: 130
+  Dests: 210
 (0 2) 210 MAT PRINT A
+  Origs: 200
+  Dests: 220
 (0 2) 220 PRINT "ALL ONES"
+  Origs: 210
+  Dests: 230
 (0 2) 230 MAT PRINT B
+  Origs: 220
+  Dests: 240
 (0 2) 240 PRINT "IDENTITY MATRIX"
+  Origs: 230
+  Dests: 250
 (0 2) 250 MAT PRINT C
+  Origs: 240
+  Dests: 260
 (0 0) 260 
+  Origs: 250
+  Dests: 300
 (1 2) 300 MAT READ A
+  Origs: 260
+  Dests: 310
 (0 2) 310 PRINT "SQUARE MATRIX"
+  Origs: 300
+  Dests: 320
 (0 2) 320 MAT PRINT A
+  Origs: 310
+  Dests: 330
 (0 4) 330 MAT B = INV(A)
+  Origs: 320
+  Dests: 340
 (0 2) 340 PRINT "ITS INVERSE"
+  Origs: 330
+  Dests: 350
 (0 2) 350 MAT PRINT B
+  Origs: 340
+  Dests: 360
 (0 0) 360 
+  Origs: 350
+  Dests: 400
 (0 4) 400 MAT R = A * B
+  Origs: 360
+  Dests: 410
 (0 4) 410 MAT R = R - C
+  Origs: 400
+  Dests: 420
 (0 2) 420 PRINT "ROUNDOFF ERRORS"
+  Origs: 410
+  Dests: 430
 (0 2) 430 MAT PRINT R
+  Origs: 420
+  Dests: 440
 (0 0) 440 
+  Origs: 430
+  Dests: 900
 (0 2) 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5
+  Origs: 440
+  Dests: 999
 (0 1) 999 END
+  Origs: 900
+  Dests: 
 
 Unreachable code:
 

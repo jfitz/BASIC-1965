@@ -20,27 +20,71 @@ Halstead complexity:
  time: 6.255
 
 (0 2) 10 DIM N(1000)
+  Origs: 
+  Dests: 11
 (0 2) 11 DIM P(350)
+  Origs: 10
+  Dests: 20
 (1 3) 20 FOR I = 1 TO 1000
+  Origs: 11
+  Dests: 21
 (0 3) 21 LET N(I) = 0
+  Origs: 20
+  Dests: 22
 (0 1) 22 NEXT I
+  Origs: 21
+  Dests: 25
 (0 3) 25 LET P(0) = 2
+  Origs: 22
+  Dests: 26
 (0 3) 26 LET K = 0
+  Origs: 25
+  Dests: 30
 (1 4) 30 FOR P = 3 TO 2000 STEP 2
+  Origs: 26
+  Dests: 35
 (0 5) 35 LET X = (P - 1) / 2
+  Origs: 30
+  Dests: 40
 (1 4) 40 IF N(X) < 0 THEN 90
+  Origs: 35
+  Dests: 50, 90
 (0 4) 50 LET K = K + 1
+  Origs: 40
+  Dests: 55
 (0 3) 55 LET P(K) = P
+  Origs: 50
+  Dests: 56
 (1 5) 56 IF P > SQR(2000) THEN 90
+  Origs: 55
+  Dests: 60, 90
 (1 5) 60 FOR I = P TO 2000 STEP 2 * P
+  Origs: 56
+  Dests: 65
 (0 5) 65 LET X = (I - 1) / 2
+  Origs: 60
+  Dests: 70
 (0 4) 70 LET N(X) = -1
+  Origs: 65
+  Dests: 80
 (0 1) 80 NEXT I
+  Origs: 70
+  Dests: 90
 (0 1) 90 NEXT P
+  Origs: 40, 56, 80
+  Dests: 100
 (1 3) 100 FOR I = 0 TO K
+  Origs: 90
+  Dests: 110
 (0 2) 110 PRINT P(I);
+  Origs: 100
+  Dests: 120
 (0 1) 120 NEXT I
+  Origs: 110
+  Dests: 999
 (0 1) 999 END
+  Origs: 120
+  Dests: 
 
 Unreachable code:
 

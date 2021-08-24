@@ -20,18 +20,44 @@ Halstead complexity:
  time: 3.815
 
 (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+  Origs: 
+  Dests: 20
 (2 3) 20 READ A, B
+  Origs: 10
+  Dests: 30
 (0 5) 30 LET X = (A + B) / 2
+  Origs: 20, 90
+  Dests: 40
 (1 6) 40 IF FNF(X) = 0 THEN 100
+  Origs: 30
+  Dests: 50, 100
 (1 6) 50 IF FNF(X) < 0 THEN 70
+  Origs: 40
+  Dests: 60, 70
 (0 3) 60 LET B = X
+  Origs: 50
+  Dests: 65
 (0 2) 65 GOTO 80
+  Origs: 60
+  Dests: 80
 (0 3) 70 LET A = X
+  Origs: 50
+  Dests: 80
 (1 10) 80 IF ABS(A - B) / (ABS(A) + ABS(B)) < 0.000005 THEN 100
+  Origs: 65, 70
+  Dests: 90, 100
 (0 3) 90 GOTO 30
+  Origs: 80
+  Dests: 30
 (0 3) 100 PRINT "ONE ZERO AT" X
+  Origs: 40, 80
+  Dests: 900
 (0 2) 900 DATA 0, 1
+  Origs: 100
+  Dests: 999
 (0 1) 999 END
+  Origs: 900
+  Dests: 
 
 Unreachable code:
 

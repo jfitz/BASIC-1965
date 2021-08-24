@@ -20,13 +20,29 @@ Halstead complexity:
  time: 0.085
 
 (0 1) 10 REM TEST FOR/NEXT WITH CHANGE TO INDEX
+  Origs: 
+  Dests: 20
 (1 3) 20 FOR I = 1 TO 5
+  Origs: 10
+  Dests: 30
 (0 3) 30 PRINT "BEFORE: "; I
+  Origs: 20
+  Dests: 40
 (0 3) 40 LET I = 3
+  Origs: 30
+  Dests: 50
 (0 3) 50 PRINT "AFTER: "; I
+  Origs: 40
+  Dests: 60
 (0 1) 60 NEXT I
+  Origs: 50
+  Dests: 70
 (0 3) 70 PRINT "FINAL: "; I
+  Origs: 60
+  Dests: 90
 (0 1) 90 END
+  Origs: 70
+  Dests: 
 
 Unreachable code:
 

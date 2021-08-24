@@ -20,41 +20,113 @@ Halstead complexity:
  time: 6.463
 
 (0 3) 100 LET N = 0
+  Origs: 
+  Dests: 110
 (0 3) 110 LET S = 0
+  Origs: 100
+  Dests: 120
 (0 3) 120 LET S2 = 0
+  Origs: 110
+  Dests: 130
 (0 0) 130 
+  Origs: 120
+  Dests: 140
 (1 2) 140 READ X
+  Origs: 130, 190
+  Dests: 150
 (1 4) 150 IF X = 999999 THEN 210
+  Origs: 140
+  Dests: 160, 210
 (0 4) 160 LET N = N + 1
+  Origs: 150, 400
+  Dests: 170
 (0 4) 170 LET S = S + X
+  Origs: 160
+  Dests: 180
 (0 6) 180 LET S2 = S2 + X * X
+  Origs: 170
+  Dests: 190
 (0 3) 190 GOTO 140
+  Origs: 180
+  Dests: 140
 (0 0) 200 
+  Origs: 
+  Dests: 210
 (0 4) 210 LET M = S / N
+  Origs: 150, 200
+  Dests: 220
 (0 11) 220 LET V = (N * S2 - S * S) / N / (N - 1)
+  Origs: 210
+  Dests: 230
 (0 4) 230 LET D = SQR(V)
+  Origs: 220
+  Dests: 240
 (0 4) 240 LET P = .6745 * D
+  Origs: 230
+  Dests: 250
 (0 4) 250 LET E = SQR(V / N)
+  Origs: 240
+  Dests: 260
 (0 4) 260 LET C = D / M
+  Origs: 250
+  Dests: 270
 (0 0) 270 
+  Origs: 260
+  Dests: 280
 (0 6) 280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
+  Origs: 270
+  Dests: 290
 (0 6) 290 PRINT N, S, S2, M, V
+  Origs: 280
+  Dests: 300
 (0 2) 300 PRINT
+  Origs: 290
+  Dests: 310
 (0 5) 310 PRINT "STD. DEV.", "PROB. ERR.", "STD.ERR. MN.", "COEFF. VAR."
+  Origs: 300
+  Dests: 320
 (0 5) 320 PRINT D, P, E, C
+  Origs: 310
+  Dests: 330
 (0 2) 330 PRINT
+  Origs: 320
+  Dests: 340
 (0 2) 340 PRINT
+  Origs: 330
+  Dests: 350
 (0 0) 350 
+  Origs: 340
+  Dests: 360
 (0 3) 360 LET N = 0
+  Origs: 350
+  Dests: 370
 (0 3) 370 LET S = 0
+  Origs: 360
+  Dests: 380
 (0 3) 380 LET S2 = 0
+  Origs: 370
+  Dests: 390
 (1 2) 390 READ X
+  Origs: 380
+  Dests: 400
 (1 5) 400 IF X <> 999999 THEN 160
+  Origs: 390
+  Dests: 160, 410
 (0 0) 410 
+  Origs: 400
+  Dests: 900
 (0 2) 900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
+  Origs: 410
+  Dests: 910
 (0 2) 910 DATA 4, 3, 9, 15, 21, 6, 999999
+  Origs: 900
+  Dests: 998
 (0 2) 998 DATA 999999
+  Origs: 910
+  Dests: 999
 (0 1) 999 END
+  Origs: 998
+  Dests: 
 
 Unreachable code:
 

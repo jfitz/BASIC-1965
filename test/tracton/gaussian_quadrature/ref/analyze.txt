@@ -20,54 +20,152 @@ Halstead complexity:
  time: 22.015
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+  Origs: 
+  Dests: 20
 (0 1) 20 REM AND INFINITY BY GAUSSIAN QUADRATURE
+  Origs: 10
+  Dests: 30
 (0 3) 30 LET C1 = .238619
+  Origs: 20
+  Dests: 40
 (0 4) 40 LET C2 = -C1
+  Origs: 30
+  Dests: 50
 (0 3) 50 LET C3 = .661209
+  Origs: 40
+  Dests: 60
 (0 4) 60 LET C4 = -C3
+  Origs: 50
+  Dests: 70
 (0 3) 70 LET C5 = .932470
+  Origs: 60
+  Dests: 80
 (0 4) 80 LET C6 = -C5
+  Origs: 70
+  Dests: 90
 (0 3) 90 LET D1 = .467914
+  Origs: 80
+  Dests: 100
 (0 3) 100 LET D2 = .360762
+  Origs: 90
+  Dests: 110
 (0 3) 110 LET D3 = .171324
+  Origs: 100
+  Dests: 120
 (0 3) 120 LET J = 0
+  Origs: 110, 460
+  Dests: 130
 (0 2) 130 PRINT "ENDPOINT A = ";
+  Origs: 120
+  Dests: 140
 (1 2) 140 INPUT A
+  Origs: 130
+  Dests: 150
 (0 9) 150 LET X = (2 / (1 + C1)) + (A - 1)
+  Origs: 140
+  Dests: 160
 (0 2) 160 GOSUB 470
+  Origs: 150
+  Dests: 170, 470
 (0 9) 170 LET N = ((4 * D1) / (1 + C1) ^ 2) * Q
+  Origs: 160
+  Dests: 180
 (0 4) 180 LET J = J + N
+  Origs: 170
+  Dests: 190
 (0 9) 190 LET X = (2 / (1 + C2)) + (A - 1)
+  Origs: 180
+  Dests: 200
 (0 2) 200 GOSUB 470
+  Origs: 190
+  Dests: 210, 470
 (0 9) 210 LET N = ((4 * D1) / (1 + C2) ^ 2) * Q
+  Origs: 200
+  Dests: 220
 (0 4) 220 LET J = J + N
+  Origs: 210
+  Dests: 230
 (0 9) 230 LET X = (2 / (1 + C3)) + (A - 1)
+  Origs: 220
+  Dests: 240
 (0 2) 240 GOSUB 470
+  Origs: 230
+  Dests: 250, 470
 (0 9) 250 LET N = ((4 * D2) / (1 + C3) ^ 2) * Q
+  Origs: 240
+  Dests: 260
 (0 4) 260 LET J = J + N
+  Origs: 250
+  Dests: 270
 (0 9) 270 LET X = (2 / (1 + C4)) + (A - 1)
+  Origs: 260
+  Dests: 280
 (0 2) 280 GOSUB 470
+  Origs: 270
+  Dests: 290, 470
 (0 9) 290 LET N = ((4 * D2) / (1 + C4) ^ 2) * Q
+  Origs: 280
+  Dests: 300
 (0 4) 300 LET J = J + N
+  Origs: 290
+  Dests: 310
 (0 9) 310 LET X = (2 / (1 + C5)) + (A - 1)
+  Origs: 300
+  Dests: 320
 (0 2) 320 GOSUB 470
+  Origs: 310
+  Dests: 330, 470
 (0 9) 330 LET N = ((4 * D3) / (1 + C5) ^ 2) * Q
+  Origs: 320
+  Dests: 340
 (0 4) 340 LET J = J + N
+  Origs: 330
+  Dests: 350
 (0 9) 350 LET X = (2 / (1 + C6)) + (A - 1)
+  Origs: 340
+  Dests: 360
 (0 2) 360 GOSUB 470
+  Origs: 350
+  Dests: 370, 470
 (0 9) 370 LET N = ((4 * D3) / (1 + C6) ^ 2) * Q
+  Origs: 360
+  Dests: 380
 (0 4) 380 LET J = J + N
+  Origs: 370
+  Dests: 390
 (0 4) 390 LET G = J / 2
+  Origs: 380
+  Dests: 400
 (0 3) 400 PRINT "INTEGRAL = "; G
+  Origs: 390
+  Dests: 410
 (0 2) 410 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 400
+  Dests: 420
 (1 2) 420 INPUT L
+  Origs: 410
+  Dests: 430
 (1 4) 430 IF L = 1 THEN 450
+  Origs: 420
+  Dests: 440, 450
 (0 1) 440 STOP
+  Origs: 430
+  Dests: 
 (0 2) 450 PRINT
+  Origs: 430
+  Dests: 460
 (0 3) 460 GOTO 120
+  Origs: 450
+  Dests: 120
 (0 5) 470 LET Q = 2 * X + 5
+  Origs: 160, 200, 240, 280, 320, 360
+  Dests: 480
 (0 1) 480 RETURN
+  Origs: 470
+  Dests: 
 (0 1) 490 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

@@ -20,31 +20,83 @@ Halstead complexity:
  time: 1.190
 
 (0 1) 10 REM THIS PROGRAM COMPUTES VALUE DEPRECIATION
+  Origs: 
+  Dests: 20
 (0 1) 20 REM BY THE STRAIGHT LINE METHOD
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "ORIGINAL VALUE = ";
+  Origs: 20, 250
+  Dests: 40
 (1 2) 40 INPUT A
+  Origs: 30
+  Dests: 50
 (0 2) 50 PRINT "LIFETIME IN YEARS = ";
+  Origs: 40
+  Dests: 60
 (1 2) 60 INPUT B
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET C = A / B
+  Origs: 60
+  Dests: 80
 (0 3) 80 PRINT "YEARLY DEPRECIATION = "; C
+  Origs: 70
+  Dests: 90
 (0 2) 90 PRINT
+  Origs: 80
+  Dests: 100
 (0 3) 100 PRINT "YEAR", "VALUE"
+  Origs: 90
+  Dests: 110
 (0 3) 110 LET X = 0
+  Origs: 100
+  Dests: 120
 (0 4) 120 LET X = X + 1
+  Origs: 110, 180
+  Dests: 130
 (0 4) 130 LET A = A - C
+  Origs: 120
+  Dests: 140
 (1 4) 140 IF A < 0 THEN 160
+  Origs: 130
+  Dests: 150, 160
 (0 2) 150 GOTO 170
+  Origs: 140
+  Dests: 170
 (0 3) 160 LET A = 0
+  Origs: 140
+  Dests: 170
 (0 3) 170 PRINT X, A
+  Origs: 150, 160
+  Dests: 180
 (1 5) 180 IF X < B THEN 120
+  Origs: 170
+  Dests: 120, 190
 (0 2) 190 PRINT "********************"
+  Origs: 180
+  Dests: 200
 (0 2) 200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 190
+  Dests: 210
 (1 2) 210 INPUT L
+  Origs: 200
+  Dests: 220
 (1 4) 220 IF L = 1 THEN 240
+  Origs: 210
+  Dests: 230, 240
 (0 1) 230 STOP
+  Origs: 220
+  Dests: 
 (0 2) 240 PRINT
+  Origs: 220
+  Dests: 250
 (0 3) 250 GOTO 30
+  Origs: 240
+  Dests: 30
 (0 1) 260 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

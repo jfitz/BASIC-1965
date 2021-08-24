@@ -20,26 +20,68 @@ Halstead complexity:
  time: 0.827
 
 (0 1) 10 REM THIS PROGRAM COMPUTES CHI-SQUARE
+  Origs: 
+  Dests: 20
 (0 1) 20 REM EVALUATION ON THE OBSERVED TO
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM EXPECTED FREQUENCIES
+  Origs: 20
+  Dests: 40
 (0 3) 40 LET J = 0
+  Origs: 30, 200
+  Dests: 50
 (0 2) 50 PRINT "OBSERVED FREQUENCIES = "
+  Origs: 40, 120
+  Dests: 60
 (1 2) 60 INPUT D
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "EXPECTED FREQUENCIES = "
+  Origs: 60
+  Dests: 80
 (1 2) 80 INPUT E
+  Origs: 70
+  Dests: 90
 (1 4) 90 IF E = 0 THEN 130
+  Origs: 80
+  Dests: 100, 130
 (0 6) 100 LET K = ((D - E) ^ 2) / E
+  Origs: 90
+  Dests: 110
 (0 4) 110 LET J = J + K
+  Origs: 100
+  Dests: 120
 (0 3) 120 GOTO 50
+  Origs: 110
+  Dests: 50
 (0 3) 130 PRINT "CHI-SQUARE = "; J
+  Origs: 90
+  Dests: 140
 (0 2) 140 PRINT "*****************"
+  Origs: 130
+  Dests: 150
 (0 2) 150 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 140
+  Dests: 160
 (1 2) 160 INPUT L
+  Origs: 150
+  Dests: 170
 (1 4) 170 IF L = 1 THEN 190
+  Origs: 160
+  Dests: 180, 190
 (0 1) 180 STOP
+  Origs: 170
+  Dests: 
 (0 2) 190 PRINT
+  Origs: 170
+  Dests: 200
 (0 3) 200 GOTO 40
+  Origs: 190
+  Dests: 40
 (0 1) 210 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

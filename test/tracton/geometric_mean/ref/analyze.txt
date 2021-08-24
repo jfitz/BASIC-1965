@@ -20,28 +20,74 @@ Halstead complexity:
  time: 1.318
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GEOMETRIC MEAN
+  Origs: 
+  Dests: 20
 (0 1) 20 REM AFTER EACH SAMPLE IS ENTERED, THE NUMBER OF
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM SAMPLES, THE CURRENT SAMPLE, AND CURRENT MEAN
+  Origs: 20
+  Dests: 40
 (0 1) 40 REM IS PRINTED
+  Origs: 30
+  Dests: 50
 (0 3) 50 LET Y = 1
+  Origs: 40, 220
+  Dests: 60
 (0 3) 60 LET N = 0
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "SAMPLE = ";
+  Origs: 60, 150
+  Dests: 80
 (1 2) 80 INPUT W
+  Origs: 70
+  Dests: 90
 (1 4) 90 IF W = 0 THEN 160
+  Origs: 80
+  Dests: 100, 160
 (0 4) 100 LET N = N + 1
+  Origs: 90
+  Dests: 110
 (0 4) 110 LET Y = Y * W
+  Origs: 100
+  Dests: 120
 (0 6) 120 LET G = Y ^ (1 / N)
+  Origs: 110
+  Dests: 130
 (0 5) 130 PRINT "NUMBER OF SAMPLES = "; N, "CURRENT SAMPLE = "; W
+  Origs: 120
+  Dests: 140
 (0 3) 140 PRINT "CURRENT MEAN = "; G
+  Origs: 130
+  Dests: 150
 (0 3) 150 GOTO 70
+  Origs: 140
+  Dests: 70
 (0 2) 160 PRINT
+  Origs: 90
+  Dests: 170
 (0 2) 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 160
+  Dests: 180
 (1 2) 180 INPUT L
+  Origs: 170
+  Dests: 190
 (1 4) 190 IF L = 1 THEN 210
+  Origs: 180
+  Dests: 200, 210
 (0 1) 200 STOP
+  Origs: 190
+  Dests: 
 (0 2) 210 PRINT
+  Origs: 190
+  Dests: 220
 (0 3) 220 GOTO 50
+  Origs: 210
+  Dests: 50
 (0 1) 230 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

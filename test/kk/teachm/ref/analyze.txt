@@ -21,91 +21,263 @@ Halstead complexity:
  time: 3.477
 
 (0 2) 10 PRINT "BASIC IS A SIMPLE LANGUAGE. IT ENABLES ONE TO DESCRIBE"
+  Origs: 
+  Dests: 30
 (0 2) 30 PRINT "PROGRAMS TO THE COMPUTER WITH LITTLE LEARNING EFFORT."
+  Origs: 10
+  Dests: 40
 (0 2) 40 PRINT "THIS PROGRAM WILL TRY TO TEACH YOU HOW TO PROGRAM IN BASIC."
+  Origs: 30
+  Dests: 99
 (0 0) 99 
+  Origs: 40
+  Dests: 100
 (0 2) 100 GOSUB 8100
+  Origs: 99, 170, 295
+  Dests: 105, 8100
 (0 2) 105 PRINT "BEFORE WE CAN HAVE THE COMPUTER WORK WITH DATA, WE MUST HAVE"
+  Origs: 100
+  Dests: 110
 (0 2) 110 PRINT "THE DATA READ WITH A -----STATEMENT. "
+  Origs: 105
+  Dests: 120
 (0 2) 120 PRINT "(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
+  Origs: 110
+  Dests: 130
 (0 3) 130 LET C = 1
+  Origs: 120
+  Dests: 140
 (0 2) 140 GOSUB 8000
+  Origs: 130
+  Dests: 150, 8000
 (1 4) 150 IF X = C THEN 200
+  Origs: 140
+  Dests: 160, 200
 (0 2) 160 PRINT "LET'S TRY THAT ONE AGAIN."
+  Origs: 150
+  Dests: 170
 (0 3) 170 GOTO 100
+  Origs: 160
+  Dests: 100
 (0 0) 199 
+  Origs: 
+  Dests: 200
 (0 2) 200 GOSUB 8100
+  Origs: 150, 199, 270
+  Dests: 205, 8100
 (0 2) 205 PRINT "ALL DATA THAT IS READ IN USING A READ STATEMENT MUST APPEAR"
+  Origs: 200
+  Dests: 210
 (0 2) 210 PRINT "IN SOME ----- STATEMENT.  (1. INPUT  2. PRINT  3. DATA"
+  Origs: 205
+  Dests: 215
 (0 2) 215 PRINT "4. NONE OF THESE.)"
+  Origs: 210
+  Dests: 220
 (0 3) 220 LET C = 3
+  Origs: 215
+  Dests: 230
 (0 2) 230 GOSUB 8000
+  Origs: 220
+  Dests: 240, 8000
 (1 4) 240 IF C = X THEN 300
+  Origs: 230
+  Dests: 250, 300
 (1 4) 250 IF X = 1 THEN 280
+  Origs: 240
+  Dests: 260, 280
 (0 2) 260 PRINT "ANOTHER RETRY -- OKAY?"
+  Origs: 250
+  Dests: 270
 (0 3) 270 GOTO 200
+  Origs: 260
+  Dests: 200
 (0 2) 280 PRINT "THE INPUT STATEMENT IS SIMILAR TO THE READ STATEMENT, BUT"
+  Origs: 250
+  Dests: 285
 (0 2) 285 PRINT "CALLS FOR THE INPUT TO BE MADE FROM THE TELETYPE MACHINE"
+  Origs: 280
+  Dests: 290
 (0 2) 290 PRINT "RATHER THAN FROM DATA STATEMENTS.  READ AND DATA GO"
+  Origs: 285
+  Dests: 292
 (0 2) 292 PRINT "TOGETHER."
+  Origs: 290
+  Dests: 295
 (0 3) 295 GOTO 100
+  Origs: 292
+  Dests: 100
 (0 2) 300 GOSUB 8100
+  Origs: 240, 385, 395
+  Dests: 305, 8100
 (0 2) 305 PRINT "TO PERFORM A COMPUTATION, WE HAVE A VARIABLE ON THE LEFT OF"
+  Origs: 300
+  Dests: 310
 (0 2) 310 PRINT "THE EQUAL SIGN, AND A FORMULA ON THE RIGHT E.G., TO "
+  Origs: 305
+  Dests: 315
 (0 2) 315 PRINT " ------ X = A + B   .  (1. COMPUTE  2. LET  3. VARIABLE"
+  Origs: 310
+  Dests: 340
 (0 2) 340 PRINT "4. NONE OF THESE.)"
+  Origs: 315
+  Dests: 350
 (0 3) 350 LET C = 2
+  Origs: 340
+  Dests: 360
 (0 2) 360 GOSUB 8000
+  Origs: 350
+  Dests: 370, 8000
 (1 4) 370 IF C = X THEN 400
+  Origs: 360
+  Dests: 375, 400
 (1 4) 375 IF X <> 1 THEN 390
+  Origs: 370
+  Dests: 380, 390
 (0 2) 380 PRINT "BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
+  Origs: 375
+  Dests: 385
 (0 3) 385 GOTO 300
+  Origs: 380
+  Dests: 300
 (0 2) 390 PRINT "LET'S TRY THAT ONE AGAIN."
+  Origs: 375
+  Dests: 395
 (0 3) 395 GOTO 300
+  Origs: 390
+  Dests: 300
 (0 2) 400 GOSUB 8100
+  Origs: 370, 467, 480, 590
+  Dests: 405, 8100
 (0 2) 405 PRINT "ONE OF THE FOLLOWING DOES NOT FOLLOW THE RULES. WHICH ONE?"
+  Origs: 400
+  Dests: 410
 (0 2) 410 PRINT "(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
+  Origs: 405
+  Dests: 420
 (0 3) 420 LET C = 3
+  Origs: 410
+  Dests: 430
 (0 2) 430 GOSUB 8000
+  Origs: 420
+  Dests: 440, 8000
 (1 4) 440 IF C = X THEN 500
+  Origs: 430
+  Dests: 450, 500
 (1 4) 450 IF X = 1 THEN 470
+  Origs: 440
+  Dests: 460, 470
 (0 2) 460 PRINT "THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
+  Origs: 450
+  Dests: 465
 (0 2) 465 PRINT "NUMBER Z+17, AND REPLACING THE OLD VALUE OF Z WITH THIS VALUE"
+  Origs: 460
+  Dests: 466
 (0 2) 466 PRINT "THUS, Z IS INCREASED BY 17 UNITS."
+  Origs: 465
+  Dests: 467
 (0 3) 467 GOTO 400
+  Origs: 466
+  Dests: 400
 (0 2) 470 PRINT "THIS IS OKAY, WS SIMPLY HAVE X TAKE ON THE VALUE OF Y."
+  Origs: 450
+  Dests: 480
 (0 3) 480 GOTO 400
+  Origs: 470
+  Dests: 400
 (0 0) 499 
+  Origs: 
+  Dests: 500
 (0 2) 500 GOSUB 8100
+  Origs: 440, 499, 575
+  Dests: 505, 8100
 (0 2) 505 PRINT "TO INCREASE THE VALUE OF THE VARIABLE T BY X UNITS, WHICH OF"
+  Origs: 500
+  Dests: 510
 (0 2) 510 PRINT "THE FOLLOWING DO WE USE?"
+  Origs: 505
+  Dests: 520
 (0 2) 520 PRINT "(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
+  Origs: 510
+  Dests: 530
 (0 3) 530 LET C = 1
+  Origs: 520
+  Dests: 540
 (0 2) 540 GOSUB 8000
+  Origs: 530
+  Dests: 550, 8000
 (1 4) 550 IF C = X THEN 600
+  Origs: 540
+  Dests: 560, 600
 (1 4) 560 IF C = 3 THEN 580
+  Origs: 550
+  Dests: 570, 580
 (0 2) 570 PRINT "THIS ONE INCREASES THE VALUE OF X BY T UNITS."
+  Origs: 560
+  Dests: 575
 (0 3) 575 GOTO 500
+  Origs: 570
+  Dests: 500
 (0 2) 580 PRINT "THIS FORM IS ILLEGAL. LET'S BACK UP A BIT."
+  Origs: 560
+  Dests: 590
 (0 3) 590 GOTO 400
+  Origs: 580
+  Dests: 400
 (0 0) 599 
+  Origs: 
+  Dests: 600
 (0 2) 600 GOSUB 8100
+  Origs: 550, 599
+  Dests: 605, 8100
 (0 2) 605 PRINT "YOU HAVE COMPLETED YOUR FIRST COURSE IN BASIC."
+  Origs: 600
+  Dests: 610
 (0 2) 610 PRINT "CONGRATULATIONS."
+  Origs: 605
+  Dests: 620
 (0 1) 620 STOP
+  Origs: 610
+  Dests: 
 (0 2) 8000 PRINT "YOUR ANSWER";
+  Origs: 140, 230, 360, 430, 540
+  Dests: 8010
 (1 2) 8010 INPUT X
+  Origs: 8000
+  Dests: 8020
 (1 4) 8020 IF C <> X THEN 8050
+  Origs: 8010
+  Dests: 8030, 8050
 (0 2) 8030 PRINT "CORRECT"
+  Origs: 8020
+  Dests: 8040
 (0 2) 8040 GOTO 8060
+  Origs: 8030
+  Dests: 8060
 (0 3) 8050 PRINT "INCORRECT. CORRECT ANSWER IS "; C
+  Origs: 8020
+  Dests: 8060
 (0 1) 8060 RETURN
+  Origs: 8040, 8050
+  Dests: 
 (0 0) 8099 
+  Origs: 
+  Dests: 8100
 (0 2) 8100 PRINT
+  Origs: 100, 200, 300, 400, 500, 600, 8099
+  Dests: 8110
 (0 2) 8110 PRINT
+  Origs: 8100
+  Dests: 8120
 (0 1) 8120 RETURN
+  Origs: 8110
+  Dests: 
 (0 0) 8199 
+  Origs: 
+  Dests: 9999
 (0 1) 9999 END
+  Origs: 8199
+  Dests: 
 
 Unreachable code:
 

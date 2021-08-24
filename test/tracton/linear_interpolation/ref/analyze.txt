@@ -20,23 +20,59 @@ Halstead complexity:
  time: 1.080
 
 (0 1) 10 REM THIS PROGRAM COMPUTES LINEAR INTERPOLATION
+  Origs: 
+  Dests: 20
 (0 2) 20 PRINT "KNOWN VALUE OF X (X1,X2) = ";
+  Origs: 10, 170
+  Dests: 30
 (2 3) 30 INPUT X1, X2
+  Origs: 20
+  Dests: 40
 (0 2) 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
+  Origs: 30
+  Dests: 50
 (2 3) 50 INPUT Y1, Y2
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "INTERPOLATE F(X) AT X = ";
+  Origs: 50
+  Dests: 70
 (1 2) 70 INPUT X
+  Origs: 60
+  Dests: 80
 (0 9) 80 LET G = ((X2 - X) * Y1) + ((X - X1) * Y2)
+  Origs: 70
+  Dests: 90
 (0 6) 90 LET F = G / (X2 - X1)
+  Origs: 80
+  Dests: 100
 (0 3) 100 PRINT "INTERPOLATED F(X) = "; F
+  Origs: 90
+  Dests: 110
 (0 2) 110 PRINT
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 110
+  Dests: 130
 (1 2) 130 INPUT L
+  Origs: 120
+  Dests: 140
 (1 4) 140 IF L = 1 THEN 160
+  Origs: 130
+  Dests: 150, 160
 (0 1) 150 STOP
+  Origs: 140
+  Dests: 
 (0 2) 160 PRINT
+  Origs: 140
+  Dests: 170
 (0 3) 170 GOTO 20
+  Origs: 160
+  Dests: 20
 (0 1) 180 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

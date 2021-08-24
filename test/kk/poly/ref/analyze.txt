@@ -20,58 +20,164 @@ Halstead complexity:
  time: 9.545
 
 (0 4) 10 DIM A(100), X(100), T(100, 2)
+  Origs: 
+  Dests: 20
 (1 2) 20 READ N
+  Origs: 10
+  Dests: 30
 (1 3) 30 FOR I = 0 TO N
+  Origs: 20
+  Dests: 40
 (1 2) 40 READ A(I)
+  Origs: 30
+  Dests: 50
 (0 1) 50 NEXT I
+  Origs: 40
+  Dests: 60
 (1 2) 60 READ X9
+  Origs: 50
+  Dests: 70
 (1 3) 70 FOR J = 1 TO X9
+  Origs: 60
+  Dests: 80
 (1 2) 80 READ X(J)
+  Origs: 70
+  Dests: 90
 (0 1) 90 NEXT J
+  Origs: 80
+  Dests: 95
 (0 0) 95 
+  Origs: 90
+  Dests: 100
 (0 1) 100 REM  MAIN ROUTINE.
+  Origs: 95
+  Dests: 110
 (0 3) 110 LET K = 0
+  Origs: 100
+  Dests: 120
 (0 2) 120 GOSUB 500
+  Origs: 110
+  Dests: 130, 500
 (0 2) 130 GOSUB 2000
+  Origs: 120
+  Dests: 140, 2000
 (0 3) 140 LET K = 1
+  Origs: 130
+  Dests: 150
 (0 2) 150 GOSUB 500
+  Origs: 140
+  Dests: 160, 500
 (0 2) 160 GOSUB 2000
+  Origs: 150
+  Dests: 170, 2000
 (0 3) 170 LET K = 2
+  Origs: 160
+  Dests: 180
 (0 2) 180 GOSUB 500
+  Origs: 170
+  Dests: 190, 500
 (0 0) 190 
+  Origs: 180
+  Dests: 200
 (0 1) 200 REM  PRINT ANSWERS.
+  Origs: 190
+  Dests: 210
 (0 5) 210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
+  Origs: 200
+  Dests: 220
 (0 2) 220 PRINT
+  Origs: 210
+  Dests: 230
 (1 3) 230 FOR J = 1 TO X9
+  Origs: 220
+  Dests: 240
 (0 5) 240 PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
+  Origs: 230
+  Dests: 250
 (0 1) 250 NEXT J
+  Origs: 240
+  Dests: 260
 (0 1) 260 STOP
+  Origs: 250
+  Dests: 
 (0 0) 270 
+  Origs: 
+  Dests: 500
 (0 1) 500 REM  RUN THROUGH X-VALUES
+  Origs: 120, 150, 180, 270
+  Dests: 510
 (1 3) 510 FOR J = 1 TO X9
+  Origs: 500
+  Dests: 520
 (0 3) 520 LET X = X(J)
+  Origs: 510
+  Dests: 530
 (0 2) 530 GOSUB 1000
+  Origs: 520
+  Dests: 540, 1000
 (0 3) 540 LET T(J, K) = Y
+  Origs: 530
+  Dests: 550
 (0 1) 550 NEXT J
+  Origs: 540
+  Dests: 560
 (0 1) 560 RETURN
+  Origs: 550
+  Dests: 
 (0 0) 570 
+  Origs: 
+  Dests: 1000
 (0 1) 1000 REM  EVALUATE.
+  Origs: 530, 570
+  Dests: 1010
 (0 3) 1010 LET Y = 0
+  Origs: 1000
+  Dests: 1020
 (1 3) 1020 FOR I = 0 TO N
+  Origs: 1010
+  Dests: 1030
 (0 5) 1030 LET Y = Y * X + A(I)
+  Origs: 1020
+  Dests: 1040
 (0 1) 1040 NEXT I
+  Origs: 1030
+  Dests: 1050
 (0 1) 1050 RETURN
+  Origs: 1040
+  Dests: 
 (0 0) 1060 
+  Origs: 
+  Dests: 2000
 (0 1) 2000 REM  DIFFERENTIATE.
+  Origs: 130, 160, 1060
+  Dests: 2010
 (1 3) 2010 FOR I = 0 TO N
+  Origs: 2000
+  Dests: 2020
 (0 6) 2020 LET A(I) = A(I) * (N - I)
+  Origs: 2010
+  Dests: 2030
 (0 1) 2030 NEXT I
+  Origs: 2020
+  Dests: 2040
 (0 4) 2040 LET N = N - 1
+  Origs: 2030
+  Dests: 2050
 (0 1) 2050 RETURN
+  Origs: 2040
+  Dests: 
 (0 0) 2060 
+  Origs: 
+  Dests: 9000
 (0 3) 9000 DATA 2, 2, -3, 1
+  Origs: 2060
+  Dests: 9100
 (0 4) 9100 DATA 8, -3, -1, 0, 0.5, 0.75, 1, 2.5, 5
+  Origs: 9000
+  Dests: 9999
 (0 1) 9999 END
+  Origs: 9100
+  Dests: 
 
 Unreachable code:
 

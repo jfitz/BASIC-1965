@@ -20,37 +20,101 @@ Halstead complexity:
  time: 3.926
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE COMPONENTS
+  Origs: 
+  Dests: 20
 (0 1) 20 REM OF A PI-NETWORK. TO MATCH TWO
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM IMPEDANCES
+  Origs: 20
+  Dests: 40
 (0 2) 40 PRINT "ENTER 1ST IMPEDANCE"
+  Origs: 30, 310
+  Dests: 50
 (1 2) 50 INPUT Z1
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "ENTER 2ND IMPEDANCE"
+  Origs: 50
+  Dests: 70
 (1 2) 70 INPUT Z2
+  Origs: 60
+  Dests: 80
 (0 2) 80 PRINT "ENTER DESIRED SYSTEM Q"
+  Origs: 70
+  Dests: 90
 (1 2) 90 INPUT Q
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "ENTER OPERATING FREQUENCY"
+  Origs: 90
+  Dests: 110
 (1 2) 110 INPUT F
+  Origs: 100
+  Dests: 120
 (0 4) 120 LET A = Z1 / Q
+  Origs: 110
+  Dests: 130
 (0 9) 130 LET C = ((Z2 / Z1) * ((Q ^ 2) + 1)) - 1
+  Origs: 120
+  Dests: 140
 (0 5) 140 LET B = Z2 / SQR(C)
+  Origs: 130
+  Dests: 150
 (0 7) 150 LET E = (Z2 / (Q * B)) + 1
+  Origs: 140
+  Dests: 160
 (0 10) 160 LET D = E * ((Q * Z1) / ((Q ^ 2) + 1))
+  Origs: 150
+  Dests: 170
 (0 3) 170 LET P = 6.28319
+  Origs: 160
+  Dests: 180
 (0 7) 180 LET C1 = 1 / (P * F * A)
+  Origs: 170
+  Dests: 190
 (0 7) 190 LET C2 = 1 / (P * F * B)
+  Origs: 180
+  Dests: 200
 (0 6) 200 LET L = D / (P * F)
+  Origs: 190
+  Dests: 210
 (0 2) 210 PRINT "COMPONENTS OF PI-NETWORK"
+  Origs: 200
+  Dests: 220
 (0 3) 220 PRINT "CAPACITOR 1 = "; C1
+  Origs: 210
+  Dests: 230
 (0 3) 230 PRINT "CAPACITOR 2 = "; C2
+  Origs: 220
+  Dests: 240
 (0 3) 240 PRINT "INDUCTOR = "; L
+  Origs: 230
+  Dests: 250
 (0 2) 250 PRINT
+  Origs: 240
+  Dests: 260
 (0 2) 260 PRINT "TO CONTINUE TYPE 1, IF NOT 0"
+  Origs: 250
+  Dests: 270
 (1 2) 270 INPUT X
+  Origs: 260
+  Dests: 280
 (1 4) 280 IF X = 1 THEN 300
+  Origs: 270
+  Dests: 290, 300
 (0 1) 290 STOP
+  Origs: 280
+  Dests: 
 (0 2) 300 PRINT
+  Origs: 280
+  Dests: 310
 (0 3) 310 GOTO 40
+  Origs: 300
+  Dests: 40
 (0 1) 320 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

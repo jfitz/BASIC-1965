@@ -20,62 +20,176 @@ Halstead complexity:
  time: 26.307
 
 (0 5) 100 DIM X(100), Y(100), Z(200), T(200)
+  Origs: 
+  Dests: 110
 (0 0) 110 
+  Origs: 100
+  Dests: 140
 (2 3) 140 READ M, N
+  Origs: 110
+  Dests: 150
 (1 3) 150 FOR I = 1 TO M
+  Origs: 140
+  Dests: 160
 (1 2) 160 READ X(I)
+  Origs: 150
+  Dests: 170
 (0 1) 170 NEXT I
+  Origs: 160
+  Dests: 180
 (1 3) 180 FOR J = 1 TO N
+  Origs: 170
+  Dests: 190
 (1 2) 190 READ Y(J)
+  Origs: 180
+  Dests: 200
 (0 1) 200 NEXT J
+  Origs: 190
+  Dests: 210
 (0 0) 210 
+  Origs: 200
+  Dests: 250
 (1 3) 250 FOR K = 1 TO M
+  Origs: 210
+  Dests: 260
 (0 3) 260 LET Z(K) = X(K)
+  Origs: 250
+  Dests: 270
 (0 4) 270 LET T(K) = +1
+  Origs: 260
+  Dests: 280
 (0 1) 280 NEXT K
+  Origs: 270
+  Dests: 290
 (1 3) 290 FOR K = 1 TO N
+  Origs: 280
+  Dests: 300
 (0 3) 300 LET Z(M + K) = Y(K)
+  Origs: 290
+  Dests: 310
 (0 3) 310 LET T(M + K) = 0
+  Origs: 300
+  Dests: 320
 (0 1) 320 NEXT K
+  Origs: 310
+  Dests: 330
 (0 0) 330 
+  Origs: 320
+  Dests: 360
 (1 5) 360 FOR K = 1 TO M + N - 1
+  Origs: 330
+  Dests: 370
 (1 5) 370 FOR L = K + 1 TO M + N
+  Origs: 360
+  Dests: 380
 (1 4) 380 IF Z(K) <= Z(L) THEN 450
+  Origs: 370
+  Dests: 390, 450
 (0 3) 390 LET T = Z(K)
+  Origs: 380
+  Dests: 400
 (0 3) 400 LET Z(K) = Z(L)
+  Origs: 390
+  Dests: 410
 (0 3) 410 LET Z(L) = T
+  Origs: 400
+  Dests: 420
 (0 3) 420 LET T = T(K)
+  Origs: 410
+  Dests: 430
 (0 3) 430 LET T(K) = T(L)
+  Origs: 420
+  Dests: 440
 (0 3) 440 LET T(L) = T
+  Origs: 430
+  Dests: 450
 (0 1) 450 NEXT L
+  Origs: 380, 440
+  Dests: 460
 (0 1) 460 NEXT K
+  Origs: 450
+  Dests: 470
 (0 0) 470 
+  Origs: 460
+  Dests: 500
 (0 3) 500 LET J = 1
+  Origs: 470
+  Dests: 510
 (0 3) 510 LET K = 1
+  Origs: 500, 630
+  Dests: 520
 (0 3) 520 LET B = J
+  Origs: 510
+  Dests: 530
 (0 3) 530 LET T = J
+  Origs: 520
+  Dests: 540
 (0 4) 540 LET J = J + 1
+  Origs: 530, 590
+  Dests: 550
 (1 6) 550 IF J > M + N THEN 600
+  Origs: 540
+  Dests: 560, 600
 (1 4) 560 IF Z(J) > Z(B) THEN 600
+  Origs: 550
+  Dests: 570, 600
 (0 4) 570 LET T = T + J
+  Origs: 560
+  Dests: 580
 (0 4) 580 LET K = K + 1
+  Origs: 570
+  Dests: 590
 (0 3) 590 GOTO 540
+  Origs: 580
+  Dests: 540
 (1 4) 600 FOR L = B TO J - 1
+  Origs: 550, 560
+  Dests: 610
 (0 4) 610 LET Z(L) = T / K
+  Origs: 600
+  Dests: 620
 (0 1) 620 NEXT L
+  Origs: 610
+  Dests: 630
 (1 7) 630 IF J <= M + N THEN 510
+  Origs: 620
+  Dests: 510, 640
 (0 0) 640 
+  Origs: 630
+  Dests: 740
 (0 3) 740 LET S(0) = 0
+  Origs: 640
+  Dests: 750
 (0 3) 750 LET S(1) = 0
+  Origs: 740
+  Dests: 760
 (1 4) 760 FOR K = 1 TO M + N
+  Origs: 750
+  Dests: 770
 (0 4) 770 LET S(T(K)) = S(T(K)) + Z(K)
+  Origs: 760
+  Dests: 790
 (0 1) 790 NEXT K
+  Origs: 770
+  Dests: 800
 (0 5) 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
+  Origs: 790
+  Dests: 810
 (0 0) 810 
+  Origs: 800
+  Dests: 900
 (0 2) 900 DATA 6, 4
+  Origs: 810
+  Dests: 910
 (0 2) 910 DATA 117, 145, 147, 120, 150, 120
+  Origs: 900
+  Dests: 920
 (0 2) 920 DATA 160, 160, 140, 190
+  Origs: 910
+  Dests: 999
 (0 1) 999 END
+  Origs: 920
+  Dests: 
 
 Unreachable code:
 

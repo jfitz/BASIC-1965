@@ -20,29 +20,77 @@ Halstead complexity:
  time: 0.528
 
 (0 1) 10 REM THIS PROGRAM GENERATES A SERIES OF
+  Origs: 
+  Dests: 20
 (0 1) 20 REM DATA POINTS, WITH WHICH THE USER CAN
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM PLOT CURVES. THE DATA POINTS GENERATED
+  Origs: 20
+  Dests: 40
 (0 1) 40 REM LIE BETWEEN THE VALUES GIVEN FOR X
+  Origs: 30
+  Dests: 50
 (0 1) 50 REM IF A STEP SIZE OTHER THAN 1 IS DERIVED
+  Origs: 40
+  Dests: 60
 (0 1) 60 REM USE A STEP STATEMENT WITH THE FOR STATEMENTS
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "STARTING VALUE OF X = ";
+  Origs: 60, 230
+  Dests: 80
 (1 2) 80 INPUT X
+  Origs: 70
+  Dests: 90
 (0 2) 90 PRINT "END VALUE OF X = ";
+  Origs: 80
+  Dests: 100
 (1 2) 100 INPUT W
+  Origs: 90
+  Dests: 110
 (0 2) 110 PRINT "TABLE"
+  Origs: 100
+  Dests: 120
 (0 3) 120 PRINT "X", "Y"
+  Origs: 110
+  Dests: 130
 (1 3) 130 FOR I = X TO W
+  Origs: 120
+  Dests: 140
 (0 5) 140 LET Y = 2 * I + 6
+  Origs: 130
+  Dests: 150
 (0 3) 150 PRINT I, Y
+  Origs: 140
+  Dests: 160
 (0 1) 160 NEXT I
+  Origs: 150
+  Dests: 170
 (0 2) 170 PRINT
+  Origs: 160
+  Dests: 180
 (0 2) 180 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 170
+  Dests: 190
 (1 2) 190 INPUT L
+  Origs: 180
+  Dests: 200
 (1 4) 200 IF L = 1 THEN 220
+  Origs: 190
+  Dests: 210, 220
 (0 1) 210 STOP
+  Origs: 200
+  Dests: 
 (0 2) 220 PRINT
+  Origs: 200
+  Dests: 230
 (0 3) 230 GOTO 70
+  Origs: 220
+  Dests: 70
 (0 1) 240 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

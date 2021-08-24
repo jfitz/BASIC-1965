@@ -20,21 +20,53 @@ Halstead complexity:
  time: 2.304
 
 (0 3) 100 LET P = 3.14159265
+  Origs: 
+  Dests: 110
 (0 3) 110 LET C = 0
+  Origs: 100
+  Dests: 120
 (1 3) 120 FOR N = 1 TO 1000
+  Origs: 110
+  Dests: 130
 (0 4) 130 LET Y = RND(Z)
+  Origs: 120
+  Dests: 140
 (0 4) 140 LET R = RND(Z)
+  Origs: 130
+  Dests: 150
 (0 8) 150 LET A = P * (R - 1 / 2)
+  Origs: 140
+  Dests: 160
 (0 5) 160 LET Y1 = Y - COS(A)
+  Origs: 150
+  Dests: 170
 (0 5) 170 LET Y2 = Y + COS(A)
+  Origs: 160
+  Dests: 172
 (0 4) 172 LET C2 = COS(A)
+  Origs: 170
+  Dests: 180
 (1 6) 180 IF SGN(Y1) = SGN(Y2) THEN 200
+  Origs: 172
+  Dests: 190, 200
 (0 4) 190 LET C = C + 1
+  Origs: 180
+  Dests: 200
 (0 1) 200 NEXT N
+  Origs: 180, 190
+  Dests: 210
 (0 4) 210 LET F = C / N
+  Origs: 200
+  Dests: 220
 (0 3) 220 PRINT "FRACTION OF CROSSINGS = " F
+  Origs: 210
+  Dests: 230
 (0 4) 230 PRINT "ESTIMATE OF PI = " 2 / F
+  Origs: 220
+  Dests: 240
 (0 1) 240 END
+  Origs: 230
+  Dests: 
 
 Unreachable code:
 

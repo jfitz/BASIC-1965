@@ -20,46 +20,128 @@ Halstead complexity:
  time: 6.668
 
 (0 1) 10 REM THIS PROGRAM CONVERTS GIVEN RECTANGULAR
+  Origs: 
+  Dests: 20
 (0 1) 20 REM COORDINATES INTO POLAR COORDINATES
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "RECTANGULAR COORDINATES"
+  Origs: 20, 400
+  Dests: 40
 (0 2) 40 PRINT "X = ";
+  Origs: 30
+  Dests: 50
 (1 2) 50 INPUT X
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "Y = ";
+  Origs: 50
+  Dests: 70
 (1 2) 70 INPUT Y
+  Origs: 60
+  Dests: 80
 (1 5) 80 IF X + Y = 0 THEN 180
+  Origs: 70
+  Dests: 90, 180
 (1 4) 90 IF X = 0 THEN 180
+  Origs: 80
+  Dests: 100, 180
 (1 4) 100 IF Y = 0 THEN 250
+  Origs: 90
+  Dests: 110, 250
 (0 4) 110 LET W = ATN(Y / X)
+  Origs: 100
+  Dests: 120
 (0 5) 120 LET W = (W * 180) / 3.14159
+  Origs: 110
+  Dests: 130
 (0 4) 130 LET R = SQR(X ^ 2 + Y ^ 2)
+  Origs: 120
+  Dests: 140
 (0 2) 140 GOTO 310
+  Origs: 130
+  Dests: 310
 (0 3) 150 LET W = 0
+  Origs: 
+  Dests: 160
 (0 3) 160 LET R = 0
+  Origs: 150
+  Dests: 170
 (0 2) 170 GOTO 310
+  Origs: 160
+  Dests: 310
 (1 4) 180 IF Y > 0 THEN 220
+  Origs: 80, 90
+  Dests: 190, 220
 (0 4) 190 LET W = -90
+  Origs: 180
+  Dests: 200
 (0 4) 200 LET R = ABS(Y)
+  Origs: 190
+  Dests: 210
 (0 2) 210 GOTO 310
+  Origs: 200
+  Dests: 310
 (0 3) 220 LET W = 90
+  Origs: 180
+  Dests: 230
 (0 3) 230 LET R = Y
+  Origs: 220
+  Dests: 240
 (0 2) 240 GOTO 310
+  Origs: 230
+  Dests: 310
 (1 4) 250 IF X > 0 THEN 290
+  Origs: 100
+  Dests: 260, 290
 (0 3) 260 LET W = 180
+  Origs: 250
+  Dests: 270
 (0 4) 270 LET R = ABS(X)
+  Origs: 260
+  Dests: 280
 (0 2) 280 GOTO 310
+  Origs: 270
+  Dests: 310
 (0 3) 290 LET W = 0
+  Origs: 250
+  Dests: 300
 (0 3) 300 LET R = X
+  Origs: 290
+  Dests: 310
 (0 2) 310 PRINT "POLAR COORDINATES"
+  Origs: 140, 170, 210, 240, 280, 300
+  Dests: 320
 (0 3) 320 PRINT "ANGLE IN DEGREES = "; W
+  Origs: 310
+  Dests: 330
 (0 3) 330 PRINT "MAGNITUDE = "; R
+  Origs: 320
+  Dests: 340
 (0 2) 340 PRINT "********************"
+  Origs: 330
+  Dests: 350
 (0 2) 350 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 340
+  Dests: 360
 (1 2) 360 INPUT L
+  Origs: 350
+  Dests: 370
 (1 4) 370 IF L = 1 THEN 390
+  Origs: 360
+  Dests: 380, 390
 (0 1) 380 STOP
+  Origs: 370
+  Dests: 
 (0 2) 390 PRINT
+  Origs: 370
+  Dests: 400
 (0 3) 400 GOTO 30
+  Origs: 390
+  Dests: 30
 (0 1) 410 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

@@ -20,74 +20,212 @@ Halstead complexity:
  time: 25.984
 
 (0 2) 5 PRINT
+  Origs: 140, 240, 340, 440, 546, 560, 820, 860
+  Dests: 10
 (0 2) 10 PRINT "A, B, P, R, Y, T";
+  Origs: 5
+  Dests: 20
 (6 7) 20 INPUT A, B, P, R, Y, T
+  Origs: 10
+  Dests: 21
 (1 4) 21 IF A < 0 THEN 800
+  Origs: 20
+  Dests: 22, 800
 (1 4) 22 IF B < 0 THEN 800
+  Origs: 21
+  Dests: 23, 800
 (1 4) 23 IF R <= 0 THEN 800
+  Origs: 22
+  Dests: 24, 800
 (1 4) 24 IF Y <= 0 THEN 800
+  Origs: 23
+  Dests: 25, 800
 (1 4) 25 IF T <= 0 THEN 800
+  Origs: 24
+  Dests: 26, 800
 (1 4) 26 IF T = 999 THEN 9999
+  Origs: 25
+  Dests: 30, 9999
 (1 4) 30 IF A = 999 THEN 100
+  Origs: 26
+  Dests: 40, 100
 (1 4) 40 IF B = 999 THEN 200
+  Origs: 30
+  Dests: 50, 200
 (1 4) 50 IF P = 999 THEN 300
+  Origs: 40
+  Dests: 60, 300
 (1 4) 60 IF Y = 999 THEN 400
+  Origs: 50
+  Dests: 70, 400
 (1 4) 70 IF R = 999 THEN 500
+  Origs: 60
+  Dests: 80, 500
 (0 0) 80 
+  Origs: 70
+  Dests: 100
 (0 1) 100 REM FIND ORIGINAL AMOUNT
+  Origs: 30, 80
+  Dests: 110
 (0 2) 110 GOSUB 1000
+  Origs: 100
+  Dests: 120, 1000
 (0 6) 120 LET A = (B + P1) / R2 - P1
+  Origs: 110
+  Dests: 125
 (1 4) 125 IF A < 0 THEN 850
+  Origs: 120
+  Dests: 130, 850
 (0 3) 130 PRINT "ORIGINAL AMOUNT = $" A
+  Origs: 125
+  Dests: 140
 (0 3) 140 GOTO 5
+  Origs: 130
+  Dests: 5
 (0 0) 150 
+  Origs: 
+  Dests: 200
 (0 1) 200 REM FIND FINAL AMOUNT
+  Origs: 40, 150
+  Dests: 210
 (0 2) 210 GOSUB 1000
+  Origs: 200
+  Dests: 220, 1000
 (0 6) 220 LET B = (A + P1) * R2 - P1
+  Origs: 210
+  Dests: 225
 (1 4) 225 IF B < 0 THEN 850
+  Origs: 220
+  Dests: 230, 850
 (0 3) 230 PRINT "FINAL AMOUNT = $" B
+  Origs: 225
+  Dests: 240
 (0 3) 240 GOTO 5
+  Origs: 230
+  Dests: 5
 (0 0) 250 
+  Origs: 
+  Dests: 300
 (0 1) 300 REM FIND PAYMENT
+  Origs: 50, 250
+  Dests: 310
 (0 2) 310 GOSUB 1000
+  Origs: 300
+  Dests: 320, 1000
 (0 11) 320 LET P = R1 * (B - A * R2) / (R2 - 1)
+  Origs: 310
+  Dests: 330
 (0 3) 330 PRINT "PAYMENT = $" P
+  Origs: 320
+  Dests: 340
 (0 3) 340 GOTO 5
+  Origs: 330
+  Dests: 5
 (0 0) 350 
+  Origs: 
+  Dests: 400
 (0 1) 400 REM FIND NUMBER OF YEARS
+  Origs: 60, 350
+  Dests: 410
 (0 2) 410 GOSUB 1000
+  Origs: 400
+  Dests: 415, 1000
 (0 7) 415 LET Q = (B + P1) / (A + P1)
+  Origs: 410
+  Dests: 416
 (1 4) 416 IF Q <= 1 THEN 850
+  Origs: 415
+  Dests: 420, 850
 (0 7) 420 LET Y = LOG(Q) / LOG(1 + R1) / T
+  Origs: 416
+  Dests: 430
 (0 3) 430 PRINT "NUMBER OF YEARS = " Y
+  Origs: 420
+  Dests: 440
 (0 3) 440 GOTO 5
+  Origs: 430
+  Dests: 5
 (0 0) 450 
+  Origs: 
+  Dests: 500
 (0 1) 500 REM FIND ANNUAL INTEREST
+  Origs: 70, 450
+  Dests: 505
 (0 9) 505 LET S = B - (A + Y * T * P)
+  Origs: 500
+  Dests: 510
 (1 4) 510 FOR R = 0.1 TO 100 STEP 0.1
+  Origs: 505
+  Dests: 520
 (0 2) 520 GOSUB 1000
+  Origs: 510
+  Dests: 530, 1000
 (0 8) 530 LET S1 = B - ((A + P1) * R2 - P1)
+  Origs: 520
+  Dests: 535
 (1 5) 535 IF S * S1 <= 0 THEN 550
+  Origs: 530
+  Dests: 536, 550
 (0 3) 536 LET S = S1
+  Origs: 535
+  Dests: 540
 (0 1) 540 NEXT R
+  Origs: 536
+  Dests: 545
 (0 2) 545 PRINT "NO ANSWER FOUND"
+  Origs: 540
+  Dests: 546
 (0 3) 546 GOTO 5
+  Origs: 545
+  Dests: 5
 (0 7) 550 PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
+  Origs: 535
+  Dests: 560
 (0 3) 560 GOTO 5
+  Origs: 550
+  Dests: 5
 (0 0) 570 
+  Origs: 
+  Dests: 800
 (0 1) 800 REM ERROR ROUTINE
+  Origs: 21, 22, 23, 24, 25, 570
+  Dests: 810
 (0 2) 810 PRINT "INCORRECT DATA. PLEASE RETYPE."
+  Origs: 800
+  Dests: 820
 (0 3) 820 GOTO 5
+  Origs: 810
+  Dests: 5
 (0 2) 850 PRINT "ANSWER IS NEGATIVE."
+  Origs: 125, 225, 416
+  Dests: 860
 (0 3) 860 GOTO 5
+  Origs: 850
+  Dests: 5
 (0 0) 999 
+  Origs: 
+  Dests: 1000
 (0 1) 1000 REM COMPUTE BASIC QUANTITIES
+  Origs: 110, 210, 310, 410, 520, 999
+  Dests: 1010
 (0 4) 1010 LET N = Y * T
+  Origs: 1000
+  Dests: 1020
 (0 5) 1020 LET R1 = R / 100 / T
+  Origs: 1010
+  Dests: 1030
 (0 4) 1030 LET P1 = P / R1
+  Origs: 1020
+  Dests: 1040
 (0 5) 1040 LET R2 = (1 + R1) ^ N
+  Origs: 1030
+  Dests: 1099
 (0 1) 1099 RETURN
+  Origs: 1040
+  Dests: 
 (0 1) 9999 END
+  Origs: 26
+  Dests: 
 
 Unreachable code:
 

@@ -20,35 +20,95 @@ Halstead complexity:
  time: 1.996
 
 (0 1) 10 REM THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
+  Origs: 
+  Dests: 20
 (0 2) 20 PRINT "FIRST TERM = ";
+  Origs: 10, 300
+  Dests: 30
 (1 2) 30 INPUT A
+  Origs: 20
+  Dests: 40
 (0 2) 40 PRINT "COMMON DIFFERENCE = ";
+  Origs: 30
+  Dests: 50
 (1 2) 50 INPUT D
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "NUMBER OF TERMS = ";
+  Origs: 50
+  Dests: 70
 (1 2) 70 INPUT N
+  Origs: 60
+  Dests: 80
 (0 2) 80 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0";
+  Origs: 70
+  Dests: 90
 (1 2) 90 INPUT C
+  Origs: 80
+  Dests: 100
 (1 4) 100 IF C = 1 THEN 120
+  Origs: 90
+  Dests: 110, 120
 (0 2) 110 GOTO 140
+  Origs: 100
+  Dests: 140
 (0 2) 120 PRINT "ARITHMETIC PROGRESSION"
+  Origs: 100
+  Dests: 130
 (0 3) 130 PRINT "TERM NUMBER", "TERM VALUE"
+  Origs: 120
+  Dests: 140
 (0 3) 140 LET J = 0
+  Origs: 110, 130
+  Dests: 150
 (1 4) 150 FOR I = 0 TO N - 1
+  Origs: 140
+  Dests: 160
 (0 4) 160 LET K = I + 1
+  Origs: 150
+  Dests: 170
 (0 6) 170 LET L = A + (I * D)
+  Origs: 160
+  Dests: 180
 (0 4) 180 LET J = J + L
+  Origs: 170
+  Dests: 190
 (1 4) 190 IF C = 1 THEN 210
+  Origs: 180
+  Dests: 200, 210
 (0 2) 200 GOTO 220
+  Origs: 190
+  Dests: 220
 (0 3) 210 PRINT K, L
+  Origs: 190
+  Dests: 220
 (0 1) 220 NEXT I
+  Origs: 200, 210
+  Dests: 230
 (0 3) 230 PRINT "SUM = "; J
+  Origs: 220
+  Dests: 240
 (0 2) 240 PRINT
+  Origs: 230
+  Dests: 250
 (0 2) 250 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 240
+  Dests: 260
 (1 2) 260 INPUT X
+  Origs: 250
+  Dests: 270
 (1 4) 270 IF X = 1 THEN 290
+  Origs: 260
+  Dests: 290, 290
 (0 1) 290 STOP
+  Origs: 270, 270
+  Dests: 
 (0 3) 300 GOTO 20
+  Origs: 
+  Dests: 20
 (0 1) 310 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

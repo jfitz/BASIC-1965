@@ -20,31 +20,83 @@ Halstead complexity:
  time: 3.742
 
 (2 3) 10 READ R, C
+  Origs: 
+  Dests: 20
 (1 3) 20 FOR I = 1 TO R
+  Origs: 10
+  Dests: 30
 (1 3) 30 FOR J = 1 TO C
+  Origs: 20
+  Dests: 40
 (1 2) 40 READ T(I, J)
+  Origs: 30
+  Dests: 50
 (0 1) 50 NEXT J
+  Origs: 40
+  Dests: 60
 (0 1) 60 NEXT I
+  Origs: 50
+  Dests: 70
 (1 3) 70 FOR I = 1 TO R
+  Origs: 60
+  Dests: 80
 (0 3) 80 LET S = 0
+  Origs: 70
+  Dests: 90
 (1 3) 90 FOR J = 1 TO C
+  Origs: 80
+  Dests: 100
 (0 4) 100 LET S = S + T(I, J)
+  Origs: 90
+  Dests: 110
 (0 1) 110 NEXT J
+  Origs: 100
+  Dests: 120
 (0 5) 120 PRINT "SUM OF ROW" I; "EQUALS" S
+  Origs: 110
+  Dests: 130
 (0 1) 130 NEXT I
+  Origs: 120
+  Dests: 140
 (0 2) 140 PRINT
+  Origs: 130
+  Dests: 150
 (1 3) 150 FOR J = 1 TO C
+  Origs: 140
+  Dests: 160
 (0 3) 160 LET S = 0
+  Origs: 150
+  Dests: 170
 (1 3) 170 FOR I = 1 TO R
+  Origs: 160
+  Dests: 180
 (0 4) 180 LET S = S + T(I, J)
+  Origs: 170
+  Dests: 190
 (0 1) 190 NEXT I
+  Origs: 180
+  Dests: 200
 (0 5) 200 PRINT "SUM OF COLUMN" J; "EQUALS" S
+  Origs: 190
+  Dests: 210
 (0 1) 210 NEXT J
+  Origs: 200
+  Dests: 220
 (0 2) 220 DATA 3, 5
+  Origs: 210
+  Dests: 230
 (0 2) 230 DATA 1, 2, 3, 4, 5
+  Origs: 220
+  Dests: 240
 (0 2) 240 DATA 5, 4, 3, 2, 1
+  Origs: 230
+  Dests: 250
 (0 2) 250 DATA 2, 0, 5, 2, 1
+  Origs: 240
+  Dests: 260
 (0 1) 260 END
+  Origs: 250
+  Dests: 
 
 Unreachable code:
 

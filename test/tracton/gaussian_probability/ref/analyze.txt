@@ -20,21 +20,53 @@ Halstead complexity:
  time: 0.597
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GAUSSIAN PROBABILITY
+  Origs: 
+  Dests: 20
 (0 1) 20 REM FUNCTION OF X
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "X = ";
+  Origs: 20, 150
+  Dests: 40
 (1 2) 40 INPUT X
+  Origs: 30
+  Dests: 50
 (0 4) 50 LET A = EXP(-(X ^ 2) / 2)
+  Origs: 40
+  Dests: 60
 (0 3) 60 LET B = .398942
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET C = B * A
+  Origs: 60
+  Dests: 80
 (0 3) 80 PRINT "F(X) = "; C
+  Origs: 70
+  Dests: 90
 (0 2) 90 PRINT
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "TO CONTINUE TYPE 1, 0 TO STOP"
+  Origs: 90
+  Dests: 110
 (1 2) 110 INPUT L
+  Origs: 100
+  Dests: 120
 (1 4) 120 IF L = 1 THEN 140
+  Origs: 110
+  Dests: 130, 140
 (0 1) 130 STOP
+  Origs: 120
+  Dests: 
 (0 2) 140 PRINT
+  Origs: 120
+  Dests: 150
 (0 3) 150 GOTO 30
+  Origs: 140
+  Dests: 30
 (0 1) 160 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

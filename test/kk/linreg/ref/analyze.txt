@@ -20,58 +20,164 @@ Halstead complexity:
  time: 9.921
 
 (0 3) 100 LET X1 = 0
+  Origs: 
+  Dests: 110
 (0 3) 110 LET X2 = 0
+  Origs: 100
+  Dests: 120
 (0 3) 120 LET Y1 = 0
+  Origs: 110
+  Dests: 130
 (0 3) 130 LET Y2 = 0
+  Origs: 120
+  Dests: 140
 (0 3) 140 LET Z = 0
+  Origs: 130
+  Dests: 150
 (0 0) 150 
+  Origs: 140
+  Dests: 160
 (1 2) 160 READ N
+  Origs: 150
+  Dests: 170
 (1 3) 170 FOR I = 1 TO N
+  Origs: 160
+  Dests: 180
 (2 3) 180 READ X, Y
+  Origs: 170
+  Dests: 190
 (0 4) 190 LET X1 = X1 + X
+  Origs: 180
+  Dests: 200
 (0 4) 200 LET Y1 = Y1 + Y
+  Origs: 190
+  Dests: 210
 (0 6) 210 LET X2 = X2 + X * X
+  Origs: 200
+  Dests: 220
 (0 6) 220 LET Y2 = Y2 + Y * Y
+  Origs: 210
+  Dests: 230
 (0 6) 230 LET Z = Z + X * Y
+  Origs: 220
+  Dests: 240
 (0 1) 240 NEXT I
+  Origs: 230
+  Dests: 250
 (0 0) 250 
+  Origs: 240
+  Dests: 260
 (0 4) 260 LET X3 = X1 / N
+  Origs: 250
+  Dests: 265
 (0 4) 265 LET Y3 = Y1 / N
+  Origs: 260
+  Dests: 270
 (0 6) 270 LET S1 = X2 - X1 * X3
+  Origs: 265
+  Dests: 280
 (0 6) 280 LET S2 = Y2 - Y1 * Y3
+  Origs: 270
+  Dests: 290
 (0 6) 290 LET S = Z - X1 * Y3
+  Origs: 280
+  Dests: 300
 (0 4) 300 LET B = S / S1
+  Origs: 290
+  Dests: 310
 (0 6) 310 LET B1 = Y3 - B * X3
+  Origs: 300
+  Dests: 320
 (0 6) 320 LET S3 = S2 - B * S
+  Origs: 310
+  Dests: 330
 (0 6) 330 LET S4 = S3 / (N - 2)
+  Origs: 320
+  Dests: 340
 (0 0) 340 
+  Origs: 330
+  Dests: 350
 (0 3) 350 PRINT "NUMBER = " N
+  Origs: 340
+  Dests: 360
 (0 5) 360 PRINT "MEAN OF X = " X3, "OF Y " Y3
+  Origs: 350
+  Dests: 370
 (0 5) 370 PRINT "SLOPE = " B, "Y-INTERCEPT = " B1
+  Origs: 360
+  Dests: 375
 (0 2) 375 PRINT
+  Origs: 370
+  Dests: 380
 (0 4) 380 PRINT "SUM-OF-SQUARES ", "TOTAL", Y2
+  Origs: 375
+  Dests: 390
 (0 5) 390 PRINT "    ", "MEAN", Y3 * Y1
+  Origs: 380
+  Dests: 400
 (0 5) 400 PRINT "    ", "SLOPE", B * S
+  Origs: 390
+  Dests: 410
 (0 4) 410 PRINT "    ", "RESIDUAL", S3
+  Origs: 400
+  Dests: 415
 (0 2) 415 PRINT
+  Origs: 410
+  Dests: 420
 (0 2) 420 PRINT "STANDARD DEVIATIONS"
+  Origs: 415
+  Dests: 430
 (0 5) 430 PRINT "    ", "X  ", SQR(S1 / (N - 1))
+  Origs: 420
+  Dests: 440
 (0 5) 440 PRINT "    ", "Y  ", SQR(S2 / (N - 1))
+  Origs: 430
+  Dests: 450
 (0 5) 450 PRINT "    ", "ERROR", SQR(S4)
+  Origs: 440
+  Dests: 460
 (0 5) 460 PRINT "    ", "Y-BAR", SQR(S4 / N)
+  Origs: 450
+  Dests: 470
 (0 5) 470 PRINT "    ", "SLOPE", SQR(S4 / S1)
+  Origs: 460
+  Dests: 480
 (0 5) 480 PRINT "    ", "Y-INTER.", SQR(S4 * (1 / N + X3 * X3 / S1))
+  Origs: 470
+  Dests: 485
 (0 2) 485 PRINT
+  Origs: 480
+  Dests: 490
 (0 5) 490 PRINT "F-RATIO FOR SLOPE = " B * S / S4
+  Origs: 485
+  Dests: 500
 (0 5) 500 PRINT "CORRELATION COEFFICIENT = " S / SQR(S1 * S2)
+  Origs: 490
+  Dests: 510
 (0 0) 510 
+  Origs: 500
+  Dests: 900
 (0 2) 900 DATA 5
+  Origs: 510
+  Dests: 901
 (0 2) 901 DATA 480, 56
+  Origs: 900
+  Dests: 902
 (0 2) 902 DATA 500, 61
+  Origs: 901
+  Dests: 903
 (0 2) 903 DATA 520, 78
+  Origs: 902
+  Dests: 904
 (0 2) 904 DATA 540, 71
+  Origs: 903
+  Dests: 905
 (0 2) 905 DATA 560, 82
+  Origs: 904
+  Dests: 999
 (0 1) 999 END
+  Origs: 905
+  Dests: 
 
 Unreachable code:
 

@@ -20,28 +20,74 @@ Halstead complexity:
  time: 1.471
 
 (0 1) 10 REM THIS PROGRAM IS A BUBBLE SORT, WHICH PLACES THE
+  Origs: 
+  Dests: 20
 (0 1) 20 REM VALUES IN AN ARRAY IN ASCENDING SEQUENCE
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM IT IS INTENDED TO BE AN EXAMPLE AND NOT A
+  Origs: 20
+  Dests: 40
 (0 1) 40 REM SPECIFIC CASE
+  Origs: 30
+  Dests: 50
 (0 1) 50 REM THIS PROGRAM MAY BE CONVERTED INTO A SUBROUTINE
+  Origs: 40
+  Dests: 60
 (0 1) 60 REM FOR USE IN A LARGER PROGRAM
+  Origs: 50
+  Dests: 70
 (0 1) 70 REM THE ARRAY IS Z OF LENGTH N
+  Origs: 60
+  Dests: 80
 (0 1) 80 REM Z IS ASSUMED TO HAVE BEEN DECLARED IN A DIM
+  Origs: 70
+  Dests: 90
 (0 1) 90 REM STATEMENT AND N SET AHEAD OF TIME
+  Origs: 80
+  Dests: 100
 (0 4) 100 LET I = N - 1
+  Origs: 90
+  Dests: 110
 (1 3) 110 FOR J = 1 TO I
+  Origs: 100
+  Dests: 120
 (0 4) 120 LET K = J + 1
+  Origs: 110
+  Dests: 130
 (1 5) 130 FOR L = N TO K STEP -1
+  Origs: 120
+  Dests: 140
 (1 4) 140 IF Z(L) > Z(J) THEN 210
+  Origs: 130
+  Dests: 150, 210
 (0 1) 150 REM SAVE FIRST VALUE
+  Origs: 140
+  Dests: 160
 (0 3) 160 LET T = Z(L)
+  Origs: 150
+  Dests: 170
 (0 3) 170 LET Z(L) = Z(J)
+  Origs: 160
+  Dests: 180
 (0 3) 180 LET Z(J) = T
+  Origs: 170
+  Dests: 190
 (0 1) 190 REM IF Z IS THE KEY FOR SORTING MULTIPLE
+  Origs: 180
+  Dests: 200
 (0 1) 200 REM ARRAYS AND EXTRA CODE HERE
+  Origs: 190
+  Dests: 210
 (0 1) 210 NEXT L
+  Origs: 140, 200
+  Dests: 220
 (0 1) 220 NEXT J
+  Origs: 210
+  Dests: 230
 (0 1) 230 RETURN
+  Origs: 220
+  Dests: 
 
 Unreachable code:
 

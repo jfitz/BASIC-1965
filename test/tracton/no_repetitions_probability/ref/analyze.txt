@@ -20,24 +20,62 @@ Halstead complexity:
  time: 0.789
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE "NO REPETITIONS"
+  Origs: 
+  Dests: 20
 (0 1) 20 REM PROBABILITY OF A SAMPLE
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "********************"
+  Origs: 20, 160
+  Dests: 35
 (0 2) 35 PRINT "TOTAL POPULATION"
+  Origs: 30
+  Dests: 40
 (1 2) 40 INPUT M
+  Origs: 35
+  Dests: 50
 (0 2) 50 PRINT "SIZE OF SAMPLE"
+  Origs: 40
+  Dests: 60
 (1 2) 60 INPUT N
+  Origs: 50
+  Dests: 70
 (0 3) 70 LET J = 1
+  Origs: 60
+  Dests: 80
 (1 4) 80 FOR I = 1 TO N - 1
+  Origs: 70
+  Dests: 90
 (0 6) 90 LET K = 1 - (I / M)
+  Origs: 80
+  Dests: 100
 (0 4) 100 LET J = J * K
+  Origs: 90
+  Dests: 110
 (0 1) 110 NEXT I
+  Origs: 100
+  Dests: 120
 (0 3) 120 PRINT "PROBABILITY = "; J
+  Origs: 110
+  Dests: 130
 (0 2) 130 PRINT
+  Origs: 120
+  Dests: 140
 (0 2) 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 130
+  Dests: 150
 (1 2) 150 INPUT L
+  Origs: 140
+  Dests: 160
 (1 5) 160 IF L = 1 THEN 30
+  Origs: 150
+  Dests: 30, 170
 (0 1) 170 STOP
+  Origs: 160
+  Dests: 
 (0 1) 180 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

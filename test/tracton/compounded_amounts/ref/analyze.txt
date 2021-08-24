@@ -20,63 +20,179 @@ Halstead complexity:
  time: 9.622
 
 (0 1) 10 REM COMPOUNDED AMOUNTS
+  Origs: 
+  Dests: 20
 (0 2) 20 PRINT "FUTURE VALUE (1)"
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "PRESENT VALUE (2)"
+  Origs: 20
+  Dests: 40
 (0 2) 40 PRINT "INTEREST (3)"
+  Origs: 30
+  Dests: 50
 (0 2) 50 PRINT "PERIOD INTEREST RATE (4)"
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "NUMBER OF TIME PERIODS (5)"
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "ENTER 1 TO 5"
+  Origs: 60, 405
+  Dests: 80
 (1 2) 80 INPUT A
+  Origs: 70
+  Dests: 90
 (0 1) 90 
+  Origs: 80
+  Dests: 100
 (0 2) 100 GOSUB 410
+  Origs: 90
+  Dests: 110, 410
 (0 2) 110 GOSUB 440
+  Origs: 100
+  Dests: 120, 440
 (0 2) 120 GOSUB 470
+  Origs: 110
+  Dests: 130, 470
 (0 7) 130 LET X = Y * ((1 + I) ^ N)
+  Origs: 120
+  Dests: 140
 (0 3) 140 PRINT "FUTURE VALUE = "; X
+  Origs: 130
+  Dests: 150
 (0 2) 150 GOTO 390
+  Origs: 140
+  Dests: 390
 (0 2) 160 GOSUB 500
+  Origs: 
+  Dests: 170, 500
 (0 2) 170 GOSUB 440
+  Origs: 160
+  Dests: 180, 440
 (0 2) 180 GOSUB 470
+  Origs: 170
+  Dests: 190, 470
 (0 7) 190 LET Y = X * ((1 + I) ^ N)
+  Origs: 180
+  Dests: 200
 (0 3) 200 PRINT "PRESENT VALUE = "; Y
+  Origs: 190
+  Dests: 210
 (0 2) 210 GOTO 390
+  Origs: 200
+  Dests: 390
 (0 2) 220 GOSUB 410
+  Origs: 
+  Dests: 230, 410
 (0 2) 230 GOSUB 440
+  Origs: 220
+  Dests: 240, 440
 (0 2) 240 GOSUB 470
+  Origs: 230
+  Dests: 250, 470
 (0 9) 250 LET L = Y * ((1 + I ^ N) - 1)
+  Origs: 240
+  Dests: 260
 (0 3) 260 PRINT "INTEREST = "; L
+  Origs: 250
+  Dests: 270
 (0 2) 270 GOTO 390
+  Origs: 260
+  Dests: 390
 (0 2) 280 GOSUB 410
+  Origs: 
+  Dests: 290, 410
 (0 2) 290 GOSUB 500
+  Origs: 280
+  Dests: 300, 500
 (0 2) 300 GOSUB 470
+  Origs: 290
+  Dests: 310, 470
 (0 8) 310 LET I = ((X / Y) ^ (1 / N)) - 1
+  Origs: 300
+  Dests: 320
 (0 3) 320 PRINT "INTEREST RATE = "; I
+  Origs: 310
+  Dests: 330
 (0 2) 330 GOTO 390
+  Origs: 320
+  Dests: 390
 (0 2) 340 GOSUB 500
+  Origs: 
+  Dests: 350, 500
 (0 2) 350 GOSUB 410
+  Origs: 340
+  Dests: 360, 410
 (0 2) 360 GOSUB 440
+  Origs: 350
+  Dests: 370, 440
 (0 6) 370 LET N = (LOG(X / Y)) / (LOG(1 + I))
+  Origs: 360
+  Dests: 380
 (0 3) 380 PRINT "NUMBER OF TIME PERIODS = "; N
+  Origs: 370
+  Dests: 390
 (0 2) 390 PRINT
+  Origs: 150, 210, 270, 330, 380
+  Dests: 400
 (0 2) 400 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 390
+  Dests: 401
 (1 2) 401 INPUT L
+  Origs: 400
+  Dests: 402
 (1 4) 402 IF L = 1 THEN 404
+  Origs: 401
+  Dests: 403, 404
 (0 1) 403 STOP
+  Origs: 402
+  Dests: 
 (0 2) 404 PRINT
+  Origs: 402
+  Dests: 405
 (0 3) 405 GOTO 70
+  Origs: 404
+  Dests: 70
 (0 2) 410 PRINT "PRESENT VALUE = ";
+  Origs: 100, 220, 280, 350
+  Dests: 420
 (1 2) 420 INPUT Y
+  Origs: 410
+  Dests: 430
 (0 1) 430 RETURN
+  Origs: 420
+  Dests: 
 (0 2) 440 PRINT "INTEREST RATE = ";
+  Origs: 110, 170, 230, 360
+  Dests: 450
 (1 2) 450 INPUT I
+  Origs: 440
+  Dests: 460
 (0 1) 460 RETURN
+  Origs: 450
+  Dests: 
 (0 2) 470 PRINT "NUMBER OF TIME PERIODS = ";
+  Origs: 120, 180, 240, 300
+  Dests: 480
 (1 2) 480 INPUT N
+  Origs: 470
+  Dests: 490
 (0 1) 490 RETURN
+  Origs: 480
+  Dests: 
 (0 2) 500 PRINT "FUTURE VALUE = ";
+  Origs: 160, 290, 340
+  Dests: 510
 (1 2) 510 INPUT X
+  Origs: 500
+  Dests: 520
 (0 1) 520 RETURN
+  Origs: 510
+  Dests: 
 (0 1) 530 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

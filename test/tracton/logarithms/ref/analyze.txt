@@ -20,21 +20,53 @@ Halstead complexity:
  time: 0.375
 
 (0 1) 10 REM THIS PROGRAM WILL COMPUTE THE LOG
+  Origs: 
+  Dests: 20
 (0 1) 20 REM OF ANY POSITIVE NUMBER X, TO ANY POSITIVE
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM BASE Y
+  Origs: 20
+  Dests: 40
 (0 2) 40 PRINT "BASE = "
+  Origs: 30, 150
+  Dests: 50
 (1 2) 50 INPUT Y
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "X = "
+  Origs: 50
+  Dests: 70
 (1 2) 70 INPUT X
+  Origs: 60
+  Dests: 80
 (0 6) 80 LET J = LOG(X) / LOG(Y)
+  Origs: 70
+  Dests: 90
 (0 5) 90 PRINT "LOG"; X; " = "; J
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 90
+  Dests: 110
 (1 2) 110 INPUT L
+  Origs: 100
+  Dests: 120
 (1 4) 120 IF L = 1 THEN 140
+  Origs: 110
+  Dests: 130, 140
 (0 1) 130 STOP
+  Origs: 120
+  Dests: 
 (0 2) 140 PRINT
+  Origs: 120
+  Dests: 150
 (0 3) 150 GOTO 40
+  Origs: 140
+  Dests: 40
 (0 1) 160 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

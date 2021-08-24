@@ -20,28 +20,74 @@ Halstead complexity:
  time: 2.347
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE DOT PRODUCT AND
+  Origs: 
+  Dests: 20
 (0 1) 20 REM THE NORMS OF TWO VECTORS
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "ENTER 1ST VECTOR (A1,A2,A3)"
+  Origs: 20, 220
+  Dests: 40
 (3 4) 40 INPUT A1, A2, A3
+  Origs: 30
+  Dests: 50
 (0 2) 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
+  Origs: 40
+  Dests: 60
 (3 4) 60 INPUT B1, B2, B3
+  Origs: 50
+  Dests: 70
 (0 1) 70 REM CALCULATE THE NORM OF A VECTOR
+  Origs: 60
+  Dests: 80
 (0 4) 80 LET X = SQR((A1 ^ 2) + (A2 ^ 2) + (A3 ^ 2))
+  Origs: 70
+  Dests: 90
 (0 1) 90 REM CALCULATE THE NORM OF B VECTOR
+  Origs: 80
+  Dests: 100
 (0 4) 100 LET Y = SQR((B1 ^ 2) + (B2 ^ 2) + (B3 ^ 2))
+  Origs: 90
+  Dests: 110
 (0 1) 110 REM CALCULATE DOT PRODUCT
+  Origs: 100
+  Dests: 120
 (0 10) 120 LET Z = (A1 * B1) + (A2 * B2) + (A3 * B3)
+  Origs: 110
+  Dests: 130
 (0 3) 130 PRINT "DOT PRODUCT = "; Z
+  Origs: 120
+  Dests: 140
 (0 3) 140 PRINT "NORM OF 1ST VECTOR = "; X
+  Origs: 130
+  Dests: 150
 (0 3) 150 PRINT "NORM OF 2ND VECTOR = "; Y
+  Origs: 140
+  Dests: 160
 (0 2) 160 PRINT "********************"
+  Origs: 150
+  Dests: 170
 (0 2) 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 160
+  Dests: 180
 (1 2) 180 INPUT L
+  Origs: 170
+  Dests: 190
 (1 4) 190 IF L = 1 THEN 210
+  Origs: 180
+  Dests: 200, 210
 (0 1) 200 STOP
+  Origs: 190
+  Dests: 
 (0 2) 210 PRINT
+  Origs: 190
+  Dests: 220
 (0 3) 220 GOTO 30
+  Origs: 210
+  Dests: 30
 (0 1) 230 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

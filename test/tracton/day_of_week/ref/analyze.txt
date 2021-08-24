@@ -20,42 +20,116 @@ Halstead complexity:
  time: 3.819
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE DAY OF THE WEEK
+  Origs: 
+  Dests: 20
 (0 1) 20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
+  Origs: 10
+  Dests: 30
 (0 1) 30 LET J $ (1) = "SUNDAY"
+  Origs: 20, 350
+  Dests: 40
 (0 1) 40 LET J $ (2) = "MONDAY"
+  Origs: 30
+  Dests: 50
 (0 1) 50 LET J $ (3) = "TUESDAY"
+  Origs: 40
+  Dests: 60
 (0 1) 60 LET J $ (4) = "WEDNESDAY"
+  Origs: 50
+  Dests: 70
 (0 1) 70 LET J $ (5) = "THURSDAY"
+  Origs: 60
+  Dests: 80
 (0 1) 80 LET J $ (6) = "FRIDAY"
+  Origs: 70
+  Dests: 90
 (0 1) 90 LET J $ (7) = "SATURDAY"
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+  Origs: 90, 140
+  Dests: 110
 (3 4) 110 INPUT D, M, Y
+  Origs: 100
+  Dests: 120
 (1 4) 120 IF Y > 1752 THEN 150
+  Origs: 110
+  Dests: 130, 150
 (0 2) 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
+  Origs: 120
+  Dests: 140
 (0 3) 140 GOTO 100
+  Origs: 130
+  Dests: 100
 (0 4) 150 LET K = INT(0.6 + (1 / M))
+  Origs: 120
+  Dests: 160
 (0 4) 160 LET L = Y - K
+  Origs: 150
+  Dests: 170
 (0 6) 170 LET O = M + 12 * K
+  Origs: 160
+  Dests: 180
 (0 4) 180 LET P = L / 100
+  Origs: 170
+  Dests: 190
 (0 4) 190 LET Z1 = INT(P / 4)
+  Origs: 180
+  Dests: 200
 (0 4) 200 LET Z2 = INT(P)
+  Origs: 190
+  Dests: 210
 (0 4) 210 LET Z3 = INT((5 * L) / 4)
+  Origs: 200
+  Dests: 220
 (0 4) 220 LET Z4 = INT(13 * (O + 1) / 5)
+  Origs: 210
+  Dests: 230
 (0 8) 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
+  Origs: 220
+  Dests: 240
 (0 8) 240 LET Z = Z - (7 * INT(Z / 7)) + 1
+  Origs: 230
+  Dests: 250
 (0 2) 250 PRINT "THE DAY OF THE WEEK IS "; J $ (Z)
+  Origs: 240
+  Dests: 260
 (0 2) 260 PRINT
+  Origs: 250
+  Dests: 270
 (0 2) 270 PRINT "FOR NEXT DATE TYPE IN YES, IF NOT"
+  Origs: 260, 330
+  Dests: 280
 (0 2) 280 PRINT "TYPE NO"
+  Origs: 270
+  Dests: 290
 (0 1) 290 INPUT L $
+  Origs: 280
+  Dests: 300
 (1 2) 300 IF L $ ="YES" THEN 340
+  Origs: 290
+  Dests: 310, 340
 (1 2) 310 IF L $ ="NO" THEN 360
+  Origs: 300
+  Dests: 320, 360
 (0 2) 320 PRINT "INVALID COMMAND"
+  Origs: 310
+  Dests: 330
 (0 3) 330 GOTO 270
+  Origs: 320
+  Dests: 270
 (0 2) 340 PRINT
+  Origs: 300
+  Dests: 350
 (0 3) 350 GOTO 30
+  Origs: 340
+  Dests: 30
 (0 2) 360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
+  Origs: 310
+  Dests: 370
 (0 1) 370 END
+  Origs: 360
+  Dests: 
 
 Unreachable code:
 

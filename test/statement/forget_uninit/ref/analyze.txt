@@ -20,12 +20,26 @@ Halstead complexity:
  time: 0.000
 
 (0 1) 10 REM Test the FORGET statement
+  Origs: 
+  Dests: 12
 (0 2) 12 OPTION REQUIRE_INITIALIZED TRUE
+  Origs: 10
+  Dests: 20
 (0 3) 20 LET A = 10
+  Origs: 12
+  Dests: 30
 (0 2) 30 PRINT A
+  Origs: 20
+  Dests: 40
 (0 1) 40 FORGET B
+  Origs: 30
+  Dests: 90
 (0 2) 90 PRINT A
+  Origs: 40
+  Dests: 99
 (0 1) 99 END
+  Origs: 90
+  Dests: 
 
 Unreachable code:
 

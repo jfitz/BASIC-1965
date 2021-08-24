@@ -20,74 +20,212 @@ Halstead complexity:
  time: 39.779
 
 (0 3) 10 DIM T(100, 10), V(100)
+  Origs: 
+  Dests: 20
 (1 3) 20 FOR I = 0 TO 100
+  Origs: 10
+  Dests: 30
 (1 2) 30 READ K
+  Origs: 20
+  Dests: 40
 (1 4) 40 IF K = 999 THEN 100
+  Origs: 30
+  Dests: 50, 100
 (0 3) 50 LET T(I, 0) = K
+  Origs: 40
+  Dests: 60
 (0 4) 60 LET K1 = ABS(K)
+  Origs: 50
+  Dests: 70
 (1 7) 70 FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
+  Origs: 60
+  Dests: 80
 (1 2) 80 READ T(I, J)
+  Origs: 70
+  Dests: 90
 (0 1) 90 NEXT J
+  Origs: 80
+  Dests: 95
 (0 1) 95 NEXT I
+  Origs: 90
+  Dests: 99
 (0 0) 99 
+  Origs: 95
+  Dests: 100
 (0 2) 100 PRINT "SELECTED ACTS: ";
+  Origs: 40, 99
+  Dests: 105
 (1 6) 105 FOR I = I - 1 TO 0 STEP -1
+  Origs: 100
+  Dests: 110
 (0 3) 110 LET K = T(I, 0)
+  Origs: 105
+  Dests: 120
 (1 4) 120 IF K > 0 THEN 200
+  Origs: 110
+  Dests: 130, 200
 (1 4) 130 IF K < 0 THEN 300
+  Origs: 120
+  Dests: 140, 300
 (0 3) 140 LET V(I) = T(I, 1)
+  Origs: 130
+  Dests: 150
 (0 2) 150 GOTO 399
+  Origs: 140
+  Dests: 399
 (0 3) 200 LET S = 0
+  Origs: 120
+  Dests: 210
 (1 5) 210 FOR J = 2 TO 2 * K STEP 2
+  Origs: 200
+  Dests: 220
 (0 3) 220 LET B = T(I, J)
+  Origs: 210
+  Dests: 230
 (0 6) 230 LET S = S + T(I, J - 1) * V(B)
+  Origs: 220
+  Dests: 240
 (0 1) 240 NEXT J
+  Origs: 230
+  Dests: 250
 (0 3) 250 LET V(I) = S
+  Origs: 240
+  Dests: 260
 (0 2) 260 GOTO 399
+  Origs: 250
+  Dests: 399
 (0 4) 300 LET M = -999999999
+  Origs: 130
+  Dests: 310
 (1 6) 310 FOR J = 2 TO 2 * ABS(K) STEP 2
+  Origs: 300
+  Dests: 320
 (0 3) 320 LET V = V(T(I, J))
+  Origs: 310
+  Dests: 330
 (1 4) 330 IF V <= M THEN 360
+  Origs: 320
+  Dests: 340, 360
 (0 3) 340 LET M = V
+  Origs: 330
+  Dests: 350
 (0 3) 350 LET A = T(I, J - 1)
+  Origs: 340
+  Dests: 360
 (0 1) 360 NEXT J
+  Origs: 330, 350
+  Dests: 370
 (0 2) 370 PRINT A;
+  Origs: 360
+  Dests: 380
 (0 3) 380 LET V(I) = M
+  Origs: 370
+  Dests: 399
 (0 1) 399 NEXT I
+  Origs: 150, 260, 380
+  Dests: 400
 (0 2) 400 PRINT
+  Origs: 399
+  Dests: 410
 (0 2) 410 PRINT
+  Origs: 400
+  Dests: 420
 (0 3) 420 PRINT "EXPECTED GAIN = $" V(0)
+  Origs: 410
+  Dests: 430
 (0 0) 430 
+  Origs: 420
+  Dests: 900
 (0 3) 900 DATA -3, 1, 1, 2, 2, 3, 3
+  Origs: 430
+  Dests: 901
 (0 2) 901 DATA 2, .5, 4, 0.5, 5
+  Origs: 900
+  Dests: 902
 (0 2) 902 DATA 0, 0
+  Origs: 901
+  Dests: 903
 (0 2) 903 DATA 3, 0.333, 6, 0.167, 7, 0.5, 8
+  Origs: 902
+  Dests: 904
 (0 2) 904 DATA 0, 100
+  Origs: 903
+  Dests: 905
 (0 3) 905 DATA -2, 4, 9, 5, 10
+  Origs: 904
+  Dests: 906
 (0 2) 906 DATA 2, 0.5, 11, 0.5, 12
+  Origs: 905
+  Dests: 907
 (0 3) 907 DATA 0, -10
+  Origs: 906
+  Dests: 908
 (0 2) 908 DATA 2, 0.75, 13, 0.25, 14
+  Origs: 907
+  Dests: 909
 (0 2) 909 DATA 3, 0.167, 15, 0.333, 16, 0.5, 17
+  Origs: 908
+  Dests: 910
 (0 3) 910 DATA 0, -100
+  Origs: 909
+  Dests: 911
 (0 2) 911 DATA 0, 90
+  Origs: 910
+  Dests: 912
 (0 3) 912 DATA -2, 6, 18, 7, 19
+  Origs: 911
+  Dests: 913
 (0 2) 913 DATA 0, 90
+  Origs: 912
+  Dests: 914
 (0 3) 914 DATA -2, 8, 20, 9, 21
+  Origs: 913
+  Dests: 915
 (0 2) 915 DATA 0, 100
+  Origs: 914
+  Dests: 916
 (0 2) 916 DATA 0, 0
+  Origs: 915
+  Dests: 917
 (0 3) 917 DATA 0, -100
+  Origs: 916
+  Dests: 918
 (0 2) 918 DATA 3, 0.167, 22, 0.333, 23, 0.5, 24
+  Origs: 917
+  Dests: 919
 (0 3) 919 DATA 0, -110
+  Origs: 918
+  Dests: 920
 (0 2) 920 DATA 3, 0.167, 25, 0.333, 26, 0.5, 27
+  Origs: 919
+  Dests: 921
 (0 3) 921 DATA 0, -110
+  Origs: 920
+  Dests: 922
 (0 2) 922 DATA 0, 90
+  Origs: 921
+  Dests: 923
 (0 3) 923 DATA 0, -10
+  Origs: 922
+  Dests: 924
 (0 3) 924 DATA 0, -110
+  Origs: 923
+  Dests: 925
 (0 2) 925 DATA 0, 90
+  Origs: 924
+  Dests: 926
 (0 3) 926 DATA 0, -10
+  Origs: 925
+  Dests: 927
 (0 3) 927 DATA 0, -110
+  Origs: 926
+  Dests: 998
 (0 2) 998 DATA 999
+  Origs: 927
+  Dests: 999
 (0 1) 999 END
+  Origs: 998
+  Dests: 
 
 Unreachable code:
 

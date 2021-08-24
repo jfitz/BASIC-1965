@@ -20,31 +20,83 @@ Halstead complexity:
  time: 11.069
 
 (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+  Origs: 
+  Dests: 11
 (0 1) 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
+  Origs: 10
+  Dests: 20
 (2 3) 20 READ A, B
+  Origs: 11
+  Dests: 25
 (1 6) 25 IF FNF(A) > 0 THEN 230
+  Origs: 20
+  Dests: 30, 230
 (0 5) 30 LET X = (A + B) / 2
+  Origs: 25, 90
+  Dests: 40
 (1 6) 40 IF FNF(A) = 0 THEN 100
+  Origs: 30
+  Dests: 50, 100
 (1 6) 50 IF FNF(A) < 0 THEN 70
+  Origs: 40
+  Dests: 60, 70
 (0 3) 60 LET B = X
+  Origs: 50
+  Dests: 65
 (0 2) 65 GOTO 80
+  Origs: 60
+  Dests: 80
 (0 3) 70 LET A = X
+  Origs: 50
+  Dests: 80
 (1 10) 80 IF ABS(A - B) / (ABS(A) + ABS(B)) < 0.0000005 THEN 100
+  Origs: 65, 70
+  Dests: 90, 100
 (0 3) 90 GOTO 30
+  Origs: 80
+  Dests: 30
 (0 3) 100 PRINT "ONE ZERO AT" X
+  Origs: 40, 80, 240, 280
+  Dests: 110
 (0 1) 110 STOP
+  Origs: 100
+  Dests: 
 (0 0) 120 
+  Origs: 
+  Dests: 230
 (0 5) 230 LET X = (A + B) / 2
+  Origs: 25, 120, 290
+  Dests: 240
 (1 7) 240 IF FNF(X) = 0 THEN 100
+  Origs: 230
+  Dests: 100, 250
 (1 6) 250 IF FNF(X) < 0 THEN 270
+  Origs: 240
+  Dests: 260, 270
 (0 3) 260 LET A = X
+  Origs: 250
+  Dests: 265
 (0 2) 265 GOTO 280
+  Origs: 260
+  Dests: 280
 (0 3) 270 LET B = X
+  Origs: 250
+  Dests: 280
 (1 11) 280 IF ABS(A - B) / (ABS(A) + ABS(B)) < 0.0000005 THEN 100
+  Origs: 265, 270
+  Dests: 100, 290
 (0 3) 290 GOTO 230
+  Origs: 280
+  Dests: 230
 (0 0) 300 
+  Origs: 
+  Dests: 900
 (0 2) 900 DATA 0, 1
+  Origs: 300
+  Dests: 999
 (0 1) 999 END
+  Origs: 900
+  Dests: 
 
 Unreachable code:
 

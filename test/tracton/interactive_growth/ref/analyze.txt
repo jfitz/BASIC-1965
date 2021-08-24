@@ -20,68 +20,194 @@ Halstead complexity:
  time: 5.538
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
+  Origs: 
+  Dests: 20
 (0 1) 20 REM A QUANTITY Y THE DESTROYER AND A QUANTITY X
+  Origs: 10
+  Dests: 30
 (0 1) 30 REM THE CREATOR. X CAN PROPOGATE, AND ON A
+  Origs: 20
+  Dests: 40
 (0 1) 40 REM CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
+  Origs: 30
+  Dests: 50
 (0 1) 50 REM THUS INCREASING THE NUMBER OF YS.
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "NUMBER OF DESTROYERS (Y) = ";
+  Origs: 50, 620
+  Dests: 70
 (1 2) 70 INPUT Y
+  Origs: 60
+  Dests: 80
 (0 2) 80 PRINT "NUMBER OF CREATORS (X) = ";
+  Origs: 70
+  Dests: 90
 (1 2) 90 INPUT X
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "PROPAGATION RATE OF X = ";
+  Origs: 90
+  Dests: 110
 (1 2) 110 INPUT Z
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
+  Origs: 110
+  Dests: 130
 (1 2) 130 INPUT A
+  Origs: 120
+  Dests: 140
 (0 2) 140 PRINT "TIME BETWEEN SAMPLES = ";
+  Origs: 130
+  Dests: 150
 (1 2) 150 INPUT H
+  Origs: 140
+  Dests: 160
 (0 2) 160 PRINT "MAXIMUM GENERATIONS = ";
+  Origs: 150
+  Dests: 170
 (1 2) 170 INPUT K
+  Origs: 160
+  Dests: 180
 (0 3) 180 LET J = 0
+  Origs: 170
+  Dests: 190
 (0 2) 190 PRINT
+  Origs: 180
+  Dests: 200
 (0 2) 200 PRINT "INTERACTIVE GROWTH PATTERNS"
+  Origs: 190
+  Dests: 210
 (0 2) 210 PRINT
+  Origs: 200
+  Dests: 220
 (0 3) 220 PRINT "CREATOR", "DESTROYER"
+  Origs: 210
+  Dests: 230
 (1 4) 230 IF J = K THEN 470
+  Origs: 220, 360, 380, 550
+  Dests: 240, 470
 (0 4) 240 LET J = J + 1
+  Origs: 230
+  Dests: 250
 (0 5) 250 LET B = A * X * Y
+  Origs: 240
+  Dests: 260
 (0 6) 260 LET C = ((Y - B) * H) + Y
+  Origs: 250
+  Dests: 270
 (1 4) 270 IF C < 0 THEN 390
+  Origs: 260
+  Dests: 280, 390
 (0 3) 280 LET Y = C
+  Origs: 270
+  Dests: 290
 (0 7) 290 LET D = (((X * Z) - B) * H) + X
+  Origs: 280, 400
+  Dests: 300
 (1 4) 300 IF D < 0 THEN 410
+  Origs: 290
+  Dests: 310, 410
 (0 3) 310 LET X = D
+  Origs: 300
+  Dests: 320
 (0 4) 320 LET M = INT(X)
+  Origs: 310, 420
+  Dests: 330
 (0 4) 330 LET N = INT(Y)
+  Origs: 320
+  Dests: 340
 (0 3) 340 PRINT M, N
+  Origs: 330
+  Dests: 350
 (1 4) 350 IF M = 0 THEN 370
+  Origs: 340
+  Dests: 360, 370
 (0 3) 360 GOTO 230
+  Origs: 350
+  Dests: 230
 (1 4) 370 IF N = 0 THEN 430
+  Origs: 350
+  Dests: 380, 430
 (0 3) 380 GOTO 230
+  Origs: 370
+  Dests: 230
 (0 3) 390 LET Y = 0
+  Origs: 270
+  Dests: 400
 (0 3) 400 GOTO 290
+  Origs: 390
+  Dests: 290
 (0 3) 410 LET X = 0
+  Origs: 300
+  Dests: 420
 (0 3) 420 GOTO 320
+  Origs: 410
+  Dests: 320
 (0 2) 430 PRINT "ALL GROWTH ENDED"
+  Origs: 370
+  Dests: 440
 (0 3) 440 PRINT "NUMBER OF GENERATIONS = "; J
+  Origs: 430
+  Dests: 450
 (0 2) 450 PRINT
+  Origs: 440
+  Dests: 460
 (0 2) 460 GOTO 560
+  Origs: 450
+  Dests: 560
 (0 2) 470 PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
+  Origs: 230
+  Dests: 480
 (0 2) 480 PRINT
+  Origs: 470
+  Dests: 490
 (0 2) 490 PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+  Origs: 480
+  Dests: 500
 (1 2) 500 INPUT W
+  Origs: 490
+  Dests: 510
 (1 4) 510 IF W = 1 THEN 530
+  Origs: 500
+  Dests: 520, 530
 (0 2) 520 GOTO 560
+  Origs: 510
+  Dests: 560
 (0 2) 530 PRINT "MAXIMUM GENERATIONS = ";
+  Origs: 510
+  Dests: 540
 (1 2) 540 INPUT K
+  Origs: 530
+  Dests: 550
 (0 3) 550 GOTO 230
+  Origs: 540
+  Dests: 230
 (0 2) 560 PRINT
+  Origs: 460, 520
+  Dests: 570
 (0 2) 570 PRINT "FOR NEXT PATTERN TYPE 1, 0 TO STOP"
+  Origs: 560
+  Dests: 580
 (1 2) 580 INPUT W
+  Origs: 570
+  Dests: 590
 (1 4) 590 IF W = 1 THEN 610
+  Origs: 580
+  Dests: 600, 610
 (0 1) 600 STOP
+  Origs: 590
+  Dests: 
 (0 2) 610 PRINT
+  Origs: 590
+  Dests: 620
 (0 3) 620 GOTO 60
+  Origs: 610
+  Dests: 60
 (0 1) 630 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

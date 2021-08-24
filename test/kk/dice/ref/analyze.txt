@@ -20,33 +20,89 @@ Halstead complexity:
  time: 3.828
 
 (1 3) 10 FOR G = 1 TO 10
+  Origs: 
+  Dests: 20
 (0 2) 20 GOSUB 500
+  Origs: 10
+  Dests: 30, 500
 (1 4) 30 IF D < 4 THEN 300
+  Origs: 20
+  Dests: 40, 300
 (1 4) 40 IF D = 12 THEN 300
+  Origs: 30
+  Dests: 50, 300
 (1 4) 50 IF D = 7 THEN 400
+  Origs: 40
+  Dests: 60, 400
 (1 4) 60 IF D = 11 THEN 400
+  Origs: 50
+  Dests: 70, 400
 (0 3) 70 LET D9 = D
+  Origs: 60
+  Dests: 100
 (0 2) 100 GOSUB 500
+  Origs: 70, 130
+  Dests: 110, 500
 (1 4) 110 IF D = D9 THEN 200
+  Origs: 100
+  Dests: 120, 200
 (1 4) 120 IF D = 7 THEN 250
+  Origs: 110
+  Dests: 130, 250
 (0 3) 130 GOTO 100
+  Origs: 120
+  Dests: 100
 (0 2) 200 PRINT "YOU WIN -- BY MAKING YOUR POINT"
+  Origs: 110
+  Dests: 210
 (0 2) 210 GOTO 410
+  Origs: 200
+  Dests: 410
 (0 2) 250 PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
+  Origs: 120
+  Dests: 260
 (0 2) 260 GOTO 410
+  Origs: 250
+  Dests: 410
 (0 2) 300 PRINT "YOU LOSE ON FIRST ROLL"
+  Origs: 30, 40
+  Dests: 310
 (0 2) 310 GOTO 410
+  Origs: 300
+  Dests: 410
 (0 2) 400 PRINT "YOU WIN ON FIRST ROLL"
+  Origs: 50, 60
+  Dests: 410
 (0 1) 410 NEXT G
+  Origs: 210, 260, 310, 400
+  Dests: 420
 (0 1) 420 STOP
+  Origs: 410
+  Dests: 
 (0 0) 499 
+  Origs: 
+  Dests: 500
 (0 1) 500 REM ROLL DICE
+  Origs: 20, 100, 499
+  Dests: 510
 (0 4) 510 LET D1 = INT(6 * RND(1) + 1)
+  Origs: 500
+  Dests: 520
 (0 4) 520 LET D2 = INT(6 * RND(1) + 1)
+  Origs: 510
+  Dests: 525
 (0 4) 525 PRINT "YOUR ROLL IS "; D1; D2
+  Origs: 520
+  Dests: 530
 (0 4) 530 LET D = D1 + D2
+  Origs: 525
+  Dests: 540
 (0 1) 540 RETURN
+  Origs: 530
+  Dests: 
 (0 1) 999 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

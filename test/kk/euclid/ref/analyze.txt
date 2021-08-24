@@ -20,17 +20,41 @@ Halstead complexity:
  time: 1.096
 
 (0 4) 10 PRINT " A", " B", "G.C.D."
+  Origs: 
+  Dests: 20
 (2 3) 20 READ A, B
+  Origs: 10, 80
+  Dests: 30
 (0 3) 30 PRINT A, B,
+  Origs: 20
+  Dests: 40
 (0 4) 40 LET Q = INT(A / B)
+  Origs: 30, 60
+  Dests: 45
 (0 6) 45 LET R = A - Q * B
+  Origs: 40
+  Dests: 50
 (0 3) 50 LET A = B
+  Origs: 45
+  Dests: 55
 (0 3) 55 LET B = R
+  Origs: 50
+  Dests: 60
 (1 5) 60 IF R > 0 THEN 40
+  Origs: 55
+  Dests: 40, 70
 (0 2) 70 PRINT A
+  Origs: 60
+  Dests: 80
 (0 3) 80 GOTO 20
+  Origs: 70
+  Dests: 20
 (0 2) 90 DATA 130, 169, 243, 256, 123456789, 987654321
+  Origs: 
+  Dests: 99
 (0 1) 99 END
+  Origs: 90
+  Dests: 
 
 Unreachable code:
 

@@ -20,22 +20,56 @@ Halstead complexity:
  time: 1.168
 
 (2 3) 100 MAT READ A(2, 3), B(2, 3)
+  Origs: 
+  Dests: 110
 (0 0) 110 
+  Origs: 100
+  Dests: 130
 (0 4) 130 MAT S = A + B
+  Origs: 110
+  Dests: 140
 (0 2) 140 PRINT "THE SUM"
+  Origs: 130
+  Dests: 150
 (0 2) 150 MAT PRINT S
+  Origs: 140
+  Dests: 160
 (0 0) 160 
+  Origs: 150
+  Dests: 170
 (0 4) 170 MAT D = A - B
+  Origs: 160
+  Dests: 180
 (0 2) 180 PRINT "THE DIFFERENCE"
+  Origs: 170
+  Dests: 190
 (0 2) 190 MAT PRINT D
+  Origs: 180
+  Dests: 200
 (0 0) 200 
+  Origs: 190
+  Dests: 210
 (0 5) 210 MAT K = (1 / 4) * A
+  Origs: 200
+  Dests: 220
 (0 2) 220 PRINT "SCALAR MULTIPLE"
+  Origs: 210
+  Dests: 230
 (0 2) 230 MAT PRINT K
+  Origs: 220
+  Dests: 240
 (0 0) 240 
+  Origs: 230
+  Dests: 900
 (0 2) 900 DATA 1, 4, 7, 3, 2, 1
+  Origs: 240
+  Dests: 910
 (0 5) 910 DATA 3, -2, 6, 2, -5, -1
+  Origs: 900
+  Dests: 999
 (0 1) 999 END
+  Origs: 910
+  Dests: 
 
 Unreachable code:
 

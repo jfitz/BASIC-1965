@@ -20,42 +20,116 @@ Halstead complexity:
  time: 9.684
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE VALUES OF THE
+  Origs: 
+  Dests: 20
 (0 1) 20 REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
+  Origs: 10
+  Dests: 30
 (0 3) 30 LET A = 0
+  Origs: 20, 360
+  Dests: 40
 (0 3) 40 LET B = 0
+  Origs: 30
+  Dests: 50
 (0 3) 50 LET C = 0
+  Origs: 40
+  Dests: 60
 (0 3) 60 LET D = 0
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "NUMBER OF SAMPLES = "
+  Origs: 60
+  Dests: 80
 (1 2) 80 INPUT N
+  Origs: 70
+  Dests: 90
 (1 3) 90 FOR I = 1 TO N
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "SAMPLE = "
+  Origs: 90
+  Dests: 110
 (1 2) 110 INPUT X
+  Origs: 100
+  Dests: 120
 (0 4) 120 LET A = A + X
+  Origs: 110
+  Dests: 130
 (0 6) 130 LET B = B + (X ^ 2)
+  Origs: 120
+  Dests: 140
 (0 6) 140 LET C = C + (X ^ 3)
+  Origs: 130
+  Dests: 150
 (0 6) 150 LET D = D + (X ^ 4)
+  Origs: 140
+  Dests: 160
 (0 1) 160 NEXT I
+  Origs: 150
+  Dests: 170
 (0 4) 170 LET J = A / N
+  Origs: 160
+  Dests: 180
 (0 7) 180 LET E = (B / N) - (J ^ 2)
+  Origs: 170
+  Dests: 190
 (0 14) 190 LET F = (C / N) - ((3 * J * B) / N) + (2 * (J ^ 3))
+  Origs: 180
+  Dests: 200
 (0 9) 200 LET G = (D / N) - ((4 * J * C) / N)
+  Origs: 190
+  Dests: 210
 (0 15) 210 LET H = G + ((6 * (J ^ 2) * B) / N) - (3 * (J ^ 4))
+  Origs: 200
+  Dests: 220
 (0 8) 220 LET K = F / (E ^ (3 / 2))
+  Origs: 210
+  Dests: 230
 (0 6) 230 LET L = H / (E ^ 2)
+  Origs: 220
+  Dests: 240
 (0 3) 240 PRINT "1ST MOMENT = "; J
+  Origs: 230
+  Dests: 250
 (0 3) 250 PRINT "2ND MOMENT = "; E
+  Origs: 240
+  Dests: 260
 (0 3) 260 PRINT "3RD MOMENT = "; F
+  Origs: 250
+  Dests: 270
 (0 3) 270 PRINT "4TH MOMENT = "; H
+  Origs: 260
+  Dests: 280
 (0 2) 280 PRINT "MOMENT COEFFICIENTS"
+  Origs: 270
+  Dests: 290
 (0 5) 290 PRINT "SKEWNESS = "; K, "KURTOSIS = "; L
+  Origs: 280
+  Dests: 300
 (0 2) 300 PRINT "**********************"
+  Origs: 290
+  Dests: 310
 (0 2) 310 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 300
+  Dests: 320
 (1 2) 320 INPUT Z
+  Origs: 310
+  Dests: 330
 (1 4) 330 IF Z = 1 THEN 350
+  Origs: 320
+  Dests: 340, 350
 (0 1) 340 STOP
+  Origs: 330
+  Dests: 
 (0 2) 350 PRINT
+  Origs: 330
+  Dests: 360
 (0 3) 360 GOTO 30
+  Origs: 350
+  Dests: 30
 (0 1) 370 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

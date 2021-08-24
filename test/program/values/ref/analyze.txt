@@ -20,21 +20,53 @@ Halstead complexity:
  time: 0.117
 
 (0 1) 10 REM Test different values
+  Origs: 
+  Dests: 20
 (0 3) 20 LET A = 10
+  Origs: 10
+  Dests: 30
 (0 4) 30 LET B = -5
+  Origs: 20
+  Dests: 40
 (0 3) 40 LET C = 20.25
+  Origs: 30
+  Dests: 50
 (0 4) 50 LET D = -15.333
+  Origs: 40
+  Dests: 60
 (0 3) 60 LET E1 = 1.2E2
+  Origs: 50
+  Dests: 62
 (0 3) 62 LET E2 = 1.2E+2
+  Origs: 60
+  Dests: 64
 (0 3) 64 LET E3 = 1.2E-2
+  Origs: 62
+  Dests: 120
 (0 3) 120 PRINT "A="; A
+  Origs: 64
+  Dests: 130
 (0 3) 130 PRINT "B="; B
+  Origs: 120
+  Dests: 140
 (0 3) 140 PRINT "C="; C
+  Origs: 130
+  Dests: 150
 (0 3) 150 PRINT "D="; D
+  Origs: 140
+  Dests: 160
 (0 3) 160 PRINT "E1="; E1
+  Origs: 150
+  Dests: 162
 (0 3) 162 PRINT "E2="; E2
+  Origs: 160
+  Dests: 164
 (0 3) 164 PRINT "E3="; E3
+  Origs: 162
+  Dests: 999
 (0 1) 999 END
+  Origs: 164
+  Dests: 
 
 Unreachable code:
 

@@ -20,26 +20,68 @@ Halstead complexity:
  time: 4.065
 
 (0 2) 5 DIM S(100)
+  Origs: 
+  Dests: 10
 (1 2) 10 READ N
+  Origs: 5
+  Dests: 20
 (1 3) 20 FOR I = 1 TO N
+  Origs: 10
+  Dests: 30
 (1 2) 30 READ S(I)
+  Origs: 20
+  Dests: 40
 (0 1) 40 NEXT I
+  Origs: 30
+  Dests: 50
 (0 0) 50 
+  Origs: 40
+  Dests: 100
 (1 3) 100 FOR I = 1 TO N
+  Origs: 50
+  Dests: 200
 (1 4) 200 FOR J = 1 TO N - 1
+  Origs: 100
+  Dests: 210
 (0 3) 210 LET X = S(J)
+  Origs: 200
+  Dests: 220
 (0 3) 220 LET Y = S(J + 1)
+  Origs: 210
+  Dests: 230
 (1 4) 230 IF X <= Y THEN 300
+  Origs: 220
+  Dests: 240, 300
 (0 3) 240 LET S(J) = Y
+  Origs: 230
+  Dests: 250
 (0 3) 250 LET S(J + 1) = X
+  Origs: 240
+  Dests: 300
 (0 1) 300 NEXT J
+  Origs: 230, 250
+  Dests: 310
 (0 1) 310 NEXT I
+  Origs: 300
+  Dests: 400
 (1 3) 400 FOR I = 1 TO N
+  Origs: 310
+  Dests: 410
 (0 2) 410 PRINT S(I);
+  Origs: 400
+  Dests: 420
 (0 1) 420 NEXT I
+  Origs: 410
+  Dests: 900
 (0 2) 900 DATA 20
+  Origs: 420
+  Dests: 910
 (0 2) 910 DATA 5, 2, 7, 3, 8, 1, 9, 11, 3, 15, 20, 4, 0, 10, 2, 16, 2, 8, 9, 1
+  Origs: 900
+  Dests: 999
 (0 1) 999 END
+  Origs: 910
+  Dests: 
 
 Unreachable code:
 

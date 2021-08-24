@@ -20,44 +20,122 @@ Halstead complexity:
  time: 19.496
 
 (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+  Origs: 
+  Dests: 11
 (0 1) 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
+  Origs: 10
+  Dests: 12
 (0 1) 12 REM DEF FNF(X) = X^2 + 1
+  Origs: 11
+  Dests: 13
 (0 1) 13 REM DEF FNF(X) = X^2 - 0.001
+  Origs: 12
+  Dests: 14
 (0 1) 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
+  Origs: 13
+  Dests: 20
 (2 3) 20 READ A, B
+  Origs: 14
+  Dests: 22
 (0 2) 22 GOSUB 200
+  Origs: 20
+  Dests: 26, 200
 (0 3) 26 LET X(1 + S) = A
+  Origs: 22
+  Dests: 28
 (0 3) 28 LET X(1 - S) = B
+  Origs: 26
+  Dests: 30
 (0 5) 30 LET X = (X(0) + X(2)) / 2
+  Origs: 28, 90
+  Dests: 35
 (0 4) 35 LET F = SGN(FNF(X))
+  Origs: 30
+  Dests: 40
 (1 4) 40 IF F = 0 THEN 100
+  Origs: 35
+  Dests: 50, 100
 (0 3) 50 LET X(1 + F) = X
+  Origs: 40
+  Dests: 80
 (1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 100
+  Origs: 50
+  Dests: 90, 100
 (0 3) 90 GOTO 30
+  Origs: 80
+  Dests: 30
 (0 3) 100 PRINT "ONE ZERO AT" X
+  Origs: 40, 80, 420, 440
+  Dests: 110
 (0 1) 110 STOP
+  Origs: 100
+  Dests: 
 (0 4) 200 LET S = SGN(FNF(A))
+  Origs: 22
+  Dests: 210
 (0 4) 210 LET T = SGN(FNF(B))
+  Origs: 200
+  Dests: 220
 (1 5) 220 IF S * T = 0 THEN 400
+  Origs: 210
+  Dests: 230, 400
 (1 5) 230 IF S * T > 0 THEN 300
+  Origs: 220
+  Dests: 240, 300
 (0 1) 240 RETURN
+  Origs: 230
+  Dests: 
 (0 4) 300 LET L = B - A
+  Origs: 230
+  Dests: 310
 (1 3) 310 FOR I = 1 TO 1000
+  Origs: 300
+  Dests: 320
 (0 7) 320 LET X = A + RND() * L
+  Origs: 310
+  Dests: 330
 (1 6) 330 IF S * SGN(FNF(X)) < 0 THEN 370
+  Origs: 320
+  Dests: 340, 370
 (0 1) 340 NEXT I
+  Origs: 330
+  Dests: 350
 (0 2) 350 PRINT "NO CHANGE OF SIGN FOUND"
+  Origs: 340
+  Dests: 360
 (0 1) 360 STOP
+  Origs: 350
+  Dests: 
 (0 3) 370 LET B = X
+  Origs: 330
+  Dests: 380
 (0 1) 380 RETURN
+  Origs: 370
+  Dests: 
 (1 4) 400 IF S = 0 THEN 430
+  Origs: 220
+  Dests: 410, 430
 (0 3) 410 LET X = B
+  Origs: 400
+  Dests: 420
 (0 3) 420 GOTO 100
+  Origs: 410
+  Dests: 100
 (0 3) 430 LET X = A
+  Origs: 400
+  Dests: 440
 (0 3) 440 GOTO 100
+  Origs: 430
+  Dests: 100
 (0 1) 900 REM DATA 0,1
+  Origs: 
+  Dests: 910
 (0 2) 910 DATA 0, 1
+  Origs: 900
+  Dests: 999
 (0 1) 999 END
+  Origs: 910
+  Dests: 
 
 Unreachable code:
 

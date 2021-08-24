@@ -20,14 +20,32 @@ Halstead complexity:
  time: 0.044
 
 (0 1) 10 REM This is a test
+  Origs: 
+  Dests: 20
 (3 4) 20 READ A, B, C
+  Origs: 10
+  Dests: 30
 (0 4) 30 PRINT A, B, C
+  Origs: 20
+  Dests: 40
 (0 1) 40 RESTORE
+  Origs: 30
+  Dests: 50
 (3 4) 50 READ A, B, C
+  Origs: 40
+  Dests: 60
 (0 4) 60 PRINT A, B, C
+  Origs: 50
+  Dests: 80
 (0 2) 80 DATA 10, 20, 30
+  Origs: 60
+  Dests: 90
 (0 1) 90 STOP
+  Origs: 80
+  Dests: 
 (0 1) 99 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

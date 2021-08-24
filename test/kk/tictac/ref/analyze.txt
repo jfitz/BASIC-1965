@@ -20,71 +20,203 @@ Halstead complexity:
  time: 12.920
 
 (0 1) 100 REM THIS PROGRAM PLAYS TIC TAC TOE
+  Origs: 
+  Dests: 110
 (0 1) 110 REM MACHINE PLAYS FIRST, SIMPLE OUTPUT ONLY
+  Origs: 100
+  Dests: 120
 (0 1) 120 REM GAME BOARD NUMBERED:  1  2  3
+  Origs: 110
+  Dests: 130
 (0 1) 130 REM                       8  9  4
+  Origs: 120
+  Dests: 140
 (0 1) 140 REM                       7  6  5
+  Origs: 130
+  Dests: 150
 (0 1) 150 REM FOLLOWS THE BLOCK DIAGRAM
+  Origs: 140
+  Dests: 160
 (0 0) 160 
+  Origs: 150
+  Dests: 170
 (0 1) 170 REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
+  Origs: 160
+  Dests: 180
 (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
+  Origs: 170
+  Dests: 190
 (0 1) 190 REM
+  Origs: 180
+  Dests: 200
 (0 1) 200 REM NOW WE START THE PROGRAM
+  Origs: 190
+  Dests: 210
 (0 2) 210 PRINT
+  Origs: 200, 630, 740
+  Dests: 220
 (0 2) 220 PRINT
+  Origs: 210
+  Dests: 230
 (0 3) 230 LET A = 9
+  Origs: 220
+  Dests: 240
 (0 3) 240 LET M = A
+  Origs: 230
+  Dests: 250
 (0 2) 250 GOSUB 650
+  Origs: 240
+  Dests: 260, 650
 (0 3) 260 LET P = M
+  Origs: 250
+  Dests: 270
 (0 5) 270 LET B = FNM(P + 1)
+  Origs: 260
+  Dests: 280
 (0 3) 280 LET M = B
+  Origs: 270
+  Dests: 290
 (0 2) 290 GOSUB 650
+  Origs: 280
+  Dests: 300, 650
 (0 3) 300 LET Q = M
+  Origs: 290
+  Dests: 310
 (1 6) 310 IF Q = FNM(B + 4) THEN 360
+  Origs: 300
+  Dests: 320, 360
 (0 5) 320 LET C = FNM(B + 4)
+  Origs: 310
+  Dests: 330
 (0 3) 330 LET M = C
+  Origs: 320
+  Dests: 340
 (0 2) 340 GOSUB 700
+  Origs: 330
+  Dests: 350, 700
 (0 2) 350 GOTO 730
+  Origs: 340
+  Dests: 730
 (0 5) 360 LET C = FNM(B + 2)
+  Origs: 310
+  Dests: 370
 (0 3) 370 LET M = C
+  Origs: 360
+  Dests: 380
 (0 2) 380 GOSUB 650
+  Origs: 370
+  Dests: 390, 650
 (0 3) 390 LET R = M
+  Origs: 380
+  Dests: 400
 (1 6) 400 IF R = FNM(C + 4) THEN 450
+  Origs: 390
+  Dests: 410, 450
 (0 5) 410 LET D = FNM(C + 4)
+  Origs: 400
+  Dests: 420
 (0 3) 420 LET M = D
+  Origs: 410
+  Dests: 430
 (0 2) 430 GOSUB 700
+  Origs: 420
+  Dests: 440, 700
 (0 2) 440 GOTO 730
+  Origs: 430
+  Dests: 730
 (1 6) 450 IF P / 2 <> INT(P / 2) THEN 500
+  Origs: 400
+  Dests: 460, 500
 (0 5) 460 LET D = FNM(C + 7)
+  Origs: 450
+  Dests: 470
 (0 3) 470 LET M = D
+  Origs: 460
+  Dests: 480
 (0 2) 480 GOSUB 700
+  Origs: 470
+  Dests: 490, 700
 (0 2) 490 GOTO 730
+  Origs: 480
+  Dests: 730
 (0 5) 500 LET D = FNM(C + 3)
+  Origs: 450
+  Dests: 510
 (0 3) 510 LET M = D
+  Origs: 500
+  Dests: 520
 (0 2) 520 GOSUB 650
+  Origs: 510
+  Dests: 530, 650
 (0 3) 530 LET S = M
+  Origs: 520
+  Dests: 540
 (1 6) 540 IF S = FNM(D + 4) THEN 590
+  Origs: 530
+  Dests: 550, 590
 (0 5) 550 LET E = FNM(D + 4)
+  Origs: 540
+  Dests: 560
 (0 3) 560 LET M = E
+  Origs: 550
+  Dests: 570
 (0 2) 570 GOSUB 700
+  Origs: 560
+  Dests: 580, 700
 (0 2) 580 GOTO 730
+  Origs: 570
+  Dests: 730
 (0 5) 590 LET E = FNM(D + 6)
+  Origs: 540
+  Dests: 600
 (0 3) 600 LET M = E
+  Origs: 590
+  Dests: 610
 (0 2) 610 GOSUB 700
+  Origs: 600
+  Dests: 620, 700
 (0 2) 620 PRINT "THE GAME IS DRAWN."
+  Origs: 610
+  Dests: 630
 (0 3) 630 GOTO 210
+  Origs: 620
+  Dests: 210
 (0 0) 640 
+  Origs: 
+  Dests: 650
 (0 2) 650 GOSUB 700
+  Origs: 250, 290, 380, 520, 640
+  Dests: 660, 700
 (0 2) 660 PRINT "YOUR MOVE";
+  Origs: 650
+  Dests: 670
 (1 2) 670 INPUT M
+  Origs: 660
+  Dests: 680
 (0 1) 680 RETURN
+  Origs: 670
+  Dests: 
 (0 0) 690 
+  Origs: 
+  Dests: 700
 (0 3) 700 PRINT "COMPUTER MOVES"; M
+  Origs: 340, 430, 480, 570, 610, 650, 690
+  Dests: 710
 (0 1) 710 RETURN
+  Origs: 700
+  Dests: 
 (0 0) 720 
+  Origs: 
+  Dests: 730
 (0 2) 730 PRINT "AND WINS ********"
+  Origs: 350, 440, 490, 580, 720
+  Dests: 740
 (0 3) 740 GOTO 210
+  Origs: 730
+  Dests: 210
 (0 1) 750 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

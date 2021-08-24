@@ -20,29 +20,77 @@ Halstead complexity:
  time: 3.843
 
 (0 2) 10 DIM D(20)
+  Origs: 
+  Dests: 20
 (2 3) 20 READ A, Y
+  Origs: 10
+  Dests: 30
 (2 3) 30 READ T, R
+  Origs: 20
+  Dests: 40
 (0 3) 40 PRINT "YEAR", "SAVING"
+  Origs: 30
+  Dests: 100
 (1 3) 100 FOR Y1 = 1 TO Y
+  Origs: 40
+  Dests: 105
 (0 2) 105 PRINT Y1,
+  Origs: 100
+  Dests: 108
 (0 3) 108 LET A1 = A
+  Origs: 105
+  Dests: 110
 (1 4) 110 FOR I = 1 TO Y1 - 1
+  Origs: 108
+  Dests: 120
 (0 5) 120 LET D(I) = A1 * 2 / Y
+  Origs: 110
+  Dests: 130
 (0 4) 130 LET A1 = A1 - D(I)
+  Origs: 120
+  Dests: 150
 (0 1) 150 NEXT I
+  Origs: 130
+  Dests: 160
 (0 7) 160 LET D = A1 / (Y - Y1 + 1)
+  Origs: 150
+  Dests: 170
 (1 3) 170 FOR I = Y1 TO Y
+  Origs: 160
+  Dests: 180
 (0 3) 180 LET D(I) = D
+  Origs: 170
+  Dests: 190
 (0 1) 190 NEXT I
+  Origs: 180
+  Dests: 200
 (0 3) 200 LET S = 0
+  Origs: 190
+  Dests: 210
 (1 3) 210 FOR I = 1 TO Y
+  Origs: 200
+  Dests: 220
 (0 16) 220 LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+  Origs: 210
+  Dests: 230
 (0 1) 230 NEXT I
+  Origs: 220
+  Dests: 240
 (0 2) 240 PRINT S
+  Origs: 230
+  Dests: 290
 (0 1) 290 NEXT Y1
+  Origs: 240
+  Dests: 900
 (0 2) 900 DATA 5000, 7
+  Origs: 290
+  Dests: 910
 (0 2) 910 DATA 48, 4.5
+  Origs: 900
+  Dests: 999
 (0 1) 999 END
+  Origs: 910
+  Dests: 
 
 Unreachable code:
 

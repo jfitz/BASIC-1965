@@ -20,25 +20,65 @@ Halstead complexity:
  time: 3.384
 
 (0 3) 10 DEF FNF(X, Y) = SQR(X * X + Y * Y)
+  Origs: 
+  Dests: 20
 (0 0) 20 
+  Origs: 10
+  Dests: 100
 (4 5) 100 READ X0, X1, Y0, H
+  Origs: 20
+  Dests: 110
 (0 3) 110 PRINT " X", " Y"
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT
+  Origs: 110
+  Dests: 130
 (0 3) 130 PRINT X0, Y0
+  Origs: 120
+  Dests: 140
 (0 3) 140 LET Y = Y0
+  Origs: 130
+  Dests: 150
 (0 0) 150 
+  Origs: 140
+  Dests: 160
 (1 5) 160 FOR X = X0 TO X1 - H STEP H
+  Origs: 150
+  Dests: 170
 (0 5) 170 LET D1 = FNF(X, Y)
+  Origs: 160
+  Dests: 180
 (0 3) 180 LET Y1 = Y
+  Origs: 170
+  Dests: 190
 (0 7) 190 LET Y = Y + D1 * H / 2
+  Origs: 180
+  Dests: 200
 (0 5) 200 LET D2 = FNF(X + H / 2, Y)
+  Origs: 190
+  Dests: 210
 (0 6) 210 LET Y = Y1 + D2 * H
+  Origs: 200
+  Dests: 220
 (0 4) 220 PRINT X + H, Y
+  Origs: 210
+  Dests: 230
 (0 1) 230 NEXT X
+  Origs: 220
+  Dests: 240
 (0 0) 240 
+  Origs: 230
+  Dests: 900
 (0 2) 900 DATA 0, 1, 1
+  Origs: 240
+  Dests: 910
 (0 2) 910 DATA 0.1
+  Origs: 900
+  Dests: 999
 (0 1) 999 END
+  Origs: 910
+  Dests: 
 
 Unreachable code:
 

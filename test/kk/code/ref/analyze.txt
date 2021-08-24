@@ -20,135 +20,395 @@ Halstead complexity:
  time: 40.184
 
 (0 1) 10 REM  MACHINE ENCODING AND DECODING PROGRAM.
+  Origs: 
+  Dests: 20
 (0 2) 20 DIM L(100)
+  Origs: 10
+  Dests: 30
 (1 3) 30 FOR I = 1 TO 100
+  Origs: 20
+  Dests: 40
 (1 2) 40 READ L(I)
+  Origs: 30
+  Dests: 50
 (1 4) 50 IF L(I) < 0 THEN 70
+  Origs: 40
+  Dests: 60, 70
 (0 1) 60 NEXT I
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET I9 = I - 1
+  Origs: 50, 60
+  Dests: 100
 (0 2) 100 PRINT "PLEASE TYPE KEY";
+  Origs: 70
+  Dests: 110
 (5 6) 110 INPUT K(1), K(2), K(3), K(4), K(5)
+  Origs: 100
+  Dests: 120
 (0 2) 120 PRINT
+  Origs: 110
+  Dests: 130
 (0 2) 130 PRINT "TYPE '0' FOR ENCODING, '1' FOR DECODING";
+  Origs: 120
+  Dests: 140
 (1 2) 140 INPUT F
+  Origs: 130
+  Dests: 145
 (0 2) 145 PRINT
+  Origs: 140
+  Dests: 150
 (1 4) 150 IF F = 0 THEN 200
+  Origs: 145
+  Dests: 160, 200
 (0 2) 160 PRINT "DECODED MESSAGE:"
+  Origs: 150
+  Dests: 170
 (1 3) 170 FOR J = 1 TO 5
+  Origs: 160
+  Dests: 180
 (0 4) 180 LET K(J) = 27 - K(J)
+  Origs: 170
+  Dests: 190
 (0 1) 190 NEXT J
+  Origs: 180
+  Dests: 195
 (0 2) 195 GOTO 210
+  Origs: 190
+  Dests: 210
 (0 2) 200 PRINT "ENCODED MESSAGE:"
+  Origs: 150
+  Dests: 210
 (0 2) 210 PRINT
+  Origs: 195, 200
+  Dests: 215
 (0 3) 215 LET J = 1
+  Origs: 210
+  Dests: 220
 (1 3) 220 FOR I = 1 TO I9
+  Origs: 215
+  Dests: 230
 (0 4) 230 LET X = L(I) + K(J)
+  Origs: 220
+  Dests: 240
 (1 4) 240 IF X <= 26 THEN 260
+  Origs: 230
+  Dests: 250, 260
 (0 4) 250 LET X = X - 27
+  Origs: 240
+  Dests: 260
 (0 2) 260 GOSUB 1000
+  Origs: 240, 250
+  Dests: 270, 1000
 (0 4) 270 LET J = J + 1
+  Origs: 260
+  Dests: 280
 (1 4) 280 IF J <= 5 THEN 300
+  Origs: 270
+  Dests: 290, 300
 (0 3) 290 LET J = 1
+  Origs: 280
+  Dests: 300
 (0 1) 300 NEXT I
+  Origs: 280, 290
+  Dests: 310
 (0 2) 310 PRINT
+  Origs: 300
+  Dests: 315
 (0 3) 315 LET J = 1
+  Origs: 310
+  Dests: 320
 (1 3) 320 FOR I = 1 TO I9
+  Origs: 315
+  Dests: 330
 (0 4) 330 LET X = L(I) + K(J)
+  Origs: 320
+  Dests: 340
 (1 4) 340 IF X <= 26 THEN 360
+  Origs: 330
+  Dests: 350, 360
 (0 4) 350 LET X = X - 27
+  Origs: 340
+  Dests: 360
 (0 2) 360 PRINT X;
+  Origs: 340, 350
+  Dests: 370
 (0 4) 370 LET J = J + 1
+  Origs: 360
+  Dests: 380
 (1 4) 380 IF J <= 5 THEN 400
+  Origs: 370
+  Dests: 390, 400
 (0 3) 390 LET J = 1
+  Origs: 380
+  Dests: 400
 (0 1) 400 NEXT I
+  Origs: 380, 390
+  Dests: 800
 (0 1) 800 STOP
+  Origs: 400
+  Dests: 
 (0 2) 900 DATA 7, 18, 5, 5, 20, 9, 14, 7, 19, 0, 6, 18, 15, 13, 0, 20, 8, 5, 0
+  Origs: 
+  Dests: 910
 (0 2) 910 DATA 4, 1, 18, 20, 13, 15, 21, 20, 8, 0, 20, 9, 13, 5, 19, 8, 1, 18, 9, 14, 7, 0
+  Origs: 900
+  Dests: 920
 (0 2) 920 DATA 19, 25, 19, 20, 5, 13
+  Origs: 910
+  Dests: 930
 (0 1) 930 REM DATA 20,19,12,14,23,22,15,14,1,3,19,19,22,22,3,6,9,12,9,7,14,19,0,22,18,7,21,15
+  Origs: 920
+  Dests: 931
 (0 1) 931 REM DATA 9,23,22,14,12,1,11,14,19,16,23,10,13,20,5,1,23,18,14
+  Origs: 930
+  Dests: 999
 (0 3) 999 DATA -1
+  Origs: 931
+  Dests: 1000
 (0 1) 1000 REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
+  Origs: 260, 999
+  Dests: 1010
 (1 4) 1010 IF X > 0 THEN 1040
+  Origs: 1000
+  Dests: 1020, 1040
 (0 2) 1020 PRINT " ";
+  Origs: 1010
+  Dests: 1030
 (0 1) 1030 RETURN
+  Origs: 1020
+  Dests: 
 (1 4) 1040 IF X > 1 THEN 1070
+  Origs: 1010
+  Dests: 1050, 1070
 (0 2) 1050 PRINT "A";
+  Origs: 1040
+  Dests: 1060
 (0 1) 1060 RETURN
+  Origs: 1050
+  Dests: 
 (1 4) 1070 IF X > 2 THEN 1100
+  Origs: 1040
+  Dests: 1080, 1100
 (0 2) 1080 PRINT "B";
+  Origs: 1070
+  Dests: 1090
 (0 1) 1090 RETURN
+  Origs: 1080
+  Dests: 
 (1 4) 1100 IF X > 3 THEN 1130
+  Origs: 1070
+  Dests: 1110, 1130
 (0 2) 1110 PRINT "C";
+  Origs: 1100
+  Dests: 1120
 (0 1) 1120 RETURN
+  Origs: 1110
+  Dests: 
 (1 4) 1130 IF X > 4 THEN 1160
+  Origs: 1100
+  Dests: 1140, 1160
 (0 2) 1140 PRINT "D";
+  Origs: 1130
+  Dests: 1150
 (0 1) 1150 RETURN
+  Origs: 1140
+  Dests: 
 (1 4) 1160 IF X > 5 THEN 1190
+  Origs: 1130
+  Dests: 1170, 1190
 (0 2) 1170 PRINT "E";
+  Origs: 1160
+  Dests: 1180
 (0 1) 1180 RETURN
+  Origs: 1170
+  Dests: 
 (1 4) 1190 IF X > 6 THEN 1220
+  Origs: 1160
+  Dests: 1200, 1220
 (0 2) 1200 PRINT "F";
+  Origs: 1190
+  Dests: 1210
 (0 1) 1210 RETURN
+  Origs: 1200
+  Dests: 
 (1 4) 1220 IF X > 7 THEN 1250
+  Origs: 1190
+  Dests: 1230, 1250
 (0 2) 1230 PRINT "G";
+  Origs: 1220
+  Dests: 1240
 (0 1) 1240 RETURN
+  Origs: 1230
+  Dests: 
 (1 4) 1250 IF X > 8 THEN 1280
+  Origs: 1220
+  Dests: 1260, 1280
 (0 2) 1260 PRINT "H";
+  Origs: 1250
+  Dests: 1270
 (0 1) 1270 RETURN
+  Origs: 1260
+  Dests: 
 (1 4) 1280 IF X > 9 THEN 1310
+  Origs: 1250
+  Dests: 1290, 1310
 (0 2) 1290 PRINT "I";
+  Origs: 1280
+  Dests: 1300
 (0 1) 1300 RETURN
+  Origs: 1290
+  Dests: 
 (1 4) 1310 IF X > 10 THEN 1340
+  Origs: 1280
+  Dests: 1320, 1340
 (0 2) 1320 PRINT "J";
+  Origs: 1310
+  Dests: 1330
 (0 1) 1330 RETURN
+  Origs: 1320
+  Dests: 
 (1 4) 1340 IF X > 11 THEN 1370
+  Origs: 1310
+  Dests: 1350, 1370
 (0 2) 1350 PRINT "K";
+  Origs: 1340
+  Dests: 1360
 (0 1) 1360 RETURN
+  Origs: 1350
+  Dests: 
 (1 4) 1370 IF X > 12 THEN 1400
+  Origs: 1340
+  Dests: 1380, 1400
 (0 2) 1380 PRINT "L";
+  Origs: 1370
+  Dests: 1390
 (0 1) 1390 RETURN
+  Origs: 1380
+  Dests: 
 (1 4) 1400 IF X > 13 THEN 1430
+  Origs: 1370
+  Dests: 1410, 1430
 (0 2) 1410 PRINT "M";
+  Origs: 1400
+  Dests: 1420
 (0 1) 1420 RETURN
+  Origs: 1410
+  Dests: 
 (1 4) 1430 IF X > 14 THEN 1460
+  Origs: 1400
+  Dests: 1440, 1460
 (0 2) 1440 PRINT "N";
+  Origs: 1430
+  Dests: 1450
 (0 1) 1450 RETURN
+  Origs: 1440
+  Dests: 
 (1 4) 1460 IF X > 15 THEN 1490
+  Origs: 1430
+  Dests: 1470, 1490
 (0 2) 1470 PRINT "O";
+  Origs: 1460
+  Dests: 1480
 (0 1) 1480 RETURN
+  Origs: 1470
+  Dests: 
 (1 4) 1490 IF X > 16 THEN 1520
+  Origs: 1460
+  Dests: 1500, 1520
 (0 2) 1500 PRINT "P";
+  Origs: 1490
+  Dests: 1510
 (0 1) 1510 RETURN
+  Origs: 1500
+  Dests: 
 (1 4) 1520 IF X > 17 THEN 1550
+  Origs: 1490
+  Dests: 1530, 1550
 (0 2) 1530 PRINT "Q";
+  Origs: 1520
+  Dests: 1540
 (0 1) 1540 RETURN
+  Origs: 1530
+  Dests: 
 (1 4) 1550 IF X > 18 THEN 1580
+  Origs: 1520
+  Dests: 1560, 1580
 (0 2) 1560 PRINT "R";
+  Origs: 1550
+  Dests: 1570
 (0 1) 1570 RETURN
+  Origs: 1560
+  Dests: 
 (1 4) 1580 IF X > 19 THEN 1610
+  Origs: 1550
+  Dests: 1590, 1610
 (0 2) 1590 PRINT "S";
+  Origs: 1580
+  Dests: 1600
 (0 1) 1600 RETURN
+  Origs: 1590
+  Dests: 
 (1 4) 1610 IF X > 20 THEN 1640
+  Origs: 1580
+  Dests: 1620, 1640
 (0 2) 1620 PRINT "T";
+  Origs: 1610
+  Dests: 1630
 (0 1) 1630 RETURN
+  Origs: 1620
+  Dests: 
 (1 4) 1640 IF X > 21 THEN 1670
+  Origs: 1610
+  Dests: 1650, 1670
 (0 2) 1650 PRINT "U";
+  Origs: 1640
+  Dests: 1660
 (0 1) 1660 RETURN
+  Origs: 1650
+  Dests: 
 (1 4) 1670 IF X > 22 THEN 1700
+  Origs: 1640
+  Dests: 1680, 1700
 (0 2) 1680 PRINT "V";
+  Origs: 1670
+  Dests: 1690
 (0 1) 1690 RETURN
+  Origs: 1680
+  Dests: 
 (1 4) 1700 IF X > 23 THEN 1730
+  Origs: 1670
+  Dests: 1710, 1730
 (0 2) 1710 PRINT "W";
+  Origs: 1700
+  Dests: 1720
 (0 1) 1720 RETURN
+  Origs: 1710
+  Dests: 
 (1 4) 1730 IF X > 24 THEN 1760
+  Origs: 1700
+  Dests: 1740, 1760
 (0 2) 1740 PRINT "X";
+  Origs: 1730
+  Dests: 1750
 (0 1) 1750 RETURN
+  Origs: 1740
+  Dests: 
 (1 4) 1760 IF X > 25 THEN 1790
+  Origs: 1730
+  Dests: 1770, 1790
 (0 2) 1770 PRINT "Y";
+  Origs: 1760
+  Dests: 1780
 (0 1) 1780 RETURN
+  Origs: 1770
+  Dests: 
 (0 2) 1790 PRINT "Z";
+  Origs: 1760
+  Dests: 1800
 (0 1) 1800 RETURN
+  Origs: 1790
+  Dests: 
 
 Unreachable code:
 

@@ -20,61 +20,173 @@ Halstead complexity:
  time: 9.160
 
 (0 1) 10 REM THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
+  Origs: 
+  Dests: 20
 (0 2) 20 PRINT "SINH (1)"
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "COSH (2)"
+  Origs: 20
+  Dests: 40
 (0 2) 40 PRINT "TANH (3)"
+  Origs: 30
+  Dests: 50
 (0 2) 50 PRINT "CSCH (4)"
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "SECH (5)"
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "COTH (6)"
+  Origs: 60
+  Dests: 80
 (0 2) 80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+  Origs: 70, 480
+  Dests: 90
 (1 2) 90 INPUT C
+  Origs: 80
+  Dests: 100
 (0 1) 100 
+  Origs: 90
+  Dests: 110
 (0 2) 110 GOSUB 490
+  Origs: 100
+  Dests: 120, 490
 (0 2) 120 GOSUB 520
+  Origs: 110
+  Dests: 130, 520
 (0 4) 130 LET Z = Y / 2
+  Origs: 120
+  Dests: 140
 (0 5) 140 PRINT "SINH"; X; " ="; Z
+  Origs: 130
+  Dests: 150
 (0 2) 150 GOTO 420
+  Origs: 140
+  Dests: 420
 (0 2) 160 GOSUB 490
+  Origs: 
+  Dests: 170, 490
 (0 2) 170 GOSUB 540
+  Origs: 160
+  Dests: 180, 540
 (0 4) 180 LET Z = B / 2
+  Origs: 170
+  Dests: 190
 (0 5) 190 PRINT "COSH"; X; " ="; Z
+  Origs: 180
+  Dests: 200
 (0 2) 200 GOTO 420
+  Origs: 190
+  Dests: 420
 (0 2) 210 GOSUB 490
+  Origs: 
+  Dests: 220, 490
 (0 2) 220 GOSUB 520
+  Origs: 210
+  Dests: 230, 520
 (0 2) 230 GOSUB 540
+  Origs: 220
+  Dests: 240, 540
 (0 4) 240 LET Z = Y / B
+  Origs: 230
+  Dests: 250
 (0 5) 250 PRINT "TANH"; X; " ="; Z
+  Origs: 240
+  Dests: 260
 (0 2) 260 GOTO 420
+  Origs: 250
+  Dests: 420
 (0 2) 270 GOSUB 490
+  Origs: 
+  Dests: 280, 490
 (0 2) 280 GOSUB 520
+  Origs: 270
+  Dests: 290, 520
 (0 6) 290 LET Z = 1 / (Y / 2)
+  Origs: 280
+  Dests: 300
 (0 5) 300 PRINT "CSCH"; X; " ="; Z
+  Origs: 290
+  Dests: 310
 (0 2) 310 GOTO 420
+  Origs: 300
+  Dests: 420
 (0 2) 320 GOSUB 490
+  Origs: 
+  Dests: 330, 490
 (0 2) 330 GOSUB 540
+  Origs: 320
+  Dests: 340, 540
 (0 6) 340 LET Z = 1 / (B / 2)
+  Origs: 330
+  Dests: 350
 (0 5) 350 PRINT "SECH"; X; " ="; Z
+  Origs: 340
+  Dests: 360
 (0 2) 360 GOTO 420
+  Origs: 350
+  Dests: 420
 (0 2) 370 GOSUB 490
+  Origs: 
+  Dests: 380, 490
 (0 2) 380 GOSUB 520
+  Origs: 370
+  Dests: 390, 520
 (0 2) 390 GOSUB 540
+  Origs: 380
+  Dests: 400, 540
 (0 6) 400 LET Z = 1 / (Y / B)
+  Origs: 390
+  Dests: 410
 (0 5) 410 PRINT "COTH"; X; " ="; Z
+  Origs: 400
+  Dests: 420
 (0 2) 420 PRINT
+  Origs: 150, 200, 260, 310, 360, 410
+  Dests: 430
 (0 2) 430 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 420
+  Dests: 440
 (1 2) 440 INPUT L
+  Origs: 430
+  Dests: 450
 (1 4) 450 IF L = 1 THEN 470
+  Origs: 440
+  Dests: 460, 470
 (0 1) 460 STOP
+  Origs: 450
+  Dests: 
 (0 2) 470 PRINT
+  Origs: 450
+  Dests: 480
 (0 3) 480 GOTO 80
+  Origs: 470
+  Dests: 80
 (0 2) 490 PRINT "X = "
+  Origs: 110, 160, 210, 270, 320, 370
+  Dests: 500
 (1 2) 500 INPUT X
+  Origs: 490
+  Dests: 510
 (0 1) 510 RETURN
+  Origs: 500
+  Dests: 
 (0 6) 520 LET Y = EXP(X) - EXP(-X)
+  Origs: 120, 220, 280, 380
+  Dests: 530
 (0 1) 530 RETURN
+  Origs: 520
+  Dests: 
 (0 6) 540 LET B = EXP(X) + EXP(-X)
+  Origs: 170, 230, 330, 390
+  Dests: 550
 (0 1) 550 RETURN
+  Origs: 540
+  Dests: 
 (0 1) 560 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

@@ -20,14 +20,32 @@ Halstead complexity:
  time: 0.267
 
 (0 1) 10 REM Convert Celcius to Fahrenheit
+  Origs: 
+  Dests: 20
 (0 3) 20 PRINT "Celcius", "Fahrenheit"
+  Origs: 10
+  Dests: 30
 (0 3) 30 LET C = 0
+  Origs: 20
+  Dests: 40
 (0 6) 40 LET F = C * 9 / 5 + 32
+  Origs: 30, 70
+  Dests: 50
 (0 3) 50 PRINT C, F
+  Origs: 40
+  Dests: 60
 (0 4) 60 LET C = C + 1
+  Origs: 50
+  Dests: 70
 (1 5) 70 IF C <= 10 THEN 40
+  Origs: 60
+  Dests: 40, 900
 (0 1) 900 STOP
+  Origs: 70
+  Dests: 
 (0 1) 999 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

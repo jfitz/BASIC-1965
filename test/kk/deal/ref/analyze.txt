@@ -20,55 +20,155 @@ Halstead complexity:
  time: 6.958
 
 (0 2) 10 GOSUB 1000
+  Origs: 
+  Dests: 20, 1000
 (1 3) 20 FOR C = 1 TO 5
+  Origs: 10
+  Dests: 30
 (0 2) 30 GOSUB 2000
+  Origs: 20
+  Dests: 40, 2000
 (0 2) 40 GOSUB 3000
+  Origs: 30
+  Dests: 50, 3000
 (0 1) 50 NEXT C
+  Origs: 40
+  Dests: 60
 (0 1) 60 STOP
+  Origs: 50
+  Dests: 
 (0 0) 70 
+  Origs: 
+  Dests: 1000
 (0 1) 1000 REM SET UP DECK
+  Origs: 10, 70
+  Dests: 1010
 (0 2) 1010 DIM L(51)
+  Origs: 1000
+  Dests: 1020
 (1 3) 1020 FOR I = 0 TO 51
+  Origs: 1010
+  Dests: 1030
 (0 3) 1030 LET L(I) = I
+  Origs: 1020
+  Dests: 1040
 (0 1) 1040 NEXT I
+  Origs: 1030
+  Dests: 1050
 (0 1) 1050 RETURN
+  Origs: 1040
+  Dests: 
 (0 0) 1060 
+  Origs: 
+  Dests: 2000
 (0 1) 2000 REM DEAL A CARD
+  Origs: 30, 1060
+  Dests: 2010
 (0 4) 2010 LET I = INT(52 * RND(1))
+  Origs: 2000, 2030
+  Dests: 2020
 (0 3) 2020 LET X = L(I)
+  Origs: 2010
+  Dests: 2030
 (1 5) 2030 IF X < 0 THEN 2010
+  Origs: 2020
+  Dests: 2010, 2040
 (0 4) 2040 LET L(I) = -1
+  Origs: 2030
+  Dests: 2050
 (0 1) 2050 RETURN
+  Origs: 2040
+  Dests: 
 (0 0) 2060 
+  Origs: 
+  Dests: 3000
 (0 1) 3000 REM PRINT A CARD
+  Origs: 40, 2060
+  Dests: 3010
 (0 4) 3010 LET S = INT(X / 13)
+  Origs: 3000
+  Dests: 3020
 (0 6) 3020 LET V = X - 13 * S
+  Origs: 3010
+  Dests: 3030
 (1 4) 3030 IF S > 0 THEN 3060
+  Origs: 3020
+  Dests: 3040, 3060
 (0 2) 3040 PRINT "CLUB  ";
+  Origs: 3030
+  Dests: 3050
 (0 2) 3050 GOTO 3500
+  Origs: 3040
+  Dests: 3500
 (1 4) 3060 IF S > 1 THEN 3090
+  Origs: 3030
+  Dests: 3070, 3090
 (0 2) 3070 PRINT "DIAMOND  ";
+  Origs: 3060
+  Dests: 3080
 (0 2) 3080 GOTO 3500
+  Origs: 3070
+  Dests: 3500
 (1 4) 3090 IF S > 2 THEN 3120
+  Origs: 3060
+  Dests: 3100, 3120
 (0 2) 3100 PRINT "HEART  ";
+  Origs: 3090
+  Dests: 3110
 (0 2) 3110 GOTO 3500
+  Origs: 3100
+  Dests: 3500
 (0 2) 3120 PRINT "SPADE  ";
+  Origs: 3090
+  Dests: 3130
 (0 0) 3130 
+  Origs: 3120
+  Dests: 3500
 (1 4) 3500 IF V > 8 THEN 3530
+  Origs: 3050, 3080, 3110, 3130
+  Dests: 3510, 3530
 (0 3) 3510 PRINT V + 2
+  Origs: 3500
+  Dests: 3520
 (0 1) 3520 RETURN
+  Origs: 3510
+  Dests: 
 (1 4) 3530 IF V > 9 THEN 3560
+  Origs: 3500
+  Dests: 3540, 3560
 (0 2) 3540 PRINT "JACK"
+  Origs: 3530
+  Dests: 3550
 (0 1) 3550 RETURN
+  Origs: 3540
+  Dests: 
 (1 4) 3560 IF V > 10 THEN 3590
+  Origs: 3530
+  Dests: 3570, 3590
 (0 2) 3570 PRINT "QUEEN"
+  Origs: 3560
+  Dests: 3580
 (0 1) 3580 RETURN
+  Origs: 3570
+  Dests: 
 (1 4) 3590 IF V > 11 THEN 3620
+  Origs: 3560
+  Dests: 3600, 3620
 (0 2) 3600 PRINT "KING"
+  Origs: 3590
+  Dests: 3610
 (0 1) 3610 RETURN
+  Origs: 3600
+  Dests: 
 (0 2) 3620 PRINT "ACE"
+  Origs: 3590
+  Dests: 3630
 (0 1) 3630 RETURN
+  Origs: 3620
+  Dests: 
 (0 1) 9999 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

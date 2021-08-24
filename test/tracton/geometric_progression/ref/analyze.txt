@@ -20,38 +20,104 @@ Halstead complexity:
  time: 2.143
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
+  Origs: 
+  Dests: 20
 (0 1) 20 REM OF A GEOMETRIC PROGRESSION
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "FIRST TERM = ";
+  Origs: 20, 320
+  Dests: 40
 (1 2) 40 INPUT A
+  Origs: 30
+  Dests: 50
 (0 2) 50 PRINT "RATIO OF TERMS = ";
+  Origs: 40
+  Dests: 60
 (1 2) 60 INPUT R
+  Origs: 50
+  Dests: 70
 (0 2) 70 PRINT "NUMBER OF TERMS = ";
+  Origs: 60
+  Dests: 80
 (1 2) 80 INPUT N
+  Origs: 70
+  Dests: 90
 (0 2) 90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+  Origs: 80
+  Dests: 100
 (1 2) 100 INPUT C
+  Origs: 90
+  Dests: 110
 (1 4) 110 IF C = 1 THEN 130
+  Origs: 100
+  Dests: 120, 130
 (0 2) 120 GOTO 160
+  Origs: 110
+  Dests: 160
 (0 2) 130 PRINT
+  Origs: 110
+  Dests: 140
 (0 2) 140 PRINT "GEOMETRIC PROGRESSION"
+  Origs: 130
+  Dests: 150
 (0 3) 150 PRINT "TERM NUMBER", "TERM VALUE"
+  Origs: 140
+  Dests: 160
 (0 3) 160 LET J = 0
+  Origs: 120, 150
+  Dests: 170
 (1 4) 170 FOR I = 0 TO N - 1
+  Origs: 160
+  Dests: 180
 (0 4) 180 LET K = I + 1
+  Origs: 170
+  Dests: 190
 (0 6) 190 LET L = A * (R ^ I)
+  Origs: 180
+  Dests: 200
 (0 4) 200 LET J = J + L
+  Origs: 190
+  Dests: 210
 (1 4) 210 IF C = 1 THEN 230
+  Origs: 200
+  Dests: 220, 230
 (0 2) 220 GOTO 240
+  Origs: 210
+  Dests: 240
 (0 3) 230 PRINT K, L
+  Origs: 210
+  Dests: 240
 (0 1) 240 NEXT I
+  Origs: 220, 230
+  Dests: 250
 (0 3) 250 PRINT "SUM = "; J
+  Origs: 240
+  Dests: 260
 (0 2) 260 PRINT
+  Origs: 250
+  Dests: 270
 (0 2) 270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 260
+  Dests: 280
 (1 2) 280 INPUT X
+  Origs: 270
+  Dests: 290
 (1 4) 290 IF X = 1 THEN 310
+  Origs: 280
+  Dests: 300, 310
 (0 1) 300 STOP
+  Origs: 290
+  Dests: 
 (0 2) 310 PRINT
+  Origs: 290
+  Dests: 320
 (0 3) 320 GOTO 30
+  Origs: 310
+  Dests: 30
 (0 1) 330 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

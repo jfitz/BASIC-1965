@@ -20,11 +20,23 @@ Halstead complexity:
  time: 1.689
 
 (0 5) 10 DEF FNL(A, B) = LOG(A) / LOG(B)
+  Origs: 
+  Dests: 20
 (0 5) 20 DEF FNL(A) = LOG(A) / LOG(10)
+  Origs: 10
+  Dests: 30
 (1 4) 30 FOR N = 2 TO 10 STEP 2
+  Origs: 20
+  Dests: 40
 (0 10) 40 PRINT N, LOG(N), FNL(N, 10), FNL(N)
+  Origs: 30
+  Dests: 50
 (0 1) 50 NEXT N
+  Origs: 40
+  Dests: 99
 (0 1) 99 END
+  Origs: 50
+  Dests: 
 
 Unreachable code:
 

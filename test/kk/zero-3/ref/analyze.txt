@@ -20,21 +20,53 @@ Halstead complexity:
  time: 8.069
 
 (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+  Origs: 
+  Dests: 20
 (2 3) 20 READ A, B
+  Origs: 10
+  Dests: 22
 (0 4) 22 LET S = SGN(FNF(A))
+  Origs: 20
+  Dests: 24
 (1 4) 24 IF S = 0 THEN 95
+  Origs: 22
+  Dests: 26, 95
 (0 3) 26 LET X(1 + S) = A
+  Origs: 24
+  Dests: 28
 (0 3) 28 LET X(1 - S) = B
+  Origs: 26
+  Dests: 30
 (0 5) 30 LET X = (X(0) + X(2)) / 2
+  Origs: 28, 90
+  Dests: 35
 (0 4) 35 LET F = SGN(FNF(X))
+  Origs: 30
+  Dests: 40
 (1 4) 40 IF F = 0 THEN 100
+  Origs: 35
+  Dests: 50, 100
 (0 3) 50 LET X(1 + F) = X
+  Origs: 40
+  Dests: 80
 (1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 100
+  Origs: 50
+  Dests: 90, 100
 (0 3) 90 GOTO 30
+  Origs: 80
+  Dests: 30
 (0 3) 95 LET X = A
+  Origs: 24
+  Dests: 100
 (0 3) 100 PRINT "ONE ZERO AT" X
+  Origs: 40, 80, 95
+  Dests: 900
 (0 2) 900 DATA 0, 1
+  Origs: 100
+  Dests: 999
 (0 1) 999 END
+  Origs: 900
+  Dests: 
 
 Unreachable code:
 

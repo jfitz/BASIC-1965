@@ -20,31 +20,83 @@ Halstead complexity:
  time: 2.512
 
 (0 1) 10 REM THIS PROGRAM COMPUTES RECTANGULAR COORDINATE
+  Origs: 
+  Dests: 20
 (0 1) 20 REM TRANSLATION AND/OR ROTATION
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "ANGLE OF ROTATION IN DEGREES = ";
+  Origs: 20, 250
+  Dests: 40
 (1 2) 40 INPUT A
+  Origs: 30
+  Dests: 50
 (0 5) 50 LET B = (A * 3.14159) / 180
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT "COORDINATES OF NEW ORIGIN (X0,Y0) =";
+  Origs: 50
+  Dests: 70
 (2 3) 70 INPUT X, Y
+  Origs: 60
+  Dests: 80
 (0 2) 80 PRINT "OLD COORDINATES OF DATA POINT (X1,Y1) =";
+  Origs: 70
+  Dests: 90
 (2 3) 90 INPUT F, C
+  Origs: 80
+  Dests: 100
 (0 4) 100 LET Z = F - X
+  Origs: 90
+  Dests: 110
 (0 4) 110 LET W = C - Y
+  Origs: 100
+  Dests: 120
 (0 9) 120 LET D = (Z * COS(B)) + (W * SIN(B))
+  Origs: 110
+  Dests: 130
 (0 11) 130 LET E = -(Z * SIN(B)) + (W * COS(B))
+  Origs: 120
+  Dests: 140
 (0 2) 140 PRINT
+  Origs: 130
+  Dests: 150
 (0 3) 150 PRINT "SPECIFIED ROTATION ="; A
+  Origs: 140
+  Dests: 160
 (0 2) 160 PRINT "NEW COORDINATES OF DATA POINT"
+  Origs: 150
+  Dests: 170
 (0 3) 170 PRINT "X2 = "; D
+  Origs: 160
+  Dests: 180
 (0 3) 180 PRINT "Y2 = "; E
+  Origs: 170
+  Dests: 190
 (0 2) 190 PRINT
+  Origs: 180
+  Dests: 200
 (0 2) 200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 190
+  Dests: 210
 (1 2) 210 INPUT L
+  Origs: 200
+  Dests: 220
 (1 4) 220 IF L = 1 THEN 240
+  Origs: 210
+  Dests: 230, 240
 (0 1) 230 STOP
+  Origs: 220
+  Dests: 
 (0 2) 240 PRINT
+  Origs: 220
+  Dests: 250
 (0 3) 250 GOTO 30
+  Origs: 240
+  Dests: 30
 (0 1) 260 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

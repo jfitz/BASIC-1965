@@ -20,14 +20,32 @@ Halstead complexity:
  time: 0.096
 
 (0 1) 10 REM TEST FOR/NEXT STATEMENTS
+  Origs: 
+  Dests: 20
 (0 3) 20 LET B = 1
+  Origs: 10
+  Dests: 30
 (0 3) 30 LET E = 5
+  Origs: 20
+  Dests: 40
 (0 3) 40 LET S = 1
+  Origs: 30
+  Dests: 50
 (1 4) 50 FOR I = B TO E STEP S
+  Origs: 40
+  Dests: 60
 (0 2) 60 PRINT I
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET E = E + 1
+  Origs: 60
+  Dests: 80
 (0 1) 80 NEXT I
+  Origs: 70
+  Dests: 99
 (0 1) 99 END
+  Origs: 80
+  Dests: 
 
 Unreachable code:
 

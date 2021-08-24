@@ -20,38 +20,104 @@ Halstead complexity:
  time: 10.960
 
 (0 1) 10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+  Origs: 
+  Dests: 20
 (0 2) 20 PRINT "ENTER 3 X 3 MATRIX"
+  Origs: 10, 310
+  Dests: 30
 (9 10) 30 INPUT A, B, C, D, E, F, G, H, I
+  Origs: 20
+  Dests: 40
 (0 1) 40 REM COMPUTE DETERMINANT OF 3X3
+  Origs: 30
+  Dests: 50
 (0 13) 50 LET M = (A * E * I) + (B * F * G) + (C * H * D)
+  Origs: 40
+  Dests: 60
 (0 15) 60 LET N = M - (C * E * G) - (F * H * A) - (I * D * B)
+  Origs: 50
+  Dests: 70
 (0 1) 70 REM COMPUTE INVERSE
+  Origs: 60
+  Dests: 80
 (0 8) 80 LET O = ((E * I) - (H * F)) / N
+  Origs: 70
+  Dests: 90
 (0 8) 90 LET P = ((G * F) - (D * I)) / N
+  Origs: 80
+  Dests: 100
 (0 8) 100 LET Q = ((D * H) - (G * E)) / N
+  Origs: 90
+  Dests: 110
 (0 8) 110 LET R = ((H * C) - (B * I)) / N
+  Origs: 100
+  Dests: 120
 (0 8) 120 LET S = ((A * I) - (G * C)) / N
+  Origs: 110
+  Dests: 130
 (0 8) 130 LET T = ((G * B) - (A * H)) / N
+  Origs: 120
+  Dests: 140
 (0 8) 140 LET U = ((B * F) - (E * C)) / N
+  Origs: 130
+  Dests: 150
 (0 8) 150 LET V = ((D * C) - (A * F)) / N
+  Origs: 140
+  Dests: 160
 (0 8) 160 LET W = ((A * E) - (D * B)) / N
+  Origs: 150
+  Dests: 170
 (0 2) 170 PRINT "ORIGINAL MATRIX"
+  Origs: 160
+  Dests: 180
 (0 4) 180 PRINT A, B, C
+  Origs: 170
+  Dests: 190
 (0 4) 190 PRINT D, E, F
+  Origs: 180
+  Dests: 200
 (0 4) 200 PRINT G, H, I
+  Origs: 190
+  Dests: 210
 (0 2) 210 PRINT
+  Origs: 200
+  Dests: 220
 (0 3) 220 PRINT "DETERMINANT = "; N
+  Origs: 210
+  Dests: 230
 (0 2) 230 PRINT
+  Origs: 220
+  Dests: 240
 (0 2) 240 PRINT "INVERSE OF MATRIX"
+  Origs: 230
+  Dests: 250
 (0 4) 250 PRINT O, R, U
+  Origs: 240
+  Dests: 260
 (0 4) 260 PRINT P, S, V
+  Origs: 250
+  Dests: 270
 (0 4) 270 PRINT Q, T, W
+  Origs: 260
+  Dests: 280
 (0 2) 280 PRINT
+  Origs: 270
+  Dests: 290
 (0 2) 290 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 280
+  Dests: 300
 (1 2) 300 INPUT L
+  Origs: 290
+  Dests: 310
 (1 5) 310 IF L = 1 THEN 20
+  Origs: 300
+  Dests: 20, 320
 (0 1) 320 STOP
+  Origs: 310
+  Dests: 
 (0 1) 330 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

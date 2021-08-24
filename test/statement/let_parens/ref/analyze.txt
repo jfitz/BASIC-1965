@@ -20,14 +20,32 @@ Halstead complexity:
  time: 1.316
 
 (0 8) 10 LET A1 = 10 * (3 * (2 + 1))
+  Origs: 
+  Dests: 20
 (0 7) 20 LET A2 = (3 * (2 + 1)) * 10
+  Origs: 10
+  Dests: 30
 (0 8) 30 LET B1 = 10 * (3 + (2 * 1))
+  Origs: 20
+  Dests: 40
 (0 7) 40 LET B2 = (3 + (2 * 1)) * 10
+  Origs: 30
+  Dests: 50
 (0 8) 50 LET C1 = 10 + (3 * (2 + 1))
+  Origs: 40
+  Dests: 60
 (0 7) 60 LET C2 = (3 * (2 + 1)) + 10
+  Origs: 50
+  Dests: 70
 (0 7) 70 PRINT A1, A2, B1, B2, C1, C2
+  Origs: 60
+  Dests: 90
 (0 1) 90 STOP
+  Origs: 70
+  Dests: 
 (0 1) 99 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

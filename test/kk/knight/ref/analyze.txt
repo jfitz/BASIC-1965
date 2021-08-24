@@ -20,57 +20,161 @@ Halstead complexity:
  time: 15.247
 
 (0 1) 100 REMARK THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
+  Origs: 
+  Dests: 110
 (0 1) 110 REMARK UNTIL NO FURTHER MOVE IS POSSIBLE. IT THEN PRINTS
+  Origs: 100
+  Dests: 120
 (0 1) 120 REMARK OUT THE FINAL POSITION AND THE LENGTH OF THE SERIES.
+  Origs: 110
+  Dests: 130
 (0 0) 130 
+  Origs: 120
+  Dests: 140
 (0 1) 140 REMARK WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
+  Origs: 130
+  Dests: 150
 (2 3) 150 READ I0, J0
+  Origs: 140
+  Dests: 160
 (0 4) 160 PRINT "RANK  "; "FILE  "; "LENGTH"
+  Origs: 150
+  Dests: 180
 (0 0) 180 
+  Origs: 160
+  Dests: 182
 (0 3) 182 LET Z0 = 0
+  Origs: 180
+  Dests: 190
 (0 1) 190 REMARK WE ZERO THE BOARD AND INITIALIZE
+  Origs: 182
+  Dests: 200
 (1 3) 200 FOR I = 1 TO 8
+  Origs: 190, 620
+  Dests: 210
 (1 3) 210 FOR J = 1 TO 8
+  Origs: 200
+  Dests: 220
 (0 3) 220 LET B(I, J) = 0
+  Origs: 210
+  Dests: 230
 (0 1) 230 NEXT J
+  Origs: 220
+  Dests: 240
 (0 1) 240 NEXT I
+  Origs: 230
+  Dests: 250
 (0 3) 250 LET I = I0
+  Origs: 240
+  Dests: 260
 (0 3) 260 LET J = J0
+  Origs: 250
+  Dests: 270
 (0 3) 270 LET M = 1
+  Origs: 260
+  Dests: 280
 (0 4) 280 LET B(I, J) = -1
+  Origs: 270
+  Dests: 290
 (0 0) 290 
+  Origs: 280
+  Dests: 300
 (0 1) 300 REMARK WE NOW START THE SERIES OF MOVES
+  Origs: 290
+  Dests: 310
 (0 3) 310 LET C1 = 9
+  Origs: 300, 460
+  Dests: 320
 (0 3) 320 LET C = 0
+  Origs: 310, 520
+  Dests: 330
 (1 5) 330 FOR I1 = I - 2 TO I + 2
+  Origs: 320
+  Dests: 340
 (1 4) 340 IF I1 = 1 THEN 480
+  Origs: 330
+  Dests: 350, 480
 (1 5) 350 IF ABS(I1 - 4.5) > 4 THEN 480
+  Origs: 340
+  Dests: 360, 480
 (0 5) 360 LET D1 = 3 - ABS(I1 - I)
+  Origs: 350
+  Dests: 370
 (1 7) 370 FOR J1 = J - D1 TO J + D1 STEP 2 * D1
+  Origs: 360
+  Dests: 380
 (1 5) 380 IF ABS(J1 - 4.5) > 4 THEN 470
+  Origs: 370
+  Dests: 390, 470
 (1 4) 390 IF B(I1, J1) < 0 THEN 470
+  Origs: 380
+  Dests: 400, 470
 (0 4) 400 LET C = C + 1
+  Origs: 390
+  Dests: 410
 (1 4) 410 IF C <> C1 THEN 470
+  Origs: 400
+  Dests: 420, 470
 (0 3) 420 LET I = I1
+  Origs: 410
+  Dests: 430
 (0 3) 430 LET J = J1
+  Origs: 420
+  Dests: 440
 (0 4) 440 LET B(I, J) = -1
+  Origs: 430
+  Dests: 450
 (0 4) 450 LET M = M + 1
+  Origs: 440
+  Dests: 460
 (0 3) 460 GOTO 310
+  Origs: 450
+  Dests: 310
 (0 1) 470 NEXT J1
+  Origs: 380, 390, 410
+  Dests: 480
 (0 1) 480 NEXT I1
+  Origs: 340, 350, 470
+  Dests: 490
 (1 4) 490 IF C = 0 THEN 600
+  Origs: 480
+  Dests: 500, 600
 (0 1) 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
+  Origs: 490
+  Dests: 510
 (0 4) 510 LET C1 = INT(RND(Z) * C + 1)
+  Origs: 500
+  Dests: 520
 (0 3) 520 GOTO 320
+  Origs: 510
+  Dests: 320
 (0 1) 600 REMARK WE HAVE GONE AS FAR AS WE CAN
+  Origs: 490
+  Dests: 610
 (0 4) 610 PRINT I; J; M
+  Origs: 600
+  Dests: 612
 (0 4) 612 LET Z0 = Z0 + 1
+  Origs: 610
+  Dests: 620
 (1 5) 620 IF Z0 < 40 THEN 200
+  Origs: 612
+  Dests: 200, 630
 (0 1) 630 REMARK WE GO FOR ANOTHER TRIAL
+  Origs: 620
+  Dests: 880
 (0 0) 880 
+  Origs: 630
+  Dests: 890
 (0 1) 890 REMARK THE DATA FOR THE STARTING POSITION
+  Origs: 880
+  Dests: 900
 (0 2) 900 DATA 1, 1
+  Origs: 890
+  Dests: 999
 (0 1) 999 END
+  Origs: 900
+  Dests: 
 
 Unreachable code:
 

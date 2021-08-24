@@ -20,25 +20,65 @@ Halstead complexity:
  time: 1.004
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE PARAMETERS
+  Origs: 
+  Dests: 20
 (0 1) 20 REM CONNECTED WITH A CIRCULAR SECTION
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "RADIUS"
+  Origs: 20, 190
+  Dests: 40
 (1 2) 40 INPUT R
+  Origs: 30
+  Dests: 50
 (0 3) 50 LET P = 3.14159
+  Origs: 40
+  Dests: 60
 (0 4) 60 LET D = 2 * R
+  Origs: 50
+  Dests: 70
 (0 7) 70 LET I = (P * (D ^ 4)) / 64
+  Origs: 60
+  Dests: 80
 (0 4) 80 LET J = I * 2
+  Origs: 70
+  Dests: 90
 (0 7) 90 LET A = (P * (D ^ 2)) / 4
+  Origs: 80
+  Dests: 100
 (0 3) 100 PRINT "MOMENT OF INERTIA = "; I
+  Origs: 90
+  Dests: 110
 (0 3) 110 PRINT "POLAR MOMENT OF INERTIA = "; J
+  Origs: 100
+  Dests: 120
 (0 3) 120 PRINT "AREA OF SECTION = "; A
+  Origs: 110
+  Dests: 130
 (0 2) 130 PRINT "*************************"
+  Origs: 120
+  Dests: 140
 (0 2) 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 130
+  Dests: 150
 (1 2) 150 INPUT L
+  Origs: 140
+  Dests: 160
 (1 4) 160 IF L = 1 THEN 180
+  Origs: 150
+  Dests: 170, 180
 (0 1) 170 STOP
+  Origs: 160
+  Dests: 
 (0 2) 180 PRINT
+  Origs: 160
+  Dests: 190
 (0 3) 190 GOTO 30
+  Origs: 180
+  Dests: 30
 (0 1) 200 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

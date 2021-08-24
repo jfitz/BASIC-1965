@@ -20,21 +20,53 @@ Halstead complexity:
  time: 0.532
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE FACTORIALS OF X
+  Origs: 
+  Dests: 20
 (0 1) 20 REM BY ITERATIVE MULTIPLICATIONS
+  Origs: 10
+  Dests: 30
 (0 2) 30 PRINT "X = ";
+  Origs: 20, 150
+  Dests: 40
 (1 2) 40 INPUT X
+  Origs: 30
+  Dests: 50
 (0 3) 50 LET Z = 1
+  Origs: 40
+  Dests: 60
 (1 3) 60 FOR I = 1 TO X
+  Origs: 50
+  Dests: 70
 (0 4) 70 LET Z = Z * I
+  Origs: 60
+  Dests: 80
 (0 1) 80 NEXT I
+  Origs: 70
+  Dests: 90
 (0 5) 90 PRINT "X = "; X, "X! = "; Z
+  Origs: 80
+  Dests: 100
 (0 2) 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 90
+  Dests: 110
 (1 2) 110 INPUT L
+  Origs: 100
+  Dests: 120
 (1 4) 120 IF L = 1 THEN 140
+  Origs: 110
+  Dests: 130, 140
 (0 1) 130 STOP
+  Origs: 120
+  Dests: 
 (0 2) 140 PRINT
+  Origs: 120
+  Dests: 150
 (0 3) 150 GOTO 30
+  Origs: 140
+  Dests: 30
 (0 1) 160 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

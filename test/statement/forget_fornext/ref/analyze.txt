@@ -20,12 +20,26 @@ Halstead complexity:
  time: 0.020
 
 (0 1) 10 REM Test the FORGET statement
+  Origs: 
+  Dests: 12
 (0 2) 12 OPTION LOCK_FORNEXT TRUE
+  Origs: 10
+  Dests: 20
 (1 3) 20 FOR I = 1 TO 5
+  Origs: 12
+  Dests: 30
 (0 2) 30 PRINT I
+  Origs: 20
+  Dests: 40
 (0 1) 40 FORGET I
+  Origs: 30
+  Dests: 90
 (0 1) 90 NEXT I
+  Origs: 40
+  Dests: 99
 (0 1) 99 END
+  Origs: 90
+  Dests: 
 
 Unreachable code:
 
