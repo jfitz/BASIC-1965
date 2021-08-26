@@ -20,31 +20,83 @@ Halstead complexity:
  time: 3.717
 
 (0 1) 10 REM TEST CALCULATIONS WITH CONSTANT VALUES
+  Origs: 
+  Dests: 11
 (0 2) 11 OPTION CACHE_CONST_EXPR TRUE
+  Origs: 10
+  Dests: 12
 (0 4) 12 DEF FNR(D) = D * 3.1415 / 180
+  Origs: 11
+  Dests: 20
 (0 2) 20 PRINT "PRECISION 7"
+  Origs: 12
+  Dests: 30
 (0 2) 30 GOSUB 100
+  Origs: 20
+  Dests: 32, 100
 (0 2) 32 GOSUB 200
+  Origs: 30
+  Dests: 50, 200
 (0 2) 50 OPTION PRECISION 10
+  Origs: 32
+  Dests: 60
 (0 2) 60 PRINT "PRECISION 10"
+  Origs: 50
+  Dests: 70
 (0 2) 70 GOSUB 100
+  Origs: 60
+  Dests: 72, 100
 (0 2) 72 GOSUB 200
+  Origs: 70
+  Dests: 99, 200
 (0 1) 99 STOP
+  Origs: 72
+  Dests: 
 (0 1) 100 REM PROC A
+  Origs: 30, 70
+  Dests: 110
 (0 4) 110 LET S1 = SIN(30 * 3.1415 / 180)
+  Origs: 100
+  Dests: 120
 (0 4) 120 LET S2 = SIN(45 * 3.1415 / 180)
+  Origs: 110
+  Dests: 130
 (0 4) 130 LET S3 = SIN(60 * 3.1415 / 180)
+  Origs: 120
+  Dests: 140
 (0 4) 140 LET S4 = SIN(90 * 3.1415 / 180)
+  Origs: 130
+  Dests: 150
 (0 5) 150 PRINT S1, S2, S3, S4
+  Origs: 140
+  Dests: 190
 (0 1) 190 RETURN
+  Origs: 150
+  Dests: 
 (0 1) 200 REM PROC B
+  Origs: 32, 72
+  Dests: 210
 (0 4) 210 LET S1 = SIN(30 * 3.1415 / 180)
+  Origs: 200
+  Dests: 220
 (0 4) 220 LET S2 = SIN(45 * 3.1415 / 180)
+  Origs: 210
+  Dests: 230
 (0 4) 230 LET S3 = SIN(60 * 3.1415 / 180)
+  Origs: 220
+  Dests: 240
 (0 4) 240 LET S4 = SIN(90 * 3.1415 / 180)
+  Origs: 230
+  Dests: 250
 (0 5) 250 PRINT S1, S2, S3, S4
+  Origs: 240
+  Dests: 290
 (0 1) 290 RETURN
+  Origs: 250
+  Dests: 
 (0 1) 399 END
+  Origs: 
+  Dests: 
 
 Unreachable code:
 

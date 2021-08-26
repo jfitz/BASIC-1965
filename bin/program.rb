@@ -717,12 +717,24 @@ class Program
       statement = line.statement
       begin
         okay &=
-          statement.preexecute_a_statement(line_number,
-                                           interpreter,
-                                           @console_io)
+          statement.check_for_errors(line_number, interpreter, @console_io)
       rescue BASICPreexecuteError => e
         @console_io.print_line("Error #{e.code} #{e.message}")
         okay = false
+      end
+    end
+
+    if okay
+      @lines.keys.sort.each do |line_number|
+        @line_number = line_number
+        line = @lines[line_number]
+        statement = line.statement
+        begin
+          statement.preexecute(interpreter)
+        rescue BASICPreexecuteError => e
+          @console_io.print_line("Error #{e.code} #{e.message}")
+          okay = false
+        end
       end
     end
 
