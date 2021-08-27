@@ -350,7 +350,8 @@ class Shell
       @interpreter.print_program_errors
       @console_io.newline
     when 'PRETTY'
-      texts = @interpreter.program_pretty(args)
+      pretty_multiline = false
+      texts = @interpreter.program_pretty(args, pretty_multiline)
       texts.each { |text| @console_io.print_line(text) }
       @interpreter.print_program_errors
       @console_io.newline
@@ -844,7 +845,8 @@ unless pretty_filename.nil?
   filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
-    texts = interpreter.program_pretty('')
+    pretty_multiline = false
+    texts = interpreter.program_pretty('', pretty_multiline)
     texts.each { |text| console_io.print_line(text) }
   else
     interpreter.print_program_errors

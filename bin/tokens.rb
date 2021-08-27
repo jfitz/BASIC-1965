@@ -38,6 +38,45 @@ class AbstractToken
     pretty_tokens.map(&:to_s).join
   end
 
+  def self.pretty_multiline(keywords, tokens)
+    pretty_lines = []
+    pretty_tokens = []
+
+    keywords.each do |token|
+      pretty_tokens << WhitespaceToken.new(' ')
+      pretty_tokens << token
+    end
+
+    token1 = WhitespaceToken.new(' ')
+    token2 = WhitespaceToken.new(' ')
+    tokens.each do |token|
+      prev_is_variable = token1.variable? ||
+                         token1.function? ||
+                         token1.user_function?
+
+      prev2_is_operand = token2.operand? || token2.group_end?
+      pretty_tokens << WhitespaceToken.new(' ') unless
+        token.separator? ||
+        (token.group_start? && prev_is_variable) ||
+        token.group_end? ||
+        token1.group_start? ||
+        (token1.operator? && token1.to_s != 'NOT' && !prev2_is_operand)
+
+      pretty_tokens << token
+      if token.statement_separator?
+        pretty_line = pretty_tokens.map(&:to_s).join
+        pretty_lines << pretty_line
+        pretty_tokens = []
+      end
+
+      token2 = token1
+      token1 = token
+    end
+
+    pretty_line = pretty_tokens.map(&:to_s).join
+    pretty_lines << pretty_line
+  end
+
   attr_reader :text
 
   def initialize(text)
@@ -55,6 +94,7 @@ class AbstractToken
     @is_boolean_constant = false
     @is_user_function = false
     @is_variable = false
+    @is_statement_separator = false
     @is_group_start = false
     @is_group_end = false
   end
@@ -139,6 +179,10 @@ class AbstractToken
     @is_function || @is_text_constant || @is_numeric_constant ||
       @is_boolean_constant || @is_user_function || @is_variable
   end
+
+  def statement_separator?
+    @is_statement_separator
+  end
 end
 
 # invalid token
@@ -193,10 +237,19 @@ class CommentToken < AbstractToken
   end
 end
 
-# remark comment token
+# remark token
 class RemarkToken < AbstractToken
   def initialize(text)
     super
+  end
+end
+
+# statement separator token
+class StatementSeparatorToken < AbstractToken
+  def initialize(text)
+    super
+
+    @is_statement_separator = true
   end
 end
 

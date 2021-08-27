@@ -2,14 +2,14 @@
 class AbstractForControl
   attr_reader :control
   attr_reader :start
-  attr_accessor :loop_start_number
+  attr_accessor :loop_start_index
   attr_accessor :forget
 
   def initialize(control, start, step)
     @control = control
     @start = start
     @step = step
-    @loop_start_number = nil
+    @loop_start_index = nil
     @forget = false
   end
 
@@ -144,8 +144,8 @@ end
 # the interpreter
 class Interpreter
   attr_writer :program
-  attr_reader :current_line_number
-  attr_accessor :next_line_number
+  attr_reader :current_line_index
+  attr_accessor :next_line_index
   attr_reader :console_io
   attr_reader :trace_out
 
@@ -215,13 +215,13 @@ class Interpreter
     tokenbuilders << WhitespaceTokenBuilder.new
   end
 
-  def verify_next_line_number
+  def verify_next_line_index
     raise BASICSyntaxError, 'Program terminated without END' if
-      @next_line_number.nil?
+      @next_line_index.nil?
 
-    return if @program.line_number?(@next_line_number)
+    return if @program.line_number?(@next_line_index.number)
 
-    raise(BASICSyntaxError, "Line number #{@next_line_number} not found")
+    raise(BASICSyntaxError, "Line number #{@next_line_index.number} not found")
   end
 
   public
@@ -246,8 +246,8 @@ class Interpreter
     @program.list(args, list_tokens)
   end
 
-  def program_pretty(args)
-    @program.pretty(args)
+  def program_pretty(args, multiline)
+    @program.pretty(args, multiline)
   end
 
   def program_delete(args)
@@ -328,10 +328,31 @@ class Interpreter
     run_statements if @program.preexecute_loop(self)
   end
 
+  def close_all_files
+    @file_handlers.each { |_, fh| fh.close }
+  end
+
+  def find_first_statement
+    # set next line to first statement
+    line_number = @program.first_line_number
+    line = @program.lines[line_number]
+    statements = line.statements
+    modifier = 0
+
+    # start with the modifier, if any
+    unless statements.empty?
+      statement = statements[0]
+      modifier = statement.start_index
+    end
+
+    LineNumberIndex.new(line_number, 0, modifier)
+  end
+
   def run_statements
     # run each statement
     # start with the first line number
-    @current_line_number = @program.first_line_number
+    @current_line_index = find_first_statement
+
     @running = true
 
     begin
@@ -340,7 +361,7 @@ class Interpreter
       stop_running
     end
 
-    @file_handlers.each { |_, fh| fh.close }
+    close_all_files
   end
 
   def print_errors(line_number, statement)
@@ -352,15 +373,18 @@ class Interpreter
     detect = $options['detect_infinite_loop'].value
 
     raise(BASICSyntaxError, 'Infinite loop detected') if
-      detect && @previous_line_numbers.include?(@current_line_number)
+      detect && @previous_line_indexes.include?(@current_line_index)
 
-    @previous_line_numbers << @current_line_number
+    @previous_line_indexes << @current_line_index
 
-    line = @program.lines[@current_line_number]
-    statement = line.statement
+    line_number = @current_line_index.number
+    line = @program.lines[line_number]
+    statements = line.statements
+    statement_index = @current_line_index.statement
+    statement = statements[statement_index]
 
-    statement.print_trace_info(@trace_out, @current_line_number)
-    statement.execute_a_statement(self, @current_line_number)
+    statement.print_trace_info(@trace_out, @current_line_index)
+    statement.execute_a_statement(self, @current_line_index)
   end
 
   def execute_debug_command(keyword, args, cmd)
@@ -386,7 +410,7 @@ class Interpreter
     when 'LIST'
       @program.list(args, false)
     when 'PRETTY'
-      @program.pretty(args)
+      @program.pretty(args, false)
     when 'DELETE'
       @program.enblank(args)
     when 'PROFILE'
@@ -420,9 +444,11 @@ class Interpreter
   end
 
   def debug_shell
-    line = @program.lines[@current_line_number]
+    current_line_number = @current_line_index.number
+    line = @program.lines[current_line_number]
     @console_io.newline_when_needed
-    @console_io.print_line(@current_line_number.to_s + ': ' + line.pretty)
+    text = current_line_number.to_s + ': ' + line.pretty(false).join('')
+    @console_io.print_line(text)
     @step_mode = false
     @debug_done = false
 
@@ -453,16 +479,26 @@ class Interpreter
 
   def program_loop
     # pick the next line number
-    @next_line_number = @program.find_next_line_number(@current_line_number)
-    next_line_number = nil
-    next_line_number = @next_line_number.clone unless @next_line_number.nil?
+    @next_line_index = @program.find_next_line_index(@current_line_index)
+    next_line_index = nil
+    next_line_index = @next_line_index.clone unless @next_line_index.nil?
+
+    line_number = @current_line_index.number
+    line_statement = @current_line_index.statement
+    line_index = @current_line_index.index
+
+    breakpoint = false
 
     # look for line breakpoint
-    breakpoint = @line_breakpoints.key?(@current_line_number)
+    if line_index.zero? &&
+       line_statement.zero? &&
+       @line_breakpoints.key?(line_number)
+      breakpoint = true
+    end
 
     unless breakpoint
-      if @line_cond_breakpoints.key?(@current_line_number)
-        expressions = @line_cond_breakpoints[@current_line_number]
+      if @line_cond_breakpoints.key?(line_number)
+        expressions = @line_cond_breakpoints[line_number]
 
         expressions.each do |expression|
           results = expression.evaluate(self)
@@ -475,13 +511,13 @@ class Interpreter
     # check step mode
     breakpoint = true if @step_mode
 
-    # debug shell may change @next_line_number
+    # debug shell may change @next_line_index
     debug_shell if breakpoint
 
     # if next line number has changed, debug_shell executed a GOTO
-    if @next_line_number != next_line_number
-      @current_line_number = @next_line_number
-      @next_line_number = @program.find_next_line_number(@current_line_number)
+    if @next_line_index != next_line_index
+      @current_line_index = @next_line_index
+      @next_line_index = @program.find_next_line_index(@current_line_index)
     end
 
     begin
@@ -489,29 +525,35 @@ class Interpreter
       @get_value_seen = []
 
       # set the next line number
-      @current_line_number = nil
+      @current_line_index = nil
 
       if @running
-        verify_next_line_number
-        @current_line_number = @next_line_number
+        verify_next_line_index
+        @current_line_index = @next_line_index
       end
     rescue BASICTrappableError => e
       @console_io.newline_when_needed
 
-      if @current_line_number.nil?
+      if @current_line_index.nil?
         @console_io.print_line(e.message)
       else
-        @console_io.print_line("Error #{e.code} #{e.message} in line #{@current_line_number}")
-      end
+        if @current_line_index.nil?
+          @console_io.print_line("Error #{e.code} #{e.message}")
+        else
+          line_number = @current_line_index.number
+          @console_io.print_line("Error #{e.code} #{e.message} in line #{line_number}")
+        end
 
-      stop_running
+        stop_running
+      end
     rescue BASICSyntaxError => e
       @console_io.newline_when_needed
 
-      if @current_line_number.nil?
+      if @current_line_index.nil?
         @console_io.print_line(e.message)
       else
-        @console_io.print_line("#{e.message} in line #{@current_line_number}")
+        line_number = @current_line_index.number
+        @console_io.print_line("#{e.message} in line #{line_number}")
       end
 
       stop_running
@@ -586,6 +628,7 @@ class Interpreter
             end
           rescue BASICSyntaxError, BASICExpressionError
             tkns = tokens_list.map(&:to_s).join
+
             raise BASICCommandError.new('INVALID BREAKPOINT ' + tkns)
           end
         end
@@ -620,11 +663,13 @@ class Interpreter
             @line_cond_breakpoints.delete(line_number)
           rescue BASICSyntaxError
             tkns = tokens_list.map(&:to_s).join
+
             raise BASICCommandError.new('INVALID BREAKPOINT ' + tkns)
           end
         else
           # TODO: remove a conditional breakpoint
           tkns = tokens_list.map(&:to_s).join
+
           raise BASICCommandError.new('INVALID BREAKPOINT ' + tkns)
         end
       end
@@ -668,6 +713,20 @@ class Interpreter
 
   def line_number?(line_number)
     @program.line_number?(line_number)
+  end
+
+  def find_next_line
+    @program.find_next_line(@current_line_index)
+  end
+
+  def statement_start_index(line_number, _statement_index)
+    line = @program.lines[line_number]
+
+    return if line.nil?
+
+    statements = line.statements
+    statement = statements[0]
+    statement.start_index unless statement.nil?
   end
 
   def set_action(name, v)
@@ -758,7 +817,7 @@ class Interpreter
 
   def stop
     stop_running
-    @console_io.print_line("STOP in line #{@current_line_number}")
+    @console_io.print_line("STOP in line #{@current_line_index.number}")
   end
 
   def stop_running
@@ -778,7 +837,7 @@ class Interpreter
   end
 
   def find_closing_next(control)
-    @program.find_closing_next(control, @current_line_number)
+    @program.find_closing_next(control, @current_line_index)
   end
 
   def set_dimensions(variable, subscripts)
@@ -914,15 +973,14 @@ class Interpreter
   end
 
   def get_value(variable)
-    legals = [
-      'Variable'
-    ]
+    legals = %w[Variable]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable") unless
       legals.include?(variable.class.to_s)
 
     value = nil
+
     # first look in user function values stack
     length = @user_var_values.length
 
@@ -943,7 +1001,7 @@ class Interpreter
         # define a value for this variable
         @variables[var] =
           {
-            'provenance' => @current_line_number,
+            'provenance' => @current_line_index,
             'value' => NumericConstant.new(0)
           }
       end
@@ -951,9 +1009,9 @@ class Interpreter
       dict = @variables[var]
       value = dict['value']
       provenance = dict['provenance']
-
-      seen = @get_value_seen.include?(variable)
     end
+
+    seen = @get_value_seen.include?(variable)
 
     trace = $options['trace'].value
 
@@ -975,9 +1033,7 @@ class Interpreter
   end
 
   def set_value(variable, value)
-    legals = [
-      'Variable'
-    ]
+    legals = %w[Variable]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable name") unless
@@ -1005,7 +1061,7 @@ class Interpreter
       old_value = dict['value']
       old_provenance = dict['provenance']
       # a different value resets 'infinite loop' check
-      if value != old_value || @current_line_number != old_provenance
+      if value != old_value || @current_line_index != old_provenance
         clear_previous_lines
       end
     else
@@ -1013,7 +1069,7 @@ class Interpreter
       clear_previous_lines
     end
 
-    dict = { 'provenance' => @current_line_number, 'value' => value }
+    dict = { 'provenance' => @current_line_index, 'value' => value }
     @variables[var] = dict
 
     @trace_out.newline_when_needed
@@ -1067,9 +1123,7 @@ class Interpreter
   end
 
   def forget_compound_values(variable)
-    legals = [
-      'Variable'
-    ]
+    legals = %w[Variable]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable name") unless
@@ -1153,7 +1207,7 @@ class Interpreter
   end
 
   def clear_previous_lines
-    @previous_line_numbers = []
+    @previous_line_indexes = []
   end
 
   def lock_variable(variable)
@@ -1180,9 +1234,9 @@ class Interpreter
     raise BASICRuntimeError.new(:te_ret_no_gos) if @return_stack.empty?
 
     # remove all lines from the subroutine in the 'visited' list
-    while !@previous_line_numbers.empty? &&
-          @previous_line_numbers[-1] != @return_stack[-1]
-      @previous_line_numbers.pop
+    while !@previous_line_indexes.empty? &&
+          @previous_line_indexes[-1] != @return_stack[-1]
+      @previous_line_indexes.pop
     end
 
     @return_stack.pop
@@ -1192,7 +1246,7 @@ class Interpreter
     control = fornext_control.control
     v = control.to_s
     fornext_control.forget = !@variables.key?(v)
-    fornext_control.loop_start_number = @next_line_number
+    fornext_control.loop_start_index = @next_line_index
     @fornexts[control] = fornext_control
     from = fornext_control.start
     set_value(control, from)

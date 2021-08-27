@@ -37,7 +37,6 @@ YOUR MOVE
 270: LET B = FNM(P + 1)
  P: 1
  X: 2
- X: 2
  B = 2
 280: LET M = B
  B: 2
@@ -62,11 +61,9 @@ YOUR MOVE
  Q: 6
  B: 2
  X: 6
- X: 6
  Q = FNM(B + 4): true
 360: LET C = FNM(B + 2)
  B: 2
- X: 4
  X: 4
  C = 4
 370: LET M = C
@@ -92,14 +89,12 @@ YOUR MOVE
  R: 8
  C: 4
  X: 8
- X: 8
  R = FNM(C + 4): true
 450: IF P / 2 <> INT(P / 2) THEN 500
  P: 1
  P / 2 <> INT(P / 2): true
 500: LET D = FNM(C + 3)
  C: 4
- X: 7
  X: 7
  D = 7
 510: LET M = D
@@ -125,11 +120,9 @@ YOUR MOVE
  S: 3
  D: 7
  X: 11
- X: 11
  S = FNM(D + 4): true
 590: LET E = FNM(D + 6)
  D: 7
- X: 13
  X: 13
  E = 5
 600: LET M = E

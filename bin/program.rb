@@ -89,15 +89,78 @@ class LineNumberCountRange
   end
 end
 
+# LineNumberIdx class to hold line number and index within line
+class LineNumberIdx
+  attr_reader :number
+  attr_reader :statement
+
+  def initialize(number, statement)
+    @number = number
+    @statement = statement
+  end
+
+  def eql?(other)
+    @number == other.number && @statement == other.statement
+  end
+
+  def ==(other)
+    @number == other.number && @statement == other.statement
+  end
+
+  def hash
+    @number.hash + @statement.hash
+  end
+
+  def to_s
+    return @number.to_s if @statement.zero?
+    @number.to_s + '.' + @statement.to_s
+  end
+end
+
+# LineNumberIndex class to hold line number and index within line
+class LineNumberIndex
+  attr_reader :number
+  attr_reader :statement
+  attr_reader :index
+
+  def initialize(number, statement, index)
+    @number = number
+    @statement = statement
+    @index = index
+  end
+
+  def eql?(other)
+    @number == other.number &&
+      @statement == other.statement &&
+      @index == other.index
+  end
+
+  def ==(other)
+    @number == other.number &&
+      @statement == other.statement &&
+      @index == other.index
+  end
+
+  def hash
+    @number.hash + @statement.hash + @index.hash
+  end
+
+  def to_s
+    return @number.to_s if @statement.zero? && @index.zero?
+    return @number.to_s + '.' + @statement.to_s if @index.zero?
+    @number.to_s + '.' + @statement.to_s + '.' + @index.to_s
+  end
+end
+
 # Line class to hold a line of code
 class Line
-  attr_reader :statement
+  attr_reader :statements
   attr_reader :tokens
   attr_reader :warnings
 
-  def initialize(text, statement, tokens, comment)
+  def initialize(text, statements, tokens, comment)
     @text = text
-    @statement = statement
+    @statements = statements
     @tokens = tokens
     @comment = comment
     @warnings = []
@@ -107,58 +170,92 @@ class Line
       list_width_max > 0 && text.size > list_width_max
 
     pretty_width_max = $options['warn_pretty_width'].value
+    pretty_lines = pretty(false)
+    pretty_line = pretty_lines[0]
     @warnings << "Line exceeds PRETTY width limit #{pretty_width_max}" if
-      pretty_width_max > 0 && pretty.size > pretty_width_max
+      pretty_width_max > 0 && pretty_line.size > pretty_width_max
   end
 
   def uncache
-    @statement.uncache
+    @statements.each(&:uncache)
   end
 
   def reset_profile_metrics
-    @statement.reset_profile_metrics
+    @statements.each(&:reset_profile_metrics)
   end
 
   def number_valid_statements
-    @statement.valid ? 1 : 0
+    num = 0
+    @statements.each { |statement| num += 1 if statement.valid }
+    num
   end
 
   def number_exec_statements
-    @statement.executable ? 1 : 0
+    num = 0
+    @statements.each { |statement| num += 1 if statement.executable }
+    num
   end
 
   def number_comments
-    @statement.comment ? 1 : 0
+    num = 0
+    @statements.each { |statement| num += 1 if statement.comment }
+    num
   end
 
   def comprehension_effort
-    @statement.comprehension_effort
+    num = 0
+    @statements.each { |statement| num += statement.comprehension_effort }
+    num
   end
 
   def mccabe_complexity
-    @statement.mccabe
+    num = 0
+    @statements.each { |statement| num += statement.mccabe }
+    num
   end
 
   def list
     @text
   end
 
-  def pretty
-    text = AbstractToken.pretty_tokens([], @tokens)
-    text = ' ' + text unless text.empty?
-
-    unless @comment.nil?
-      space = @text.size - (text.size + @comment.to_s.size)
-      space = 5 if space < 5
-      text += ' ' * space
-      text += @comment.to_s
+  def pretty(multiline)
+    if multiline
+      pretty_lines = AbstractToken.pretty_multiline([], @tokens)
+    else
+      pretty_lines = [AbstractToken.pretty_tokens([], @tokens)]
     end
 
-    text
+    pl2 = []
+
+    pretty_lines.each do |pretty_line|
+      pretty_line = ' ' + pretty_line unless pretty_line.empty?
+      pl2 << pretty_line
+    end
+
+    pretty_lines = pl2
+
+    unless @comment.nil?
+      line_0 = pretty_lines[0]
+      space = @text.size - (line_0.size + @comment.to_s.size)
+      space = 5 if space < 5
+      line_0 += ' ' * space
+      line_0 += @comment.to_s
+      pretty_lines[0] = line_0
+    end
+
+    pretty_lines
   end
 
   def analyze_pretty(number)
-    @statement.analyze_pretty(number)
+    texts = []
+
+    @statements.each do |statement|
+      texts += statement.analyze_pretty(number)
+
+      number = ' ' * number.size
+    end
+
+    texts
   end
 
   def parse
@@ -169,21 +266,52 @@ class Line
     texts
   end
 
-  def profile(show_timing)
-    @statement.profile(show_timing)
+  def profile(number, show_timing)
+    texts = []
+
+    @statements.each do |statement|
+      profile_lines = statement.profile(show_timing)
+
+      profile_lines.each do |profile|
+        text = number + profile
+        texts << text
+
+        number = ' ' * number.size
+      end
+    end
+
+    texts
   end
 
   def renumber(renumber_map)
-    @statement.renumber(renumber_map)
-    keywords = @statement.keywords
-    tokens = @statement.tokens
-    text = AbstractToken.pretty_tokens(keywords, tokens)
+    tokens = []
+    separator = StatementSeparatorToken.new('\\')
+
+    @statements.each do |statement|
+      statement.renumber(renumber_map)
+      tokens << statement.keywords
+      tokens << statement.tokens
+      tokens << separator
+    end
+
+    tokens.pop
+    text = AbstractToken.pretty_tokens([], tokens.flatten)
     text = ' ' + text unless text.empty?
-    Line.new(text, @statement, keywords + tokens, @comment)
+    Line.new(text, @statements, tokens.flatten, @comment)
   end
 
   def okay(program, console_io, line_number)
-    @statement.okay(program, console_io, line_number)
+    retval = true
+    index = 0
+
+    @statements.each do |statement|
+      line_number_index = LineNumberIndex.new(line_number, index, 0)
+      r = statement.okay(program, console_io, line_number_index)
+      retval &&= r
+      index += 1
+    end
+
+    retval
   end
 end
 
@@ -304,10 +432,92 @@ class Program
     result
   end
 
-  def find_next_line_number(line_number)
+  def find_next_line_idx(current_line_idx)
+    # find next index with current statement
+    line_number = current_line_idx.number
+    line = @lines[line_number]
+
+    statements = line.statements
+    statement_index = current_line_idx.statement
+
+    # find next statement within the current line
+    if statement_index < statements.size - 1
+      statement_index += 1
+      return LineNumberIdx.new(line_number, statement_index)
+    end
+
+    # find the next line
     line_numbers = @lines.keys.sort
+    line_number = current_line_idx.number
     index = line_numbers.index(line_number)
-    line_numbers[index + 1]
+    line_number = line_numbers[index + 1]
+
+    return LineNumberIdx.new(line_number, 0) unless line_number.nil?
+
+    # nothing left to execute
+    nil
+  end
+
+  def find_next_line_index(current_line_index)
+    # find next index with current statement
+    line_number = current_line_index.number
+    line = @lines[line_number]
+
+    statements = line.statements
+    statement_index = current_line_index.statement
+    statement = statements[statement_index]
+
+    index = current_line_index.index
+
+    if index < statement.last_index
+      index += 1
+      return LineNumberIndex.new(line_number, statement_index, index)
+    end
+
+    # find next statement within the current line
+    if statement_index < statements.size - 1
+      statement_index += 1
+      statement = statements[statement_index]
+      index = statement.start_index
+      return LineNumberIndex.new(line_number, statement_index, index)
+    end
+
+    # find the next line
+    line_numbers = @lines.keys.sort
+    line_number = current_line_index.number
+    index = line_numbers.index(line_number)
+    line_number = line_numbers[index + 1]
+
+    unless line_number.nil?
+      line = @lines[line_number]
+      statements = line.statements
+      statement = statements[0]
+      index = statement.start_index
+      return LineNumberIndex.new(line_number, 0, index)
+    end
+
+    # nothing left to execute
+    nil
+  end
+
+  def find_next_line(current_line_index)
+    # find next numbered statement
+    line_numbers = @lines.keys.sort
+    line_number = current_line_index.number
+    index = line_numbers.index(line_number)
+    line_number = line_numbers[index + 1]
+
+    unless line_number.nil?
+      line = @lines[line_number]
+      statements = line.statements
+      statement = statements[0]
+      index = statement.start_index
+      next_line_index = LineNumberIndex.new(line_number, 0, index)
+      return next_line_index
+    end
+
+    # nothing left to execute
+    nil
   end
 
   def line_number?(line_number)
@@ -409,7 +619,21 @@ class Program
   def analyze_pretty
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
-    gotos = build_destinations
+    texts = []
+
+    goto_line_idxs = build_destinations
+
+    # convert line-number-indexes to line-numbers
+    gotos = {}
+    goto_line_idxs.each do |line_idx, dest_idxs|
+      line_number = line_idx.number
+      gotos[line_number] = [] unless gotos.key?(line_number)
+      dests = dest_idxs.map(&:number)
+      dests2 = []
+      dests.each { |dest| dests2 << dest if dest != line_number }
+      dests3 = dests2.uniq
+      gotos[line_number] += dests3
+    end
 
     origins = {}
 
@@ -420,8 +644,6 @@ class Program
       end
     end
 
-    texts = []
-
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
 
@@ -431,28 +653,26 @@ class Program
       texts += line.analyze_pretty(number)
 
       # print origins to this line
-
-      # print destinations from this line
-      statement = line.statement
-      statement_gotos = gotos[line_number]
-      dests = statement_gotos.sort.map(&:to_s).join(', ')
       statement_origins = origins[line_number]
       statement_origins = [] if statement_origins.nil?
       origs = statement_origins.sort.map(&:to_s).join(', ')
-
       texts << '  Origs: ' + origs
+
+      # print destinations from this line
+      statement_gotos = gotos[line_number]
+      dests = statement_gotos.sort.map(&:to_s).join(', ')
       texts << '  Dests: ' + dests
     end
 
     texts << ''
   end
 
-  def pretty(args)
+  def pretty(args, pretty_multiline)
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
     line_number_range = line_list_spec(args)
     line_numbers = line_number_range.line_numbers
-    pretty_lines_errors(line_numbers)
+    pretty_lines_errors(line_numbers, pretty_multiline)
   end
 
   def reset_profile_metrics
@@ -534,28 +754,30 @@ class Program
     operator_keywords = %w[FOR GOTO GOSUB IF NEXT RETURN]
 
     @lines.each do |_, line|
-      statement = line.statement
+      statements = line.statements
 
-      list_operators += statement.operators
+      statements.each do |statement|
+        list_operators += statement.operators
 
-      tokens = statement.keywords.flatten + statement.tokens
-      keywords = []
-      tokens.each do |token|
-        t = token.to_s
-        keywords << t if token.keyword?
+        tokens = statement.keywords.flatten + statement.tokens
+        keywords = []
+        tokens.each do |token|
+          t = token.to_s
+          keywords << t if token.keyword?
+        end
+        keywords.each do |keyword|
+          list_operators << keyword if operator_keywords.include?(keyword)
+        end
+
+        list_constants += statement.numerics
+        list_constants += statement.strings
+        list_variables += statement.variables
+        list_functions += statement.functions
+        list_functions += statement.userfuncs
+        list_linenums += statement.linenums
+
+        list_separators += statement.separators
       end
-      keywords.each do |keyword|
-        list_operators << keyword if operator_keywords.include?(keyword)
-      end
-
-      list_constants += statement.numerics
-      list_constants += statement.strings
-      list_variables += statement.variables
-      list_functions += statement.functions
-      list_functions += statement.userfuncs
-      list_linenums += statement.linenums
-
-      list_separators += statement.separators
     end
 
     num_operators = list_operators.size
@@ -609,27 +831,52 @@ class Program
     ]
   end
 
-  def build_statement_destinations(line_number, statement)
+  def build_statement_destinations(line_number_idx, statement)
+    goto_line_idxs = []
     statement_gotos = statement.gotos
 
-    autonext = statement.autonext
-
-    if autonext
-      next_line_number = find_next_line_number(line_number)
-      statement_gotos << next_line_number unless next_line_number.nil?
+    statement_gotos.each do |goto|
+      goto_line_idxs << LineNumberIdx.new(goto, 0)
     end
 
-    statement_gotos
+    if statement.autonext
+      # find next statement (possibly in same line)
+      next_line_idx = find_next_line_idx(line_number_idx)
+
+      goto_line_idxs << next_line_idx unless next_line_idx.nil?
+    end
+
+    goto_line_idxs
+  end
+
+  def build_line_destinations(line, line_number)
+    statements = line.statements
+
+    gotos = {}
+
+    statements.each_with_index do |statement, index|
+      line_number_idx = LineNumberIdx.new(line_number, index)
+
+      goto_line_idxs =
+        build_statement_destinations(line_number_idx, statement)
+
+      gotos[line_number_idx] = goto_line_idxs
+    end
+
+    gotos
   end
 
   def build_destinations
     # build list of "gotos"
     gotos = {}
-    @lines.keys.each do |line_number|
-      statement = @lines[line_number].statement
-      statement_gotos = build_statement_destinations(line_number, statement)
 
-      gotos[line_number] = statement_gotos
+    @lines.keys.each do |line_number|
+      line = @lines[line_number]
+      line_destinations = build_line_destinations(line, line_number)
+
+      line_destinations.each do |line_number_idx, dests|
+        gotos[line_number_idx] = dests
+      end
     end
 
     gotos
@@ -640,11 +887,12 @@ class Program
 
     # assume statements are dead until connected to a live statement
     reachable = {}
-    @lines.keys.each { |line_number| reachable[line_number] = false }
+    gotos.keys.each { |line_number| reachable[line_number] = false }
 
     # first line is live
     first_line_number = @lines.keys.min
-    reachable[first_line_number] = true
+    first_line_number_idx = LineNumberIdx.new(first_line_number, 0)
+    reachable[first_line_number_idx] = true
 
     # walk the entire tree and mark lines as live
     # repeat until no changes
@@ -653,28 +901,39 @@ class Program
       any_changes = false
 
       @lines.keys.each do |line_number|
-        # only reachable lines can reach other lines
-        next unless reachable[line_number]
+        statements = @lines[line_number].statements
+        index = 0
+        statements.each do |_|
+          line_number_idx = LineNumberIdx.new(line_number, index)
 
-        # a reachable line updates its targets to 'reachable'
-        statement_gotos = gotos[line_number]
-        statement_gotos.each do |goto_number|
-          unless reachable[goto_number]
-            reachable[goto_number] = true
-            any_changes = true
+          # only reachable lines can reach other lines
+          if reachable[line_number_idx]
+            # a reachable line updates its targets to 'reachable'
+            statement_gotos = gotos[line_number_idx]
+            statement_gotos.each do |goto_number_idx|
+              unless reachable[goto_number_idx]
+                reachable[goto_number_idx] = true
+                any_changes = true
+              end
+            end
           end
+
+          index += 1
         end
       end
     end
 
     # build list of lines that are not reachable
     lines = []
-    reachable.keys.sort.each do |line_number|
-      statement = @lines[line_number].statement
+    reachable.keys.each do |line_number_idx|
+      line_number = line_number_idx.number
+      index = line_number_idx.statement
+      statements = @lines[line_number].statements
+      statement = statements[index]
 
-      if statement.executable && !reachable[line_number]
+      if statement.executable && !reachable[line_number_idx]
         text = statement.pretty
-        lines << "#{line_number}: #{text}" unless text.empty?
+        lines << "#{line_number_idx}: #{text}" unless text.empty?
       end
     end
 
@@ -714,23 +973,11 @@ class Program
     @lines.keys.sort.each do |line_number|
       @line_number = line_number
       line = @lines[line_number]
-      statement = line.statement
-      begin
-        okay &=
-          statement.check_for_errors(line_number, interpreter, @console_io)
-      rescue BASICPreexecuteError => e
-        @console_io.print_line("Error #{e.code} #{e.message}")
-        okay = false
-      end
-    end
-
-    if okay
-      @lines.keys.sort.each do |line_number|
-        @line_number = line_number
-        line = @lines[line_number]
-        statement = line.statement
+      statements = line.statements
+      statements.each do |statement|
         begin
-          statement.preexecute(interpreter)
+          okay &=
+          statement.check_for_errors(line_number, interpreter, @console_io)
         rescue BASICPreexecuteError => e
           @console_io.print_line("Error #{e.code} #{e.message}")
           okay = false
@@ -738,23 +985,56 @@ class Program
       end
     end
 
+    if okay
+      @lines.keys.sort.each do |line_number|
+        @line_number = line_number
+        line = @lines[line_number]
+        statements = line.statements
+        statements.each do |statement|
+          begin
+            statement.preexecute(interpreter)
+          rescue BASICPreexecuteError => e
+            @console_io.print_line("Error #{e.code} #{e.message}")
+            okay = false
+          end
+        end
+      end
+    end
+
     okay
   end
 
-  def find_closing_next(control, current_line_number)
-    # starting with @next_line_number
+  def find_closing_next(control, current_line_index)
+    # move to the next statement
+    line_number = current_line_index.number
+    line = @lines[line_number]
+    statements = line.statements
+    statement_index = current_line_index.statement + 1
     line_numbers = @lines.keys.sort
-    forward_line_numbers =
-      line_numbers.select { |line_number| line_number > current_line_number }
 
-    # find a NEXT statement with matching control variable
-    forward_line_numbers.each do |line_number|
+    if statement_index < statements.size
+      forward_line_numbers =
+        line_numbers.select { |ln| ln >= current_line_index.number }
+    else
+      forward_line_numbers =
+        line_numbers.select { |ln| ln > current_line_index.number }
+    end
+
+    # search for a NEXT with the same control variable
+    until forward_line_numbers.empty?
+      line_number = forward_line_numbers[0]
       line = @lines[line_number]
-      statement = line.statement
+      statements = line.statements
+      statement_index = 0
+      statements.each do |statement|
+        # consider only core statements, not modifiers
+        return LineNumberIndex.new(line_number, statement_index, 0) if
+          statement.class.to_s == 'NextStatement' &&
+          statement.control == control
+        statement_index += 1
+      end
 
-      return line_number if
-        statement.class.to_s == 'NextStatement' &&
-        statement.control == control
+      forward_line_numbers.shift
     end
 
     # if none found, error
@@ -844,20 +1124,15 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.numerics
-    end
+      statements = line.statements
 
-    refs
-  end
+      rs = []
+      statements.each do |statement|
+        rs += statement.numerics
+        rs += statement.modifier_numerics
+      end
 
-  def strings_refs
-    refs = {}
-
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.strings
+      refs[line_number] = rs
     end
 
     refs
@@ -868,8 +1143,34 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.booleans
+      statements = line.statements
+
+      rs = []
+      statements.each do |statement|
+        rs += statement.booleans
+        rs += statement.modifier_booleans
+      end
+
+      refs[line_number] = rs
+    end
+
+    refs
+  end
+
+  def strings_refs
+    refs = {}
+
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+
+      rs = []
+      statements.each do |statement|
+        rs += statement.strings
+        rs += statement.modifier_strings
+      end
+
+      refs[line_number] = rs
     end
 
     refs
@@ -880,8 +1181,15 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.functions
+      statements = line.statements
+
+      rs = []
+      statements.each do |statement|
+        rs = statement.functions
+        rs += statement.modifier_functions
+      end
+
+      refs[line_number] = rs
     end
 
     refs
@@ -892,8 +1200,15 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.userfuncs
+      statements = line.statements
+
+      rs = []
+      statements.each do |statement|
+        rs += statement.userfuncs
+        rs += statement.modifier_userfuncs
+      end
+
+      refs[line_number] = rs
     end
 
     refs
@@ -904,8 +1219,15 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.variables
+      statements = line.statements
+
+      rs = []
+      statements.each do |statement|
+        rs += statement.variables
+        rs += statement.modifier_variables
+      end
+
+      refs[line_number] = rs
     end
 
     refs
@@ -916,8 +1238,15 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.operators
+      statements = line.statements
+
+      rs = []
+      statements.each do |statement|
+        rs += statement.operators
+        rs += statement.modifier_operators
+      end
+
+      refs[line_number] = rs
     end
 
     refs
@@ -928,8 +1257,14 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statement = line.statement
-      refs[line_number] = statement.linenums
+      statements = line.statements
+
+      rs = []
+      statements.each do |statement|
+        rs += statement.linenums
+      end
+
+      refs[line_number] = rs
     end
 
     refs
@@ -1140,12 +1475,17 @@ class Program
       check_line_duplicate(line_num, print_seq_errors)
       check_line_sequence(line_num, print_seq_errors)
       @lines[line_num] = line
-      statement = line.statement
+      statements = line.statements
+      any_errors = false
 
-      statement.errors.each { |error| @console_io.print_line(error) } if
-        print_errors
+      statements.each do |statement|
+        statement.errors.each { |error| @console_io.print_line(error) } if
+          print_errors
 
-      !statement.errors.empty?
+        any_errors |= !statement.errors.empty?
+      end
+
+      any_errors
     else
       true
     end
@@ -1164,13 +1504,17 @@ class Program
 
       line.warnings.each { |warning| texts << ' WARNING: ' + warning }
 
-      statement = line.statement
+      statements = line.statements
 
       # print the errors
-      statement.errors.each { |error| texts << ' ' + error }
+      statements.each do |statement|
+        statement.errors.each { |error| texts << ' ' + error }
+      end
 
       # print the warnings
-      statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      statements.each do |statement|
+        statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      end
 
       next unless list_tokens
 
@@ -1194,40 +1538,55 @@ class Program
 
       line.warnings.each { |warning| texts << ' WARNING: ' + warning }
 
-      statement = line.statement
+      statements = line.statements
 
       # print the errors
-      statement.errors.each { |error| texts << ' ' + error }
+      statements.each do |statement|
+        statement.errors.each { |error| texts << ' ' + error }
+      end
 
       # print the warnings
-      statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      statements.each do |statement|
+        statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      end
 
       # print the line components
-      parses = statement.dump
-      parses.each { |text| texts << ' ' + text }
+      statements.each do |statement|
+        parses = statement.dump
+        parses.each { |text| texts << ' ' + text }
+      end
     end
 
     texts
   end
 
-  def pretty_lines_errors(line_numbers)
+  def pretty_lines_errors(line_numbers, pretty_multiline)
     texts = []
 
     line_numbers.each do |line_number|
       line = @lines[line_number]
 
       # print the line
-      texts << line_number.to_s + line.pretty
+      number = line_number.to_s
+      pretty_lines = line.pretty(pretty_multiline)
+      pretty_lines.each do |pretty_line|
+        texts << number + pretty_line
+        number = ' ' * number.size
+      end
 
       line.warnings.each { |warning| texts << ' WARNING: ' + warning }
 
-      statement = line.statement
+      statements = line.statements
 
       # print the errors
-      statement.errors.each { |error| texts << ' ' + error }
+      statements.each do |statement|
+        statement.errors.each { |error| texts << ' ' + error }
+      end
 
       # print the warnings
-      statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      statements.each do |statement|
+        statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      end
     end
 
     texts
@@ -1239,8 +1598,8 @@ class Program
     line_numbers.each do |line_number|
       line = @lines[line_number]
 
-      # print the line
-      texts << line_number.to_s + line.profile(show_timing)
+      number = line_number.to_s
+      texts += line.profile(number, show_timing)
     end
 
     texts

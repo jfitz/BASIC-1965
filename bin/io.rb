@@ -99,6 +99,7 @@ class ConsoleIo
     text.each_char do |c|
       print_out(c)
       @column += 1
+
       newline if $options['print_width'].value > 0 &&
                  @column >= $options['print_width'].value
     end

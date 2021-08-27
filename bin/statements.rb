@@ -32,13 +32,29 @@ class StatementFactory
   end
 
   def create(line_number, text, all_tokens, comment)
-    begin
-      statement = create_statement(line_number, text, all_tokens)
-    rescue BASICExpressionError => e
-      statement = InvalidStatement.new(line_number, text, all_tokens, e)
+    statements = []
+    statements_tokens = split_on_statement_separators(all_tokens)
+
+    if statements_tokens.empty?
+      statement = EmptyStatement.new(line_number)
+      statements << statement
+    else
+      statement_index = 0
+      statements_tokens.each do |statement_tokens|
+        statement = UnknownStatement.new(line_number, text)
+
+        begin
+          statement = create_statement(line_number, text, statement_tokens)
+        rescue BASICExpressionError, BASICRuntimeError => e
+          statement = InvalidStatement.new(line_number, text, all_tokens, e)
+        end
+
+        statements << statement
+        statement_index += 1
+      end
     end
 
-    Line.new(text, statement, all_tokens, comment)
+    Line.new(text, statements, all_tokens, comment)
   end
 
   def keywords_definitions
@@ -108,6 +124,21 @@ class StatementFactory
     end
 
     lead_keywords
+  end
+
+  def split_on_statement_separators(tokens)
+    tokens_lists = []
+    statement_tokens = []
+    tokens.each do |token|
+      if token.statement_separator?
+        tokens_lists << statement_tokens
+        statement_tokens = []
+      else
+        statement_tokens << token
+      end
+    end
+    tokens_lists << statement_tokens unless statement_tokens.empty?
+    tokens_lists
   end
 
   def extract_keywords(all_tokens)
@@ -205,6 +236,7 @@ class AbstractStatement
     @warnings = []
     @valid = true
     @comment = false
+    @modifiers = []
     @elements = {
       numerics: [],
       strings: [],
@@ -268,6 +300,34 @@ class AbstractStatement
 
   def userfuncs
     @elements[:userfuncs]
+  end
+
+  def modifier_numerics
+    []
+  end
+
+  def modifier_strings
+    []
+  end
+
+  def modifier_booleans
+    []
+  end
+
+  def modifier_variables
+    []
+  end
+
+  def modifier_operators
+    []
+  end
+
+  def modifier_functions
+    []
+  end
+
+  def modifier_userfuncs
+    []
   end
 
   def gotos
@@ -342,16 +402,26 @@ class AbstractStatement
     @profile_count += 1
   end
 
+  def start_index
+    0 - @modifiers.size
+  end
+
+  def last_index
+    @modifiers.size
+  end
+
   def profile(show_timing)
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
     text = ' ' + text unless text.empty?
 
     if show_timing
       timing = @profile_time.round(4).to_s
-      ' (' + timing + '/' + @profile_count.to_s + ')' + text
+      line = ' (' + timing + '/' + @profile_count.to_s + ')' + text
     else
-      ' (' + @profile_count.to_s + ')' + text
+      line = ' (' + @profile_count.to_s + ')' + text
     end
+
+    [line]
   end
 
   def renumber(_) end
@@ -1053,12 +1123,12 @@ class EndStatement < AbstractStatement
     ['']
   end
 
-  def okay(program, console_io, line_number)
-    next_line = program.find_next_line_number(line_number)
+  def okay(program, console_io, line_number_index)
+    next_line = program.find_next_line_index(line_number_index)
 
     return true if next_line.nil?
 
-    console_io.print_line("Statements after END in line #{line_number}")
+    console_io.print_line("Statements after END in line #{line_number_index}")
 
     false
   end
@@ -1247,7 +1317,7 @@ class ForStatement < AbstractStatement
     terminated = fornext_control.front_terminated?(interpreter)
 
     if terminated
-      interpreter.next_line_number = interpreter.find_closing_next(@control)
+      interpreter.next_line_index = interpreter.find_closing_next(@control)
     end
 
     untilv = nil
@@ -1370,19 +1440,25 @@ class GosubStatement < AbstractStatement
     [@destination]
   end
 
-  def okay(program, console_io, line_number)
+  def okay(program, console_io, line_number_index)
     return true if program.line_number?(@destination)
 
     console_io.print_line(
-      "Line number #{@destination} not found in line #{line_number}"
+      "Line number #{@destination} not found in line #{line_number_index}"
     )
 
     false
   end
 
   def execute(interpreter)
-    interpreter.push_return(interpreter.next_line_number)
-    interpreter.next_line_number = @destination
+    line_number = @destination
+    index = interpreter.statement_start_index(line_number, 0)
+
+    raise(BASICSyntaxError, 'Line number not found') if index.nil?
+
+    destination = LineNumberIndex.new(line_number, 0, index)
+    interpreter.push_return(interpreter.next_line_index)
+    interpreter.next_line_index = destination
   end
 
   def renumber(renumber_map)
@@ -1433,18 +1509,24 @@ class GotoStatement < AbstractStatement
     [@destination]
   end
 
-  def okay(program, console_io, line_number)
+  def okay(program, console_io, line_number_index)
     return true if program.line_number?(@destination)
 
     console_io.print_line(
-      "Line number #{@destination} not found in line #{line_number}"
+      "Line number #{@destination} not found in line #{line_number_index}"
     )
 
     false
   end
 
   def execute(interpreter)
-    interpreter.next_line_number = @destination
+    line_number = @destination
+    index = interpreter.statement_start_index(line_number, 0)
+
+    raise(BASICSyntaxError, 'Line number not found') if index.nil?
+
+    destination = LineNumberIndex.new(line_number, 0, index)
+    interpreter.next_line_index = destination
   end
 
   def renumber(renumber_map)
@@ -1471,7 +1553,15 @@ class AbstractIfStatement < AbstractStatement
     raise(BASICExpressionError, 'Expression error') unless
       result.class.to_s == 'BooleanConstant'
 
-    interpreter.next_line_number = @destination if result.value
+    if result.value
+      line_number = @destination
+      index = interpreter.statement_start_index(line_number, 0)
+
+      raise(BASICSyntaxError, 'Line number not found') if index.nil?
+
+      destination = LineNumberIndex.new(line_number, 0, index)
+      interpreter.next_line_index = destination
+    end
 
     s = ' ' + @expression.to_s + ': ' + result.to_s
     io = interpreter.trace_out
@@ -1498,16 +1588,16 @@ class AbstractIfStatement < AbstractStatement
     [@destination]
   end
 
-  def okay(program, console_io, line_number)
+  def okay(program, console_io, line_number_index)
     return true if program.line_number?(@destination)
 
     if @destination.nil?
       console_io.print_line(
-        "Invalid or missing line number in line #{line_number}"
+        "Invalid or missing line number in line #{line_number_index}"
       )
     else
       console_io.print_line(
-        "Line number #{@destination} not found in line #{line_number}"
+        "Line number #{@destination} not found in line #{line_number_index}"
       )
     end
 
@@ -1755,6 +1845,7 @@ class NextStatement < AbstractStatement
       # check control variable matches current loop
       expected = interpreter.top_fornext
       actual = fornext_control.control
+
       if actual != expected
         raise(BASICSyntaxError,
               "Found NEXT #{actual} when expecting #{expected}")
@@ -1778,7 +1869,7 @@ class NextStatement < AbstractStatement
       interpreter.exit_fornext(fornext_control.forget, fornext_control.control)
     else
       # set next line from top item
-      interpreter.next_line_number = fornext_control.loop_start_number
+      interpreter.next_line_index = fornext_control.loop_start_index
       # change control variable value for FOR-TO
       fornext_control.bump_control(interpreter) unless bump_early
     end
@@ -2000,7 +2091,7 @@ class ReturnStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    interpreter.next_line_number = interpreter.pop_return
+    interpreter.next_line_index = interpreter.pop_return
   end
 end
 
