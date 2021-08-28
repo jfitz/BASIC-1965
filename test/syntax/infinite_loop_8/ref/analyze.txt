@@ -1,0 +1,50 @@
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 6
+Number of comments: 2
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.333
+Comprehension effort: 12
+McCabe complexity: 1
+Halstead complexity:
+ length: 6
+ volume: 9.657
+ difficulty: 1.000
+ effort: 9.657
+ language: 9.657
+ intelligence: 9.657
+ time: 0.009
+
+(0 1) 10 REM TEST INFINITE LOOP CHECK
+  Origs: 
+  Dests: 20
+(0 3) 20 GOSUB 20
+  Origs: 10, 20
+  Dests: 20, 30
+(0 2) 30 GOSUB 100
+  Origs: 20
+  Dests: 90, 100
+(0 1) 90 STOP
+  Origs: 30
+  Dests: 
+(0 1) 100 REM PRINT STARS
+  Origs: 30
+  Dests: 110
+(0 2) 110 PRINT "******"
+  Origs: 100
+  Dests: 120
+(0 1) 120 RETURN
+  Origs: 110
+  Dests: 
+(0 1) 999 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

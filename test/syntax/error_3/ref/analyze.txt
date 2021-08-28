@@ -1,0 +1,41 @@
+Statistics:
+
+Number of lines: 5
+Number of valid statements: 4
+Number of comments: 1
+Number of executable statements: 3
+
+Complexity:
+
+Comment density: 0.250
+Comprehension effort: 7
+McCabe complexity: 1
+Halstead complexity:
+ length: 3
+ volume: 3.296
+ difficulty: 0.500
+ effort: 1.648
+ language: 13.183
+ intelligence: 6.592
+ time: 0.002
+
+(0 1) 10 REM SYNTAX ERROR
+  Origs: 
+  Dests: 20
+(0 2) 20 PRINT "Hello world"
+  Origs: 10
+  Dests: 30
+(0 1) 30 LET A = B * (C + 2
+  Origs: 20
+  Dests: 40
+(0 2) 40 PRINT "Done"
+  Origs: 30
+  Dests: 99
+(0 1) 99 END
+  Origs: 40
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

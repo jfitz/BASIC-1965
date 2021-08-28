@@ -1,0 +1,62 @@
+Statistics:
+
+Number of lines: 12
+Number of valid statements: 12
+Number of comments: 0
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 29
+McCabe complexity: 5
+Halstead complexity:
+ length: 48
+ volume: 138.738
+ difficulty: 7.250
+ effort: 1005.849
+ language: 2.639
+ intelligence: 19.136
+ time: 0.931
+
+(1 3) 10 FOR I = 1 TO 3
+  Origs: 
+  Dests: 20
+(1 3) 20 FOR J = 1 TO 2
+  Origs: 10
+  Dests: 30
+(0 4) 30 LET A(I, J) = I * J
+  Origs: 20
+  Dests: 40
+(0 1) 40 NEXT J
+  Origs: 30
+  Dests: 50
+(0 1) 50 NEXT I
+  Origs: 40
+  Dests: 55
+(0 4) 55 PRINT "I", "J", "PRODUCT"
+  Origs: 50
+  Dests: 60
+(1 3) 60 FOR I = 1 TO 3
+  Origs: 55
+  Dests: 70
+(1 3) 70 FOR J = 1 TO 2
+  Origs: 60
+  Dests: 80
+(0 4) 80 PRINT I, J, A(I, J)
+  Origs: 70
+  Dests: 90
+(0 1) 90 NEXT J
+  Origs: 80
+  Dests: 100
+(0 1) 100 NEXT I
+  Origs: 90
+  Dests: 999
+(0 1) 999 END
+  Origs: 100
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

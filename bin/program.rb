@@ -621,23 +621,11 @@ class Program
 
     texts = []
 
-    goto_line_idxs = build_destinations
-
-    # convert line-number-indexes to line-numbers
-    gotos = {}
-    goto_line_idxs.each do |line_idx, dest_idxs|
-      line_number = line_idx.number
-      gotos[line_number] = [] unless gotos.key?(line_number)
-      dests = dest_idxs.map(&:number)
-      dests2 = []
-      dests.each { |dest| dests2 << dest if dest != line_number }
-      dests3 = dests2.uniq
-      gotos[line_number] += dests3
-    end
+    destinations = build_destinations_line
 
     origins = {}
 
-    gotos.each do |orig, dests|
+    destinations.each do |orig, dests|
       dests.each do |dest|
         origins[dest] = [] unless origins.key?(dest)
         origins[dest] << orig
@@ -659,8 +647,8 @@ class Program
       texts << '  Origs: ' + origs
 
       # print destinations from this line
-      statement_gotos = gotos[line_number]
-      dests = statement_gotos.sort.map(&:to_s).join(', ')
+      statement_dests = destinations[line_number]
+      dests = statement_dests.sort.map(&:to_s).join(', ')
       texts << '  Dests: ' + dests
     end
 
@@ -831,7 +819,52 @@ class Program
     ]
   end
 
-  def build_statement_destinations(line_number_idx, statement)
+  def build_statement_destinations_line(line_number_idx, statement)
+    goto_line_idxs = []
+    statement_gotos = statement.gotos
+
+    if statement.autonext
+      # find next statement (possibly in same line)
+      next_line_idx = find_next_line_idx(line_number_idx)
+
+      unless next_line_idx.nil?
+        next_line_number = next_line_idx.number
+        line_number = line_number_idx.number
+
+        statement_gotos << next_line_number unless next_line_number == line_number
+      end
+    end
+
+    statement_gotos
+  end
+
+  def build_line_destinations_line(line, line_number)
+    statements = line.statements
+
+    dests = []
+
+    statements.each_with_index do |statement, index|
+      line_number_idx = LineNumberIdx.new(line_number, index)
+
+      dests += build_statement_destinations_line(line_number_idx, statement)
+    end
+
+    dests
+  end
+
+  def build_destinations_line
+    # build list of "gotos"
+    dests = {}
+
+    @lines.keys.each do |line_number|
+      line = @lines[line_number]
+      dests[line_number] = build_line_destinations_line(line, line_number)
+    end
+
+    dests
+  end
+
+  def build_statement_destinations_stmt(line_number_idx, statement)
     goto_line_idxs = []
     statement_gotos = statement.gotos
 
@@ -849,7 +882,7 @@ class Program
     goto_line_idxs
   end
 
-  def build_line_destinations(line, line_number)
+  def build_line_destinations_stmt(line, line_number)
     statements = line.statements
 
     gotos = {}
@@ -858,7 +891,7 @@ class Program
       line_number_idx = LineNumberIdx.new(line_number, index)
 
       goto_line_idxs =
-        build_statement_destinations(line_number_idx, statement)
+        build_statement_destinations_stmt(line_number_idx, statement)
 
       gotos[line_number_idx] = goto_line_idxs
     end
@@ -866,13 +899,13 @@ class Program
     gotos
   end
 
-  def build_destinations
+  def build_destinations_stmt
     # build list of "gotos"
     gotos = {}
 
     @lines.keys.each do |line_number|
       line = @lines[line_number]
-      line_destinations = build_line_destinations(line, line_number)
+      line_destinations = build_line_destinations_stmt(line, line_number)
 
       line_destinations.each do |line_number_idx, dests|
         gotos[line_number_idx] = dests
@@ -883,7 +916,7 @@ class Program
   end
 
   def unreachable_code
-    gotos = build_destinations
+    gotos = build_destinations_stmt
 
     # assume statements are dead until connected to a live statement
     reachable = {}

@@ -1,0 +1,41 @@
+Statistics:
+
+Number of lines: 5
+Number of valid statements: 4
+Number of comments: 1
+Number of executable statements: 3
+
+Complexity:
+
+Comment density: 0.250
+Comprehension effort: 12
+McCabe complexity: 2
+Halstead complexity:
+ length: 8
+ volume: 15.567
+ difficulty: 1.200
+ effort: 18.681
+ language: 10.811
+ intelligence: 12.973
+ time: 0.017
+
+(0 1) 10 REM TEST INFINITE LOOP CHECK
+  Origs: 
+  Dests: 20
+(0 3) 20 LET A = 1
+  Origs: 10, 40
+  Dests: 30
+(0 2) 30 PRINT A
+  Origs: 20
+  Dests: 40
+(1 5) 40 IF A < 10 THEN 20
+  Origs: 30
+  Dests: 20, 99
+(0 1) 99 END
+  Origs: 40
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

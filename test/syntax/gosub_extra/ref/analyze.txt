@@ -1,0 +1,53 @@
+Statistics:
+
+Number of lines: 9
+Number of valid statements: 7
+Number of comments: 2
+Number of executable statements: 6
+
+Complexity:
+
+Comment density: 0.286
+Comprehension effort: 13
+McCabe complexity: 1
+Halstead complexity:
+ length: 6
+ volume: 10.751
+ difficulty: 1.000
+ effort: 10.751
+ language: 10.751
+ intelligence: 10.751
+ time: 0.010
+
+(0 1) 10 REM TEST OF RETURN WITH EXTRA TEXT
+  Origs: 
+  Dests: 20
+(0 2) 20 PRINT "START"
+  Origs: 10
+  Dests: 30
+(0 2) 30 GOSUB 100
+  Origs: 20
+  Dests: 40, 100
+(0 2) 40 PRINT "DONE"
+  Origs: 30
+  Dests: 50
+(0 1) 50 STOP
+  Origs: 40
+  Dests: 
+(0 1) 100 REM SUBROUTINE
+  Origs: 30
+  Dests: 110
+(0 2) 110 PRINT "IN SUBROUTINE"
+  Origs: 100
+  Dests: 120
+(0 1) 120 RETURN H O M E
+  Origs: 110
+  Dests: 
+(0 1) 900 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

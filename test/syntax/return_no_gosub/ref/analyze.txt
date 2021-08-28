@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 6
+Number of comments: 1
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.167
+Comprehension effort: 13
+McCabe complexity: 1
+Halstead complexity:
+ length: 8
+ volume: 16.636
+ difficulty: 1.000
+ effort: 16.636
+ language: 16.636
+ intelligence: 16.636
+ time: 0.015
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 20
+(0 3) 20 LET A = 10
+  Origs: 10
+  Dests: 30
+(0 3) 30 LET B = 20
+  Origs: 20
+  Dests: 40
+(0 3) 40 PRINT A, B
+  Origs: 30
+  Dests: 60
+(0 1) 60 RETURN
+  Origs: 40
+  Dests: 
+(0 1) 90 STOP
+  Origs: 
+  Dests: 
+(0 1) 999 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+90: STOP
+

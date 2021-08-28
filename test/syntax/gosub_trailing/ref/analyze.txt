@@ -1,0 +1,50 @@
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 7
+Number of comments: 1
+Number of executable statements: 6
+
+Complexity:
+
+Comment density: 0.143
+Comprehension effort: 15
+McCabe complexity: 1
+Halstead complexity:
+ length: 10
+ volume: 23.026
+ difficulty: 1.500
+ effort: 34.539
+ language: 10.234
+ intelligence: 15.351
+ time: 0.032
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 20
+(0 3) 20 LET A = 10
+  Origs: 10
+  Dests: 30
+(0 2) 30 GOSUB 100
+  Origs: 20
+  Dests: 40, 100
+(0 3) 40 PRINT A, B
+  Origs: 30
+  Dests: 90
+(0 1) 90 STOP
+  Origs: 40
+  Dests: 
+(0 3) 100 LET B = 20
+  Origs: 30
+  Dests: 110
+(0 1) 110 RETURN
+  Origs: 100
+  Dests: 
+(0 1) 999 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

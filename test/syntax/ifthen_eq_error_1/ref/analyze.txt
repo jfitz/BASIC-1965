@@ -1,0 +1,53 @@
+Statistics:
+
+Number of lines: 9
+Number of valid statements: 9
+Number of comments: 0
+Number of executable statements: 7
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 20
+McCabe complexity: 5
+Halstead complexity:
+ length: 21
+ volume: 55.420
+ difficulty: 1.773
+ effort: 98.245
+ language: 17.635
+ intelligence: 31.263
+ time: 0.091
+
+(0 2) 10 DATA 10, 20, 30
+  Origs: 
+  Dests: 20
+(3 4) 20 READ A, B, C
+  Origs: 10
+  Dests: 30
+(0 4) 30 PRINT A, B, C
+  Origs: 20
+  Dests: 40
+(1 2) 40 IF A = THEN 70
+  Origs: 30
+  Dests: 50, 70
+(0 2) 50 PRINT A
+  Origs: 40
+  Dests: 60
+(0 2) 60 GOTO 90
+  Origs: 50
+  Dests: 90
+(0 2) 70 PRINT B
+  Origs: 40
+  Dests: 90
+(0 1) 90 STOP
+  Origs: 60, 70
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

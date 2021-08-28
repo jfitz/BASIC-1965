@@ -1,0 +1,42 @@
+Duplicate parameters
+Statistics:
+
+Number of lines: 5
+Number of valid statements: 5
+Number of comments: 0
+Number of executable statements: 3
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 14
+McCabe complexity: 2
+Halstead complexity:
+ length: 27
+ volume: 64.743
+ difficulty: 7.875
+ effort: 509.852
+ language: 1.044
+ intelligence: 8.221
+ time: 0.472
+
+(0 1) 10 DEF FNL(A, A) = LOG(A) / LOG(B)
+  Origs: 
+  Dests: 20
+(1 4) 20 FOR N = 2 TO 10 STEP 2
+  Origs: 10
+  Dests: 30
+(0 7) 30 PRINT N, LOG(N), FNL(N, 10)
+  Origs: 20
+  Dests: 40
+(0 1) 40 NEXT N
+  Origs: 30
+  Dests: 99
+(0 1) 99 END
+  Origs: 40
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+
