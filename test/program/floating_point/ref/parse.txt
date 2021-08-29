@@ -1,0 +1,54 @@
+10 REM TEST OF FLOATING POINT ERRORS
+ Remark:TEST OF FLOATING POINT ERRORS
+20 LET A=0.1
+ Variable:A -> _
+ NumericConstant:0.1
+ AssignmentOperator:= =_ -> _
+21 LET A = A + 0.2
+ Variable:A -> _
+ Variable:A -> _
+ NumericConstant:0.2
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+22 LET A = A - 0.3
+ Variable:A -> _
+ Variable:A -> _
+ NumericConstant:0.3
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+30 FOR I = 1 TO 500
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:500"]
+40 IF A < 1.0 THEN 50
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:50
+42 PRINT "ERROR IN ITERATION"; I
+ TextConstant:"ERROR IN ITERATION"
+ CarriageControl:;
+ Variable:I -> _
+ CarriageControl:NL
+49 STOP
+ 
+50 LET A = A + A
+ Variable:A -> _
+ Variable:A -> _
+ Variable:A -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+60 NEXT I
+ Variable:I -> _
+80 PRINT "NO ERROR AFTER";I;"ITERATIONS"
+ TextConstant:"NO ERROR AFTER"
+ CarriageControl:;
+ Variable:I -> _
+ CarriageControl:;
+ TextConstant:"ITERATIONS"
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
+
