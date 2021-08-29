@@ -53,14 +53,17 @@
  Variable:X -> _
  Variable:K -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:270
 250 IF X < 1 THEN 270
  Variable:X -> _
  NumericConstant:1
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:270
 260 IF X <= N THEN 310
  Variable:X -> _
  Variable:N -> _
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:310
 270 PRINT "ILLEGAL MOVE"
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
@@ -81,6 +84,7 @@
  Variable:N -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:410
 340 PRINT "I WIN ***"
  TextConstant:"I WIN ***"
  CarriageControl:NL
@@ -125,6 +129,7 @@
  Variable:Y -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:530
 450 LET N = N - Y
  Variable:N -> _
  Variable:N -> _
@@ -142,6 +147,7 @@
  Variable:N -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:600
 490 PRINT "NEW TOTAL IS" N
  TextConstant:"NEW TOTAL IS"
  CarriageControl:
@@ -158,6 +164,7 @@
  Variable:N -> _
  NumericConstant:1
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:570
 550 LET Y = 1
  Variable:Y -> _
  NumericConstant:1

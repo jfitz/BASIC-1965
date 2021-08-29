@@ -1,0 +1,56 @@
+Statistics:
+
+Number of lines: 10
+Number of valid statements: 9
+Number of comments: 1
+Number of executable statements: 8
+
+Complexity:
+
+Comment density: 0.111
+Comprehension effort: 18
+McCabe complexity: 2
+Halstead complexity:
+ length: 19
+ volume: 45.560
+ difficulty: 3.714
+ effort: 169.223
+ language: 3.302
+ intelligence: 12.266
+ time: 0.157
+
+(0 1) 10 REM Test the FORGET statement
+  Origs: 
+  Dests: 11:auto
+(0 2) 11 OPTION BASE 1
+  Origs: 10:auto
+  Dests: 20:auto
+(0 2) 20 DIM A(10)
+  Origs: 11:auto
+  Dests: 21:auto
+(1 3) 21 FOR I = 1 TO 10
+  Origs: 20:auto
+  Dests: 22:auto
+(0 3) 22 LET A(I) = 1
+  Origs: 21:auto
+  Dests: 23:auto
+(0 1) 23 NEXT I
+  Origs: 22:auto
+  Dests: 30:auto
+(0 2) 30 ARR PRINT A
+  Origs: 23:auto
+  Dests: 40:auto
+(0 1) 40 ARR FORGET A
+  Origs: 30:auto
+  Dests: 90:auto
+(0 2) 90 ARR PRINT A
+  Origs: 40:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 90:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

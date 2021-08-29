@@ -21,36 +21,36 @@ Halstead complexity:
 
 (1 2) 10 READ N
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (1 2) 20 MAT READ M(N, N)
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (1 3) 30 FOR I = 1 TO 4
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 4) 40 PRINT "POWER : " 2 ^ I
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 4) 50 MAT A = M * M
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (0 2) 60 MAT PRINT A
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 3) 70 MAT M = A
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 1) 80 NEXT I
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 2) 90 DATA 3
-  Origs: 80
-  Dests: 91
+  Origs: 80:auto
+  Dests: 91:auto
 (0 2) 91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5
-  Origs: 90
-  Dests: 99
+  Origs: 90:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 91
+  Origs: 91:auto
   Dests: 
 
 Unreachable code:

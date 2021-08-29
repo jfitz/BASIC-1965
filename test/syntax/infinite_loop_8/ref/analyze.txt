@@ -21,24 +21,24 @@ Halstead complexity:
 
 (0 1) 10 REM TEST INFINITE LOOP CHECK
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 3) 20 GOSUB 20
-  Origs: 10, 20
-  Dests: 20, 30
+  Origs: 10:auto, 20:gosub
+  Dests: 20:gosub, 30:auto
 (0 2) 30 GOSUB 100
-  Origs: 20
-  Dests: 90, 100
+  Origs: 20:auto
+  Dests: 90:auto, 100:gosub
 (0 1) 90 STOP
-  Origs: 30
+  Origs: 30:auto
   Dests: 
 (0 1) 100 REM PRINT STARS
-  Origs: 30
-  Dests: 110
+  Origs: 30:gosub
+  Dests: 110:auto
 (0 2) 110 PRINT "******"
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 1) 120 RETURN
-  Origs: 110
+  Origs: 110:auto
   Dests: 
 (0 1) 999 END
   Origs: 

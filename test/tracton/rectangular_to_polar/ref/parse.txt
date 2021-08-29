@@ -21,14 +21,17 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:180
 90 IF X = 0 THEN 180
  Variable:X -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:180
 100 IF Y = 0 THEN 250
  Variable:Y -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:250
 110 LET W = ATN(Y/X)
  Variable:W -> _
  Variable:Y -> _
@@ -71,6 +74,7 @@
  Variable:Y -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:220
 190 LET W = - 90
  Variable:W -> _
  NumericConstant:90
@@ -97,6 +101,7 @@
  Variable:X -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:290
 260 LET W = 180
  Variable:W -> _
  NumericConstant:180
@@ -141,6 +146,7 @@
  Variable:L -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:390
 380 STOP
  
 390 PRINT

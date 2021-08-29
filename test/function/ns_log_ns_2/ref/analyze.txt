@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 14
+McCabe complexity: 2
+Halstead complexity:
+ length: 18
+ volume: 47.503
+ difficulty: 3.750
+ effort: 178.136
+ language: 3.378
+ intelligence: 12.667
+ time: 0.165
+
+(0 1) 10 REM TEST LOG2() FUNCTION
+  Origs: 
+  Dests: 20:auto
+(0 3) 20 PRINT "I", "LOG(I,2)"
+  Origs: 10:auto
+  Dests: 30:auto
+(1 4) 30 FOR I = 0.5 TO 10.5 STEP 0.1
+  Origs: 20:auto
+  Dests: 40:auto
+(0 4) 40 PRINT I, LOG(I, 2)
+  Origs: 30:auto
+  Dests: 50:auto
+(0 1) 50 NEXT I
+  Origs: 40:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 50:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

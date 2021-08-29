@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 12
+McCabe complexity: 2
+Halstead complexity:
+ length: 12
+ volume: 28.775
+ difficulty: 2.917
+ effort: 83.926
+ language: 3.383
+ intelligence: 9.866
+ time: 0.078
+
+(0 1) 10 REM PRINT RANDOM NUMBERS
+  Origs: 
+  Dests: 20:auto
+(1 3) 20 FOR I = 1 TO 10
+  Origs: 10:auto
+  Dests: 30:auto
+(0 4) 30 LET A = RND(10)
+  Origs: 20:auto
+  Dests: 40:auto
+(0 2) 40 PRINT A
+  Origs: 30:auto
+  Dests: 50:auto
+(0 1) 50 NEXT I
+  Origs: 40:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 50:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

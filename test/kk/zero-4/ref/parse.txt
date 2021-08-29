@@ -59,6 +59,7 @@
  Variable:F -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:100
 50 LET X(1+F) = X
  NumericConstant:1
  Variable:F -> _
@@ -83,6 +84,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  NumericConstant:5.0e-07
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:100
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
@@ -110,12 +112,14 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:400
 230 IF S*T > 0 THEN 300
  Variable:S -> _
  Variable:T -> _
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:300
 240 RETURN
  
 300 LET L = B-A
@@ -144,6 +148,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:370
 340 NEXT I
  Variable:I -> _
 350 PRINT "NO CHANGE OF SIGN FOUND"
@@ -161,6 +166,7 @@
  Variable:S -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:430
 410 LET X = B
  Variable:X -> _
  Variable:B -> _

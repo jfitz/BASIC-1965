@@ -1,0 +1,50 @@
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 8
+Number of comments: 0
+Number of executable statements: 7
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 23
+McCabe complexity: 2
+Halstead complexity:
+ length: 24
+ volume: 73.069
+ difficulty: 4.000
+ effort: 292.274
+ language: 4.567
+ intelligence: 18.267
+ time: 0.271
+
+(0 3) 10 LET P = 3.14159
+  Origs: 
+  Dests: 20:auto
+(0 3) 20 PRINT "ANGLE", "COSINE"
+  Origs: 10:auto
+  Dests: 30:auto
+(1 4) 30 FOR I = 0 TO 2 STEP 0.1
+  Origs: 20:auto
+  Dests: 40:auto
+(0 4) 40 LET A = I * P
+  Origs: 30:auto
+  Dests: 50:auto
+(0 4) 50 LET C = COS(A)
+  Origs: 40:auto
+  Dests: 60:auto
+(0 3) 60 PRINT A, C
+  Origs: 50:auto
+  Dests: 70:auto
+(0 1) 70 NEXT I
+  Origs: 60:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 70:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

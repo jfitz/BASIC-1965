@@ -38,6 +38,7 @@
  FunctionMod:MOD(_,_) -> _
  NumericConstant:0
  BinaryOperatorNotEqual:<>(_,_) -> ?
+ LineNumber:170
 160 GOSUB 300
  LineNumber:300
 170 REM CONTINUE
@@ -61,6 +62,7 @@
  Variable:L0 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:220
 212 LET D = L0 - D
  Variable:D -> _
  Variable:L0 -> _
@@ -88,6 +90,7 @@
  Variable:D -> _
  Variable:X -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:270
 260 LET C = C + 1
  Variable:C -> _
  Variable:C -> _

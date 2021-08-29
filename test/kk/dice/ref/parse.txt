@@ -8,18 +8,22 @@
  Variable:D -> _
  NumericConstant:4
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:300
 40    IF D = 12 THEN 300
  Variable:D -> _
  NumericConstant:12
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:300
 50    IF D = 7 THEN 400
  Variable:D -> _
  NumericConstant:7
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:400
 60    IF D = 11 THEN 400
  Variable:D -> _
  NumericConstant:11
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:400
 70    LET D9 = D
  Variable:D9 -> _
  Variable:D -> _
@@ -30,10 +34,12 @@
  Variable:D -> _
  Variable:D9 -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:200
 120   IF D = 7 THEN 250
  Variable:D -> _
  NumericConstant:7
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:250
 130   GOTO 100
  LineNumber:100
 200   PRINT "YOU WIN -- BY MAKING YOUR POINT"

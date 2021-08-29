@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 7
+Number of comments: 0
+Number of executable statements: 6
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 14
+McCabe complexity: 2
+Halstead complexity:
+ length: 17
+ volume: 39.144
+ difficulty: 3.667
+ effort: 143.528
+ language: 2.912
+ intelligence: 10.676
+ time: 0.133
+
+(0 2) 5 OPTION BASE 1
+  Origs: 
+  Dests: 10:auto
+(0 2) 10 DIM A(6)
+  Origs: 5:auto
+  Dests: 20:auto
+(1 3) 20 FOR I = 1 TO 6
+  Origs: 10:auto
+  Dests: 40:auto
+(0 3) 40 LET A(I) = I
+  Origs: 20:auto
+  Dests: 60:auto
+(0 1) 60 NEXT I
+  Origs: 40:auto
+  Dests: 70:auto
+(0 2) 70 ARR WRITE A
+  Origs: 60:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 70:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

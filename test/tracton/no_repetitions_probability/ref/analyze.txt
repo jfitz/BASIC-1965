@@ -21,57 +21,57 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE "NO REPETITIONS"
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM PROBABILITY OF A SAMPLE
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 2) 30 PRINT "********************"
-  Origs: 20, 160
-  Dests: 35
+  Origs: 20:auto, 160:ifthen
+  Dests: 35:auto
 (0 2) 35 PRINT "TOTAL POPULATION"
-  Origs: 30
-  Dests: 40
+  Origs: 30:auto
+  Dests: 40:auto
 (1 2) 40 INPUT M
-  Origs: 35
-  Dests: 50
+  Origs: 35:auto
+  Dests: 50:auto
 (0 2) 50 PRINT "SIZE OF SAMPLE"
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (1 2) 60 INPUT N
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 3) 70 LET J = 1
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (1 4) 80 FOR I = 1 TO N - 1
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 6) 90 LET K = 1 - (I / M)
-  Origs: 80
-  Dests: 100
+  Origs: 80:auto
+  Dests: 100:auto
 (0 4) 100 LET J = J * K
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 1) 110 NEXT I
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 3) 120 PRINT "PROBABILITY = "; J
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 2) 130 PRINT
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 2) 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (1 2) 150 INPUT L
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (1 5) 160 IF L = 1 THEN 30
-  Origs: 150
-  Dests: 30, 170
+  Origs: 150:auto
+  Dests: 30:ifthen, 170:auto
 (0 1) 170 STOP
-  Origs: 160
+  Origs: 160:auto
   Dests: 
 (0 1) 180 END
   Origs: 

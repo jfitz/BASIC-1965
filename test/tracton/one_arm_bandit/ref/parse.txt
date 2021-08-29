@@ -12,8 +12,10 @@
  Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 60 IF L$ = "YES" THEN 100
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:100
 70 IF L$ = "NO" THEN 170
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:170
 80 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
  CarriageControl:NL
@@ -90,28 +92,36 @@
  Token 'InvalidToken:$' is not a value or operator
 340 IF S1$ = "CHERRY" THEN 380
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:380
 350 IF S1$ = "APPLE" THEN 420
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:420
 360 IF S1$ = S2$ THEN 440
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:440
 370 GOTO 460
  LineNumber:460
 380 IF S1$ = S2$ THEN 400
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:400
 390 GOTO 460
  LineNumber:460
 400 IF S2$ = S3$ THEN 480
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:480
 410 GOTO 460
  LineNumber:460
 420 IF S1$ = S2$ THEN 500
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:500
 430 GOTO 520
  LineNumber:520
 440 IF S2$ = S3$ THEN 540
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:540
 450 IF S3$ = "CHERRY" THEN 540
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:540
 460 LET J = J - 1
  Variable:J -> _
  Variable:J -> _
@@ -213,6 +223,7 @@
  Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
 750 IF Z$ = "Y" THEN 780
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:780
 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"
  TextConstant:"ONE-ARM BANDIT SAYS GOOD-BYE"
  CarriageControl:NL

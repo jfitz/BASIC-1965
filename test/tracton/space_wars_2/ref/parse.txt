@@ -19,8 +19,10 @@
  Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
 90 IF A$ = "YES" THEN 130
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:130
 100 IF A$ = "NO" THEN 540
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:540
 110 PRINT "YOU HAVE ISSUED AN INVALID RESPONSE"
  TextConstant:"YOU HAVE ISSUED AN INVALID RESPONSE"
  CarriageControl:NL
@@ -188,6 +190,7 @@
  Variable:D -> _
  NumericConstant:10000
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:660
 640 LET L = 1
  Variable:L -> _
  NumericConstant:1
@@ -240,6 +243,7 @@
  Variable:D -> _
  NumericConstant:5000
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:760
 740 LET K = 1
  Variable:K -> _
  NumericConstant:1
@@ -292,6 +296,7 @@
  Variable:D -> _
  NumericConstant:3000
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:860
 850 LET E3 = 0
  Variable:E3 -> _
  NumericConstant:0
@@ -329,6 +334,7 @@
  Variable:T1 -> _
  NumericConstant:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:920
 910 GOTO 950
  LineNumber:950
 920 LET E1 = 0
@@ -349,6 +355,7 @@
  Variable:T2 -> _
  NumericConstant:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:980
 970 GOTO 1010
  LineNumber:1010
 980 LET E2 = 0
@@ -388,10 +395,12 @@
  Variable:Y -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1100
 1050 IF L = 0 THEN 1080
  Variable:L -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1080
 1060 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
  TextConstant:"THE SKY FIGHTER HAS FIRED HIS LASER"
  CarriageControl:NL
@@ -409,12 +418,14 @@
  Variable:Z -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1180
 1120 GOTO 1220
  LineNumber:1220
 1130 IF K = 0 THEN 1160
  Variable:K -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1160
 1140 PRINT "THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
  TextConstant:"THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
  CarriageControl:NL
@@ -482,6 +493,7 @@
  Variable:D -> _
  NumericConstant:3000
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:1380
 1370 GOTO 1410
  LineNumber:1410
 1380 PRINT "YOU ARE CLOSER THAN 3000KM TO THE SPACE STATION"
@@ -506,6 +518,7 @@
  Variable:X1 -> _
  NumericConstant:20000
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:1440
 1430 GOTO 1490
  LineNumber:1490
 1440 PRINT "YOU HAVE DEPLETED YOUR ENERGY SUPPLY, THE DEATH"
@@ -538,6 +551,7 @@
  Variable:D -> _
  NumericConstant:1000
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:1590
 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
  TextConstant:"YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
  CarriageControl:NL
@@ -565,6 +579,7 @@
  Variable:H -> _
  NumericConstant:50
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:1640
 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  TextConstant:"YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
  CarriageControl:NL
@@ -600,8 +615,10 @@
  Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 1720 IF C$ = "YES" THEN 1820
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1820
 1730 IF C$ = "NO" THEN 1880
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1880
 1740 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
  CarriageControl:NL
@@ -614,8 +631,10 @@
  Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 1780 IF C$ = "S" THEN 1840
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1840
 1790 IF C$ = "R" THEN 1860
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1860
 1800 PRINT "WHICH???"
  TextConstant:"WHICH???"
  CarriageControl:NL
@@ -655,8 +674,10 @@
  Token 'InvalidToken:$' is not a value or operator
 1920 IF C$ = "S" THEN 1980
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1980
 1930 IF C$ = "R" THEN 2000
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2000
 1940 PRINT "WHICH ENEMY???"
  TextConstant:"WHICH ENEMY???"
  CarriageControl:NL
@@ -708,8 +729,10 @@
  Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 2060 IF C$ = "YES" THEN 2100
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2100
 2070 IF C$ = "NO" THEN 2120
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2120
 2080 PRINT "THE COMPUTER RESPONDS ONLY TO A YES OR NO"
  TextConstant:"THE COMPUTER RESPONDS ONLY TO A YES OR NO"
  CarriageControl:NL
@@ -737,6 +760,7 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:2190
 2170 LET Q = 1000*(1 + INT(RND)/100)
  Variable:Q -> _
  NumericConstant:1000
@@ -756,8 +780,10 @@
  AssignmentOperator:= =_ -> _
 2200 IF C$ = "S" THEN 2240
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2240
 2210 IF C$ = "R" THEN 2260
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2260
 2220 PRINT "WHICH TARGET?????"
  TextConstant:"WHICH TARGET?????"
  CarriageControl:NL
@@ -781,6 +807,7 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:2300
 2280 LET X1 = X1 - 1000
  Variable:X1 -> _
  Variable:X1 -> _
@@ -826,10 +853,13 @@
  Variable:F -> _
  NumericConstant:22500
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:2470
 2420 IF C$ = "A" THEN 2500
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2500
 2430 IF C$ = "T" THEN 2620
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2620
 2440 PRINT "DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
  TextConstant:"DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
  CarriageControl:NL
@@ -859,6 +889,7 @@
  Variable:D -> _
  NumericConstant:150000
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:2540
 2520 GOTO 2640
  LineNumber:2640
 2530 REM WENT TOO FAR
@@ -895,6 +926,7 @@
  Variable:D -> _
  NumericConstant:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:2570
 2640 LET X1 = X1 - F
  Variable:X1 -> _
  Variable:X1 -> _
@@ -951,8 +983,10 @@
  Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 2810 IF L$ = "GO" THEN 2840
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2840
 2820 IF L$ = "NO" THEN 2860
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:2860
 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
  TextConstant:"DO YOU WANT TO STOP OR PLAY AGAIN?????"
  CarriageControl:NL

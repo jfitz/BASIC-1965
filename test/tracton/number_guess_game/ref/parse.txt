@@ -48,10 +48,12 @@
  Variable:X -> _
  Variable:R -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:180
 160 IF X > R THEN 280
  Variable:X -> _
  Variable:R -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:280
 170 GOTO 300
  LineNumber:300
 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
@@ -76,6 +78,7 @@
  Variable:L -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:260
 250 STOP
  
 260 PRINT

@@ -21,21 +21,21 @@ Halstead complexity:
 
 (0 1) 10 REM TEST INFINITE LOOP CHECK
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 3) 20 LET A = 1
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 2) 30 PRINT A
-  Origs: 20, 50
-  Dests: 40
+  Origs: 20:auto, 50:ifthen
+  Dests: 40:auto
 (0 3) 40 LET A = 1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (1 5) 50 IF A < 10 THEN 30
-  Origs: 40
-  Dests: 30, 99
+  Origs: 40:auto
+  Dests: 30:ifthen, 99:auto
 (0 1) 99 END
-  Origs: 50
+  Origs: 50:auto
   Dests: 
 
 Unreachable code:

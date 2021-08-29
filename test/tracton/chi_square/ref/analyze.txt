@@ -21,64 +21,64 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES CHI-SQUARE
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM EVALUATION ON THE OBSERVED TO
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 1) 30 REM EXPECTED FREQUENCIES
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 3) 40 LET J = 0
-  Origs: 30, 200
-  Dests: 50
+  Origs: 30:auto, 200:goto
+  Dests: 50:auto
 (0 2) 50 PRINT "OBSERVED FREQUENCIES = "
-  Origs: 40, 120
-  Dests: 60
+  Origs: 40:auto, 120:goto
+  Dests: 60:auto
 (1 2) 60 INPUT D
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 2) 70 PRINT "EXPECTED FREQUENCIES = "
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (1 2) 80 INPUT E
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (1 4) 90 IF E = 0 THEN 130
-  Origs: 80
-  Dests: 100, 130
+  Origs: 80:auto
+  Dests: 100:auto, 130:ifthen
 (0 6) 100 LET K = ((D - E) ^ 2) / E
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 4) 110 LET J = J + K
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 3) 120 GOTO 50
-  Origs: 110
-  Dests: 50
+  Origs: 110:auto
+  Dests: 50:goto
 (0 3) 130 PRINT "CHI-SQUARE = "; J
-  Origs: 90
-  Dests: 140
+  Origs: 90:ifthen
+  Dests: 140:auto
 (0 2) 140 PRINT "*****************"
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 2) 150 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (1 2) 160 INPUT L
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (1 4) 170 IF L = 1 THEN 190
-  Origs: 160
-  Dests: 180, 190
+  Origs: 160:auto
+  Dests: 180:auto, 190:ifthen
 (0 1) 180 STOP
-  Origs: 170
+  Origs: 170:auto
   Dests: 
 (0 2) 190 PRINT
-  Origs: 170
-  Dests: 200
+  Origs: 170:ifthen
+  Dests: 200:auto
 (0 3) 200 GOTO 40
-  Origs: 190
-  Dests: 40
+  Origs: 190:auto
+  Dests: 40:goto
 (0 1) 210 END
   Origs: 
   Dests: 

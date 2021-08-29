@@ -21,36 +21,36 @@ Halstead complexity:
 
 (0 1) 100 REM SIDE-ANGLE-SIDE
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (0 3) 110 LET P = 3.14159265
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 4) 120 DEF FND(X) = X * P / 180
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 3) 130 DEF FNC(X) = COS(FND(X))
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 5) 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (3 4) 150 READ X, A, Y
-  Origs: 140, 180
-  Dests: 160
+  Origs: 140:auto, 180:goto
+  Dests: 160:auto
 (0 4) 160 LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 5) 170 PRINT X, A, Y, Z
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 3) 180 GOTO 150
-  Origs: 170
-  Dests: 150
+  Origs: 170:auto
+  Dests: 150:goto
 (0 2) 190 DATA 10, 60, 20, 3, 90, 4, 10, 120, 10
   Origs: 
-  Dests: 200
+  Dests: 200:auto
 (0 1) 200 END
-  Origs: 190
+  Origs: 190:auto
   Dests: 
 
 Unreachable code:

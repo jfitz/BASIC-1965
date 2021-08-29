@@ -21,54 +21,54 @@ Halstead complexity:
 
 (1 2) 10 READ N
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (1 4) 20 FOR I = 1 TO N - 1
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (1 4) 30 FOR J = 1 TO N - 1
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 8) 40 LET P(I, J) = I * J - INT(I * J / N) * N
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 1) 50 NEXT J
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (0 1) 60 NEXT I
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (1 4) 70 FOR I = 1 TO N - 1
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (1 4) 80 FOR J = 1 TO N - 1
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (1 4) 90 IF P(I, J) = 1 THEN 140
-  Origs: 80
-  Dests: 100, 140
+  Origs: 80:auto
+  Dests: 100:auto, 140:ifthen
 (0 1) 100 NEXT J
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 3) 110 PRINT I; "DOES NOT HAVE AN INVERSE"
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 1) 120 NEXT I
-  Origs: 110, 150
-  Dests: 130
+  Origs: 110:auto, 150:goto
+  Dests: 130:auto
 (0 1) 130 STOP
-  Origs: 120
+  Origs: 120:auto
   Dests: 
 (0 4) 140 PRINT I; "HAS AN INVERSE" J
-  Origs: 90
-  Dests: 150
+  Origs: 90:ifthen
+  Dests: 150:auto
 (0 3) 150 GOTO 120
-  Origs: 140
-  Dests: 120
+  Origs: 140:auto
+  Dests: 120:goto
 (0 2) 160 DATA 7
   Origs: 
-  Dests: 999
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 160
+  Origs: 160:auto
   Dests: 
 
 Unreachable code:

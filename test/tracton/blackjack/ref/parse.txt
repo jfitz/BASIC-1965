@@ -10,8 +10,10 @@
  Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 50 IF C$ = "YES" THEN 90
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:90
 60 IF C$ = "NO " THEN 340
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:340
 70 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
  CarriageControl:NL
@@ -170,16 +172,19 @@
  Variable:P -> _
  NumericConstant:21
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:640
 530 GOSUB 960
  LineNumber:960
 540 IF L = 1 THEN 690
  Variable:L -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:690
 550 IF D <= 16 THEN 740
  Variable:D -> _
  NumericConstant:16
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:740
 560 PRINT "THE DEALER HAS ";D
  TextConstant:"THE DEALER HAS "
  CarriageControl:;
@@ -194,6 +199,7 @@
  Variable:P -> _
  Variable:D -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:620
 590 REM WIN OR LOSS STATEMENTS
  Remark:WIN OR LOSS STATEMENTS
 600 PRINT "THE DEALER HAS WON!!!"
@@ -213,6 +219,7 @@
  Variable:D -> _
  NumericConstant:21
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:670
 660 GOTO 560
  LineNumber:560
 670 PRINT "THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
@@ -237,6 +244,7 @@
  Variable:P -> _
  NumericConstant:21
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:600
 730 GOTO 530
  LineNumber:530
 740 PRINT "THE DEALER HAS ";D
@@ -266,10 +274,12 @@
  Variable:D -> _
  NumericConstant:21
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:620
 800 IF D <= 17 THEN 750
  Variable:D -> _
  NumericConstant:17
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:750
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
@@ -283,6 +293,7 @@
  AssignmentOperator:= _ -> _
 830 IF C == 11 THEN 850
  Token 'OperatorToken:=' is not a value or operator
+ LineNumber:850
 840 GOTO 880
  LineNumber:880
 850 IF D + C > 21 THEN 870
@@ -291,6 +302,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:21
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:870
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
@@ -312,6 +324,7 @@
  Variable:C -> _
  NumericConstant:11
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:920
 910 GOTO 950
  LineNumber:950
 920 IF P + C > 21 THEN 940
@@ -320,6 +333,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:21
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:940
 930 GOTO 950
  LineNumber:950
 940 LET C = 1
@@ -335,8 +349,10 @@
  Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
 980 IF Q$ = "HIT" THEN 1020
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1020
 990 IF Q$ = "STAND" THEN 1040
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1040
 1000 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
  CarriageControl:NL
@@ -366,6 +382,7 @@
  Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 1100 IF L$ = "YES" THEN 1130
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1130
 1110 PRINT "BLACKJACK SAYS GOOD-BYE"
  TextConstant:"BLACKJACK SAYS GOOD-BYE"
  CarriageControl:NL

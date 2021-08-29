@@ -395,6 +395,41 @@ class LineListSpec
   end
 end
 
+# transfer of control
+class TransferRef
+  attr_reader :line_number
+  attr_reader :type
+
+  def initialize(line_number, type)
+    @line_number = line_number
+    @type = type
+  end
+
+  def eql?(other)
+    @line_number == other.line_number && @type == other.type
+  end
+
+  def ==(other)
+    @line_number == other.line_number && @type == other.type
+  end
+
+  def hash
+    @line_number.hash + @type.hash
+  end
+
+  def <=>(other)
+    if @line_number == other.line_number
+      @type <=> other.type
+    else
+      @line_number <=> other.line_number
+    end
+  end
+
+  def to_s
+    "#{@line_number}:#{@type}"
+  end
+end
+
 # program container
 class Program
   attr_reader :lines
@@ -627,8 +662,8 @@ class Program
 
     destinations.each do |orig, dests|
       dests.each do |dest|
-        origins[dest] = [] unless origins.key?(dest)
-        origins[dest] << orig
+        origins[dest.line_number] = [] unless origins.key?(dest.line_number)
+        origins[dest.line_number] << TransferRef.new(orig.line_number, dest.type)
       end
     end
 
@@ -648,6 +683,7 @@ class Program
 
       # print destinations from this line
       statement_dests = destinations[line_number]
+      statement_dests = [] if statement_dests.nil?
       dests = statement_dests.sort.map(&:to_s).join(', ')
       texts << '  Dests: ' + dests
     end
@@ -831,7 +867,8 @@ class Program
         next_line_number = next_line_idx.number
         line_number = line_number_idx.number
 
-        statement_gotos << next_line_number unless next_line_number == line_number
+        statement_gotos << TransferRef.new(next_line_number, :auto) unless
+          next_line_number == line_number
       end
     end
 
@@ -869,7 +906,7 @@ class Program
     statement_gotos = statement.gotos
 
     statement_gotos.each do |goto|
-      goto_line_idxs << LineNumberIdx.new(goto, 0)
+      goto_line_idxs << LineNumberIdx.new(goto.line_number, 0)
     end
 
     if statement.autonext

@@ -21,54 +21,54 @@ Halstead complexity:
 
 (0 5) 100 DIM A(20, 20), C(20, 20), B(20), X(20)
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (0 0) 110 
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (1 2) 120 READ N
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (1 2) 130 MAT READ A(N, N)
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (1 2) 140 MAT READ B(N)
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 0) 150 
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 4) 160 MAT C = INV(A)
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 4) 170 MAT X = C * B
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 0) 180 
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 2) 190 MAT PRINT X
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 0) 200 
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 2) 210 DATA 3
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 3) 220 DATA 2, -4, 3
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (0 3) 230 DATA 3, 0, -1
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 2) 240 DATA 2, 5, 1
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (0 3) 250 DATA -9, 4, 11
-  Origs: 240
-  Dests: 999
+  Origs: 240:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 250
+  Origs: 250:auto
   Dests: 
 
 Unreachable code:

@@ -21,294 +21,294 @@ Halstead complexity:
 
 (0 5) 10 DIM A(100), B(100), C(200), X(100)
   Origs: 
-  Dests: 100
+  Dests: 100:auto
 (0 1) 100 REM READ, PRINT A,B
-  Origs: 10
-  Dests: 110
+  Origs: 10:auto
+  Dests: 110:auto
 (0 2) 110 GOSUB 1000
-  Origs: 100
-  Dests: 120, 1000
+  Origs: 100:auto
+  Dests: 120:auto, 1000:gosub
 (0 2) 120 GOSUB 2000
-  Origs: 110
-  Dests: 130, 2000
+  Origs: 110:auto
+  Dests: 130:auto, 2000:gosub
 (1 3) 130 FOR I = 0 TO L
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 3) 140 LET A(I) = C(I)
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 1) 150 NEXT I
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 3) 160 LET L1 = L
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 2) 170 PRINT "PLUS"
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 2) 180 PRINT
-  Origs: 170
-  Dests: 210
+  Origs: 170:auto
+  Dests: 210:auto
 (0 2) 210 GOSUB 1000
-  Origs: 180
-  Dests: 220, 1000
+  Origs: 180:auto
+  Dests: 220:auto, 1000:gosub
 (0 2) 220 GOSUB 2000
-  Origs: 210
-  Dests: 230, 2000
+  Origs: 210:auto
+  Dests: 230:auto, 2000:gosub
 (1 3) 230 FOR I = 0 TO L
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 3) 240 LET B(I) = C(I)
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (0 1) 250 NEXT I
-  Origs: 240
-  Dests: 260
+  Origs: 240:auto
+  Dests: 260:auto
 (0 3) 260 LET L2 = L
-  Origs: 250
-  Dests: 270
+  Origs: 250:auto
+  Dests: 270:auto
 (0 2) 270 PRINT "EQUALS"
-  Origs: 260
-  Dests: 280
+  Origs: 260:auto
+  Dests: 280:auto
 (0 2) 280 PRINT
-  Origs: 270
-  Dests: 290
+  Origs: 270:auto
+  Dests: 290:auto
 (0 0) 290 
-  Origs: 280
-  Dests: 300
+  Origs: 280:auto
+  Dests: 300:auto
 (0 1) 300 REM C = A + B
-  Origs: 290
-  Dests: 310
+  Origs: 290:auto
+  Dests: 310:auto
 (1 4) 310 IF L1 < L2 THEN 420
-  Origs: 300
-  Dests: 320, 420
+  Origs: 300:auto
+  Dests: 320:auto, 420:ifthen
 (0 3) 320 LET L = L1
-  Origs: 310
-  Dests: 330
+  Origs: 310:auto
+  Dests: 330:auto
 (1 4) 330 FOR I = L2 + 1 TO L
-  Origs: 320
-  Dests: 340
+  Origs: 320:auto
+  Dests: 340:auto
 (0 3) 340 LET B(I) = 0
-  Origs: 330
-  Dests: 350
+  Origs: 330:auto
+  Dests: 350:auto
 (0 1) 350 NEXT I
-  Origs: 340
-  Dests: 360
+  Origs: 340:auto
+  Dests: 360:auto
 (0 2) 360 GOTO 500
-  Origs: 350
-  Dests: 500
+  Origs: 350:auto
+  Dests: 500:goto
 (0 3) 420 LET L = L2
-  Origs: 310
-  Dests: 430
+  Origs: 310:ifthen
+  Dests: 430:auto
 (1 4) 430 FOR I = L1 + 1 TO L
-  Origs: 420
-  Dests: 440
+  Origs: 420:auto
+  Dests: 440:auto
 (0 3) 440 LET A(I) = 0
-  Origs: 430
-  Dests: 450
+  Origs: 430:auto
+  Dests: 450:auto
 (0 1) 450 NEXT I
-  Origs: 440
-  Dests: 500
+  Origs: 440:auto
+  Dests: 500:auto
 (1 3) 500 FOR I = 0 TO L
-  Origs: 360, 450
-  Dests: 510
+  Origs: 360:goto, 450:auto
+  Dests: 510:auto
 (0 4) 510 LET C(I) = A(I) + B(I)
-  Origs: 500
-  Dests: 520
+  Origs: 500:auto
+  Dests: 520:auto
 (0 1) 520 NEXT I
-  Origs: 510
-  Dests: 530
+  Origs: 510:auto
+  Dests: 530:auto
 (0 0) 530 
-  Origs: 520
-  Dests: 600
+  Origs: 520:auto
+  Dests: 600:auto
 (0 1) 600 REM CARRY, PRINT ANSWER
-  Origs: 530
-  Dests: 610
+  Origs: 530:auto
+  Dests: 610:auto
 (0 2) 610 GOSUB 3000
-  Origs: 600
-  Dests: 620, 3000
+  Origs: 600:auto
+  Dests: 620:auto, 3000:gosub
 (0 2) 620 GOSUB 2000
-  Origs: 610
-  Dests: 630, 2000
+  Origs: 610:auto
+  Dests: 630:auto, 2000:gosub
 (0 1) 630 STOP
-  Origs: 620
+  Origs: 620:auto
   Dests: 
 (0 0) 640 
   Origs: 
-  Dests: 1000
+  Dests: 1000:auto
 (0 1) 1000 REM READ A NUMBER C
-  Origs: 110, 210, 640
-  Dests: 1010
+  Origs: 110:gosub, 210:gosub, 640:auto
+  Dests: 1010:auto
 (1 3) 1010 FOR I = 0 TO 100
-  Origs: 1000
-  Dests: 1020
+  Origs: 1000:auto
+  Dests: 1020:auto
 (1 2) 1020 READ X(I)
-  Origs: 1010
-  Dests: 1030
+  Origs: 1010:auto
+  Dests: 1030:auto
 (1 4) 1030 IF X(I) < 0 THEN 1100
-  Origs: 1020
-  Dests: 1040, 1100
+  Origs: 1020:auto
+  Dests: 1040:auto, 1100:ifthen
 (0 1) 1040 NEXT I
-  Origs: 1030
-  Dests: 1050
+  Origs: 1030:auto
+  Dests: 1050:auto
 (0 2) 1050 GOTO 1200
-  Origs: 1040
-  Dests: 1200
+  Origs: 1040:auto
+  Dests: 1200:goto
 (0 4) 1100 LET L = I - 1
-  Origs: 1030
-  Dests: 1110
+  Origs: 1030:ifthen
+  Dests: 1110:auto
 (1 3) 1110 FOR I = 0 TO L
-  Origs: 1100
-  Dests: 1120
+  Origs: 1100:auto
+  Dests: 1120:auto
 (0 3) 1120 LET C(I) = X(L - I)
-  Origs: 1110
-  Dests: 1130
+  Origs: 1110:auto
+  Dests: 1130:auto
 (0 1) 1130 NEXT I
-  Origs: 1120
-  Dests: 1140
+  Origs: 1120:auto
+  Dests: 1140:auto
 (0 1) 1140 RETURN
-  Origs: 1130
+  Origs: 1130:auto
   Dests: 
 (0 2) 1200 PRINT "NUMBER TOO LONG"
-  Origs: 1050
-  Dests: 1210
+  Origs: 1050:goto
+  Dests: 1210:auto
 (0 1) 1210 STOP
-  Origs: 1200
+  Origs: 1200:auto
   Dests: 
 (0 0) 1220 
   Origs: 
-  Dests: 2000
+  Dests: 2000:auto
 (0 1) 2000 REM PRINT A NUMBER C
-  Origs: 120, 220, 620, 1220
-  Dests: 2010
+  Origs: 120:gosub, 220:gosub, 620:gosub, 1220:auto
+  Dests: 2010:auto
 (1 4) 2010 IF C(L) >= 100 THEN 2200
-  Origs: 2000
-  Dests: 2020, 2200
+  Origs: 2000:auto
+  Dests: 2020:auto, 2200:ifthen
 (0 2) 2020 PRINT "      ";
-  Origs: 2010
-  Dests: 2030
+  Origs: 2010:auto
+  Dests: 2030:auto
 (1 4) 2030 IF C(L) >= 10 THEN 2100
-  Origs: 2020
-  Dests: 2040, 2100
+  Origs: 2020:auto
+  Dests: 2040:auto, 2100:ifthen
 (0 2) 2040 PRINT "      ";
-  Origs: 2030
-  Dests: 2050
+  Origs: 2030:auto
+  Dests: 2050:auto
 (0 3) 2050 PRINT C(L); ",   ";
-  Origs: 2040, 2130
-  Dests: 2060
+  Origs: 2040:auto, 2130:goto
+  Dests: 2060:auto
 (0 4) 2060 LET L9 = L - 1
-  Origs: 2050
-  Dests: 2070
+  Origs: 2050:auto
+  Dests: 2070:auto
 (0 2) 2070 GOTO 2210
-  Origs: 2060
-  Dests: 2210
+  Origs: 2060:auto
+  Dests: 2210:goto
 (0 4) 2100 LET M = INT(C(L) / 10)
-  Origs: 2030
-  Dests: 2110
+  Origs: 2030:ifthen
+  Dests: 2110:auto
 (0 6) 2110 LET C(L) = C(L) - 10 * M
-  Origs: 2100
-  Dests: 2120
+  Origs: 2100:auto
+  Dests: 2120:auto
 (0 2) 2120 PRINT M;
-  Origs: 2110
-  Dests: 2130
+  Origs: 2110:auto
+  Dests: 2130:auto
 (0 3) 2130 GOTO 2050
-  Origs: 2120
-  Dests: 2050
+  Origs: 2120:auto
+  Dests: 2050:goto
 (0 3) 2200 LET L9 = L
-  Origs: 2010
-  Dests: 2210
+  Origs: 2010:ifthen
+  Dests: 2210:auto
 (1 5) 2210 FOR I = L9 TO 0 STEP -1
-  Origs: 2070, 2200
-  Dests: 2220
+  Origs: 2070:goto, 2200:auto
+  Dests: 2220:auto
 (0 3) 2220 LET N = C(I)
-  Origs: 2210
-  Dests: 2230
+  Origs: 2210:auto
+  Dests: 2230:auto
 (0 3) 2230 LET Q = 100
-  Origs: 2220
-  Dests: 2240
+  Origs: 2220:auto
+  Dests: 2240:auto
 (1 3) 2240 FOR J = 1 TO 3
-  Origs: 2230
-  Dests: 2250
+  Origs: 2230:auto
+  Dests: 2250:auto
 (0 4) 2250 LET M = INT(N / Q)
-  Origs: 2240
-  Dests: 2260
+  Origs: 2240:auto
+  Dests: 2260:auto
 (0 6) 2260 LET N = N - M * Q
-  Origs: 2250
-  Dests: 2270
+  Origs: 2250:auto
+  Dests: 2270:auto
 (0 4) 2270 LET Q = Q / 10
-  Origs: 2260
-  Dests: 2280
+  Origs: 2260:auto
+  Dests: 2280:auto
 (0 2) 2280 PRINT M;
-  Origs: 2270
-  Dests: 2290
+  Origs: 2270:auto
+  Dests: 2290:auto
 (0 1) 2290 NEXT J
-  Origs: 2280
-  Dests: 2300
+  Origs: 2280:auto
+  Dests: 2300:auto
 (1 4) 2300 IF I = 0 THEN 2400
-  Origs: 2290
-  Dests: 2310, 2400
+  Origs: 2290:auto
+  Dests: 2310:auto, 2400:ifthen
 (0 2) 2310 PRINT ",   ";
-  Origs: 2300
-  Dests: 2320
+  Origs: 2300:auto
+  Dests: 2320:auto
 (0 1) 2320 NEXT I
-  Origs: 2310
-  Dests: 2400
+  Origs: 2310:auto
+  Dests: 2400:auto
 (0 2) 2400 PRINT
-  Origs: 2300, 2320
-  Dests: 2405
+  Origs: 2300:ifthen, 2320:auto
+  Dests: 2405:auto
 (0 2) 2405 PRINT
-  Origs: 2400
-  Dests: 2410
+  Origs: 2400:auto
+  Dests: 2410:auto
 (0 1) 2410 RETURN
-  Origs: 2405
+  Origs: 2405:auto
   Dests: 
 (0 0) 2420 
   Origs: 
-  Dests: 3000
+  Dests: 3000:auto
 (0 1) 3000 REM CARRY IS IN NUMBER C
-  Origs: 610, 2420
-  Dests: 3010
+  Origs: 610:gosub, 2420:auto
+  Dests: 3010:auto
 (0 3) 3010 LET C(L + 1) = 0
-  Origs: 3000
-  Dests: 3020
+  Origs: 3000:auto
+  Dests: 3020:auto
 (1 3) 3020 FOR I = 0 TO L
-  Origs: 3010
-  Dests: 3030
+  Origs: 3010:auto
+  Dests: 3030:auto
 (0 3) 3030 LET N = C(I)
-  Origs: 3020
-  Dests: 3040
+  Origs: 3020:auto
+  Dests: 3040:auto
 (0 4) 3040 LET M = INT(N / 1000)
-  Origs: 3030
-  Dests: 3050
+  Origs: 3030:auto
+  Dests: 3050:auto
 (0 6) 3050 LET C(I) = N - 1000 * M
-  Origs: 3040
-  Dests: 3060
+  Origs: 3040:auto
+  Dests: 3060:auto
 (0 4) 3060 LET C(I + 1) = C(I + 1) + M
-  Origs: 3050
-  Dests: 3070
+  Origs: 3050:auto
+  Dests: 3070:auto
 (0 1) 3070 NEXT I
-  Origs: 3060
-  Dests: 3080
+  Origs: 3060:auto
+  Dests: 3080:auto
 (1 4) 3080 IF M = 0 THEN 3100
-  Origs: 3070
-  Dests: 3090, 3100
+  Origs: 3070:auto
+  Dests: 3090:auto, 3100:ifthen
 (0 4) 3090 LET L = L + 1
-  Origs: 3080
-  Dests: 3100
+  Origs: 3080:auto
+  Dests: 3100:auto
 (0 1) 3100 RETURN
-  Origs: 3080, 3090
+  Origs: 3080:ifthen, 3090:auto
   Dests: 
 (0 0) 3110 
   Origs: 
-  Dests: 9000
+  Dests: 9000:auto
 (0 3) 9000 DATA 123, 456, 789, 333, -1
-  Origs: 3110
-  Dests: 9010
+  Origs: 3110:auto
+  Dests: 9010:auto
 (0 3) 9010 DATA 987, 654, 321, 000, -1
-  Origs: 9000
-  Dests: 9999
+  Origs: 9000:auto
+  Dests: 9999:auto
 (0 1) 9999 END
-  Origs: 9010
+  Origs: 9010:auto
   Dests: 
 
 Unreachable code:

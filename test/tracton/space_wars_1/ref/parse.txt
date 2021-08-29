@@ -17,8 +17,10 @@
  Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
 80 IF A$ = "YES" THEN 120
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:120
 90 IF A$ = "NO" THEN 250
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:250
 100 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
  CarriageControl:NL
@@ -105,6 +107,7 @@
  Variable:D -> _
  NumericConstant:100000
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:370
 350 LET L = 1
  Variable:L -> _
  NumericConstant:1
@@ -121,6 +124,7 @@
  Variable:L -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:440
 400 LET H2 = (1 + INT(100*RND))/100
  Variable:H2 -> _
  NumericConstant:1
@@ -159,6 +163,7 @@
  Variable:M1 -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:470
 460 GOTO 480
  LineNumber:480
 470 LET D1 = 0
@@ -193,6 +198,7 @@
  Variable:L -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:560
 540 PRINT "THE SKY FIGHTER HAS FIRED THE LASER CANNON"
  TextConstant:"THE SKY FIGHTER HAS FIRED THE LASER CANNON"
  CarriageControl:NL
@@ -219,10 +225,12 @@
  Variable:E1 -> _
  NumericConstant:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:620
 600 IF E2 <= 0 THEN 650
  Variable:E2 -> _
  NumericConstant:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:650
 610 GOTO 680
  LineNumber:680
 620 PRINT "YOUR ENERGY LEVEL IS ZERO, THE ENEMY"
@@ -264,12 +272,14 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:800
 760 IF B + B1 > 180 THEN 820
  Variable:B -> _
  Variable:B1 -> _
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:180
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:820
 770 LET B = B + B1
  Variable:B -> _
  Variable:B -> _
@@ -308,12 +318,14 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:910
 870 IF D + K > 1E6 THEN 960
  Variable:D -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:1000000
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:960
 880 LET D = D + K
  Variable:D -> _
  Variable:D -> _
@@ -368,6 +380,7 @@
  Variable:B -> _
  NumericConstant:80
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:1050
 1030 PRINT "YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
  TextConstant:"YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
  CarriageControl:NL
@@ -377,6 +390,7 @@
  Variable:B -> _
  NumericConstant:100
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:1080
 1060 PRINT "YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
  TextConstant:"YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
  CarriageControl:NL
@@ -430,6 +444,7 @@
  Variable:D -> _
  NumericConstant:500
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:1200
 1180 PRINT "SPACE WARS IS OVER"
  TextConstant:"SPACE WARS IS OVER"
  CarriageControl:NL
@@ -458,6 +473,7 @@
  Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
 1280 IF Z$ = "GO" THEN 1310
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:1310
 1290 PRINT "SPACE WARS SAYS GOOD-BYE"
  TextConstant:"SPACE WARS SAYS GOOD-BYE"
  CarriageControl:NL

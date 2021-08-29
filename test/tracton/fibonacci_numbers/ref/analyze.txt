@@ -21,91 +21,91 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 2) 20 PRINT "ENTER FIRST TERM"
-  Origs: 10, 290
-  Dests: 30
+  Origs: 10:auto, 290:goto
+  Dests: 30:auto
 (1 2) 30 INPUT A
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 2) 40 PRINT "ENTER SECOND TERM"
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (1 2) 50 INPUT B
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (0 2) 60 PRINT "MAXIMUM NUMBER OF TERMS = "
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (1 2) 70 INPUT N
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 2) 80 PRINT
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 2) 90 PRINT "TABLE OF FIBONACCI NUMBERS"
-  Origs: 80
-  Dests: 100
+  Origs: 80:auto
+  Dests: 100:auto
 (0 3) 100 PRINT "TERM NO.", "FIBONACCI NUMBER"
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 3) 110 LET K = 1
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 3) 120 PRINT K, A
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 3) 130 LET K = 2
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 3) 140 PRINT K, B
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 4) 150 LET K = K + 1
-  Origs: 140, 210
-  Dests: 160
+  Origs: 140:auto, 210:goto
+  Dests: 160:auto
 (0 4) 160 LET Q = A + B
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 3) 170 PRINT K, Q
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 3) 180 LET A = B
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 3) 190 LET B = Q
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (1 4) 200 IF K >= N THEN 220
-  Origs: 190
-  Dests: 210, 220
+  Origs: 190:auto
+  Dests: 210:auto, 220:ifthen
 (0 3) 210 GOTO 150
-  Origs: 200
-  Dests: 150
+  Origs: 200:auto
+  Dests: 150:goto
 (0 2) 220 PRINT "MAXIMUM NUMBER OF TERMS REACHED"
-  Origs: 200
-  Dests: 230
+  Origs: 200:ifthen
+  Dests: 230:auto
 (0 2) 230 PRINT
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 2) 240 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (1 2) 250 INPUT L
-  Origs: 240
-  Dests: 260
+  Origs: 240:auto
+  Dests: 260:auto
 (1 4) 260 IF L = 1 THEN 280
-  Origs: 250
-  Dests: 270, 280
+  Origs: 250:auto
+  Dests: 270:auto, 280:ifthen
 (0 1) 270 STOP
-  Origs: 260
+  Origs: 260:auto
   Dests: 
 (0 2) 280 PRINT
-  Origs: 260
-  Dests: 290
+  Origs: 260:ifthen
+  Dests: 290:auto
 (0 3) 290 GOTO 20
-  Origs: 280
-  Dests: 20
+  Origs: 280:auto
+  Dests: 20:goto
 (0 1) 300 END
   Origs: 
   Dests: 

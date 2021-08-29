@@ -1,0 +1,65 @@
+Statistics:
+
+Number of lines: 13
+Number of valid statements: 12
+Number of comments: 1
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.083
+Comprehension effort: 25
+McCabe complexity: 3
+Halstead complexity:
+ length: 31
+ volume: 85.950
+ difficulty: 6.000
+ effort: 515.702
+ language: 2.388
+ intelligence: 14.325
+ time: 0.478
+
+(0 1) 10 REM Test the FORGET statement
+  Origs: 
+  Dests: 11:auto
+(0 2) 11 OPTION BASE 1
+  Origs: 10:auto
+  Dests: 12:auto
+(0 2) 12 OPTION REQUIRE_INITIALIZED TRUE
+  Origs: 11:auto
+  Dests: 20:auto
+(0 2) 20 DIM A(3, 4)
+  Origs: 12:auto
+  Dests: 21:auto
+(1 3) 21 FOR I = 1 TO 3
+  Origs: 20:auto
+  Dests: 22:auto
+(1 3) 22 FOR J = 1 TO 4
+  Origs: 21:auto
+  Dests: 23:auto
+(0 4) 23 LET A(I, J) = I * J
+  Origs: 22:auto
+  Dests: 24:auto
+(0 1) 24 NEXT J
+  Origs: 23:auto
+  Dests: 25:auto
+(0 1) 25 NEXT I
+  Origs: 24:auto
+  Dests: 30:auto
+(0 2) 30 MAT PRINT A
+  Origs: 25:auto
+  Dests: 40:auto
+(0 1) 40 MAT FORGET B
+  Origs: 30:auto
+  Dests: 90:auto
+(0 2) 90 MAT PRINT A
+  Origs: 40:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 90:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -1,0 +1,56 @@
+Statistics:
+
+Number of lines: 10
+Number of valid statements: 9
+Number of comments: 1
+Number of executable statements: 8
+
+Complexity:
+
+Comment density: 0.111
+Comprehension effort: 22
+McCabe complexity: 3
+Halstead complexity:
+ length: 31
+ volume: 87.830
+ difficulty: 6.650
+ effort: 584.067
+ language: 1.986
+ intelligence: 13.207
+ time: 0.541
+
+(0 1) 10 REM MATRIX ASSIGNMENT
+  Origs: 
+  Dests: 20:auto
+(0 2) 20 DIM A(5, 5)
+  Origs: 10:auto
+  Dests: 30:auto
+(1 3) 30 FOR I = 1 TO 5
+  Origs: 20:auto
+  Dests: 40:auto
+(1 3) 40 FOR J = 1 TO 5
+  Origs: 30:auto
+  Dests: 50:auto
+(0 4) 50 LET A(I, J) = I + J
+  Origs: 40:auto
+  Dests: 60:auto
+(0 1) 60 NEXT J
+  Origs: 50:auto
+  Dests: 70:auto
+(0 1) 70 NEXT I
+  Origs: 60:auto
+  Dests: 100:auto
+(0 4) 100 MAT B = -A
+  Origs: 70:auto
+  Dests: 110:auto
+(0 2) 110 MAT PRINT B
+  Origs: 100:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 110:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

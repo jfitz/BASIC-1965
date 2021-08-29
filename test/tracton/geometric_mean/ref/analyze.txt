@@ -21,70 +21,70 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GEOMETRIC MEAN
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM AFTER EACH SAMPLE IS ENTERED, THE NUMBER OF
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 1) 30 REM SAMPLES, THE CURRENT SAMPLE, AND CURRENT MEAN
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 1) 40 REM IS PRINTED
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 3) 50 LET Y = 1
-  Origs: 40, 220
-  Dests: 60
+  Origs: 40:auto, 220:goto
+  Dests: 60:auto
 (0 3) 60 LET N = 0
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 2) 70 PRINT "SAMPLE = ";
-  Origs: 60, 150
-  Dests: 80
+  Origs: 60:auto, 150:goto
+  Dests: 80:auto
 (1 2) 80 INPUT W
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (1 4) 90 IF W = 0 THEN 160
-  Origs: 80
-  Dests: 100, 160
+  Origs: 80:auto
+  Dests: 100:auto, 160:ifthen
 (0 4) 100 LET N = N + 1
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 4) 110 LET Y = Y * W
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 6) 120 LET G = Y ^ (1 / N)
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 5) 130 PRINT "NUMBER OF SAMPLES = "; N, "CURRENT SAMPLE = "; W
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 3) 140 PRINT "CURRENT MEAN = "; G
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 3) 150 GOTO 70
-  Origs: 140
-  Dests: 70
+  Origs: 140:auto
+  Dests: 70:goto
 (0 2) 160 PRINT
-  Origs: 90
-  Dests: 170
+  Origs: 90:ifthen
+  Dests: 170:auto
 (0 2) 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (1 2) 180 INPUT L
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (1 4) 190 IF L = 1 THEN 210
-  Origs: 180
-  Dests: 200, 210
+  Origs: 180:auto
+  Dests: 200:auto, 210:ifthen
 (0 1) 200 STOP
-  Origs: 190
+  Origs: 190:auto
   Dests: 
 (0 2) 210 PRINT
-  Origs: 190
-  Dests: 220
+  Origs: 190:ifthen
+  Dests: 220:auto
 (0 3) 220 GOTO 50
-  Origs: 210
-  Dests: 50
+  Origs: 210:auto
+  Dests: 50:goto
 (0 1) 230 END
   Origs: 
   Dests: 

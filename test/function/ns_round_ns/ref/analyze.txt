@@ -1,0 +1,65 @@
+Statistics:
+
+Number of lines: 13
+Number of valid statements: 12
+Number of comments: 1
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.083
+Comprehension effort: 37
+McCabe complexity: 1
+Halstead complexity:
+ length: 41
+ volume: 131.974
+ difficulty: 2.875
+ effort: 379.425
+ language: 15.967
+ intelligence: 45.904
+ time: 0.351
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 15:auto
+(0 3) 15 PRINT "NUMBER", "ROUNDED"
+  Origs: 10:auto
+  Dests: 20:auto
+(0 3) 20 LET A = 10.1234
+  Origs: 15:auto
+  Dests: 22:auto
+(0 4) 22 LET A1 = ROUND(A, 3)
+  Origs: 20:auto
+  Dests: 25:auto
+(0 3) 25 PRINT A, A1
+  Origs: 22:auto
+  Dests: 30:auto
+(0 4) 30 LET B = -20.1234
+  Origs: 25:auto
+  Dests: 32:auto
+(0 4) 32 LET B1 = ROUND(B, 2)
+  Origs: 30:auto
+  Dests: 35:auto
+(0 3) 35 PRINT B, B1
+  Origs: 32:auto
+  Dests: 40:auto
+(0 3) 40 LET C = 1234
+  Origs: 35:auto
+  Dests: 42:auto
+(0 4) 42 LET C1 = ROUND(C, -1)
+  Origs: 40:auto
+  Dests: 45:auto
+(0 3) 45 PRINT C, C1
+  Origs: 42:auto
+  Dests: 90:auto
+(0 1) 90 STOP
+  Origs: 45:auto
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

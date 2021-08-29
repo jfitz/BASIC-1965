@@ -21,84 +21,84 @@ Halstead complexity:
 
 (1 3) 10 FOR G = 1 TO 10
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 2) 20 GOSUB 500
-  Origs: 10
-  Dests: 30, 500
+  Origs: 10:auto
+  Dests: 30:auto, 500:gosub
 (1 4) 30 IF D < 4 THEN 300
-  Origs: 20
-  Dests: 40, 300
+  Origs: 20:auto
+  Dests: 40:auto, 300:ifthen
 (1 4) 40 IF D = 12 THEN 300
-  Origs: 30
-  Dests: 50, 300
+  Origs: 30:auto
+  Dests: 50:auto, 300:ifthen
 (1 4) 50 IF D = 7 THEN 400
-  Origs: 40
-  Dests: 60, 400
+  Origs: 40:auto
+  Dests: 60:auto, 400:ifthen
 (1 4) 60 IF D = 11 THEN 400
-  Origs: 50
-  Dests: 70, 400
+  Origs: 50:auto
+  Dests: 70:auto, 400:ifthen
 (0 3) 70 LET D9 = D
-  Origs: 60
-  Dests: 100
+  Origs: 60:auto
+  Dests: 100:auto
 (0 2) 100 GOSUB 500
-  Origs: 70, 130
-  Dests: 110, 500
+  Origs: 70:auto, 130:goto
+  Dests: 110:auto, 500:gosub
 (1 4) 110 IF D = D9 THEN 200
-  Origs: 100
-  Dests: 120, 200
+  Origs: 100:auto
+  Dests: 120:auto, 200:ifthen
 (1 4) 120 IF D = 7 THEN 250
-  Origs: 110
-  Dests: 130, 250
+  Origs: 110:auto
+  Dests: 130:auto, 250:ifthen
 (0 3) 130 GOTO 100
-  Origs: 120
-  Dests: 100
+  Origs: 120:auto
+  Dests: 100:goto
 (0 2) 200 PRINT "YOU WIN -- BY MAKING YOUR POINT"
-  Origs: 110
-  Dests: 210
+  Origs: 110:ifthen
+  Dests: 210:auto
 (0 2) 210 GOTO 410
-  Origs: 200
-  Dests: 410
+  Origs: 200:auto
+  Dests: 410:goto
 (0 2) 250 PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
-  Origs: 120
-  Dests: 260
+  Origs: 120:ifthen
+  Dests: 260:auto
 (0 2) 260 GOTO 410
-  Origs: 250
-  Dests: 410
+  Origs: 250:auto
+  Dests: 410:goto
 (0 2) 300 PRINT "YOU LOSE ON FIRST ROLL"
-  Origs: 30, 40
-  Dests: 310
+  Origs: 30:ifthen, 40:ifthen
+  Dests: 310:auto
 (0 2) 310 GOTO 410
-  Origs: 300
-  Dests: 410
+  Origs: 300:auto
+  Dests: 410:goto
 (0 2) 400 PRINT "YOU WIN ON FIRST ROLL"
-  Origs: 50, 60
-  Dests: 410
+  Origs: 50:ifthen, 60:ifthen
+  Dests: 410:auto
 (0 1) 410 NEXT G
-  Origs: 210, 260, 310, 400
-  Dests: 420
+  Origs: 210:goto, 260:goto, 310:goto, 400:auto
+  Dests: 420:auto
 (0 1) 420 STOP
-  Origs: 410
+  Origs: 410:auto
   Dests: 
 (0 0) 499 
   Origs: 
-  Dests: 500
+  Dests: 500:auto
 (0 1) 500 REM ROLL DICE
-  Origs: 20, 100, 499
-  Dests: 510
+  Origs: 20:gosub, 100:gosub, 499:auto
+  Dests: 510:auto
 (0 4) 510 LET D1 = INT(6 * RND(1) + 1)
-  Origs: 500
-  Dests: 520
+  Origs: 500:auto
+  Dests: 520:auto
 (0 4) 520 LET D2 = INT(6 * RND(1) + 1)
-  Origs: 510
-  Dests: 525
+  Origs: 510:auto
+  Dests: 525:auto
 (0 4) 525 PRINT "YOUR ROLL IS "; D1; D2
-  Origs: 520
-  Dests: 530
+  Origs: 520:auto
+  Dests: 530:auto
 (0 4) 530 LET D = D1 + D2
-  Origs: 525
-  Dests: 540
+  Origs: 525:auto
+  Dests: 540:auto
 (0 1) 540 RETURN
-  Origs: 530
+  Origs: 530:auto
   Dests: 
 (0 1) 999 END
   Origs: 

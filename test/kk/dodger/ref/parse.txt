@@ -181,6 +181,7 @@
  Variable:B -> _
  NumericConstant:9
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:520
 510 LET B = 0
  Variable:B -> _
  NumericConstant:0
@@ -215,6 +216,7 @@
  Variable:X -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:620
 590 NEXT R
  Variable:R -> _
 600 LET R = 4
@@ -228,6 +230,7 @@
  Variable:R -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:660
 640 PRINT "OUT   ";
  TextConstant:"OUT   "
  CarriageControl:;
@@ -237,6 +240,7 @@
  Variable:R -> _
  NumericConstant:1
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:690
 670 PRINT "SINGLE   ";
  TextConstant:"SINGLE   "
  CarriageControl:;
@@ -246,6 +250,7 @@
  Variable:R -> _
  NumericConstant:2
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:720
 700 PRINT "WALK   ";
  TextConstant:"WALK   "
  CarriageControl:;
@@ -255,6 +260,7 @@
  Variable:R -> _
  NumericConstant:3
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:750
 730 PRINT "DOUBLE   ";
  TextConstant:"DOUBLE   "
  CarriageControl:;
@@ -270,10 +276,12 @@
  Variable:R -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:860
 790 IF R = 2 THEN 810
  Variable:R -> _
  NumericConstant:2
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:810
 800 LET H = H + 1
  Variable:H -> _
  Variable:H -> _
@@ -313,6 +321,7 @@
  Variable:O -> _
  NumericConstant:2
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:890
 870 LET O = O+1
  Variable:O -> _
  Variable:O -> _
@@ -356,6 +365,7 @@
  Variable:I -> _
  NumericConstant:9
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:410
 950 
 955 REM PRINT RESULTS
  Remark:PRINT RESULTS

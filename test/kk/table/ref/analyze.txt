@@ -21,18 +21,18 @@ Halstead complexity:
 
 (0 4) 10 PRINT " X", "EXP(X)", "LOG(X)"
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (1 4) 20 FOR X = 1 TO 3.5 STEP 0.5
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 6) 30 PRINT X, EXP(X), LOG(X)
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 1) 40 NEXT X
-  Origs: 30
-  Dests: 99
+  Origs: 30:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 40
+  Origs: 40:auto
   Dests: 
 
 Unreachable code:

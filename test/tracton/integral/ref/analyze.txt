@@ -21,156 +21,156 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM THE LIMITS A AND B OF F(X)
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 3) 30 LET C1 = .238619
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 3) 40 LET C2 = C1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 3) 50 LET C3 = .661209
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (0 3) 60 LET C4 = C3
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 3) 70 LET C5 = .932470
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 3) 80 LET C6 = C5
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 3) 90 LET D1 = .467914
-  Origs: 80
-  Dests: 100
+  Origs: 80:auto
+  Dests: 100:auto
 (0 3) 100 LET D2 = .360762
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 3) 110 LET D3 = .171324
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 3) 120 LET J = 0
-  Origs: 110, 490
-  Dests: 130
+  Origs: 110:auto, 490:goto
+  Dests: 130:auto
 (0 2) 130 PRINT "ENTER ENDPOINTS A,B"
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (2 3) 140 INPUT A, B
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 4) 150 LET Y = B - A
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 4) 160 LET Z = B + A
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 6) 170 LET X = ((C1 * Y) + Z) / 2
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 2) 180 GOSUB 500
-  Origs: 170
-  Dests: 190, 500
+  Origs: 170:auto
+  Dests: 190:auto, 500:gosub
 (0 4) 190 LET N = D1 * Q
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 4) 200 LET J = J + N
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 6) 210 LET X = ((C2 * Y) + Z) / 2
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 2) 220 GOSUB 500
-  Origs: 210
-  Dests: 230, 500
+  Origs: 210:auto
+  Dests: 230:auto, 500:gosub
 (0 4) 230 LET N = D1 * Q
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 4) 240 LET J = J + N
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (0 6) 250 LET X = ((C3 * Y) + Z) / 2
-  Origs: 240
-  Dests: 260
+  Origs: 240:auto
+  Dests: 260:auto
 (0 2) 260 GOSUB 500
-  Origs: 250
-  Dests: 270, 500
+  Origs: 250:auto
+  Dests: 270:auto, 500:gosub
 (0 4) 270 LET N = D2 * Q
-  Origs: 260
-  Dests: 280
+  Origs: 260:auto
+  Dests: 280:auto
 (0 4) 280 LET J = J + N
-  Origs: 270
-  Dests: 290
+  Origs: 270:auto
+  Dests: 290:auto
 (0 6) 290 LET X = ((C4 * Y) + Z) / 2
-  Origs: 280
-  Dests: 300
+  Origs: 280:auto
+  Dests: 300:auto
 (0 2) 300 GOSUB 500
-  Origs: 290
-  Dests: 310, 500
+  Origs: 290:auto
+  Dests: 310:auto, 500:gosub
 (0 4) 310 LET N = D2 * Q
-  Origs: 300
-  Dests: 320
+  Origs: 300:auto
+  Dests: 320:auto
 (0 4) 320 LET J = J + N
-  Origs: 310
-  Dests: 330
+  Origs: 310:auto
+  Dests: 330:auto
 (0 6) 330 LET X = ((C5 * Y) + Z) / 2
-  Origs: 320
-  Dests: 340
+  Origs: 320:auto
+  Dests: 340:auto
 (0 2) 340 GOSUB 500
-  Origs: 330
-  Dests: 350, 500
+  Origs: 330:auto
+  Dests: 350:auto, 500:gosub
 (0 4) 350 LET N = D3 * Q
-  Origs: 340
-  Dests: 360
+  Origs: 340:auto
+  Dests: 360:auto
 (0 4) 360 LET J = J + N
-  Origs: 350
-  Dests: 370
+  Origs: 350:auto
+  Dests: 370:auto
 (0 6) 370 LET X = ((C6 * Y) + Z) / 2
-  Origs: 360
-  Dests: 380
+  Origs: 360:auto
+  Dests: 380:auto
 (0 2) 380 GOSUB 500
-  Origs: 370
-  Dests: 390, 500
+  Origs: 370:auto
+  Dests: 390:auto, 500:gosub
 (0 4) 390 LET N = D3 * Y
-  Origs: 380
-  Dests: 400
+  Origs: 380:auto
+  Dests: 400:auto
 (0 4) 400 LET J = J + N
-  Origs: 390
-  Dests: 410
+  Origs: 390:auto
+  Dests: 410:auto
 (0 5) 410 LET G = (Y / 2) * J
-  Origs: 400
-  Dests: 420
+  Origs: 400:auto
+  Dests: 420:auto
 (0 3) 420 PRINT "INTEGRAL = "; G
-  Origs: 410
-  Dests: 430
+  Origs: 410:auto
+  Dests: 430:auto
 (0 2) 430 PRINT
-  Origs: 420
-  Dests: 440
+  Origs: 420:auto
+  Dests: 440:auto
 (0 2) 440 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 430
-  Dests: 450
+  Origs: 430:auto
+  Dests: 450:auto
 (1 2) 450 INPUT L
-  Origs: 440
-  Dests: 460
+  Origs: 440:auto
+  Dests: 460:auto
 (1 4) 460 IF L = 1 THEN 480
-  Origs: 450
-  Dests: 470, 480
+  Origs: 450:auto
+  Dests: 470:auto, 480:ifthen
 (0 1) 470 STOP
-  Origs: 460
+  Origs: 460:auto
   Dests: 
 (0 2) 480 PRINT
-  Origs: 460
-  Dests: 490
+  Origs: 460:ifthen
+  Dests: 490:auto
 (0 3) 490 GOTO 120
-  Origs: 480
-  Dests: 120
+  Origs: 480:auto
+  Dests: 120:goto
 (0 16) 500 LET Q = 13 * X ^ 2 - 6 * X ^ 2 + SIN(X) + 1 / X
-  Origs: 180, 220, 260, 300, 340, 380
-  Dests: 510
+  Origs: 180:gosub, 220:gosub, 260:gosub, 300:gosub, 340:gosub, 380:gosub
+  Dests: 510:auto
 (0 1) 510 RETURN
-  Origs: 500
+  Origs: 500:auto
   Dests: 
 (0 1) 520 END
   Origs: 

@@ -21,18 +21,18 @@ Halstead complexity:
 
 (0 4) 20 ARR LET A = RND1(30)
   Origs: 
-  Dests: 22
+  Dests: 22:auto
 (0 4) 22 ARR LET B = RND1(30, 20)
-  Origs: 20
-  Dests: 24
+  Origs: 20:auto
+  Dests: 24:auto
 (0 4) 24 ARR LET C = RND1(30, 1000)
-  Origs: 22
-  Dests: 30
+  Origs: 22:auto
+  Dests: 30:auto
 (5 4) 30 ARR PLOT A, B, C
-  Origs: 24
-  Dests: 99
+  Origs: 24:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 30
+  Origs: 30:auto
   Dests: 
 
 Unreachable code:

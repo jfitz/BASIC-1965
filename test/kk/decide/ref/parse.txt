@@ -14,6 +14,7 @@
  Variable:K -> _
  NumericConstant:999
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:100
 50    LET T(I,0) = K
  Variable:I -> _
  NumericConstant:0
@@ -56,10 +57,12 @@
  Variable:K -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:200
 130    IF K < 0 THEN 300
  Variable:K -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:300
 140    LET V(I) = T(I,1)
  Variable:I -> _
  Variable:V(_) -> _
@@ -127,6 +130,7 @@
  Variable:V -> _
  Variable:M -> _
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:360
 340       LET M = V
  Variable:M -> _
  Variable:V -> _

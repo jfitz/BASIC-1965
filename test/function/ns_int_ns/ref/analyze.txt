@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 13
+McCabe complexity: 1
+Halstead complexity:
+ length: 10
+ volume: 21.972
+ difficulty: 2.400
+ effort: 52.733
+ language: 3.815
+ intelligence: 9.155
+ time: 0.049
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 20:auto
+(0 3) 20 LET A = 10.5
+  Origs: 10:auto
+  Dests: 30:auto
+(0 4) 30 LET B = INT(A)
+  Origs: 20:auto
+  Dests: 40:auto
+(0 3) 40 PRINT A, B
+  Origs: 30:auto
+  Dests: 90:auto
+(0 1) 90 STOP
+  Origs: 40:auto
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

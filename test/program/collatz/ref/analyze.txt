@@ -21,72 +21,72 @@ Halstead complexity:
 
 (0 1) 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (2 3) 20 READ A, A0
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 4) 30 LET B = A + A0
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 5) 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM"; A; "TO"; B
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 2) 50 PRINT
-  Origs: 40
-  Dests: 100
+  Origs: 40:auto
+  Dests: 100:auto
 (1 3) 100 FOR N = A TO B
-  Origs: 50
-  Dests: 110
+  Origs: 50:auto
+  Dests: 110:auto
 (0 3) 110 LET N0 = N
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 2) 120 GOSUB 400
-  Origs: 110
-  Dests: 130, 400
+  Origs: 110:auto
+  Dests: 130:auto, 400:gosub
 (0 1) 130 NEXT N
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 1) 140 STOP
-  Origs: 130
+  Origs: 130:auto
   Dests: 
 (0 1) 400 REM PRINT INFO FOR ONE NUMBER
-  Origs: 120
-  Dests: 410
+  Origs: 120:gosub
+  Dests: 410:auto
 (0 3) 410 PRINT N0; ":";
-  Origs: 400
-  Dests: 420
+  Origs: 400:auto
+  Dests: 420:auto
 (1 4) 420 IF N0 = 1 THEN 490
-  Origs: 410, 480
-  Dests: 430, 490
+  Origs: 410:auto, 480:goto
+  Dests: 430:auto, 490:ifthen
 (1 5) 430 IF MOD(N0, 2) = 0 THEN 460
-  Origs: 420
-  Dests: 440, 460
+  Origs: 420:auto
+  Dests: 440:auto, 460:ifthen
 (0 5) 440 LET N0 = 3 * N0 + 1
-  Origs: 430
-  Dests: 450
+  Origs: 430:auto
+  Dests: 450:auto
 (0 2) 450 GOTO 470
-  Origs: 440
-  Dests: 470
+  Origs: 440:auto
+  Dests: 470:goto
 (0 4) 460 LET N0 = N0 / 2
-  Origs: 430
-  Dests: 470
+  Origs: 430:ifthen
+  Dests: 470:auto
 (0 2) 470 PRINT N0;
-  Origs: 450, 460
-  Dests: 480
+  Origs: 450:goto, 460:auto
+  Dests: 480:auto
 (0 3) 480 GOTO 420
-  Origs: 470
-  Dests: 420
+  Origs: 470:auto
+  Dests: 420:goto
 (0 2) 490 PRINT
-  Origs: 420
-  Dests: 500
+  Origs: 420:ifthen
+  Dests: 500:auto
 (0 1) 500 RETURN
-  Origs: 490
+  Origs: 490:auto
   Dests: 
 (0 2) 900 DATA 1, 998
   Origs: 
-  Dests: 999
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 900
+  Origs: 900:auto
   Dests: 
 
 Unreachable code:

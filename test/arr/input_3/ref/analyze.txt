@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 11
+McCabe complexity: 1
+Halstead complexity:
+ length: 8
+ volume: 16.636
+ difficulty: 1.000
+ effort: 16.636
+ language: 16.636
+ intelligence: 16.636
+ time: 0.015
+
+(0 1) 10 REM ARRAY ASSIGNMENT
+  Origs: 
+  Dests: 20:auto
+(0 3) 20 LET N = 6
+  Origs: 10:auto
+  Dests: 100:auto
+(0 2) 100 ARR INPUT A(N)
+  Origs: 20:auto
+  Dests: 150:auto
+(0 2) 150 PRINT "ARRAY A"
+  Origs: 100:auto
+  Dests: 160:auto
+(0 2) 160 ARR PRINT A
+  Origs: 150:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 160:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -14,10 +14,12 @@
  Variable:N -> _
  Variable:R -> _
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:270
 70 IF R < 0 THEN 290
  Variable:R -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:290
 80 LET T = N
  Variable:T -> _
  Variable:N -> _
@@ -81,6 +83,7 @@
  Variable:L -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:250
 240 STOP
  
 250 PRINT
@@ -101,10 +104,12 @@
  Variable:T -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:390
 320 IF T = 1 THEN 390
  Variable:T -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:390
 330 LET J = 1
  Variable:J -> _
  NumericConstant:1

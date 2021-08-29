@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 6
+Number of comments: 0
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 16
+McCabe complexity: 2
+Halstead complexity:
+ length: 18
+ volume: 48.745
+ difficulty: 3.667
+ effort: 178.731
+ language: 3.626
+ intelligence: 13.294
+ time: 0.165
+
+(0 3) 20 PRINT "ANGLE", "ARCTAN"
+  Origs: 
+  Dests: 30:auto
+(1 4) 30 FOR I = 0 TO 2 STEP 0.1
+  Origs: 20:auto
+  Dests: 50:auto
+(0 4) 50 LET S = ATN(I)
+  Origs: 30:auto
+  Dests: 60:auto
+(0 3) 60 PRINT I, S
+  Origs: 50:auto
+  Dests: 70:auto
+(0 1) 70 NEXT I
+  Origs: 60:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 70:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

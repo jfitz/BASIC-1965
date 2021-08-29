@@ -1,0 +1,98 @@
+Statistics:
+
+Number of lines: 24
+Number of valid statements: 23
+Number of comments: 1
+Number of executable statements: 22
+
+Complexity:
+
+Comment density: 0.043
+Comprehension effort: 87
+McCabe complexity: 1
+Halstead complexity:
+ length: 97
+ volume: 299.831
+ difficulty: 13.767
+ effort: 4127.675
+ language: 1.582
+ intelligence: 21.780
+ time: 3.822
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 15:auto
+(0 4) 15 PRINT "NUMBERS", "QUOTIENT", "MODULUS"
+  Origs: 10:auto
+  Dests: 20:auto
+(0 3) 20 LET A = 12
+  Origs: 15:auto
+  Dests: 21:auto
+(0 3) 21 LET B = 7
+  Origs: 20:auto
+  Dests: 22:auto
+(0 4) 22 LET Q = A / B
+  Origs: 21:auto
+  Dests: 23:auto
+(0 4) 23 LET M = MOD(A, B)
+  Origs: 22:auto
+  Dests: 24:auto
+(0 5) 24 PRINT A; B, Q, M
+  Origs: 23:auto
+  Dests: 30:auto
+(0 4) 30 LET A = -12
+  Origs: 24:auto
+  Dests: 31:auto
+(0 3) 31 LET B = 7
+  Origs: 30:auto
+  Dests: 32:auto
+(0 4) 32 LET Q = A / B
+  Origs: 31:auto
+  Dests: 33:auto
+(0 4) 33 LET M = MOD(A, B)
+  Origs: 32:auto
+  Dests: 34:auto
+(0 5) 34 PRINT A; B, Q, M
+  Origs: 33:auto
+  Dests: 40:auto
+(0 3) 40 LET A = 12
+  Origs: 34:auto
+  Dests: 41:auto
+(0 4) 41 LET B = -7
+  Origs: 40:auto
+  Dests: 42:auto
+(0 4) 42 LET Q = A / B
+  Origs: 41:auto
+  Dests: 43:auto
+(0 4) 43 LET M = MOD(A, B)
+  Origs: 42:auto
+  Dests: 44:auto
+(0 5) 44 PRINT A; B, Q, M
+  Origs: 43:auto
+  Dests: 50:auto
+(0 4) 50 LET A = -12
+  Origs: 44:auto
+  Dests: 51:auto
+(0 4) 51 LET B = -7
+  Origs: 50:auto
+  Dests: 52:auto
+(0 4) 52 LET Q = A / B
+  Origs: 51:auto
+  Dests: 53:auto
+(0 4) 53 LET M = MOD(A, B)
+  Origs: 52:auto
+  Dests: 54:auto
+(0 5) 54 PRINT A; B, Q, M
+  Origs: 53:auto
+  Dests: 90:auto
+(0 1) 90 STOP
+  Origs: 54:auto
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

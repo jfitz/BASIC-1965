@@ -21,51 +21,51 @@ Halstead complexity:
 
 (0 3) 100 LET P = 3.14159265
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (0 3) 110 LET C = 0
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (1 3) 120 FOR N = 1 TO 1000
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 4) 130 LET Y = RND(Z)
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 4) 140 LET R = RND(Z)
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 8) 150 LET A = P * (R - 1 / 2)
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 5) 160 LET Y1 = Y - COS(A)
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 5) 170 LET Y2 = Y + COS(A)
-  Origs: 160
-  Dests: 172
+  Origs: 160:auto
+  Dests: 172:auto
 (0 4) 172 LET C2 = COS(A)
-  Origs: 170
-  Dests: 180
+  Origs: 170:auto
+  Dests: 180:auto
 (1 6) 180 IF SGN(Y1) = SGN(Y2) THEN 200
-  Origs: 172
-  Dests: 190, 200
+  Origs: 172:auto
+  Dests: 190:auto, 200:ifthen
 (0 4) 190 LET C = C + 1
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 1) 200 NEXT N
-  Origs: 180, 190
-  Dests: 210
+  Origs: 180:ifthen, 190:auto
+  Dests: 210:auto
 (0 4) 210 LET F = C / N
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 3) 220 PRINT "FRACTION OF CROSSINGS = " F
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (0 4) 230 PRINT "ESTIMATE OF PI = " 2 / F
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 1) 240 END
-  Origs: 230
+  Origs: 230:auto
   Dests: 
 
 Unreachable code:

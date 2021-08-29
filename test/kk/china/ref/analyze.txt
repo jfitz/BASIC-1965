@@ -21,51 +21,51 @@ Halstead complexity:
 
 (3 4) 10 READ N, B, P
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (1 3) 20 FOR I = 2 TO N
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (2 3) 30 READ A, M
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (1 4) 40 FOR K = 0 TO M - 1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 6) 50 LET X = B + K * P
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (1 8) 60 IF X - M * INT(X / M) = A THEN 100
-  Origs: 50
-  Dests: 70, 100
+  Origs: 50:auto
+  Dests: 70:auto, 100:ifthen
 (0 1) 70 NEXT K
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 2) 80 PRINT "ERROR"
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 1) 90 STOP
-  Origs: 80
+  Origs: 80:auto
   Dests: 
 (0 4) 100 LET P = P * M
-  Origs: 60
-  Dests: 110
+  Origs: 60:ifthen
+  Dests: 110:auto
 (0 3) 110 LET B = X
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 1) 120 NEXT I
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 5) 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
-  Origs: 120
-  Dests: 900
+  Origs: 120:auto
+  Dests: 900:auto
 (0 2) 900 DATA 4
-  Origs: 130
-  Dests: 910
+  Origs: 130:auto
+  Dests: 910:auto
 (0 2) 910 DATA 2, 3, 19, 100, 4, 31, 25, 101
-  Origs: 900
-  Dests: 999
+  Origs: 900:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 910
+  Origs: 910:auto
   Dests: 
 
 Unreachable code:

@@ -1,0 +1,80 @@
+Statistics:
+
+Number of lines: 18
+Number of valid statements: 17
+Number of comments: 1
+Number of executable statements: 16
+
+Complexity:
+
+Comment density: 0.059
+Comprehension effort: 40
+McCabe complexity: 3
+Halstead complexity:
+ length: 72
+ volume: 190.012
+ difficulty: 11.667
+ effort: 2216.808
+ language: 1.396
+ intelligence: 16.287
+ time: 2.053
+
+(0 1) 10 REM MATRIX ASSIGNMENT FOR THIN MATRICES
+  Origs: 
+  Dests: 20:auto
+(0 2) 20 OPTION BASE 0
+  Origs: 10:auto
+  Dests: 30:auto
+(0 3) 30 DIM H(0, 5), V(5, 0)
+  Origs: 20:auto
+  Dests: 40:auto
+(1 3) 40 FOR I = 0 TO 5
+  Origs: 30:auto
+  Dests: 50:auto
+(0 3) 50 LET H(0, I) = I
+  Origs: 40:auto
+  Dests: 52:auto
+(0 3) 52 LET V(I, 0) = I
+  Origs: 50:auto
+  Dests: 60:auto
+(0 1) 60 NEXT I
+  Origs: 52:auto
+  Dests: 70:auto
+(0 2) 70 MAT PRINT H
+  Origs: 60:auto
+  Dests: 72:auto
+(0 2) 72 MAT PRINT V
+  Origs: 70:auto
+  Dests: 120:auto
+(0 2) 120 OPTION BASE 1
+  Origs: 72:auto
+  Dests: 130:auto
+(0 3) 130 DIM H(1, 5), V(5, 1)
+  Origs: 120:auto
+  Dests: 140:auto
+(1 3) 140 FOR I = 1 TO 5
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 LET H(1, I) = I
+  Origs: 140:auto
+  Dests: 152:auto
+(0 3) 152 LET V(I, 1) = I
+  Origs: 150:auto
+  Dests: 160:auto
+(0 1) 160 NEXT I
+  Origs: 152:auto
+  Dests: 170:auto
+(0 2) 170 MAT PRINT H
+  Origs: 160:auto
+  Dests: 172:auto
+(0 2) 172 MAT PRINT V
+  Origs: 170:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 172:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

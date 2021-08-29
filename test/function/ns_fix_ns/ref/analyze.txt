@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 6
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.167
+Comprehension effort: 19
+McCabe complexity: 2
+Halstead complexity:
+ length: 27
+ volume: 78.040
+ difficulty: 3.250
+ effort: 253.630
+ language: 7.388
+ intelligence: 24.012
+ time: 0.235
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 20:auto
+(1 2) 20 READ A
+  Origs: 10:auto, 50:goto
+  Dests: 30:auto
+(0 4) 30 LET B = FIX(A)
+  Origs: 20:auto
+  Dests: 40:auto
+(0 3) 40 PRINT A, B
+  Origs: 30:auto
+  Dests: 50:auto
+(0 3) 50 GOTO 20
+  Origs: 40:auto
+  Dests: 20:goto
+(0 5) 80 DATA 10.2, 5.5, 1.8, 0, -1.8, -5.5, -10.2
+  Origs: 
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 80:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

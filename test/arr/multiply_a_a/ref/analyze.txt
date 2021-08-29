@@ -1,0 +1,89 @@
+Statistics:
+
+Number of lines: 21
+Number of valid statements: 20
+Number of comments: 1
+Number of executable statements: 17
+
+Complexity:
+
+Comment density: 0.050
+Comprehension effort: 43
+McCabe complexity: 5
+Halstead complexity:
+ length: 64
+ volume: 219.775
+ difficulty: 5.396
+ effort: 1185.870
+ language: 7.549
+ intelligence: 40.731
+ time: 1.098
+
+(0 1) 10 REM ARRAY ASSIGNMENT
+  Origs: 
+  Dests: 20:auto
+(0 3) 20 DIM A(6), B(6)
+  Origs: 10:auto
+  Dests: 30:auto
+(0 2) 30 DATA 1, 2, 3, 4, 5, 6
+  Origs: 20:auto
+  Dests: 40:auto
+(0 2) 40 DATA 7, 8, 9, 10, 11, 12
+  Origs: 30:auto
+  Dests: 100:auto
+(1 3) 100 FOR I = 0 TO 5
+  Origs: 40:auto
+  Dests: 120:auto
+(1 2) 120 READ A(I)
+  Origs: 100:auto
+  Dests: 140:auto
+(0 1) 140 NEXT I
+  Origs: 120:auto
+  Dests: 150:auto
+(0 2) 150 PRINT "ARRAY A"
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 ARR PRINT A;
+  Origs: 150:auto
+  Dests: 162:auto
+(0 2) 162 PRINT
+  Origs: 160:auto
+  Dests: 200:auto
+(1 3) 200 FOR I = 0 TO 5
+  Origs: 162:auto
+  Dests: 220:auto
+(1 2) 220 READ B(I)
+  Origs: 200:auto
+  Dests: 240:auto
+(0 1) 240 NEXT I
+  Origs: 220:auto
+  Dests: 250:auto
+(0 2) 250 PRINT "ARRAY B"
+  Origs: 240:auto
+  Dests: 260:auto
+(0 2) 260 ARR PRINT B;
+  Origs: 250:auto
+  Dests: 262:auto
+(0 2) 262 PRINT
+  Origs: 260:auto
+  Dests: 300:auto
+(0 4) 300 ARR C = A * B
+  Origs: 262:auto
+  Dests: 310:auto
+(0 2) 310 PRINT "ARRAY C"
+  Origs: 300:auto
+  Dests: 320:auto
+(0 2) 320 ARR PRINT C;
+  Origs: 310:auto
+  Dests: 322:auto
+(0 2) 322 PRINT
+  Origs: 320:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 322:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -21,54 +21,54 @@ Halstead complexity:
 
 (0 3) 100 DIM A(2, 3), B(3, 4)
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (2 3) 110 MAT READ A, B
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 4) 120 MAT P = A * B
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 4) 130 MAT T = TRN(A)
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 0) 140 
-  Origs: 130
-  Dests: 200
+  Origs: 130:auto
+  Dests: 200:auto
 (0 2) 200 PRINT "FIRST MATRIX"
-  Origs: 140
-  Dests: 210
+  Origs: 140:auto
+  Dests: 210:auto
 (0 2) 210 MAT PRINT A
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 2) 220 PRINT "SECOND MATRIX"
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (0 2) 230 MAT PRINT B
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 2) 240 PRINT "PRODUCT"
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (0 2) 250 MAT PRINT P
-  Origs: 240
-  Dests: 260
+  Origs: 240:auto
+  Dests: 260:auto
 (0 2) 260 PRINT "TRANSPOSE OF FIRST MATRIX"
-  Origs: 250
-  Dests: 270
+  Origs: 250:auto
+  Dests: 270:auto
 (0 2) 270 MAT PRINT T
-  Origs: 260
-  Dests: 280
+  Origs: 260:auto
+  Dests: 280:auto
 (0 0) 280 
-  Origs: 270
-  Dests: 900
+  Origs: 270:auto
+  Dests: 900:auto
 (0 4) 900 DATA 1, 4, -2, 2, -1, 3
-  Origs: 280
-  Dests: 910
+  Origs: 280:auto
+  Dests: 910:auto
 (0 6) 910 DATA 1, -3, 4, -1, 6, -1, 3, -5, 7, 0, 2, 0
-  Origs: 900
-  Dests: 999
+  Origs: 900:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 910
+  Origs: 910:auto
   Dests: 
 
 Unreachable code:

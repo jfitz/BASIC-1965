@@ -1,0 +1,50 @@
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 8
+Number of comments: 0
+Number of executable statements: 7
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 17
+McCabe complexity: 3
+Halstead complexity:
+ length: 28
+ volume: 75.825
+ difficulty: 5.667
+ effort: 429.677
+ language: 2.361
+ intelligence: 13.381
+ time: 0.398
+
+(0 2) 10 DIM A(6, 5)
+  Origs: 
+  Dests: 20:auto
+(1 3) 20 FOR I = 1 TO 6
+  Origs: 10:auto
+  Dests: 30:auto
+(1 3) 30 FOR J = 1 TO 5
+  Origs: 20:auto
+  Dests: 40:auto
+(0 4) 40 LET A(I, J) = I + J
+  Origs: 30:auto
+  Dests: 50:auto
+(0 1) 50 NEXT J
+  Origs: 40:auto
+  Dests: 60:auto
+(0 1) 60 NEXT I
+  Origs: 50:auto
+  Dests: 70:auto
+(0 2) 70 MAT WRITE A
+  Origs: 60:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 70:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -27,6 +27,7 @@
  Variable:Y -> _
  NumericConstant:1752
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:150
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
  TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
  CarriageControl:NL
@@ -136,8 +137,10 @@
  Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 300 IF L$ = "YES" THEN 340
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:340
 310 IF L$ = "NO" THEN 360
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:360
 320 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
  CarriageControl:NL

@@ -1,0 +1,65 @@
+Statistics:
+
+Number of lines: 13
+Number of valid statements: 12
+Number of comments: 1
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.083
+Comprehension effort: 37
+McCabe complexity: 1
+Halstead complexity:
+ length: 34
+ volume: 105.095
+ difficulty: 2.941
+ effort: 309.104
+ language: 12.149
+ intelligence: 35.732
+ time: 0.286
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 15:auto
+(0 3) 15 PRINT "NUMBER", "SIGN"
+  Origs: 10:auto
+  Dests: 20:auto
+(0 3) 20 LET A = 10.5
+  Origs: 15:auto
+  Dests: 22:auto
+(0 4) 22 LET A1 = SGN(A)
+  Origs: 20:auto
+  Dests: 25:auto
+(0 3) 25 PRINT A, A1
+  Origs: 22:auto
+  Dests: 30:auto
+(0 4) 30 LET B = -20
+  Origs: 25:auto
+  Dests: 32:auto
+(0 4) 32 LET B1 = SGN(B)
+  Origs: 30:auto
+  Dests: 35:auto
+(0 3) 35 PRINT B, B1
+  Origs: 32:auto
+  Dests: 40:auto
+(0 3) 40 LET C = 0
+  Origs: 35:auto
+  Dests: 42:auto
+(0 4) 42 LET C1 = SGN(C)
+  Origs: 40:auto
+  Dests: 45:auto
+(0 3) 45 PRINT C, C1
+  Origs: 42:auto
+  Dests: 90:auto
+(0 1) 90 STOP
+  Origs: 45:auto
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

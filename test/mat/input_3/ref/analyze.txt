@@ -1,0 +1,50 @@
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 7
+Number of comments: 1
+Number of executable statements: 6
+
+Complexity:
+
+Comment density: 0.143
+Comprehension effort: 16
+McCabe complexity: 1
+Halstead complexity:
+ length: 13
+ volume: 33.344
+ difficulty: 1.500
+ effort: 50.017
+ language: 14.820
+ intelligence: 22.230
+ time: 0.046
+
+(0 1) 10 REM MATRIX ASSIGNMENT
+  Origs: 
+  Dests: 20:auto
+(0 2) 20 OPTION BASE 0
+  Origs: 10:auto
+  Dests: 30:auto
+(0 3) 30 LET R = 6
+  Origs: 20:auto
+  Dests: 40:auto
+(0 3) 40 LET C = 2
+  Origs: 30:auto
+  Dests: 100:auto
+(0 2) 100 MAT INPUT A(R, C)
+  Origs: 40:auto
+  Dests: 150:auto
+(0 2) 150 PRINT "MATRIX A"
+  Origs: 100:auto
+  Dests: 160:auto
+(0 2) 160 MAT PRINT A
+  Origs: 150:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 160:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -1,0 +1,59 @@
+Statistics:
+
+Number of lines: 11
+Number of valid statements: 10
+Number of comments: 1
+Number of executable statements: 7
+
+Complexity:
+
+Comment density: 0.100
+Comprehension effort: 20
+McCabe complexity: 3
+Halstead complexity:
+ length: 41
+ volume: 130.300
+ difficulty: 1.714
+ effort: 223.372
+ language: 44.338
+ intelligence: 76.008
+ time: 0.207
+
+(0 1) 10 REM ARRAY ASSIGNMENT
+  Origs: 
+  Dests: 20:auto
+(0 2) 20 DIM A(6)
+  Origs: 10:auto
+  Dests: 30:auto
+(0 2) 30 DATA 0, 1, 2, 3, 4, 5, 6
+  Origs: 20:auto
+  Dests: 40:auto
+(0 2) 40 DATA 7, 8, 9, 10, 11, 12, 13, 14
+  Origs: 30:auto
+  Dests: 100:auto
+(1 2) 100 ARR READ A
+  Origs: 40:auto
+  Dests: 150:auto
+(0 2) 150 PRINT "ARRAY A"
+  Origs: 100:auto
+  Dests: 160:auto
+(0 2) 160 ARR PRINT A
+  Origs: 150:auto
+  Dests: 200:auto
+(1 2) 200 ARR READ B(6)
+  Origs: 160:auto
+  Dests: 250:auto
+(0 2) 250 PRINT "ARRAY B"
+  Origs: 200:auto
+  Dests: 260:auto
+(0 2) 260 ARR PRINT B
+  Origs: 250:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 260:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

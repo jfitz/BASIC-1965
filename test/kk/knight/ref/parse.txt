@@ -80,6 +80,7 @@
  Variable:I1 -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:480
 350    IF ABS(I1 - 4.5) > 4 THEN 480
  Variable:I1 -> _
  NumericConstant:4.5
@@ -87,6 +88,7 @@
  FunctionAbs:ABS(_) -> _
  NumericConstant:4
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:480
 360    LET D1 = 3 - ABS(I1 - I)
  Variable:D1 -> _
  NumericConstant:3
@@ -108,12 +110,14 @@
  FunctionAbs:ABS(_) -> _
  NumericConstant:4
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:470
 390       IF B(I1,J1) < 0 THEN 470
  Variable:I1 -> _
  Variable:J1 -> _
  Variable:B(_,_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:470
 400       LET C = C + 1
  Variable:C -> _
  Variable:C -> _
@@ -124,6 +128,7 @@
  Variable:C -> _
  Variable:C1 -> _
  BinaryOperatorNotEqual:<>(_,_) -> ?
+ LineNumber:470
 420       LET I = I1
  Variable:I -> _
  Variable:I1 -> _
@@ -155,6 +160,7 @@
  Variable:C -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:600
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
  Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
 510 LET C1 = INT(RND(Z)*C + 1)
@@ -188,6 +194,7 @@
  Variable:Z0 -> _
  NumericConstant:40
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:200
 630 REMARK WE GO FOR ANOTHER TRIAL
  Remark:WE GO FOR ANOTHER TRIAL
 880

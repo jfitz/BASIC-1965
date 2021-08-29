@@ -21,54 +21,54 @@ Halstead complexity:
 
 (0 3) 100 DIM A(6, 6), B(2, 3)
   Origs: 
-  Dests: 120
+  Dests: 120:auto
 (2 3) 120 MAT READ A, B
-  Origs: 100
-  Dests: 130
+  Origs: 100:auto
+  Dests: 130:auto
 (0 2) 130 PRINT "EXAMPLE 1"
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 2) 140 PRINT
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 3) 150 MAT PRINT A, B
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (2 3) 160 READ P, Q
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (1 2) 170 MAT READ A(P, Q)
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 2) 180 PRINT "EXAMPLE 2"
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 2) 190 PRINT
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 2) 200 MAT PRINT A
-  Origs: 190
-  Dests: 900
+  Origs: 190:auto
+  Dests: 900:auto
 (0 2) 900 DATA 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1, 6, 5, 4, 3, 2, 1
-  Origs: 200
-  Dests: 901
+  Origs: 200:auto
+  Dests: 901:auto
 (0 2) 901 DATA 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5
-  Origs: 900
-  Dests: 910
+  Origs: 900:auto
+  Dests: 910:auto
 (0 2) 910 DATA 1, 2, 3, 4, 5, 6
-  Origs: 901
-  Dests: 920
+  Origs: 901:auto
+  Dests: 920:auto
 (0 2) 920 DATA 3, 4
-  Origs: 910
-  Dests: 930
+  Origs: 910:auto
+  Dests: 930:auto
 (0 2) 930 DATA 1, 2, 3, 4, 5, 6
-  Origs: 920
-  Dests: 940
+  Origs: 920:auto
+  Dests: 940:auto
 (0 2) 940 DATA 7, 8, 9, 10, 11, 12
-  Origs: 930
-  Dests: 999
+  Origs: 930:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 940
+  Origs: 940:auto
   Dests: 
 
 Unreachable code:

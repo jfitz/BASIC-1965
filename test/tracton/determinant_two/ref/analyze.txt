@@ -21,85 +21,85 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE DETERMINANT AND
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM INVERSE OF A 2 X 2 MATRIX
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 2) 30 PRINT "ENTER A11, A12";
-  Origs: 20, 240, 270
-  Dests: 40
+  Origs: 20:auto, 240:ifthen, 270:goto
+  Dests: 40:auto
 (2 3) 40 INPUT A, B
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 2) 50 PRINT "A21, A22";
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (2 3) 60 INPUT C, D
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 7) 70 LET E = (D * A) - (B * C)
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 4) 80 LET F = D / E
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 5) 90 LET G = -B / E
-  Origs: 80
-  Dests: 100
+  Origs: 80:auto
+  Dests: 100:auto
 (0 5) 100 LET H = -C / E
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 4) 110 LET I = A / E
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 2) 120 PRINT "ORIGINAL MATRIX"
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 3) 130 PRINT A, B
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 3) 140 PRINT C, D
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 2) 150 PRINT
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 2) 160 PRINT "INVERSE OF MATRIX"
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 3) 170 PRINT F, G
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 3) 180 PRINT H, I
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 2) 190 PRINT
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 3) 200 PRINT "DETERMINANT = "; E
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 2) 210 PRINT
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 2) 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (1 2) 230 INPUT L
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (1 5) 240 IF L = 1 THEN 30
-  Origs: 230
-  Dests: 30, 250
+  Origs: 230:auto
+  Dests: 30:ifthen, 250:auto
 (0 1) 250 STOP
-  Origs: 240
+  Origs: 240:auto
   Dests: 
 (0 2) 260 PRINT
   Origs: 
-  Dests: 270
+  Dests: 270:auto
 (0 3) 270 GOTO 30
-  Origs: 260
-  Dests: 30
+  Origs: 260:auto
+  Dests: 30:goto
 (0 1) 280 END
   Origs: 
   Dests: 

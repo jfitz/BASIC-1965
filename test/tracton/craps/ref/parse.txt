@@ -10,8 +10,10 @@
  Syntax error: "R$" Token 'InvalidToken:$' is not a value or operator
 50 IF R$ = "RULES" THEN 90
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:90
 60 IF R$ = "GO" THEN 140
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:140
 70 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
  CarriageControl:NL
@@ -64,14 +66,17 @@
  Variable:J -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:260
 220 IF D3 = D4 THEN 420
  Variable:D3 -> _
  Variable:D4 -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:420
 230 IF D3 = 7 THEN 440
  Variable:D3 -> _
  NumericConstant:7
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:440
 240 PRINT "YOU THROW A ";D3
  TextConstant:"YOU THROW A "
  CarriageControl:;
@@ -83,22 +88,27 @@
  Variable:D3 -> _
  NumericConstant:7
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:320
 270 IF D3 = 2 THEN 340
  Variable:D3 -> _
  NumericConstant:2
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:340
 280 IF D3 = 3 THEN 340
  Variable:D3 -> _
  NumericConstant:3
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:340
 290 IF D3 = 12 THEN 340
  Variable:D3 -> _
  NumericConstant:12
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:340
 300 IF D3 = 11 THEN 320
  Variable:D3 -> _
  NumericConstant:11
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:320
 310 LET D4 = D3
  Variable:D4 -> _
  Variable:D3 -> _
@@ -130,6 +140,7 @@
  Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 380 IF L$ = "Y" THEN 400
  Token 'InvalidToken:$' is not a value or operator
+ LineNumber:400
 390 STOP
  
 400 PRINT

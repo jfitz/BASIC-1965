@@ -21,21 +21,21 @@ Halstead complexity:
 
 (0 1) 10 REM SYNTAX ERROR
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (1 3) 20 FOR I = 1 TO 5
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (1 2) 30 READ N
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 1) 40 NEXT I
-  Origs: 30
-  Dests: 80
+  Origs: 30:auto
+  Dests: 80:auto
 (0 1) 80 DATA 1, 2, 3, STOP, 5
-  Origs: 40
-  Dests: 99
+  Origs: 40:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 80
+  Origs: 80:auto
   Dests: 
 
 Unreachable code:

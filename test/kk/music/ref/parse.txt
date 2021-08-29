@@ -145,6 +145,7 @@
  Variable:N -> _
  Variable:N9 -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:6000
 500 REM  TEST CHORDS.
  Remark: TEST CHORDS.
 505 LET I1 = 1
@@ -215,6 +216,7 @@
  FunctionAbs:ABS(_) -> _
  NumericConstant:5
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:610
 590 LET R = D(3-J)
  Variable:R -> _
  NumericConstant:3
@@ -234,6 +236,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:650
 630 LET R = D(1)
  Variable:R -> _
  NumericConstant:1
@@ -273,6 +276,7 @@
  UserFunction:FNC(_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:750
 730 LET B(J) = R+K
  Variable:J -> _
  Variable:B(_) -> _
@@ -292,6 +296,7 @@
  Variable:J -> _
  NumericConstant:3
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:4000
 770
 800 FOR L = 0 TO 6
  control: Variable:L -> _
@@ -367,6 +372,7 @@
  FunctionAbs:ABS(_) -> _
  NumericConstant:5
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:1260
 1050 IF B > 17-4*V THEN 1260
  Variable:B -> _
  NumericConstant:17
@@ -375,6 +381,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:1260
 1060 IF B < 5-4*V THEN 1260
  Variable:B -> _
  NumericConstant:5
@@ -383,6 +390,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:1260
 1070 LET S(V,N) = B
  Variable:V -> _
  Variable:N -> _
@@ -405,6 +413,7 @@
  Variable:N -> _
  Variable:S(_,_) -> _
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:1260
 1090 NEXT V
  Variable:V -> _
 1095
@@ -414,6 +423,7 @@
  Variable:C1 -> _
  Variable:C2 -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1200
 1105 FOR V1 = 1 TO 4
  control: Variable:V1 -> _
  start:   ["NumericConstant:1"]
@@ -441,11 +451,13 @@
  UserFunction:FNC(_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1145
 1130 IF FNC(D) = 4 THEN 1145
  Variable:D -> _
  UserFunction:FNC(_) -> _
  NumericConstant:4
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1145
 1140 GOTO 1160
  LineNumber:1160
 1145 LET S1 = S(V1,N)-S(V1,N+1)
@@ -476,6 +488,7 @@
  Variable:S1 -> _
  Variable:S2 -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:1260
 1160 NEXT V2
  Variable:V2 -> _
 1165 NEXT V1
@@ -544,6 +557,7 @@
  Variable:M1 -> _
  Variable:M -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:1590
 1550 LET M = M1
  Variable:M -> _
  Variable:M1 -> _
@@ -558,6 +572,7 @@
  Variable:M -> _
  NumericConstant:999
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:4000
 1610 LET S(2,N) = W(2,L9)
  NumericConstant:2
  Variable:N -> _
@@ -593,6 +608,7 @@
  Variable:N -> _
  Variable:N9 -> _
  BinaryOperatorNotEqual:<>(_,_) -> ?
+ LineNumber:5100
 5020 PRINT "STUCK"
  TextConstant:"STUCK"
  CarriageControl:NL
@@ -622,6 +638,7 @@
  Variable:I -> _
  Variable:P(_,_) -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:5200
 5140 NEXT I
  Variable:I -> _
 5200 LET I1 = I+1

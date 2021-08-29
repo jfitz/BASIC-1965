@@ -1437,7 +1437,7 @@ class GosubStatement < AbstractStatement
   end
 
   def gotos
-    [@destination]
+    [TransferRef.new(@destination, :gosub)]
   end
 
   def okay(program, console_io, line_number_index)
@@ -1506,7 +1506,7 @@ class GotoStatement < AbstractStatement
   end
 
   def gotos
-    [@destination]
+    [TransferRef.new(@destination, :goto)]
   end
 
   def okay(program, console_io, line_number_index)
@@ -1580,12 +1580,15 @@ class AbstractIfStatement < AbstractStatement
 
   def dump
     lines = []
+
     lines += @expression.dump unless @expression.nil?
+    lines << @destination.dump unless @destination.nil?
+
     lines
   end
 
   def gotos
-    [@destination]
+    [TransferRef.new(@destination, :ifthen)]
   end
 
   def okay(program, console_io, line_number_index)

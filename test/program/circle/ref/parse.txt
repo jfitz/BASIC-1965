@@ -160,10 +160,12 @@
  FunctionAbs:ABS(_) -> _
  Variable:R9 -> _
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:300
 241 IF R0<R1 THEN 245
  Variable:R0 -> _
  Variable:R1 -> _
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:245
 242 LET B1=B1+Z
  Variable:B1 -> _
  Variable:B1 -> _
@@ -188,6 +190,7 @@
  Variable:Z -> _
  Variable:Z9 -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:220
 248 PRINT "CANNOT RESOLVE POINT B"
  TextConstant:"CANNOT RESOLVE POINT B"
  CarriageControl:NL

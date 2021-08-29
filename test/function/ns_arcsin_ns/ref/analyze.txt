@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 6
+Number of comments: 1
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.167
+Comprehension effort: 18
+McCabe complexity: 2
+Halstead complexity:
+ length: 19
+ volume: 52.679
+ difficulty: 4.278
+ effort: 225.350
+ language: 2.879
+ intelligence: 12.315
+ time: 0.209
+
+(0 1) 10 REM TEST PROGRAM FOR ARCSIN()
+  Origs: 
+  Dests: 20:auto
+(0 3) 20 PRINT "SINE", "ANGLE"
+  Origs: 10:auto
+  Dests: 30:auto
+(1 5) 30 FOR I = -1 TO 1 STEP 0.1
+  Origs: 20:auto
+  Dests: 50:auto
+(0 4) 50 LET A = ARCSIN(I)
+  Origs: 30:auto
+  Dests: 60:auto
+(0 3) 60 PRINT I, A
+  Origs: 50:auto
+  Dests: 70:auto
+(0 1) 70 NEXT I
+  Origs: 60:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 70:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

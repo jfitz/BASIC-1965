@@ -21,58 +21,58 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE CROSS PRODUCT
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM OF TWO VECTORS
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 2) 30 PRINT "ENTER 1ST VECTOR (A1,A2,A3)"
-  Origs: 20, 180
-  Dests: 40
+  Origs: 20:auto, 180:goto
+  Dests: 40:auto
 (3 4) 40 INPUT A1, A2, A3
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 2) 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (3 4) 60 INPUT B1, B2, B3
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 7) 70 LET X = (A2 * B3) - (A3 * B2)
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 7) 80 LET Y = (A3 * B1) - (A1 * B3)
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 7) 90 LET Z = (A1 * B2) - (A2 * B1)
-  Origs: 80
-  Dests: 100
+  Origs: 80:auto
+  Dests: 100:auto
 (0 2) 100 PRINT "VECTOR CROSS PRODUCT"
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 7) 110 PRINT "X = "; X, "Y = "; Y, "Z = "; Z
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 2) 120 PRINT "++++++++++++++++++++"
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 2) 130 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (1 2) 140 INPUT L
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (1 4) 150 IF L = 1 THEN 170
-  Origs: 140
-  Dests: 160, 170
+  Origs: 140:auto
+  Dests: 160:auto, 170:ifthen
 (0 1) 160 STOP
-  Origs: 150
+  Origs: 150:auto
   Dests: 
 (0 2) 170 PRINT
-  Origs: 150
-  Dests: 180
+  Origs: 150:ifthen
+  Dests: 180:auto
 (0 3) 180 GOTO 30
-  Origs: 170
-  Dests: 30
+  Origs: 170:auto
+  Dests: 30:goto
 (0 1) 190 END
   Origs: 
   Dests: 

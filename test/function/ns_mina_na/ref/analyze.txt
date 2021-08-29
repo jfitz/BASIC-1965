@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 3
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 14
+McCabe complexity: 2
+Halstead complexity:
+ length: 26
+ volume: 76.555
+ difficulty: 3.000
+ effort: 229.666
+ language: 8.506
+ intelligence: 25.518
+ time: 0.213
+
+(0 1) 10 REM TEST THE MINA() FUNCTION
+  Origs: 
+  Dests: 20:auto
+(1 2) 20 ARR READ A(6)
+  Origs: 10:auto
+  Dests: 30:auto
+(0 4) 30 LET B = MINA(A)
+  Origs: 20:auto
+  Dests: 40:auto
+(0 3) 40 PRINT "MINIMUM IS "; B
+  Origs: 30:auto
+  Dests: 90:auto
+(0 3) 90 DATA 10.2, 5.5, 1.8, 22, 17, -19, 7
+  Origs: 40:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 90:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

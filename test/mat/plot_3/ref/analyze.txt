@@ -21,21 +21,21 @@ Halstead complexity:
 
 (0 1) 10 REM TEST MAT PLOT
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 4) 20 MAT LET A = RND2(6, 30)
-  Origs: 10
-  Dests: 22
+  Origs: 10:auto
+  Dests: 22:auto
 (0 4) 22 MAT LET B = RND2(6, 30, 20)
-  Origs: 20
-  Dests: 24
+  Origs: 20:auto
+  Dests: 24:auto
 (0 4) 24 MAT LET C = RND2(6, 30, 1000)
-  Origs: 22
-  Dests: 30
+  Origs: 22:auto
+  Dests: 30:auto
 (5 4) 30 MAT PLOT A, B, C
-  Origs: 24
-  Dests: 99
+  Origs: 24:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 30
+  Origs: 30:auto
   Dests: 
 
 Unreachable code:

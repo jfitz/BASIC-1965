@@ -21,264 +21,264 @@ Halstead complexity:
 
 (0 1) 100 REM THIS PROGRAM PLAYS THREE-PILE NIM, WITH RANDOM NUMBERS
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (0 1) 110 REM IN EACH PILE. PLAYER WHO CLEARS BOARD WINS.
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 0) 120 
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 1) 130 REM INITIALIZE
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (1 3) 140 FOR P = 1 TO 3
-  Origs: 130, 350
-  Dests: 150
+  Origs: 130:auto, 350:goto
+  Dests: 150:auto
 (0 5) 150 LET N(P) = INT(10 * RND(0)) + 6
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 1) 160 NEXT P
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 2) 170 PRINT "INITIAL CONFIGURATION:"
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 2) 180 PRINT
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 2) 190 GOSUB 900
-  Origs: 180
-  Dests: 200, 900
+  Origs: 180:auto
+  Dests: 200:auto, 900:gosub
 (0 0) 200 
-  Origs: 190, 290
-  Dests: 210
+  Origs: 190:auto, 290:goto
+  Dests: 210:auto
 (0 1) 210 REM OPPONENT'S MOVE
-  Origs: 200, 880
-  Dests: 220
+  Origs: 200:auto, 880:goto
+  Dests: 220:auto
 (0 2) 220 PRINT "PILE, NUMBER TAKEN";
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (2 3) 230 INPUT P, N
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 4) 240 LET N(P) = N(P) - N
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (1 4) 250 IF N(P) >= 0 THEN 300
-  Origs: 240
-  Dests: 260, 300
+  Origs: 240:auto
+  Dests: 260:auto, 300:ifthen
 (0 2) 260 PRINT "ILLEGAL MOVE"
-  Origs: 250
-  Dests: 270
+  Origs: 250:auto
+  Dests: 270:auto
 (0 4) 270 LET N(P) = N(P) + N
-  Origs: 260
-  Dests: 280
+  Origs: 260:auto
+  Dests: 280:auto
 (0 2) 280 PRINT
-  Origs: 270
-  Dests: 290
+  Origs: 270:auto
+  Dests: 290:auto
 (0 3) 290 GOTO 200
-  Origs: 280
-  Dests: 200
+  Origs: 280:auto
+  Dests: 200:goto
 (1 6) 300 IF N(1) + N(2) + N(3) > 0 THEN 370
-  Origs: 250
-  Dests: 310, 370
+  Origs: 250:ifthen
+  Dests: 310:auto, 370:ifthen
 (0 2) 310 PRINT
-  Origs: 300
-  Dests: 320
+  Origs: 300:auto
+  Dests: 320:auto
 (0 2) 320 PRINT "YOU WIN *****"
-  Origs: 310
-  Dests: 330
+  Origs: 310:auto
+  Dests: 330:auto
 (0 2) 330 PRINT
-  Origs: 320, 840
-  Dests: 340
+  Origs: 320:auto, 840:goto
+  Dests: 340:auto
 (0 2) 340 PRINT
-  Origs: 330
-  Dests: 350
+  Origs: 330:auto
+  Dests: 350:auto
 (0 3) 350 GOTO 140
-  Origs: 340
-  Dests: 140
+  Origs: 340:auto
+  Dests: 140:goto
 (0 0) 360 
   Origs: 
-  Dests: 370
+  Dests: 370:auto
 (0 1) 370 REM SET UP BIT-PATTERNS
-  Origs: 300, 360
-  Dests: 380
+  Origs: 300:ifthen, 360:auto
+  Dests: 380:auto
 (1 3) 380 FOR P = 1 TO 3
-  Origs: 370
-  Dests: 390
+  Origs: 370:auto
+  Dests: 390:auto
 (0 3) 390 LET X = N(P)
-  Origs: 380
-  Dests: 400
+  Origs: 380:auto
+  Dests: 400:auto
 (1 5) 400 FOR J = 4 TO 1 STEP -1
-  Origs: 390
-  Dests: 410
+  Origs: 390:auto
+  Dests: 410:auto
 (0 4) 410 LET Y = INT(X / 2)
-  Origs: 400
-  Dests: 420
+  Origs: 400:auto
+  Dests: 420:auto
 (0 6) 420 LET B(P, J) = X - 2 * Y
-  Origs: 410
-  Dests: 430
+  Origs: 410:auto
+  Dests: 430:auto
 (0 3) 430 LET X = Y
-  Origs: 420
-  Dests: 440
+  Origs: 420:auto
+  Dests: 440:auto
 (0 1) 440 NEXT J
-  Origs: 430
-  Dests: 450
+  Origs: 430:auto
+  Dests: 450:auto
 (0 1) 450 NEXT P
-  Origs: 440
-  Dests: 460
+  Origs: 440:auto
+  Dests: 460:auto
 (0 0) 460 
-  Origs: 450
-  Dests: 470
+  Origs: 450:auto
+  Dests: 470:auto
 (0 1) 470 REM FIND COLUMN PARITIES
-  Origs: 460
-  Dests: 480
+  Origs: 460:auto
+  Dests: 480:auto
 (1 3) 480 FOR J = 1 TO 4
-  Origs: 470
-  Dests: 490
+  Origs: 470:auto
+  Dests: 490:auto
 (0 5) 490 LET S(J) = B(1, J) + B(2, J) + B(3, J)
-  Origs: 480
-  Dests: 500
+  Origs: 480:auto
+  Dests: 500:auto
 (0 7) 500 LET S(J) = S(J) - 2 * INT(S(J) / 2)
-  Origs: 490
-  Dests: 510
+  Origs: 490:auto
+  Dests: 510:auto
 (0 1) 510 NEXT J
-  Origs: 500
-  Dests: 520
+  Origs: 500:auto
+  Dests: 520:auto
 (0 0) 520 
-  Origs: 510
-  Dests: 530
+  Origs: 510:auto
+  Dests: 530:auto
 (0 1) 530 REM IF ALL EVEN, MAKE RANDOM MOVE
-  Origs: 520
-  Dests: 540
+  Origs: 520:auto
+  Dests: 540:auto
 (1 7) 540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
-  Origs: 530
-  Dests: 550, 610
+  Origs: 530:auto
+  Dests: 550:auto, 610:ifthen
 (1 3) 550 FOR P = 1 TO 3
-  Origs: 540
-  Dests: 560
+  Origs: 540:auto
+  Dests: 560:auto
 (1 4) 560 IF N(P) = 0 THEN 590
-  Origs: 550
-  Dests: 570, 590
+  Origs: 550:auto
+  Dests: 570:auto, 590:ifthen
 (0 5) 570 LET N = INT(N(P) * RND(0)) + 1
-  Origs: 560
-  Dests: 580
+  Origs: 560:auto
+  Dests: 580:auto
 (0 2) 580 GOTO 770
-  Origs: 570
-  Dests: 770
+  Origs: 570:auto
+  Dests: 770:goto
 (0 1) 590 NEXT P
-  Origs: 560
-  Dests: 600
+  Origs: 560:ifthen
+  Dests: 600:auto
 (0 0) 600 
-  Origs: 590
-  Dests: 610
+  Origs: 590:auto
+  Dests: 610:auto
 (0 1) 610 REM MAKE OPTIMAL MOVE
-  Origs: 540, 600
-  Dests: 620
+  Origs: 540:ifthen, 600:auto
+  Dests: 620:auto
 (1 3) 620 FOR J = 1 TO 4
-  Origs: 610
-  Dests: 630
+  Origs: 610:auto
+  Dests: 630:auto
 (1 4) 630 IF S(J) > 0 THEN 650
-  Origs: 620
-  Dests: 640, 650
+  Origs: 620:auto
+  Dests: 640:auto, 650:ifthen
 (0 1) 640 NEXT J
-  Origs: 630
-  Dests: 650
+  Origs: 630:auto
+  Dests: 650:auto
 (1 3) 650 FOR P = 1 TO 3
-  Origs: 630, 640
-  Dests: 660
+  Origs: 630:ifthen, 640:auto
+  Dests: 660:auto
 (1 4) 660 IF B(P, J) = 1 THEN 680
-  Origs: 650
-  Dests: 670, 680
+  Origs: 650:auto
+  Dests: 670:auto, 680:ifthen
 (0 1) 670 NEXT P
-  Origs: 660
-  Dests: 680
+  Origs: 660:auto
+  Dests: 680:auto
 (0 3) 680 LET N = 0
-  Origs: 660, 670
-  Dests: 690
+  Origs: 660:ifthen, 670:auto
+  Dests: 690:auto
 (1 3) 690 FOR J = J TO 4
-  Origs: 680
-  Dests: 700
+  Origs: 680:auto
+  Dests: 700:auto
 (1 4) 700 IF S(J) = 0 THEN 750
-  Origs: 690
-  Dests: 710, 750
+  Origs: 690:auto
+  Dests: 710:auto, 750:ifthen
 (1 4) 710 IF B(P, J) = 0 THEN 740
-  Origs: 700
-  Dests: 720, 740
+  Origs: 700:auto
+  Dests: 720:auto, 740:ifthen
 (0 8) 720 LET N = N + 2 ^ (4 - J)
-  Origs: 710
-  Dests: 730
+  Origs: 710:auto
+  Dests: 730:auto
 (0 2) 730 GOTO 750
-  Origs: 720
-  Dests: 750
+  Origs: 720:auto
+  Dests: 750:goto
 (0 8) 740 LET N = N - 2 ^ (4 - J)
-  Origs: 710
-  Dests: 750
+  Origs: 710:ifthen
+  Dests: 750:auto
 (0 1) 750 NEXT J
-  Origs: 700, 730, 740
-  Dests: 760
+  Origs: 700:ifthen, 730:goto, 740:auto
+  Dests: 760:auto
 (0 0) 760 
-  Origs: 750
-  Dests: 770
+  Origs: 750:auto
+  Dests: 770:auto
 (0 1) 770 REM CARRY OUT MOVE
-  Origs: 580, 760
-  Dests: 780
+  Origs: 580:goto, 760:auto
+  Dests: 780:auto
 (0 2) 780 PRINT
-  Origs: 770
-  Dests: 790
+  Origs: 770:auto
+  Dests: 790:auto
 (0 5) 790 PRINT "MY MOVE:" P; "," N
-  Origs: 780
-  Dests: 800
+  Origs: 780:auto
+  Dests: 800:auto
 (0 2) 800 PRINT
-  Origs: 790
-  Dests: 810
+  Origs: 790:auto
+  Dests: 810:auto
 (0 4) 810 LET N(P) = N(P) - N
-  Origs: 800
-  Dests: 820
+  Origs: 800:auto
+  Dests: 820:auto
 (1 6) 820 IF N(1) + N(2) + N(3) > 0 THEN 850
-  Origs: 810
-  Dests: 830, 850
+  Origs: 810:auto
+  Dests: 830:auto, 850:ifthen
 (0 2) 830 PRINT "I WIN *****"
-  Origs: 820
-  Dests: 840
+  Origs: 820:auto
+  Dests: 840:auto
 (0 3) 840 GOTO 330
-  Origs: 830
-  Dests: 330
+  Origs: 830:auto
+  Dests: 330:goto
 (0 2) 850 PRINT "NEW CONFIGURATION:"
-  Origs: 820
-  Dests: 860
+  Origs: 820:ifthen
+  Dests: 860:auto
 (0 2) 860 PRINT
-  Origs: 850
-  Dests: 870
+  Origs: 850:auto
+  Dests: 870:auto
 (0 2) 870 GOSUB 900
-  Origs: 860
-  Dests: 880, 900
+  Origs: 860:auto
+  Dests: 880:auto, 900:gosub
 (0 3) 880 GOTO 210
-  Origs: 870
-  Dests: 210
+  Origs: 870:auto
+  Dests: 210:goto
 (0 0) 890 
   Origs: 
-  Dests: 900
+  Dests: 900:auto
 (0 1) 900 REM PRINT CONFIGURATION
-  Origs: 190, 870, 890
-  Dests: 910
+  Origs: 190:gosub, 870:gosub, 890:auto
+  Dests: 910:auto
 (1 3) 910 FOR P = 1 TO 3
-  Origs: 900
-  Dests: 920
+  Origs: 900:auto
+  Dests: 920:auto
 (0 4) 920 PRINT "PILE " P; N(P)
-  Origs: 910
-  Dests: 930
+  Origs: 910:auto
+  Dests: 930:auto
 (0 1) 930 NEXT P
-  Origs: 920
-  Dests: 940
+  Origs: 920:auto
+  Dests: 940:auto
 (0 2) 940 PRINT
-  Origs: 930
-  Dests: 950
+  Origs: 930:auto
+  Dests: 950:auto
 (0 2) 950 PRINT
-  Origs: 940
-  Dests: 960
+  Origs: 940:auto
+  Dests: 960:auto
 (0 1) 960 RETURN
-  Origs: 950
+  Origs: 950:auto
   Dests: 
 (0 1) 970 END
   Origs: 

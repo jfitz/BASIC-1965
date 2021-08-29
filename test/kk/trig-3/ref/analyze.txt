@@ -21,135 +21,135 @@ Halstead complexity:
 
 (0 1) 100 REM ANGLE-SIDE-SIDE
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (0 3) 110 LET P = 3.14159265
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 4) 120 DEF FND(X) = X * P / 180
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 3) 130 DEF FNS(X) = SIN(FND(X))
-  Origs: 120
-  Dests: 135
+  Origs: 120:auto
+  Dests: 135:auto
 (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
-  Origs: 130
-  Dests: 140
+  Origs: 130:auto
+  Dests: 140:auto
 (0 6) 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
-  Origs: 135
-  Dests: 150
+  Origs: 135:auto
+  Dests: 150:auto
 (3 4) 150 READ B, X, Y
-  Origs: 140, 280, 310, 360
-  Dests: 160
+  Origs: 140:auto, 280:goto, 310:goto, 360:goto
+  Dests: 160:auto
 (0 4) 160 PRINT B, X, Y,
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 7) 170 LET S = X * FNS(B) / Y
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (1 4) 180 IF S > 1 THEN 290
-  Origs: 170
-  Dests: 190, 290
+  Origs: 170:auto
+  Dests: 190:auto, 290:ifthen
 (1 6) 190 IF FNR(S) = 1 THEN 320
-  Origs: 180
-  Dests: 195, 320
+  Origs: 180:auto
+  Dests: 195:auto, 320:ifthen
 (0 0) 195 
-  Origs: 190
-  Dests: 200
+  Origs: 190:auto
+  Dests: 200:auto
 (0 1) 200 REM TWO POINTS OF INTERSECTION
-  Origs: 195
-  Dests: 210
+  Origs: 195:auto
+  Dests: 210:auto
 (0 5) 210 LET T = S / SQR(1 - S ^ 2)
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 6) 220 LET C = ATN(T) * 180 / P
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (0 5) 230 LET A = 180 - B - C
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 2) 240 GOSUB 370
-  Origs: 230
-  Dests: 250, 370
+  Origs: 230:auto
+  Dests: 250:auto, 370:gosub
 (0 4) 250 LET C = 180 - C
-  Origs: 240
-  Dests: 260
+  Origs: 240:auto
+  Dests: 260:auto
 (0 5) 260 LET A = 180 - B - C
-  Origs: 250
-  Dests: 270
+  Origs: 250:auto
+  Dests: 270:auto
 (0 2) 270 GOSUB 370
-  Origs: 260
-  Dests: 275, 370
+  Origs: 260:auto
+  Dests: 275:auto, 370:gosub
 (0 2) 275 PRINT
-  Origs: 270
-  Dests: 280
+  Origs: 270:auto
+  Dests: 280:auto
 (0 3) 280 GOTO 150
-  Origs: 275
-  Dests: 150
+  Origs: 275:auto
+  Dests: 150:goto
 (0 0) 285 
   Origs: 
-  Dests: 290
+  Dests: 290:auto
 (0 1) 290 REM NO POINT OF INTERSECTION
-  Origs: 180, 285
-  Dests: 300
+  Origs: 180:ifthen, 285:auto
+  Dests: 300:auto
 (0 3) 300 PRINT "NONE", "NONE"
-  Origs: 290
-  Dests: 310
+  Origs: 290:auto
+  Dests: 310:auto
 (0 3) 310 GOTO 150
-  Origs: 300
-  Dests: 150
+  Origs: 300:auto
+  Dests: 150:goto
 (0 0) 315 
   Origs: 
-  Dests: 320
+  Dests: 320:auto
 (0 1) 320 REM ONE POINT OF INTERSECTION
-  Origs: 190, 315
-  Dests: 330
+  Origs: 190:ifthen, 315:auto
+  Dests: 330:auto
 (0 4) 330 LET A = 90 - B
-  Origs: 320
-  Dests: 340
+  Origs: 320:auto
+  Dests: 340:auto
 (0 2) 340 GOSUB 370
-  Origs: 330
-  Dests: 350, 370
+  Origs: 330:auto
+  Dests: 350:auto, 370:gosub
 (0 2) 350 PRINT "NONE"
-  Origs: 340
-  Dests: 360
+  Origs: 340:auto
+  Dests: 360:auto
 (0 3) 360 GOTO 150
-  Origs: 350
-  Dests: 150
+  Origs: 350:auto
+  Dests: 150:goto
 (0 0) 365 
   Origs: 
-  Dests: 370
+  Dests: 370:auto
 (0 1) 370 REM ANGLE-SIDE-ANGLE ROUTINE
-  Origs: 240, 270, 340, 365
-  Dests: 380
+  Origs: 240:gosub, 270:gosub, 340:gosub, 365:auto
+  Dests: 380:auto
 (0 7) 380 LET Z = X * FNS(A) / S
-  Origs: 370
-  Dests: 390
+  Origs: 370:auto
+  Dests: 390:auto
 (1 4) 390 IF Z >= 0 THEN 420
-  Origs: 380
-  Dests: 400, 420
+  Origs: 380:auto
+  Dests: 400:auto, 420:ifthen
 (0 2) 400 PRINT "NONE",
-  Origs: 390
-  Dests: 410
+  Origs: 390:auto
+  Dests: 410:auto
 (0 1) 410 RETURN
-  Origs: 400
+  Origs: 400:auto
   Dests: 
 (0 2) 420 PRINT Z,
-  Origs: 390
-  Dests: 430
+  Origs: 390:ifthen
+  Dests: 430:auto
 (0 1) 430 RETURN
-  Origs: 420
+  Origs: 420:auto
   Dests: 
 (0 0) 440 
   Origs: 
-  Dests: 450
+  Dests: 450:auto
 (0 2) 450 DATA 60, 10, 8, 60, 10, 9, 60, 10, 11, 120, 10, 8, 120, 10, 9
-  Origs: 440
-  Dests: 460
+  Origs: 440:auto
+  Dests: 460:auto
 (0 2) 460 DATA 120, 10, 11, 90, 3, 5, 60, 5, 5, 30, 10, 5
-  Origs: 450
-  Dests: 470
+  Origs: 450:auto
+  Dests: 470:auto
 (0 1) 470 END
-  Origs: 460
+  Origs: 460:auto
   Dests: 
 
 Unreachable code:

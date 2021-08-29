@@ -1,0 +1,59 @@
+Statistics:
+
+Number of lines: 11
+Number of valid statements: 10
+Number of comments: 1
+Number of executable statements: 9
+
+Complexity:
+
+Comment density: 0.100
+Comprehension effort: 26
+McCabe complexity: 1
+Halstead complexity:
+ length: 24
+ volume: 66.542
+ difficulty: 3.600
+ effort: 239.552
+ language: 5.134
+ intelligence: 18.484
+ time: 0.222
+
+(0 1) 10 REM This is a test
+  Origs: 
+  Dests: 20:auto
+(0 4) 20 ARR A = CON1(0)
+  Origs: 10:auto
+  Dests: 22:auto
+(0 2) 22 PRINT "ARRAY IS:";
+  Origs: 20:auto
+  Dests: 23:auto
+(0 2) 23 ARR PRINT A
+  Origs: 22:auto
+  Dests: 30:auto
+(0 4) 30 ARR LET B = SORT1(A)
+  Origs: 23:auto
+  Dests: 32:auto
+(0 2) 32 PRINT "SORTED IS:";
+  Origs: 30:auto
+  Dests: 33:auto
+(0 2) 33 ARR PRINT B
+  Origs: 32:auto
+  Dests: 40:auto
+(0 4) 40 LET M = MEDIAN(A)
+  Origs: 33:auto
+  Dests: 42:auto
+(0 3) 42 PRINT "MEDIAN IS "; M
+  Origs: 40:auto
+  Dests: 89:auto
+(0 1) 89 STOP
+  Origs: 42:auto
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -21,33 +21,33 @@ Halstead complexity:
 
 (0 3) 10 PRINT "NUMBER", "LARGEST FACTOR"
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (1 4) 20 FOR N = 1001 TO 1020 STEP 2
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 2) 30 PRINT N,
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (1 6) 40 FOR F = INT(N / 2) TO 1 STEP -1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (1 6) 50 IF N / F <> INT(N / F) THEN 80
-  Origs: 40
-  Dests: 60, 80
+  Origs: 40:auto
+  Dests: 60:auto, 80:ifthen
 (0 2) 60 PRINT F
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 2) 70 GOTO 90
-  Origs: 60
-  Dests: 90
+  Origs: 60:auto
+  Dests: 90:goto
 (0 1) 80 NEXT F
-  Origs: 50
-  Dests: 90
+  Origs: 50:ifthen
+  Dests: 90:auto
 (0 1) 90 NEXT N
-  Origs: 70, 80
-  Dests: 99
+  Origs: 70:goto, 80:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 90
+  Origs: 90:auto
   Dests: 
 
 Unreachable code:

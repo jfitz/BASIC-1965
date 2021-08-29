@@ -21,100 +21,100 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE SOLUTION TO
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM A SYSTEM OF 3 EQUATIONS IN 3 UNKNOWNS
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 2) 30 PRINT "SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
-  Origs: 20, 320
-  Dests: 40
+  Origs: 20:auto, 320:goto
+  Dests: 40:auto
 (0 2) 40 PRINT "OF THE TYPE AX + BY + CZ = D"
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 2) 50 PRINT "ENTER THE 1ST EQUATION (A,B,C,D)"
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (4 5) 60 INPUT A1, B1, C1, D1
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 2) 70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (4 5) 80 INPUT A2, B2, C2, D2
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 2) 90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
-  Origs: 80
-  Dests: 100
+  Origs: 80:auto
+  Dests: 100:auto
 (4 5) 100 INPUT A3, B3, C3, D3
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 6) 110 LET E1 = ((B1 * A2) / A1) - B2
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 6) 120 LET E2 = ((C1 * A2) / A1) - C2
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 6) 130 LET E3 = ((B1 * A3) / A1) - B3
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 6) 140 LET E4 = ((C1 * A3) / A1) - C3
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 7) 150 LET E5 = ((E1 * E4) - (E2 * E3))
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (1 4) 160 IF E5 = 0 THEN 250
-  Origs: 150
-  Dests: 170, 250
+  Origs: 150:auto
+  Dests: 170:auto, 250:ifthen
 (0 6) 170 LET E6 = ((D1 * A2) / A1) - D2
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 6) 180 LET E7 = ((D1 * A3) / A1) - D3
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 8) 190 LET Y = ((E6 * E4) - (E2 * E7)) / E5
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 8) 200 LET Z = ((E1 * E7) - (E6 * E3)) / E5
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 12) 210 LET X = (D1 / A1) - (B1 / A1 * Y) - ((C1 / A1) * Z)
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 2) 220 PRINT "SOLUTION"
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (0 7) 230 PRINT "X = "; X, "Y = "; Y, "Z = "; Z
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 2) 240 GOTO 260
-  Origs: 230
-  Dests: 260
+  Origs: 230:auto
+  Dests: 260:goto
 (0 2) 250 PRINT "INSUFFICIENT OR ERRONEOUS DATA ENTERED"
-  Origs: 160
-  Dests: 260
+  Origs: 160:ifthen
+  Dests: 260:auto
 (0 2) 260 PRINT
-  Origs: 240, 250
-  Dests: 270
+  Origs: 240:goto, 250:auto
+  Dests: 270:auto
 (0 2) 270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
-  Origs: 260
-  Dests: 280
+  Origs: 260:auto
+  Dests: 280:auto
 (1 2) 280 INPUT L
-  Origs: 270
-  Dests: 290
+  Origs: 270:auto
+  Dests: 290:auto
 (1 4) 290 IF L = 1 THEN 310
-  Origs: 280
-  Dests: 300, 310
+  Origs: 280:auto
+  Dests: 300:auto, 310:ifthen
 (0 1) 300 STOP
-  Origs: 290
+  Origs: 290:auto
   Dests: 
 (0 2) 310 PRINT
-  Origs: 290
-  Dests: 320
+  Origs: 290:ifthen
+  Dests: 320:auto
 (0 3) 320 GOTO 30
-  Origs: 310
-  Dests: 30
+  Origs: 310:auto
+  Dests: 30:goto
 (0 1) 330 END
   Origs: 
   Dests: 

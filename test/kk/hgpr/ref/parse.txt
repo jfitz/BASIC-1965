@@ -42,6 +42,7 @@
  Variable:N(_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:90
 50    LET K = K+1
  Variable:K -> _
  Variable:K -> _
@@ -58,6 +59,7 @@
  NumericConstant:2000
  FunctionSqr:SQR(_) -> =_
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:90
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I -> _
  start:   ["Variable:P -> _"]
@@ -138,6 +140,7 @@
  Variable:Z -> _
  NumericConstant:999
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:270
 240    FOR J = Z TO 999 STEP F
  control: Variable:J -> _
  start:   ["Variable:Z -> _"]
@@ -170,6 +173,7 @@
  Variable:Z -> _
  NumericConstant:999
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:450
 440    LET N(Z) = -1
  Variable:Z -> _
  Variable:N(_) -> _
@@ -192,6 +196,7 @@
  Variable:F -> _
  Variable:S -> _
  BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:420
 480
 700 REM PRINT RESULT
  Remark:PRINT RESULT
@@ -208,6 +213,7 @@
  Variable:N(_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:730
 720    PRINT 2*I + 1;
  NumericConstant:2
  Variable:I -> _
@@ -252,6 +258,7 @@
  Variable:N(_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:780
 765    IF N(I+1) < 0 THEN 780
  Variable:I -> _
  NumericConstant:1
@@ -259,6 +266,7 @@
  Variable:N(_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:780
 770    PRINT 2*I+1, 2*I+3
  NumericConstant:2
  Variable:I -> _
@@ -318,6 +326,7 @@
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorNotEqual:<>(_,_) -> ?
+ LineNumber:860
 850 LET X = X + F
  Variable:X -> _
  Variable:X -> _

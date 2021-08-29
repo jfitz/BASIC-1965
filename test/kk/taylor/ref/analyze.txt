@@ -20,46 +20,46 @@ Halstead complexity:
  time: 2.593
 
 (2 3) 10 READ X, N
-  Origs: 91
-  Dests: 20
+  Origs: 91:goto
+  Dests: 20:auto
 (0 3) 20 LET S = 0
-  Origs: 10
-  Dests: 25
+  Origs: 10:auto
+  Dests: 25:auto
 (0 3) 25 LET F = 1
-  Origs: 20
-  Dests: 30
+  Origs: 20:auto
+  Dests: 30:auto
 (1 3) 30 FOR I = 1 TO N
-  Origs: 25
-  Dests: 40
+  Origs: 25:auto
+  Dests: 40:auto
 (0 5) 40 LET K = 2 * I - 1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 9) 50 LET S = S + F * X ^ K / K
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (0 4) 60 LET F = -F
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 1) 70 NEXT I
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 6) 80 PRINT "ATN OF " X; "= " ATN(X)
-  Origs: 70
-  Dests: 85
+  Origs: 70:auto
+  Dests: 85:auto
 (0 4) 85 PRINT N; "TERMS OF THE SERIES YIELD " S
-  Origs: 80
-  Dests: 90
+  Origs: 80:auto
+  Dests: 90:auto
 (0 2) 90 PRINT
-  Origs: 85
-  Dests: 91
+  Origs: 85:auto
+  Dests: 91:auto
 (0 3) 91 GOTO 10
-  Origs: 90
-  Dests: 10
+  Origs: 90:auto
+  Dests: 10:goto
 (0 3) 95 DATA 0.5, 2, 0.5, 5, 0.5, 10, -0.75, 10, 0.99, 10
   Origs: 
-  Dests: 99
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 95
+  Origs: 95:auto
   Dests: 
 
 Unreachable code:

@@ -1,0 +1,83 @@
+Statistics:
+
+Number of lines: 19
+Number of valid statements: 18
+Number of comments: 1
+Number of executable statements: 16
+
+Complexity:
+
+Comment density: 0.056
+Comprehension effort: 37
+McCabe complexity: 3
+Halstead complexity:
+ length: 40
+ volume: 121.781
+ difficulty: 4.600
+ effort: 560.192
+ language: 5.755
+ intelligence: 26.474
+ time: 0.519
+
+(0 2) 10 DIM A(6)
+  Origs: 
+  Dests: 20:auto
+(0 2) 20 OPTION BASE 0
+  Origs: 10:auto
+  Dests: 30:auto
+(1 2) 30 ARR READ A
+  Origs: 20:auto
+  Dests: 40:auto
+(0 4) 40 ARR B = UNIQ1(A)
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 GOSUB 800
+  Origs: 40:auto
+  Dests: 100:auto, 800:gosub
+(0 1) 100 RESTORE
+  Origs: 50:auto
+  Dests: 120:auto
+(0 2) 120 OPTION BASE 1
+  Origs: 100:auto
+  Dests: 130:auto
+(1 2) 130 ARR READ A
+  Origs: 120:auto
+  Dests: 140:auto
+(0 4) 140 ARR B = UNIQ1(A)
+  Origs: 130:auto
+  Dests: 150:auto
+(0 2) 150 GOSUB 800
+  Origs: 140:auto
+  Dests: 790:auto, 800:gosub
+(0 1) 790 STOP
+  Origs: 150:auto
+  Dests: 
+(0 1) 800 REM PROCEDURE A
+  Origs: 50:gosub, 150:gosub
+  Dests: 810:auto
+(0 2) 810 PRINT "ARRAY A"
+  Origs: 800:auto
+  Dests: 820:auto
+(0 2) 820 ARR PRINT A
+  Origs: 810:auto
+  Dests: 830:auto
+(0 2) 830 PRINT "ARRAY B"
+  Origs: 820:auto
+  Dests: 840:auto
+(0 2) 840 ARR PRINT B
+  Origs: 830:auto
+  Dests: 890:auto
+(0 1) 890 RETURN
+  Origs: 840:auto
+  Dests: 
+(0 2) 900 DATA 10, 20, 10, 20, 30, 40, 50
+  Origs: 
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 900:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

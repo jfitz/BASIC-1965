@@ -21,120 +21,120 @@ Halstead complexity:
 
 (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
-  Dests: 11
+  Dests: 11:auto
 (0 1) 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
-  Origs: 10
-  Dests: 12
+  Origs: 10:auto
+  Dests: 12:auto
 (0 1) 12 REM DEF FNF(X) = X^2 + 1
-  Origs: 11
-  Dests: 13
+  Origs: 11:auto
+  Dests: 13:auto
 (0 1) 13 REM DEF FNF(X) = X^2 - 0.001
-  Origs: 12
-  Dests: 14
+  Origs: 12:auto
+  Dests: 14:auto
 (0 1) 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
-  Origs: 13
-  Dests: 20
+  Origs: 13:auto
+  Dests: 20:auto
 (2 3) 20 READ A, B
-  Origs: 14
-  Dests: 22
+  Origs: 14:auto
+  Dests: 22:auto
 (0 2) 22 GOSUB 200
-  Origs: 20
-  Dests: 26, 200
+  Origs: 20:auto
+  Dests: 26:auto, 200:gosub
 (0 3) 26 LET X(1 + S) = A
-  Origs: 22
-  Dests: 28
+  Origs: 22:auto
+  Dests: 28:auto
 (0 3) 28 LET X(1 - S) = B
-  Origs: 26
-  Dests: 30
+  Origs: 26:auto
+  Dests: 30:auto
 (0 5) 30 LET X = (X(0) + X(2)) / 2
-  Origs: 28, 90
-  Dests: 35
+  Origs: 28:auto, 90:goto
+  Dests: 35:auto
 (0 4) 35 LET F = SGN(FNF(X))
-  Origs: 30
-  Dests: 40
+  Origs: 30:auto
+  Dests: 40:auto
 (1 4) 40 IF F = 0 THEN 100
-  Origs: 35
-  Dests: 50, 100
+  Origs: 35:auto
+  Dests: 50:auto, 100:ifthen
 (0 3) 50 LET X(1 + F) = X
-  Origs: 40
-  Dests: 80
+  Origs: 40:auto
+  Dests: 80:auto
 (1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 100
-  Origs: 50
-  Dests: 90, 100
+  Origs: 50:auto
+  Dests: 90:auto, 100:ifthen
 (0 3) 90 GOTO 30
-  Origs: 80
-  Dests: 30
+  Origs: 80:auto
+  Dests: 30:goto
 (0 3) 100 PRINT "ONE ZERO AT" X
-  Origs: 40, 80, 420, 440
-  Dests: 110
+  Origs: 40:ifthen, 80:ifthen, 420:goto, 440:goto
+  Dests: 110:auto
 (0 1) 110 STOP
-  Origs: 100
+  Origs: 100:auto
   Dests: 
 (0 4) 200 LET S = SGN(FNF(A))
-  Origs: 22
-  Dests: 210
+  Origs: 22:gosub
+  Dests: 210:auto
 (0 4) 210 LET T = SGN(FNF(B))
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (1 5) 220 IF S * T = 0 THEN 400
-  Origs: 210
-  Dests: 230, 400
+  Origs: 210:auto
+  Dests: 230:auto, 400:ifthen
 (1 5) 230 IF S * T > 0 THEN 300
-  Origs: 220
-  Dests: 240, 300
+  Origs: 220:auto
+  Dests: 240:auto, 300:ifthen
 (0 1) 240 RETURN
-  Origs: 230
+  Origs: 230:auto
   Dests: 
 (0 4) 300 LET L = B - A
-  Origs: 230
-  Dests: 310
+  Origs: 230:ifthen
+  Dests: 310:auto
 (1 3) 310 FOR I = 1 TO 1000
-  Origs: 300
-  Dests: 320
+  Origs: 300:auto
+  Dests: 320:auto
 (0 7) 320 LET X = A + RND() * L
-  Origs: 310
-  Dests: 330
+  Origs: 310:auto
+  Dests: 330:auto
 (1 6) 330 IF S * SGN(FNF(X)) < 0 THEN 370
-  Origs: 320
-  Dests: 340, 370
+  Origs: 320:auto
+  Dests: 340:auto, 370:ifthen
 (0 1) 340 NEXT I
-  Origs: 330
-  Dests: 350
+  Origs: 330:auto
+  Dests: 350:auto
 (0 2) 350 PRINT "NO CHANGE OF SIGN FOUND"
-  Origs: 340
-  Dests: 360
+  Origs: 340:auto
+  Dests: 360:auto
 (0 1) 360 STOP
-  Origs: 350
+  Origs: 350:auto
   Dests: 
 (0 3) 370 LET B = X
-  Origs: 330
-  Dests: 380
+  Origs: 330:ifthen
+  Dests: 380:auto
 (0 1) 380 RETURN
-  Origs: 370
+  Origs: 370:auto
   Dests: 
 (1 4) 400 IF S = 0 THEN 430
-  Origs: 220
-  Dests: 410, 430
+  Origs: 220:ifthen
+  Dests: 410:auto, 430:ifthen
 (0 3) 410 LET X = B
-  Origs: 400
-  Dests: 420
+  Origs: 400:auto
+  Dests: 420:auto
 (0 3) 420 GOTO 100
-  Origs: 410
-  Dests: 100
+  Origs: 410:auto
+  Dests: 100:goto
 (0 3) 430 LET X = A
-  Origs: 400
-  Dests: 440
+  Origs: 400:ifthen
+  Dests: 440:auto
 (0 3) 440 GOTO 100
-  Origs: 430
-  Dests: 100
+  Origs: 430:auto
+  Dests: 100:goto
 (0 1) 900 REM DATA 0,1
   Origs: 
-  Dests: 910
+  Dests: 910:auto
 (0 2) 910 DATA 0, 1
-  Origs: 900
-  Dests: 999
+  Origs: 900:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 910
+  Origs: 910:auto
   Dests: 
 
 Unreachable code:

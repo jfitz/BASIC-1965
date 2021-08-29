@@ -21,66 +21,66 @@ Halstead complexity:
 
 (4 5) 100 READ A, B, C, D
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (3 4) 110 READ T8, T9, P
-  Origs: 100
-  Dests: 140
+  Origs: 100:auto
+  Dests: 140:auto
 (0 2) 140 DATA 4, 2, 1, 3
-  Origs: 110
-  Dests: 150
+  Origs: 110:auto
+  Dests: 150:auto
 (0 2) 150 DATA .01, 4, 35
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 3) 160 LET T1 = 0
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 0) 170 
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 4) 180 PRINT "TIME", " X", " Y"
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 2) 190 PRINT
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (2 3) 200 READ X, Y
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 4) 210 PRINT 0, X, Y
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (1 3) 220 FOR I = 1 TO P
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (1 5) 230 FOR T = 0 TO T9 / P STEP T8
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 11) 240 LET X = X + (A * X - B * X * Y) * T8
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (0 11) 250 LET Y = Y + (C * X * Y - D * Y) * T8
-  Origs: 240
-  Dests: 255
+  Origs: 240:auto
+  Dests: 255:auto
 (0 4) 255 LET T1 = T1 + T8
-  Origs: 250
-  Dests: 260
+  Origs: 250:auto
+  Dests: 260:auto
 (0 1) 260 NEXT T
-  Origs: 255
-  Dests: 270
+  Origs: 255:auto
+  Dests: 270:auto
 (0 4) 270 PRINT T1, X, Y
-  Origs: 260
-  Dests: 280
+  Origs: 260:auto
+  Dests: 280:auto
 (0 1) 280 NEXT I
-  Origs: 270
-  Dests: 290
+  Origs: 270:auto
+  Dests: 290:auto
 (0 0) 290 
-  Origs: 280
-  Dests: 900
+  Origs: 280:auto
+  Dests: 900:auto
 (0 2) 900 DATA 3, .5
-  Origs: 290
-  Dests: 999
+  Origs: 290:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 900
+  Origs: 900:auto
   Dests: 
 
 Unreachable code:

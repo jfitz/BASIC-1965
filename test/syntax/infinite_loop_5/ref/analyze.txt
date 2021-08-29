@@ -21,13 +21,13 @@ Halstead complexity:
 
 (0 1) 10 REM TEST INFINITE LOOP CHECK
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 2) 20 PRINT "HELLO"
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 3) 30 GOTO 30
-  Origs: 20, 30
-  Dests: 30
+  Origs: 20:auto, 30:goto
+  Dests: 30:goto
 (0 1) 99 END
   Origs: 
   Dests: 

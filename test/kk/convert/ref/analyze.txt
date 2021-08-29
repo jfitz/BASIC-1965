@@ -20,55 +20,55 @@ Halstead complexity:
  time: 1.812
 
 (2 3) 100 READ M, C
-  Origs: 230
-  Dests: 110
+  Origs: 230:goto
+  Dests: 110:auto
 (0 6) 110 LET M1 = M + C / 100
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 4) 120 LET I = M1 * 39.37
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 4) 130 LET F = INT(I / 12)
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 6) 140 LET I = I - 12 * F
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 5) 150 PRINT M, "METERS", C, "CENTIMETERS"
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 2) 160 PRINT "CONVERTS TO"
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (1 4) 170 IF F = 0 THEN 190
-  Origs: 160
-  Dests: 180, 190
+  Origs: 160:auto
+  Dests: 180:auto, 190:ifthen
 (0 3) 180 PRINT F, "FEET",
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 3) 190 PRINT I, "INCHES"
-  Origs: 170, 180
-  Dests: 200
+  Origs: 170:ifthen, 180:auto
+  Dests: 200:auto
 (0 2) 200 PRINT
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 2) 210 PRINT
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 2) 220 PRINT
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (0 3) 230 GOTO 100
-  Origs: 220
-  Dests: 100
+  Origs: 220:auto
+  Dests: 100:goto
 (0 2) 400 DATA 1, 0
   Origs: 
-  Dests: 410
+  Dests: 410:auto
 (0 2) 410 DATA 0, 2.54, 0, 60, 2, 5
-  Origs: 400
-  Dests: 490
+  Origs: 400:auto
+  Dests: 490:auto
 (0 1) 490 RETURN
-  Origs: 410
+  Origs: 410:auto
   Dests: 
 (0 1) 999 END
   Origs: 

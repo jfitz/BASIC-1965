@@ -21,75 +21,75 @@ Halstead complexity:
 
 (0 5) 10 PRINT " P", " Q", " R", "FORMULA"
   Origs: 
-  Dests: 15
+  Dests: 15:auto
 (0 2) 15 PRINT
-  Origs: 10
-  Dests: 20
+  Origs: 10:auto
+  Dests: 20:auto
 (1 5) 20 FOR P = 1 TO 0 STEP -1
-  Origs: 15
-  Dests: 30
+  Origs: 15:auto
+  Dests: 30:auto
 (1 5) 30 FOR Q = 1 TO 0 STEP -1
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (1 5) 40 FOR R = 1 TO 0 STEP -1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 3) 50 LET X = P
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (0 2) 60 GOSUB 200
-  Origs: 50
-  Dests: 70, 200
+  Origs: 50:auto
+  Dests: 70:auto, 200:gosub
 (0 3) 70 LET X = Q
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (0 2) 80 GOSUB 200
-  Origs: 70
-  Dests: 90, 200
+  Origs: 70:auto
+  Dests: 90:auto, 200:gosub
 (0 3) 90 LET X = R
-  Origs: 80
-  Dests: 95
+  Origs: 80:auto
+  Dests: 95:auto
 (0 2) 95 GOSUB 200
-  Origs: 90
-  Dests: 100, 200
+  Origs: 90:auto
+  Dests: 100:auto, 200:gosub
 (0 5) 100 LET X = P * SGN(Q + R)
-  Origs: 95
-  Dests: 110
+  Origs: 95:auto
+  Dests: 110:auto
 (0 2) 110 GOSUB 200
-  Origs: 100
-  Dests: 120, 200
+  Origs: 100:auto
+  Dests: 120:auto, 200:gosub
 (0 2) 120 PRINT
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 1) 130 NEXT R
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 1) 140 NEXT Q
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 1) 150 NEXT P
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 1) 160 STOP
-  Origs: 150
+  Origs: 150:auto
   Dests: 
 (0 0) 170 
   Origs: 
-  Dests: 200
+  Dests: 200:auto
 (1 4) 200 IF X > 0 THEN 250
-  Origs: 60, 80, 95, 110, 170
-  Dests: 210, 250
+  Origs: 60:gosub, 80:gosub, 95:gosub, 110:gosub, 170:auto
+  Dests: 210:auto, 250:ifthen
 (0 2) 210 PRINT "FALSE",
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 1) 220 RETURN
-  Origs: 210
+  Origs: 210:auto
   Dests: 
 (0 2) 250 PRINT "TRUE",
-  Origs: 200
-  Dests: 260
+  Origs: 200:ifthen
+  Dests: 260:auto
 (0 1) 260 RETURN
-  Origs: 250
+  Origs: 250:auto
   Dests: 
 (0 1) 999 END
   Origs: 

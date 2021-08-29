@@ -21,51 +21,51 @@ Halstead complexity:
 
 (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (2 3) 20 READ A, B
-  Origs: 10
-  Dests: 22
+  Origs: 10:auto
+  Dests: 22:auto
 (0 4) 22 LET S = SGN(FNF(A))
-  Origs: 20
-  Dests: 24
+  Origs: 20:auto
+  Dests: 24:auto
 (1 4) 24 IF S = 0 THEN 95
-  Origs: 22
-  Dests: 26, 95
+  Origs: 22:auto
+  Dests: 26:auto, 95:ifthen
 (0 3) 26 LET X(1 + S) = A
-  Origs: 24
-  Dests: 28
+  Origs: 24:auto
+  Dests: 28:auto
 (0 3) 28 LET X(1 - S) = B
-  Origs: 26
-  Dests: 30
+  Origs: 26:auto
+  Dests: 30:auto
 (0 5) 30 LET X = (X(0) + X(2)) / 2
-  Origs: 28, 90
-  Dests: 35
+  Origs: 28:auto, 90:goto
+  Dests: 35:auto
 (0 4) 35 LET F = SGN(FNF(X))
-  Origs: 30
-  Dests: 40
+  Origs: 30:auto
+  Dests: 40:auto
 (1 4) 40 IF F = 0 THEN 100
-  Origs: 35
-  Dests: 50, 100
+  Origs: 35:auto
+  Dests: 50:auto, 100:ifthen
 (0 3) 50 LET X(1 + F) = X
-  Origs: 40
-  Dests: 80
+  Origs: 40:auto
+  Dests: 80:auto
 (1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 100
-  Origs: 50
-  Dests: 90, 100
+  Origs: 50:auto
+  Dests: 90:auto, 100:ifthen
 (0 3) 90 GOTO 30
-  Origs: 80
-  Dests: 30
+  Origs: 80:auto
+  Dests: 30:goto
 (0 3) 95 LET X = A
-  Origs: 24
-  Dests: 100
+  Origs: 24:ifthen
+  Dests: 100:auto
 (0 3) 100 PRINT "ONE ZERO AT" X
-  Origs: 40, 80, 95
-  Dests: 900
+  Origs: 40:ifthen, 80:ifthen, 95:auto
+  Dests: 900:auto
 (0 2) 900 DATA 0, 1
-  Origs: 100
-  Dests: 999
+  Origs: 100:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 900
+  Origs: 900:auto
   Dests: 
 
 Unreachable code:

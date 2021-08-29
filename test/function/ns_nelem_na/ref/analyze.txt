@@ -1,0 +1,107 @@
+Statistics:
+
+Number of lines: 27
+Number of valid statements: 26
+Number of comments: 1
+Number of executable statements: 17
+
+Complexity:
+
+Comment density: 0.038
+Comprehension effort: 59
+McCabe complexity: 3
+Halstead complexity:
+ length: 114
+ volume: 391.475
+ difficulty: 10.957
+ effort: 4289.199
+ language: 3.261
+ intelligence: 35.730
+ time: 3.971
+
+(0 1) 10 REM LENGTH OF ARRAY
+  Origs: 
+  Dests: 20:auto
+(0 2) 20 OPTION BASE 0
+  Origs: 10:auto
+  Dests: 22:auto
+(0 3) 22 LET B = 0
+  Origs: 20:auto
+  Dests: 50:auto
+(0 2) 50 DATA 3
+  Origs: 22:auto
+  Dests: 52:auto
+(0 2) 52 DATA 3, 4, 8, 10
+  Origs: 50:auto
+  Dests: 60:auto
+(0 2) 60 GOSUB 400
+  Origs: 52:auto
+  Dests: 70:auto, 400:gosub
+(0 2) 70 DATA 15
+  Origs: 60:auto
+  Dests: 72:auto
+(0 4) 72 DATA 1, 0, 2, -1, 3, 0, 0, 5, 2, 1, 4, -3, 1, 0, 5, 0
+  Origs: 70:auto
+  Dests: 80:auto
+(0 2) 80 GOSUB 400
+  Origs: 72:auto
+  Dests: 120:auto, 400:gosub
+(0 2) 120 OPTION BASE 1
+  Origs: 80:auto
+  Dests: 122:auto
+(0 3) 122 LET B = 1
+  Origs: 120:auto
+  Dests: 150:auto
+(0 2) 150 DATA 4
+  Origs: 122:auto
+  Dests: 152:auto
+(0 2) 152 DATA 9, 3, 4, 8
+  Origs: 150:auto
+  Dests: 160:auto
+(0 2) 160 GOSUB 400
+  Origs: 152:auto
+  Dests: 170:auto, 400:gosub
+(0 2) 170 DATA 16
+  Origs: 160:auto
+  Dests: 172:auto
+(0 4) 172 DATA 4, 1, 0, 2, -1, 3, 0, 0, 5, 2, 1, 4, -3, 1, 0, 5
+  Origs: 170:auto
+  Dests: 180:auto
+(0 2) 180 GOSUB 400
+  Origs: 172:auto
+  Dests: 199:auto, 400:gosub
+(0 1) 199 STOP
+  Origs: 180:auto
+  Dests: 
+(1 2) 400 READ N
+  Origs: 60:gosub, 80:gosub, 160:gosub, 180:gosub
+  Dests: 420:auto
+(1 2) 420 ARR READ A(N)
+  Origs: 400:auto
+  Dests: 460:auto
+(0 2) 460 PRINT "ARRAY:"
+  Origs: 420:auto
+  Dests: 470:auto
+(0 2) 470 ARR PRINT A;
+  Origs: 460:auto
+  Dests: 480:auto
+(0 4) 480 LET L = NELEM(A)
+  Origs: 470:auto
+  Dests: 490:auto
+(0 3) 490 PRINT "LENGTH:" L
+  Origs: 480:auto
+  Dests: 495:auto
+(0 2) 495 PRINT
+  Origs: 490:auto
+  Dests: 499:auto
+(0 1) 499 RETURN
+  Origs: 495:auto
+  Dests: 
+(0 1) 999 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -20,23 +20,23 @@ Halstead complexity:
  time: 0.156
 
 (0 2) 100 PRINT "FAHRENHEIT";
-  Origs: 150
-  Dests: 110
+  Origs: 150:goto
+  Dests: 110:auto
 (1 2) 110 INPUT F
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 6) 120 LET C = (F - 32) * 5 / 9
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 3) 130 PRINT "CENTIGRADE:" C
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 2) 140 PRINT
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 3) 150 GOTO 100
-  Origs: 140
-  Dests: 100
+  Origs: 140:auto
+  Dests: 100:goto
 (0 1) 160 END
   Origs: 
   Dests: 

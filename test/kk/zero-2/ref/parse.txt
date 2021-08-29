@@ -22,6 +22,7 @@
  UserFunction:FNF(_) -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:230
 30 LET X = (A+B)/2
  Variable:X -> _
  Variable:A -> _
@@ -35,11 +36,13 @@
  UserFunction:FNF(_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:100
 50 IF FNF(A) < 0 THEN 70
  Variable:A -> _
  UserFunction:FNF(_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:70
 60 LET B = X
  Variable:B -> _
  Variable:X -> _
@@ -63,6 +66,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  NumericConstant:5.0e-07
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:100
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
@@ -86,11 +90,13 @@
  UserFunction:FNF(_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:100
 250 IF FNF(X) < 0 THEN 270
  Variable:X -> _
  UserFunction:FNF(_) -> _
  NumericConstant:0
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:270
 260 LET A = X
  Variable:A -> _
  Variable:X -> _
@@ -114,6 +120,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  NumericConstant:5.0e-07
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:100
 290 GOTO 230
  LineNumber:230
 300

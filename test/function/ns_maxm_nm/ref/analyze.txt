@@ -1,0 +1,53 @@
+Statistics:
+
+Number of lines: 9
+Number of valid statements: 8
+Number of comments: 1
+Number of executable statements: 3
+
+Complexity:
+
+Comment density: 0.125
+Comprehension effort: 23
+McCabe complexity: 2
+Halstead complexity:
+ length: 70
+ volume: 259.950
+ difficulty: 3.000
+ effort: 779.850
+ language: 28.883
+ intelligence: 86.650
+ time: 0.722
+
+(0 1) 10 REM TEST THE MAXM() FUNCTION
+  Origs: 
+  Dests: 20:auto
+(1 2) 20 MAT READ A(3, 6)
+  Origs: 10:auto
+  Dests: 30:auto
+(0 4) 30 LET B = MAXM(A)
+  Origs: 20:auto
+  Dests: 40:auto
+(0 3) 40 PRINT "MAXIMUM IS "; B
+  Origs: 30:auto
+  Dests: 90:auto
+(0 3) 90 DATA 10.2, 5.5, 1.8, 22, 17, -19, 7
+  Origs: 40:auto
+  Dests: 91:auto
+(0 3) 91 DATA 11.2, 6.5, 2.8, 23, 18, -20, 8
+  Origs: 90:auto
+  Dests: 92:auto
+(0 3) 92 DATA 12.2, 7.5, 3.8, 24, 19, -21, 9
+  Origs: 91:auto
+  Dests: 93:auto
+(0 3) 93 DATA 13.2, 8.5, 4.8, 25, 20, -22, 10
+  Origs: 92:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 93:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

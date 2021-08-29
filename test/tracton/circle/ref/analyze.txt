@@ -21,82 +21,82 @@ Halstead complexity:
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE CENTER AND RADIUS
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM OF A CIRCLE FROM 3 NON-COLINEAR POINTS
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 2) 30 PRINT "INPUT X1,Y1";
-  Origs: 20, 260
-  Dests: 40
+  Origs: 20:auto, 260:goto
+  Dests: 40:auto
 (2 3) 40 INPUT X1, Y1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 2) 50 PRINT "INPUT X2,Y2";
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (2 3) 60 INPUT X2, Y2
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 2) 70 PRINT "INPUT X3,Y2";
-  Origs: 60
-  Dests: 80
+  Origs: 60:auto
+  Dests: 80:auto
 (2 3) 80 INPUT X3, Y3
-  Origs: 70
-  Dests: 90
+  Origs: 70:auto
+  Dests: 90:auto
 (0 7) 90 LET A = (Y2 - Y1) / (X2 - X1)
-  Origs: 80
-  Dests: 100
+  Origs: 80:auto
+  Dests: 100:auto
 (0 7) 100 LET B = (Y3 - Y1) / (X3 - X1)
-  Origs: 90
-  Dests: 110
+  Origs: 90:auto
+  Dests: 110:auto
 (0 13) 110 LET C = ((X2 - X1) * (X2 + X1)) + ((Y2 - Y1) * (Y2 + Y1))
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 8) 120 LET D = C / (2 * (X2 - X1))
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 13) 130 LET E = ((X3 - X1) * (X3 + X1)) + ((Y3 - Y1) * (Y3 + Y1))
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 8) 140 LET F = E / (2 * (X3 - X1))
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 7) 150 LET Y0 = (F - D) / (B - A)
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (0 6) 160 LET X0 = F - (B * Y0)
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 4) 170 LET R = SQR((X3 - X0) ^ 2 + (Y3 - Y0) ^ 2)
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (0 5) 180 PRINT "CENTER X0,Y0 = "; X0; ","; Y0
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 3) 190 PRINT "RADIUS = "; R
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 2) 200 PRINT
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 2) 210 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (1 2) 220 INPUT L
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (1 4) 230 IF L = 1 THEN 250
-  Origs: 220
-  Dests: 240, 250
+  Origs: 220:auto
+  Dests: 240:auto, 250:ifthen
 (0 1) 240 STOP
-  Origs: 230
+  Origs: 230:auto
   Dests: 
 (0 2) 250 PRINT
-  Origs: 230
-  Dests: 260
+  Origs: 230:ifthen
+  Dests: 260:auto
 (0 3) 260 GOTO 30
-  Origs: 250
-  Dests: 30
+  Origs: 250:auto
+  Dests: 30:goto
 (0 1) 270 END
   Origs: 
   Dests: 

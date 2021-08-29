@@ -51,6 +51,7 @@
  Variable:N(_) -> _
  NumericConstant:0
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:300
 260 PRINT "ILLEGAL MOVE"
  TextConstant:"ILLEGAL MOVE"
  CarriageControl:NL
@@ -77,6 +78,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:370
 310 PRINT
  CarriageControl:NL
 320 PRINT "YOU WIN *****"
@@ -185,6 +187,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:610
 550 FOR P = 1 TO 3
  control: Variable:P -> _
  start:   ["NumericConstant:1"]
@@ -194,6 +197,7 @@
  Variable:N(_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:590
 570    LET N = INT(N(P)*RND(0)) + 1
  Variable:N -> _
  Variable:P -> _
@@ -221,6 +225,7 @@
  Variable:S(_) -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:650
 640 NEXT J
  Variable:J -> _
 650 FOR P = 1 TO 3
@@ -233,6 +238,7 @@
  Variable:B(_,_) -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:680
 670 NEXT P
  Variable:P -> _
 680 LET N = 0
@@ -248,12 +254,14 @@
  Variable:S(_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:750
 710    IF B(P,J) = 0 THEN 740
  Variable:P -> _
  Variable:J -> _
  Variable:B(_,_) -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:740
 720    LET N = N + 2^(4-J)
  Variable:N -> _
  Variable:N -> _
@@ -313,6 +321,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  NumericConstant:0
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:850
 830 PRINT "I WIN *****"
  TextConstant:"I WIN *****"
  CarriageControl:NL

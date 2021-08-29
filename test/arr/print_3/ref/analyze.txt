@@ -1,0 +1,56 @@
+Statistics:
+
+Number of lines: 10
+Number of valid statements: 10
+Number of comments: 0
+Number of executable statements: 9
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 23
+McCabe complexity: 3
+Halstead complexity:
+ length: 35
+ volume: 94.782
+ difficulty: 6.667
+ effort: 631.878
+ language: 2.133
+ intelligence: 14.217
+ time: 0.585
+
+(0 3) 10 DIM A(6), B(3)
+  Origs: 
+  Dests: 20:auto
+(1 3) 20 FOR I = 0 TO 6
+  Origs: 10:auto
+  Dests: 40:auto
+(0 3) 40 LET A(I) = I
+  Origs: 20:auto
+  Dests: 60:auto
+(0 1) 60 NEXT I
+  Origs: 40:auto
+  Dests: 70:auto
+(1 3) 70 FOR I = 0 TO 3
+  Origs: 60:auto
+  Dests: 90:auto
+(0 3) 90 LET B(I) = I
+  Origs: 70:auto
+  Dests: 110:auto
+(0 1) 110 NEXT I
+  Origs: 90:auto
+  Dests: 120:auto
+(0 3) 120 ARR PRINT A; B;
+  Origs: 110:auto
+  Dests: 122:auto
+(0 2) 122 PRINT
+  Origs: 120:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 122:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

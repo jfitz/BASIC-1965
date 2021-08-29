@@ -21,21 +21,21 @@ Halstead complexity:
 
 (0 5) 10 DEF FNL(A) = LOG(A) / LOG(2)
   Origs: 
-  Dests: 12
+  Dests: 12:auto
 (0 5) 12 DEF FNL(A) = LOG(A) / LOG(10)
-  Origs: 10
-  Dests: 20
+  Origs: 10:auto
+  Dests: 20:auto
 (1 4) 20 FOR N = 2 TO 10 STEP 2
-  Origs: 12
-  Dests: 30
+  Origs: 12:auto
+  Dests: 30:auto
 (0 7) 30 PRINT N, LOG(N), FNL(N)
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 1) 40 NEXT N
-  Origs: 30
-  Dests: 99
+  Origs: 30:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 40
+  Origs: 40:auto
   Dests: 
 
 Unreachable code:

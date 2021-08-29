@@ -64,11 +64,13 @@
  Variable:S -> _
  NumericConstant:1
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:290
 190 IF FNR(S) = 1 THEN 320
  Variable:S -> _
  UserFunction:FNR(_) -> _
  NumericConstant:1
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:320
 195
 200 REM TWO POINTS OF INTERSECTION
  Remark:TWO POINTS OF INTERSECTION
@@ -164,6 +166,7 @@
  Variable:Z -> _
  NumericConstant:0
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:420
 400 PRINT "NONE",
  TextConstant:"NONE"
  CarriageControl:,

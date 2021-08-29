@@ -21,102 +21,102 @@ Halstead complexity:
 
 (0 1) 10 REM BUFFON NEEDLE SIMULATION
   Origs: 
-  Dests: 30
+  Dests: 30:auto
 (0 3) 30 LET L0 = 2
-  Origs: 10
-  Dests: 32
+  Origs: 10:auto
+  Dests: 32:auto
 (0 3) 32 LET L = 1
-  Origs: 30
-  Dests: 40
+  Origs: 30:auto
+  Dests: 40:auto
 (2 3) 40 READ N, M
-  Origs: 32
-  Dests: 100
+  Origs: 32:auto
+  Dests: 100:auto
 (0 5) 100 PRINT "COUNT", "HITS", "RATIO", "INVERSE"
-  Origs: 40
-  Dests: 110
+  Origs: 40:auto
+  Dests: 110:auto
 (0 1) 110 REM MAIN LOOP
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 3) 120 LET C = 0
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (1 3) 130 FOR I = 1 TO N
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 2) 140 GOSUB 200
-  Origs: 130
-  Dests: 150, 200
+  Origs: 130:auto
+  Dests: 150:auto, 200:gosub
 (1 5) 150 IF MOD(I, M) <> 0 THEN 170
-  Origs: 140
-  Dests: 160, 170
+  Origs: 140:auto
+  Dests: 160:auto, 170:ifthen
 (0 2) 160 GOSUB 300
-  Origs: 150
-  Dests: 170, 300
+  Origs: 150:auto
+  Dests: 170:auto, 300:gosub
 (0 1) 170 REM CONTINUE
-  Origs: 150, 160
-  Dests: 180
+  Origs: 150:ifthen, 160:auto
+  Dests: 180:auto
 (0 1) 180 NEXT I
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (0 2) 190 GOSUB 300
-  Origs: 180
-  Dests: 199, 300
+  Origs: 180:auto
+  Dests: 199:auto, 300:gosub
 (0 1) 199 STOP
-  Origs: 190
+  Origs: 190:auto
   Dests: 
 (0 1) 200 REM PROCEDURE A
-  Origs: 140
-  Dests: 210
+  Origs: 140:gosub
+  Dests: 210:auto
 (0 4) 210 LET D = RND(L0)
-  Origs: 200
-  Dests: 211
+  Origs: 200:auto
+  Dests: 211:auto
 (1 6) 211 IF D < 0.5 * L0 THEN 220
-  Origs: 210
-  Dests: 212, 220
+  Origs: 210:auto
+  Dests: 212:auto, 220:ifthen
 (0 4) 212 LET D = L0 - D
-  Origs: 211
-  Dests: 220
+  Origs: 211:auto
+  Dests: 220:auto
 (0 4) 220 LET T0 = RND(180)
-  Origs: 211, 212
-  Dests: 230
+  Origs: 211:ifthen, 212:auto
+  Dests: 230:auto
 (0 4) 230 LET T1 = RAD(T0)
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 5) 240 LET X = 0.5 * SIN(T1)
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (1 4) 250 IF D > X THEN 270
-  Origs: 240
-  Dests: 260, 270
+  Origs: 240:auto
+  Dests: 260:auto, 270:ifthen
 (0 4) 260 LET C = C + 1
-  Origs: 250
-  Dests: 270
+  Origs: 250:auto
+  Dests: 270:auto
 (0 1) 270 REM CONTINUE
-  Origs: 250, 260
-  Dests: 290
+  Origs: 250:ifthen, 260:auto
+  Dests: 290:auto
 (0 1) 290 RETURN
-  Origs: 270
+  Origs: 270:auto
   Dests: 
 (0 1) 300 REM PROCEDURE B
-  Origs: 160, 190
-  Dests: 310
+  Origs: 160:gosub, 190:gosub
+  Dests: 310:auto
 (0 4) 310 LET R = C / I
-  Origs: 300
-  Dests: 320
+  Origs: 300:auto
+  Dests: 320:auto
 (0 4) 320 LET R1 = 1 / R
-  Origs: 310
-  Dests: 330
+  Origs: 310:auto
+  Dests: 330:auto
 (0 5) 330 PRINT I, C, R, R1
-  Origs: 320
-  Dests: 390
+  Origs: 320:auto
+  Dests: 390:auto
 (0 1) 390 RETURN
-  Origs: 330
+  Origs: 330:auto
   Dests: 
 (0 2) 900 DATA 10000, 500
   Origs: 
-  Dests: 999
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 900
+  Origs: 900:auto
   Dests: 
 
 Unreachable code:

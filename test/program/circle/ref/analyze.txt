@@ -21,192 +21,192 @@ Halstead complexity:
 
 (0 1) 10 REM GALILEO'S CIRCLE BECOMES A STRAIGHT LINE
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 1) 20 REM FROM DISCOURSE ON TWO SCIENCES
-  Origs: 10
-  Dests: 50
+  Origs: 10:auto
+  Dests: 50:auto
 (0 1) 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
-  Origs: 20
-  Dests: 51
+  Origs: 20:auto
+  Dests: 51:auto
 (0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 2)
-  Origs: 50
-  Dests: 60
+  Origs: 50:auto
+  Dests: 60:auto
 (0 1) 60 REM CONVERT DEGREES TO RADIANS
-  Origs: 51
-  Dests: 61
+  Origs: 51:auto
+  Dests: 61:auto
 (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
-  Origs: 60
-  Dests: 100
+  Origs: 60:auto
+  Dests: 100:auto
 (0 1) 100 REM POINT A
-  Origs: 61
-  Dests: 101
+  Origs: 61:auto
+  Dests: 101:auto
 (2 3) 101 READ A1, A2
-  Origs: 100
-  Dests: 110
+  Origs: 100:auto
+  Dests: 110:auto
 (0 1) 110 REM CIRCLE AT POINT D WITH RADIUS DC
-  Origs: 101
-  Dests: 111
+  Origs: 101:auto
+  Dests: 111:auto
 (2 3) 111 READ D1, D2
-  Origs: 110
-  Dests: 113
+  Origs: 110:auto
+  Dests: 113:auto
 (2 3) 113 READ C1, C2
-  Origs: 111
-  Dests: 115
+  Origs: 111:auto
+  Dests: 115:auto
 (0 4) 115 LET D5 = D1 - C1
-  Origs: 113
-  Dests: 121
+  Origs: 113:auto
+  Dests: 121:auto
 (2 3) 121 READ Z9, Z8
-  Origs: 115
-  Dests: 122
+  Origs: 115:auto
+  Dests: 122:auto
 (1 2) 122 READ R9
-  Origs: 121
-  Dests: 200
+  Origs: 121:auto
+  Dests: 200:auto
 (0 1) 200 REM FIND POINT B
-  Origs: 122
-  Dests: 201
+  Origs: 122:auto
+  Dests: 201:auto
 (0 5) 201 LET B1 = (A1 + D1) / 2
-  Origs: 200
-  Dests: 202
+  Origs: 200:auto
+  Dests: 202:auto
 (0 3) 202 LET B2 = 0
-  Origs: 201
-  Dests: 203
+  Origs: 201:auto
+  Dests: 203:auto
 (0 4) 203 LET I1 = D1 + D5
-  Origs: 202
-  Dests: 204
+  Origs: 202:auto
+  Dests: 204:auto
 (0 3) 204 LET I2 = 0
-  Origs: 203
-  Dests: 217
+  Origs: 203:auto
+  Dests: 217:auto
 (0 2) 217 PRINT "IDENTIFYING POINT B"
-  Origs: 204
-  Dests: 218
+  Origs: 204:auto
+  Dests: 218:auto
 (0 5) 218 PRINT "B", "AC/BC", "AI/BI", "Z"
-  Origs: 217
-  Dests: 219
+  Origs: 217:auto
+  Dests: 219:auto
 (0 3) 219 LET Z = 1
-  Origs: 218
-  Dests: 220
+  Origs: 218:auto
+  Dests: 220:auto
 (0 1) 220 REM RATIO OF AC/BC
-  Origs: 219, 247
-  Dests: 221
+  Origs: 219:auto, 247:ifthen
+  Dests: 221:auto
 (0 5) 221 LET F1 = FNL(A1, A2, C1, C2)
-  Origs: 220
-  Dests: 222
+  Origs: 220:auto
+  Dests: 222:auto
 (0 5) 222 LET F2 = FNL(B1, B2, C1, C2)
-  Origs: 221
-  Dests: 223
+  Origs: 221:auto
+  Dests: 223:auto
 (0 4) 223 LET R0 = F1 / F2
-  Origs: 222
-  Dests: 230
+  Origs: 222:auto
+  Dests: 230:auto
 (0 1) 230 REM RATIO OF AI/BI
-  Origs: 223
-  Dests: 231
+  Origs: 223:auto
+  Dests: 231:auto
 (0 5) 231 LET G1 = FNL(A1, A2, I1, I2)
-  Origs: 230
-  Dests: 232
+  Origs: 230:auto
+  Dests: 232:auto
 (0 5) 232 LET G2 = FNL(B1, B2, I1, I2)
-  Origs: 231
-  Dests: 233
+  Origs: 231:auto
+  Dests: 233:auto
 (0 4) 233 LET R1 = G1 / G2
-  Origs: 232
-  Dests: 239
+  Origs: 232:auto
+  Dests: 239:auto
 (0 5) 239 PRINT B1, R0, R1, Z
-  Origs: 233
-  Dests: 240
+  Origs: 233:auto
+  Dests: 240:auto
 (1 5) 240 IF ABS(R0 - R1) < R9 THEN 300
-  Origs: 239
-  Dests: 241, 300
+  Origs: 239:auto
+  Dests: 241:auto, 300:ifthen
 (1 4) 241 IF R0 < R1 THEN 245
-  Origs: 240
-  Dests: 242, 245
+  Origs: 240:auto
+  Dests: 242:auto, 245:ifthen
 (0 4) 242 LET B1 = B1 + Z
-  Origs: 241
-  Dests: 243
+  Origs: 241:auto
+  Dests: 243:auto
 (0 2) 243 GOTO 246
-  Origs: 242
-  Dests: 246
+  Origs: 242:auto
+  Dests: 246:goto
 (0 4) 245 LET B1 = B1 - Z
-  Origs: 241
-  Dests: 246
+  Origs: 241:ifthen
+  Dests: 246:auto
 (0 4) 246 LET Z = Z * Z8
-  Origs: 243, 245
-  Dests: 247
+  Origs: 243:goto, 245:auto
+  Dests: 247:auto
 (1 5) 247 IF Z > Z9 THEN 220
-  Origs: 246
-  Dests: 220, 248
+  Origs: 246:auto
+  Dests: 220:ifthen, 248:auto
 (0 2) 248 PRINT "CANNOT RESOLVE POINT B"
-  Origs: 247
-  Dests: 249
+  Origs: 247:auto
+  Dests: 249:auto
 (0 1) 249 STOP
-  Origs: 248
+  Origs: 248:auto
   Dests: 
 (0 1) 300 REM PRINT DEFINED VALUES
-  Origs: 240
-  Dests: 301
+  Origs: 240:ifthen
+  Dests: 301:auto
 (0 4) 301 PRINT "POINT C    :"; C1; C2
-  Origs: 300
-  Dests: 302
+  Origs: 300:auto
+  Dests: 302:auto
 (0 4) 302 PRINT "POINT B    :"; B1; B2
-  Origs: 301
-  Dests: 303
+  Origs: 301:auto
+  Dests: 303:auto
 (0 3) 303 PRINT "DISTANCE BC:"; F2
-  Origs: 302
-  Dests: 304
+  Origs: 302:auto
+  Dests: 304:auto
 (0 4) 304 PRINT "POINT A    :"; A1; A2
-  Origs: 303
-  Dests: 305
+  Origs: 303:auto
+  Dests: 305:auto
 (0 3) 305 PRINT "DISTANCE AC:"; F1
-  Origs: 304
-  Dests: 306
+  Origs: 304:auto
+  Dests: 306:auto
 (0 3) 306 PRINT "RATIO AC/BC:"; R0
-  Origs: 305
-  Dests: 400
+  Origs: 305:auto
+  Dests: 400:auto
 (0 1) 400 REM PICK VALUES ON CIRCLE D
-  Origs: 306
-  Dests: 401
+  Origs: 306:auto
+  Dests: 401:auto
 (0 8) 401 PRINT "ANGLE", "POINT", " ", "DISTANCES", " ", "RATIO", "DIFFERENCE"
-  Origs: 400
-  Dests: 410
+  Origs: 400:auto
+  Dests: 410:auto
 (1 4) 410 FOR I = 0 TO 365 STEP 5
-  Origs: 401
-  Dests: 420
+  Origs: 401:auto
+  Dests: 420:auto
 (0 1) 420 REM PICK POINT ON CIRCLE D
-  Origs: 410
-  Dests: 421
+  Origs: 410:auto
+  Dests: 421:auto
 (0 5) 421 LET T = FNR(I)
-  Origs: 420
-  Dests: 422
+  Origs: 420:auto
+  Dests: 422:auto
 (0 7) 422 LET I1 = D1 + COS(T) * D5
-  Origs: 421
-  Dests: 423
+  Origs: 421:auto
+  Dests: 423:auto
 (0 7) 423 LET I2 = D2 + SIN(T) * D5
-  Origs: 422
-  Dests: 424
+  Origs: 422:auto
+  Dests: 424:auto
 (0 5) 424 LET G1 = FNL(A1, A2, I1, I2)
-  Origs: 423
-  Dests: 425
+  Origs: 423:auto
+  Dests: 425:auto
 (0 5) 425 LET G2 = FNL(B1, B2, I1, I2)
-  Origs: 424
-  Dests: 426
+  Origs: 424:auto
+  Dests: 426:auto
 (0 4) 426 LET R1 = G1 / G2
-  Origs: 425
-  Dests: 430
+  Origs: 425:auto
+  Dests: 430:auto
 (0 1) 430 REM PRINT RESULTS
-  Origs: 426
-  Dests: 431
+  Origs: 426:auto
+  Dests: 431:auto
 (0 9) 431 PRINT T, I1; I2, G1; G2, R1, R1 - R0
-  Origs: 430
-  Dests: 441
+  Origs: 430:auto
+  Dests: 441:auto
 (0 1) 441 NEXT I
-  Origs: 431
-  Dests: 900
+  Origs: 431:auto
+  Dests: 900:auto
 (0 1) 900 REM DATA - POINT A, POINT D, POINT C
-  Origs: 441
-  Dests: 901
+  Origs: 441:auto
+  Dests: 901:auto
 (0 2) 901 DATA 0, 0, 100, 0, 75, 0, 0.00001, 0.995, 0.00001
-  Origs: 900
-  Dests: 999
+  Origs: 900:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 901
+  Origs: 901:auto
   Dests: 
 
 Unreachable code:

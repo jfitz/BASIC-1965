@@ -16,10 +16,12 @@
  Variable:N -> _
  NumericConstant:0
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:220
 70 IF N < 4 THEN 180
  Variable:N -> _
  NumericConstant:4
  BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:180
 80 LET I = 0
  Variable:I -> _
  NumericConstant:0
@@ -45,6 +47,7 @@
  Variable:N -> _
  Variable:K -> _
  BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:200
 130 LET I = I + 1
  Variable:I -> _
  Variable:I -> _
@@ -61,6 +64,7 @@
  Variable:L -> _
  Variable:N -> _
  BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:180
 160 LET T = (I*2) + 1
  Variable:T -> _
  Variable:I -> _

@@ -21,21 +21,21 @@ Halstead complexity:
 
 (0 3) 10 LET I = 1
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (1 4) 20 IF I > 1000 THEN 60
-  Origs: 10, 50
-  Dests: 30, 60
+  Origs: 10:auto, 50:goto
+  Dests: 30:auto, 60:ifthen
 (0 2) 30 PRINT I
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 4) 40 LET I = I + 1
-  Origs: 30
-  Dests: 50
+  Origs: 30:auto
+  Dests: 50:auto
 (0 3) 50 GOTO 20
-  Origs: 40
-  Dests: 20
+  Origs: 40:auto
+  Dests: 20:goto
 (0 1) 60 END
-  Origs: 20
+  Origs: 20:ifthen
   Dests: 
 
 Unreachable code:

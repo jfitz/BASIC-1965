@@ -21,24 +21,24 @@ Halstead complexity:
 
 (0 3) 100 DIM A(6), B(2)
   Origs: 
-  Dests: 120
+  Dests: 120:auto
 (2 3) 120 MAT READ A, B
-  Origs: 100
-  Dests: 130
+  Origs: 100:auto
+  Dests: 130:auto
 (0 2) 130 PRINT "EXAMPLE 1"
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 2) 140 PRINT
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 3) 150 MAT PRINT A, B
-  Origs: 140
-  Dests: 900
+  Origs: 140:auto
+  Dests: 900:auto
 (0 2) 900 DATA 21, 22, 23, 24, 25, 26, 11, 12
-  Origs: 150
-  Dests: 999
+  Origs: 150:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 900
+  Origs: 900:auto
   Dests: 
 
 Unreachable code:

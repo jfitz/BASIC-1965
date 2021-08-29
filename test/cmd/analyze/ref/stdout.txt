@@ -28,24 +28,24 @@ Halstead complexity:
 
 (0 1) 10 REM TEST OF ANALYZE COMMAND
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 2) 20 PRINT "START"
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 3) 30 LET B = 10
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 2) 40 GOTO 90
-  Origs: 30
-  Dests: 90
+  Origs: 30:auto
+  Dests: 90:goto
 (0 2) 50 PRINT B
   Origs: 
-  Dests: 60
+  Dests: 60:auto
 (0 4) 60 LET A = B / 10
-  Origs: 50
-  Dests: 90
+  Origs: 50:auto
+  Dests: 90:auto
 (0 1) 90 STOP
-  Origs: 40, 60
+  Origs: 40:goto, 60:auto
   Dests: 
 (0 1) 99 END
   Origs: 

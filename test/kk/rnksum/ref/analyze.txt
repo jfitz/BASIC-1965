@@ -21,174 +21,174 @@ Halstead complexity:
 
 (0 5) 100 DIM X(100), Y(100), Z(200), T(200)
   Origs: 
-  Dests: 110
+  Dests: 110:auto
 (0 0) 110 
-  Origs: 100
-  Dests: 140
+  Origs: 100:auto
+  Dests: 140:auto
 (2 3) 140 READ M, N
-  Origs: 110
-  Dests: 150
+  Origs: 110:auto
+  Dests: 150:auto
 (1 3) 150 FOR I = 1 TO M
-  Origs: 140
-  Dests: 160
+  Origs: 140:auto
+  Dests: 160:auto
 (1 2) 160 READ X(I)
-  Origs: 150
-  Dests: 170
+  Origs: 150:auto
+  Dests: 170:auto
 (0 1) 170 NEXT I
-  Origs: 160
-  Dests: 180
+  Origs: 160:auto
+  Dests: 180:auto
 (1 3) 180 FOR J = 1 TO N
-  Origs: 170
-  Dests: 190
+  Origs: 170:auto
+  Dests: 190:auto
 (1 2) 190 READ Y(J)
-  Origs: 180
-  Dests: 200
+  Origs: 180:auto
+  Dests: 200:auto
 (0 1) 200 NEXT J
-  Origs: 190
-  Dests: 210
+  Origs: 190:auto
+  Dests: 210:auto
 (0 0) 210 
-  Origs: 200
-  Dests: 250
+  Origs: 200:auto
+  Dests: 250:auto
 (1 3) 250 FOR K = 1 TO M
-  Origs: 210
-  Dests: 260
+  Origs: 210:auto
+  Dests: 260:auto
 (0 3) 260 LET Z(K) = X(K)
-  Origs: 250
-  Dests: 270
+  Origs: 250:auto
+  Dests: 270:auto
 (0 4) 270 LET T(K) = +1
-  Origs: 260
-  Dests: 280
+  Origs: 260:auto
+  Dests: 280:auto
 (0 1) 280 NEXT K
-  Origs: 270
-  Dests: 290
+  Origs: 270:auto
+  Dests: 290:auto
 (1 3) 290 FOR K = 1 TO N
-  Origs: 280
-  Dests: 300
+  Origs: 280:auto
+  Dests: 300:auto
 (0 3) 300 LET Z(M + K) = Y(K)
-  Origs: 290
-  Dests: 310
+  Origs: 290:auto
+  Dests: 310:auto
 (0 3) 310 LET T(M + K) = 0
-  Origs: 300
-  Dests: 320
+  Origs: 300:auto
+  Dests: 320:auto
 (0 1) 320 NEXT K
-  Origs: 310
-  Dests: 330
+  Origs: 310:auto
+  Dests: 330:auto
 (0 0) 330 
-  Origs: 320
-  Dests: 360
+  Origs: 320:auto
+  Dests: 360:auto
 (1 5) 360 FOR K = 1 TO M + N - 1
-  Origs: 330
-  Dests: 370
+  Origs: 330:auto
+  Dests: 370:auto
 (1 5) 370 FOR L = K + 1 TO M + N
-  Origs: 360
-  Dests: 380
+  Origs: 360:auto
+  Dests: 380:auto
 (1 4) 380 IF Z(K) <= Z(L) THEN 450
-  Origs: 370
-  Dests: 390, 450
+  Origs: 370:auto
+  Dests: 390:auto, 450:ifthen
 (0 3) 390 LET T = Z(K)
-  Origs: 380
-  Dests: 400
+  Origs: 380:auto
+  Dests: 400:auto
 (0 3) 400 LET Z(K) = Z(L)
-  Origs: 390
-  Dests: 410
+  Origs: 390:auto
+  Dests: 410:auto
 (0 3) 410 LET Z(L) = T
-  Origs: 400
-  Dests: 420
+  Origs: 400:auto
+  Dests: 420:auto
 (0 3) 420 LET T = T(K)
-  Origs: 410
-  Dests: 430
+  Origs: 410:auto
+  Dests: 430:auto
 (0 3) 430 LET T(K) = T(L)
-  Origs: 420
-  Dests: 440
+  Origs: 420:auto
+  Dests: 440:auto
 (0 3) 440 LET T(L) = T
-  Origs: 430
-  Dests: 450
+  Origs: 430:auto
+  Dests: 450:auto
 (0 1) 450 NEXT L
-  Origs: 380, 440
-  Dests: 460
+  Origs: 380:ifthen, 440:auto
+  Dests: 460:auto
 (0 1) 460 NEXT K
-  Origs: 450
-  Dests: 470
+  Origs: 450:auto
+  Dests: 470:auto
 (0 0) 470 
-  Origs: 460
-  Dests: 500
+  Origs: 460:auto
+  Dests: 500:auto
 (0 3) 500 LET J = 1
-  Origs: 470
-  Dests: 510
+  Origs: 470:auto
+  Dests: 510:auto
 (0 3) 510 LET K = 1
-  Origs: 500, 630
-  Dests: 520
+  Origs: 500:auto, 630:ifthen
+  Dests: 520:auto
 (0 3) 520 LET B = J
-  Origs: 510
-  Dests: 530
+  Origs: 510:auto
+  Dests: 530:auto
 (0 3) 530 LET T = J
-  Origs: 520
-  Dests: 540
+  Origs: 520:auto
+  Dests: 540:auto
 (0 4) 540 LET J = J + 1
-  Origs: 530, 590
-  Dests: 550
+  Origs: 530:auto, 590:goto
+  Dests: 550:auto
 (1 6) 550 IF J > M + N THEN 600
-  Origs: 540
-  Dests: 560, 600
+  Origs: 540:auto
+  Dests: 560:auto, 600:ifthen
 (1 4) 560 IF Z(J) > Z(B) THEN 600
-  Origs: 550
-  Dests: 570, 600
+  Origs: 550:auto
+  Dests: 570:auto, 600:ifthen
 (0 4) 570 LET T = T + J
-  Origs: 560
-  Dests: 580
+  Origs: 560:auto
+  Dests: 580:auto
 (0 4) 580 LET K = K + 1
-  Origs: 570
-  Dests: 590
+  Origs: 570:auto
+  Dests: 590:auto
 (0 3) 590 GOTO 540
-  Origs: 580
-  Dests: 540
+  Origs: 580:auto
+  Dests: 540:goto
 (1 4) 600 FOR L = B TO J - 1
-  Origs: 550, 560
-  Dests: 610
+  Origs: 550:ifthen, 560:ifthen
+  Dests: 610:auto
 (0 4) 610 LET Z(L) = T / K
-  Origs: 600
-  Dests: 620
+  Origs: 600:auto
+  Dests: 620:auto
 (0 1) 620 NEXT L
-  Origs: 610
-  Dests: 630
+  Origs: 610:auto
+  Dests: 630:auto
 (1 7) 630 IF J <= M + N THEN 510
-  Origs: 620
-  Dests: 510, 640
+  Origs: 620:auto
+  Dests: 510:ifthen, 640:auto
 (0 0) 640 
-  Origs: 630
-  Dests: 740
+  Origs: 630:auto
+  Dests: 740:auto
 (0 3) 740 LET S(0) = 0
-  Origs: 640
-  Dests: 750
+  Origs: 640:auto
+  Dests: 750:auto
 (0 3) 750 LET S(1) = 0
-  Origs: 740
-  Dests: 760
+  Origs: 740:auto
+  Dests: 760:auto
 (1 4) 760 FOR K = 1 TO M + N
-  Origs: 750
-  Dests: 770
+  Origs: 750:auto
+  Dests: 770:auto
 (0 4) 770 LET S(T(K)) = S(T(K)) + Z(K)
-  Origs: 760
-  Dests: 790
+  Origs: 760:auto
+  Dests: 790:auto
 (0 1) 790 NEXT K
-  Origs: 770
-  Dests: 800
+  Origs: 770:auto
+  Dests: 800:auto
 (0 5) 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
-  Origs: 790
-  Dests: 810
+  Origs: 790:auto
+  Dests: 810:auto
 (0 0) 810 
-  Origs: 800
-  Dests: 900
+  Origs: 800:auto
+  Dests: 900:auto
 (0 2) 900 DATA 6, 4
-  Origs: 810
-  Dests: 910
+  Origs: 810:auto
+  Dests: 910:auto
 (0 2) 910 DATA 117, 145, 147, 120, 150, 120
-  Origs: 900
-  Dests: 920
+  Origs: 900:auto
+  Dests: 920:auto
 (0 2) 920 DATA 160, 160, 140, 190
-  Origs: 910
-  Dests: 999
+  Origs: 910:auto
+  Dests: 999:auto
 (0 1) 999 END
-  Origs: 920
+  Origs: 920:auto
   Dests: 
 
 Unreachable code:

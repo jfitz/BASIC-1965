@@ -1,0 +1,68 @@
+Statistics:
+
+Number of lines: 14
+Number of valid statements: 13
+Number of comments: 1
+Number of executable statements: 12
+
+Complexity:
+
+Comment density: 0.077
+Comprehension effort: 30
+McCabe complexity: 2
+Halstead complexity:
+ length: 29
+ volume: 83.821
+ difficulty: 4.500
+ effort: 377.194
+ language: 4.139
+ intelligence: 18.627
+ time: 0.349
+
+(0 1) 10 REM ARRAY ASSIGNMENT
+  Origs: 
+  Dests: 20:auto
+(0 2) 20 DIM A(5)
+  Origs: 10:auto
+  Dests: 30:auto
+(1 3) 30 FOR I = 0 TO 5
+  Origs: 20:auto
+  Dests: 50:auto
+(0 3) 50 LET A(I) = I
+  Origs: 30:auto
+  Dests: 70:auto
+(0 1) 70 NEXT I
+  Origs: 50:auto
+  Dests: 90:auto
+(0 3) 90 LET C = 5
+  Origs: 70:auto
+  Dests: 100:auto
+(0 4) 100 ARR B = (C) + A
+  Origs: 90:auto
+  Dests: 110:auto
+(0 2) 110 PRINT "ARRAY A"
+  Origs: 100:auto
+  Dests: 120:auto
+(0 2) 120 ARR PRINT A;
+  Origs: 110:auto
+  Dests: 122:auto
+(0 2) 122 PRINT
+  Origs: 120:auto
+  Dests: 130:auto
+(0 2) 130 PRINT "ARRAY B"
+  Origs: 122:auto
+  Dests: 140:auto
+(0 2) 140 ARR PRINT B;
+  Origs: 130:auto
+  Dests: 142:auto
+(0 2) 142 PRINT
+  Origs: 140:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 142:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+
