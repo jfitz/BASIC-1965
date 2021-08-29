@@ -1037,7 +1037,7 @@ class Program
 
   public
 
-  def preexecute_loop(interpreter)
+  def check_for_errors(interpreter)
     okay = true
 
     @lines.keys.sort.each do |line_number|
@@ -1055,18 +1055,42 @@ class Program
       end
     end
 
-    if okay
-      @lines.keys.sort.each do |line_number|
-        @line_number = line_number
-        line = @lines[line_number]
-        statements = line.statements
-        statements.each do |statement|
-          begin
-            statement.preexecute(interpreter)
-          rescue BASICPreexecuteError => e
-            @console_io.print_line("Error #{e.code} #{e.message}")
-            okay = false
-          end
+    okay
+  end
+
+  def optimize(interpreter)
+    okay = true
+
+    @lines.keys.sort.each do |line_number|
+      @line_number = line_number
+      line = @lines[line_number]
+      statements = line.statements
+      statements.each do |statement|
+        begin
+          statement.optimize(interpreter)
+        rescue BASICPreexecuteError => e
+          @console_io.print_line("Error #{e.code} #{e.message}")
+          okay = false
+        end
+      end
+    end
+
+    okay
+  end
+
+  def init_data(interpreter)
+    okay = true
+
+    @lines.keys.sort.each do |line_number|
+      @line_number = line_number
+      line = @lines[line_number]
+      statements = line.statements
+      statements.each do |statement|
+        begin
+          statement.init_data(interpreter)
+        rescue BASICPreexecuteError => e
+          @console_io.print_line("Error #{e.code} #{e.message}")
+          okay = false
         end
       end
     end
