@@ -89,8 +89,8 @@ class LineNumberCountRange
   end
 end
 
-# LineNumberIdx class to hold line number and index within line
-class LineNumberIdx
+# LineNumberStmtNumber class to hold line number and index within line
+class LineNumberStmtNumber
   attr_reader :line_number
   attr_reader :statement
 
@@ -118,8 +118,8 @@ class LineNumberIdx
   end
 end
 
-# LineNumberIndex class to hold line number and index within line
-class LineNumberIndex
+# LineNumberStmtNumberModNumber class to hold line number and index within line
+class LineNumberStmtNumberModNumber
   attr_reader :line_number
   attr_reader :statement
   attr_reader :index
@@ -307,7 +307,7 @@ class Line
     index = 0
 
     @statements.each do |statement|
-      line_number_index = LineNumberIndex.new(line_number, index, 0)
+      line_number_index = LineNumberStmtNumberModNumber.new(line_number, index, 0)
       r = statement.okay(program, console_io, line_number_index)
       retval &&= r
       index += 1
@@ -480,7 +480,7 @@ class Program
     # find next statement within the current line
     if statement_index < statements.size - 1
       statement_index += 1
-      return LineNumberIdx.new(line_number, statement_index)
+      return LineNumberStmtNumber.new(line_number, statement_index)
     end
 
     # find the next line
@@ -489,7 +489,7 @@ class Program
     index = line_numbers.index(line_number)
     line_number = line_numbers[index + 1]
 
-    return LineNumberIdx.new(line_number, 0) unless line_number.nil?
+    return LineNumberStmtNumber.new(line_number, 0) unless line_number.nil?
 
     # nothing left to execute
     nil
@@ -508,7 +508,7 @@ class Program
 
     if index < statement.last_index
       index += 1
-      return LineNumberIndex.new(line_number, statement_index, index)
+      return LineNumberStmtNumberModNumber.new(line_number, statement_index, index)
     end
 
     # find next statement within the current line
@@ -516,7 +516,7 @@ class Program
       statement_index += 1
       statement = statements[statement_index]
       index = statement.start_index
-      return LineNumberIndex.new(line_number, statement_index, index)
+      return LineNumberStmtNumberModNumber.new(line_number, statement_index, index)
     end
 
     # find the next line
@@ -530,7 +530,7 @@ class Program
       statements = line.statements
       statement = statements[0]
       index = statement.start_index
-      return LineNumberIndex.new(line_number, 0, index)
+      return LineNumberStmtNumberModNumber.new(line_number, 0, index)
     end
 
     # nothing left to execute
@@ -549,7 +549,7 @@ class Program
       statements = line.statements
       statement = statements[0]
       index = statement.start_index
-      next_line_index = LineNumberIndex.new(line_number, 0, index)
+      next_line_index = LineNumberStmtNumberModNumber.new(line_number, 0, index)
       return next_line_index
     end
 
@@ -883,7 +883,7 @@ class Program
     dests = []
 
     statements.each_with_index do |statement, index|
-      line_number_idx = LineNumberIdx.new(line_number, index)
+      line_number_idx = LineNumberStmtNumber.new(line_number, index)
 
       dests += build_statement_destinations_line(line_number_idx, statement)
     end
@@ -908,7 +908,7 @@ class Program
     statement_gotos = statement.gotos
 
     statement_gotos.each do |goto|
-      goto_line_idxs << LineNumberIdx.new(goto.line_number, 0)
+      goto_line_idxs << LineNumberStmtNumber.new(goto.line_number, 0)
     end
 
     if statement.autonext
@@ -927,7 +927,7 @@ class Program
     gotos = {}
 
     statements.each_with_index do |statement, index|
-      line_number_idx = LineNumberIdx.new(line_number, index)
+      line_number_idx = LineNumberStmtNumber.new(line_number, index)
 
       goto_line_idxs =
         build_statement_destinations_stmt(line_number_idx, statement)
@@ -963,7 +963,7 @@ class Program
 
     # first line is live
     first_line_number = @lines.keys.min
-    first_line_number_idx = LineNumberIdx.new(first_line_number, 0)
+    first_line_number_idx = LineNumberStmtNumber.new(first_line_number, 0)
     reachable[first_line_number_idx] = true
 
     # walk the entire tree and mark lines as live
@@ -976,7 +976,7 @@ class Program
         statements = @lines[line_number].statements
         index = 0
         statements.each do |_|
-          line_number_idx = LineNumberIdx.new(line_number, index)
+          line_number_idx = LineNumberStmtNumber.new(line_number, index)
 
           # only reachable lines can reach other lines
           if reachable[line_number_idx]
@@ -1124,7 +1124,7 @@ class Program
       statement_index = 0
       statements.each do |statement|
         # consider only core statements, not modifiers
-        return LineNumberIndex.new(line_number, statement_index, 0) if
+        return LineNumberStmtNumberModNumber.new(line_number, statement_index, 0) if
           statement.class.to_s == 'NextStatement' &&
           statement.control == control
         statement_index += 1

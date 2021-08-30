@@ -349,7 +349,7 @@ class Interpreter
       modifier = statement.start_index
     end
 
-    LineNumberIndex.new(line_number, 0, modifier)
+    LineNumberStmtNumberModNumber.new(line_number, 0, modifier)
   end
 
   def run_statements
