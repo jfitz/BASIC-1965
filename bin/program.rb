@@ -4,7 +4,7 @@ class LineNumber
 
   def initialize(line_number)
     raise BASICSyntaxError, "Invalid line number object '#{line_number}:#{line_number}'" unless
-      %w[NumericConstantToken NumericConstant].include?(line_number.class.to_s)
+      line_number.class.to_s == 'IntegerConstant'
 
     @line_number = line_number.to_i
 
@@ -371,7 +371,8 @@ class LineListSpec
   private
 
   def make_single(token, program_line_numbers)
-    line_number = LineNumber.new(token)
+    number = IntegerConstant.new(token)
+    line_number = LineNumber.new(number)
 
     @line_numbers << line_number if
       program_line_numbers.include?(line_number)
@@ -380,15 +381,18 @@ class LineListSpec
   end
 
   def make_range(tokens, program_line_numbers)
-    start = LineNumber.new(tokens[0])
-    endline = LineNumber.new(tokens[2])
+    start_number = IntegerConstant.new(tokens[0])
+    start = LineNumber.new(start_number)
+    end_number = IntegerConstant.new(tokens[2])
+    endline = LineNumber.new(end_number)
     range = LineNumberRange.new(start, endline, program_line_numbers)
     @line_numbers = range.list
     @range_type = :range
   end
 
   def make_count_range(tokens, program_line_numbers)
-    start = LineNumber.new(tokens[0])
+    start_number = IntegerConstant.new(tokens[0])
+    start = LineNumber.new(start_number)
     count = 20
     count = NumericConstant.new(tokens[2]).to_i if tokens.size > 2
     range = LineNumberCountRange.new(start, count, program_line_numbers)
@@ -1193,8 +1197,9 @@ class Program
     new_number = start
 
     @lines.keys.sort.each do |line_number|
-      number_token = NumericConstantToken.new(new_number)
-      new_line_number = LineNumber.new(number_token)
+      token = NumericConstantToken.new(new_number)
+      number = IntegerConstant.new(token)
+      new_line_number = LineNumber.new(number)
       renumber_map[line_number] = new_line_number
       new_number += step
     end

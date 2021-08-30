@@ -834,6 +834,353 @@ class NumericConstant < AbstractValueElement
   end
 end
 
+# Integer constants
+class IntegerConstant < AbstractValueElement
+  def self.accept?(token)
+    classes = %w[Fixnum Integer Bignum Float IntegerConstantToken]
+    classes.include?(token.class.to_s)
+  end
+
+  def self.numeric(text)
+    # nnn%
+    text.to_f.to_i if /\A\s*[+-]?\d+%\z/ =~ text
+  end
+
+  def self.new_rand(interpreter, upper_bound)
+    v = interpreter.rand(upper_bound)
+    IntegerConstant.new(v.to_i)
+  end
+
+  attr_reader :symbol_text
+
+  def initialize(text)
+    super()
+
+    numeric_classes = %w[Fixnum Integer Bignum Float NumericConstantToken]
+    f = nil
+    f = text.to_i if numeric_classes.include?(text.class.to_s)
+    f = text.to_f.to_i if text.class.to_s == 'IntegerConstantToken'
+
+    raise BASICSyntaxError.new("'#{text}' is not an integer") if f.nil?
+
+    @symbol_text = text.to_s
+    @content_type = :integer
+    @shape = :scalar
+    @constant = true
+    @value = f
+    @operand = true
+    @precedence = 0
+    @numeric_constant = true
+  end
+
+  def zero?
+    @value.zero?
+  end
+
+  def set_content_type(type_stack)
+    type_stack.push(@content_type)
+  end
+
+  def set_shape(shape_stack)
+    shape_stack.push(@shape)
+  end
+
+  def set_constant(constant_stack)
+    constant_stack.push(@constant)
+  end
+
+  def eql?(other)
+    @value == other.to_v
+  end
+
+  def ==(other)
+    @value == other.to_v
+  end
+
+  def hash
+    @value.hash + @symbol_text.hash
+  end
+
+  def <=>(other)
+    @value <=> other.to_v
+  end
+
+  def >(other)
+    @value > other.to_v
+  end
+
+  def >=(other)
+    @value >= other.to_v
+  end
+
+  def <(other)
+    @value < other.to_v
+  end
+
+  def <=(other)
+    @value <= other.to_v
+  end
+
+  def b_and(other)
+    if other.content_type == :integer && $options['int_bitwise'].value
+      IntegerConstant.new(to_i & other.to_i)
+    else
+      BooleanConstant.new(to_b && other.to_b)
+    end
+  end
+
+  def b_or(other)
+    if other.content_type == :integer && $options['int_bitwise'].value
+      IntegerConstant.new(to_i | other.to_i)
+    else
+      BooleanConstant.new(to_b || other.to_b)
+    end
+  end
+
+  def posate
+    NumericConstant.new(@value)
+  end
+
+  def negate
+    IntegerConstant.new(-@value)
+  end
+
+  def filehandle
+    num = to_i
+    FileHandle.new(num)
+  end
+
+  def not
+    b = ~to_i
+    IntegerConstant.new(b)
+  end
+
+  def +(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value + other.to_v
+    IntegerConstant.new(value)
+  end
+
+  def -(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in -()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value - other.to_v
+    IntegerConstant.new(value)
+  end
+
+  def *(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in *()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value * other.to_v
+    IntegerConstant.new(value)
+  end
+
+  def add(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value + other.to_v
+    IntegerConstant.new(value)
+  end
+
+  def subtract(other)
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in subtract()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value - other.to_v
+    IntegerConstant.new(value)
+  end
+
+  def multiply(other)
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in multiply()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value * other.to_v
+    IntegerConstant.new(value)
+  end
+
+  def divide(other)
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in divide()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+    raise BASICRuntimeError.new(:te_div_zero) if other.zero?
+
+    value = @value.to_f / other.to_v.to_f
+    IntegerConstant.new(value)
+  end
+
+  def power(other)
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in power()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = @value**other.to_v
+    IntegerConstant.new(value)
+  end
+
+  def maximum(other)
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in maximum()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = [@value, other.to_v].max
+    IntegerConstant.new(value)
+  end
+
+  def minimum(other)
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in minimum()"
+
+    raise(BASICExpressionError, message) unless compatible?(other)
+
+    value = [@value, other.to_v].min
+    IntegerConstant.new(value)
+  end
+
+  def truncate
+    value = @value.to_i
+    IntegerConstant.new(value)
+  end
+
+  def floor
+    IntegerConstant.new(@value)
+  end
+
+  def exp
+    value = Math.exp(@value)
+    IntegerConstant.new(value)
+  end
+
+  def log
+    value = @value > 0 ? Math.log(@value) : 0
+    IntegerConstant.new(value)
+  end
+
+  def log10
+    value = @value > 0 ? Math.log10(@value) : 0
+    IntegerConstant.new(value)
+  end
+
+  def log2
+    value = @value > 0 ? Math.log2(@value) : 0
+    IntegerConstant.new(value)
+  end
+
+  def mod(other)
+    value = other.to_numeric != 0 ? @value % other.to_numeric.to_v : 0
+    IntegerConstant.new(value)
+  end
+
+  def abs
+    value = @value >= 0 ? @value : -@value
+    IntegerConstant.new(value)
+  end
+
+  def sqrt
+    value = @value > 0 ? Math.sqrt(@value) : 0
+    IntegerConstant.new(value)
+  end
+
+  def sin
+    value = Math.sin(@value)
+    IntegerConstant.new(value)
+  end
+
+  def cos
+    value = Math.cos(@value)
+    IntegerConstant.new(value)
+  end
+
+  def tan
+    value = @value >= 0 ? Math.tan(@value) : 0
+    IntegerConstant.new(value)
+  end
+
+  def atn
+    value = Math.atan(@value)
+    IntegerConstant.new(value)
+  end
+
+  def max(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in max()"
+    raise(BASICExpressionError, message) unless compatible?(other)
+    @value = [to_v, other.to_v].max
+  end
+
+  def min(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in =="
+    raise(BASICExpressionError, message) unless compatible?(other)
+    @value = [to_v, other.to_v].min
+  end
+
+  def sign
+    result = 0
+    result = 1 if @value > 0
+    result = -1 if @value < 0
+    IntegerConstant.new(result)
+  end
+
+  def to_i
+    @value.to_i
+  end
+
+  def to_f
+    @value.to_i
+  end
+
+  def to_s
+    @value.to_s
+  end
+
+  def to_b
+    !@value.to_i.zero?
+  end
+
+  def to_numeric
+    IntegerConstant.new(@value)
+  end
+
+  def print(printer)
+    s = to_formatted_s
+    s = s.upcase
+    printer.print_item s
+    printer.last_was_numeric
+  end
+
+  def write(printer)
+    s = to_formatted_s
+    s = s.upcase
+    printer.print_item s
+  end
+
+  def compatible?(other)
+    other.numeric_constant?
+  end
+
+  private
+
+  def to_formatted_s
+    lead_space = @value >= 0 ? ' ' : ''
+    digits = @value.to_s
+    lead_space + digits
+  end
+end
+
 # Text constants
 class TextConstant < AbstractValueElement
   def self.accept?(token)

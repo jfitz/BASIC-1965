@@ -607,7 +607,8 @@ class Interpreter
       tokens_lists.each do |tokens_list|
         if tokens_list.size == 1
           begin
-            line_number = LineNumber.new(tokens_list[0])
+            number = IntegerConstant.new(tokens_list[0])
+            line_number = LineNumber.new(number)
             @line_breakpoints[line_number] = ''
           rescue BASICSyntaxError
             tkns = tokens_list.map(&:to_s).join
@@ -615,7 +616,8 @@ class Interpreter
           end
         else # tokens_list.size > 1
           begin
-            line_number = LineNumber.new(tokens_list[0])
+            number = IntegerConstant.new(tokens_list[0])
+            line_number = LineNumber.new(number)
 
             raise(BASICSyntaxError, 'Invalid expression') unless
               tokens_list[1].keyword? && tokens_list[1].to_s == 'IF'
@@ -661,7 +663,8 @@ class Interpreter
       tokens_lists.each do |tokens_list|
         if tokens_list.size == 1
           begin
-            line_number = LineNumber.new(tokens_list[0])
+            number = IntegerConstant.new(tokens_list[0])
+            line_number = LineNumber.new(number)
             # TODO: distinguish between line and condition breakpoints
             @line_breakpoints.delete(line_number)
             @line_cond_breakpoints.delete(line_number)

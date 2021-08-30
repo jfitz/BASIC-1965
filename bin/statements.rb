@@ -15,7 +15,8 @@ class StatementFactory
     m = /\A\d+/.match(text)
 
     unless m.nil?
-      number = NumericConstantToken.new(m[0])
+      token = NumericConstantToken.new(m[0])
+      number = IntegerConstant.new(token)
       line_number = LineNumber.new(number)
       line_text = m.post_match
       all_tokens = tokenize(line_text)
@@ -1419,7 +1420,8 @@ class GosubStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       if tokens_lists[0][0].numeric_constant?
-        @destination = LineNumber.new(tokens_lists[0][0])
+        number = IntegerConstant.new(tokens_lists[0][0])
+        @destination = LineNumber.new(number)
         @linenums = [@destination]
 
         if @destination > line_number
@@ -1488,7 +1490,8 @@ class GotoStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       if tokens_lists[0][0].numeric_constant?
-        @destination = LineNumber.new(tokens_lists[0][0])
+        number = IntegerConstant.new(tokens_lists[0][0])
+        @destination = LineNumber.new(number)
         @linenums = [@destination]
 
         if @destination > line_number
@@ -1630,7 +1633,8 @@ class IfStatement < AbstractIfStatement
 
     if check_template(tokens_lists, template)
       begin
-        @destination = LineNumber.new(tokens_lists[2][0])
+        number = IntegerConstant.new(tokens_lists[2][0])
+        @destination = LineNumber.new(number)
         @linenums = [@destination]
 
         if @destination > line_number
