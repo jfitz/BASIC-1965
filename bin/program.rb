@@ -91,64 +91,66 @@ end
 
 # LineNumberIdx class to hold line number and index within line
 class LineNumberIdx
-  attr_reader :number
+  attr_reader :line_number
   attr_reader :statement
 
-  def initialize(number, statement)
-    @number = number
+  def initialize(line_number, statement)
+    raise BASICError.new("line_number class is #{line_number.class}") unless line_number.class.to_s == 'LineNumber'
+    @line_number = line_number
     @statement = statement
   end
 
   def eql?(other)
-    @number == other.number && @statement == other.statement
+    @line_number == other.line_number && @statement == other.statement
   end
 
   def ==(other)
-    @number == other.number && @statement == other.statement
+    @line_number == other.line_number && @statement == other.statement
   end
 
   def hash
-    @number.hash + @statement.hash
+    @line_number.hash + @statement.hash
   end
 
   def to_s
-    return @number.to_s if @statement.zero?
-    @number.to_s + '.' + @statement.to_s
+    return @line_number.to_s if @statement.zero?
+    @line_number.to_s + '.' + @statement.to_s
   end
 end
 
 # LineNumberIndex class to hold line number and index within line
 class LineNumberIndex
-  attr_reader :number
+  attr_reader :line_number
   attr_reader :statement
   attr_reader :index
 
-  def initialize(number, statement, index)
-    @number = number
+  def initialize(line_number, statement, index)
+    raise BASICError.new("line_number class is #{line_number.class}") unless line_number.class.to_s == 'LineNumber'
+    @line_number = line_number
     @statement = statement
     @index = index
   end
 
   def eql?(other)
-    @number == other.number &&
+    @line_number == other.line_number &&
       @statement == other.statement &&
       @index == other.index
   end
 
   def ==(other)
-    @number == other.number &&
+    @line_number == other.line_number &&
       @statement == other.statement &&
       @index == other.index
   end
 
   def hash
-    @number.hash + @statement.hash + @index.hash
+    @line_number.hash + @statement.hash + @index.hash
   end
 
   def to_s
-    return @number.to_s if @statement.zero? && @index.zero?
-    return @number.to_s + '.' + @statement.to_s if @index.zero?
-    @number.to_s + '.' + @statement.to_s + '.' + @index.to_s
+    return @line_number.to_s if @statement.zero? && @index.zero?
+    return @line_number.to_s + '.' + @statement.to_s if @index.zero?
+    @line_number.to_s + '.' + @statement.to_s + '.' + @index.to_s
   end
 end
 
@@ -469,7 +471,7 @@ class Program
 
   def find_next_line_idx(current_line_idx)
     # find next index with current statement
-    line_number = current_line_idx.number
+    line_number = current_line_idx.line_number
     line = @lines[line_number]
 
     statements = line.statements
@@ -483,7 +485,7 @@ class Program
 
     # find the next line
     line_numbers = @lines.keys.sort
-    line_number = current_line_idx.number
+    line_number = current_line_idx.line_number
     index = line_numbers.index(line_number)
     line_number = line_numbers[index + 1]
 
@@ -495,7 +497,7 @@ class Program
 
   def find_next_line_index(current_line_index)
     # find next index with current statement
-    line_number = current_line_index.number
+    line_number = current_line_index.line_number
     line = @lines[line_number]
 
     statements = line.statements
@@ -519,7 +521,7 @@ class Program
 
     # find the next line
     line_numbers = @lines.keys.sort
-    line_number = current_line_index.number
+    line_number = current_line_index.line_number
     index = line_numbers.index(line_number)
     line_number = line_numbers[index + 1]
 
@@ -538,7 +540,7 @@ class Program
   def find_next_line(current_line_index)
     # find next numbered statement
     line_numbers = @lines.keys.sort
-    line_number = current_line_index.number
+    line_number = current_line_index.line_number
     index = line_numbers.index(line_number)
     line_number = line_numbers[index + 1]
 
@@ -864,8 +866,8 @@ class Program
       next_line_idx = find_next_line_idx(line_number_idx)
 
       unless next_line_idx.nil?
-        next_line_number = next_line_idx.number
-        line_number = line_number_idx.number
+        next_line_number = next_line_idx.line_number
+        line_number = line_number_idx.line_number
 
         statement_gotos << TransferRef.new(next_line_number, :auto) unless
           next_line_number == line_number
@@ -996,7 +998,7 @@ class Program
     # build list of lines that are not reachable
     lines = []
     reachable.keys.each do |line_number_idx|
-      line_number = line_number_idx.number
+      line_number = line_number_idx.line_number
       index = line_number_idx.statement
       statements = @lines[line_number].statements
       statement = statements[index]
@@ -1100,7 +1102,7 @@ class Program
 
   def find_closing_next(control, current_line_index)
     # move to the next statement
-    line_number = current_line_index.number
+    line_number = current_line_index.line_number
     line = @lines[line_number]
     statements = line.statements
     statement_index = current_line_index.statement + 1
@@ -1108,10 +1110,10 @@ class Program
 
     if statement_index < statements.size
       forward_line_numbers =
-        line_numbers.select { |ln| ln >= current_line_index.number }
+        line_numbers.select { |ln| ln >= current_line_index.line_number }
     else
       forward_line_numbers =
-        line_numbers.select { |ln| ln > current_line_index.number }
+        line_numbers.select { |ln| ln > current_line_index.line_number }
     end
 
     # search for a NEXT with the same control variable

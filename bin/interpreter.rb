@@ -219,9 +219,9 @@ class Interpreter
     raise BASICSyntaxError, 'Program terminated without END' if
       @next_line_index.nil?
 
-    return if @program.line_number?(@next_line_index.number)
+    return if @program.line_number?(@next_line_index.line_number)
 
-    raise(BASICSyntaxError, "Line number #{@next_line_index.number} not found")
+    raise(BASICSyntaxError, "Line number #{@next_line_index.line_number} not found")
   end
 
   public
@@ -381,7 +381,7 @@ class Interpreter
 
     @previous_line_indexes << @current_line_index
 
-    line_number = @current_line_index.number
+    line_number = @current_line_index.line_number
     line = @program.lines[line_number]
     statements = line.statements
     statement_index = @current_line_index.statement
@@ -448,7 +448,7 @@ class Interpreter
   end
 
   def debug_shell
-    current_line_number = @current_line_index.number
+    current_line_number = @current_line_index.line_number
     line = @program.lines[current_line_number]
     @console_io.newline_when_needed
     text = current_line_number.to_s + ': ' + line.pretty(false).join('')
@@ -487,7 +487,7 @@ class Interpreter
     next_line_index = nil
     next_line_index = @next_line_index.clone unless @next_line_index.nil?
 
-    line_number = @current_line_index.number
+    line_number = @current_line_index.line_number
     line_statement = @current_line_index.statement
     line_index = @current_line_index.index
 
@@ -544,7 +544,7 @@ class Interpreter
         if @current_line_index.nil?
           @console_io.print_line("Error #{e.code} #{e.message}")
         else
-          line_number = @current_line_index.number
+          line_number = @current_line_index.line_number
           @console_io.print_line("Error #{e.code} #{e.message} in line #{line_number}")
         end
 
@@ -556,7 +556,7 @@ class Interpreter
       if @current_line_index.nil?
         @console_io.print_line(e.message)
       else
-        line_number = @current_line_index.number
+        line_number = @current_line_index.line_number
         @console_io.print_line("#{e.message} in line #{line_number}")
       end
 
@@ -821,7 +821,7 @@ class Interpreter
 
   def stop
     stop_running
-    @console_io.print_line("STOP in line #{@current_line_index.number}")
+    @console_io.print_line("STOP in line #{@current_line_index.line_number}")
   end
 
   def stop_running
