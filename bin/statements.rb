@@ -1311,7 +1311,10 @@ class ForStatement < AbstractStatement
 
     unless @end.nil?
       to = @end.evaluate(interpreter)[0]
-      fornext_control = ForToControl.new(@control, from, step, to)
+      start_line_stmt_mod = interpreter.next_line_stmt_mod
+
+      fornext_control =
+        ForToControl.new(@control, from, step, to, start_line_stmt_mod)
     end
 
     interpreter.assign_fornext(fornext_control)
@@ -1461,7 +1464,7 @@ class GosubStatement < AbstractStatement
 
     raise(BASICSyntaxError, 'Line number not found') if index.nil?
 
-    destination = LineNumberStmtNumberModNumber.new(line_number, 0, index)
+    destination = LineStmtMod.new(line_number, 0, index)
     interpreter.push_return(interpreter.next_line_stmt_mod)
     interpreter.next_line_stmt_mod = destination
   end
@@ -1531,7 +1534,7 @@ class GotoStatement < AbstractStatement
 
     raise(BASICSyntaxError, 'Line number not found') if index.nil?
 
-    destination = LineNumberStmtNumberModNumber.new(line_number, 0, index)
+    destination = LineStmtMod.new(line_number, 0, index)
     interpreter.next_line_stmt_mod = destination
   end
 
@@ -1565,7 +1568,7 @@ class AbstractIfStatement < AbstractStatement
 
       raise(BASICSyntaxError, 'Line number not found') if index.nil?
 
-      destination = LineNumberStmtNumberModNumber.new(line_number, 0, index)
+      destination = LineStmtMod.new(line_number, 0, index)
       interpreter.next_line_stmt_mod = destination
     end
 
@@ -1879,7 +1882,7 @@ class NextStatement < AbstractStatement
       interpreter.exit_fornext(fornext_control.forget, fornext_control.control)
     else
       # set next line from top item
-      interpreter.next_line_stmt_mod = fornext_control.loop_start_index
+      interpreter.next_line_stmt_mod = fornext_control.start_line_stmt_mod
       # change control variable value for FOR-TO
       fornext_control.bump_control(interpreter) unless bump_early
     end
