@@ -1128,7 +1128,7 @@ class EndStatement < AbstractStatement
   end
 
   def okay(program, console_io, line_number_index)
-    next_line = program.find_next_line_index(line_number_index)
+    next_line = program.find_next_line_stmt_mod(line_number_index)
 
     return true if next_line.nil?
 
@@ -1321,7 +1321,7 @@ class ForStatement < AbstractStatement
     terminated = fornext_control.front_terminated?(interpreter)
 
     if terminated
-      interpreter.next_line_index = interpreter.find_closing_next(@control)
+      interpreter.next_line_stmt_mod = interpreter.find_closing_next(@control)
     end
 
     untilv = nil
@@ -1462,8 +1462,8 @@ class GosubStatement < AbstractStatement
     raise(BASICSyntaxError, 'Line number not found') if index.nil?
 
     destination = LineNumberStmtNumberModNumber.new(line_number, 0, index)
-    interpreter.push_return(interpreter.next_line_index)
-    interpreter.next_line_index = destination
+    interpreter.push_return(interpreter.next_line_stmt_mod)
+    interpreter.next_line_stmt_mod = destination
   end
 
   def renumber(renumber_map)
@@ -1532,7 +1532,7 @@ class GotoStatement < AbstractStatement
     raise(BASICSyntaxError, 'Line number not found') if index.nil?
 
     destination = LineNumberStmtNumberModNumber.new(line_number, 0, index)
-    interpreter.next_line_index = destination
+    interpreter.next_line_stmt_mod = destination
   end
 
   def renumber(renumber_map)
@@ -1566,7 +1566,7 @@ class AbstractIfStatement < AbstractStatement
       raise(BASICSyntaxError, 'Line number not found') if index.nil?
 
       destination = LineNumberStmtNumberModNumber.new(line_number, 0, index)
-      interpreter.next_line_index = destination
+      interpreter.next_line_stmt_mod = destination
     end
 
     s = ' ' + @expression.to_s + ': ' + result.to_s
@@ -1879,7 +1879,7 @@ class NextStatement < AbstractStatement
       interpreter.exit_fornext(fornext_control.forget, fornext_control.control)
     else
       # set next line from top item
-      interpreter.next_line_index = fornext_control.loop_start_index
+      interpreter.next_line_stmt_mod = fornext_control.loop_start_index
       # change control variable value for FOR-TO
       fornext_control.bump_control(interpreter) unless bump_early
     end
@@ -2101,7 +2101,7 @@ class ReturnStatement < AbstractStatement
   end
 
   def execute(interpreter)
-    interpreter.next_line_index = interpreter.pop_return
+    interpreter.next_line_stmt_mod = interpreter.pop_return
   end
 end
 

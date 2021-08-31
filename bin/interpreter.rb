@@ -144,8 +144,8 @@ end
 # the interpreter
 class Interpreter
   attr_writer :program
-  attr_reader :current_line_index
-  attr_accessor :next_line_index
+  attr_reader :current_line_stmt_mod
+  attr_accessor :next_line_stmt_mod
   attr_reader :console_io
   attr_reader :trace_out
 
@@ -215,13 +215,13 @@ class Interpreter
     tokenbuilders << WhitespaceTokenBuilder.new
   end
 
-  def verify_next_line_index
+  def verify_next_line_stmt_mod
     raise BASICSyntaxError, 'Program terminated without END' if
-      @next_line_index.nil?
+      @next_line_stmt_mod.nil?
 
-    return if @program.line_number?(@next_line_index.line_number)
+    return if @program.line_number?(@next_line_stmt_mod.line_number)
 
-    raise(BASICSyntaxError, "Line number #{@next_line_index.line_number} not found")
+    raise(BASICSyntaxError, "Line number #{@next_line_stmt_mod.line_number} not found")
   end
 
   public
@@ -355,7 +355,7 @@ class Interpreter
   def run_statements
     # run each statement
     # start with the first line number
-    @current_line_index = find_first_statement
+    @current_line_stmt_mod = find_first_statement
 
     @running = true
 
@@ -377,18 +377,18 @@ class Interpreter
     detect = $options['detect_infinite_loop'].value
 
     raise(BASICSyntaxError, 'Infinite loop detected') if
-      detect && @previous_line_indexes.include?(@current_line_index)
+      detect && @previous_line_indexes.include?(@current_line_stmt_mod)
 
-    @previous_line_indexes << @current_line_index
+    @previous_line_indexes << @current_line_stmt_mod
 
-    line_number = @current_line_index.line_number
+    line_number = @current_line_stmt_mod.line_number
     line = @program.lines[line_number]
     statements = line.statements
-    statement_index = @current_line_index.statement
+    statement_index = @current_line_stmt_mod.statement
     statement = statements[statement_index]
 
-    statement.print_trace_info(@trace_out, @current_line_index)
-    statement.execute_a_statement(self, @current_line_index)
+    statement.print_trace_info(@trace_out, @current_line_stmt_mod)
+    statement.execute_a_statement(self, @current_line_stmt_mod)
   end
 
   def execute_debug_command(keyword, args, cmd)
@@ -448,7 +448,7 @@ class Interpreter
   end
 
   def debug_shell
-    current_line_number = @current_line_index.line_number
+    current_line_number = @current_line_stmt_mod.line_number
     line = @program.lines[current_line_number]
     @console_io.newline_when_needed
     text = current_line_number.to_s + ': ' + line.pretty(false).join('')
@@ -483,13 +483,17 @@ class Interpreter
 
   def program_loop
     # pick the next line number
-    @next_line_index = @program.find_next_line_index(@current_line_index)
-    next_line_index = nil
-    next_line_index = @next_line_index.clone unless @next_line_index.nil?
+    @next_line_stmt_mod =
+      @program.find_next_line_stmt_mod(@current_line_stmt_mod)
 
-    line_number = @current_line_index.line_number
-    line_statement = @current_line_index.statement
-    line_index = @current_line_index.index
+    next_line_stmt_mod = nil
+
+    next_line_stmt_mod = @next_line_stmt_mod.clone unless
+      @next_line_stmt_mod.nil?
+
+    line_number = @current_line_stmt_mod.line_number
+    line_statement = @current_line_stmt_mod.statement
+    line_index = @current_line_stmt_mod.index
 
     breakpoint = false
 
@@ -515,13 +519,13 @@ class Interpreter
     # check step mode
     breakpoint = true if @step_mode
 
-    # debug shell may change @next_line_index
+    # debug shell may change @next_line_stmt_mod
     debug_shell if breakpoint
 
     # if next line number has changed, debug_shell executed a GOTO
-    if @next_line_index != next_line_index
-      @current_line_index = @next_line_index
-      @next_line_index = @program.find_next_line_index(@current_line_index)
+    if @next_line_stmt_mod != next_line_stmt_mod
+      @current_line_stmt_mod = @next_line_stmt_mod
+      @next_line_stmt_mod = @program.find_next_line_stmt_mod(@current_line_stmt_mod)
     end
 
     begin
@@ -529,22 +533,22 @@ class Interpreter
       @get_value_seen = []
 
       # set the next line number
-      @current_line_index = nil
+      @current_line_stmt_mod = nil
 
       if @running
-        verify_next_line_index
-        @current_line_index = @next_line_index
+        verify_next_line_stmt_mod
+        @current_line_stmt_mod = @next_line_stmt_mod
       end
     rescue BASICTrappableError => e
       @console_io.newline_when_needed
 
-      if @current_line_index.nil?
+      if @current_line_stmt_mod.nil?
         @console_io.print_line(e.message)
       else
-        if @current_line_index.nil?
+        if @current_line_stmt_mod.nil?
           @console_io.print_line("Error #{e.code} #{e.message}")
         else
-          line_number = @current_line_index.line_number
+          line_number = @current_line_stmt_mod.line_number
           @console_io.print_line("Error #{e.code} #{e.message} in line #{line_number}")
         end
 
@@ -553,10 +557,10 @@ class Interpreter
     rescue BASICSyntaxError => e
       @console_io.newline_when_needed
 
-      if @current_line_index.nil?
+      if @current_line_stmt_mod.nil?
         @console_io.print_line(e.message)
       else
-        line_number = @current_line_index.line_number
+        line_number = @current_line_stmt_mod.line_number
         @console_io.print_line("#{e.message} in line #{line_number}")
       end
 
@@ -723,7 +727,7 @@ class Interpreter
   end
 
   def find_next_line
-    @program.find_next_line(@current_line_index)
+    @program.find_next_line(@current_line_stmt_mod)
   end
 
   def statement_start_index(line_number, _statement_index)
@@ -824,7 +828,7 @@ class Interpreter
 
   def stop
     stop_running
-    @console_io.print_line("STOP in line #{@current_line_index.line_number}")
+    @console_io.print_line("STOP in line #{@current_line_stmt_mod.line_number}")
   end
 
   def stop_running
@@ -844,7 +848,7 @@ class Interpreter
   end
 
   def find_closing_next(control)
-    @program.find_closing_next(control, @current_line_index)
+    @program.find_closing_next(control, @current_line_stmt_mod)
   end
 
   def set_dimensions(variable, subscripts)
@@ -1008,7 +1012,7 @@ class Interpreter
         # define a value for this variable
         @variables[var] =
           {
-            'provenance' => @current_line_index,
+            'provenance' => @current_line_stmt_mod,
             'value' => NumericConstant.new(0)
           }
       end
@@ -1068,7 +1072,7 @@ class Interpreter
       old_value = dict['value']
       old_provenance = dict['provenance']
       # a different value resets 'infinite loop' check
-      if value != old_value || @current_line_index != old_provenance
+      if value != old_value || @current_line_stmt_mod != old_provenance
         clear_previous_lines
       end
     else
@@ -1076,7 +1080,7 @@ class Interpreter
       clear_previous_lines
     end
 
-    dict = { 'provenance' => @current_line_index, 'value' => value }
+    dict = { 'provenance' => @current_line_stmt_mod, 'value' => value }
     @variables[var] = dict
 
     @trace_out.newline_when_needed
@@ -1253,7 +1257,7 @@ class Interpreter
     control = fornext_control.control
     v = control.to_s
     fornext_control.forget = !@variables.key?(v)
-    fornext_control.loop_start_index = @next_line_index
+    fornext_control.loop_start_index = @next_line_stmt_mod
     @fornexts[control] = fornext_control
     from = fornext_control.start
     set_value(control, from)
