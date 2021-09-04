@@ -11,6 +11,7 @@ class AbstractElement
   attr_reader :precedence
 
   def initialize
+    @empty = false
     @operator = false
     @function = false
     @user_function = false
@@ -39,6 +40,10 @@ class AbstractElement
 
   def dump
     "#{self.class}:Unimplemented"
+  end
+
+  def empty?
+    @empty
   end
 
   def keyword?
@@ -1712,6 +1717,17 @@ class UserFunctionName < AbstractElement
 
   def to_s
     @name.to_s
+  end
+end
+
+# empty variable, used only for NEXT without control variable
+class EmptyVariable
+  def name
+    EmptyToken.new
+  end
+
+  def empty?
+    true
   end
 end
 

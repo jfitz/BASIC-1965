@@ -263,6 +263,7 @@ class Interpreter
   end
 
   def program_analyze
+    @program.optimize(self)
     @program.analyze
   end
 
@@ -328,7 +329,18 @@ class Interpreter
     if @program.check_for_errors(self) &&
        @program.optimize(self)
        @program.init_data(self)
-      run_statements
+      begin
+        # run each statement
+        # start with the first line number
+        @current_line_stmt_mod = find_first_statement
+        @running = true
+
+        execute_step while @running
+      rescue Interrupt
+        stop_running
+      end
+
+      close_all_files
     end
   end
 
@@ -350,22 +362,6 @@ class Interpreter
     end
 
     LineStmtMod.new(line_number, 0, modifier)
-  end
-
-  def run_statements
-    # run each statement
-    # start with the first line number
-    @current_line_stmt_mod = find_first_statement
-
-    @running = true
-
-    begin
-      program_loop while @running
-    rescue Interrupt
-      stop_running
-    end
-
-    close_all_files
   end
 
   def print_errors(line_number, statement)
@@ -481,7 +477,7 @@ class Interpreter
     end
   end
 
-  def program_loop
+  def execute_step
     # pick the next line number
     @next_line_stmt_mod =
       @program.find_next_line_stmt_mod(@current_line_stmt_mod)
@@ -849,10 +845,6 @@ class Interpreter
     clear_previous_lines
 
     @randomizer.rand(upper_bound)
-  end
-
-  def find_closing_next(control)
-    @program.find_closing_next(control, @current_line_stmt_mod)
   end
 
   def set_dimensions(variable, subscripts)

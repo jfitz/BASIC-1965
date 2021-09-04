@@ -353,7 +353,8 @@ class AbstractStatement
     errors.empty?
   end
 
-  def optimize(interpreter)
+  def optimize(interpreter, line_stmt_mod, program)
+    set_for_lines(interpreter, line_stmt_mod, program)
     define_user_functions(interpreter)
   end
 
@@ -367,6 +368,12 @@ class AbstractStatement
     trace_out.print_out current_line_number.to_s + ': ' + pretty
     trace_out.newline
   end
+
+  def number_for_stmts
+    0
+  end
+
+  def set_for_lines (_, _, _) end
 
   private
 
@@ -609,6 +616,10 @@ class InvalidStatement < AbstractStatement
   end
 
   def define_user_functions(_)
+    raise(BASICSyntaxError, @errors[0])
+  end
+
+  def set_for_lines(_, _, _)
     raise(BASICSyntaxError, @errors[0])
   end
 
@@ -1009,9 +1020,9 @@ class DefineFunctionStatement < AbstractStatement
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
-      @definition = nil
       begin
         @definition = UserFunctionDefinition.new(tokens_lists[0])
+
         @elements = make_references(nil, @definition)
         @comprehension_effort += @definition.comprehension_effort
       rescue BASICError => e
@@ -1030,11 +1041,15 @@ class DefineFunctionStatement < AbstractStatement
   end
 
   def define_user_functions(interpreter)
-    name = @definition.name
-    sigils = @definition.sigils
-    interpreter.set_user_function(name, sigils, @definition)
-  rescue BASICRuntimeError => e
-    raise BASICPreexecuteError.new(e.scode, e.extra)
+    unless @definition.nil?
+      begin
+        name = @definition.name
+        sigils = @definition.sigils
+        interpreter.set_user_function(name, sigils, @definition)
+      rescue BASICRuntimeError => e
+        raise BASICPreexecuteError.new(e.scode, e.extra)
+      end
+    end
   end
 
   def execute(_) end
@@ -1295,6 +1310,15 @@ class ForStatement < AbstractStatement
     @end.uncache unless @end.nil?
   end
 
+  def set_for_lines(interpreter, line_stmt_mod, program)
+    @loopstart_line_stmt_mod = program.find_next_line_stmt_mod(line_stmt_mod)
+
+    unless @control.nil?
+      @nextstmt_line_stmt_mod =
+        program.find_closing_next_line_stmt_mod(@control, line_stmt_mod)
+    end
+  end
+
   def dump
     lines = []
     lines << 'control: ' + @control.dump unless @control.nil?
@@ -1311,10 +1335,9 @@ class ForStatement < AbstractStatement
 
     unless @end.nil?
       to = @end.evaluate(interpreter)[0]
-      start_line_stmt_mod = interpreter.next_line_stmt_mod
 
       fornext_control =
-        ForToControl.new(@control, from, step, to, start_line_stmt_mod)
+        ForToControl.new(@control, from, step, to, @loopstart_line_stmt_mod)
     end
 
     interpreter.assign_fornext(fornext_control)
@@ -1324,13 +1347,17 @@ class ForStatement < AbstractStatement
     terminated = fornext_control.front_terminated?(interpreter)
 
     if terminated
-      interpreter.next_line_stmt_mod = interpreter.find_closing_next(@control)
+      interpreter.next_line_stmt_mod = @nextstmt_line_stmt_mod
     end
 
     untilv = nil
     whilev = nil
     io = interpreter.trace_out
     print_more_trace_info(io, from, to, step, untilv, whilev, terminated)
+  end
+
+  def number_for_stmts
+    1
   end
 
   private

@@ -152,6 +152,11 @@ class LineStmtMod
     return @line_number.to_s + '.' + @statement.to_s if @index.zero?
     @line_number.to_s + '.' + @statement.to_s + '.' + @index.to_s
   end
+
+  def get_counterpart
+    other_mod = -@index
+    LineStmtMod.new(@line_number, @statement, other_mod)
+  end
 end
 
 # Line class to hold a line of code
@@ -1035,7 +1040,7 @@ class Program
           okay &=
           statement.check_for_errors(line_number, interpreter, @console_io)
         rescue BASICPreexecuteError => e
-          @console_io.print_line("Error #{e.code} #{e.message}")
+          @console_io.print_line("Error #{e.code} #{e.message} in line #{line_number}")
           okay = false
         end
       end
@@ -1051,11 +1056,13 @@ class Program
       @line_number = line_number
       line = @lines[line_number]
       statements = line.statements
-      statements.each do |statement|
+      statements.each_with_index do |statement, index|
+        mod = statement.start_index
+        line_stmt_mod = LineStmtMod.new(line_number, index, mod)
         begin
-          statement.optimize(interpreter)
+          statement.optimize(interpreter, line_stmt_mod, self)
         rescue BASICPreexecuteError => e
-          @console_io.print_line("Error #{e.code} #{e.message}")
+          @console_io.print_line("Error #{e.code} #{e.message} in line #{line_number}")
           okay = false
         end
       end
@@ -1075,7 +1082,7 @@ class Program
         begin
           statement.init_data(interpreter)
         rescue BASICPreexecuteError => e
-          @console_io.print_line("Error #{e.code} #{e.message}")
+          @console_io.print_line("Error #{e.code} #{e.message} in line #{line_number}")
           okay = false
         end
       end
@@ -1084,7 +1091,7 @@ class Program
     okay
   end
 
-  def find_closing_next(control, current_line_stmt_mod)
+  def find_closing_next_line_stmt_mod(control, current_line_stmt_mod)
     # move to the next statement
     line_number = current_line_stmt_mod.line_number
     line = @lines[line_number]
@@ -1092,33 +1099,41 @@ class Program
     statement_index = current_line_stmt_mod.statement + 1
     line_numbers = @lines.keys.sort
 
-    if statement_index < statements.size
-      forward_line_numbers =
-        line_numbers.select { |ln| ln >= current_line_stmt_mod.line_number }
-    else
-      forward_line_numbers =
-        line_numbers.select { |ln| ln > current_line_stmt_mod.line_number }
-    end
+    walk_line_stmt = current_line_stmt_mod
 
     # search for a NEXT with the same control variable
-    until forward_line_numbers.empty?
-      line_number = forward_line_numbers[0]
+    for_level = 0
+
+    until walk_line_stmt.nil?
+      line_number = walk_line_stmt.line_number
+      stmt = walk_line_stmt.statement
       line = @lines[line_number]
-      statements = line.statements
-      statement_index = 0
-      statements.each do |statement|
-        # consider only core statements, not modifiers
-        return LineStmtMod.new(line_number, statement_index, 0) if
-          statement.class.to_s == 'NextStatement' &&
-          statement.control == control
-        statement_index += 1
+
+      statement = @lines[line_number].statements[stmt]
+
+      for_level += statement.number_for_stmts
+
+      # consider only core statements, not modifiers
+
+      if statement.class.to_s == 'NextStatement'
+        stmt_control = statement.control
+
+        for_level -= 1
+
+        raise BASICPreexecuteError.new(:te_for_no_next, control.to_s) if
+          for_level < 0
+
+        if stmt_control == control ||
+           stmt_control.empty? && for_level.zero?
+          return LineStmtMod.new(line_number, stmt, 0)
+        end
       end
 
-      forward_line_numbers.shift
+      walk_line_stmt = find_next_line_stmt(walk_line_stmt)
     end
 
     # if none found, error
-    raise(BASICSyntaxError, 'FOR without NEXT')
+    raise BASICPreexecuteError.new(:te_for_no_next, control.to_s)
   end
 
   def profile(args, show_timing)
