@@ -39,12 +39,12 @@ Halstead complexity:
   Dests: 60:auto
 (1 4) 60 FOR X = 0 TO 90 STEP 10
   Origs: 50:auto
-  Dests: 70:auto
+  Dests: 70:fornext, 80:fornext
 (0 8) 70 PRINT X, FNR(FNS(X)), FNR(FNC(X))
-  Origs: 60:auto
+  Origs: 60:fornext
   Dests: 80:auto
 (0 1) 80 NEXT X
-  Origs: 70:auto
+  Origs: 60:fornext, 70:auto
   Dests: 99:auto
 (0 1) 99 END
   Origs: 80:auto

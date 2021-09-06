@@ -45,15 +45,15 @@ Halstead complexity:
   Dests: 80:auto
 (1 4) 80 FOR I = 1 TO N - 1
   Origs: 70:auto
-  Dests: 90:auto
+  Dests: 90:fornext, 110:fornext
 (0 6) 90 LET K = 1 - (I / M)
-  Origs: 80:auto
+  Origs: 80:fornext
   Dests: 100:auto
 (0 4) 100 LET J = J * K
   Origs: 90:auto
   Dests: 110:auto
 (0 1) 110 NEXT I
-  Origs: 100:auto
+  Origs: 80:fornext, 100:auto
   Dests: 120:auto
 (0 3) 120 PRINT "PROBABILITY = "; J
   Origs: 110:auto

@@ -1216,6 +1216,8 @@ class ForStatement < AbstractStatement
   def initialize(_, keywords, tokens_lists)
     super
 
+    @autonext = false
+
     template_to = [[1, '>='], 'TO', [1, '>=']]
     template_to_step = [[1, '>='], 'TO', [1, '>='], 'STEP', [1, '>=']]
     template_step_to = [[1, '>='], 'STEP', [1, '>='], 'TO', [1, '>=']]
@@ -1328,7 +1330,31 @@ class ForStatement < AbstractStatement
     lines
   end
 
+  def gotos
+    goto_refs = []
+
+    unless @loopstart_line_stmt_mod.nil?
+      line_number = @loopstart_line_stmt_mod.line_number
+      statement = @loopstart_line_stmt_mod.statement
+      goto_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
+    end
+    
+    unless @nextstmt_line_stmt_mod.nil?
+      line_number = @nextstmt_line_stmt_mod.line_number
+      statement = @loopstart_line_stmt_mod.statement
+      goto_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
+    end
+      
+    goto_refs
+  end
+
   def execute(interpreter)
+    raise BASICSyntaxError.new("uninitialized FOR") if
+      @loopstart_line_stmt_mod.nil?
+
+    raise BASICSyntaxError.new("uninitialized FOR") if
+      @nextstmt_line_stmt_mod.nil?
+
     from = @start.evaluate(interpreter)[0]
     step = NumericConstant.new(1)
     step = @step.evaluate(interpreter)[0] unless @step.nil?
@@ -1472,7 +1498,7 @@ class GosubStatement < AbstractStatement
   end
 
   def gotos
-    [TransferRef.new(@destination, :gosub)]
+    [TransferRefLineStmt.new(@destination, 0, :gosub)]
   end
 
   def okay(program, console_io, line_number_index)
@@ -1542,7 +1568,7 @@ class GotoStatement < AbstractStatement
   end
 
   def gotos
-    [TransferRef.new(@destination, :goto)]
+    [TransferRefLineStmt.new(@destination, 0, :goto)]
   end
 
   def okay(program, console_io, line_number_index)
@@ -1624,7 +1650,7 @@ class AbstractIfStatement < AbstractStatement
   end
 
   def gotos
-    [TransferRef.new(@destination, :ifthen)]
+    [TransferRefLineStmt.new(@destination, 0, :ifthen)]
   end
 
   def okay(program, console_io, line_number_index)

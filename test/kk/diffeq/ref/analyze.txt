@@ -45,9 +45,9 @@ Halstead complexity:
   Dests: 160:auto
 (1 5) 160 FOR X = X0 TO X1 - H STEP H
   Origs: 150:auto
-  Dests: 170:auto
+  Dests: 170:fornext, 230:fornext
 (0 5) 170 LET D1 = FNF(X, Y)
-  Origs: 160:auto
+  Origs: 160:fornext
   Dests: 180:auto
 (0 3) 180 LET Y1 = Y
   Origs: 170:auto
@@ -65,7 +65,7 @@ Halstead complexity:
   Origs: 210:auto
   Dests: 230:auto
 (0 1) 230 NEXT X
-  Origs: 220:auto
+  Origs: 160:fornext, 220:auto
   Dests: 240:auto
 (0 0) 240 
   Origs: 230:auto

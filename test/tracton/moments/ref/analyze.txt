@@ -45,9 +45,9 @@ Halstead complexity:
   Dests: 90:auto
 (1 3) 90 FOR I = 1 TO N
   Origs: 80:auto
-  Dests: 100:auto
+  Dests: 100:fornext, 160:fornext
 (0 2) 100 PRINT "SAMPLE = "
-  Origs: 90:auto
+  Origs: 90:fornext
   Dests: 110:auto
 (1 2) 110 INPUT X
   Origs: 100:auto
@@ -65,7 +65,7 @@ Halstead complexity:
   Origs: 140:auto
   Dests: 160:auto
 (0 1) 160 NEXT I
-  Origs: 150:auto
+  Origs: 90:fornext, 150:auto
   Dests: 170:auto
 (0 4) 170 LET J = A / N
   Origs: 160:auto

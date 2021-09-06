@@ -21,24 +21,24 @@ Halstead complexity:
 
 (0 1) 10 REM This is a test
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 2) 20 DATA 10, 20, 30
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (3 4) 30 READ A, B, C
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (0 4) 40 PRINT A, B, C
-  Origs: 30
-  Dests: 42
+  Origs: 30:auto
+  Dests: 42:auto
 (0 6) 42 PRINT A,, B,, C
-  Origs: 40
-  Dests: 44
+  Origs: 40:auto
+  Dests: 44:auto
 (0 5) 44 PRINT, A, B, C
-  Origs: 42
-  Dests: 90
+  Origs: 42:auto
+  Dests: 90:auto
 (0 1) 90 STOP
-  Origs: 44
+  Origs: 44:auto
   Dests: 
 (0 1) 99 END
   Origs: 

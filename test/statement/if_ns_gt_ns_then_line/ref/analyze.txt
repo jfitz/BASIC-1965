@@ -21,27 +21,27 @@ Halstead complexity:
 
 (0 2) 10 DATA 10, 20, 30
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (3 4) 20 READ A, B, C
-  Origs: 10
-  Dests: 30
+  Origs: 10:auto
+  Dests: 30:auto
 (0 4) 30 PRINT A, B, C
-  Origs: 20
-  Dests: 40
+  Origs: 20:auto
+  Dests: 40:auto
 (1 4) 40 IF A > 1 THEN 70
-  Origs: 30
-  Dests: 50, 70
+  Origs: 30:auto
+  Dests: 50:auto, 70:ifthen
 (0 2) 50 PRINT A
-  Origs: 40
-  Dests: 60
+  Origs: 40:auto
+  Dests: 60:auto
 (0 2) 60 GOTO 90
-  Origs: 50
-  Dests: 90
+  Origs: 50:auto
+  Dests: 90:goto
 (0 2) 70 PRINT B
-  Origs: 40
-  Dests: 90
+  Origs: 40:ifthen
+  Dests: 90:auto
 (0 1) 90 STOP
-  Origs: 60, 70
+  Origs: 60:goto, 70:auto
   Dests: 
 (0 1) 99 END
   Origs: 

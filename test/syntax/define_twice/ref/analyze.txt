@@ -1,3 +1,4 @@
+Error 211 Function already defined for FNL(_) in line 12
 Statistics:
 
 Number of lines: 6
@@ -27,12 +28,12 @@ Halstead complexity:
   Dests: 20:auto
 (1 4) 20 FOR N = 2 TO 10 STEP 2
   Origs: 12:auto
-  Dests: 30:auto
+  Dests: 30:fornext, 40:fornext
 (0 7) 30 PRINT N, LOG(N), FNL(N)
-  Origs: 20:auto
+  Origs: 20:fornext
   Dests: 40:auto
 (0 1) 40 NEXT N
-  Origs: 30:auto
+  Origs: 20:fornext, 30:auto
   Dests: 99:auto
 (0 1) 99 END
   Origs: 40:auto

@@ -24,15 +24,15 @@ Halstead complexity:
   Dests: 30:auto
 (1 4) 30 FOR I = 0 TO 2 STEP 0.1
   Origs: 20:auto
-  Dests: 50:auto
+  Dests: 50:fornext, 70:fornext
 (0 4) 50 LET S = ARCTAN(I)
-  Origs: 30:auto
+  Origs: 30:fornext
   Dests: 60:auto
 (0 3) 60 PRINT I, S
   Origs: 50:auto
   Dests: 70:auto
 (0 1) 70 NEXT I
-  Origs: 60:auto
+  Origs: 30:fornext, 60:auto
   Dests: 99:auto
 (0 1) 99 END
   Origs: 70:auto

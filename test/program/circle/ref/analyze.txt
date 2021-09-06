@@ -168,9 +168,9 @@ Halstead complexity:
   Dests: 410:auto
 (1 4) 410 FOR I = 0 TO 365 STEP 5
   Origs: 401:auto
-  Dests: 420:auto
+  Dests: 420:fornext, 441:fornext
 (0 1) 420 REM PICK POINT ON CIRCLE D
-  Origs: 410:auto
+  Origs: 410:fornext
   Dests: 421:auto
 (0 5) 421 LET T = FNR(I)
   Origs: 420:auto
@@ -197,7 +197,7 @@ Halstead complexity:
   Origs: 430:auto
   Dests: 441:auto
 (0 1) 441 NEXT I
-  Origs: 431:auto
+  Origs: 410:fornext, 431:auto
   Dests: 900:auto
 (0 1) 900 REM DATA - POINT A, POINT D, POINT C
   Origs: 441:auto

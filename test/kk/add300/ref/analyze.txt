@@ -33,12 +33,12 @@ Halstead complexity:
   Dests: 130:auto, 2000:gosub
 (1 3) 130 FOR I = 0 TO L
   Origs: 120:auto
-  Dests: 140:auto
+  Dests: 140:fornext, 150:fornext
 (0 3) 140 LET A(I) = C(I)
-  Origs: 130:auto
+  Origs: 130:fornext
   Dests: 150:auto
 (0 1) 150 NEXT I
-  Origs: 140:auto
+  Origs: 130:fornext, 140:auto
   Dests: 160:auto
 (0 3) 160 LET L1 = L
   Origs: 150:auto
@@ -57,12 +57,12 @@ Halstead complexity:
   Dests: 230:auto, 2000:gosub
 (1 3) 230 FOR I = 0 TO L
   Origs: 220:auto
-  Dests: 240:auto
+  Dests: 240:fornext, 250:fornext
 (0 3) 240 LET B(I) = C(I)
-  Origs: 230:auto
+  Origs: 230:fornext
   Dests: 250:auto
 (0 1) 250 NEXT I
-  Origs: 240:auto
+  Origs: 230:fornext, 240:auto
   Dests: 260:auto
 (0 3) 260 LET L2 = L
   Origs: 250:auto
@@ -87,12 +87,12 @@ Halstead complexity:
   Dests: 330:auto
 (1 4) 330 FOR I = L2 + 1 TO L
   Origs: 320:auto
-  Dests: 340:auto
+  Dests: 340:fornext, 350:fornext
 (0 3) 340 LET B(I) = 0
-  Origs: 330:auto
+  Origs: 330:fornext
   Dests: 350:auto
 (0 1) 350 NEXT I
-  Origs: 340:auto
+  Origs: 330:fornext, 340:auto
   Dests: 360:auto
 (0 2) 360 GOTO 500
   Origs: 350:auto
@@ -102,21 +102,21 @@ Halstead complexity:
   Dests: 430:auto
 (1 4) 430 FOR I = L1 + 1 TO L
   Origs: 420:auto
-  Dests: 440:auto
+  Dests: 440:fornext, 450:fornext
 (0 3) 440 LET A(I) = 0
-  Origs: 430:auto
+  Origs: 430:fornext
   Dests: 450:auto
 (0 1) 450 NEXT I
-  Origs: 440:auto
+  Origs: 430:fornext, 440:auto
   Dests: 500:auto
 (1 3) 500 FOR I = 0 TO L
   Origs: 360:goto, 450:auto
-  Dests: 510:auto
+  Dests: 510:fornext, 520:fornext
 (0 4) 510 LET C(I) = A(I) + B(I)
-  Origs: 500:auto
+  Origs: 500:fornext
   Dests: 520:auto
 (0 1) 520 NEXT I
-  Origs: 510:auto
+  Origs: 500:fornext, 510:auto
   Dests: 530:auto
 (0 0) 530 
   Origs: 520:auto
@@ -141,15 +141,15 @@ Halstead complexity:
   Dests: 1010:auto
 (1 3) 1010 FOR I = 0 TO 100
   Origs: 1000:auto
-  Dests: 1020:auto
+  Dests: 1020:fornext, 1040:fornext
 (1 2) 1020 READ X(I)
-  Origs: 1010:auto
+  Origs: 1010:fornext
   Dests: 1030:auto
 (1 4) 1030 IF X(I) < 0 THEN 1100
   Origs: 1020:auto
   Dests: 1040:auto, 1100:ifthen
 (0 1) 1040 NEXT I
-  Origs: 1030:auto
+  Origs: 1010:fornext, 1030:auto
   Dests: 1050:auto
 (0 2) 1050 GOTO 1200
   Origs: 1040:auto
@@ -159,12 +159,12 @@ Halstead complexity:
   Dests: 1110:auto
 (1 3) 1110 FOR I = 0 TO L
   Origs: 1100:auto
-  Dests: 1120:auto
+  Dests: 1120:fornext, 1130:fornext
 (0 3) 1120 LET C(I) = X(L - I)
-  Origs: 1110:auto
+  Origs: 1110:fornext
   Dests: 1130:auto
 (0 1) 1130 NEXT I
-  Origs: 1120:auto
+  Origs: 1110:fornext, 1120:auto
   Dests: 1140:auto
 (0 1) 1140 RETURN
   Origs: 1130:auto
@@ -219,18 +219,18 @@ Halstead complexity:
   Dests: 2210:auto
 (1 5) 2210 FOR I = L9 TO 0 STEP -1
   Origs: 2070:goto, 2200:auto
-  Dests: 2220:auto
+  Dests: 2220:fornext, 2320:fornext
 (0 3) 2220 LET N = C(I)
-  Origs: 2210:auto
+  Origs: 2210:fornext
   Dests: 2230:auto
 (0 3) 2230 LET Q = 100
   Origs: 2220:auto
   Dests: 2240:auto
 (1 3) 2240 FOR J = 1 TO 3
   Origs: 2230:auto
-  Dests: 2250:auto
+  Dests: 2250:fornext, 2290:fornext
 (0 4) 2250 LET M = INT(N / Q)
-  Origs: 2240:auto
+  Origs: 2240:fornext
   Dests: 2260:auto
 (0 6) 2260 LET N = N - M * Q
   Origs: 2250:auto
@@ -242,7 +242,7 @@ Halstead complexity:
   Origs: 2270:auto
   Dests: 2290:auto
 (0 1) 2290 NEXT J
-  Origs: 2280:auto
+  Origs: 2240:fornext, 2280:auto
   Dests: 2300:auto
 (1 4) 2300 IF I = 0 THEN 2400
   Origs: 2290:auto
@@ -251,7 +251,7 @@ Halstead complexity:
   Origs: 2300:auto
   Dests: 2320:auto
 (0 1) 2320 NEXT I
-  Origs: 2310:auto
+  Origs: 2210:fornext, 2310:auto
   Dests: 2400:auto
 (0 2) 2400 PRINT
   Origs: 2300:ifthen, 2320:auto
@@ -273,9 +273,9 @@ Halstead complexity:
   Dests: 3020:auto
 (1 3) 3020 FOR I = 0 TO L
   Origs: 3010:auto
-  Dests: 3030:auto
+  Dests: 3030:fornext, 3070:fornext
 (0 3) 3030 LET N = C(I)
-  Origs: 3020:auto
+  Origs: 3020:fornext
   Dests: 3040:auto
 (0 4) 3040 LET M = INT(N / 1000)
   Origs: 3030:auto
@@ -287,7 +287,7 @@ Halstead complexity:
   Origs: 3050:auto
   Dests: 3070:auto
 (0 1) 3070 NEXT I
-  Origs: 3060:auto
+  Origs: 3020:fornext, 3060:auto
   Dests: 3080:auto
 (1 4) 3080 IF M = 0 THEN 3100
   Origs: 3070:auto

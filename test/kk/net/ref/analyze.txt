@@ -66,18 +66,18 @@ Halstead complexity:
   Dests: 270:auto
 (1 4) 270 FOR I = 2 TO N - 1
   Origs: 220:ifthen, 260:auto
-  Dests: 280:auto
+  Dests: 280:fornext, 350:fornext
 (0 3) 280 LET S = 0
-  Origs: 270:auto
+  Origs: 270:fornext
   Dests: 290:auto
 (1 3) 290 FOR J = 1 TO N
   Origs: 280:auto
-  Dests: 300:auto
+  Dests: 300:fornext, 310:fornext
 (0 4) 300 LET S = S + C(I, J)
-  Origs: 290:auto
+  Origs: 290:fornext
   Dests: 310:auto
 (0 1) 310 NEXT J
-  Origs: 300:auto
+  Origs: 290:fornext, 300:auto
   Dests: 320:auto
 (0 4) 320 LET C(I, I) = -S
   Origs: 310:auto
@@ -89,7 +89,7 @@ Halstead complexity:
   Origs: 330:auto
   Dests: 350:auto
 (0 1) 350 NEXT I
-  Origs: 340:auto
+  Origs: 270:fornext, 340:auto
   Dests: 360:auto
 (0 0) 360 
   Origs: 350:auto
@@ -111,12 +111,12 @@ Halstead complexity:
   Dests: 420:auto
 (1 3) 420 FOR I = 1 TO N
   Origs: 410:auto
-  Dests: 430:auto
+  Dests: 430:fornext, 440:fornext
 (0 5) 430 PRINT I, FNR(P(I))
-  Origs: 420:auto
+  Origs: 420:fornext
   Dests: 440:auto
 (0 1) 440 NEXT I
-  Origs: 430:auto
+  Origs: 420:fornext, 430:auto
   Dests: 450:auto
 (0 2) 450 PRINT
   Origs: 440:auto
@@ -138,18 +138,18 @@ Halstead complexity:
   Dests: 510:auto
 (1 4) 510 FOR I = 2 TO N - 1
   Origs: 500:auto
-  Dests: 520:auto
+  Dests: 520:fornext, 590:fornext
 (0 3) 520 PRINT "NODE" I
-  Origs: 510:auto
+  Origs: 510:fornext
   Dests: 530:auto
 (1 3) 530 FOR J = 1 TO N
   Origs: 520:auto
-  Dests: 540:auto
+  Dests: 540:fornext, 550:fornext
 (0 4) 540 PRINT FNR(C(I, J) * (P(I) - P(J))),
-  Origs: 530:auto
+  Origs: 530:fornext
   Dests: 550:auto
 (0 1) 550 NEXT J
-  Origs: 540:auto
+  Origs: 530:fornext, 540:auto
   Dests: 560:auto
 (0 8) 560 LET S1 = S1 + C(I, N) * (P(I) - P(N))
   Origs: 550:auto
@@ -161,7 +161,7 @@ Halstead complexity:
   Origs: 570:auto
   Dests: 590:auto
 (0 1) 590 NEXT I
-  Origs: 580:auto
+  Origs: 510:fornext, 580:auto
   Dests: 600:auto
 (0 2) 600 PRINT
   Origs: 590:auto

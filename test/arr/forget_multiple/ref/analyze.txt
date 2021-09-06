@@ -30,21 +30,21 @@ Halstead complexity:
   Dests: 21:auto
 (1 3) 21 FOR I = 1 TO 10
   Origs: 20:auto
-  Dests: 22:auto
+  Dests: 22:fornext, 23:fornext
 (0 3) 22 LET A(I) = 1
-  Origs: 21:auto
+  Origs: 21:fornext
   Dests: 23:auto
 (0 1) 23 NEXT I
-  Origs: 22:auto
+  Origs: 21:fornext, 22:auto
   Dests: 24:auto
 (1 3) 24 FOR I = 1 TO 8
   Origs: 23:auto
-  Dests: 25:auto
+  Dests: 25:fornext, 26:fornext
 (0 4) 25 LET B(I) = 8 - I
-  Origs: 24:auto
+  Origs: 24:fornext
   Dests: 26:auto
 (0 1) 26 NEXT I
-  Origs: 25:auto
+  Origs: 24:fornext, 25:auto
   Dests: 30:auto
 (0 2) 30 ARR PRINT A
   Origs: 26:auto

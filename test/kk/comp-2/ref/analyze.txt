@@ -156,9 +156,9 @@ Halstead complexity:
   Dests: 510:auto
 (1 4) 510 FOR R = 0.1 TO 100 STEP 0.1
   Origs: 505:auto
-  Dests: 520:auto
+  Dests: 520:fornext, 540:fornext
 (0 2) 520 GOSUB 1000
-  Origs: 510:auto
+  Origs: 510:fornext
   Dests: 530:auto, 1000:gosub
 (0 8) 530 LET S1 = B - ((A + P1) * R2 - P1)
   Origs: 520:auto
@@ -170,7 +170,7 @@ Halstead complexity:
   Origs: 535:auto
   Dests: 540:auto
 (0 1) 540 NEXT R
-  Origs: 536:auto
+  Origs: 510:fornext, 536:auto
   Dests: 545:auto
 (0 2) 545 PRINT "NO ANSWER FOUND"
   Origs: 540:auto

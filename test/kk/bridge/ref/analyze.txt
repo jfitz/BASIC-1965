@@ -27,30 +27,30 @@ Halstead complexity:
   Dests: 30:auto, 1000:gosub
 (1 3) 30 FOR C = 1 TO 13
   Origs: 20:auto
-  Dests: 40:auto
+  Dests: 40:fornext, 60:fornext
 (0 2) 40 GOSUB 2000
-  Origs: 30:auto
+  Origs: 30:fornext
   Dests: 50:auto, 2000:gosub
 (0 3) 50 LET H(C) = X
   Origs: 40:auto
   Dests: 60:auto
 (0 1) 60 NEXT C
-  Origs: 50:auto
+  Origs: 30:fornext, 50:auto
   Dests: 70:auto
 (0 0) 70 
   Origs: 60:auto
   Dests: 100:auto
 (1 3) 100 FOR I = 1 TO 13
   Origs: 70:auto
-  Dests: 109:auto
+  Dests: 109:fornext, 180:fornext
 (1 6) 109 IF I > 13 - I THEN 180
-  Origs: 100:auto
+  Origs: 100:fornext
   Dests: 110:auto, 180:ifthen
 (1 4) 110 FOR J = I TO 13 - I
   Origs: 109:auto
-  Dests: 120:auto
+  Dests: 120:fornext, 170:fornext
 (0 3) 120 LET X = H(J)
-  Origs: 110:auto
+  Origs: 110:fornext
   Dests: 130:auto
 (0 3) 130 LET Y = H(J + 1)
   Origs: 120:auto
@@ -65,25 +65,25 @@ Halstead complexity:
   Origs: 150:auto
   Dests: 170:auto
 (0 1) 170 NEXT J
-  Origs: 140:ifthen, 160:auto
+  Origs: 110:fornext, 140:ifthen, 160:auto
   Dests: 180:auto
 (0 1) 180 NEXT I
-  Origs: 109:ifthen, 170:auto
+  Origs: 100:fornext, 109:ifthen, 170:auto
   Dests: 190:auto
 (0 0) 190 
   Origs: 180:auto
   Dests: 200:auto
 (1 3) 200 FOR C = 1 TO 13
   Origs: 190:auto
-  Dests: 210:auto
+  Dests: 210:fornext, 230:fornext
 (0 3) 210 LET X = H(C)
-  Origs: 200:auto
+  Origs: 200:fornext
   Dests: 220:auto
 (0 2) 220 GOSUB 3000
   Origs: 210:auto
   Dests: 230:auto, 3000:gosub
 (0 1) 230 NEXT C
-  Origs: 220:auto
+  Origs: 200:fornext, 220:auto
   Dests: 240:auto
 (0 1) 240 STOP
   Origs: 230:auto
@@ -99,12 +99,12 @@ Halstead complexity:
   Dests: 1020:auto
 (1 3) 1020 FOR I = 0 TO 51
   Origs: 1010:auto
-  Dests: 1030:auto
+  Dests: 1030:fornext, 1040:fornext
 (0 3) 1030 LET L(I) = I
-  Origs: 1020:auto
+  Origs: 1020:fornext
   Dests: 1040:auto
 (0 1) 1040 NEXT I
-  Origs: 1030:auto
+  Origs: 1020:fornext, 1030:auto
   Dests: 1050:auto
 (0 1) 1050 RETURN
   Origs: 1040:auto

@@ -21,18 +21,18 @@ Halstead complexity:
 
 (1 3) 10 FOR D = 0 TO 5
   Origs: 
-  Dests: 20:auto
+  Dests: 20:fornext, 30:fornext
 (0 3) 20 LET N(D) = 0
-  Origs: 10:auto
+  Origs: 10:fornext
   Dests: 30:auto
 (0 1) 30 NEXT D
-  Origs: 20:auto
+  Origs: 10:fornext, 20:auto
   Dests: 40:auto
 (1 3) 40 FOR I = 1 TO 10
   Origs: 30:auto
-  Dests: 50:auto
+  Dests: 50:fornext, 80:fornext
 (1 2) 50 READ X
-  Origs: 40:auto
+  Origs: 40:fornext
   Dests: 60:auto
 (0 4) 60 LET D = INT(X / 1E4)
   Origs: 50:auto
@@ -41,7 +41,7 @@ Halstead complexity:
   Origs: 60:auto
   Dests: 80:auto
 (0 1) 80 NEXT I
-  Origs: 70:auto
+  Origs: 40:fornext, 70:auto
   Dests: 100:auto
 (0 2) 100 PRINT "        INCOME"
   Origs: 80:auto
@@ -51,12 +51,12 @@ Halstead complexity:
   Dests: 120:auto
 (1 3) 120 FOR D = 0 TO 5
   Origs: 110:auto
-  Dests: 130:auto
+  Dests: 130:fornext, 140:fornext
 (0 7) 130 PRINT D * 1E4, (D + 1) * 1E4, N(D)
-  Origs: 120:auto
+  Origs: 120:fornext
   Dests: 140:auto
 (0 1) 140 NEXT D
-  Origs: 130:auto
+  Origs: 120:fornext, 130:auto
   Dests: 900:auto
 (0 2) 900 DATA 15000, 22500, 7350, 32700, 51000, 8400, 12700, 8100, 29000, 35460
   Origs: 140:auto

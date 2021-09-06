@@ -21,78 +21,78 @@ Halstead complexity:
 
 (0 1) 10 REM TEST CALCULATIONS WITH CONSTANT VALUES
   Origs: 
-  Dests: 11
+  Dests: 11:auto
 (0 2) 11 OPTION CACHE_CONST_EXPR TRUE
-  Origs: 10
-  Dests: 12
+  Origs: 10:auto
+  Dests: 12:auto
 (0 4) 12 DEF FNR(D) = D * 3.1415 / 180
-  Origs: 11
-  Dests: 20
+  Origs: 11:auto
+  Dests: 20:auto
 (0 2) 20 PRINT "PRECISION 7"
-  Origs: 12
-  Dests: 30
+  Origs: 12:auto
+  Dests: 30:auto
 (0 2) 30 GOSUB 100
-  Origs: 20
-  Dests: 32, 100
+  Origs: 20:auto
+  Dests: 32:auto, 100:gosub
 (0 2) 32 GOSUB 200
-  Origs: 30
-  Dests: 50, 200
+  Origs: 30:auto
+  Dests: 50:auto, 200:gosub
 (0 2) 50 OPTION PRECISION 10
-  Origs: 32
-  Dests: 60
+  Origs: 32:auto
+  Dests: 60:auto
 (0 2) 60 PRINT "PRECISION 10"
-  Origs: 50
-  Dests: 70
+  Origs: 50:auto
+  Dests: 70:auto
 (0 2) 70 GOSUB 100
-  Origs: 60
-  Dests: 72, 100
+  Origs: 60:auto
+  Dests: 72:auto, 100:gosub
 (0 2) 72 GOSUB 200
-  Origs: 70
-  Dests: 99, 200
+  Origs: 70:auto
+  Dests: 99:auto, 200:gosub
 (0 1) 99 STOP
-  Origs: 72
+  Origs: 72:auto
   Dests: 
 (0 1) 100 REM PROC A
-  Origs: 30, 70
-  Dests: 110
+  Origs: 30:gosub, 70:gosub
+  Dests: 110:auto
 (0 4) 110 LET S1 = SIN(30 * 3.1415 / 180)
-  Origs: 100
-  Dests: 120
+  Origs: 100:auto
+  Dests: 120:auto
 (0 4) 120 LET S2 = SIN(45 * 3.1415 / 180)
-  Origs: 110
-  Dests: 130
+  Origs: 110:auto
+  Dests: 130:auto
 (0 4) 130 LET S3 = SIN(60 * 3.1415 / 180)
-  Origs: 120
-  Dests: 140
+  Origs: 120:auto
+  Dests: 140:auto
 (0 4) 140 LET S4 = SIN(90 * 3.1415 / 180)
-  Origs: 130
-  Dests: 150
+  Origs: 130:auto
+  Dests: 150:auto
 (0 5) 150 PRINT S1, S2, S3, S4
-  Origs: 140
-  Dests: 190
+  Origs: 140:auto
+  Dests: 190:auto
 (0 1) 190 RETURN
-  Origs: 150
+  Origs: 150:auto
   Dests: 
 (0 1) 200 REM PROC B
-  Origs: 32, 72
-  Dests: 210
+  Origs: 32:gosub, 72:gosub
+  Dests: 210:auto
 (0 4) 210 LET S1 = SIN(30 * 3.1415 / 180)
-  Origs: 200
-  Dests: 220
+  Origs: 200:auto
+  Dests: 220:auto
 (0 4) 220 LET S2 = SIN(45 * 3.1415 / 180)
-  Origs: 210
-  Dests: 230
+  Origs: 210:auto
+  Dests: 230:auto
 (0 4) 230 LET S3 = SIN(60 * 3.1415 / 180)
-  Origs: 220
-  Dests: 240
+  Origs: 220:auto
+  Dests: 240:auto
 (0 4) 240 LET S4 = SIN(90 * 3.1415 / 180)
-  Origs: 230
-  Dests: 250
+  Origs: 230:auto
+  Dests: 250:auto
 (0 5) 250 PRINT S1, S2, S3, S4
-  Origs: 240
-  Dests: 290
+  Origs: 240:auto
+  Dests: 290:auto
 (0 1) 290 RETURN
-  Origs: 250
+  Origs: 250:auto
   Dests: 
 (0 1) 399 END
   Origs: 

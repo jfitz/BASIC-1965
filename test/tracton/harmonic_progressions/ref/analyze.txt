@@ -72,9 +72,9 @@ Halstead complexity:
   Dests: 180:auto
 (1 4) 180 FOR I = 0 TO N - 1
   Origs: 170:auto
-  Dests: 190:auto
+  Dests: 190:fornext, 250:fornext
 (0 4) 190 LET K = I + 1
-  Origs: 180:auto
+  Origs: 180:fornext
   Dests: 200:auto
 (0 8) 200 LET L = A / (B + (I * D))
   Origs: 190:auto
@@ -92,7 +92,7 @@ Halstead complexity:
   Origs: 220:ifthen
   Dests: 250:auto
 (0 1) 250 NEXT I
-  Origs: 230:goto, 240:auto
+  Origs: 180:fornext, 230:goto, 240:auto
   Dests: 260:auto
 (0 3) 260 PRINT "SUM = "; J
   Origs: 250:auto

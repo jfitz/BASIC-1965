@@ -42,9 +42,9 @@ Halstead complexity:
   Dests: 170:auto
 (1 3) 170 FOR I = 1 TO N
   Origs: 160:auto
-  Dests: 180:auto
+  Dests: 180:fornext, 240:fornext
 (2 3) 180 READ X, Y
-  Origs: 170:auto
+  Origs: 170:fornext
   Dests: 190:auto
 (0 4) 190 LET X1 = X1 + X
   Origs: 180:auto
@@ -62,7 +62,7 @@ Halstead complexity:
   Origs: 220:auto
   Dests: 240:auto
 (0 1) 240 NEXT I
-  Origs: 230:auto
+  Origs: 170:fornext, 230:auto
   Dests: 250:auto
 (0 0) 250 
   Origs: 240:auto

@@ -36,18 +36,18 @@ Halstead complexity:
   Dests: 130:auto
 (1 3) 130 FOR I = 1 TO N
   Origs: 110:auto
-  Dests: 140:auto
+  Dests: 140:fornext, 180:fornext
 (1 4) 140 FOR J = I TO N STEP I
-  Origs: 130:auto
-  Dests: 150:auto
+  Origs: 130:fornext
+  Dests: 150:fornext, 160:fornext
 (0 4) 150 LET L(J) = 1 - L(J)
-  Origs: 140:auto
+  Origs: 140:fornext
   Dests: 160:auto
 (0 1) 160 NEXT J
-  Origs: 150:auto
+  Origs: 140:fornext, 150:auto
   Dests: 180:auto
 (0 1) 180 NEXT I
-  Origs: 160:auto
+  Origs: 130:fornext, 160:auto
   Dests: 200:auto
 (0 1) 200 REM PRINT LOCKER STATES
   Origs: 180:auto
@@ -57,15 +57,15 @@ Halstead complexity:
   Dests: 320:auto
 (1 3) 320 FOR I = 1 TO N
   Origs: 310:auto
-  Dests: 330:auto
+  Dests: 330:fornext, 350:fornext
 (1 4) 330 IF L(I) = 0 THEN 350
-  Origs: 320:auto
+  Origs: 320:fornext
   Dests: 340:auto, 350:ifthen
 (0 2) 340 PRINT I;
   Origs: 330:auto
   Dests: 350:auto
 (0 1) 350 NEXT I
-  Origs: 330:ifthen, 340:auto
+  Origs: 320:fornext, 330:ifthen, 340:auto
   Dests: 360:auto
 (0 2) 360 PRINT
   Origs: 350:auto

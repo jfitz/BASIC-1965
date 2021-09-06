@@ -42,9 +42,9 @@ Halstead complexity:
   Dests: 130:auto
 (1 3) 130 FOR I = 1 TO N
   Origs: 120:auto
-  Dests: 140:auto
+  Dests: 140:fornext, 180:fornext
 (0 2) 140 GOSUB 200
-  Origs: 130:auto
+  Origs: 130:fornext
   Dests: 150:auto, 200:gosub
 (1 5) 150 IF MOD(I, M) <> 0 THEN 170
   Origs: 140:auto
@@ -56,7 +56,7 @@ Halstead complexity:
   Origs: 150:ifthen, 160:auto
   Dests: 180:auto
 (0 1) 180 NEXT I
-  Origs: 170:auto
+  Origs: 130:fornext, 170:auto
   Dests: 190:auto
 (0 2) 190 GOSUB 300
   Origs: 180:auto

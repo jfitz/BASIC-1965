@@ -30,12 +30,12 @@ Halstead complexity:
   Dests: 20:auto
 (1 4) 20 FOR I = B TO 10 STEP S
   Origs: 15:auto
-  Dests: 30:auto
+  Dests: 30:fornext, 40:fornext
 (0 2) 30 PRINT I
-  Origs: 20:auto
+  Origs: 20:fornext
   Dests: 40:auto
 (0 1) 40 NEXT I
-  Origs: 30:auto
+  Origs: 20:fornext, 30:auto
   Dests: 99:auto
 (0 1) 99 END
   Origs: 40:auto

@@ -24,15 +24,15 @@ Halstead complexity:
   Dests: 20:auto
 (1 3) 20 FOR I = 1 TO 10
   Origs: 10:auto
-  Dests: 30:auto
+  Dests: 30:fornext, 50:fornext
 (0 4) 30 LET A = RND(10)
-  Origs: 20:auto
+  Origs: 20:fornext
   Dests: 40:auto
 (0 2) 40 PRINT A
   Origs: 30:auto
   Dests: 50:auto
 (0 1) 50 NEXT I
-  Origs: 40:auto
+  Origs: 20:fornext, 40:auto
   Dests: 99:auto
 (0 1) 99 END
   Origs: 50:auto

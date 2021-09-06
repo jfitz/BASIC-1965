@@ -72,12 +72,12 @@ Halstead complexity:
   Dests: 190:auto
 (1 3) 190 FOR V = 0 TO 4
   Origs: 170:auto
-  Dests: 200:auto
+  Dests: 200:fornext, 210:fornext
 (1 2) 200 READ S(V, N9)
-  Origs: 190:auto
+  Origs: 190:fornext
   Dests: 210:auto
 (0 1) 210 NEXT V
-  Origs: 200:auto
+  Origs: 190:fornext, 200:auto
   Dests: 220:auto
 (0 5) 220 DATA 1, 0, -3, -5, -7
   Origs: 210:auto
@@ -90,9 +90,9 @@ Halstead complexity:
   Dests: 450:auto
 (1 5) 450 FOR N = N9 TO 1 STEP -1
   Origs: 250:auto
-  Dests: 460:auto
+  Dests: 460:fornext, 6003:fornext
 (1 4) 460 IF N = N9 THEN 6000
-  Origs: 450:auto
+  Origs: 450:fornext
   Dests: 500:auto, 6000:ifthen
 (0 1) 500 REM  TEST CHORDS.
   Origs: 460:auto
@@ -102,9 +102,9 @@ Halstead complexity:
   Dests: 510:auto
 (1 3) 510 FOR I = I1 TO 6
   Origs: 505:auto, 5210:goto
-  Dests: 520:auto
+  Dests: 520:fornext, 4001:fornext
 (0 3) 520 LET C2 = P(C1, I)
-  Origs: 510:auto
+  Origs: 510:fornext
   Dests: 525:auto
 (0 3) 525 LET S(0, N) = C2
   Origs: 520:auto
@@ -132,9 +132,9 @@ Halstead complexity:
   Dests: 570:auto
 (1 3) 570 FOR J = 1 TO 2
   Origs: 565:auto
-  Dests: 580:auto
+  Dests: 580:fornext, 610:fornext
 (1 5) 580 IF ABS(D(J) - D) <= 5 THEN 610
-  Origs: 570:auto
+  Origs: 570:fornext
   Dests: 590:auto, 610:ifthen
 (0 3) 590 LET R = D(3 - J)
   Origs: 580:auto
@@ -143,7 +143,7 @@ Halstead complexity:
   Origs: 590:auto
   Dests: 660:goto
 (0 1) 610 NEXT J
-  Origs: 580:ifthen
+  Origs: 570:fornext, 580:ifthen
   Dests: 620:auto
 (1 4) 620 IF S > S(1, N + 1) THEN 650
   Origs: 610:auto
@@ -171,9 +171,9 @@ Halstead complexity:
   Dests: 710:auto
 (1 4) 710 FOR K = 0 TO 4 STEP 2
   Origs: 705:auto
-  Dests: 720:auto
+  Dests: 720:fornext, 750:fornext
 (1 6) 720 IF FNC(S - (R + K)) = 0 THEN 750
-  Origs: 710:auto
+  Origs: 710:fornext
   Dests: 730:auto, 750:ifthen
 (0 4) 730 LET B(J) = R + K
   Origs: 720:auto
@@ -182,7 +182,7 @@ Halstead complexity:
   Origs: 730:auto
   Dests: 750:auto
 (0 1) 750 NEXT K
-  Origs: 720:ifthen, 740:auto
+  Origs: 710:fornext, 720:ifthen, 740:auto
   Dests: 760:auto
 (1 4) 760 IF J > 3 THEN 4000
   Origs: 750:auto
@@ -192,9 +192,9 @@ Halstead complexity:
   Dests: 800:auto
 (1 3) 800 FOR L = 0 TO 6
   Origs: 770:auto
-  Dests: 810:auto
+  Dests: 810:fornext, 880:fornext
 (0 3) 810 LET A = B(1)
-  Origs: 800:auto
+  Origs: 800:fornext
   Dests: 820:auto
 (0 3) 820 LET B = B(2)
   Origs: 810:auto
@@ -215,7 +215,7 @@ Halstead complexity:
   Origs: 860:auto
   Dests: 880:auto
 (0 1) 880 NEXT L
-  Origs: 870:auto
+  Origs: 800:fornext, 870:auto
   Dests: 899:auto
 (0 0) 899 
   Origs: 880:auto
@@ -225,12 +225,12 @@ Halstead complexity:
   Dests: 1010:auto
 (1 3) 1010 FOR L = 0 TO 6
   Origs: 1000:auto
-  Dests: 1020:auto
+  Dests: 1020:fornext, 1261:fornext
 (1 3) 1020 FOR V = 2 TO 3
-  Origs: 1010:auto
-  Dests: 1030:auto
+  Origs: 1010:fornext
+  Dests: 1030:fornext, 1090:fornext
 (0 3) 1030 LET B = W(V, L)
-  Origs: 1020:auto
+  Origs: 1020:fornext
   Dests: 1040:auto
 (1 5) 1040 IF ABS(B - S(V, N + 1)) > 5 THEN 1260
   Origs: 1030:auto
@@ -248,7 +248,7 @@ Halstead complexity:
   Origs: 1070:auto
   Dests: 1090:auto, 1260:ifthen
 (0 1) 1090 NEXT V
-  Origs: 1080:auto
+  Origs: 1020:fornext, 1080:auto
   Dests: 1095:auto
 (0 0) 1095 
   Origs: 1090:auto
@@ -261,12 +261,12 @@ Halstead complexity:
   Dests: 1105:auto, 1200:ifthen
 (1 3) 1105 FOR V1 = 1 TO 4
   Origs: 1102:auto
-  Dests: 1110:auto
+  Dests: 1110:fornext, 1165:fornext
 (1 4) 1110 FOR V2 = V1 + 1 TO 4
-  Origs: 1105:auto
-  Dests: 1115:auto
+  Origs: 1105:fornext
+  Dests: 1115:fornext, 1160:fornext
 (0 4) 1115 LET D = S(V1, N + 1) - S(V2, N + 1)
-  Origs: 1110:auto
+  Origs: 1110:fornext
   Dests: 1120:auto
 (1 6) 1120 IF FNC(D) = 0 THEN 1145
   Origs: 1115:auto
@@ -287,10 +287,10 @@ Halstead complexity:
   Origs: 1150:auto
   Dests: 1160:auto, 1260:ifthen
 (0 1) 1160 NEXT V2
-  Origs: 1140:goto, 1155:auto
+  Origs: 1110:fornext, 1140:goto, 1155:auto
   Dests: 1165:auto
 (0 1) 1165 NEXT V1
-  Origs: 1160:auto
+  Origs: 1105:fornext, 1160:auto
   Dests: 1170:auto
 (0 0) 1170 
   Origs: 1165:auto
@@ -300,12 +300,12 @@ Halstead complexity:
   Dests: 1210:auto
 (1 3) 1210 FOR V = 2 TO 3
   Origs: 1200:auto
-  Dests: 1220:auto
+  Dests: 1220:fornext, 1230:fornext
 (0 4) 1220 LET D(V) = ABS(S(V, N) - S(V, N + 1))
-  Origs: 1210:auto
+  Origs: 1210:fornext
   Dests: 1230:auto
 (0 1) 1230 NEXT V
-  Origs: 1220:auto
+  Origs: 1210:fornext, 1220:auto
   Dests: 1240:auto
 (0 4) 1240 LET W(0, L) = D(2) + D(3)
   Origs: 1230:auto
@@ -317,7 +317,7 @@ Halstead complexity:
   Origs: 1040:ifthen, 1050:ifthen, 1060:ifthen, 1080:ifthen, 1155:ifthen
   Dests: 1261:auto
 (0 1) 1261 NEXT L
-  Origs: 1250:goto, 1260:auto
+  Origs: 1010:fornext, 1250:goto, 1260:auto
   Dests: 1262:auto
 (0 0) 1262 
   Origs: 1261:auto
@@ -330,9 +330,9 @@ Halstead complexity:
   Dests: 1520:auto
 (1 3) 1520 FOR L = 0 TO 6
   Origs: 1510:auto
-  Dests: 1530:auto
+  Dests: 1530:fornext, 1590:fornext
 (0 3) 1530 LET M1 = W(0, L)
-  Origs: 1520:auto
+  Origs: 1520:fornext
   Dests: 1540:auto
 (1 4) 1540 IF M1 > M THEN 1590
   Origs: 1530:auto
@@ -344,7 +344,7 @@ Halstead complexity:
   Origs: 1550:auto
   Dests: 1590:auto
 (0 1) 1590 NEXT L
-  Origs: 1540:ifthen, 1560:auto
+  Origs: 1520:fornext, 1540:ifthen, 1560:auto
   Dests: 1600:auto
 (1 4) 1600 IF M = 999 THEN 4000
   Origs: 1590:auto
@@ -365,7 +365,7 @@ Halstead complexity:
   Origs: 760:ifthen, 1600:ifthen, 1640:auto
   Dests: 4001:auto
 (0 1) 4001 NEXT I
-  Origs: 4000:auto
+  Origs: 510:fornext, 4000:auto
   Dests: 5000:auto
 (0 1) 5000 REM  BACK UP
   Origs: 4001:auto
@@ -390,12 +390,12 @@ Halstead complexity:
   Dests: 5120:auto
 (1 3) 5120 FOR I = 1 TO 6
   Origs: 5110:auto
-  Dests: 5130:auto
+  Dests: 5130:fornext, 5140:fornext
 (1 4) 5130 IF C2 = P(C1, I) THEN 5200
-  Origs: 5120:auto
+  Origs: 5120:fornext
   Dests: 5140:auto, 5200:ifthen
 (0 1) 5140 NEXT I
-  Origs: 5130:auto
+  Origs: 5120:fornext, 5130:auto
   Dests: 5200:auto
 (0 4) 5200 LET I1 = I + 1
   Origs: 5130:ifthen, 5140:auto
@@ -416,7 +416,7 @@ Halstead complexity:
   Origs: 6001:auto
   Dests: 6003:auto
 (0 1) 6003 NEXT N
-  Origs: 6002:auto
+  Origs: 450:fornext, 6002:auto
   Dests: 6004:auto
 (0 0) 6004 
   Origs: 6003:auto

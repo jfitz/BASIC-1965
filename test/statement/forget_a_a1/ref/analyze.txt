@@ -21,24 +21,24 @@ Halstead complexity:
 
 (0 1) 10 REM Test the FORGET statement
   Origs: 
-  Dests: 20
+  Dests: 20:auto
 (0 3) 20 LET A = 10
-  Origs: 10
-  Dests: 22
+  Origs: 10:auto
+  Dests: 22:auto
 (0 3) 22 LET A1 = 22
-  Origs: 20
-  Dests: 30
+  Origs: 20:auto
+  Dests: 30:auto
 (0 3) 30 PRINT A, A1
-  Origs: 22
-  Dests: 40
+  Origs: 22:auto
+  Dests: 40:auto
 (0 1) 40 FORGET A, A1
-  Origs: 30
-  Dests: 90
+  Origs: 30:auto
+  Dests: 90:auto
 (0 3) 90 PRINT A, A1
-  Origs: 40
-  Dests: 99
+  Origs: 40:auto
+  Dests: 99:auto
 (0 1) 99 END
-  Origs: 90
+  Origs: 90:auto
   Dests: 
 
 Unreachable code:

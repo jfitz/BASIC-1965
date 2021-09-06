@@ -24,36 +24,36 @@ Halstead complexity:
   Dests: 20:auto
 (1 4) 20 FOR I = 1 TO N - 1
   Origs: 10:auto
-  Dests: 30:auto
+  Dests: 30:fornext, 60:fornext
 (1 4) 30 FOR J = 1 TO N - 1
-  Origs: 20:auto
-  Dests: 40:auto
+  Origs: 20:fornext
+  Dests: 40:fornext, 50:fornext
 (0 8) 40 LET P(I, J) = I * J - INT(I * J / N) * N
-  Origs: 30:auto
+  Origs: 30:fornext
   Dests: 50:auto
 (0 1) 50 NEXT J
-  Origs: 40:auto
+  Origs: 30:fornext, 40:auto
   Dests: 60:auto
 (0 1) 60 NEXT I
-  Origs: 50:auto
+  Origs: 20:fornext, 50:auto
   Dests: 70:auto
 (1 4) 70 FOR I = 1 TO N - 1
   Origs: 60:auto
-  Dests: 80:auto
+  Dests: 80:fornext, 120:fornext
 (1 4) 80 FOR J = 1 TO N - 1
-  Origs: 70:auto
-  Dests: 90:auto
+  Origs: 70:fornext
+  Dests: 90:fornext, 100:fornext
 (1 4) 90 IF P(I, J) = 1 THEN 140
-  Origs: 80:auto
+  Origs: 80:fornext
   Dests: 100:auto, 140:ifthen
 (0 1) 100 NEXT J
-  Origs: 90:auto
+  Origs: 80:fornext, 90:auto
   Dests: 110:auto
 (0 3) 110 PRINT I; "DOES NOT HAVE AN INVERSE"
   Origs: 100:auto
   Dests: 120:auto
 (0 1) 120 NEXT I
-  Origs: 110:auto, 150:goto
+  Origs: 70:fornext, 110:auto, 150:goto
   Dests: 130:auto
 (0 1) 130 STOP
   Origs: 120:auto

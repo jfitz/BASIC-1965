@@ -27,18 +27,18 @@ Halstead complexity:
   Dests: 100:auto
 (1 4) 100 FOR Y1 = 1 TO Y STEP 2
   Origs: 20:auto
-  Dests: 105:auto
+  Dests: 105:fornext, 290:fornext
 (0 3) 105 PRINT "CHANGE IN YEAR " Y1
-  Origs: 100:auto
+  Origs: 100:fornext
   Dests: 108:auto
 (0 3) 108 LET A1 = A
   Origs: 105:auto
   Dests: 110:auto
 (1 4) 110 FOR I = 1 TO Y1 - 1
   Origs: 108:auto
-  Dests: 120:auto
+  Dests: 120:fornext, 150:fornext
 (0 5) 120 LET D(I) = A1 * 2 / Y
-  Origs: 110:auto
+  Origs: 110:fornext
   Dests: 130:auto
 (0 4) 130 LET A1 = A1 - D(I)
   Origs: 120:auto
@@ -47,28 +47,28 @@ Halstead complexity:
   Origs: 130:auto
   Dests: 150:auto
 (0 1) 150 NEXT I
-  Origs: 140:auto
+  Origs: 110:fornext, 140:auto
   Dests: 160:auto
 (0 7) 160 LET D = A1 / (Y - Y1 + 1)
   Origs: 150:auto
   Dests: 170:auto
 (1 3) 170 FOR I = Y1 TO Y
   Origs: 160:auto
-  Dests: 180:auto
+  Dests: 180:fornext, 190:fornext
 (0 3) 180 LET D(I) = D
-  Origs: 170:auto
+  Origs: 170:fornext
   Dests: 185:auto
 (0 3) 185 PRINT I; D(I)
   Origs: 180:auto
   Dests: 190:auto
 (0 1) 190 NEXT I
-  Origs: 185:auto
+  Origs: 170:fornext, 185:auto
   Dests: 195:auto
 (0 2) 195 PRINT
   Origs: 190:auto
   Dests: 290:auto
 (0 1) 290 NEXT Y1
-  Origs: 195:auto
+  Origs: 100:fornext, 195:auto
   Dests: 900:auto
 (0 2) 900 DATA 5000, 7
   Origs: 290:auto

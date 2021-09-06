@@ -27,9 +27,9 @@ Halstead complexity:
   Dests: 30:auto
 (1 3) 30 FOR I = 1 TO 4
   Origs: 20:auto
-  Dests: 40:auto
+  Dests: 40:fornext, 80:fornext
 (0 4) 40 PRINT "POWER : " 2 ^ I
-  Origs: 30:auto
+  Origs: 30:fornext
   Dests: 50:auto
 (0 4) 50 MAT A = M * M
   Origs: 40:auto
@@ -41,7 +41,7 @@ Halstead complexity:
   Origs: 60:auto
   Dests: 80:auto
 (0 1) 80 NEXT I
-  Origs: 70:auto
+  Origs: 30:fornext, 70:auto
   Dests: 90:auto
 (0 2) 90 DATA 3
   Origs: 80:auto

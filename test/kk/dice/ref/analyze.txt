@@ -21,9 +21,9 @@ Halstead complexity:
 
 (1 3) 10 FOR G = 1 TO 10
   Origs: 
-  Dests: 20:auto
+  Dests: 20:fornext, 410:fornext
 (0 2) 20 GOSUB 500
-  Origs: 10:auto
+  Origs: 10:fornext
   Dests: 30:auto, 500:gosub
 (1 4) 30 IF D < 4 THEN 300
   Origs: 20:auto
@@ -74,7 +74,7 @@ Halstead complexity:
   Origs: 50:ifthen, 60:ifthen
   Dests: 410:auto
 (0 1) 410 NEXT G
-  Origs: 210:goto, 260:goto, 310:goto, 400:auto
+  Origs: 10:fornext, 210:goto, 260:goto, 310:goto, 400:auto
   Dests: 420:auto
 (0 1) 420 STOP
   Origs: 410:auto

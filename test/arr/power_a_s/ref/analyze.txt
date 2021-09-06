@@ -27,12 +27,12 @@ Halstead complexity:
   Dests: 30:auto
 (1 3) 30 FOR I = 0 TO 5
   Origs: 20:auto
-  Dests: 50:auto
+  Dests: 50:fornext, 70:fornext
 (0 3) 50 LET A(I) = I
-  Origs: 30:auto
+  Origs: 30:fornext
   Dests: 70:auto
 (0 1) 70 NEXT I
-  Origs: 50:auto
+  Origs: 30:fornext, 50:auto
   Dests: 100:auto
 (0 4) 100 ARR B = A ^ 2
   Origs: 70:auto

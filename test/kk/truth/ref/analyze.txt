@@ -27,15 +27,15 @@ Halstead complexity:
   Dests: 20:auto
 (1 5) 20 FOR P = 1 TO 0 STEP -1
   Origs: 15:auto
-  Dests: 30:auto
+  Dests: 30:fornext, 150:fornext
 (1 5) 30 FOR Q = 1 TO 0 STEP -1
-  Origs: 20:auto
-  Dests: 40:auto
+  Origs: 20:fornext
+  Dests: 40:fornext, 140:fornext
 (1 5) 40 FOR R = 1 TO 0 STEP -1
-  Origs: 30:auto
-  Dests: 50:auto
+  Origs: 30:fornext
+  Dests: 50:fornext, 130:fornext
 (0 3) 50 LET X = P
-  Origs: 40:auto
+  Origs: 40:fornext
   Dests: 60:auto
 (0 2) 60 GOSUB 200
   Origs: 50:auto
@@ -62,13 +62,13 @@ Halstead complexity:
   Origs: 110:auto
   Dests: 130:auto
 (0 1) 130 NEXT R
-  Origs: 120:auto
+  Origs: 40:fornext, 120:auto
   Dests: 140:auto
 (0 1) 140 NEXT Q
-  Origs: 130:auto
+  Origs: 30:fornext, 130:auto
   Dests: 150:auto
 (0 1) 150 NEXT P
-  Origs: 140:auto
+  Origs: 20:fornext, 140:auto
   Dests: 160:auto
 (0 1) 160 STOP
   Origs: 150:auto

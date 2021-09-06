@@ -33,12 +33,12 @@ Halstead complexity:
   Dests: 140:auto
 (1 3) 140 FOR P = 1 TO 3
   Origs: 130:auto, 350:goto
-  Dests: 150:auto
+  Dests: 150:fornext, 160:fornext
 (0 5) 150 LET N(P) = INT(10 * RND(0)) + 6
-  Origs: 140:auto
+  Origs: 140:fornext
   Dests: 160:auto
 (0 1) 160 NEXT P
-  Origs: 150:auto
+  Origs: 140:fornext, 150:auto
   Dests: 170:auto
 (0 2) 170 PRINT "INITIAL CONFIGURATION:"
   Origs: 160:auto
@@ -105,15 +105,15 @@ Halstead complexity:
   Dests: 380:auto
 (1 3) 380 FOR P = 1 TO 3
   Origs: 370:auto
-  Dests: 390:auto
+  Dests: 390:fornext, 450:fornext
 (0 3) 390 LET X = N(P)
-  Origs: 380:auto
+  Origs: 380:fornext
   Dests: 400:auto
 (1 5) 400 FOR J = 4 TO 1 STEP -1
   Origs: 390:auto
-  Dests: 410:auto
+  Dests: 410:fornext, 440:fornext
 (0 4) 410 LET Y = INT(X / 2)
-  Origs: 400:auto
+  Origs: 400:fornext
   Dests: 420:auto
 (0 6) 420 LET B(P, J) = X - 2 * Y
   Origs: 410:auto
@@ -122,10 +122,10 @@ Halstead complexity:
   Origs: 420:auto
   Dests: 440:auto
 (0 1) 440 NEXT J
-  Origs: 430:auto
+  Origs: 400:fornext, 430:auto
   Dests: 450:auto
 (0 1) 450 NEXT P
-  Origs: 440:auto
+  Origs: 380:fornext, 440:auto
   Dests: 460:auto
 (0 0) 460 
   Origs: 450:auto
@@ -135,15 +135,15 @@ Halstead complexity:
   Dests: 480:auto
 (1 3) 480 FOR J = 1 TO 4
   Origs: 470:auto
-  Dests: 490:auto
+  Dests: 490:fornext, 510:fornext
 (0 5) 490 LET S(J) = B(1, J) + B(2, J) + B(3, J)
-  Origs: 480:auto
+  Origs: 480:fornext
   Dests: 500:auto
 (0 7) 500 LET S(J) = S(J) - 2 * INT(S(J) / 2)
   Origs: 490:auto
   Dests: 510:auto
 (0 1) 510 NEXT J
-  Origs: 500:auto
+  Origs: 480:fornext, 500:auto
   Dests: 520:auto
 (0 0) 520 
   Origs: 510:auto
@@ -156,9 +156,9 @@ Halstead complexity:
   Dests: 550:auto, 610:ifthen
 (1 3) 550 FOR P = 1 TO 3
   Origs: 540:auto
-  Dests: 560:auto
+  Dests: 560:fornext, 590:fornext
 (1 4) 560 IF N(P) = 0 THEN 590
-  Origs: 550:auto
+  Origs: 550:fornext
   Dests: 570:auto, 590:ifthen
 (0 5) 570 LET N = INT(N(P) * RND(0)) + 1
   Origs: 560:auto
@@ -167,7 +167,7 @@ Halstead complexity:
   Origs: 570:auto
   Dests: 770:goto
 (0 1) 590 NEXT P
-  Origs: 560:ifthen
+  Origs: 550:fornext, 560:ifthen
   Dests: 600:auto
 (0 0) 600 
   Origs: 590:auto
@@ -177,30 +177,30 @@ Halstead complexity:
   Dests: 620:auto
 (1 3) 620 FOR J = 1 TO 4
   Origs: 610:auto
-  Dests: 630:auto
+  Dests: 630:fornext, 640:fornext
 (1 4) 630 IF S(J) > 0 THEN 650
-  Origs: 620:auto
+  Origs: 620:fornext
   Dests: 640:auto, 650:ifthen
 (0 1) 640 NEXT J
-  Origs: 630:auto
+  Origs: 620:fornext, 630:auto
   Dests: 650:auto
 (1 3) 650 FOR P = 1 TO 3
   Origs: 630:ifthen, 640:auto
-  Dests: 660:auto
+  Dests: 660:fornext, 670:fornext
 (1 4) 660 IF B(P, J) = 1 THEN 680
-  Origs: 650:auto
+  Origs: 650:fornext
   Dests: 670:auto, 680:ifthen
 (0 1) 670 NEXT P
-  Origs: 660:auto
+  Origs: 650:fornext, 660:auto
   Dests: 680:auto
 (0 3) 680 LET N = 0
   Origs: 660:ifthen, 670:auto
   Dests: 690:auto
 (1 3) 690 FOR J = J TO 4
   Origs: 680:auto
-  Dests: 700:auto
+  Dests: 700:fornext, 750:fornext
 (1 4) 700 IF S(J) = 0 THEN 750
-  Origs: 690:auto
+  Origs: 690:fornext
   Dests: 710:auto, 750:ifthen
 (1 4) 710 IF B(P, J) = 0 THEN 740
   Origs: 700:auto
@@ -215,7 +215,7 @@ Halstead complexity:
   Origs: 710:ifthen
   Dests: 750:auto
 (0 1) 750 NEXT J
-  Origs: 700:ifthen, 730:goto, 740:auto
+  Origs: 690:fornext, 700:ifthen, 730:goto, 740:auto
   Dests: 760:auto
 (0 0) 760 
   Origs: 750:auto
@@ -264,12 +264,12 @@ Halstead complexity:
   Dests: 910:auto
 (1 3) 910 FOR P = 1 TO 3
   Origs: 900:auto
-  Dests: 920:auto
+  Dests: 920:fornext, 930:fornext
 (0 4) 920 PRINT "PILE " P; N(P)
-  Origs: 910:auto
+  Origs: 910:fornext
   Dests: 930:auto
 (0 1) 930 NEXT P
-  Origs: 920:auto
+  Origs: 910:fornext, 920:auto
   Dests: 940:auto
 (0 2) 940 PRINT
   Origs: 930:auto

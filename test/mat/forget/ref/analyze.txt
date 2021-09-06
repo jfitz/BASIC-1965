@@ -30,18 +30,18 @@ Halstead complexity:
   Dests: 21:auto
 (1 3) 21 FOR I = 1 TO 3
   Origs: 20:auto
-  Dests: 22:auto
+  Dests: 22:fornext, 25:fornext
 (1 3) 22 FOR J = 1 TO 4
-  Origs: 21:auto
-  Dests: 23:auto
+  Origs: 21:fornext
+  Dests: 23:fornext, 24:fornext
 (0 4) 23 LET A(I, J) = I * J
-  Origs: 22:auto
+  Origs: 22:fornext
   Dests: 24:auto
 (0 1) 24 NEXT J
-  Origs: 23:auto
+  Origs: 22:fornext, 23:auto
   Dests: 25:auto
 (0 1) 25 NEXT I
-  Origs: 24:auto
+  Origs: 21:fornext, 24:auto
   Dests: 30:auto
 (0 2) 30 MAT PRINT A
   Origs: 25:auto

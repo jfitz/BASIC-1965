@@ -27,24 +27,24 @@ Halstead complexity:
   Dests: 30:auto
 (1 3) 30 FOR I = 0 TO N
   Origs: 20:auto
-  Dests: 40:auto
+  Dests: 40:fornext, 50:fornext
 (1 2) 40 READ A(I)
-  Origs: 30:auto
+  Origs: 30:fornext
   Dests: 50:auto
 (0 1) 50 NEXT I
-  Origs: 40:auto
+  Origs: 30:fornext, 40:auto
   Dests: 60:auto
 (1 2) 60 READ X9
   Origs: 50:auto
   Dests: 70:auto
 (1 3) 70 FOR J = 1 TO X9
   Origs: 60:auto
-  Dests: 80:auto
+  Dests: 80:fornext, 90:fornext
 (1 2) 80 READ X(J)
-  Origs: 70:auto
+  Origs: 70:fornext
   Dests: 90:auto
 (0 1) 90 NEXT J
-  Origs: 80:auto
+  Origs: 70:fornext, 80:auto
   Dests: 95:auto
 (0 0) 95 
   Origs: 90:auto
@@ -90,12 +90,12 @@ Halstead complexity:
   Dests: 230:auto
 (1 3) 230 FOR J = 1 TO X9
   Origs: 220:auto
-  Dests: 240:auto
+  Dests: 240:fornext, 250:fornext
 (0 5) 240 PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
-  Origs: 230:auto
+  Origs: 230:fornext
   Dests: 250:auto
 (0 1) 250 NEXT J
-  Origs: 240:auto
+  Origs: 230:fornext, 240:auto
   Dests: 260:auto
 (0 1) 260 STOP
   Origs: 250:auto
@@ -108,9 +108,9 @@ Halstead complexity:
   Dests: 510:auto
 (1 3) 510 FOR J = 1 TO X9
   Origs: 500:auto
-  Dests: 520:auto
+  Dests: 520:fornext, 550:fornext
 (0 3) 520 LET X = X(J)
-  Origs: 510:auto
+  Origs: 510:fornext
   Dests: 530:auto
 (0 2) 530 GOSUB 1000
   Origs: 520:auto
@@ -119,7 +119,7 @@ Halstead complexity:
   Origs: 530:auto
   Dests: 550:auto
 (0 1) 550 NEXT J
-  Origs: 540:auto
+  Origs: 510:fornext, 540:auto
   Dests: 560:auto
 (0 1) 560 RETURN
   Origs: 550:auto
@@ -135,12 +135,12 @@ Halstead complexity:
   Dests: 1020:auto
 (1 3) 1020 FOR I = 0 TO N
   Origs: 1010:auto
-  Dests: 1030:auto
+  Dests: 1030:fornext, 1040:fornext
 (0 5) 1030 LET Y = Y * X + A(I)
-  Origs: 1020:auto
+  Origs: 1020:fornext
   Dests: 1040:auto
 (0 1) 1040 NEXT I
-  Origs: 1030:auto
+  Origs: 1020:fornext, 1030:auto
   Dests: 1050:auto
 (0 1) 1050 RETURN
   Origs: 1040:auto
@@ -153,12 +153,12 @@ Halstead complexity:
   Dests: 2010:auto
 (1 3) 2010 FOR I = 0 TO N
   Origs: 2000:auto
-  Dests: 2020:auto
+  Dests: 2020:fornext, 2030:fornext
 (0 6) 2020 LET A(I) = A(I) * (N - I)
-  Origs: 2010:auto
+  Origs: 2010:fornext
   Dests: 2030:auto
 (0 1) 2030 NEXT I
-  Origs: 2020:auto
+  Origs: 2010:fornext, 2020:auto
   Dests: 2040:auto
 (0 4) 2040 LET N = N - 1
   Origs: 2030:auto
