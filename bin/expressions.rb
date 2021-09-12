@@ -1162,13 +1162,18 @@ class XrefEntry
     sigils
   end
 
+  def self.format_sigils(sigils)
+    return '' if sigils.nil?
+
+    "(#{sigils.join(',')})"
+  end
+
   def initialize(variable, sigils, is_ref)
     @variable = variable
     @sigils = sigils
     @is_ref = is_ref
 
-    @signature = ''
-    @signature = '(' + @sigils.join(',') + ')' unless @sigils.nil?
+    @signature = XrefEntry.format_sigils(@sigils)
   end
 
   def eql?(other)

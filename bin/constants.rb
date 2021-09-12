@@ -204,7 +204,7 @@ class AbstractElement
 
     sigils = make_sigils(types, shapes)
 
-    '(' + sigils.join(',') + ')'
+    XrefEntry.format_sigils(sigils)
   end
 end
 

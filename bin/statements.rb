@@ -425,12 +425,15 @@ class AbstractStatement
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
     text = ' ' + text unless text.empty?
 
+    line = ''
+
     if show_timing
-      timing = @profile_time.round(4).to_s
-      line = ' (' + timing + '/' + @profile_count.to_s + ')' + text
+      line += " (#{@profile_time.round(4)}/#{@profile_count})"
     else
-      line = ' (' + @profile_count.to_s + ')' + text
+      line += " (#{@profile_count})"
     end
+
+    line += text
 
     [line]
   end
