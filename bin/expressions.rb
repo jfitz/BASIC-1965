@@ -2259,6 +2259,10 @@ class UserFunctionDefinition
     @comprehension_effort = @expression.comprehension_effort
   end
 
+  def multidef?
+    false
+  end
+
   def dump
     lines = []
     lines << @name.dump

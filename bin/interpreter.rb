@@ -173,6 +173,8 @@ class Interpreter
     @user_function_defs = {}
     @user_var_values = []
 
+    @function_stack = []
+
     @get_value_seen = []
     @running = false
   end
@@ -264,6 +266,7 @@ class Interpreter
 
   def program_analyze
     @program.optimize(self)
+    @program.assign_function_markers
     @program.analyze
   end
 
@@ -321,13 +324,15 @@ class Interpreter
     @data_store.reset
     @user_function_defs = {}
 
+    @previous_stack = []
     clear_previous_lines
     run_program
   end
 
   def run_program
     if @program.check_for_errors(self) &&
-       @program.optimize(self)
+       @program.optimize(self) &&
+       @program.assign_function_markers &&
        @program.init_data(self)
       begin
         # run each statement
@@ -385,6 +390,42 @@ class Interpreter
 
     statement.print_trace_info(@trace_out, @current_line_stmt_mod)
     statement.execute_a_statement(self, @current_line_stmt_mod)
+  end
+
+  def current_user_function
+    return nil if @function_stack.empty?
+
+    @function_stack[-1][0]
+  end
+
+  def run_user_function(name)
+    line_index = @program.user_function_line(name)
+
+    raise(BASICSyntaxError, "Function #{name} not defined") if line_index.nil?
+
+    @function_stack.push [name.to_s, @current_line_stmt_mod, @next_line_stmt_mod]
+    @previous_stack.push @previous_line_indexes
+    @previous_line_indexes = []
+
+    # run program at line_index
+    @current_line_stmt_mod = line_index
+    @function_running = true
+
+    begin
+      execute_step while @running && @function_running
+    rescue Interrupt
+      stop_running
+    end
+
+    @previous_line_indexes = @previous_stack.pop
+    _, @current_line_stmt_mod, @next_line_stmt_mod = @function_stack.pop
+
+    # one user-def function may invoke a second
+    @function_running = !@function_stack.empty?
+  end
+
+  def exit_user_function
+    @function_running = false
   end
 
   def execute_debug_command(keyword, args, cmd)
@@ -604,6 +645,7 @@ class Interpreter
       #  condition - break on any line if condition is true
       #  variable - break when contents change
       tokens_lists = split_breakpoint_tokens(tokens)
+
       tokens_lists.each do |tokens_list|
         if tokens_list.size == 1
           begin
@@ -980,7 +1022,7 @@ class Interpreter
   end
 
   def get_value(variable)
-    legals = %w[Variable]
+    legals = %w[Variable UserFunctionName]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable") unless
@@ -1040,7 +1082,7 @@ class Interpreter
   end
 
   def set_value(variable, value)
-    legals = %w[Variable]
+    legals = %w[Variable UserFunctionName]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable name") unless

@@ -3,7 +3,7 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    raise BASICSyntaxError, "Invalid line number object '#{line_number}:#{line_number}'" unless
+    raise BASICSyntaxError, "Invalid line number object '#{line_number.class}:#{line_number}'" unless
       line_number.class.to_s == 'IntegerConstant'
 
     @line_number = line_number.to_i
@@ -504,6 +504,13 @@ class Program
     @errors = []
   end
 
+  def uncache
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      line.uncache
+    end
+  end
+
   def empty?
     @lines.empty?
   end
@@ -599,10 +606,37 @@ class Program
     @lines.min[0]
   end
 
+  def user_function_line(name)
+    @user_function_start_lines[name]
+  end
+
   private
 
   def check_program
-    []
+    errors = []
+
+    part_of_user_function = nil
+
+    line_numbers = lines.keys.sort
+
+    line_numbers.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+      statements.each do |statement|
+        if !part_of_user_function.nil? && statement.multidef?
+          errors << "Missing FNEND before DEF in line #{line_number}"
+        end
+
+        if statement.multidef?
+          function_name = statement.function_name
+          part_of_user_function = function_name
+        end
+
+        part_of_user_function = nil if statement.multiend?
+      end
+    end
+
+    errors
   end
 
   def line_list_spec(tokens)
@@ -638,13 +672,6 @@ class Program
 
   public
 
-  def uncache
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
-      line.uncache
-    end
-  end
-
   def list(args, list_tokens)
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
@@ -661,6 +688,7 @@ class Program
     parse_lines_errors(line_numbers)
   end
 
+  # report statistics, complexity, and the lines which are unreachable
   def analyze
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
@@ -755,51 +783,31 @@ class Program
 
   def number_valid_statements
     num = 0
-
-    @lines.each do |_, line|
-      num += line.number_valid_statements
-    end
-
+    @lines.each { |_, line| num += line.number_valid_statements }
     num
   end
 
   def number_exec_statements
     num = 0
-
-    @lines.each do |_, line|
-      num += line.number_exec_statements
-    end
-
+    @lines.each { |_, line| num += line.number_exec_statements }
     num
   end
 
   def number_comments
     num = 0
-
-    @lines.each do |_, line|
-      num += line.number_comments
-    end
-
+    @lines.each { |_, line| num += line.number_comments }
     num
   end
 
   def comprehension_effort
     num = 0
-
-    @lines.each do |_, line|
-      num += line.comprehension_effort
-    end
-
+    @lines.each { |_, line| num += line.comprehension_effort }
     num
   end
 
   def mccabe_complexity
     num = 1
-
-    @lines.each do |_, line|
-      num += line.mccabe_complexity
-    end
-
+    @lines.each { |_, line| num += line.mccabe_complexity }
     num
   end
 
@@ -1004,7 +1012,21 @@ class Program
     first_line_number_idx = LineStmt.new(first_line_number, 0)
     reachable[first_line_number_idx] = true
 
-    # walk the entire tree and mark lines as live
+    # first line of multiline function is live
+    @lines.keys.each do |line_number|
+      statements = @lines[line_number].statements
+      statement_index = 0
+
+      statements.each do |statement|
+        line_number_idx = LineStmt.new(line_number, statement_index)
+
+        reachable[line_number_idx] = true if statement.multidef?
+
+        statement_index += 1
+      end
+    end
+
+    # walk the entire program and mark lines as live
     # repeat until no changes
     any_changes = true
     while any_changes
@@ -1081,8 +1103,8 @@ class Program
     okay = true
 
     @lines.keys.sort.each do |line_number|
-      @line_number = line_number
       line = @lines[line_number]
+      @line_number = line_number
       statements = line.statements
       statements.each do |statement|
         begin
@@ -1118,6 +1140,35 @@ class Program
     end
 
     okay
+  end
+
+  def assign_function_markers
+    @user_function_start_lines = {}
+    part_of_user_function = nil
+
+    line_numbers = @lines.keys.sort
+
+    line_numbers.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+      statement_index = 0
+      statements.each do |statement|
+        if statement.multidef?
+          function_name = statement.function_name
+          line_index = LineStmtMod.new(line_number, statement_index, 0)
+          @user_function_start_lines[function_name] = line_index
+          part_of_user_function = function_name
+        end
+
+        statement.part_of_user_function = part_of_user_function
+
+        part_of_user_function = nil if statement.multiend?
+
+        statement_index += 1
+      end
+    end
+
+    true
   end
 
   def init_data(interpreter)

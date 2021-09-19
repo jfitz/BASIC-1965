@@ -29,6 +29,7 @@ class StatementFactory
 
       line = create(line_number, line_text, all_tokens, comment)
     end
+
     [line_number, line]
   end
 
@@ -56,6 +57,36 @@ class StatementFactory
     end
 
     Line.new(text, statements, all_tokens, comment)
+  end
+
+  def create_statement(line_number, text, statement_tokens)
+    statement = EmptyStatement.new(line_number)
+
+    unless statement_tokens.empty?
+      statement = nil
+
+      keywords, tokens = extract_keywords(statement_tokens)
+
+      while statement.nil?
+        if @statement_definitions.key?(keywords)
+          tokens_lists = split_keywords(tokens)
+
+          statement_definition = @statement_definitions[keywords]
+
+          statement =
+            statement_definition.new(line_number, keywords, tokens_lists)
+        else
+          if keywords.empty?
+            statement = UnknownStatement.new(line_number, text) if statement.nil?
+          else
+            keyword = keywords.pop
+            tokens.unshift(keyword)
+          end
+        end
+      end
+    end
+
+    statement
   end
 
   def keywords_definitions
@@ -172,36 +203,6 @@ class StatementFactory
     results
   end
 
-  def create_statement(line_number, text, statement_tokens)
-    statement = EmptyStatement.new(line_number)
-
-    unless statement_tokens.empty?
-      statement = nil
-
-      keywords, tokens = extract_keywords(statement_tokens)
-
-      while statement.nil?
-        if @statement_definitions.key?(keywords)
-          tokens_lists = split_keywords(tokens)
-
-          statement_definition = @statement_definitions[keywords]
-
-          statement =
-            statement_definition.new(line_number, keywords, tokens_lists)
-        else
-          if keywords.empty?
-            statement = UnknownStatement.new(line_number, text) if statement.nil?
-          else
-            keyword = keywords.pop
-            tokens.unshift(keyword)
-          end
-        end
-      end
-    end
-
-    statement
-  end
-
   def tokenize(text)
     invalid_tokenbuilder = InvalidTokenBuilder.new
     tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
@@ -216,13 +217,12 @@ class AbstractStatement
   attr_reader :keywords
   attr_reader :tokens
   attr_reader :separators
+  attr_accessor :part_of_user_function
   attr_reader :valid
   attr_reader :executable
   attr_reader :comment
   attr_reader :linenums
   attr_reader :autonext
-  attr_reader :mccabe
-  attr_reader :comprehension_effort
 
   def self.extra_keywords
     []
@@ -253,6 +253,7 @@ class AbstractStatement
     @mccabe = 0
     @profile_count = 0
     @profile_time = 0
+    @part_of_user_function = nil
   end
 
   def uncache ; end
@@ -264,11 +265,25 @@ class AbstractStatement
   def analyze_pretty(number)
     texts = []
 
-    texts << "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
+    text = ''
+
+    text += "(#{@part_of_user_function}) " unless @part_of_user_function.nil?
+
+    text += "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
+
+    texts << text
 
     number = ' ' * number.size
 
     texts
+  end
+
+  def comprehension_effort
+    @comprehension_effort
+  end
+
+  def mccabe
+    @mccabe
   end
 
   def dump
@@ -375,6 +390,14 @@ class AbstractStatement
 
   def set_for_lines (_, _, _) end
 
+  def multidef?
+    false
+  end
+
+  def multiend?
+    false
+  end
+
   private
 
   def get_separators(tokens)
@@ -426,6 +449,8 @@ class AbstractStatement
     text = ' ' + text unless text.empty?
 
     line = ''
+
+    line = " (#{@part_of_user_function})" unless @part_of_user_function.nil?
 
     if show_timing
       line += " (#{@profile_time.round(4)}/#{@profile_count})"
@@ -1037,6 +1062,16 @@ class DefineFunctionStatement < AbstractStatement
     end
   end
 
+  def multidef?
+    return false if @definition.nil?
+
+    @definition.multidef?
+  end
+
+  def function_name
+    @definition.name
+  end
+
   def dump
     lines = []
     lines += @definition.dump unless @definition.nil?
@@ -1078,8 +1113,8 @@ class DimStatement < AbstractStatement
       tokens_lists.each do |tokens_list|
         begin
           @declarations << DeclarationExpressionSet.new(tokens_list)
-        rescue BASICExpressionError
-          @errors << 'Invalid variable ' + tokens_list.map(&:to_s).join
+        rescue BASICExpressionError => e
+          @errors << 'Invalid ' + tokens_list.map(&:to_s).join + ' ' + e.to_s
         end
       end
 
