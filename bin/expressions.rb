@@ -1199,7 +1199,7 @@ class XrefEntry
 
   def ==(other)
     @variable == other.variable &&
-      @sigils == other.signature &&
+      @sigils == other.sigils &&
       @is_ref == other.is_ref
   end
 
@@ -1458,71 +1458,43 @@ class Expression
 
   def self.parsed_expressions_numerics(expressions)
     vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.numerics
-    end
-
+    expressions.each { |expression| vars.concat expression.numerics }
     vars
   end
 
   def self.parsed_expressions_strings(expressions)
     strs = []
-
-    expressions.each do |expression|
-      strs.concat expression.strings
-    end
-
+    expressions.each { |expression| strs.concat expression.strings }
     strs
   end
 
   def self.parsed_expressions_booleans(expressions)
     bools = []
-
-    expressions.each do |expression|
-      bools.concat expression.booleans
-    end
-
+    expressions.each { |expression| bools.concat expression.booleans }
     bools
   end
 
   def self.parsed_expressions_variables(expressions)
     vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.variables
-    end
-
+    expressions.each { |expression| vars.concat expression.variables }
     vars
   end
 
   def self.parsed_expressions_operators(expressions)
     opers = []
-
-    expressions.each do |expression|
-      opers.concat expression.operators
-    end
-
+    expressions.each { |expression| opers.concat expression.operators }
     opers
   end
 
   def self.parsed_expressions_functions(expressions)
     vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.functions
-    end
-
+    expressions.each { |expression| vars.concat expression.functions }
     vars
   end
 
   def self.parsed_expressions_userfuncs(expressions)
     vars = []
-
-    expressions.each do |expression|
-      vars.concat expression.userfuncs
-    end
-
+    expressions.each { |expression| vars.concat expression.userfuncs }
     vars
   end
 
@@ -1876,13 +1848,7 @@ class AbstractExpressionSet
   end
 
   def signature
-    sigs = []
-
-    @expressions.each do |expression|
-      sigs << expression.signature
-    end
-
-    sigs.join(',')
+    @expressions.map(&:signature).join(',')
   end
 
   def dump
@@ -2276,10 +2242,6 @@ class UserFunctionDefinition
     s = @name.to_s + '(' + vnames + ')'
     s += '=' + @expression.to_s unless @expression.nil?
     s
-  end
-
-  def signature
-    @sigils
   end
 
   private
