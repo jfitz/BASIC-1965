@@ -267,7 +267,7 @@ class AbstractStatement
 
     text = ''
 
-    text += "(#{@part_of_user_function}) " unless @part_of_user_function.nil?
+    text += "#{@part_of_user_function} " unless @part_of_user_function.nil?
 
     text += "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
 
@@ -450,7 +450,7 @@ class AbstractStatement
 
     line = ''
 
-    line = " (#{@part_of_user_function})" unless @part_of_user_function.nil?
+    line = " #{@part_of_user_function}" unless @part_of_user_function.nil?
 
     if show_timing
       line += " (#{@profile_time.round(4)}/#{@profile_count})"
@@ -1072,6 +1072,10 @@ class DefineFunctionStatement < AbstractStatement
     @definition.name
   end
 
+  def function_signature
+    @definition.signature
+  end
+
   def dump
     lines = []
     lines += @definition.dump unless @definition.nil?
@@ -1081,9 +1085,7 @@ class DefineFunctionStatement < AbstractStatement
   def define_user_functions(interpreter)
     unless @definition.nil?
       begin
-        name = @definition.name
-        sigils = @definition.sigils
-        interpreter.set_user_function(name, sigils, @definition)
+        interpreter.set_user_function(@definition)
       rescue BASICRuntimeError => e
         raise BASICPreexecuteError.new(e.scode, e.extra)
       end
@@ -1895,6 +1897,7 @@ class LetStatement < AbstractScalarLetStatement
 
   def execute(interpreter)
     l_values = @assignment.eval_target(interpreter)
+
     r_values = @assignment.eval_value(interpreter)
 
     # more left-hand values -> repeat last rhs
@@ -1902,6 +1905,12 @@ class LetStatement < AbstractScalarLetStatement
     l_values.each_with_index do |l_value, index|
       j = [index, r_values.count - 1].min
       r_value = r_values[j]
+
+      # if l_value is a function name
+      # replace with current function signature
+      l_value = interpreter.current_user_function if
+        l_value.class.to_s == 'UserFunction'
+
       interpreter.set_value(l_value, r_value)
     end
   end

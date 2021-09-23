@@ -606,8 +606,8 @@ class Program
     @lines.min[0]
   end
 
-  def user_function_line(name)
-    @user_function_start_lines[name]
+  def user_function_line(function_signature)
+    @user_function_start_lines[function_signature]
   end
 
   private
@@ -628,8 +628,7 @@ class Program
         end
 
         if statement.multidef?
-          function_name = statement.function_name
-          part_of_user_function = function_name
+          part_of_user_function = statement.function_signature
         end
 
         part_of_user_function = nil if statement.multiend?
@@ -1154,10 +1153,10 @@ class Program
       statement_index = 0
       statements.each do |statement|
         if statement.multidef?
-          function_name = statement.function_name
+          function_signature = statement.function_signature
           line_index = LineStmtMod.new(line_number, statement_index, 0)
-          @user_function_start_lines[function_name] = line_index
-          part_of_user_function = function_name
+          @user_function_start_lines[function_signature] = line_index
+          part_of_user_function = function_signature
         end
 
         statement.part_of_user_function = part_of_user_function

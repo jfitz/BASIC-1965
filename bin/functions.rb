@@ -74,7 +74,9 @@ class AbstractFunction < AbstractElement
   end
 
   def signature
-    make_signature(@arg_types, @arg_shapes)
+    sigils = make_sigils(@arg_types, @arg_shapes)
+
+    UserFunctionSignature.new(@name, sigils)
   end
 
   def pop_stack(stack)
@@ -84,7 +86,7 @@ class AbstractFunction < AbstractElement
   def dump
     result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
     const = @constant ? '=' : ''
-    "#{self.class}:#{@name}#{signature} -> #{const}#{result}"
+    "#{self.class}:#{signature} -> #{const}#{result}"
   end
 
   def to_s
@@ -177,6 +179,61 @@ class AbstractFunction < AbstractElement
   end
 end
 
+# signature for user-defined function
+class UserFunctionSignature < AbstractElement
+  attr_reader :name
+  attr_reader :sigils
+  
+  def initialize(name, sigils)
+    @name = name
+    @sigils = sigils
+  end
+
+  def eql?(other)
+    @name == other.name && @sigils == other.sigils
+  end
+
+  def hash
+    @name.hash + @sigils.hash
+  end
+
+  def ==(other)
+    @name == other.name && @sigils == other.sigils
+  end
+
+  def to_s
+    @name.to_s + XrefEntry.format_sigils(@sigils)
+  end
+
+  def to_sw
+    to_s
+  end
+
+  def scalar?
+    true
+  end
+
+  def content_type
+    @name.content_type
+  end
+
+  def compatible?(value)
+    numerics = %i[numeric integer]
+    strings = %i[string]
+
+    case content_type
+    when :numeric
+      numerics.include?(value.content_type)
+    when :string
+      strings.include?(value.content_type)
+    when :integer
+      numerics.include?(value.content_type)
+    else
+      false
+    end
+  end
+end
+
 # User-defined function (provides a scalar value)
 class UserFunction < AbstractFunction
   attr_writer :valref
@@ -260,7 +317,8 @@ class UserFunction < AbstractFunction
   def evaluate_value(interpreter, arg_stack)
     arguments = arg_stack.pop
     sigils = XrefEntry.make_sigils(arguments)
-    definition = interpreter.get_user_function(@name, sigils)
+    signature = UserFunctionSignature.new(@name, sigils)
+    definition = interpreter.get_user_function(signature)
 
     # dummy variable names and their (now known) values
     params = definition.arguments
@@ -270,7 +328,14 @@ class UserFunction < AbstractFunction
 
     begin
       expression = definition.expression
-      results = expression.evaluate(interpreter)
+      if !expression.nil?
+        results = expression.evaluate(interpreter)
+      else
+        signature = UserFunctionSignature.new(@name, sigils)
+        interpreter.run_user_function(signature)
+
+        results = [interpreter.get_value(signature)]
+      end
     rescue BASICRuntimeError => e
       interpreter.clear_user_var_values
 

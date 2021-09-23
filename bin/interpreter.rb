@@ -398,12 +398,13 @@ class Interpreter
     @function_stack[-1][0]
   end
 
-  def run_user_function(name)
-    line_index = @program.user_function_line(name)
+  def run_user_function(function_signature)
+    line_index = @program.user_function_line(function_signature)
 
-    raise(BASICSyntaxError, "Function #{name} not defined") if line_index.nil?
+    raise(BASICSyntaxError, "Function #{function_signature} not defined") if
+      line_index.nil?
 
-    @function_stack.push [name.to_s, @current_line_stmt_mod, @next_line_stmt_mod]
+    @function_stack.push [function_signature, @current_line_stmt_mod, @next_line_stmt_mod]
     @previous_stack.push @previous_line_indexes
     @previous_line_indexes = []
 
@@ -955,8 +956,11 @@ class Interpreter
     @dimensions.key?(variable_name)
   end
 
-  def set_user_function(name, sigils, definition)
-    signature = name.to_s + XrefEntry.format_sigils(sigils)
+  def set_user_function(definition)
+    signature = definition.signature
+
+    raise BASICError.new("invalid signature #{signature.class}") unless
+      signature.class.to_s == 'UserFunctionSignature'
 
     raise BASICRuntimeError.new(:te_func_alr, signature) if
       @user_function_defs.key?(signature)
@@ -964,9 +968,7 @@ class Interpreter
     @user_function_defs[signature] = definition
   end
 
-  def get_user_function(name, sigils)
-    signature = name.to_s + XrefEntry.format_sigils(sigils)
-
+  def get_user_function(signature)
     raise BASICRuntimeError.new(:te_func_no, signature) unless
       @user_function_defs.key?(signature)
 
@@ -1022,7 +1024,7 @@ class Interpreter
   end
 
   def get_value(variable)
-    legals = %w[Variable UserFunctionName]
+    legals = %w[Variable UserFunctionSignature]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable") unless
@@ -1082,7 +1084,7 @@ class Interpreter
   end
 
   def set_value(variable, value)
-    legals = %w[Variable UserFunctionName]
+    legals = %w[Variable UserFunctionSignature]
 
     raise(BASICSyntaxError,
           "#{variable.class}:#{variable} is not a variable name") unless

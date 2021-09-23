@@ -26,7 +26,7 @@ class BASICTrappableError < BASICError
 
     return message if @extra.nil?
 
-    message + ' for ' + @extra
+    message + ' for ' + @extra.to_s
   end
 end
 
