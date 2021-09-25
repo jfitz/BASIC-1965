@@ -390,6 +390,10 @@ class AbstractStatement
 
   def set_for_lines (_, _, _) end
 
+  def singledef?
+    false
+  end
+
   def multidef?
     false
   end
@@ -1060,6 +1064,12 @@ class DefineFunctionStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
+  end
+
+  def singledef?
+    return false if @definition.nil?
+
+    @definition.singledef?
   end
 
   def multidef?

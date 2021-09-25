@@ -19,7 +19,7 @@ Halstead complexity:
  intelligence: 32.711
  time: 6.600
 
-(0 3) 100 DEF FNF(X) = SIN(X)
+FNF(_) (0 3) 100 DEF FNF(X) = SIN(X)
   Origs: 
   Dests: 110:auto
 (3 4) 110 READ A, B, S
@@ -40,7 +40,7 @@ Halstead complexity:
 (0 1) 160 STOP
   Origs: 150:auto
   Dests: 
-(0 3) 170 DEF FNR(X) = INT(X + 0.5)
+FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
   Origs: 140:ifthen
   Dests: 180:auto
 (0 7) 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H

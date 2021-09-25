@@ -201,6 +201,10 @@ class UserFunctionSignature < AbstractElement
     @name == other.name && @sigils == other.sigils
   end
 
+  def !=(other)
+    @name != other.name || @sigils != other.sigils
+  end
+
   def to_s
     @name.to_s + XrefEntry.format_sigils(@sigils)
   end

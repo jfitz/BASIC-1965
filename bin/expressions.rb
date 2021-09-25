@@ -2227,8 +2227,12 @@ class UserFunctionDefinition
     @comprehension_effort = @expression.comprehension_effort
   end
 
+  def singledef?
+    !@expression.nil?
+  end
+
   def multidef?
-    false
+    @expression.nil?
   end
 
   def dump

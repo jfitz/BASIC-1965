@@ -28,13 +28,13 @@ Halstead complexity:
 (0 1) 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
   Origs: 20:auto
   Dests: 51:auto
-(0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 2)
+FNL(_,_,_,_) (0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 2)
   Origs: 50:auto
   Dests: 60:auto
 (0 1) 60 REM CONVERT DEGREES TO RADIANS
   Origs: 51:auto
   Dests: 61:auto
-(0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
+FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Origs: 60:auto
   Dests: 100:auto
 (0 1) 100 REM POINT A

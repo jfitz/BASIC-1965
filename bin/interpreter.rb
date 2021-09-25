@@ -266,7 +266,8 @@ class Interpreter
 
   def program_analyze
     @program.optimize(self)
-    @program.assign_function_markers
+    @program.assign_singleline_function_markers
+    @program.assign_multiline_function_markers
     @program.analyze
   end
 
@@ -332,7 +333,8 @@ class Interpreter
   def run_program
     if @program.check_for_errors(self) &&
        @program.optimize(self) &&
-       @program.assign_function_markers &&
+       @program.assign_singleline_function_markers &&
+       @program.assign_multiline_function_markers &&
        @program.init_data(self)
       begin
         # run each statement
