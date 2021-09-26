@@ -1012,20 +1012,6 @@ class Program
     first_line_number_idx = LineStmt.new(first_line_number, 0)
     reachable[first_line_number_idx] = true
 
-    # first line of multiline function is live
-    @lines.keys.each do |line_number|
-      statements = @lines[line_number].statements
-      statement_index = 0
-
-      statements.each do |statement|
-        line_number_idx = LineStmt.new(line_number, statement_index)
-
-        reachable[line_number_idx] = true if statement.multidef?
-
-        statement_index += 1
-      end
-    end
-
     # walk the entire program and mark lines as live
     # repeat until no changes
     any_changes = true
