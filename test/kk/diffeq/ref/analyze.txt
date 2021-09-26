@@ -20,7 +20,7 @@ Halstead complexity:
  time: 3.384
 
 FNF(_,_) (0 3) 10 DEF FNF(X, Y) = SQR(X * X + Y * Y)
-  Origs: 
+  Origs: 170:function, 200:function
   Dests: 20:auto
 (0 0) 20 
   Origs: 10:auto
@@ -48,7 +48,7 @@ FNF(_,_) (0 3) 10 DEF FNF(X, Y) = SQR(X * X + Y * Y)
   Dests: 170:fornext, 230:fornext
 (0 5) 170 LET D1 = FNF(X, Y)
   Origs: 160:fornext
-  Dests: 180:auto
+  Dests: 10:function, 180:auto
 (0 3) 180 LET Y1 = Y
   Origs: 170:auto
   Dests: 190:auto
@@ -57,7 +57,7 @@ FNF(_,_) (0 3) 10 DEF FNF(X, Y) = SQR(X * X + Y * Y)
   Dests: 200:auto
 (0 5) 200 LET D2 = FNF(X + H / 2, Y)
   Origs: 190:auto
-  Dests: 210:auto
+  Dests: 10:function, 210:auto
 (0 6) 210 LET Y = Y1 + D2 * H
   Origs: 200:auto
   Dests: 220:auto

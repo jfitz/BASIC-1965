@@ -900,8 +900,9 @@ class Program
 
   def build_statement_destinations_line(line_number_idx, statement)
     goto_line_idxs = []
-    statement_gotos_line_stmt = statement.gotos
+    statement_gotos_line_stmt = statement.gotos(@user_function_start_lines)
     statement_gotos = []
+
     statement_gotos_line_stmt.each do |goto|
       statement_gotos << TransferRefLine.new(goto.line_number, goto.type)
     end
@@ -950,7 +951,7 @@ class Program
 
   def build_statement_destinations_stmt(line_number_idx, statement)
     goto_line_idxs = []
-    statement_gotos = statement.gotos
+    statement_gotos = statement.gotos(@user_function_start_lines)
 
     statement_gotos.each do |goto|
       goto_line_idxs << LineStmt.new(goto.line_number, goto.statement)

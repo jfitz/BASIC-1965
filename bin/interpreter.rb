@@ -400,6 +400,10 @@ class Interpreter
     @function_stack[-1][0]
   end
 
+  def find_user_function(function_signature)
+    @program.user_function_line(function_signature)
+  end
+
   def run_user_function(function_signature)
     line_index = @program.user_function_line(function_signature)
 

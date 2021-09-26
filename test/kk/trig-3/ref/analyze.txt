@@ -29,7 +29,7 @@ FND(_) (0 4) 120 DEF FND(X) = X * P / 180
   Origs: 110:auto
   Dests: 130:auto
 FNS(_) (0 3) 130 DEF FNS(X) = SIN(FND(X))
-  Origs: 120:auto
+  Origs: 120:auto, 170:function, 380:function
   Dests: 135:auto
 FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Origs: 130:auto
@@ -45,7 +45,7 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Dests: 170:auto
 (0 7) 170 LET S = X * FNS(B) / Y
   Origs: 160:auto
-  Dests: 180:auto
+  Dests: 130:function, 180:auto
 (1 4) 180 IF S > 1 THEN 290
   Origs: 170:auto
   Dests: 190:auto, 290:ifthen
@@ -123,7 +123,7 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Dests: 380:auto
 (0 7) 380 LET Z = X * FNS(A) / S
   Origs: 370:auto
-  Dests: 390:auto
+  Dests: 130:function, 390:auto
 (1 4) 390 IF Z >= 0 THEN 420
   Origs: 380:auto
   Dests: 400:auto, 420:ifthen

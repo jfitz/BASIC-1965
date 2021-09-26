@@ -42,6 +42,10 @@ class AbstractElement
     "#{self.class}:Unimplemented"
   end
 
+  def destinations(_)
+    []
+  end
+
   def empty?
     @empty
   end

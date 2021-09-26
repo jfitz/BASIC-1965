@@ -256,10 +256,6 @@ class UserFunction < AbstractFunction
     @default_shape = :scalar
   end
 
-  def to_s
-    @name.to_s
-  end
-
   def set_content_type(type_stack)
     unless type_stack.empty?
       @arg_types = type_stack.pop if
@@ -302,6 +298,20 @@ class UserFunction < AbstractFunction
     else
       false
     end
+  end
+
+  def destinations(user_function_start_lines)
+    line_number_stmt_mod = user_function_start_lines[signature]
+
+    return [] if line_number_stmt_mod.nil?
+
+    line_number = line_number_stmt_mod.line_number
+    stmt = line_number_stmt_mod.statement
+    [TransferRefLineStmt.new(line_number, stmt, :function)]
+  end
+
+  def to_s
+    @name.to_s
   end
 
   def evaluate(interpreter, arg_stack)

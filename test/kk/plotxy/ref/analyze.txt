@@ -20,10 +20,10 @@ Halstead complexity:
  time: 11.546
 
 FNF(_) (0 3) 100 DEF FNF(X) = SIN(X)
-  Origs: 
+  Origs: 270:function
   Dests: 105:auto
 FNG(_) (0 5) 105 DEF FNG(X) = LOG(X) / LOG(10)
-  Origs: 100:auto
+  Origs: 100:auto, 282:function
   Dests: 110:auto
 (3 4) 110 READ A, B, S
   Origs: 105:auto
@@ -44,7 +44,7 @@ FNG(_) (0 5) 105 DEF FNG(X) = LOG(X) / LOG(10)
   Origs: 150:auto
   Dests: 
 FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
-  Origs: 140:ifthen
+  Origs: 140:ifthen, 280:function, 284:function
   Dests: 180:auto
 (0 7) 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
   Origs: 170:auto
@@ -72,16 +72,16 @@ FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
   Dests: 270:fornext, 330:fornext
 (0 5) 270 LET Y = FNF(X)
   Origs: 250:fornext
-  Dests: 280:auto
+  Dests: 100:function, 280:auto
 (0 5) 280 LET Y1 = FNR((Y - C) / H)
   Origs: 270:auto
-  Dests: 282:auto
+  Dests: 170:function, 282:auto
 (0 5) 282 LET Y = FNG(X)
   Origs: 280:auto
-  Dests: 284:auto
+  Dests: 105:function, 284:auto
 (0 5) 284 LET Y2 = FNR((Y - C) / H)
   Origs: 282:auto
-  Dests: 290:auto
+  Dests: 170:function, 290:auto
 (1 3) 290 FOR I = 0 TO N
   Origs: 284:auto
   Dests: 292:fornext, 310:fornext

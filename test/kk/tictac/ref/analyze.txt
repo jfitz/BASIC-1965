@@ -44,7 +44,7 @@ Halstead complexity:
   Origs: 160:auto
   Dests: 180:auto
 FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
-  Origs: 170:auto
+  Origs: 170:auto, 270:function, 320:function, 360:function, 410:function, 460:function, 500:function, 550:function, 590:function
   Dests: 190:auto
 (0 1) 190 REM
   Origs: 180:auto
@@ -72,7 +72,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 270:auto
 (0 5) 270 LET B = FNM(P + 1)
   Origs: 260:auto
-  Dests: 280:auto
+  Dests: 180:function, 280:auto
 (0 3) 280 LET M = B
   Origs: 270:auto
   Dests: 290:auto
@@ -87,7 +87,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 320:auto, 360:ifthen
 (0 5) 320 LET C = FNM(B + 4)
   Origs: 310:auto
-  Dests: 330:auto
+  Dests: 180:function, 330:auto
 (0 3) 330 LET M = C
   Origs: 320:auto
   Dests: 340:auto
@@ -99,7 +99,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 730:goto
 (0 5) 360 LET C = FNM(B + 2)
   Origs: 310:ifthen
-  Dests: 370:auto
+  Dests: 180:function, 370:auto
 (0 3) 370 LET M = C
   Origs: 360:auto
   Dests: 380:auto
@@ -114,7 +114,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 410:auto, 450:ifthen
 (0 5) 410 LET D = FNM(C + 4)
   Origs: 400:auto
-  Dests: 420:auto
+  Dests: 180:function, 420:auto
 (0 3) 420 LET M = D
   Origs: 410:auto
   Dests: 430:auto
@@ -129,7 +129,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 460:auto, 500:ifthen
 (0 5) 460 LET D = FNM(C + 7)
   Origs: 450:auto
-  Dests: 470:auto
+  Dests: 180:function, 470:auto
 (0 3) 470 LET M = D
   Origs: 460:auto
   Dests: 480:auto
@@ -141,7 +141,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 730:goto
 (0 5) 500 LET D = FNM(C + 3)
   Origs: 450:ifthen
-  Dests: 510:auto
+  Dests: 180:function, 510:auto
 (0 3) 510 LET M = D
   Origs: 500:auto
   Dests: 520:auto
@@ -156,7 +156,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 550:auto, 590:ifthen
 (0 5) 550 LET E = FNM(D + 4)
   Origs: 540:auto
-  Dests: 560:auto
+  Dests: 180:function, 560:auto
 (0 3) 560 LET M = E
   Origs: 550:auto
   Dests: 570:auto
@@ -168,7 +168,7 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 730:goto
 (0 5) 590 LET E = FNM(D + 6)
   Origs: 540:ifthen
-  Dests: 600:auto
+  Dests: 180:function, 600:auto
 (0 3) 600 LET M = E
   Origs: 590:auto
   Dests: 610:auto

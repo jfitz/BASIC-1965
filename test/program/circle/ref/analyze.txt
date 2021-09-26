@@ -29,13 +29,13 @@ Halstead complexity:
   Origs: 20:auto
   Dests: 51:auto
 FNL(_,_,_,_) (0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 2)
-  Origs: 50:auto
+  Origs: 50:auto, 221:function, 222:function, 231:function, 232:function, 424:function, 425:function
   Dests: 60:auto
 (0 1) 60 REM CONVERT DEGREES TO RADIANS
   Origs: 51:auto
   Dests: 61:auto
 FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
-  Origs: 60:auto
+  Origs: 60:auto, 421:function
   Dests: 100:auto
 (0 1) 100 REM POINT A
   Origs: 61:auto
@@ -90,10 +90,10 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 221:auto
 (0 5) 221 LET F1 = FNL(A1, A2, C1, C2)
   Origs: 220:auto
-  Dests: 222:auto
+  Dests: 51:function, 222:auto
 (0 5) 222 LET F2 = FNL(B1, B2, C1, C2)
   Origs: 221:auto
-  Dests: 223:auto
+  Dests: 51:function, 223:auto
 (0 4) 223 LET R0 = F1 / F2
   Origs: 222:auto
   Dests: 230:auto
@@ -102,10 +102,10 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 231:auto
 (0 5) 231 LET G1 = FNL(A1, A2, I1, I2)
   Origs: 230:auto
-  Dests: 232:auto
+  Dests: 51:function, 232:auto
 (0 5) 232 LET G2 = FNL(B1, B2, I1, I2)
   Origs: 231:auto
-  Dests: 233:auto
+  Dests: 51:function, 233:auto
 (0 4) 233 LET R1 = G1 / G2
   Origs: 232:auto
   Dests: 239:auto
@@ -174,7 +174,7 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 421:auto
 (0 5) 421 LET T = FNR(I)
   Origs: 420:auto
-  Dests: 422:auto
+  Dests: 61:function, 422:auto
 (0 7) 422 LET I1 = D1 + COS(T) * D5
   Origs: 421:auto
   Dests: 423:auto
@@ -183,10 +183,10 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 424:auto
 (0 5) 424 LET G1 = FNL(A1, A2, I1, I2)
   Origs: 423:auto
-  Dests: 425:auto
+  Dests: 51:function, 425:auto
 (0 5) 425 LET G2 = FNL(B1, B2, I1, I2)
   Origs: 424:auto
-  Dests: 426:auto
+  Dests: 51:function, 426:auto
 (0 4) 426 LET R1 = G1 / G2
   Origs: 425:auto
   Dests: 430:auto

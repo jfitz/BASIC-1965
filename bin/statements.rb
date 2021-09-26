@@ -346,7 +346,7 @@ class AbstractStatement
     []
   end
 
-  def gotos
+  def gotos(_)
     []
   end
 
@@ -1380,7 +1380,7 @@ class ForStatement < AbstractStatement
     lines
   end
 
-  def gotos
+  def gotos(_)
     goto_refs = []
 
     unless @loopstart_line_stmt_mod.nil?
@@ -1547,7 +1547,7 @@ class GosubStatement < AbstractStatement
     [@destination.dump]
   end
 
-  def gotos
+  def gotos(_)
     [TransferRefLineStmt.new(@destination, 0, :gosub)]
   end
 
@@ -1617,7 +1617,7 @@ class GotoStatement < AbstractStatement
     [@destination.dump]
   end
 
-  def gotos
+  def gotos(_)
     [TransferRefLineStmt.new(@destination, 0, :goto)]
   end
 
@@ -1699,7 +1699,7 @@ class AbstractIfStatement < AbstractStatement
     lines
   end
 
-  def gotos
+  def gotos(_)
     [TransferRefLineStmt.new(@destination, 0, :ifthen)]
   end
 
@@ -1857,6 +1857,12 @@ class AbstractLetStatement < AbstractStatement
     lines = []
     lines += @assignment.dump unless @assignment.nil?
     lines
+  end
+
+  def gotos(user_function_start_lines)
+    return [] if @assignment.nil?
+
+    @assignment.destinations(user_function_start_lines)
   end
 end
 
