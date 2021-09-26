@@ -268,6 +268,14 @@ class Interpreter
     @program.optimize(self)
     @program.assign_singleline_function_markers
     @program.assign_multiline_function_markers
+
+    errors = @program.errors
+    unless errors.empty?
+      errors.each { |error| @console_io.print_item(error) }
+      @console_io.newline_when_needed
+      @console_io.newline
+    end
+    
     @program.analyze
   end
 
@@ -293,6 +301,7 @@ class Interpreter
     errors = @program.errors
 
     errors.each { |error| @console_io.print_line(error) }
+    @console_io.newline_when_needed
   end
 
   def program_save
@@ -348,6 +357,10 @@ class Interpreter
       end
 
       close_all_files
+    else
+      errors = @program.errors
+      errors.each { |error| @console_io.print_item(error) }
+      @console_io.newline_when_needed
     end
   end
 
