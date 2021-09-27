@@ -1,4 +1,5 @@
-100: DEF FNF(X) = SIN(X)
+FNF(_) 100: DEF FNF(X) = SIN(X)
+ Statement ignored
 110: READ A, B, S
  A = 0
  B = 6.401
@@ -15,7 +16,8 @@
 140: IF N <= 50 THEN 170
  N: 40
  N <= 50: true
-170: DEF FNR(X) = INT(X + 0.5)
+FNR(_) 170: DEF FNR(X) = INT(X + 0.5)
+ Statement ignored
 180: PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
 Y-AXIS:  FROM 
  C: -1

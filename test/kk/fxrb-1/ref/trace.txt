@@ -1211,7 +1211,8 @@
  G(60,20) = 0
 140: DATA 4, 2, 1, 3
 150: DATA .01, 2, 30
-160: DEF FNR(X) = INT(4 * X + .5)
+FNR(_) 160: DEF FNR(X) = INT(4 * X + .5)
+ Statement ignored
 170: 
 200: READ X, Y
  X = 3

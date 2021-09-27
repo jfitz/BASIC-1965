@@ -380,8 +380,26 @@ class AbstractStatement
 
   def print_trace_info(trace_out, current_line_number)
     trace_out.newline_when_needed
-    trace_out.print_out current_line_number.to_s + ': ' + pretty
+
+    trace_out.print_out "#{@part_of_user_function} " unless
+      @part_of_user_function.nil?
+
+    text = pretty
+    text = current_line_number.to_s + ': ' + text
+
+    trace_out.print_out(text)
     trace_out.newline
+  end
+
+  def execute_a_statement(interpreter, _)
+    timing = Benchmark.measure { execute_core(interpreter) }
+
+    user_time = timing.utime + timing.cutime
+    sys_time = timing.stime + timing.cstime
+    time = user_time + sys_time
+
+    @profile_time += time
+    @profile_count += 1
   end
 
   def number_for_stmts
@@ -427,17 +445,6 @@ class AbstractStatement
   def reset_profile_metrics
     @profile_count = 0
     @profile_time = 0
-  end
-
-  def execute_a_statement(interpreter, _)
-    timing = Benchmark.measure { execute(interpreter) }
-
-    user_time = timing.utime + timing.cutime
-    sys_time = timing.stime + timing.cstime
-    time = user_time + sys_time
-
-    @profile_time += time
-    @profile_count += 1
   end
 
   def start_index
@@ -643,7 +650,7 @@ class InvalidStatement < AbstractStatement
     @text
   end
 
-  def execute(_)
+  def execute_core(_)
     raise(BASICSyntaxError, @errors[0])
   end
 
@@ -679,7 +686,7 @@ class UnknownStatement < AbstractStatement
     @text
   end
 
-  def execute(_) end
+  def execute_core(_) end
 end
 
 # empty statement (line number only)
@@ -700,7 +707,7 @@ class EmptyStatement < AbstractStatement
     ''
   end
 
-  def execute(_) end
+  def execute_core(_) end
 end
 
 # REMARK
@@ -726,7 +733,7 @@ class RemarkStatement < AbstractStatement
     [@rest.dump]
   end
 
-  def execute(_) end
+  def execute_core(_) end
 end
 
 # common functions for IO statements
@@ -1033,7 +1040,7 @@ class DataStatement < AbstractStatement
     raise BASICPreexecuteError.new(e.scode, e.extra)
   end
 
-  def execute(_) end
+  def execute_core(_) end
 end
 
 # DEF FNx
@@ -1102,7 +1109,7 @@ class DefineFunctionStatement < AbstractStatement
     end
   end
 
-  def execute(_) end
+  def execute_core(_) end
 end
 
 # DIM
@@ -1154,7 +1161,7 @@ class DimStatement < AbstractStatement
     lines
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     @declarations.each do |expression|
       variables = expression.evaluate(interpreter)
       variable = variables[0]
@@ -1202,7 +1209,7 @@ class EndStatement < AbstractStatement
     false
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     io = interpreter.console_io
     io.newline_when_needed
     interpreter.stop
@@ -1248,7 +1255,7 @@ class FilesStatement < AbstractStatement
     raise BASICPreexecuteError.new(e.scode, e.extra)
   end
 
-  def execute(_) end
+  def execute_core(_) end
 end
 
 # FOR statement
@@ -1398,7 +1405,7 @@ class ForStatement < AbstractStatement
     goto_refs
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     raise BASICSyntaxError.new("uninitialized FOR") if
       @loopstart_line_stmt_mod.nil?
 
@@ -1506,7 +1513,7 @@ class ForgetStatement < AbstractStatement
     lines
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     @variables.each { |variable| interpreter.forget_value(variable) }
   end
 end
@@ -1561,7 +1568,7 @@ class GosubStatement < AbstractStatement
     false
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     line_number = @destination
     index = interpreter.statement_start_index(line_number, 0)
 
@@ -1631,7 +1638,7 @@ class GotoStatement < AbstractStatement
     false
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     line_number = @destination
     index = interpreter.statement_start_index(line_number, 0)
 
@@ -1654,7 +1661,7 @@ class AbstractIfStatement < AbstractStatement
     super
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     values = @expression.evaluate(interpreter)
 
     raise(BASICExpressionError, 'Expression error') unless
@@ -1797,7 +1804,7 @@ class InputStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :read)
 
@@ -1911,7 +1918,7 @@ class LetStatement < AbstractScalarLetStatement
     super
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     l_values = @assignment.eval_target(interpreter)
 
     r_values = @assignment.eval_value(interpreter)
@@ -1967,7 +1974,7 @@ class NextStatement < AbstractStatement
     [@control.dump]
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fornext_control = interpreter.retrieve_fornext(@control)
 
     if $options['match_fornext'].value
@@ -2057,7 +2064,7 @@ class OptionStatement < AbstractStatement
     lines
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     if @expression.nil?
       interpreter.pop_option(@key)
     else
@@ -2101,7 +2108,7 @@ class PrintStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -2155,7 +2162,7 @@ class ReadStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     ds = interpreter.get_data_store(fh)
 
@@ -2191,7 +2198,7 @@ class RestoreStatement < AbstractStatement
     ['']
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     ds = interpreter.get_data_store(nil)
     ds.reset
   end
@@ -2219,7 +2226,7 @@ class ReturnStatement < AbstractStatement
     ['']
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     interpreter.next_line_stmt_mod = interpreter.pop_return
   end
 end
@@ -2246,7 +2253,7 @@ class StopStatement < AbstractStatement
     ['']
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     io = interpreter.console_io
     io.newline_when_needed
     interpreter.stop
@@ -2280,7 +2287,7 @@ class WriteStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -2348,7 +2355,7 @@ class ArrForgetStatement < AbstractStatement
     lines
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     @variables.each { |variable| interpreter.forget_compound_values(variable) }
   end
 end
@@ -2381,7 +2388,7 @@ class ArrInputStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :read)
 
@@ -2476,7 +2483,7 @@ class ArrPlotStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -2517,7 +2524,7 @@ class ArrPrintStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -2571,7 +2578,7 @@ class ArrReadStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     ds = interpreter.get_data_store(fh)
 
@@ -2644,7 +2651,7 @@ class ArrWriteStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -2707,7 +2714,7 @@ class ArrLetStatement < AbstractLetStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     l_values = @assignment.eval_target(interpreter)
     l_value0 = l_values[0]
     l_dims = interpreter.get_dimensions(l_value0.name)
@@ -2793,7 +2800,7 @@ class MatForgetStatement < AbstractStatement
     lines
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     @variables.each { |variable| interpreter.forget_compound_values(variable) }
   end
 end
@@ -2826,7 +2833,7 @@ class MatInputStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :read)
 
@@ -2936,7 +2943,7 @@ class MatPlotStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -2977,7 +2984,7 @@ class MatPrintStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -3054,7 +3061,7 @@ class MatReadStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     ds = interpreter.get_data_store(fh)
 
@@ -3145,7 +3152,7 @@ class MatWriteStatement < AbstractStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     fh = get_file_handle(interpreter, @file_tokens)
     fhr = interpreter.get_file_handler(fh, :print)
 
@@ -3208,7 +3215,7 @@ class MatLetStatement < AbstractLetStatement
     end
   end
 
-  def execute(interpreter)
+  def execute_core(interpreter)
     l_values = @assignment.eval_target(interpreter)
     l_value0 = l_values[0]
     l_dims = interpreter.get_dimensions(l_value0.name)

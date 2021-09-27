@@ -1,5 +1,7 @@
-100: DEF FNF(X) = SIN(X)
-105: DEF FNG(X) = LOG(X) / LOG(10)
+FNF(_) 100: DEF FNF(X) = SIN(X)
+ Statement ignored
+FNG(_) 105: DEF FNG(X) = LOG(X) / LOG(10)
+ Statement ignored
 110: READ A, B, S
  A = 1
  B = 10.01
@@ -16,7 +18,8 @@
 140: IF N <= 50 THEN 170
  N: 50
  N <= 50: true
-170: DEF FNR(X) = INT(X + 0.5)
+FNR(_) 170: DEF FNR(X) = INT(X + 0.5)
+ Statement ignored
 180: PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
 Y-AXIS:  FROM 
  C: -1
