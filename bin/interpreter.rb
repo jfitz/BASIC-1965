@@ -217,15 +217,6 @@ class Interpreter
     tokenbuilders << WhitespaceTokenBuilder.new
   end
 
-  def verify_next_line_stmt_mod
-    raise BASICSyntaxError, 'Program terminated without END' if
-      @next_line_stmt_mod.nil?
-
-    return if @program.line_number?(@next_line_stmt_mod.line_number)
-
-    raise(BASICSyntaxError, "Line number #{@next_line_stmt_mod.line_number} not found")
-  end
-
   public
 
   def program_new
@@ -598,8 +589,12 @@ class Interpreter
       @current_line_stmt_mod = nil
 
       if @running
-        verify_next_line_stmt_mod
         @current_line_stmt_mod = @next_line_stmt_mod
+
+        raise BASICSyntaxError, 'Program terminated without END' if
+          @current_line_stmt_mod.nil? && @current_user_function.nil?
+
+        stop_running if @current_line_stmt_mod.nil?
       end
     rescue BASICTrappableError => e
       @console_io.newline_when_needed
