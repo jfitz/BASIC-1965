@@ -42,12 +42,12 @@ Halstead complexity:
   Dests: 170:auto
 (0 1) 170 REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
   Origs: 160:auto
-  Dests: 180:auto
-FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
-  Origs: 170:auto, 270:function, 320:function, 360:function, 410:function, 460:function, 500:function, 550:function, 590:function
   Dests: 190:auto
+FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
+  Origs: 270:function, 320:function, 360:function, 410:function, 460:function, 500:function, 550:function, 590:function
+  Dests: 
 (0 1) 190 REM
-  Origs: 180:auto
+  Origs: 170:auto
   Dests: 200:auto
 (0 1) 200 REM NOW WE START THE PROGRAM
   Origs: 190:auto

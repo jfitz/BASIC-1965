@@ -24,15 +24,15 @@ Halstead complexity:
   Dests: 110:auto
 (0 3) 110 LET P = 3.14159265
   Origs: 100:auto
-  Dests: 120:auto
-FND(_) (0 4) 120 DEF FND(X) = X * P / 180
-  Origs: 110:auto
-  Dests: 130:auto
-FNC(_) (0 3) 130 DEF FNC(X) = COS(FND(X))
-  Origs: 120:auto
   Dests: 140:auto
+FND(_) (0 4) 120 DEF FND(X) = X * P / 180
+  Origs: 
+  Dests: 
+FNC(_) (0 3) 130 DEF FNC(X) = COS(FND(X))
+  Origs: 
+  Dests: 
 (0 5) 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
-  Origs: 130:auto
+  Origs: 110:auto
   Dests: 150:auto
 (3 4) 150 READ X, A, Y
   Origs: 140:auto, 180:goto

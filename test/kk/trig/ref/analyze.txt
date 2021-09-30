@@ -21,18 +21,18 @@ Halstead complexity:
 
 (0 3) 10 LET P = 3.14159625
   Origs: 
-  Dests: 20:auto
-FND(_) (0 4) 20 DEF FND(X) = X * P / 180
-  Origs: 10:auto
-  Dests: 30:auto
-FNS(_) (0 3) 30 DEF FNS(X) = SIN(FND(X))
-  Origs: 20:auto
-  Dests: 40:auto
-FNC(_) (0 3) 40 DEF FNC(X) = COS(FND(X))
-  Origs: 30:auto
   Dests: 50:auto
+FND(_) (0 4) 20 DEF FND(X) = X * P / 180
+  Origs: 
+  Dests: 
+FNS(_) (0 3) 30 DEF FNS(X) = SIN(FND(X))
+  Origs: 
+  Dests: 
+FNC(_) (0 3) 40 DEF FNC(X) = COS(FND(X))
+  Origs: 
+  Dests: 
 (0 4) 50 PRINT "DEGREES", "SINE", "COSINE"
-  Origs: 40:auto
+  Origs: 10:auto
   Dests: 60:auto
 (1 4) 60 FOR X = 0 TO 90 STEP 10
   Origs: 50:auto

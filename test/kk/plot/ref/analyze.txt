@@ -21,9 +21,9 @@ Halstead complexity:
 
 FNF(_) (0 3) 100 DEF FNF(X) = SIN(X)
   Origs: 270:function
-  Dests: 110:auto
+  Dests: 
 (3 4) 110 READ A, B, S
-  Origs: 100:auto
+  Origs: 
   Dests: 120:auto
 (3 4) 120 READ C, D, N
   Origs: 110:auto
@@ -31,9 +31,9 @@ FNF(_) (0 3) 100 DEF FNF(X) = SIN(X)
 (0 5) 130 LET H = (D - C) / N
   Origs: 120:auto
   Dests: 140:auto
-(1 4) 140 IF N <= 50 THEN 170
+(1 4) 140 IF N <= 50 THEN 180
   Origs: 130:auto
-  Dests: 150:auto, 170:ifthen
+  Dests: 150:auto, 180:ifthen
 (0 2) 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
   Origs: 140:auto
   Dests: 160:auto
@@ -41,10 +41,10 @@ FNF(_) (0 3) 100 DEF FNF(X) = SIN(X)
   Origs: 150:auto
   Dests: 
 FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
-  Origs: 140:ifthen, 280:function
-  Dests: 180:auto
+  Origs: 280:function
+  Dests: 
 (0 7) 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
-  Origs: 170:auto
+  Origs: 140:ifthen
   Dests: 190:auto
 (0 2) 190 PRINT
   Origs: 180:auto

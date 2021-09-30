@@ -732,6 +732,38 @@ Examples:
 	20 DEF FNA(C,B) = COS(C)/SIN(B)
 	30 DEF FNA(A,B,C) = COS(C)/SIN(A)
 
+You can GOTO or GOSUB to a function.
+
+A DEF statement cannot be part of the flow of execution.
+The following code will create an error:
+
+        10 PRINT "HELLO"
+	20 DEF FNA(H) = H * 3
+	30 LET A = 6
+	40 LET B = FNA(A)
+	50 PRINT B
+	60 GOTO 20
+	99 END
+
+When processing line 60, BASIC attempts to change control to line 20.
+As line 20 is part of a function, this is an invalid change of control to a function.
+
+Line 20 by itself does not cause a problem.
+After processing line 10, the BASIC interpreter assigns control to the next non-function line, which is line 30.
+Control flows from line 10 to line 30, skipping line 20.
+
+DEF statements are processed before the program runs, and processed only once.
+Thus, they do not have to appear before the function is used.
+(Although tradition is that the DEF is specified before the function is used.)
+
+Multiple functions may be defined with the same name, provided they have different signatures.
+
+Examples:
+
+	10 DEF FNA(A) = INT(A)
+	20 DEF FNA(C,B) = COS(C)/SIN(B)
+	30 DEF FNA(A,B,C) = COS(C)/SIN(A)
+
 DIM
 ~~~
 

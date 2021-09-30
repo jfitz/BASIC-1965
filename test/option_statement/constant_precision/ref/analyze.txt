@@ -24,12 +24,12 @@ Halstead complexity:
   Dests: 11:auto
 (0 2) 11 OPTION CACHE_CONST_EXPR TRUE
   Origs: 10:auto
-  Dests: 12:auto
-(0 4) 12 DEF FNR(D) = D * 3.1415 / 180
-  Origs: 11:auto
   Dests: 20:auto
+FNR(_) (0 4) 12 DEF FNR(D) = D * 3.1415 / 180
+  Origs: 
+  Dests: 
 (0 2) 20 PRINT "PRECISION 7"
-  Origs: 12:auto
+  Origs: 11:auto
   Dests: 30:auto
 (0 2) 30 GOSUB 100
   Origs: 20:auto

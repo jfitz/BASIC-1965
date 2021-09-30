@@ -339,10 +339,14 @@ class Interpreter
       begin
         # run each statement
         # start with the first line number
-        @current_line_stmt_mod = find_first_statement
+        @current_line_stmt_mod = @program.find_first_statement
         @running = true
 
-        execute_step while @running
+        while @running
+          ## puts "BEFOR: #{@running} #{@current_line_stmt_mod}"
+          execute_step
+          ## puts "AFTER: #{@running} #{@current_line_stmt_mod}"
+        end
       rescue Interrupt
         stop_running
       end
@@ -357,22 +361,6 @@ class Interpreter
 
   def close_all_files
     @file_handlers.each { |_, fh| fh.close }
-  end
-
-  def find_first_statement
-    # set next line to first statement
-    line_number = @program.first_line_number
-    line = @program.lines[line_number]
-    statements = line.statements
-    modifier = 0
-
-    # start with the modifier, if any
-    unless statements.empty?
-      statement = statements[0]
-      modifier = statement.start_index
-    end
-
-    LineStmtMod.new(line_number, 0, modifier)
   end
 
   def print_errors(line_number, statement)
@@ -396,11 +384,7 @@ class Interpreter
 
     statement.print_trace_info(@trace_out, @current_line_stmt_mod)
 
-    if !statement.part_of_user_function.nil? && !@function_running
-      @trace_out.print_line(' Statement ignored')
-    else
-      statement.execute_a_statement(self, @current_line_stmt_mod)
-    end
+    statement.execute_a_statement(self, @current_line_stmt_mod)
   end
 
   def current_user_function
@@ -428,20 +412,20 @@ class Interpreter
     @function_running = true
 
     begin
-      execute_step while @running && @function_running
+      while @running && @function_running
+        execute_step
+      end
     rescue Interrupt
       stop_running
     end
-
-    @previous_line_indexes = @previous_stack.pop
-    _, @current_line_stmt_mod, @next_line_stmt_mod = @function_stack.pop
-
-    # one user-def function may invoke a second
-    @function_running = !@function_stack.empty?
   end
 
   def exit_user_function
-    @function_running = false
+    @previous_line_indexes = @previous_stack.pop
+    function_signature, @current_line_stmt_mod, @next_line_stmt_mod = @function_stack.pop
+
+    # one user-def function may invoke a second
+    @function_running = !@function_stack.empty?
   end
 
   def execute_debug_command(keyword, args, cmd)

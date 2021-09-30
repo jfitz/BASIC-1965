@@ -530,6 +530,55 @@ class Program
     result
   end
 
+  def find_first_statement
+    # set next line to first statement
+    line_number = first_line_number
+    line = lines[line_number]
+
+    statements = line.statements
+    stmt = 0
+    part_of_user_function = nil
+
+    # find next statement within the current line
+    stmt += 1 while
+      stmt < statements.size &&
+      statements[stmt].part_of_user_function != part_of_user_function
+
+    if stmt < statements.size
+      start_mod = statements[stmt].start_index
+
+      return LineStmtMod.new(line_number, stmt, start_mod)
+    end
+
+    # find the next statement in a following line
+    line_numbers = @lines.keys.sort
+    index = line_numbers.index(line_number) + 1
+    line_number = line_numbers[index]
+
+    until line_number.nil?
+      line = @lines[line_number]
+
+      statements = line.statements
+      stmt = 0
+
+      stmt += 1 while
+        stmt < statements.size &&
+        statements[stmt].part_of_user_function != part_of_user_function
+
+      if stmt < statements.size
+        start_mod = statements[stmt].start_index
+
+        return LineStmtMod.new(line_number, stmt, start_mod)
+      end
+
+      index += 1
+      line_number = line_numbers[index]
+    end
+
+    # nothing left to execute
+    nil
+  end
+
   def find_next_line_stmt(current_line_stmt)
     # find next index with current statement
     line_number = current_line_stmt.line_number
@@ -537,20 +586,38 @@ class Program
 
     statements = line.statements
     stmt = current_line_stmt.statement
+    part_of_user_function = statements[stmt].part_of_user_function
 
     # find next statement within the current line
-    if stmt < statements.size - 1
-      stmt += 1
-      return LineStmt.new(line_number, stmt)
-    end
+    stmt += 1
 
-    # find the next line
+    stmt += 1 while
+      stmt < statements.size &&
+      statements[stmt].part_of_user_function != part_of_user_function
+
+    return LineStmt.new(line_number, stmt) if stmt < statements.size
+
+    # find the next statement in a following line
     line_numbers = @lines.keys.sort
     line_number = current_line_stmt.line_number
-    index = line_numbers.index(line_number)
-    line_number = line_numbers[index + 1]
+    index = line_numbers.index(line_number) + 1
+    line_number = line_numbers[index]
 
-    return LineStmt.new(line_number, 0) unless line_number.nil?
+    until line_number.nil?
+      line = @lines[line_number]
+
+      statements = line.statements
+      stmt = 0
+
+      stmt += 1 while
+        stmt < statements.size &&
+        statements[stmt].part_of_user_function != part_of_user_function
+
+      return LineStmt.new(line_number, stmt) if stmt < statements.size
+
+      index += 1
+      line_number = line_numbers[index]
+    end
 
     # nothing left to execute
     nil
@@ -564,34 +631,52 @@ class Program
     statements = line.statements
     stmt = current_line_stmt_mod.statement
     statement = statements[stmt]
+    part_of_user_function = statement.part_of_user_function
 
-    index = current_line_stmt_mod.index
+    mod = current_line_stmt_mod.index
 
-    if index < statement.last_index
-      index += 1
-      return LineStmtMod.new(line_number, stmt, index)
+    if mod < statement.last_index
+      mod += 1
+      return LineStmtMod.new(line_number, stmt, mod)
     end
 
     # find next statement within the current line
-    if stmt < statements.size - 1
-      stmt += 1
-      statement = statements[stmt]
-      start_mod = statement.start_index
+    stmt += 1
+
+    stmt += 1 while
+      stmt < statements.size &&
+      statements[stmt].part_of_user_function != part_of_user_function
+
+    if stmt < statements.size
+      start_mod = statements[stmt].start_index
+
       return LineStmtMod.new(line_number, stmt, start_mod)
     end
 
-    # find the next line
+    # find the next statement in a following line
     line_numbers = @lines.keys.sort
     line_number = current_line_stmt_mod.line_number
-    index = line_numbers.index(line_number)
-    line_number = line_numbers[index + 1]
+    index = line_numbers.index(line_number) + 1
+    line_number = line_numbers[index]
 
-    unless line_number.nil?
+    until line_number.nil?
       line = @lines[line_number]
+
       statements = line.statements
-      statement = statements[0]
-      start_mod = statement.start_index
-      return LineStmtMod.new(line_number, 0, start_mod)
+      stmt = 0
+
+      stmt += 1 while
+        stmt < statements.size &&
+        statements[stmt].part_of_user_function != part_of_user_function
+
+      if stmt < statements.size
+        start_mod = statements[stmt].start_index
+
+        return LineStmtMod.new(line_number, stmt, start_mod)
+      end
+
+      index += 1
+      line_number = line_numbers[index]
     end
 
     # nothing left to execute
@@ -1009,9 +1094,11 @@ class Program
     gotos.keys.each { |line_number| reachable[line_number] = false }
 
     # first line is live
-    first_line_number = @lines.keys.min
-    first_line_number_idx = LineStmt.new(first_line_number, 0)
-    reachable[first_line_number_idx] = true
+    first_line_number_stmt_mod = find_first_statement
+    first_line_number = first_line_number_stmt_mod.line_number
+    first_stmt = first_line_number_stmt_mod.statement
+    first_line_number_stmt = LineStmt.new(first_line_number, first_stmt)
+    reachable[first_line_number_stmt] = true
 
     # walk the entire program and mark lines as live
     # repeat until no changes
@@ -1021,25 +1108,22 @@ class Program
 
       @lines.keys.each do |line_number|
         statements = @lines[line_number].statements
-        index = 0
 
-        statements.each do |_|
-          line_number_idx = LineStmt.new(line_number, index)
+        statements.each_with_index do |_, stmt|
+          line_number_stmt = LineStmt.new(line_number, stmt)
 
           # only reachable lines can reach other lines
-          if reachable[line_number_idx]
+          if reachable[line_number_stmt]
             # a reachable line updates its targets to 'reachable'
-            statement_gotos = gotos[line_number_idx]
+            statement_gotos = gotos[line_number_stmt]
 
-            statement_gotos.each do |goto_number_idx|
-              unless reachable[goto_number_idx]
-                reachable[goto_number_idx] = true
+            statement_gotos.each do |goto_number_stmt|
+              unless reachable[goto_number_stmt]
+                reachable[goto_number_stmt] = true
                 any_changes = true
               end
             end
           end
-
-          index += 1
         end
       end
     end
@@ -1047,15 +1131,15 @@ class Program
     # build list of lines that are not reachable
     lines = []
 
-    reachable.keys.each do |line_number_idx|
-      line_number = line_number_idx.line_number
-      index = line_number_idx.statement
+    reachable.keys.each do |line_number_stmt|
+      line_number = line_number_stmt.line_number
+      stmt = line_number_stmt.statement
       statements = @lines[line_number].statements
-      statement = statements[index]
+      statement = statements[stmt]
 
-      if statement.executable && !reachable[line_number_idx]
+      if statement.executable && !reachable[line_number_stmt]
         text = statement.pretty
-        lines << "#{line_number_idx}: #{text}" unless text.empty?
+        lines << "#{line_number_stmt}: #{text}" unless text.empty?
       end
     end
 
