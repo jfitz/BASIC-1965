@@ -1,0 +1,21 @@
+10 REM TEST TARGET LINE NUMBER PRECHECK
+ Remark:TEST TARGET LINE NUMBER PRECHECK
+20 DEF FNA(T) = T * 4
+ UserFunctionName:FNA -> _
+ VariableName:T -> _
+ Variable:T -> _
+ NumericConstant:4
+ BinaryOperatorMultiply:*(_,_) -> _
+30 PRINT "START PROGRAM"
+ TextConstant:"START PROGRAM"
+ CarriageControl:NL
+40 GOTO 20
+ LineNumber:20
+50 PRINT "END PROGRAM"
+ TextConstant:"END PROGRAM"
+ CarriageControl:NL
+60 STOP
+ 
+99 END
+ 
+

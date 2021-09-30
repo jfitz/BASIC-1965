@@ -1,0 +1,48 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 6
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.167
+Comprehension effort: 13
+McCabe complexity: 1
+Halstead complexity:
+ length: 11
+ volume: 26.377
+ difficulty: 2.500
+ effort: 65.942
+ language: 4.220
+ intelligence: 10.551
+ time: 0.061
+
+(0 1) 10 REM TEST TARGET LINE NUMBER PRECHECK
+  Origs: 
+  Dests: 30:auto
+FNA(_) (0 3) 20 DEF FNA(T) = T * 4
+  Origs: 40:goto
+  Dests: 
+(0 2) 30 PRINT "START PROGRAM"
+  Origs: 10:auto
+  Dests: 40:auto
+(0 3) 40 GOTO 20
+  Origs: 30:auto
+  Dests: 20:goto
+(0 2) 50 PRINT "END PROGRAM"
+  Origs: 
+  Dests: 60:auto
+(0 1) 60 STOP
+  Origs: 50:auto
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+50: PRINT "END PROGRAM"
+60: STOP
+
