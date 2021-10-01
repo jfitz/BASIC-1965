@@ -1346,6 +1346,37 @@ class Program
     raise BASICPreexecuteError.new(:te_for_no_next, control.to_s)
   end
 
+  def find_closing_endfunc_line_stmt_mod(name, current_line_stmt_mod)
+    # move to the next statement
+    line_number = current_line_stmt_mod.line_number
+    line = @lines[line_number]
+    statements = line.statements
+
+    line_numbers = @lines.keys.sort
+
+    walk_line_stmt = current_line_stmt_mod
+
+    # search for a ENDFUNCTION or FNEND
+    until walk_line_stmt.nil?
+      line_number = walk_line_stmt.line_number
+      stmt = walk_line_stmt.statement
+      line = @lines[line_number]
+
+      statement = @lines[line_number].statements[stmt]
+
+      # consider only core statements, not modifiers
+
+      if statement.class.to_s == 'FnendStatement'
+        return LineStmtMod.new(line_number, stmt, 0)
+      end
+
+      walk_line_stmt = find_next_line_stmt(walk_line_stmt)
+    end
+
+    # if none found, error
+    raise BASICPreexecuteError.new(:te_deffun_no_endfun, name.to_s)
+  end
+
   def profile(args, show_timing)
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 

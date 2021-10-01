@@ -371,6 +371,7 @@ class AbstractStatement
   def optimize(interpreter, line_stmt_mod, program)
     set_for_lines(interpreter, line_stmt_mod, program)
     define_user_functions(interpreter)
+    set_endfunc_lines(line_stmt_mod, program)
   end
 
   def init_data(interpreter)
@@ -391,22 +392,19 @@ class AbstractStatement
     trace_out.newline
   end
 
-  def execute_a_statement(interpreter, _)
-    timing = Benchmark.measure { execute_core(interpreter) }
+  def execute_a_statement(interpreter, current_line_stmt_mod)
+    current_user_function = interpreter.current_user_function
 
-    user_time = timing.utime + timing.cutime
-    sys_time = timing.stime + timing.cstime
-    time = user_time + sys_time
+    if @part_of_user_function != current_user_function
+      raise(BASICSyntaxError, 'Invalid transfer in/out of function')
+    end
 
-    @profile_time += time
-    @profile_count += 1
+    execute(interpreter)
   end
 
   def number_for_stmts
     0
   end
-
-  def set_for_lines (_, _, _) end
 
   def singledef?
     false
@@ -433,6 +431,10 @@ class AbstractStatement
 
     separators
   end
+
+  def set_for_lines (_, _, _) end
+
+  def set_endfunc_lines(_, _) end
 
   def define_user_functions(_) end
 
@@ -475,6 +477,19 @@ class AbstractStatement
   end
 
   def renumber(_) end
+
+  private
+
+  def execute(interpreter)
+    timing = Benchmark.measure { execute_core(interpreter) }
+
+    user_time = timing.utime + timing.cutime
+    sys_time = timing.stime + timing.cstime
+    time = user_time + sys_time
+
+    @profile_time += time
+    @profile_count += 1
+  end
 
   protected
 
@@ -651,6 +666,10 @@ class InvalidStatement < AbstractStatement
   end
 
   def execute_core(_)
+    raise(BASICSyntaxError, @errors[0])
+  end
+
+  def set_endfunc_lines(_, _)
     raise(BASICSyntaxError, @errors[0])
   end
 
@@ -1071,6 +1090,15 @@ class DefineFunctionStatement < AbstractStatement
     else
       @errors << 'Syntax error'
     end
+  end
+
+  def set_endfunc_lines(line_stmt_mod, program)
+    return unless multidef?
+
+    name = @definition.name
+
+    @endfunc_line_stmt_mod =
+      program.find_closing_endfunc_line_stmt_mod(name, line_stmt_mod)
   end
 
   def singledef?
