@@ -259,14 +259,6 @@ class Interpreter
     @program.optimize(self)
     @program.assign_singleline_function_markers
     @program.assign_multiline_function_markers
-
-    errors = @program.errors
-    unless errors.empty?
-      errors.each { |error| @console_io.print_item(error) }
-      @console_io.newline_when_needed
-      @console_io.newline
-    end
-    
     @program.analyze
   end
 
