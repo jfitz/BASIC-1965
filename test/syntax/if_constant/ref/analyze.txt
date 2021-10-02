@@ -1,1 +1,44 @@
-Line number 90 not found in line 20
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 12
+McCabe complexity: 2
+Halstead complexity:
+ length: 9
+ volume: 19.775
+ difficulty: 1.500
+ effort: 29.663
+ language: 8.789
+ intelligence: 13.183
+ time: 0.027
+
+(0 1) 10 REM TEST OF CONSTANT EXPRESSION
+  Origs: 
+  Dests: 20:auto
+(1 4) 20 IF 3 < 7 THEN 90
+  Origs: 10:auto
+  Dests: 30:auto, 90:ifthen
+(0 2) 30 PRINT "FAILURE"
+  Origs: 20:auto
+  Dests: 80:auto
+(0 2) 80 GOTO 99
+  Origs: 30:auto
+  Dests: 99:goto
+(0 2) 90 PRINT "SUCCESS"
+  Origs: 20:ifthen
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 80:goto, 90:auto
+  Dests: 
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -41,7 +41,6 @@ class StatementFactory
       statement = EmptyStatement.new(line_number)
       statements << statement
     else
-      statement_index = 0
       statements_tokens.each do |statement_tokens|
         statement = UnknownStatement.new(line_number, text)
 
@@ -52,7 +51,6 @@ class StatementFactory
         end
 
         statements << statement
-        statement_index += 1
       end
     end
 
@@ -1227,12 +1225,12 @@ class EndStatement < AbstractStatement
     ['']
   end
 
-  def okay(program, console_io, line_number_index)
-    next_line = program.find_next_line_stmt_mod(line_number_index)
+  def okay(program, console_io, line_number_stmt_mod)
+    next_line = program.find_next_line_stmt_mod(line_number_stmt_mod)
 
     return true if next_line.nil?
 
-    console_io.print_line("Statements after END in line #{line_number_index}")
+    console_io.print_line("Statements after END in line #{line_number_stmt_mod}")
 
     false
   end
@@ -1586,11 +1584,11 @@ class GosubStatement < AbstractStatement
     [TransferRefLineStmt.new(@destination, 0, :gosub)]
   end
 
-  def okay(program, console_io, line_number_index)
+  def okay(program, console_io, line_number_stmt_mod)
     return true if program.line_number?(@destination)
 
     console_io.print_line(
-      "Line number #{@destination} not found in line #{line_number_index}"
+      "Line number #{@destination} not found in line #{line_number_stmt_mod}"
     )
 
     false
@@ -1598,11 +1596,11 @@ class GosubStatement < AbstractStatement
 
   def execute_core(interpreter)
     line_number = @destination
-    index = interpreter.statement_start_index(line_number, 0)
+    mod = interpreter.statement_start_index(line_number, 0)
 
-    raise(BASICSyntaxError, 'Line number not found') if index.nil?
+    raise(BASICSyntaxError, 'Line number not found') if mod.nil?
 
-    destination = LineStmtMod.new(line_number, 0, index)
+    destination = LineStmtMod.new(line_number, 0, mod)
     interpreter.push_return(interpreter.next_line_stmt_mod)
     interpreter.next_line_stmt_mod = destination
   end
@@ -1656,11 +1654,11 @@ class GotoStatement < AbstractStatement
     [TransferRefLineStmt.new(@destination, 0, :goto)]
   end
 
-  def okay(program, console_io, line_number_index)
+  def okay(program, console_io, line_stmt_mod)
     return true if program.line_number?(@destination)
 
     console_io.print_line(
-      "Line number #{@destination} not found in line #{line_number_index}"
+      "Line number #{@destination} not found in line #{line_stmt_mod}"
     )
 
     false
@@ -1668,11 +1666,11 @@ class GotoStatement < AbstractStatement
 
   def execute_core(interpreter)
     line_number = @destination
-    index = interpreter.statement_start_index(line_number, 0)
+    mod = interpreter.statement_start_index(line_number, 0)
 
-    raise(BASICSyntaxError, 'Line number not found') if index.nil?
+    raise(BASICSyntaxError, 'Line number not found') if mod.nil?
 
-    destination = LineStmtMod.new(line_number, 0, index)
+    destination = LineStmtMod.new(line_number, 0, mod)
     interpreter.next_line_stmt_mod = destination
   end
 
@@ -1702,11 +1700,11 @@ class AbstractIfStatement < AbstractStatement
 
     if result.value
       line_number = @destination
-      index = interpreter.statement_start_index(line_number, 0)
+      mod = interpreter.statement_start_index(line_number, 0)
 
-      raise(BASICSyntaxError, 'Line number not found') if index.nil?
+      raise(BASICSyntaxError, 'Line number not found') if mod.nil?
 
-      destination = LineStmtMod.new(line_number, 0, index)
+      destination = LineStmtMod.new(line_number, 0, mod)
       interpreter.next_line_stmt_mod = destination
     end
 
@@ -1738,16 +1736,16 @@ class AbstractIfStatement < AbstractStatement
     [TransferRefLineStmt.new(@destination, 0, :ifthen)]
   end
 
-  def okay(program, console_io, line_number_index)
+  def okay(program, console_io, line_stmt_mod)
     return true if program.line_number?(@destination)
 
     if @destination.nil?
       console_io.print_line(
-        "Invalid or missing line number in line #{line_number_index}"
+        "Invalid or missing line number in line #{line_stmt_mod}"
       )
     else
       console_io.print_line(
-        "Line number #{@destination} not found in line #{line_number_index}"
+        "Line number #{@destination} not found in line #{line_stmt_mod}"
       )
     end
 
