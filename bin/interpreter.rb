@@ -321,7 +321,7 @@ class Interpreter
   end
 
   def run_program
-    if @program.check_for_errors(self) &&
+    if @program.check_for_errors &&
        @program.optimize(self) &&
        @program.assign_singleline_function_markers &&
        @program.assign_multiline_function_markers &&
@@ -332,11 +332,7 @@ class Interpreter
         @current_line_stmt_mod = @program.find_first_statement
         @running = true
 
-        while @running
-          ## puts "BEFOR: #{@running} #{@current_line_stmt_mod}"
-          execute_step
-          ## puts "AFTER: #{@running} #{@current_line_stmt_mod}"
-        end
+        execute_step while @running
       rescue Interrupt
         stop_running
       end
@@ -344,8 +340,7 @@ class Interpreter
       close_all_files
     else
       errors = @program.errors
-      errors.each { |error| @console_io.print_item(error) }
-      @console_io.newline_when_needed
+      errors.each { |error| @console_io.print_line(error) }
     end
   end
 

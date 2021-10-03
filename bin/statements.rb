@@ -356,14 +356,8 @@ class AbstractStatement
     true
   end
 
-  def check_for_errors(line_number, interpreter, console_io)
-    unless errors.empty?
-      interpreter.stop_running
-      console_io.print_line("Errors in line #{line_number}:")
-      print_errors(console_io)
-    end
-
-    errors.empty?
+  def check_for_errors
+    @errors.empty?
   end
 
   def optimize(interpreter, line_stmt_mod, program)
