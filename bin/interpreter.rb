@@ -280,11 +280,8 @@ class Interpreter
     errors.empty?
   end
 
-  def print_program_errors
-    errors = @program.errors
-
-    errors.each { |error| @console_io.print_line(error) }
-    @console_io.newline_when_needed
+  def program_errors
+    @program.errors
   end
 
   def program_save
@@ -294,8 +291,9 @@ class Interpreter
   def run
     raise(BASICCommandError, 'No program loaded') if @program.empty?
 
-    unless @program.errors.empty?
-      text = @program.errors.join('\n')
+    errors = @program.errors
+    unless errors.empty?
+      text = errors.join('\n')
       raise(BASICCommandError, text)
     end
 
