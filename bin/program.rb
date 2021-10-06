@@ -1020,12 +1020,13 @@ class Program
   end
 
   def build_statement_destinations_line(line_number_stmt, statement)
-    goto_line_stmts = []
-    statement_gotos_line_stmt = statement.gotos(@user_function_start_lines)
-    statement_gotos = []
+    transfer_ref_lines = []
 
-    statement_gotos_line_stmt.each do |goto|
-      statement_gotos << TransferRefLine.new(goto.line_number, goto.type)
+    transfer_ref_line_stmts = statement.gotos(@user_function_start_lines)
+
+    # convert TransferRefLineStmt objects to TransferRefLine (no Stmt) objects
+    transfer_ref_line_stmts.each do |goto|
+      transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
     end
 
     if statement.autonext
@@ -1036,12 +1037,12 @@ class Program
         next_line_number = next_line_stmt.line_number
         line_number = line_number_stmt.line_number
 
-        statement_gotos << TransferRefLine.new(next_line_number, :auto) unless
+        transfer_ref_lines << TransferRefLine.new(next_line_number, :auto) unless
           next_line_number == line_number
       end
     end
 
-    statement_gotos
+    transfer_ref_lines
   end
 
   def build_line_destinations_line(line, line_number)
@@ -1071,21 +1072,23 @@ class Program
   end
 
   def build_statement_destinations_stmt(line_number_stmt, statement)
-    goto_line_stmts = []
-    statement_gotos = statement.gotos(@user_function_start_lines)
+    line_stmts = []
 
-    statement_gotos.each do |goto|
-      goto_line_stmts << LineStmt.new(goto.line_number, goto.statement)
+    transfer_ref_line_stmts = statement.gotos(@user_function_start_lines)
+
+    # convert TransferRefLineStmt objects to LineStmt objects
+    transfer_ref_line_stmts.each do |goto|
+      line_stmts << LineStmt.new(goto.line_number, goto.statement)
     end
 
     if statement.autonext
       # find next statement (possibly in same line)
       next_line_stmt = find_next_line_stmt(line_number_stmt)
 
-      goto_line_stmts << next_line_stmt unless next_line_stmt.nil?
+      line_stmts << next_line_stmt unless next_line_stmt.nil?
     end
 
-    goto_line_stmts
+    line_stmts
   end
 
   def build_line_destinations_stmt(line, line_number)
