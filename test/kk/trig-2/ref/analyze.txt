@@ -29,7 +29,7 @@ FND(_) (0 4) 120 DEF FND(X) = X * P / 180
   Origs: 
   Dests: 
 FNS(_) (0 3) 130 DEF FNS(X) = SIN(FND(X))
-  Origs: 170:function, 170:function, 180:function, 180:function
+  Origs: 170:function, 180:function
   Dests: 
 (0 6) 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
   Origs: 110:auto
@@ -42,10 +42,10 @@ FNS(_) (0 3) 130 DEF FNS(X) = SIN(FND(X))
   Dests: 170:auto
 (0 9) 170 LET Y = X * FNS(B) / FNS(C)
   Origs: 160:auto
-  Dests: 130:function, 130:function, 180:auto
+  Dests: 130:function, 180:auto
 (0 9) 180 LET Z = X * FNS(A) / FNS(C)
   Origs: 170:auto
-  Dests: 130:function, 130:function, 190:auto
+  Dests: 130:function, 190:auto
 (0 6) 190 PRINT A, X, B, Y, Z
   Origs: 180:auto
   Dests: 200:auto

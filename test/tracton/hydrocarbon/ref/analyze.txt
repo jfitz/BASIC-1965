@@ -29,12 +29,15 @@ Halstead complexity:
   Origs: 20:auto, 80:goto, 520:goto
   Dests: 40:auto
 (0 1) 40 INPUT I $
+   Syntax error: "I$" Token 'InvalidToken:$' is not a value or operator
   Origs: 30:auto
   Dests: 50:auto
 (1 2) 50 IF I $ ="YES" THEN 90
+   Token 'InvalidToken:$' is not a value or operator
   Origs: 40:auto
   Dests: 60:auto, 90:ifthen
 (1 2) 60 IF I $ ="NO" THEN 130
+   Token 'InvalidToken:$' is not a value or operator
   Origs: 50:auto
   Dests: 70:auto, 130:ifthen
 (0 2) 70 PRINT "INVALID COMMAND"
@@ -158,9 +161,11 @@ Halstead complexity:
   Origs: 450:auto
   Dests: 470:auto
 (0 1) 470 INPUT L $
+    Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 460:auto
   Dests: 480:auto
 (1 2) 480 IF L $ ="YES" THEN 510
+    Token 'InvalidToken:$' is not a value or operator
   Origs: 470:auto
   Dests: 490:auto, 510:ifthen
 (0 2) 490 PRINT "COMBUSTION SAYS GOOD-BYE"

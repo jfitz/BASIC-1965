@@ -3,7 +3,7 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    raise BASICSyntaxError, "Invalid line number object '#{line_number.class}:#{line_number}'" unless
+    raise BASICSyntaxError, "Invalid line number object '#{line_number}'" unless
       line_number.class.to_s == 'IntegerConstant'
 
     @line_number = line_number.to_i
@@ -419,6 +419,8 @@ class TransferRefLineStmt
   attr_reader :type
 
   def initialize(line_number, statement, type)
+    raise BASICError.new("line number is nil") if line_number.nil?
+
     @line_number = line_number
     @statement = statement
     @type = type
@@ -553,6 +555,27 @@ class Program
     end
 
     result
+  end
+
+  def find_next_line(current_line_stmt_mod)
+    # find next numbered statement
+    line_numbers = @lines.keys.sort
+    line_number = current_line_stmt_mod.line_number
+    index = line_numbers.index(line_number)
+    next_line_number = line_numbers[index + 1]
+
+    unless next_line_number.nil?
+      line = @lines[next_line_number]
+      statements = line.statements
+      statement = statements[0]
+      start_mod = statement.start_index
+      next_line_stmt_mod = LineStmtMod.new(next_line_number, 0, start_mod)
+
+      return next_line_stmt_mod
+    end
+
+    # nothing left to execute
+    nil
   end
 
   def find_first_statement
@@ -844,7 +867,10 @@ class Program
 
     destinations.each do |orig, dests|
       dests.each do |dest|
+        # create a dict if we need it
         origins[dest.line_number] = [] unless origins.key?(dest.line_number)
+
+        # add transfer to origin table
         origins[dest.line_number] << TransferRefLine.new(orig.line_number, dest.type)
       end
     end
@@ -860,13 +886,13 @@ class Program
       # print origins to this line
       statement_origins = origins[line_number]
       statement_origins = [] if statement_origins.nil?
-      origs = statement_origins.sort.map(&:to_s).join(', ')
+      origs = statement_origins.sort.uniq.map(&:to_s).join(', ')
       texts << '  Origs: ' + origs
 
       # print destinations from this line
       statement_dests = destinations[line_number]
       statement_dests = [] if statement_dests.nil?
-      dests = statement_dests.sort.map(&:to_s).join(', ')
+      dests = statement_dests.sort.uniq.map(&:to_s).join(', ')
       texts << '  Dests: ' + dests
     end
 
@@ -1026,19 +1052,10 @@ class Program
 
     # convert TransferRefLineStmt objects to TransferRefLine (no Stmt) objects
     transfer_ref_line_stmts.each do |goto|
-      transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
-    end
-
-    if statement.autonext
-      # find next statement (possibly in same line)
-      next_line_stmt = find_next_line_stmt(line_number_stmt)
-
-      unless next_line_stmt.nil?
-        next_line_number = next_line_stmt.line_number
-        line_number = line_number_stmt.line_number
-
-        transfer_ref_lines << TransferRefLine.new(next_line_number, :auto) unless
-          next_line_number == line_number
+      # only transfers that have a different line number
+      # we don't care about intra-line transfers
+      if goto.line_number != line_number_stmt.line_number
+        transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
       end
     end
 
@@ -1079,13 +1096,6 @@ class Program
     # convert TransferRefLineStmt objects to LineStmt objects
     transfer_ref_line_stmts.each do |goto|
       line_stmts << LineStmt.new(goto.line_number, goto.statement)
-    end
-
-    if statement.autonext
-      # find next statement (possibly in same line)
-      next_line_stmt = find_next_line_stmt(line_number_stmt)
-
-      line_stmts << next_line_stmt unless next_line_stmt.nil?
     end
 
     line_stmts
@@ -1310,6 +1320,50 @@ class Program
     end
 
     okay
+  end
+
+  def assign_autonext
+    @lines.keys.sort.each do |line_number|
+      @line_number = line_number
+      line = @lines[line_number]
+      statements = line.statements
+
+      statements.each_with_index do |statement, stmt|
+        statement.set_autonext_line_stmt(nil)
+
+        if statement.autonext
+          start_mod = statement.start_index
+          line_stmt = LineStmt.new(line_number, stmt)
+
+          # get statement at start of next line
+          next_line_number_stmt_mod = find_next_line(line_stmt)
+
+          statement.set_autonext_line(next_line_number_stmt_mod) unless
+            next_line_number_stmt_mod.nil?
+
+          # get next statement (may be on same line)
+          next_line_stmt = find_next_line_stmt(line_stmt)
+
+          unless next_line_stmt.nil?
+            next_line_number = next_line_stmt.line_number
+            next_stmt = next_line_stmt.statement
+            next_line = @lines[next_line_number]
+
+            unless next_line.nil?
+              next_statements = next_line.statements
+
+              next_statement = next_statements[next_stmt]
+
+              unless next_statement.nil?
+                next_mod = next_statement.start_index
+                next_line_stmt_mod = LineStmtMod.new(next_line_number, next_stmt, next_mod)
+                statement.set_autonext_line_stmt(next_line_stmt_mod)
+              end
+            end
+          end
+        end
+      end
+    end
   end
 
   def init_data(interpreter)

@@ -256,6 +256,14 @@ class AbstractStatement
 
   def uncache ; end
 
+  def set_autonext_line_stmt(line_stmt_mod)
+    @autonext_line_stmt = line_stmt_mod
+  end
+
+  def set_autonext_line(line_stmt_mod)
+    @autonext_line = line_stmt_mod
+  end
+
   def pretty
     AbstractToken.pretty_tokens(@keywords, @tokens)
   end
@@ -345,7 +353,16 @@ class AbstractStatement
   end
 
   def gotos(_)
-    []
+    transfer_refs = []
+
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
+
+    transfer_refs
   end
 
   def print_errors(console_io)
@@ -662,6 +679,14 @@ class InvalidStatement < AbstractStatement
   end
 
   def set_endfunc_lines(_, _)
+    raise(BASICSyntaxError, @errors[0])
+  end
+
+  def set_autonext(_, _)
+    raise(BASICSyntaxError, @errors[0])
+  end
+
+  def set_autonext(_, _)
     raise(BASICSyntaxError, @errors[0])
   end
 
@@ -1066,12 +1091,14 @@ class DefineFunctionStatement < AbstractStatement
     super
 
     @executable = false
+    @autonext = false
 
     template = [[1, '>=']]
 
     if check_template(tokens_lists, template)
       begin
         @definition = UserFunctionDefinition.new(tokens_lists[0])
+        @autonext = @definition.multidef?
 
         @elements = make_references(nil, @definition)
         @comprehension_effort += @definition.comprehension_effort
@@ -1408,21 +1435,28 @@ class ForStatement < AbstractStatement
   end
 
   def gotos(_)
-    goto_refs = []
+    transfer_refs = []
+
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
 
     unless @loopstart_line_stmt_mod.nil?
       line_number = @loopstart_line_stmt_mod.line_number
       statement = @loopstart_line_stmt_mod.statement
-      goto_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
+      transfer_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
     end
-    
+
     unless @nextstmt_line_stmt_mod.nil?
       line_number = @nextstmt_line_stmt_mod.line_number
       statement = @loopstart_line_stmt_mod.statement
-      goto_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
+      transfer_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
     end
-      
-    goto_refs
+
+    transfer_refs
   end
 
   def execute_core(interpreter)
@@ -1575,7 +1609,18 @@ class GosubStatement < AbstractStatement
   end
 
   def gotos(_)
-    [TransferRefLineStmt.new(@destination, 0, :gosub)]
+    transfer_refs = []
+
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
+
+    transfer_refs << TransferRefLineStmt.new(@destination, 0, :gosub)
+
+    transfer_refs
   end
 
   def okay(program, console_io, line_number_stmt_mod)
@@ -1645,7 +1690,18 @@ class GotoStatement < AbstractStatement
   end
 
   def gotos(_)
-    [TransferRefLineStmt.new(@destination, 0, :goto)]
+    transfer_refs = []
+
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
+
+    transfer_refs << TransferRefLineStmt.new(@destination, 0, :goto)
+
+    transfer_refs
   end
 
   def okay(program, console_io, line_stmt_mod)
@@ -1727,7 +1783,18 @@ class AbstractIfStatement < AbstractStatement
   end
 
   def gotos(_)
-    [TransferRefLineStmt.new(@destination, 0, :ifthen)]
+    transfer_refs = []
+
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
+
+    transfer_refs << TransferRefLineStmt.new(@destination, 0, :ifthen)
+
+    transfer_refs
   end
 
   def okay(program, console_io, line_stmt_mod)
@@ -1887,9 +1954,20 @@ class AbstractLetStatement < AbstractStatement
   end
 
   def gotos(user_function_start_lines)
-    return [] if @assignment.nil?
+    transfer_refs = []
 
-    @assignment.destinations(user_function_start_lines)
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
+
+    unless @assignment.nil?
+      transfer_refs += @assignment.destinations(user_function_start_lines)
+    end
+
+    transfer_refs
   end
 end
 

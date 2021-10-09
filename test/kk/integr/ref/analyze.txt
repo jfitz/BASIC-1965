@@ -20,7 +20,7 @@ Halstead complexity:
  time: 6.613
 
 FNF(_) (0 7) 10 DEF FNF(X) = X ^ 2 + 3 * X + 1
-  Origs: 50:function, 50:function, 140:function
+  Origs: 50:function, 140:function
   Dests: 
 (3 4) 20 READ A, B, E
   Origs: 
@@ -33,7 +33,7 @@ FNF(_) (0 7) 10 DEF FNF(X) = X ^ 2 + 3 * X + 1
   Dests: 50:auto
 (0 9) 50 LET T = (FNF(A) + FNF(B)) * H
   Origs: 40:auto
-  Dests: 10:function, 10:function, 60:auto
+  Dests: 10:function, 60:auto
 (0 3) 60 LET M = 0
   Origs: 50:auto
   Dests: 100:auto

@@ -29,12 +29,15 @@ Halstead complexity:
   Origs: 20:auto
   Dests: 40:auto
 (0 1) 40 INPUT C $
+   Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
   Origs: 30:auto
   Dests: 50:auto
 (1 2) 50 IF C $ ="YES" THEN 90
+   Token 'InvalidToken:$' is not a value or operator
   Origs: 40:auto
   Dests: 60:auto, 90:ifthen
 (1 2) 60 IF C $ ="NO " THEN 340
+   Token 'InvalidToken:$' is not a value or operator
   Origs: 50:auto
   Dests: 70:auto, 340:ifthen
 (0 2) 70 PRINT "INVALID RESPONSE"
@@ -125,6 +128,7 @@ Halstead complexity:
   Origs: 340:auto
   Dests: 355:auto
 (0 1) 355 
+    Unknown statement 'RANDOMIZE'
   Origs: 350:auto
   Dests: 360:auto
 (0 3) 360 LET D = 0
@@ -269,6 +273,7 @@ Halstead complexity:
   Origs: 380:gosub, 400:gosub, 420:gosub, 440:gosub, 750:gosub
   Dests: 830:auto
 (1 2) 830 IF C = =11 THEN 850
+    Token 'OperatorToken:=' is not a value or operator
   Origs: 820:auto
   Dests: 840:auto, 850:ifthen
 (0 2) 840 GOTO 880
@@ -311,12 +316,15 @@ Halstead complexity:
   Origs: 530:gosub, 1010:goto
   Dests: 970:auto
 (0 1) 970 INPUT Q $
+    Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
   Origs: 960:auto
   Dests: 980:auto
 (1 2) 980 IF Q $ ="HIT" THEN 1020
+    Token 'InvalidToken:$' is not a value or operator
   Origs: 970:auto
   Dests: 990:auto, 1020:ifthen
 (1 2) 990 IF Q $ ="STAND" THEN 1040
+    Token 'InvalidToken:$' is not a value or operator
   Origs: 980:auto
   Dests: 1000:auto, 1040:ifthen
 (0 2) 1000 PRINT "INVALID RESPONSE"
@@ -347,9 +355,11 @@ Halstead complexity:
   Origs: 1070:auto
   Dests: 1090:auto
 (0 1) 1090 INPUT L $
+     Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 1080:auto
   Dests: 1100:auto
 (1 2) 1100 IF L $ ="YES" THEN 1130
+     Token 'InvalidToken:$' is not a value or operator
   Origs: 1090:auto
   Dests: 1110:auto, 1130:ifthen
 (0 2) 1110 PRINT "BLACKJACK SAYS GOOD-BYE"
