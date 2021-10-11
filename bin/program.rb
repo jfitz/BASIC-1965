@@ -272,6 +272,12 @@ class Line
       errors.each do |error|
         texts << "#{number} #{error}"
       end
+
+      errors = statement.program_errors
+
+      errors.each do |error|
+        texts << "#{number} #{error}"
+      end
     end
 
     texts
@@ -537,6 +543,11 @@ class Program
 
       statements.each do |statement|
         errors = statement.errors
+        errors.each do |error|
+          texts << error + " in line #{line_number}"
+        end
+
+        errors = statement.program_errors
         errors.each do |error|
           texts << error + " in line #{line_number}"
         end
@@ -1226,19 +1237,19 @@ class Program
 
   public
 
-  def check_for_errors
-    okay = true
+  def errors?
+    any_errors = false
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
       statements.each do |statement|
-        okay &= statement.check_for_errors
+        any_errors |= statement.errors?
       end
     end
 
-    okay
+    any_errors
   end
 
   def optimize(interpreter)
