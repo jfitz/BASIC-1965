@@ -112,6 +112,10 @@ class LineStmt
     @line_number.hash + @statement.hash
   end
 
+  def index
+    0
+  end
+
   def to_s
     return @line_number.to_s if @statement.zero?
     @line_number.to_s + '.' + @statement.to_s
@@ -1246,10 +1250,9 @@ class Program
       statements = line.statements
 
       statements.each_with_index do |statement, stmt|
-        start_mod = statement.start_index
-        line_stmt_mod = LineStmtMod.new(line_number, stmt, start_mod)
+        line_stmt = LineStmt.new(line_number, stmt)
         begin
-          statement.optimize(interpreter, line_stmt_mod, self)
+          statement.optimize(interpreter, line_stmt, self)
         rescue BASICPreexecuteError => e
           @errors << "Error #{e.code} #{e.message} in line #{line_number}"
           okay = false
@@ -1387,15 +1390,15 @@ class Program
     okay
   end
 
-  def find_closing_next_line_stmt_mod(control, current_line_stmt_mod)
+  def find_closing_next_line_stmt(control, current_line_stmt)
     # move to the next statement
-    line_number = current_line_stmt_mod.line_number
+    line_number = current_line_stmt.line_number
     line = @lines[line_number]
     statements = line.statements
 
     line_numbers = @lines.keys.sort
 
-    walk_line_stmt = current_line_stmt_mod
+    walk_line_stmt = current_line_stmt
 
     # search for a NEXT with the same control variable
     for_level = 0
@@ -1421,7 +1424,7 @@ class Program
 
         if stmt_control == control ||
            stmt_control.empty? && for_level.zero?
-          return LineStmtMod.new(line_number, stmt, 0)
+          return LineStmt.new(line_number, stmt)
         end
       end
 
@@ -1432,15 +1435,15 @@ class Program
     raise BASICPreexecuteError.new(:te_for_no_next, control.to_s)
   end
 
-  def find_closing_endfunc_line_stmt_mod(name, current_line_stmt_mod)
+  def find_closing_endfunc_line_stmt(name, current_line_stmt)
     # move to the next statement
-    line_number = current_line_stmt_mod.line_number
+    line_number = current_line_stmt.line_number
     line = @lines[line_number]
     statements = line.statements
 
     line_numbers = @lines.keys.sort
 
-    walk_line_stmt = current_line_stmt_mod
+    walk_line_stmt = current_line_stmt
 
     # search for a ENDFUNCTION or FNEND
     until walk_line_stmt.nil?
@@ -1453,7 +1456,7 @@ class Program
       # consider only core statements, not modifiers
 
       if statement.class.to_s == 'FnendStatement'
-        return LineStmtMod.new(line_number, stmt, 0)
+        return LineStmt.new(line_number, stmt)
       end
 
       walk_line_stmt = find_next_line_stmt(walk_line_stmt)

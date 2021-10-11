@@ -377,10 +377,14 @@ class AbstractStatement
     @errors.empty?
   end
 
-  def optimize(interpreter, line_stmt_mod, program)
-    set_for_lines(interpreter, line_stmt_mod, program)
+  def optimize(interpreter, line_stmt, program)
+    set_for_lines(interpreter, line_stmt, program)
     define_user_functions(interpreter)
-    set_endfunc_lines(line_stmt_mod, program)
+    set_endfunc_lines(line_stmt, program)
+    # check_any_after_end
+    # check_gosub_destinations
+    # check_goto_destinations
+    # check_if_destinations
   end
 
   def init_data(interpreter)
@@ -1111,13 +1115,13 @@ class DefineFunctionStatement < AbstractStatement
     end
   end
 
-  def set_endfunc_lines(line_stmt_mod, program)
+  def set_endfunc_lines(line_stmt, program)
     return unless multidef?
 
     name = @definition.name
 
-    @endfunc_line_stmt_mod =
-      program.find_closing_endfunc_line_stmt_mod(name, line_stmt_mod)
+    @endfunc_line_stmt =
+      program.find_closing_endfunc_line_stmt(name, line_stmt)
   end
 
   def singledef?
@@ -1416,12 +1420,12 @@ class ForStatement < AbstractStatement
     @end.uncache unless @end.nil?
   end
 
-  def set_for_lines(interpreter, line_stmt_mod, program)
-    @loopstart_line_stmt_mod = program.find_next_line_stmt_mod(line_stmt_mod)
+  def set_for_lines(interpreter, line_stmt, program)
+    @loopstart_line_stmt_mod = program.find_next_line_stmt_mod(line_stmt)
 
     unless @control.nil?
-      @nextstmt_line_stmt_mod =
-        program.find_closing_next_line_stmt_mod(@control, line_stmt_mod)
+      @nextstmt_line_stmt =
+        program.find_closing_next_line_stmt(@control, line_stmt)
     end
   end
 
@@ -1450,8 +1454,8 @@ class ForStatement < AbstractStatement
       transfer_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
     end
 
-    unless @nextstmt_line_stmt_mod.nil?
-      line_number = @nextstmt_line_stmt_mod.line_number
+    unless @nextstmt_line_stmt.nil?
+      line_number = @nextstmt_line_stmt.line_number
       statement = @loopstart_line_stmt_mod.statement
       transfer_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
     end
@@ -1464,7 +1468,7 @@ class ForStatement < AbstractStatement
       @loopstart_line_stmt_mod.nil?
 
     raise BASICSyntaxError.new("uninitialized FOR") if
-      @nextstmt_line_stmt_mod.nil?
+      @nextstmt_line_stmt.nil?
 
     from = @start.evaluate(interpreter)[0]
     step = NumericConstant.new(1)
@@ -1484,7 +1488,7 @@ class ForStatement < AbstractStatement
     terminated = fornext_control.front_terminated?(interpreter)
 
     if terminated
-      interpreter.next_line_stmt_mod = @nextstmt_line_stmt_mod
+      interpreter.next_line_stmt_mod = @nextstmt_line_stmt
     end
 
     untilv = nil
