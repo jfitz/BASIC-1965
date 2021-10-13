@@ -1253,8 +1253,6 @@ class Program
   end
 
   def optimize(interpreter)
-    okay = true
-
     @lines.keys.sort.each do |line_number|
       @line_number = line_number
       line = @lines[line_number]
@@ -1265,8 +1263,6 @@ class Program
         statement.optimize(interpreter, line_stmt, self)
       end
     end
-
-    okay
   end
 
   def assign_singleline_function_markers
@@ -1292,13 +1288,9 @@ class Program
         part_of_user_function = nil
       end
     end
-
-    true
   end
 
   def assign_multiline_function_markers
-    okay = true
-
     part_of_user_function = nil
 
     line_numbers = @lines.keys.sort
@@ -1320,15 +1312,12 @@ class Program
             statement.part_of_user_function = part_of_user_function 
           else
             @errors << "Embedded function #{statement.part_of_user_function} in line #{line_number}"
-            okay = false
           end
         end
 
         part_of_user_function = nil if statement.multiend?
       end
     end
-
-    okay
   end
 
   def assign_autonext
