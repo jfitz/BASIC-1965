@@ -385,15 +385,18 @@ class AbstractStatement
     set_for_lines(interpreter, line_stmt, program)
     define_user_functions(interpreter)
     set_endfunc_lines(line_stmt, program)
-    # check_any_after_end
-    # check_gosub_destinations
-    # check_goto_destinations
-    # check_if_destinations
   end
 
   def init_data(interpreter)
     load_data(interpreter)
     load_file_names(interpreter)
+  end
+
+  def check_program(program)
+    # check_any_after_end
+    # check_gosub_destinations
+    # check_goto_destinations
+    # check_if_destinations
   end
 
   def print_trace_info(trace_out, current_line_number)

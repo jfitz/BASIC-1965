@@ -328,6 +328,7 @@ class Interpreter
     @program.assign_multiline_function_markers
     @program.assign_autonext
     @program.init_data(self)
+    @program.check_program
 
     if !@program.errors?
       begin
