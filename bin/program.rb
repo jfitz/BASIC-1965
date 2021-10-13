@@ -1365,24 +1365,15 @@ class Program
   end
 
   def init_data(interpreter)
-    okay = true
-
     @lines.keys.sort.each do |line_number|
       @line_number = line_number
       line = @lines[line_number]
       statements = line.statements
 
       statements.each do |statement|
-        begin
-          statement.init_data(interpreter)
-        rescue BASICPreexecuteError => e
-          @errors << "Error #{e.code} #{e.message} in line #{line_number}"
-          okay = false
-        end
+        statement.init_data(interpreter)
       end
     end
-
-    okay
   end
 
   def find_closing_next_line_stmt(control, current_line_stmt)

@@ -327,9 +327,9 @@ class Interpreter
     @program.assign_singleline_function_markers
     @program.assign_multiline_function_markers
     @program.assign_autonext
+    @program.init_data(self)
 
-    if !@program.errors? &&
-       @program.init_data(self)
+    if !@program.errors?
       begin
         # run each statement
         # start with the first line number
