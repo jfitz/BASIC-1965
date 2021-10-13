@@ -1262,12 +1262,7 @@ class Program
 
       statements.each_with_index do |statement, stmt|
         line_stmt = LineStmt.new(line_number, stmt)
-        begin
-          statement.optimize(interpreter, line_stmt, self)
-        rescue BASICPreexecuteError => e
-          @errors << "Error #{e.code} #{e.message} in line #{line_number}"
-          okay = false
-        end
+        statement.optimize(interpreter, line_stmt, self)
       end
     end
 
