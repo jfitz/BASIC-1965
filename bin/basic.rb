@@ -286,6 +286,8 @@ class Shell
       @interpreter.clear_all_breakpoints
       @console_io.newline
     when 'RUN'
+      @interpreter.program_optimize
+      
       if @interpreter.program_okay?
         # duplicate the options
         options2 = {}
@@ -303,6 +305,9 @@ class Shell
           print_timing(timing, @console_io)
           @console_io.newline
         end
+      else
+        errors = @interpreter.program_errors
+        errors.each { |error| @console_io.print_line(error) }
       end
     when 'BREAK'
       texts = @interpreter.set_breakpoints(args)
@@ -318,8 +323,8 @@ class Shell
 
       load_file_keyboard(filename)
 
-      texts = @interpreter.program_errors
-      texts.each { |text| @console_io.print_line(text) }
+      errors = @interpreter.program_errors
+      errors.each { |error| @console_io.print_line(error) }
       @console_io.newline
     when 'SAVE'
       filename, keywords = parse_args(args)
@@ -368,23 +373,25 @@ class Shell
       texts.each { |text| @console_io.print_line(text) }
       @console_io.newline
     when 'RENUMBER'
-      begin
-        @interpreter.program_renumber(args) if @interpreter.program_okay?
-      rescue BASICCommandError, BASICSyntaxError => e
-        @console_io.print_line("Cannot renumber the program: #{e}")
-      end
-      texts = @interpreter.program_errors
-      texts.each { |text| @console_io.print_line(text) }
-      @console_io.newline
-    when 'CROSSREF'
+      @interpreter.program_optimize
+      
       if @interpreter.program_okay?
-        texts = @interpreter.program_crossref
-        texts.each { |text| @console_io.print_line(text) }
+        begin
+          @interpreter.program_renumber(args)
+        rescue BASICCommandError, BASICSyntaxError => e
+          @console_io.print_line("Cannot renumber the program: #{e}")
+        end
       else
-        texts = @interpreter.program_errors
-        texts.each { |text| @console_io.print_line(text) }
+        errors = @interpreter.program_errors
+        errors.each { |error| @console_io.print_line(error) }
         @console_io.newline
       end
+    when 'CROSSREF'
+      @interpreter.program_optimize
+      
+      texts = @interpreter.program_crossref
+      texts.each { |text| @console_io.print_line(text) }
+      @console_io.newline
     when 'DIMS'
       @interpreter.dump_dims
     when 'PARSE'
@@ -394,14 +401,11 @@ class Shell
       texts.each { |text| @console_io.print_line(text) }
       @console_io.newline
     when 'ANALYZE'
-      if @interpreter.program_okay?
-        texts = @interpreter.program_analyze
-        texts.each { |text| @console_io.print_line(text) }
-      else
-        texts = @interpreter.program_errors
-        texts.each { |text| @console_io.print_line(text) }
-        @console_io.newline
-      end
+      @interpreter.program_optimize
+      
+      texts = @interpreter.program_analyze
+      texts.each { |text| @console_io.print_line(text) }
+      @console_io.newline
     when 'TOKENS'
       texts = @interpreter.program_list(args, true)
       texts.each { |text| @console_io.print_line(text) }
@@ -578,7 +582,6 @@ def load_file_command_line(filename, interpreter, console_io)
       interpreter.program_store_line(line, false, false)
     end
   end
-  interpreter.program_check
 rescue Errno::ENOENT, Errno::EISDIR
   console_io.print_line("File '#{filename}' not found")
   false
@@ -805,6 +808,8 @@ unless list_filename.nil?
   filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
+    interpreter.program_optimize
+
     texts = interpreter.program_list('', list_tokens)
     texts.each { |text| console_io.print_line(text) }
   else
@@ -823,6 +828,8 @@ unless parse_filename.nil?
   filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
+    interpreter.program_optimize
+
     texts = interpreter.program_parse('')
     texts.each { |text| console_io.print_line(text) }
   else
@@ -840,12 +847,10 @@ unless analyze_filename.nil?
 
   filename, _keywords = parse_args(args)
 
-  if load_file_command_line(filename, interpreter, console_io) &&
-     interpreter.program_okay?
+  if load_file_command_line(filename, interpreter, console_io)
+    interpreter.program_optimize
+
     texts = interpreter.program_analyze
-    texts.each { |text| console_io.print_line(text) }
-  else
-    texts = interpreter.program_errors
     texts.each { |text| console_io.print_line(text) }
   end
 
@@ -860,11 +865,10 @@ unless pretty_filename.nil?
   filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
+    interpreter.program_optimize
+
     pretty_multiline = false
     texts = interpreter.program_pretty('', pretty_multiline)
-    texts.each { |text| console_io.print_line(text) }
-  else
-    texts = interpreter.program_errors
     texts.each { |text| console_io.print_line(text) }
   end
 
@@ -879,10 +883,9 @@ unless cref_filename.nil?
   filename, _keywords = parse_args(args)
 
   if load_file_command_line(filename, interpreter, console_io)
+    interpreter.program_optimize
+
     texts = interpreter.program_crossref
-    texts.each { |text| console_io.print_line(text) }
-  else
-    texts = interpreter.program_errors
     texts.each { |text| console_io.print_line(text) }
   end
 
@@ -896,31 +899,34 @@ unless run_filename.nil?
 
   filename, _keywords = parse_args(args)
 
-  if load_file_command_line(filename, interpreter, console_io) &&
-     interpreter.program_okay?
-    begin
-      timing = Benchmark.measure do
-        interpreter.run
-        console_io.newline
-      end
+  if load_file_command_line(filename, interpreter, console_io)
+    interpreter.program_optimize
 
-      show_timing = $options['timing'].value
-      if show_timing
-        print_timing(timing, console_io)
-        console_io.newline
-      end
+    if interpreter.program_okay?
+      begin
+        timing = Benchmark.measure do
+          interpreter.run
+          console_io.newline
+        end
 
-      if show_profile
-        texts = interpreter.program_profile('', show_timing)
-        texts.each { |text| console_io.print_line(text) }
-        console_io.newline
+        show_timing = $options['timing'].value
+        if show_timing
+          print_timing(timing, console_io)
+          console_io.newline
+        end
+
+        if show_profile
+          texts = interpreter.program_profile('', show_timing)
+          texts.each { |text| console_io.print_line(text) }
+          console_io.newline
+        end
+      rescue BASICCommandError => e
+        console_io.print_line(e.to_s)
       end
-    rescue BASICCommandError => e
-      console_io.print_line(e.to_s)
+    else
+      errors = interpreter.program_errors
+      errors.each { |error| console_io.print_line(error) }
     end
-  else
-    texts = interpreter.program_errors
-    texts.each { |text| console_io.print_line(text) }
   end
 end
 

@@ -371,10 +371,6 @@ class AbstractStatement
     @errors.each { |error| console_io.print_line(' ' + error) }
   end
 
-  def okay(_, _, _)
-    true
-  end
-
   def errors?
     !@errors.empty? || !@program_errors.empty?
   end
@@ -392,8 +388,7 @@ class AbstractStatement
     load_file_names(interpreter)
   end
 
-  def check_program(program)
-    # check_any_after_end
+  def check_program(_, _)
     # check_gosub_destinations
     # check_goto_destinations
     # check_if_destinations
@@ -1260,14 +1255,10 @@ class EndStatement < AbstractStatement
     ['']
   end
 
-  def okay(program, console_io, line_number_stmt_mod)
-    next_line = program.find_next_line_stmt_mod(line_number_stmt_mod)
+  def check_program(program, line_number_stmt)
+    next_line_stmt = program.find_next_line_stmt(line_number_stmt)
 
-    return true if next_line.nil?
-
-    console_io.print_line("Statements after END in line #{line_number_stmt_mod}")
-
-    false
+    @program_errors << 'Statements after END' unless next_line_stmt.nil?
   end
 
   def execute_core(interpreter)
@@ -1641,14 +1632,9 @@ class GosubStatement < AbstractStatement
     transfer_refs
   end
 
-  def okay(program, console_io, line_number_stmt_mod)
-    return true if program.line_number?(@destination)
-
-    console_io.print_line(
-      "Line number #{@destination} not found in line #{line_number_stmt_mod}"
-    )
-
-    false
+  def check_program(program, line_number_stmt)
+    @program_errors << "Line number #{@destination} not found" unless
+      program.line_number?(@destination)
   end
 
   def execute_core(interpreter)
@@ -1722,14 +1708,9 @@ class GotoStatement < AbstractStatement
     transfer_refs
   end
 
-  def okay(program, console_io, line_stmt_mod)
-    return true if program.line_number?(@destination)
-
-    console_io.print_line(
-      "Line number #{@destination} not found in line #{line_stmt_mod}"
-    )
-
-    false
+  def check_program(program, line_number_stmt)
+    @program_errors << "Line number #{@destination} not found" unless
+       program.line_number?(@destination)
   end
 
   def execute_core(interpreter)
@@ -1815,20 +1796,10 @@ class AbstractIfStatement < AbstractStatement
     transfer_refs
   end
 
-  def okay(program, console_io, line_stmt_mod)
-    return true if program.line_number?(@destination)
-
-    if @destination.nil?
-      console_io.print_line(
-        "Invalid or missing line number in line #{line_stmt_mod}"
-      )
-    else
-      console_io.print_line(
-        "Line number #{@destination} not found in line #{line_stmt_mod}"
-      )
+  def check_program(program, line_number_stmt)
+    unless !@destination.nil? && program.line_number?(@destination)
+      @program_errors << "Line number #{@destination} not found"
     end
-
-    false
   end
 end
 

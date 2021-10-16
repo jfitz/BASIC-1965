@@ -268,16 +268,10 @@ class Line
 
     @statements.each do |statement|
       errors = statement.errors
-
-      errors.each do |error|
-        texts << "#{number} #{error}"
-      end
+      errors.each { |error| texts << "#{number} #{error}" }
 
       errors = statement.program_errors
-
-      errors.each do |error|
-        texts << "#{number} #{error}"
-      end
+      errors.each { |error| texts << "#{number} #{error}" }
     end
 
     texts
@@ -323,18 +317,6 @@ class Line
     text = AbstractToken.pretty_tokens([], tokens.flatten)
     text = ' ' + text unless text.empty?
     Line.new(text, @statements, tokens.flatten, @comment)
-  end
-
-  def okay(program, console_io, line_number)
-    retval = true
-
-    @statements.each_with_index do |statement, stmt|
-      line_number_stmt_mod = LineStmtMod.new(line_number, stmt, 0)
-      r = statement.okay(program, console_io, line_number_stmt_mod)
-      retval &&= r
-    end
-
-    retval
   end
 end
 
@@ -543,14 +525,10 @@ class Program
 
       statements.each do |statement|
         errors = statement.errors
-        errors.each do |error|
-          texts << error + " in line #{line_number}"
-        end
+        errors.each { |error| texts << error + " in line #{line_number}" }
 
         errors = statement.program_errors
-        errors.each do |error|
-          texts << error + " in line #{line_number}"
-        end
+        errors.each { |error| texts << error + " in line #{line_number}" }
       end
     end
 
@@ -559,17 +537,6 @@ class Program
 
   def check
     @errors = check_program_old
-  end
-
-  def okay?
-    result = true
-
-    @lines.keys.sort.each do |line_number|
-      r = @lines[line_number].okay(self, @console_io, line_number)
-      result &&= r
-    end
-
-    result
   end
 
   def find_next_line(current_line_stmt_mod)
@@ -1194,16 +1161,18 @@ class Program
 
     # build list of lines that are not reachable
     lines = []
-
     reachable.keys.each do |line_number_stmt|
       line_number = line_number_stmt.line_number
       stmt = line_number_stmt.statement
-      statements = @lines[line_number].statements
-      statement = statements[stmt]
+      line = @lines[line_number]
+      unless line.nil?
+        statements = line.statements
+        statement = statements[stmt]
 
-      if statement.executable && !reachable[line_number_stmt]
-        text = statement.pretty
-        lines << "#{line_number_stmt}: #{text}" unless text.empty?
+        if statement.executable && !reachable[line_number_stmt]
+          text = statement.pretty
+          lines << "#{line_number_stmt}: #{text}" unless text.empty?
+        end
       end
     end
 
@@ -1243,16 +1212,15 @@ class Program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
-
-      statements.each do |statement|
-        any_errors |= statement.errors?
-      end
+      statements.each { |statement| any_errors |= statement.errors? }
     end
 
     any_errors
   end
 
   def optimize(interpreter)
+    interpreter.clear_user_functions
+
     @lines.keys.sort.each do |line_number|
       @line_number = line_number
       line = @lines[line_number]
@@ -1382,8 +1350,9 @@ class Program
       line = @lines[line_number]
       statements = line.statements
 
-      statements.each do |statement|
-        statement.check_program(self)
+      statements.each_with_index do |statement, stmt|
+        line_number_stmt = LineStmt.new(line_number, stmt)
+        statement.check_program(self, line_number_stmt)
       end
     end
   end
@@ -1966,6 +1935,7 @@ class Program
       # print the errors
       statements.each do |statement|
         statement.errors.each { |error| texts << ' ' + error }
+        statement.program_errors.each { |error| texts << ' ' + error }
       end
 
       # print the warnings
@@ -2000,6 +1970,7 @@ class Program
       # print the errors
       statements.each do |statement|
         statement.errors.each { |error| texts << ' ' + error }
+        statement.program_errors.each { |error| texts << ' ' + error }
       end
 
       # print the warnings
@@ -2039,6 +2010,7 @@ class Program
       # print the errors
       statements.each do |statement|
         statement.errors.each { |error| texts << ' ' + error }
+        statement.program_errors.each { |error| texts << ' ' + error }
       end
 
       # print the warnings
