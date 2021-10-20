@@ -20,7 +20,7 @@ Halstead complexity:
  time: 4.344
 
 (1 2) 10 READ N
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (1 4) 20 FOR I = 1 TO N - 1
   Origs: 10:auto
@@ -57,7 +57,7 @@ Halstead complexity:
   Dests: 130:auto
 (0 1) 130 STOP
   Origs: 120:auto
-  Dests: 
+  Dests: :stop
 (0 4) 140 PRINT I; "HAS AN INVERSE" J
   Origs: 90:ifthen
   Dests: 150:auto
@@ -69,7 +69,7 @@ Halstead complexity:
   Dests: 999:auto
 (0 1) 999 END
   Origs: 160:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

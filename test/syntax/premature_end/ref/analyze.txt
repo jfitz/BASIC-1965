@@ -1,2 +1,39 @@
-Statements after END in line 30
+Statistics:
+
+Number of lines: 4
+Number of valid statements: 3
+Number of comments: 1
+Number of executable statements: 2
+
+Complexity:
+
+Comment density: 0.333
+Comprehension effort: 6
+McCabe complexity: 1
+Halstead complexity:
+ length: 2
+ volume: 1.386
+ difficulty: 0.000
+ effort: 0.000
+ language: 0.000
+ intelligence: 0.000
+ time: 0.000
+
+(0 1) 10 REM PROGRAM WITH END STATEMENT TOO EARLY
+  Origs: :start
+  Dests: 20:auto
+(0 2) 20 PRINT "HELLO"
+  Origs: 10:auto
+  Dests: 30:auto
+(0 1) 30 END
+   Statements after END
+  Origs: 20:auto
+  Dests: :stop
+(0 2) 40 PRINT "GOODBYE"
+  Origs: 
+  Dests: 
+
+Unreachable code:
+
+40: PRINT "GOODBYE"
 

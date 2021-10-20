@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.803
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE DETERMINANT AND
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM INVERSE OF A 2 X 2 MATRIX
   Origs: 10:auto
@@ -93,7 +93,7 @@ Halstead complexity:
   Dests: 30:ifthen, 250:auto
 (0 1) 250 STOP
   Origs: 240:auto
-  Dests: 
+  Dests: :stop
 (0 2) 260 PRINT
   Origs: 
   Dests: 270:auto
@@ -102,7 +102,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 280 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

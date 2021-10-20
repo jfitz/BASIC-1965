@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.426
 
 (0 1) 10 REM This is a test
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (1 2) 20 ARR READ A(6)
   Origs: 10:auto
@@ -48,13 +48,13 @@ Halstead complexity:
   Dests: 89:auto
 (0 1) 89 STOP
   Origs: 42:auto
-  Dests: 
+  Dests: :stop
 (0 3) 90 DATA 10.2, 5.5, 1.8, 22, 17, -19, 7
   Origs: 
   Dests: 99:auto
 (0 1) 99 END
   Origs: 90:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

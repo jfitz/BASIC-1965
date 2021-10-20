@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.519
 
 (0 2) 10 DIM A(6)
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 OPTION BASE 0
   Origs: 10:auto
@@ -51,7 +51,7 @@ Halstead complexity:
   Dests: 790:auto, 800:gosub
 (0 1) 790 STOP
   Origs: 150:auto
-  Dests: 
+  Dests: :stop
 (0 1) 800 REM PROCEDURE A
   Origs: 50:gosub, 150:gosub
   Dests: 810:auto
@@ -75,7 +75,7 @@ Halstead complexity:
   Dests: 999:auto
 (0 1) 999 END
   Origs: 900:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

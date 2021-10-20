@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.099
 
 (0 3) 10 LET I = 1
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (1 4) 20 IF I > 1000 THEN 60
   Origs: 10:auto, 50:goto
@@ -36,7 +36,7 @@ Halstead complexity:
   Dests: 20:goto
 (0 1) 60 END
   Origs: 20:ifthen
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

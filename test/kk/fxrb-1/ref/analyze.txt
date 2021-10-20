@@ -20,7 +20,7 @@ Halstead complexity:
  time: 14.433
 
 (4 5) 100 READ A, B, C, D
-  Origs: 
+  Origs: :start
   Dests: 110:auto
 (3 4) 110 READ T8, T9, P
   Origs: 100:auto
@@ -135,7 +135,7 @@ FNR(_) (0 3) 160 DEF FNR(X) = INT(4 * X + .5)
   Dests: 999:auto
 (0 1) 999 END
   Origs: 900:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

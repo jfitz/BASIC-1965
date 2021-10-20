@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.190
 
 (0 1) 10 REM THIS PROGRAM COMPUTES VALUE DEPRECIATION
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM BY THE STRAIGHT LINE METHOD
   Origs: 10:auto
@@ -87,7 +87,7 @@ Halstead complexity:
   Dests: 230:auto, 240:ifthen
 (0 1) 230 STOP
   Origs: 220:auto
-  Dests: 
+  Dests: :stop
 (0 2) 240 PRINT
   Origs: 220:ifthen
   Dests: 250:auto
@@ -96,7 +96,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 260 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

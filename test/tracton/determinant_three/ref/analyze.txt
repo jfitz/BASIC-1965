@@ -20,7 +20,7 @@ Halstead complexity:
  time: 10.960
 
 (0 1) 10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "ENTER 3 X 3 MATRIX"
   Origs: 10:auto, 310:ifthen
@@ -114,10 +114,10 @@ Halstead complexity:
   Dests: 20:ifthen, 320:auto
 (0 1) 320 STOP
   Origs: 310:auto
-  Dests: 
+  Dests: :stop
 (0 1) 330 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

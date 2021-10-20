@@ -20,7 +20,7 @@ Halstead complexity:
  time: 7.023
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE PERCENTAGES OF THE
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM PRODUCTS PRODUCED BY HYDROCARBON COMBUSTION
   Origs: 10:auto
@@ -173,7 +173,7 @@ Halstead complexity:
   Dests: 500:auto
 (0 1) 500 STOP
   Origs: 490:auto
-  Dests: 
+  Dests: :stop
 (0 2) 510 PRINT
   Origs: 480:ifthen
   Dests: 520:auto
@@ -182,7 +182,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 530 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

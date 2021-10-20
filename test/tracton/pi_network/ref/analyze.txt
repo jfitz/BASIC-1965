@@ -20,7 +20,7 @@ Halstead complexity:
  time: 3.926
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE COMPONENTS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM OF A PI-NETWORK. TO MATCH TWO
   Origs: 10:auto
@@ -105,7 +105,7 @@ Halstead complexity:
   Dests: 290:auto, 300:ifthen
 (0 1) 290 STOP
   Origs: 280:auto
-  Dests: 
+  Dests: :stop
 (0 2) 300 PRINT
   Origs: 280:ifthen
   Dests: 310:auto
@@ -114,7 +114,7 @@ Halstead complexity:
   Dests: 40:goto
 (0 1) 320 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

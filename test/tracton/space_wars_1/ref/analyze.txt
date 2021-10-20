@@ -20,7 +20,7 @@ Halstead complexity:
  time: 23.254
 
 (0 1) 10 REM THIS PROGRAM IS THE GAME OF SPACE WARS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM TWO SHIPS BATTLE, YOU MUST DESTROY THE
   Origs: 10:auto
@@ -415,7 +415,7 @@ Halstead complexity:
   Dests: 1300:auto
 (0 1) 1300 STOP
   Origs: 1290:auto
-  Dests: 
+  Dests: :stop
 (0 2) 1310 PRINT
   Origs: 1280:ifthen
   Dests: 1320:auto
@@ -424,7 +424,7 @@ Halstead complexity:
   Dests: 50:goto
 (0 1) 1330 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.080
 
 (0 1) 10 REM THIS PROGRAM COMPUTES LINEAR INTERPOLATION
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "KNOWN VALUE OF X (X1,X2) = ";
   Origs: 10:auto, 170:goto
@@ -63,7 +63,7 @@ Halstead complexity:
   Dests: 150:auto, 160:ifthen
 (0 1) 150 STOP
   Origs: 140:auto
-  Dests: 
+  Dests: :stop
 (0 2) 160 PRINT
   Origs: 140:ifthen
   Dests: 170:auto
@@ -72,7 +72,7 @@ Halstead complexity:
   Dests: 20:goto
 (0 1) 180 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

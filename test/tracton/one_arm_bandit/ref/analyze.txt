@@ -20,7 +20,7 @@ Halstead complexity:
  time: 4.847
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THEN MECHANICAL
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM THREE WHEEL ONE-ARM BANDIT
   Origs: 10:auto
@@ -274,7 +274,7 @@ Halstead complexity:
   Dests: 770:auto
 (0 1) 770 STOP
   Origs: 760:auto
-  Dests: 
+  Dests: :stop
 (0 2) 780 PRINT
   Origs: 750:ifthen
   Dests: 790:auto
@@ -283,7 +283,7 @@ Halstead complexity:
   Dests: 190:goto
 (0 1) 800 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

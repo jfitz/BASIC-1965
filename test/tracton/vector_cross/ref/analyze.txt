@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.284
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE CROSS PRODUCT
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM OF TWO VECTORS
   Origs: 10:auto
@@ -66,7 +66,7 @@ Halstead complexity:
   Dests: 160:auto, 170:ifthen
 (0 1) 160 STOP
   Origs: 150:auto
-  Dests: 
+  Dests: :stop
 (0 2) 170 PRINT
   Origs: 150:ifthen
   Dests: 180:auto
@@ -75,7 +75,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 190 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

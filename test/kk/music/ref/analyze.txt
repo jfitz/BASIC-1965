@@ -20,7 +20,7 @@ Halstead complexity:
  time: 168.089
 
 (0 4) 10 DIM S(4, 100), P(6, 6), M(100)
-  Origs: 
+  Origs: :start
   Dests: 30:auto
 FNC(_) (0 6) 20 DEF FNC(X) = X - 7 * INT(X / 7)
   Origs: 
@@ -381,7 +381,7 @@ FNC(_) (0 6) 20 DEF FNC(X) = X - 7 * INT(X / 7)
   Dests: 5030:auto
 (0 1) 5030 STOP
   Origs: 5020:auto
-  Dests: 
+  Dests: :stop
 (0 3) 5100 LET C2 = S(0, N)
   Origs: 5010:ifthen
   Dests: 5110:auto
@@ -423,7 +423,7 @@ FNC(_) (0 6) 20 DEF FNC(X) = X - 7 * INT(X / 7)
   Dests: 9999:auto
 (0 1) 9999 END
   Origs: 6004:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

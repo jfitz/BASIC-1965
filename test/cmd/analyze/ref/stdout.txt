@@ -27,7 +27,7 @@ Halstead complexity:
  time: 0.026
 
 (0 1) 10 REM TEST OF ANALYZE COMMAND
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "START"
   Origs: 10:auto
@@ -46,15 +46,16 @@ Halstead complexity:
   Dests: 90:auto
 (0 1) 90 STOP
   Origs: 40:goto, 60:auto
-  Dests: 
+  Dests: :stop
 (0 1) 99 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 
 50: PRINT B
 60: LET A = B / 10
+
 READY
 EXIT
 BASIC-1965 ended

@@ -20,7 +20,7 @@ Halstead complexity:
  time: 27.345
 
 (0 1) 10 REM GALILEO'S CIRCLE BECOMES A STRAIGHT LINE
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM FROM DISCOURSE ON TWO SCIENCES
   Origs: 10:auto
@@ -138,7 +138,7 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 249:auto
 (0 1) 249 STOP
   Origs: 248:auto
-  Dests: 
+  Dests: :stop
 (0 1) 300 REM PRINT DEFINED VALUES
   Origs: 240:ifthen
   Dests: 301:auto
@@ -207,7 +207,7 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 999:auto
 (0 1) 999 END
   Origs: 901:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

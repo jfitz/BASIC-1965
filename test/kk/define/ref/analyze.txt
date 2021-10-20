@@ -23,7 +23,7 @@ FNL(_) (0 5) 10 DEF FNL(A) = LOG(A) / LOG(10)
   Origs: 
   Dests: 
 (1 4) 20 FOR N = 2 TO 10 STEP 2
-  Origs: 
+  Origs: :start
   Dests: 30:fornext, 40:fornext
 (0 7) 30 PRINT N, LOG(N), FNL(N)
   Origs: 20:fornext
@@ -33,7 +33,7 @@ FNL(_) (0 5) 10 DEF FNL(A) = LOG(A) / LOG(10)
   Dests: 99:auto
 (0 1) 99 END
   Origs: 40:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

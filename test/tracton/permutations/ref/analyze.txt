@@ -20,7 +20,7 @@ Halstead complexity:
  time: 4.611
 
 (0 1) 10 REM THIS PROGRAM COMPUTES PERMUTATIONS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM AND COMBINATIONS, WHERE N = NUMBER OF
   Origs: 10:auto
@@ -90,7 +90,7 @@ Halstead complexity:
   Dests: 240:auto, 250:ifthen
 (0 1) 240 STOP
   Origs: 230:auto
-  Dests: 
+  Dests: :stop
 (0 2) 250 PRINT
   Origs: 230:ifthen
   Dests: 260:auto
@@ -141,7 +141,7 @@ Halstead complexity:
   Dests: 
 (0 1) 410 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

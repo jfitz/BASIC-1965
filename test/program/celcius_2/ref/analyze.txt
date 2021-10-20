@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.659
 
 (0 1) 10 REM Convert Celcius to Fahrenheit
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 3) 20 PRINT "Celcius", "Fahrenheit"
   Origs: 10:auto
@@ -45,10 +45,10 @@ Halstead complexity:
   Dests: 40:ifthen, 900:auto
 (0 1) 900 STOP
   Origs: 70:auto
-  Dests: 
+  Dests: :stop
 (0 1) 999 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

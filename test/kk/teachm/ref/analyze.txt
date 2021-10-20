@@ -21,7 +21,7 @@ Halstead complexity:
  time: 3.477
 
 (0 2) 10 PRINT "BASIC IS A SIMPLE LANGUAGE. IT ENABLES ONE TO DESCRIBE"
-  Origs: 
+  Origs: :start
   Dests: 30:auto
 (0 2) 30 PRINT "PROGRAMS TO THE COMPUTER WITH LITTLE LEARNING EFFORT."
   Origs: 10:auto
@@ -238,7 +238,7 @@ Halstead complexity:
   Dests: 620:auto
 (0 1) 620 STOP
   Origs: 610:auto
-  Dests: 
+  Dests: :stop
 (0 2) 8000 PRINT "YOUR ANSWER";
   Origs: 140:gosub, 230:gosub, 360:gosub, 430:gosub, 540:gosub
   Dests: 8010:auto
@@ -277,7 +277,7 @@ Halstead complexity:
   Dests: 9999:auto
 (0 1) 9999 END
   Origs: 8199:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

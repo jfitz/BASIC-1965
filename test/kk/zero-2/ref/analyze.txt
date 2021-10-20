@@ -23,7 +23,7 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
   Dests: 
 (0 1) 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (2 3) 20 READ A, B
   Origs: 11:auto
@@ -60,7 +60,7 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Dests: 110:auto
 (0 1) 110 STOP
   Origs: 100:auto
-  Dests: 
+  Dests: :stop
 (0 0) 120 
   Origs: 
   Dests: 230:auto
@@ -96,7 +96,7 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Dests: 999:auto
 (0 1) 999 END
   Origs: 900:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

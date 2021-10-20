@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.597
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GAUSSIAN PROBABILITY
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM FUNCTION OF X
   Origs: 10:auto
@@ -57,7 +57,7 @@ Halstead complexity:
   Dests: 130:auto, 140:ifthen
 (0 1) 130 STOP
   Origs: 120:auto
-  Dests: 
+  Dests: :stop
 (0 2) 140 PRINT
   Origs: 120:ifthen
   Dests: 150:auto
@@ -66,7 +66,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 160 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

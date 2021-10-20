@@ -20,7 +20,7 @@ Halstead complexity:
  time: 2.256
 
 (0 1) 10 REM THIS PROGRAM COMPUTES A SERIES OF HARMONIC
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM PROGRESSIONS
   Origs: 10:auto
@@ -111,7 +111,7 @@ Halstead complexity:
   Dests: 310:auto, 320:ifthen
 (0 1) 310 STOP
   Origs: 300:auto
-  Dests: 
+  Dests: :stop
 (0 2) 320 PRINT
   Origs: 300:ifthen
   Dests: 330:auto
@@ -120,7 +120,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 340 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

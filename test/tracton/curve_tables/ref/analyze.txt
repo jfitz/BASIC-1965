@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.528
 
 (0 1) 10 REM THIS PROGRAM GENERATES A SERIES OF
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM DATA POINTS, WITH WHICH THE USER CAN
   Origs: 10:auto
@@ -81,7 +81,7 @@ Halstead complexity:
   Dests: 210:auto, 220:ifthen
 (0 1) 210 STOP
   Origs: 200:auto
-  Dests: 
+  Dests: :stop
 (0 2) 220 PRINT
   Origs: 200:ifthen
   Dests: 230:auto
@@ -90,7 +90,7 @@ Halstead complexity:
   Dests: 70:goto
 (0 1) 240 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

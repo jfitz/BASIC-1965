@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.009
 
 (0 1) 10 REM TEST INFINITE LOOP CHECK
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 3) 20 GOSUB 20
   Origs: 10:auto
@@ -30,7 +30,7 @@ Halstead complexity:
   Dests: 90:auto, 100:gosub
 (0 1) 90 STOP
   Origs: 30:auto
-  Dests: 
+  Dests: :stop
 (0 1) 100 REM PRINT STARS
   Origs: 30:gosub
   Dests: 110:auto
@@ -42,7 +42,7 @@ Halstead complexity:
   Dests: 
 (0 1) 999 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

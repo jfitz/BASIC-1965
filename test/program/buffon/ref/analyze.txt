@@ -20,7 +20,7 @@ Halstead complexity:
  time: 5.220
 
 (0 1) 10 REM BUFFON NEEDLE SIMULATION
-  Origs: 
+  Origs: :start
   Dests: 30:auto
 (0 3) 30 LET L0 = 2
   Origs: 10:auto
@@ -63,7 +63,7 @@ Halstead complexity:
   Dests: 199:auto, 300:gosub
 (0 1) 199 STOP
   Origs: 190:auto
-  Dests: 
+  Dests: :stop
 (0 1) 200 REM PROCEDURE A
   Origs: 140:gosub
   Dests: 210:auto
@@ -117,7 +117,7 @@ Halstead complexity:
   Dests: 999:auto
 (0 1) 999 END
   Origs: 900:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.905
 
 (0 1) 10 REM THIS PROGRAM COMPUTES TO SIMULTANEOUS EQUATIONS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM IN TWO UNKNOWNS
   Origs: 10:auto
@@ -75,7 +75,7 @@ Halstead complexity:
   Dests: 190:auto, 200:ifthen
 (0 1) 190 STOP
   Origs: 180:auto
-  Dests: 
+  Dests: :stop
 (0 2) 200 PRINT
   Origs: 180:ifthen
   Dests: 210:auto
@@ -84,7 +84,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 220 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

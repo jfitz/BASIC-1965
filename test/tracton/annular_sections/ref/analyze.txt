@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.633
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE VARIOUS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM PARAMETERS CONNECTED WTTH AN ANNULAR
   Origs: 10:auto
@@ -69,7 +69,7 @@ Halstead complexity:
   Dests: 180:auto, 190:ifthen
 (0 1) 180 STOP
   Origs: 170:auto
-  Dests: 
+  Dests: :stop
 (0 2) 190 PRINT
   Origs: 170:ifthen
   Dests: 200:auto
@@ -78,7 +78,7 @@ Halstead complexity:
   Dests: 40:goto
 (0 1) 210 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

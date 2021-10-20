@@ -20,7 +20,7 @@ Halstead complexity:
  time: 5.538
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM A QUANTITY Y THE DESTROYER AND A QUANTITY X
   Origs: 10:auto
@@ -198,7 +198,7 @@ Halstead complexity:
   Dests: 600:auto, 610:ifthen
 (0 1) 600 STOP
   Origs: 590:auto
-  Dests: 
+  Dests: :stop
 (0 2) 610 PRINT
   Origs: 590:ifthen
   Dests: 620:auto
@@ -207,7 +207,7 @@ Halstead complexity:
   Dests: 60:goto
 (0 1) 630 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

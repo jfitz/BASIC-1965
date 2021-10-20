@@ -555,7 +555,9 @@ class Interpreter
     # if next line number has changed, debug_shell executed a GOTO
     if @next_line_stmt_mod != next_line_stmt_mod
       @current_line_stmt_mod = @next_line_stmt_mod
-      @next_line_stmt_mod = @program.find_next_line_stmt_mod(@current_line_stmt_mod)
+
+      @next_line_stmt_mod =
+        @program.find_next_line_stmt_mod(@current_line_stmt_mod)
     end
 
     begin
@@ -769,7 +771,7 @@ class Interpreter
     @program.find_next_line_stmt_mod(@current_line_stmt_mod)
   end
 
-  def statement_start_index(line_number, _statement_index)
+  def statement_start_index(line_number)
     line = @program.lines[line_number]
 
     return if line.nil?

@@ -20,7 +20,7 @@ Halstead complexity:
  time: 3.828
 
 (1 3) 10 FOR G = 1 TO 10
-  Origs: 
+  Origs: :start
   Dests: 20:fornext, 410:fornext
 (0 2) 20 GOSUB 500
   Origs: 10:fornext
@@ -78,7 +78,7 @@ Halstead complexity:
   Dests: 420:auto
 (0 1) 420 STOP
   Origs: 410:auto
-  Dests: 
+  Dests: :stop
 (0 0) 499 
   Origs: 
   Dests: 500:auto
@@ -102,7 +102,7 @@ Halstead complexity:
   Dests: 
 (0 1) 999 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

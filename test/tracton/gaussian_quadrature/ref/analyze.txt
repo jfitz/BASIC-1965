@@ -20,7 +20,7 @@ Halstead complexity:
  time: 22.015
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM AND INFINITY BY GAUSSIAN QUADRATURE
   Origs: 10:auto
@@ -150,7 +150,7 @@ Halstead complexity:
   Dests: 440:auto, 450:ifthen
 (0 1) 440 STOP
   Origs: 430:auto
-  Dests: 
+  Dests: :stop
 (0 2) 450 PRINT
   Origs: 430:ifthen
   Dests: 460:auto
@@ -165,7 +165,7 @@ Halstead complexity:
   Dests: 
 (0 1) 490 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

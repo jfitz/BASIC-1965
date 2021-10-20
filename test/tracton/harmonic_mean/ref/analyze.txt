@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.122
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE HARMONIC MEAN
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM OF SAMPLES ENTERED BY THE USER
   Origs: 10:auto
@@ -69,7 +69,7 @@ Halstead complexity:
   Dests: 170:auto, 180:ifthen
 (0 1) 170 STOP
   Origs: 160:auto
-  Dests: 
+  Dests: :stop
 (0 2) 180 PRINT
   Origs: 160:ifthen
   Dests: 190:auto
@@ -78,7 +78,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 200 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

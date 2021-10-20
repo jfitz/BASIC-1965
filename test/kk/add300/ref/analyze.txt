@@ -20,7 +20,7 @@ Halstead complexity:
  time: 43.944
 
 (0 5) 10 DIM A(100), B(100), C(200), X(100)
-  Origs: 
+  Origs: :start
   Dests: 100:auto
 (0 1) 100 REM READ, PRINT A,B
   Origs: 10:auto
@@ -132,7 +132,7 @@ Halstead complexity:
   Dests: 630:auto, 2000:gosub
 (0 1) 630 STOP
   Origs: 620:auto
-  Dests: 
+  Dests: :stop
 (0 0) 640 
   Origs: 
   Dests: 1000:auto
@@ -174,7 +174,7 @@ Halstead complexity:
   Dests: 1210:auto
 (0 1) 1210 STOP
   Origs: 1200:auto
-  Dests: 
+  Dests: :stop
 (0 0) 1220 
   Origs: 
   Dests: 2000:auto
@@ -309,7 +309,7 @@ Halstead complexity:
   Dests: 9999:auto
 (0 1) 9999 END
   Origs: 9010:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

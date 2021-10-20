@@ -23,7 +23,7 @@ FNR(_) (0 4) 5 DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
   Origs: 
   Dests: 
 (0 3) 10 LET P = 3.14159625
-  Origs: 
+  Origs: :start
   Dests: 50:auto
 FND(_) (0 4) 20 DEF FND(X) = X * P / 180
   Origs: 
@@ -48,7 +48,7 @@ FNC(_) (0 3) 40 DEF FNC(X) = COS(FND(X))
   Dests: 99:auto
 (0 1) 99 END
   Origs: 80:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

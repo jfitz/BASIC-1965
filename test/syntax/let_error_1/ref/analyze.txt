@@ -1,2 +1,45 @@
-Syntax error in line 30
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 10
+McCabe complexity: 1
+Halstead complexity:
+ length: 5
+ volume: 8.047
+ difficulty: 0.500
+ effort: 4.024
+ language: 32.189
+ intelligence: 16.094
+ time: 0.004
+
+(0 1) 10 REM This is a test
+  Origs: :start
+  Dests: 20:auto
+(0 3) 20 LET A = 10
+  Origs: 10:auto
+  Dests: 30:auto
+(0 1) 30 LET B =
+   Syntax error
+  Origs: 20:auto
+  Dests: 40:auto
+(0 3) 40 PRINT A, B
+  Origs: 30:auto
+  Dests: 90:auto
+(0 1) 90 STOP
+  Origs: 40:auto
+  Dests: :stop
+(0 1) 99 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
 

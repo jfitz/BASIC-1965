@@ -23,7 +23,7 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
   Dests: 
 (2 3) 20 READ A, B
-  Origs: 
+  Origs: :start
   Dests: 30:auto
 (0 5) 30 LET X = (A + B) / 2
   Origs: 20:auto, 90:goto
@@ -57,7 +57,7 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Dests: 999:auto
 (0 1) 999 END
   Origs: 900:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

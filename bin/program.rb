@@ -3,16 +3,20 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    raise BASICSyntaxError, "Invalid line number object '#{line_number}'" unless
-      line_number.class.to_s == 'IntegerConstant'
+    legals = %[IntegerConstant NilClass]
+    
+    raise BASICSyntaxError, "Invalid line number object '#{line_number.class}'" unless
+      legals.include?(line_number.class.to_s)
 
-    @line_number = line_number.to_i
+    unless line_number.nil?
+      @line_number = line_number.to_i
 
-    raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
-      @line_number >= $options['min_line_num'].value
+      raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
+        @line_number >= $options['min_line_num'].value
 
-    raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
-      @line_number <= $options['max_line_num'].value
+      raise BASICSyntaxError, "Invalid line number '#{@line_number}'" unless
+        @line_number <= $options['max_line_num'].value
+    end
   end
 
   def eql?(other)
@@ -32,27 +36,31 @@ class LineNumber
   end
 
   def <=>(other)
-    @line_number <=> other.line_number
+    comp_value <=> other.comp_value
   end
 
   def >(other)
-    @line_number > other.line_number
+    comp_value > other.comp_value
   end
 
   def >=(other)
-    @line_number >= other.line_number
+    comp_value >= other.comp_value
   end
 
   def <(other)
-    @line_number < other.line_number
+    comp_value < other.comp_value
   end
 
   def <=(other)
-    @line_number <= other.line_number
+    comp_value <= other.comp_value
   end
 
   def dump
     self.class.to_s + ':' + @line_number.to_s
+  end
+
+  def comp_value
+    @line_number.nil? ? 0 : @line_number
   end
 
   def to_s
@@ -95,7 +103,9 @@ class LineStmt
   attr_reader :statement
 
   def initialize(line_number, statement)
-    raise BASICError.new("line_number class is #{line_number.class}") unless line_number.class.to_s == 'LineNumber'
+    raise BASICError.new("line_number class is #{line_number.class}") unless
+      line_number.class.to_s == 'LineNumber'
+
     @line_number = line_number
     @statement = statement
   end
@@ -129,7 +139,9 @@ class LineStmtMod
   attr_reader :index
 
   def initialize(line_number, statement, mod)
-    raise BASICError.new("line_number class is #{line_number.class}") unless line_number.class.to_s == 'LineNumber'
+    raise BASICError.new("line_number class is #{line_number.class}") unless
+      line_number.class.to_s == 'LineNumber'
+
     @line_number = line_number
     @statement = statement
     @index = mod
@@ -411,7 +423,8 @@ class TransferRefLineStmt
   attr_reader :type
 
   def initialize(line_number, statement, type)
-    raise BASICError.new("line number is nil") if line_number.nil?
+    raise BASICError.new("Invalid line number #{line_number.class}:#{line_number}") unless
+      line_number.class.to_s == 'LineNumber'
 
     @line_number = line_number
     @statement = statement
@@ -457,6 +470,9 @@ class TransferRefLine
   attr_reader :type
 
   def initialize(line_number, type)
+    raise BASICError.new("Invalid line number #{line_number.class}:#{line_number}") unless
+      line_number.class.to_s == 'LineNumber'
+
     @line_number = line_number
     @type = type
   end
@@ -479,6 +495,10 @@ class TransferRefLine
     else
       @line_number <=> other.line_number
     end
+  end
+
+  def statement
+    0
   end
 
   def to_s
@@ -853,9 +873,16 @@ class Program
         origins[dest.line_number] = [] unless origins.key?(dest.line_number)
 
         # add transfer to origin table
-        origins[dest.line_number] << TransferRefLine.new(orig.line_number, dest.type)
+        origins[dest.line_number] << TransferRefLine.new(orig, dest.type)
       end
     end
+
+    # add marker for entry point (first active line)
+    first_line_number_stmt_mod = find_first_statement
+    line_number = first_line_number_stmt_mod.line_number
+    origins[line_number] = [] unless origins.key?(line_number)
+    empty_line_number = LineNumber.new(nil)
+    origins[line_number] << TransferRefLine.new(empty_line_number, :start)
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]

@@ -20,7 +20,7 @@ Halstead complexity:
  time: 9.684
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE VALUES OF THE
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
   Origs: 10:auto
@@ -120,7 +120,7 @@ Halstead complexity:
   Dests: 340:auto, 350:ifthen
 (0 1) 340 STOP
   Origs: 330:auto
-  Dests: 
+  Dests: :stop
 (0 2) 350 PRINT
   Origs: 330:ifthen
   Dests: 360:auto
@@ -129,7 +129,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 370 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

@@ -20,7 +20,7 @@ Halstead complexity:
  time: 3.971
 
 (0 1) 10 REM LENGTH OF ARRAY
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 OPTION BASE 0
   Origs: 10:auto
@@ -72,7 +72,7 @@ Halstead complexity:
   Dests: 199:auto, 400:gosub
 (0 1) 199 STOP
   Origs: 180:auto
-  Dests: 
+  Dests: :stop
 (1 2) 400 READ N
   Origs: 60:gosub, 80:gosub, 160:gosub, 180:gosub
   Dests: 420:auto
@@ -99,7 +99,7 @@ Halstead complexity:
   Dests: 
 (0 1) 999 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

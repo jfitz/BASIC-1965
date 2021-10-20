@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.096
 
 (0 4) 10 PRINT " A", " B", "G.C.D."
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (2 3) 20 READ A, B
   Origs: 10:auto, 80:goto
@@ -54,7 +54,7 @@ Halstead complexity:
   Dests: 99:auto
 (0 1) 99 END
   Origs: 90:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

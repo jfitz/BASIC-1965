@@ -20,7 +20,7 @@ Halstead complexity:
  time: 6.958
 
 (0 2) 10 GOSUB 1000
-  Origs: 
+  Origs: :start
   Dests: 20:auto, 1000:gosub
 (1 3) 20 FOR C = 1 TO 5
   Origs: 10:auto
@@ -36,7 +36,7 @@ Halstead complexity:
   Dests: 60:auto
 (0 1) 60 STOP
   Origs: 50:auto
-  Dests: 
+  Dests: :stop
 (0 0) 70 
   Origs: 
   Dests: 1000:auto
@@ -168,7 +168,7 @@ Halstead complexity:
   Dests: 
 (0 1) 9999 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

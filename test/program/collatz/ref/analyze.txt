@@ -20,7 +20,7 @@ Halstead complexity:
  time: 2.560
 
 (0 1) 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (2 3) 20 READ A, A0
   Origs: 10:auto
@@ -48,7 +48,7 @@ Halstead complexity:
   Dests: 140:auto
 (0 1) 140 STOP
   Origs: 130:auto
-  Dests: 
+  Dests: :stop
 (0 1) 400 REM PRINT INFO FOR ONE NUMBER
   Origs: 120:gosub
   Dests: 410:auto
@@ -87,7 +87,7 @@ Halstead complexity:
   Dests: 999:auto
 (0 1) 999 END
   Origs: 900:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

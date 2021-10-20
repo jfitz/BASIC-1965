@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.770
 
 (0 1) 10 REM THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "ENTER FIRST TERM"
   Origs: 10:auto, 290:goto
@@ -99,7 +99,7 @@ Halstead complexity:
   Dests: 270:auto, 280:ifthen
 (0 1) 270 STOP
   Origs: 260:auto
-  Dests: 
+  Dests: :stop
 (0 2) 280 PRINT
   Origs: 260:ifthen
   Dests: 290:auto
@@ -108,7 +108,7 @@ Halstead complexity:
   Dests: 20:goto
 (0 1) 300 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

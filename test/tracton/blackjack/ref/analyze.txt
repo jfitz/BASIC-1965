@@ -20,7 +20,7 @@ Halstead complexity:
  time: 12.380
 
 (0 1) 10 REM BLACKJACK
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE YES"
   Origs: 10:auto, 80:goto, 1140:goto
@@ -367,7 +367,7 @@ Halstead complexity:
   Dests: 1120:auto
 (0 1) 1120 STOP
   Origs: 1110:auto
-  Dests: 
+  Dests: :stop
 (0 2) 1130 PRINT
   Origs: 1100:ifthen
   Dests: 1140:auto
@@ -376,7 +376,7 @@ Halstead complexity:
   Dests: 20:goto
 (0 1) 1150 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

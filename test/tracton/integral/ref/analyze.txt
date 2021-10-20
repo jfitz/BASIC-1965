@@ -20,7 +20,7 @@ Halstead complexity:
  time: 13.592
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM THE LIMITS A AND B OF F(X)
   Origs: 10:auto
@@ -159,7 +159,7 @@ Halstead complexity:
   Dests: 470:auto, 480:ifthen
 (0 1) 470 STOP
   Origs: 460:auto
-  Dests: 
+  Dests: :stop
 (0 2) 480 PRINT
   Origs: 460:ifthen
   Dests: 490:auto
@@ -174,7 +174,7 @@ Halstead complexity:
   Dests: 
 (0 1) 520 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

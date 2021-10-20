@@ -20,7 +20,7 @@ Halstead complexity:
  time: 9.160
 
 (0 1) 10 REM THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "SINH (1)"
   Origs: 10:auto
@@ -157,7 +157,7 @@ Halstead complexity:
   Dests: 460:auto, 470:ifthen
 (0 1) 460 STOP
   Origs: 450:auto
-  Dests: 
+  Dests: :stop
 (0 2) 470 PRINT
   Origs: 450:ifthen
   Dests: 480:auto
@@ -187,7 +187,7 @@ Halstead complexity:
   Dests: 
 (0 1) 560 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

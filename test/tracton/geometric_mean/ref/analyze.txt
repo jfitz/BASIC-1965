@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.318
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GEOMETRIC MEAN
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM AFTER EACH SAMPLE IS ENTERED, THE NUMBER OF
   Origs: 10:auto
@@ -78,7 +78,7 @@ Halstead complexity:
   Dests: 200:auto, 210:ifthen
 (0 1) 200 STOP
   Origs: 190:auto
-  Dests: 
+  Dests: :stop
 (0 2) 210 PRINT
   Origs: 190:ifthen
   Dests: 220:auto
@@ -87,7 +87,7 @@ Halstead complexity:
   Dests: 50:goto
 (0 1) 230 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

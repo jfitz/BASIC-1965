@@ -1261,6 +1261,22 @@ class EndStatement < AbstractStatement
     @program_errors << 'Statements after END' unless next_line_stmt.nil?
   end
 
+  def gotos(_)
+    transfer_refs = []
+
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
+
+    empty_line_number = LineNumber.new(nil)
+    transfer_refs << TransferRefLine.new(empty_line_number, :stop)
+
+    transfer_refs
+  end
+
   def execute_core(interpreter)
     io = interpreter.console_io
     io.newline_when_needed
@@ -1639,7 +1655,7 @@ class GosubStatement < AbstractStatement
 
   def execute_core(interpreter)
     line_number = @destination
-    mod = interpreter.statement_start_index(line_number, 0)
+    mod = interpreter.statement_start_index(line_number)
 
     raise(BASICSyntaxError, 'Line number not found') if mod.nil?
 
@@ -1715,7 +1731,7 @@ class GotoStatement < AbstractStatement
 
   def execute_core(interpreter)
     line_number = @destination
-    mod = interpreter.statement_start_index(line_number, 0)
+    mod = interpreter.statement_start_index(line_number)
 
     raise(BASICSyntaxError, 'Line number not found') if mod.nil?
 
@@ -1749,7 +1765,7 @@ class AbstractIfStatement < AbstractStatement
 
     if result.value
       line_number = @destination
-      mod = interpreter.statement_start_index(line_number, 0)
+      mod = interpreter.statement_start_index(line_number)
 
       raise(BASICSyntaxError, 'Line number not found') if mod.nil?
 
@@ -1791,7 +1807,8 @@ class AbstractIfStatement < AbstractStatement
       transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
     end
 
-    transfer_refs << TransferRefLineStmt.new(@destination, 0, :ifthen)
+    transfer_refs << TransferRefLineStmt.new(@destination, 0, :ifthen) unless
+      @destination.nil?
 
     transfer_refs
   end
@@ -2338,6 +2355,22 @@ class StopStatement < AbstractStatement
 
   def dump
     ['']
+  end
+
+  def gotos(_)
+    transfer_refs = []
+
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
+    end
+
+    empty_line_number = LineNumber.new(nil)
+    transfer_refs << TransferRefLine.new(empty_line_number, :stop)
+
+    transfer_refs
   end
 
   def execute_core(interpreter)

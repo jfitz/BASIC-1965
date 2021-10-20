@@ -20,7 +20,7 @@ Halstead complexity:
  time: 2.917
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THE I CHING
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 
    Unknown statement 'RANDOMIZE'
@@ -93,7 +93,7 @@ Halstead complexity:
   Dests: 240:auto
 (0 1) 240 STOP
   Origs: 230:auto
-  Dests: 
+  Dests: :stop
 (0 2) 250 PRINT
   Origs: 220:ifthen
   Dests: 260:auto
@@ -102,7 +102,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 270 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

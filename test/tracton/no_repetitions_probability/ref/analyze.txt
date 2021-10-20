@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.789
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE "NO REPETITIONS"
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM PROBABILITY OF A SAMPLE
   Origs: 10:auto
@@ -72,10 +72,10 @@ Halstead complexity:
   Dests: 30:ifthen, 170:auto
 (0 1) 170 STOP
   Origs: 160:auto
-  Dests: 
+  Dests: :stop
 (0 1) 180 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

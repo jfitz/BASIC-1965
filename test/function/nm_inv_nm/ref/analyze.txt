@@ -20,7 +20,7 @@ Halstead complexity:
  time: 2.355
 
 (0 1) 10 REM COMPUTE DETERMINANT
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 OPTION BASE 1
   Origs: 10:auto
@@ -57,7 +57,7 @@ Halstead complexity:
   Dests: 199:auto, 400:gosub
 (0 1) 199 STOP
   Origs: 130:auto
-  Dests: 
+  Dests: :stop
 (2 3) 400 READ R, C
   Origs: 60:gosub, 80:gosub, 120:gosub, 130:gosub
   Dests: 405:auto
@@ -102,7 +102,7 @@ Halstead complexity:
   Dests: 
 (0 1) 999 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

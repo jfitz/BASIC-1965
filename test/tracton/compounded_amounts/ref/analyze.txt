@@ -20,7 +20,7 @@ Halstead complexity:
  time: 9.622
 
 (0 1) 10 REM COMPOUNDED AMOUNTS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "FUTURE VALUE (1)"
   Origs: 10:auto
@@ -148,7 +148,7 @@ Halstead complexity:
   Dests: 403:auto, 404:ifthen
 (0 1) 403 STOP
   Origs: 402:auto
-  Dests: 
+  Dests: :stop
 (0 2) 404 PRINT
   Origs: 402:ifthen
   Dests: 405:auto
@@ -193,7 +193,7 @@ Halstead complexity:
   Dests: 
 (0 1) 530 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

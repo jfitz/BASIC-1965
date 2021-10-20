@@ -20,7 +20,7 @@ Halstead complexity:
  time: 6.668
 
 (0 1) 10 REM THIS PROGRAM CONVERTS GIVEN RECTANGULAR
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM COORDINATES INTO POLAR COORDINATES
   Origs: 10:auto
@@ -132,7 +132,7 @@ Halstead complexity:
   Dests: 380:auto, 390:ifthen
 (0 1) 380 STOP
   Origs: 370:auto
-  Dests: 
+  Dests: :stop
 (0 2) 390 PRINT
   Origs: 370:ifthen
   Dests: 400:auto
@@ -141,7 +141,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 410 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

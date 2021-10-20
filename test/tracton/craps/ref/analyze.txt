@@ -20,7 +20,7 @@ Halstead complexity:
  time: 4.450
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THE GAME OF CRAPS
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 
    Unknown statement 'RANDOMIZE'
@@ -144,7 +144,7 @@ Halstead complexity:
   Dests: 390:auto, 400:ifthen
 (0 1) 390 STOP
   Origs: 380:auto
-  Dests: 
+  Dests: :stop
 (0 2) 400 PRINT
   Origs: 380:ifthen
   Dests: 410:auto
@@ -171,7 +171,7 @@ Halstead complexity:
   Dests: 
 (0 1) 480 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

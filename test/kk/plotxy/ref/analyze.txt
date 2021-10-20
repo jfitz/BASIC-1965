@@ -26,7 +26,7 @@ FNG(_) (0 5) 105 DEF FNG(X) = LOG(X) / LOG(10)
   Origs: 282:function
   Dests: 
 (3 4) 110 READ A, B, S
-  Origs: 
+  Origs: :start
   Dests: 120:auto
 (3 4) 120 READ C, D, N
   Origs: 110:auto
@@ -42,7 +42,7 @@ FNG(_) (0 5) 105 DEF FNG(X) = LOG(X) / LOG(10)
   Dests: 160:auto
 (0 1) 160 STOP
   Origs: 150:auto
-  Dests: 
+  Dests: :stop
 FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
   Origs: 280:function, 284:function
   Dests: 
@@ -126,7 +126,7 @@ FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
   Dests: 360:auto
 (0 1) 360 END
   Origs: 350:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

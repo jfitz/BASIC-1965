@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.278
 
 (0 4) 10 PRINT " X", "EXP(X)", "LOG(X)"
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (1 4) 20 FOR X = 1 TO 3.5 STEP 0.5
   Origs: 10:auto
@@ -33,7 +33,7 @@ Halstead complexity:
   Dests: 99:auto
 (0 1) 99 END
   Origs: 40:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

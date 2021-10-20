@@ -20,7 +20,7 @@ Halstead complexity:
  time: 3.306
 
 (0 1) 10 REM THIS PROGRAM COMPUTES N EQUALLY SPACED
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM POINTS ON THE CIRCUMFERENCE OF A CIRCLE
   Origs: 10:auto
@@ -93,7 +93,7 @@ Halstead complexity:
   Dests: 250:auto, 260:ifthen
 (0 1) 250 STOP
   Origs: 240:auto
-  Dests: 
+  Dests: :stop
 (0 2) 260 PRINT
   Origs: 240:ifthen
   Dests: 270:auto
@@ -102,7 +102,7 @@ Halstead complexity:
   Dests: 30:goto
 (0 1) 280 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

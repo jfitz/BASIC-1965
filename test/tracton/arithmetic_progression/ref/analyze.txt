@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.996
 
 (0 1) 10 REM THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 2) 20 PRINT "FIRST TERM = ";
   Origs: 10:auto, 300:goto
@@ -102,13 +102,13 @@ Halstead complexity:
   Dests: 290:auto, 290:ifthen
 (0 1) 290 STOP
   Origs: 270:auto, 270:ifthen
-  Dests: 
+  Dests: :stop
 (0 3) 300 GOTO 20
   Origs: 
   Dests: 20:goto
 (0 1) 310 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

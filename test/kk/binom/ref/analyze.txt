@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.610
 
 (2 3) 10 READ N, I
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 3) 20 LET B = 1
   Origs: 10:auto
@@ -39,7 +39,7 @@ Halstead complexity:
   Dests: 70:auto
 (0 1) 70 STOP
   Origs: 60:auto
-  Dests: 
+  Dests: :stop
 (0 2) 90 DATA 10, 4
   Origs: 
   Dests: 98:auto
@@ -48,7 +48,7 @@ Halstead complexity:
   Dests: 
 (0 1) 100 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

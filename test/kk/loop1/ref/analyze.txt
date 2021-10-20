@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.015
 
 (1 3) 10 FOR I = 1 TO 1000
-  Origs: 
+  Origs: :start
   Dests: 20:fornext, 30:fornext
 (0 2) 20 PRINT I
   Origs: 10:fornext
@@ -30,7 +30,7 @@ Halstead complexity:
   Dests: 40:auto
 (0 1) 40 END
   Origs: 30:auto
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

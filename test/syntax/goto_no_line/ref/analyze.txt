@@ -1,2 +1,42 @@
-Line number 100 not found in line 80
+Statistics:
+
+Number of lines: 5
+Number of valid statements: 4
+Number of comments: 1
+Number of executable statements: 3
+
+Complexity:
+
+Comment density: 0.250
+Comprehension effort: 8
+McCabe complexity: 1
+Halstead complexity:
+ length: 4
+ volume: 5.545
+ difficulty: 0.500
+ effort: 2.773
+ language: 22.181
+ intelligence: 11.090
+ time: 0.003
+
+(0 1) 10 REM TEST TARGET LINE NUMBER PRECHECK
+  Origs: :start
+  Dests: 20:auto
+(0 2) 20 PRINT "START PROGRAM"
+  Origs: 10:auto
+  Dests: 80:auto
+(0 2) 80 GOTO 100
+   Line number 100 not found
+  Origs: 20:auto
+  Dests: 100:goto
+(0 2) 90 PRINT "END PROGRAM"
+  Origs: 
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 90:auto
+  Dests: :stop
+
+Unreachable code:
+
+90: PRINT "END PROGRAM"
 

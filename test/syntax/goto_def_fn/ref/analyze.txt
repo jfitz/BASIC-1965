@@ -20,10 +20,9 @@ Halstead complexity:
  time: 0.061
 
 (0 1) 10 REM TEST TARGET LINE NUMBER PRECHECK
-  Origs: 
+  Origs: :start
   Dests: 30:auto
 FNA(_) (0 3) 20 DEF FNA(T) = T * 4
-   Function already defined for FNA(_)
   Origs: 40:goto
   Dests: 
 (0 2) 30 PRINT "START PROGRAM"
@@ -37,10 +36,10 @@ FNA(_) (0 3) 20 DEF FNA(T) = T * 4
   Dests: 60:auto
 (0 1) 60 STOP
   Origs: 50:auto
-  Dests: 
+  Dests: :stop
 (0 1) 99 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

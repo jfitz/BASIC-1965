@@ -20,7 +20,7 @@ Halstead complexity:
  time: 1.259
 
 (0 1) 10 REM THE COMPUTER CHOOSES A NUMBER FROM
-  Origs: 
+  Origs: :start
   Dests: 20:auto
 (0 1) 20 REM 1 TO 100 AT RANDOM, THE OBJECT OF
   Origs: 10:auto
@@ -93,7 +93,7 @@ Halstead complexity:
   Dests: 250:auto, 260:ifthen
 (0 1) 250 STOP
   Origs: 240:auto
-  Dests: 
+  Dests: :stop
 (0 2) 260 PRINT
   Origs: 240:ifthen
   Dests: 270:auto
@@ -114,7 +114,7 @@ Halstead complexity:
   Dests: 120:goto
 (0 1) 320 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 

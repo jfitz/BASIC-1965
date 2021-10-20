@@ -20,7 +20,7 @@ Halstead complexity:
  time: 0.674
 
 (0 3) 100 LET X = 5
-  Origs: 
+  Origs: :start
   Dests: 110:auto
 (0 2) 110 GOSUB 500
   Origs: 100:auto
@@ -39,7 +39,7 @@ Halstead complexity:
   Dests: 160:auto, 500:gosub
 (0 1) 160 STOP
   Origs: 150:auto
-  Dests: 
+  Dests: :stop
 (0 0) 170 
   Origs: 
   Dests: 500:auto
@@ -60,7 +60,7 @@ Halstead complexity:
   Dests: 
 (0 1) 550 END
   Origs: 
-  Dests: 
+  Dests: :stop
 
 Unreachable code:
 
