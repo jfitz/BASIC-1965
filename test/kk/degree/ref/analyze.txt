@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 7
+Number of comments: 0
+Number of executable statements: 6
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 19
+McCabe complexity: 2
+Halstead complexity:
+ length: 17
+ volume: 48.165
+ difficulty: 3.500
+ effort: 168.576
+ language: 3.932
+ intelligence: 13.761
+ time: 0.156
+
+(0 2) 100 PRINT "FAHRENHEIT";
+  Origs: :start, 150:goto
+  Dests: 110:auto
+(1 2) 110 INPUT F
+  Origs: 100:auto
+  Dests: 120:auto
+(0 6) 120 LET C = (F - 32) * 5 / 9
+  Origs: 110:auto
+  Dests: 130:auto
+(0 3) 130 PRINT "CENTIGRADE:" C
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 PRINT
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 GOTO 100
+  Origs: 140:auto
+  Dests: 100:goto
+(0 1) 160 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
