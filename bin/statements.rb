@@ -1640,18 +1640,10 @@ class GosubStatement < AbstractStatement
   def execute_core(interpreter)
     interpreter.push_return(interpreter.next_line_stmt_mod)
 
-    unless @dest_line_stmt_mod.nil?
-      interpreter.next_line_stmt_mod = @dest_line_stmt_mod
-    end
+    raise(BASICSyntaxError, 'Line number not found') if
+      @dest_line_stmt_mod.nil?
 
-    if @dest_line_stmt_mod.nil? && !@dest_line.nil?
-      mod = interpreter.statement_start_index(@dest_line)
-
-      raise(BASICSyntaxError, 'Line number not found') if mod.nil?
-
-      interpreter.next_line_stmt_mod =
-        LineStmtMod.new(@dest_line, 0, mod)
-    end
+    interpreter.next_line_stmt_mod = @dest_line_stmt_mod
   end
 end
 
@@ -1727,18 +1719,10 @@ class GotoStatement < AbstractStatement
   end
 
   def execute_core(interpreter)
-    unless @dest_line_stmt_mod.nil?
-      interpreter.next_line_stmt_mod = @dest_line_stmt_mod
-    end
+    raise(BASICSyntaxError, 'Line number not found') if
+      @dest_line_stmt_mod.nil?
 
-    if @dest_line_stmt_mod.nil? && !@dest_line.nil?
-      mod = interpreter.statement_start_index(@dest_line)
-
-      raise(BASICSyntaxError, 'Line number not found') if mod.nil?
-
-      interpreter.next_line_stmt_mod =
-        LineStmtMod.new(@dest_line, 0, mod)
-    end
+    interpreter.next_line_stmt_mod = @dest_line_stmt_mod
   end
 end
 
@@ -1771,37 +1755,6 @@ class AbstractIfStatement < AbstractStatement
     end
   end
 
-  def execute_core(interpreter)
-    values = @expression.evaluate(interpreter)
-
-    raise(BASICExpressionError, 'Expression error') unless
-      values.size == 1
-
-    result = values[0]
-
-    raise(BASICExpressionError, 'Expression error') unless
-      result.class.to_s == 'BooleanConstant'
-
-    if result.value
-      unless @dest_line_stmt_mod.nil?
-        interpreter.next_line_stmt_mod = @dest_line_stmt_mod
-      end
-
-      if @dest_line_stmt_mod.nil? && !@dest_line.nil?
-        mod = interpreter.statement_start_index(@dest_line)
-
-        raise(BASICSyntaxError, 'Line number not found') if mod.nil?
-
-        interpreter.next_line_stmt_mod =
-          LineStmtMod.new(@dest_line, 0, mod)
-      end
-    end
-
-    s = ' ' + @expression.to_s + ': ' + result.to_s
-    io = interpreter.trace_out
-    io.trace_output(s)
-  end
-
   def dump
     lines = []
 
@@ -1825,6 +1778,29 @@ class AbstractIfStatement < AbstractStatement
       @dest_line.nil?
 
     transfer_refs
+  end
+
+  def execute_core(interpreter)
+    values = @expression.evaluate(interpreter)
+
+    raise(BASICExpressionError, 'Expression error') unless
+      values.size == 1
+
+    result = values[0]
+
+    raise(BASICExpressionError, 'Expression error') unless
+      result.class.to_s == 'BooleanConstant'
+
+    if result.value
+      raise(BASICSyntaxError, 'Line number not found') if
+        @dest_line_stmt_mod.nil?
+
+      interpreter.next_line_stmt_mod = @dest_line_stmt_mod
+    end
+
+    s = ' ' + @expression.to_s + ': ' + result.to_s
+    io = interpreter.trace_out
+    io.trace_output(s)
   end
 end
 
