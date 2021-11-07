@@ -1,0 +1,24 @@
+10: REM TEST FRACTIONAL DIMENSIONS
+20: LET A(2.3) = 2
+ A(2) = 2
+30: LET A(3.7) = 3
+ A(3) = 3
+40: PRINT "A(2):"; A(2)
+A(2):
+ A(2): 2
+ 2
+50: PRINT "A(2.3):"; A(2.3)
+A(2.3):
+ A(2): 2
+ 2
+60: PRINT "A(3):"; A(3)
+A(3):
+ A(3): 3
+ 3
+70: PRINT "A(3.7):"; A(3.7)
+A(3.7):
+ A(3): 3
+ 3
+99: END
+STOP in line 99
+

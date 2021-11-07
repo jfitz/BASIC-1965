@@ -205,6 +205,7 @@ Halstead complexity:
   Dests: 580:auto
 (0 2) 580 GOSUB 630
   Origs: 570:auto, 625:gosub
+  Inconsistent GOSUB origins
   Dests: 590:auto, 630:gosub
 (0 2) 590 GOSUB 730
   Origs: 580:auto
@@ -223,6 +224,7 @@ Halstead complexity:
   Dests: 580:gosub, 630:auto
 (1 4) 630 IF D > 1E04 THEN 660
   Origs: 580:gosub, 625:auto
+  Inconsistent GOSUB origins
   Dests: 640:auto, 660:ifthen
 (0 3) 640 LET L = 1
   Origs: 630:auto

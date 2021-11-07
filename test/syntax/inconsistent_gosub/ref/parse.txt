@@ -1,0 +1,20 @@
+10 PRINT "HELLO"
+ TextConstant:"HELLO"
+ CarriageControl:NL
+20 GOSUB 200
+ LineNumber:200
+30 LET A = 6
+ Variable:A -> _
+ NumericConstant:6
+ AssignmentOperator:= =_ -> _
+200 PRINT "START SUBROUTINE"
+ TextConstant:"START SUBROUTINE"
+ CarriageControl:NL
+280 PRINT "END SUBROUTINE"
+ TextConstant:"END SUBROUTINE"
+ CarriageControl:NL
+290 RETURN
+ 
+999 END
+ 
+

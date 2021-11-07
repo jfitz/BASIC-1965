@@ -871,6 +871,15 @@ class Program
       origs = statement_origins.sort.uniq.map(&:to_s).join(', ')
       texts << '  Origs: ' + origs
 
+      # check all origins are consistent for GOSUB
+      any_gosub = false
+      any_other = false
+      statement_origins.each do |origin|
+        any_gosub = true if origin.type == :gosub
+        any_other = true if origin.type != :gosub
+      end
+      texts << '  Inconsistent GOSUB origins' if any_gosub && any_other
+
       # print destinations from this line
       statement_dests = destinations[line_number]
       statement_dests = [] if statement_dests.nil?

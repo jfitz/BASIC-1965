@@ -120,6 +120,7 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Dests: 370:auto
 (0 1) 370 REM ANGLE-SIDE-ANGLE ROUTINE
   Origs: 240:gosub, 270:gosub, 340:gosub, 365:auto
+  Inconsistent GOSUB origins
   Dests: 380:auto
 (0 7) 380 LET Z = X * FNS(A) / S
   Origs: 370:auto
