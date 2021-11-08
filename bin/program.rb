@@ -1036,7 +1036,7 @@ class Program
     ]
   end
 
-  def build_statement_destinations_line(line_number_stmt, statement)
+  def build_statement_destinations_line(line_number, statement)
     transfer_ref_lines = []
 
     transfer_ref_line_stmts = statement.gotos(@user_function_start_lines)
@@ -1045,7 +1045,7 @@ class Program
     transfer_ref_line_stmts.each do |goto|
       # only transfers that have a different line number
       # we don't care about intra-line transfers
-      if goto.line_number != line_number_stmt.line_number
+      if goto.line_number != line_number
         transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
       end
     end
@@ -1058,10 +1058,8 @@ class Program
 
     dests = []
 
-    statements.each_with_index do |statement, stmt|
-      line_number_stmt = LineStmt.new(line_number, stmt)
-
-      dests += build_statement_destinations_line(line_number_stmt, statement)
+    statements.each do |statement|
+      dests += build_statement_destinations_line(line_number, statement)
     end
 
     dests
