@@ -330,6 +330,23 @@ class Line
     text = ' ' + text unless text.empty?
     Line.new(text, @statements, tokens.flatten, @comment)
   end
+
+  def destinations_line(line_number, user_function_start_lines)
+    dests = []
+
+    @statements.each do |statement|
+      dest_xfers =
+        statement.destinations_line(line_number, user_function_start_lines)
+
+      dest_xfers.each do |dest_xfer|
+        # only transfers that have a different line number
+        # we don't care about intra-line transfers
+        dests << dest_xfer if dest_xfer.line_number != line_number
+      end
+    end
+
+    dests
+  end
 end
 
 # line reference for cross reference
@@ -1036,42 +1053,15 @@ class Program
     ]
   end
 
-  def build_statement_destinations_line(line_number, statement)
-    transfer_ref_lines = []
-
-    transfer_ref_line_stmts = statement.gotos(@user_function_start_lines)
-
-    # convert TransferRefLineStmt objects to TransferRefLine (no Stmt) objects
-    transfer_ref_line_stmts.each do |goto|
-      # only transfers that have a different line number
-      # we don't care about intra-line transfers
-      if goto.line_number != line_number
-        transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
-      end
-    end
-
-    transfer_ref_lines
-  end
-
-  def build_line_destinations_line(line, line_number)
-    statements = line.statements
-
-    dests = []
-
-    statements.each do |statement|
-      dests += build_statement_destinations_line(line_number, statement)
-    end
-
-    dests
-  end
-
   def build_destinations_line
     # build list of "gotos"
     dests = {}
 
     @lines.keys.each do |line_number|
       line = @lines[line_number]
-      dests[line_number] = build_line_destinations_line(line, line_number)
+
+      dests[line_number] =
+        line.destinations_line(line_number, @user_function_start_lines)
     end
 
     dests
