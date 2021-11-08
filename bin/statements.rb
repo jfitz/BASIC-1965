@@ -413,6 +413,19 @@ class AbstractStatement
     transfer_ref_lines
   end
 
+  def destinations_stmt(user_function_start_lines)
+    line_stmts = []
+
+    transfer_ref_line_stmts = gotos(user_function_start_lines)
+
+    # convert TransferRefLineStmt objects to LineStmt objects
+    transfer_ref_line_stmts.each do |goto|
+      line_stmts << LineStmt.new(goto.line_number, goto.statement)
+    end
+
+    line_stmts
+  end
+
   def print_errors(console_io)
     @errors.each { |error| console_io.print_line(' ' + error) }
   end

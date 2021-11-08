@@ -347,6 +347,21 @@ class Line
 
     dests
   end
+
+  def destinations_stmt(line_number, user_function_start_lines)
+    dests = {}
+
+    statements.each_with_index do |statement, stmt|
+      line_number_stmt = LineStmt.new(line_number, stmt)
+
+      goto_line_stmts =
+        statement.destinations_stmt(user_function_start_lines)
+
+      dests[line_number_stmt] = goto_line_stmts
+    end
+
+    dests
+  end
 end
 
 # line reference for cross reference
@@ -1067,43 +1082,15 @@ class Program
     dests
   end
 
-  def build_statement_destinations_stmt(line_number_stmt, statement)
-    line_stmts = []
-
-    transfer_ref_line_stmts = statement.gotos(@user_function_start_lines)
-
-    # convert TransferRefLineStmt objects to LineStmt objects
-    transfer_ref_line_stmts.each do |goto|
-      line_stmts << LineStmt.new(goto.line_number, goto.statement)
-    end
-
-    line_stmts
-  end
-
-  def build_line_destinations_stmt(line, line_number)
-    statements = line.statements
-
-    gotos = {}
-
-    statements.each_with_index do |statement, stmt|
-      line_number_stmt = LineStmt.new(line_number, stmt)
-
-      goto_line_stmts =
-        build_statement_destinations_stmt(line_number_stmt, statement)
-
-      gotos[line_number_stmt] = goto_line_stmts
-    end
-
-    gotos
-  end
-
   def build_destinations_stmt
     # build list of "gotos"
     gotos = {}
 
     @lines.keys.each do |line_number|
       line = @lines[line_number]
-      line_destinations = build_line_destinations_stmt(line, line_number)
+
+      line_destinations =
+        line.destinations_stmt(line_number, @user_function_start_lines)
 
       line_destinations.each do |line_number_stmt, dests|
         gotos[line_number_stmt] = dests
