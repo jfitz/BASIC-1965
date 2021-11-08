@@ -1,0 +1,101 @@
+Statistics:
+
+Number of lines: 25
+Number of valid statements: 23
+Number of comments: 2
+Number of executable statements: 22
+
+Complexity:
+
+Comment density: 0.087
+Comprehension effort: 47
+McCabe complexity: 2
+Halstead complexity:
+ length: 34
+ volume: 100.111
+ difficulty: 4.286
+ effort: 429.047
+ language: 5.450
+ intelligence: 23.359
+ time: 0.397
+
+(0 1) 10 REM TEST FOR PRECISION OPTION
+  Origs: :start
+  Dests: 100:auto
+(0 2) 100 PRINT "VALUES WITH PRECISION 7"
+  Origs: 10:auto
+  Dests: 110:auto
+(0 2) 110 OPTION PRECISION 7
+  Origs: 100:auto
+  Dests: 120:auto
+(0 2) 120 GOSUB 900
+  Origs: 110:auto
+  Dests: 130:auto, 900:gosub
+(0 2) 130 PRINT "VALUES WITH PRECISION 16"
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 OPTION PRECISION 16
+  Origs: 130:auto
+  Dests: 150:auto
+(0 2) 150 GOSUB 900
+  Origs: 140:auto
+  Dests: 160:auto, 900:gosub
+(0 2) 160 PRINT "VALUES WITH PRECISION INFINITE"
+  Origs: 150:auto
+  Dests: 170:auto
+(0 2) 170 OPTION PRECISION "INFINITE"
+  Origs: 160:auto
+  Dests: 180:auto
+(0 2) 180 GOSUB 900
+  Origs: 170:auto
+  Dests: 200:auto, 900:gosub
+(0 2) 200 PRINT "VALUES WITH PRECISION 16"
+  Origs: 180:auto
+  Dests: 210:auto
+(0 1) 210 OPTION PRECISION
+  Origs: 200:auto
+  Dests: 220:auto
+(0 2) 220 GOSUB 900
+  Origs: 210:auto
+  Dests: 230:auto, 900:gosub
+(0 2) 230 PRINT "VALUES WITH PRECISION 7"
+  Origs: 220:auto
+  Dests: 240:auto
+(0 1) 240 OPTION PRECISION
+  Origs: 230:auto
+  Dests: 250:auto
+(0 2) 250 GOSUB 900
+  Origs: 240:auto
+  Dests: 899:auto, 900:gosub
+(0 1) 899 STOP
+  Origs: 250:auto
+  Dests: :stop
+(0 1) 900 REM SUBROUTINE PRINT
+  Origs: 120:gosub, 150:gosub, 180:gosub, 220:gosub, 250:gosub
+  Dests: 920:auto
+(0 4) 920 LET A = 1 / 7
+  Origs: 900:auto
+  Dests: 930:auto
+(1 3) 930 FOR I = 1 TO 12
+  Origs: 920:auto
+  Dests: 940:fornext, 960:fornext
+(0 2) 940 PRINT A
+  Origs: 930:fornext
+  Dests: 950:auto
+(0 4) 950 LET A = A / 10
+  Origs: 940:auto
+  Dests: 960:auto
+(0 1) 960 NEXT I
+  Origs: 930:fornext, 950:auto
+  Dests: 990:auto
+(0 1) 990 RETURN
+  Origs: 960:auto
+  Dests: 
+(0 1) 999 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

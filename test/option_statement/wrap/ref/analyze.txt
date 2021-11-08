@@ -1,0 +1,59 @@
+Statistics:
+
+Number of lines: 11
+Number of valid statements: 10
+Number of comments: 1
+Number of executable statements: 8
+
+Complexity:
+
+Comment density: 0.100
+Comprehension effort: 26
+McCabe complexity: 2
+Halstead complexity:
+ length: 42
+ volume: 113.738
+ difficulty: 4.000
+ effort: 454.952
+ language: 7.109
+ intelligence: 28.435
+ time: 0.421
+
+(0 1) 10 REM TEST THE OPTION STATEMENT
+  Origs: :start
+  Dests: 20:auto
+(0 2) 20 OPTION BASE 1
+  Origs: 10:auto
+  Dests: 30:auto
+(0 2) 30 DIM A(5)
+  Origs: 20:auto
+  Dests: 40:auto
+(1 2) 40 ARR READ A
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 ARR PRINT A
+  Origs: 40:auto
+  Dests: 100:auto
+(0 2) 100 OPTION WRAP TRUE
+  Origs: 50:auto
+  Dests: 110:auto
+(0 5) 110 PRINT "LAST: "; A(0); " FIRST: "; A(6)
+  Origs: 100:auto
+  Dests: 120:auto
+(0 2) 120 OPTION WRAP FALSE
+  Origs: 110:auto
+  Dests: 130:auto
+(0 5) 130 PRINT "LAST: "; A(0); " FIRST: "; A(6)
+  Origs: 120:auto
+  Dests: 190:auto
+(0 2) 190 DATA 1, 2, 3, 4, 5
+  Origs: 130:auto
+  Dests: 199:auto
+(0 1) 199 END
+  Origs: 190:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

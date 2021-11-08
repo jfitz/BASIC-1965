@@ -1455,14 +1455,14 @@ class ForStatement < AbstractStatement
 
     unless @loopstart_line_stmt_mod.nil?
       line_number = @loopstart_line_stmt_mod.line_number
-      statement = @loopstart_line_stmt_mod.statement
-      transfer_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
+      stmt = @loopstart_line_stmt_mod.statement
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :fornext)
     end
 
     unless @nextstmt_line_stmt.nil?
       line_number = @nextstmt_line_stmt.line_number
-      statement = @loopstart_line_stmt_mod.statement
-      transfer_refs << TransferRefLineStmt.new(line_number, statement, :fornext)
+      stmt = @loopstart_line_stmt_mod.statement
+      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :fornext)
     end
 
     transfer_refs

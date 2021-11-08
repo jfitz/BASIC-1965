@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 10
+McCabe complexity: 1
+Halstead complexity:
+ length: 2
+ volume: 1.386
+ difficulty: 0.000
+ effort: 0.000
+ language: 0.000
+ intelligence: 0.000
+ time: 0.000
+
+(0 1) 10 REM TEST OF REQUIRE-INIT
+  Origs: :start
+  Dests: 20:auto
+(0 2) 20 OPTION REQUIRE_INITIALIZED FALSE
+  Origs: 10:auto
+  Dests: 30:auto
+(0 2) 30 PRINT A
+  Origs: 20:auto
+  Dests: 40:auto
+(0 2) 40 OPTION REQUIRE_INITIALIZED TRUE
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 PRINT B
+  Origs: 40:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 50:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

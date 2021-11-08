@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 6
+Number of comments: 1
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.167
+Comprehension effort: 26
+McCabe complexity: 9
+Halstead complexity:
+ length: 36
+ volume: 107.846
+ difficulty: 1.111
+ effort: 119.829
+ language: 87.356
+ intelligence: 97.062
+ time: 0.111
+
+(0 1) 10 REM TEST OPTION PROMPT_COUNT
+  Origs: :start
+  Dests: 110:auto
+(4 5) 110 INPUT "ENTER 4 NUMBERS: "; A1, A2, A3, A4
+  Origs: 10:auto
+  Dests: 120:auto
+(0 6) 120 PRINT "YOU ENTERED: "; A1; A2; A3; A4
+  Origs: 110:auto
+  Dests: 200:auto
+(0 2) 200 OPTION PROMPT_COUNT TRUE
+  Origs: 120:auto
+  Dests: 210:auto
+(4 5) 210 INPUT "ENTER 4 NUMBERS: "; B1, B2, B3, B4
+  Origs: 200:auto
+  Dests: 220:auto
+(0 6) 220 PRINT "YOU ENTERED: "; B1; B2; B3; B4
+  Origs: 210:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 220:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

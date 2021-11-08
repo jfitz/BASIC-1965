@@ -1,0 +1,68 @@
+Statistics:
+
+Number of lines: 14
+Number of valid statements: 13
+Number of comments: 1
+Number of executable statements: 12
+
+Complexity:
+
+Comment density: 0.077
+Comprehension effort: 29
+McCabe complexity: 4
+Halstead complexity:
+ length: 41
+ volume: 101.881
+ difficulty: 8.929
+ effort: 909.653
+ language: 1.278
+ intelligence: 11.411
+ time: 0.842
+
+(0 1) 10 REM TEST THE OPTION STATEMENT
+  Origs: :start
+  Dests: 20:auto
+(0 2) 20 DIM A(10)
+  Origs: 10:auto
+  Dests: 30:auto
+(1 3) 30 FOR I = 1 TO 10
+  Origs: 20:auto
+  Dests: 40:fornext, 50:fornext
+(0 3) 40 LET A(I) = I
+  Origs: 30:fornext
+  Dests: 50:auto
+(0 1) 50 NEXT I
+  Origs: 30:fornext, 40:auto
+  Dests: 100:auto
+(0 2) 100 OPTION BASE 0
+  Origs: 50:auto
+  Dests: 110:auto
+(1 3) 110 FOR I = 0 TO 10
+  Origs: 100:auto
+  Dests: 120:fornext, 130:fornext
+(0 3) 120 PRINT I; A(I)
+  Origs: 110:fornext
+  Dests: 130:auto
+(0 1) 130 NEXT I
+  Origs: 110:fornext, 120:auto
+  Dests: 200:auto
+(0 2) 200 OPTION BASE 1
+  Origs: 130:auto
+  Dests: 210:auto
+(1 3) 210 FOR I = 0 TO 10
+  Origs: 200:auto
+  Dests: 220:fornext, 230:fornext
+(0 3) 220 PRINT I; A(I)
+  Origs: 210:fornext
+  Dests: 230:auto
+(0 1) 230 NEXT I
+  Origs: 210:fornext, 220:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 230:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

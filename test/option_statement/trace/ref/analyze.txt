@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 7
+Number of valid statements: 6
+Number of comments: 1
+Number of executable statements: 4
+
+Complexity:
+
+Comment density: 0.167
+Comprehension effort: 17
+McCabe complexity: 4
+Halstead complexity:
+ length: 18
+ volume: 44.728
+ difficulty: 1.100
+ effort: 49.201
+ language: 36.966
+ intelligence: 40.662
+ time: 0.046
+
+(0 1) 10 REM TEST THE OPTION STATEMENT
+  Origs: :start
+  Dests: 20:auto
+(0 2) 20 OPTION TRACE TRUE
+  Origs: 10:auto
+  Dests: 30:auto
+(3 4) 30 READ A, B, C
+  Origs: 20:auto
+  Dests: 40:auto
+(0 4) 40 PRINT A, B, C
+  Origs: 30:auto
+  Dests: 50:auto
+(0 3) 50 OPTION TRACE 1 = 0
+  Origs: 40:auto
+  Dests: 90:auto
+(0 2) 90 DATA 1, 2, 3
+  Origs: 50:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 90:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
