@@ -387,27 +387,25 @@ class AbstractStatement
     []
   end
 
-  def gotos(_)
-    transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
-
-    transfer_refs
+  def destinations(_)
+    []
   end
 
   def destinations_line(line_number, user_function_start_lines)
     transfer_ref_lines = []
 
-    transfer_ref_line_stmts = gotos(user_function_start_lines)
-
     # convert TransferRefLineStmt objects to TransferRefLine (no Stmt) objects
+    transfer_ref_line_stmts = destinations(user_function_start_lines)
+
     transfer_ref_line_stmts.each do |goto|
       transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
+    end
+
+    # convert auto-next to TransferRefLine
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+
+      transfer_ref_lines << TransferRefLine.new(line_number, :auto)
     end
 
     transfer_ref_lines
@@ -416,13 +414,21 @@ class AbstractStatement
   def destinations_stmt(user_function_start_lines)
     line_stmts = []
 
-    transfer_ref_line_stmts = gotos(user_function_start_lines)
-
     # convert TransferRefLineStmt objects to LineStmt objects
+    transfer_ref_line_stmts = destinations(user_function_start_lines)
+
     transfer_ref_line_stmts.each do |goto|
       line_stmts << LineStmt.new(goto.line_number, goto.statement)
     end
 
+    # convert auto-next to LineStmt object
+    if @autonext_line_stmt
+      line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
+
+      line_stmts << LineStmt.new(line_number, stmt)
+    end
+    
     line_stmts
   end
 
@@ -1258,15 +1264,8 @@ class EndStatement < AbstractStatement
     @program_errors << 'Statements after END' unless next_line_stmt.nil?
   end
 
-  def gotos(_)
+  def destinations(_)
     transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
 
     empty_line_number = LineNumber.new(nil)
     transfer_refs << TransferRefLine.new(empty_line_number, :stop)
@@ -1456,15 +1455,8 @@ class ForStatement < AbstractStatement
     lines
   end
 
-  def gotos(_)
+  def destinations(_)
     transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
 
     unless @loopstart_line_stmt_mod.nil?
       line_number = @loopstart_line_stmt_mod.line_number
@@ -1648,15 +1640,8 @@ class GosubStatement < AbstractStatement
     [@dest_line.dump]
   end
 
-  def gotos(_)
+  def destinations(_)
     transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
 
     transfer_refs << TransferRefLineStmt.new(@dest_line, 0, :gosub)
 
@@ -1729,15 +1714,8 @@ class GotoStatement < AbstractStatement
     [@dest_line.dump]
   end
 
-  def gotos(_)
+  def destinations(_)
     transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
 
     transfer_refs << TransferRefLineStmt.new(@dest_line, 0, :goto)
 
@@ -1790,15 +1768,8 @@ class AbstractIfStatement < AbstractStatement
     lines
   end
 
-  def gotos(_)
+  def destinations(_)
     transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
 
     transfer_refs << TransferRefLineStmt.new(@dest_line, 0, :ifthen) unless
       @dest_line.nil?
@@ -1969,15 +1940,8 @@ class AbstractLetStatement < AbstractStatement
     lines
   end
 
-  def gotos(user_function_start_lines)
+  def destinations(user_function_start_lines)
     transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
 
     unless @assignment.nil?
       transfer_refs += @assignment.destinations(user_function_start_lines)
@@ -2367,15 +2331,8 @@ class StopStatement < AbstractStatement
     ['']
   end
 
-  def gotos(_)
+  def destinations(_)
     transfer_refs = []
-
-    if @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :auto)
-    end
 
     empty_line_number = LineNumber.new(nil)
     transfer_refs << TransferRefLine.new(empty_line_number, :stop)
