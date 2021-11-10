@@ -335,8 +335,12 @@ class Line
     dests = []
 
     @statements.each do |statement|
+      # built-in destinations
       dest_xfers =
         statement.destinations_line(line_number, user_function_start_lines)
+
+      # auto-line destination
+      dest_xfers += statement.destinations_line_auto
 
       dest_xfers.each do |dest_xfer|
         # only transfers that have a different line number

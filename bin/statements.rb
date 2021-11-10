@@ -401,6 +401,12 @@ class AbstractStatement
       transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
     end
 
+    transfer_ref_lines
+  end
+
+  def destinations_line_auto
+    transfer_ref_lines = []
+
     # convert auto-next to TransferRefLine
     if @autonext_line_stmt
       line_number = @autonext_line_stmt.line_number
