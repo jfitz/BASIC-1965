@@ -180,6 +180,8 @@ class Line
   attr_reader :statements
   attr_reader :tokens
   attr_reader :warnings
+  attr_accessor :origins
+  attr_accessor :destinations
 
   def initialize(text, statements, tokens, comment)
     @text = text
@@ -872,26 +874,18 @@ class Program
 
     texts = []
 
-    destinations = build_destinations_line
-
-    origins = {}
-
-    destinations.each do |orig, dests|
-      dests.each do |dest|
-        # create a dict if we need it
-        origins[dest.line_number] = [] unless origins.key?(dest.line_number)
-
-        # add transfer to origin table
-        origins[dest.line_number] << TransferRefLine.new(orig, dest.type)
-      end
-    end
+    build_line_destinations
+    build_line_origins
 
     # add marker for entry point (first active line)
     first_line_number_stmt_mod = find_first_statement
     line_number = first_line_number_stmt_mod.line_number
-    origins[line_number] = [] unless origins.key?(line_number)
-    empty_line_number = LineNumber.new(nil)
-    origins[line_number] << TransferRefLine.new(empty_line_number, :start)
+    line = @lines[line_number]
+    unless line.nil?
+      line.origins = [] if line.origins.nil?
+      empty_line_number = LineNumber.new(nil)
+      line.origins << TransferRefLine.new(empty_line_number, :start)
+    end
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
@@ -902,24 +896,24 @@ class Program
       texts += line.analyze_pretty(number)
 
       # print origins to this line
-      statement_origins = origins[line_number]
-      statement_origins = [] if statement_origins.nil?
-      origs = statement_origins.sort.uniq.map(&:to_s).join(', ')
+      line_origins = line.origins
+      line_origins = [] if line_origins.nil?
+      origs = line_origins.sort.uniq.map(&:to_s).join(', ')
       texts << '  Origs: ' + origs
 
       # check all origins are consistent for GOSUB
       any_gosub = false
       any_other = false
-      statement_origins.each do |origin|
+      line_origins.each do |origin|
         any_gosub = true if origin.type == :gosub
         any_other = true if origin.type != :gosub
       end
       texts << '  Inconsistent GOSUB origins' if any_gosub && any_other
 
       # print destinations from this line
-      statement_dests = destinations[line_number]
-      statement_dests = [] if statement_dests.nil?
-      dests = statement_dests.sort.uniq.map(&:to_s).join(', ')
+      line_dests = line.destinations
+      line_dests = [] if line_dests.nil?
+      dests = line_dests.sort.uniq.map(&:to_s).join(', ')
       texts << '  Dests: ' + dests
     end
 
@@ -1072,18 +1066,46 @@ class Program
     ]
   end
 
-  def build_destinations_line
+  def build_line_destinations
     # build list of "gotos"
-    dests = {}
+    @lines.each { |_, line| line.destinations = [] }
 
+    destinations = {}
+
+    # for each line
     @lines.keys.each do |line_number|
       line = @lines[line_number]
 
-      dests[line_number] =
+      # get destinations
+      destinations =
         line.destinations_line(line_number, @user_function_start_lines)
-    end
 
-    dests
+      line.destinations = destinations
+    end
+  end
+
+  def build_line_origins
+    # build list of "come-froms"
+    @lines.each { |_, line| line.origins = [] }
+    
+    origins = {}
+
+    # for each line
+    @lines.each do |line_number, line|
+      # get destinations
+      destinations = line.destinations
+
+      # for each destination
+      destinations.each do |dest|
+        # get its line
+        dest_line = @lines[dest.line_number]
+
+        # add transfer to origin table
+        unless dest_line.nil?
+          dest_line.origins << TransferRefLine.new(line_number, dest.type)
+        end
+      end
+    end
   end
 
   def build_destinations_stmt
