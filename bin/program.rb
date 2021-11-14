@@ -338,16 +338,17 @@ class Line
 
     @statements.each do |statement|
       # built-in destinations
-      dest_xfers =
-        statement.destinations_line(line_number, user_function_start_lines)
+      xfers = statement.destinations(user_function_start_lines)
 
       # auto-line destination
-      dest_xfers += statement.destinations_line_auto
+      xfers += statement.destinations_line_auto
 
-      dest_xfers.each do |dest_xfer|
+      # convert each transfer to a TransferRefLine (no Stmt)
+      xfers.each do |xfer|
         # only transfers that have a different line number
         # we don't care about intra-line transfers
-        dests << dest_xfer if dest_xfer.line_number != line_number
+        dests << TransferRefLine.new(xfer.line_number, xfer.type) if
+          xfer.line_number != line_number
       end
     end
 

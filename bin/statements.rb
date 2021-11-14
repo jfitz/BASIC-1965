@@ -391,19 +391,6 @@ class AbstractStatement
     []
   end
 
-  def destinations_line(line_number, user_function_start_lines)
-    transfer_ref_lines = []
-
-    # convert TransferRefLineStmt objects to TransferRefLine (no Stmt) objects
-    transfer_ref_line_stmts = destinations(user_function_start_lines)
-
-    transfer_ref_line_stmts.each do |goto|
-      transfer_ref_lines << TransferRefLine.new(goto.line_number, goto.type)
-    end
-
-    transfer_ref_lines
-  end
-
   def destinations_line_auto
     transfer_ref_lines = []
 
