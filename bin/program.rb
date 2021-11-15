@@ -333,15 +333,15 @@ class Line
     Line.new(text, @statements, tokens.flatten, @comment)
   end
 
-  def destinations_line(line_number, user_function_start_lines)
+  def transfers_line(line_number, user_function_start_lines)
     dests = []
 
     @statements.each do |statement|
       # built-in destinations
-      xfers = statement.destinations(user_function_start_lines)
+      xfers = statement.transfers(user_function_start_lines)
 
       # auto-line destination
-      xfers += statement.destinations_line_auto
+      xfers += statement.transfers_auto
 
       # convert each transfer to a TransferRefLine (no Stmt)
       xfers.each do |xfer|
@@ -355,16 +355,16 @@ class Line
     dests
   end
 
-  def destinations_stmt(line_number, user_function_start_lines)
+  def line_stmts(line_number, user_function_start_lines)
     dests = {}
 
     @statements.each_with_index do |statement, stmt|
       line_number_stmt = LineStmt.new(line_number, stmt)
 
       dests[line_number_stmt] =
-        statement.destinations_stmt(user_function_start_lines)
+        statement.line_stmts(user_function_start_lines)
 
-      dests[line_number_stmt] += statement.destinations_stmt_auto
+      dests[line_number_stmt] += statement.line_stmts_auto
     end
 
     dests
@@ -1079,7 +1079,7 @@ class Program
 
       # get destinations
       destinations =
-        line.destinations_line(line_number, @user_function_start_lines)
+        line.transfers_line(line_number, @user_function_start_lines)
 
       line.destinations = destinations
     end
@@ -1109,7 +1109,7 @@ class Program
     end
   end
 
-  def build_destinations_stmt
+  def build_line_stmts
     # build list of "gotos"
     destinations = {}
 
@@ -1117,7 +1117,7 @@ class Program
       line = @lines[line_number]
 
       line_destinations =
-        line.destinations_stmt(line_number, @user_function_start_lines)
+        line.line_stmts(line_number, @user_function_start_lines)
 
       line_destinations.each do |line_number_stmt, dests|
         destinations[line_number_stmt] = dests
@@ -1128,7 +1128,7 @@ class Program
   end
 
   def unreachable_code
-    gotos = build_destinations_stmt
+    gotos = build_line_stmts
 
     # assume statements are dead until connected to a live statement
     reachable = {}
