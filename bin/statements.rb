@@ -394,11 +394,12 @@ class AbstractStatement
   def destinations_line_auto
     transfer_ref_lines = []
 
-    # convert auto-next to TransferRefLine
+    # convert auto-next to TransferRefLineStmt
     if @autonext_line_stmt
       line_number = @autonext_line_stmt.line_number
+      stmt = @autonext_line_stmt.statement
 
-      transfer_ref_lines << TransferRefLine.new(line_number, :auto)
+      transfer_ref_lines << TransferRefLineStmt.new(line_number, stmt, :auto)
     end
 
     transfer_ref_lines
@@ -410,9 +411,15 @@ class AbstractStatement
     # convert TransferRefLineStmt objects to LineStmt objects
     transfer_ref_line_stmts = destinations(user_function_start_lines)
 
-    transfer_ref_line_stmts.each do |goto|
-      line_stmts << LineStmt.new(goto.line_number, goto.statement)
+    transfer_ref_line_stmts.each do |xfer|
+      line_stmts << LineStmt.new(xfer.line_number, xfer.statement)
     end
+
+    line_stmts
+  end
+
+  def destinations_stmt_auto
+    line_stmts = []
 
     # convert auto-next to LineStmt object
     if @autonext_line_stmt

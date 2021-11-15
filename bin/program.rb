@@ -358,13 +358,13 @@ class Line
   def destinations_stmt(line_number, user_function_start_lines)
     dests = {}
 
-    statements.each_with_index do |statement, stmt|
+    @statements.each_with_index do |statement, stmt|
       line_number_stmt = LineStmt.new(line_number, stmt)
 
-      goto_line_stmts =
+      dests[line_number_stmt] =
         statement.destinations_stmt(user_function_start_lines)
 
-      dests[line_number_stmt] = goto_line_stmts
+      dests[line_number_stmt] += statement.destinations_stmt_auto
     end
 
     dests
@@ -1111,7 +1111,7 @@ class Program
 
   def build_destinations_stmt
     # build list of "gotos"
-    gotos = {}
+    destinations = {}
 
     @lines.keys.each do |line_number|
       line = @lines[line_number]
@@ -1120,11 +1120,11 @@ class Program
         line.destinations_stmt(line_number, @user_function_start_lines)
 
       line_destinations.each do |line_number_stmt, dests|
-        gotos[line_number_stmt] = dests
+        destinations[line_number_stmt] = dests
       end
     end
 
-    gotos
+    destinations
   end
 
   def unreachable_code
