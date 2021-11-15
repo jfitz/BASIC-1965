@@ -343,7 +343,7 @@ class Line
       # auto-line destination
       xfers += statement.transfers_auto
 
-      # convert each transfer to a TransferRefLine (no Stmt)
+      # convert TransferRefLineStmt objects to TransferRefLine objects
       xfers.each do |xfer|
         # only transfers that have a different line number
         # we don't care about intra-line transfers
@@ -361,10 +361,17 @@ class Line
     @statements.each_with_index do |statement, stmt|
       line_number_stmt = LineStmt.new(line_number, stmt)
 
-      dests[line_number_stmt] =
-        statement.line_stmts(user_function_start_lines)
+      xfers = statement.transfers(user_function_start_lines)
+      xfers += statement.transfers_auto
 
-      dests[line_number_stmt] += statement.line_stmts_auto
+      line_stmts = []
+
+      # convert TransferRefLineStmt objects to LineStmt objects
+      xfers.each do |xfer|
+        line_stmts << LineStmt.new(xfer.line_number, xfer.statement)
+      end
+
+      dests[line_number_stmt] = line_stmts
     end
 
     dests

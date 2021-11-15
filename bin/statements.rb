@@ -405,33 +405,6 @@ class AbstractStatement
     transfer_ref_lines
   end
 
-  def line_stmts(user_function_start_lines)
-    line_stmts = []
-
-    # convert TransferRefLineStmt objects to LineStmt objects
-    transfer_ref_line_stmts = transfers(user_function_start_lines)
-
-    transfer_ref_line_stmts.each do |xfer|
-      line_stmts << LineStmt.new(xfer.line_number, xfer.statement)
-    end
-
-    line_stmts
-  end
-
-  def line_stmts_auto
-    line_stmts = []
-
-    # convert auto-next to LineStmt object
-    if @autonext && @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
-
-      line_stmts << LineStmt.new(line_number, stmt)
-    end
-    
-    line_stmts
-  end
-
   def print_errors(console_io)
     @errors.each { |error| console_io.print_line(' ' + error) }
   end
