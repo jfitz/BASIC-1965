@@ -222,6 +222,8 @@ class AbstractStatement
   attr_reader :comment
   attr_reader :linenums
   attr_reader :autonext
+  attr_reader :transfers
+  attr_reader :transfers_auto
 
   def self.extra_keywords
     []
@@ -278,9 +280,9 @@ class AbstractStatement
     load_file_names(interpreter)
   end
 
-  def set_destinations (_, _, _) end
+  def set_destinations(_, _, _) end
 
-  def set_for_lines (_, _, _) end
+  def set_for_lines(_, _, _) end
 
   def set_endfunc_lines(_, _) end
 
@@ -387,22 +389,20 @@ class AbstractStatement
     []
   end
 
-  def transfers(_)
-    []
+  def set_transfers(_)
+    @transfers = []
   end
 
-  def transfers_auto
-    transfer_ref_lines = []
+  def set_transfers_auto
+    @transfers_auto = []
 
     # convert auto-next to TransferRefLineStmt
     if @autonext && @autonext_line_stmt
       line_number = @autonext_line_stmt.line_number
       stmt = @autonext_line_stmt.statement
 
-      transfer_ref_lines << TransferRefLineStmt.new(line_number, stmt, :auto)
+      @transfers_auto << TransferRefLineStmt.new(line_number, stmt, :auto)
     end
-
-    transfer_ref_lines
   end
 
   def print_errors(console_io)
@@ -1237,13 +1237,11 @@ class EndStatement < AbstractStatement
     @program_errors << 'Statements after END' unless next_line_stmt.nil?
   end
 
-  def transfers(_)
-    transfer_refs = []
+  def set_transfers(_)
+    @transfers = []
 
     empty_line_number = LineNumber.new(nil)
-    transfer_refs << TransferRefLine.new(empty_line_number, :stop)
-
-    transfer_refs
+    @transfers << TransferRefLine.new(empty_line_number, :stop)
   end
 
   def execute_core(interpreter)
@@ -1428,22 +1426,20 @@ class ForStatement < AbstractStatement
     lines
   end
 
-  def transfers(_)
-    transfer_refs = []
+  def set_transfers(_)
+    @transfers = []
 
     unless @loopstart_line_stmt_mod.nil?
       line_number = @loopstart_line_stmt_mod.line_number
       stmt = @loopstart_line_stmt_mod.statement
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :fornext)
+      @transfers << TransferRefLineStmt.new(line_number, stmt, :fornext)
     end
 
     unless @nextstmt_line_stmt.nil?
       line_number = @nextstmt_line_stmt.line_number
       stmt = @loopstart_line_stmt_mod.statement
-      transfer_refs << TransferRefLineStmt.new(line_number, stmt, :fornext)
+      @transfers << TransferRefLineStmt.new(line_number, stmt, :fornext)
     end
-
-    transfer_refs
   end
 
   def number_for_stmts
@@ -1613,12 +1609,10 @@ class GosubStatement < AbstractStatement
     [@dest_line.dump]
   end
 
-  def transfers(_)
-    transfer_refs = []
+  def set_transfers(_)
+    @transfers = []
 
-    transfer_refs << TransferRefLineStmt.new(@dest_line, 0, :gosub)
-
-    transfer_refs
+    @transfers << TransferRefLineStmt.new(@dest_line, 0, :gosub)
   end
 
   def execute_core(interpreter)
@@ -1687,12 +1681,10 @@ class GotoStatement < AbstractStatement
     [@dest_line.dump]
   end
 
-  def transfers(_)
-    transfer_refs = []
+  def set_transfers(_)
+    @transfers = []
 
-    transfer_refs << TransferRefLineStmt.new(@dest_line, 0, :goto)
-
-    transfer_refs
+    @transfers << TransferRefLineStmt.new(@dest_line, 0, :goto)
   end
 
   def execute_core(interpreter)
@@ -1741,13 +1733,11 @@ class AbstractIfStatement < AbstractStatement
     lines
   end
 
-  def transfers(_)
-    transfer_refs = []
+  def set_transfers(_)
+    @transfers = []
 
-    transfer_refs << TransferRefLineStmt.new(@dest_line, 0, :ifthen) unless
+    @transfers << TransferRefLineStmt.new(@dest_line, 0, :ifthen) unless
       @dest_line.nil?
-
-    transfer_refs
   end
 
   def execute_core(interpreter)
@@ -1913,14 +1903,12 @@ class AbstractLetStatement < AbstractStatement
     lines
   end
 
-  def transfers(user_function_start_lines)
-    transfer_refs = []
+  def set_transfers(user_function_start_lines)
+    @transfers = []
 
     unless @assignment.nil?
-      transfer_refs += @assignment.destinations(user_function_start_lines)
+      @transfers += @assignment.destinations(user_function_start_lines)
     end
-
-    transfer_refs
   end
 end
 
@@ -2304,13 +2292,11 @@ class StopStatement < AbstractStatement
     ['']
   end
 
-  def transfers(_)
-    transfer_refs = []
+  def set_transfers(_)
+    @transfers = []
 
     empty_line_number = LineNumber.new(nil)
-    transfer_refs << TransferRefLine.new(empty_line_number, :stop)
-
-    transfer_refs
+    @transfers << TransferRefLine.new(empty_line_number, :stop)
   end
 
   def execute_core(interpreter)

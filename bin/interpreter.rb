@@ -231,11 +231,6 @@ class Interpreter
     clear_user_functions
 
     @program.optimize(self)
-    @program.assign_singleline_function_markers
-    @program.assign_multiline_function_markers
-    @program.assign_autonext
-    @program.check_program
-    @program.check_function_markers
   end
 
   def program_okay?
@@ -327,11 +322,6 @@ class Interpreter
     clear_user_functions
 
     @program.optimize(self)
-    @program.assign_singleline_function_markers
-    @program.assign_multiline_function_markers
-    @program.assign_autonext
-    @program.check_program
-    @program.check_function_markers
 
     @program.init_data(self)
 
