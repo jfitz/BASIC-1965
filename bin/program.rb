@@ -181,7 +181,7 @@ class Line
   attr_reader :tokens
   attr_reader :warnings
   attr_accessor :origins
-  attr_accessor :destinations
+  attr_reader :destinations
 
   def initialize(text, statements, tokens, comment)
     @text = text
@@ -378,9 +378,32 @@ end
 
 # line reference for cross reference
 class LineRef
+  attr_reader :line_num
+  attr_reader :assignment
+
   def initialize(line_num, assignment)
     @line_num = line_num
     @assignment = assignment
+  end
+
+  def eql?(other)
+    @line_num == other.line_num &&
+      @assignment == other.assignment
+  end
+
+  def ==(other)
+    @line_num == other.line_num &&
+      @assignment == other.assignment
+  end
+
+  def hash
+    @line_num.hash + @assignment.hash
+  end
+
+  def <=>(other)
+    return @assignment <=> other.assignment if @line_num == other.line_num
+
+    @line_num <=> other.line_num
   end
 
   def to_s
@@ -568,10 +591,7 @@ class Program
   end
 
   def uncache
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
-      line.uncache
-    end
+    @lines.each { |line_number, line| line.uncache }
   end
 
   def empty?
@@ -935,10 +955,7 @@ class Program
   end
 
   def reset_profile_metrics
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
-      line.reset_profile_metrics
-    end
+    @lines.each { |line_number, line| line.reset_profile_metrics }
   end
 
   private
@@ -1211,8 +1228,7 @@ class Program
   def errors?
     any_errors = !@errors.empty?
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
       statements.each { |statement| any_errors |= statement.errors? }
     end
@@ -1235,7 +1251,6 @@ class Program
     @errors = []
 
     @lines.keys.sort.each do |line_number|
-      @line_number = line_number
       line = @lines[line_number]
       statements = line.statements
 
@@ -1250,9 +1265,7 @@ class Program
     @user_function_start_lines = {}
     part_of_user_function = nil
 
-    line_numbers = @lines.keys.sort
-
-    line_numbers.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1274,9 +1287,7 @@ class Program
   def assign_multiline_function_markers
     part_of_user_function = nil
 
-    line_numbers = @lines.keys.sort
-
-    line_numbers.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1307,7 +1318,6 @@ class Program
 
   def assign_autonext
     @lines.keys.sort.each do |line_number|
-      @line_number = line_number
       line = @lines[line_number]
       statements = line.statements
 
@@ -1350,9 +1360,7 @@ class Program
   end
 
   def set_transfers
-    @lines.keys.sort.each do |line_number|
-      @line_number = line_number
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       statements.each do |statement|
@@ -1362,9 +1370,7 @@ class Program
   end
 
   def set_transfers_auto
-    @lines.keys.sort.each do |line_number|
-      @line_number = line_number
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       statements.each do |statement|
@@ -1375,7 +1381,6 @@ class Program
 
   def init_data(interpreter)
     @lines.keys.sort.each do |line_number|
-      @line_number = line_number
       line = @lines[line_number]
       statements = line.statements
 
@@ -1387,7 +1392,6 @@ class Program
 
   def check_program
     @lines.keys.sort.each do |line_number|
-      @line_number = line_number
       line = @lines[line_number]
       statements = line.statements
 
@@ -1401,9 +1405,7 @@ class Program
   def check_function_markers
     part_of_user_function = nil
 
-    line_numbers = lines.keys.sort
-
-    line_numbers.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1430,8 +1432,6 @@ class Program
     line_number = current_line_stmt.line_number
     line = @lines[line_number]
     statements = line.statements
-
-    line_numbers = @lines.keys.sort
 
     walk_line_stmt = current_line_stmt
 
@@ -1476,8 +1476,6 @@ class Program
     line = @lines[line_number]
     statements = line.statements
 
-    line_numbers = @lines.keys.sort
-
     walk_line_stmt = current_line_stmt
 
     # search for a ENDFUNCTION or FNEND
@@ -1512,9 +1510,7 @@ class Program
   def save
     lines = []
 
-    line_numbers = @lines.keys.sort
-
-    line_numbers.each do |line_number|
+    @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       lines << line_number.to_s + line.list
     end
@@ -1581,8 +1577,7 @@ class Program
   def numeric_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       rs = []
@@ -1601,8 +1596,7 @@ class Program
   def booleans_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       rs = []
@@ -1621,8 +1615,7 @@ class Program
   def strings_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       rs = []
@@ -1641,8 +1634,7 @@ class Program
   def function_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       rs = []
@@ -1661,8 +1653,7 @@ class Program
   def user_function_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       rs = []
@@ -1681,8 +1672,7 @@ class Program
   def variables_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       rs = []
@@ -1701,8 +1691,7 @@ class Program
   def operators_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
+    @lines.each do |line_number, line|
       statements = line.statements
 
       rs = []
@@ -1721,7 +1710,7 @@ class Program
   def linenums_refs
     refs = {}
 
-    @lines.keys.sort.each do |line_number|
+    @lines.each do |line_number, line|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1753,7 +1742,7 @@ class Program
       n_spaces = num_spaces - token.size + 2
       spaces = ' ' * n_spaces
       lines = refs[ref]
-      line_refs = lines.map(&:to_s).uniq.join(', ')
+      line_refs = lines.sort.map(&:to_s).uniq.join(', ')
 
       texts << token + ':' + spaces + line_refs
     end
@@ -1778,7 +1767,7 @@ class Program
     refs.keys.sort.each do |ref|
       token = ref.to_s
       lines = refs[ref]
-      line_refs = lines.map(&:to_s).uniq.join(', ')
+      line_refs = lines.sort.map(&:to_s).uniq.join(', ')
 
       if token.size < 41
         n_spaces = num_spaces - token.size + 2
