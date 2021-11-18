@@ -209,6 +209,21 @@ class Line
     @statements.each(&:reset_profile_metrics)
   end
 
+  def reset_reachable
+    @statements.each { |statement| statement.reachable = false }
+  end
+
+  def set_reachable(stmt)
+    statement = @statements[stmt]
+
+    return false if statement.nil?
+
+    any_changes = statement.reachable == false
+    statement.reachable = true
+
+    any_changes
+  end
+
   def number_valid_statements
     num = 0
     @statements.each { |statement| num += 1 if statement.valid }
@@ -1121,34 +1136,32 @@ class Program
   end
 
   def build_line_stmts
-    # build list of "gotos"
-    destinations = {}
+    # build dictionary of destination LineStmt objects
+    line_stmts = {}
 
     @lines.each do |line_number, line|
-      line_destinations = line.line_stmts(line_number)
+      line_line_stmts = line.line_stmts(line_number)
 
-      line_destinations.each do |line_number_stmt, dests|
-        destinations[line_number_stmt] = dests
+      line_line_stmts.each do |line_number_stmt, stmt_line_stmts|
+        line_stmts[line_number_stmt] = stmt_line_stmts
       end
     end
 
-    destinations
+    line_stmts
   end
 
   def unreachable_code
-    gotos = build_line_stmts
+    line_stmts = build_line_stmts
 
     # assume statements are dead until connected to a live statement
-    reachable = {}
-
-    gotos.keys.each { |line_number| reachable[line_number] = false }
+    @lines.each { |_, line| line.reset_reachable }
 
     # first line is live
     first_line_number_stmt_mod = find_first_statement
     first_line_number = first_line_number_stmt_mod.line_number
+    first_line = @lines[first_line_number]
     first_stmt = first_line_number_stmt_mod.statement
-    first_line_number_stmt = LineStmt.new(first_line_number, first_stmt)
-    reachable[first_line_number_stmt] = true
+    first_line.set_reachable(first_stmt)
 
     # walk the entire program and mark lines as live
     # repeat until no changes
@@ -1156,22 +1169,22 @@ class Program
     while any_changes
       any_changes = false
 
-      @lines.keys.each do |line_number|
+      @lines.each do |line_number, line|
         statements = @lines[line_number].statements
 
-        statements.each_with_index do |_, stmt|
-          line_number_stmt = LineStmt.new(line_number, stmt)
-
+        statements.each_with_index do |statement, stmt|
           # only reachable lines can reach other lines
-          if reachable[line_number_stmt]
+          if statement.reachable
             # a reachable line updates its targets to 'reachable'
-            statement_gotos = gotos[line_number_stmt]
+            line_number_stmt = LineStmt.new(line_number, stmt)
+            stmt_line_stmts = line_stmts[line_number_stmt]
 
-            statement_gotos.each do |goto_number_stmt|
-              unless reachable[goto_number_stmt]
-                reachable[goto_number_stmt] = true
-                any_changes = true
-              end
+            stmt_line_stmts.each do |line_stmt|
+              dest_line_number = line_stmt.line_number
+              dest_line = @lines[dest_line_number]
+              dest_stmt = line_stmt.statement
+              any_changes = dest_line.set_reachable(dest_stmt) unless
+                dest_line.nil?
             end
           end
         end
@@ -1180,16 +1193,12 @@ class Program
 
     # build list of lines that are not reachable
     lines = []
-    reachable.keys.each do |line_number_stmt|
-      line_number = line_number_stmt.line_number
-      stmt = line_number_stmt.statement
-      line = @lines[line_number]
-      unless line.nil?
-        statements = line.statements
-        statement = statements[stmt]
-
-        if statement.executable && !reachable[line_number_stmt]
+    @lines.each do |line_number, line|
+      statements = line.statements
+      statements.each_with_index do |statement, stmt|
+        if statement.executable && !statement.reachable
           text = statement.pretty
+          line_number_stmt = LineStmt.new(line_number, stmt)
           lines << "#{line_number_stmt}: #{text}" unless text.empty?
         end
       end

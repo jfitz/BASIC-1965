@@ -224,6 +224,7 @@ class AbstractStatement
   attr_reader :autonext
   attr_reader :transfers
   attr_reader :transfers_auto
+  attr_accessor :reachable
 
   def self.extra_keywords
     []
