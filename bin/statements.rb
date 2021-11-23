@@ -407,18 +407,12 @@ class AbstractStatement
     end
   end
 
-  def transfers_to_origins(lines, line_number, stmt)
+  def transfers_to_origins(program, line_number, stmt)
     @transfers.each do |xfer|
       dest_line_number = xfer.line_number
-      dest_line = lines[dest_line_number]
-      unless dest_line.nil?
-        dest_stmt = xfer.statement
-        statement = dest_line.statements[dest_stmt]
-        unless statement.nil?
-          dest_xfer = TransferRefLineStmt.new(line_number, stmt, xfer.type)
-          statement.origins << dest_xfer
-        end
-      end
+      dest_stmt = xfer.statement
+      dest_xfer = TransferRefLineStmt.new(line_number, stmt, xfer.type)
+      program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
     end
   end
 
