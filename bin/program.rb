@@ -180,7 +180,7 @@ class Line
   attr_reader :statements
   attr_reader :tokens
   attr_reader :warnings
-  attr_accessor :origins
+  attr_reader :origins
   attr_reader :destinations
 
   def initialize(text, statements, tokens, comment)
@@ -219,9 +219,9 @@ class Line
     end
   end
 
-  def set_transfers_auto
-    @statements.each do |statement|
-      statement.set_transfers_auto
+  def set_transfers_auto(program, line_number)
+    @statements.each_with_index do |statement, stmt|
+      statement.set_transfers_auto(program, line_number, stmt)
     end
   end
 
@@ -244,12 +244,14 @@ class Line
   end
 
   def set_reachable(stmt)
+    any_changes = false
+
     statement = @statements[stmt]
 
-    return false if statement.nil?
-
-    any_changes = statement.reachable == false
-    statement.reachable = true
+    if !statement.nil? && !statement.reachable
+      statement.reachable = true
+      any_changes = true
+    end
 
     any_changes
   end
@@ -393,6 +395,23 @@ class Line
         # only transfers that have a different line number
         # we don't care about intra-line transfers
         @destinations << TransferRefLine.new(xfer.line_number, xfer.type) if
+          xfer.line_number != line_number
+      end
+    end
+  end
+
+  def build_origins(line_number)
+    @origins = []
+
+    @statements.each do |statement|
+      # built-in transfers
+      xfers = statement.origins
+
+      # convert TransferRefLineStmt objects to TransferRefLine objects
+      xfers.each do |xfer|
+        # only transfers that have a different line number
+        # we don't care about intra-line transfers
+        @origins << TransferRefLine.new(xfer.line_number, xfer.type) if
           xfer.line_number != line_number
       end
     end
@@ -932,6 +951,8 @@ class Program
     texts += code_complexity
     texts << ''
 
+    set_unreachable_code
+    
     texts += analyze_pretty
 
     # report unreachable lines
@@ -946,17 +967,19 @@ class Program
     texts = []
 
     build_line_destinations
-    build_line_origins
 
     # add marker for entry point (first active line)
     first_line_number_stmt_mod = find_first_statement
     line_number = first_line_number_stmt_mod.line_number
     line = @lines[line_number]
     unless line.nil?
-      line.origins = [] if line.origins.nil?
       empty_line_number = LineNumber.new(nil)
-      line.origins << TransferRefLine.new(empty_line_number, :start)
+      xfer = TransferRefLine.new(empty_line_number, :start)
+      stmt = 0
+      line.add_statement_origin(stmt, xfer)
     end
+
+    build_line_origins
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
@@ -1151,25 +1174,8 @@ class Program
 
   def build_line_origins
     # build list of "come-froms"
-    @lines.each { |_, line| line.origins = [] }
-    
-    origins = {}
-
-    # for each line
     @lines.each do |line_number, line|
-      # get destinations
-      destinations = line.destinations
-
-      # for each destination
-      destinations.each do |dest|
-        # get its line
-        dest_line = @lines[dest.line_number]
-
-        # add transfer to origin table
-        unless dest_line.nil?
-          dest_line.origins << TransferRefLine.new(line_number, dest.type)
-        end
-      end
+      line.build_origins(line_number)
     end
   end
 
@@ -1188,9 +1194,7 @@ class Program
     line_stmts
   end
 
-  def unreachable_code
-    line_stmts = build_line_stmts
-
+  def set_unreachable_code
     # assume statements are dead until connected to a live statement
     @lines.each { |_, line| line.reset_reachable }
 
@@ -1214,21 +1218,24 @@ class Program
           # only reachable lines can reach other lines
           if statement.reachable
             # a reachable line updates its targets to 'reachable'
-            line_number_stmt = LineStmt.new(line_number, stmt)
-            stmt_line_stmts = line_stmts[line_number_stmt]
+            statement_transfers =
+              statement.transfers + statement.transfers_auto
 
-            stmt_line_stmts.each do |line_stmt|
-              dest_line_number = line_stmt.line_number
+            statement_transfers.each do |xfer|
+              dest_line_number = xfer.line_number
               dest_line = @lines[dest_line_number]
-              dest_stmt = line_stmt.statement
-              any_changes = dest_line.set_reachable(dest_stmt) unless
-                dest_line.nil?
+              unless dest_line.nil?
+                dest_stmt = xfer.statement
+                any_changes = any_changes | dest_line.set_reachable(dest_stmt)
+              end
             end
           end
         end
       end
     end
+  end
 
+  def unreachable_code
     # build list of lines that are not reachable
     lines = []
     @lines.each do |line_number, line|
@@ -1422,8 +1429,8 @@ class Program
   end
 
   def set_transfers_auto
-    @lines.each do |_, line|
-      line.set_transfers_auto
+    @lines.each do |line_number, line|
+      line.set_transfers_auto(self, line_number)
     end
   end
 

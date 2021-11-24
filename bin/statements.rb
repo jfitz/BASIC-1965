@@ -395,20 +395,26 @@ class AbstractStatement
     @transfers = []
   end
 
-  def set_transfers_auto
+  def set_transfers_auto(program, line_number, stmt)
     @transfers_auto = []
 
     # convert auto-next to TransferRefLineStmt
     if @autonext && @autonext_line_stmt
-      line_number = @autonext_line_stmt.line_number
-      stmt = @autonext_line_stmt.statement
+      dest_line_number = @autonext_line_stmt.line_number
+      dest_stmt = @autonext_line_stmt.statement
 
-      @transfers_auto << TransferRefLineStmt.new(line_number, stmt, :auto)
+      @transfers_auto <<
+        TransferRefLineStmt.new(dest_line_number, dest_stmt, :auto)
+
+      dest_xfer = TransferRefLineStmt.new(line_number, stmt, :auto)
+      program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
     end
   end
 
   def transfers_to_origins(program, line_number, stmt)
-    @transfers.each do |xfer|
+    # get transfers via function call, not reference to @transfers
+    xfers = transfers
+    xfers.each do |xfer|
       dest_line_number = xfer.line_number
       dest_stmt = xfer.statement
       dest_xfer = TransferRefLineStmt.new(line_number, stmt, xfer.type)
