@@ -21,14 +21,14 @@ module Reader
     evens = tokens.values_at(* tokens.each_index.select(&:even?))
 
     evens.each do |token|
-      raise BASICRuntimeError.new(:te_inp_no_num_text) unless
+      raise BASICRuntimeError, :te_inp_no_num_text unless
         token.numeric_constant?
     end
 
     odds = tokens.values_at(* tokens.each_index.select(&:odd?))
 
     odds.each do |token|
-      raise BASICRuntimeError.new(:te_exp_sep) unless token.separator?
+      raise BASICRuntimeError, :te_exp_sep unless token.separator?
     end
   end
 end
@@ -69,7 +69,7 @@ class ConsoleIo
   def read_line
     input_text = gets
 
-    raise BASICRuntimeError.new(:te_eof) if input_text.nil?
+    raise BASICRuntimeError, :te_eof if input_text.nil?
 
     ascii_text = ascii_printables(input_text)
 
@@ -123,9 +123,7 @@ class ConsoleIo
 
     zone_width = $options['zone_width'].value
 
-    unless zone_width.zero?
-      print_item(' ') while @column % zone_width != 0
-    end
+    print_item(' ') while @column % zone_width != 0 unless zone_width.zero?
 
     @last_was_numeric = false
     @last_was_tab = true
@@ -136,9 +134,7 @@ class ConsoleIo
 
     zone_width = $options['semicolon_zone_width'].value
 
-    unless zone_width.zero?
-      print_item(' ') while @column % zone_width != 0
-    end
+    print_item(' ') while @column % zone_width != 0 unless zone_width.zero?
 
     @last_was_numeric = false
     @last_was_tab = false
@@ -251,7 +247,7 @@ class DataStore
   end
 
   def read
-    raise BASICRuntimeError.new(:te_out_of_data) if
+    raise BASICRuntimeError, :te_out_of_data if
       @data_index >= @data_store.size
 
     @data_index += 1
@@ -266,7 +262,7 @@ end
 # reads values from file and writes values to file
 class FileHandler
   def initialize(file_name)
-    raise BASICRuntimeError.new(:te_fname_no) if file_name.nil?
+    raise BASICRuntimeError, :te_fname_no if file_name.nil?
 
     @file_name = file_name
     @mode = nil
@@ -292,12 +288,12 @@ class FileHandler
         @records = read_file(@file_name)
         @rec_number = 0
       else
-        raise BASICRuntimeError.new(:te_mode_inv)
+        raise BASICRuntimeError, :te_mode_inv
       end
 
       @mode = mode
     else
-      raise BASICRuntimeError.new(:te_op_inc) unless @mode == mode
+      raise BASICRuntimeError, :te_op_inc unless @mode == mode
     end
   end
 
@@ -322,7 +318,7 @@ class FileHandler
   end
 
   def read_line
-    raise BASICRuntimeError.new(:te_eof) if @rec_number >= @records.size
+    raise BASICRuntimeError, :te_eof if @rec_number >= @records.size
 
     input_text = @records[@rec_number]
     @rec_number += 1
@@ -386,7 +382,7 @@ class FileHandler
 
   def refill(data_store, tokenizer)
     while data_store.empty?
-      raise BASICRuntimeError.new(:te_eof) if @rec_number >= @records.size
+      raise BASICRuntimeError, :te_eof if @rec_number >= @records.size
 
       line = @records[@rec_number]
       @rec_number += 1

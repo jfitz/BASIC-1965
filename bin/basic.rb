@@ -120,8 +120,10 @@ class Option
 
       legal_values = @defs[:values]
 
-      raise(BASICSyntaxError, "Invalid value #{value} for list #{legal_values}") unless
-        legal_values.include?(value.to_s)
+      unless legal_values.include?(value.to_s)
+        raise(BASICSyntaxError,
+              "Invalid value #{value} for list #{legal_values}")
+      end
     else
       raise(BASICSyntaxError, 'Unknown value type')
     end
@@ -231,7 +233,7 @@ class Shell
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
-      raise BASICCommandError.new("Unknown option #{kwd}") unless
+      raise BASICCommandError, "Unknown option #{kwd}" unless
         $options.key?(kwd_d)
 
       value = $options[kwd_d].to_s.upcase
@@ -240,12 +242,12 @@ class Shell
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
-      raise BASICCommandError.new("Unknown option #{kwd}") unless
+      raise BASICCommandError, "Unknown option #{kwd}" unless
         $options.key?(kwd_d)
 
       if @interpreter.program_loaded? &&
          !$options[kwd_d].types.include?(:loaded)
-        raise BASICCommandError.new("Cannot change #{kwd} when program is loaded")
+        raise BASICCommandError, "Cannot change #{kwd} when program is loaded"
       end
 
       if args[1].boolean_constant?
@@ -258,13 +260,13 @@ class Shell
         text = TextConstant.new(args[1])
         $options[kwd_d].set(text.to_v)
       else
-        raise BASICCommandError.new('Incorrect value type')
+        raise BASICCommandError, 'Incorrect value type'
       end
 
       value = $options[kwd_d].value.to_s.upcase
       lines << 'OPTION ' + kwd + ' ' + value.to_s if echo_set
     else
-      raise BASICCommandError.new('Too many arguments')
+      raise BASICCommandError, 'Too many arguments'
     end
 
     lines
@@ -287,7 +289,7 @@ class Shell
       @console_io.newline
     when 'RUN'
       @interpreter.program_optimize
-      
+
       if @interpreter.program_okay?
         # duplicate the options
         options2 = {}
@@ -319,7 +321,7 @@ class Shell
       @interpreter.clear_all_breakpoints
       filename, _keywords = parse_args(args)
 
-      raise BASICCommandError.new('Filename not specified') if filename.nil?
+      raise BASICCommandError, 'Filename not specified' if filename.nil?
 
       load_file_keyboard(filename)
 
@@ -329,7 +331,7 @@ class Shell
     when 'SAVE'
       filename, keywords = parse_args(args)
 
-      raise BASICCommandError.new('Filename not specified') if filename.nil?
+      raise BASICCommandError, 'Filename not specified' if filename.nil?
 
       lines = []
 
@@ -374,7 +376,7 @@ class Shell
       @console_io.newline
     when 'RENUMBER'
       @interpreter.program_optimize
-      
+
       if @interpreter.program_okay?
         begin
           @interpreter.program_renumber(args)
@@ -388,7 +390,7 @@ class Shell
       end
     when 'CROSSREF'
       @interpreter.program_optimize
-      
+
       texts = @interpreter.program_crossref
       texts.each { |text| @console_io.print_line(text) }
       @console_io.newline
@@ -402,7 +404,7 @@ class Shell
       @console_io.newline
     when 'ANALYZE'
       @interpreter.program_optimize
-      
+
       texts = @interpreter.program_analyze
       texts.each { |text| @console_io.print_line(text) }
       @console_io.newline
@@ -773,11 +775,15 @@ $options['timing'] =
 $options['trace'] = Option.new(all_types, boolean, options.key?(:trace))
 
 warn_list_width = 72
-warn_list_width = options[:warn_list_width].to_i if options.key?(:warn_list_width)
+if options.key?(:warn_list_width)
+  warn_list_width = options[:warn_list_width].to_i
+end
 $options['warn_list_width'] = Option.new(only_new, int132, warn_list_width)
 
 warn_pretty_width = 72
-warn_pretty_width = options[:warn_pretty_width].to_i if options.key?(:warn_pretty_width)
+if options.key?(:warn_pretty_width)
+  warn_pretty_width = options[:warn_pretty_width].to_i
+end
 $options['warn_pretty_width'] = Option.new(only_new, int132, warn_pretty_width)
 
 $options['wrap'] = Option.new(all_types, boolean, options.key?(:wrap))

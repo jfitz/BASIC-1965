@@ -3,10 +3,12 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    legals = %[IntegerConstant NilClass]
-    
-    raise BASICSyntaxError, "Invalid line number object '#{line_number.class}'" unless
-      legals.include?(line_number.class.to_s)
+    legals = %(IntegerConstant NilClass)
+
+    unless legals.include?(line_number.class.to_s)
+      raise BASICSyntaxError,
+            "Invalid line number object '#{line_number.class}'"
+    end
 
     unless line_number.nil?
       @line_number = line_number.to_i
@@ -99,11 +101,10 @@ end
 
 # LineStmt class to hold line number and index within line
 class LineStmt
-  attr_reader :line_number
-  attr_reader :statement
+  attr_reader :line_number, :statement
 
   def initialize(line_number, statement)
-    raise BASICError.new("line_number class is #{line_number.class}") unless
+    raise BASICError, "line_number class is #{line_number.class}" unless
       line_number.class.to_s == 'LineNumber'
 
     @line_number = line_number
@@ -128,18 +129,17 @@ class LineStmt
 
   def to_s
     return @line_number.to_s if @statement.zero?
+
     @line_number.to_s + '.' + @statement.to_s
   end
 end
 
 # LineStmtMod class to hold line number and index within line
 class LineStmtMod
-  attr_reader :line_number
-  attr_reader :statement
-  attr_reader :index
+  attr_reader :line_number, :statement, :index
 
   def initialize(line_number, statement, mod)
-    raise BASICError.new("line_number class is #{line_number.class}") unless
+    raise BASICError, "line_number class is #{line_number.class}" unless
       line_number.class.to_s == 'LineNumber'
 
     @line_number = line_number
@@ -166,6 +166,7 @@ class LineStmtMod
   def to_s
     return @line_number.to_s if @statement.zero? && @index.zero?
     return @line_number.to_s + '.' + @statement.to_s if @index.zero?
+
     @line_number.to_s + '.' + @statement.to_s + '.' + @index.to_s
   end
 
@@ -177,11 +178,7 @@ end
 
 # Line class to hold a line of code
 class Line
-  attr_reader :statements
-  attr_reader :tokens
-  attr_reader :warnings
-  attr_reader :origins
-  attr_reader :destinations
+  attr_reader :statements, :tokens, :warnings, :origins, :destinations
 
   def initialize(text, statements, tokens, comment)
     @text = text
@@ -232,9 +229,7 @@ class Line
   def add_statement_origin(stmt, xfer)
     statement = @statements[stmt]
 
-    unless statement.nil?
-      statement.origins << xfer
-    end
+    statement.origins << xfer unless statement.nil?
   end
 
   def transfers_to_origins(program, line_number)
@@ -291,11 +286,11 @@ class Line
   end
 
   def pretty(multiline)
-    if multiline
-      pretty_lines = AbstractToken.pretty_multiline([], @tokens)
-    else
-      pretty_lines = [AbstractToken.pretty_tokens([], @tokens)]
-    end
+    pretty_lines = if multiline
+                     AbstractToken.pretty_multiline([], @tokens)
+                   else
+                     [AbstractToken.pretty_tokens([], @tokens)]
+                   end
 
     pl2 = []
 
@@ -442,8 +437,7 @@ end
 
 # line reference for cross reference
 class LineRef
-  attr_reader :line_num
-  attr_reader :assignment
+  attr_reader :line_num, :assignment
 
   def initialize(line_num, assignment)
     @line_num = line_num
@@ -482,8 +476,7 @@ end
 # Contain line number ranges
 # used in LIST and DELETE commands
 class LineListSpec
-  attr_reader :line_numbers
-  attr_reader :range_type
+  attr_reader :line_numbers, :range_type
 
   def initialize(tokens, program_line_numbers)
     @line_numbers = []
@@ -549,13 +542,13 @@ end
 
 # transfer of control
 class TransferRefLineStmt
-  attr_reader :line_number
-  attr_reader :statement
-  attr_reader :type
+  attr_reader :line_number, :statement, :type
 
   def initialize(line_number, statement, type)
-    raise BASICError.new("Invalid line number #{line_number.class}:#{line_number}") unless
-      line_number.class.to_s == 'LineNumber'
+    unless line_number.class.to_s == 'LineNumber'
+      raise BASICError,
+            "Invalid line number #{line_number.class}:#{line_number}"
+    end
 
     @line_number = line_number
     @statement = statement
@@ -597,12 +590,13 @@ end
 
 # transfer of control
 class TransferRefLine
-  attr_reader :line_number
-  attr_reader :type
+  attr_reader :line_number, :type
 
   def initialize(line_number, type)
-    raise BASICError.new("Invalid line number #{line_number.class}:#{line_number}") unless
-      line_number.class.to_s == 'LineNumber'
+    unless line_number.class.to_s == 'LineNumber'
+      raise BASICError,
+            "Invalid line number #{line_number.class}:#{line_number}"
+    end
 
     @line_number = line_number
     @type = type
@@ -655,7 +649,7 @@ class Program
   end
 
   def uncache
-    @lines.each { |line_number, line| line.uncache }
+    @lines.each { |_line_number, line| line.uncache }
   end
 
   def empty?
@@ -887,19 +881,19 @@ class Program
     # do not change to each_with_index
     # separator tokens are still present
     tokens.each do |token|
-      if token.class.to_s == 'NumericConstantToken'
-        case i
-        when 0
-          # first number is step
-          step = token.to_i
-          start = token.to_i
-        when 1
-          # second number is start
-          start = token.to_i
-        end
+      next unless token.class.to_s == 'NumericConstantToken'
 
-        i += 1
+      case i
+      when 0
+        # first number is step
+        step = token.to_i
+        start = token.to_i
+      when 1
+        # second number is start
+        start = token.to_i
       end
+
+      i += 1
     end
 
     raise(BASICCommandError, 'Invalid renumber step') if step.zero?
@@ -938,7 +932,7 @@ class Program
 
       texts << ''
     end
-    
+
     # report statistics
     texts << 'Statistics:'
     texts << ''
@@ -952,7 +946,7 @@ class Program
     texts << ''
 
     set_unreachable_code
-    
+
     texts += analyze_pretty
 
     # report unreachable lines
@@ -986,7 +980,7 @@ class Program
 
       # pretty-print the line with complexity statistics
       number = line_number.to_s
-      
+
       texts += line.analyze_pretty(number)
 
       # print origins to this line
@@ -1023,15 +1017,13 @@ class Program
   end
 
   def reset_profile_metrics
-    @lines.each { |line_number, line| line.reset_profile_metrics }
+    @lines.each { |_line_number, line| line.reset_profile_metrics }
   end
 
   def add_statement_origin(dest_line_number, dest_stmt, xfer)
     dest_line = @lines[dest_line_number]
 
-    unless dest_line.nil?
-      dest_line.add_statement_origin(dest_stmt, xfer)
-    end
+    dest_line.add_statement_origin(dest_stmt, xfer) unless dest_line.nil?
   end
 
   private
@@ -1211,23 +1203,23 @@ class Program
     while any_changes
       any_changes = false
 
-      @lines.each do |line_number, line|
+      @lines.each do |line_number, _line|
         statements = @lines[line_number].statements
 
-        statements.each_with_index do |statement, stmt|
+        statements.each_with_index do |statement, _stmt|
           # only reachable lines can reach other lines
-          if statement.reachable
-            # a reachable line updates its targets to 'reachable'
-            statement_transfers =
-              statement.transfers + statement.transfers_auto
+          next unless statement.reachable
 
-            statement_transfers.each do |xfer|
-              dest_line_number = xfer.line_number
-              dest_line = @lines[dest_line_number]
-              unless dest_line.nil?
-                dest_stmt = xfer.statement
-                any_changes = any_changes | dest_line.set_reachable(dest_stmt)
-              end
+          # a reachable line updates its targets to 'reachable'
+          statement_transfers =
+            statement.transfers + statement.transfers_auto
+
+          statement_transfers.each do |xfer|
+            dest_line_number = xfer.line_number
+            dest_line = @lines[dest_line_number]
+            unless dest_line.nil?
+              dest_stmt = xfer.statement
+              any_changes |= dest_line.set_reachable(dest_stmt)
             end
           end
         end
@@ -1241,11 +1233,11 @@ class Program
     @lines.each do |line_number, line|
       statements = line.statements
       statements.each_with_index do |statement, stmt|
-        if statement.executable && !statement.reachable
-          text = statement.pretty
-          line_number_stmt = LineStmt.new(line_number, stmt)
-          lines << "#{line_number_stmt}: #{text}" unless text.empty?
-        end
+        next unless statement.executable && !statement.reachable
+
+        text = statement.pretty
+        line_number_stmt = LineStmt.new(line_number, stmt)
+        lines << "#{line_number_stmt}: #{text}" unless text.empty?
       end
     end
 
@@ -1282,7 +1274,7 @@ class Program
   def errors?
     any_errors = !@errors.empty?
 
-    @lines.each do |line_number, line|
+    @lines.each do |_line_number, line|
       statements = line.statements
       statements.each { |statement| any_errors |= statement.errors? }
     end
@@ -1356,13 +1348,13 @@ class Program
 
         unless part_of_user_function.nil?
           if statement.part_of_user_function.nil?
-            statement.part_of_user_function = part_of_user_function 
+            statement.part_of_user_function = part_of_user_function
           else
             @errors <<
-            {
-              'message' => "Embedded function #{statement.part_of_user_function}",
-              'line' => line_number
-            }
+              {
+                'message' => "Embedded function #{statement.part_of_user_function}",
+                'line' => line_number
+              }
           end
         end
 
@@ -1379,37 +1371,38 @@ class Program
       statements.each_with_index do |statement, stmt|
         statement.set_autonext_line_stmt(nil)
 
-        if statement.autonext
-          start_mod = statement.start_index
-          line_stmt = LineStmt.new(line_number, stmt)
+        next unless statement.autonext
 
-          # get statement at start of next line
-          next_line_number_stmt_mod = find_next_line(line_stmt)
+        start_mod = statement.start_index
+        line_stmt = LineStmt.new(line_number, stmt)
 
-          statement.set_autonext_line(next_line_number_stmt_mod) unless
-            next_line_number_stmt_mod.nil?
+        # get statement at start of next line
+        next_line_number_stmt_mod = find_next_line(line_stmt)
 
-          # get next statement (may be on same line)
-          next_line_stmt = find_next_line_stmt(line_stmt)
+        statement.set_autonext_line(next_line_number_stmt_mod) unless
+          next_line_number_stmt_mod.nil?
 
-          unless next_line_stmt.nil?
-            next_line_number = next_line_stmt.line_number
-            next_stmt = next_line_stmt.statement
-            next_line = @lines[next_line_number]
+        # get next statement (may be on same line)
+        next_line_stmt = find_next_line_stmt(line_stmt)
 
-            unless next_line.nil?
-              next_statements = next_line.statements
+        next if next_line_stmt.nil?
 
-              next_statement = next_statements[next_stmt]
+        next_line_number = next_line_stmt.line_number
+        next_stmt = next_line_stmt.statement
+        next_line = @lines[next_line_number]
 
-              unless next_statement.nil?
-                next_mod = next_statement.start_index
-                next_line_stmt_mod = LineStmtMod.new(next_line_number, next_stmt, next_mod)
-                statement.set_autonext_line_stmt(next_line_stmt_mod)
-              end
-            end
-          end
-        end
+        next if next_line.nil?
+
+        next_statements = next_line.statements
+
+        next_statement = next_statements[next_stmt]
+
+        next if next_statement.nil?
+
+        next_mod = next_statement.start_index
+        next_line_stmt_mod = LineStmtMod.new(next_line_number,
+                                             next_stmt, next_mod)
+        statement.set_autonext_line_stmt(next_line_stmt_mod)
       end
     end
   end
@@ -1467,10 +1460,10 @@ class Program
       statements.each do |statement|
         if !part_of_user_function.nil? && statement.multidef?
           @errors <<
-          {
-            'message' => "Missing FNEND before DEF",
-            'line' => line_number
-          }
+            {
+              'message' => 'Missing FNEND before DEF',
+              'line' => line_number
+            }
         end
 
         if statement.multidef?
