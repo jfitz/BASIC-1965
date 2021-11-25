@@ -1,17 +1,13 @@
 # Unary scalar operators
 class UnaryOperator < AbstractElement
-  @operators = [ '+', '-', '#' ]
+  @operators = ['+', '-', '#']
 
-  def self.operators
-    @operators
+  class << self
+    attr_reader :operators
   end
 
-  attr_reader :content_type
-  attr_reader :shape
-  attr_reader :constant
-  attr_reader :warnings
-  attr_reader :arguments
-  attr_reader :precedence
+  attr_reader :content_type, :shape, :constant, :warnings, :arguments,
+              :precedence
 
   def initialize(text)
     super()
@@ -109,16 +105,12 @@ class BinaryOperator < AbstractElement
     '+', '-', '*', '/', '^'
   ]
 
-  def self.operators
-    @operators
+  class << self
+    attr_reader :operators
   end
 
-  attr_reader :content_type
-  attr_reader :shape
-  attr_reader :constant
-  attr_reader :warnings
-  attr_reader :arguments
-  attr_reader :precedence
+  attr_reader :content_type, :shape, :constant, :warnings, :arguments,
+              :precedence
 
   def initialize(text)
     super()
@@ -147,22 +139,24 @@ class BinaryOperator < AbstractElement
     @arg_shapes = [a_shape, b_shape]
 
     table =
-    {
-      %i[scalar scalar] => :scalar,
-      %i[scalar array]  => :array,
-      %i[scalar matrix] => :matrix,
-      %i[array  scalar] => :array,
-      %i[array  array]  => :array,
-      %i[array  matrix] => nil,
-      %i[matrix scalar] => :matrix,
-      %i[matrix array]  => nil,
-      %i[matrix matrix] => :matrix
-    }
+      {
+        %i[scalar scalar] => :scalar,
+        %i[scalar array] => :array,
+        %i[scalar matrix] => :matrix,
+        %i[array scalar] => :array,
+        %i[array array] => :array,
+        %i[array matrix] => nil,
+        %i[matrix scalar] => :matrix,
+        %i[matrix array] => nil,
+        %i[matrix matrix] => :matrix
+      }
 
     @shape = table[[a_shape, b_shape]]
 
-    raise(BASICExpressionError, "Bad expression #{a_shape} #{@op} #{b_shape}") if
-      @shape.nil?
+    if @shape.nil?
+      raise(BASICExpressionError,
+            "Bad expression #{a_shape} #{@op} #{b_shape}")
+    end
 
     shape_stack.push(@shape)
   end
@@ -222,21 +216,21 @@ class BinaryOperator < AbstractElement
 
     return @cached unless @cached.nil?
 
-    if x.matrix? && y.matrix?
-      res = matrix_matrix(x, y)
-    elsif x.matrix? && y.scalar?
-      res = matrix_scalar(x, y)
-    elsif x.scalar? && y.matrix?
-      res = scalar_matrix(x, y)
-    elsif x.array? && y.array?
-      res = array_array(x, y)
-    elsif x.array? && y.scalar?
-      res = array_scalar(x, y)
-    elsif x.scalar? && y.array?
-      res = scalar_array(x, y)
-    else
-      res = op_scalar_scalar(x, y)
-    end
+    res = if x.matrix? && y.matrix?
+            matrix_matrix(x, y)
+          elsif x.matrix? && y.scalar?
+            matrix_scalar(x, y)
+          elsif x.scalar? && y.matrix?
+            scalar_matrix(x, y)
+          elsif x.array? && y.array?
+            array_array(x, y)
+          elsif x.array? && y.scalar?
+            array_scalar(x, y)
+          elsif x.scalar? && y.array?
+            scalar_array(x, y)
+          else
+            op_scalar_scalar(x, y)
+          end
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -281,7 +275,7 @@ class BinaryOperator < AbstractElement
 
     false
   end
-  
+
   def op_scalar_matrix_1(op, a, b)
     dims = b.dimensions
     n_cols = dims[0].to_i
@@ -633,7 +627,7 @@ class BinaryOperator < AbstractElement
 
     dims = b.dimensions
 
-    raise BASICRuntimeError.new(:te_arr_dif_siz) if a.dimensions != dims
+    raise BASICRuntimeError, :te_arr_dif_siz if a.dimensions != dims
 
     n_cols = dims[0].to_i
     values = {}
@@ -777,7 +771,7 @@ class UnaryOperatorMinus < UnaryOperator
   end
 
   private
-  
+
   def negate_1(source)
     n_cols = source.dimensions[0].to_i
     values = {}

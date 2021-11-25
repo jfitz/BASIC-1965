@@ -1,5 +1,8 @@
+AllCops:
+  NewCops: enable
+
 # Commonly used screens these days easily fit more than 80 characters.
-Metrics/LineLength:
+Layout/LineLength:
   Max: 80
 
 # Too short methods lead to extraction of single-use methods, which can make
@@ -11,7 +14,7 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Max: 1500
 
-GlobalVars:
+Style/GlobalVars:
   AllowedVariables:
     - $options
 

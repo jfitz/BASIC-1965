@@ -7,9 +7,7 @@ class BASICSyntaxError < BASICError; end
 class BASICExpressionError < BASICSyntaxError; end
 
 class BASICTrappableError < BASICError
-  attr_reader :scode
-  attr_reader :code
-  attr_reader :extra
+  attr_reader :scode, :code, :extra
 
   def initialize(scode, extra = nil)
     message = $error_messages[scode]
