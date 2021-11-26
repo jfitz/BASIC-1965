@@ -187,9 +187,6 @@ end
 
 # invalid token
 class InvalidToken < AbstractToken
-  def initialize(text)
-    super
-  end
 end
 
 # null token used for pretty()
@@ -239,9 +236,6 @@ end
 
 # remark token
 class RemarkToken < AbstractToken
-  def initialize(text)
-    super
-  end
 end
 
 # statement separator token

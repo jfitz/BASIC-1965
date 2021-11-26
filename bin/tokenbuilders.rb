@@ -83,7 +83,7 @@ class RemarkTokenBuilder
   attr_reader :count
 
   def initialize
-    @legals = %w(REMARK REM)
+    @legals = %w[REMARK REM]
     @count = 0
   end
 
@@ -320,7 +320,7 @@ class NumericSymbolTokenBuilder
   attr_reader :count
 
   def try(text)
-    legals = %w(PI EUL AUR)
+    legals = %w[PI EUL AUR]
 
     candidate = ''
     i = 0
