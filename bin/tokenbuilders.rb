@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # accept any characters
 class InvalidTokenBuilder
   def try(text)

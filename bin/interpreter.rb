@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Helper class for FOR/NEXT
 class AbstractForControl
   attr_reader :control, :start
@@ -468,7 +470,7 @@ class Interpreter
     current_line_number = @current_line_stmt_mod.line_number
     line = @program.lines[current_line_number]
     @console_io.newline_when_needed
-    text = current_line_number.to_s + ': ' + line.pretty(false).join('')
+    text = "#{current_line_number}: #{line.pretty(false).join}"
     @console_io.print_line(text)
     @step_mode = false
     @debug_done = false
@@ -638,7 +640,7 @@ class Interpreter
             @line_breakpoints[line_number] = ''
           rescue BASICSyntaxError
             tkns = tokens_list.map(&:to_s).join
-            raise BASICCommandError, 'INVALID BREAKPOINT ' + tkns
+            raise BASICCommandError, "INVALID BREAKPOINT #{tkns}"
           end
         else # tokens_list.size > 1
           begin
@@ -661,7 +663,7 @@ class Interpreter
           rescue BASICSyntaxError, BASICExpressionError
             tkns = tokens_list.map(&:to_s).join
 
-            raise BASICCommandError, 'INVALID BREAKPOINT ' + tkns
+            raise BASICCommandError, "INVALID BREAKPOINT #{tkns}"
           end
         end
       end
@@ -697,13 +699,13 @@ class Interpreter
           rescue BASICSyntaxError
             tkns = tokens_list.map(&:to_s).join
 
-            raise BASICCommandError, 'INVALID BREAKPOINT ' + tkns
+            raise BASICCommandError, "INVALID BREAKPOINT #{tkns}"
           end
         else
           # TODO: remove a conditional breakpoint
           tkns = tokens_list.map(&:to_s).join
 
-          raise BASICCommandError, 'INVALID BREAKPOINT ' + tkns
+          raise BASICCommandError, "INVALID BREAKPOINT #{tkns}"
         end
       end
     end
@@ -719,13 +721,13 @@ class Interpreter
   def check_breakpoints(lines)
     errors = []
 
-    @line_breakpoints.keys.each do |bp_line|
-      errors << ('Breakpoint for non-existent line ' + bp_line.to_s) unless
+    @line_breakpoints.each_key do |bp_line|
+      errors << ("Breakpoint for non-existent line #{bp_line}") unless
         lines.key?(bp_line)
     end
 
-    @line_cond_breakpoints.keys.each do |bp_line|
-      errors << ('Breakpoint for non-existent line ' + bp_line.to_s) unless
+    @line_cond_breakpoints.each_key do |bp_line|
+      errors << ("Breakpoint for non-existent line #{bp_line}") unless
         lines.key?(bp_line)
     end
 
@@ -763,7 +765,7 @@ class Interpreter
 
     statements = line.statements
     statement = statements[0]
-    statement.start_index unless statement.nil?
+    statement&.start_index
   end
 
   def set_action(name, v)
@@ -1023,7 +1025,7 @@ class Interpreter
     # first look in user function values stack
     length = @user_var_values.length
 
-    if length > 0
+    if length.positive?
       names_and_values = @user_var_values[-1]
       value = names_and_values[variable.name]
     end
@@ -1058,9 +1060,9 @@ class Interpreter
       provenance_option = $options['provenance'].value
 
       text = if provenance_option && !provenance.nil?
-               ' ' + variable.to_s + ': (' + provenance.to_s + ') ' + value.to_s
+               " #{variable}: (#{provenance}) #{value}"
              else
-               ' ' + variable.to_s + ': ' + value.to_s
+               " #{variable}: #{value}"
              end
 
       @trace_out.newline_when_needed
@@ -1114,7 +1116,7 @@ class Interpreter
     @variables[var] = dict
 
     @trace_out.newline_when_needed
-    @trace_out.print_line(' ' + variable.to_s + ' = ' + value.to_s)
+    @trace_out.print_line(" #{variable} = #{value}")
   end
 
   def set_values(name, values)
@@ -1160,7 +1162,7 @@ class Interpreter
     @variables.delete(v)
 
     @trace_out.newline_when_needed
-    @trace_out.print_line(' ' + v)
+    @trace_out.print_line(" #{v}")
   end
 
   def forget_compound_values(variable)
@@ -1188,7 +1190,7 @@ class Interpreter
       vs = []
 
       # get names of known variables that start with variable name and no comma
-      @variables.keys.each do |v|
+      @variables.each_key do |v|
         vname1_s, subs_s = v.split('(')
         vs << v if vname1_s == vname_s && !subs_s.include?(',')
       end
@@ -1217,7 +1219,7 @@ class Interpreter
       vs = []
 
       # get names of known variables that start with variable name and no comma
-      @variables.keys.each do |v|
+      @variables.each_key do |v|
         vname1_s, subs_s = v.split('(')
         vs << v if vname1_s == vname_s && subs_s.include?(',')
       end

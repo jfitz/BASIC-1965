@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Statement factory class
 class StatementFactory
   include Singleton
@@ -403,7 +405,7 @@ class AbstractStatement
   end
 
   def print_errors(console_io)
-    @errors.each { |error| console_io.print_line(' ' + error) }
+    @errors.each { |error| console_io.print_line(" #{error}") }
   end
 
   def errors?
@@ -422,7 +424,7 @@ class AbstractStatement
 
   def profile(show_timing)
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
-    text = ' ' + text unless text.empty?
+    text = " #{text}" unless text.empty?
 
     line = ''
 
@@ -446,7 +448,7 @@ class AbstractStatement
       @part_of_user_function.nil?
 
     text = pretty
-    text = current_line_number.to_s + ': ' + text
+    text = "#{current_line_number}: #{text}"
 
     trace_out.print_out(text)
     trace_out.newline
@@ -674,7 +676,7 @@ class InvalidStatement < AbstractStatement
     @valid = false
     @executable = false
     @text = text
-    @errors << ('Invalid statement: ' + error.message)
+    @errors << ("Invalid statement: #{error.message}")
   end
 
   def to_s
@@ -806,7 +808,7 @@ module FileFunctions
     lines = []
 
     lines += @file_tokens.dump unless @file_tokens.nil?
-    @items.each { |item| lines += item.dump } unless @items.nil?
+    @items&.each { |item| lines += item.dump }
 
     lines
   end
@@ -856,7 +858,7 @@ module InputFunctions
              end
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
-    @errors << ('Syntax error: "' + line_text + '" ' + e.to_s)
+    @errors << ("Syntax error: \"#{line_text}\" #{e}")
   end
 
   def zip(names, values)
@@ -937,7 +939,7 @@ module PrintFunctions
     end
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
-    @errors << ('Syntax error: "' + line_text + '" ' + e.to_s)
+    @errors << ("Syntax error: \"#{line_text}\" #{e}")
   end
 
   def uncache
@@ -967,7 +969,7 @@ module ReadFunctions
              end
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
-    @errors << ('Syntax error: "' + line_text + '" ' + e.to_s)
+    @errors << ("Syntax error: \"#{line_text}\" #{e}")
   end
 
   def uncache
@@ -1003,7 +1005,7 @@ module WriteFunctions
     end
   rescue BASICExpressionError => e
     line_text = tokens.map(&:to_s).join
-    @errors << ('Syntax error: "' + line_text + '" ' + e.to_s)
+    @errors << ("Syntax error: \"#{line_text}\" #{e}")
   end
 
   def uncache
@@ -1161,7 +1163,7 @@ class DimStatement < AbstractStatement
       tokens_lists.each do |tokens_list|
         @declarations << DeclarationExpressionSet.new(tokens_list)
       rescue BASICExpressionError => e
-        @errors << ('Invalid ' + tokens_list.map(&:to_s).join + ' ' + e.to_s)
+        @errors << ("Invalid #{tokens_list.map(&:to_s).join} #{e}")
       end
 
       @elements = make_references(@declarations)
@@ -1407,17 +1409,17 @@ class ForStatement < AbstractStatement
   end
 
   def uncache
-    @start.uncache unless @start.nil?
-    @step.uncache unless @step.nil?
-    @end.uncache unless @end.nil?
+    @start&.uncache
+    @step&.uncache
+    @end&.uncache
   end
 
   def dump
     lines = []
-    lines << ('control: ' + @control.dump) unless @control.nil?
-    lines << ('start:   ' + @start.dump.to_s) unless @start.nil?
-    lines << ('end:     ' + @end.dump.to_s) unless @end.nil?
-    lines << ('step:    ' + @step.dump.to_s) unless @step.nil?
+    lines << ("control: #{@control.dump}") unless @control.nil?
+    lines << ("start:   #{@start.dump}") unless @start.nil?
+    lines << ("end:     #{@end.dump}") unless @end.nil?
+    lines << ("step:    #{@step.dump}") unless @step.nil?
     lines
   end
 
@@ -1690,10 +1692,6 @@ end
 
 # common functions for IF statements
 class AbstractIfStatement < AbstractStatement
-  def initialize(_, text, tokens_lists)
-    super
-  end
-
   def set_destinations(interpreter, _, _)
     mod = interpreter.statement_start_index(@dest_line)
 
@@ -1751,7 +1749,7 @@ class AbstractIfStatement < AbstractStatement
       interpreter.next_line_stmt_mod = @dest_line_stmt_mod
     end
 
-    s = ' ' + @expression.to_s + ': ' + result.to_s
+    s = " #{@expression}: #{result}"
     io = interpreter.trace_out
     io.trace_output(s)
   end
@@ -1882,10 +1880,6 @@ end
 
 # common functions for LET and LET-less statements
 class AbstractLetStatement < AbstractStatement
-  def initialize(_, _, _)
-    super
-  end
-
   def uncache
     @assignment.uncache
   end
@@ -1944,10 +1938,6 @@ class LetStatement < AbstractScalarLetStatement
     [
       [KeywordToken.new('LET')]
     ]
-  end
-
-  def initialize(_, _, _)
-    super
   end
 
   def execute_core(interpreter)
@@ -2029,7 +2019,7 @@ class NextStatement < AbstractStatement
     # if matches end value, stop here
     terminated = fornext_control.terminated?(interpreter)
     io = interpreter.trace_out
-    s = ' terminated:' + terminated.to_s
+    s = " terminated:#{terminated}"
     io.trace_output(s)
 
     if terminated
@@ -2072,14 +2062,14 @@ class OptionStatement < AbstractStatement
         @elements = make_references(nil, @expression)
         @comprehension_effort += @expression.comprehension_effort
       else
-        @errors << ('Cannot set option ' + kwd)
+        @errors << ("Cannot set option #{kwd}")
       end
     elsif tokens_lists.size == 1 &&
           extras.include?(tokens_lists[0].to_s)
       kwd = tokens_lists[0].to_s.upcase
       @key = kwd.downcase
 
-      @errors << ('Cannot set option ' + kwd) unless
+      @errors << ("Cannot set option #{kwd}") unless
         $options[@key].types.include?(:runtime)
     else
       @errors << 'Syntax error'
@@ -2087,7 +2077,7 @@ class OptionStatement < AbstractStatement
   end
 
   def uncache
-    @expression.uncache unless @expression.nil?
+    @expression&.uncache
   end
 
   def dump

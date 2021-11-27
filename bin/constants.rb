@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # class for all constant classes
 class AbstractElement
   def self.make_coord(c)
@@ -481,16 +483,17 @@ class NumericConstant < AbstractValueElement
 
   def self.numeric(text)
     # nnn(E+nn)
-    if /\A\s*[+-]?\d+(E+?\d+)?\z/ =~ text
+    case text
+    when /\A\s*[+-]?\d+(E+?\d+)?\z/
       text.to_f.to_i
     # nnn(E-nn)
-    elsif /\A\s*[+-]?\d+(E-\d+)?\z/ =~ text
+    when /\A\s*[+-]?\d+(E-\d+)?\z/
       text.to_f
     # nnn.(nnn)(E+-nn)
-    elsif /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/ =~ text
+    when /\A\s*[+-]?\d+\.(\d*)?(E[+-]?\d+)?\z/
       text.to_f
     # (nnn).nnn(E+-nn)
-    elsif /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/ =~ text
+    when /\A\s*[+-]?(\d+)?\.\d*(E[+-]?\d+)?\z/
       text.to_f
     end
   end
@@ -702,18 +705,18 @@ class NumericConstant < AbstractValueElement
   end
 
   def log
-    value = @value > 0 ? Math.log(@value) : 0
+    value = @value.positive? ? Math.log(@value) : 0
     NumericConstant.new(value)
   end
 
   def logb(lbase)
     lbase_v = lbase.to_v
-    value = @value > 0 ? Math.log(@value, lbase_v) : 0
+    value = @value.positive? ? Math.log(@value, lbase_v) : 0
     NumericConstant.new(value)
   end
 
   def mod(other)
-    value = other.to_v == 0 ? 0 : @value % other.to_v
+    value = other.to_v.zero? ? 0 : @value % other.to_v
     NumericConstant.new(value)
   end
 
@@ -727,7 +730,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def sqrt
-    value = @value > 0 ? Math.sqrt(@value) : 0
+    value = @value.positive? ? Math.sqrt(@value) : 0
     NumericConstant.new(value)
   end
 
@@ -792,8 +795,8 @@ class NumericConstant < AbstractValueElement
 
   def sign
     result = 0
-    result = 1 if @value > 0
-    result = -1 if @value < 0
+    result = 1 if @value.positive?
+    result = -1 if @value.negative?
     NumericConstant.new(result)
   end
 
@@ -1076,22 +1079,22 @@ class IntegerConstant < AbstractValueElement
   end
 
   def log
-    value = @value > 0 ? Math.log(@value) : 0
+    value = @value.positive? ? Math.log(@value) : 0
     IntegerConstant.new(value)
   end
 
   def log10
-    value = @value > 0 ? Math.log10(@value) : 0
+    value = @value.positive? ? Math.log10(@value) : 0
     IntegerConstant.new(value)
   end
 
   def log2
-    value = @value > 0 ? Math.log2(@value) : 0
+    value = @value.positive? ? Math.log2(@value) : 0
     IntegerConstant.new(value)
   end
 
   def mod(other)
-    value = other.to_numeric == 0 ? 0 : @value % other.to_numeric.to_v
+    value = other.to_numeric.zero? ? 0 : @value % other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -1101,7 +1104,7 @@ class IntegerConstant < AbstractValueElement
   end
 
   def sqrt
-    value = @value > 0 ? Math.sqrt(@value) : 0
+    value = @value.positive? ? Math.sqrt(@value) : 0
     IntegerConstant.new(value)
   end
 
@@ -1141,8 +1144,8 @@ class IntegerConstant < AbstractValueElement
 
   def sign
     result = 0
-    result = 1 if @value > 0
-    result = -1 if @value < 0
+    result = 1 if @value.positive?
+    result = -1 if @value.negative?
     IntegerConstant.new(result)
   end
 
@@ -1267,7 +1270,7 @@ class TextConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     unquoted = @value + other.to_v
-    quoted = '"' + unquoted + '"'
+    quoted = "\"#{unquoted}\""
     token = TextConstantToken.new(quoted)
     TextConstant.new(token)
   end
@@ -1278,7 +1281,7 @@ class TextConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     unquoted = @value + other.to_v
-    quoted = '"' + unquoted + '"'
+    quoted = "\"#{unquoted}\""
     token = TextConstantToken.new(quoted)
     TextConstant.new(token)
   end
@@ -1441,7 +1444,7 @@ class FileHandle < AbstractElement
     raise BASICRuntimeError, :te_fh_inv unless
       legals.include?(num.class.to_s)
 
-    raise BASICRuntimeError, :te_fnum_inv if num.to_i < 0
+    raise BASICRuntimeError, :te_fnum_inv if num.to_i.negative?
 
     @number = num.to_i
     @file_handle = true
@@ -1460,7 +1463,7 @@ class FileHandle < AbstractElement
   end
 
   def to_s
-    '#' + @number.to_s
+    "##{@number}"
   end
 
   def to_i
@@ -1834,7 +1837,7 @@ class Variable < AbstractElement
     if subscripts.empty?
       @variable_name.to_s
     else
-      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
+      "#{@variable_name}(#{@subscripts.join(',')})"
     end
   end
 
@@ -1842,7 +1845,7 @@ class Variable < AbstractElement
     if subscripts.empty?
       @variable_name.to_s
     else
-      @variable_name.to_s + '(' + @wrapped_subscripts.join(',') + ')'
+      "#{@variable_name}(#{@wrapped_subscripts.join(',')})"
     end
   end
 
@@ -2116,7 +2119,7 @@ class Declaration < AbstractElement
     if subscripts.empty?
       @variable_name.to_s
     else
-      @variable_name.to_s + '(' + @subscripts.join(',') + ')'
+      "#{@variable_name}(#{@subscripts.join(',')})"
     end
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BASICError < RuntimeError; end
 
 class BASICCommandError < BASICError; end
@@ -24,7 +26,7 @@ class BASICTrappableError < BASICError
 
     return message if @extra.nil?
 
-    message + ' for ' + @extra.to_s
+    "#{message} for #{@extra}"
   end
 end
 

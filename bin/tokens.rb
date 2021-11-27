@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # abstract token
 class AbstractToken
   def self.pretty_tokens(keywords, tokens)
@@ -344,7 +346,7 @@ class NumericConstantToken < AbstractToken
   end
 
   def negate
-    @text = @text[0] == '-' ? @text[1..-1] : '-' + @text
+    @text = @text[0] == '-' ? @text[1..-1] : "-#{@text}"
   end
 
   def to_f

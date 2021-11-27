@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # tokenizer class
 class Tokenizer
   def initialize(tokenbuilders, invalid_tokenbuilder)

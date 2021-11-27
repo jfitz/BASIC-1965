@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # function (provides a scalar)
 class AbstractFunction < AbstractElement
   attr_reader :name, :default_shape, :content_type, :shape, :constant, :warnings
@@ -167,7 +169,7 @@ class AbstractFunction < AbstractElement
   end
 
   def check_square(dims)
-    raise(BASICSyntaxError, @name + ' requires matrix') unless dims.size == 2
+    raise(BASICSyntaxError, "#{@name} requires matrix") unless dims.size == 2
 
     raise BASICRuntimeError.new(:te_mat_no_sq, @name) unless
       dims[1] == dims[0]

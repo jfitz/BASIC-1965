@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Common routines for readers
 module Reader
   def ascii_printables(text)
@@ -100,7 +102,7 @@ class ConsoleIo
       print_out(c)
       @column += 1
 
-      newline if $options['print_width'].value > 0 &&
+      newline if $options['print_width'].value.positive? &&
                  @column >= $options['print_width'].value
     end
 
@@ -156,7 +158,7 @@ class ConsoleIo
   def space_after_numeric
     count = 1
 
-    while @column > 0 && count > 0
+    while @column.positive? && count.positive?
       print_item(' ')
       count -= 1
     end
@@ -173,7 +175,7 @@ class ConsoleIo
   end
 
   def newline_when_needed
-    newline if @column > 0
+    newline if @column.positive?
   end
 
   def implied_newline
@@ -191,16 +193,16 @@ class ConsoleIo
 
   def delay
     sleep(1.0 / $options['print_speed'].value) if
-      $options['print_speed'].value > 0
+      $options['print_speed'].value.positive?
   end
 
   def newline_delay
     sleep(1.0 / $options['print_speed'].value) if
-      $options['print_speed'].value > 0 &&
+      $options['print_speed'].value.positive? &&
       $options['newline_speed'].value.zero?
 
     sleep(1.0 / $options['newline_speed'].value) if
-      $options['newline_speed'].value > 0
+      $options['newline_speed'].value.positive?
   end
 end
 
@@ -310,7 +312,7 @@ class FileHandler
       @rec_number = -1
     end
 
-    @file.close unless @file.nil?
+    @file&.close
   end
 
   def to_s

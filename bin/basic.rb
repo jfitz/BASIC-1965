@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# frozen_string_literal: true
 
 require 'benchmark'
 require 'optparse'
@@ -56,9 +57,9 @@ class Option
     when :float
       v.to_s
     when :string
-      '"' + v.to_s + '"'
+      "\"#{v}\""
     when :list
-      '"' + v.to_s + '"'
+      "\"#{v}\""
     end
   end
 
@@ -227,7 +228,7 @@ class Shell
       $options.each do |option|
         name = option[0].upcase
         value = option[1].to_s.upcase
-        lines << ('OPTION ' + name + ' ' + value)
+        lines << ("OPTION #{name} #{value}")
       end
     elsif args.size == 1
       kwd = args[0].to_s
@@ -237,7 +238,7 @@ class Shell
         $options.key?(kwd_d)
 
       value = $options[kwd_d].to_s.upcase
-      lines << ('OPTION ' + kwd + ' ' + value)
+      lines << ("OPTION #{kwd} #{value}")
     elsif args.size == 2
       kwd = args[0].to_s
       kwd_d = kwd.downcase
@@ -264,7 +265,7 @@ class Shell
       end
 
       value = $options[kwd_d].value.to_s.upcase
-      lines << ('OPTION ' + kwd + ' ' + value.to_s) if echo_set
+      lines << ("OPTION #{kwd} #{value}") if echo_set
     else
       raise BASICCommandError, 'Too many arguments'
     end
@@ -338,7 +339,7 @@ class Shell
       if keywords.include?('OPTION')
         option_lines = option_command([], false)
         option_lines.each do |line|
-          lines << ('.' + line)
+          lines << (".#{line}")
         end
       end
 
@@ -347,7 +348,7 @@ class Shell
       if keywords.include?('BREAK')
         break_lines = @interpreter.set_breakpoints([])
         break_lines.each do |line|
-          lines << ('.' + line)
+          lines << (".#{line}")
         end
       end
 
@@ -448,7 +449,7 @@ class Shell
 
     need_prompt
   rescue BASICCommandError, BASICRuntimeError, BASICSyntaxError => e
-    line = keyword.to_s + ' ' + args.map(&:to_s).join(' ')
+    line = "#{keyword} #{args.map(&:to_s).join(' ')}"
     @console_io.print_line(line)
     @console_io.print_line(e.to_s)
     @console_io.newline
@@ -808,7 +809,7 @@ end
 
 # list the source
 unless list_filename.nil?
-  token = TextConstantToken.new('"' + list_filename + '"')
+  token = TextConstantToken.new("\"#{list_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -817,18 +818,17 @@ unless list_filename.nil?
     interpreter.program_optimize
 
     texts = interpreter.program_list('', list_tokens)
-    texts.each { |text| console_io.print_line(text) }
   else
     texts = interpreter.program_errors
-    texts.each { |text| console_io.print_line(text) }
   end
+  texts.each { |text| console_io.print_line(text) }
 
   console_io.newline
 end
 
 # show parse dump
 unless parse_filename.nil?
-  token = TextConstantToken.new('"' + parse_filename + '"')
+  token = TextConstantToken.new("\"#{parse_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -837,18 +837,17 @@ unless parse_filename.nil?
     interpreter.program_optimize
 
     texts = interpreter.program_parse('')
-    texts.each { |text| console_io.print_line(text) }
   else
     texts = interpreter.program_errors
-    texts.each { |text| console_io.print_line(text) }
   end
+  texts.each { |text| console_io.print_line(text) }
 
   console_io.newline
 end
 
 # show analysis
 unless analyze_filename.nil?
-  token = TextConstantToken.new('"' + analyze_filename + '"')
+  token = TextConstantToken.new("\"#{analyze_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -865,7 +864,7 @@ end
 
 # pretty-print the source
 unless pretty_filename.nil?
-  token = TextConstantToken.new('"' + pretty_filename + '"')
+  token = TextConstantToken.new("\"#{pretty_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -883,7 +882,7 @@ end
 
 # cross-reference the source
 unless cref_filename.nil?
-  token = TextConstantToken.new('"' + cref_filename + '"')
+  token = TextConstantToken.new("\"#{cref_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -900,7 +899,7 @@ end
 
 # run the source
 unless run_filename.nil?
-  token = TextConstantToken.new('"' + run_filename + '"')
+  token = TextConstantToken.new("\"#{run_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)

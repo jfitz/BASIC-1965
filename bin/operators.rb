@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Unary scalar operators
 class UnaryOperator < AbstractElement
   @operators = ['+', '-', '#']
@@ -602,11 +604,12 @@ class BinaryOperator < AbstractElement
 
   def multiply_matrix_matrix(a, b)
     dim_counts = [a.dimensions.size, b.dimensions.size]
-    if dim_counts == [2, 1]
+    case dim_counts
+    when [2, 1]
       multiply_matrix_matrix_2_1(a, b)
-    elsif dim_counts == [1, 2]
+    when [1, 2]
       multiply_matrix_matrix_1_2(a, b)
-    elsif dim_counts == [2, 2]
+    when [2, 2]
       multiply_matrix_matrix_2_2(a, b)
     else
       raise(BASICExpressionError,
