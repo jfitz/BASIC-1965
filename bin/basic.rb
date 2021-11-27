@@ -227,7 +227,7 @@ class Shell
       $options.each do |option|
         name = option[0].upcase
         value = option[1].to_s.upcase
-        lines << 'OPTION ' + name + ' ' + value
+        lines << ('OPTION ' + name + ' ' + value)
       end
     elsif args.size == 1
       kwd = args[0].to_s
@@ -237,7 +237,7 @@ class Shell
         $options.key?(kwd_d)
 
       value = $options[kwd_d].to_s.upcase
-      lines << 'OPTION ' + kwd + ' ' + value
+      lines << ('OPTION ' + kwd + ' ' + value)
     elsif args.size == 2
       kwd = args[0].to_s
       kwd_d = kwd.downcase
@@ -264,7 +264,7 @@ class Shell
       end
 
       value = $options[kwd_d].value.to_s.upcase
-      lines << 'OPTION ' + kwd + ' ' + value.to_s if echo_set
+      lines << ('OPTION ' + kwd + ' ' + value.to_s) if echo_set
     else
       raise BASICCommandError, 'Too many arguments'
     end
@@ -338,7 +338,7 @@ class Shell
       if keywords.include?('OPTION')
         option_lines = option_command([], false)
         option_lines.each do |line|
-          lines << '.' + line
+          lines << ('.' + line)
         end
       end
 
@@ -347,7 +347,7 @@ class Shell
       if keywords.include?('BREAK')
         break_lines = @interpreter.set_breakpoints([])
         break_lines.each do |line|
-          lines << '.' + line
+          lines << ('.' + line)
         end
       end
 

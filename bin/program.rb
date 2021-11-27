@@ -669,10 +669,10 @@ class Program
 
       statements.each do |statement|
         errors = statement.errors
-        errors.each { |error| texts << error + " in line #{line_number}" }
+        errors.each { |error| texts << (error + " in line #{line_number}") }
 
         errors = statement.program_errors
-        errors.each { |error| texts << error + " in line #{line_number}" }
+        errors.each { |error| texts << (error + " in line #{line_number}") }
       end
     end
 
@@ -987,7 +987,7 @@ class Program
       line_origins = line.origins
       line_origins = [] if line_origins.nil?
       origs = line_origins.sort.uniq.map(&:to_s).join(', ')
-      texts << '  Origs: ' + origs
+      texts << ('  Origs: ' + origs)
 
       # check all origins are consistent for GOSUB
       any_gosub = false
@@ -1002,7 +1002,7 @@ class Program
       line_dests = line.destinations
       line_dests = [] if line_dests.nil?
       dests = line_dests.sort.uniq.map(&:to_s).join(', ')
-      texts << '  Dests: ' + dests
+      texts << ('  Dests: ' + dests)
     end
 
     texts << ''
@@ -1031,10 +1031,10 @@ class Program
   def code_statistics
     lines = []
 
-    lines << 'Number of lines: ' + @lines.size.to_s
-    lines << 'Number of valid statements: ' + number_valid_statements.to_s
-    lines << 'Number of comments: ' + number_comments.to_s
-    lines << 'Number of executable statements: ' + number_exec_statements.to_s
+    lines << ('Number of lines: ' + @lines.size.to_s)
+    lines << ('Number of valid statements: ' + number_valid_statements.to_s)
+    lines << ('Number of comments: ' + number_comments.to_s)
+    lines << ('Number of executable statements: ' + number_exec_statements.to_s)
   end
 
   def number_valid_statements
@@ -1140,7 +1140,7 @@ class Program
     difficulty = (n1.to_f / 2) * (nn2.to_f / n2) if n2 > 0
     effort = difficulty * volume
     language_level = 0
-    language_level = volume / difficulty**2 if difficulty > 0
+    language_level = volume / (difficulty**2) if difficulty > 0
     intelligence = 0
     intelligence = volume / difficulty if difficulty > 0
     time = effort / (60 * 18) # 18 is the Stoud number for programming
@@ -1252,21 +1252,21 @@ class Program
     num_valid = number_valid_statements
     density = 0
     density = num_comm.to_f / num_valid.to_f if num_valid > 0
-    lines << 'Comment density: ' + ('%.3f' % density)
+    lines << ('Comment density: ' + ('%.3f' % density))
 
-    lines << 'Comprehension effort: ' + comprehension_effort.to_s
+    lines << ('Comprehension effort: ' + comprehension_effort.to_s)
 
-    lines << 'McCabe complexity: ' + mccabe_complexity.to_s
+    lines << ('McCabe complexity: ' + mccabe_complexity.to_s)
 
     lines << 'Halstead complexity:'
     length, vocabulary, volume, difficulty, effort, language, intelligence, time = halstead
-    lines << ' length: ' + length.to_s
-    lines << ' volume: ' + ('%.3f' % volume)
-    lines << ' difficulty: ' + ('%.3f' % difficulty)
-    lines << ' effort: ' + ('%.3f' % effort)
-    lines << ' language: ' + ('%.3f' % language)
-    lines << ' intelligence: ' + ('%.3f' % intelligence)
-    lines << ' time: ' + ('%.3f' % time)
+    lines << (' length: ' + length.to_s)
+    lines << (' volume: ' + ('%.3f' % volume))
+    lines << (' difficulty: ' + ('%.3f' % difficulty))
+    lines << (' effort: ' + ('%.3f' % effort))
+    lines << (' language: ' + ('%.3f' % language))
+    lines << (' intelligence: ' + ('%.3f' % intelligence))
+    lines << (' time: ' + ('%.3f' % time))
   end
 
   public
@@ -1506,7 +1506,7 @@ class Program
           for_level < 0
 
         if stmt_control == control ||
-           stmt_control.empty? && for_level.zero?
+           (stmt_control.empty? && for_level.zero?)
           return LineStmt.new(line_number, stmt)
         end
       end
@@ -1560,7 +1560,7 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      lines << line_number.to_s + line.list
+      lines << (line_number.to_s + line.list)
     end
 
     lines
@@ -1792,7 +1792,7 @@ class Program
       lines = refs[ref]
       line_refs = lines.sort.map(&:to_s).uniq.join(', ')
 
-      texts << token + ':' + spaces + line_refs
+      texts << (token + ':' + spaces + line_refs)
     end
 
     texts
@@ -1821,13 +1821,13 @@ class Program
         n_spaces = num_spaces - token.size + 2
         spaces = ' ' * n_spaces
 
-        texts << token + ':' + spaces + line_refs
+        texts << (token + ':' + spaces + line_refs)
       else
         n_spaces = 5
         spaces = ' ' * n_spaces
 
-        texts << token + ':'
-        texts << spaces + line_refs
+        texts << (token + ':')
+        texts << (spaces + line_refs)
       end
     end
 
@@ -1865,12 +1865,12 @@ class Program
 
     unless unused.empty?
       texts << ''
-      texts << 'Assigned but not used: ' + unused.join(', ')
+      texts << ('Assigned but not used: ' + unused.join(', '))
     end
 
     unless unassigned.empty?
       texts << ''
-      texts << 'Used but not assigned: ' + unassigned.join(', ')
+      texts << ('Used but not assigned: ' + unassigned.join(', '))
     end
 
     texts
@@ -2029,21 +2029,21 @@ class Program
       line = @lines[line_number]
 
       # print the line
-      texts << line_number.to_s + line.list
+      texts << (line_number.to_s + line.list)
 
-      line.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      line.warnings.each { |warning| texts << (' WARNING: ' + warning) }
 
       statements = line.statements
 
       # print the errors
       statements.each do |statement|
-        statement.errors.each { |error| texts << ' ' + error }
-        statement.program_errors.each { |error| texts << ' ' + error }
+        statement.errors.each { |error| texts << (' ' + error) }
+        statement.program_errors.each { |error| texts << (' ' + error) }
       end
 
       # print the warnings
       statements.each do |statement|
-        statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+        statement.warnings.each { |warning| texts << (' WARNING: ' + warning) }
       end
 
       next unless list_tokens
@@ -2051,7 +2051,7 @@ class Program
       tokens = line.tokens
       text_tokens = tokens.map(&:to_s)
 
-      texts << 'TOKENS: ' + text_tokens.to_s
+      texts << ('TOKENS: ' + text_tokens.to_s)
     end
 
     texts
@@ -2064,27 +2064,27 @@ class Program
       line = @lines[line_number]
 
       # print the line
-      texts << line_number.to_s + line.list
+      texts << (line_number.to_s + line.list)
 
-      line.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      line.warnings.each { |warning| texts << (' WARNING: ' + warning) }
 
       statements = line.statements
 
       # print the errors
       statements.each do |statement|
-        statement.errors.each { |error| texts << ' ' + error }
-        statement.program_errors.each { |error| texts << ' ' + error }
+        statement.errors.each { |error| texts << (' ' + error) }
+        statement.program_errors.each { |error| texts << (' ' + error) }
       end
 
       # print the warnings
       statements.each do |statement|
-        statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+        statement.warnings.each { |warning| texts << (' WARNING: ' + warning) }
       end
 
       # print the line components
       statements.each do |statement|
         parses = statement.dump
-        parses.each { |text| texts << ' ' + text }
+        parses.each { |text| texts << (' ' + text) }
       end
     end
 
@@ -2102,23 +2102,23 @@ class Program
       pretty_lines = line.pretty(pretty_multiline)
 
       pretty_lines.each do |pretty_line|
-        texts << number + pretty_line
+        texts << (number + pretty_line)
         number = ' ' * number.size
       end
 
-      line.warnings.each { |warning| texts << ' WARNING: ' + warning }
+      line.warnings.each { |warning| texts << (' WARNING: ' + warning) }
 
       statements = line.statements
 
       # print the errors
       statements.each do |statement|
-        statement.errors.each { |error| texts << ' ' + error }
-        statement.program_errors.each { |error| texts << ' ' + error }
+        statement.errors.each { |error| texts << (' ' + error) }
+        statement.program_errors.each { |error| texts << (' ' + error) }
       end
 
       # print the warnings
       statements.each do |statement|
-        statement.warnings.each { |warning| texts << ' WARNING: ' + warning }
+        statement.warnings.each { |warning| texts << (' WARNING: ' + warning) }
       end
     end
 
