@@ -150,25 +150,24 @@ Halstead complexity:
   Dests: :stop
 (0 2) 900 DATA 7, 18, 5, 5, 20, 9, 14, 7, 19, 0, 6, 18, 15, 13, 0, 20, 8, 5, 0
   Origs: 
-  Dests: 910:auto
+  Dests: 
 (0 2) 910 DATA 4, 1, 18, 20, 13, 15, 21, 20, 8, 0, 20, 9, 13, 5, 19, 8, 1, 18, 9, 14, 7, 0
-  Origs: 900:auto
-  Dests: 920:auto
+  Origs: 
+  Dests: 
 (0 2) 920 DATA 19, 25, 19, 20, 5, 13
-  Origs: 910:auto
-  Dests: 930:auto
+  Origs: 
+  Dests: 
 (0 1) 930 REM DATA 20,19,12,14,23,22,15,14,1,3,19,19,22,22,3,6,9,12,9,7,14,19,0,22,18,7,21,15
-  Origs: 920:auto
-  Dests: 931:auto
+  Origs: 
+  Dests: 
 (0 1) 931 REM DATA 9,23,22,14,12,1,11,14,19,16,23,10,13,20,5,1,23,18,14
-  Origs: 930:auto
-  Dests: 999:auto
+  Origs: 
+  Dests: 
 (0 3) 999 DATA -1
-  Origs: 931:auto
-  Dests: 1000:auto
+  Origs: 
+  Dests: 
 (0 1) 1000 REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
-  Origs: 260:gosub, 999:auto
-  Inconsistent GOSUB origins
+  Origs: 260:gosub
   Dests: 1010:auto
 (1 4) 1010 IF X > 0 THEN 1040
   Origs: 1000:auto

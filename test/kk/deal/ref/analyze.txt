@@ -39,10 +39,9 @@ Halstead complexity:
   Dests: :stop
 (0 0) 70 
   Origs: 
-  Dests: 1000:auto
+  Dests: 
 (0 1) 1000 REM SET UP DECK
-  Origs: 10:gosub, 70:auto
-  Inconsistent GOSUB origins
+  Origs: 10:gosub
   Dests: 1010:auto
 (0 2) 1010 DIM L(51)
   Origs: 1000:auto
@@ -61,10 +60,9 @@ Halstead complexity:
   Dests: 
 (0 0) 1060 
   Origs: 
-  Dests: 2000:auto
+  Dests: 
 (0 1) 2000 REM DEAL A CARD
-  Origs: 30:gosub, 1060:auto
-  Inconsistent GOSUB origins
+  Origs: 30:gosub
   Dests: 2010:auto
 (0 4) 2010 LET I = INT(52 * RND(1))
   Origs: 2000:auto, 2030:ifthen
@@ -83,10 +81,9 @@ Halstead complexity:
   Dests: 
 (0 0) 2060 
   Origs: 
-  Dests: 3000:auto
+  Dests: 
 (0 1) 3000 REM PRINT A CARD
-  Origs: 40:gosub, 2060:auto
-  Inconsistent GOSUB origins
+  Origs: 40:gosub
   Dests: 3010:auto
 (0 4) 3010 LET S = INT(X / 13)
   Origs: 3000:auto

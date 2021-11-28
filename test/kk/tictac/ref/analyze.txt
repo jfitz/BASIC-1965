@@ -183,10 +183,9 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 210:goto
 (0 0) 640 
   Origs: 
-  Dests: 650:auto
+  Dests: 
 (0 2) 650 GOSUB 700
-  Origs: 250:gosub, 290:gosub, 380:gosub, 520:gosub, 640:auto
-  Inconsistent GOSUB origins
+  Origs: 250:gosub, 290:gosub, 380:gosub, 520:gosub
   Dests: 660:auto, 700:gosub
 (0 2) 660 PRINT "YOUR MOVE";
   Origs: 650:auto
@@ -199,19 +198,18 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Dests: 
 (0 0) 690 
   Origs: 
-  Dests: 700:auto
+  Dests: 
 (0 3) 700 PRINT "COMPUTER MOVES"; M
-  Origs: 340:gosub, 430:gosub, 480:gosub, 570:gosub, 610:gosub, 650:gosub, 690:auto
-  Inconsistent GOSUB origins
+  Origs: 340:gosub, 430:gosub, 480:gosub, 570:gosub, 610:gosub, 650:gosub
   Dests: 710:auto
 (0 1) 710 RETURN
   Origs: 700:auto
   Dests: 
 (0 0) 720 
   Origs: 
-  Dests: 730:auto
+  Dests: 
 (0 2) 730 PRINT "AND WINS ********"
-  Origs: 350:goto, 440:goto, 490:goto, 580:goto, 720:auto
+  Origs: 350:goto, 440:goto, 490:goto, 580:goto
   Dests: 740:auto
 (0 3) 740 GOTO 210
   Origs: 730:auto

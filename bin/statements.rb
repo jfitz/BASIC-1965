@@ -381,7 +381,7 @@ class AbstractStatement
     @transfers_auto = []
 
     # convert auto-next to TransferRefLineStmt
-    if @autonext && @autonext_line_stmt
+    if @autonext && @autonext_line_stmt && (@executable || @origins.size.positive?)
       dest_line_number = @autonext_line_stmt.line_number
       dest_stmt = @autonext_line_stmt.statement
 

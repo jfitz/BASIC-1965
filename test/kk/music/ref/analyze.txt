@@ -360,9 +360,9 @@ FNC(_) (0 6) 20 DEF FNC(X) = X - 7 * INT(X / 7)
   Dests: 6000:goto
 (0 0) 1640 
   Origs: 
-  Dests: 4000:auto
+  Dests: 
 (0 1) 4000 REM  REJECT CHORD
-  Origs: 760:ifthen, 1600:ifthen, 1640:auto
+  Origs: 760:ifthen, 1600:ifthen
   Dests: 4001:auto
 (0 1) 4001 NEXT I
   Origs: 510:fornext, 4000:auto
@@ -405,9 +405,9 @@ FNC(_) (0 6) 20 DEF FNC(X) = X - 7 * INT(X / 7)
   Dests: 510:goto
 (0 0) 5220 
   Origs: 
-  Dests: 6000:auto
+  Dests: 
 (0 1) 6000 REM  PRINT RESULTS
-  Origs: 460:ifthen, 1630:goto, 5220:auto
+  Origs: 460:ifthen, 1630:goto
   Dests: 6001:auto
 (0 7) 6001 PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
   Origs: 6000:auto

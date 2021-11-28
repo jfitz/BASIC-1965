@@ -963,18 +963,6 @@ class Program
     texts = []
 
     build_line_destinations
-
-    # add marker for entry point (first active line)
-    first_line_number_stmt_mod = find_first_statement
-    line_number = first_line_number_stmt_mod.line_number
-    line = @lines[line_number]
-    unless line.nil?
-      empty_line_number = LineNumber.new(nil)
-      xfer = TransferRefLine.new(empty_line_number, :start)
-      stmt = 0
-      line.add_statement_origin(stmt, xfer)
-    end
-
     build_line_origins
 
     @lines.keys.sort.each do |line_number|
@@ -1410,14 +1398,25 @@ class Program
   end
 
   def set_transfers
+    @lines.each { |_, line| line.clear_origins }
+
+    # add marker for entry point (first active line)
+    first_line_number_stmt_mod = find_first_statement
+    line_number = first_line_number_stmt_mod.line_number
+    line = @lines[line_number]
+    unless line.nil?
+      empty_line_number = LineNumber.new(nil)
+      xfer = TransferRefLine.new(empty_line_number, :start)
+      stmt = 0
+      line.add_statement_origin(stmt, xfer)
+    end
+
     @lines.each do |_, line|
       line.set_transfers(@user_function_start_lines)
     end
   end
 
   def transfers_to_origins
-    @lines.each { |_, line| line.clear_origins }
-
     @lines.each do |line_number, line|
       line.transfers_to_origins(self, line_number)
     end

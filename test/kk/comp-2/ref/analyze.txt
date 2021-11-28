@@ -84,9 +84,9 @@ Halstead complexity:
   Dests: 5:goto
 (0 0) 150 
   Origs: 
-  Dests: 200:auto
+  Dests: 
 (0 1) 200 REM FIND FINAL AMOUNT
-  Origs: 40:ifthen, 150:auto
+  Origs: 40:ifthen
   Dests: 210:auto
 (0 2) 210 GOSUB 1000
   Origs: 200:auto
@@ -105,9 +105,9 @@ Halstead complexity:
   Dests: 5:goto
 (0 0) 250 
   Origs: 
-  Dests: 300:auto
+  Dests: 
 (0 1) 300 REM FIND PAYMENT
-  Origs: 50:ifthen, 250:auto
+  Origs: 50:ifthen
   Dests: 310:auto
 (0 2) 310 GOSUB 1000
   Origs: 300:auto
@@ -123,9 +123,9 @@ Halstead complexity:
   Dests: 5:goto
 (0 0) 350 
   Origs: 
-  Dests: 400:auto
+  Dests: 
 (0 1) 400 REM FIND NUMBER OF YEARS
-  Origs: 60:ifthen, 350:auto
+  Origs: 60:ifthen
   Dests: 410:auto
 (0 2) 410 GOSUB 1000
   Origs: 400:auto
@@ -147,9 +147,9 @@ Halstead complexity:
   Dests: 5:goto
 (0 0) 450 
   Origs: 
-  Dests: 500:auto
+  Dests: 
 (0 1) 500 REM FIND ANNUAL INTEREST
-  Origs: 70:ifthen, 450:auto
+  Origs: 70:ifthen
   Dests: 505:auto
 (0 9) 505 LET S = B - (A + Y * T * P)
   Origs: 500:auto
@@ -186,9 +186,9 @@ Halstead complexity:
   Dests: 5:goto
 (0 0) 570 
   Origs: 
-  Dests: 800:auto
+  Dests: 
 (0 1) 800 REM ERROR ROUTINE
-  Origs: 21:ifthen, 22:ifthen, 23:ifthen, 24:ifthen, 25:ifthen, 570:auto
+  Origs: 21:ifthen, 22:ifthen, 23:ifthen, 24:ifthen, 25:ifthen
   Dests: 810:auto
 (0 2) 810 PRINT "INCORRECT DATA. PLEASE RETYPE."
   Origs: 800:auto
@@ -204,10 +204,9 @@ Halstead complexity:
   Dests: 5:goto
 (0 0) 999 
   Origs: 
-  Dests: 1000:auto
+  Dests: 
 (0 1) 1000 REM COMPUTE BASIC QUANTITIES
-  Origs: 110:gosub, 210:gosub, 310:gosub, 410:gosub, 520:gosub, 999:auto
-  Inconsistent GOSUB origins
+  Origs: 110:gosub, 210:gosub, 310:gosub, 410:gosub, 520:gosub
   Dests: 1010:auto
 (0 4) 1010 LET N = Y * T
   Origs: 1000:auto

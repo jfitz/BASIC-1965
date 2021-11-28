@@ -111,12 +111,12 @@ Halstead complexity:
   Dests: 600:goto
 (0 0) 380 
   Origs: 
-  Dests: 390:auto
+  Dests: 
 (0 1) 390 REM PLAYER'S MOVE.
-  Origs: 380:auto
-  Dests: 400:auto
+  Origs: 
+  Dests: 
 (0 2) 400 PRINT "YOUR MOVE";
-  Origs: 340:goto, 390:auto, 537:ifthen, 560:goto
+  Origs: 340:goto, 537:ifthen, 560:goto
   Dests: 410:auto
 (1 2) 410 INPUT M
   Origs: 400:auto
@@ -183,9 +183,9 @@ Halstead complexity:
   Dests: 400:goto
 (0 0) 595 
   Origs: 
-  Dests: 600:auto
+  Dests: 
 (0 1) 600 REM MACHINE'S MOVE
-  Origs: 370:goto, 538:goto, 540:goto, 595:auto
+  Origs: 370:goto, 538:goto, 540:goto
   Dests: 610:auto
 (0 2) 610 GOSUB 1000
   Origs: 600:auto
@@ -231,10 +231,9 @@ Halstead complexity:
   Dests: 820:goto
 (0 0) 895 
   Origs: 
-  Dests: 1000:auto
+  Dests: 
 (0 1) 1000 REM SELECT A MOVE
-  Origs: 610:gosub, 895:auto
-  Inconsistent GOSUB origins
+  Origs: 610:gosub
   Dests: 1010:auto
 (1 3) 1010 FOR P = 1 TO 8
   Origs: 1000:auto

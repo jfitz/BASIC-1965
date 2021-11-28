@@ -63,9 +63,9 @@ FNR(_) (0 4) 100 DEF FNR(X) = INT(X * 1E3 + .5) / 1E3
   Dests: 210:goto
 (0 0) 260 
   Origs: 
-  Dests: 270:auto
+  Dests: 
 (1 4) 270 FOR I = 2 TO N - 1
-  Origs: 220:ifthen, 260:auto
+  Origs: 220:ifthen
   Dests: 280:fornext, 350:fornext
 (0 3) 280 LET S = 0
   Origs: 270:fornext

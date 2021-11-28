@@ -81,10 +81,9 @@ Halstead complexity:
   Dests: :stop
 (0 0) 499 
   Origs: 
-  Dests: 500:auto
+  Dests: 
 (0 1) 500 REM ROLL DICE
-  Origs: 20:gosub, 100:gosub, 499:auto
-  Inconsistent GOSUB origins
+  Origs: 20:gosub, 100:gosub
   Dests: 510:auto
 (0 4) 510 LET D1 = INT(6 * RND(1) + 1)
   Origs: 500:auto

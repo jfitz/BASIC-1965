@@ -75,10 +75,9 @@ Halstead complexity:
   Dests: :stop
 (0 0) 170 
   Origs: 
-  Dests: 200:auto
+  Dests: 
 (1 4) 200 IF X > 0 THEN 250
-  Origs: 60:gosub, 80:gosub, 95:gosub, 110:gosub, 170:auto
-  Inconsistent GOSUB origins
+  Origs: 60:gosub, 80:gosub, 95:gosub, 110:gosub
   Dests: 210:auto, 250:ifthen
 (0 2) 210 PRINT "FALSE",
   Origs: 200:auto

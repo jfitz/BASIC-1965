@@ -72,10 +72,9 @@ Halstead complexity:
   Dests: 500:goto
 (0 0) 270 
   Origs: 
-  Dests: 300:auto
+  Dests: 
 (0 1) 300 REM TESTS F AS A FACTOR
-  Origs: 180:gosub, 200:gosub, 270:auto
-  Inconsistent GOSUB origins
+  Origs: 180:gosub, 200:gosub
   Dests: 310:auto
 (1 6) 310 IF N / F <> INT(N / F) THEN 410
   Origs: 300:auto, 400:goto
@@ -109,9 +108,9 @@ Halstead complexity:
   Dests: 
 (0 0) 420 
   Origs: 
-  Dests: 500:auto
+  Dests: 
 (0 1) 500 REM ALL DONE
-  Origs: 240:goto, 260:goto, 390:ifthen, 420:auto
+  Origs: 240:goto, 260:goto, 390:ifthen
   Dests: 510:auto
 (0 2) 510 PRINT
   Origs: 500:auto

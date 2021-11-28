@@ -801,9 +801,9 @@ Halstead complexity:
   Dests: 2380:goto
 (0 1) 2460 REM OVERHEATING THE REACTOR
   Origs: 
-  Dests: 2470:auto
+  Dests: 
 (0 4) 2470 PRINT "YOU HAVE WASTED "; F; "UNITS OF ENERGY"
-  Origs: 2410:ifthen, 2460:auto
+  Origs: 2410:ifthen
   Dests: 2480:auto
 (0 2) 2480 PRINT "THE REACTOR IS CRITICALLY OVERHEATED"
   Origs: 2470:auto
@@ -822,9 +822,9 @@ Halstead complexity:
   Dests: 2640:goto
 (0 1) 2530 REM WENT TOO FAR
   Origs: 
-  Dests: 2540:auto
+  Dests: 
 (0 2) 2540 PRINT "WHERE ARE YOU GOING? THE BATTLE IS IN THE"
-  Origs: 2510:ifthen, 2530:auto
+  Origs: 2510:ifthen
   Dests: 2550:auto
 (0 2) 2550 PRINT "OPPOSITE DIRECTION"
   Origs: 2540:auto

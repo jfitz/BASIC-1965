@@ -81,9 +81,9 @@ Halstead complexity:
   Dests: 210:goto
 (0 0) 300 
   Origs: 
-  Dests: 310:auto
+  Dests: 
 (0 1) 310 REM TEST FOR WIN
-  Origs: 260:ifthen, 300:auto
+  Origs: 260:ifthen
   Dests: 320:auto
 (0 4) 320 LET N = N - X
   Origs: 310:auto
@@ -111,9 +111,9 @@ Halstead complexity:
   Dests: 120:goto
 (0 0) 400 
   Origs: 
-  Dests: 410:auto
+  Dests: 
 (0 1) 410 REM MACHINE'S MOVE
-  Origs: 330:ifthen, 400:auto
+  Origs: 330:ifthen
   Dests: 420:auto
 (0 4) 420 LET Q = INT((N - 1) / (K + 1))
   Origs: 410:auto
@@ -147,9 +147,9 @@ Halstead complexity:
   Dests: 210:goto
 (0 0) 520 
   Origs: 
-  Dests: 530:auto
+  Dests: 
 (0 1) 530 REM MAKE RANDOM MOVE
-  Origs: 440:ifthen, 520:auto
+  Origs: 440:ifthen
   Dests: 540:auto
 (1 4) 540 IF N > 1 THEN 570
   Origs: 530:auto
@@ -168,9 +168,9 @@ Halstead complexity:
   Dests: 450:goto
 (0 0) 590 
   Origs: 
-  Dests: 600:auto
+  Dests: 
 (0 1) 600 REM MACHINE LOST
-  Origs: 480:ifthen, 590:auto
+  Origs: 480:ifthen
   Dests: 610:auto
 (0 2) 610 PRINT "YOU WIN ***"
   Origs: 600:auto
