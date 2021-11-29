@@ -330,7 +330,7 @@ class Interpreter
       begin
         # run each statement
         # start with the first line number
-        @current_line_stmt_mod = @program.find_first_statement
+        @current_line_stmt_mod = @program.first_line_number_stmt_mod
         @running = true
 
         execute_step while @running
