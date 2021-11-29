@@ -703,29 +703,11 @@ class Program
   end
 
   def find_first_statement
-    # set next line to first statement
-    line_number = first_line_number
-    line = lines[line_number]
-
-    statements = line.statements
-    stmt = 0
-    part_of_user_function = nil
-
-    # find next statement within the current line
-    stmt += 1 while
-      stmt < statements.size &&
-      statements[stmt].part_of_user_function != part_of_user_function
-
-    if stmt < statements.size
-      start_mod = statements[stmt].start_index
-
-      return LineStmtMod.new(line_number, stmt, start_mod)
-    end
-
     # find the next statement in a following line
     line_numbers = @lines.keys.sort
-    index = line_numbers.index(line_number) + 1
+    index = 0
     line_number = line_numbers[index]
+    part_of_user_function = nil
 
     until line_number.nil?
       line = @lines[line_number]
