@@ -20,10 +20,10 @@ Halstead complexity:
  time: 12.380
 
 (0 1) 10 REM BLACKJACK
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 2) 20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE YES"
-  Origs: 10:auto, 80:goto, 1140:goto
+  Origs: :start, 80:goto, 1140:goto
   Dests: 30:auto
 (0 2) 30 PRINT "IF NOT TYPE NO"
   Origs: 20:auto

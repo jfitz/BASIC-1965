@@ -702,36 +702,6 @@ class Program
     nil
   end
 
-  def find_first_statement
-    line_numbers = @lines.keys.sort
-    index = 0
-    line_number = line_numbers[index]
-    part_of_user_function = nil
-
-    until line_number.nil?
-      line = @lines[line_number]
-
-      statements = line.statements
-      stmt = 0
-
-      stmt += 1 while
-        stmt < statements.size &&
-        statements[stmt].part_of_user_function != part_of_user_function
-
-      if stmt < statements.size
-        start_mod = statements[stmt].start_index
-
-        return LineStmtMod.new(line_number, stmt, start_mod)
-      end
-
-      index += 1
-      line_number = line_numbers[index]
-    end
-
-    # nothing left to execute
-    nil
-  end
-
   def find_next_line_stmt(current_line_stmt)
     # find next index with current statement
     line_number = current_line_stmt.line_number
@@ -848,44 +818,6 @@ class Program
     @user_function_start_lines[function_signature]
   end
 
-  private
-
-  def line_list_spec(tokens)
-    line_numbers = @lines.keys.sort
-    LineListSpec.new(tokens, line_numbers)
-  end
-
-  def renumber_spec(tokens)
-    start = 10
-    step = 10
-
-    i = 0
-
-    # do not change to each_with_index
-    # separator tokens are still present
-    tokens.each do |token|
-      next unless token.class.to_s == 'NumericConstantToken'
-
-      case i
-      when 0
-        # first number is step
-        step = token.to_i
-        start = token.to_i
-      when 1
-        # second number is start
-        start = token.to_i
-      end
-
-      i += 1
-    end
-
-    raise(BASICCommandError, 'Invalid renumber step') if step.zero?
-
-    [start, step]
-  end
-
-  public
-
   def list(args, list_tokens)
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
@@ -998,6 +930,98 @@ class Program
   end
 
   private
+
+  def line_list_spec(tokens)
+    line_numbers = @lines.keys.sort
+    LineListSpec.new(tokens, line_numbers)
+  end
+
+  def renumber_spec(tokens)
+    start = 10
+    step = 10
+
+    i = 0
+
+    # do not change to each_with_index
+    # separator tokens are still present
+    tokens.each do |token|
+      next unless token.class.to_s == 'NumericConstantToken'
+
+      case i
+      when 0
+        # first number is step
+        step = token.to_i
+        start = token.to_i
+      when 1
+        # second number is start
+        start = token.to_i
+      end
+
+      i += 1
+    end
+
+    raise(BASICCommandError, 'Invalid renumber step') if step.zero?
+
+    [start, step]
+  end
+
+  def find_first_statement
+    line_numbers = @lines.keys.sort
+    index = 0
+    line_number = line_numbers[index]
+    part_of_user_function = nil
+
+    until line_number.nil?
+      line = @lines[line_number]
+
+      statements = line.statements
+      stmt = 0
+
+      stmt += 1 while
+        stmt < statements.size &&
+        (!statements[stmt].executable ||
+        statements[stmt].part_of_user_function != part_of_user_function)
+
+      if stmt < statements.size
+        start_mod = statements[stmt].start_index
+
+        return LineStmtMod.new(line_number, stmt, start_mod)
+      end
+
+      index += 1
+      line_number = line_numbers[index]
+    end
+
+    # no executable line found
+    # try lines that are not executable
+    
+    index = 0
+    line_number = line_numbers[index]
+    part_of_user_function = nil
+
+    until line_number.nil?
+      line = @lines[line_number]
+
+      statements = line.statements
+      stmt = 0
+
+      stmt += 1 while
+        stmt < statements.size &&
+        statements[stmt].part_of_user_function != part_of_user_function
+
+      if stmt < statements.size
+        start_mod = statements[stmt].start_index
+
+        return LineStmtMod.new(line_number, stmt, start_mod)
+      end
+
+      index += 1
+      line_number = line_numbers[index]
+    end
+
+    # nothing left to execute
+    nil
+  end
 
   def code_statistics
     lines = []

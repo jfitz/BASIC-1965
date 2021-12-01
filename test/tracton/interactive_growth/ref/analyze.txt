@@ -20,22 +20,22 @@ Halstead complexity:
  time: 5.538
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 REM A QUANTITY Y THE DESTROYER AND A QUANTITY X
-  Origs: 10:auto
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 (0 1) 30 REM THE CREATOR. X CAN PROPOGATE, AND ON A
-  Origs: 20:auto
-  Dests: 40:auto
+  Origs: 
+  Dests: 
 (0 1) 40 REM CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
-  Origs: 30:auto
-  Dests: 50:auto
+  Origs: 
+  Dests: 
 (0 1) 50 REM THUS INCREASING THE NUMBER OF YS.
-  Origs: 40:auto
-  Dests: 60:auto
+  Origs: 
+  Dests: 
 (0 2) 60 PRINT "NUMBER OF DESTROYERS (Y) = ";
-  Origs: 50:auto, 620:goto
+  Origs: :start, 620:goto
   Dests: 70:auto
 (1 2) 70 INPUT Y
   Origs: 60:auto

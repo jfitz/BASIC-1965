@@ -20,13 +20,13 @@ Halstead complexity:
  time: 0.061
 
 (0 1) 10 REM TEST TARGET LINE NUMBER PRECHECK
-  Origs: :start
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 FNA(_) (0 3) 20 DEF FNA(T) = T * 4
   Origs: 40:goto
   Dests: 
 (0 2) 30 PRINT "START PROGRAM"
-  Origs: 10:auto
+  Origs: :start
   Dests: 40:auto
 (0 3) 40 GOTO 20
   Origs: 30:auto

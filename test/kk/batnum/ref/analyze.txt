@@ -20,13 +20,13 @@ Halstead complexity:
  time: 7.518
 
 (0 1) 100 REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
-  Origs: :start
-  Dests: 110:auto
+  Origs: 
+  Dests: 
 (0 0) 110 
-  Origs: 100:auto
-  Dests: 120:auto
+  Origs: 
+  Dests: 
 (0 5) 120 LET N = 20 + INT(80 * RND(X))
-  Origs: 110:auto, 390:goto
+  Origs: :start, 390:goto
   Dests: 130:auto
 (0 5) 130 LET K = 5 + INT(10 * RND(X))
   Origs: 120:auto

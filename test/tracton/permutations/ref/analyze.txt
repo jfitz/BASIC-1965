@@ -20,16 +20,16 @@ Halstead complexity:
  time: 4.611
 
 (0 1) 10 REM THIS PROGRAM COMPUTES PERMUTATIONS
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 REM AND COMBINATIONS, WHERE N = NUMBER OF
-  Origs: 10:auto
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 (0 1) 30 REM ITEMS AND R = SIZE OF GROUP SELECTED
-  Origs: 20:auto
-  Dests: 40:auto
+  Origs: 
+  Dests: 
 (0 2) 40 PRINT "ENTER N,R";
-  Origs: 30:auto, 260:goto, 280:goto, 300:goto
+  Origs: :start, 260:goto, 280:goto, 300:goto
   Dests: 50:auto
 (2 3) 50 INPUT N, R
   Origs: 40:auto

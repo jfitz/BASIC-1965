@@ -20,16 +20,16 @@ Halstead complexity:
  time: 13.850
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE COMPONENTS
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 REM REQUIRED FOR A PI OR T TYPE
-  Origs: 10:auto
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 (0 1) 30 REM RESISTIVE ATTENUATOR
-  Origs: 20:auto
-  Dests: 40:auto
+  Origs: 
+  Dests: 
 (0 2) 40 PRINT "INPUT RESISTANCE R(IN) = ";
-  Origs: 30:auto, 410:goto
+  Origs: :start, 410:goto
   Dests: 50:auto
 (1 2) 50 INPUT R1
   Origs: 40:auto

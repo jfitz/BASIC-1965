@@ -20,28 +20,28 @@ Halstead complexity:
  time: 27.345
 
 (0 1) 10 REM GALILEO'S CIRCLE BECOMES A STRAIGHT LINE
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 REM FROM DISCOURSE ON TWO SCIENCES
-  Origs: 10:auto
-  Dests: 50:auto
+  Origs: 
+  Dests: 
 (0 1) 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
-  Origs: 20:auto
-  Dests: 60:auto
+  Origs: 
+  Dests: 
 FNL(_,_,_,_) (0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 2)
   Origs: 221:function, 222:function, 231:function, 232:function, 424:function, 425:function
   Dests: 
 (0 1) 60 REM CONVERT DEGREES TO RADIANS
-  Origs: 50:auto
-  Dests: 100:auto
+  Origs: 
+  Dests: 
 FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Origs: 421:function
   Dests: 
 (0 1) 100 REM POINT A
-  Origs: 60:auto
-  Dests: 101:auto
+  Origs: 
+  Dests: 
 (2 3) 101 READ A1, A2
-  Origs: 100:auto
+  Origs: :start
   Dests: 110:auto
 (0 1) 110 REM CIRCLE AT POINT D WITH RADIUS DC
   Origs: 101:auto

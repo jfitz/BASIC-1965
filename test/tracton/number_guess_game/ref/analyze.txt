@@ -20,19 +20,19 @@ Halstead complexity:
  time: 1.259
 
 (0 1) 10 REM THE COMPUTER CHOOSES A NUMBER FROM
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 REM 1 TO 100 AT RANDOM, THE OBJECT OF
-  Origs: 10:auto
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 (0 1) 30 REM THE GAME IS TO GUESS THE CHOSEN
-  Origs: 20:auto
-  Dests: 40:auto
+  Origs: 
+  Dests: 
 (0 1) 40 REM NUMBER IN AS FEW GUESSES AS POSSIBLE
-  Origs: 30:auto
-  Dests: 50:auto
+  Origs: 
+  Dests: 
 (0 5) 50 LET R = 1 + INT(100 * RND)
-  Origs: 40:auto, 270:goto
+  Origs: :start, 270:goto
   Dests: 60:auto
 (0 3) 60 LET Y = 0
   Origs: 50:auto

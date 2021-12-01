@@ -20,13 +20,13 @@ Halstead complexity:
  time: 7.023
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE PERCENTAGES OF THE
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 REM PRODUCTS PRODUCED BY HYDROCARBON COMBUSTION
-  Origs: 10:auto
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 (0 2) 30 PRINT "FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO"
-  Origs: 20:auto, 80:goto, 520:goto
+  Origs: :start, 80:goto, 520:goto
   Dests: 40:auto
 (0 1) 40 INPUT I $
    Syntax error: "I$" Token 'InvalidToken:$' is not a value or operator

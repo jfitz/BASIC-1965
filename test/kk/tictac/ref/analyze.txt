@@ -20,40 +20,40 @@ Halstead complexity:
  time: 12.920
 
 (0 1) 100 REM THIS PROGRAM PLAYS TIC TAC TOE
-  Origs: :start
-  Dests: 110:auto
+  Origs: 
+  Dests: 
 (0 1) 110 REM MACHINE PLAYS FIRST, SIMPLE OUTPUT ONLY
-  Origs: 100:auto
-  Dests: 120:auto
+  Origs: 
+  Dests: 
 (0 1) 120 REM GAME BOARD NUMBERED:  1  2  3
-  Origs: 110:auto
-  Dests: 130:auto
+  Origs: 
+  Dests: 
 (0 1) 130 REM                       8  9  4
-  Origs: 120:auto
-  Dests: 140:auto
+  Origs: 
+  Dests: 
 (0 1) 140 REM                       7  6  5
-  Origs: 130:auto
-  Dests: 150:auto
+  Origs: 
+  Dests: 
 (0 1) 150 REM FOLLOWS THE BLOCK DIAGRAM
-  Origs: 140:auto
-  Dests: 160:auto
+  Origs: 
+  Dests: 
 (0 0) 160 
-  Origs: 150:auto
-  Dests: 170:auto
+  Origs: 
+  Dests: 
 (0 1) 170 REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
-  Origs: 160:auto
-  Dests: 190:auto
+  Origs: 
+  Dests: 
 FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Origs: 270:function, 320:function, 360:function, 410:function, 460:function, 500:function, 550:function, 590:function
   Dests: 
 (0 1) 190 REM
-  Origs: 170:auto
-  Dests: 200:auto
+  Origs: 
+  Dests: 
 (0 1) 200 REM NOW WE START THE PROGRAM
-  Origs: 190:auto
-  Dests: 210:auto
+  Origs: 
+  Dests: 
 (0 2) 210 PRINT
-  Origs: 200:auto, 630:goto, 740:goto
+  Origs: :start, 630:goto, 740:goto
   Dests: 220:auto
 (0 2) 220 PRINT
   Origs: 210:auto

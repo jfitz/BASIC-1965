@@ -20,14 +20,14 @@ Halstead complexity:
  time: 4.450
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THE GAME OF CRAPS
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 
    Unknown statement 'RANDOMIZE'
-  Origs: 10:auto
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 (0 2) 30 PRINT " FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
-  Origs: 20:auto, 80:goto, 410:goto
+  Origs: :start, 80:goto, 410:goto
   Dests: 40:auto
 (0 1) 40 INPUT R $
    Syntax error: "R$" Token 'InvalidToken:$' is not a value or operator

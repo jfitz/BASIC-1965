@@ -20,10 +20,10 @@ Halstead complexity:
  time: 0.027
 
 (0 1) 10 REM TEST OF CONSTANT EXPRESSION
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (1 4) 20 IF 3 < 7 THEN 90
-  Origs: 10:auto
+  Origs: :start
   Dests: 30:auto, 90:ifthen
 (0 2) 30 PRINT "FAILURE"
   Origs: 20:auto

@@ -20,10 +20,10 @@ Halstead complexity:
  time: 0.235
 
 (0 1) 10 REM This is a test
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (1 2) 20 READ A
-  Origs: 10:auto, 50:goto
+  Origs: :start, 50:goto
   Dests: 30:auto
 (0 4) 30 LET B = FIX(A)
   Origs: 20:auto

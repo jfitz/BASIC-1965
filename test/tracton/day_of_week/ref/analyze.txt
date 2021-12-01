@@ -20,14 +20,14 @@ Halstead complexity:
  time: 3.819
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE DAY OF THE WEEK
-  Origs: :start
-  Dests: 20:auto
+  Origs: 
+  Dests: 
 (0 1) 20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
-  Origs: 10:auto
-  Dests: 30:auto
+  Origs: 
+  Dests: 
 (0 1) 30 LET J $ (1) = "SUNDAY"
    Token 'InvalidToken:$' is not a value or operator
-  Origs: 20:auto, 350:goto
+  Origs: :start, 350:goto
   Dests: 40:auto
 (0 1) 40 LET J $ (2) = "MONDAY"
    Token 'InvalidToken:$' is not a value or operator
