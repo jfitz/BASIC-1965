@@ -750,14 +750,6 @@ class Interpreter
     @program.line_number?(line_number)
   end
 
-  def find_next_line_stmt
-    @program.find_next_line_stmt(@current_line_stmt_mod)
-  end
-
-  def find_next_line_stmt_mod
-    @program.find_next_line_stmt_mod(@current_line_stmt_mod)
-  end
-
   def statement_start_index(line_number)
     line = @program.lines[line_number]
 
