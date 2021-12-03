@@ -76,10 +76,10 @@ then
 
     echo Analyze program with options $GROUP_OPTIONS $TEST_OPTIONS $ANALYZE_OPTIONS
     cd "$TESTBED/$TESTNAME"
-    ruby basic.rb --analyze $TESTNAME.bas --no-heading --print-width 0 >analyze.txt $GROUP_OPTIONS $TEST_OPTIONS $ANALYZE_OPTIONS
+    ruby basic.rb --analyze $TESTNAME.bas --no-heading --print-width 0 >analyze.txt 2>analyze.err $GROUP_OPTIONS $TEST_OPTIONS $ANALYZE_OPTIONS
     cd ../..
 
-    echo Compare analyze...
+    echo Compare analyze stdout...
     diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.txt" "$TESTBED/$TESTNAME/analyze.txt"
     ((ECODE=$?))
 
@@ -87,6 +87,19 @@ then
     then
 	((NUM_FAIL+=1))
 	cp "$TESTBED/$TESTNAME/analyze.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.txt"
+    fi
+
+    if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.err" ]
+    then
+	echo Compare analyze stderr...
+	diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.err" "$TESTBED/$TESTNAME/analyze.err"
+	((ECODE=$?))
+
+	if [ $ECODE -ne 0 ]
+	then
+	    ((NUM_FAIL+=1))
+	    cp "$TESTBED/$TESTNAME/analyze.err" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/analyze.err"
+	fi
     fi
 fi
 
