@@ -1217,7 +1217,6 @@ class EndStatement < AbstractStatement
     super
 
     @autonext = false
-    @executable = false
 
     template = []
 
