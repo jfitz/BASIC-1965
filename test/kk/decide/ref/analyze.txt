@@ -48,12 +48,12 @@ Halstead complexity:
   Dests: 95:auto
 (0 1) 95 NEXT I
   Origs: 20:fornext, 90:auto
-  Dests: 99:auto
-(0 0) 99 
-  Origs: 95:auto
   Dests: 100:auto
+(0 0) 99 
+  Origs: 
+  Dests: 
 (0 2) 100 PRINT "SELECTED ACTS: ";
-  Origs: 40:ifthen, 99:auto
+  Origs: 40:ifthen, 95:auto
   Dests: 105:auto
 (1 6) 105 FOR I = I - 1 TO 0 STEP -1
   Origs: 100:auto
@@ -132,99 +132,99 @@ Halstead complexity:
   Dests: 420:auto
 (0 3) 420 PRINT "EXPECTED GAIN = $" V(0)
   Origs: 410:auto
-  Dests: 430:auto
-(0 0) 430 
-  Origs: 420:auto
-  Dests: 900:auto
-(0 3) 900 DATA -3, 1, 1, 2, 2, 3, 3
-  Origs: 430:auto
-  Dests: 901:auto
-(0 2) 901 DATA 2, .5, 4, 0.5, 5
-  Origs: 900:auto
-  Dests: 902:auto
-(0 2) 902 DATA 0, 0
-  Origs: 901:auto
-  Dests: 903:auto
-(0 2) 903 DATA 3, 0.333, 6, 0.167, 7, 0.5, 8
-  Origs: 902:auto
-  Dests: 904:auto
-(0 2) 904 DATA 0, 100
-  Origs: 903:auto
-  Dests: 905:auto
-(0 3) 905 DATA -2, 4, 9, 5, 10
-  Origs: 904:auto
-  Dests: 906:auto
-(0 2) 906 DATA 2, 0.5, 11, 0.5, 12
-  Origs: 905:auto
-  Dests: 907:auto
-(0 3) 907 DATA 0, -10
-  Origs: 906:auto
-  Dests: 908:auto
-(0 2) 908 DATA 2, 0.75, 13, 0.25, 14
-  Origs: 907:auto
-  Dests: 909:auto
-(0 2) 909 DATA 3, 0.167, 15, 0.333, 16, 0.5, 17
-  Origs: 908:auto
-  Dests: 910:auto
-(0 3) 910 DATA 0, -100
-  Origs: 909:auto
-  Dests: 911:auto
-(0 2) 911 DATA 0, 90
-  Origs: 910:auto
-  Dests: 912:auto
-(0 3) 912 DATA -2, 6, 18, 7, 19
-  Origs: 911:auto
-  Dests: 913:auto
-(0 2) 913 DATA 0, 90
-  Origs: 912:auto
-  Dests: 914:auto
-(0 3) 914 DATA -2, 8, 20, 9, 21
-  Origs: 913:auto
-  Dests: 915:auto
-(0 2) 915 DATA 0, 100
-  Origs: 914:auto
-  Dests: 916:auto
-(0 2) 916 DATA 0, 0
-  Origs: 915:auto
-  Dests: 917:auto
-(0 3) 917 DATA 0, -100
-  Origs: 916:auto
-  Dests: 918:auto
-(0 2) 918 DATA 3, 0.167, 22, 0.333, 23, 0.5, 24
-  Origs: 917:auto
-  Dests: 919:auto
-(0 3) 919 DATA 0, -110
-  Origs: 918:auto
-  Dests: 920:auto
-(0 2) 920 DATA 3, 0.167, 25, 0.333, 26, 0.5, 27
-  Origs: 919:auto
-  Dests: 921:auto
-(0 3) 921 DATA 0, -110
-  Origs: 920:auto
-  Dests: 922:auto
-(0 2) 922 DATA 0, 90
-  Origs: 921:auto
-  Dests: 923:auto
-(0 3) 923 DATA 0, -10
-  Origs: 922:auto
-  Dests: 924:auto
-(0 3) 924 DATA 0, -110
-  Origs: 923:auto
-  Dests: 925:auto
-(0 2) 925 DATA 0, 90
-  Origs: 924:auto
-  Dests: 926:auto
-(0 3) 926 DATA 0, -10
-  Origs: 925:auto
-  Dests: 927:auto
-(0 3) 927 DATA 0, -110
-  Origs: 926:auto
-  Dests: 998:auto
-(0 2) 998 DATA 999
-  Origs: 927:auto
   Dests: 999:auto
+(0 0) 430 
+  Origs: 
+  Dests: 
+(0 3) 900 DATA -3, 1, 1, 2, 2, 3, 3
+  Origs: 
+  Dests: 
+(0 2) 901 DATA 2, .5, 4, 0.5, 5
+  Origs: 
+  Dests: 
+(0 2) 902 DATA 0, 0
+  Origs: 
+  Dests: 
+(0 2) 903 DATA 3, 0.333, 6, 0.167, 7, 0.5, 8
+  Origs: 
+  Dests: 
+(0 2) 904 DATA 0, 100
+  Origs: 
+  Dests: 
+(0 3) 905 DATA -2, 4, 9, 5, 10
+  Origs: 
+  Dests: 
+(0 2) 906 DATA 2, 0.5, 11, 0.5, 12
+  Origs: 
+  Dests: 
+(0 3) 907 DATA 0, -10
+  Origs: 
+  Dests: 
+(0 2) 908 DATA 2, 0.75, 13, 0.25, 14
+  Origs: 
+  Dests: 
+(0 2) 909 DATA 3, 0.167, 15, 0.333, 16, 0.5, 17
+  Origs: 
+  Dests: 
+(0 3) 910 DATA 0, -100
+  Origs: 
+  Dests: 
+(0 2) 911 DATA 0, 90
+  Origs: 
+  Dests: 
+(0 3) 912 DATA -2, 6, 18, 7, 19
+  Origs: 
+  Dests: 
+(0 2) 913 DATA 0, 90
+  Origs: 
+  Dests: 
+(0 3) 914 DATA -2, 8, 20, 9, 21
+  Origs: 
+  Dests: 
+(0 2) 915 DATA 0, 100
+  Origs: 
+  Dests: 
+(0 2) 916 DATA 0, 0
+  Origs: 
+  Dests: 
+(0 3) 917 DATA 0, -100
+  Origs: 
+  Dests: 
+(0 2) 918 DATA 3, 0.167, 22, 0.333, 23, 0.5, 24
+  Origs: 
+  Dests: 
+(0 3) 919 DATA 0, -110
+  Origs: 
+  Dests: 
+(0 2) 920 DATA 3, 0.167, 25, 0.333, 26, 0.5, 27
+  Origs: 
+  Dests: 
+(0 3) 921 DATA 0, -110
+  Origs: 
+  Dests: 
+(0 2) 922 DATA 0, 90
+  Origs: 
+  Dests: 
+(0 3) 923 DATA 0, -10
+  Origs: 
+  Dests: 
+(0 3) 924 DATA 0, -110
+  Origs: 
+  Dests: 
+(0 2) 925 DATA 0, 90
+  Origs: 
+  Dests: 
+(0 3) 926 DATA 0, -10
+  Origs: 
+  Dests: 
+(0 3) 927 DATA 0, -110
+  Origs: 
+  Dests: 
+(0 2) 998 DATA 999
+  Origs: 
+  Dests: 
 (0 1) 999 END
-  Origs: 998:auto
+  Origs: 420:auto
   Dests: :stop
 
 Unreachable code:

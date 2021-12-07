@@ -21,12 +21,12 @@ Halstead complexity:
 
 (0 5) 100 DIM X(100), Y(100), Z(200), T(200)
   Origs: :start
-  Dests: 110:auto
-(0 0) 110 
-  Origs: 100:auto
   Dests: 140:auto
+(0 0) 110 
+  Origs: 
+  Dests: 
 (2 3) 140 READ M, N
-  Origs: 110:auto
+  Origs: 100:auto
   Dests: 150:auto
 (1 3) 150 FOR I = 1 TO M
   Origs: 140:auto
@@ -45,12 +45,12 @@ Halstead complexity:
   Dests: 200:auto
 (0 1) 200 NEXT J
   Origs: 180:fornext, 190:auto
-  Dests: 210:auto
-(0 0) 210 
-  Origs: 200:auto
   Dests: 250:auto
+(0 0) 210 
+  Origs: 
+  Dests: 
 (1 3) 250 FOR K = 1 TO M
-  Origs: 210:auto
+  Origs: 200:auto
   Dests: 260:fornext, 280:fornext
 (0 3) 260 LET Z(K) = X(K)
   Origs: 250:fornext
@@ -72,12 +72,12 @@ Halstead complexity:
   Dests: 320:auto
 (0 1) 320 NEXT K
   Origs: 290:fornext, 310:auto
-  Dests: 330:auto
-(0 0) 330 
-  Origs: 320:auto
   Dests: 360:auto
+(0 0) 330 
+  Origs: 
+  Dests: 
 (1 5) 360 FOR K = 1 TO M + N - 1
-  Origs: 330:auto
+  Origs: 320:auto
   Dests: 370:fornext, 460:fornext
 (1 5) 370 FOR L = K + 1 TO M + N
   Origs: 360:fornext
@@ -108,12 +108,12 @@ Halstead complexity:
   Dests: 460:auto
 (0 1) 460 NEXT K
   Origs: 360:fornext, 450:auto
-  Dests: 470:auto
-(0 0) 470 
-  Origs: 460:auto
   Dests: 500:auto
+(0 0) 470 
+  Origs: 
+  Dests: 
 (0 3) 500 LET J = 1
-  Origs: 470:auto
+  Origs: 460:auto
   Dests: 510:auto
 (0 3) 510 LET K = 1
   Origs: 500:auto, 630:ifthen
@@ -153,12 +153,12 @@ Halstead complexity:
   Dests: 630:auto
 (1 7) 630 IF J <= M + N THEN 510
   Origs: 620:auto
-  Dests: 510:ifthen, 640:auto
+  Dests: 510:ifthen, 740:auto
 (0 0) 640 
-  Origs: 630:auto
-  Dests: 740:auto
+  Origs: 
+  Dests: 
 (0 3) 740 LET S(0) = 0
-  Origs: 640:auto
+  Origs: 630:auto
   Dests: 750:auto
 (0 3) 750 LET S(1) = 0
   Origs: 740:auto
@@ -174,21 +174,21 @@ Halstead complexity:
   Dests: 800:auto
 (0 5) 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
   Origs: 790:auto
-  Dests: 810:auto
-(0 0) 810 
-  Origs: 800:auto
-  Dests: 900:auto
-(0 2) 900 DATA 6, 4
-  Origs: 810:auto
-  Dests: 910:auto
-(0 2) 910 DATA 117, 145, 147, 120, 150, 120
-  Origs: 900:auto
-  Dests: 920:auto
-(0 2) 920 DATA 160, 160, 140, 190
-  Origs: 910:auto
   Dests: 999:auto
+(0 0) 810 
+  Origs: 
+  Dests: 
+(0 2) 900 DATA 6, 4
+  Origs: 
+  Dests: 
+(0 2) 910 DATA 117, 145, 147, 120, 150, 120
+  Origs: 
+  Dests: 
+(0 2) 920 DATA 160, 160, 140, 190
+  Origs: 
+  Dests: 
 (0 1) 999 END
-  Origs: 920:auto
+  Origs: 800:auto
   Dests: :stop
 
 Unreachable code:

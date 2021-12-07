@@ -36,21 +36,21 @@ Halstead complexity:
   Dests: 150:auto
 (0 1) 150 NEXT B
   Origs: 110:fornext, 140:auto
-  Dests: 160:auto
-(0 2) 160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
-  Origs: 150:auto
-  Dests: 170:auto
-(0 2) 170 DATA 0.641, 0.244, 0.05, 0.038, 0.673, 0.153, 0.073, 0.038, 0.651, 0.182, 0.106, 0.038
-  Origs: 160:auto
-  Dests: 180:auto
-(0 2) 180 DATA 0.704, 0.162, 0.079, 0.036, 0.709, 0.162, 0.071, 0.04, 0.836, 0.09, 0.053, 0.016
-  Origs: 170:auto
-  Dests: 190:auto
-(0 0) 190 
-  Origs: 180:auto
   Dests: 200:auto
+(0 2) 160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
+  Origs: 
+  Dests: 
+(0 2) 170 DATA 0.641, 0.244, 0.05, 0.038, 0.673, 0.153, 0.073, 0.038, 0.651, 0.182, 0.106, 0.038
+  Origs: 
+  Dests: 
+(0 2) 180 DATA 0.704, 0.162, 0.079, 0.036, 0.709, 0.162, 0.071, 0.04, 0.836, 0.09, 0.053, 0.016
+  Origs: 
+  Dests: 
+(0 0) 190 
+  Origs: 
+  Dests: 
 (1 3) 200 FOR R = 1 TO 4
-  Origs: 190:auto
+  Origs: 150:auto
   Dests: 210:fornext, 240:fornext
 (1 3) 210 FOR C = 0 TO 7
   Origs: 200:fornext
@@ -63,24 +63,24 @@ Halstead complexity:
   Dests: 240:auto
 (0 1) 240 NEXT R
   Origs: 200:fornext, 230:auto
-  Dests: 250:auto
-(0 2) 250 DATA 1, 5, 11, 15, 11, 15, 21, 25
-  Origs: 240:auto
-  Dests: 260:auto
-(0 2) 260 DATA 1, 3, 3, 7, 5, 7, 7, 17
-  Origs: 250:auto
-  Dests: 270:auto
-(0 2) 270 DATA 2, 12, 12, 22, 12, 22, 22, 32
-  Origs: 260:auto
-  Dests: 280:auto
-(0 2) 280 DATA 10, 20, 20, 30, 20, 30, 30, 40
-  Origs: 270:auto
-  Dests: 290:auto
-(0 0) 290 
-  Origs: 280:auto
   Dests: 300:auto
+(0 2) 250 DATA 1, 5, 11, 15, 11, 15, 21, 25
+  Origs: 
+  Dests: 
+(0 2) 260 DATA 1, 3, 3, 7, 5, 7, 7, 17
+  Origs: 
+  Dests: 
+(0 2) 270 DATA 2, 12, 12, 22, 12, 22, 22, 32
+  Origs: 
+  Dests: 
+(0 2) 280 DATA 10, 20, 20, 30, 20, 30, 30, 40
+  Origs: 
+  Dests: 
+(0 0) 290 
+  Origs: 
+  Dests: 
 (0 3) 300 LET S1 = 0
-  Origs: 290:auto
+  Origs: 240:auto
   Dests: 310:auto
 (0 3) 310 LET B = 0
   Origs: 300:auto
@@ -93,30 +93,30 @@ Halstead complexity:
   Dests: 340:auto
 (0 3) 340 LET I = 1
   Origs: 330:auto
-  Dests: 350:auto
-(0 0) 350 
-  Origs: 340:auto
   Dests: 360:auto
+(0 0) 350 
+  Origs: 
+  Dests: 
 (1 3) 360 FOR C = 0 TO 7
-  Origs: 350:auto
+  Origs: 340:auto
   Dests: 370:fornext, 380:fornext
 (1 2) 370 READ L(C)
   Origs: 360:fornext
   Dests: 380:auto
 (0 1) 380 NEXT C
   Origs: 360:fornext, 370:auto
-  Dests: 390:auto
+  Dests: 430:auto
 (0 2) 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
-  Origs: 380:auto
-  Dests: 400:auto
+  Origs: 
+  Dests: 
 (0 0) 400 
-  Origs: 390:auto
-  Dests: 410:auto
+  Origs: 
+  Dests: 
 (0 1) 410 REM NEW INNING
-  Origs: 400:auto, 945:ifthen
+  Origs: 945:ifthen
   Dests: 430:auto
 (0 3) 430 PRINT "INNING" I
-  Origs: 410:auto
+  Origs: 380:auto, 410:auto
   Dests: 450:auto
 (0 3) 450 LET S = 0
   Origs: 430:auto
@@ -126,30 +126,30 @@ Halstead complexity:
   Dests: 470:auto
 (0 3) 470 LET C = 0
   Origs: 460:auto
-  Dests: 480:auto
+  Dests: 500:auto
 (0 0) 480 
-  Origs: 470:auto
-  Dests: 490:auto
+  Origs: 
+  Dests: 
 (0 1) 490 REM NEW BATTER
-  Origs: 480:auto, 850:goto, 880:goto
+  Origs: 850:goto, 880:goto
   Dests: 500:auto
 (1 4) 500 IF B < 9 THEN 520
-  Origs: 490:auto
+  Origs: 470:auto, 490:auto
   Dests: 510:auto, 520:ifthen
 (0 3) 510 LET B = 0
   Origs: 500:auto
   Dests: 520:auto
 (0 4) 520 LET B = B + 1
   Origs: 500:ifthen, 510:auto
-  Dests: 530:auto
-(0 0) 530 
-  Origs: 520:auto
-  Dests: 540:auto
-(0 1) 540 REM DETERMINE OUTCOME
-  Origs: 530:auto
   Dests: 550:auto
+(0 0) 530 
+  Origs: 
+  Dests: 
+(0 1) 540 REM DETERMINE OUTCOME
+  Origs: 
+  Dests: 
 (0 4) 550 LET X = RND(0)
-  Origs: 540:auto
+  Origs: 520:auto
   Dests: 560:auto
 (1 3) 560 FOR R = 0 TO 3
   Origs: 550:auto
@@ -165,15 +165,15 @@ Halstead complexity:
   Dests: 600:auto
 (0 3) 600 LET R = 4
   Origs: 590:auto
-  Dests: 610:auto
+  Dests: 630:auto
 (0 0) 610 
-  Origs: 600:auto
-  Dests: 620:auto
+  Origs: 
+  Dests: 
 (0 1) 620 REM PRINT OUTCOME
-  Origs: 580:ifthen, 610:auto
+  Origs: 580:ifthen
   Dests: 630:auto
 (1 4) 630 IF R > 0 THEN 660
-  Origs: 620:auto
+  Origs: 600:auto, 620:auto
   Dests: 640:auto, 660:ifthen
 (0 2) 640 PRINT "OUT   ";
   Origs: 630:auto
@@ -210,15 +210,15 @@ Halstead complexity:
   Dests: 770:goto
 (0 2) 750 PRINT "HOME RUN   ";
   Origs: 720:ifthen
-  Dests: 760:auto
+  Dests: 780:auto
 (0 0) 760 
-  Origs: 750:auto
-  Dests: 770:auto
+  Origs: 
+  Dests: 
 (0 1) 770 REM DO BOOK-KEEPING
-  Origs: 650:goto, 680:goto, 710:goto, 740:goto, 760:auto
+  Origs: 650:goto, 680:goto, 710:goto, 740:goto
   Dests: 780:auto
 (1 4) 780 IF R = 0 THEN 860
-  Origs: 770:auto
+  Origs: 750:auto, 770:auto
   Dests: 790:auto, 860:ifthen
 (1 4) 790 IF R = 2 THEN 810
   Origs: 780:auto
@@ -276,15 +276,15 @@ Halstead complexity:
   Dests: 945:auto
 (1 5) 945 IF I < 9 THEN 410
   Origs: 940:auto
-  Dests: 410:ifthen, 950:auto
+  Dests: 410:ifthen, 960:auto
 (0 0) 950 
-  Origs: 945:auto
-  Dests: 955:auto
+  Origs: 
+  Dests: 
 (0 1) 955 REM PRINT RESULTS
-  Origs: 950:auto
-  Dests: 960:auto
+  Origs: 
+  Dests: 
 (0 2) 960 PRINT
-  Origs: 955:auto
+  Origs: 945:auto
   Dests: 965:auto
 (0 2) 965 PRINT "GAME TOTALS:"
   Origs: 960:auto

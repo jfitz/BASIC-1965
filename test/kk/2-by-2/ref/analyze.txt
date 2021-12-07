@@ -21,12 +21,12 @@ Halstead complexity:
 
 (0 4) 100 PRINT "TABLE", "   ", "CHI-SQUARE"
   Origs: :start
-  Dests: 110:auto
-(0 0) 110 
-  Origs: 100:auto
   Dests: 120:auto
+(0 0) 110 
+  Origs: 
+  Dests: 
 (0 2) 120 PRINT
-  Origs: 110:auto, 200:goto
+  Origs: 100:auto, 200:goto
   Dests: 130:auto
 (4 5) 130 READ A, B, C, D
   Origs: 120:auto
@@ -39,12 +39,12 @@ Halstead complexity:
   Dests: 160:auto
 (0 17) 160 LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
   Origs: 150:auto
-  Dests: 170:auto
-(0 0) 170 
-  Origs: 160:auto
   Dests: 180:auto
+(0 0) 170 
+  Origs: 
+  Dests: 
 (0 3) 180 PRINT A, B
-  Origs: 170:auto
+  Origs: 160:auto
   Dests: 190:auto
 (0 4) 190 PRINT C, D, X
   Origs: 180:auto

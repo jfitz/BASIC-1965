@@ -4,7 +4,6 @@
  S = 0
 120: LET S2 = 0
  S2 = 0
-130: 
 140: READ X
  X = 1
 150: IF X = 999999 THEN 210
@@ -203,7 +202,6 @@
  D: 3.02765
  M: 5.5
  C = 0.550482
-270: 
 280: PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
 NUMBER          SUM             SUM-SQUARES     MEAN            VARIANCE
 290: PRINT N, S, S2, M, V
@@ -234,7 +232,6 @@ STD. DEV.       PROB. ERR.      STD.ERR. MN.    COEFF. VAR.
 
 340: PRINT
 
-350: 
 360: LET N = 0
  N = 0
 370: LET S = 0
@@ -371,7 +368,6 @@ STD. DEV.       PROB. ERR.      STD.ERR. MN.    COEFF. VAR.
  D: 7.03325
  M: 9.66667
  C = 0.727577
-270: 
 280: PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
 NUMBER          SUM             SUM-SQUARES     MEAN            VARIANCE
 290: PRINT N, S, S2, M, V
@@ -402,7 +398,6 @@ STD. DEV.       PROB. ERR.      STD.ERR. MN.    COEFF. VAR.
 
 340: PRINT
 
-350: 
 360: LET N = 0
  N = 0
 370: LET S = 0
@@ -414,10 +409,6 @@ STD. DEV.       PROB. ERR.      STD.ERR. MN.    COEFF. VAR.
 400: IF X <> 999999 THEN 160
  X: 999999
  X <> 999999: false
-410: 
-900: DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
-910: DATA 4, 3, 9, 15, 21, 6, 999999
-998: DATA 999999
 999: END
 STOP in line 999
 

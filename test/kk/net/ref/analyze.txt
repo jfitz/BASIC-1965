@@ -42,12 +42,12 @@ FNR(_) (0 4) 100 DEF FNR(X) = INT(X * 1E3 + .5) / 1E3
   Dests: 190:auto
 (0 3) 190 LET B(1) = V
   Origs: 180:auto
-  Dests: 200:auto
-(0 0) 200 
-  Origs: 190:auto
   Dests: 210:auto
+(0 0) 200 
+  Origs: 
+  Dests: 
 (3 4) 210 READ I, J, R
-  Origs: 200:auto, 250:goto
+  Origs: 190:auto, 250:goto
   Dests: 220:auto
 (1 6) 220 IF I = -1 THEN 270
   Origs: 210:auto
@@ -90,21 +90,21 @@ FNR(_) (0 4) 100 DEF FNR(X) = INT(X * 1E3 + .5) / 1E3
   Dests: 350:auto
 (0 1) 350 NEXT I
   Origs: 270:fornext, 340:auto
-  Dests: 360:auto
-(0 0) 360 
-  Origs: 350:auto
   Dests: 370:auto
+(0 0) 360 
+  Origs: 
+  Dests: 
 (0 4) 370 MAT U = INV(C)
-  Origs: 360:auto
+  Origs: 350:auto
   Dests: 380:auto
 (0 4) 380 MAT P = U * B
   Origs: 370:auto
-  Dests: 390:auto
-(0 0) 390 
-  Origs: 380:auto
   Dests: 400:auto
+(0 0) 390 
+  Origs: 
+  Dests: 
 (0 3) 400 PRINT "NODE", "VOLTAGE"
-  Origs: 390:auto
+  Origs: 380:auto
   Dests: 410:auto
 (0 2) 410 PRINT
   Origs: 400:auto
@@ -123,12 +123,12 @@ FNR(_) (0 4) 100 DEF FNR(X) = INT(X * 1E3 + .5) / 1E3
   Dests: 460:auto
 (0 2) 460 PRINT
   Origs: 450:auto
-  Dests: 470:auto
-(0 0) 470 
-  Origs: 460:auto
   Dests: 480:auto
+(0 0) 470 
+  Origs: 
+  Dests: 
 (0 2) 480 PRINT "CURRENT FLOW"
-  Origs: 470:auto
+  Origs: 460:auto
   Dests: 490:auto
 (0 2) 490 PRINT
   Origs: 480:auto
@@ -165,33 +165,33 @@ FNR(_) (0 4) 100 DEF FNR(X) = INT(X * 1E3 + .5) / 1E3
   Dests: 600:auto
 (0 2) 600 PRINT
   Origs: 590:auto
-  Dests: 610:auto
-(0 0) 610 
-  Origs: 600:auto
   Dests: 620:auto
+(0 0) 610 
+  Origs: 
+  Dests: 
 (0 5) 620 PRINT "TOTAL CURRENT = " FNR(S1)
-  Origs: 610:auto
+  Origs: 600:auto
   Dests: 630:auto
 (0 5) 630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V / S1)
   Origs: 620:auto
-  Dests: 640:auto
-(0 0) 640 
-  Origs: 630:auto
-  Dests: 650:auto
-(0 2) 650 DATA 7, 24
-  Origs: 640:auto
-  Dests: 660:auto
-(0 2) 660 DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
-  Origs: 650:auto
-  Dests: 670:auto
-(0 2) 670 DATA 4, 5, 60, 5, 6, 60, 6, 7, 40
-  Origs: 660:auto
-  Dests: 680:auto
-(0 3) 680 DATA -1, 0, 0
-  Origs: 670:auto
   Dests: 690:auto
+(0 0) 640 
+  Origs: 
+  Dests: 
+(0 2) 650 DATA 7, 24
+  Origs: 
+  Dests: 
+(0 2) 660 DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
+  Origs: 
+  Dests: 
+(0 2) 670 DATA 4, 5, 60, 5, 6, 60, 6, 7, 40
+  Origs: 
+  Dests: 
+(0 3) 680 DATA -1, 0, 0
+  Origs: 
+  Dests: 
 (0 1) 690 END
-  Origs: 680:auto
+  Origs: 630:auto
   Dests: :stop
 
 Unreachable code:

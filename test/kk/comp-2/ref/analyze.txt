@@ -60,15 +60,15 @@ Halstead complexity:
   Dests: 70:auto, 400:ifthen
 (1 4) 70 IF R = 999 THEN 500
   Origs: 60:auto
-  Dests: 80:auto, 500:ifthen
+  Dests: 110:auto, 500:ifthen
 (0 0) 80 
-  Origs: 70:auto
-  Dests: 100:auto
+  Origs: 
+  Dests: 
 (0 1) 100 REM FIND ORIGINAL AMOUNT
-  Origs: 30:ifthen, 80:auto
+  Origs: 30:ifthen
   Dests: 110:auto
 (0 2) 110 GOSUB 1000
-  Origs: 100:auto
+  Origs: 70:auto, 100:auto
   Dests: 120:auto, 1000:gosub
 (0 6) 120 LET A = (B + P1) / R2 - P1
   Origs: 110:auto

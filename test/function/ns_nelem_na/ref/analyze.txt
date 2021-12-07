@@ -27,48 +27,48 @@ Halstead complexity:
   Dests: 22:auto
 (0 3) 22 LET B = 0
   Origs: 20:auto
-  Dests: 50:auto
-(0 2) 50 DATA 3
-  Origs: 22:auto
-  Dests: 52:auto
-(0 2) 52 DATA 3, 4, 8, 10
-  Origs: 50:auto
   Dests: 60:auto
+(0 2) 50 DATA 3
+  Origs: 
+  Dests: 
+(0 2) 52 DATA 3, 4, 8, 10
+  Origs: 
+  Dests: 
 (0 2) 60 GOSUB 400
-  Origs: 52:auto
-  Dests: 70:auto, 400:gosub
+  Origs: 22:auto
+  Dests: 80:auto, 400:gosub
 (0 2) 70 DATA 15
-  Origs: 60:auto
-  Dests: 72:auto
+  Origs: 
+  Dests: 
 (0 4) 72 DATA 1, 0, 2, -1, 3, 0, 0, 5, 2, 1, 4, -3, 1, 0, 5, 0
-  Origs: 70:auto
-  Dests: 80:auto
+  Origs: 
+  Dests: 
 (0 2) 80 GOSUB 400
-  Origs: 72:auto
+  Origs: 60:auto
   Dests: 120:auto, 400:gosub
 (0 2) 120 OPTION BASE 1
   Origs: 80:auto
   Dests: 122:auto
 (0 3) 122 LET B = 1
   Origs: 120:auto
-  Dests: 150:auto
-(0 2) 150 DATA 4
-  Origs: 122:auto
-  Dests: 152:auto
-(0 2) 152 DATA 9, 3, 4, 8
-  Origs: 150:auto
   Dests: 160:auto
+(0 2) 150 DATA 4
+  Origs: 
+  Dests: 
+(0 2) 152 DATA 9, 3, 4, 8
+  Origs: 
+  Dests: 
 (0 2) 160 GOSUB 400
-  Origs: 152:auto
-  Dests: 170:auto, 400:gosub
+  Origs: 122:auto
+  Dests: 180:auto, 400:gosub
 (0 2) 170 DATA 16
-  Origs: 160:auto
-  Dests: 172:auto
+  Origs: 
+  Dests: 
 (0 4) 172 DATA 4, 1, 0, 2, -1, 3, 0, 0, 5, 2, 1, 4, -3, 1, 0, 5
-  Origs: 170:auto
-  Dests: 180:auto
+  Origs: 
+  Dests: 
 (0 2) 180 GOSUB 400
-  Origs: 172:auto
+  Origs: 160:auto
   Dests: 199:auto, 400:gosub
 (0 1) 199 STOP
   Origs: 180:auto

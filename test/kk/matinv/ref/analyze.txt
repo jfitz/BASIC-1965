@@ -27,12 +27,12 @@ Halstead complexity:
   Dests: 120:auto
 (0 4) 120 MAT C = IDN(3, 3)
   Origs: 110:auto
-  Dests: 130:auto
-(0 0) 130 
-  Origs: 120:auto
   Dests: 200:auto
+(0 0) 130 
+  Origs: 
+  Dests: 
 (0 2) 200 PRINT "ALL ZEROES"
-  Origs: 130:auto
+  Origs: 120:auto
   Dests: 210:auto
 (0 2) 210 MAT PRINT A
   Origs: 200:auto
@@ -48,12 +48,12 @@ Halstead complexity:
   Dests: 250:auto
 (0 2) 250 MAT PRINT C
   Origs: 240:auto
-  Dests: 260:auto
-(0 0) 260 
-  Origs: 250:auto
   Dests: 300:auto
+(0 0) 260 
+  Origs: 
+  Dests: 
 (1 2) 300 MAT READ A
-  Origs: 260:auto
+  Origs: 250:auto
   Dests: 310:auto
 (0 2) 310 PRINT "SQUARE MATRIX"
   Origs: 300:auto
@@ -69,12 +69,12 @@ Halstead complexity:
   Dests: 350:auto
 (0 2) 350 MAT PRINT B
   Origs: 340:auto
-  Dests: 360:auto
-(0 0) 360 
-  Origs: 350:auto
   Dests: 400:auto
+(0 0) 360 
+  Origs: 
+  Dests: 
 (0 4) 400 MAT R = A * B
-  Origs: 360:auto
+  Origs: 350:auto
   Dests: 410:auto
 (0 4) 410 MAT R = R - C
   Origs: 400:auto
@@ -84,15 +84,15 @@ Halstead complexity:
   Dests: 430:auto
 (0 2) 430 MAT PRINT R
   Origs: 420:auto
-  Dests: 440:auto
-(0 0) 440 
-  Origs: 430:auto
-  Dests: 900:auto
-(0 2) 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5
-  Origs: 440:auto
   Dests: 999:auto
+(0 0) 440 
+  Origs: 
+  Dests: 
+(0 2) 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5
+  Origs: 
+  Dests: 
 (0 1) 999 END
-  Origs: 900:auto
+  Origs: 430:auto
   Dests: :stop
 
 Unreachable code:

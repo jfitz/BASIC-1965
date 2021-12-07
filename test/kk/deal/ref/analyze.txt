@@ -120,12 +120,12 @@ Halstead complexity:
   Dests: 3500:goto
 (0 2) 3120 PRINT "SPADE  ";
   Origs: 3090:ifthen
-  Dests: 3130:auto
-(0 0) 3130 
-  Origs: 3120:auto
   Dests: 3500:auto
+(0 0) 3130 
+  Origs: 
+  Dests: 
 (1 4) 3500 IF V > 8 THEN 3530
-  Origs: 3050:goto, 3080:goto, 3110:goto, 3130:auto
+  Origs: 3050:goto, 3080:goto, 3110:goto, 3120:auto
   Dests: 3510:auto, 3530:ifthen
 (0 3) 3510 PRINT V + 2
   Origs: 3500:auto

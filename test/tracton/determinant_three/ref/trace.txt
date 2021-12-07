@@ -11,7 +11,6 @@ ENTER 3 X 3 MATRIX
  G = 3
  H = 5
  I = 1
-40: REM COMPUTE DETERMINANT OF 3X3
 50: LET M = (A * E * I) + (B * F * G) + (C * H * D)
  A: 1
  E: 4
@@ -35,7 +34,6 @@ ENTER 3 X 3 MATRIX
  D: 2
  B: 4
  N = 6
-70: REM COMPUTE INVERSE
 80: LET O = ((E * I) - (H * F)) / N
  E: 4
  I: 1

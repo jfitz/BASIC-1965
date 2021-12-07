@@ -51,12 +51,12 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Dests: 30:goto
 (0 3) 100 PRINT "ONE ZERO AT" X
   Origs: 40:ifthen, 80:ifthen
-  Dests: 900:auto
-(0 2) 900 DATA 0, 1
-  Origs: 100:auto
   Dests: 999:auto
+(0 2) 900 DATA 0, 1
+  Origs: 
+  Dests: 
 (0 1) 999 END
-  Origs: 900:auto
+  Origs: 100:auto
   Dests: :stop
 
 Unreachable code:

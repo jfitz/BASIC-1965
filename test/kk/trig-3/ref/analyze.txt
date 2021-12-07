@@ -51,15 +51,15 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Dests: 190:auto, 290:ifthen
 (1 6) 190 IF FNR(S) = 1 THEN 320
   Origs: 180:auto
-  Dests: 195:auto, 320:ifthen
+  Dests: 210:auto, 320:ifthen
 (0 0) 195 
-  Origs: 190:auto
-  Dests: 200:auto
+  Origs: 
+  Dests: 
 (0 1) 200 REM TWO POINTS OF INTERSECTION
-  Origs: 195:auto
-  Dests: 210:auto
+  Origs: 
+  Dests: 
 (0 5) 210 LET T = S / SQR(1 - S ^ 2)
-  Origs: 200:auto
+  Origs: 190:auto
   Dests: 220:auto
 (0 6) 220 LET C = ATN(T) * 180 / P
   Origs: 210:auto

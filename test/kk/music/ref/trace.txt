@@ -5,8 +5,6 @@ NOTE NUMBER     CHORD
  S     A     T     B
 50: PRINT
 
-60: 
-100: REM  INITIALIZE.
 105: OPTION BASE 1
 110: MAT READ P
  P(1,1) = 5
@@ -45,8 +43,6 @@ NOTE NUMBER     CHORD
  P(6,4) = 6
  P(6,5) = 2
  P(6,6) = 4
-111: DATA 5, 4, 1, 6, 2, 3, 6, 4, 2, 1, 5, 3, 6, 4, 3, 1, 2, 5
-112: DATA 1, 5, 4, 6, 3, 2, 2, 6, 5, 4, 1, 3, 1, 5, 3, 6, 2, 4
 120: READ N9
  N9 = 28
 130: MAT READ M(N9)
@@ -79,9 +75,6 @@ NOTE NUMBER     CHORD
  M(26) = 1
  M(27) = 1
  M(28) = 0
-140: DATA 28
-150: DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1
-160: DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1, 1, 0
 170: OPTION BASE 0
 190: FOR V = 0 TO 4
  V = 0
@@ -125,10 +118,8 @@ NOTE NUMBER     CHORD
 210: NEXT V
  V: 4
  terminated:true
-220: DATA 1, 0, -3, -5, -7
 240: LET C2 = 1
  C2 = 1
-250: 
 450: FOR N = N9 TO 1 STEP -1
  N9: 28
  N = 28
@@ -164,7 +155,6 @@ NOTE NUMBER     CHORD
  N: 27
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -189,8 +179,6 @@ NOTE NUMBER     CHORD
  N: 27
  S: 1
  S(1,27) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -233,8 +221,6 @@ NOTE NUMBER     CHORD
  N: 27
  R: -10
  S(4,27) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -288,7 +274,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -480,8 +465,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -647,8 +630,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 5
@@ -837,8 +818,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -954,8 +933,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -1101,7 +1078,6 @@ NOTE NUMBER     CHORD
  N: 26
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -1126,8 +1102,6 @@ NOTE NUMBER     CHORD
  N: 26
  S: 1
  S(1,26) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -1171,8 +1145,6 @@ NOTE NUMBER     CHORD
  N: 26
  R: -6
  S(4,26) = -6
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -1226,7 +1198,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -1418,8 +1389,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -1493,8 +1462,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 2
@@ -1698,8 +1665,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -1876,8 +1841,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -2011,7 +1974,6 @@ NOTE NUMBER     CHORD
  N: 25
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -2036,8 +1998,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -2081,8 +2041,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -2
  S(4,25) = -2
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -2136,7 +2094,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -2328,8 +2285,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -2498,8 +2453,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -2655,8 +2608,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 4
  D(1) = -4
@@ -2700,8 +2651,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -4
  S(4,25) = -4
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -2755,7 +2704,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -2947,8 +2895,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -3170,8 +3116,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -3327,8 +3271,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -3365,8 +3307,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -6
  S(4,25) = -6
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -3450,8 +3390,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -3488,8 +3426,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -7
  S(4,25) = -7
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -3543,7 +3479,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -3735,8 +3670,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -3810,8 +3743,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 2
  C2: 1
@@ -4042,8 +3973,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -4199,8 +4128,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -4244,8 +4171,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -3
  S(4,25) = -3
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -4329,8 +4254,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 3
  D(1) = -5
@@ -4367,8 +4290,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -5
  S(4,25) = -5
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -4434,7 +4355,6 @@ NOTE NUMBER     CHORD
 4001: NEXT I
  I: 6
  terminated:true
-5000: REM  BACK UP
 5005: LET N = N + 1
  N: 25
  N = 26
@@ -4485,8 +4405,6 @@ NOTE NUMBER     CHORD
  N: 26
  S: 1
  S(1,26) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -4514,8 +4432,6 @@ NOTE NUMBER     CHORD
  N: 26
  R: -9
  S(4,26) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -4599,8 +4515,6 @@ NOTE NUMBER     CHORD
  N: 26
  S: 1
  S(1,26) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -4628,8 +4542,6 @@ NOTE NUMBER     CHORD
  N: 26
  R: -10
  S(4,26) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -4683,7 +4595,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -4875,8 +4786,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -5034,8 +4943,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 5
@@ -5175,8 +5082,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -5322,7 +5227,6 @@ NOTE NUMBER     CHORD
  N: 25
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -5347,8 +5251,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -5392,8 +5294,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -6
  S(4,25) = -6
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -5477,8 +5377,6 @@ NOTE NUMBER     CHORD
  N: 25
  S: 0
  S(1,25) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -5506,8 +5404,6 @@ NOTE NUMBER     CHORD
  N: 25
  R: -9
  S(4,25) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -5561,7 +5457,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -5753,8 +5648,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -5857,8 +5750,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -6062,8 +5953,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -6219,8 +6108,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -6360,7 +6247,6 @@ NOTE NUMBER     CHORD
  N: 24
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -6385,8 +6271,6 @@ NOTE NUMBER     CHORD
  N: 24
  S: 2
  S(1,24) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -6429,8 +6313,6 @@ NOTE NUMBER     CHORD
  N: 24
  R: -14
  S(4,24) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -6484,7 +6366,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -6676,8 +6557,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -6801,8 +6680,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -6991,8 +6868,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -7095,8 +6970,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -7285,8 +7158,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -7381,8 +7252,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -7528,7 +7397,6 @@ NOTE NUMBER     CHORD
  N: 23
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -7553,8 +7421,6 @@ NOTE NUMBER     CHORD
  N: 23
  S: 4
  S(1,23) = 4
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -7582,8 +7448,6 @@ NOTE NUMBER     CHORD
  N: 23
  R: -10
  S(4,23) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -7637,7 +7501,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -7829,8 +7692,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -7933,8 +7794,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 5
@@ -8138,8 +7997,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -8310,8 +8167,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -8451,7 +8306,6 @@ NOTE NUMBER     CHORD
  N: 22
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -8476,8 +8330,6 @@ NOTE NUMBER     CHORD
  N: 22
  S: 7
  S(1,22) = 7
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -8520,8 +8372,6 @@ NOTE NUMBER     CHORD
  N: 22
  R: -13
  S(4,22) = -13
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -8605,8 +8455,6 @@ NOTE NUMBER     CHORD
  N: 22
  S: 7
  S(1,22) = 7
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -8634,8 +8482,6 @@ NOTE NUMBER     CHORD
  N: 22
  R: -9
  S(4,22) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -8689,7 +8535,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -8881,8 +8726,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -8985,8 +8828,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -9234,8 +9075,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -9424,8 +9263,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -9541,8 +9378,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -9688,7 +9523,6 @@ NOTE NUMBER     CHORD
  N: 21
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -9713,8 +9547,6 @@ NOTE NUMBER     CHORD
  N: 21
  S: 5
  S(1,21) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -9758,8 +9590,6 @@ NOTE NUMBER     CHORD
  N: 21
  R: -7
  S(4,21) = -7
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -9843,8 +9673,6 @@ NOTE NUMBER     CHORD
  N: 21
  S: 5
  S(1,21) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -9872,8 +9700,6 @@ NOTE NUMBER     CHORD
  N: 21
  R: -10
  S(4,21) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -9957,8 +9783,6 @@ NOTE NUMBER     CHORD
  N: 21
  S: 5
  S(1,21) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 3
  D(1) = -5
@@ -10002,8 +9826,6 @@ NOTE NUMBER     CHORD
  N: 21
  R: -5
  S(4,21) = -5
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -10087,8 +9909,6 @@ NOTE NUMBER     CHORD
  N: 21
  S: 5
  S(1,21) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -10116,8 +9936,6 @@ NOTE NUMBER     CHORD
  N: 21
  R: -9
  S(4,21) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -10171,7 +9989,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -10363,8 +10180,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -10459,8 +10274,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 6
@@ -10568,8 +10381,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 6
@@ -10709,8 +10520,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -10856,7 +10665,6 @@ NOTE NUMBER     CHORD
  N: 20
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -10881,8 +10689,6 @@ NOTE NUMBER     CHORD
  N: 20
  S: 7
  S(1,20) = 7
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -10925,8 +10731,6 @@ NOTE NUMBER     CHORD
  N: 20
  R: -14
  S(4,20) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -10980,7 +10784,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -11172,8 +10975,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -11289,8 +11090,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -11510,8 +11309,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -11700,8 +11497,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -11804,8 +11599,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -11994,8 +11787,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -12069,8 +11860,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -12222,7 +12011,6 @@ NOTE NUMBER     CHORD
  N: 19
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -12247,8 +12035,6 @@ NOTE NUMBER     CHORD
  N: 19
  S: 0
  S(1,19) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -12276,8 +12062,6 @@ NOTE NUMBER     CHORD
  N: 19
  R: -10
  S(4,19) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -12361,8 +12145,6 @@ NOTE NUMBER     CHORD
  N: 19
  S: 0
  S(1,19) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 4
  D(1) = -4
@@ -12390,8 +12172,6 @@ NOTE NUMBER     CHORD
  N: 19
  R: -11
  S(4,19) = -11
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -12445,7 +12225,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -12637,8 +12416,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -12754,8 +12531,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 4
@@ -12944,8 +12719,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -13099,8 +12872,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -13246,7 +13017,6 @@ NOTE NUMBER     CHORD
  N: 18
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -13271,8 +13041,6 @@ NOTE NUMBER     CHORD
  N: 18
  S: 1
  S(1,18) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -13315,8 +13083,6 @@ NOTE NUMBER     CHORD
  N: 18
  R: -14
  S(4,18) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -13400,8 +13166,6 @@ NOTE NUMBER     CHORD
  N: 18
  S: 1
  S(1,18) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -13429,8 +13193,6 @@ NOTE NUMBER     CHORD
  N: 18
  R: -10
  S(4,18) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -13484,7 +13246,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -13676,8 +13437,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -13835,8 +13594,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 4
  C2: 5
@@ -13990,8 +13747,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -14147,8 +13902,6 @@ NOTE NUMBER     CHORD
  N: 18
  S: 1
  S(1,18) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 4
  D(1) = -4
@@ -14176,8 +13929,6 @@ NOTE NUMBER     CHORD
  N: 18
  R: -11
  S(4,18) = -11
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -14261,8 +14012,6 @@ NOTE NUMBER     CHORD
  N: 18
  S: 1
  S(1,18) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -14290,8 +14039,6 @@ NOTE NUMBER     CHORD
  N: 18
  R: -9
  S(4,18) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -14375,8 +14122,6 @@ NOTE NUMBER     CHORD
  N: 18
  S: 1
  S(1,18) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 3
  D(1) = -5
@@ -14404,8 +14149,6 @@ NOTE NUMBER     CHORD
  N: 18
  R: -12
  S(4,18) = -12
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -14489,8 +14232,6 @@ NOTE NUMBER     CHORD
  N: 18
  S: 1
  S(1,18) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -14533,8 +14274,6 @@ NOTE NUMBER     CHORD
  N: 18
  R: -13
  S(4,18) = -13
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -14588,7 +14327,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -14780,8 +14518,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -14905,8 +14641,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 4
  C2: 2
@@ -15110,8 +14844,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -15246,8 +14978,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -15393,7 +15123,6 @@ NOTE NUMBER     CHORD
  N: 17
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -15418,8 +15147,6 @@ NOTE NUMBER     CHORD
  N: 17
  S: 2
  S(1,17) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -15447,8 +15174,6 @@ NOTE NUMBER     CHORD
  N: 17
  R: -9
  S(4,17) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -15502,7 +15227,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -15694,8 +15418,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -15798,8 +15520,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 2
  C2: 6
@@ -15988,8 +15708,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -16092,8 +15810,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 2
  C2: 6
@@ -16282,8 +15998,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -16399,8 +16113,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -16540,7 +16252,6 @@ NOTE NUMBER     CHORD
  N: 16
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -16565,8 +16276,6 @@ NOTE NUMBER     CHORD
  N: 16
  S: 0
  S(1,16) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -16610,8 +16319,6 @@ NOTE NUMBER     CHORD
  N: 16
  R: -7
  S(4,16) = -7
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -16665,7 +16372,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -16857,8 +16563,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -16932,8 +16636,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -17137,8 +16839,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -17315,8 +17015,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -17450,7 +17148,6 @@ NOTE NUMBER     CHORD
  N: 15
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -17475,8 +17172,6 @@ NOTE NUMBER     CHORD
  N: 15
  S: 1
  S(1,15) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -17519,8 +17214,6 @@ NOTE NUMBER     CHORD
  N: 15
  R: -10
  S(4,15) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -17574,7 +17267,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -17766,8 +17458,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -17933,8 +17623,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 5
@@ -18123,8 +17811,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -18240,8 +17926,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -18387,7 +18071,6 @@ NOTE NUMBER     CHORD
  N: 14
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -18412,8 +18095,6 @@ NOTE NUMBER     CHORD
  N: 14
  S: 2
  S(1,14) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -18456,8 +18137,6 @@ NOTE NUMBER     CHORD
  N: 14
  R: -13
  S(4,14) = -13
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -18541,8 +18220,6 @@ NOTE NUMBER     CHORD
  N: 14
  S: 2
  S(1,14) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -18570,8 +18247,6 @@ NOTE NUMBER     CHORD
  N: 14
  R: -9
  S(4,14) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -18625,7 +18300,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -18817,8 +18491,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -18913,8 +18585,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -19090,8 +18760,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -19245,8 +18913,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -19402,8 +19068,6 @@ NOTE NUMBER     CHORD
  N: 14
  S: 2
  S(1,14) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -19431,8 +19095,6 @@ NOTE NUMBER     CHORD
  N: 14
  R: -10
  S(4,14) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -19516,8 +19178,6 @@ NOTE NUMBER     CHORD
  N: 14
  S: 2
  S(1,14) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 4
  D(1) = -4
@@ -19545,8 +19205,6 @@ NOTE NUMBER     CHORD
  N: 14
  R: -11
  S(4,14) = -11
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -19630,8 +19288,6 @@ NOTE NUMBER     CHORD
  N: 14
  S: 2
  S(1,14) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -19674,8 +19330,6 @@ NOTE NUMBER     CHORD
  N: 14
  R: -14
  S(4,14) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -19729,7 +19383,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -19921,8 +19574,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -20038,8 +19689,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 1
@@ -20302,8 +19951,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 1
@@ -20507,8 +20154,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -20622,8 +20267,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -20775,7 +20418,6 @@ NOTE NUMBER     CHORD
  N: 13
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -20800,8 +20442,6 @@ NOTE NUMBER     CHORD
  N: 13
  S: 1
  S(1,13) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -20829,8 +20469,6 @@ NOTE NUMBER     CHORD
  N: 13
  R: -10
  S(4,13) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -20884,7 +20522,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -21076,8 +20713,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -21235,8 +20870,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 5
@@ -21425,8 +21058,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -21561,8 +21192,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -21708,7 +21337,6 @@ NOTE NUMBER     CHORD
  N: 12
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -21733,8 +21361,6 @@ NOTE NUMBER     CHORD
  N: 12
  S: 0
  S(1,12) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -21778,8 +21404,6 @@ NOTE NUMBER     CHORD
  N: 12
  R: -6
  S(4,12) = -6
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -21863,8 +21487,6 @@ NOTE NUMBER     CHORD
  N: 12
  S: 0
  S(1,12) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -21892,8 +21514,6 @@ NOTE NUMBER     CHORD
  N: 12
  R: -9
  S(4,12) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -21947,7 +21567,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -22139,8 +21758,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -22243,8 +21860,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -22448,8 +22063,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -22605,8 +22218,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -22746,7 +22357,6 @@ NOTE NUMBER     CHORD
  N: 11
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -22771,8 +22381,6 @@ NOTE NUMBER     CHORD
  N: 11
  S: 2
  S(1,11) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -22815,8 +22423,6 @@ NOTE NUMBER     CHORD
  N: 11
  R: -14
  S(4,11) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -22870,7 +22476,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -23062,8 +22667,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -23187,8 +22790,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -23377,8 +22978,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -23481,8 +23080,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -23671,8 +23268,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -23767,8 +23362,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -23914,7 +23507,6 @@ NOTE NUMBER     CHORD
  N: 10
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -23939,8 +23531,6 @@ NOTE NUMBER     CHORD
  N: 10
  S: 4
  S(1,10) = 4
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -23968,8 +23558,6 @@ NOTE NUMBER     CHORD
  N: 10
  R: -10
  S(4,10) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -24023,7 +23611,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -24215,8 +23802,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -24319,8 +23904,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 5
@@ -24524,8 +24107,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -24696,8 +24277,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -24837,7 +24416,6 @@ NOTE NUMBER     CHORD
  N: 9
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -24862,8 +24440,6 @@ NOTE NUMBER     CHORD
  N: 9
  S: 7
  S(1,9) = 7
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -24906,8 +24482,6 @@ NOTE NUMBER     CHORD
  N: 9
  R: -13
  S(4,9) = -13
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -24991,8 +24565,6 @@ NOTE NUMBER     CHORD
  N: 9
  S: 7
  S(1,9) = 7
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -25020,8 +24592,6 @@ NOTE NUMBER     CHORD
  N: 9
  R: -9
  S(4,9) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -25075,7 +24645,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -25267,8 +24836,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -25371,8 +24938,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -25620,8 +25185,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -25810,8 +25373,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -25927,8 +25488,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -26074,7 +25633,6 @@ NOTE NUMBER     CHORD
  N: 8
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -26099,8 +25657,6 @@ NOTE NUMBER     CHORD
  N: 8
  S: 5
  S(1,8) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -26144,8 +25700,6 @@ NOTE NUMBER     CHORD
  N: 8
  R: -7
  S(4,8) = -7
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -26229,8 +25783,6 @@ NOTE NUMBER     CHORD
  N: 8
  S: 5
  S(1,8) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -26258,8 +25810,6 @@ NOTE NUMBER     CHORD
  N: 8
  R: -10
  S(4,8) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -26343,8 +25893,6 @@ NOTE NUMBER     CHORD
  N: 8
  S: 5
  S(1,8) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 3
  D(1) = -5
@@ -26388,8 +25936,6 @@ NOTE NUMBER     CHORD
  N: 8
  R: -5
  S(4,8) = -5
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -26473,8 +26019,6 @@ NOTE NUMBER     CHORD
  N: 8
  S: 5
  S(1,8) = 5
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -26502,8 +26046,6 @@ NOTE NUMBER     CHORD
  N: 8
  R: -9
  S(4,8) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -26557,7 +26099,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -26749,8 +26290,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -26845,8 +26384,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 6
@@ -26954,8 +26491,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 6
@@ -27095,8 +26630,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -27242,7 +26775,6 @@ NOTE NUMBER     CHORD
  N: 7
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -27267,8 +26799,6 @@ NOTE NUMBER     CHORD
  N: 7
  S: 7
  S(1,7) = 7
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -27311,8 +26841,6 @@ NOTE NUMBER     CHORD
  N: 7
  R: -14
  S(4,7) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -27366,7 +26894,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -27558,8 +27085,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -27675,8 +27200,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -27896,8 +27419,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -28086,8 +27607,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -28190,8 +27709,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -28380,8 +27897,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -28455,8 +27970,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -28608,7 +28121,6 @@ NOTE NUMBER     CHORD
  N: 6
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -28633,8 +28145,6 @@ NOTE NUMBER     CHORD
  N: 6
  S: 0
  S(1,6) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -28662,8 +28172,6 @@ NOTE NUMBER     CHORD
  N: 6
  R: -10
  S(4,6) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -28747,8 +28255,6 @@ NOTE NUMBER     CHORD
  N: 6
  S: 0
  S(1,6) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 4
  D(1) = -4
@@ -28776,8 +28282,6 @@ NOTE NUMBER     CHORD
  N: 6
  R: -11
  S(4,6) = -11
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -28831,7 +28335,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -29023,8 +28526,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -29140,8 +28641,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 4
@@ -29330,8 +28829,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -29485,8 +28982,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -29632,7 +29127,6 @@ NOTE NUMBER     CHORD
  N: 5
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -29657,8 +29151,6 @@ NOTE NUMBER     CHORD
  N: 5
  S: 1
  S(1,5) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -29701,8 +29193,6 @@ NOTE NUMBER     CHORD
  N: 5
  R: -14
  S(4,5) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -29786,8 +29276,6 @@ NOTE NUMBER     CHORD
  N: 5
  S: 1
  S(1,5) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -29815,8 +29303,6 @@ NOTE NUMBER     CHORD
  N: 5
  R: -10
  S(4,5) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -29870,7 +29356,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -30062,8 +29547,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -30221,8 +29704,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 4
  C2: 5
@@ -30376,8 +29857,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -30533,8 +30012,6 @@ NOTE NUMBER     CHORD
  N: 5
  S: 1
  S(1,5) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 4
  D(1) = -4
@@ -30562,8 +30039,6 @@ NOTE NUMBER     CHORD
  N: 5
  R: -11
  S(4,5) = -11
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -30647,8 +30122,6 @@ NOTE NUMBER     CHORD
  N: 5
  S: 1
  S(1,5) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -30676,8 +30149,6 @@ NOTE NUMBER     CHORD
  N: 5
  R: -9
  S(4,5) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -30761,8 +30232,6 @@ NOTE NUMBER     CHORD
  N: 5
  S: 1
  S(1,5) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 3
  D(1) = -5
@@ -30790,8 +30259,6 @@ NOTE NUMBER     CHORD
  N: 5
  R: -12
  S(4,5) = -12
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -30875,8 +30342,6 @@ NOTE NUMBER     CHORD
  N: 5
  S: 1
  S(1,5) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -30919,8 +30384,6 @@ NOTE NUMBER     CHORD
  N: 5
  R: -13
  S(4,5) = -13
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -30974,7 +30437,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -31166,8 +30628,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -31291,8 +30751,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 4
  C2: 2
@@ -31496,8 +30954,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -31632,8 +31088,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -31779,7 +31233,6 @@ NOTE NUMBER     CHORD
  N: 4
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -31804,8 +31257,6 @@ NOTE NUMBER     CHORD
  N: 4
  S: 2
  S(1,4) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -31833,8 +31284,6 @@ NOTE NUMBER     CHORD
  N: 4
  R: -9
  S(4,4) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -31888,7 +31337,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -32080,8 +31528,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -32184,8 +31630,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 2
  C2: 6
@@ -32374,8 +31818,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -32478,8 +31920,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 2
  C2: 6
@@ -32668,8 +32108,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -32785,8 +32223,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -32926,7 +32362,6 @@ NOTE NUMBER     CHORD
  N: 3
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -32951,8 +32386,6 @@ NOTE NUMBER     CHORD
  N: 3
  S: 0
  S(1,3) = 0
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -32996,8 +32429,6 @@ NOTE NUMBER     CHORD
  N: 3
  R: -7
  S(4,3) = -7
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -33051,7 +32482,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -33243,8 +32673,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -33318,8 +32746,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 6
  C2: 1
@@ -33523,8 +32949,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -33701,8 +33125,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -33836,7 +33258,6 @@ NOTE NUMBER     CHORD
  N: 2
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -33861,8 +33282,6 @@ NOTE NUMBER     CHORD
  N: 2
  S: 1
  S(1,2) = 1
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -33905,8 +33324,6 @@ NOTE NUMBER     CHORD
  N: 2
  R: -10
  S(4,2) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -33960,7 +33377,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -34152,8 +33568,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -34319,8 +33733,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 1
  C2: 5
@@ -34509,8 +33921,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -34626,8 +34036,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -34773,7 +34181,6 @@ NOTE NUMBER     CHORD
  N: 1
  N9: 28
  N = N9: false
-500: REM  TEST CHORDS.
 505: LET I1 = 1
  I1 = 1
 510: FOR I = I1 TO 6
@@ -34798,8 +34205,6 @@ NOTE NUMBER     CHORD
  N: 1
  S: 2
  S(1,1) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 2
  D(1) = -6
@@ -34842,8 +34247,6 @@ NOTE NUMBER     CHORD
  N: 1
  R: -13
  S(4,1) = -13
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -34927,8 +34330,6 @@ NOTE NUMBER     CHORD
  N: 1
  S: 2
  S(1,1) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 6
  D(1) = -2
@@ -34956,8 +34357,6 @@ NOTE NUMBER     CHORD
  N: 1
  R: -9
  S(4,1) = -9
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -35011,7 +34410,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -35203,8 +34601,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -35299,8 +34695,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -35476,8 +34870,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 6
@@ -35631,8 +35023,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -35788,8 +35178,6 @@ NOTE NUMBER     CHORD
  N: 1
  S: 2
  S(1,1) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 5
  D(1) = -3
@@ -35817,8 +35205,6 @@ NOTE NUMBER     CHORD
  N: 1
  R: -10
  S(4,1) = -10
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -35902,8 +35288,6 @@ NOTE NUMBER     CHORD
  N: 1
  S: 2
  S(1,1) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 4
  D(1) = -4
@@ -35931,8 +35315,6 @@ NOTE NUMBER     CHORD
  N: 1
  R: -11
  S(4,1) = -11
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -36016,8 +35398,6 @@ NOTE NUMBER     CHORD
  N: 1
  S: 2
  S(1,1) = 2
-542: 
-545: REM  FIX ROOT
 550: LET D(1) = C2 - 8
  C2: 1
  D(1) = -7
@@ -36060,8 +35440,6 @@ NOTE NUMBER     CHORD
  N: 1
  R: -14
  S(4,1) = -14
-670: 
-700: REM  FIND OTHER NOTES
 705: LET J = 1
  J = 1
 710: FOR K = 0 TO 4 STEP 2
@@ -36115,7 +35493,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 3
  J > 3: false
-770: 
 800: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -36307,8 +35684,6 @@ NOTE NUMBER     CHORD
 880: NEXT L
  L: 6
  terminated:true
-899: 
-1000: REM  TEST CASES IN W-TABLE
 1010: FOR L = 0 TO 6
  L = 0
  terminated:false
@@ -36424,8 +35799,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 1
@@ -36688,8 +36061,6 @@ NOTE NUMBER     CHORD
 1090: NEXT V
  V: 3
  terminated:true
-1095: 
-1100: REM  CHECK FOR BAD TRANSITIONS
 1102: IF C1 = C2 THEN 1200
  C1: 5
  C2: 1
@@ -36893,8 +36264,6 @@ NOTE NUMBER     CHORD
 1165: NEXT V1
  V1: 4
  terminated:true
-1170: 
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -37008,8 +36377,6 @@ NOTE NUMBER     CHORD
 1261: NEXT L
  L: 6
  terminated:true
-1262: 
-1500: REM  SELECT CHORD
 1510: LET M = 999
  M = 999
 1520: FOR L = 0 TO 6
@@ -37156,7 +36523,6 @@ NOTE NUMBER     CHORD
 6003: NEXT N
  N: 1
  terminated:true
-6004: 
 9999: END
 STOP in line 9999
 

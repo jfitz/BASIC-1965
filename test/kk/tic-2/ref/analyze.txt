@@ -42,12 +42,12 @@ Halstead complexity:
   Dests: 140:auto
 (0 1) 140 NEXT P
   Origs: 100:fornext, 130:auto
-  Dests: 150:auto
-(0 2) 150 DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
-  Origs: 140:auto
   Dests: 200:auto
+(0 2) 150 DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
+  Origs: 
+  Dests: 
 (1 3) 200 FOR S = 1 TO 9
-  Origs: 150:auto
+  Origs: 140:auto
   Dests: 210:fornext, 240:fornext
 (1 3) 210 FOR J = 1 TO 4
   Origs: 200:fornext
@@ -60,15 +60,15 @@ Halstead complexity:
   Dests: 240:auto
 (0 1) 240 NEXT S
   Origs: 200:fornext, 230:auto
-  Dests: 250:auto
-(0 2) 250 DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
-  Origs: 240:auto
-  Dests: 260:auto
-(0 2) 260 DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
-  Origs: 250:auto
   Dests: 265:auto
+(0 2) 250 DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
+  Origs: 
+  Dests: 
+(0 2) 260 DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
+  Origs: 
+  Dests: 
 (0 3) 265 LET N = 0
-  Origs: 260:auto, 850:goto
+  Origs: 240:auto, 850:goto
   Dests: 270:auto
 (1 3) 270 FOR S = 1 TO 9
   Origs: 265:auto
@@ -81,15 +81,15 @@ Halstead complexity:
   Dests: 285:auto
 (0 1) 285 NEXT S
   Origs: 270:fornext, 280:auto
-  Dests: 290:auto
-(0 0) 290 
-  Origs: 285:auto
-  Dests: 300:auto
-(0 1) 300 REM WHO STARTS?
-  Origs: 290:auto
   Dests: 310:auto
+(0 0) 290 
+  Origs: 
+  Dests: 
+(0 1) 300 REM WHO STARTS?
+  Origs: 
+  Dests: 
 (1 7) 310 IF RND(Z) < 1 / 2 THEN 350
-  Origs: 300:auto
+  Origs: 285:auto
   Dests: 320:auto, 350:ifthen
 (0 2) 320 PRINT "YOU WILL MOVE FIRST."
   Origs: 310:auto
@@ -267,12 +267,12 @@ Halstead complexity:
   Dests: 1130:auto, 1999:ifthen
 (0 1) 1130 NEXT I
   Origs: 1100:fornext, 1120:auto
-  Dests: 1140:auto
-(0 0) 1140 
-  Origs: 1130:auto
   Dests: 1200:auto
+(0 0) 1140 
+  Origs: 
+  Dests: 
 (1 3) 1200 FOR S = 1 TO 9
-  Origs: 1070:goto, 1140:auto
+  Origs: 1070:goto, 1130:auto
   Dests: 1210:fornext, 1270:fornext
 (0 3) 1210 LET V(S) = 0
   Origs: 1200:fornext

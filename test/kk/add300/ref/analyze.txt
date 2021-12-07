@@ -21,12 +21,12 @@ Halstead complexity:
 
 (0 5) 10 DIM A(100), B(100), C(200), X(100)
   Origs: :start
-  Dests: 100:auto
-(0 1) 100 REM READ, PRINT A,B
-  Origs: 10:auto
   Dests: 110:auto
+(0 1) 100 REM READ, PRINT A,B
+  Origs: 
+  Dests: 
 (0 2) 110 GOSUB 1000
-  Origs: 100:auto
+  Origs: 10:auto
   Dests: 120:auto, 1000:gosub
 (0 2) 120 GOSUB 2000
   Origs: 110:auto
@@ -72,15 +72,15 @@ Halstead complexity:
   Dests: 280:auto
 (0 2) 280 PRINT
   Origs: 270:auto
-  Dests: 290:auto
-(0 0) 290 
-  Origs: 280:auto
-  Dests: 300:auto
-(0 1) 300 REM C = A + B
-  Origs: 290:auto
   Dests: 310:auto
+(0 0) 290 
+  Origs: 
+  Dests: 
+(0 1) 300 REM C = A + B
+  Origs: 
+  Dests: 
 (1 4) 310 IF L1 < L2 THEN 420
-  Origs: 300:auto
+  Origs: 280:auto
   Dests: 320:auto, 420:ifthen
 (0 3) 320 LET L = L1
   Origs: 310:auto
@@ -117,15 +117,15 @@ Halstead complexity:
   Dests: 520:auto
 (0 1) 520 NEXT I
   Origs: 500:fornext, 510:auto
-  Dests: 530:auto
-(0 0) 530 
-  Origs: 520:auto
-  Dests: 600:auto
-(0 1) 600 REM CARRY, PRINT ANSWER
-  Origs: 530:auto
   Dests: 610:auto
+(0 0) 530 
+  Origs: 
+  Dests: 
+(0 1) 600 REM CARRY, PRINT ANSWER
+  Origs: 
+  Dests: 
 (0 2) 610 GOSUB 3000
-  Origs: 600:auto
+  Origs: 520:auto
   Dests: 620:auto, 3000:gosub
 (0 2) 620 GOSUB 2000
   Origs: 610:auto

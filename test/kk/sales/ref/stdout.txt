@@ -4,13 +4,13 @@ STOP in line 999
 10 (1) FOR I = 1 TO 5
 20 (5) READ P(I)
 30 (5) NEXT I
-40 (1) DATA 1.20, 2.15, 0.65, 4.30, 2.00
+40 (0) DATA 1.20, 2.15, 0.65, 4.30, 2.00
 100 (1) LET S = 0
 110 (1) FOR I = 1 TO 5
 120 (5) READ N
 130 (5) LET S = S + N * P(I)
 140 (5) NEXT I
 150 (1) PRINT "TOTAL ORDER $" S
-900 (1) DATA 5, 3, 0, 2, 2
+900 (0) DATA 5, 3, 0, 2, 2
 999 (1) END
 

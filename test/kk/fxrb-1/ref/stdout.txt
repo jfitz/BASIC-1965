@@ -24,10 +24,10 @@ STOP in line 999
 110 (1) READ T8, T9, P
 120 (1) DIM G(60, 20)
 130 (1) MAT G = ZER
-140 (1) DATA 4, 2, 1, 3
-150 (1) DATA .01, 2, 30
+140 (0) DATA 4, 2, 1, 3
+150 (0) DATA .01, 2, 30
 160 FNR(_) (0) DEF FNR(X) = INT(4 * X + .5)
-170 (1)
+170 (0)
 200 (1) READ X, Y
 210 (1) LET G(FNR(X * 1.5), FNR(Y)) = 1
 220 (1) FOR I = 1 TO P
@@ -37,7 +37,7 @@ STOP in line 999
 260 (210) NEXT T
 270 (30) LET G(FNR(X * 1.5), FNR(Y)) = 1
 280 (30) NEXT I
-290 (1)
+290 (0)
 300 (1) FOR J = 20 TO 1 STEP -1
 310 (20) FOR I = 1 TO 60
 320 (449) IF G(I, J) > 0 THEN 360
@@ -56,7 +56,7 @@ STOP in line 999
 450 (347) NEXT I
 460 (14) PRINT
 470 (20) NEXT J
-480 (1)
-900 (1) DATA 3, .5
+480 (0)
+900 (0) DATA 3, .5
 999 (1) END
 

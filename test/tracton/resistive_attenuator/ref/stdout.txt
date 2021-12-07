@@ -33,15 +33,15 @@ STOP in line 390
 120 (1) PRINT "ENTERED DESIRED LOSS IN DECIBELS";
 130 (1) INPUT N
 135 (1) LET N = INT(N)
-140 (1) REM COMPUTE T NETWORK
+140 (0) REM COMPUTE T NETWORK
 150 (1) LET T3 = 2 * (SQR(N * R1 * R9)) / (N - 1)
 160 (1) LET T1 = R1 * ((N + 1) / (N - 1)) - T3
 170 (1) LET T2 = R9 * ((N + 1) / (N - 1)) - T3
-180 (1) REM COMPUTE PI NETWORK
+180 (0) REM COMPUTE PI NETWORK
 190 (1) LET P3 = 0.5 * (N - 1) * SQR((R1 * R9) / N)
 200 (1) LET P1 = 1 / (1 / R1 * ((N + 1) / (N - 1)) - (1 / P3))
 210 (1) LET P2 = 1 / (1 / R9 * ((N + 1) / (N - 1)) - (1 / P3))
-220 (1) REM REPORT
+220 (0) REM REPORT
 230 (1) PRINT "R(IN) = "; R1, "R(OUT) = "; R9
 240 (1) PRINT "DESIRED LOSS = "; N
 250 (1) PRINT

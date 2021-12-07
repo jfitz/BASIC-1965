@@ -72,12 +72,12 @@ Halstead complexity:
   Dests: 90:auto
 (0 1) 90 NEXT P
   Origs: 30:fornext, 40:ifthen, 56:ifthen, 80:auto
-  Dests: 100:auto
-(0 1) 100 REM READ LEADING DIGITS
-  Origs: 90:auto
   Dests: 110:auto
+(0 1) 100 REM READ LEADING DIGITS
+  Origs: 
+  Dests: 
 (0 2) 110 PRINT "SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
-  Origs: 100:auto
+  Origs: 90:auto
   Dests: 115:auto
 (0 2) 115 PRINT
   Origs: 110:auto
@@ -99,15 +99,15 @@ Halstead complexity:
   Dests: 150:auto
 (0 2) 150 PRINT
   Origs: 140:auto
-  Dests: 160:auto
-(0 0) 160 
-  Origs: 150:auto
-  Dests: 200:auto
-(0 1) 200 REM TEST PRIMES TO 2000
-  Origs: 160:auto
   Dests: 205:auto
+(0 0) 160 
+  Origs: 
+  Dests: 
+(0 1) 200 REM TEST PRIMES TO 2000
+  Origs: 
+  Dests: 
 (1 3) 205 FOR I = 1 TO 1000
-  Origs: 200:auto
+  Origs: 150:auto
   Dests: 206:fornext, 207:fornext
 (0 3) 206 LET N(I) = 0
   Origs: 205:fornext
@@ -138,15 +138,15 @@ Halstead complexity:
   Dests: 270:auto
 (0 1) 270 NEXT I
   Origs: 210:fornext, 239:ifthen, 260:auto
-  Dests: 280:auto
-(0 0) 280 
-  Origs: 270:auto
-  Dests: 400:auto
-(0 1) 400 REM TEST REMAINING NUMBERS
-  Origs: 280:auto
   Dests: 405:auto
+(0 0) 280 
+  Origs: 
+  Dests: 
+(0 1) 400 REM TEST REMAINING NUMBERS
+  Origs: 
+  Dests: 
 (0 3) 405 LET D = 2
-  Origs: 400:auto
+  Origs: 270:auto
   Dests: 410:auto
 (0 3) 410 LET F = 2003
   Origs: 405:auto
@@ -168,15 +168,15 @@ Halstead complexity:
   Dests: 470:auto
 (1 5) 470 IF F <= S THEN 420
   Origs: 460:auto
-  Dests: 420:ifthen, 480:auto
+  Dests: 420:ifthen, 702:auto
 (0 0) 480 
-  Origs: 470:auto
-  Dests: 700:auto
+  Origs: 
+  Dests: 
 (0 1) 700 REM PRINT RESULT
-  Origs: 480:auto
-  Dests: 702:auto
+  Origs: 
+  Dests: 
 (0 3) 702 LET S = 0
-  Origs: 700:auto
+  Origs: 470:auto
   Dests: 705:auto
 (1 3) 705 FOR I = 0 TO 999
   Origs: 702:auto

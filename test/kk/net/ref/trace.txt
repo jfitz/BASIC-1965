@@ -70,7 +70,6 @@
 190: LET B(1) = V
  V: 24
  B(1) = 24
-200: 
 210: READ I, J, R
  I = 1
  J = 2
@@ -699,7 +698,6 @@
 350: NEXT I
  I: 6
  terminated:true
-360: 
 370: MAT U = INV(C)
  C(1,1): 1
  C(1,2): 0
@@ -863,7 +861,6 @@
  P(5) = 13.7839
  P(6) = 8.72606
  P(7) = 0
-390: 
 400: PRINT "NODE", "VOLTAGE"
 NODE            VOLTAGE
 410: PRINT
@@ -946,7 +943,6 @@ NODE            VOLTAGE
 
 460: PRINT
 
-470: 
 480: PRINT "CURRENT FLOW"
 CURRENT FLOW
 490: PRINT
@@ -1494,7 +1490,6 @@ NODE
  terminated:true
 600: PRINT
 
-610: 
 620: PRINT "TOTAL CURRENT = " FNR(S1)
 TOTAL CURRENT = 
  S1: 0.44764
@@ -1506,11 +1501,6 @@ RESISTANCE OF CIRCUIT =
  S1: 0.44764
  X: 53.6145
  53.615
-640: 
-650: DATA 7, 24
-660: DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
-670: DATA 4, 5, 60, 5, 6, 60, 6, 7, 40
-680: DATA -1, 0, 0
 690: END
 STOP in line 690
 

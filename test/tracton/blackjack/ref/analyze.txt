@@ -123,16 +123,16 @@ Halstead complexity:
   Dests: 340:auto
 (0 2) 340 PRINT "***GOOD-LUCK-----MAY THE BEST ONE WIN***"
   Origs: 60:ifthen, 330:auto
-  Dests: 350:auto
+  Dests: 360:auto
 (0 1) 350 REM 1ST HAND
-  Origs: 340:auto
-  Dests: 355:auto
+  Origs: 
+  Dests: 
 (0 1) 355 
     Unknown statement 'RANDOMIZE'
-  Origs: 350:auto
-  Dests: 360:auto
+  Origs: 
+  Dests: 
 (0 3) 360 LET D = 0
-  Origs: 355:auto
+  Origs: 340:auto
   Dests: 370:auto
 (0 3) 370 LET P = D
   Origs: 360:auto
@@ -199,12 +199,12 @@ Halstead complexity:
   Dests: 580:auto
 (1 4) 580 IF P > D THEN 620
   Origs: 570:auto
-  Dests: 590:auto, 620:ifthen
+  Dests: 600:auto, 620:ifthen
 (0 1) 590 REM WIN OR LOSS STATEMENTS
-  Origs: 580:auto
-  Dests: 600:auto
+  Origs: 
+  Dests: 
 (0 2) 600 PRINT "THE DEALER HAS WON!!!"
-  Origs: 590:auto, 720:ifthen
+  Origs: 580:auto, 720:ifthen
   Dests: 610:auto
 (0 2) 610 GOTO 1060
   Origs: 600:auto

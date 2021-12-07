@@ -27,12 +27,12 @@ Halstead complexity:
   Dests: 120:auto
 (0 3) 120 LET S2 = 0
   Origs: 110:auto
-  Dests: 130:auto
-(0 0) 130 
-  Origs: 120:auto
   Dests: 140:auto
+(0 0) 130 
+  Origs: 
+  Dests: 
 (1 2) 140 READ X
-  Origs: 130:auto, 190:goto
+  Origs: 120:auto, 190:goto
   Dests: 150:auto
 (1 4) 150 IF X = 999999 THEN 210
   Origs: 140:auto
@@ -69,12 +69,12 @@ Halstead complexity:
   Dests: 260:auto
 (0 4) 260 LET C = D / M
   Origs: 250:auto
-  Dests: 270:auto
-(0 0) 270 
-  Origs: 260:auto
   Dests: 280:auto
+(0 0) 270 
+  Origs: 
+  Dests: 
 (0 6) 280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
-  Origs: 270:auto
+  Origs: 260:auto
   Dests: 290:auto
 (0 6) 290 PRINT N, S, S2, M, V
   Origs: 280:auto
@@ -93,12 +93,12 @@ Halstead complexity:
   Dests: 340:auto
 (0 2) 340 PRINT
   Origs: 330:auto
-  Dests: 350:auto
-(0 0) 350 
-  Origs: 340:auto
   Dests: 360:auto
+(0 0) 350 
+  Origs: 
+  Dests: 
 (0 3) 360 LET N = 0
-  Origs: 350:auto
+  Origs: 340:auto
   Dests: 370:auto
 (0 3) 370 LET S = 0
   Origs: 360:auto
@@ -111,21 +111,21 @@ Halstead complexity:
   Dests: 400:auto
 (1 5) 400 IF X <> 999999 THEN 160
   Origs: 390:auto
-  Dests: 160:ifthen, 410:auto
+  Dests: 160:ifthen, 999:auto
 (0 0) 410 
-  Origs: 400:auto
-  Dests: 900:auto
+  Origs: 
+  Dests: 
 (0 2) 900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
-  Origs: 410:auto
-  Dests: 910:auto
+  Origs: 
+  Dests: 
 (0 2) 910 DATA 4, 3, 9, 15, 21, 6, 999999
-  Origs: 900:auto
-  Dests: 998:auto
+  Origs: 
+  Dests: 
 (0 2) 998 DATA 999999
-  Origs: 910:auto
-  Dests: 999:auto
+  Origs: 
+  Dests: 
 (0 1) 999 END
-  Origs: 998:auto
+  Origs: 400:auto
   Dests: :stop
 
 Unreachable code:

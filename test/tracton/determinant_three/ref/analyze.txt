@@ -27,21 +27,21 @@ Halstead complexity:
   Dests: 30:auto
 (9 10) 30 INPUT A, B, C, D, E, F, G, H, I
   Origs: 20:auto
-  Dests: 40:auto
-(0 1) 40 REM COMPUTE DETERMINANT OF 3X3
-  Origs: 30:auto
   Dests: 50:auto
+(0 1) 40 REM COMPUTE DETERMINANT OF 3X3
+  Origs: 
+  Dests: 
 (0 13) 50 LET M = (A * E * I) + (B * F * G) + (C * H * D)
-  Origs: 40:auto
+  Origs: 30:auto
   Dests: 60:auto
 (0 15) 60 LET N = M - (C * E * G) - (F * H * A) - (I * D * B)
   Origs: 50:auto
-  Dests: 70:auto
-(0 1) 70 REM COMPUTE INVERSE
-  Origs: 60:auto
   Dests: 80:auto
+(0 1) 70 REM COMPUTE INVERSE
+  Origs: 
+  Dests: 
 (0 8) 80 LET O = ((E * I) - (H * F)) / N
-  Origs: 70:auto
+  Origs: 60:auto
   Dests: 90:auto
 (0 8) 90 LET P = ((G * F) - (D * I)) / N
   Origs: 80:auto

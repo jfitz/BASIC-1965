@@ -117,15 +117,15 @@ FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
   Dests: 330:auto
 (0 1) 330 NEXT X
   Origs: 250:fornext, 320:auto
-  Dests: 340:auto
-(0 2) 340 DATA 1, 10.01, 0.3
-  Origs: 330:auto
-  Dests: 350:auto
-(0 3) 350 DATA -1, 1, 50
-  Origs: 340:auto
   Dests: 360:auto
+(0 2) 340 DATA 1, 10.01, 0.3
+  Origs: 
+  Dests: 
+(0 3) 350 DATA -1, 1, 50
+  Origs: 
+  Dests: 
 (0 1) 360 END
-  Origs: 350:auto
+  Origs: 330:auto
   Dests: :stop
 
 Unreachable code:

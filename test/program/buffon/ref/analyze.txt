@@ -33,12 +33,12 @@ Halstead complexity:
   Dests: 100:auto
 (0 5) 100 PRINT "COUNT", "HITS", "RATIO", "INVERSE"
   Origs: 40:auto
-  Dests: 110:auto
-(0 1) 110 REM MAIN LOOP
-  Origs: 100:auto
   Dests: 120:auto
+(0 1) 110 REM MAIN LOOP
+  Origs: 
+  Dests: 
 (0 3) 120 LET C = 0
-  Origs: 110:auto
+  Origs: 100:auto
   Dests: 130:auto
 (1 3) 130 FOR I = 1 TO N
   Origs: 120:auto
@@ -51,12 +51,12 @@ Halstead complexity:
   Dests: 160:auto, 170:ifthen
 (0 2) 160 GOSUB 300
   Origs: 150:auto
-  Dests: 170:auto, 300:gosub
+  Dests: 180:auto, 300:gosub
 (0 1) 170 REM CONTINUE
-  Origs: 150:ifthen, 160:auto
+  Origs: 150:ifthen
   Dests: 180:auto
 (0 1) 180 NEXT I
-  Origs: 130:fornext, 170:auto
+  Origs: 130:fornext, 160:auto, 170:auto
   Dests: 190:auto
 (0 2) 190 GOSUB 300
   Origs: 180:auto
@@ -90,12 +90,12 @@ Halstead complexity:
   Dests: 260:auto, 270:ifthen
 (0 4) 260 LET C = C + 1
   Origs: 250:auto
-  Dests: 270:auto
+  Dests: 290:auto
 (0 1) 270 REM CONTINUE
-  Origs: 250:ifthen, 260:auto
+  Origs: 250:ifthen
   Dests: 290:auto
 (0 1) 290 RETURN
-  Origs: 270:auto
+  Origs: 260:auto, 270:auto
   Dests: 
 (0 1) 300 REM PROCEDURE B
   Origs: 160:gosub, 190:gosub

@@ -20,7 +20,7 @@ STOP in line 999
 120 (1) PRINT
 130 (1) PRINT X0, Y0
 140 (1) LET Y = Y0
-150 (1)
+150 (0)
 160 (1) FOR X = X0 TO X1 - H STEP H
 170 (10) LET D1 = FNF(X, Y)
 180 (10) LET Y1 = Y
@@ -29,8 +29,8 @@ STOP in line 999
 210 (10) LET Y = Y1 + D2 * H
 220 (10) PRINT X + H, Y
 230 (10) NEXT X
-240 (1)
-900 (1) DATA 0, 1, 1
-910 (1) DATA 0.1
+240 (0)
+900 (0) DATA 0, 1, 1
+910 (0) DATA 0.1
 999 (1) END
 

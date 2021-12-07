@@ -36,24 +36,24 @@ Halstead complexity:
   Dests: 60:auto
 (3 4) 60 INPUT B1, B2, B3
   Origs: 50:auto
-  Dests: 70:auto
-(0 1) 70 REM CALCULATE THE NORM OF A VECTOR
-  Origs: 60:auto
   Dests: 80:auto
+(0 1) 70 REM CALCULATE THE NORM OF A VECTOR
+  Origs: 
+  Dests: 
 (0 4) 80 LET X = SQR((A1 ^ 2) + (A2 ^ 2) + (A3 ^ 2))
-  Origs: 70:auto
-  Dests: 90:auto
-(0 1) 90 REM CALCULATE THE NORM OF B VECTOR
-  Origs: 80:auto
+  Origs: 60:auto
   Dests: 100:auto
+(0 1) 90 REM CALCULATE THE NORM OF B VECTOR
+  Origs: 
+  Dests: 
 (0 4) 100 LET Y = SQR((B1 ^ 2) + (B2 ^ 2) + (B3 ^ 2))
-  Origs: 90:auto
-  Dests: 110:auto
-(0 1) 110 REM CALCULATE DOT PRODUCT
-  Origs: 100:auto
+  Origs: 80:auto
   Dests: 120:auto
+(0 1) 110 REM CALCULATE DOT PRODUCT
+  Origs: 
+  Dests: 
 (0 10) 120 LET Z = (A1 * B1) + (A2 * B2) + (A3 * B3)
-  Origs: 110:auto
+  Origs: 100:auto
   Dests: 130:auto
 (0 3) 130 PRINT "DOT PRODUCT = "; Z
   Origs: 120:auto

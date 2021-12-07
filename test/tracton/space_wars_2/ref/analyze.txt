@@ -187,12 +187,12 @@ Halstead complexity:
   Dests: 535:auto
 (0 2) 535 PRINT "****************************************"
   Origs: 530:auto
-  Dests: 536:auto
-(0 1) 536 REM X-WING ENERGY AND SKY ENERGY
-  Origs: 535:auto
   Dests: 540:auto
+(0 1) 536 REM X-WING ENERGY AND SKY ENERGY
+  Origs: 
+  Dests: 
 (0 3) 540 LET X1 = 5E05
-  Origs: 100:ifthen, 536:auto
+  Origs: 100:ifthen, 535:auto
   Dests: 550:auto
 (0 3) 550 LET T1 = 1E04
   Origs: 540:auto
@@ -402,13 +402,13 @@ Halstead complexity:
   Dests: 1360:goto
 (0 7) 1220 LET C = 1 + (5 * RND)
   Origs: 1120:goto
-  Dests: 1230:auto
+  Dests: 1240:auto
 (0 1) 1230 
      Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
-  Origs: 1220:auto
-  Dests: 1240:auto
+  Origs: 
+  Dests: 
 (0 2) 1240 PRINT "*CAUTION*GARTH RADER IS THE BEST SHOT IN THE"
-  Origs: 1230:auto
+  Origs: 1220:auto
   Dests: 1250:auto
 (0 2) 1250 PRINT "IMPERIAL FLEET, PLUS HE USES THE BAD SIDE OF THE FORCE"
   Origs: 1240:auto
@@ -496,13 +496,13 @@ Halstead complexity:
   Dests: 1520:auto
 (1 2) 1520 INPUT B
   Origs: 1510:auto
-  Dests: 1530:auto
+  Dests: 1540:auto
 (0 1) 1530 
      Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
-  Origs: 1520:auto
-  Dests: 1540:auto
+  Origs: 
+  Dests: 
 (1 4) 1540 IF D <= 1000 THEN 1590
-  Origs: 1530:auto
+  Origs: 1520:auto
   Dests: 1550:auto, 1590:ifthen
 (0 2) 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
   Origs: 1540:auto
