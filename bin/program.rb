@@ -1300,7 +1300,8 @@ class Program
 
   def optimize(interpreter)
     optimize_statements(interpreter)
-    init_user_functions(interpreter)
+    set_endfunc_lines
+    @user_function_start_lines = {}
     assign_singleline_function_markers
     assign_multiline_function_markers
     @first_line_number_stmt_mod = find_first_statement
@@ -1326,21 +1327,19 @@ class Program
     end
   end
 
-  def init_user_functions(interpreter)
+  def set_endfunc_lines
     @lines.keys.sort.each do |line_number|
-      @line_number = line_number
       line = @lines[line_number]
       statements = line.statements
 
       statements.each_with_index do |statement, stmt|
         line_stmt = LineStmt.new(line_number, stmt)
-        statement.init_user_functions(interpreter, line_stmt, self)
+        statement.set_endfunc_lines(line_stmt, self)
       end
     end
   end
 
   def assign_singleline_function_markers
-    @user_function_start_lines = {}
     part_of_user_function = nil
 
     @lines.keys.sort.each do |line_number|
@@ -1475,7 +1474,27 @@ class Program
 
       statements.each do |statement|
         # add trace output
-        statement.init_data(interpreter)
+        statement.define_user_functions(interpreter)
+      end
+    end
+
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+
+      statements.each do |statement|
+        # add trace output
+        statement.load_data(interpreter)
+      end
+    end
+
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+
+      statements.each do |statement|
+        # add trace output
+        statement.load_file_names(interpreter)
       end
     end
   end
