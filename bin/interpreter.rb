@@ -915,10 +915,16 @@ class Interpreter
       raise(BASICExpressionError, "Invalid subscript #{subscript}") unless
         subscript.numeric_constant?
 
-      span = uppers[index] - lower + 1
+      u = uppers[index]
       wrapped = subscript.to_i
-      wrapped -= span if wrapped > uppers[index]
-      wrapped += span if wrapped < lower
+
+      unless u.nil?
+        # adjust subscript to fit within defined range
+        span = u - lower + 1
+        wrapped -= span if wrapped > uppers[index]
+        wrapped += span if wrapped < lower
+      end
+
       wrapped_subscripts << NumericConstant.new(wrapped)
     end
 

@@ -1472,29 +1472,41 @@ class Program
       line = @lines[line_number]
       statements = line.statements
 
-      statements.each do |statement|
-        # add trace output
-        statement.define_user_functions(interpreter)
+      statements.each_with_index do |statement, stmt|
+        if statement.executable == :def_fn
+          line_number_stmt = LineStmt.new(line_number, stmt)
+          # add trace output
+          statement.print_trace_info(interpreter.trace_out, line_number_stmt)
+          statement.define_user_functions(interpreter)
+        end
       end
     end
 
-    @lines.keys.sort.each do |line_number|
+    @lines.keys.sort.each_with_index do |line_number, stmt|
       line = @lines[line_number]
       statements = line.statements
 
-      statements.each do |statement|
-        # add trace output
-        statement.load_data(interpreter)
+      statements.each_with_index do |statement, stmt|
+        if statement.executable == :load_data
+          line_number_stmt = LineStmt.new(line_number, stmt)
+          # add trace output
+          statement.print_trace_info(interpreter.trace_out, line_number_stmt)
+          statement.load_data(interpreter)
+        end
       end
     end
 
-    @lines.keys.sort.each do |line_number|
+    @lines.keys.sort.each_with_index do |line_number, stmt|
       line = @lines[line_number]
       statements = line.statements
 
-      statements.each do |statement|
-        # add trace output
-        statement.load_file_names(interpreter)
+      statements.each_with_index do |statement, stmt|
+        if statement.executable == :files
+          line_number_stmt = LineStmt.new(line_number, stmt)
+          # add trace output
+          statement.print_trace_info(interpreter.trace_out, line_number_stmt)
+          statement.load_file_names(interpreter)
+        end
       end
     end
   end
