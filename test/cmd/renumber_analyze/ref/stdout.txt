@@ -1,0 +1,181 @@
+BASIC-1965 interpreter version -1
+
+READY
+LOAD "lockers.bas"
+
+READY
+ANALYZE
+Statistics:
+
+Number of lines: 19
+Number of valid statements: 16
+Number of comments: 3
+Number of executable statements: 16
+
+Complexity:
+
+Comment density: 0.188
+Comprehension effort: 42
+McCabe complexity: 5
+Halstead complexity:
+ length: 53
+ volume: 166.181
+ difficulty: 8.533
+ effort: 1418.080
+ language: 2.282
+ intelligence: 19.474
+ time: 1.313
+
+(0 1) 10 REM TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
+  Origs: 
+  Dests: 
+(0 2) 12 OPTION MAX_DIM 1000
+  Origs: :start
+  Dests: 20:auto
+(0 3) 20 LET N = 1000
+  Origs: 12:auto
+  Dests: 30:auto
+(0 2) 30 DIM L(N)
+  Origs: 20:auto
+  Dests: 110:auto
+(0 1) 100 REM INITIALIZE LOCKERS TO OPEN
+  Origs: 
+  Dests: 
+(0 4) 110 PRINT "INITIALIZING"; N; " LOCKERS..."
+  Origs: 30:auto
+  Dests: 130:auto
+(1 3) 130 FOR I = 1 TO N
+  Origs: 110:auto
+  Dests: 140:fornext, 180:fornext
+(1 4) 140 FOR J = I TO N STEP I
+  Origs: 130:fornext
+  Dests: 150:fornext, 160:fornext
+(0 4) 150 LET L(J) = 1 - L(J)
+  Origs: 140:fornext
+  Dests: 160:auto
+(0 1) 160 NEXT J
+  Origs: 140:fornext, 150:auto
+  Dests: 180:auto
+(0 1) 180 NEXT I
+  Origs: 130:fornext, 160:auto
+  Dests: 310:auto
+(0 1) 200 REM PRINT LOCKER STATES
+  Origs: 
+  Dests: 
+(0 2) 310 PRINT "OPEN LOCKERS:";
+  Origs: 180:auto
+  Dests: 320:auto
+(1 3) 320 FOR I = 1 TO N
+  Origs: 310:auto
+  Dests: 330:fornext, 350:fornext
+(1 4) 330 IF L(I) = 0 THEN 350
+  Origs: 320:fornext
+  Dests: 340:auto, 350:ifthen
+(0 2) 340 PRINT I;
+  Origs: 330:auto
+  Dests: 350:auto
+(0 1) 350 NEXT I
+  Origs: 320:fornext, 330:ifthen, 340:auto
+  Dests: 360:auto
+(0 2) 360 PRINT
+  Origs: 350:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 360:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
+READY
+RENUMBER
+READY
+ANALYZE
+Statistics:
+
+Number of lines: 19
+Number of valid statements: 16
+Number of comments: 3
+Number of executable statements: 16
+
+Complexity:
+
+Comment density: 0.188
+Comprehension effort: 42
+McCabe complexity: 5
+Halstead complexity:
+ length: 53
+ volume: 166.181
+ difficulty: 8.533
+ effort: 1418.080
+ language: 2.282
+ intelligence: 19.474
+ time: 1.313
+
+(0 1) 10 REM TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
+  Origs: 
+  Dests: 
+(0 2) 20 OPTION MAX_DIM 1000
+  Origs: :start
+  Dests: 30:auto
+(0 3) 30 LET N = 1000
+  Origs: 20:auto
+  Dests: 40:auto
+(0 2) 40 DIM L(N)
+  Origs: 30:auto
+  Dests: 60:auto
+(0 1) 50 REM INITIALIZE LOCKERS TO OPEN
+  Origs: 
+  Dests: 
+(0 4) 60 PRINT "INITIALIZING"; N; " LOCKERS..."
+  Origs: 40:auto
+  Dests: 70:auto
+(1 3) 70 FOR I = 1 TO N
+  Origs: 60:auto
+  Dests: 80:fornext, 110:fornext
+(1 4) 80 FOR J = I TO N STEP I
+  Origs: 70:fornext
+  Dests: 90:fornext, 100:fornext
+(0 4) 90 LET L(J) = 1 - L(J)
+  Origs: 80:fornext
+  Dests: 100:auto
+(0 1) 100 NEXT J
+  Origs: 80:fornext, 90:auto
+  Dests: 110:auto
+(0 1) 110 NEXT I
+  Origs: 70:fornext, 100:auto
+  Dests: 130:auto
+(0 1) 120 REM PRINT LOCKER STATES
+  Origs: 
+  Dests: 
+(0 2) 130 PRINT "OPEN LOCKERS:";
+  Origs: 110:auto
+  Dests: 140:auto
+(1 3) 140 FOR I = 1 TO N
+  Origs: 130:auto
+  Dests: 150:fornext, 170:fornext
+(1 4) 150 IF L(I) = 0 THEN 170
+  Origs: 140:fornext
+  Dests: 160:auto, 170:ifthen
+(0 2) 160 PRINT I;
+  Origs: 150:auto
+  Dests: 170:auto
+(0 1) 170 NEXT I
+  Origs: 140:fornext, 150:ifthen, 160:auto
+  Dests: 180:auto
+(0 2) 180 PRINT
+  Origs: 170:auto
+  Dests: 190:auto
+(0 1) 190 END
+  Origs: 180:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
+READY
+EXIT
+BASIC-1965 ended
+
