@@ -1579,8 +1579,9 @@ class GosubStatement < AbstractStatement
 
   def renumber(renumber_map)
     @dest_line = renumber_map[@dest_line]
+    new_token = NumericConstantToken.new(@dest_line.line_number)
     @linenums = [@dest_line]
-    @tokens[-1] = NumericConstantToken.new(@dest_line.line_number)
+    @tokens[-1] = new_token
   end
 
   def set_destinations(interpreter, _, _)
@@ -1663,8 +1664,9 @@ class GotoStatement < AbstractStatement
 
   def renumber(renumber_map)
     @dest_line = renumber_map[@dest_line]
+    new_token = NumericConstantToken.new(@dest_line.line_number)
     @linenums = [@dest_line]
-    @tokens[-1] = NumericConstantToken.new(@dest_line.line_number)
+    @tokens[-1] = new_token
   end
 
   def dump
@@ -1700,8 +1702,9 @@ class AbstractIfStatement < AbstractStatement
 
   def renumber(renumber_map)
     @dest_line = renumber_map[@dest_line]
+    new_token = NumericConstantToken.new(@dest_line.line_number)
     @linenums = [@dest_line]
-    @tokens[-1] = NumericConstantToken.new(@dest_line.line_number)
+    @tokens[-1] = new_token
   end
 
   def check_program(program, _line_number_stmt)
