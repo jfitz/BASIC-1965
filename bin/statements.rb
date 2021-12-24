@@ -708,6 +708,7 @@ class EmptyStatement < AbstractStatement
 
     @valid = false
     @executable = :none
+
     @comprehension_effort = 0
   end
 
@@ -1026,6 +1027,7 @@ class DataStatement < AbstractStatement
     if check_template(tokens_lists, template)
       @expressions = ValueExpressionSet.new(tokens_lists[0], :scalar)
       @elements = make_references(nil, @expressions)
+
       @comprehension_effort += @expressions.comprehension_effort
     else
       @errors << 'Syntax error'
@@ -1077,6 +1079,7 @@ class DefineFunctionStatement < AbstractStatement
         @autonext = @definition.multidef?
 
         @elements = make_references(nil, @definition)
+
         @comprehension_effort += @definition.comprehension_effort
       rescue BASICExpressionError => e
         @errors << e.message
@@ -1260,6 +1263,7 @@ class FilesStatement < AbstractStatement
     if check_template(tokens_lists, template)
       @expressions = ValueExpressionSet.new(tokens_lists[0], :scalar)
       @elements = make_references(nil, @expressions)
+
       @comprehension_effort += @expressions.comprehension_effort
     else
       @errors << 'Syntax error'
@@ -1564,11 +1568,8 @@ class GosubStatement < AbstractStatement
         @dest_line = LineNumber.new(number)
         @linenums = [@dest_line]
 
-        @comprehension_effort += if @dest_line > line_number
-                                   1
-                                 else
-                                   2
-                                 end
+        @comprehension_effort += 1
+        @comprehension_effort += 1 if @dest_line <= line_number
       else
         @errors << "Invalid line number #{tokens[0]}"
       end
@@ -1637,11 +1638,8 @@ class GotoStatement < AbstractStatement
         @dest_line = LineNumber.new(number)
         @linenums = [@dest_line]
 
-        @comprehension_effort += if @dest_line > line_number
-                                   1
-                                 else
-                                   2
-                                 end
+        @comprehension_effort += 1
+        @comprehension_effort += 1 if @dest_line <= line_number
       else
         @errors << "Invalid line number #{tokens[0]}"
       end
@@ -1776,11 +1774,8 @@ class IfStatement < AbstractIfStatement
         @dest_line = LineNumber.new(number)
         @linenums = [@dest_line]
 
-        @comprehension_effort += if @dest_line > line_number
-                                   1
-                                 else
-                                   2
-                                 end
+        @comprehension_effort += 1
+        @comprehension_effort += 1 if @dest_line <= line_number
       rescue BASICSyntaxError => e
         @errors << e.message
       end
@@ -1789,6 +1784,7 @@ class IfStatement < AbstractIfStatement
         @expression = ValueExpressionSet.new(tokens_lists[0], :scalar)
         @warnings << 'Constant expression' if @expression.constant
         @elements = make_references(nil, @expression)
+
         @comprehension_effort += @expression.comprehension_effort
       rescue BASICExpressionError => e
         @errors << e.message
@@ -1823,8 +1819,10 @@ class InputStatement < AbstractStatement
       @file_tokens = extract_file_handle(@items)
       @prompt = extract_prompt(@items)
       @elements = make_references(@items, @file_tokens, @prompt)
-      @mccabe = @items.size
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
+
+      @mccabe = @items.size
     else
       @errors << 'Syntax error'
     end
@@ -1920,6 +1918,7 @@ class AbstractScalarLetStatement < AbstractLetStatement
           @assignment.count_value > @assignment.count_target
 
         @elements = make_references(nil, @assignment)
+
         @comprehension_effort += @assignment.comprehension_effort
       rescue BASICExpressionError => e
         @errors << e.message
@@ -2058,6 +2057,7 @@ class OptionStatement < AbstractStatement
         expression_tokens = split_tokens(tokens_lists[1], true)
         @expression = ValueExpressionSet.new(expression_tokens[0], :scalar)
         @elements = make_references(nil, @expression)
+
         @comprehension_effort += @expression.comprehension_effort
       else
         @errors << ("Cannot set option #{kwd}")
@@ -2116,12 +2116,14 @@ class PrintStatement < AbstractStatement
     if check_template(tokens_lists, template1)
       @items = tokens_to_expressions([], :scalar)
       @elements = make_references(@items, nil)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     elsif check_template(tokens_lists, template2)
       tokens_lists = split_tokens(tokens_lists[0], true)
       @items = tokens_to_expressions(tokens_lists, :scalar)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -2175,8 +2177,10 @@ class ReadStatement < AbstractStatement
       @items = tokens_to_expressions(items, :scalar, false)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
-      @mccabe = @items.size
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
+
+      @mccabe = @items.size
     else
       @errors << 'Syntax error'
     end
@@ -2308,6 +2312,7 @@ class WriteStatement < AbstractStatement
       @items = tokens_to_expressions(tokens_lists, :scalar)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -2409,6 +2414,7 @@ class ArrInputStatement < AbstractStatement
       @file_tokens = extract_file_handle(@items)
       @prompt = extract_prompt(@items)
       @elements = make_references(@items, @file_tokens, @prompt)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -2503,7 +2509,9 @@ class ArrPlotStatement < AbstractStatement
       @items = tokens_to_expressions_2(items, :array)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
+
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -2545,6 +2553,7 @@ class ArrPrintStatement < AbstractStatement
       @items = tokens_to_expressions(tokens_lists, :array)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -2598,7 +2607,9 @@ class ArrReadStatement < AbstractStatement
       @items = tokens_to_expressions(items, :array, true)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
+
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -2672,6 +2683,7 @@ class ArrWriteStatement < AbstractStatement
       @items = tokens_to_expressions(tokens_lists, :array)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -2731,6 +2743,7 @@ class ArrLetStatement < AbstractLetStatement
         end
 
         @elements = make_references(nil, @assignment)
+
         @comprehension_effort += @assignment.comprehension_effort
       rescue BASICError => e
         @errors << e.message
@@ -2854,6 +2867,7 @@ class MatInputStatement < AbstractStatement
       @file_tokens = extract_file_handle(@items)
       @prompt = extract_prompt(@items)
       @elements = make_references(@items, @file_tokens, @prompt)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -2963,7 +2977,9 @@ class MatPlotStatement < AbstractStatement
       @items = tokens_to_expressions_2(items, :matrix)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
+
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -3005,6 +3021,7 @@ class MatPrintStatement < AbstractStatement
       @items = tokens_to_expressions(tokens_lists, :matrix)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -3081,7 +3098,9 @@ class MatReadStatement < AbstractStatement
       @items = tokens_to_expressions(items, :matrix, true)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
+
       @mccabe = @items.size
     else
       @errors << 'Syntax error'
@@ -3173,6 +3192,7 @@ class MatWriteStatement < AbstractStatement
       @items = tokens_to_expressions(tokens_lists, :matrix)
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
+
       @items.each { |item| @comprehension_effort += item.comprehension_effort }
     else
       @errors << 'Syntax error'
@@ -3232,6 +3252,7 @@ class MatLetStatement < AbstractLetStatement
         end
 
         @elements = make_references(nil, @assignment)
+
         @comprehension_effort += @assignment.comprehension_effort
       rescue BASICError => e
         @errors << e.message
