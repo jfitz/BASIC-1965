@@ -86,10 +86,10 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Origs: 218:auto
   Dests: 221:auto
 (0 1) 220 REM RATIO OF AC/BC
-  Origs: 247:ifthen
-  Dests: 221:auto
+  Origs: 
+  Dests: 
 (0 5) 221 LET F1 = FNL(A1, A2, C1, C2)
-  Origs: 219:auto, 220:auto
+  Origs: 219:auto, 247:ifthen
   Dests: 51:function, 222:auto
 (0 5) 222 LET F2 = FNL(B1, B2, C1, C2)
   Origs: 221:auto
@@ -114,7 +114,7 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 240:auto
 (1 5) 240 IF ABS(R0 - R1) < R9 THEN 300
   Origs: 239:auto
-  Dests: 241:auto, 300:ifthen
+  Dests: 241:auto, 301:ifthen
 (1 4) 241 IF R0 < R1 THEN 245
   Origs: 240:auto
   Dests: 242:auto, 245:ifthen
@@ -132,7 +132,7 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 247:auto
 (1 5) 247 IF Z > Z9 THEN 220
   Origs: 246:auto
-  Dests: 220:ifthen, 248:auto
+  Dests: 221:ifthen, 248:auto
 (0 2) 248 PRINT "CANNOT RESOLVE POINT B"
   Origs: 247:auto
   Dests: 249:auto
@@ -140,10 +140,10 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Origs: 248:auto
   Dests: :stop
 (0 1) 300 REM PRINT DEFINED VALUES
-  Origs: 240:ifthen
-  Dests: 301:auto
+  Origs: 
+  Dests: 
 (0 4) 301 PRINT "POINT C    :"; C1; C2
-  Origs: 300:auto
+  Origs: 240:ifthen
   Dests: 302:auto
 (0 4) 302 PRINT "POINT B    :"; B1; B2
   Origs: 301:auto

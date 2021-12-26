@@ -33,16 +33,16 @@ Halstead complexity:
   Dests: 30:auto, 999:ifthen
 (1 4) 30 IF A <= 0 THEN 100
   Origs: 26:auto
-  Dests: 40:auto, 100:ifthen
+  Dests: 40:auto, 110:ifthen
 (1 4) 40 IF R <= 0 THEN 100
   Origs: 30:auto
-  Dests: 50:auto, 100:ifthen
+  Dests: 50:auto, 110:ifthen
 (1 4) 50 IF Y <= 0 THEN 100
   Origs: 40:auto
-  Dests: 60:auto, 100:ifthen
+  Dests: 60:auto, 110:ifthen
 (1 4) 60 IF T <= 0 THEN 100
   Origs: 50:auto
-  Dests: 70:auto, 100:ifthen
+  Dests: 70:auto, 110:ifthen
 (0 4) 70 LET N = Y * T
   Origs: 60:auto
   Dests: 80:auto
@@ -59,10 +59,10 @@ Halstead complexity:
   Origs: 95:auto
   Dests: 5:goto
 (0 1) 100 REM ERROR ROUTINE
-  Origs: 30:ifthen, 40:ifthen, 50:ifthen, 60:ifthen
-  Dests: 110:auto
+  Origs: 
+  Dests: 
 (0 2) 110 PRINT "INCORRECT DATA. PLEASE RETYPE."
-  Origs: 100:auto
+  Origs: 30:ifthen, 40:ifthen, 50:ifthen, 60:ifthen
   Dests: 120:auto
 (0 3) 120 GOTO 5
   Origs: 110:auto

@@ -34,9 +34,7 @@ A, B, P, R, Y, T
 40: IF B = 999 THEN 200
  B: 999
  B = 999: true
-200: REM FIND FINAL AMOUNT
 210: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 10
  T: 4
@@ -103,9 +101,7 @@ A, B, P, R, Y, T
 40: IF B = 999 THEN 200
  B: 999
  B = 999: true
-200: REM FIND FINAL AMOUNT
 210: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 20
  T: 12
@@ -169,9 +165,7 @@ A, B, P, R, Y, T
 30: IF A = 999 THEN 100
  A: 999
  A = 999: true
-100: REM FIND ORIGINAL AMOUNT
 110: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 10
  T: 4
@@ -233,9 +227,7 @@ A, B, P, R, Y, T
 30: IF A = 999 THEN 100
  A: 999
  A = 999: true
-100: REM FIND ORIGINAL AMOUNT
 110: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 20
  T: 1
@@ -311,7 +303,6 @@ A, B, P, R, Y, T
 70: IF R = 999 THEN 500
  R: 999
  R = 999: true
-500: REM FIND ANNUAL INTEREST
 505: LET S = B - (A + Y * T * P)
  B: 0
  A: 2000
@@ -323,7 +314,6 @@ A, B, P, R, Y, T
  R = 0.1
  terminated:false
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -359,7 +349,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -395,7 +384,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -431,7 +419,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -467,7 +454,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -503,7 +489,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -539,7 +524,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -575,7 +559,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -611,7 +594,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 0.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -647,7 +629,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -683,7 +664,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -719,7 +699,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -755,7 +734,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -791,7 +769,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -827,7 +804,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -863,7 +839,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -899,7 +874,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -935,7 +909,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -971,7 +944,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 1.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1007,7 +979,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1043,7 +1014,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1079,7 +1049,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1115,7 +1084,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1151,7 +1119,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1187,7 +1154,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1223,7 +1189,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1259,7 +1224,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1295,7 +1259,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1331,7 +1294,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 2.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1367,7 +1329,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1403,7 +1364,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1439,7 +1399,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1475,7 +1434,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1511,7 +1469,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1547,7 +1504,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1583,7 +1539,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1619,7 +1574,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1655,7 +1609,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1691,7 +1644,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 3.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1727,7 +1679,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1763,7 +1714,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1799,7 +1749,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1835,7 +1784,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1871,7 +1819,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1907,7 +1854,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1943,7 +1889,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1979,7 +1924,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2015,7 +1959,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2051,7 +1994,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 4.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2087,7 +2029,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2123,7 +2064,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2159,7 +2099,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2195,7 +2134,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2231,7 +2169,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2267,7 +2204,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2303,7 +2239,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2339,7 +2274,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2375,7 +2309,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2411,7 +2344,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 5.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2447,7 +2379,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2483,7 +2414,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2519,7 +2449,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2555,7 +2484,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2591,7 +2519,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2627,7 +2554,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2663,7 +2589,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2699,7 +2624,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2735,7 +2659,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2771,7 +2694,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 6.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2807,7 +2729,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2843,7 +2764,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2879,7 +2799,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2915,7 +2834,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2951,7 +2869,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2987,7 +2904,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3023,7 +2939,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3059,7 +2974,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3095,7 +3009,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3131,7 +3044,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 7.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3167,7 +3079,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3203,7 +3114,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3239,7 +3149,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3275,7 +3184,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3311,7 +3219,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3347,7 +3254,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3383,7 +3289,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3419,7 +3324,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3455,7 +3359,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3491,7 +3394,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 8.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3527,7 +3429,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3563,7 +3464,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3599,7 +3499,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3635,7 +3534,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3671,7 +3569,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3707,7 +3604,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.5
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3743,7 +3639,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.6
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3779,7 +3674,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.7
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3815,7 +3709,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.8
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3851,7 +3744,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 9.9
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3887,7 +3779,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 10
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3923,7 +3814,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 10.1
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3959,7 +3849,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 10.2
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3995,7 +3884,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 10.3
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -4031,7 +3919,6 @@ A, B, P, R, Y, T
  terminated:false
  R = 10.4
 520: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -4106,9 +3993,7 @@ A, B, P, R, Y, T
 60: IF Y = 999 THEN 400
  Y: 999
  Y = 999: true
-400: REM FIND NUMBER OF YEARS
 410: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 999
  T: 1
@@ -4186,9 +4071,7 @@ A, B, P, R, Y, T
 60: IF Y = 999 THEN 400
  Y: 999
  Y = 999: true
-400: REM FIND NUMBER OF YEARS
 410: GOSUB 1000
-1000: REM COMPUTE BASIC QUANTITIES
 1010: LET N = Y * T
  Y: 999
  T: 12

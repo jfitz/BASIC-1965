@@ -1585,11 +1585,13 @@ class GosubStatement < AbstractStatement
     @tokens[-1] = new_token
   end
 
-  def set_destinations(interpreter, _, _)
+  def set_destinations(interpreter, _, program)
     mod = interpreter.statement_start_index(@dest_line)
 
-    @dest_line_stmt_mod = LineStmtMod.new(@dest_line, 0, mod) unless
-      mod.nil?
+    unless mod.nil?
+      dest = LineStmtMod.new(@dest_line, 0, mod)
+      @dest_line_stmt_mod = program.find_exec_line_stmt_mod(dest)
+    end
   end
 
   def check_program(program, _line_number_stmt)
@@ -1604,7 +1606,13 @@ class GosubStatement < AbstractStatement
   def set_transfers(_)
     @transfers = []
 
-    @transfers << TransferRefLineStmt.new(@dest_line, 0, :gosub)
+    if @dest_line_stmt_mod.nil?
+      @transfers << TransferRefLineStmt.new(@dest_line, 0, :gosub) unless
+        @dest_line.nil?
+    else
+      xref = TransferRefLineStmt.new(@dest_line_stmt_mod.line_number, 0, :gosub)
+      @transfers << xref
+    end
   end
 
   def execute_core(interpreter)
@@ -1648,11 +1656,13 @@ class GotoStatement < AbstractStatement
     end
   end
 
-  def set_destinations(interpreter, _, _)
+  def set_destinations(interpreter, _, program)
     mod = interpreter.statement_start_index(@dest_line)
 
-    @dest_line_stmt_mod = LineStmtMod.new(@dest_line, 0, mod) unless
-      mod.nil?
+    unless mod.nil?
+      dest = LineStmtMod.new(@dest_line, 0, mod)
+      @dest_line_stmt_mod = program.find_exec_line_stmt_mod(dest)
+    end
   end
 
   def check_program(program, _line_number_stmt)
@@ -1674,7 +1684,13 @@ class GotoStatement < AbstractStatement
   def set_transfers(_)
     @transfers = []
 
-    @transfers << TransferRefLineStmt.new(@dest_line, 0, :goto)
+    if @dest_line_stmt_mod.nil?
+      @transfers << TransferRefLineStmt.new(@dest_line, 0, :goto) unless
+        @dest_line.nil?
+    else
+      xref = TransferRefLineStmt.new(@dest_line_stmt_mod.line_number, 0, :goto)
+      @transfers << xref
+    end
   end
 
   def execute_core(interpreter)
@@ -1687,11 +1703,13 @@ end
 
 # common functions for IF statements
 class AbstractIfStatement < AbstractStatement
-  def set_destinations(interpreter, _, _)
+  def set_destinations(interpreter, _, program)
     mod = interpreter.statement_start_index(@dest_line)
 
-    @dest_line_stmt_mod = LineStmtMod.new(@dest_line, 0, mod) unless
-      mod.nil?
+    unless mod.nil?
+      dest = LineStmtMod.new(@dest_line, 0, mod)
+      @dest_line_stmt_mod = program.find_exec_line_stmt_mod(dest)
+    end
   end
 
   def uncache
@@ -1723,8 +1741,13 @@ class AbstractIfStatement < AbstractStatement
   def set_transfers(_)
     @transfers = []
 
-    @transfers << TransferRefLineStmt.new(@dest_line, 0, :ifthen) unless
-      @dest_line.nil?
+    if @dest_line_stmt_mod.nil?
+      @transfers << TransferRefLineStmt.new(@dest_line, 0, :ifthen) unless
+        @dest_line.nil?
+    else
+      xref = TransferRefLineStmt.new(@dest_line_stmt_mod.line_number, 0, :ifthen)
+      @transfers << xref
+    end
   end
 
   def execute_core(interpreter)

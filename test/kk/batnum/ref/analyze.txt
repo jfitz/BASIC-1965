@@ -53,10 +53,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 210 REM OPPONENT'S MOVE
-  Origs: 290:goto, 510:goto
-  Dests: 220:auto
+  Origs: 
+  Dests: 
 (0 2) 220 PRINT "YOUR MOVE";
-  Origs: 190:auto, 210:auto
+  Origs: 190:auto, 290:goto, 510:goto
   Dests: 230:auto
 (1 2) 230 INPUT X
   Origs: 220:auto
@@ -69,7 +69,7 @@ Halstead complexity:
   Dests: 260:auto, 270:ifthen
 (1 4) 260 IF X <= N THEN 310
   Origs: 250:auto
-  Dests: 270:auto, 310:ifthen
+  Dests: 270:auto, 320:ifthen
 (0 2) 270 PRINT "ILLEGAL MOVE"
   Origs: 240:ifthen, 250:ifthen, 260:auto
   Dests: 280:auto
@@ -78,19 +78,19 @@ Halstead complexity:
   Dests: 290:auto
 (0 3) 290 GOTO 210
   Origs: 280:auto
-  Dests: 210:goto
+  Dests: 220:goto
 (0 0) 300 
   Origs: 
   Dests: 
 (0 1) 310 REM TEST FOR WIN
-  Origs: 260:ifthen
-  Dests: 320:auto
+  Origs: 
+  Dests: 
 (0 4) 320 LET N = N - X
-  Origs: 310:auto
+  Origs: 260:ifthen
   Dests: 330:auto
 (1 4) 330 IF N > 0 THEN 410
   Origs: 320:auto
-  Dests: 340:auto, 410:ifthen
+  Dests: 340:auto, 420:ifthen
 (0 2) 340 PRINT "I WIN ***"
   Origs: 330:auto
   Dests: 350:auto
@@ -113,17 +113,17 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 410 REM MACHINE'S MOVE
-  Origs: 330:ifthen
-  Dests: 420:auto
+  Origs: 
+  Dests: 
 (0 4) 420 LET Q = INT((N - 1) / (K + 1))
-  Origs: 410:auto
+  Origs: 330:ifthen
   Dests: 430:auto
 (0 9) 430 LET Y = N - 1 - Q * (K + 1)
   Origs: 420:auto
   Dests: 440:auto
 (1 4) 440 IF Y = 0 THEN 530
   Origs: 430:auto
-  Dests: 450:auto, 530:ifthen
+  Dests: 450:auto, 540:ifthen
 (0 4) 450 LET N = N - Y
   Origs: 440:auto, 560:goto, 580:goto
   Dests: 460:auto
@@ -135,7 +135,7 @@ Halstead complexity:
   Dests: 480:auto
 (1 4) 480 IF N = 0 THEN 600
   Origs: 470:auto
-  Dests: 490:auto, 600:ifthen
+  Dests: 490:auto, 610:ifthen
 (0 3) 490 PRINT "NEW TOTAL IS" N
   Origs: 480:auto
   Dests: 500:auto
@@ -144,15 +144,15 @@ Halstead complexity:
   Dests: 510:auto
 (0 3) 510 GOTO 210
   Origs: 500:auto
-  Dests: 210:goto
+  Dests: 220:goto
 (0 0) 520 
   Origs: 
   Dests: 
 (0 1) 530 REM MAKE RANDOM MOVE
-  Origs: 440:ifthen
-  Dests: 540:auto
+  Origs: 
+  Dests: 
 (1 4) 540 IF N > 1 THEN 570
-  Origs: 530:auto
+  Origs: 440:ifthen
   Dests: 550:auto, 570:ifthen
 (0 3) 550 LET Y = 1
   Origs: 540:auto
@@ -170,10 +170,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 600 REM MACHINE LOST
-  Origs: 480:ifthen
-  Dests: 610:auto
+  Origs: 
+  Dests: 
 (0 2) 610 PRINT "YOU WIN ***"
-  Origs: 600:auto
+  Origs: 480:ifthen
   Dests: 620:auto
 (0 3) 620 GOTO 350
   Origs: 610:auto

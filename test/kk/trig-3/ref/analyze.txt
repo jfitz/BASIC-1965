@@ -48,10 +48,10 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Dests: 130:function, 180:auto
 (1 4) 180 IF S > 1 THEN 290
   Origs: 170:auto
-  Dests: 190:auto, 290:ifthen
+  Dests: 190:auto, 300:ifthen
 (1 6) 190 IF FNR(S) = 1 THEN 320
   Origs: 180:auto
-  Dests: 210:auto, 320:ifthen
+  Dests: 210:auto, 330:ifthen
 (0 0) 195 
   Origs: 
   Dests: 
@@ -69,7 +69,7 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Dests: 240:auto
 (0 2) 240 GOSUB 370
   Origs: 230:auto
-  Dests: 250:auto, 370:gosub
+  Dests: 250:auto, 380:gosub
 (0 4) 250 LET C = 180 - C
   Origs: 240:auto
   Dests: 260:auto
@@ -78,7 +78,7 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Dests: 270:auto
 (0 2) 270 GOSUB 370
   Origs: 260:auto
-  Dests: 275:auto, 370:gosub
+  Dests: 275:auto, 380:gosub
 (0 2) 275 PRINT
   Origs: 270:auto
   Dests: 280:auto
@@ -89,10 +89,10 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Origs: 
   Dests: 
 (0 1) 290 REM NO POINT OF INTERSECTION
-  Origs: 180:ifthen
-  Dests: 300:auto
+  Origs: 
+  Dests: 
 (0 3) 300 PRINT "NONE", "NONE"
-  Origs: 290:auto
+  Origs: 180:ifthen
   Dests: 310:auto
 (0 3) 310 GOTO 150
   Origs: 300:auto
@@ -101,14 +101,14 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Origs: 
   Dests: 
 (0 1) 320 REM ONE POINT OF INTERSECTION
-  Origs: 190:ifthen
-  Dests: 330:auto
+  Origs: 
+  Dests: 
 (0 4) 330 LET A = 90 - B
-  Origs: 320:auto
+  Origs: 190:ifthen
   Dests: 340:auto
 (0 2) 340 GOSUB 370
   Origs: 330:auto
-  Dests: 350:auto, 370:gosub
+  Dests: 350:auto, 380:gosub
 (0 2) 350 PRINT "NONE"
   Origs: 340:auto
   Dests: 360:auto
@@ -119,10 +119,10 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
   Origs: 
   Dests: 
 (0 1) 370 REM ANGLE-SIDE-ANGLE ROUTINE
-  Origs: 240:gosub, 270:gosub, 340:gosub
-  Dests: 380:auto
+  Origs: 
+  Dests: 
 (0 7) 380 LET Z = X * FNS(A) / S
-  Origs: 370:auto
+  Origs: 240:gosub, 270:gosub, 340:gosub
   Dests: 130:function, 390:auto
 (1 4) 390 IF Z >= 0 THEN 420
   Origs: 380:auto

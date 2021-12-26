@@ -48,15 +48,15 @@ Halstead complexity:
   Dests: 190:auto
 (0 2) 190 GOSUB 900
   Origs: 180:auto
-  Dests: 220:auto, 900:gosub
+  Dests: 220:auto, 910:gosub
 (0 0) 200 
+  Origs: 
+  Dests: 
+(0 1) 210 REM OPPONENT'S MOVE
   Origs: 290:goto
   Dests: 220:auto
-(0 1) 210 REM OPPONENT'S MOVE
-  Origs: 880:goto
-  Dests: 220:auto
 (0 2) 220 PRINT "PILE, NUMBER TAKEN";
-  Origs: 190:auto, 200:auto, 210:auto
+  Origs: 190:auto, 210:auto, 880:goto
   Dests: 230:auto
 (2 3) 230 INPUT P, N
   Origs: 220:auto
@@ -78,10 +78,10 @@ Halstead complexity:
   Dests: 290:auto
 (0 3) 290 GOTO 200
   Origs: 280:auto
-  Dests: 200:goto
+  Dests: 210:goto
 (1 6) 300 IF N(1) + N(2) + N(3) > 0 THEN 370
   Origs: 250:ifthen
-  Dests: 310:auto, 370:ifthen
+  Dests: 310:auto, 380:ifthen
 (0 2) 310 PRINT
   Origs: 300:auto
   Dests: 320:auto
@@ -101,10 +101,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 370 REM SET UP BIT-PATTERNS
-  Origs: 300:ifthen
-  Dests: 380:auto
+  Origs: 
+  Dests: 
 (1 3) 380 FOR P = 1 TO 3
-  Origs: 370:auto
+  Origs: 300:ifthen
   Dests: 390:fornext, 450:fornext
 (0 3) 390 LET X = N(P)
   Origs: 380:fornext
@@ -153,7 +153,7 @@ Halstead complexity:
   Dests: 
 (1 7) 540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
   Origs: 510:auto
-  Dests: 550:auto, 610:ifthen
+  Dests: 550:auto, 620:ifthen
 (1 3) 550 FOR P = 1 TO 3
   Origs: 540:auto
   Dests: 560:fornext, 590:fornext
@@ -165,7 +165,7 @@ Halstead complexity:
   Dests: 580:auto
 (0 2) 580 GOTO 770
   Origs: 570:auto
-  Dests: 770:goto
+  Dests: 780:goto
 (0 1) 590 NEXT P
   Origs: 550:fornext, 560:ifthen
   Dests: 620:auto
@@ -173,10 +173,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 610 REM MAKE OPTIMAL MOVE
-  Origs: 540:ifthen
-  Dests: 620:auto
+  Origs: 
+  Dests: 
 (1 3) 620 FOR J = 1 TO 4
-  Origs: 590:auto, 610:auto
+  Origs: 540:ifthen, 590:auto
   Dests: 630:fornext, 640:fornext
 (1 4) 630 IF S(J) > 0 THEN 650
   Origs: 620:fornext
@@ -221,10 +221,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 770 REM CARRY OUT MOVE
-  Origs: 580:goto
-  Dests: 780:auto
+  Origs: 
+  Dests: 
 (0 2) 780 PRINT
-  Origs: 750:auto, 770:auto
+  Origs: 580:goto, 750:auto
   Dests: 790:auto
 (0 5) 790 PRINT "MY MOVE:" P; "," N
   Origs: 780:auto
@@ -252,18 +252,18 @@ Halstead complexity:
   Dests: 870:auto
 (0 2) 870 GOSUB 900
   Origs: 860:auto
-  Dests: 880:auto, 900:gosub
+  Dests: 880:auto, 910:gosub
 (0 3) 880 GOTO 210
   Origs: 870:auto
-  Dests: 210:goto
+  Dests: 220:goto
 (0 0) 890 
   Origs: 
   Dests: 
 (0 1) 900 REM PRINT CONFIGURATION
-  Origs: 190:gosub, 870:gosub
-  Dests: 910:auto
+  Origs: 
+  Dests: 
 (1 3) 910 FOR P = 1 TO 3
-  Origs: 900:auto
+  Origs: 190:gosub, 870:gosub
   Dests: 920:fornext, 930:fornext
 (0 4) 920 PRINT "PILE " P; N(P)
   Origs: 910:fornext

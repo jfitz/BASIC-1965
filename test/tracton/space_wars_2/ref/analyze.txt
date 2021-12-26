@@ -33,10 +33,10 @@ Halstead complexity:
   Dests: 
 (0 1) 50 
    Unknown statement 'RANDOMIZE'
-  Origs: 2850:goto
-  Dests: 60:auto
+  Origs: 
+  Dests: 
 (0 2) 60 PRINT "ARE INSTRUCTIONS FOR SPACE WARS REQUIRED? TYPE"
-  Origs: :start, 50:auto, 120:goto
+  Origs: :start, 120:goto, 2850:goto
   Dests: 70:auto
 (0 2) 70 PRINT "EITHER YES OR NO"
   Origs: 60:auto
@@ -918,7 +918,7 @@ Halstead complexity:
   Dests: 2780:goto
 (0 3) 2850 GOTO 50
   Origs: 
-  Dests: 50:goto
+  Dests: 60:goto
 (0 2) 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
   Origs: 2820:ifthen
   Dests: 2870:auto

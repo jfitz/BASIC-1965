@@ -1,6 +1,5 @@
 10: DIM H(13)
 20: GOSUB 1000
-1000: REM SET UP DECK
 1010: DIM L(51)
 1020: FOR I = 0 TO 51
  I = 0
@@ -373,7 +372,6 @@
  C = 1
  terminated:false
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 21
 2020: LET X = L(I)
@@ -396,7 +394,6 @@
  terminated:false
  C = 2
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 37
 2020: LET X = L(I)
@@ -419,7 +416,6 @@
  terminated:false
  C = 3
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 0
 2020: LET X = L(I)
@@ -442,7 +438,6 @@
  terminated:false
  C = 4
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 15
 2020: LET X = L(I)
@@ -465,7 +460,6 @@
  terminated:false
  C = 5
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 7
 2020: LET X = L(I)
@@ -488,7 +482,6 @@
  terminated:false
  C = 6
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 4
 2020: LET X = L(I)
@@ -511,7 +504,6 @@
  terminated:false
  C = 7
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 9
 2020: LET X = L(I)
@@ -534,7 +526,6 @@
  terminated:false
  C = 8
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 17
 2020: LET X = L(I)
@@ -557,7 +548,6 @@
  terminated:false
  C = 9
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 20
 2020: LET X = L(I)
@@ -580,7 +570,6 @@
  terminated:false
  C = 10
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 28
 2020: LET X = L(I)
@@ -603,7 +592,6 @@
  terminated:false
  C = 11
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 21
 2020: LET X = L(I)
@@ -635,7 +623,6 @@
  terminated:false
  C = 12
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 10
 2020: LET X = L(I)
@@ -658,7 +645,6 @@
  terminated:false
  C = 13
 40: GOSUB 2000
-2000: REM DEAL A CARD
 2010: LET I = INT(52 * RND(1))
  I = 45
 2020: LET X = L(I)
@@ -1762,7 +1748,6 @@
  H(1): 37
  X = 37
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 37
  S = 2
@@ -1806,7 +1791,6 @@ KING
  H(2): 21
  X = 21
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 21
  S = 1
@@ -1839,7 +1823,6 @@ DIAMOND
  H(3): 15
  X = 15
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 15
  S = 1
@@ -1872,7 +1855,6 @@ DIAMOND
  H(4): 17
  X = 17
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 17
  S = 1
@@ -1905,7 +1887,6 @@ DIAMOND
  H(5): 28
  X = 28
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 28
  S = 2
@@ -1941,7 +1922,6 @@ HEART
  H(6): 35
  X = 35
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 35
  S = 2
@@ -1979,7 +1959,6 @@ JACK
  H(7): 45
  X = 45
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 45
  S = 3
@@ -2014,7 +1993,6 @@ SPADE
  H(8): 20
  X = 20
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 20
  S = 1
@@ -2047,7 +2025,6 @@ DIAMOND
  H(9): 10
  X = 10
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 10
  S = 0
@@ -2082,7 +2059,6 @@ QUEEN
  H(10): 9
  X = 9
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 9
  S = 0
@@ -2114,7 +2090,6 @@ JACK
  H(11): 7
  X = 7
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 7
  S = 0
@@ -2144,7 +2119,6 @@ CLUB
  H(12): 4
  X = 4
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 4
  S = 0
@@ -2174,7 +2148,6 @@ CLUB
  H(13): 0
  X = 0
 220: GOSUB 3000
-3000: REM PRINT A CARD
 3010: LET S = INT(X / 13)
  X: 0
  S = 0

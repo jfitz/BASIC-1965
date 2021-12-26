@@ -113,10 +113,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 410 REM NEW INNING
-  Origs: 945:ifthen
-  Dests: 430:auto
+  Origs: 
+  Dests: 
 (0 3) 430 PRINT "INNING" I
-  Origs: 380:auto, 410:auto
+  Origs: 380:auto, 945:ifthen
   Dests: 450:auto
 (0 3) 450 LET S = 0
   Origs: 430:auto
@@ -131,10 +131,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 490 REM NEW BATTER
-  Origs: 850:goto, 880:goto
-  Dests: 500:auto
+  Origs: 
+  Dests: 
 (1 4) 500 IF B < 9 THEN 520
-  Origs: 470:auto, 490:auto
+  Origs: 470:auto, 850:goto, 880:goto
   Dests: 510:auto, 520:ifthen
 (0 3) 510 LET B = 0
   Origs: 500:auto
@@ -159,7 +159,7 @@ Halstead complexity:
   Dests: 580:auto
 (1 4) 580 IF X < 0 THEN 620
   Origs: 570:auto
-  Dests: 590:auto, 620:ifthen
+  Dests: 590:auto, 630:ifthen
 (0 1) 590 NEXT R
   Origs: 560:fornext, 580:auto
   Dests: 600:auto
@@ -170,17 +170,17 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 620 REM PRINT OUTCOME
-  Origs: 580:ifthen
-  Dests: 630:auto
+  Origs: 
+  Dests: 
 (1 4) 630 IF R > 0 THEN 660
-  Origs: 600:auto, 620:auto
+  Origs: 580:ifthen, 600:auto
   Dests: 640:auto, 660:ifthen
 (0 2) 640 PRINT "OUT   ";
   Origs: 630:auto
   Dests: 650:auto
 (0 2) 650 GOTO 770
   Origs: 640:auto
-  Dests: 770:goto
+  Dests: 780:goto
 (1 4) 660 IF R > 1 THEN 690
   Origs: 630:ifthen
   Dests: 670:auto, 690:ifthen
@@ -189,7 +189,7 @@ Halstead complexity:
   Dests: 680:auto
 (0 2) 680 GOTO 770
   Origs: 670:auto
-  Dests: 770:goto
+  Dests: 780:goto
 (1 4) 690 IF R > 2 THEN 720
   Origs: 660:ifthen
   Dests: 700:auto, 720:ifthen
@@ -198,7 +198,7 @@ Halstead complexity:
   Dests: 710:auto
 (0 2) 710 GOTO 770
   Origs: 700:auto
-  Dests: 770:goto
+  Dests: 780:goto
 (1 4) 720 IF R > 3 THEN 750
   Origs: 690:ifthen
   Dests: 730:auto, 750:ifthen
@@ -207,7 +207,7 @@ Halstead complexity:
   Dests: 740:auto
 (0 2) 740 GOTO 770
   Origs: 730:auto
-  Dests: 770:goto
+  Dests: 780:goto
 (0 2) 750 PRINT "HOME RUN   ";
   Origs: 720:ifthen
   Dests: 780:auto
@@ -215,10 +215,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 770 REM DO BOOK-KEEPING
-  Origs: 650:goto, 680:goto, 710:goto, 740:goto
-  Dests: 780:auto
+  Origs: 
+  Dests: 
 (1 4) 780 IF R = 0 THEN 860
-  Origs: 750:auto, 770:auto
+  Origs: 650:goto, 680:goto, 710:goto, 740:goto, 750:auto
   Dests: 790:auto, 860:ifthen
 (1 4) 790 IF R = 2 THEN 810
   Origs: 780:auto
@@ -240,24 +240,24 @@ Halstead complexity:
   Dests: 850:auto
 (0 3) 850 GOTO 490
   Origs: 840:auto
-  Dests: 490:goto
+  Dests: 500:goto
 (1 4) 860 IF O = 2 THEN 890
   Origs: 780:ifthen
-  Dests: 870:auto, 890:ifthen
+  Dests: 870:auto, 895:ifthen
 (0 4) 870 LET O = O + 1
   Origs: 860:auto
   Dests: 880:auto
 (0 3) 880 GOTO 490
   Origs: 870:auto
-  Dests: 490:goto
+  Dests: 500:goto
 (0 0) 885 
   Origs: 
   Dests: 
 (0 1) 890 REM END OF AN INNING
-  Origs: 860:ifthen
-  Dests: 895:auto
+  Origs: 
+  Dests: 
 (0 4) 895 LET L7 = L7 + L(C)
-  Origs: 890:auto
+  Origs: 860:ifthen
   Dests: 900:auto
 (0 2) 900 PRINT
   Origs: 895:auto
@@ -276,7 +276,7 @@ Halstead complexity:
   Dests: 945:auto
 (1 5) 945 IF I < 9 THEN 410
   Origs: 940:auto
-  Dests: 410:ifthen, 960:auto
+  Dests: 430:ifthen, 960:auto
 (0 0) 950 
   Origs: 
   Dests: 

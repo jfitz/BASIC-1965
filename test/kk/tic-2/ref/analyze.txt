@@ -108,7 +108,7 @@ Halstead complexity:
   Dests: 370:auto
 (0 2) 370 GOTO 600
   Origs: 360:auto
-  Dests: 600:goto
+  Dests: 610:goto
 (0 0) 380 
   Origs: 
   Dests: 
@@ -156,7 +156,7 @@ Halstead complexity:
   Dests: 520:auto, 860:ifthen
 (1 4) 520 IF C(P) = 3 THEN 800
   Origs: 510:auto
-  Dests: 530:auto, 800:ifthen
+  Dests: 530:auto, 810:ifthen
 (0 1) 530 NEXT J
   Origs: 470:fornext, 490:ifthen, 520:auto
   Dests: 535:auto
@@ -171,10 +171,10 @@ Halstead complexity:
   Dests: 400:ifthen, 538:auto
 (0 2) 538 GOTO 600
   Origs: 537:auto
-  Dests: 600:goto
+  Dests: 610:goto
 (0 2) 540 GOTO 600
   Origs: 
-  Dests: 600:goto
+  Dests: 610:goto
 (0 2) 550 PRINT "ILLEGAL MOVE. TRY AGAIN."
   Origs: 420:ifthen, 440:ifthen
   Dests: 560:auto
@@ -185,11 +185,11 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 600 REM MACHINE'S MOVE
-  Origs: 370:goto, 538:goto, 540:goto
-  Dests: 610:auto
+  Origs: 
+  Dests: 
 (0 2) 610 GOSUB 1000
-  Origs: 600:auto
-  Dests: 620:auto, 1000:gosub
+  Origs: 370:goto, 538:goto, 540:goto
+  Dests: 620:auto, 1010:gosub
 (0 3) 620 PRINT "THE COMPUTER MOVES" M
   Origs: 610:auto
   Dests: 630:auto
@@ -200,10 +200,10 @@ Halstead complexity:
   Origs: 630:auto
   Dests: 460:goto
 (0 1) 800 REM THE GAME IS OVER
-  Origs: 520:ifthen
-  Dests: 810:auto
+  Origs: 
+  Dests: 
 (0 2) 810 PRINT "AND THE COMPUTER WINS."
-  Origs: 800:auto
+  Origs: 520:ifthen
   Dests: 820:auto
 (0 2) 820 PRINT
   Origs: 810:auto, 870:goto, 890:goto
@@ -233,10 +233,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 1000 REM SELECT A MOVE
-  Origs: 610:gosub
-  Dests: 1010:auto
+  Origs: 
+  Dests: 
 (1 3) 1010 FOR P = 1 TO 8
-  Origs: 1000:auto
+  Origs: 610:gosub
   Dests: 1020:fornext, 1030:fornext
 (1 4) 1020 IF C(P) = 2 THEN 1100
   Origs: 1010:fornext

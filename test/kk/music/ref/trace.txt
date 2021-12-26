@@ -137,7 +137,6 @@ NOTE NUMBER     CHORD
  N: 28
  N9: 28
  N = N9: true
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 28
  28             
@@ -1060,7 +1059,6 @@ NOTE NUMBER     CHORD
  W(3,2): -3
  S(3,27) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 27
  27             
@@ -1956,7 +1954,6 @@ NOTE NUMBER     CHORD
  W(3,0): -4
  S(3,26) = -4
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 26
  26             
@@ -2593,7 +2590,6 @@ NOTE NUMBER     CHORD
 1600: IF M = 999 THEN 4000
  M: 999
  M = 999: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -3256,7 +3252,6 @@ NOTE NUMBER     CHORD
 1600: IF M = 999 THEN 4000
  M: 999
  M = 999: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -3375,7 +3370,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 3
  terminated:false
@@ -4113,7 +4107,6 @@ NOTE NUMBER     CHORD
 1600: IF M = 999 THEN 4000
  M: 999
  M = 999: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 4
  terminated:false
@@ -4239,7 +4232,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 5
  terminated:false
@@ -4358,7 +4350,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 6
  terminated:true
@@ -4500,7 +4491,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -4954,7 +4944,6 @@ NOTE NUMBER     CHORD
  C1: 5
  C2: 5
  C1 = C2: true
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -5209,7 +5198,6 @@ NOTE NUMBER     CHORD
  W(3,2): -3
  S(3,26) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 26
  26             
@@ -5362,7 +5350,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -6229,7 +6216,6 @@ NOTE NUMBER     CHORD
  W(3,1): -5
  S(3,25) = -5
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 25
  25             
@@ -7379,7 +7365,6 @@ NOTE NUMBER     CHORD
  W(3,2): -7
  S(3,24) = -7
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 24
  24             
@@ -8288,7 +8273,6 @@ NOTE NUMBER     CHORD
  W(3,1): -6
  S(3,23) = -6
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 23
  23             
@@ -8440,7 +8424,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -9505,7 +9488,6 @@ NOTE NUMBER     CHORD
  W(3,2): -2
  S(3,22) = -2
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 22
  22             
@@ -9658,7 +9640,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -9768,7 +9749,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -9894,7 +9874,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 3
  terminated:false
@@ -10285,7 +10264,6 @@ NOTE NUMBER     CHORD
  C1: 6
  C2: 6
  C1 = C2: true
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -10392,7 +10370,6 @@ NOTE NUMBER     CHORD
  C1: 6
  C2: 6
  C1 = C2: true
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -10647,7 +10624,6 @@ NOTE NUMBER     CHORD
  W(3,2): 0
  S(3,21) = 0
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 21
  21             
@@ -11993,7 +11969,6 @@ NOTE NUMBER     CHORD
  W(3,3): -3
  S(3,20) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 20
  20             
@@ -12130,7 +12105,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -12999,7 +12973,6 @@ NOTE NUMBER     CHORD
  W(3,2): -4
  S(3,19) = -4
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 19
  19             
@@ -13151,7 +13124,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -13887,7 +13859,6 @@ NOTE NUMBER     CHORD
 1600: IF M = 999 THEN 4000
  M: 999
  M = 999: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -13997,7 +13968,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 3
  terminated:false
@@ -14107,7 +14077,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 4
  terminated:false
@@ -14217,7 +14186,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 5
  terminated:false
@@ -15105,7 +15073,6 @@ NOTE NUMBER     CHORD
  W(3,2): -4
  S(3,18) = -4
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 18
  18             
@@ -16234,7 +16201,6 @@ NOTE NUMBER     CHORD
  W(3,1): -7
  S(3,17) = -7
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 17
  17             
@@ -17130,7 +17096,6 @@ NOTE NUMBER     CHORD
  W(3,0): -5
  S(3,16) = -5
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 16
  16             
@@ -18053,7 +18018,6 @@ NOTE NUMBER     CHORD
  W(3,2): -3
  S(3,15) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 15
  15             
@@ -18205,7 +18169,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -19053,7 +19016,6 @@ NOTE NUMBER     CHORD
 1600: IF M = 999 THEN 4000
  M: 999
  M = 999: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -19163,7 +19125,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 3
  terminated:false
@@ -19273,7 +19234,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 4
  terminated:false
@@ -20400,7 +20360,6 @@ NOTE NUMBER     CHORD
  W(3,3): -3
  S(3,14) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 14
  14             
@@ -21319,7 +21278,6 @@ NOTE NUMBER     CHORD
  W(3,2): -3
  S(3,13) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 13
  13             
@@ -21472,7 +21430,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -22339,7 +22296,6 @@ NOTE NUMBER     CHORD
  W(3,1): -5
  S(3,12) = -5
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 12
  12             
@@ -23489,7 +23445,6 @@ NOTE NUMBER     CHORD
  W(3,2): -7
  S(3,11) = -7
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 11
  11             
@@ -24398,7 +24353,6 @@ NOTE NUMBER     CHORD
  W(3,1): -6
  S(3,10) = -6
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 10
  10             
@@ -24550,7 +24504,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -25615,7 +25568,6 @@ NOTE NUMBER     CHORD
  W(3,2): -2
  S(3,9) = -2
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 9
  9              
@@ -25768,7 +25720,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -25878,7 +25829,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -26004,7 +25954,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 3
  terminated:false
@@ -26395,7 +26344,6 @@ NOTE NUMBER     CHORD
  C1: 6
  C2: 6
  C1 = C2: true
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -26502,7 +26450,6 @@ NOTE NUMBER     CHORD
  C1: 6
  C2: 6
  C1 = C2: true
-1200: REM COMPUTE DISTANCE
 1210: FOR V = 2 TO 3
  V = 2
  terminated:false
@@ -26757,7 +26704,6 @@ NOTE NUMBER     CHORD
  W(3,2): 0
  S(3,8) = 0
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 8
  8              
@@ -28103,7 +28049,6 @@ NOTE NUMBER     CHORD
  W(3,3): -3
  S(3,7) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 7
  7              
@@ -28240,7 +28185,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -29109,7 +29053,6 @@ NOTE NUMBER     CHORD
  W(3,2): -4
  S(3,6) = -4
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 6
  6              
@@ -29261,7 +29204,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -29997,7 +29939,6 @@ NOTE NUMBER     CHORD
 1600: IF M = 999 THEN 4000
  M: 999
  M = 999: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -30107,7 +30048,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 3
  terminated:false
@@ -30217,7 +30157,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 4
  terminated:false
@@ -30327,7 +30266,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 5
  terminated:false
@@ -31215,7 +31153,6 @@ NOTE NUMBER     CHORD
  W(3,2): -4
  S(3,5) = -4
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 5
  5              
@@ -32344,7 +32281,6 @@ NOTE NUMBER     CHORD
  W(3,1): -7
  S(3,4) = -7
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 4
  4              
@@ -33240,7 +33176,6 @@ NOTE NUMBER     CHORD
  W(3,0): -5
  S(3,3) = -5
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 3
  3              
@@ -34163,7 +34098,6 @@ NOTE NUMBER     CHORD
  W(3,2): -3
  S(3,2) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 2
  2              
@@ -34315,7 +34249,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 1
  terminated:false
@@ -35163,7 +35096,6 @@ NOTE NUMBER     CHORD
 1600: IF M = 999 THEN 4000
  M: 999
  M = 999: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 2
  terminated:false
@@ -35273,7 +35205,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 3
  terminated:false
@@ -35383,7 +35314,6 @@ NOTE NUMBER     CHORD
 760: IF J > 3 THEN 4000
  J: 4
  J > 3: true
-4000: REM  REJECT CHORD
 4001: NEXT I
  I: 4
  terminated:false
@@ -36510,7 +36440,6 @@ NOTE NUMBER     CHORD
  W(3,3): -3
  S(3,1) = -3
 1630: GOTO 6000
-6000: REM  PRINT RESULTS
 6001: PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
  N: 1
  1              

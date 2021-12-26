@@ -123,7 +123,7 @@ Halstead complexity:
   Dests: 230:auto
 (0 2) 230 GOSUB 800
   Origs: 220:auto
-  Dests: 239:auto, 800:gosub
+  Dests: 239:auto, 810:gosub
 (1 4) 239 IF Z > 999 THEN 270
   Origs: 230:auto
   Dests: 240:auto, 270:ifthen
@@ -153,7 +153,7 @@ Halstead complexity:
   Dests: 420:auto
 (0 2) 420 GOSUB 800
   Origs: 410:auto, 470:ifthen
-  Dests: 430:auto, 800:gosub
+  Dests: 430:auto, 810:gosub
 (1 4) 430 IF Z > 999 THEN 450
   Origs: 420:auto
   Dests: 440:auto, 450:ifthen
@@ -236,10 +236,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 800 REM TEST FACTOR F
-  Origs: 230:gosub, 420:gosub
-  Dests: 810:auto
+  Origs: 
+  Dests: 
 (0 7) 810 LET X = A - F * INT(A / F)
-  Origs: 800:auto
+  Origs: 230:gosub, 420:gosub
   Dests: 820:auto
 (0 4) 820 LET Y = A * 1E3
   Origs: 810:auto

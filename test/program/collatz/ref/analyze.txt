@@ -42,7 +42,7 @@ Halstead complexity:
   Dests: 120:auto
 (0 2) 120 GOSUB 400
   Origs: 110:auto
-  Dests: 130:auto, 400:gosub
+  Dests: 130:auto, 410:gosub
 (0 1) 130 NEXT N
   Origs: 100:fornext, 120:auto
   Dests: 140:auto
@@ -50,10 +50,10 @@ Halstead complexity:
   Origs: 130:auto
   Dests: :stop
 (0 1) 400 REM PRINT INFO FOR ONE NUMBER
-  Origs: 120:gosub
-  Dests: 410:auto
+  Origs: 
+  Dests: 
 (0 3) 410 PRINT N0; ":";
-  Origs: 400:auto
+  Origs: 120:gosub
   Dests: 420:auto
 (1 4) 420 IF N0 = 1 THEN 490
   Origs: 410:auto, 480:goto

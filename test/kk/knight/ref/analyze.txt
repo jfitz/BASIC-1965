@@ -138,7 +138,7 @@ Halstead complexity:
   Dests: 490:auto
 (1 4) 490 IF C = 0 THEN 600
   Origs: 480:auto
-  Dests: 510:auto, 600:ifthen
+  Dests: 510:auto, 610:ifthen
 (0 1) 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
   Origs: 
   Dests: 
@@ -149,10 +149,10 @@ Halstead complexity:
   Origs: 510:auto
   Dests: 320:goto
 (0 1) 600 REMARK WE HAVE GONE AS FAR AS WE CAN
-  Origs: 490:ifthen
-  Dests: 610:auto
+  Origs: 
+  Dests: 
 (0 4) 610 PRINT I; J; M
-  Origs: 600:auto
+  Origs: 490:ifthen
   Dests: 612:auto
 (0 4) 612 LET Z0 = Z0 + 1
   Origs: 610:auto

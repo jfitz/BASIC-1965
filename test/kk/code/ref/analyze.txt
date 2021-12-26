@@ -99,7 +99,7 @@ Halstead complexity:
   Dests: 260:auto
 (0 2) 260 GOSUB 1000
   Origs: 240:ifthen, 250:auto
-  Dests: 270:auto, 1000:gosub
+  Dests: 270:auto, 1010:gosub
 (0 4) 270 LET J = J + 1
   Origs: 260:auto
   Dests: 280:auto
@@ -167,10 +167,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 1000 REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
-  Origs: 260:gosub
-  Dests: 1010:auto
+  Origs: 
+  Dests: 
 (1 4) 1010 IF X > 0 THEN 1040
-  Origs: 1000:auto
+  Origs: 260:gosub
   Dests: 1020:auto, 1040:ifthen
 (0 2) 1020 PRINT " ";
   Origs: 1010:auto

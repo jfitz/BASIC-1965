@@ -33,7 +33,7 @@ Halstead complexity:
   Dests: 50:auto
 (0 2) 50 GOSUB 800
   Origs: 40:auto
-  Dests: 100:auto, 800:gosub
+  Dests: 100:auto, 810:gosub
 (0 1) 100 RESTORE
   Origs: 50:auto
   Dests: 120:auto
@@ -48,15 +48,15 @@ Halstead complexity:
   Dests: 150:auto
 (0 2) 150 GOSUB 800
   Origs: 140:auto
-  Dests: 790:auto, 800:gosub
+  Dests: 790:auto, 810:gosub
 (0 1) 790 STOP
   Origs: 150:auto
   Dests: :stop
 (0 1) 800 REM PROCEDURE A
-  Origs: 50:gosub, 150:gosub
-  Dests: 810:auto
+  Origs: 
+  Dests: 
 (0 2) 810 PRINT "ARRAY A"
-  Origs: 800:auto
+  Origs: 50:gosub, 150:gosub
   Dests: 820:auto
 (0 2) 820 ARR PRINT A
   Origs: 810:auto

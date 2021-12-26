@@ -99,7 +99,7 @@ Halstead complexity:
   Dests: 260:auto
 (0 2) 260 GOSUB 610
   Origs: 250:auto
-  Dests: 270:auto, 610:gosub
+  Dests: 270:auto, 620:gosub
 (0 1) 270 LET S1 $ =S $
     Token 'InvalidToken:$' is not a value or operator
   Origs: 260:auto
@@ -109,7 +109,7 @@ Halstead complexity:
   Dests: 290:auto
 (0 2) 290 GOSUB 610
   Origs: 280:auto
-  Dests: 300:auto, 610:gosub
+  Dests: 300:auto, 620:gosub
 (0 1) 300 LET S2 $ =S $
     Token 'InvalidToken:$' is not a value or operator
   Origs: 290:auto
@@ -119,7 +119,7 @@ Halstead complexity:
   Dests: 320:auto
 (0 2) 320 GOSUB 610
   Origs: 310:auto
-  Dests: 330:auto, 610:gosub
+  Dests: 330:auto, 620:gosub
 (0 1) 330 LET S3 $ =S $
     Token 'InvalidToken:$' is not a value or operator
   Origs: 320:auto
@@ -218,11 +218,11 @@ Halstead complexity:
   Dests: 
 (0 1) 610 
     Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
-  Origs: 260:gosub, 290:gosub, 320:gosub
-  Dests: 620:auto
+  Origs: 
+  Dests: 
 (0 1) 620 LET S $ ="CHERRY"
     Token 'InvalidToken:$' is not a value or operator
-  Origs: 610:auto
+  Origs: 260:gosub, 290:gosub, 320:gosub
   Dests: 630:auto
 (0 2) 630 GOTO 710
   Origs: 620:auto

@@ -23,14 +23,14 @@ Halstead complexity:
   Origs: 
   Dests: 
 FNA(_) (0 3) 20 DEF FNA(T) = T * 4
-  Origs: 40:goto
+  Origs: 
   Dests: 
 (0 2) 30 PRINT "START PROGRAM"
-  Origs: :start
+  Origs: :start, 40:goto
   Dests: 40:auto
 (0 3) 40 GOTO 20
   Origs: 30:auto
-  Dests: 20:goto
+  Dests: 30:goto
 (0 2) 50 PRINT "END PROGRAM"
   Origs: 
   Dests: 60:auto

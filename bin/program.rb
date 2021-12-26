@@ -816,7 +816,6 @@ class Program
     statements = line.statements
     stmt = current_line_stmt_mod.statement
     statement = statements[stmt]
-    part_of_user_function = statement.part_of_user_function
 
     mod = current_line_stmt_mod.index
 
@@ -826,6 +825,71 @@ class Program
     end
 
     return statement.autonext_line_stmt
+  end
+
+  def find_exec_line_stmt_mod(current_line_stmt_mod)
+    # find next index with current statement
+    line_number = current_line_stmt_mod.line_number
+    line = @lines[line_number]
+
+    statements = line.statements
+    stmt = current_line_stmt_mod.statement
+    statement = statements[stmt]
+
+    if statement.executable == :run
+      return current_line_stmt_mod
+    end
+
+    part_of_user_function = statement.part_of_user_function
+    part_of_user_function = nil if statement.singledef?
+
+    mod = current_line_stmt_mod.index
+
+    # find next statement within the current line
+    stmt += 1
+
+    stmt += 1 while
+      stmt < statements.size &&
+      statements[stmt].part_of_user_function != part_of_user_function &&
+      statements[stmt].executable != :run
+
+    if stmt < statements.size
+      start_mod = statements[stmt].start_index
+
+      line_stmt_mod = LineStmtMod.new(line_number, stmt, start_mod)
+      return line_stmt_mod
+    end
+
+    # find the next statement in a following line
+    line_numbers = @lines.keys.sort
+    line_number = current_line_stmt_mod.line_number
+    index = line_numbers.index(line_number) + 1
+    line_number = line_numbers[index]
+
+    until line_number.nil?
+      line = @lines[line_number]
+
+      statements = line.statements
+      stmt = 0
+
+      stmt += 1 while
+        stmt < statements.size &&
+        statements[stmt].part_of_user_function != part_of_user_function
+
+      if stmt < statements.size
+        start_mod = statements[stmt].start_index
+
+        line_stmt_mod = LineStmtMod.new(line_number, stmt, start_mod)
+        return line_stmt_mod
+      end
+
+      index += 1
+      line_number = line_numbers[index]
+    end
+
+    # nothing left to execute
+    puts "RET nil"
+    nil
   end
 
   def line_number?(line_number)

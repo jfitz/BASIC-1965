@@ -50,10 +50,10 @@ Halstead complexity:
   Origs: 241:auto
   Dests: 310:auto
 (0 1) 300 REM *** DISPLAY BOARD
-  Origs: 810:goto
-  Dests: 310:auto
+  Origs: 
+  Dests: 
 (0 2) 310 PRINT "********************"
-  Origs: 242:auto, 300:auto
+  Origs: 242:auto, 810:goto
   Dests: 320:auto
 (0 2) 320 MAT PRINT B;
   Origs: 310:auto
@@ -138,36 +138,36 @@ Halstead complexity:
   Dests: 630:fornext, 730:fornext
 (1 4) 630 IF N(I, J) < 2 THEN 660
   Origs: 620:fornext
-  Dests: 640:auto, 660:ifthen
+  Dests: 640:auto, 670:ifthen
 (1 4) 640 IF N(I, J) = 2 THEN 720
   Origs: 630:auto
-  Dests: 650:auto, 720:ifthen
+  Dests: 650:auto, 730:ifthen
 (1 4) 650 IF N(I, J) = 3 THEN 690
   Origs: 640:auto
-  Dests: 670:auto, 690:ifthen
+  Dests: 670:auto, 700:ifthen
 (0 1) 660 REM * CELL DIES
-  Origs: 630:ifthen
-  Dests: 670:auto
+  Origs: 
+  Dests: 
 (0 3) 670 LET B(I, J) = 0
-  Origs: 650:auto, 660:auto
+  Origs: 630:ifthen, 650:auto
   Dests: 680:auto
 (0 2) 680 GOTO 730
   Origs: 670:auto
   Dests: 730:goto
 (0 1) 690 REM * CELL IS BORN
-  Origs: 650:ifthen
-  Dests: 700:auto
+  Origs: 
+  Dests: 
 (0 3) 700 LET B(I, J) = 1
-  Origs: 690:auto
+  Origs: 650:ifthen
   Dests: 710:auto
 (0 2) 710 GOTO 730
   Origs: 700:auto
   Dests: 730:goto
 (0 1) 720 REM * CELL REMAINS UNCHANGED
-  Origs: 640:ifthen
-  Dests: 730:auto
+  Origs: 
+  Dests: 
 (0 1) 730 NEXT J
-  Origs: 620:fornext, 680:goto, 710:goto, 720:auto
+  Origs: 620:fornext, 640:ifthen, 680:goto, 710:goto
   Dests: 740:auto
 (0 1) 740 NEXT I
   Origs: 610:fornext, 730:auto
@@ -177,7 +177,7 @@ Halstead complexity:
   Dests: 
 (0 3) 810 GOTO 300
   Origs: 740:auto
-  Dests: 300:goto
+  Dests: 310:goto
 (0 1) 999 END
   Origs: 360:ifthen
   Dests: :stop

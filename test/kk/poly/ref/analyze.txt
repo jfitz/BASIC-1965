@@ -57,25 +57,25 @@ Halstead complexity:
   Dests: 120:auto
 (0 2) 120 GOSUB 500
   Origs: 110:auto
-  Dests: 130:auto, 500:gosub
+  Dests: 130:auto, 510:gosub
 (0 2) 130 GOSUB 2000
   Origs: 120:auto
-  Dests: 140:auto, 2000:gosub
+  Dests: 140:auto, 2010:gosub
 (0 3) 140 LET K = 1
   Origs: 130:auto
   Dests: 150:auto
 (0 2) 150 GOSUB 500
   Origs: 140:auto
-  Dests: 160:auto, 500:gosub
+  Dests: 160:auto, 510:gosub
 (0 2) 160 GOSUB 2000
   Origs: 150:auto
-  Dests: 170:auto, 2000:gosub
+  Dests: 170:auto, 2010:gosub
 (0 3) 170 LET K = 2
   Origs: 160:auto
   Dests: 180:auto
 (0 2) 180 GOSUB 500
   Origs: 170:auto
-  Dests: 210:auto, 500:gosub
+  Dests: 210:auto, 510:gosub
 (0 0) 190 
   Origs: 
   Dests: 
@@ -104,17 +104,17 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 500 REM  RUN THROUGH X-VALUES
-  Origs: 120:gosub, 150:gosub, 180:gosub
-  Dests: 510:auto
+  Origs: 
+  Dests: 
 (1 3) 510 FOR J = 1 TO X9
-  Origs: 500:auto
+  Origs: 120:gosub, 150:gosub, 180:gosub
   Dests: 520:fornext, 550:fornext
 (0 3) 520 LET X = X(J)
   Origs: 510:fornext
   Dests: 530:auto
 (0 2) 530 GOSUB 1000
   Origs: 520:auto
-  Dests: 540:auto, 1000:gosub
+  Dests: 540:auto, 1010:gosub
 (0 3) 540 LET T(J, K) = Y
   Origs: 530:auto
   Dests: 550:auto
@@ -128,10 +128,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 1000 REM  EVALUATE.
-  Origs: 530:gosub
-  Dests: 1010:auto
+  Origs: 
+  Dests: 
 (0 3) 1010 LET Y = 0
-  Origs: 1000:auto
+  Origs: 530:gosub
   Dests: 1020:auto
 (1 3) 1020 FOR I = 0 TO N
   Origs: 1010:auto
@@ -149,10 +149,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 2000 REM  DIFFERENTIATE.
-  Origs: 130:gosub, 160:gosub
-  Dests: 2010:auto
+  Origs: 
+  Dests: 
 (1 3) 2010 FOR I = 0 TO N
-  Origs: 2000:auto
+  Origs: 130:gosub, 160:gosub
   Dests: 2020:fornext, 2030:fornext
 (0 6) 2020 LET A(I) = A(I) * (N - I)
   Origs: 2010:fornext

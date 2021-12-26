@@ -45,13 +45,13 @@ Halstead complexity:
   Dests: 180:auto
 (0 2) 180 GOSUB 300
   Origs: 170:auto
-  Dests: 190:auto, 300:gosub
+  Dests: 190:auto, 310:gosub
 (1 6) 190 FOR F = 3 TO SQR(N) + 1 STEP 2
   Origs: 180:auto
   Dests: 200:fornext, 210:fornext
 (0 2) 200 GOSUB 300
   Origs: 190:fornext
-  Dests: 210:auto, 300:gosub
+  Dests: 210:auto, 310:gosub
 (0 1) 210 NEXT F
   Origs: 190:fornext, 200:auto
   Dests: 220:auto
@@ -63,21 +63,22 @@ Halstead complexity:
   Dests: 240:auto
 (0 2) 240 GOTO 500
   Origs: 230:auto
-  Dests: 500:goto
+  Dests: 510:goto
 (0 3) 250 PRINT N; "IS PRIME."
   Origs: 140:ifthen, 220:ifthen
   Dests: 260:auto
 (0 2) 260 GOTO 500
   Origs: 250:auto
-  Dests: 500:goto
+  Dests: 510:goto
 (0 0) 270 
   Origs: 
   Dests: 
 (0 1) 300 REM TESTS F AS A FACTOR
-  Origs: 180:gosub, 200:gosub
-  Dests: 310:auto
+  Origs: 
+  Dests: 
 (1 6) 310 IF N / F <> INT(N / F) THEN 410
-  Origs: 300:auto, 400:goto
+  Origs: 180:gosub, 200:gosub, 400:goto
+  Inconsistent GOSUB origins
   Dests: 330:auto, 410:ifthen
 (1 4) 330 IF Z > 0 THEN 370
   Origs: 310:auto
@@ -99,7 +100,7 @@ Halstead complexity:
   Dests: 390:auto
 (1 4) 390 IF N = 1 THEN 500
   Origs: 380:auto
-  Dests: 400:auto, 500:ifthen
+  Dests: 400:auto, 510:ifthen
 (0 3) 400 GOTO 310
   Origs: 390:auto
   Dests: 310:goto
@@ -110,10 +111,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 500 REM ALL DONE
-  Origs: 240:goto, 260:goto, 390:ifthen
-  Dests: 510:auto
+  Origs: 
+  Dests: 
 (0 2) 510 PRINT
-  Origs: 500:auto
+  Origs: 240:goto, 260:goto, 390:ifthen
   Dests: 520:auto
 (0 2) 520 PRINT
   Origs: 510:auto

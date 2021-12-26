@@ -24,7 +24,7 @@ Halstead complexity:
   Dests: 20:fornext, 410:fornext
 (0 2) 20 GOSUB 500
   Origs: 10:fornext
-  Dests: 30:auto, 500:gosub
+  Dests: 30:auto, 510:gosub
 (1 4) 30 IF D < 4 THEN 300
   Origs: 20:auto
   Dests: 40:auto, 300:ifthen
@@ -42,7 +42,7 @@ Halstead complexity:
   Dests: 100:auto
 (0 2) 100 GOSUB 500
   Origs: 70:auto, 130:goto
-  Dests: 110:auto, 500:gosub
+  Dests: 110:auto, 510:gosub
 (1 4) 110 IF D = D9 THEN 200
   Origs: 100:auto
   Dests: 120:auto, 200:ifthen
@@ -83,10 +83,10 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 500 REM ROLL DICE
-  Origs: 20:gosub, 100:gosub
-  Dests: 510:auto
+  Origs: 
+  Dests: 
 (0 4) 510 LET D1 = INT(6 * RND(1) + 1)
-  Origs: 500:auto
+  Origs: 20:gosub, 100:gosub
   Dests: 520:auto
 (0 4) 520 LET D2 = INT(6 * RND(1) + 1)
   Origs: 510:auto

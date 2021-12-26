@@ -27,15 +27,15 @@ Halstead complexity:
   Dests: 30:auto
 (0 2) 30 GOSUB 100
   Origs: 20:auto
-  Dests: 90:auto, 100:gosub
+  Dests: 90:auto, 110:gosub
 (0 1) 90 STOP
   Origs: 30:auto
   Dests: :stop
 (0 1) 100 REM PRINT STARS
-  Origs: 30:gosub
-  Dests: 110:auto
+  Origs: 
+  Dests: 
 (0 2) 110 PRINT "******"
-  Origs: 100:auto
+  Origs: 30:gosub
   Dests: 120:auto
 (0 1) 120 RETURN
   Origs: 110:auto
