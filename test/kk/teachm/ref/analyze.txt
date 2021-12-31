@@ -239,37 +239,37 @@ Halstead complexity:
 (0 1) 620 STOP
   Origs: 610:auto
   Dests: :stop
-(0 2) 8000 PRINT "YOUR ANSWER";
+(8000) (0 2) 8000 PRINT "YOUR ANSWER";
   Origs: 140:gosub, 230:gosub, 360:gosub, 430:gosub, 540:gosub
   Dests: 8010:auto
-(1 2) 8010 INPUT X
+(8000) (1 2) 8010 INPUT X
   Origs: 8000:auto
   Dests: 8020:auto
-(1 4) 8020 IF C <> X THEN 8050
+(8000) (1 4) 8020 IF C <> X THEN 8050
   Origs: 8010:auto
   Dests: 8030:auto, 8050:ifthen
-(0 2) 8030 PRINT "CORRECT"
+(8000) (0 2) 8030 PRINT "CORRECT"
   Origs: 8020:auto
   Dests: 8040:auto
-(0 2) 8040 GOTO 8060
+(8000) (0 2) 8040 GOTO 8060
   Origs: 8030:auto
   Dests: 8060:goto
-(0 3) 8050 PRINT "INCORRECT. CORRECT ANSWER IS "; C
+(8000) (0 3) 8050 PRINT "INCORRECT. CORRECT ANSWER IS "; C
   Origs: 8020:ifthen
   Dests: 8060:auto
-(0 1) 8060 RETURN
+(8000) (0 1) 8060 RETURN
   Origs: 8040:goto, 8050:auto
   Dests: 
 (0 0) 8099 
   Origs: 
   Dests: 
-(0 2) 8100 PRINT
+(8100) (0 2) 8100 PRINT
   Origs: 100:gosub, 200:gosub, 300:gosub, 400:gosub, 500:gosub, 600:gosub
   Dests: 8110:auto
-(0 2) 8110 PRINT
+(8100) (0 2) 8110 PRINT
   Origs: 8100:auto
   Dests: 8120:auto
-(0 1) 8120 RETURN
+(8100) (0 1) 8120 RETURN
   Origs: 8110:auto
   Dests: 
 (0 0) 8199 

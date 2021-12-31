@@ -28,14 +28,14 @@ Halstead complexity:
 (0 3) 30 LET A = 6
   Origs: 20:auto
   Dests: 200:auto
-(0 2) 200 PRINT "START SUBROUTINE"
+(200) (0 2) 200 PRINT "START SUBROUTINE"
   Origs: 20:gosub, 30:auto
   Inconsistent GOSUB origins
   Dests: 280:auto
-(0 2) 280 PRINT "END SUBROUTINE"
+(200) (0 2) 280 PRINT "END SUBROUTINE"
   Origs: 200:auto
   Dests: 290:auto
-(0 1) 290 RETURN
+(200) (0 1) 290 RETURN
   Origs: 280:auto
   Dests: 
 (0 1) 999 END

@@ -203,217 +203,217 @@ Halstead complexity:
 (0 3) 570 LET D = 1E05
   Origs: 560:auto
   Dests: 580:auto
-(0 2) 580 GOSUB 630
+(580) (0 2) 580 GOSUB 630
   Origs: 570:auto, 625:gosub
   Inconsistent GOSUB origins
   Dests: 590:auto, 630:gosub
-(0 2) 590 GOSUB 730
+(580) (0 2) 590 GOSUB 730
   Origs: 580:auto
   Dests: 600:auto, 730:gosub
-(0 2) 600 GOSUB 840
+(580) (0 2) 600 GOSUB 840
   Origs: 590:auto
   Dests: 610:auto, 840:gosub
-(0 2) 610 GOSUB 1040
+(580) (0 2) 610 GOSUB 1040
   Origs: 600:auto
   Dests: 620:auto, 1040:gosub
-(0 2) 620 GOSUB 1500
+(580) (0 2) 620 GOSUB 1500
   Origs: 610:auto
   Dests: 625:auto, 1500:gosub
-(0 3) 625 GOSUB 580
+(580) (0 3) 625 GOSUB 580
   Origs: 620:auto
   Dests: 580:gosub, 630:auto
-(1 4) 630 IF D > 1E04 THEN 660
+(630) (1 4) 630 IF D > 1E04 THEN 660
   Origs: 580:gosub, 625:auto
   Inconsistent GOSUB origins
   Dests: 640:auto, 660:ifthen
-(0 3) 640 LET L = 1
+(630) (0 3) 640 LET L = 1
   Origs: 630:auto
   Dests: 650:auto
-(0 2) 650 GOTO 700
+(630) (0 2) 650 GOTO 700
   Origs: 640:auto
   Dests: 700:goto
-(0 3) 660 LET L = 0
+(630) (0 3) 660 LET L = 0
   Origs: 630:ifthen
   Dests: 670:auto
-(0 7) 670 LET H = (1 + INT(100 * RND) / 100)
+(630) (0 7) 670 LET H = (1 + INT(100 * RND) / 100)
   Origs: 660:auto
   Dests: 680:auto
-(0 4) 680 LET E1 = 5000 * H
+(630) (0 4) 680 LET E1 = 5000 * H
   Origs: 670:auto
   Dests: 690:auto
-(0 2) 690 GOTO 720
+(630) (0 2) 690 GOTO 720
   Origs: 680:auto
   Dests: 720:goto
-(0 7) 700 LET H = (1 + INT(100 * RND) / 100)
+(630) (0 7) 700 LET H = (1 + INT(100 * RND) / 100)
   Origs: 650:goto
   Dests: 710:auto
-(0 4) 710 LET E1 = 1000 * H
+(630) (0 4) 710 LET E1 = 1000 * H
   Origs: 700:auto
   Dests: 720:auto
-(0 1) 720 RETURN
+(630) (0 1) 720 RETURN
   Origs: 690:goto, 710:auto
   Dests: 
-(1 4) 730 IF D > 5E03 THEN 760
+(730) (1 4) 730 IF D > 5E03 THEN 760
   Origs: 590:gosub
   Dests: 740:auto, 760:ifthen
-(0 3) 740 LET K = 1
+(730) (0 3) 740 LET K = 1
   Origs: 730:auto
   Dests: 750:auto
-(0 2) 750 GOTO 800
+(730) (0 2) 750 GOTO 800
   Origs: 740:auto
   Dests: 800:goto
-(0 3) 760 LET K = 0
+(730) (0 3) 760 LET K = 0
   Origs: 730:ifthen
   Dests: 770:auto
-(0 7) 770 LET H = (1 + INT(100 * RND) / 100)
+(730) (0 7) 770 LET H = (1 + INT(100 * RND) / 100)
   Origs: 760:auto
   Dests: 780:auto
-(0 4) 780 LET E2 = 8000 * H
+(730) (0 4) 780 LET E2 = 8000 * H
   Origs: 770:auto
   Dests: 790:auto
-(0 2) 790 GOTO 820
+(730) (0 2) 790 GOTO 820
   Origs: 780:auto
   Dests: 820:goto
-(0 7) 800 LET H = (1 + INT(100 * RND) / 100)
+(730) (0 7) 800 LET H = (1 + INT(100 * RND) / 100)
   Origs: 750:goto
   Dests: 810:auto
-(0 4) 810 LET E2 = 3000 * H
+(730) (0 4) 810 LET E2 = 3000 * H
   Origs: 800:auto
   Dests: 820:auto
-(0 1) 820 RETURN
+(730) (0 1) 820 RETURN
   Origs: 790:goto, 810:auto
   Dests: 
-(1 4) 840 IF D < 3E03 THEN 860
+(840) (1 4) 840 IF D < 3E03 THEN 860
   Origs: 600:gosub
   Dests: 850:auto, 860:ifthen
-(0 3) 850 LET E3 = 0
+(840) (0 3) 850 LET E3 = 0
   Origs: 840:auto
   Dests: 860:auto
-(0 7) 860 LET H = (1 + INT(100 * RND) / 100)
+(840) (0 7) 860 LET H = (1 + INT(100 * RND) / 100)
   Origs: 840:ifthen, 850:auto
   Dests: 870:auto
-(0 4) 870 LET E3 = 2E04 * H
+(840) (0 4) 870 LET E3 = 2E04 * H
   Origs: 860:auto
   Dests: 880:auto
-(0 4) 880 LET T1 = T1 - E1
+(840) (0 4) 880 LET T1 = T1 - E1
   Origs: 870:auto
   Dests: 890:auto
-(0 4) 890 LET T2 = T2 - E2
+(840) (0 4) 890 LET T2 = T2 - E2
   Origs: 880:auto
   Dests: 900:auto
-(1 4) 900 IF T1 <= 0 THEN 920
+(840) (1 4) 900 IF T1 <= 0 THEN 920
   Origs: 890:auto
   Dests: 910:auto, 920:ifthen
-(0 2) 910 GOTO 950
+(840) (0 2) 910 GOTO 950
   Origs: 900:auto
   Dests: 950:goto
-(0 3) 920 LET E1 = 0
+(840) (0 3) 920 LET E1 = 0
   Origs: 900:ifthen
   Dests: 930:auto
-(0 3) 930 LET Y = 1
+(840) (0 3) 930 LET Y = 1
   Origs: 920:auto
   Dests: 940:auto
-(0 2) 940 GOTO 960
+(840) (0 2) 940 GOTO 960
   Origs: 930:auto
   Dests: 960:goto
-(0 3) 950 LET Y = 0
+(840) (0 3) 950 LET Y = 0
   Origs: 910:goto
   Dests: 960:auto
-(1 4) 960 IF T2 <= 0 THEN 980
+(840) (1 4) 960 IF T2 <= 0 THEN 980
   Origs: 940:goto, 950:auto
   Dests: 970:auto, 980:ifthen
-(0 2) 970 GOTO 1010
+(840) (0 2) 970 GOTO 1010
   Origs: 960:auto
   Dests: 1010:goto
-(0 3) 980 LET E2 = 0
+(840) (0 3) 980 LET E2 = 0
   Origs: 960:ifthen
   Dests: 990:auto
-(0 3) 990 LET Z = 1
+(840) (0 3) 990 LET Z = 1
   Origs: 980:auto
   Dests: 1000:auto
-(0 2) 1000 GOTO 1020
+(840) (0 2) 1000 GOTO 1020
   Origs: 990:auto
   Dests: 1020:goto
-(0 3) 1010 LET Z = 0
+(840) (0 3) 1010 LET Z = 0
   Origs: 970:goto
   Dests: 1020:auto
-(0 6) 1020 LET X1 = X1 - E1 - E2 - E3
+(840) (0 6) 1020 LET X1 = X1 - E1 - E2 - E3
   Origs: 1000:goto, 1010:auto
   Dests: 1030:auto
-(0 1) 1030 RETURN
+(840) (0 1) 1030 RETURN
   Origs: 1020:auto
   Dests: 
-(0 4) 1040 PRINT "DISTANCE TO DEATH STAR IS NOW"; D; "KM"
+(1040) (0 4) 1040 PRINT "DISTANCE TO DEATH STAR IS NOW"; D; "KM"
   Origs: 610:gosub
   Dests: 1045:auto
-(1 4) 1045 IF Y = 1 THEN 1100
+(1040) (1 4) 1045 IF Y = 1 THEN 1100
   Origs: 1040:auto
   Dests: 1050:auto, 1100:ifthen
-(1 4) 1050 IF L = 0 THEN 1080
+(1040) (1 4) 1050 IF L = 0 THEN 1080
   Origs: 1045:auto
   Dests: 1060:auto, 1080:ifthen
-(0 2) 1060 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
+(1040) (0 2) 1060 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
   Origs: 1050:auto
   Dests: 1070:auto
-(0 2) 1070 GOTO 1110
+(1040) (0 2) 1070 GOTO 1110
   Origs: 1060:auto
   Dests: 1110:goto
-(0 2) 1080 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER CANNON"
+(1040) (0 2) 1080 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER CANNON"
   Origs: 1050:ifthen
   Dests: 1090:auto
-(0 2) 1090 GOTO 1110
+(1040) (0 2) 1090 GOTO 1110
   Origs: 1080:auto
   Dests: 1110:goto
-(0 2) 1100 PRINT "THE SKY FIGHTER IS OUT OF ACTION!!!"
+(1040) (0 2) 1100 PRINT "THE SKY FIGHTER IS OUT OF ACTION!!!"
   Origs: 1045:ifthen
   Dests: 1110:auto
-(1 4) 1110 IF Z = 1 THEN 1180
+(1040) (1 4) 1110 IF Z = 1 THEN 1180
   Origs: 1070:goto, 1090:goto, 1100:auto
   Dests: 1120:auto, 1180:ifthen
-(0 2) 1120 GOTO 1220
+(1040) (0 2) 1120 GOTO 1220
   Origs: 1110:auto
   Dests: 1220:goto
-(1 4) 1130 IF K = 0 THEN 1160
+(1040) (1 4) 1130 IF K = 0 THEN 1160
   Origs: 1260:goto, 1280:goto, 1300:goto, 1320:goto, 1350:goto
   Dests: 1140:auto, 1160:ifthen
-(0 2) 1140 PRINT "THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
+(1040) (0 2) 1140 PRINT "THE DARK LORD HAS FIRED HIS HIGH ENERGY LASER"
   Origs: 1130:auto
   Dests: 1150:auto
-(0 2) 1150 GOTO 1360
+(1040) (0 2) 1150 GOTO 1360
   Origs: 1140:auto
   Dests: 1360:goto
-(0 2) 1160 PRINT "THE SMITH LORD HAS USED A LASER CANNON ENERGY BEAM"
+(1040) (0 2) 1160 PRINT "THE SMITH LORD HAS USED A LASER CANNON ENERGY BEAM"
   Origs: 1130:ifthen
   Dests: 1170:auto
-(0 2) 1170 GOTO 1360
+(1040) (0 2) 1170 GOTO 1360
   Origs: 1160:auto
   Dests: 1360:goto
-(0 2) 1180 PRINT "GARTH RADER HAS EXPENDED ALL HIS WEAPON'S ENERGY"
+(1040) (0 2) 1180 PRINT "GARTH RADER HAS EXPENDED ALL HIS WEAPON'S ENERGY"
   Origs: 1110:ifthen
   Dests: 1190:auto
-(0 2) 1190 PRINT "SUPPLY. HE IS CURRENTLY ESCAPING TO THE ENDS OF"
+(1040) (0 2) 1190 PRINT "SUPPLY. HE IS CURRENTLY ESCAPING TO THE ENDS OF"
   Origs: 1180:auto
   Dests: 1200:auto
-(0 2) 1200 PRINT "THE GALAXY. ***THE FORCE IS WITH YOU***"
+(1040) (0 2) 1200 PRINT "THE GALAXY. ***THE FORCE IS WITH YOU***"
   Origs: 1190:auto
   Dests: 1210:auto
-(0 2) 1210 GOTO 1360
+(1040) (0 2) 1210 GOTO 1360
   Origs: 1200:auto
   Dests: 1360:goto
-(0 7) 1220 LET C = 1 + (5 * RND)
+(1040) (0 7) 1220 LET C = 1 + (5 * RND)
   Origs: 1120:goto
   Dests: 1240:auto
 (0 1) 1230 
      Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
   Origs: 
   Dests: 
-(0 2) 1240 PRINT "*CAUTION*GARTH RADER IS THE BEST SHOT IN THE"
+(1040) (0 2) 1240 PRINT "*CAUTION*GARTH RADER IS THE BEST SHOT IN THE"
   Origs: 1220:auto
   Dests: 1250:auto
-(0 2) 1250 PRINT "IMPERIAL FLEET, PLUS HE USES THE BAD SIDE OF THE FORCE"
+(1040) (0 2) 1250 PRINT "IMPERIAL FLEET, PLUS HE USES THE BAD SIDE OF THE FORCE"
   Origs: 1240:auto
   Dests: 1260:auto
-(0 3) 1260 GOTO 1130
+(1040) (0 3) 1260 GOTO 1130
   Origs: 1250:auto
   Dests: 1130:goto
 (0 2) 1270 PRINT "THE DARK LORD IS EXTREMELY DANGEROUS!!!"
@@ -443,107 +443,107 @@ Halstead complexity:
 (0 3) 1350 GOTO 1130
   Origs: 1340:auto
   Dests: 1130:goto
-(1 4) 1360 IF D <= 3E03 THEN 1380
+(1040) (1 4) 1360 IF D <= 3E03 THEN 1380
   Origs: 1150:goto, 1170:goto, 1210:goto
   Dests: 1370:auto, 1380:ifthen
-(0 2) 1370 GOTO 1410
+(1040) (0 2) 1370 GOTO 1410
   Origs: 1360:auto
   Dests: 1410:goto
-(0 2) 1380 PRINT "YOU ARE CLOSER THAN 3000KM TO THE SPACE STATION"
+(1040) (0 2) 1380 PRINT "YOU ARE CLOSER THAN 3000KM TO THE SPACE STATION"
   Origs: 1360:ifthen
   Dests: 1390:auto
-(0 2) 1390 PRINT "THE DEATH STAR'S AUTOMATIC DEFENSE NETWORK HAS BEEN"
+(1040) (0 2) 1390 PRINT "THE DEATH STAR'S AUTOMATIC DEFENSE NETWORK HAS BEEN"
   Origs: 1380:auto
   Dests: 1400:auto
-(0 2) 1400 PRINT "ACTIVATED. ***USE EXTREME CAUTION***"
+(1040) (0 2) 1400 PRINT "ACTIVATED. ***USE EXTREME CAUTION***"
   Origs: 1390:auto
   Dests: 1410:auto
-(0 2) 1410 PRINT
+(1040) (0 2) 1410 PRINT
   Origs: 1370:goto, 1400:auto
   Dests: 1415:auto
-(0 4) 1415 PRINT "YOUR TOTAL ENERGY IS NOW"; X1; "UNITS"
+(1040) (0 4) 1415 PRINT "YOUR TOTAL ENERGY IS NOW"; X1; "UNITS"
   Origs: 1410:auto
   Dests: 1420:auto
-(1 4) 1420 IF X1 < 2E04 THEN 1440
+(1040) (1 4) 1420 IF X1 < 2E04 THEN 1440
   Origs: 1415:auto
   Dests: 1430:auto, 1440:ifthen
-(0 2) 1430 GOTO 1490
+(1040) (0 2) 1430 GOTO 1490
   Origs: 1420:auto
   Dests: 1490:goto
-(0 2) 1440 PRINT "YOU HAVE DEPLETED YOUR ENERGY SUPPLY, THE DEATH"
+(1040) (0 2) 1440 PRINT "YOU HAVE DEPLETED YOUR ENERGY SUPPLY, THE DEATH"
   Origs: 1420:ifthen
   Dests: 1450:auto
-(0 2) 1450 PRINT "STAR WILL NOW DESTROY YOUR HOME PLANET"
+(1040) (0 2) 1450 PRINT "STAR WILL NOW DESTROY YOUR HOME PLANET"
   Origs: 1440:auto
   Dests: 1460:auto
-(0 2) 1460 PRINT "YOU WILL BE A HERO NOWHERE AND REMEMBERED BY NONE"
+(1040) (0 2) 1460 PRINT "YOU WILL BE A HERO NOWHERE AND REMEMBERED BY NONE"
   Origs: 1450:auto
   Dests: 1470:auto
-(0 2) 1470 PRINT "*****YOU HAVE MISUSED THE FORCE*****"
+(1040) (0 2) 1470 PRINT "*****YOU HAVE MISUSED THE FORCE*****"
   Origs: 1460:auto
   Dests: 1480:auto
-(0 2) 1480 GOTO 2690
+(1040) (0 2) 1480 GOTO 2690
   Origs: 1470:auto
   Dests: 2690:goto
-(0 1) 1490 RETURN
+(1040) (0 1) 1490 RETURN
   Origs: 1430:goto
   Dests: 
-(0 2) 1500 PRINT
+(1500) (0 2) 1500 PRINT
   Origs: 620:gosub
   Dests: 1510:auto
-(0 2) 1510 PRINT "WHICH COMMAND DO YOU WISH TO EXECUTE"
+(1500) (0 2) 1510 PRINT "WHICH COMMAND DO YOU WISH TO EXECUTE"
   Origs: 1500:auto
   Dests: 1520:auto
-(1 2) 1520 INPUT B
+(1500) (1 2) 1520 INPUT B
   Origs: 1510:auto
   Dests: 1540:auto
 (0 1) 1530 
      Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
   Origs: 
   Dests: 
-(1 4) 1540 IF D <= 1000 THEN 1590
+(1500) (1 4) 1540 IF D <= 1000 THEN 1590
   Origs: 1520:auto
   Dests: 1550:auto, 1590:ifthen
-(0 2) 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
+(1500) (0 2) 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
   Origs: 1540:auto
   Dests: 1560:auto
-(0 2) 1560 PRINT "AWAY THAN 1000KM"
+(1500) (0 2) 1560 PRINT "AWAY THAN 1000KM"
   Origs: 1550:auto
   Dests: 1570:auto
-(0 4) 1570 LET X1 = X1 - 2E04
+(1500) (0 4) 1570 LET X1 = X1 - 2E04
   Origs: 1560:auto
   Dests: 1580:auto
-(0 2) 1580 GOTO 2680
+(1500) (0 2) 1580 GOTO 2680
   Origs: 1570:auto
   Dests: 2680:goto
-(0 5) 1590 LET H = 1 + (INT(100 * RND))
+(1500) (0 5) 1590 LET H = 1 + (INT(100 * RND))
   Origs: 1540:ifthen
   Dests: 1600:auto
-(1 4) 1600 IF H > 50 THEN 1640
+(1500) (1 4) 1600 IF H > 50 THEN 1640
   Origs: 1590:auto
   Dests: 1610:auto, 1640:ifthen
-(0 2) 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
+(1500) (0 2) 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
   Origs: 1600:auto
   Dests: 1620:auto
-(0 4) 1620 LET X1 = X1 - 2E04
+(1500) (0 4) 1620 LET X1 = X1 - 2E04
   Origs: 1610:auto
   Dests: 1630:auto
-(0 2) 1630 GOTO 2680
+(1500) (0 2) 1630 GOTO 2680
   Origs: 1620:auto
   Dests: 2680:goto
-(0 2) 1640 PRINT "THE FORCE WAS WITH YOU, YOU HAVE SINGLE-HANDED"
+(1500) (0 2) 1640 PRINT "THE FORCE WAS WITH YOU, YOU HAVE SINGLE-HANDED"
   Origs: 1600:ifthen
   Dests: 1650:auto
-(0 2) 1650 PRINT "DESTROYED THE DEATH STAR. YOU HAVE SAVED THE"
+(1500) (0 2) 1650 PRINT "DESTROYED THE DEATH STAR. YOU HAVE SAVED THE"
   Origs: 1640:auto
   Dests: 1660:auto
-(0 2) 1660 PRINT "REPUBLIC AND PRINCESS LEAH ARGONA WILL LOVE YOU"
+(1500) (0 2) 1660 PRINT "REPUBLIC AND PRINCESS LEAH ARGONA WILL LOVE YOU"
   Origs: 1650:auto
   Dests: 1670:auto
-(0 2) 1670 PRINT "FOREVER."
+(1500) (0 2) 1670 PRINT "FOREVER."
   Origs: 1660:auto
   Dests: 1680:auto
-(0 2) 1680 GOTO 2740
+(1500) (0 2) 1680 GOTO 2740
   Origs: 1670:auto
   Dests: 2740:goto
 (0 2) 1690 PRINT "THE CANNON IS READY, DO YOU WISH COMPUTER ASSISTANCE"
@@ -865,64 +865,64 @@ Halstead complexity:
 (0 4) 2670 PRINT "THE DARK LORD'S ENERGY IS"; T2; "UNITS"
   Origs: 2660:auto
   Dests: 2680:auto
-(0 1) 2680 RETURN
+(1500) (0 1) 2680 RETURN
   Origs: 1580:goto, 1630:goto, 2650:goto, 2670:auto
   Dests: 
-(0 2) 2690 PRINT "YOU ARE AN INCOMPETENT GOOD KNIGHT"
+(1040) (0 2) 2690 PRINT "YOU ARE AN INCOMPETENT GOOD KNIGHT"
   Origs: 1480:goto, 2610:goto
   Dests: 2700:auto
-(0 2) 2700 PRINT "YOU HAVE DISGRACED THE MEMORY OF"
+(1040) (0 2) 2700 PRINT "YOU HAVE DISGRACED THE MEMORY OF"
   Origs: 2690:auto
   Dests: 2710:auto
-(0 2) 2710 PRINT "OBI-SAN COYOTE! WHOSE SIDE ARE YOU ON?!?"
+(1040) (0 2) 2710 PRINT "OBI-SAN COYOTE! WHOSE SIDE ARE YOU ON?!?"
   Origs: 2700:auto
   Dests: 2720:auto
-(0 2) 2720 PRINT "WHY DON'T YOU PROVE YOUR WORTH AND TRY AGAIN"
+(1040) (0 2) 2720 PRINT "WHY DON'T YOU PROVE YOUR WORTH AND TRY AGAIN"
   Origs: 2710:auto
   Dests: 2730:auto
-(0 2) 2730 GOTO 2760
+(1040) (0 2) 2730 GOTO 2760
   Origs: 2720:auto
   Dests: 2760:goto
-(0 2) 2740 PRINT "OBI-SAN COYOTE WOULD BE PROUD OF YOU"
+(1500) (0 2) 2740 PRINT "OBI-SAN COYOTE WOULD BE PROUD OF YOU"
   Origs: 1680:goto
   Dests: 2750:auto
-(0 2) 2750 PRINT "YOU ARE INDEED A **GOOD KNIGHT**"
+(1500) (0 2) 2750 PRINT "YOU ARE INDEED A **GOOD KNIGHT**"
   Origs: 2740:auto
   Dests: 2760:auto
-(0 2) 2760 PRINT
+(1040) (0 2) 2760 PRINT
   Origs: 2730:goto, 2750:auto
   Dests: 2780:auto
-(0 2) 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
+(1040) (0 2) 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
   Origs: 2760:auto, 2840:goto
   Dests: 2790:auto
-(0 2) 2790 PRINT "NOT TYPE NO"
+(1040) (0 2) 2790 PRINT "NOT TYPE NO"
   Origs: 2780:auto
   Dests: 2800:auto
-(0 1) 2800 INPUT L $
+(1040) (0 1) 2800 INPUT L $
      Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 2790:auto
   Dests: 2810:auto
-(1 2) 2810 IF L $ ="GO" THEN 2840
+(1040) (1 2) 2810 IF L $ ="GO" THEN 2840
      Token 'InvalidToken:$' is not a value or operator
   Origs: 2800:auto
   Dests: 2820:auto, 2840:ifthen
-(1 2) 2820 IF L $ ="NO" THEN 2860
+(1040) (1 2) 2820 IF L $ ="NO" THEN 2860
      Token 'InvalidToken:$' is not a value or operator
   Origs: 2810:auto
   Dests: 2830:auto, 2860:ifthen
-(0 2) 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
+(1040) (0 2) 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
   Origs: 2820:auto
   Dests: 2840:auto
-(0 3) 2840 GOTO 2780
+(1040) (0 3) 2840 GOTO 2780
   Origs: 2810:ifthen, 2830:auto
   Dests: 2780:goto
 (0 3) 2850 GOTO 50
   Origs: 
   Dests: 60:goto
-(0 2) 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
+(1040) (0 2) 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
   Origs: 2820:ifthen
   Dests: 2870:auto
-(0 1) 2870 END
+(1040) (0 1) 2870 END
   Origs: 2860:auto
   Dests: :stop
 

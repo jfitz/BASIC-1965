@@ -235,88 +235,88 @@ Halstead complexity:
 (0 1) 1000 REM SELECT A MOVE
   Origs: 
   Dests: 
-(1 3) 1010 FOR P = 1 TO 8
+(1010) (1 3) 1010 FOR P = 1 TO 8
   Origs: 610:gosub
   Dests: 1020:fornext, 1030:fornext
-(1 4) 1020 IF C(P) = 2 THEN 1100
+(1010) (1 4) 1020 IF C(P) = 2 THEN 1100
   Origs: 1010:fornext
   Dests: 1030:auto, 1100:ifthen
-(0 1) 1030 NEXT P
+(1010) (0 1) 1030 NEXT P
   Origs: 1010:fornext, 1020:auto
   Dests: 1040:auto
-(1 3) 1040 FOR P = 1 TO 8
+(1010) (1 3) 1040 FOR P = 1 TO 8
   Origs: 1030:auto
   Dests: 1050:fornext, 1060:fornext
-(1 6) 1050 IF C(P) = -2 THEN 1100
+(1010) (1 6) 1050 IF C(P) = -2 THEN 1100
   Origs: 1040:fornext
   Dests: 1060:auto, 1100:ifthen
-(0 1) 1060 NEXT P
+(1010) (0 1) 1060 NEXT P
   Origs: 1040:fornext, 1050:auto
   Dests: 1070:auto
-(0 2) 1070 GOTO 1200
+(1010) (0 2) 1070 GOTO 1200
   Origs: 1060:auto
   Dests: 1200:goto
-(1 3) 1100 FOR I = 1 TO 3
+(1010) (1 3) 1100 FOR I = 1 TO 3
   Origs: 1020:ifthen, 1050:ifthen
   Dests: 1110:fornext, 1130:fornext
-(0 3) 1110 LET M = T(P, I)
+(1010) (0 3) 1110 LET M = T(P, I)
   Origs: 1100:fornext
   Dests: 1120:auto
-(1 4) 1120 IF B(M) = 0 THEN 1999
+(1010) (1 4) 1120 IF B(M) = 0 THEN 1999
   Origs: 1110:auto
   Dests: 1130:auto, 1999:ifthen
-(0 1) 1130 NEXT I
+(1010) (0 1) 1130 NEXT I
   Origs: 1100:fornext, 1120:auto
   Dests: 1200:auto
 (0 0) 1140 
   Origs: 
   Dests: 
-(1 3) 1200 FOR S = 1 TO 9
+(1010) (1 3) 1200 FOR S = 1 TO 9
   Origs: 1070:goto, 1130:auto
   Dests: 1210:fornext, 1270:fornext
-(0 3) 1210 LET V(S) = 0
+(1010) (0 3) 1210 LET V(S) = 0
   Origs: 1200:fornext
   Dests: 1215:auto
-(1 4) 1215 IF B(S) <> 0 THEN 1270
+(1010) (1 4) 1215 IF B(S) <> 0 THEN 1270
   Origs: 1210:auto
   Dests: 1220:auto, 1270:ifthen
-(1 3) 1220 FOR J = 1 TO 4
+(1010) (1 3) 1220 FOR J = 1 TO 4
   Origs: 1215:auto
   Dests: 1230:fornext, 1260:fornext
-(0 3) 1230 LET P = U(S, J)
+(1010) (0 3) 1230 LET P = U(S, J)
   Origs: 1220:fornext
   Dests: 1240:auto
-(1 4) 1240 IF P = 0 THEN 1260
+(1010) (1 4) 1240 IF P = 0 THEN 1260
   Origs: 1230:auto
   Dests: 1250:auto, 1260:ifthen
-(0 6) 1250 LET V(S) = V(S) + 1 + ABS(C(P))
+(1010) (0 6) 1250 LET V(S) = V(S) + 1 + ABS(C(P))
   Origs: 1240:auto
   Dests: 1260:auto
-(0 1) 1260 NEXT J
+(1010) (0 1) 1260 NEXT J
   Origs: 1220:fornext, 1240:ifthen, 1250:auto
   Dests: 1270:auto
-(0 1) 1270 NEXT S
+(1010) (0 1) 1270 NEXT S
   Origs: 1200:fornext, 1215:ifthen, 1260:auto
   Dests: 1300:auto
-(0 3) 1300 LET V = 0
+(1010) (0 3) 1300 LET V = 0
   Origs: 1270:auto
   Dests: 1310:auto
-(1 3) 1310 FOR S = 1 TO 9
+(1010) (1 3) 1310 FOR S = 1 TO 9
   Origs: 1300:auto
   Dests: 1320:fornext, 1350:fornext
-(1 4) 1320 IF V(S) <= V THEN 1350
+(1010) (1 4) 1320 IF V(S) <= V THEN 1350
   Origs: 1310:fornext
   Dests: 1330:auto, 1350:ifthen
-(0 3) 1330 LET V = V(S)
+(1010) (0 3) 1330 LET V = V(S)
   Origs: 1320:auto
   Dests: 1340:auto
-(0 3) 1340 LET M = S
+(1010) (0 3) 1340 LET M = S
   Origs: 1330:auto
   Dests: 1350:auto
-(0 1) 1350 NEXT S
+(1010) (0 1) 1350 NEXT S
   Origs: 1310:fornext, 1320:ifthen, 1340:auto
   Dests: 1999:auto
-(0 1) 1999 RETURN
+(1010) (0 1) 1999 RETURN
   Origs: 1120:ifthen, 1350:auto
   Dests: 
 (0 1) 9999 END

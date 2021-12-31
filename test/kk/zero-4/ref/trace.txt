@@ -4,23 +4,23 @@ FNF(_) 10: DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
  A = 0
  B = 1
 22: GOSUB 200
-200: LET S = SGN(FNF(A))
+(200) 200: LET S = SGN(FNF(A))
  A: 0
  X: 0
  S = -1
-210: LET T = SGN(FNF(B))
+(200) 210: LET T = SGN(FNF(B))
  B: 1
  X: 1
  T = 1
-220: IF S * T = 0 THEN 400
+(200) 220: IF S * T = 0 THEN 400
  S: -1
  T: 1
  S * T = 0: false
-230: IF S * T > 0 THEN 300
+(200) 230: IF S * T > 0 THEN 300
  S: -1
  T: 1
  S * T > 0: false
-240: RETURN
+(200) 240: RETURN
 26: LET X(1 + S) = A
  S: -1
  A: 0
@@ -427,10 +427,10 @@ FNF(_) 10: DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
  X(0): 0.7331566810607915
  X(2): 0.7331571578979497
  ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005: true
-100: PRINT "ONE ZERO AT" X
+(200) 100: PRINT "ONE ZERO AT" X
 ONE ZERO AT
  X: 0.7331566810607915
  0.7331566810607915
-110: STOP
+(200) 110: STOP
 STOP in line 110
 

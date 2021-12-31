@@ -238,25 +238,25 @@ Halstead complexity:
 (0 1) 800 REM TEST FACTOR F
   Origs: 
   Dests: 
-(0 7) 810 LET X = A - F * INT(A / F)
+(810) (0 7) 810 LET X = A - F * INT(A / F)
   Origs: 230:gosub, 420:gosub
   Dests: 820:auto
-(0 4) 820 LET Y = A * 1E3
+(810) (0 4) 820 LET Y = A * 1E3
   Origs: 810:auto
   Dests: 830:auto
-(0 9) 830 LET X = F - (Y - F * INT(Y / F))
+(810) (0 9) 830 LET X = F - (Y - F * INT(Y / F))
   Origs: 820:auto
   Dests: 840:auto
-(1 7) 840 IF X <> 2 * INT(X / 2) THEN 860
+(810) (1 7) 840 IF X <> 2 * INT(X / 2) THEN 860
   Origs: 830:auto
   Dests: 850:auto, 860:ifthen
-(0 4) 850 LET X = X + F
+(810) (0 4) 850 LET X = X + F
   Origs: 840:auto
   Dests: 860:auto
-(0 5) 860 LET Z = (X - 1) / 2
+(810) (0 5) 860 LET Z = (X - 1) / 2
   Origs: 840:ifthen, 850:auto
   Dests: 870:auto
-(0 1) 870 RETURN
+(810) (0 1) 870 RETURN
   Origs: 860:auto
   Dests: 
 (0 1) 999 END

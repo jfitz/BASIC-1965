@@ -149,46 +149,46 @@ Halstead complexity:
 (0 3) 430 GOTO 80
   Origs: 420:auto
   Dests: 80:goto
-(0 2) 440 PRINT "X = ";
+(440) (0 2) 440 PRINT "X = ";
   Origs: 110:gosub, 150:gosub, 190:gosub
   Dests: 450:auto
-(1 2) 450 INPUT X
+(440) (1 2) 450 INPUT X
   Origs: 440:auto
   Dests: 460:auto
-(0 1) 460 RETURN
+(440) (0 1) 460 RETURN
   Origs: 450:auto
   Dests: 
-(0 4) 470 LET Z = LOG(X + SQR((X ^ 2) + 1))
+(470) (0 4) 470 LET Z = LOG(X + SQR((X ^ 2) + 1))
   Origs: 120:gosub, 240:gosub
   Dests: 480:auto
-(0 1) 480 RETURN
+(470) (0 1) 480 RETURN
   Origs: 470:auto
   Dests: 
-(0 4) 490 LET Z = LOG(X + SQR((X ^ 2) - 1))
+(490) (0 4) 490 LET Z = LOG(X + SQR((X ^ 2) - 1))
   Origs: 160:gosub, 290:gosub
   Dests: 500:auto
-(0 1) 500 RETURN
+(490) (0 1) 500 RETURN
   Origs: 490:auto
   Dests: 
-(0 5) 510 LET Z = (LOG((1 + X) / (1 - X))) / 2
+(510) (0 5) 510 LET Z = (LOG((1 + X) / (1 - X))) / 2
   Origs: 200:gosub, 340:gosub
   Dests: 520:auto
-(0 1) 520 RETURN
+(510) (0 1) 520 RETURN
   Origs: 510:auto
   Dests: 
-(0 2) 530 PRINT "X = ";
+(530) (0 2) 530 PRINT "X = ";
   Origs: 230:gosub, 280:gosub, 330:gosub
   Dests: 540:auto
-(1 2) 540 INPUT X
+(530) (1 2) 540 INPUT X
   Origs: 530:auto
   Dests: 550:auto
-(0 3) 550 LET A = X
+(530) (0 3) 550 LET A = X
   Origs: 540:auto
   Dests: 560:auto
-(0 4) 560 LET X = 1 / X
+(530) (0 4) 560 LET X = 1 / X
   Origs: 550:auto
   Dests: 570:auto
-(0 1) 570 RETURN
+(530) (0 1) 570 RETURN
   Origs: 560:auto
   Dests: 
 (0 1) 580 END

@@ -216,8 +216,8 @@ class AbstractStatement
   attr_reader :errors, :warnings, :program_errors, :keywords, :tokens,
               :separators, :valid, :executable, :comment, :linenums,
               :autonext, :autonext_line_stmt, :transfers, :transfers_auto,
-              :comprehension_effort, :mccabe
-  attr_accessor :part_of_user_function, :origins, :reachable
+              :comprehension_effort, :mccabe, :part_of_sub
+  attr_accessor :part_of_user_function, :program_warnings, :origins, :reachable
 
   def self.extra_keywords
     []
@@ -231,6 +231,7 @@ class AbstractStatement
     @errors = []
     @warnings = []
     @program_errors = []
+    @program_warnings = []
     @valid = true
     @comment = false
     @modifiers = []
@@ -249,7 +250,10 @@ class AbstractStatement
     @mccabe = 0
     @profile_count = 0
     @profile_time = 0
+    @transfers = []
+    @transfers_auto = []
     @part_of_user_function = nil
+    @part_of_sub = nil
   end
 
   def set_autonext_line_stmt(line_stmt_mod)
@@ -262,12 +266,44 @@ class AbstractStatement
 
   def optimize(interpreter, line_stmt, program)
     @program_errors = []
+    @program_warnings = []
 
     set_destinations(interpreter, line_stmt, program)
     set_for_lines(interpreter, line_stmt, program)
   end
 
   def set_destinations(_, _, _) end
+
+  def assign_sub_markers(_) end
+
+  def assign_sub_marker(marker, program)
+    # mark as part of this sub
+    @part_of_sub = marker
+
+    # do not change this call to transfers()
+    xfers = transfers + transfers_auto
+    
+    # for each destination
+    xfers.each do |xfer|
+      next if [:function, :gosub].include?(xfer.type)
+
+      dest_line = xfer.line_number
+      dest_stmt = xfer.statement
+      statement = program.get_statement(dest_line, dest_stmt)
+
+      next if statement.nil?
+
+      #   recurse for that statement's destinations
+      #   stop if already marked (with any sub)
+      if statement.part_of_sub.nil?
+        statement.assign_sub_marker(marker, program)
+      else
+        mark0 = statement.part_of_sub
+        statement.program_warnings <<
+          "Inconsistent GOSUB target (#{mark0}, #{marker})" if marker != mark0
+      end
+    end
+  end
 
   def set_for_lines(_, _, _) end
 
@@ -298,6 +334,8 @@ class AbstractStatement
     text = ''
 
     text += "#{@part_of_user_function} " unless @part_of_user_function.nil?
+
+    text += "(#{@part_of_sub}) " unless @part_of_sub.nil?
 
     text += "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
 
@@ -389,14 +427,30 @@ class AbstractStatement
   end
 
   def transfers_to_origins(program, line_number, stmt)
-    # get transfers via function call, not reference to @transfers
-    xfers = transfers
+    # do not change this call to transfers()
+    xfers = transfers + transfers_auto
+
     xfers.each do |xfer|
       dest_line_number = xfer.line_number
       dest_stmt = xfer.statement
       dest_xfer = TransferRefLineStmt.new(line_number, stmt, xfer.type)
       program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
     end
+  end
+
+  def procedure?
+    is_proc = false
+
+    # a procedure start is any line with a :gosub origin
+    @origins.each do |xfer|
+      is_proc = true if !xfer.line_number.nil? && xfer.type == :gosub
+    end
+
+    is_proc
+  end
+
+  def return?
+    return false
   end
 
   def print_errors(console_io)
@@ -425,6 +479,8 @@ class AbstractStatement
 
     line = " #{@part_of_user_function}" unless @part_of_user_function.nil?
 
+    line = " (#{@part_of_sub})" unless @part_of_sub.nil?
+
     line += if show_timing
               " (#{@profile_time.round(4)}/#{@profile_count})"
             else
@@ -442,6 +498,9 @@ class AbstractStatement
     trace_out.print_out "#{@part_of_user_function} " unless
       @part_of_user_function.nil?
 
+    trace_out.print_out "(#{@part_of_sub}) " unless
+      @part_of_sub.nil?
+
     text = pretty
     text = "#{current_line_number}: #{text}"
 
@@ -455,6 +514,8 @@ class AbstractStatement
     if @part_of_user_function != current_user_function
       raise(BASICSyntaxError, 'Invalid transfer in/out of function')
     end
+
+    # TODO: check for consistent SUB
 
     execute(interpreter)
   end
@@ -1235,7 +1296,7 @@ class EndStatement < AbstractStatement
     @transfers = []
 
     empty_line_number = LineNumber.new(nil)
-    @transfers << TransferRefLine.new(empty_line_number, :stop)
+    @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
   end
 
   def execute_core(interpreter)
@@ -1612,6 +1673,26 @@ class GosubStatement < AbstractStatement
     else
       xref = TransferRefLineStmt.new(@dest_line_stmt_mod.line_number, 0, :gosub)
       @transfers << xref
+    end
+  end
+
+  def assign_sub_markers(program)
+    return if @dest_line_stmt_mod.nil?
+
+    dest_line = @dest_line_stmt_mod.line_number
+    dest_stmt = @dest_line_stmt_mod.statement
+    statement = program.get_statement(dest_line, dest_stmt)
+
+    #   mark that statement's destinations
+    #   stop if already marked (with any sub)
+    unless statement.nil?
+      if statement.part_of_sub.nil?
+        statement.assign_sub_marker(dest_line, program)
+      else
+        mark0 = statement.part_of_sub
+        statement.program_warnings <<
+          "Inconsistent GOSUB target (#{mark0}, #{dest_line})" if dest_line != mark0
+      end
     end
   end
 
@@ -2269,6 +2350,10 @@ class ReturnStatement < AbstractStatement
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
+  def return?
+    return true
+  end
+
   def dump
     ['']
   end
@@ -2304,7 +2389,7 @@ class StopStatement < AbstractStatement
     @transfers = []
 
     empty_line_number = LineNumber.new(nil)
-    @transfers << TransferRefLine.new(empty_line_number, :stop)
+    @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
   end
 
   def execute_core(interpreter)

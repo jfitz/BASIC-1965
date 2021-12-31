@@ -1,11 +1,11 @@
 Infinite loop detected in line 20
 
 10 (0) REM TEST INFINITE LOOP CHECK
-20 (1) GOSUB 20
-30 (0) GOSUB 100
-90 (0) STOP
+20 (20) (1) GOSUB 20
+30 (20) (0) GOSUB 100
+90 (20) (0) STOP
 100 (0) REM PRINT STARS
-110 (0) PRINT "******"
-120 (0) RETURN
+110 (110) (0) PRINT "******"
+120 (110) (0) RETURN
 999 (0) END
 

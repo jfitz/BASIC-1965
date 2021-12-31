@@ -164,25 +164,25 @@ Halstead complexity:
 (0 3) 480 GOTO 80
   Origs: 470:auto
   Dests: 80:goto
-(0 2) 490 PRINT "X = "
+(490) (0 2) 490 PRINT "X = "
   Origs: 110:gosub, 160:gosub, 210:gosub, 270:gosub, 320:gosub, 370:gosub
   Dests: 500:auto
-(1 2) 500 INPUT X
+(490) (1 2) 500 INPUT X
   Origs: 490:auto
   Dests: 510:auto
-(0 1) 510 RETURN
+(490) (0 1) 510 RETURN
   Origs: 500:auto
   Dests: 
-(0 6) 520 LET Y = EXP(X) - EXP(-X)
+(520) (0 6) 520 LET Y = EXP(X) - EXP(-X)
   Origs: 120:gosub, 220:gosub, 280:gosub, 380:gosub
   Dests: 530:auto
-(0 1) 530 RETURN
+(520) (0 1) 530 RETURN
   Origs: 520:auto
   Dests: 
-(0 6) 540 LET B = EXP(X) + EXP(-X)
+(540) (0 6) 540 LET B = EXP(X) + EXP(-X)
   Origs: 170:gosub, 230:gosub, 330:gosub, 390:gosub
   Dests: 550:auto
-(0 1) 550 RETURN
+(540) (0 1) 550 RETURN
   Origs: 540:auto
   Dests: 
 (0 1) 560 END

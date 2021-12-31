@@ -187,6 +187,7 @@
 625 GOSUB 580
  LineNumber:580
 630 IF D > 1E04 THEN 660
+ WARNING: Inconsistent GOSUB target (630, 580)
  Variable:D -> _
  NumericConstant:10000
  BinaryOperatorGreater:>(_,_) -> ?
@@ -972,6 +973,7 @@
  TextConstant:"YOU ARE INDEED A **GOOD KNIGHT**"
  CarriageControl:NL
 2760 PRINT
+ WARNING: Inconsistent GOSUB target (1040, 1500)
  CarriageControl:NL
 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
  TextConstant:"TO PLAY SPACE WARS AGAIN TYPE GO, IF"

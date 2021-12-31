@@ -85,19 +85,19 @@ Halstead complexity:
 (0 1) 500 REM ROLL DICE
   Origs: 
   Dests: 
-(0 4) 510 LET D1 = INT(6 * RND(1) + 1)
+(510) (0 4) 510 LET D1 = INT(6 * RND(1) + 1)
   Origs: 20:gosub, 100:gosub
   Dests: 520:auto
-(0 4) 520 LET D2 = INT(6 * RND(1) + 1)
+(510) (0 4) 520 LET D2 = INT(6 * RND(1) + 1)
   Origs: 510:auto
   Dests: 525:auto
-(0 4) 525 PRINT "YOUR ROLL IS "; D1; D2
+(510) (0 4) 525 PRINT "YOUR ROLL IS "; D1; D2
   Origs: 520:auto
   Dests: 530:auto
-(0 4) 530 LET D = D1 + D2
+(510) (0 4) 530 LET D = D1 + D2
   Origs: 525:auto
   Dests: 540:auto
-(0 1) 540 RETURN
+(510) (0 1) 540 RETURN
   Origs: 530:auto
   Dests: 
 (0 1) 999 END

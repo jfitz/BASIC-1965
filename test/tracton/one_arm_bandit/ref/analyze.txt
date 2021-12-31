@@ -210,21 +210,21 @@ Halstead complexity:
 (0 2) 580 GOTO 720
   Origs: 570:auto
   Dests: 720:goto
-(0 5) 590 LET S = 1 + INT(5 * RND)
+(590) (0 5) 590 LET S = 1 + INT(5 * RND)
   Origs: 190:gosub, 210:gosub, 230:gosub
   Dests: 600:auto
-(0 1) 600 RETURN
+(590) (0 1) 600 RETURN
   Origs: 590:auto
   Dests: 
 (0 1) 610 
     Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
   Origs: 
   Dests: 
-(0 1) 620 LET S $ ="CHERRY"
+(620) (0 1) 620 LET S $ ="CHERRY"
     Token 'InvalidToken:$' is not a value or operator
   Origs: 260:gosub, 290:gosub, 320:gosub
   Dests: 630:auto
-(0 2) 630 GOTO 710
+(620) (0 2) 630 GOTO 710
   Origs: 620:auto
   Dests: 710:goto
 (0 1) 640 LET S $ ="APPLE"
@@ -252,7 +252,7 @@ Halstead complexity:
     Token 'InvalidToken:$' is not a value or operator
   Origs: 
   Dests: 710:auto
-(0 1) 710 RETURN
+(620) (0 1) 710 RETURN
   Origs: 630:goto, 650:goto, 670:goto, 690:goto, 700:auto
   Dests: 
 (0 2) 720 PRINT

@@ -52,34 +52,34 @@ Halstead complexity:
 (0 1) 400 REM PRINT INFO FOR ONE NUMBER
   Origs: 
   Dests: 
-(0 3) 410 PRINT N0; ":";
+(410) (0 3) 410 PRINT N0; ":";
   Origs: 120:gosub
   Dests: 420:auto
-(1 4) 420 IF N0 = 1 THEN 490
+(410) (1 4) 420 IF N0 = 1 THEN 490
   Origs: 410:auto, 480:goto
   Dests: 430:auto, 490:ifthen
-(1 5) 430 IF MOD(N0, 2) = 0 THEN 460
+(410) (1 5) 430 IF MOD(N0, 2) = 0 THEN 460
   Origs: 420:auto
   Dests: 440:auto, 460:ifthen
-(0 5) 440 LET N0 = 3 * N0 + 1
+(410) (0 5) 440 LET N0 = 3 * N0 + 1
   Origs: 430:auto
   Dests: 450:auto
-(0 2) 450 GOTO 470
+(410) (0 2) 450 GOTO 470
   Origs: 440:auto
   Dests: 470:goto
-(0 4) 460 LET N0 = N0 / 2
+(410) (0 4) 460 LET N0 = N0 / 2
   Origs: 430:ifthen
   Dests: 470:auto
-(0 2) 470 PRINT N0;
+(410) (0 2) 470 PRINT N0;
   Origs: 450:goto, 460:auto
   Dests: 480:auto
-(0 3) 480 GOTO 420
+(410) (0 3) 480 GOTO 420
   Origs: 470:auto
   Dests: 420:goto
-(0 2) 490 PRINT
+(410) (0 2) 490 PRINT
   Origs: 420:ifthen
   Dests: 500:auto
-(0 1) 500 RETURN
+(410) (0 1) 500 RETURN
   Origs: 490:auto
   Dests: 
 (0 2) 900 DATA 1, 998

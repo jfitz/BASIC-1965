@@ -166,10 +166,10 @@ Halstead complexity:
 (0 3) 490 GOTO 120
   Origs: 480:auto
   Dests: 120:goto
-(0 16) 500 LET Q = 13 * X ^ 2 - 6 * X ^ 2 + SIN(X) + 1 / X
+(500) (0 16) 500 LET Q = 13 * X ^ 2 - 6 * X ^ 2 + SIN(X) + 1 / X
   Origs: 180:gosub, 220:gosub, 260:gosub, 300:gosub, 340:gosub, 380:gosub
   Dests: 510:auto
-(0 1) 510 RETURN
+(500) (0 1) 510 RETURN
   Origs: 500:auto
   Dests: 
 (0 1) 520 END

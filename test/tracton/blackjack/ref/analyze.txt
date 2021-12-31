@@ -269,81 +269,81 @@ Halstead complexity:
 (0 3) 810 GOTO 560
   Origs: 800:auto
   Dests: 560:goto
-(0 5) 820 LET C = 1 + INT(11 * RND)
+(820) (0 5) 820 LET C = 1 + INT(11 * RND)
   Origs: 380:gosub, 400:gosub, 420:gosub, 440:gosub, 750:gosub
   Dests: 830:auto
-(1 2) 830 IF C = =11 THEN 850
+(820) (1 2) 830 IF C = =11 THEN 850
     Token 'OperatorToken:=' is not a value or operator
   Origs: 820:auto
   Dests: 840:auto, 850:ifthen
-(0 2) 840 GOTO 880
+(820) (0 2) 840 GOTO 880
   Origs: 830:auto
   Dests: 880:goto
-(1 5) 850 IF D + C > 21 THEN 870
+(820) (1 5) 850 IF D + C > 21 THEN 870
   Origs: 830:ifthen
   Dests: 860:auto, 870:ifthen
-(0 2) 860 GOTO 880
+(820) (0 2) 860 GOTO 880
   Origs: 850:auto
   Dests: 880:goto
-(0 3) 870 LET C = 1
+(820) (0 3) 870 LET C = 1
   Origs: 850:ifthen
   Dests: 880:auto
-(0 1) 880 RETURN
+(820) (0 1) 880 RETURN
   Origs: 840:goto, 860:goto, 870:auto
   Dests: 
-(0 5) 890 LET C = 1 + INT(11 * RND)
+(890) (0 5) 890 LET C = 1 + INT(11 * RND)
   Origs: 690:gosub
   Dests: 900:auto
-(1 4) 900 IF C = 11 THEN 920
+(890) (1 4) 900 IF C = 11 THEN 920
   Origs: 890:auto
   Dests: 910:auto, 920:ifthen
-(0 2) 910 GOTO 950
+(890) (0 2) 910 GOTO 950
   Origs: 900:auto
   Dests: 950:goto
-(1 5) 920 IF P + C > 21 THEN 940
+(890) (1 5) 920 IF P + C > 21 THEN 940
   Origs: 900:ifthen
   Dests: 930:auto, 940:ifthen
-(0 2) 930 GOTO 950
+(890) (0 2) 930 GOTO 950
   Origs: 920:auto
   Dests: 950:goto
-(0 3) 940 LET C = 1
+(890) (0 3) 940 LET C = 1
   Origs: 920:ifthen
   Dests: 950:auto
-(0 1) 950 RETURN
+(890) (0 1) 950 RETURN
   Origs: 910:goto, 930:goto, 940:auto
   Dests: 
-(0 2) 960 PRINT "DO YOU WANT A HIT, OR DO YOU STAND"
+(960) (0 2) 960 PRINT "DO YOU WANT A HIT, OR DO YOU STAND"
   Origs: 530:gosub, 1010:goto
   Inconsistent GOSUB origins
   Dests: 970:auto
-(0 1) 970 INPUT Q $
+(960) (0 1) 970 INPUT Q $
     Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
   Origs: 960:auto
   Dests: 980:auto
-(1 2) 980 IF Q $ ="HIT" THEN 1020
+(960) (1 2) 980 IF Q $ ="HIT" THEN 1020
     Token 'InvalidToken:$' is not a value or operator
   Origs: 970:auto
   Dests: 990:auto, 1020:ifthen
-(1 2) 990 IF Q $ ="STAND" THEN 1040
+(960) (1 2) 990 IF Q $ ="STAND" THEN 1040
     Token 'InvalidToken:$' is not a value or operator
   Origs: 980:auto
   Dests: 1000:auto, 1040:ifthen
-(0 2) 1000 PRINT "INVALID RESPONSE"
+(960) (0 2) 1000 PRINT "INVALID RESPONSE"
   Origs: 990:auto
   Dests: 1010:auto
-(0 3) 1010 GOTO 960
+(960) (0 3) 1010 GOTO 960
   Origs: 1000:auto
   Dests: 960:goto
-(0 3) 1020 LET L = 1
+(960) (0 3) 1020 LET L = 1
   Origs: 980:ifthen
   Dests: 1030:auto
-(0 2) 1030 GOTO 1050
+(960) (0 2) 1030 GOTO 1050
   Origs: 1020:auto
   Dests: 1050:goto
-(0 3) 1040 LET L = 0
+(960) (0 3) 1040 LET L = 0
   Origs: 990:ifthen
   Dests: 1050:auto
-(0 1) 1050 RETURN
+(960) (0 1) 1050 RETURN
   Origs: 1030:goto, 1040:auto
   Dests: 
 (0 2) 1060 PRINT
