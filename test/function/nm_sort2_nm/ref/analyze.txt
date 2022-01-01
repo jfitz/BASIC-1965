@@ -1,0 +1,113 @@
+Statistics:
+
+Number of lines: 29
+Number of valid statements: 27
+Number of comments: 2
+Number of executable statements: 16
+
+Complexity:
+
+Comment density: 0.074
+Comprehension effort: 57
+McCabe complexity: 3
+Halstead complexity:
+ length: 162
+ volume: 533.926
+ difficulty: 12.714
+ effort: 6788.482
+ language: 3.303
+ intelligence: 41.994
+ time: 6.286
+
+(0 2) 10 DIM A(5, 6)
+  Origs: :start
+  Dests: 20:auto
+(0 2) 20 OPTION BASE 0
+  Origs: 10:auto
+  Dests: 30:auto
+(1 2) 30 MAT READ A
+  Origs: 20:auto
+  Dests: 40:auto
+(0 4) 40 MAT B = SORT2(A)
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 GOSUB 800
+  Origs: 40:auto
+  Dests: 120:auto, 810:gosub
+(0 1) 90 REM RESTORE
+  Origs: 
+  Dests: 
+(0 2) 120 OPTION BASE 1
+  Origs: 50:auto
+  Dests: 130:auto
+(1 2) 130 MAT READ A
+  Origs: 120:auto
+  Dests: 140:auto
+(0 4) 140 MAT B = SORT2(A)
+  Origs: 130:auto
+  Dests: 150:auto
+(0 2) 150 GOSUB 800
+  Origs: 140:auto
+  Dests: 790:auto, 810:gosub
+(0 1) 790 STOP
+  Origs: 150:auto
+  Dests: :stop
+(0 1) 800 REM PROCEDURE A
+  Origs: 
+  Dests: 
+(810) (0 2) 810 PRINT "MATRIX A"
+  Origs: 50:gosub, 150:gosub
+  Dests: 820:auto
+(810) (0 2) 820 MAT PRINT A
+  Origs: 810:auto
+  Dests: 830:auto
+(810) (0 2) 830 PRINT "MATRIX B"
+  Origs: 820:auto
+  Dests: 840:auto
+(810) (0 2) 840 MAT PRINT B
+  Origs: 830:auto
+  Dests: 890:auto
+(810) (0 1) 890 RETURN
+  Origs: 840:auto
+  Dests: 
+(0 2) 900 DATA 3, 10, 23, 30, 40, 50, 60
+  Origs: 
+  Dests: 
+(0 2) 901 DATA 3, 10, 22, 30, 40, 50, 60
+  Origs: 
+  Dests: 
+(0 2) 902 DATA 1, 10, 20, 30, 40, 50, 60
+  Origs: 
+  Dests: 
+(0 2) 903 DATA 3, 10, 21, 30, 40, 50, 60
+  Origs: 
+  Dests: 
+(0 2) 904 DATA 0, 10, 20, 30, 40, 50, 60
+  Origs: 
+  Dests: 
+(0 2) 905 DATA 0, 10, 20, 30, 40, 50, 60
+  Origs: 
+  Dests: 
+(0 2) 910 DATA 3, 10, 23, 30, 40, 50
+  Origs: 
+  Dests: 
+(0 2) 911 DATA 3, 10, 22, 30, 40, 50
+  Origs: 
+  Dests: 
+(0 2) 912 DATA 1, 10, 20, 30, 40, 50
+  Origs: 
+  Dests: 
+(0 2) 913 DATA 3, 10, 21, 30, 40, 50
+  Origs: 
+  Dests: 
+(0 2) 914 DATA 0, 10, 20, 30, 40, 50
+  Origs: 
+  Dests: 
+(0 1) 999 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+999: END
+

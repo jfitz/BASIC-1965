@@ -913,6 +913,46 @@ class Matrix < AbstractCompound
     inv_values
   end
 
+  def sort_values
+    base = $options['base'].value
+
+    # get all values
+    rows = []
+
+    (base..@dimensions[0].to_i).each do |row|
+      values = []
+
+      (base..@dimensions[1].to_i).each do |col|
+        values << get_value_2(row, col)
+      end
+
+      rows << values
+    end
+
+    # sort
+    rows_sorted = rows.sort
+
+    # set all values
+    new_values = {}
+
+    row = base
+
+    rows_sorted.each do |values|
+      col = base
+
+      values.each do |value|
+        coords = AbstractElement.make_coords(row, col)
+        new_values[coords] = value
+
+        col += 1
+      end
+
+      row += 1
+    end
+
+    new_values
+  end
+
   private
 
   def print_1(printer)
