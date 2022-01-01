@@ -16,6 +16,7 @@
 100 PRINT "ONE ZERO AT" X
  WARNING: Statement before GOSUB entry point
 110 STOP
+ WARNING: Terminating statement in GOSUB
 200 LET S = SGN(FNF(A))
 210 LET T = SGN(FNF(B))
 220 IF S * T = 0 THEN 400
@@ -28,6 +29,7 @@
 340 NEXT I
 350 PRINT "NO CHANGE OF SIGN FOUND"
 360 STOP
+ WARNING: Terminating statement in GOSUB
 370 LET B = X
 380 RETURN
 400 IF S = 0 THEN 430

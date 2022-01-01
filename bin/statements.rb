@@ -301,6 +301,14 @@ class AbstractStatement
         if dest_line < marker && dest_line < line_number
           statement.program_warnings << "Statement before GOSUB entry point"
         end
+
+        stmt_xfers = statement.transfers
+
+        stmt_xfers.each do |stmt_xfer|
+          if [:stop, :chain].include?(stmt_xfer.type)
+            statement.program_warnings << "Terminating statement in GOSUB"
+          end
+        end
       else
         mark0 = statement.part_of_sub
 
