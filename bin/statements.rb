@@ -276,7 +276,7 @@ class AbstractStatement
 
   def assign_sub_markers(_) end
 
-  def assign_sub_marker(marker, program)
+  def assign_sub_marker(marker, line_number, program)
     # mark as part of this sub
     @part_of_sub = marker
 
@@ -296,11 +296,18 @@ class AbstractStatement
       #   recurse for that statement's destinations
       #   stop if already marked (with any sub)
       if statement.part_of_sub.nil?
-        statement.assign_sub_marker(marker, program)
+        statement.assign_sub_marker(marker, dest_line, program)
+
+        if dest_line < marker && dest_line < line_number
+          statement.program_warnings << "Statement before GOSUB entry point"
+        end
       else
         mark0 = statement.part_of_sub
-        statement.program_warnings <<
-          "Inconsistent GOSUB target (#{mark0}, #{marker})" if marker != mark0
+
+        if marker != mark0
+          statement.program_warnings <<
+            "Inconsistent GOSUB target (#{mark0}, #{marker})"
+        end
       end
     end
   end
@@ -1687,7 +1694,7 @@ class GosubStatement < AbstractStatement
     #   stop if already marked (with any sub)
     unless statement.nil?
       if statement.part_of_sub.nil?
-        statement.assign_sub_marker(dest_line, program)
+        statement.assign_sub_marker(dest_line, dest_line, program)
       else
         mark0 = statement.part_of_sub
         statement.program_warnings <<
