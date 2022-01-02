@@ -59,15 +59,15 @@ Halstead complexity:
   Origs: 120:auto
   Dests: 140:auto
 (0 1) 140 INPUT A $
-    Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
   Origs: 130:auto
   Dests: 150:auto
 (1 2) 150 IF A $ ="G" THEN 190
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 140:auto
   Dests: 160:auto, 190:ifthen
 (1 2) 160 IF A $ ="F" THEN 300
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 150:auto
   Dests: 170:auto, 300:ifthen
 (0 2) 170 PRINT "INVALID RESPONSE"
@@ -152,11 +152,11 @@ Halstead complexity:
   Origs: 420:auto
   Dests: 440:auto
 (0 1) 440 INPUT L $
-    Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 430:auto
   Dests: 450:auto
 (1 2) 450 IF L $ ="Y" THEN 470
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 440:auto
   Dests: 460:auto, 470:ifthen
 (0 1) 460 STOP

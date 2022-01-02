@@ -3,19 +3,19 @@
 20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
  Remark:RESTRICTION: THE DATE MUST BE AFTER 1752
 30 LET J$(1) = "SUNDAY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 40 LET J$(2) = "MONDAY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 50 LET J$(3) = "TUESDAY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 60 LET J$(4) = "WEDNESDAY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 70 LET J$(5) = "THURSDAY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 80 LET J$(6) = "FRIDAY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 90 LET J$(7) = "SATURDAY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
@@ -122,7 +122,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
- Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
  TextConstant:"THE DAY OF THE WEEK IS "
  CarriageControl:;
 260 PRINT
@@ -134,12 +134,12 @@
  TextConstant:"TYPE NO"
  CarriageControl:NL
 290 INPUT L$
- Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 300 IF L$ = "YES" THEN 340
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:340
 310 IF L$ = "NO" THEN 360
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:360
 320 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"

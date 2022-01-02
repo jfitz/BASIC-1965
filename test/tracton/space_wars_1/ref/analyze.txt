@@ -29,25 +29,26 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 40 
-   Unknown statement 'RANDOMIZE'
+   ERROR: Unknown statement 'RANDOMIZE'
   Origs: 
   Dests: 
 (500) (0 2) 50 PRINT "ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
+   WARNING: Statement before GOSUB entry point
   Origs: :start, 110:goto, 1320:goto
   Dests: 60:auto
 (500) (0 2) 60 PRINT "YES OR NO"
   Origs: 50:auto
   Dests: 70:auto
 (500) (0 1) 70 INPUT A $
-   Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
+   ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
   Origs: 60:auto
   Dests: 80:auto
 (500) (1 2) 80 IF A $ ="YES" THEN 120
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 70:auto
   Dests: 90:auto, 120:ifthen
 (500) (1 2) 90 IF A $ ="NO" THEN 250
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 80:auto
   Dests: 100:auto, 250:ifthen
 (500) (0 2) 100 PRINT "INVALID RESPONSE"
@@ -237,7 +238,7 @@ Halstead complexity:
   Origs: 700:auto
   Dests: 730:auto
 (0 1) 720 
-    Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
+    ERROR: Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
   Origs: 
   Dests: 
 (500) (0 2) 730 PRINT "HOW MANY DEGREES OF ROTATION"
@@ -403,17 +404,18 @@ Halstead complexity:
   Origs: 1250:auto
   Dests: 1270:auto
 (500) (0 1) 1270 INPUT Z $
-     Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
   Origs: 1260:auto
   Dests: 1280:auto
 (500) (1 2) 1280 IF Z $ ="GO" THEN 1310
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1270:auto
   Dests: 1290:auto, 1310:ifthen
 (500) (0 2) 1290 PRINT "SPACE WARS SAYS GOOD-BYE"
   Origs: 1280:auto
   Dests: 1300:auto
 (500) (0 1) 1300 STOP
+     WARNING: Terminating statement in GOSUB
   Origs: 1290:auto
   Dests: :stop
 (500) (0 2) 1310 PRINT

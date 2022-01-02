@@ -9,12 +9,12 @@
  TextConstant:"TYPE EITHER YES OR NO"
  CarriageControl:NL
 50 INPUT L$
- Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 60 IF L$ = "YES" THEN 100
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:100
 70 IF L$ = "NO" THEN 170
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:170
 80 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
@@ -73,7 +73,7 @@
 260 GOSUB 610
  LineNumber:610
 270 LET S1$ = S$
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 280 LET S = S2
  Variable:S -> _
  Variable:S2 -> _
@@ -81,7 +81,7 @@
 290 GOSUB 610
  LineNumber:610
 300 LET S2$ = S$
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 310 LET S = S3
  Variable:S -> _
  Variable:S3 -> _
@@ -89,38 +89,38 @@
 320 GOSUB 610
  LineNumber:610
 330 LET S3$ = S$
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 340 IF S1$ = "CHERRY" THEN 380
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:380
 350 IF S1$ = "APPLE" THEN 420
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:420
 360 IF S1$ = S2$ THEN 440
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:440
 370 GOTO 460
  LineNumber:460
 380 IF S1$ = S2$ THEN 400
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:400
 390 GOTO 460
  LineNumber:460
 400 IF S2$ = S3$ THEN 480
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:480
 410 GOTO 460
  LineNumber:460
 420 IF S1$ = S2$ THEN 500
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:500
 430 GOTO 520
  LineNumber:520
 440 IF S2$ = S3$ THEN 540
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:540
 450 IF S3$ = "CHERRY" THEN 540
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:540
 460 LET J = J - 1
  Variable:J -> _
@@ -163,9 +163,9 @@
 550 PRINT
  CarriageControl:NL
 560 PRINT S1$;" ";S2$;" ";S3$
- Syntax error: "S1$" Token 'InvalidToken:$' is not a value or operator
- Syntax error: "S2$" Token 'InvalidToken:$' is not a value or operator
- Syntax error: "S3$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "S1$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "S2$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "S3$" Token 'InvalidToken:$' is not a value or operator
  CarriageControl:;
  TextConstant:" "
  CarriageControl:;
@@ -191,26 +191,26 @@
 600 RETURN
  
 610 ON S GOTO 620, 640, 660, 680, 700
- Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
+ ERROR: Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
  Unimplemented
 620 LET S$ = "CHERRY"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 630 GOTO 710
  LineNumber:710
 640 LET S$ = "APPLE"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 650 GOTO 710
  LineNumber:710
 660 LET S$ = "LEMON"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 670 GOTO 710
  LineNumber:710
 680 LET S$ = "ORANGE"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 690 GOTO 710
  LineNumber:710
 700 LET S$ = "BANANA"
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 710 RETURN
  
 720 PRINT
@@ -219,9 +219,9 @@
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 740 INPUT Z$
- Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
 750 IF Z$ = "Y" THEN 780
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:780
 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"
  TextConstant:"ONE-ARM BANDIT SAYS GOOD-BYE"

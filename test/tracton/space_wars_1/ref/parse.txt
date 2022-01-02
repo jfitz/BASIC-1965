@@ -5,7 +5,7 @@
 30 REM ENEMY TO SAVE THE REPUBLIC
  Remark:ENEMY TO SAVE THE REPUBLIC
 40 RANDOMIZE
- Unknown statement 'RANDOMIZE'
+ ERROR: Unknown statement 'RANDOMIZE'
  Unimplemented
 50 PRINT "ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
  WARNING: Statement before GOSUB entry point
@@ -15,12 +15,12 @@
  TextConstant:"YES OR NO"
  CarriageControl:NL
 70 INPUT A$
- Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
 80 IF A$ = "YES" THEN 120
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:120
 90 IF A$ = "NO" THEN 250
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:250
 100 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
@@ -260,7 +260,7 @@
 710 INPUT C
  Variable:C -> _
 720 ON C GOTO 730, 840, 1010, 1100, 1140
- Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
+ ERROR: Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
  Unimplemented
 730 PRINT "HOW MANY DEGREES OF ROTATION"
  TextConstant:"HOW MANY DEGREES OF ROTATION"
@@ -471,14 +471,15 @@
  TextConstant:"OTHERWISE TYPE NO"
  CarriageControl:NL
 1270 INPUT Z$
- Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
 1280 IF Z$ = "GO" THEN 1310
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1310
 1290 PRINT "SPACE WARS SAYS GOOD-BYE"
  TextConstant:"SPACE WARS SAYS GOOD-BYE"
  CarriageControl:NL
 1300 STOP
+ WARNING: Terminating statement in GOSUB
  
 1310 PRINT
  CarriageControl:NL

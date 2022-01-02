@@ -7,7 +7,7 @@
 40 REM DEFENSES AND BY THE SKY FIGHTERS
  Remark:DEFENSES AND BY THE SKY FIGHTERS
 50 RANDOMIZE
- Unknown statement 'RANDOMIZE'
+ ERROR: Unknown statement 'RANDOMIZE'
  Unimplemented
 60 PRINT "ARE INSTRUCTIONS FOR SPACE WARS REQUIRED? TYPE"
  TextConstant:"ARE INSTRUCTIONS FOR SPACE WARS REQUIRED? TYPE"
@@ -16,12 +16,12 @@
  TextConstant:"EITHER YES OR NO"
  CarriageControl:NL
 80 INPUT A$
- Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
 90 IF A$ = "YES" THEN 130
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:130
 100 IF A$ = "NO" THEN 540
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:540
 110 PRINT "YOU HAVE ISSUED AN INVALID RESPONSE"
  TextConstant:"YOU HAVE ISSUED AN INVALID RESPONSE"
@@ -457,7 +457,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 1230 ON C GOTO 1240, 1270, 1290, 1330
- Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
+ ERROR: Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
  Unimplemented
 1240 PRINT "*CAUTION*GARTH RADER IS THE BEST SHOT IN THE"
  TextConstant:"*CAUTION*GARTH RADER IS THE BEST SHOT IN THE"
@@ -546,7 +546,7 @@
 1520 INPUT B
  Variable:B -> _
 1530 ON B GOTO 1540, 1690, 2030, 2320
- Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
+ ERROR: Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
  Unimplemented
 1540 IF D <= 1000 THEN 1590
  Variable:D -> _
@@ -613,12 +613,12 @@
  TextConstant:"ENTER EITHER YES OR NO"
  CarriageControl:NL
 1710 INPUT C$
- Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 1720 IF C$ = "YES" THEN 1820
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1820
 1730 IF C$ = "NO" THEN 1880
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1880
 1740 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
@@ -629,12 +629,12 @@
  TextConstant:"WHICH FIGHTER THE SKY (S) OR RADER (R)"
  CarriageControl:NL
 1770 INPUT C$
- Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 1780 IF C$ = "S" THEN 1840
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1840
 1790 IF C$ = "R" THEN 1860
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1860
 1800 PRINT "WHICH???"
  TextConstant:"WHICH???"
@@ -670,14 +670,14 @@
  TextConstant:"ON THE SKY FIGHTER (S)"
  CarriageControl:NL
 1900 INPUT C$
- Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 1910 LET Q$ = 5000*(1 + INT(100*RND)/100)
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
 1920 IF C$ = "S" THEN 1980
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1980
 1930 IF C$ = "R" THEN 2000
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2000
 1940 PRINT "WHICH ENEMY???"
  TextConstant:"WHICH ENEMY???"
@@ -727,12 +727,12 @@
  TextConstant:"DO YOU WISH COMPUTER ASSISTANCE, YES OR NO"
  CarriageControl:NL
 2050 INPUT C$
- Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 2060 IF C$ = "YES" THEN 2100
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2100
 2070 IF C$ = "NO" THEN 2120
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2120
 2080 PRINT "THE COMPUTER RESPONDS ONLY TO A YES OR NO"
  TextConstant:"THE COMPUTER RESPONDS ONLY TO A YES OR NO"
@@ -756,7 +756,7 @@
  TextConstant:"DO YOU WISH TO FIRE ON"
  CarriageControl:NL
 2150 INPUT C$
- Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 2160 IF J = 1 THEN 2190
  Variable:J -> _
  NumericConstant:1
@@ -780,10 +780,10 @@
  NumericConstant:1000
  AssignmentOperator:= =_ -> _
 2200 IF C$ = "S" THEN 2240
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2240
 2210 IF C$ = "R" THEN 2260
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2260
 2220 PRINT "WHICH TARGET?????"
  TextConstant:"WHICH TARGET?????"
@@ -849,17 +849,17 @@
  TextConstant:"THE DEATH STAR"
  CarriageControl:NL
 2400 INPUT C$
- Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
 2410 IF F > 2.25E04 THEN 2470
  Variable:F -> _
  NumericConstant:22500
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:2470
 2420 IF C$ = "A" THEN 2500
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2500
 2430 IF C$ = "T" THEN 2620
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2620
 2440 PRINT "DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
  TextConstant:"DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
@@ -982,12 +982,12 @@
  TextConstant:"NOT TYPE NO"
  CarriageControl:NL
 2800 INPUT L$
- Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 2810 IF L$ = "GO" THEN 2840
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2840
 2820 IF L$ = "NO" THEN 2860
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:2860
 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
  TextConstant:"DO YOU WANT TO STOP OR PLAY AGAIN?????"
@@ -1000,5 +1000,6 @@
  TextConstant:"SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
  CarriageControl:NL
 2870 END
+ WARNING: Terminating statement in GOSUB
  
 

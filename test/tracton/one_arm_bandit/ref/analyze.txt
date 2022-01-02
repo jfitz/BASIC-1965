@@ -32,15 +32,15 @@ Halstead complexity:
   Origs: 30:auto
   Dests: 50:auto
 (0 1) 50 INPUT L $
-   Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+   ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 40:auto
   Dests: 60:auto
 (1 2) 60 IF L $ ="YES" THEN 100
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 50:auto
   Dests: 70:auto, 100:ifthen
 (1 2) 70 IF L $ ="NO" THEN 170
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 60:auto
   Dests: 80:auto, 170:ifthen
 (0 2) 80 PRINT "INVALID COMMAND"
@@ -101,7 +101,7 @@ Halstead complexity:
   Origs: 250:auto
   Dests: 270:auto, 620:gosub
 (0 1) 270 LET S1 $ =S $
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 260:auto
   Dests: 280:auto
 (0 3) 280 LET S = S2
@@ -111,7 +111,7 @@ Halstead complexity:
   Origs: 280:auto
   Dests: 300:auto, 620:gosub
 (0 1) 300 LET S2 $ =S $
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 290:auto
   Dests: 310:auto
 (0 3) 310 LET S = S3
@@ -121,51 +121,51 @@ Halstead complexity:
   Origs: 310:auto
   Dests: 330:auto, 620:gosub
 (0 1) 330 LET S3 $ =S $
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 320:auto
   Dests: 340:auto
 (1 2) 340 IF S1 $ ="CHERRY" THEN 380
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 330:auto
   Dests: 350:auto, 380:ifthen
 (1 2) 350 IF S1 $ ="APPLE" THEN 420
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 340:auto
   Dests: 360:auto, 420:ifthen
 (1 2) 360 IF S1 $ =S2 $ THEN 440
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 350:auto
   Dests: 370:auto, 440:ifthen
 (0 2) 370 GOTO 460
   Origs: 360:auto
   Dests: 460:goto
 (1 2) 380 IF S1 $ =S2 $ THEN 400
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 340:ifthen
   Dests: 390:auto, 400:ifthen
 (0 2) 390 GOTO 460
   Origs: 380:auto
   Dests: 460:goto
 (1 2) 400 IF S2 $ =S3 $ THEN 480
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 380:ifthen
   Dests: 410:auto, 480:ifthen
 (0 2) 410 GOTO 460
   Origs: 400:auto
   Dests: 460:goto
 (1 2) 420 IF S1 $ =S2 $ THEN 500
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 350:ifthen
   Dests: 430:auto, 500:ifthen
 (0 2) 430 GOTO 520
   Origs: 420:auto
   Dests: 520:goto
 (1 2) 440 IF S2 $ =S3 $ THEN 540
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 360:ifthen
   Dests: 450:auto, 540:ifthen
 (1 2) 450 IF S3 $ ="CHERRY" THEN 540
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 440:auto
   Dests: 460:auto, 540:ifthen
 (0 4) 460 LET J = J - 1
@@ -199,9 +199,9 @@ Halstead complexity:
   Origs: 470:goto, 490:goto, 510:goto, 530:goto, 540:auto
   Dests: 560:auto
 (0 5) 560 PRINT S1 $; " "; S2 $; " "; S3 $
-    Syntax error: "S1$" Token 'InvalidToken:$' is not a value or operator
-    Syntax error: "S2$" Token 'InvalidToken:$' is not a value or operator
-    Syntax error: "S3$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "S1$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "S2$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "S3$" Token 'InvalidToken:$' is not a value or operator
   Origs: 550:auto
   Dests: 570:auto
 (0 3) 570 PRINT "YOUR EARNINGS ARE NOW $"; J
@@ -217,39 +217,39 @@ Halstead complexity:
   Origs: 590:auto
   Dests: 
 (0 1) 610 
-    Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
+    ERROR: Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
   Origs: 
   Dests: 
 (620) (0 1) 620 LET S $ ="CHERRY"
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 260:gosub, 290:gosub, 320:gosub
   Dests: 630:auto
 (620) (0 2) 630 GOTO 710
   Origs: 620:auto
   Dests: 710:goto
 (0 1) 640 LET S $ ="APPLE"
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 
   Dests: 650:auto
 (0 2) 650 GOTO 710
   Origs: 640:auto
   Dests: 710:goto
 (0 1) 660 LET S $ ="LEMON"
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 
   Dests: 670:auto
 (0 2) 670 GOTO 710
   Origs: 660:auto
   Dests: 710:goto
 (0 1) 680 LET S $ ="ORANGE"
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 
   Dests: 690:auto
 (0 2) 690 GOTO 710
   Origs: 680:auto
   Dests: 710:goto
 (0 1) 700 LET S $ ="BANANA"
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 
   Dests: 710:auto
 (620) (0 1) 710 RETURN
@@ -262,11 +262,11 @@ Halstead complexity:
   Origs: 720:auto
   Dests: 740:auto
 (0 1) 740 INPUT Z $
-    Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
   Origs: 730:auto
   Dests: 750:auto
 (1 2) 750 IF Z $ ="Y" THEN 780
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 740:auto
   Dests: 760:auto, 780:ifthen
 (0 2) 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"

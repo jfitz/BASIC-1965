@@ -23,22 +23,22 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 20 
-   Unknown statement 'RANDOMIZE'
+   ERROR: Unknown statement 'RANDOMIZE'
   Origs: 
   Dests: 
 (0 2) 30 PRINT " FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
   Origs: :start, 80:goto, 410:goto
   Dests: 40:auto
 (0 1) 40 INPUT R $
-   Syntax error: "R$" Token 'InvalidToken:$' is not a value or operator
+   ERROR: Syntax error: "R$" Token 'InvalidToken:$' is not a value or operator
   Origs: 30:auto
   Dests: 50:auto
 (1 2) 50 IF R $ ="RULES" THEN 90
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 40:auto
   Dests: 60:auto, 90:ifthen
 (1 2) 60 IF R $ ="GO" THEN 140
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 50:auto
   Dests: 70:auto, 140:ifthen
 (0 2) 70 PRINT "INVALID COMMAND"
@@ -135,11 +135,11 @@ Halstead complexity:
   Origs: 350:auto
   Dests: 370:auto
 (0 1) 370 INPUT L $
-    Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 360:auto
   Dests: 380:auto
 (1 2) 380 IF L $ ="Y" THEN 400
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 370:auto
   Dests: 390:auto, 400:ifthen
 (0 1) 390 STOP

@@ -326,10 +326,16 @@ class Line
 
     @statements.each do |statement|
       errors = statement.errors
-      errors.each { |error| texts << "#{number} #{error}" }
+      errors.each { |error| texts << "#{number} ERROR: #{error}" }
 
       errors = statement.program_errors
-      errors.each { |error| texts << "#{number} #{error}" }
+      errors.each { |error| texts << "#{number} ERROR: #{error}" }
+
+      warnings = statement.warnings
+      warnings.each { |warning| texts << "#{number} WARNING: #{warning}" }
+
+      warnings = statement.program_warnings
+      warnings.each { |warning| texts << "#{number} WARNING: #{warning}" }
     end
 
     texts
@@ -656,7 +662,7 @@ class Program
     texts = []
 
     @errors.each do |error|
-      texts << "error #{error['message']} in line #{error['line']}"
+      texts << "ERROR: #{error['message']} in line #{error['line']}"
     end
 
     @lines.keys.sort.each do |line_number|
@@ -665,10 +671,10 @@ class Program
 
       statements.each do |statement|
         errors = statement.errors
-        errors.each { |error| texts << (error + " in line #{line_number}") }
+        errors.each { |error| texts << ("ERROR: " + error + " in line #{line_number}") }
 
         errors = statement.program_errors
-        errors.each { |error| texts << (error + " in line #{line_number}") }
+        errors.each { |error| texts << ("ERROR: " + error + " in line #{line_number}") }
       end
     end
 
@@ -921,7 +927,7 @@ class Program
 
     unless @errors.empty?
       @errors.each do |error|
-        texts << "error #{error['message']} in line #{error['line']}"
+        texts << "ERROR: #{error['message']} in line #{error['line']}"
       end
 
       texts << ''
@@ -2193,8 +2199,8 @@ class Program
 
       # print the errors
       statements.each do |statement|
-        statement.errors.each { |error| texts << (" #{error}") }
-        statement.program_errors.each { |error| texts << (" #{error}") }
+        statement.errors.each { |error| texts << (" ERROR: #{error}") }
+        statement.program_errors.each { |error| texts << (" ERROR: #{error}") }
       end
 
       # print the warnings
@@ -2229,8 +2235,8 @@ class Program
 
       # print the errors
       statements.each do |statement|
-        statement.errors.each { |error| texts << (" #{error}") }
-        statement.program_errors.each { |error| texts << (" #{error}") }
+        statement.errors.each { |error| texts << (" ERROR: #{error}") }
+        statement.program_errors.each { |error| texts << (" ERROR: #{error}") }
       end
 
       # print the warnings
@@ -2270,8 +2276,8 @@ class Program
 
       # print the errors
       statements.each do |statement|
-        statement.errors.each { |error| texts << (" #{error}") }
-        statement.program_errors.each { |error| texts << (" #{error}") }
+        statement.errors.each { |error| texts << (" ERROR: #{error}") }
+        statement.program_errors.each { |error| texts << (" ERROR: #{error}") }
       end
 
       # print the warnings

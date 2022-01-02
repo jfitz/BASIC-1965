@@ -26,31 +26,31 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 30 LET J $ (1) = "SUNDAY"
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: :start, 350:goto
   Dests: 40:auto
 (0 1) 40 LET J $ (2) = "MONDAY"
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 30:auto
   Dests: 50:auto
 (0 1) 50 LET J $ (3) = "TUESDAY"
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 40:auto
   Dests: 60:auto
 (0 1) 60 LET J $ (4) = "WEDNESDAY"
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 50:auto
   Dests: 70:auto
 (0 1) 70 LET J $ (5) = "THURSDAY"
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 60:auto
   Dests: 80:auto
 (0 1) 80 LET J $ (6) = "FRIDAY"
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 70:auto
   Dests: 90:auto
 (0 1) 90 LET J $ (7) = "SATURDAY"
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 80:auto
   Dests: 100:auto
 (0 2) 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
@@ -99,7 +99,7 @@ Halstead complexity:
   Origs: 230:auto
   Dests: 250:auto
 (0 2) 250 PRINT "THE DAY OF THE WEEK IS "; J $ (Z)
-    Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
   Origs: 240:auto
   Dests: 260:auto
 (0 2) 260 PRINT
@@ -112,15 +112,15 @@ Halstead complexity:
   Origs: 270:auto
   Dests: 290:auto
 (0 1) 290 INPUT L $
-    Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 280:auto
   Dests: 300:auto
 (1 2) 300 IF L $ ="YES" THEN 340
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 290:auto
   Dests: 310:auto, 340:ifthen
 (1 2) 310 IF L $ ="NO" THEN 360
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 300:auto
   Dests: 320:auto, 360:ifthen
 (0 2) 320 PRINT "INVALID COMMAND"

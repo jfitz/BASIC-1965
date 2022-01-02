@@ -32,7 +32,7 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 50 
-   Unknown statement 'RANDOMIZE'
+   ERROR: Unknown statement 'RANDOMIZE'
   Origs: 
   Dests: 
 (0 2) 60 PRINT "ARE INSTRUCTIONS FOR SPACE WARS REQUIRED? TYPE"
@@ -42,15 +42,15 @@ Halstead complexity:
   Origs: 60:auto
   Dests: 80:auto
 (0 1) 80 INPUT A $
-   Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
+   ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
   Origs: 70:auto
   Dests: 90:auto
 (1 2) 90 IF A $ ="YES" THEN 130
-   Token 'InvalidToken:$' is not a value or operator
+   ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 80:auto
   Dests: 100:auto, 130:ifthen
 (1 2) 100 IF A $ ="NO" THEN 540
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 90:auto
   Dests: 110:auto, 540:ifthen
 (0 2) 110 PRINT "YOU HAVE ISSUED AN INVALID RESPONSE"
@@ -223,6 +223,7 @@ Halstead complexity:
   Origs: 620:auto
   Dests: 580:gosub, 630:auto
 (630) (1 4) 630 IF D > 1E04 THEN 660
+    WARNING: Inconsistent GOSUB target (630, 580)
   Origs: 580:gosub, 625:auto
   Inconsistent GOSUB origins
   Dests: 640:auto, 660:ifthen
@@ -404,7 +405,7 @@ Halstead complexity:
   Origs: 1120:goto
   Dests: 1240:auto
 (0 1) 1230 
-     Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
+     ERROR: Unknown statement 'ON C GOTO 1240, 1270, 1290, 1330'
   Origs: 
   Dests: 
 (1040) (0 2) 1240 PRINT "*CAUTION*GARTH RADER IS THE BEST SHOT IN THE"
@@ -498,7 +499,7 @@ Halstead complexity:
   Origs: 1510:auto
   Dests: 1540:auto
 (0 1) 1530 
-     Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
+     ERROR: Unknown statement 'ON B GOTO 1540, 1690, 2030, 2320'
   Origs: 
   Dests: 
 (1500) (1 4) 1540 IF D <= 1000 THEN 1590
@@ -553,15 +554,15 @@ Halstead complexity:
   Origs: 1690:auto, 1750:goto
   Dests: 1710:auto
 (0 1) 1710 INPUT C $
-     Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
   Origs: 1700:auto
   Dests: 1720:auto
 (1 2) 1720 IF C $ ="YES" THEN 1820
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1710:auto
   Dests: 1730:auto, 1820:ifthen
 (1 2) 1730 IF C $ ="NO" THEN 1880
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1720:auto
   Dests: 1740:auto, 1880:ifthen
 (0 2) 1740 PRINT "INVALID RESPONSE"
@@ -574,15 +575,15 @@ Halstead complexity:
   Origs: 1810:goto, 1830:goto
   Dests: 1770:auto
 (0 1) 1770 INPUT C $
-     Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
   Origs: 1760:auto
   Dests: 1780:auto
 (1 2) 1780 IF C $ ="S" THEN 1840
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1770:auto
   Dests: 1790:auto, 1840:ifthen
 (1 2) 1790 IF C $ ="R" THEN 1860
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1780:auto
   Dests: 1800:auto, 1860:ifthen
 (0 2) 1800 PRINT "WHICH???"
@@ -616,19 +617,19 @@ Halstead complexity:
   Origs: 1880:auto
   Dests: 1900:auto
 (0 1) 1900 INPUT C $
-     Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
   Origs: 1890:auto
   Dests: 1910:auto
 (0 1) 1910 LET Q $ =5000 * (1 + INT(100 * RND) / 100)
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1900:auto
   Dests: 1920:auto
 (1 2) 1920 IF C $ ="S" THEN 1980
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1910:auto
   Dests: 1930:auto, 1980:ifthen
 (1 2) 1930 IF C $ ="R" THEN 2000
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1920:auto
   Dests: 1940:auto, 2000:ifthen
 (0 2) 1940 PRINT "WHICH ENEMY???"
@@ -668,15 +669,15 @@ Halstead complexity:
   Origs: 2030:auto, 2090:goto
   Dests: 2050:auto
 (0 1) 2050 INPUT C $
-     Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
   Origs: 2040:auto
   Dests: 2060:auto
 (1 2) 2060 IF C $ ="YES" THEN 2100
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2050:auto
   Dests: 2070:auto, 2100:ifthen
 (1 2) 2070 IF C $ ="NO" THEN 2120
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2060:auto
   Dests: 2080:auto, 2120:ifthen
 (0 2) 2080 PRINT "THE COMPUTER RESPONDS ONLY TO A YES OR NO"
@@ -701,7 +702,7 @@ Halstead complexity:
   Origs: 2130:auto
   Dests: 2150:auto
 (0 1) 2150 INPUT C $
-     Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
   Origs: 2140:auto
   Dests: 2160:auto
 (1 4) 2160 IF J = 1 THEN 2190
@@ -717,11 +718,11 @@ Halstead complexity:
   Origs: 2160:ifthen
   Dests: 2200:auto
 (1 2) 2200 IF C $ ="S" THEN 2240
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2180:goto, 2190:auto
   Dests: 2210:auto, 2240:ifthen
 (1 2) 2210 IF C $ ="R" THEN 2260
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2200:auto
   Dests: 2220:auto, 2260:ifthen
 (0 2) 2220 PRINT "WHICH TARGET?????"
@@ -779,18 +780,18 @@ Halstead complexity:
   Origs: 2380:auto
   Dests: 2400:auto
 (0 1) 2400 INPUT C $
-     Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
   Origs: 2390:auto
   Dests: 2410:auto
 (1 4) 2410 IF F > 2.25E04 THEN 2470
   Origs: 2400:auto
   Dests: 2420:auto, 2470:ifthen
 (1 2) 2420 IF C $ ="A" THEN 2500
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2410:auto
   Dests: 2430:auto, 2500:ifthen
 (1 2) 2430 IF C $ ="T" THEN 2620
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2420:auto
   Dests: 2440:auto, 2620:ifthen
 (0 2) 2440 PRINT "DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
@@ -890,6 +891,7 @@ Halstead complexity:
   Origs: 2740:auto
   Dests: 2760:auto
 (1040) (0 2) 2760 PRINT
+     WARNING: Inconsistent GOSUB target (1040, 1500)
   Origs: 2730:goto, 2750:auto
   Dests: 2780:auto
 (1040) (0 2) 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
@@ -899,15 +901,15 @@ Halstead complexity:
   Origs: 2780:auto
   Dests: 2800:auto
 (1040) (0 1) 2800 INPUT L $
-     Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+     ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 2790:auto
   Dests: 2810:auto
 (1040) (1 2) 2810 IF L $ ="GO" THEN 2840
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2800:auto
   Dests: 2820:auto, 2840:ifthen
 (1040) (1 2) 2820 IF L $ ="NO" THEN 2860
-     Token 'InvalidToken:$' is not a value or operator
+     ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 2810:auto
   Dests: 2830:auto, 2860:ifthen
 (1040) (0 2) 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
@@ -923,6 +925,7 @@ Halstead complexity:
   Origs: 2820:ifthen
   Dests: 2870:auto
 (1040) (0 1) 2870 END
+     WARNING: Terminating statement in GOSUB
   Origs: 2860:auto
   Dests: :stop
 

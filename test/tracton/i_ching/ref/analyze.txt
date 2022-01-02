@@ -23,7 +23,7 @@ Halstead complexity:
   Origs: 
   Dests: 
 (0 1) 20 
-   Unknown statement 'RANDOMIZE'
+   ERROR: Unknown statement 'RANDOMIZE'
   Origs: 
   Dests: 
 (0 2) 30 PRINT "ENTER DATE AS M,D,Y"
@@ -81,11 +81,11 @@ Halstead complexity:
   Origs: 190:auto
   Dests: 210:auto
 (0 1) 210 INPUT L $
-    Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
   Origs: 200:auto
   Dests: 220:auto
 (1 2) 220 IF L $ ="Y" THEN 250
-    Token 'InvalidToken:$' is not a value or operator
+    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 210:auto
   Dests: 230:auto, 250:ifthen
 (0 2) 230 PRINT "THE I CHING SAYS GOOD-BYE"

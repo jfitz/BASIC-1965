@@ -1,7 +1,7 @@
 10 REM THIS PROGRAM SIMULATES THE I CHING
  Remark:THIS PROGRAM SIMULATES THE I CHING
 20 RANDOMIZE
- Unknown statement 'RANDOMIZE'
+ ERROR: Unknown statement 'RANDOMIZE'
  Unimplemented
 30 PRINT "ENTER DATE AS M,D,Y"
  TextConstant:"ENTER DATE AS M,D,Y"
@@ -90,9 +90,9 @@
  TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
  CarriageControl:NL
 210 INPUT L$
- Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 220 IF L$ = "Y" THEN 250
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:250
 230 PRINT "THE I CHING SAYS GOOD-BYE"
  TextConstant:"THE I CHING SAYS GOOD-BYE"

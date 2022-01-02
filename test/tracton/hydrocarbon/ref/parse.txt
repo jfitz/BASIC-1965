@@ -6,12 +6,12 @@
  TextConstant:"FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO"
  CarriageControl:NL
 40 INPUT I$
- Syntax error: "I$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "I$" Token 'InvalidToken:$' is not a value or operator
 50 IF I$ = "YES" THEN 90
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:90
 60 IF I$ = "NO" THEN 130
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:130
 70 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
@@ -253,9 +253,9 @@
  TextConstant:"TO STOP TYPE NO"
  CarriageControl:NL
 470 INPUT L$
- Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+ ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
 480 IF L$ = "YES" THEN 510
- Token 'InvalidToken:$' is not a value or operator
+ ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:510
 490 PRINT "COMBUSTION SAYS GOOD-BYE"
  TextConstant:"COMBUSTION SAYS GOOD-BYE"
