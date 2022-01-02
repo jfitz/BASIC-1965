@@ -109,34 +109,34 @@ Halstead complexity:
 (0 3) 300 GOTO 40
   Origs: 290:auto
   Dests: 40:goto
-(310) (1 4) 310 IF T = 0 THEN 390
+G(310) (1 4) 310 IF T = 0 THEN 390
   Origs: 90:gosub, 120:gosub, 160:gosub
   Dests: 320:auto, 390:ifthen
-(310) (1 4) 320 IF T = 1 THEN 390
+G(310) (1 4) 320 IF T = 1 THEN 390
   Origs: 310:auto
   Dests: 330:auto, 390:ifthen
-(310) (0 3) 330 LET J = 1
+G(310) (0 3) 330 LET J = 1
   Origs: 320:auto
   Dests: 340:auto
-(310) (1 3) 340 FOR I = 2 TO T
+G(310) (1 3) 340 FOR I = 2 TO T
   Origs: 330:auto
   Dests: 350:fornext, 360:fornext
-(310) (0 4) 350 LET J = J * I
+G(310) (0 4) 350 LET J = J * I
   Origs: 340:fornext
   Dests: 360:auto
-(310) (0 1) 360 NEXT I
+G(310) (0 1) 360 NEXT I
   Origs: 340:fornext, 350:auto
   Dests: 370:auto
-(310) (0 3) 370 LET T = J
+G(310) (0 3) 370 LET T = J
   Origs: 360:auto
   Dests: 380:auto
-(310) (0 2) 380 GOTO 400
+G(310) (0 2) 380 GOTO 400
   Origs: 370:auto
   Dests: 400:goto
-(310) (0 3) 390 LET T = 1
+G(310) (0 3) 390 LET T = 1
   Origs: 310:ifthen, 320:ifthen
   Dests: 400:auto
-(310) (0 1) 400 RETURN
+G(310) (0 1) 400 RETURN
   Origs: 380:goto, 390:auto
   Dests: 
 (0 1) 410 END

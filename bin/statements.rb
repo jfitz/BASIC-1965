@@ -293,17 +293,18 @@ class AbstractStatement
 
       next if statement.nil?
 
-      #   recurse for that statement's destinations
-      #   stop if already marked (with any sub)
       if statement.part_of_sub.nil?
+        # recurse for that statement's destinations
         statement.assign_sub_marker(marker, dest_line, program)
 
+        # warn about branches to lines before first line of GOSUB block
         if dest_line < marker && dest_line < line_number
           statement.program_warnings << "Statement before GOSUB entry point"
         end
 
         stmt_xfers = statement.transfers
 
+        # warn about STOP, END, CHAIN in GOSUB block
         stmt_xfers.each do |stmt_xfer|
           if [:stop, :chain].include?(stmt_xfer.type)
             statement.program_warnings << "Terminating statement in GOSUB"
@@ -313,6 +314,7 @@ class AbstractStatement
         mark0 = statement.part_of_sub
 
         if marker != mark0
+          # warn about overlapping GOSUB blocks
           statement.program_warnings <<
             "Inconsistent GOSUB target (#{mark0}, #{marker})"
         end
@@ -349,9 +351,7 @@ class AbstractStatement
     text = ''
 
     text += "#{@part_of_user_function} " unless @part_of_user_function.nil?
-
-    text += "(#{@part_of_sub}) " unless @part_of_sub.nil?
-
+    text += "G(#{@part_of_sub}) " unless @part_of_sub.nil?
     text += "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
 
     texts << text
@@ -464,10 +464,6 @@ class AbstractStatement
     is_proc
   end
 
-  def return?
-    return false
-  end
-
   def print_errors(console_io)
     @errors.each { |error| console_io.print_line(" #{error}") }
   end
@@ -493,8 +489,7 @@ class AbstractStatement
     line = ''
 
     line = " #{@part_of_user_function}" unless @part_of_user_function.nil?
-
-    line = " (#{@part_of_sub})" unless @part_of_sub.nil?
+    line = " G(#{@part_of_sub})" unless @part_of_sub.nil?
 
     line += if show_timing
               " (#{@profile_time.round(4)}/#{@profile_count})"
@@ -513,11 +508,9 @@ class AbstractStatement
     trace_out.print_out "#{@part_of_user_function} " unless
       @part_of_user_function.nil?
 
-    trace_out.print_out "(#{@part_of_sub}) " unless
-      @part_of_sub.nil?
+    trace_out.print_out "G(#{@part_of_sub}) " unless @part_of_sub.nil?
 
-    text = pretty
-    text = "#{current_line_number}: #{text}"
+    text = "#{current_line_number}: #{pretty}"
 
     trace_out.print_out(text)
     trace_out.newline
@@ -1698,15 +1691,18 @@ class GosubStatement < AbstractStatement
     dest_stmt = @dest_line_stmt_mod.statement
     statement = program.get_statement(dest_line, dest_stmt)
 
-    #   mark that statement's destinations
-    #   stop if already marked (with any sub)
     unless statement.nil?
       if statement.part_of_sub.nil?
+        # mark statement's destinations
         statement.assign_sub_marker(dest_line, dest_line, program)
       else
         mark0 = statement.part_of_sub
-        statement.program_warnings <<
-          "Inconsistent GOSUB target (#{mark0}, #{dest_line})" if dest_line != mark0
+
+        if dest_line != mark0
+          # warn about overlapping GOSUB blocks
+          statement.program_warnings <<
+            "Inconsistent GOSUB target (#{mark0}, #{dest_line})"
+        end
       end
     end
   end
@@ -2363,10 +2359,6 @@ class ReturnStatement < AbstractStatement
     template = []
 
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
-  end
-
-  def return?
-    return true
   end
 
   def dump

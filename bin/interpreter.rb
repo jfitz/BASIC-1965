@@ -288,12 +288,12 @@ class Interpreter
     raise(BASICCommandError, 'No program loaded') if @program.empty?
 
     errors = @program.errors
+
     unless errors.empty?
       text = errors.join('\n')
       raise(BASICCommandError, text)
     end
 
-    # if breakpoint error, raise error
     errors = check_breakpoints(@program.lines)
 
     unless errors.empty?

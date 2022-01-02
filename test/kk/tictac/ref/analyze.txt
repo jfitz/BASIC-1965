@@ -184,25 +184,25 @@ FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
 (0 0) 640 
   Origs: 
   Dests: 
-(650) (0 2) 650 GOSUB 700
+G(650) (0 2) 650 GOSUB 700
   Origs: 250:gosub, 290:gosub, 380:gosub, 520:gosub
   Dests: 660:auto, 700:gosub
-(650) (0 2) 660 PRINT "YOUR MOVE";
+G(650) (0 2) 660 PRINT "YOUR MOVE";
   Origs: 650:auto
   Dests: 670:auto
-(650) (1 2) 670 INPUT M
+G(650) (1 2) 670 INPUT M
   Origs: 660:auto
   Dests: 680:auto
-(650) (0 1) 680 RETURN
+G(650) (0 1) 680 RETURN
   Origs: 670:auto
   Dests: 
 (0 0) 690 
   Origs: 
   Dests: 
-(700) (0 3) 700 PRINT "COMPUTER MOVES"; M
+G(700) (0 3) 700 PRINT "COMPUTER MOVES"; M
   Origs: 340:gosub, 430:gosub, 480:gosub, 570:gosub, 610:gosub, 650:gosub
   Dests: 710:auto
-(700) (0 1) 710 RETURN
+G(700) (0 1) 710 RETURN
   Origs: 700:auto
   Dests: 
 (0 0) 720 

@@ -121,22 +121,22 @@ FNR(_) (0 4) 135 DEF FNR(X) = INT(100 * X + 0.5) / 100
 (0 1) 370 REM ANGLE-SIDE-ANGLE ROUTINE
   Origs: 
   Dests: 
-(380) (0 7) 380 LET Z = X * FNS(A) / S
+G(380) (0 7) 380 LET Z = X * FNS(A) / S
   Origs: 240:gosub, 270:gosub, 340:gosub
   Dests: 130:function, 390:auto
-(380) (1 4) 390 IF Z >= 0 THEN 420
+G(380) (1 4) 390 IF Z >= 0 THEN 420
   Origs: 380:auto
   Dests: 400:auto, 420:ifthen
-(380) (0 2) 400 PRINT "NONE",
+G(380) (0 2) 400 PRINT "NONE",
   Origs: 390:auto
   Dests: 410:auto
-(380) (0 1) 410 RETURN
+G(380) (0 1) 410 RETURN
   Origs: 400:auto
   Dests: 
-(380) (0 2) 420 PRINT Z,
+G(380) (0 2) 420 PRINT Z,
   Origs: 390:ifthen
   Dests: 430:auto
-(380) (0 1) 430 RETURN
+G(380) (0 1) 430 RETURN
   Origs: 420:auto
   Dests: 
 (0 0) 440 

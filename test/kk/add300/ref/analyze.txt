@@ -139,40 +139,40 @@ Halstead complexity:
 (0 1) 1000 REM READ A NUMBER C
   Origs: 
   Dests: 
-(1010) (1 3) 1010 FOR I = 0 TO 100
+G(1010) (1 3) 1010 FOR I = 0 TO 100
   Origs: 110:gosub, 210:gosub
   Dests: 1020:fornext, 1040:fornext
-(1010) (1 2) 1020 READ X(I)
+G(1010) (1 2) 1020 READ X(I)
   Origs: 1010:fornext
   Dests: 1030:auto
-(1010) (1 4) 1030 IF X(I) < 0 THEN 1100
+G(1010) (1 4) 1030 IF X(I) < 0 THEN 1100
   Origs: 1020:auto
   Dests: 1040:auto, 1100:ifthen
-(1010) (0 1) 1040 NEXT I
+G(1010) (0 1) 1040 NEXT I
   Origs: 1010:fornext, 1030:auto
   Dests: 1050:auto
-(1010) (0 2) 1050 GOTO 1200
+G(1010) (0 2) 1050 GOTO 1200
   Origs: 1040:auto
   Dests: 1200:goto
-(1010) (0 4) 1100 LET L = I - 1
+G(1010) (0 4) 1100 LET L = I - 1
   Origs: 1030:ifthen
   Dests: 1110:auto
-(1010) (1 3) 1110 FOR I = 0 TO L
+G(1010) (1 3) 1110 FOR I = 0 TO L
   Origs: 1100:auto
   Dests: 1120:fornext, 1130:fornext
-(1010) (0 3) 1120 LET C(I) = X(L - I)
+G(1010) (0 3) 1120 LET C(I) = X(L - I)
   Origs: 1110:fornext
   Dests: 1130:auto
-(1010) (0 1) 1130 NEXT I
+G(1010) (0 1) 1130 NEXT I
   Origs: 1110:fornext, 1120:auto
   Dests: 1140:auto
-(1010) (0 1) 1140 RETURN
+G(1010) (0 1) 1140 RETURN
   Origs: 1130:auto
   Dests: 
-(1010) (0 2) 1200 PRINT "NUMBER TOO LONG"
+G(1010) (0 2) 1200 PRINT "NUMBER TOO LONG"
   Origs: 1050:goto
   Dests: 1210:auto
-(1010) (0 1) 1210 STOP
+G(1010) (0 1) 1210 STOP
      WARNING: Terminating statement in GOSUB
   Origs: 1200:auto
   Dests: :stop
@@ -182,85 +182,85 @@ Halstead complexity:
 (0 1) 2000 REM PRINT A NUMBER C
   Origs: 
   Dests: 
-(2010) (1 4) 2010 IF C(L) >= 100 THEN 2200
+G(2010) (1 4) 2010 IF C(L) >= 100 THEN 2200
   Origs: 120:gosub, 220:gosub, 620:gosub
   Dests: 2020:auto, 2200:ifthen
-(2010) (0 2) 2020 PRINT "      ";
+G(2010) (0 2) 2020 PRINT "      ";
   Origs: 2010:auto
   Dests: 2030:auto
-(2010) (1 4) 2030 IF C(L) >= 10 THEN 2100
+G(2010) (1 4) 2030 IF C(L) >= 10 THEN 2100
   Origs: 2020:auto
   Dests: 2040:auto, 2100:ifthen
-(2010) (0 2) 2040 PRINT "      ";
+G(2010) (0 2) 2040 PRINT "      ";
   Origs: 2030:auto
   Dests: 2050:auto
-(2010) (0 3) 2050 PRINT C(L); ",   ";
+G(2010) (0 3) 2050 PRINT C(L); ",   ";
   Origs: 2040:auto, 2130:goto
   Dests: 2060:auto
-(2010) (0 4) 2060 LET L9 = L - 1
+G(2010) (0 4) 2060 LET L9 = L - 1
   Origs: 2050:auto
   Dests: 2070:auto
-(2010) (0 2) 2070 GOTO 2210
+G(2010) (0 2) 2070 GOTO 2210
   Origs: 2060:auto
   Dests: 2210:goto
-(2010) (0 4) 2100 LET M = INT(C(L) / 10)
+G(2010) (0 4) 2100 LET M = INT(C(L) / 10)
   Origs: 2030:ifthen
   Dests: 2110:auto
-(2010) (0 6) 2110 LET C(L) = C(L) - 10 * M
+G(2010) (0 6) 2110 LET C(L) = C(L) - 10 * M
   Origs: 2100:auto
   Dests: 2120:auto
-(2010) (0 2) 2120 PRINT M;
+G(2010) (0 2) 2120 PRINT M;
   Origs: 2110:auto
   Dests: 2130:auto
-(2010) (0 3) 2130 GOTO 2050
+G(2010) (0 3) 2130 GOTO 2050
   Origs: 2120:auto
   Dests: 2050:goto
-(2010) (0 3) 2200 LET L9 = L
+G(2010) (0 3) 2200 LET L9 = L
   Origs: 2010:ifthen
   Dests: 2210:auto
-(2010) (1 5) 2210 FOR I = L9 TO 0 STEP -1
+G(2010) (1 5) 2210 FOR I = L9 TO 0 STEP -1
   Origs: 2070:goto, 2200:auto
   Dests: 2220:fornext, 2320:fornext
-(2010) (0 3) 2220 LET N = C(I)
+G(2010) (0 3) 2220 LET N = C(I)
   Origs: 2210:fornext
   Dests: 2230:auto
-(2010) (0 3) 2230 LET Q = 100
+G(2010) (0 3) 2230 LET Q = 100
   Origs: 2220:auto
   Dests: 2240:auto
-(2010) (1 3) 2240 FOR J = 1 TO 3
+G(2010) (1 3) 2240 FOR J = 1 TO 3
   Origs: 2230:auto
   Dests: 2250:fornext, 2290:fornext
-(2010) (0 4) 2250 LET M = INT(N / Q)
+G(2010) (0 4) 2250 LET M = INT(N / Q)
   Origs: 2240:fornext
   Dests: 2260:auto
-(2010) (0 6) 2260 LET N = N - M * Q
+G(2010) (0 6) 2260 LET N = N - M * Q
   Origs: 2250:auto
   Dests: 2270:auto
-(2010) (0 4) 2270 LET Q = Q / 10
+G(2010) (0 4) 2270 LET Q = Q / 10
   Origs: 2260:auto
   Dests: 2280:auto
-(2010) (0 2) 2280 PRINT M;
+G(2010) (0 2) 2280 PRINT M;
   Origs: 2270:auto
   Dests: 2290:auto
-(2010) (0 1) 2290 NEXT J
+G(2010) (0 1) 2290 NEXT J
   Origs: 2240:fornext, 2280:auto
   Dests: 2300:auto
-(2010) (1 4) 2300 IF I = 0 THEN 2400
+G(2010) (1 4) 2300 IF I = 0 THEN 2400
   Origs: 2290:auto
   Dests: 2310:auto, 2400:ifthen
-(2010) (0 2) 2310 PRINT ",   ";
+G(2010) (0 2) 2310 PRINT ",   ";
   Origs: 2300:auto
   Dests: 2320:auto
-(2010) (0 1) 2320 NEXT I
+G(2010) (0 1) 2320 NEXT I
   Origs: 2210:fornext, 2310:auto
   Dests: 2400:auto
-(2010) (0 2) 2400 PRINT
+G(2010) (0 2) 2400 PRINT
   Origs: 2300:ifthen, 2320:auto
   Dests: 2405:auto
-(2010) (0 2) 2405 PRINT
+G(2010) (0 2) 2405 PRINT
   Origs: 2400:auto
   Dests: 2410:auto
-(2010) (0 1) 2410 RETURN
+G(2010) (0 1) 2410 RETURN
   Origs: 2405:auto
   Dests: 
 (0 0) 2420 
@@ -269,34 +269,34 @@ Halstead complexity:
 (0 1) 3000 REM CARRY IS IN NUMBER C
   Origs: 
   Dests: 
-(3010) (0 3) 3010 LET C(L + 1) = 0
+G(3010) (0 3) 3010 LET C(L + 1) = 0
   Origs: 610:gosub
   Dests: 3020:auto
-(3010) (1 3) 3020 FOR I = 0 TO L
+G(3010) (1 3) 3020 FOR I = 0 TO L
   Origs: 3010:auto
   Dests: 3030:fornext, 3070:fornext
-(3010) (0 3) 3030 LET N = C(I)
+G(3010) (0 3) 3030 LET N = C(I)
   Origs: 3020:fornext
   Dests: 3040:auto
-(3010) (0 4) 3040 LET M = INT(N / 1000)
+G(3010) (0 4) 3040 LET M = INT(N / 1000)
   Origs: 3030:auto
   Dests: 3050:auto
-(3010) (0 6) 3050 LET C(I) = N - 1000 * M
+G(3010) (0 6) 3050 LET C(I) = N - 1000 * M
   Origs: 3040:auto
   Dests: 3060:auto
-(3010) (0 4) 3060 LET C(I + 1) = C(I + 1) + M
+G(3010) (0 4) 3060 LET C(I + 1) = C(I + 1) + M
   Origs: 3050:auto
   Dests: 3070:auto
-(3010) (0 1) 3070 NEXT I
+G(3010) (0 1) 3070 NEXT I
   Origs: 3020:fornext, 3060:auto
   Dests: 3080:auto
-(3010) (1 4) 3080 IF M = 0 THEN 3100
+G(3010) (1 4) 3080 IF M = 0 THEN 3100
   Origs: 3070:auto
   Dests: 3090:auto, 3100:ifthen
-(3010) (0 4) 3090 LET L = L + 1
+G(3010) (0 4) 3090 LET L = L + 1
   Origs: 3080:auto
   Dests: 3100:auto
-(3010) (0 1) 3100 RETURN
+G(3010) (0 1) 3100 RETURN
   Origs: 3080:ifthen, 3090:auto
   Dests: 
 (0 0) 3110 

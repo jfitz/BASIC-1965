@@ -76,19 +76,19 @@ Halstead complexity:
 (0 0) 170 
   Origs: 
   Dests: 
-(200) (1 4) 200 IF X > 0 THEN 250
+G(200) (1 4) 200 IF X > 0 THEN 250
   Origs: 60:gosub, 80:gosub, 95:gosub, 110:gosub
   Dests: 210:auto, 250:ifthen
-(200) (0 2) 210 PRINT "FALSE",
+G(200) (0 2) 210 PRINT "FALSE",
   Origs: 200:auto
   Dests: 220:auto
-(200) (0 1) 220 RETURN
+G(200) (0 1) 220 RETURN
   Origs: 210:auto
   Dests: 
-(200) (0 2) 250 PRINT "TRUE",
+G(200) (0 2) 250 PRINT "TRUE",
   Origs: 200:ifthen
   Dests: 260:auto
-(200) (0 1) 260 RETURN
+G(200) (0 1) 260 RETURN
   Origs: 250:auto
   Dests: 
 (0 1) 999 END

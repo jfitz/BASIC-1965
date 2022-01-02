@@ -43,19 +43,19 @@ Halstead complexity:
 (0 1) 1000 REM SET UP DECK
   Origs: 
   Dests: 
-(1010) (0 2) 1010 DIM L(51)
+G(1010) (0 2) 1010 DIM L(51)
   Origs: 10:gosub
   Dests: 1020:auto
-(1010) (1 3) 1020 FOR I = 0 TO 51
+G(1010) (1 3) 1020 FOR I = 0 TO 51
   Origs: 1010:auto
   Dests: 1030:fornext, 1040:fornext
-(1010) (0 3) 1030 LET L(I) = I
+G(1010) (0 3) 1030 LET L(I) = I
   Origs: 1020:fornext
   Dests: 1040:auto
-(1010) (0 1) 1040 NEXT I
+G(1010) (0 1) 1040 NEXT I
   Origs: 1020:fornext, 1030:auto
   Dests: 1050:auto
-(1010) (0 1) 1050 RETURN
+G(1010) (0 1) 1050 RETURN
   Origs: 1040:auto
   Dests: 
 (0 0) 1060 
@@ -64,20 +64,20 @@ Halstead complexity:
 (0 1) 2000 REM DEAL A CARD
   Origs: 
   Dests: 
-(2010) (0 4) 2010 LET I = INT(52 * RND(1))
+G(2010) (0 4) 2010 LET I = INT(52 * RND(1))
   Origs: 30:gosub, 2030:ifthen
   Inconsistent GOSUB origins
   Dests: 2020:auto
-(2010) (0 3) 2020 LET X = L(I)
+G(2010) (0 3) 2020 LET X = L(I)
   Origs: 2010:auto
   Dests: 2030:auto
-(2010) (1 5) 2030 IF X < 0 THEN 2010
+G(2010) (1 5) 2030 IF X < 0 THEN 2010
   Origs: 2020:auto
   Dests: 2010:ifthen, 2040:auto
-(2010) (0 4) 2040 LET L(I) = -1
+G(2010) (0 4) 2040 LET L(I) = -1
   Origs: 2030:auto
   Dests: 2050:auto
-(2010) (0 1) 2050 RETURN
+G(2010) (0 1) 2050 RETURN
   Origs: 2040:auto
   Dests: 
 (0 0) 2060 
@@ -86,85 +86,85 @@ Halstead complexity:
 (0 1) 3000 REM PRINT A CARD
   Origs: 
   Dests: 
-(3010) (0 4) 3010 LET S = INT(X / 13)
+G(3010) (0 4) 3010 LET S = INT(X / 13)
   Origs: 40:gosub
   Dests: 3020:auto
-(3010) (0 6) 3020 LET V = X - 13 * S
+G(3010) (0 6) 3020 LET V = X - 13 * S
   Origs: 3010:auto
   Dests: 3030:auto
-(3010) (1 4) 3030 IF S > 0 THEN 3060
+G(3010) (1 4) 3030 IF S > 0 THEN 3060
   Origs: 3020:auto
   Dests: 3040:auto, 3060:ifthen
-(3010) (0 2) 3040 PRINT "CLUB  ";
+G(3010) (0 2) 3040 PRINT "CLUB  ";
   Origs: 3030:auto
   Dests: 3050:auto
-(3010) (0 2) 3050 GOTO 3500
+G(3010) (0 2) 3050 GOTO 3500
   Origs: 3040:auto
   Dests: 3500:goto
-(3010) (1 4) 3060 IF S > 1 THEN 3090
+G(3010) (1 4) 3060 IF S > 1 THEN 3090
   Origs: 3030:ifthen
   Dests: 3070:auto, 3090:ifthen
-(3010) (0 2) 3070 PRINT "DIAMOND  ";
+G(3010) (0 2) 3070 PRINT "DIAMOND  ";
   Origs: 3060:auto
   Dests: 3080:auto
-(3010) (0 2) 3080 GOTO 3500
+G(3010) (0 2) 3080 GOTO 3500
   Origs: 3070:auto
   Dests: 3500:goto
-(3010) (1 4) 3090 IF S > 2 THEN 3120
+G(3010) (1 4) 3090 IF S > 2 THEN 3120
   Origs: 3060:ifthen
   Dests: 3100:auto, 3120:ifthen
-(3010) (0 2) 3100 PRINT "HEART  ";
+G(3010) (0 2) 3100 PRINT "HEART  ";
   Origs: 3090:auto
   Dests: 3110:auto
-(3010) (0 2) 3110 GOTO 3500
+G(3010) (0 2) 3110 GOTO 3500
   Origs: 3100:auto
   Dests: 3500:goto
-(3010) (0 2) 3120 PRINT "SPADE  ";
+G(3010) (0 2) 3120 PRINT "SPADE  ";
   Origs: 3090:ifthen
   Dests: 3500:auto
 (0 0) 3130 
   Origs: 
   Dests: 
-(3010) (1 4) 3500 IF V > 8 THEN 3530
+G(3010) (1 4) 3500 IF V > 8 THEN 3530
   Origs: 3050:goto, 3080:goto, 3110:goto, 3120:auto
   Dests: 3510:auto, 3530:ifthen
-(3010) (0 3) 3510 PRINT V + 2
+G(3010) (0 3) 3510 PRINT V + 2
   Origs: 3500:auto
   Dests: 3520:auto
-(3010) (0 1) 3520 RETURN
+G(3010) (0 1) 3520 RETURN
   Origs: 3510:auto
   Dests: 
-(3010) (1 4) 3530 IF V > 9 THEN 3560
+G(3010) (1 4) 3530 IF V > 9 THEN 3560
   Origs: 3500:ifthen
   Dests: 3540:auto, 3560:ifthen
-(3010) (0 2) 3540 PRINT "JACK"
+G(3010) (0 2) 3540 PRINT "JACK"
   Origs: 3530:auto
   Dests: 3550:auto
-(3010) (0 1) 3550 RETURN
+G(3010) (0 1) 3550 RETURN
   Origs: 3540:auto
   Dests: 
-(3010) (1 4) 3560 IF V > 10 THEN 3590
+G(3010) (1 4) 3560 IF V > 10 THEN 3590
   Origs: 3530:ifthen
   Dests: 3570:auto, 3590:ifthen
-(3010) (0 2) 3570 PRINT "QUEEN"
+G(3010) (0 2) 3570 PRINT "QUEEN"
   Origs: 3560:auto
   Dests: 3580:auto
-(3010) (0 1) 3580 RETURN
+G(3010) (0 1) 3580 RETURN
   Origs: 3570:auto
   Dests: 
-(3010) (1 4) 3590 IF V > 11 THEN 3620
+G(3010) (1 4) 3590 IF V > 11 THEN 3620
   Origs: 3560:ifthen
   Dests: 3600:auto, 3620:ifthen
-(3010) (0 2) 3600 PRINT "KING"
+G(3010) (0 2) 3600 PRINT "KING"
   Origs: 3590:auto
   Dests: 3610:auto
-(3010) (0 1) 3610 RETURN
+G(3010) (0 1) 3610 RETURN
   Origs: 3600:auto
   Dests: 
-(3010) (0 2) 3620 PRINT "ACE"
+G(3010) (0 2) 3620 PRINT "ACE"
   Origs: 3590:ifthen
   Dests: 3630:auto
-(3010) (0 1) 3630 RETURN
+G(3010) (0 1) 3630 RETURN
   Origs: 3620:auto
   Dests: 
 (0 1) 9999 END

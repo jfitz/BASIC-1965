@@ -155,40 +155,40 @@ Halstead complexity:
 (0 3) 405 GOTO 70
   Origs: 404:auto
   Dests: 70:goto
-(410) (0 2) 410 PRINT "PRESENT VALUE = ";
+G(410) (0 2) 410 PRINT "PRESENT VALUE = ";
   Origs: 100:gosub, 220:gosub, 280:gosub, 350:gosub
   Dests: 420:auto
-(410) (1 2) 420 INPUT Y
+G(410) (1 2) 420 INPUT Y
   Origs: 410:auto
   Dests: 430:auto
-(410) (0 1) 430 RETURN
+G(410) (0 1) 430 RETURN
   Origs: 420:auto
   Dests: 
-(440) (0 2) 440 PRINT "INTEREST RATE = ";
+G(440) (0 2) 440 PRINT "INTEREST RATE = ";
   Origs: 110:gosub, 170:gosub, 230:gosub, 360:gosub
   Dests: 450:auto
-(440) (1 2) 450 INPUT I
+G(440) (1 2) 450 INPUT I
   Origs: 440:auto
   Dests: 460:auto
-(440) (0 1) 460 RETURN
+G(440) (0 1) 460 RETURN
   Origs: 450:auto
   Dests: 
-(470) (0 2) 470 PRINT "NUMBER OF TIME PERIODS = ";
+G(470) (0 2) 470 PRINT "NUMBER OF TIME PERIODS = ";
   Origs: 120:gosub, 180:gosub, 240:gosub, 300:gosub
   Dests: 480:auto
-(470) (1 2) 480 INPUT N
+G(470) (1 2) 480 INPUT N
   Origs: 470:auto
   Dests: 490:auto
-(470) (0 1) 490 RETURN
+G(470) (0 1) 490 RETURN
   Origs: 480:auto
   Dests: 
-(500) (0 2) 500 PRINT "FUTURE VALUE = ";
+G(500) (0 2) 500 PRINT "FUTURE VALUE = ";
   Origs: 160:gosub, 290:gosub, 340:gosub
   Dests: 510:auto
-(500) (1 2) 510 INPUT X
+G(500) (1 2) 510 INPUT X
   Origs: 500:auto
   Dests: 520:auto
-(500) (0 1) 520 RETURN
+G(500) (0 1) 520 RETURN
   Origs: 510:auto
   Dests: 
 (0 1) 530 END

@@ -22,23 +22,23 @@ Halstead complexity:
 (0 1) 10 REM TEST INFINITE LOOP CHECK
   Origs: 
   Dests: 
-(20) (0 3) 20 GOSUB 20
+G(20) (0 3) 20 GOSUB 20
   Origs: :start
   Dests: 30:auto
-(20) (0 2) 30 GOSUB 100
+G(20) (0 2) 30 GOSUB 100
   Origs: 20:auto
   Dests: 90:auto, 110:gosub
-(20) (0 1) 90 STOP
+G(20) (0 1) 90 STOP
    WARNING: Terminating statement in GOSUB
   Origs: 30:auto
   Dests: :stop
 (0 1) 100 REM PRINT STARS
   Origs: 
   Dests: 
-(110) (0 2) 110 PRINT "******"
+G(110) (0 2) 110 PRINT "******"
   Origs: 30:gosub
   Dests: 120:auto
-(110) (0 1) 120 RETURN
+G(110) (0 1) 120 RETURN
   Origs: 110:auto
   Dests: 
 (0 1) 999 END

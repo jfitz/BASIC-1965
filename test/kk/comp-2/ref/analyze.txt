@@ -208,19 +208,19 @@ Halstead complexity:
 (0 1) 1000 REM COMPUTE BASIC QUANTITIES
   Origs: 
   Dests: 
-(1010) (0 4) 1010 LET N = Y * T
+G(1010) (0 4) 1010 LET N = Y * T
   Origs: 110:gosub, 210:gosub, 310:gosub, 410:gosub, 520:gosub
   Dests: 1020:auto
-(1010) (0 5) 1020 LET R1 = R / 100 / T
+G(1010) (0 5) 1020 LET R1 = R / 100 / T
   Origs: 1010:auto
   Dests: 1030:auto
-(1010) (0 4) 1030 LET P1 = P / R1
+G(1010) (0 4) 1030 LET P1 = P / R1
   Origs: 1020:auto
   Dests: 1040:auto
-(1010) (0 5) 1040 LET R2 = (1 + R1) ^ N
+G(1010) (0 5) 1040 LET R2 = (1 + R1) ^ N
   Origs: 1030:auto
   Dests: 1099:auto
-(1010) (0 1) 1099 RETURN
+G(1010) (0 1) 1099 RETURN
   Origs: 1040:auto
   Dests: 
 (0 1) 9999 END

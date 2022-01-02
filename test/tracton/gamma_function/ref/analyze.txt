@@ -168,43 +168,43 @@ Halstead complexity:
 (0 3) 480 GOTO 120
   Origs: 470:auto
   Dests: 120:goto
-(490) (0 3) 490 LET J = 1
+G(490) (0 3) 490 LET J = 1
   Origs: 260:gosub, 360:gosub
   Dests: 500:auto
-(490) (0 4) 500 LET J = J * K
+G(490) (0 4) 500 LET J = J * K
   Origs: 490:auto, 530:goto
   Dests: 510:auto
-(490) (0 4) 510 LET K = K - 1
+G(490) (0 4) 510 LET K = K - 1
   Origs: 500:auto
   Dests: 520:auto
-(490) (1 4) 520 IF K < 1 THEN 540
+G(490) (1 4) 520 IF K < 1 THEN 540
   Origs: 510:auto
   Dests: 530:auto, 540:ifthen
-(490) (0 3) 530 GOTO 500
+G(490) (0 3) 530 GOTO 500
   Origs: 520:auto
   Dests: 500:goto
-(490) (0 3) 540 LET L = K
+G(490) (0 3) 540 LET L = K
   Origs: 520:ifthen
   Dests: 550:auto
-(490) (0 3) 550 LET K = J
+G(490) (0 3) 550 LET K = J
   Origs: 540:auto
   Dests: 560:auto
-(490) (0 1) 560 RETURN
+G(490) (0 1) 560 RETURN
   Origs: 550:auto
   Dests: 
-(570) (0 16) 570 LET A1 = 1 + (A * L) + (B * (L ^ 2)) + (C * (L ^ 3))
+G(570) (0 16) 570 LET A1 = 1 + (A * L) + (B * (L ^ 2)) + (C * (L ^ 3))
   Origs: 280:gosub, 380:gosub
   Dests: 580:auto
-(570) (0 18) 580 LET A1 = A1 + (D * (L ^ 4)) + (E * (L ^ 5)) + (F * (L ^ 6))
+G(570) (0 18) 580 LET A1 = A1 + (D * (L ^ 4)) + (E * (L ^ 5)) + (F * (L ^ 6))
   Origs: 570:auto
   Dests: 590:auto
-(570) (0 13) 590 LET A1 = A1 + (G * (L ^ 7)) + (H * (L ^ 8))
+G(570) (0 13) 590 LET A1 = A1 + (G * (L ^ 7)) + (H * (L ^ 8))
   Origs: 580:auto
   Dests: 600:auto
-(570) (0 4) 600 LET K = A1 * K
+G(570) (0 4) 600 LET K = A1 * K
   Origs: 590:auto
   Dests: 610:auto
-(570) (0 1) 610 RETURN
+G(570) (0 1) 610 RETURN
   Origs: 600:auto
   Dests: 
 (0 1) 620 END

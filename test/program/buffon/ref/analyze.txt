@@ -67,49 +67,49 @@ Halstead complexity:
 (0 1) 200 REM PROCEDURE A
   Origs: 
   Dests: 
-(210) (0 4) 210 LET D = RND(L0)
+G(210) (0 4) 210 LET D = RND(L0)
   Origs: 140:gosub
   Dests: 211:auto
-(210) (1 6) 211 IF D < 0.5 * L0 THEN 220
+G(210) (1 6) 211 IF D < 0.5 * L0 THEN 220
   Origs: 210:auto
   Dests: 212:auto, 220:ifthen
-(210) (0 4) 212 LET D = L0 - D
+G(210) (0 4) 212 LET D = L0 - D
   Origs: 211:auto
   Dests: 220:auto
-(210) (0 4) 220 LET T0 = RND(180)
+G(210) (0 4) 220 LET T0 = RND(180)
   Origs: 211:ifthen, 212:auto
   Dests: 230:auto
-(210) (0 4) 230 LET T1 = RAD(T0)
+G(210) (0 4) 230 LET T1 = RAD(T0)
   Origs: 220:auto
   Dests: 240:auto
-(210) (0 5) 240 LET X = 0.5 * SIN(T1)
+G(210) (0 5) 240 LET X = 0.5 * SIN(T1)
   Origs: 230:auto
   Dests: 250:auto
-(210) (1 4) 250 IF D > X THEN 270
+G(210) (1 4) 250 IF D > X THEN 270
   Origs: 240:auto
   Dests: 260:auto, 290:ifthen
-(210) (0 4) 260 LET C = C + 1
+G(210) (0 4) 260 LET C = C + 1
   Origs: 250:auto
   Dests: 290:auto
 (0 1) 270 REM CONTINUE
   Origs: 
   Dests: 
-(210) (0 1) 290 RETURN
+G(210) (0 1) 290 RETURN
   Origs: 250:ifthen, 260:auto
   Dests: 
 (0 1) 300 REM PROCEDURE B
   Origs: 
   Dests: 
-(310) (0 4) 310 LET R = C / I
+G(310) (0 4) 310 LET R = C / I
   Origs: 160:gosub, 190:gosub
   Dests: 320:auto
-(310) (0 4) 320 LET R1 = 1 / R
+G(310) (0 4) 320 LET R1 = 1 / R
   Origs: 310:auto
   Dests: 330:auto
-(310) (0 5) 330 PRINT I, C, R, R1
+G(310) (0 5) 330 PRINT I, C, R, R1
   Origs: 320:auto
   Dests: 390:auto
-(310) (0 1) 390 RETURN
+G(310) (0 1) 390 RETURN
   Origs: 330:auto
   Dests: 
 (0 2) 900 DATA 10000, 500

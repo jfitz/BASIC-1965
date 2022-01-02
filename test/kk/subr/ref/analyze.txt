@@ -43,19 +43,19 @@ Halstead complexity:
 (0 0) 170 
   Origs: 
   Dests: 
-(500) (0 4) 500 LET Y = 3 * X
+G(500) (0 4) 500 LET Y = 3 * X
   Origs: 110:gosub, 130:gosub, 150:gosub
   Dests: 510:auto
-(500) (0 5) 510 LET Z = 1.2 * EXP(Y)
+G(500) (0 5) 510 LET Z = 1.2 * EXP(Y)
   Origs: 500:auto
   Dests: 520:auto
-(500) (0 4) 520 LET Y = SQR(Z + 2)
+G(500) (0 4) 520 LET Y = SQR(Z + 2)
   Origs: 510:auto
   Dests: 530:auto
-(500) (0 3) 530 PRINT X; Y
+G(500) (0 3) 530 PRINT X; Y
   Origs: 520:auto
   Dests: 540:auto
-(500) (0 1) 540 RETURN
+G(500) (0 1) 540 RETURN
   Origs: 530:auto
   Dests: 
 (0 1) 550 END
