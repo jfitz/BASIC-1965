@@ -1,0 +1,77 @@
+100 REM SIDE-ANGLE-SIDE
+ Remark:SIDE-ANGLE-SIDE
+110 LET P = 3.14159265
+ Variable:P -> _
+ NumericConstant:3.14159265
+ AssignmentOperator:= =_ -> _
+120 DEF FND(X)=X*P/180
+ UserFunctionName:FND -> _
+ VariableName:X -> _
+ Variable:X -> _
+ Variable:P -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> _
+130 DEF FNC(X)=COS(FND(X))
+ UserFunctionName:FNC -> _
+ VariableName:X -> _
+ Variable:X -> _
+ UserFunction:FND(_) -> _
+ FunctionCos:COS(_) -> _
+140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"THIRD SIDE"
+ CarriageControl:NL
+150 READ X,A,Y
+ Variable:X -> _
+ Variable:A -> _
+ Variable:Y -> _
+160 LET Z = SQR(X^2 + Y^2 - 2*X*Y*FNC(A))
+ Variable:Z -> _
+ Variable:X -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ Variable:Y -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A -> _
+ UserFunction:FNC(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ AssignmentOperator:= _ -> _
+170 PRINT X,A,Y,Z
+ Variable:X -> _
+ CarriageControl:,
+ Variable:A -> _
+ CarriageControl:,
+ Variable:Y -> _
+ CarriageControl:,
+ Variable:Z -> _
+ CarriageControl:NL
+180 GOTO 150
+ LineNumber:150
+190 DATA 10,60,20, 3,90,4, 10,120,10
+ NumericConstant:10
+ NumericConstant:60
+ NumericConstant:20
+ NumericConstant:3
+ NumericConstant:90
+ NumericConstant:4
+ NumericConstant:10
+ NumericConstant:120
+ NumericConstant:10
+200 END
+ 
+

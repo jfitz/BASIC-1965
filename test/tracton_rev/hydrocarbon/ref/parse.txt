@@ -1,0 +1,271 @@
+10 REM THIS PROGRAM COMPUTES THE PERCENTAGES OF THE
+ Remark:THIS PROGRAM COMPUTES THE PERCENTAGES OF THE
+20 REM PRODUCTS PRODUCED BY HYDROCARBON COMBUSTION
+ Remark:PRODUCTS PRODUCED BY HYDROCARBON COMBUSTION
+30 PRINT "FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO"
+ TextConstant:"FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO"
+ CarriageControl:NL
+40 INPUT I$
+ ERROR: Syntax error: "I$" Token 'InvalidToken:$' is not a value or operator
+50 IF I$ = "YES" THEN 90
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+ LineNumber:90
+60 IF I$ = "NO" THEN 130
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+ LineNumber:130
+70 PRINT "INVALID COMMAND"
+ TextConstant:"INVALID COMMAND"
+ CarriageControl:NL
+80 GOTO 30
+ LineNumber:30
+90 PRINT "THE AMOUNTS OF EACH ELEMENT MUST BE"
+ TextConstant:"THE AMOUNTS OF EACH ELEMENT MUST BE"
+ CarriageControl:NL
+100 PRINT "ENTERED, EVEN IF THE AMOUNT IS ZERO"
+ TextConstant:"ENTERED, EVEN IF THE AMOUNT IS ZERO"
+ CarriageControl:NL
+110 PRINT "EXAMPLE: - METHANE (CH4) MUST BE ENTERED AS"
+ TextConstant:"EXAMPLE: - METHANE (CH4) MUST BE ENTERED AS"
+ CarriageControl:NL
+120 PRINT "C;1, H:4, O:0, S:0, N:0"
+ TextConstant:"C;1, H:4, O:0, S:0, N:0"
+ CarriageControl:NL
+130 PRINT
+ CarriageControl:NL
+140 PRINT "ENTER CARBON(C), HYDROGEN(H), OXYGEN(O)"
+ TextConstant:"ENTER CARBON(C), HYDROGEN(H), OXYGEN(O)"
+ CarriageControl:NL
+150 PRINT "SULPHUR(S), NITROGEN(N) IN THAT ORDER"
+ TextConstant:"SULPHUR(S), NITROGEN(N) IN THAT ORDER"
+ CarriageControl:NL
+160 INPUT C,H,O,S,N
+ Variable:C -> _
+ Variable:H -> _
+ Variable:O -> _
+ Variable:S -> _
+ Variable:N -> _
+170 PRINT "ENTER PERCENTAGE EXCESS AIR, IF ZERO"
+ TextConstant:"ENTER PERCENTAGE EXCESS AIR, IF ZERO"
+ CarriageControl:NL
+180 PRINT "ENTER 0. EXAMPLE: - 34% ENTER AS 34"
+ TextConstant:"ENTER 0. EXAMPLE: - 34% ENTER AS 34"
+ CarriageControl:NL
+190 INPUT E
+ Variable:E -> _
+200 LET E = 1 + (E/100)
+ Variable:E -> _
+ NumericConstant:1
+ Variable:E -> _
+ NumericConstant:100
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+210 LET O2 = C + S + (H/4) - (O/2)
+ Variable:O2 -> _
+ Variable:C -> _
+ Variable:S -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:H -> _
+ NumericConstant:4
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:O -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+220 LET A = O2*E*4.762
+ Variable:A -> _
+ Variable:O2 -> _
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:4.762
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+230 LET A1 = 1.8094*A
+ Variable:A1 -> _
+ NumericConstant:1.8094
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
+ Variable:F -> _
+ NumericConstant:0.7507
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:0.063
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2.004
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+250 LET F = (0.875*N) + O + F
+ Variable:F -> _
+ NumericConstant:0.875
+ Variable:N -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:O -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:F -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+260 LET A1 = A1/F
+ Variable:A1 -> _
+ Variable:A1 -> _
+ Variable:F -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+270 LET M = A + (H/4) + (O/2) + (N/2)
+ Variable:M -> _
+ Variable:A -> _
+ Variable:H -> _
+ NumericConstant:4
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:O -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:N -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+280 LET C2 = (C*100)/M
+ Variable:C2 -> _
+ Variable:C -> _
+ NumericConstant:100
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+290 LET S2 = (S*100)/M
+ Variable:S2 -> _
+ Variable:S -> _
+ NumericConstant:100
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+300 LET H2 = (H*100)/M
+ Variable:H2 -> _
+ Variable:H -> _
+ NumericConstant:100
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+310 LET O3 = (100*(E-1)*O2)/M
+ Variable:O3 -> _
+ NumericConstant:100
+ Variable:E -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:O2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
+ Variable:N2 -> _
+ NumericConstant:100
+ NumericConstant:3.762
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:O2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:N -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+330 PRINT
+ CarriageControl:NL
+340 PRINT "AIR-FUEL RATIO WITH RESPECT TO MOLES = ";A
+ TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MOLES = "
+ CarriageControl:;
+ Variable:A -> _
+ CarriageControl:NL
+350 PRINT "AIR-FUEL RATIO WITH RESPECT TO MASS = ";A1
+ TextConstant:"AIR-FUEL RATIO WITH RESPECT TO MASS = "
+ CarriageControl:;
+ Variable:A1 -> _
+ CarriageControl:NL
+360 PRINT "TOTAL MOLES OF PRODUCT = ";M
+ TextConstant:"TOTAL MOLES OF PRODUCT = "
+ CarriageControl:;
+ Variable:M -> _
+ CarriageControl:NL
+370 PRINT "*****PERCENTAGE VOLUME OF PRODUCTS*****"
+ TextConstant:"*****PERCENTAGE VOLUME OF PRODUCTS*****"
+ CarriageControl:NL
+380 PRINT "CARBON DIOXIDE = ";C2;"%"
+ TextConstant:"CARBON DIOXIDE = "
+ CarriageControl:;
+ Variable:C2 -> _
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+390 PRINT "SULPHUR DIOXIDE = ";S2;"%"
+ TextConstant:"SULPHUR DIOXIDE = "
+ CarriageControl:;
+ Variable:S2 -> _
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+400 PRINT "WATER = ";H2;"%"
+ TextConstant:"WATER = "
+ CarriageControl:;
+ Variable:H2 -> _
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+410 PRINT "OXYGEN = ";O3;"%"
+ TextConstant:"OXYGEN = "
+ CarriageControl:;
+ Variable:O3 -> _
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+420 PRINT "NITROGEN = ";N2;"%"
+ TextConstant:"NITROGEN = "
+ CarriageControl:;
+ Variable:N2 -> _
+ CarriageControl:;
+ TextConstant:"%"
+ CarriageControl:NL
+430 PRINT "*****COMPLETE COMBUSTION ASSUMED*****"
+ TextConstant:"*****COMPLETE COMBUSTION ASSUMED*****"
+ CarriageControl:NL
+440 PRINT
+ CarriageControl:NL
+450 PRINT "TO TRY NEXT COMPOUND TYPE YES"
+ TextConstant:"TO TRY NEXT COMPOUND TYPE YES"
+ CarriageControl:NL
+460 PRINT "TO STOP TYPE NO"
+ TextConstant:"TO STOP TYPE NO"
+ CarriageControl:NL
+470 INPUT L$
+ ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+480 IF L$ = "YES" THEN 510
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+ LineNumber:510
+490 PRINT "COMBUSTION SAYS GOOD-BYE"
+ TextConstant:"COMBUSTION SAYS GOOD-BYE"
+ CarriageControl:NL
+500 STOP
+ 
+510 PRINT
+ CarriageControl:NL
+520 GOTO 30
+ LineNumber:30
+530 END
+ 
+

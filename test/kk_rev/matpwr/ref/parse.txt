@@ -1,0 +1,47 @@
+10 READ N
+ Variable:N -> _
+20 MAT READ M(N,N)
+ Variable:N -> _
+ Variable:N -> _
+ Variable:M(_,_) -> _(,)
+30 FOR I = 1 TO 4
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+40 PRINT "POWER : " 2^I
+ TextConstant:"POWER : "
+ CarriageControl:
+ NumericConstant:2
+ Variable:I -> _
+ BinaryOperatorPower:^(_,_) -> _
+ CarriageControl:NL
+50 MAT A = M*M
+ Variable:A(,) -> _(,)
+ Variable:M(,) -> _(,)
+ Variable:M(,) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+60 MAT PRINT A
+ Variable:A(,) -> _(,)
+ CarriageControl:NL
+70 MAT M = A
+ Variable:M(,) -> _(,)
+ Variable:A(,) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+80 NEXT I
+ Variable:I -> _
+90 DATA 3
+ NumericConstant:3
+91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5
+ NumericConstant:0.5
+ NumericConstant:0.25
+ NumericConstant:0.25
+ NumericConstant:0.5
+ NumericConstant:0
+ NumericConstant:0.5
+ NumericConstant:0.25
+ NumericConstant:0.25
+ NumericConstant:0.5
+99 END
+ 
+

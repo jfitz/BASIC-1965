@@ -1,0 +1,158 @@
+10 REM THIS PROGRAM COMPUTES THE DAY OF THE WEEK
+ Remark:THIS PROGRAM COMPUTES THE DAY OF THE WEEK
+20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
+ Remark:RESTRICTION: THE DATE MUST BE AFTER 1752
+30 LET J$(1) = "SUNDAY"
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+40 LET J$(2) = "MONDAY"
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+50 LET J$(3) = "TUESDAY"
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+60 LET J$(4) = "WEDNESDAY"
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+70 LET J$(5) = "THURSDAY"
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+80 LET J$(6) = "FRIDAY"
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+90 LET J$(7) = "SATURDAY"
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+ TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+ CarriageControl:NL
+110 INPUT D,M,Y
+ Variable:D -> _
+ Variable:M -> _
+ Variable:Y -> _
+120 IF Y > 1752 THEN 150
+ Variable:Y -> _
+ NumericConstant:1752
+ BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:150
+130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
+ TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
+ CarriageControl:NL
+140 GOTO 100
+ LineNumber:100
+150 LET K = INT(0.6 + (1/M))
+ Variable:K -> _
+ NumericConstant:0.6
+ NumericConstant:1
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+160 LET L = Y - K
+ Variable:L -> _
+ Variable:Y -> _
+ Variable:K -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+170 LET O = M + 12*K
+ Variable:O -> _
+ Variable:M -> _
+ NumericConstant:12
+ Variable:K -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 LET P = L/100
+ Variable:P -> _
+ Variable:L -> _
+ NumericConstant:100
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 LET Z1 = INT(P/4)
+ Variable:Z1 -> _
+ Variable:P -> _
+ NumericConstant:4
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+200 LET Z2 = INT(P)
+ Variable:Z2 -> _
+ Variable:P -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+210 LET Z3 = INT((5*L)/4)
+ Variable:Z3 -> _
+ NumericConstant:5
+ Variable:L -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:4
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+220 LET Z4 = INT (13*(O + 1)/5)
+ Variable:Z4 -> _
+ NumericConstant:13
+ Variable:O -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:5
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
+ Variable:Z -> _
+ Variable:Z4 -> _
+ Variable:Z3 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:Z2 -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:Z1 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:D -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+240 LET Z=Z - (7*INT(Z/7)) + 1
+ Variable:Z -> _
+ Variable:Z -> _
+ NumericConstant:7
+ Variable:Z -> _
+ NumericConstant:7
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
+ ERROR: Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
+ TextConstant:"THE DAY OF THE WEEK IS "
+ CarriageControl:;
+260 PRINT
+ CarriageControl:NL
+270 PRINT "FOR NEXT DATE TYPE IN YES, IF NOT"
+ TextConstant:"FOR NEXT DATE TYPE IN YES, IF NOT"
+ CarriageControl:NL
+280 PRINT "TYPE NO"
+ TextConstant:"TYPE NO"
+ CarriageControl:NL
+290 INPUT L$
+ ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+300 IF L$ = "YES" THEN 340
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+ LineNumber:340
+310 IF L$ = "NO" THEN 360
+ ERROR: Token 'InvalidToken:$' is not a value or operator
+ LineNumber:360
+320 PRINT "INVALID COMMAND"
+ TextConstant:"INVALID COMMAND"
+ CarriageControl:NL
+330 GOTO 270
+ LineNumber:270
+340 PRINT
+ CarriageControl:NL
+350 GOTO 30
+ LineNumber:30
+360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
+ TextConstant:"DAY OF THE WEEK SAYS GOOD-BYE"
+ CarriageControl:NL
+370 END
+ 
+

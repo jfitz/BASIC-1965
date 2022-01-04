@@ -1,0 +1,77 @@
+Statistics:
+
+Number of lines: 17
+Number of valid statements: 17
+Number of comments: 0
+Number of executable statements: 16
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 48
+McCabe complexity: 7
+Halstead complexity:
+ length: 73
+ volume: 240.596
+ difficulty: 19.500
+ effort: 4691.624
+ language: 0.633
+ intelligence: 12.338
+ time: 4.344
+
+(1 2) 10 READ N
+  Origs: :start
+  Dests: 20:auto
+(1 4) 20 FOR I = 1 TO N - 1
+  Origs: 10:auto
+  Dests: 30:fornext, 60:fornext
+(1 4) 30 FOR J = 1 TO N - 1
+  Origs: 20:fornext
+  Dests: 40:fornext, 50:fornext
+(0 8) 40 LET P(I, J) = I * J - INT(I * J / N) * N
+  Origs: 30:fornext
+  Dests: 50:auto
+(0 1) 50 NEXT J
+  Origs: 30:fornext, 40:auto
+  Dests: 60:auto
+(0 1) 60 NEXT I
+  Origs: 20:fornext, 50:auto
+  Dests: 70:auto
+(1 4) 70 FOR I = 1 TO N - 1
+  Origs: 60:auto
+  Dests: 80:fornext, 120:fornext
+(1 4) 80 FOR J = 1 TO N - 1
+  Origs: 70:fornext
+  Dests: 90:fornext, 100:fornext
+(1 4) 90 IF P(I, J) = 1 THEN 140
+  Origs: 80:fornext
+  Dests: 100:auto, 140:ifthen
+(0 1) 100 NEXT J
+  Origs: 80:fornext, 90:auto
+  Dests: 110:auto
+(0 3) 110 PRINT I; "DOES NOT HAVE AN INVERSE"
+  Origs: 100:auto
+  Dests: 120:auto
+(0 1) 120 NEXT I
+  Origs: 70:fornext, 110:auto, 150:goto
+  Dests: 130:auto
+(0 1) 130 STOP
+  Origs: 120:auto
+  Dests: :stop
+(0 4) 140 PRINT I; "HAS AN INVERSE" J
+  Origs: 90:ifthen
+  Dests: 150:auto
+(0 3) 150 GOTO 120
+  Origs: 140:auto
+  Dests: 120:goto
+(0 2) 160 DATA 9
+  Origs: 
+  Dests: 
+(0 1) 999 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+999: END
+

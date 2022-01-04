@@ -1,0 +1,6 @@
+10 PRINT " X", "EXP(X)", "LOG(X)"
+20 FOR X = 1 TO 3.5 STEP 0.5
+30 PRINT X, EXP(X), LOG(X)
+40 NEXT X
+99 END
+

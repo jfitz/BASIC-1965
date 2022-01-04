@@ -1,0 +1,41 @@
+Statistics:
+
+Number of lines: 5
+Number of valid statements: 5
+Number of comments: 0
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 16
+McCabe complexity: 2
+Halstead complexity:
+ length: 23
+ volume: 62.285
+ difficulty: 4.812
+ effort: 299.747
+ language: 2.689
+ intelligence: 12.942
+ time: 0.278
+
+(0 4) 10 PRINT " X", "EXP(X)", "LOG(X)"
+  Origs: :start
+  Dests: 20:auto
+(1 4) 20 FOR X = 1 TO 3.5 STEP 0.5
+  Origs: 10:auto
+  Dests: 30:fornext, 40:fornext
+(0 6) 30 PRINT X, EXP(X), LOG(X)
+  Origs: 20:fornext
+  Dests: 40:auto
+(0 1) 40 NEXT X
+  Origs: 20:fornext, 30:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 40:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

@@ -1,0 +1,152 @@
+Statistics:
+
+Number of lines: 41
+Number of valid statements: 39
+Number of comments: 2
+Number of executable statements: 39
+
+Complexity:
+
+Comment density: 0.051
+Comprehension effort: 114
+McCabe complexity: 10
+Halstead complexity:
+ length: 114
+ volume: 438.917
+ difficulty: 16.406
+ effort: 7200.979
+ language: 1.631
+ intelligence: 26.753
+ time: 6.668
+
+(0 1) 10 REM THIS PROGRAM CONVERTS GIVEN RECTANGULAR
+  Origs: 
+  Dests: 
+(0 1) 20 REM COORDINATES INTO POLAR COORDINATES
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "RECTANGULAR COORDINATES"
+  Origs: :start, 400:goto
+  Dests: 40:auto
+(0 2) 40 PRINT "X = ";
+  Origs: 30:auto
+  Dests: 50:auto
+(1 2) 50 INPUT X
+  Origs: 40:auto
+  Dests: 60:auto
+(0 2) 60 PRINT "Y = ";
+  Origs: 50:auto
+  Dests: 70:auto
+(1 2) 70 INPUT Y
+  Origs: 60:auto
+  Dests: 80:auto
+(1 5) 80 IF X + Y = 0 THEN 180
+  Origs: 70:auto
+  Dests: 90:auto, 180:ifthen
+(1 4) 90 IF X = 0 THEN 180
+  Origs: 80:auto
+  Dests: 100:auto, 180:ifthen
+(1 4) 100 IF Y = 0 THEN 250
+  Origs: 90:auto
+  Dests: 110:auto, 250:ifthen
+(0 4) 110 LET W = ATN(Y / X)
+  Origs: 100:auto
+  Dests: 120:auto
+(0 5) 120 LET W = (W * 180) / 3.14159
+  Origs: 110:auto
+  Dests: 130:auto
+(0 4) 130 LET R = SQR(X ^ 2 + Y ^ 2)
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 GOTO 310
+  Origs: 130:auto
+  Dests: 310:goto
+(0 3) 150 LET W = 0
+  Origs: 
+  Dests: 160:auto
+(0 3) 160 LET R = 0
+  Origs: 150:auto
+  Dests: 170:auto
+(0 2) 170 GOTO 310
+  Origs: 160:auto
+  Dests: 310:goto
+(1 4) 180 IF Y > 0 THEN 220
+  Origs: 80:ifthen, 90:ifthen
+  Dests: 190:auto, 220:ifthen
+(0 4) 190 LET W = -90
+  Origs: 180:auto
+  Dests: 200:auto
+(0 4) 200 LET R = ABS(Y)
+  Origs: 190:auto
+  Dests: 210:auto
+(0 2) 210 GOTO 310
+  Origs: 200:auto
+  Dests: 310:goto
+(0 3) 220 LET W = 90
+  Origs: 180:ifthen
+  Dests: 230:auto
+(0 3) 230 LET R = Y
+  Origs: 220:auto
+  Dests: 240:auto
+(0 2) 240 GOTO 310
+  Origs: 230:auto
+  Dests: 310:goto
+(1 4) 250 IF X > 0 THEN 290
+  Origs: 100:ifthen
+  Dests: 260:auto, 290:ifthen
+(0 3) 260 LET W = 180
+  Origs: 250:auto
+  Dests: 270:auto
+(0 4) 270 LET R = ABS(X)
+  Origs: 260:auto
+  Dests: 280:auto
+(0 2) 280 GOTO 310
+  Origs: 270:auto
+  Dests: 310:goto
+(0 3) 290 LET W = 0
+  Origs: 250:ifthen
+  Dests: 300:auto
+(0 3) 300 LET R = X
+  Origs: 290:auto
+  Dests: 310:auto
+(0 2) 310 PRINT "POLAR COORDINATES"
+  Origs: 140:goto, 170:goto, 210:goto, 240:goto, 280:goto, 300:auto
+  Dests: 320:auto
+(0 3) 320 PRINT "ANGLE IN DEGREES = "; W
+  Origs: 310:auto
+  Dests: 330:auto
+(0 3) 330 PRINT "MAGNITUDE = "; R
+  Origs: 320:auto
+  Dests: 340:auto
+(0 2) 340 PRINT "********************"
+  Origs: 330:auto
+  Dests: 350:auto
+(0 2) 350 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 340:auto
+  Dests: 360:auto
+(1 2) 360 INPUT L
+  Origs: 350:auto
+  Dests: 370:auto
+(1 4) 370 IF L = 1 THEN 390
+  Origs: 360:auto
+  Dests: 380:auto, 390:ifthen
+(0 1) 380 STOP
+  Origs: 370:auto
+  Dests: :stop
+(0 2) 390 PRINT
+  Origs: 370:ifthen
+  Dests: 400:auto
+(0 3) 400 GOTO 30
+  Origs: 390:auto
+  Dests: 30:goto
+(0 1) 410 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+150: LET W = 0
+160: LET R = 0
+170: GOTO 310
+410: END
+

@@ -1,0 +1,296 @@
+10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+ Remark:THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+20 REM AND INFINITY BY GAUSSIAN QUADRATURE
+ Remark:AND INFINITY BY GAUSSIAN QUADRATURE
+30 LET C1 = .238619
+ Variable:C1 -> _
+ NumericConstant:0.238619
+ AssignmentOperator:= =_ -> _
+40 LET C2 = - C1
+ Variable:C2 -> _
+ Variable:C1 -> _
+ UnaryOperatorMinus:-(_) -> _
+ AssignmentOperator:= _ -> _
+50 LET C3 = .661209
+ Variable:C3 -> _
+ NumericConstant:0.661209
+ AssignmentOperator:= =_ -> _
+60 LET C4 = - C3
+ Variable:C4 -> _
+ Variable:C3 -> _
+ UnaryOperatorMinus:-(_) -> _
+ AssignmentOperator:= _ -> _
+70 LET C5 = .932470
+ Variable:C5 -> _
+ NumericConstant:0.93247
+ AssignmentOperator:= =_ -> _
+80 LET C6 = - C5
+ Variable:C6 -> _
+ Variable:C5 -> _
+ UnaryOperatorMinus:-(_) -> _
+ AssignmentOperator:= _ -> _
+90 LET D1 = .467914
+ Variable:D1 -> _
+ NumericConstant:0.467914
+ AssignmentOperator:= =_ -> _
+100 LET D2 = .360762
+ Variable:D2 -> _
+ NumericConstant:0.360762
+ AssignmentOperator:= =_ -> _
+110 LET D3 = .171324
+ Variable:D3 -> _
+ NumericConstant:0.171324
+ AssignmentOperator:= =_ -> _
+120 LET J = 0
+ Variable:J -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+130 PRINT "ENDPOINT A = ";
+ TextConstant:"ENDPOINT A = "
+ CarriageControl:;
+140 INPUT A
+ Variable:A -> _
+150 LET X = (2/(1 + C1)) + (A - 1)
+ Variable:X -> _
+ NumericConstant:2
+ NumericConstant:1
+ Variable:C1 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+160 GOSUB 470
+ LineNumber:470
+170 LET N = ((4*D1)/(1 + C1)^2)*Q
+ Variable:N -> _
+ NumericConstant:4
+ Variable:D1 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:1
+ Variable:C1 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 LET J = J + N
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 LET X = (2/(1 + C2)) + (A - 1)
+ Variable:X -> _
+ NumericConstant:2
+ NumericConstant:1
+ Variable:C2 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+200 GOSUB 470
+ LineNumber:470
+210 LET N = ((4*D1)/(1 + C2)^2)*Q
+ Variable:N -> _
+ NumericConstant:4
+ Variable:D1 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:1
+ Variable:C2 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+220 LET J = J + N
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+230 LET X = (2/(1 + C3)) + (A - 1)
+ Variable:X -> _
+ NumericConstant:2
+ NumericConstant:1
+ Variable:C3 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+240 GOSUB 470
+ LineNumber:470
+250 LET N = ((4*D2)/(1 + C3)^2)*Q
+ Variable:N -> _
+ NumericConstant:4
+ Variable:D2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:1
+ Variable:C3 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+260 LET J = J + N
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+270 LET X = (2/(1 + C4)) + (A - 1)
+ Variable:X -> _
+ NumericConstant:2
+ NumericConstant:1
+ Variable:C4 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+280 GOSUB 470
+ LineNumber:470
+290 LET N = ((4*D2)/(1 + C4)^2)*Q
+ Variable:N -> _
+ NumericConstant:4
+ Variable:D2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:1
+ Variable:C4 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+300 LET J = J + N
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+310 LET X = (2/(1 + C5)) + (A - 1)
+ Variable:X -> _
+ NumericConstant:2
+ NumericConstant:1
+ Variable:C5 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+320 GOSUB 470
+ LineNumber:470
+330 LET N = ((4*D3)/(1 + C5)^2)*Q
+ Variable:N -> _
+ NumericConstant:4
+ Variable:D3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:1
+ Variable:C5 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+340 LET J = J + N
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+350 LET X = (2/(1 + C6)) + (A - 1)
+ Variable:X -> _
+ NumericConstant:2
+ NumericConstant:1
+ Variable:C6 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+360 GOSUB 470
+ LineNumber:470
+370 LET N = ((4*D3)/(1 + C6)^2)*Q
+ Variable:N -> _
+ NumericConstant:4
+ Variable:D3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:1
+ Variable:C6 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+380 LET J = J + N
+ Variable:J -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+390 LET G = J/2
+ Variable:G -> _
+ Variable:J -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+400 PRINT "INTEGRAL = ";G
+ TextConstant:"INTEGRAL = "
+ CarriageControl:;
+ Variable:G -> _
+ CarriageControl:NL
+410 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+420 INPUT L
+ Variable:L -> _
+430 IF L = 1 THEN 450
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:450
+440 STOP
+ 
+450 PRINT
+ CarriageControl:NL
+460 GOTO 120
+ LineNumber:120
+470 LET Q = 2*X + 5
+ Variable:Q -> _
+ NumericConstant:2
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:5
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+480 RETURN
+ 
+490 END
+ 
+

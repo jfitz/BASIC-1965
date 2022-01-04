@@ -1,0 +1,84 @@
+10 PRINT " P", " Q", " R", "FORMULA"
+ TextConstant:" P"
+ CarriageControl:,
+ TextConstant:" Q"
+ CarriageControl:,
+ TextConstant:" R"
+ CarriageControl:,
+ TextConstant:"FORMULA"
+ CarriageControl:NL
+15 PRINT
+ CarriageControl:NL
+20 FOR P = 1 TO 0 STEP -1
+ control: Variable:P -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+30     FOR Q = 1 TO 0 STEP -1
+ control: Variable:Q -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+40         FOR R = 1 TO 0 STEP -1
+ control: Variable:R -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+50             LET X = P
+ Variable:X -> _
+ Variable:P -> _
+ AssignmentOperator:= _ -> _
+60             GOSUB 200
+ LineNumber:200
+70             LET X = Q
+ Variable:X -> _
+ Variable:Q -> _
+ AssignmentOperator:= _ -> _
+80             GOSUB 200
+ LineNumber:200
+90             LET X = R
+ Variable:X -> _
+ Variable:R -> _
+ AssignmentOperator:= _ -> _
+95             GOSUB 200
+ LineNumber:200
+100            LET X = P*SGN(Q+R)
+ Variable:X -> _
+ Variable:P -> _
+ Variable:Q -> _
+ Variable:R -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionSgn:SGN(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+110            GOSUB 200
+ LineNumber:200
+120            PRINT
+ CarriageControl:NL
+130        NEXT R
+ Variable:R -> _
+140    NEXT Q
+ Variable:Q -> _
+150 NEXT P
+ Variable:P -> _
+160 STOP
+ 
+170
+200 IF X > 0 THEN 250
+ Variable:X -> _
+ NumericConstant:0
+ BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:250
+210 PRINT "FALSE",
+ TextConstant:"FALSE"
+ CarriageControl:,
+220 RETURN
+ 
+250 PRINT "TRUE",
+ TextConstant:"TRUE"
+ CarriageControl:,
+260 RETURN
+ 
+999 END
+ 
+

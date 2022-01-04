@@ -1,0 +1,86 @@
+10 REM THIS PROGRAM COMPUTES THE CROSS PRODUCT
+ Remark:THIS PROGRAM COMPUTES THE CROSS PRODUCT
+20 REM OF TWO VECTORS
+ Remark:OF TWO VECTORS
+30 PRINT "ENTER 1ST VECTOR (A1,A2,A3)"
+ TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
+ CarriageControl:NL
+40 INPUT A1,A2,A3
+ Variable:A1 -> _
+ Variable:A2 -> _
+ Variable:A3 -> _
+50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
+ TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
+ CarriageControl:NL
+60 INPUT B1,B2,B3
+ Variable:B1 -> _
+ Variable:B2 -> _
+ Variable:B3 -> _
+70 LET X = (A2*B3) - (A3*B2)
+ Variable:X -> _
+ Variable:A2 -> _
+ Variable:B3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A3 -> _
+ Variable:B2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 LET Y = (A3*B1) - (A1*B3)
+ Variable:Y -> _
+ Variable:A3 -> _
+ Variable:B1 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A1 -> _
+ Variable:B3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET Z = (A1*B2) - (A2*B1)
+ Variable:Z -> _
+ Variable:A1 -> _
+ Variable:B2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A2 -> _
+ Variable:B1 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+100 PRINT "VECTOR CROSS PRODUCT"
+ TextConstant:"VECTOR CROSS PRODUCT"
+ CarriageControl:NL
+110 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
+ TextConstant:"X = "
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:,
+ TextConstant:"Y = "
+ CarriageControl:;
+ Variable:Y -> _
+ CarriageControl:,
+ TextConstant:"Z = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+120 PRINT "++++++++++++++++++++"
+ TextConstant:"++++++++++++++++++++"
+ CarriageControl:NL
+130 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+140 INPUT L
+ Variable:L -> _
+150 IF L = 1 THEN 170
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:170
+160 STOP
+ 
+170 PRINT
+ CarriageControl:NL
+180 GOTO 30
+ LineNumber:30
+190 END
+ 
+

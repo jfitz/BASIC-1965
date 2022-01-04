@@ -1,0 +1,85 @@
+50: LET Y = 1
+ Y = 1
+60: LET N = 0
+ N = 0
+70: PRINT "SAMPLE = ";
+SAMPLE = 
+80: INPUT W
+? 2
+ W = 2
+90: IF W = 0 THEN 160
+ W: 2
+ W = 0: false
+100: LET N = N + 1
+ N: 0
+ N = 1
+110: LET Y = Y * W
+ Y: 1
+ W: 2
+ Y = 2
+120: LET G = Y ^ (1 / N)
+ Y: 2
+ N: 1
+ G = 2
+130: PRINT "NUMBER OF SAMPLES = "; N, "CURRENT SAMPLE = "; W
+NUMBER OF SAMPLES = 
+ N: 1
+ 1              CURRENT SAMPLE = 
+ W: 2
+ 2
+140: PRINT "CURRENT MEAN = "; G
+CURRENT MEAN = 
+ G: 2
+ 2
+150: GOTO 70
+70: PRINT "SAMPLE = ";
+SAMPLE = 
+80: INPUT W
+? 5
+ W = 5
+90: IF W = 0 THEN 160
+ W: 5
+ W = 0: false
+100: LET N = N + 1
+ N: 1
+ N = 2
+110: LET Y = Y * W
+ Y: 2
+ W: 5
+ Y = 10
+120: LET G = Y ^ (1 / N)
+ Y: 10
+ N: 2
+ G = 3.16228
+130: PRINT "NUMBER OF SAMPLES = "; N, "CURRENT SAMPLE = "; W
+NUMBER OF SAMPLES = 
+ N: 2
+ 2              CURRENT SAMPLE = 
+ W: 5
+ 5
+140: PRINT "CURRENT MEAN = "; G
+CURRENT MEAN = 
+ G: 3.16228
+ 3.16228
+150: GOTO 70
+70: PRINT "SAMPLE = ";
+SAMPLE = 
+80: INPUT W
+? 0
+ W = 0
+90: IF W = 0 THEN 160
+ W: 0
+ W = 0: true
+160: PRINT
+
+170: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+180: INPUT L
+? 0
+ L = 0
+190: IF L = 1 THEN 210
+ L: 0
+ L = 1: false
+200: STOP
+STOP in line 200
+

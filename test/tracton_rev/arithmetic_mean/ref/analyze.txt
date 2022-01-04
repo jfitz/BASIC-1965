@@ -1,0 +1,62 @@
+Statistics:
+
+Number of lines: 12
+Number of valid statements: 10
+Number of comments: 2
+Number of executable statements: 10
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 35
+McCabe complexity: 2
+Halstead complexity:
+ length: 32
+ volume: 95.863
+ difficulty: 3.667
+ effort: 351.499
+ language: 7.130
+ intelligence: 26.145
+ time: 0.325
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE ARITHMETIC
+  Origs: 
+  Dests: 
+(0 1) 20 REM MEAN
+  Origs: 
+  Dests: 
+(0 3) 30 LET X = 0
+  Origs: :start
+  Dests: 40:auto
+(0 3) 40 LET N = 0
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 PRINT "ENTER SAMPLE";
+  Origs: 40:auto, 110:goto
+  Dests: 60:auto
+(1 2) 60 INPUT W
+  Origs: 50:auto
+  Dests: 70:auto
+(0 4) 70 LET N = N + 1
+  Origs: 60:auto
+  Dests: 80:auto
+(0 4) 80 LET X = X + W
+  Origs: 70:auto
+  Dests: 90:auto
+(0 4) 90 LET A = X / N
+  Origs: 80:auto
+  Dests: 100:auto
+(0 7) 100 PRINT "N = "; N, "SAMPLE ="; W, "CURRENT MEAN = "; A
+  Origs: 90:auto
+  Dests: 110:auto
+(0 3) 110 GOTO 50
+  Origs: 100:auto
+  Dests: 50:goto
+(0 1) 120 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+120: END
+

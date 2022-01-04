@@ -1,0 +1,122 @@
+Statistics:
+
+Number of lines: 32
+Number of valid statements: 29
+Number of comments: 3
+Number of executable statements: 29
+
+Complexity:
+
+Comment density: 0.103
+Comprehension effort: 105
+McCabe complexity: 7
+Halstead complexity:
+ length: 120
+ volume: 478.678
+ difficulty: 8.857
+ effort: 4239.720
+ language: 6.102
+ intelligence: 54.044
+ time: 3.926
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE COMPONENTS
+  Origs: 
+  Dests: 
+(0 1) 20 REM OF A PI-NETWORK. TO MATCH TWO
+  Origs: 
+  Dests: 
+(0 1) 30 REM IMPEDANCES
+  Origs: 
+  Dests: 
+(0 2) 40 PRINT "ENTER 1ST IMPEDANCE"
+  Origs: :start, 310:goto
+  Dests: 50:auto
+(1 2) 50 INPUT Z1
+  Origs: 40:auto
+  Dests: 60:auto
+(0 2) 60 PRINT "ENTER 2ND IMPEDANCE"
+  Origs: 50:auto
+  Dests: 70:auto
+(1 2) 70 INPUT Z2
+  Origs: 60:auto
+  Dests: 80:auto
+(0 2) 80 PRINT "ENTER DESIRED SYSTEM Q"
+  Origs: 70:auto
+  Dests: 90:auto
+(1 2) 90 INPUT Q
+  Origs: 80:auto
+  Dests: 100:auto
+(0 2) 100 PRINT "ENTER OPERATING FREQUENCY"
+  Origs: 90:auto
+  Dests: 110:auto
+(1 2) 110 INPUT F
+  Origs: 100:auto
+  Dests: 120:auto
+(0 4) 120 LET A = Z1 / Q
+  Origs: 110:auto
+  Dests: 130:auto
+(0 9) 130 LET C = ((Z2 / Z1) * ((Q ^ 2) + 1)) - 1
+  Origs: 120:auto
+  Dests: 140:auto
+(0 5) 140 LET B = Z2 / SQR(C)
+  Origs: 130:auto
+  Dests: 150:auto
+(0 7) 150 LET E = (Z2 / (Q * B)) + 1
+  Origs: 140:auto
+  Dests: 160:auto
+(0 10) 160 LET D = E * ((Q * Z1) / ((Q ^ 2) + 1))
+  Origs: 150:auto
+  Dests: 170:auto
+(0 3) 170 LET P = 6.28319
+  Origs: 160:auto
+  Dests: 180:auto
+(0 7) 180 LET C1 = 1 / (P * F * A)
+  Origs: 170:auto
+  Dests: 190:auto
+(0 7) 190 LET C2 = 1 / (P * F * B)
+  Origs: 180:auto
+  Dests: 200:auto
+(0 6) 200 LET L = D / (P * F)
+  Origs: 190:auto
+  Dests: 210:auto
+(0 2) 210 PRINT "COMPONENTS OF PI-NETWORK"
+  Origs: 200:auto
+  Dests: 220:auto
+(0 3) 220 PRINT "CAPACITOR 1 = "; C1
+  Origs: 210:auto
+  Dests: 230:auto
+(0 3) 230 PRINT "CAPACITOR 2 = "; C2
+  Origs: 220:auto
+  Dests: 240:auto
+(0 3) 240 PRINT "INDUCTOR = "; L
+  Origs: 230:auto
+  Dests: 250:auto
+(0 2) 250 PRINT
+  Origs: 240:auto
+  Dests: 260:auto
+(0 2) 260 PRINT "TO CONTINUE TYPE 1, IF NOT 0"
+  Origs: 250:auto
+  Dests: 270:auto
+(1 2) 270 INPUT X
+  Origs: 260:auto
+  Dests: 280:auto
+(1 4) 280 IF X = 1 THEN 300
+  Origs: 270:auto
+  Dests: 290:auto, 300:ifthen
+(0 1) 290 STOP
+  Origs: 280:auto
+  Dests: :stop
+(0 2) 300 PRINT
+  Origs: 280:ifthen
+  Dests: 310:auto
+(0 3) 310 GOTO 40
+  Origs: 300:auto
+  Dests: 40:goto
+(0 1) 320 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+320: END
+

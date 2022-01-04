@@ -1,0 +1,49 @@
+ORIGINAL VALUE = ? 10000
+LIFETIME IN YEARS = ? 12
+YEARLY DEPRECIATION =  833.333
+
+YEAR            VALUE
+ 1               9166.67
+ 2               8333.34
+ 3               7500.01
+ 4               6666.68
+ 5               5833.35
+ 6               5000.02
+ 7               4166.69
+ 8               3333.36
+ 9               2500.03
+ 10              1666.7
+ 11              833.367
+ 12              0.034
+********************
+TYPE 1 TO CONTINUE, 0 TO STOP
+? 0
+STOP in line 230
+
+10 (0) REM THIS PROGRAM COMPUTES VALUE DEPRECIATION
+20 (0) REM BY THE STRAIGHT LINE METHOD
+30 (1) PRINT "ORIGINAL VALUE = ";
+40 (1) INPUT A
+50 (1) PRINT "LIFETIME IN YEARS = ";
+60 (1) INPUT B
+70 (1) LET C = A / B
+80 (1) PRINT "YEARLY DEPRECIATION = "; C
+90 (1) PRINT
+100 (1) PRINT "YEAR", "VALUE"
+110 (1) LET X = 0
+120 (12) LET X = X + 1
+130 (12) LET A = A - C
+140 (12) IF A < 0 THEN 160
+150 (12) GOTO 170
+160 (0) LET A = 0
+170 (12) PRINT X, A
+180 (12) IF X < B THEN 120
+190 (1) PRINT "********************"
+200 (1) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+210 (1) INPUT L
+220 (1) IF L = 1 THEN 240
+230 (1) STOP
+240 (0) PRINT
+250 (0) GOTO 30
+260 (0) END
+

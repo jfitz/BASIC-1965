@@ -1,0 +1,101 @@
+10 REM THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
+ Remark:THIS PROGRAM COMPUTES A TABLE OF FIBONACCI NUMBERS
+20 PRINT "ENTER FIRST TERM"
+ TextConstant:"ENTER FIRST TERM"
+ CarriageControl:NL
+30 INPUT A
+ Variable:A -> _
+40 PRINT "ENTER SECOND TERM"
+ TextConstant:"ENTER SECOND TERM"
+ CarriageControl:NL
+50 INPUT B
+ Variable:B -> _
+60 PRINT "MAXIMUM NUMBER OF TERMS = "
+ TextConstant:"MAXIMUM NUMBER OF TERMS = "
+ CarriageControl:NL
+70 INPUT N
+ Variable:N -> _
+80 PRINT
+ CarriageControl:NL
+90 PRINT "TABLE OF FIBONACCI NUMBERS"
+ TextConstant:"TABLE OF FIBONACCI NUMBERS"
+ CarriageControl:NL
+100 PRINT "TERM NO.","FIBONACCI NUMBER"
+ TextConstant:"TERM NO."
+ CarriageControl:,
+ TextConstant:"FIBONACCI NUMBER"
+ CarriageControl:NL
+110 LET K = 1
+ Variable:K -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+120 PRINT K,A
+ Variable:K -> _
+ CarriageControl:,
+ Variable:A -> _
+ CarriageControl:NL
+130 LET K = 2
+ Variable:K -> _
+ NumericConstant:2
+ AssignmentOperator:= =_ -> _
+140 PRINT K,B
+ Variable:K -> _
+ CarriageControl:,
+ Variable:B -> _
+ CarriageControl:NL
+150 LET K = K + 1
+ Variable:K -> _
+ Variable:K -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+160 LET Q = A + B
+ Variable:Q -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+170 PRINT K,Q
+ Variable:K -> _
+ CarriageControl:,
+ Variable:Q -> _
+ CarriageControl:NL
+180 LET A = B
+ Variable:A -> _
+ Variable:B -> _
+ AssignmentOperator:= _ -> _
+190 LET B = Q
+ Variable:B -> _
+ Variable:Q -> _
+ AssignmentOperator:= _ -> _
+200 IF K > = N THEN 220
+ Variable:K -> _
+ Variable:N -> _
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:220
+210 GOTO 150
+ LineNumber:150
+220 PRINT "MAXIMUM NUMBER OF TERMS REACHED"
+ TextConstant:"MAXIMUM NUMBER OF TERMS REACHED"
+ CarriageControl:NL
+230 PRINT
+ CarriageControl:NL
+240 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+250 INPUT L
+ Variable:L -> _
+260 IF L = 1 THEN 280
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:280
+270 STOP
+ 
+280 PRINT
+ CarriageControl:NL
+290 GOTO 20
+ LineNumber:20
+300 END
+ 
+

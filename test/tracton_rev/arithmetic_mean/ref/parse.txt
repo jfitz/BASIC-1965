@@ -1,0 +1,53 @@
+10 REM THIS PROGRAM COMPUTES THE ARITHMETIC
+ Remark:THIS PROGRAM COMPUTES THE ARITHMETIC
+20 REM MEAN
+ Remark:MEAN
+30 LET X = 0
+ Variable:X -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+40 LET N = 0
+ Variable:N -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+50 PRINT "ENTER SAMPLE";
+ TextConstant:"ENTER SAMPLE"
+ CarriageControl:;
+60 INPUT W
+ Variable:W -> _
+70 LET N = N + 1
+ Variable:N -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 LET X = X + W
+ Variable:X -> _
+ Variable:X -> _
+ Variable:W -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET A = X/N
+ Variable:A -> _
+ Variable:X -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+100 PRINT "N = "; N, "SAMPLE ="; W,"CURRENT MEAN = ";A
+ TextConstant:"N = "
+ CarriageControl:;
+ Variable:N -> _
+ CarriageControl:,
+ TextConstant:"SAMPLE ="
+ CarriageControl:;
+ Variable:W -> _
+ CarriageControl:,
+ TextConstant:"CURRENT MEAN = "
+ CarriageControl:;
+ Variable:A -> _
+ CarriageControl:NL
+110 GOTO 50
+ LineNumber:50
+120 END
+ 
+

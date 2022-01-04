@@ -1,0 +1,51 @@
+100 LET X = 5
+ Variable:X -> _
+ NumericConstant:5
+ AssignmentOperator:= =_ -> _
+110 GOSUB 500
+ LineNumber:500
+120 LET X = 7
+ Variable:X -> _
+ NumericConstant:7
+ AssignmentOperator:= =_ -> _
+130 GOSUB 500
+ LineNumber:500
+140 LET X = 11
+ Variable:X -> _
+ NumericConstant:11
+ AssignmentOperator:= =_ -> _
+150 GOSUB 500
+ LineNumber:500
+160 STOP
+ 
+170
+500 LET Y = 3*X
+ Variable:Y -> _
+ NumericConstant:3
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+510 LET Z = 1.2*EXP(Y)
+ Variable:Z -> _
+ NumericConstant:1.2
+ Variable:Y -> _
+ FunctionExp:EXP(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+520 LET Y = SQR(Z+2)
+ Variable:Y -> _
+ Variable:Z -> _
+ NumericConstant:2
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ AssignmentOperator:= _ -> _
+530 PRINT X;Y
+ Variable:X -> _
+ CarriageControl:;
+ Variable:Y -> _
+ CarriageControl:NL
+540 RETURN
+ 
+550 END
+ 
+

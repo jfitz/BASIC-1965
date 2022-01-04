@@ -1,0 +1,50 @@
+10 FOR I = 1 TO 5
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:5"]
+20 READ P(I)
+ Variable:I -> _
+ Variable:P(_) -> _
+30 NEXT I
+ Variable:I -> _
+40 DATA 1.20,2.15,0.65,4.30,2.00
+ NumericConstant:1.2
+ NumericConstant:2.15
+ NumericConstant:0.65
+ NumericConstant:4.3
+ NumericConstant:2
+100 LET S = 0
+ Variable:S -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+110 FOR I = 1 TO 5
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:5"]
+120 READ N
+ Variable:N -> _
+130 LET S = S + N*P(I)
+ Variable:S -> _
+ Variable:S -> _
+ Variable:N -> _
+ Variable:I -> _
+ Variable:P(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+140 NEXT I
+ Variable:I -> _
+150 PRINT "TOTAL ORDER $" S
+ TextConstant:"TOTAL ORDER $"
+ CarriageControl:
+ Variable:S -> _
+ CarriageControl:NL
+900 DATA 5,3,0,2,2
+ NumericConstant:5
+ NumericConstant:3
+ NumericConstant:0
+ NumericConstant:2
+ NumericConstant:2
+999 END
+ 
+

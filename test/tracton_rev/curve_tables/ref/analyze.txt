@@ -1,0 +1,98 @@
+Statistics:
+
+Number of lines: 24
+Number of valid statements: 18
+Number of comments: 6
+Number of executable statements: 18
+
+Complexity:
+
+Comment density: 0.333
+Comprehension effort: 48
+McCabe complexity: 6
+Halstead complexity:
+ length: 34
+ volume: 115.641
+ difficulty: 4.929
+ effort: 569.944
+ language: 4.761
+ intelligence: 23.463
+ time: 0.528
+
+(0 1) 10 REM THIS PROGRAM GENERATES A SERIES OF
+  Origs: 
+  Dests: 
+(0 1) 20 REM DATA POINTS, WITH WHICH THE USER CAN
+  Origs: 
+  Dests: 
+(0 1) 30 REM PLOT CURVES. THE DATA POINTS GENERATED
+  Origs: 
+  Dests: 
+(0 1) 40 REM LIE BETWEEN THE VALUES GIVEN FOR X
+  Origs: 
+  Dests: 
+(0 1) 50 REM IF A STEP SIZE OTHER THAN 1 IS DERIVED
+  Origs: 
+  Dests: 
+(0 1) 60 REM USE A STEP STATEMENT WITH THE FOR STATEMENTS
+  Origs: 
+  Dests: 
+(0 2) 70 PRINT "STARTING VALUE OF X = ";
+  Origs: :start, 230:goto
+  Dests: 80:auto
+(1 2) 80 INPUT X
+  Origs: 70:auto
+  Dests: 90:auto
+(0 2) 90 PRINT "END VALUE OF X = ";
+  Origs: 80:auto
+  Dests: 100:auto
+(1 2) 100 INPUT W
+  Origs: 90:auto
+  Dests: 110:auto
+(0 2) 110 PRINT "TABLE"
+  Origs: 100:auto
+  Dests: 120:auto
+(0 3) 120 PRINT "X", "Y"
+  Origs: 110:auto
+  Dests: 130:auto
+(1 3) 130 FOR I = X TO W
+  Origs: 120:auto
+  Dests: 140:fornext, 160:fornext
+(0 5) 140 LET Y = 2 * I + 6
+  Origs: 130:fornext
+  Dests: 150:auto
+(0 3) 150 PRINT I, Y
+  Origs: 140:auto
+  Dests: 160:auto
+(0 1) 160 NEXT I
+  Origs: 130:fornext, 150:auto
+  Dests: 170:auto
+(0 2) 170 PRINT
+  Origs: 160:auto
+  Dests: 180:auto
+(0 2) 180 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 170:auto
+  Dests: 190:auto
+(1 2) 190 INPUT L
+  Origs: 180:auto
+  Dests: 200:auto
+(1 4) 200 IF L = 1 THEN 220
+  Origs: 190:auto
+  Dests: 210:auto, 220:ifthen
+(0 1) 210 STOP
+  Origs: 200:auto
+  Dests: :stop
+(0 2) 220 PRINT
+  Origs: 200:ifthen
+  Dests: 230:auto
+(0 3) 230 GOTO 70
+  Origs: 220:auto
+  Dests: 70:goto
+(0 1) 240 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+240: END
+

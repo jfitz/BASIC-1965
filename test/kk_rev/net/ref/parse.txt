@@ -1,0 +1,278 @@
+100 DEF FNR(X)=INT(X*1E3 + .5)/1E3
+ UserFunctionName:FNR -> _
+ VariableName:X -> _
+ Variable:X -> _
+ NumericConstant:1000
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:0.5
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionInt:INT(_) -> _
+ NumericConstant:1000
+ BinaryOperatorDivide:/(_,_) -> _
+110 DIM C(20,20), U(20,20), B(20), P(20)
+ NumericConstant:20
+ NumericConstant:20
+ Declaration:C(,) -> _(,)
+ NumericConstant:20
+ NumericConstant:20
+ Declaration:U(,) -> _(,)
+ NumericConstant:20
+ Declaration:B() -> _()
+ NumericConstant:20
+ Declaration:P() -> _()
+120 READ N,V
+ Variable:N -> _
+ Variable:V -> _
+130 MAT C = ZER(N,N)
+ Variable:C(,) -> _(,)
+ Variable:N -> _
+ Variable:N -> _
+ FunctionZer2:ZER(_,_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+150 MAT B = ZER(N)
+ Variable:B(,) -> _(,)
+ Variable:N -> _
+ FunctionZer2:ZER(_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+170 LET C(1,1) = 1
+ NumericConstant:1
+ NumericConstant:1
+ Variable:C(_,_) -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+180 LET C(N,N) = 1
+ Variable:N -> _
+ Variable:N -> _
+ Variable:C(_,_) -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+190 LET B(1) = V
+ NumericConstant:1
+ Variable:B(_) -> _
+ Variable:V -> _
+ AssignmentOperator:= _ -> _
+200
+210 READ I,J,R
+ Variable:I -> _
+ Variable:J -> _
+ Variable:R -> _
+220 IF I = -1 THEN 270
+ Variable:I -> _
+ NumericConstant:1
+ UnaryOperatorMinus:-(_) -> =_
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:270
+230 LET C(I,J) = 1/R
+ Variable:I -> _
+ Variable:J -> _
+ Variable:C(_,_) -> _
+ NumericConstant:1
+ Variable:R -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+240 LET C(J,I) = 1/R
+ Variable:J -> _
+ Variable:I -> _
+ Variable:C(_,_) -> _
+ NumericConstant:1
+ Variable:R -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+250 GOTO 210
+ LineNumber:210
+260
+270 FOR I = 2 TO N-1
+ control: Variable:I -> _
+ start:   ["NumericConstant:2"]
+ end:     ["Variable:N -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+280    LET S = 0
+ Variable:S -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+290    FOR J = 1 TO N
+ control: Variable:J -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:N -> _"]
+300       LET S = S+C(I,J)
+ Variable:S -> _
+ Variable:S -> _
+ Variable:I -> _
+ Variable:J -> _
+ Variable:C(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+310    NEXT J
+ Variable:J -> _
+320    LET C(I,I) = -S
+ Variable:I -> _
+ Variable:I -> _
+ Variable:C(_,_) -> _
+ Variable:S -> _
+ UnaryOperatorMinus:-(_) -> _
+ AssignmentOperator:= _ -> _
+330    LET C(1,I) = 0
+ NumericConstant:1
+ Variable:I -> _
+ Variable:C(_,_) -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+340    LET C(N,I) = 0
+ Variable:N -> _
+ Variable:I -> _
+ Variable:C(_,_) -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+350 NEXT I
+ Variable:I -> _
+360
+370 MAT U = INV(C)
+ Variable:U(,) -> _(,)
+ Variable:C(,) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+380 MAT P = U*B
+ Variable:P(,) -> _(,)
+ Variable:U(,) -> _(,)
+ Variable:B(,) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+390
+400 PRINT "NODE", "VOLTAGE"
+ TextConstant:"NODE"
+ CarriageControl:,
+ TextConstant:"VOLTAGE"
+ CarriageControl:NL
+410 PRINT
+ CarriageControl:NL
+420 FOR I = 1 TO N
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:N -> _"]
+430    PRINT I, FNR(P(I))
+ Variable:I -> _
+ CarriageControl:,
+ Variable:I -> _
+ Variable:P(_) -> _
+ UserFunction:FNR(_) -> _
+ CarriageControl:NL
+440 NEXT I
+ Variable:I -> _
+450 PRINT
+ CarriageControl:NL
+460 PRINT
+ CarriageControl:NL
+470
+480 PRINT "CURRENT FLOW"
+ TextConstant:"CURRENT FLOW"
+ CarriageControl:NL
+490 PRINT
+ CarriageControl:NL
+500 LET S1 = 0
+ Variable:S1 -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+510 FOR I = 2 TO N-1
+ control: Variable:I -> _
+ start:   ["NumericConstant:2"]
+ end:     ["Variable:N -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+520    PRINT "NODE" I
+ TextConstant:"NODE"
+ CarriageControl:
+ Variable:I -> _
+ CarriageControl:NL
+530    FOR J = 1 TO N
+ control: Variable:J -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:N -> _"]
+540       PRINT FNR(C(I,J)*(P(I)-P(J))),
+ Variable:I -> _
+ Variable:J -> _
+ Variable:C(_,_) -> _
+ Variable:I -> _
+ Variable:P(_) -> _
+ Variable:J -> _
+ Variable:P(_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ UserFunction:FNR(_) -> _
+ CarriageControl:,
+550    NEXT J
+ Variable:J -> _
+560    LET S1 = S1 + C(I,N)*(P(I)-P(N))
+ Variable:S1 -> _
+ Variable:S1 -> _
+ Variable:I -> _
+ Variable:N -> _
+ Variable:C(_,_) -> _
+ Variable:I -> _
+ Variable:P(_) -> _
+ Variable:N -> _
+ Variable:P(_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+570    PRINT
+ CarriageControl:NL
+580    PRINT
+ CarriageControl:NL
+590 NEXT I
+ Variable:I -> _
+600 PRINT
+ CarriageControl:NL
+610
+620 PRINT "TOTAL CURRENT = " FNR(S1)
+ TextConstant:"TOTAL CURRENT = "
+ CarriageControl:
+ Variable:S1 -> _
+ UserFunction:FNR(_) -> _
+ CarriageControl:NL
+630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V/S1)
+ TextConstant:"RESISTANCE OF CIRCUIT = "
+ CarriageControl:
+ Variable:V -> _
+ Variable:S1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ UserFunction:FNR(_) -> _
+ CarriageControl:NL
+640
+650 DATA 7,24
+ NumericConstant:7
+ NumericConstant:24
+660 DATA 1,2,100, 2,7,50, 2,3,25, 1,4,16, 3,4,20, 3,6,40
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:100
+ NumericConstant:2
+ NumericConstant:7
+ NumericConstant:50
+ NumericConstant:2
+ NumericConstant:3
+ NumericConstant:25
+ NumericConstant:1
+ NumericConstant:4
+ NumericConstant:16
+ NumericConstant:3
+ NumericConstant:4
+ NumericConstant:20
+ NumericConstant:3
+ NumericConstant:6
+ NumericConstant:40
+670 DATA 4,5,60, 5,6,60, 6,7,40
+ NumericConstant:4
+ NumericConstant:5
+ NumericConstant:60
+ NumericConstant:5
+ NumericConstant:6
+ NumericConstant:60
+ NumericConstant:6
+ NumericConstant:7
+ NumericConstant:40
+680 DATA -1,0,0
+ NumericConstant:1
+ UnaryOperatorMinus:-(_) -> =_
+ NumericConstant:0
+ NumericConstant:0
+690 END
+ 
+

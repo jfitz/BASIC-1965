@@ -1,0 +1,90 @@
+10 REM THIS PROGRAM COMPUTES THE GENERALIZED MEAN
+ Remark:THIS PROGRAM COMPUTES THE GENERALIZED MEAN
+20 REM IF T = 1, THEN THE GENERALIZED MEAN M(T)
+ Remark:IF T = 1, THEN THE GENERALIZED MEAN M(T)
+30 REM IS EQUAL TO THE ARITHMETIC MEAN. IF T = -1
+ Remark:IS EQUAL TO THE ARITHMETIC MEAN. IF T = -1
+40 REM THEN M(T) IS EQUAL TO THE HARMONIC MEAN
+ Remark:THEN M(T) IS EQUAL TO THE HARMONIC MEAN
+50 LET J = 0
+ Variable:J -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+60 LET N = 0
+ Variable:N -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+70 PRINT "T = ";
+ TextConstant:"T = "
+ CarriageControl:;
+80 INPUT T
+ Variable:T -> _
+90 PRINT "INPUT SAMPLE";
+ TextConstant:"INPUT SAMPLE"
+ CarriageControl:;
+100 INPUT X
+ Variable:X -> _
+110 IF X = 0 THEN 150
+ Variable:X -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:150
+120 LET J = J + (X^T)
+ Variable:J -> _
+ Variable:J -> _
+ Variable:X -> _
+ Variable:T -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+130 LET N = N + 1
+ Variable:N -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+140 GOTO 90
+ LineNumber:90
+150 LET G = (J/N)^(1/T)
+ Variable:G -> _
+ Variable:J -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ NumericConstant:1
+ Variable:T -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPower:^(_,_) -> _
+ AssignmentOperator:= _ -> _
+160 PRINT "GENERALIZED MEAN"
+ TextConstant:"GENERALIZED MEAN"
+ CarriageControl:NL
+170 PRINT "M(T) = ";G, "WHERE T = ";T
+ TextConstant:"M(T) = "
+ CarriageControl:;
+ Variable:G -> _
+ CarriageControl:,
+ TextConstant:"WHERE T = "
+ CarriageControl:;
+ Variable:T -> _
+ CarriageControl:NL
+180 PRINT
+ CarriageControl:NL
+190 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+200 INPUT L
+ Variable:L -> _
+210 IF L = 1 THEN 230
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:230
+220 STOP
+ 
+230 PRINT
+ CarriageControl:NL
+240 GOTO 50
+ LineNumber:50
+250 END
+ 
+

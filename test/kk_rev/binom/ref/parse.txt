@@ -1,0 +1,38 @@
+10 READ N,I
+ Variable:N -> _
+ Variable:I -> _
+20 LET B = 1
+ Variable:B -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+30 FOR K = 1 TO I
+ control: Variable:K -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:I -> _"]
+40 LET B = B*(N-K+1)/K
+ Variable:B -> _
+ Variable:B -> _
+ Variable:N -> _
+ Variable:K -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:K -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+50 NEXT K
+ Variable:K -> _
+60 PRINT B
+ Variable:B -> _
+ CarriageControl:NL
+70 STOP
+ 
+90 DATA 10,4
+ NumericConstant:10
+ NumericConstant:4
+98 RETURN
+ 
+100 END
+ 
+

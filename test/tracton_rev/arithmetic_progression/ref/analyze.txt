@@ -1,0 +1,117 @@
+Statistics:
+
+Number of lines: 30
+Number of valid statements: 29
+Number of comments: 1
+Number of executable statements: 29
+
+Complexity:
+
+Comment density: 0.034
+Comprehension effort: 77
+McCabe complexity: 10
+Halstead complexity:
+ length: 71
+ volume: 273.360
+ difficulty: 7.886
+ effort: 2155.643
+ language: 4.396
+ intelligence: 34.665
+ time: 1.996
+
+(0 1) 10 REM THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
+  Origs: 
+  Dests: 
+(0 2) 20 PRINT "FIRST TERM = ";
+  Origs: :start, 300:goto
+  Dests: 30:auto
+(1 2) 30 INPUT A
+  Origs: 20:auto
+  Dests: 40:auto
+(0 2) 40 PRINT "COMMON DIFFERENCE = ";
+  Origs: 30:auto
+  Dests: 50:auto
+(1 2) 50 INPUT D
+  Origs: 40:auto
+  Dests: 60:auto
+(0 2) 60 PRINT "NUMBER OF TERMS = ";
+  Origs: 50:auto
+  Dests: 70:auto
+(1 2) 70 INPUT N
+  Origs: 60:auto
+  Dests: 80:auto
+(0 2) 80 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0";
+  Origs: 70:auto
+  Dests: 90:auto
+(1 2) 90 INPUT C
+  Origs: 80:auto
+  Dests: 100:auto
+(1 4) 100 IF C = 1 THEN 120
+  Origs: 90:auto
+  Dests: 110:auto, 120:ifthen
+(0 2) 110 GOTO 140
+  Origs: 100:auto
+  Dests: 140:goto
+(0 2) 120 PRINT "ARITHMETIC PROGRESSION"
+  Origs: 100:ifthen
+  Dests: 130:auto
+(0 3) 130 PRINT "TERM NUMBER", "TERM VALUE"
+  Origs: 120:auto
+  Dests: 140:auto
+(0 3) 140 LET J = 0
+  Origs: 110:goto, 130:auto
+  Dests: 150:auto
+(1 4) 150 FOR I = 0 TO N - 1
+  Origs: 140:auto
+  Dests: 160:fornext, 220:fornext
+(0 4) 160 LET K = I + 1
+  Origs: 150:fornext
+  Dests: 170:auto
+(0 6) 170 LET L = A + (I * D)
+  Origs: 160:auto
+  Dests: 180:auto
+(0 4) 180 LET J = J + L
+  Origs: 170:auto
+  Dests: 190:auto
+(1 4) 190 IF C = 1 THEN 210
+  Origs: 180:auto
+  Dests: 200:auto, 210:ifthen
+(0 2) 200 GOTO 220
+  Origs: 190:auto
+  Dests: 220:goto
+(0 3) 210 PRINT K, L
+  Origs: 190:ifthen
+  Dests: 220:auto
+(0 1) 220 NEXT I
+  Origs: 150:fornext, 200:goto, 210:auto
+  Dests: 230:auto
+(0 3) 230 PRINT "SUM = "; J
+  Origs: 220:auto
+  Dests: 240:auto
+(0 2) 240 PRINT
+  Origs: 230:auto
+  Dests: 250:auto
+(0 2) 250 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 240:auto
+  Dests: 260:auto
+(1 2) 260 INPUT X
+  Origs: 250:auto
+  Dests: 270:auto
+(1 4) 270 IF X = 1 THEN 290
+  Origs: 260:auto
+  Dests: 290:auto, 290:ifthen
+(0 1) 290 STOP
+  Origs: 270:auto, 270:ifthen
+  Dests: :stop
+(0 3) 300 GOTO 20
+  Origs: 
+  Dests: 20:goto
+(0 1) 310 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+300: GOTO 20
+310: END
+

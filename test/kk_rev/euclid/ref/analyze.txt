@@ -1,0 +1,62 @@
+Statistics:
+
+Number of lines: 12
+Number of valid statements: 12
+Number of comments: 0
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 39
+McCabe complexity: 4
+Halstead complexity:
+ length: 48
+ volume: 163.257
+ difficulty: 7.250
+ effort: 1183.617
+ language: 3.106
+ intelligence: 22.518
+ time: 1.096
+
+(0 4) 10 PRINT " A", " B", "G.C.D."
+  Origs: :start
+  Dests: 20:auto
+(2 3) 20 READ A, B
+  Origs: 10:auto, 80:goto
+  Dests: 30:auto
+(0 3) 30 PRINT A, B,
+  Origs: 20:auto
+  Dests: 40:auto
+(0 4) 40 LET Q = INT(A / B)
+  Origs: 30:auto, 60:ifthen
+  Dests: 45:auto
+(0 6) 45 LET R = A - Q * B
+  Origs: 40:auto
+  Dests: 50:auto
+(0 3) 50 LET A = B
+  Origs: 45:auto
+  Dests: 55:auto
+(0 3) 55 LET B = R
+  Origs: 50:auto
+  Dests: 60:auto
+(1 5) 60 IF R > 0 THEN 40
+  Origs: 55:auto
+  Dests: 40:ifthen, 70:auto
+(0 2) 70 PRINT A
+  Origs: 60:auto
+  Dests: 80:auto
+(0 3) 80 GOTO 20
+  Origs: 70:auto
+  Dests: 20:goto
+(0 2) 90 DATA 130, 169, 243, 256, 123456789, 987654321
+  Origs: 
+  Dests: 
+(0 1) 99 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+99: END
+

@@ -1,0 +1,19 @@
+ A               B              G.C.D.
+ 130             169             13
+ 243             256             1
+ 123456789       987654321       9
+Error 103 Out of data in line 20
+
+10 (1) PRINT " A", " B", "G.C.D."
+20 (3) READ A, B
+30 (3) PRINT A, B,
+40 (13) LET Q = INT(A / B)
+45 (13) LET R = A - Q * B
+50 (13) LET A = B
+55 (13) LET B = R
+60 (13) IF R > 0 THEN 40
+70 (3) PRINT A
+80 (3) GOTO 20
+90 (0) DATA 130, 169, 243, 256, 123456789, 987654321
+99 (0) END
+

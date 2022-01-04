@@ -1,0 +1,425 @@
+900: DATA 3, 2
+910: DATA 17, 42, 50, 50, 114, 61
+110: READ M, N
+ M = 3
+ N = 2
+120: FOR I = 1 TO M
+ M: 3
+ I = 1
+ M = 3
+ terminated:false
+130: LET S = 0
+ S = 0
+140: FOR J = 1 TO N
+ N: 2
+ J = 1
+ N = 2
+ terminated:false
+150: READ O(I, J)
+ I: 1
+ J: 1
+ O(1,1) = 17
+160: LET S = S + O(I, J)
+ S: 0
+ I: 1
+ J: 1
+ O(1,1): 17
+ S = 17
+170: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+150: READ O(I, J)
+ I: 1
+ J: 2
+ O(1,2) = 42
+160: LET S = S + O(I, J)
+ S: 17
+ I: 1
+ J: 2
+ O(1,2): 42
+ S = 59
+170: NEXT J
+ J: 2
+ terminated:true
+180: LET R(I) = S
+ I: 1
+ S: 59
+ R(1) = 59
+190: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+130: LET S = 0
+ S = 0
+140: FOR J = 1 TO N
+ N: 2
+ J = 1
+ N = 2
+ terminated:false
+150: READ O(I, J)
+ I: 2
+ J: 1
+ O(2,1) = 50
+160: LET S = S + O(I, J)
+ S: 0
+ I: 2
+ J: 1
+ O(2,1): 50
+ S = 50
+170: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+150: READ O(I, J)
+ I: 2
+ J: 2
+ O(2,2) = 50
+160: LET S = S + O(I, J)
+ S: 50
+ I: 2
+ J: 2
+ O(2,2): 50
+ S = 100
+170: NEXT J
+ J: 2
+ terminated:true
+180: LET R(I) = S
+ I: 2
+ S: 100
+ R(2) = 100
+190: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+130: LET S = 0
+ S = 0
+140: FOR J = 1 TO N
+ N: 2
+ J = 1
+ N = 2
+ terminated:false
+150: READ O(I, J)
+ I: 3
+ J: 1
+ O(3,1) = 114
+160: LET S = S + O(I, J)
+ S: 0
+ I: 3
+ J: 1
+ O(3,1): 114
+ S = 114
+170: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+150: READ O(I, J)
+ I: 3
+ J: 2
+ O(3,2) = 61
+160: LET S = S + O(I, J)
+ S: 114
+ I: 3
+ J: 2
+ O(3,2): 61
+ S = 175
+170: NEXT J
+ J: 2
+ terminated:true
+180: LET R(I) = S
+ I: 3
+ S: 175
+ R(3) = 175
+190: NEXT I
+ I: 3
+ terminated:true
+210: LET S1 = 0
+ S1 = 0
+220: FOR J = 1 TO N
+ N: 2
+ J = 1
+ N = 2
+ terminated:false
+230: LET S = 0
+ S = 0
+240: FOR I = 1 TO M
+ M: 3
+ I = 1
+ M = 3
+ terminated:false
+250: LET S = S + O(I, J)
+ S: 0
+ I: 1
+ J: 1
+ O(1,1): 17
+ S = 17
+260: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+250: LET S = S + O(I, J)
+ S: 17
+ I: 2
+ J: 1
+ O(2,1): 50
+ S = 67
+260: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+250: LET S = S + O(I, J)
+ S: 67
+ I: 3
+ J: 1
+ O(3,1): 114
+ S = 181
+260: NEXT I
+ I: 3
+ terminated:true
+270: LET C(J) = S
+ J: 1
+ S: 181
+ C(1) = 181
+280: LET S1 = S1 + S
+ S1: 0
+ S: 181
+ S1 = 181
+290: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+230: LET S = 0
+ S = 0
+240: FOR I = 1 TO M
+ M: 3
+ I = 1
+ M = 3
+ terminated:false
+250: LET S = S + O(I, J)
+ S: 0
+ I: 1
+ J: 2
+ O(1,2): 42
+ S = 42
+260: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+250: LET S = S + O(I, J)
+ S: 42
+ I: 2
+ J: 2
+ O(2,2): 50
+ S = 92
+260: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+250: LET S = S + O(I, J)
+ S: 92
+ I: 3
+ J: 2
+ O(3,2): 61
+ S = 153
+260: NEXT I
+ I: 3
+ terminated:true
+270: LET C(J) = S
+ J: 2
+ S: 153
+ C(2) = 153
+280: LET S1 = S1 + S
+ S1: 181
+ S: 153
+ S1 = 334
+290: NEXT J
+ J: 2
+ terminated:true
+310: PRINT
+
+320: LET C = 0
+ C = 0
+330: FOR I = 1 TO M
+ M: 3
+ I = 1
+ M = 3
+ terminated:false
+340: FOR J = 1 TO N
+ N: 2
+ J = 1
+ N = 2
+ terminated:false
+350: LET E = R(I) * C(J) / S1
+ I: 1
+ R(1): 59
+ J: 1
+ C(1): 181
+ S1: 334
+ E = 31.9731
+360: LET C = C + (O(I, J) - E) ^ 2 / E
+ C: 0
+ I: 1
+ J: 1
+ O(1,1): 17
+ E: 31.9731
+ C = 7.01196
+370: PRINT O(I, J),
+ I: 1
+ J: 1
+ O(1,1): 17
+ 17             
+380: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+350: LET E = R(I) * C(J) / S1
+ I: 1
+ R(1): 59
+ J: 2
+ C(2): 153
+ S1: 334
+ E = 27.0269
+360: LET C = C + (O(I, J) - E) ^ 2 / E
+ C: 7.01196
+ I: 1
+ J: 2
+ O(1,2): 42
+ E: 27.0269
+ C = 15.3072
+370: PRINT O(I, J),
+ I: 1
+ J: 2
+ O(1,2): 42
+ 42             
+380: NEXT J
+ J: 2
+ terminated:true
+390: PRINT
+
+400: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+340: FOR J = 1 TO N
+ N: 2
+ J = 1
+ N = 2
+ terminated:false
+350: LET E = R(I) * C(J) / S1
+ I: 2
+ R(2): 100
+ J: 1
+ C(1): 181
+ S1: 334
+ E = 54.1916
+360: LET C = C + (O(I, J) - E) ^ 2 / E
+ C: 15.3072
+ I: 2
+ J: 1
+ O(2,1): 50
+ E: 54.1916
+ C = 15.6314
+370: PRINT O(I, J),
+ I: 2
+ J: 1
+ O(2,1): 50
+ 50             
+380: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+350: LET E = R(I) * C(J) / S1
+ I: 2
+ R(2): 100
+ J: 2
+ C(2): 153
+ S1: 334
+ E = 45.8084
+360: LET C = C + (O(I, J) - E) ^ 2 / E
+ C: 15.6314
+ I: 2
+ J: 2
+ O(2,2): 50
+ E: 45.8084
+ C = 16.0149
+370: PRINT O(I, J),
+ I: 2
+ J: 2
+ O(2,2): 50
+ 50             
+380: NEXT J
+ J: 2
+ terminated:true
+390: PRINT
+
+400: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+340: FOR J = 1 TO N
+ N: 2
+ J = 1
+ N = 2
+ terminated:false
+350: LET E = R(I) * C(J) / S1
+ I: 3
+ R(3): 175
+ J: 1
+ C(1): 181
+ S1: 334
+ E = 94.8353
+360: LET C = C + (O(I, J) - E) ^ 2 / E
+ C: 16.0149
+ I: 3
+ J: 1
+ O(3,1): 114
+ E: 94.8353
+ C = 19.8878
+370: PRINT O(I, J),
+ I: 3
+ J: 1
+ O(3,1): 114
+ 114            
+380: NEXT J
+ J: 1
+ terminated:false
+ J = 2
+350: LET E = R(I) * C(J) / S1
+ I: 3
+ R(3): 175
+ J: 2
+ C(2): 153
+ S1: 334
+ E = 80.1647
+360: LET C = C + (O(I, J) - E) ^ 2 / E
+ C: 19.8878
+ I: 3
+ J: 2
+ O(3,2): 61
+ E: 80.1647
+ C = 24.4694
+370: PRINT O(I, J),
+ I: 3
+ J: 2
+ O(3,2): 61
+ 61             
+380: NEXT J
+ J: 2
+ terminated:true
+390: PRINT
+
+400: NEXT I
+ I: 3
+ terminated:true
+410: PRINT
+
+420: PRINT "CHI-SQUARE EQUALS"; C; "ON"; (M - 1) * (N - 1); "DEGREES OF FREEDOM"
+CHI-SQUARE EQUALS
+ C: 24.4694
+ 24.4694 ON
+ M: 3
+ N: 2
+ 2 DEGREES OF FREEDOM
+999: END
+STOP in line 999
+

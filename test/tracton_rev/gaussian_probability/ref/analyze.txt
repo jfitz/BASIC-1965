@@ -1,0 +1,74 @@
+Statistics:
+
+Number of lines: 16
+Number of valid statements: 14
+Number of comments: 2
+Number of executable statements: 14
+
+Complexity:
+
+Comment density: 0.143
+Comprehension effort: 37
+McCabe complexity: 4
+Halstead complexity:
+ length: 33
+ volume: 111.121
+ difficulty: 5.806
+ effort: 645.118
+ language: 3.297
+ intelligence: 19.140
+ time: 0.597
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE GAUSSIAN PROBABILITY
+  Origs: 
+  Dests: 
+(0 1) 20 REM FUNCTION OF X
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "X = ";
+  Origs: :start, 150:goto
+  Dests: 40:auto
+(1 2) 40 INPUT X
+  Origs: 30:auto
+  Dests: 50:auto
+(0 4) 50 LET A = EXP(-(X ^ 2) / 2)
+  Origs: 40:auto
+  Dests: 60:auto
+(0 3) 60 LET B = .398942
+  Origs: 50:auto
+  Dests: 70:auto
+(0 4) 70 LET C = B * A
+  Origs: 60:auto
+  Dests: 80:auto
+(0 3) 80 PRINT "F(X) = "; C
+  Origs: 70:auto
+  Dests: 90:auto
+(0 2) 90 PRINT
+  Origs: 80:auto
+  Dests: 100:auto
+(0 2) 100 PRINT "TO CONTINUE TYPE 1, 0 TO STOP"
+  Origs: 90:auto
+  Dests: 110:auto
+(1 2) 110 INPUT L
+  Origs: 100:auto
+  Dests: 120:auto
+(1 4) 120 IF L = 1 THEN 140
+  Origs: 110:auto
+  Dests: 130:auto, 140:ifthen
+(0 1) 130 STOP
+  Origs: 120:auto
+  Dests: :stop
+(0 2) 140 PRINT
+  Origs: 120:ifthen
+  Dests: 150:auto
+(0 3) 150 GOTO 30
+  Origs: 140:auto
+  Dests: 30:goto
+(0 1) 160 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+160: END
+

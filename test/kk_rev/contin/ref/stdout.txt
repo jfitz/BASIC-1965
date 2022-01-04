@@ -1,0 +1,45 @@
+
+ 17              42             
+ 50              50             
+ 114             61             
+
+CHI-SQUARE EQUALS 24.4694 ON 2 DEGREES OF FREEDOM
+STOP in line 999
+
+110 (1) READ M, N
+120 (1) FOR I = 1 TO M
+130 (3) LET S = 0
+140 (3) FOR J = 1 TO N
+150 (6) READ O(I, J)
+160 (6) LET S = S + O(I, J)
+170 (6) NEXT J
+180 (3) LET R(I) = S
+190 (3) NEXT I
+200 (0)
+210 (1) LET S1 = 0
+220 (1) FOR J = 1 TO N
+230 (2) LET S = 0
+240 (2) FOR I = 1 TO M
+250 (6) LET S = S + O(I, J)
+260 (6) NEXT I
+270 (2) LET C(J) = S
+280 (2) LET S1 = S1 + S
+290 (2) NEXT J
+300 (0)
+310 (1) PRINT
+320 (1) LET C = 0
+330 (1) FOR I = 1 TO M
+340 (3) FOR J = 1 TO N
+350 (6) LET E = R(I) * C(J) / S1
+360 (6) LET C = C + (O(I, J) - E) ^ 2 / E
+370 (6) PRINT O(I, J),
+380 (6) NEXT J
+390 (3) PRINT
+400 (3) NEXT I
+410 (1) PRINT
+420 (1) PRINT "CHI-SQUARE EQUALS"; C; "ON"; (M - 1) * (N - 1); "DEGREES OF FREEDOM"
+430 (0)
+900 (0) DATA 3, 2
+910 (0) DATA 17, 42, 50, 50, 114, 61
+999 (1) END
+

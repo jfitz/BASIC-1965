@@ -1,0 +1,77 @@
+Statistics:
+
+Number of lines: 17
+Number of valid statements: 17
+Number of comments: 0
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 37
+McCabe complexity: 6
+Halstead complexity:
+ length: 137
+ volume: 440.986
+ difficulty: 5.045
+ effort: 2224.975
+ language: 17.323
+ intelligence: 87.403
+ time: 2.060
+
+(0 3) 100 DIM A(6, 6), B(2, 3)
+  Origs: :start
+  Dests: 120:auto
+(2 3) 120 MAT READ A, B
+  Origs: 100:auto
+  Dests: 130:auto
+(0 2) 130 PRINT "EXAMPLE 1"
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 PRINT
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 MAT PRINT A, B
+  Origs: 140:auto
+  Dests: 160:auto
+(2 3) 160 READ P, Q
+  Origs: 150:auto
+  Dests: 170:auto
+(1 2) 170 MAT READ A(P, Q)
+  Origs: 160:auto
+  Dests: 180:auto
+(0 2) 180 PRINT "EXAMPLE 2"
+  Origs: 170:auto
+  Dests: 190:auto
+(0 2) 190 PRINT
+  Origs: 180:auto
+  Dests: 200:auto
+(0 2) 200 MAT PRINT A
+  Origs: 190:auto
+  Dests: 999:auto
+(0 2) 900 DATA 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1, 6, 5, 4, 3, 2, 1
+  Origs: 
+  Dests: 
+(0 2) 901 DATA 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5
+  Origs: 
+  Dests: 
+(0 2) 910 DATA 1, 2, 3, 4, 5, 6
+  Origs: 
+  Dests: 
+(0 2) 920 DATA 3, 4
+  Origs: 
+  Dests: 
+(0 2) 930 DATA 1, 2, 3, 4, 5, 6
+  Origs: 
+  Dests: 
+(0 2) 940 DATA 7, 8, 9, 10, 11, 12
+  Origs: 
+  Dests: 
+(0 1) 999 END
+  Origs: 200:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

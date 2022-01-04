@@ -1,0 +1,506 @@
+30: PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
+ENTER THE TEST NUMBER, ZERO TO STOP
+40: INPUT N
+? 45
+ N = 45
+50: LET N = INT(N)
+ N: 45
+ N = 45
+60: IF N = 0 THEN 220
+ N: 45
+ N = 0: false
+70: IF N < 4 THEN 180
+ N: 45
+ N < 4: false
+80: LET I = 0
+ I = 0
+90: LET T = 2
+ T = 2
+100: LET J = INT(N / T)
+ N: 45
+ T: 2
+ J = 22
+110: LET K = J * T
+ J: 22
+ T: 2
+ K = 44
+120: IF N = K THEN 200
+ N: 45
+ K: 44
+ N = K: false
+130: LET I = I + 1
+ I: 0
+ I = 1
+140: LET L = T * T
+ T: 2
+ L = 4
+150: IF L > N THEN 180
+ L: 4
+ N: 45
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 1
+ T = 3
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 45
+ T: 3
+ J = 15
+110: LET K = J * T
+ J: 15
+ T: 3
+ K = 45
+120: IF N = K THEN 200
+ N: 45
+ K: 45
+ N = K: true
+200: PRINT N; "IS NOT A PRIME:"; T; "IS THE SMALLEST FACTOR"
+ N: 45
+ 45 IS NOT A PRIME:
+ T: 3
+ 3 IS THE SMALLEST FACTOR
+210: GOTO 30
+30: PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
+ENTER THE TEST NUMBER, ZERO TO STOP
+40: INPUT N
+? 120078
+ N = 120078
+50: LET N = INT(N)
+ N: 120078
+ N = 120078
+60: IF N = 0 THEN 220
+ N: 120078
+ N = 0: false
+70: IF N < 4 THEN 180
+ N: 120078
+ N < 4: false
+80: LET I = 0
+ I = 0
+90: LET T = 2
+ T = 2
+100: LET J = INT(N / T)
+ N: 120078
+ T: 2
+ J = 60039
+110: LET K = J * T
+ J: 60039
+ T: 2
+ K = 120078
+120: IF N = K THEN 200
+ N: 120078
+ K: 120078
+ N = K: true
+200: PRINT N; "IS NOT A PRIME:"; T; "IS THE SMALLEST FACTOR"
+ N: 120078
+ 120078 IS NOT A PRIME:
+ T: 2
+ 2 IS THE SMALLEST FACTOR
+210: GOTO 30
+30: PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
+ENTER THE TEST NUMBER, ZERO TO STOP
+40: INPUT N
+? 121
+ N = 121
+50: LET N = INT(N)
+ N: 121
+ N = 121
+60: IF N = 0 THEN 220
+ N: 121
+ N = 0: false
+70: IF N < 4 THEN 180
+ N: 121
+ N < 4: false
+80: LET I = 0
+ I = 0
+90: LET T = 2
+ T = 2
+100: LET J = INT(N / T)
+ N: 121
+ T: 2
+ J = 60
+110: LET K = J * T
+ J: 60
+ T: 2
+ K = 120
+120: IF N = K THEN 200
+ N: 121
+ K: 120
+ N = K: false
+130: LET I = I + 1
+ I: 0
+ I = 1
+140: LET L = T * T
+ T: 2
+ L = 4
+150: IF L > N THEN 180
+ L: 4
+ N: 121
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 1
+ T = 3
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 121
+ T: 3
+ J = 40
+110: LET K = J * T
+ J: 40
+ T: 3
+ K = 120
+120: IF N = K THEN 200
+ N: 121
+ K: 120
+ N = K: false
+130: LET I = I + 1
+ I: 1
+ I = 2
+140: LET L = T * T
+ T: 3
+ L = 9
+150: IF L > N THEN 180
+ L: 9
+ N: 121
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 2
+ T = 5
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 121
+ T: 5
+ J = 24
+110: LET K = J * T
+ J: 24
+ T: 5
+ K = 120
+120: IF N = K THEN 200
+ N: 121
+ K: 120
+ N = K: false
+130: LET I = I + 1
+ I: 2
+ I = 3
+140: LET L = T * T
+ T: 5
+ L = 25
+150: IF L > N THEN 180
+ L: 25
+ N: 121
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 3
+ T = 7
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 121
+ T: 7
+ J = 17
+110: LET K = J * T
+ J: 17
+ T: 7
+ K = 119
+120: IF N = K THEN 200
+ N: 121
+ K: 119
+ N = K: false
+130: LET I = I + 1
+ I: 3
+ I = 4
+140: LET L = T * T
+ T: 7
+ L = 49
+150: IF L > N THEN 180
+ L: 49
+ N: 121
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 4
+ T = 9
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 121
+ T: 9
+ J = 13
+110: LET K = J * T
+ J: 13
+ T: 9
+ K = 117
+120: IF N = K THEN 200
+ N: 121
+ K: 117
+ N = K: false
+130: LET I = I + 1
+ I: 4
+ I = 5
+140: LET L = T * T
+ T: 9
+ L = 81
+150: IF L > N THEN 180
+ L: 81
+ N: 121
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 5
+ T = 11
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 121
+ T: 11
+ J = 11
+110: LET K = J * T
+ J: 11
+ T: 11
+ K = 121
+120: IF N = K THEN 200
+ N: 121
+ K: 121
+ N = K: true
+200: PRINT N; "IS NOT A PRIME:"; T; "IS THE SMALLEST FACTOR"
+ N: 121
+ 121 IS NOT A PRIME:
+ T: 11
+ 11 IS THE SMALLEST FACTOR
+210: GOTO 30
+30: PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
+ENTER THE TEST NUMBER, ZERO TO STOP
+40: INPUT N
+? 179
+ N = 179
+50: LET N = INT(N)
+ N: 179
+ N = 179
+60: IF N = 0 THEN 220
+ N: 179
+ N = 0: false
+70: IF N < 4 THEN 180
+ N: 179
+ N < 4: false
+80: LET I = 0
+ I = 0
+90: LET T = 2
+ T = 2
+100: LET J = INT(N / T)
+ N: 179
+ T: 2
+ J = 89
+110: LET K = J * T
+ J: 89
+ T: 2
+ K = 178
+120: IF N = K THEN 200
+ N: 179
+ K: 178
+ N = K: false
+130: LET I = I + 1
+ I: 0
+ I = 1
+140: LET L = T * T
+ T: 2
+ L = 4
+150: IF L > N THEN 180
+ L: 4
+ N: 179
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 1
+ T = 3
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 179
+ T: 3
+ J = 59
+110: LET K = J * T
+ J: 59
+ T: 3
+ K = 177
+120: IF N = K THEN 200
+ N: 179
+ K: 177
+ N = K: false
+130: LET I = I + 1
+ I: 1
+ I = 2
+140: LET L = T * T
+ T: 3
+ L = 9
+150: IF L > N THEN 180
+ L: 9
+ N: 179
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 2
+ T = 5
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 179
+ T: 5
+ J = 35
+110: LET K = J * T
+ J: 35
+ T: 5
+ K = 175
+120: IF N = K THEN 200
+ N: 179
+ K: 175
+ N = K: false
+130: LET I = I + 1
+ I: 2
+ I = 3
+140: LET L = T * T
+ T: 5
+ L = 25
+150: IF L > N THEN 180
+ L: 25
+ N: 179
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 3
+ T = 7
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 179
+ T: 7
+ J = 25
+110: LET K = J * T
+ J: 25
+ T: 7
+ K = 175
+120: IF N = K THEN 200
+ N: 179
+ K: 175
+ N = K: false
+130: LET I = I + 1
+ I: 3
+ I = 4
+140: LET L = T * T
+ T: 7
+ L = 49
+150: IF L > N THEN 180
+ L: 49
+ N: 179
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 4
+ T = 9
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 179
+ T: 9
+ J = 19
+110: LET K = J * T
+ J: 19
+ T: 9
+ K = 171
+120: IF N = K THEN 200
+ N: 179
+ K: 171
+ N = K: false
+130: LET I = I + 1
+ I: 4
+ I = 5
+140: LET L = T * T
+ T: 9
+ L = 81
+150: IF L > N THEN 180
+ L: 81
+ N: 179
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 5
+ T = 11
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 179
+ T: 11
+ J = 16
+110: LET K = J * T
+ J: 16
+ T: 11
+ K = 176
+120: IF N = K THEN 200
+ N: 179
+ K: 176
+ N = K: false
+130: LET I = I + 1
+ I: 5
+ I = 6
+140: LET L = T * T
+ T: 11
+ L = 121
+150: IF L > N THEN 180
+ L: 121
+ N: 179
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 6
+ T = 13
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 179
+ T: 13
+ J = 13
+110: LET K = J * T
+ J: 13
+ T: 13
+ K = 169
+120: IF N = K THEN 200
+ N: 179
+ K: 169
+ N = K: false
+130: LET I = I + 1
+ I: 6
+ I = 7
+140: LET L = T * T
+ T: 13
+ L = 169
+150: IF L > N THEN 180
+ L: 169
+ N: 179
+ L > N: false
+160: LET T = (I * 2) + 1
+ I: 7
+ T = 15
+170: GOTO 100
+100: LET J = INT(N / T)
+ N: 179
+ T: 15
+ J = 11
+110: LET K = J * T
+ J: 11
+ T: 15
+ K = 165
+120: IF N = K THEN 200
+ N: 179
+ K: 165
+ N = K: false
+130: LET I = I + 1
+ I: 7
+ I = 8
+140: LET L = T * T
+ T: 15
+ L = 225
+150: IF L > N THEN 180
+ L: 225
+ N: 179
+ L > N: true
+180: PRINT N; "IS A PRIME"
+ N: 179
+ 179 IS A PRIME
+190: GOTO 30
+30: PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
+ENTER THE TEST NUMBER, ZERO TO STOP
+40: INPUT N
+? 0
+ N = 0
+50: LET N = INT(N)
+ N: 0
+ N = 0
+60: IF N = 0 THEN 220
+ N: 0
+ N = 0: true
+220: PRINT "GOOD-BYE FROM THE PRIME TESTER"
+GOOD-BYE FROM THE PRIME TESTER
+230: END
+STOP in line 230
+

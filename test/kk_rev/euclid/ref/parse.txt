@@ -1,0 +1,58 @@
+10 PRINT " A", " B", "G.C.D."
+ TextConstant:" A"
+ CarriageControl:,
+ TextConstant:" B"
+ CarriageControl:,
+ TextConstant:"G.C.D."
+ CarriageControl:NL
+20 READ A,B
+ Variable:A -> _
+ Variable:B -> _
+30 PRINT A,B,
+ Variable:A -> _
+ CarriageControl:,
+ Variable:B -> _
+ CarriageControl:,
+40 LET Q = INT(A/B)
+ Variable:Q -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+45 LET R = A - Q*B
+ Variable:R -> _
+ Variable:A -> _
+ Variable:Q -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+50 LET A = B
+ Variable:A -> _
+ Variable:B -> _
+ AssignmentOperator:= _ -> _
+55 LET B = R
+ Variable:B -> _
+ Variable:R -> _
+ AssignmentOperator:= _ -> _
+60 IF R > 0 THEN 40
+ Variable:R -> _
+ NumericConstant:0
+ BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:40
+70 PRINT A
+ Variable:A -> _
+ CarriageControl:NL
+80 GOTO 20
+ LineNumber:20
+90 DATA 130,169, 243,256, 123456789,987654321
+ NumericConstant:130
+ NumericConstant:169
+ NumericConstant:243
+ NumericConstant:256
+ NumericConstant:123456789
+ NumericConstant:987654321
+99 END
+ 
+

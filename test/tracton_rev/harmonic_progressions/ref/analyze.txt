@@ -1,0 +1,128 @@
+Statistics:
+
+Number of lines: 34
+Number of valid statements: 32
+Number of comments: 2
+Number of executable statements: 32
+
+Complexity:
+
+Comment density: 0.062
+Comprehension effort: 86
+McCabe complexity: 11
+Halstead complexity:
+ length: 74
+ volume: 292.392
+ difficulty: 8.333
+ effort: 2436.600
+ language: 4.210
+ intelligence: 35.087
+ time: 2.256
+
+(0 1) 10 REM THIS PROGRAM COMPUTES A SERIES OF HARMONIC
+  Origs: 
+  Dests: 
+(0 1) 20 REM PROGRESSIONS
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "VALUE OF A = "
+  Origs: :start, 330:goto
+  Dests: 40:auto
+(1 2) 40 INPUT A
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 PRINT "VALUE OF B = "
+  Origs: 40:auto
+  Dests: 60:auto
+(1 2) 60 INPUT B
+  Origs: 50:auto
+  Dests: 70:auto
+(0 2) 70 PRINT "DIFFERENCE = "
+  Origs: 60:auto
+  Dests: 80:auto
+(1 2) 80 INPUT D
+  Origs: 70:auto
+  Dests: 90:auto
+(0 2) 90 PRINT "NUMBER OF TERMS = "
+  Origs: 80:auto
+  Dests: 100:auto
+(1 2) 100 INPUT N
+  Origs: 90:auto
+  Dests: 110:auto
+(0 2) 110 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+  Origs: 100:auto
+  Dests: 120:auto
+(1 2) 120 INPUT C
+  Origs: 110:auto
+  Dests: 130:auto
+(1 4) 130 IF C = 1 THEN 150
+  Origs: 120:auto
+  Dests: 140:auto, 150:ifthen
+(0 2) 140 GOTO 170
+  Origs: 130:auto
+  Dests: 170:goto
+(0 2) 150 PRINT "HARMONIC PROGRESSION"
+  Origs: 130:ifthen
+  Dests: 160:auto
+(0 3) 160 PRINT "TERM NUMBER", "TERM VALUE"
+  Origs: 150:auto
+  Dests: 170:auto
+(0 3) 170 LET J = 0
+  Origs: 140:goto, 160:auto
+  Dests: 180:auto
+(1 4) 180 FOR I = 0 TO N - 1
+  Origs: 170:auto
+  Dests: 190:fornext, 250:fornext
+(0 4) 190 LET K = I + 1
+  Origs: 180:fornext
+  Dests: 200:auto
+(0 8) 200 LET L = A / (B + (I * D))
+  Origs: 190:auto
+  Dests: 210:auto
+(0 4) 210 LET J = J + L
+  Origs: 200:auto
+  Dests: 220:auto
+(1 4) 220 IF C = 1 THEN 240
+  Origs: 210:auto
+  Dests: 230:auto, 240:ifthen
+(0 2) 230 GOTO 250
+  Origs: 220:auto
+  Dests: 250:goto
+(0 3) 240 PRINT K, L
+  Origs: 220:ifthen
+  Dests: 250:auto
+(0 1) 250 NEXT I
+  Origs: 180:fornext, 230:goto, 240:auto
+  Dests: 260:auto
+(0 3) 260 PRINT "SUM = "; J
+  Origs: 250:auto
+  Dests: 270:auto
+(0 2) 270 PRINT "********************"
+  Origs: 260:auto
+  Dests: 280:auto
+(0 2) 280 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 270:auto
+  Dests: 290:auto
+(1 2) 290 INPUT X
+  Origs: 280:auto
+  Dests: 300:auto
+(1 4) 300 IF X = 1 THEN 320
+  Origs: 290:auto
+  Dests: 310:auto, 320:ifthen
+(0 1) 310 STOP
+  Origs: 300:auto
+  Dests: :stop
+(0 2) 320 PRINT
+  Origs: 300:ifthen
+  Dests: 330:auto
+(0 3) 330 GOTO 30
+  Origs: 320:auto
+  Dests: 30:goto
+(0 1) 340 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+340: END
+

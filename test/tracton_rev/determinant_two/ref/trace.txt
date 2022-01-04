@@ -1,0 +1,79 @@
+30: PRINT "ENTER A11, A12";
+ENTER A11, A12
+40: INPUT A, B
+? 5,3
+ A = 5
+ B = 3
+50: PRINT "A21, A22";
+A21, A22
+60: INPUT C, D
+? 2,1
+ C = 2
+ D = 1
+70: LET E = (D * A) - (B * C)
+ D: 1
+ A: 5
+ B: 3
+ C: 2
+ E = -1
+80: LET F = D / E
+ D: 1
+ E: -1
+ F = -1
+90: LET G = -B / E
+ B: 3
+ E: -1
+ G = 3
+100: LET H = -C / E
+ C: 2
+ E: -1
+ H = 2
+110: LET I = A / E
+ A: 5
+ E: -1
+ I = -5
+120: PRINT "ORIGINAL MATRIX"
+ORIGINAL MATRIX
+130: PRINT A, B
+ A: 5
+ 5              
+ B: 3
+ 3
+140: PRINT C, D
+ C: 2
+ 2              
+ D: 1
+ 1
+150: PRINT
+
+160: PRINT "INVERSE OF MATRIX"
+INVERSE OF MATRIX
+170: PRINT F, G
+ F: -1
+-1              
+ G: 3
+ 3
+180: PRINT H, I
+ H: 2
+ 2              
+ I: -5
+-5
+190: PRINT
+
+200: PRINT "DETERMINANT = "; E
+DETERMINANT = 
+ E: -1
+-1
+210: PRINT
+
+220: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+230: INPUT L
+? 0
+ L = 0
+240: IF L = 1 THEN 30
+ L: 0
+ L = 1: false
+250: STOP
+STOP in line 250
+

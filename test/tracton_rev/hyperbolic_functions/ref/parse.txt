@@ -1,0 +1,212 @@
+10 REM THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
+ Remark:THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
+20 PRINT "SINH (1)"
+ TextConstant:"SINH (1)"
+ CarriageControl:NL
+30 PRINT "COSH (2)"
+ TextConstant:"COSH (2)"
+ CarriageControl:NL
+40 PRINT "TANH (3)"
+ TextConstant:"TANH (3)"
+ CarriageControl:NL
+50 PRINT "CSCH (4)"
+ TextConstant:"CSCH (4)"
+ CarriageControl:NL
+60 PRINT "SECH (5)"
+ TextConstant:"SECH (5)"
+ CarriageControl:NL
+70 PRINT "COTH (6)"
+ TextConstant:"COTH (6)"
+ CarriageControl:NL
+80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ CarriageControl:NL
+90 INPUT C
+ Variable:C -> _
+100 ON C GOTO 110,160,210,270,320,370
+ ERROR: Unknown statement 'ON C GOTO 110,160,210,270,320,370'
+ Unimplemented
+110 GOSUB 490
+ LineNumber:490
+120 GOSUB 520
+ LineNumber:520
+130 LET Z = Y/2
+ Variable:Z -> _
+ Variable:Y -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+140 PRINT "SINH";X;" =";Z
+ TextConstant:"SINH"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+150 GOTO 420
+ LineNumber:420
+160 GOSUB 490
+ LineNumber:490
+170 GOSUB 540
+ LineNumber:540
+180 LET Z = B/2
+ Variable:Z -> _
+ Variable:B -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 PRINT "COSH";X;" =";Z
+ TextConstant:"COSH"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+200 GOTO 420
+ LineNumber:420
+210 GOSUB 490
+ LineNumber:490
+220 GOSUB 520
+ LineNumber:520
+230 GOSUB 540
+ LineNumber:540
+240 LET Z = Y/B
+ Variable:Z -> _
+ Variable:Y -> _
+ Variable:B -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+250 PRINT "TANH";X;" =";Z
+ TextConstant:"TANH"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+260 GOTO 420
+ LineNumber:420
+270 GOSUB 490
+ LineNumber:490
+280 GOSUB 520
+ LineNumber:520
+290 LET Z = 1/(Y/2)
+ Variable:Z -> _
+ NumericConstant:1
+ Variable:Y -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+300 PRINT "CSCH";X;" =";Z
+ TextConstant:"CSCH"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+310 GOTO 420
+ LineNumber:420
+320 GOSUB 490
+ LineNumber:490
+330 GOSUB 540
+ LineNumber:540
+340 LET Z = 1/(B/2)
+ Variable:Z -> _
+ NumericConstant:1
+ Variable:B -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+350 PRINT "SECH";X;" =";Z
+ TextConstant:"SECH"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+360 GOTO 420
+ LineNumber:420
+370 GOSUB 490
+ LineNumber:490
+380 GOSUB 520
+ LineNumber:520
+390 GOSUB 540
+ LineNumber:540
+400 LET Z = 1/(Y/B)
+ Variable:Z -> _
+ NumericConstant:1
+ Variable:Y -> _
+ Variable:B -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+410 PRINT "COTH";X;" =";Z
+ TextConstant:"COTH"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" ="
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+420 PRINT
+ CarriageControl:NL
+430 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+440 INPUT L
+ Variable:L -> _
+450 IF L = 1 THEN 470
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:470
+460 STOP
+ 
+470 PRINT
+ CarriageControl:NL
+480 GOTO 80
+ LineNumber:80
+490 PRINT "X = "
+ TextConstant:"X = "
+ CarriageControl:NL
+500 INPUT X
+ Variable:X -> _
+510 RETURN
+ 
+520 LET Y = EXP(X) - EXP(-X)
+ Variable:Y -> _
+ Variable:X -> _
+ FunctionExp:EXP(_) -> _
+ Variable:X -> _
+ UnaryOperatorMinus:-(_) -> _
+ FunctionExp:EXP(_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+530 RETURN
+ 
+540 LET B = EXP(X) + EXP(-X)
+ Variable:B -> _
+ Variable:X -> _
+ FunctionExp:EXP(_) -> _
+ Variable:X -> _
+ UnaryOperatorMinus:-(_) -> _
+ FunctionExp:EXP(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+550 RETURN
+ 
+560 END
+ 
+

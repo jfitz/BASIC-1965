@@ -1,0 +1,188 @@
+Statistics:
+
+Number of lines: 54
+Number of valid statements: 42
+Number of comments: 6
+Number of executable statements: 42
+
+Complexity:
+
+Comment density: 0.143
+Comprehension effort: 136
+McCabe complexity: 9
+Halstead complexity:
+ length: 137
+ volume: 541.320
+ difficulty: 15.000
+ effort: 8119.806
+ language: 2.406
+ intelligence: 36.088
+ time: 7.518
+
+(0 1) 100 REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
+  Origs: 
+  Dests: 
+(0 0) 110 
+  Origs: 
+  Dests: 
+(0 5) 120 LET N = 20 + INT(80 * RND(X))
+  Origs: :start, 390:goto
+  Dests: 130:auto
+(0 5) 130 LET K = 5 + INT(10 * RND(X))
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 PRINT "LEGAL MOVES ARE:"
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 PRINT "TAKE AWAY 1 THROUGH" K
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 PRINT "LAST PERSON TO MOVE LOSES"
+  Origs: 150:auto
+  Dests: 170:auto
+(0 2) 170 PRINT
+  Origs: 160:auto
+  Dests: 180:auto
+(0 3) 180 PRINT "THE INITIAL NUMBER IS" N
+  Origs: 170:auto
+  Dests: 190:auto
+(0 2) 190 PRINT
+  Origs: 180:auto
+  Dests: 220:auto
+(0 0) 200 
+  Origs: 
+  Dests: 
+(0 1) 210 REM OPPONENT'S MOVE
+  Origs: 
+  Dests: 
+(0 2) 220 PRINT "YOUR MOVE";
+  Origs: 190:auto, 290:goto, 510:goto
+  Dests: 230:auto
+(1 2) 230 INPUT X
+  Origs: 220:auto
+  Dests: 240:auto
+(1 4) 240 IF X > K THEN 270
+  Origs: 230:auto
+  Dests: 250:auto, 270:ifthen
+(1 4) 250 IF X < 1 THEN 270
+  Origs: 240:auto
+  Dests: 260:auto, 270:ifthen
+(1 4) 260 IF X <= N THEN 310
+  Origs: 250:auto
+  Dests: 270:auto, 320:ifthen
+(0 2) 270 PRINT "ILLEGAL MOVE"
+  Origs: 240:ifthen, 250:ifthen, 260:auto
+  Dests: 280:auto
+(0 2) 280 PRINT
+  Origs: 270:auto
+  Dests: 290:auto
+(0 3) 290 GOTO 210
+  Origs: 280:auto
+  Dests: 220:goto
+(0 0) 300 
+  Origs: 
+  Dests: 
+(0 1) 310 REM TEST FOR WIN
+  Origs: 
+  Dests: 
+(0 4) 320 LET N = N - X
+  Origs: 260:ifthen
+  Dests: 330:auto
+(1 4) 330 IF N > 0 THEN 410
+  Origs: 320:auto
+  Dests: 340:auto, 420:ifthen
+(0 2) 340 PRINT "I WIN ***"
+  Origs: 330:auto
+  Dests: 350:auto
+(0 2) 350 PRINT
+  Origs: 340:auto, 620:goto
+  Dests: 360:auto
+(0 2) 360 PRINT
+  Origs: 350:auto
+  Dests: 370:auto
+(0 2) 370 PRINT "NEW GAME."
+  Origs: 360:auto
+  Dests: 380:auto
+(0 2) 380 PRINT
+  Origs: 370:auto
+  Dests: 390:auto
+(0 3) 390 GOTO 120
+  Origs: 380:auto
+  Dests: 120:goto
+(0 0) 400 
+  Origs: 
+  Dests: 
+(0 1) 410 REM MACHINE'S MOVE
+  Origs: 
+  Dests: 
+(0 4) 420 LET Q = INT((N - 1) / (K + 1))
+  Origs: 330:ifthen
+  Dests: 430:auto
+(0 9) 430 LET Y = N - 1 - Q * (K + 1)
+  Origs: 420:auto
+  Dests: 440:auto
+(1 4) 440 IF Y = 0 THEN 530
+  Origs: 430:auto
+  Dests: 450:auto, 540:ifthen
+(0 4) 450 LET N = N - Y
+  Origs: 440:auto, 560:goto, 580:goto
+  Dests: 460:auto
+(0 3) 460 PRINT "MY MOVE:" Y
+  Origs: 450:auto
+  Dests: 470:auto
+(0 2) 470 PRINT
+  Origs: 460:auto
+  Dests: 480:auto
+(1 4) 480 IF N = 0 THEN 600
+  Origs: 470:auto
+  Dests: 490:auto, 610:ifthen
+(0 3) 490 PRINT "NEW TOTAL IS" N
+  Origs: 480:auto
+  Dests: 500:auto
+(0 2) 500 PRINT
+  Origs: 490:auto
+  Dests: 510:auto
+(0 3) 510 GOTO 210
+  Origs: 500:auto
+  Dests: 220:goto
+(0 0) 520 
+  Origs: 
+  Dests: 
+(0 1) 530 REM MAKE RANDOM MOVE
+  Origs: 
+  Dests: 
+(1 4) 540 IF N > 1 THEN 570
+  Origs: 440:ifthen
+  Dests: 550:auto, 570:ifthen
+(0 3) 550 LET Y = 1
+  Origs: 540:auto
+  Dests: 560:auto
+(0 3) 560 GOTO 450
+  Origs: 550:auto
+  Dests: 450:goto
+(0 5) 570 LET Y = 1 + INT(K * RND(0))
+  Origs: 540:ifthen
+  Dests: 580:auto
+(0 3) 580 GOTO 450
+  Origs: 570:auto
+  Dests: 450:goto
+(0 0) 590 
+  Origs: 
+  Dests: 
+(0 1) 600 REM MACHINE LOST
+  Origs: 
+  Dests: 
+(0 2) 610 PRINT "YOU WIN ***"
+  Origs: 480:ifthen
+  Dests: 620:auto
+(0 3) 620 GOTO 350
+  Origs: 610:auto
+  Dests: 350:goto
+(0 1) 630 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+630: END
+

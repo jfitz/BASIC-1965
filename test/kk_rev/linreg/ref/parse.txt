@@ -1,0 +1,310 @@
+100 LET X1 = 0
+ Variable:X1 -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+110 LET X2 = 0
+ Variable:X2 -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+120 LET Y1 = 0
+ Variable:Y1 -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+130 LET Y2 = 0
+ Variable:Y2 -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+140 LET Z = 0
+ Variable:Z -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+150
+160 READ N
+ Variable:N -> _
+170 FOR I = 1 TO N
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:N -> _"]
+180    READ X, Y
+ Variable:X -> _
+ Variable:Y -> _
+190    LET X1 = X1 + X
+ Variable:X1 -> _
+ Variable:X1 -> _
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+200    LET Y1 = Y1 + Y
+ Variable:Y1 -> _
+ Variable:Y1 -> _
+ Variable:Y -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+210    LET X2 = X2 + X*X
+ Variable:X2 -> _
+ Variable:X2 -> _
+ Variable:X -> _
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+220    LET Y2 = Y2 + Y*Y
+ Variable:Y2 -> _
+ Variable:Y2 -> _
+ Variable:Y -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+230    LET Z = Z + X*Y
+ Variable:Z -> _
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+240 NEXT I
+ Variable:I -> _
+250
+260 LET X3 = X1/N
+ Variable:X3 -> _
+ Variable:X1 -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+265 LET Y3 = Y1/N
+ Variable:Y3 -> _
+ Variable:Y1 -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+270 LET S1 = X2 - X1*X3
+ Variable:S1 -> _
+ Variable:X2 -> _
+ Variable:X1 -> _
+ Variable:X3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+280 LET S2 = Y2 - Y1*Y3
+ Variable:S2 -> _
+ Variable:Y2 -> _
+ Variable:Y1 -> _
+ Variable:Y3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+290 LET S = Z - X1*Y3
+ Variable:S -> _
+ Variable:Z -> _
+ Variable:X1 -> _
+ Variable:Y3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+300 LET B = S/S1
+ Variable:B -> _
+ Variable:S -> _
+ Variable:S1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+310 LET B1 = Y3 - B*X3
+ Variable:B1 -> _
+ Variable:Y3 -> _
+ Variable:B -> _
+ Variable:X3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+320 LET S3 = S2 - B*S
+ Variable:S3 -> _
+ Variable:S2 -> _
+ Variable:B -> _
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+330 LET S4 = S3/(N-2)
+ Variable:S4 -> _
+ Variable:S3 -> _
+ Variable:N -> _
+ NumericConstant:2
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+340
+350 PRINT "NUMBER = "N
+ TextConstant:"NUMBER = "
+ CarriageControl:
+ Variable:N -> _
+ CarriageControl:NL
+360 PRINT "MEAN OF X = "X3, "OF Y "Y3
+ TextConstant:"MEAN OF X = "
+ CarriageControl:
+ Variable:X3 -> _
+ CarriageControl:,
+ TextConstant:"OF Y "
+ CarriageControl:
+ Variable:Y3 -> _
+ CarriageControl:NL
+370 PRINT "SLOPE = "B, "Y-INTERCEPT = "B1
+ TextConstant:"SLOPE = "
+ CarriageControl:
+ Variable:B -> _
+ CarriageControl:,
+ TextConstant:"Y-INTERCEPT = "
+ CarriageControl:
+ Variable:B1 -> _
+ CarriageControl:NL
+375 PRINT
+ CarriageControl:NL
+380 PRINT "SUM-OF-SQUARES ", "TOTAL", Y2
+ TextConstant:"SUM-OF-SQUARES "
+ CarriageControl:,
+ TextConstant:"TOTAL"
+ CarriageControl:,
+ Variable:Y2 -> _
+ CarriageControl:NL
+390 PRINT "    ", "MEAN", Y3*Y1
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"MEAN"
+ CarriageControl:,
+ Variable:Y3 -> _
+ Variable:Y1 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ CarriageControl:NL
+400 PRINT "    ", "SLOPE", B*S
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"SLOPE"
+ CarriageControl:,
+ Variable:B -> _
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ CarriageControl:NL
+410 PRINT "    ", "RESIDUAL", S3
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"RESIDUAL"
+ CarriageControl:,
+ Variable:S3 -> _
+ CarriageControl:NL
+415 PRINT
+ CarriageControl:NL
+420 PRINT "STANDARD DEVIATIONS"
+ TextConstant:"STANDARD DEVIATIONS"
+ CarriageControl:NL
+430 PRINT "    ", "X  ", SQR(S1/(N - 1))
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"X  "
+ CarriageControl:,
+ Variable:S1 -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ CarriageControl:NL
+440 PRINT "    ", "Y  ", SQR(S2/(N-1))
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"Y  "
+ CarriageControl:,
+ Variable:S2 -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ CarriageControl:NL
+450 PRINT "    ", "ERROR", SQR(S4)
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"ERROR"
+ CarriageControl:,
+ Variable:S4 -> _
+ FunctionSqr:SQR(_) -> _
+ CarriageControl:NL
+460 PRINT "    ", "Y-BAR", SQR(S4/N)
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"Y-BAR"
+ CarriageControl:,
+ Variable:S4 -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ CarriageControl:NL
+470 PRINT "    ", "SLOPE", SQR(S4/S1)
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"SLOPE"
+ CarriageControl:,
+ Variable:S4 -> _
+ Variable:S1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ CarriageControl:NL
+480 PRINT "    ", "Y-INTER.", SQR(S4*(1/N + X3*X3/S1))
+ TextConstant:"    "
+ CarriageControl:,
+ TextConstant:"Y-INTER."
+ CarriageControl:,
+ Variable:S4 -> _
+ NumericConstant:1
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:X3 -> _
+ Variable:X3 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S1 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ CarriageControl:NL
+485 PRINT
+ CarriageControl:NL
+490 PRINT "F-RATIO FOR SLOPE = " B*S/S4
+ TextConstant:"F-RATIO FOR SLOPE = "
+ CarriageControl:
+ Variable:B -> _
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S4 -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ CarriageControl:NL
+500 PRINT "CORRELATION COEFFICIENT = " S/SQR(S1*S2)
+ TextConstant:"CORRELATION COEFFICIENT = "
+ CarriageControl:
+ Variable:S -> _
+ Variable:S1 -> _
+ Variable:S2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ CarriageControl:NL
+510
+900 DATA 5
+ NumericConstant:5
+901 DATA 480, 56
+ NumericConstant:480
+ NumericConstant:56
+902 DATA 500, 61
+ NumericConstant:500
+ NumericConstant:61
+903 DATA 520, 78
+ NumericConstant:520
+ NumericConstant:78
+904 DATA 540, 71
+ NumericConstant:540
+ NumericConstant:71
+905 DATA 560, 82
+ NumericConstant:560
+ NumericConstant:82
+999 END
+ 
+

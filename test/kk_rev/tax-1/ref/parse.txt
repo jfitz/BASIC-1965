@@ -1,0 +1,85 @@
+10 DIM D(20)
+ NumericConstant:20
+ Declaration:D() -> _()
+20 READ A,Y
+ Variable:A -> _
+ Variable:Y -> _
+100 FOR Y1 = 1 TO Y STEP 2
+ control: Variable:Y1 -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:Y -> _"]
+ step:    ["NumericConstant:2"]
+105    PRINT "CHANGE IN YEAR " Y1
+ TextConstant:"CHANGE IN YEAR "
+ CarriageControl:
+ Variable:Y1 -> _
+ CarriageControl:NL
+108    LET A1 = A
+ Variable:A1 -> _
+ Variable:A -> _
+ AssignmentOperator:= _ -> _
+110    FOR I = 1 TO Y1-1
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:Y1 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+120       LET D(I) = A1*2/Y
+ Variable:I -> _
+ Variable:D(_) -> _
+ Variable:A1 -> _
+ NumericConstant:2
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+130       LET A1 = A1 - D(I)
+ Variable:A1 -> _
+ Variable:A1 -> _
+ Variable:I -> _
+ Variable:D(_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+140       PRINT I;D(I)
+ Variable:I -> _
+ CarriageControl:;
+ Variable:I -> _
+ Variable:D(_) -> _
+ CarriageControl:NL
+150    NEXT I
+ Variable:I -> _
+160    LET D = A1/(Y-Y1+1)
+ Variable:D -> _
+ Variable:A1 -> _
+ Variable:Y -> _
+ Variable:Y1 -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+170    FOR I = Y1 TO Y
+ control: Variable:I -> _
+ start:   ["Variable:Y1 -> _"]
+ end:     ["Variable:Y -> _"]
+180       LET D(I) = D
+ Variable:I -> _
+ Variable:D(_) -> _
+ Variable:D -> _
+ AssignmentOperator:= _ -> _
+185       PRINT I;D(I)
+ Variable:I -> _
+ CarriageControl:;
+ Variable:I -> _
+ Variable:D(_) -> _
+ CarriageControl:NL
+190    NEXT I
+ Variable:I -> _
+195    PRINT
+ CarriageControl:NL
+290 NEXT Y1
+ Variable:Y1 -> _
+900 DATA 5000,7
+ NumericConstant:5000
+ NumericConstant:7
+999 END
+ 
+

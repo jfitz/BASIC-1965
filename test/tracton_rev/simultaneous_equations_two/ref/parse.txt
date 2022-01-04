@@ -1,0 +1,100 @@
+10 REM THIS PROGRAM COMPUTES TO SIMULTANEOUS EQUATIONS
+ Remark:THIS PROGRAM COMPUTES TO SIMULTANEOUS EQUATIONS
+20 REM IN TWO UNKNOWNS
+ Remark:IN TWO UNKNOWNS
+30 PRINT "AX + BY = E"
+ TextConstant:"AX + BY = E"
+ CarriageControl:NL
+40 PRINT "CX + DY = F"
+ TextConstant:"CX + DY = F"
+ CarriageControl:NL
+50 PRINT "ENTER PARAMETERS A,B,C,D,E,F"
+ TextConstant:"ENTER PARAMETERS A,B,C,D,E,F"
+ CarriageControl:NL
+60 INPUT A,B,C,D,E,F
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+ Variable:D -> _
+ Variable:E -> _
+ Variable:F -> _
+70 LET M = (A*D) - (B*C)
+ Variable:M -> _
+ Variable:A -> _
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 IF M = 0 THEN 140
+ Variable:M -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:140
+90 LET X = ((E*D) - (B*F))/M
+ Variable:X -> _
+ Variable:E -> _
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+100 LET Y = ((A*F) - (E*C))/M
+ Variable:Y -> _
+ Variable:A -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:E -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+110 PRINT "SOLUTION","X = ";X,"Y = ";Y
+ TextConstant:"SOLUTION"
+ CarriageControl:,
+ TextConstant:"X = "
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:,
+ TextConstant:"Y = "
+ CarriageControl:;
+ Variable:Y -> _
+ CarriageControl:NL
+120 PRINT "********************"
+ TextConstant:"********************"
+ CarriageControl:NL
+130 GOTO 160
+ LineNumber:160
+140 PRINT "NO SOLUTION, OR NO UNIQUE SOLUTION EXISTS"
+ TextConstant:"NO SOLUTION, OR NO UNIQUE SOLUTION EXISTS"
+ CarriageControl:NL
+150 PRINT "********************"
+ TextConstant:"********************"
+ CarriageControl:NL
+160 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+170 INPUT L
+ Variable:L -> _
+180 IF L = 1 THEN 200
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:200
+190 STOP
+ 
+200 PRINT
+ CarriageControl:NL
+210 GOTO 30
+ LineNumber:30
+220 END
+ 
+

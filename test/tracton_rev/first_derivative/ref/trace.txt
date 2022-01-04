@@ -1,0 +1,158 @@
+30: PRINT "VALUE OF X = ";
+VALUE OF X = 
+40: INPUT X
+? 10
+ X = 10
+50: LET Y = X
+ X: 10
+ Y = 10
+60: LET Z = (X * (1E-04)) / 2
+ X: 10
+ Z = 0.0005
+70: LET W = X + Z
+ X: 10
+ Z: 0.0005
+ W = 10.0005
+80: LET V = X - Z
+ X: 10
+ Z: 0.0005
+ V = 9.9995
+90: LET X = W
+ W: 10.0005
+ X = 10.0005
+100: GOSUB 280
+G(280) 280: LET P = X ^ 2
+ X: 10.0005
+ P = 100.01
+G(280) 290: RETURN
+110: LET A = P
+ P: 100.01
+ A = 100.01
+120: LET X = V
+ V: 9.9995
+ X = 9.9995
+130: GOSUB 280
+G(280) 280: LET P = X ^ 2
+ X: 9.9995
+ P = 99.99
+G(280) 290: RETURN
+140: LET B = P
+ P: 99.99
+ B = 99.99
+150: LET X = Y
+ Y: 10
+ X = 10
+160: GOSUB 280
+G(280) 280: LET P = X ^ 2
+ X: 10
+ P = 100
+G(280) 290: RETURN
+170: LET C = P
+ P: 100
+ C = 100
+180: LET F = (A - B) / (2 * Z)
+ A: 100.01
+ B: 99.99
+ Z: 0.0005
+ F = 20
+190: PRINT "IF X = "; Y, "THEN F(X) = "; C
+IF X = 
+ Y: 10
+ 10             THEN F(X) = 
+ C: 100
+ 100
+200: PRINT "AND F'(X) = "; F
+AND F'(X) = 
+ F: 20
+ 20
+210: PRINT
+
+220: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+230: INPUT L
+? 1
+ L = 1
+240: IF L = 1 THEN 260
+ L: 1
+ L = 1: true
+260: PRINT
+
+270: GOTO 40
+40: INPUT X
+? 20
+ X = 20
+50: LET Y = X
+ X: 20
+ Y = 20
+60: LET Z = (X * (1E-04)) / 2
+ X: 20
+ Z = 0.001
+70: LET W = X + Z
+ X: 20
+ Z: 0.001
+ W = 20.001
+80: LET V = X - Z
+ X: 20
+ Z: 0.001
+ V = 19.999
+90: LET X = W
+ W: 20.001
+ X = 20.001
+100: GOSUB 280
+G(280) 280: LET P = X ^ 2
+ X: 20.001
+ P = 400.04
+G(280) 290: RETURN
+110: LET A = P
+ P: 400.04
+ A = 400.04
+120: LET X = V
+ V: 19.999
+ X = 19.999
+130: GOSUB 280
+G(280) 280: LET P = X ^ 2
+ X: 19.999
+ P = 399.96
+G(280) 290: RETURN
+140: LET B = P
+ P: 399.96
+ B = 399.96
+150: LET X = Y
+ Y: 20
+ X = 20
+160: GOSUB 280
+G(280) 280: LET P = X ^ 2
+ X: 20
+ P = 400
+G(280) 290: RETURN
+170: LET C = P
+ P: 400
+ C = 400
+180: LET F = (A - B) / (2 * Z)
+ A: 400.04
+ B: 399.96
+ Z: 0.001
+ F = 40
+190: PRINT "IF X = "; Y, "THEN F(X) = "; C
+IF X = 
+ Y: 20
+ 20             THEN F(X) = 
+ C: 400
+ 400
+200: PRINT "AND F'(X) = "; F
+AND F'(X) = 
+ F: 40
+ 40
+210: PRINT
+
+220: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+230: INPUT L
+? 0
+ L = 0
+240: IF L = 1 THEN 260
+ L: 0
+ L = 1: false
+250: STOP
+STOP in line 250
+

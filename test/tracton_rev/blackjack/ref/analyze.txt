@@ -1,0 +1,385 @@
+Statistics:
+
+Number of lines: 116
+Number of valid statements: 112
+Number of comments: 3
+Number of executable statements: 112
+
+Complexity:
+
+Comment density: 0.027
+Comprehension effort: 290
+McCabe complexity: 18
+Halstead complexity:
+ length: 240
+ volume: 1119.225
+ difficulty: 11.946
+ effort: 13369.877
+ language: 7.843
+ intelligence: 93.693
+ time: 12.380
+
+(0 1) 10 REM BLACKJACK
+  Origs: 
+  Dests: 
+(0 2) 20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE YES"
+  Origs: :start, 80:goto, 1140:goto
+  Dests: 30:auto
+(0 2) 30 PRINT "IF NOT TYPE NO"
+  Origs: 20:auto
+  Dests: 40:auto
+(0 1) 40 INPUT C $
+   ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+  Origs: 30:auto
+  Dests: 50:auto
+(1 2) 50 IF C $ ="YES" THEN 90
+   ERROR: Token 'InvalidToken:$' is not a value or operator
+  Origs: 40:auto
+  Dests: 60:auto, 90:ifthen
+(1 2) 60 IF C $ ="NO " THEN 340
+   ERROR: Token 'InvalidToken:$' is not a value or operator
+  Origs: 50:auto
+  Dests: 70:auto, 340:ifthen
+(0 2) 70 PRINT "INVALID RESPONSE"
+  Origs: 60:auto
+  Dests: 80:auto
+(0 3) 80 GOTO 20
+  Origs: 70:auto
+  Dests: 20:goto
+(0 2) 90 PRINT
+  Origs: 50:ifthen
+  Dests: 100:auto
+(0 2) 100 PRINT "***************BLACKJACK***************"
+  Origs: 90:auto
+  Dests: 110:auto
+(0 2) 110 PRINT
+  Origs: 100:auto
+  Dests: 120:auto
+(0 2) 120 PRINT "THE COMPUTER AS THE DEALER, DEALS TWO CARDS TO ITSELF"
+  Origs: 110:auto
+  Dests: 130:auto
+(0 2) 130 PRINT "AND TWO CARDS TO THE PLAYER. THE PLAYER'S TWO CARDS"
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 PRINT "ARE SHOWN FACE UP, WHILE ONLY ONE OF THE DEALER'S"
+  Origs: 130:auto
+  Dests: 150:auto
+(0 2) 150 PRINT "CARDS IS SHOWN. BOTH THE DEALER AND THE PLAYER"
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 PRINT "MAY DRAW ADDITIONAL CARDS."
+  Origs: 150:auto
+  Dests: 170:auto
+(0 2) 170 PRINT "THE PLAYER'S GOAL IS TO REACH 21 OR LESS, BUT"
+  Origs: 160:auto
+  Dests: 180:auto
+(0 2) 180 PRINT "BE CLOSER TO 21 THAN THE DEALER'S HAND."
+  Origs: 170:auto
+  Dests: 190:auto
+(0 2) 190 PRINT "IF THE PLAYER'S OR THE DEALER'S HAND TOTALS"
+  Origs: 180:auto
+  Dests: 200:auto
+(0 2) 200 PRINT "GREATER THAN 21 HE IS BUSTED! THE KING"
+  Origs: 190:auto
+  Dests: 210:auto
+(0 2) 210 PRINT "THE QUEEN AND THE JACK ALL COUNT AS 10 POINTS."
+  Origs: 200:auto
+  Dests: 220:auto
+(0 2) 220 PRINT "ALL OTHER CARDS EXCEPT THE ACE COUNT AS THEIR FACE"
+  Origs: 210:auto
+  Dests: 230:auto
+(0 2) 230 PRINT "VALUE SHOWS. THE ACE COUNTS AS 11 UNLESS THIS"
+  Origs: 220:auto
+  Dests: 240:auto
+(0 2) 240 PRINT "WOULD CAUSE THE HAND TO BE OVER 21, IN THAT"
+  Origs: 230:auto
+  Dests: 250:auto
+(0 2) 250 PRINT "CASE THE ACE COUNTS AS 1."
+  Origs: 240:auto
+  Dests: 260:auto
+(0 2) 260 PRINT "IF BOTH THE DEALER AND THE PLAYER GET BLACKJACK"
+  Origs: 250:auto
+  Dests: 270:auto
+(0 2) 270 PRINT "WHICH IS A TWO CARD HAND TOTALING 21"
+  Origs: 260:auto
+  Dests: 280:auto
+(0 2) 280 PRINT "NEITHER WINS, IT IS A PUSH"
+  Origs: 270:auto
+  Dests: 290:auto
+(0 2) 290 PRINT "IF THE DEALER'S HAND IS BELOW OR EQUAL TO 16"
+  Origs: 280:auto
+  Dests: 300:auto
+(0 2) 300 PRINT "HE MUST DRAW, AFTER 17 THE DEALER MUST STAND"
+  Origs: 290:auto
+  Dests: 310:auto
+(0 2) 310 PRINT "TO RECEIVE A CARD YOU WANT A HIT-"
+  Origs: 300:auto
+  Dests: 320:auto
+(0 2) 320 PRINT "TO STOP WHERE YOU ARE YOU STAND-"
+  Origs: 310:auto
+  Dests: 330:auto
+(0 2) 330 PRINT
+  Origs: 320:auto
+  Dests: 340:auto
+(0 2) 340 PRINT "***GOOD-LUCK-----MAY THE BEST ONE WIN***"
+  Origs: 60:ifthen, 330:auto
+  Dests: 360:auto
+(0 1) 350 REM 1ST HAND
+  Origs: 
+  Dests: 
+(0 1) 355 
+    ERROR: Unknown statement 'RANDOMIZE'
+  Origs: 
+  Dests: 
+(0 3) 360 LET D = 0
+  Origs: 340:auto
+  Dests: 370:auto
+(0 3) 370 LET P = D
+  Origs: 360:auto
+  Dests: 380:auto
+(0 2) 380 GOSUB 820
+  Origs: 370:auto
+  Dests: 390:auto, 820:gosub
+(0 3) 390 LET D1 = C
+  Origs: 380:auto
+  Dests: 400:auto
+(0 2) 400 GOSUB 820
+  Origs: 390:auto
+  Dests: 410:auto, 820:gosub
+(0 3) 410 LET D2 = C
+  Origs: 400:auto
+  Dests: 420:auto
+(0 2) 420 GOSUB 820
+  Origs: 410:auto
+  Dests: 430:auto, 820:gosub
+(0 3) 430 LET P1 = C
+  Origs: 420:auto
+  Dests: 440:auto
+(0 2) 440 GOSUB 820
+  Origs: 430:auto
+  Dests: 450:auto, 820:gosub
+(0 3) 450 LET P2 = C
+  Origs: 440:auto
+  Dests: 460:auto
+(0 2) 460 PRINT
+  Origs: 450:auto
+  Dests: 470:auto
+(0 4) 470 PRINT "THE DEALER HAS A "; D1; " SHOWING"
+  Origs: 460:auto
+  Dests: 480:auto
+(0 5) 480 PRINT "YOU HAVE A "; P1; " AND A "; P2
+  Origs: 470:auto
+  Dests: 490:auto
+(0 4) 490 PRINT "YOUR TOTAL IS "; P1 + P2
+  Origs: 480:auto
+  Dests: 500:auto
+(0 4) 500 LET D = D1 + D2
+  Origs: 490:auto
+  Dests: 510:auto
+(0 4) 510 LET P = P1 + P2
+  Origs: 500:auto
+  Dests: 520:auto
+(1 4) 520 IF P = 21 THEN 640
+  Origs: 510:auto
+  Dests: 530:auto, 640:ifthen
+(0 2) 530 GOSUB 960
+  Origs: 520:auto, 730:goto
+  Dests: 540:auto, 960:gosub
+(1 4) 540 IF L = 1 THEN 690
+  Origs: 530:auto
+  Dests: 550:auto, 690:ifthen
+(1 4) 550 IF D <= 16 THEN 740
+  Origs: 540:auto
+  Dests: 560:auto, 740:ifthen
+(0 3) 560 PRINT "THE DEALER HAS "; D
+  Origs: 550:auto, 660:goto, 810:goto
+  Dests: 570:auto
+(0 3) 570 PRINT "YOU HAVE "; P
+  Origs: 560:auto
+  Dests: 580:auto
+(1 4) 580 IF P > D THEN 620
+  Origs: 570:auto
+  Dests: 600:auto, 620:ifthen
+(0 1) 590 REM WIN OR LOSS STATEMENTS
+  Origs: 
+  Dests: 
+(0 2) 600 PRINT "THE DEALER HAS WON!!!"
+  Origs: 580:auto, 720:ifthen
+  Dests: 610:auto
+(0 2) 610 GOTO 1060
+  Origs: 600:auto
+  Dests: 1060:goto
+(0 2) 620 PRINT "YOU HAVE WON!!!"
+  Origs: 580:ifthen, 790:ifthen
+  Dests: 630:auto
+(0 2) 630 GOTO 1060
+  Origs: 620:auto
+  Dests: 1060:goto
+(0 2) 640 PRINT "***YOU HAVE BLACKJACK***"
+  Origs: 520:ifthen
+  Dests: 650:auto
+(1 4) 650 IF D = 21 THEN 670
+  Origs: 640:auto
+  Dests: 660:auto, 670:ifthen
+(0 3) 660 GOTO 560
+  Origs: 650:auto
+  Dests: 560:goto
+(0 2) 670 PRINT "THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
+  Origs: 650:ifthen
+  Dests: 680:auto
+(0 2) 680 GOTO 1060
+  Origs: 670:auto
+  Dests: 1060:goto
+(0 2) 690 GOSUB 890
+  Origs: 540:ifthen
+  Dests: 700:auto, 890:gosub
+(0 3) 700 PRINT "YOUR CARD IS "; C
+  Origs: 690:auto
+  Dests: 710:auto
+(0 4) 710 LET P = P + C
+  Origs: 700:auto
+  Dests: 720:auto
+(1 5) 720 IF P > 21 THEN 600
+  Origs: 710:auto
+  Dests: 600:ifthen, 730:auto
+(0 3) 730 GOTO 530
+  Origs: 720:auto
+  Dests: 530:goto
+(0 3) 740 PRINT "THE DEALER HAS "; D
+  Origs: 550:ifthen
+  Dests: 750:auto
+(0 2) 750 GOSUB 820
+  Origs: 740:auto, 800:ifthen
+  Dests: 760:auto, 820:gosub
+(0 4) 760 LET D = D + C
+  Origs: 750:auto
+  Dests: 770:auto
+(0 3) 770 PRINT "THE DEALER DRAWS A "; C
+  Origs: 760:auto
+  Dests: 780:auto
+(0 3) 780 PRINT "HIS TOTAL IS "; D
+  Origs: 770:auto
+  Dests: 790:auto
+(1 5) 790 IF D > 21 THEN 620
+  Origs: 780:auto
+  Dests: 620:ifthen, 800:auto
+(1 5) 800 IF D <= 17 THEN 750
+  Origs: 790:auto
+  Dests: 750:ifthen, 810:auto
+(0 3) 810 GOTO 560
+  Origs: 800:auto
+  Dests: 560:goto
+G(820) (0 5) 820 LET C = 1 + INT(11 * RND)
+  Origs: 380:gosub, 400:gosub, 420:gosub, 440:gosub, 750:gosub
+  Dests: 830:auto
+G(820) (1 2) 830 IF C = =11 THEN 850
+    ERROR: Token 'OperatorToken:=' is not a value or operator
+  Origs: 820:auto
+  Dests: 840:auto, 850:ifthen
+G(820) (0 2) 840 GOTO 880
+  Origs: 830:auto
+  Dests: 880:goto
+G(820) (1 5) 850 IF D + C > 21 THEN 870
+  Origs: 830:ifthen
+  Dests: 860:auto, 870:ifthen
+G(820) (0 2) 860 GOTO 880
+  Origs: 850:auto
+  Dests: 880:goto
+G(820) (0 3) 870 LET C = 1
+  Origs: 850:ifthen
+  Dests: 880:auto
+G(820) (0 1) 880 RETURN
+  Origs: 840:goto, 860:goto, 870:auto
+  Dests: 
+G(890) (0 5) 890 LET C = 1 + INT(11 * RND)
+  Origs: 690:gosub
+  Dests: 900:auto
+G(890) (1 4) 900 IF C = 11 THEN 920
+  Origs: 890:auto
+  Dests: 910:auto, 920:ifthen
+G(890) (0 2) 910 GOTO 950
+  Origs: 900:auto
+  Dests: 950:goto
+G(890) (1 5) 920 IF P + C > 21 THEN 940
+  Origs: 900:ifthen
+  Dests: 930:auto, 940:ifthen
+G(890) (0 2) 930 GOTO 950
+  Origs: 920:auto
+  Dests: 950:goto
+G(890) (0 3) 940 LET C = 1
+  Origs: 920:ifthen
+  Dests: 950:auto
+G(890) (0 1) 950 RETURN
+  Origs: 910:goto, 930:goto, 940:auto
+  Dests: 
+G(960) (0 2) 960 PRINT "DO YOU WANT A HIT, OR DO YOU STAND"
+  Origs: 530:gosub, 1010:goto
+  Inconsistent GOSUB origins
+  Dests: 970:auto
+G(960) (0 1) 970 INPUT Q $
+    ERROR: Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
+  Origs: 960:auto
+  Dests: 980:auto
+G(960) (1 2) 980 IF Q $ ="HIT" THEN 1020
+    ERROR: Token 'InvalidToken:$' is not a value or operator
+  Origs: 970:auto
+  Dests: 990:auto, 1020:ifthen
+G(960) (1 2) 990 IF Q $ ="STAND" THEN 1040
+    ERROR: Token 'InvalidToken:$' is not a value or operator
+  Origs: 980:auto
+  Dests: 1000:auto, 1040:ifthen
+G(960) (0 2) 1000 PRINT "INVALID RESPONSE"
+  Origs: 990:auto
+  Dests: 1010:auto
+G(960) (0 3) 1010 GOTO 960
+  Origs: 1000:auto
+  Dests: 960:goto
+G(960) (0 3) 1020 LET L = 1
+  Origs: 980:ifthen
+  Dests: 1030:auto
+G(960) (0 2) 1030 GOTO 1050
+  Origs: 1020:auto
+  Dests: 1050:goto
+G(960) (0 3) 1040 LET L = 0
+  Origs: 990:ifthen
+  Dests: 1050:auto
+G(960) (0 1) 1050 RETURN
+  Origs: 1030:goto, 1040:auto
+  Dests: 
+(0 2) 1060 PRINT
+  Origs: 610:goto, 630:goto, 680:goto
+  Dests: 1070:auto
+(0 2) 1070 PRINT "DO YOU WISH TO PLAY AGAIN"
+  Origs: 1060:auto
+  Dests: 1080:auto
+(0 2) 1080 PRINT "TYPE YES OR NO"
+  Origs: 1070:auto
+  Dests: 1090:auto
+(0 1) 1090 INPUT L $
+     ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+  Origs: 1080:auto
+  Dests: 1100:auto
+(1 2) 1100 IF L $ ="YES" THEN 1130
+     ERROR: Token 'InvalidToken:$' is not a value or operator
+  Origs: 1090:auto
+  Dests: 1110:auto, 1130:ifthen
+(0 2) 1110 PRINT "BLACKJACK SAYS GOOD-BYE"
+  Origs: 1100:auto
+  Dests: 1120:auto
+(0 1) 1120 STOP
+  Origs: 1110:auto
+  Dests: :stop
+(0 2) 1130 PRINT
+  Origs: 1100:ifthen
+  Dests: 1140:auto
+(0 3) 1140 GOTO 20
+  Origs: 1130:auto
+  Dests: 20:goto
+(0 1) 1150 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+1150: END
+

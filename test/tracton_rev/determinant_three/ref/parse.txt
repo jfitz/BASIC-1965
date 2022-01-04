@@ -1,0 +1,243 @@
+10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+ Remark:THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+20 PRINT "ENTER 3 X 3 MATRIX"
+ TextConstant:"ENTER 3 X 3 MATRIX"
+ CarriageControl:NL
+30 INPUT A,B,C,D,E,F,G,H,I
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+ Variable:D -> _
+ Variable:E -> _
+ Variable:F -> _
+ Variable:G -> _
+ Variable:H -> _
+ Variable:I -> _
+40 REM COMPUTE DETERMINANT OF 3X3
+ Remark:COMPUTE DETERMINANT OF 3X3
+50 LET M = (A*E*I) + (B*F*G) + (C*H*D)
+ Variable:M -> _
+ Variable:A -> _
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:G -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+60 LET N = M - (C*E*G) - (F*H*A) - (I*D*B)
+ Variable:N -> _
+ Variable:M -> _
+ Variable:C -> _
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:G -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:F -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:I -> _
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+70 REM COMPUTE INVERSE
+ Remark:COMPUTE INVERSE
+80 LET O = ((E*I) - (H*F))/N
+ Variable:O -> _
+ Variable:E -> _
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:H -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET P = ((G*F) - (D*I))/N
+ Variable:P -> _
+ Variable:G -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D -> _
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+100 LET Q = ((D*H) - (G*E))/N
+ Variable:Q -> _
+ Variable:D -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:G -> _
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+110 LET R = ((H*C) - (B*I))/N
+ Variable:R -> _
+ Variable:H -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+120 LET S = ((A*I) - (G*C))/N
+ Variable:S -> _
+ Variable:A -> _
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:G -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+130 LET T = ((G*B) - (A*H))/N
+ Variable:T -> _
+ Variable:G -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+140 LET U = ((B*F) - (E*C))/N
+ Variable:U -> _
+ Variable:B -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:E -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+150 LET V = ((D*C) - (A*F))/N
+ Variable:V -> _
+ Variable:D -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A -> _
+ Variable:F -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+160 LET W = ((A*E) - (D*B))/N
+ Variable:W -> _
+ Variable:A -> _
+ Variable:E -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+170 PRINT "ORIGINAL MATRIX"
+ TextConstant:"ORIGINAL MATRIX"
+ CarriageControl:NL
+180 PRINT A,B,C
+ Variable:A -> _
+ CarriageControl:,
+ Variable:B -> _
+ CarriageControl:,
+ Variable:C -> _
+ CarriageControl:NL
+190 PRINT D,E,F
+ Variable:D -> _
+ CarriageControl:,
+ Variable:E -> _
+ CarriageControl:,
+ Variable:F -> _
+ CarriageControl:NL
+200 PRINT G,H,I
+ Variable:G -> _
+ CarriageControl:,
+ Variable:H -> _
+ CarriageControl:,
+ Variable:I -> _
+ CarriageControl:NL
+210 PRINT
+ CarriageControl:NL
+220 PRINT "DETERMINANT = ";N
+ TextConstant:"DETERMINANT = "
+ CarriageControl:;
+ Variable:N -> _
+ CarriageControl:NL
+230 PRINT
+ CarriageControl:NL
+240 PRINT "INVERSE OF MATRIX"
+ TextConstant:"INVERSE OF MATRIX"
+ CarriageControl:NL
+250 PRINT O,R,U
+ Variable:O -> _
+ CarriageControl:,
+ Variable:R -> _
+ CarriageControl:,
+ Variable:U -> _
+ CarriageControl:NL
+260 PRINT P,S,V
+ Variable:P -> _
+ CarriageControl:,
+ Variable:S -> _
+ CarriageControl:,
+ Variable:V -> _
+ CarriageControl:NL
+270 PRINT Q,T,W
+ Variable:Q -> _
+ CarriageControl:,
+ Variable:T -> _
+ CarriageControl:,
+ Variable:W -> _
+ CarriageControl:NL
+280 PRINT
+ CarriageControl:NL
+290 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+300 INPUT L
+ Variable:L -> _
+310 IF L = 1 THEN 20
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:20
+320 STOP
+ 
+330 END
+ 
+

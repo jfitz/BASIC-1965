@@ -1,0 +1,73 @@
+VALUE OF A = 
+? 10
+VALUE OF B = 
+? 2
+DIFFERENCE = 
+? 3
+NUMBER OF TERMS = 
+? 20
+FOR TABLE TYPE 1, IF NOT TYPE 0
+? 1
+HARMONIC PROGRESSION
+TERM NUMBER     TERM VALUE
+ 1               5
+ 2               2
+ 3               1.25
+ 4               0.909091
+ 5               0.714286
+ 6               0.588235
+ 7               0.5
+ 8               0.434783
+ 9               0.384615
+ 10              0.344828
+ 11              0.3125
+ 12              0.285714
+ 13              0.263158
+ 14              0.243902
+ 15              0.227273
+ 16              0.212766
+ 17              0.2
+ 18              0.188679
+ 19              0.178571
+ 20              0.169492
+SUM =  14.408
+********************
+TYPE 1 TO CONTINUE, 0 TO STOP
+? 0
+STOP in line 310
+
+10 (0) REM THIS PROGRAM COMPUTES A SERIES OF HARMONIC
+20 (0) REM PROGRESSIONS
+30 (1) PRINT "VALUE OF A = "
+40 (1) INPUT A
+50 (1) PRINT "VALUE OF B = "
+60 (1) INPUT B
+70 (1) PRINT "DIFFERENCE = "
+80 (1) INPUT D
+90 (1) PRINT "NUMBER OF TERMS = "
+100 (1) INPUT N
+110 (1) PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+120 (1) INPUT C
+130 (1) IF C = 1 THEN 150
+140 (0) GOTO 170
+150 (1) PRINT "HARMONIC PROGRESSION"
+160 (1) PRINT "TERM NUMBER", "TERM VALUE"
+170 (1) LET J = 0
+180 (1) FOR I = 0 TO N - 1
+190 (20) LET K = I + 1
+200 (20) LET L = A / (B + (I * D))
+210 (20) LET J = J + L
+220 (20) IF C = 1 THEN 240
+230 (0) GOTO 250
+240 (20) PRINT K, L
+250 (20) NEXT I
+260 (1) PRINT "SUM = "; J
+270 (1) PRINT "********************"
+280 (1) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+290 (1) INPUT X
+300 (1) IF X = 1 THEN 320
+310 (1) STOP
+320 (0) PRINT
+330 (0) GOTO 30
+340 (0) END
+

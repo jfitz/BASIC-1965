@@ -1,0 +1,92 @@
+Statistics:
+
+Number of lines: 22
+Number of valid statements: 20
+Number of comments: 2
+Number of executable statements: 20
+
+Complexity:
+
+Comment density: 0.100
+Comprehension effort: 71
+McCabe complexity: 10
+Halstead complexity:
+ length: 86
+ volume: 327.373
+ difficulty: 6.286
+ effort: 2057.773
+ language: 8.286
+ intelligence: 52.082
+ time: 1.905
+
+(0 1) 10 REM THIS PROGRAM COMPUTES TO SIMULTANEOUS EQUATIONS
+  Origs: 
+  Dests: 
+(0 1) 20 REM IN TWO UNKNOWNS
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "AX + BY = E"
+  Origs: :start, 210:goto
+  Dests: 40:auto
+(0 2) 40 PRINT "CX + DY = F"
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 PRINT "ENTER PARAMETERS A,B,C,D,E,F"
+  Origs: 40:auto
+  Dests: 60:auto
+(6 7) 60 INPUT A, B, C, D, E, F
+  Origs: 50:auto
+  Dests: 70:auto
+(0 7) 70 LET M = (A * D) - (B * C)
+  Origs: 60:auto
+  Dests: 80:auto
+(1 4) 80 IF M = 0 THEN 140
+  Origs: 70:auto
+  Dests: 90:auto, 140:ifthen
+(0 8) 90 LET X = ((E * D) - (B * F)) / M
+  Origs: 80:auto
+  Dests: 100:auto
+(0 8) 100 LET Y = ((A * F) - (E * C)) / M
+  Origs: 90:auto
+  Dests: 110:auto
+(0 6) 110 PRINT "SOLUTION", "X = "; X, "Y = "; Y
+  Origs: 100:auto
+  Dests: 120:auto
+(0 2) 120 PRINT "********************"
+  Origs: 110:auto
+  Dests: 130:auto
+(0 2) 130 GOTO 160
+  Origs: 120:auto
+  Dests: 160:goto
+(0 2) 140 PRINT "NO SOLUTION, OR NO UNIQUE SOLUTION EXISTS"
+  Origs: 80:ifthen
+  Dests: 150:auto
+(0 2) 150 PRINT "********************"
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 130:goto, 150:auto
+  Dests: 170:auto
+(1 2) 170 INPUT L
+  Origs: 160:auto
+  Dests: 180:auto
+(1 4) 180 IF L = 1 THEN 200
+  Origs: 170:auto
+  Dests: 190:auto, 200:ifthen
+(0 1) 190 STOP
+  Origs: 180:auto
+  Dests: :stop
+(0 2) 200 PRINT
+  Origs: 180:ifthen
+  Dests: 210:auto
+(0 3) 210 GOTO 30
+  Origs: 200:auto
+  Dests: 30:goto
+(0 1) 220 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+220: END
+

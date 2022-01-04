@@ -1,0 +1,125 @@
+Statistics:
+
+Number of lines: 33
+Number of valid statements: 30
+Number of comments: 3
+Number of executable statements: 30
+
+Complexity:
+
+Comment density: 0.100
+Comprehension effort: 163
+McCabe complexity: 12
+Halstead complexity:
+ length: 254
+ volume: 1035.695
+ difficulty: 11.429
+ effort: 11836.509
+ language: 7.930
+ intelligence: 90.623
+ time: 10.960
+
+(0 1) 10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
+  Origs: 
+  Dests: 
+(0 2) 20 PRINT "ENTER 3 X 3 MATRIX"
+  Origs: :start, 310:ifthen
+  Dests: 30:auto
+(9 10) 30 INPUT A, B, C, D, E, F, G, H, I
+  Origs: 20:auto
+  Dests: 50:auto
+(0 1) 40 REM COMPUTE DETERMINANT OF 3X3
+  Origs: 
+  Dests: 
+(0 13) 50 LET M = (A * E * I) + (B * F * G) + (C * H * D)
+  Origs: 30:auto
+  Dests: 60:auto
+(0 15) 60 LET N = M - (C * E * G) - (F * H * A) - (I * D * B)
+  Origs: 50:auto
+  Dests: 80:auto
+(0 1) 70 REM COMPUTE INVERSE
+  Origs: 
+  Dests: 
+(0 8) 80 LET O = ((E * I) - (H * F)) / N
+  Origs: 60:auto
+  Dests: 90:auto
+(0 8) 90 LET P = ((G * F) - (D * I)) / N
+  Origs: 80:auto
+  Dests: 100:auto
+(0 8) 100 LET Q = ((D * H) - (G * E)) / N
+  Origs: 90:auto
+  Dests: 110:auto
+(0 8) 110 LET R = ((H * C) - (B * I)) / N
+  Origs: 100:auto
+  Dests: 120:auto
+(0 8) 120 LET S = ((A * I) - (G * C)) / N
+  Origs: 110:auto
+  Dests: 130:auto
+(0 8) 130 LET T = ((G * B) - (A * H)) / N
+  Origs: 120:auto
+  Dests: 140:auto
+(0 8) 140 LET U = ((B * F) - (E * C)) / N
+  Origs: 130:auto
+  Dests: 150:auto
+(0 8) 150 LET V = ((D * C) - (A * F)) / N
+  Origs: 140:auto
+  Dests: 160:auto
+(0 8) 160 LET W = ((A * E) - (D * B)) / N
+  Origs: 150:auto
+  Dests: 170:auto
+(0 2) 170 PRINT "ORIGINAL MATRIX"
+  Origs: 160:auto
+  Dests: 180:auto
+(0 4) 180 PRINT A, B, C
+  Origs: 170:auto
+  Dests: 190:auto
+(0 4) 190 PRINT D, E, F
+  Origs: 180:auto
+  Dests: 200:auto
+(0 4) 200 PRINT G, H, I
+  Origs: 190:auto
+  Dests: 210:auto
+(0 2) 210 PRINT
+  Origs: 200:auto
+  Dests: 220:auto
+(0 3) 220 PRINT "DETERMINANT = "; N
+  Origs: 210:auto
+  Dests: 230:auto
+(0 2) 230 PRINT
+  Origs: 220:auto
+  Dests: 240:auto
+(0 2) 240 PRINT "INVERSE OF MATRIX"
+  Origs: 230:auto
+  Dests: 250:auto
+(0 4) 250 PRINT O, R, U
+  Origs: 240:auto
+  Dests: 260:auto
+(0 4) 260 PRINT P, S, V
+  Origs: 250:auto
+  Dests: 270:auto
+(0 4) 270 PRINT Q, T, W
+  Origs: 260:auto
+  Dests: 280:auto
+(0 2) 280 PRINT
+  Origs: 270:auto
+  Dests: 290:auto
+(0 2) 290 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 280:auto
+  Dests: 300:auto
+(1 2) 300 INPUT L
+  Origs: 290:auto
+  Dests: 310:auto
+(1 5) 310 IF L = 1 THEN 20
+  Origs: 300:auto
+  Dests: 20:ifthen, 320:auto
+(0 1) 320 STOP
+  Origs: 310:auto
+  Dests: :stop
+(0 1) 330 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+330: END
+

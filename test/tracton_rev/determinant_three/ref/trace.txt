@@ -1,0 +1,166 @@
+20: PRINT "ENTER 3 X 3 MATRIX"
+ENTER 3 X 3 MATRIX
+30: INPUT A, B, C, D, E, F, G, H, I
+? 1,4,2,2,4,2,3,5,1
+ A = 1
+ B = 4
+ C = 2
+ D = 2
+ E = 4
+ F = 2
+ G = 3
+ H = 5
+ I = 1
+50: LET M = (A * E * I) + (B * F * G) + (C * H * D)
+ A: 1
+ E: 4
+ I: 1
+ B: 4
+ F: 2
+ G: 3
+ C: 2
+ H: 5
+ D: 2
+ M = 48
+60: LET N = M - (C * E * G) - (F * H * A) - (I * D * B)
+ M: 48
+ C: 2
+ E: 4
+ G: 3
+ F: 2
+ H: 5
+ A: 1
+ I: 1
+ D: 2
+ B: 4
+ N = 6
+80: LET O = ((E * I) - (H * F)) / N
+ E: 4
+ I: 1
+ H: 5
+ F: 2
+ N: 6
+ O = -1
+90: LET P = ((G * F) - (D * I)) / N
+ G: 3
+ F: 2
+ D: 2
+ I: 1
+ N: 6
+ P = 0.666667
+100: LET Q = ((D * H) - (G * E)) / N
+ D: 2
+ H: 5
+ G: 3
+ E: 4
+ N: 6
+ Q = -0.333333
+110: LET R = ((H * C) - (B * I)) / N
+ H: 5
+ C: 2
+ B: 4
+ I: 1
+ N: 6
+ R = 1
+120: LET S = ((A * I) - (G * C)) / N
+ A: 1
+ I: 1
+ G: 3
+ C: 2
+ N: 6
+ S = -0.833333
+130: LET T = ((G * B) - (A * H)) / N
+ G: 3
+ B: 4
+ A: 1
+ H: 5
+ N: 6
+ T = 1.16667
+140: LET U = ((B * F) - (E * C)) / N
+ B: 4
+ F: 2
+ E: 4
+ C: 2
+ N: 6
+ U = 0
+150: LET V = ((D * C) - (A * F)) / N
+ D: 2
+ C: 2
+ A: 1
+ F: 2
+ N: 6
+ V = 0.333333
+160: LET W = ((A * E) - (D * B)) / N
+ A: 1
+ E: 4
+ D: 2
+ B: 4
+ N: 6
+ W = -0.666667
+170: PRINT "ORIGINAL MATRIX"
+ORIGINAL MATRIX
+180: PRINT A, B, C
+ A: 1
+ 1              
+ B: 4
+ 4              
+ C: 2
+ 2
+190: PRINT D, E, F
+ D: 2
+ 2              
+ E: 4
+ 4              
+ F: 2
+ 2
+200: PRINT G, H, I
+ G: 3
+ 3              
+ H: 5
+ 5              
+ I: 1
+ 1
+210: PRINT
+
+220: PRINT "DETERMINANT = "; N
+DETERMINANT = 
+ N: 6
+ 6
+230: PRINT
+
+240: PRINT "INVERSE OF MATRIX"
+INVERSE OF MATRIX
+250: PRINT O, R, U
+ O: -1
+-1              
+ R: 1
+ 1              
+ U: 0
+ 0
+260: PRINT P, S, V
+ P: 0.666667
+ 0.666667       
+ S: -0.833333
+-0.833333       
+ V: 0.333333
+ 0.333333
+270: PRINT Q, T, W
+ Q: -0.333333
+-0.333333       
+ T: 1.16667
+ 1.16667        
+ W: -0.666667
+-0.666667
+280: PRINT
+
+290: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+300: INPUT L
+? 0
+ L = 0
+310: IF L = 1 THEN 20
+ L: 0
+ L = 1: false
+320: STOP
+STOP in line 320
+

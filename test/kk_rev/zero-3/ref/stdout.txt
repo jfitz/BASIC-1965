@@ -1,0 +1,20 @@
+ONE ZERO AT 0.7331566810607915
+STOP in line 999
+
+10 FNF(_) (0) DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+20 (1) READ A, B
+22 (1) LET S = SGN(FNF(A))
+24 (1) IF S = 0 THEN 95
+26 (1) LET X(1 + S) = A
+28 (1) LET X(1 - S) = B
+30 (21) LET X = (X(0) + X(2)) / 2
+35 (21) LET F = SGN(FNF(X))
+40 (21) IF F = 0 THEN 100
+50 (21) LET X(1 + F) = X
+80 (21) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 100
+90 (20) GOTO 30
+95 (0) LET X = A
+100 (1) PRINT "ONE ZERO AT" X
+900 (0) DATA 0, 1
+999 (1) END
+

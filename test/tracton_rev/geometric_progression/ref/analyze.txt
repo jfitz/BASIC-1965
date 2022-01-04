@@ -1,0 +1,125 @@
+Statistics:
+
+Number of lines: 33
+Number of valid statements: 31
+Number of comments: 2
+Number of executable statements: 31
+
+Complexity:
+
+Comment density: 0.065
+Comprehension effort: 82
+McCabe complexity: 10
+Halstead complexity:
+ length: 70
+ volume: 270.984
+ difficulty: 8.543
+ effort: 2314.978
+ language: 3.713
+ intelligence: 31.721
+ time: 2.143
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE VALUES AND THEIR SUM
+  Origs: 
+  Dests: 
+(0 1) 20 REM OF A GEOMETRIC PROGRESSION
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "FIRST TERM = ";
+  Origs: :start, 320:goto
+  Dests: 40:auto
+(1 2) 40 INPUT A
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 PRINT "RATIO OF TERMS = ";
+  Origs: 40:auto
+  Dests: 60:auto
+(1 2) 60 INPUT R
+  Origs: 50:auto
+  Dests: 70:auto
+(0 2) 70 PRINT "NUMBER OF TERMS = ";
+  Origs: 60:auto
+  Dests: 80:auto
+(1 2) 80 INPUT N
+  Origs: 70:auto
+  Dests: 90:auto
+(0 2) 90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
+  Origs: 80:auto
+  Dests: 100:auto
+(1 2) 100 INPUT C
+  Origs: 90:auto
+  Dests: 110:auto
+(1 4) 110 IF C = 1 THEN 130
+  Origs: 100:auto
+  Dests: 120:auto, 130:ifthen
+(0 2) 120 GOTO 160
+  Origs: 110:auto
+  Dests: 160:goto
+(0 2) 130 PRINT
+  Origs: 110:ifthen
+  Dests: 140:auto
+(0 2) 140 PRINT "GEOMETRIC PROGRESSION"
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 PRINT "TERM NUMBER", "TERM VALUE"
+  Origs: 140:auto
+  Dests: 160:auto
+(0 3) 160 LET J = 0
+  Origs: 120:goto, 150:auto
+  Dests: 170:auto
+(1 4) 170 FOR I = 0 TO N - 1
+  Origs: 160:auto
+  Dests: 180:fornext, 240:fornext
+(0 4) 180 LET K = I + 1
+  Origs: 170:fornext
+  Dests: 190:auto
+(0 6) 190 LET L = A * (R ^ I)
+  Origs: 180:auto
+  Dests: 200:auto
+(0 4) 200 LET J = J + L
+  Origs: 190:auto
+  Dests: 210:auto
+(1 4) 210 IF C = 1 THEN 230
+  Origs: 200:auto
+  Dests: 220:auto, 230:ifthen
+(0 2) 220 GOTO 240
+  Origs: 210:auto
+  Dests: 240:goto
+(0 3) 230 PRINT K, L
+  Origs: 210:ifthen
+  Dests: 240:auto
+(0 1) 240 NEXT I
+  Origs: 170:fornext, 220:goto, 230:auto
+  Dests: 250:auto
+(0 3) 250 PRINT "SUM = "; J
+  Origs: 240:auto
+  Dests: 260:auto
+(0 2) 260 PRINT
+  Origs: 250:auto
+  Dests: 270:auto
+(0 2) 270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 260:auto
+  Dests: 280:auto
+(1 2) 280 INPUT X
+  Origs: 270:auto
+  Dests: 290:auto
+(1 4) 290 IF X = 1 THEN 310
+  Origs: 280:auto
+  Dests: 300:auto, 310:ifthen
+(0 1) 300 STOP
+  Origs: 290:auto
+  Dests: :stop
+(0 2) 310 PRINT
+  Origs: 290:ifthen
+  Dests: 320:auto
+(0 3) 320 GOTO 30
+  Origs: 310:auto
+  Dests: 30:goto
+(0 1) 330 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+330: END
+

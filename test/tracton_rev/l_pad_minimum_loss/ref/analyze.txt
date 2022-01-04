@@ -1,0 +1,95 @@
+Statistics:
+
+Number of lines: 23
+Number of valid statements: 20
+Number of comments: 3
+Number of executable statements: 20
+
+Complexity:
+
+Comment density: 0.150
+Comprehension effort: 63
+McCabe complexity: 5
+Halstead complexity:
+ length: 81
+ volume: 294.644
+ difficulty: 8.538
+ effort: 2515.811
+ language: 4.041
+ intelligence: 34.508
+ time: 2.329
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE VALUES OF
+  Origs: 
+  Dests: 
+(0 1) 20 REM THE TWO RESISTANCES REQUIRED TO CONSTRUCT A
+  Origs: 
+  Dests: 
+(0 1) 30 REM L-PAD OF MINIMUM LOSS
+  Origs: 
+  Dests: 
+(0 2) 40 PRINT "1ST IMPEDANCE"
+  Origs: :start, 220:goto
+  Dests: 50:auto
+(1 2) 50 INPUT Z1
+  Origs: 40:auto
+  Dests: 60:auto
+(0 2) 60 PRINT "2ND IMPEDANCE"
+  Origs: 50:auto
+  Dests: 70:auto
+(1 2) 70 INPUT Z2
+  Origs: 60:auto
+  Dests: 80:auto
+(0 5) 80 LET R1 = Z1 * SQR(1 - (Z2 / Z1))
+  Origs: 70:auto
+  Dests: 90:auto
+(0 5) 90 LET R2 = Z2 / SQR(1 - (Z2 / Z1))
+  Origs: 80:auto
+  Dests: 100:auto
+(0 6) 100 LET M = SQR(Z1 / Z2) + SQR((Z1 / Z2) - 1)
+  Origs: 90:auto
+  Dests: 110:auto
+(0 8) 110 LET L = 20 * (LOG(M) / LOG(10))
+  Origs: 100:auto
+  Dests: 120:auto
+(0 2) 120 PRINT "COMPONENTS OF THE L-PAD"
+  Origs: 110:auto
+  Dests: 130:auto
+(0 3) 130 PRINT "RESISTOR 1 = "; R1
+  Origs: 120:auto
+  Dests: 140:auto
+(0 3) 140 PRINT "RESISTOR 2 = "; R2
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 PRINT "LOSS IN DECIBELS = "; L
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 PRINT
+  Origs: 150:auto
+  Dests: 170:auto
+(0 2) 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 160:auto
+  Dests: 180:auto
+(1 2) 180 INPUT X
+  Origs: 170:auto
+  Dests: 190:auto
+(1 4) 190 IF X = 1 THEN 210
+  Origs: 180:auto
+  Dests: 200:auto, 210:ifthen
+(0 1) 200 STOP
+  Origs: 190:auto
+  Dests: :stop
+(0 2) 210 PRINT
+  Origs: 190:ifthen
+  Dests: 220:auto
+(0 3) 220 GOTO 40
+  Origs: 210:auto
+  Dests: 40:goto
+(0 1) 230 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+230: END
+

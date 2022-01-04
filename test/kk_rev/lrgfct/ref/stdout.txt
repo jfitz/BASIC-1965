@@ -1,0 +1,24 @@
+NUMBER          LARGEST FACTOR
+ 1001            143
+ 1003            59
+ 1005            335
+ 1007            53
+ 1009            1
+ 1011            337
+ 1013            1
+ 1015            203
+ 1017            339
+ 1019            1
+STOP in line 99
+
+10 (1) PRINT "NUMBER", "LARGEST FACTOR"
+20 (1) FOR N = 1001 TO 1020 STEP 2
+30 (10) PRINT N,
+40 (10) FOR F = INT(N / 2) TO 1 STEP -1
+50 (3583) IF N / F <> INT(N / F) THEN 80
+60 (10) PRINT F
+70 (10) GOTO 90
+80 (3573) NEXT F
+90 (10) NEXT N
+99 (1) END
+

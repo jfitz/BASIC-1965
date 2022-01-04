@@ -1,0 +1,54 @@
+10 REM THIS PROGRAM COMPUTES HARMONIC NUMBERS
+ Remark:THIS PROGRAM COMPUTES HARMONIC NUMBERS
+20 PRINT "MAXIMUM TERM NUMBER"
+ TextConstant:"MAXIMUM TERM NUMBER"
+ CarriageControl:NL
+30 INPUT N
+ Variable:N -> _
+40 LET K = 0
+ Variable:K -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+50 LET D = 0
+ Variable:D -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+60 PRINT "TERM NUMBER","TERM VALUE"
+ TextConstant:"TERM NUMBER"
+ CarriageControl:,
+ TextConstant:"TERM VALUE"
+ CarriageControl:NL
+70 FOR I = 0 TO N
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:N -> _"]
+80 LET K = I + 1
+ Variable:K -> _
+ Variable:I -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET C = 1/K
+ Variable:C -> _
+ NumericConstant:1
+ Variable:K -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+100 LET D = D + C
+ Variable:D -> _
+ Variable:D -> _
+ Variable:C -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+110 PRINT K,D
+ Variable:K -> _
+ CarriageControl:,
+ Variable:D -> _
+ CarriageControl:NL
+120 NEXT I
+ Variable:I -> _
+130 PRINT
+ CarriageControl:NL
+140 END
+ 
+

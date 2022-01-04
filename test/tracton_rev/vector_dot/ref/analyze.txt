@@ -1,0 +1,95 @@
+Statistics:
+
+Number of lines: 23
+Number of valid statements: 18
+Number of comments: 5
+Number of executable statements: 18
+
+Complexity:
+
+Comment density: 0.278
+Comprehension effort: 61
+McCabe complexity: 9
+Halstead complexity:
+ length: 91
+ volume: 340.128
+ difficulty: 7.452
+ effort: 2534.502
+ language: 6.126
+ intelligence: 45.645
+ time: 2.347
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE DOT PRODUCT AND
+  Origs: 
+  Dests: 
+(0 1) 20 REM THE NORMS OF TWO VECTORS
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "ENTER 1ST VECTOR (A1,A2,A3)"
+  Origs: :start, 220:goto
+  Dests: 40:auto
+(3 4) 40 INPUT A1, A2, A3
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
+  Origs: 40:auto
+  Dests: 60:auto
+(3 4) 60 INPUT B1, B2, B3
+  Origs: 50:auto
+  Dests: 80:auto
+(0 1) 70 REM CALCULATE THE NORM OF A VECTOR
+  Origs: 
+  Dests: 
+(0 4) 80 LET X = SQR((A1 ^ 2) + (A2 ^ 2) + (A3 ^ 2))
+  Origs: 60:auto
+  Dests: 100:auto
+(0 1) 90 REM CALCULATE THE NORM OF B VECTOR
+  Origs: 
+  Dests: 
+(0 4) 100 LET Y = SQR((B1 ^ 2) + (B2 ^ 2) + (B3 ^ 2))
+  Origs: 80:auto
+  Dests: 120:auto
+(0 1) 110 REM CALCULATE DOT PRODUCT
+  Origs: 
+  Dests: 
+(0 10) 120 LET Z = (A1 * B1) + (A2 * B2) + (A3 * B3)
+  Origs: 100:auto
+  Dests: 130:auto
+(0 3) 130 PRINT "DOT PRODUCT = "; Z
+  Origs: 120:auto
+  Dests: 140:auto
+(0 3) 140 PRINT "NORM OF 1ST VECTOR = "; X
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 PRINT "NORM OF 2ND VECTOR = "; Y
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 PRINT "********************"
+  Origs: 150:auto
+  Dests: 170:auto
+(0 2) 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 160:auto
+  Dests: 180:auto
+(1 2) 180 INPUT L
+  Origs: 170:auto
+  Dests: 190:auto
+(1 4) 190 IF L = 1 THEN 210
+  Origs: 180:auto
+  Dests: 200:auto, 210:ifthen
+(0 1) 200 STOP
+  Origs: 190:auto
+  Dests: :stop
+(0 2) 210 PRINT
+  Origs: 190:ifthen
+  Dests: 220:auto
+(0 3) 220 GOTO 30
+  Origs: 210:auto
+  Dests: 30:goto
+(0 1) 230 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+230: END
+

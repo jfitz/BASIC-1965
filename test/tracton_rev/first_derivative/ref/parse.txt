@@ -1,0 +1,116 @@
+10 REM THIS PROGRAM COMPUTES THE FIRST DERIVATIVE
+ Remark:THIS PROGRAM COMPUTES THE FIRST DERIVATIVE
+20 REM OF A FUNCTION ENTERED BY THE USER
+ Remark:OF A FUNCTION ENTERED BY THE USER
+30 PRINT "VALUE OF X = ";
+ TextConstant:"VALUE OF X = "
+ CarriageControl:;
+40 INPUT X
+ Variable:X -> _
+50 LET Y = X
+ Variable:Y -> _
+ Variable:X -> _
+ AssignmentOperator:= _ -> _
+60 LET Z = (X*(1E-04))/2
+ Variable:Z -> _
+ Variable:X -> _
+ NumericConstant:0.0001
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+70 LET W = X + Z
+ Variable:W -> _
+ Variable:X -> _
+ Variable:Z -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 LET V = X - Z
+ Variable:V -> _
+ Variable:X -> _
+ Variable:Z -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET X = W
+ Variable:X -> _
+ Variable:W -> _
+ AssignmentOperator:= _ -> _
+100 GOSUB 280
+ LineNumber:280
+110 LET A = P
+ Variable:A -> _
+ Variable:P -> _
+ AssignmentOperator:= _ -> _
+120 LET X = V
+ Variable:X -> _
+ Variable:V -> _
+ AssignmentOperator:= _ -> _
+130 GOSUB 280
+ LineNumber:280
+140 LET B = P
+ Variable:B -> _
+ Variable:P -> _
+ AssignmentOperator:= _ -> _
+150 LET X = Y
+ Variable:X -> _
+ Variable:Y -> _
+ AssignmentOperator:= _ -> _
+160 GOSUB 280
+ LineNumber:280
+170 LET C = P
+ Variable:C -> _
+ Variable:P -> _
+ AssignmentOperator:= _ -> _
+180 LET F = (A - B)/(2*Z)
+ Variable:F -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ NumericConstant:2
+ Variable:Z -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 PRINT "IF X = ";Y,"THEN F(X) = ";C
+ TextConstant:"IF X = "
+ CarriageControl:;
+ Variable:Y -> _
+ CarriageControl:,
+ TextConstant:"THEN F(X) = "
+ CarriageControl:;
+ Variable:C -> _
+ CarriageControl:NL
+200 PRINT "AND F'(X) = ";F
+ TextConstant:"AND F'(X) = "
+ CarriageControl:;
+ Variable:F -> _
+ CarriageControl:NL
+210 PRINT
+ CarriageControl:NL
+220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+230 INPUT L
+ Variable:L -> _
+240 IF L = 1 THEN 260
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:260
+250 STOP
+ 
+260 PRINT
+ CarriageControl:NL
+270 GOTO 40
+ LineNumber:40
+280 LET P = X^2
+ Variable:P -> _
+ Variable:X -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ AssignmentOperator:= _ -> _
+290 RETURN
+ 
+300 END
+ 
+

@@ -1,0 +1,61 @@
+RANK SUM FOR X IS 24            FOR Y IS 31
+STOP in line 999
+
+100 (1) DIM X(100), Y(100), Z(200), T(200)
+110 (0)
+140 (1) READ M, N
+150 (1) FOR I = 1 TO M
+160 (6) READ X(I)
+170 (6) NEXT I
+180 (1) FOR J = 1 TO N
+190 (4) READ Y(J)
+200 (4) NEXT J
+210 (0)
+250 (1) FOR K = 1 TO M
+260 (6) LET Z(K) = X(K)
+270 (6) LET T(K) = +1
+280 (6) NEXT K
+290 (1) FOR K = 1 TO N
+300 (4) LET Z(M + K) = Y(K)
+310 (4) LET T(M + K) = 0
+320 (4) NEXT K
+330 (0)
+360 (1) FOR K = 1 TO M + N - 1
+370 (9) FOR L = K + 1 TO M + N
+380 (45) IF Z(K) <= Z(L) THEN 450
+390 (9) LET T = Z(K)
+400 (9) LET Z(K) = Z(L)
+410 (9) LET Z(L) = T
+420 (9) LET T = T(K)
+430 (9) LET T(K) = T(L)
+440 (9) LET T(L) = T
+450 (45) NEXT L
+460 (9) NEXT K
+470 (0)
+500 (1) LET J = 1
+510 (8) LET K = 1
+520 (8) LET B = J
+530 (8) LET T = J
+540 (10) LET J = J + 1
+550 (10) IF J > M + N THEN 600
+560 (9) IF Z(J) > Z(B) THEN 600
+570 (2) LET T = T + J
+580 (2) LET K = K + 1
+590 (2) GOTO 540
+600 (8) FOR L = B TO J - 1
+610 (10) LET Z(L) = T / K
+620 (10) NEXT L
+630 (8) IF J <= M + N THEN 510
+640 (0)
+740 (1) LET S(0) = 0
+750 (1) LET S(1) = 0
+760 (1) FOR K = 1 TO M + N
+770 (10) LET S(T(K)) = S(T(K)) + Z(K)
+790 (10) NEXT K
+800 (1) PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
+810 (0)
+900 (0) DATA 6, 4
+910 (0) DATA 117, 145, 147, 120, 150, 120
+920 (0) DATA 160, 160, 140, 190
+999 (1) END
+

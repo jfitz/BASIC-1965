@@ -1,0 +1,84 @@
+10  REM THIS PROGRAM COMPUTES THE VARIOUS
+ Remark:THIS PROGRAM COMPUTES THE VARIOUS
+20  REM PARAMETERS CONNECTED WTTH AN ANNULAR
+ Remark:PARAMETERS CONNECTED WTTH AN ANNULAR
+30  REM SECTION
+ Remark:SECTION
+40  INPUT "INSIDE DIAMETER (D1) = ", D1
+ Variable:D1 -> _
+50  INPUT "OUTSIDE DIAMETER (D2) = "; D2
+ Variable:D2 -> _
+60  LET P=3.14159
+ Variable:P -> _
+ NumericConstant:3.14159
+ AssignmentOperator:= =_ -> _
+70  LET I = (P*((D2 ^ 4) - (D1 ^ 4)))/64
+ Variable:I -> _
+ Variable:P -> _
+ Variable:D2 -> _
+ NumericConstant:4
+ BinaryOperatorPower:^(_,_) -> _
+ Variable:D1 -> _
+ NumericConstant:4
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:64
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+80  LET J=I*2
+ Variable:J -> _
+ Variable:I -> _
+ NumericConstant:2
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+100  LET A = (P*((D2 ^ 2) - (D1 ^ 2)))/4
+ Variable:A -> _
+ Variable:P -> _
+ Variable:D2 -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ Variable:D1 -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:4
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+110  PRINT "MOMENT OF INERTIA = " I
+ TextConstant:"MOMENT OF INERTIA = "
+ CarriageControl:
+ Variable:I -> _
+ CarriageControl:NL
+120  PRINT "POLAR MOMENT OF INERTIA = " J
+ TextConstant:"POLAR MOMENT OF INERTIA = "
+ CarriageControl:
+ Variable:J -> _
+ CarriageControl:NL
+130  PRINT "AREA OF SECTION = " A
+ TextConstant:"AREA OF SECTION = "
+ CarriageControl:
+ Variable:A -> _
+ CarriageControl:NL
+140  PRINT
+ CarriageControl:NL
+150  PRINT "TYPE 1 TO CONTINUE, 0 TO STOP";
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:;
+160  INPUT L
+ Variable:L -> _
+170  IF L=1 THEN 190
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:190
+180  STOP
+ 
+190  PRINT
+ CarriageControl:NL
+200  GOTO 40
+ LineNumber:40
+210  END
+ 
+

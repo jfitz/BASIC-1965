@@ -1,0 +1,70 @@
+10 REM THIS PROGRAM GENERATES A SERIES OF
+ Remark:THIS PROGRAM GENERATES A SERIES OF
+20 REM DATA POINTS, WITH WHICH THE USER CAN
+ Remark:DATA POINTS, WITH WHICH THE USER CAN
+30 REM PLOT CURVES. THE DATA POINTS GENERATED
+ Remark:PLOT CURVES. THE DATA POINTS GENERATED
+40 REM LIE BETWEEN THE VALUES GIVEN FOR X
+ Remark:LIE BETWEEN THE VALUES GIVEN FOR X
+50 REM IF A STEP SIZE OTHER THAN 1 IS DERIVED
+ Remark:IF A STEP SIZE OTHER THAN 1 IS DERIVED
+60 REM USE A STEP STATEMENT WITH THE FOR STATEMENTS
+ Remark:USE A STEP STATEMENT WITH THE FOR STATEMENTS
+70 PRINT "STARTING VALUE OF X = ";
+ TextConstant:"STARTING VALUE OF X = "
+ CarriageControl:;
+80 INPUT X
+ Variable:X -> _
+90 PRINT "END VALUE OF X = ";
+ TextConstant:"END VALUE OF X = "
+ CarriageControl:;
+100 INPUT W
+ Variable:W -> _
+110 PRINT "TABLE"
+ TextConstant:"TABLE"
+ CarriageControl:NL
+120 PRINT "X","Y"
+ TextConstant:"X"
+ CarriageControl:,
+ TextConstant:"Y"
+ CarriageControl:NL
+130 FOR I = X TO W
+ control: Variable:I -> _
+ start:   ["Variable:X -> _"]
+ end:     ["Variable:W -> _"]
+140 LET Y = 2*I + 6
+ Variable:Y -> _
+ NumericConstant:2
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:6
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+150 PRINT I,Y
+ Variable:I -> _
+ CarriageControl:,
+ Variable:Y -> _
+ CarriageControl:NL
+160 NEXT I
+ Variable:I -> _
+170 PRINT
+ CarriageControl:NL
+180 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+190 INPUT L
+ Variable:L -> _
+200 IF L = 1 THEN 220
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:220
+210 STOP
+ 
+220 PRINT
+ CarriageControl:NL
+230 GOTO 70
+ LineNumber:70
+240 END
+ 
+

@@ -1,0 +1,173 @@
+Statistics:
+
+Number of lines: 49
+Number of valid statements: 47
+Number of comments: 2
+Number of executable statements: 47
+
+Complexity:
+
+Comment density: 0.043
+Comprehension effort: 211
+McCabe complexity: 4
+Halstead complexity:
+ length: 289
+ volume: 1197.366
+ difficulty: 19.857
+ effort: 23776.266
+ language: 3.037
+ intelligence: 60.299
+ time: 22.015
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+  Origs: 
+  Dests: 
+(0 1) 20 REM AND INFINITY BY GAUSSIAN QUADRATURE
+  Origs: 
+  Dests: 
+(0 3) 30 LET C1 = .238619
+  Origs: :start
+  Dests: 40:auto
+(0 4) 40 LET C2 = -C1
+  Origs: 30:auto
+  Dests: 50:auto
+(0 3) 50 LET C3 = .661209
+  Origs: 40:auto
+  Dests: 60:auto
+(0 4) 60 LET C4 = -C3
+  Origs: 50:auto
+  Dests: 70:auto
+(0 3) 70 LET C5 = .932470
+  Origs: 60:auto
+  Dests: 80:auto
+(0 4) 80 LET C6 = -C5
+  Origs: 70:auto
+  Dests: 90:auto
+(0 3) 90 LET D1 = .467914
+  Origs: 80:auto
+  Dests: 100:auto
+(0 3) 100 LET D2 = .360762
+  Origs: 90:auto
+  Dests: 110:auto
+(0 3) 110 LET D3 = .171324
+  Origs: 100:auto
+  Dests: 120:auto
+(0 3) 120 LET J = 0
+  Origs: 110:auto, 460:goto
+  Dests: 130:auto
+(0 2) 130 PRINT "ENDPOINT A = ";
+  Origs: 120:auto
+  Dests: 140:auto
+(1 2) 140 INPUT A
+  Origs: 130:auto
+  Dests: 150:auto
+(0 9) 150 LET X = (2 / (1 + C1)) + (A - 1)
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 GOSUB 470
+  Origs: 150:auto
+  Dests: 170:auto, 470:gosub
+(0 9) 170 LET N = ((4 * D1) / (1 + C1) ^ 2) * Q
+  Origs: 160:auto
+  Dests: 180:auto
+(0 4) 180 LET J = J + N
+  Origs: 170:auto
+  Dests: 190:auto
+(0 9) 190 LET X = (2 / (1 + C2)) + (A - 1)
+  Origs: 180:auto
+  Dests: 200:auto
+(0 2) 200 GOSUB 470
+  Origs: 190:auto
+  Dests: 210:auto, 470:gosub
+(0 9) 210 LET N = ((4 * D1) / (1 + C2) ^ 2) * Q
+  Origs: 200:auto
+  Dests: 220:auto
+(0 4) 220 LET J = J + N
+  Origs: 210:auto
+  Dests: 230:auto
+(0 9) 230 LET X = (2 / (1 + C3)) + (A - 1)
+  Origs: 220:auto
+  Dests: 240:auto
+(0 2) 240 GOSUB 470
+  Origs: 230:auto
+  Dests: 250:auto, 470:gosub
+(0 9) 250 LET N = ((4 * D2) / (1 + C3) ^ 2) * Q
+  Origs: 240:auto
+  Dests: 260:auto
+(0 4) 260 LET J = J + N
+  Origs: 250:auto
+  Dests: 270:auto
+(0 9) 270 LET X = (2 / (1 + C4)) + (A - 1)
+  Origs: 260:auto
+  Dests: 280:auto
+(0 2) 280 GOSUB 470
+  Origs: 270:auto
+  Dests: 290:auto, 470:gosub
+(0 9) 290 LET N = ((4 * D2) / (1 + C4) ^ 2) * Q
+  Origs: 280:auto
+  Dests: 300:auto
+(0 4) 300 LET J = J + N
+  Origs: 290:auto
+  Dests: 310:auto
+(0 9) 310 LET X = (2 / (1 + C5)) + (A - 1)
+  Origs: 300:auto
+  Dests: 320:auto
+(0 2) 320 GOSUB 470
+  Origs: 310:auto
+  Dests: 330:auto, 470:gosub
+(0 9) 330 LET N = ((4 * D3) / (1 + C5) ^ 2) * Q
+  Origs: 320:auto
+  Dests: 340:auto
+(0 4) 340 LET J = J + N
+  Origs: 330:auto
+  Dests: 350:auto
+(0 9) 350 LET X = (2 / (1 + C6)) + (A - 1)
+  Origs: 340:auto
+  Dests: 360:auto
+(0 2) 360 GOSUB 470
+  Origs: 350:auto
+  Dests: 370:auto, 470:gosub
+(0 9) 370 LET N = ((4 * D3) / (1 + C6) ^ 2) * Q
+  Origs: 360:auto
+  Dests: 380:auto
+(0 4) 380 LET J = J + N
+  Origs: 370:auto
+  Dests: 390:auto
+(0 4) 390 LET G = J / 2
+  Origs: 380:auto
+  Dests: 400:auto
+(0 3) 400 PRINT "INTEGRAL = "; G
+  Origs: 390:auto
+  Dests: 410:auto
+(0 2) 410 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 400:auto
+  Dests: 420:auto
+(1 2) 420 INPUT L
+  Origs: 410:auto
+  Dests: 430:auto
+(1 4) 430 IF L = 1 THEN 450
+  Origs: 420:auto
+  Dests: 440:auto, 450:ifthen
+(0 1) 440 STOP
+  Origs: 430:auto
+  Dests: :stop
+(0 2) 450 PRINT
+  Origs: 430:ifthen
+  Dests: 460:auto
+(0 3) 460 GOTO 120
+  Origs: 450:auto
+  Dests: 120:goto
+G(470) (0 5) 470 LET Q = 2 * X + 5
+  Origs: 160:gosub, 200:gosub, 240:gosub, 280:gosub, 320:gosub, 360:gosub
+  Dests: 480:auto
+G(470) (0 1) 480 RETURN
+  Origs: 470:auto
+  Dests: 
+(0 1) 490 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+490: END
+

@@ -1,0 +1,68 @@
+Statistics:
+
+Number of lines: 14
+Number of valid statements: 13
+Number of comments: 0
+Number of executable statements: 13
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 34
+McCabe complexity: 1
+Halstead complexity:
+ length: 34
+ volume: 105.095
+ difficulty: 6.923
+ effort: 727.584
+ language: 2.193
+ intelligence: 15.180
+ time: 0.674
+
+(0 3) 100 LET X = 5
+  Origs: :start
+  Dests: 110:auto
+(0 2) 110 GOSUB 500
+  Origs: 100:auto
+  Dests: 120:auto, 500:gosub
+(0 3) 120 LET X = 7
+  Origs: 110:auto
+  Dests: 130:auto
+(0 2) 130 GOSUB 500
+  Origs: 120:auto
+  Dests: 140:auto, 500:gosub
+(0 3) 140 LET X = 11
+  Origs: 130:auto
+  Dests: 150:auto
+(0 2) 150 GOSUB 500
+  Origs: 140:auto
+  Dests: 160:auto, 500:gosub
+(0 1) 160 STOP
+  Origs: 150:auto
+  Dests: :stop
+(0 0) 170 
+  Origs: 
+  Dests: 
+G(500) (0 4) 500 LET Y = 3 * X
+  Origs: 110:gosub, 130:gosub, 150:gosub
+  Dests: 510:auto
+G(500) (0 5) 510 LET Z = 1.2 * EXP(Y)
+  Origs: 500:auto
+  Dests: 520:auto
+G(500) (0 4) 520 LET Y = SQR(Z + 2)
+  Origs: 510:auto
+  Dests: 530:auto
+G(500) (0 3) 530 PRINT X; Y
+  Origs: 520:auto
+  Dests: 540:auto
+G(500) (0 1) 540 RETURN
+  Origs: 530:auto
+  Dests: 
+(0 1) 550 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+550: END
+

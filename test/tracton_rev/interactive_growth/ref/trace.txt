@@ -1,0 +1,992 @@
+60: PRINT "NUMBER OF DESTROYERS (Y) = ";
+NUMBER OF DESTROYERS (Y) = 
+70: INPUT Y
+? 201
+ Y = 201
+80: PRINT "NUMBER OF CREATORS (X) = ";
+NUMBER OF CREATORS (X) = 
+90: INPUT X
+? 347
+ X = 347
+100: PRINT "PROPAGATION RATE OF X = ";
+PROPAGATION RATE OF X = 
+110: INPUT Z
+? 6
+ Z = 6
+120: PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
+CHANCE OF METTING BETWEEN X AND Y = 
+130: INPUT A
+? .01
+ A = 0.01
+140: PRINT "TIME BETWEEN SAMPLES = ";
+TIME BETWEEN SAMPLES = 
+150: INPUT H
+? .5
+ H = 0.5
+160: PRINT "MAXIMUM GENERATIONS = ";
+MAXIMUM GENERATIONS = 
+170: INPUT K
+? 10
+ K = 10
+180: LET J = 0
+ J = 0
+190: PRINT
+
+200: PRINT "INTERACTIVE GROWTH PATTERNS"
+INTERACTIVE GROWTH PATTERNS
+210: PRINT
+
+220: PRINT "CREATOR", "DESTROYER"
+CREATOR         DESTROYER
+230: IF J = K THEN 470
+ J: 0
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 0
+ J = 1
+250: LET B = A * X * Y
+ A: 0.01
+ X: 347
+ Y: 201
+ B = 697.47
+260: LET C = ((Y - B) * H) + Y
+ Y: 201
+ B: 697.47
+ H: 0.5
+ C = -47.235
+270: IF C < 0 THEN 390
+ C: -47.235
+ C < 0: true
+390: LET Y = 0
+ Y = 0
+400: GOTO 290
+290: LET D = (((X * Z) - B) * H) + X
+ X: 347
+ Z: 6
+ B: 697.47
+ H: 0.5
+ D = 1039.26
+300: IF D < 0 THEN 410
+ D: 1039.26
+ D < 0: false
+310: LET X = D
+ D: 1039.26
+ X = 1039.26
+320: LET M = INT(X)
+ X: 1039.26
+ M = 1039
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 1039
+ 1039           
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 1039
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 1
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 1
+ J = 2
+250: LET B = A * X * Y
+ A: 0.01
+ X: 1039.26
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 1039.26
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 4157.04
+300: IF D < 0 THEN 410
+ D: 4157.04
+ D < 0: false
+310: LET X = D
+ D: 4157.04
+ X = 4157.04
+320: LET M = INT(X)
+ X: 4157.04
+ M = 4157
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 4157
+ 4157           
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 4157
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 2
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 2
+ J = 3
+250: LET B = A * X * Y
+ A: 0.01
+ X: 4157.04
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 4157.04
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 16628.1
+300: IF D < 0 THEN 410
+ D: 16628.1
+ D < 0: false
+310: LET X = D
+ D: 16628.1
+ X = 16628.1
+320: LET M = INT(X)
+ X: 16628.1
+ M = 16628
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 16628
+ 16628          
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 16628
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 3
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 3
+ J = 4
+250: LET B = A * X * Y
+ A: 0.01
+ X: 16628.1
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 16628.1
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 66512.4
+300: IF D < 0 THEN 410
+ D: 66512.4
+ D < 0: false
+310: LET X = D
+ D: 66512.4
+ X = 66512.4
+320: LET M = INT(X)
+ X: 66512.4
+ M = 66512
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 66512
+ 66512          
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 66512
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 4
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 4
+ J = 5
+250: LET B = A * X * Y
+ A: 0.01
+ X: 66512.4
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 66512.4
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 266049
+300: IF D < 0 THEN 410
+ D: 266049
+ D < 0: false
+310: LET X = D
+ D: 266049
+ X = 266049
+320: LET M = INT(X)
+ X: 266049
+ M = 266049
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 266049
+ 266049         
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 266049
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 5
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 5
+ J = 6
+250: LET B = A * X * Y
+ A: 0.01
+ X: 266049
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 266049
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 1064190
+300: IF D < 0 THEN 410
+ D: 1064190
+ D < 0: false
+310: LET X = D
+ D: 1064190
+ X = 1064190
+320: LET M = INT(X)
+ X: 1064190
+ M = 1064190
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 1064190
+ 1064190        
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 1064190
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 6
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 6
+ J = 7
+250: LET B = A * X * Y
+ A: 0.01
+ X: 1064190
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 1064190
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 4256760
+300: IF D < 0 THEN 410
+ D: 4256760
+ D < 0: false
+310: LET X = D
+ D: 4256760
+ X = 4256760
+320: LET M = INT(X)
+ X: 4256760
+ M = 4256760
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 4256760
+ 4256760        
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 4256760
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 7
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 7
+ J = 8
+250: LET B = A * X * Y
+ A: 0.01
+ X: 4256760
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 4256760
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 17027100
+300: IF D < 0 THEN 410
+ D: 17027100
+ D < 0: false
+310: LET X = D
+ D: 17027100
+ X = 17027100
+320: LET M = INT(X)
+ X: 17027100
+ M = 17027100
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 17027100
+ 17027100       
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 17027100
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 8
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 8
+ J = 9
+250: LET B = A * X * Y
+ A: 0.01
+ X: 17027100
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 17027100
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 68108600
+300: IF D < 0 THEN 410
+ D: 68108600
+ D < 0: false
+310: LET X = D
+ D: 68108600
+ X = 68108600
+320: LET M = INT(X)
+ X: 68108600
+ M = 68108600
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 68108600
+ 68108600       
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 68108600
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 9
+ K: 10
+ J = K: false
+240: LET J = J + 1
+ J: 9
+ J = 10
+250: LET B = A * X * Y
+ A: 0.01
+ X: 68108600
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 68108600
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 272435000
+300: IF D < 0 THEN 410
+ D: 272435000
+ D < 0: false
+310: LET X = D
+ D: 272435000
+ X = 272435000
+320: LET M = INT(X)
+ X: 272435000
+ M = 272435000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 272435000
+ 272435000      
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 272435000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 10
+ K: 10
+ J = K: true
+470: PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
+MAXIMUM NUMBER OF GENERATIONS REACHED
+480: PRINT
+
+490: PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+FOR FURTHER GENERATIONS TYPE 1, IF NOT 0
+500: INPUT W
+? 1
+ W = 1
+510: IF W = 1 THEN 530
+ W: 1
+ W = 1: true
+530: PRINT "MAXIMUM GENERATIONS = ";
+MAXIMUM GENERATIONS = 
+540: INPUT K
+? 18
+ K = 18
+550: GOTO 230
+230: IF J = K THEN 470
+ J: 10
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 10
+ J = 11
+250: LET B = A * X * Y
+ A: 0.01
+ X: 272435000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 272435000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 1089740000
+300: IF D < 0 THEN 410
+ D: 1089740000
+ D < 0: false
+310: LET X = D
+ D: 1089740000
+ X = 1089740000
+320: LET M = INT(X)
+ X: 1089740000
+ M = 1089740000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 1089740000
+ 1089740000     
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 1089740000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 11
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 11
+ J = 12
+250: LET B = A * X * Y
+ A: 0.01
+ X: 1089740000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 1089740000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 4358960000
+300: IF D < 0 THEN 410
+ D: 4358960000
+ D < 0: false
+310: LET X = D
+ D: 4358960000
+ X = 4358960000
+320: LET M = INT(X)
+ X: 4358960000
+ M = 4358960000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 4358960000
+ 4358960000     
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 4358960000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 12
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 12
+ J = 13
+250: LET B = A * X * Y
+ A: 0.01
+ X: 4358960000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 4358960000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 17435900000
+300: IF D < 0 THEN 410
+ D: 17435900000
+ D < 0: false
+310: LET X = D
+ D: 17435900000
+ X = 17435900000
+320: LET M = INT(X)
+ X: 17435900000
+ M = 17435900000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 17435900000
+ 17435900000    
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 17435900000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 13
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 13
+ J = 14
+250: LET B = A * X * Y
+ A: 0.01
+ X: 17435900000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 17435900000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 69743400000
+300: IF D < 0 THEN 410
+ D: 69743400000
+ D < 0: false
+310: LET X = D
+ D: 69743400000
+ X = 69743400000
+320: LET M = INT(X)
+ X: 69743400000
+ M = 69743400000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 69743400000
+ 69743400000    
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 69743400000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 14
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 14
+ J = 15
+250: LET B = A * X * Y
+ A: 0.01
+ X: 69743400000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 69743400000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 278973000000
+300: IF D < 0 THEN 410
+ D: 278973000000
+ D < 0: false
+310: LET X = D
+ D: 278973000000
+ X = 278973000000
+320: LET M = INT(X)
+ X: 278973000000
+ M = 278973000000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 278973000000
+ 278973000000   
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 278973000000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 15
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 15
+ J = 16
+250: LET B = A * X * Y
+ A: 0.01
+ X: 278973000000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 278973000000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 1115890000000
+300: IF D < 0 THEN 410
+ D: 1115890000000
+ D < 0: false
+310: LET X = D
+ D: 1115890000000
+ X = 1115890000000
+320: LET M = INT(X)
+ X: 1115890000000
+ M = 1115890000000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 1115890000000
+ 1115890000000  
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 1115890000000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 16
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 16
+ J = 17
+250: LET B = A * X * Y
+ A: 0.01
+ X: 1115890000000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 1115890000000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 4463560000000
+300: IF D < 0 THEN 410
+ D: 4463560000000
+ D < 0: false
+310: LET X = D
+ D: 4463560000000
+ X = 4463560000000
+320: LET M = INT(X)
+ X: 4463560000000
+ M = 4463560000000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 4463560000000
+ 4463560000000  
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 4463560000000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 17
+ K: 18
+ J = K: false
+240: LET J = J + 1
+ J: 17
+ J = 18
+250: LET B = A * X * Y
+ A: 0.01
+ X: 4463560000000
+ Y: 0
+ B = 0
+260: LET C = ((Y - B) * H) + Y
+ Y: 0
+ B: 0
+ H: 0.5
+ C = 0
+270: IF C < 0 THEN 390
+ C: 0
+ C < 0: false
+280: LET Y = C
+ C: 0
+ Y = 0
+290: LET D = (((X * Z) - B) * H) + X
+ X: 4463560000000
+ Z: 6
+ B: 0
+ H: 0.5
+ D = 17854300000000
+300: IF D < 0 THEN 410
+ D: 17854300000000
+ D < 0: false
+310: LET X = D
+ D: 17854300000000
+ X = 17854300000000
+320: LET M = INT(X)
+ X: 17854300000000
+ M = 17854300000000
+330: LET N = INT(Y)
+ Y: 0
+ N = 0
+340: PRINT M, N
+ M: 17854300000000
+ 17854300000000 
+ N: 0
+ 0
+350: IF M = 0 THEN 370
+ M: 17854300000000
+ M = 0: false
+360: GOTO 230
+230: IF J = K THEN 470
+ J: 18
+ K: 18
+ J = K: true
+470: PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
+MAXIMUM NUMBER OF GENERATIONS REACHED
+480: PRINT
+
+490: PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+FOR FURTHER GENERATIONS TYPE 1, IF NOT 0
+500: INPUT W
+? 0
+ W = 0
+510: IF W = 1 THEN 530
+ W: 0
+ W = 1: false
+520: GOTO 560
+560: PRINT
+
+570: PRINT "FOR NEXT PATTERN TYPE 1, 0 TO STOP"
+FOR NEXT PATTERN TYPE 1, 0 TO STOP
+580: INPUT W
+? 0
+ W = 0
+590: IF W = 1 THEN 610
+ W: 0
+ W = 1: false
+600: STOP
+STOP in line 600
+

@@ -1,0 +1,76 @@
+10 DIM N(1000)
+ NumericConstant:1000
+ Declaration:N() -> _()
+11 DIM P(200)
+ NumericConstant:200
+ Declaration:P() -> _()
+20 FOR I = 2 TO 1000
+ control: Variable:I -> _
+ start:   ["NumericConstant:2"]
+ end:     ["NumericConstant:1000"]
+21    LET N(I) = 0
+ Variable:I -> _
+ Variable:N(_) -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+22 NEXT I
+ Variable:I -> _
+26 LET K = 0
+ Variable:K -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+30 FOR P = 2 TO 1000
+ control: Variable:P -> _
+ start:   ["NumericConstant:2"]
+ end:     ["NumericConstant:1000"]
+40    IF N(P) < 0 THEN 90
+ Variable:P -> _
+ Variable:N(_) -> _
+ NumericConstant:0
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:90
+50    LET K = K+1
+ Variable:K -> _
+ Variable:K -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+55    LET P(K) = P
+ Variable:K -> _
+ Variable:P(_) -> _
+ Variable:P -> _
+ AssignmentOperator:= _ -> _
+56    IF P > SQR(1000) THEN 90
+ Variable:P -> _
+ NumericConstant:1000
+ FunctionSqr:SQR(_) -> =_
+ BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:90
+60    FOR I = P TO 1000 STEP P
+ control: Variable:I -> _
+ start:   ["Variable:P -> _"]
+ end:     ["NumericConstant:1000"]
+ step:    ["Variable:P -> _"]
+70       LET N(I) = -1
+ Variable:I -> _
+ Variable:N(_) -> _
+ NumericConstant:1
+ UnaryOperatorMinus:-(_) -> =_
+ AssignmentOperator:= =_ -> _
+80    NEXT I
+ Variable:I -> _
+90 NEXT P
+ Variable:P -> _
+100 FOR I = 1 TO K
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:K -> _"]
+110    PRINT P(I);
+ Variable:I -> _
+ Variable:P(_) -> _
+ CarriageControl:;
+120 NEXT I
+ Variable:I -> _
+999 END
+ 
+

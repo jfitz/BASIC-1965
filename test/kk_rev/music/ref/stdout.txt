@@ -1,0 +1,169 @@
+NOTE NUMBER     CHORD            S     A     T     B
+
+ 28              1               0 -3 -5 -7
+ 27              5               1 -1 -3 -10
+ 26              2               1 -2 -4 -6
+ 26              5               1 -1 -3 -10
+ 25              6               0 -2 -5 -9
+ 24              1               2 -3 -7 -14
+ 23              5               4 -1 -6 -10
+ 22              6               7  2 -2 -9
+ 21              6               5  2  0 -9
+ 20              1               7  2 -3 -14
+ 19              4               0 -2 -4 -11
+ 18              2               1 -2 -4 -13
+ 17              6               2 -2 -7 -9
+ 16              1               0 -3 -5 -7
+ 15              5               1 -1 -3 -10
+ 14              1               2  0 -3 -14
+ 13              5               1 -1 -3 -10
+ 12              6               0 -2 -5 -9
+ 11              1               2 -3 -7 -14
+ 10              5               4 -1 -6 -10
+ 9               6               7  2 -2 -9
+ 8               6               5  2  0 -9
+ 7               1               7  2 -3 -14
+ 6               4               0 -2 -4 -11
+ 5               2               1 -2 -4 -13
+ 4               6               2 -2 -7 -9
+ 3               1               0 -3 -5 -7
+ 2               5               1 -1 -3 -10
+ 1               1               2  0 -3 -14
+STOP in line 9999
+
+10 (1) DIM S(4, 100), P(6, 6), M(100)
+20 FNC(_) (0) DEF FNC(X) = X - 7 * INT(X / 7)
+30 (1) PRINT "NOTE NUMBER", "CHORD",
+40 (1) PRINT " S     A     T     B"
+50 (1) PRINT
+60 (0)
+100 (0) REM  INITIALIZE.
+105 (1) OPTION BASE 1
+110 (1) MAT READ P
+111 (0) DATA 5, 4, 1, 6, 2, 3, 6, 4, 2, 1, 5, 3, 6, 4, 3, 1, 2, 5
+112 (0) DATA 1, 5, 4, 6, 3, 2, 2, 6, 5, 4, 1, 3, 1, 5, 3, 6, 2, 4
+120 (1) READ N9
+130 (1) MAT READ M(N9)
+140 (0) DATA 28
+150 (0) DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1
+160 (0) DATA 2, 1, 0, 2, 1, 0, 7, 5, 7, 4, 2, 0, 1, 1, 0
+170 (1) OPTION BASE 0
+190 (1) FOR V = 0 TO 4
+200 (5) READ S(V, N9)
+210 (5) NEXT V
+220 (0) DATA 1, 0, -3, -5, -7
+240 (1) LET C2 = 1
+250 (0)
+450 (1) FOR N = N9 TO 1 STEP -1
+460 (29) IF N = N9 THEN 6000
+500 (0) REM  TEST CHORDS.
+505 (28) LET I1 = 1
+510 (29) FOR I = I1 TO 6
+520 (65) LET C2 = P(C1, I)
+525 (65) LET S(0, N) = C2
+530 (65) LET S = M(N)
+540 (65) LET S(1, N) = S
+542 (0)
+545 (0) REM  FIX ROOT
+550 (65) LET D(1) = C2 - 8
+560 (65) LET D(2) = C2 - 15
+565 (65) LET D = S(4, N + 1)
+570 (65) FOR J = 1 TO 2
+580 (97) IF ABS(D(J) - D) <= 5 THEN 610
+590 (36) LET R = D(3 - J)
+600 (36) GOTO 660
+610 (61) NEXT J
+620 (29) IF S > S(1, N + 1) THEN 650
+630 (12) LET R = D(1)
+640 (12) GOTO 660
+650 (17) LET R = D(2)
+660 (65) LET S(4, N) = R
+670 (0)
+700 (0) REM  FIND OTHER NOTES
+705 (65) LET J = 1
+710 (65) FOR K = 0 TO 4 STEP 2
+720 (195) IF FNC(S - (R + K)) = 0 THEN 750
+730 (160) LET B(J) = R + K
+740 (160) LET J = J + 1
+750 (195) NEXT K
+760 (65) IF J > 3 THEN 4000
+770 (0)
+800 (35) FOR L = 0 TO 6
+810 (245) LET A = B(1)
+820 (245) LET B = B(2)
+830 (245) LET W(0, L) = 0
+840 (245) LET W(2, L) = B
+850 (245) LET W(3, L) = A
+860 (245) LET B(1) = B
+870 (245) LET B(2) = A + 7
+880 (245) NEXT L
+899 (0)
+1000 (0) REM  TEST CASES IN W-TABLE
+1010 (35) FOR L = 0 TO 6
+1020 (245) FOR V = 2 TO 3
+1030 (304) LET B = W(V, L)
+1040 (304) IF ABS(B - S(V, N + 1)) > 5 THEN 1260
+1050 (151) IF B > 17 - 4 * V THEN 1260
+1060 (151) IF B < 5 - 4 * V THEN 1260
+1070 (129) LET S(V, N) = B
+1080 (129) IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
+1090 (108) NEXT V
+1095 (0)
+1100 (0) REM  CHECK FOR BAD TRANSITIONS
+1102 (49) IF C1 = C2 THEN 1200
+1105 (44) FOR V1 = 1 TO 4
+1110 (147) FOR V2 = V1 + 1 TO 4
+1115 (237) LET D = S(V1, N + 1) - S(V2, N + 1)
+1120 (237) IF FNC(D) = 0 THEN 1145
+1130 (199) IF FNC(D) = 4 THEN 1145
+1140 (141) GOTO 1160
+1145 (96) LET S1 = S(V1, N) - S(V1, N + 1)
+1150 (96) LET S2 = S(V2, N) - S(V2, N + 1)
+1155 (96) IF S1 = S2 THEN 1260
+1160 (255) NEXT V2
+1165 (134) NEXT V1
+1170 (0)
+1200 (0) REM COMPUTE DISTANCE
+1210 (36) FOR V = 2 TO 3
+1220 (72) LET D(V) = ABS(S(V, N) - S(V, N + 1))
+1230 (72) NEXT V
+1240 (36) LET W(0, L) = D(2) + D(3)
+1250 (36) GOTO 1261
+1260 (209) LET W(0, L) = 999
+1261 (245) NEXT L
+1262 (0)
+1500 (0) REM  SELECT CHORD
+1510 (35) LET M = 999
+1520 (35) FOR L = 0 TO 6
+1530 (245) LET M1 = W(0, L)
+1540 (245) IF M1 > M THEN 1590
+1550 (125) LET M = M1
+1560 (125) LET L9 = L
+1590 (245) NEXT L
+1600 (35) IF M = 999 THEN 4000
+1610 (28) LET S(2, N) = W(2, L9)
+1620 (28) LET S(3, N) = W(3, L9)
+1630 (28) GOTO 6000
+1640 (0)
+4000 (0) REM  REJECT CHORD
+4001 (37) NEXT I
+5000 (0) REM  BACK UP
+5005 (1) LET N = N + 1
+5010 (1) IF N <> N9 THEN 5100
+5020 (0) PRINT "STUCK"
+5030 (0) STOP
+5100 (1) LET C2 = S(0, N)
+5110 (1) LET C1 = S(0, N + 1)
+5120 (1) FOR I = 1 TO 6
+5130 (1) IF C2 = P(C1, I) THEN 5200
+5140 (0) NEXT I
+5200 (1) LET I1 = I + 1
+5210 (1) GOTO 510
+5220 (0)
+6000 (0) REM  PRINT RESULTS
+6001 (29) PRINT N, S(0, N), S(1, N); S(2, N); S(3, N); S(4, N)
+6002 (29) LET C1 = C2
+6003 (29) NEXT N
+6004 (0)
+9999 (1) END
+

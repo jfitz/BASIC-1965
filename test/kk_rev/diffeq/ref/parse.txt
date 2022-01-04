@@ -1,0 +1,97 @@
+10 DEF FNF(X,Y) = SQR(X*X + Y*Y)
+ UserFunctionName:FNF -> _
+ VariableName:X -> _
+ VariableName:Y -> _
+ Variable:X -> _
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+20
+100 READ X0, X1, Y0, H
+ Variable:X0 -> _
+ Variable:X1 -> _
+ Variable:Y0 -> _
+ Variable:H -> _
+110 PRINT " X", " Y"
+ TextConstant:" X"
+ CarriageControl:,
+ TextConstant:" Y"
+ CarriageControl:NL
+120 PRINT
+ CarriageControl:NL
+130 PRINT X0, Y0
+ Variable:X0 -> _
+ CarriageControl:,
+ Variable:Y0 -> _
+ CarriageControl:NL
+140 LET Y = Y0
+ Variable:Y -> _
+ Variable:Y0 -> _
+ AssignmentOperator:= _ -> _
+150
+160 FOR X = X0 TO X1-H STEP H
+ control: Variable:X -> _
+ start:   ["Variable:X0 -> _"]
+ end:     ["Variable:X1 -> _", "Variable:H -> _", "BinaryOperatorMinus:-(_,_) -> _"]
+ step:    ["Variable:H -> _"]
+170 LET D1 = FNF(X,Y)
+ Variable:D1 -> _
+ Variable:X -> _
+ Variable:Y -> _
+ UserFunction:FNF(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 LET Y1 = Y
+ Variable:Y1 -> _
+ Variable:Y -> _
+ AssignmentOperator:= _ -> _
+190 LET Y = Y + D1*H/2
+ Variable:Y -> _
+ Variable:Y -> _
+ Variable:D1 -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+200 LET D2 = FNF(X+H/2,Y)
+ Variable:D2 -> _
+ Variable:X -> _
+ Variable:H -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:Y -> _
+ UserFunction:FNF(_,_) -> _
+ AssignmentOperator:= _ -> _
+210 LET Y = Y1 + D2*H
+ Variable:Y -> _
+ Variable:Y1 -> _
+ Variable:D2 -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+220 PRINT X+H, Y
+ Variable:X -> _
+ Variable:H -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ CarriageControl:,
+ Variable:Y -> _
+ CarriageControl:NL
+230 NEXT X
+ Variable:X -> _
+240
+900 DATA 0, 1, 1
+ NumericConstant:0
+ NumericConstant:1
+ NumericConstant:1
+910 DATA 0.1
+ NumericConstant:0.1
+999 END
+ 
+

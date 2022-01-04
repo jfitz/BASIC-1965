@@ -1,0 +1,52 @@
+10 REM THIS PROGRAM WILL COMPUTE THE LOG
+ Remark:THIS PROGRAM WILL COMPUTE THE LOG
+20 REM OF ANY POSITIVE NUMBER X, TO ANY POSITIVE
+ Remark:OF ANY POSITIVE NUMBER X, TO ANY POSITIVE
+30 REM BASE Y
+ Remark:BASE Y
+40 PRINT "BASE = "
+ TextConstant:"BASE = "
+ CarriageControl:NL
+50 INPUT Y
+ Variable:Y -> _
+60 PRINT "X = "
+ TextConstant:"X = "
+ CarriageControl:NL
+70 INPUT X
+ Variable:X -> _
+80 LET J = LOG(X)/LOG(Y)
+ Variable:J -> _
+ Variable:X -> _
+ FunctionLog:LOG(_) -> _
+ Variable:Y -> _
+ FunctionLog:LOG(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 PRINT "LOG";X;" = ";J
+ TextConstant:"LOG"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ Variable:J -> _
+ CarriageControl:NL
+100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+110 INPUT L
+ Variable:L -> _
+120 IF L =1 THEN 140
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:140
+130 STOP
+ 
+140 PRINT
+ CarriageControl:NL
+150 GOTO 40
+ LineNumber:40
+160 END
+ 
+

@@ -1,0 +1,145 @@
+100 DIM Q(20,20), N(20,20), R(20,20)
+ NumericConstant:20
+ NumericConstant:20
+ Declaration:Q(,) -> _(,)
+ NumericConstant:20
+ NumericConstant:20
+ Declaration:N(,) -> _(,)
+ NumericConstant:20
+ NumericConstant:20
+ Declaration:R(,) -> _(,)
+110 DIM T(20), U(20)
+ NumericConstant:20
+ Declaration:T() -> _()
+ NumericConstant:20
+ Declaration:U() -> _()
+120
+130 READ M, N
+ Variable:M -> _
+ Variable:N -> _
+140 MAT READ Q(N,N)
+ Variable:N -> _
+ Variable:N -> _
+ Variable:Q(_,_) -> _(,)
+150 MAT READ R(N,M)
+ Variable:N -> _
+ Variable:M -> _
+ Variable:R(_,_) -> _(,)
+160 MAT N = IDN(N,N)
+ Variable:N(,) -> _(,)
+ Variable:N -> _
+ Variable:N -> _
+ FunctionIdn:IDN(_,_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+170 MAT U = CON(N)
+ Variable:U(,) -> _(,)
+ Variable:N -> _
+ FunctionCon2:CON(_) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+180
+190 PRINT "TRANSIENT TO TRANSIENT PROBABILITIES"
+ TextConstant:"TRANSIENT TO TRANSIENT PROBABILITIES"
+ CarriageControl:NL
+200 PRINT
+ CarriageControl:NL
+210 MAT PRINT Q
+ Variable:Q(,) -> _(,)
+ CarriageControl:NL
+220
+230 PRINT "TRANSIENT TO ABSORBING PROBABILITIES"
+ TextConstant:"TRANSIENT TO ABSORBING PROBABILITIES"
+ CarriageControl:NL
+240 PRINT
+ CarriageControl:NL
+250 MAT PRINT R
+ Variable:R(,) -> _(,)
+ CarriageControl:NL
+260
+270 MAT Q = N-Q
+ Variable:Q(,) -> _(,)
+ Variable:N(,) -> _(,)
+ Variable:Q(,) -> _(,)
+ BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+280 MAT N = INV(Q)
+ Variable:N(,) -> _(,)
+ Variable:Q(,) -> _(,)
+ FunctionInv:INV(_(,)) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+290 PRINT "FUNDAMENTAL MATRIX"
+ TextConstant:"FUNDAMENTAL MATRIX"
+ CarriageControl:NL
+300 PRINT
+ CarriageControl:NL
+310 MAT PRINT N
+ Variable:N(,) -> _(,)
+ CarriageControl:NL
+320
+330 MAT T = N*U
+ Variable:T(,) -> _(,)
+ Variable:N(,) -> _(,)
+ Variable:U(,) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+340 PRINT "ABSORBTION TIMES"
+ TextConstant:"ABSORBTION TIMES"
+ CarriageControl:NL
+350 PRINT
+ CarriageControl:NL
+360 MAT PRINT T
+ Variable:T(,) -> _(,)
+ CarriageControl:NL
+370
+380 MAT Q = N*R
+ Variable:Q(,) -> _(,)
+ Variable:N(,) -> _(,)
+ Variable:R(,) -> _(,)
+ BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
+ AssignmentOperator:= _(,) -> _(,)
+390 PRINT "ABSORBTION PROBABILITIES"
+ TextConstant:"ABSORBTION PROBABILITIES"
+ CarriageControl:NL
+400 PRINT
+ CarriageControl:NL
+410 MAT PRINT Q
+ Variable:Q(,) -> _(,)
+ CarriageControl:NL
+420
+430 DATA 2, 4
+ NumericConstant:2
+ NumericConstant:4
+440 DATA 0, 0.6667, 0, 0
+ NumericConstant:0
+ NumericConstant:0.6667
+ NumericConstant:0
+ NumericConstant:0
+450 DATA 0.3333, 0, 0.6667, 0
+ NumericConstant:0.3333
+ NumericConstant:0
+ NumericConstant:0.6667
+ NumericConstant:0
+460 DATA 0, 0.3333, 0, 0.6667
+ NumericConstant:0
+ NumericConstant:0.3333
+ NumericConstant:0
+ NumericConstant:0.6667
+470 DATA 0, 0, 0.3333, 0
+ NumericConstant:0
+ NumericConstant:0
+ NumericConstant:0.3333
+ NumericConstant:0
+480 DATA 0.3333, 0
+ NumericConstant:0.3333
+ NumericConstant:0
+490 DATA 0, 0
+ NumericConstant:0
+ NumericConstant:0
+500 DATA 0, 0
+ NumericConstant:0
+ NumericConstant:0
+510 DATA 0, 0.6667
+ NumericConstant:0
+ NumericConstant:0.6667
+999 END
+ 
+

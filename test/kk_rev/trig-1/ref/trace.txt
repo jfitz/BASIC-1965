@@ -1,0 +1,70 @@
+FND(_) 120: DEF FND(X) = X * P / 180
+FNC(_) 130: DEF FNC(X) = COS(FND(X))
+190: DATA 10, 60, 20, 3, 90, 4, 10, 120, 10
+110: LET P = 3.14159265
+ P = 3.14159265
+140: PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
+SIDE            ANGLE           SIDE            THIRD SIDE
+150: READ X, A, Y
+ X = 10
+ A = 60
+ Y = 20
+160: LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
+ X: 10
+ Y: 20
+ A: 60
+ P: 3.14159265
+ Z = 17.32050806
+170: PRINT X, A, Y, Z
+ X: 10
+ 10             
+ A: 60
+ 60             
+ Y: 20
+ 20             
+ Z: 17.32050806
+ 17.32050806
+180: GOTO 150
+150: READ X, A, Y
+ X = 3
+ A = 90
+ Y = 4
+160: LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
+ X: 3
+ Y: 4
+ A: 90
+ P: 3.14159265
+ Z = 4.999999996
+170: PRINT X, A, Y, Z
+ X: 3
+ 3              
+ A: 90
+ 90             
+ Y: 4
+ 4              
+ Z: 4.999999996
+ 4.999999996
+180: GOTO 150
+150: READ X, A, Y
+ X = 10
+ A = 120
+ Y = 10
+160: LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
+ X: 10
+ Y: 10
+ A: 120
+ P: 3.14159265
+ Z = 17.32050806
+170: PRINT X, A, Y, Z
+ X: 10
+ 10             
+ A: 120
+ 120            
+ Y: 10
+ 10             
+ Z: 17.32050806
+ 17.32050806
+180: GOTO 150
+150: READ X, A, Y
+Error 103 Out of data in line 150
+

@@ -1,0 +1,77 @@
+Statistics:
+
+Number of lines: 17
+Number of valid statements: 16
+Number of comments: 1
+Number of executable statements: 16
+
+Complexity:
+
+Comment density: 0.062
+Comprehension effort: 58
+McCabe complexity: 10
+Halstead complexity:
+ length: 61
+ volume: 218.595
+ difficulty: 9.250
+ effort: 2022.001
+ language: 2.555
+ intelligence: 23.632
+ time: 1.872
+
+(0 2) 5 PRINT
+  Origs: :start, 96:goto, 120:goto
+  Dests: 10:auto
+(0 2) 10 PRINT "A, R, Y, T";
+  Origs: 5:auto
+  Dests: 20:auto
+(4 5) 20 INPUT A, R, Y, T
+  Origs: 10:auto
+  Dests: 26:auto
+(1 4) 26 IF T = 999 THEN 999
+  Origs: 20:auto
+  Dests: 30:auto, 999:ifthen
+(1 4) 30 IF A <= 0 THEN 100
+  Origs: 26:auto
+  Dests: 40:auto, 110:ifthen
+(1 4) 40 IF R <= 0 THEN 100
+  Origs: 30:auto
+  Dests: 50:auto, 110:ifthen
+(1 4) 50 IF Y <= 0 THEN 100
+  Origs: 40:auto
+  Dests: 60:auto, 110:ifthen
+(1 4) 60 IF T <= 0 THEN 100
+  Origs: 50:auto
+  Dests: 70:auto, 110:ifthen
+(0 4) 70 LET N = Y * T
+  Origs: 60:auto
+  Dests: 80:auto
+(0 5) 80 LET R1 = R / 100 / T
+  Origs: 70:auto
+  Dests: 90:auto
+(0 7) 90 LET B = A * (1 + R1) ^ N
+  Origs: 80:auto
+  Dests: 95:auto
+(0 3) 95 PRINT "FINAL AMOUNT = $" B
+  Origs: 90:auto
+  Dests: 96:auto
+(0 3) 96 GOTO 5
+  Origs: 95:auto
+  Dests: 5:goto
+(0 1) 100 REM ERROR ROUTINE
+  Origs: 
+  Dests: 
+(0 2) 110 PRINT "INCORRECT DATA. PLEASE RETYPE."
+  Origs: 30:ifthen, 40:ifthen, 50:ifthen, 60:ifthen
+  Dests: 120:auto
+(0 3) 120 GOTO 5
+  Origs: 110:auto
+  Dests: 5:goto
+(0 1) 999 END
+  Origs: 26:ifthen
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

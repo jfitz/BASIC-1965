@@ -1,0 +1,116 @@
+Statistics:
+
+Number of lines: 30
+Number of valid statements: 28
+Number of comments: 2
+Number of executable statements: 28
+
+Complexity:
+
+Comment density: 0.071
+Comprehension effort: 83
+McCabe complexity: 4
+Halstead complexity:
+ length: 77
+ volume: 296.461
+ difficulty: 10.394
+ effort: 3081.401
+ language: 2.744
+ intelligence: 28.523
+ time: 2.853
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE FIRST DERIVATIVE
+  Origs: 
+  Dests: 
+(0 1) 20 REM OF A FUNCTION ENTERED BY THE USER
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "VALUE OF X = ";
+  Origs: :start
+  Dests: 40:auto
+(1 2) 40 INPUT X
+  Origs: 30:auto, 270:goto
+  Dests: 50:auto
+(0 3) 50 LET Y = X
+  Origs: 40:auto
+  Dests: 60:auto
+(0 5) 60 LET Z = (X * (1E-04)) / 2
+  Origs: 50:auto
+  Dests: 70:auto
+(0 4) 70 LET W = X + Z
+  Origs: 60:auto
+  Dests: 80:auto
+(0 4) 80 LET V = X - Z
+  Origs: 70:auto
+  Dests: 90:auto
+(0 3) 90 LET X = W
+  Origs: 80:auto
+  Dests: 100:auto
+(0 2) 100 GOSUB 280
+  Origs: 90:auto
+  Dests: 110:auto, 280:gosub
+(0 3) 110 LET A = P
+  Origs: 100:auto
+  Dests: 120:auto
+(0 3) 120 LET X = V
+  Origs: 110:auto
+  Dests: 130:auto
+(0 2) 130 GOSUB 280
+  Origs: 120:auto
+  Dests: 140:auto, 280:gosub
+(0 3) 140 LET B = P
+  Origs: 130:auto
+  Dests: 150:auto
+(0 3) 150 LET X = Y
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 GOSUB 280
+  Origs: 150:auto
+  Dests: 170:auto, 280:gosub
+(0 3) 170 LET C = P
+  Origs: 160:auto
+  Dests: 180:auto
+(0 7) 180 LET F = (A - B) / (2 * Z)
+  Origs: 170:auto
+  Dests: 190:auto
+(0 5) 190 PRINT "IF X = "; Y, "THEN F(X) = "; C
+  Origs: 180:auto
+  Dests: 200:auto
+(0 3) 200 PRINT "AND F'(X) = "; F
+  Origs: 190:auto
+  Dests: 210:auto
+(0 2) 210 PRINT
+  Origs: 200:auto
+  Dests: 220:auto
+(0 2) 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 210:auto
+  Dests: 230:auto
+(1 2) 230 INPUT L
+  Origs: 220:auto
+  Dests: 240:auto
+(1 4) 240 IF L = 1 THEN 260
+  Origs: 230:auto
+  Dests: 250:auto, 260:ifthen
+(0 1) 250 STOP
+  Origs: 240:auto
+  Dests: :stop
+(0 2) 260 PRINT
+  Origs: 240:ifthen
+  Dests: 270:auto
+(0 3) 270 GOTO 40
+  Origs: 260:auto
+  Dests: 40:goto
+G(280) (0 4) 280 LET P = X ^ 2
+  Origs: 100:gosub, 130:gosub, 160:gosub
+  Dests: 290:auto
+G(280) (0 1) 290 RETURN
+  Origs: 280:auto
+  Dests: 
+(0 1) 300 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+300: END
+

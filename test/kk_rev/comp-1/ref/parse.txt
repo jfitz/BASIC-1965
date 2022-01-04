@@ -1,0 +1,76 @@
+5 PRINT
+ CarriageControl:NL
+10 PRINT "A, R, Y, T";
+ TextConstant:"A, R, Y, T"
+ CarriageControl:;
+20 INPUT A, R, Y, T
+ Variable:A -> _
+ Variable:R -> _
+ Variable:Y -> _
+ Variable:T -> _
+26 IF T = 999 THEN 999
+ Variable:T -> _
+ NumericConstant:999
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:999
+30 IF A <= 0 THEN 100
+ Variable:A -> _
+ NumericConstant:0
+ BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:100
+40 IF R <= 0 THEN 100
+ Variable:R -> _
+ NumericConstant:0
+ BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:100
+50 IF Y <= 0 THEN 100
+ Variable:Y -> _
+ NumericConstant:0
+ BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:100
+60 IF T <= 0 THEN 100
+ Variable:T -> _
+ NumericConstant:0
+ BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:100
+70 LET N = Y*T
+ Variable:N -> _
+ Variable:Y -> _
+ Variable:T -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 LET R1 = R/100/T
+ Variable:R1 -> _
+ Variable:R -> _
+ NumericConstant:100
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:T -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET B = A*(1+R1)^N
+ Variable:B -> _
+ Variable:A -> _
+ NumericConstant:1
+ Variable:R1 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+95 PRINT "FINAL AMOUNT = $" B
+ TextConstant:"FINAL AMOUNT = $"
+ CarriageControl:
+ Variable:B -> _
+ CarriageControl:NL
+96 GOTO 5
+ LineNumber:5
+100 REM ERROR ROUTINE
+ Remark:ERROR ROUTINE
+110 PRINT "INCORRECT DATA. PLEASE RETYPE."
+ TextConstant:"INCORRECT DATA. PLEASE RETYPE."
+ CarriageControl:NL
+120 GOTO 5
+ LineNumber:5
+999 END
+ 
+

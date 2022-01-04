@@ -1,0 +1,402 @@
+10   DIM A(100),B(100),C(200),X(100)
+ NumericConstant:100
+ Declaration:A() -> _()
+ NumericConstant:100
+ Declaration:B() -> _()
+ NumericConstant:200
+ Declaration:C() -> _()
+ NumericConstant:100
+ Declaration:X() -> _()
+100  REM READ, PRINT A,B
+ Remark:READ, PRINT A,B
+110  GOSUB 1000
+ LineNumber:1000
+120  GOSUB 2000
+ LineNumber:2000
+130  FOR I = 0 TO L
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L -> _"]
+140      LET A(I) = C(I)
+ Variable:I -> _
+ Variable:A(_) -> _
+ Variable:I -> _
+ Variable:C(_) -> _
+ AssignmentOperator:= _ -> _
+150  NEXT I
+ Variable:I -> _
+160  LET L1 = L
+ Variable:L1 -> _
+ Variable:L -> _
+ AssignmentOperator:= _ -> _
+170  PRINT "TIMES"
+ TextConstant:"TIMES"
+ CarriageControl:NL
+180  PRINT
+ CarriageControl:NL
+210  GOSUB 1000
+ LineNumber:1000
+220  GOSUB 2000
+ LineNumber:2000
+230  FOR I = 0 TO L
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L -> _"]
+240      LET B(I) = C(I)
+ Variable:I -> _
+ Variable:B(_) -> _
+ Variable:I -> _
+ Variable:C(_) -> _
+ AssignmentOperator:= _ -> _
+250  NEXT I
+ Variable:I -> _
+260  LET L2 = L
+ Variable:L2 -> _
+ Variable:L -> _
+ AssignmentOperator:= _ -> _
+270  PRINT "EQUALS"
+ TextConstant:"EQUALS"
+ CarriageControl:NL
+280  PRINT
+ CarriageControl:NL
+290 
+300  REM C = A * B
+ Remark:C = A * B
+310  LET L = L1+L2
+ Variable:L -> _
+ Variable:L1 -> _
+ Variable:L2 -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+320  FOR I = 0 TO L
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L -> _"]
+330      LET C(I) = 0
+ Variable:I -> _
+ Variable:C(_) -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+340  NEXT I
+ Variable:I -> _
+350  FOR J = 0 TO L1
+ control: Variable:J -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L1 -> _"]
+360      FOR K = 0 TO L2
+ control: Variable:K -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L2 -> _"]
+370          LET I = J+K
+ Variable:I -> _
+ Variable:J -> _
+ Variable:K -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+380          LET C(I) = C(I) + A(J)*B(K)
+ Variable:I -> _
+ Variable:C(_) -> _
+ Variable:I -> _
+ Variable:C(_) -> _
+ Variable:J -> _
+ Variable:A(_) -> _
+ Variable:K -> _
+ Variable:B(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+390      NEXT K
+ Variable:K -> _
+400  NEXT J
+ Variable:J -> _
+410  GOTO 600
+ LineNumber:600
+420  LET L = L2
+ Variable:L -> _
+ Variable:L2 -> _
+ AssignmentOperator:= _ -> _
+430      FOR I = L1+1 TO L
+ control: Variable:I -> _
+ start:   ["Variable:L1 -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ end:     ["Variable:L -> _"]
+440  LET A(I) = 0
+ Variable:I -> _
+ Variable:A(_) -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+450  NEXT I
+ Variable:I -> _
+500  FOR I = 0 TO L
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L -> _"]
+510      LET C(I) = A(I) + B(I)
+ Variable:I -> _
+ Variable:C(_) -> _
+ Variable:I -> _
+ Variable:A(_) -> _
+ Variable:I -> _
+ Variable:B(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+520  NEXT I
+ Variable:I -> _
+530
+600  REM CARRY, PRINT ANSWER
+ Remark:CARRY, PRINT ANSWER
+610  GOSUB 3000
+ LineNumber:3000
+620  GOSUB 2000
+ LineNumber:2000
+630  STOP
+ 
+640
+1000 REM READ A NUMBER C
+ Remark:READ A NUMBER C
+1010 FOR I = 0 TO 100
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["NumericConstant:100"]
+1020     READ X(I)
+ Variable:I -> _
+ Variable:X(_) -> _
+1030     IF X(I) < 0 THEN 1100
+ Variable:I -> _
+ Variable:X(_) -> _
+ NumericConstant:0
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:1100
+1040 NEXT I
+ Variable:I -> _
+1050 GOTO 1200
+ LineNumber:1200
+1100 LET L = I-1
+ Variable:L -> _
+ Variable:I -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+1110 FOR I = 0 TO L
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L -> _"]
+1120     LET C(I) = X(L-I)
+ Variable:I -> _
+ Variable:C(_) -> _
+ Variable:L -> _
+ Variable:I -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:X(_) -> _
+ AssignmentOperator:= _ -> _
+1130 NEXT I
+ Variable:I -> _
+1140 RETURN
+ 
+1200 PRINT "NUMBER TOO LONG"
+ TextConstant:"NUMBER TOO LONG"
+ CarriageControl:NL
+1210 STOP
+ WARNING: Terminating statement in GOSUB
+ 
+1220
+2000 REM PRINT A NUMBER C
+ Remark:PRINT A NUMBER C
+2010 IF C(L) >= 100 THEN 2200
+ Variable:L -> _
+ Variable:C(_) -> _
+ NumericConstant:100
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:2200
+2020 PRINT "      ";
+ TextConstant:"      "
+ CarriageControl:;
+2030 IF C(L) >= 10 THEN 2100
+ Variable:L -> _
+ Variable:C(_) -> _
+ NumericConstant:10
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:2100
+2040 PRINT "      ";
+ TextConstant:"      "
+ CarriageControl:;
+2050 PRINT C(L); ",   ";
+ Variable:L -> _
+ Variable:C(_) -> _
+ CarriageControl:;
+ TextConstant:",   "
+ CarriageControl:;
+2060 LET L9 = L-1
+ Variable:L9 -> _
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+2070 GOTO 2210
+ LineNumber:2210
+2100 LET M = INT(C(K)/10)
+ Variable:M -> _
+ Variable:K -> _
+ Variable:C(_) -> _
+ NumericConstant:10
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+2110 LET C(L) = C(L) - 10*M
+ Variable:L -> _
+ Variable:C(_) -> _
+ Variable:L -> _
+ Variable:C(_) -> _
+ NumericConstant:10
+ Variable:M -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+2120 PRINT M;
+ Variable:M -> _
+ CarriageControl:;
+2130 GOTO 2050
+ LineNumber:2050
+2200 LET L9 = L
+ Variable:L9 -> _
+ Variable:L -> _
+ AssignmentOperator:= _ -> _
+2210 FOR I = L9 TO 0 STEP -1
+ control: Variable:I -> _
+ start:   ["Variable:L9 -> _"]
+ end:     ["NumericConstant:0"]
+ step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+2220     LET N = C(I)
+ Variable:N -> _
+ Variable:I -> _
+ Variable:C(_) -> _
+ AssignmentOperator:= _ -> _
+2230     LET Q = 100
+ Variable:Q -> _
+ NumericConstant:100
+ AssignmentOperator:= =_ -> _
+2240     FOR J = 1 TO 3
+ control: Variable:J -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:3"]
+2250         LET M = INT(N/Q)
+ Variable:M -> _
+ Variable:N -> _
+ Variable:Q -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+2260         LET N = N - M*Q
+ Variable:N -> _
+ Variable:N -> _
+ Variable:M -> _
+ Variable:Q -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+2270         LET Q = Q/10
+ Variable:Q -> _
+ Variable:Q -> _
+ NumericConstant:10
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+2280         PRINT M;
+ Variable:M -> _
+ CarriageControl:;
+2290     NEXT J
+ Variable:J -> _
+2300     IF I = 0 THEN 2400
+ Variable:I -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:2400
+2310     PRINT ",   ";
+ TextConstant:",   "
+ CarriageControl:;
+2320 NEXT I
+ Variable:I -> _
+2400 PRINT
+ CarriageControl:NL
+2405 PRINT
+ CarriageControl:NL
+2410 RETURN
+ 
+2420
+3000 REM CARRY IS IN NUMBER C
+ Remark:CARRY IS IN NUMBER C
+3010 LET C(L+1) = 0
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C(_) -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+3020 FOR I = 0 TO L
+ control: Variable:I -> _
+ start:   ["NumericConstant:0"]
+ end:     ["Variable:L -> _"]
+3030     LET N = C(I)
+ Variable:N -> _
+ Variable:I -> _
+ Variable:C(_) -> _
+ AssignmentOperator:= _ -> _
+3040     LET M = INT(N/1000)
+ Variable:M -> _
+ Variable:N -> _
+ NumericConstant:1000
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+3050     LET C(I) = N - 1000*M
+ Variable:I -> _
+ Variable:C(_) -> _
+ Variable:N -> _
+ NumericConstant:1000
+ Variable:M -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+3060     LET C(I+1) = C(I+1) + M
+ Variable:I -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C(_) -> _
+ Variable:I -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ Variable:C(_) -> _
+ Variable:M -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+3070 NEXT I
+ Variable:I -> _
+3080 IF M = 0 THEN 3100
+ Variable:M -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:3100
+3090 LET L = L+1
+ Variable:L -> _
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+3100 RETURN
+ 
+3110
+9000 DATA 123,456,789,333,-1
+ NumericConstant:123
+ NumericConstant:456
+ NumericConstant:789
+ NumericConstant:333
+ NumericConstant:1
+ UnaryOperatorMinus:-(_) -> =_
+9010 DATA 987,654,321,000,-1
+ NumericConstant:987
+ NumericConstant:654
+ NumericConstant:321
+ NumericConstant:0
+ NumericConstant:1
+ UnaryOperatorMinus:-(_) -> =_
+9999 END
+ 
+

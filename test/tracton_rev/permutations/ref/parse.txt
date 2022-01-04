@@ -1,0 +1,143 @@
+10 REM THIS PROGRAM COMPUTES PERMUTATIONS
+ Remark:THIS PROGRAM COMPUTES PERMUTATIONS
+20 REM AND COMBINATIONS, WHERE N = NUMBER OF
+ Remark:AND COMBINATIONS, WHERE N = NUMBER OF
+30 REM ITEMS AND R = SIZE OF GROUP SELECTED
+ Remark:ITEMS AND R = SIZE OF GROUP SELECTED
+40 PRINT "ENTER N,R";
+ TextConstant:"ENTER N,R"
+ CarriageControl:;
+50 INPUT N,R
+ Variable:N -> _
+ Variable:R -> _
+60 IF N < R THEN 270
+ Variable:N -> _
+ Variable:R -> _
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:270
+70 IF R < 0 THEN 290
+ Variable:R -> _
+ NumericConstant:0
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:290
+80 LET T = N
+ Variable:T -> _
+ Variable:N -> _
+ AssignmentOperator:= _ -> _
+90 GOSUB 310
+ LineNumber:310
+100 LET A = T
+ Variable:A -> _
+ Variable:T -> _
+ AssignmentOperator:= _ -> _
+110 LET T = N - R
+ Variable:T -> _
+ Variable:N -> _
+ Variable:R -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+120 GOSUB 310
+ LineNumber:310
+130 LET B = T
+ Variable:B -> _
+ Variable:T -> _
+ AssignmentOperator:= _ -> _
+140 LET P = A/B
+ Variable:P -> _
+ Variable:A -> _
+ Variable:B -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+150 LET T = R
+ Variable:T -> _
+ Variable:R -> _
+ AssignmentOperator:= _ -> _
+160 GOSUB 310
+ LineNumber:310
+170 LET C = A/(T*B)
+ Variable:C -> _
+ Variable:A -> _
+ Variable:T -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 PRINT "PERMUTATIONS = ";P
+ TextConstant:"PERMUTATIONS = "
+ CarriageControl:;
+ Variable:P -> _
+ CarriageControl:NL
+190 PRINT "COMBINATIONS = ";C
+ TextConstant:"COMBINATIONS = "
+ CarriageControl:;
+ Variable:C -> _
+ CarriageControl:NL
+200 PRINT
+ CarriageControl:NL
+210 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+220 INPUT L
+ Variable:L -> _
+230 IF L = 1 THEN 250
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:250
+240 STOP
+ 
+250 PRINT
+ CarriageControl:NL
+260 GOTO 40
+ LineNumber:40
+270 PRINT "N < R, INVALID INPUT"
+ TextConstant:"N < R, INVALID INPUT"
+ CarriageControl:NL
+280 GOTO 40
+ LineNumber:40
+290 PRINT "R < 0, INVALID INPUT"
+ TextConstant:"R < 0, INVALID INPUT"
+ CarriageControl:NL
+300 GOTO 40
+ LineNumber:40
+310 IF T = 0 THEN 390
+ Variable:T -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:390
+320 IF T = 1 THEN 390
+ Variable:T -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:390
+330 LET J = 1
+ Variable:J -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+340 FOR I = 2 TO T
+ control: Variable:I -> _
+ start:   ["NumericConstant:2"]
+ end:     ["Variable:T -> _"]
+350 LET J = J*I
+ Variable:J -> _
+ Variable:J -> _
+ Variable:I -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+360 NEXT I
+ Variable:I -> _
+370 LET T = J
+ Variable:T -> _
+ Variable:J -> _
+ AssignmentOperator:= _ -> _
+380 GOTO 400
+ LineNumber:400
+390 LET T = 1
+ Variable:T -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+400 RETURN
+ 
+410 END
+ 
+

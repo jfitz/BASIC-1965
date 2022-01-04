@@ -1,0 +1,110 @@
+Statistics:
+
+Number of lines: 27
+Number of valid statements: 25
+Number of comments: 1
+Number of executable statements: 25
+
+Complexity:
+
+Comment density: 0.040
+Comprehension effort: 75
+McCabe complexity: 10
+Halstead complexity:
+ length: 88
+ volume: 342.480
+ difficulty: 9.200
+ effort: 3150.818
+ language: 4.046
+ intelligence: 37.226
+ time: 2.917
+
+(0 1) 10 REM THIS PROGRAM SIMULATES THE I CHING
+  Origs: 
+  Dests: 
+(0 1) 20 
+   ERROR: Unknown statement 'RANDOMIZE'
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "ENTER DATE AS M,D,Y"
+  Origs: :start, 260:goto
+  Dests: 40:auto
+(3 4) 40 INPUT M, D, Y
+  Origs: 30:auto
+  Dests: 50:auto
+(0 2) 50 PRINT "ENTER TIME AS H,M(24 HOUR CLOCK)"
+  Origs: 40:auto
+  Dests: 60:auto
+(2 3) 60 INPUT H, M1
+  Origs: 50:auto
+  Dests: 70:auto
+(0 13) 70 LET N = M + (D / 30) + (Y / 100) + H + (M1 / 60)
+  Origs: 60:auto
+  Dests: 80:auto
+(1 3) 80 FOR I = 1 TO 6
+  Origs: 70:auto
+  Dests: 90:fornext, 120:fornext
+(0 5) 90 LET K = N * RND(0)
+  Origs: 80:fornext
+  Dests: 100:auto
+(0 5) 100 LET K = K - INT(K)
+  Origs: 90:auto
+  Dests: 110:auto
+(0 5) 110 LET C(I) = 1 + INT(2 * K)
+  Origs: 100:auto
+  Dests: 120:auto
+(0 1) 120 NEXT I
+  Origs: 80:fornext, 110:auto
+  Dests: 130:auto
+(1 3) 130 FOR I = 1 TO 6
+  Origs: 120:auto
+  Dests: 140:fornext, 180:fornext
+(1 4) 140 IF C(I) = 1 THEN 170
+  Origs: 130:fornext
+  Dests: 150:auto, 170:ifthen
+(0 2) 150 PRINT "---"
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 GOTO 180
+  Origs: 150:auto
+  Dests: 180:goto
+(0 2) 170 PRINT "- -"
+  Origs: 140:ifthen
+  Dests: 180:auto
+(0 1) 180 NEXT I
+  Origs: 130:fornext, 160:goto, 170:auto
+  Dests: 190:auto
+(0 2) 190 PRINT
+  Origs: 180:auto
+  Dests: 200:auto
+(0 2) 200 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+  Origs: 190:auto
+  Dests: 210:auto
+(0 1) 210 INPUT L $
+    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+  Origs: 200:auto
+  Dests: 220:auto
+(1 2) 220 IF L $ ="Y" THEN 250
+    ERROR: Token 'InvalidToken:$' is not a value or operator
+  Origs: 210:auto
+  Dests: 230:auto, 250:ifthen
+(0 2) 230 PRINT "THE I CHING SAYS GOOD-BYE"
+  Origs: 220:auto
+  Dests: 240:auto
+(0 1) 240 STOP
+  Origs: 230:auto
+  Dests: :stop
+(0 2) 250 PRINT
+  Origs: 220:ifthen
+  Dests: 260:auto
+(0 3) 260 GOTO 30
+  Origs: 250:auto
+  Dests: 30:goto
+(0 1) 270 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+270: END
+

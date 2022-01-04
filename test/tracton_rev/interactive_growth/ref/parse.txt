@@ -1,0 +1,213 @@
+10 REM THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
+ Remark:THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
+20 REM A QUANTITY Y THE DESTROYER AND A QUANTITY X
+ Remark:A QUANTITY Y THE DESTROYER AND A QUANTITY X
+30 REM THE CREATOR. X CAN PROPOGATE, AND ON A
+ Remark:THE CREATOR. X CAN PROPOGATE, AND ON A
+40 REM CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
+ Remark:CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
+50 REM THUS INCREASING THE NUMBER OF YS.
+ Remark:THUS INCREASING THE NUMBER OF YS.
+60 PRINT "NUMBER OF DESTROYERS (Y) = ";
+ TextConstant:"NUMBER OF DESTROYERS (Y) = "
+ CarriageControl:;
+70 INPUT Y
+ Variable:Y -> _
+80 PRINT "NUMBER OF CREATORS (X) = ";
+ TextConstant:"NUMBER OF CREATORS (X) = "
+ CarriageControl:;
+90 INPUT X
+ Variable:X -> _
+100 PRINT "PROPAGATION RATE OF X = ";
+ TextConstant:"PROPAGATION RATE OF X = "
+ CarriageControl:;
+110 INPUT Z
+ Variable:Z -> _
+120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
+ TextConstant:"CHANCE OF METTING BETWEEN X AND Y = "
+ CarriageControl:;
+130 INPUT A
+ Variable:A -> _
+140 PRINT "TIME BETWEEN SAMPLES = ";
+ TextConstant:"TIME BETWEEN SAMPLES = "
+ CarriageControl:;
+150 INPUT H
+ Variable:H -> _
+160 PRINT "MAXIMUM GENERATIONS = ";
+ TextConstant:"MAXIMUM GENERATIONS = "
+ CarriageControl:;
+170 INPUT K
+ Variable:K -> _
+180 LET J = 0
+ Variable:J -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+190 PRINT
+ CarriageControl:NL
+200 PRINT "INTERACTIVE GROWTH PATTERNS"
+ TextConstant:"INTERACTIVE GROWTH PATTERNS"
+ CarriageControl:NL
+210 PRINT
+ CarriageControl:NL
+220 PRINT "CREATOR","DESTROYER"
+ TextConstant:"CREATOR"
+ CarriageControl:,
+ TextConstant:"DESTROYER"
+ CarriageControl:NL
+230 IF J = K THEN 470
+ Variable:J -> _
+ Variable:K -> _
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:470
+240 LET J = J + 1
+ Variable:J -> _
+ Variable:J -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+250 LET B = A*X*Y
+ Variable:B -> _
+ Variable:A -> _
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+260 LET C = ((Y - B)*H) + Y
+ Variable:C -> _
+ Variable:Y -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+270 IF C < 0 THEN 390
+ Variable:C -> _
+ NumericConstant:0
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:390
+280 LET Y = C
+ Variable:Y -> _
+ Variable:C -> _
+ AssignmentOperator:= _ -> _
+290 LET D = (((X*Z) - B)*H) + X
+ Variable:D -> _
+ Variable:X -> _
+ Variable:Z -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:H -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+300 IF D < 0 THEN 410
+ Variable:D -> _
+ NumericConstant:0
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:410
+310 LET X = D
+ Variable:X -> _
+ Variable:D -> _
+ AssignmentOperator:= _ -> _
+320 LET M = INT(X)
+ Variable:M -> _
+ Variable:X -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+330 LET N = INT(Y)
+ Variable:N -> _
+ Variable:Y -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+340 PRINT M,N
+ Variable:M -> _
+ CarriageControl:,
+ Variable:N -> _
+ CarriageControl:NL
+350 IF M = 0 THEN 370
+ Variable:M -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:370
+360 GOTO 230
+ LineNumber:230
+370 IF N = 0 THEN 430
+ Variable:N -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:430
+380 GOTO 230
+ LineNumber:230
+390 LET Y = 0
+ Variable:Y -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+400 GOTO 290
+ LineNumber:290
+410 LET X = 0
+ Variable:X -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+420 GOTO 320
+ LineNumber:320
+430 PRINT "ALL GROWTH ENDED"
+ TextConstant:"ALL GROWTH ENDED"
+ CarriageControl:NL
+440 PRINT "NUMBER OF GENERATIONS = ";J
+ TextConstant:"NUMBER OF GENERATIONS = "
+ CarriageControl:;
+ Variable:J -> _
+ CarriageControl:NL
+450 PRINT
+ CarriageControl:NL
+460 GOTO 560
+ LineNumber:560
+470 PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
+ TextConstant:"MAXIMUM NUMBER OF GENERATIONS REACHED"
+ CarriageControl:NL
+480 PRINT
+ CarriageControl:NL
+490 PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+ TextConstant:"FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+ CarriageControl:NL
+500 INPUT W
+ Variable:W -> _
+510 IF W = 1 THEN 530
+ Variable:W -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:530
+520 GOTO 560
+ LineNumber:560
+530 PRINT "MAXIMUM GENERATIONS = ";
+ TextConstant:"MAXIMUM GENERATIONS = "
+ CarriageControl:;
+540 INPUT K
+ Variable:K -> _
+550 GOTO 230
+ LineNumber:230
+560 PRINT
+ CarriageControl:NL
+570 PRINT "FOR NEXT PATTERN TYPE 1, 0 TO STOP"
+ TextConstant:"FOR NEXT PATTERN TYPE 1, 0 TO STOP"
+ CarriageControl:NL
+580 INPUT W
+ Variable:W -> _
+590 IF W = 1 THEN 610
+ Variable:W -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:610
+600 STOP
+ 
+610 PRINT
+ CarriageControl:NL
+620 GOTO 60
+ LineNumber:60
+630 END
+ 
+

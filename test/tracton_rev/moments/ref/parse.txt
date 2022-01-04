@@ -1,0 +1,208 @@
+10 REM THIS PROGRAM COMPUTES THE VALUES OF THE
+ Remark:THIS PROGRAM COMPUTES THE VALUES OF THE
+20 REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
+ Remark:FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
+30 LET A = 0
+ Variable:A -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+40 LET B = 0
+ Variable:B -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+50 LET C = 0
+ Variable:C -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+60 LET D = 0
+ Variable:D -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+70 PRINT "NUMBER OF SAMPLES = "
+ TextConstant:"NUMBER OF SAMPLES = "
+ CarriageControl:NL
+80 INPUT N
+ Variable:N -> _
+90 FOR I = 1 TO N
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["Variable:N -> _"]
+100 PRINT "SAMPLE = "
+ TextConstant:"SAMPLE = "
+ CarriageControl:NL
+110 INPUT X
+ Variable:X -> _
+120 LET A = A + X
+ Variable:A -> _
+ Variable:A -> _
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+130 LET B = B + (X^2)
+ Variable:B -> _
+ Variable:B -> _
+ Variable:X -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+140 LET C = C + (X^3)
+ Variable:C -> _
+ Variable:C -> _
+ Variable:X -> _
+ NumericConstant:3
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+150 LET D = D + (X^4)
+ Variable:D -> _
+ Variable:D -> _
+ Variable:X -> _
+ NumericConstant:4
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+160 NEXT I
+ Variable:I -> _
+170 LET J = A/N
+ Variable:J -> _
+ Variable:A -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 LET E = (B/N) - (J^2)
+ Variable:E -> _
+ Variable:B -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:J -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 LET F = (C/N) - ((3*J*B)/N) + (2*(J^3))
+ Variable:F -> _
+ Variable:C -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ NumericConstant:3
+ Variable:J -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ NumericConstant:2
+ Variable:J -> _
+ NumericConstant:3
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+200 LET G = (D/N) - ((4*J*C)/N)
+ Variable:G -> _
+ Variable:D -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ NumericConstant:4
+ Variable:J -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+210 LET H = G + ((6*(J^2)*B)/N) - (3*(J^4))
+ Variable:H -> _
+ Variable:G -> _
+ NumericConstant:6
+ Variable:J -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:3
+ Variable:J -> _
+ NumericConstant:4
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+220 LET K = F/(E^(3/2))
+ Variable:K -> _
+ Variable:F -> _
+ Variable:E -> _
+ NumericConstant:3
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> =_
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+230 LET L = H/(E^2)
+ Variable:L -> _
+ Variable:H -> _
+ Variable:E -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+240 PRINT "1ST MOMENT = ";J
+ TextConstant:"1ST MOMENT = "
+ CarriageControl:;
+ Variable:J -> _
+ CarriageControl:NL
+250 PRINT "2ND MOMENT = ";E
+ TextConstant:"2ND MOMENT = "
+ CarriageControl:;
+ Variable:E -> _
+ CarriageControl:NL
+260 PRINT "3RD MOMENT = ";F
+ TextConstant:"3RD MOMENT = "
+ CarriageControl:;
+ Variable:F -> _
+ CarriageControl:NL
+270 PRINT "4TH MOMENT = ";H
+ TextConstant:"4TH MOMENT = "
+ CarriageControl:;
+ Variable:H -> _
+ CarriageControl:NL
+280 PRINT "MOMENT COEFFICIENTS"
+ TextConstant:"MOMENT COEFFICIENTS"
+ CarriageControl:NL
+290 PRINT "SKEWNESS = ";K,"KURTOSIS = ";L
+ TextConstant:"SKEWNESS = "
+ CarriageControl:;
+ Variable:K -> _
+ CarriageControl:,
+ TextConstant:"KURTOSIS = "
+ CarriageControl:;
+ Variable:L -> _
+ CarriageControl:NL
+300 PRINT "**********************"
+ TextConstant:"**********************"
+ CarriageControl:NL
+310 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+320 INPUT Z
+ Variable:Z -> _
+330 IF Z = 1 THEN 350
+ Variable:Z -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:350
+340 STOP
+ 
+350 PRINT
+ CarriageControl:NL
+360 GOTO 30
+ LineNumber:30
+370 END
+ 
+

@@ -1,0 +1,82 @@
+10 REM THIS PROGRAM COMPUTES THE PARAMETERS
+ Remark:THIS PROGRAM COMPUTES THE PARAMETERS
+20 REM CONNECTED WITH A CIRCULAR SECTION
+ Remark:CONNECTED WITH A CIRCULAR SECTION
+30 PRINT "RADIUS"
+ TextConstant:"RADIUS"
+ CarriageControl:NL
+40 INPUT R
+ Variable:R -> _
+50 LET P = 3.14159
+ Variable:P -> _
+ NumericConstant:3.14159
+ AssignmentOperator:= =_ -> _
+60 LET D = 2*R
+ Variable:D -> _
+ NumericConstant:2
+ Variable:R -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+70 LET I = (P*(D^4))/64
+ Variable:I -> _
+ Variable:P -> _
+ Variable:D -> _
+ NumericConstant:4
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:64
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 LET J = I*2
+ Variable:J -> _
+ Variable:I -> _
+ NumericConstant:2
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET A = (P*(D^2))/4
+ Variable:A -> _
+ Variable:P -> _
+ Variable:D -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:4
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+100 PRINT "MOMENT OF INERTIA = ";I
+ TextConstant:"MOMENT OF INERTIA = "
+ CarriageControl:;
+ Variable:I -> _
+ CarriageControl:NL
+110 PRINT "POLAR MOMENT OF INERTIA = ";J
+ TextConstant:"POLAR MOMENT OF INERTIA = "
+ CarriageControl:;
+ Variable:J -> _
+ CarriageControl:NL
+120 PRINT "AREA OF SECTION = ";A
+ TextConstant:"AREA OF SECTION = "
+ CarriageControl:;
+ Variable:A -> _
+ CarriageControl:NL
+130 PRINT "*************************"
+ TextConstant:"*************************"
+ CarriageControl:NL
+140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+150 INPUT L
+ Variable:L -> _
+160 IF L = 1 THEN 180
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:180
+170 STOP
+ 
+180 PRINT
+ CarriageControl:NL
+190 GOTO 30
+ LineNumber:30
+200 END
+ 
+

@@ -1,0 +1,214 @@
+30: LET A = 0
+ A = 0
+40: LET B = 0
+ B = 0
+50: LET C = 0
+ C = 0
+60: LET D = 0
+ D = 0
+70: PRINT "NUMBER OF SAMPLES = "
+NUMBER OF SAMPLES = 
+80: INPUT N
+? 5
+ N = 5
+90: FOR I = 1 TO N
+ N: 5
+ I = 1
+ N = 5
+ terminated:false
+100: PRINT "SAMPLE = "
+SAMPLE = 
+110: INPUT X
+? 12
+ X = 12
+120: LET A = A + X
+ A: 0
+ X: 12
+ A = 12
+130: LET B = B + (X ^ 2)
+ B: 0
+ X: 12
+ B = 144
+140: LET C = C + (X ^ 3)
+ C: 0
+ X: 12
+ C = 1728
+150: LET D = D + (X ^ 4)
+ D: 0
+ X: 12
+ D = 20736
+160: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+100: PRINT "SAMPLE = "
+SAMPLE = 
+110: INPUT X
+? 3
+ X = 3
+120: LET A = A + X
+ A: 12
+ X: 3
+ A = 15
+130: LET B = B + (X ^ 2)
+ B: 144
+ X: 3
+ B = 153
+140: LET C = C + (X ^ 3)
+ C: 1728
+ X: 3
+ C = 1755
+150: LET D = D + (X ^ 4)
+ D: 20736
+ X: 3
+ D = 20817
+160: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+100: PRINT "SAMPLE = "
+SAMPLE = 
+110: INPUT X
+? 4
+ X = 4
+120: LET A = A + X
+ A: 15
+ X: 4
+ A = 19
+130: LET B = B + (X ^ 2)
+ B: 153
+ X: 4
+ B = 169
+140: LET C = C + (X ^ 3)
+ C: 1755
+ X: 4
+ C = 1819
+150: LET D = D + (X ^ 4)
+ D: 20817
+ X: 4
+ D = 21073
+160: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+100: PRINT "SAMPLE = "
+SAMPLE = 
+110: INPUT X
+? 5
+ X = 5
+120: LET A = A + X
+ A: 19
+ X: 5
+ A = 24
+130: LET B = B + (X ^ 2)
+ B: 169
+ X: 5
+ B = 194
+140: LET C = C + (X ^ 3)
+ C: 1819
+ X: 5
+ C = 1944
+150: LET D = D + (X ^ 4)
+ D: 21073
+ X: 5
+ D = 21698
+160: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+100: PRINT "SAMPLE = "
+SAMPLE = 
+110: INPUT X
+? 4
+ X = 4
+120: LET A = A + X
+ A: 24
+ X: 4
+ A = 28
+130: LET B = B + (X ^ 2)
+ B: 194
+ X: 4
+ B = 210
+140: LET C = C + (X ^ 3)
+ C: 1944
+ X: 4
+ C = 2008
+150: LET D = D + (X ^ 4)
+ D: 21698
+ X: 4
+ D = 21954
+160: NEXT I
+ I: 5
+ terminated:true
+170: LET J = A / N
+ A: 28
+ N: 5
+ J = 5.6
+180: LET E = (B / N) - (J ^ 2)
+ B: 210
+ N: 5
+ J: 5.6
+ E = 10.64
+190: LET F = (C / N) - ((3 * J * B) / N) + (2 * (J ^ 3))
+ C: 2008
+ N: 5
+ J: 5.6
+ B: 210
+ F = 47.232
+200: LET G = (D / N) - ((4 * J * C) / N)
+ D: 21954
+ N: 5
+ J: 5.6
+ C: 2008
+ G = -4605.04
+210: LET H = G + ((6 * (J ^ 2) * B) / N) - (3 * (J ^ 4))
+ G: -4605.04
+ J: 5.6
+ B: 210
+ N: 5
+ H = 347.33
+220: LET K = F / (E ^ (3 / 2))
+ F: 47.232
+ E: 10.64
+ K = 1.36089
+230: LET L = H / (E ^ 2)
+ H: 347.33
+ E: 10.64
+ L = 3.06802
+240: PRINT "1ST MOMENT = "; J
+1ST MOMENT = 
+ J: 5.6
+ 5.6
+250: PRINT "2ND MOMENT = "; E
+2ND MOMENT = 
+ E: 10.64
+ 10.64
+260: PRINT "3RD MOMENT = "; F
+3RD MOMENT = 
+ F: 47.232
+ 47.232
+270: PRINT "4TH MOMENT = "; H
+4TH MOMENT = 
+ H: 347.33
+ 347.33
+280: PRINT "MOMENT COEFFICIENTS"
+MOMENT COEFFICIENTS
+290: PRINT "SKEWNESS = "; K, "KURTOSIS = "; L
+SKEWNESS = 
+ K: 1.36089
+ 1.36089        KURTOSIS = 
+ L: 3.06802
+ 3.06802
+300: PRINT "**********************"
+**********************
+310: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+320: INPUT Z
+? 0
+ Z = 0
+330: IF Z = 1 THEN 350
+ Z: 0
+ Z = 1: false
+340: STOP
+STOP in line 340
+

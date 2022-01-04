@@ -1,0 +1,12 @@
+10 FOR I = 1 TO 1000
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:1000"]
+20    PRINT I
+ Variable:I -> _
+ CarriageControl:NL
+30 NEXT I
+ Variable:I -> _
+40 END
+ 
+

@@ -1,0 +1,108 @@
+10 REM THIS PROGRAM COMPUTES THE DETERMINANT AND
+ Remark:THIS PROGRAM COMPUTES THE DETERMINANT AND
+20 REM INVERSE OF A 2 X 2 MATRIX
+ Remark:INVERSE OF A 2 X 2 MATRIX
+30 PRINT "ENTER A11, A12";
+ TextConstant:"ENTER A11, A12"
+ CarriageControl:;
+40 INPUT A,B
+ Variable:A -> _
+ Variable:B -> _
+50 PRINT "A21, A22";
+ TextConstant:"A21, A22"
+ CarriageControl:;
+60 INPUT C,D
+ Variable:C -> _
+ Variable:D -> _
+70 LET E = (D*A) - (B*C)
+ Variable:E -> _
+ Variable:D -> _
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 LET F = D/E
+ Variable:F -> _
+ Variable:D -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 LET G = - B/E
+ Variable:G -> _
+ Variable:B -> _
+ UnaryOperatorMinus:-(_) -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+100 LET H = - C/E
+ Variable:H -> _
+ Variable:C -> _
+ UnaryOperatorMinus:-(_) -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+110 LET I = A/E
+ Variable:I -> _
+ Variable:A -> _
+ Variable:E -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+120 PRINT "ORIGINAL MATRIX"
+ TextConstant:"ORIGINAL MATRIX"
+ CarriageControl:NL
+130 PRINT A,B
+ Variable:A -> _
+ CarriageControl:,
+ Variable:B -> _
+ CarriageControl:NL
+140 PRINT C,D
+ Variable:C -> _
+ CarriageControl:,
+ Variable:D -> _
+ CarriageControl:NL
+150 PRINT
+ CarriageControl:NL
+160 PRINT "INVERSE OF MATRIX"
+ TextConstant:"INVERSE OF MATRIX"
+ CarriageControl:NL
+170 PRINT F,G
+ Variable:F -> _
+ CarriageControl:,
+ Variable:G -> _
+ CarriageControl:NL
+180 PRINT H,I
+ Variable:H -> _
+ CarriageControl:,
+ Variable:I -> _
+ CarriageControl:NL
+190 PRINT
+ CarriageControl:NL
+200 PRINT "DETERMINANT = ";E
+ TextConstant:"DETERMINANT = "
+ CarriageControl:;
+ Variable:E -> _
+ CarriageControl:NL
+210 PRINT
+ CarriageControl:NL
+220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+230 INPUT L
+ Variable:L -> _
+240 IF L = 1 THEN 30
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:30
+250 STOP
+ 
+260 PRINT
+ CarriageControl:NL
+270 GOTO 30
+ LineNumber:30
+280 END
+ 
+

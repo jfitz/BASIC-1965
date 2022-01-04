@@ -1,0 +1,417 @@
+900: DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
+910: DATA 4, 3, 9, 15, 21, 6, 999999
+998: DATA 999999
+100: LET N = 0
+ N = 0
+110: LET S = 0
+ S = 0
+120: LET S2 = 0
+ S2 = 0
+140: READ X
+ X = 1
+150: IF X = 999999 THEN 210
+ X: 1
+ X = 999999: false
+160: LET N = N + 1
+ N: 0
+ N = 1
+170: LET S = S + X
+ S: 0
+ X: 1
+ S = 1
+180: LET S2 = S2 + X * X
+ S2: 0
+ X: 1
+ S2 = 1
+190: GOTO 140
+140: READ X
+ X = 2
+150: IF X = 999999 THEN 210
+ X: 2
+ X = 999999: false
+160: LET N = N + 1
+ N: 1
+ N = 2
+170: LET S = S + X
+ S: 1
+ X: 2
+ S = 3
+180: LET S2 = S2 + X * X
+ S2: 1
+ X: 2
+ S2 = 5
+190: GOTO 140
+140: READ X
+ X = 3
+150: IF X = 999999 THEN 210
+ X: 3
+ X = 999999: false
+160: LET N = N + 1
+ N: 2
+ N = 3
+170: LET S = S + X
+ S: 3
+ X: 3
+ S = 6
+180: LET S2 = S2 + X * X
+ S2: 5
+ X: 3
+ S2 = 14
+190: GOTO 140
+140: READ X
+ X = 4
+150: IF X = 999999 THEN 210
+ X: 4
+ X = 999999: false
+160: LET N = N + 1
+ N: 3
+ N = 4
+170: LET S = S + X
+ S: 6
+ X: 4
+ S = 10
+180: LET S2 = S2 + X * X
+ S2: 14
+ X: 4
+ S2 = 30
+190: GOTO 140
+140: READ X
+ X = 5
+150: IF X = 999999 THEN 210
+ X: 5
+ X = 999999: false
+160: LET N = N + 1
+ N: 4
+ N = 5
+170: LET S = S + X
+ S: 10
+ X: 5
+ S = 15
+180: LET S2 = S2 + X * X
+ S2: 30
+ X: 5
+ S2 = 55
+190: GOTO 140
+140: READ X
+ X = 6
+150: IF X = 999999 THEN 210
+ X: 6
+ X = 999999: false
+160: LET N = N + 1
+ N: 5
+ N = 6
+170: LET S = S + X
+ S: 15
+ X: 6
+ S = 21
+180: LET S2 = S2 + X * X
+ S2: 55
+ X: 6
+ S2 = 91
+190: GOTO 140
+140: READ X
+ X = 7
+150: IF X = 999999 THEN 210
+ X: 7
+ X = 999999: false
+160: LET N = N + 1
+ N: 6
+ N = 7
+170: LET S = S + X
+ S: 21
+ X: 7
+ S = 28
+180: LET S2 = S2 + X * X
+ S2: 91
+ X: 7
+ S2 = 140
+190: GOTO 140
+140: READ X
+ X = 8
+150: IF X = 999999 THEN 210
+ X: 8
+ X = 999999: false
+160: LET N = N + 1
+ N: 7
+ N = 8
+170: LET S = S + X
+ S: 28
+ X: 8
+ S = 36
+180: LET S2 = S2 + X * X
+ S2: 140
+ X: 8
+ S2 = 204
+190: GOTO 140
+140: READ X
+ X = 9
+150: IF X = 999999 THEN 210
+ X: 9
+ X = 999999: false
+160: LET N = N + 1
+ N: 8
+ N = 9
+170: LET S = S + X
+ S: 36
+ X: 9
+ S = 45
+180: LET S2 = S2 + X * X
+ S2: 204
+ X: 9
+ S2 = 285
+190: GOTO 140
+140: READ X
+ X = 10
+150: IF X = 999999 THEN 210
+ X: 10
+ X = 999999: false
+160: LET N = N + 1
+ N: 9
+ N = 10
+170: LET S = S + X
+ S: 45
+ X: 10
+ S = 55
+180: LET S2 = S2 + X * X
+ S2: 285
+ X: 10
+ S2 = 385
+190: GOTO 140
+140: READ X
+ X = 999999
+150: IF X = 999999 THEN 210
+ X: 999999
+ X = 999999: true
+210: LET M = S / N
+ S: 55
+ N: 10
+ M = 5.5
+220: LET V = (N * S2 - S * S) / N / (N - 1)
+ N: 10
+ S2: 385
+ S: 55
+ V = 9.16667
+230: LET D = SQR(V)
+ V: 9.16667
+ D = 3.02765
+240: LET P = .6745 * D
+ D: 3.02765
+ P = 2.04215
+250: LET E = SQR(V / N)
+ V: 9.16667
+ N: 10
+ E = 0.957427
+260: LET C = D / M
+ D: 3.02765
+ M: 5.5
+ C = 0.550482
+280: PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
+NUMBER          SUM             SUM-SQUARES     MEAN            VARIANCE
+290: PRINT N, S, S2, M, V
+ N: 10
+ 10             
+ S: 55
+ 55             
+ S2: 385
+ 385            
+ M: 5.5
+ 5.5            
+ V: 9.16667
+ 9.16667
+300: PRINT
+
+310: PRINT "STD. DEV.", "PROB. ERR.", "STD.ERR. MN.", "COEFF. VAR."
+STD. DEV.       PROB. ERR.      STD.ERR. MN.    COEFF. VAR.
+320: PRINT D, P, E, C
+ D: 3.02765
+ 3.02765        
+ P: 2.04215
+ 2.04215        
+ E: 0.957427
+ 0.957427       
+ C: 0.550482
+ 0.550482
+330: PRINT
+
+340: PRINT
+
+360: LET N = 0
+ N = 0
+370: LET S = 0
+ S = 0
+380: LET S2 = 0
+ S2 = 0
+390: READ X
+ X = 4
+400: IF X <> 999999 THEN 160
+ X: 4
+ X <> 999999: true
+160: LET N = N + 1
+ N: 0
+ N = 1
+170: LET S = S + X
+ S: 0
+ X: 4
+ S = 4
+180: LET S2 = S2 + X * X
+ S2: 0
+ X: 4
+ S2 = 16
+190: GOTO 140
+140: READ X
+ X = 3
+150: IF X = 999999 THEN 210
+ X: 3
+ X = 999999: false
+160: LET N = N + 1
+ N: 1
+ N = 2
+170: LET S = S + X
+ S: 4
+ X: 3
+ S = 7
+180: LET S2 = S2 + X * X
+ S2: 16
+ X: 3
+ S2 = 25
+190: GOTO 140
+140: READ X
+ X = 9
+150: IF X = 999999 THEN 210
+ X: 9
+ X = 999999: false
+160: LET N = N + 1
+ N: 2
+ N = 3
+170: LET S = S + X
+ S: 7
+ X: 9
+ S = 16
+180: LET S2 = S2 + X * X
+ S2: 25
+ X: 9
+ S2 = 106
+190: GOTO 140
+140: READ X
+ X = 15
+150: IF X = 999999 THEN 210
+ X: 15
+ X = 999999: false
+160: LET N = N + 1
+ N: 3
+ N = 4
+170: LET S = S + X
+ S: 16
+ X: 15
+ S = 31
+180: LET S2 = S2 + X * X
+ S2: 106
+ X: 15
+ S2 = 331
+190: GOTO 140
+140: READ X
+ X = 21
+150: IF X = 999999 THEN 210
+ X: 21
+ X = 999999: false
+160: LET N = N + 1
+ N: 4
+ N = 5
+170: LET S = S + X
+ S: 31
+ X: 21
+ S = 52
+180: LET S2 = S2 + X * X
+ S2: 331
+ X: 21
+ S2 = 772
+190: GOTO 140
+140: READ X
+ X = 6
+150: IF X = 999999 THEN 210
+ X: 6
+ X = 999999: false
+160: LET N = N + 1
+ N: 5
+ N = 6
+170: LET S = S + X
+ S: 52
+ X: 6
+ S = 58
+180: LET S2 = S2 + X * X
+ S2: 772
+ X: 6
+ S2 = 808
+190: GOTO 140
+140: READ X
+ X = 999999
+150: IF X = 999999 THEN 210
+ X: 999999
+ X = 999999: true
+210: LET M = S / N
+ S: 58
+ N: 6
+ M = 9.66667
+220: LET V = (N * S2 - S * S) / N / (N - 1)
+ N: 6
+ S2: 808
+ S: 58
+ V = 49.4666
+230: LET D = SQR(V)
+ V: 49.4666
+ D = 7.03325
+240: LET P = .6745 * D
+ D: 7.03325
+ P = 4.74393
+250: LET E = SQR(V / N)
+ V: 49.4666
+ N: 6
+ E = 2.87131
+260: LET C = D / M
+ D: 7.03325
+ M: 9.66667
+ C = 0.727577
+280: PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
+NUMBER          SUM             SUM-SQUARES     MEAN            VARIANCE
+290: PRINT N, S, S2, M, V
+ N: 6
+ 6              
+ S: 58
+ 58             
+ S2: 808
+ 808            
+ M: 9.66667
+ 9.66667        
+ V: 49.4666
+ 49.4666
+300: PRINT
+
+310: PRINT "STD. DEV.", "PROB. ERR.", "STD.ERR. MN.", "COEFF. VAR."
+STD. DEV.       PROB. ERR.      STD.ERR. MN.    COEFF. VAR.
+320: PRINT D, P, E, C
+ D: 7.03325
+ 7.03325        
+ P: 4.74393
+ 4.74393        
+ E: 2.87131
+ 2.87131        
+ C: 0.727577
+ 0.727577
+330: PRINT
+
+340: PRINT
+
+360: LET N = 0
+ N = 0
+370: LET S = 0
+ S = 0
+380: LET S2 = 0
+ S2 = 0
+390: READ X
+ X = 999999
+400: IF X <> 999999 THEN 160
+ X: 999999
+ X <> 999999: false
+999: END
+STOP in line 999
+

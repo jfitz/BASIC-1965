@@ -1,0 +1,83 @@
+Statistics:
+
+Number of lines: 19
+Number of valid statements: 17
+Number of comments: 2
+Number of executable statements: 17
+
+Complexity:
+
+Comment density: 0.118
+Comprehension effort: 46
+McCabe complexity: 6
+Halstead complexity:
+ length: 37
+ volume: 124.590
+ difficulty: 6.842
+ effort: 852.458
+ language: 2.661
+ intelligence: 18.209
+ time: 0.789
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE "NO REPETITIONS"
+  Origs: 
+  Dests: 
+(0 1) 20 REM PROBABILITY OF A SAMPLE
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "********************"
+  Origs: :start, 160:ifthen
+  Dests: 35:auto
+(0 2) 35 PRINT "TOTAL POPULATION"
+  Origs: 30:auto
+  Dests: 40:auto
+(1 2) 40 INPUT M
+  Origs: 35:auto
+  Dests: 50:auto
+(0 2) 50 PRINT "SIZE OF SAMPLE"
+  Origs: 40:auto
+  Dests: 60:auto
+(1 2) 60 INPUT N
+  Origs: 50:auto
+  Dests: 70:auto
+(0 3) 70 LET J = 1
+  Origs: 60:auto
+  Dests: 80:auto
+(1 4) 80 FOR I = 1 TO N - 1
+  Origs: 70:auto
+  Dests: 90:fornext, 110:fornext
+(0 6) 90 LET K = 1 - (I / M)
+  Origs: 80:fornext
+  Dests: 100:auto
+(0 4) 100 LET J = J * K
+  Origs: 90:auto
+  Dests: 110:auto
+(0 1) 110 NEXT I
+  Origs: 80:fornext, 100:auto
+  Dests: 120:auto
+(0 3) 120 PRINT "PROBABILITY = "; J
+  Origs: 110:auto
+  Dests: 130:auto
+(0 2) 130 PRINT
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 130:auto
+  Dests: 150:auto
+(1 2) 150 INPUT L
+  Origs: 140:auto
+  Dests: 160:auto
+(1 5) 160 IF L = 1 THEN 30
+  Origs: 150:auto
+  Dests: 30:ifthen, 170:auto
+(0 1) 170 STOP
+  Origs: 160:auto
+  Dests: :stop
+(0 1) 180 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+180: END
+

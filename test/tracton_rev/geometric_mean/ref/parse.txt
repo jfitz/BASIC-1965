@@ -1,0 +1,83 @@
+10 REM THIS PROGRAM COMPUTES THE GEOMETRIC MEAN
+ Remark:THIS PROGRAM COMPUTES THE GEOMETRIC MEAN
+20 REM AFTER EACH SAMPLE IS ENTERED, THE NUMBER OF
+ Remark:AFTER EACH SAMPLE IS ENTERED, THE NUMBER OF
+30 REM SAMPLES, THE CURRENT SAMPLE, AND CURRENT MEAN
+ Remark:SAMPLES, THE CURRENT SAMPLE, AND CURRENT MEAN
+40 REM IS PRINTED
+ Remark:IS PRINTED
+50 LET Y = 1
+ Variable:Y -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+60 LET N = 0
+ Variable:N -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+70 PRINT "SAMPLE = ";
+ TextConstant:"SAMPLE = "
+ CarriageControl:;
+80 INPUT W
+ Variable:W -> _
+90 IF W = 0 THEN 160
+ Variable:W -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:160
+100 LET N = N + 1
+ Variable:N -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+110 LET Y = Y * W
+ Variable:Y -> _
+ Variable:Y -> _
+ Variable:W -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+120 LET G = Y^(1/N)
+ Variable:G -> _
+ Variable:Y -> _
+ NumericConstant:1
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorPower:^(_,_) -> _
+ AssignmentOperator:= _ -> _
+130 PRINT "NUMBER OF SAMPLES = ";N,"CURRENT SAMPLE = ";W
+ TextConstant:"NUMBER OF SAMPLES = "
+ CarriageControl:;
+ Variable:N -> _
+ CarriageControl:,
+ TextConstant:"CURRENT SAMPLE = "
+ CarriageControl:;
+ Variable:W -> _
+ CarriageControl:NL
+140 PRINT "CURRENT MEAN = ";G
+ TextConstant:"CURRENT MEAN = "
+ CarriageControl:;
+ Variable:G -> _
+ CarriageControl:NL
+150 GOTO 70
+ LineNumber:70
+160 PRINT
+ CarriageControl:NL
+170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+180 INPUT L
+ Variable:L -> _
+190 IF L = 1 THEN 210
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:210
+200 STOP
+ 
+210 PRINT
+ CarriageControl:NL
+220 GOTO 50
+ LineNumber:50
+230 END
+ 
+

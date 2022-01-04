@@ -1,0 +1,38 @@
+ P               Q               R              FORMULA
+
+TRUE            TRUE            TRUE            TRUE            
+TRUE            TRUE            FALSE           TRUE            
+TRUE            FALSE           TRUE            TRUE            
+TRUE            FALSE           FALSE           FALSE           
+FALSE           TRUE            TRUE            FALSE           
+FALSE           TRUE            FALSE           FALSE           
+FALSE           FALSE           TRUE            FALSE           
+FALSE           FALSE           FALSE           FALSE           
+STOP in line 160
+
+10 (1) PRINT " P", " Q", " R", "FORMULA"
+15 (1) PRINT
+20 (1) FOR P = 1 TO 0 STEP -1
+30 (2) FOR Q = 1 TO 0 STEP -1
+40 (4) FOR R = 1 TO 0 STEP -1
+50 (8) LET X = P
+60 (8) GOSUB 200
+70 (8) LET X = Q
+80 (8) GOSUB 200
+90 (8) LET X = R
+95 (8) GOSUB 200
+100 (8) LET X = P * SGN(Q + R)
+110 (8) GOSUB 200
+120 (8) PRINT
+130 (8) NEXT R
+140 (4) NEXT Q
+150 (2) NEXT P
+160 (1) STOP
+170 (0)
+200 G(200) (32) IF X > 0 THEN 250
+210 G(200) (17) PRINT "FALSE",
+220 G(200) (17) RETURN
+250 G(200) (15) PRINT "TRUE",
+260 G(200) (15) RETURN
+999 (0) END
+

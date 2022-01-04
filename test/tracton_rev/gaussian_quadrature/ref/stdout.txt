@@ -1,0 +1,56 @@
+ENDPOINT A = ? 0
+INTEGRAL =  4788.08
+TYPE 1 TO CONTINUE, 0 TO STOP
+? 0
+STOP in line 440
+
+10 (0) REM THIS PROGRAM COMPUTES THE INTEGRAL BETWEEN A
+20 (0) REM AND INFINITY BY GAUSSIAN QUADRATURE
+30 (1) LET C1 = .238619
+40 (1) LET C2 = -C1
+50 (1) LET C3 = .661209
+60 (1) LET C4 = -C3
+70 (1) LET C5 = .932470
+80 (1) LET C6 = -C5
+90 (1) LET D1 = .467914
+100 (1) LET D2 = .360762
+110 (1) LET D3 = .171324
+120 (1) LET J = 0
+130 (1) PRINT "ENDPOINT A = ";
+140 (1) INPUT A
+150 (1) LET X = (2 / (1 + C1)) + (A - 1)
+160 (1) GOSUB 470
+170 (1) LET N = ((4 * D1) / (1 + C1) ^ 2) * Q
+180 (1) LET J = J + N
+190 (1) LET X = (2 / (1 + C2)) + (A - 1)
+200 (1) GOSUB 470
+210 (1) LET N = ((4 * D1) / (1 + C2) ^ 2) * Q
+220 (1) LET J = J + N
+230 (1) LET X = (2 / (1 + C3)) + (A - 1)
+240 (1) GOSUB 470
+250 (1) LET N = ((4 * D2) / (1 + C3) ^ 2) * Q
+260 (1) LET J = J + N
+270 (1) LET X = (2 / (1 + C4)) + (A - 1)
+280 (1) GOSUB 470
+290 (1) LET N = ((4 * D2) / (1 + C4) ^ 2) * Q
+300 (1) LET J = J + N
+310 (1) LET X = (2 / (1 + C5)) + (A - 1)
+320 (1) GOSUB 470
+330 (1) LET N = ((4 * D3) / (1 + C5) ^ 2) * Q
+340 (1) LET J = J + N
+350 (1) LET X = (2 / (1 + C6)) + (A - 1)
+360 (1) GOSUB 470
+370 (1) LET N = ((4 * D3) / (1 + C6) ^ 2) * Q
+380 (1) LET J = J + N
+390 (1) LET G = J / 2
+400 (1) PRINT "INTEGRAL = "; G
+410 (1) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+420 (1) INPUT L
+430 (1) IF L = 1 THEN 450
+440 (1) STOP
+450 (0) PRINT
+460 (0) GOTO 120
+470 G(470) (6) LET Q = 2 * X + 5
+480 G(470) (6) RETURN
+490 (0) END
+

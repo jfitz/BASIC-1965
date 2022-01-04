@@ -1,0 +1,182 @@
+100 LET N = 0
+ Variable:N -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+110 LET S = 0
+ Variable:S -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+120 LET S2 = 0
+ Variable:S2 -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+130
+140 READ X
+ Variable:X -> _
+150 IF X = 999999 THEN 210
+ Variable:X -> _
+ NumericConstant:999999
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:210
+160 LET N = N + 1
+ Variable:N -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+170 LET S = S + X
+ Variable:S -> _
+ Variable:S -> _
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 LET S2 = S2 + X*X
+ Variable:S2 -> _
+ Variable:S2 -> _
+ Variable:X -> _
+ Variable:X -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 GO TO 140
+ LineNumber:140
+200
+210 LET M = S/N
+ Variable:M -> _
+ Variable:S -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+220 LET V = (N*S2 - S*S)/N/(N-1)
+ Variable:V -> _
+ Variable:N -> _
+ Variable:S2 -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S -> _
+ Variable:S -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+230 LET D = SQR(V)
+ Variable:D -> _
+ Variable:V -> _
+ FunctionSqr:SQR(_) -> _
+ AssignmentOperator:= _ -> _
+240 LET P = .6745*D
+ Variable:P -> _
+ NumericConstant:0.6745
+ Variable:D -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ AssignmentOperator:= _ -> _
+250 LET E = SQR(V/N)
+ Variable:E -> _
+ Variable:V -> _
+ Variable:N -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ AssignmentOperator:= _ -> _
+260 LET C = D/M
+ Variable:C -> _
+ Variable:D -> _
+ Variable:M -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+270
+280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
+ TextConstant:"NUMBER"
+ CarriageControl:,
+ TextConstant:"SUM"
+ CarriageControl:,
+ TextConstant:"SUM-SQUARES"
+ CarriageControl:,
+ TextConstant:"MEAN"
+ CarriageControl:,
+ TextConstant:"VARIANCE"
+ CarriageControl:NL
+290 PRINT N, S, S2, M, V
+ Variable:N -> _
+ CarriageControl:,
+ Variable:S -> _
+ CarriageControl:,
+ Variable:S2 -> _
+ CarriageControl:,
+ Variable:M -> _
+ CarriageControl:,
+ Variable:V -> _
+ CarriageControl:NL
+300 PRINT
+ CarriageControl:NL
+310 PRINT "STD. DEV.", "PROB. ERR.", "STD.ERR. MN.", "COEFF. VAR."
+ TextConstant:"STD. DEV."
+ CarriageControl:,
+ TextConstant:"PROB. ERR."
+ CarriageControl:,
+ TextConstant:"STD.ERR. MN."
+ CarriageControl:,
+ TextConstant:"COEFF. VAR."
+ CarriageControl:NL
+320 PRINT D, P, E, C
+ Variable:D -> _
+ CarriageControl:,
+ Variable:P -> _
+ CarriageControl:,
+ Variable:E -> _
+ CarriageControl:,
+ Variable:C -> _
+ CarriageControl:NL
+330 PRINT
+ CarriageControl:NL
+340 PRINT
+ CarriageControl:NL
+350
+360 LET N = 0
+ Variable:N -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+370 LET S = 0
+ Variable:S -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+380 LET S2 = 0
+ Variable:S2 -> _
+ NumericConstant:0
+ AssignmentOperator:= =_ -> _
+390 READ X
+ Variable:X -> _
+400 IF X <> 999999 THEN 160
+ Variable:X -> _
+ NumericConstant:999999
+ BinaryOperatorNotEqual:<>(_,_) -> ?
+ LineNumber:160
+410
+900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
+ NumericConstant:1
+ NumericConstant:2
+ NumericConstant:3
+ NumericConstant:4
+ NumericConstant:5
+ NumericConstant:6
+ NumericConstant:7
+ NumericConstant:8
+ NumericConstant:9
+ NumericConstant:10
+ NumericConstant:999999
+910 DATA 4, 3, 9, 15, 21, 6, 999999
+ NumericConstant:4
+ NumericConstant:3
+ NumericConstant:9
+ NumericConstant:15
+ NumericConstant:21
+ NumericConstant:6
+ NumericConstant:999999
+998 DATA 999999
+ NumericConstant:999999
+999 END
+ 
+

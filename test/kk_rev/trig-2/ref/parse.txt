@@ -1,0 +1,89 @@
+100 REM ANGLE-SIDE-ANGLE
+ Remark:ANGLE-SIDE-ANGLE
+110 LET P = 3.14159625
+ Variable:P -> _
+ NumericConstant:3.14159625
+ AssignmentOperator:= =_ -> _
+120 DEF FND(X) = X*P/180
+ UserFunctionName:FND -> _
+ VariableName:X -> _
+ Variable:X -> _
+ Variable:P -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ NumericConstant:180
+ BinaryOperatorDivide:/(_,_) -> _
+130 DEF FNS(X) = SIN(FND(X))
+ UserFunctionName:FNS -> _
+ VariableName:X -> _
+ Variable:X -> _
+ UserFunction:FND(_) -> _
+ FunctionSin:SIN(_) -> _
+140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"SIDE"
+ CarriageControl:,
+ TextConstant:"ANGLE"
+ CarriageControl:,
+ TextConstant:"SECOND SIDE"
+ CarriageControl:,
+ TextConstant:"THIRD SIDE"
+ CarriageControl:NL
+150 READ A,X,B
+ Variable:A -> _
+ Variable:X -> _
+ Variable:B -> _
+160 LET C = 180 - A - B
+ Variable:C -> _
+ NumericConstant:180
+ Variable:A -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:B -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+170 LET Y = X*FNS(B)/FNS(C)
+ Variable:Y -> _
+ Variable:X -> _
+ Variable:B -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 LET Z = X*FNS(A)/FNS(C)
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:A -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
+ UserFunction:FNS(_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 PRINT A,X,B,Y,Z
+ Variable:A -> _
+ CarriageControl:,
+ Variable:X -> _
+ CarriageControl:,
+ Variable:B -> _
+ CarriageControl:,
+ Variable:Y -> _
+ CarriageControl:,
+ Variable:Z -> _
+ CarriageControl:NL
+200 GOTO 150
+ LineNumber:150
+210 DATA 60,5,60, 60,5,90, 15,10,63
+ NumericConstant:60
+ NumericConstant:5
+ NumericConstant:60
+ NumericConstant:60
+ NumericConstant:5
+ NumericConstant:90
+ NumericConstant:15
+ NumericConstant:10
+ NumericConstant:63
+220 END
+ 
+

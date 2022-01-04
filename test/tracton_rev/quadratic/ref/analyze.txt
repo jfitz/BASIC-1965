@@ -1,0 +1,113 @@
+Statistics:
+
+Number of lines: 29
+Number of valid statements: 27
+Number of comments: 2
+Number of executable statements: 27
+
+Complexity:
+
+Comment density: 0.074
+Comprehension effort: 103
+McCabe complexity: 8
+Halstead complexity:
+ length: 131
+ volume: 522.557
+ difficulty: 12.308
+ effort: 6431.470
+ language: 3.450
+ intelligence: 42.458
+ time: 5.955
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE SOLUTION TO A
+  Origs: 
+  Dests: 
+(0 1) 20 REM QUADRATIC EQUATION
+  Origs: 
+  Dests: 
+(0 2) 30 PRINT "ENTER VALUES FOR A, B AND C"
+  Origs: :start, 280:goto
+  Dests: 40:auto
+(3 4) 40 INPUT A, B, C
+  Origs: 30:auto
+  Dests: 50:auto
+(0 13) 50 LET D = ((B ^ 2) - (4 * A * C)) / (4 * A ^ 2)
+  Origs: 40:auto
+  Dests: 60:auto
+(1 4) 60 IF D >= 0 THEN 130
+  Origs: 50:auto
+  Dests: 70:auto, 130:ifthen
+(0 7) 70 LET X = -B / (2 * A)
+  Origs: 60:auto
+  Dests: 80:auto
+(0 7) 80 LET Y = (SQR((4 * A * C) - B ^ 2)) / (2 * A)
+  Origs: 70:auto
+  Dests: 90:auto
+(0 2) 90 PRINT "ROOTS ARE COMPLEX"
+  Origs: 80:auto
+  Dests: 100:auto
+(0 3) 100 PRINT "REAL PART = "; X
+  Origs: 90:auto
+  Dests: 110:auto
+(0 3) 110 PRINT "IMAGINARY PART = "; Y
+  Origs: 100:auto
+  Dests: 120:auto
+(0 2) 120 GOTO 220
+  Origs: 110:auto
+  Dests: 220:goto
+(0 7) 130 LET E = -B / (2 * A)
+  Origs: 60:ifthen
+  Dests: 140:auto
+(1 4) 140 IF E >= 0 THEN 170
+  Origs: 130:auto
+  Dests: 150:auto, 170:ifthen
+(0 5) 150 LET Z = E - SQR(D)
+  Origs: 140:auto
+  Dests: 160:auto
+(0 2) 160 GOTO 180
+  Origs: 150:auto
+  Dests: 180:goto
+(0 5) 170 LET Z = E + SQR(D)
+  Origs: 140:ifthen
+  Dests: 180:auto
+(0 6) 180 LET W = C / (Z * A)
+  Origs: 160:goto, 170:auto
+  Dests: 190:auto
+(0 2) 190 PRINT "ROOTS ARE REAL"
+  Origs: 180:auto
+  Dests: 200:auto
+(0 3) 200 PRINT "1ST ROOT = "; Z
+  Origs: 190:auto
+  Dests: 210:auto
+(0 3) 210 PRINT "2ND ROOT = "; W
+  Origs: 200:auto
+  Dests: 220:auto
+(0 2) 220 PRINT "********************"
+  Origs: 120:goto, 210:auto
+  Dests: 230:auto
+(0 2) 230 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+  Origs: 220:auto
+  Dests: 240:auto
+(1 2) 240 INPUT L
+  Origs: 230:auto
+  Dests: 250:auto
+(1 4) 250 IF L = 1 THEN 270
+  Origs: 240:auto
+  Dests: 260:auto, 270:ifthen
+(0 1) 260 STOP
+  Origs: 250:auto
+  Dests: :stop
+(0 2) 270 PRINT
+  Origs: 250:ifthen
+  Dests: 280:auto
+(0 3) 280 GOTO 30
+  Origs: 270:auto
+  Dests: 30:goto
+(0 1) 290 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+290: END
+

@@ -1,0 +1,56 @@
+Statistics:
+
+Number of lines: 10
+Number of valid statements: 10
+Number of comments: 0
+Number of executable statements: 6
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 35
+McCabe complexity: 2
+Halstead complexity:
+ length: 76
+ volume: 265.735
+ difficulty: 17.643
+ effort: 4688.317
+ language: 0.854
+ intelligence: 15.062
+ time: 4.341
+
+FNR(_) (0 4) 5 DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
+  Origs: 
+  Dests: 
+(0 3) 10 LET P = 3.14159625
+  Origs: :start
+  Dests: 50:auto
+FND(_) (0 4) 20 DEF FND(X) = X * P / 180
+  Origs: 
+  Dests: 
+FNS(_) (0 3) 30 DEF FNS(X) = SIN(FND(X))
+  Origs: 
+  Dests: 
+FNC(_) (0 3) 40 DEF FNC(X) = COS(FND(X))
+  Origs: 
+  Dests: 
+(0 4) 50 PRINT "DEGREES", "SINE", "COSINE"
+  Origs: 10:auto
+  Dests: 60:auto
+(1 4) 60 FOR X = 0 TO 90 STEP 10
+  Origs: 50:auto
+  Dests: 70:fornext, 80:fornext
+(0 8) 70 PRINT X, FNR(FNS(X)), FNR(FNC(X))
+  Origs: 60:fornext
+  Dests: 80:auto
+(0 1) 80 NEXT X
+  Origs: 60:fornext, 70:auto
+  Dests: 99:auto
+(0 1) 99 END
+  Origs: 80:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

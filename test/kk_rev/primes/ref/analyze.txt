@@ -1,0 +1,92 @@
+Statistics:
+
+Number of lines: 22
+Number of valid statements: 22
+Number of comments: 0
+Number of executable statements: 22
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 65
+McCabe complexity: 7
+Halstead complexity:
+ length: 100
+ volume: 355.535
+ difficulty: 19.000
+ effort: 6755.161
+ language: 0.985
+ intelligence: 18.712
+ time: 6.255
+
+(0 2) 10 DIM N(1000)
+  Origs: :start
+  Dests: 11:auto
+(0 2) 11 DIM P(350)
+  Origs: 10:auto
+  Dests: 20:auto
+(1 3) 20 FOR I = 1 TO 1000
+  Origs: 11:auto
+  Dests: 21:fornext, 22:fornext
+(0 3) 21 LET N(I) = 0
+  Origs: 20:fornext
+  Dests: 22:auto
+(0 1) 22 NEXT I
+  Origs: 20:fornext, 21:auto
+  Dests: 25:auto
+(0 3) 25 LET P(0) = 2
+  Origs: 22:auto
+  Dests: 26:auto
+(0 3) 26 LET K = 0
+  Origs: 25:auto
+  Dests: 30:auto
+(1 4) 30 FOR P = 3 TO 2000 STEP 2
+  Origs: 26:auto
+  Dests: 35:fornext, 90:fornext
+(0 5) 35 LET X = (P - 1) / 2
+  Origs: 30:fornext
+  Dests: 40:auto
+(1 4) 40 IF N(X) < 0 THEN 90
+  Origs: 35:auto
+  Dests: 50:auto, 90:ifthen
+(0 4) 50 LET K = K + 1
+  Origs: 40:auto
+  Dests: 55:auto
+(0 3) 55 LET P(K) = P
+  Origs: 50:auto
+  Dests: 56:auto
+(1 5) 56 IF P > SQR(2000) THEN 90
+  Origs: 55:auto
+  Dests: 60:auto, 90:ifthen
+(1 5) 60 FOR I = P TO 2000 STEP 2 * P
+  Origs: 56:auto
+  Dests: 65:fornext, 80:fornext
+(0 5) 65 LET X = (I - 1) / 2
+  Origs: 60:fornext
+  Dests: 70:auto
+(0 4) 70 LET N(X) = -1
+  Origs: 65:auto
+  Dests: 80:auto
+(0 1) 80 NEXT I
+  Origs: 60:fornext, 70:auto
+  Dests: 90:auto
+(0 1) 90 NEXT P
+  Origs: 30:fornext, 40:ifthen, 56:ifthen, 80:auto
+  Dests: 100:auto
+(1 3) 100 FOR I = 0 TO K
+  Origs: 90:auto
+  Dests: 110:fornext, 120:fornext
+(0 2) 110 PRINT P(I);
+  Origs: 100:fornext
+  Dests: 120:auto
+(0 1) 120 NEXT I
+  Origs: 100:fornext, 110:auto
+  Dests: 999:auto
+(0 1) 999 END
+  Origs: 120:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

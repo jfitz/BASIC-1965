@@ -1,0 +1,436 @@
+10: PRINT " P", " Q", " R", "FORMULA"
+ P               Q               R              FORMULA
+15: PRINT
+
+20: FOR P = 1 TO 0 STEP -1
+ P = 1
+ -1 = -1
+ terminated:false
+30: FOR Q = 1 TO 0 STEP -1
+ Q = 1
+ -1 = -1
+ terminated:false
+40: FOR R = 1 TO 0 STEP -1
+ R = 1
+ -1 = -1
+ terminated:false
+50: LET X = P
+ P: 1
+ X = 1
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+70: LET X = Q
+ Q: 1
+ X = 1
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+90: LET X = R
+ R: 1
+ X = 1
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 1
+ Q: 1
+ R: 1
+ X = 1
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 1
+ terminated:false
+ R = 0
+50: LET X = P
+ P: 1
+ X = 1
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+70: LET X = Q
+ Q: 1
+ X = 1
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+90: LET X = R
+ R: 0
+ X = 0
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 1
+ Q: 1
+ R: 0
+ X = 1
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 0
+ terminated:true
+140: NEXT Q
+ Q: 1
+ terminated:false
+ Q = 0
+40: FOR R = 1 TO 0 STEP -1
+ R = 1
+ -1 = -1
+ terminated:false
+50: LET X = P
+ P: 1
+ X = 1
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+70: LET X = Q
+ Q: 0
+ X = 0
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+90: LET X = R
+ R: 1
+ X = 1
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 1
+ Q: 0
+ R: 1
+ X = 1
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 1
+ terminated:false
+ R = 0
+50: LET X = P
+ P: 1
+ X = 1
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+70: LET X = Q
+ Q: 0
+ X = 0
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+90: LET X = R
+ R: 0
+ X = 0
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 1
+ Q: 0
+ R: 0
+ X = 0
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 0
+ terminated:true
+140: NEXT Q
+ Q: 0
+ terminated:true
+150: NEXT P
+ P: 1
+ terminated:false
+ P = 0
+30: FOR Q = 1 TO 0 STEP -1
+ Q = 1
+ -1 = -1
+ terminated:false
+40: FOR R = 1 TO 0 STEP -1
+ R = 1
+ -1 = -1
+ terminated:false
+50: LET X = P
+ P: 0
+ X = 0
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+70: LET X = Q
+ Q: 1
+ X = 1
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+90: LET X = R
+ R: 1
+ X = 1
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 0
+ Q: 1
+ R: 1
+ X = 0
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 1
+ terminated:false
+ R = 0
+50: LET X = P
+ P: 0
+ X = 0
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+70: LET X = Q
+ Q: 1
+ X = 1
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+90: LET X = R
+ R: 0
+ X = 0
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 0
+ Q: 1
+ R: 0
+ X = 0
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 0
+ terminated:true
+140: NEXT Q
+ Q: 1
+ terminated:false
+ Q = 0
+40: FOR R = 1 TO 0 STEP -1
+ R = 1
+ -1 = -1
+ terminated:false
+50: LET X = P
+ P: 0
+ X = 0
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+70: LET X = Q
+ Q: 0
+ X = 0
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+90: LET X = R
+ R: 1
+ X = 1
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 1
+ X > 0: true
+G(200) 250: PRINT "TRUE",
+TRUE            
+G(200) 260: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 0
+ Q: 0
+ R: 1
+ X = 0
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 1
+ terminated:false
+ R = 0
+50: LET X = P
+ P: 0
+ X = 0
+60: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+70: LET X = Q
+ Q: 0
+ X = 0
+80: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+90: LET X = R
+ R: 0
+ X = 0
+95: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+100: LET X = P * SGN(Q + R)
+ P: 0
+ Q: 0
+ R: 0
+ X = 0
+110: GOSUB 200
+G(200) 200: IF X > 0 THEN 250
+ X: 0
+ X > 0: false
+G(200) 210: PRINT "FALSE",
+FALSE           
+G(200) 220: RETURN
+120: PRINT
+
+130: NEXT R
+ R: 0
+ terminated:true
+140: NEXT Q
+ Q: 0
+ terminated:true
+150: NEXT P
+ P: 0
+ terminated:true
+160: STOP
+STOP in line 160
+

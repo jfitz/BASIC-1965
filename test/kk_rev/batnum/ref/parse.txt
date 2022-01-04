@@ -1,0 +1,196 @@
+100 REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
+ Remark:THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
+110
+120 LET N = 20 + INT(80*RND(X))
+ Variable:N -> _
+ NumericConstant:20
+ NumericConstant:80
+ Variable:X -> _
+ FunctionRnd:RND(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+130 LET K = 5 + INT(10*RND(X))
+ Variable:K -> _
+ NumericConstant:5
+ NumericConstant:10
+ Variable:X -> _
+ FunctionRnd:RND(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+140 PRINT "LEGAL MOVES ARE:"
+ TextConstant:"LEGAL MOVES ARE:"
+ CarriageControl:NL
+150 PRINT "TAKE AWAY 1 THROUGH" K
+ TextConstant:"TAKE AWAY 1 THROUGH"
+ CarriageControl:
+ Variable:K -> _
+ CarriageControl:NL
+160 PRINT "LAST PERSON TO MOVE LOSES"
+ TextConstant:"LAST PERSON TO MOVE LOSES"
+ CarriageControl:NL
+170 PRINT
+ CarriageControl:NL
+180 PRINT "THE INITIAL NUMBER IS" N
+ TextConstant:"THE INITIAL NUMBER IS"
+ CarriageControl:
+ Variable:N -> _
+ CarriageControl:NL
+190 PRINT
+ CarriageControl:NL
+200
+210 REM OPPONENT'S MOVE
+ Remark:OPPONENT'S MOVE
+220 PRINT "YOUR MOVE";
+ TextConstant:"YOUR MOVE"
+ CarriageControl:;
+230 INPUT X
+ Variable:X -> _
+240 IF X > K THEN 270
+ Variable:X -> _
+ Variable:K -> _
+ BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:270
+250 IF X < 1 THEN 270
+ Variable:X -> _
+ NumericConstant:1
+ BinaryOperatorLess:<(_,_) -> ?
+ LineNumber:270
+260 IF X <= N THEN 310
+ Variable:X -> _
+ Variable:N -> _
+ BinaryOperatorLessEqual:<=(_,_) -> ?
+ LineNumber:310
+270 PRINT "ILLEGAL MOVE"
+ TextConstant:"ILLEGAL MOVE"
+ CarriageControl:NL
+280 PRINT
+ CarriageControl:NL
+290 GOTO 210
+ LineNumber:210
+300
+310 REM TEST FOR WIN
+ Remark:TEST FOR WIN
+320 LET N = N-X
+ Variable:N -> _
+ Variable:N -> _
+ Variable:X -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+330 IF N > 0 THEN 410
+ Variable:N -> _
+ NumericConstant:0
+ BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:410
+340 PRINT "I WIN ***"
+ TextConstant:"I WIN ***"
+ CarriageControl:NL
+350 PRINT
+ CarriageControl:NL
+360 PRINT
+ CarriageControl:NL
+370 PRINT "NEW GAME."
+ TextConstant:"NEW GAME."
+ CarriageControl:NL
+380 PRINT
+ CarriageControl:NL
+390 GOTO 120
+ LineNumber:120
+400
+410 REM MACHINE'S MOVE
+ Remark:MACHINE'S MOVE
+420 LET Q = INT((N-1)/(K+1))
+ Variable:Q -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:K -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionInt:INT(_) -> _
+ AssignmentOperator:= _ -> _
+430 LET Y = N-1 - Q*(K+1)
+ Variable:Y -> _
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ Variable:Q -> _
+ Variable:K -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+440 IF Y = 0 THEN 530
+ Variable:Y -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:530
+450 LET N = N - Y
+ Variable:N -> _
+ Variable:N -> _
+ Variable:Y -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+460 PRINT "MY MOVE:" Y
+ TextConstant:"MY MOVE:"
+ CarriageControl:
+ Variable:Y -> _
+ CarriageControl:NL
+470 PRINT
+ CarriageControl:NL
+480 IF N = 0 THEN 600
+ Variable:N -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:600
+490 PRINT "NEW TOTAL IS" N
+ TextConstant:"NEW TOTAL IS"
+ CarriageControl:
+ Variable:N -> _
+ CarriageControl:NL
+500 PRINT
+ CarriageControl:NL
+510 GOTO 210
+ LineNumber:210
+520
+530 REM MAKE RANDOM MOVE
+ Remark:MAKE RANDOM MOVE
+540 IF N > 1 THEN 570
+ Variable:N -> _
+ NumericConstant:1
+ BinaryOperatorGreater:>(_,_) -> ?
+ LineNumber:570
+550 LET Y = 1
+ Variable:Y -> _
+ NumericConstant:1
+ AssignmentOperator:= =_ -> _
+560 GOTO 450
+ LineNumber:450
+570 LET Y = 1 + INT(K*RND(0))
+ Variable:Y -> _
+ NumericConstant:1
+ Variable:K -> _
+ NumericConstant:0
+ FunctionRnd:RND(_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+580 GOTO 450
+ LineNumber:450
+590
+600 REM MACHINE LOST
+ Remark:MACHINE LOST
+610 PRINT "YOU WIN ***"
+ TextConstant:"YOU WIN ***"
+ CarriageControl:NL
+620 GOTO 350
+ LineNumber:350
+630 END
+ 
+

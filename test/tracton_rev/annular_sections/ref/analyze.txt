@@ -1,0 +1,86 @@
+Statistics:
+
+Number of lines: 20
+Number of valid statements: 17
+Number of comments: 3
+Number of executable statements: 17
+
+Complexity:
+
+Comment density: 0.176
+Comprehension effort: 60
+McCabe complexity: 5
+Halstead complexity:
+ length: 68
+ volume: 247.356
+ difficulty: 7.130
+ effort: 1763.556
+ language: 4.866
+ intelligence: 34.694
+ time: 1.633
+
+(0 1) 10 REM THIS PROGRAM COMPUTES THE VARIOUS
+  Origs: 
+  Dests: 
+(0 1) 20 REM PARAMETERS CONNECTED WTTH AN ANNULAR
+  Origs: 
+  Dests: 
+(0 1) 30 REM SECTION
+  Origs: 
+  Dests: 
+(1 2) 40 INPUT "INSIDE DIAMETER (D1) = ", D1
+  Origs: :start, 200:goto
+  Dests: 50:auto
+(1 2) 50 INPUT "OUTSIDE DIAMETER (D2) = "; D2
+  Origs: 40:auto
+  Dests: 60:auto
+(0 3) 60 LET P = 3.14159
+  Origs: 50:auto
+  Dests: 70:auto
+(0 10) 70 LET I = (P * ((D2 ^ 4) - (D1 ^ 4))) / 64
+  Origs: 60:auto
+  Dests: 80:auto
+(0 4) 80 LET J = I * 2
+  Origs: 70:auto
+  Dests: 100:auto
+(0 10) 100 LET A = (P * ((D2 ^ 2) - (D1 ^ 2))) / 4
+  Origs: 80:auto
+  Dests: 110:auto
+(0 3) 110 PRINT "MOMENT OF INERTIA = " I
+  Origs: 100:auto
+  Dests: 120:auto
+(0 3) 120 PRINT "POLAR MOMENT OF INERTIA = " J
+  Origs: 110:auto
+  Dests: 130:auto
+(0 3) 130 PRINT "AREA OF SECTION = " A
+  Origs: 120:auto
+  Dests: 140:auto
+(0 2) 140 PRINT
+  Origs: 130:auto
+  Dests: 150:auto
+(0 2) 150 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP";
+  Origs: 140:auto
+  Dests: 160:auto
+(1 2) 160 INPUT L
+  Origs: 150:auto
+  Dests: 170:auto
+(1 4) 170 IF L = 1 THEN 190
+  Origs: 160:auto
+  Dests: 180:auto, 190:ifthen
+(0 1) 180 STOP
+  Origs: 170:auto
+  Dests: :stop
+(0 2) 190 PRINT
+  Origs: 170:ifthen
+  Dests: 200:auto
+(0 3) 200 GOTO 40
+  Origs: 190:auto
+  Dests: 40:goto
+(0 1) 210 END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+210: END
+

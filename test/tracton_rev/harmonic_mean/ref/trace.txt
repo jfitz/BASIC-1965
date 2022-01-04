@@ -1,0 +1,109 @@
+30: LET Z = 0
+ Z = 0
+40: LET N = 0
+ N = 0
+50: PRINT "SAMPLE = ";
+SAMPLE = 
+60: INPUT X
+? 2
+ X = 2
+70: IF X = 0 THEN 130
+ X: 2
+ X = 0: false
+80: LET N = N + 1
+ N: 0
+ N = 1
+90: LET Z = Z + (1 / X)
+ Z: 0
+ X: 2
+ Z = 0.5
+100: LET H = N / Z
+ N: 1
+ Z: 0.5
+ H = 2
+110: PRINT "N = "; N, "SAMPLE = "; X, "CURRENT MEAN = "; H
+N = 
+ N: 1
+ 1              SAMPLE = 
+ X: 2
+ 2              CURRENT MEAN = 
+ H: 2
+ 2
+120: GOTO 50
+50: PRINT "SAMPLE = ";
+SAMPLE = 
+60: INPUT X
+? 5
+ X = 5
+70: IF X = 0 THEN 130
+ X: 5
+ X = 0: false
+80: LET N = N + 1
+ N: 1
+ N = 2
+90: LET Z = Z + (1 / X)
+ Z: 0.5
+ X: 5
+ Z = 0.7
+100: LET H = N / Z
+ N: 2
+ Z: 0.7
+ H = 2.85714
+110: PRINT "N = "; N, "SAMPLE = "; X, "CURRENT MEAN = "; H
+N = 
+ N: 2
+ 2              SAMPLE = 
+ X: 5
+ 5              CURRENT MEAN = 
+ H: 2.85714
+ 2.85714
+120: GOTO 50
+50: PRINT "SAMPLE = ";
+SAMPLE = 
+60: INPUT X
+? 7
+ X = 7
+70: IF X = 0 THEN 130
+ X: 7
+ X = 0: false
+80: LET N = N + 1
+ N: 2
+ N = 3
+90: LET Z = Z + (1 / X)
+ Z: 0.7
+ X: 7
+ Z = 0.842857
+100: LET H = N / Z
+ N: 3
+ Z: 0.842857
+ H = 3.55932
+110: PRINT "N = "; N, "SAMPLE = "; X, "CURRENT MEAN = "; H
+N = 
+ N: 3
+ 3              SAMPLE = 
+ X: 7
+ 7              CURRENT MEAN = 
+ H: 3.55932
+ 3.55932
+120: GOTO 50
+50: PRINT "SAMPLE = ";
+SAMPLE = 
+60: INPUT X
+? 0
+ X = 0
+70: IF X = 0 THEN 130
+ X: 0
+ X = 0: true
+130: PRINT
+
+140: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+TYPE 1 TO CONTINUE, 0 TO STOP
+150: INPUT L
+? 0
+ L = 0
+160: IF L = 1 THEN 180
+ L: 0
+ L = 1: false
+170: STOP
+STOP in line 170
+

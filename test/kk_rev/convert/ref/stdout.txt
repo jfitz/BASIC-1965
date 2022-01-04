@@ -1,0 +1,45 @@
+ 1              METERS           0              CENTIMETERS
+CONVERTS TO
+ 3              FEET             3.37           INCHES
+
+
+
+ 0              METERS           2.54           CENTIMETERS
+CONVERTS TO
+ 0.999998       INCHES
+
+
+
+ 0              METERS           60             CENTIMETERS
+CONVERTS TO
+ 1              FEET             11.622         INCHES
+
+
+
+ 2              METERS           5              CENTIMETERS
+CONVERTS TO
+ 6              FEET             8.7085         INCHES
+
+
+
+Error 103 Out of data in line 100
+
+100 (4) READ M, C
+110 (4) LET M1 = M + C / 100
+120 (4) LET I = M1 * 39.37
+130 (4) LET F = INT(I / 12)
+140 (4) LET I = I - 12 * F
+150 (4) PRINT M, "METERS", C, "CENTIMETERS"
+160 (4) PRINT "CONVERTS TO"
+170 (4) IF F = 0 THEN 190
+180 (3) PRINT F, "FEET",
+190 (4) PRINT I, "INCHES"
+200 (4) PRINT
+210 (4) PRINT
+220 (4) PRINT
+230 (4) GOTO 100
+400 (0) DATA 1, 0
+410 (0) DATA 0, 2.54, 0, 60, 2, 5
+490 (0) RETURN
+999 (0) END
+

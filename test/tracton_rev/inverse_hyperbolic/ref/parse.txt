@@ -1,0 +1,216 @@
+10 REM THIS PROGRAM COMPUTES INVERSE HYPERBOLIC FUNCTIONS
+ Remark:THIS PROGRAM COMPUTES INVERSE HYPERBOLIC FUNCTIONS
+20 PRINT "SINH - 1 (1)"
+ TextConstant:"SINH - 1 (1)"
+ CarriageControl:NL
+30 PRINT "COSH - 1 (2)"
+ TextConstant:"COSH - 1 (2)"
+ CarriageControl:NL
+40 PRINT "TANH - 1 (3)"
+ TextConstant:"TANH - 1 (3)"
+ CarriageControl:NL
+50 PRINT "CSCH - 1 (4)"
+ TextConstant:"CSCH - 1 (4)"
+ CarriageControl:NL
+60 PRINT "SECH - 1 (5)"
+ TextConstant:"SECH - 1 (5)"
+ CarriageControl:NL
+70 PRINT "COTH - 1 (6)"
+ TextConstant:"COTH - 1 (6)"
+ CarriageControl:NL
+80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ CarriageControl:NL
+90 INPUT C
+ Variable:C -> _
+100 ON C GOTO 110,150,190,230,280,330
+ ERROR: Unknown statement 'ON C GOTO 110,150,190,230,280,330'
+ Unimplemented
+110 GOSUB 440
+ LineNumber:440
+120 GOSUB 470
+ LineNumber:470
+130 PRINT "SINH - 1";X;" = ";Z
+ TextConstant:"SINH - 1"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+140 GOTO 370
+ LineNumber:370
+150 GOSUB 440
+ LineNumber:440
+160 GOSUB 490
+ LineNumber:490
+170 PRINT "COSH - 1";X;" = ";Z
+ TextConstant:"COSH - 1"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+180 GOTO 370
+ LineNumber:370
+190 GOSUB 440
+ LineNumber:440
+200 GOSUB 510
+ LineNumber:510
+210 PRINT "TANH - 1";X;" = ";Z
+ TextConstant:"TANH - 1"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+220 GOTO 370
+ LineNumber:370
+230 GOSUB 530
+ LineNumber:530
+240 GOSUB 470
+ LineNumber:470
+250 LET X = A
+ Variable:X -> _
+ Variable:A -> _
+ AssignmentOperator:= _ -> _
+260 PRINT "CSCH - 1";X;" = ";Z
+ TextConstant:"CSCH - 1"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+270 GOTO 370
+ LineNumber:370
+280 GOSUB 530
+ LineNumber:530
+290 GOSUB 490
+ LineNumber:490
+300 LET X = A
+ Variable:X -> _
+ Variable:A -> _
+ AssignmentOperator:= _ -> _
+310 PRINT "SECH - 1";X;" = ";Z
+ TextConstant:"SECH - 1"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+320 GOTO 370
+ LineNumber:370
+330 GOSUB 530
+ LineNumber:530
+340 GOSUB 510
+ LineNumber:510
+350 LET X = A
+ Variable:X -> _
+ Variable:A -> _
+ AssignmentOperator:= _ -> _
+360 PRINT "COTH - 1";X;" = ";Z
+ TextConstant:"COTH - 1"
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:;
+ TextConstant:" = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+370 PRINT
+ CarriageControl:NL
+380 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+390 INPUT L
+ Variable:L -> _
+400 IF L = 1 THEN 420
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:420
+410 STOP
+ 
+420 PRINT
+ CarriageControl:NL
+430 GOTO 80
+ LineNumber:80
+440 PRINT "X = ";
+ TextConstant:"X = "
+ CarriageControl:;
+450 INPUT X
+ Variable:X -> _
+460 RETURN
+ 
+470 LET Z = LOG(X + SQR((X^2) + 1))
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:X -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ NumericConstant:1
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionLog:LOG(_) -> _
+ AssignmentOperator:= _ -> _
+480 RETURN
+ 
+490 LET Z = LOG(X + SQR((X^2) - 1))
+ Variable:Z -> _
+ Variable:X -> _
+ Variable:X -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ NumericConstant:1
+ BinaryOperatorMinus:-(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ FunctionLog:LOG(_) -> _
+ AssignmentOperator:= _ -> _
+500 RETURN
+ 
+510 LET Z = (LOG((1 + X)/(1 - X)))/2
+ Variable:Z -> _
+ NumericConstant:1
+ Variable:X -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ NumericConstant:1
+ Variable:X -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ FunctionLog:LOG(_) -> _
+ NumericConstant:2
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+520 RETURN
+ 
+530 PRINT "X = ";
+ TextConstant:"X = "
+ CarriageControl:;
+540 INPUT X
+ Variable:X -> _
+550 LET A = X
+ Variable:A -> _
+ Variable:X -> _
+ AssignmentOperator:= _ -> _
+560 LET X = 1/X
+ Variable:X -> _
+ NumericConstant:1
+ Variable:X -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+570 RETURN
+ 
+580 END
+ 
+

@@ -1,0 +1,148 @@
+10 REM THIS PROGRAM COMPUTES THE SOLUTION TO A
+ Remark:THIS PROGRAM COMPUTES THE SOLUTION TO A
+20 REM QUADRATIC EQUATION
+ Remark:QUADRATIC EQUATION
+30 PRINT "ENTER VALUES FOR A, B AND C"
+ TextConstant:"ENTER VALUES FOR A, B AND C"
+ CarriageControl:NL
+40 INPUT A,B,C
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+50 LET D = ((B^2) - (4*A*C))/(4*A^2)
+ Variable:D -> _
+ Variable:B -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ NumericConstant:4
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ NumericConstant:4
+ Variable:A -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+60 IF D > = 0 THEN 130
+ Variable:D -> _
+ NumericConstant:0
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:130
+70 LET X = -B/(2*A)
+ Variable:X -> _
+ Variable:B -> _
+ UnaryOperatorMinus:-(_) -> _
+ NumericConstant:2
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
+ Variable:Y -> _
+ NumericConstant:4
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> _
+ NumericConstant:2
+ BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ FunctionSqr:SQR(_) -> _
+ NumericConstant:2
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+90 PRINT "ROOTS ARE COMPLEX"
+ TextConstant:"ROOTS ARE COMPLEX"
+ CarriageControl:NL
+100 PRINT "REAL PART = ";X
+ TextConstant:"REAL PART = "
+ CarriageControl:;
+ Variable:X -> _
+ CarriageControl:NL
+110 PRINT "IMAGINARY PART = ";Y
+ TextConstant:"IMAGINARY PART = "
+ CarriageControl:;
+ Variable:Y -> _
+ CarriageControl:NL
+120 GOTO 220
+ LineNumber:220
+130 LET E = - B/(2*A)
+ Variable:E -> _
+ Variable:B -> _
+ UnaryOperatorMinus:-(_) -> _
+ NumericConstant:2
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+140 IF E > = 0 THEN 170
+ Variable:E -> _
+ NumericConstant:0
+ BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ LineNumber:170
+150 LET Z = E - SQR(D)
+ Variable:Z -> _
+ Variable:E -> _
+ Variable:D -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorMinus:-(_,_) -> _
+ AssignmentOperator:= _ -> _
+160 GOTO 180
+ LineNumber:180
+170 LET Z = E + SQR(D)
+ Variable:Z -> _
+ Variable:E -> _
+ Variable:D -> _
+ FunctionSqr:SQR(_) -> _
+ BinaryOperatorPlus:+(_,_) -> _
+ AssignmentOperator:= _ -> _
+180 LET W = C/(Z*A)
+ Variable:W -> _
+ Variable:C -> _
+ Variable:Z -> _
+ Variable:A -> _
+ BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(_,_) -> _
+ AssignmentOperator:= _ -> _
+190 PRINT "ROOTS ARE REAL"
+ TextConstant:"ROOTS ARE REAL"
+ CarriageControl:NL
+200 PRINT "1ST ROOT = ";Z
+ TextConstant:"1ST ROOT = "
+ CarriageControl:;
+ Variable:Z -> _
+ CarriageControl:NL
+210 PRINT "2ND ROOT = ";W
+ TextConstant:"2ND ROOT = "
+ CarriageControl:;
+ Variable:W -> _
+ CarriageControl:NL
+220 PRINT "********************"
+ TextConstant:"********************"
+ CarriageControl:NL
+230 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ CarriageControl:NL
+240 INPUT L
+ Variable:L -> _
+250 IF L = 1 THEN 270
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:270
+260 STOP
+ 
+270 PRINT
+ CarriageControl:NL
+280 GOTO 30
+ LineNumber:30
+290 END
+ 
+
