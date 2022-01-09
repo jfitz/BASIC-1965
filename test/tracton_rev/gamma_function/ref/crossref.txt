@@ -10,8 +10,8 @@ Numeric constants:
 0.89706:  60
 0.91821:  70
 0.98821:  50
-1:        220, 270, 490, 510, 520, 570
-2:        570
+1:        150, 220, 270, 450, 490, 510, 520, 570
+2:        160, 570
 3:        570
 4:        580
 5:        580
@@ -25,9 +25,9 @@ String constants:
 "ENTER VALUE OF X":                      190, 300
 "GAMMA (":                               410
 "INVALID RESPONSE":                      170
-"TO CONTINUE TYPE Y, IF NOT TYPE N":     430
-"TYPE F FOR THE GENERALIZED FACTORIAL":  130
-"TYPE G FOR GAMMA FUNCTION OR":          120
+"TO CONTINUE TYPE 1, IF NOT TYPE 0":     430
+"TYPE 1 FOR GAMMA FUNCTION OR":          120
+"TYPE 2 FOR THE GENERALIZED FACTORIAL":  130
 "X MUST BE EQUAL TO OR GREATER THAN 1":  240
 "X MUST BE GREATER THAN OR EQUAL TO 0":  340
 
@@ -35,8 +35,8 @@ Functions:
 INT(_):  270, 370
 
 Variables:
-A=:   40
-A:    570
+A=:   40, 140
+A:    150, 160, 570
 A1=:  570, 580, 590
 A1:   580, 590, 600
 B=:   50
@@ -57,8 +57,8 @@ J=:   490, 500
 J:    500, 550
 K=:   210, 220, 320, 510, 550, 600
 K:    220, 230, 330, 390, 410, 500, 510, 520, 540, 600
-L=:   540
-L:    570, 580, 590
+L=:   440, 540
+L:    450, 570, 580, 590
 X=:   200, 310
 X:    210, 270, 320, 370, 390, 410
 
@@ -67,7 +67,7 @@ Operators:
 +(_,_):   570, 580, 590
 -(_,_):   220, 270, 510
 <(_,_):   520
-=(_,_):   370
+=(_,_):   150, 160, 270, 370, 450
 >=(_,_):  230, 330
 ^(_,_):   570, 580, 590
 

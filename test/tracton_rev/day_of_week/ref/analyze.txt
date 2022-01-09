@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 37
-Number of valid statements: 35
+Number of lines: 53
+Number of valid statements: 51
 Number of comments: 2
-Number of executable statements: 35
+Number of executable statements: 51
 
 Complexity:
 
-Comment density: 0.057
-Comprehension effort: 100
-McCabe complexity: 7
+Comment density: 0.039
+Comprehension effort: 156
+McCabe complexity: 15
 Halstead complexity:
- length: 132
- volume: 535.978
- difficulty: 7.696
- effort: 4124.704
- language: 9.050
- intelligence: 69.647
- time: 3.819
+ length: 180
+ volume: 788.765
+ difficulty: 11.423
+ effort: 9010.121
+ language: 6.045
+ intelligence: 69.050
+ time: 8.343
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE DAY OF THE WEEK
   Origs: 
@@ -25,36 +25,8 @@ Halstead complexity:
 (0 1) 20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
   Origs: 
   Dests: 
-(0 1) 30 LET J $ (1) = "SUNDAY"
-   ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: :start, 350:goto
-  Dests: 40:auto
-(0 1) 40 LET J $ (2) = "MONDAY"
-   ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 30:auto
-  Dests: 50:auto
-(0 1) 50 LET J $ (3) = "TUESDAY"
-   ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 40:auto
-  Dests: 60:auto
-(0 1) 60 LET J $ (4) = "WEDNESDAY"
-   ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 50:auto
-  Dests: 70:auto
-(0 1) 70 LET J $ (5) = "THURSDAY"
-   ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 60:auto
-  Dests: 80:auto
-(0 1) 80 LET J $ (6) = "FRIDAY"
-   ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 70:auto
-  Dests: 90:auto
-(0 1) 90 LET J $ (7) = "SATURDAY"
-   ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 80:auto
-  Dests: 100:auto
 (0 2) 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
-  Origs: 90:auto, 140:goto
+  Origs: :start, 140:goto, 350:goto
   Dests: 110:auto
 (3 4) 110 INPUT D, M, Y
   Origs: 100:auto
@@ -98,29 +70,28 @@ Halstead complexity:
 (0 8) 240 LET Z = Z - (7 * INT(Z / 7)) + 1
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 PRINT "THE DAY OF THE WEEK IS "; J $ (Z)
-    ERROR: Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
+(0 2) 250 PRINT "THE DAY OF THE WEEK IS ";
   Origs: 240:auto
-  Dests: 260:auto
-(0 2) 260 PRINT
+  Dests: 251:auto
+(0 2) 251 GOSUB 400
   Origs: 250:auto
+  Dests: 260:auto, 400:gosub
+(0 2) 260 PRINT
+  Origs: 251:auto
   Dests: 270:auto
-(0 2) 270 PRINT "FOR NEXT DATE TYPE IN YES, IF NOT"
+(0 2) 270 PRINT "FOR NEXT DATE TYPE IN 1,"
   Origs: 260:auto, 330:goto
   Dests: 280:auto
-(0 2) 280 PRINT "TYPE NO"
+(0 2) 280 PRINT "IF NOT TYPE 0"
   Origs: 270:auto
   Dests: 290:auto
-(0 1) 290 INPUT L $
-    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 290 INPUT L
   Origs: 280:auto
   Dests: 300:auto
-(1 2) 300 IF L $ ="YES" THEN 340
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 300 IF L = 1 THEN 340
   Origs: 290:auto
   Dests: 310:auto, 340:ifthen
-(1 2) 310 IF L $ ="NO" THEN 360
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 310 IF L = 0 THEN 360
   Origs: 300:auto
   Dests: 320:auto, 360:ifthen
 (0 2) 320 PRINT "INVALID COMMAND"
@@ -132,17 +103,83 @@ Halstead complexity:
 (0 2) 340 PRINT
   Origs: 300:ifthen
   Dests: 350:auto
-(0 3) 350 GOTO 30
+(0 3) 350 GOTO 100
   Origs: 340:auto
-  Dests: 30:goto
+  Dests: 100:goto
 (0 2) 360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
   Origs: 310:ifthen
   Dests: 370:auto
-(0 1) 370 END
+(0 1) 370 STOP
   Origs: 360:auto
+  Dests: :stop
+G(400) (1 4) 400 IF Z = 1 THEN 470
+  Origs: 251:gosub
+  Dests: 410:auto, 470:ifthen
+G(400) (1 4) 410 IF Z = 2 THEN 490
+  Origs: 400:auto
+  Dests: 420:auto, 490:ifthen
+G(400) (1 4) 420 IF Z = 3 THEN 510
+  Origs: 410:auto
+  Dests: 430:auto, 510:ifthen
+G(400) (1 4) 430 IF Z = 4 THEN 530
+  Origs: 420:auto
+  Dests: 440:auto, 530:ifthen
+G(400) (1 4) 440 IF Z = 5 THEN 550
+  Origs: 430:auto
+  Dests: 450:auto, 550:ifthen
+G(400) (1 4) 450 IF Z = 6 THEN 570
+  Origs: 440:auto
+  Dests: 460:auto, 570:ifthen
+G(400) (1 4) 460 IF Z = 7 THEN 590
+  Origs: 450:auto
+  Dests: 470:auto, 590:ifthen
+G(400) (0 2) 470 PRINT "SUNDAY"
+  Origs: 400:ifthen, 460:auto
+  Dests: 480:auto
+G(400) (0 2) 480 GOTO 600
+  Origs: 470:auto
+  Dests: 600:goto
+G(400) (0 2) 490 PRINT "MONDAY"
+  Origs: 410:ifthen
+  Dests: 500:auto
+G(400) (0 2) 500 GOTO 600
+  Origs: 490:auto
+  Dests: 600:goto
+G(400) (0 2) 510 PRINT "TUESDAY"
+  Origs: 420:ifthen
+  Dests: 520:auto
+G(400) (0 2) 520 GOTO 600
+  Origs: 510:auto
+  Dests: 600:goto
+G(400) (0 2) 530 PRINT "WEDNESDAY"
+  Origs: 430:ifthen
+  Dests: 540:auto
+G(400) (0 2) 540 GOTO 600
+  Origs: 530:auto
+  Dests: 600:goto
+G(400) (0 2) 550 PRINT "THURSDAY"
+  Origs: 440:ifthen
+  Dests: 560:auto
+G(400) (0 2) 560 GOTO 600
+  Origs: 550:auto
+  Dests: 600:goto
+G(400) (0 2) 570 PRINT "FRIDAY"
+  Origs: 450:ifthen
+  Dests: 580:auto
+G(400) (0 2) 580 GOTO 600
+  Origs: 570:auto
+  Dests: 600:goto
+G(400) (0 2) 590 PRINT "SATURDAY"
+  Origs: 460:ifthen
+  Dests: 600:auto
+G(400) (0 1) 600 RETURN
+  Origs: 480:goto, 500:goto, 520:goto, 540:goto, 560:goto, 580:goto, 590:auto
+  Dests: 
+(0 1) 999 END
+  Origs: 
   Dests: :stop
 
 Unreachable code:
 
-All executable lines are reachable.
+999: END
 

@@ -23,9 +23,38 @@
  CarriageControl:NL
 90 INPUT C
  Variable:C -> _
-100 ON C GOTO 110,150,190,230,280,330
- ERROR: Unknown statement 'ON C GOTO 110,150,190,230,280,330'
- Unimplemented
+100 IF C = 1 THEN 110
+ Variable:C -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:110
+101 IF C = 2 THEN 150
+ Variable:C -> _
+ NumericConstant:2
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:150
+102 IF C = 3 THEN 190
+ Variable:C -> _
+ NumericConstant:3
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:190
+103 IF C = 4 THEN 230
+ Variable:C -> _
+ NumericConstant:4
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:230
+104 IF C = 5 THEN 280
+ Variable:C -> _
+ NumericConstant:5
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:280
+105 IF C = 6 THEN 330
+ Variable:C -> _
+ NumericConstant:6
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:330
+106 GOTO 80
+ LineNumber:80
 110 GOSUB 440
  LineNumber:440
 120 GOSUB 470

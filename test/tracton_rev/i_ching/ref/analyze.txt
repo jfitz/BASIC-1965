@@ -2,28 +2,27 @@ Statistics:
 
 Number of lines: 27
 Number of valid statements: 25
-Number of comments: 1
+Number of comments: 2
 Number of executable statements: 25
 
 Complexity:
 
-Comment density: 0.040
-Comprehension effort: 75
-McCabe complexity: 10
+Comment density: 0.080
+Comprehension effort: 78
+McCabe complexity: 11
 Halstead complexity:
- length: 88
- volume: 342.480
- difficulty: 9.200
- effort: 3150.818
- language: 4.046
- intelligence: 37.226
- time: 2.917
+ length: 92
+ volume: 361.728
+ difficulty: 9.270
+ effort: 3353.316
+ language: 4.209
+ intelligence: 39.020
+ time: 3.105
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THE I CHING
   Origs: 
   Dests: 
-(0 1) 20 
-   ERROR: Unknown statement 'RANDOMIZE'
+(0 1) 20 REM RANDOMIZE
   Origs: 
   Dests: 
 (0 2) 30 PRINT "ENTER DATE AS M,D,Y"
@@ -77,15 +76,13 @@ Halstead complexity:
 (0 2) 190 PRINT
   Origs: 180:auto
   Dests: 200:auto
-(0 2) 200 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+(0 2) 200 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
   Origs: 190:auto
   Dests: 210:auto
-(0 1) 210 INPUT L $
-    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 210 INPUT L
   Origs: 200:auto
   Dests: 220:auto
-(1 2) 220 IF L $ ="Y" THEN 250
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 220 IF L = 1 THEN 250
   Origs: 210:auto
   Dests: 230:auto, 250:ifthen
 (0 2) 230 PRINT "THE I CHING SAYS GOOD-BYE"

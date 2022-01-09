@@ -1,17 +1,22 @@
 Cross reference
 
 Numeric constants:
-0:   170
-1:   460, 520, 590
-2:   500
-5:   590
+0:   70, 170
+1:   60, 340, 450, 460, 520, 590, 610, 750
+2:   350, 500, 611
+3:   612
+4:   613
+5:   590, 614
 9:   540
 89:  480
 
 String constants:
-" ":                                       560
+" ":                                       562, 565
+"APPLE":                                   640
 "ARE INSTRUCTIONS REQUIRED":               30
+"BANANA":                                  700
 "BANANAS EARN $10. 3 CHERRIES EARN $90.":  110
+"CHERRY":                                  620
 "EARN $10. EACH TURN COSTS $1. GOOD-LUCK":
      160
 "IF THE 1ST AND 2ND ARE APPLES YOU EARN $3":
@@ -20,13 +25,15 @@ String constants:
      120
 "IF THE LAST FRUIT IS A CHERRY AND THE":   140
 "INVALID COMMAND":                         80
+"LEMON":                                   660
 "ONE-ARM BANDIT SAYS GOOD-BYE":            760
+"ORANGE":                                  680
 "OTHER TWO ARE THE SAME BUT NOT APPLES YOU":
      150
 "SCORING IS SIMPLE; 3 ORANGES, LEMONS OR":
      100
-"TO CONTINUE TYPE Y, IF NOT TYPE N":       730
-"TYPE EITHER YES OR NO":                   40
+"TO CONTINUE TYPE 1, IF NOT TYPE 0":       730
+"TYPE EITHER 1 OR 0":                      40
 "YOUR EARNINGS ARE NOW $":                 570
 
 Functions:
@@ -36,19 +43,24 @@ RND:     590
 Variables:
 J=:   170, 460, 480, 500, 520, 540
 J:    460, 480, 500, 520, 540, 570
-S=:   250, 280, 310, 590
-S:    200, 220, 240
+L=:   50
+L:    60, 70
+S=:   250, 560, 563, 566, 590
+S:    200, 220, 240, 610, 611, 612, 613, 614
 S1=:  200
-S1:   250
+S1:   250, 340, 350, 360, 380, 420, 560
 S2=:  220
-S2:   280
+S2:   360, 380, 400, 420, 440, 563
 S3=:  240
-S3:   310
+S3:   400, 440, 450, 566
+Z=:   740
+Z:    750
 
 Operators:
 *(_,_):  590
 +(_,_):  480, 500, 520, 540, 590
 -(_,_):  460
+=(_,_):  60, 70, 340, 350, 360, 380, 400, 420, 440, 450, 610, 611, 612, 613, 614, 750
 
 Line numbers:
 30:   90
@@ -66,7 +78,12 @@ Line numbers:
 540:  440, 450
 550:  470, 490, 510, 530
 590:  190, 210, 230
-610:  260, 290, 320
+610:  561, 564, 567
+620:  610
+640:  611
+660:  612
+680:  613
+700:  614
 710:  630, 650, 670, 690
 720:  580
 780:  750

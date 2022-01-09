@@ -36,19 +36,23 @@
  Variable:H -> _
  NumericConstant:0.03587
  AssignmentOperator:= =_ -> _
-120 PRINT "TYPE G FOR GAMMA FUNCTION OR"
- TextConstant:"TYPE G FOR GAMMA FUNCTION OR"
+120 PRINT "TYPE 1 FOR GAMMA FUNCTION OR"
+ TextConstant:"TYPE 1 FOR GAMMA FUNCTION OR"
  CarriageControl:NL
-130 PRINT "TYPE F FOR THE GENERALIZED FACTORIAL"
- TextConstant:"TYPE F FOR THE GENERALIZED FACTORIAL"
+130 PRINT "TYPE 2 FOR THE GENERALIZED FACTORIAL"
+ TextConstant:"TYPE 2 FOR THE GENERALIZED FACTORIAL"
  CarriageControl:NL
-140 INPUT A$
- ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
-150 IF A$ = "G" THEN 190
- ERROR: Token 'InvalidToken:$' is not a value or operator
+140 INPUT A
+ Variable:A -> _
+150 IF A = 1 THEN 190
+ Variable:A -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:190
-160 IF A$ = "F" THEN 300
- ERROR: Token 'InvalidToken:$' is not a value or operator
+160 IF A = 2 THEN 300
+ Variable:A -> _
+ NumericConstant:2
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:300
 170 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
@@ -82,7 +86,7 @@
  LineNumber:190
 260 GOSUB 490
  LineNumber:490
-270 IF (X - 1) - INT(X - 1) THEN 410
+270 IF (X - 1) = INT(X - 1) THEN 410
  Variable:X -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
@@ -90,7 +94,7 @@
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
  FunctionInt:INT(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:410
 280 GOSUB 570
  LineNumber:570
@@ -145,13 +149,15 @@
  CarriageControl:NL
 420 PRINT
  CarriageControl:NL
-430 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
- TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
+430 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
+ TextConstant:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
-440 INPUT L$
- ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
-450 IF L$ = "Y" THEN 470
- ERROR: Token 'InvalidToken:$' is not a value or operator
+440 INPUT L
+ Variable:L -> _
+450 IF L = 1 THEN 470
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:470
 460 STOP
  

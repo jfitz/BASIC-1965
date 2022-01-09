@@ -8,16 +8,16 @@ Number of executable statements: 51
 Complexity:
 
 Comment density: 0.039
-Comprehension effort: 184
-McCabe complexity: 10
+Comprehension effort: 192
+McCabe complexity: 12
 Halstead complexity:
- length: 215
- volume: 944.807
- difficulty: 8.028
- effort: 7585.067
- language: 14.659
- intelligence: 117.686
- time: 7.023
+ length: 226
+ volume: 1009.295
+ difficulty: 8.829
+ effort: 8911.015
+ language: 12.948
+ intelligence: 114.317
+ time: 8.251
 
 (0 1) 10 REM THIS PROGRAM COMPUTES THE PERCENTAGES OF THE
   Origs: 
@@ -25,19 +25,16 @@ Halstead complexity:
 (0 1) 20 REM PRODUCTS PRODUCED BY HYDROCARBON COMBUSTION
   Origs: 
   Dests: 
-(0 2) 30 PRINT "FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO"
+(0 2) 30 PRINT "FOR INSTRUCTIONS TYPE 1, IF NOT TYPE 0"
   Origs: :start, 80:goto, 520:goto
   Dests: 40:auto
-(0 1) 40 INPUT I $
-   ERROR: Syntax error: "I$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 40 INPUT I
   Origs: 30:auto
   Dests: 50:auto
-(1 2) 50 IF I $ ="YES" THEN 90
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 50 IF I = 1 THEN 90
   Origs: 40:auto
   Dests: 60:auto, 90:ifthen
-(1 2) 60 IF I $ ="NO" THEN 130
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 60 IF I = 0 THEN 130
   Origs: 50:auto
   Dests: 70:auto, 130:ifthen
 (0 2) 70 PRINT "INVALID COMMAND"
@@ -154,18 +151,16 @@ Halstead complexity:
 (0 2) 440 PRINT
   Origs: 430:auto
   Dests: 450:auto
-(0 2) 450 PRINT "TO TRY NEXT COMPOUND TYPE YES"
+(0 2) 450 PRINT "TO TRY NEXT COMPOUND TYPE 1"
   Origs: 440:auto
   Dests: 460:auto
-(0 2) 460 PRINT "TO STOP TYPE NO"
+(0 2) 460 PRINT "TO STOP TYPE 0"
   Origs: 450:auto
   Dests: 470:auto
-(0 1) 470 INPUT L $
-    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 470 INPUT L
   Origs: 460:auto
   Dests: 480:auto
-(1 2) 480 IF L $ ="YES" THEN 510
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 480 IF L = 1 THEN 510
   Origs: 470:auto
   Dests: 490:auto, 510:ifthen
 (0 2) 490 PRINT "COMBUSTION SAYS GOOD-BYE"

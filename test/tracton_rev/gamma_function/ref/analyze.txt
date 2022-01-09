@@ -8,16 +8,16 @@ Number of executable statements: 59
 Complexity:
 
 Comment density: 0.051
-Comprehension effort: 200
-McCabe complexity: 11
+Comprehension effort: 208
+McCabe complexity: 13
 Halstead complexity:
- length: 213
- volume: 936.018
- difficulty: 13.068
- effort: 12232.049
- language: 5.481
- intelligence: 71.626
- time: 11.326
+ length: 224
+ volume: 984.357
+ difficulty: 13.977
+ effort: 13758.621
+ language: 5.039
+ intelligence: 70.426
+ time: 12.739
 
 (0 1) 10 REM THIS PROGRAM GENERATES VIA POLYNOMIAL
   Origs: 
@@ -52,22 +52,19 @@ Halstead complexity:
 (0 3) 110 LET H = 0.03587
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 PRINT "TYPE G FOR GAMMA FUNCTION OR"
+(0 2) 120 PRINT "TYPE 1 FOR GAMMA FUNCTION OR"
   Origs: 110:auto, 180:goto, 480:goto
   Dests: 130:auto
-(0 2) 130 PRINT "TYPE F FOR THE GENERALIZED FACTORIAL"
+(0 2) 130 PRINT "TYPE 2 FOR THE GENERALIZED FACTORIAL"
   Origs: 120:auto
   Dests: 140:auto
-(0 1) 140 INPUT A $
-    ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 140 INPUT A
   Origs: 130:auto
   Dests: 150:auto
-(1 2) 150 IF A $ ="G" THEN 190
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 150 IF A = 1 THEN 190
   Origs: 140:auto
   Dests: 160:auto, 190:ifthen
-(1 2) 160 IF A $ ="F" THEN 300
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 160 IF A = 2 THEN 300
   Origs: 150:auto
   Dests: 170:auto, 300:ifthen
 (0 2) 170 PRINT "INVALID RESPONSE"
@@ -100,7 +97,7 @@ Halstead complexity:
 (0 2) 260 GOSUB 490
   Origs: 230:ifthen
   Dests: 270:auto, 490:gosub
-(1 6) 270 IF (X - 1) - INT(X - 1) THEN 410
+(1 6) 270 IF (X - 1) = INT(X - 1) THEN 410
   Origs: 260:auto
   Dests: 280:auto, 410:ifthen
 (0 2) 280 GOSUB 570
@@ -148,15 +145,13 @@ Halstead complexity:
 (0 2) 420 PRINT
   Origs: 400:goto, 410:auto
   Dests: 430:auto
-(0 2) 430 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+(0 2) 430 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
   Origs: 420:auto
   Dests: 440:auto
-(0 1) 440 INPUT L $
-    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 440 INPUT L
   Origs: 430:auto
   Dests: 450:auto
-(1 2) 450 IF L $ ="Y" THEN 470
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 450 IF L = 1 THEN 470
   Origs: 440:auto
   Dests: 460:auto, 470:ifthen
 (0 1) 460 STOP

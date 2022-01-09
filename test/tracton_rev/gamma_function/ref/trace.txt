@@ -1,0 +1,225 @@
+40: LET A = 0.57717
+ A = 0.57717
+50: LET B = 0.98821
+ B = 0.98821
+60: LET C = 0.89706
+ C = 0.89706
+70: LET D = 0.91821
+ D = 0.91821
+80: LET E = 0.7567
+ E = 0.7567
+90: LET F = 0.4822
+ F = 0.4822
+100: LET G = 0.19353
+ G = 0.19353
+110: LET H = 0.03587
+ H = 0.03587
+120: PRINT "TYPE 1 FOR GAMMA FUNCTION OR"
+TYPE 1 FOR GAMMA FUNCTION OR
+130: PRINT "TYPE 2 FOR THE GENERALIZED FACTORIAL"
+TYPE 2 FOR THE GENERALIZED FACTORIAL
+140: INPUT A
+? 1
+ A = 1
+150: IF A = 1 THEN 190
+ A: 1
+ A = 1: true
+190: PRINT "ENTER VALUE OF X"
+ENTER VALUE OF X
+200: INPUT X
+? 5
+ X = 5
+210: LET K = X
+ X: 5
+ K = 5
+220: LET K = K - 1
+ K: 5
+ K = 4
+230: IF K >= 0 THEN 260
+ K: 4
+ K >= 0: true
+260: GOSUB 490
+G(490) 490: LET J = 1
+ J = 1
+G(490) 500: LET J = J * K
+ J: 1
+ K: 4
+ J = 4
+G(490) 510: LET K = K - 1
+ K: 4
+ K = 3
+G(490) 520: IF K < 1 THEN 540
+ K: 3
+ K < 1: false
+G(490) 530: GOTO 500
+G(490) 500: LET J = J * K
+ J: 4
+ K: 3
+ J = 12
+G(490) 510: LET K = K - 1
+ K: 3
+ K = 2
+G(490) 520: IF K < 1 THEN 540
+ K: 2
+ K < 1: false
+G(490) 530: GOTO 500
+G(490) 500: LET J = J * K
+ J: 12
+ K: 2
+ J = 24
+G(490) 510: LET K = K - 1
+ K: 2
+ K = 1
+G(490) 520: IF K < 1 THEN 540
+ K: 1
+ K < 1: false
+G(490) 530: GOTO 500
+G(490) 500: LET J = J * K
+ J: 24
+ K: 1
+ J = 24
+G(490) 510: LET K = K - 1
+ K: 1
+ K = 0
+G(490) 520: IF K < 1 THEN 540
+ K: 0
+ K < 1: true
+G(490) 540: LET L = K
+ K: 0
+ L = 0
+G(490) 550: LET K = J
+ J: 24
+ K = 24
+G(490) 560: RETURN
+270: IF (X - 1) = INT(X - 1) THEN 410
+ X: 5
+ (X - 1) = INT(X - 1): true
+410: PRINT "GAMMA ("; X; ") = "; K
+GAMMA (
+ X: 5
+ 5 ) = 
+ K: 24
+ 24
+420: PRINT
+
+430: PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
+TO CONTINUE TYPE 1, IF NOT TYPE 0
+440: INPUT L
+? 1
+ L = 1
+450: IF L = 1 THEN 470
+ L: 1
+ L = 1: true
+470: PRINT
+
+480: GOTO 120
+120: PRINT "TYPE 1 FOR GAMMA FUNCTION OR"
+TYPE 1 FOR GAMMA FUNCTION OR
+130: PRINT "TYPE 2 FOR THE GENERALIZED FACTORIAL"
+TYPE 2 FOR THE GENERALIZED FACTORIAL
+140: INPUT A
+? 2
+ A = 2
+150: IF A = 1 THEN 190
+ A: 2
+ A = 1: false
+160: IF A = 2 THEN 300
+ A: 2
+ A = 2: true
+300: PRINT "ENTER VALUE OF X"
+ENTER VALUE OF X
+310: INPUT X
+? 5
+ X = 5
+320: LET K = X
+ X: 5
+ K = 5
+330: IF K >= 0 THEN 360
+ K: 5
+ K >= 0: true
+360: GOSUB 490
+G(490) 490: LET J = 1
+ J = 1
+G(490) 500: LET J = J * K
+ J: 1
+ K: 5
+ J = 5
+G(490) 510: LET K = K - 1
+ K: 5
+ K = 4
+G(490) 520: IF K < 1 THEN 540
+ K: 4
+ K < 1: false
+G(490) 530: GOTO 500
+G(490) 500: LET J = J * K
+ J: 5
+ K: 4
+ J = 20
+G(490) 510: LET K = K - 1
+ K: 4
+ K = 3
+G(490) 520: IF K < 1 THEN 540
+ K: 3
+ K < 1: false
+G(490) 530: GOTO 500
+G(490) 500: LET J = J * K
+ J: 20
+ K: 3
+ J = 60
+G(490) 510: LET K = K - 1
+ K: 3
+ K = 2
+G(490) 520: IF K < 1 THEN 540
+ K: 2
+ K < 1: false
+G(490) 530: GOTO 500
+G(490) 500: LET J = J * K
+ J: 60
+ K: 2
+ J = 120
+G(490) 510: LET K = K - 1
+ K: 2
+ K = 1
+G(490) 520: IF K < 1 THEN 540
+ K: 1
+ K < 1: false
+G(490) 530: GOTO 500
+G(490) 500: LET J = J * K
+ J: 120
+ K: 1
+ J = 120
+G(490) 510: LET K = K - 1
+ K: 1
+ K = 0
+G(490) 520: IF K < 1 THEN 540
+ K: 0
+ K < 1: true
+G(490) 540: LET L = K
+ K: 0
+ L = 0
+G(490) 550: LET K = J
+ J: 120
+ K = 120
+G(490) 560: RETURN
+370: IF X = INT(X) THEN 390
+ X: 5
+ X = INT(X): true
+390: PRINT X; "! = "; K
+ X: 5
+ 5 ! = 
+ K: 120
+ 120
+400: GOTO 420
+420: PRINT
+
+430: PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
+TO CONTINUE TYPE 1, IF NOT TYPE 0
+440: INPUT L
+? 0
+ L = 0
+450: IF L = 1 THEN 470
+ L: 0
+ L = 1: false
+460: STOP
+STOP in line 460
+

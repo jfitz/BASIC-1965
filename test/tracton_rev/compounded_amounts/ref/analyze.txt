@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 58
-Number of valid statements: 56
+Number of lines: 63
+Number of valid statements: 62
 Number of comments: 1
-Number of executable statements: 56
+Number of executable statements: 62
 
 Complexity:
 
-Comment density: 0.018
-Comprehension effort: 143
-McCabe complexity: 8
+Comment density: 0.016
+Comprehension effort: 165
+McCabe complexity: 13
 Halstead complexity:
- length: 157
- volume: 597.646
- difficulty: 17.387
- effort: 10391.329
- language: 1.977
- intelligence: 34.373
- time: 9.622
+ length: 184
+ volume: 737.349
+ difficulty: 15.878
+ effort: 11707.668
+ language: 2.925
+ intelligence: 46.438
+ time: 10.840
 
 (0 1) 10 REM COMPOUNDED AMOUNTS
   Origs: 
@@ -38,17 +38,31 @@ Halstead complexity:
   Origs: 50:auto
   Dests: 70:auto
 (0 2) 70 PRINT "ENTER 1 TO 5"
-  Origs: 60:auto, 405:goto
+  Origs: 60:auto, 95:goto, 405:goto
   Dests: 80:auto
 (1 2) 80 INPUT A
   Origs: 70:auto
-  Dests: 100:auto
-(0 1) 90 
-   ERROR: Unknown statement 'ON A GOTO 100,160,220,280,340'
-  Origs: 
-  Dests: 
-(0 2) 100 GOSUB 410
+  Dests: 90:auto
+(1 4) 90 IF A = 1 THEN 100
   Origs: 80:auto
+  Dests: 91:auto, 100:ifthen
+(1 4) 91 IF A = 2 THEN 160
+  Origs: 90:auto
+  Dests: 92:auto, 160:ifthen
+(1 4) 92 IF A = 3 THEN 220
+  Origs: 91:auto
+  Dests: 93:auto, 220:ifthen
+(1 4) 93 IF A = 4 THEN 280
+  Origs: 92:auto
+  Dests: 94:auto, 280:ifthen
+(1 4) 94 IF A = 5 THEN 340
+  Origs: 93:auto
+  Dests: 95:auto, 340:ifthen
+(0 3) 95 GOTO 70
+  Origs: 94:auto
+  Dests: 70:goto
+(0 2) 100 GOSUB 410
+  Origs: 90:ifthen
   Dests: 110:auto, 410:gosub
 (0 2) 110 GOSUB 440
   Origs: 100:auto
@@ -66,7 +80,7 @@ Halstead complexity:
   Origs: 140:auto
   Dests: 390:goto
 (0 2) 160 GOSUB 500
-  Origs: 
+  Origs: 91:ifthen
   Dests: 170:auto, 500:gosub
 (0 2) 170 GOSUB 440
   Origs: 160:auto
@@ -84,7 +98,7 @@ Halstead complexity:
   Origs: 200:auto
   Dests: 390:goto
 (0 2) 220 GOSUB 410
-  Origs: 
+  Origs: 92:ifthen
   Dests: 230:auto, 410:gosub
 (0 2) 230 GOSUB 440
   Origs: 220:auto
@@ -102,7 +116,7 @@ Halstead complexity:
   Origs: 260:auto
   Dests: 390:goto
 (0 2) 280 GOSUB 410
-  Origs: 
+  Origs: 93:ifthen
   Dests: 290:auto, 410:gosub
 (0 2) 290 GOSUB 500
   Origs: 280:auto
@@ -120,7 +134,7 @@ Halstead complexity:
   Origs: 320:auto
   Dests: 390:goto
 (0 2) 340 GOSUB 500
-  Origs: 
+  Origs: 94:ifthen
   Dests: 350:auto, 500:gosub
 (0 2) 350 GOSUB 410
   Origs: 340:auto
@@ -197,31 +211,5 @@ G(500) (0 1) 520 RETURN
 
 Unreachable code:
 
-160: GOSUB 500
-170: GOSUB 440
-180: GOSUB 470
-190: LET Y = X * ((1 + I) ^ N)
-200: PRINT "PRESENT VALUE = "; Y
-210: GOTO 390
-220: GOSUB 410
-230: GOSUB 440
-240: GOSUB 470
-250: LET L = Y * ((1 + I ^ N) - 1)
-260: PRINT "INTEREST = "; L
-270: GOTO 390
-280: GOSUB 410
-290: GOSUB 500
-300: GOSUB 470
-310: LET I = ((X / Y) ^ (1 / N)) - 1
-320: PRINT "INTEREST RATE = "; I
-330: GOTO 390
-340: GOSUB 500
-350: GOSUB 410
-360: GOSUB 440
-370: LET N = (LOG(X / Y)) / (LOG(1 + I))
-380: PRINT "NUMBER OF TIME PERIODS = "; N
-500: PRINT "FUTURE VALUE = ";
-510: INPUT X
-520: RETURN
 530: END
 

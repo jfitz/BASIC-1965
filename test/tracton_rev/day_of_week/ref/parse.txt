@@ -2,20 +2,6 @@
  Remark:THIS PROGRAM COMPUTES THE DAY OF THE WEEK
 20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
  Remark:RESTRICTION: THE DATE MUST BE AFTER 1752
-30 LET J$(1) = "SUNDAY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
-40 LET J$(2) = "MONDAY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
-50 LET J$(3) = "TUESDAY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
-60 LET J$(4) = "WEDNESDAY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
-70 LET J$(5) = "THURSDAY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
-80 LET J$(6) = "FRIDAY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
-90 LET J$(7) = "SATURDAY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
@@ -121,25 +107,30 @@
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
-250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
- ERROR: Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
+250 PRINT "THE DAY OF THE WEEK IS ";
  TextConstant:"THE DAY OF THE WEEK IS "
  CarriageControl:;
+251 GOSUB 400
+ LineNumber:400
 260 PRINT
  CarriageControl:NL
-270 PRINT "FOR NEXT DATE TYPE IN YES, IF NOT"
- TextConstant:"FOR NEXT DATE TYPE IN YES, IF NOT"
+270 PRINT "FOR NEXT DATE TYPE IN 1,"
+ TextConstant:"FOR NEXT DATE TYPE IN 1,"
  CarriageControl:NL
-280 PRINT "TYPE NO"
- TextConstant:"TYPE NO"
+280 PRINT "IF NOT TYPE 0"
+ TextConstant:"IF NOT TYPE 0"
  CarriageControl:NL
-290 INPUT L$
- ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
-300 IF L$ = "YES" THEN 340
- ERROR: Token 'InvalidToken:$' is not a value or operator
+290 INPUT L
+ Variable:L -> _
+300 IF L = 1 THEN 340
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:340
-310 IF L$ = "NO" THEN 360
- ERROR: Token 'InvalidToken:$' is not a value or operator
+310 IF L = 0 THEN 360
+ Variable:L -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:360
 320 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
@@ -148,11 +139,83 @@
  LineNumber:270
 340 PRINT
  CarriageControl:NL
-350 GOTO 30
- LineNumber:30
+350 GOTO 100
+ LineNumber:100
 360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
  TextConstant:"DAY OF THE WEEK SAYS GOOD-BYE"
  CarriageControl:NL
-370 END
+370 STOP
+ 
+400 IF Z = 1 THEN 470
+ Variable:Z -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:470
+410 IF Z = 2 THEN 490
+ Variable:Z -> _
+ NumericConstant:2
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:490
+420 IF Z = 3 THEN 510
+ Variable:Z -> _
+ NumericConstant:3
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:510
+430 IF Z = 4 THEN 530
+ Variable:Z -> _
+ NumericConstant:4
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:530
+440 IF Z = 5 THEN 550
+ Variable:Z -> _
+ NumericConstant:5
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:550
+450 IF Z = 6 THEN 570
+ Variable:Z -> _
+ NumericConstant:6
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:570
+460 IF Z = 7 THEN 590
+ Variable:Z -> _
+ NumericConstant:7
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:590
+470 PRINT "SUNDAY"
+ TextConstant:"SUNDAY"
+ CarriageControl:NL
+480 GOTO 600
+ LineNumber:600
+490 PRINT "MONDAY"
+ TextConstant:"MONDAY"
+ CarriageControl:NL
+500 GOTO 600
+ LineNumber:600
+510 PRINT "TUESDAY"
+ TextConstant:"TUESDAY"
+ CarriageControl:NL
+520 GOTO 600
+ LineNumber:600
+530 PRINT "WEDNESDAY"
+ TextConstant:"WEDNESDAY"
+ CarriageControl:NL
+540 GOTO 600
+ LineNumber:600
+550 PRINT "THURSDAY"
+ TextConstant:"THURSDAY"
+ CarriageControl:NL
+560 GOTO 600
+ LineNumber:600
+570 PRINT "FRIDAY"
+ TextConstant:"FRIDAY"
+ CarriageControl:NL
+580 GOTO 600
+ LineNumber:600
+590 PRINT "SATURDAY"
+ TextConstant:"SATURDAY"
+ CarriageControl:NL
+600 RETURN
+ 
+999 END
  
 

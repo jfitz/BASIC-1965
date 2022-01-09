@@ -2,7 +2,7 @@ Cross reference
 
 Numeric constants:
 0:    90
-1:    80, 110, 130, 140
+1:    80, 110, 130, 140, 220
 2:    110
 6:    80, 130
 30:   70
@@ -15,7 +15,7 @@ String constants:
 "ENTER DATE AS M,D,Y":                30
 "ENTER TIME AS H,M(24 HOUR CLOCK)":   50
 "THE I CHING SAYS GOOD-BYE":          230
-"TO CONTINUE TYPE Y, IF NOT TYPE N":  200
+"TO CONTINUE TYPE 1, IF NOT TYPE 0":  200
 
 Functions:
 INT(_):  100, 110
@@ -32,6 +32,8 @@ I=:     80, 130
 I:      110, 120, 140, 180
 K=:     90, 100
 K:      100, 110
+L=:     210
+L:      220
 M=:     40
 M:      70
 M1=:    60
@@ -46,7 +48,7 @@ Operators:
 +(_,_):  70, 110
 -(_,_):  100
 /(_,_):  70
-=(_,_):  140
+=(_,_):  140, 220
 
 Line numbers:
 30:   260

@@ -100,7 +100,7 @@ Halstead complexity:
 (0 2) 260 GOSUB 490
   Origs: 230:ifthen
   Dests: 270:auto, 490:gosub
-(1 6) 270 IF (X - 1) - INT(X - 1) THEN 410
+(1 6) 270 IF (X - 1) = INT(X - 1) THEN 410
   Origs: 260:auto
   Dests: 280:auto, 410:ifthen
 (0 2) 280 GOSUB 570

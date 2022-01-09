@@ -1,8 +1,8 @@
 Cross reference
 
 Numeric constants:
-0:   140
-1:   200, 210, 460
+0:   60, 140
+1:   50, 200, 210, 380, 460
 2:   270
 3:   280
 6:   460
@@ -11,8 +11,7 @@ Numeric constants:
 12:  290
 
 String constants:
-" FOR RULES, TYPE RULES, OTHERWISE TYPE GO":
-     30
+" FOR RULES, TYPE 1, OTHERWISE TYPE 0":  30
 " SORRY YOU LOSE":                       440
 " YOU LOSE":                             340
 " YOU WIN":                              320
@@ -21,7 +20,7 @@ String constants:
      110
 "INVALID COMMAND":                       70
 "THE FIRST THROW 2,3 OR A 12 COMES UP":  120
-"TO CONTINUE TYPE Y, IF NOT TYPE N":     360
+"TO CONTINUE TYPE 1, IF NOT TYPE 0":     360
 "YOU CAN ALSO WIN BY THROWING A 4,5,6,8,9,10":
      100
 "YOU LOSE AUTOMATICALLY":                130
@@ -43,13 +42,17 @@ D4=:  310
 D4:   220
 J=:   140, 200
 J:    200, 210
+L=:   370
+L:    380
 N=:   460
 N:    160, 180
+R=:   40
+R:    50, 60
 
 Operators:
 *(_,_):  460
 +(_,_):  190, 200, 460
-=(_,_):  210, 220, 230, 260, 270, 280, 290, 300
+=(_,_):  50, 60, 210, 220, 230, 260, 270, 280, 290, 300, 380
 
 Line numbers:
 30:   80, 410

@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 80
-Number of valid statements: 77
+Number of lines: 84
+Number of valid statements: 82
 Number of comments: 2
-Number of executable statements: 77
+Number of executable statements: 82
 
 Complexity:
 
-Comment density: 0.026
-Comprehension effort: 169
-McCabe complexity: 12
+Comment density: 0.024
+Comprehension effort: 218
+McCabe complexity: 19
 Halstead complexity:
- length: 130
- volume: 534.414
- difficulty: 9.796
- effort: 5235.072
- language: 5.569
- intelligence: 54.555
- time: 4.847
+ length: 200
+ volume: 871.342
+ difficulty: 12.600
+ effort: 10978.906
+ language: 5.488
+ intelligence: 69.154
+ time: 10.166
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THEN MECHANICAL
   Origs: 
@@ -28,19 +28,16 @@ Halstead complexity:
 (0 2) 30 PRINT "ARE INSTRUCTIONS REQUIRED"
   Origs: :start, 90:goto
   Dests: 40:auto
-(0 2) 40 PRINT "TYPE EITHER YES OR NO"
+(0 2) 40 PRINT "TYPE EITHER 1 OR 0"
   Origs: 30:auto
   Dests: 50:auto
-(0 1) 50 INPUT L $
-   ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 50 INPUT L
   Origs: 40:auto
   Dests: 60:auto
-(1 2) 60 IF L $ ="YES" THEN 100
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 60 IF L = 1 THEN 100
   Origs: 50:auto
   Dests: 70:auto, 100:ifthen
-(1 2) 70 IF L $ ="NO" THEN 170
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 70 IF L = 0 THEN 170
   Origs: 60:auto
   Dests: 80:auto, 170:ifthen
 (0 2) 80 PRINT "INVALID COMMAND"
@@ -96,76 +93,41 @@ Halstead complexity:
   Dests: 250:auto
 (0 3) 250 LET S = S1
   Origs: 240:auto
-  Dests: 260:auto
-(0 2) 260 GOSUB 610
-  Origs: 250:auto
-  Dests: 270:auto, 620:gosub
-(0 1) 270 LET S1 $ =S $
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 260:auto
-  Dests: 280:auto
-(0 3) 280 LET S = S2
-  Origs: 270:auto
-  Dests: 290:auto
-(0 2) 290 GOSUB 610
-  Origs: 280:auto
-  Dests: 300:auto, 620:gosub
-(0 1) 300 LET S2 $ =S $
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 290:auto
-  Dests: 310:auto
-(0 3) 310 LET S = S3
-  Origs: 300:auto
-  Dests: 320:auto
-(0 2) 320 GOSUB 610
-  Origs: 310:auto
-  Dests: 330:auto, 620:gosub
-(0 1) 330 LET S3 $ =S $
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 320:auto
   Dests: 340:auto
-(1 2) 340 IF S1 $ ="CHERRY" THEN 380
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 330:auto
+(1 4) 340 IF S1 = 1 THEN 380
+  Origs: 250:auto
   Dests: 350:auto, 380:ifthen
-(1 2) 350 IF S1 $ ="APPLE" THEN 420
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 350 IF S1 = 2 THEN 420
   Origs: 340:auto
   Dests: 360:auto, 420:ifthen
-(1 2) 360 IF S1 $ =S2 $ THEN 440
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 360 IF S1 = S2 THEN 440
   Origs: 350:auto
   Dests: 370:auto, 440:ifthen
 (0 2) 370 GOTO 460
   Origs: 360:auto
   Dests: 460:goto
-(1 2) 380 IF S1 $ =S2 $ THEN 400
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 380 IF S1 = S2 THEN 400
   Origs: 340:ifthen
   Dests: 390:auto, 400:ifthen
 (0 2) 390 GOTO 460
   Origs: 380:auto
   Dests: 460:goto
-(1 2) 400 IF S2 $ =S3 $ THEN 480
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 400 IF S2 = S3 THEN 480
   Origs: 380:ifthen
   Dests: 410:auto, 480:ifthen
 (0 2) 410 GOTO 460
   Origs: 400:auto
   Dests: 460:goto
-(1 2) 420 IF S1 $ =S2 $ THEN 500
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 420 IF S1 = S2 THEN 500
   Origs: 350:ifthen
   Dests: 430:auto, 500:ifthen
 (0 2) 430 GOTO 520
   Origs: 420:auto
   Dests: 520:goto
-(1 2) 440 IF S2 $ =S3 $ THEN 540
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 440 IF S2 = S3 THEN 540
   Origs: 360:ifthen
   Dests: 450:auto, 540:ifthen
-(1 2) 450 IF S3 $ ="CHERRY" THEN 540
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 450 IF S3 = 1 THEN 540
   Origs: 440:auto
   Dests: 460:auto, 540:ifthen
 (0 4) 460 LET J = J - 1
@@ -198,14 +160,35 @@ Halstead complexity:
 (0 2) 550 PRINT
   Origs: 470:goto, 490:goto, 510:goto, 530:goto, 540:auto
   Dests: 560:auto
-(0 5) 560 PRINT S1 $; " "; S2 $; " "; S3 $
-    ERROR: Syntax error: "S1$" Token 'InvalidToken:$' is not a value or operator
-    ERROR: Syntax error: "S2$" Token 'InvalidToken:$' is not a value or operator
-    ERROR: Syntax error: "S3$" Token 'InvalidToken:$' is not a value or operator
+(0 3) 560 LET S = S1
   Origs: 550:auto
+  Dests: 561:auto
+(0 2) 561 GOSUB 610
+  Origs: 560:auto
+  Dests: 562:auto, 610:gosub
+(0 2) 562 PRINT " ";
+  Origs: 561:auto
+  Dests: 563:auto
+(0 3) 563 LET S = S2
+  Origs: 562:auto
+  Dests: 564:auto
+(0 2) 564 GOSUB 610
+  Origs: 563:auto
+  Dests: 565:auto, 610:gosub
+(0 2) 565 PRINT " ";
+  Origs: 564:auto
+  Dests: 566:auto
+(0 3) 566 LET S = S3
+  Origs: 565:auto
+  Dests: 567:auto
+(0 2) 567 GOSUB 610
+  Origs: 566:auto
+  Dests: 568:auto, 610:gosub
+(0 2) 568 PRINT
+  Origs: 567:auto
   Dests: 570:auto
 (0 3) 570 PRINT "YOUR EARNINGS ARE NOW $"; J
-  Origs: 560:auto
+  Origs: 568:auto
   Dests: 580:auto
 (0 2) 580 GOTO 720
   Origs: 570:auto
@@ -216,57 +199,61 @@ G(590) (0 5) 590 LET S = 1 + INT(5 * RND)
 G(590) (0 1) 600 RETURN
   Origs: 590:auto
   Dests: 
-(0 1) 610 
-    ERROR: Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
-  Origs: 
-  Dests: 
-G(620) (0 1) 620 LET S $ ="CHERRY"
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 260:gosub, 290:gosub, 320:gosub
+G(610) (1 4) 610 IF S = 1 THEN 620
+  Origs: 561:gosub, 564:gosub, 567:gosub
+  Dests: 611:auto, 620:ifthen
+G(610) (1 4) 611 IF S = 2 THEN 640
+  Origs: 610:auto
+  Dests: 612:auto, 640:ifthen
+G(610) (1 4) 612 IF S = 3 THEN 660
+  Origs: 611:auto
+  Dests: 613:auto, 660:ifthen
+G(610) (1 4) 613 IF S = 4 THEN 680
+  Origs: 612:auto
+  Dests: 614:auto, 680:ifthen
+G(610) (1 4) 614 IF S = 5 THEN 700
+  Origs: 613:auto
+  Dests: 620:auto, 700:ifthen
+G(610) (0 2) 620 PRINT "CHERRY";
+  Origs: 610:ifthen, 614:auto
   Dests: 630:auto
-G(620) (0 2) 630 GOTO 710
+G(610) (0 2) 630 GOTO 710
   Origs: 620:auto
   Dests: 710:goto
-(0 1) 640 LET S $ ="APPLE"
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 
+G(610) (0 2) 640 PRINT "APPLE";
+  Origs: 611:ifthen
   Dests: 650:auto
-(0 2) 650 GOTO 710
+G(610) (0 2) 650 GOTO 710
   Origs: 640:auto
   Dests: 710:goto
-(0 1) 660 LET S $ ="LEMON"
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 
+G(610) (0 2) 660 PRINT "LEMON";
+  Origs: 612:ifthen
   Dests: 670:auto
-(0 2) 670 GOTO 710
+G(610) (0 2) 670 GOTO 710
   Origs: 660:auto
   Dests: 710:goto
-(0 1) 680 LET S $ ="ORANGE"
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 
+G(610) (0 2) 680 PRINT "ORANGE";
+  Origs: 613:ifthen
   Dests: 690:auto
-(0 2) 690 GOTO 710
+G(610) (0 2) 690 GOTO 710
   Origs: 680:auto
   Dests: 710:goto
-(0 1) 700 LET S $ ="BANANA"
-    ERROR: Token 'InvalidToken:$' is not a value or operator
-  Origs: 
+G(610) (0 2) 700 PRINT "BANANA";
+  Origs: 614:ifthen
   Dests: 710:auto
-G(620) (0 1) 710 RETURN
+G(610) (0 1) 710 RETURN
   Origs: 630:goto, 650:goto, 670:goto, 690:goto, 700:auto
   Dests: 
 (0 2) 720 PRINT
   Origs: 580:goto
   Dests: 730:auto
-(0 2) 730 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+(0 2) 730 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
   Origs: 720:auto
   Dests: 740:auto
-(0 1) 740 INPUT Z $
-    ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 740 INPUT Z
   Origs: 730:auto
   Dests: 750:auto
-(1 2) 750 IF Z $ ="Y" THEN 780
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 750 IF Z = 1 THEN 780
   Origs: 740:auto
   Dests: 760:auto, 780:ifthen
 (0 2) 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"
@@ -287,12 +274,5 @@ G(620) (0 1) 710 RETURN
 
 Unreachable code:
 
-640: LET S $ ="APPLE"
-650: GOTO 710
-660: LET S $ ="LEMON"
-670: GOTO 710
-680: LET S $ ="ORANGE"
-690: GOTO 710
-700: LET S $ ="BANANA"
 800: END
 

@@ -1,10 +1,11 @@
 Cross reference
 
 Numeric constants:
+0:       60
 0.063:   240
 0.7507:  240
 0.875:   250
-1:       200, 310
+1:       50, 200, 310, 480
 1.8094:  230
 2:       210, 270, 320
 2.004:   240
@@ -31,16 +32,15 @@ String constants:
 "ENTERED, EVEN IF THE AMOUNT IS ZERO":     100
 "EXAMPLE: - METHANE (CH4) MUST BE ENTERED AS":
      110
-"FOR INSTRUCTIONS TYPE YES, IF NOT TYPE NO":
-     30
+"FOR INSTRUCTIONS TYPE 1, IF NOT TYPE 0":  30
 "INVALID COMMAND":                         70
 "NITROGEN = ":                             420
 "OXYGEN = ":                               410
 "SULPHUR DIOXIDE = ":                      390
 "SULPHUR(S), NITROGEN(N) IN THAT ORDER":   150
 "THE AMOUNTS OF EACH ELEMENT MUST BE":     90
-"TO STOP TYPE NO":                         460
-"TO TRY NEXT COMPOUND TYPE YES":           450
+"TO STOP TYPE 0":                          460
+"TO TRY NEXT COMPOUND TYPE 1":             450
 "TOTAL MOLES OF PRODUCT = ":               360
 "WATER = ":                                400
 
@@ -61,6 +61,10 @@ H=:   160
 H:    210, 240, 270, 300
 H2=:  300
 H2:   400
+I=:   40
+I:    50, 60
+L=:   470
+L:    480
 M=:   270
 M:    280, 290, 300, 310, 320, 360
 N=:   160
@@ -83,6 +87,7 @@ Operators:
 +(_,_):  200, 210, 240, 250, 270, 320
 -(_,_):  210, 310
 /(_,_):  200, 210, 260, 270, 280, 290, 300, 310, 320
+=(_,_):  50, 60, 480
 
 Line numbers:
 30:   80, 520

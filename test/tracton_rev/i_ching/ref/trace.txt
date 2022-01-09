@@ -1,0 +1,187 @@
+30: PRINT "ENTER DATE AS M,D,Y"
+ENTER DATE AS M,D,Y
+40: INPUT M, D, Y
+? 2,19,2017
+ M = 2
+ D = 19
+ Y = 2017
+50: PRINT "ENTER TIME AS H,M(24 HOUR CLOCK)"
+ENTER TIME AS H,M(24 HOUR CLOCK)
+60: INPUT H, M1
+? 19,58
+ H = 19
+ M1 = 58
+70: LET N = M + (D / 30) + (Y / 100) + H + (M1 / 60)
+ M: 2
+ D: 19
+ Y: 2017
+ H: 19
+ M1: 58
+ N = 42.77
+80: FOR I = 1 TO 6
+ I = 1
+ terminated:false
+90: LET K = N * RND(0)
+ N: 42.77
+ K = 17.836
+100: LET K = K - INT(K)
+ K: 17.836
+ K = 0.836
+110: LET C(I) = 1 + INT(2 * K)
+ I: 1
+ K: 0.836
+ C(1) = 2
+120: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+90: LET K = N * RND(0)
+ N: 42.77
+ K = 30.8083
+100: LET K = K - INT(K)
+ K: 30.8083
+ K = 0.8083
+110: LET C(I) = 1 + INT(2 * K)
+ I: 2
+ K: 0.8083
+ C(2) = 2
+120: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+90: LET K = N * RND(0)
+ N: 42.77
+ K = 0.00489182
+100: LET K = K - INT(K)
+ K: 0.00489182
+ K = 0.00489182
+110: LET C(I) = 1 + INT(2 * K)
+ I: 3
+ K: 0.00489182
+ C(3) = 1
+120: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+90: LET K = N * RND(0)
+ N: 42.77
+ K = 12.9308
+100: LET K = K - INT(K)
+ K: 12.9308
+ K = 0.9308
+110: LET C(I) = 1 + INT(2 * K)
+ I: 4
+ K: 0.9308
+ C(4) = 2
+120: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+90: LET K = N * RND(0)
+ N: 42.77
+ K = 6.27675
+100: LET K = K - INT(K)
+ K: 6.27675
+ K = 0.27675
+110: LET C(I) = 1 + INT(2 * K)
+ I: 5
+ K: 0.27675
+ C(5) = 1
+120: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+90: LET K = N * RND(0)
+ N: 42.77
+ K = 3.94932
+100: LET K = K - INT(K)
+ K: 3.94932
+ K = 0.94932
+110: LET C(I) = 1 + INT(2 * K)
+ I: 6
+ K: 0.94932
+ C(6) = 2
+120: NEXT I
+ I: 6
+ terminated:true
+130: FOR I = 1 TO 6
+ I = 1
+ terminated:false
+140: IF C(I) = 1 THEN 170
+ I: 1
+ C(1): 2
+ C(I) = 1: false
+150: PRINT "---"
+---
+160: GOTO 180
+180: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+140: IF C(I) = 1 THEN 170
+ I: 2
+ C(2): 2
+ C(I) = 1: false
+150: PRINT "---"
+---
+160: GOTO 180
+180: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+140: IF C(I) = 1 THEN 170
+ I: 3
+ C(3): 1
+ C(I) = 1: true
+170: PRINT "- -"
+- -
+180: NEXT I
+ I: 3
+ terminated:false
+ I = 4
+140: IF C(I) = 1 THEN 170
+ I: 4
+ C(4): 2
+ C(I) = 1: false
+150: PRINT "---"
+---
+160: GOTO 180
+180: NEXT I
+ I: 4
+ terminated:false
+ I = 5
+140: IF C(I) = 1 THEN 170
+ I: 5
+ C(5): 1
+ C(I) = 1: true
+170: PRINT "- -"
+- -
+180: NEXT I
+ I: 5
+ terminated:false
+ I = 6
+140: IF C(I) = 1 THEN 170
+ I: 6
+ C(6): 2
+ C(I) = 1: false
+150: PRINT "---"
+---
+160: GOTO 180
+180: NEXT I
+ I: 6
+ terminated:true
+190: PRINT
+
+200: PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
+TO CONTINUE TYPE 1, IF NOT TYPE 0
+210: INPUT L
+? 0
+ L = 0
+220: IF L = 1 THEN 250
+ L: 0
+ L = 1: false
+230: PRINT "THE I CHING SAYS GOOD-BYE"
+THE I CHING SAYS GOOD-BYE
+240: STOP
+STOP in line 240
+

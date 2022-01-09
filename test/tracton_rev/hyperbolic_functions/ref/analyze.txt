@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 56
-Number of valid statements: 54
+Number of lines: 62
+Number of valid statements: 61
 Number of comments: 1
-Number of executable statements: 54
+Number of executable statements: 61
 
 Complexity:
 
-Comment density: 0.019
-Comprehension effort: 152
-McCabe complexity: 5
+Comment density: 0.016
+Comprehension effort: 178
+McCabe complexity: 11
 Halstead complexity:
- length: 160
- volume: 619.392
- difficulty: 15.971
- effort: 9892.578
- language: 2.428
- intelligence: 38.781
- time: 9.160
+ length: 192
+ volume: 782.887
+ difficulty: 14.837
+ effort: 11615.663
+ language: 3.556
+ intelligence: 52.766
+ time: 10.755
 
 (0 1) 10 REM THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
   Origs: 
@@ -41,17 +41,34 @@ Halstead complexity:
   Origs: 60:auto
   Dests: 80:auto
 (0 2) 80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
-  Origs: 70:auto, 480:goto
+  Origs: 70:auto, 106:goto, 480:goto
   Dests: 90:auto
 (1 2) 90 INPUT C
   Origs: 80:auto
-  Dests: 110:auto
-(0 1) 100 
-    ERROR: Unknown statement 'ON C GOTO 110,160,210,270,320,370'
-  Origs: 
-  Dests: 
-(0 2) 110 GOSUB 490
+  Dests: 100:auto
+(1 4) 100 IF C = 1 THEN 110
   Origs: 90:auto
+  Dests: 101:auto, 110:ifthen
+(1 4) 101 IF C = 2 THEN 160
+  Origs: 100:auto
+  Dests: 102:auto, 160:ifthen
+(1 4) 102 IF C = 3 THEN 210
+  Origs: 101:auto
+  Dests: 103:auto, 210:ifthen
+(1 4) 103 IF C = 4 THEN 270
+  Origs: 102:auto
+  Dests: 104:auto, 270:ifthen
+(1 4) 104 IF C = 5 THEN 320
+  Origs: 103:auto
+  Dests: 105:auto, 320:ifthen
+(1 4) 105 IF C = 6 THEN 370
+  Origs: 104:auto
+  Dests: 106:auto, 370:ifthen
+(0 3) 106 GOTO 80
+  Origs: 105:auto
+  Dests: 80:goto
+(0 2) 110 GOSUB 490
+  Origs: 100:ifthen
   Dests: 120:auto, 490:gosub
 (0 2) 120 GOSUB 520
   Origs: 110:auto
@@ -66,7 +83,7 @@ Halstead complexity:
   Origs: 140:auto
   Dests: 420:goto
 (0 2) 160 GOSUB 490
-  Origs: 
+  Origs: 101:ifthen
   Dests: 170:auto, 490:gosub
 (0 2) 170 GOSUB 540
   Origs: 160:auto
@@ -81,7 +98,7 @@ Halstead complexity:
   Origs: 190:auto
   Dests: 420:goto
 (0 2) 210 GOSUB 490
-  Origs: 
+  Origs: 102:ifthen
   Dests: 220:auto, 490:gosub
 (0 2) 220 GOSUB 520
   Origs: 210:auto
@@ -99,7 +116,7 @@ Halstead complexity:
   Origs: 250:auto
   Dests: 420:goto
 (0 2) 270 GOSUB 490
-  Origs: 
+  Origs: 103:ifthen
   Dests: 280:auto, 490:gosub
 (0 2) 280 GOSUB 520
   Origs: 270:auto
@@ -114,7 +131,7 @@ Halstead complexity:
   Origs: 300:auto
   Dests: 420:goto
 (0 2) 320 GOSUB 490
-  Origs: 
+  Origs: 104:ifthen
   Dests: 330:auto, 490:gosub
 (0 2) 330 GOSUB 540
   Origs: 320:auto
@@ -129,7 +146,7 @@ Halstead complexity:
   Origs: 350:auto
   Dests: 420:goto
 (0 2) 370 GOSUB 490
-  Origs: 
+  Origs: 105:ifthen
   Dests: 380:auto, 490:gosub
 (0 2) 380 GOSUB 520
   Origs: 370:auto
@@ -191,33 +208,5 @@ G(540) (0 1) 550 RETURN
 
 Unreachable code:
 
-160: GOSUB 490
-170: GOSUB 540
-180: LET Z = B / 2
-190: PRINT "COSH"; X; " ="; Z
-200: GOTO 420
-210: GOSUB 490
-220: GOSUB 520
-230: GOSUB 540
-240: LET Z = Y / B
-250: PRINT "TANH"; X; " ="; Z
-260: GOTO 420
-270: GOSUB 490
-280: GOSUB 520
-290: LET Z = 1 / (Y / 2)
-300: PRINT "CSCH"; X; " ="; Z
-310: GOTO 420
-320: GOSUB 490
-330: GOSUB 540
-340: LET Z = 1 / (B / 2)
-350: PRINT "SECH"; X; " ="; Z
-360: GOTO 420
-370: GOSUB 490
-380: GOSUB 520
-390: GOSUB 540
-400: LET Z = 1 / (Y / B)
-410: PRINT "COTH"; X; " ="; Z
-540: LET B = EXP(X) + EXP(-X)
-550: RETURN
 560: END
 

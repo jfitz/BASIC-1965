@@ -2,42 +2,39 @@ Statistics:
 
 Number of lines: 116
 Number of valid statements: 112
-Number of comments: 3
+Number of comments: 4
 Number of executable statements: 112
 
 Complexity:
 
-Comment density: 0.027
-Comprehension effort: 290
-McCabe complexity: 18
+Comment density: 0.036
+Comprehension effort: 305
+McCabe complexity: 21
 Halstead complexity:
- length: 240
- volume: 1119.225
- difficulty: 11.946
- effort: 13369.877
- language: 7.843
- intelligence: 93.693
- time: 12.380
+ length: 261
+ volume: 1222.036
+ difficulty: 12.809
+ effort: 15652.464
+ language: 7.449
+ intelligence: 95.408
+ time: 14.493
 
 (0 1) 10 REM BLACKJACK
   Origs: 
   Dests: 
-(0 2) 20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE YES"
+(0 2) 20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE 1"
   Origs: :start, 80:goto, 1140:goto
   Dests: 30:auto
-(0 2) 30 PRINT "IF NOT TYPE NO"
+(0 2) 30 PRINT "IF NOT TYPE 0"
   Origs: 20:auto
   Dests: 40:auto
-(0 1) 40 INPUT C $
-   ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 40 INPUT C
   Origs: 30:auto
   Dests: 50:auto
-(1 2) 50 IF C $ ="YES" THEN 90
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 50 IF C = 1 THEN 90
   Origs: 40:auto
   Dests: 60:auto, 90:ifthen
-(1 2) 60 IF C $ ="NO " THEN 340
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 60 IF C = 0 THEN 340
   Origs: 50:auto
   Dests: 70:auto, 340:ifthen
 (0 2) 70 PRINT "INVALID RESPONSE"
@@ -127,8 +124,7 @@ Halstead complexity:
 (0 1) 350 REM 1ST HAND
   Origs: 
   Dests: 
-(0 1) 355 
-    ERROR: Unknown statement 'RANDOMIZE'
+(0 1) 355 REM RANDOMIZE
   Origs: 
   Dests: 
 (0 3) 360 LET D = 0
@@ -272,8 +268,7 @@ Halstead complexity:
 G(820) (0 5) 820 LET C = 1 + INT(11 * RND)
   Origs: 380:gosub, 400:gosub, 420:gosub, 440:gosub, 750:gosub
   Dests: 830:auto
-G(820) (1 2) 830 IF C = =11 THEN 850
-    ERROR: Token 'OperatorToken:=' is not a value or operator
+G(820) (1 4) 830 IF C = 11 THEN 850
   Origs: 820:auto
   Dests: 840:auto, 850:ifthen
 G(820) (0 2) 840 GOTO 880
@@ -312,20 +307,17 @@ G(890) (0 3) 940 LET C = 1
 G(890) (0 1) 950 RETURN
   Origs: 910:goto, 930:goto, 940:auto
   Dests: 
-G(960) (0 2) 960 PRINT "DO YOU WANT A HIT, OR DO YOU STAND"
+G(960) (0 2) 960 PRINT "DO YOU WANT A HIT (1), OR DO YOU STAND (0)"
   Origs: 530:gosub, 1010:goto
   Inconsistent GOSUB origins
   Dests: 970:auto
-G(960) (0 1) 970 INPUT Q $
-    ERROR: Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
+G(960) (1 2) 970 INPUT Q
   Origs: 960:auto
   Dests: 980:auto
-G(960) (1 2) 980 IF Q $ ="HIT" THEN 1020
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+G(960) (1 4) 980 IF Q = 1 THEN 1020
   Origs: 970:auto
   Dests: 990:auto, 1020:ifthen
-G(960) (1 2) 990 IF Q $ ="STAND" THEN 1040
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+G(960) (1 4) 990 IF Q = 0 THEN 1040
   Origs: 980:auto
   Dests: 1000:auto, 1040:ifthen
 G(960) (0 2) 1000 PRINT "INVALID RESPONSE"
@@ -352,15 +344,13 @@ G(960) (0 1) 1050 RETURN
 (0 2) 1070 PRINT "DO YOU WISH TO PLAY AGAIN"
   Origs: 1060:auto
   Dests: 1080:auto
-(0 2) 1080 PRINT "TYPE YES OR NO"
+(0 2) 1080 PRINT "TYPE 1 OR 0"
   Origs: 1070:auto
   Dests: 1090:auto
-(0 1) 1090 INPUT L $
-     ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 1090 INPUT L
   Origs: 1080:auto
   Dests: 1100:auto
-(1 2) 1100 IF L $ ="YES" THEN 1130
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 1100 IF L = 1 THEN 1130
   Origs: 1090:auto
   Dests: 1110:auto, 1130:ifthen
 (0 2) 1110 PRINT "BLACKJACK SAYS GOOD-BYE"

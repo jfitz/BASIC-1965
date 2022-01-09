@@ -82,7 +82,7 @@
  LineNumber:190
 260 GOSUB 490
  LineNumber:490
-270 IF (X - 1) - INT(X - 1) THEN 410
+270 IF (X - 1) = INT(X - 1) THEN 410
  Variable:X -> _
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
@@ -90,7 +90,7 @@
  NumericConstant:1
  BinaryOperatorMinus:-(_,_) -> _
  FunctionInt:INT(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:410
 280 GOSUB 570
  LineNumber:570

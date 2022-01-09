@@ -5,16 +5,20 @@
 30 PRINT "ARE INSTRUCTIONS REQUIRED"
  TextConstant:"ARE INSTRUCTIONS REQUIRED"
  CarriageControl:NL
-40 PRINT "TYPE EITHER YES OR NO"
- TextConstant:"TYPE EITHER YES OR NO"
+40 PRINT "TYPE EITHER 1 OR 0"
+ TextConstant:"TYPE EITHER 1 OR 0"
  CarriageControl:NL
-50 INPUT L$
- ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
-60 IF L$ = "YES" THEN 100
- ERROR: Token 'InvalidToken:$' is not a value or operator
+50 INPUT L
+ Variable:L -> _
+60 IF L = 1 THEN 100
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
-70 IF L$ = "NO" THEN 170
- ERROR: Token 'InvalidToken:$' is not a value or operator
+70 IF L = 0 THEN 170
+ Variable:L -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:170
 80 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
@@ -70,57 +74,53 @@
  Variable:S -> _
  Variable:S1 -> _
  AssignmentOperator:= _ -> _
-260 GOSUB 610
- LineNumber:610
-270 LET S1$ = S$
- ERROR: Token 'InvalidToken:$' is not a value or operator
-280 LET S = S2
- Variable:S -> _
- Variable:S2 -> _
- AssignmentOperator:= _ -> _
-290 GOSUB 610
- LineNumber:610
-300 LET S2$ = S$
- ERROR: Token 'InvalidToken:$' is not a value or operator
-310 LET S = S3
- Variable:S -> _
- Variable:S3 -> _
- AssignmentOperator:= _ -> _
-320 GOSUB 610
- LineNumber:610
-330 LET S3$ = S$
- ERROR: Token 'InvalidToken:$' is not a value or operator
-340 IF S1$ = "CHERRY" THEN 380
- ERROR: Token 'InvalidToken:$' is not a value or operator
+340 IF S1 = 1 THEN 380
+ Variable:S1 -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:380
-350 IF S1$ = "APPLE" THEN 420
- ERROR: Token 'InvalidToken:$' is not a value or operator
+350 IF S1 = 2 THEN 420
+ Variable:S1 -> _
+ NumericConstant:2
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:420
-360 IF S1$ = S2$ THEN 440
- ERROR: Token 'InvalidToken:$' is not a value or operator
+360 IF S1 = S2 THEN 440
+ Variable:S1 -> _
+ Variable:S2 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:440
 370 GOTO 460
  LineNumber:460
-380 IF S1$ = S2$ THEN 400
- ERROR: Token 'InvalidToken:$' is not a value or operator
+380 IF S1 = S2 THEN 400
+ Variable:S1 -> _
+ Variable:S2 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:400
 390 GOTO 460
  LineNumber:460
-400 IF S2$ = S3$ THEN 480
- ERROR: Token 'InvalidToken:$' is not a value or operator
+400 IF S2 = S3 THEN 480
+ Variable:S2 -> _
+ Variable:S3 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:480
 410 GOTO 460
  LineNumber:460
-420 IF S1$ = S2$ THEN 500
- ERROR: Token 'InvalidToken:$' is not a value or operator
+420 IF S1 = S2 THEN 500
+ Variable:S1 -> _
+ Variable:S2 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:500
 430 GOTO 520
  LineNumber:520
-440 IF S2$ = S3$ THEN 540
- ERROR: Token 'InvalidToken:$' is not a value or operator
+440 IF S2 = S3 THEN 540
+ Variable:S2 -> _
+ Variable:S3 -> _
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:540
-450 IF S3$ = "CHERRY" THEN 540
- ERROR: Token 'InvalidToken:$' is not a value or operator
+450 IF S3 = 1 THEN 540
+ Variable:S3 -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:540
 460 LET J = J - 1
  Variable:J -> _
@@ -162,16 +162,32 @@
  AssignmentOperator:= _ -> _
 550 PRINT
  CarriageControl:NL
-560 PRINT S1$;" ";S2$;" ";S3$
- ERROR: Syntax error: "S1$" Token 'InvalidToken:$' is not a value or operator
- ERROR: Syntax error: "S2$" Token 'InvalidToken:$' is not a value or operator
- ERROR: Syntax error: "S3$" Token 'InvalidToken:$' is not a value or operator
- CarriageControl:;
+560 LET S = S1
+ Variable:S -> _
+ Variable:S1 -> _
+ AssignmentOperator:= _ -> _
+561 GOSUB 610
+ LineNumber:610
+562 PRINT " ";
  TextConstant:" "
  CarriageControl:;
- CarriageControl:;
+563 LET S = S2
+ Variable:S -> _
+ Variable:S2 -> _
+ AssignmentOperator:= _ -> _
+564 GOSUB 610
+ LineNumber:610
+565 PRINT " ";
  TextConstant:" "
  CarriageControl:;
+566 LET S = S3
+ Variable:S -> _
+ Variable:S3 -> _
+ AssignmentOperator:= _ -> _
+567 GOSUB 610
+ LineNumber:610
+568 PRINT
+ CarriageControl:NL
 570 PRINT "YOUR EARNINGS ARE NOW $";J
  TextConstant:"YOUR EARNINGS ARE NOW $"
  CarriageControl:;
@@ -190,38 +206,67 @@
  AssignmentOperator:= _ -> _
 600 RETURN
  
-610 ON S GOTO 620, 640, 660, 680, 700
- ERROR: Unknown statement 'ON S GOTO 620, 640, 660, 680, 700'
- Unimplemented
-620 LET S$ = "CHERRY"
- ERROR: Token 'InvalidToken:$' is not a value or operator
+610 IF S = 1 THEN 620
+ Variable:S -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:620
+611 IF S = 2 THEN 640
+ Variable:S -> _
+ NumericConstant:2
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:640
+612 IF S = 3 THEN 660
+ Variable:S -> _
+ NumericConstant:3
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:660
+613 IF S = 4 THEN 680
+ Variable:S -> _
+ NumericConstant:4
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:680
+614 IF S = 5 THEN 700
+ Variable:S -> _
+ NumericConstant:5
+ BinaryOperatorEqual:=(_,_) -> ?
+ LineNumber:700
+620 PRINT "CHERRY";
+ TextConstant:"CHERRY"
+ CarriageControl:;
 630 GOTO 710
  LineNumber:710
-640 LET S$ = "APPLE"
- ERROR: Token 'InvalidToken:$' is not a value or operator
+640 PRINT "APPLE";
+ TextConstant:"APPLE"
+ CarriageControl:;
 650 GOTO 710
  LineNumber:710
-660 LET S$ = "LEMON"
- ERROR: Token 'InvalidToken:$' is not a value or operator
+660 PRINT "LEMON";
+ TextConstant:"LEMON"
+ CarriageControl:;
 670 GOTO 710
  LineNumber:710
-680 LET S$ = "ORANGE"
- ERROR: Token 'InvalidToken:$' is not a value or operator
+680 PRINT "ORANGE";
+ TextConstant:"ORANGE"
+ CarriageControl:;
 690 GOTO 710
  LineNumber:710
-700 LET S$ = "BANANA"
- ERROR: Token 'InvalidToken:$' is not a value or operator
+700 PRINT "BANANA";
+ TextConstant:"BANANA"
+ CarriageControl:;
 710 RETURN
  
 720 PRINT
  CarriageControl:NL
-730 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
- TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
+730 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
+ TextConstant:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
-740 INPUT Z$
- ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
-750 IF Z$ = "Y" THEN 780
- ERROR: Token 'InvalidToken:$' is not a value or operator
+740 INPUT Z
+ Variable:Z -> _
+750 IF Z = 1 THEN 780
+ Variable:Z -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:780
 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"
  TextConstant:"ONE-ARM BANDIT SAYS GOOD-BYE"

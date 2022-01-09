@@ -1,18 +1,21 @@
 10 REM THIS PROGRAM SIMULATES THE GAME OF CRAPS
  Remark:THIS PROGRAM SIMULATES THE GAME OF CRAPS
-20 RANDOMIZE
- ERROR: Unknown statement 'RANDOMIZE'
- Unimplemented
-30 PRINT " FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
- TextConstant:" FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
+20 REM RANDOMIZE
+ Remark:RANDOMIZE
+30 PRINT " FOR RULES, TYPE 1, OTHERWISE TYPE 0"
+ TextConstant:" FOR RULES, TYPE 1, OTHERWISE TYPE 0"
  CarriageControl:NL
-40 INPUT R$
- ERROR: Syntax error: "R$" Token 'InvalidToken:$' is not a value or operator
-50 IF R$ = "RULES" THEN 90
- ERROR: Token 'InvalidToken:$' is not a value or operator
+40 INPUT R
+ Variable:R -> _
+50 IF R = 1 THEN 90
+ Variable:R -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:90
-60 IF R$ = "GO" THEN 140
- ERROR: Token 'InvalidToken:$' is not a value or operator
+60 IF R = 0 THEN 140
+ Variable:R -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:140
 70 PRINT "INVALID COMMAND"
  TextConstant:"INVALID COMMAND"
@@ -133,13 +136,15 @@
  CarriageControl:NL
 350 PRINT
  CarriageControl:NL
-360 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
- TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
+360 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
+ TextConstant:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
-370 INPUT L$
- ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
-380 IF L$ = "Y" THEN 400
- ERROR: Token 'InvalidToken:$' is not a value or operator
+370 INPUT L
+ Variable:L -> _
+380 IF L = 1 THEN 400
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:400
 390 STOP
  

@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 292
-Number of valid statements: 282
+Number of lines: 297
+Number of valid statements: 287
 Number of comments: 7
-Number of executable statements: 282
+Number of executable statements: 287
 
 Complexity:
 
-Comment density: 0.025
-Comprehension effort: 731
-McCabe complexity: 37
+Comment density: 0.024
+Comprehension effort: 798
+McCabe complexity: 47
 Halstead complexity:
- length: 621
- volume: 3455.567
- difficulty: 13.934
- effort: 48151.346
- language: 17.797
- intelligence: 247.988
- time: 44.585
+ length: 702
+ volume: 3945.521
+ difficulty: 16.116
+ effort: 63587.124
+ language: 15.191
+ intelligence: 244.816
+ time: 58.877
 
 (0 1) 10 REM THIS COMPUTER SIMULATION IS AN ADVANCED VERSION OF
   Origs: 
@@ -38,19 +38,16 @@ Halstead complexity:
 (0 2) 60 PRINT "ARE INSTRUCTIONS FOR SPACE WARS REQUIRED? TYPE"
   Origs: :start, 120:goto, 2850:goto
   Dests: 70:auto
-(0 2) 70 PRINT "EITHER YES OR NO"
+(0 2) 70 PRINT "EITHER 1 OR 0"
   Origs: 60:auto
   Dests: 80:auto
-(0 1) 80 INPUT A $
-   ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 80 INPUT A
   Origs: 70:auto
   Dests: 90:auto
-(1 2) 90 IF A $ ="YES" THEN 130
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 90 IF A = 1 THEN 130
   Origs: 80:auto
   Dests: 100:auto, 130:ifthen
-(1 2) 100 IF A $ ="NO" THEN 540
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 100 IF A = 0 THEN 540
   Origs: 90:auto
   Dests: 110:auto, 540:ifthen
 (0 2) 110 PRINT "YOU HAVE ISSUED AN INVALID RESPONSE"
@@ -202,30 +199,36 @@ Halstead complexity:
   Dests: 570:auto
 (0 3) 570 LET D = 1E05
   Origs: 560:auto
+  Dests: 578:auto
+(0 3) 578 LET X0 = 0
+  Origs: 570:auto
   Dests: 580:auto
-G(580) (0 2) 580 GOSUB 630
-  Origs: 570:auto, 625:gosub
-  Inconsistent GOSUB origins
+(0 2) 580 GOSUB 630
+  Origs: 578:auto, 625:goto
   Dests: 590:auto, 630:gosub
-G(580) (0 2) 590 GOSUB 730
+(0 2) 590 GOSUB 730
   Origs: 580:auto
   Dests: 600:auto, 730:gosub
-G(580) (0 2) 600 GOSUB 840
+(0 2) 600 GOSUB 840
   Origs: 590:auto
   Dests: 610:auto, 840:gosub
-G(580) (0 2) 610 GOSUB 1040
+(0 2) 610 GOSUB 1040
   Origs: 600:auto
-  Dests: 620:auto, 1040:gosub
-G(580) (0 2) 620 GOSUB 1500
+  Dests: 612:auto, 1040:gosub
+(1 4) 612 IF X0 <> 0 THEN 2690
   Origs: 610:auto
-  Dests: 625:auto, 1500:gosub
-G(580) (0 3) 625 GOSUB 580
+  Dests: 620:auto, 2690:ifthen
+(0 2) 620 GOSUB 1500
+  Origs: 612:auto
+  Dests: 622:auto, 1500:gosub
+(1 4) 622 IF X0 <> 0 THEN 2690
   Origs: 620:auto
-  Dests: 580:gosub, 630:auto
+  Dests: 625:auto, 2690:ifthen
+(0 3) 625 GOTO 580
+  Origs: 622:auto
+  Dests: 580:goto
 G(630) (1 4) 630 IF D > 1E04 THEN 660
-    WARNING: Inconsistent GOSUB target (630, 580)
-  Origs: 580:gosub, 625:auto
-  Inconsistent GOSUB origins
+  Origs: 580:gosub
   Dests: 640:auto, 660:ifthen
 G(630) (0 3) 640 LET L = 1
   Origs: 630:auto
@@ -483,11 +486,11 @@ G(1040) (0 2) 1460 PRINT "YOU WILL BE A HERO NOWHERE AND REMEMBERED BY NONE"
 G(1040) (0 2) 1470 PRINT "*****YOU HAVE MISUSED THE FORCE*****"
   Origs: 1460:auto
   Dests: 1480:auto
-G(1040) (0 2) 1480 GOTO 2690
+G(1040) (0 3) 1480 LET X0 = 2
   Origs: 1470:auto
-  Dests: 2690:goto
+  Dests: 1490:auto
 G(1040) (0 1) 1490 RETURN
-  Origs: 1430:goto
+  Origs: 1430:goto, 1480:auto
   Dests: 
 G(1500) (0 2) 1500 PRINT
   Origs: 620:gosub
@@ -544,25 +547,26 @@ G(1500) (0 2) 1660 PRINT "REPUBLIC AND PRINCESS LEAH ARGONA WILL LOVE YOU"
 G(1500) (0 2) 1670 PRINT "FOREVER."
   Origs: 1660:auto
   Dests: 1680:auto
-G(1500) (0 2) 1680 GOTO 2740
+G(1500) (0 3) 1680 LET X0 = 3
   Origs: 1670:auto
-  Dests: 2740:goto
+  Dests: 1682:auto
+G(1500) (0 1) 1682 RETURN
+  Origs: 1680:auto
+  Dests: 
 (0 2) 1690 PRINT "THE CANNON IS READY, DO YOU WISH COMPUTER ASSISTANCE"
   Origs: 
   Dests: 1700:auto
-(0 2) 1700 PRINT "ENTER EITHER YES OR NO"
+(0 13) 1700 PRINT " E N T E R E I T H E R1 O R0
+     ERROR: Syntax error: ""E" Token 'InvalidToken:"' is not a value or operator
   Origs: 1690:auto, 1750:goto
   Dests: 1710:auto
-(0 1) 1710 INPUT C $
-     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 1710 INPUT C
   Origs: 1700:auto
   Dests: 1720:auto
-(1 2) 1720 IF C $ ="YES" THEN 1820
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 1720 IF C = 1 THEN 1820
   Origs: 1710:auto
   Dests: 1730:auto, 1820:ifthen
-(1 2) 1730 IF C $ ="NO" THEN 1880
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 1730 IF C = 0 THEN 1880
   Origs: 1720:auto
   Dests: 1740:auto, 1880:ifthen
 (0 2) 1740 PRINT "INVALID RESPONSE"
@@ -571,19 +575,16 @@ G(1500) (0 2) 1680 GOTO 2740
 (0 3) 1750 GOTO 1700
   Origs: 1740:auto
   Dests: 1700:goto
-(0 2) 1760 PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
+(0 2) 1760 PRINT "WHICH FIGHTER THE SKY (1) OR RADER (0)"
   Origs: 1810:goto, 1830:goto
   Dests: 1770:auto
-(0 1) 1770 INPUT C $
-     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 1770 INPUT C
   Origs: 1760:auto
   Dests: 1780:auto
-(1 2) 1780 IF C $ ="S" THEN 1840
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 1780 IF C = 1 THEN 1840
   Origs: 1770:auto
   Dests: 1790:auto, 1840:ifthen
-(1 2) 1790 IF C $ ="R" THEN 1860
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 1790 IF C = 0 THEN 1860
   Origs: 1780:auto
   Dests: 1800:auto, 1860:ifthen
 (0 2) 1800 PRINT "WHICH???"
@@ -610,26 +611,23 @@ G(1500) (0 2) 1680 GOTO 2740
 (0 2) 1870 GOTO 1960
   Origs: 1860:auto
   Dests: 1960:goto
-(0 2) 1880 PRINT "DO YOU WISH TO FIRE ON GARTH RADER (R) OR"
+(0 2) 1880 PRINT "DO YOU WISH TO FIRE ON GARTH RADER (1) OR"
   Origs: 1730:ifthen, 1950:goto
   Dests: 1890:auto
-(0 2) 1890 PRINT "ON THE SKY FIGHTER (S)"
+(0 2) 1890 PRINT "ON THE SKY FIGHTER (0)"
   Origs: 1880:auto
   Dests: 1900:auto
-(0 1) 1900 INPUT C $
-     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 1900 INPUT C
   Origs: 1890:auto
   Dests: 1910:auto
 (0 1) 1910 LET Q $ =5000 * (1 + INT(100 * RND) / 100)
      ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1900:auto
   Dests: 1920:auto
-(1 2) 1920 IF C $ ="S" THEN 1980
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 1920 IF C = 0 THEN 1980
   Origs: 1910:auto
   Dests: 1930:auto, 1980:ifthen
-(1 2) 1930 IF C $ ="R" THEN 2000
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 1930 IF C = 1 THEN 2000
   Origs: 1920:auto
   Dests: 1940:auto, 2000:ifthen
 (0 2) 1940 PRINT "WHICH ENEMY???"
@@ -665,19 +663,16 @@ G(1500) (0 2) 1680 GOTO 2740
 (0 2) 2030 PRINT "YOU HAVE DECIDED ON USING THE LASER"
   Origs: 
   Dests: 2040:auto
-(0 2) 2040 PRINT "DO YOU WISH COMPUTER ASSISTANCE, YES OR NO"
+(0 2) 2040 PRINT "DO YOU WISH COMPUTER ASSISTANCE, 1 OR 0"
   Origs: 2030:auto, 2090:goto
   Dests: 2050:auto
-(0 1) 2050 INPUT C $
-     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 2050 INPUT C
   Origs: 2040:auto
   Dests: 2060:auto
-(1 2) 2060 IF C $ ="YES" THEN 2100
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2060 IF C = 1 THEN 2100
   Origs: 2050:auto
   Dests: 2070:auto, 2100:ifthen
-(1 2) 2070 IF C $ ="NO" THEN 2120
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2070 IF C = 0 THEN 2120
   Origs: 2060:auto
   Dests: 2080:auto, 2120:ifthen
 (0 2) 2080 PRINT "THE COMPUTER RESPONDS ONLY TO A YES OR NO"
@@ -695,14 +690,13 @@ G(1500) (0 2) 1680 GOTO 2740
 (0 3) 2120 LET J = 0
   Origs: 2070:ifthen
   Dests: 2130:auto
-(0 2) 2130 PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
+(0 2) 2130 PRINT "WHICH FIGHTER THE SKY (0) OR RADER (1)"
   Origs: 2110:goto, 2120:auto, 2230:goto
   Dests: 2140:auto
 (0 2) 2140 PRINT "DO YOU WISH TO FIRE ON"
   Origs: 2130:auto
   Dests: 2150:auto
-(0 1) 2150 INPUT C $
-     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 2150 INPUT C
   Origs: 2140:auto
   Dests: 2160:auto
 (1 4) 2160 IF J = 1 THEN 2190
@@ -717,12 +711,10 @@ G(1500) (0 2) 1680 GOTO 2740
 (0 3) 2190 LET Q = 1000
   Origs: 2160:ifthen
   Dests: 2200:auto
-(1 2) 2200 IF C $ ="S" THEN 2240
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2200 IF C = 0 THEN 2240
   Origs: 2180:goto, 2190:auto
   Dests: 2210:auto, 2240:ifthen
-(1 2) 2210 IF C $ ="R" THEN 2260
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2210 IF C = 1 THEN 2260
   Origs: 2200:auto
   Dests: 2220:auto, 2260:ifthen
 (0 2) 2220 PRINT "WHICH TARGET?????"
@@ -773,25 +765,22 @@ G(1500) (0 2) 1680 GOTO 2740
 (1 2) 2370 INPUT F
   Origs: 2360:auto
   Dests: 2380:auto
-(0 2) 2380 PRINT "IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
+(0 2) 2380 PRINT "IN WHICH DIRECTION, AWAY (0) OR TOWARDS (1)"
   Origs: 2370:auto, 2450:goto
   Dests: 2390:auto
 (0 2) 2390 PRINT "THE DEATH STAR"
   Origs: 2380:auto
   Dests: 2400:auto
-(0 1) 2400 INPUT C $
-     ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 2400 INPUT C
   Origs: 2390:auto
   Dests: 2410:auto
 (1 4) 2410 IF F > 2.25E04 THEN 2470
   Origs: 2400:auto
   Dests: 2420:auto, 2470:ifthen
-(1 2) 2420 IF C $ ="A" THEN 2500
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2420 IF C = 0 THEN 2500
   Origs: 2410:auto
   Dests: 2430:auto, 2500:ifthen
-(1 2) 2430 IF C $ ="T" THEN 2620
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2430 IF C = 1 THEN 2620
   Origs: 2420:auto
   Dests: 2440:auto, 2620:ifthen
 (0 2) 2440 PRINT "DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
@@ -833,7 +822,7 @@ G(1500) (0 2) 1680 GOTO 2740
 (0 2) 2560 GOTO 2640
   Origs: 2550:auto
   Dests: 2640:goto
-(0 2) 2570 PRINT "YOU HAVE SMASHED INT THE DARK STAR********"
+(0 2) 2570 PRINT "YOU HAVE SMASHED INTO THE DARK STAR ********"
   Origs: 2630:ifthen
   Dests: 2580:auto
 (0 2) 2580 PRINT "WHERE DID YOU LEARN TO FLY, GARTH RADER"
@@ -845,9 +834,12 @@ G(1500) (0 2) 1680 GOTO 2740
 (0 2) 2600 PRINT "* * * * * * YOU HAVE LOST * * * * * *"
   Origs: 2590:auto
   Dests: 2610:auto
-(0 2) 2610 GOTO 2690
+(0 3) 2610 LET X0 = 1
   Origs: 2600:auto
-  Dests: 2690:goto
+  Dests: 2612:auto
+(0 1) 2612 RETURN
+  Origs: 2610:auto
+  Dests: 
 (0 4) 2620 LET D = D - F
   Origs: 2430:ifthen
   Dests: 2630:auto
@@ -869,63 +861,58 @@ G(1500) (0 2) 1680 GOTO 2740
 G(1500) (0 1) 2680 RETURN
   Origs: 1580:goto, 1630:goto, 2650:goto, 2670:auto
   Dests: 
-G(1040) (0 2) 2690 PRINT "YOU ARE AN INCOMPETENT GOOD KNIGHT"
-  Origs: 1480:goto, 2610:goto
+(0 2) 2690 PRINT "YOU ARE AN INCOMPETENT GOOD KNIGHT"
+  Origs: 612:ifthen, 622:ifthen
   Dests: 2700:auto
-G(1040) (0 2) 2700 PRINT "YOU HAVE DISGRACED THE MEMORY OF"
+(0 2) 2700 PRINT "YOU HAVE DISGRACED THE MEMORY OF"
   Origs: 2690:auto
   Dests: 2710:auto
-G(1040) (0 2) 2710 PRINT "OBI-SAN COYOTE! WHOSE SIDE ARE YOU ON?!?"
+(0 2) 2710 PRINT "OBI-SAN COYOTE! WHOSE SIDE ARE YOU ON?!?"
   Origs: 2700:auto
   Dests: 2720:auto
-G(1040) (0 2) 2720 PRINT "WHY DON'T YOU PROVE YOUR WORTH AND TRY AGAIN"
+(0 2) 2720 PRINT "WHY DON'T YOU PROVE YOUR WORTH AND TRY AGAIN"
   Origs: 2710:auto
   Dests: 2730:auto
-G(1040) (0 2) 2730 GOTO 2760
+(0 2) 2730 GOTO 2760
   Origs: 2720:auto
   Dests: 2760:goto
-G(1500) (0 2) 2740 PRINT "OBI-SAN COYOTE WOULD BE PROUD OF YOU"
-  Origs: 1680:goto
+(0 2) 2740 PRINT "OBI-SAN COYOTE WOULD BE PROUD OF YOU"
+  Origs: 
   Dests: 2750:auto
-G(1500) (0 2) 2750 PRINT "YOU ARE INDEED A **GOOD KNIGHT**"
+(0 2) 2750 PRINT "YOU ARE INDEED A **GOOD KNIGHT**"
   Origs: 2740:auto
   Dests: 2760:auto
-G(1040) (0 2) 2760 PRINT
-     WARNING: Inconsistent GOSUB target (1040, 1500)
+(0 2) 2760 PRINT
   Origs: 2730:goto, 2750:auto
   Dests: 2780:auto
-G(1040) (0 2) 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
+(0 2) 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE 1,"
   Origs: 2760:auto, 2840:goto
   Dests: 2790:auto
-G(1040) (0 2) 2790 PRINT "NOT TYPE NO"
+(0 2) 2790 PRINT "IF NOT TYPE 0"
   Origs: 2780:auto
   Dests: 2800:auto
-G(1040) (0 1) 2800 INPUT L $
-     ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 2800 INPUT L
   Origs: 2790:auto
   Dests: 2810:auto
-G(1040) (1 2) 2810 IF L $ ="GO" THEN 2840
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2810 IF L = 1 THEN 2840
   Origs: 2800:auto
   Dests: 2820:auto, 2840:ifthen
-G(1040) (1 2) 2820 IF L $ ="NO" THEN 2860
-     ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 2820 IF L = 0 THEN 2860
   Origs: 2810:auto
   Dests: 2830:auto, 2860:ifthen
-G(1040) (0 2) 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
+(0 2) 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
   Origs: 2820:auto
   Dests: 2840:auto
-G(1040) (0 3) 2840 GOTO 2780
+(0 3) 2840 GOTO 2780
   Origs: 2810:ifthen, 2830:auto
   Dests: 2780:goto
 (0 3) 2850 GOTO 50
   Origs: 
   Dests: 60:goto
-G(1040) (0 2) 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
+(0 2) 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
   Origs: 2820:ifthen
   Dests: 2870:auto
-G(1040) (0 1) 2870 END
-     WARNING: Terminating statement in GOSUB
+(0 1) 2870 END
   Origs: 2860:auto
   Dests: :stop
 
@@ -941,16 +928,16 @@ Unreachable code:
 1340: PRINT "YOUR COURSE, HIS WEAPONS ARE READY"
 1350: GOTO 1130
 1690: PRINT "THE CANNON IS READY, DO YOU WISH COMPUTER ASSISTANCE"
-1700: PRINT "ENTER EITHER YES OR NO"
-1710: INPUT C $
-1720: IF C $ ="YES" THEN 1820
-1730: IF C $ ="NO" THEN 1880
+1700: PRINT " E N T E R E I T H E R1 O R0
+1710: INPUT C
+1720: IF C = 1 THEN 1820
+1730: IF C = 0 THEN 1880
 1740: PRINT "INVALID RESPONSE"
 1750: GOTO 1700
-1760: PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
-1770: INPUT C $
-1780: IF C $ ="S" THEN 1840
-1790: IF C $ ="R" THEN 1860
+1760: PRINT "WHICH FIGHTER THE SKY (1) OR RADER (0)"
+1770: INPUT C
+1780: IF C = 1 THEN 1840
+1790: IF C = 0 THEN 1860
 1800: PRINT "WHICH???"
 1810: GOTO 1760
 1820: LET Q = 5500
@@ -959,12 +946,12 @@ Unreachable code:
 1850: GOTO 1960
 1860: LET T2 = T2 - Q
 1870: GOTO 1960
-1880: PRINT "DO YOU WISH TO FIRE ON GARTH RADER (R) OR"
-1890: PRINT "ON THE SKY FIGHTER (S)"
-1900: INPUT C $
+1880: PRINT "DO YOU WISH TO FIRE ON GARTH RADER (1) OR"
+1890: PRINT "ON THE SKY FIGHTER (0)"
+1900: INPUT C
 1910: LET Q $ =5000 * (1 + INT(100 * RND) / 100)
-1920: IF C $ ="S" THEN 1980
-1930: IF C $ ="R" THEN 2000
+1920: IF C = 0 THEN 1980
+1930: IF C = 1 THEN 2000
 1940: PRINT "WHICH ENEMY???"
 1950: GOTO 1880
 1960: LET X1 = X1 - 5000
@@ -976,24 +963,24 @@ Unreachable code:
 2010: LET X1 = X1 - 5000
 2020: GOTO 2660
 2030: PRINT "YOU HAVE DECIDED ON USING THE LASER"
-2040: PRINT "DO YOU WISH COMPUTER ASSISTANCE, YES OR NO"
-2050: INPUT C $
-2060: IF C $ ="YES" THEN 2100
-2070: IF C $ ="NO" THEN 2120
+2040: PRINT "DO YOU WISH COMPUTER ASSISTANCE, 1 OR 0"
+2050: INPUT C
+2060: IF C = 1 THEN 2100
+2070: IF C = 0 THEN 2120
 2080: PRINT "THE COMPUTER RESPONDS ONLY TO A YES OR NO"
 2090: GOTO 2040
 2100: LET J = 1
 2110: GOTO 2130
 2120: LET J = 0
-2130: PRINT "WHICH FIGHTER THE SKY (S) OR RADER (R)"
+2130: PRINT "WHICH FIGHTER THE SKY (0) OR RADER (1)"
 2140: PRINT "DO YOU WISH TO FIRE ON"
-2150: INPUT C $
+2150: INPUT C
 2160: IF J = 1 THEN 2190
 2170: LET Q = 1000 * (1 + INT(RND) / 100)
 2180: GOTO 2200
 2190: LET Q = 1000
-2200: IF C $ ="S" THEN 2240
-2210: IF C $ ="R" THEN 2260
+2200: IF C = 0 THEN 2240
+2210: IF C = 1 THEN 2260
 2220: PRINT "WHICH TARGET?????"
 2230: GOTO 2130
 2240: LET T1 = T1 - Q
@@ -1010,12 +997,12 @@ Unreachable code:
 2350: PRINT "THE REACTOR, INPUT NO MORE THAN 22,500 UNITS"
 2360: PRINT "AT ANY ONE TIME"
 2370: INPUT F
-2380: PRINT "IN WHICH DIRECTION, AWAY (A) OR TOWARDS (T)"
+2380: PRINT "IN WHICH DIRECTION, AWAY (0) OR TOWARDS (1)"
 2390: PRINT "THE DEATH STAR"
-2400: INPUT C $
+2400: INPUT C
 2410: IF F > 2.25E04 THEN 2470
-2420: IF C $ ="A" THEN 2500
-2430: IF C $ ="T" THEN 2620
+2420: IF C = 0 THEN 2500
+2430: IF C = 1 THEN 2620
 2440: PRINT "DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
 2450: GOTO 2380
 2470: PRINT "YOU HAVE WASTED "; F; "UNITS OF ENERGY"
@@ -1027,16 +1014,19 @@ Unreachable code:
 2540: PRINT "WHERE ARE YOU GOING? THE BATTLE IS IN THE"
 2550: PRINT "OPPOSITE DIRECTION"
 2560: GOTO 2640
-2570: PRINT "YOU HAVE SMASHED INT THE DARK STAR********"
+2570: PRINT "YOU HAVE SMASHED INTO THE DARK STAR ********"
 2580: PRINT "WHERE DID YOU LEARN TO FLY, GARTH RADER"
 2590: PRINT "IS LAUGHING AT YOU;; OH!! BY THE WAY---"
 2600: PRINT "* * * * * * YOU HAVE LOST * * * * * *"
-2610: GOTO 2690
+2610: LET X0 = 1
+2612: RETURN
 2620: LET D = D - F
 2630: IF D <= 0 THEN 2570
 2640: LET X1 = X1 - F
 2650: GOTO 2680
 2660: PRINT "THE SKY FIGHTER'S ENERGY IS NOW"; T1; "UNITS"
 2670: PRINT "THE DARK LORD'S ENERGY IS"; T2; "UNITS"
+2740: PRINT "OBI-SAN COYOTE WOULD BE PROUD OF YOU"
+2750: PRINT "YOU ARE INDEED A **GOOD KNIGHT**"
 2850: GOTO 50
 

@@ -1,8 +1,7 @@
 10 REM THIS PROGRAM SIMULATES THE I CHING
  Remark:THIS PROGRAM SIMULATES THE I CHING
-20 RANDOMIZE
- ERROR: Unknown statement 'RANDOMIZE'
- Unimplemented
+20 REM RANDOMIZE
+ Remark:RANDOMIZE
 30 PRINT "ENTER DATE AS M,D,Y"
  TextConstant:"ENTER DATE AS M,D,Y"
  CarriageControl:NL
@@ -86,13 +85,15 @@
  Variable:I -> _
 190 PRINT
  CarriageControl:NL
-200 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
- TextConstant:"TO CONTINUE TYPE Y, IF NOT TYPE N"
+200 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
+ TextConstant:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
-210 INPUT L$
- ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
-220 IF L$ = "Y" THEN 250
- ERROR: Token 'InvalidToken:$' is not a value or operator
+210 INPUT L
+ Variable:L -> _
+220 IF L = 1 THEN 250
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:250
 230 PRINT "THE I CHING SAYS GOOD-BYE"
  TextConstant:"THE I CHING SAYS GOOD-BYE"

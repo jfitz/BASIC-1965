@@ -1,18 +1,22 @@
 10 REM BLACKJACK
  Remark:BLACKJACK
-20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE YES"
- TextConstant:"IF INSTRUCTIONS ARE REQUIRED TYPE YES"
+20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE 1"
+ TextConstant:"IF INSTRUCTIONS ARE REQUIRED TYPE 1"
  CarriageControl:NL
-30 PRINT "IF NOT TYPE NO"
- TextConstant:"IF NOT TYPE NO"
+30 PRINT "IF NOT TYPE 0"
+ TextConstant:"IF NOT TYPE 0"
  CarriageControl:NL
-40 INPUT C$
- ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
-50 IF C$ = "YES" THEN 90
- ERROR: Token 'InvalidToken:$' is not a value or operator
+40 INPUT C
+ Variable:C -> _
+50 IF C = 1 THEN 90
+ Variable:C -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:90
-60 IF C$ = "NO " THEN 340
- ERROR: Token 'InvalidToken:$' is not a value or operator
+60 IF C = 0 THEN 340
+ Variable:C -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:340
 70 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
@@ -96,9 +100,8 @@
  CarriageControl:NL
 350 REM 1ST HAND
  Remark:1ST HAND
-355 RANDOMIZE
- ERROR: Unknown statement 'RANDOMIZE'
- Unimplemented
+355 REM RANDOMIZE
+ Remark:RANDOMIZE
 360 LET D = 0
  Variable:D -> _
  NumericConstant:0
@@ -291,8 +294,10 @@
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
-830 IF C == 11 THEN 850
- ERROR: Token 'OperatorToken:=' is not a value or operator
+830 IF C = 11 THEN 850
+ Variable:C -> _
+ NumericConstant:11
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:850
 840 GOTO 880
  LineNumber:880
@@ -342,16 +347,20 @@
  AssignmentOperator:= =_ -> _
 950 RETURN
  
-960 PRINT "DO YOU WANT A HIT, OR DO YOU STAND"
- TextConstant:"DO YOU WANT A HIT, OR DO YOU STAND"
+960 PRINT "DO YOU WANT A HIT (1), OR DO YOU STAND (0)"
+ TextConstant:"DO YOU WANT A HIT (1), OR DO YOU STAND (0)"
  CarriageControl:NL
-970 INPUT Q$
- ERROR: Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
-980 IF Q$ = "HIT" THEN 1020
- ERROR: Token 'InvalidToken:$' is not a value or operator
+970 INPUT Q
+ Variable:Q -> _
+980 IF Q = 1 THEN 1020
+ Variable:Q -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:1020
-990 IF Q$ = "STAND" THEN 1040
- ERROR: Token 'InvalidToken:$' is not a value or operator
+990 IF Q = 0 THEN 1040
+ Variable:Q -> _
+ NumericConstant:0
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:1040
 1000 PRINT "INVALID RESPONSE"
  TextConstant:"INVALID RESPONSE"
@@ -375,13 +384,15 @@
 1070 PRINT "DO YOU WISH TO PLAY AGAIN"
  TextConstant:"DO YOU WISH TO PLAY AGAIN"
  CarriageControl:NL
-1080 PRINT "TYPE YES OR NO"
- TextConstant:"TYPE YES OR NO"
+1080 PRINT "TYPE 1 OR 0"
+ TextConstant:"TYPE 1 OR 0"
  CarriageControl:NL
-1090 INPUT L$
- ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
-1100 IF L$ = "YES" THEN 1130
- ERROR: Token 'InvalidToken:$' is not a value or operator
+1090 INPUT L
+ Variable:L -> _
+1100 IF L = 1 THEN 1130
+ Variable:L -> _
+ NumericConstant:1
+ BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:1130
 1110 PRINT "BLACKJACK SAYS GOOD-BYE"
  TextConstant:"BLACKJACK SAYS GOOD-BYE"

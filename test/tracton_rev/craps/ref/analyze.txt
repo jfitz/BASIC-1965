@@ -2,43 +2,39 @@ Statistics:
 
 Number of lines: 49
 Number of valid statements: 47
-Number of comments: 1
+Number of comments: 2
 Number of executable statements: 47
 
 Complexity:
 
-Comment density: 0.021
-Comprehension effort: 133
-McCabe complexity: 12
+Comment density: 0.043
+Comprehension effort: 141
+McCabe complexity: 14
 Halstead complexity:
- length: 121
- volume: 491.314
- difficulty: 9.783
- effort: 4806.329
- language: 5.134
- intelligence: 50.223
- time: 4.450
+ length: 132
+ volume: 544.782
+ difficulty: 9.960
+ effort: 5426.026
+ language: 5.492
+ intelligence: 54.697
+ time: 5.024
 
 (0 1) 10 REM THIS PROGRAM SIMULATES THE GAME OF CRAPS
   Origs: 
   Dests: 
-(0 1) 20 
-   ERROR: Unknown statement 'RANDOMIZE'
+(0 1) 20 REM RANDOMIZE
   Origs: 
   Dests: 
-(0 2) 30 PRINT " FOR RULES, TYPE RULES, OTHERWISE TYPE GO"
+(0 2) 30 PRINT " FOR RULES, TYPE 1, OTHERWISE TYPE 0"
   Origs: :start, 80:goto, 410:goto
   Dests: 40:auto
-(0 1) 40 INPUT R $
-   ERROR: Syntax error: "R$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 40 INPUT R
   Origs: 30:auto
   Dests: 50:auto
-(1 2) 50 IF R $ ="RULES" THEN 90
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 50 IF R = 1 THEN 90
   Origs: 40:auto
   Dests: 60:auto, 90:ifthen
-(1 2) 60 IF R $ ="GO" THEN 140
-   ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 60 IF R = 0 THEN 140
   Origs: 50:auto
   Dests: 70:auto, 140:ifthen
 (0 2) 70 PRINT "INVALID COMMAND"
@@ -131,15 +127,13 @@ Halstead complexity:
 (0 2) 350 PRINT
   Origs: 330:goto, 340:auto, 430:goto, 450:goto
   Dests: 360:auto
-(0 2) 360 PRINT "TO CONTINUE TYPE Y, IF NOT TYPE N"
+(0 2) 360 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
   Origs: 350:auto
   Dests: 370:auto
-(0 1) 370 INPUT L $
-    ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+(1 2) 370 INPUT L
   Origs: 360:auto
   Dests: 380:auto
-(1 2) 380 IF L $ ="Y" THEN 400
-    ERROR: Token 'InvalidToken:$' is not a value or operator
+(1 4) 380 IF L = 1 THEN 400
   Origs: 370:auto
   Dests: 390:auto, 400:ifthen
 (0 1) 390 STOP
