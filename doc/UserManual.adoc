@@ -154,6 +154,15 @@ They are not stored as part of the program.
 They have no line number.
 They are available only in interactive mode.
 
+BYE
+~~~
+
+Exits the BASIC interpreter.
+Does not save a program.
+To save a program, use the SAVE command prior to the BYE command.
+
+Syntax: BYE
+
 LOAD
 ~~~~
 
@@ -177,7 +186,7 @@ Syntax:	SAVE filename [OPTION] [BREAK]
 
 The 'filename' argument must be enclosed in quotes.
 The OPTION option includes OPTION settings in the file.
-The BREAK option includes breakpoints and conditions in the file.
+The BREAK option includes breakpoints in the file.
 
 NEW
 ~~~
@@ -373,7 +382,6 @@ UDFS
 ~~~~
 
 Displays the defined user-defined functions.
-
 
 TOKENS
 ~~~~~~
