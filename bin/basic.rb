@@ -312,10 +312,10 @@ class Shell
         errors = @interpreter.program_errors
         errors.each { |error| @console_io.print_line(error) }
       end
-    when 'BREAK'
+    when 'BKPT'
       texts = @interpreter.set_breakpoints(args)
       texts.each { |text| @console_io.print_line(text) }
-    when 'NOBREAK'
+    when 'NOBKPT'
       texts = @interpreter.clear_breakpoints(args)
       texts.each { |text| @console_io.print_line(text) }
     when 'LOAD'
@@ -345,7 +345,7 @@ class Shell
 
       lines += @interpreter.program_save
 
-      if keywords.include?('BREAK')
+      if keywords.include?('BKPT')
         break_lines = @interpreter.set_breakpoints([])
         break_lines.each do |line|
           lines << (".#{line}")
@@ -437,7 +437,7 @@ class Shell
     need_prompt = true
 
     case keyword.to_s
-    when 'BREAK'
+    when 'BKPT'
       texts = @interpreter.set_breakpoints(args)
       texts.each { |text| @console_io.print_line(text) }
     when 'OPTION'
@@ -519,7 +519,7 @@ def make_command_tokenbuilders
   tokenbuilders = []
 
   keywords = %w[
-    ANALYZE BREAK NOBREAK BYE CROSSREF DELETE DIMS IF LIST LOAD
+    ANALYZE BKPT NOBKPT BYE CROSSREF DELETE DIMS IF LIST LOAD
     NEW OPTION PARSE PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
     BASE
     CACHE_CONST_EXPR

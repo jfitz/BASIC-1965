@@ -182,11 +182,11 @@ SAVE
 Saves the current program to disk.
 Will overwrite an existing file without prompting.
 
-Syntax:	SAVE filename [OPTION] [BREAK]
+Syntax:	SAVE filename [OPTION] [BKPT]
 
 The 'filename' argument must be enclosed in quotes.
 The OPTION option includes OPTION settings in the file.
-The BREAK option includes breakpoints in the file.
+The BKPT option includes breakpoints in the file.
 
 NEW
 ~~~
@@ -235,45 +235,45 @@ They are executed only once in a program, even if the path of execution travels 
 
 The second phase executes statements, starting with the lowest-numbered statement and following the path of execution.
 
-BREAK
-~~~~~
+BKPT
+~~~~
 
 Sets or displays breakpoints.
 
-Syntax: BREAK line-number [IF condition]
-Syntax: BREAK
+Syntax: BKPT line-number [IF condition]
+Syntax: BKPT
 
-To set a breakpoint, type 'BREAK' followed by a line number.
-To display breakpoints, type 'BREAK' with no arguments.
+To set a breakpoint, type 'BKPT' followed by a line number.
+To display breakpoints, type 'BKPT' with no arguments.
 
 Examples:
 
-	BREAK 100
-	BREAK 220 IF A <> 0
-	BREAK 302 IF LEN(A$) > 0 AND ABS(T) < 100
-	BREAK
+	BKPT 100
+	BKPT 220 IF A <> 0
+	BKPT 302 IF LEN(A$) > 0 AND ABS(T) < 100
+	BKPT
 
 Multiple conditional breakpoints may be set for the same line.
 
 Breakpoints may be set for lines that do not exist.
 The RUN command checks for breakpoints set for lines that do not exist and reports an error.
 
-NOBREAK
-~~~~~~~
+NOBKPT
+~~~~~~
 
 Clears or displays breakpoints.
 
-Syntax: NOBREAK line-number [IF condition]
-Syntax: NOBREAK
+Syntax: NOBKPT line-number [IF condition]
+Syntax: NOBKPT
 
-To clear a breakpoint, type 'NOBREAK' followed by a line number.
-To display breakpoints, type 'NOBREAK' with no arguments.
+To clear a breakpoint, type 'NOBKPT' followed by a line number.
+To display breakpoints, type 'NOBKPT' with no arguments.
 
 Examples:
 
-	NOBREAK 100
-	NOBREAK 220
-	NOBREAK
+	NOBKPT 100
+	NOBKPT 220
+	NOBKPT
 
 Clearing the breakpoints for a line clears all breakpoints, absolute and conditional, for that line.
 
@@ -476,7 +476,7 @@ Debug shell
 
 The debug shell lets you pause execution, examine or change the program, and examine or change variables.
 The shell is invoked by a breakpoint during a RUN.
-Breakpoints are set by the BREAK command.
+Breakpoints are set by the BKPT command.
 
 The debug shell is available only in interactive mode.
 It is not available in programs run from the command line.
@@ -498,8 +498,8 @@ STEP
 
 Executes the current line and then re-invokes the debug shell.
 
-BREAK
-~~~~~
+BKPT
+~~~~
 
 Display, set, or clear breakpoints.
 
@@ -2359,7 +2359,7 @@ Source files are stored in ASCII.
 Source files contain three groups of line: options, source, and breakpoints.
 Option lines begin with the keyword '.OPTION'.
 Source lines begin with a line number.
-Breakpoint lines begin with the keyword '.BREAK'
+Breakpoint lines begin with the keyword '.BKPT'
 
 Other lines are considered errors.
 

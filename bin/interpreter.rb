@@ -184,7 +184,7 @@ class Interpreter
 
     keywords =
       %w[
-        GO STOP STEP BREAK NOBREAK
+        GO STOP STEP BKPT NOBKPT
         LIST PRETTY DELETE PROFILE
         DIM GOTO LET PRINT
       ]
@@ -426,9 +426,9 @@ class Interpreter
 
       @step_mode = true
       @debug_done = true
-    when 'BREAK'
+    when 'BKPT'
       set_breakpoints(args)
-    when 'NOBREAK'
+    when 'NOBKPT'
       clear_breakpoints(args)
     when 'LIST'
       @program.list(args, false)
@@ -616,12 +616,12 @@ class Interpreter
     if tokens.empty?
       # print breakpoints
       @line_breakpoints.keys.sort.each do |bp|
-        texts << "BREAK #{bp}"
+        texts << "BKPT #{bp}"
       end
       @line_cond_breakpoints.keys.sort.each do |bp|
         expressions = @line_cond_breakpoints[bp]
         expressions.each do |expression|
-          texts << "BREAK #{bp} IF #{expression}"
+          texts << "BKPT #{bp} IF #{expression}"
         end
       end
     else
@@ -678,12 +678,12 @@ class Interpreter
     if tokens.empty?
       # print breakpoints
       @line_breakpoints.keys.sort.each do |bp|
-        texts << "BREAK #{bp}"
+        texts << "BKPT #{bp}"
       end
       @line_cond_breakpoints.keys.sort.each do |bp|
         expressions = @line_cond_breakpoints[bp]
         expressions.each do |expression|
-          texts << "BREAK #{bp} IF #{expression}"
+          texts << "BKPT #{bp} IF #{expression}"
         end
       end
     else
