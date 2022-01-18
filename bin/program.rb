@@ -986,6 +986,15 @@ class Program
       end
       texts << '  Inconsistent GOSUB origins' if any_gosub && any_other
 
+      # check all origins are consistent for ON ERROR
+      any_on_error = false
+      any_other = false
+      line_origins.each do |origin|
+        any_on_error = true if origin.type == :onerror
+        any_other = true if origin.type != :onerror
+      end
+      texts << '  Inconsistent ON ERROR origins' if any_on_error && any_other
+
       # print destinations from this line
       line_dests = line.destinations
       line_dests = [] if line_dests.nil?
