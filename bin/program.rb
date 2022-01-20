@@ -253,6 +253,20 @@ class Line
     any_changes
   end
 
+  def check(program, line_number)
+    @statements.each_with_index do |statement, stmt|
+      line_number_stmt = LineStmt.new(line_number, stmt)
+      statement.check(program, line_number_stmt)
+    end
+  end
+
+  def check_program(program, line_number)
+    @statements.each_with_index do |statement, stmt|
+      line_number_stmt = LineStmt.new(line_number, stmt)
+      statement.check_program(program, line_number_stmt)
+    end
+  end
+
   def number_valid_statements
     num = 0
     @statements.each { |statement| num += 1 if statement.valid }
@@ -977,24 +991,6 @@ class Program
       origs = line_origins.sort.uniq.map(&:to_s).join(', ')
       texts << ("  Origs: #{origs}")
 
-      # check all origins are consistent for GOSUB
-      any_gosub = false
-      any_other = false
-      line_origins.each do |origin|
-        any_gosub = true if origin.type == :gosub
-        any_other = true if origin.type != :gosub
-      end
-      texts << '  Inconsistent GOSUB origins' if any_gosub && any_other
-
-      # check all origins are consistent for ON ERROR
-      any_on_error = false
-      any_other = false
-      line_origins.each do |origin|
-        any_on_error = true if origin.type == :onerror
-        any_other = true if origin.type != :onerror
-      end
-      texts << '  Inconsistent ON ERROR origins' if any_on_error && any_other
-
       # print destinations from this line
       line_dests = line.destinations
       line_dests = [] if line_dests.nil?
@@ -1622,12 +1618,12 @@ class Program
   def check_program
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
-      statements = line.statements
+      line.check(self, line_number)
+    end
 
-      statements.each_with_index do |statement, stmt|
-        line_number_stmt = LineStmt.new(line_number, stmt)
-        statement.check_program(self, line_number_stmt)
-      end
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      line.check_program(self, line_number)
     end
   end
 

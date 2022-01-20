@@ -524,10 +524,27 @@ class AbstractStatement
     !@errors.empty? || !@program_errors.empty?
   end
 
+  def check(_, _)
+    # check all origins are consistent for GOSUB
+    any_gosub = false
+    any_other = false
+    @origins.each do |origin|
+      any_gosub = true if origin.type == :gosub
+      any_other = true if origin.type != :gosub
+    end
+    @program_warnings << 'Inconsistent GOSUB origins' if any_gosub && any_other
+
+    # check all origins are consistent for ON ERROR
+    any_on_error = false
+    any_other = false
+    @origins.each do |origin|
+      any_on_error = true if origin.type == :onerror
+      any_other = true if origin.type != :onerror
+    end
+    @program_warnings << 'Inconsistent ON ERROR origins' if any_on_error && any_other
+  end
+
   def check_program(_, _)
-    # check_gosub_destinations
-    # check_goto_destinations
-    # check_if_destinations
   end
 
   def number_for_stmts

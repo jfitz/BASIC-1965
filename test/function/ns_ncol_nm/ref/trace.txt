@@ -10,10 +10,10 @@
 22: LET B = 0
  B = 0
 60: GOSUB 400
-400: READ R, C
+G(400) 400: READ R, C
  R = 1
  C = 2
-420: MAT READ M(R, C)
+G(400) 420: MAT READ M(R, C)
  R: 1
  C: 2
  M(0,0) = 3
@@ -22,9 +22,9 @@
  M(1,0) = 10
  M(1,1) = 4
  M(1,2) = 5
-460: PRINT "MATRIX:"
+G(400) 460: PRINT "MATRIX:"
 MATRIX:
-470: MAT PRINT M
+G(400) 470: MAT PRINT M
  M(0,0): 3
  M(0,1): 4
  M(0,2): 8
@@ -34,7 +34,7 @@ MATRIX:
  3               4               8
  10              4               5
 
-480: LET R1 = NCOL(M)
+G(400) 480: LET R1 = NCOL(M)
  M(0,0): 3
  M(0,1): 4
  M(0,2): 8
@@ -42,18 +42,18 @@ MATRIX:
  M(1,1): 4
  M(1,2): 5
  R1 = 3
-490: PRINT "COLS:" R1
+G(400) 490: PRINT "COLS:" R1
 COLS:
  R1: 3
  3
-495: PRINT
+G(400) 495: PRINT
 
-499: RETURN
+G(400) 499: RETURN
 80: GOSUB 400
-400: READ R, C
+G(400) 400: READ R, C
  R = 3
  C = 4
-420: MAT READ M(R, C)
+G(400) 420: MAT READ M(R, C)
  R: 3
  C: 4
  M(0,0) = 1
@@ -76,9 +76,9 @@ COLS:
  M(3,2) = 1
  M(3,3) = 1
  M(3,4) = 1
-460: PRINT "MATRIX:"
+G(400) 460: PRINT "MATRIX:"
 MATRIX:
-470: MAT PRINT M
+G(400) 470: MAT PRINT M
  M(0,0): 1
  M(0,1): 0
  M(0,2): 2
@@ -104,7 +104,7 @@ MATRIX:
  4              -3               1               0               5
  0               1               1               1               1
 
-480: LET R1 = NCOL(M)
+G(400) 480: LET R1 = NCOL(M)
  M(0,0): 1
  M(0,1): 0
  M(0,2): 2
@@ -126,21 +126,21 @@ MATRIX:
  M(3,3): 1
  M(3,4): 1
  R1 = 5
-490: PRINT "COLS:" R1
+G(400) 490: PRINT "COLS:" R1
 COLS:
  R1: 5
  5
-495: PRINT
+G(400) 495: PRINT
 
-499: RETURN
+G(400) 499: RETURN
 120: OPTION BASE 1
 122: LET B = 1
  B = 1
 160: GOSUB 400
-400: READ R, C
+G(400) 400: READ R, C
  R = 2
  C = 3
-420: MAT READ M(R, C)
+G(400) 420: MAT READ M(R, C)
  R: 2
  C: 3
  M(1,1) = 9
@@ -149,9 +149,9 @@ COLS:
  M(2,1) = 8
  M(2,2) = 4
  M(2,3) = 5
-460: PRINT "MATRIX:"
+G(400) 460: PRINT "MATRIX:"
 MATRIX:
-470: MAT PRINT M
+G(400) 470: MAT PRINT M
  M(1,1): 9
  M(1,2): 3
  M(1,3): 4
@@ -161,7 +161,7 @@ MATRIX:
  9               3               4
  8               4               5
 
-480: LET R1 = NCOL(M)
+G(400) 480: LET R1 = NCOL(M)
  M(1,1): 9
  M(1,2): 3
  M(1,3): 4
@@ -169,18 +169,18 @@ MATRIX:
  M(2,2): 4
  M(2,3): 5
  R1 = 3
-490: PRINT "COLS:" R1
+G(400) 490: PRINT "COLS:" R1
 COLS:
  R1: 3
  3
-495: PRINT
+G(400) 495: PRINT
 
-499: RETURN
+G(400) 499: RETURN
 180: GOSUB 400
-400: READ R, C
+G(400) 400: READ R, C
  R = 4
  C = 5
-420: MAT READ M(R, C)
+G(400) 420: MAT READ M(R, C)
  R: 4
  C: 5
  M(1,1) = 4
@@ -203,9 +203,9 @@ COLS:
  M(4,3) = 1
  M(4,4) = 1
  M(4,5) = 1
-460: PRINT "MATRIX:"
+G(400) 460: PRINT "MATRIX:"
 MATRIX:
-470: MAT PRINT M
+G(400) 470: MAT PRINT M
  M(1,1): 4
  M(1,2): 1
  M(1,3): 0
@@ -231,7 +231,7 @@ MATRIX:
  1               4              -3               1               0
  5               1               1               1               1
 
-480: LET R1 = NCOL(M)
+G(400) 480: LET R1 = NCOL(M)
  M(1,1): 4
  M(1,2): 1
  M(1,3): 0
@@ -253,13 +253,13 @@ MATRIX:
  M(4,4): 1
  M(4,5): 1
  R1 = 5
-490: PRINT "COLS:" R1
+G(400) 490: PRINT "COLS:" R1
 COLS:
  R1: 5
  5
-495: PRINT
+G(400) 495: PRINT
 
-499: RETURN
+G(400) 499: RETURN
 199: STOP
 STOP in line 199
 

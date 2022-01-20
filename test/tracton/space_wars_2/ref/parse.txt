@@ -175,6 +175,7 @@
  NumericConstant:100000
  AssignmentOperator:= =_ -> _
 580 GOSUB 630
+ WARNING: Inconsistent GOSUB origins
  LineNumber:630
 590 GOSUB 730
  LineNumber:730
@@ -188,6 +189,7 @@
  LineNumber:580
 630 IF D > 1E04 THEN 660
  WARNING: Inconsistent GOSUB target (630, 580)
+ WARNING: Inconsistent GOSUB origins
  Variable:D -> _
  NumericConstant:10000
  BinaryOperatorGreater:>(_,_) -> ?

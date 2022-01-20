@@ -55,43 +55,43 @@ FNR(_) (0 4) 12 DEF FNR(D) = D * 3.1415 / 180
 (0 1) 100 REM PROC A
   Origs: 
   Dests: 
-(0 4) 110 LET S1 = SIN(30 * 3.1415 / 180)
+G(110) (0 4) 110 LET S1 = SIN(30 * 3.1415 / 180)
   Origs: 30:gosub, 70:gosub
   Dests: 120:auto
-(0 4) 120 LET S2 = SIN(45 * 3.1415 / 180)
+G(110) (0 4) 120 LET S2 = SIN(45 * 3.1415 / 180)
   Origs: 110:auto
   Dests: 130:auto
-(0 4) 130 LET S3 = SIN(60 * 3.1415 / 180)
+G(110) (0 4) 130 LET S3 = SIN(60 * 3.1415 / 180)
   Origs: 120:auto
   Dests: 140:auto
-(0 4) 140 LET S4 = SIN(90 * 3.1415 / 180)
+G(110) (0 4) 140 LET S4 = SIN(90 * 3.1415 / 180)
   Origs: 130:auto
   Dests: 150:auto
-(0 5) 150 PRINT S1, S2, S3, S4
+G(110) (0 5) 150 PRINT S1, S2, S3, S4
   Origs: 140:auto
   Dests: 190:auto
-(0 1) 190 RETURN
+G(110) (0 1) 190 RETURN
   Origs: 150:auto
   Dests: 
 (0 1) 200 REM PROC B
   Origs: 
   Dests: 
-(0 4) 210 LET S1 = SIN(30 * 3.1415 / 180)
+G(210) (0 4) 210 LET S1 = SIN(30 * 3.1415 / 180)
   Origs: 32:gosub, 72:gosub
   Dests: 220:auto
-(0 4) 220 LET S2 = SIN(45 * 3.1415 / 180)
+G(210) (0 4) 220 LET S2 = SIN(45 * 3.1415 / 180)
   Origs: 210:auto
   Dests: 230:auto
-(0 4) 230 LET S3 = SIN(60 * 3.1415 / 180)
+G(210) (0 4) 230 LET S3 = SIN(60 * 3.1415 / 180)
   Origs: 220:auto
   Dests: 240:auto
-(0 4) 240 LET S4 = SIN(90 * 3.1415 / 180)
+G(210) (0 4) 240 LET S4 = SIN(90 * 3.1415 / 180)
   Origs: 230:auto
   Dests: 250:auto
-(0 5) 250 PRINT S1, S2, S3, S4
+G(210) (0 5) 250 PRINT S1, S2, S3, S4
   Origs: 240:auto
   Dests: 290:auto
-(0 1) 290 RETURN
+G(210) (0 1) 290 RETURN
   Origs: 250:auto
   Dests: 
 (0 1) 399 END

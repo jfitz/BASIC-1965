@@ -73,28 +73,28 @@ Halstead complexity:
 (0 1) 199 STOP
   Origs: 180:auto
   Dests: :stop
-(2 3) 400 READ R, C
+G(400) (2 3) 400 READ R, C
   Origs: 60:gosub, 80:gosub, 160:gosub, 180:gosub
   Dests: 420:auto
-(1 2) 420 MAT READ M(R, C)
+G(400) (1 2) 420 MAT READ M(R, C)
   Origs: 400:auto
   Dests: 460:auto
-(0 2) 460 PRINT "MATRIX:"
+G(400) (0 2) 460 PRINT "MATRIX:"
   Origs: 420:auto
   Dests: 470:auto
-(0 2) 470 MAT PRINT M
+G(400) (0 2) 470 MAT PRINT M
   Origs: 460:auto
   Dests: 480:auto
-(0 4) 480 LET R1 = NCOL(M)
+G(400) (0 4) 480 LET R1 = NCOL(M)
   Origs: 470:auto
   Dests: 490:auto
-(0 3) 490 PRINT "COLS:" R1
+G(400) (0 3) 490 PRINT "COLS:" R1
   Origs: 480:auto
   Dests: 495:auto
-(0 2) 495 PRINT
+G(400) (0 2) 495 PRINT
   Origs: 490:auto
   Dests: 499:auto
-(0 1) 499 RETURN
+G(400) (0 1) 499 RETURN
   Origs: 495:auto
   Dests: 
 (0 1) 999 END

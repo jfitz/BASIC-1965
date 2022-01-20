@@ -73,43 +73,43 @@ Halstead complexity:
 (0 1) 199 STOP
   Origs: 180:auto
   Dests: :stop
-(2 3) 400 READ R, C
+G(400) (2 3) 400 READ R, C
   Origs: 60:gosub, 80:gosub, 160:gosub, 180:gosub
   Dests: 405:auto
-(0 2) 405 DIM M1(R, C)
+G(400) (0 2) 405 DIM M1(R, C)
   Origs: 400:auto
   Dests: 410:auto
-(1 3) 410 FOR I = B TO R
+G(400) (1 3) 410 FOR I = B TO R
   Origs: 405:auto
   Dests: 420:fornext, 450:fornext
-(1 3) 420 FOR J = B TO C
+G(400) (1 3) 420 FOR J = B TO C
   Origs: 410:fornext
   Dests: 430:fornext, 440:fornext
-(1 2) 430 READ M1(I, J)
+G(400) (1 2) 430 READ M1(I, J)
   Origs: 420:fornext
   Dests: 440:auto
-(0 1) 440 NEXT J
+G(400) (0 1) 440 NEXT J
   Origs: 420:fornext, 430:auto
   Dests: 450:auto
-(0 1) 450 NEXT I
+G(400) (0 1) 450 NEXT I
   Origs: 410:fornext, 440:auto
   Dests: 460:auto
-(0 2) 460 PRINT "MATRIX:"
+G(400) (0 2) 460 PRINT "MATRIX:"
   Origs: 450:auto
   Dests: 470:auto
-(0 2) 470 MAT PRINT M1;
+G(400) (0 2) 470 MAT PRINT M1;
   Origs: 460:auto
   Dests: 480:auto
-(0 4) 480 LET D = DET(M1)
+G(400) (0 4) 480 LET D = DET(M1)
   Origs: 470:auto
   Dests: 490:auto
-(0 3) 490 PRINT "DETERMINANT:" D
+G(400) (0 3) 490 PRINT "DETERMINANT:" D
   Origs: 480:auto
   Dests: 495:auto
-(0 2) 495 PRINT
+G(400) (0 2) 495 PRINT
   Origs: 490:auto
   Dests: 499:auto
-(0 1) 499 RETURN
+G(400) (0 1) 499 RETURN
   Origs: 495:auto
   Dests: 
 (0 1) 999 END

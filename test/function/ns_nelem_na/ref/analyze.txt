@@ -73,28 +73,28 @@ Halstead complexity:
 (0 1) 199 STOP
   Origs: 180:auto
   Dests: :stop
-(1 2) 400 READ N
+G(400) (1 2) 400 READ N
   Origs: 60:gosub, 80:gosub, 160:gosub, 180:gosub
   Dests: 420:auto
-(1 2) 420 ARR READ A(N)
+G(400) (1 2) 420 ARR READ A(N)
   Origs: 400:auto
   Dests: 460:auto
-(0 2) 460 PRINT "ARRAY:"
+G(400) (0 2) 460 PRINT "ARRAY:"
   Origs: 420:auto
   Dests: 470:auto
-(0 2) 470 ARR PRINT A;
+G(400) (0 2) 470 ARR PRINT A;
   Origs: 460:auto
   Dests: 480:auto
-(0 4) 480 LET L = NELEM(A)
+G(400) (0 4) 480 LET L = NELEM(A)
   Origs: 470:auto
   Dests: 490:auto
-(0 3) 490 PRINT "LENGTH:" L
+G(400) (0 3) 490 PRINT "LENGTH:" L
   Origs: 480:auto
   Dests: 495:auto
-(0 2) 495 PRINT
+G(400) (0 2) 495 PRINT
   Origs: 490:auto
   Dests: 499:auto
-(0 1) 499 RETURN
+G(400) (0 1) 499 RETURN
   Origs: 495:auto
   Dests: 
 (0 1) 999 END

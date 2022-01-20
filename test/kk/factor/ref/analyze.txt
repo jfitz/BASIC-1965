@@ -78,8 +78,8 @@ G(310) (0 2) 260 GOTO 500
   Origs: 
   Dests: 
 G(310) (1 6) 310 IF N / F <> INT(N / F) THEN 410
+    WARNING: Inconsistent GOSUB origins
   Origs: 180:gosub, 200:gosub, 400:goto
-  Inconsistent GOSUB origins
   Dests: 330:auto, 410:ifthen
 G(310) (1 4) 330 IF Z > 0 THEN 370
   Origs: 310:auto
