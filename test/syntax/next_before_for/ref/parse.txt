@@ -1,0 +1,21 @@
+10 REM TEST PROGRAM
+ Remark:TEST PROGRAM
+20 GOTO 50
+ LineNumber:50
+30 NEXT I
+ Variable:I -> _
+40 GOTO 90
+ LineNumber:90
+50 FOR I = 1 TO 4
+ ERROR: FOR without NEXT for I
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+60 PRINT I
+ Variable:I -> _
+ CarriageControl:NL
+70 GOTO 30
+ LineNumber:30
+90 END
+ 
+

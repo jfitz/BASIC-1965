@@ -1,0 +1,51 @@
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 7
+Number of comments: 1
+Number of executable statements: 7
+
+Complexity:
+
+Comment density: 0.143
+Comprehension effort: 15
+McCabe complexity: 2
+Halstead complexity:
+ length: 13
+ volume: 29.934
+ difficulty: 1.714
+ effort: 51.315
+ language: 10.186
+ intelligence: 17.461
+ time: 0.048
+
+(0 1) 10 REM TEST PROGRAM
+  Origs: 
+  Dests: 
+(0 2) 20 GOTO 50
+  Origs: :start
+  Dests: 50:goto
+(0 1) 30 NEXT I
+  Origs: 70:goto
+  Dests: 40:auto
+(0 2) 40 GOTO 90
+  Origs: 30:auto
+  Dests: 90:goto
+(1 3) 50 FOR I = 1 TO 4
+   ERROR: FOR without NEXT for I
+  Origs: 20:goto
+  Dests: 60:fornext
+(0 2) 60 PRINT I
+  Origs: 50:fornext
+  Dests: 70:auto
+(0 3) 70 GOTO 30
+  Origs: 60:auto
+  Dests: 30:goto
+(0 1) 90 END
+  Origs: 40:goto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

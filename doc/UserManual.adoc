@@ -890,6 +890,15 @@ Examples:
 	20 PRINT I
 	30 NEXT I
 
+Traditionally, FOR/NEXT loops consist of a pair of FOR and NEXT statements, with the NEXT statement after the FOR statement.
+BASIC-1965 allows for multiple FOR statements to terminate with a common NEXT statement.
+(The control variable must be the same for all FOR statements.)
+Other BASIC interpreters may not allow such programming structures.
+BASIC-1965 also allows for a single FOR statement to terminate with multiple NEXT statements.
+(The NEXT statements must all use the same control variable.)
+Other BASIC interpreters may not allow such programming structures.
+BASIC-1965 requires that the NEXT statement occur after the FOR statement in the code.
+
 It is possible to change the value of the control value within the loop. You can write:
 
 	10 FOR I = 1 TO 10

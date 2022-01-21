@@ -1,0 +1,53 @@
+Statistics:
+
+Number of lines: 9
+Number of valid statements: 8
+Number of comments: 1
+Number of executable statements: 8
+
+Complexity:
+
+Comment density: 0.125
+Comprehension effort: 20
+McCabe complexity: 3
+Halstead complexity:
+ length: 26
+ volume: 77.889
+ difficulty: 7.000
+ effort: 545.223
+ language: 1.590
+ intelligence: 11.127
+ time: 0.505
+
+(0 1) 10 REM TEST PROGRAM
+  Origs: 
+  Dests: 
+(1 3) 20 FOR I = 1 TO 4
+  Origs: :start
+  Dests: 30:fornext, 50:fornext
+(1 5) 30 IF MOD(I, 2) = 0 THEN 70
+  Origs: 20:fornext
+  Dests: 40:auto, 70:ifthen
+(0 3) 40 PRINT I; " IS ODD"
+  Origs: 30:auto
+  Dests: 50:auto
+(0 1) 50 NEXT I
+  Origs: 20:fornext, 40:auto
+  Dests: 60:auto
+(0 2) 60 GOTO 90
+  Origs: 50:auto
+  Dests: 90:goto
+(0 3) 70 PRINT I; " IS EVEN"
+  Origs: 30:ifthen
+  Dests: 80:auto
+(0 1) 80 NEXT I
+  Origs: 70:auto
+  Dests: 90:auto
+(0 1) 90 END
+  Origs: 60:goto, 80:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
