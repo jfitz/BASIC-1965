@@ -7,16 +7,16 @@ I               J               PRODUCT
  3               2               6
 STOP in line 999
 
-10 (1) FOR I = 1 TO 3
-20 (3) FOR J = 1 TO 2
-30 (6) LET A(I, J) = I * J
-40 (6) NEXT J
-50 (3) NEXT I
+10 F(I) (1) FOR I = 1 TO 3
+20 F(I,J) (3) FOR J = 1 TO 2
+30 F(I,J) (6) LET A(I, J) = I * J
+40 F(I,J) (6) NEXT J
+50 F(I) (3) NEXT I
 55 (1) PRINT "I", "J", "PRODUCT"
-60 (1) FOR I = 1 TO 3
-70 (3) FOR J = 1 TO 2
-80 (6) PRINT I, J, A(I, J)
-90 (6) NEXT J
-100 (3) NEXT I
+60 F(I) (1) FOR I = 1 TO 3
+70 F(I,J) (3) FOR J = 1 TO 2
+80 F(I,J) (6) PRINT I, J, A(I, J)
+90 F(I,J) (6) NEXT J
+100 F(I) (3) NEXT I
 999 (1) END
 

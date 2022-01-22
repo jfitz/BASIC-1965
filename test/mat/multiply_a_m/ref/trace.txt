@@ -1,27 +1,27 @@
 30: DATA 1, 2, 3
 40: DATA 7, 8, 9, 10, 11, 12
 20: DIM A(3), B(3, 2)
-100: FOR I = 1 TO 3
+F(I) 100: FOR I = 1 TO 3
  I = 1
  terminated:false
-120: READ A(I)
+F(I) 120: READ A(I)
  I: 1
  A(1) = 1
-140: NEXT I
+F(I) 140: NEXT I
  I: 1
  terminated:false
  I = 2
-120: READ A(I)
+F(I) 120: READ A(I)
  I: 2
  A(2) = 2
-140: NEXT I
+F(I) 140: NEXT I
  I: 2
  terminated:false
  I = 3
-120: READ A(I)
+F(I) 120: READ A(I)
  I: 3
  A(3) = 3
-140: NEXT I
+F(I) 140: NEXT I
  I: 3
  terminated:true
 150: PRINT "MATRIX A"
@@ -32,72 +32,72 @@ MATRIX A
  A(3): 3
  1  2  3
 
-200: FOR I = 1 TO 3
+F(I) 200: FOR I = 1 TO 3
  I = 1
  terminated:false
-210: FOR J = 1 TO 2
+F(I,J) 210: FOR J = 1 TO 2
  J = 1
  terminated:false
-220: READ B(I, J)
+F(I,J) 220: READ B(I, J)
  I: 1
  J: 1
  B(1,1) = 7
-230: NEXT J
+F(I,J) 230: NEXT J
  J: 1
  terminated:false
  J = 2
-220: READ B(I, J)
+F(I,J) 220: READ B(I, J)
  I: 1
  J: 2
  B(1,2) = 8
-230: NEXT J
+F(I,J) 230: NEXT J
  J: 2
  terminated:true
-240: NEXT I
+F(I) 240: NEXT I
  I: 1
  terminated:false
  I = 2
-210: FOR J = 1 TO 2
+F(I,J) 210: FOR J = 1 TO 2
  J = 1
  terminated:false
-220: READ B(I, J)
+F(I,J) 220: READ B(I, J)
  I: 2
  J: 1
  B(2,1) = 9
-230: NEXT J
+F(I,J) 230: NEXT J
  J: 1
  terminated:false
  J = 2
-220: READ B(I, J)
+F(I,J) 220: READ B(I, J)
  I: 2
  J: 2
  B(2,2) = 10
-230: NEXT J
+F(I,J) 230: NEXT J
  J: 2
  terminated:true
-240: NEXT I
+F(I) 240: NEXT I
  I: 2
  terminated:false
  I = 3
-210: FOR J = 1 TO 2
+F(I,J) 210: FOR J = 1 TO 2
  J = 1
  terminated:false
-220: READ B(I, J)
+F(I,J) 220: READ B(I, J)
  I: 3
  J: 1
  B(3,1) = 11
-230: NEXT J
+F(I,J) 230: NEXT J
  J: 1
  terminated:false
  J = 2
-220: READ B(I, J)
+F(I,J) 220: READ B(I, J)
  I: 3
  J: 2
  B(3,2) = 12
-230: NEXT J
+F(I,J) 230: NEXT J
  J: 2
  terminated:true
-240: NEXT I
+F(I) 240: NEXT I
  I: 3
  terminated:true
 250: PRINT "MATRIX B"

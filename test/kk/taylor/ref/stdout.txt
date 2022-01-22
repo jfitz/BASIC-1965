@@ -18,11 +18,11 @@ Error 103 Out of data in line 10
 10 (5) READ X, N
 20 (5) LET S = 0
 25 (5) LET F = 1
-30 (5) FOR I = 1 TO N
-40 (37) LET K = 2 * I - 1
-50 (37) LET S = S + F * X ^ K / K
-60 (37) LET F = -F
-70 (37) NEXT I
+30 F(I) (5) FOR I = 1 TO N
+40 F(I) (37) LET K = 2 * I - 1
+50 F(I) (37) LET S = S + F * X ^ K / K
+60 F(I) (37) LET F = -F
+70 F(I) (37) NEXT I
 80 (5) PRINT "ATN OF " X; "= " ATN(X)
 85 (5) PRINT N; "TERMS OF THE SERIES YIELD " S
 90 (5) PRINT

@@ -25,19 +25,19 @@ Halstead complexity:
 (0 3) 20 PRINT "ANGLE", "SECANT"
   Origs: 10:auto
   Dests: 30:auto
-(1 4) 30 FOR I = 0 TO 2 STEP 0.1
+F(I) (1 4) 30 FOR I = 0 TO 2 STEP 0.1
   Origs: 20:auto
   Dests: 40:fornext, 70:fornext
-(0 4) 40 LET A = I * P
+F(I) (0 4) 40 LET A = I * P
   Origs: 30:fornext
   Dests: 50:auto
-(0 4) 50 LET C = SEC(A)
+F(I) (0 4) 50 LET C = SEC(A)
   Origs: 40:auto
   Dests: 60:auto
-(0 3) 60 PRINT A, C
+F(I) (0 3) 60 PRINT A, C
   Origs: 50:auto
   Dests: 70:auto
-(0 1) 70 NEXT I
+F(I) (0 1) 70 NEXT I
   Origs: 30:fornext, 60:auto
   Dests: 99:auto
 (0 1) 99 END

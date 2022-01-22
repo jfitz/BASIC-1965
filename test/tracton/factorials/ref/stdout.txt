@@ -19,9 +19,9 @@ STOP in line 130
 30 (3) PRINT "X = ";
 40 (3) INPUT X
 50 (3) LET Z = 1
-60 (3) FOR I = 1 TO X
-70 (30) LET Z = Z * I
-80 (30) NEXT I
+60 F(I) (3) FOR I = 1 TO X
+70 F(I) (30) LET Z = Z * I
+80 F(I) (30) NEXT I
 90 (3) PRINT "X = "; X, "X! = "; Z
 100 (3) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 110 (3) INPUT L

@@ -61,22 +61,22 @@ Halstead complexity:
 (0 2) 140 PRINT "COORDINATES"
   Origs: 130:auto
   Dests: 150:auto
-(1 4) 150 FOR I = 0 TO N - 1
+F(I) (1 4) 150 FOR I = 0 TO N - 1
   Origs: 140:auto
   Dests: 160:fornext, 200:fornext
-(0 7) 160 LET X = X0 + (R * COS(W + (Z * I)))
+F(I) (0 7) 160 LET X = X0 + (R * COS(W + (Z * I)))
   Origs: 150:fornext
   Dests: 170:auto
-(0 7) 170 LET Y = Y0 + (R * SIN(W + (Z * I)))
+F(I) (0 7) 170 LET Y = Y0 + (R * SIN(W + (Z * I)))
   Origs: 160:auto
   Dests: 180:auto
-(0 4) 180 LET P = I + 1
+F(I) (0 4) 180 LET P = I + 1
   Origs: 170:auto
   Dests: 190:auto
-(0 7) 190 PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+F(I) (0 7) 190 PRINT "POINT:"; P, "X = "; X, "Y = "; Y
   Origs: 180:auto
   Dests: 200:auto
-(0 1) 200 NEXT I
+F(I) (0 1) 200 NEXT I
   Origs: 150:fornext, 190:auto
   Dests: 210:auto
 (0 2) 210 PRINT

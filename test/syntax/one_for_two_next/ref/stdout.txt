@@ -5,12 +5,12 @@
 STOP in line 90
 
 10 (0) REM TEST PROGRAM
-20 (1) FOR I = 1 TO 4
-30 (4) IF MOD(I, 2) = 0 THEN 70
-40 (2) PRINT I; " IS ODD"
-50 (2) NEXT I
+20 F(I) (1) FOR I = 1 TO 4
+30 F(I) (4) IF MOD(I, 2) = 0 THEN 70
+40 F(I) (2) PRINT I; " IS ODD"
+50 F(I) (2) NEXT I
 60 (0) GOTO 90
-70 (2) PRINT I; " IS EVEN"
-80 (2) NEXT I
+70 F(I) (2) PRINT I; " IS EVEN"
+80 F(I) (2) NEXT I
 90 (1) END
 

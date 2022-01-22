@@ -31,22 +31,23 @@ Halstead complexity:
 (0 4) 22 LET A = A - 0.3
   Origs: 21:auto
   Dests: 30:auto
-(1 3) 30 FOR I = 1 TO 500
+F(I) (1 3) 30 FOR I = 1 TO 500
   Origs: 22:auto
   Dests: 40:fornext, 60:fornext
-(1 4) 40 IF A < 1.0 THEN 50
+F(I) (1 4) 40 IF A < 1.0 THEN 50
   Origs: 30:fornext
   Dests: 42:auto, 50:ifthen
-(0 3) 42 PRINT "ERROR IN ITERATION"; I
+F(I) (0 3) 42 PRINT "ERROR IN ITERATION"; I
   Origs: 40:auto
   Dests: 49:auto
-(0 1) 49 STOP
+F(I) (0 1) 49 STOP
+   WARNING: Terminating statement in FOR/NEXT
   Origs: 42:auto
   Dests: :stop
-(0 4) 50 LET A = A + A
+F(I) (0 4) 50 LET A = A + A
   Origs: 40:ifthen
   Dests: 60:auto
-(0 1) 60 NEXT I
+F(I) (0 1) 60 NEXT I
   Origs: 30:fornext, 50:auto
   Dests: 80:auto
 (0 4) 80 PRINT "NO ERROR AFTER"; I; "ITERATIONS"

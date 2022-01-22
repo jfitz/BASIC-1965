@@ -29,14 +29,14 @@ STOP in line 340
 60 (1) LET D = 0
 70 (1) PRINT "NUMBER OF SAMPLES = "
 80 (1) INPUT N
-90 (1) FOR I = 1 TO N
-100 (5) PRINT "SAMPLE = "
-110 (5) INPUT X
-120 (5) LET A = A + X
-130 (5) LET B = B + (X ^ 2)
-140 (5) LET C = C + (X ^ 3)
-150 (5) LET D = D + (X ^ 4)
-160 (5) NEXT I
+90 F(I) (1) FOR I = 1 TO N
+100 F(I) (5) PRINT "SAMPLE = "
+110 F(I) (5) INPUT X
+120 F(I) (5) LET A = A + X
+130 F(I) (5) LET B = B + (X ^ 2)
+140 F(I) (5) LET C = C + (X ^ 3)
+150 F(I) (5) LET D = D + (X ^ 4)
+160 F(I) (5) NEXT I
 170 (1) LET J = A / N
 180 (1) LET E = (B / N) - (J ^ 2)
 190 (1) LET F = (C / N) - ((3 * J * B) / N) + (2 * (J ^ 3))

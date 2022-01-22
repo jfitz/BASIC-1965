@@ -166,37 +166,37 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
 (0 8) 401 PRINT "ANGLE", "POINT", " ", "DISTANCES", " ", "RATIO", "DIFFERENCE"
   Origs: 306:auto
   Dests: 410:auto
-(1 4) 410 FOR I = 0 TO 365 STEP 5
+F(I) (1 4) 410 FOR I = 0 TO 365 STEP 5
   Origs: 401:auto
   Dests: 420:fornext, 441:fornext
-(0 1) 420 REM PICK POINT ON CIRCLE D
+F(I) (0 1) 420 REM PICK POINT ON CIRCLE D
   Origs: 410:fornext
   Dests: 421:auto
-(0 5) 421 LET T = FNR(I)
+F(I) (0 5) 421 LET T = FNR(I)
   Origs: 420:auto
   Dests: 61:function, 422:auto
-(0 7) 422 LET I1 = D1 + COS(T) * D5
+F(I) (0 7) 422 LET I1 = D1 + COS(T) * D5
   Origs: 421:auto
   Dests: 423:auto
-(0 7) 423 LET I2 = D2 + SIN(T) * D5
+F(I) (0 7) 423 LET I2 = D2 + SIN(T) * D5
   Origs: 422:auto
   Dests: 424:auto
-(0 5) 424 LET G1 = FNL(A1, A2, I1, I2)
+F(I) (0 5) 424 LET G1 = FNL(A1, A2, I1, I2)
   Origs: 423:auto
   Dests: 51:function, 425:auto
-(0 5) 425 LET G2 = FNL(B1, B2, I1, I2)
+F(I) (0 5) 425 LET G2 = FNL(B1, B2, I1, I2)
   Origs: 424:auto
   Dests: 51:function, 426:auto
-(0 4) 426 LET R1 = G1 / G2
+F(I) (0 4) 426 LET R1 = G1 / G2
   Origs: 425:auto
   Dests: 431:auto
 (0 1) 430 REM PRINT RESULTS
   Origs: 
   Dests: 
-(0 9) 431 PRINT T, I1; I2, G1; G2, R1, R1 - R0
+F(I) (0 9) 431 PRINT T, I1; I2, G1; G2, R1, R1 - R0
   Origs: 426:auto
   Dests: 441:auto
-(0 1) 441 NEXT I
+F(I) (0 1) 441 NEXT I
   Origs: 410:fornext, 431:auto
   Dests: 999:auto
 (0 1) 900 REM DATA - POINT A, POINT D, POINT C

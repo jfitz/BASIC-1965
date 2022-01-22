@@ -41,37 +41,37 @@ Halstead complexity:
 (0 13) 70 LET N = M + (D / 30) + (Y / 100) + H + (M1 / 60)
   Origs: 60:auto
   Dests: 80:auto
-(1 3) 80 FOR I = 1 TO 6
+F(I) (1 3) 80 FOR I = 1 TO 6
   Origs: 70:auto
   Dests: 90:fornext, 120:fornext
-(0 5) 90 LET K = N * RND(0)
+F(I) (0 5) 90 LET K = N * RND(0)
   Origs: 80:fornext
   Dests: 100:auto
-(0 5) 100 LET K = K - INT(K)
+F(I) (0 5) 100 LET K = K - INT(K)
   Origs: 90:auto
   Dests: 110:auto
-(0 5) 110 LET C(I) = 1 + INT(2 * K)
+F(I) (0 5) 110 LET C(I) = 1 + INT(2 * K)
   Origs: 100:auto
   Dests: 120:auto
-(0 1) 120 NEXT I
+F(I) (0 1) 120 NEXT I
   Origs: 80:fornext, 110:auto
   Dests: 130:auto
-(1 3) 130 FOR I = 1 TO 6
+F(I) (1 3) 130 FOR I = 1 TO 6
   Origs: 120:auto
   Dests: 140:fornext, 180:fornext
-(1 4) 140 IF C(I) = 1 THEN 170
+F(I) (1 4) 140 IF C(I) = 1 THEN 170
   Origs: 130:fornext
   Dests: 150:auto, 170:ifthen
-(0 2) 150 PRINT "---"
+F(I) (0 2) 150 PRINT "---"
   Origs: 140:auto
   Dests: 160:auto
-(0 2) 160 GOTO 180
+F(I) (0 2) 160 GOTO 180
   Origs: 150:auto
   Dests: 180:goto
-(0 2) 170 PRINT "- -"
+F(I) (0 2) 170 PRINT "- -"
   Origs: 140:ifthen
   Dests: 180:auto
-(0 1) 180 NEXT I
+F(I) (0 1) 180 NEXT I
   Origs: 130:fornext, 160:goto, 170:auto
   Dests: 190:auto
 (0 2) 190 PRINT

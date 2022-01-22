@@ -1,15 +1,15 @@
 TOTAL ORDER $ 25.05
 STOP in line 999
 
-10 (1) FOR I = 1 TO 5
-20 (5) READ P(I)
-30 (5) NEXT I
+10 F(I) (1) FOR I = 1 TO 5
+20 F(I) (5) READ P(I)
+30 F(I) (5) NEXT I
 40 (0) DATA 1.20, 2.15, 0.65, 4.30, 2.00
 100 (1) LET S = 0
-110 (1) FOR I = 1 TO 5
-120 (5) READ N
-130 (5) LET S = S + N * P(I)
-140 (5) NEXT I
+110 F(I) (1) FOR I = 1 TO 5
+120 F(I) (5) READ N
+130 F(I) (5) LET S = S + N * P(I)
+140 F(I) (5) NEXT I
 150 (1) PRINT "TOTAL ORDER $" S
 900 (0) DATA 5, 3, 0, 2, 2
 999 (1) END

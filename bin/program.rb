@@ -1365,6 +1365,12 @@ class Program
     any_errors
   end
 
+  def pessimize
+    @errors = []
+
+    pessimize_statements
+  end
+
   def optimize(interpreter)
     optimize_statements(interpreter)
     set_endfunc_lines
@@ -1378,13 +1384,24 @@ class Program
     set_transfers_auto
     assign_sub_markers
     assign_on_error_markers
+    assign_fornext_markers
     check_program
     check_function_markers
   end
 
-  def optimize_statements(interpreter)
-    @errors = []
+  def pessimize_statements
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
 
+      statements.each_with_index do |statement, stmt|
+        line_number_stmt = LineStmt.new(line_number, stmt)
+        statement.pessimize
+      end
+    end
+  end
+
+  def optimize_statements(interpreter)
     @lines.keys.sort.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
@@ -1426,6 +1443,17 @@ class Program
 
       statements.each do |statement|
         statement.assign_on_error_markers(self)
+      end
+    end
+  end
+
+  def assign_fornext_markers
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+
+      statements.each do |statement|
+        statement.assign_fornext_markers(self)
       end
     end
   end

@@ -6,8 +6,8 @@
 STOP in line 99
 
 10 FNL(_) (0) DEF FNL(A) = LOG(A) / LOG(10)
-20 (1) FOR N = 2 TO 10 STEP 2
-30 (5) PRINT N, LOG(N), FNL(N)
-40 (5) NEXT N
+20 F(N) (1) FOR N = 2 TO 10 STEP 2
+30 F(N) (5) PRINT N, LOG(N), FNL(N)
+40 F(N) (5) NEXT N
 99 (1) END
 

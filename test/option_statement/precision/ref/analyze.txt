@@ -31,16 +31,16 @@ Halstead complexity:
 (0 4) 120 LET A = 1 / 7
   Origs: 110:auto
   Dests: 130:auto
-(1 3) 130 FOR I = 1 TO 10
+F(I) (1 3) 130 FOR I = 1 TO 10
   Origs: 120:auto
   Dests: 140:fornext, 160:fornext
-(0 2) 140 PRINT A
+F(I) (0 2) 140 PRINT A
   Origs: 130:fornext
   Dests: 150:auto
-(0 4) 150 LET A = A / 10
+F(I) (0 4) 150 LET A = A / 10
   Origs: 140:auto
   Dests: 160:auto
-(0 1) 160 NEXT I
+F(I) (0 1) 160 NEXT I
   Origs: 130:fornext, 150:auto
   Dests: 200:auto
 (0 2) 200 PRINT "VALUES WITH PRECISION 16"
@@ -52,16 +52,16 @@ Halstead complexity:
 (0 4) 220 LET A = 1 / 7
   Origs: 210:auto
   Dests: 230:auto
-(1 3) 230 FOR I = 1 TO 12
+F(I) (1 3) 230 FOR I = 1 TO 12
   Origs: 220:auto
   Dests: 240:fornext, 260:fornext
-(0 2) 240 PRINT A
+F(I) (0 2) 240 PRINT A
   Origs: 230:fornext
   Dests: 250:auto
-(0 4) 250 LET A = A / 10
+F(I) (0 4) 250 LET A = A / 10
   Origs: 240:auto
   Dests: 260:auto
-(0 1) 260 NEXT I
+F(I) (0 1) 260 NEXT I
   Origs: 230:fornext, 250:auto
   Dests: 300:auto
 (0 2) 300 PRINT "VALUES WITH PRECISION INFINITE"
@@ -73,16 +73,16 @@ Halstead complexity:
 (0 4) 320 LET A = 1 / 7
   Origs: 310:auto
   Dests: 330:auto
-(1 3) 330 FOR I = 1 TO 12
+F(I) (1 3) 330 FOR I = 1 TO 12
   Origs: 320:auto
   Dests: 340:fornext, 360:fornext
-(0 2) 340 PRINT A
+F(I) (0 2) 340 PRINT A
   Origs: 330:fornext
   Dests: 350:auto
-(0 4) 350 LET A = A / 10
+F(I) (0 4) 350 LET A = A / 10
   Origs: 340:auto
   Dests: 360:auto
-(0 1) 360 NEXT I
+F(I) (0 1) 360 NEXT I
   Origs: 330:fornext, 350:auto
   Dests: 999:auto
 (0 1) 999 END

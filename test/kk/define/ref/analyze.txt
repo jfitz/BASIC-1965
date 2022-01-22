@@ -22,13 +22,13 @@ Halstead complexity:
 FNL(_) (0 5) 10 DEF FNL(A) = LOG(A) / LOG(10)
   Origs: 
   Dests: 
-(1 4) 20 FOR N = 2 TO 10 STEP 2
+F(N) (1 4) 20 FOR N = 2 TO 10 STEP 2
   Origs: :start
   Dests: 30:fornext, 40:fornext
-(0 7) 30 PRINT N, LOG(N), FNL(N)
+F(N) (0 7) 30 PRINT N, LOG(N), FNL(N)
   Origs: 20:fornext
   Dests: 40:auto
-(0 1) 40 NEXT N
+F(N) (0 1) 40 NEXT N
   Origs: 20:fornext, 30:auto
   Dests: 99:auto
 (0 1) 99 END

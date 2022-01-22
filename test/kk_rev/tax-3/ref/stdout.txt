@@ -14,15 +14,15 @@ STOP in line 999
 20 (1) READ A, Y, T, R
 30 (1) PRINT "YEAR", "DEPRECIATE"
 40 (1) LET Y9 = Y * (Y + 1) / 2
-100 (1) FOR I = 1 TO Y
-110 (7) LET D(I) = A * (Y - I + 1) / Y9
-120 (7) PRINT I, D(I)
-130 (7) NEXT I
+100 F(I) (1) FOR I = 1 TO Y
+110 F(I) (7) LET D(I) = A * (Y - I + 1) / Y9
+120 F(I) (7) PRINT I, D(I)
+130 F(I) (7) NEXT I
 140 (1) PRINT
 200 (1) LET S = 0
-210 (1) FOR I = 1 TO Y
-220 (7) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
-230 (7) NEXT I
+210 F(I) (1) FOR I = 1 TO Y
+220 F(I) (7) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+230 F(I) (7) NEXT I
 240 (1) PRINT "SAVING = $" S
 900 (0) DATA 5000, 7, 48, 4.5
 999 (1) END

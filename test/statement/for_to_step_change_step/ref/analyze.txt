@@ -31,16 +31,16 @@ Halstead complexity:
 (0 3) 40 LET S = 1
   Origs: 30:auto
   Dests: 50:auto
-(1 4) 50 FOR I = B TO E STEP S
+F(I) (1 4) 50 FOR I = B TO E STEP S
   Origs: 40:auto
   Dests: 60:fornext, 80:fornext
-(0 2) 60 PRINT I
+F(I) (0 2) 60 PRINT I
   Origs: 50:fornext
   Dests: 70:auto
-(0 4) 70 LET S = S + 1
+F(I) (0 4) 70 LET S = S + 1
   Origs: 60:auto
   Dests: 80:auto
-(0 1) 80 NEXT I
+F(I) (0 1) 80 NEXT I
   Origs: 50:fornext, 70:auto
   Dests: 99:auto
 (0 1) 99 END

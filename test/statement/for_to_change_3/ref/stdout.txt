@@ -2,11 +2,11 @@ BEFORE:  1
 Error 131 Variable is locked for I in line 40
 
 10 (0) REM TEST FOR/NEXT WITH CHANGE TO INDEX
-20 (1) FOR I = 1 TO 5
-30 (1) PRINT "BEFORE: "; I
-40 (0) LET I = 3
-50 (0) PRINT "AFTER: "; I
-60 (0) NEXT I
+20 F(I) (1) FOR I = 1 TO 5
+30 F(I) (1) PRINT "BEFORE: "; I
+40 F(I) (0) LET I = 3
+50 F(I) (0) PRINT "AFTER: "; I
+60 F(I) (0) NEXT I
 70 (0) PRINT "FINAL: "; I
 90 (0) END
 

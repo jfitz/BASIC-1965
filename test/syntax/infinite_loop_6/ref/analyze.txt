@@ -28,13 +28,13 @@ Halstead complexity:
 (0 3) 15 LET S = 0
   Origs: 14:auto
   Dests: 20:auto
-(1 4) 20 FOR I = B TO 10 STEP S
+F(I) (1 4) 20 FOR I = B TO 10 STEP S
   Origs: 15:auto
   Dests: 30:fornext, 40:fornext
-(0 2) 30 PRINT I
+F(I) (0 2) 30 PRINT I
   Origs: 20:fornext
   Dests: 40:auto
-(0 1) 40 NEXT I
+F(I) (0 1) 40 NEXT I
   Origs: 20:fornext, 30:auto
   Dests: 99:auto
 (0 1) 99 END

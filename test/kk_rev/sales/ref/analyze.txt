@@ -19,13 +19,13 @@ Halstead complexity:
  intelligence: 28.299
  time: 0.800
 
-(1 3) 10 FOR I = 1 TO 5
+F(I) (1 3) 10 FOR I = 1 TO 5
   Origs: :start
   Dests: 20:fornext, 30:fornext
-(1 2) 20 READ P(I)
+F(I) (1 2) 20 READ P(I)
   Origs: 10:fornext
   Dests: 30:auto
-(0 1) 30 NEXT I
+F(I) (0 1) 30 NEXT I
   Origs: 10:fornext, 20:auto
   Dests: 100:auto
 (0 2) 40 DATA 1.20, 2.15, 0.65, 4.30, 2.00
@@ -34,16 +34,16 @@ Halstead complexity:
 (0 3) 100 LET S = 0
   Origs: 30:auto
   Dests: 110:auto
-(1 3) 110 FOR I = 1 TO 5
+F(I) (1 3) 110 FOR I = 1 TO 5
   Origs: 100:auto
   Dests: 120:fornext, 140:fornext
-(1 2) 120 READ N
+F(I) (1 2) 120 READ N
   Origs: 110:fornext
   Dests: 130:auto
-(0 6) 130 LET S = S + N * P(I)
+F(I) (0 6) 130 LET S = S + N * P(I)
   Origs: 120:auto
   Dests: 140:auto
-(0 1) 140 NEXT I
+F(I) (0 1) 140 NEXT I
   Origs: 110:fornext, 130:auto
   Dests: 150:auto
 (0 3) 150 PRINT "TOTAL ORDER $" S

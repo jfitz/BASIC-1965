@@ -8,11 +8,11 @@
 STOP in line 99
 
 10 (1) DIM A(6, 5)
-20 (1) FOR I = 1 TO 6
-30 (6) FOR J = 1 TO 5
-40 (30) LET A(I, J) = I + J
-50 (30) NEXT J
-60 (6) NEXT I
+20 F(I) (1) FOR I = 1 TO 6
+30 F(I,J) (6) FOR J = 1 TO 5
+40 F(I,J) (30) LET A(I, J) = I + J
+50 F(I,J) (30) NEXT J
+60 F(I) (6) NEXT I
 70 (1) MAT PRINT A
 99 (1) END
 

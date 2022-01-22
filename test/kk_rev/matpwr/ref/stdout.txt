@@ -22,12 +22,12 @@ STOP in line 99
 
 10 (1) READ N
 20 (1) MAT READ M(N, N)
-30 (1) FOR I = 1 TO 4
-40 (4) PRINT "POWER : " 2 ^ I
-50 (4) MAT A = M * M
-60 (4) MAT PRINT A
-70 (4) MAT M = A
-80 (4) NEXT I
+30 F(I) (1) FOR I = 1 TO 4
+40 F(I) (4) PRINT "POWER : " 2 ^ I
+50 F(I) (4) MAT A = M * M
+60 F(I) (4) MAT PRINT A
+70 F(I) (4) MAT M = A
+80 F(I) (4) NEXT I
 90 (0) DATA 3
 91 (0) DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5
 99 (1) END

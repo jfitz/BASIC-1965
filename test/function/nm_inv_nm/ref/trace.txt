@@ -10,56 +10,56 @@ G(400) 400: READ R, C
 G(400) 405: DIM M1(R, C)
  R: 2
  C: 2
-G(400) 410: FOR I = 1 TO R
+G(400) F(I) 410: FOR I = 1 TO R
  R: 2
  I = 1
  R = 2
  terminated:false
-G(400) 420: FOR J = 1 TO C
+G(400) F(I,J) 420: FOR J = 1 TO C
  C: 2
  J = 1
  C = 2
  terminated:false
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 1
  J: 1
  M1(1,1) = 4
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 1
  terminated:false
  J = 2
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 1
  J: 2
  M1(1,2) = 7
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 2
  terminated:true
-G(400) 450: NEXT I
+G(400) F(I) 450: NEXT I
  I: 1
  terminated:false
  I = 2
-G(400) 420: FOR J = 1 TO C
+G(400) F(I,J) 420: FOR J = 1 TO C
  C: 2
  J = 1
  C = 2
  terminated:false
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 2
  J: 1
  M1(2,1) = 2
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 1
  terminated:false
  J = 2
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 2
  J: 2
  M1(2,2) = 6
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 2
  terminated:true
-G(400) 450: NEXT I
+G(400) F(I) 450: NEXT I
  I: 2
  terminated:true
 G(400) 460: PRINT "MATRIX:"
@@ -99,104 +99,104 @@ G(400) 400: READ R, C
 G(400) 405: DIM M1(R, C)
  R: 3
  C: 3
-G(400) 410: FOR I = 1 TO R
+G(400) F(I) 410: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-G(400) 420: FOR J = 1 TO C
+G(400) F(I,J) 420: FOR J = 1 TO C
  C: 3
  J = 1
  C = 3
  terminated:false
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 1
  J: 1
  M1(1,1) = 3
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 1
  terminated:false
  J = 2
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 1
  J: 2
  M1(1,2) = 2
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 2
  terminated:false
  J = 3
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 1
  J: 3
  M1(1,3) = -5
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 3
  terminated:true
-G(400) 450: NEXT I
+G(400) F(I) 450: NEXT I
  I: 1
  terminated:false
  I = 2
-G(400) 420: FOR J = 1 TO C
+G(400) F(I,J) 420: FOR J = 1 TO C
  C: 3
  J = 1
  C = 3
  terminated:false
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 2
  J: 1
  M1(2,1) = 1
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 1
  terminated:false
  J = 2
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 2
  J: 2
  M1(2,2) = -3
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 2
  terminated:false
  J = 3
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 2
  J: 3
  M1(2,3) = 2
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 3
  terminated:true
-G(400) 450: NEXT I
+G(400) F(I) 450: NEXT I
  I: 2
  terminated:false
  I = 3
-G(400) 420: FOR J = 1 TO C
+G(400) F(I,J) 420: FOR J = 1 TO C
  C: 3
  J = 1
  C = 3
  terminated:false
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 3
  J: 1
  M1(3,1) = 5
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 1
  terminated:false
  J = 2
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 3
  J: 2
  M1(3,2) = -1
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 2
  terminated:false
  J = 3
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 3
  J: 3
  M1(3,3) = 4
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 3
  terminated:true
-G(400) 450: NEXT I
+G(400) F(I) 450: NEXT I
  I: 3
  terminated:true
 G(400) 460: PRINT "MATRIX:"
@@ -260,56 +260,56 @@ G(400) 400: READ R, C
 G(400) 405: DIM M1(R, C)
  R: 2
  C: 2
-G(400) 410: FOR I = 1 TO R
+G(400) F(I) 410: FOR I = 1 TO R
  R: 2
  I = 1
  R = 2
  terminated:false
-G(400) 420: FOR J = 1 TO C
+G(400) F(I,J) 420: FOR J = 1 TO C
  C: 2
  J = 1
  C = 2
  terminated:false
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 1
  J: 1
  M1(1,1) = 4
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 1
  terminated:false
  J = 2
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 1
  J: 2
  M1(1,2) = 7
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 2
  terminated:true
-G(400) 450: NEXT I
+G(400) F(I) 450: NEXT I
  I: 1
  terminated:false
  I = 2
-G(400) 420: FOR J = 1 TO C
+G(400) F(I,J) 420: FOR J = 1 TO C
  C: 2
  J = 1
  C = 2
  terminated:false
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 2
  J: 1
  M1(2,1) = 2
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 1
  terminated:false
  J = 2
-G(400) 430: READ M1(I, J)
+G(400) F(I,J) 430: READ M1(I, J)
  I: 2
  J: 2
  M1(2,2) = 6
-G(400) 440: NEXT J
+G(400) F(I,J) 440: NEXT J
  J: 2
  terminated:true
-G(400) 450: NEXT I
+G(400) F(I) 450: NEXT I
  I: 2
  terminated:true
 G(400) 460: PRINT "MATRIX:"

@@ -1,8 +1,8 @@
-5: PRINT
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 1000,999,0,4.5,10,4
  A = 1000
  B = 999
@@ -10,31 +10,31 @@ A, B, P, R, Y, T
  R = 4.5
  Y = 10
  T = 4
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 1000
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 999
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 4.5
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 10
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 4
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 4
  T = 999: false
-30: IF A = 999 THEN 100
+F(R) 30: IF A = 999 THEN 100
  A: 1000
  A = 999: false
-40: IF B = 999 THEN 200
+F(R) 40: IF B = 999 THEN 200
  B: 999
  B = 999: true
-210: GOSUB 1000
+F(R) 210: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 10
  T: 4
@@ -52,24 +52,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 40
  R2 = 1.56438
 G(1010) 1099: RETURN
-220: LET B = (A + P1) * R2 - P1
+F(R) 220: LET B = (A + P1) * R2 - P1
  A: 1000
  P1: 0
  R2: 1.56438
  B = 1564.38
-225: IF B < 0 THEN 850
+F(R) 225: IF B < 0 THEN 850
  B: 1564.38
  B < 0: false
-230: PRINT "FINAL AMOUNT = $" B
+F(R) 230: PRINT "FINAL AMOUNT = $" B
 FINAL AMOUNT = $
  B: 1564.38
  1564.38
-240: GOTO 5
-5: PRINT
+F(R) 240: GOTO 5
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 0,999,10,5,20,12
  A = 0
  B = 999
@@ -77,31 +77,31 @@ A, B, P, R, Y, T
  R = 5
  Y = 20
  T = 12
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 0
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 999
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 20
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 12
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 12
  T = 999: false
-30: IF A = 999 THEN 100
+F(R) 30: IF A = 999 THEN 100
  A: 0
  A = 999: false
-40: IF B = 999 THEN 200
+F(R) 40: IF B = 999 THEN 200
  B: 999
  B = 999: true
-210: GOSUB 1000
+F(R) 210: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 20
  T: 12
@@ -119,24 +119,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 240
  R2 = 2.7148
 G(1010) 1099: RETURN
-220: LET B = (A + P1) * R2 - P1
+F(R) 220: LET B = (A + P1) * R2 - P1
  A: 0
  P1: 2400
  R2: 2.7148
  B = 4115.52
-225: IF B < 0 THEN 850
+F(R) 225: IF B < 0 THEN 850
  B: 4115.52
  B < 0: false
-230: PRINT "FINAL AMOUNT = $" B
+F(R) 230: PRINT "FINAL AMOUNT = $" B
 FINAL AMOUNT = $
  B: 4115.52
  4115.52
-240: GOTO 5
-5: PRINT
+F(R) 240: GOTO 5
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 999,1000,25,5,10,4
  A = 999
  B = 1000
@@ -144,28 +144,28 @@ A, B, P, R, Y, T
  R = 5
  Y = 10
  T = 4
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 999
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 1000
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 10
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 4
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 4
  T = 999: false
-30: IF A = 999 THEN 100
+F(R) 30: IF A = 999 THEN 100
  A: 999
  A = 999: true
-110: GOSUB 1000
+F(R) 110: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 10
  T: 4
@@ -183,22 +183,22 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 40
  R2 = 1.64362
 G(1010) 1099: RETURN
-120: LET A = (B + P1) / R2 - P1
+F(R) 120: LET A = (B + P1) / R2 - P1
  B: 1000
  P1: 2000
  R2: 1.64362
  A = -174.76
-125: IF A < 0 THEN 850
+F(R) 125: IF A < 0 THEN 850
  A: -174.76
  A < 0: true
-850: PRINT "ANSWER IS NEGATIVE."
+F(R) 850: PRINT "ANSWER IS NEGATIVE."
 ANSWER IS NEGATIVE.
-860: GOTO 5
-5: PRINT
+F(R) 860: GOTO 5
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 999,0,-6000,5,20,1
  A = 999
  B = 0
@@ -206,28 +206,28 @@ A, B, P, R, Y, T
  R = 5
  Y = 20
  T = 1
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 999
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 0
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 20
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 1
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 1
  T = 999: false
-30: IF A = 999 THEN 100
+F(R) 30: IF A = 999 THEN 100
  A: 999
  A = 999: true
-110: GOSUB 1000
+F(R) 110: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 20
  T: 1
@@ -245,24 +245,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 20
  R2 = 2.6533
 G(1010) 1099: RETURN
-120: LET A = (B + P1) / R2 - P1
+F(R) 120: LET A = (B + P1) / R2 - P1
  B: 0
  P1: -120000
  R2: 2.6533
  A = 74773.3
-125: IF A < 0 THEN 850
+F(R) 125: IF A < 0 THEN 850
  A: 74773.3
  A < 0: false
-130: PRINT "ORIGINAL AMOUNT = $" A
+F(R) 130: PRINT "ORIGINAL AMOUNT = $" A
 ORIGINAL AMOUNT = $
  A: 74773.3
  74773.3
-140: GOTO 5
-5: PRINT
+F(R) 140: GOTO 5
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 2000,0,-92.62,999,2,12
  A = 2000
  B = 0
@@ -270,50 +270,50 @@ A, B, P, R, Y, T
  R = 999
  Y = 2
  T = 12
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 2000
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 0
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 999
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 2
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 12
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 12
  T = 999: false
-30: IF A = 999 THEN 100
+F(R) 30: IF A = 999 THEN 100
  A: 2000
  A = 999: false
-40: IF B = 999 THEN 200
+F(R) 40: IF B = 999 THEN 200
  B: 0
  B = 999: false
-50: IF P = 999 THEN 300
+F(R) 50: IF P = 999 THEN 300
  P: -92.62
  P = 999: false
-60: IF Y = 999 THEN 400
+F(R) 60: IF Y = 999 THEN 400
  Y: 2
  Y = 999: false
-70: IF R = 999 THEN 500
+F(R) 70: IF R = 999 THEN 500
  R: 999
  R = 999: true
-505: LET S = B - (A + Y * T * P)
+F(R) 505: LET S = B - (A + Y * T * P)
  B: 0
  A: 2000
  Y: 2
  T: 12
  P: -92.62
  S = 222.88
-510: FOR R = 0.1 TO 100 STEP 0.1
+F(R) 510: FOR R = 0.1 TO 100 STEP 0.1
  R = 0.1
  terminated:false
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -331,24 +331,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.00192
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -1111440
  R2: 1.00192
  S1 = 130
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 222.88
  S1: 130
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 130
  S = 130
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.1
  terminated:false
  R = 0.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -366,24 +366,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.00409
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -555719
  R2: 1.00409
  S1 = 265
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 130
  S1: 265
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 265
  S = 265
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.2
  terminated:false
  R = 0.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -401,24 +401,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.00602
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -370480
  R2: 1.00602
  S1 = 218
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 265
  S1: 218
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 218
  S = 218
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.3
  terminated:false
  R = 0.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -436,24 +436,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.00795
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -277860
  R2: 1.00795
  S1 = 193
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 218
  S1: 193
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 193
  S = 193
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.4
  terminated:false
  R = 0.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -471,24 +471,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.01013
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -222288
  R2: 1.01013
  S1 = 232
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 193
  S1: 232
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 232
  S = 232
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.5
  terminated:false
  R = 0.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -506,24 +506,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.01207
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -185240
  R2: 1.01207
  S1 = 212
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 232
  S1: 212
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 212
  S = 212
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.6
  terminated:false
  R = 0.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -541,24 +541,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.01401
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -158777
  R2: 1.01401
  S1 = 196
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 212
  S1: 196
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 196
  S = 196
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.7
  terminated:false
  R = 0.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -576,24 +576,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.0162
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -138930
  R2: 1.0162
  S1 = 218
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 196
  S1: 218
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 218
  S = 218
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.8
  terminated:false
  R = 0.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -611,24 +611,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.01816
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -123493
  R2: 1.01816
  S1 = 206
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 218
  S1: 206
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 206
  S = 206
-540: NEXT R
+F(R) 540: NEXT R
  R: 0.9
  terminated:false
  R = 1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -646,24 +646,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.02011
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -111144
  R2: 1.02011
  S1 = 195
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 206
  S1: 195
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 195
  S = 195
-540: NEXT R
+F(R) 540: NEXT R
  R: 1
  terminated:false
  R = 1.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -681,24 +681,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.02232
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -101040
  R2: 1.02232
  S1 = 211
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 195
  S1: 211
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 211
  S = 211
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.1
  terminated:false
  R = 1.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -716,24 +716,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.02428
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -92620
  R2: 1.02428
  S1 = 200.3
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 211
  S1: 200.3
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 200.3
  S = 200.3
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.2
  terminated:false
  R = 1.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -751,24 +751,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.02624
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -85495.6
  R2: 1.02624
  S1 = 190.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 200.3
  S1: 190.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 190.9
  S = 190.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.3
  terminated:false
  R = 1.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -786,24 +786,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.02846
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -79388.3
  R2: 1.02846
  S1 = 202.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 190.9
  S1: 202.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 202.5
  S = 202.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.4
  terminated:false
  R = 1.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -821,24 +821,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.03044
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -74096
  R2: 1.03044
  S1 = 194.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 202.5
  S1: 194.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 194.6
  S = 194.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.5
  terminated:false
  R = 1.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -856,24 +856,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.03241
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -69465.2
  R2: 1.03241
  S1 = 186.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 194.6
  S1: 186.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 186.5
  S = 186.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.6
  terminated:false
  R = 1.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -891,24 +891,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.03464
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -65378.7
  R2: 1.03464
  S1 = 195.4
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 186.5
  S1: 195.4
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 195.4
  S = 195.4
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.7
  terminated:false
  R = 1.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -926,24 +926,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.03663
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -61746.7
  R2: 1.03663
  S1 = 188.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 195.4
  S1: 188.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 188.5
  S = 188.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.8
  terminated:false
  R = 1.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -961,24 +961,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.03862
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -58497
  R2: 1.03862
  S1 = 181.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 188.5
  S1: 181.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 181.9
  S = 181.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 1.9
  terminated:false
  R = 2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -996,24 +996,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.04086
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -55571.9
  R2: 1.04086
  S1 = 188.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 181.9
  S1: 188.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 188.9
  S = 188.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 2
  terminated:false
  R = 2.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1031,24 +1031,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.04286
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -52925.7
  R2: 1.04286
  S1 = 182.7
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 188.9
  S1: 182.7
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 182.7
  S = 182.7
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.1
  terminated:false
  R = 2.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1066,24 +1066,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.04486
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -50520.1
  R2: 1.04486
  S1 = 176.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 182.7
  S1: 176.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 176.6
  S = 176.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.2
  terminated:false
  R = 2.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1101,24 +1101,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.04711
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -48323.4
  R2: 1.04711
  S1 = 182.3
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 176.6
  S1: 182.3
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 182.3
  S = 182.3
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.3
  terminated:false
  R = 2.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1136,24 +1136,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.04912
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -46310
  R2: 1.04912
  S1 = 176.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 182.3
  S1: 176.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 176.5
  S = 176.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.4
  terminated:false
  R = 2.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1171,24 +1171,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.05113
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -44457.7
  R2: 1.05113
  S1 = 170.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 176.5
  S1: 170.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 170.9
  S = 170.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.5
  terminated:false
  R = 2.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1206,24 +1206,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.0534
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -42747.6
  R2: 1.0534
  S1 = 175.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 170.9
  S1: 175.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 175.9
  S = 175.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.6
  terminated:false
  R = 2.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1241,24 +1241,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.05542
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -41164.4
  R2: 1.05542
  S1 = 170.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 175.9
  S1: 170.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 170.5
  S = 170.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.7
  terminated:false
  R = 2.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1276,24 +1276,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.05744
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -39694.3
  R2: 1.05744
  S1 = 165.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 170.5
  S1: 165.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 165.2
  S = 165.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.8
  terminated:false
  R = 2.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1311,24 +1311,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.05973
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -38325.5
  R2: 1.05973
  S1 = 169.7
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 165.2
  S1: 169.7
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 169.7
  S = 169.7
-540: NEXT R
+F(R) 540: NEXT R
  R: 2.9
  terminated:false
  R = 3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1346,24 +1346,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.06176
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -37048
  R2: 1.06176
  S1 = 164.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 169.7
  S1: 164.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 164.6
  S = 164.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 3
  terminated:false
  R = 3.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1381,24 +1381,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.06379
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -35852.9
  R2: 1.06379
  S1 = 159.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 164.6
  S1: 159.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 159.5
  S = 159.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.1
  terminated:false
  R = 3.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1416,24 +1416,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.06609
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -34732.5
  R2: 1.06609
  S1 = 163.3
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 159.5
  S1: 163.3
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 163.3
  S = 163.3
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.2
  terminated:false
  R = 3.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1451,24 +1451,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.06813
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -33680
  R2: 1.06813
  S1 = 158.4
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 163.3
  S1: 158.4
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 158.4
  S = 158.4
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.3
  terminated:false
  R = 3.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1486,24 +1486,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.07018
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -32689.5
  R2: 1.07018
  S1 = 153.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 158.4
  S1: 153.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 153.8
  S = 153.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.4
  terminated:false
  R = 3.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1521,24 +1521,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.07248
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -31755.4
  R2: 1.07248
  S1 = 156.7
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 153.8
  S1: 156.7
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 156.7
  S = 156.7
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.5
  terminated:false
  R = 3.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1556,24 +1556,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.07454
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -30873.3
  R2: 1.07454
  S1 = 152.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 156.7
  S1: 152.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 152.2
  S = 152.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.6
  terminated:false
  R = 3.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1591,24 +1591,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.0766
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -30039
  R2: 1.0766
  S1 = 147.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 152.2
  S1: 147.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 147.8
  S = 147.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.7
  terminated:false
  R = 3.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1626,24 +1626,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.07892
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -29248.4
  R2: 1.07892
  S1 = 150.4
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 147.8
  S1: 150.4
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 150.4
  S = 150.4
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.8
  terminated:false
  R = 3.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1661,24 +1661,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.08099
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -28498.5
  R2: 1.08099
  S1 = 146.1
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 150.4
  S1: 146.1
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 146.1
  S = 146.1
-540: NEXT R
+F(R) 540: NEXT R
  R: 3.9
  terminated:false
  R = 4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1696,24 +1696,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.08306
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -27786
  R2: 1.08306
  S1 = 141.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 146.1
  S1: 141.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 141.8
  S = 141.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 4
  terminated:false
  R = 4.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1731,24 +1731,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.08539
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -27108.3
  R2: 1.08539
  S1 = 144
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 141.8
  S1: 144
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 144
  S = 144
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.1
  terminated:false
  R = 4.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1766,24 +1766,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.08747
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -26462.9
  R2: 1.08747
  S1 = 139.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 144
  S1: 139.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 139.8
  S = 139.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.2
  terminated:false
  R = 4.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1801,24 +1801,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.08955
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -25847.5
  R2: 1.08955
  S1 = 135.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 139.8
  S1: 135.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 135.5
  S = 135.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.3
  terminated:false
  R = 4.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1836,24 +1836,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.0919
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -25260
  R2: 1.0919
  S1 = 137.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 135.5
  S1: 137.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 137.6
  S = 137.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.4
  terminated:false
  R = 4.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1871,24 +1871,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.09399
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -24698.7
  R2: 1.09399
  S1 = 133.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 137.6
  S1: 133.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 133.5
  S = 133.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.5
  terminated:false
  R = 4.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1906,24 +1906,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.09608
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -24161.8
  R2: 1.09608
  S1 = 129.3
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 133.5
  S1: 129.3
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 129.3
  S = 129.3
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.6
  terminated:false
  R = 4.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1941,24 +1941,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.09845
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -23647.6
  R2: 1.09845
  S1 = 131.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 129.3
  S1: 131.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 131.2
  S = 131.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.7
  terminated:false
  R = 4.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -1976,24 +1976,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.10055
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -23155
  R2: 1.10055
  S1 = 127.1
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 131.2
  S1: 127.1
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 127.1
  S = 127.1
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.8
  terminated:false
  R = 4.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2011,24 +2011,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.10265
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -22682.5
  R2: 1.10265
  S1 = 123.1
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 127.1
  S1: 123.1
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 123.1
  S = 123.1
-540: NEXT R
+F(R) 540: NEXT R
  R: 4.9
  terminated:false
  R = 5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2046,24 +2046,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.10503
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -22228.8
  R2: 1.10503
  S1 = 124.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 123.1
  S1: 124.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 124.6
  S = 124.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 5
  terminated:false
  R = 5.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2081,24 +2081,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.10714
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -21792.9
  R2: 1.10714
  S1 = 120.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 124.6
  S1: 120.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 120.6
  S = 120.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.1
  terminated:false
  R = 5.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2116,24 +2116,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.10926
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -21373.9
  R2: 1.10926
  S1 = 116.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 120.6
  S1: 116.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 116.8
  S = 116.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.2
  terminated:false
  R = 5.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2151,24 +2151,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.11165
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -20970.6
  R2: 1.11165
  S1 = 118.1
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 116.8
  S1: 118.1
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 118.1
  S = 118.1
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.3
  terminated:false
  R = 5.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2186,24 +2186,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.11378
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -20582.2
  R2: 1.11378
  S1 = 114.3
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 118.1
  S1: 114.3
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 114.3
  S = 114.3
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.4
  terminated:false
  R = 5.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2221,24 +2221,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.11591
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -20208
  R2: 1.11591
  S1 = 110.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 114.3
  S1: 110.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 110.5
  S = 110.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.5
  terminated:false
  R = 5.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2256,24 +2256,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.11831
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -19847.1
  R2: 1.11831
  S1 = 111.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 110.5
  S1: 111.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 111.5
  S = 111.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.6
  terminated:false
  R = 5.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2291,24 +2291,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.12045
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -19498.9
  R2: 1.12045
  S1 = 107.7
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 111.5
  S1: 107.7
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 107.7
  S = 107.7
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.7
  terminated:false
  R = 5.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2326,24 +2326,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.12259
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -19162.8
  R2: 1.12259
  S1 = 104
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 107.7
  S1: 104
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 104
  S = 104
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.8
  terminated:false
  R = 5.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2361,24 +2361,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.12501
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -18838
  R2: 1.12501
  S1 = 104.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 104
  S1: 104.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 104.9
  S = 104.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 5.9
  terminated:false
  R = 6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2396,24 +2396,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.12716
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -18524
  R2: 1.12716
  S1 = 101.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 104.9
  S1: 101.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 101.2
  S = 101.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 6
  terminated:false
  R = 6.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2431,24 +2431,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.12932
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -18220.3
  R2: 1.12932
  S1 = 97.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 101.2
  S1: 97.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 97.6
  S = 97.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.1
  terminated:false
  R = 6.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2466,24 +2466,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.13174
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -17926.4
  R2: 1.13174
  S1 = 98.1
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 97.6
  S1: 98.1
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 98.1
  S = 98.1
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.2
  terminated:false
  R = 6.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2501,24 +2501,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.13391
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -17641.9
  R2: 1.13391
  S1 = 94.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 98.1
  S1: 94.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 94.6
  S = 94.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.3
  terminated:false
  R = 6.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2536,24 +2536,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.13608
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -17366.3
  R2: 1.13608
  S1 = 91
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 94.6
  S1: 91
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 91
  S = 91
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.4
  terminated:false
  R = 6.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2571,24 +2571,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.13852
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -17099.1
  R2: 1.13852
  S1 = 91.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 91
  S1: 91.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 91.5
  S = 91.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.5
  terminated:false
  R = 6.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2606,24 +2606,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.1407
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -16840
  R2: 1.1407
  S1 = 88
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 91.5
  S1: 88
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 88
  S = 88
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.6
  terminated:false
  R = 6.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2641,24 +2641,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.14288
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -16588.7
  R2: 1.14288
  S1 = 84.4
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 88
  S1: 84.4
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 84.4
  S = 84.4
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.7
  terminated:false
  R = 6.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2676,24 +2676,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.14533
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -16344.7
  R2: 1.14533
  S1 = 84.7
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 84.4
  S1: 84.7
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 84.7
  S = 84.7
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.8
  terminated:false
  R = 6.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2711,24 +2711,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.14752
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -16107.8
  R2: 1.14752
  S1 = 81.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 84.7
  S1: 81.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 81.2
  S = 81.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 6.9
  terminated:false
  R = 7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2746,24 +2746,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.14971
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -15877.7
  R2: 1.14971
  S1 = 77.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 81.2
  S1: 77.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 77.6
  S = 77.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 7
  terminated:false
  R = 7.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2781,24 +2781,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.15219
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -15654.1
  R2: 1.15219
  S1 = 78
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 77.6
  S1: 78
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 78
  S = 78
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.1
  terminated:false
  R = 7.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2816,24 +2816,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.15439
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -15436.7
  R2: 1.15439
  S1 = 74.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 78
  S1: 74.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 74.5
  S = 74.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.2
  terminated:false
  R = 7.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2851,24 +2851,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.15659
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -15225.2
  R2: 1.15659
  S1 = 70.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 74.5
  S1: 70.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 70.9
  S = 70.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.3
  terminated:false
  R = 7.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2886,24 +2886,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.15908
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -15019.5
  R2: 1.15908
  S1 = 71.1
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 70.9
  S1: 71.1
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 71.1
  S = 71.1
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.4
  terminated:false
  R = 7.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2921,24 +2921,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.16129
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -14819.2
  R2: 1.16129
  S1 = 67.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 71.1
  S1: 67.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 67.6
  S = 67.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.5
  terminated:false
  R = 7.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2956,24 +2956,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.16351
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -14624.2
  R2: 1.16351
  S1 = 64.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 67.6
  S1: 64.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 64.2
  S = 64.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.6
  terminated:false
  R = 7.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -2991,24 +2991,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.16601
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -14434.3
  R2: 1.16601
  S1 = 64.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 64.2
  S1: 64.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 64.2
  S = 64.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.7
  terminated:false
  R = 7.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3026,24 +3026,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.16824
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -14249.2
  R2: 1.16824
  S1 = 60.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 64.2
  S1: 60.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 60.8
  S = 60.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.8
  terminated:false
  R = 7.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3061,24 +3061,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.17047
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -14068.9
  R2: 1.17047
  S1 = 57.4
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 60.8
  S1: 57.4
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 57.4
  S = 57.4
-540: NEXT R
+F(R) 540: NEXT R
  R: 7.9
  terminated:false
  R = 8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3096,24 +3096,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.17298
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -13893
  R2: 1.17298
  S1 = 57.3
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 57.4
  S1: 57.3
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 57.3
  S = 57.3
-540: NEXT R
+F(R) 540: NEXT R
  R: 8
  terminated:false
  R = 8.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3131,24 +3131,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.17522
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -13721.5
  R2: 1.17522
  S1 = 53.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 57.3
  S1: 53.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 53.8
  S = 53.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.1
  terminated:false
  R = 8.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3166,24 +3166,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.17746
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -13554.2
  R2: 1.17746
  S1 = 50.4
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 53.8
  S1: 50.4
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 50.4
  S = 50.4
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.2
  terminated:false
  R = 8.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3201,24 +3201,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.17999
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -13390.8
  R2: 1.17999
  S1 = 50.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 50.4
  S1: 50.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 50.2
  S = 50.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.3
  terminated:false
  R = 8.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3236,24 +3236,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.18224
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -13231.4
  R2: 1.18224
  S1 = 46.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 50.2
  S1: 46.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 46.8
  S = 46.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.4
  terminated:false
  R = 8.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3271,24 +3271,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.1845
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -13075.8
  R2: 1.1845
  S1 = 43.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 46.8
  S1: 43.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 43.5
  S = 43.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.5
  terminated:false
  R = 8.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3306,24 +3306,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.18704
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -12923.7
  R2: 1.18704
  S1 = 43.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 43.5
  S1: 43.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 43.2
  S = 43.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.6
  terminated:false
  R = 8.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3341,24 +3341,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.18931
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -12775.2
  R2: 1.18931
  S1 = 39.9
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 43.2
  S1: 39.9
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 39.9
  S = 39.9
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.7
  terminated:false
  R = 8.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3376,24 +3376,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.19158
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -12630
  R2: 1.19158
  S1 = 36.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 39.9
  S1: 36.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 36.5
  S = 36.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.8
  terminated:false
  R = 8.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3411,24 +3411,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.19414
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -12488.1
  R2: 1.19414
  S1 = 36.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 36.5
  S1: 36.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 36.2
  S = 36.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 8.9
  terminated:false
  R = 9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3446,24 +3446,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.19641
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -12349.3
  R2: 1.19641
  S1 = 32.7
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 36.2
  S1: 32.7
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 32.7
  S = 32.7
-540: NEXT R
+F(R) 540: NEXT R
  R: 9
  terminated:false
  R = 9.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3481,24 +3481,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.1987
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -12213.6
  R2: 1.1987
  S1 = 29.4
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 32.7
  S1: 29.4
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 29.4
  S = 29.4
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.1
  terminated:false
  R = 9.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3516,24 +3516,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.20127
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -12080.9
  R2: 1.20127
  S1 = 29
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 29.4
  S1: 29
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 29
  S = 29
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.2
  terminated:false
  R = 9.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3551,24 +3551,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.20356
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11951
  R2: 1.20356
  S1 = 25.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 29
  S1: 25.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 25.6
  S = 25.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.3
  terminated:false
  R = 9.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3586,24 +3586,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.20585
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11823.8
  R2: 1.20585
  S1 = 22.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 25.6
  S1: 22.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 22.2
  S = 22.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.4
  terminated:false
  R = 9.5
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3621,24 +3621,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.20844
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11699.4
  R2: 1.20844
  S1 = 21.7
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 22.2
  S1: 21.7
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 21.7
  S = 21.7
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.5
  terminated:false
  R = 9.6
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3656,24 +3656,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.21075
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11577.5
  R2: 1.21075
  S1 = 18.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 21.7
  S1: 18.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 18.5
  S = 18.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.6
  terminated:false
  R = 9.7
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3691,24 +3691,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.21305
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11458.1
  R2: 1.21305
  S1 = 15
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 18.5
  S1: 15
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 15
  S = 15
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.7
  terminated:false
  R = 9.8
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3726,24 +3726,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.21566
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11341.2
  R2: 1.21566
  S1 = 14.5
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 15
  S1: 14.5
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 14.5
  S = 14.5
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.8
  terminated:false
  R = 9.9
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3761,24 +3761,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.21797
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11226.7
  R2: 1.21797
  S1 = 11.1
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 14.5
  S1: 11.1
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 11.1
  S = 11.1
-540: NEXT R
+F(R) 540: NEXT R
  R: 9.9
  terminated:false
  R = 10
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3796,24 +3796,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.22029
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11114.4
  R2: 1.22029
  S1 = 7.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 11.1
  S1: 7.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 7.8
  S = 7.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 10
  terminated:false
  R = 10.1
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3831,24 +3831,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.22291
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -11004.4
  R2: 1.22291
  S1 = 7.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 7.8
  S1: 7.2
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 7.2
  S = 7.2
-540: NEXT R
+F(R) 540: NEXT R
  R: 10.1
  terminated:false
  R = 10.2
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3866,24 +3866,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.22524
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -10896.5
  R2: 1.22524
  S1 = 3.8
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 7.2
  S1: 3.8
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 3.8
  S = 3.8
-540: NEXT R
+F(R) 540: NEXT R
  R: 10.2
  terminated:false
  R = 10.3
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3901,24 +3901,24 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.22758
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -10790.7
  R2: 1.22758
  S1 = 0.6
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 3.8
  S1: 0.6
  S * S1 <= 0: false
-536: LET S = S1
+F(R) 536: LET S = S1
  S1: 0.6
  S = 0.6
-540: NEXT R
+F(R) 540: NEXT R
  R: 10.3
  terminated:false
  R = 10.4
-520: GOSUB 1000
+F(R) 520: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 2
  T: 12
@@ -3936,26 +3936,26 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 24
  R2 = 1.23021
 G(1010) 1099: RETURN
-530: LET S1 = B - ((A + P1) * R2 - P1)
+F(R) 530: LET S1 = B - ((A + P1) * R2 - P1)
  B: 0
  A: 2000
  P1: -10686.9
  R2: 1.23021
  S1 = -0.2
-535: IF S * S1 <= 0 THEN 550
+F(R) 535: IF S * S1 <= 0 THEN 550
  S: 0.6
  S1: -0.2
  S * S1 <= 0: true
-550: PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
+F(R) 550: PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
 ANNUAL INTEREST IS BETWEEN 
  R: 10.4
  10.3 AND  10.4 PERCENT
-560: GOTO 5
-5: PRINT
+F(R) 560: GOTO 5
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 30000,0,-2000,5,999,1
  A = 30000
  B = 0
@@ -3963,37 +3963,37 @@ A, B, P, R, Y, T
  R = 5
  Y = 999
  T = 1
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 30000
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 0
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 999
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 1
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 1
  T = 999: false
-30: IF A = 999 THEN 100
+F(R) 30: IF A = 999 THEN 100
  A: 30000
  A = 999: false
-40: IF B = 999 THEN 200
+F(R) 40: IF B = 999 THEN 200
  B: 0
  B = 999: false
-50: IF P = 999 THEN 300
+F(R) 50: IF P = 999 THEN 300
  P: -2000
  P = 999: false
-60: IF Y = 999 THEN 400
+F(R) 60: IF Y = 999 THEN 400
  Y: 999
  Y = 999: true
-410: GOSUB 1000
+F(R) 410: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 999
  T: 1
@@ -4011,29 +4011,29 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 999
  R2 = 1472680000000000000000
 G(1010) 1099: RETURN
-415: LET Q = (B + P1) / (A + P1)
+F(R) 415: LET Q = (B + P1) / (A + P1)
  B: 0
  P1: -40000
  A: 30000
  Q = 4
-416: IF Q <= 1 THEN 850
+F(R) 416: IF Q <= 1 THEN 850
  Q: 4
  Q <= 1: false
-420: LET Y = LOG(Q) / LOG(1 + R1) / T
+F(R) 420: LET Y = LOG(Q) / LOG(1 + R1) / T
  Q: 4
  R1: 0.05
  T: 1
  Y = 28.4133
-430: PRINT "NUMBER OF YEARS = " Y
+F(R) 430: PRINT "NUMBER OF YEARS = " Y
 NUMBER OF YEARS = 
  Y: 28.4133
  28.4133
-440: GOTO 5
-5: PRINT
+F(R) 440: GOTO 5
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 1000,500,10,5,999,12
  A = 1000
  B = 500
@@ -4041,37 +4041,37 @@ A, B, P, R, Y, T
  R = 5
  Y = 999
  T = 12
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 1000
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 500
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 999
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 12
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 12
  T = 999: false
-30: IF A = 999 THEN 100
+F(R) 30: IF A = 999 THEN 100
  A: 1000
  A = 999: false
-40: IF B = 999 THEN 200
+F(R) 40: IF B = 999 THEN 200
  B: 500
  B = 999: false
-50: IF P = 999 THEN 300
+F(R) 50: IF P = 999 THEN 300
  P: 10
  P = 999: false
-60: IF Y = 999 THEN 400
+F(R) 60: IF Y = 999 THEN 400
  Y: 999
  Y = 999: true
-410: GOSUB 1000
+F(R) 410: GOSUB 1000
 G(1010) 1010: LET N = Y * T
  Y: 999
  T: 12
@@ -4089,22 +4089,22 @@ G(1010) 1040: LET R2 = (1 + R1) ^ N
  N: 11988
  R2 = 4626190000000000000000
 G(1010) 1099: RETURN
-415: LET Q = (B + P1) / (A + P1)
+F(R) 415: LET Q = (B + P1) / (A + P1)
  B: 500
  P1: 2400
  A: 1000
  Q = 0.852941
-416: IF Q <= 1 THEN 850
+F(R) 416: IF Q <= 1 THEN 850
  Q: 0.852941
  Q <= 1: true
-850: PRINT "ANSWER IS NEGATIVE."
+F(R) 850: PRINT "ANSWER IS NEGATIVE."
 ANSWER IS NEGATIVE.
-860: GOTO 5
-5: PRINT
+F(R) 860: GOTO 5
+F(R) 5: PRINT
 
-10: PRINT "A, B, P, R, Y, T";
+F(R) 10: PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20: INPUT A, B, P, R, Y, T
+F(R) 20: INPUT A, B, P, R, Y, T
 ? 9,9,9,9,9,999
  A = 9
  B = 9
@@ -4112,24 +4112,24 @@ A, B, P, R, Y, T
  R = 9
  Y = 9
  T = 999
-21: IF A < 0 THEN 800
+F(R) 21: IF A < 0 THEN 800
  A: 9
  A < 0: false
-22: IF B < 0 THEN 800
+F(R) 22: IF B < 0 THEN 800
  B: 9
  B < 0: false
-23: IF R <= 0 THEN 800
+F(R) 23: IF R <= 0 THEN 800
  R: 9
  R <= 0: false
-24: IF Y <= 0 THEN 800
+F(R) 24: IF Y <= 0 THEN 800
  Y: 9
  Y <= 0: false
-25: IF T <= 0 THEN 800
+F(R) 25: IF T <= 0 THEN 800
  T: 999
  T <= 0: false
-26: IF T = 999 THEN 9999
+F(R) 26: IF T = 999 THEN 9999
  T: 999
  T = 999: true
-9999: END
+F(R) 9999: END
 STOP in line 9999
 

@@ -28,37 +28,37 @@ Halstead complexity:
 (0 2) 20 DIM A(3, 4)
   Origs: 11:auto
   Dests: 21:auto
-(1 3) 21 FOR I = 1 TO 3
+F(I) (1 3) 21 FOR I = 1 TO 3
   Origs: 20:auto
   Dests: 22:fornext, 25:fornext
-(1 3) 22 FOR J = 1 TO 4
+F(I,J) (1 3) 22 FOR J = 1 TO 4
   Origs: 21:fornext
   Dests: 23:fornext, 24:fornext
-(0 4) 23 LET A(I, J) = I * J
+F(I,J) (0 4) 23 LET A(I, J) = I * J
   Origs: 22:fornext
   Dests: 24:auto
-(0 1) 24 NEXT J
+F(I,J) (0 1) 24 NEXT J
   Origs: 22:fornext, 23:auto
   Dests: 25:auto
-(0 1) 25 NEXT I
+F(I) (0 1) 25 NEXT I
   Origs: 21:fornext, 24:auto
   Dests: 30:auto
 (0 2) 30 DIM A1(2, 6)
   Origs: 25:auto
   Dests: 31:auto
-(1 3) 31 FOR I = 1 TO 2
+F(I) (1 3) 31 FOR I = 1 TO 2
   Origs: 30:auto
   Dests: 32:fornext, 35:fornext
-(1 3) 32 FOR J = 1 TO 6
+F(I,J) (1 3) 32 FOR J = 1 TO 6
   Origs: 31:fornext
   Dests: 33:fornext, 34:fornext
-(0 4) 33 LET A1(I, J) = I / J
+F(I,J) (0 4) 33 LET A1(I, J) = I / J
   Origs: 32:fornext
   Dests: 34:auto
-(0 1) 34 NEXT J
+F(I,J) (0 1) 34 NEXT J
   Origs: 32:fornext, 33:auto
   Dests: 35:auto
-(0 1) 35 NEXT I
+F(I) (0 1) 35 NEXT I
   Origs: 31:fornext, 34:auto
   Dests: 40:auto
 (0 2) 40 MAT PRINT A

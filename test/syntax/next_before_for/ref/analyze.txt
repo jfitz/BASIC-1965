@@ -25,20 +25,20 @@ Halstead complexity:
 (0 2) 20 GOTO 50
   Origs: :start
   Dests: 50:goto
-(0 1) 30 NEXT I
+F(I) (0 1) 30 NEXT I
   Origs: 70:goto
   Dests: 40:auto
 (0 2) 40 GOTO 90
   Origs: 30:auto
   Dests: 90:goto
-(1 3) 50 FOR I = 1 TO 4
+F(I) (1 3) 50 FOR I = 1 TO 4
    ERROR: FOR without NEXT for I
   Origs: 20:goto
   Dests: 60:fornext
-(0 2) 60 PRINT I
+F(I) (0 2) 60 PRINT I
   Origs: 50:fornext
   Dests: 70:auto
-(0 3) 70 GOTO 30
+F(I) (0 3) 70 GOTO 30
   Origs: 60:auto
   Dests: 30:goto
 (0 1) 90 END

@@ -25,25 +25,25 @@ Halstead complexity:
 (0 4) 20 PRINT "X", "SQR(15+X)+SQR(X)", "SQR(15+X)-SQR(X)"
   Origs: :start
   Dests: 30:auto
-(1 3) 30 FOR X = 1 TO 100
+F(X) (1 3) 30 FOR X = 1 TO 100
   Origs: 20:auto
   Dests: 40:fornext, 90:fornext
-(0 4) 40 LET A1 = SQR(15 + X)
+F(X) (0 4) 40 LET A1 = SQR(15 + X)
   Origs: 30:fornext
   Dests: 50:auto
-(0 4) 50 LET A2 = SQR(X)
+F(X) (0 4) 50 LET A2 = SQR(X)
   Origs: 40:auto
   Dests: 60:auto
-(0 4) 60 LET A = A1 + A2
+F(X) (0 4) 60 LET A = A1 + A2
   Origs: 50:auto
   Dests: 70:auto
-(0 4) 70 LET B = A1 - A2
+F(X) (0 4) 70 LET B = A1 - A2
   Origs: 60:auto
   Dests: 80:auto
-(0 4) 80 PRINT X, A, B
+F(X) (0 4) 80 PRINT X, A, B
   Origs: 70:auto
   Dests: 90:auto
-(0 1) 90 NEXT X
+F(X) (0 1) 90 NEXT X
   Origs: 30:fornext, 80:auto
   Dests: 99:auto
 (0 1) 99 END

@@ -37,22 +37,22 @@ Halstead complexity:
 (0 3) 60 PRINT "TERM NUMBER", "TERM VALUE"
   Origs: 50:auto
   Dests: 70:auto
-(1 3) 70 FOR I = 0 TO N
+F(I) (1 3) 70 FOR I = 0 TO N
   Origs: 60:auto
   Dests: 80:fornext, 120:fornext
-(0 4) 80 LET K = I + 1
+F(I) (0 4) 80 LET K = I + 1
   Origs: 70:fornext
   Dests: 90:auto
-(0 4) 90 LET C = 1 / K
+F(I) (0 4) 90 LET C = 1 / K
   Origs: 80:auto
   Dests: 100:auto
-(0 4) 100 LET D = D + C
+F(I) (0 4) 100 LET D = D + C
   Origs: 90:auto
   Dests: 110:auto
-(0 3) 110 PRINT K, D
+F(I) (0 3) 110 PRINT K, D
   Origs: 100:auto
   Dests: 120:auto
-(0 1) 120 NEXT I
+F(I) (0 1) 120 NEXT I
   Origs: 70:fornext, 110:auto
   Dests: 130:auto
 (0 2) 130 PRINT

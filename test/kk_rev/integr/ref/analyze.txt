@@ -43,13 +43,13 @@ FNF(_) (0 7) 10 DEF FNF(X) = X ^ 2 + 3 * X + 1
 (0 3) 120 LET M = 0
   Origs: 100:auto
   Dests: 130:auto
-(1 7) 130 FOR X = A + H / 2 TO B STEP H
+F(X) (1 7) 130 FOR X = A + H / 2 TO B STEP H
   Origs: 120:auto
   Dests: 140:fornext, 150:fornext
-(0 6) 140 LET M = M + FNF(X)
+F(X) (0 6) 140 LET M = M + FNF(X)
   Origs: 130:fornext
   Dests: 10:function, 150:auto
-(0 1) 150 NEXT X
+F(X) (0 1) 150 NEXT X
   Origs: 130:fornext, 140:auto
   Dests: 160:auto
 (0 4) 160 LET M = M * H

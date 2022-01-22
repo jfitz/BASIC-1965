@@ -1,43 +1,43 @@
-20: FOR I = 1 TO 4
+F(I) 20: FOR I = 1 TO 4
  I = 1
  terminated:false
-30: IF MOD(I, 2) = 0 THEN 70
+F(I) 30: IF MOD(I, 2) = 0 THEN 70
  I: 1
  MOD(I, 2) = 0: false
-40: PRINT I; " IS ODD"
+F(I) 40: PRINT I; " IS ODD"
  I: 1
  1  IS ODD
-50: NEXT I
+F(I) 50: NEXT I
  I: 1
  terminated:false
  I = 2
-30: IF MOD(I, 2) = 0 THEN 70
+F(I) 30: IF MOD(I, 2) = 0 THEN 70
  I: 2
  MOD(I, 2) = 0: true
-70: PRINT I; " IS EVEN"
+F(I) 70: PRINT I; " IS EVEN"
  I: 2
  2  IS EVEN
-80: NEXT I
+F(I) 80: NEXT I
  I: 2
  terminated:false
  I = 3
-30: IF MOD(I, 2) = 0 THEN 70
+F(I) 30: IF MOD(I, 2) = 0 THEN 70
  I: 3
  MOD(I, 2) = 0: false
-40: PRINT I; " IS ODD"
+F(I) 40: PRINT I; " IS ODD"
  I: 3
  3  IS ODD
-50: NEXT I
+F(I) 50: NEXT I
  I: 3
  terminated:false
  I = 4
-30: IF MOD(I, 2) = 0 THEN 70
+F(I) 30: IF MOD(I, 2) = 0 THEN 70
  I: 4
  MOD(I, 2) = 0: true
-70: PRINT I; " IS EVEN"
+F(I) 70: PRINT I; " IS EVEN"
  I: 4
  4  IS EVEN
-80: NEXT I
+F(I) 80: NEXT I
  I: 4
  terminated:true
 90: END

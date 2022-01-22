@@ -34,16 +34,16 @@ Halstead complexity:
 (0 2) 50 PRINT
   Origs: 40:auto
   Dests: 100:auto
-(1 3) 100 FOR N = A TO B
+F(N) (1 3) 100 FOR N = A TO B
   Origs: 50:auto
   Dests: 110:fornext, 130:fornext
-(0 3) 110 LET N0 = N
+F(N) (0 3) 110 LET N0 = N
   Origs: 100:fornext
   Dests: 120:auto
-(0 2) 120 GOSUB 400
+F(N) (0 2) 120 GOSUB 400
   Origs: 110:auto
   Dests: 130:auto, 410:gosub
-(0 1) 130 NEXT N
+F(N) (0 1) 130 NEXT N
   Origs: 100:fornext, 120:auto
   Dests: 140:auto
 (0 1) 140 STOP

@@ -1,2505 +1,2505 @@
 20: PRINT "X", "SQR(15+X)+SQR(X)", "SQR(15+X)-SQR(X)"
 X               SQR(15+X)+SQR(X)SQR(15+X)-SQR(X)
-30: FOR X = 1 TO 100
+F(X) 30: FOR X = 1 TO 100
  X = 1
  terminated:false
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (30) 1
  A1 = 4
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (30) 1
  A2 = 1
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4
  A2: (50) 1
  A = 5
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4
  A2: (50) 1
  B = 3
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (30) 1
  1              
  A: (60) 5
  5              
  B: (70) 3
  3
-90: NEXT X
+F(X) 90: NEXT X
  X: (30) 1
  terminated:false
  X = 2
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 2
  A1 = 4.12311
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 2
  A2 = 1.41421
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.12311
  A2: (50) 1.41421
  A = 5.53732
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.12311
  A2: (50) 1.41421
  B = 2.7089
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 2
  2              
  A: (60) 5.53732
  5.53732        
  B: (70) 2.7089
  2.7089
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 2
  terminated:false
  X = 3
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 3
  A1 = 4.24264
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 3
  A2 = 1.73205
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.24264
  A2: (50) 1.73205
  A = 5.97469
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.24264
  A2: (50) 1.73205
  B = 2.51059
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 3
  3              
  A: (60) 5.97469
  5.97469        
  B: (70) 2.51059
  2.51059
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 3
  terminated:false
  X = 4
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 4
  A1 = 4.3589
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 4
  A2 = 2
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.3589
  A2: (50) 2
  A = 6.3589
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.3589
  A2: (50) 2
  B = 2.3589
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 4
  4              
  A: (60) 6.3589
  6.3589         
  B: (70) 2.3589
  2.3589
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 4
  terminated:false
  X = 5
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 5
  A1 = 4.47214
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 5
  A2 = 2.23607
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.47214
  A2: (50) 2.23607
  A = 6.70821
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.47214
  A2: (50) 2.23607
  B = 2.23607
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 5
  5              
  A: (60) 6.70821
  6.70821        
  B: (70) 2.23607
  2.23607
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 5
  terminated:false
  X = 6
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 6
  A1 = 4.58258
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 6
  A2 = 2.44949
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.58258
  A2: (50) 2.44949
  A = 7.03207
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.58258
  A2: (50) 2.44949
  B = 2.13309
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 6
  6              
  A: (60) 7.03207
  7.03207        
  B: (70) 2.13309
  2.13309
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 6
  terminated:false
  X = 7
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 7
  A1 = 4.69042
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 7
  A2 = 2.64575
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.69042
  A2: (50) 2.64575
  A = 7.33617
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.69042
  A2: (50) 2.64575
  B = 2.04467
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 7
  7              
  A: (60) 7.33617
  7.33617        
  B: (70) 2.04467
  2.04467
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 7
  terminated:false
  X = 8
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 8
  A1 = 4.79583
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 8
  A2 = 2.82843
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.79583
  A2: (50) 2.82843
  A = 7.62426
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.79583
  A2: (50) 2.82843
  B = 1.9674
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 8
  8              
  A: (60) 7.62426
  7.62426        
  B: (70) 1.9674
  1.9674
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 8
  terminated:false
  X = 9
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 9
  A1 = 4.89898
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 9
  A2 = 3
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 4.89898
  A2: (50) 3
  A = 7.89898
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 4.89898
  A2: (50) 3
  B = 1.89898
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 9
  9              
  A: (60) 7.89898
  7.89898        
  B: (70) 1.89898
  1.89898
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 9
  terminated:false
  X = 10
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 10
  A1 = 5
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 10
  A2 = 3.16228
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5
  A2: (50) 3.16228
  A = 8.16228
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5
  A2: (50) 3.16228
  B = 1.83772
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 10
  10             
  A: (60) 8.16228
  8.16228        
  B: (70) 1.83772
  1.83772
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 10
  terminated:false
  X = 11
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 11
  A1 = 5.09902
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 11
  A2 = 3.31662
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.09902
  A2: (50) 3.31662
  A = 8.41564
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.09902
  A2: (50) 3.31662
  B = 1.7824
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 11
  11             
  A: (60) 8.41564
  8.41564        
  B: (70) 1.7824
  1.7824
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 11
  terminated:false
  X = 12
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 12
  A1 = 5.19615
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 12
  A2 = 3.4641
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.19615
  A2: (50) 3.4641
  A = 8.66025
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.19615
  A2: (50) 3.4641
  B = 1.73205
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 12
  12             
  A: (60) 8.66025
  8.66025        
  B: (70) 1.73205
  1.73205
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 12
  terminated:false
  X = 13
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 13
  A1 = 5.2915
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 13
  A2 = 3.60555
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.2915
  A2: (50) 3.60555
  A = 8.89705
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.2915
  A2: (50) 3.60555
  B = 1.68595
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 13
  13             
  A: (60) 8.89705
  8.89705        
  B: (70) 1.68595
  1.68595
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 13
  terminated:false
  X = 14
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 14
  A1 = 5.38516
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 14
  A2 = 3.74166
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.38516
  A2: (50) 3.74166
  A = 9.12682
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.38516
  A2: (50) 3.74166
  B = 1.6435
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 14
  14             
  A: (60) 9.12682
  9.12682        
  B: (70) 1.6435
  1.6435
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 14
  terminated:false
  X = 15
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 15
  A1 = 5.47723
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 15
  A2 = 3.87298
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.47723
  A2: (50) 3.87298
  A = 9.35021
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.47723
  A2: (50) 3.87298
  B = 1.60425
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 15
  15             
  A: (60) 9.35021
  9.35021        
  B: (70) 1.60425
  1.60425
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 15
  terminated:false
  X = 16
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 16
  A1 = 5.56776
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 16
  A2 = 4
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.56776
  A2: (50) 4
  A = 9.56776
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.56776
  A2: (50) 4
  B = 1.56776
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 16
  16             
  A: (60) 9.56776
  9.56776        
  B: (70) 1.56776
  1.56776
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 16
  terminated:false
  X = 17
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 17
  A1 = 5.65685
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 17
  A2 = 4.12311
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.65685
  A2: (50) 4.12311
  A = 9.77996
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.65685
  A2: (50) 4.12311
  B = 1.53374
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 17
  17             
  A: (60) 9.77996
  9.77996        
  B: (70) 1.53374
  1.53374
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 17
  terminated:false
  X = 18
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 18
  A1 = 5.74456
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 18
  A2 = 4.24264
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.74456
  A2: (50) 4.24264
  A = 9.9872
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.74456
  A2: (50) 4.24264
  B = 1.50192
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 18
  18             
  A: (60) 9.9872
  9.9872         
  B: (70) 1.50192
  1.50192
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 18
  terminated:false
  X = 19
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 19
  A1 = 5.83095
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 19
  A2 = 4.3589
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.83095
  A2: (50) 4.3589
  A = 10.1899
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.83095
  A2: (50) 4.3589
  B = 1.47205
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 19
  19             
  A: (60) 10.1899
  10.1899        
  B: (70) 1.47205
  1.47205
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 19
  terminated:false
  X = 20
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 20
  A1 = 5.91608
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 20
  A2 = 4.47214
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 5.91608
  A2: (50) 4.47214
  A = 10.3882
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 5.91608
  A2: (50) 4.47214
  B = 1.44394
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 20
  20             
  A: (60) 10.3882
  10.3882        
  B: (70) 1.44394
  1.44394
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 20
  terminated:false
  X = 21
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 21
  A1 = 6
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 21
  A2 = 4.58258
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6
  A2: (50) 4.58258
  A = 10.5826
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6
  A2: (50) 4.58258
  B = 1.41742
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 21
  21             
  A: (60) 10.5826
  10.5826        
  B: (70) 1.41742
  1.41742
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 21
  terminated:false
  X = 22
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 22
  A1 = 6.08276
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 22
  A2 = 4.69042
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.08276
  A2: (50) 4.69042
  A = 10.7732
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.08276
  A2: (50) 4.69042
  B = 1.39234
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 22
  22             
  A: (60) 10.7732
  10.7732        
  B: (70) 1.39234
  1.39234
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 22
  terminated:false
  X = 23
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 23
  A1 = 6.16441
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 23
  A2 = 4.79583
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.16441
  A2: (50) 4.79583
  A = 10.9602
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.16441
  A2: (50) 4.79583
  B = 1.36858
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 23
  23             
  A: (60) 10.9602
  10.9602        
  B: (70) 1.36858
  1.36858
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 23
  terminated:false
  X = 24
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 24
  A1 = 6.245
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 24
  A2 = 4.89898
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.245
  A2: (50) 4.89898
  A = 11.144
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.245
  A2: (50) 4.89898
  B = 1.34602
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 24
  24             
  A: (60) 11.144
  11.144         
  B: (70) 1.34602
  1.34602
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 24
  terminated:false
  X = 25
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 25
  A1 = 6.32456
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 25
  A2 = 5
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.32456
  A2: (50) 5
  A = 11.3246
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.32456
  A2: (50) 5
  B = 1.32456
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 25
  25             
  A: (60) 11.3246
  11.3246        
  B: (70) 1.32456
  1.32456
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 25
  terminated:false
  X = 26
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 26
  A1 = 6.40312
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 26
  A2 = 5.09902
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.40312
  A2: (50) 5.09902
  A = 11.5021
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.40312
  A2: (50) 5.09902
  B = 1.3041
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 26
  26             
  A: (60) 11.5021
  11.5021        
  B: (70) 1.3041
  1.3041
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 26
  terminated:false
  X = 27
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 27
  A1 = 6.48074
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 27
  A2 = 5.19615
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.48074
  A2: (50) 5.19615
  A = 11.6769
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.48074
  A2: (50) 5.19615
  B = 1.28459
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 27
  27             
  A: (60) 11.6769
  11.6769        
  B: (70) 1.28459
  1.28459
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 27
  terminated:false
  X = 28
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 28
  A1 = 6.55744
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 28
  A2 = 5.2915
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.55744
  A2: (50) 5.2915
  A = 11.8489
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.55744
  A2: (50) 5.2915
  B = 1.26594
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 28
  28             
  A: (60) 11.8489
  11.8489        
  B: (70) 1.26594
  1.26594
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 28
  terminated:false
  X = 29
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 29
  A1 = 6.63325
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 29
  A2 = 5.38516
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.63325
  A2: (50) 5.38516
  A = 12.0184
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.63325
  A2: (50) 5.38516
  B = 1.24809
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 29
  29             
  A: (60) 12.0184
  12.0184        
  B: (70) 1.24809
  1.24809
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 29
  terminated:false
  X = 30
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 30
  A1 = 6.7082
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 30
  A2 = 5.47723
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.7082
  A2: (50) 5.47723
  A = 12.1854
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.7082
  A2: (50) 5.47723
  B = 1.23097
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 30
  30             
  A: (60) 12.1854
  12.1854        
  B: (70) 1.23097
  1.23097
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 30
  terminated:false
  X = 31
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 31
  A1 = 6.78233
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 31
  A2 = 5.56776
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.78233
  A2: (50) 5.56776
  A = 12.3501
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.78233
  A2: (50) 5.56776
  B = 1.21457
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 31
  31             
  A: (60) 12.3501
  12.3501        
  B: (70) 1.21457
  1.21457
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 31
  terminated:false
  X = 32
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 32
  A1 = 6.85565
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 32
  A2 = 5.65685
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.85565
  A2: (50) 5.65685
  A = 12.5125
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.85565
  A2: (50) 5.65685
  B = 1.1988
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 32
  32             
  A: (60) 12.5125
  12.5125        
  B: (70) 1.1988
  1.1988
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 32
  terminated:false
  X = 33
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 33
  A1 = 6.9282
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 33
  A2 = 5.74456
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 6.9282
  A2: (50) 5.74456
  A = 12.6728
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 6.9282
  A2: (50) 5.74456
  B = 1.18364
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 33
  33             
  A: (60) 12.6728
  12.6728        
  B: (70) 1.18364
  1.18364
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 33
  terminated:false
  X = 34
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 34
  A1 = 7
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 34
  A2 = 5.83095
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7
  A2: (50) 5.83095
  A = 12.831
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7
  A2: (50) 5.83095
  B = 1.16905
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 34
  34             
  A: (60) 12.831
  12.831         
  B: (70) 1.16905
  1.16905
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 34
  terminated:false
  X = 35
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 35
  A1 = 7.07107
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 35
  A2 = 5.91608
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.07107
  A2: (50) 5.91608
  A = 12.9872
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.07107
  A2: (50) 5.91608
  B = 1.15499
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 35
  35             
  A: (60) 12.9872
  12.9872        
  B: (70) 1.15499
  1.15499
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 35
  terminated:false
  X = 36
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 36
  A1 = 7.14143
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 36
  A2 = 6
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.14143
  A2: (50) 6
  A = 13.1414
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.14143
  A2: (50) 6
  B = 1.14143
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 36
  36             
  A: (60) 13.1414
  13.1414        
  B: (70) 1.14143
  1.14143
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 36
  terminated:false
  X = 37
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 37
  A1 = 7.2111
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 37
  A2 = 6.08276
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.2111
  A2: (50) 6.08276
  A = 13.2939
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.2111
  A2: (50) 6.08276
  B = 1.12834
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 37
  37             
  A: (60) 13.2939
  13.2939        
  B: (70) 1.12834
  1.12834
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 37
  terminated:false
  X = 38
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 38
  A1 = 7.28011
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 38
  A2 = 6.16441
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.28011
  A2: (50) 6.16441
  A = 13.4445
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.28011
  A2: (50) 6.16441
  B = 1.1157
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 38
  38             
  A: (60) 13.4445
  13.4445        
  B: (70) 1.1157
  1.1157
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 38
  terminated:false
  X = 39
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 39
  A1 = 7.34847
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 39
  A2 = 6.245
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.34847
  A2: (50) 6.245
  A = 13.5935
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.34847
  A2: (50) 6.245
  B = 1.10347
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 39
  39             
  A: (60) 13.5935
  13.5935        
  B: (70) 1.10347
  1.10347
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 39
  terminated:false
  X = 40
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 40
  A1 = 7.4162
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 40
  A2 = 6.32456
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.4162
  A2: (50) 6.32456
  A = 13.7408
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.4162
  A2: (50) 6.32456
  B = 1.09164
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 40
  40             
  A: (60) 13.7408
  13.7408        
  B: (70) 1.09164
  1.09164
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 40
  terminated:false
  X = 41
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 41
  A1 = 7.48331
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 41
  A2 = 6.40312
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.48331
  A2: (50) 6.40312
  A = 13.8864
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.48331
  A2: (50) 6.40312
  B = 1.08019
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 41
  41             
  A: (60) 13.8864
  13.8864        
  B: (70) 1.08019
  1.08019
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 41
  terminated:false
  X = 42
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 42
  A1 = 7.54983
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 42
  A2 = 6.48074
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.54983
  A2: (50) 6.48074
  A = 14.0306
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.54983
  A2: (50) 6.48074
  B = 1.06909
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 42
  42             
  A: (60) 14.0306
  14.0306        
  B: (70) 1.06909
  1.06909
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 42
  terminated:false
  X = 43
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 43
  A1 = 7.61577
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 43
  A2 = 6.55744
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.61577
  A2: (50) 6.55744
  A = 14.1732
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.61577
  A2: (50) 6.55744
  B = 1.05833
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 43
  43             
  A: (60) 14.1732
  14.1732        
  B: (70) 1.05833
  1.05833
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 43
  terminated:false
  X = 44
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 44
  A1 = 7.68115
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 44
  A2 = 6.63325
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.68115
  A2: (50) 6.63325
  A = 14.3144
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.68115
  A2: (50) 6.63325
  B = 1.0479
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 44
  44             
  A: (60) 14.3144
  14.3144        
  B: (70) 1.0479
  1.0479
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 44
  terminated:false
  X = 45
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 45
  A1 = 7.74597
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 45
  A2 = 6.7082
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.74597
  A2: (50) 6.7082
  A = 14.4542
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.74597
  A2: (50) 6.7082
  B = 1.03777
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 45
  45             
  A: (60) 14.4542
  14.4542        
  B: (70) 1.03777
  1.03777
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 45
  terminated:false
  X = 46
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 46
  A1 = 7.81025
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 46
  A2 = 6.78233
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.81025
  A2: (50) 6.78233
  A = 14.5926
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.81025
  A2: (50) 6.78233
  B = 1.02792
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 46
  46             
  A: (60) 14.5926
  14.5926        
  B: (70) 1.02792
  1.02792
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 46
  terminated:false
  X = 47
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 47
  A1 = 7.87401
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 47
  A2 = 6.85565
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.87401
  A2: (50) 6.85565
  A = 14.7297
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.87401
  A2: (50) 6.85565
  B = 1.01836
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 47
  47             
  A: (60) 14.7297
  14.7297        
  B: (70) 1.01836
  1.01836
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 47
  terminated:false
  X = 48
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 48
  A1 = 7.93725
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 48
  A2 = 6.9282
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 7.93725
  A2: (50) 6.9282
  A = 14.8655
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 7.93725
  A2: (50) 6.9282
  B = 1.00905
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 48
  48             
  A: (60) 14.8655
  14.8655        
  B: (70) 1.00905
  1.00905
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 48
  terminated:false
  X = 49
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 49
  A1 = 8
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 49
  A2 = 7
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8
  A2: (50) 7
  A = 15
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8
  A2: (50) 7
  B = 1
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 49
  49             
  A: (60) 15
  15             
  B: (70) 1
  1
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 49
  terminated:false
  X = 50
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 50
  A1 = 8.06226
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 50
  A2 = 7.07107
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.06226
  A2: (50) 7.07107
  A = 15.1333
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.06226
  A2: (50) 7.07107
  B = 0.99119
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 50
  50             
  A: (60) 15.1333
  15.1333        
  B: (70) 0.99119
  0.99119
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 50
  terminated:false
  X = 51
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 51
  A1 = 8.12404
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 51
  A2 = 7.14143
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.12404
  A2: (50) 7.14143
  A = 15.2655
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.12404
  A2: (50) 7.14143
  B = 0.98261
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 51
  51             
  A: (60) 15.2655
  15.2655        
  B: (70) 0.98261
  0.98261
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 51
  terminated:false
  X = 52
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 52
  A1 = 8.18535
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 52
  A2 = 7.2111
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.18535
  A2: (50) 7.2111
  A = 15.3965
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.18535
  A2: (50) 7.2111
  B = 0.97425
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 52
  52             
  A: (60) 15.3965
  15.3965        
  B: (70) 0.97425
  0.97425
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 52
  terminated:false
  X = 53
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 53
  A1 = 8.24621
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 53
  A2 = 7.28011
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.24621
  A2: (50) 7.28011
  A = 15.5263
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.24621
  A2: (50) 7.28011
  B = 0.9661
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 53
  53             
  A: (60) 15.5263
  15.5263        
  B: (70) 0.9661
  0.9661
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 53
  terminated:false
  X = 54
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 54
  A1 = 8.30662
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 54
  A2 = 7.34847
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.30662
  A2: (50) 7.34847
  A = 15.6551
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.30662
  A2: (50) 7.34847
  B = 0.95815
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 54
  54             
  A: (60) 15.6551
  15.6551        
  B: (70) 0.95815
  0.95815
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 54
  terminated:false
  X = 55
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 55
  A1 = 8.3666
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 55
  A2 = 7.4162
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.3666
  A2: (50) 7.4162
  A = 15.7828
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.3666
  A2: (50) 7.4162
  B = 0.9504
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 55
  55             
  A: (60) 15.7828
  15.7828        
  B: (70) 0.9504
  0.9504
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 55
  terminated:false
  X = 56
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 56
  A1 = 8.42615
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 56
  A2 = 7.48331
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.42615
  A2: (50) 7.48331
  A = 15.9095
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.42615
  A2: (50) 7.48331
  B = 0.94284
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 56
  56             
  A: (60) 15.9095
  15.9095        
  B: (70) 0.94284
  0.94284
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 56
  terminated:false
  X = 57
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 57
  A1 = 8.48528
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 57
  A2 = 7.54983
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.48528
  A2: (50) 7.54983
  A = 16.0351
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.48528
  A2: (50) 7.54983
  B = 0.93545
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 57
  57             
  A: (60) 16.0351
  16.0351        
  B: (70) 0.93545
  0.93545
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 57
  terminated:false
  X = 58
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 58
  A1 = 8.544
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 58
  A2 = 7.61577
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.544
  A2: (50) 7.61577
  A = 16.1598
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.544
  A2: (50) 7.61577
  B = 0.92823
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 58
  58             
  A: (60) 16.1598
  16.1598        
  B: (70) 0.92823
  0.92823
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 58
  terminated:false
  X = 59
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 59
  A1 = 8.60233
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 59
  A2 = 7.68115
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.60233
  A2: (50) 7.68115
  A = 16.2835
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.60233
  A2: (50) 7.68115
  B = 0.92118
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 59
  59             
  A: (60) 16.2835
  16.2835        
  B: (70) 0.92118
  0.92118
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 59
  terminated:false
  X = 60
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 60
  A1 = 8.66025
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 60
  A2 = 7.74597
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.66025
  A2: (50) 7.74597
  A = 16.4062
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.66025
  A2: (50) 7.74597
  B = 0.91428
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 60
  60             
  A: (60) 16.4062
  16.4062        
  B: (70) 0.91428
  0.91428
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 60
  terminated:false
  X = 61
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 61
  A1 = 8.7178
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 61
  A2 = 7.81025
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.7178
  A2: (50) 7.81025
  A = 16.5281
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.7178
  A2: (50) 7.81025
  B = 0.90755
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 61
  61             
  A: (60) 16.5281
  16.5281        
  B: (70) 0.90755
  0.90755
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 61
  terminated:false
  X = 62
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 62
  A1 = 8.77496
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 62
  A2 = 7.87401
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.77496
  A2: (50) 7.87401
  A = 16.649
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.77496
  A2: (50) 7.87401
  B = 0.90095
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 62
  62             
  A: (60) 16.649
  16.649         
  B: (70) 0.90095
  0.90095
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 62
  terminated:false
  X = 63
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 63
  A1 = 8.83176
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 63
  A2 = 7.93725
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.83176
  A2: (50) 7.93725
  A = 16.769
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.83176
  A2: (50) 7.93725
  B = 0.89451
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 63
  63             
  A: (60) 16.769
  16.769         
  B: (70) 0.89451
  0.89451
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 63
  terminated:false
  X = 64
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 64
  A1 = 8.88819
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 64
  A2 = 8
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.88819
  A2: (50) 8
  A = 16.8882
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.88819
  A2: (50) 8
  B = 0.88819
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 64
  64             
  A: (60) 16.8882
  16.8882        
  B: (70) 0.88819
  0.88819
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 64
  terminated:false
  X = 65
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 65
  A1 = 8.94427
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 65
  A2 = 8.06226
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 8.94427
  A2: (50) 8.06226
  A = 17.0065
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 8.94427
  A2: (50) 8.06226
  B = 0.88201
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 65
  65             
  A: (60) 17.0065
  17.0065        
  B: (70) 0.88201
  0.88201
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 65
  terminated:false
  X = 66
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 66
  A1 = 9
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 66
  A2 = 8.12404
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9
  A2: (50) 8.12404
  A = 17.124
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9
  A2: (50) 8.12404
  B = 0.87596
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 66
  66             
  A: (60) 17.124
  17.124         
  B: (70) 0.87596
  0.87596
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 66
  terminated:false
  X = 67
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 67
  A1 = 9.05539
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 67
  A2 = 8.18535
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.05539
  A2: (50) 8.18535
  A = 17.2407
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.05539
  A2: (50) 8.18535
  B = 0.87004
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 67
  67             
  A: (60) 17.2407
  17.2407        
  B: (70) 0.87004
  0.87004
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 67
  terminated:false
  X = 68
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 68
  A1 = 9.11043
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 68
  A2 = 8.24621
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.11043
  A2: (50) 8.24621
  A = 17.3566
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.11043
  A2: (50) 8.24621
  B = 0.86422
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 68
  68             
  A: (60) 17.3566
  17.3566        
  B: (70) 0.86422
  0.86422
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 68
  terminated:false
  X = 69
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 69
  A1 = 9.16515
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 69
  A2 = 8.30662
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.16515
  A2: (50) 8.30662
  A = 17.4718
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.16515
  A2: (50) 8.30662
  B = 0.85853
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 69
  69             
  A: (60) 17.4718
  17.4718        
  B: (70) 0.85853
  0.85853
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 69
  terminated:false
  X = 70
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 70
  A1 = 9.21954
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 70
  A2 = 8.3666
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.21954
  A2: (50) 8.3666
  A = 17.5861
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.21954
  A2: (50) 8.3666
  B = 0.85294
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 70
  70             
  A: (60) 17.5861
  17.5861        
  B: (70) 0.85294
  0.85294
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 70
  terminated:false
  X = 71
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 71
  A1 = 9.27362
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 71
  A2 = 8.42615
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.27362
  A2: (50) 8.42615
  A = 17.6998
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.27362
  A2: (50) 8.42615
  B = 0.84747
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 71
  71             
  A: (60) 17.6998
  17.6998        
  B: (70) 0.84747
  0.84747
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 71
  terminated:false
  X = 72
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 72
  A1 = 9.32738
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 72
  A2 = 8.48528
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.32738
  A2: (50) 8.48528
  A = 17.8127
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.32738
  A2: (50) 8.48528
  B = 0.8421
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 72
  72             
  A: (60) 17.8127
  17.8127        
  B: (70) 0.8421
  0.8421
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 72
  terminated:false
  X = 73
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 73
  A1 = 9.38083
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 73
  A2 = 8.544
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.38083
  A2: (50) 8.544
  A = 17.9248
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.38083
  A2: (50) 8.544
  B = 0.83683
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 73
  73             
  A: (60) 17.9248
  17.9248        
  B: (70) 0.83683
  0.83683
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 73
  terminated:false
  X = 74
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 74
  A1 = 9.43398
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 74
  A2 = 8.60233
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.43398
  A2: (50) 8.60233
  A = 18.0363
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.43398
  A2: (50) 8.60233
  B = 0.83165
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 74
  74             
  A: (60) 18.0363
  18.0363        
  B: (70) 0.83165
  0.83165
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 74
  terminated:false
  X = 75
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 75
  A1 = 9.48683
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 75
  A2 = 8.66025
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.48683
  A2: (50) 8.66025
  A = 18.1471
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.48683
  A2: (50) 8.66025
  B = 0.82658
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 75
  75             
  A: (60) 18.1471
  18.1471        
  B: (70) 0.82658
  0.82658
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 75
  terminated:false
  X = 76
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 76
  A1 = 9.53939
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 76
  A2 = 8.7178
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.53939
  A2: (50) 8.7178
  A = 18.2572
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.53939
  A2: (50) 8.7178
  B = 0.82159
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 76
  76             
  A: (60) 18.2572
  18.2572        
  B: (70) 0.82159
  0.82159
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 76
  terminated:false
  X = 77
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 77
  A1 = 9.59166
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 77
  A2 = 8.77496
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.59166
  A2: (50) 8.77496
  A = 18.3666
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.59166
  A2: (50) 8.77496
  B = 0.8167
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 77
  77             
  A: (60) 18.3666
  18.3666        
  B: (70) 0.8167
  0.8167
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 77
  terminated:false
  X = 78
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 78
  A1 = 9.64365
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 78
  A2 = 8.83176
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.64365
  A2: (50) 8.83176
  A = 18.4754
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.64365
  A2: (50) 8.83176
  B = 0.81189
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 78
  78             
  A: (60) 18.4754
  18.4754        
  B: (70) 0.81189
  0.81189
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 78
  terminated:false
  X = 79
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 79
  A1 = 9.69536
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 79
  A2 = 8.88819
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.69536
  A2: (50) 8.88819
  A = 18.5836
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.69536
  A2: (50) 8.88819
  B = 0.80717
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 79
  79             
  A: (60) 18.5836
  18.5836        
  B: (70) 0.80717
  0.80717
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 79
  terminated:false
  X = 80
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 80
  A1 = 9.74679
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 80
  A2 = 8.94427
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.74679
  A2: (50) 8.94427
  A = 18.6911
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.74679
  A2: (50) 8.94427
  B = 0.80252
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 80
  80             
  A: (60) 18.6911
  18.6911        
  B: (70) 0.80252
  0.80252
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 80
  terminated:false
  X = 81
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 81
  A1 = 9.79796
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 81
  A2 = 9
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.79796
  A2: (50) 9
  A = 18.798
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.79796
  A2: (50) 9
  B = 0.79796
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 81
  81             
  A: (60) 18.798
  18.798         
  B: (70) 0.79796
  0.79796
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 81
  terminated:false
  X = 82
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 82
  A1 = 9.84886
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 82
  A2 = 9.05539
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.84886
  A2: (50) 9.05539
  A = 18.9042
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.84886
  A2: (50) 9.05539
  B = 0.79347
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 82
  82             
  A: (60) 18.9042
  18.9042        
  B: (70) 0.79347
  0.79347
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 82
  terminated:false
  X = 83
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 83
  A1 = 9.89949
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 83
  A2 = 9.11043
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.89949
  A2: (50) 9.11043
  A = 19.0099
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.89949
  A2: (50) 9.11043
  B = 0.78906
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 83
  83             
  A: (60) 19.0099
  19.0099        
  B: (70) 0.78906
  0.78906
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 83
  terminated:false
  X = 84
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 84
  A1 = 9.94987
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 84
  A2 = 9.16515
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 9.94987
  A2: (50) 9.16515
  A = 19.115
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 9.94987
  A2: (50) 9.16515
  B = 0.78472
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 84
  84             
  A: (60) 19.115
  19.115         
  B: (70) 0.78472
  0.78472
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 84
  terminated:false
  X = 85
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 85
  A1 = 10
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 85
  A2 = 9.21954
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10
  A2: (50) 9.21954
  A = 19.2195
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10
  A2: (50) 9.21954
  B = 0.78046
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 85
  85             
  A: (60) 19.2195
  19.2195        
  B: (70) 0.78046
  0.78046
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 85
  terminated:false
  X = 86
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 86
  A1 = 10.0499
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 86
  A2 = 9.27362
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.0499
  A2: (50) 9.27362
  A = 19.3235
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.0499
  A2: (50) 9.27362
  B = 0.77628
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 86
  86             
  A: (60) 19.3235
  19.3235        
  B: (70) 0.77628
  0.77628
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 86
  terminated:false
  X = 87
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 87
  A1 = 10.0995
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 87
  A2 = 9.32738
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.0995
  A2: (50) 9.32738
  A = 19.4269
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.0995
  A2: (50) 9.32738
  B = 0.77212
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 87
  87             
  A: (60) 19.4269
  19.4269        
  B: (70) 0.77212
  0.77212
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 87
  terminated:false
  X = 88
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 88
  A1 = 10.1489
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 88
  A2 = 9.38083
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.1489
  A2: (50) 9.38083
  A = 19.5297
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.1489
  A2: (50) 9.38083
  B = 0.76807
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 88
  88             
  A: (60) 19.5297
  19.5297        
  B: (70) 0.76807
  0.76807
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 88
  terminated:false
  X = 89
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 89
  A1 = 10.198
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 89
  A2 = 9.43398
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.198
  A2: (50) 9.43398
  A = 19.632
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.198
  A2: (50) 9.43398
  B = 0.76402
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 89
  89             
  A: (60) 19.632
  19.632         
  B: (70) 0.76402
  0.76402
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 89
  terminated:false
  X = 90
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 90
  A1 = 10.247
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 90
  A2 = 9.48683
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.247
  A2: (50) 9.48683
  A = 19.7338
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.247
  A2: (50) 9.48683
  B = 0.76017
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 90
  90             
  A: (60) 19.7338
  19.7338        
  B: (70) 0.76017
  0.76017
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 90
  terminated:false
  X = 91
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 91
  A1 = 10.2956
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 91
  A2 = 9.53939
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.2956
  A2: (50) 9.53939
  A = 19.835
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.2956
  A2: (50) 9.53939
  B = 0.75621
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 91
  91             
  A: (60) 19.835
  19.835         
  B: (70) 0.75621
  0.75621
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 91
  terminated:false
  X = 92
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 92
  A1 = 10.3441
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 92
  A2 = 9.59166
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.3441
  A2: (50) 9.59166
  A = 19.9358
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.3441
  A2: (50) 9.59166
  B = 0.75244
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 92
  92             
  A: (60) 19.9358
  19.9358        
  B: (70) 0.75244
  0.75244
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 92
  terminated:false
  X = 93
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 93
  A1 = 10.3923
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 93
  A2 = 9.64365
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.3923
  A2: (50) 9.64365
  A = 20.036
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.3923
  A2: (50) 9.64365
  B = 0.74865
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 93
  93             
  A: (60) 20.036
  20.036         
  B: (70) 0.74865
  0.74865
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 93
  terminated:false
  X = 94
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 94
  A1 = 10.4403
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 94
  A2 = 9.69536
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.4403
  A2: (50) 9.69536
  A = 20.1357
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.4403
  A2: (50) 9.69536
  B = 0.74494
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 94
  94             
  A: (60) 20.1357
  20.1357        
  B: (70) 0.74494
  0.74494
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 94
  terminated:false
  X = 95
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 95
  A1 = 10.4881
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 95
  A2 = 9.74679
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.4881
  A2: (50) 9.74679
  A = 20.2349
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.4881
  A2: (50) 9.74679
  B = 0.74131
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 95
  95             
  A: (60) 20.2349
  20.2349        
  B: (70) 0.74131
  0.74131
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 95
  terminated:false
  X = 96
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 96
  A1 = 10.5357
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 96
  A2 = 9.79796
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.5357
  A2: (50) 9.79796
  A = 20.3337
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.5357
  A2: (50) 9.79796
  B = 0.73774
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 96
  96             
  A: (60) 20.3337
  20.3337        
  B: (70) 0.73774
  0.73774
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 96
  terminated:false
  X = 97
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 97
  A1 = 10.583
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 97
  A2 = 9.84886
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.583
  A2: (50) 9.84886
  A = 20.4319
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.583
  A2: (50) 9.84886
  B = 0.73414
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 97
  97             
  A: (60) 20.4319
  20.4319        
  B: (70) 0.73414
  0.73414
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 97
  terminated:false
  X = 98
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 98
  A1 = 10.6301
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 98
  A2 = 9.89949
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.6301
  A2: (50) 9.89949
  A = 20.5296
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.6301
  A2: (50) 9.89949
  B = 0.73061
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 98
  98             
  A: (60) 20.5296
  20.5296        
  B: (70) 0.73061
  0.73061
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 98
  terminated:false
  X = 99
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 99
  A1 = 10.6771
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 99
  A2 = 9.94987
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.6771
  A2: (50) 9.94987
  A = 20.627
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.6771
  A2: (50) 9.94987
  B = 0.72723
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 99
  99             
  A: (60) 20.627
  20.627         
  B: (70) 0.72723
  0.72723
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 99
  terminated:false
  X = 100
-40: LET A1 = SQR(15 + X)
+F(X) 40: LET A1 = SQR(15 + X)
  X: (90) 100
  A1 = 10.7238
-50: LET A2 = SQR(X)
+F(X) 50: LET A2 = SQR(X)
  X: (90) 100
  A2 = 10
-60: LET A = A1 + A2
+F(X) 60: LET A = A1 + A2
  A1: (40) 10.7238
  A2: (50) 10
  A = 20.7238
-70: LET B = A1 - A2
+F(X) 70: LET B = A1 - A2
  A1: (40) 10.7238
  A2: (50) 10
  B = 0.7238
-80: PRINT X, A, B
+F(X) 80: PRINT X, A, B
  X: (90) 100
  100            
  A: (60) 20.7238
  20.7238        
  B: (70) 0.7238
  0.7238
-90: NEXT X
+F(X) 90: NEXT X
  X: (90) 100
  terminated:true
 99: END

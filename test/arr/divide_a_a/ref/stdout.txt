@@ -8,10 +8,10 @@ STOP in line 999
 
 10 (0) REM ARRAY ASSIGNMENT
 20 (1) DIM A(5), B(5)
-30 (1) FOR I = 0 TO 5
-50 (6) LET A(I) = I
-52 (6) LET B(I) = (I + 1) * 2
-70 (6) NEXT I
+30 F(I) (1) FOR I = 0 TO 5
+50 F(I) (6) LET A(I) = I
+52 F(I) (6) LET B(I) = (I + 1) * 2
+70 F(I) (6) NEXT I
 100 (1) ARR C = A / B
 110 (1) PRINT "ARRAY A"
 120 (1) ARR PRINT A;

@@ -28,19 +28,19 @@ Halstead complexity:
 (0 3) 30 PRINT "RADIANS", "DEGREES"
   Origs: 20:auto
   Dests: 40:auto
-(1 4) 40 FOR I = 0 TO 2 STEP 0.1
+F(I) (1 4) 40 FOR I = 0 TO 2 STEP 0.1
   Origs: 30:auto
   Dests: 50:fornext, 80:fornext
-(0 4) 50 LET R = I * P
+F(I) (0 4) 50 LET R = I * P
   Origs: 40:fornext
   Dests: 60:auto
-(0 4) 60 LET D = DEG(R)
+F(I) (0 4) 60 LET D = DEG(R)
   Origs: 50:auto
   Dests: 70:auto
-(0 3) 70 PRINT I, D
+F(I) (0 3) 70 PRINT I, D
   Origs: 60:auto
   Dests: 80:auto
-(0 1) 80 NEXT I
+F(I) (0 1) 80 NEXT I
   Origs: 40:fornext, 70:auto
   Dests: 99:auto
 (0 1) 99 END

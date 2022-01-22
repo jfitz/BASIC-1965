@@ -16,13 +16,13 @@
  10              10              3.16228         13              3.60555         7.2111
 STOP in line 99
 
-10 (1) FOR I = -5 TO 10
-20 (16) LET A = ABS(I)
-30 (16) LET S = SQR(ABS(I))
-31 (16) LET A1 = ABS(I) + 3
-32 (16) LET S1 = SQR(ABS(I) + 3)
-34 (16) LET S2 = SQR(ABS(I) + 3) * 2
-40 (16) PRINT I, A, S, A1, S1, S2
-50 (16) NEXT I
+10 F(I) (1) FOR I = -5 TO 10
+20 F(I) (16) LET A = ABS(I)
+30 F(I) (16) LET S = SQR(ABS(I))
+31 F(I) (16) LET A1 = ABS(I) + 3
+32 F(I) (16) LET S1 = SQR(ABS(I) + 3)
+34 F(I) (16) LET S2 = SQR(ABS(I) + 3) * 2
+40 F(I) (16) PRINT I, A, S, A1, S1, S2
+50 F(I) (16) NEXT I
 99 (1) END
 

@@ -22,13 +22,13 @@ Halstead complexity:
 (0 1) 10 REM TEST INFINITE LOOP CHECK
   Origs: 
   Dests: 
-(1 4) 20 FOR I = 1 TO 10 STEP 0
+F(I) (1 4) 20 FOR I = 1 TO 10 STEP 0
   Origs: :start
   Dests: 30:fornext, 40:fornext
-(0 2) 30 PRINT I
+F(I) (0 2) 30 PRINT I
   Origs: 20:fornext
   Dests: 40:auto
-(0 1) 40 NEXT I
+F(I) (0 1) 40 NEXT I
   Origs: 20:fornext, 30:auto
   Dests: 99:auto
 (0 1) 99 END

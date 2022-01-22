@@ -118,13 +118,13 @@ G(310) (1 4) 320 IF T = 1 THEN 390
 G(310) (0 3) 330 LET J = 1
   Origs: 320:auto
   Dests: 340:auto
-G(310) (1 3) 340 FOR I = 2 TO T
+G(310) F(I) (1 3) 340 FOR I = 2 TO T
   Origs: 330:auto
   Dests: 350:fornext, 360:fornext
-G(310) (0 4) 350 LET J = J * I
+G(310) F(I) (0 4) 350 LET J = J * I
   Origs: 340:fornext
   Dests: 360:auto
-G(310) (0 1) 360 NEXT I
+G(310) F(I) (0 1) 360 NEXT I
   Origs: 340:fornext, 350:auto
   Dests: 370:auto
 G(310) (0 3) 370 LET T = J

@@ -6,96 +6,96 @@ FNC(_) 40: DEF FNC(X) = COS(FND(X))
  P = 3.14159625
 50: PRINT "DEGREES", "SINE", "COSINE"
 DEGREES         SINE            COSINE
-60: FOR X = 0 TO 90 STEP 10
+F(X) 60: FOR X = 0 TO 90 STEP 10
  X = 0
  terminated:false
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 0
  0              
  P: 3.14159625
  0               1
-80: NEXT X
+F(X) 80: NEXT X
  X: 0
  terminated:false
  X = 10
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 10
  10             
  P: 3.14159625
  0.174           0.985
-80: NEXT X
+F(X) 80: NEXT X
  X: 10
  terminated:false
  X = 20
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 20
  20             
  P: 3.14159625
  0.342           0.94
-80: NEXT X
+F(X) 80: NEXT X
  X: 20
  terminated:false
  X = 30
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 30
  30             
  P: 3.14159625
  0.5             0.866
-80: NEXT X
+F(X) 80: NEXT X
  X: 30
  terminated:false
  X = 40
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 40
  40             
  P: 3.14159625
  0.643           0.766
-80: NEXT X
+F(X) 80: NEXT X
  X: 40
  terminated:false
  X = 50
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 50
  50             
  P: 3.14159625
  0.766           0.643
-80: NEXT X
+F(X) 80: NEXT X
  X: 50
  terminated:false
  X = 60
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 60
  60             
  P: 3.14159625
  0.866           0.5
-80: NEXT X
+F(X) 80: NEXT X
  X: 60
  terminated:false
  X = 70
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 70
  70             
  P: 3.14159625
  0.94            0.342
-80: NEXT X
+F(X) 80: NEXT X
  X: 70
  terminated:false
  X = 80
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 80
  80             
  P: 3.14159625
  0.985           0.174
-80: NEXT X
+F(X) 80: NEXT X
  X: 80
  terminated:false
  X = 90
-70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
+F(X) 70: PRINT X, FNR(FNS(X)), FNR(FNC(X))
  X: 90
  90             
  P: 3.14159625
  1               0
-80: NEXT X
+F(X) 80: NEXT X
  X: 90
  terminated:true
 99: END

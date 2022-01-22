@@ -1,0 +1,31 @@
+BASIC-1965 interpreter version -1
+
+READY
+10 REM Convert Celcius to Fahrenheit
+20 PRINT "Celcius", "Fahrenheit"
+30 LET C=0
+40 LET F=C*9/5+32
+42 LET F2=32+(C*9/5)
+50 PRINT C,F,F2
+60 LET C=C+1
+70 IF C<=10 THEN 40
+900 STOP
+999 END
+RUN
+Celcius         Fahrenheit
+ 0               32              32
+ 1               33.8            33.8
+ 2               35.6            35.6
+ 3               37.4            37.4
+ 4               39.2            39.2
+ 5               41              41
+ 6               42.8            42.8
+ 7               44.6            44.6
+ 8               46.4            46.4
+ 9               48.2            48.2
+ 10              50              50
+STOP in line 900
+READY
+BYE
+BASIC-1965 ended
+

@@ -2,12 +2,12 @@
 STOP in line 999
 
 10 (1) DIM A(6), B(3)
-20 (1) FOR I = 0 TO 6
-40 (7) LET A(I) = I
-60 (7) NEXT I
-70 (1) FOR I = 0 TO 3
-90 (4) LET B(I) = I
-110 (4) NEXT I
+20 F(I) (1) FOR I = 0 TO 6
+40 F(I) (7) LET A(I) = I
+60 F(I) (7) NEXT I
+70 F(I) (1) FOR I = 0 TO 3
+90 F(I) (4) LET B(I) = I
+110 F(I) (4) NEXT I
 120 (1) ARR PRINT A; B;
 122 (1) PRINT
 999 (1) END

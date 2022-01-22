@@ -25,34 +25,34 @@ Halstead complexity:
 (0 3) 110 LET C = 0
   Origs: 100:auto
   Dests: 120:auto
-(1 3) 120 FOR N = 1 TO 1000
+F(N) (1 3) 120 FOR N = 1 TO 1000
   Origs: 110:auto
   Dests: 130:fornext, 200:fornext
-(0 4) 130 LET Y = RND(Z)
+F(N) (0 4) 130 LET Y = RND(Z)
   Origs: 120:fornext
   Dests: 140:auto
-(0 4) 140 LET R = RND(Z)
+F(N) (0 4) 140 LET R = RND(Z)
   Origs: 130:auto
   Dests: 150:auto
-(0 8) 150 LET A = P * (R - 1 / 2)
+F(N) (0 8) 150 LET A = P * (R - 1 / 2)
   Origs: 140:auto
   Dests: 160:auto
-(0 5) 160 LET Y1 = Y - COS(A)
+F(N) (0 5) 160 LET Y1 = Y - COS(A)
   Origs: 150:auto
   Dests: 170:auto
-(0 5) 170 LET Y2 = Y + COS(A)
+F(N) (0 5) 170 LET Y2 = Y + COS(A)
   Origs: 160:auto
   Dests: 172:auto
-(0 4) 172 LET C2 = COS(A)
+F(N) (0 4) 172 LET C2 = COS(A)
   Origs: 170:auto
   Dests: 180:auto
-(1 6) 180 IF SGN(Y1) = SGN(Y2) THEN 200
+F(N) (1 6) 180 IF SGN(Y1) = SGN(Y2) THEN 200
   Origs: 172:auto
   Dests: 190:auto, 200:ifthen
-(0 4) 190 LET C = C + 1
+F(N) (0 4) 190 LET C = C + 1
   Origs: 180:auto
   Dests: 200:auto
-(0 1) 200 NEXT N
+F(N) (0 1) 200 NEXT N
   Origs: 120:fornext, 180:ifthen, 190:auto
   Dests: 210:auto
 (0 4) 210 LET F = C / N

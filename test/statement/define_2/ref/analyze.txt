@@ -25,13 +25,13 @@ FNL(_,_) (0 5) 10 DEF FNL(A, B) = LOG(A) / LOG(B)
 FNL(_) (0 5) 20 DEF FNL(A) = LOG(A) / LOG(10)
   Origs: 
   Dests: 
-(1 4) 30 FOR N = 2 TO 10 STEP 2
+F(N) (1 4) 30 FOR N = 2 TO 10 STEP 2
   Origs: :start
   Dests: 40:fornext, 50:fornext
-(0 10) 40 PRINT N, LOG(N), FNL(N, 10), FNL(N)
+F(N) (0 10) 40 PRINT N, LOG(N), FNL(N, 10), FNL(N)
   Origs: 30:fornext
   Dests: 50:auto
-(0 1) 50 NEXT N
+F(N) (0 1) 50 NEXT N
   Origs: 30:fornext, 40:auto
   Dests: 99:auto
 (0 1) 99 END

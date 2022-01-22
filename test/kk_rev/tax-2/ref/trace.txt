@@ -9,100 +9,100 @@
  R = 4.5
 40: PRINT "YEAR", "SAVING"
 YEAR            SAVING
-100: FOR Y1 = 1 TO Y
+F(Y1) 100: FOR Y1 = 1 TO Y
  Y: 7
  Y1 = 1
  Y = 7
  terminated:false
-105: PRINT Y1,
+F(Y1) 105: PRINT Y1,
  Y1: 1
  1              
-108: LET A1 = A
+F(Y1) 108: LET A1 = A
  A: 5000
  A1 = 5000
-110: FOR I = 1 TO Y1 - 1
+F(Y1,I) 110: FOR I = 1 TO Y1 - 1
  Y1: 1
  I = 1
  Y1 - 1 = 0
  terminated:true
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 1
  terminated:true
-160: LET D = A1 / (Y - Y1 + 1)
+F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
  A1: 5000
  Y: 7
  Y1: 1
  D = 714.286
-170: FOR I = Y1 TO Y
+F(Y1,I) 170: FOR I = Y1 TO Y
  Y1: 1
  Y: 7
  I = 1
  Y1 = 1
  Y = 7
  terminated:false
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 1
  D: 714.286
  D(1) = 714.286
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 1
  terminated:false
  I = 2
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 2
  D: 714.286
  D(2) = 714.286
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 2
  terminated:false
  I = 3
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 3
  D: 714.286
  D(3) = 714.286
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 3
  terminated:false
  I = 4
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 4
  D: 714.286
  D(4) = 714.286
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 4
  terminated:false
  I = 5
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 5
  D: 714.286
  D(5) = 714.286
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 5
  terminated:false
  I = 6
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 6
  D: 714.286
  D(6) = 714.286
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 6
  terminated:false
  I = 7
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 7
  D: 714.286
  D(7) = 714.286
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 7
  terminated:true
-200: LET S = 0
+F(Y1) 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(Y1,I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 0
  I: 1
  D(1): 714.286
@@ -110,11 +110,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 446.489
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 446.489
  I: 2
  D(2): 714.286
@@ -122,11 +122,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 873.751
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 873.751
  I: 3
  D(3): 714.286
@@ -134,11 +134,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1282.62
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1282.62
  I: 4
  D(4): 714.286
@@ -146,11 +146,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1673.88
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1673.88
  I: 5
  D(5): 714.286
@@ -158,11 +158,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2048.29
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2048.29
  I: 6
  D(6): 714.286
@@ -170,11 +170,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2406.58
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2406.58
  I: 7
  D(7): 714.286
@@ -182,107 +182,107 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2749.44
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 7
  terminated:true
-240: PRINT S
+F(Y1) 240: PRINT S
  S: 2749.44
  2749.44
-290: NEXT Y1
+F(Y1) 290: NEXT Y1
  Y1: 1
  terminated:false
  Y1 = 2
-105: PRINT Y1,
+F(Y1) 105: PRINT Y1,
  Y1: 2
  2              
-108: LET A1 = A
+F(Y1) 108: LET A1 = A
  A: 5000
  A1 = 5000
-110: FOR I = 1 TO Y1 - 1
+F(Y1,I) 110: FOR I = 1 TO Y1 - 1
  Y1: 2
  I = 1
  Y1 - 1 = 1
  terminated:false
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 1
  terminated:true
-160: LET D = A1 / (Y - Y1 + 1)
+F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
  A1: 3571.43
  Y: 7
  Y1: 2
  D = 595.238
-170: FOR I = Y1 TO Y
+F(Y1,I) 170: FOR I = Y1 TO Y
  Y1: 2
  Y: 7
  I = 2
  Y1 = 2
  Y = 7
  terminated:false
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 2
  D: 595.238
  D(2) = 595.238
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 2
  terminated:false
  I = 3
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 3
  D: 595.238
  D(3) = 595.238
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 3
  terminated:false
  I = 4
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 4
  D: 595.238
  D(4) = 595.238
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 4
  terminated:false
  I = 5
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 5
  D: 595.238
  D(5) = 595.238
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 5
  terminated:false
  I = 6
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 6
  D: 595.238
  D(6) = 595.238
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 6
  terminated:false
  I = 7
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 7
  D: 595.238
  D(7) = 595.238
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 7
  terminated:true
-200: LET S = 0
+F(Y1) 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(Y1,I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 0
  I: 1
  D(1): 1428.57
@@ -290,11 +290,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 892.978
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 892.978
  I: 2
  D(2): 595.238
@@ -302,11 +302,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1249.03
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1249.03
  I: 3
  D(3): 595.238
@@ -314,11 +314,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1589.75
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1589.75
  I: 4
  D(4): 595.238
@@ -326,11 +326,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1915.8
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1915.8
  I: 5
  D(5): 595.238
@@ -338,11 +338,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2227.81
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2227.81
  I: 6
  D(6): 595.238
@@ -350,11 +350,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2526.38
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2526.38
  I: 7
  D(7): 595.238
@@ -362,113 +362,113 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2812.09
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 7
  terminated:true
-240: PRINT S
+F(Y1) 240: PRINT S
  S: 2812.09
  2812.09
-290: NEXT Y1
+F(Y1) 290: NEXT Y1
  Y1: 2
  terminated:false
  Y1 = 3
-105: PRINT Y1,
+F(Y1) 105: PRINT Y1,
  Y1: 3
  3              
-108: LET A1 = A
+F(Y1) 108: LET A1 = A
  A: 5000
  A1 = 5000
-110: FOR I = 1 TO Y1 - 1
+F(Y1,I) 110: FOR I = 1 TO Y1 - 1
  Y1: 3
  I = 1
  Y1 - 1 = 2
  terminated:false
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 1
  terminated:false
  I = 2
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 2
  terminated:true
-160: LET D = A1 / (Y - Y1 + 1)
+F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
  A1: 2551.02
  Y: 7
  Y1: 3
  D = 510.204
-170: FOR I = Y1 TO Y
+F(Y1,I) 170: FOR I = Y1 TO Y
  Y1: 3
  Y: 7
  I = 3
  Y1 = 3
  Y = 7
  terminated:false
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 3
  D: 510.204
  D(3) = 510.204
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 3
  terminated:false
  I = 4
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 4
  D: 510.204
  D(4) = 510.204
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 4
  terminated:false
  I = 5
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 5
  D: 510.204
  D(5) = 510.204
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 5
  terminated:false
  I = 6
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 6
  D: 510.204
  D(6) = 510.204
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 6
  terminated:false
  I = 7
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 7
  D: 510.204
  D(7) = 510.204
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 7
  terminated:true
-200: LET S = 0
+F(Y1) 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(Y1,I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 0
  I: 1
  D(1): 1428.57
@@ -476,11 +476,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 892.978
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 892.978
  I: 2
  D(2): 1020.41
@@ -488,11 +488,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1503.35
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1503.35
  I: 3
  D(3): 510.204
@@ -500,11 +500,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1795.4
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1795.4
  I: 4
  D(4): 510.204
@@ -512,11 +512,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2074.87
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2074.87
  I: 5
  D(5): 510.204
@@ -524,11 +524,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2342.3
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2342.3
  I: 6
  D(6): 510.204
@@ -536,11 +536,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2598.22
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2598.22
  I: 7
  D(7): 510.204
@@ -548,119 +548,119 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2843.12
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 7
  terminated:true
-240: PRINT S
+F(Y1) 240: PRINT S
  S: 2843.12
  2843.12
-290: NEXT Y1
+F(Y1) 290: NEXT Y1
  Y1: 3
  terminated:false
  Y1 = 4
-105: PRINT Y1,
+F(Y1) 105: PRINT Y1,
  Y1: 4
  4              
-108: LET A1 = A
+F(Y1) 108: LET A1 = A
  A: 5000
  A1 = 5000
-110: FOR I = 1 TO Y1 - 1
+F(Y1,I) 110: FOR I = 1 TO Y1 - 1
  Y1: 4
  I = 1
  Y1 - 1 = 3
  terminated:false
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 1
  terminated:false
  I = 2
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 2
  terminated:false
  I = 3
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 3
  A1: 2551.02
  Y: 7
  D(3) = 728.863
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 2551.02
  I: 3
  D(3): 728.863
  A1 = 1822.16
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 3
  terminated:true
-160: LET D = A1 / (Y - Y1 + 1)
+F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
  A1: 1822.16
  Y: 7
  Y1: 4
  D = 455.54
-170: FOR I = Y1 TO Y
+F(Y1,I) 170: FOR I = Y1 TO Y
  Y1: 4
  Y: 7
  I = 4
  Y1 = 4
  Y = 7
  terminated:false
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 4
  D: 455.54
  D(4) = 455.54
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 4
  terminated:false
  I = 5
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 5
  D: 455.54
  D(5) = 455.54
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 5
  terminated:false
  I = 6
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 6
  D: 455.54
  D(6) = 455.54
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 6
  terminated:false
  I = 7
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 7
  D: 455.54
  D(7) = 455.54
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 7
  terminated:true
-200: LET S = 0
+F(Y1) 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(Y1,I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 0
  I: 1
  D(1): 1428.57
@@ -668,11 +668,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 892.978
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 892.978
  I: 2
  D(2): 1020.41
@@ -680,11 +680,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1503.35
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1503.35
  I: 3
  D(3): 728.863
@@ -692,11 +692,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1920.56
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1920.56
  I: 4
  D(4): 455.54
@@ -704,11 +704,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2170.09
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2170.09
  I: 5
  D(5): 455.54
@@ -716,11 +716,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2408.87
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2408.87
  I: 6
  D(6): 455.54
@@ -728,11 +728,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2637.37
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2637.37
  I: 7
  D(7): 455.54
@@ -740,125 +740,125 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2856.03
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 7
  terminated:true
-240: PRINT S
+F(Y1) 240: PRINT S
  S: 2856.03
  2856.03
-290: NEXT Y1
+F(Y1) 290: NEXT Y1
  Y1: 4
  terminated:false
  Y1 = 5
-105: PRINT Y1,
+F(Y1) 105: PRINT Y1,
  Y1: 5
  5              
-108: LET A1 = A
+F(Y1) 108: LET A1 = A
  A: 5000
  A1 = 5000
-110: FOR I = 1 TO Y1 - 1
+F(Y1,I) 110: FOR I = 1 TO Y1 - 1
  Y1: 5
  I = 1
  Y1 - 1 = 4
  terminated:false
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 1
  terminated:false
  I = 2
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 2
  terminated:false
  I = 3
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 3
  A1: 2551.02
  Y: 7
  D(3) = 728.863
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 2551.02
  I: 3
  D(3): 728.863
  A1 = 1822.16
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 3
  terminated:false
  I = 4
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 4
  A1: 1822.16
  Y: 7
  D(4) = 520.617
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 1822.16
  I: 4
  D(4): 520.617
  A1 = 1301.54
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 4
  terminated:true
-160: LET D = A1 / (Y - Y1 + 1)
+F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
  A1: 1301.54
  Y: 7
  Y1: 5
  D = 433.847
-170: FOR I = Y1 TO Y
+F(Y1,I) 170: FOR I = Y1 TO Y
  Y1: 5
  Y: 7
  I = 5
  Y1 = 5
  Y = 7
  terminated:false
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 5
  D: 433.847
  D(5) = 433.847
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 5
  terminated:false
  I = 6
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 6
  D: 433.847
  D(6) = 433.847
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 6
  terminated:false
  I = 7
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 7
  D: 433.847
  D(7) = 433.847
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 7
  terminated:true
-200: LET S = 0
+F(Y1) 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(Y1,I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 0
  I: 1
  D(1): 1428.57
@@ -866,11 +866,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 892.978
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 892.978
  I: 2
  D(2): 1020.41
@@ -878,11 +878,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1503.35
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1503.35
  I: 3
  D(3): 728.863
@@ -890,11 +890,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1920.56
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1920.56
  I: 4
  D(4): 520.617
@@ -902,11 +902,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2205.73
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2205.73
  I: 5
  D(5): 433.847
@@ -914,11 +914,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2433.14
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2433.14
  I: 6
  D(6): 433.847
@@ -926,11 +926,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2650.76
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2650.76
  I: 7
  D(7): 433.847
@@ -938,131 +938,131 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2859.01
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 7
  terminated:true
-240: PRINT S
+F(Y1) 240: PRINT S
  S: 2859.01
  2859.01
-290: NEXT Y1
+F(Y1) 290: NEXT Y1
  Y1: 5
  terminated:false
  Y1 = 6
-105: PRINT Y1,
+F(Y1) 105: PRINT Y1,
  Y1: 6
  6              
-108: LET A1 = A
+F(Y1) 108: LET A1 = A
  A: 5000
  A1 = 5000
-110: FOR I = 1 TO Y1 - 1
+F(Y1,I) 110: FOR I = 1 TO Y1 - 1
  Y1: 6
  I = 1
  Y1 - 1 = 5
  terminated:false
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 1
  terminated:false
  I = 2
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 2
  terminated:false
  I = 3
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 3
  A1: 2551.02
  Y: 7
  D(3) = 728.863
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 2551.02
  I: 3
  D(3): 728.863
  A1 = 1822.16
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 3
  terminated:false
  I = 4
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 4
  A1: 1822.16
  Y: 7
  D(4) = 520.617
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 1822.16
  I: 4
  D(4): 520.617
  A1 = 1301.54
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 4
  terminated:false
  I = 5
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 5
  A1: 1301.54
  Y: 7
  D(5) = 371.869
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 1301.54
  I: 5
  D(5): 371.869
  A1 = 929.671
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 5
  terminated:true
-160: LET D = A1 / (Y - Y1 + 1)
+F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
  A1: 929.671
  Y: 7
  Y1: 6
  D = 464.836
-170: FOR I = Y1 TO Y
+F(Y1,I) 170: FOR I = Y1 TO Y
  Y1: 6
  Y: 7
  I = 6
  Y1 = 6
  Y = 7
  terminated:false
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 6
  D: 464.836
  D(6) = 464.836
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 6
  terminated:false
  I = 7
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 7
  D: 464.836
  D(7) = 464.836
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 7
  terminated:true
-200: LET S = 0
+F(Y1) 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(Y1,I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 0
  I: 1
  D(1): 1428.57
@@ -1070,11 +1070,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 892.978
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 892.978
  I: 2
  D(2): 1020.41
@@ -1082,11 +1082,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1503.35
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1503.35
  I: 3
  D(3): 728.863
@@ -1094,11 +1094,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1920.56
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1920.56
  I: 4
  D(4): 520.617
@@ -1106,11 +1106,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2205.73
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2205.73
  I: 5
  D(5): 371.869
@@ -1118,11 +1118,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2400.65
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2400.65
  I: 6
  D(6): 464.836
@@ -1130,11 +1130,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2633.81
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2633.81
  I: 7
  D(7): 464.836
@@ -1142,137 +1142,137 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2856.93
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 7
  terminated:true
-240: PRINT S
+F(Y1) 240: PRINT S
  S: 2856.93
  2856.93
-290: NEXT Y1
+F(Y1) 290: NEXT Y1
  Y1: 6
  terminated:false
  Y1 = 7
-105: PRINT Y1,
+F(Y1) 105: PRINT Y1,
  Y1: 7
  7              
-108: LET A1 = A
+F(Y1) 108: LET A1 = A
  A: 5000
  A1 = 5000
-110: FOR I = 1 TO Y1 - 1
+F(Y1,I) 110: FOR I = 1 TO Y1 - 1
  Y1: 7
  I = 1
  Y1 - 1 = 6
  terminated:false
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 1
  terminated:false
  I = 2
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 2
  terminated:false
  I = 3
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 3
  A1: 2551.02
  Y: 7
  D(3) = 728.863
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 2551.02
  I: 3
  D(3): 728.863
  A1 = 1822.16
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 3
  terminated:false
  I = 4
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 4
  A1: 1822.16
  Y: 7
  D(4) = 520.617
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 1822.16
  I: 4
  D(4): 520.617
  A1 = 1301.54
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 4
  terminated:false
  I = 5
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 5
  A1: 1301.54
  Y: 7
  D(5) = 371.869
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 1301.54
  I: 5
  D(5): 371.869
  A1 = 929.671
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 5
  terminated:false
  I = 6
-120: LET D(I) = A1 * 2 / Y
+F(Y1,I) 120: LET D(I) = A1 * 2 / Y
  I: 6
  A1: 929.671
  Y: 7
  D(6) = 265.62
-130: LET A1 = A1 - D(I)
+F(Y1,I) 130: LET A1 = A1 - D(I)
  A1: 929.671
  I: 6
  D(6): 265.62
  A1 = 664.051
-150: NEXT I
+F(Y1,I) 150: NEXT I
  I: 6
  terminated:true
-160: LET D = A1 / (Y - Y1 + 1)
+F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
  A1: 664.051
  Y: 7
  Y1: 7
  D = 664.051
-170: FOR I = Y1 TO Y
+F(Y1,I) 170: FOR I = Y1 TO Y
  Y1: 7
  Y: 7
  I = 7
  Y1 = 7
  Y = 7
  terminated:false
-180: LET D(I) = D
+F(Y1,I) 180: LET D(I) = D
  I: 7
  D: 664.051
  D(7) = 664.051
-190: NEXT I
+F(Y1,I) 190: NEXT I
  I: 7
  terminated:true
-200: LET S = 0
+F(Y1) 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(Y1,I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 0
  I: 1
  D(1): 1428.57
@@ -1280,11 +1280,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 892.978
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 892.978
  I: 2
  D(2): 1020.41
@@ -1292,11 +1292,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1503.35
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1503.35
  I: 3
  D(3): 728.863
@@ -1304,11 +1304,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 1920.56
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 1920.56
  I: 4
  D(4): 520.617
@@ -1316,11 +1316,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2205.73
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2205.73
  I: 5
  D(5): 371.869
@@ -1328,11 +1328,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2400.65
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2400.65
  I: 6
  D(6): 265.62
@@ -1340,11 +1340,11 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2533.89
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+F(Y1,I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
  S: 2533.89
  I: 7
  D(7): 664.051
@@ -1352,13 +1352,13 @@ YEAR            SAVING
  R: 4.5
  Y: 7
  S = 2852.63
-230: NEXT I
+F(Y1,I) 230: NEXT I
  I: 7
  terminated:true
-240: PRINT S
+F(Y1) 240: PRINT S
  S: 2852.63
  2852.63
-290: NEXT Y1
+F(Y1) 290: NEXT Y1
  Y1: 7
  terminated:true
 999: END

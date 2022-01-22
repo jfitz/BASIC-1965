@@ -22,16 +22,16 @@ Halstead complexity:
 (0 3) 10 PRINT "VALUE", "EXP"
   Origs: :start
   Dests: 20:auto
-(1 4) 20 FOR I = 0 TO 2 STEP 0.1
+F(I) (1 4) 20 FOR I = 0 TO 2 STEP 0.1
   Origs: 10:auto
   Dests: 30:fornext, 50:fornext
-(0 4) 30 LET E = EXP(I)
+F(I) (0 4) 30 LET E = EXP(I)
   Origs: 20:fornext
   Dests: 40:auto
-(0 3) 40 PRINT I, E
+F(I) (0 3) 40 PRINT I, E
   Origs: 30:auto
   Dests: 50:auto
-(0 1) 50 NEXT I
+F(I) (0 1) 50 NEXT I
   Origs: 20:fornext, 40:auto
   Dests: 99:auto
 (0 1) 99 END

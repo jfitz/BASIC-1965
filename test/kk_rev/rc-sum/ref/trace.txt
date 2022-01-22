@@ -5,590 +5,590 @@
 10: READ R, C
  R = 3
  C = 5
-20: FOR I = 1 TO R
+F(I) 20: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-30: FOR J = 1 TO C
+F(I,J) 30: FOR J = 1 TO C
  C: 5
  J = 1
  C = 5
  terminated:false
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 1
  J: 1
  T(1,1) = 1
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 1
  terminated:false
  J = 2
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 1
  J: 2
  T(1,2) = 2
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 2
  terminated:false
  J = 3
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 1
  J: 3
  T(1,3) = 3
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 3
  terminated:false
  J = 4
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 1
  J: 4
  T(1,4) = 4
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 4
  terminated:false
  J = 5
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 1
  J: 5
  T(1,5) = 5
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 5
  terminated:true
-60: NEXT I
+F(I) 60: NEXT I
  I: 1
  terminated:false
  I = 2
-30: FOR J = 1 TO C
+F(I,J) 30: FOR J = 1 TO C
  C: 5
  J = 1
  C = 5
  terminated:false
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 2
  J: 1
  T(2,1) = 5
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 1
  terminated:false
  J = 2
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 2
  J: 2
  T(2,2) = 4
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 2
  terminated:false
  J = 3
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 2
  J: 3
  T(2,3) = 3
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 3
  terminated:false
  J = 4
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 2
  J: 4
  T(2,4) = 2
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 4
  terminated:false
  J = 5
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 2
  J: 5
  T(2,5) = 1
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 5
  terminated:true
-60: NEXT I
+F(I) 60: NEXT I
  I: 2
  terminated:false
  I = 3
-30: FOR J = 1 TO C
+F(I,J) 30: FOR J = 1 TO C
  C: 5
  J = 1
  C = 5
  terminated:false
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 3
  J: 1
  T(3,1) = 2
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 1
  terminated:false
  J = 2
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 3
  J: 2
  T(3,2) = 0
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 2
  terminated:false
  J = 3
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 3
  J: 3
  T(3,3) = 5
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 3
  terminated:false
  J = 4
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 3
  J: 4
  T(3,4) = 2
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 4
  terminated:false
  J = 5
-40: READ T(I, J)
+F(I,J) 40: READ T(I, J)
  I: 3
  J: 5
  T(3,5) = 1
-50: NEXT J
+F(I,J) 50: NEXT J
  J: 5
  terminated:true
-60: NEXT I
+F(I) 60: NEXT I
  I: 3
  terminated:true
-70: FOR I = 1 TO R
+F(I) 70: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-80: LET S = 0
+F(I) 80: LET S = 0
  S = 0
-90: FOR J = 1 TO C
+F(I,J) 90: FOR J = 1 TO C
  C: 5
  J = 1
  C = 5
  terminated:false
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 0
  I: 1
  J: 1
  T(1,1): 1
  S = 1
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 1
  terminated:false
  J = 2
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 1
  I: 1
  J: 2
  T(1,2): 2
  S = 3
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 2
  terminated:false
  J = 3
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 3
  I: 1
  J: 3
  T(1,3): 3
  S = 6
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 3
  terminated:false
  J = 4
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 6
  I: 1
  J: 4
  T(1,4): 4
  S = 10
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 4
  terminated:false
  J = 5
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 10
  I: 1
  J: 5
  T(1,5): 5
  S = 15
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 5
  terminated:true
-120: PRINT "SUM OF ROW" I; "EQUALS" S
+F(I) 120: PRINT "SUM OF ROW" I; "EQUALS" S
 SUM OF ROW
  I: 1
  1 EQUALS
  S: 15
  15
-130: NEXT I
+F(I) 130: NEXT I
  I: 1
  terminated:false
  I = 2
-80: LET S = 0
+F(I) 80: LET S = 0
  S = 0
-90: FOR J = 1 TO C
+F(I,J) 90: FOR J = 1 TO C
  C: 5
  J = 1
  C = 5
  terminated:false
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 0
  I: 2
  J: 1
  T(2,1): 5
  S = 5
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 1
  terminated:false
  J = 2
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 5
  I: 2
  J: 2
  T(2,2): 4
  S = 9
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 2
  terminated:false
  J = 3
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 9
  I: 2
  J: 3
  T(2,3): 3
  S = 12
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 3
  terminated:false
  J = 4
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 12
  I: 2
  J: 4
  T(2,4): 2
  S = 14
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 4
  terminated:false
  J = 5
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 14
  I: 2
  J: 5
  T(2,5): 1
  S = 15
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 5
  terminated:true
-120: PRINT "SUM OF ROW" I; "EQUALS" S
+F(I) 120: PRINT "SUM OF ROW" I; "EQUALS" S
 SUM OF ROW
  I: 2
  2 EQUALS
  S: 15
  15
-130: NEXT I
+F(I) 130: NEXT I
  I: 2
  terminated:false
  I = 3
-80: LET S = 0
+F(I) 80: LET S = 0
  S = 0
-90: FOR J = 1 TO C
+F(I,J) 90: FOR J = 1 TO C
  C: 5
  J = 1
  C = 5
  terminated:false
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 0
  I: 3
  J: 1
  T(3,1): 2
  S = 2
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 1
  terminated:false
  J = 2
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 2
  I: 3
  J: 2
  T(3,2): 0
  S = 2
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 2
  terminated:false
  J = 3
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 2
  I: 3
  J: 3
  T(3,3): 5
  S = 7
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 3
  terminated:false
  J = 4
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 7
  I: 3
  J: 4
  T(3,4): 2
  S = 9
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 4
  terminated:false
  J = 5
-100: LET S = S + T(I, J)
+F(I,J) 100: LET S = S + T(I, J)
  S: 9
  I: 3
  J: 5
  T(3,5): 1
  S = 10
-110: NEXT J
+F(I,J) 110: NEXT J
  J: 5
  terminated:true
-120: PRINT "SUM OF ROW" I; "EQUALS" S
+F(I) 120: PRINT "SUM OF ROW" I; "EQUALS" S
 SUM OF ROW
  I: 3
  3 EQUALS
  S: 10
  10
-130: NEXT I
+F(I) 130: NEXT I
  I: 3
  terminated:true
 140: PRINT
 
-150: FOR J = 1 TO C
+F(J) 150: FOR J = 1 TO C
  C: 5
  J = 1
  C = 5
  terminated:false
-160: LET S = 0
+F(J) 160: LET S = 0
  S = 0
-170: FOR I = 1 TO R
+F(J,I) 170: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 0
  I: 1
  J: 1
  T(1,1): 1
  S = 1
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 1
  terminated:false
  I = 2
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 1
  I: 2
  J: 1
  T(2,1): 5
  S = 6
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 2
  terminated:false
  I = 3
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 6
  I: 3
  J: 1
  T(3,1): 2
  S = 8
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 3
  terminated:true
-200: PRINT "SUM OF COLUMN" J; "EQUALS" S
+F(J) 200: PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: 1
  1 EQUALS
  S: 8
  8
-210: NEXT J
+F(J) 210: NEXT J
  J: 1
  terminated:false
  J = 2
-160: LET S = 0
+F(J) 160: LET S = 0
  S = 0
-170: FOR I = 1 TO R
+F(J,I) 170: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 0
  I: 1
  J: 2
  T(1,2): 2
  S = 2
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 1
  terminated:false
  I = 2
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 2
  I: 2
  J: 2
  T(2,2): 4
  S = 6
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 2
  terminated:false
  I = 3
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 6
  I: 3
  J: 2
  T(3,2): 0
  S = 6
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 3
  terminated:true
-200: PRINT "SUM OF COLUMN" J; "EQUALS" S
+F(J) 200: PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: 2
  2 EQUALS
  S: 6
  6
-210: NEXT J
+F(J) 210: NEXT J
  J: 2
  terminated:false
  J = 3
-160: LET S = 0
+F(J) 160: LET S = 0
  S = 0
-170: FOR I = 1 TO R
+F(J,I) 170: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 0
  I: 1
  J: 3
  T(1,3): 3
  S = 3
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 1
  terminated:false
  I = 2
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 3
  I: 2
  J: 3
  T(2,3): 3
  S = 6
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 2
  terminated:false
  I = 3
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 6
  I: 3
  J: 3
  T(3,3): 5
  S = 11
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 3
  terminated:true
-200: PRINT "SUM OF COLUMN" J; "EQUALS" S
+F(J) 200: PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: 3
  3 EQUALS
  S: 11
  11
-210: NEXT J
+F(J) 210: NEXT J
  J: 3
  terminated:false
  J = 4
-160: LET S = 0
+F(J) 160: LET S = 0
  S = 0
-170: FOR I = 1 TO R
+F(J,I) 170: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 0
  I: 1
  J: 4
  T(1,4): 4
  S = 4
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 1
  terminated:false
  I = 2
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 4
  I: 2
  J: 4
  T(2,4): 2
  S = 6
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 2
  terminated:false
  I = 3
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 6
  I: 3
  J: 4
  T(3,4): 2
  S = 8
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 3
  terminated:true
-200: PRINT "SUM OF COLUMN" J; "EQUALS" S
+F(J) 200: PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: 4
  4 EQUALS
  S: 8
  8
-210: NEXT J
+F(J) 210: NEXT J
  J: 4
  terminated:false
  J = 5
-160: LET S = 0
+F(J) 160: LET S = 0
  S = 0
-170: FOR I = 1 TO R
+F(J,I) 170: FOR I = 1 TO R
  R: 3
  I = 1
  R = 3
  terminated:false
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 0
  I: 1
  J: 5
  T(1,5): 5
  S = 5
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 1
  terminated:false
  I = 2
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 5
  I: 2
  J: 5
  T(2,5): 1
  S = 6
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 2
  terminated:false
  I = 3
-180: LET S = S + T(I, J)
+F(J,I) 180: LET S = S + T(I, J)
  S: 6
  I: 3
  J: 5
  T(3,5): 1
  S = 7
-190: NEXT I
+F(J,I) 190: NEXT I
  I: 3
  terminated:true
-200: PRINT "SUM OF COLUMN" J; "EQUALS" S
+F(J) 200: PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: 5
  5 EQUALS
  S: 7
  7
-210: NEXT J
+F(J) 210: NEXT J
  J: 5
  terminated:true
 260: END

@@ -22,19 +22,19 @@ Halstead complexity:
 (0 1) 10 REM TEST FOR/NEXT WITH CHANGE TO INDEX
   Origs: 
   Dests: 
-(1 3) 20 FOR I = 1 TO 5
+F(I) (1 3) 20 FOR I = 1 TO 5
   Origs: :start
   Dests: 30:fornext, 60:fornext
-(0 3) 30 PRINT "BEFORE: "; I
+F(I) (0 3) 30 PRINT "BEFORE: "; I
   Origs: 20:fornext
   Dests: 40:auto
-(0 3) 40 LET I = 3
+F(I) (0 3) 40 LET I = 3
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 PRINT "AFTER: "; I
+F(I) (0 3) 50 PRINT "AFTER: "; I
   Origs: 40:auto
   Dests: 60:auto
-(0 1) 60 NEXT I
+F(I) (0 1) 60 NEXT I
   Origs: 20:fornext, 50:auto
   Dests: 70:auto
 (0 3) 70 PRINT "FINAL: "; I

@@ -25,19 +25,19 @@ Halstead complexity:
 (0 2) 20 DIM A(5, 5)
   Origs: :start
   Dests: 30:auto
-(1 3) 30 FOR I = 1 TO 5
+F(I) (1 3) 30 FOR I = 1 TO 5
   Origs: 20:auto
   Dests: 40:fornext, 70:fornext
-(1 3) 40 FOR J = 1 TO 5
+F(I,J) (1 3) 40 FOR J = 1 TO 5
   Origs: 30:fornext
   Dests: 50:fornext, 60:fornext
-(0 4) 50 LET A(I, J) = I + J
+F(I,J) (0 4) 50 LET A(I, J) = I + J
   Origs: 40:fornext
   Dests: 60:auto
-(0 1) 60 NEXT J
+F(I,J) (0 1) 60 NEXT J
   Origs: 40:fornext, 50:auto
   Dests: 70:auto
-(0 1) 70 NEXT I
+F(I) (0 1) 70 NEXT I
   Origs: 30:fornext, 60:auto
   Dests: 90:auto
 (0 3) 90 LET C = 5

@@ -28,37 +28,37 @@ Halstead complexity:
 (0 1) 90 REM INITIALIZER
   Origs: 
   Dests: 
-(1 3) 100 FOR P = 1 TO 8
+F(P) (1 3) 100 FOR P = 1 TO 8
   Origs: :start
   Dests: 110:fornext, 140:fornext
-(1 3) 110 FOR I = 1 TO 3
+F(P,I) (1 3) 110 FOR I = 1 TO 3
   Origs: 100:fornext
   Dests: 120:fornext, 130:fornext
-(1 2) 120 READ T(P, I)
+F(P,I) (1 2) 120 READ T(P, I)
   Origs: 110:fornext
   Dests: 130:auto
-(0 1) 130 NEXT I
+F(P,I) (0 1) 130 NEXT I
   Origs: 110:fornext, 120:auto
   Dests: 140:auto
-(0 1) 140 NEXT P
+F(P) (0 1) 140 NEXT P
   Origs: 100:fornext, 130:auto
   Dests: 200:auto
 (0 2) 150 DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
   Origs: 
   Dests: 
-(1 3) 200 FOR S = 1 TO 9
+F(S) (1 3) 200 FOR S = 1 TO 9
   Origs: 140:auto
   Dests: 210:fornext, 240:fornext
-(1 3) 210 FOR J = 1 TO 4
+F(S,J) (1 3) 210 FOR J = 1 TO 4
   Origs: 200:fornext
   Dests: 220:fornext, 230:fornext
-(1 2) 220 READ U(S, J)
+F(S,J) (1 2) 220 READ U(S, J)
   Origs: 210:fornext
   Dests: 230:auto
-(0 1) 230 NEXT J
+F(S,J) (0 1) 230 NEXT J
   Origs: 210:fornext, 220:auto
   Dests: 240:auto
-(0 1) 240 NEXT S
+F(S) (0 1) 240 NEXT S
   Origs: 200:fornext, 230:auto
   Dests: 265:auto
 (0 2) 250 DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
@@ -67,19 +67,19 @@ Halstead complexity:
 (0 2) 260 DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
   Origs: 
   Dests: 
-(0 3) 265 LET N = 0
+F(J) (0 3) 265 LET N = 0
   Origs: 240:auto, 850:goto
   Dests: 270:auto
-(1 3) 270 FOR S = 1 TO 9
+F(S,J) (1 3) 270 FOR S = 1 TO 9
   Origs: 265:auto
   Dests: 275:fornext, 285:fornext
-(0 3) 275 LET C(S) = 0
+F(S,J) (0 3) 275 LET C(S) = 0
   Origs: 270:fornext
   Dests: 280:auto
-(0 3) 280 LET B(S) = 0
+F(S,J) (0 3) 280 LET B(S) = 0
   Origs: 275:auto
   Dests: 285:auto
-(0 1) 285 NEXT S
+F(S,J) (0 1) 285 NEXT S
   Origs: 270:fornext, 280:auto
   Dests: 310:auto
 (0 0) 290 
@@ -88,25 +88,25 @@ Halstead complexity:
 (0 1) 300 REM WHO STARTS?
   Origs: 
   Dests: 
-(1 7) 310 IF RND(Z) < 1 / 2 THEN 350
+F(J) (1 7) 310 IF RND(Z) < 1 / 2 THEN 350
   Origs: 285:auto
   Dests: 320:auto, 350:ifthen
-(0 2) 320 PRINT "YOU WILL MOVE FIRST."
+F(J) (0 2) 320 PRINT "YOU WILL MOVE FIRST."
   Origs: 310:auto
   Dests: 330:auto
-(0 2) 330 PRINT
+F(J) (0 2) 330 PRINT
   Origs: 320:auto
   Dests: 340:auto
-(0 2) 340 GOTO 400
+F(J) (0 2) 340 GOTO 400
   Origs: 330:auto
   Dests: 400:goto
-(0 2) 350 PRINT "THE COMPUTER WILL MOVE FIRST."
+F(J) (0 2) 350 PRINT "THE COMPUTER WILL MOVE FIRST."
   Origs: 310:ifthen
   Dests: 360:auto
-(0 2) 360 PRINT
+F(J) (0 2) 360 PRINT
   Origs: 350:auto
   Dests: 370:auto
-(0 2) 370 GOTO 600
+F(J) (0 2) 370 GOTO 600
   Origs: 360:auto
   Dests: 610:goto
 (0 0) 380 
@@ -115,49 +115,49 @@ Halstead complexity:
 (0 1) 390 REM PLAYER'S MOVE.
   Origs: 
   Dests: 
-(0 2) 400 PRINT "YOUR MOVE";
+F(J) (0 2) 400 PRINT "YOUR MOVE";
   Origs: 340:goto, 537:ifthen, 560:goto
   Dests: 410:auto
-(1 2) 410 INPUT M
+F(J) (1 2) 410 INPUT M
   Origs: 400:auto
   Dests: 415:auto
-(0 4) 415 LET F = -1
+F(J) (0 4) 415 LET F = -1
   Origs: 410:auto
   Dests: 420:auto
-(1 5) 420 IF M <> INT(M) THEN 550
+F(J) (1 5) 420 IF M <> INT(M) THEN 550
   Origs: 415:auto
   Dests: 430:auto, 550:ifthen
-(1 4) 430 IF M < 1 THEN 500
+F(J) (1 4) 430 IF M < 1 THEN 500
   Origs: 420:auto
   Dests: 440:auto, 500:ifthen
-(1 4) 440 IF M > 9 THEN 550
+F(J) (1 4) 440 IF M > 9 THEN 550
   Origs: 430:auto
   Dests: 450:auto, 550:ifthen
-(1 4) 450 IF B(M) <> 0 THEN 500
+F(J) (1 4) 450 IF B(M) <> 0 THEN 500
   Origs: 440:auto
   Dests: 460:auto, 500:ifthen
-(0 3) 460 LET B(M) = F
+F(J) (0 3) 460 LET B(M) = F
   Origs: 450:auto, 640:goto
   Dests: 470:auto
-(1 3) 470 FOR J = 1 TO 4
+F(J) (1 3) 470 FOR J = 1 TO 4
   Origs: 460:auto
   Dests: 480:fornext, 530:fornext
-(0 3) 480 LET P = U(M, J)
+F(J) (0 3) 480 LET P = U(M, J)
   Origs: 470:fornext
   Dests: 490:auto
-(1 4) 490 IF P = 0 THEN 530
+F(J) (1 4) 490 IF P = 0 THEN 530
   Origs: 480:auto
   Dests: 500:auto, 530:ifthen
-(0 4) 500 LET C(P) = C(P) + F
+F(J) (0 4) 500 LET C(P) = C(P) + F
   Origs: 430:ifthen, 450:ifthen, 490:auto
   Dests: 510:auto
-(1 6) 510 IF C(P) = -3 THEN 860
+F(J) (1 6) 510 IF C(P) = -3 THEN 860
   Origs: 500:auto
   Dests: 520:auto, 860:ifthen
-(1 4) 520 IF C(P) = 3 THEN 800
+F(J) (1 4) 520 IF C(P) = 3 THEN 800
   Origs: 510:auto
   Dests: 530:auto, 810:ifthen
-(0 1) 530 NEXT J
+F(J) (0 1) 530 NEXT J
   Origs: 470:fornext, 490:ifthen, 520:auto
   Dests: 535:auto
 (0 4) 535 LET N = N + 1
@@ -175,10 +175,10 @@ Halstead complexity:
 (0 2) 540 GOTO 600
   Origs: 
   Dests: 610:goto
-(0 2) 550 PRINT "ILLEGAL MOVE. TRY AGAIN."
+F(J) (0 2) 550 PRINT "ILLEGAL MOVE. TRY AGAIN."
   Origs: 420:ifthen, 440:ifthen
   Dests: 560:auto
-(0 3) 560 GOTO 400
+F(J) (0 3) 560 GOTO 400
   Origs: 550:auto
   Dests: 400:goto
 (0 0) 595 
@@ -187,40 +187,40 @@ Halstead complexity:
 (0 1) 600 REM MACHINE'S MOVE
   Origs: 
   Dests: 
-(0 2) 610 GOSUB 1000
+F(J) (0 2) 610 GOSUB 1000
   Origs: 370:goto, 538:goto, 540:goto
   Dests: 620:auto, 1010:gosub
-(0 3) 620 PRINT "THE COMPUTER MOVES" M
+F(J) (0 3) 620 PRINT "THE COMPUTER MOVES" M
   Origs: 610:auto
   Dests: 630:auto
-(0 3) 630 LET F = 1
+F(J) (0 3) 630 LET F = 1
   Origs: 620:auto
   Dests: 640:auto
-(0 3) 640 GOTO 460
+F(J) (0 3) 640 GOTO 460
   Origs: 630:auto
   Dests: 460:goto
 (0 1) 800 REM THE GAME IS OVER
   Origs: 
   Dests: 
-(0 2) 810 PRINT "AND THE COMPUTER WINS."
+F(J) (0 2) 810 PRINT "AND THE COMPUTER WINS."
   Origs: 520:ifthen
   Dests: 820:auto
-(0 2) 820 PRINT
+F(J) (0 2) 820 PRINT
   Origs: 810:auto, 870:goto, 890:goto
   Dests: 830:auto
-(0 2) 830 PRINT
+F(J) (0 2) 830 PRINT
   Origs: 820:auto
   Dests: 840:auto
-(0 2) 840 PRINT "NEW GAME."
+F(J) (0 2) 840 PRINT "NEW GAME."
   Origs: 830:auto
   Dests: 850:auto
-(0 3) 850 GOTO 265
+F(J) (0 3) 850 GOTO 265
   Origs: 840:auto
   Dests: 265:goto
-(0 2) 860 PRINT "CONGRATULATIONS, YOU BEAT THE COMPUTER."
+F(J) (0 2) 860 PRINT "CONGRATULATIONS, YOU BEAT THE COMPUTER."
   Origs: 510:ifthen
   Dests: 870:auto
-(0 3) 870 GOTO 820
+F(J) (0 3) 870 GOTO 820
   Origs: 860:auto
   Dests: 820:goto
 (0 2) 880 PRINT "THE GAME IS A DRAW."
@@ -235,88 +235,88 @@ Halstead complexity:
 (0 1) 1000 REM SELECT A MOVE
   Origs: 
   Dests: 
-G(1010) (1 3) 1010 FOR P = 1 TO 8
+G(1010) F(P) (1 3) 1010 FOR P = 1 TO 8
   Origs: 610:gosub
   Dests: 1020:fornext, 1030:fornext
-G(1010) (1 4) 1020 IF C(P) = 2 THEN 1100
+G(1010) F(P) (1 4) 1020 IF C(P) = 2 THEN 1100
   Origs: 1010:fornext
   Dests: 1030:auto, 1100:ifthen
-G(1010) (0 1) 1030 NEXT P
+G(1010) F(P) (0 1) 1030 NEXT P
   Origs: 1010:fornext, 1020:auto
   Dests: 1040:auto
-G(1010) (1 3) 1040 FOR P = 1 TO 8
+G(1010) F(P) (1 3) 1040 FOR P = 1 TO 8
   Origs: 1030:auto
   Dests: 1050:fornext, 1060:fornext
-G(1010) (1 6) 1050 IF C(P) = -2 THEN 1100
+G(1010) F(P) (1 6) 1050 IF C(P) = -2 THEN 1100
   Origs: 1040:fornext
   Dests: 1060:auto, 1100:ifthen
-G(1010) (0 1) 1060 NEXT P
+G(1010) F(P) (0 1) 1060 NEXT P
   Origs: 1040:fornext, 1050:auto
   Dests: 1070:auto
 G(1010) (0 2) 1070 GOTO 1200
   Origs: 1060:auto
   Dests: 1200:goto
-G(1010) (1 3) 1100 FOR I = 1 TO 3
+G(1010) F(P,I) (1 3) 1100 FOR I = 1 TO 3
   Origs: 1020:ifthen, 1050:ifthen
   Dests: 1110:fornext, 1130:fornext
-G(1010) (0 3) 1110 LET M = T(P, I)
+G(1010) F(P,I) (0 3) 1110 LET M = T(P, I)
   Origs: 1100:fornext
   Dests: 1120:auto
-G(1010) (1 4) 1120 IF B(M) = 0 THEN 1999
+G(1010) F(P,I) (1 4) 1120 IF B(M) = 0 THEN 1999
   Origs: 1110:auto
   Dests: 1130:auto, 1999:ifthen
-G(1010) (0 1) 1130 NEXT I
+G(1010) F(P,I) (0 1) 1130 NEXT I
   Origs: 1100:fornext, 1120:auto
   Dests: 1200:auto
 (0 0) 1140 
   Origs: 
   Dests: 
-G(1010) (1 3) 1200 FOR S = 1 TO 9
+G(1010) F(P,S) (1 3) 1200 FOR S = 1 TO 9
   Origs: 1070:goto, 1130:auto
   Dests: 1210:fornext, 1270:fornext
-G(1010) (0 3) 1210 LET V(S) = 0
+G(1010) F(P,S) (0 3) 1210 LET V(S) = 0
   Origs: 1200:fornext
   Dests: 1215:auto
-G(1010) (1 4) 1215 IF B(S) <> 0 THEN 1270
+G(1010) F(P,S) (1 4) 1215 IF B(S) <> 0 THEN 1270
   Origs: 1210:auto
   Dests: 1220:auto, 1270:ifthen
-G(1010) (1 3) 1220 FOR J = 1 TO 4
+G(1010) F(P,S,J) (1 3) 1220 FOR J = 1 TO 4
   Origs: 1215:auto
   Dests: 1230:fornext, 1260:fornext
-G(1010) (0 3) 1230 LET P = U(S, J)
+G(1010) F(P,S,J) (0 3) 1230 LET P = U(S, J)
   Origs: 1220:fornext
   Dests: 1240:auto
-G(1010) (1 4) 1240 IF P = 0 THEN 1260
+G(1010) F(P,S,J) (1 4) 1240 IF P = 0 THEN 1260
   Origs: 1230:auto
   Dests: 1250:auto, 1260:ifthen
-G(1010) (0 6) 1250 LET V(S) = V(S) + 1 + ABS(C(P))
+G(1010) F(P,S,J) (0 6) 1250 LET V(S) = V(S) + 1 + ABS(C(P))
   Origs: 1240:auto
   Dests: 1260:auto
-G(1010) (0 1) 1260 NEXT J
+G(1010) F(P,S,J) (0 1) 1260 NEXT J
   Origs: 1220:fornext, 1240:ifthen, 1250:auto
   Dests: 1270:auto
-G(1010) (0 1) 1270 NEXT S
+G(1010) F(P,S) (0 1) 1270 NEXT S
   Origs: 1200:fornext, 1215:ifthen, 1260:auto
   Dests: 1300:auto
-G(1010) (0 3) 1300 LET V = 0
+G(1010) F(P) (0 3) 1300 LET V = 0
   Origs: 1270:auto
   Dests: 1310:auto
-G(1010) (1 3) 1310 FOR S = 1 TO 9
+G(1010) F(P,S) (1 3) 1310 FOR S = 1 TO 9
   Origs: 1300:auto
   Dests: 1320:fornext, 1350:fornext
-G(1010) (1 4) 1320 IF V(S) <= V THEN 1350
+G(1010) F(P,S) (1 4) 1320 IF V(S) <= V THEN 1350
   Origs: 1310:fornext
   Dests: 1330:auto, 1350:ifthen
-G(1010) (0 3) 1330 LET V = V(S)
+G(1010) F(P,S) (0 3) 1330 LET V = V(S)
   Origs: 1320:auto
   Dests: 1340:auto
-G(1010) (0 3) 1340 LET M = S
+G(1010) F(P,S) (0 3) 1340 LET M = S
   Origs: 1330:auto
   Dests: 1350:auto
-G(1010) (0 1) 1350 NEXT S
+G(1010) F(P,S) (0 1) 1350 NEXT S
   Origs: 1310:fornext, 1320:ifthen, 1340:auto
   Dests: 1999:auto
-G(1010) (0 1) 1999 RETURN
+G(1010) F(P,I) (0 1) 1999 RETURN
   Origs: 1120:ifthen, 1350:auto
   Dests: 
 (0 1) 9999 END

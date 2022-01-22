@@ -10,125 +10,125 @@ YEAR            DEPRECIATE
 40: LET Y9 = Y * (Y + 1) / 2
  Y: 7
  Y9 = 28
-100: FOR I = 1 TO Y
+F(I) 100: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-110: LET D(I) = A * (Y - I + 1) / Y9
+F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
  I: 1
  A: 5000
  Y: 7
  Y9: 28
  D(1) = 1250
-120: PRINT I, D(I)
+F(I) 120: PRINT I, D(I)
  I: 1
  1              
  D(1): 1250
  1250
-130: NEXT I
+F(I) 130: NEXT I
  I: 1
  terminated:false
  I = 2
-110: LET D(I) = A * (Y - I + 1) / Y9
+F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
  I: 2
  A: 5000
  Y: 7
  Y9: 28
  D(2) = 1071.43
-120: PRINT I, D(I)
+F(I) 120: PRINT I, D(I)
  I: 2
  2              
  D(2): 1071.43
  1071.43
-130: NEXT I
+F(I) 130: NEXT I
  I: 2
  terminated:false
  I = 3
-110: LET D(I) = A * (Y - I + 1) / Y9
+F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
  I: 3
  A: 5000
  Y: 7
  Y9: 28
  D(3) = 892.857
-120: PRINT I, D(I)
+F(I) 120: PRINT I, D(I)
  I: 3
  3              
  D(3): 892.857
  892.857
-130: NEXT I
+F(I) 130: NEXT I
  I: 3
  terminated:false
  I = 4
-110: LET D(I) = A * (Y - I + 1) / Y9
+F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
  I: 4
  A: 5000
  Y: 7
  Y9: 28
  D(4) = 714.286
-120: PRINT I, D(I)
+F(I) 120: PRINT I, D(I)
  I: 4
  4              
  D(4): 714.286
  714.286
-130: NEXT I
+F(I) 130: NEXT I
  I: 4
  terminated:false
  I = 5
-110: LET D(I) = A * (Y - I + 1) / Y9
+F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
  I: 5
  A: 5000
  Y: 7
  Y9: 28
  D(5) = 535.714
-120: PRINT I, D(I)
+F(I) 120: PRINT I, D(I)
  I: 5
  5              
  D(5): 535.714
  535.714
-130: NEXT I
+F(I) 130: NEXT I
  I: 5
  terminated:false
  I = 6
-110: LET D(I) = A * (Y - I + 1) / Y9
+F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
  I: 6
  A: 5000
  Y: 7
  Y9: 28
  D(6) = 357.143
-120: PRINT I, D(I)
+F(I) 120: PRINT I, D(I)
  I: 6
  6              
  D(6): 357.143
  357.143
-130: NEXT I
+F(I) 130: NEXT I
  I: 6
  terminated:false
  I = 7
-110: LET D(I) = A * (Y - I + 1) / Y9
+F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
  I: 7
  A: 5000
  Y: 7
  Y9: 28
  D(7) = 178.571
-120: PRINT I, D(I)
+F(I) 120: PRINT I, D(I)
  I: 7
  7              
  D(7): 178.571
  178.571
-130: NEXT I
+F(I) 130: NEXT I
  I: 7
  terminated:true
 140: PRINT
 
 200: LET S = 0
  S = 0
-210: FOR I = 1 TO Y
+F(I) 210: FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 0
  I: 1
  D(1): 1250
@@ -136,11 +136,11 @@ YEAR            DEPRECIATE
  R: 4.5
  Y: 7
  S = 781.356
-230: NEXT I
+F(I) 230: NEXT I
  I: 1
  terminated:false
  I = 2
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 781.356
  I: 2
  D(2): 1071.43
@@ -148,11 +148,11 @@ YEAR            DEPRECIATE
  R: 4.5
  Y: 7
  S = 1451.09
-230: NEXT I
+F(I) 230: NEXT I
  I: 2
  terminated:false
  I = 3
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 1451.09
  I: 3
  D(3): 892.857
@@ -160,11 +160,11 @@ YEAR            DEPRECIATE
  R: 4.5
  Y: 7
  S = 2009.2
-230: NEXT I
+F(I) 230: NEXT I
  I: 3
  terminated:false
  I = 4
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 2009.2
  I: 4
  D(4): 714.286
@@ -172,11 +172,11 @@ YEAR            DEPRECIATE
  R: 4.5
  Y: 7
  S = 2455.69
-230: NEXT I
+F(I) 230: NEXT I
  I: 4
  terminated:false
  I = 5
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 2455.69
  I: 5
  D(5): 535.714
@@ -184,11 +184,11 @@ YEAR            DEPRECIATE
  R: 4.5
  Y: 7
  S = 2790.56
-230: NEXT I
+F(I) 230: NEXT I
  I: 5
  terminated:false
  I = 6
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 2790.56
  I: 6
  D(6): 357.143
@@ -196,11 +196,11 @@ YEAR            DEPRECIATE
  R: 4.5
  Y: 7
  S = 3013.81
-230: NEXT I
+F(I) 230: NEXT I
  I: 6
  terminated:false
  I = 7
-220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 3013.81
  I: 7
  D(7): 178.571
@@ -208,7 +208,7 @@ YEAR            DEPRECIATE
  R: 4.5
  Y: 7
  S = 3125.43
-230: NEXT I
+F(I) 230: NEXT I
  I: 7
  terminated:true
 240: PRINT "SAVING = $" S

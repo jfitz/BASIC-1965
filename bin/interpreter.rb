@@ -228,6 +228,7 @@ class Interpreter
   def program_optimize
     clear_user_functions
 
+    @program.pessimize
     @program.optimize(self)
   end
 
@@ -318,8 +319,6 @@ class Interpreter
 
   def run_program
     clear_user_functions
-
-    @program.optimize(self)
 
     @program.init_data(self)
 
