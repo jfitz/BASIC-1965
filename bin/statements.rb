@@ -286,8 +286,7 @@ class AbstractStatement
     # mark as part of this sub
     @part_of_sub = marker
 
-    # do not change this call to transfers()
-    xfers = transfers + transfers_auto
+    xfers = @transfers + @transfers_auto
     
     # for each destination
     xfers.each do |xfer|
@@ -335,8 +334,7 @@ class AbstractStatement
     # mark as part of this on-error
     @part_of_on_error = marker
 
-    # do not change this call to transfers()
-    xfers = transfers + transfers_auto
+    xfers = @transfers + @transfers_auto
     
     # for each destination
     xfers.each do |xfer|
@@ -389,8 +387,7 @@ class AbstractStatement
       return if @control == marker
     end
 
-    # do not change this call to transfers()
-    xfers = transfers + transfers_auto
+    xfers = @transfers + @transfers_auto
     
     # for each destination
     xfers.each do |xfer|
@@ -543,8 +540,7 @@ class AbstractStatement
   end
 
   def transfers_to_origins(program, line_number, stmt)
-    # do not change this call to transfers()
-    xfers = transfers + transfers_auto
+    xfers = @transfers + @transfers_auto
 
     xfers.each do |xfer|
       dest_line_number = xfer.line_number
