@@ -1707,7 +1707,7 @@ class Program
 
         for_level -= 1
 
-        raise BASICPreexecuteError.new(:te_for_no_next, control.to_s) if
+        raise BASICSyntaxError.new("FOR without NEXT for #{control}") if
           for_level.negative?
 
         if stmt_control == control ||
@@ -1720,7 +1720,7 @@ class Program
     end
 
     # if none found, error
-    raise BASICPreexecuteError.new(:te_for_no_next, control.to_s)
+    raise BASICSyntaxError.new("FOR without NEXT for #{control}")
   end
 
   def find_closing_endfunc_line_stmt(name, current_line_stmt)
@@ -1749,7 +1749,7 @@ class Program
     end
 
     # if none found, error
-    raise BASICPreexecuteError.new(:te_deffun_no_endfun, name.to_s)
+    raise BASICSyntaxError.new("Use function #{name} no ENDFUNCTION")
   end
 
   def profile(args, show_timing)

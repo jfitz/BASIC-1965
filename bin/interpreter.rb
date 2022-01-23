@@ -1296,7 +1296,7 @@ class Interpreter
   def retrieve_fornext(control)
     fornext = @fornexts[control]
 
-    raise BASICRuntimeError, :te_next_no_for if fornext.nil?
+    raise BASICSyntaxError.new('NEXT without FOR') if fornext.nil?
 
     fornext
   end
@@ -1306,7 +1306,7 @@ class Interpreter
   end
 
   def exit_fornext(forget, control)
-    raise BASICRuntimeError, :te_next_no_for if @fornext_stack.empty?
+    raise BASICSyntaxError.new('NEXT without FOR') if @fornext_stack.empty?
 
     @fornext_stack.pop
 
@@ -1314,7 +1314,7 @@ class Interpreter
   end
 
   def top_fornext
-    raise BASICRuntimeError, :te_inext_no_for if @fornext_stack.empty?
+    raise BASICSyntaxError.new('Implied NEXT without FOR') if @fornext_stack.empty?
 
     @fornext_stack[-1]
   end
