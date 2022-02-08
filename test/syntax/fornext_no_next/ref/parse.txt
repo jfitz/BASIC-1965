@@ -1,1 +1,16 @@
-FOR without NEXT for I
+10 REM TEST PROGRAM
+ Remark:TEST PROGRAM
+20 FOR I = 1 TO 4
+ ERROR: Cannot find NEXT for I
+ control: Variable:I -> _
+ start:   ["NumericConstant:1"]
+ end:     ["NumericConstant:4"]
+30 PRINT I
+ Variable:I -> _
+ CarriageControl:NL
+40 NEXT T
+ Variable:T -> _
+90 END
+ WARNING: Terminating statement in FOR/NEXT
+ 
+

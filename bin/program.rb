@@ -1707,7 +1707,7 @@ class Program
 
         for_level -= 1
 
-        raise BASICSyntaxError.new("FOR without NEXT for #{control}") if
+        raise(BASICSyntaxError, "Cannot find NEXT for #{control}") if
           for_level.negative?
 
         if stmt_control == control ||
@@ -1720,7 +1720,7 @@ class Program
     end
 
     # if none found, error
-    raise BASICSyntaxError.new("FOR without NEXT for #{control}")
+    raise(BASICSyntaxError, "Cannot find NEXT for #{control}")
   end
 
   def find_closing_endfunc_line_stmt(name, current_line_stmt)
@@ -1749,7 +1749,7 @@ class Program
     end
 
     # if none found, error
-    raise BASICSyntaxError.new("Use function #{name} no ENDFUNCTION")
+    raise BASICSyntaxError.new("No ENDFUNCTION for function #{name}")
   end
 
   def profile(args, show_timing)
