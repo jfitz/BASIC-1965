@@ -49,13 +49,13 @@ F(I,J) (1 4) 90 IF P(I, J) = 1 THEN 140
 F(I,J) (0 1) 100 NEXT J
   Origs: 80:fornext, 90:auto
   Dests: 110:auto
-F(I) (0 3) 110 PRINT I; "DOES NOT HAVE AN INVERSE"
+(0 3) 110 PRINT I; "DOES NOT HAVE AN INVERSE"
   Origs: 100:auto
   Dests: 120:auto
 F(I,J) (0 1) 120 NEXT I
   Origs: 70:fornext, 110:auto, 150:goto
   Dests: 130:auto
-F(J) (0 1) 130 STOP
+F(I) (0 1) 130 STOP
     WARNING: Terminating statement in FOR/NEXT
   Origs: 120:auto
   Dests: :stop

@@ -3790,16 +3790,16 @@ F(I) 280: IF J <= 5 THEN 300
 F(I) 300: NEXT I
  I: 47
  terminated:true
-310: PRINT
+F(I) 310: PRINT
 
-315: LET J = 1
+F(I) 315: LET J = 1
  J = 1
-F(I) 320: FOR I = 1 TO I9
+F(I,I) 320: FOR I = 1 TO I9
  I9: 47
  I = 1
  I9 = 47
  terminated:false
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 1
  L(1): 7
  J: 1
@@ -3821,7 +3821,7 @@ F(I) 400: NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 2
  L(2): 18
  J: 2
@@ -3843,7 +3843,7 @@ F(I) 400: NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 3
  L(3): 5
  J: 3
@@ -3865,7 +3865,7 @@ F(I) 400: NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 4
  L(4): 5
  J: 4
@@ -3887,7 +3887,7 @@ F(I) 400: NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 5
  L(5): 20
  J: 5
@@ -3911,7 +3911,7 @@ F(I) 400: NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 6
  L(6): 9
  J: 1
@@ -3933,7 +3933,7 @@ F(I) 400: NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 7
  L(7): 14
  J: 2
@@ -3955,7 +3955,7 @@ F(I) 400: NEXT I
  I: 7
  terminated:false
  I = 8
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 8
  L(8): 7
  J: 3
@@ -3977,7 +3977,7 @@ F(I) 400: NEXT I
  I: 8
  terminated:false
  I = 9
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 9
  L(9): 19
  J: 4
@@ -4002,7 +4002,7 @@ F(I) 400: NEXT I
  I: 9
  terminated:false
  I = 10
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 10
  L(10): 0
  J: 5
@@ -4026,7 +4026,7 @@ F(I) 400: NEXT I
  I: 10
  terminated:false
  I = 11
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 11
  L(11): 6
  J: 1
@@ -4048,7 +4048,7 @@ F(I) 400: NEXT I
  I: 11
  terminated:false
  I = 12
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 12
  L(12): 18
  J: 2
@@ -4070,7 +4070,7 @@ F(I) 400: NEXT I
  I: 12
  terminated:false
  I = 13
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 13
  L(13): 15
  J: 3
@@ -4092,7 +4092,7 @@ F(I) 400: NEXT I
  I: 13
  terminated:false
  I = 14
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 14
  L(14): 13
  J: 4
@@ -4114,7 +4114,7 @@ F(I) 400: NEXT I
  I: 14
  terminated:false
  I = 15
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 15
  L(15): 0
  J: 5
@@ -4138,7 +4138,7 @@ F(I) 400: NEXT I
  I: 15
  terminated:false
  I = 16
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 16
  L(16): 20
  J: 1
@@ -4163,7 +4163,7 @@ F(I) 400: NEXT I
  I: 16
  terminated:false
  I = 17
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 17
  L(17): 8
  J: 2
@@ -4185,7 +4185,7 @@ F(I) 400: NEXT I
  I: 17
  terminated:false
  I = 18
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 18
  L(18): 5
  J: 3
@@ -4207,7 +4207,7 @@ F(I) 400: NEXT I
  I: 18
  terminated:false
  I = 19
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 19
  L(19): 0
  J: 4
@@ -4229,7 +4229,7 @@ F(I) 400: NEXT I
  I: 19
  terminated:false
  I = 20
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 20
  L(20): 4
  J: 5
@@ -4253,7 +4253,7 @@ F(I) 400: NEXT I
  I: 20
  terminated:false
  I = 21
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 21
  L(21): 1
  J: 1
@@ -4275,7 +4275,7 @@ F(I) 400: NEXT I
  I: 21
  terminated:false
  I = 22
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 22
  L(22): 18
  J: 2
@@ -4297,7 +4297,7 @@ F(I) 400: NEXT I
  I: 22
  terminated:false
  I = 23
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 23
  L(23): 20
  J: 3
@@ -4322,7 +4322,7 @@ F(I) 400: NEXT I
  I: 23
  terminated:false
  I = 24
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 24
  L(24): 13
  J: 4
@@ -4344,7 +4344,7 @@ F(I) 400: NEXT I
  I: 24
  terminated:false
  I = 25
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 25
  L(25): 15
  J: 5
@@ -4368,7 +4368,7 @@ F(I) 400: NEXT I
  I: 25
  terminated:false
  I = 26
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 26
  L(26): 21
  J: 1
@@ -4393,7 +4393,7 @@ F(I) 400: NEXT I
  I: 26
  terminated:false
  I = 27
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 27
  L(27): 20
  J: 2
@@ -4415,7 +4415,7 @@ F(I) 400: NEXT I
  I: 27
  terminated:false
  I = 28
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 28
  L(28): 8
  J: 3
@@ -4437,7 +4437,7 @@ F(I) 400: NEXT I
  I: 28
  terminated:false
  I = 29
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 29
  L(29): 0
  J: 4
@@ -4459,7 +4459,7 @@ F(I) 400: NEXT I
  I: 29
  terminated:false
  I = 30
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 30
  L(30): 20
  J: 5
@@ -4483,7 +4483,7 @@ F(I) 400: NEXT I
  I: 30
  terminated:false
  I = 31
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 31
  L(31): 9
  J: 1
@@ -4505,7 +4505,7 @@ F(I) 400: NEXT I
  I: 31
  terminated:false
  I = 32
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 32
  L(32): 13
  J: 2
@@ -4527,7 +4527,7 @@ F(I) 400: NEXT I
  I: 32
  terminated:false
  I = 33
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 33
  L(33): 5
  J: 3
@@ -4549,7 +4549,7 @@ F(I) 400: NEXT I
  I: 33
  terminated:false
  I = 34
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 34
  L(34): 19
  J: 4
@@ -4574,7 +4574,7 @@ F(I) 400: NEXT I
  I: 34
  terminated:false
  I = 35
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 35
  L(35): 8
  J: 5
@@ -4598,7 +4598,7 @@ F(I) 400: NEXT I
  I: 35
  terminated:false
  I = 36
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 36
  L(36): 1
  J: 1
@@ -4620,7 +4620,7 @@ F(I) 400: NEXT I
  I: 36
  terminated:false
  I = 37
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 37
  L(37): 18
  J: 2
@@ -4642,7 +4642,7 @@ F(I) 400: NEXT I
  I: 37
  terminated:false
  I = 38
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 38
  L(38): 9
  J: 3
@@ -4664,7 +4664,7 @@ F(I) 400: NEXT I
  I: 38
  terminated:false
  I = 39
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 39
  L(39): 14
  J: 4
@@ -4686,7 +4686,7 @@ F(I) 400: NEXT I
  I: 39
  terminated:false
  I = 40
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 40
  L(40): 7
  J: 5
@@ -4710,7 +4710,7 @@ F(I) 400: NEXT I
  I: 40
  terminated:false
  I = 41
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 41
  L(41): 0
  J: 1
@@ -4732,7 +4732,7 @@ F(I) 400: NEXT I
  I: 41
  terminated:false
  I = 42
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 42
  L(42): 19
  J: 2
@@ -4754,7 +4754,7 @@ F(I) 400: NEXT I
  I: 42
  terminated:false
  I = 43
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 43
  L(43): 25
  J: 3
@@ -4779,7 +4779,7 @@ F(I) 400: NEXT I
  I: 43
  terminated:false
  I = 44
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 44
  L(44): 19
  J: 4
@@ -4804,7 +4804,7 @@ F(I) 400: NEXT I
  I: 44
  terminated:false
  I = 45
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 45
  L(45): 20
  J: 5
@@ -4828,7 +4828,7 @@ F(I) 400: NEXT I
  I: 45
  terminated:false
  I = 46
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 46
  L(46): 5
  J: 1
@@ -4850,7 +4850,7 @@ F(I) 400: NEXT I
  I: 46
  terminated:false
  I = 47
-F(I) 330: LET X = L(I) + K(J)
+F(I,I) 330: LET X = L(I) + K(J)
  I: 47
  L(47): 13
  J: 2
@@ -4871,6 +4871,6 @@ F(I) 380: IF J <= 5 THEN 400
 F(I) 400: NEXT I
  I: 47
  terminated:true
-800: STOP
+F(I) 800: STOP
 STOP in line 800
 

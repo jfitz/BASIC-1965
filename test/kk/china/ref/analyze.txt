@@ -40,11 +40,10 @@ F(I,K) (1 8) 60 IF X - M * INT(X / M) = A THEN 100
 F(I,K) (0 1) 70 NEXT K
   Origs: 40:fornext, 60:auto
   Dests: 80:auto
-F(I) (0 2) 80 PRINT "ERROR"
+(0 2) 80 PRINT "ERROR"
   Origs: 70:auto
   Dests: 90:auto
-F(I) (0 1) 90 STOP
-   WARNING: Terminating statement in FOR/NEXT
+(0 1) 90 STOP
   Origs: 80:auto
   Dests: :stop
 F(I,K) (0 4) 100 LET P = P * M
@@ -56,7 +55,7 @@ F(I,K) (0 3) 110 LET B = X
 F(I,K) (0 1) 120 NEXT I
   Origs: 20:fornext, 110:auto
   Dests: 130:auto
-F(K) (0 5) 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
+F(I) (0 5) 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
   Origs: 120:auto
   Dests: 999:auto
 (0 2) 900 DATA 4
@@ -65,7 +64,7 @@ F(K) (0 5) 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
 (0 2) 910 DATA 2, 3, 19, 100, 4, 31, 25, 101
   Origs: 
   Dests: 
-F(K) (0 1) 999 END
+F(I) (0 1) 999 END
     WARNING: Terminating statement in FOR/NEXT
   Origs: 130:auto
   Dests: :stop

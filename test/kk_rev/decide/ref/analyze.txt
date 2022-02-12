@@ -124,13 +124,13 @@ F(I) (0 3) 380 LET V(I) = M
 F(I) (0 1) 399 NEXT I
   Origs: 105:fornext, 150:goto, 260:goto, 380:auto
   Dests: 400:auto
-(0 2) 400 PRINT
+F(I) (0 2) 400 PRINT
   Origs: 399:auto
   Dests: 410:auto
-(0 2) 410 PRINT
+F(I) (0 2) 410 PRINT
   Origs: 400:auto
   Dests: 420:auto
-(0 3) 420 PRINT "EXPECTED GAIN = $" V(0)
+F(I) (0 3) 420 PRINT "EXPECTED GAIN = $" V(0)
   Origs: 410:auto
   Dests: 999:auto
 (0 0) 430 
@@ -223,7 +223,8 @@ F(I) (0 1) 399 NEXT I
 (0 2) 998 DATA 999
   Origs: 
   Dests: 
-(0 1) 999 END
+F(I) (0 1) 999 END
+    WARNING: Terminating statement in FOR/NEXT
   Origs: 420:auto
   Dests: :stop
 

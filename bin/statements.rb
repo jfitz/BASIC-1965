@@ -378,13 +378,22 @@ class AbstractStatement
 
   def assign_fornext_markers(_) end
 
-  def assign_fornext_marker(marker, line_number, program)
+  def assign_fornext_marker(marker, markers, line_number, program)
     # mark as part of this fornext
     @part_of_fornext << marker
 
+    if for?
+      markers << @control
+    end
+
     # do not follow if statement is NEXT for this control
     if next?
-      return if @control == marker
+      # no controls? that's a problem
+      return if @control.nil?
+
+      return if markers.size == 1
+        
+      markers.slice!(-1)
     end
 
     xfers = @transfers + @transfers_auto
@@ -402,7 +411,7 @@ class AbstractStatement
 
       if !statement.part_of_fornext.include?(marker)
         # recurse for that statement's destinations
-        statement.assign_fornext_marker(marker, dest_line, program)
+        statement.assign_fornext_marker(marker, markers, dest_line, program)
 
         stmt_xfers = statement.transfers
 
@@ -548,6 +557,10 @@ class AbstractStatement
       dest_xfer = TransferRefLineStmt.new(line_number, stmt, xfer.type)
       program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
     end
+  end
+
+  def for?
+    @keywords.size == 1 && @keywords[0].to_s == 'FOR'
   end
 
   def next?
@@ -1643,7 +1656,8 @@ class ForStatement < AbstractStatement
 
     unless statement.nil?
       # mark statement's destinations
-      statement.assign_fornext_marker(@control, dest_line, program)
+      markers = [@control]
+      statement.assign_fornext_marker(@control, markers, dest_line, program)
     end
   end
 

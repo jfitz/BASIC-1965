@@ -166,7 +166,7 @@ G(1010) F(I,I) (0 3) 1120 LET C(I) = X(L - I)
 G(1010) F(I) (0 1) 1130 NEXT I
   Origs: 1110:fornext, 1120:auto
   Dests: 1140:auto
-G(1010) (0 1) 1140 RETURN
+G(1010) F(I) (0 1) 1140 RETURN
   Origs: 1130:auto
   Dests: 
 G(1010) (0 2) 1200 PRINT "NUMBER TOO LONG"

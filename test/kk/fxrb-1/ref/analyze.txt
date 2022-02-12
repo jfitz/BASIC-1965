@@ -85,10 +85,10 @@ F(J,I) (1 4) 320 IF G(I, J) > 0 THEN 360
 F(J,I) (0 1) 330 NEXT I
   Origs: 310:fornext, 320:auto
   Dests: 340:auto
-F(J) (0 2) 340 PRINT
+(0 2) 340 PRINT
   Origs: 330:auto
   Dests: 350:auto
-F(J) (0 2) 350 GOTO 470
+(0 2) 350 GOTO 470
   Origs: 340:auto
   Dests: 470:goto
 F(J,I,I) (1 3) 360 FOR I = 1 TO 60
@@ -115,16 +115,16 @@ F(J,I,K) (1 4) 420 IF G(K, J) > 0 THEN 450
 F(J,I,K) (0 1) 430 NEXT K
   Origs: 410:fornext, 420:auto
   Dests: 440:auto
-F(J,I) (0 2) 440 GOTO 460
+F(J) (0 2) 440 GOTO 460
   Origs: 430:auto
   Dests: 460:goto
 F(J,I,K) (0 1) 450 NEXT I
   Origs: 360:fornext, 390:goto, 420:ifthen
   Dests: 460:auto
-F(J,I,K) (0 2) 460 PRINT
+F(J,I) (0 2) 460 PRINT
   Origs: 440:goto, 450:auto
   Dests: 470:auto
-F(J,I,K) (0 1) 470 NEXT J
+F(J,I) (0 1) 470 NEXT J
   Origs: 300:fornext, 350:goto, 460:auto
   Dests: 999:auto
 (0 0) 480 
@@ -133,7 +133,7 @@ F(J,I,K) (0 1) 470 NEXT J
 (0 2) 900 DATA 3, .5
   Origs: 
   Dests: 
-F(I,K) (0 1) 999 END
+F(J,I) (0 1) 999 END
     WARNING: Terminating statement in FOR/NEXT
     WARNING: Terminating statement in FOR/NEXT
   Origs: 470:auto

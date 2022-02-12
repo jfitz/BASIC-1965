@@ -1368,29 +1368,33 @@ class Program
   def pessimize
     @errors = []
 
-    pessimize_statements
+    line_numbers = @lines.keys.sort
+
+    pessimize_statements(line_numbers)
   end
 
   def optimize(interpreter)
-    optimize_statements(interpreter)
-    set_endfunc_lines
+    line_numbers = @lines.keys.sort
+
+    optimize_statements(interpreter, line_numbers)
+    set_endfunc_lines(line_numbers)
     @user_function_start_lines = {}
-    assign_singleline_function_markers
-    assign_multiline_function_markers
+    assign_singleline_function_markers(line_numbers)
+    assign_multiline_function_markers(line_numbers)
     @first_line_number_stmt_mod = find_first_statement
-    assign_autonext
+    assign_autonext(line_numbers)
     set_transfers
     transfers_to_origins
     set_transfers_auto
-    assign_sub_markers
-    assign_on_error_markers
-    assign_fornext_markers
-    check_program
-    check_function_markers
+    assign_sub_markers(line_numbers)
+    assign_on_error_markers(line_numbers)
+    assign_fornext_markers(line_numbers)
+    check_program(line_numbers)
+    check_function_markers(line_numbers)
   end
 
-  def pessimize_statements
-    @lines.keys.sort.each do |line_number|
+  def pessimize_statements(line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1401,8 +1405,8 @@ class Program
     end
   end
 
-  def optimize_statements(interpreter)
-    @lines.keys.sort.each do |line_number|
+  def optimize_statements(interpreter, line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1413,8 +1417,8 @@ class Program
     end
   end
 
-  def set_endfunc_lines
-    @lines.keys.sort.each do |line_number|
+  def set_endfunc_lines(line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1425,8 +1429,8 @@ class Program
     end
   end
 
-  def assign_sub_markers
-    @lines.keys.sort.each do |line_number|
+  def assign_sub_markers(line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1436,8 +1440,8 @@ class Program
     end
   end
 
-  def assign_on_error_markers
-    @lines.keys.sort.each do |line_number|
+  def assign_on_error_markers(line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1447,8 +1451,8 @@ class Program
     end
   end
 
-  def assign_fornext_markers
-    @lines.keys.sort.each do |line_number|
+  def assign_fornext_markers(line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1471,10 +1475,10 @@ class Program
     statement
   end
 
-  def assign_singleline_function_markers
+  def assign_singleline_function_markers(line_numbers)
     part_of_user_function = nil
 
-    @lines.keys.sort.each do |line_number|
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1493,10 +1497,10 @@ class Program
     end
   end
 
-  def assign_multiline_function_markers
+  def assign_multiline_function_markers(line_numbers)
     part_of_user_function = nil
 
-    @lines.keys.sort.each do |line_number|
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1525,8 +1529,8 @@ class Program
     end
   end
 
-  def assign_autonext
-    @lines.keys.sort.each do |line_number|
+  def assign_autonext(line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
@@ -1643,22 +1647,22 @@ class Program
     end
   end
 
-  def check_program
-    @lines.keys.sort.each do |line_number|
+  def check_program(line_numbers)
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       line.check(self, line_number)
     end
 
-    @lines.keys.sort.each do |line_number|
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       line.check_program(self, line_number)
     end
   end
 
-  def check_function_markers
+  def check_function_markers(line_numbers)
     part_of_user_function = nil
 
-    @lines.keys.sort.each do |line_number|
+    line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 

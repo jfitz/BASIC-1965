@@ -220,7 +220,7 @@ then
     fi
 
     echo Compare trace...
-    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/trace.txt" "$TESTBED/$TESTNAME/trace.txt"
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/trace.txt" "$TESTBED/$TESTNAME/trace.txt" >/dev/null
     ((ECODE=$?))
 
     if [ $ECODE -ne 0 ]
