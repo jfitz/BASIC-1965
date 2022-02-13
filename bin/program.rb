@@ -253,10 +253,11 @@ class Line
     any_changes
   end
 
-  def check(program, line_number)
+  def check_statements(program, line_number)
     @statements.each_with_index do |statement, stmt|
       line_number_stmt = LineStmt.new(line_number, stmt)
-      statement.check(program, line_number_stmt)
+      statement.check_gosub_origins(program, line_number_stmt)
+      statement.check_onerror_origins(program, line_number_stmt)
     end
   end
 
@@ -1389,6 +1390,7 @@ class Program
     assign_sub_markers(line_numbers)
     assign_on_error_markers(line_numbers)
     assign_fornext_markers(line_numbers)
+    check_lines(line_numbers)
     check_program(line_numbers)
     check_function_markers(line_numbers)
   end
@@ -1647,12 +1649,14 @@ class Program
     end
   end
 
-  def check_program(line_numbers)
+  def check_lines(line_numbers)
     line_numbers.each do |line_number|
       line = @lines[line_number]
-      line.check(self, line_number)
+      line.check_statements(self, line_number)
     end
+  end
 
+  def check_program(line_numbers)
     line_numbers.each do |line_number|
       line = @lines[line_number]
       line.check_program(self, line_number)

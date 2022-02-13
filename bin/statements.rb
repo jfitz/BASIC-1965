@@ -439,6 +439,37 @@ class AbstractStatement
 
   def renumber(_) end
 
+  def set_transfers(_)
+    @transfers = []
+  end
+
+  def set_transfers_auto(program, line_number, stmt)
+    @transfers_auto = []
+
+    # convert auto-next to TransferRefLineStmt
+    if @autonext && @autonext_line_stmt && (@executable == :run || @origins.size.positive?)
+      dest_line_number = @autonext_line_stmt.line_number
+      dest_stmt = @autonext_line_stmt.statement
+
+      @transfers_auto <<
+        TransferRefLineStmt.new(dest_line_number, dest_stmt, :auto)
+
+      dest_xfer = TransferRefLineStmt.new(line_number, stmt, :auto)
+      program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
+    end
+  end
+
+  def transfers_to_origins(program, line_number, stmt)
+    xfers = @transfers + @transfers_auto
+
+    xfers.each do |xfer|
+      dest_line_number = xfer.line_number
+      dest_stmt = xfer.statement
+      dest_xfer = TransferRefLineStmt.new(line_number, stmt, xfer.type)
+      program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
+    end
+  end
+
   def uncache; end
 
   def reset_profile_metrics
@@ -528,37 +559,6 @@ class AbstractStatement
     []
   end
 
-  def set_transfers(_)
-    @transfers = []
-  end
-
-  def set_transfers_auto(program, line_number, stmt)
-    @transfers_auto = []
-
-    # convert auto-next to TransferRefLineStmt
-    if @autonext && @autonext_line_stmt && (@executable == :run || @origins.size.positive?)
-      dest_line_number = @autonext_line_stmt.line_number
-      dest_stmt = @autonext_line_stmt.statement
-
-      @transfers_auto <<
-        TransferRefLineStmt.new(dest_line_number, dest_stmt, :auto)
-
-      dest_xfer = TransferRefLineStmt.new(line_number, stmt, :auto)
-      program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
-    end
-  end
-
-  def transfers_to_origins(program, line_number, stmt)
-    xfers = @transfers + @transfers_auto
-
-    xfers.each do |xfer|
-      dest_line_number = xfer.line_number
-      dest_stmt = xfer.statement
-      dest_xfer = TransferRefLineStmt.new(line_number, stmt, xfer.type)
-      program.add_statement_origin(dest_line_number, dest_stmt, dest_xfer)
-    end
-  end
-
   def for?
     @keywords.size == 1 && @keywords[0].to_s == 'FOR'
   end
@@ -586,7 +586,7 @@ class AbstractStatement
     !@errors.empty? || !@program_errors.empty?
   end
 
-  def check(_, _)
+  def check_gosub_origins(_, _)
     # check all origins are consistent for GOSUB
     any_gosub = false
     any_other = false
@@ -595,7 +595,9 @@ class AbstractStatement
       any_other = true if origin.type != :gosub
     end
     @program_warnings << 'Inconsistent GOSUB origins' if any_gosub && any_other
+  end
 
+  def check_onerror_origins(_, _)
     # check all origins are consistent for ON ERROR
     any_on_error = false
     any_other = false
@@ -1086,16 +1088,16 @@ module InputFunctions
     values
   end
 
-  def uncache
-    @items.each(&:uncache)
-  end
-
   def file_values(fhr, interpreter)
     values = []
 
     values += fhr.input(interpreter)
 
     values
+  end
+
+  def uncache
+    @items.each(&:uncache)
   end
 end
 
@@ -1425,6 +1427,13 @@ class EndStatement < AbstractStatement
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
+  def set_transfers(_)
+    @transfers = []
+
+    empty_line_number = LineNumber.new(nil)
+    @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
+  end
+
   def dump
     ['']
   end
@@ -1433,13 +1442,6 @@ class EndStatement < AbstractStatement
     next_line_stmt = program.find_next_line_stmt(line_number_stmt)
 
     @program_errors << 'Statements after END' unless next_line_stmt.nil?
-  end
-
-  def set_transfers(_)
-    @transfers = []
-
-    empty_line_number = LineNumber.new(nil)
-    @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
   end
 
   def execute_core(interpreter)
@@ -1478,15 +1480,15 @@ class FilesStatement < AbstractStatement
     @expressions.uncache
   end
 
+  def dump
+    @expressions.dump
+  end
+
   def load_file_names(interpreter)
     file_names = @expressions.evaluate(interpreter)
     interpreter.add_file_names(file_names)
   rescue BASICRuntimeError => e
     @errors << e.message
-  end
-
-  def dump
-    @expressions.dump
   end
 
   def execute_core(_) end
@@ -1612,21 +1614,6 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def uncache
-    @start&.uncache
-    @step&.uncache
-    @end&.uncache
-  end
-
-  def dump
-    lines = []
-    lines << ("control: #{@control.dump}") unless @control.nil?
-    lines << ("start:   #{@start.dump}") unless @start.nil?
-    lines << ("end:     #{@end.dump}") unless @end.nil?
-    lines << ("step:    #{@step.dump}") unless @step.nil?
-    lines
-  end
-
   def set_transfers(_)
     @transfers = []
 
@@ -1659,6 +1646,21 @@ class ForStatement < AbstractStatement
       markers = [@control]
       statement.assign_fornext_marker(@control, markers, dest_line, program)
     end
+  end
+
+  def uncache
+    @start&.uncache
+    @step&.uncache
+    @end&.uncache
+  end
+
+  def dump
+    lines = []
+    lines << ("control: #{@control.dump}") unless @control.nil?
+    lines << ("start:   #{@start.dump}") unless @start.nil?
+    lines << ("end:     #{@end.dump}") unless @end.nil?
+    lines << ("step:    #{@step.dump}") unless @step.nil?
+    lines
   end
 
   def number_for_stmts
@@ -1818,15 +1820,6 @@ class GosubStatement < AbstractStatement
     end
   end
 
-  def check_program(program, _line_number_stmt)
-    @program_errors << "Line number #{@dest_line} not found" unless
-      program.line_number?(@dest_line)
-  end
-
-  def dump
-    [@dest_line.dump]
-  end
-
   def set_transfers(_)
     @transfers = []
 
@@ -1860,6 +1853,15 @@ class GosubStatement < AbstractStatement
         end
       end
     end
+  end
+
+  def check_program(program, _)
+    @program_errors << "Line number #{@dest_line} not found" unless
+      program.line_number?(@dest_line)
+  end
+
+  def dump
+    [@dest_line.dump]
   end
 
   def execute_core(interpreter)
@@ -1912,20 +1914,11 @@ class GotoStatement < AbstractStatement
     end
   end
 
-  def check_program(program, _line_number_stmt)
-    @program_errors << "Line number #{@dest_line} not found" unless
-       program.line_number?(@dest_line)
-  end
-
   def renumber(renumber_map)
     @dest_line = renumber_map[@dest_line]
     new_token = NumericConstantToken.new(@dest_line.line_number)
     @linenums = [@dest_line]
     @tokens[-1] = new_token
-  end
-
-  def dump
-    [@dest_line.dump]
   end
 
   def set_transfers(_)
@@ -1938,6 +1931,15 @@ class GotoStatement < AbstractStatement
       xref = TransferRefLineStmt.new(@dest_line_stmt_mod.line_number, 0, :goto)
       @transfers << xref
     end
+  end
+
+  def check_program(program, _)
+    @program_errors << "Line number #{@dest_line} not found" unless
+       program.line_number?(@dest_line)
+  end
+
+  def dump
+    [@dest_line.dump]
   end
 
   def execute_core(interpreter)
@@ -1959,30 +1961,11 @@ class AbstractIfStatement < AbstractStatement
     end
   end
 
-  def uncache
-    @expression.uncache
-  end
-
   def renumber(renumber_map)
     @dest_line = renumber_map[@dest_line]
     new_token = NumericConstantToken.new(@dest_line.line_number)
     @linenums = [@dest_line]
     @tokens[-1] = new_token
-  end
-
-  def check_program(program, _line_number_stmt)
-    unless !@dest_line.nil? && program.line_number?(@dest_line)
-      @program_errors << "Line number #{@dest_line} not found"
-    end
-  end
-
-  def dump
-    lines = []
-
-    lines += @expression.dump unless @expression.nil?
-    lines << @dest_line.dump unless @dest_line.nil?
-
-    lines
   end
 
   def set_transfers(_)
@@ -1995,6 +1978,25 @@ class AbstractIfStatement < AbstractStatement
       xref = TransferRefLineStmt.new(@dest_line_stmt_mod.line_number, 0, :ifthen)
       @transfers << xref
     end
+  end
+
+  def check_program(program, _)
+    unless !@dest_line.nil? && program.line_number?(@dest_line)
+      @program_errors << "Line number #{@dest_line} not found"
+    end
+  end
+
+  def uncache
+    @expression.uncache
+  end
+
+  def dump
+    lines = []
+
+    lines += @expression.dump unless @expression.nil?
+    lines << @dest_line.dump unless @dest_line.nil?
+
+    lines
   end
 
   def execute_core(interpreter)
@@ -2146,6 +2148,14 @@ end
 
 # common functions for LET and LET-less statements
 class AbstractLetStatement < AbstractStatement
+  def set_transfers(user_function_start_lines)
+    @transfers = []
+
+    unless @assignment.nil?
+      @transfers += @assignment.destinations(user_function_start_lines)
+    end
+  end
+
   def uncache
     @assignment.uncache
   end
@@ -2154,14 +2164,6 @@ class AbstractLetStatement < AbstractStatement
     lines = []
     lines += @assignment.dump unless @assignment.nil?
     lines
-  end
-
-  def set_transfers(user_function_start_lines)
-    @transfers = []
-
-    unless @assignment.nil?
-      @transfers += @assignment.destinations(user_function_start_lines)
-    end
   end
 end
 
@@ -2543,15 +2545,15 @@ class StopStatement < AbstractStatement
     @errors << 'Syntax error' unless check_template(tokens_lists, template)
   end
 
-  def dump
-    ['']
-  end
-
   def set_transfers(_)
     @transfers = []
 
     empty_line_number = LineNumber.new(nil)
     @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
+  end
+
+  def dump
+    ['']
   end
 
   def execute_core(interpreter)
