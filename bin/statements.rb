@@ -415,7 +415,7 @@ class AbstractStatement
 
         stmt_xfers = statement.transfers
 
-        # warn about STOP, END, CHAIN in GOSUB block
+        # warn about STOP, END, CHAIN in FOR/NEXT block
         stmt_xfers.each do |stmt_xfer|
           if [:stop, :chain].include?(stmt_xfer.type)
             statement.program_warnings << "Terminating statement in FOR/NEXT"
@@ -603,7 +603,7 @@ class AbstractStatement
       any_on_error = true if origin.type == :onerror
       any_other = true if origin.type != :onerror
     end
-    @program_warnings << 'Inconsistent ON ERROR origins' if any_on_error && any_other
+    @program_warnings << 'Inconsistent ON-ERROR origins' if any_on_error && any_other
   end
 
   def check_program(_, _)

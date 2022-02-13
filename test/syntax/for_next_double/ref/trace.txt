@@ -1,0 +1,45 @@
+10: PRINT "HELLO"
+HELLO
+F(I) 20: FOR I = 1 TO 4
+ I = 1
+ terminated:false
+F(I) 30: PRINT "I ="; I
+I =
+ I: 1
+ 1
+F(I,I) 40: FOR I = 1 TO 3
+ I = 1
+ terminated:false
+F(I,I) 50: PRINT "I ="; I
+I =
+ I: 1
+ 1
+F(I) 60: NEXT I
+ I: 1
+ terminated:false
+ I = 2
+F(I,I) 50: PRINT "I ="; I
+I =
+ I: 2
+ 2
+F(I) 60: NEXT I
+ I: 2
+ terminated:false
+ I = 3
+F(I,I) 50: PRINT "I ="; I
+I =
+ I: 3
+ 3
+F(I) 60: NEXT I
+ I: 3
+ terminated:true
+F(I) 70: PRINT "ALMOST DONE"
+ALMOST DONE
+F(I) 80: NEXT I
+ I: 3
+ terminated:true
+90: PRINT "DONE"
+DONE
+99: END
+STOP in line 99
+
