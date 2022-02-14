@@ -307,15 +307,6 @@ class AbstractStatement
         if dest_line < marker && dest_line < line_number
           statement.program_warnings << "Statement before GOSUB entry point"
         end
-
-        stmt_xfers = statement.transfers
-
-        # warn about STOP, END, CHAIN in GOSUB block
-        stmt_xfers.each do |stmt_xfer|
-          if [:stop, :chain].include?(stmt_xfer.type)
-            statement.program_warnings << "Terminating statement in GOSUB"
-          end
-        end
       else
         mark0 = statement.part_of_sub
 
@@ -354,15 +345,6 @@ class AbstractStatement
         # warn about branches to lines before first line of ON-ERROR block
         if dest_line < marker && dest_line < line_number
           statement.program_warnings << "Statement before ON-ERROR entry point"
-        end
-
-        stmt_xfers = statement.transfers
-
-        # warn about STOP, END, CHAIN in ON-ERROR block
-        stmt_xfers.each do |stmt_xfer|
-          if [:stop, :chain].include?(stmt_xfer.type)
-            statement.program_warnings << "Terminating statement in ON-ERROR"
-          end
         end
       else
         mark0 = statement.part_of_on_error
@@ -412,15 +394,6 @@ class AbstractStatement
       if !statement.part_of_fornext.include?(marker)
         # recurse for that statement's destinations
         statement.assign_fornext_marker(marker, markers, dest_line, program)
-
-        stmt_xfers = statement.transfers
-
-        # warn about STOP, END, CHAIN in FOR/NEXT block
-        stmt_xfers.each do |stmt_xfer|
-          if [:stop, :chain].include?(stmt_xfer.type)
-            statement.program_warnings << "Terminating statement in FOR/NEXT"
-          end
-        end
       end
     end
   end
@@ -606,6 +579,45 @@ class AbstractStatement
       any_other = true if origin.type != :onerror
     end
     @program_warnings << 'Inconsistent ON-ERROR origins' if any_on_error && any_other
+  end
+
+  def check_terminating_in_gosub
+    return if @part_of_sub.nil?
+
+    xfers = @transfers + @transfers_auto
+
+    # warn about STOP, END, CHAIN in GOSUB block
+    xfers.each do |xfer|
+      if [:stop, :chain].include?(xfer.type)
+        @program_warnings << "Terminating statement in GOSUB"
+      end
+    end
+  end
+
+  def check_terminating_in_onerror
+    return if @part_of_onerror.nil?
+
+    xfers = @transfers + @transfers_auto
+
+    # warn about STOP, END, CHAIN in GOSUB block
+    xfers.each do |xfer|
+      if [:stop, :chain].include?(xfer.type)
+        @program_warnings << "Terminating statement in ON-ERROR"
+      end
+    end
+  end
+
+  def check_terminating_in_fornext
+    return if @part_of_fornext.empty?
+
+    xfers = @transfers + @transfers_auto
+
+    # warn about STOP, END, CHAIN in GOSUB block
+    xfers.each do |xfer|
+      if [:stop, :chain].include?(xfer.type)
+        @program_warnings << "Terminating statement in FOR/NEXT"
+      end
+    end
   end
 
   def check_program(_, _)

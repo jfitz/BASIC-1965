@@ -258,6 +258,9 @@ class Line
       line_number_stmt = LineStmt.new(line_number, stmt)
       statement.check_gosub_origins(program, line_number_stmt)
       statement.check_onerror_origins(program, line_number_stmt)
+      statement.check_terminating_in_gosub
+      statement.check_terminating_in_onerror
+      statement.check_terminating_in_fornext
     end
   end
 
