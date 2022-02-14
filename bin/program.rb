@@ -261,6 +261,7 @@ class Line
       statement.check_terminating_in_gosub
       statement.check_terminating_in_onerror
       statement.check_terminating_in_fornext
+      statement.check_gosub_early(line_number)
     end
   end
 

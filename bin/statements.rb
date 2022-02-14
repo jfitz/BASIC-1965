@@ -302,11 +302,6 @@ class AbstractStatement
       if statement.part_of_sub.nil?
         # recurse for that statement's destinations
         statement.assign_sub_marker(marker, dest_line, program)
-
-        # warn about branches to lines before first line of GOSUB block
-        if dest_line < marker && dest_line < line_number
-          statement.program_warnings << "Statement before GOSUB entry point"
-        end
       else
         mark0 = statement.part_of_sub
 
@@ -616,6 +611,23 @@ class AbstractStatement
     xfers.each do |xfer|
       if [:stop, :chain].include?(xfer.type)
         @program_warnings << "Terminating statement in FOR/NEXT"
+      end
+    end
+  end
+
+  def check_gosub_early(line_number)
+    return if @part_of_sub.nil?
+
+    xfers = @transfers + @transfers_auto
+
+    # warn about lines before first line of GOSUB block
+    xfers.each do |xfer|
+      if [:goto, :ifthen].include?(xfer.type)
+        dest_line_number = xfer.line_number
+      
+        if dest_line_number < @part_of_sub && dest_line_number < line_number
+          @program_warnings << "Branch to line before GOSUB start"
+        end
       end
     end
   end

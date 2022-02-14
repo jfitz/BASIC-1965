@@ -20,7 +20,6 @@ Halstead complexity:
  time: 5.328
 
 G(310) (0 2) 100 PRINT "NUMBER TO BE FACTORED:";
-    WARNING: Statement before GOSUB entry point
   Origs: :start, 540:goto
   Dests: 110:auto
 G(310) (1 2) 110 INPUT N
@@ -124,6 +123,7 @@ G(310) (0 2) 530 PRINT
   Origs: 520:auto
   Dests: 540:auto
 G(310) (0 3) 540 GOTO 100
+    WARNING: Branch to line before GOSUB start
   Origs: 530:auto
   Dests: 100:goto
 G(310) (0 1) 999 END

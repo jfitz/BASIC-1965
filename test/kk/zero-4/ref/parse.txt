@@ -88,7 +88,6 @@
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
- WARNING: Statement before GOSUB entry point
  TextConstant:"ONE ZERO AT"
  CarriageControl:
  Variable:X -> _
@@ -175,12 +174,14 @@
  Variable:B -> _
  AssignmentOperator:= _ -> _
 420 GOTO 100
+ WARNING: Branch to line before GOSUB start
  LineNumber:100
 430 LET X = A
  Variable:X -> _
  Variable:A -> _
  AssignmentOperator:= _ -> _
 440 GOTO 100
+ WARNING: Branch to line before GOSUB start
  LineNumber:100
 900 REM DATA 0,1
  Remark:DATA 0,1

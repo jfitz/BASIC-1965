@@ -65,7 +65,6 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 80:auto
   Dests: 30:goto
 G(200) (0 3) 100 PRINT "ONE ZERO AT" X
-    WARNING: Statement before GOSUB entry point
   Origs: 40:ifthen, 80:ifthen, 420:goto, 440:goto
   Dests: 110:auto
 G(200) (0 1) 110 STOP
@@ -122,12 +121,14 @@ G(200) (0 3) 410 LET X = B
   Origs: 400:auto
   Dests: 420:auto
 G(200) (0 3) 420 GOTO 100
+    WARNING: Branch to line before GOSUB start
   Origs: 410:auto
   Dests: 100:goto
 G(200) (0 3) 430 LET X = A
   Origs: 400:ifthen
   Dests: 440:auto
 G(200) (0 3) 440 GOTO 100
+    WARNING: Branch to line before GOSUB start
   Origs: 430:auto
   Dests: 100:goto
 (0 1) 900 REM DATA 0,1

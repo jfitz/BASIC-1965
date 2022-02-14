@@ -33,7 +33,6 @@ Halstead complexity:
   Origs: 
   Dests: 
 G(500) (0 2) 50 PRINT "ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
-   WARNING: Statement before GOSUB entry point
   Origs: :start, 110:goto, 1320:goto
   Dests: 60:auto
 G(500) (0 2) 60 PRINT "YES OR NO"
@@ -55,6 +54,7 @@ G(500) (0 2) 100 PRINT "INVALID RESPONSE"
   Origs: 90:auto
   Dests: 110:auto
 G(500) (0 3) 110 GOTO 50
+    WARNING: Branch to line before GOSUB start
   Origs: 100:auto
   Dests: 50:goto
 G(500) (0 2) 120 PRINT
@@ -260,6 +260,7 @@ G(500) (0 7) 780 LET E1 = E1 - (10 * ABS(B1))
   Origs: 770:auto
   Dests: 790:auto
 G(500) (0 3) 790 GOTO 290
+    WARNING: Branch to line before GOSUB start
   Origs: 780:auto
   Dests: 290:goto
 G(500) (0 2) 800 PRINT "YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
@@ -422,6 +423,7 @@ G(500) (0 2) 1310 PRINT
   Origs: 1280:ifthen
   Dests: 1320:auto
 G(500) (0 3) 1320 GOTO 50
+     WARNING: Branch to line before GOSUB start
   Origs: 1310:auto
   Dests: 50:goto
 (0 1) 1330 END

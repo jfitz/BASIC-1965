@@ -8,7 +8,6 @@
  ERROR: Unknown statement 'RANDOMIZE'
  Unimplemented
 50 PRINT "ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
- WARNING: Statement before GOSUB entry point
  TextConstant:"ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
  CarriageControl:NL
 60 PRINT "YES OR NO"
@@ -26,6 +25,7 @@
  TextConstant:"INVALID RESPONSE"
  CarriageControl:NL
 110 GOTO 50
+ WARNING: Branch to line before GOSUB start
  LineNumber:50
 120 PRINT
  CarriageControl:NL
@@ -297,6 +297,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 790 GOTO 290
+ WARNING: Branch to line before GOSUB start
  LineNumber:290
 800 PRINT "YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
  TextConstant:"YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
@@ -484,6 +485,7 @@
 1310 PRINT
  CarriageControl:NL
 1320 GOTO 50
+ WARNING: Branch to line before GOSUB start
  LineNumber:50
 1330 END
  

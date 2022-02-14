@@ -14,7 +14,6 @@
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
 90 GOTO 30
 100 PRINT "ONE ZERO AT" X
- WARNING: Statement before GOSUB entry point
 110 STOP
  WARNING: Terminating statement in GOSUB
 200 LET S = SGN(FNF(A))
@@ -35,8 +34,10 @@
 400 IF S = 0 THEN 430
 410 LET X = B
 420 GOTO 100
+ WARNING: Branch to line before GOSUB start
 430 LET X = A
 440 GOTO 100
+ WARNING: Branch to line before GOSUB start
 900 REM DATA 0,1
 910 DATA 0,1
 999 END
