@@ -188,23 +188,27 @@
 625 GOSUB 580
  LineNumber:580
 630 IF D > 1E04 THEN 660
- WARNING: Inconsistent GOSUB target (630, 580)
  WARNING: Inconsistent GOSUB origins
+ WARNING: Multiple GOSUB entry points
  Variable:D -> _
  NumericConstant:10000
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:660
 640 LET L = 1
+ WARNING: Multiple GOSUB entry points
  Variable:L -> _
  NumericConstant:1
  AssignmentOperator:= =_ -> _
 650 GOTO 700
+ WARNING: Multiple GOSUB entry points
  LineNumber:700
 660 LET L = 0
+ WARNING: Multiple GOSUB entry points
  Variable:L -> _
  NumericConstant:0
  AssignmentOperator:= =_ -> _
 670 LET H = (1 + INT(100*RND)/100)
+ WARNING: Multiple GOSUB entry points
  Variable:H -> _
  NumericConstant:1
  NumericConstant:100
@@ -216,14 +220,17 @@
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 680 LET E1 = 5000*H
+ WARNING: Multiple GOSUB entry points
  Variable:E1 -> _
  NumericConstant:5000
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 690 GOTO 720
+ WARNING: Multiple GOSUB entry points
  LineNumber:720
 700 LET H = (1 + INT(100*RND)/100)
+ WARNING: Multiple GOSUB entry points
  Variable:H -> _
  NumericConstant:1
  NumericConstant:100
@@ -235,12 +242,14 @@
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 710 LET E1 = 1000*H
+ WARNING: Multiple GOSUB entry points
  Variable:E1 -> _
  NumericConstant:1000
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 720 RETURN
+ WARNING: Multiple GOSUB entry points
  
 730 IF D > 5E03 THEN 760
  Variable:D -> _
@@ -975,33 +984,42 @@
  TextConstant:"YOU ARE INDEED A **GOOD KNIGHT**"
  CarriageControl:NL
 2760 PRINT
- WARNING: Inconsistent GOSUB target (1040, 1500)
+ WARNING: Multiple GOSUB entry points
  CarriageControl:NL
 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
+ WARNING: Multiple GOSUB entry points
  TextConstant:"TO PLAY SPACE WARS AGAIN TYPE GO, IF"
  CarriageControl:NL
 2790 PRINT "NOT TYPE NO"
+ WARNING: Multiple GOSUB entry points
  TextConstant:"NOT TYPE NO"
  CarriageControl:NL
 2800 INPUT L$
  ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+ WARNING: Multiple GOSUB entry points
 2810 IF L$ = "GO" THEN 2840
  ERROR: Token 'InvalidToken:$' is not a value or operator
+ WARNING: Multiple GOSUB entry points
  LineNumber:2840
 2820 IF L$ = "NO" THEN 2860
  ERROR: Token 'InvalidToken:$' is not a value or operator
+ WARNING: Multiple GOSUB entry points
  LineNumber:2860
 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
+ WARNING: Multiple GOSUB entry points
  TextConstant:"DO YOU WANT TO STOP OR PLAY AGAIN?????"
  CarriageControl:NL
 2840 GOTO 2780
+ WARNING: Multiple GOSUB entry points
  LineNumber:2780
 2850 GOTO 50
  LineNumber:50
 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
+ WARNING: Multiple GOSUB entry points
  TextConstant:"SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
  CarriageControl:NL
 2870 END
+ WARNING: Multiple GOSUB entry points
  WARNING: Terminating statement in GOSUB
  
 

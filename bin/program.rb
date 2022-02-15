@@ -256,12 +256,15 @@ class Line
   def check_statements(program, line_number)
     @statements.each_with_index do |statement, stmt|
       line_number_stmt = LineStmt.new(line_number, stmt)
-      statement.check_gosub_origins(program, line_number_stmt)
-      statement.check_onerror_origins(program, line_number_stmt)
+      statement.check_gosub_origins if stmt.zero?
+      statement.check_gosub_single if stmt.zero?
+      statement.check_gosub_early(line_number)
+      statement.check_onerror_origins if stmt.zero?
+      statement.check_onerror_single if stmt.zero?
+      statement.check_onerror_early(line_number)
       statement.check_terminating_in_gosub
       statement.check_terminating_in_onerror
       statement.check_terminating_in_fornext
-      statement.check_gosub_early(line_number)
     end
   end
 

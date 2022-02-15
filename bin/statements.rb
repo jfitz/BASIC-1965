@@ -216,7 +216,7 @@ class AbstractStatement
   attr_reader :errors, :warnings, :program_errors, :keywords, :tokens,
               :separators, :valid, :executable, :comment, :linenums,
               :autonext, :autonext_line_stmt, :transfers, :transfers_auto,
-              :comprehension_effort, :mccabe, :part_of_sub, :part_of_on_error,
+              :comprehension_effort, :mccabe, :part_of_sub, :part_of_onerror,
               :part_of_fornext
   attr_accessor :part_of_user_function, :program_warnings, :origins, :reachable
 
@@ -254,8 +254,8 @@ class AbstractStatement
     @transfers = []
     @transfers_auto = []
     @part_of_user_function = nil
-    @part_of_sub = nil
-    @part_of_on_error = nil
+    @part_of_sub = []
+    @part_of_onerror = []
     @part_of_fornext = []
   end
 
@@ -284,7 +284,7 @@ class AbstractStatement
 
   def assign_sub_marker(marker, line_number, program)
     # mark as part of this sub
-    @part_of_sub = marker
+    @part_of_sub << marker
 
     xfers = @transfers + @transfers_auto
     
@@ -299,17 +299,9 @@ class AbstractStatement
 
       next if statement.nil?
 
-      if statement.part_of_sub.nil?
+      if !statement.part_of_sub.include?(marker)
         # recurse for that statement's destinations
         statement.assign_sub_marker(marker, dest_line, program)
-      else
-        mark0 = statement.part_of_sub
-
-        if marker != mark0
-          # warn about overlapping GOSUB blocks
-          statement.program_warnings <<
-            "Inconsistent GOSUB target (#{mark0}, #{marker})"
-        end
       end
     end
   end
@@ -318,7 +310,7 @@ class AbstractStatement
 
   def assign_on_error_marker(marker, line_number, program)
     # mark as part of this on-error
-    @part_of_on_error = marker
+    @part_of_onerror << marker
 
     xfers = @transfers + @transfers_auto
     
@@ -333,22 +325,9 @@ class AbstractStatement
 
       next if statement.nil?
 
-      if statement.part_of_on_error.nil?
+      if !statement.part_of_onerror.include?(marker)
         # recurse for that statement's destinations
         statement.assign_on_error_marker(marker, dest_line, program)
-
-        # warn about branches to lines before first line of ON-ERROR block
-        if dest_line < marker && dest_line < line_number
-          statement.program_warnings << "Statement before ON-ERROR entry point"
-        end
-      else
-        mark0 = statement.part_of_on_error
-
-        if marker != mark0
-          # warn about overlapping ON-ERROR blocks
-          statement.program_warnings <<
-            "Inconsistent ON-ERROR target (#{mark0}, #{marker})"
-        end
       end
     end
   end
@@ -455,9 +434,16 @@ class AbstractStatement
     text = ''
 
     text += "#{@part_of_user_function} " unless @part_of_user_function.nil?
-    text += "E(#{@part_of_on_error}) " unless @part_of_on_error.nil?
-    text += "G(#{@part_of_sub}) " unless @part_of_sub.nil?
-    text += "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless @part_of_fornext.empty?
+
+    text += "E(#{@part_of_onerror.map(&:to_s).join(',')}) " unless
+      @part_of_onerror.empty?
+
+    text += "G(#{@part_of_sub.map(&:to_s).join(',')}) " unless
+      @part_of_sub.empty?
+
+    text += "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless
+      @part_of_fornext.empty?
+
     text += "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
 
     texts << text
@@ -554,30 +540,86 @@ class AbstractStatement
     !@errors.empty? || !@program_errors.empty?
   end
 
-  def check_gosub_origins(_, _)
+  def check_gosub_origins
     # check all origins are consistent for GOSUB
     any_gosub = false
     any_other = false
+
     @origins.each do |origin|
       any_gosub = true if origin.type == :gosub
       any_other = true if origin.type != :gosub
     end
+
     @program_warnings << 'Inconsistent GOSUB origins' if any_gosub && any_other
   end
 
-  def check_onerror_origins(_, _)
+  def check_gosub_single
+    return if @part_of_sub.empty?
+
+    # warn about multiple origins for a GOSUB block
+    if @part_of_sub.size > 1
+      @program_warnings << "Multiple GOSUB entry points"
+    end
+  end
+
+  def check_gosub_early(line_number)
+    return if @part_of_sub.empty?
+
+    xfers = @transfers + @transfers_auto
+
+    # warn about lines before first line of GOSUB block
+    xfers.each do |xfer|
+      if [:goto, :ifthen].include?(xfer.type)
+        dest_line_number = xfer.line_number
+      
+        if dest_line_number < @part_of_sub.min && dest_line_number < line_number
+          @program_warnings << "Branch to line before GOSUB start"
+        end
+      end
+    end
+  end
+
+  def check_onerror_origins
     # check all origins are consistent for ON ERROR
     any_on_error = false
     any_other = false
+
     @origins.each do |origin|
       any_on_error = true if origin.type == :onerror
       any_other = true if origin.type != :onerror
     end
+
     @program_warnings << 'Inconsistent ON-ERROR origins' if any_on_error && any_other
   end
 
+  def check_onerror_single
+    return if @part_of_onerror.empty?
+
+    # warn about multiple origins for an ON-ERROR block
+    if @part_of_onerror.size > 1
+      @program_warnings << "Multiple ON-ERROR entry points"
+    end
+  end
+
+  def check_onerror_early(line_number)
+    return if @part_of_onerror.empty?
+
+    xfers = @transfers + @transfers_auto
+
+    # warn about branches to lines before first line of ON-ERROR block
+    xfers.each do |xfer|
+      if [:goto, :ifthen].include?(xfer.type)
+        dest_line_number = xfer.line_number
+      
+        if dest_line_number < @part_of_onerror.min && dest_line_number < line_number
+          @program_warnings << "Branch to line before ON-ERROR start"
+        end
+      end
+    end
+  end
+
   def check_terminating_in_gosub
-    return if @part_of_sub.nil?
+    return if @part_of_sub.empty?
 
     xfers = @transfers + @transfers_auto
 
@@ -590,7 +632,7 @@ class AbstractStatement
   end
 
   def check_terminating_in_onerror
-    return if @part_of_onerror.nil?
+    return if @part_of_onerror.empty?
 
     xfers = @transfers + @transfers_auto
 
@@ -615,23 +657,6 @@ class AbstractStatement
     end
   end
 
-  def check_gosub_early(line_number)
-    return if @part_of_sub.nil?
-
-    xfers = @transfers + @transfers_auto
-
-    # warn about lines before first line of GOSUB block
-    xfers.each do |xfer|
-      if [:goto, :ifthen].include?(xfer.type)
-        dest_line_number = xfer.line_number
-      
-        if dest_line_number < @part_of_sub && dest_line_number < line_number
-          @program_warnings << "Branch to line before GOSUB start"
-        end
-      end
-    end
-  end
-
   def check_program(_, _)
   end
 
@@ -646,9 +671,15 @@ class AbstractStatement
     line = ' '
 
     line += "#{@part_of_user_function} " unless @part_of_user_function.nil?
-    line += "E(#{@part_of_on_error}) " unless @part_of_on_error.nil?
-    line += "G(#{@part_of_sub}) " unless @part_of_sub.nil?
-    line += "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless @part_of_fornext.empty?
+
+    line += "E(#{@part_of_onerror.map(&:to_s).join(',')}) " unless
+      @part_of_onerror.empty?
+
+    line += "G(#{@part_of_sub.map(&:to_s).join(',')}) " unless
+      @part_of_sub.empty?
+
+    line += "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless
+      @part_of_fornext.empty?
 
     line += if show_timing
               "(#{@profile_time.round(4)}/#{@profile_count})"
@@ -667,9 +698,14 @@ class AbstractStatement
     trace_out.print_out "#{@part_of_user_function} " unless
       @part_of_user_function.nil?
 
-    trace_out.print_out "E(#{@part_of_on_error}) " unless @part_of_on_error.nil?
-    trace_out.print_out "G(#{@part_of_sub}) " unless @part_of_sub.nil?
-    trace_out.print_out "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless @part_of_fornext.empty?
+    trace_out.print_out "E(#{@part_of_onerror.map(&:to_s).join(',')}) " unless
+      @part_of_onerror.empty?
+
+    trace_out.print_out "G(#{@part_of_sub.map(&:to_s).join(',')}) " unless
+      @part_of_sub.empty?
+
+    trace_out.print_out "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless
+      @part_of_fornext.empty?
 
     text = "#{current_line_number}: #{pretty}"
 
@@ -1864,17 +1900,9 @@ class GosubStatement < AbstractStatement
     statement = program.get_statement(dest_line, dest_stmt)
 
     unless statement.nil?
-      if statement.part_of_sub.nil?
+      if !statement.part_of_sub.include?(dest_line)
         # mark statement's destinations
         statement.assign_sub_marker(dest_line, dest_line, program)
-      else
-        mark0 = statement.part_of_sub
-
-        if dest_line != mark0
-          # warn about overlapping GOSUB blocks
-          statement.program_warnings <<
-            "Inconsistent GOSUB target (#{mark0}, #{dest_line})"
-        end
       end
     end
   end

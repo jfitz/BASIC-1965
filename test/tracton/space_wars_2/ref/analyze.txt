@@ -222,36 +222,45 @@ G(580) (0 2) 620 GOSUB 1500
 G(580) (0 3) 625 GOSUB 580
   Origs: 620:auto
   Dests: 580:gosub, 630:auto
-G(630) (1 4) 630 IF D > 1E04 THEN 660
-    WARNING: Inconsistent GOSUB target (630, 580)
+G(630,580) (1 4) 630 IF D > 1E04 THEN 660
     WARNING: Inconsistent GOSUB origins
+    WARNING: Multiple GOSUB entry points
   Origs: 580:gosub, 625:auto
   Dests: 640:auto, 660:ifthen
-G(630) (0 3) 640 LET L = 1
+G(630,580) (0 3) 640 LET L = 1
+    WARNING: Multiple GOSUB entry points
   Origs: 630:auto
   Dests: 650:auto
-G(630) (0 2) 650 GOTO 700
+G(630,580) (0 2) 650 GOTO 700
+    WARNING: Multiple GOSUB entry points
   Origs: 640:auto
   Dests: 700:goto
-G(630) (0 3) 660 LET L = 0
+G(630,580) (0 3) 660 LET L = 0
+    WARNING: Multiple GOSUB entry points
   Origs: 630:ifthen
   Dests: 670:auto
-G(630) (0 7) 670 LET H = (1 + INT(100 * RND) / 100)
+G(630,580) (0 7) 670 LET H = (1 + INT(100 * RND) / 100)
+    WARNING: Multiple GOSUB entry points
   Origs: 660:auto
   Dests: 680:auto
-G(630) (0 4) 680 LET E1 = 5000 * H
+G(630,580) (0 4) 680 LET E1 = 5000 * H
+    WARNING: Multiple GOSUB entry points
   Origs: 670:auto
   Dests: 690:auto
-G(630) (0 2) 690 GOTO 720
+G(630,580) (0 2) 690 GOTO 720
+    WARNING: Multiple GOSUB entry points
   Origs: 680:auto
   Dests: 720:goto
-G(630) (0 7) 700 LET H = (1 + INT(100 * RND) / 100)
+G(630,580) (0 7) 700 LET H = (1 + INT(100 * RND) / 100)
+    WARNING: Multiple GOSUB entry points
   Origs: 650:goto
   Dests: 710:auto
-G(630) (0 4) 710 LET E1 = 1000 * H
+G(630,580) (0 4) 710 LET E1 = 1000 * H
+    WARNING: Multiple GOSUB entry points
   Origs: 700:auto
   Dests: 720:auto
-G(630) (0 1) 720 RETURN
+G(630,580) (0 1) 720 RETURN
+    WARNING: Multiple GOSUB entry points
   Origs: 690:goto, 710:auto
   Dests: 
 G(730) (1 4) 730 IF D > 5E03 THEN 760
@@ -890,41 +899,50 @@ G(1500) (0 2) 2740 PRINT "OBI-SAN COYOTE WOULD BE PROUD OF YOU"
 G(1500) (0 2) 2750 PRINT "YOU ARE INDEED A **GOOD KNIGHT**"
   Origs: 2740:auto
   Dests: 2760:auto
-G(1040) (0 2) 2760 PRINT
-     WARNING: Inconsistent GOSUB target (1040, 1500)
+G(1040,1500) (0 2) 2760 PRINT
+     WARNING: Multiple GOSUB entry points
   Origs: 2730:goto, 2750:auto
   Dests: 2780:auto
-G(1040) (0 2) 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
+G(1040,1500) (0 2) 2780 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO, IF"
+     WARNING: Multiple GOSUB entry points
   Origs: 2760:auto, 2840:goto
   Dests: 2790:auto
-G(1040) (0 2) 2790 PRINT "NOT TYPE NO"
+G(1040,1500) (0 2) 2790 PRINT "NOT TYPE NO"
+     WARNING: Multiple GOSUB entry points
   Origs: 2780:auto
   Dests: 2800:auto
-G(1040) (0 1) 2800 INPUT L $
+G(1040,1500) (0 1) 2800 INPUT L $
      ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
+     WARNING: Multiple GOSUB entry points
   Origs: 2790:auto
   Dests: 2810:auto
-G(1040) (1 2) 2810 IF L $ ="GO" THEN 2840
+G(1040,1500) (1 2) 2810 IF L $ ="GO" THEN 2840
      ERROR: Token 'InvalidToken:$' is not a value or operator
+     WARNING: Multiple GOSUB entry points
   Origs: 2800:auto
   Dests: 2820:auto, 2840:ifthen
-G(1040) (1 2) 2820 IF L $ ="NO" THEN 2860
+G(1040,1500) (1 2) 2820 IF L $ ="NO" THEN 2860
      ERROR: Token 'InvalidToken:$' is not a value or operator
+     WARNING: Multiple GOSUB entry points
   Origs: 2810:auto
   Dests: 2830:auto, 2860:ifthen
-G(1040) (0 2) 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
+G(1040,1500) (0 2) 2830 PRINT "DO YOU WANT TO STOP OR PLAY AGAIN?????"
+     WARNING: Multiple GOSUB entry points
   Origs: 2820:auto
   Dests: 2840:auto
-G(1040) (0 3) 2840 GOTO 2780
+G(1040,1500) (0 3) 2840 GOTO 2780
+     WARNING: Multiple GOSUB entry points
   Origs: 2810:ifthen, 2830:auto
   Dests: 2780:goto
 (0 3) 2850 GOTO 50
   Origs: 
   Dests: 60:goto
-G(1040) (0 2) 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
+G(1040,1500) (0 2) 2860 PRINT "SPACE WARS SAYS GOOD-BYE AND MAY THE FORCE BE WITH YOU"
+     WARNING: Multiple GOSUB entry points
   Origs: 2820:ifthen
   Dests: 2870:auto
-G(1040) (0 1) 2870 END
+G(1040,1500) (0 1) 2870 END
+     WARNING: Multiple GOSUB entry points
      WARNING: Terminating statement in GOSUB
   Origs: 2860:auto
   Dests: :stop
