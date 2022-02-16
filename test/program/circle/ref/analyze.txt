@@ -168,12 +168,12 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 410:auto
 F(I) (1 4) 410 FOR I = 0 TO 365 STEP 5
   Origs: 401:auto
-  Dests: 420:fornext, 441:fornext
-F(I) (0 1) 420 REM PICK POINT ON CIRCLE D
-  Origs: 410:fornext
-  Dests: 421:auto
+  Dests: 421:fornext, 441:fornext
+(0 1) 420 REM PICK POINT ON CIRCLE D
+  Origs: 
+  Dests: 
 F(I) (0 5) 421 LET T = FNR(I)
-  Origs: 420:auto
+  Origs: 410:fornext
   Dests: 61:function, 422:auto
 F(I) (0 7) 422 LET I1 = D1 + COS(T) * D5
   Origs: 421:auto
