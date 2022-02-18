@@ -305,6 +305,10 @@ class Line
     num
   end
 
+  def to_s
+    @text
+  end
+
   def list
     @text
   end
@@ -703,21 +707,40 @@ class Program
     texts
   end
 
-  def find_next_line(current_line_stmt_mod)
+  def find_next_line(current_line_stmt)
+    line_number = current_line_stmt.line_number
+
     # find next numbered statement
     line_numbers = @lines.keys.sort
-    line_number = current_line_stmt_mod.line_number
-    index = line_numbers.index(line_number)
-    next_line_number = line_numbers[index + 1]
+    line = @lines[line_number]
 
-    unless next_line_number.nil?
-      line = @lines[next_line_number]
+    statements = line.statements
+    stmt = current_line_stmt.statement
+    statement = statements[stmt]
+    part_of_user_function = statement.part_of_user_function
+
+    # find the next statement in a following line
+    index = line_numbers.index(line_number) + 1
+    line_number = line_numbers[index]
+
+    until line_number.nil?
+      line = @lines[line_number]
+
       statements = line.statements
-      statement = statements[0]
-      start_mod = statement.start_index
-      next_line_stmt_mod = LineStmtMod.new(next_line_number, 0, start_mod)
+      stmt = 0
 
-      return next_line_stmt_mod
+      stmt += 1 while
+        stmt < statements.size &&
+        (statements[stmt].executable != :run ||
+        statements[stmt].part_of_user_function != part_of_user_function)
+
+      if stmt < statements.size
+        line_stmt = LineStmt.new(line_number, stmt)
+        return line_stmt
+      end
+
+      index += 1
+      line_number = line_numbers[index]
     end
 
     # nothing left to execute
@@ -1581,8 +1604,10 @@ class Program
         next if next_statement.nil?
 
         next_mod = next_statement.start_index
-        next_line_stmt_mod = LineStmtMod.new(next_line_number,
-                                             next_stmt, next_mod)
+
+        next_line_stmt_mod =
+          LineStmtMod.new(next_line_number, next_stmt, next_mod)
+
         statement.set_autonext_line_stmt(next_line_stmt_mod)
       end
     end
