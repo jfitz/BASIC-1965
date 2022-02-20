@@ -396,7 +396,7 @@ class AbstractStatement
     # convert auto-next to TransferRefLineStmt
     if @autonext &&
        @autonext_line_stmt &&
-       (@executable == :run || @origins.size.positive?)
+       [:run, :def_fn].include?(@executable)
       dest_line_number = @autonext_line_stmt.line_number
       dest_stmt = @autonext_line_stmt.statement
 
