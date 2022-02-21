@@ -212,15 +212,15 @@ class Line
     @statements.each { |statement| statement.reachable = false }
   end
 
-  def set_transfers(user_function_start_lines)
-    @statements.each do |statement|
-      statement.set_transfers(user_function_start_lines)
-    end
-  end
-
   def set_transfers_auto(program, line_number)
     @statements.each_with_index do |statement, stmt|
       statement.set_transfers_auto(program, line_number, stmt)
+    end
+  end
+
+  def set_transfers(user_function_start_lines)
+    @statements.each do |statement|
+      statement.set_transfers(user_function_start_lines)
     end
   end
 
@@ -1420,9 +1420,11 @@ class Program
     assign_multiline_function_markers(line_numbers)
     @first_line_number_stmt_mod = find_first_statement
     assign_autonext(line_numbers)
+    @lines.each { |_, line| line.clear_origins }
+    set_transfers_auto
+    set_start_transfer
     set_transfers
     transfers_to_origins
-    set_transfers_auto
     assign_sub_markers(line_numbers)
     assign_on_error_markers(line_numbers)
     assign_fornext_markers(line_numbers)
@@ -1613,9 +1615,13 @@ class Program
     end
   end
 
-  def set_transfers
-    @lines.each { |_, line| line.clear_origins }
+  def set_transfers_auto
+    @lines.each do |line_number, line|
+      line.set_transfers_auto(self, line_number)
+    end
+  end
 
+  def set_start_transfer
     # add marker for entry point (first active line)
     line_number = @first_line_number_stmt_mod.line_number
     line = @lines[line_number]
@@ -1625,7 +1631,9 @@ class Program
       stmt = 0
       line.add_statement_origin(stmt, xfer)
     end
+  end
 
+  def set_transfers
     @lines.each do |_, line|
       line.set_transfers(@user_function_start_lines)
     end
@@ -1634,12 +1642,6 @@ class Program
   def transfers_to_origins
     @lines.each do |line_number, line|
       line.transfers_to_origins(self, line_number)
-    end
-  end
-
-  def set_transfers_auto
-    @lines.each do |line_number, line|
-      line.set_transfers_auto(self, line_number)
     end
   end
 
