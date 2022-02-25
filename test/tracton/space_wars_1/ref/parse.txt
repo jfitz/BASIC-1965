@@ -66,7 +66,7 @@
  CarriageControl:NL
 250 LET E1 = 1E04
  Variable:E1 -> _
- NumericConstant:10000
+ NumericConstant:1E04
  AssignmentOperator:= =_ -> _
 260 LET E2 = E1
  Variable:E2 -> _
@@ -74,8 +74,8 @@
  AssignmentOperator:= _ -> _
 270 LET D = 1E03 + INT(5E05*RND)
  Variable:D -> _
- NumericConstant:1000
- NumericConstant:500000
+ NumericConstant:1E03
+ NumericConstant:5E05
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
@@ -106,7 +106,7 @@
  LineNumber:690
 340 IF D >= 1E05 THEN 370
  Variable:D -> _
- NumericConstant:100000
+ NumericConstant:1E05
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
  LineNumber:370
 350 LET L = 1
@@ -325,7 +325,7 @@
  Variable:D -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1000000
+ NumericConstant:1E6
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:960
 880 LET D = D + K

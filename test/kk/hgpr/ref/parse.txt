@@ -100,7 +100,7 @@
  Variable:A -> _
  NumericConstant:2
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1000
+ NumericConstant:1E3
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionSqr:SQR(_) -> _
  AssignmentOperator:= _ -> _
@@ -301,7 +301,7 @@
 820 LET Y = A*1E3
  Variable:Y -> _
  Variable:A -> _
- NumericConstant:1000
+ NumericConstant:1E3
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 830 LET X = F - (Y - F*INT(Y/F))

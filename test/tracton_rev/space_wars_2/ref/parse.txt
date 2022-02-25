@@ -164,19 +164,19 @@
  Remark:X-WING ENERGY AND SKY ENERGY
 540 LET X1 = 5E05
  Variable:X1 -> _
- NumericConstant:500000
+ NumericConstant:5E05
  AssignmentOperator:= =_ -> _
 550 LET T1 = 1E04
  Variable:T1 -> _
- NumericConstant:10000
+ NumericConstant:1E04
  AssignmentOperator:= =_ -> _
 560 LET T2 = 5E04
  Variable:T2 -> _
- NumericConstant:50000
+ NumericConstant:5E04
  AssignmentOperator:= =_ -> _
 570 LET D = 1E05
  Variable:D -> _
- NumericConstant:100000
+ NumericConstant:1E05
  AssignmentOperator:= =_ -> _
 578 LET X0 = 0
  Variable:X0 -> _
@@ -206,7 +206,7 @@
  LineNumber:580
 630 IF D > 1E04 THEN 660
  Variable:D -> _
- NumericConstant:10000
+ NumericConstant:1E04
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:660
 640 LET L = 1
@@ -259,7 +259,7 @@
  
 730 IF D > 5E03 THEN 760
  Variable:D -> _
- NumericConstant:5000
+ NumericConstant:5E03
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:760
 740 LET K = 1
@@ -312,7 +312,7 @@
  
 840 IF D < 3E03 THEN 860
  Variable:D -> _
- NumericConstant:3000
+ NumericConstant:3E03
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:860
 850 LET E3 = 0
@@ -332,7 +332,7 @@
  AssignmentOperator:= _ -> _
 870 LET E3 = 2E04*H
  Variable:E3 -> _
- NumericConstant:20000
+ NumericConstant:2E04
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -509,7 +509,7 @@
  LineNumber:1130
 1360 IF D <= 3E03 THEN 1380
  Variable:D -> _
- NumericConstant:3000
+ NumericConstant:3E03
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:1380
 1370 GOTO 1410
@@ -534,7 +534,7 @@
  CarriageControl:NL
 1420 IF X1 < 2E04 THEN 1440
  Variable:X1 -> _
- NumericConstant:20000
+ NumericConstant:2E04
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:1440
 1430 GOTO 1490
@@ -581,7 +581,7 @@
 1570 LET X1 = X1 - 2E04
  Variable:X1 -> _
  Variable:X1 -> _
- NumericConstant:20000
+ NumericConstant:2E04
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 1580 GOTO 2680
@@ -606,7 +606,7 @@
 1620 LET X1 = X1 - 2E04
  Variable:X1 -> _
  Variable:X1 -> _
- NumericConstant:20000
+ NumericConstant:2E04
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 1630 GOTO 2680
@@ -918,7 +918,7 @@
  Variable:C -> _
 2410 IF F > 2.25E04 THEN 2470
  Variable:F -> _
- NumericConstant:22500
+ NumericConstant:2.25E04
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:2470
 2420 IF C = 0 THEN 2500
@@ -958,7 +958,7 @@
  AssignmentOperator:= _ -> _
 2510 IF D > 1.5E05 THEN 2540
  Variable:D -> _
- NumericConstant:150000
+ NumericConstant:1.5E05
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:2540
 2520 GOTO 2640

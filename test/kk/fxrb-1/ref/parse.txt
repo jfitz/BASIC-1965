@@ -21,7 +21,7 @@
  NumericConstant:1
  NumericConstant:3
 150 DATA .01,2,30
- NumericConstant:0.01
+ NumericConstant:.01
  NumericConstant:2
  NumericConstant:30
 160 DEF FNR(X) = INT(4*X+.5)
@@ -30,7 +30,7 @@
  NumericConstant:4
  Variable:X -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:0.5
+ NumericConstant:.5
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
 170
@@ -168,7 +168,7 @@
 480
 900 DATA 3,.5
  NumericConstant:3
- NumericConstant:0.5
+ NumericConstant:.5
 999 END
  WARNING: Terminating statement in FOR/NEXT
  

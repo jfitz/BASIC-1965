@@ -214,6 +214,16 @@ class AbstractElement
   end
 end
 
+# empty token
+class EmptyToken < AbstractElement
+  def initialize
+    super
+
+    @text = ''
+    @empty = true
+  end
+end
+
 # beginning of a group
 class GroupStart < AbstractElement
   def self.accept?(token)
@@ -459,11 +469,19 @@ class AbstractValueElement < AbstractElement
     raise(BASICExpressionError, 'Invalid operator power')
   end
 
+  def keyword?
+    false
+  end
+
   def evaluate(_, _)
     self
   end
 
   def to_v
+    @value
+  end
+
+  def to_numeric
     @value
   end
 
@@ -482,8 +500,8 @@ class NumericConstant < AbstractValueElement
   end
 
   def self.numeric(text)
-    # nnn(E+nn)
     case text
+    # nnn(E+nn)
     when /\A\s*[+-]?\d+(E+?\d+)?\z/
       text.to_f.to_i
     # nnn(E-nn)
@@ -549,6 +567,10 @@ class NumericConstant < AbstractValueElement
     @symbol_text = text.to_s
     @value = float_to_possible_int(f)
     @numeric_constant = true
+  end
+
+  def dump
+    "#{self.class}:#{@symbol_text}"
   end
 
   def zero?
@@ -972,7 +994,7 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    value = @value + other.to_v
+    value = @value + other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -981,7 +1003,7 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    value = @value - other.to_v
+    value = @value - other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -990,7 +1012,7 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    value = @value * other.to_v
+    value = @value * other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -999,7 +1021,7 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    value = @value + other.to_v
+    value = @value + other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -1009,7 +1031,7 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    value = @value - other.to_v
+    value = @value - other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -1019,7 +1041,7 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    value = @value * other.to_v
+    value = @value * other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -1030,7 +1052,7 @@ class IntegerConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
     raise BASICRuntimeError, :te_div_zero if other.zero?
 
-    value = @value.to_f / other.to_v.to_f
+    value = @value.to_f / other.to_numeric.to_f
     IntegerConstant.new(value)
   end
 
@@ -1040,27 +1062,7 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    value = @value**other.to_v
-    IntegerConstant.new(value)
-  end
-
-  def maximum(other)
-    message =
-      "Type mismatch (#{content_type}/#{other.content_type}) in maximum()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = [@value, other.to_v].max
-    IntegerConstant.new(value)
-  end
-
-  def minimum(other)
-    message =
-      "Type mismatch (#{content_type}/#{other.content_type}) in minimum()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = [@value, other.to_v].min
+    value = @value**other.to_numeric.to_v
     IntegerConstant.new(value)
   end
 
@@ -1126,20 +1128,6 @@ class IntegerConstant < AbstractValueElement
   def atn
     value = Math.atan(@value)
     IntegerConstant.new(value)
-  end
-
-  def max(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in max()"
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    @value = [to_v, other.to_v].max
-  end
-
-  def min(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in =="
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    @value = [to_v, other.to_v].min
   end
 
   def sign
@@ -1269,10 +1257,7 @@ class TextConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    unquoted = @value + other.to_v
-    quoted = "\"#{unquoted}\""
-    token = TextConstantToken.new(quoted)
-    TextConstant.new(token)
+    TextConstant.new(@value + other.to_v)
   end
 
   def add(other)
@@ -1280,10 +1265,15 @@ class TextConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    unquoted = @value + other.to_v
-    quoted = "\"#{unquoted}\""
-    token = TextConstantToken.new(quoted)
-    TextConstant.new(token)
+    TextConstant.new(@value + other.to_v)
+  end
+
+  def multiply(other)
+    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+
+    raise(BASICExpressionError, message) unless other.numeric_constant?
+
+    TextConstant.new(@value * other.to_v)
   end
 
   def to_s
@@ -1323,6 +1313,7 @@ class BooleanConstant < AbstractValueElement
       (obj_class == 'BooleanConstantToken' && obj.to_s == 'TRUE') ||
       (obj_class == 'String' && obj.casecmp('TRUE').zero?) ||
       (obj_class == 'NumericConstant' && !obj.to_f.zero?) ||
+      (obj_class == 'IntegerConstant' && !obj.to_i.zero?) ||
       (obj_class == 'TextConstant' && !obj.value.strip.size.zero?) ||
       obj_class == 'TrueClass'
 
@@ -1497,6 +1488,14 @@ class CarriageControl
 
   def uncache; end
 
+  def keyword?
+    false
+  end
+
+  def has_tab
+    false
+  end
+
   def to_s
     case @operator
     when ';'
@@ -1634,7 +1633,19 @@ class VariableName < AbstractElement
   end
 
   def compatible?(value)
-    value.content_type == :numeric
+    numerics = %i[numeric integer]
+    strings = %i[string]
+
+    case content_type
+    when :numeric
+      numerics.include?(value.content_type)
+    when :string
+      strings.include?(value.content_type)
+    when :integer
+      numerics.include?(value.content_type)
+    else
+      false
+    end
   end
 
   def subscripts
@@ -1709,7 +1720,19 @@ class UserFunctionName < AbstractElement
   end
 
   def compatible?(value)
-    value.content_type == :numeric
+    numerics = %i[numeric integer]
+    strings = %i[string]
+
+    case content_type
+    when :numeric
+      numerics.include?(value.content_type)
+    when :string
+      strings.include?(value.content_type)
+    when :integer
+      numerics.include?(value.content_type)
+    else
+      false
+    end
   end
 
   def subscripts
@@ -1740,8 +1763,8 @@ class Variable < AbstractElement
   def initialize(variable_name, my_shape, subscripts, wrapped_subscripts)
     super()
 
-    raise(BASICSyntaxError, "'#{variable_name}' is not a variable name") if
-      variable_name.class.to_s != 'VariableName'
+    raise(BASICSyntaxError, "'#{variable_name}' is not a variable name") unless
+      variable_name.class.to_s == 'VariableName'
 
     @variable_name = variable_name
     @content_type = @variable_name.content_type
@@ -1782,12 +1805,6 @@ class Variable < AbstractElement
     constant_stack.push(@constant)
   end
 
-  def signature
-    sig = make_signature(@arg_types, @arg_shapes)
-    sig += make_shape_sigil(@shape) if sig.empty?
-    sig
-  end
-
   def eql?(other)
     @variable_name == other.name && @subscripts == other.subscripts
   end
@@ -1798,6 +1815,12 @@ class Variable < AbstractElement
 
   def hash
     @variable_name.hash && @subscripts.hash
+  end
+
+  def signature
+    sig = make_signature(@arg_types, @arg_shapes)
+    sig += make_shape_sigil(@shape) if sig.empty?
+    sig
   end
 
   def dump
@@ -1818,7 +1841,7 @@ class Variable < AbstractElement
   end
 
   def compatible?(value)
-    numerics = %i[numeric]
+    numerics = %i[numeric integer]
     strings = %i[string]
 
     case content_type
@@ -1839,6 +1862,10 @@ class Variable < AbstractElement
     else
       "#{@variable_name}(#{@subscripts.join(',')})"
     end
+  end
+
+  def to_v
+    to_s
   end
 
   def to_sw
@@ -1952,6 +1979,7 @@ class Variable < AbstractElement
     raise BASICExpressionError, msg if dims.nil?
 
     # msg = "Matrix #{@variable_name} requires two dimensions"
+    # don't check this; it causes problems for special forms
     # raise BASICExpressionError.new(msg) if dims.size != 2
 
     values = evaluate_matrix_n(interpreter, dims)

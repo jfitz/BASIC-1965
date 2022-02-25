@@ -18,7 +18,7 @@
 60 LET D = INT(X/1E4)
  Variable:D -> _
  Variable:X -> _
- NumericConstant:10000
+ NumericConstant:1E4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -48,13 +48,13 @@
  end:     ["NumericConstant:5"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
  Variable:D -> _
- NumericConstant:10000
+ NumericConstant:1E4
  BinaryOperatorMultiply:*(_,_) -> _
  CarriageControl:,
  Variable:D -> _
  NumericConstant:1
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:10000
+ NumericConstant:1E4
  BinaryOperatorMultiply:*(_,_) -> _
  CarriageControl:,
  Variable:D -> _
