@@ -5,36 +5,37 @@ class AbstractToken
   def self.pretty_tokens(keywords, tokens)
     pretty_tokens = []
 
-    token1 = NullToken.new
-    token2 = NullToken.new
+    prev = NullToken.new
+    prev2 = NullToken.new
 
     keywords.each do |token|
       pretty_tokens << WhitespaceToken.new(' ') unless pretty_tokens.empty?
       pretty_tokens << token
 
-      token2 = token1
-      token1 = token
+      prev2 = prev
+      prev = token
     end
 
     tokens.each do |token|
-      prev_is_variable = token1.variable? ||
-                         token1.function? ||
-                         token1.user_function?
+      prev_is_variable = prev.variable? ||
+                         prev.function? ||
+                         prev.user_function?
 
-      prev2_is_operand = token2.operand? || token2.group_end?
+      prev2_is_operand = prev2.operand? || prev2.group_end?
+
       pretty_tokens << WhitespaceToken.new(' ') unless
         token.separator? ||
         (token.group_start? && prev_is_variable) ||
         token.group_end? ||
-        token1.group_start? ||
-        (token1.operator? && !prev2_is_operand) ||
-        token1.whitespace? ||
-        token1.null?
+        prev.group_start? ||
+        (prev.operator? && !prev2_is_operand) ||
+        prev.whitespace? ||
+        prev.null?
 
       pretty_tokens << token
 
-      token2 = token1
-      token1 = token
+      prev2 = prev
+      prev = token
     end
 
     pretty_tokens.map(&:to_s).join
@@ -49,30 +50,33 @@ class AbstractToken
       pretty_tokens << token
     end
 
-    token1 = WhitespaceToken.new(' ')
-    token2 = WhitespaceToken.new(' ')
-    tokens.each do |token|
-      prev_is_variable = token1.variable? ||
-                         token1.function? ||
-                         token1.user_function?
+    prev = WhitespaceToken.new(' ')
+    prev2 = WhitespaceToken.new(' ')
 
-      prev2_is_operand = token2.operand? || token2.group_end?
+    tokens.each do |token|
+      prev_is_variable = prev.variable? ||
+                         prev.function? ||
+                         prev.user_function?
+
+      prev2_is_operand = prev2.operand? || prev2.group_end?
+
       pretty_tokens << WhitespaceToken.new(' ') unless
         token.separator? ||
         (token.group_start? && prev_is_variable) ||
         token.group_end? ||
-        token1.group_start? ||
-        (token1.operator? && token1.to_s != 'NOT' && !prev2_is_operand)
+        prev.group_start? ||
+        (prev.operator? && prev.to_s != 'NOT' && !prev2_is_operand)
 
       pretty_tokens << token
+
       if token.statement_separator?
         pretty_line = pretty_tokens.map(&:to_s).join
         pretty_lines << pretty_line
         pretty_tokens = []
       end
 
-      token2 = token1
-      token1 = token
+      prev2 = prev
+      prev = token
     end
 
     pretty_line = pretty_tokens.map(&:to_s).join
@@ -262,9 +266,7 @@ class OperatorToken < AbstractToken
   end
 
   def comparison?
-    @text == '<' || @text == '<=' ||
-      @text == '>' || @text == '>=' ||
-      @text == '=' || @text == '<>'
+    ['<', '<=', '>', '>=', '=', '<>'].include?(@text)
   end
 
   def pound?
