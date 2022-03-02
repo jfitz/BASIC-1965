@@ -12,7 +12,7 @@ DEGREES         SINE            COSINE
 STOP in line 99
 
 5 FNR(_) (0) DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
-10 (1) LET P = 3.14159625
+10 (1) LET P = 3.1416
 20 FND(_) (0) DEF FND(X) = X * P / 180
 30 FNS(_) (0) DEF FNS(X) = SIN(FND(X))
 40 FNC(_) (0) DEF FNC(X) = COS(FND(X))

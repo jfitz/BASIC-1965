@@ -35,7 +35,7 @@ STOP in line 810
 630 F(I) (21) LET F = SGN(FNF(X))
 640 F(I) (21) IF F = 0 THEN 800
 650 F(I) (21) LET X(1 + F) = X
-670 F(I) (21) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 800
+670 F(I) (21) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 800
 680 F(I) (20) GOTO 620
 800 F(I) (1) PRINT "ONE ZERO AT" X
 810 F(I) (1) STOP

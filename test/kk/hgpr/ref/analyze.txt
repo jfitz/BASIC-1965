@@ -88,7 +88,7 @@ F(P) (0 1) 90 NEXT P
 (1 2) 120 INPUT A
   Origs: 116:auto
   Dests: 125:auto
-(0 4) 125 LET S = SQR((A + 2) * 1E3)
+(0 4) 125 LET S = SQR((A + 2) * 1000)
   Origs: 120:auto
   Dests: 130:auto
 (0 2) 130 PRINT
@@ -241,7 +241,7 @@ F(I) (0 1) 780 NEXT I
 G(810) (0 7) 810 LET X = A - F * INT(A / F)
   Origs: 230:gosub, 420:gosub
   Dests: 820:auto
-G(810) (0 4) 820 LET Y = A * 1E3
+G(810) (0 4) 820 LET Y = A * 1000
   Origs: 810:auto
   Dests: 830:auto
 G(810) (0 9) 830 LET X = F - (Y - F * INT(Y / F))

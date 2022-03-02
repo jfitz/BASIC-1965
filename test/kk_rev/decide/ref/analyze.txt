@@ -94,7 +94,7 @@ F(I) (0 3) 250 LET V(I) = S
 F(I) (0 2) 260 GOTO 399
   Origs: 250:auto
   Dests: 399:goto
-F(I) (0 4) 300 LET M = -999999999
+F(I) (0 4) 300 LET M = -1E+09
   Origs: 130:ifthen
   Dests: 310:auto
 F(I,J) (1 6) 310 FOR J = 2 TO 2 * ABS(K) STEP 2
@@ -139,7 +139,7 @@ F(I) (0 3) 420 PRINT "EXPECTED GAIN = $" V(0)
 (0 3) 900 DATA -3, 1, 1, 2, 2, 3, 3
   Origs: 
   Dests: 
-(0 2) 901 DATA 2, .5, 4, 0.5, 5
+(0 2) 901 DATA 2, 0.5, 4, 0.5, 5
   Origs: 
   Dests: 
 (0 2) 902 DATA 0, 0

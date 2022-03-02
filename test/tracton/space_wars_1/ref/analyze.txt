@@ -96,13 +96,13 @@ G(500) (0 2) 230 PRINT "***************GOOD-LUCK***************"
 G(500) (0 2) 240 PRINT "MAY THE FORCE BE WITH YOU"
   Origs: 230:auto
   Dests: 250:auto
-G(500) (0 3) 250 LET E1 = 1E04
+G(500) (0 3) 250 LET E1 = 10000
   Origs: 90:ifthen, 240:auto
   Dests: 260:auto
 G(500) (0 3) 260 LET E2 = E1
   Origs: 250:auto
   Dests: 270:auto
-G(500) (0 5) 270 LET D = 1E03 + INT(5E05 * RND)
+G(500) (0 5) 270 LET D = 1000 + INT(500000 * RND)
   Origs: 260:auto
   Dests: 280:auto
 G(500) (0 5) 280 LET B = 1 + INT(180 * RND)
@@ -123,7 +123,7 @@ G(500) (0 2) 320 GOSUB 500
 G(500) (0 2) 330 GOTO 690
   Origs: 320:auto
   Dests: 690:goto
-G(340) (1 4) 340 IF D >= 1E05 THEN 370
+G(340) (1 4) 340 IF D >= 100000 THEN 370
   Origs: 290:gosub
   Dests: 350:auto, 370:ifthen
 G(340) (0 3) 350 LET L = 1
@@ -284,7 +284,7 @@ G(500) (0 3) 830 GOTO 730
 (1 5) 860 IF D + K < 0 THEN 910
   Origs: 850:auto
   Dests: 870:auto, 910:ifthen
-(1 5) 870 IF D + K > 1E6 THEN 960
+(1 5) 870 IF D + K > 1E+06 THEN 960
   Origs: 860:auto
   Dests: 880:auto, 960:ifthen
 (0 4) 880 LET D = D + K
@@ -435,7 +435,7 @@ Unreachable code:
 840: PRINT "HOW MANY KM TO TRAVERSE"
 850: INPUT K
 860: IF D + K < 0 THEN 910
-870: IF D + K > 1E6 THEN 960
+870: IF D + K > 1E+06 THEN 960
 880: LET D = D + K
 890: LET E1 = E1 - (ABS(K) / 1000)
 900: GOTO 290

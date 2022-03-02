@@ -121,7 +121,7 @@ F(I) (1 4) 640 IF F = 0 THEN 800
 F(I) (0 3) 650 LET X(1 + F) = X
   Origs: 640:auto
   Dests: 670:auto
-F(I) (1 10) 670 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 800
+F(I) (1 10) 670 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 800
   Origs: 650:auto
   Dests: 680:auto, 800:ifthen
 F(I) (0 3) 680 GOTO 620

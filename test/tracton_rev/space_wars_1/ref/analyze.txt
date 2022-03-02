@@ -92,13 +92,13 @@ Halstead complexity:
 (0 2) 240 PRINT "MAY THE FORCE BE WITH YOU"
   Origs: 230:auto
   Dests: 250:auto
-(0 3) 250 LET E1 = 1E04
+(0 3) 250 LET E1 = 10000
   Origs: 90:ifthen, 240:auto
   Dests: 260:auto
 (0 3) 260 LET E2 = E1
   Origs: 250:auto
   Dests: 270:auto
-(0 5) 270 LET D = 1E03 + INT(5E05 * RND)
+(0 5) 270 LET D = 1000 + INT(500000 * RND)
   Origs: 260:auto
   Dests: 280:auto
 (0 5) 280 LET B = 1 + INT(180 * RND)
@@ -125,7 +125,7 @@ Halstead complexity:
 (0 2) 330 GOTO 690
   Origs: 322:auto
   Dests: 690:goto
-G(340) (1 4) 340 IF D >= 1E05 THEN 370
+G(340) (1 4) 340 IF D >= 100000 THEN 370
   Origs: 290:gosub
   Dests: 350:auto, 370:ifthen
 G(340) (0 3) 350 LET L = 1
@@ -302,7 +302,7 @@ G(500) (0 1) 680 RETURN
 (1 5) 860 IF D + K < 0 THEN 910
   Origs: 850:auto
   Dests: 870:auto, 910:ifthen
-(1 5) 870 IF D + K > 1E6 THEN 960
+(1 5) 870 IF D + K > 1E+06 THEN 960
   Origs: 860:auto
   Dests: 880:auto, 960:ifthen
 (0 4) 880 LET D = D + K

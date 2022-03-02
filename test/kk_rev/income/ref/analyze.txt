@@ -34,7 +34,7 @@ F(I) (1 3) 40 FOR I = 1 TO 10
 F(I) (1 2) 50 READ X
   Origs: 40:fornext
   Dests: 60:auto
-F(I) (0 4) 60 LET D = INT(X / 1E4)
+F(I) (0 4) 60 LET D = INT(X / 10000)
   Origs: 50:auto
   Dests: 70:auto
 F(I) (0 4) 70 LET N(D) = N(D) + 1
@@ -52,7 +52,7 @@ F(I) (0 1) 80 NEXT I
 F(D) (1 3) 120 FOR D = 0 TO 5
   Origs: 110:auto
   Dests: 130:fornext, 140:fornext
-F(D) (0 7) 130 PRINT D * 1E4, (D + 1) * 1E4, N(D)
+F(D) (0 7) 130 PRINT D * 10000, (D + 1) * 10000, N(D)
   Origs: 120:fornext
   Dests: 140:auto
 F(D) (0 1) 140 NEXT D

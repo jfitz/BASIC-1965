@@ -188,16 +188,16 @@ Halstead complexity:
 (0 1) 536 REM X-WING ENERGY AND SKY ENERGY
   Origs: 
   Dests: 
-(0 3) 540 LET X1 = 5E05
+(0 3) 540 LET X1 = 500000
   Origs: 100:ifthen, 535:auto
   Dests: 550:auto
-(0 3) 550 LET T1 = 1E04
+(0 3) 550 LET T1 = 10000
   Origs: 540:auto
   Dests: 560:auto
-(0 3) 560 LET T2 = 5E04
+(0 3) 560 LET T2 = 50000
   Origs: 550:auto
   Dests: 570:auto
-(0 3) 570 LET D = 1E05
+(0 3) 570 LET D = 100000
   Origs: 560:auto
   Dests: 578:auto
 (0 3) 578 LET X0 = 0
@@ -227,7 +227,7 @@ Halstead complexity:
 (0 3) 625 GOTO 580
   Origs: 622:auto
   Dests: 580:goto
-G(630) (1 4) 630 IF D > 1E04 THEN 660
+G(630) (1 4) 630 IF D > 10000 THEN 660
   Origs: 580:gosub
   Dests: 640:auto, 660:ifthen
 G(630) (0 3) 640 LET L = 1
@@ -257,7 +257,7 @@ G(630) (0 4) 710 LET E1 = 1000 * H
 G(630) (0 1) 720 RETURN
   Origs: 690:goto, 710:auto
   Dests: 
-G(730) (1 4) 730 IF D > 5E03 THEN 760
+G(730) (1 4) 730 IF D > 5000 THEN 760
   Origs: 590:gosub
   Dests: 740:auto, 760:ifthen
 G(730) (0 3) 740 LET K = 1
@@ -287,7 +287,7 @@ G(730) (0 4) 810 LET E2 = 3000 * H
 G(730) (0 1) 820 RETURN
   Origs: 790:goto, 810:auto
   Dests: 
-G(840) (1 4) 840 IF D < 3E03 THEN 860
+G(840) (1 4) 840 IF D < 3000 THEN 860
   Origs: 600:gosub
   Dests: 850:auto, 860:ifthen
 G(840) (0 3) 850 LET E3 = 0
@@ -296,7 +296,7 @@ G(840) (0 3) 850 LET E3 = 0
 G(840) (0 7) 860 LET H = (1 + INT(100 * RND) / 100)
   Origs: 840:ifthen, 850:auto
   Dests: 870:auto
-G(840) (0 4) 870 LET E3 = 2E04 * H
+G(840) (0 4) 870 LET E3 = 20000 * H
   Origs: 860:auto
   Dests: 880:auto
 G(840) (0 4) 880 LET T1 = T1 - E1
@@ -447,7 +447,7 @@ G(1040) (0 3) 1260 GOTO 1130
 (0 3) 1350 GOTO 1130
   Origs: 1340:auto
   Dests: 1130:goto
-G(1040) (1 4) 1360 IF D <= 3E03 THEN 1380
+G(1040) (1 4) 1360 IF D <= 3000 THEN 1380
   Origs: 1150:goto, 1170:goto, 1210:goto
   Dests: 1370:auto, 1380:ifthen
 G(1040) (0 2) 1370 GOTO 1410
@@ -468,7 +468,7 @@ G(1040) (0 2) 1410 PRINT
 G(1040) (0 4) 1415 PRINT "YOUR TOTAL ENERGY IS NOW"; X1; "UNITS"
   Origs: 1410:auto
   Dests: 1420:auto
-G(1040) (1 4) 1420 IF X1 < 2E04 THEN 1440
+G(1040) (1 4) 1420 IF X1 < 20000 THEN 1440
   Origs: 1415:auto
   Dests: 1430:auto, 1440:ifthen
 G(1040) (0 2) 1430 GOTO 1490
@@ -514,7 +514,7 @@ G(1500) (0 2) 1550 PRINT "YOU HAVE WASTED A TORPEDO, YOU ARE FARTHER"
 G(1500) (0 2) 1560 PRINT "AWAY THAN 1000KM"
   Origs: 1550:auto
   Dests: 1570:auto
-G(1500) (0 4) 1570 LET X1 = X1 - 2E04
+G(1500) (0 4) 1570 LET X1 = X1 - 20000
   Origs: 1560:auto
   Dests: 1580:auto
 G(1500) (0 2) 1580 GOTO 2680
@@ -529,7 +529,7 @@ G(1500) (1 4) 1600 IF H > 50 THEN 1640
 G(1500) (0 2) 1610 PRINT "YOU SHOULD HAVE USED THE FORCE, YOU HAVE MISSED"
   Origs: 1600:auto
   Dests: 1620:auto
-G(1500) (0 4) 1620 LET X1 = X1 - 2E04
+G(1500) (0 4) 1620 LET X1 = X1 - 20000
   Origs: 1610:auto
   Dests: 1630:auto
 G(1500) (0 2) 1630 GOTO 2680
@@ -774,7 +774,7 @@ G(1500) (0 1) 1682 RETURN
 (1 2) 2400 INPUT C
   Origs: 2390:auto
   Dests: 2410:auto
-(1 4) 2410 IF F > 2.25E04 THEN 2470
+(1 4) 2410 IF F > 22500 THEN 2470
   Origs: 2400:auto
   Dests: 2420:auto, 2470:ifthen
 (1 4) 2420 IF C = 0 THEN 2500
@@ -804,7 +804,7 @@ G(1500) (0 1) 1682 RETURN
 (0 4) 2500 LET D = D + F
   Origs: 2420:ifthen
   Dests: 2510:auto
-(1 4) 2510 IF D > 1.5E05 THEN 2540
+(1 4) 2510 IF D > 150000 THEN 2540
   Origs: 2500:auto
   Dests: 2520:auto, 2540:ifthen
 (0 2) 2520 GOTO 2640
@@ -1000,7 +1000,7 @@ Unreachable code:
 2380: PRINT "IN WHICH DIRECTION, AWAY (0) OR TOWARDS (1)"
 2390: PRINT "THE DEATH STAR"
 2400: INPUT C
-2410: IF F > 2.25E04 THEN 2470
+2410: IF F > 22500 THEN 2470
 2420: IF C = 0 THEN 2500
 2430: IF C = 1 THEN 2620
 2440: PRINT "DON'T YOU KNOW WHICH DIRECTION YOU WANT TO GO TO"
@@ -1009,7 +1009,7 @@ Unreachable code:
 2480: PRINT "THE REACTOR IS CRITICALLY OVERHEATED"
 2490: GOTO 2640
 2500: LET D = D + F
-2510: IF D > 1.5E05 THEN 2540
+2510: IF D > 150000 THEN 2540
 2520: GOTO 2640
 2540: PRINT "WHERE ARE YOU GOING? THE BATTLE IS IN THE"
 2550: PRINT "OPPOSITE DIRECTION"

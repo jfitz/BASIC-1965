@@ -46,7 +46,7 @@ STOP in line 790
 115 (1) PRINT
 116 (1) PRINT "A = ";
 120 (1) INPUT A
-125 (1) LET S = SQR((A + 2) * 1E3)
+125 (1) LET S = SQR((A + 2) * 1000)
 130 (1) PRINT
 140 (1) PRINT "B = "
 150 (1) PRINT
@@ -97,7 +97,7 @@ STOP in line 790
 795 (0)
 800 (0) REM TEST FACTOR F
 810 G(810) (572) LET X = A - F * INT(A / F)
-820 G(810) (572) LET Y = A * 1E3
+820 G(810) (572) LET Y = A * 1000
 830 G(810) (572) LET X = F - (Y - F * INT(Y / F))
 840 G(810) (572) IF X <> 2 * INT(X / 2) THEN 860
 850 G(810) (277) LET X = X + F

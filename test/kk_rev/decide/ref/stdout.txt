@@ -28,7 +28,7 @@ STOP in line 999
 240 F(I,J) (18) NEXT J
 250 F(I) (7) LET V(I) = S
 260 F(I) (7) GOTO 399
-300 F(I) (4) LET M = -999999999
+300 F(I) (4) LET M = -1E+09
 310 F(I,J) (4) FOR J = 2 TO 2 * ABS(K) STEP 2
 320 F(I,J) (9) LET V = V(T(I, J))
 330 F(I,J) (9) IF V <= M THEN 360
@@ -43,7 +43,7 @@ STOP in line 999
 420 F(I) (1) PRINT "EXPECTED GAIN = $" V(0)
 430 (0)
 900 (0) DATA -3, 1, 1, 2, 2, 3, 3
-901 (0) DATA 2, .5, 4, 0.5, 5
+901 (0) DATA 2, 0.5, 4, 0.5, 5
 902 (0) DATA 0, 0
 903 (0) DATA 3, 0.333, 6, 0.167, 7, 0.5, 8
 904 (0) DATA 0, 100

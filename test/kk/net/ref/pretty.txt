@@ -1,4 +1,4 @@
-100 DEF FNR(X) = INT(X * 1E3 + .5) / 1E3
+100 DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
 110 DIM C(20, 20), U(20, 20), B(20), P(20)
 120 READ N, V
 130 MAT C = ZER(N, N)

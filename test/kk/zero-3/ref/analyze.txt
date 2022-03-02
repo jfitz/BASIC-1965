@@ -49,7 +49,7 @@ FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
 (0 3) 50 LET X(1 + F) = X
   Origs: 40:auto
   Dests: 80:auto
-(1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 100
+(1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 100
   Origs: 50:auto
   Dests: 90:auto, 100:ifthen
 (0 3) 90 GOTO 30

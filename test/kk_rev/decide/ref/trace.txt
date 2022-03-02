@@ -1,5 +1,5 @@
 900: DATA -3, 1, 1, 2, 2, 3, 3
-901: DATA 2, .5, 4, 0.5, 5
+901: DATA 2, 0.5, 4, 0.5, 5
 902: DATA 0, 0
 903: DATA 3, 0.333, 6, 0.167, 7, 0.5, 8
 904: DATA 0, 100
@@ -1537,7 +1537,7 @@ F(I) 120: IF K > 0 THEN 200
 F(I) 130: IF K < 0 THEN 300
  K: -2
  K < 0: true
-F(I) 300: LET M = -999999999
+F(I) 300: LET M = -1E+09
  M = -1000000000
 F(I,J) 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -2
@@ -1619,7 +1619,7 @@ F(I) 120: IF K > 0 THEN 200
 F(I) 130: IF K < 0 THEN 300
  K: -2
  K < 0: true
-F(I) 300: LET M = -999999999
+F(I) 300: LET M = -1E+09
  M = -1000000000
 F(I,J) 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -2
@@ -1924,7 +1924,7 @@ F(I) 120: IF K > 0 THEN 200
 F(I) 130: IF K < 0 THEN 300
  K: -2
  K < 0: true
-F(I) 300: LET M = -999999999
+F(I) 300: LET M = -1E+09
  M = -1000000000
 F(I,J) 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -2
@@ -2154,7 +2154,7 @@ F(I) 120: IF K > 0 THEN 200
 F(I) 130: IF K < 0 THEN 300
  K: -3
  K < 0: true
-F(I) 300: LET M = -999999999
+F(I) 300: LET M = -1E+09
  M = -1000000000
 F(I,J) 310: FOR J = 2 TO 2 * ABS(K) STEP 2
  K: -3

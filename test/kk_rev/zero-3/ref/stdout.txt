@@ -11,7 +11,7 @@ STOP in line 999
 35 (21) LET F = SGN(FNF(X))
 40 (21) IF F = 0 THEN 100
 50 (21) LET X(1 + F) = X
-80 (21) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 0.0000005 THEN 100
+80 (21) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 100
 90 (20) GOTO 30
 95 (0) LET X = A
 100 (1) PRINT "ONE ZERO AT" X
