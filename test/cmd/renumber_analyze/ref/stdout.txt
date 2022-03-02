@@ -144,13 +144,13 @@ F(I,J) (0 1) 100 NEXT J
   Origs: 80:fornext, 90:auto
   Dests: 110:auto
 F(I) (0 1) 110 NEXT I
-  Origs: 40:auto, 70:fornext, 100:auto
+  Origs: 70:fornext, 100:auto
   Dests: 130:auto
 (0 1) 120 REM PRINT LOCKER STATES
   Origs: 
   Dests: 
 (0 2) 130 PRINT "OPEN LOCKERS:";
-  Origs: 60:auto, 110:auto
+  Origs: 110:auto
   Dests: 140:auto
 F(I,I,I) (1 3) 140 FOR I = 1 TO N
   Origs: 130:auto
@@ -159,13 +159,13 @@ F(I,I,I) (1 4) 150 IF L(I) = 0 THEN 170
   Origs: 140:fornext
   Dests: 160:auto, 170:ifthen
 F(I) (0 2) 160 PRINT I;
-  Origs: 90:auto, 150:auto
+  Origs: 150:auto
   Dests: 170:auto
 F(I) (0 1) 170 NEXT I
   Origs: 140:fornext, 150:ifthen, 160:auto
   Dests: 180:auto
 (0 2) 180 PRINT
-  Origs: 100:auto, 170:auto
+  Origs: 170:auto
   Dests: 190:auto
 (0 1) 190 END
   Origs: 180:auto

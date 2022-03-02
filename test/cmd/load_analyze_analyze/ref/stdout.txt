@@ -41,7 +41,7 @@ FNL(_,_,_,_) (0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 
 (0 1) 60 REM CONVERT DEGREES TO RADIANS
   Origs: 
   Dests: 
-FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
+FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.14159
   Origs: 421:function
   Dests: 
 (0 1) 100 REM POINT A
@@ -175,12 +175,12 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 410:auto
 F(I) (1 4) 410 FOR I = 0 TO 365 STEP 5
   Origs: 401:auto
-  Dests: 420:fornext, 441:fornext
-F(I) (0 1) 420 REM PICK POINT ON CIRCLE D
-  Origs: 410:fornext
-  Dests: 421:auto
+  Dests: 421:fornext, 441:fornext
+(0 1) 420 REM PICK POINT ON CIRCLE D
+  Origs: 
+  Dests: 
 F(I) (0 5) 421 LET T = FNR(I)
-  Origs: 420:auto
+  Origs: 410:fornext
   Dests: 61:function, 422:auto
 F(I) (0 7) 422 LET I1 = D1 + COS(T) * D5
   Origs: 421:auto
@@ -209,7 +209,7 @@ F(I) (0 1) 441 NEXT I
 (0 1) 900 REM DATA - POINT A, POINT D, POINT C
   Origs: 
   Dests: 
-(0 2) 901 DATA 0, 0, 100, 0, 75, 0, 0.00001, 0.995, 0.00001
+(0 2) 901 DATA 0, 0, 100, 0, 75, 0, 1E-05, 0.995, 1E-05
   Origs: 
   Dests: 
 (0 1) 999 END
@@ -258,7 +258,7 @@ FNL(_,_,_,_) (0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 
 (0 1) 60 REM CONVERT DEGREES TO RADIANS
   Origs: 
   Dests: 
-FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
+FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.14159
   Origs: 421:function
   Dests: 
 (0 1) 100 REM POINT A
@@ -392,12 +392,12 @@ FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
   Dests: 410:auto
 F(I,I) (1 4) 410 FOR I = 0 TO 365 STEP 5
   Origs: 401:auto
-  Dests: 420:fornext, 441:fornext
-F(I,I) (0 1) 420 REM PICK POINT ON CIRCLE D
+  Dests: 421:fornext, 441:fornext
+(0 1) 420 REM PICK POINT ON CIRCLE D
+  Origs: 
+  Dests: 
+F(I,I) (0 5) 421 LET T = FNR(I)
   Origs: 410:fornext
-  Dests: 421:auto
-F(I) (0 5) 421 LET T = FNR(I)
-  Origs: 420:auto
   Dests: 61:function, 422:auto
 F(I) (0 7) 422 LET I1 = D1 + COS(T) * D5
   Origs: 421:auto
@@ -426,7 +426,7 @@ F(I) (0 1) 441 NEXT I
 (0 1) 900 REM DATA - POINT A, POINT D, POINT C
   Origs: 
   Dests: 
-(0 2) 901 DATA 0, 0, 100, 0, 75, 0, 0.00001, 0.995, 0.00001
+(0 2) 901 DATA 0, 0, 100, 0, 75, 0, 1E-05, 0.995, 1E-05
   Origs: 
   Dests: 
 (0 1) 999 END
