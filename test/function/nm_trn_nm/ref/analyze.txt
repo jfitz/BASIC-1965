@@ -19,58 +19,58 @@ Halstead complexity:
  intelligence: 18.362
  time: 1.377
 
-(0 2) 10 DIM A(6, 5)
+10 (0 2) DIM A(6, 5)
   Origs: :start
   Dests: 20:auto
-F(I) (1 3) 20 FOR I = 0 TO 6
+20 F(I) (1 3) FOR I = 0 TO 6
   Origs: 10:auto
   Dests: 30:fornext, 60:fornext
-F(I,J) (1 3) 30 FOR J = 0 TO 5
+30 F(I,J) (1 3) FOR J = 0 TO 5
   Origs: 20:fornext
   Dests: 40:fornext, 50:fornext
-F(I,J) (0 5) 40 LET A(I, J) = I * 10 + J
+40 F(I,J) (0 5) LET A(I, J) = I * 10 + J
   Origs: 30:fornext
   Dests: 50:auto
-F(I,J) (0 1) 50 NEXT J
+50 F(I,J) (0 1) NEXT J
   Origs: 30:fornext, 40:auto
   Dests: 60:auto
-F(I) (0 1) 60 NEXT I
+60 F(I) (0 1) NEXT I
   Origs: 20:fornext, 50:auto
   Dests: 70:auto
-(0 2) 70 PRINT "MATRIX A"
+70 (0 2) PRINT "MATRIX A"
   Origs: 60:auto
   Dests: 72:auto
-(0 2) 72 MAT PRINT A;
+72 (0 2) MAT PRINT A;
   Origs: 70:auto
   Dests: 80:auto
-(0 4) 80 MAT B = TRN(A)
+80 (0 4) MAT B = TRN(A)
   Origs: 72:auto
   Dests: 90:auto
-(0 2) 90 PRINT "MATRIX B"
+90 (0 2) PRINT "MATRIX B"
   Origs: 80:auto
   Dests: 92:auto
-(0 2) 92 MAT PRINT B;
+92 (0 2) MAT PRINT B;
   Origs: 90:auto
   Dests: 100:auto
-(0 2) 100 OPTION BASE 1
+100 (0 2) OPTION BASE 1
   Origs: 92:auto
   Dests: 170:auto
-(0 2) 170 PRINT "MATRIX A"
+170 (0 2) PRINT "MATRIX A"
   Origs: 100:auto
   Dests: 172:auto
-(0 2) 172 MAT PRINT A;
+172 (0 2) MAT PRINT A;
   Origs: 170:auto
   Dests: 180:auto
-(0 4) 180 MAT B = TRN(A)
+180 (0 4) MAT B = TRN(A)
   Origs: 172:auto
   Dests: 190:auto
-(0 2) 190 PRINT "MATRIX B"
+190 (0 2) PRINT "MATRIX B"
   Origs: 180:auto
   Dests: 192:auto
-(0 2) 192 MAT PRINT B;
+192 (0 2) MAT PRINT B;
   Origs: 190:auto
   Dests: 199:auto
-(0 1) 199 END
+199 (0 1) END
   Origs: 192:auto
   Dests: :stop
 

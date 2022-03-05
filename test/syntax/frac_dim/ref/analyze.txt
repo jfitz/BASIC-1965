@@ -19,28 +19,28 @@ Halstead complexity:
  intelligence: 32.299
  time: 0.218
 
-(0 1) 10 REM TEST FRACTIONAL DIMENSIONS
+10 (0 1) REM TEST FRACTIONAL DIMENSIONS
   Origs: 
   Dests: 
-(0 3) 20 LET A(2.3) = 2
+20 (0 3) LET A(2.3) = 2
   Origs: :start
   Dests: 30:auto
-(0 3) 30 LET A(3.7) = 3
+30 (0 3) LET A(3.7) = 3
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 PRINT "A(2):"; A(2)
+40 (0 3) PRINT "A(2):"; A(2)
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 PRINT "A(2.3):"; A(2.3)
+50 (0 3) PRINT "A(2.3):"; A(2.3)
   Origs: 40:auto
   Dests: 60:auto
-(0 3) 60 PRINT "A(3):"; A(3)
+60 (0 3) PRINT "A(3):"; A(3)
   Origs: 50:auto
   Dests: 70:auto
-(0 3) 70 PRINT "A(3.7):"; A(3.7)
+70 (0 3) PRINT "A(3.7):"; A(3.7)
   Origs: 60:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 70:auto
   Dests: :stop
 

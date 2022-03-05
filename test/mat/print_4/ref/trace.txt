@@ -1,49 +1,49 @@
-10: DIM A(6)
-F(I) 20: FOR I = 1 TO 6
+10 DIM A(6)
+20 F(I) FOR I = 1 TO 6
  I = 1
  terminated:false
-F(I) 40: LET A(I) = I * 3
+40 F(I) LET A(I) = I * 3
  I: 1
  A(1) = 3
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 40: LET A(I) = I * 3
+40 F(I) LET A(I) = I * 3
  I: 2
  A(2) = 6
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 40: LET A(I) = I * 3
+40 F(I) LET A(I) = I * 3
  I: 3
  A(3) = 9
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 40: LET A(I) = I * 3
+40 F(I) LET A(I) = I * 3
  I: 4
  A(4) = 12
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 40: LET A(I) = I * 3
+40 F(I) LET A(I) = I * 3
  I: 5
  A(5) = 15
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 40: LET A(I) = I * 3
+40 F(I) LET A(I) = I * 3
  I: 6
  A(6) = 18
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 6
  terminated:true
-70: MAT PRINT A
+70 MAT PRINT A
  A(1): 3
  A(2): 6
  A(3): 9
@@ -52,6 +52,6 @@ F(I) 60: NEXT I
  A(6): 18
  3  6  9  12  15  18
 
-99: END
+99 END
 STOP in line 99
 

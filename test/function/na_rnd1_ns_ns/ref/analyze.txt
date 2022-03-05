@@ -19,70 +19,70 @@ Halstead complexity:
  intelligence: 46.268
  time: 0.646
 
-(0 1) 10 REM ARRAY FUNCTION RND1()
+10 (0 1) REM ARRAY FUNCTION RND1()
   Origs: 
   Dests: 
-(0 2) 15 DIM D(3)
+15 (0 2) DIM D(3)
   Origs: :start
   Dests: 20:auto
-(0 4) 20 ARR A = RND1(5, 10)
+20 (0 4) ARR A = RND1(5, 10)
   Origs: 15:auto
   Dests: 30:auto
-(0 4) 30 ARR B = RND1(3, 2)
+30 (0 4) ARR B = RND1(3, 2)
   Origs: 20:auto
   Dests: 40:auto
-(0 4) 40 ARR C = RND1(4, 0.5)
+40 (0 4) ARR C = RND1(4, 0.5)
   Origs: 30:auto
   Dests: 50:auto
-(0 2) 50 PRINT "ARRAY A"
+50 (0 2) PRINT "ARRAY A"
   Origs: 40:auto
   Dests: 60:auto
-(0 2) 60 ARR PRINT A
+60 (0 2) ARR PRINT A
   Origs: 50:auto
   Dests: 70:auto
-(0 2) 70 PRINT "ARRAY B"
+70 (0 2) PRINT "ARRAY B"
   Origs: 60:auto
   Dests: 80:auto
-(0 2) 80 ARR PRINT B
+80 (0 2) ARR PRINT B
   Origs: 70:auto
   Dests: 90:auto
-(0 2) 90 PRINT "ARRAY C"
+90 (0 2) PRINT "ARRAY C"
   Origs: 80:auto
   Dests: 100:auto
-(0 2) 100 ARR PRINT C
+100 (0 2) ARR PRINT C
   Origs: 90:auto
   Dests: 200:auto
-(0 2) 200 OPTION BASE 1
+200 (0 2) OPTION BASE 1
   Origs: 100:auto
   Dests: 220:auto
-(0 4) 220 ARR A = RND1(5, 10)
+220 (0 4) ARR A = RND1(5, 10)
   Origs: 200:auto
   Dests: 230:auto
-(0 4) 230 ARR B = RND1(3, 2)
+230 (0 4) ARR B = RND1(3, 2)
   Origs: 220:auto
   Dests: 240:auto
-(0 4) 240 ARR C = RND1(4, 0.5)
+240 (0 4) ARR C = RND1(4, 0.5)
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 PRINT "ARRAY A"
+250 (0 2) PRINT "ARRAY A"
   Origs: 240:auto
   Dests: 260:auto
-(0 2) 260 ARR PRINT A
+260 (0 2) ARR PRINT A
   Origs: 250:auto
   Dests: 270:auto
-(0 2) 270 PRINT "ARRAY B"
+270 (0 2) PRINT "ARRAY B"
   Origs: 260:auto
   Dests: 280:auto
-(0 2) 280 ARR PRINT B
+280 (0 2) ARR PRINT B
   Origs: 270:auto
   Dests: 290:auto
-(0 2) 290 PRINT "ARRAY C"
+290 (0 2) PRINT "ARRAY C"
   Origs: 280:auto
   Dests: 300:auto
-(0 2) 300 ARR PRINT C
+300 (0 2) ARR PRINT C
   Origs: 290:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 300:auto
   Dests: :stop
 

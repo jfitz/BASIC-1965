@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 12.315
  time: 0.209
 
-(0 1) 10 REM TEST PROGRAM FOR ARCSIN()
+10 (0 1) REM TEST PROGRAM FOR ARCSIN()
   Origs: 
   Dests: 
-(0 3) 20 PRINT "SINE", "ANGLE"
+20 (0 3) PRINT "SINE", "ANGLE"
   Origs: :start
   Dests: 30:auto
-F(I) (1 5) 30 FOR I = -1 TO 1 STEP 0.1
+30 F(I) (1 5) FOR I = -1 TO 1 STEP 0.1
   Origs: 20:auto
   Dests: 50:fornext, 70:fornext
-F(I) (0 4) 50 LET A = ARCSIN(I)
+50 F(I) (0 4) LET A = ARCSIN(I)
   Origs: 30:fornext
   Dests: 60:auto
-F(I) (0 3) 60 PRINT I, A
+60 F(I) (0 3) PRINT I, A
   Origs: 50:auto
   Dests: 70:auto
-F(I) (0 1) 70 NEXT I
+70 F(I) (0 1) NEXT I
   Origs: 30:fornext, 60:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 70:auto
   Dests: :stop
 

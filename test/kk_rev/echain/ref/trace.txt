@@ -1,11 +1,11 @@
-550: DATA 3
-560: DATA 0.5, 0.25, 0.25
-570: DATA 0.5, 0, 0.5
-580: DATA 0.25, 0.25, 0.5
-100: DIM P(20, 20), M(20, 20), Z(20, 20), A(1, 20), B(1, 20)
-120: READ N
+550 DATA 3
+560 DATA 0.5, 0.25, 0.25
+570 DATA 0.5, 0, 0.5
+580 DATA 0.25, 0.25, 0.5
+100 DIM P(20, 20), M(20, 20), Z(20, 20), A(1, 20), B(1, 20)
+120 READ N
  N = 3
-130: MAT READ P(N, N)
+130 MAT READ P(N, N)
  N: 3
  P(1,1) = 0.5
  P(1,2) = 0.25
@@ -16,7 +16,7 @@
  P(3,1) = 0.25
  P(3,2) = 0.25
  P(3,3) = 0.5
-140: MAT Z = IDN(N, N)
+140 MAT Z = IDN(N, N)
  N: 3
  Z(1,1) = 1
  Z(1,2) = 0
@@ -27,11 +27,11 @@
  Z(3,1) = 0
  Z(3,2) = 0
  Z(3,3) = 1
-160: PRINT "TRANSITION PROBABILITIES"
+160 PRINT "TRANSITION PROBABILITIES"
 TRANSITION PROBABILITIES
-170: PRINT
+170 PRINT
 
-180: MAT PRINT P
+180 MAT PRINT P
  P(1,1): 0.5
  P(1,2): 0.25
  P(1,3): 0.25
@@ -45,7 +45,7 @@ TRANSITION PROBABILITIES
  0.5      0        0.5
  0.25     0.25     0.5
 
-200: MAT Z = Z - P
+200 MAT Z = Z - P
  Z(1,1): 1
  Z(1,2): 0
  Z(1,3): 0
@@ -73,35 +73,35 @@ TRANSITION PROBABILITIES
  Z(3,1) = -0.25
  Z(3,2) = -0.25
  Z(3,3) = 0.5
-F(I) 210: FOR I = 1 TO N
+210 F(I) FOR I = 1 TO N
  N: 3
  I = 1
  N = 3
  terminated:false
-F(I) 220: LET Z(I, N) = 1
+220 F(I) LET Z(I, N) = 1
  I: 1
  N: 3
  Z(1,3) = 1
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 220: LET Z(I, N) = 1
+220 F(I) LET Z(I, N) = 1
  I: 2
  N: 3
  Z(2,3) = 1
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 220: LET Z(I, N) = 1
+220 F(I) LET Z(I, N) = 1
  I: 3
  N: 3
  Z(3,3) = 1
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 3
  terminated:true
-240: MAT M = INV(Z)
+240 MAT M = INV(Z)
  Z(1,1): 0.5
  Z(1,2): -0.25
  Z(1,3): 1
@@ -120,53 +120,53 @@ F(I) 230: NEXT I
  M(3,1) = 0.4
  M(3,2) = 0.2
  M(3,3) = 0.4
-245: MAT A = ZER(1, N)
+245 MAT A = ZER(1, N)
  N: 3
  A(1,1) = 0
  A(1,2) = 0
  A(1,3) = 0
-F(J) 250: FOR J = 1 TO N
+250 F(J) FOR J = 1 TO N
  N: 3
  J = 1
  N = 3
  terminated:false
-F(J) 260: LET A(1, J) = M(N, J)
+260 F(J) LET A(1, J) = M(N, J)
  J: 1
  N: 3
  M(3,1): 0.4
  A(1,1) = 0.4
-F(J) 270: NEXT J
+270 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 260: LET A(1, J) = M(N, J)
+260 F(J) LET A(1, J) = M(N, J)
  J: 2
  N: 3
  M(3,2): 0.2
  A(1,2) = 0.2
-F(J) 270: NEXT J
+270 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 260: LET A(1, J) = M(N, J)
+260 F(J) LET A(1, J) = M(N, J)
  J: 3
  N: 3
  M(3,3): 0.4
  A(1,3) = 0.4
-F(J) 270: NEXT J
+270 F(J) NEXT J
  J: 3
  terminated:true
-280: PRINT "LIMITING PROBABILITIES"
+280 PRINT "LIMITING PROBABILITIES"
 LIMITING PROBABILITIES
-290: PRINT
+290 PRINT
 
-300: MAT PRINT A
+300 MAT PRINT A
  A(1,1): 0.4
  A(1,2): 0.2
  A(1,3): 0.4
  0.4      0.2      0.4
 
-320: MAT M = IDN(N, N)
+320 MAT M = IDN(N, N)
  N: 3
  M(1,1) = 1
  M(1,2) = 0
@@ -177,7 +177,7 @@ LIMITING PROBABILITIES
  M(3,1) = 0
  M(3,2) = 0
  M(3,3) = 1
-330: MAT M = M - P
+330 MAT M = M - P
  M(1,1): 1
  M(1,2): 0
  M(1,3): 0
@@ -205,125 +205,125 @@ LIMITING PROBABILITIES
  M(3,1) = -0.25
  M(3,2) = -0.25
  M(3,3) = 0.5
-F(I) 340: FOR I = 1 TO N
+340 F(I) FOR I = 1 TO N
  N: 3
  I = 1
  N = 3
  terminated:false
-F(I,J) 350: FOR J = 1 TO N
+350 F(I,J) FOR J = 1 TO N
  N: 3
  J = 1
  N = 3
  terminated:false
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 1
  J: 1
  M(1,1): 0.5
  A(1,1): 0.4
  M(1,1) = 0.9
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 1
  J: 2
  M(1,2): -0.25
  A(1,2): 0.2
  M(1,2) = -0.05
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 1
  J: 3
  M(1,3): -0.25
  A(1,3): 0.4
  M(1,3) = 0.15
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 3
  terminated:true
-F(I) 380: NEXT I
+380 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I,J) 350: FOR J = 1 TO N
+350 F(I,J) FOR J = 1 TO N
  N: 3
  J = 1
  N = 3
  terminated:false
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 2
  J: 1
  M(2,1): -0.5
  A(1,1): 0.4
  M(2,1) = -0.1
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 2
  J: 2
  M(2,2): 1
  A(1,2): 0.2
  M(2,2) = 1.2
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 2
  J: 3
  M(2,3): -0.5
  A(1,3): 0.4
  M(2,3) = -0.1
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 3
  terminated:true
-F(I) 380: NEXT I
+380 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I,J) 350: FOR J = 1 TO N
+350 F(I,J) FOR J = 1 TO N
  N: 3
  J = 1
  N = 3
  terminated:false
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 3
  J: 1
  M(3,1): -0.25
  A(1,1): 0.4
  M(3,1) = 0.15
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 3
  J: 2
  M(3,2): -0.25
  A(1,2): 0.2
  M(3,2) = -0.05
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 360: LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) LET M(I, J) = M(I, J) + A(1, J)
  I: 3
  J: 3
  M(3,3): 0.5
  A(1,3): 0.4
  M(3,3) = 0.9
-F(I,J) 370: NEXT J
+370 F(I,J) NEXT J
  J: 3
  terminated:true
-F(I) 380: NEXT I
+380 F(I) NEXT I
  I: 3
  terminated:true
-390: MAT Z = INV(M)
+390 MAT Z = INV(M)
  M(1,1): 0.9
  M(1,2): -0.05
  M(1,3): 0.15
@@ -342,135 +342,135 @@ F(I) 380: NEXT I
  Z(3,1) = -0.186667
  Z(3,2) = 0.0400002
  Z(3,3) = 1.14667
-F(I) 410: FOR I = 1 TO N
+410 F(I) FOR I = 1 TO N
  N: 3
  I = 1
  N = 3
  terminated:false
-F(I,J) 420: FOR J = 1 TO N
+420 F(I,J) FOR J = 1 TO N
  N: 3
  J = 1
  N = 3
  terminated:false
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 1
  J: 1
  Z(1,1): 1.14667
  A(1,1): 0.4
  M(1,1) = 0
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 1
  J: 2
  Z(2,2): 0.84
  Z(1,2): 0.04
  A(1,2): 0.2
  M(1,2) = 4
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 1
  J: 3
  Z(3,3): 1.14667
  Z(1,3): -0.186667
  A(1,3): 0.4
  M(1,3) = 3.33335
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 3
  terminated:true
-F(I) 450: NEXT I
+450 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I,J) 420: FOR J = 1 TO N
+420 F(I,J) FOR J = 1 TO N
  N: 3
  J = 1
  N = 3
  terminated:false
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 2
  J: 1
  Z(1,1): 1.14667
  Z(2,1): 0.0800002
  A(1,1): 0.4
  M(2,1) = 2.66667
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 2
  J: 2
  Z(2,2): 0.84
  A(1,2): 0.2
  M(2,2) = 0
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 2
  J: 3
  Z(3,3): 1.14667
  Z(2,3): 0.0800003
  A(1,3): 0.4
  M(2,3) = 2.66667
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 3
  terminated:true
-F(I) 450: NEXT I
+450 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I,J) 420: FOR J = 1 TO N
+420 F(I,J) FOR J = 1 TO N
  N: 3
  J = 1
  N = 3
  terminated:false
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 3
  J: 1
  Z(1,1): 1.14667
  Z(3,1): -0.186667
  A(1,1): 0.4
  M(3,1) = 3.33335
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 3
  J: 2
  Z(2,2): 0.84
  Z(3,2): 0.0400002
  A(1,2): 0.2
  M(3,2) = 4
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 430: LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
  I: 3
  J: 3
  Z(3,3): 1.14667
  A(1,3): 0.4
  M(3,3) = 0
-F(I,J) 440: NEXT J
+440 F(I,J) NEXT J
  J: 3
  terminated:true
-F(I) 450: NEXT I
+450 F(I) NEXT I
  I: 3
  terminated:true
-460: PRINT "MEAN PASSAGE TIMES"
+460 PRINT "MEAN PASSAGE TIMES"
 MEAN PASSAGE TIMES
-470: PRINT
+470 PRINT
 
-480: MAT PRINT M
+480 MAT PRINT M
  M(1,1): 0
  M(1,2): 4
  M(1,3): 3.33335
@@ -484,7 +484,7 @@ MEAN PASSAGE TIMES
  2.66667  0        2.66667
  3.33335  4        0
 
-500: MAT B = A * M
+500 MAT B = A * M
  A(1,1): 0.4
  A(1,2): 0.2
  A(1,3): 0.4
@@ -500,16 +500,16 @@ MEAN PASSAGE TIMES
  B(1,1) = 1.86667
  B(1,2) = 3.2
  B(1,3) = 1.86667
-510: PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
+510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
 FIRST PASSAGE TIME IN EQUILIBRIUM
-520: PRINT
+520 PRINT
 
-530: MAT PRINT B
+530 MAT PRINT B
  B(1,1): 1.86667
  B(1,2): 3.2
  B(1,3): 1.86667
  1.86667  3.2      1.86667
 
-999: END
+999 END
 STOP in line 999
 

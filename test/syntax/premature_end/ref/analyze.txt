@@ -19,17 +19,17 @@ Halstead complexity:
  intelligence: 0.000
  time: 0.000
 
-(0 1) 10 REM PROGRAM WITH END STATEMENT TOO EARLY
+10 (0 1) REM PROGRAM WITH END STATEMENT TOO EARLY
   Origs: 
   Dests: 
-(0 2) 20 PRINT "HELLO"
+20 (0 2) PRINT "HELLO"
   Origs: :start
   Dests: 30:auto
-(0 1) 30 END
+30 (0 1) END
    ERROR: Statements after END
   Origs: 20:auto
   Dests: :stop
-(0 2) 40 PRINT "GOODBYE"
+40 (0 2) PRINT "GOODBYE"
   Origs: 
   Dests: 
 

@@ -19,31 +19,31 @@ Halstead complexity:
  intelligence: 18.267
  time: 0.271
 
-(0 1) 10 REM TEST DEG() FUNCTION
+10 (0 1) REM TEST DEG() FUNCTION
   Origs: 
   Dests: 
-(0 3) 20 LET P = 3.14156
+20 (0 3) LET P = 3.14156
   Origs: :start
   Dests: 30:auto
-(0 3) 30 PRINT "RADIANS", "DEGREES"
+30 (0 3) PRINT "RADIANS", "DEGREES"
   Origs: 20:auto
   Dests: 40:auto
-F(I) (1 4) 40 FOR I = 0 TO 2 STEP 0.1
+40 F(I) (1 4) FOR I = 0 TO 2 STEP 0.1
   Origs: 30:auto
   Dests: 50:fornext, 80:fornext
-F(I) (0 4) 50 LET R = I * P
+50 F(I) (0 4) LET R = I * P
   Origs: 40:fornext
   Dests: 60:auto
-F(I) (0 4) 60 LET D = DEG(R)
+60 F(I) (0 4) LET D = DEG(R)
   Origs: 50:auto
   Dests: 70:auto
-F(I) (0 3) 70 PRINT I, D
+70 F(I) (0 3) PRINT I, D
   Origs: 60:auto
   Dests: 80:auto
-F(I) (0 1) 80 NEXT I
+80 F(I) (0 1) NEXT I
   Origs: 40:fornext, 70:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 80:auto
   Dests: :stop
 

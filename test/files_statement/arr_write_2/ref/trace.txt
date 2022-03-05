@@ -1,8 +1,8 @@
-20: DATA 10, 20, 30, 40
-21: DATA 11, 12, 13, 14, 15, 16
-25: FILES "output.txt"
-15: DIM A(3), B(5)
-30: ARR READ A, B
+20 DATA 10, 20, 30, 40
+21 DATA 11, 12, 13, 14, 15, 16
+25 FILES "output.txt"
+15 DIM A(3), B(5)
+30 ARR READ A, B
  A(0) = 10
  A(1) = 20
  A(2) = 30
@@ -13,7 +13,7 @@
  B(3) = 14
  B(4) = 15
  B(5) = 16
-40: ARR WRITE #1; A, B
+40 ARR WRITE #1; A, B
  A(0): 10
  A(1): 20
  A(2): 30
@@ -24,6 +24,6 @@
  B(3): 14
  B(4): 15
  B(5): 16
-90: STOP
+90 STOP
 STOP in line 90
 

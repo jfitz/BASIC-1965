@@ -19,16 +19,16 @@ Halstead complexity:
  intelligence: 15.941
  time: 0.277
 
-(0 1) 10 REM PROGRAM TO TEST INPUT STATEMENT
+10 (0 1) REM PROGRAM TO TEST INPUT STATEMENT
   Origs: 
   Dests: 
-(3 4) 20 INPUT "ENTER VALUES"; A(1), A(2), A(3)
+20 (3 4) INPUT "ENTER VALUES"; A(1), A(2), A(3)
   Origs: :start
   Dests: 30:auto
-(0 4) 30 PRINT A(1), A(2), A(3)
+30 (0 4) PRINT A(1), A(2), A(3)
   Origs: 20:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 30:auto
   Dests: :stop
 

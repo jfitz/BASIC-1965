@@ -19,79 +19,79 @@ Halstead complexity:
  intelligence: 23.088
  time: 1.824
 
-(0 4) 100 MAT A = ZER(3, 3)
+100 (0 4) MAT A = ZER(3, 3)
   Origs: :start
   Dests: 110:auto
-(0 4) 110 MAT B = CON(3, 3)
+110 (0 4) MAT B = CON(3, 3)
   Origs: 100:auto
   Dests: 120:auto
-(0 4) 120 MAT C = IDN(3, 3)
+120 (0 4) MAT C = IDN(3, 3)
   Origs: 110:auto
   Dests: 200:auto
-(0 0) 130 
+130 (0 0) 
   Origs: 
   Dests: 
-(0 2) 200 PRINT "ALL ZEROES"
+200 (0 2) PRINT "ALL ZEROES"
   Origs: 120:auto
   Dests: 210:auto
-(0 2) 210 MAT PRINT A
+210 (0 2) MAT PRINT A
   Origs: 200:auto
   Dests: 220:auto
-(0 2) 220 PRINT "ALL ONES"
+220 (0 2) PRINT "ALL ONES"
   Origs: 210:auto
   Dests: 230:auto
-(0 2) 230 MAT PRINT B
+230 (0 2) MAT PRINT B
   Origs: 220:auto
   Dests: 240:auto
-(0 2) 240 PRINT "IDENTITY MATRIX"
+240 (0 2) PRINT "IDENTITY MATRIX"
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 MAT PRINT C
+250 (0 2) MAT PRINT C
   Origs: 240:auto
   Dests: 300:auto
-(0 0) 260 
+260 (0 0) 
   Origs: 
   Dests: 
-(1 2) 300 MAT READ A
+300 (1 2) MAT READ A
   Origs: 250:auto
   Dests: 310:auto
-(0 2) 310 PRINT "SQUARE MATRIX"
+310 (0 2) PRINT "SQUARE MATRIX"
   Origs: 300:auto
   Dests: 320:auto
-(0 2) 320 MAT PRINT A
+320 (0 2) MAT PRINT A
   Origs: 310:auto
   Dests: 330:auto
-(0 4) 330 MAT B = INV(A)
+330 (0 4) MAT B = INV(A)
   Origs: 320:auto
   Dests: 340:auto
-(0 2) 340 PRINT "ITS INVERSE"
+340 (0 2) PRINT "ITS INVERSE"
   Origs: 330:auto
   Dests: 350:auto
-(0 2) 350 MAT PRINT B
+350 (0 2) MAT PRINT B
   Origs: 340:auto
   Dests: 400:auto
-(0 0) 360 
+360 (0 0) 
   Origs: 
   Dests: 
-(0 4) 400 MAT R = A * B
+400 (0 4) MAT R = A * B
   Origs: 350:auto
   Dests: 410:auto
-(0 4) 410 MAT R = R - C
+410 (0 4) MAT R = R - C
   Origs: 400:auto
   Dests: 420:auto
-(0 2) 420 PRINT "ROUNDOFF ERRORS"
+420 (0 2) PRINT "ROUNDOFF ERRORS"
   Origs: 410:auto
   Dests: 430:auto
-(0 2) 430 MAT PRINT R
+430 (0 2) MAT PRINT R
   Origs: 420:auto
   Dests: 999:auto
-(0 0) 440 
+440 (0 0) 
   Origs: 
   Dests: 
-(0 2) 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5
+900 (0 2) DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 430:auto
   Dests: :stop
 

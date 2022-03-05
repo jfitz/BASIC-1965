@@ -19,55 +19,55 @@ Halstead complexity:
  intelligence: 33.012
  time: 1.168
 
-(2 3) 100 MAT READ A(2, 3), B(2, 3)
+100 (2 3) MAT READ A(2, 3), B(2, 3)
   Origs: :start
   Dests: 130:auto
-(0 0) 110 
+110 (0 0) 
   Origs: 
   Dests: 
-(0 4) 130 MAT S = A + B
+130 (0 4) MAT S = A + B
   Origs: 100:auto
   Dests: 140:auto
-(0 2) 140 PRINT "THE SUM"
+140 (0 2) PRINT "THE SUM"
   Origs: 130:auto
   Dests: 150:auto
-(0 2) 150 MAT PRINT S
+150 (0 2) MAT PRINT S
   Origs: 140:auto
   Dests: 170:auto
-(0 0) 160 
+160 (0 0) 
   Origs: 
   Dests: 
-(0 4) 170 MAT D = A - B
+170 (0 4) MAT D = A - B
   Origs: 150:auto
   Dests: 180:auto
-(0 2) 180 PRINT "THE DIFFERENCE"
+180 (0 2) PRINT "THE DIFFERENCE"
   Origs: 170:auto
   Dests: 190:auto
-(0 2) 190 MAT PRINT D
+190 (0 2) MAT PRINT D
   Origs: 180:auto
   Dests: 210:auto
-(0 0) 200 
+200 (0 0) 
   Origs: 
   Dests: 
-(0 5) 210 MAT K = (1 / 4) * A
+210 (0 5) MAT K = (1 / 4) * A
   Origs: 190:auto
   Dests: 220:auto
-(0 2) 220 PRINT "SCALAR MULTIPLE"
+220 (0 2) PRINT "SCALAR MULTIPLE"
   Origs: 210:auto
   Dests: 230:auto
-(0 2) 230 MAT PRINT K
+230 (0 2) MAT PRINT K
   Origs: 220:auto
   Dests: 999:auto
-(0 0) 240 
+240 (0 0) 
   Origs: 
   Dests: 
-(0 2) 900 DATA 1, 4, 7, 3, 2, 1
+900 (0 2) DATA 1, 4, 7, 3, 2, 1
   Origs: 
   Dests: 
-(0 5) 910 DATA 3, -2, 6, 2, -5, -1
+910 (0 5) DATA 3, -2, 6, 2, -5, -1
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 230:auto
   Dests: :stop
 

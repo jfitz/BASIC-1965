@@ -19,37 +19,37 @@ Halstead complexity:
  intelligence: 18.484
  time: 0.222
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(0 4) 20 ARR A = CON1(0)
+20 (0 4) ARR A = CON1(0)
   Origs: :start
   Dests: 22:auto
-(0 2) 22 PRINT "ARRAY IS:";
+22 (0 2) PRINT "ARRAY IS:";
   Origs: 20:auto
   Dests: 23:auto
-(0 2) 23 ARR PRINT A
+23 (0 2) ARR PRINT A
   Origs: 22:auto
   Dests: 30:auto
-(0 4) 30 ARR LET B = SORT1(A)
+30 (0 4) ARR LET B = SORT1(A)
   Origs: 23:auto
   Dests: 32:auto
-(0 2) 32 PRINT "SORTED IS:";
+32 (0 2) PRINT "SORTED IS:";
   Origs: 30:auto
   Dests: 33:auto
-(0 2) 33 ARR PRINT B
+33 (0 2) ARR PRINT B
   Origs: 32:auto
   Dests: 40:auto
-(0 4) 40 LET M = MEDIAN(A)
+40 (0 4) LET M = MEDIAN(A)
   Origs: 33:auto
   Dests: 42:auto
-(0 3) 42 PRINT "MEDIAN IS "; M
+42 (0 3) PRINT "MEDIAN IS "; M
   Origs: 40:auto
   Dests: 89:auto
-(0 1) 89 STOP
+89 (0 1) STOP
   Origs: 42:auto
   Dests: :stop
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

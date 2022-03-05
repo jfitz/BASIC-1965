@@ -1,27 +1,27 @@
-900: DATA 6, 0, 2, 6, 6, 0, 1, 3
-100: PRINT "TABLE", "   ", "CHI-SQUARE"
+900 DATA 6, 0, 2, 6, 6, 0, 1, 3
+100 PRINT "TABLE", "   ", "CHI-SQUARE"
 TABLE                           CHI-SQUARE
-120: PRINT
+120 PRINT
 
-130: READ A, B, C, D
+130 READ A, B, C, D
  A = 6
  B = 0
  C = 2
  D = 6
-140: LET N = A + B + C + D
+140 LET N = A + B + C + D
  A: 6
  B: 0
  C: 2
  D: 6
  N = 14
-150: LET E = ABS(A * D - B * C) - N / 2
+150 LET E = ABS(A * D - B * C) - N / 2
  A: 6
  D: 6
  B: 0
  C: 2
  N: 14
  E = 29
-160: LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
+160 LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
  N: 14
  E: 29
  A: 6
@@ -29,40 +29,40 @@ TABLE                           CHI-SQUARE
  C: 2
  D: 6
  X = 5.11024
-180: PRINT A, B
+180 PRINT A, B
  A: 6
  6              
  B: 0
  0
-190: PRINT C, D, X
+190 PRINT C, D, X
  C: 2
  2              
  D: 6
  6              
  X: 5.11024
  5.11024
-200: GOTO 120
-120: PRINT
+200 GOTO 120
+120 PRINT
 
-130: READ A, B, C, D
+130 READ A, B, C, D
  A = 6
  B = 0
  C = 1
  D = 3
-140: LET N = A + B + C + D
+140 LET N = A + B + C + D
  A: 6
  B: 0
  C: 1
  D: 3
  N = 10
-150: LET E = ABS(A * D - B * C) - N / 2
+150 LET E = ABS(A * D - B * C) - N / 2
  A: 6
  D: 3
  B: 0
  C: 1
  N: 10
  E = 13
-160: LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
+160 LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
  N: 10
  E: 13
  A: 6
@@ -70,21 +70,21 @@ TABLE                           CHI-SQUARE
  C: 1
  D: 3
  X = 3.35317
-180: PRINT A, B
+180 PRINT A, B
  A: 6
  6              
  B: 0
  0
-190: PRINT C, D, X
+190 PRINT C, D, X
  C: 1
  1              
  D: 3
  3              
  X: 3.35317
  3.35317
-200: GOTO 120
-120: PRINT
+200 GOTO 120
+120 PRINT
 
-130: READ A, B, C, D
+130 READ A, B, C, D
 Error 103 Out of data in line 130
 

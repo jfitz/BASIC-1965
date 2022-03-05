@@ -19,247 +19,247 @@ Halstead complexity:
  intelligence: 39.861
  time: 37.973
 
-(0 2) 10 DIM N(1000)
+10 (0 2) DIM N(1000)
   Origs: :start
   Dests: 11:auto
-(0 2) 11 DIM P(350)
+11 (0 2) DIM P(350)
   Origs: 10:auto
   Dests: 20:auto
-F(I) (1 3) 20 FOR I = 1 TO 1000
+20 F(I) (1 3) FOR I = 1 TO 1000
   Origs: 11:auto
   Dests: 21:fornext, 22:fornext
-F(I) (0 3) 21 LET N(I) = 0
+21 F(I) (0 3) LET N(I) = 0
   Origs: 20:fornext
   Dests: 22:auto
-F(I) (0 1) 22 NEXT I
+22 F(I) (0 1) NEXT I
   Origs: 20:fornext, 21:auto
   Dests: 25:auto
-(0 3) 25 LET P(0) = 2
+25 (0 3) LET P(0) = 2
   Origs: 22:auto
   Dests: 26:auto
-(0 3) 26 LET K = 0
+26 (0 3) LET K = 0
   Origs: 25:auto
   Dests: 30:auto
-F(P) (1 4) 30 FOR P = 3 TO 2000 STEP 2
+30 F(P) (1 4) FOR P = 3 TO 2000 STEP 2
   Origs: 26:auto
   Dests: 35:fornext, 90:fornext
-F(P) (0 5) 35 LET X = (P - 1) / 2
+35 F(P) (0 5) LET X = (P - 1) / 2
   Origs: 30:fornext
   Dests: 40:auto
-F(P) (1 4) 40 IF N(X) < 0 THEN 90
+40 F(P) (1 4) IF N(X) < 0 THEN 90
   Origs: 35:auto
   Dests: 50:auto, 90:ifthen
-F(P) (0 4) 50 LET K = K + 1
+50 F(P) (0 4) LET K = K + 1
   Origs: 40:auto
   Dests: 55:auto
-F(P) (0 3) 55 LET P(K) = P
+55 F(P) (0 3) LET P(K) = P
   Origs: 50:auto
   Dests: 56:auto
-F(P) (1 5) 56 IF P > SQR(2000) THEN 90
+56 F(P) (1 5) IF P > SQR(2000) THEN 90
   Origs: 55:auto
   Dests: 60:auto, 90:ifthen
-F(P,I) (1 5) 60 FOR I = P TO 2000 STEP 2 * P
+60 F(P,I) (1 5) FOR I = P TO 2000 STEP 2 * P
   Origs: 56:auto
   Dests: 65:fornext, 80:fornext
-F(P,I) (0 5) 65 LET X = (I - 1) / 2
+65 F(P,I) (0 5) LET X = (I - 1) / 2
   Origs: 60:fornext
   Dests: 70:auto
-F(P,I) (0 4) 70 LET N(X) = -1
+70 F(P,I) (0 4) LET N(X) = -1
   Origs: 65:auto
   Dests: 80:auto
-F(P,I) (0 1) 80 NEXT I
+80 F(P,I) (0 1) NEXT I
   Origs: 60:fornext, 70:auto
   Dests: 90:auto
-F(P) (0 1) 90 NEXT P
+90 F(P) (0 1) NEXT P
   Origs: 30:fornext, 40:ifthen, 56:ifthen, 80:auto
   Dests: 110:auto
-(0 1) 100 REM READ LEADING DIGITS
+100 (0 1) REM READ LEADING DIGITS
   Origs: 
   Dests: 
-(0 2) 110 PRINT "SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
+110 (0 2) PRINT "SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
   Origs: 90:auto
   Dests: 115:auto
-(0 2) 115 PRINT
+115 (0 2) PRINT
   Origs: 110:auto
   Dests: 116:auto
-(0 2) 116 PRINT "A = ";
+116 (0 2) PRINT "A = ";
   Origs: 115:auto
   Dests: 120:auto
-(1 2) 120 INPUT A
+120 (1 2) INPUT A
   Origs: 116:auto
   Dests: 125:auto
-(0 4) 125 LET S = SQR((A + 2) * 1000)
+125 (0 4) LET S = SQR((A + 2) * 1000)
   Origs: 120:auto
   Dests: 130:auto
-(0 2) 130 PRINT
+130 (0 2) PRINT
   Origs: 125:auto
   Dests: 140:auto
-(0 2) 140 PRINT "B = "
+140 (0 2) PRINT "B = "
   Origs: 130:auto
   Dests: 150:auto
-(0 2) 150 PRINT
+150 (0 2) PRINT
   Origs: 140:auto
   Dests: 205:auto
-(0 0) 160 
+160 (0 0) 
   Origs: 
   Dests: 
-(0 1) 200 REM TEST PRIMES TO 2000
+200 (0 1) REM TEST PRIMES TO 2000
   Origs: 
   Dests: 
-F(I) (1 3) 205 FOR I = 1 TO 1000
+205 F(I) (1 3) FOR I = 1 TO 1000
   Origs: 150:auto
   Dests: 206:fornext, 207:fornext
-F(I) (0 3) 206 LET N(I) = 0
+206 F(I) (0 3) LET N(I) = 0
   Origs: 205:fornext
   Dests: 207:auto
-F(I) (0 1) 207 NEXT I
+207 F(I) (0 1) NEXT I
   Origs: 205:fornext, 206:auto
   Dests: 210:auto
-F(I) (1 3) 210 FOR I = 1 TO K
+210 F(I) (1 3) FOR I = 1 TO K
   Origs: 207:auto
   Dests: 220:fornext, 270:fornext
-F(I) (0 3) 220 LET F = P(I)
+220 F(I) (0 3) LET F = P(I)
   Origs: 210:fornext
   Dests: 230:auto
-F(I) (0 2) 230 GOSUB 800
+230 F(I) (0 2) GOSUB 800
   Origs: 220:auto
   Dests: 239:auto, 810:gosub
-F(I) (1 4) 239 IF Z > 999 THEN 270
+239 F(I) (1 4) IF Z > 999 THEN 270
   Origs: 230:auto
   Dests: 240:auto, 270:ifthen
-F(I,J) (1 4) 240 FOR J = Z TO 999 STEP F
+240 F(I,J) (1 4) FOR J = Z TO 999 STEP F
   Origs: 239:auto
   Dests: 250:fornext, 260:fornext
-F(I,J) (0 4) 250 LET N(J) = -1
+250 F(I,J) (0 4) LET N(J) = -1
   Origs: 240:fornext
   Dests: 260:auto
-F(I,J) (0 1) 260 NEXT J
+260 F(I,J) (0 1) NEXT J
   Origs: 240:fornext, 250:auto
   Dests: 270:auto
-F(I) (0 1) 270 NEXT I
+270 F(I) (0 1) NEXT I
   Origs: 210:fornext, 239:ifthen, 260:auto
   Dests: 405:auto
-(0 0) 280 
+280 (0 0) 
   Origs: 
   Dests: 
-(0 1) 400 REM TEST REMAINING NUMBERS
+400 (0 1) REM TEST REMAINING NUMBERS
   Origs: 
   Dests: 
-(0 3) 405 LET D = 2
+405 (0 3) LET D = 2
   Origs: 270:auto
   Dests: 410:auto
-(0 3) 410 LET F = 2003
+410 (0 3) LET F = 2003
   Origs: 405:auto
   Dests: 420:auto
-(0 2) 420 GOSUB 800
+420 (0 2) GOSUB 800
   Origs: 410:auto, 470:ifthen
   Dests: 430:auto, 810:gosub
-(1 4) 430 IF Z > 999 THEN 450
+430 (1 4) IF Z > 999 THEN 450
   Origs: 420:auto
   Dests: 440:auto, 450:ifthen
-(0 4) 440 LET N(Z) = -1
+440 (0 4) LET N(Z) = -1
   Origs: 430:auto
   Dests: 450:auto
-(0 4) 450 LET F = F + D
+450 (0 4) LET F = F + D
   Origs: 430:ifthen, 440:auto
   Dests: 460:auto
-(0 4) 460 LET D = 6 - D
+460 (0 4) LET D = 6 - D
   Origs: 450:auto
   Dests: 470:auto
-(1 5) 470 IF F <= S THEN 420
+470 (1 5) IF F <= S THEN 420
   Origs: 460:auto
   Dests: 420:ifthen, 702:auto
-(0 0) 480 
+480 (0 0) 
   Origs: 
   Dests: 
-(0 1) 700 REM PRINT RESULT
+700 (0 1) REM PRINT RESULT
   Origs: 
   Dests: 
-(0 3) 702 LET S = 0
+702 (0 3) LET S = 0
   Origs: 470:auto
   Dests: 705:auto
-F(I) (1 3) 705 FOR I = 0 TO 999
+705 F(I) (1 3) FOR I = 0 TO 999
   Origs: 702:auto
   Dests: 710:fornext, 730:fornext
-F(I) (1 4) 710 IF N(I) < 0 THEN 730
+710 F(I) (1 4) IF N(I) < 0 THEN 730
   Origs: 705:fornext
   Dests: 720:auto, 730:ifthen
-F(I) (0 4) 720 PRINT 2 * I + 1;
+720 F(I) (0 4) PRINT 2 * I + 1;
   Origs: 710:auto
   Dests: 725:auto
-F(I) (0 4) 725 LET S = S + 1
+725 F(I) (0 4) LET S = S + 1
   Origs: 720:auto
   Dests: 730:auto
-F(I) (0 1) 730 NEXT I
+730 F(I) (0 1) NEXT I
   Origs: 705:fornext, 710:ifthen, 725:auto
   Dests: 732:auto
-(0 2) 732 PRINT
+732 (0 2) PRINT
   Origs: 730:auto
   Dests: 733:auto
-(0 2) 733 PRINT
+733 (0 2) PRINT
   Origs: 732:auto
   Dests: 735:auto
-(0 4) 735 PRINT "THERE ARE " S; "PRIMES IN THE RANGE."
+735 (0 4) PRINT "THERE ARE " S; "PRIMES IN THE RANGE."
   Origs: 733:auto
   Dests: 740:auto
-(0 2) 740 PRINT
+740 (0 2) PRINT
   Origs: 735:auto
   Dests: 745:auto
-(0 2) 745 PRINT
+745 (0 2) PRINT
   Origs: 740:auto
   Dests: 750:auto
-(0 2) 750 PRINT "TWIN PRIMES:"
+750 (0 2) PRINT "TWIN PRIMES:"
   Origs: 745:auto
   Dests: 752:auto
-(0 2) 752 PRINT
+752 (0 2) PRINT
   Origs: 750:auto
   Dests: 755:auto
-F(I) (1 3) 755 FOR I = 0 TO 998
+755 F(I) (1 3) FOR I = 0 TO 998
   Origs: 752:auto
   Dests: 760:fornext, 780:fornext
-F(I) (1 4) 760 IF N(I) < 0 THEN 780
+760 F(I) (1 4) IF N(I) < 0 THEN 780
   Origs: 755:fornext
   Dests: 765:auto, 780:ifthen
-F(I) (1 4) 765 IF N(I + 1) < 0 THEN 780
+765 F(I) (1 4) IF N(I + 1) < 0 THEN 780
   Origs: 760:auto
   Dests: 770:auto, 780:ifthen
-F(I) (0 7) 770 PRINT 2 * I + 1, 2 * I + 3
+770 F(I) (0 7) PRINT 2 * I + 1, 2 * I + 3
   Origs: 765:auto
   Dests: 780:auto
-F(I) (0 1) 780 NEXT I
+780 F(I) (0 1) NEXT I
   Origs: 755:fornext, 760:ifthen, 765:ifthen, 770:auto
   Dests: 790:auto
-(0 1) 790 STOP
+790 (0 1) STOP
   Origs: 780:auto
   Dests: :stop
-(0 0) 795 
+795 (0 0) 
   Origs: 
   Dests: 
-(0 1) 800 REM TEST FACTOR F
+800 (0 1) REM TEST FACTOR F
   Origs: 
   Dests: 
-G(810) (0 7) 810 LET X = A - F * INT(A / F)
+810 G(810) (0 7) LET X = A - F * INT(A / F)
   Origs: 230:gosub, 420:gosub
   Dests: 820:auto
-G(810) (0 4) 820 LET Y = A * 1000
+820 G(810) (0 4) LET Y = A * 1000
   Origs: 810:auto
   Dests: 830:auto
-G(810) (0 9) 830 LET X = F - (Y - F * INT(Y / F))
+830 G(810) (0 9) LET X = F - (Y - F * INT(Y / F))
   Origs: 820:auto
   Dests: 840:auto
-G(810) (1 7) 840 IF X <> 2 * INT(X / 2) THEN 860
+840 G(810) (1 7) IF X <> 2 * INT(X / 2) THEN 860
   Origs: 830:auto
   Dests: 850:auto, 860:ifthen
-G(810) (0 4) 850 LET X = X + F
+850 G(810) (0 4) LET X = X + F
   Origs: 840:auto
   Dests: 860:auto
-G(810) (0 5) 860 LET Z = (X - 1) / 2
+860 G(810) (0 5) LET Z = (X - 1) / 2
   Origs: 840:ifthen, 850:auto
   Dests: 870:auto
-G(810) (0 1) 870 RETURN
+870 G(810) (0 1) RETURN
   Origs: 860:auto
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -1,52 +1,52 @@
-90: DATA 10, 4
-10: READ N, I
+90 DATA 10, 4
+10 READ N, I
  N = 10
  I = 4
-20: LET B = 1
+20 LET B = 1
  B = 1
-F(K) 30: FOR K = 1 TO I
+30 F(K) FOR K = 1 TO I
  I: 4
  K = 1
  I = 4
  terminated:false
-F(K) 40: LET B = B * (N - K + 1) / K
+40 F(K) LET B = B * (N - K + 1) / K
  B: 1
  N: 10
  K: 1
  B = 10
-F(K) 50: NEXT K
+50 F(K) NEXT K
  K: 1
  terminated:false
  K = 2
-F(K) 40: LET B = B * (N - K + 1) / K
+40 F(K) LET B = B * (N - K + 1) / K
  B: 10
  N: 10
  K: 2
  B = 45
-F(K) 50: NEXT K
+50 F(K) NEXT K
  K: 2
  terminated:false
  K = 3
-F(K) 40: LET B = B * (N - K + 1) / K
+40 F(K) LET B = B * (N - K + 1) / K
  B: 45
  N: 10
  K: 3
  B = 120
-F(K) 50: NEXT K
+50 F(K) NEXT K
  K: 3
  terminated:false
  K = 4
-F(K) 40: LET B = B * (N - K + 1) / K
+40 F(K) LET B = B * (N - K + 1) / K
  B: 120
  N: 10
  K: 4
  B = 210
-F(K) 50: NEXT K
+50 F(K) NEXT K
  K: 4
  terminated:true
-60: PRINT B
+60 PRINT B
  B: 210
  210
-70: STOP
+70 STOP
 STOP in line 70
 

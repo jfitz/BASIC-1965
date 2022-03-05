@@ -1,31 +1,31 @@
-FND(_) 120: DEF FND(X) = X * P / 180
-FNS(_) 130: DEF FNS(X) = SIN(FND(X))
-210: DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
-110: LET P = 3.1416
+120 FND(_) DEF FND(X) = X * P / 180
+130 FNS(_) DEF FNS(X) = SIN(FND(X))
+210 DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
+110 LET P = 3.1416
  P = 3.14159625
-140: PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
+140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
 ANGLE           SIDE            ANGLE           SECOND SIDE     THIRD SIDE
-150: READ A, X, B
+150 READ A, X, B
  A = 60
  X = 5
  B = 60
-160: LET C = 180 - A - B
+160 LET C = 180 - A - B
  A: 60
  B: 60
  C = 60
-170: LET Y = X * FNS(B) / FNS(C)
+170 LET Y = X * FNS(B) / FNS(C)
  X: 5
  B: 60
  P: 3.14159625
  C: 60
  Y = 5
-180: LET Z = X * FNS(A) / FNS(C)
+180 LET Z = X * FNS(A) / FNS(C)
  X: 5
  A: 60
  P: 3.14159625
  C: 60
  Z = 5
-190: PRINT A, X, B, Y, Z
+190 PRINT A, X, B, Y, Z
  A: 60
  60             
  X: 5
@@ -36,28 +36,28 @@ ANGLE           SIDE            ANGLE           SECOND SIDE     THIRD SIDE
  5              
  Z: 5
  5
-200: GOTO 150
-150: READ A, X, B
+200 GOTO 150
+150 READ A, X, B
  A = 60
  X = 5
  B = 90
-160: LET C = 180 - A - B
+160 LET C = 180 - A - B
  A: 60
  B: 90
  C = 30
-170: LET Y = X * FNS(B) / FNS(C)
+170 LET Y = X * FNS(B) / FNS(C)
  X: 5
  B: 90
  P: 3.14159625
  C: 30
  Y = 9.999989618
-180: LET Z = X * FNS(A) / FNS(C)
+180 LET Z = X * FNS(A) / FNS(C)
  X: 5
  A: 60
  P: 3.14159625
  C: 30
  Z = 8.660251041
-190: PRINT A, X, B, Y, Z
+190 PRINT A, X, B, Y, Z
  A: 60
  60             
  X: 5
@@ -68,28 +68,28 @@ ANGLE           SIDE            ANGLE           SECOND SIDE     THIRD SIDE
  9.999989618    
  Z: 8.660251041
  8.660251041
-200: GOTO 150
-150: READ A, X, B
+200 GOTO 150
+150 READ A, X, B
  A = 15
  X = 10
  B = 63
-160: LET C = 180 - A - B
+160 LET C = 180 - A - B
  A: 15
  B: 63
  C = 102
-170: LET Y = X * FNS(B) / FNS(C)
+170 LET Y = X * FNS(B) / FNS(C)
  X: 10
  B: 63
  P: 3.14159625
  C: 102
  Y = 9.109131191
-180: LET Z = X * FNS(A) / FNS(C)
+180 LET Z = X * FNS(A) / FNS(C)
  X: 10
  A: 15
  P: 3.14159625
  C: 102
  Z = 2.646016271
-190: PRINT A, X, B, Y, Z
+190 PRINT A, X, B, Y, Z
  A: 15
  15             
  X: 10
@@ -100,7 +100,7 @@ ANGLE           SIDE            ANGLE           SECOND SIDE     THIRD SIDE
  9.109131191    
  Z: 2.646016271
  2.646016271
-200: GOTO 150
-150: READ A, X, B
+200 GOTO 150
+150 READ A, X, B
 Error 103 Out of data in line 150
 

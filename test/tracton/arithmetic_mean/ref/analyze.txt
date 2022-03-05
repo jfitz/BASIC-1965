@@ -19,40 +19,40 @@ Halstead complexity:
  intelligence: 26.145
  time: 0.325
 
-(0 1) 10 REM THIS PROGRAM COMPUTES THE ARITHMETIC
+10 (0 1) REM THIS PROGRAM COMPUTES THE ARITHMETIC
   Origs: 
   Dests: 
-(0 1) 20 REM MEAN
+20 (0 1) REM MEAN
   Origs: 
   Dests: 
-(0 3) 30 LET X = 0
+30 (0 3) LET X = 0
   Origs: :start
   Dests: 40:auto
-(0 3) 40 LET N = 0
+40 (0 3) LET N = 0
   Origs: 30:auto
   Dests: 50:auto
-(0 2) 50 PRINT "ENTER SAMPLE";
+50 (0 2) PRINT "ENTER SAMPLE";
   Origs: 40:auto, 110:goto
   Dests: 60:auto
-(1 2) 60 INPUT W
+60 (1 2) INPUT W
   Origs: 50:auto
   Dests: 70:auto
-(0 4) 70 LET N = N + 1
+70 (0 4) LET N = N + 1
   Origs: 60:auto
   Dests: 80:auto
-(0 4) 80 LET X = X + W
+80 (0 4) LET X = X + W
   Origs: 70:auto
   Dests: 90:auto
-(0 4) 90 LET A = X / N
+90 (0 4) LET A = X / N
   Origs: 80:auto
   Dests: 100:auto
-(0 7) 100 PRINT "N = "; N, "SAMPLE ="; W, "CURRENT MEAN = "; A
+100 (0 7) PRINT "N = "; N, "SAMPLE ="; W, "CURRENT MEAN = "; A
   Origs: 90:auto
   Dests: 110:auto
-(0 3) 110 GOTO 50
+110 (0 3) GOTO 50
   Origs: 100:auto
   Dests: 50:goto
-(0 1) 120 END
+120 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 24.012
  time: 0.235
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(1 2) 20 READ A
+20 (1 2) READ A
   Origs: :start, 50:goto
   Dests: 30:auto
-(0 4) 30 LET B = INT(A)
+30 (0 4) LET B = INT(A)
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 PRINT A, B
+40 (0 3) PRINT A, B
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 GOTO 20
+50 (0 3) GOTO 20
   Origs: 40:auto
   Dests: 20:goto
-(0 5) 80 DATA 10.2, 5.5, 1.8, 0, -1.8, -5.5, -10.2
+80 (0 5) DATA 10.2, 5.5, 1.8, 0, -1.8, -5.5, -10.2
   Origs: 
   Dests: 
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

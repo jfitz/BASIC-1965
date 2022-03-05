@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 40.662
  time: 0.046
 
-(0 1) 10 REM TEST THE OPTION STATEMENT
+10 (0 1) REM TEST THE OPTION STATEMENT
   Origs: 
   Dests: 
-(0 2) 20 OPTION TRACE TRUE
+20 (0 2) OPTION TRACE TRUE
   Origs: :start
   Dests: 30:auto
-(3 4) 30 READ A, B, C
+30 (3 4) READ A, B, C
   Origs: 20:auto
   Dests: 40:auto
-(0 4) 40 PRINT A, B, C
+40 (0 4) PRINT A, B, C
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 OPTION TRACE 1 = 0
+50 (0 3) OPTION TRACE 1 = 0
   Origs: 40:auto
   Dests: 99:auto
-(0 2) 90 DATA 1, 2, 3
+90 (0 2) DATA 1, 2, 3
   Origs: 
   Dests: 
-(0 1) 99 END
+99 (0 1) END
   Origs: 50:auto
   Dests: :stop
 

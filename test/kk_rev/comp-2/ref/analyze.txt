@@ -19,211 +19,211 @@ Halstead complexity:
  intelligence: 42.713
  time: 25.984
 
-F(R) (0 2) 5 PRINT
+5 F(R) (0 2) PRINT
   Origs: :start, 140:goto, 240:goto, 340:goto, 440:goto, 546:goto, 560:goto, 820:goto, 860:goto
   Dests: 10:auto
-F(R) (0 2) 10 PRINT "A, B, P, R, Y, T";
+10 F(R) (0 2) PRINT "A, B, P, R, Y, T";
   Origs: 5:auto
   Dests: 20:auto
-F(R) (6 7) 20 INPUT A, B, P, R, Y, T
+20 F(R) (6 7) INPUT A, B, P, R, Y, T
   Origs: 10:auto
   Dests: 21:auto
-F(R) (1 4) 21 IF A < 0 THEN 800
+21 F(R) (1 4) IF A < 0 THEN 800
   Origs: 20:auto
   Dests: 22:auto, 810:ifthen
-F(R) (1 4) 22 IF B < 0 THEN 800
+22 F(R) (1 4) IF B < 0 THEN 800
   Origs: 21:auto
   Dests: 23:auto, 810:ifthen
-F(R) (1 4) 23 IF R <= 0 THEN 800
+23 F(R) (1 4) IF R <= 0 THEN 800
   Origs: 22:auto
   Dests: 24:auto, 810:ifthen
-F(R) (1 4) 24 IF Y <= 0 THEN 800
+24 F(R) (1 4) IF Y <= 0 THEN 800
   Origs: 23:auto
   Dests: 25:auto, 810:ifthen
-F(R) (1 4) 25 IF T <= 0 THEN 800
+25 F(R) (1 4) IF T <= 0 THEN 800
   Origs: 24:auto
   Dests: 26:auto, 810:ifthen
-F(R) (1 4) 26 IF T = 999 THEN 9999
+26 F(R) (1 4) IF T = 999 THEN 9999
   Origs: 25:auto
   Dests: 30:auto, 9999:ifthen
-F(R) (1 4) 30 IF A = 999 THEN 100
+30 F(R) (1 4) IF A = 999 THEN 100
   Origs: 26:auto
   Dests: 40:auto, 110:ifthen
-F(R) (1 4) 40 IF B = 999 THEN 200
+40 F(R) (1 4) IF B = 999 THEN 200
   Origs: 30:auto
   Dests: 50:auto, 210:ifthen
-F(R) (1 4) 50 IF P = 999 THEN 300
+50 F(R) (1 4) IF P = 999 THEN 300
   Origs: 40:auto
   Dests: 60:auto, 310:ifthen
-F(R) (1 4) 60 IF Y = 999 THEN 400
+60 F(R) (1 4) IF Y = 999 THEN 400
   Origs: 50:auto
   Dests: 70:auto, 410:ifthen
-F(R) (1 4) 70 IF R = 999 THEN 500
+70 F(R) (1 4) IF R = 999 THEN 500
   Origs: 60:auto
   Dests: 110:auto, 505:ifthen
-(0 0) 80 
+80 (0 0) 
   Origs: 
   Dests: 
-(0 1) 100 REM FIND ORIGINAL AMOUNT
+100 (0 1) REM FIND ORIGINAL AMOUNT
   Origs: 
   Dests: 
-F(R) (0 2) 110 GOSUB 1000
+110 F(R) (0 2) GOSUB 1000
   Origs: 30:ifthen, 70:auto
   Dests: 120:auto, 1010:gosub
-F(R) (0 6) 120 LET A = (B + P1) / R2 - P1
+120 F(R) (0 6) LET A = (B + P1) / R2 - P1
   Origs: 110:auto
   Dests: 125:auto
-F(R) (1 4) 125 IF A < 0 THEN 850
+125 F(R) (1 4) IF A < 0 THEN 850
   Origs: 120:auto
   Dests: 130:auto, 850:ifthen
-F(R) (0 3) 130 PRINT "ORIGINAL AMOUNT = $" A
+130 F(R) (0 3) PRINT "ORIGINAL AMOUNT = $" A
   Origs: 125:auto
   Dests: 140:auto
-F(R) (0 3) 140 GOTO 5
+140 F(R) (0 3) GOTO 5
   Origs: 130:auto
   Dests: 5:goto
-(0 0) 150 
+150 (0 0) 
   Origs: 
   Dests: 
-(0 1) 200 REM FIND FINAL AMOUNT
+200 (0 1) REM FIND FINAL AMOUNT
   Origs: 
   Dests: 
-F(R) (0 2) 210 GOSUB 1000
+210 F(R) (0 2) GOSUB 1000
   Origs: 40:ifthen
   Dests: 220:auto, 1010:gosub
-F(R) (0 6) 220 LET B = (A + P1) * R2 - P1
+220 F(R) (0 6) LET B = (A + P1) * R2 - P1
   Origs: 210:auto
   Dests: 225:auto
-F(R) (1 4) 225 IF B < 0 THEN 850
+225 F(R) (1 4) IF B < 0 THEN 850
   Origs: 220:auto
   Dests: 230:auto, 850:ifthen
-F(R) (0 3) 230 PRINT "FINAL AMOUNT = $" B
+230 F(R) (0 3) PRINT "FINAL AMOUNT = $" B
   Origs: 225:auto
   Dests: 240:auto
-F(R) (0 3) 240 GOTO 5
+240 F(R) (0 3) GOTO 5
   Origs: 230:auto
   Dests: 5:goto
-(0 0) 250 
+250 (0 0) 
   Origs: 
   Dests: 
-(0 1) 300 REM FIND PAYMENT
+300 (0 1) REM FIND PAYMENT
   Origs: 
   Dests: 
-F(R) (0 2) 310 GOSUB 1000
+310 F(R) (0 2) GOSUB 1000
   Origs: 50:ifthen
   Dests: 320:auto, 1010:gosub
-F(R) (0 11) 320 LET P = R1 * (B - A * R2) / (R2 - 1)
+320 F(R) (0 11) LET P = R1 * (B - A * R2) / (R2 - 1)
   Origs: 310:auto
   Dests: 330:auto
-F(R) (0 3) 330 PRINT "PAYMENT = $" P
+330 F(R) (0 3) PRINT "PAYMENT = $" P
   Origs: 320:auto
   Dests: 340:auto
-F(R) (0 3) 340 GOTO 5
+340 F(R) (0 3) GOTO 5
   Origs: 330:auto
   Dests: 5:goto
-(0 0) 350 
+350 (0 0) 
   Origs: 
   Dests: 
-(0 1) 400 REM FIND NUMBER OF YEARS
+400 (0 1) REM FIND NUMBER OF YEARS
   Origs: 
   Dests: 
-F(R) (0 2) 410 GOSUB 1000
+410 F(R) (0 2) GOSUB 1000
   Origs: 60:ifthen
   Dests: 415:auto, 1010:gosub
-F(R) (0 7) 415 LET Q = (B + P1) / (A + P1)
+415 F(R) (0 7) LET Q = (B + P1) / (A + P1)
   Origs: 410:auto
   Dests: 416:auto
-F(R) (1 4) 416 IF Q <= 1 THEN 850
+416 F(R) (1 4) IF Q <= 1 THEN 850
   Origs: 415:auto
   Dests: 420:auto, 850:ifthen
-F(R) (0 7) 420 LET Y = LOG(Q) / LOG(1 + R1) / T
+420 F(R) (0 7) LET Y = LOG(Q) / LOG(1 + R1) / T
   Origs: 416:auto
   Dests: 430:auto
-F(R) (0 3) 430 PRINT "NUMBER OF YEARS = " Y
+430 F(R) (0 3) PRINT "NUMBER OF YEARS = " Y
   Origs: 420:auto
   Dests: 440:auto
-F(R) (0 3) 440 GOTO 5
+440 F(R) (0 3) GOTO 5
   Origs: 430:auto
   Dests: 5:goto
-(0 0) 450 
+450 (0 0) 
   Origs: 
   Dests: 
-(0 1) 500 REM FIND ANNUAL INTEREST
+500 (0 1) REM FIND ANNUAL INTEREST
   Origs: 
   Dests: 
-F(R) (0 9) 505 LET S = B - (A + Y * T * P)
+505 F(R) (0 9) LET S = B - (A + Y * T * P)
   Origs: 70:ifthen
   Dests: 510:auto
-F(R) (1 4) 510 FOR R = 0.1 TO 100 STEP 0.1
+510 F(R) (1 4) FOR R = 0.1 TO 100 STEP 0.1
   Origs: 505:auto
   Dests: 520:fornext, 540:fornext
-F(R) (0 2) 520 GOSUB 1000
+520 F(R) (0 2) GOSUB 1000
   Origs: 510:fornext
   Dests: 530:auto, 1010:gosub
-F(R) (0 8) 530 LET S1 = B - ((A + P1) * R2 - P1)
+530 F(R) (0 8) LET S1 = B - ((A + P1) * R2 - P1)
   Origs: 520:auto
   Dests: 535:auto
-F(R) (1 5) 535 IF S * S1 <= 0 THEN 550
+535 F(R) (1 5) IF S * S1 <= 0 THEN 550
   Origs: 530:auto
   Dests: 536:auto, 550:ifthen
-F(R) (0 3) 536 LET S = S1
+536 F(R) (0 3) LET S = S1
   Origs: 535:auto
   Dests: 540:auto
-F(R) (0 1) 540 NEXT R
+540 F(R) (0 1) NEXT R
   Origs: 510:fornext, 536:auto
   Dests: 545:auto
-(0 2) 545 PRINT "NO ANSWER FOUND"
+545 (0 2) PRINT "NO ANSWER FOUND"
   Origs: 540:auto
   Dests: 546:auto
-(0 3) 546 GOTO 5
+546 (0 3) GOTO 5
   Origs: 545:auto
   Dests: 5:goto
-F(R) (0 7) 550 PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
+550 F(R) (0 7) PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
   Origs: 535:ifthen
   Dests: 560:auto
-F(R) (0 3) 560 GOTO 5
+560 F(R) (0 3) GOTO 5
   Origs: 550:auto
   Dests: 5:goto
-(0 0) 570 
+570 (0 0) 
   Origs: 
   Dests: 
-(0 1) 800 REM ERROR ROUTINE
+800 (0 1) REM ERROR ROUTINE
   Origs: 
   Dests: 
-F(R) (0 2) 810 PRINT "INCORRECT DATA. PLEASE RETYPE."
+810 F(R) (0 2) PRINT "INCORRECT DATA. PLEASE RETYPE."
   Origs: 21:ifthen, 22:ifthen, 23:ifthen, 24:ifthen, 25:ifthen
   Dests: 820:auto
-F(R) (0 3) 820 GOTO 5
+820 F(R) (0 3) GOTO 5
   Origs: 810:auto
   Dests: 5:goto
-F(R) (0 2) 850 PRINT "ANSWER IS NEGATIVE."
+850 F(R) (0 2) PRINT "ANSWER IS NEGATIVE."
   Origs: 125:ifthen, 225:ifthen, 416:ifthen
   Dests: 860:auto
-F(R) (0 3) 860 GOTO 5
+860 F(R) (0 3) GOTO 5
   Origs: 850:auto
   Dests: 5:goto
-(0 0) 999 
+999 (0 0) 
   Origs: 
   Dests: 
-(0 1) 1000 REM COMPUTE BASIC QUANTITIES
+1000 (0 1) REM COMPUTE BASIC QUANTITIES
   Origs: 
   Dests: 
-G(1010) (0 4) 1010 LET N = Y * T
+1010 G(1010) (0 4) LET N = Y * T
   Origs: 110:gosub, 210:gosub, 310:gosub, 410:gosub, 520:gosub
   Dests: 1020:auto
-G(1010) (0 5) 1020 LET R1 = R / 100 / T
+1020 G(1010) (0 5) LET R1 = R / 100 / T
   Origs: 1010:auto
   Dests: 1030:auto
-G(1010) (0 4) 1030 LET P1 = P / R1
+1030 G(1010) (0 4) LET P1 = P / R1
   Origs: 1020:auto
   Dests: 1040:auto
-G(1010) (0 5) 1040 LET R2 = (1 + R1) ^ N
+1040 G(1010) (0 5) LET R2 = (1 + R1) ^ N
   Origs: 1030:auto
   Dests: 1099:auto
-G(1010) (0 1) 1099 RETURN
+1099 G(1010) (0 1) RETURN
   Origs: 1040:auto
   Dests: 
-F(R) (0 1) 9999 END
+9999 F(R) (0 1) END
      WARNING: Terminating statement in FOR/NEXT
   Origs: 26:ifthen
   Dests: :stop

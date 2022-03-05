@@ -1,6 +1,6 @@
-900: DATA 1, 4, 7, 3, 2, 1
-910: DATA 3, -2, 6, 2, -5, -1
-100: MAT READ A(2, 3), B(2, 3)
+900 DATA 1, 4, 7, 3, 2, 1
+910 DATA 3, -2, 6, 2, -5, -1
+100 MAT READ A(2, 3), B(2, 3)
  A(1,1) = 1
  A(1,2) = 4
  A(1,3) = 7
@@ -13,7 +13,7 @@
  B(2,1) = 2
  B(2,2) = -5
  B(2,3) = -1
-130: MAT S = A + B
+130 MAT S = A + B
  A(1,1): 1
  A(1,2): 4
  A(1,3): 7
@@ -32,9 +32,9 @@
  S(2,1) = 5
  S(2,2) = -3
  S(2,3) = 0
-140: PRINT "THE SUM"
+140 PRINT "THE SUM"
 THE SUM
-150: MAT PRINT S
+150 MAT PRINT S
  S(1,1): 4
  S(1,2): 2
  S(1,3): 13
@@ -44,7 +44,7 @@ THE SUM
  4               2               13
  5              -3               0
 
-170: MAT D = A - B
+170 MAT D = A - B
  A(1,1): 1
  A(1,2): 4
  A(1,3): 7
@@ -63,9 +63,9 @@ THE SUM
  D(2,1) = 1
  D(2,2) = 7
  D(2,3) = 2
-180: PRINT "THE DIFFERENCE"
+180 PRINT "THE DIFFERENCE"
 THE DIFFERENCE
-190: MAT PRINT D
+190 MAT PRINT D
  D(1,1): -2
  D(1,2): 6
  D(1,3): 1
@@ -75,7 +75,7 @@ THE DIFFERENCE
 -2               6               1
  1               7               2
 
-210: MAT K = (1 / 4) * A
+210 MAT K = (1 / 4) * A
  A(1,1): 1
  A(1,2): 4
  A(1,3): 7
@@ -88,9 +88,9 @@ THE DIFFERENCE
  K(2,1) = 0.75
  K(2,2) = 0.5
  K(2,3) = 0.25
-220: PRINT "SCALAR MULTIPLE"
+220 PRINT "SCALAR MULTIPLE"
 SCALAR MULTIPLE
-230: MAT PRINT K
+230 MAT PRINT K
  K(1,1): 0.25
  K(1,2): 1
  K(1,3): 1.75
@@ -100,6 +100,6 @@ SCALAR MULTIPLE
  0.25            1               1.75
  0.75            0.5             0.25
 
-999: END
+999 END
 STOP in line 999
 

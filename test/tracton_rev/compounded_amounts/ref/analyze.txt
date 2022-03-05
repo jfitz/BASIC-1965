@@ -19,193 +19,193 @@ Halstead complexity:
  intelligence: 46.438
  time: 10.840
 
-(0 1) 10 REM COMPOUNDED AMOUNTS
+10 (0 1) REM COMPOUNDED AMOUNTS
   Origs: 
   Dests: 
-(0 2) 20 PRINT "FUTURE VALUE (1)"
+20 (0 2) PRINT "FUTURE VALUE (1)"
   Origs: :start
   Dests: 30:auto
-(0 2) 30 PRINT "PRESENT VALUE (2)"
+30 (0 2) PRINT "PRESENT VALUE (2)"
   Origs: 20:auto
   Dests: 40:auto
-(0 2) 40 PRINT "INTEREST (3)"
+40 (0 2) PRINT "INTEREST (3)"
   Origs: 30:auto
   Dests: 50:auto
-(0 2) 50 PRINT "PERIOD INTEREST RATE (4)"
+50 (0 2) PRINT "PERIOD INTEREST RATE (4)"
   Origs: 40:auto
   Dests: 60:auto
-(0 2) 60 PRINT "NUMBER OF TIME PERIODS (5)"
+60 (0 2) PRINT "NUMBER OF TIME PERIODS (5)"
   Origs: 50:auto
   Dests: 70:auto
-(0 2) 70 PRINT "ENTER 1 TO 5"
+70 (0 2) PRINT "ENTER 1 TO 5"
   Origs: 60:auto, 95:goto, 405:goto
   Dests: 80:auto
-(1 2) 80 INPUT A
+80 (1 2) INPUT A
   Origs: 70:auto
   Dests: 90:auto
-(1 4) 90 IF A = 1 THEN 100
+90 (1 4) IF A = 1 THEN 100
   Origs: 80:auto
   Dests: 91:auto, 100:ifthen
-(1 4) 91 IF A = 2 THEN 160
+91 (1 4) IF A = 2 THEN 160
   Origs: 90:auto
   Dests: 92:auto, 160:ifthen
-(1 4) 92 IF A = 3 THEN 220
+92 (1 4) IF A = 3 THEN 220
   Origs: 91:auto
   Dests: 93:auto, 220:ifthen
-(1 4) 93 IF A = 4 THEN 280
+93 (1 4) IF A = 4 THEN 280
   Origs: 92:auto
   Dests: 94:auto, 280:ifthen
-(1 4) 94 IF A = 5 THEN 340
+94 (1 4) IF A = 5 THEN 340
   Origs: 93:auto
   Dests: 95:auto, 340:ifthen
-(0 3) 95 GOTO 70
+95 (0 3) GOTO 70
   Origs: 94:auto
   Dests: 70:goto
-(0 2) 100 GOSUB 410
+100 (0 2) GOSUB 410
   Origs: 90:ifthen
   Dests: 110:auto, 410:gosub
-(0 2) 110 GOSUB 440
+110 (0 2) GOSUB 440
   Origs: 100:auto
   Dests: 120:auto, 440:gosub
-(0 2) 120 GOSUB 470
+120 (0 2) GOSUB 470
   Origs: 110:auto
   Dests: 130:auto, 470:gosub
-(0 7) 130 LET X = Y * ((1 + I) ^ N)
+130 (0 7) LET X = Y * ((1 + I) ^ N)
   Origs: 120:auto
   Dests: 140:auto
-(0 3) 140 PRINT "FUTURE VALUE = "; X
+140 (0 3) PRINT "FUTURE VALUE = "; X
   Origs: 130:auto
   Dests: 150:auto
-(0 2) 150 GOTO 390
+150 (0 2) GOTO 390
   Origs: 140:auto
   Dests: 390:goto
-(0 2) 160 GOSUB 500
+160 (0 2) GOSUB 500
   Origs: 91:ifthen
   Dests: 170:auto, 500:gosub
-(0 2) 170 GOSUB 440
+170 (0 2) GOSUB 440
   Origs: 160:auto
   Dests: 180:auto, 440:gosub
-(0 2) 180 GOSUB 470
+180 (0 2) GOSUB 470
   Origs: 170:auto
   Dests: 190:auto, 470:gosub
-(0 7) 190 LET Y = X * ((1 + I) ^ N)
+190 (0 7) LET Y = X * ((1 + I) ^ N)
   Origs: 180:auto
   Dests: 200:auto
-(0 3) 200 PRINT "PRESENT VALUE = "; Y
+200 (0 3) PRINT "PRESENT VALUE = "; Y
   Origs: 190:auto
   Dests: 210:auto
-(0 2) 210 GOTO 390
+210 (0 2) GOTO 390
   Origs: 200:auto
   Dests: 390:goto
-(0 2) 220 GOSUB 410
+220 (0 2) GOSUB 410
   Origs: 92:ifthen
   Dests: 230:auto, 410:gosub
-(0 2) 230 GOSUB 440
+230 (0 2) GOSUB 440
   Origs: 220:auto
   Dests: 240:auto, 440:gosub
-(0 2) 240 GOSUB 470
+240 (0 2) GOSUB 470
   Origs: 230:auto
   Dests: 250:auto, 470:gosub
-(0 9) 250 LET L = Y * ((1 + I ^ N) - 1)
+250 (0 9) LET L = Y * ((1 + I ^ N) - 1)
   Origs: 240:auto
   Dests: 260:auto
-(0 3) 260 PRINT "INTEREST = "; L
+260 (0 3) PRINT "INTEREST = "; L
   Origs: 250:auto
   Dests: 270:auto
-(0 2) 270 GOTO 390
+270 (0 2) GOTO 390
   Origs: 260:auto
   Dests: 390:goto
-(0 2) 280 GOSUB 410
+280 (0 2) GOSUB 410
   Origs: 93:ifthen
   Dests: 290:auto, 410:gosub
-(0 2) 290 GOSUB 500
+290 (0 2) GOSUB 500
   Origs: 280:auto
   Dests: 300:auto, 500:gosub
-(0 2) 300 GOSUB 470
+300 (0 2) GOSUB 470
   Origs: 290:auto
   Dests: 310:auto, 470:gosub
-(0 8) 310 LET I = ((X / Y) ^ (1 / N)) - 1
+310 (0 8) LET I = ((X / Y) ^ (1 / N)) - 1
   Origs: 300:auto
   Dests: 320:auto
-(0 3) 320 PRINT "INTEREST RATE = "; I
+320 (0 3) PRINT "INTEREST RATE = "; I
   Origs: 310:auto
   Dests: 330:auto
-(0 2) 330 GOTO 390
+330 (0 2) GOTO 390
   Origs: 320:auto
   Dests: 390:goto
-(0 2) 340 GOSUB 500
+340 (0 2) GOSUB 500
   Origs: 94:ifthen
   Dests: 350:auto, 500:gosub
-(0 2) 350 GOSUB 410
+350 (0 2) GOSUB 410
   Origs: 340:auto
   Dests: 360:auto, 410:gosub
-(0 2) 360 GOSUB 440
+360 (0 2) GOSUB 440
   Origs: 350:auto
   Dests: 370:auto, 440:gosub
-(0 6) 370 LET N = (LOG(X / Y)) / (LOG(1 + I))
+370 (0 6) LET N = (LOG(X / Y)) / (LOG(1 + I))
   Origs: 360:auto
   Dests: 380:auto
-(0 3) 380 PRINT "NUMBER OF TIME PERIODS = "; N
+380 (0 3) PRINT "NUMBER OF TIME PERIODS = "; N
   Origs: 370:auto
   Dests: 390:auto
-(0 2) 390 PRINT
+390 (0 2) PRINT
   Origs: 150:goto, 210:goto, 270:goto, 330:goto, 380:auto
   Dests: 400:auto
-(0 2) 400 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+400 (0 2) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
   Origs: 390:auto
   Dests: 401:auto
-(1 2) 401 INPUT L
+401 (1 2) INPUT L
   Origs: 400:auto
   Dests: 402:auto
-(1 4) 402 IF L = 1 THEN 404
+402 (1 4) IF L = 1 THEN 404
   Origs: 401:auto
   Dests: 403:auto, 404:ifthen
-(0 1) 403 STOP
+403 (0 1) STOP
   Origs: 402:auto
   Dests: :stop
-(0 2) 404 PRINT
+404 (0 2) PRINT
   Origs: 402:ifthen
   Dests: 405:auto
-(0 3) 405 GOTO 70
+405 (0 3) GOTO 70
   Origs: 404:auto
   Dests: 70:goto
-G(410) (0 2) 410 PRINT "PRESENT VALUE = ";
+410 G(410) (0 2) PRINT "PRESENT VALUE = ";
   Origs: 100:gosub, 220:gosub, 280:gosub, 350:gosub
   Dests: 420:auto
-G(410) (1 2) 420 INPUT Y
+420 G(410) (1 2) INPUT Y
   Origs: 410:auto
   Dests: 430:auto
-G(410) (0 1) 430 RETURN
+430 G(410) (0 1) RETURN
   Origs: 420:auto
   Dests: 
-G(440) (0 2) 440 PRINT "INTEREST RATE = ";
+440 G(440) (0 2) PRINT "INTEREST RATE = ";
   Origs: 110:gosub, 170:gosub, 230:gosub, 360:gosub
   Dests: 450:auto
-G(440) (1 2) 450 INPUT I
+450 G(440) (1 2) INPUT I
   Origs: 440:auto
   Dests: 460:auto
-G(440) (0 1) 460 RETURN
+460 G(440) (0 1) RETURN
   Origs: 450:auto
   Dests: 
-G(470) (0 2) 470 PRINT "NUMBER OF TIME PERIODS = ";
+470 G(470) (0 2) PRINT "NUMBER OF TIME PERIODS = ";
   Origs: 120:gosub, 180:gosub, 240:gosub, 300:gosub
   Dests: 480:auto
-G(470) (1 2) 480 INPUT N
+480 G(470) (1 2) INPUT N
   Origs: 470:auto
   Dests: 490:auto
-G(470) (0 1) 490 RETURN
+490 G(470) (0 1) RETURN
   Origs: 480:auto
   Dests: 
-G(500) (0 2) 500 PRINT "FUTURE VALUE = ";
+500 G(500) (0 2) PRINT "FUTURE VALUE = ";
   Origs: 160:gosub, 290:gosub, 340:gosub
   Dests: 510:auto
-G(500) (1 2) 510 INPUT X
+510 G(500) (1 2) INPUT X
   Origs: 500:auto
   Dests: 520:auto
-G(500) (0 1) 520 RETURN
+520 G(500) (0 1) RETURN
   Origs: 510:auto
   Dests: 
-(0 1) 530 END
+530 (0 1) END
   Origs: 
   Dests: :stop
 

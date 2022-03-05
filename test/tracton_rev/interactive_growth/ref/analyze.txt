@@ -19,193 +19,193 @@ Halstead complexity:
  intelligence: 62.559
  time: 5.538
 
-(0 1) 10 REM THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
+10 (0 1) REM THIS PROGRAM COMPUTES THE GROWTH PATTERN BETWEEN
   Origs: 
   Dests: 
-(0 1) 20 REM A QUANTITY Y THE DESTROYER AND A QUANTITY X
+20 (0 1) REM A QUANTITY Y THE DESTROYER AND A QUANTITY X
   Origs: 
   Dests: 
-(0 1) 30 REM THE CREATOR. X CAN PROPOGATE, AND ON A
+30 (0 1) REM THE CREATOR. X CAN PROPOGATE, AND ON A
   Origs: 
   Dests: 
-(0 1) 40 REM CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
+40 (0 1) REM CHANCE METTING BETWEEN X AND Y, X IS DESTROYED,
   Origs: 
   Dests: 
-(0 1) 50 REM THUS INCREASING THE NUMBER OF YS.
+50 (0 1) REM THUS INCREASING THE NUMBER OF YS.
   Origs: 
   Dests: 
-(0 2) 60 PRINT "NUMBER OF DESTROYERS (Y) = ";
+60 (0 2) PRINT "NUMBER OF DESTROYERS (Y) = ";
   Origs: :start, 620:goto
   Dests: 70:auto
-(1 2) 70 INPUT Y
+70 (1 2) INPUT Y
   Origs: 60:auto
   Dests: 80:auto
-(0 2) 80 PRINT "NUMBER OF CREATORS (X) = ";
+80 (0 2) PRINT "NUMBER OF CREATORS (X) = ";
   Origs: 70:auto
   Dests: 90:auto
-(1 2) 90 INPUT X
+90 (1 2) INPUT X
   Origs: 80:auto
   Dests: 100:auto
-(0 2) 100 PRINT "PROPAGATION RATE OF X = ";
+100 (0 2) PRINT "PROPAGATION RATE OF X = ";
   Origs: 90:auto
   Dests: 110:auto
-(1 2) 110 INPUT Z
+110 (1 2) INPUT Z
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
+120 (0 2) PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
   Origs: 110:auto
   Dests: 130:auto
-(1 2) 130 INPUT A
+130 (1 2) INPUT A
   Origs: 120:auto
   Dests: 140:auto
-(0 2) 140 PRINT "TIME BETWEEN SAMPLES = ";
+140 (0 2) PRINT "TIME BETWEEN SAMPLES = ";
   Origs: 130:auto
   Dests: 150:auto
-(1 2) 150 INPUT H
+150 (1 2) INPUT H
   Origs: 140:auto
   Dests: 160:auto
-(0 2) 160 PRINT "MAXIMUM GENERATIONS = ";
+160 (0 2) PRINT "MAXIMUM GENERATIONS = ";
   Origs: 150:auto
   Dests: 170:auto
-(1 2) 170 INPUT K
+170 (1 2) INPUT K
   Origs: 160:auto
   Dests: 180:auto
-(0 3) 180 LET J = 0
+180 (0 3) LET J = 0
   Origs: 170:auto
   Dests: 190:auto
-(0 2) 190 PRINT
+190 (0 2) PRINT
   Origs: 180:auto
   Dests: 200:auto
-(0 2) 200 PRINT "INTERACTIVE GROWTH PATTERNS"
+200 (0 2) PRINT "INTERACTIVE GROWTH PATTERNS"
   Origs: 190:auto
   Dests: 210:auto
-(0 2) 210 PRINT
+210 (0 2) PRINT
   Origs: 200:auto
   Dests: 220:auto
-(0 3) 220 PRINT "CREATOR", "DESTROYER"
+220 (0 3) PRINT "CREATOR", "DESTROYER"
   Origs: 210:auto
   Dests: 230:auto
-(1 4) 230 IF J = K THEN 470
+230 (1 4) IF J = K THEN 470
   Origs: 220:auto, 360:goto, 380:goto, 550:goto
   Dests: 240:auto, 470:ifthen
-(0 4) 240 LET J = J + 1
+240 (0 4) LET J = J + 1
   Origs: 230:auto
   Dests: 250:auto
-(0 5) 250 LET B = A * X * Y
+250 (0 5) LET B = A * X * Y
   Origs: 240:auto
   Dests: 260:auto
-(0 6) 260 LET C = ((Y - B) * H) + Y
+260 (0 6) LET C = ((Y - B) * H) + Y
   Origs: 250:auto
   Dests: 270:auto
-(1 4) 270 IF C < 0 THEN 390
+270 (1 4) IF C < 0 THEN 390
   Origs: 260:auto
   Dests: 280:auto, 390:ifthen
-(0 3) 280 LET Y = C
+280 (0 3) LET Y = C
   Origs: 270:auto
   Dests: 290:auto
-(0 7) 290 LET D = (((X * Z) - B) * H) + X
+290 (0 7) LET D = (((X * Z) - B) * H) + X
   Origs: 280:auto, 400:goto
   Dests: 300:auto
-(1 4) 300 IF D < 0 THEN 410
+300 (1 4) IF D < 0 THEN 410
   Origs: 290:auto
   Dests: 310:auto, 410:ifthen
-(0 3) 310 LET X = D
+310 (0 3) LET X = D
   Origs: 300:auto
   Dests: 320:auto
-(0 4) 320 LET M = INT(X)
+320 (0 4) LET M = INT(X)
   Origs: 310:auto, 420:goto
   Dests: 330:auto
-(0 4) 330 LET N = INT(Y)
+330 (0 4) LET N = INT(Y)
   Origs: 320:auto
   Dests: 340:auto
-(0 3) 340 PRINT M, N
+340 (0 3) PRINT M, N
   Origs: 330:auto
   Dests: 350:auto
-(1 4) 350 IF M = 0 THEN 370
+350 (1 4) IF M = 0 THEN 370
   Origs: 340:auto
   Dests: 360:auto, 370:ifthen
-(0 3) 360 GOTO 230
+360 (0 3) GOTO 230
   Origs: 350:auto
   Dests: 230:goto
-(1 4) 370 IF N = 0 THEN 430
+370 (1 4) IF N = 0 THEN 430
   Origs: 350:ifthen
   Dests: 380:auto, 430:ifthen
-(0 3) 380 GOTO 230
+380 (0 3) GOTO 230
   Origs: 370:auto
   Dests: 230:goto
-(0 3) 390 LET Y = 0
+390 (0 3) LET Y = 0
   Origs: 270:ifthen
   Dests: 400:auto
-(0 3) 400 GOTO 290
+400 (0 3) GOTO 290
   Origs: 390:auto
   Dests: 290:goto
-(0 3) 410 LET X = 0
+410 (0 3) LET X = 0
   Origs: 300:ifthen
   Dests: 420:auto
-(0 3) 420 GOTO 320
+420 (0 3) GOTO 320
   Origs: 410:auto
   Dests: 320:goto
-(0 2) 430 PRINT "ALL GROWTH ENDED"
+430 (0 2) PRINT "ALL GROWTH ENDED"
   Origs: 370:ifthen
   Dests: 440:auto
-(0 3) 440 PRINT "NUMBER OF GENERATIONS = "; J
+440 (0 3) PRINT "NUMBER OF GENERATIONS = "; J
   Origs: 430:auto
   Dests: 450:auto
-(0 2) 450 PRINT
+450 (0 2) PRINT
   Origs: 440:auto
   Dests: 460:auto
-(0 2) 460 GOTO 560
+460 (0 2) GOTO 560
   Origs: 450:auto
   Dests: 560:goto
-(0 2) 470 PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
+470 (0 2) PRINT "MAXIMUM NUMBER OF GENERATIONS REACHED"
   Origs: 230:ifthen
   Dests: 480:auto
-(0 2) 480 PRINT
+480 (0 2) PRINT
   Origs: 470:auto
   Dests: 490:auto
-(0 2) 490 PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
+490 (0 2) PRINT "FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
   Origs: 480:auto
   Dests: 500:auto
-(1 2) 500 INPUT W
+500 (1 2) INPUT W
   Origs: 490:auto
   Dests: 510:auto
-(1 4) 510 IF W = 1 THEN 530
+510 (1 4) IF W = 1 THEN 530
   Origs: 500:auto
   Dests: 520:auto, 530:ifthen
-(0 2) 520 GOTO 560
+520 (0 2) GOTO 560
   Origs: 510:auto
   Dests: 560:goto
-(0 2) 530 PRINT "MAXIMUM GENERATIONS = ";
+530 (0 2) PRINT "MAXIMUM GENERATIONS = ";
   Origs: 510:ifthen
   Dests: 540:auto
-(1 2) 540 INPUT K
+540 (1 2) INPUT K
   Origs: 530:auto
   Dests: 550:auto
-(0 3) 550 GOTO 230
+550 (0 3) GOTO 230
   Origs: 540:auto
   Dests: 230:goto
-(0 2) 560 PRINT
+560 (0 2) PRINT
   Origs: 460:goto, 520:goto
   Dests: 570:auto
-(0 2) 570 PRINT "FOR NEXT PATTERN TYPE 1, 0 TO STOP"
+570 (0 2) PRINT "FOR NEXT PATTERN TYPE 1, 0 TO STOP"
   Origs: 560:auto
   Dests: 580:auto
-(1 2) 580 INPUT W
+580 (1 2) INPUT W
   Origs: 570:auto
   Dests: 590:auto
-(1 4) 590 IF W = 1 THEN 610
+590 (1 4) IF W = 1 THEN 610
   Origs: 580:auto
   Dests: 600:auto, 610:ifthen
-(0 1) 600 STOP
+600 (0 1) STOP
   Origs: 590:auto
   Dests: :stop
-(0 2) 610 PRINT
+610 (0 2) PRINT
   Origs: 590:ifthen
   Dests: 620:auto
-(0 3) 620 GOTO 60
+620 (0 3) GOTO 60
   Origs: 610:auto
   Dests: 60:goto
-(0 1) 630 END
+630 (0 1) END
   Origs: 
   Dests: :stop
 

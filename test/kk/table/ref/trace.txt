@@ -1,49 +1,49 @@
-10: PRINT " X", "EXP(X)", "LOG(X)"
+10 PRINT " X", "EXP(X)", "LOG(X)"
  X              EXP(X)          LOG(X)
-F(X) 20: FOR X = 1 TO 3.5 STEP 0.5
+20 F(X) FOR X = 1 TO 3.5 STEP 0.5
  X = 1
  terminated:false
-F(X) 30: PRINT X, EXP(X), LOG(X)
+30 F(X) PRINT X, EXP(X), LOG(X)
  X: 1
  1               2.71828         0
-F(X) 40: NEXT X
+40 F(X) NEXT X
  X: 1
  terminated:false
  X = 1.5
-F(X) 30: PRINT X, EXP(X), LOG(X)
+30 F(X) PRINT X, EXP(X), LOG(X)
  X: 1.5
  1.5             4.48169         0.405465
-F(X) 40: NEXT X
+40 F(X) NEXT X
  X: 1.5
  terminated:false
  X = 2
-F(X) 30: PRINT X, EXP(X), LOG(X)
+30 F(X) PRINT X, EXP(X), LOG(X)
  X: 2
  2               7.38906         0.693147
-F(X) 40: NEXT X
+40 F(X) NEXT X
  X: 2
  terminated:false
  X = 2.5
-F(X) 30: PRINT X, EXP(X), LOG(X)
+30 F(X) PRINT X, EXP(X), LOG(X)
  X: 2.5
  2.5             12.1825         0.916291
-F(X) 40: NEXT X
+40 F(X) NEXT X
  X: 2.5
  terminated:false
  X = 3
-F(X) 30: PRINT X, EXP(X), LOG(X)
+30 F(X) PRINT X, EXP(X), LOG(X)
  X: 3
  3               20.0855         1.09861
-F(X) 40: NEXT X
+40 F(X) NEXT X
  X: 3
  terminated:false
  X = 3.5
-F(X) 30: PRINT X, EXP(X), LOG(X)
+30 F(X) PRINT X, EXP(X), LOG(X)
  X: 3.5
  3.5             33.1155         1.25276
-F(X) 40: NEXT X
+40 F(X) NEXT X
  X: 3.5
  terminated:true
-99: END
+99 END
 STOP in line 99
 

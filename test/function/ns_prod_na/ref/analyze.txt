@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 18.484
  time: 0.154
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(1 2) 20 ARR READ A(3)
+20 (1 2) ARR READ A(3)
   Origs: :start
   Dests: 30:auto
-(0 4) 30 LET B = PROD(A)
+30 (0 4) LET B = PROD(A)
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 PRINT "PRODUCT IS "; B
+40 (0 3) PRINT "PRODUCT IS "; B
   Origs: 30:auto
   Dests: 99:auto
-(0 3) 90 DATA 10.2, 5.5, -1.8, 17
+90 (0 3) DATA 10.2, 5.5, -1.8, 17
   Origs: 
   Dests: 
-(0 1) 99 END
+99 (0 1) END
   Origs: 40:auto
   Dests: :stop
 

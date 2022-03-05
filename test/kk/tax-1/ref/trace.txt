@@ -1,564 +1,564 @@
-900: DATA 5000, 7
-10: DIM D(20)
-20: READ A, Y
+900 DATA 5000, 7
+10 DIM D(20)
+20 READ A, Y
  A = 5000
  Y = 7
-F(Y1) 100: FOR Y1 = 1 TO Y STEP 2
+100 F(Y1) FOR Y1 = 1 TO Y STEP 2
  Y: 7
  Y1 = 1
  Y = 7
  terminated:false
-F(Y1) 105: PRINT "CHANGE IN YEAR " Y1
+105 F(Y1) PRINT "CHANGE IN YEAR " Y1
 CHANGE IN YEAR 
  Y1: 1
  1
-F(Y1) 108: LET A1 = A
+108 F(Y1) LET A1 = A
  A: 5000
  A1 = 5000
-F(Y1,I) 110: FOR I = 1 TO Y1 - 1
+110 F(Y1,I) FOR I = 1 TO Y1 - 1
  Y1: 1
  I = 1
  Y1 - 1 = 0
  terminated:true
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 1
  terminated:true
-F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
+160 F(Y1) LET D = A1 / (Y - Y1 + 1)
  A1: 5000
  Y: 7
  Y1: 1
  D = 714.286
-F(Y1,I) 170: FOR I = Y1 TO Y
+170 F(Y1,I) FOR I = Y1 TO Y
  Y1: 1
  Y: 7
  I = 1
  Y1 = 1
  Y = 7
  terminated:false
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 1
  D: 714.286
  D(1) = 714.286
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 1
  1 
  D(1): 714.286
  714.286
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 2
  D: 714.286
  D(2) = 714.286
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 2
  2 
  D(2): 714.286
  714.286
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 3
  D: 714.286
  D(3) = 714.286
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 3
  3 
  D(3): 714.286
  714.286
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 4
  D: 714.286
  D(4) = 714.286
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 4
  4 
  D(4): 714.286
  714.286
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 5
  D: 714.286
  D(5) = 714.286
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 5
  5 
  D(5): 714.286
  714.286
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 6
  D: 714.286
  D(6) = 714.286
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 6
  6 
  D(6): 714.286
  714.286
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 7
  D: 714.286
  D(7) = 714.286
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 7
  7 
  D(7): 714.286
  714.286
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 7
  terminated:true
-F(Y1) 195: PRINT
+195 F(Y1) PRINT
 
-F(Y1) 290: NEXT Y1
+290 F(Y1) NEXT Y1
  Y1: 1
  terminated:false
  Y1 = 3
-F(Y1) 105: PRINT "CHANGE IN YEAR " Y1
+105 F(Y1) PRINT "CHANGE IN YEAR " Y1
 CHANGE IN YEAR 
  Y1: 3
  3
-F(Y1) 108: LET A1 = A
+108 F(Y1) LET A1 = A
  A: 5000
  A1 = 5000
-F(Y1,I) 110: FOR I = 1 TO Y1 - 1
+110 F(Y1,I) FOR I = 1 TO Y1 - 1
  Y1: 3
  I = 1
  Y1 - 1 = 2
  terminated:false
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 1
  1 
  D(1): 1428.57
  1428.57
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 2
  2 
  D(2): 1020.41
  1020.41
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 2
  terminated:true
-F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
+160 F(Y1) LET D = A1 / (Y - Y1 + 1)
  A1: 2551.02
  Y: 7
  Y1: 3
  D = 510.204
-F(Y1,I) 170: FOR I = Y1 TO Y
+170 F(Y1,I) FOR I = Y1 TO Y
  Y1: 3
  Y: 7
  I = 3
  Y1 = 3
  Y = 7
  terminated:false
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 3
  D: 510.204
  D(3) = 510.204
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 3
  3 
  D(3): 510.204
  510.204
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 4
  D: 510.204
  D(4) = 510.204
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 4
  4 
  D(4): 510.204
  510.204
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 5
  D: 510.204
  D(5) = 510.204
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 5
  5 
  D(5): 510.204
  510.204
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 6
  D: 510.204
  D(6) = 510.204
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 6
  6 
  D(6): 510.204
  510.204
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 7
  D: 510.204
  D(7) = 510.204
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 7
  7 
  D(7): 510.204
  510.204
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 7
  terminated:true
-F(Y1) 195: PRINT
+195 F(Y1) PRINT
 
-F(Y1) 290: NEXT Y1
+290 F(Y1) NEXT Y1
  Y1: 3
  terminated:false
  Y1 = 5
-F(Y1) 105: PRINT "CHANGE IN YEAR " Y1
+105 F(Y1) PRINT "CHANGE IN YEAR " Y1
 CHANGE IN YEAR 
  Y1: 5
  5
-F(Y1) 108: LET A1 = A
+108 F(Y1) LET A1 = A
  A: 5000
  A1 = 5000
-F(Y1,I) 110: FOR I = 1 TO Y1 - 1
+110 F(Y1,I) FOR I = 1 TO Y1 - 1
  Y1: 5
  I = 1
  Y1 - 1 = 4
  terminated:false
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 1
  1 
  D(1): 1428.57
  1428.57
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 2
  2 
  D(2): 1020.41
  1020.41
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 3
  A1: 2551.02
  Y: 7
  D(3) = 728.863
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 2551.02
  I: 3
  D(3): 728.863
  A1 = 1822.16
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 3
  3 
  D(3): 728.863
  728.863
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 4
  A1: 1822.16
  Y: 7
  D(4) = 520.617
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 1822.16
  I: 4
  D(4): 520.617
  A1 = 1301.54
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 4
  4 
  D(4): 520.617
  520.617
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 4
  terminated:true
-F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
+160 F(Y1) LET D = A1 / (Y - Y1 + 1)
  A1: 1301.54
  Y: 7
  Y1: 5
  D = 433.847
-F(Y1,I) 170: FOR I = Y1 TO Y
+170 F(Y1,I) FOR I = Y1 TO Y
  Y1: 5
  Y: 7
  I = 5
  Y1 = 5
  Y = 7
  terminated:false
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 5
  D: 433.847
  D(5) = 433.847
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 5
  5 
  D(5): 433.847
  433.847
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 6
  D: 433.847
  D(6) = 433.847
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 6
  6 
  D(6): 433.847
  433.847
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 7
  D: 433.847
  D(7) = 433.847
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 7
  7 
  D(7): 433.847
  433.847
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 7
  terminated:true
-F(Y1) 195: PRINT
+195 F(Y1) PRINT
 
-F(Y1) 290: NEXT Y1
+290 F(Y1) NEXT Y1
  Y1: 5
  terminated:false
  Y1 = 7
-F(Y1) 105: PRINT "CHANGE IN YEAR " Y1
+105 F(Y1) PRINT "CHANGE IN YEAR " Y1
 CHANGE IN YEAR 
  Y1: 7
  7
-F(Y1) 108: LET A1 = A
+108 F(Y1) LET A1 = A
  A: 5000
  A1 = 5000
-F(Y1,I) 110: FOR I = 1 TO Y1 - 1
+110 F(Y1,I) FOR I = 1 TO Y1 - 1
  Y1: 7
  I = 1
  Y1 - 1 = 6
  terminated:false
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 1
  A1: 5000
  Y: 7
  D(1) = 1428.57
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 5000
  I: 1
  D(1): 1428.57
  A1 = 3571.43
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 1
  1 
  D(1): 1428.57
  1428.57
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 2
  A1: 3571.43
  Y: 7
  D(2) = 1020.41
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 3571.43
  I: 2
  D(2): 1020.41
  A1 = 2551.02
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 2
  2 
  D(2): 1020.41
  1020.41
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 3
  A1: 2551.02
  Y: 7
  D(3) = 728.863
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 2551.02
  I: 3
  D(3): 728.863
  A1 = 1822.16
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 3
  3 
  D(3): 728.863
  728.863
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 4
  A1: 1822.16
  Y: 7
  D(4) = 520.617
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 1822.16
  I: 4
  D(4): 520.617
  A1 = 1301.54
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 4
  4 
  D(4): 520.617
  520.617
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 5
  A1: 1301.54
  Y: 7
  D(5) = 371.869
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 1301.54
  I: 5
  D(5): 371.869
  A1 = 929.671
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 5
  5 
  D(5): 371.869
  371.869
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(Y1,I) 120: LET D(I) = A1 * 2 / Y
+120 F(Y1,I) LET D(I) = A1 * 2 / Y
  I: 6
  A1: 929.671
  Y: 7
  D(6) = 265.62
-F(Y1,I) 130: LET A1 = A1 - D(I)
+130 F(Y1,I) LET A1 = A1 - D(I)
  A1: 929.671
  I: 6
  D(6): 265.62
  A1 = 664.051
-F(Y1,I) 140: PRINT I; D(I)
+140 F(Y1,I) PRINT I; D(I)
  I: 6
  6 
  D(6): 265.62
  265.62
-F(Y1,I) 150: NEXT I
+150 F(Y1,I) NEXT I
  I: 6
  terminated:true
-F(Y1) 160: LET D = A1 / (Y - Y1 + 1)
+160 F(Y1) LET D = A1 / (Y - Y1 + 1)
  A1: 664.051
  Y: 7
  Y1: 7
  D = 664.051
-F(Y1,I) 170: FOR I = Y1 TO Y
+170 F(Y1,I) FOR I = Y1 TO Y
  Y1: 7
  Y: 7
  I = 7
  Y1 = 7
  Y = 7
  terminated:false
-F(Y1,I) 180: LET D(I) = D
+180 F(Y1,I) LET D(I) = D
  I: 7
  D: 664.051
  D(7) = 664.051
-F(Y1,I) 185: PRINT I; D(I)
+185 F(Y1,I) PRINT I; D(I)
  I: 7
  7 
  D(7): 664.051
  664.051
-F(Y1,I) 190: NEXT I
+190 F(Y1,I) NEXT I
  I: 7
  terminated:true
-F(Y1) 195: PRINT
+195 F(Y1) PRINT
 
-F(Y1) 290: NEXT Y1
+290 F(Y1) NEXT Y1
  Y1: 7
  terminated:true
-999: END
+999 END
 STOP in line 999
 

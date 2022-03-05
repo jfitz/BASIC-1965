@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 13.761
  time: 0.156
 
-(0 2) 100 PRINT "FAHRENHEIT";
+100 (0 2) PRINT "FAHRENHEIT";
   Origs: :start, 150:goto
   Dests: 110:auto
-(1 2) 110 INPUT F
+110 (1 2) INPUT F
   Origs: 100:auto
   Dests: 120:auto
-(0 6) 120 LET C = (F - 32) * 5 / 9
+120 (0 6) LET C = (F - 32) * 5 / 9
   Origs: 110:auto
   Dests: 130:auto
-(0 3) 130 PRINT "CENTIGRADE:" C
+130 (0 3) PRINT "CENTIGRADE:" C
   Origs: 120:auto
   Dests: 140:auto
-(0 2) 140 PRINT
+140 (0 2) PRINT
   Origs: 130:auto
   Dests: 150:auto
-(0 3) 150 GOTO 100
+150 (0 3) GOTO 100
   Origs: 140:auto
   Dests: 100:goto
-(0 1) 160 END
+160 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -24,7 +24,7 @@ STOP in line 999
 120 (1) LET Y1 = 0
 130 (1) LET Y2 = 0
 140 (1) LET Z = 0
-150 (0)
+150 (0) 
 160 (1) READ N
 170 F(I) (1) FOR I = 1 TO N
 180 F(I) (5) READ X, Y
@@ -34,7 +34,7 @@ STOP in line 999
 220 F(I) (5) LET Y2 = Y2 + Y * Y
 230 F(I) (5) LET Z = Z + X * Y
 240 F(I) (5) NEXT I
-250 (0)
+250 (0) 
 260 (1) LET X3 = X1 / N
 265 (1) LET Y3 = Y1 / N
 270 (1) LET S1 = X2 - X1 * X3
@@ -44,7 +44,7 @@ STOP in line 999
 310 (1) LET B1 = Y3 - B * X3
 320 (1) LET S3 = S2 - B * S
 330 (1) LET S4 = S3 / (N - 2)
-340 (0)
+340 (0) 
 350 (1) PRINT "NUMBER = " N
 360 (1) PRINT "MEAN OF X = " X3, "OF Y " Y3
 370 (1) PRINT "SLOPE = " B, "Y-INTERCEPT = " B1
@@ -64,7 +64,7 @@ STOP in line 999
 485 (1) PRINT
 490 (1) PRINT "F-RATIO FOR SLOPE = " B * S / S4
 500 (1) PRINT "CORRELATION COEFFICIENT = " S / SQR(S1 * S2)
-510 (0)
+510 (0) 
 900 (0) DATA 5
 901 (0) DATA 480, 56
 902 (0) DATA 500, 61

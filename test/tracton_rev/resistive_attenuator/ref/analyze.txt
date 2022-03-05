@@ -19,133 +19,133 @@ Halstead complexity:
  intelligence: 53.350
  time: 13.850
 
-(0 1) 10 REM THIS PROGRAM COMPUTES THE COMPONENTS
+10 (0 1) REM THIS PROGRAM COMPUTES THE COMPONENTS
   Origs: 
   Dests: 
-(0 1) 20 REM REQUIRED FOR A PI OR T TYPE
+20 (0 1) REM REQUIRED FOR A PI OR T TYPE
   Origs: 
   Dests: 
-(0 1) 30 REM RESISTIVE ATTENUATOR
+30 (0 1) REM RESISTIVE ATTENUATOR
   Origs: 
   Dests: 
-(0 2) 40 PRINT "INPUT RESISTANCE R(IN) = ";
+40 (0 2) PRINT "INPUT RESISTANCE R(IN) = ";
   Origs: :start, 410:goto
   Dests: 50:auto
-(1 2) 50 INPUT R1
+50 (1 2) INPUT R1
   Origs: 40:auto
   Dests: 60:auto
-(0 2) 60 PRINT "OUTPUT RESISTANCE R(OUT) = ";
+60 (0 2) PRINT "OUTPUT RESISTANCE R(OUT) = ";
   Origs: 50:auto
   Dests: 70:auto
-(1 2) 70 INPUT R9
+70 (1 2) INPUT R9
   Origs: 60:auto
   Dests: 80:auto
-(0 4) 80 LET Z = R1 / R9
+80 (0 4) LET Z = R1 / R9
   Origs: 70:auto
   Dests: 90:auto
-(0 7) 90 LET Q = (SQR(Z) + SQR(Z - 1)) ^ 2
+90 (0 7) LET Q = (SQR(Z) + SQR(Z - 1)) ^ 2
   Origs: 80:auto
   Dests: 100:auto
-(0 8) 100 LET M = 10 * (LOG(Q) / LOG(10))
+100 (0 8) LET M = 10 * (LOG(Q) / LOG(10))
   Origs: 90:auto
   Dests: 110:auto
-(0 3) 110 PRINT "MINIMUM SYSTEM LOSS IN DECIBELS = "; M
+110 (0 3) PRINT "MINIMUM SYSTEM LOSS IN DECIBELS = "; M
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 PRINT "ENTERED DESIRED LOSS IN DECIBELS";
+120 (0 2) PRINT "ENTERED DESIRED LOSS IN DECIBELS";
   Origs: 110:auto
   Dests: 130:auto
-(1 2) 130 INPUT N
+130 (1 2) INPUT N
   Origs: 120:auto
   Dests: 135:auto
-(0 4) 135 LET N = INT(N)
+135 (0 4) LET N = INT(N)
   Origs: 130:auto
   Dests: 150:auto
-(0 1) 140 REM COMPUTE T NETWORK
+140 (0 1) REM COMPUTE T NETWORK
   Origs: 
   Dests: 
-(0 8) 150 LET T3 = 2 * (SQR(N * R1 * R9)) / (N - 1)
+150 (0 8) LET T3 = 2 * (SQR(N * R1 * R9)) / (N - 1)
   Origs: 135:auto
   Dests: 160:auto
-(0 10) 160 LET T1 = R1 * ((N + 1) / (N - 1)) - T3
+160 (0 10) LET T1 = R1 * ((N + 1) / (N - 1)) - T3
   Origs: 150:auto
   Dests: 170:auto
-(0 10) 170 LET T2 = R9 * ((N + 1) / (N - 1)) - T3
+170 (0 10) LET T2 = R9 * ((N + 1) / (N - 1)) - T3
   Origs: 160:auto
   Dests: 190:auto
-(0 1) 180 REM COMPUTE PI NETWORK
+180 (0 1) REM COMPUTE PI NETWORK
   Origs: 
   Dests: 
-(0 8) 190 LET P3 = 0.5 * (N - 1) * SQR((R1 * R9) / N)
+190 (0 8) LET P3 = 0.5 * (N - 1) * SQR((R1 * R9) / N)
   Origs: 170:auto
   Dests: 200:auto
-(0 15) 200 LET P1 = 1 / (1 / R1 * ((N + 1) / (N - 1)) - (1 / P3))
+200 (0 15) LET P1 = 1 / (1 / R1 * ((N + 1) / (N - 1)) - (1 / P3))
   Origs: 190:auto
   Dests: 210:auto
-(0 15) 210 LET P2 = 1 / (1 / R9 * ((N + 1) / (N - 1)) - (1 / P3))
+210 (0 15) LET P2 = 1 / (1 / R9 * ((N + 1) / (N - 1)) - (1 / P3))
   Origs: 200:auto
   Dests: 230:auto
-(0 1) 220 REM REPORT
+220 (0 1) REM REPORT
   Origs: 
   Dests: 
-(0 5) 230 PRINT "R(IN) = "; R1, "R(OUT) = "; R9
+230 (0 5) PRINT "R(IN) = "; R1, "R(OUT) = "; R9
   Origs: 210:auto
   Dests: 240:auto
-(0 3) 240 PRINT "DESIRED LOSS = "; N
+240 (0 3) PRINT "DESIRED LOSS = "; N
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 PRINT
+250 (0 2) PRINT
   Origs: 240:auto
   Dests: 260:auto
-(0 2) 260 PRINT "T ATTENUATOR"
+260 (0 2) PRINT "T ATTENUATOR"
   Origs: 250:auto
   Dests: 270:auto
-(0 3) 270 PRINT "RESISTOR 1 = "; T1
+270 (0 3) PRINT "RESISTOR 1 = "; T1
   Origs: 260:auto
   Dests: 280:auto
-(0 3) 280 PRINT "RESISTOR 2 = "; T2
+280 (0 3) PRINT "RESISTOR 2 = "; T2
   Origs: 270:auto
   Dests: 290:auto
-(0 3) 290 PRINT "RESISTOR 3 = "; T3
+290 (0 3) PRINT "RESISTOR 3 = "; T3
   Origs: 280:auto
   Dests: 300:auto
-(0 2) 300 PRINT
+300 (0 2) PRINT
   Origs: 290:auto
   Dests: 310:auto
-(0 2) 310 PRINT "PI ATTENUATOR"
+310 (0 2) PRINT "PI ATTENUATOR"
   Origs: 300:auto
   Dests: 320:auto
-(0 3) 320 PRINT "RESISTOR 1 = "; P1
+320 (0 3) PRINT "RESISTOR 1 = "; P1
   Origs: 310:auto
   Dests: 330:auto
-(0 3) 330 PRINT "RESISTOR 2 = "; P2
+330 (0 3) PRINT "RESISTOR 2 = "; P2
   Origs: 320:auto
   Dests: 340:auto
-(0 3) 340 PRINT "RESISTOR 3 = "; P3
+340 (0 3) PRINT "RESISTOR 3 = "; P3
   Origs: 330:auto
   Dests: 350:auto
-(0 2) 350 PRINT
+350 (0 2) PRINT
   Origs: 340:auto
   Dests: 360:auto
-(0 2) 360 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+360 (0 2) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
   Origs: 350:auto
   Dests: 370:auto
-(1 2) 370 INPUT Q
+370 (1 2) INPUT Q
   Origs: 360:auto
   Dests: 380:auto
-(1 4) 380 IF Q = 1 THEN 400
+380 (1 4) IF Q = 1 THEN 400
   Origs: 370:auto
   Dests: 390:auto, 400:ifthen
-(0 1) 390 STOP
+390 (0 1) STOP
   Origs: 380:auto
   Dests: :stop
-(0 2) 400 PRINT
+400 (0 2) PRINT
   Origs: 380:ifthen
   Dests: 410:auto
-(0 3) 410 GOTO 40
+410 (0 3) GOTO 40
   Origs: 400:auto
   Dests: 40:goto
-(0 1) 420 END
+420 (0 1) END
   Origs: 
   Dests: :stop
 

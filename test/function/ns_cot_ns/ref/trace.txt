@@ -1,345 +1,345 @@
-10: LET P = 3.14159
+10 LET P = 3.14159
  P = 3.14159
-20: PRINT "ANGLE", "COTANGENT"
+20 PRINT "ANGLE", "COTANGENT"
 ANGLE           COTANGENT
-F(I) 30: FOR I = 0 TO 2 STEP 0.1
+30 F(I) FOR I = 0 TO 2 STEP 0.1
  I = 0
  terminated:false
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0
  P: 3.14159
  A = 0
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 0
  C = Infinity
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 0
  0              
  C: Infinity
  INFINITY
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0
  terminated:false
  I = 0.1
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.1
  P: 3.14159
  A = 0.314159
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 0.314159
  C = 3.07769
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 0.314159
  0.314159       
  C: 3.07769
  3.07769
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.1
  terminated:false
  I = 0.2
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.2
  P: 3.14159
  A = 0.628318
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 0.628318
  C = 1.37638
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 0.628318
  0.628318       
  C: 1.37638
  1.37638
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.2
  terminated:false
  I = 0.3
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.3
  P: 3.14159
  A = 0.942477
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 0.942477
  C = 0.726544
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 0.942477
  0.942477       
  C: 0.726544
  0.726544
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.3
  terminated:false
  I = 0.4
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.4
  P: 3.14159
  A = 1.25664
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 1.25664
  C = 0.324916
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 1.25664
  1.25664        
  C: 0.324916
  0.324916
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.4
  terminated:false
  I = 0.5
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.5
  P: 3.14159
  A = 1.5708
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 1.5708
  C = -3.67321e-06
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 1.5708
  1.5708         
  C: -3.67321e-06
 -3.67321E-06
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.5
  terminated:false
  I = 0.6
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.6
  P: 3.14159
  A = 1.88495
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 1.88495
  C = -0.324914
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 1.88495
  1.88495        
  C: -0.324914
 -0.324914
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.6
  terminated:false
  I = 0.7
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.7
  P: 3.14159
  A = 2.19911
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 2.19911
  C = -0.726535
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 2.19911
  2.19911        
  C: -0.726535
 -0.726535
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.7
  terminated:false
  I = 0.8
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.8
  P: 3.14159
  A = 2.51327
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 2.51327
  C = -1.37637
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 2.51327
  2.51327        
  C: -1.37637
 -1.37637
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.8
  terminated:false
  I = 0.9
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 0.9
  P: 3.14159
  A = 2.82743
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 2.82743
  C = -3.07765
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 2.82743
  2.82743        
  C: -3.07765
 -3.07765
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0.9
  terminated:false
  I = 1
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1
  P: 3.14159
  A = 3.14159
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 3.14159
  C = -376848
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 3.14159
  3.14159        
  C: -376848
 -376848
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1
  terminated:false
  I = 1.1
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.1
  P: 3.14159
  A = 3.45575
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 3.45575
  C = 3.0777
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 3.45575
  3.45575        
  C: 3.0777
  3.0777
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.1
  terminated:false
  I = 1.2
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.2
  P: 3.14159
  A = 3.76991
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 3.76991
  C = 1.37639
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 3.76991
  3.76991        
  C: 1.37639
  1.37639
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.2
  terminated:false
  I = 1.3
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.3
  P: 3.14159
  A = 4.08407
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 4.08407
  C = 0.726543
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 4.08407
  4.08407        
  C: 0.726543
  0.726543
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.3
  terminated:false
  I = 1.4
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.4
  P: 3.14159
  A = 4.39823
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 4.39823
  C = 0.324919
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 4.39823
  4.39823        
  C: 0.324919
  0.324919
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.4
  terminated:false
  I = 1.5
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.5
  P: 3.14159
  A = 4.71238
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 4.71238
  C = 8.98038e-06
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 4.71238
  4.71238        
  C: 8.98038e-06
  8.98038E-06
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.5
  terminated:false
  I = 1.6
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.6
  P: 3.14159
  A = 5.02654
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 5.02654
  C = -0.324911
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 5.02654
  5.02654        
  C: -0.324911
 -0.324911
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.6
  terminated:false
  I = 1.7
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.7
  P: 3.14159
  A = 5.3407
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 5.3407
  C = -0.726531
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 5.3407
  5.3407         
  C: -0.726531
 -0.726531
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.7
  terminated:false
  I = 1.8
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.8
  P: 3.14159
  A = 5.65486
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 5.65486
  C = -1.37636
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 5.65486
  5.65486        
  C: -1.37636
 -1.37636
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.8
  terminated:false
  I = 1.9
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 1.9
  P: 3.14159
  A = 5.96902
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 5.96902
  C = -3.07762
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 5.96902
  5.96902        
  C: -3.07762
 -3.07762
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1.9
  terminated:false
  I = 2
-F(I) 40: LET A = I * P
+40 F(I) LET A = I * P
  I: 2
  P: 3.14159
  A = 6.28318
-F(I) 50: LET C = COT(A)
+50 F(I) LET C = COT(A)
  A: 6.28318
  C = -188424
-F(I) 60: PRINT A, C
+60 F(I) PRINT A, C
  A: 6.28318
  6.28318        
  C: -188424
 -188424
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 2
  terminated:true
-99: END
+99 END
 STOP in line 99
 

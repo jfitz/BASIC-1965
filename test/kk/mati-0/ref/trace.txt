@@ -1,11 +1,11 @@
-900: DATA 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1, 6, 5, 4, 3, 2, 1
-901: DATA 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5
-910: DATA 1, 2, 3, 4, 5, 6
-920: DATA 3, 4
-930: DATA 1, 2, 3, 4, 5, 6
-940: DATA 7, 8, 9, 10, 11, 12
-100: DIM A(6, 6), B(2, 3)
-120: MAT READ A, B
+900 DATA 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1, 6, 5, 4, 3, 2, 1
+901 DATA 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5
+910 DATA 1, 2, 3, 4, 5, 6
+920 DATA 3, 4
+930 DATA 1, 2, 3, 4, 5, 6
+940 DATA 7, 8, 9, 10, 11, 12
+100 DIM A(6, 6), B(2, 3)
+120 MAT READ A, B
  A(1,1) = 1
  A(1,2) = 2
  A(1,3) = 3
@@ -48,11 +48,11 @@
  B(2,1) = 4
  B(2,2) = 5
  B(2,3) = 6
-130: PRINT "EXAMPLE 1"
+130 PRINT "EXAMPLE 1"
 EXAMPLE 1
-140: PRINT
+140 PRINT
 
-150: MAT PRINT A, B
+150 MAT PRINT A, B
  A(1,1): 1
  A(1,2): 2
  A(1,3): 3
@@ -105,10 +105,10 @@ EXAMPLE 1
  1               2               3
  4               5               6
 
-160: READ P, Q
+160 READ P, Q
  P = 3
  Q = 4
-170: MAT READ A(P, Q)
+170 MAT READ A(P, Q)
  P: 3
  Q: 4
  A(1,1) = 1
@@ -123,11 +123,11 @@ EXAMPLE 1
  A(3,2) = 10
  A(3,3) = 11
  A(3,4) = 12
-180: PRINT "EXAMPLE 2"
+180 PRINT "EXAMPLE 2"
 EXAMPLE 2
-190: PRINT
+190 PRINT
 
-200: MAT PRINT A
+200 MAT PRINT A
  A(1,1): 1
  A(1,2): 2
  A(1,3): 3
@@ -144,6 +144,6 @@ EXAMPLE 2
  5               6               7               8
  9               10              11              12
 
-999: END
+999 END
 STOP in line 999
 

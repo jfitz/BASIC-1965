@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 25.518
  time: 0.213
 
-(0 1) 10 REM TEST THE MINA() FUNCTION
+10 (0 1) REM TEST THE MINA() FUNCTION
   Origs: 
   Dests: 
-(1 2) 20 ARR READ A(6)
+20 (1 2) ARR READ A(6)
   Origs: :start
   Dests: 30:auto
-(0 4) 30 LET B = MINA(A)
+30 (0 4) LET B = MINA(A)
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 PRINT "MINIMUM IS "; B
+40 (0 3) PRINT "MINIMUM IS "; B
   Origs: 30:auto
   Dests: 99:auto
-(0 3) 90 DATA 10.2, 5.5, 1.8, 22, 17, -19, 7
+90 (0 3) DATA 10.2, 5.5, 1.8, 22, 17, -19, 7
   Origs: 
   Dests: 
-(0 1) 99 END
+99 (0 1) END
   Origs: 40:auto
   Dests: :stop
 

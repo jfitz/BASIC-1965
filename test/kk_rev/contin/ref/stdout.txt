@@ -15,7 +15,7 @@ STOP in line 999
 170 F(I,J) (6) NEXT J
 180 F(I) (3) LET R(I) = S
 190 F(I) (3) NEXT I
-200 (0)
+200 (0) 
 210 (1) LET S1 = 0
 220 F(J) (1) FOR J = 1 TO N
 230 F(J) (2) LET S = 0
@@ -25,7 +25,7 @@ STOP in line 999
 270 F(J) (2) LET C(J) = S
 280 F(J) (2) LET S1 = S1 + S
 290 F(J) (2) NEXT J
-300 (0)
+300 (0) 
 310 (1) PRINT
 320 (1) LET C = 0
 330 F(I) (1) FOR I = 1 TO M
@@ -38,7 +38,7 @@ STOP in line 999
 400 F(I) (3) NEXT I
 410 (1) PRINT
 420 (1) PRINT "CHI-SQUARE EQUALS"; C; "ON"; (M - 1) * (N - 1); "DEGREES OF FREEDOM"
-430 (0)
+430 (0) 
 900 (0) DATA 3, 2
 910 (0) DATA 17, 42, 50, 50, 114, 61
 999 (1) END

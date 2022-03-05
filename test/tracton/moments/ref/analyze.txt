@@ -19,115 +19,115 @@ Halstead complexity:
  intelligence: 56.783
  time: 9.684
 
-(0 1) 10 REM THIS PROGRAM COMPUTES THE VALUES OF THE
+10 (0 1) REM THIS PROGRAM COMPUTES THE VALUES OF THE
   Origs: 
   Dests: 
-(0 1) 20 REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
+20 (0 1) REM FIRST 4 MOMENTS, SKEWNESS AND KURTOSIS
   Origs: 
   Dests: 
-(0 3) 30 LET A = 0
+30 (0 3) LET A = 0
   Origs: :start, 360:goto
   Dests: 40:auto
-(0 3) 40 LET B = 0
+40 (0 3) LET B = 0
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 LET C = 0
+50 (0 3) LET C = 0
   Origs: 40:auto
   Dests: 60:auto
-(0 3) 60 LET D = 0
+60 (0 3) LET D = 0
   Origs: 50:auto
   Dests: 70:auto
-(0 2) 70 PRINT "NUMBER OF SAMPLES = "
+70 (0 2) PRINT "NUMBER OF SAMPLES = "
   Origs: 60:auto
   Dests: 80:auto
-(1 2) 80 INPUT N
+80 (1 2) INPUT N
   Origs: 70:auto
   Dests: 90:auto
-F(I) (1 3) 90 FOR I = 1 TO N
+90 F(I) (1 3) FOR I = 1 TO N
   Origs: 80:auto
   Dests: 100:fornext, 160:fornext
-F(I) (0 2) 100 PRINT "SAMPLE = "
+100 F(I) (0 2) PRINT "SAMPLE = "
   Origs: 90:fornext
   Dests: 110:auto
-F(I) (1 2) 110 INPUT X
+110 F(I) (1 2) INPUT X
   Origs: 100:auto
   Dests: 120:auto
-F(I) (0 4) 120 LET A = A + X
+120 F(I) (0 4) LET A = A + X
   Origs: 110:auto
   Dests: 130:auto
-F(I) (0 6) 130 LET B = B + (X ^ 2)
+130 F(I) (0 6) LET B = B + (X ^ 2)
   Origs: 120:auto
   Dests: 140:auto
-F(I) (0 6) 140 LET C = C + (X ^ 3)
+140 F(I) (0 6) LET C = C + (X ^ 3)
   Origs: 130:auto
   Dests: 150:auto
-F(I) (0 6) 150 LET D = D + (X ^ 4)
+150 F(I) (0 6) LET D = D + (X ^ 4)
   Origs: 140:auto
   Dests: 160:auto
-F(I) (0 1) 160 NEXT I
+160 F(I) (0 1) NEXT I
   Origs: 90:fornext, 150:auto
   Dests: 170:auto
-(0 4) 170 LET J = A / N
+170 (0 4) LET J = A / N
   Origs: 160:auto
   Dests: 180:auto
-(0 7) 180 LET E = (B / N) - (J ^ 2)
+180 (0 7) LET E = (B / N) - (J ^ 2)
   Origs: 170:auto
   Dests: 190:auto
-(0 14) 190 LET F = (C / N) - ((3 * J * B) / N) + (2 * (J ^ 3))
+190 (0 14) LET F = (C / N) - ((3 * J * B) / N) + (2 * (J ^ 3))
   Origs: 180:auto
   Dests: 200:auto
-(0 9) 200 LET G = (D / N) - ((4 * J * C) / N)
+200 (0 9) LET G = (D / N) - ((4 * J * C) / N)
   Origs: 190:auto
   Dests: 210:auto
-(0 15) 210 LET H = G + ((6 * (J ^ 2) * B) / N) - (3 * (J ^ 4))
+210 (0 15) LET H = G + ((6 * (J ^ 2) * B) / N) - (3 * (J ^ 4))
   Origs: 200:auto
   Dests: 220:auto
-(0 8) 220 LET K = F / (E ^ (3 / 2))
+220 (0 8) LET K = F / (E ^ (3 / 2))
   Origs: 210:auto
   Dests: 230:auto
-(0 6) 230 LET L = H / (E ^ 2)
+230 (0 6) LET L = H / (E ^ 2)
   Origs: 220:auto
   Dests: 240:auto
-(0 3) 240 PRINT "1ST MOMENT = "; J
+240 (0 3) PRINT "1ST MOMENT = "; J
   Origs: 230:auto
   Dests: 250:auto
-(0 3) 250 PRINT "2ND MOMENT = "; E
+250 (0 3) PRINT "2ND MOMENT = "; E
   Origs: 240:auto
   Dests: 260:auto
-(0 3) 260 PRINT "3RD MOMENT = "; F
+260 (0 3) PRINT "3RD MOMENT = "; F
   Origs: 250:auto
   Dests: 270:auto
-(0 3) 270 PRINT "4TH MOMENT = "; H
+270 (0 3) PRINT "4TH MOMENT = "; H
   Origs: 260:auto
   Dests: 280:auto
-(0 2) 280 PRINT "MOMENT COEFFICIENTS"
+280 (0 2) PRINT "MOMENT COEFFICIENTS"
   Origs: 270:auto
   Dests: 290:auto
-(0 5) 290 PRINT "SKEWNESS = "; K, "KURTOSIS = "; L
+290 (0 5) PRINT "SKEWNESS = "; K, "KURTOSIS = "; L
   Origs: 280:auto
   Dests: 300:auto
-(0 2) 300 PRINT "**********************"
+300 (0 2) PRINT "**********************"
   Origs: 290:auto
   Dests: 310:auto
-(0 2) 310 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+310 (0 2) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
   Origs: 300:auto
   Dests: 320:auto
-(1 2) 320 INPUT Z
+320 (1 2) INPUT Z
   Origs: 310:auto
   Dests: 330:auto
-(1 4) 330 IF Z = 1 THEN 350
+330 (1 4) IF Z = 1 THEN 350
   Origs: 320:auto
   Dests: 340:auto, 350:ifthen
-(0 1) 340 STOP
+340 (0 1) STOP
   Origs: 330:auto
   Dests: :stop
-(0 2) 350 PRINT
+350 (0 2) PRINT
   Origs: 330:ifthen
   Dests: 360:auto
-(0 3) 360 GOTO 30
+360 (0 3) GOTO 30
   Origs: 350:auto
   Dests: 30:goto
-(0 1) 370 END
+370 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -1,5 +1,5 @@
-15: DIM D(4, 4)
-20: MAT A = IDN(3)
+15 DIM D(4, 4)
+20 MAT A = IDN(3)
  A(0,0) = 1
  A(0,1) = 0
  A(0,2) = 0
@@ -16,7 +16,7 @@
  A(3,1) = 0
  A(3,2) = 0
  A(3,3) = 1
-30: MAT B = IDN(5, 5)
+30 MAT B = IDN(5, 5)
  B(0,0) = 1
  B(0,1) = 0
  B(0,2) = 0
@@ -53,7 +53,7 @@
  B(5,3) = 0
  B(5,4) = 0
  B(5,5) = 1
-35: MAT D = IDN
+35 MAT D = IDN
  D(0,0) = 1
  D(0,1) = 0
  D(0,2) = 0
@@ -79,9 +79,9 @@
  D(4,2) = 0
  D(4,3) = 0
  D(4,4) = 1
-40: PRINT "MATRIX A"
+40 PRINT "MATRIX A"
 MATRIX A
-50: MAT PRINT A;
+50 MAT PRINT A;
  A(0,0): 1
  A(0,1): 0
  A(0,2): 0
@@ -102,9 +102,9 @@ MATRIX A
  0               1               0               0
  0               0               1               0
  0               0               0               1
-60: PRINT "MATRIX B"
+60 PRINT "MATRIX B"
 MATRIX B
-70: MAT PRINT B;
+70 MAT PRINT B;
  B(0,0): 1
  B(0,1): 0
  B(0,2): 0
@@ -147,9 +147,9 @@ MATRIX B
  0               0               0               1               0               0
  0               0               0               0               1               0
  0               0               0               0               0               1
-80: PRINT "MATRIX D"
+80 PRINT "MATRIX D"
 MATRIX D
-90: MAT PRINT D;
+90 MAT PRINT D;
  D(0,0): 1
  D(0,1): 0
  D(0,2): 0
@@ -180,8 +180,8 @@ MATRIX D
  0               0               1               0               0
  0               0               0               1               0
  0               0               0               0               1
-100: OPTION BASE 1
-120: MAT A = IDN(3)
+100 OPTION BASE 1
+120 MAT A = IDN(3)
  A(1,1) = 1
  A(1,2) = 0
  A(1,3) = 0
@@ -191,7 +191,7 @@ MATRIX D
  A(3,1) = 0
  A(3,2) = 0
  A(3,3) = 1
-130: MAT B = IDN(5, 5)
+130 MAT B = IDN(5, 5)
  B(1,1) = 1
  B(1,2) = 0
  B(1,3) = 0
@@ -217,7 +217,7 @@ MATRIX D
  B(5,3) = 0
  B(5,4) = 0
  B(5,5) = 1
-135: MAT D = IDN
+135 MAT D = IDN
  D(1,1) = 1
  D(1,2) = 0
  D(1,3) = 0
@@ -234,9 +234,9 @@ MATRIX D
  D(4,2) = 0
  D(4,3) = 0
  D(4,4) = 1
-140: PRINT "MATRIX A"
+140 PRINT "MATRIX A"
 MATRIX A
-150: MAT PRINT A;
+150 MAT PRINT A;
  A(1,1): 1
  A(1,2): 0
  A(1,3): 0
@@ -249,9 +249,9 @@ MATRIX A
  1               0               0
  0               1               0
  0               0               1
-160: PRINT "MATRIX B"
+160 PRINT "MATRIX B"
 MATRIX B
-170: MAT PRINT B;
+170 MAT PRINT B;
  B(1,1): 1
  B(1,2): 0
  B(1,3): 0
@@ -282,9 +282,9 @@ MATRIX B
  0               0               1               0               0
  0               0               0               1               0
  0               0               0               0               1
-180: PRINT "MATRIX D"
+180 PRINT "MATRIX D"
 MATRIX D
-190: MAT PRINT D;
+190 MAT PRINT D;
  D(1,1): 1
  D(1,2): 0
  D(1,3): 0
@@ -305,6 +305,6 @@ MATRIX D
  0               1               0               0
  0               0               1               0
  0               0               0               1
-999: END
+999 END
 STOP in line 999
 

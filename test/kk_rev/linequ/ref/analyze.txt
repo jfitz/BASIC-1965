@@ -19,55 +19,55 @@ Halstead complexity:
  intelligence: 50.157
  time: 0.968
 
-(0 5) 100 DIM A(20, 20), C(20, 20), B(20), X(20)
+100 (0 5) DIM A(20, 20), C(20, 20), B(20), X(20)
   Origs: :start
   Dests: 120:auto
-(0 0) 110 
+110 (0 0) 
   Origs: 
   Dests: 
-(1 2) 120 READ N
+120 (1 2) READ N
   Origs: 100:auto
   Dests: 130:auto
-(1 2) 130 MAT READ A(N, N)
+130 (1 2) MAT READ A(N, N)
   Origs: 120:auto
   Dests: 140:auto
-(1 2) 140 MAT READ B(N)
+140 (1 2) MAT READ B(N)
   Origs: 130:auto
   Dests: 160:auto
-(0 0) 150 
+150 (0 0) 
   Origs: 
   Dests: 
-(0 4) 160 MAT C = INV(A)
+160 (0 4) MAT C = INV(A)
   Origs: 140:auto
   Dests: 170:auto
-(0 4) 170 MAT X = C * B
+170 (0 4) MAT X = C * B
   Origs: 160:auto
   Dests: 190:auto
-(0 0) 180 
+180 (0 0) 
   Origs: 
   Dests: 
-(0 2) 190 MAT PRINT X
+190 (0 2) MAT PRINT X
   Origs: 170:auto
   Dests: 999:auto
-(0 0) 200 
+200 (0 0) 
   Origs: 
   Dests: 
-(0 2) 210 DATA 3
+210 (0 2) DATA 3
   Origs: 
   Dests: 
-(0 3) 220 DATA 2, -4, 3
+220 (0 3) DATA 2, -4, 3
   Origs: 
   Dests: 
-(0 3) 230 DATA 3, 0, -1
+230 (0 3) DATA 3, 0, -1
   Origs: 
   Dests: 
-(0 2) 240 DATA 2, 5, 1
+240 (0 2) DATA 2, 5, 1
   Origs: 
   Dests: 
-(0 3) 250 DATA -9, 4, 11
+250 (0 3) DATA -9, 4, 11
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 190:auto
   Dests: :stop
 

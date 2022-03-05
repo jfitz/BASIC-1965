@@ -19,16 +19,16 @@ Halstead complexity:
  intelligence: 0.000
  time: 0.000
 
-(0 3) 10 LET V = 100
+10 (0 3) LET V = 100
   Origs: :start
   Dests: 20:auto
-(0 3) 20 LET X = 200
+20 (0 3) LET X = 200
   Origs: 10:auto
   Dests: 30:auto
-(0 5) 30 WRITE V "UNITS IS" X "VALUE"
+30 (0 5) WRITE V "UNITS IS" X "VALUE"
   Origs: 20:auto
   Dests: 40:auto
-(0 1) 40 END
+40 (0 1) END
   Origs: 30:auto
   Dests: :stop
 

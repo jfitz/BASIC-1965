@@ -19,55 +19,55 @@ Halstead complexity:
  intelligence: 18.031
  time: 0.785
 
-(0 1) 10 REM ARRAY ASSIGNMENT
+10 (0 1) REM ARRAY ASSIGNMENT
   Origs: 
   Dests: 
-(0 3) 20 DIM A(5), B(5)
+20 (0 3) DIM A(5), B(5)
   Origs: :start
   Dests: 30:auto
-F(I) (1 3) 30 FOR I = 0 TO 5
+30 F(I) (1 3) FOR I = 0 TO 5
   Origs: 20:auto
   Dests: 50:fornext, 70:fornext
-F(I) (0 3) 50 LET A(I) = I
+50 F(I) (0 3) LET A(I) = I
   Origs: 30:fornext
   Dests: 52:auto
-F(I) (0 4) 52 LET B(I) = I * 3
+52 F(I) (0 4) LET B(I) = I * 3
   Origs: 50:auto
   Dests: 70:auto
-F(I) (0 1) 70 NEXT I
+70 F(I) (0 1) NEXT I
   Origs: 30:fornext, 52:auto
   Dests: 100:auto
-(0 4) 100 ARR C = A - B
+100 (0 4) ARR C = A - B
   Origs: 70:auto
   Dests: 110:auto
-(0 2) 110 PRINT "ARRAY A"
+110 (0 2) PRINT "ARRAY A"
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 ARR PRINT A;
+120 (0 2) ARR PRINT A;
   Origs: 110:auto
   Dests: 122:auto
-(0 2) 122 PRINT
+122 (0 2) PRINT
   Origs: 120:auto
   Dests: 130:auto
-(0 2) 130 PRINT "ARRAY B"
+130 (0 2) PRINT "ARRAY B"
   Origs: 122:auto
   Dests: 140:auto
-(0 2) 140 ARR PRINT B;
+140 (0 2) ARR PRINT B;
   Origs: 130:auto
   Dests: 142:auto
-(0 2) 142 PRINT
+142 (0 2) PRINT
   Origs: 140:auto
   Dests: 150:auto
-(0 2) 150 PRINT "ARRAY C"
+150 (0 2) PRINT "ARRAY C"
   Origs: 142:auto
   Dests: 160:auto
-(0 2) 160 ARR PRINT C;
+160 (0 2) ARR PRINT C;
   Origs: 150:auto
   Dests: 162:auto
-(0 2) 162 PRINT
+162 (0 2) PRINT
   Origs: 160:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 162:auto
   Dests: :stop
 

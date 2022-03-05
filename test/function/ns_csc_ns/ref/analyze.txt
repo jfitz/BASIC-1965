@@ -19,28 +19,28 @@ Halstead complexity:
  intelligence: 18.267
  time: 0.271
 
-(0 3) 10 LET P = 3.14159
+10 (0 3) LET P = 3.14159
   Origs: :start
   Dests: 20:auto
-(0 3) 20 PRINT "ANGLE", "COSECANT"
+20 (0 3) PRINT "ANGLE", "COSECANT"
   Origs: 10:auto
   Dests: 30:auto
-F(I) (1 4) 30 FOR I = 0 TO 2 STEP 0.1
+30 F(I) (1 4) FOR I = 0 TO 2 STEP 0.1
   Origs: 20:auto
   Dests: 40:fornext, 70:fornext
-F(I) (0 4) 40 LET A = I * P
+40 F(I) (0 4) LET A = I * P
   Origs: 30:fornext
   Dests: 50:auto
-F(I) (0 4) 50 LET C = CSC(A)
+50 F(I) (0 4) LET C = CSC(A)
   Origs: 40:auto
   Dests: 60:auto
-F(I) (0 3) 60 PRINT A, C
+60 F(I) (0 3) PRINT A, C
   Origs: 50:auto
   Dests: 70:auto
-F(I) (0 1) 70 NEXT I
+70 F(I) (0 1) NEXT I
   Origs: 30:fornext, 60:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 70:auto
   Dests: :stop
 

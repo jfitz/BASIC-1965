@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 30.356
  time: 0.020
 
-(0 1) 10 REM Test the FORGET statement
+10 (0 1) REM Test the FORGET statement
   Origs: 
   Dests: 
-(0 3) 20 LET A = 10
+20 (0 3) LET A = 10
   Origs: :start
   Dests: 22:auto
-(0 3) 22 LET A1 = 22
+22 (0 3) LET A1 = 22
   Origs: 20:auto
   Dests: 30:auto
-(0 3) 30 PRINT A, A1
+30 (0 3) PRINT A, A1
   Origs: 22:auto
   Dests: 40:auto
-(0 1) 40 FORGET A, A1
+40 (0 1) FORGET A, A1
   Origs: 30:auto
   Dests: 90:auto
-(0 3) 90 PRINT A, A1
+90 (0 3) PRINT A, A1
   Origs: 40:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 90:auto
   Dests: :stop
 

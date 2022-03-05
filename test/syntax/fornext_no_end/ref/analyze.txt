@@ -19,20 +19,20 @@ Halstead complexity:
  intelligence: 2.197
  time: 0.008
 
-(0 1) 10 REM TEST PROGRAM
+10 (0 1) REM TEST PROGRAM
   Origs: 
   Dests: 
-(1 1) 20 FOR I = 1 TO
+20 (1 1) FOR I = 1 TO
    ERROR: Syntax error
   Origs: :start
   Dests: 30:fornext
-(0 2) 30 PRINT I
+30 (0 2) PRINT I
   Origs: 20:fornext
   Dests: 40:auto
-(0 1) 40 NEXT I
+40 (0 1) NEXT I
   Origs: 30:auto
   Dests: 90:auto
-(0 1) 90 END
+90 (0 1) END
   Origs: 40:auto
   Dests: :stop
 

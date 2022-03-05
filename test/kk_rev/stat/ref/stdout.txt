@@ -17,21 +17,21 @@ STOP in line 999
 100 (1) LET N = 0
 110 (1) LET S = 0
 120 (1) LET S2 = 0
-130 (0)
+130 (0) 
 140 (17) READ X
 150 (17) IF X = 999999 THEN 210
 160 (16) LET N = N + 1
 170 (16) LET S = S + X
 180 (16) LET S2 = S2 + X * X
 190 (16) GOTO 140
-200 (0)
+200 (0) 
 210 (2) LET M = S / N
 220 (2) LET V = (N * S2 - S * S) / N / (N - 1)
 230 (2) LET D = SQR(V)
 240 (2) LET P = 0.6745 * D
 250 (2) LET E = SQR(V / N)
 260 (2) LET C = D / M
-270 (0)
+270 (0) 
 280 (2) PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
 290 (2) PRINT N, S, S2, M, V
 300 (2) PRINT
@@ -39,13 +39,13 @@ STOP in line 999
 320 (2) PRINT D, P, E, C
 330 (2) PRINT
 340 (2) PRINT
-350 (0)
+350 (0) 
 360 (2) LET N = 0
 370 (2) LET S = 0
 380 (2) LET S2 = 0
 390 (2) READ X
 400 (2) IF X <> 999999 THEN 160
-410 (0)
+410 (0) 
 900 (0) DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
 910 (0) DATA 4, 3, 9, 15, 21, 6, 999999
 998 (0) DATA 999999

@@ -19,28 +19,28 @@ Halstead complexity:
  intelligence: 5.545
  time: 0.012
 
-(0 1) 10 REM TEST INFINITE LOOP CHECK
+10 (0 1) REM TEST INFINITE LOOP CHECK
   Origs: 
   Dests: 
-(0 2) 20 GOSUB 100
+20 (0 2) GOSUB 100
   Origs: :start
   Dests: 30:auto, 110:gosub
-(0 2) 30 GOSUB 100
+30 (0 2) GOSUB 100
   Origs: 20:auto
   Dests: 90:auto, 110:gosub
-(0 1) 90 STOP
+90 (0 1) STOP
   Origs: 30:auto
   Dests: :stop
-(0 1) 100 REM PRINT STARS
+100 (0 1) REM PRINT STARS
   Origs: 
   Dests: 
-G(110) (0 2) 110 PRINT "******"
+110 G(110) (0 2) PRINT "******"
   Origs: 20:gosub, 30:gosub
   Dests: 120:auto
-G(110) (0 1) 120 RETURN
+120 G(110) (0 1) RETURN
   Origs: 110:auto
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -39,13 +39,13 @@ STOP in line 690
 170 (1) LET C(1, 1) = 1
 180 (1) LET C(N, N) = 1
 190 (1) LET B(1) = V
-200 (0)
+200 (0) 
 210 (10) READ I, J, R
 220 (10) IF I = -1 THEN 270
 230 (9) LET C(I, J) = 1 / R
 240 (9) LET C(J, I) = 1 / R
 250 (9) GOTO 210
-260 (0)
+260 (0) 
 270 F(I) (1) FOR I = 2 TO N - 1
 280 F(I) (5) LET S = 0
 290 F(I,J) (5) FOR J = 1 TO N
@@ -55,10 +55,10 @@ STOP in line 690
 330 F(I) (5) LET C(1, I) = 0
 340 F(I) (5) LET C(N, I) = 0
 350 F(I) (5) NEXT I
-360 (0)
+360 (0) 
 370 (1) MAT U = INV(C)
 380 (1) MAT P = U * B
-390 (0)
+390 (0) 
 400 (1) PRINT "NODE", "VOLTAGE"
 410 (1) PRINT
 420 F(I) (1) FOR I = 1 TO N
@@ -66,7 +66,7 @@ STOP in line 690
 440 F(I) (7) NEXT I
 450 (1) PRINT
 460 (1) PRINT
-470 (0)
+470 (0) 
 480 (1) PRINT "CURRENT FLOW"
 490 (1) PRINT
 500 (1) LET S1 = 0
@@ -80,10 +80,10 @@ STOP in line 690
 580 F(I) (5) PRINT
 590 F(I) (5) NEXT I
 600 (1) PRINT
-610 (0)
+610 (0) 
 620 (1) PRINT "TOTAL CURRENT = " FNR(S1)
 630 (1) PRINT "RESISTANCE OF CIRCUIT = " FNR(V / S1)
-640 (0)
+640 (0) 
 650 (0) DATA 7, 24
 660 (0) DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
 670 (0) DATA 4, 5, 60, 5, 6, 60, 6, 7, 40

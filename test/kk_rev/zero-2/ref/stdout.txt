@@ -15,7 +15,7 @@ STOP in line 110
 90 (20) GOTO 30
 100 (1) PRINT "ONE ZERO AT" X
 110 (1) STOP
-120 (0)
+120 (0) 
 230 (0) LET X = (A + B) / 2
 240 (0) IF FNF(X) = 0 THEN 100
 250 (0) IF FNF(X) < 0 THEN 270
@@ -24,7 +24,7 @@ STOP in line 110
 270 (0) LET B = X
 280 (0) IF ABS(A - B) / (ABS(A) + ABS(B)) < 5E-07 THEN 100
 290 (0) GOTO 230
-300 (0)
+300 (0) 
 900 (0) DATA 0, 1
 999 (0) END
 

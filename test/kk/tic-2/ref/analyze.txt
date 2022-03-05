@@ -19,307 +19,307 @@ Halstead complexity:
  intelligence: 52.087
  time: 69.024
 
-(0 1) 70 REM THIS IS PROGRAM TIC-2
+70 (0 1) REM THIS IS PROGRAM TIC-2
   Origs: 
   Dests: 
-(0 0) 80 
+80 (0 0) 
   Origs: 
   Dests: 
-(0 1) 90 REM INITIALIZER
+90 (0 1) REM INITIALIZER
   Origs: 
   Dests: 
-F(P) (1 3) 100 FOR P = 1 TO 8
+100 F(P) (1 3) FOR P = 1 TO 8
   Origs: :start
   Dests: 110:fornext, 140:fornext
-F(P,I) (1 3) 110 FOR I = 1 TO 3
+110 F(P,I) (1 3) FOR I = 1 TO 3
   Origs: 100:fornext
   Dests: 120:fornext, 130:fornext
-F(P,I) (1 2) 120 READ T(P, I)
+120 F(P,I) (1 2) READ T(P, I)
   Origs: 110:fornext
   Dests: 130:auto
-F(P,I) (0 1) 130 NEXT I
+130 F(P,I) (0 1) NEXT I
   Origs: 110:fornext, 120:auto
   Dests: 140:auto
-F(P) (0 1) 140 NEXT P
+140 F(P) (0 1) NEXT P
   Origs: 100:fornext, 130:auto
   Dests: 200:auto
-(0 2) 150 DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
+150 (0 2) DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
   Origs: 
   Dests: 
-F(S) (1 3) 200 FOR S = 1 TO 9
+200 F(S) (1 3) FOR S = 1 TO 9
   Origs: 140:auto
   Dests: 210:fornext, 240:fornext
-F(S,J) (1 3) 210 FOR J = 1 TO 4
+210 F(S,J) (1 3) FOR J = 1 TO 4
   Origs: 200:fornext
   Dests: 220:fornext, 230:fornext
-F(S,J) (1 2) 220 READ U(S, J)
+220 F(S,J) (1 2) READ U(S, J)
   Origs: 210:fornext
   Dests: 230:auto
-F(S,J) (0 1) 230 NEXT J
+230 F(S,J) (0 1) NEXT J
   Origs: 210:fornext, 220:auto
   Dests: 240:auto
-F(S) (0 1) 240 NEXT S
+240 F(S) (0 1) NEXT S
   Origs: 200:fornext, 230:auto
   Dests: 265:auto
-(0 2) 250 DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
+250 (0 2) DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
   Origs: 
   Dests: 
-(0 2) 260 DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
+260 (0 2) DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
   Origs: 
   Dests: 
-F(J) (0 3) 265 LET N = 0
+265 F(J) (0 3) LET N = 0
   Origs: 240:auto, 850:goto
   Dests: 270:auto
-F(S,J) (1 3) 270 FOR S = 1 TO 9
+270 F(S,J) (1 3) FOR S = 1 TO 9
   Origs: 265:auto
   Dests: 275:fornext, 285:fornext
-F(S,J) (0 3) 275 LET C(S) = 0
+275 F(S,J) (0 3) LET C(S) = 0
   Origs: 270:fornext
   Dests: 280:auto
-F(S,J) (0 3) 280 LET B(S) = 0
+280 F(S,J) (0 3) LET B(S) = 0
   Origs: 275:auto
   Dests: 285:auto
-F(S,J) (0 1) 285 NEXT S
+285 F(S,J) (0 1) NEXT S
   Origs: 270:fornext, 280:auto
   Dests: 310:auto
-(0 0) 290 
+290 (0 0) 
   Origs: 
   Dests: 
-(0 1) 300 REM WHO STARTS?
+300 (0 1) REM WHO STARTS?
   Origs: 
   Dests: 
-F(J) (1 7) 310 IF RND(Z) < 1 / 2 THEN 350
+310 F(J) (1 7) IF RND(Z) < 1 / 2 THEN 350
   Origs: 285:auto
   Dests: 320:auto, 350:ifthen
-F(J) (0 2) 320 PRINT "YOU WILL MOVE FIRST."
+320 F(J) (0 2) PRINT "YOU WILL MOVE FIRST."
   Origs: 310:auto
   Dests: 330:auto
-F(J) (0 2) 330 PRINT
+330 F(J) (0 2) PRINT
   Origs: 320:auto
   Dests: 340:auto
-F(J) (0 2) 340 GOTO 400
+340 F(J) (0 2) GOTO 400
   Origs: 330:auto
   Dests: 400:goto
-F(J) (0 2) 350 PRINT "THE COMPUTER WILL MOVE FIRST."
+350 F(J) (0 2) PRINT "THE COMPUTER WILL MOVE FIRST."
   Origs: 310:ifthen
   Dests: 360:auto
-F(J) (0 2) 360 PRINT
+360 F(J) (0 2) PRINT
   Origs: 350:auto
   Dests: 370:auto
-F(J) (0 2) 370 GOTO 600
+370 F(J) (0 2) GOTO 600
   Origs: 360:auto
   Dests: 610:goto
-(0 0) 380 
+380 (0 0) 
   Origs: 
   Dests: 
-(0 1) 390 REM PLAYER'S MOVE.
+390 (0 1) REM PLAYER'S MOVE.
   Origs: 
   Dests: 
-F(J) (0 2) 400 PRINT "YOUR MOVE";
+400 F(J) (0 2) PRINT "YOUR MOVE";
   Origs: 340:goto, 537:ifthen, 560:goto
   Dests: 410:auto
-F(J) (1 2) 410 INPUT M
+410 F(J) (1 2) INPUT M
   Origs: 400:auto
   Dests: 415:auto
-F(J) (0 4) 415 LET F = -1
+415 F(J) (0 4) LET F = -1
   Origs: 410:auto
   Dests: 420:auto
-F(J) (1 5) 420 IF M <> INT(M) THEN 550
+420 F(J) (1 5) IF M <> INT(M) THEN 550
   Origs: 415:auto
   Dests: 430:auto, 550:ifthen
-F(J) (1 4) 430 IF M < 1 THEN 500
+430 F(J) (1 4) IF M < 1 THEN 500
   Origs: 420:auto
   Dests: 440:auto, 500:ifthen
-F(J) (1 4) 440 IF M > 9 THEN 550
+440 F(J) (1 4) IF M > 9 THEN 550
   Origs: 430:auto
   Dests: 450:auto, 550:ifthen
-F(J) (1 4) 450 IF B(M) <> 0 THEN 500
+450 F(J) (1 4) IF B(M) <> 0 THEN 500
   Origs: 440:auto
   Dests: 460:auto, 500:ifthen
-F(J) (0 3) 460 LET B(M) = F
+460 F(J) (0 3) LET B(M) = F
   Origs: 450:auto, 640:goto
   Dests: 470:auto
-F(J) (1 3) 470 FOR J = 1 TO 4
+470 F(J) (1 3) FOR J = 1 TO 4
   Origs: 460:auto
   Dests: 480:fornext, 530:fornext
-F(J) (0 3) 480 LET P = U(M, J)
+480 F(J) (0 3) LET P = U(M, J)
   Origs: 470:fornext
   Dests: 490:auto
-F(J) (1 4) 490 IF P = 0 THEN 530
+490 F(J) (1 4) IF P = 0 THEN 530
   Origs: 480:auto
   Dests: 500:auto, 530:ifthen
-F(J) (0 4) 500 LET C(P) = C(P) + F
+500 F(J) (0 4) LET C(P) = C(P) + F
   Origs: 430:ifthen, 450:ifthen, 490:auto
   Dests: 510:auto
-F(J) (1 6) 510 IF C(P) = -3 THEN 860
+510 F(J) (1 6) IF C(P) = -3 THEN 860
   Origs: 500:auto
   Dests: 520:auto, 860:ifthen
-F(J) (1 4) 520 IF C(P) = 3 THEN 800
+520 F(J) (1 4) IF C(P) = 3 THEN 800
   Origs: 510:auto
   Dests: 530:auto, 810:ifthen
-F(J) (0 1) 530 NEXT J
+530 F(J) (0 1) NEXT J
   Origs: 470:fornext, 490:ifthen, 520:auto
   Dests: 535:auto
-(0 4) 535 LET N = N + 1
+535 (0 4) LET N = N + 1
   Origs: 530:auto
   Dests: 536:auto
-(1 4) 536 IF N = 9 THEN 880
+536 (1 4) IF N = 9 THEN 880
   Origs: 535:auto
   Dests: 537:auto, 880:ifthen
-(1 5) 537 IF F = 1 THEN 400
+537 (1 5) IF F = 1 THEN 400
   Origs: 536:auto
   Dests: 400:ifthen, 538:auto
-(0 2) 538 GOTO 600
+538 (0 2) GOTO 600
   Origs: 537:auto
   Dests: 610:goto
-(0 2) 540 GOTO 600
+540 (0 2) GOTO 600
   Origs: 
   Dests: 610:goto
-F(J) (0 2) 550 PRINT "ILLEGAL MOVE. TRY AGAIN."
+550 F(J) (0 2) PRINT "ILLEGAL MOVE. TRY AGAIN."
   Origs: 420:ifthen, 440:ifthen
   Dests: 560:auto
-F(J) (0 3) 560 GOTO 400
+560 F(J) (0 3) GOTO 400
   Origs: 550:auto
   Dests: 400:goto
-(0 0) 595 
+595 (0 0) 
   Origs: 
   Dests: 
-(0 1) 600 REM MACHINE'S MOVE
+600 (0 1) REM MACHINE'S MOVE
   Origs: 
   Dests: 
-F(J) (0 2) 610 GOSUB 1000
+610 F(J) (0 2) GOSUB 1000
   Origs: 370:goto, 538:goto, 540:goto
   Dests: 620:auto, 1010:gosub
-F(J) (0 3) 620 PRINT "THE COMPUTER MOVES" M
+620 F(J) (0 3) PRINT "THE COMPUTER MOVES" M
   Origs: 610:auto
   Dests: 630:auto
-F(J) (0 3) 630 LET F = 1
+630 F(J) (0 3) LET F = 1
   Origs: 620:auto
   Dests: 640:auto
-F(J) (0 3) 640 GOTO 460
+640 F(J) (0 3) GOTO 460
   Origs: 630:auto
   Dests: 460:goto
-(0 1) 800 REM THE GAME IS OVER
+800 (0 1) REM THE GAME IS OVER
   Origs: 
   Dests: 
-F(J) (0 2) 810 PRINT "AND THE COMPUTER WINS."
+810 F(J) (0 2) PRINT "AND THE COMPUTER WINS."
   Origs: 520:ifthen
   Dests: 820:auto
-F(J) (0 2) 820 PRINT
+820 F(J) (0 2) PRINT
   Origs: 810:auto, 870:goto, 890:goto
   Dests: 830:auto
-F(J) (0 2) 830 PRINT
+830 F(J) (0 2) PRINT
   Origs: 820:auto
   Dests: 840:auto
-F(J) (0 2) 840 PRINT "NEW GAME."
+840 F(J) (0 2) PRINT "NEW GAME."
   Origs: 830:auto
   Dests: 850:auto
-F(J) (0 3) 850 GOTO 265
+850 F(J) (0 3) GOTO 265
   Origs: 840:auto
   Dests: 265:goto
-F(J) (0 2) 860 PRINT "CONGRATULATIONS, YOU BEAT THE COMPUTER."
+860 F(J) (0 2) PRINT "CONGRATULATIONS, YOU BEAT THE COMPUTER."
   Origs: 510:ifthen
   Dests: 870:auto
-F(J) (0 3) 870 GOTO 820
+870 F(J) (0 3) GOTO 820
   Origs: 860:auto
   Dests: 820:goto
-(0 2) 880 PRINT "THE GAME IS A DRAW."
+880 (0 2) PRINT "THE GAME IS A DRAW."
   Origs: 536:ifthen
   Dests: 890:auto
-(0 3) 890 GOTO 820
+890 (0 3) GOTO 820
   Origs: 880:auto
   Dests: 820:goto
-(0 0) 895 
+895 (0 0) 
   Origs: 
   Dests: 
-(0 1) 1000 REM SELECT A MOVE
+1000 (0 1) REM SELECT A MOVE
   Origs: 
   Dests: 
-G(1010) F(P) (1 3) 1010 FOR P = 1 TO 8
+1010 G(1010) F(P) (1 3) FOR P = 1 TO 8
   Origs: 610:gosub
   Dests: 1020:fornext, 1030:fornext
-G(1010) F(P) (1 4) 1020 IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) (1 4) IF C(P) = 2 THEN 1100
   Origs: 1010:fornext
   Dests: 1030:auto, 1100:ifthen
-G(1010) F(P) (0 1) 1030 NEXT P
+1030 G(1010) F(P) (0 1) NEXT P
   Origs: 1010:fornext, 1020:auto
   Dests: 1040:auto
-G(1010) F(P) (1 3) 1040 FOR P = 1 TO 8
+1040 G(1010) F(P) (1 3) FOR P = 1 TO 8
   Origs: 1030:auto
   Dests: 1050:fornext, 1060:fornext
-G(1010) F(P) (1 6) 1050 IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) (1 6) IF C(P) = -2 THEN 1100
   Origs: 1040:fornext
   Dests: 1060:auto, 1100:ifthen
-G(1010) F(P) (0 1) 1060 NEXT P
+1060 G(1010) F(P) (0 1) NEXT P
   Origs: 1040:fornext, 1050:auto
   Dests: 1070:auto
-G(1010) (0 2) 1070 GOTO 1200
+1070 G(1010) (0 2) GOTO 1200
   Origs: 1060:auto
   Dests: 1200:goto
-G(1010) F(P,I) (1 3) 1100 FOR I = 1 TO 3
+1100 G(1010) F(P,I) (1 3) FOR I = 1 TO 3
   Origs: 1020:ifthen, 1050:ifthen
   Dests: 1110:fornext, 1130:fornext
-G(1010) F(P,I) (0 3) 1110 LET M = T(P, I)
+1110 G(1010) F(P,I) (0 3) LET M = T(P, I)
   Origs: 1100:fornext
   Dests: 1120:auto
-G(1010) F(P,I) (1 4) 1120 IF B(M) = 0 THEN 1999
+1120 G(1010) F(P,I) (1 4) IF B(M) = 0 THEN 1999
   Origs: 1110:auto
   Dests: 1130:auto, 1999:ifthen
-G(1010) F(P,I) (0 1) 1130 NEXT I
+1130 G(1010) F(P,I) (0 1) NEXT I
   Origs: 1100:fornext, 1120:auto
   Dests: 1200:auto
-(0 0) 1140 
+1140 (0 0) 
   Origs: 
   Dests: 
-G(1010) F(P,S) (1 3) 1200 FOR S = 1 TO 9
+1200 G(1010) F(P,S) (1 3) FOR S = 1 TO 9
   Origs: 1070:goto, 1130:auto
   Dests: 1210:fornext, 1270:fornext
-G(1010) F(P,S) (0 3) 1210 LET V(S) = 0
+1210 G(1010) F(P,S) (0 3) LET V(S) = 0
   Origs: 1200:fornext
   Dests: 1215:auto
-G(1010) F(P,S) (1 4) 1215 IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) (1 4) IF B(S) <> 0 THEN 1270
   Origs: 1210:auto
   Dests: 1220:auto, 1270:ifthen
-G(1010) F(P,S,J) (1 3) 1220 FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) (1 3) FOR J = 1 TO 4
   Origs: 1215:auto
   Dests: 1230:fornext, 1260:fornext
-G(1010) F(P,S,J) (0 3) 1230 LET P = U(S, J)
+1230 G(1010) F(P,S,J) (0 3) LET P = U(S, J)
   Origs: 1220:fornext
   Dests: 1240:auto
-G(1010) F(P,S,J) (1 4) 1240 IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) (1 4) IF P = 0 THEN 1260
   Origs: 1230:auto
   Dests: 1250:auto, 1260:ifthen
-G(1010) F(P,S,J) (0 6) 1250 LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) (0 6) LET V(S) = V(S) + 1 + ABS(C(P))
   Origs: 1240:auto
   Dests: 1260:auto
-G(1010) F(P,S,J) (0 1) 1260 NEXT J
+1260 G(1010) F(P,S,J) (0 1) NEXT J
   Origs: 1220:fornext, 1240:ifthen, 1250:auto
   Dests: 1270:auto
-G(1010) F(P,S) (0 1) 1270 NEXT S
+1270 G(1010) F(P,S) (0 1) NEXT S
   Origs: 1200:fornext, 1215:ifthen, 1260:auto
   Dests: 1300:auto
-G(1010) F(P) (0 3) 1300 LET V = 0
+1300 G(1010) F(P) (0 3) LET V = 0
   Origs: 1270:auto
   Dests: 1310:auto
-G(1010) F(P,S) (1 3) 1310 FOR S = 1 TO 9
+1310 G(1010) F(P,S) (1 3) FOR S = 1 TO 9
   Origs: 1300:auto
   Dests: 1320:fornext, 1350:fornext
-G(1010) F(P,S) (1 4) 1320 IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) (1 4) IF V(S) <= V THEN 1350
   Origs: 1310:fornext
   Dests: 1330:auto, 1350:ifthen
-G(1010) F(P,S) (0 3) 1330 LET V = V(S)
+1330 G(1010) F(P,S) (0 3) LET V = V(S)
   Origs: 1320:auto
   Dests: 1340:auto
-G(1010) F(P,S) (0 3) 1340 LET M = S
+1340 G(1010) F(P,S) (0 3) LET M = S
   Origs: 1330:auto
   Dests: 1350:auto
-G(1010) F(P,S) (0 1) 1350 NEXT S
+1350 G(1010) F(P,S) (0 1) NEXT S
   Origs: 1310:fornext, 1320:ifthen, 1340:auto
   Dests: 1999:auto
-G(1010) F(P,I) (0 1) 1999 RETURN
+1999 G(1010) F(P,I) (0 1) RETURN
   Origs: 1120:ifthen, 1350:auto
   Dests: 
-(0 1) 9999 END
+9999 (0 1) END
   Origs: 
   Dests: :stop
 

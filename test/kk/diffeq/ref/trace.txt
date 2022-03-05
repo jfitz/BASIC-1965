@@ -1,24 +1,24 @@
-FNF(_,_) 10: DEF FNF(X, Y) = SQR(X * X + Y * Y)
-900: DATA 0, 1, 1
-910: DATA 0.1
-100: READ X0, X1, Y0, H
+10 FNF(_,_) DEF FNF(X, Y) = SQR(X * X + Y * Y)
+900 DATA 0, 1, 1
+910 DATA 0.1
+100 READ X0, X1, Y0, H
  X0 = 0
  X1 = 1
  Y0 = 1
  H = 0.1
-110: PRINT " X", " Y"
+110 PRINT " X", " Y"
  X               Y
-120: PRINT
+120 PRINT
 
-130: PRINT X0, Y0
+130 PRINT X0, Y0
  X0: 0
  0              
  Y0: 1
  1
-140: LET Y = Y0
+140 LET Y = Y0
  Y0: 1
  Y = 1
-F(X) 160: FOR X = X0 TO X1 - H STEP H
+160 F(X) FOR X = X0 TO X1 - H STEP H
  X0: 0
  H: 0.1
  X1: 1
@@ -27,325 +27,325 @@ F(X) 160: FOR X = X0 TO X1 - H STEP H
  X1 - H = 0.9
  H = 0.1
  terminated:false
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0
  Y: 1
  D1 = 1
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 1
  Y1 = 1
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 1
  D1: 1
  H: 0.1
  Y = 1.05
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0
  H: 0.1
  Y: 1.05
  D2 = 1.05119
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 1
  D2: 1.05119
  H: 0.1
  Y = 1.10512
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0
  H: 0.1
  0.1            
  Y: 1.10512
  1.10512
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0
  terminated:false
  X = 0.1
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.1
  Y: 1.10512
  D1 = 1.10964
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 1.10512
  Y1 = 1.10512
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 1.10512
  D1: 1.10964
  H: 0.1
  Y = 1.1606
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.1
  H: 0.1
  Y: 1.1606
  D2 = 1.17025
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 1.10512
  D2: 1.17025
  H: 0.1
  Y = 1.22215
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.1
  H: 0.1
  0.2            
  Y: 1.22215
  1.22215
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.1
  terminated:false
  X = 0.2
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.2
  Y: 1.22215
  D1 = 1.23841
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 1.22215
  Y1 = 1.22215
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 1.22215
  D1: 1.23841
  H: 0.1
  Y = 1.28407
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.2
  H: 0.1
  Y: 1.28407
  D2 = 1.30818
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 1.22215
  D2: 1.30818
  H: 0.1
  Y = 1.35297
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.2
  H: 0.1
  0.3            
  Y: 1.35297
  1.35297
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.2
  terminated:false
  X = 0.3
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.3
  Y: 1.35297
  D1 = 1.38583
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 1.35297
  Y1 = 1.35297
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 1.35297
  D1: 1.38583
  H: 0.1
  Y = 1.42226
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.3
  H: 0.1
  Y: 1.42226
  D2 = 1.46469
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 1.35297
  D2: 1.46469
  H: 0.1
  Y = 1.49944
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.3
  H: 0.1
  0.4            
  Y: 1.49944
  1.49944
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.3
  terminated:false
  X = 0.4
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.4
  Y: 1.49944
  D1 = 1.55188
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 1.49944
  Y1 = 1.49944
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 1.49944
  D1: 1.55188
  H: 0.1
  Y = 1.57703
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.4
  H: 0.1
  Y: 1.57703
  D2 = 1.63998
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 1.49944
  D2: 1.63998
  H: 0.1
  Y = 1.66344
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.4
  H: 0.1
  0.5            
  Y: 1.66344
  1.66344
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.4
  terminated:false
  X = 0.5
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.5
  Y: 1.66344
  D1 = 1.73696
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 1.66344
  Y1 = 1.66344
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 1.66344
  D1: 1.73696
  H: 0.1
  Y = 1.75029
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.5
  H: 0.1
  Y: 1.75029
  D2 = 1.83467
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 1.66344
  D2: 1.83467
  H: 0.1
  Y = 1.84691
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.5
  H: 0.1
  0.6            
  Y: 1.84691
  1.84691
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.5
  terminated:false
  X = 0.6
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.6
  Y: 1.84691
  D1 = 1.94193
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 1.84691
  Y1 = 1.84691
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 1.84691
  D1: 1.94193
  H: 0.1
  Y = 1.94401
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.6
  H: 0.1
  Y: 1.94401
  D2 = 2.0498
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 1.84691
  D2: 2.0498
  H: 0.1
  Y = 2.05189
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.6
  H: 0.1
  0.7            
  Y: 2.05189
  2.05189
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.6
  terminated:false
  X = 0.7
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.7
  Y: 2.05189
  D1 = 2.16801
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 2.05189
  Y1 = 2.05189
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 2.05189
  D1: 2.16801
  H: 0.1
  Y = 2.16029
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.7
  H: 0.1
  Y: 2.16029
  D2 = 2.28678
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 2.05189
  D2: 2.28678
  H: 0.1
  Y = 2.28057
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.7
  H: 0.1
  0.8            
  Y: 2.28057
  2.28057
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.7
  terminated:false
  X = 0.8
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.8
  Y: 2.28057
  D1 = 2.41682
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 2.28057
  Y1 = 2.28057
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 2.28057
  D1: 2.41682
  H: 0.1
  Y = 2.40141
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.8
  H: 0.1
  Y: 2.40141
  D2 = 2.5474
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 2.28057
  D2: 2.5474
  H: 0.1
  Y = 2.53531
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.8
  H: 0.1
  0.9            
  Y: 2.53531
  2.53531
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.8
  terminated:false
  X = 0.9
-F(X) 170: LET D1 = FNF(X, Y)
+170 F(X) LET D1 = FNF(X, Y)
  X: 0.9
  Y: 2.53531
  D1 = 2.69032
-F(X) 180: LET Y1 = Y
+180 F(X) LET Y1 = Y
  Y: 2.53531
  Y1 = 2.53531
-F(X) 190: LET Y = Y + D1 * H / 2
+190 F(X) LET Y = Y + D1 * H / 2
  Y: 2.53531
  D1: 2.69032
  H: 0.1
  Y = 2.66983
-F(X) 200: LET D2 = FNF(X + H / 2, Y)
+200 F(X) LET D2 = FNF(X + H / 2, Y)
  X: 0.9
  H: 0.1
  Y: 2.66983
  D2 = 2.83381
-F(X) 210: LET Y = Y1 + D2 * H
+210 F(X) LET Y = Y1 + D2 * H
  Y1: 2.53531
  D2: 2.83381
  H: 0.1
  Y = 2.81869
-F(X) 220: PRINT X + H, Y
+220 F(X) PRINT X + H, Y
  X: 0.9
  H: 0.1
  1              
  Y: 2.81869
  2.81869
-F(X) 230: NEXT X
+230 F(X) NEXT X
  X: 0.9
  terminated:true
-999: END
+999 END
 STOP in line 999
 

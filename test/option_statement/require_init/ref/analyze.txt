@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 0.000
  time: 0.000
 
-(0 1) 10 REM TEST OF REQUIRE-INIT
+10 (0 1) REM TEST OF REQUIRE-INIT
   Origs: 
   Dests: 
-(0 2) 20 OPTION REQUIRE_INITIALIZED FALSE
+20 (0 2) OPTION REQUIRE_INITIALIZED FALSE
   Origs: :start
   Dests: 30:auto
-(0 2) 30 PRINT A
+30 (0 2) PRINT A
   Origs: 20:auto
   Dests: 40:auto
-(0 2) 40 OPTION REQUIRE_INITIALIZED TRUE
+40 (0 2) OPTION REQUIRE_INITIALIZED TRUE
   Origs: 30:auto
   Dests: 50:auto
-(0 2) 50 PRINT B
+50 (0 2) PRINT B
   Origs: 40:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 50:auto
   Dests: :stop
 

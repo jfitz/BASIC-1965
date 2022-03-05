@@ -19,43 +19,43 @@ Halstead complexity:
  intelligence: 17.282
  time: 3.815
 
-FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+10 FNF(_) (0 9) DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
   Dests: 
-(2 3) 20 READ A, B
+20 (2 3) READ A, B
   Origs: :start
   Dests: 30:auto
-(0 5) 30 LET X = (A + B) / 2
+30 (0 5) LET X = (A + B) / 2
   Origs: 20:auto, 90:goto
   Dests: 40:auto
-(1 6) 40 IF FNF(X) = 0 THEN 100
+40 (1 6) IF FNF(X) = 0 THEN 100
   Origs: 30:auto
   Dests: 50:auto, 100:ifthen
-(1 6) 50 IF FNF(X) < 0 THEN 70
+50 (1 6) IF FNF(X) < 0 THEN 70
   Origs: 40:auto
   Dests: 60:auto, 70:ifthen
-(0 3) 60 LET B = X
+60 (0 3) LET B = X
   Origs: 50:auto
   Dests: 65:auto
-(0 2) 65 GOTO 80
+65 (0 2) GOTO 80
   Origs: 60:auto
   Dests: 80:goto
-(0 3) 70 LET A = X
+70 (0 3) LET A = X
   Origs: 50:ifthen
   Dests: 80:auto
-(1 10) 80 IF ABS(A - B) / (ABS(A) + ABS(B)) < 5E-06 THEN 100
+80 (1 10) IF ABS(A - B) / (ABS(A) + ABS(B)) < 5E-06 THEN 100
   Origs: 65:goto, 70:auto
   Dests: 90:auto, 100:ifthen
-(0 3) 90 GOTO 30
+90 (0 3) GOTO 30
   Origs: 80:auto
   Dests: 30:goto
-(0 3) 100 PRINT "ONE ZERO AT" X
+100 (0 3) PRINT "ONE ZERO AT" X
   Origs: 40:ifthen, 80:ifthen
   Dests: 999:auto
-(0 2) 900 DATA 0, 1
+900 (0 2) DATA 0, 1
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 100:auto
   Dests: :stop
 

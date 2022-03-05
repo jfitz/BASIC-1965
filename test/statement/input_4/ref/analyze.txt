@@ -19,16 +19,16 @@ Halstead complexity:
  intelligence: 32.236
  time: 0.030
 
-(0 1) 10 REM TEST FOR INPUT STATEMENT
+10 (0 1) REM TEST FOR INPUT STATEMENT
   Origs: 
   Dests: 
-(3 4) 70 INPUT "PLAIN, EMPTY, PLAIN"; P1, P2, P3
+70 (3 4) INPUT "PLAIN, EMPTY, PLAIN"; P1, P2, P3
   Origs: :start
   Dests: 75:auto
-(0 5) 75 PRINT "THE NUMBERS WERE"; P1; P2; P3
+75 (0 5) PRINT "THE NUMBERS WERE"; P1; P2; P3
   Origs: 70:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 75:auto
   Dests: :stop
 

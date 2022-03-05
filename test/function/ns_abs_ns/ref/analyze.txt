@@ -19,43 +19,43 @@ Halstead complexity:
  intelligence: 35.732
  time: 0.286
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(0 3) 15 PRINT "NUMBER", "ABSOLUTE"
+15 (0 3) PRINT "NUMBER", "ABSOLUTE"
   Origs: :start
   Dests: 20:auto
-(0 3) 20 LET A = 10
+20 (0 3) LET A = 10
   Origs: 15:auto
   Dests: 22:auto
-(0 4) 22 LET A1 = ABS(A)
+22 (0 4) LET A1 = ABS(A)
   Origs: 20:auto
   Dests: 25:auto
-(0 3) 25 PRINT A, A1
+25 (0 3) PRINT A, A1
   Origs: 22:auto
   Dests: 30:auto
-(0 4) 30 LET B = -20
+30 (0 4) LET B = -20
   Origs: 25:auto
   Dests: 32:auto
-(0 4) 32 LET B1 = ABS(B)
+32 (0 4) LET B1 = ABS(B)
   Origs: 30:auto
   Dests: 35:auto
-(0 3) 35 PRINT B, B1
+35 (0 3) PRINT B, B1
   Origs: 32:auto
   Dests: 40:auto
-(0 3) 40 LET C = 0
+40 (0 3) LET C = 0
   Origs: 35:auto
   Dests: 42:auto
-(0 4) 42 LET C1 = ABS(C)
+42 (0 4) LET C1 = ABS(C)
   Origs: 40:auto
   Dests: 45:auto
-(0 3) 45 PRINT C, C1
+45 (0 3) PRINT C, C1
   Origs: 42:auto
   Dests: 90:auto
-(0 1) 90 STOP
+90 (0 1) STOP
   Origs: 45:auto
   Dests: :stop
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

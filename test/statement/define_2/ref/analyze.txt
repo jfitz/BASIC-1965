@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 13.352
  time: 1.689
 
-FNL(_,_) (0 5) 10 DEF FNL(A, B) = LOG(A) / LOG(B)
+10 FNL(_,_) (0 5) DEF FNL(A, B) = LOG(A) / LOG(B)
   Origs: 
   Dests: 
-FNL(_) (0 5) 20 DEF FNL(A) = LOG(A) / LOG(10)
+20 FNL(_) (0 5) DEF FNL(A) = LOG(A) / LOG(10)
   Origs: 
   Dests: 
-F(N) (1 4) 30 FOR N = 2 TO 10 STEP 2
+30 F(N) (1 4) FOR N = 2 TO 10 STEP 2
   Origs: :start
   Dests: 40:fornext, 50:fornext
-F(N) (0 10) 40 PRINT N, LOG(N), FNL(N, 10), FNL(N)
+40 F(N) (0 10) PRINT N, LOG(N), FNL(N, 10), FNL(N)
   Origs: 30:fornext
   Dests: 50:auto
-F(N) (0 1) 50 NEXT N
+50 F(N) (0 1) NEXT N
   Origs: 30:fornext, 40:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 50:auto
   Dests: :stop
 

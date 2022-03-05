@@ -1,13 +1,13 @@
-FNR(_) 100: DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
-650: DATA 7, 24
-660: DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
-670: DATA 4, 5, 60, 5, 6, 60, 6, 7, 40
-680: DATA -1, 0, 0
-110: DIM C(20, 20), U(20, 20), B(20), P(20)
-120: READ N, V
+100 FNR(_) DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
+650 DATA 7, 24
+660 DATA 1, 2, 100, 2, 7, 50, 2, 3, 25, 1, 4, 16, 3, 4, 20, 3, 6, 40
+670 DATA 4, 5, 60, 5, 6, 60, 6, 7, 40
+680 DATA -1, 0, 0
+110 DIM C(20, 20), U(20, 20), B(20), P(20)
+120 READ N, V
  N = 7
  V = 24
-130: MAT C = ZER(N, N)
+130 MAT C = ZER(N, N)
  N: 7
  C(1,1) = 0
  C(1,2) = 0
@@ -58,7 +58,7 @@ FNR(_) 100: DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
  C(7,5) = 0
  C(7,6) = 0
  C(7,7) = 0
-150: MAT B = ZER(N)
+150 MAT B = ZER(N)
  N: 7
  B(1) = 0
  B(2) = 0
@@ -67,643 +67,643 @@ FNR(_) 100: DEF FNR(X) = INT(X * 1000 + 0.5) / 1000
  B(5) = 0
  B(6) = 0
  B(7) = 0
-170: LET C(1, 1) = 1
+170 LET C(1, 1) = 1
  C(1,1) = 1
-180: LET C(N, N) = 1
+180 LET C(N, N) = 1
  N: 7
  C(7,7) = 1
-190: LET B(1) = V
+190 LET B(1) = V
  V: 24
  B(1) = 24
-210: READ I, J, R
+210 READ I, J, R
  I = 1
  J = 2
  R = 100
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 1
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 1
  J: 2
  R: 100
  C(1,2) = 0.01
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 2
  I: 1
  R: 100
  C(2,1) = 0.01
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 2
  J = 7
  R = 50
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 2
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 2
  J: 7
  R: 50
  C(2,7) = 0.02
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 7
  I: 2
  R: 50
  C(7,2) = 0.02
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 2
  J = 3
  R = 25
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 2
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 2
  J: 3
  R: 25
  C(2,3) = 0.04
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 3
  I: 2
  R: 25
  C(3,2) = 0.04
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 1
  J = 4
  R = 16
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 1
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 1
  J: 4
  R: 16
  C(1,4) = 0.0625
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 4
  I: 1
  R: 16
  C(4,1) = 0.0625
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 3
  J = 4
  R = 20
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 3
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 3
  J: 4
  R: 20
  C(3,4) = 0.05
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 4
  I: 3
  R: 20
  C(4,3) = 0.05
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 3
  J = 6
  R = 40
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 3
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 3
  J: 6
  R: 40
  C(3,6) = 0.025
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 6
  I: 3
  R: 40
  C(6,3) = 0.025
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 4
  J = 5
  R = 60
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 4
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 4
  J: 5
  R: 60
  C(4,5) = 0.0166667
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 5
  I: 4
  R: 60
  C(5,4) = 0.0166667
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 5
  J = 6
  R = 60
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 5
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 5
  J: 6
  R: 60
  C(5,6) = 0.0166667
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 6
  I: 5
  R: 60
  C(6,5) = 0.0166667
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = 6
  J = 7
  R = 40
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: 6
  I = -1: false
-230: LET C(I, J) = 1 / R
+230 LET C(I, J) = 1 / R
  I: 6
  J: 7
  R: 40
  C(6,7) = 0.025
-240: LET C(J, I) = 1 / R
+240 LET C(J, I) = 1 / R
  J: 7
  I: 6
  R: 40
  C(7,6) = 0.025
-250: GOTO 210
-210: READ I, J, R
+250 GOTO 210
+210 READ I, J, R
  I = -1
  J = 0
  R = 0
-220: IF I = -1 THEN 270
+220 IF I = -1 THEN 270
  I: -1
  I = -1: true
-F(I) 270: FOR I = 2 TO N - 1
+270 F(I) FOR I = 2 TO N - 1
  N: 7
  I = 2
  N - 1 = 6
  terminated:false
-F(I) 280: LET S = 0
+280 F(I) LET S = 0
  S = 0
-F(I,J) 290: FOR J = 1 TO N
+290 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 2
  J: 1
  C(2,1): 0.01
  S = 0.01
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.01
  I: 2
  J: 2
  C(2,2): 0
  S = 0.01
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.01
  I: 2
  J: 3
  C(2,3): 0.04
  S = 0.05
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.05
  I: 2
  J: 4
  C(2,4): 0
  S = 0.05
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.05
  I: 2
  J: 5
  C(2,5): 0
  S = 0.05
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.05
  I: 2
  J: 6
  C(2,6): 0
  S = 0.05
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.05
  I: 2
  J: 7
  C(2,7): 0.02
  S = 0.07
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 320: LET C(I, I) = -S
+320 F(I) LET C(I, I) = -S
  I: 2
  S: 0.07
  C(2,2) = -0.07
-F(I) 330: LET C(1, I) = 0
+330 F(I) LET C(1, I) = 0
  I: 2
  C(1,2) = 0
-F(I) 340: LET C(N, I) = 0
+340 F(I) LET C(N, I) = 0
  N: 7
  I: 2
  C(7,2) = 0
-F(I) 350: NEXT I
+350 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 280: LET S = 0
+280 F(I) LET S = 0
  S = 0
-F(I,J) 290: FOR J = 1 TO N
+290 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 3
  J: 1
  C(3,1): 0
  S = 0
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 3
  J: 2
  C(3,2): 0.04
  S = 0.04
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.04
  I: 3
  J: 3
  C(3,3): 0
  S = 0.04
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.04
  I: 3
  J: 4
  C(3,4): 0.05
  S = 0.09
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.09
  I: 3
  J: 5
  C(3,5): 0
  S = 0.09
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.09
  I: 3
  J: 6
  C(3,6): 0.025
  S = 0.115
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.115
  I: 3
  J: 7
  C(3,7): 0
  S = 0.115
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 320: LET C(I, I) = -S
+320 F(I) LET C(I, I) = -S
  I: 3
  S: 0.115
  C(3,3) = -0.115
-F(I) 330: LET C(1, I) = 0
+330 F(I) LET C(1, I) = 0
  I: 3
  C(1,3) = 0
-F(I) 340: LET C(N, I) = 0
+340 F(I) LET C(N, I) = 0
  N: 7
  I: 3
  C(7,3) = 0
-F(I) 350: NEXT I
+350 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 280: LET S = 0
+280 F(I) LET S = 0
  S = 0
-F(I,J) 290: FOR J = 1 TO N
+290 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 4
  J: 1
  C(4,1): 0.0625
  S = 0.0625
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.0625
  I: 4
  J: 2
  C(4,2): 0
  S = 0.0625
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.0625
  I: 4
  J: 3
  C(4,3): 0.05
  S = 0.1125
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.1125
  I: 4
  J: 4
  C(4,4): 0
  S = 0.1125
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.1125
  I: 4
  J: 5
  C(4,5): 0.0166667
  S = 0.129167
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.129167
  I: 4
  J: 6
  C(4,6): 0
  S = 0.129167
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.129167
  I: 4
  J: 7
  C(4,7): 0
  S = 0.129167
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 320: LET C(I, I) = -S
+320 F(I) LET C(I, I) = -S
  I: 4
  S: 0.129167
  C(4,4) = -0.129167
-F(I) 330: LET C(1, I) = 0
+330 F(I) LET C(1, I) = 0
  I: 4
  C(1,4) = 0
-F(I) 340: LET C(N, I) = 0
+340 F(I) LET C(N, I) = 0
  N: 7
  I: 4
  C(7,4) = 0
-F(I) 350: NEXT I
+350 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 280: LET S = 0
+280 F(I) LET S = 0
  S = 0
-F(I,J) 290: FOR J = 1 TO N
+290 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 5
  J: 1
  C(5,1): 0
  S = 0
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 5
  J: 2
  C(5,2): 0
  S = 0
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 5
  J: 3
  C(5,3): 0
  S = 0
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 5
  J: 4
  C(5,4): 0.0166667
  S = 0.0166667
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.0166667
  I: 5
  J: 5
  C(5,5): 0
  S = 0.0166667
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.0166667
  I: 5
  J: 6
  C(5,6): 0.0166667
  S = 0.0333334
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.0333334
  I: 5
  J: 7
  C(5,7): 0
  S = 0.0333334
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 320: LET C(I, I) = -S
+320 F(I) LET C(I, I) = -S
  I: 5
  S: 0.0333334
  C(5,5) = -0.0333334
-F(I) 330: LET C(1, I) = 0
+330 F(I) LET C(1, I) = 0
  I: 5
  C(1,5) = 0
-F(I) 340: LET C(N, I) = 0
+340 F(I) LET C(N, I) = 0
  N: 7
  I: 5
  C(7,5) = 0
-F(I) 350: NEXT I
+350 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 280: LET S = 0
+280 F(I) LET S = 0
  S = 0
-F(I,J) 290: FOR J = 1 TO N
+290 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 6
  J: 1
  C(6,1): 0
  S = 0
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 6
  J: 2
  C(6,2): 0
  S = 0
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0
  I: 6
  J: 3
  C(6,3): 0.025
  S = 0.025
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.025
  I: 6
  J: 4
  C(6,4): 0
  S = 0.025
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.025
  I: 6
  J: 5
  C(6,5): 0.0166667
  S = 0.0416667
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.0416667
  I: 6
  J: 6
  C(6,6): 0
  S = 0.0416667
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 300: LET S = S + C(I, J)
+300 F(I,J) LET S = S + C(I, J)
  S: 0.0416667
  I: 6
  J: 7
  C(6,7): 0.025
  S = 0.0666667
-F(I,J) 310: NEXT J
+310 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 320: LET C(I, I) = -S
+320 F(I) LET C(I, I) = -S
  I: 6
  S: 0.0666667
  C(6,6) = -0.0666667
-F(I) 330: LET C(1, I) = 0
+330 F(I) LET C(1, I) = 0
  I: 6
  C(1,6) = 0
-F(I) 340: LET C(N, I) = 0
+340 F(I) LET C(N, I) = 0
  N: 7
  I: 6
  C(7,6) = 0
-F(I) 350: NEXT I
+350 F(I) NEXT I
  I: 6
  terminated:true
-370: MAT U = INV(C)
+370 MAT U = INV(C)
  C(1,1): 1
  C(1,2): 0
  C(1,3): 0
@@ -802,7 +802,7 @@ F(I) 350: NEXT I
  U(7,5) = 0
  U(7,6) = 0
  U(7,7) = 1
-380: MAT P = U * B
+380 MAT P = U * B
  U(1,1): 1
  U(1,2): 0
  U(1,3): 0
@@ -866,109 +866,109 @@ F(I) 350: NEXT I
  P(5) = 13.7839
  P(6) = 8.72606
  P(7) = 0
-400: PRINT "NODE", "VOLTAGE"
+400 PRINT "NODE", "VOLTAGE"
 NODE            VOLTAGE
-410: PRINT
+410 PRINT
 
-F(I) 420: FOR I = 1 TO N
+420 F(I) FOR I = 1 TO N
  N: 7
  I = 1
  N = 7
  terminated:false
-F(I) 430: PRINT I, FNR(P(I))
+430 F(I) PRINT I, FNR(P(I))
  I: 1
  1              
  P(1): 24
  X: 24
  24
-F(I) 440: NEXT I
+440 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 430: PRINT I, FNR(P(I))
+430 F(I) PRINT I, FNR(P(I))
  I: 2
  2              
  P(2): 11.4744
  X: 11.4744
  11.474
-F(I) 440: NEXT I
+440 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 430: PRINT I, FNR(P(I))
+430 F(I) PRINT I, FNR(P(I))
  I: 3
  3              
  P(3): 14.0802
  X: 14.0802
  14.08
-F(I) 440: NEXT I
+440 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 430: PRINT I, FNR(P(I))
+430 F(I) PRINT I, FNR(P(I))
  I: 4
  4              
  P(4): 18.8419
  X: 18.8419
  18.842
-F(I) 440: NEXT I
+440 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 430: PRINT I, FNR(P(I))
+430 F(I) PRINT I, FNR(P(I))
  I: 5
  5              
  P(5): 13.7839
  X: 13.7839
  13.784
-F(I) 440: NEXT I
+440 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 430: PRINT I, FNR(P(I))
+430 F(I) PRINT I, FNR(P(I))
  I: 6
  6              
  P(6): 8.72606
  X: 8.72606
  8.726
-F(I) 440: NEXT I
+440 F(I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 430: PRINT I, FNR(P(I))
+430 F(I) PRINT I, FNR(P(I))
  I: 7
  7              
  P(7): 0
  X: 0
  0
-F(I) 440: NEXT I
+440 F(I) NEXT I
  I: 7
  terminated:true
-450: PRINT
+450 PRINT
 
-460: PRINT
+460 PRINT
 
-480: PRINT "CURRENT FLOW"
+480 PRINT "CURRENT FLOW"
 CURRENT FLOW
-490: PRINT
+490 PRINT
 
-500: LET S1 = 0
+500 LET S1 = 0
  S1 = 0
-F(I) 510: FOR I = 2 TO N - 1
+510 F(I) FOR I = 2 TO N - 1
  N: 7
  I = 2
  N - 1 = 6
  terminated:false
-F(I) 520: PRINT "NODE" I
+520 F(I) PRINT "NODE" I
 NODE
  I: 2
  2
-F(I,J) 530: FOR J = 1 TO N
+530 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 2
  J: 1
  C(2,1): 0.01
@@ -976,22 +976,22 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(1): 24
  X: -0.125256
 -0.124          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 2
  J: 2
  C(2,2): -0.07
  P(2): 11.4744
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 2
  J: 3
  C(2,3): 0.04
@@ -999,11 +999,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(3): 14.0802
  X: -0.104232
 -0.103          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 2
  J: 4
  C(2,4): 0
@@ -1011,11 +1011,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(4): 18.8419
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 2
  J: 5
  C(2,5): 0
@@ -1023,11 +1023,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(5): 13.7839
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 2
  J: 6
  C(2,6): 0
@@ -1035,11 +1035,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(6): 8.72606
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 2
  J: 7
  C(2,7): 0.02
@@ -1047,10 +1047,10 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(7): 0
  X: 0.229488
  0.229          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
+560 F(I) LET S1 = S1 + C(I, N) * (P(I) - P(N))
  S1: 0
  I: 2
  N: 7
@@ -1058,24 +1058,24 @@ F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
  P(2): 11.4744
  P(7): 0
  S1 = 0.229488
-F(I) 570: PRINT
+570 F(I) PRINT
 
-F(I) 580: PRINT
+580 F(I) PRINT
 
-F(I) 590: NEXT I
+590 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 520: PRINT "NODE" I
+520 F(I) PRINT "NODE" I
 NODE
  I: 3
  3
-F(I,J) 530: FOR J = 1 TO N
+530 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 3
  J: 1
  C(3,1): 0
@@ -1083,11 +1083,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(1): 24
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 3
  J: 2
  C(3,2): 0.04
@@ -1095,22 +1095,22 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(2): 11.4744
  X: 0.104232
  0.104          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 3
  J: 3
  C(3,3): -0.115
  P(3): 14.0802
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 3
  J: 4
  C(3,4): 0.05
@@ -1118,11 +1118,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(4): 18.8419
  X: -0.238085
 -0.237          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 3
  J: 5
  C(3,5): 0
@@ -1130,11 +1130,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(5): 13.7839
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 3
  J: 6
  C(3,6): 0.025
@@ -1142,11 +1142,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(6): 8.72606
  X: 0.133854
  0.134          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 3
  J: 7
  C(3,7): 0
@@ -1154,10 +1154,10 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(7): 0
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
+560 F(I) LET S1 = S1 + C(I, N) * (P(I) - P(N))
  S1: 0.229488
  I: 3
  N: 7
@@ -1165,24 +1165,24 @@ F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
  P(3): 14.0802
  P(7): 0
  S1 = 0.229488
-F(I) 570: PRINT
+570 F(I) PRINT
 
-F(I) 580: PRINT
+580 F(I) PRINT
 
-F(I) 590: NEXT I
+590 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 520: PRINT "NODE" I
+520 F(I) PRINT "NODE" I
 NODE
  I: 4
  4
-F(I,J) 530: FOR J = 1 TO N
+530 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 4
  J: 1
  C(4,1): 0.0625
@@ -1190,11 +1190,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(1): 24
  X: -0.322381
 -0.321          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 4
  J: 2
  C(4,2): 0
@@ -1202,11 +1202,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(2): 11.4744
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 4
  J: 3
  C(4,3): 0.05
@@ -1214,22 +1214,22 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(3): 14.0802
  X: 0.238085
  0.238          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 4
  J: 4
  C(4,4): -0.129167
  P(4): 18.8419
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 4
  J: 5
  C(4,5): 0.0166667
@@ -1237,11 +1237,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(5): 13.7839
  X: 0.0843002
  0.084          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 4
  J: 6
  C(4,6): 0
@@ -1249,11 +1249,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(6): 8.72606
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 4
  J: 7
  C(4,7): 0
@@ -1261,10 +1261,10 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(7): 0
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
+560 F(I) LET S1 = S1 + C(I, N) * (P(I) - P(N))
  S1: 0.229488
  I: 4
  N: 7
@@ -1272,24 +1272,24 @@ F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
  P(4): 18.8419
  P(7): 0
  S1 = 0.229488
-F(I) 570: PRINT
+570 F(I) PRINT
 
-F(I) 580: PRINT
+580 F(I) PRINT
 
-F(I) 590: NEXT I
+590 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 520: PRINT "NODE" I
+520 F(I) PRINT "NODE" I
 NODE
  I: 5
  5
-F(I,J) 530: FOR J = 1 TO N
+530 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 5
  J: 1
  C(5,1): 0
@@ -1297,11 +1297,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(1): 24
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 5
  J: 2
  C(5,2): 0
@@ -1309,11 +1309,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(2): 11.4744
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 5
  J: 3
  C(5,3): 0
@@ -1321,11 +1321,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(3): 14.0802
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 5
  J: 4
  C(5,4): 0.0166667
@@ -1333,22 +1333,22 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(4): 18.8419
  X: -0.0843002
 -0.083          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 5
  J: 5
  C(5,5): -0.0333334
  P(5): 13.7839
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 5
  J: 6
  C(5,6): 0.0166667
@@ -1356,11 +1356,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(6): 8.72606
  X: 0.0842975
  0.084          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 5
  J: 7
  C(5,7): 0
@@ -1368,10 +1368,10 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(7): 0
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
+560 F(I) LET S1 = S1 + C(I, N) * (P(I) - P(N))
  S1: 0.229488
  I: 5
  N: 7
@@ -1379,24 +1379,24 @@ F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
  P(5): 13.7839
  P(7): 0
  S1 = 0.229488
-F(I) 570: PRINT
+570 F(I) PRINT
 
-F(I) 580: PRINT
+580 F(I) PRINT
 
-F(I) 590: NEXT I
+590 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 520: PRINT "NODE" I
+520 F(I) PRINT "NODE" I
 NODE
  I: 6
  6
-F(I,J) 530: FOR J = 1 TO N
+530 F(I,J) FOR J = 1 TO N
  N: 7
  J = 1
  N = 7
  terminated:false
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 6
  J: 1
  C(6,1): 0
@@ -1404,11 +1404,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(1): 24
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 6
  J: 2
  C(6,2): 0
@@ -1416,11 +1416,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(2): 11.4744
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 6
  J: 3
  C(6,3): 0.025
@@ -1428,11 +1428,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(3): 14.0802
  X: -0.133854
 -0.133          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 6
  J: 4
  C(6,4): 0
@@ -1440,11 +1440,11 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(4): 18.8419
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 6
  J: 5
  C(6,5): 0.0166667
@@ -1452,22 +1452,22 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(5): 13.7839
  X: -0.0842975
 -0.083          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 6
  J: 6
  C(6,6): -0.0666667
  P(6): 8.72606
  X: 0
  0              
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 6
  terminated:false
  J = 7
-F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
+540 F(I,J) PRINT FNR(C(I, J) * (P(I) - P(J))),
  I: 6
  J: 7
  C(6,7): 0.025
@@ -1475,10 +1475,10 @@ F(I,J) 540: PRINT FNR(C(I, J) * (P(I) - P(J))),
  P(7): 0
  X: 0.218152
  0.218          
-F(I,J) 550: NEXT J
+550 F(I,J) NEXT J
  J: 7
  terminated:true
-F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
+560 F(I) LET S1 = S1 + C(I, N) * (P(I) - P(N))
  S1: 0.229488
  I: 6
  N: 7
@@ -1486,26 +1486,26 @@ F(I) 560: LET S1 = S1 + C(I, N) * (P(I) - P(N))
  P(6): 8.72606
  P(7): 0
  S1 = 0.44764
-F(I) 570: PRINT
+570 F(I) PRINT
 
-F(I) 580: PRINT
+580 F(I) PRINT
 
-F(I) 590: NEXT I
+590 F(I) NEXT I
  I: 6
  terminated:true
-600: PRINT
+600 PRINT
 
-620: PRINT "TOTAL CURRENT = " FNR(S1)
+620 PRINT "TOTAL CURRENT = " FNR(S1)
 TOTAL CURRENT = 
  S1: 0.44764
  X: 0.44764
  0.448
-630: PRINT "RESISTANCE OF CIRCUIT = " FNR(V / S1)
+630 PRINT "RESISTANCE OF CIRCUIT = " FNR(V / S1)
 RESISTANCE OF CIRCUIT = 
  V: 24
  S1: 0.44764
  X: 53.6145
  53.615
-690: END
+690 END
 STOP in line 690
 

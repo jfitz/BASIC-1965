@@ -1,105 +1,105 @@
-70: PRINT "STARTING VALUE OF X = ";
+70 PRINT "STARTING VALUE OF X = ";
 STARTING VALUE OF X = 
-80: INPUT X
+80 INPUT X
 ? 5
  X = 5
-90: PRINT "END VALUE OF X = ";
+90 PRINT "END VALUE OF X = ";
 END VALUE OF X = 
-100: INPUT W
+100 INPUT W
 ? 10
  W = 10
-110: PRINT "TABLE"
+110 PRINT "TABLE"
 TABLE
-120: PRINT "X", "Y"
+120 PRINT "X", "Y"
 X               Y
-F(I) 130: FOR I = X TO W
+130 F(I) FOR I = X TO W
  X: 5
  W: 10
  I = 5
  X = 5
  W = 10
  terminated:false
-F(I) 140: LET Y = 2 * I + 6
+140 F(I) LET Y = 2 * I + 6
  I: 5
  Y = 16
-F(I) 150: PRINT I, Y
+150 F(I) PRINT I, Y
  I: 5
  5              
  Y: 16
  16
-F(I) 160: NEXT I
+160 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 140: LET Y = 2 * I + 6
+140 F(I) LET Y = 2 * I + 6
  I: 6
  Y = 18
-F(I) 150: PRINT I, Y
+150 F(I) PRINT I, Y
  I: 6
  6              
  Y: 18
  18
-F(I) 160: NEXT I
+160 F(I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 140: LET Y = 2 * I + 6
+140 F(I) LET Y = 2 * I + 6
  I: 7
  Y = 20
-F(I) 150: PRINT I, Y
+150 F(I) PRINT I, Y
  I: 7
  7              
  Y: 20
  20
-F(I) 160: NEXT I
+160 F(I) NEXT I
  I: 7
  terminated:false
  I = 8
-F(I) 140: LET Y = 2 * I + 6
+140 F(I) LET Y = 2 * I + 6
  I: 8
  Y = 22
-F(I) 150: PRINT I, Y
+150 F(I) PRINT I, Y
  I: 8
  8              
  Y: 22
  22
-F(I) 160: NEXT I
+160 F(I) NEXT I
  I: 8
  terminated:false
  I = 9
-F(I) 140: LET Y = 2 * I + 6
+140 F(I) LET Y = 2 * I + 6
  I: 9
  Y = 24
-F(I) 150: PRINT I, Y
+150 F(I) PRINT I, Y
  I: 9
  9              
  Y: 24
  24
-F(I) 160: NEXT I
+160 F(I) NEXT I
  I: 9
  terminated:false
  I = 10
-F(I) 140: LET Y = 2 * I + 6
+140 F(I) LET Y = 2 * I + 6
  I: 10
  Y = 26
-F(I) 150: PRINT I, Y
+150 F(I) PRINT I, Y
  I: 10
  10             
  Y: 26
  26
-F(I) 160: NEXT I
+160 F(I) NEXT I
  I: 10
  terminated:true
-170: PRINT
+170 PRINT
 
-180: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+180 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
-190: INPUT L
+190 INPUT L
 ? 0
  L = 0
-200: IF L = 1 THEN 220
+200 IF L = 1 THEN 220
  L: 0
  L = 1: false
-210: STOP
+210 STOP
 STOP in line 210
 

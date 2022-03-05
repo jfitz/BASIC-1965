@@ -19,163 +19,163 @@ Halstead complexity:
  intelligence: 69.050
  time: 8.343
 
-(0 1) 10 REM THIS PROGRAM COMPUTES THE DAY OF THE WEEK
+10 (0 1) REM THIS PROGRAM COMPUTES THE DAY OF THE WEEK
   Origs: 
   Dests: 
-(0 1) 20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
+20 (0 1) REM RESTRICTION: THE DATE MUST BE AFTER 1752
   Origs: 
   Dests: 
-(0 2) 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+100 (0 2) PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
   Origs: :start, 140:goto, 350:goto
   Dests: 110:auto
-(3 4) 110 INPUT D, M, Y
+110 (3 4) INPUT D, M, Y
   Origs: 100:auto
   Dests: 120:auto
-(1 4) 120 IF Y > 1752 THEN 150
+120 (1 4) IF Y > 1752 THEN 150
   Origs: 110:auto
   Dests: 130:auto, 150:ifthen
-(0 2) 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
+130 (0 2) PRINT "YEAR MUST NOT BE PRIOR TO 1753"
   Origs: 120:auto
   Dests: 140:auto
-(0 3) 140 GOTO 100
+140 (0 3) GOTO 100
   Origs: 130:auto
   Dests: 100:goto
-(0 4) 150 LET K = INT(0.6 + (1 / M))
+150 (0 4) LET K = INT(0.6 + (1 / M))
   Origs: 120:ifthen
   Dests: 160:auto
-(0 4) 160 LET L = Y - K
+160 (0 4) LET L = Y - K
   Origs: 150:auto
   Dests: 170:auto
-(0 6) 170 LET O = M + 12 * K
+170 (0 6) LET O = M + 12 * K
   Origs: 160:auto
   Dests: 180:auto
-(0 4) 180 LET P = L / 100
+180 (0 4) LET P = L / 100
   Origs: 170:auto
   Dests: 190:auto
-(0 4) 190 LET Z1 = INT(P / 4)
+190 (0 4) LET Z1 = INT(P / 4)
   Origs: 180:auto
   Dests: 200:auto
-(0 4) 200 LET Z2 = INT(P)
+200 (0 4) LET Z2 = INT(P)
   Origs: 190:auto
   Dests: 210:auto
-(0 4) 210 LET Z3 = INT((5 * L) / 4)
+210 (0 4) LET Z3 = INT((5 * L) / 4)
   Origs: 200:auto
   Dests: 220:auto
-(0 4) 220 LET Z4 = INT(13 * (O + 1) / 5)
+220 (0 4) LET Z4 = INT(13 * (O + 1) / 5)
   Origs: 210:auto
   Dests: 230:auto
-(0 8) 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
+230 (0 8) LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
   Origs: 220:auto
   Dests: 240:auto
-(0 8) 240 LET Z = Z - (7 * INT(Z / 7)) + 1
+240 (0 8) LET Z = Z - (7 * INT(Z / 7)) + 1
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 PRINT "THE DAY OF THE WEEK IS ";
+250 (0 2) PRINT "THE DAY OF THE WEEK IS ";
   Origs: 240:auto
   Dests: 251:auto
-(0 2) 251 GOSUB 400
+251 (0 2) GOSUB 400
   Origs: 250:auto
   Dests: 260:auto, 400:gosub
-(0 2) 260 PRINT
+260 (0 2) PRINT
   Origs: 251:auto
   Dests: 270:auto
-(0 2) 270 PRINT "FOR NEXT DATE TYPE IN 1,"
+270 (0 2) PRINT "FOR NEXT DATE TYPE IN 1,"
   Origs: 260:auto, 330:goto
   Dests: 280:auto
-(0 2) 280 PRINT "IF NOT TYPE 0"
+280 (0 2) PRINT "IF NOT TYPE 0"
   Origs: 270:auto
   Dests: 290:auto
-(1 2) 290 INPUT L
+290 (1 2) INPUT L
   Origs: 280:auto
   Dests: 300:auto
-(1 4) 300 IF L = 1 THEN 340
+300 (1 4) IF L = 1 THEN 340
   Origs: 290:auto
   Dests: 310:auto, 340:ifthen
-(1 4) 310 IF L = 0 THEN 360
+310 (1 4) IF L = 0 THEN 360
   Origs: 300:auto
   Dests: 320:auto, 360:ifthen
-(0 2) 320 PRINT "INVALID COMMAND"
+320 (0 2) PRINT "INVALID COMMAND"
   Origs: 310:auto
   Dests: 330:auto
-(0 3) 330 GOTO 270
+330 (0 3) GOTO 270
   Origs: 320:auto
   Dests: 270:goto
-(0 2) 340 PRINT
+340 (0 2) PRINT
   Origs: 300:ifthen
   Dests: 350:auto
-(0 3) 350 GOTO 100
+350 (0 3) GOTO 100
   Origs: 340:auto
   Dests: 100:goto
-(0 2) 360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
+360 (0 2) PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
   Origs: 310:ifthen
   Dests: 370:auto
-(0 1) 370 STOP
+370 (0 1) STOP
   Origs: 360:auto
   Dests: :stop
-G(400) (1 4) 400 IF Z = 1 THEN 470
+400 G(400) (1 4) IF Z = 1 THEN 470
   Origs: 251:gosub
   Dests: 410:auto, 470:ifthen
-G(400) (1 4) 410 IF Z = 2 THEN 490
+410 G(400) (1 4) IF Z = 2 THEN 490
   Origs: 400:auto
   Dests: 420:auto, 490:ifthen
-G(400) (1 4) 420 IF Z = 3 THEN 510
+420 G(400) (1 4) IF Z = 3 THEN 510
   Origs: 410:auto
   Dests: 430:auto, 510:ifthen
-G(400) (1 4) 430 IF Z = 4 THEN 530
+430 G(400) (1 4) IF Z = 4 THEN 530
   Origs: 420:auto
   Dests: 440:auto, 530:ifthen
-G(400) (1 4) 440 IF Z = 5 THEN 550
+440 G(400) (1 4) IF Z = 5 THEN 550
   Origs: 430:auto
   Dests: 450:auto, 550:ifthen
-G(400) (1 4) 450 IF Z = 6 THEN 570
+450 G(400) (1 4) IF Z = 6 THEN 570
   Origs: 440:auto
   Dests: 460:auto, 570:ifthen
-G(400) (1 4) 460 IF Z = 7 THEN 590
+460 G(400) (1 4) IF Z = 7 THEN 590
   Origs: 450:auto
   Dests: 470:auto, 590:ifthen
-G(400) (0 2) 470 PRINT "SUNDAY"
+470 G(400) (0 2) PRINT "SUNDAY"
   Origs: 400:ifthen, 460:auto
   Dests: 480:auto
-G(400) (0 2) 480 GOTO 600
+480 G(400) (0 2) GOTO 600
   Origs: 470:auto
   Dests: 600:goto
-G(400) (0 2) 490 PRINT "MONDAY"
+490 G(400) (0 2) PRINT "MONDAY"
   Origs: 410:ifthen
   Dests: 500:auto
-G(400) (0 2) 500 GOTO 600
+500 G(400) (0 2) GOTO 600
   Origs: 490:auto
   Dests: 600:goto
-G(400) (0 2) 510 PRINT "TUESDAY"
+510 G(400) (0 2) PRINT "TUESDAY"
   Origs: 420:ifthen
   Dests: 520:auto
-G(400) (0 2) 520 GOTO 600
+520 G(400) (0 2) GOTO 600
   Origs: 510:auto
   Dests: 600:goto
-G(400) (0 2) 530 PRINT "WEDNESDAY"
+530 G(400) (0 2) PRINT "WEDNESDAY"
   Origs: 430:ifthen
   Dests: 540:auto
-G(400) (0 2) 540 GOTO 600
+540 G(400) (0 2) GOTO 600
   Origs: 530:auto
   Dests: 600:goto
-G(400) (0 2) 550 PRINT "THURSDAY"
+550 G(400) (0 2) PRINT "THURSDAY"
   Origs: 440:ifthen
   Dests: 560:auto
-G(400) (0 2) 560 GOTO 600
+560 G(400) (0 2) GOTO 600
   Origs: 550:auto
   Dests: 600:goto
-G(400) (0 2) 570 PRINT "FRIDAY"
+570 G(400) (0 2) PRINT "FRIDAY"
   Origs: 450:ifthen
   Dests: 580:auto
-G(400) (0 2) 580 GOTO 600
+580 G(400) (0 2) GOTO 600
   Origs: 570:auto
   Dests: 600:goto
-G(400) (0 2) 590 PRINT "SATURDAY"
+590 G(400) (0 2) PRINT "SATURDAY"
   Origs: 460:ifthen
   Dests: 600:auto
-G(400) (0 1) 600 RETURN
+600 G(400) (0 1) RETURN
   Origs: 480:goto, 500:goto, 520:goto, 540:goto, 560:goto, 580:goto, 590:auto
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

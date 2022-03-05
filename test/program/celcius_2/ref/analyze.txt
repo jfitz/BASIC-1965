@@ -19,34 +19,34 @@ Halstead complexity:
  intelligence: 18.915
  time: 0.659
 
-(0 1) 10 REM Convert Celcius to Fahrenheit
+10 (0 1) REM Convert Celcius to Fahrenheit
   Origs: 
   Dests: 
-(0 3) 20 PRINT "Celcius", "Fahrenheit"
+20 (0 3) PRINT "Celcius", "Fahrenheit"
   Origs: :start
   Dests: 30:auto
-(0 3) 30 LET C = 0
+30 (0 3) LET C = 0
   Origs: 20:auto
   Dests: 40:auto
-(0 6) 40 LET F = C * 9 / 5 + 32
+40 (0 6) LET F = C * 9 / 5 + 32
   Origs: 30:auto, 70:ifthen
   Dests: 42:auto
-(0 7) 42 LET F2 = 32 + (C * 9 / 5)
+42 (0 7) LET F2 = 32 + (C * 9 / 5)
   Origs: 40:auto
   Dests: 50:auto
-(0 4) 50 PRINT C, F, F2
+50 (0 4) PRINT C, F, F2
   Origs: 42:auto
   Dests: 60:auto
-(0 4) 60 LET C = C + 1
+60 (0 4) LET C = C + 1
   Origs: 50:auto
   Dests: 70:auto
-(1 5) 70 IF C <= 10 THEN 40
+70 (1 5) IF C <= 10 THEN 40
   Origs: 60:auto
   Dests: 40:ifthen, 900:auto
-(0 1) 900 STOP
+900 (0 1) STOP
   Origs: 70:auto
   Dests: :stop
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

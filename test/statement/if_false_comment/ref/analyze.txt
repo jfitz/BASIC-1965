@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 19.775
  time: 0.018
 
-(0 1) 10 REM TEST IF WITH COMMENT ON NEXT LINE
+10 (0 1) REM TEST IF WITH COMMENT ON NEXT LINE
   Origs: 
   Dests: 
-(0 3) 20 LET A = 0
+20 (0 3) LET A = 0
   Origs: :start
   Dests: 50:auto
-(1 4) 50 IF A = 1 THEN 90
+50 (1 4) IF A = 1 THEN 90
   Origs: 20:auto
   Dests: 70:auto, 90:ifthen
-(0 1) 60 REM WE HAVE NO PIE
+60 (0 1) REM WE HAVE NO PIE
   Origs: 
   Dests: 
-(0 2) 70 PRINT "PIE IS NOT READY"
+70 (0 2) PRINT "PIE IS NOT READY"
   Origs: 50:auto
   Dests: 90:auto
-(0 2) 90 PRINT "DONE"
+90 (0 2) PRINT "DONE"
   Origs: 50:ifthen, 70:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 90:auto
   Dests: :stop
 

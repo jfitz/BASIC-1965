@@ -6,7 +6,7 @@ STOP in line 90
 21 (1) LET A = A + 0.2
 22 (1) LET A = A - 0.3
 30 F(I) (1) FOR I = 1 TO 500
-40 F(I) (500) IF A < 1.0 THEN 50
+40 F(I) (500) IF A < 1 THEN 50
 42 F(I) (0) PRINT "ERROR IN ITERATION"; I
 49 F(I) (0) STOP
 50 F(I) (500) LET A = A + A

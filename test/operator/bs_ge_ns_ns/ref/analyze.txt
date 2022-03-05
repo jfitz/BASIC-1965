@@ -19,28 +19,28 @@ Halstead complexity:
  intelligence: 22.230
  time: 0.046
 
-(0 1) 10 REM TEST GE OPERATOR
+10 (0 1) REM TEST GE OPERATOR
   Origs: 
   Dests: 
-(0 3) 20 LET A = 40
+20 (0 3) LET A = 40
   Origs: :start
   Dests: 30:auto
-(0 3) 30 LET B = 30
+30 (0 3) LET B = 30
   Origs: 20:auto
   Dests: 40:auto
-(1 4) 40 IF A >= B THEN 70
+40 (1 4) IF A >= B THEN 70
   Origs: 30:auto
   Dests: 50:auto, 70:ifthen
-(0 2) 50 PRINT "FAILURE"
+50 (0 2) PRINT "FAILURE"
   Origs: 40:auto
   Dests: 60:auto
-(0 2) 60 GOTO 90
+60 (0 2) GOTO 90
   Origs: 50:auto
   Dests: 90:goto
-(0 2) 70 PRINT "SUCCESS"
+70 (0 2) PRINT "SUCCESS"
   Origs: 40:ifthen
   Dests: 90:auto
-(0 1) 90 END
+90 (0 1) END
   Origs: 60:goto, 70:auto
   Dests: :stop
 

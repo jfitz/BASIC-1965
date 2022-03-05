@@ -1,110 +1,110 @@
-40: DATA 1.2, 2.15, 0.65, 4.3, 2
-900: DATA 5, 3, 0, 2, 2
-F(I) 10: FOR I = 1 TO 5
+40 DATA 1.2, 2.15, 0.65, 4.3, 2
+900 DATA 5, 3, 0, 2, 2
+10 F(I) FOR I = 1 TO 5
  I = 1
  terminated:false
-F(I) 20: READ P(I)
+20 F(I) READ P(I)
  I: 1
  P(1) = 1.2
-F(I) 30: NEXT I
+30 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 20: READ P(I)
+20 F(I) READ P(I)
  I: 2
  P(2) = 2.15
-F(I) 30: NEXT I
+30 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 20: READ P(I)
+20 F(I) READ P(I)
  I: 3
  P(3) = 0.65
-F(I) 30: NEXT I
+30 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 20: READ P(I)
+20 F(I) READ P(I)
  I: 4
  P(4) = 4.3
-F(I) 30: NEXT I
+30 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 20: READ P(I)
+20 F(I) READ P(I)
  I: 5
  P(5) = 2
-F(I) 30: NEXT I
+30 F(I) NEXT I
  I: 5
  terminated:true
-100: LET S = 0
+100 LET S = 0
  S = 0
-F(I) 110: FOR I = 1 TO 5
+110 F(I) FOR I = 1 TO 5
  I = 1
  terminated:false
-F(I) 120: READ N
+120 F(I) READ N
  N = 5
-F(I) 130: LET S = S + N * P(I)
+130 F(I) LET S = S + N * P(I)
  S: 0
  N: 5
  I: 1
  P(1): 1.2
  S = 6
-F(I) 140: NEXT I
+140 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 120: READ N
+120 F(I) READ N
  N = 3
-F(I) 130: LET S = S + N * P(I)
+130 F(I) LET S = S + N * P(I)
  S: 6
  N: 3
  I: 2
  P(2): 2.15
  S = 12.45
-F(I) 140: NEXT I
+140 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 120: READ N
+120 F(I) READ N
  N = 0
-F(I) 130: LET S = S + N * P(I)
+130 F(I) LET S = S + N * P(I)
  S: 12.45
  N: 0
  I: 3
  P(3): 0.65
  S = 12.45
-F(I) 140: NEXT I
+140 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 120: READ N
+120 F(I) READ N
  N = 2
-F(I) 130: LET S = S + N * P(I)
+130 F(I) LET S = S + N * P(I)
  S: 12.45
  N: 2
  I: 4
  P(4): 4.3
  S = 21.05
-F(I) 140: NEXT I
+140 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 120: READ N
+120 F(I) READ N
  N = 2
-F(I) 130: LET S = S + N * P(I)
+130 F(I) LET S = S + N * P(I)
  S: 21.05
  N: 2
  I: 5
  P(5): 2
  S = 25.05
-F(I) 140: NEXT I
+140 F(I) NEXT I
  I: 5
  terminated:true
-150: PRINT "TOTAL ORDER $" S
+150 PRINT "TOTAL ORDER $" S
 TOTAL ORDER $
  S: 25.05
  25.05
-999: END
+999 END
 STOP in line 999
 

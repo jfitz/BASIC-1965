@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 10.397
  time: 0.031
 
-(0 1) 10 REM MATRIX ASSIGNMENT
+10 (0 1) REM MATRIX ASSIGNMENT
   Origs: 
   Dests: 
-(0 2) 20 DIM A(6, 2)
+20 (0 2) DIM A(6, 2)
   Origs: :start
   Dests: 100:auto
-(0 2) 100 MAT INPUT A
+100 (0 2) MAT INPUT A
   Origs: 20:auto
   Dests: 150:auto
-(0 2) 150 PRINT "MATRIX A"
+150 (0 2) PRINT "MATRIX A"
   Origs: 100:auto
   Dests: 160:auto
-(0 2) 160 MAT PRINT A
+160 (0 2) MAT PRINT A
   Origs: 150:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 160:auto
   Dests: :stop
 

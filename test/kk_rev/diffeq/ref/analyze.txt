@@ -19,64 +19,64 @@ Halstead complexity:
  intelligence: 25.383
  time: 3.384
 
-FNF(_,_) (0 3) 10 DEF FNF(X, Y) = SQR(X * X + Y * Y)
+10 FNF(_,_) (0 3) DEF FNF(X, Y) = SQR(X * X + Y * Y)
   Origs: 170:function, 200:function
   Dests: 
-(0 0) 20 
+20 (0 0) 
   Origs: 
   Dests: 
-(4 5) 100 READ X0, X1, Y0, H
+100 (4 5) READ X0, X1, Y0, H
   Origs: :start
   Dests: 110:auto
-(0 3) 110 PRINT " X", " Y"
+110 (0 3) PRINT " X", " Y"
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 PRINT
+120 (0 2) PRINT
   Origs: 110:auto
   Dests: 130:auto
-(0 3) 130 PRINT X0, Y0
+130 (0 3) PRINT X0, Y0
   Origs: 120:auto
   Dests: 140:auto
-(0 3) 140 LET Y = Y0
+140 (0 3) LET Y = Y0
   Origs: 130:auto
   Dests: 160:auto
-(0 0) 150 
+150 (0 0) 
   Origs: 
   Dests: 
-F(X) (1 5) 160 FOR X = X0 TO X1 - H STEP H
+160 F(X) (1 5) FOR X = X0 TO X1 - H STEP H
   Origs: 140:auto
   Dests: 170:fornext, 230:fornext
-F(X) (0 5) 170 LET D1 = FNF(X, Y)
+170 F(X) (0 5) LET D1 = FNF(X, Y)
   Origs: 160:fornext
   Dests: 10:function, 180:auto
-F(X) (0 3) 180 LET Y1 = Y
+180 F(X) (0 3) LET Y1 = Y
   Origs: 170:auto
   Dests: 190:auto
-F(X) (0 7) 190 LET Y = Y + D1 * H / 2
+190 F(X) (0 7) LET Y = Y + D1 * H / 2
   Origs: 180:auto
   Dests: 200:auto
-F(X) (0 5) 200 LET D2 = FNF(X + H / 2, Y)
+200 F(X) (0 5) LET D2 = FNF(X + H / 2, Y)
   Origs: 190:auto
   Dests: 10:function, 210:auto
-F(X) (0 6) 210 LET Y = Y1 + D2 * H
+210 F(X) (0 6) LET Y = Y1 + D2 * H
   Origs: 200:auto
   Dests: 220:auto
-F(X) (0 4) 220 PRINT X + H, Y
+220 F(X) (0 4) PRINT X + H, Y
   Origs: 210:auto
   Dests: 230:auto
-F(X) (0 1) 230 NEXT X
+230 F(X) (0 1) NEXT X
   Origs: 160:fornext, 220:auto
   Dests: 999:auto
-(0 0) 240 
+240 (0 0) 
   Origs: 
   Dests: 
-(0 2) 900 DATA 0, 1, 1
+900 (0 2) DATA 0, 1, 1
   Origs: 
   Dests: 
-(0 2) 910 DATA 0.1
+910 (0 2) DATA 0.1
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 230:auto
   Dests: :stop
 

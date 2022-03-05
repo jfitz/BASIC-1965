@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 97.062
  time: 0.111
 
-(0 1) 10 REM TEST OPTION PROMPT_COUNT
+10 (0 1) REM TEST OPTION PROMPT_COUNT
   Origs: 
   Dests: 
-(4 5) 110 INPUT "ENTER 4 NUMBERS: "; A1, A2, A3, A4
+110 (4 5) INPUT "ENTER 4 NUMBERS: "; A1, A2, A3, A4
   Origs: :start
   Dests: 120:auto
-(0 6) 120 PRINT "YOU ENTERED: "; A1; A2; A3; A4
+120 (0 6) PRINT "YOU ENTERED: "; A1; A2; A3; A4
   Origs: 110:auto
   Dests: 200:auto
-(0 2) 200 OPTION PROMPT_COUNT TRUE
+200 (0 2) OPTION PROMPT_COUNT TRUE
   Origs: 120:auto
   Dests: 210:auto
-(4 5) 210 INPUT "ENTER 4 NUMBERS: "; B1, B2, B3, B4
+210 (4 5) INPUT "ENTER 4 NUMBERS: "; B1, B2, B3, B4
   Origs: 200:auto
   Dests: 220:auto
-(0 6) 220 PRINT "YOU ENTERED: "; B1; B2; B3; B4
+220 (0 6) PRINT "YOU ENTERED: "; B1; B2; B3; B4
   Origs: 210:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 220:auto
   Dests: :stop
 

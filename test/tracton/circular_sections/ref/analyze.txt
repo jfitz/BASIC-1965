@@ -19,64 +19,64 @@ Halstead complexity:
  intelligence: 35.835
  time: 1.004
 
-(0 1) 10 REM THIS PROGRAM COMPUTES THE PARAMETERS
+10 (0 1) REM THIS PROGRAM COMPUTES THE PARAMETERS
   Origs: 
   Dests: 
-(0 1) 20 REM CONNECTED WITH A CIRCULAR SECTION
+20 (0 1) REM CONNECTED WITH A CIRCULAR SECTION
   Origs: 
   Dests: 
-(0 2) 30 PRINT "RADIUS"
+30 (0 2) PRINT "RADIUS"
   Origs: :start, 190:goto
   Dests: 40:auto
-(1 2) 40 INPUT R
+40 (1 2) INPUT R
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 LET P = 3.14159
+50 (0 3) LET P = 3.14159
   Origs: 40:auto
   Dests: 60:auto
-(0 4) 60 LET D = 2 * R
+60 (0 4) LET D = 2 * R
   Origs: 50:auto
   Dests: 70:auto
-(0 7) 70 LET I = (P * (D ^ 4)) / 64
+70 (0 7) LET I = (P * (D ^ 4)) / 64
   Origs: 60:auto
   Dests: 80:auto
-(0 4) 80 LET J = I * 2
+80 (0 4) LET J = I * 2
   Origs: 70:auto
   Dests: 90:auto
-(0 7) 90 LET A = (P * (D ^ 2)) / 4
+90 (0 7) LET A = (P * (D ^ 2)) / 4
   Origs: 80:auto
   Dests: 100:auto
-(0 3) 100 PRINT "MOMENT OF INERTIA = "; I
+100 (0 3) PRINT "MOMENT OF INERTIA = "; I
   Origs: 90:auto
   Dests: 110:auto
-(0 3) 110 PRINT "POLAR MOMENT OF INERTIA = "; J
+110 (0 3) PRINT "POLAR MOMENT OF INERTIA = "; J
   Origs: 100:auto
   Dests: 120:auto
-(0 3) 120 PRINT "AREA OF SECTION = "; A
+120 (0 3) PRINT "AREA OF SECTION = "; A
   Origs: 110:auto
   Dests: 130:auto
-(0 2) 130 PRINT "*************************"
+130 (0 2) PRINT "*************************"
   Origs: 120:auto
   Dests: 140:auto
-(0 2) 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+140 (0 2) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
   Origs: 130:auto
   Dests: 150:auto
-(1 2) 150 INPUT L
+150 (1 2) INPUT L
   Origs: 140:auto
   Dests: 160:auto
-(1 4) 160 IF L = 1 THEN 180
+160 (1 4) IF L = 1 THEN 180
   Origs: 150:auto
   Dests: 170:auto, 180:ifthen
-(0 1) 170 STOP
+170 (0 1) STOP
   Origs: 160:auto
   Dests: :stop
-(0 2) 180 PRINT
+180 (0 2) PRINT
   Origs: 160:ifthen
   Dests: 190:auto
-(0 3) 190 GOTO 30
+190 (0 3) GOTO 30
   Origs: 180:auto
   Dests: 30:goto
-(0 1) 200 END
+200 (0 1) END
   Origs: 
   Dests: :stop
 

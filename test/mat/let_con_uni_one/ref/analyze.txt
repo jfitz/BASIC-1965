@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 13.755
  time: 0.197
 
-(0 1) 10 REM TEST
+10 (0 1) REM TEST
   Origs: 
   Dests: 
-(0 7) 20 MAT M = CON(4) * -1
+20 (0 7) MAT M = CON(4) * -1
   Origs: :start
   Dests: 30:auto
-(0 2) 30 MAT PRINT M
+30 (0 2) MAT PRINT M
   Origs: 20:auto
   Dests: 40:auto
-(0 7) 40 MAT M2 = CON(4, 3) * -3
+40 (0 7) MAT M2 = CON(4, 3) * -3
   Origs: 30:auto
   Dests: 50:auto
-(0 2) 50 MAT PRINT M2
+50 (0 2) MAT PRINT M2
   Origs: 40:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 50:auto
   Dests: :stop
 

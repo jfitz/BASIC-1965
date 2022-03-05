@@ -1,23 +1,23 @@
-F(I) 20: FOR I = 1 TO 5
+20 F(I) FOR I = 1 TO 5
  I = 1
  terminated:false
-F(I) 30: PRINT "BEFORE: "; I
+30 F(I) PRINT "BEFORE: "; I
 BEFORE: 
  I: 1
  1
-F(I) 40: LET I = 10
+40 F(I) LET I = 10
  I = 10
-F(I) 50: PRINT "AFTER: "; I
+50 F(I) PRINT "AFTER: "; I
 AFTER: 
  I: 10
  10
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 10
  terminated:true
-70: PRINT "FINAL: "; I
+70 PRINT "FINAL: "; I
 FINAL: 
  I: 10
  10
-90: END
+90 END
 STOP in line 90
 

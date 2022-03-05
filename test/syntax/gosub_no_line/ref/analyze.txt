@@ -19,20 +19,20 @@ Halstead complexity:
  intelligence: 11.090
  time: 0.003
 
-(0 1) 10 REM TEST TARGET LINE NUMBER PRECHECK
+10 (0 1) REM TEST TARGET LINE NUMBER PRECHECK
   Origs: 
   Dests: 
-(0 2) 20 PRINT "START PROGRAM"
+20 (0 2) PRINT "START PROGRAM"
   Origs: :start
   Dests: 80:auto
-(0 2) 80 GOSUB 100
+80 (0 2) GOSUB 100
    ERROR: Line number 100 not found
   Origs: 20:auto
   Dests: 90:auto, 100:gosub
-(0 2) 90 PRINT "END PROGRAM"
+90 (0 2) PRINT "END PROGRAM"
   Origs: 80:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 90:auto
   Dests: :stop
 

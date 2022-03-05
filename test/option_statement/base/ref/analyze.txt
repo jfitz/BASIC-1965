@@ -19,46 +19,46 @@ Halstead complexity:
  intelligence: 11.411
  time: 0.842
 
-(0 1) 10 REM TEST THE OPTION STATEMENT
+10 (0 1) REM TEST THE OPTION STATEMENT
   Origs: 
   Dests: 
-(0 2) 20 DIM A(10)
+20 (0 2) DIM A(10)
   Origs: :start
   Dests: 30:auto
-F(I) (1 3) 30 FOR I = 1 TO 10
+30 F(I) (1 3) FOR I = 1 TO 10
   Origs: 20:auto
   Dests: 40:fornext, 50:fornext
-F(I) (0 3) 40 LET A(I) = I
+40 F(I) (0 3) LET A(I) = I
   Origs: 30:fornext
   Dests: 50:auto
-F(I) (0 1) 50 NEXT I
+50 F(I) (0 1) NEXT I
   Origs: 30:fornext, 40:auto
   Dests: 100:auto
-(0 2) 100 OPTION BASE 0
+100 (0 2) OPTION BASE 0
   Origs: 50:auto
   Dests: 110:auto
-F(I) (1 3) 110 FOR I = 0 TO 10
+110 F(I) (1 3) FOR I = 0 TO 10
   Origs: 100:auto
   Dests: 120:fornext, 130:fornext
-F(I) (0 3) 120 PRINT I; A(I)
+120 F(I) (0 3) PRINT I; A(I)
   Origs: 110:fornext
   Dests: 130:auto
-F(I) (0 1) 130 NEXT I
+130 F(I) (0 1) NEXT I
   Origs: 110:fornext, 120:auto
   Dests: 200:auto
-(0 2) 200 OPTION BASE 1
+200 (0 2) OPTION BASE 1
   Origs: 130:auto
   Dests: 210:auto
-F(I) (1 3) 210 FOR I = 0 TO 10
+210 F(I) (1 3) FOR I = 0 TO 10
   Origs: 200:auto
   Dests: 220:fornext, 230:fornext
-F(I) (0 3) 220 PRINT I; A(I)
+220 F(I) (0 3) PRINT I; A(I)
   Origs: 210:fornext
   Dests: 230:auto
-F(I) (0 1) 230 NEXT I
+230 F(I) (0 1) NEXT I
   Origs: 210:fornext, 220:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 230:auto
   Dests: :stop
 

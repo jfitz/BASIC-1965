@@ -1,332 +1,332 @@
-15: OPTION BASE 0
-20: DIM A(5, 5)
-F(I) 30: FOR I = 0 TO 5
+15 OPTION BASE 0
+20 DIM A(5, 5)
+30 F(I) FOR I = 0 TO 5
  I = 0
  terminated:false
-F(I,J) 40: FOR J = 0 TO 5
+40 F(I,J) FOR J = 0 TO 5
  J = 0
  terminated:false
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 0
  J: 0
  A(0,0) = 0
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 0
  terminated:false
  J = 1
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 0
  J: 1
  A(0,1) = 1
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 0
  J: 2
  A(0,2) = 2
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 0
  J: 3
  A(0,3) = 3
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 0
  J: 4
  A(0,4) = 4
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 0
  J: 5
  A(0,5) = 5
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-F(I,J) 40: FOR J = 0 TO 5
+40 F(I,J) FOR J = 0 TO 5
  J = 0
  terminated:false
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 0
  A(1,0) = 1
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 0
  terminated:false
  J = 1
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 1
  A(1,1) = 2
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 2
  A(1,2) = 3
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 3
  A(1,3) = 4
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 4
  A(1,4) = 5
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 5
  A(1,5) = 6
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I,J) 40: FOR J = 0 TO 5
+40 F(I,J) FOR J = 0 TO 5
  J = 0
  terminated:false
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 0
  A(2,0) = 2
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 0
  terminated:false
  J = 1
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 1
  A(2,1) = 3
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 2
  A(2,2) = 4
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 3
  A(2,3) = 5
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 4
  A(2,4) = 6
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 5
  A(2,5) = 7
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I,J) 40: FOR J = 0 TO 5
+40 F(I,J) FOR J = 0 TO 5
  J = 0
  terminated:false
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 0
  A(3,0) = 3
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 0
  terminated:false
  J = 1
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 1
  A(3,1) = 4
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 2
  A(3,2) = 5
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 3
  A(3,3) = 6
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 4
  A(3,4) = 7
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 5
  A(3,5) = 8
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I,J) 40: FOR J = 0 TO 5
+40 F(I,J) FOR J = 0 TO 5
  J = 0
  terminated:false
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 0
  A(4,0) = 4
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 0
  terminated:false
  J = 1
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 1
  A(4,1) = 5
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 2
  A(4,2) = 6
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 3
  A(4,3) = 7
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 4
  A(4,4) = 8
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 5
  A(4,5) = 9
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I,J) 40: FOR J = 0 TO 5
+40 F(I,J) FOR J = 0 TO 5
  J = 0
  terminated:false
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 0
  A(5,0) = 5
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 0
  terminated:false
  J = 1
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 1
  A(5,1) = 6
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 2
  A(5,2) = 7
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 3
  A(5,3) = 8
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 4
  A(5,4) = 9
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 50: LET A(I, J) = I + J
+50 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 5
  A(5,5) = 10
-F(I,J) 60: NEXT J
+60 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 70: NEXT I
+70 F(I) NEXT I
  I: 5
  terminated:true
-100: MAT B = A
+100 MAT B = A
  A(0,0): 0
  A(0,1): 1
  A(0,2): 2
@@ -399,7 +399,7 @@ F(I) 70: NEXT I
  B(5,3) = 8
  B(5,4) = 9
  B(5,5) = 10
-110: MAT PRINT B
+110 MAT PRINT B
  B(0,0): 0
  B(0,1): 1
  B(0,2): 2
@@ -443,241 +443,241 @@ F(I) 70: NEXT I
  4               5               6               7               8               9
  5               6               7               8               9               10
 
-115: OPTION BASE 1
-120: DIM A(5, 5)
-F(I) 130: FOR I = 1 TO 5
+115 OPTION BASE 1
+120 DIM A(5, 5)
+130 F(I) FOR I = 1 TO 5
  I = 1
  terminated:false
-F(I,J) 140: FOR J = 1 TO 5
+140 F(I,J) FOR J = 1 TO 5
  J = 1
  terminated:false
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 1
  A(1,1) = 2
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 2
  A(1,2) = 3
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 3
  A(1,3) = 4
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 4
  A(1,4) = 5
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 1
  J: 5
  A(1,5) = 6
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 170: NEXT I
+170 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I,J) 140: FOR J = 1 TO 5
+140 F(I,J) FOR J = 1 TO 5
  J = 1
  terminated:false
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 1
  A(2,1) = 3
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 2
  A(2,2) = 4
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 3
  A(2,3) = 5
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 4
  A(2,4) = 6
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 2
  J: 5
  A(2,5) = 7
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 170: NEXT I
+170 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I,J) 140: FOR J = 1 TO 5
+140 F(I,J) FOR J = 1 TO 5
  J = 1
  terminated:false
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 1
  A(3,1) = 4
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 2
  A(3,2) = 5
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 3
  A(3,3) = 6
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 4
  A(3,4) = 7
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 3
  J: 5
  A(3,5) = 8
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 170: NEXT I
+170 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I,J) 140: FOR J = 1 TO 5
+140 F(I,J) FOR J = 1 TO 5
  J = 1
  terminated:false
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 1
  A(4,1) = 5
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 2
  A(4,2) = 6
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 3
  A(4,3) = 7
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 4
  A(4,4) = 8
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 4
  J: 5
  A(4,5) = 9
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 170: NEXT I
+170 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I,J) 140: FOR J = 1 TO 5
+140 F(I,J) FOR J = 1 TO 5
  J = 1
  terminated:false
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 1
  A(5,1) = 6
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 2
  A(5,2) = 7
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 3
  A(5,3) = 8
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 4
  A(5,4) = 9
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 150: LET A(I, J) = I + J
+150 F(I,J) LET A(I, J) = I + J
  I: 5
  J: 5
  A(5,5) = 10
-F(I,J) 160: NEXT J
+160 F(I,J) NEXT J
  J: 5
  terminated:true
-F(I) 170: NEXT I
+170 F(I) NEXT I
  I: 5
  terminated:true
-200: MAT B = A
+200 MAT B = A
  A(1,1): 2
  A(1,2): 3
  A(1,3): 4
@@ -728,7 +728,7 @@ F(I) 170: NEXT I
  B(5,3) = 8
  B(5,4) = 9
  B(5,5) = 10
-210: MAT PRINT B
+210 MAT PRINT B
  B(1,1): 2
  B(1,2): 3
  B(1,3): 4
@@ -760,6 +760,6 @@ F(I) 170: NEXT I
  5               6               7               8               9
  6               7               8               9               10
 
-999: END
+999 END
 STOP in line 999
 

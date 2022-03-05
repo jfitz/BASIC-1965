@@ -19,19 +19,19 @@ Halstead complexity:
  intelligence: 12.942
  time: 0.278
 
-(0 4) 10 PRINT " X", "EXP(X)", "LOG(X)"
+10 (0 4) PRINT " X", "EXP(X)", "LOG(X)"
   Origs: :start
   Dests: 20:auto
-F(X) (1 4) 20 FOR X = 1 TO 3.5 STEP 0.5
+20 F(X) (1 4) FOR X = 1 TO 3.5 STEP 0.5
   Origs: 10:auto
   Dests: 30:fornext, 40:fornext
-F(X) (0 6) 30 PRINT X, EXP(X), LOG(X)
+30 F(X) (0 6) PRINT X, EXP(X), LOG(X)
   Origs: 20:fornext
   Dests: 40:auto
-F(X) (0 1) 40 NEXT X
+40 F(X) (0 1) NEXT X
   Origs: 20:fornext, 30:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 40:auto
   Dests: :stop
 

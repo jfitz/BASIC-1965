@@ -19,19 +19,19 @@ Halstead complexity:
  intelligence: 12.973
  time: 0.017
 
-(0 1) 10 REM TEST INFINITE LOOP CHECK
+10 (0 1) REM TEST INFINITE LOOP CHECK
   Origs: 
   Dests: 
-(0 3) 20 LET A = 1
+20 (0 3) LET A = 1
   Origs: :start, 40:ifthen
   Dests: 30:auto
-(0 2) 30 PRINT A
+30 (0 2) PRINT A
   Origs: 20:auto
   Dests: 40:auto
-(1 5) 40 IF A < 10 THEN 20
+40 (1 5) IF A < 10 THEN 20
   Origs: 30:auto
   Dests: 20:ifthen, 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 40:auto
   Dests: :stop
 

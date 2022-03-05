@@ -1,1387 +1,1387 @@
-9000: DATA 123, 456, 789, 333, -1
-9010: DATA 987, 654, 321, 0, -1
-10: DIM A(100), B(100), C(200), X(100)
-110: GOSUB 1000
-G(1010) F(I) 1010: FOR I = 0 TO 100
+9000 DATA 123, 456, 789, 333, -1
+9010 DATA 987, 654, 321, 0, -1
+10 DIM A(100), B(100), C(200), X(100)
+110 GOSUB 1000
+1010 G(1010) F(I) FOR I = 0 TO 100
  I = 0
  terminated:false
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 0
  X(0) = 123
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 0
  X(0): 123
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 1
  X(1) = 456
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 1
  X(1): 456
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 2
  X(2) = 789
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 2
  X(2): 789
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 3
  X(3) = 333
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 3
  X(3): 333
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 4
  X(4) = -1
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 4
  X(4): -1
  X(I) < 0: true
-G(1010) F(I) 1100: LET L = I - 1
+1100 G(1010) F(I) LET L = I - 1
  I: 4
  L = 3
-G(1010) F(I,I) 1110: FOR I = 0 TO L
+1110 G(1010) F(I,I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
  terminated:false
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 0
  L: 3
  X(3): 333
  C(0) = 333
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 1
  L: 3
  X(2): 789
  C(1) = 789
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 2
  L: 3
  X(1): 456
  C(2) = 456
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 3
  L: 3
  X(0): 123
  C(3) = 123
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 3
  terminated:true
-G(1010) F(I) 1140: RETURN
-120: GOSUB 2000
-G(2010) 2010: IF C(L) >= 100 THEN 2200
+1140 G(1010) F(I) RETURN
+120 GOSUB 2000
+2010 G(2010) IF C(L) >= 100 THEN 2200
  L: 3
  C(3): 123
  C(L) >= 100: true
-G(2010) 2200: LET L9 = L
+2200 G(2010) LET L9 = L
  L: 3
  L9 = 3
-G(2010) F(I) 2210: FOR I = L9 TO 0 STEP -1
+2210 G(2010) F(I) FOR I = L9 TO 0 STEP -1
  L9: 3
  I = 3
  L9 = 3
  -1 = -1
  terminated:false
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 3
  C(3): 123
  N = 123
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 123
  Q: 100
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 123
  M: 1
  Q: 100
  N = 23
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 23
  Q: 10
  M = 2
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 23
  M: 2
  Q: 10
  N = 3
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 2
  2 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 3
  Q: 1
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 3
  M: 3
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 3
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 3
  terminated:false
  I = 2
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 2
  C(2): 456
  N = 456
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 456
  Q: 100
  M = 4
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 456
  M: 4
  Q: 100
  N = 56
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 4
  4 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 56
  Q: 10
  M = 5
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 56
  M: 5
  Q: 10
  N = 6
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 5
  5 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 6
  Q: 1
  M = 6
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 6
  M: 6
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 6
  6 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 2
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 2
  terminated:false
  I = 1
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 1
  C(1): 789
  N = 789
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 789
  Q: 100
  M = 7
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 789
  M: 7
  Q: 100
  N = 89
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 7
  7 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 89
  Q: 10
  M = 8
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 89
  M: 8
  Q: 10
  N = 9
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 8
  8 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 9
  Q: 1
  M = 9
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 9
  M: 9
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 9
  9 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 1
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 1
  terminated:false
  I = 0
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 0
  C(0): 333
  N = 333
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 333
  Q: 100
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 333
  M: 3
  Q: 100
  N = 33
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 33
  Q: 10
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 33
  M: 3
  Q: 10
  N = 3
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 3
  Q: 1
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 3
  M: 3
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 0
  I = 0: true
-G(2010) F(I) 2400: PRINT
+2400 G(2010) F(I) PRINT
 
-G(2010) F(I) 2405: PRINT
+2405 G(2010) F(I) PRINT
 
-G(2010) F(I) 2410: RETURN
-F(I) 130: FOR I = 0 TO L
+2410 G(2010) F(I) RETURN
+130 F(I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
  terminated:false
-F(I) 140: LET A(I) = C(I)
+140 F(I) LET A(I) = C(I)
  I: 0
  C(0): 333
  A(0) = 333
-F(I) 150: NEXT I
+150 F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-F(I) 140: LET A(I) = C(I)
+140 F(I) LET A(I) = C(I)
  I: 1
  C(1): 789
  A(1) = 789
-F(I) 150: NEXT I
+150 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 140: LET A(I) = C(I)
+140 F(I) LET A(I) = C(I)
  I: 2
  C(2): 456
  A(2) = 456
-F(I) 150: NEXT I
+150 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 140: LET A(I) = C(I)
+140 F(I) LET A(I) = C(I)
  I: 3
  C(3): 123
  A(3) = 123
-F(I) 150: NEXT I
+150 F(I) NEXT I
  I: 3
  terminated:true
-160: LET L1 = L
+160 LET L1 = L
  L: 3
  L1 = 3
-170: PRINT "PLUS"
+170 PRINT "PLUS"
 PLUS
-180: PRINT
+180 PRINT
 
-210: GOSUB 1000
-G(1010) F(I) 1010: FOR I = 0 TO 100
+210 GOSUB 1000
+1010 G(1010) F(I) FOR I = 0 TO 100
  I = 0
  terminated:false
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 0
  X(0) = 987
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 0
  X(0): 987
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 1
  X(1) = 654
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 1
  X(1): 654
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 2
  X(2) = 321
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 2
  X(2): 321
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 3
  X(3) = 0
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 3
  X(3): 0
  X(I) < 0: false
-G(1010) F(I) 1040: NEXT I
+1040 G(1010) F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-G(1010) F(I) 1020: READ X(I)
+1020 G(1010) F(I) READ X(I)
  I: 4
  X(4) = -1
-G(1010) F(I) 1030: IF X(I) < 0 THEN 1100
+1030 G(1010) F(I) IF X(I) < 0 THEN 1100
  I: 4
  X(4): -1
  X(I) < 0: true
-G(1010) F(I) 1100: LET L = I - 1
+1100 G(1010) F(I) LET L = I - 1
  I: 4
  L = 3
-G(1010) F(I,I) 1110: FOR I = 0 TO L
+1110 G(1010) F(I,I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
  terminated:false
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 0
  L: 3
  X(3): 0
  C(0) = 0
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 1
  L: 3
  X(2): 321
  C(1) = 321
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 2
  L: 3
  X(1): 654
  C(2) = 654
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-G(1010) F(I,I) 1120: LET C(I) = X(L - I)
+1120 G(1010) F(I,I) LET C(I) = X(L - I)
  I: 3
  L: 3
  X(0): 987
  C(3) = 987
-G(1010) F(I) 1130: NEXT I
+1130 G(1010) F(I) NEXT I
  I: 3
  terminated:true
-G(1010) F(I) 1140: RETURN
-220: GOSUB 2000
-G(2010) 2010: IF C(L) >= 100 THEN 2200
+1140 G(1010) F(I) RETURN
+220 GOSUB 2000
+2010 G(2010) IF C(L) >= 100 THEN 2200
  L: 3
  C(3): 987
  C(L) >= 100: true
-G(2010) 2200: LET L9 = L
+2200 G(2010) LET L9 = L
  L: 3
  L9 = 3
-G(2010) F(I) 2210: FOR I = L9 TO 0 STEP -1
+2210 G(2010) F(I) FOR I = L9 TO 0 STEP -1
  L9: 3
  I = 3
  L9 = 3
  -1 = -1
  terminated:false
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 3
  C(3): 987
  N = 987
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 987
  Q: 100
  M = 9
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 987
  M: 9
  Q: 100
  N = 87
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 9
  9 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 87
  Q: 10
  M = 8
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 87
  M: 8
  Q: 10
  N = 7
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 8
  8 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 7
  Q: 1
  M = 7
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 7
  M: 7
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 7
  7 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 3
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 3
  terminated:false
  I = 2
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 2
  C(2): 654
  N = 654
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 654
  Q: 100
  M = 6
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 654
  M: 6
  Q: 100
  N = 54
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 6
  6 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 54
  Q: 10
  M = 5
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 54
  M: 5
  Q: 10
  N = 4
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 5
  5 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 4
  Q: 1
  M = 4
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 4
  M: 4
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 4
  4 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 2
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 2
  terminated:false
  I = 1
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 1
  C(1): 321
  N = 321
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 321
  Q: 100
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 321
  M: 3
  Q: 100
  N = 21
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 21
  Q: 10
  M = 2
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 21
  M: 2
  Q: 10
  N = 1
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 2
  2 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 1
  Q: 1
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 1
  M: 1
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 1
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 1
  terminated:false
  I = 0
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 0
  C(0): 0
  N = 0
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 0
  Q: 100
  M = 0
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 0
  M: 0
  Q: 100
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 0
  0 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 0
  Q: 10
  M = 0
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 0
  M: 0
  Q: 10
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 0
  0 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 0
  Q: 1
  M = 0
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 0
  M: 0
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 0
  0 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 0
  I = 0: true
-G(2010) F(I) 2400: PRINT
+2400 G(2010) F(I) PRINT
 
-G(2010) F(I) 2405: PRINT
+2405 G(2010) F(I) PRINT
 
-G(2010) F(I) 2410: RETURN
-F(I) 230: FOR I = 0 TO L
+2410 G(2010) F(I) RETURN
+230 F(I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
  terminated:false
-F(I) 240: LET B(I) = C(I)
+240 F(I) LET B(I) = C(I)
  I: 0
  C(0): 0
  B(0) = 0
-F(I) 250: NEXT I
+250 F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-F(I) 240: LET B(I) = C(I)
+240 F(I) LET B(I) = C(I)
  I: 1
  C(1): 321
  B(1) = 321
-F(I) 250: NEXT I
+250 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 240: LET B(I) = C(I)
+240 F(I) LET B(I) = C(I)
  I: 2
  C(2): 654
  B(2) = 654
-F(I) 250: NEXT I
+250 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 240: LET B(I) = C(I)
+240 F(I) LET B(I) = C(I)
  I: 3
  C(3): 987
  B(3) = 987
-F(I) 250: NEXT I
+250 F(I) NEXT I
  I: 3
  terminated:true
-260: LET L2 = L
+260 LET L2 = L
  L: 3
  L2 = 3
-270: PRINT "EQUALS"
+270 PRINT "EQUALS"
 EQUALS
-280: PRINT
+280 PRINT
 
-310: IF L1 < L2 THEN 420
+310 IF L1 < L2 THEN 420
  L1: 3
  L2: 3
  L1 < L2: false
-320: LET L = L1
+320 LET L = L1
  L1: 3
  L = 3
-F(I) 330: FOR I = L2 + 1 TO L
+330 F(I) FOR I = L2 + 1 TO L
  L2: 3
  L: 3
  I = 4
  L2 + 1 = 4
  L = 3
  terminated:true
-F(I) 350: NEXT I
+350 F(I) NEXT I
  I: 4
  terminated:true
-360: GOTO 500
-F(I) 500: FOR I = 0 TO L
+360 GOTO 500
+500 F(I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
  terminated:false
-F(I) 510: LET C(I) = A(I) + B(I)
+510 F(I) LET C(I) = A(I) + B(I)
  I: 0
  A(0): 333
  B(0): 0
  C(0) = 333
-F(I) 520: NEXT I
+520 F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-F(I) 510: LET C(I) = A(I) + B(I)
+510 F(I) LET C(I) = A(I) + B(I)
  I: 1
  A(1): 789
  B(1): 321
  C(1) = 1110
-F(I) 520: NEXT I
+520 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 510: LET C(I) = A(I) + B(I)
+510 F(I) LET C(I) = A(I) + B(I)
  I: 2
  A(2): 456
  B(2): 654
  C(2) = 1110
-F(I) 520: NEXT I
+520 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 510: LET C(I) = A(I) + B(I)
+510 F(I) LET C(I) = A(I) + B(I)
  I: 3
  A(3): 123
  B(3): 987
  C(3) = 1110
-F(I) 520: NEXT I
+520 F(I) NEXT I
  I: 3
  terminated:true
-610: GOSUB 3000
-G(3010) 3010: LET C(L + 1) = 0
+610 GOSUB 3000
+3010 G(3010) LET C(L + 1) = 0
  L: 3
  C(4) = 0
-G(3010) F(I) 3020: FOR I = 0 TO L
+3020 G(3010) F(I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
  terminated:false
-G(3010) F(I) 3030: LET N = C(I)
+3030 G(3010) F(I) LET N = C(I)
  I: 0
  C(0): 333
  N = 333
-G(3010) F(I) 3040: LET M = INT(N / 1000)
+3040 G(3010) F(I) LET M = INT(N / 1000)
  N: 333
  M = 0
-G(3010) F(I) 3050: LET C(I) = N - 1000 * M
+3050 G(3010) F(I) LET C(I) = N - 1000 * M
  I: 0
  N: 333
  M: 0
  C(0) = 333
-G(3010) F(I) 3060: LET C(I + 1) = C(I + 1) + M
+3060 G(3010) F(I) LET C(I + 1) = C(I + 1) + M
  I: 0
  C(1): 1110
  M: 0
  C(1) = 1110
-G(3010) F(I) 3070: NEXT I
+3070 G(3010) F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-G(3010) F(I) 3030: LET N = C(I)
+3030 G(3010) F(I) LET N = C(I)
  I: 1
  C(1): 1110
  N = 1110
-G(3010) F(I) 3040: LET M = INT(N / 1000)
+3040 G(3010) F(I) LET M = INT(N / 1000)
  N: 1110
  M = 1
-G(3010) F(I) 3050: LET C(I) = N - 1000 * M
+3050 G(3010) F(I) LET C(I) = N - 1000 * M
  I: 1
  N: 1110
  M: 1
  C(1) = 110
-G(3010) F(I) 3060: LET C(I + 1) = C(I + 1) + M
+3060 G(3010) F(I) LET C(I + 1) = C(I + 1) + M
  I: 1
  C(2): 1110
  M: 1
  C(2) = 1111
-G(3010) F(I) 3070: NEXT I
+3070 G(3010) F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-G(3010) F(I) 3030: LET N = C(I)
+3030 G(3010) F(I) LET N = C(I)
  I: 2
  C(2): 1111
  N = 1111
-G(3010) F(I) 3040: LET M = INT(N / 1000)
+3040 G(3010) F(I) LET M = INT(N / 1000)
  N: 1111
  M = 1
-G(3010) F(I) 3050: LET C(I) = N - 1000 * M
+3050 G(3010) F(I) LET C(I) = N - 1000 * M
  I: 2
  N: 1111
  M: 1
  C(2) = 111
-G(3010) F(I) 3060: LET C(I + 1) = C(I + 1) + M
+3060 G(3010) F(I) LET C(I + 1) = C(I + 1) + M
  I: 2
  C(3): 1110
  M: 1
  C(3) = 1111
-G(3010) F(I) 3070: NEXT I
+3070 G(3010) F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-G(3010) F(I) 3030: LET N = C(I)
+3030 G(3010) F(I) LET N = C(I)
  I: 3
  C(3): 1111
  N = 1111
-G(3010) F(I) 3040: LET M = INT(N / 1000)
+3040 G(3010) F(I) LET M = INT(N / 1000)
  N: 1111
  M = 1
-G(3010) F(I) 3050: LET C(I) = N - 1000 * M
+3050 G(3010) F(I) LET C(I) = N - 1000 * M
  I: 3
  N: 1111
  M: 1
  C(3) = 111
-G(3010) F(I) 3060: LET C(I + 1) = C(I + 1) + M
+3060 G(3010) F(I) LET C(I + 1) = C(I + 1) + M
  I: 3
  C(4): 0
  M: 1
  C(4) = 1
-G(3010) F(I) 3070: NEXT I
+3070 G(3010) F(I) NEXT I
  I: 3
  terminated:true
-G(3010) 3080: IF M = 0 THEN 3100
+3080 G(3010) IF M = 0 THEN 3100
  M: 1
  M = 0: false
-G(3010) 3090: LET L = L + 1
+3090 G(3010) LET L = L + 1
  L: 3
  L = 4
-G(3010) 3100: RETURN
-620: GOSUB 2000
-G(2010) 2010: IF C(L) >= 100 THEN 2200
+3100 G(3010) RETURN
+620 GOSUB 2000
+2010 G(2010) IF C(L) >= 100 THEN 2200
  L: 4
  C(4): 1
  C(L) >= 100: false
-G(2010) 2020: PRINT "      ";
+2020 G(2010) PRINT "      ";
       
-G(2010) 2030: IF C(L) >= 10 THEN 2100
+2030 G(2010) IF C(L) >= 10 THEN 2100
  L: 4
  C(4): 1
  C(L) >= 10: false
-G(2010) 2040: PRINT "      ";
+2040 G(2010) PRINT "      ";
       
-G(2010) 2050: PRINT C(L); ",   ";
+2050 G(2010) PRINT C(L); ",   ";
  L: 4
  C(4): 1
  1 ,   
-G(2010) 2060: LET L9 = L - 1
+2060 G(2010) LET L9 = L - 1
  L: 4
  L9 = 3
-G(2010) 2070: GOTO 2210
-G(2010) F(I) 2210: FOR I = L9 TO 0 STEP -1
+2070 G(2010) GOTO 2210
+2210 G(2010) F(I) FOR I = L9 TO 0 STEP -1
  L9: 3
  I = 3
  L9 = 3
  -1 = -1
  terminated:false
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 3
  C(3): 111
  N = 111
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 111
  Q: 100
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 111
  M: 1
  Q: 100
  N = 11
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 11
  Q: 10
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 11
  M: 1
  Q: 10
  N = 1
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 1
  Q: 1
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 1
  M: 1
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 3
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 3
  terminated:false
  I = 2
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 2
  C(2): 111
  N = 111
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 111
  Q: 100
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 111
  M: 1
  Q: 100
  N = 11
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 11
  Q: 10
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 11
  M: 1
  Q: 10
  N = 1
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 1
  Q: 1
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 1
  M: 1
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 2
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 2
  terminated:false
  I = 1
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 1
  C(1): 110
  N = 110
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 110
  Q: 100
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 110
  M: 1
  Q: 100
  N = 10
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 10
  Q: 10
  M = 1
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 10
  M: 1
  Q: 10
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 1
  1 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 0
  Q: 1
  M = 0
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 0
  M: 0
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 0
  0 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 1
  I = 0: false
-G(2010) F(I) 2310: PRINT ",   ";
+2310 G(2010) F(I) PRINT ",   ";
 ,   
-G(2010) F(I) 2320: NEXT I
+2320 G(2010) F(I) NEXT I
  I: 1
  terminated:false
  I = 0
-G(2010) F(I) 2220: LET N = C(I)
+2220 G(2010) F(I) LET N = C(I)
  I: 0
  C(0): 333
  N = 333
-G(2010) F(I) 2230: LET Q = 100
+2230 G(2010) F(I) LET Q = 100
  Q = 100
-G(2010) F(I,J) 2240: FOR J = 1 TO 3
+2240 G(2010) F(I,J) FOR J = 1 TO 3
  J = 1
  terminated:false
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 333
  Q: 100
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 333
  M: 3
  Q: 100
  N = 33
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 100
  Q = 10
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 33
  Q: 10
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 33
  M: 3
  Q: 10
  N = 3
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 10
  Q = 1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(2010) F(I,J) 2250: LET M = INT(N / Q)
+2250 G(2010) F(I,J) LET M = INT(N / Q)
  N: 3
  Q: 1
  M = 3
-G(2010) F(I,J) 2260: LET N = N - M * Q
+2260 G(2010) F(I,J) LET N = N - M * Q
  N: 3
  M: 3
  Q: 1
  N = 0
-G(2010) F(I,J) 2270: LET Q = Q / 10
+2270 G(2010) F(I,J) LET Q = Q / 10
  Q: 1
  Q = 0.1
-G(2010) F(I,J) 2280: PRINT M;
+2280 G(2010) F(I,J) PRINT M;
  M: 3
  3 
-G(2010) F(I,J) 2290: NEXT J
+2290 G(2010) F(I,J) NEXT J
  J: 3
  terminated:true
-G(2010) F(I) 2300: IF I = 0 THEN 2400
+2300 G(2010) F(I) IF I = 0 THEN 2400
  I: 0
  I = 0: true
-G(2010) F(I) 2400: PRINT
+2400 G(2010) F(I) PRINT
 
-G(2010) F(I) 2405: PRINT
+2405 G(2010) F(I) PRINT
 
-G(2010) F(I) 2410: RETURN
-630: STOP
+2410 G(2010) F(I) RETURN
+630 STOP
 STOP in line 630
 

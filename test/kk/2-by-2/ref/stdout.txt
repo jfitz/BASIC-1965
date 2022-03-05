@@ -9,13 +9,13 @@ TABLE                           CHI-SQUARE
 Error 103 Out of data in line 130
 
 100 (1) PRINT "TABLE", "   ", "CHI-SQUARE"
-110 (0)
+110 (0) 
 120 (3) PRINT
 130 (2) READ A, B, C, D
 140 (2) LET N = A + B + C + D
 150 (2) LET E = ABS(A * D - B * C) - N / 2
 160 (2) LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
-170 (0)
+170 (0) 
 180 (2) PRINT A, B
 190 (2) PRINT C, D, X
 200 (2) GOTO 120

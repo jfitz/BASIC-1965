@@ -19,46 +19,46 @@ Halstead complexity:
  intelligence: 124.590
  time: 0.115
 
-(0 1) 10 REM TEST PROGRAM FOR NUMERIC VALUES
+10 (0 1) REM TEST PROGRAM FOR NUMERIC VALUES
   Origs: 
   Dests: 
-(0 3) 20 LET A = 1
+20 (0 3) LET A = 1
   Origs: :start
   Dests: 30:auto
-(0 4) 30 LET B = -3
+30 (0 4) LET B = -3
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 LET C = 2.5
+40 (0 3) LET C = 2.5
   Origs: 30:auto
   Dests: 50:auto
-(0 4) 50 LET D = -4.8
+50 (0 4) LET D = -4.8
   Origs: 40:auto
   Dests: 60:auto
-(0 3) 60 LET E = 1.492E3
+60 (0 3) LET E = 1492
   Origs: 50:auto
   Dests: 70:auto
-(0 4) 70 LET F = -2.65E5
+70 (0 4) LET F = -265000
   Origs: 60:auto
   Dests: 80:auto
-(0 3) 80 LET G = 1E-4
+80 (0 3) LET G = 0.0001
   Origs: 70:auto
   Dests: 90:auto
-(0 4) 90 LET H = -4E-2
+90 (0 4) LET H = -0.04
   Origs: 80:auto
   Dests: 100:auto
-(0 3) 100 LET I = .8
+100 (0 3) LET I = 0.8
   Origs: 90:auto
   Dests: 200:auto
-(0 5) 200 PRINT A, B, C, D
+200 (0 5) PRINT A, B, C, D
   Origs: 100:auto
   Dests: 210:auto
-(0 5) 210 PRINT E, F, G, H
+210 (0 5) PRINT E, F, G, H
   Origs: 200:auto
   Dests: 220:auto
-(0 2) 220 PRINT I
+220 (0 2) PRINT I
   Origs: 210:auto
   Dests: 500:auto
-(0 1) 500 END
+500 (0 1) END
   Origs: 220:auto
   Dests: :stop
 

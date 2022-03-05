@@ -14,13 +14,13 @@
 STOP in line 999
 
 10 FNF(_,_) (0) DEF FNF(X, Y) = SQR(X * X + Y * Y)
-20 (0)
+20 (0) 
 100 (1) READ X0, X1, Y0, H
 110 (1) PRINT " X", " Y"
 120 (1) PRINT
 130 (1) PRINT X0, Y0
 140 (1) LET Y = Y0
-150 (0)
+150 (0) 
 160 F(X) (1) FOR X = X0 TO X1 - H STEP H
 170 F(X) (10) LET D1 = FNF(X, Y)
 180 F(X) (10) LET Y1 = Y
@@ -29,7 +29,7 @@ STOP in line 999
 210 F(X) (10) LET Y = Y1 + D2 * H
 220 F(X) (10) PRINT X + H, Y
 230 F(X) (10) NEXT X
-240 (0)
+240 (0) 
 900 (0) DATA 0, 1, 1
 910 (0) DATA 0.1
 999 (1) END

@@ -1,10 +1,10 @@
-12: OPTION LOCK_FORNEXT TRUE
-F(I) 20: FOR I = 1 TO 5
+12 OPTION LOCK_FORNEXT TRUE
+20 F(I) FOR I = 1 TO 5
  I = 1
  terminated:false
-F(I) 30: PRINT I
+30 F(I) PRINT I
  I: 1
  1
-F(I) 40: FORGET I
+40 F(I) FORGET I
 Error 131 Variable is locked for I in line 40
 

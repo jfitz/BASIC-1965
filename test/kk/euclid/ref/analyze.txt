@@ -19,40 +19,40 @@ Halstead complexity:
  intelligence: 22.518
  time: 1.096
 
-(0 4) 10 PRINT " A", " B", "G.C.D."
+10 (0 4) PRINT " A", " B", "G.C.D."
   Origs: :start
   Dests: 20:auto
-(2 3) 20 READ A, B
+20 (2 3) READ A, B
   Origs: 10:auto, 80:goto
   Dests: 30:auto
-(0 3) 30 PRINT A, B,
+30 (0 3) PRINT A, B,
   Origs: 20:auto
   Dests: 40:auto
-(0 4) 40 LET Q = INT(A / B)
+40 (0 4) LET Q = INT(A / B)
   Origs: 30:auto, 60:ifthen
   Dests: 45:auto
-(0 6) 45 LET R = A - Q * B
+45 (0 6) LET R = A - Q * B
   Origs: 40:auto
   Dests: 50:auto
-(0 3) 50 LET A = B
+50 (0 3) LET A = B
   Origs: 45:auto
   Dests: 55:auto
-(0 3) 55 LET B = R
+55 (0 3) LET B = R
   Origs: 50:auto
   Dests: 60:auto
-(1 5) 60 IF R > 0 THEN 40
+60 (1 5) IF R > 0 THEN 40
   Origs: 55:auto
   Dests: 40:ifthen, 70:auto
-(0 2) 70 PRINT A
+70 (0 2) PRINT A
   Origs: 60:auto
   Dests: 80:auto
-(0 3) 80 GOTO 20
+80 (0 3) GOTO 20
   Origs: 70:auto
   Dests: 20:goto
-(0 2) 90 DATA 130, 169, 243, 256, 123456789, 987654321
+90 (0 2) DATA 130, 169, 243, 256, 123456789, 987654321
   Origs: 
   Dests: 
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -19,46 +19,46 @@ Halstead complexity:
  intelligence: 23.445
  time: 0.319
 
-(0 1) 10 REM THIS PROGRAM COMPUTES HARMONIC NUMBERS
+10 (0 1) REM THIS PROGRAM COMPUTES HARMONIC NUMBERS
   Origs: 
   Dests: 
-(0 2) 20 PRINT "MAXIMUM TERM NUMBER"
+20 (0 2) PRINT "MAXIMUM TERM NUMBER"
   Origs: :start
   Dests: 30:auto
-(1 2) 30 INPUT N
+30 (1 2) INPUT N
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 LET K = 0
+40 (0 3) LET K = 0
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 LET D = 0
+50 (0 3) LET D = 0
   Origs: 40:auto
   Dests: 60:auto
-(0 3) 60 PRINT "TERM NUMBER", "TERM VALUE"
+60 (0 3) PRINT "TERM NUMBER", "TERM VALUE"
   Origs: 50:auto
   Dests: 70:auto
-F(I) (1 3) 70 FOR I = 0 TO N
+70 F(I) (1 3) FOR I = 0 TO N
   Origs: 60:auto
   Dests: 80:fornext, 120:fornext
-F(I) (0 4) 80 LET K = I + 1
+80 F(I) (0 4) LET K = I + 1
   Origs: 70:fornext
   Dests: 90:auto
-F(I) (0 4) 90 LET C = 1 / K
+90 F(I) (0 4) LET C = 1 / K
   Origs: 80:auto
   Dests: 100:auto
-F(I) (0 4) 100 LET D = D + C
+100 F(I) (0 4) LET D = D + C
   Origs: 90:auto
   Dests: 110:auto
-F(I) (0 3) 110 PRINT K, D
+110 F(I) (0 3) PRINT K, D
   Origs: 100:auto
   Dests: 120:auto
-F(I) (0 1) 120 NEXT I
+120 F(I) (0 1) NEXT I
   Origs: 70:fornext, 110:auto
   Dests: 130:auto
-(0 2) 130 PRINT
+130 (0 2) PRINT
   Origs: 120:auto
   Dests: 140:auto
-(0 1) 140 END
+140 (0 1) END
   Origs: 130:auto
   Dests: :stop
 

@@ -19,56 +19,56 @@ Halstead complexity:
  intelligence: 12.338
  time: 4.344
 
-(1 2) 10 READ N
+10 (1 2) READ N
   Origs: :start
   Dests: 20:auto
-F(I) (1 4) 20 FOR I = 1 TO N - 1
+20 F(I) (1 4) FOR I = 1 TO N - 1
   Origs: 10:auto
   Dests: 30:fornext, 60:fornext
-F(I,J) (1 4) 30 FOR J = 1 TO N - 1
+30 F(I,J) (1 4) FOR J = 1 TO N - 1
   Origs: 20:fornext
   Dests: 40:fornext, 50:fornext
-F(I,J) (0 8) 40 LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) (0 8) LET P(I, J) = I * J - INT(I * J / N) * N
   Origs: 30:fornext
   Dests: 50:auto
-F(I,J) (0 1) 50 NEXT J
+50 F(I,J) (0 1) NEXT J
   Origs: 30:fornext, 40:auto
   Dests: 60:auto
-F(I) (0 1) 60 NEXT I
+60 F(I) (0 1) NEXT I
   Origs: 20:fornext, 50:auto
   Dests: 70:auto
-F(I) (1 4) 70 FOR I = 1 TO N - 1
+70 F(I) (1 4) FOR I = 1 TO N - 1
   Origs: 60:auto
   Dests: 80:fornext, 120:fornext
-F(I,J) (1 4) 80 FOR J = 1 TO N - 1
+80 F(I,J) (1 4) FOR J = 1 TO N - 1
   Origs: 70:fornext
   Dests: 90:fornext, 100:fornext
-F(I,J) (1 4) 90 IF P(I, J) = 1 THEN 140
+90 F(I,J) (1 4) IF P(I, J) = 1 THEN 140
   Origs: 80:fornext
   Dests: 100:auto, 140:ifthen
-F(I,J) (0 1) 100 NEXT J
+100 F(I,J) (0 1) NEXT J
   Origs: 80:fornext, 90:auto
   Dests: 110:auto
-(0 3) 110 PRINT I; "DOES NOT HAVE AN INVERSE"
+110 (0 3) PRINT I; "DOES NOT HAVE AN INVERSE"
   Origs: 100:auto
   Dests: 120:auto
-F(I,J) (0 1) 120 NEXT I
+120 F(I,J) (0 1) NEXT I
   Origs: 70:fornext, 110:auto, 150:goto
   Dests: 130:auto
-F(I) (0 1) 130 STOP
+130 F(I) (0 1) STOP
     WARNING: Terminating statement in FOR/NEXT
   Origs: 120:auto
   Dests: :stop
-F(I,J) (0 4) 140 PRINT I; "HAS AN INVERSE" J
+140 F(I,J) (0 4) PRINT I; "HAS AN INVERSE" J
   Origs: 90:ifthen
   Dests: 150:auto
-F(I,J) (0 3) 150 GOTO 120
+150 F(I,J) (0 3) GOTO 120
   Origs: 140:auto
   Dests: 120:goto
-(0 2) 160 DATA 7
+160 (0 2) DATA 7
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

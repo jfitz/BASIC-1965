@@ -19,23 +19,23 @@ Halstead complexity:
  intelligence: 13.183
  time: 0.027
 
-(0 1) 10 REM TEST OF CONSTANT EXPRESSION
+10 (0 1) REM TEST OF CONSTANT EXPRESSION
   Origs: 
   Dests: 
-(1 4) 20 IF 3 < 7 THEN 90
+20 (1 4) IF 3 < 7 THEN 90
    WARNING: Constant expression
   Origs: :start
   Dests: 30:auto, 90:ifthen
-(0 2) 30 PRINT "FAILURE"
+30 (0 2) PRINT "FAILURE"
   Origs: 20:auto
   Dests: 80:auto
-(0 2) 80 GOTO 99
+80 (0 2) GOTO 99
   Origs: 30:auto
   Dests: 99:goto
-(0 2) 90 PRINT "SUCCESS"
+90 (0 2) PRINT "SUCCESS"
   Origs: 20:ifthen
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 80:goto, 90:auto
   Dests: :stop
 

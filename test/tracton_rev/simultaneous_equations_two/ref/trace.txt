@@ -1,10 +1,10 @@
-30: PRINT "AX + BY = E"
+30 PRINT "AX + BY = E"
 AX + BY = E
-40: PRINT "CX + DY = F"
+40 PRINT "CX + DY = F"
 CX + DY = F
-50: PRINT "ENTER PARAMETERS A,B,C,D,E,F"
+50 PRINT "ENTER PARAMETERS A,B,C,D,E,F"
 ENTER PARAMETERS A,B,C,D,E,F
-60: INPUT A, B, C, D, E, F
+60 INPUT A, B, C, D, E, F
 ? 10,20,45,23,56,78
  A = 10
  B = 20
@@ -12,56 +12,56 @@ ENTER PARAMETERS A,B,C,D,E,F
  D = 23
  E = 56
  F = 78
-70: LET M = (A * D) - (B * C)
+70 LET M = (A * D) - (B * C)
  A: 10
  D: 23
  B: 20
  C: 45
  M = -670
-80: IF M = 0 THEN 140
+80 IF M = 0 THEN 140
  M: -670
  M = 0: false
-90: LET X = ((E * D) - (B * F)) / M
+90 LET X = ((E * D) - (B * F)) / M
  E: 56
  D: 23
  B: 20
  F: 78
  M: -670
  X = 0.40597
-100: LET Y = ((A * F) - (E * C)) / M
+100 LET Y = ((A * F) - (E * C)) / M
  A: 10
  F: 78
  E: 56
  C: 45
  M: -670
  Y = 2.59701
-110: PRINT "SOLUTION", "X = "; X, "Y = "; Y
+110 PRINT "SOLUTION", "X = "; X, "Y = "; Y
 SOLUTION        X = 
  X: 0.40597
  0.40597        Y = 
  Y: 2.59701
  2.59701
-120: PRINT "********************"
+120 PRINT "********************"
 ********************
-130: GOTO 160
-160: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+130 GOTO 160
+160 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
-170: INPUT L
+170 INPUT L
 ? 1
  L = 1
-180: IF L = 1 THEN 200
+180 IF L = 1 THEN 200
  L: 1
  L = 1: true
-200: PRINT
+200 PRINT
 
-210: GOTO 30
-30: PRINT "AX + BY = E"
+210 GOTO 30
+30 PRINT "AX + BY = E"
 AX + BY = E
-40: PRINT "CX + DY = F"
+40 PRINT "CX + DY = F"
 CX + DY = F
-50: PRINT "ENTER PARAMETERS A,B,C,D,E,F"
+50 PRINT "ENTER PARAMETERS A,B,C,D,E,F"
 ENTER PARAMETERS A,B,C,D,E,F
-60: INPUT A, B, C, D, E, F
+60 INPUT A, B, C, D, E, F
 ? 10,10,789,2,2,6
  A = 10
  B = 10
@@ -69,46 +69,46 @@ ENTER PARAMETERS A,B,C,D,E,F
  D = 2
  E = 2
  F = 6
-70: LET M = (A * D) - (B * C)
+70 LET M = (A * D) - (B * C)
  A: 10
  D: 2
  B: 10
  C: 789
  M = -7870
-80: IF M = 0 THEN 140
+80 IF M = 0 THEN 140
  M: -7870
  M = 0: false
-90: LET X = ((E * D) - (B * F)) / M
+90 LET X = ((E * D) - (B * F)) / M
  E: 2
  D: 2
  B: 10
  F: 6
  M: -7870
  X = 0.00711563
-100: LET Y = ((A * F) - (E * C)) / M
+100 LET Y = ((A * F) - (E * C)) / M
  A: 10
  F: 6
  E: 2
  C: 789
  M: -7870
  Y = 0.192884
-110: PRINT "SOLUTION", "X = "; X, "Y = "; Y
+110 PRINT "SOLUTION", "X = "; X, "Y = "; Y
 SOLUTION        X = 
  X: 0.00711563
  0.00711563     Y = 
  Y: 0.192884
  0.192884
-120: PRINT "********************"
+120 PRINT "********************"
 ********************
-130: GOTO 160
-160: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+130 GOTO 160
+160 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
-170: INPUT L
+170 INPUT L
 ? 0
  L = 0
-180: IF L = 1 THEN 200
+180 IF L = 1 THEN 200
  L: 0
  L = 1: false
-190: STOP
+190 STOP
 STOP in line 190
 

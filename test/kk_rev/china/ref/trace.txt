@@ -1,1184 +1,1184 @@
-900: DATA 4
-910: DATA 2, 3, 19, 100, 4, 31, 25, 101
-10: READ N, B, P
+900 DATA 4
+910 DATA 2, 3, 19, 100, 4, 31, 25, 101
+10 READ N, B, P
  N = 4
  B = 2
  P = 3
-F(I) 20: FOR I = 2 TO N
+20 F(I) FOR I = 2 TO N
  N: 4
  I = 2
  N = 4
  terminated:false
-F(I) 30: READ A, M
+30 F(I) READ A, M
  A = 19
  M = 100
-F(I,K) 40: FOR K = 0 TO M - 1
+40 F(I,K) FOR K = 0 TO M - 1
  M: 100
  K = 0
  M - 1 = 99
  terminated:false
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 0
  P: 3
  X = 2
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 2
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 0
  terminated:false
  K = 1
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 1
  P: 3
  X = 5
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 5
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 1
  terminated:false
  K = 2
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 2
  P: 3
  X = 8
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 8
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 2
  terminated:false
  K = 3
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 3
  P: 3
  X = 11
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 11
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 3
  terminated:false
  K = 4
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 4
  P: 3
  X = 14
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 14
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 4
  terminated:false
  K = 5
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 5
  P: 3
  X = 17
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 17
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 5
  terminated:false
  K = 6
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 6
  P: 3
  X = 20
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 20
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 6
  terminated:false
  K = 7
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 7
  P: 3
  X = 23
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 23
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 7
  terminated:false
  K = 8
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 8
  P: 3
  X = 26
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 26
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 8
  terminated:false
  K = 9
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 9
  P: 3
  X = 29
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 29
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 9
  terminated:false
  K = 10
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 10
  P: 3
  X = 32
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 32
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 10
  terminated:false
  K = 11
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 11
  P: 3
  X = 35
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 35
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 11
  terminated:false
  K = 12
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 12
  P: 3
  X = 38
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 38
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 12
  terminated:false
  K = 13
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 13
  P: 3
  X = 41
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 41
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 13
  terminated:false
  K = 14
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 14
  P: 3
  X = 44
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 44
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 14
  terminated:false
  K = 15
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 15
  P: 3
  X = 47
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 47
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 15
  terminated:false
  K = 16
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 16
  P: 3
  X = 50
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 50
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 16
  terminated:false
  K = 17
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 17
  P: 3
  X = 53
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 53
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 17
  terminated:false
  K = 18
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 18
  P: 3
  X = 56
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 56
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 18
  terminated:false
  K = 19
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 19
  P: 3
  X = 59
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 59
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 19
  terminated:false
  K = 20
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 20
  P: 3
  X = 62
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 62
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 20
  terminated:false
  K = 21
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 21
  P: 3
  X = 65
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 65
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 21
  terminated:false
  K = 22
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 22
  P: 3
  X = 68
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 68
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 22
  terminated:false
  K = 23
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 23
  P: 3
  X = 71
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 71
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 23
  terminated:false
  K = 24
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 24
  P: 3
  X = 74
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 74
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 24
  terminated:false
  K = 25
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 25
  P: 3
  X = 77
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 77
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 25
  terminated:false
  K = 26
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 26
  P: 3
  X = 80
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 80
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 26
  terminated:false
  K = 27
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 27
  P: 3
  X = 83
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 83
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 27
  terminated:false
  K = 28
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 28
  P: 3
  X = 86
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 86
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 28
  terminated:false
  K = 29
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 29
  P: 3
  X = 89
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 89
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 29
  terminated:false
  K = 30
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 30
  P: 3
  X = 92
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 92
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 30
  terminated:false
  K = 31
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 31
  P: 3
  X = 95
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 95
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 31
  terminated:false
  K = 32
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 32
  P: 3
  X = 98
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 98
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 32
  terminated:false
  K = 33
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 33
  P: 3
  X = 101
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 101
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 33
  terminated:false
  K = 34
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 34
  P: 3
  X = 104
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 104
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 34
  terminated:false
  K = 35
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 35
  P: 3
  X = 107
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 107
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 35
  terminated:false
  K = 36
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 36
  P: 3
  X = 110
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 110
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 36
  terminated:false
  K = 37
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 37
  P: 3
  X = 113
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 113
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 37
  terminated:false
  K = 38
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 38
  P: 3
  X = 116
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 116
  M: 100
  A: 19
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 38
  terminated:false
  K = 39
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 2
  K: 39
  P: 3
  X = 119
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 119
  M: 100
  A: 19
  X - M * INT(X / M) = A: true
-F(I,K) 100: LET P = P * M
+100 F(I,K) LET P = P * M
  P: 3
  M: 100
  P = 300
-F(I,K) 110: LET B = X
+110 F(I,K) LET B = X
  X: 119
  B = 119
-F(I,K) 120: NEXT I
+120 F(I,K) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 30: READ A, M
+30 F(I) READ A, M
  A = 4
  M = 31
-F(I,K) 40: FOR K = 0 TO M - 1
+40 F(I,K) FOR K = 0 TO M - 1
  M: 31
  K = 0
  M - 1 = 30
  terminated:false
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 0
  P: 300
  X = 119
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 119
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 0
  terminated:false
  K = 1
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 1
  P: 300
  X = 419
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 419
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 1
  terminated:false
  K = 2
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 2
  P: 300
  X = 719
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 719
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 2
  terminated:false
  K = 3
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 3
  P: 300
  X = 1019
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 1019
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 3
  terminated:false
  K = 4
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 4
  P: 300
  X = 1319
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 1319
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 4
  terminated:false
  K = 5
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 5
  P: 300
  X = 1619
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 1619
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 5
  terminated:false
  K = 6
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 6
  P: 300
  X = 1919
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 1919
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 6
  terminated:false
  K = 7
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 7
  P: 300
  X = 2219
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 2219
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 7
  terminated:false
  K = 8
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 8
  P: 300
  X = 2519
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 2519
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 8
  terminated:false
  K = 9
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 9
  P: 300
  X = 2819
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 2819
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 9
  terminated:false
  K = 10
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 10
  P: 300
  X = 3119
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 3119
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 10
  terminated:false
  K = 11
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 11
  P: 300
  X = 3419
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 3419
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 11
  terminated:false
  K = 12
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 12
  P: 300
  X = 3719
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 3719
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 12
  terminated:false
  K = 13
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 13
  P: 300
  X = 4019
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 4019
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 13
  terminated:false
  K = 14
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 14
  P: 300
  X = 4319
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 4319
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 14
  terminated:false
  K = 15
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 15
  P: 300
  X = 4619
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 4619
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 15
  terminated:false
  K = 16
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 16
  P: 300
  X = 4919
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 4919
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 16
  terminated:false
  K = 17
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 17
  P: 300
  X = 5219
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 5219
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 17
  terminated:false
  K = 18
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 18
  P: 300
  X = 5519
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 5519
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 18
  terminated:false
  K = 19
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 19
  P: 300
  X = 5819
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 5819
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 19
  terminated:false
  K = 20
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 20
  P: 300
  X = 6119
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 6119
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 20
  terminated:false
  K = 21
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 21
  P: 300
  X = 6419
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 6419
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 21
  terminated:false
  K = 22
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 22
  P: 300
  X = 6719
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 6719
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 22
  terminated:false
  K = 23
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 23
  P: 300
  X = 7019
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 7019
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 23
  terminated:false
  K = 24
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 24
  P: 300
  X = 7319
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 7319
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 24
  terminated:false
  K = 25
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 25
  P: 300
  X = 7619
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 7619
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 25
  terminated:false
  K = 26
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 26
  P: 300
  X = 7919
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 7919
  M: 31
  A: 4
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 26
  terminated:false
  K = 27
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 119
  K: 27
  P: 300
  X = 8219
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 8219
  M: 31
  A: 4
  X - M * INT(X / M) = A: true
-F(I,K) 100: LET P = P * M
+100 F(I,K) LET P = P * M
  P: 300
  M: 31
  P = 9300
-F(I,K) 110: LET B = X
+110 F(I,K) LET B = X
  X: 8219
  B = 8219
-F(I,K) 120: NEXT I
+120 F(I,K) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 30: READ A, M
+30 F(I) READ A, M
  A = 25
  M = 101
-F(I,K) 40: FOR K = 0 TO M - 1
+40 F(I,K) FOR K = 0 TO M - 1
  M: 101
  K = 0
  M - 1 = 100
  terminated:false
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 0
  P: 9300
  X = 8219
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 8219
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 0
  terminated:false
  K = 1
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 1
  P: 9300
  X = 17519
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 17519
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 1
  terminated:false
  K = 2
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 2
  P: 9300
  X = 26819
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 26819
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 2
  terminated:false
  K = 3
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 3
  P: 9300
  X = 36119
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 36119
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 3
  terminated:false
  K = 4
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 4
  P: 9300
  X = 45419
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 45419
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 4
  terminated:false
  K = 5
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 5
  P: 9300
  X = 54719
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 54719
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 5
  terminated:false
  K = 6
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 6
  P: 9300
  X = 64019
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 64019
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 6
  terminated:false
  K = 7
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 7
  P: 9300
  X = 73319
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 73319
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 7
  terminated:false
  K = 8
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 8
  P: 9300
  X = 82619
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 82619
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 8
  terminated:false
  K = 9
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 9
  P: 9300
  X = 91919
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 91919
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 9
  terminated:false
  K = 10
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 10
  P: 9300
  X = 101219
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 101219
  M: 101
  A: 25
  X - M * INT(X / M) = A: false
-F(I,K) 70: NEXT K
+70 F(I,K) NEXT K
  K: 10
  terminated:false
  K = 11
-F(I,K) 50: LET X = B + K * P
+50 F(I,K) LET X = B + K * P
  B: 8219
  K: 11
  P: 9300
  X = 110519
-F(I,K) 60: IF X - M * INT(X / M) = A THEN 100
+60 F(I,K) IF X - M * INT(X / M) = A THEN 100
  X: 110519
  M: 101
  A: 25
  X - M * INT(X / M) = A: true
-F(I,K) 100: LET P = P * M
+100 F(I,K) LET P = P * M
  P: 9300
  M: 101
  P = 939300
-F(I,K) 110: LET B = X
+110 F(I,K) LET B = X
  X: 110519
  B = 110519
-F(I,K) 120: NEXT I
+120 F(I,K) NEXT I
  I: 4
  terminated:true
-F(I) 130: PRINT "X  IS CONGRUENT TO " B; " MODULO " P
+130 F(I) PRINT "X  IS CONGRUENT TO " B; " MODULO " P
 X  IS CONGRUENT TO 
  B: 110519
  110519  MODULO 
  P: 939300
  939300
-F(I) 999: END
+999 F(I) END
 STOP in line 999
 

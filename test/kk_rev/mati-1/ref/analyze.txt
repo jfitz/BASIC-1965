@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 61.912
  time: 0.129
 
-(0 3) 100 DIM A(6), B(2)
+100 (0 3) DIM A(6), B(2)
   Origs: :start
   Dests: 120:auto
-(2 3) 120 MAT READ A, B
+120 (2 3) MAT READ A, B
   Origs: 100:auto
   Dests: 130:auto
-(0 2) 130 PRINT "EXAMPLE 1"
+130 (0 2) PRINT "EXAMPLE 1"
   Origs: 120:auto
   Dests: 140:auto
-(0 2) 140 PRINT
+140 (0 2) PRINT
   Origs: 130:auto
   Dests: 150:auto
-(0 3) 150 MAT PRINT A, B
+150 (0 3) MAT PRINT A, B
   Origs: 140:auto
   Dests: 999:auto
-(0 2) 900 DATA 21, 22, 23, 24, 25, 26, 11, 12
+900 (0 2) DATA 21, 22, 23, 24, 25, 26, 11, 12
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 150:auto
   Dests: :stop
 

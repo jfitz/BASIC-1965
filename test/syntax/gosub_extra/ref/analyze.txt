@@ -19,32 +19,32 @@ Halstead complexity:
  intelligence: 10.751
  time: 0.010
 
-(0 1) 10 REM TEST OF RETURN WITH EXTRA TEXT
+10 (0 1) REM TEST OF RETURN WITH EXTRA TEXT
   Origs: 
   Dests: 
-(0 2) 20 PRINT "START"
+20 (0 2) PRINT "START"
   Origs: :start
   Dests: 30:auto
-(0 2) 30 GOSUB 100
+30 (0 2) GOSUB 100
   Origs: 20:auto
   Dests: 40:auto, 110:gosub
-(0 2) 40 PRINT "DONE"
+40 (0 2) PRINT "DONE"
   Origs: 30:auto
   Dests: 50:auto
-(0 1) 50 STOP
+50 (0 1) STOP
   Origs: 40:auto
   Dests: :stop
-(0 1) 100 REM SUBROUTINE
+100 (0 1) REM SUBROUTINE
   Origs: 
   Dests: 
-G(110) (0 2) 110 PRINT "IN SUBROUTINE"
+110 G(110) (0 2) PRINT "IN SUBROUTINE"
   Origs: 30:gosub
   Dests: 120:auto
-G(110) (0 1) 120 RETURN H O M E
+120 G(110) (0 1) RETURN H O M E
     ERROR: Syntax error
   Origs: 110:auto
   Dests: 
-(0 1) 900 END
+900 (0 1) END
   Origs: 
   Dests: :stop
 

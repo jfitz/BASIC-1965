@@ -19,76 +19,76 @@ Halstead complexity:
  intelligence: 21.780
  time: 3.822
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(0 4) 15 PRINT "NUMBERS", "QUOTIENT", "MODULUS"
+15 (0 4) PRINT "NUMBERS", "QUOTIENT", "MODULUS"
   Origs: :start
   Dests: 20:auto
-(0 3) 20 LET A = 12
+20 (0 3) LET A = 12
   Origs: 15:auto
   Dests: 21:auto
-(0 3) 21 LET B = 7
+21 (0 3) LET B = 7
   Origs: 20:auto
   Dests: 22:auto
-(0 4) 22 LET Q = A / B
+22 (0 4) LET Q = A / B
   Origs: 21:auto
   Dests: 23:auto
-(0 4) 23 LET M = MOD(A, B)
+23 (0 4) LET M = MOD(A, B)
   Origs: 22:auto
   Dests: 24:auto
-(0 5) 24 PRINT A; B, Q, M
+24 (0 5) PRINT A; B, Q, M
   Origs: 23:auto
   Dests: 30:auto
-(0 4) 30 LET A = -12
+30 (0 4) LET A = -12
   Origs: 24:auto
   Dests: 31:auto
-(0 3) 31 LET B = 7
+31 (0 3) LET B = 7
   Origs: 30:auto
   Dests: 32:auto
-(0 4) 32 LET Q = A / B
+32 (0 4) LET Q = A / B
   Origs: 31:auto
   Dests: 33:auto
-(0 4) 33 LET M = MOD(A, B)
+33 (0 4) LET M = MOD(A, B)
   Origs: 32:auto
   Dests: 34:auto
-(0 5) 34 PRINT A; B, Q, M
+34 (0 5) PRINT A; B, Q, M
   Origs: 33:auto
   Dests: 40:auto
-(0 3) 40 LET A = 12
+40 (0 3) LET A = 12
   Origs: 34:auto
   Dests: 41:auto
-(0 4) 41 LET B = -7
+41 (0 4) LET B = -7
   Origs: 40:auto
   Dests: 42:auto
-(0 4) 42 LET Q = A / B
+42 (0 4) LET Q = A / B
   Origs: 41:auto
   Dests: 43:auto
-(0 4) 43 LET M = MOD(A, B)
+43 (0 4) LET M = MOD(A, B)
   Origs: 42:auto
   Dests: 44:auto
-(0 5) 44 PRINT A; B, Q, M
+44 (0 5) PRINT A; B, Q, M
   Origs: 43:auto
   Dests: 50:auto
-(0 4) 50 LET A = -12
+50 (0 4) LET A = -12
   Origs: 44:auto
   Dests: 51:auto
-(0 4) 51 LET B = -7
+51 (0 4) LET B = -7
   Origs: 50:auto
   Dests: 52:auto
-(0 4) 52 LET Q = A / B
+52 (0 4) LET Q = A / B
   Origs: 51:auto
   Dests: 53:auto
-(0 4) 53 LET M = MOD(A, B)
+53 (0 4) LET M = MOD(A, B)
   Origs: 52:auto
   Dests: 54:auto
-(0 5) 54 PRINT A; B, Q, M
+54 (0 5) PRINT A; B, Q, M
   Origs: 53:auto
   Dests: 90:auto
-(0 1) 90 STOP
+90 (0 1) STOP
   Origs: 54:auto
   Dests: :stop
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

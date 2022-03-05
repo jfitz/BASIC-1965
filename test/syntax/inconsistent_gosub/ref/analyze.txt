@@ -19,26 +19,26 @@ Halstead complexity:
  intelligence: 16.636
  time: 0.015
 
-(0 2) 10 PRINT "HELLO"
+10 (0 2) PRINT "HELLO"
   Origs: :start
   Dests: 20:auto
-(0 2) 20 GOSUB 200
+20 (0 2) GOSUB 200
   Origs: 10:auto
   Dests: 30:auto, 200:gosub
-(0 3) 30 LET A = 6
+30 (0 3) LET A = 6
   Origs: 20:auto
   Dests: 200:auto
-G(200) (0 2) 200 PRINT "START SUBROUTINE"
+200 G(200) (0 2) PRINT "START SUBROUTINE"
     WARNING: Inconsistent GOSUB origins
   Origs: 20:gosub, 30:auto
   Dests: 280:auto
-G(200) (0 2) 280 PRINT "END SUBROUTINE"
+280 G(200) (0 2) PRINT "END SUBROUTINE"
   Origs: 200:auto
   Dests: 290:auto
-G(200) (0 1) 290 RETURN
+290 G(200) (0 1) RETURN
   Origs: 280:auto
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

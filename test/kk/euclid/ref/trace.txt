@@ -1,276 +1,276 @@
-90: DATA 130, 169, 243, 256, 123456789, 987654321
-10: PRINT " A", " B", "G.C.D."
+90 DATA 130, 169, 243, 256, 123456789, 987654321
+10 PRINT " A", " B", "G.C.D."
  A               B              G.C.D.
-20: READ A, B
+20 READ A, B
  A = 130
  B = 169
-30: PRINT A, B,
+30 PRINT A, B,
  A: 130
  130            
  B: 169
  169            
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 130
  B: 169
  Q = 0
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 130
  Q: 0
  B: 169
  R = 130
-50: LET A = B
+50 LET A = B
  B: 169
  A = 169
-55: LET B = R
+55 LET B = R
  R: 130
  B = 130
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 130
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 169
  B: 130
  Q = 1
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 169
  Q: 1
  B: 130
  R = 39
-50: LET A = B
+50 LET A = B
  B: 130
  A = 130
-55: LET B = R
+55 LET B = R
  R: 39
  B = 39
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 39
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 130
  B: 39
  Q = 3
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 130
  Q: 3
  B: 39
  R = 13
-50: LET A = B
+50 LET A = B
  B: 39
  A = 39
-55: LET B = R
+55 LET B = R
  R: 13
  B = 13
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 13
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 39
  B: 13
  Q = 3
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 39
  Q: 3
  B: 13
  R = 0
-50: LET A = B
+50 LET A = B
  B: 13
  A = 13
-55: LET B = R
+55 LET B = R
  R: 0
  B = 0
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 0
  R > 0: false
-70: PRINT A
+70 PRINT A
  A: 13
  13
-80: GOTO 20
-20: READ A, B
+80 GOTO 20
+20 READ A, B
  A = 243
  B = 256
-30: PRINT A, B,
+30 PRINT A, B,
  A: 243
  243            
  B: 256
  256            
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 243
  B: 256
  Q = 0
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 243
  Q: 0
  B: 256
  R = 243
-50: LET A = B
+50 LET A = B
  B: 256
  A = 256
-55: LET B = R
+55 LET B = R
  R: 243
  B = 243
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 243
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 256
  B: 243
  Q = 1
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 256
  Q: 1
  B: 243
  R = 13
-50: LET A = B
+50 LET A = B
  B: 243
  A = 243
-55: LET B = R
+55 LET B = R
  R: 13
  B = 13
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 13
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 243
  B: 13
  Q = 18
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 243
  Q: 18
  B: 13
  R = 9
-50: LET A = B
+50 LET A = B
  B: 13
  A = 13
-55: LET B = R
+55 LET B = R
  R: 9
  B = 9
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 9
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 13
  B: 9
  Q = 1
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 13
  Q: 1
  B: 9
  R = 4
-50: LET A = B
+50 LET A = B
  B: 9
  A = 9
-55: LET B = R
+55 LET B = R
  R: 4
  B = 4
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 4
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 9
  B: 4
  Q = 2
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 9
  Q: 2
  B: 4
  R = 1
-50: LET A = B
+50 LET A = B
  B: 4
  A = 4
-55: LET B = R
+55 LET B = R
  R: 1
  B = 1
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 1
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 4
  B: 1
  Q = 4
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 4
  Q: 4
  B: 1
  R = 0
-50: LET A = B
+50 LET A = B
  B: 1
  A = 1
-55: LET B = R
+55 LET B = R
  R: 0
  B = 0
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 0
  R > 0: false
-70: PRINT A
+70 PRINT A
  A: 1
  1
-80: GOTO 20
-20: READ A, B
+80 GOTO 20
+20 READ A, B
  A = 123456789
  B = 987654321
-30: PRINT A, B,
+30 PRINT A, B,
  A: 123456789
  123456789      
  B: 987654321
  987654321      
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 123456789
  B: 987654321
  Q = 0
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 123456789
  Q: 0
  B: 987654321
  R = 123456789
-50: LET A = B
+50 LET A = B
  B: 987654321
  A = 987654321
-55: LET B = R
+55 LET B = R
  R: 123456789
  B = 123456789
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 123456789
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 987654321
  B: 123456789
  Q = 8
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 987654321
  Q: 8
  B: 123456789
  R = 9
-50: LET A = B
+50 LET A = B
  B: 123456789
  A = 123456789
-55: LET B = R
+55 LET B = R
  R: 9
  B = 9
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 9
  R > 0: true
-40: LET Q = INT(A / B)
+40 LET Q = INT(A / B)
  A: 123456789
  B: 9
  Q = 13717421
-45: LET R = A - Q * B
+45 LET R = A - Q * B
  A: 123456789
  Q: 13717421
  B: 9
  R = 0
-50: LET A = B
+50 LET A = B
  B: 9
  A = 9
-55: LET B = R
+55 LET B = R
  R: 0
  B = 0
-60: IF R > 0 THEN 40
+60 IF R > 0 THEN 40
  R: 0
  R > 0: false
-70: PRINT A
+70 PRINT A
  A: 9
  9
-80: GOTO 20
-20: READ A, B
+80 GOTO 20
+20 READ A, B
 Error 103 Out of data in line 20
 

@@ -433,20 +433,20 @@ class AbstractStatement
   def analyze_pretty(number)
     texts = []
 
-    text = ''
+    text = "#{number}"
 
-    text += "#{@part_of_user_function} " unless @part_of_user_function.nil?
+    text += " #{@part_of_user_function}" unless @part_of_user_function.nil?
 
-    text += "E(#{@part_of_onerror.map(&:to_s).join(',')}) " unless
+    text += " E(#{@part_of_onerror.map(&:to_s).join(',')})" unless
       @part_of_onerror.empty?
 
-    text += "G(#{@part_of_sub.map(&:to_s).join(',')}) " unless
+    text += " G(#{@part_of_sub.map(&:to_s).join(',')})" unless
       @part_of_sub.empty?
 
-    text += "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless
+    text += " F(#{@part_of_fornext.map(&:to_s).join(',')})" unless
       @part_of_fornext.empty?
 
-    text += "(#{@mccabe} #{@comprehension_effort}) #{number} #{pretty}"
+    text += " (#{@mccabe} #{@comprehension_effort}) #{pretty}"
 
     texts << text
 
@@ -668,28 +668,27 @@ class AbstractStatement
 
   def profile(show_timing)
     text = AbstractToken.pretty_tokens(@keywords, @tokens)
-    text = " #{text}" unless text.empty?
 
-    line = ' '
+    line = ''
 
-    line += "#{@part_of_user_function} " unless @part_of_user_function.nil?
+    line += " #{@part_of_user_function}" unless @part_of_user_function.nil?
 
-    line += "E(#{@part_of_onerror.map(&:to_s).join(',')}) " unless
+    line += " E(#{@part_of_onerror.map(&:to_s).join(',')})" unless
       @part_of_onerror.empty?
 
-    line += "G(#{@part_of_sub.map(&:to_s).join(',')}) " unless
+    line += " G(#{@part_of_sub.map(&:to_s).join(',')})" unless
       @part_of_sub.empty?
 
-    line += "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless
+    line += " F(#{@part_of_fornext.map(&:to_s).join(',')})" unless
       @part_of_fornext.empty?
 
     line += if show_timing
-              "(#{@profile_time.round(4)}/#{@profile_count})"
+              " (#{@profile_time.round(4)}/#{@profile_count})"
             else
-              "(#{@profile_count})"
+              " (#{@profile_count})"
             end
 
-    line += text
+    line += " #{text}"
 
     [line]
   end
@@ -697,19 +696,21 @@ class AbstractStatement
   def print_trace_info(trace_out, current_line_number)
     trace_out.newline_when_needed
 
-    trace_out.print_out "#{@part_of_user_function} " unless
+    trace_out.print_out "#{current_line_number}"
+
+    trace_out.print_out " #{@part_of_user_function}" unless
       @part_of_user_function.nil?
 
-    trace_out.print_out "E(#{@part_of_onerror.map(&:to_s).join(',')}) " unless
+    trace_out.print_out " E(#{@part_of_onerror.map(&:to_s).join(',')})" unless
       @part_of_onerror.empty?
 
-    trace_out.print_out "G(#{@part_of_sub.map(&:to_s).join(',')}) " unless
+    trace_out.print_out " G(#{@part_of_sub.map(&:to_s).join(',')})" unless
       @part_of_sub.empty?
 
-    trace_out.print_out "F(#{@part_of_fornext.map(&:to_s).join(',')}) " unless
+    trace_out.print_out " F(#{@part_of_fornext.map(&:to_s).join(',')})" unless
       @part_of_fornext.empty?
 
-    text = "#{current_line_number}: #{pretty}"
+    text = " #{pretty}"
 
     trace_out.print_out(text)
     trace_out.newline

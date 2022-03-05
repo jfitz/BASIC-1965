@@ -19,43 +19,43 @@ Halstead complexity:
  intelligence: 14.458
  time: 0.787
 
-(0 1) 10 REM MATRIX ASSIGNMENT
+10 (0 1) REM MATRIX ASSIGNMENT
   Origs: 
   Dests: 
-(0 2) 20 DIM A(5, 5)
+20 (0 2) DIM A(5, 5)
   Origs: :start
   Dests: 30:auto
-F(I) (1 3) 30 FOR I = 1 TO 5
+30 F(I) (1 3) FOR I = 1 TO 5
   Origs: 20:auto
   Dests: 40:fornext, 70:fornext
-F(I,J) (1 3) 40 FOR J = 1 TO 5
+40 F(I,J) (1 3) FOR J = 1 TO 5
   Origs: 30:fornext
   Dests: 50:fornext, 60:fornext
-F(I,J) (0 4) 50 LET A(I, J) = I + J
+50 F(I,J) (0 4) LET A(I, J) = I + J
   Origs: 40:fornext
   Dests: 60:auto
-F(I,J) (0 1) 60 NEXT J
+60 F(I,J) (0 1) NEXT J
   Origs: 40:fornext, 50:auto
   Dests: 70:auto
-F(I) (0 1) 70 NEXT I
+70 F(I) (0 1) NEXT I
   Origs: 30:fornext, 60:auto
   Dests: 100:auto
-(0 4) 100 MAT B = 1 / A
+100 (0 4) MAT B = 1 / A
   Origs: 70:auto
   Dests: 110:auto
-(0 2) 110 PRINT "MATRIX A"
+110 (0 2) PRINT "MATRIX A"
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 MAT PRINT A;
+120 (0 2) MAT PRINT A;
   Origs: 110:auto
   Dests: 130:auto
-(0 2) 130 PRINT "MATRIX B"
+130 (0 2) PRINT "MATRIX B"
   Origs: 120:auto
   Dests: 140:auto
-(0 2) 140 MAT PRINT B;
+140 (0 2) MAT PRINT B;
   Origs: 130:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 140:auto
   Dests: :stop
 

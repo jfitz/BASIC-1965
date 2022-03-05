@@ -22,7 +22,7 @@ Error 102 End of file in line 670
 130 (0) REM                       8  9  4
 140 (0) REM                       7  6  5
 150 (0) REM FOLLOWS THE BLOCK DIAGRAM
-160 (0)
+160 (0) 
 170 (0) REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
 180 FNM(_) (0) DEF FNM(X) = X - 8 * INT((X - 1) / 8)
 190 (0) REM
@@ -70,15 +70,15 @@ Error 102 End of file in line 670
 610 (1) GOSUB 700
 620 (1) PRINT "THE GAME IS DRAWN."
 630 (1) GOTO 210
-640 (0)
+640 (0) 
 650 G(650) (5) GOSUB 700
 660 G(650) (5) PRINT "YOUR MOVE";
 670 G(650) (4) INPUT M
 680 G(650) (4) RETURN
-690 (0)
+690 (0) 
 700 G(700) (6) PRINT "COMPUTER MOVES"; M
 710 G(700) (6) RETURN
-720 (0)
+720 (0) 
 730 (0) PRINT "AND WINS ********"
 740 (0) GOTO 210
 750 (0) END

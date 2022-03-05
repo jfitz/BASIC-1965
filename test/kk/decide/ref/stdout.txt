@@ -13,7 +13,7 @@ STOP in line 999
 80 F(I,J) (71) READ T(I, J)
 90 F(I,J) (71) NEXT J
 95 F(I) (28) NEXT I
-99 (0)
+99 (0) 
 100 F(I) (1) PRINT "SELECTED ACTS: ";
 105 F(I,I) (1) FOR I = I - 1 TO 0 STEP -1
 110 F(I,I) (28) LET K = T(I, 0)
@@ -41,7 +41,7 @@ STOP in line 999
 400 F(I) (1) PRINT
 410 F(I) (1) PRINT
 420 F(I) (1) PRINT "EXPECTED GAIN = $" V(0)
-430 (0)
+430 (0) 
 900 (0) DATA -3, 1, 1, 2, 2, 3, 3
 901 (0) DATA 2, 0.5, 4, 0.5, 5
 902 (0) DATA 0, 0

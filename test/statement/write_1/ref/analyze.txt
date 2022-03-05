@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 69.078
  time: 0.016
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(0 2) 20 DATA 10, 20, 30
+20 (0 2) DATA 10, 20, 30
   Origs: 
   Dests: 
-(3 4) 30 READ A, B, C
+30 (3 4) READ A, B, C
   Origs: :start
   Dests: 40:auto
-(0 4) 40 WRITE A, B, C
+40 (0 4) WRITE A, B, C
   Origs: 30:auto
   Dests: 90:auto
-(0 1) 90 STOP
+90 (0 1) STOP
   Origs: 40:auto
   Dests: :stop
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

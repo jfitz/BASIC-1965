@@ -1,641 +1,641 @@
-160: DATA 7
-10: READ N
+160 DATA 7
+10 READ N
  N = 7
-F(I) 20: FOR I = 1 TO N - 1
+20 F(I) FOR I = 1 TO N - 1
  N: 7
  I = 1
  N - 1 = 6
  terminated:false
-F(I,J) 30: FOR J = 1 TO N - 1
+30 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 1
  J: 1
  N: 7
  P(1,1) = 1
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 1
  J: 2
  N: 7
  P(1,2) = 2
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 1
  J: 3
  N: 7
  P(1,3) = 3
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 1
  J: 4
  N: 7
  P(1,4) = 4
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 1
  J: 5
  N: 7
  P(1,5) = 5
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 1
  J: 6
  N: 7
  P(1,6) = 6
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 6
  terminated:true
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I,J) 30: FOR J = 1 TO N - 1
+30 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 2
  J: 1
  N: 7
  P(2,1) = 2
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 2
  J: 2
  N: 7
  P(2,2) = 4
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 2
  J: 3
  N: 7
  P(2,3) = 6
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 2
  J: 4
  N: 7
  P(2,4) = 1
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 2
  J: 5
  N: 7
  P(2,5) = 3
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 2
  J: 6
  N: 7
  P(2,6) = 5
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 6
  terminated:true
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I,J) 30: FOR J = 1 TO N - 1
+30 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 3
  J: 1
  N: 7
  P(3,1) = 3
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 3
  J: 2
  N: 7
  P(3,2) = 6
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 3
  J: 3
  N: 7
  P(3,3) = 2
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 3
  J: 4
  N: 7
  P(3,4) = 5
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 3
  J: 5
  N: 7
  P(3,5) = 1
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 3
  J: 6
  N: 7
  P(3,6) = 4
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 6
  terminated:true
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I,J) 30: FOR J = 1 TO N - 1
+30 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 4
  J: 1
  N: 7
  P(4,1) = 4
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 4
  J: 2
  N: 7
  P(4,2) = 1
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 4
  J: 3
  N: 7
  P(4,3) = 5
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 4
  J: 4
  N: 7
  P(4,4) = 2
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 4
  J: 5
  N: 7
  P(4,5) = 6
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 4
  J: 6
  N: 7
  P(4,6) = 3
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 6
  terminated:true
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I,J) 30: FOR J = 1 TO N - 1
+30 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 5
  J: 1
  N: 7
  P(5,1) = 5
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 5
  J: 2
  N: 7
  P(5,2) = 3
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 5
  J: 3
  N: 7
  P(5,3) = 1
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 5
  J: 4
  N: 7
  P(5,4) = 6
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 5
  J: 5
  N: 7
  P(5,5) = 4
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 5
  J: 6
  N: 7
  P(5,6) = 2
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 6
  terminated:true
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I,J) 30: FOR J = 1 TO N - 1
+30 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 6
  J: 1
  N: 7
  P(6,1) = 6
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 6
  J: 2
  N: 7
  P(6,2) = 5
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 6
  J: 3
  N: 7
  P(6,3) = 4
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 6
  J: 4
  N: 7
  P(6,4) = 3
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 6
  J: 5
  N: 7
  P(6,5) = 2
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 40: LET P(I, J) = I * J - INT(I * J / N) * N
+40 F(I,J) LET P(I, J) = I * J - INT(I * J / N) * N
  I: 6
  J: 6
  N: 7
  P(6,6) = 1
-F(I,J) 50: NEXT J
+50 F(I,J) NEXT J
  J: 6
  terminated:true
-F(I) 60: NEXT I
+60 F(I) NEXT I
  I: 6
  terminated:true
-F(I) 70: FOR I = 1 TO N - 1
+70 F(I) FOR I = 1 TO N - 1
  N: 7
  I = 1
  N - 1 = 6
  terminated:false
-F(I,J) 80: FOR J = 1 TO N - 1
+80 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 1
  J: 1
  P(1,1): 1
  P(I, J) = 1: true
-F(I,J) 140: PRINT I; "HAS AN INVERSE" J
+140 F(I,J) PRINT I; "HAS AN INVERSE" J
  I: 1
  1 HAS AN INVERSE
  J: 1
  1
-F(I,J) 150: GOTO 120
-F(I,J) 120: NEXT I
+150 F(I,J) GOTO 120
+120 F(I,J) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I,J) 80: FOR J = 1 TO N - 1
+80 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 2
  J: 1
  P(2,1): 2
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 2
  J: 2
  P(2,2): 4
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 2
  J: 3
  P(2,3): 6
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 2
  J: 4
  P(2,4): 1
  P(I, J) = 1: true
-F(I,J) 140: PRINT I; "HAS AN INVERSE" J
+140 F(I,J) PRINT I; "HAS AN INVERSE" J
  I: 2
  2 HAS AN INVERSE
  J: 4
  4
-F(I,J) 150: GOTO 120
-F(I,J) 120: NEXT I
+150 F(I,J) GOTO 120
+120 F(I,J) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I,J) 80: FOR J = 1 TO N - 1
+80 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 3
  J: 1
  P(3,1): 3
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 3
  J: 2
  P(3,2): 6
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 3
  J: 3
  P(3,3): 2
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 3
  J: 4
  P(3,4): 5
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 3
  J: 5
  P(3,5): 1
  P(I, J) = 1: true
-F(I,J) 140: PRINT I; "HAS AN INVERSE" J
+140 F(I,J) PRINT I; "HAS AN INVERSE" J
  I: 3
  3 HAS AN INVERSE
  J: 5
  5
-F(I,J) 150: GOTO 120
-F(I,J) 120: NEXT I
+150 F(I,J) GOTO 120
+120 F(I,J) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I,J) 80: FOR J = 1 TO N - 1
+80 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 4
  J: 1
  P(4,1): 4
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 4
  J: 2
  P(4,2): 1
  P(I, J) = 1: true
-F(I,J) 140: PRINT I; "HAS AN INVERSE" J
+140 F(I,J) PRINT I; "HAS AN INVERSE" J
  I: 4
  4 HAS AN INVERSE
  J: 2
  2
-F(I,J) 150: GOTO 120
-F(I,J) 120: NEXT I
+150 F(I,J) GOTO 120
+120 F(I,J) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I,J) 80: FOR J = 1 TO N - 1
+80 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 5
  J: 1
  P(5,1): 5
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 5
  J: 2
  P(5,2): 3
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 5
  J: 3
  P(5,3): 1
  P(I, J) = 1: true
-F(I,J) 140: PRINT I; "HAS AN INVERSE" J
+140 F(I,J) PRINT I; "HAS AN INVERSE" J
  I: 5
  5 HAS AN INVERSE
  J: 3
  3
-F(I,J) 150: GOTO 120
-F(I,J) 120: NEXT I
+150 F(I,J) GOTO 120
+120 F(I,J) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I,J) 80: FOR J = 1 TO N - 1
+80 F(I,J) FOR J = 1 TO N - 1
  N: 7
  J = 1
  N - 1 = 6
  terminated:false
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 6
  J: 1
  P(6,1): 6
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 6
  J: 2
  P(6,2): 5
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 6
  J: 3
  P(6,3): 4
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 6
  J: 4
  P(6,4): 3
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 4
  terminated:false
  J = 5
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 6
  J: 5
  P(6,5): 2
  P(I, J) = 1: false
-F(I,J) 100: NEXT J
+100 F(I,J) NEXT J
  J: 5
  terminated:false
  J = 6
-F(I,J) 90: IF P(I, J) = 1 THEN 140
+90 F(I,J) IF P(I, J) = 1 THEN 140
  I: 6
  J: 6
  P(6,6): 1
  P(I, J) = 1: true
-F(I,J) 140: PRINT I; "HAS AN INVERSE" J
+140 F(I,J) PRINT I; "HAS AN INVERSE" J
  I: 6
  6 HAS AN INVERSE
  J: 6
  6
-F(I,J) 150: GOTO 120
-F(I,J) 120: NEXT I
+150 F(I,J) GOTO 120
+120 F(I,J) NEXT I
  I: 6
  terminated:true
-F(I) 130: STOP
+130 F(I) STOP
 STOP in line 130
 

@@ -19,202 +19,202 @@ Halstead complexity:
  intelligence: 40.877
  time: 12.920
 
-(0 1) 100 REM THIS PROGRAM PLAYS TIC TAC TOE
+100 (0 1) REM THIS PROGRAM PLAYS TIC TAC TOE
   Origs: 
   Dests: 
-(0 1) 110 REM MACHINE PLAYS FIRST, SIMPLE OUTPUT ONLY
+110 (0 1) REM MACHINE PLAYS FIRST, SIMPLE OUTPUT ONLY
   Origs: 
   Dests: 
-(0 1) 120 REM GAME BOARD NUMBERED:  1  2  3
+120 (0 1) REM GAME BOARD NUMBERED:  1  2  3
   Origs: 
   Dests: 
-(0 1) 130 REM                       8  9  4
+130 (0 1) REM                       8  9  4
   Origs: 
   Dests: 
-(0 1) 140 REM                       7  6  5
+140 (0 1) REM                       7  6  5
   Origs: 
   Dests: 
-(0 1) 150 REM FOLLOWS THE BLOCK DIAGRAM
+150 (0 1) REM FOLLOWS THE BLOCK DIAGRAM
   Origs: 
   Dests: 
-(0 0) 160 
+160 (0 0) 
   Origs: 
   Dests: 
-(0 1) 170 REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
+170 (0 1) REM THIS FUNCTION REDUCES ITS ARGUMENT MODULO 8
   Origs: 
   Dests: 
-FNM(_) (0 6) 180 DEF FNM(X) = X - 8 * INT((X - 1) / 8)
+180 FNM(_) (0 6) DEF FNM(X) = X - 8 * INT((X - 1) / 8)
   Origs: 270:function, 320:function, 360:function, 410:function, 460:function, 500:function, 550:function, 590:function
   Dests: 
-(0 1) 190 REM
+190 (0 1) REM
   Origs: 
   Dests: 
-(0 1) 200 REM NOW WE START THE PROGRAM
+200 (0 1) REM NOW WE START THE PROGRAM
   Origs: 
   Dests: 
-(0 2) 210 PRINT
+210 (0 2) PRINT
   Origs: :start, 630:goto, 740:goto
   Dests: 220:auto
-(0 2) 220 PRINT
+220 (0 2) PRINT
   Origs: 210:auto
   Dests: 230:auto
-(0 3) 230 LET A = 9
+230 (0 3) LET A = 9
   Origs: 220:auto
   Dests: 240:auto
-(0 3) 240 LET M = A
+240 (0 3) LET M = A
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 GOSUB 650
+250 (0 2) GOSUB 650
   Origs: 240:auto
   Dests: 260:auto, 650:gosub
-(0 3) 260 LET P = M
+260 (0 3) LET P = M
   Origs: 250:auto
   Dests: 270:auto
-(0 5) 270 LET B = FNM(P + 1)
+270 (0 5) LET B = FNM(P + 1)
   Origs: 260:auto
   Dests: 180:function, 280:auto
-(0 3) 280 LET M = B
+280 (0 3) LET M = B
   Origs: 270:auto
   Dests: 290:auto
-(0 2) 290 GOSUB 650
+290 (0 2) GOSUB 650
   Origs: 280:auto
   Dests: 300:auto, 650:gosub
-(0 3) 300 LET Q = M
+300 (0 3) LET Q = M
   Origs: 290:auto
   Dests: 310:auto
-(1 6) 310 IF Q = FNM(B + 4) THEN 360
+310 (1 6) IF Q = FNM(B + 4) THEN 360
   Origs: 300:auto
   Dests: 320:auto, 360:ifthen
-(0 5) 320 LET C = FNM(B + 4)
+320 (0 5) LET C = FNM(B + 4)
   Origs: 310:auto
   Dests: 180:function, 330:auto
-(0 3) 330 LET M = C
+330 (0 3) LET M = C
   Origs: 320:auto
   Dests: 340:auto
-(0 2) 340 GOSUB 700
+340 (0 2) GOSUB 700
   Origs: 330:auto
   Dests: 350:auto, 700:gosub
-(0 2) 350 GOTO 730
+350 (0 2) GOTO 730
   Origs: 340:auto
   Dests: 730:goto
-(0 5) 360 LET C = FNM(B + 2)
+360 (0 5) LET C = FNM(B + 2)
   Origs: 310:ifthen
   Dests: 180:function, 370:auto
-(0 3) 370 LET M = C
+370 (0 3) LET M = C
   Origs: 360:auto
   Dests: 380:auto
-(0 2) 380 GOSUB 650
+380 (0 2) GOSUB 650
   Origs: 370:auto
   Dests: 390:auto, 650:gosub
-(0 3) 390 LET R = M
+390 (0 3) LET R = M
   Origs: 380:auto
   Dests: 400:auto
-(1 6) 400 IF R = FNM(C + 4) THEN 450
+400 (1 6) IF R = FNM(C + 4) THEN 450
   Origs: 390:auto
   Dests: 410:auto, 450:ifthen
-(0 5) 410 LET D = FNM(C + 4)
+410 (0 5) LET D = FNM(C + 4)
   Origs: 400:auto
   Dests: 180:function, 420:auto
-(0 3) 420 LET M = D
+420 (0 3) LET M = D
   Origs: 410:auto
   Dests: 430:auto
-(0 2) 430 GOSUB 700
+430 (0 2) GOSUB 700
   Origs: 420:auto
   Dests: 440:auto, 700:gosub
-(0 2) 440 GOTO 730
+440 (0 2) GOTO 730
   Origs: 430:auto
   Dests: 730:goto
-(1 6) 450 IF P / 2 <> INT(P / 2) THEN 500
+450 (1 6) IF P / 2 <> INT(P / 2) THEN 500
   Origs: 400:ifthen
   Dests: 460:auto, 500:ifthen
-(0 5) 460 LET D = FNM(C + 7)
+460 (0 5) LET D = FNM(C + 7)
   Origs: 450:auto
   Dests: 180:function, 470:auto
-(0 3) 470 LET M = D
+470 (0 3) LET M = D
   Origs: 460:auto
   Dests: 480:auto
-(0 2) 480 GOSUB 700
+480 (0 2) GOSUB 700
   Origs: 470:auto
   Dests: 490:auto, 700:gosub
-(0 2) 490 GOTO 730
+490 (0 2) GOTO 730
   Origs: 480:auto
   Dests: 730:goto
-(0 5) 500 LET D = FNM(C + 3)
+500 (0 5) LET D = FNM(C + 3)
   Origs: 450:ifthen
   Dests: 180:function, 510:auto
-(0 3) 510 LET M = D
+510 (0 3) LET M = D
   Origs: 500:auto
   Dests: 520:auto
-(0 2) 520 GOSUB 650
+520 (0 2) GOSUB 650
   Origs: 510:auto
   Dests: 530:auto, 650:gosub
-(0 3) 530 LET S = M
+530 (0 3) LET S = M
   Origs: 520:auto
   Dests: 540:auto
-(1 6) 540 IF S = FNM(D + 4) THEN 590
+540 (1 6) IF S = FNM(D + 4) THEN 590
   Origs: 530:auto
   Dests: 550:auto, 590:ifthen
-(0 5) 550 LET E = FNM(D + 4)
+550 (0 5) LET E = FNM(D + 4)
   Origs: 540:auto
   Dests: 180:function, 560:auto
-(0 3) 560 LET M = E
+560 (0 3) LET M = E
   Origs: 550:auto
   Dests: 570:auto
-(0 2) 570 GOSUB 700
+570 (0 2) GOSUB 700
   Origs: 560:auto
   Dests: 580:auto, 700:gosub
-(0 2) 580 GOTO 730
+580 (0 2) GOTO 730
   Origs: 570:auto
   Dests: 730:goto
-(0 5) 590 LET E = FNM(D + 6)
+590 (0 5) LET E = FNM(D + 6)
   Origs: 540:ifthen
   Dests: 180:function, 600:auto
-(0 3) 600 LET M = E
+600 (0 3) LET M = E
   Origs: 590:auto
   Dests: 610:auto
-(0 2) 610 GOSUB 700
+610 (0 2) GOSUB 700
   Origs: 600:auto
   Dests: 620:auto, 700:gosub
-(0 2) 620 PRINT "THE GAME IS DRAWN."
+620 (0 2) PRINT "THE GAME IS DRAWN."
   Origs: 610:auto
   Dests: 630:auto
-(0 3) 630 GOTO 210
+630 (0 3) GOTO 210
   Origs: 620:auto
   Dests: 210:goto
-(0 0) 640 
+640 (0 0) 
   Origs: 
   Dests: 
-G(650) (0 2) 650 GOSUB 700
+650 G(650) (0 2) GOSUB 700
   Origs: 250:gosub, 290:gosub, 380:gosub, 520:gosub
   Dests: 660:auto, 700:gosub
-G(650) (0 2) 660 PRINT "YOUR MOVE";
+660 G(650) (0 2) PRINT "YOUR MOVE";
   Origs: 650:auto
   Dests: 670:auto
-G(650) (1 2) 670 INPUT M
+670 G(650) (1 2) INPUT M
   Origs: 660:auto
   Dests: 680:auto
-G(650) (0 1) 680 RETURN
+680 G(650) (0 1) RETURN
   Origs: 670:auto
   Dests: 
-(0 0) 690 
+690 (0 0) 
   Origs: 
   Dests: 
-G(700) (0 3) 700 PRINT "COMPUTER MOVES"; M
+700 G(700) (0 3) PRINT "COMPUTER MOVES"; M
   Origs: 340:gosub, 430:gosub, 480:gosub, 570:gosub, 610:gosub, 650:gosub
   Dests: 710:auto
-G(700) (0 1) 710 RETURN
+710 G(700) (0 1) RETURN
   Origs: 700:auto
   Dests: 
-(0 0) 720 
+720 (0 0) 
   Origs: 
   Dests: 
-(0 2) 730 PRINT "AND WINS ********"
+730 (0 2) PRINT "AND WINS ********"
   Origs: 350:goto, 440:goto, 490:goto, 580:goto
   Dests: 740:auto
-(0 3) 740 GOTO 210
+740 (0 3) GOTO 210
   Origs: 730:auto
   Dests: 210:goto
-(0 1) 750 END
+750 (0 1) END
   Origs: 
   Dests: :stop
 

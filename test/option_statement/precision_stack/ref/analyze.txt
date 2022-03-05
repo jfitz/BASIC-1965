@@ -19,79 +19,79 @@ Halstead complexity:
  intelligence: 23.359
  time: 0.397
 
-(0 1) 10 REM TEST FOR PRECISION OPTION
+10 (0 1) REM TEST FOR PRECISION OPTION
   Origs: 
   Dests: 
-(0 2) 100 PRINT "VALUES WITH PRECISION 7"
+100 (0 2) PRINT "VALUES WITH PRECISION 7"
   Origs: :start
   Dests: 110:auto
-(0 2) 110 OPTION PRECISION 7
+110 (0 2) OPTION PRECISION 7
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 GOSUB 900
+120 (0 2) GOSUB 900
   Origs: 110:auto
   Dests: 130:auto, 920:gosub
-(0 2) 130 PRINT "VALUES WITH PRECISION 16"
+130 (0 2) PRINT "VALUES WITH PRECISION 16"
   Origs: 120:auto
   Dests: 140:auto
-(0 2) 140 OPTION PRECISION 16
+140 (0 2) OPTION PRECISION 16
   Origs: 130:auto
   Dests: 150:auto
-(0 2) 150 GOSUB 900
+150 (0 2) GOSUB 900
   Origs: 140:auto
   Dests: 160:auto, 920:gosub
-(0 2) 160 PRINT "VALUES WITH PRECISION INFINITE"
+160 (0 2) PRINT "VALUES WITH PRECISION INFINITE"
   Origs: 150:auto
   Dests: 170:auto
-(0 2) 170 OPTION PRECISION "INFINITE"
+170 (0 2) OPTION PRECISION "INFINITE"
   Origs: 160:auto
   Dests: 180:auto
-(0 2) 180 GOSUB 900
+180 (0 2) GOSUB 900
   Origs: 170:auto
   Dests: 200:auto, 920:gosub
-(0 2) 200 PRINT "VALUES WITH PRECISION 16"
+200 (0 2) PRINT "VALUES WITH PRECISION 16"
   Origs: 180:auto
   Dests: 210:auto
-(0 1) 210 OPTION PRECISION
+210 (0 1) OPTION PRECISION
   Origs: 200:auto
   Dests: 220:auto
-(0 2) 220 GOSUB 900
+220 (0 2) GOSUB 900
   Origs: 210:auto
   Dests: 230:auto, 920:gosub
-(0 2) 230 PRINT "VALUES WITH PRECISION 7"
+230 (0 2) PRINT "VALUES WITH PRECISION 7"
   Origs: 220:auto
   Dests: 240:auto
-(0 1) 240 OPTION PRECISION
+240 (0 1) OPTION PRECISION
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 GOSUB 900
+250 (0 2) GOSUB 900
   Origs: 240:auto
   Dests: 899:auto, 920:gosub
-(0 1) 899 STOP
+899 (0 1) STOP
   Origs: 250:auto
   Dests: :stop
-(0 1) 900 REM SUBROUTINE PRINT
+900 (0 1) REM SUBROUTINE PRINT
   Origs: 
   Dests: 
-G(920) (0 4) 920 LET A = 1 / 7
+920 G(920) (0 4) LET A = 1 / 7
   Origs: 120:gosub, 150:gosub, 180:gosub, 220:gosub, 250:gosub
   Dests: 930:auto
-G(920) F(I) (1 3) 930 FOR I = 1 TO 12
+930 G(920) F(I) (1 3) FOR I = 1 TO 12
   Origs: 920:auto
   Dests: 940:fornext, 960:fornext
-G(920) F(I) (0 2) 940 PRINT A
+940 G(920) F(I) (0 2) PRINT A
   Origs: 930:fornext
   Dests: 950:auto
-G(920) F(I) (0 4) 950 LET A = A / 10
+950 G(920) F(I) (0 4) LET A = A / 10
   Origs: 940:auto
   Dests: 960:auto
-G(920) F(I) (0 1) 960 NEXT I
+960 G(920) F(I) (0 1) NEXT I
   Origs: 930:fornext, 950:auto
   Dests: 990:auto
-G(920) (0 1) 990 RETURN
+990 G(920) (0 1) RETURN
   Origs: 960:auto
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

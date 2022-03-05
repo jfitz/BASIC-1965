@@ -19,52 +19,52 @@ Halstead complexity:
  intelligence: 22.433
  time: 0.375
 
-(0 1) 10 REM THIS PROGRAM WILL COMPUTE THE LOG
+10 (0 1) REM THIS PROGRAM WILL COMPUTE THE LOG
   Origs: 
   Dests: 
-(0 1) 20 REM OF ANY POSITIVE NUMBER X, TO ANY POSITIVE
+20 (0 1) REM OF ANY POSITIVE NUMBER X, TO ANY POSITIVE
   Origs: 
   Dests: 
-(0 1) 30 REM BASE Y
+30 (0 1) REM BASE Y
   Origs: 
   Dests: 
-(0 2) 40 PRINT "BASE = "
+40 (0 2) PRINT "BASE = "
   Origs: :start, 150:goto
   Dests: 50:auto
-(1 2) 50 INPUT Y
+50 (1 2) INPUT Y
   Origs: 40:auto
   Dests: 60:auto
-(0 2) 60 PRINT "X = "
+60 (0 2) PRINT "X = "
   Origs: 50:auto
   Dests: 70:auto
-(1 2) 70 INPUT X
+70 (1 2) INPUT X
   Origs: 60:auto
   Dests: 80:auto
-(0 6) 80 LET J = LOG(X) / LOG(Y)
+80 (0 6) LET J = LOG(X) / LOG(Y)
   Origs: 70:auto
   Dests: 90:auto
-(0 5) 90 PRINT "LOG"; X; " = "; J
+90 (0 5) PRINT "LOG"; X; " = "; J
   Origs: 80:auto
   Dests: 100:auto
-(0 2) 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+100 (0 2) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
   Origs: 90:auto
   Dests: 110:auto
-(1 2) 110 INPUT L
+110 (1 2) INPUT L
   Origs: 100:auto
   Dests: 120:auto
-(1 4) 120 IF L = 1 THEN 140
+120 (1 4) IF L = 1 THEN 140
   Origs: 110:auto
   Dests: 130:auto, 140:ifthen
-(0 1) 130 STOP
+130 (0 1) STOP
   Origs: 120:auto
   Dests: :stop
-(0 2) 140 PRINT
+140 (0 2) PRINT
   Origs: 120:ifthen
   Dests: 150:auto
-(0 3) 150 GOTO 40
+150 (0 3) GOTO 40
   Origs: 140:auto
   Dests: 40:goto
-(0 1) 160 END
+160 (0 1) END
   Origs: 
   Dests: :stop
 

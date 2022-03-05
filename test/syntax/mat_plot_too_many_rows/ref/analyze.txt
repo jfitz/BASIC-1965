@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 22.099
  time: 0.227
 
-(0 4) 10 MAT LET A = RND2(15, 20)
+10 (0 4) MAT LET A = RND2(15, 20)
   Origs: :start
   Dests: 20:auto
-(0 4) 20 MAT LET A1 = A - 0.5
+20 (0 4) MAT LET A1 = A - 0.5
   Origs: 10:auto
   Dests: 30:auto
-(0 4) 30 MAT LET A2 = A - 0.9
+30 (0 4) MAT LET A2 = A - 0.9
   Origs: 20:auto
   Dests: 40:auto
-(0 4) 40 MAT LET A3 = A - 20
+40 (0 4) MAT LET A3 = A - 20
   Origs: 30:auto
   Dests: 90:auto
-(7 5) 90 MAT PLOT A, A1, A2, A3
+90 (7 5) MAT PLOT A, A1, A2, A3
   Origs: 40:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 90:auto
   Dests: :stop
 

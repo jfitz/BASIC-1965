@@ -19,100 +19,100 @@ Halstead complexity:
  intelligence: 28.776
  time: 1.259
 
-(0 1) 10 REM THE COMPUTER CHOOSES A NUMBER FROM
+10 (0 1) REM THE COMPUTER CHOOSES A NUMBER FROM
   Origs: 
   Dests: 
-(0 1) 20 REM 1 TO 100 AT RANDOM, THE OBJECT OF
+20 (0 1) REM 1 TO 100 AT RANDOM, THE OBJECT OF
   Origs: 
   Dests: 
-(0 1) 30 REM THE GAME IS TO GUESS THE CHOSEN
+30 (0 1) REM THE GAME IS TO GUESS THE CHOSEN
   Origs: 
   Dests: 
-(0 1) 40 REM NUMBER IN AS FEW GUESSES AS POSSIBLE
+40 (0 1) REM NUMBER IN AS FEW GUESSES AS POSSIBLE
   Origs: 
   Dests: 
-(0 5) 50 LET R = 1 + INT(100 * RND)
+50 (0 5) LET R = 1 + INT(100 * RND)
   Origs: :start, 270:goto
   Dests: 60:auto
-(0 3) 60 LET Y = 0
+60 (0 3) LET Y = 0
   Origs: 50:auto
   Dests: 70:auto
-(0 2) 70 PRINT "A RANDOM NUMBER HAS BEEN PICKED"
+70 (0 2) PRINT "A RANDOM NUMBER HAS BEEN PICKED"
   Origs: 60:auto
   Dests: 80:auto
-(0 2) 80 PRINT "TRY GUESSING IT, HINT THE NUMBER"
+80 (0 2) PRINT "TRY GUESSING IT, HINT THE NUMBER"
   Origs: 70:auto
   Dests: 90:auto
-(0 2) 90 PRINT "IS FROM 1 TO 100"
+90 (0 2) PRINT "IS FROM 1 TO 100"
   Origs: 80:auto
   Dests: 100:auto
-(0 2) 100 PRINT "GOOD LUCK!!!"
+100 (0 2) PRINT "GOOD LUCK!!!"
   Origs: 90:auto
   Dests: 110:auto
-(0 2) 110 PRINT
+110 (0 2) PRINT
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 PRINT "YOUR GUESS IS = ";
+120 (0 2) PRINT "YOUR GUESS IS = ";
   Origs: 110:auto, 290:goto, 310:goto
   Dests: 130:auto
-(1 2) 130 INPUT X
+130 (1 2) INPUT X
   Origs: 120:auto
   Dests: 140:auto
-(0 4) 140 LET Y = Y + 1
+140 (0 4) LET Y = Y + 1
   Origs: 130:auto
   Dests: 150:auto
-(1 4) 150 IF X = R THEN 180
+150 (1 4) IF X = R THEN 180
   Origs: 140:auto
   Dests: 160:auto, 180:ifthen
-(1 4) 160 IF X > R THEN 280
+160 (1 4) IF X > R THEN 280
   Origs: 150:auto
   Dests: 170:auto, 280:ifthen
-(0 2) 170 GOTO 300
+170 (0 2) GOTO 300
   Origs: 160:auto
   Dests: 300:goto
-(0 2) 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
+180 (0 2) PRINT "NOT BAD!!!-YOU GOT IT!!!"
   Origs: 150:ifthen
   Dests: 190:auto
-(0 3) 190 PRINT "YOUR NUMBER OF TRIES WERE"; Y
+190 (0 3) PRINT "YOUR NUMBER OF TRIES WERE"; Y
   Origs: 180:auto
   Dests: 200:auto
-(0 2) 200 PRINT
+200 (0 2) PRINT
   Origs: 190:auto
   Dests: 210:auto
-(0 2) 210 PRINT "IF YOU WANT TO TRY AGAIN, TYPE 1"
+210 (0 2) PRINT "IF YOU WANT TO TRY AGAIN, TYPE 1"
   Origs: 200:auto
   Dests: 220:auto
-(0 2) 220 PRINT "IF NOT TYPE 0"
+220 (0 2) PRINT "IF NOT TYPE 0"
   Origs: 210:auto
   Dests: 230:auto
-(1 2) 230 INPUT L
+230 (1 2) INPUT L
   Origs: 220:auto
   Dests: 240:auto
-(1 4) 240 IF L = 1 THEN 260
+240 (1 4) IF L = 1 THEN 260
   Origs: 230:auto
   Dests: 250:auto, 260:ifthen
-(0 1) 250 STOP
+250 (0 1) STOP
   Origs: 240:auto
   Dests: :stop
-(0 2) 260 PRINT
+260 (0 2) PRINT
   Origs: 240:ifthen
   Dests: 270:auto
-(0 3) 270 GOTO 50
+270 (0 3) GOTO 50
   Origs: 260:auto
   Dests: 50:goto
-(0 2) 280 PRINT "TOO HIGH, TRY AGAIN"
+280 (0 2) PRINT "TOO HIGH, TRY AGAIN"
   Origs: 160:ifthen
   Dests: 290:auto
-(0 3) 290 GOTO 120
+290 (0 3) GOTO 120
   Origs: 280:auto
   Dests: 120:goto
-(0 2) 300 PRINT "TOO LOW, TRY AGAIN"
+300 (0 2) PRINT "TOO LOW, TRY AGAIN"
   Origs: 170:goto
   Dests: 310:auto
-(0 3) 310 GOTO 120
+310 (0 3) GOTO 120
   Origs: 300:auto
   Dests: 120:goto
-(0 1) 320 END
+320 (0 1) END
   Origs: 
   Dests: :stop
 

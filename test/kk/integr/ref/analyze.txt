@@ -19,61 +19,61 @@ Halstead complexity:
  intelligence: 24.656
  time: 6.613
 
-FNF(_) (0 7) 10 DEF FNF(X) = X ^ 2 + 3 * X + 1
+10 FNF(_) (0 7) DEF FNF(X) = X ^ 2 + 3 * X + 1
   Origs: 50:function, 140:function
   Dests: 
-(3 4) 20 READ A, B, E
+20 (3 4) READ A, B, E
   Origs: :start
   Dests: 30:auto
-(0 4) 30 PRINT "TRAPEZOID", "MIDPOINT", "SIMPSON"
+30 (0 4) PRINT "TRAPEZOID", "MIDPOINT", "SIMPSON"
   Origs: 20:auto
   Dests: 40:auto
-(0 4) 40 LET H = B - A
+40 (0 4) LET H = B - A
   Origs: 30:auto
   Dests: 50:auto
-(0 9) 50 LET T = (FNF(A) + FNF(B)) * H
+50 (0 9) LET T = (FNF(A) + FNF(B)) * H
   Origs: 40:auto
   Dests: 10:function, 60:auto
-(0 3) 60 LET M = 0
+60 (0 3) LET M = 0
   Origs: 50:auto
   Dests: 100:auto
-(0 5) 100 LET T = (T + M) / 2
+100 (0 5) LET T = (T + M) / 2
   Origs: 60:auto, 190:ifthen
   Dests: 120:auto
-(0 3) 120 LET M = 0
+120 (0 3) LET M = 0
   Origs: 100:auto
   Dests: 130:auto
-F(X) (1 7) 130 FOR X = A + H / 2 TO B STEP H
+130 F(X) (1 7) FOR X = A + H / 2 TO B STEP H
   Origs: 120:auto
   Dests: 140:fornext, 150:fornext
-F(X) (0 6) 140 LET M = M + FNF(X)
+140 F(X) (0 6) LET M = M + FNF(X)
   Origs: 130:fornext
   Dests: 10:function, 150:auto
-F(X) (0 1) 150 NEXT X
+150 F(X) (0 1) NEXT X
   Origs: 130:fornext, 140:auto
   Dests: 160:auto
-(0 4) 160 LET M = M * H
+160 (0 4) LET M = M * H
   Origs: 150:auto
   Dests: 170:auto
-(0 7) 170 LET S = (T + 2 * M) / 3
+170 (0 7) LET S = (T + 2 * M) / 3
   Origs: 160:auto
   Dests: 180:auto
-(0 4) 180 PRINT T, M, S
+180 (0 4) PRINT T, M, S
   Origs: 170:auto
   Dests: 185:auto
-(0 4) 185 LET H = H / 2
+185 (0 4) LET H = H / 2
   Origs: 180:auto
   Dests: 190:auto
-(1 8) 190 IF ABS(T - M) / ABS(S) > E THEN 100
+190 (1 8) IF ABS(T - M) / ABS(S) > E THEN 100
   Origs: 185:auto
   Dests: 100:ifthen, 999:auto
-(0 2) 900 DATA 1, 5
+900 (0 2) DATA 1, 5
   Origs: 
   Dests: 
-(0 2) 910 DATA 1E-06
+910 (0 2) DATA 1E-06
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 190:auto
   Dests: :stop
 

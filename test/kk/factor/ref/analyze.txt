@@ -19,114 +19,114 @@ Halstead complexity:
  intelligence: 17.406
  time: 5.328
 
-G(310) (0 2) 100 PRINT "NUMBER TO BE FACTORED:";
+100 G(310) (0 2) PRINT "NUMBER TO BE FACTORED:";
   Origs: :start, 540:goto
   Dests: 110:auto
-G(310) (1 2) 110 INPUT N
+110 G(310) (1 2) INPUT N
   Origs: 100:auto
   Dests: 120:auto
-G(310) (0 2) 120 PRINT
+120 G(310) (0 2) PRINT
   Origs: 110:auto
   Dests: 130:auto
-G(310) (1 4) 130 IF N = 0 THEN 999
+130 G(310) (1 4) IF N = 0 THEN 999
   Origs: 120:auto
   Dests: 140:auto, 999:ifthen
-G(310) (1 4) 140 IF N = 2 THEN 250
+140 G(310) (1 4) IF N = 2 THEN 250
   Origs: 130:auto
   Dests: 150:auto, 250:ifthen
-G(310) (0 3) 150 LET Z = 0
+150 G(310) (0 3) LET Z = 0
   Origs: 140:auto
   Dests: 170:auto
-(0 0) 160 
+160 (0 0) 
   Origs: 
   Dests: 
-G(310) (0 3) 170 LET F = 2
+170 G(310) (0 3) LET F = 2
   Origs: 150:auto
   Dests: 180:auto
-G(310) (0 2) 180 GOSUB 300
+180 G(310) (0 2) GOSUB 300
   Origs: 170:auto
   Dests: 190:auto, 310:gosub
-G(310) F(F) (1 6) 190 FOR F = 3 TO SQR(N) + 1 STEP 2
+190 G(310) F(F) (1 6) FOR F = 3 TO SQR(N) + 1 STEP 2
   Origs: 180:auto
   Dests: 200:fornext, 210:fornext
-G(310) F(F) (0 2) 200 GOSUB 300
+200 G(310) F(F) (0 2) GOSUB 300
   Origs: 190:fornext
   Dests: 210:auto, 310:gosub
-G(310) F(F) (0 1) 210 NEXT F
+210 G(310) F(F) (0 1) NEXT F
   Origs: 190:fornext, 200:auto
   Dests: 220:auto
-G(310) (1 4) 220 IF Z = 0 THEN 250
+220 G(310) (1 4) IF Z = 0 THEN 250
   Origs: 210:auto
   Dests: 230:auto, 250:ifthen
-G(310) (0 2) 230 PRINT N;
+230 G(310) (0 2) PRINT N;
   Origs: 220:auto
   Dests: 240:auto
-G(310) (0 2) 240 GOTO 500
+240 G(310) (0 2) GOTO 500
   Origs: 230:auto
   Dests: 510:goto
-G(310) (0 3) 250 PRINT N; "IS PRIME."
+250 G(310) (0 3) PRINT N; "IS PRIME."
   Origs: 140:ifthen, 220:ifthen
   Dests: 260:auto
-G(310) (0 2) 260 GOTO 500
+260 G(310) (0 2) GOTO 500
   Origs: 250:auto
   Dests: 510:goto
-(0 0) 270 
+270 (0 0) 
   Origs: 
   Dests: 
-(0 1) 300 REM TESTS F AS A FACTOR
+300 (0 1) REM TESTS F AS A FACTOR
   Origs: 
   Dests: 
-G(310) (1 6) 310 IF N / F <> INT(N / F) THEN 410
+310 G(310) (1 6) IF N / F <> INT(N / F) THEN 410
     WARNING: Inconsistent GOSUB origins
   Origs: 180:gosub, 200:gosub, 400:goto
   Dests: 330:auto, 410:ifthen
-G(310) (1 4) 330 IF Z > 0 THEN 370
+330 G(310) (1 4) IF Z > 0 THEN 370
   Origs: 310:auto
   Dests: 340:auto, 370:ifthen
-G(310) (0 3) 340 PRINT N; "HAS THE FACTORS:"
+340 G(310) (0 3) PRINT N; "HAS THE FACTORS:"
   Origs: 330:auto
   Dests: 350:auto
-G(310) (0 2) 350 PRINT "     ";
+350 G(310) (0 2) PRINT "     ";
   Origs: 340:auto
   Dests: 360:auto
-G(310) (0 3) 360 LET Z = 1
+360 G(310) (0 3) LET Z = 1
   Origs: 350:auto
   Dests: 370:auto
-G(310) (0 2) 370 PRINT F;
+370 G(310) (0 2) PRINT F;
   Origs: 330:ifthen, 360:auto
   Dests: 380:auto
-G(310) (0 4) 380 LET N = N / F
+380 G(310) (0 4) LET N = N / F
   Origs: 370:auto
   Dests: 390:auto
-G(310) (1 4) 390 IF N = 1 THEN 500
+390 G(310) (1 4) IF N = 1 THEN 500
   Origs: 380:auto
   Dests: 400:auto, 510:ifthen
-G(310) (0 3) 400 GOTO 310
+400 G(310) (0 3) GOTO 310
   Origs: 390:auto
   Dests: 310:goto
-G(310) (0 1) 410 RETURN
+410 G(310) (0 1) RETURN
   Origs: 310:ifthen
   Dests: 
-(0 0) 420 
+420 (0 0) 
   Origs: 
   Dests: 
-(0 1) 500 REM ALL DONE
+500 (0 1) REM ALL DONE
   Origs: 
   Dests: 
-G(310) (0 2) 510 PRINT
+510 G(310) (0 2) PRINT
   Origs: 240:goto, 260:goto, 390:ifthen
   Dests: 520:auto
-G(310) (0 2) 520 PRINT
+520 G(310) (0 2) PRINT
   Origs: 510:auto
   Dests: 530:auto
-G(310) (0 2) 530 PRINT
+530 G(310) (0 2) PRINT
   Origs: 520:auto
   Dests: 540:auto
-G(310) (0 3) 540 GOTO 100
+540 G(310) (0 3) GOTO 100
     WARNING: Branch to line before GOSUB start
   Origs: 530:auto
   Dests: 100:goto
-G(310) (0 1) 999 END
+999 G(310) (0 1) END
     WARNING: Terminating statement in GOSUB
   Origs: 130:ifthen
   Dests: :stop

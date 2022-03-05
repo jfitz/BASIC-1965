@@ -1,134 +1,134 @@
-900: DATA 5000, 7, 48, 4.5
-10: DIM D(20)
-20: READ A, Y, T, R
+900 DATA 5000, 7, 48, 4.5
+10 DIM D(20)
+20 READ A, Y, T, R
  A = 5000
  Y = 7
  T = 48
  R = 4.5
-30: PRINT "YEAR", "DEPRECIATE"
+30 PRINT "YEAR", "DEPRECIATE"
 YEAR            DEPRECIATE
-40: LET Y9 = Y * (Y + 1) / 2
+40 LET Y9 = Y * (Y + 1) / 2
  Y: 7
  Y9 = 28
-F(I) 100: FOR I = 1 TO Y
+100 F(I) FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
+110 F(I) LET D(I) = A * (Y - I + 1) / Y9
  I: 1
  A: 5000
  Y: 7
  Y9: 28
  D(1) = 1250
-F(I) 120: PRINT I, D(I)
+120 F(I) PRINT I, D(I)
  I: 1
  1              
  D(1): 1250
  1250
-F(I) 130: NEXT I
+130 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
+110 F(I) LET D(I) = A * (Y - I + 1) / Y9
  I: 2
  A: 5000
  Y: 7
  Y9: 28
  D(2) = 1071.43
-F(I) 120: PRINT I, D(I)
+120 F(I) PRINT I, D(I)
  I: 2
  2              
  D(2): 1071.43
  1071.43
-F(I) 130: NEXT I
+130 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
+110 F(I) LET D(I) = A * (Y - I + 1) / Y9
  I: 3
  A: 5000
  Y: 7
  Y9: 28
  D(3) = 892.857
-F(I) 120: PRINT I, D(I)
+120 F(I) PRINT I, D(I)
  I: 3
  3              
  D(3): 892.857
  892.857
-F(I) 130: NEXT I
+130 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
+110 F(I) LET D(I) = A * (Y - I + 1) / Y9
  I: 4
  A: 5000
  Y: 7
  Y9: 28
  D(4) = 714.286
-F(I) 120: PRINT I, D(I)
+120 F(I) PRINT I, D(I)
  I: 4
  4              
  D(4): 714.286
  714.286
-F(I) 130: NEXT I
+130 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
+110 F(I) LET D(I) = A * (Y - I + 1) / Y9
  I: 5
  A: 5000
  Y: 7
  Y9: 28
  D(5) = 535.714
-F(I) 120: PRINT I, D(I)
+120 F(I) PRINT I, D(I)
  I: 5
  5              
  D(5): 535.714
  535.714
-F(I) 130: NEXT I
+130 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
+110 F(I) LET D(I) = A * (Y - I + 1) / Y9
  I: 6
  A: 5000
  Y: 7
  Y9: 28
  D(6) = 357.143
-F(I) 120: PRINT I, D(I)
+120 F(I) PRINT I, D(I)
  I: 6
  6              
  D(6): 357.143
  357.143
-F(I) 130: NEXT I
+130 F(I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 110: LET D(I) = A * (Y - I + 1) / Y9
+110 F(I) LET D(I) = A * (Y - I + 1) / Y9
  I: 7
  A: 5000
  Y: 7
  Y9: 28
  D(7) = 178.571
-F(I) 120: PRINT I, D(I)
+120 F(I) PRINT I, D(I)
  I: 7
  7              
  D(7): 178.571
  178.571
-F(I) 130: NEXT I
+130 F(I) NEXT I
  I: 7
  terminated:true
-140: PRINT
+140 PRINT
 
-200: LET S = 0
+200 LET S = 0
  S = 0
-F(I) 210: FOR I = 1 TO Y
+210 F(I) FOR I = 1 TO Y
  Y: 7
  I = 1
  Y = 7
  terminated:false
-F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+220 F(I) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 0
  I: 1
  D(1): 1250
@@ -136,11 +136,11 @@ F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  R: 4.5
  Y: 7
  S = 781.356
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+220 F(I) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 781.356
  I: 2
  D(2): 1071.43
@@ -148,11 +148,11 @@ F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  R: 4.5
  Y: 7
  S = 1451.09
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+220 F(I) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 1451.09
  I: 3
  D(3): 892.857
@@ -160,11 +160,11 @@ F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  R: 4.5
  Y: 7
  S = 2009.2
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+220 F(I) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 2009.2
  I: 4
  D(4): 714.286
@@ -172,11 +172,11 @@ F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  R: 4.5
  Y: 7
  S = 2455.69
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+220 F(I) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 2455.69
  I: 5
  D(5): 535.714
@@ -184,11 +184,11 @@ F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  R: 4.5
  Y: 7
  S = 2790.56
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+220 F(I) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 2790.56
  I: 6
  D(6): 357.143
@@ -196,11 +196,11 @@ F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  R: 4.5
  Y: 7
  S = 3013.81
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
+220 F(I) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  S: 3013.81
  I: 7
  D(7): 178.571
@@ -208,13 +208,13 @@ F(I) 220: LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - 1)
  R: 4.5
  Y: 7
  S = 3125.43
-F(I) 230: NEXT I
+230 F(I) NEXT I
  I: 7
  terminated:true
-240: PRINT "SAVING = $" S
+240 PRINT "SAVING = $" S
 SAVING = $
  S: 3125.43
  3125.43
-999: END
+999 END
 STOP in line 999
 

@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 23.212
  time: 0.263
 
-(0 1) 10 REM TEST MAT PLOT
+10 (0 1) REM TEST MAT PLOT
   Origs: 
   Dests: 
-(0 4) 20 MAT LET A = RND2(6, 30)
+20 (0 4) MAT LET A = RND2(6, 30)
   Origs: :start
   Dests: 22:auto
-(0 4) 22 MAT LET B = RND2(6, 30, 20)
+22 (0 4) MAT LET B = RND2(6, 30, 20)
   Origs: 20:auto
   Dests: 24:auto
-(0 4) 24 MAT LET C = RND2(6, 30, 1000)
+24 (0 4) MAT LET C = RND2(6, 30, 1000)
   Origs: 22:auto
   Dests: 30:auto
-(5 4) 30 MAT PLOT A, B, C
+30 (5 4) MAT PLOT A, B, C
   Origs: 24:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 30:auto
   Dests: :stop
 

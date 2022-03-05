@@ -19,25 +19,25 @@ Halstead complexity:
  intelligence: 25.119
  time: 0.044
 
-(0 1) 10 REM THIS IS A TEST PROGRAM FOR THE SPACING OF STATEMENTS
+10 (0 1) REM THIS IS A TEST PROGRAM FOR THE SPACING OF STATEMENTS
   Origs: 
   Dests: 
-(0 1) 20 REMARK THIS IS THE FIRST TEST
+20 (0 1) REMARK THIS IS THE FIRST TEST
   Origs: 
   Dests: 
-(0 3) 30 LET A = 5
+30 (0 3) LET A = 5
   Origs: :start
   Dests: 40:auto
-(0 4) 40 LET A2 = A * 2
+40 (0 4) LET A2 = A * 2
   Origs: 30:auto
   Dests: 50:auto
-(0 4) 50 LET A5 = A * 5
+50 (0 4) LET A5 = A * 5
   Origs: 40:auto
   Dests: 60:auto
-(0 4) 60 PRINT A, A2, A5
+60 (0 4) PRINT A, A2, A5
   Origs: 50:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 60:auto
   Dests: :stop
 

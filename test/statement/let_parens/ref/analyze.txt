@@ -19,31 +19,31 @@ Halstead complexity:
  intelligence: 44.924
  time: 1.316
 
-(0 8) 10 LET A1 = 10 * (3 * (2 + 1))
+10 (0 8) LET A1 = 10 * (3 * (2 + 1))
   Origs: :start
   Dests: 20:auto
-(0 7) 20 LET A2 = (3 * (2 + 1)) * 10
+20 (0 7) LET A2 = (3 * (2 + 1)) * 10
   Origs: 10:auto
   Dests: 30:auto
-(0 8) 30 LET B1 = 10 * (3 + (2 * 1))
+30 (0 8) LET B1 = 10 * (3 + (2 * 1))
   Origs: 20:auto
   Dests: 40:auto
-(0 7) 40 LET B2 = (3 + (2 * 1)) * 10
+40 (0 7) LET B2 = (3 + (2 * 1)) * 10
   Origs: 30:auto
   Dests: 50:auto
-(0 8) 50 LET C1 = 10 + (3 * (2 + 1))
+50 (0 8) LET C1 = 10 + (3 * (2 + 1))
   Origs: 40:auto
   Dests: 60:auto
-(0 7) 60 LET C2 = (3 * (2 + 1)) + 10
+60 (0 7) LET C2 = (3 * (2 + 1)) + 10
   Origs: 50:auto
   Dests: 70:auto
-(0 7) 70 PRINT A1, A2, B1, B2, C1, C2
+70 (0 7) PRINT A1, A2, B1, B2, C1, C2
   Origs: 60:auto
   Dests: 90:auto
-(0 1) 90 STOP
+90 (0 1) STOP
   Origs: 70:auto
   Dests: :stop
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

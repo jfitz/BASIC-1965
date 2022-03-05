@@ -19,31 +19,31 @@ Halstead complexity:
  intelligence: 20.520
  time: 0.096
 
-(0 1) 10 REM TEST FOR/NEXT STATEMENTS
+10 (0 1) REM TEST FOR/NEXT STATEMENTS
   Origs: 
   Dests: 
-(0 3) 20 LET B = 1
+20 (0 3) LET B = 1
   Origs: :start
   Dests: 30:auto
-(0 3) 30 LET E = 5
+30 (0 3) LET E = 5
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 LET S = 1
+40 (0 3) LET S = 1
   Origs: 30:auto
   Dests: 50:auto
-F(I) (1 4) 50 FOR I = B TO E STEP S
+50 F(I) (1 4) FOR I = B TO E STEP S
   Origs: 40:auto
   Dests: 60:fornext, 80:fornext
-F(I) (0 2) 60 PRINT I
+60 F(I) (0 2) PRINT I
   Origs: 50:fornext
   Dests: 70:auto
-F(I) (0 4) 70 LET E = E + 1
+70 F(I) (0 4) LET E = E + 1
   Origs: 60:auto
   Dests: 80:auto
-F(I) (0 1) 80 NEXT I
+80 F(I) (0 1) NEXT I
   Origs: 50:fornext, 70:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 80:auto
   Dests: :stop
 

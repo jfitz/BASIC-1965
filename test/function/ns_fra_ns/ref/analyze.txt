@@ -19,31 +19,31 @@ Halstead complexity:
  intelligence: 10.071
  time: 0.233
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(0 3) 20 LET A = 10.5
+20 (0 3) LET A = 10.5
   Origs: :start
   Dests: 30:auto
-(0 4) 30 LET B = FRA(A)
+30 (0 4) LET B = FRA(A)
   Origs: 20:auto
   Dests: 40:auto
-(0 3) 40 PRINT A, B
+40 (0 3) PRINT A, B
   Origs: 30:auto
   Dests: 50:auto
-(0 4) 50 LET A = -12.75
+50 (0 4) LET A = -12.75
   Origs: 40:auto
   Dests: 60:auto
-(0 4) 60 LET B = FRA(A)
+60 (0 4) LET B = FRA(A)
   Origs: 50:auto
   Dests: 70:auto
-(0 3) 70 PRINT A, B
+70 (0 3) PRINT A, B
   Origs: 60:auto
   Dests: 190:auto
-(0 1) 190 STOP
+190 (0 1) STOP
   Origs: 70:auto
   Dests: :stop
-(0 1) 199 END
+199 (0 1) END
   Origs: 
   Dests: :stop
 

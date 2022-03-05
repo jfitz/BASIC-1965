@@ -19,37 +19,37 @@ Halstead complexity:
  intelligence: 28.435
  time: 0.421
 
-(0 1) 10 REM TEST THE OPTION STATEMENT
+10 (0 1) REM TEST THE OPTION STATEMENT
   Origs: 
   Dests: 
-(0 2) 20 OPTION BASE 1
+20 (0 2) OPTION BASE 1
   Origs: :start
   Dests: 30:auto
-(0 2) 30 DIM A(5)
+30 (0 2) DIM A(5)
   Origs: 20:auto
   Dests: 40:auto
-(1 2) 40 ARR READ A
+40 (1 2) ARR READ A
   Origs: 30:auto
   Dests: 50:auto
-(0 2) 50 ARR PRINT A
+50 (0 2) ARR PRINT A
   Origs: 40:auto
   Dests: 100:auto
-(0 2) 100 OPTION WRAP TRUE
+100 (0 2) OPTION WRAP TRUE
   Origs: 50:auto
   Dests: 110:auto
-(0 5) 110 PRINT "LAST: "; A(0); " FIRST: "; A(6)
+110 (0 5) PRINT "LAST: "; A(0); " FIRST: "; A(6)
   Origs: 100:auto
   Dests: 120:auto
-(0 2) 120 OPTION WRAP FALSE
+120 (0 2) OPTION WRAP FALSE
   Origs: 110:auto
   Dests: 130:auto
-(0 5) 130 PRINT "LAST: "; A(0); " FIRST: "; A(6)
+130 (0 5) PRINT "LAST: "; A(0); " FIRST: "; A(6)
   Origs: 120:auto
   Dests: 199:auto
-(0 2) 190 DATA 1, 2, 3, 4, 5
+190 (0 2) DATA 1, 2, 3, 4, 5
   Origs: 
   Dests: 
-(0 1) 199 END
+199 (0 1) END
   Origs: 130:auto
   Dests: :stop
 

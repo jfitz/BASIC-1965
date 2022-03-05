@@ -1,7 +1,7 @@
-900: DATA 10, 20, 10, 20, 30, 40, 50
-10: DIM A(6)
-20: OPTION BASE 0
-30: ARR READ A
+900 DATA 10, 20, 10, 20, 30, 40, 50
+10 DIM A(6)
+20 OPTION BASE 0
+30 ARR READ A
  A(0) = 10
  A(1) = 20
  A(2) = 10
@@ -9,7 +9,7 @@
  A(4) = 30
  A(5) = 40
  A(6) = 50
-40: ARR B = UNIQ1(A)
+40 ARR B = UNIQ1(A)
  A(0): 10
  A(1): 20
  A(2): 10
@@ -23,10 +23,10 @@
  B(3) = 40
  B(4) = 50
  B(5) = 0
-50: GOSUB 800
-G(810) 810: PRINT "ARRAY A"
+50 GOSUB 800
+810 G(810) PRINT "ARRAY A"
 ARRAY A
-G(810) 820: ARR PRINT A
+820 G(810) ARR PRINT A
  A(0): 10
  A(1): 20
  A(2): 10
@@ -35,9 +35,9 @@ G(810) 820: ARR PRINT A
  A(5): 40
  A(6): 50
  10              20              10              20              30              40              50
-G(810) 830: PRINT "ARRAY B"
+830 G(810) PRINT "ARRAY B"
 ARRAY B
-G(810) 840: ARR PRINT B
+840 G(810) ARR PRINT B
  B(0): 10
  B(1): 20
  B(2): 30
@@ -45,17 +45,17 @@ G(810) 840: ARR PRINT B
  B(4): 50
  B(5): 0
  10              20              30              40              50              0
-G(810) 890: RETURN
-100: RESTORE
-120: OPTION BASE 1
-130: ARR READ A
+890 G(810) RETURN
+100 RESTORE
+120 OPTION BASE 1
+130 ARR READ A
  A(1) = 10
  A(2) = 20
  A(3) = 10
  A(4) = 20
  A(5) = 30
  A(6) = 40
-140: ARR B = UNIQ1(A)
+140 ARR B = UNIQ1(A)
  A(1): 10
  A(2): 20
  A(3): 10
@@ -66,10 +66,10 @@ G(810) 890: RETURN
  B(2) = 20
  B(3) = 30
  B(4) = 40
-150: GOSUB 800
-G(810) 810: PRINT "ARRAY A"
+150 GOSUB 800
+810 G(810) PRINT "ARRAY A"
 ARRAY A
-G(810) 820: ARR PRINT A
+820 G(810) ARR PRINT A
  A(1): 10
  A(2): 20
  A(3): 10
@@ -77,15 +77,15 @@ G(810) 820: ARR PRINT A
  A(5): 30
  A(6): 40
  10              20              10              20              30              40
-G(810) 830: PRINT "ARRAY B"
+830 G(810) PRINT "ARRAY B"
 ARRAY B
-G(810) 840: ARR PRINT B
+840 G(810) ARR PRINT B
  B(1): 10
  B(2): 20
  B(3): 30
  B(4): 40
  10              20              30              40
-G(810) 890: RETURN
-790: STOP
+890 G(810) RETURN
+790 STOP
 STOP in line 790
 

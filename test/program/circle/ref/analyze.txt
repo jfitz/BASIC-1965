@@ -19,193 +19,193 @@ Halstead complexity:
  intelligence: 67.399
  time: 27.345
 
-(0 1) 10 REM GALILEO'S CIRCLE BECOMES A STRAIGHT LINE
+10 (0 1) REM GALILEO'S CIRCLE BECOMES A STRAIGHT LINE
   Origs: 
   Dests: 
-(0 1) 20 REM FROM DISCOURSE ON TWO SCIENCES
+20 (0 1) REM FROM DISCOURSE ON TWO SCIENCES
   Origs: 
   Dests: 
-(0 1) 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
+50 (0 1) REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
   Origs: 
   Dests: 
-FNL(_,_,_,_) (0 3) 51 DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 2)
+51 FNL(_,_,_,_) (0 3) DEF FNL(X1, X2, Y1, Y2) = SQR((X1 - Y1) ^ 2 + (X2 - Y2) ^ 2)
   Origs: 221:function, 222:function, 231:function, 232:function, 424:function, 425:function
   Dests: 
-(0 1) 60 REM CONVERT DEGREES TO RADIANS
+60 (0 1) REM CONVERT DEGREES TO RADIANS
   Origs: 
   Dests: 
-FNR(_) (0 4) 61 DEF FNR(D) = D / 180 * 3.1415926
+61 FNR(_) (0 4) DEF FNR(D) = D / 180 * 3.14159
   Origs: 421:function
   Dests: 
-(0 1) 100 REM POINT A
+100 (0 1) REM POINT A
   Origs: 
   Dests: 
-(2 3) 101 READ A1, A2
+101 (2 3) READ A1, A2
   Origs: :start
   Dests: 111:auto
-(0 1) 110 REM CIRCLE AT POINT D WITH RADIUS DC
+110 (0 1) REM CIRCLE AT POINT D WITH RADIUS DC
   Origs: 
   Dests: 
-(2 3) 111 READ D1, D2
+111 (2 3) READ D1, D2
   Origs: 101:auto
   Dests: 113:auto
-(2 3) 113 READ C1, C2
+113 (2 3) READ C1, C2
   Origs: 111:auto
   Dests: 115:auto
-(0 4) 115 LET D5 = D1 - C1
+115 (0 4) LET D5 = D1 - C1
   Origs: 113:auto
   Dests: 121:auto
-(2 3) 121 READ Z9, Z8
+121 (2 3) READ Z9, Z8
   Origs: 115:auto
   Dests: 122:auto
-(1 2) 122 READ R9
+122 (1 2) READ R9
   Origs: 121:auto
   Dests: 201:auto
-(0 1) 200 REM FIND POINT B
+200 (0 1) REM FIND POINT B
   Origs: 
   Dests: 
-(0 5) 201 LET B1 = (A1 + D1) / 2
+201 (0 5) LET B1 = (A1 + D1) / 2
   Origs: 122:auto
   Dests: 202:auto
-(0 3) 202 LET B2 = 0
+202 (0 3) LET B2 = 0
   Origs: 201:auto
   Dests: 203:auto
-(0 4) 203 LET I1 = D1 + D5
+203 (0 4) LET I1 = D1 + D5
   Origs: 202:auto
   Dests: 204:auto
-(0 3) 204 LET I2 = 0
+204 (0 3) LET I2 = 0
   Origs: 203:auto
   Dests: 217:auto
-(0 2) 217 PRINT "IDENTIFYING POINT B"
+217 (0 2) PRINT "IDENTIFYING POINT B"
   Origs: 204:auto
   Dests: 218:auto
-(0 5) 218 PRINT "B", "AC/BC", "AI/BI", "Z"
+218 (0 5) PRINT "B", "AC/BC", "AI/BI", "Z"
   Origs: 217:auto
   Dests: 219:auto
-(0 3) 219 LET Z = 1
+219 (0 3) LET Z = 1
   Origs: 218:auto
   Dests: 221:auto
-(0 1) 220 REM RATIO OF AC/BC
+220 (0 1) REM RATIO OF AC/BC
   Origs: 
   Dests: 
-(0 5) 221 LET F1 = FNL(A1, A2, C1, C2)
+221 (0 5) LET F1 = FNL(A1, A2, C1, C2)
   Origs: 219:auto, 247:ifthen
   Dests: 51:function, 222:auto
-(0 5) 222 LET F2 = FNL(B1, B2, C1, C2)
+222 (0 5) LET F2 = FNL(B1, B2, C1, C2)
   Origs: 221:auto
   Dests: 51:function, 223:auto
-(0 4) 223 LET R0 = F1 / F2
+223 (0 4) LET R0 = F1 / F2
   Origs: 222:auto
   Dests: 231:auto
-(0 1) 230 REM RATIO OF AI/BI
+230 (0 1) REM RATIO OF AI/BI
   Origs: 
   Dests: 
-(0 5) 231 LET G1 = FNL(A1, A2, I1, I2)
+231 (0 5) LET G1 = FNL(A1, A2, I1, I2)
   Origs: 223:auto
   Dests: 51:function, 232:auto
-(0 5) 232 LET G2 = FNL(B1, B2, I1, I2)
+232 (0 5) LET G2 = FNL(B1, B2, I1, I2)
   Origs: 231:auto
   Dests: 51:function, 233:auto
-(0 4) 233 LET R1 = G1 / G2
+233 (0 4) LET R1 = G1 / G2
   Origs: 232:auto
   Dests: 239:auto
-(0 5) 239 PRINT B1, R0, R1, Z
+239 (0 5) PRINT B1, R0, R1, Z
   Origs: 233:auto
   Dests: 240:auto
-(1 5) 240 IF ABS(R0 - R1) < R9 THEN 300
+240 (1 5) IF ABS(R0 - R1) < R9 THEN 300
   Origs: 239:auto
   Dests: 241:auto, 301:ifthen
-(1 4) 241 IF R0 < R1 THEN 245
+241 (1 4) IF R0 < R1 THEN 245
   Origs: 240:auto
   Dests: 242:auto, 245:ifthen
-(0 4) 242 LET B1 = B1 + Z
+242 (0 4) LET B1 = B1 + Z
   Origs: 241:auto
   Dests: 243:auto
-(0 2) 243 GOTO 246
+243 (0 2) GOTO 246
   Origs: 242:auto
   Dests: 246:goto
-(0 4) 245 LET B1 = B1 - Z
+245 (0 4) LET B1 = B1 - Z
   Origs: 241:ifthen
   Dests: 246:auto
-(0 4) 246 LET Z = Z * Z8
+246 (0 4) LET Z = Z * Z8
   Origs: 243:goto, 245:auto
   Dests: 247:auto
-(1 5) 247 IF Z > Z9 THEN 220
+247 (1 5) IF Z > Z9 THEN 220
   Origs: 246:auto
   Dests: 221:ifthen, 248:auto
-(0 2) 248 PRINT "CANNOT RESOLVE POINT B"
+248 (0 2) PRINT "CANNOT RESOLVE POINT B"
   Origs: 247:auto
   Dests: 249:auto
-(0 1) 249 STOP
+249 (0 1) STOP
   Origs: 248:auto
   Dests: :stop
-(0 1) 300 REM PRINT DEFINED VALUES
+300 (0 1) REM PRINT DEFINED VALUES
   Origs: 
   Dests: 
-(0 4) 301 PRINT "POINT C    :"; C1; C2
+301 (0 4) PRINT "POINT C    :"; C1; C2
   Origs: 240:ifthen
   Dests: 302:auto
-(0 4) 302 PRINT "POINT B    :"; B1; B2
+302 (0 4) PRINT "POINT B    :"; B1; B2
   Origs: 301:auto
   Dests: 303:auto
-(0 3) 303 PRINT "DISTANCE BC:"; F2
+303 (0 3) PRINT "DISTANCE BC:"; F2
   Origs: 302:auto
   Dests: 304:auto
-(0 4) 304 PRINT "POINT A    :"; A1; A2
+304 (0 4) PRINT "POINT A    :"; A1; A2
   Origs: 303:auto
   Dests: 305:auto
-(0 3) 305 PRINT "DISTANCE AC:"; F1
+305 (0 3) PRINT "DISTANCE AC:"; F1
   Origs: 304:auto
   Dests: 306:auto
-(0 3) 306 PRINT "RATIO AC/BC:"; R0
+306 (0 3) PRINT "RATIO AC/BC:"; R0
   Origs: 305:auto
   Dests: 401:auto
-(0 1) 400 REM PICK VALUES ON CIRCLE D
+400 (0 1) REM PICK VALUES ON CIRCLE D
   Origs: 
   Dests: 
-(0 8) 401 PRINT "ANGLE", "POINT", " ", "DISTANCES", " ", "RATIO", "DIFFERENCE"
+401 (0 8) PRINT "ANGLE", "POINT", " ", "DISTANCES", " ", "RATIO", "DIFFERENCE"
   Origs: 306:auto
   Dests: 410:auto
-F(I) (1 4) 410 FOR I = 0 TO 365 STEP 5
+410 F(I) (1 4) FOR I = 0 TO 365 STEP 5
   Origs: 401:auto
   Dests: 421:fornext, 441:fornext
-(0 1) 420 REM PICK POINT ON CIRCLE D
+420 (0 1) REM PICK POINT ON CIRCLE D
   Origs: 
   Dests: 
-F(I) (0 5) 421 LET T = FNR(I)
+421 F(I) (0 5) LET T = FNR(I)
   Origs: 410:fornext
   Dests: 61:function, 422:auto
-F(I) (0 7) 422 LET I1 = D1 + COS(T) * D5
+422 F(I) (0 7) LET I1 = D1 + COS(T) * D5
   Origs: 421:auto
   Dests: 423:auto
-F(I) (0 7) 423 LET I2 = D2 + SIN(T) * D5
+423 F(I) (0 7) LET I2 = D2 + SIN(T) * D5
   Origs: 422:auto
   Dests: 424:auto
-F(I) (0 5) 424 LET G1 = FNL(A1, A2, I1, I2)
+424 F(I) (0 5) LET G1 = FNL(A1, A2, I1, I2)
   Origs: 423:auto
   Dests: 51:function, 425:auto
-F(I) (0 5) 425 LET G2 = FNL(B1, B2, I1, I2)
+425 F(I) (0 5) LET G2 = FNL(B1, B2, I1, I2)
   Origs: 424:auto
   Dests: 51:function, 426:auto
-F(I) (0 4) 426 LET R1 = G1 / G2
+426 F(I) (0 4) LET R1 = G1 / G2
   Origs: 425:auto
   Dests: 431:auto
-(0 1) 430 REM PRINT RESULTS
+430 (0 1) REM PRINT RESULTS
   Origs: 
   Dests: 
-F(I) (0 9) 431 PRINT T, I1; I2, G1; G2, R1, R1 - R0
+431 F(I) (0 9) PRINT T, I1; I2, G1; G2, R1, R1 - R0
   Origs: 426:auto
   Dests: 441:auto
-F(I) (0 1) 441 NEXT I
+441 F(I) (0 1) NEXT I
   Origs: 410:fornext, 431:auto
   Dests: 999:auto
-(0 1) 900 REM DATA - POINT A, POINT D, POINT C
+900 (0 1) REM DATA - POINT A, POINT D, POINT C
   Origs: 
   Dests: 
-(0 2) 901 DATA 0, 0, 100, 0, 75, 0, 0.00001, 0.995, 0.00001
+901 (0 2) DATA 0, 0, 100, 0, 75, 0, 1E-05, 0.995, 1E-05
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 441:auto
   Dests: :stop
 

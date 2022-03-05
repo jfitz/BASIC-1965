@@ -1,357 +1,357 @@
-10: PRINT "NUMBER", "SQUARE ROOT", "CUBE ROOT", "FOURTH ROOT"
+10 PRINT "NUMBER", "SQUARE ROOT", "CUBE ROOT", "FOURTH ROOT"
 NUMBER          SQUARE ROOT     CUBE ROOT       FOURTH ROOT
-F(N) 20: FOR N = 1 TO 10
+20 F(N) FOR N = 1 TO 10
  N = 1
  terminated:false
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 1
  1              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 1
  R: 2
  1              
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 1
  R: 3
  1              
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 1
  R: 4
  1              
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 1
  terminated:false
  N = 2
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 2
  2              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 2
  R: 2
  1.41421        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 2
  R: 3
  1.25992        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 2
  R: 4
  1.18921        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 2
  terminated:false
  N = 3
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 3
  3              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 3
  R: 2
  1.73205        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 3
  R: 3
  1.44225        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 3
  R: 4
  1.31607        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 3
  terminated:false
  N = 4
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 4
  4              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 4
  R: 2
  2              
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 4
  R: 3
  1.5874         
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 4
  R: 4
  1.41421        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 4
  terminated:false
  N = 5
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 5
  5              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 5
  R: 2
  2.23607        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 5
  R: 3
  1.70998        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 5
  R: 4
  1.49535        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 5
  terminated:false
  N = 6
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 6
  6              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 6
  R: 2
  2.44949        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 6
  R: 3
  1.81712        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 6
  R: 4
  1.56508        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 6
  terminated:false
  N = 7
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 7
  7              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 7
  R: 2
  2.64575        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 7
  R: 3
  1.91293        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 7
  R: 4
  1.62658        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 7
  terminated:false
  N = 8
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 8
  8              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 8
  R: 2
  2.82843        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 8
  R: 3
  2              
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 8
  R: 4
  1.68179        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 8
  terminated:false
  N = 9
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 9
  9              
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 9
  R: 2
  3              
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 9
  R: 3
  2.08008        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 9
  R: 4
  1.73205        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 9
  terminated:false
  N = 10
-F(N) 30: PRINT N,
+30 F(N) PRINT N,
  N: 10
  10             
-F(N,R) 40: FOR R = 2 TO 4
+40 F(N,R) FOR R = 2 TO 4
  R = 2
  terminated:false
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 10
  R: 2
  3.16228        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 2
  terminated:false
  R = 3
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 10
  R: 3
  2.15443        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 3
  terminated:false
  R = 4
-F(N,R) 50: PRINT N ^ (1 / R),
+50 F(N,R) PRINT N ^ (1 / R),
  N: 10
  R: 4
  1.77828        
-F(N,R) 60: NEXT R
+60 F(N,R) NEXT R
  R: 4
  terminated:true
-F(N) 70: PRINT
+70 F(N) PRINT
 
-F(N) 80: NEXT N
+80 F(N) NEXT N
  N: 10
  terminated:true
-99: END
+99 END
 STOP in line 99
 

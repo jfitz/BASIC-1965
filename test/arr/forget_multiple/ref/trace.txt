@@ -1,136 +1,136 @@
-11: OPTION BASE 1
-20: DIM A(10), B(8)
-F(I) 21: FOR I = 1 TO 10
+11 OPTION BASE 1
+20 DIM A(10), B(8)
+21 F(I) FOR I = 1 TO 10
  I = 1
  terminated:false
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 1
  A(1) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 2
  A(2) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 3
  A(3) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 4
  A(4) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 5
  A(5) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 6
  A(6) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 7
  A(7) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 7
  terminated:false
  I = 8
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 8
  A(8) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 8
  terminated:false
  I = 9
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 9
  A(9) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 9
  terminated:false
  I = 10
-F(I) 22: LET A(I) = 1
+22 F(I) LET A(I) = 1
  I: 10
  A(10) = 1
-F(I) 23: NEXT I
+23 F(I) NEXT I
  I: 10
  terminated:true
-F(I) 24: FOR I = 1 TO 8
+24 F(I) FOR I = 1 TO 8
  I = 1
  terminated:false
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 1
  B(1) = 7
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 2
  B(2) = 6
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 3
  B(3) = 5
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 4
  B(4) = 4
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 5
  B(5) = 3
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 6
  B(6) = 2
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 7
  B(7) = 1
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 7
  terminated:false
  I = 8
-F(I) 25: LET B(I) = 8 - I
+25 F(I) LET B(I) = 8 - I
  I: 8
  B(8) = 0
-F(I) 26: NEXT I
+26 F(I) NEXT I
  I: 8
  terminated:true
-30: ARR PRINT A
+30 ARR PRINT A
  A(1): 1
  A(2): 1
  A(3): 1
@@ -142,7 +142,7 @@ F(I) 26: NEXT I
  A(9): 1
  A(10): 1
  1               1               1               1               1               1               1               1               1               1
-31: ARR PRINT B
+31 ARR PRINT B
  B(1): 7
  B(2): 6
  B(3): 5
@@ -152,7 +152,7 @@ F(I) 26: NEXT I
  B(7): 1
  B(8): 0
  7               6               5               4               3               2               1               0
-40: ARR FORGET A, B
+40 ARR FORGET A, B
  A(1)
  A(2)
  A(3)
@@ -171,6 +171,6 @@ F(I) 26: NEXT I
  B(6)
  B(7)
  B(8)
-90: ARR PRINT A
+90 ARR PRINT A
 Variable A has no dimensions in line 90
 

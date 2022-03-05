@@ -1,91 +1,91 @@
-30: PRINT "SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
+30 PRINT "SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS"
 SOLVE FOR 3 EQUATIONS IN 3 UNKNOWNS
-40: PRINT "OF THE TYPE AX + BY + CZ = D"
+40 PRINT "OF THE TYPE AX + BY + CZ = D"
 OF THE TYPE AX + BY + CZ = D
-50: PRINT "ENTER THE 1ST EQUATION (A,B,C,D)"
+50 PRINT "ENTER THE 1ST EQUATION (A,B,C,D)"
 ENTER THE 1ST EQUATION (A,B,C,D)
-60: INPUT A1, B1, C1, D1
+60 INPUT A1, B1, C1, D1
 ? 1,4,6,3
  A1 = 1
  B1 = 4
  C1 = 6
  D1 = 3
-70: PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
+70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
 ENTER THE 2ND EQUATION (A,B,C,D)
-80: INPUT A2, B2, C2, D2
+80 INPUT A2, B2, C2, D2
 ? -3,8,0,-2
  A2 = -3
  B2 = 8
  C2 = 0
  D2 = -2
-90: PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
+90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
 ENTER THE 3RD EQUATION (A,B,C,D)
-100: INPUT A3, B3, C3, D3
+100 INPUT A3, B3, C3, D3
 ? 4,-5,2,6
  A3 = 4
  B3 = -5
  C3 = 2
  D3 = 6
-110: LET E1 = ((B1 * A2) / A1) - B2
+110 LET E1 = ((B1 * A2) / A1) - B2
  B1: 4
  A2: -3
  A1: 1
  B2: 8
  E1 = -20
-120: LET E2 = ((C1 * A2) / A1) - C2
+120 LET E2 = ((C1 * A2) / A1) - C2
  C1: 6
  A2: -3
  A1: 1
  C2: 0
  E2 = -18
-130: LET E3 = ((B1 * A3) / A1) - B3
+130 LET E3 = ((B1 * A3) / A1) - B3
  B1: 4
  A3: 4
  A1: 1
  B3: -5
  E3 = 21
-140: LET E4 = ((C1 * A3) / A1) - C3
+140 LET E4 = ((C1 * A3) / A1) - C3
  C1: 6
  A3: 4
  A1: 1
  C3: 2
  E4 = 22
-150: LET E5 = ((E1 * E4) - (E2 * E3))
+150 LET E5 = ((E1 * E4) - (E2 * E3))
  E1: -20
  E4: 22
  E2: -18
  E3: 21
  E5 = -62
-160: IF E5 = 0 THEN 250
+160 IF E5 = 0 THEN 250
  E5: -62
  E5 = 0: false
-170: LET E6 = ((D1 * A2) / A1) - D2
+170 LET E6 = ((D1 * A2) / A1) - D2
  D1: 3
  A2: -3
  A1: 1
  D2: -2
  E6 = -7
-180: LET E7 = ((D1 * A3) / A1) - D3
+180 LET E7 = ((D1 * A3) / A1) - D3
  D1: 3
  A3: 4
  A1: 1
  D3: 6
  E7 = 6
-190: LET Y = ((E6 * E4) - (E2 * E7)) / E5
+190 LET Y = ((E6 * E4) - (E2 * E7)) / E5
  E6: -7
  E4: 22
  E2: -18
  E7: 6
  E5: -62
  Y = 0.741935
-200: LET Z = ((E1 * E7) - (E6 * E3)) / E5
+200 LET Z = ((E1 * E7) - (E6 * E3)) / E5
  E1: -20
  E7: 6
  E6: -7
  E3: 21
  E5: -62
  Z = -0.435484
-210: LET X = (D1 / A1) - (B1 / A1 * Y) - ((C1 / A1) * Z)
+210 LET X = (D1 / A1) - (B1 / A1 * Y) - ((C1 / A1) * Z)
  D1: 3
  A1: 1
  B1: 4
@@ -93,9 +93,9 @@ ENTER THE 3RD EQUATION (A,B,C,D)
  C1: 6
  Z: -0.435484
  X = 2.64516
-220: PRINT "SOLUTION"
+220 PRINT "SOLUTION"
 SOLUTION
-230: PRINT "X = "; X, "Y = "; Y, "Z = "; Z
+230 PRINT "X = "; X, "Y = "; Y, "Z = "; Z
 X = 
  X: 2.64516
  2.64516        Y = 
@@ -103,17 +103,17 @@ X =
  0.741935       Z = 
  Z: -0.435484
 -0.435484
-240: GOTO 260
-260: PRINT
+240 GOTO 260
+260 PRINT
 
-270: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+270 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
-280: INPUT L
+280 INPUT L
 ? 0
  L = 0
-290: IF L = 1 THEN 310
+290 IF L = 1 THEN 310
  L: 0
  L = 1: false
-300: STOP
+300 STOP
 STOP in line 300
 

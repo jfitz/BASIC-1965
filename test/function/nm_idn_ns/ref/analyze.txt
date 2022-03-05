@@ -19,70 +19,70 @@ Halstead complexity:
  intelligence: 21.062
  time: 1.108
 
-(0 1) 10 REM MATRIX FUNCTION IDN
+10 (0 1) REM MATRIX FUNCTION IDN
   Origs: 
   Dests: 
-(0 2) 15 DIM D(4, 4)
+15 (0 2) DIM D(4, 4)
   Origs: :start
   Dests: 20:auto
-(0 4) 20 MAT A = IDN(3)
+20 (0 4) MAT A = IDN(3)
   Origs: 15:auto
   Dests: 30:auto
-(0 4) 30 MAT B = IDN(5, 5)
+30 (0 4) MAT B = IDN(5, 5)
   Origs: 20:auto
   Dests: 35:auto
-(0 4) 35 MAT D = IDN
+35 (0 4) MAT D = IDN
   Origs: 30:auto
   Dests: 40:auto
-(0 2) 40 PRINT "MATRIX A"
+40 (0 2) PRINT "MATRIX A"
   Origs: 35:auto
   Dests: 50:auto
-(0 2) 50 MAT PRINT A;
+50 (0 2) MAT PRINT A;
   Origs: 40:auto
   Dests: 60:auto
-(0 2) 60 PRINT "MATRIX B"
+60 (0 2) PRINT "MATRIX B"
   Origs: 50:auto
   Dests: 70:auto
-(0 2) 70 MAT PRINT B;
+70 (0 2) MAT PRINT B;
   Origs: 60:auto
   Dests: 80:auto
-(0 2) 80 PRINT "MATRIX D"
+80 (0 2) PRINT "MATRIX D"
   Origs: 70:auto
   Dests: 90:auto
-(0 2) 90 MAT PRINT D;
+90 (0 2) MAT PRINT D;
   Origs: 80:auto
   Dests: 100:auto
-(0 2) 100 OPTION BASE 1
+100 (0 2) OPTION BASE 1
   Origs: 90:auto
   Dests: 120:auto
-(0 4) 120 MAT A = IDN(3)
+120 (0 4) MAT A = IDN(3)
   Origs: 100:auto
   Dests: 130:auto
-(0 4) 130 MAT B = IDN(5, 5)
+130 (0 4) MAT B = IDN(5, 5)
   Origs: 120:auto
   Dests: 135:auto
-(0 4) 135 MAT D = IDN
+135 (0 4) MAT D = IDN
   Origs: 130:auto
   Dests: 140:auto
-(0 2) 140 PRINT "MATRIX A"
+140 (0 2) PRINT "MATRIX A"
   Origs: 135:auto
   Dests: 150:auto
-(0 2) 150 MAT PRINT A;
+150 (0 2) MAT PRINT A;
   Origs: 140:auto
   Dests: 160:auto
-(0 2) 160 PRINT "MATRIX B"
+160 (0 2) PRINT "MATRIX B"
   Origs: 150:auto
   Dests: 170:auto
-(0 2) 170 MAT PRINT B;
+170 (0 2) MAT PRINT B;
   Origs: 160:auto
   Dests: 180:auto
-(0 2) 180 PRINT "MATRIX D"
+180 (0 2) PRINT "MATRIX D"
   Origs: 170:auto
   Dests: 190:auto
-(0 2) 190 MAT PRINT D;
+190 (0 2) MAT PRINT D;
   Origs: 180:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 190:auto
   Dests: :stop
 

@@ -19,128 +19,128 @@ Halstead complexity:
  intelligence: 29.942
  time: 17.927
 
-FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+10 FNF(_) (0 9) DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
   Dests: 
-(0 1) 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
+11 (0 1) REM DEF FNF(X) = -3*X^5 + X^3 + 1
   Origs: 
   Dests: 
-(0 1) 12 REM DEF FNF(X) = X^2 + 1
+12 (0 1) REM DEF FNF(X) = X^2 + 1
   Origs: 
   Dests: 
-(0 1) 13 REM DEF FNF(X) = X^2 - 0.001
+13 (0 1) REM DEF FNF(X) = X^2 - 0.001
   Origs: 
   Dests: 
-(0 1) 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
+14 (0 1) REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
   Origs: 
   Dests: 
-(0 2) 20 OPTION REQUIRE_INITIALIZED TRUE
+20 (0 2) OPTION REQUIRE_INITIALIZED TRUE
   Origs: :start
   Dests: 30:auto
-(2 3) 30 READ A, B
+30 (2 3) READ A, B
   Origs: 20:auto
   Dests: 100:auto
-(0 4) 100 LET S = SGN(FNF(A))
+100 (0 4) LET S = SGN(FNF(A))
   Origs: 30:auto
   Dests: 110:auto
-(0 4) 110 LET T = SGN(FNF(B))
+110 (0 4) LET T = SGN(FNF(B))
   Origs: 100:auto
   Dests: 120:auto
-(1 5) 120 IF S * T = 0 THEN 300
+120 (1 5) IF S * T = 0 THEN 300
   Origs: 110:auto
   Dests: 130:auto, 300:ifthen
-(1 5) 130 IF S * T > 0 THEN 200
+130 (1 5) IF S * T > 0 THEN 200
   Origs: 120:auto
   Dests: 140:auto, 200:ifthen
-(0 2) 140 GOTO 600
+140 (0 2) GOTO 600
   Origs: 130:auto
   Dests: 600:goto
-(0 4) 200 LET L = B - A
+200 (0 4) LET L = B - A
   Origs: 130:ifthen
   Dests: 210:auto
-F(I) (1 3) 210 FOR I = 1 TO 1000
+210 F(I) (1 3) FOR I = 1 TO 1000
   Origs: 200:auto
   Dests: 220:fornext, 240:fornext
-F(I) (0 7) 220 LET X = A + RND() * L
+220 F(I) (0 7) LET X = A + RND() * L
   Origs: 210:fornext
   Dests: 230:auto
-F(I) (1 6) 230 IF S * SGN(FNF(X)) < 0 THEN 270
+230 F(I) (1 6) IF S * SGN(FNF(X)) < 0 THEN 270
   Origs: 220:auto
   Dests: 240:auto, 270:ifthen
-F(I) (0 1) 240 NEXT I
+240 F(I) (0 1) NEXT I
   Origs: 210:fornext, 230:auto
   Dests: 250:auto
-(0 2) 250 PRINT "NO CHANGE OF SIGN FOUND"
+250 (0 2) PRINT "NO CHANGE OF SIGN FOUND"
   Origs: 240:auto
   Dests: 260:auto
-(0 1) 260 STOP
+260 (0 1) STOP
   Origs: 250:auto
   Dests: :stop
-F(I) (0 3) 270 LET B = X
+270 F(I) (0 3) LET B = X
   Origs: 230:ifthen
   Dests: 280:auto
-F(I) (0 2) 280 GOTO 600
+280 F(I) (0 2) GOTO 600
   Origs: 270:auto
   Dests: 600:goto
-(1 4) 300 IF S = 0 THEN 330
+300 (1 4) IF S = 0 THEN 330
   Origs: 120:ifthen
   Dests: 310:auto, 330:ifthen
-(0 3) 310 LET X = B
+310 (0 3) LET X = B
   Origs: 300:auto
   Dests: 320:auto
-(0 2) 320 GOTO 500
+320 (0 2) GOTO 500
   Origs: 310:auto
   Dests: 500:goto
-(0 3) 330 LET X = A
+330 (0 3) LET X = A
   Origs: 300:ifthen
   Dests: 340:auto
-(0 2) 340 GOTO 500
+340 (0 2) GOTO 500
   Origs: 330:auto
   Dests: 500:goto
-(0 3) 500 PRINT "ONE ZERO AT" X
+500 (0 3) PRINT "ONE ZERO AT" X
   Origs: 320:goto, 340:goto
   Dests: 510:auto
-(0 1) 510 STOP
+510 (0 1) STOP
   Origs: 500:auto
   Dests: :stop
-F(I) (0 3) 600 LET X(1 + S) = A
+600 F(I) (0 3) LET X(1 + S) = A
   Origs: 140:goto, 280:goto
   Dests: 610:auto
-F(I) (0 3) 610 LET X(1 - S) = B
+610 F(I) (0 3) LET X(1 - S) = B
   Origs: 600:auto
   Dests: 620:auto
-F(I) (0 5) 620 LET X = (X(0) + X(2)) / 2
+620 F(I) (0 5) LET X = (X(0) + X(2)) / 2
   Origs: 610:auto, 680:goto
   Dests: 630:auto
-F(I) (0 4) 630 LET F = SGN(FNF(X))
+630 F(I) (0 4) LET F = SGN(FNF(X))
   Origs: 620:auto
   Dests: 640:auto
-F(I) (1 4) 640 IF F = 0 THEN 800
+640 F(I) (1 4) IF F = 0 THEN 800
   Origs: 630:auto
   Dests: 650:auto, 800:ifthen
-F(I) (0 3) 650 LET X(1 + F) = X
+650 F(I) (0 3) LET X(1 + F) = X
   Origs: 640:auto
   Dests: 670:auto
-F(I) (1 10) 670 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 800
+670 F(I) (1 10) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 800
   Origs: 650:auto
   Dests: 680:auto, 800:ifthen
-F(I) (0 3) 680 GOTO 620
+680 F(I) (0 3) GOTO 620
   Origs: 670:auto
   Dests: 620:goto
-F(I) (0 3) 800 PRINT "ONE ZERO AT" X
+800 F(I) (0 3) PRINT "ONE ZERO AT" X
   Origs: 640:ifthen, 670:ifthen
   Dests: 810:auto
-F(I) (0 1) 810 STOP
+810 F(I) (0 1) STOP
     WARNING: Terminating statement in FOR/NEXT
   Origs: 800:auto
   Dests: :stop
-(0 1) 900 REM DATA 0,1
+900 (0 1) REM DATA 0,1
   Origs: 
   Dests: 
-(0 2) 910 DATA 0, 1
+910 (0 2) DATA 0, 1
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -19,37 +19,37 @@ Halstead complexity:
  intelligence: 25.298
  time: 3.303
 
-(0 1) 100 REM SIDE-ANGLE-SIDE
+100 (0 1) REM SIDE-ANGLE-SIDE
   Origs: 
   Dests: 
-(0 3) 110 LET P = 3.14159
+110 (0 3) LET P = 3.14159
   Origs: :start
   Dests: 140:auto
-FND(_) (0 4) 120 DEF FND(X) = X * P / 180
+120 FND(_) (0 4) DEF FND(X) = X * P / 180
   Origs: 
   Dests: 
-FNC(_) (0 3) 130 DEF FNC(X) = COS(FND(X))
+130 FNC(_) (0 3) DEF FNC(X) = COS(FND(X))
   Origs: 
   Dests: 
-(0 5) 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
+140 (0 5) PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
   Origs: 110:auto
   Dests: 150:auto
-(3 4) 150 READ X, A, Y
+150 (3 4) READ X, A, Y
   Origs: 140:auto, 180:goto
   Dests: 160:auto
-(0 4) 160 LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
+160 (0 4) LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))
   Origs: 150:auto
   Dests: 170:auto
-(0 5) 170 PRINT X, A, Y, Z
+170 (0 5) PRINT X, A, Y, Z
   Origs: 160:auto
   Dests: 180:auto
-(0 3) 180 GOTO 150
+180 (0 3) GOTO 150
   Origs: 170:auto
   Dests: 150:goto
-(0 2) 190 DATA 10, 60, 20, 3, 90, 4, 10, 120, 10
+190 (0 2) DATA 10, 60, 20, 3, 90, 4, 10, 120, 10
   Origs: 
   Dests: 
-(0 1) 200 END
+200 (0 1) END
   Origs: 
   Dests: :stop
 

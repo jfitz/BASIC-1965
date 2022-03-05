@@ -19,31 +19,31 @@ Halstead complexity:
  intelligence: 75.150
  time: 0.070
 
-(0 1) 10 REM PROGRAM TO TEST INPUT STATEMENT
+10 (0 1) REM PROGRAM TO TEST INPUT STATEMENT
   Origs: 
   Dests: 
-(0 2) 20 PRINT "ENTER A NUMBER:";
+20 (0 2) PRINT "ENTER A NUMBER:";
   Origs: :start
   Dests: 30:auto
-(1 2) 30 INPUT N
+30 (1 2) INPUT N
   Origs: 20:auto
   Dests: 40:auto
-(1 2) 40 INPUT "ENTER ANOTHER:", A
+40 (1 2) INPUT "ENTER ANOTHER:", A
   Origs: 30:auto
   Dests: 50:auto
-(2 3) 50 INPUT "ENTER TWO NUMBERS:", T1, T2
+50 (2 3) INPUT "ENTER TWO NUMBERS:", T1, T2
   Origs: 40:auto
   Dests: 60:auto
-(0 6) 60 PRINT "YOU ENTERED: "; N; A; T1; T2
+60 (0 6) PRINT "YOU ENTERED: "; N; A; T1; T2
   Origs: 50:auto
   Dests: 70:auto
-(1 2) 70 INPUT "A NEGATIVE NUMBER:"; N1
+70 (1 2) INPUT "A NEGATIVE NUMBER:"; N1
   Origs: 60:auto
   Dests: 80:auto
-(0 3) 80 PRINT "THAT WAS: "; N1
+80 (0 3) PRINT "THAT WAS: "; N1
   Origs: 70:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 80:auto
   Dests: :stop
 

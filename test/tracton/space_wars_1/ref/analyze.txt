@@ -19,414 +19,414 @@ Halstead complexity:
  intelligence: 104.308
  time: 23.254
 
-(0 1) 10 REM THIS PROGRAM IS THE GAME OF SPACE WARS
+10 (0 1) REM THIS PROGRAM IS THE GAME OF SPACE WARS
   Origs: 
   Dests: 
-(0 1) 20 REM TWO SHIPS BATTLE, YOU MUST DESTROY THE
+20 (0 1) REM TWO SHIPS BATTLE, YOU MUST DESTROY THE
   Origs: 
   Dests: 
-(0 1) 30 REM ENEMY TO SAVE THE REPUBLIC
+30 (0 1) REM ENEMY TO SAVE THE REPUBLIC
   Origs: 
   Dests: 
-(0 1) 40 
+40 (0 1) 
    ERROR: Unknown statement 'RANDOMIZE'
   Origs: 
   Dests: 
-G(500) (0 2) 50 PRINT "ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
+50 G(500) (0 2) PRINT "ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
   Origs: :start, 110:goto, 1320:goto
   Dests: 60:auto
-G(500) (0 2) 60 PRINT "YES OR NO"
+60 G(500) (0 2) PRINT "YES OR NO"
   Origs: 50:auto
   Dests: 70:auto
-G(500) (0 1) 70 INPUT A $
+70 G(500) (0 1) INPUT A $
    ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
   Origs: 60:auto
   Dests: 80:auto
-G(500) (1 2) 80 IF A $ ="YES" THEN 120
+80 G(500) (1 2) IF A $ ="YES" THEN 120
    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 70:auto
   Dests: 90:auto, 120:ifthen
-G(500) (1 2) 90 IF A $ ="NO" THEN 250
+90 G(500) (1 2) IF A $ ="NO" THEN 250
    ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 80:auto
   Dests: 100:auto, 250:ifthen
-G(500) (0 2) 100 PRINT "INVALID RESPONSE"
+100 G(500) (0 2) PRINT "INVALID RESPONSE"
   Origs: 90:auto
   Dests: 110:auto
-G(500) (0 3) 110 GOTO 50
+110 G(500) (0 3) GOTO 50
     WARNING: Branch to line before GOSUB start
   Origs: 100:auto
   Dests: 50:goto
-G(500) (0 2) 120 PRINT
+120 G(500) (0 2) PRINT
   Origs: 80:ifthen
   Dests: 130:auto
-G(500) (0 2) 130 PRINT "THERE ARE 5 EXECUTIVE COMMANDS; TURN THE"
+130 G(500) (0 2) PRINT "THERE ARE 5 EXECUTIVE COMMANDS; TURN THE"
   Origs: 120:auto
   Dests: 140:auto
-G(500) (0 2) 140 PRINT "SHIP(1), MOVE(2), FIRE LASER CANNON(3),"
+140 G(500) (0 2) PRINT "SHIP(1), MOVE(2), FIRE LASER CANNON(3),"
   Origs: 130:auto
   Dests: 150:auto
-G(500) (0 2) 150 PRINT "FIRE LASER(4), AND SELF-DESTRUCT(5)"
+150 G(500) (0 2) PRINT "FIRE LASER(4), AND SELF-DESTRUCT(5)"
   Origs: 140:auto
   Dests: 160:auto
-G(500) (0 2) 160 PRINT "THE CANNON MUST BE FIRED WITH 10 DEGREES"
+160 G(500) (0 2) PRINT "THE CANNON MUST BE FIRED WITH 10 DEGREES"
   Origs: 150:auto
   Dests: 170:auto
-G(500) (0 2) 170 PRINT "OF 90 TO BE EFFECTIVE. NEGATIVE DEG TURNS TOWARDS"
+170 G(500) (0 2) PRINT "OF 90 TO BE EFFECTIVE. NEGATIVE DEG TURNS TOWARDS"
   Origs: 160:auto
   Dests: 180:auto
-G(500) (0 2) 180 PRINT "0 AND POSITIVE DEG TOWARDS 180. ENTERING NEGATIVE KM"
+180 G(500) (0 2) PRINT "0 AND POSITIVE DEG TOWARDS 180. ENTERING NEGATIVE KM"
   Origs: 170:auto
   Dests: 190:auto
-G(500) (0 2) 190 PRINT "MOVES YOU TOWARDS THE ENEMY, WHILE POSITIVE MOVES"
+190 G(500) (0 2) PRINT "MOVES YOU TOWARDS THE ENEMY, WHILE POSITIVE MOVES"
   Origs: 180:auto
   Dests: 200:auto
-G(500) (0 2) 200 PRINT "YOU AWAY. LASER EFFECTIVENESS IS RANDOM, DUE TO"
+200 G(500) (0 2) PRINT "YOU AWAY. LASER EFFECTIVENESS IS RANDOM, DUE TO"
   Origs: 190:auto
   Dests: 210:auto
-G(500) (0 2) 210 PRINT "SHIELDING, DISTANCE, AND INTERSTELLAR DEBRIS"
+210 G(500) (0 2) PRINT "SHIELDING, DISTANCE, AND INTERSTELLAR DEBRIS"
   Origs: 200:auto
   Dests: 220:auto
-G(500) (0 2) 220 PRINT
+220 G(500) (0 2) PRINT
   Origs: 210:auto
   Dests: 230:auto
-G(500) (0 2) 230 PRINT "***************GOOD-LUCK***************"
+230 G(500) (0 2) PRINT "***************GOOD-LUCK***************"
   Origs: 220:auto
   Dests: 240:auto
-G(500) (0 2) 240 PRINT "MAY THE FORCE BE WITH YOU"
+240 G(500) (0 2) PRINT "MAY THE FORCE BE WITH YOU"
   Origs: 230:auto
   Dests: 250:auto
-G(500) (0 3) 250 LET E1 = 10000
+250 G(500) (0 3) LET E1 = 10000
   Origs: 90:ifthen, 240:auto
   Dests: 260:auto
-G(500) (0 3) 260 LET E2 = E1
+260 G(500) (0 3) LET E2 = E1
   Origs: 250:auto
   Dests: 270:auto
-G(500) (0 5) 270 LET D = 1000 + INT(500000 * RND)
+270 G(500) (0 5) LET D = 1000 + INT(500000 * RND)
   Origs: 260:auto
   Dests: 280:auto
-G(500) (0 5) 280 LET B = 1 + INT(180 * RND)
+280 G(500) (0 5) LET B = 1 + INT(180 * RND)
   Origs: 270:auto
   Dests: 290:auto
-G(500) (0 2) 290 GOSUB 340
+290 G(500) (0 2) GOSUB 340
   Origs: 280:auto, 790:goto, 900:goto, 1040:goto, 1070:goto, 1090:goto, 1130:goto
   Dests: 300:auto, 340:gosub
-G(500) (0 2) 300 GOSUB 390
+300 G(500) (0 2) GOSUB 390
   Origs: 290:auto
   Dests: 310:auto, 390:gosub
-G(500) (0 4) 310 LET E1 = E1 - D1
+310 G(500) (0 4) LET E1 = E1 - D1
   Origs: 300:auto
   Dests: 320:auto
-G(500) (0 2) 320 GOSUB 500
+320 G(500) (0 2) GOSUB 500
   Origs: 310:auto
   Dests: 330:auto, 500:gosub
-G(500) (0 2) 330 GOTO 690
+330 G(500) (0 2) GOTO 690
   Origs: 320:auto
   Dests: 690:goto
-G(340) (1 4) 340 IF D >= 100000 THEN 370
+340 G(340) (1 4) IF D >= 100000 THEN 370
   Origs: 290:gosub
   Dests: 350:auto, 370:ifthen
-G(340) (0 3) 350 LET L = 1
+350 G(340) (0 3) LET L = 1
   Origs: 340:auto
   Dests: 360:auto
-G(340) (0 2) 360 GOTO 380
+360 G(340) (0 2) GOTO 380
   Origs: 350:auto
   Dests: 380:goto
-G(340) (0 3) 370 LET L = 0
+370 G(340) (0 3) LET L = 0
   Origs: 340:ifthen
   Dests: 380:auto
-G(340) (0 1) 380 RETURN
+380 G(340) (0 1) RETURN
   Origs: 360:goto, 370:auto
   Dests: 
-G(390) (1 4) 390 IF L = 0 THEN 440
+390 G(390) (1 4) IF L = 0 THEN 440
   Origs: 300:gosub
   Dests: 400:auto, 440:ifthen
-G(390) (0 6) 400 LET H2 = (1 + INT(100 * RND)) / 100
+400 G(390) (0 6) LET H2 = (1 + INT(100 * RND)) / 100
   Origs: 390:auto
   Dests: 410:auto
-G(390) (0 4) 410 LET D1 = 500 * H2
+410 G(390) (0 4) LET D1 = 500 * H2
   Origs: 400:auto
   Dests: 420:auto
-G(390) (0 4) 420 LET E2 = E2 - 500
+420 G(390) (0 4) LET E2 = E2 - 500
   Origs: 410:auto
   Dests: 430:auto
-G(390) (0 2) 430 GOTO 490
+430 G(390) (0 2) GOTO 490
   Origs: 420:auto
   Dests: 490:goto
-G(390) (0 5) 440 LET M1 = 1 + INT(2 * RND)
+440 G(390) (0 5) LET M1 = 1 + INT(2 * RND)
   Origs: 390:ifthen
   Dests: 450:auto
-G(390) (1 4) 450 IF M1 = 1 THEN 470
+450 G(390) (1 4) IF M1 = 1 THEN 470
   Origs: 440:auto
   Dests: 460:auto, 470:ifthen
-G(390) (0 2) 460 GOTO 480
+460 G(390) (0 2) GOTO 480
   Origs: 450:auto
   Dests: 480:goto
-G(390) (0 3) 470 LET D1 = 0
+470 G(390) (0 3) LET D1 = 0
   Origs: 450:ifthen
   Dests: 480:auto
-G(390) (0 4) 480 LET E2 = E2 - 1000
+480 G(390) (0 4) LET E2 = E2 - 1000
   Origs: 460:goto, 470:auto
   Dests: 490:auto
-G(390) (0 1) 490 RETURN
+490 G(390) (0 1) RETURN
   Origs: 430:goto, 480:auto
   Dests: 
-G(500) (0 2) 500 PRINT
+500 G(500) (0 2) PRINT
   Origs: 320:gosub
   Dests: 510:auto
-G(500) (0 4) 510 PRINT "DISTANCE TO ENEMY"; D; "KM"
+510 G(500) (0 4) PRINT "DISTANCE TO ENEMY"; D; "KM"
   Origs: 500:auto
   Dests: 520:auto
-G(500) (0 4) 520 PRINT "BEARING IS"; B; "DEGREES"
+520 G(500) (0 4) PRINT "BEARING IS"; B; "DEGREES"
   Origs: 510:auto
   Dests: 530:auto
-G(500) (1 4) 530 IF L = 1 THEN 560
+530 G(500) (1 4) IF L = 1 THEN 560
   Origs: 520:auto
   Dests: 540:auto, 560:ifthen
-G(500) (0 2) 540 PRINT "THE SKY FIGHTER HAS FIRED THE LASER CANNON"
+540 G(500) (0 2) PRINT "THE SKY FIGHTER HAS FIRED THE LASER CANNON"
   Origs: 530:auto
   Dests: 550:auto
-G(500) (0 2) 550 GOTO 570
+550 G(500) (0 2) GOTO 570
   Origs: 540:auto
   Dests: 570:goto
-G(500) (0 2) 560 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
+560 G(500) (0 2) PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
   Origs: 530:ifthen
   Dests: 570:auto
-G(500) (0 4) 570 PRINT "YOUR TOTAL ENERGY IS NOW"; E1; "UNITS"
+570 G(500) (0 4) PRINT "YOUR TOTAL ENERGY IS NOW"; E1; "UNITS"
   Origs: 550:goto, 560:auto
   Dests: 580:auto
-G(500) (0 4) 580 PRINT "THE ENEMY HAS"; E2; "UNITS OF ENERGY LEFT"
+580 G(500) (0 4) PRINT "THE ENEMY HAS"; E2; "UNITS OF ENERGY LEFT"
   Origs: 570:auto
   Dests: 590:auto
-G(500) (1 4) 590 IF E1 <= 0 THEN 620
+590 G(500) (1 4) IF E1 <= 0 THEN 620
   Origs: 580:auto
   Dests: 600:auto, 620:ifthen
-G(500) (1 4) 600 IF E2 <= 0 THEN 650
+600 G(500) (1 4) IF E2 <= 0 THEN 650
   Origs: 590:auto
   Dests: 610:auto, 650:ifthen
-G(500) (0 2) 610 GOTO 680
+610 G(500) (0 2) GOTO 680
   Origs: 600:auto
   Dests: 680:goto
-G(500) (0 2) 620 PRINT "YOUR ENERGY LEVEL IS ZERO, THE ENEMY"
+620 G(500) (0 2) PRINT "YOUR ENERGY LEVEL IS ZERO, THE ENEMY"
   Origs: 590:ifthen
   Dests: 630:auto
-G(500) (0 2) 630 PRINT "HAS WON, YOU HAVE BECOME ONE WITH THE FORCE!"
+630 G(500) (0 2) PRINT "HAS WON, YOU HAVE BECOME ONE WITH THE FORCE!"
   Origs: 620:auto
   Dests: 640:auto
-G(500) (0 2) 640 GOTO 1180
+640 G(500) (0 2) GOTO 1180
   Origs: 630:auto
   Dests: 1180:goto
-G(500) (0 2) 650 PRINT "THE ENEMY HAS RUN OUT OF ENERGY, YOU"
+650 G(500) (0 2) PRINT "THE ENEMY HAS RUN OUT OF ENERGY, YOU"
   Origs: 600:ifthen
   Dests: 660:auto
-G(500) (0 2) 660 PRINT "HAVE WON"
+660 G(500) (0 2) PRINT "HAVE WON"
   Origs: 650:auto
   Dests: 670:auto
-G(500) (0 2) 670 GOTO 1180
+670 G(500) (0 2) GOTO 1180
   Origs: 660:auto
   Dests: 1180:goto
-G(500) (0 1) 680 RETURN
+680 G(500) (0 1) RETURN
   Origs: 610:goto
   Dests: 
-G(500) (0 2) 690 PRINT
+690 G(500) (0 2) PRINT
   Origs: 330:goto
   Dests: 700:auto
-G(500) (0 2) 700 PRINT "WHICH COMMAND DO YOU WISH TO EXECUTE"
+700 G(500) (0 2) PRINT "WHICH COMMAND DO YOU WISH TO EXECUTE"
   Origs: 690:auto
   Dests: 710:auto
-G(500) (1 2) 710 INPUT C
+710 G(500) (1 2) INPUT C
   Origs: 700:auto
   Dests: 730:auto
-(0 1) 720 
+720 (0 1) 
     ERROR: Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
   Origs: 
   Dests: 
-G(500) (0 2) 730 PRINT "HOW MANY DEGREES OF ROTATION"
+730 G(500) (0 2) PRINT "HOW MANY DEGREES OF ROTATION"
   Origs: 710:auto, 810:goto, 830:goto
   Dests: 740:auto
-G(500) (1 2) 740 INPUT B1
+740 G(500) (1 2) INPUT B1
   Origs: 730:auto
   Dests: 750:auto
-G(500) (1 5) 750 IF B + B1 < 0 THEN 800
+750 G(500) (1 5) IF B + B1 < 0 THEN 800
   Origs: 740:auto
   Dests: 760:auto, 800:ifthen
-G(500) (1 5) 760 IF B + B1 > 180 THEN 820
+760 G(500) (1 5) IF B + B1 > 180 THEN 820
   Origs: 750:auto
   Dests: 770:auto, 820:ifthen
-G(500) (0 4) 770 LET B = B + B1
+770 G(500) (0 4) LET B = B + B1
   Origs: 760:auto
   Dests: 780:auto
-G(500) (0 7) 780 LET E1 = E1 - (10 * ABS(B1))
+780 G(500) (0 7) LET E1 = E1 - (10 * ABS(B1))
   Origs: 770:auto
   Dests: 790:auto
-G(500) (0 3) 790 GOTO 290
+790 G(500) (0 3) GOTO 290
     WARNING: Branch to line before GOSUB start
   Origs: 780:auto
   Dests: 290:goto
-G(500) (0 2) 800 PRINT "YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
+800 G(500) (0 2) PRINT "YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
   Origs: 750:ifthen
   Dests: 810:auto
-G(500) (0 3) 810 GOTO 730
+810 G(500) (0 3) GOTO 730
   Origs: 800:auto
   Dests: 730:goto
-G(500) (0 2) 820 PRINT "YOUR RESULT ANGLE MUST BE AT MOST 180 DEGREES"
+820 G(500) (0 2) PRINT "YOUR RESULT ANGLE MUST BE AT MOST 180 DEGREES"
   Origs: 760:ifthen
   Dests: 830:auto
-G(500) (0 3) 830 GOTO 730
+830 G(500) (0 3) GOTO 730
   Origs: 820:auto
   Dests: 730:goto
-(0 2) 840 PRINT "HOW MANY KM TO TRAVERSE"
+840 (0 2) PRINT "HOW MANY KM TO TRAVERSE"
   Origs: 950:goto, 1000:goto
   Dests: 850:auto
-(1 2) 850 INPUT K
+850 (1 2) INPUT K
   Origs: 840:auto
   Dests: 860:auto
-(1 5) 860 IF D + K < 0 THEN 910
+860 (1 5) IF D + K < 0 THEN 910
   Origs: 850:auto
   Dests: 870:auto, 910:ifthen
-(1 5) 870 IF D + K > 1E+06 THEN 960
+870 (1 5) IF D + K > 1E+06 THEN 960
   Origs: 860:auto
   Dests: 880:auto, 960:ifthen
-(0 4) 880 LET D = D + K
+880 (0 4) LET D = D + K
   Origs: 870:auto
   Dests: 890:auto
-(0 7) 890 LET E1 = E1 - (ABS(K) / 1000)
+890 (0 7) LET E1 = E1 - (ABS(K) / 1000)
   Origs: 880:auto
   Dests: 900:auto
-(0 3) 900 GOTO 290
+900 (0 3) GOTO 290
   Origs: 890:auto
   Dests: 290:goto
-(0 2) 910 PRINT "YOU HAVE TRIED TO CLOSE THE DISTANCE TO LESS THAN ZERO"
+910 (0 2) PRINT "YOU HAVE TRIED TO CLOSE THE DISTANCE TO LESS THAN ZERO"
   Origs: 860:ifthen
   Dests: 920:auto
-(0 2) 920 PRINT "BETWEEN YOU AND THE ENEMY, THE ON-BOARD"
+920 (0 2) PRINT "BETWEEN YOU AND THE ENEMY, THE ON-BOARD"
   Origs: 910:auto
   Dests: 930:auto
-(0 2) 930 PRINT "COMMAND COMPUTER WILL NOT EXECUTE THIS MANEUVER"
+930 (0 2) PRINT "COMMAND COMPUTER WILL NOT EXECUTE THIS MANEUVER"
   Origs: 920:auto
   Dests: 940:auto
-(0 2) 940 PRINT
+940 (0 2) PRINT
   Origs: 930:auto
   Dests: 950:auto
-(0 3) 950 GOTO 840
+950 (0 3) GOTO 840
   Origs: 940:auto
   Dests: 840:goto
-(0 2) 960 PRINT "YOU HAVE TRIED TO EXCEED THE DISTANCE WHERE"
+960 (0 2) PRINT "YOU HAVE TRIED TO EXCEED THE DISTANCE WHERE"
   Origs: 870:ifthen
   Dests: 970:auto
-(0 2) 970 PRINT "ANY OF YOUR WEAPONS ARE EFFECTIVE"
+970 (0 2) PRINT "ANY OF YOUR WEAPONS ARE EFFECTIVE"
   Origs: 960:auto
   Dests: 980:auto
-(0 2) 980 PRINT "THE ON-BOARD COMPUTER WILL NOT"
+980 (0 2) PRINT "THE ON-BOARD COMPUTER WILL NOT"
   Origs: 970:auto
   Dests: 990:auto
-(0 2) 990 PRINT "EXECUTE THIS MANEUVER"
+990 (0 2) PRINT "EXECUTE THIS MANEUVER"
   Origs: 980:auto
   Dests: 1000:auto
-(0 3) 1000 GOTO 840
+1000 (0 3) GOTO 840
   Origs: 990:auto
   Dests: 840:goto
-(0 4) 1010 LET E1 = E1 - 1000
+1010 (0 4) LET E1 = E1 - 1000
   Origs: 
   Dests: 1020:auto
-(1 4) 1020 IF B >= 80 THEN 1050
+1020 (1 4) IF B >= 80 THEN 1050
   Origs: 1010:auto
   Dests: 1030:auto, 1050:ifthen
-(0 2) 1030 PRINT "YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
+1030 (0 2) PRINT "YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
   Origs: 1020:auto
   Dests: 1040:auto
-(0 3) 1040 GOTO 290
+1040 (0 3) GOTO 290
   Origs: 1030:auto
   Dests: 290:goto
-(1 4) 1050 IF B <= 100 THEN 1080
+1050 (1 4) IF B <= 100 THEN 1080
   Origs: 1020:ifthen
   Dests: 1060:auto, 1080:ifthen
-(0 2) 1060 PRINT "YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
+1060 (0 2) PRINT "YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
   Origs: 1050:auto
   Dests: 1070:auto
-(0 3) 1070 GOTO 290
+1070 (0 3) GOTO 290
   Origs: 1060:auto
   Dests: 290:goto
-(0 4) 1080 LET E2 = E2 - 1000
+1080 (0 4) LET E2 = E2 - 1000
   Origs: 1050:ifthen
   Dests: 1090:auto
-(0 3) 1090 GOTO 290
+1090 (0 3) GOTO 290
   Origs: 1080:auto
   Dests: 290:goto
-(0 4) 1100 LET E1 = E1 - 500
+1100 (0 4) LET E1 = E1 - 500
   Origs: 
   Dests: 1110:auto
-(0 7) 1110 LET D2 = (1 + INT(100 * RND) / 100)
+1110 (0 7) LET D2 = (1 + INT(100 * RND) / 100)
   Origs: 1100:auto
   Dests: 1120:auto
-(0 6) 1120 LET E2 = E2 - (D2 * 500)
+1120 (0 6) LET E2 = E2 - (D2 * 500)
   Origs: 1110:auto
   Dests: 1130:auto
-(0 3) 1130 GOTO 290
+1130 (0 3) GOTO 290
   Origs: 1120:auto
   Dests: 290:goto
-(0 2) 1140 PRINT "YOU HAVE INSTRUCTED THE ON-BOARD COMPUTER"
+1140 (0 2) PRINT "YOU HAVE INSTRUCTED THE ON-BOARD COMPUTER"
   Origs: 
   Dests: 1150:auto
-(0 2) 1150 PRINT "TO SELF-DESTRUCT, THE REACTOR HAS GONE"
+1150 (0 2) PRINT "TO SELF-DESTRUCT, THE REACTOR HAS GONE"
   Origs: 1140:auto
   Dests: 1160:auto
-(0 2) 1160 PRINT "CRITICAL, YOU HAVE GONE TO MEET THE FORCE"
+1160 (0 2) PRINT "CRITICAL, YOU HAVE GONE TO MEET THE FORCE"
   Origs: 1150:auto
   Dests: 1170:auto
-(1 4) 1170 IF D <= 500 THEN 1200
+1170 (1 4) IF D <= 500 THEN 1200
   Origs: 1160:auto
   Dests: 1180:auto, 1200:ifthen
-G(500) (0 2) 1180 PRINT "SPACE WARS IS OVER"
+1180 G(500) (0 2) PRINT "SPACE WARS IS OVER"
   Origs: 640:goto, 670:goto, 1170:auto, 1230:goto
   Dests: 1190:auto
-G(500) (0 2) 1190 GOTO 1240
+1190 G(500) (0 2) GOTO 1240
   Origs: 1180:auto
   Dests: 1240:goto
-(0 2) 1200 PRINT "YOUR DESTRUCTION HAS ALSO DESTROYED"
+1200 (0 2) PRINT "YOUR DESTRUCTION HAS ALSO DESTROYED"
   Origs: 1170:ifthen
   Dests: 1210:auto
-(0 2) 1210 PRINT "THE SKY FIGHTER, YOU WILL BE REMEMBERED"
+1210 (0 2) PRINT "THE SKY FIGHTER, YOU WILL BE REMEMBERED"
   Origs: 1200:auto
   Dests: 1220:auto
-(0 2) 1220 PRINT "AS A HERO"
+1220 (0 2) PRINT "AS A HERO"
   Origs: 1210:auto
   Dests: 1230:auto
-(0 3) 1230 GOTO 1180
+1230 (0 3) GOTO 1180
   Origs: 1220:auto
   Dests: 1180:goto
-G(500) (0 2) 1240 PRINT
+1240 G(500) (0 2) PRINT
   Origs: 1190:goto
   Dests: 1250:auto
-G(500) (0 2) 1250 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO"
+1250 G(500) (0 2) PRINT "TO PLAY SPACE WARS AGAIN TYPE GO"
   Origs: 1240:auto
   Dests: 1260:auto
-G(500) (0 2) 1260 PRINT "OTHERWISE TYPE NO"
+1260 G(500) (0 2) PRINT "OTHERWISE TYPE NO"
   Origs: 1250:auto
   Dests: 1270:auto
-G(500) (0 1) 1270 INPUT Z $
+1270 G(500) (0 1) INPUT Z $
      ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
   Origs: 1260:auto
   Dests: 1280:auto
-G(500) (1 2) 1280 IF Z $ ="GO" THEN 1310
+1280 G(500) (1 2) IF Z $ ="GO" THEN 1310
      ERROR: Token 'InvalidToken:$' is not a value or operator
   Origs: 1270:auto
   Dests: 1290:auto, 1310:ifthen
-G(500) (0 2) 1290 PRINT "SPACE WARS SAYS GOOD-BYE"
+1290 G(500) (0 2) PRINT "SPACE WARS SAYS GOOD-BYE"
   Origs: 1280:auto
   Dests: 1300:auto
-G(500) (0 1) 1300 STOP
+1300 G(500) (0 1) STOP
      WARNING: Terminating statement in GOSUB
   Origs: 1290:auto
   Dests: :stop
-G(500) (0 2) 1310 PRINT
+1310 G(500) (0 2) PRINT
   Origs: 1280:ifthen
   Dests: 1320:auto
-G(500) (0 3) 1320 GOTO 50
+1320 G(500) (0 3) GOTO 50
      WARNING: Branch to line before GOSUB start
   Origs: 1310:auto
   Dests: 50:goto
-(0 1) 1330 END
+1330 (0 1) END
   Origs: 
   Dests: :stop
 

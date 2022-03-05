@@ -1,5 +1,5 @@
-15: DIM D(2, 3)
-20: MAT A = ZER2(3, 5)
+15 DIM D(2, 3)
+20 MAT A = ZER2(3, 5)
  A(0,0) = 0
  A(0,1) = 0
  A(0,2) = 0
@@ -24,7 +24,7 @@
  A(3,3) = 0
  A(3,4) = 0
  A(3,5) = 0
-30: MAT B = ZER2(5, 3)
+30 MAT B = ZER2(5, 3)
  B(0,0) = 0
  B(0,1) = 0
  B(0,2) = 0
@@ -49,13 +49,13 @@
  B(5,1) = 0
  B(5,2) = 0
  B(5,3) = 0
-40: MAT C = ZER2(4)
+40 MAT C = ZER2(4)
  C(0) = 0
  C(1) = 0
  C(2) = 0
  C(3) = 0
  C(4) = 0
-45: MAT D = ZER2
+45 MAT D = ZER2
  D(0,0) = 0
  D(0,1) = 0
  D(0,2) = 0
@@ -68,9 +68,9 @@
  D(2,1) = 0
  D(2,2) = 0
  D(2,3) = 0
-50: PRINT "MATRIX A"
+50 PRINT "MATRIX A"
 MATRIX A
-60: MAT PRINT A;
+60 MAT PRINT A;
  A(0,0): 0
  A(0,1): 0
  A(0,2): 0
@@ -99,9 +99,9 @@ MATRIX A
  0               0               0               0               0               0
  0               0               0               0               0               0
  0               0               0               0               0               0
-70: PRINT "MATRIX B"
+70 PRINT "MATRIX B"
 MATRIX B
-80: MAT PRINT B;
+80 MAT PRINT B;
  B(0,0): 0
  B(0,1): 0
  B(0,2): 0
@@ -132,18 +132,18 @@ MATRIX B
  0               0               0               0
  0               0               0               0
  0               0               0               0
-90: PRINT "ARRAY C"
+90 PRINT "ARRAY C"
 ARRAY C
-100: MAT PRINT C;
+100 MAT PRINT C;
  C(0): 0
  C(1): 0
  C(2): 0
  C(3): 0
  C(4): 0
  0               0               0               0               0
-110: PRINT "MATRIX D"
+110 PRINT "MATRIX D"
 MATRIX D
-120: MAT PRINT D;
+120 MAT PRINT D;
  D(0,0): 0
  D(0,1): 0
  D(0,2): 0
@@ -159,8 +159,8 @@ MATRIX D
  0               0               0               0
  0               0               0               0
  0               0               0               0
-200: OPTION BASE 1
-220: MAT A = ZER2(3, 5)
+200 OPTION BASE 1
+220 MAT A = ZER2(3, 5)
  A(1,1) = 0
  A(1,2) = 0
  A(1,3) = 0
@@ -176,7 +176,7 @@ MATRIX D
  A(3,3) = 0
  A(3,4) = 0
  A(3,5) = 0
-230: MAT B = ZER2(5, 3)
+230 MAT B = ZER2(5, 3)
  B(1,1) = 0
  B(1,2) = 0
  B(1,3) = 0
@@ -192,21 +192,21 @@ MATRIX D
  B(5,1) = 0
  B(5,2) = 0
  B(5,3) = 0
-240: MAT C = ZER2(4)
+240 MAT C = ZER2(4)
  C(1) = 0
  C(2) = 0
  C(3) = 0
  C(4) = 0
-245: MAT D = ZER2()
+245 MAT D = ZER2()
  D(1,1) = 0
  D(1,2) = 0
  D(1,3) = 0
  D(2,1) = 0
  D(2,2) = 0
  D(2,3) = 0
-250: PRINT "MATRIX A"
+250 PRINT "MATRIX A"
 MATRIX A
-260: MAT PRINT A;
+260 MAT PRINT A;
  A(1,1): 0
  A(1,2): 0
  A(1,3): 0
@@ -225,9 +225,9 @@ MATRIX A
  0               0               0               0               0
  0               0               0               0               0
  0               0               0               0               0
-270: PRINT "MATRIX B"
+270 PRINT "MATRIX B"
 MATRIX B
-280: MAT PRINT B;
+280 MAT PRINT B;
  B(1,1): 0
  B(1,2): 0
  B(1,3): 0
@@ -248,17 +248,17 @@ MATRIX B
  0               0               0
  0               0               0
  0               0               0
-290: PRINT "ARRAY C"
+290 PRINT "ARRAY C"
 ARRAY C
-300: MAT PRINT C;
+300 MAT PRINT C;
  C(1): 0
  C(2): 0
  C(3): 0
  C(4): 0
  0               0               0               0
-310: PRINT "MATRIX D"
+310 PRINT "MATRIX D"
 MATRIX D
-320: MAT PRINT D;
+320 MAT PRINT D;
  D(1,1): 0
  D(1,2): 0
  D(1,3): 0
@@ -267,6 +267,6 @@ MATRIX D
  D(2,3): 0
  0               0               0
  0               0               0
-999: END
+999 END
 STOP in line 999
 

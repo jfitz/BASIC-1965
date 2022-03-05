@@ -19,94 +19,94 @@ Halstead complexity:
  intelligence: 32.711
  time: 6.600
 
-FNF(_) (0 3) 100 DEF FNF(X) = SIN(X)
+100 FNF(_) (0 3) DEF FNF(X) = SIN(X)
   Origs: 270:function
   Dests: 
-(3 4) 110 READ A, B, S
+110 (3 4) READ A, B, S
   Origs: :start
   Dests: 120:auto
-(3 4) 120 READ C, D, N
+120 (3 4) READ C, D, N
   Origs: 110:auto
   Dests: 130:auto
-(0 5) 130 LET H = (D - C) / N
+130 (0 5) LET H = (D - C) / N
   Origs: 120:auto
   Dests: 140:auto
-(1 4) 140 IF N <= 50 THEN 180
+140 (1 4) IF N <= 50 THEN 180
   Origs: 130:auto
   Dests: 150:auto, 180:ifthen
-(0 2) 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
+150 (0 2) PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
   Origs: 140:auto
   Dests: 160:auto
-(0 1) 160 STOP
+160 (0 1) STOP
   Origs: 150:auto
   Dests: :stop
-FNR(_) (0 3) 170 DEF FNR(X) = INT(X + 0.5)
+170 FNR(_) (0 3) DEF FNR(X) = INT(X + 0.5)
   Origs: 280:function
   Dests: 
-(0 7) 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
+180 (0 7) PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
   Origs: 140:ifthen
   Dests: 190:auto
-(0 2) 190 PRINT
+190 (0 2) PRINT
   Origs: 180:auto
   Dests: 200:auto
-(0 2) 200 PRINT "'";
+200 (0 2) PRINT "'";
   Origs: 190:auto
   Dests: 210:auto
-F(I) (1 4) 210 FOR I = 1 TO N - 1
+210 F(I) (1 4) FOR I = 1 TO N - 1
   Origs: 200:auto
   Dests: 220:fornext, 230:fornext
-F(I) (0 2) 220 PRINT "-";
+220 F(I) (0 2) PRINT "-";
   Origs: 210:fornext
   Dests: 230:auto
-F(I) (0 1) 230 NEXT I
+230 F(I) (0 1) NEXT I
   Origs: 210:fornext, 220:auto
   Dests: 240:auto
-(0 2) 240 PRINT "'"
+240 (0 2) PRINT "'"
   Origs: 230:auto
   Dests: 250:auto
-F(X) (1 4) 250 FOR X = A TO B STEP S
+250 F(X) (1 4) FOR X = A TO B STEP S
   Origs: 240:auto
   Dests: 270:fornext, 330:fornext
-F(X) (0 5) 270 LET Y = FNF(X)
+270 F(X) (0 5) LET Y = FNF(X)
   Origs: 250:fornext
   Dests: 100:function, 280:auto
-F(X) (0 5) 280 LET Y1 = FNR((Y - C) / H)
+280 F(X) (0 5) LET Y1 = FNR((Y - C) / H)
   Origs: 270:auto
   Dests: 170:function, 290:auto
-F(X,I) (1 3) 290 FOR I = 0 TO N
+290 F(X,I) (1 3) FOR I = 0 TO N
   Origs: 280:auto
   Dests: 292:fornext, 310:fornext
-F(X,I) (1 4) 292 IF I = Y1 THEN 302
+292 F(X,I) (1 4) IF I = Y1 THEN 302
   Origs: 290:fornext
   Dests: 300:auto, 302:ifthen
-F(X,I) (0 2) 300 PRINT " ";
+300 F(X,I) (0 2) PRINT " ";
   Origs: 292:auto
   Dests: 301:auto
-F(X,I) (0 2) 301 GOTO 310
+301 F(X,I) (0 2) GOTO 310
   Origs: 300:auto
   Dests: 310:goto
-F(X,I) (0 2) 302 PRINT "*";
+302 F(X,I) (0 2) PRINT "*";
   Origs: 292:ifthen
   Dests: 310:auto
-F(X,I) (0 1) 310 NEXT I
+310 F(X,I) (0 1) NEXT I
   Origs: 290:fornext, 301:goto, 302:auto
   Dests: 315:auto
-F(X) (0 2) 315 PRINT "   ";
+315 F(X) (0 2) PRINT "   ";
   Origs: 310:auto
   Dests: 320:auto
-F(X) (0 2) 320 PRINT X
+320 F(X) (0 2) PRINT X
   Origs: 315:auto
   Dests: 330:auto
-F(X) (0 1) 330 NEXT X
+330 F(X) (0 1) NEXT X
   Origs: 250:fornext, 320:auto
   Dests: 360:auto
-(0 2) 340 DATA 0, 6.401, 0.2
+340 (0 2) DATA 0, 6.401, 0.2
   Origs: 
   Dests: 
-(0 3) 350 DATA -1, 1, 40
+350 (0 3) DATA -1, 1, 40
   Origs: 
   Dests: 
-(0 1) 360 END
+360 (0 1) END
   Origs: 330:auto
   Dests: :stop
 

@@ -1,57 +1,57 @@
-30: PRINT "CENTER OF CIRCLE (X0,Y0) = ";
+30 PRINT "CENTER OF CIRCLE (X0,Y0) = ";
 CENTER OF CIRCLE (X0,Y0) = 
-40: INPUT X0, Y0
+40 INPUT X0, Y0
 ? 2,2
  X0 = 2
  Y0 = 2
-50: PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
+50 PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
 ANGLE IN DEGREES OF 1ST POINT = 
-60: INPUT W
+60 INPUT W
 ? 90
  W = 90
-70: LET W = (W * 3.14159) / 180
+70 LET W = (W * 3.14159) / 180
  W: 90
  W = 1.57079
-80: PRINT "NUMBER OF POINTS DESIRED = ";
+80 PRINT "NUMBER OF POINTS DESIRED = ";
 NUMBER OF POINTS DESIRED = 
-90: INPUT N
+90 INPUT N
 ? 2
  N = 2
-100: PRINT "RADIUS OF CIRCLE = ";
+100 PRINT "RADIUS OF CIRCLE = ";
 RADIUS OF CIRCLE = 
-110: INPUT R
+110 INPUT R
 ? 1
  R = 1
-120: LET Z = 6.28319 / N
+120 LET Z = 6.28319 / N
  N: 2
  Z = 3.1416
-130: PRINT
+130 PRINT
 
-140: PRINT "COORDINATES"
+140 PRINT "COORDINATES"
 COORDINATES
-F(I) 150: FOR I = 0 TO N - 1
+150 F(I) FOR I = 0 TO N - 1
  N: 2
  I = 0
  N - 1 = 1
  terminated:false
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 2
  R: 1
  W: 1.57079
  Z: 3.1416
  I: 0
  X = 2.00001
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 2
  R: 1
  W: 1.57079
  Z: 3.1416
  I: 0
  Y = 3
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 0
  P = 1
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 1
  1              X = 
@@ -59,28 +59,28 @@ POINT:
  2.00001        Y = 
  Y: 3
  3
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 2
  R: 1
  W: 1.57079
  Z: 3.1416
  I: 1
  X = 2
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 2
  R: 1
  W: 1.57079
  Z: 3.1416
  I: 1
  Y = 1
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 1
  P = 2
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 2
  2              X = 
@@ -88,76 +88,76 @@ POINT:
  2              Y = 
  Y: 1
  1
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 1
  terminated:true
-210: PRINT
+210 PRINT
 
-220: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
-230: INPUT L
+230 INPUT L
 ? 1
  L = 1
-240: IF L = 1 THEN 260
+240 IF L = 1 THEN 260
  L: 1
  L = 1: true
-260: PRINT
+260 PRINT
 
-270: GOTO 30
-30: PRINT "CENTER OF CIRCLE (X0,Y0) = ";
+270 GOTO 30
+30 PRINT "CENTER OF CIRCLE (X0,Y0) = ";
 CENTER OF CIRCLE (X0,Y0) = 
-40: INPUT X0, Y0
+40 INPUT X0, Y0
 ? 4,5
  X0 = 4
  Y0 = 5
-50: PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
+50 PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
 ANGLE IN DEGREES OF 1ST POINT = 
-60: INPUT W
+60 INPUT W
 ? 0
  W = 0
-70: LET W = (W * 3.14159) / 180
+70 LET W = (W * 3.14159) / 180
  W: 0
  W = 0
-80: PRINT "NUMBER OF POINTS DESIRED = ";
+80 PRINT "NUMBER OF POINTS DESIRED = ";
 NUMBER OF POINTS DESIRED = 
-90: INPUT N
+90 INPUT N
 ? 12
  N = 12
-100: PRINT "RADIUS OF CIRCLE = ";
+100 PRINT "RADIUS OF CIRCLE = ";
 RADIUS OF CIRCLE = 
-110: INPUT R
+110 INPUT R
 ? 10
  R = 10
-120: LET Z = 6.28319 / N
+120 LET Z = 6.28319 / N
  N: 12
  Z = 0.523599
-130: PRINT
+130 PRINT
 
-140: PRINT "COORDINATES"
+140 PRINT "COORDINATES"
 COORDINATES
-F(I) 150: FOR I = 0 TO N - 1
+150 F(I) FOR I = 0 TO N - 1
  N: 12
  I = 0
  N - 1 = 11
  terminated:false
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 0
  X = 14
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 0
  Y = 5
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 0
  P = 1
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 1
  1              X = 
@@ -165,28 +165,28 @@ POINT:
  14             Y = 
  Y: 5
  5
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 0
  terminated:false
  I = 1
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 1
  X = 12.6603
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 1
  Y = 10
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 1
  P = 2
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 2
  2              X = 
@@ -194,28 +194,28 @@ POINT:
  12.6603        Y = 
  Y: 10
  10
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 2
  X = 8.99998
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 2
  Y = 13.6603
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 2
  P = 3
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 3
  3              X = 
@@ -223,28 +223,28 @@ POINT:
  8.99998        Y = 
  Y: 13.6603
  13.6603
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 3
  X = 3.99996
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 3
  Y = 15
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 3
  P = 4
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 4
  4              X = 
@@ -252,28 +252,28 @@ POINT:
  3.99996        Y = 
  Y: 15
  15
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 3
  terminated:false
  I = 4
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 4
  X = -1.00004
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 4
  Y = 13.6602
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 4
  P = 5
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 5
  5              X = 
@@ -281,28 +281,28 @@ POINT:
 -1.00004        Y = 
  Y: 13.6602
  13.6602
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 4
  terminated:false
  I = 5
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 5
  X = -4.66028
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 5
  Y = 9.99995
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 5
  P = 6
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 6
  6              X = 
@@ -310,28 +310,28 @@ POINT:
 -4.66028        Y = 
  Y: 9.99995
  9.99995
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 5
  terminated:false
  I = 6
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 6
  X = -6
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 6
  Y = 5.00003
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 6
  P = 7
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 7
  7              X = 
@@ -339,28 +339,28 @@ POINT:
 -6              Y = 
  Y: 5.00003
  5.00003
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 6
  terminated:false
  I = 7
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 7
  X = -4.66026
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 7
  Y = 1.0e-05
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 7
  P = 8
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 8
  8              X = 
@@ -368,28 +368,28 @@ POINT:
 -4.66026        Y = 
  Y: 1.0e-05
  1.0E-05
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 7
  terminated:false
  I = 8
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 8
  X = -1
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 8
  Y = -3.66025
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 8
  P = 9
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 9
  9              X = 
@@ -397,28 +397,28 @@ POINT:
 -1              Y = 
  Y: -3.66025
 -3.66025
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 8
  terminated:false
  I = 9
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 9
  X = 4.00001
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 9
  Y = -5
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 9
  P = 10
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 10
  10             X = 
@@ -426,28 +426,28 @@ POINT:
  4.00001        Y = 
  Y: -5
 -5
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 9
  terminated:false
  I = 10
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 10
  X = 9.00002
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 10
  Y = -3.66024
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 10
  P = 11
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 11
  11             X = 
@@ -455,28 +455,28 @@ POINT:
  9.00002        Y = 
  Y: -3.66024
 -3.66024
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 10
  terminated:false
  I = 11
-F(I) 160: LET X = X0 + (R * COS(W + (Z * I)))
+160 F(I) LET X = X0 + (R * COS(W + (Z * I)))
  X0: 4
  R: 10
  W: 0
  Z: 0.523599
  I: 11
  X = 12.6603
-F(I) 170: LET Y = Y0 + (R * SIN(W + (Z * I)))
+170 F(I) LET Y = Y0 + (R * SIN(W + (Z * I)))
  Y0: 5
  R: 10
  W: 0
  Z: 0.523599
  I: 11
  Y = 3.0e-05
-F(I) 180: LET P = I + 1
+180 F(I) LET P = I + 1
  I: 11
  P = 12
-F(I) 190: PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+190 F(I) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
 POINT:
  P: 12
  12             X = 
@@ -484,19 +484,19 @@ POINT:
  12.6603        Y = 
  Y: 3.0e-05
  3.0E-05
-F(I) 200: NEXT I
+200 F(I) NEXT I
  I: 11
  terminated:true
-210: PRINT
+210 PRINT
 
-220: PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
+220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
-230: INPUT L
+230 INPUT L
 ? 0
  L = 0
-240: IF L = 1 THEN 260
+240 IF L = 1 THEN 260
  L: 0
  L = 1: false
-250: STOP
+250 STOP
 STOP in line 250
 

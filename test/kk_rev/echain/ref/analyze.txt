@@ -19,157 +19,157 @@ Halstead complexity:
  intelligence: 26.995
  time: 20.302
 
-(0 6) 100 DIM P(20, 20), M(20, 20), Z(20, 20), A(1, 20), B(1, 20)
+100 (0 6) DIM P(20, 20), M(20, 20), Z(20, 20), A(1, 20), B(1, 20)
   Origs: :start
   Dests: 120:auto
-(0 0) 110 
+110 (0 0) 
   Origs: 
   Dests: 
-(1 2) 120 READ N
+120 (1 2) READ N
   Origs: 100:auto
   Dests: 130:auto
-(1 2) 130 MAT READ P(N, N)
+130 (1 2) MAT READ P(N, N)
   Origs: 120:auto
   Dests: 140:auto
-(0 4) 140 MAT Z = IDN(N, N)
+140 (0 4) MAT Z = IDN(N, N)
   Origs: 130:auto
   Dests: 160:auto
-(0 0) 150 
+150 (0 0) 
   Origs: 
   Dests: 
-(0 2) 160 PRINT "TRANSITION PROBABILITIES"
+160 (0 2) PRINT "TRANSITION PROBABILITIES"
   Origs: 140:auto
   Dests: 170:auto
-(0 2) 170 PRINT
+170 (0 2) PRINT
   Origs: 160:auto
   Dests: 180:auto
-(0 2) 180 MAT PRINT P
+180 (0 2) MAT PRINT P
   Origs: 170:auto
   Dests: 200:auto
-(0 0) 190 
+190 (0 0) 
   Origs: 
   Dests: 
-(0 4) 200 MAT Z = Z - P
+200 (0 4) MAT Z = Z - P
   Origs: 180:auto
   Dests: 210:auto
-F(I) (1 3) 210 FOR I = 1 TO N
+210 F(I) (1 3) FOR I = 1 TO N
   Origs: 200:auto
   Dests: 220:fornext, 230:fornext
-F(I) (0 3) 220 LET Z(I, N) = 1
+220 F(I) (0 3) LET Z(I, N) = 1
   Origs: 210:fornext
   Dests: 230:auto
-F(I) (0 1) 230 NEXT I
+230 F(I) (0 1) NEXT I
   Origs: 210:fornext, 220:auto
   Dests: 240:auto
-(0 4) 240 MAT M = INV(Z)
+240 (0 4) MAT M = INV(Z)
   Origs: 230:auto
   Dests: 245:auto
-(0 4) 245 MAT A = ZER(1, N)
+245 (0 4) MAT A = ZER(1, N)
   Origs: 240:auto
   Dests: 250:auto
-F(J) (1 3) 250 FOR J = 1 TO N
+250 F(J) (1 3) FOR J = 1 TO N
   Origs: 245:auto
   Dests: 260:fornext, 270:fornext
-F(J) (0 3) 260 LET A(1, J) = M(N, J)
+260 F(J) (0 3) LET A(1, J) = M(N, J)
   Origs: 250:fornext
   Dests: 270:auto
-F(J) (0 1) 270 NEXT J
+270 F(J) (0 1) NEXT J
   Origs: 250:fornext, 260:auto
   Dests: 280:auto
-(0 2) 280 PRINT "LIMITING PROBABILITIES"
+280 (0 2) PRINT "LIMITING PROBABILITIES"
   Origs: 270:auto
   Dests: 290:auto
-(0 2) 290 PRINT
+290 (0 2) PRINT
   Origs: 280:auto
   Dests: 300:auto
-(0 2) 300 MAT PRINT A
+300 (0 2) MAT PRINT A
   Origs: 290:auto
   Dests: 320:auto
-(0 0) 310 
+310 (0 0) 
   Origs: 
   Dests: 
-(0 4) 320 MAT M = IDN(N, N)
+320 (0 4) MAT M = IDN(N, N)
   Origs: 300:auto
   Dests: 330:auto
-(0 4) 330 MAT M = M - P
+330 (0 4) MAT M = M - P
   Origs: 320:auto
   Dests: 340:auto
-F(I) (1 3) 340 FOR I = 1 TO N
+340 F(I) (1 3) FOR I = 1 TO N
   Origs: 330:auto
   Dests: 350:fornext, 380:fornext
-F(I,J) (1 3) 350 FOR J = 1 TO N
+350 F(I,J) (1 3) FOR J = 1 TO N
   Origs: 340:fornext
   Dests: 360:fornext, 370:fornext
-F(I,J) (0 4) 360 LET M(I, J) = M(I, J) + A(1, J)
+360 F(I,J) (0 4) LET M(I, J) = M(I, J) + A(1, J)
   Origs: 350:fornext
   Dests: 370:auto
-F(I,J) (0 1) 370 NEXT J
+370 F(I,J) (0 1) NEXT J
   Origs: 350:fornext, 360:auto
   Dests: 380:auto
-F(I) (0 1) 380 NEXT I
+380 F(I) (0 1) NEXT I
   Origs: 340:fornext, 370:auto
   Dests: 390:auto
-(0 4) 390 MAT Z = INV(M)
+390 (0 4) MAT Z = INV(M)
   Origs: 380:auto
   Dests: 410:auto
-(0 0) 400 
+400 (0 0) 
   Origs: 
   Dests: 
-F(I) (1 3) 410 FOR I = 1 TO N
+410 F(I) (1 3) FOR I = 1 TO N
   Origs: 390:auto
   Dests: 420:fornext, 450:fornext
-F(I,J) (1 3) 420 FOR J = 1 TO N
+420 F(I,J) (1 3) FOR J = 1 TO N
   Origs: 410:fornext
   Dests: 430:fornext, 440:fornext
-F(I,J) (0 5) 430 LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
+430 F(I,J) (0 5) LET M(I, J) = (Z(J, J) - Z(I, J)) / A(1, J)
   Origs: 420:fornext
   Dests: 440:auto
-F(I,J) (0 1) 440 NEXT J
+440 F(I,J) (0 1) NEXT J
   Origs: 420:fornext, 430:auto
   Dests: 450:auto
-F(I) (0 1) 450 NEXT I
+450 F(I) (0 1) NEXT I
   Origs: 410:fornext, 440:auto
   Dests: 460:auto
-(0 2) 460 PRINT "MEAN PASSAGE TIMES"
+460 (0 2) PRINT "MEAN PASSAGE TIMES"
   Origs: 450:auto
   Dests: 470:auto
-(0 2) 470 PRINT
+470 (0 2) PRINT
   Origs: 460:auto
   Dests: 480:auto
-(0 2) 480 MAT PRINT M
+480 (0 2) MAT PRINT M
   Origs: 470:auto
   Dests: 500:auto
-(0 0) 490 
+490 (0 0) 
   Origs: 
   Dests: 
-(0 4) 500 MAT B = A * M
+500 (0 4) MAT B = A * M
   Origs: 480:auto
   Dests: 510:auto
-(0 2) 510 PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
+510 (0 2) PRINT "FIRST PASSAGE TIME IN EQUILIBRIUM"
   Origs: 500:auto
   Dests: 520:auto
-(0 2) 520 PRINT
+520 (0 2) PRINT
   Origs: 510:auto
   Dests: 530:auto
-(0 2) 530 MAT PRINT B
+530 (0 2) MAT PRINT B
   Origs: 520:auto
   Dests: 999:auto
-(0 0) 540 
+540 (0 0) 
   Origs: 
   Dests: 
-(0 2) 550 DATA 3
+550 (0 2) DATA 3
   Origs: 
   Dests: 
-(0 2) 560 DATA 0.5, 0.25, 0.25
+560 (0 2) DATA 0.5, 0.25, 0.25
   Origs: 
   Dests: 
-(0 2) 570 DATA 0.5, 0, 0.5
+570 (0 2) DATA 0.5, 0, 0.5
   Origs: 
   Dests: 
-(0 2) 580 DATA 0.25, 0.25, 0.5
+580 (0 2) DATA 0.25, 0.25, 0.5
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 530:auto
   Dests: :stop
 

@@ -19,125 +19,125 @@ Halstead complexity:
  intelligence: 27.199
  time: 19.496
 
-FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+10 FNF(_) (0 9) DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
   Dests: 
-(0 1) 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
+11 (0 1) REM DEF FNF(X) = -3*X^5 + X^3 + 1
   Origs: 
   Dests: 
-(0 1) 12 REM DEF FNF(X) = X^2 + 1
+12 (0 1) REM DEF FNF(X) = X^2 + 1
   Origs: 
   Dests: 
-(0 1) 13 REM DEF FNF(X) = X^2 - 0.001
+13 (0 1) REM DEF FNF(X) = X^2 - 0.001
   Origs: 
   Dests: 
-(0 1) 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
+14 (0 1) REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
   Origs: 
   Dests: 
-(2 3) 20 READ A, B
+20 (2 3) READ A, B
   Origs: :start
   Dests: 22:auto
-(0 2) 22 GOSUB 200
+22 (0 2) GOSUB 200
   Origs: 20:auto
   Dests: 26:auto, 200:gosub
-(0 3) 26 LET X(1 + S) = A
+26 (0 3) LET X(1 + S) = A
   Origs: 22:auto
   Dests: 28:auto
-(0 3) 28 LET X(1 - S) = B
+28 (0 3) LET X(1 - S) = B
   Origs: 26:auto
   Dests: 30:auto
-(0 5) 30 LET X = (X(0) + X(2)) / 2
+30 (0 5) LET X = (X(0) + X(2)) / 2
   Origs: 28:auto, 90:goto
   Dests: 35:auto
-(0 4) 35 LET F = SGN(FNF(X))
+35 (0 4) LET F = SGN(FNF(X))
   Origs: 30:auto
   Dests: 40:auto
-(1 4) 40 IF F = 0 THEN 100
+40 (1 4) IF F = 0 THEN 100
   Origs: 35:auto
   Dests: 50:auto, 100:ifthen
-(0 3) 50 LET X(1 + F) = X
+50 (0 3) LET X(1 + F) = X
   Origs: 40:auto
   Dests: 80:auto
-(1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 100
+80 (1 10) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 100
   Origs: 50:auto
   Dests: 90:auto, 100:ifthen
-(0 3) 90 GOTO 30
+90 (0 3) GOTO 30
   Origs: 80:auto
   Dests: 30:goto
-G(200) (0 3) 100 PRINT "ONE ZERO AT" X
+100 G(200) (0 3) PRINT "ONE ZERO AT" X
   Origs: 40:ifthen, 80:ifthen, 420:goto, 440:goto
   Dests: 110:auto
-G(200) (0 1) 110 STOP
+110 G(200) (0 1) STOP
     WARNING: Terminating statement in GOSUB
   Origs: 100:auto
   Dests: :stop
-G(200) (0 4) 200 LET S = SGN(FNF(A))
+200 G(200) (0 4) LET S = SGN(FNF(A))
   Origs: 22:gosub
   Dests: 210:auto
-G(200) (0 4) 210 LET T = SGN(FNF(B))
+210 G(200) (0 4) LET T = SGN(FNF(B))
   Origs: 200:auto
   Dests: 220:auto
-G(200) (1 5) 220 IF S * T = 0 THEN 400
+220 G(200) (1 5) IF S * T = 0 THEN 400
   Origs: 210:auto
   Dests: 230:auto, 400:ifthen
-G(200) (1 5) 230 IF S * T > 0 THEN 300
+230 G(200) (1 5) IF S * T > 0 THEN 300
   Origs: 220:auto
   Dests: 240:auto, 300:ifthen
-G(200) (0 1) 240 RETURN
+240 G(200) (0 1) RETURN
   Origs: 230:auto
   Dests: 
-G(200) (0 4) 300 LET L = B - A
+300 G(200) (0 4) LET L = B - A
   Origs: 230:ifthen
   Dests: 310:auto
-G(200) F(I) (1 3) 310 FOR I = 1 TO 1000
+310 G(200) F(I) (1 3) FOR I = 1 TO 1000
   Origs: 300:auto
   Dests: 320:fornext, 340:fornext
-G(200) F(I) (0 7) 320 LET X = A + RND() * L
+320 G(200) F(I) (0 7) LET X = A + RND() * L
   Origs: 310:fornext
   Dests: 330:auto
-G(200) F(I) (1 6) 330 IF S * SGN(FNF(X)) < 0 THEN 370
+330 G(200) F(I) (1 6) IF S * SGN(FNF(X)) < 0 THEN 370
   Origs: 320:auto
   Dests: 340:auto, 370:ifthen
-G(200) F(I) (0 1) 340 NEXT I
+340 G(200) F(I) (0 1) NEXT I
   Origs: 310:fornext, 330:auto
   Dests: 350:auto
-G(200) (0 2) 350 PRINT "NO CHANGE OF SIGN FOUND"
+350 G(200) (0 2) PRINT "NO CHANGE OF SIGN FOUND"
   Origs: 340:auto
   Dests: 360:auto
-G(200) (0 1) 360 STOP
+360 G(200) (0 1) STOP
     WARNING: Terminating statement in GOSUB
   Origs: 350:auto
   Dests: :stop
-G(200) F(I) (0 3) 370 LET B = X
+370 G(200) F(I) (0 3) LET B = X
   Origs: 330:ifthen
   Dests: 380:auto
-G(200) F(I) (0 1) 380 RETURN
+380 G(200) F(I) (0 1) RETURN
   Origs: 370:auto
   Dests: 
-G(200) (1 4) 400 IF S = 0 THEN 430
+400 G(200) (1 4) IF S = 0 THEN 430
   Origs: 220:ifthen
   Dests: 410:auto, 430:ifthen
-G(200) (0 3) 410 LET X = B
+410 G(200) (0 3) LET X = B
   Origs: 400:auto
   Dests: 420:auto
-G(200) (0 3) 420 GOTO 100
+420 G(200) (0 3) GOTO 100
     WARNING: Branch to line before GOSUB start
   Origs: 410:auto
   Dests: 100:goto
-G(200) (0 3) 430 LET X = A
+430 G(200) (0 3) LET X = A
   Origs: 400:ifthen
   Dests: 440:auto
-G(200) (0 3) 440 GOTO 100
+440 G(200) (0 3) GOTO 100
     WARNING: Branch to line before GOSUB start
   Origs: 430:auto
   Dests: 100:goto
-(0 1) 900 REM DATA 0,1
+900 (0 1) REM DATA 0,1
   Origs: 
   Dests: 
-(0 2) 910 DATA 0, 1
+910 (0 2) DATA 0, 1
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

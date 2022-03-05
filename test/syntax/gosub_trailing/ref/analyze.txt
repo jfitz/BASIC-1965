@@ -19,28 +19,28 @@ Halstead complexity:
  intelligence: 15.351
  time: 0.032
 
-(0 1) 10 REM This is a test
+10 (0 1) REM This is a test
   Origs: 
   Dests: 
-(0 3) 20 LET A = 10
+20 (0 3) LET A = 10
   Origs: :start
   Dests: 30:auto
-(0 2) 30 GOSUB 100
+30 (0 2) GOSUB 100
   Origs: 20:auto
   Dests: 40:auto, 100:gosub
-(0 3) 40 PRINT A, B
+40 (0 3) PRINT A, B
   Origs: 30:auto
   Dests: 90:auto
-(0 1) 90 STOP
+90 (0 1) STOP
   Origs: 40:auto
   Dests: :stop
-G(100) (0 3) 100 LET B = 20
+100 G(100) (0 3) LET B = 20
   Origs: 30:gosub
   Dests: 110:auto
-G(100) (0 1) 110 RETURN
+110 G(100) (0 1) RETURN
   Origs: 100:auto
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

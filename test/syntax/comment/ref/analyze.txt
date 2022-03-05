@@ -19,19 +19,19 @@ Halstead complexity:
  intelligence: 7.486
  time: 0.043
 
-(0 1) 10 REM TEST OF COMMENTS
+10 (0 1) REM TEST OF COMMENTS
   Origs: 
   Dests: 
-(0 3) 20 LET A = 1
+20 (0 3) LET A = 1
   Origs: :start
   Dests: 30:auto
-(0 4) 30 LET B = SQR(2 ^ 2)
+30 (0 4) LET B = SQR(2 ^ 2)
   Origs: 20:auto
   Dests: 99:auto
-(0 1) 40 REM Remark with comment ' and here it is
+40 (0 1) REM Remark with comment ' and here it is
   Origs: 
   Dests: 
-(0 1) 99 END
+99 (0 1) END
   Origs: 30:auto
   Dests: :stop
 

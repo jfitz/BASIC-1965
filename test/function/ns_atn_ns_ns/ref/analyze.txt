@@ -19,31 +19,31 @@ Halstead complexity:
  intelligence: 18.560
  time: 2.685
 
-(0 1) 10 REM TEST ARCTAN 2 ARGS
+10 (0 1) REM TEST ARCTAN 2 ARGS
   Origs: 
   Dests: 
-(0 4) 20 PRINT "Y", "X", "ARCTAN"
+20 (0 4) PRINT "Y", "X", "ARCTAN"
   Origs: :start
   Dests: 30:auto
-(2 3) 30 READ Y, X
+30 (2 3) READ Y, X
   Origs: 20:auto, 60:goto
   Dests: 40:auto
-(1 7) 40 IF X + Y = X * Y THEN 99
+40 (1 7) IF X + Y = X * Y THEN 99
   Origs: 30:auto
   Dests: 54:auto, 99:ifthen
-(0 4) 54 LET A = ATN(Y, X)
+54 (0 4) LET A = ATN(Y, X)
   Origs: 40:auto
   Dests: 56:auto
-(0 4) 56 PRINT Y, X, A
+56 (0 4) PRINT Y, X, A
   Origs: 54:auto
   Dests: 60:auto
-(0 3) 60 GOTO 30
+60 (0 3) GOTO 30
   Origs: 56:auto
   Dests: 30:goto
-(0 9) 90 DATA -0, -1, -1, -1, -1, 0, -1, 1, 0, 1, 1, 1, 1, 0, 1, -1, 0, 0
+90 (0 9) DATA -0, -1, -1, -1, -1, 0, -1, 1, 0, 1, 1, 1, 1, 0, 1, -1, 0, 0
   Origs: 
   Dests: 
-(0 1) 99 END
+99 (0 1) END
   Origs: 40:ifthen
   Dests: :stop
 

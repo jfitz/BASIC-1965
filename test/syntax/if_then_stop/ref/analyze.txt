@@ -19,15 +19,15 @@ Halstead complexity:
  intelligence: 0.000
  time: 0.000
 
-(0 1) 10 REM TEST THAT FAILS
+10 (0 1) REM TEST THAT FAILS
   Origs: 
   Dests: 
-(0 1) 20 IF A < 7 THEN STOP
+20 (0 1) IF A < 7 THEN STOP
    ERROR: Syntax error
    ERROR: Line number  not found
   Origs: :start
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 20:auto
   Dests: :stop
 

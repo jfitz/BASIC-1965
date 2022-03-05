@@ -19,43 +19,43 @@ Halstead complexity:
  intelligence: 36.039
  time: 3.047
 
-(0 1) 100 REM ANGLE-SIDE-ANGLE
+100 (0 1) REM ANGLE-SIDE-ANGLE
   Origs: 
   Dests: 
-(0 3) 110 LET P = 3.1416
+110 (0 3) LET P = 3.1416
   Origs: :start
   Dests: 140:auto
-FND(_) (0 4) 120 DEF FND(X) = X * P / 180
+120 FND(_) (0 4) DEF FND(X) = X * P / 180
   Origs: 
   Dests: 
-FNS(_) (0 3) 130 DEF FNS(X) = SIN(FND(X))
+130 FNS(_) (0 3) DEF FNS(X) = SIN(FND(X))
   Origs: 170:function, 180:function
   Dests: 
-(0 6) 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
+140 (0 6) PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
   Origs: 110:auto
   Dests: 150:auto
-(3 4) 150 READ A, X, B
+150 (3 4) READ A, X, B
   Origs: 140:auto, 200:goto
   Dests: 160:auto
-(0 5) 160 LET C = 180 - A - B
+160 (0 5) LET C = 180 - A - B
   Origs: 150:auto
   Dests: 170:auto
-(0 9) 170 LET Y = X * FNS(B) / FNS(C)
+170 (0 9) LET Y = X * FNS(B) / FNS(C)
   Origs: 160:auto
   Dests: 130:function, 180:auto
-(0 9) 180 LET Z = X * FNS(A) / FNS(C)
+180 (0 9) LET Z = X * FNS(A) / FNS(C)
   Origs: 170:auto
   Dests: 130:function, 190:auto
-(0 6) 190 PRINT A, X, B, Y, Z
+190 (0 6) PRINT A, X, B, Y, Z
   Origs: 180:auto
   Dests: 200:auto
-(0 3) 200 GOTO 150
+200 (0 3) GOTO 150
   Origs: 190:auto
   Dests: 150:goto
-(0 2) 210 DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
+210 (0 2) DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
   Origs: 
   Dests: 
-(0 1) 220 END
+220 (0 1) END
   Origs: 
   Dests: :stop
 

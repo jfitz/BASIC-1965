@@ -19,61 +19,61 @@ Halstead complexity:
  intelligence: 26.474
  time: 0.519
 
-(0 2) 10 DIM A(6)
+10 (0 2) DIM A(6)
   Origs: :start
   Dests: 20:auto
-(0 2) 20 OPTION BASE 0
+20 (0 2) OPTION BASE 0
   Origs: 10:auto
   Dests: 30:auto
-(1 2) 30 ARR READ A
+30 (1 2) ARR READ A
   Origs: 20:auto
   Dests: 40:auto
-(0 4) 40 ARR B = UNIQ1(A)
+40 (0 4) ARR B = UNIQ1(A)
   Origs: 30:auto
   Dests: 50:auto
-(0 2) 50 GOSUB 800
+50 (0 2) GOSUB 800
   Origs: 40:auto
   Dests: 100:auto, 810:gosub
-(0 1) 100 RESTORE
+100 (0 1) RESTORE
   Origs: 50:auto
   Dests: 120:auto
-(0 2) 120 OPTION BASE 1
+120 (0 2) OPTION BASE 1
   Origs: 100:auto
   Dests: 130:auto
-(1 2) 130 ARR READ A
+130 (1 2) ARR READ A
   Origs: 120:auto
   Dests: 140:auto
-(0 4) 140 ARR B = UNIQ1(A)
+140 (0 4) ARR B = UNIQ1(A)
   Origs: 130:auto
   Dests: 150:auto
-(0 2) 150 GOSUB 800
+150 (0 2) GOSUB 800
   Origs: 140:auto
   Dests: 790:auto, 810:gosub
-(0 1) 790 STOP
+790 (0 1) STOP
   Origs: 150:auto
   Dests: :stop
-(0 1) 800 REM PROCEDURE A
+800 (0 1) REM PROCEDURE A
   Origs: 
   Dests: 
-G(810) (0 2) 810 PRINT "ARRAY A"
+810 G(810) (0 2) PRINT "ARRAY A"
   Origs: 50:gosub, 150:gosub
   Dests: 820:auto
-G(810) (0 2) 820 ARR PRINT A
+820 G(810) (0 2) ARR PRINT A
   Origs: 810:auto
   Dests: 830:auto
-G(810) (0 2) 830 PRINT "ARRAY B"
+830 G(810) (0 2) PRINT "ARRAY B"
   Origs: 820:auto
   Dests: 840:auto
-G(810) (0 2) 840 ARR PRINT B
+840 G(810) (0 2) ARR PRINT B
   Origs: 830:auto
   Dests: 890:auto
-G(810) (0 1) 890 RETURN
+890 G(810) (0 1) RETURN
   Origs: 840:auto
   Dests: 
-(0 2) 900 DATA 10, 20, 10, 20, 30, 40, 50
+900 (0 2) DATA 10, 20, 10, 20, 30, 40, 50
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

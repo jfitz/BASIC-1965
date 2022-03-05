@@ -19,133 +19,133 @@ Halstead complexity:
  intelligence: 41.422
  time: 4.486
 
-(0 4) 100 DIM Q(20, 20), N(20, 20), R(20, 20)
+100 (0 4) DIM Q(20, 20), N(20, 20), R(20, 20)
   Origs: :start
   Dests: 110:auto
-(0 3) 110 DIM T(20), U(20)
+110 (0 3) DIM T(20), U(20)
   Origs: 100:auto
   Dests: 130:auto
-(0 0) 120 
+120 (0 0) 
   Origs: 
   Dests: 
-(2 3) 130 READ M, N
+130 (2 3) READ M, N
   Origs: 110:auto
   Dests: 140:auto
-(1 2) 140 MAT READ Q(N, N)
+140 (1 2) MAT READ Q(N, N)
   Origs: 130:auto
   Dests: 150:auto
-(1 2) 150 MAT READ R(N, M)
+150 (1 2) MAT READ R(N, M)
   Origs: 140:auto
   Dests: 160:auto
-(0 4) 160 MAT N = IDN(N, N)
+160 (0 4) MAT N = IDN(N, N)
   Origs: 150:auto
   Dests: 170:auto
-(0 4) 170 MAT U = CON(N)
+170 (0 4) MAT U = CON(N)
   Origs: 160:auto
   Dests: 190:auto
-(0 0) 180 
+180 (0 0) 
   Origs: 
   Dests: 
-(0 2) 190 PRINT "TRANSIENT TO TRANSIENT PROBABILITIES"
+190 (0 2) PRINT "TRANSIENT TO TRANSIENT PROBABILITIES"
   Origs: 170:auto
   Dests: 200:auto
-(0 2) 200 PRINT
+200 (0 2) PRINT
   Origs: 190:auto
   Dests: 210:auto
-(0 2) 210 MAT PRINT Q
+210 (0 2) MAT PRINT Q
   Origs: 200:auto
   Dests: 230:auto
-(0 0) 220 
+220 (0 0) 
   Origs: 
   Dests: 
-(0 2) 230 PRINT "TRANSIENT TO ABSORBING PROBABILITIES"
+230 (0 2) PRINT "TRANSIENT TO ABSORBING PROBABILITIES"
   Origs: 210:auto
   Dests: 240:auto
-(0 2) 240 PRINT
+240 (0 2) PRINT
   Origs: 230:auto
   Dests: 250:auto
-(0 2) 250 MAT PRINT R
+250 (0 2) MAT PRINT R
   Origs: 240:auto
   Dests: 270:auto
-(0 0) 260 
+260 (0 0) 
   Origs: 
   Dests: 
-(0 4) 270 MAT Q = N - Q
+270 (0 4) MAT Q = N - Q
   Origs: 250:auto
   Dests: 280:auto
-(0 4) 280 MAT N = INV(Q)
+280 (0 4) MAT N = INV(Q)
   Origs: 270:auto
   Dests: 290:auto
-(0 2) 290 PRINT "FUNDAMENTAL MATRIX"
+290 (0 2) PRINT "FUNDAMENTAL MATRIX"
   Origs: 280:auto
   Dests: 300:auto
-(0 2) 300 PRINT
+300 (0 2) PRINT
   Origs: 290:auto
   Dests: 310:auto
-(0 2) 310 MAT PRINT N
+310 (0 2) MAT PRINT N
   Origs: 300:auto
   Dests: 330:auto
-(0 0) 320 
+320 (0 0) 
   Origs: 
   Dests: 
-(0 4) 330 MAT T = N * U
+330 (0 4) MAT T = N * U
   Origs: 310:auto
   Dests: 340:auto
-(0 2) 340 PRINT "ABSORBTION TIMES"
+340 (0 2) PRINT "ABSORBTION TIMES"
   Origs: 330:auto
   Dests: 350:auto
-(0 2) 350 PRINT
+350 (0 2) PRINT
   Origs: 340:auto
   Dests: 360:auto
-(0 2) 360 MAT PRINT T
+360 (0 2) MAT PRINT T
   Origs: 350:auto
   Dests: 380:auto
-(0 0) 370 
+370 (0 0) 
   Origs: 
   Dests: 
-(0 4) 380 MAT Q = N * R
+380 (0 4) MAT Q = N * R
   Origs: 360:auto
   Dests: 390:auto
-(0 2) 390 PRINT "ABSORBTION PROBABILITIES"
+390 (0 2) PRINT "ABSORBTION PROBABILITIES"
   Origs: 380:auto
   Dests: 400:auto
-(0 2) 400 PRINT
+400 (0 2) PRINT
   Origs: 390:auto
   Dests: 410:auto
-(0 2) 410 MAT PRINT Q
+410 (0 2) MAT PRINT Q
   Origs: 400:auto
   Dests: 999:auto
-(0 0) 420 
+420 (0 0) 
   Origs: 
   Dests: 
-(0 2) 430 DATA 2, 4
+430 (0 2) DATA 2, 4
   Origs: 
   Dests: 
-(0 2) 440 DATA 0, 0.6667, 0, 0
+440 (0 2) DATA 0, 0.6667, 0, 0
   Origs: 
   Dests: 
-(0 2) 450 DATA 0.3333, 0, 0.6667, 0
+450 (0 2) DATA 0.3333, 0, 0.6667, 0
   Origs: 
   Dests: 
-(0 2) 460 DATA 0, 0.3333, 0, 0.6667
+460 (0 2) DATA 0, 0.3333, 0, 0.6667
   Origs: 
   Dests: 
-(0 2) 470 DATA 0, 0, 0.3333, 0
+470 (0 2) DATA 0, 0, 0.3333, 0
   Origs: 
   Dests: 
-(0 2) 480 DATA 0.3333, 0
+480 (0 2) DATA 0.3333, 0
   Origs: 
   Dests: 
-(0 2) 490 DATA 0, 0
+490 (0 2) DATA 0, 0
   Origs: 
   Dests: 
-(0 2) 500 DATA 0, 0
+500 (0 2) DATA 0, 0
   Origs: 
   Dests: 
-(0 2) 510 DATA 0, 0.6667
+510 (0 2) DATA 0, 0.6667
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 410:auto
   Dests: :stop
 

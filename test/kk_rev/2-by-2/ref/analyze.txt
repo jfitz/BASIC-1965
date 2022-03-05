@@ -19,43 +19,43 @@ Halstead complexity:
  intelligence: 36.215
  time: 2.599
 
-(0 4) 100 PRINT "TABLE", "   ", "CHI-SQUARE"
+100 (0 4) PRINT "TABLE", "   ", "CHI-SQUARE"
   Origs: :start
   Dests: 120:auto
-(0 0) 110 
+110 (0 0) 
   Origs: 
   Dests: 
-(0 2) 120 PRINT
+120 (0 2) PRINT
   Origs: 100:auto, 200:goto
   Dests: 130:auto
-(4 5) 130 READ A, B, C, D
+130 (4 5) READ A, B, C, D
   Origs: 120:auto
   Dests: 140:auto
-(0 6) 140 LET N = A + B + C + D
+140 (0 6) LET N = A + B + C + D
   Origs: 130:auto
   Dests: 150:auto
-(0 7) 150 LET E = ABS(A * D - B * C) - N / 2
+150 (0 7) LET E = ABS(A * D - B * C) - N / 2
   Origs: 140:auto
   Dests: 160:auto
-(0 17) 160 LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
+160 (0 17) LET X = N * E * E / ((A + B) * (C + D) * (A + C) * (B + D))
   Origs: 150:auto
   Dests: 180:auto
-(0 0) 170 
+170 (0 0) 
   Origs: 
   Dests: 
-(0 3) 180 PRINT A, B
+180 (0 3) PRINT A, B
   Origs: 160:auto
   Dests: 190:auto
-(0 4) 190 PRINT C, D, X
+190 (0 4) PRINT C, D, X
   Origs: 180:auto
   Dests: 200:auto
-(0 3) 200 GOTO 120
+200 (0 3) GOTO 120
   Origs: 190:auto
   Dests: 120:goto
-(0 2) 900 DATA 6, 0, 2, 6, 6, 0, 1, 3
+900 (0 2) DATA 6, 0, 2, 6, 6, 0, 1, 3
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 
   Dests: :stop
 

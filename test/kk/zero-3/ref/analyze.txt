@@ -19,52 +19,52 @@ Halstead complexity:
  intelligence: 22.600
  time: 8.069
 
-FNF(_) (0 9) 10 DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
+10 FNF(_) (0 9) DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
   Dests: 
-(2 3) 20 READ A, B
+20 (2 3) READ A, B
   Origs: :start
   Dests: 22:auto
-(0 4) 22 LET S = SGN(FNF(A))
+22 (0 4) LET S = SGN(FNF(A))
   Origs: 20:auto
   Dests: 24:auto
-(1 4) 24 IF S = 0 THEN 95
+24 (1 4) IF S = 0 THEN 95
   Origs: 22:auto
   Dests: 26:auto, 95:ifthen
-(0 3) 26 LET X(1 + S) = A
+26 (0 3) LET X(1 + S) = A
   Origs: 24:auto
   Dests: 28:auto
-(0 3) 28 LET X(1 - S) = B
+28 (0 3) LET X(1 - S) = B
   Origs: 26:auto
   Dests: 30:auto
-(0 5) 30 LET X = (X(0) + X(2)) / 2
+30 (0 5) LET X = (X(0) + X(2)) / 2
   Origs: 28:auto, 90:goto
   Dests: 35:auto
-(0 4) 35 LET F = SGN(FNF(X))
+35 (0 4) LET F = SGN(FNF(X))
   Origs: 30:auto
   Dests: 40:auto
-(1 4) 40 IF F = 0 THEN 100
+40 (1 4) IF F = 0 THEN 100
   Origs: 35:auto
   Dests: 50:auto, 100:ifthen
-(0 3) 50 LET X(1 + F) = X
+50 (0 3) LET X(1 + F) = X
   Origs: 40:auto
   Dests: 80:auto
-(1 10) 80 IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 100
+80 (1 10) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 100
   Origs: 50:auto
   Dests: 90:auto, 100:ifthen
-(0 3) 90 GOTO 30
+90 (0 3) GOTO 30
   Origs: 80:auto
   Dests: 30:goto
-(0 3) 95 LET X = A
+95 (0 3) LET X = A
   Origs: 24:ifthen
   Dests: 100:auto
-(0 3) 100 PRINT "ONE ZERO AT" X
+100 (0 3) PRINT "ONE ZERO AT" X
   Origs: 40:ifthen, 80:ifthen, 95:auto
   Dests: 999:auto
-(0 2) 900 DATA 0, 1
+900 (0 2) DATA 0, 1
   Origs: 
   Dests: 
-(0 1) 999 END
+999 (0 1) END
   Origs: 100:auto
   Dests: :stop
 

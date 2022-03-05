@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 9.671
  time: 0.099
 
-(0 3) 10 LET I = 1
+10 (0 3) LET I = 1
   Origs: :start
   Dests: 20:auto
-(1 4) 20 IF I > 1000 THEN 60
+20 (1 4) IF I > 1000 THEN 60
   Origs: 10:auto, 50:goto
   Dests: 30:auto, 60:ifthen
-(0 2) 30 PRINT I
+30 (0 2) PRINT I
   Origs: 20:auto
   Dests: 40:auto
-(0 4) 40 LET I = I + 1
+40 (0 4) LET I = I + 1
   Origs: 30:auto
   Dests: 50:auto
-(0 3) 50 GOTO 20
+50 (0 3) GOTO 20
   Origs: 40:auto
   Dests: 20:goto
-(0 1) 60 END
+60 (0 1) END
   Origs: 20:ifthen
   Dests: :stop
 

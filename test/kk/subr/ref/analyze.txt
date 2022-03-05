@@ -19,46 +19,46 @@ Halstead complexity:
  intelligence: 15.180
  time: 0.674
 
-(0 3) 100 LET X = 5
+100 (0 3) LET X = 5
   Origs: :start
   Dests: 110:auto
-(0 2) 110 GOSUB 500
+110 (0 2) GOSUB 500
   Origs: 100:auto
   Dests: 120:auto, 500:gosub
-(0 3) 120 LET X = 7
+120 (0 3) LET X = 7
   Origs: 110:auto
   Dests: 130:auto
-(0 2) 130 GOSUB 500
+130 (0 2) GOSUB 500
   Origs: 120:auto
   Dests: 140:auto, 500:gosub
-(0 3) 140 LET X = 11
+140 (0 3) LET X = 11
   Origs: 130:auto
   Dests: 150:auto
-(0 2) 150 GOSUB 500
+150 (0 2) GOSUB 500
   Origs: 140:auto
   Dests: 160:auto, 500:gosub
-(0 1) 160 STOP
+160 (0 1) STOP
   Origs: 150:auto
   Dests: :stop
-(0 0) 170 
+170 (0 0) 
   Origs: 
   Dests: 
-G(500) (0 4) 500 LET Y = 3 * X
+500 G(500) (0 4) LET Y = 3 * X
   Origs: 110:gosub, 130:gosub, 150:gosub
   Dests: 510:auto
-G(500) (0 5) 510 LET Z = 1.2 * EXP(Y)
+510 G(500) (0 5) LET Z = 1.2 * EXP(Y)
   Origs: 500:auto
   Dests: 520:auto
-G(500) (0 4) 520 LET Y = SQR(Z + 2)
+520 G(500) (0 4) LET Y = SQR(Z + 2)
   Origs: 510:auto
   Dests: 530:auto
-G(500) (0 3) 530 PRINT X; Y
+530 G(500) (0 3) PRINT X; Y
   Origs: 520:auto
   Dests: 540:auto
-G(500) (0 1) 540 RETURN
+540 G(500) (0 1) RETURN
   Origs: 530:auto
   Dests: 
-(0 1) 550 END
+550 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -19,19 +19,19 @@ Halstead complexity:
  intelligence: 12.973
  time: 0.017
 
-F(I) (1 4) 10 FOR I = 1 STEP 2 TO 10
+10 F(I) (1 4) FOR I = 1 STEP 2 TO 10
   Origs: :start
   Dests: 20:fornext, 30:fornext
-F(I) (0 2) 20 PRINT I
+20 F(I) (0 2) PRINT I
   Origs: 10:fornext
   Dests: 30:auto
-F(I) (0 1) 30 NEXT I
+30 F(I) (0 1) NEXT I
   Origs: 10:fornext, 20:auto
   Dests: 90:auto
-(0 1) 90 STOP
+90 (0 1) STOP
   Origs: 30:auto
   Dests: :stop
-(0 1) 99 END
+99 (0 1) END
   Origs: 
   Dests: :stop
 

@@ -19,22 +19,22 @@ Halstead complexity:
  intelligence: 16.636
  time: 0.015
 
-(0 1) 10 REM ARRAY ASSIGNMENT
+10 (0 1) REM ARRAY ASSIGNMENT
   Origs: 
   Dests: 
-(0 3) 20 LET N = 6
+20 (0 3) LET N = 6
   Origs: :start
   Dests: 100:auto
-(0 2) 100 ARR INPUT A(N)
+100 (0 2) ARR INPUT A(N)
   Origs: 20:auto
   Dests: 150:auto
-(0 2) 150 PRINT "ARRAY A"
+150 (0 2) PRINT "ARRAY A"
   Origs: 100:auto
   Dests: 160:auto
-(0 2) 160 ARR PRINT A
+160 (0 2) ARR PRINT A
   Origs: 150:auto
   Dests: 999:auto
-(0 1) 999 END
+999 (0 1) END
   Origs: 160:auto
   Dests: :stop
 

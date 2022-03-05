@@ -19,34 +19,34 @@ Halstead complexity:
  intelligence: 92.553
  time: 0.095
 
-(0 1) 10 REM TEST FOR INPUT STATEMENT
+10 (0 1) REM TEST FOR INPUT STATEMENT
   Origs: 
   Dests: 
-(1 2) 20 INPUT "LEADING SPACES:"; N1
+20 (1 2) INPUT "LEADING SPACES:"; N1
   Origs: :start
   Dests: 25:auto
-(0 3) 25 PRINT "THE NUMBER WAS"; N1
+25 (0 3) PRINT "THE NUMBER WAS"; N1
   Origs: 20:auto
   Dests: 30:auto
-(1 2) 30 INPUT "TRAILING SPACES:"; N2
+30 (1 2) INPUT "TRAILING SPACES:"; N2
   Origs: 25:auto
   Dests: 35:auto
-(0 3) 35 PRINT "THE NUMBER WAS"; N2
+35 (0 3) PRINT "THE NUMBER WAS"; N2
   Origs: 30:auto
   Dests: 40:auto
-(1 2) 40 INPUT "LEADING AND TRAILING SPACES:"; N3
+40 (1 2) INPUT "LEADING AND TRAILING SPACES:"; N3
   Origs: 35:auto
   Dests: 45:auto
-(0 3) 45 PRINT "THE NUMBERS WAS"; N3
+45 (0 3) PRINT "THE NUMBERS WAS"; N3
   Origs: 40:auto
   Dests: 50:auto
-(3 4) 50 INPUT "LEADING, LEADING AND TRAILING, TRAILING"; N4, N5, N6
+50 (3 4) INPUT "LEADING, LEADING AND TRAILING, TRAILING"; N4, N5, N6
   Origs: 45:auto
   Dests: 55:auto
-(0 5) 55 PRINT "THE NUMBERS WERE"; N4; N5; N6
+55 (0 5) PRINT "THE NUMBERS WERE"; N4; N5; N6
   Origs: 50:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 55:auto
   Dests: :stop
 

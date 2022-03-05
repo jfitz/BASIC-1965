@@ -19,31 +19,31 @@ Halstead complexity:
  intelligence: 14.062
  time: 2.243
 
-(0 3) 10 LET P = 3.1416
+10 (0 3) LET P = 3.1416
   Origs: :start
   Dests: 50:auto
-FND(_) (0 4) 20 DEF FND(X) = X * P / 180
+20 FND(_) (0 4) DEF FND(X) = X * P / 180
   Origs: 
   Dests: 
-FNS(_) (0 3) 30 DEF FNS(X) = SIN(FND(X))
+30 FNS(_) (0 3) DEF FNS(X) = SIN(FND(X))
   Origs: 
   Dests: 
-FNC(_) (0 3) 40 DEF FNC(X) = COS(FND(X))
+40 FNC(_) (0 3) DEF FNC(X) = COS(FND(X))
   Origs: 
   Dests: 
-(0 4) 50 PRINT "DEGREES", "SINE", "COSINE"
+50 (0 4) PRINT "DEGREES", "SINE", "COSINE"
   Origs: 10:auto
   Dests: 60:auto
-F(X) (1 4) 60 FOR X = 0 TO 90 STEP 10
+60 F(X) (1 4) FOR X = 0 TO 90 STEP 10
   Origs: 50:auto
   Dests: 70:fornext, 80:fornext
-F(X) (0 8) 70 PRINT X, FNS(X), FNC(X)
+70 F(X) (0 8) PRINT X, FNS(X), FNC(X)
   Origs: 60:fornext
   Dests: 80:auto
-F(X) (0 1) 80 NEXT X
+80 F(X) (0 1) NEXT X
   Origs: 60:fornext, 70:auto
   Dests: 99:auto
-(0 1) 99 END
+99 (0 1) END
   Origs: 80:auto
   Dests: :stop
 

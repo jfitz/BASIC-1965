@@ -1,6021 +1,6021 @@
-150: DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
-250: DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
-260: DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
-F(P) 100: FOR P = 1 TO 8
+150 DATA 1, 2, 3, 8, 9, 4, 7, 6, 5, 1, 8, 7, 2, 9, 6, 3, 4, 5, 1, 9, 5, 7, 9, 3
+250 DATA 1, 4, 7, 0, 1, 5, 0, 0, 1, 6, 8, 0, 2, 6, 0, 0, 3, 6, 7, 0
+260 DATA 3, 5, 0, 0, 3, 4, 8, 0, 2, 4, 0, 0, 2, 5, 7, 8
+100 F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 1
  I: 1
  T(1,1) = 1
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 1
  I: 2
  T(1,2) = 2
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 1
  I: 3
  T(1,3) = 3
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 2
  I: 1
  T(2,1) = 8
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 2
  I: 2
  T(2,2) = 9
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 2
  I: 3
  T(2,3) = 4
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 3
  I: 1
  T(3,1) = 7
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 3
  I: 2
  T(3,2) = 6
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 3
  I: 3
  T(3,3) = 5
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 4
  I: 1
  T(4,1) = 1
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 4
  I: 2
  T(4,2) = 8
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 4
  I: 3
  T(4,3) = 7
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 5
  I: 1
  T(5,1) = 2
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 5
  I: 2
  T(5,2) = 9
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 5
  I: 3
  T(5,3) = 6
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 6
  I: 1
  T(6,1) = 3
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 6
  I: 2
  T(6,2) = 4
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 6
  I: 3
  T(6,3) = 5
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 7
  I: 1
  T(7,1) = 1
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 7
  I: 2
  T(7,2) = 9
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 7
  I: 3
  T(7,3) = 5
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-F(P,I) 110: FOR I = 1 TO 3
+110 F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 8
  I: 1
  T(8,1) = 7
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 8
  I: 2
  T(8,2) = 9
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 2
  terminated:false
  I = 3
-F(P,I) 120: READ T(P, I)
+120 F(P,I) READ T(P, I)
  P: 8
  I: 3
  T(8,3) = 3
-F(P,I) 130: NEXT I
+130 F(P,I) NEXT I
  I: 3
  terminated:true
-F(P) 140: NEXT P
+140 F(P) NEXT P
  P: 8
  terminated:true
-F(S) 200: FOR S = 1 TO 9
+200 F(S) FOR S = 1 TO 9
  S = 1
  terminated:false
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 1
  J: 1
  U(1,1) = 1
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 1
  J: 2
  U(1,2) = 4
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 1
  J: 3
  U(1,3) = 7
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 1
  J: 4
  U(1,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 1
  terminated:false
  S = 2
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 2
  J: 1
  U(2,1) = 1
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 2
  J: 2
  U(2,2) = 5
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 2
  J: 3
  U(2,3) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 2
  J: 4
  U(2,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 2
  terminated:false
  S = 3
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 3
  J: 1
  U(3,1) = 1
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 3
  J: 2
  U(3,2) = 6
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 3
  J: 3
  U(3,3) = 8
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 3
  J: 4
  U(3,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 3
  terminated:false
  S = 4
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 4
  J: 1
  U(4,1) = 2
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 4
  J: 2
  U(4,2) = 6
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 4
  J: 3
  U(4,3) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 4
  J: 4
  U(4,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 4
  terminated:false
  S = 5
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 5
  J: 1
  U(5,1) = 3
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 5
  J: 2
  U(5,2) = 6
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 5
  J: 3
  U(5,3) = 7
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 5
  J: 4
  U(5,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 5
  terminated:false
  S = 6
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 6
  J: 1
  U(6,1) = 3
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 6
  J: 2
  U(6,2) = 5
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 6
  J: 3
  U(6,3) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 6
  J: 4
  U(6,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 6
  terminated:false
  S = 7
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 7
  J: 1
  U(7,1) = 3
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 7
  J: 2
  U(7,2) = 4
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 7
  J: 3
  U(7,3) = 8
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 7
  J: 4
  U(7,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 7
  terminated:false
  S = 8
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 8
  J: 1
  U(8,1) = 2
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 8
  J: 2
  U(8,2) = 4
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 8
  J: 3
  U(8,3) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 8
  J: 4
  U(8,4) = 0
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 8
  terminated:false
  S = 9
-F(S,J) 210: FOR J = 1 TO 4
+210 F(S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 9
  J: 1
  U(9,1) = 2
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 9
  J: 2
  U(9,2) = 5
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 9
  J: 3
  U(9,3) = 7
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(S,J) 220: READ U(S, J)
+220 F(S,J) READ U(S, J)
  S: 9
  J: 4
  U(9,4) = 8
-F(S,J) 230: NEXT J
+230 F(S,J) NEXT J
  J: 4
  terminated:true
-F(S) 240: NEXT S
+240 F(S) NEXT S
  S: 9
  terminated:true
-F(J) 265: LET N = 0
+265 F(J) LET N = 0
  N = 0
-F(S,J) 270: FOR S = 1 TO 9
+270 F(S,J) FOR S = 1 TO 9
  S = 1
  terminated:false
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 1
  C(1) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 1
  B(1) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 1
  terminated:false
  S = 2
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 2
  C(2) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 2
  B(2) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 2
  terminated:false
  S = 3
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 3
  C(3) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 3
  B(3) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 3
  terminated:false
  S = 4
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 4
  C(4) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 4
  B(4) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 4
  terminated:false
  S = 5
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 5
  C(5) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 5
  B(5) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 5
  terminated:false
  S = 6
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 6
  C(6) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 6
  B(6) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 6
  terminated:false
  S = 7
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 7
  C(7) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 7
  B(7) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 7
  terminated:false
  S = 8
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 8
  C(8) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 8
  B(8) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 8
  terminated:false
  S = 9
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 9
  C(9) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 9
  B(9) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 9
  terminated:true
-F(J) 310: IF RND(Z) < 1 / 2 THEN 350
+310 F(J) IF RND(Z) < 1 / 2 THEN 350
  Z: 0
  RND(Z) < 1 / 2: true
-F(J) 350: PRINT "THE COMPUTER WILL MOVE FIRST."
+350 F(J) PRINT "THE COMPUTER WILL MOVE FIRST."
 THE COMPUTER WILL MOVE FIRST.
-F(J) 360: PRINT
+360 F(J) PRINT
 
-F(J) 370: GOTO 600
-F(J) 610: GOSUB 1000
-G(1010) F(P) 1010: FOR P = 1 TO 8
+370 F(J) GOTO 600
+610 F(J) GOSUB 1000
+1010 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 2
  C(2): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 5
  C(5): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 8
  C(8): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) F(P) 1040: FOR P = 1 TO 8
+1040 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 2
  C(2): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 5
  C(5): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 6
  C(6): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 8
  C(8): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) 1070: GOTO 1200
-G(1010) F(P,S) 1200: FOR S = 1 TO 9
+1070 G(1010) GOTO 1200
+1200 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 1
  V(1) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 1
  U(1,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
  P: 1
  C(1): 0
  V(1) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 2
  U(1,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
  P: 4
  C(4): 0
  V(1) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 3
  U(1,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
  P: 7
  C(7): 0
  V(1) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 4
  U(1,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 2
  V(2) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 1
  U(2,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
  P: 1
  C(1): 0
  V(2) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 2
  U(2,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
  P: 5
  C(5): 0
  V(2) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 3
  U(2,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 4
  U(2,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 3
  V(3) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 1
  U(3,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
  P: 1
  C(1): 0
  V(3) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 2
  U(3,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
  P: 6
  C(6): 0
  V(3) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 3
  U(3,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 2
  P: 8
  C(8): 0
  V(3) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 4
  U(3,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 4
  V(4) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 1
  U(4,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
  P: 2
  C(2): 0
  V(4) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 2
  U(4,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 1
  P: 6
  C(6): 0
  V(4) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 3
  U(4,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 4
  U(4,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 5
  V(5) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 5
  B(5): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 1
  U(5,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 0
  P: 3
  C(3): 0
  V(5) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 2
  U(5,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 1
  P: 6
  C(6): 0
  V(5) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 3
  U(5,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 2
  P: 7
  C(7): 0
  V(5) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 4
  U(5,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 6
  V(6) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 1
  U(6,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
  P: 3
  C(3): 0
  V(6) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 2
  U(6,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 1
  P: 5
  C(5): 0
  V(6) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 3
  U(6,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 4
  U(6,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 7
  V(7) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 1
  U(7,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
  P: 3
  C(3): 0
  V(7) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 2
  U(7,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 1
  P: 4
  C(4): 0
  V(7) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 3
  U(7,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
  P: 8
  C(8): 0
  V(7) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 4
  U(7,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 8
  V(8) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 1
  U(8,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
  P: 2
  C(2): 0
  V(8) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 2
  U(8,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 1
  P: 4
  C(4): 0
  V(8) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 3
  U(8,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 4
  U(8,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 9
  V(9) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 9
  B(9): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 1
  U(9,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 0
  P: 2
  C(2): 0
  V(9) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 2
  U(9,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 1
  P: 5
  C(5): 0
  V(9) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 3
  U(9,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 2
  P: 7
  C(7): 0
  V(9) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 4
  U(9,4): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 3
  P: 8
  C(8): 0
  V(9) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P) 1300: LET V = 0
+1300 G(1010) F(P) LET V = 0
  V = 0
-G(1010) F(P,S) 1310: FOR S = 1 TO 9
+1310 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 1
  V(1): 3
  V: 0
  V(S) <= V: false
-G(1010) F(P,S) 1330: LET V = V(S)
+1330 G(1010) F(P,S) LET V = V(S)
  S: 1
  V(1): 3
  V = 3
-G(1010) F(P,S) 1340: LET M = S
+1340 G(1010) F(P,S) LET M = S
  S: 1
  M = 1
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 2
  V(2): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 3
  V(3): 3
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 4
  V(4): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 5
  V(5): 3
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 6
  V(6): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 7
  V(7): 3
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 8
  V(8): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 9
  V(9): 4
  V: 3
  V(S) <= V: false
-G(1010) F(P,S) 1330: LET V = V(S)
+1330 G(1010) F(P,S) LET V = V(S)
  S: 9
  V(9): 4
  V = 4
-G(1010) F(P,S) 1340: LET M = S
+1340 G(1010) F(P,S) LET M = S
  S: 9
  M = 9
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P,I) 1999: RETURN
-F(J) 620: PRINT "THE COMPUTER MOVES" M
+1999 G(1010) F(P,I) RETURN
+620 F(J) PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: 9
  9
-F(J) 630: LET F = 1
+630 F(J) LET F = 1
  F = 1
-F(J) 640: GOTO 460
-F(J) 460: LET B(M) = F
+640 F(J) GOTO 460
+460 F(J) LET B(M) = F
  M: 9
  F: 1
  B(9) = 1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 1
  U(9,1): 2
  P = 2
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 2
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 2
  C(2): 0
  F: 1
  C(2) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 2
  C(2): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 2
  C(2): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 2
  U(9,2): 5
  P = 5
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 5
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 5
  C(5): 0
  F: 1
  C(5) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 5
  C(5): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 5
  C(5): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 3
  U(9,3): 7
  P = 7
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 7
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 7
  C(7): 0
  F: 1
  C(7) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 7
  C(7): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 7
  C(7): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 4
  U(9,4): 8
  P = 8
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 8
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 8
  C(8): 0
  F: 1
  C(8) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 8
  C(8): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 8
  C(8): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 0
  N = 1
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 1
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: 1
  F = 1: true
-F(J) 400: PRINT "YOUR MOVE";
+400 F(J) PRINT "YOUR MOVE";
 YOUR MOVE
-F(J) 410: INPUT M
+410 F(J) INPUT M
 ? 5
  M = 5
-F(J) 415: LET F = -1
+415 F(J) LET F = -1
  F = -1
-F(J) 420: IF M <> INT(M) THEN 550
+420 F(J) IF M <> INT(M) THEN 550
  M: 5
  M <> INT(M): false
-F(J) 430: IF M < 1 THEN 500
+430 F(J) IF M < 1 THEN 500
  M: 5
  M < 1: false
-F(J) 440: IF M > 9 THEN 550
+440 F(J) IF M > 9 THEN 550
  M: 5
  M > 9: false
-F(J) 450: IF B(M) <> 0 THEN 500
+450 F(J) IF B(M) <> 0 THEN 500
  M: 5
  B(5): 0
  B(M) <> 0: false
-F(J) 460: LET B(M) = F
+460 F(J) LET B(M) = F
  M: 5
  F: -1
  B(5) = -1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 1
  U(5,1): 3
  P = 3
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 3
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 3
  C(3): 0
  F: -1
  C(3) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 3
  C(3): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 3
  C(3): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 2
  U(5,2): 6
  P = 6
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 6
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 6
  C(6): 0
  F: -1
  C(6) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 6
  C(6): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 6
  C(6): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 3
  U(5,3): 7
  P = 7
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 7
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 7
  C(7): 1
  F: -1
  C(7) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 7
  C(7): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 7
  C(7): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 4
  U(5,4): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 1
  N = 2
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 2
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: -1
  F = 1: false
-538: GOTO 600
-F(J) 610: GOSUB 1000
-G(1010) F(P) 1010: FOR P = 1 TO 8
+538 GOTO 600
+610 F(J) GOSUB 1000
+1010 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 2
  C(2): 1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 3
  C(3): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 5
  C(5): 1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 6
  C(6): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 8
  C(8): 1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) F(P) 1040: FOR P = 1 TO 8
+1040 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 2
  C(2): 1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 3
  C(3): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 5
  C(5): 1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 6
  C(6): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 8
  C(8): 1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) 1070: GOTO 1200
-G(1010) F(P,S) 1200: FOR S = 1 TO 9
+1070 G(1010) GOTO 1200
+1200 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 1
  V(1) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 1
  U(1,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
  P: 1
  C(1): 0
  V(1) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 2
  U(1,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
  P: 4
  C(4): 0
  V(1) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 3
  U(1,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
  P: 7
  C(7): 0
  V(1) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 4
  U(1,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 2
  V(2) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 1
  U(2,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
  P: 1
  C(1): 0
  V(2) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 2
  U(2,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
  P: 5
  C(5): 1
  V(2) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 3
  U(2,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 4
  U(2,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 3
  V(3) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 1
  U(3,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
  P: 1
  C(1): 0
  V(3) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 2
  U(3,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
  P: 6
  C(6): -1
  V(3) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 3
  U(3,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 3
  P: 8
  C(8): 1
  V(3) = 5
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 4
  U(3,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 4
  V(4) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 1
  U(4,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
  P: 2
  C(2): 1
  V(4) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 2
  U(4,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 2
  P: 6
  C(6): -1
  V(4) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 3
  U(4,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 4
  U(4,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 5
  V(5) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 5
  B(5): -1
  B(S) <> 0: true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 6
  V(6) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 1
  U(6,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
  P: 3
  C(3): -1
  V(6) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 2
  U(6,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 2
  P: 5
  C(5): 1
  V(6) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 3
  U(6,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 4
  U(6,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 7
  V(7) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 1
  U(7,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
  P: 3
  C(3): -1
  V(7) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 2
  U(7,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
  P: 4
  C(4): 0
  V(7) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 3
  U(7,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 3
  P: 8
  C(8): 1
  V(7) = 5
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 4
  U(7,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 8
  V(8) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 1
  U(8,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
  P: 2
  C(2): 1
  V(8) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 2
  U(8,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 2
  P: 4
  C(4): 0
  V(8) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 3
  U(8,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 4
  U(8,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 9
  V(9) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 9
  B(9): 1
  B(S) <> 0: true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P) 1300: LET V = 0
+1300 G(1010) F(P) LET V = 0
  V = 0
-G(1010) F(P,S) 1310: FOR S = 1 TO 9
+1310 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 1
  V(1): 3
  V: 0
  V(S) <= V: false
-G(1010) F(P,S) 1330: LET V = V(S)
+1330 G(1010) F(P,S) LET V = V(S)
  S: 1
  V(1): 3
  V = 3
-G(1010) F(P,S) 1340: LET M = S
+1340 G(1010) F(P,S) LET M = S
  S: 1
  M = 1
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 2
  V(2): 3
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 3
  V(3): 5
  V: 3
  V(S) <= V: false
-G(1010) F(P,S) 1330: LET V = V(S)
+1330 G(1010) F(P,S) LET V = V(S)
  S: 3
  V(3): 5
  V = 5
-G(1010) F(P,S) 1340: LET M = S
+1340 G(1010) F(P,S) LET M = S
  S: 3
  M = 3
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 4
  V(4): 4
  V: 5
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 5
  V(5): 0
  V: 5
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 6
  V(6): 4
  V: 5
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 7
  V(7): 5
  V: 5
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 8
  V(8): 3
  V: 5
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 9
  V(9): 0
  V: 5
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P,I) 1999: RETURN
-F(J) 620: PRINT "THE COMPUTER MOVES" M
+1999 G(1010) F(P,I) RETURN
+620 F(J) PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: 3
  3
-F(J) 630: LET F = 1
+630 F(J) LET F = 1
  F = 1
-F(J) 640: GOTO 460
-F(J) 460: LET B(M) = F
+640 F(J) GOTO 460
+460 F(J) LET B(M) = F
  M: 3
  F: 1
  B(3) = 1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 1
  U(3,1): 1
  P = 1
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 1
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 1
  C(1): 0
  F: 1
  C(1) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 1
  C(1): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 1
  C(1): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 2
  U(3,2): 6
  P = 6
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 6
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 6
  C(6): -1
  F: 1
  C(6) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 6
  C(6): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 6
  C(6): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 3
  U(3,3): 8
  P = 8
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 8
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 8
  C(8): 1
  F: 1
  C(8) = 2
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 8
  C(8): 2
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 8
  C(8): 2
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 4
  U(3,4): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 2
  N = 3
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 3
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: 1
  F = 1: true
-F(J) 400: PRINT "YOUR MOVE";
+400 F(J) PRINT "YOUR MOVE";
 YOUR MOVE
-F(J) 410: INPUT M
+410 F(J) INPUT M
 ? 2
  M = 2
-F(J) 415: LET F = -1
+415 F(J) LET F = -1
  F = -1
-F(J) 420: IF M <> INT(M) THEN 550
+420 F(J) IF M <> INT(M) THEN 550
  M: 2
  M <> INT(M): false
-F(J) 430: IF M < 1 THEN 500
+430 F(J) IF M < 1 THEN 500
  M: 2
  M < 1: false
-F(J) 440: IF M > 9 THEN 550
+440 F(J) IF M > 9 THEN 550
  M: 2
  M > 9: false
-F(J) 450: IF B(M) <> 0 THEN 500
+450 F(J) IF B(M) <> 0 THEN 500
  M: 2
  B(2): 0
  B(M) <> 0: false
-F(J) 460: LET B(M) = F
+460 F(J) LET B(M) = F
  M: 2
  F: -1
  B(2) = -1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 2
  J: 1
  U(2,1): 1
  P = 1
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 1
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 1
  C(1): 1
  F: -1
  C(1) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 1
  C(1): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 1
  C(1): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 2
  J: 2
  U(2,2): 5
  P = 5
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 5
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 5
  C(5): 1
  F: -1
  C(5) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 5
  C(5): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 5
  C(5): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 2
  J: 3
  U(2,3): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 2
  J: 4
  U(2,4): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 3
  N = 4
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 4
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: -1
  F = 1: false
-538: GOTO 600
-F(J) 610: GOSUB 1000
-G(1010) F(P) 1010: FOR P = 1 TO 8
+538 GOTO 600
+610 F(J) GOSUB 1000
+1010 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 2
  C(2): 1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 3
  C(3): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 5
  C(5): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 8
  C(8): 2
  C(P) = 2: true
-G(1010) F(P,I) 1100: FOR I = 1 TO 3
+1100 G(1010) F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-G(1010) F(P,I) 1110: LET M = T(P, I)
+1110 G(1010) F(P,I) LET M = T(P, I)
  P: 8
  I: 1
  T(8,1): 7
  M = 7
-G(1010) F(P,I) 1120: IF B(M) = 0 THEN 1999
+1120 G(1010) F(P,I) IF B(M) = 0 THEN 1999
  M: 7
  B(7): 0
  B(M) = 0: true
-G(1010) F(P,I) 1999: RETURN
-F(J) 620: PRINT "THE COMPUTER MOVES" M
+1999 G(1010) F(P,I) RETURN
+620 F(J) PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: 7
  7
-F(J) 630: LET F = 1
+630 F(J) LET F = 1
  F = 1
-F(J) 640: GOTO 460
-F(J) 460: LET B(M) = F
+640 F(J) GOTO 460
+460 F(J) LET B(M) = F
  M: 7
  F: 1
  B(7) = 1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 7
  J: 1
  U(7,1): 3
  P = 3
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 3
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 3
  C(3): -1
  F: 1
  C(3) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 3
  C(3): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 3
  C(3): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 7
  J: 2
  U(7,2): 4
  P = 4
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 4
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 4
  C(4): 0
  F: 1
  C(4) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 4
  C(4): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 4
  C(4): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 7
  J: 3
  U(7,3): 8
  P = 8
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 8
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 8
  C(8): 2
  F: 1
  C(8) = 3
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 8
  C(8): 3
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 8
  C(8): 3
  C(P) = 3: true
-F(J) 810: PRINT "AND THE COMPUTER WINS."
+810 F(J) PRINT "AND THE COMPUTER WINS."
 AND THE COMPUTER WINS.
-F(J) 820: PRINT
+820 F(J) PRINT
 
-F(J) 830: PRINT
+830 F(J) PRINT
 
-F(J) 840: PRINT "NEW GAME."
+840 F(J) PRINT "NEW GAME."
 NEW GAME.
-F(J) 850: GOTO 265
-F(J) 265: LET N = 0
+850 F(J) GOTO 265
+265 F(J) LET N = 0
  N = 0
-F(S,J) 270: FOR S = 1 TO 9
+270 F(S,J) FOR S = 1 TO 9
  S = 1
  terminated:false
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 1
  C(1) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 1
  B(1) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 1
  terminated:false
  S = 2
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 2
  C(2) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 2
  B(2) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 2
  terminated:false
  S = 3
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 3
  C(3) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 3
  B(3) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 3
  terminated:false
  S = 4
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 4
  C(4) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 4
  B(4) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 4
  terminated:false
  S = 5
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 5
  C(5) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 5
  B(5) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 5
  terminated:false
  S = 6
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 6
  C(6) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 6
  B(6) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 6
  terminated:false
  S = 7
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 7
  C(7) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 7
  B(7) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 7
  terminated:false
  S = 8
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 8
  C(8) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 8
  B(8) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 8
  terminated:false
  S = 9
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 9
  C(9) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 9
  B(9) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 9
  terminated:true
-F(J) 310: IF RND(Z) < 1 / 2 THEN 350
+310 F(J) IF RND(Z) < 1 / 2 THEN 350
  Z: 0
  RND(Z) < 1 / 2: false
-F(J) 320: PRINT "YOU WILL MOVE FIRST."
+320 F(J) PRINT "YOU WILL MOVE FIRST."
 YOU WILL MOVE FIRST.
-F(J) 330: PRINT
+330 F(J) PRINT
 
-F(J) 340: GOTO 400
-F(J) 400: PRINT "YOUR MOVE";
+340 F(J) GOTO 400
+400 F(J) PRINT "YOUR MOVE";
 YOUR MOVE
-F(J) 410: INPUT M
+410 F(J) INPUT M
 ? 9
  M = 9
-F(J) 415: LET F = -1
+415 F(J) LET F = -1
  F = -1
-F(J) 420: IF M <> INT(M) THEN 550
+420 F(J) IF M <> INT(M) THEN 550
  M: 9
  M <> INT(M): false
-F(J) 430: IF M < 1 THEN 500
+430 F(J) IF M < 1 THEN 500
  M: 9
  M < 1: false
-F(J) 440: IF M > 9 THEN 550
+440 F(J) IF M > 9 THEN 550
  M: 9
  M > 9: false
-F(J) 450: IF B(M) <> 0 THEN 500
+450 F(J) IF B(M) <> 0 THEN 500
  M: 9
  B(9): 0
  B(M) <> 0: false
-F(J) 460: LET B(M) = F
+460 F(J) LET B(M) = F
  M: 9
  F: -1
  B(9) = -1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 1
  U(9,1): 2
  P = 2
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 2
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 2
  C(2): 0
  F: -1
  C(2) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 2
  C(2): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 2
  C(2): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 2
  U(9,2): 5
  P = 5
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 5
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 5
  C(5): 0
  F: -1
  C(5) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 5
  C(5): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 5
  C(5): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 3
  U(9,3): 7
  P = 7
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 7
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 7
  C(7): 0
  F: -1
  C(7) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 7
  C(7): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 7
  C(7): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 4
  U(9,4): 8
  P = 8
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 8
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 8
  C(8): 0
  F: -1
  C(8) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 8
  C(8): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 8
  C(8): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 0
  N = 1
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 1
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: -1
  F = 1: false
-538: GOTO 600
-F(J) 610: GOSUB 1000
-G(1010) F(P) 1010: FOR P = 1 TO 8
+538 GOTO 600
+610 F(J) GOSUB 1000
+1010 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 2
  C(2): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 5
  C(5): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 7
  C(7): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 8
  C(8): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) F(P) 1040: FOR P = 1 TO 8
+1040 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 2
  C(2): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 5
  C(5): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 6
  C(6): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 7
  C(7): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 8
  C(8): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) 1070: GOTO 1200
-G(1010) F(P,S) 1200: FOR S = 1 TO 9
+1070 G(1010) GOTO 1200
+1200 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 1
  V(1) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 1
  U(1,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
  P: 1
  C(1): 0
  V(1) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 2
  U(1,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
  P: 4
  C(4): 0
  V(1) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 3
  U(1,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
  P: 7
  C(7): -1
  V(1) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 4
  U(1,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 2
  V(2) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 1
  U(2,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
  P: 1
  C(1): 0
  V(2) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 2
  U(2,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
  P: 5
  C(5): -1
  V(2) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 3
  U(2,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 4
  U(2,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 3
  V(3) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 1
  U(3,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
  P: 1
  C(1): 0
  V(3) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 2
  U(3,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
  P: 6
  C(6): 0
  V(3) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 3
  U(3,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 2
  P: 8
  C(8): -1
  V(3) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 4
  U(3,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 4
  V(4) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 1
  U(4,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
  P: 2
  C(2): -1
  V(4) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 2
  U(4,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 2
  P: 6
  C(6): 0
  V(4) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 3
  U(4,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 4
  U(4,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 5
  V(5) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 5
  B(5): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 1
  U(5,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 0
  P: 3
  C(3): 0
  V(5) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 2
  U(5,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 1
  P: 6
  C(6): 0
  V(5) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 3
  U(5,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 2
  P: 7
  C(7): -1
  V(5) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 4
  U(5,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 6
  V(6) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 1
  U(6,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
  P: 3
  C(3): 0
  V(6) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 2
  U(6,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 1
  P: 5
  C(5): -1
  V(6) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 3
  U(6,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 4
  U(6,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 7
  V(7) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 1
  U(7,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
  P: 3
  C(3): 0
  V(7) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 2
  U(7,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 1
  P: 4
  C(4): 0
  V(7) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 3
  U(7,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
  P: 8
  C(8): -1
  V(7) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 4
  U(7,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 8
  V(8) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 1
  U(8,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
  P: 2
  C(2): -1
  V(8) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 2
  U(8,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 2
  P: 4
  C(4): 0
  V(8) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 3
  U(8,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 4
  U(8,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 9
  V(9) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 9
  B(9): -1
  B(S) <> 0: true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P) 1300: LET V = 0
+1300 G(1010) F(P) LET V = 0
  V = 0
-G(1010) F(P,S) 1310: FOR S = 1 TO 9
+1310 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 1
  V(1): 4
  V: 0
  V(S) <= V: false
-G(1010) F(P,S) 1330: LET V = V(S)
+1330 G(1010) F(P,S) LET V = V(S)
  S: 1
  V(1): 4
  V = 4
-G(1010) F(P,S) 1340: LET M = S
+1340 G(1010) F(P,S) LET M = S
  S: 1
  M = 1
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 2
  V(2): 3
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 3
  V(3): 4
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 4
  V(4): 3
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 5
  V(5): 4
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 6
  V(6): 3
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 7
  V(7): 4
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 8
  V(8): 3
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 9
  V(9): 0
  V: 4
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P,I) 1999: RETURN
-F(J) 620: PRINT "THE COMPUTER MOVES" M
+1999 G(1010) F(P,I) RETURN
+620 F(J) PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: 1
  1
-F(J) 630: LET F = 1
+630 F(J) LET F = 1
  F = 1
-F(J) 640: GOTO 460
-F(J) 460: LET B(M) = F
+640 F(J) GOTO 460
+460 F(J) LET B(M) = F
  M: 1
  F: 1
  B(1) = 1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 1
  J: 1
  U(1,1): 1
  P = 1
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 1
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 1
  C(1): 0
  F: 1
  C(1) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 1
  C(1): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 1
  C(1): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 1
  J: 2
  U(1,2): 4
  P = 4
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 4
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 4
  C(4): 0
  F: 1
  C(4) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 4
  C(4): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 4
  C(4): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 1
  J: 3
  U(1,3): 7
  P = 7
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 7
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 7
  C(7): -1
  F: 1
  C(7) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 7
  C(7): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 7
  C(7): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 1
  J: 4
  U(1,4): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 1
  N = 2
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 2
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: 1
  F = 1: true
-F(J) 400: PRINT "YOUR MOVE";
+400 F(J) PRINT "YOUR MOVE";
 YOUR MOVE
-F(J) 410: INPUT M
+410 F(J) INPUT M
 ? 3
  M = 3
-F(J) 415: LET F = -1
+415 F(J) LET F = -1
  F = -1
-F(J) 420: IF M <> INT(M) THEN 550
+420 F(J) IF M <> INT(M) THEN 550
  M: 3
  M <> INT(M): false
-F(J) 430: IF M < 1 THEN 500
+430 F(J) IF M < 1 THEN 500
  M: 3
  M < 1: false
-F(J) 440: IF M > 9 THEN 550
+440 F(J) IF M > 9 THEN 550
  M: 3
  M > 9: false
-F(J) 450: IF B(M) <> 0 THEN 500
+450 F(J) IF B(M) <> 0 THEN 500
  M: 3
  B(3): 0
  B(M) <> 0: false
-F(J) 460: LET B(M) = F
+460 F(J) LET B(M) = F
  M: 3
  F: -1
  B(3) = -1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 1
  U(3,1): 1
  P = 1
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 1
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 1
  C(1): 1
  F: -1
  C(1) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 1
  C(1): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 1
  C(1): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 2
  U(3,2): 6
  P = 6
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 6
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 6
  C(6): 0
  F: -1
  C(6) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 6
  C(6): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 6
  C(6): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 3
  U(3,3): 8
  P = 8
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 8
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 8
  C(8): -1
  F: -1
  C(8) = -2
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 8
  C(8): -2
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 8
  C(8): -2
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 3
  J: 4
  U(3,4): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 2
  N = 3
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 3
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: -1
  F = 1: false
-538: GOTO 600
-F(J) 610: GOSUB 1000
-G(1010) F(P) 1010: FOR P = 1 TO 8
+538 GOTO 600
+610 F(J) GOSUB 1000
+1010 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 2
  C(2): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 4
  C(4): 1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 5
  C(5): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 6
  C(6): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 8
  C(8): -2
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) F(P) 1040: FOR P = 1 TO 8
+1040 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 2
  C(2): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 4
  C(4): 1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 5
  C(5): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 6
  C(6): -1
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 8
  C(8): -2
  C(P) = -2: true
-G(1010) F(P,I) 1100: FOR I = 1 TO 3
+1100 G(1010) F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-G(1010) F(P,I) 1110: LET M = T(P, I)
+1110 G(1010) F(P,I) LET M = T(P, I)
  P: 8
  I: 1
  T(8,1): 7
  M = 7
-G(1010) F(P,I) 1120: IF B(M) = 0 THEN 1999
+1120 G(1010) F(P,I) IF B(M) = 0 THEN 1999
  M: 7
  B(7): 0
  B(M) = 0: true
-G(1010) F(P,I) 1999: RETURN
-F(J) 620: PRINT "THE COMPUTER MOVES" M
+1999 G(1010) F(P,I) RETURN
+620 F(J) PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: 7
  7
-F(J) 630: LET F = 1
+630 F(J) LET F = 1
  F = 1
-F(J) 640: GOTO 460
-F(J) 460: LET B(M) = F
+640 F(J) GOTO 460
+460 F(J) LET B(M) = F
  M: 7
  F: 1
  B(7) = 1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 7
  J: 1
  U(7,1): 3
  P = 3
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 3
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 3
  C(3): 0
  F: 1
  C(3) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 3
  C(3): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 3
  C(3): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 7
  J: 2
  U(7,2): 4
  P = 4
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 4
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 4
  C(4): 1
  F: 1
  C(4) = 2
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 4
  C(4): 2
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 4
  C(4): 2
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 7
  J: 3
  U(7,3): 8
  P = 8
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 8
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 8
  C(8): -2
  F: 1
  C(8) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 8
  C(8): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 8
  C(8): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 7
  J: 4
  U(7,4): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 3
  N = 4
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 4
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: 1
  F = 1: true
-F(J) 400: PRINT "YOUR MOVE";
+400 F(J) PRINT "YOUR MOVE";
 YOUR MOVE
-F(J) 410: INPUT M
+410 F(J) INPUT M
 ? 5
  M = 5
-F(J) 415: LET F = -1
+415 F(J) LET F = -1
  F = -1
-F(J) 420: IF M <> INT(M) THEN 550
+420 F(J) IF M <> INT(M) THEN 550
  M: 5
  M <> INT(M): false
-F(J) 430: IF M < 1 THEN 500
+430 F(J) IF M < 1 THEN 500
  M: 5
  M < 1: false
-F(J) 440: IF M > 9 THEN 550
+440 F(J) IF M > 9 THEN 550
  M: 5
  M > 9: false
-F(J) 450: IF B(M) <> 0 THEN 500
+450 F(J) IF B(M) <> 0 THEN 500
  M: 5
  B(5): 0
  B(M) <> 0: false
-F(J) 460: LET B(M) = F
+460 F(J) LET B(M) = F
  M: 5
  F: -1
  B(5) = -1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 1
  U(5,1): 3
  P = 3
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 3
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 3
  C(3): 1
  F: -1
  C(3) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 3
  C(3): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 3
  C(3): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 2
  U(5,2): 6
  P = 6
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 6
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 6
  C(6): -1
  F: -1
  C(6) = -2
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 6
  C(6): -2
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 6
  C(6): -2
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 3
  U(5,3): 7
  P = 7
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 7
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 7
  C(7): 0
  F: -1
  C(7) = -1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 7
  C(7): -1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 7
  C(7): -1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 5
  J: 4
  U(5,4): 0
  P = 0
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 0
  P = 0: true
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 4
  N = 5
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 5
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: -1
  F = 1: false
-538: GOTO 600
-F(J) 610: GOSUB 1000
-G(1010) F(P) 1010: FOR P = 1 TO 8
+538 GOTO 600
+610 F(J) GOSUB 1000
+1010 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 2
  C(2): -1
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 4
  C(4): 2
  C(P) = 2: true
-G(1010) F(P,I) 1100: FOR I = 1 TO 3
+1100 G(1010) F(P,I) FOR I = 1 TO 3
  I = 1
  terminated:false
-G(1010) F(P,I) 1110: LET M = T(P, I)
+1110 G(1010) F(P,I) LET M = T(P, I)
  P: 4
  I: 1
  T(4,1): 1
  M = 1
-G(1010) F(P,I) 1120: IF B(M) = 0 THEN 1999
+1120 G(1010) F(P,I) IF B(M) = 0 THEN 1999
  M: 1
  B(1): 1
  B(M) = 0: false
-G(1010) F(P,I) 1130: NEXT I
+1130 G(1010) F(P,I) NEXT I
  I: 1
  terminated:false
  I = 2
-G(1010) F(P,I) 1110: LET M = T(P, I)
+1110 G(1010) F(P,I) LET M = T(P, I)
  P: 4
  I: 2
  T(4,2): 8
  M = 8
-G(1010) F(P,I) 1120: IF B(M) = 0 THEN 1999
+1120 G(1010) F(P,I) IF B(M) = 0 THEN 1999
  M: 8
  B(8): 0
  B(M) = 0: true
-G(1010) F(P,I) 1999: RETURN
-F(J) 620: PRINT "THE COMPUTER MOVES" M
+1999 G(1010) F(P,I) RETURN
+620 F(J) PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: 8
  8
-F(J) 630: LET F = 1
+630 F(J) LET F = 1
  F = 1
-F(J) 640: GOTO 460
-F(J) 460: LET B(M) = F
+640 F(J) GOTO 460
+460 F(J) LET B(M) = F
  M: 8
  F: 1
  B(8) = 1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 8
  J: 1
  U(8,1): 2
  P = 2
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 2
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 2
  C(2): -1
  F: 1
  C(2) = 0
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 2
  C(2): 0
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 2
  C(2): 0
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 8
  J: 2
  U(8,2): 4
  P = 4
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 4
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 4
  C(4): 2
  F: 1
  C(4) = 3
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 4
  C(4): 3
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 4
  C(4): 3
  C(P) = 3: true
-F(J) 810: PRINT "AND THE COMPUTER WINS."
+810 F(J) PRINT "AND THE COMPUTER WINS."
 AND THE COMPUTER WINS.
-F(J) 820: PRINT
+820 F(J) PRINT
 
-F(J) 830: PRINT
+830 F(J) PRINT
 
-F(J) 840: PRINT "NEW GAME."
+840 F(J) PRINT "NEW GAME."
 NEW GAME.
-F(J) 850: GOTO 265
-F(J) 265: LET N = 0
+850 F(J) GOTO 265
+265 F(J) LET N = 0
  N = 0
-F(S,J) 270: FOR S = 1 TO 9
+270 F(S,J) FOR S = 1 TO 9
  S = 1
  terminated:false
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 1
  C(1) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 1
  B(1) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 1
  terminated:false
  S = 2
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 2
  C(2) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 2
  B(2) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 2
  terminated:false
  S = 3
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 3
  C(3) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 3
  B(3) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 3
  terminated:false
  S = 4
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 4
  C(4) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 4
  B(4) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 4
  terminated:false
  S = 5
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 5
  C(5) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 5
  B(5) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 5
  terminated:false
  S = 6
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 6
  C(6) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 6
  B(6) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 6
  terminated:false
  S = 7
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 7
  C(7) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 7
  B(7) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 7
  terminated:false
  S = 8
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 8
  C(8) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 8
  B(8) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 8
  terminated:false
  S = 9
-F(S,J) 275: LET C(S) = 0
+275 F(S,J) LET C(S) = 0
  S: 9
  C(9) = 0
-F(S,J) 280: LET B(S) = 0
+280 F(S,J) LET B(S) = 0
  S: 9
  B(9) = 0
-F(S,J) 285: NEXT S
+285 F(S,J) NEXT S
  S: 9
  terminated:true
-F(J) 310: IF RND(Z) < 1 / 2 THEN 350
+310 F(J) IF RND(Z) < 1 / 2 THEN 350
  Z: 0
  RND(Z) < 1 / 2: true
-F(J) 350: PRINT "THE COMPUTER WILL MOVE FIRST."
+350 F(J) PRINT "THE COMPUTER WILL MOVE FIRST."
 THE COMPUTER WILL MOVE FIRST.
-F(J) 360: PRINT
+360 F(J) PRINT
 
-F(J) 370: GOTO 600
-F(J) 610: GOSUB 1000
-G(1010) F(P) 1010: FOR P = 1 TO 8
+370 F(J) GOTO 600
+610 F(J) GOSUB 1000
+1010 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 1
  C(1): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 2
  C(2): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 3
  C(3): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 4
  C(4): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 5
  C(5): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 6
  C(6): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 7
  C(7): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1020: IF C(P) = 2 THEN 1100
+1020 G(1010) F(P) IF C(P) = 2 THEN 1100
  P: 8
  C(8): 0
  C(P) = 2: false
-G(1010) F(P) 1030: NEXT P
+1030 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) F(P) 1040: FOR P = 1 TO 8
+1040 G(1010) F(P) FOR P = 1 TO 8
  P = 1
  terminated:false
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 1
  C(1): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 1
  terminated:false
  P = 2
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 2
  C(2): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 2
  terminated:false
  P = 3
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 3
  C(3): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 3
  terminated:false
  P = 4
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 4
  C(4): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 4
  terminated:false
  P = 5
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 5
  C(5): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 5
  terminated:false
  P = 6
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 6
  C(6): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 6
  terminated:false
  P = 7
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 7
  C(7): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 7
  terminated:false
  P = 8
-G(1010) F(P) 1050: IF C(P) = -2 THEN 1100
+1050 G(1010) F(P) IF C(P) = -2 THEN 1100
  P: 8
  C(8): 0
  C(P) = -2: false
-G(1010) F(P) 1060: NEXT P
+1060 G(1010) F(P) NEXT P
  P: 8
  terminated:true
-G(1010) 1070: GOTO 1200
-G(1010) F(P,S) 1200: FOR S = 1 TO 9
+1070 G(1010) GOTO 1200
+1200 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 1
  V(1) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 1
  B(1): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 1
  U(1,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 0
  P: 1
  C(1): 0
  V(1) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 2
  U(1,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 1
  P: 4
  C(4): 0
  V(1) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 3
  U(1,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 1
  V(1): 2
  P: 7
  C(7): 0
  V(1) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 1
  J: 4
  U(1,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 2
  V(2) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 2
  B(2): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 1
  U(2,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 0
  P: 1
  C(1): 0
  V(2) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 2
  U(2,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 2
  V(2): 1
  P: 5
  C(5): 0
  V(2) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 3
  U(2,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 2
  J: 4
  U(2,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 3
  V(3) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 3
  B(3): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 1
  U(3,1): 1
  P = 1
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 1
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 0
  P: 1
  C(1): 0
  V(3) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 2
  U(3,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 1
  P: 6
  C(6): 0
  V(3) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 3
  U(3,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 3
  V(3): 2
  P: 8
  C(8): 0
  V(3) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 3
  J: 4
  U(3,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 4
  V(4) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 4
  B(4): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 1
  U(4,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 0
  P: 2
  C(2): 0
  V(4) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 2
  U(4,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 4
  V(4): 1
  P: 6
  C(6): 0
  V(4) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 3
  U(4,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 4
  J: 4
  U(4,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 5
  V(5) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 5
  B(5): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 1
  U(5,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 0
  P: 3
  C(3): 0
  V(5) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 2
  U(5,2): 6
  P = 6
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 6
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 1
  P: 6
  C(6): 0
  V(5) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 3
  U(5,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 5
  V(5): 2
  P: 7
  C(7): 0
  V(5) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 5
  J: 4
  U(5,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 6
  V(6) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 6
  B(6): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 1
  U(6,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 0
  P: 3
  C(3): 0
  V(6) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 2
  U(6,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 6
  V(6): 1
  P: 5
  C(5): 0
  V(6) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 3
  U(6,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 6
  J: 4
  U(6,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 7
  V(7) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 7
  B(7): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 1
  U(7,1): 3
  P = 3
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 3
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 0
  P: 3
  C(3): 0
  V(7) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 2
  U(7,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 1
  P: 4
  C(4): 0
  V(7) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 3
  U(7,3): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 7
  V(7): 2
  P: 8
  C(8): 0
  V(7) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 7
  J: 4
  U(7,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 8
  V(8) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 8
  B(8): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 1
  U(8,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 0
  P: 2
  C(2): 0
  V(8) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 2
  U(8,2): 4
  P = 4
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 4
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 8
  V(8): 1
  P: 4
  C(4): 0
  V(8) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 3
  U(8,3): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 8
  J: 4
  U(8,4): 0
  P = 0
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 0
  P = 0: true
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1210: LET V(S) = 0
+1210 G(1010) F(P,S) LET V(S) = 0
  S: 9
  V(9) = 0
-G(1010) F(P,S) 1215: IF B(S) <> 0 THEN 1270
+1215 G(1010) F(P,S) IF B(S) <> 0 THEN 1270
  S: 9
  B(9): 0
  B(S) <> 0: false
-G(1010) F(P,S,J) 1220: FOR J = 1 TO 4
+1220 G(1010) F(P,S,J) FOR J = 1 TO 4
  J = 1
  terminated:false
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 1
  U(9,1): 2
  P = 2
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 2
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 0
  P: 2
  C(2): 0
  V(9) = 1
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 1
  terminated:false
  J = 2
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 2
  U(9,2): 5
  P = 5
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 5
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 1
  P: 5
  C(5): 0
  V(9) = 2
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 2
  terminated:false
  J = 3
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 3
  U(9,3): 7
  P = 7
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 7
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 2
  P: 7
  C(7): 0
  V(9) = 3
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 3
  terminated:false
  J = 4
-G(1010) F(P,S,J) 1230: LET P = U(S, J)
+1230 G(1010) F(P,S,J) LET P = U(S, J)
  S: 9
  J: 4
  U(9,4): 8
  P = 8
-G(1010) F(P,S,J) 1240: IF P = 0 THEN 1260
+1240 G(1010) F(P,S,J) IF P = 0 THEN 1260
  P: 8
  P = 0: false
-G(1010) F(P,S,J) 1250: LET V(S) = V(S) + 1 + ABS(C(P))
+1250 G(1010) F(P,S,J) LET V(S) = V(S) + 1 + ABS(C(P))
  S: 9
  V(9): 3
  P: 8
  C(8): 0
  V(9) = 4
-G(1010) F(P,S,J) 1260: NEXT J
+1260 G(1010) F(P,S,J) NEXT J
  J: 4
  terminated:true
-G(1010) F(P,S) 1270: NEXT S
+1270 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P) 1300: LET V = 0
+1300 G(1010) F(P) LET V = 0
  V = 0
-G(1010) F(P,S) 1310: FOR S = 1 TO 9
+1310 G(1010) F(P,S) FOR S = 1 TO 9
  S = 1
  terminated:false
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 1
  V(1): 3
  V: 0
  V(S) <= V: false
-G(1010) F(P,S) 1330: LET V = V(S)
+1330 G(1010) F(P,S) LET V = V(S)
  S: 1
  V(1): 3
  V = 3
-G(1010) F(P,S) 1340: LET M = S
+1340 G(1010) F(P,S) LET M = S
  S: 1
  M = 1
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 1
  terminated:false
  S = 2
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 2
  V(2): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 2
  terminated:false
  S = 3
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 3
  V(3): 3
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 3
  terminated:false
  S = 4
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 4
  V(4): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 4
  terminated:false
  S = 5
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 5
  V(5): 3
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 5
  terminated:false
  S = 6
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 6
  V(6): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 6
  terminated:false
  S = 7
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 7
  V(7): 3
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 7
  terminated:false
  S = 8
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 8
  V(8): 2
  V: 3
  V(S) <= V: true
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 8
  terminated:false
  S = 9
-G(1010) F(P,S) 1320: IF V(S) <= V THEN 1350
+1320 G(1010) F(P,S) IF V(S) <= V THEN 1350
  S: 9
  V(9): 4
  V: 3
  V(S) <= V: false
-G(1010) F(P,S) 1330: LET V = V(S)
+1330 G(1010) F(P,S) LET V = V(S)
  S: 9
  V(9): 4
  V = 4
-G(1010) F(P,S) 1340: LET M = S
+1340 G(1010) F(P,S) LET M = S
  S: 9
  M = 9
-G(1010) F(P,S) 1350: NEXT S
+1350 G(1010) F(P,S) NEXT S
  S: 9
  terminated:true
-G(1010) F(P,I) 1999: RETURN
-F(J) 620: PRINT "THE COMPUTER MOVES" M
+1999 G(1010) F(P,I) RETURN
+620 F(J) PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: 9
  9
-F(J) 630: LET F = 1
+630 F(J) LET F = 1
  F = 1
-F(J) 640: GOTO 460
-F(J) 460: LET B(M) = F
+640 F(J) GOTO 460
+460 F(J) LET B(M) = F
  M: 9
  F: 1
  B(9) = 1
-F(J) 470: FOR J = 1 TO 4
+470 F(J) FOR J = 1 TO 4
  J = 1
  terminated:false
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 1
  U(9,1): 2
  P = 2
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 2
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 2
  C(2): 0
  F: 1
  C(2) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 2
  C(2): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 2
  C(2): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 1
  terminated:false
  J = 2
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 2
  U(9,2): 5
  P = 5
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 5
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 5
  C(5): 0
  F: 1
  C(5) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 5
  C(5): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 5
  C(5): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 2
  terminated:false
  J = 3
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 3
  U(9,3): 7
  P = 7
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 7
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 7
  C(7): 0
  F: 1
  C(7) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 7
  C(7): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 7
  C(7): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 3
  terminated:false
  J = 4
-F(J) 480: LET P = U(M, J)
+480 F(J) LET P = U(M, J)
  M: 9
  J: 4
  U(9,4): 8
  P = 8
-F(J) 490: IF P = 0 THEN 530
+490 F(J) IF P = 0 THEN 530
  P: 8
  P = 0: false
-F(J) 500: LET C(P) = C(P) + F
+500 F(J) LET C(P) = C(P) + F
  P: 8
  C(8): 0
  F: 1
  C(8) = 1
-F(J) 510: IF C(P) = -3 THEN 860
+510 F(J) IF C(P) = -3 THEN 860
  P: 8
  C(8): 1
  C(P) = -3: false
-F(J) 520: IF C(P) = 3 THEN 800
+520 F(J) IF C(P) = 3 THEN 800
  P: 8
  C(8): 1
  C(P) = 3: false
-F(J) 530: NEXT J
+530 F(J) NEXT J
  J: 4
  terminated:true
-535: LET N = N + 1
+535 LET N = N + 1
  N: 0
  N = 1
-536: IF N = 9 THEN 880
+536 IF N = 9 THEN 880
  N: 1
  N = 9: false
-537: IF F = 1 THEN 400
+537 IF F = 1 THEN 400
  F: 1
  F = 1: true
-F(J) 400: PRINT "YOUR MOVE";
+400 F(J) PRINT "YOUR MOVE";
 YOUR MOVE
-F(J) 410: INPUT M
+410 F(J) INPUT M
 ? 
 Error 102 End of file in line 410
 
