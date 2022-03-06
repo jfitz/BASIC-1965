@@ -364,7 +364,10 @@ class Interpreter
     statement_index = @current_line_stmt_mod.statement
     statement = statements[statement_index]
 
-    statement.print_trace_info(@trace_out, @current_line_stmt_mod)
+    @trace_out.newline_when_needed
+    lines = statement.trace_info(@current_line_stmt_mod)
+    lines.each { |line| @trace_out.print_out(line) }
+    @trace_out.newline
 
     statement.execute_a_statement(self, @current_line_stmt_mod)
   end

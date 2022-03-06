@@ -450,8 +450,6 @@ class AbstractStatement
 
     texts << text
 
-    number = ' ' * number.size
-
     texts
   end
 
@@ -667,53 +665,55 @@ class AbstractStatement
   end
 
   def profile(show_timing)
-    text = AbstractToken.pretty_tokens(@keywords, @tokens)
+    texts = []
 
-    line = ''
+    text = ''
 
-    line += " #{@part_of_user_function}" unless @part_of_user_function.nil?
+    text += " #{@part_of_user_function}" unless @part_of_user_function.nil?
 
-    line += " E(#{@part_of_onerror.map(&:to_s).join(',')})" unless
+    text += " E(#{@part_of_onerror.map(&:to_s).join(',')})" unless
       @part_of_onerror.empty?
 
-    line += " G(#{@part_of_sub.map(&:to_s).join(',')})" unless
+    text += " G(#{@part_of_sub.map(&:to_s).join(',')})" unless
       @part_of_sub.empty?
 
-    line += " F(#{@part_of_fornext.map(&:to_s).join(',')})" unless
+    text += " F(#{@part_of_fornext.map(&:to_s).join(',')})" unless
       @part_of_fornext.empty?
 
-    line += if show_timing
+    text += if show_timing
               " (#{@profile_time.round(4)}/#{@profile_count})"
             else
               " (#{@profile_count})"
             end
 
-    line += " #{text}"
+    text += " #{AbstractToken.pretty_tokens(@keywords, @tokens)}"
 
-    [line]
+    texts << text
+
+    texts
   end
 
-  def print_trace_info(trace_out, current_line_number)
-    trace_out.newline_when_needed
+  def trace_info(current_line_number)
+    texts = []
 
-    trace_out.print_out "#{current_line_number}"
+    text = "#{current_line_number}"
 
-    trace_out.print_out " #{@part_of_user_function}" unless
-      @part_of_user_function.nil?
+    text += " #{@part_of_user_function}" unless @part_of_user_function.nil?
 
-    trace_out.print_out " E(#{@part_of_onerror.map(&:to_s).join(',')})" unless
+    text += " E(#{@part_of_onerror.map(&:to_s).join(',')})" unless
       @part_of_onerror.empty?
 
-    trace_out.print_out " G(#{@part_of_sub.map(&:to_s).join(',')})" unless
+    text += " G(#{@part_of_sub.map(&:to_s).join(',')})" unless
       @part_of_sub.empty?
 
-    trace_out.print_out " F(#{@part_of_fornext.map(&:to_s).join(',')})" unless
+    text += " F(#{@part_of_fornext.map(&:to_s).join(',')})" unless
       @part_of_fornext.empty?
 
-    text = " #{pretty}"
+    text += " #{pretty}"
 
-    trace_out.print_out(text)
-    trace_out.newline
+    texts << text
+
+    texts
   end
 
   def execute_a_statement(interpreter, _current_line_stmt_mod)
