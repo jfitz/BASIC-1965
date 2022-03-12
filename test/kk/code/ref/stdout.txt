@@ -31,7 +31,7 @@ STOP in line 800
 210 F(I) (1) PRINT
 215 F(I) (1) LET J = 1
 220 F(I,I) (1) FOR I = 1 TO I9
-230 F(I,I) (47) LET X = L(I) + K(J)
+230 F(I) (47) LET X = L(I) + K(J)
 240 F(I) (47) IF X <= 26 THEN 260
 250 F(I) (7) LET X = X - 27
 260 F(I) (47) GOSUB 1000
@@ -42,7 +42,7 @@ STOP in line 800
 310 F(I) (1) PRINT
 315 F(I) (1) LET J = 1
 320 F(I,I) (1) FOR I = 1 TO I9
-330 F(I,I) (47) LET X = L(I) + K(J)
+330 F(I) (47) LET X = L(I) + K(J)
 340 F(I) (47) IF X <= 26 THEN 360
 350 F(I) (7) LET X = X - 27
 360 F(I) (47) PRINT X;

@@ -160,7 +160,7 @@ Halstead complexity:
 1110 G(1010) F(I,I) (1 3) FOR I = 0 TO L
   Origs: 1100:auto
   Dests: 1120:fornext, 1130:fornext
-1120 G(1010) F(I,I) (0 3) LET C(I) = X(L - I)
+1120 G(1010) F(I) (0 3) LET C(I) = X(L - I)
   Origs: 1110:fornext
   Dests: 1130:auto
 1130 G(1010) F(I) (0 1) NEXT I

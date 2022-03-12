@@ -88,7 +88,7 @@ Halstead complexity:
 220 F(I,I) (1 3) FOR I = 1 TO I9
   Origs: 215:auto
   Dests: 230:fornext, 300:fornext
-230 F(I,I) (0 4) LET X = L(I) + K(J)
+230 F(I) (0 4) LET X = L(I) + K(J)
   Origs: 220:fornext
   Dests: 240:auto
 240 F(I) (1 4) IF X <= 26 THEN 260
@@ -121,7 +121,7 @@ Halstead complexity:
 320 F(I,I) (1 3) FOR I = 1 TO I9
   Origs: 315:auto
   Dests: 330:fornext, 400:fornext
-330 F(I,I) (0 4) LET X = L(I) + K(J)
+330 F(I) (0 4) LET X = L(I) + K(J)
   Origs: 320:fornext
   Dests: 340:auto
 340 F(I) (1 4) IF X <= 26 THEN 360

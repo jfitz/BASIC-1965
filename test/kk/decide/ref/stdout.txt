@@ -16,7 +16,7 @@ STOP in line 999
 99 (0) 
 100 F(I) (1) PRINT "SELECTED ACTS: ";
 105 F(I,I) (1) FOR I = I - 1 TO 0 STEP -1
-110 F(I,I) (28) LET K = T(I, 0)
+110 F(I) (28) LET K = T(I, 0)
 120 F(I) (28) IF K > 0 THEN 200
 130 F(I) (21) IF K < 0 THEN 300
 140 F(I) (17) LET V(I) = T(I, 1)

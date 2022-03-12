@@ -94,7 +94,7 @@ Halstead complexity:
 360 F(J,I,I) (1 3) FOR I = 1 TO 60
   Origs: 320:ifthen
   Dests: 370:fornext, 450:fornext
-370 F(J,I,I) (1 4) IF G(I, J) > 0 THEN 400
+370 F(J,I) (1 4) IF G(I, J) > 0 THEN 400
   Origs: 360:fornext
   Dests: 380:auto, 400:ifthen
 380 F(J,I) (0 2) PRINT " ";

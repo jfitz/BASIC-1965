@@ -199,7 +199,7 @@ Halstead complexity:
 690 F(J,P,J) (1 3) FOR J = J TO 4
   Origs: 680:auto
   Dests: 700:fornext, 750:fornext
-700 F(J,P,J) (1 4) IF S(J) = 0 THEN 750
+700 F(P,J) (1 4) IF S(J) = 0 THEN 750
   Origs: 690:fornext
   Dests: 710:auto, 750:ifthen
 710 F(J,P) (1 4) IF B(P, J) = 0 THEN 740

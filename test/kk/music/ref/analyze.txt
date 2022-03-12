@@ -331,7 +331,7 @@ Halstead complexity:
 1520 F(N,I,J,L,V1,L) (1 3) FOR L = 0 TO 6
   Origs: 1510:auto
   Dests: 1530:fornext, 1590:fornext
-1530 F(N,I,J,L,V1,L) (0 3) LET M1 = W(0, L)
+1530 F(N,I,J,V1,L) (0 3) LET M1 = W(0, L)
   Origs: 1520:fornext
   Dests: 1540:auto
 1540 F(N,I,J,L,V1) (1 4) IF M1 > M THEN 1590

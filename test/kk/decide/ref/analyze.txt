@@ -58,7 +58,7 @@ Halstead complexity:
 105 F(I,I) (1 6) FOR I = I - 1 TO 0 STEP -1
   Origs: 100:auto
   Dests: 110:fornext, 399:fornext
-110 F(I,I) (0 3) LET K = T(I, 0)
+110 F(I) (0 3) LET K = T(I, 0)
   Origs: 105:fornext
   Dests: 120:auto
 120 F(I) (1 4) IF K > 0 THEN 200
