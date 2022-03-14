@@ -1,0 +1,11 @@
+10 REM Convert Celcius to Fahrenheit
+20 PRINT "Celcius", "Fahrenheit"
+30 LET C=0
+40 LET F=C*9/5+32
+42 LET F2=32+(C*9/5)
+50 PRINT C,F,F2
+60 LET C=C+1
+70 IF C<=10 THEN 40
+900 STOP
+999 END
+
