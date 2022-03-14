@@ -134,10 +134,10 @@ Halstead complexity:
 70 F(I,I,I) (1 3) FOR I = 1 TO N
   Origs: 60:auto
   Dests: 80:fornext, 110:fornext
-80 F(I,J,I,J,I,J) (1 4) FOR J = I TO N STEP I
+80 F(J,J,I,J) (1 4) FOR J = I TO N STEP I
   Origs: 70:fornext
   Dests: 90:fornext, 100:fornext
-90 F(I,J,J,J) (0 4) LET L(J) = 1 - L(J)
+90 F(I,J) (0 4) LET L(J) = 1 - L(J)
   Origs: 80:fornext
   Dests: 100:auto
 100 F(I,J) (0 1) NEXT J
@@ -155,7 +155,7 @@ Halstead complexity:
 140 F(I,I,I) (1 3) FOR I = 1 TO N
   Origs: 130:auto
   Dests: 150:fornext, 170:fornext
-150 F(I,I,I) (1 4) IF L(I) = 0 THEN 170
+150 F(I) (1 4) IF L(I) = 0 THEN 170
   Origs: 140:fornext
   Dests: 160:auto, 170:ifthen
 160 F(I) (0 2) PRINT I;
