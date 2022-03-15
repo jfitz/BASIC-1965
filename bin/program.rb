@@ -417,7 +417,7 @@ class Line
     @destinations = []
 
     @statements.each do |statement|
-      xfers = statement.transfers + statement.transfers_auto
+      xfers = statement.transfers
 
       # convert TransferRefLineStmt objects to TransferRefLine objects
       xfers.each do |xfer|
@@ -451,7 +451,7 @@ class Line
     @statements.each_with_index do |statement, stmt|
       line_number_stmt = LineStmt.new(line_number, stmt)
 
-      xfers = statement.transfers + statement.transfers_auto
+      xfers = statement.transfers
 
       line_stmts = []
 
@@ -1336,7 +1336,7 @@ class Program
           next unless statement.reachable
 
           # a reachable line updates its targets to 'reachable'
-          xfers = statement.transfers + statement.transfers_auto
+          xfers = statement.transfers
 
           xfers.each do |xfer|
             dest_line_number = xfer.line_number
