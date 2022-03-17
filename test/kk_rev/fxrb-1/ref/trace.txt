@@ -5610,7 +5610,7 @@
  J: 20
  G(17,20): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -6311,10 +6311,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 20
  terminated:false
  J = 19
@@ -6416,7 +6416,7 @@
  J: 19
  G(11,19): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -6991,10 +6991,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 19
  terminated:false
  J = 18
@@ -7540,10 +7540,10 @@
 330 F(J,I) NEXT I
  I: 60
  terminated:true
-340 PRINT
+340 F(J) PRINT
 
-350 GOTO 470
-470 F(J,I) NEXT J
+350 F(J) GOTO 470
+470 F(J,I,K) NEXT J
  J: 18
  terminated:false
  J = 17
@@ -7609,7 +7609,7 @@
  J: 17
  G(7,17): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -8544,10 +8544,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 17
  terminated:false
  J = 16
@@ -9093,10 +9093,10 @@
 330 F(J,I) NEXT I
  I: 60
  terminated:true
-340 PRINT
+340 F(J) PRINT
 
-350 GOTO 470
-470 F(J,I) NEXT J
+350 F(J) GOTO 470
+470 F(J,I,K) NEXT J
  J: 16
  terminated:false
  J = 15
@@ -9153,7 +9153,7 @@
  J: 15
  G(6,15): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -9713,10 +9713,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 15
  terminated:false
  J = 14
@@ -10262,10 +10262,10 @@
 330 F(J,I) NEXT I
  I: 60
  terminated:true
-340 PRINT
+340 F(J) PRINT
 
-350 GOTO 470
-470 F(J,I) NEXT J
+350 F(J) GOTO 470
+470 F(J,I,K) NEXT J
  J: 14
  terminated:false
  J = 13
@@ -10304,7 +10304,7 @@
  J: 13
  G(4,13): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -11386,10 +11386,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 13
  terminated:false
  J = 12
@@ -11935,10 +11935,10 @@
 330 F(J,I) NEXT I
  I: 60
  terminated:true
-340 PRINT
+340 F(J) PRINT
 
-350 GOTO 470
-470 F(J,I) NEXT J
+350 F(J) GOTO 470
+470 F(J,I,K) NEXT J
  J: 12
  terminated:false
  J = 11
@@ -11977,7 +11977,7 @@
  J: 11
  G(4,11): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -12531,10 +12531,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 11
  terminated:false
  J = 10
@@ -13080,10 +13080,10 @@
 330 F(J,I) NEXT I
  I: 60
  terminated:true
-340 PRINT
+340 F(J) PRINT
 
-350 GOTO 470
-470 F(J,I) NEXT J
+350 F(J) GOTO 470
+470 F(J,I,K) NEXT J
  J: 10
  terminated:false
  J = 9
@@ -13122,7 +13122,7 @@
  J: 9
  G(4,9): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -14264,10 +14264,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 9
  terminated:false
  J = 8
@@ -14306,7 +14306,7 @@
  J: 8
  G(4,8): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -14860,10 +14860,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 8
  terminated:false
  J = 7
@@ -14902,7 +14902,7 @@
  J: 7
  G(4,7): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -15456,10 +15456,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 7
  terminated:false
  J = 6
@@ -15498,7 +15498,7 @@
  J: 6
  G(4,6): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -16616,10 +16616,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 6
  terminated:false
  J = 5
@@ -16658,7 +16658,7 @@
  J: 5
  G(4,5): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -17212,10 +17212,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 5
  terminated:false
  J = 4
@@ -17263,7 +17263,7 @@
  J: 4
  G(5,4): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -18312,10 +18312,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 4
  terminated:false
  J = 3
@@ -18372,7 +18372,7 @@
  J: 3
  G(6,3): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -19328,10 +19328,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 3
  terminated:false
  J = 2
@@ -19415,7 +19415,7 @@
  J: 2
  G(9,2): 1
  G(I, J) > 0: true
-360 F(J,I,I) FOR I = 1 TO 60
+360 F(J,I) FOR I = 1 TO 60
  I = 1
  terminated:false
 370 F(J,I) IF G(I, J) > 0 THEN 400
@@ -20200,10 +20200,10 @@
 430 F(J,I,K) NEXT K
  K: 60
  terminated:true
-440 F(J) GOTO 460
-460 F(J,I) PRINT
+440 F(J,I) GOTO 460
+460 F(J,I,K) PRINT
 
-470 F(J,I) NEXT J
+470 F(J,I,K) NEXT J
  J: 2
  terminated:false
  J = 1
@@ -20749,12 +20749,12 @@
 330 F(J,I) NEXT I
  I: 60
  terminated:true
-340 PRINT
+340 F(J) PRINT
 
-350 GOTO 470
-470 F(J,I) NEXT J
+350 F(J) GOTO 470
+470 F(J,I,K) NEXT J
  J: 1
  terminated:true
-999 F(J,I) END
+999 F(I,K) END
 STOP in line 999
 

@@ -46,7 +46,8 @@ Halstead complexity:
 90 F(N,F) (0 1) NEXT N
   Origs: 20:fornext, 70:goto, 80:auto
   Dests: 99:auto
-99 (0 1) END
+99 F(N,F) (0 1) END
+   WARNING: Terminating statement in FOR/NEXT
   Origs: 90:auto
   Dests: :stop
 

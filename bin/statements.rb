@@ -295,14 +295,13 @@ class AbstractStatement
       # don't follow function call and GOSUB
       next if [:function, :gosub].include?(xfer.type)
 
-      dest_line = xfer.line_number
-      dest_stmt = xfer.statement
-      statement = program.get_statement(dest_line, dest_stmt)
+      statement = program.get_statement(xfer)
 
       next if statement.nil?
 
       if !statement.part_of_sub.include?(marker)
         # recurse for that statement's destinations
+        dest_line = xfer.line_number
         statement.assign_sub_marker(marker, dest_line, program)
       end
     end
@@ -322,14 +321,13 @@ class AbstractStatement
       # don't follow function call, ON ERROR, and RESUME
       next if [:function, :onerror, :resume].include?(xfer.type)
 
-      dest_line = xfer.line_number
-      dest_stmt = xfer.statement
-      statement = program.get_statement(dest_line, dest_stmt)
+      statement = program.get_statement(xfer)
 
       next if statement.nil?
 
       if !statement.part_of_onerror.include?(marker)
         # recurse for that statement's destinations
+        dest_line = xfer.line_number
         statement.assign_on_error_marker(marker, dest_line, program)
       end
     end
@@ -358,9 +356,11 @@ class AbstractStatement
       # no controls? that's a problem
       return if @control.nil?
 
-      return if markers.size == 1
-        
-      markers.slice!(-1)
+      if markers.include?(@control)
+        markers -= [@control]
+      end
+
+      return if markers.empty?
     end
 
     # for each destination
@@ -368,15 +368,15 @@ class AbstractStatement
       # don't follow function call and GOSUB
       next if [:function, :gosub].include?(xfer.type)
 
-      dest_line = xfer.line_number
-      dest_stmt = xfer.statement
-      statement = program.get_statement(dest_line, dest_stmt)
+      statement = program.get_statement(xfer)
 
       next if statement.nil?
 
       if !statement.part_of_fornext.include?(marker)
         # recurse for that statement's destinations
-        statement.assign_fornext_marker(marker, markers, dest_line, program)
+        dest_line = xfer.line_number
+        markers2 = markers.clone
+        statement.assign_fornext_marker(marker, markers2, dest_line, program)
       end
     end
   end
@@ -1671,16 +1671,20 @@ class ForStatement < AbstractStatement
     return if @control.nil?
     return if @loopstart_line_stmt_mod.nil?
 
+    # if already in the list, remove it
+    if @part_of_fornext.include?(@control)
+      @part_of_fornext -= [@control]
+    end
+
     # mark as part of this fornext
     @part_of_fornext << @control
 
-    dest_line = @loopstart_line_stmt_mod.line_number
-    dest_stmt = @loopstart_line_stmt_mod.statement
-    statement = program.get_statement(dest_line, dest_stmt)
+    statement = program.get_statement(@loopstart_line_stmt_mod)
 
     unless statement.nil?
       # mark statement's destinations
       markers = [@control]
+      dest_line = @loopstart_line_stmt_mod.line_number
       statement.assign_fornext_marker(@control, markers, dest_line, program)
     end
   end
@@ -1870,12 +1874,12 @@ class GosubStatement < AbstractStatement
   def assign_sub_markers(program)
     return if @dest_line_stmt_mod.nil?
 
-    dest_line = @dest_line_stmt_mod.line_number
-    dest_stmt = @dest_line_stmt_mod.statement
-    statement = program.get_statement(dest_line, dest_stmt)
+    statement = program.get_statement(@dest_line_stmt_mod)
 
     unless statement.nil?
-      if !statement.part_of_sub.include?(dest_line)
+      dest_line = @dest_line_stmt_mod.line_number
+
+      unless statement.part_of_sub.include?(dest_line)
         # mark statement's destinations
         statement.assign_sub_marker(dest_line, dest_line, program)
       end

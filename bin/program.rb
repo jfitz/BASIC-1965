@@ -1524,13 +1524,15 @@ class Program
     end
   end
 
-  def get_statement(line_number, stmt)
+  def get_statement(line_stmt)
     statement = nil
 
+    line_number = line_stmt.line_number
     line = @lines[line_number]
 
     unless line.nil?
       statements = line.statements
+      stmt = line_stmt.statement
       statement = statements[stmt]
     end
 

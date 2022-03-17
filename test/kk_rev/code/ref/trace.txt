@@ -560,7 +560,7 @@ ENCODED MESSAGE:
 
 215 F(I) LET J = 1
  J = 1
-220 F(I,I) FOR I = 1 TO I9
+220 F(I) FOR I = 1 TO I9
  I9: 47
  I = 1
  I9 = 47
@@ -3790,11 +3790,11 @@ N
 300 F(I) NEXT I
  I: 47
  terminated:true
-310 F(I) PRINT
+310 PRINT
 
-315 F(I) LET J = 1
+315 LET J = 1
  J = 1
-320 F(I,I) FOR I = 1 TO I9
+320 F(I) FOR I = 1 TO I9
  I9: 47
  I = 1
  I9 = 47
@@ -4871,6 +4871,6 @@ N
 400 F(I) NEXT I
  I: 47
  terminated:true
-800 F(I) STOP
+800 STOP
 STOP in line 800
 

@@ -15,7 +15,7 @@ STOP in line 999
 95 F(I) (28) NEXT I
 99 (0) 
 100 F(I) (1) PRINT "SELECTED ACTS: ";
-105 F(I,I) (1) FOR I = I - 1 TO 0 STEP -1
+105 F(I) (1) FOR I = I - 1 TO 0 STEP -1
 110 F(I) (28) LET K = T(I, 0)
 120 F(I) (28) IF K > 0 THEN 200
 130 F(I) (21) IF K < 0 THEN 300
@@ -38,9 +38,9 @@ STOP in line 999
 370 F(I) (4) PRINT A;
 380 F(I) (4) LET V(I) = M
 399 F(I) (28) NEXT I
-400 F(I) (1) PRINT
-410 F(I) (1) PRINT
-420 F(I) (1) PRINT "EXPECTED GAIN = $" V(0)
+400 (1) PRINT
+410 (1) PRINT
+420 (1) PRINT "EXPECTED GAIN = $" V(0)
 430 (0) 
 900 (0) DATA -3, 1, 1, 2, 2, 3, 3
 901 (0) DATA 2, 0.5, 4, 0.5, 5
@@ -71,5 +71,5 @@ STOP in line 999
 926 (0) DATA 0, -10
 927 (0) DATA 0, -110
 998 (0) DATA 999
-999 F(I) (1) END
+999 (1) END
 

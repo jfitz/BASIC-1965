@@ -7,7 +7,7 @@ HELLO
 I =
  I: 1
  1
-40 F(I,I) FOR I = 1 TO 3
+40 F(I) FOR I = 1 TO 3
  I = 1
  terminated:false
 50 F(I) PRINT "I ="; I
@@ -33,9 +33,9 @@ I =
 60 F(I) NEXT I
  I: 3
  terminated:true
-70 F(I) PRINT "ALMOST DONE"
+70 PRINT "ALMOST DONE"
 ALMOST DONE
-80 F(I) NEXT I
+80 NEXT I
  I: 3
  terminated:true
 90 PRINT "DONE"

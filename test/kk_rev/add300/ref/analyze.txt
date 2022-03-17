@@ -157,7 +157,7 @@ Halstead complexity:
 1100 G(1010) F(I) (0 4) LET L = I - 1
   Origs: 1030:ifthen
   Dests: 1110:auto
-1110 G(1010) F(I,I) (1 3) FOR I = 0 TO L
+1110 G(1010) F(I) (1 3) FOR I = 0 TO L
   Origs: 1100:auto
   Dests: 1120:fornext, 1130:fornext
 1120 G(1010) F(I) (0 3) LET C(I) = X(L - I)
@@ -166,7 +166,7 @@ Halstead complexity:
 1130 G(1010) F(I) (0 1) NEXT I
   Origs: 1110:fornext, 1120:auto
   Dests: 1140:auto
-1140 G(1010) F(I) (0 1) RETURN
+1140 G(1010) (0 1) RETURN
   Origs: 1130:auto
   Dests: 
 1200 G(1010) (0 2) PRINT "NUMBER TOO LONG"

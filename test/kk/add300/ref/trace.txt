@@ -59,7 +59,7 @@
 1100 G(1010) F(I) LET L = I - 1
  I: 4
  L = 3
-1110 G(1010) F(I,I) FOR I = 0 TO L
+1110 G(1010) F(I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
@@ -99,7 +99,7 @@
 1130 G(1010) F(I) NEXT I
  I: 3
  terminated:true
-1140 G(1010) F(I) RETURN
+1140 G(1010) RETURN
 120 GOSUB 2000
 2010 G(2010) IF C(L) >= 100 THEN 2200
  L: 3
@@ -510,7 +510,7 @@ PLUS
 1100 G(1010) F(I) LET L = I - 1
  I: 4
  L = 3
-1110 G(1010) F(I,I) FOR I = 0 TO L
+1110 G(1010) F(I) FOR I = 0 TO L
  L: 3
  I = 0
  L = 3
@@ -550,7 +550,7 @@ PLUS
 1130 G(1010) F(I) NEXT I
  I: 3
  terminated:true
-1140 G(1010) F(I) RETURN
+1140 G(1010) RETURN
 220 GOSUB 2000
 2010 G(2010) IF C(L) >= 100 THEN 2200
  L: 3

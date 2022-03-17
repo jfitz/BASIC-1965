@@ -55,7 +55,7 @@ Halstead complexity:
 100 F(I) (0 2) PRINT "SELECTED ACTS: ";
   Origs: 40:ifthen, 95:auto
   Dests: 105:auto
-105 F(I,I) (1 6) FOR I = I - 1 TO 0 STEP -1
+105 F(I) (1 6) FOR I = I - 1 TO 0 STEP -1
   Origs: 100:auto
   Dests: 110:fornext, 399:fornext
 110 F(I) (0 3) LET K = T(I, 0)
@@ -124,13 +124,13 @@ Halstead complexity:
 399 F(I) (0 1) NEXT I
   Origs: 105:fornext, 150:goto, 260:goto, 380:auto
   Dests: 400:auto
-400 F(I) (0 2) PRINT
+400 (0 2) PRINT
   Origs: 399:auto
   Dests: 410:auto
-410 F(I) (0 2) PRINT
+410 (0 2) PRINT
   Origs: 400:auto
   Dests: 420:auto
-420 F(I) (0 3) PRINT "EXPECTED GAIN = $" V(0)
+420 (0 3) PRINT "EXPECTED GAIN = $" V(0)
   Origs: 410:auto
   Dests: 999:auto
 430 (0 0) 
@@ -223,8 +223,7 @@ Halstead complexity:
 998 (0 2) DATA 999
   Origs: 
   Dests: 
-999 F(I) (0 1) END
-    WARNING: Terminating statement in FOR/NEXT
+999 (0 1) END
   Origs: 420:auto
   Dests: :stop
 
