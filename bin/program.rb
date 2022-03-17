@@ -106,7 +106,7 @@ class LineStmt
   attr_reader :line_number, :statement
 
   def initialize(line_number, statement)
-    raise BASICError, "line_number class is #{line_number.class}" unless
+    raise BASICSyntaxError, "line_number class is #{line_number.class}" unless
       line_number.class.to_s == 'LineNumber'
 
     @line_number = line_number
@@ -701,10 +701,10 @@ class Program
 
       statements.each do |statement|
         errors = statement.errors
-        errors.each { |error| texts << ("ERROR: " + error + " in line #{line_number}") }
+        errors.each { |error| texts << "ERROR: #{error} in line #{line_number}" }
 
         errors = statement.program_errors
-        errors.each { |error| texts << ("ERROR: " + error + " in line #{line_number}") }
+        errors.each { |error| texts << "ERROR: #{error} in line #{line_number}" }
       end
     end
 
@@ -875,6 +875,7 @@ class Program
 
     if mod < statement.last_index
       mod += 1
+
       return LineStmtMod.new(line_number, stmt, mod)
     end
 
@@ -1375,7 +1376,7 @@ class Program
     num_comm = number_comments
     num_valid = number_valid_statements
     density = 0
-    density = num_comm.to_f / num_valid if num_valid.positive?
+    density = num_comm.to_f / num_valid.to_f if num_valid.positive?
     lines << ("Comment density: #{'%.3f' % density}")
 
     lines << ("Comprehension effort: #{comprehension_effort}")
@@ -1510,15 +1511,15 @@ class Program
   def assign_fornext_markers(line_numbers)
     line_numbers.each do |line_number|
       line = @lines[line_number]
-
-      line.reset_visited
-    end
-
-    line_numbers.each do |line_number|
-      line = @lines[line_number]
       statements = line.statements
 
       statements.each do |statement|
+        line_numbers.each do |x_line_number|
+          x_line = @lines[x_line_number]
+
+          x_line.reset_visited
+        end
+
         statement.assign_fornext_markers(self)
       end
     end
@@ -2051,7 +2052,6 @@ class Program
     refs = {}
 
     @lines.each do |line_number, line|
-      line = @lines[line_number]
       statements = line.statements
 
       rs = []
@@ -2300,8 +2300,12 @@ class Program
       any_errors = false
 
       statements.each do |statement|
-        statement.errors.each { |error| @console_io.print_line(error) } if
-          print_errors
+        if print_errors
+          statement.errors.each { |error| @console_io.print_line(error) }
+          statement.program_errors.each do |error|
+            @console_io.print_line(error)
+          end
+        end
 
         any_errors |= !statement.errors.empty?
       end
