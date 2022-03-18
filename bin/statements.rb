@@ -271,6 +271,7 @@ class AbstractStatement
     @program_errors = []
     @program_warnings = []
     @transfers = []
+    @origins = []
   end
 
   def optimize(interpreter, line_stmt, program)

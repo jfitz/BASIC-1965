@@ -228,10 +228,6 @@ class Line
     end
   end
 
-  def clear_origins
-    @statements.each { |statement| statement.origins = [] }
-  end
-
   def add_statement_origin(stmt, xfer)
     statement = @statements[stmt]
 
@@ -1409,6 +1405,7 @@ class Program
 
   def pessimize
     @errors = []
+    @user_function_start_lines = {}
 
     line_numbers = @lines.keys.sort
 
@@ -1419,20 +1416,34 @@ class Program
     line_numbers = @lines.keys.sort
 
     optimize_statements(interpreter, line_numbers)
+
+    # statement destinations now available
+
     set_endfunc_lines(line_numbers)
-    @user_function_start_lines = {}
     assign_singleline_function_markers(line_numbers)
     assign_multiline_function_markers(line_numbers)
+
+    # function markers now available
+
     @first_line_number_stmt_mod = find_first_statement
+
     assign_autonext(line_numbers)
-    @lines.each { |_, line| line.clear_origins }
     set_transfers_auto
     set_start_transfer
     set_transfers
+
+    # statement transfers now available
+
     transfers_to_origins
+
+    # statement origins now available
+
     assign_sub_markers(line_numbers)
     assign_on_error_markers(line_numbers)
     assign_fornext_markers(line_numbers)
+
+    # all statement markers now available
+
     check_lines(line_numbers)
     check_program(line_numbers)
     check_function_markers(line_numbers)
