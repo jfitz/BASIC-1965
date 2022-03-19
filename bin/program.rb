@@ -265,12 +265,6 @@ class Line
       statement.check_terminating_in_gosub
       statement.check_terminating_in_onerror
       statement.check_terminating_in_fornext
-    end
-  end
-
-  def check_program(program, line_number)
-    @statements.each_with_index do |statement, stmt|
-      line_number_stmt = LineStmt.new(line_number, stmt)
       statement.check_program(program, line_number_stmt)
     end
   end
@@ -1445,7 +1439,7 @@ class Program
     # all statement markers now available
 
     check_lines(line_numbers)
-    check_program(line_numbers)
+
     check_function_markers(line_numbers)
   end
 
@@ -1744,13 +1738,6 @@ class Program
     line_numbers.each do |line_number|
       line = @lines[line_number]
       line.check_statements(self, line_number)
-    end
-  end
-
-  def check_program(line_numbers)
-    line_numbers.each do |line_number|
-      line = @lines[line_number]
-      line.check_program(self, line_number)
     end
   end
 
