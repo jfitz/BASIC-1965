@@ -274,12 +274,6 @@ class AbstractStatement
     @origins = []
   end
 
-  def optimize(interpreter, line_stmt, program)
-    set_destinations(interpreter, line_stmt, program)
-    set_for_lines(line_stmt, program)
-    set_next_lines(line_stmt, program)
-  end
-
   def set_destinations(_, _, _) end
 
   def assign_sub_markers(_) end
@@ -381,10 +375,6 @@ class AbstractStatement
       end
     end
   end
-
-  def set_for_lines(_, _) end
-
-  def set_next_lines(_, _) end
 
   def set_endfunc_lines(_, _) end
 
@@ -1639,11 +1629,9 @@ class ForStatement < AbstractStatement
     @comprehension_effort += @step.comprehension_effort unless @step.nil?
   end
 
-  def set_for_lines(line_stmt, program)
+  def set_destinations(_, line_stmt, program)
     @loopstart_line_stmt_mod = program.find_next_line_stmt_mod(line_stmt)
-  end
 
-  def set_next_lines(line_stmt, program)
     begin
       unless @control.nil?
         @nextstmt_line_stmt =

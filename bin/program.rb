@@ -1468,7 +1468,7 @@ class Program
 
       statements.each_with_index do |statement, stmt|
         line_stmt = LineStmt.new(line_number, stmt)
-        statement.optimize(interpreter, line_stmt, self)
+        statement.set_destinations(interpreter, line_stmt, self)
       end
     end
   end
