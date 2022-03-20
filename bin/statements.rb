@@ -267,7 +267,7 @@ class AbstractStatement
     @autonext_line = line_stmt_mod
   end
 
-  def pessimize
+  def reset
     @program_errors = []
     @program_warnings = []
     @transfers = []

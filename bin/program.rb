@@ -1401,13 +1401,13 @@ class Program
 
     line_numbers = @lines.keys.sort
 
-    pessimize_statements(line_numbers)
+    reset_statements(line_numbers)
   end
 
   def optimize(interpreter)
     line_numbers = @lines.keys.sort
 
-    optimize_statements(interpreter, line_numbers)
+    set_destinations(interpreter, line_numbers)
 
     # statement destinations now available
 
@@ -1441,19 +1441,19 @@ class Program
     check_function_markers(line_numbers)
   end
 
-  def pessimize_statements(line_numbers)
+  def reset_statements(line_numbers)
     line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
 
       statements.each_with_index do |statement, stmt|
         line_number_stmt = LineStmt.new(line_number, stmt)
-        statement.pessimize
+        statement.reset
       end
     end
   end
 
-  def optimize_statements(interpreter, line_numbers)
+  def set_destinations(interpreter, line_numbers)
     line_numbers.each do |line_number|
       line = @lines[line_number]
       statements = line.statements
