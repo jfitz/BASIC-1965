@@ -188,6 +188,8 @@ class Line
     @tokens = tokens
     @comment = comment
     @warnings = []
+    @destinations = []
+    @origins = []
 
     list_width_max = $options['warn_list_width'].value
     @warnings << "Line exceeds LIST width limit #{list_width_max}" if
@@ -1018,15 +1020,11 @@ class Program
       texts += line.analyze_pretty(number)
 
       # print origins to this line
-      line_origins = line.origins
-      line_origins = [] if line_origins.nil?
-      origs = line_origins.sort.uniq.map(&:to_s).join(', ')
+      origs = line.origins.sort.uniq.map(&:to_s).join(', ')
       texts << ("  Origs: #{origs}")
 
       # print destinations from this line
-      line_dests = line.destinations
-      line_dests = [] if line_dests.nil?
-      dests = line_dests.sort.uniq.map(&:to_s).join(', ')
+      dests = line.destinations.sort.uniq.map(&:to_s).join(', ')
       texts << ("  Dests: #{dests}")
     end
 
