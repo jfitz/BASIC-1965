@@ -1439,6 +1439,7 @@ class Program
     check_lines(line_numbers)
 
     check_function_markers(line_numbers)
+    check_gosub_length(line_numbers)
   end
 
   def reset_statements(line_numbers)
@@ -1760,6 +1761,43 @@ class Program
         end
 
         part_of_user_function = nil if statement.multiend?
+      end
+    end
+  end
+
+  def check_gosub_length(line_numbers)
+    counts = {}
+
+    # count the length of each GOSUB block
+    line_numbers.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+
+      statements.each do |statement|
+        gosubs = statement.part_of_sub
+
+        gosubs.each do |gosub|
+          unless gosub.nil?
+            if counts.key?(gosub)
+              counts[gosub] += 1
+            else
+              counts[gosub] = 1
+            end
+          end
+        end
+      end
+    end
+
+    # add warnings for long GOSUB blocks
+    limit = $options['warn_gosub_length'].value
+
+    if limit > 0
+      counts.each do |line_number, count|
+        if count > limit
+          line = @lines[line_number]
+          statements = line.statements
+          statements[0].program_warnings << "GOSUB length exceeds limit #{limit}"
+        end
       end
     end
   end
