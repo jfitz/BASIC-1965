@@ -456,7 +456,8 @@ The OPTION command overrides the command-line setting.
 |REQUIRE_INITIALIZED |NLP |TRUE or FALSE |FALSE |Variables must be initialized before use
 |TIMING |NLP |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
 |TRACE |NLP |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
-|WARN_GOSUB_LENGTH |NL |40 |numeric |Sets the limit for number of statements in a GOSUB block
+|WARN_FORNEXT_LEVEL |NL |3 |numeric |Sets the level to warn about nested FOR loops; 0 disables warnings
+|WARN_GOSUB_LENGTH |NL |40 |numeric |Sets the limit for number of statements in a GOSUB block; 0 disables warnings
 |WARN_LIST_WIDTH |NL |numeric 0 to 132 |72 |Sets the limit for program lines as shown by LIST; 0 disables warnings
 |WARN_PRETTY_WIDTH |NL |numeric 0 to 132 |72 |Sets the limit for program lines as shown by PRETTY; 0 disables warnings
 |WRAP |NLP |TRUE or FALSE |FALSE |When TRUE, subscripts beyond lower or upper bounds are wrapped

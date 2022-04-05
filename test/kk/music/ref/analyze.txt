@@ -101,6 +101,7 @@ Halstead complexity:
   Origs: 460:auto
   Dests: 510:auto
 510 F(N,I,J,V,V1,V2) (1 3) FOR I = I1 TO 6
+    WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 505:auto, 5210:goto
   Dests: 520:fornext, 4001:fornext
 520 F(N,I,J,V,V1,V2) (0 3) LET C2 = P(C1, I)
@@ -131,6 +132,7 @@ Halstead complexity:
   Origs: 560:auto
   Dests: 570:auto
 570 F(N,I,J,V,V1,V2) (1 3) FOR J = 1 TO 2
+    WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 565:auto
   Dests: 580:fornext, 610:fornext
 580 F(N,I,J,V,V1,V2) (1 5) IF ABS(D(J) - D) <= 5 THEN 610
@@ -170,6 +172,7 @@ Halstead complexity:
   Origs: 660:auto
   Dests: 710:auto
 710 F(N,I,J,K,V,V1,V2) (1 4) FOR K = 0 TO 4 STEP 2
+    WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 705:auto
   Dests: 720:fornext, 750:fornext
 720 F(N,I,J,K,V,V1,V2) (1 6) IF FNC(S - (R + K)) = 0 THEN 750
@@ -191,6 +194,7 @@ Halstead complexity:
   Origs: 
   Dests: 
 800 F(N,I,J,L,V,V1,V2) (1 3) FOR L = 0 TO 6
+    WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 760:auto
   Dests: 810:fornext, 880:fornext
 810 F(N,I,J,L,V,V1,V2) (0 3) LET A = B(1)
@@ -224,9 +228,11 @@ Halstead complexity:
   Origs: 
   Dests: 
 1010 F(N,I,J,L,V,V1,V2) (1 3) FOR L = 0 TO 6
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 880:auto
   Dests: 1020:fornext, 1261:fornext
 1020 F(N,I,J,L,V,V1,V2) (1 3) FOR V = 2 TO 3
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1010:fornext
   Dests: 1030:fornext, 1090:fornext
 1030 F(N,I,J,L,V,V1,V2) (0 3) LET B = W(V, L)
@@ -260,9 +266,11 @@ Halstead complexity:
   Origs: 1090:auto
   Dests: 1105:auto, 1210:ifthen
 1105 F(N,I,J,L,V1,V2) (1 3) FOR V1 = 1 TO 4
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1102:auto
   Dests: 1110:fornext, 1165:fornext
 1110 F(N,I,J,L,V1,V2) (1 4) FOR V2 = V1 + 1 TO 4
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1105:fornext
   Dests: 1115:fornext, 1160:fornext
 1115 F(N,I,J,L,V1,V2) (0 4) LET D = S(V1, N + 1) - S(V2, N + 1)
@@ -299,6 +307,7 @@ Halstead complexity:
   Origs: 
   Dests: 
 1210 F(N,I,J,L,V1,V2,V) (1 3) FOR V = 2 TO 3
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1102:ifthen, 1165:auto
   Dests: 1220:fornext, 1230:fornext
 1220 F(N,I,J,L,V1,V2,V) (0 4) LET D(V) = ABS(S(V, N) - S(V, N + 1))
@@ -329,6 +338,7 @@ Halstead complexity:
   Origs: 1261:auto
   Dests: 1520:auto
 1520 F(N,I,J,V,V1,V2,L) (1 3) FOR L = 0 TO 6
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1510:auto
   Dests: 1530:fornext, 1590:fornext
 1530 F(N,I,J,V,V1,V2,L) (0 3) LET M1 = W(0, L)
@@ -390,6 +400,7 @@ Halstead complexity:
   Origs: 5100:auto
   Dests: 5120:auto
 5120 F(N,J,V,V1,V2,I) (1 3) FOR I = 1 TO 6
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 5110:auto
   Dests: 5130:fornext, 5140:fornext
 5130 F(N,J,V,V1,V2,I) (1 4) IF C2 = P(C1, I) THEN 5200

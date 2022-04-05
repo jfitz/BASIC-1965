@@ -1440,6 +1440,7 @@ class Program
 
     check_function_markers(line_numbers)
     check_gosub_length(line_numbers)
+    check_fornext_level(line_numbers)
   end
 
   def reset_statements(line_numbers)
@@ -1797,6 +1798,26 @@ class Program
           line = @lines[line_number]
           statements = line.statements
           statements[0].program_warnings << "GOSUB length exceeds limit #{limit}"
+        end
+      end
+    end
+  end
+
+  def check_fornext_level(line_numbers)
+    # add warnings for nested FOR/NEXT loops
+    limit = $options['warn_fornext_level'].value
+
+    if limit > 0
+      line_numbers.each do |line_number|
+        line = @lines[line_number]
+        statements = line.statements
+
+        statements.each do |statement|
+          part_of_fornext = statement.part_of_fornext
+
+          if statement.for? && part_of_fornext.size > limit
+            statement.program_warnings << "FOR/NEXT nesting exceeds limit #{limit}"
+          end
         end
       end
     end
