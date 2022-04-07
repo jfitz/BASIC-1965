@@ -95,6 +95,7 @@ Halstead complexity:
   Origs: 442:auto
   Dests: 460:fornext, 510:fornext
 460 F(I,J,I0,J0) (1 4) FOR J0 = -1 TO 1
+    WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 450:fornext
   Dests: 470:fornext, 500:fornext
 470 F(I,J,I0,J0) (1 7) IF ABS(I0) + ABS(J0) = 0 THEN 500
