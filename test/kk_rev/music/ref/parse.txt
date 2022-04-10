@@ -137,6 +137,7 @@
  AssignmentOperator:= =_ -> _
 250
 450 FOR N = N9 TO 1 STEP -1
+ WARNING: FORNEXT length exceeds limit 40
  control: Variable:N -> _
  start:   ["Variable:N9 -> _"]
  end:     ["NumericConstant:1"]
@@ -153,6 +154,7 @@
  NumericConstant:1
  AssignmentOperator:= =_ -> _
 510 FOR I = I1 TO 6
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:I -> _
  start:   ["Variable:I1 -> _"]
@@ -206,6 +208,7 @@
  Variable:S(_,_) -> _
  AssignmentOperator:= _ -> _
 570 FOR J = 1 TO 2
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:J -> _
  start:   ["NumericConstant:1"]
@@ -357,6 +360,7 @@
  start:   ["NumericConstant:0"]
  end:     ["NumericConstant:6"]
 1020 FOR V = 2 TO 3
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V -> _
  start:   ["NumericConstant:2"]
@@ -431,11 +435,13 @@
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:1200
 1105 FOR V1 = 1 TO 4
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V1 -> _
  start:   ["NumericConstant:1"]
  end:     ["NumericConstant:4"]
 1110 FOR V2 = V1+1 TO 4
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V2 -> _
  start:   ["Variable:V1 -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
@@ -640,6 +646,7 @@
  Variable:S(_,_) -> _
  AssignmentOperator:= _ -> _
 5120 FOR I = 1 TO 6
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:I -> _
  start:   ["NumericConstant:1"]

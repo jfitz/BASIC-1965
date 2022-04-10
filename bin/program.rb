@@ -1440,6 +1440,7 @@ class Program
 
     check_function_markers(line_numbers)
     check_gosub_length(line_numbers)
+    check_fornext_length(line_numbers)
     check_fornext_level(line_numbers)
   end
 
@@ -1792,6 +1793,49 @@ class Program
           line = @lines[line_number]
           statements = line.statements
           statements[0].program_warnings << "GOSUB length exceeds limit #{limit}"
+        end
+      end
+    end
+  end
+
+  def check_fornext_length(line_numbers)
+    counts = {}
+
+    # count the length of each FOR/NEXT block
+    line_numbers.each do |line_number|
+      line = @lines[line_number]
+      statements = line.statements
+
+      statements.each do |statement|
+        fornexts = statement.part_of_fornext
+
+        fornexts.each do |fornext|
+          unless fornext.nil?
+            if counts.key?(fornext)
+              counts[fornext] += 1
+            else
+              counts[fornext] = 1
+            end
+          end
+        end
+      end
+    end
+
+    # add warnings for long FOR/NEXT blocks
+    limit = $options['warn_fornext_length'].value
+
+    if limit > 0
+      counts.each do |fornext, count|
+        if count > limit
+          line_stmt = fornext.line_stmt
+          line_number = line_stmt.line_number
+          line = @lines[line_number]
+          statements = line.statements
+          stmt = line_stmt.statement
+          statement = statements[stmt]
+          unless statement.nil?
+            statement.program_warnings << "FORNEXT length exceeds limit #{limit}"
+          end
         end
       end
     end

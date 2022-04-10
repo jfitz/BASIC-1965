@@ -89,6 +89,7 @@ Halstead complexity:
   Origs: 
   Dests: 
 450 F(N:450) (1 5) FOR N = N9 TO 1 STEP -1
+    WARNING: FORNEXT length exceeds limit 40
   Origs: 240:auto
   Dests: 460:fornext, 6003:fornext
 460 F(N:450) (1 4) IF N = N9 THEN 6000
@@ -101,6 +102,7 @@ Halstead complexity:
   Origs: 460:auto
   Dests: 510:auto
 510 F(N:450,I:510,J:570,V:1020,V1:1105,V2:1110,I:5120) (1 3) FOR I = I1 TO 6
+    WARNING: FORNEXT length exceeds limit 40
     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 505:auto, 5210:goto
   Dests: 520:fornext, 4001:fornext
@@ -132,6 +134,7 @@ Halstead complexity:
   Origs: 560:auto
   Dests: 570:auto
 570 F(N:450,I:510,J:570,V:1020,V1:1105,V2:1110,I:5120) (1 3) FOR J = 1 TO 2
+    WARNING: FORNEXT length exceeds limit 40
     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 565:auto
   Dests: 580:fornext, 610:fornext
@@ -232,6 +235,7 @@ Halstead complexity:
   Origs: 880:auto
   Dests: 1020:fornext, 1261:fornext
 1020 F(N:450,I:510,J:570,L:1010,V:1020,V1:1105,V2:1110,I:5120) (1 3) FOR V = 2 TO 3
+     WARNING: FORNEXT length exceeds limit 40
      WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1010:fornext
   Dests: 1030:fornext, 1090:fornext
@@ -266,10 +270,12 @@ Halstead complexity:
   Origs: 1090:auto
   Dests: 1105:auto, 1210:ifthen
 1105 F(N:450,I:510,J:570,L:1010,V1:1105,V2:1110,I:5120) (1 3) FOR V1 = 1 TO 4
+     WARNING: FORNEXT length exceeds limit 40
      WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1102:auto
   Dests: 1110:fornext, 1165:fornext
 1110 F(N:450,I:510,J:570,L:1010,V1:1105,V2:1110,I:5120) (1 4) FOR V2 = V1 + 1 TO 4
+     WARNING: FORNEXT length exceeds limit 40
      WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1105:fornext
   Dests: 1115:fornext, 1160:fornext
@@ -400,6 +406,7 @@ Halstead complexity:
   Origs: 5100:auto
   Dests: 5120:auto
 5120 F(N:450,I:510,J:570,V:1020,V1:1105,V2:1110,I:5120) (1 3) FOR I = 1 TO 6
+     WARNING: FORNEXT length exceeds limit 40
      WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 5110:auto
   Dests: 5130:fornext, 5140:fornext

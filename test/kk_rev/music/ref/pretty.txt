@@ -22,10 +22,12 @@
 240 LET C2 = 1
 250
 450 FOR N = N9 TO 1 STEP -1
+ WARNING: FORNEXT length exceeds limit 40
 460 IF N = N9 THEN 6000
 500 REM  TEST CHORDS.
 505 LET I1 = 1
 510 FOR I = I1 TO 6
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 520 LET C2 = P(C1, I)
 525 LET S(0, N) = C2
@@ -37,6 +39,7 @@
 560 LET D(2) = C2 - 15
 565 LET D = S(4, N + 1)
 570 FOR J = 1 TO 2
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 580 IF ABS(D(J) - D) <= 5 THEN 610
 590 LET R = D(3 - J)
@@ -73,6 +76,7 @@
 1010 FOR L = 0 TO 6
  WARNING: FOR/NEXT nesting exceeds limit 3
 1020 FOR V = 2 TO 3
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 1030 LET B = W(V, L)
 1040 IF ABS(B - S(V, N + 1)) > 5 THEN 1260
@@ -85,8 +89,10 @@
 1100 REM  CHECK FOR BAD TRANSITIONS
 1102 IF C1 = C2 THEN 1200
 1105 FOR V1 = 1 TO 4
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 1110 FOR V2 = V1 + 1 TO 4
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 1115 LET D = S(V1, N + 1) - S(V2, N + 1)
 1120 IF FNC(D) = 0 THEN 1145
@@ -133,6 +139,7 @@
 5100 LET C2 = S(0, N)
 5110 LET C1 = S(0, N + 1)
 5120 FOR I = 1 TO 6
+ WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 5130 IF C2 = P(C1, I) THEN 5200
 5140 NEXT I
