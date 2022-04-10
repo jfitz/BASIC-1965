@@ -3,9 +3,9 @@ STOP in line 70
 
 10 (1) READ N, I
 20 (1) LET B = 1
-30 F(K) (1) FOR K = 1 TO I
-40 F(K) (4) LET B = B * (N - K + 1) / K
-50 F(K) (4) NEXT K
+30 F(K:30) (1) FOR K = 1 TO I
+40 F(K:30) (4) LET B = B * (N - K + 1) / K
+50 F(K:30) (4) NEXT K
 60 (1) PRINT B
 70 (1) STOP
 90 (0) DATA 10, 4

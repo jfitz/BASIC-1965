@@ -5,9 +5,9 @@ Error 130 Variable not initialized for B in line 40
 11 (1) OPTION BASE 1
 12 (1) OPTION REQUIRE_INITIALIZED TRUE
 20 (1) DIM A(10)
-21 F(I) (1) FOR I = 1 TO 10
-22 F(I) (10) LET A(I) = I
-23 F(I) (10) NEXT I
+21 F(I:21) (1) FOR I = 1 TO 10
+22 F(I:21) (10) LET A(I) = I
+23 F(I:21) (10) NEXT I
 30 (1) ARR PRINT A
 40 (0) ARR FORGET B
 90 (0) ARR PRINT A

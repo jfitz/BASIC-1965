@@ -46,13 +46,13 @@ Halstead complexity:
 180 G(310) (0 2) GOSUB 300
   Origs: 170:auto
   Dests: 190:auto, 310:gosub
-190 G(310) F(F) (1 6) FOR F = 3 TO SQR(N) + 1 STEP 2
+190 G(310) F(F:190) (1 6) FOR F = 3 TO SQR(N) + 1 STEP 2
   Origs: 180:auto
   Dests: 200:fornext, 210:fornext
-200 G(310) F(F) (0 2) GOSUB 300
+200 G(310) F(F:190) (0 2) GOSUB 300
   Origs: 190:fornext
   Dests: 210:auto, 310:gosub
-210 G(310) F(F) (0 1) NEXT F
+210 G(310) F(F:190) (0 1) NEXT F
   Origs: 190:fornext, 200:auto
   Dests: 220:auto
 220 G(310) (1 4) IF Z = 0 THEN 250

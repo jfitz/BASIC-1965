@@ -70,28 +70,28 @@ Halstead complexity:
 170 (0 3) LET J = 0
   Origs: 140:goto, 160:auto
   Dests: 180:auto
-180 F(I) (1 4) FOR I = 0 TO N - 1
+180 F(I:180) (1 4) FOR I = 0 TO N - 1
   Origs: 170:auto
   Dests: 190:fornext, 250:fornext
-190 F(I) (0 4) LET K = I + 1
+190 F(I:180) (0 4) LET K = I + 1
   Origs: 180:fornext
   Dests: 200:auto
-200 F(I) (0 8) LET L = A / (B + (I * D))
+200 F(I:180) (0 8) LET L = A / (B + (I * D))
   Origs: 190:auto
   Dests: 210:auto
-210 F(I) (0 4) LET J = J + L
+210 F(I:180) (0 4) LET J = J + L
   Origs: 200:auto
   Dests: 220:auto
-220 F(I) (1 4) IF C = 1 THEN 240
+220 F(I:180) (1 4) IF C = 1 THEN 240
   Origs: 210:auto
   Dests: 230:auto, 240:ifthen
-230 F(I) (0 2) GOTO 250
+230 F(I:180) (0 2) GOTO 250
   Origs: 220:auto
   Dests: 250:goto
-240 F(I) (0 3) PRINT K, L
+240 F(I:180) (0 3) PRINT K, L
   Origs: 220:ifthen
   Dests: 250:auto
-250 F(I) (0 1) NEXT I
+250 F(I:180) (0 1) NEXT I
   Origs: 180:fornext, 230:goto, 240:auto
   Dests: 260:auto
 260 (0 3) PRINT "SUM = "; J

@@ -43,16 +43,16 @@ Halstead complexity:
 70 (0 3) LET J = 1
   Origs: 60:auto
   Dests: 80:auto
-80 F(I) (1 4) FOR I = 1 TO N - 1
+80 F(I:80) (1 4) FOR I = 1 TO N - 1
   Origs: 70:auto
   Dests: 90:fornext, 110:fornext
-90 F(I) (0 6) LET K = 1 - (I / M)
+90 F(I:80) (0 6) LET K = 1 - (I / M)
   Origs: 80:fornext
   Dests: 100:auto
-100 F(I) (0 4) LET J = J * K
+100 F(I:80) (0 4) LET J = J * K
   Origs: 90:auto
   Dests: 110:auto
-110 F(I) (0 1) NEXT I
+110 F(I:80) (0 1) NEXT I
   Origs: 80:fornext, 100:auto
   Dests: 120:auto
 120 (0 3) PRINT "PROBABILITY = "; J

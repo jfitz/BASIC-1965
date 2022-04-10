@@ -7,11 +7,11 @@ Variable A has no dimensions in line 90
 10 (0) REM Test the FORGET statement
 11 (1) OPTION BASE 1
 20 (1) DIM A(3, 4)
-21 F(I) (1) FOR I = 1 TO 3
-22 F(I,J) (3) FOR J = 1 TO 4
-23 F(I,J) (12) LET A(I, J) = I * J
-24 F(I,J) (12) NEXT J
-25 F(I) (3) NEXT I
+21 F(I:21) (1) FOR I = 1 TO 3
+22 F(I:21,J:22) (3) FOR J = 1 TO 4
+23 F(I:21,J:22) (12) LET A(I, J) = I * J
+24 F(I:21,J:22) (12) NEXT J
+25 F(I:21) (3) NEXT I
 30 (1) MAT PRINT A
 40 (1) MAT FORGET A
 90 (0) MAT PRINT A

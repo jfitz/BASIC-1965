@@ -22,13 +22,13 @@ Halstead complexity:
 10 (0 4) PRINT " X", "EXP(X)", "LOG(X)"
   Origs: :start
   Dests: 20:auto
-20 F(X) (1 4) FOR X = 1 TO 3.5 STEP 0.5
+20 F(X:20) (1 4) FOR X = 1 TO 3.5 STEP 0.5
   Origs: 10:auto
   Dests: 30:fornext, 40:fornext
-30 F(X) (0 6) PRINT X, EXP(X), LOG(X)
+30 F(X:20) (0 6) PRINT X, EXP(X), LOG(X)
   Origs: 20:fornext
   Dests: 40:auto
-40 F(X) (0 1) NEXT X
+40 F(X:20) (0 1) NEXT X
   Origs: 20:fornext, 30:auto
   Dests: 99:auto
 99 (0 1) END

@@ -1,46 +1,46 @@
 20 DIM A(5)
-30 F(I) FOR I = 0 TO 5
+30 F(I:30) FOR I = 0 TO 5
  I = 0
  terminated:false
-50 F(I) LET A(I) = I
+50 F(I:30) LET A(I) = I
  I: 0
  A(0) = 0
-70 F(I) NEXT I
+70 F(I:30) NEXT I
  I: 0
  terminated:false
  I = 1
-50 F(I) LET A(I) = I
+50 F(I:30) LET A(I) = I
  I: 1
  A(1) = 1
-70 F(I) NEXT I
+70 F(I:30) NEXT I
  I: 1
  terminated:false
  I = 2
-50 F(I) LET A(I) = I
+50 F(I:30) LET A(I) = I
  I: 2
  A(2) = 2
-70 F(I) NEXT I
+70 F(I:30) NEXT I
  I: 2
  terminated:false
  I = 3
-50 F(I) LET A(I) = I
+50 F(I:30) LET A(I) = I
  I: 3
  A(3) = 3
-70 F(I) NEXT I
+70 F(I:30) NEXT I
  I: 3
  terminated:false
  I = 4
-50 F(I) LET A(I) = I
+50 F(I:30) LET A(I) = I
  I: 4
  A(4) = 4
-70 F(I) NEXT I
+70 F(I:30) NEXT I
  I: 4
  terminated:false
  I = 5
-50 F(I) LET A(I) = I
+50 F(I:30) LET A(I) = I
  I: 5
  A(5) = 5
-70 F(I) NEXT I
+70 F(I:30) NEXT I
  I: 5
  terminated:true
 100 ARR B = A * 2

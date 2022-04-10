@@ -19,9 +19,9 @@ STOP in line 999
 60 (1) LET M = 0
 100 (10) LET T = (T + M) / 2
 120 (10) LET M = 0
-130 F(X) (10) FOR X = A + H / 2 TO B STEP H
-140 F(X) (1023) LET M = M + FNF(X)
-150 F(X) (1023) NEXT X
+130 F(X:130) (10) FOR X = A + H / 2 TO B STEP H
+140 F(X:130) (1023) LET M = M + FNF(X)
+150 F(X:130) (1023) NEXT X
 160 (10) LET M = M * H
 170 (10) LET S = (T + 2 * M) / 3
 180 (10) PRINT T, M, S

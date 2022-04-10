@@ -1,54 +1,54 @@
 10 OPTION BASE 0
 20 DIM A(6)
-30 F(I) FOR I = 0 TO 6
+30 F(I:30) FOR I = 0 TO 6
  I = 0
  terminated:false
-40 F(I) LET A(I) = I * 10
+40 F(I:30) LET A(I) = I * 10
  I: 0
  A(0) = 0
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 0
  terminated:false
  I = 1
-40 F(I) LET A(I) = I * 10
+40 F(I:30) LET A(I) = I * 10
  I: 1
  A(1) = 10
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 1
  terminated:false
  I = 2
-40 F(I) LET A(I) = I * 10
+40 F(I:30) LET A(I) = I * 10
  I: 2
  A(2) = 20
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 2
  terminated:false
  I = 3
-40 F(I) LET A(I) = I * 10
+40 F(I:30) LET A(I) = I * 10
  I: 3
  A(3) = 30
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 3
  terminated:false
  I = 4
-40 F(I) LET A(I) = I * 10
+40 F(I:30) LET A(I) = I * 10
  I: 4
  A(4) = 40
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 4
  terminated:false
  I = 5
-40 F(I) LET A(I) = I * 10
+40 F(I:30) LET A(I) = I * 10
  I: 5
  A(5) = 50
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 5
  terminated:false
  I = 6
-40 F(I) LET A(I) = I * 10
+40 F(I:30) LET A(I) = I * 10
  I: 6
  A(6) = 60
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 6
  terminated:true
 100 ARR B = REV1(A)

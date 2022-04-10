@@ -18,156 +18,156 @@ ENTER TIME AS H,M(24 HOUR CLOCK)
  H: 19
  M1: 58
  N = 42.77
-80 F(I) FOR I = 1 TO 6
+80 F(I:80) FOR I = 1 TO 6
  I = 1
  terminated:false
-90 F(I) LET K = N * RND(0)
+90 F(I:80) LET K = N * RND(0)
  N: 42.77
  K = 17.836
-100 F(I) LET K = K - INT(K)
+100 F(I:80) LET K = K - INT(K)
  K: 17.836
  K = 0.836
-110 F(I) LET C(I) = 1 + INT(2 * K)
+110 F(I:80) LET C(I) = 1 + INT(2 * K)
  I: 1
  K: 0.836
  C(1) = 2
-120 F(I) NEXT I
+120 F(I:80) NEXT I
  I: 1
  terminated:false
  I = 2
-90 F(I) LET K = N * RND(0)
+90 F(I:80) LET K = N * RND(0)
  N: 42.77
  K = 30.8083
-100 F(I) LET K = K - INT(K)
+100 F(I:80) LET K = K - INT(K)
  K: 30.8083
  K = 0.8083
-110 F(I) LET C(I) = 1 + INT(2 * K)
+110 F(I:80) LET C(I) = 1 + INT(2 * K)
  I: 2
  K: 0.8083
  C(2) = 2
-120 F(I) NEXT I
+120 F(I:80) NEXT I
  I: 2
  terminated:false
  I = 3
-90 F(I) LET K = N * RND(0)
+90 F(I:80) LET K = N * RND(0)
  N: 42.77
  K = 0.00489182
-100 F(I) LET K = K - INT(K)
+100 F(I:80) LET K = K - INT(K)
  K: 0.00489182
  K = 0.00489182
-110 F(I) LET C(I) = 1 + INT(2 * K)
+110 F(I:80) LET C(I) = 1 + INT(2 * K)
  I: 3
  K: 0.00489182
  C(3) = 1
-120 F(I) NEXT I
+120 F(I:80) NEXT I
  I: 3
  terminated:false
  I = 4
-90 F(I) LET K = N * RND(0)
+90 F(I:80) LET K = N * RND(0)
  N: 42.77
  K = 12.9308
-100 F(I) LET K = K - INT(K)
+100 F(I:80) LET K = K - INT(K)
  K: 12.9308
  K = 0.9308
-110 F(I) LET C(I) = 1 + INT(2 * K)
+110 F(I:80) LET C(I) = 1 + INT(2 * K)
  I: 4
  K: 0.9308
  C(4) = 2
-120 F(I) NEXT I
+120 F(I:80) NEXT I
  I: 4
  terminated:false
  I = 5
-90 F(I) LET K = N * RND(0)
+90 F(I:80) LET K = N * RND(0)
  N: 42.77
  K = 6.27675
-100 F(I) LET K = K - INT(K)
+100 F(I:80) LET K = K - INT(K)
  K: 6.27675
  K = 0.27675
-110 F(I) LET C(I) = 1 + INT(2 * K)
+110 F(I:80) LET C(I) = 1 + INT(2 * K)
  I: 5
  K: 0.27675
  C(5) = 1
-120 F(I) NEXT I
+120 F(I:80) NEXT I
  I: 5
  terminated:false
  I = 6
-90 F(I) LET K = N * RND(0)
+90 F(I:80) LET K = N * RND(0)
  N: 42.77
  K = 3.94932
-100 F(I) LET K = K - INT(K)
+100 F(I:80) LET K = K - INT(K)
  K: 3.94932
  K = 0.94932
-110 F(I) LET C(I) = 1 + INT(2 * K)
+110 F(I:80) LET C(I) = 1 + INT(2 * K)
  I: 6
  K: 0.94932
  C(6) = 2
-120 F(I) NEXT I
+120 F(I:80) NEXT I
  I: 6
  terminated:true
-130 F(I) FOR I = 1 TO 6
+130 F(I:130) FOR I = 1 TO 6
  I = 1
  terminated:false
-140 F(I) IF C(I) = 1 THEN 170
+140 F(I:130) IF C(I) = 1 THEN 170
  I: 1
  C(1): 2
  C(I) = 1: false
-150 F(I) PRINT "---"
+150 F(I:130) PRINT "---"
 ---
-160 F(I) GOTO 180
-180 F(I) NEXT I
+160 F(I:130) GOTO 180
+180 F(I:130) NEXT I
  I: 1
  terminated:false
  I = 2
-140 F(I) IF C(I) = 1 THEN 170
+140 F(I:130) IF C(I) = 1 THEN 170
  I: 2
  C(2): 2
  C(I) = 1: false
-150 F(I) PRINT "---"
+150 F(I:130) PRINT "---"
 ---
-160 F(I) GOTO 180
-180 F(I) NEXT I
+160 F(I:130) GOTO 180
+180 F(I:130) NEXT I
  I: 2
  terminated:false
  I = 3
-140 F(I) IF C(I) = 1 THEN 170
+140 F(I:130) IF C(I) = 1 THEN 170
  I: 3
  C(3): 1
  C(I) = 1: true
-170 F(I) PRINT "- -"
+170 F(I:130) PRINT "- -"
 - -
-180 F(I) NEXT I
+180 F(I:130) NEXT I
  I: 3
  terminated:false
  I = 4
-140 F(I) IF C(I) = 1 THEN 170
+140 F(I:130) IF C(I) = 1 THEN 170
  I: 4
  C(4): 2
  C(I) = 1: false
-150 F(I) PRINT "---"
+150 F(I:130) PRINT "---"
 ---
-160 F(I) GOTO 180
-180 F(I) NEXT I
+160 F(I:130) GOTO 180
+180 F(I:130) NEXT I
  I: 4
  terminated:false
  I = 5
-140 F(I) IF C(I) = 1 THEN 170
+140 F(I:130) IF C(I) = 1 THEN 170
  I: 5
  C(5): 1
  C(I) = 1: true
-170 F(I) PRINT "- -"
+170 F(I:130) PRINT "- -"
 - -
-180 F(I) NEXT I
+180 F(I:130) NEXT I
  I: 5
  terminated:false
  I = 6
-140 F(I) IF C(I) = 1 THEN 170
+140 F(I:130) IF C(I) = 1 THEN 170
  I: 6
  C(6): 2
  C(I) = 1: false
-150 F(I) PRINT "---"
+150 F(I:130) PRINT "---"
 ---
-160 F(I) GOTO 180
-180 F(I) NEXT I
+160 F(I:130) GOTO 180
+180 F(I:130) NEXT I
  I: 6
  terminated:true
 190 PRINT

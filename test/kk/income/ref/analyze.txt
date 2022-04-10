@@ -19,28 +19,28 @@ Halstead complexity:
  intelligence: 39.180
  time: 2.041
 
-10 F(D) (1 3) FOR D = 0 TO 5
+10 F(D:10) (1 3) FOR D = 0 TO 5
   Origs: :start
   Dests: 20:fornext, 30:fornext
-20 F(D) (0 3) LET N(D) = 0
+20 F(D:10) (0 3) LET N(D) = 0
   Origs: 10:fornext
   Dests: 30:auto
-30 F(D) (0 1) NEXT D
+30 F(D:10) (0 1) NEXT D
   Origs: 10:fornext, 20:auto
   Dests: 40:auto
-40 F(I) (1 3) FOR I = 1 TO 10
+40 F(I:40) (1 3) FOR I = 1 TO 10
   Origs: 30:auto
   Dests: 50:fornext, 80:fornext
-50 F(I) (1 2) READ X
+50 F(I:40) (1 2) READ X
   Origs: 40:fornext
   Dests: 60:auto
-60 F(I) (0 4) LET D = INT(X / 10000)
+60 F(I:40) (0 4) LET D = INT(X / 10000)
   Origs: 50:auto
   Dests: 70:auto
-70 F(I) (0 4) LET N(D) = N(D) + 1
+70 F(I:40) (0 4) LET N(D) = N(D) + 1
   Origs: 60:auto
   Dests: 80:auto
-80 F(I) (0 1) NEXT I
+80 F(I:40) (0 1) NEXT I
   Origs: 40:fornext, 70:auto
   Dests: 100:auto
 100 (0 2) PRINT "        INCOME"
@@ -49,13 +49,13 @@ Halstead complexity:
 110 (0 4) PRINT "AT LEAST", "BUT BELOW", "NUMBER OF PEOPLE"
   Origs: 100:auto
   Dests: 120:auto
-120 F(D) (1 3) FOR D = 0 TO 5
+120 F(D:120) (1 3) FOR D = 0 TO 5
   Origs: 110:auto
   Dests: 130:fornext, 140:fornext
-130 F(D) (0 7) PRINT D * 10000, (D + 1) * 10000, N(D)
+130 F(D:120) (0 7) PRINT D * 10000, (D + 1) * 10000, N(D)
   Origs: 120:fornext
   Dests: 140:auto
-140 F(D) (0 1) NEXT D
+140 F(D:120) (0 1) NEXT D
   Origs: 120:fornext, 130:auto
   Dests: 999:auto
 900 (0 2) DATA 15000, 22500, 7350, 32700, 51000, 8400, 12700, 8100, 29000, 35460

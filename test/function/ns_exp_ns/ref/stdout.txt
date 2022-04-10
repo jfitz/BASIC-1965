@@ -23,9 +23,9 @@ VALUE           EXP
 STOP in line 99
 
 10 (1) PRINT "VALUE", "EXP"
-20 F(I) (1) FOR I = 0 TO 2 STEP 0.1
-30 F(I) (21) LET E = EXP(I)
-40 F(I) (21) PRINT I, E
-50 F(I) (21) NEXT I
+20 F(I:20) (1) FOR I = 0 TO 2 STEP 0.1
+30 F(I:20) (21) LET E = EXP(I)
+40 F(I:20) (21) PRINT I, E
+50 F(I:20) (21) NEXT I
 99 (1) END
 

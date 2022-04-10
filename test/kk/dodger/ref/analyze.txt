@@ -22,19 +22,19 @@ Halstead complexity:
 100 (0 1) REM INITIALIZE
   Origs: 
   Dests: 
-110 F(B) (1 3) FOR B = 1 TO 9
+110 F(B:110) (1 3) FOR B = 1 TO 9
   Origs: :start
   Dests: 120:fornext, 150:fornext
-120 F(B,R) (1 3) FOR R = 0 TO 3
+120 F(B:110,R:120) (1 3) FOR R = 0 TO 3
   Origs: 110:fornext
   Dests: 130:fornext, 140:fornext
-130 F(B,R) (1 2) READ P(B, R)
+130 F(B:110,R:120) (1 2) READ P(B, R)
   Origs: 120:fornext
   Dests: 140:auto
-140 F(B,R) (0 1) NEXT R
+140 F(B:110,R:120) (0 1) NEXT R
   Origs: 120:fornext, 130:auto
   Dests: 150:auto
-150 F(B) (0 1) NEXT B
+150 F(B:110) (0 1) NEXT B
   Origs: 110:fornext, 140:auto
   Dests: 200:auto
 160 (0 2) DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
@@ -49,19 +49,19 @@ Halstead complexity:
 190 (0 0) 
   Origs: 
   Dests: 
-200 F(R) (1 3) FOR R = 1 TO 4
+200 F(R:200) (1 3) FOR R = 1 TO 4
   Origs: 150:auto
   Dests: 210:fornext, 240:fornext
-210 F(R,C) (1 3) FOR C = 0 TO 7
+210 F(R:200,C:210) (1 3) FOR C = 0 TO 7
   Origs: 200:fornext
   Dests: 220:fornext, 230:fornext
-220 F(R,C) (1 2) READ Q(R, C)
+220 F(R:200,C:210) (1 2) READ Q(R, C)
   Origs: 210:fornext
   Dests: 230:auto
-230 F(R,C) (0 1) NEXT C
+230 F(R:200,C:210) (0 1) NEXT C
   Origs: 210:fornext, 220:auto
   Dests: 240:auto
-240 F(R) (0 1) NEXT R
+240 F(R:200) (0 1) NEXT R
   Origs: 200:fornext, 230:auto
   Dests: 300:auto
 250 (0 2) DATA 1, 5, 11, 15, 11, 15, 21, 25
@@ -97,13 +97,13 @@ Halstead complexity:
 350 (0 0) 
   Origs: 
   Dests: 
-360 F(C) (1 3) FOR C = 0 TO 7
+360 F(C:360) (1 3) FOR C = 0 TO 7
   Origs: 340:auto
   Dests: 370:fornext, 380:fornext
-370 F(C) (1 2) READ L(C)
+370 F(C:360) (1 2) READ L(C)
   Origs: 360:fornext
   Dests: 380:auto
-380 F(C) (0 1) NEXT C
+380 F(C:360) (0 1) NEXT C
   Origs: 360:fornext, 370:auto
   Dests: 430:auto
 390 (0 2) DATA 0, 1, 1, 2, 1, 2, 2, 3
@@ -115,16 +115,16 @@ Halstead complexity:
 410 (0 1) REM NEW INNING
   Origs: 
   Dests: 
-430 F(R) (0 3) PRINT "INNING" I
+430 F(R:560) (0 3) PRINT "INNING" I
   Origs: 380:auto, 945:ifthen
   Dests: 450:auto
-450 F(R) (0 3) LET S = 0
+450 F(R:560) (0 3) LET S = 0
   Origs: 430:auto
   Dests: 460:auto
-460 F(R) (0 3) LET O = 0
+460 F(R:560) (0 3) LET O = 0
   Origs: 450:auto
   Dests: 470:auto
-470 F(R) (0 3) LET C = 0
+470 F(R:560) (0 3) LET C = 0
   Origs: 460:auto
   Dests: 500:auto
 480 (0 0) 
@@ -133,13 +133,13 @@ Halstead complexity:
 490 (0 1) REM NEW BATTER
   Origs: 
   Dests: 
-500 F(R) (1 4) IF B < 9 THEN 520
+500 F(R:560) (1 4) IF B < 9 THEN 520
   Origs: 470:auto, 850:goto, 880:goto
   Dests: 510:auto, 520:ifthen
-510 F(R) (0 3) LET B = 0
+510 F(R:560) (0 3) LET B = 0
   Origs: 500:auto
   Dests: 520:auto
-520 F(R) (0 4) LET B = B + 1
+520 F(R:560) (0 4) LET B = B + 1
   Origs: 500:ifthen, 510:auto
   Dests: 550:auto
 530 (0 0) 
@@ -148,19 +148,19 @@ Halstead complexity:
 540 (0 1) REM DETERMINE OUTCOME
   Origs: 
   Dests: 
-550 F(R) (0 4) LET X = RND(0)
+550 F(R:560) (0 4) LET X = RND(0)
   Origs: 520:auto
   Dests: 560:auto
-560 F(R) (1 3) FOR R = 0 TO 3
+560 F(R:560) (1 3) FOR R = 0 TO 3
   Origs: 550:auto
   Dests: 570:fornext, 590:fornext
-570 F(R) (0 4) LET X = X - P(B, R)
+570 F(R:560) (0 4) LET X = X - P(B, R)
   Origs: 560:fornext
   Dests: 580:auto
-580 F(R) (1 4) IF X < 0 THEN 620
+580 F(R:560) (1 4) IF X < 0 THEN 620
   Origs: 570:auto
   Dests: 590:auto, 630:ifthen
-590 F(R) (0 1) NEXT R
+590 F(R:560) (0 1) NEXT R
   Origs: 560:fornext, 580:auto
   Dests: 600:auto
 600 (0 3) LET R = 4
@@ -172,43 +172,43 @@ Halstead complexity:
 620 (0 1) REM PRINT OUTCOME
   Origs: 
   Dests: 
-630 F(R) (1 4) IF R > 0 THEN 660
+630 F(R:560) (1 4) IF R > 0 THEN 660
   Origs: 580:ifthen, 600:auto
   Dests: 640:auto, 660:ifthen
-640 F(R) (0 2) PRINT "OUT   ";
+640 F(R:560) (0 2) PRINT "OUT   ";
   Origs: 630:auto
   Dests: 650:auto
-650 F(R) (0 2) GOTO 770
+650 F(R:560) (0 2) GOTO 770
   Origs: 640:auto
   Dests: 780:goto
-660 F(R) (1 4) IF R > 1 THEN 690
+660 F(R:560) (1 4) IF R > 1 THEN 690
   Origs: 630:ifthen
   Dests: 670:auto, 690:ifthen
-670 F(R) (0 2) PRINT "SINGLE   ";
+670 F(R:560) (0 2) PRINT "SINGLE   ";
   Origs: 660:auto
   Dests: 680:auto
-680 F(R) (0 2) GOTO 770
+680 F(R:560) (0 2) GOTO 770
   Origs: 670:auto
   Dests: 780:goto
-690 F(R) (1 4) IF R > 2 THEN 720
+690 F(R:560) (1 4) IF R > 2 THEN 720
   Origs: 660:ifthen
   Dests: 700:auto, 720:ifthen
-700 F(R) (0 2) PRINT "WALK   ";
+700 F(R:560) (0 2) PRINT "WALK   ";
   Origs: 690:auto
   Dests: 710:auto
-710 F(R) (0 2) GOTO 770
+710 F(R:560) (0 2) GOTO 770
   Origs: 700:auto
   Dests: 780:goto
-720 F(R) (1 4) IF R > 3 THEN 750
+720 F(R:560) (1 4) IF R > 3 THEN 750
   Origs: 690:ifthen
   Dests: 730:auto, 750:ifthen
-730 F(R) (0 2) PRINT "DOUBLE   ";
+730 F(R:560) (0 2) PRINT "DOUBLE   ";
   Origs: 720:auto
   Dests: 740:auto
-740 F(R) (0 2) GOTO 770
+740 F(R:560) (0 2) GOTO 770
   Origs: 730:auto
   Dests: 780:goto
-750 F(R) (0 2) PRINT "HOME RUN   ";
+750 F(R:560) (0 2) PRINT "HOME RUN   ";
   Origs: 720:ifthen
   Dests: 780:auto
 760 (0 0) 
@@ -217,37 +217,37 @@ Halstead complexity:
 770 (0 1) REM DO BOOK-KEEPING
   Origs: 
   Dests: 
-780 F(R) (1 4) IF R = 0 THEN 860
+780 F(R:560) (1 4) IF R = 0 THEN 860
   Origs: 650:goto, 680:goto, 710:goto, 740:goto, 750:auto
   Dests: 790:auto, 860:ifthen
-790 F(R) (1 4) IF R = 2 THEN 810
+790 F(R:560) (1 4) IF R = 2 THEN 810
   Origs: 780:auto
   Dests: 800:auto, 810:ifthen
-800 F(R) (0 4) LET H = H + 1
+800 F(R:560) (0 4) LET H = H + 1
   Origs: 790:auto
   Dests: 810:auto
-810 F(R) (0 3) LET X = Q(R, C)
+810 F(R:560) (0 3) LET X = Q(R, C)
   Origs: 790:ifthen, 800:auto
   Dests: 820:auto
-820 F(R) (0 4) LET Y = INT(X / 10)
+820 F(R:560) (0 4) LET Y = INT(X / 10)
   Origs: 810:auto
   Dests: 830:auto
-830 F(R) (0 6) LET C = X - Y * 10
+830 F(R:560) (0 6) LET C = X - Y * 10
   Origs: 820:auto
   Dests: 840:auto
-840 F(R) (0 4) LET S = S + Y
+840 F(R:560) (0 4) LET S = S + Y
   Origs: 830:auto
   Dests: 850:auto
-850 F(R) (0 3) GOTO 490
+850 F(R:560) (0 3) GOTO 490
   Origs: 840:auto
   Dests: 500:goto
-860 F(R) (1 4) IF O = 2 THEN 890
+860 F(R:560) (1 4) IF O = 2 THEN 890
   Origs: 780:ifthen
   Dests: 870:auto, 895:ifthen
-870 F(R) (0 4) LET O = O + 1
+870 F(R:560) (0 4) LET O = O + 1
   Origs: 860:auto
   Dests: 880:auto
-880 F(R) (0 3) GOTO 490
+880 F(R:560) (0 3) GOTO 490
   Origs: 870:auto
   Dests: 500:goto
 885 (0 0) 
@@ -256,25 +256,25 @@ Halstead complexity:
 890 (0 1) REM END OF AN INNING
   Origs: 
   Dests: 
-895 F(R) (0 4) LET L7 = L7 + L(C)
+895 F(R:560) (0 4) LET L7 = L7 + L(C)
   Origs: 860:ifthen
   Dests: 900:auto
-900 F(R) (0 2) PRINT
+900 F(R:560) (0 2) PRINT
   Origs: 895:auto
   Dests: 910:auto
-910 F(R) (0 3) PRINT S; "RUNS"
+910 F(R:560) (0 3) PRINT S; "RUNS"
   Origs: 900:auto
   Dests: 920:auto
-920 F(R) (0 2) PRINT
+920 F(R:560) (0 2) PRINT
   Origs: 910:auto
   Dests: 930:auto
-930 F(R) (0 4) LET S1 = S1 + S
+930 F(R:560) (0 4) LET S1 = S1 + S
   Origs: 920:auto
   Dests: 940:auto
-940 F(R) (0 4) LET I = I + 1
+940 F(R:560) (0 4) LET I = I + 1
   Origs: 930:auto
   Dests: 945:auto
-945 F(R) (1 5) IF I < 9 THEN 410
+945 F(R:560) (1 5) IF I < 9 THEN 410
   Origs: 940:auto
   Dests: 430:ifthen, 960:auto
 950 (0 0) 
@@ -283,25 +283,25 @@ Halstead complexity:
 955 (0 1) REM PRINT RESULTS
   Origs: 
   Dests: 
-960 F(R) (0 2) PRINT
+960 F(R:560) (0 2) PRINT
   Origs: 945:auto
   Dests: 965:auto
-965 F(R) (0 2) PRINT "GAME TOTALS:"
+965 F(R:560) (0 2) PRINT "GAME TOTALS:"
   Origs: 960:auto
   Dests: 970:auto
-970 F(R) (0 2) PRINT
+970 F(R:560) (0 2) PRINT
   Origs: 965:auto
   Dests: 975:auto
-975 F(R) (0 3) PRINT S1; "RUNS SCORED"
+975 F(R:560) (0 3) PRINT S1; "RUNS SCORED"
   Origs: 970:auto
   Dests: 980:auto
-980 F(R) (0 3) PRINT L7; "MEN LEFT ON BASE"
+980 F(R:560) (0 3) PRINT L7; "MEN LEFT ON BASE"
   Origs: 975:auto
   Dests: 985:auto
-985 F(R) (0 3) PRINT H; "HITS"
+985 F(R:560) (0 3) PRINT H; "HITS"
   Origs: 980:auto
   Dests: 990:auto
-990 F(R) (0 1) END
+990 F(R:560) (0 1) END
     WARNING: Terminating statement in FOR/NEXT
   Origs: 985:auto
   Dests: :stop

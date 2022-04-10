@@ -25,13 +25,13 @@ Halstead complexity:
 11 (0 2) DIM P(350)
   Origs: 10:auto
   Dests: 20:auto
-20 F(I) (1 3) FOR I = 1 TO 1000
+20 F(I:20) (1 3) FOR I = 1 TO 1000
   Origs: 11:auto
   Dests: 21:fornext, 22:fornext
-21 F(I) (0 3) LET N(I) = 0
+21 F(I:20) (0 3) LET N(I) = 0
   Origs: 20:fornext
   Dests: 22:auto
-22 F(I) (0 1) NEXT I
+22 F(I:20) (0 1) NEXT I
   Origs: 20:fornext, 21:auto
   Dests: 25:auto
 25 (0 3) LET P(0) = 2
@@ -40,37 +40,37 @@ Halstead complexity:
 26 (0 3) LET K = 0
   Origs: 25:auto
   Dests: 30:auto
-30 F(P) (1 4) FOR P = 3 TO 2000 STEP 2
+30 F(P:30) (1 4) FOR P = 3 TO 2000 STEP 2
   Origs: 26:auto
   Dests: 35:fornext, 90:fornext
-35 F(P) (0 5) LET X = (P - 1) / 2
+35 F(P:30) (0 5) LET X = (P - 1) / 2
   Origs: 30:fornext
   Dests: 40:auto
-40 F(P) (1 4) IF N(X) < 0 THEN 90
+40 F(P:30) (1 4) IF N(X) < 0 THEN 90
   Origs: 35:auto
   Dests: 50:auto, 90:ifthen
-50 F(P) (0 4) LET K = K + 1
+50 F(P:30) (0 4) LET K = K + 1
   Origs: 40:auto
   Dests: 55:auto
-55 F(P) (0 3) LET P(K) = P
+55 F(P:30) (0 3) LET P(K) = P
   Origs: 50:auto
   Dests: 56:auto
-56 F(P) (1 5) IF P > SQR(2000) THEN 90
+56 F(P:30) (1 5) IF P > SQR(2000) THEN 90
   Origs: 55:auto
   Dests: 60:auto, 90:ifthen
-60 F(P,I) (1 5) FOR I = P TO 2000 STEP 2 * P
+60 F(P:30,I:60) (1 5) FOR I = P TO 2000 STEP 2 * P
   Origs: 56:auto
   Dests: 65:fornext, 80:fornext
-65 F(P,I) (0 5) LET X = (I - 1) / 2
+65 F(P:30,I:60) (0 5) LET X = (I - 1) / 2
   Origs: 60:fornext
   Dests: 70:auto
-70 F(P,I) (0 4) LET N(X) = -1
+70 F(P:30,I:60) (0 4) LET N(X) = -1
   Origs: 65:auto
   Dests: 80:auto
-80 F(P,I) (0 1) NEXT I
+80 F(P:30,I:60) (0 1) NEXT I
   Origs: 60:fornext, 70:auto
   Dests: 90:auto
-90 F(P) (0 1) NEXT P
+90 F(P:30) (0 1) NEXT P
   Origs: 30:fornext, 40:ifthen, 56:ifthen, 80:auto
   Dests: 110:auto
 100 (0 1) REM READ LEADING DIGITS
@@ -106,37 +106,37 @@ Halstead complexity:
 200 (0 1) REM TEST PRIMES TO 2000
   Origs: 
   Dests: 
-205 F(I) (1 3) FOR I = 1 TO 1000
+205 F(I:205) (1 3) FOR I = 1 TO 1000
   Origs: 150:auto
   Dests: 206:fornext, 207:fornext
-206 F(I) (0 3) LET N(I) = 0
+206 F(I:205) (0 3) LET N(I) = 0
   Origs: 205:fornext
   Dests: 207:auto
-207 F(I) (0 1) NEXT I
+207 F(I:205) (0 1) NEXT I
   Origs: 205:fornext, 206:auto
   Dests: 210:auto
-210 F(I) (1 3) FOR I = 1 TO K
+210 F(I:210) (1 3) FOR I = 1 TO K
   Origs: 207:auto
   Dests: 220:fornext, 270:fornext
-220 F(I) (0 3) LET F = P(I)
+220 F(I:210) (0 3) LET F = P(I)
   Origs: 210:fornext
   Dests: 230:auto
-230 F(I) (0 2) GOSUB 800
+230 F(I:210) (0 2) GOSUB 800
   Origs: 220:auto
   Dests: 239:auto, 810:gosub
-239 F(I) (1 4) IF Z > 999 THEN 270
+239 F(I:210) (1 4) IF Z > 999 THEN 270
   Origs: 230:auto
   Dests: 240:auto, 270:ifthen
-240 F(I,J) (1 4) FOR J = Z TO 999 STEP F
+240 F(I:210,J:240) (1 4) FOR J = Z TO 999 STEP F
   Origs: 239:auto
   Dests: 250:fornext, 260:fornext
-250 F(I,J) (0 4) LET N(J) = -1
+250 F(I:210,J:240) (0 4) LET N(J) = -1
   Origs: 240:fornext
   Dests: 260:auto
-260 F(I,J) (0 1) NEXT J
+260 F(I:210,J:240) (0 1) NEXT J
   Origs: 240:fornext, 250:auto
   Dests: 270:auto
-270 F(I) (0 1) NEXT I
+270 F(I:210) (0 1) NEXT I
   Origs: 210:fornext, 239:ifthen, 260:auto
   Dests: 405:auto
 280 (0 0) 
@@ -178,19 +178,19 @@ Halstead complexity:
 702 (0 3) LET S = 0
   Origs: 470:auto
   Dests: 705:auto
-705 F(I) (1 3) FOR I = 0 TO 999
+705 F(I:705) (1 3) FOR I = 0 TO 999
   Origs: 702:auto
   Dests: 710:fornext, 730:fornext
-710 F(I) (1 4) IF N(I) < 0 THEN 730
+710 F(I:705) (1 4) IF N(I) < 0 THEN 730
   Origs: 705:fornext
   Dests: 720:auto, 730:ifthen
-720 F(I) (0 4) PRINT 2 * I + 1;
+720 F(I:705) (0 4) PRINT 2 * I + 1;
   Origs: 710:auto
   Dests: 725:auto
-725 F(I) (0 4) LET S = S + 1
+725 F(I:705) (0 4) LET S = S + 1
   Origs: 720:auto
   Dests: 730:auto
-730 F(I) (0 1) NEXT I
+730 F(I:705) (0 1) NEXT I
   Origs: 705:fornext, 710:ifthen, 725:auto
   Dests: 732:auto
 732 (0 2) PRINT
@@ -214,19 +214,19 @@ Halstead complexity:
 752 (0 2) PRINT
   Origs: 750:auto
   Dests: 755:auto
-755 F(I) (1 3) FOR I = 0 TO 998
+755 F(I:755) (1 3) FOR I = 0 TO 998
   Origs: 752:auto
   Dests: 760:fornext, 780:fornext
-760 F(I) (1 4) IF N(I) < 0 THEN 780
+760 F(I:755) (1 4) IF N(I) < 0 THEN 780
   Origs: 755:fornext
   Dests: 765:auto, 780:ifthen
-765 F(I) (1 4) IF N(I + 1) < 0 THEN 780
+765 F(I:755) (1 4) IF N(I + 1) < 0 THEN 780
   Origs: 760:auto
   Dests: 770:auto, 780:ifthen
-770 F(I) (0 7) PRINT 2 * I + 1, 2 * I + 3
+770 F(I:755) (0 7) PRINT 2 * I + 1, 2 * I + 3
   Origs: 765:auto
   Dests: 780:auto
-780 F(I) (0 1) NEXT I
+780 F(I:755) (0 1) NEXT I
   Origs: 755:fornext, 760:ifthen, 765:ifthen, 770:auto
   Dests: 790:auto
 790 (0 1) STOP

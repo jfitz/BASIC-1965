@@ -25,19 +25,19 @@ Halstead complexity:
 20 (0 3) PRINT "ANGLE", "SINE"
   Origs: 10:auto
   Dests: 30:auto
-30 F(I) (1 4) FOR I = 0 TO 2 STEP 0.1
+30 F(I:30) (1 4) FOR I = 0 TO 2 STEP 0.1
   Origs: 20:auto
   Dests: 40:fornext, 70:fornext
-40 F(I) (0 4) LET A = I * P
+40 F(I:30) (0 4) LET A = I * P
   Origs: 30:fornext
   Dests: 50:auto
-50 F(I) (0 4) LET S = SIN(A)
+50 F(I:30) (0 4) LET S = SIN(A)
   Origs: 40:auto
   Dests: 60:auto
-60 F(I) (0 3) PRINT A, S
+60 F(I:30) (0 3) PRINT A, S
   Origs: 50:auto
   Dests: 70:auto
-70 F(I) (0 1) NEXT I
+70 F(I:30) (0 1) NEXT I
   Origs: 30:fornext, 60:auto
   Dests: 99:auto
 99 (0 1) END

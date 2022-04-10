@@ -25,34 +25,34 @@ Halstead complexity:
 110 (0 3) LET C = 0
   Origs: 100:auto
   Dests: 120:auto
-120 F(N) (1 3) FOR N = 1 TO 1000
+120 F(N:120) (1 3) FOR N = 1 TO 1000
   Origs: 110:auto
   Dests: 130:fornext, 200:fornext
-130 F(N) (0 4) LET Y = RND(Z)
+130 F(N:120) (0 4) LET Y = RND(Z)
   Origs: 120:fornext
   Dests: 140:auto
-140 F(N) (0 4) LET R = RND(Z)
+140 F(N:120) (0 4) LET R = RND(Z)
   Origs: 130:auto
   Dests: 150:auto
-150 F(N) (0 8) LET A = P * (R - 1 / 2)
+150 F(N:120) (0 8) LET A = P * (R - 1 / 2)
   Origs: 140:auto
   Dests: 160:auto
-160 F(N) (0 5) LET Y1 = Y - COS(A)
+160 F(N:120) (0 5) LET Y1 = Y - COS(A)
   Origs: 150:auto
   Dests: 170:auto
-170 F(N) (0 5) LET Y2 = Y + COS(A)
+170 F(N:120) (0 5) LET Y2 = Y + COS(A)
   Origs: 160:auto
   Dests: 172:auto
-172 F(N) (0 4) LET C2 = COS(A)
+172 F(N:120) (0 4) LET C2 = COS(A)
   Origs: 170:auto
   Dests: 180:auto
-180 F(N) (1 6) IF SGN(Y1) = SGN(Y2) THEN 200
+180 F(N:120) (1 6) IF SGN(Y1) = SGN(Y2) THEN 200
   Origs: 172:auto
   Dests: 190:auto, 200:ifthen
-190 F(N) (0 4) LET C = C + 1
+190 F(N:120) (0 4) LET C = C + 1
   Origs: 180:auto
   Dests: 200:auto
-200 F(N) (0 1) NEXT N
+200 F(N:120) (0 1) NEXT N
   Origs: 120:fornext, 180:ifthen, 190:auto
   Dests: 210:auto
 210 (0 4) LET F = C / N

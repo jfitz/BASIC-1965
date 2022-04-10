@@ -1,23 +1,23 @@
-10 F(I) FOR I = -5 TO 10
+10 F(I:10) FOR I = -5 TO 10
  I = -5
  -5 = -5
  terminated:false
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (10) -5
  A = 5
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (10) -5
  S = 2.23607
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (10) -5
  A1 = 8
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (10) -5
  S1 = 2.82843
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (10) -5
  S2 = 5.65686
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (10) -5
 -5              
  A: (20) 5
@@ -30,26 +30,26 @@
  2.82843        
  S2: (34) 5.65686
  5.65686
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (10) -5
  terminated:false
  I = -4
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) -4
  A = 4
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) -4
  S = 2
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) -4
  A1 = 7
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) -4
  S1 = 2.64575
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) -4
  S2 = 5.2915
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) -4
 -4              
  A: (20) 4
@@ -62,26 +62,26 @@
  2.64575        
  S2: (34) 5.2915
  5.2915
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) -4
  terminated:false
  I = -3
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) -3
  A = 3
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) -3
  S = 1.73205
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) -3
  A1 = 6
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) -3
  S1 = 2.44949
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) -3
  S2 = 4.89898
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) -3
 -3              
  A: (20) 3
@@ -94,26 +94,26 @@
  2.44949        
  S2: (34) 4.89898
  4.89898
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) -3
  terminated:false
  I = -2
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) -2
  A = 2
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) -2
  S = 1.41421
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) -2
  A1 = 5
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) -2
  S1 = 2.23607
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) -2
  S2 = 4.47214
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) -2
 -2              
  A: (20) 2
@@ -126,26 +126,26 @@
  2.23607        
  S2: (34) 4.47214
  4.47214
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) -2
  terminated:false
  I = -1
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) -1
  A = 1
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) -1
  S = 1
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) -1
  A1 = 4
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) -1
  S1 = 2
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) -1
  S2 = 4
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) -1
 -1              
  A: (20) 1
@@ -158,26 +158,26 @@
  2              
  S2: (34) 4
  4
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) -1
  terminated:false
  I = 0
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 0
  A = 0
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 0
  S = 0
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 0
  A1 = 3
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 0
  S1 = 1.73205
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 0
  S2 = 3.4641
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 0
  0              
  A: (20) 0
@@ -190,26 +190,26 @@
  1.73205        
  S2: (34) 3.4641
  3.4641
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 0
  terminated:false
  I = 1
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 1
  A = 1
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 1
  S = 1
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 1
  A1 = 4
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 1
  S1 = 2
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 1
  S2 = 4
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 1
  1              
  A: (20) 1
@@ -222,26 +222,26 @@
  2              
  S2: (34) 4
  4
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 1
  terminated:false
  I = 2
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 2
  A = 2
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 2
  S = 1.41421
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 2
  A1 = 5
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 2
  S1 = 2.23607
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 2
  S2 = 4.47214
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 2
  2              
  A: (20) 2
@@ -254,26 +254,26 @@
  2.23607        
  S2: (34) 4.47214
  4.47214
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 2
  terminated:false
  I = 3
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 3
  A = 3
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 3
  S = 1.73205
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 3
  A1 = 6
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 3
  S1 = 2.44949
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 3
  S2 = 4.89898
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 3
  3              
  A: (20) 3
@@ -286,26 +286,26 @@
  2.44949        
  S2: (34) 4.89898
  4.89898
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 3
  terminated:false
  I = 4
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 4
  A = 4
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 4
  S = 2
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 4
  A1 = 7
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 4
  S1 = 2.64575
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 4
  S2 = 5.2915
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 4
  4              
  A: (20) 4
@@ -318,26 +318,26 @@
  2.64575        
  S2: (34) 5.2915
  5.2915
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 4
  terminated:false
  I = 5
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 5
  A = 5
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 5
  S = 2.23607
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 5
  A1 = 8
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 5
  S1 = 2.82843
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 5
  S2 = 5.65686
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 5
  5              
  A: (20) 5
@@ -350,26 +350,26 @@
  2.82843        
  S2: (34) 5.65686
  5.65686
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 5
  terminated:false
  I = 6
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 6
  A = 6
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 6
  S = 2.44949
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 6
  A1 = 9
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 6
  S1 = 3
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 6
  S2 = 6
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 6
  6              
  A: (20) 6
@@ -382,26 +382,26 @@
  3              
  S2: (34) 6
  6
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 6
  terminated:false
  I = 7
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 7
  A = 7
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 7
  S = 2.64575
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 7
  A1 = 10
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 7
  S1 = 3.16228
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 7
  S2 = 6.32456
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 7
  7              
  A: (20) 7
@@ -414,26 +414,26 @@
  3.16228        
  S2: (34) 6.32456
  6.32456
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 7
  terminated:false
  I = 8
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 8
  A = 8
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 8
  S = 2.82843
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 8
  A1 = 11
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 8
  S1 = 3.31662
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 8
  S2 = 6.63324
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 8
  8              
  A: (20) 8
@@ -446,26 +446,26 @@
  3.31662        
  S2: (34) 6.63324
  6.63324
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 8
  terminated:false
  I = 9
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 9
  A = 9
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 9
  S = 3
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 9
  A1 = 12
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 9
  S1 = 3.4641
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 9
  S2 = 6.9282
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 9
  9              
  A: (20) 9
@@ -478,26 +478,26 @@
  3.4641         
  S2: (34) 6.9282
  6.9282
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 9
  terminated:false
  I = 10
-20 F(I) LET A = ABS(I)
+20 F(I:10) LET A = ABS(I)
  I: (50) 10
  A = 10
-30 F(I) LET S = SQR(ABS(I))
+30 F(I:10) LET S = SQR(ABS(I))
  I: (50) 10
  S = 3.16228
-31 F(I) LET A1 = ABS(I) + 3
+31 F(I:10) LET A1 = ABS(I) + 3
  I: (50) 10
  A1 = 13
-32 F(I) LET S1 = SQR(ABS(I) + 3)
+32 F(I:10) LET S1 = SQR(ABS(I) + 3)
  I: (50) 10
  S1 = 3.60555
-34 F(I) LET S2 = SQR(ABS(I) + 3) * 2
+34 F(I:10) LET S2 = SQR(ABS(I) + 3) * 2
  I: (50) 10
  S2 = 7.2111
-40 F(I) PRINT I, A, S, A1, S1, S2
+40 F(I:10) PRINT I, A, S, A1, S1, S2
  I: (50) 10
  10             
  A: (20) 10
@@ -510,7 +510,7 @@
  3.60555        
  S2: (34) 7.2111
  7.2111
-50 F(I) NEXT I
+50 F(I:10) NEXT I
  I: (50) 10
  terminated:true
 99 END

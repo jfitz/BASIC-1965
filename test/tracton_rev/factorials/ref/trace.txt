@@ -5,48 +5,48 @@ X =
  X = 5
 50 LET Z = 1
  Z = 1
-60 F(I) FOR I = 1 TO X
+60 F(I:60) FOR I = 1 TO X
  X: 5
  I = 1
  X = 5
  terminated:false
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 1
  I: 1
  Z = 1
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 1
  terminated:false
  I = 2
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 1
  I: 2
  Z = 2
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 2
  terminated:false
  I = 3
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 2
  I: 3
  Z = 6
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 3
  terminated:false
  I = 4
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 6
  I: 4
  Z = 24
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 4
  terminated:false
  I = 5
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 24
  I: 5
  Z = 120
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 5
  terminated:true
 90 PRINT "X = "; X, "X! = "; Z
@@ -73,64 +73,64 @@ X =
  X = 7
 50 LET Z = 1
  Z = 1
-60 F(I) FOR I = 1 TO X
+60 F(I:60) FOR I = 1 TO X
  X: 7
  I = 1
  X = 7
  terminated:false
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 1
  I: 1
  Z = 1
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 1
  terminated:false
  I = 2
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 1
  I: 2
  Z = 2
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 2
  terminated:false
  I = 3
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 2
  I: 3
  Z = 6
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 3
  terminated:false
  I = 4
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 6
  I: 4
  Z = 24
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 4
  terminated:false
  I = 5
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 24
  I: 5
  Z = 120
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 5
  terminated:false
  I = 6
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 120
  I: 6
  Z = 720
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 6
  terminated:false
  I = 7
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 720
  I: 7
  Z = 5040
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 7
  terminated:true
 90 PRINT "X = "; X, "X! = "; Z
@@ -157,152 +157,152 @@ X =
  X = 18
 50 LET Z = 1
  Z = 1
-60 F(I) FOR I = 1 TO X
+60 F(I:60) FOR I = 1 TO X
  X: 18
  I = 1
  X = 18
  terminated:false
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 1
  I: 1
  Z = 1
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 1
  terminated:false
  I = 2
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 1
  I: 2
  Z = 2
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 2
  terminated:false
  I = 3
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 2
  I: 3
  Z = 6
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 3
  terminated:false
  I = 4
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 6
  I: 4
  Z = 24
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 4
  terminated:false
  I = 5
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 24
  I: 5
  Z = 120
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 5
  terminated:false
  I = 6
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 120
  I: 6
  Z = 720
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 6
  terminated:false
  I = 7
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 720
  I: 7
  Z = 5040
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 7
  terminated:false
  I = 8
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 5040
  I: 8
  Z = 40320
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 8
  terminated:false
  I = 9
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 40320
  I: 9
  Z = 362880
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 9
  terminated:false
  I = 10
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 362880
  I: 10
  Z = 3628800
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 10
  terminated:false
  I = 11
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 3628800
  I: 11
  Z = 39916800
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 11
  terminated:false
  I = 12
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 39916800
  I: 12
  Z = 479002000
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 12
  terminated:false
  I = 13
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 479002000
  I: 13
  Z = 6227030000
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 13
  terminated:false
  I = 14
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 6227030000
  I: 14
  Z = 87178400000
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 14
  terminated:false
  I = 15
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 87178400000
  I: 15
  Z = 1307680000000
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 15
  terminated:false
  I = 16
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 1307680000000
  I: 16
  Z = 20922900000000
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 16
  terminated:false
  I = 17
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 20922900000000
  I: 17
  Z = 355689000000000
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 17
  terminated:false
  I = 18
-70 F(I) LET Z = Z * I
+70 F(I:60) LET Z = Z * I
  Z: 355689000000000
  I: 18
  Z = 6402400000000000
-80 F(I) NEXT I
+80 F(I:60) NEXT I
  I: 18
  terminated:true
 90 PRINT "X = "; X, "X! = "; Z

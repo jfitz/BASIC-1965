@@ -1,76 +1,76 @@
 11 OPTION BASE 1
 12 OPTION REQUIRE_INITIALIZED TRUE
 20 DIM A(10)
-21 F(I) FOR I = 1 TO 10
+21 F(I:21) FOR I = 1 TO 10
  I = 1
  terminated:false
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 1
  A(1) = 1
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 1
  terminated:false
  I = 2
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 2
  A(2) = 2
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 2
  terminated:false
  I = 3
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 3
  A(3) = 3
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 3
  terminated:false
  I = 4
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 4
  A(4) = 4
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 4
  terminated:false
  I = 5
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 5
  A(5) = 5
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 5
  terminated:false
  I = 6
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 6
  A(6) = 6
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 6
  terminated:false
  I = 7
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 7
  A(7) = 7
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 7
  terminated:false
  I = 8
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 8
  A(8) = 8
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 8
  terminated:false
  I = 9
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 9
  A(9) = 9
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 9
  terminated:false
  I = 10
-22 F(I) LET A(I) = I
+22 F(I:21) LET A(I) = I
  I: 10
  A(10) = 10
-23 F(I) NEXT I
+23 F(I:21) NEXT I
  I: 10
  terminated:true
 30 ARR PRINT A

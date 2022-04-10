@@ -48,14 +48,14 @@ STOP in line 999
 190 (1) PRINT
 200 (1) READ X, Y
 210 (1) PRINT 0, X, Y
-220 F(I) (1) FOR I = 1 TO P
-230 F(I,T) (35) FOR T = 0 TO T9 / P STEP T8
-240 F(I,T) (420) LET X = X + (A * X - B * X * Y) * T8
-250 F(I,T) (420) LET Y = Y + (C * X * Y - D * Y) * T8
-255 F(I,T) (420) LET T1 = T1 + T8
-260 F(I,T) (420) NEXT T
-270 F(I) (35) PRINT T1, X, Y
-280 F(I) (35) NEXT I
+220 F(I:220) (1) FOR I = 1 TO P
+230 F(I:220,T:230) (35) FOR T = 0 TO T9 / P STEP T8
+240 F(I:220,T:230) (420) LET X = X + (A * X - B * X * Y) * T8
+250 F(I:220,T:230) (420) LET Y = Y + (C * X * Y - D * Y) * T8
+255 F(I:220,T:230) (420) LET T1 = T1 + T8
+260 F(I:220,T:230) (420) NEXT T
+270 F(I:220) (35) PRINT T1, X, Y
+280 F(I:220) (35) NEXT I
 290 (0) 
 900 (0) DATA 3, 0.5
 999 (1) END

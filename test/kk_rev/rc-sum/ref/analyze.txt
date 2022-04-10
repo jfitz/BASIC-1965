@@ -22,64 +22,64 @@ Halstead complexity:
 10 (2 3) READ R, C
   Origs: :start
   Dests: 20:auto
-20 F(I) (1 3) FOR I = 1 TO R
+20 F(I:20) (1 3) FOR I = 1 TO R
   Origs: 10:auto
   Dests: 30:fornext, 60:fornext
-30 F(I,J) (1 3) FOR J = 1 TO C
+30 F(I:20,J:30) (1 3) FOR J = 1 TO C
   Origs: 20:fornext
   Dests: 40:fornext, 50:fornext
-40 F(I,J) (1 2) READ T(I, J)
+40 F(I:20,J:30) (1 2) READ T(I, J)
   Origs: 30:fornext
   Dests: 50:auto
-50 F(I,J) (0 1) NEXT J
+50 F(I:20,J:30) (0 1) NEXT J
   Origs: 30:fornext, 40:auto
   Dests: 60:auto
-60 F(I) (0 1) NEXT I
+60 F(I:20) (0 1) NEXT I
   Origs: 20:fornext, 50:auto
   Dests: 70:auto
-70 F(I) (1 3) FOR I = 1 TO R
+70 F(I:70) (1 3) FOR I = 1 TO R
   Origs: 60:auto
   Dests: 80:fornext, 130:fornext
-80 F(I) (0 3) LET S = 0
+80 F(I:70) (0 3) LET S = 0
   Origs: 70:fornext
   Dests: 90:auto
-90 F(I,J) (1 3) FOR J = 1 TO C
+90 F(I:70,J:90) (1 3) FOR J = 1 TO C
   Origs: 80:auto
   Dests: 100:fornext, 110:fornext
-100 F(I,J) (0 4) LET S = S + T(I, J)
+100 F(I:70,J:90) (0 4) LET S = S + T(I, J)
   Origs: 90:fornext
   Dests: 110:auto
-110 F(I,J) (0 1) NEXT J
+110 F(I:70,J:90) (0 1) NEXT J
   Origs: 90:fornext, 100:auto
   Dests: 120:auto
-120 F(I) (0 5) PRINT "SUM OF ROW" I; "EQUALS" S
+120 F(I:70) (0 5) PRINT "SUM OF ROW" I; "EQUALS" S
   Origs: 110:auto
   Dests: 130:auto
-130 F(I) (0 1) NEXT I
+130 F(I:70) (0 1) NEXT I
   Origs: 70:fornext, 120:auto
   Dests: 140:auto
 140 (0 2) PRINT
   Origs: 130:auto
   Dests: 150:auto
-150 F(J) (1 3) FOR J = 1 TO C
+150 F(J:150) (1 3) FOR J = 1 TO C
   Origs: 140:auto
   Dests: 160:fornext, 210:fornext
-160 F(J) (0 3) LET S = 0
+160 F(J:150) (0 3) LET S = 0
   Origs: 150:fornext
   Dests: 170:auto
-170 F(J,I) (1 3) FOR I = 1 TO R
+170 F(J:150,I:170) (1 3) FOR I = 1 TO R
   Origs: 160:auto
   Dests: 180:fornext, 190:fornext
-180 F(J,I) (0 4) LET S = S + T(I, J)
+180 F(J:150,I:170) (0 4) LET S = S + T(I, J)
   Origs: 170:fornext
   Dests: 190:auto
-190 F(J,I) (0 1) NEXT I
+190 F(J:150,I:170) (0 1) NEXT I
   Origs: 170:fornext, 180:auto
   Dests: 200:auto
-200 F(J) (0 5) PRINT "SUM OF COLUMN" J; "EQUALS" S
+200 F(J:150) (0 5) PRINT "SUM OF COLUMN" J; "EQUALS" S
   Origs: 190:auto
   Dests: 210:auto
-210 F(J) (0 1) NEXT J
+210 F(J:150) (0 1) NEXT J
   Origs: 150:fornext, 200:auto
   Dests: 260:auto
 220 (0 2) DATA 3, 5

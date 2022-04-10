@@ -31,55 +31,55 @@ Halstead complexity:
 40 (0 3) PRINT "YEAR", "SAVING"
   Origs: 30:auto
   Dests: 100:auto
-100 F(Y1) (1 3) FOR Y1 = 1 TO Y
+100 F(Y1:100) (1 3) FOR Y1 = 1 TO Y
   Origs: 40:auto
   Dests: 105:fornext, 290:fornext
-105 F(Y1) (0 2) PRINT Y1,
+105 F(Y1:100) (0 2) PRINT Y1,
   Origs: 100:fornext
   Dests: 108:auto
-108 F(Y1) (0 3) LET A1 = A
+108 F(Y1:100) (0 3) LET A1 = A
   Origs: 105:auto
   Dests: 110:auto
-110 F(Y1,I) (1 4) FOR I = 1 TO Y1 - 1
+110 F(Y1:100,I:110) (1 4) FOR I = 1 TO Y1 - 1
   Origs: 108:auto
   Dests: 120:fornext, 150:fornext
-120 F(Y1,I) (0 5) LET D(I) = A1 * 2 / Y
+120 F(Y1:100,I:110) (0 5) LET D(I) = A1 * 2 / Y
   Origs: 110:fornext
   Dests: 130:auto
-130 F(Y1,I) (0 4) LET A1 = A1 - D(I)
+130 F(Y1:100,I:110) (0 4) LET A1 = A1 - D(I)
   Origs: 120:auto
   Dests: 150:auto
-150 F(Y1,I) (0 1) NEXT I
+150 F(Y1:100,I:110) (0 1) NEXT I
   Origs: 110:fornext, 130:auto
   Dests: 160:auto
-160 F(Y1) (0 7) LET D = A1 / (Y - Y1 + 1)
+160 F(Y1:100) (0 7) LET D = A1 / (Y - Y1 + 1)
   Origs: 150:auto
   Dests: 170:auto
-170 F(Y1,I) (1 3) FOR I = Y1 TO Y
+170 F(Y1:100,I:170) (1 3) FOR I = Y1 TO Y
   Origs: 160:auto
   Dests: 180:fornext, 190:fornext
-180 F(Y1,I) (0 3) LET D(I) = D
+180 F(Y1:100,I:170) (0 3) LET D(I) = D
   Origs: 170:fornext
   Dests: 190:auto
-190 F(Y1,I) (0 1) NEXT I
+190 F(Y1:100,I:170) (0 1) NEXT I
   Origs: 170:fornext, 180:auto
   Dests: 200:auto
-200 F(Y1) (0 3) LET S = 0
+200 F(Y1:100) (0 3) LET S = 0
   Origs: 190:auto
   Dests: 210:auto
-210 F(Y1,I) (1 3) FOR I = 1 TO Y
+210 F(Y1:100,I:210) (1 3) FOR I = 1 TO Y
   Origs: 200:auto
   Dests: 220:fornext, 230:fornext
-220 F(Y1,I) (0 16) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
+220 F(Y1:100,I:210) (0 16) LET S = S + D(I) * (T / 100) * (1 + R / 100) ^ (Y - I)
   Origs: 210:fornext
   Dests: 230:auto
-230 F(Y1,I) (0 1) NEXT I
+230 F(Y1:100,I:210) (0 1) NEXT I
   Origs: 210:fornext, 220:auto
   Dests: 240:auto
-240 F(Y1) (0 2) PRINT S
+240 F(Y1:100) (0 2) PRINT S
   Origs: 230:auto
   Dests: 290:auto
-290 F(Y1) (0 1) NEXT Y1
+290 F(Y1:100) (0 1) NEXT Y1
   Origs: 100:fornext, 240:auto
   Dests: 999:auto
 900 (0 2) DATA 5000, 7

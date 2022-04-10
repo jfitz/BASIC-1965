@@ -2,433 +2,433 @@
  P               Q               R              FORMULA
 15 PRINT
 
-20 F(P) FOR P = 1 TO 0 STEP -1
+20 F(P:20) FOR P = 1 TO 0 STEP -1
  P = 1
  -1 = -1
  terminated:false
-30 F(P,Q) FOR Q = 1 TO 0 STEP -1
+30 F(P:20,Q:30) FOR Q = 1 TO 0 STEP -1
  Q = 1
  -1 = -1
  terminated:false
-40 F(P,Q,R) FOR R = 1 TO 0 STEP -1
+40 F(P:20,Q:30,R:40) FOR R = 1 TO 0 STEP -1
  R = 1
  -1 = -1
  terminated:false
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 1
  X = 1
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 1
  X = 1
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 1
  X = 1
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 1
  Q: 1
  R: 1
  X = 1
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 1
  terminated:false
  R = 0
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 1
  X = 1
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 1
  X = 1
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 0
  X = 0
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 1
  Q: 1
  R: 0
  X = 1
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 0
  terminated:true
-140 F(P,Q) NEXT Q
+140 F(P:20,Q:30) NEXT Q
  Q: 1
  terminated:false
  Q = 0
-40 F(P,Q,R) FOR R = 1 TO 0 STEP -1
+40 F(P:20,Q:30,R:40) FOR R = 1 TO 0 STEP -1
  R = 1
  -1 = -1
  terminated:false
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 1
  X = 1
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 0
  X = 0
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 1
  X = 1
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 1
  Q: 0
  R: 1
  X = 1
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 1
  terminated:false
  R = 0
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 1
  X = 1
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 0
  X = 0
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 0
  X = 0
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 1
  Q: 0
  R: 0
  X = 0
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 0
  terminated:true
-140 F(P,Q) NEXT Q
+140 F(P:20,Q:30) NEXT Q
  Q: 0
  terminated:true
-150 F(P) NEXT P
+150 F(P:20) NEXT P
  P: 1
  terminated:false
  P = 0
-30 F(P,Q) FOR Q = 1 TO 0 STEP -1
+30 F(P:20,Q:30) FOR Q = 1 TO 0 STEP -1
  Q = 1
  -1 = -1
  terminated:false
-40 F(P,Q,R) FOR R = 1 TO 0 STEP -1
+40 F(P:20,Q:30,R:40) FOR R = 1 TO 0 STEP -1
  R = 1
  -1 = -1
  terminated:false
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 0
  X = 0
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 1
  X = 1
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 1
  X = 1
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 0
  Q: 1
  R: 1
  X = 0
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 1
  terminated:false
  R = 0
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 0
  X = 0
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 1
  X = 1
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 0
  X = 0
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 0
  Q: 1
  R: 0
  X = 0
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 0
  terminated:true
-140 F(P,Q) NEXT Q
+140 F(P:20,Q:30) NEXT Q
  Q: 1
  terminated:false
  Q = 0
-40 F(P,Q,R) FOR R = 1 TO 0 STEP -1
+40 F(P:20,Q:30,R:40) FOR R = 1 TO 0 STEP -1
  R = 1
  -1 = -1
  terminated:false
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 0
  X = 0
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 0
  X = 0
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 1
  X = 1
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 1
  X > 0: true
 250 G(200) PRINT "TRUE",
 TRUE            
 260 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 0
  Q: 0
  R: 1
  X = 0
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 1
  terminated:false
  R = 0
-50 F(P,Q,R) LET X = P
+50 F(P:20,Q:30,R:40) LET X = P
  P: 0
  X = 0
-60 F(P,Q,R) GOSUB 200
+60 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-70 F(P,Q,R) LET X = Q
+70 F(P:20,Q:30,R:40) LET X = Q
  Q: 0
  X = 0
-80 F(P,Q,R) GOSUB 200
+80 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-90 F(P,Q,R) LET X = R
+90 F(P:20,Q:30,R:40) LET X = R
  R: 0
  X = 0
-95 F(P,Q,R) GOSUB 200
+95 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-100 F(P,Q,R) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) LET X = P * SGN(Q + R)
  P: 0
  Q: 0
  R: 0
  X = 0
-110 F(P,Q,R) GOSUB 200
+110 F(P:20,Q:30,R:40) GOSUB 200
 200 G(200) IF X > 0 THEN 250
  X: 0
  X > 0: false
 210 G(200) PRINT "FALSE",
 FALSE           
 220 G(200) RETURN
-120 F(P,Q,R) PRINT
+120 F(P:20,Q:30,R:40) PRINT
 
-130 F(P,Q,R) NEXT R
+130 F(P:20,Q:30,R:40) NEXT R
  R: 0
  terminated:true
-140 F(P,Q) NEXT Q
+140 F(P:20,Q:30) NEXT Q
  Q: 0
  terminated:true
-150 F(P) NEXT P
+150 F(P:20) NEXT P
  P: 0
  terminated:true
 160 STOP

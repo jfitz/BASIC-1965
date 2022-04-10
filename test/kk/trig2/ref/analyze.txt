@@ -37,13 +37,13 @@ Halstead complexity:
 50 (0 4) PRINT "DEGREES", "SINE", "COSINE"
   Origs: 10:auto
   Dests: 60:auto
-60 F(X) (1 4) FOR X = 0 TO 90 STEP 10
+60 F(X:60) (1 4) FOR X = 0 TO 90 STEP 10
   Origs: 50:auto
   Dests: 70:fornext, 80:fornext
-70 F(X) (0 8) PRINT X, FNR(FNS(X)), FNR(FNC(X))
+70 F(X:60) (0 8) PRINT X, FNR(FNS(X)), FNR(FNC(X))
   Origs: 60:fornext
   Dests: 80:auto
-80 F(X) (0 1) NEXT X
+80 F(X:60) (0 1) NEXT X
   Origs: 60:fornext, 70:auto
   Dests: 99:auto
 99 (0 1) END

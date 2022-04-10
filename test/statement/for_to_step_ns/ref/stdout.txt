@@ -14,9 +14,9 @@ STOP in line 90
 20 (1) LET B = 10
 21 (1) LET E = 1
 22 (1) LET S = -1
-30 F(I) (1) FOR I = B TO E STEP S
-40 F(I) (10) PRINT I
-50 F(I) (10) NEXT I
+30 F(I:30) (1) FOR I = B TO E STEP S
+40 F(I:30) (10) PRINT I
+50 F(I:30) (10) NEXT I
 90 (1) STOP
 99 (0) END
 

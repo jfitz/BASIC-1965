@@ -16,148 +16,148 @@
  Z = 0
 160 READ N
  N = 5
-170 F(I) FOR I = 1 TO N
+170 F(I:170) FOR I = 1 TO N
  N: 5
  I = 1
  N = 5
  terminated:false
-180 F(I) READ X, Y
+180 F(I:170) READ X, Y
  X = 480
  Y = 56
-190 F(I) LET X1 = X1 + X
+190 F(I:170) LET X1 = X1 + X
  X1: 0
  X: 480
  X1 = 480
-200 F(I) LET Y1 = Y1 + Y
+200 F(I:170) LET Y1 = Y1 + Y
  Y1: 0
  Y: 56
  Y1 = 56
-210 F(I) LET X2 = X2 + X * X
+210 F(I:170) LET X2 = X2 + X * X
  X2: 0
  X: 480
  X2 = 230400
-220 F(I) LET Y2 = Y2 + Y * Y
+220 F(I:170) LET Y2 = Y2 + Y * Y
  Y2: 0
  Y: 56
  Y2 = 3136
-230 F(I) LET Z = Z + X * Y
+230 F(I:170) LET Z = Z + X * Y
  Z: 0
  X: 480
  Y: 56
  Z = 26880
-240 F(I) NEXT I
+240 F(I:170) NEXT I
  I: 1
  terminated:false
  I = 2
-180 F(I) READ X, Y
+180 F(I:170) READ X, Y
  X = 500
  Y = 61
-190 F(I) LET X1 = X1 + X
+190 F(I:170) LET X1 = X1 + X
  X1: 480
  X: 500
  X1 = 980
-200 F(I) LET Y1 = Y1 + Y
+200 F(I:170) LET Y1 = Y1 + Y
  Y1: 56
  Y: 61
  Y1 = 117
-210 F(I) LET X2 = X2 + X * X
+210 F(I:170) LET X2 = X2 + X * X
  X2: 230400
  X: 500
  X2 = 480400
-220 F(I) LET Y2 = Y2 + Y * Y
+220 F(I:170) LET Y2 = Y2 + Y * Y
  Y2: 3136
  Y: 61
  Y2 = 6857
-230 F(I) LET Z = Z + X * Y
+230 F(I:170) LET Z = Z + X * Y
  Z: 26880
  X: 500
  Y: 61
  Z = 57380
-240 F(I) NEXT I
+240 F(I:170) NEXT I
  I: 2
  terminated:false
  I = 3
-180 F(I) READ X, Y
+180 F(I:170) READ X, Y
  X = 520
  Y = 78
-190 F(I) LET X1 = X1 + X
+190 F(I:170) LET X1 = X1 + X
  X1: 980
  X: 520
  X1 = 1500
-200 F(I) LET Y1 = Y1 + Y
+200 F(I:170) LET Y1 = Y1 + Y
  Y1: 117
  Y: 78
  Y1 = 195
-210 F(I) LET X2 = X2 + X * X
+210 F(I:170) LET X2 = X2 + X * X
  X2: 480400
  X: 520
  X2 = 750800
-220 F(I) LET Y2 = Y2 + Y * Y
+220 F(I:170) LET Y2 = Y2 + Y * Y
  Y2: 6857
  Y: 78
  Y2 = 12941
-230 F(I) LET Z = Z + X * Y
+230 F(I:170) LET Z = Z + X * Y
  Z: 57380
  X: 520
  Y: 78
  Z = 97940
-240 F(I) NEXT I
+240 F(I:170) NEXT I
  I: 3
  terminated:false
  I = 4
-180 F(I) READ X, Y
+180 F(I:170) READ X, Y
  X = 540
  Y = 71
-190 F(I) LET X1 = X1 + X
+190 F(I:170) LET X1 = X1 + X
  X1: 1500
  X: 540
  X1 = 2040
-200 F(I) LET Y1 = Y1 + Y
+200 F(I:170) LET Y1 = Y1 + Y
  Y1: 195
  Y: 71
  Y1 = 266
-210 F(I) LET X2 = X2 + X * X
+210 F(I:170) LET X2 = X2 + X * X
  X2: 750800
  X: 540
  X2 = 1042400
-220 F(I) LET Y2 = Y2 + Y * Y
+220 F(I:170) LET Y2 = Y2 + Y * Y
  Y2: 12941
  Y: 71
  Y2 = 17982
-230 F(I) LET Z = Z + X * Y
+230 F(I:170) LET Z = Z + X * Y
  Z: 97940
  X: 540
  Y: 71
  Z = 136280
-240 F(I) NEXT I
+240 F(I:170) NEXT I
  I: 4
  terminated:false
  I = 5
-180 F(I) READ X, Y
+180 F(I:170) READ X, Y
  X = 560
  Y = 82
-190 F(I) LET X1 = X1 + X
+190 F(I:170) LET X1 = X1 + X
  X1: 2040
  X: 560
  X1 = 2600
-200 F(I) LET Y1 = Y1 + Y
+200 F(I:170) LET Y1 = Y1 + Y
  Y1: 266
  Y: 82
  Y1 = 348
-210 F(I) LET X2 = X2 + X * X
+210 F(I:170) LET X2 = X2 + X * X
  X2: 1042400
  X: 560
  X2 = 1356000
-220 F(I) LET Y2 = Y2 + Y * Y
+220 F(I:170) LET Y2 = Y2 + Y * Y
  Y2: 17982
  Y: 82
  Y2 = 24706
-230 F(I) LET Z = Z + X * Y
+230 F(I:170) LET Z = Z + X * Y
  Z: 136280
  X: 560
  Y: 82
  Z = 182200
-240 F(I) NEXT I
+240 F(I:170) NEXT I
  I: 5
  terminated:true
 260 LET X3 = X1 / N

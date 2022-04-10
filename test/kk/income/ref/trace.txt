@@ -1,238 +1,238 @@
 900 DATA 15000, 22500, 7350, 32700, 51000, 8400, 12700, 8100, 29000, 35460
-10 F(D) FOR D = 0 TO 5
+10 F(D:10) FOR D = 0 TO 5
  D = 0
  terminated:false
-20 F(D) LET N(D) = 0
+20 F(D:10) LET N(D) = 0
  D: 0
  N(0) = 0
-30 F(D) NEXT D
+30 F(D:10) NEXT D
  D: 0
  terminated:false
  D = 1
-20 F(D) LET N(D) = 0
+20 F(D:10) LET N(D) = 0
  D: 1
  N(1) = 0
-30 F(D) NEXT D
+30 F(D:10) NEXT D
  D: 1
  terminated:false
  D = 2
-20 F(D) LET N(D) = 0
+20 F(D:10) LET N(D) = 0
  D: 2
  N(2) = 0
-30 F(D) NEXT D
+30 F(D:10) NEXT D
  D: 2
  terminated:false
  D = 3
-20 F(D) LET N(D) = 0
+20 F(D:10) LET N(D) = 0
  D: 3
  N(3) = 0
-30 F(D) NEXT D
+30 F(D:10) NEXT D
  D: 3
  terminated:false
  D = 4
-20 F(D) LET N(D) = 0
+20 F(D:10) LET N(D) = 0
  D: 4
  N(4) = 0
-30 F(D) NEXT D
+30 F(D:10) NEXT D
  D: 4
  terminated:false
  D = 5
-20 F(D) LET N(D) = 0
+20 F(D:10) LET N(D) = 0
  D: 5
  N(5) = 0
-30 F(D) NEXT D
+30 F(D:10) NEXT D
  D: 5
  terminated:true
-40 F(I) FOR I = 1 TO 10
+40 F(I:40) FOR I = 1 TO 10
  I = 1
  terminated:false
-50 F(I) READ X
+50 F(I:40) READ X
  X = 15000
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 15000
  D = 1
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 1
  N(1): 0
  N(1) = 1
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 1
  terminated:false
  I = 2
-50 F(I) READ X
+50 F(I:40) READ X
  X = 22500
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 22500
  D = 2
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 2
  N(2): 0
  N(2) = 1
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 2
  terminated:false
  I = 3
-50 F(I) READ X
+50 F(I:40) READ X
  X = 7350
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 7350
  D = 0
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 0
  N(0): 0
  N(0) = 1
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 3
  terminated:false
  I = 4
-50 F(I) READ X
+50 F(I:40) READ X
  X = 32700
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 32700
  D = 3
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 3
  N(3): 0
  N(3) = 1
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 4
  terminated:false
  I = 5
-50 F(I) READ X
+50 F(I:40) READ X
  X = 51000
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 51000
  D = 5
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 5
  N(5): 0
  N(5) = 1
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 5
  terminated:false
  I = 6
-50 F(I) READ X
+50 F(I:40) READ X
  X = 8400
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 8400
  D = 0
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 0
  N(0): 1
  N(0) = 2
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 6
  terminated:false
  I = 7
-50 F(I) READ X
+50 F(I:40) READ X
  X = 12700
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 12700
  D = 1
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 1
  N(1): 1
  N(1) = 2
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 7
  terminated:false
  I = 8
-50 F(I) READ X
+50 F(I:40) READ X
  X = 8100
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 8100
  D = 0
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 0
  N(0): 2
  N(0) = 3
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 8
  terminated:false
  I = 9
-50 F(I) READ X
+50 F(I:40) READ X
  X = 29000
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 29000
  D = 2
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 2
  N(2): 1
  N(2) = 2
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 9
  terminated:false
  I = 10
-50 F(I) READ X
+50 F(I:40) READ X
  X = 35460
-60 F(I) LET D = INT(X / 10000)
+60 F(I:40) LET D = INT(X / 10000)
  X: 35460
  D = 3
-70 F(I) LET N(D) = N(D) + 1
+70 F(I:40) LET N(D) = N(D) + 1
  D: 3
  N(3): 1
  N(3) = 2
-80 F(I) NEXT I
+80 F(I:40) NEXT I
  I: 10
  terminated:true
 100 PRINT "        INCOME"
         INCOME
 110 PRINT "AT LEAST", "BUT BELOW", "NUMBER OF PEOPLE"
 AT LEAST        BUT BELOW       NUMBER OF PEOPLE
-120 F(D) FOR D = 0 TO 5
+120 F(D:120) FOR D = 0 TO 5
  D = 0
  terminated:false
-130 F(D) PRINT D * 10000, (D + 1) * 10000, N(D)
+130 F(D:120) PRINT D * 10000, (D + 1) * 10000, N(D)
  D: 0
  0               10000          
  N(0): 3
  3
-140 F(D) NEXT D
+140 F(D:120) NEXT D
  D: 0
  terminated:false
  D = 1
-130 F(D) PRINT D * 10000, (D + 1) * 10000, N(D)
+130 F(D:120) PRINT D * 10000, (D + 1) * 10000, N(D)
  D: 1
  10000           20000          
  N(1): 2
  2
-140 F(D) NEXT D
+140 F(D:120) NEXT D
  D: 1
  terminated:false
  D = 2
-130 F(D) PRINT D * 10000, (D + 1) * 10000, N(D)
+130 F(D:120) PRINT D * 10000, (D + 1) * 10000, N(D)
  D: 2
  20000           30000          
  N(2): 2
  2
-140 F(D) NEXT D
+140 F(D:120) NEXT D
  D: 2
  terminated:false
  D = 3
-130 F(D) PRINT D * 10000, (D + 1) * 10000, N(D)
+130 F(D:120) PRINT D * 10000, (D + 1) * 10000, N(D)
  D: 3
  30000           40000          
  N(3): 2
  2
-140 F(D) NEXT D
+140 F(D:120) NEXT D
  D: 3
  terminated:false
  D = 4
-130 F(D) PRINT D * 10000, (D + 1) * 10000, N(D)
+130 F(D:120) PRINT D * 10000, (D + 1) * 10000, N(D)
  D: 4
  40000           50000          
  N(4): 0
  0
-140 F(D) NEXT D
+140 F(D:120) NEXT D
  D: 4
  terminated:false
  D = 5
-130 F(D) PRINT D * 10000, (D + 1) * 10000, N(D)
+130 F(D:120) PRINT D * 10000, (D + 1) * 10000, N(D)
  D: 5
  50000           60000          
  N(5): 1
  1
-140 F(D) NEXT D
+140 F(D:120) NEXT D
  D: 5
  terminated:true
 999 END

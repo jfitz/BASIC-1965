@@ -3,578 +3,578 @@
 920 DATA 19, 25, 19, 20, 5, 13
 999 DATA -1
 20 DIM L(100)
-30 F(I) FOR I = 1 TO 100
+30 F(I:30) FOR I = 1 TO 100
  I = 1
  terminated:false
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 1
  L(1) = 7
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 1
  L(1): 7
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 1
  terminated:false
  I = 2
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 2
  L(2) = 18
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 2
  L(2): 18
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 2
  terminated:false
  I = 3
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 3
  L(3) = 5
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 3
  L(3): 5
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 3
  terminated:false
  I = 4
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 4
  L(4) = 5
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 4
  L(4): 5
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 4
  terminated:false
  I = 5
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 5
  L(5) = 20
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 5
  L(5): 20
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 5
  terminated:false
  I = 6
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 6
  L(6) = 9
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 6
  L(6): 9
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 6
  terminated:false
  I = 7
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 7
  L(7) = 14
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 7
  L(7): 14
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 7
  terminated:false
  I = 8
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 8
  L(8) = 7
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 8
  L(8): 7
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 8
  terminated:false
  I = 9
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 9
  L(9) = 19
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 9
  L(9): 19
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 9
  terminated:false
  I = 10
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 10
  L(10) = 0
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 10
  L(10): 0
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 10
  terminated:false
  I = 11
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 11
  L(11) = 6
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 11
  L(11): 6
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 11
  terminated:false
  I = 12
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 12
  L(12) = 18
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 12
  L(12): 18
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 12
  terminated:false
  I = 13
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 13
  L(13) = 15
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 13
  L(13): 15
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 13
  terminated:false
  I = 14
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 14
  L(14) = 13
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 14
  L(14): 13
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 14
  terminated:false
  I = 15
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 15
  L(15) = 0
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 15
  L(15): 0
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 15
  terminated:false
  I = 16
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 16
  L(16) = 20
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 16
  L(16): 20
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 16
  terminated:false
  I = 17
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 17
  L(17) = 8
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 17
  L(17): 8
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 17
  terminated:false
  I = 18
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 18
  L(18) = 5
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 18
  L(18): 5
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 18
  terminated:false
  I = 19
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 19
  L(19) = 0
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 19
  L(19): 0
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 19
  terminated:false
  I = 20
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 20
  L(20) = 4
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 20
  L(20): 4
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 20
  terminated:false
  I = 21
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 21
  L(21) = 1
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 21
  L(21): 1
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 21
  terminated:false
  I = 22
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 22
  L(22) = 18
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 22
  L(22): 18
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 22
  terminated:false
  I = 23
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 23
  L(23) = 20
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 23
  L(23): 20
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 23
  terminated:false
  I = 24
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 24
  L(24) = 13
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 24
  L(24): 13
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 24
  terminated:false
  I = 25
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 25
  L(25) = 15
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 25
  L(25): 15
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 25
  terminated:false
  I = 26
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 26
  L(26) = 21
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 26
  L(26): 21
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 26
  terminated:false
  I = 27
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 27
  L(27) = 20
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 27
  L(27): 20
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 27
  terminated:false
  I = 28
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 28
  L(28) = 8
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 28
  L(28): 8
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 28
  terminated:false
  I = 29
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 29
  L(29) = 0
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 29
  L(29): 0
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 29
  terminated:false
  I = 30
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 30
  L(30) = 20
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 30
  L(30): 20
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 30
  terminated:false
  I = 31
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 31
  L(31) = 9
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 31
  L(31): 9
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 31
  terminated:false
  I = 32
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 32
  L(32) = 13
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 32
  L(32): 13
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 32
  terminated:false
  I = 33
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 33
  L(33) = 5
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 33
  L(33): 5
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 33
  terminated:false
  I = 34
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 34
  L(34) = 19
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 34
  L(34): 19
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 34
  terminated:false
  I = 35
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 35
  L(35) = 8
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 35
  L(35): 8
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 35
  terminated:false
  I = 36
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 36
  L(36) = 1
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 36
  L(36): 1
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 36
  terminated:false
  I = 37
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 37
  L(37) = 18
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 37
  L(37): 18
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 37
  terminated:false
  I = 38
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 38
  L(38) = 9
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 38
  L(38): 9
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 38
  terminated:false
  I = 39
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 39
  L(39) = 14
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 39
  L(39): 14
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 39
  terminated:false
  I = 40
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 40
  L(40) = 7
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 40
  L(40): 7
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 40
  terminated:false
  I = 41
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 41
  L(41) = 0
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 41
  L(41): 0
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 41
  terminated:false
  I = 42
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 42
  L(42) = 19
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 42
  L(42): 19
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 42
  terminated:false
  I = 43
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 43
  L(43) = 25
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 43
  L(43): 25
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 43
  terminated:false
  I = 44
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 44
  L(44) = 19
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 44
  L(44): 19
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 44
  terminated:false
  I = 45
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 45
  L(45) = 20
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 45
  L(45): 20
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 45
  terminated:false
  I = 46
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 46
  L(46) = 5
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 46
  L(46): 5
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 46
  terminated:false
  I = 47
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 47
  L(47) = 13
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 47
  L(47): 13
  L(I) < 0: false
-60 F(I) NEXT I
+60 F(I:30) NEXT I
  I: 47
  terminated:false
  I = 48
-40 F(I) READ L(I)
+40 F(I:30) READ L(I)
  I: 48
  L(48) = -1
-50 F(I) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) < 0 THEN 70
  I: 48
  L(48): -1
  L(I) < 0: true
-70 F(I) LET I9 = I - 1
+70 F(I:30) LET I9 = I - 1
  I: 48
  I9 = 47
-100 F(I) PRINT "PLEASE TYPE KEY";
+100 F(I:30) PRINT "PLEASE TYPE KEY";
 PLEASE TYPE KEY
-110 F(I) INPUT K(1), K(2), K(3), K(4), K(5)
+110 F(I:30) INPUT K(1), K(2), K(3), K(4), K(5)
 ? 13,1,7,9,3
  K(1) = 13
  K(2) = 1
  K(3) = 7
  K(4) = 9
  K(5) = 3
-120 F(I) PRINT
+120 F(I:30) PRINT
 
-130 F(I) PRINT "TYPE '0' FOR ENCODING, '1' FOR DECODING";
+130 F(I:30) PRINT "TYPE '0' FOR ENCODING, '1' FOR DECODING";
 TYPE '0' FOR ENCODING, '1' FOR DECODING
-140 F(I) INPUT F
+140 F(I:30) INPUT F
 ? 0
  F = 0
-145 F(I) PRINT
+145 F(I:30) PRINT
 
-150 F(I) IF F = 0 THEN 200
+150 F(I:30) IF F = 0 THEN 200
  F: 0
  F = 0: true
-200 F(I) PRINT "ENCODED MESSAGE:"
+200 F(I:30) PRINT "ENCODED MESSAGE:"
 ENCODED MESSAGE:
-210 F(I) PRINT
+210 F(I:30) PRINT
 
-215 F(I) LET J = 1
+215 F(I:30) LET J = 1
  J = 1
-220 F(I) FOR I = 1 TO I9
+220 F(I:30,I:220) FOR I = 1 TO I9
  I9: 47
  I = 1
  I9 = 47
  terminated:false
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 1
  L(1): 7
  J: 1
  K(1): 13
  X = 20
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 20
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 20
  X > 0: true
@@ -641,26 +641,26 @@ ENCODED MESSAGE:
 1620 G(1010) PRINT "T";
 T
 1630 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 1
  terminated:false
  I = 2
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 2
  L(2): 18
  J: 2
  K(2): 1
  X = 19
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 19
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 19
  X > 0: true
@@ -724,26 +724,26 @@ T
 1590 G(1010) PRINT "S";
 S
 1600 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 2
  terminated:false
  I = 3
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 3
  L(3): 5
  J: 3
  K(3): 7
  X = 12
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 12
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 12
  X > 0: true
@@ -786,26 +786,26 @@ S
 1380 G(1010) PRINT "L";
 L
 1390 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 3
  terminated:false
  I = 4
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 4
  L(4): 5
  J: 4
  K(4): 9
  X = 14
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 14
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 14
  X > 0: true
@@ -854,26 +854,26 @@ L
 1440 G(1010) PRINT "N";
 N
 1450 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 4
  terminated:false
  I = 5
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 5
  L(5): 20
  J: 5
  K(5): 3
  X = 23
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 23
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 23
  X > 0: true
@@ -949,28 +949,28 @@ N
 1710 G(1010) PRINT "W";
 W
 1720 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 5
  terminated:false
  I = 6
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 6
  L(6): 9
  J: 1
  K(1): 13
  X = 22
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 22
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 22
  X > 0: true
@@ -1043,26 +1043,26 @@ W
 1680 G(1010) PRINT "V";
 V
 1690 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 6
  terminated:false
  I = 7
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 7
  L(7): 14
  J: 2
  K(2): 1
  X = 15
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 15
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 15
  X > 0: true
@@ -1114,26 +1114,26 @@ V
 1470 G(1010) PRINT "O";
 O
 1480 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 7
  terminated:false
  I = 8
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 8
  L(8): 7
  J: 3
  K(3): 7
  X = 14
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 14
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 14
  X > 0: true
@@ -1182,29 +1182,29 @@ O
 1440 G(1010) PRINT "N";
 N
 1450 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 8
  terminated:false
  I = 9
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 9
  L(9): 19
  J: 4
  K(4): 9
  X = 28
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 28
  X <= 26: false
-250 F(I) LET X = X - 27
+250 F(I:30,I:220) LET X = X - 27
  X: 28
  X = 1
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 1
  X > 0: true
@@ -1214,26 +1214,26 @@ N
 1050 G(1010) PRINT "A";
 A
 1060 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 9
  terminated:false
  I = 10
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 10
  L(10): 0
  J: 5
  K(5): 3
  X = 3
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 3
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 3
  X > 0: true
@@ -1249,28 +1249,28 @@ A
 1110 G(1010) PRINT "C";
 C
 1120 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 10
  terminated:false
  I = 11
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 11
  L(11): 6
  J: 1
  K(1): 13
  X = 19
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 19
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 19
  X > 0: true
@@ -1334,26 +1334,26 @@ C
 1590 G(1010) PRINT "S";
 S
 1600 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 11
  terminated:false
  I = 12
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 12
  L(12): 18
  J: 2
  K(2): 1
  X = 19
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 19
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 19
  X > 0: true
@@ -1417,26 +1417,26 @@ S
 1590 G(1010) PRINT "S";
 S
 1600 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 12
  terminated:false
  I = 13
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 13
  L(13): 15
  J: 3
  K(3): 7
  X = 22
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 22
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 22
  X > 0: true
@@ -1509,26 +1509,26 @@ S
 1680 G(1010) PRINT "V";
 V
 1690 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 13
  terminated:false
  I = 14
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 14
  L(14): 13
  J: 4
  K(4): 9
  X = 22
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 22
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 22
  X > 0: true
@@ -1601,26 +1601,26 @@ V
 1680 G(1010) PRINT "V";
 V
 1690 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 14
  terminated:false
  I = 15
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 15
  L(15): 0
  J: 5
  K(5): 3
  X = 3
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 3
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 3
  X > 0: true
@@ -1636,31 +1636,31 @@ V
 1110 G(1010) PRINT "C";
 C
 1120 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 15
  terminated:false
  I = 16
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 16
  L(16): 20
  J: 1
  K(1): 13
  X = 33
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 33
  X <= 26: false
-250 F(I) LET X = X - 27
+250 F(I:30,I:220) LET X = X - 27
  X: 33
  X = 6
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 6
  X > 0: true
@@ -1685,26 +1685,26 @@ C
 1200 G(1010) PRINT "F";
 F
 1210 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 16
  terminated:false
  I = 17
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 17
  L(17): 8
  J: 2
  K(2): 1
  X = 9
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 9
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 9
  X > 0: true
@@ -1738,26 +1738,26 @@ F
 1290 G(1010) PRINT "I";
 I
 1300 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 17
  terminated:false
  I = 18
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 18
  L(18): 5
  J: 3
  K(3): 7
  X = 12
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 12
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 12
  X > 0: true
@@ -1800,26 +1800,26 @@ I
 1380 G(1010) PRINT "L";
 L
 1390 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 18
  terminated:false
  I = 19
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 19
  L(19): 0
  J: 4
  K(4): 9
  X = 9
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 9
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 9
  X > 0: true
@@ -1853,26 +1853,26 @@ L
 1290 G(1010) PRINT "I";
 I
 1300 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 19
  terminated:false
  I = 20
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 20
  L(20): 4
  J: 5
  K(5): 3
  X = 7
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 7
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 7
  X > 0: true
@@ -1900,28 +1900,28 @@ I
 1230 G(1010) PRINT "G";
 G
 1240 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 20
  terminated:false
  I = 21
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 21
  L(21): 1
  J: 1
  K(1): 13
  X = 14
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 14
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 14
  X > 0: true
@@ -1970,26 +1970,26 @@ G
 1440 G(1010) PRINT "N";
 N
 1450 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 21
  terminated:false
  I = 22
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 22
  L(22): 18
  J: 2
  K(2): 1
  X = 19
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 19
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 19
  X > 0: true
@@ -2053,55 +2053,55 @@ N
 1590 G(1010) PRINT "S";
 S
 1600 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 22
  terminated:false
  I = 23
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 23
  L(23): 20
  J: 3
  K(3): 7
  X = 27
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 27
  X <= 26: false
-250 F(I) LET X = X - 27
+250 F(I:30,I:220) LET X = X - 27
  X: 27
  X = 0
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 0
  X > 0: false
 1020 G(1010) PRINT " ";
  
 1030 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 23
  terminated:false
  I = 24
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 24
  L(24): 13
  J: 4
  K(4): 9
  X = 22
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 22
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 22
  X > 0: true
@@ -2174,26 +2174,26 @@ S
 1680 G(1010) PRINT "V";
 V
 1690 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 24
  terminated:false
  I = 25
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 25
  L(25): 15
  J: 5
  K(5): 3
  X = 18
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 18
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 18
  X > 0: true
@@ -2254,31 +2254,31 @@ V
 1560 G(1010) PRINT "R";
 R
 1570 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 25
  terminated:false
  I = 26
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 26
  L(26): 21
  J: 1
  K(1): 13
  X = 34
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 34
  X <= 26: false
-250 F(I) LET X = X - 27
+250 F(I:30,I:220) LET X = X - 27
  X: 34
  X = 7
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 7
  X > 0: true
@@ -2306,26 +2306,26 @@ R
 1230 G(1010) PRINT "G";
 G
 1240 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 26
  terminated:false
  I = 27
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 27
  L(27): 20
  J: 2
  K(2): 1
  X = 21
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 21
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 21
  X > 0: true
@@ -2395,26 +2395,26 @@ G
 1650 G(1010) PRINT "U";
 U
 1660 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 27
  terminated:false
  I = 28
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 28
  L(28): 8
  J: 3
  K(3): 7
  X = 15
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 15
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 15
  X > 0: true
@@ -2466,26 +2466,26 @@ U
 1470 G(1010) PRINT "O";
 O
 1480 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 28
  terminated:false
  I = 29
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 29
  L(29): 0
  J: 4
  K(4): 9
  X = 9
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 9
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 9
  X > 0: true
@@ -2519,26 +2519,26 @@ O
 1290 G(1010) PRINT "I";
 I
 1300 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 29
  terminated:false
  I = 30
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 30
  L(30): 20
  J: 5
  K(5): 3
  X = 23
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 23
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 23
  X > 0: true
@@ -2614,28 +2614,28 @@ I
 1710 G(1010) PRINT "W";
 W
 1720 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 30
  terminated:false
  I = 31
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 31
  L(31): 9
  J: 1
  K(1): 13
  X = 22
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 22
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 22
  X > 0: true
@@ -2708,26 +2708,26 @@ W
 1680 G(1010) PRINT "V";
 V
 1690 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 31
  terminated:false
  I = 32
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 32
  L(32): 13
  J: 2
  K(2): 1
  X = 14
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 14
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 14
  X > 0: true
@@ -2776,26 +2776,26 @@ V
 1440 G(1010) PRINT "N";
 N
 1450 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 32
  terminated:false
  I = 33
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 33
  L(33): 5
  J: 3
  K(3): 7
  X = 12
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 12
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 12
  X > 0: true
@@ -2838,29 +2838,29 @@ N
 1380 G(1010) PRINT "L";
 L
 1390 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 33
  terminated:false
  I = 34
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 34
  L(34): 19
  J: 4
  K(4): 9
  X = 28
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 28
  X <= 26: false
-250 F(I) LET X = X - 27
+250 F(I:30,I:220) LET X = X - 27
  X: 28
  X = 1
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 1
  X > 0: true
@@ -2870,26 +2870,26 @@ L
 1050 G(1010) PRINT "A";
 A
 1060 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 34
  terminated:false
  I = 35
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 35
  L(35): 8
  J: 5
  K(5): 3
  X = 11
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 11
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 11
  X > 0: true
@@ -2929,28 +2929,28 @@ A
 1350 G(1010) PRINT "K";
 K
 1360 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 35
  terminated:false
  I = 36
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 36
  L(36): 1
  J: 1
  K(1): 13
  X = 14
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 14
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 14
  X > 0: true
@@ -2999,26 +2999,26 @@ K
 1440 G(1010) PRINT "N";
 N
 1450 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 36
  terminated:false
  I = 37
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 37
  L(37): 18
  J: 2
  K(2): 1
  X = 19
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 19
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 19
  X > 0: true
@@ -3082,26 +3082,26 @@ N
 1590 G(1010) PRINT "S";
 S
 1600 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 37
  terminated:false
  I = 38
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 38
  L(38): 9
  J: 3
  K(3): 7
  X = 16
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 16
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 16
  X > 0: true
@@ -3156,26 +3156,26 @@ S
 1500 G(1010) PRINT "P";
 P
 1510 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 38
  terminated:false
  I = 39
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 39
  L(39): 14
  J: 4
  K(4): 9
  X = 23
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 23
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 23
  X > 0: true
@@ -3251,26 +3251,26 @@ P
 1710 G(1010) PRINT "W";
 W
 1720 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 39
  terminated:false
  I = 40
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 40
  L(40): 7
  J: 5
  K(5): 3
  X = 10
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 10
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 10
  X > 0: true
@@ -3307,28 +3307,28 @@ W
 1320 G(1010) PRINT "J";
 J
 1330 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 40
  terminated:false
  I = 41
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 41
  L(41): 0
  J: 1
  K(1): 13
  X = 13
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 13
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 13
  X > 0: true
@@ -3374,26 +3374,26 @@ J
 1410 G(1010) PRINT "M";
 M
 1420 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 41
  terminated:false
  I = 42
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 42
  L(42): 19
  J: 2
  K(2): 1
  X = 20
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 20
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 20
  X > 0: true
@@ -3460,29 +3460,29 @@ M
 1620 G(1010) PRINT "T";
 T
 1630 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 42
  terminated:false
  I = 43
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 43
  L(43): 25
  J: 3
  K(3): 7
  X = 32
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 32
  X <= 26: false
-250 F(I) LET X = X - 27
+250 F(I:30,I:220) LET X = X - 27
  X: 32
  X = 5
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 5
  X > 0: true
@@ -3504,29 +3504,29 @@ T
 1170 G(1010) PRINT "E";
 E
 1180 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 3
  J = 4
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 4
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 43
  terminated:false
  I = 44
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 44
  L(44): 19
  J: 4
  K(4): 9
  X = 28
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 28
  X <= 26: false
-250 F(I) LET X = X - 27
+250 F(I:30,I:220) LET X = X - 27
  X: 28
  X = 1
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 1
  X > 0: true
@@ -3536,26 +3536,26 @@ E
 1050 G(1010) PRINT "A";
 A
 1060 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 4
  J = 5
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 5
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 44
  terminated:false
  I = 45
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 45
  L(45): 20
  J: 5
  K(5): 3
  X = 23
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 23
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 23
  X > 0: true
@@ -3631,28 +3631,28 @@ A
 1710 G(1010) PRINT "W";
 W
 1720 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 5
  J = 6
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 6
  J <= 5: false
-290 F(I) LET J = 1
+290 F(I:30,I:220) LET J = 1
  J = 1
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 45
  terminated:false
  I = 46
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 46
  L(46): 5
  J: 1
  K(1): 13
  X = 18
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 18
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 18
  X > 0: true
@@ -3713,26 +3713,26 @@ W
 1560 G(1010) PRINT "R";
 R
 1570 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 1
  J = 2
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 2
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 46
  terminated:false
  I = 47
-230 F(I) LET X = L(I) + K(J)
+230 F(I:30,I:220) LET X = L(I) + K(J)
  I: 47
  L(47): 13
  J: 2
  K(2): 1
  X = 14
-240 F(I) IF X <= 26 THEN 260
+240 F(I:30,I:220) IF X <= 26 THEN 260
  X: 14
  X <= 26: true
-260 F(I) GOSUB 1000
+260 F(I:30,I:220) GOSUB 1000
 1010 G(1010) IF X > 0 THEN 1040
  X: 14
  X > 0: true
@@ -3781,1094 +3781,1094 @@ R
 1440 G(1010) PRINT "N";
 N
 1450 G(1010) RETURN
-270 F(I) LET J = J + 1
+270 F(I:30,I:220) LET J = J + 1
  J: 2
  J = 3
-280 F(I) IF J <= 5 THEN 300
+280 F(I:30,I:220) IF J <= 5 THEN 300
  J: 3
  J <= 5: true
-300 F(I) NEXT I
+300 F(I:30,I:220) NEXT I
  I: 47
  terminated:true
 310 PRINT
 
 315 LET J = 1
  J = 1
-320 F(I) FOR I = 1 TO I9
+320 F(I:320) FOR I = 1 TO I9
  I9: 47
  I = 1
  I9 = 47
  terminated:false
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 1
  L(1): 7
  J: 1
  K(1): 13
  X = 20
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 20
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 20
  20 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 1
  terminated:false
  I = 2
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 2
  L(2): 18
  J: 2
  K(2): 1
  X = 19
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 19
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 19
  19 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 2
  terminated:false
  I = 3
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 3
  L(3): 5
  J: 3
  K(3): 7
  X = 12
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 12
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 12
  12 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 3
  terminated:false
  I = 4
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 4
  L(4): 5
  J: 4
  K(4): 9
  X = 14
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 14
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 14
  14 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 4
  terminated:false
  I = 5
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 5
  L(5): 20
  J: 5
  K(5): 3
  X = 23
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 23
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 23
  23 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 5
  terminated:false
  I = 6
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 6
  L(6): 9
  J: 1
  K(1): 13
  X = 22
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 22
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 22
  22 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 6
  terminated:false
  I = 7
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 7
  L(7): 14
  J: 2
  K(2): 1
  X = 15
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 15
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 15
  15 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 7
  terminated:false
  I = 8
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 8
  L(8): 7
  J: 3
  K(3): 7
  X = 14
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 14
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 14
  14 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 8
  terminated:false
  I = 9
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 9
  L(9): 19
  J: 4
  K(4): 9
  X = 28
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 28
  X <= 26: false
-350 F(I) LET X = X - 27
+350 F(I:320) LET X = X - 27
  X: 28
  X = 1
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 1
  1 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 9
  terminated:false
  I = 10
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 10
  L(10): 0
  J: 5
  K(5): 3
  X = 3
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 3
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 3
  3 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 10
  terminated:false
  I = 11
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 11
  L(11): 6
  J: 1
  K(1): 13
  X = 19
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 19
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 19
  19 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 11
  terminated:false
  I = 12
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 12
  L(12): 18
  J: 2
  K(2): 1
  X = 19
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 19
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 19
  19 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 12
  terminated:false
  I = 13
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 13
  L(13): 15
  J: 3
  K(3): 7
  X = 22
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 22
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 22
  22 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 13
  terminated:false
  I = 14
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 14
  L(14): 13
  J: 4
  K(4): 9
  X = 22
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 22
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 22
  22 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 14
  terminated:false
  I = 15
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 15
  L(15): 0
  J: 5
  K(5): 3
  X = 3
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 3
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 3
  3 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 15
  terminated:false
  I = 16
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 16
  L(16): 20
  J: 1
  K(1): 13
  X = 33
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 33
  X <= 26: false
-350 F(I) LET X = X - 27
+350 F(I:320) LET X = X - 27
  X: 33
  X = 6
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 6
  6 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 16
  terminated:false
  I = 17
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 17
  L(17): 8
  J: 2
  K(2): 1
  X = 9
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 9
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 9
  9 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 17
  terminated:false
  I = 18
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 18
  L(18): 5
  J: 3
  K(3): 7
  X = 12
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 12
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 12
  12 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 18
  terminated:false
  I = 19
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 19
  L(19): 0
  J: 4
  K(4): 9
  X = 9
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 9
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 9
  9 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 19
  terminated:false
  I = 20
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 20
  L(20): 4
  J: 5
  K(5): 3
  X = 7
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 7
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 7
  7 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 20
  terminated:false
  I = 21
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 21
  L(21): 1
  J: 1
  K(1): 13
  X = 14
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 14
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 14
  14 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 21
  terminated:false
  I = 22
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 22
  L(22): 18
  J: 2
  K(2): 1
  X = 19
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 19
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 19
  19 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 22
  terminated:false
  I = 23
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 23
  L(23): 20
  J: 3
  K(3): 7
  X = 27
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 27
  X <= 26: false
-350 F(I) LET X = X - 27
+350 F(I:320) LET X = X - 27
  X: 27
  X = 0
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 0
  0 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 23
  terminated:false
  I = 24
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 24
  L(24): 13
  J: 4
  K(4): 9
  X = 22
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 22
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 22
  22 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 24
  terminated:false
  I = 25
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 25
  L(25): 15
  J: 5
  K(5): 3
  X = 18
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 18
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 18
  18 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 25
  terminated:false
  I = 26
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 26
  L(26): 21
  J: 1
  K(1): 13
  X = 34
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 34
  X <= 26: false
-350 F(I) LET X = X - 27
+350 F(I:320) LET X = X - 27
  X: 34
  X = 7
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 7
  7 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 26
  terminated:false
  I = 27
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 27
  L(27): 20
  J: 2
  K(2): 1
  X = 21
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 21
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 21
  21 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 27
  terminated:false
  I = 28
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 28
  L(28): 8
  J: 3
  K(3): 7
  X = 15
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 15
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 15
  15 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 28
  terminated:false
  I = 29
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 29
  L(29): 0
  J: 4
  K(4): 9
  X = 9
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 9
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 9
  9 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 29
  terminated:false
  I = 30
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 30
  L(30): 20
  J: 5
  K(5): 3
  X = 23
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 23
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 23
  23 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 30
  terminated:false
  I = 31
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 31
  L(31): 9
  J: 1
  K(1): 13
  X = 22
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 22
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 22
  22 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 31
  terminated:false
  I = 32
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 32
  L(32): 13
  J: 2
  K(2): 1
  X = 14
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 14
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 14
  14 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 32
  terminated:false
  I = 33
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 33
  L(33): 5
  J: 3
  K(3): 7
  X = 12
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 12
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 12
  12 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 33
  terminated:false
  I = 34
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 34
  L(34): 19
  J: 4
  K(4): 9
  X = 28
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 28
  X <= 26: false
-350 F(I) LET X = X - 27
+350 F(I:320) LET X = X - 27
  X: 28
  X = 1
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 1
  1 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 34
  terminated:false
  I = 35
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 35
  L(35): 8
  J: 5
  K(5): 3
  X = 11
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 11
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 11
  11 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 35
  terminated:false
  I = 36
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 36
  L(36): 1
  J: 1
  K(1): 13
  X = 14
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 14
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 14
  14 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 36
  terminated:false
  I = 37
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 37
  L(37): 18
  J: 2
  K(2): 1
  X = 19
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 19
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 19
  19 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 37
  terminated:false
  I = 38
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 38
  L(38): 9
  J: 3
  K(3): 7
  X = 16
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 16
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 16
  16 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 38
  terminated:false
  I = 39
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 39
  L(39): 14
  J: 4
  K(4): 9
  X = 23
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 23
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 23
  23 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 39
  terminated:false
  I = 40
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 40
  L(40): 7
  J: 5
  K(5): 3
  X = 10
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 10
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 10
  10 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 40
  terminated:false
  I = 41
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 41
  L(41): 0
  J: 1
  K(1): 13
  X = 13
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 13
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 13
  13 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 41
  terminated:false
  I = 42
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 42
  L(42): 19
  J: 2
  K(2): 1
  X = 20
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 20
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 20
  20 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 42
  terminated:false
  I = 43
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 43
  L(43): 25
  J: 3
  K(3): 7
  X = 32
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 32
  X <= 26: false
-350 F(I) LET X = X - 27
+350 F(I:320) LET X = X - 27
  X: 32
  X = 5
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 5
  5 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 3
  J = 4
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 4
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 43
  terminated:false
  I = 44
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 44
  L(44): 19
  J: 4
  K(4): 9
  X = 28
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 28
  X <= 26: false
-350 F(I) LET X = X - 27
+350 F(I:320) LET X = X - 27
  X: 28
  X = 1
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 1
  1 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 4
  J = 5
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 5
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 44
  terminated:false
  I = 45
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 45
  L(45): 20
  J: 5
  K(5): 3
  X = 23
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 23
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 23
  23 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 5
  J = 6
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 6
  J <= 5: false
-390 F(I) LET J = 1
+390 F(I:320) LET J = 1
  J = 1
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 45
  terminated:false
  I = 46
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 46
  L(46): 5
  J: 1
  K(1): 13
  X = 18
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 18
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 18
  18 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 1
  J = 2
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 2
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 46
  terminated:false
  I = 47
-330 F(I) LET X = L(I) + K(J)
+330 F(I:320) LET X = L(I) + K(J)
  I: 47
  L(47): 13
  J: 2
  K(2): 1
  X = 14
-340 F(I) IF X <= 26 THEN 360
+340 F(I:320) IF X <= 26 THEN 360
  X: 14
  X <= 26: true
-360 F(I) PRINT X;
+360 F(I:320) PRINT X;
  X: 14
  14 
-370 F(I) LET J = J + 1
+370 F(I:320) LET J = J + 1
  J: 2
  J = 3
-380 F(I) IF J <= 5 THEN 400
+380 F(I:320) IF J <= 5 THEN 400
  J: 3
  J <= 5: true
-400 F(I) NEXT I
+400 F(I:320) NEXT I
  I: 47
  terminated:true
 800 STOP

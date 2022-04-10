@@ -31,13 +31,13 @@ Halstead complexity:
 130 (0 1) REM INITIALIZE
   Origs: 
   Dests: 
-140 F(P) (1 3) FOR P = 1 TO 3
+140 F(P:140,P:550,P:650) (1 3) FOR P = 1 TO 3
   Origs: :start, 350:goto
   Dests: 150:fornext, 160:fornext
-150 F(P) (0 5) LET N(P) = INT(10 * RND(0)) + 6
+150 F(P:140,P:550,P:650) (0 5) LET N(P) = INT(10 * RND(0)) + 6
   Origs: 140:fornext
   Dests: 160:auto
-160 F(P) (0 1) NEXT P
+160 F(P:140,P:550,P:650) (0 1) NEXT P
   Origs: 140:fornext, 150:auto
   Dests: 170:auto
 170 (0 2) PRINT "INITIAL CONFIGURATION:"
@@ -55,46 +55,46 @@ Halstead complexity:
 210 (0 1) REM OPPONENT'S MOVE
   Origs: 
   Dests: 
-220 F(P) (0 2) PRINT "PILE, NUMBER TAKEN";
+220 F(P:550,P:650) (0 2) PRINT "PILE, NUMBER TAKEN";
   Origs: 190:auto, 290:goto, 880:goto
   Dests: 230:auto
-230 F(P) (2 3) INPUT P, N
+230 F(P:550,P:650) (2 3) INPUT P, N
   Origs: 220:auto
   Dests: 240:auto
-240 F(P) (0 4) LET N(P) = N(P) - N
+240 F(P:550,P:650) (0 4) LET N(P) = N(P) - N
   Origs: 230:auto
   Dests: 250:auto
-250 F(P) (1 4) IF N(P) >= 0 THEN 300
+250 F(P:550,P:650) (1 4) IF N(P) >= 0 THEN 300
   Origs: 240:auto
   Dests: 260:auto, 300:ifthen
-260 F(P) (0 2) PRINT "ILLEGAL MOVE"
+260 F(P:550,P:650) (0 2) PRINT "ILLEGAL MOVE"
   Origs: 250:auto
   Dests: 270:auto
-270 F(P) (0 4) LET N(P) = N(P) + N
+270 F(P:550,P:650) (0 4) LET N(P) = N(P) + N
   Origs: 260:auto
   Dests: 280:auto
-280 F(P) (0 2) PRINT
+280 F(P:550,P:650) (0 2) PRINT
   Origs: 270:auto
   Dests: 290:auto
-290 F(P) (0 3) GOTO 200
+290 F(P:550,P:650) (0 3) GOTO 200
   Origs: 280:auto
   Dests: 220:goto
-300 F(P) (1 6) IF N(1) + N(2) + N(3) > 0 THEN 370
+300 F(P:550,P:650) (1 6) IF N(1) + N(2) + N(3) > 0 THEN 370
   Origs: 250:ifthen
   Dests: 310:auto, 380:ifthen
-310 F(P) (0 2) PRINT
+310 F(P:550,P:650) (0 2) PRINT
   Origs: 300:auto
   Dests: 320:auto
-320 F(P) (0 2) PRINT "YOU WIN *****"
+320 F(P:550,P:650) (0 2) PRINT "YOU WIN *****"
   Origs: 310:auto
   Dests: 330:auto
-330 F(P) (0 2) PRINT
+330 F(P:550,P:650) (0 2) PRINT
   Origs: 320:auto, 840:goto
   Dests: 340:auto
-340 F(P) (0 2) PRINT
+340 F(P:550,P:650) (0 2) PRINT
   Origs: 330:auto
   Dests: 350:auto
-350 F(P) (0 3) GOTO 140
+350 F(P:550,P:650) (0 3) GOTO 140
   Origs: 340:auto
   Dests: 140:goto
 360 (0 0) 
@@ -103,28 +103,29 @@ Halstead complexity:
 370 (0 1) REM SET UP BIT-PATTERNS
   Origs: 
   Dests: 
-380 F(P) (1 3) FOR P = 1 TO 3
+380 F(P:380,P:550,P:650) (1 3) FOR P = 1 TO 3
   Origs: 300:ifthen
   Dests: 390:fornext, 450:fornext
-390 F(P) (0 3) LET X = N(P)
+390 F(P:380,P:550,P:650) (0 3) LET X = N(P)
   Origs: 380:fornext
   Dests: 400:auto
-400 F(P,J) (1 5) FOR J = 4 TO 1 STEP -1
+400 F(P:380,J:400,P:550,P:650) (1 5) FOR J = 4 TO 1 STEP -1
+    WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 390:auto
   Dests: 410:fornext, 440:fornext
-410 F(P,J) (0 4) LET Y = INT(X / 2)
+410 F(P:380,J:400,P:550,P:650) (0 4) LET Y = INT(X / 2)
   Origs: 400:fornext
   Dests: 420:auto
-420 F(P,J) (0 6) LET B(P, J) = X - 2 * Y
+420 F(P:380,J:400,P:550,P:650) (0 6) LET B(P, J) = X - 2 * Y
   Origs: 410:auto
   Dests: 430:auto
-430 F(P,J) (0 3) LET X = Y
+430 F(P:380,J:400,P:550,P:650) (0 3) LET X = Y
   Origs: 420:auto
   Dests: 440:auto
-440 F(P,J) (0 1) NEXT J
+440 F(P:380,J:400,P:550,P:650) (0 1) NEXT J
   Origs: 400:fornext, 430:auto
   Dests: 450:auto
-450 F(P) (0 1) NEXT P
+450 F(P:380,P:550,P:650) (0 1) NEXT P
   Origs: 380:fornext, 440:auto
   Dests: 480:auto
 460 (0 0) 
@@ -133,16 +134,16 @@ Halstead complexity:
 470 (0 1) REM FIND COLUMN PARITIES
   Origs: 
   Dests: 
-480 F(J) (1 3) FOR J = 1 TO 4
+480 F(J:480) (1 3) FOR J = 1 TO 4
   Origs: 450:auto
   Dests: 490:fornext, 510:fornext
-490 F(J) (0 5) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+490 F(J:480) (0 5) LET S(J) = B(1, J) + B(2, J) + B(3, J)
   Origs: 480:fornext
   Dests: 500:auto
-500 F(J) (0 7) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+500 F(J:480) (0 7) LET S(J) = S(J) - 2 * INT(S(J) / 2)
   Origs: 490:auto
   Dests: 510:auto
-510 F(J) (0 1) NEXT J
+510 F(J:480) (0 1) NEXT J
   Origs: 480:fornext, 500:auto
   Dests: 540:auto
 520 (0 0) 
@@ -154,19 +155,19 @@ Halstead complexity:
 540 (1 7) IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
   Origs: 510:auto
   Dests: 550:auto, 620:ifthen
-550 F(P) (1 3) FOR P = 1 TO 3
+550 F(P:550) (1 3) FOR P = 1 TO 3
   Origs: 540:auto
   Dests: 560:fornext, 590:fornext
-560 F(P) (1 4) IF N(P) = 0 THEN 590
+560 F(P:550) (1 4) IF N(P) = 0 THEN 590
   Origs: 550:fornext
   Dests: 570:auto, 590:ifthen
-570 F(P) (0 5) LET N = INT(N(P) * RND(0)) + 1
+570 F(P:550) (0 5) LET N = INT(N(P) * RND(0)) + 1
   Origs: 560:auto
   Dests: 580:auto
-580 F(P) (0 2) GOTO 770
+580 F(P:550) (0 2) GOTO 770
   Origs: 570:auto
   Dests: 780:goto
-590 F(P) (0 1) NEXT P
+590 F(P:550) (0 1) NEXT P
   Origs: 550:fornext, 560:ifthen
   Dests: 620:auto
 600 (0 0) 
@@ -175,46 +176,46 @@ Halstead complexity:
 610 (0 1) REM MAKE OPTIMAL MOVE
   Origs: 
   Dests: 
-620 F(J) (1 3) FOR J = 1 TO 4
+620 F(J:620) (1 3) FOR J = 1 TO 4
   Origs: 540:ifthen, 590:auto
   Dests: 630:fornext, 640:fornext
-630 F(J) (1 4) IF S(J) > 0 THEN 650
+630 F(J:620) (1 4) IF S(J) > 0 THEN 650
   Origs: 620:fornext
   Dests: 640:auto, 650:ifthen
-640 F(J) (0 1) NEXT J
+640 F(J:620) (0 1) NEXT J
   Origs: 620:fornext, 630:auto
   Dests: 650:auto
-650 F(J,P) (1 3) FOR P = 1 TO 3
+650 F(J:620,P:650) (1 3) FOR P = 1 TO 3
   Origs: 630:ifthen, 640:auto
   Dests: 660:fornext, 670:fornext
-660 F(J,P) (1 4) IF B(P, J) = 1 THEN 680
+660 F(J:620,P:650) (1 4) IF B(P, J) = 1 THEN 680
   Origs: 650:fornext
   Dests: 670:auto, 680:ifthen
-670 F(J,P) (0 1) NEXT P
+670 F(J:620,P:650) (0 1) NEXT P
   Origs: 650:fornext, 660:auto
   Dests: 680:auto
-680 F(J,P) (0 3) LET N = 0
+680 F(J:620,P:650) (0 3) LET N = 0
   Origs: 660:ifthen, 670:auto
   Dests: 690:auto
-690 F(P,J) (1 3) FOR J = J TO 4
+690 F(J:620,P:650,J:690) (1 3) FOR J = J TO 4
   Origs: 680:auto
   Dests: 700:fornext, 750:fornext
-700 F(P,J) (1 4) IF S(J) = 0 THEN 750
+700 F(J:620,P:650,J:690) (1 4) IF S(J) = 0 THEN 750
   Origs: 690:fornext
   Dests: 710:auto, 750:ifthen
-710 F(J,P) (1 4) IF B(P, J) = 0 THEN 740
+710 F(J:620,P:650,J:690) (1 4) IF B(P, J) = 0 THEN 740
   Origs: 700:auto
   Dests: 720:auto, 740:ifthen
-720 F(J,P) (0 8) LET N = N + 2 ^ (4 - J)
+720 F(J:620,P:650,J:690) (0 8) LET N = N + 2 ^ (4 - J)
   Origs: 710:auto
   Dests: 730:auto
-730 F(J,P) (0 2) GOTO 750
+730 F(J:620,P:650,J:690) (0 2) GOTO 750
   Origs: 720:auto
   Dests: 750:goto
-740 F(J,P) (0 8) LET N = N - 2 ^ (4 - J)
+740 F(J:620,P:650,J:690) (0 8) LET N = N - 2 ^ (4 - J)
   Origs: 710:ifthen
   Dests: 750:auto
-750 F(J,P) (0 1) NEXT J
+750 F(J:620,P:650,J:690) (0 1) NEXT J
   Origs: 690:fornext, 700:ifthen, 730:goto, 740:auto
   Dests: 780:auto
 760 (0 0) 
@@ -223,37 +224,37 @@ Halstead complexity:
 770 (0 1) REM CARRY OUT MOVE
   Origs: 
   Dests: 
-780 F(P) (0 2) PRINT
+780 F(P:550,P:650) (0 2) PRINT
   Origs: 580:goto, 750:auto
   Dests: 790:auto
-790 F(P) (0 5) PRINT "MY MOVE:" P; "," N
+790 F(P:550,P:650) (0 5) PRINT "MY MOVE:" P; "," N
   Origs: 780:auto
   Dests: 800:auto
-800 F(P) (0 2) PRINT
+800 F(P:550,P:650) (0 2) PRINT
   Origs: 790:auto
   Dests: 810:auto
-810 F(P) (0 4) LET N(P) = N(P) - N
+810 F(P:550,P:650) (0 4) LET N(P) = N(P) - N
   Origs: 800:auto
   Dests: 820:auto
-820 F(P) (1 6) IF N(1) + N(2) + N(3) > 0 THEN 850
+820 F(P:550,P:650) (1 6) IF N(1) + N(2) + N(3) > 0 THEN 850
   Origs: 810:auto
   Dests: 830:auto, 850:ifthen
-830 F(P) (0 2) PRINT "I WIN *****"
+830 F(P:550,P:650) (0 2) PRINT "I WIN *****"
   Origs: 820:auto
   Dests: 840:auto
-840 F(P) (0 3) GOTO 330
+840 F(P:550,P:650) (0 3) GOTO 330
   Origs: 830:auto
   Dests: 330:goto
-850 F(P) (0 2) PRINT "NEW CONFIGURATION:"
+850 F(P:550,P:650) (0 2) PRINT "NEW CONFIGURATION:"
   Origs: 820:ifthen
   Dests: 860:auto
-860 F(P) (0 2) PRINT
+860 F(P:550,P:650) (0 2) PRINT
   Origs: 850:auto
   Dests: 870:auto
-870 F(P) (0 2) GOSUB 900
+870 F(P:550,P:650) (0 2) GOSUB 900
   Origs: 860:auto
   Dests: 880:auto, 910:gosub
-880 F(P) (0 3) GOTO 210
+880 F(P:550,P:650) (0 3) GOTO 210
   Origs: 870:auto
   Dests: 220:goto
 890 (0 0) 
@@ -262,13 +263,13 @@ Halstead complexity:
 900 (0 1) REM PRINT CONFIGURATION
   Origs: 
   Dests: 
-910 G(910) F(P) (1 3) FOR P = 1 TO 3
+910 G(910) F(P:910) (1 3) FOR P = 1 TO 3
   Origs: 190:gosub, 870:gosub
   Dests: 920:fornext, 930:fornext
-920 G(910) F(P) (0 4) PRINT "PILE " P; N(P)
+920 G(910) F(P:910) (0 4) PRINT "PILE " P; N(P)
   Origs: 910:fornext
   Dests: 930:auto
-930 G(910) F(P) (0 1) NEXT P
+930 G(910) F(P:910) (0 1) NEXT P
   Origs: 910:fornext, 920:auto
   Dests: 940:auto
 940 G(910) (0 2) PRINT

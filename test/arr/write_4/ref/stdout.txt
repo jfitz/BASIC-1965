@@ -3,9 +3,9 @@ STOP in line 99
 
 5 (1) OPTION BASE 1
 10 (1) DIM A(6)
-20 F(I) (1) FOR I = 1 TO 6
-40 F(I) (6) LET A(I) = I
-60 F(I) (6) NEXT I
+20 F(I:20) (1) FOR I = 1 TO 6
+40 F(I:20) (6) LET A(I) = I
+60 F(I:20) (6) NEXT I
 70 (1) ARR WRITE A
 99 (1) END
 

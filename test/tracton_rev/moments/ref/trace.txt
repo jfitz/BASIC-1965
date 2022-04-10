@@ -11,133 +11,133 @@ NUMBER OF SAMPLES =
 80 INPUT N
 ? 5
  N = 5
-90 F(I) FOR I = 1 TO N
+90 F(I:90) FOR I = 1 TO N
  N: 5
  I = 1
  N = 5
  terminated:false
-100 F(I) PRINT "SAMPLE = "
+100 F(I:90) PRINT "SAMPLE = "
 SAMPLE = 
-110 F(I) INPUT X
+110 F(I:90) INPUT X
 ? 12
  X = 12
-120 F(I) LET A = A + X
+120 F(I:90) LET A = A + X
  A: 0
  X: 12
  A = 12
-130 F(I) LET B = B + (X ^ 2)
+130 F(I:90) LET B = B + (X ^ 2)
  B: 0
  X: 12
  B = 144
-140 F(I) LET C = C + (X ^ 3)
+140 F(I:90) LET C = C + (X ^ 3)
  C: 0
  X: 12
  C = 1728
-150 F(I) LET D = D + (X ^ 4)
+150 F(I:90) LET D = D + (X ^ 4)
  D: 0
  X: 12
  D = 20736
-160 F(I) NEXT I
+160 F(I:90) NEXT I
  I: 1
  terminated:false
  I = 2
-100 F(I) PRINT "SAMPLE = "
+100 F(I:90) PRINT "SAMPLE = "
 SAMPLE = 
-110 F(I) INPUT X
+110 F(I:90) INPUT X
 ? 3
  X = 3
-120 F(I) LET A = A + X
+120 F(I:90) LET A = A + X
  A: 12
  X: 3
  A = 15
-130 F(I) LET B = B + (X ^ 2)
+130 F(I:90) LET B = B + (X ^ 2)
  B: 144
  X: 3
  B = 153
-140 F(I) LET C = C + (X ^ 3)
+140 F(I:90) LET C = C + (X ^ 3)
  C: 1728
  X: 3
  C = 1755
-150 F(I) LET D = D + (X ^ 4)
+150 F(I:90) LET D = D + (X ^ 4)
  D: 20736
  X: 3
  D = 20817
-160 F(I) NEXT I
+160 F(I:90) NEXT I
  I: 2
  terminated:false
  I = 3
-100 F(I) PRINT "SAMPLE = "
+100 F(I:90) PRINT "SAMPLE = "
 SAMPLE = 
-110 F(I) INPUT X
+110 F(I:90) INPUT X
 ? 4
  X = 4
-120 F(I) LET A = A + X
+120 F(I:90) LET A = A + X
  A: 15
  X: 4
  A = 19
-130 F(I) LET B = B + (X ^ 2)
+130 F(I:90) LET B = B + (X ^ 2)
  B: 153
  X: 4
  B = 169
-140 F(I) LET C = C + (X ^ 3)
+140 F(I:90) LET C = C + (X ^ 3)
  C: 1755
  X: 4
  C = 1819
-150 F(I) LET D = D + (X ^ 4)
+150 F(I:90) LET D = D + (X ^ 4)
  D: 20817
  X: 4
  D = 21073
-160 F(I) NEXT I
+160 F(I:90) NEXT I
  I: 3
  terminated:false
  I = 4
-100 F(I) PRINT "SAMPLE = "
+100 F(I:90) PRINT "SAMPLE = "
 SAMPLE = 
-110 F(I) INPUT X
+110 F(I:90) INPUT X
 ? 5
  X = 5
-120 F(I) LET A = A + X
+120 F(I:90) LET A = A + X
  A: 19
  X: 5
  A = 24
-130 F(I) LET B = B + (X ^ 2)
+130 F(I:90) LET B = B + (X ^ 2)
  B: 169
  X: 5
  B = 194
-140 F(I) LET C = C + (X ^ 3)
+140 F(I:90) LET C = C + (X ^ 3)
  C: 1819
  X: 5
  C = 1944
-150 F(I) LET D = D + (X ^ 4)
+150 F(I:90) LET D = D + (X ^ 4)
  D: 21073
  X: 5
  D = 21698
-160 F(I) NEXT I
+160 F(I:90) NEXT I
  I: 4
  terminated:false
  I = 5
-100 F(I) PRINT "SAMPLE = "
+100 F(I:90) PRINT "SAMPLE = "
 SAMPLE = 
-110 F(I) INPUT X
+110 F(I:90) INPUT X
 ? 4
  X = 4
-120 F(I) LET A = A + X
+120 F(I:90) LET A = A + X
  A: 24
  X: 4
  A = 28
-130 F(I) LET B = B + (X ^ 2)
+130 F(I:90) LET B = B + (X ^ 2)
  B: 194
  X: 4
  B = 210
-140 F(I) LET C = C + (X ^ 3)
+140 F(I:90) LET C = C + (X ^ 3)
  C: 1944
  X: 4
  C = 2008
-150 F(I) LET D = D + (X ^ 4)
+150 F(I:90) LET D = D + (X ^ 4)
  D: 21698
  X: 4
  D = 21954
-160 F(I) NEXT I
+160 F(I:90) NEXT I
  I: 5
  terminated:true
 170 LET J = A / N

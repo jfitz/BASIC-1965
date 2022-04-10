@@ -40,28 +40,28 @@ Halstead complexity:
 160 (1 2) READ N
   Origs: 140:auto
   Dests: 170:auto
-170 F(I) (1 3) FOR I = 1 TO N
+170 F(I:170) (1 3) FOR I = 1 TO N
   Origs: 160:auto
   Dests: 180:fornext, 240:fornext
-180 F(I) (2 3) READ X, Y
+180 F(I:170) (2 3) READ X, Y
   Origs: 170:fornext
   Dests: 190:auto
-190 F(I) (0 4) LET X1 = X1 + X
+190 F(I:170) (0 4) LET X1 = X1 + X
   Origs: 180:auto
   Dests: 200:auto
-200 F(I) (0 4) LET Y1 = Y1 + Y
+200 F(I:170) (0 4) LET Y1 = Y1 + Y
   Origs: 190:auto
   Dests: 210:auto
-210 F(I) (0 6) LET X2 = X2 + X * X
+210 F(I:170) (0 6) LET X2 = X2 + X * X
   Origs: 200:auto
   Dests: 220:auto
-220 F(I) (0 6) LET Y2 = Y2 + Y * Y
+220 F(I:170) (0 6) LET Y2 = Y2 + Y * Y
   Origs: 210:auto
   Dests: 230:auto
-230 F(I) (0 6) LET Z = Z + X * Y
+230 F(I:170) (0 6) LET Z = Z + X * Y
   Origs: 220:auto
   Dests: 240:auto
-240 F(I) (0 1) NEXT I
+240 F(I:170) (0 1) NEXT I
   Origs: 170:fornext, 230:auto
   Dests: 260:auto
 250 (0 0) 

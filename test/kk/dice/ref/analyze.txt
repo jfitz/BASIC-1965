@@ -19,61 +19,61 @@ Halstead complexity:
  intelligence: 26.826
  time: 3.828
 
-10 F(G) (1 3) FOR G = 1 TO 10
+10 F(G:10) (1 3) FOR G = 1 TO 10
   Origs: :start
   Dests: 20:fornext, 410:fornext
-20 F(G) (0 2) GOSUB 500
+20 F(G:10) (0 2) GOSUB 500
   Origs: 10:fornext
   Dests: 30:auto, 510:gosub
-30 F(G) (1 4) IF D < 4 THEN 300
+30 F(G:10) (1 4) IF D < 4 THEN 300
   Origs: 20:auto
   Dests: 40:auto, 300:ifthen
-40 F(G) (1 4) IF D = 12 THEN 300
+40 F(G:10) (1 4) IF D = 12 THEN 300
   Origs: 30:auto
   Dests: 50:auto, 300:ifthen
-50 F(G) (1 4) IF D = 7 THEN 400
+50 F(G:10) (1 4) IF D = 7 THEN 400
   Origs: 40:auto
   Dests: 60:auto, 400:ifthen
-60 F(G) (1 4) IF D = 11 THEN 400
+60 F(G:10) (1 4) IF D = 11 THEN 400
   Origs: 50:auto
   Dests: 70:auto, 400:ifthen
-70 F(G) (0 3) LET D9 = D
+70 F(G:10) (0 3) LET D9 = D
   Origs: 60:auto
   Dests: 100:auto
-100 F(G) (0 2) GOSUB 500
+100 F(G:10) (0 2) GOSUB 500
   Origs: 70:auto, 130:goto
   Dests: 110:auto, 510:gosub
-110 F(G) (1 4) IF D = D9 THEN 200
+110 F(G:10) (1 4) IF D = D9 THEN 200
   Origs: 100:auto
   Dests: 120:auto, 200:ifthen
-120 F(G) (1 4) IF D = 7 THEN 250
+120 F(G:10) (1 4) IF D = 7 THEN 250
   Origs: 110:auto
   Dests: 130:auto, 250:ifthen
-130 F(G) (0 3) GOTO 100
+130 F(G:10) (0 3) GOTO 100
   Origs: 120:auto
   Dests: 100:goto
-200 F(G) (0 2) PRINT "YOU WIN -- BY MAKING YOUR POINT"
+200 F(G:10) (0 2) PRINT "YOU WIN -- BY MAKING YOUR POINT"
   Origs: 110:ifthen
   Dests: 210:auto
-210 F(G) (0 2) GOTO 410
+210 F(G:10) (0 2) GOTO 410
   Origs: 200:auto
   Dests: 410:goto
-250 F(G) (0 2) PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
+250 F(G:10) (0 2) PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
   Origs: 120:ifthen
   Dests: 260:auto
-260 F(G) (0 2) GOTO 410
+260 F(G:10) (0 2) GOTO 410
   Origs: 250:auto
   Dests: 410:goto
-300 F(G) (0 2) PRINT "YOU LOSE ON FIRST ROLL"
+300 F(G:10) (0 2) PRINT "YOU LOSE ON FIRST ROLL"
   Origs: 30:ifthen, 40:ifthen
   Dests: 310:auto
-310 F(G) (0 2) GOTO 410
+310 F(G:10) (0 2) GOTO 410
   Origs: 300:auto
   Dests: 410:goto
-400 F(G) (0 2) PRINT "YOU WIN ON FIRST ROLL"
+400 F(G:10) (0 2) PRINT "YOU WIN ON FIRST ROLL"
   Origs: 50:ifthen, 60:ifthen
   Dests: 410:auto
-410 F(G) (0 1) NEXT G
+410 F(G:10) (0 1) NEXT G
   Origs: 10:fornext, 210:goto, 260:goto, 310:goto, 400:auto
   Dests: 420:auto
 420 (0 1) STOP

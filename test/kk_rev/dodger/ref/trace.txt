@@ -6,630 +6,630 @@
 270 DATA 2, 12, 12, 22, 12, 22, 22, 32
 280 DATA 10, 20, 20, 30, 20, 30, 30, 40
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
-110 F(B) FOR B = 1 TO 9
+110 F(B:110) FOR B = 1 TO 9
  B = 1
  terminated:false
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 1
  R: 0
  P(1,0) = 0.644
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 1
  R: 1
  P(1,1) = 0.24
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 1
  R: 2
  P(1,2) = 0.077
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 1
  R: 3
  P(1,3) = 0.039
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 1
  terminated:false
  B = 2
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 2
  R: 0
  P(2,0) = 0.644
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 2
  R: 1
  P(2,1) = 0.19
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 2
  R: 2
  P(2,2) = 0.103
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 2
  R: 3
  P(2,3) = 0.053
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 2
  terminated:false
  B = 3
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 3
  R: 0
  P(3,0) = 0.72
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 3
  R: 1
  P(3,1) = 0.167
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 3
  R: 2
  P(3,2) = 0.046
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 3
  R: 3
  P(3,3) = 0.05
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 3
  terminated:false
  B = 4
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 4
  R: 0
  P(4,0) = 0.641
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 4
  R: 1
  P(4,1) = 0.244
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 4
  R: 2
  P(4,2) = 0.05
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 4
  R: 3
  P(4,3) = 0.038
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 4
  terminated:false
  B = 5
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 5
  R: 0
  P(5,0) = 0.673
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 5
  R: 1
  P(5,1) = 0.153
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 5
  R: 2
  P(5,2) = 0.073
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 5
  R: 3
  P(5,3) = 0.038
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 5
  terminated:false
  B = 6
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 6
  R: 0
  P(6,0) = 0.651
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 6
  R: 1
  P(6,1) = 0.182
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 6
  R: 2
  P(6,2) = 0.106
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 6
  R: 3
  P(6,3) = 0.038
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 6
  terminated:false
  B = 7
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 7
  R: 0
  P(7,0) = 0.704
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 7
  R: 1
  P(7,1) = 0.162
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 7
  R: 2
  P(7,2) = 0.079
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 7
  R: 3
  P(7,3) = 0.036
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 7
  terminated:false
  B = 8
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 8
  R: 0
  P(8,0) = 0.709
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 8
  R: 1
  P(8,1) = 0.162
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 8
  R: 2
  P(8,2) = 0.071
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 8
  R: 3
  P(8,3) = 0.04
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 8
  terminated:false
  B = 9
-120 F(B,R) FOR R = 0 TO 3
+120 F(B:110,R:120) FOR R = 0 TO 3
  R = 0
  terminated:false
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 9
  R: 0
  P(9,0) = 0.836
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 0
  terminated:false
  R = 1
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 9
  R: 1
  P(9,1) = 0.09
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 1
  terminated:false
  R = 2
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 9
  R: 2
  P(9,2) = 0.053
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 2
  terminated:false
  R = 3
-130 F(B,R) READ P(B, R)
+130 F(B:110,R:120) READ P(B, R)
  B: 9
  R: 3
  P(9,3) = 0.016
-140 F(B,R) NEXT R
+140 F(B:110,R:120) NEXT R
  R: 3
  terminated:true
-150 F(B) NEXT B
+150 F(B:110) NEXT B
  B: 9
  terminated:true
-200 F(R) FOR R = 1 TO 4
+200 F(R:200) FOR R = 1 TO 4
  R = 1
  terminated:false
-210 F(R,C) FOR C = 0 TO 7
+210 F(R:200,C:210) FOR C = 0 TO 7
  C = 0
  terminated:false
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 0
  Q(1,0) = 1
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 0
  terminated:false
  C = 1
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 1
  Q(1,1) = 5
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 1
  terminated:false
  C = 2
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 2
  Q(1,2) = 11
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 2
  terminated:false
  C = 3
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 3
  Q(1,3) = 15
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 3
  terminated:false
  C = 4
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 4
  Q(1,4) = 11
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 4
  terminated:false
  C = 5
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 5
  Q(1,5) = 15
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 5
  terminated:false
  C = 6
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 6
  Q(1,6) = 21
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 6
  terminated:false
  C = 7
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 1
  C: 7
  Q(1,7) = 25
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 7
  terminated:true
-240 F(R) NEXT R
+240 F(R:200) NEXT R
  R: 1
  terminated:false
  R = 2
-210 F(R,C) FOR C = 0 TO 7
+210 F(R:200,C:210) FOR C = 0 TO 7
  C = 0
  terminated:false
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 0
  Q(2,0) = 1
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 0
  terminated:false
  C = 1
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 1
  Q(2,1) = 3
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 1
  terminated:false
  C = 2
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 2
  Q(2,2) = 3
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 2
  terminated:false
  C = 3
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 3
  Q(2,3) = 7
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 3
  terminated:false
  C = 4
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 4
  Q(2,4) = 5
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 4
  terminated:false
  C = 5
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 5
  Q(2,5) = 7
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 5
  terminated:false
  C = 6
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 6
  Q(2,6) = 7
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 6
  terminated:false
  C = 7
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 2
  C: 7
  Q(2,7) = 17
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 7
  terminated:true
-240 F(R) NEXT R
+240 F(R:200) NEXT R
  R: 2
  terminated:false
  R = 3
-210 F(R,C) FOR C = 0 TO 7
+210 F(R:200,C:210) FOR C = 0 TO 7
  C = 0
  terminated:false
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 0
  Q(3,0) = 2
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 0
  terminated:false
  C = 1
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 1
  Q(3,1) = 12
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 1
  terminated:false
  C = 2
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 2
  Q(3,2) = 12
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 2
  terminated:false
  C = 3
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 3
  Q(3,3) = 22
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 3
  terminated:false
  C = 4
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 4
  Q(3,4) = 12
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 4
  terminated:false
  C = 5
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 5
  Q(3,5) = 22
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 5
  terminated:false
  C = 6
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 6
  Q(3,6) = 22
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 6
  terminated:false
  C = 7
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 3
  C: 7
  Q(3,7) = 32
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 7
  terminated:true
-240 F(R) NEXT R
+240 F(R:200) NEXT R
  R: 3
  terminated:false
  R = 4
-210 F(R,C) FOR C = 0 TO 7
+210 F(R:200,C:210) FOR C = 0 TO 7
  C = 0
  terminated:false
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 0
  Q(4,0) = 10
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 0
  terminated:false
  C = 1
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 1
  Q(4,1) = 20
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 1
  terminated:false
  C = 2
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 2
  Q(4,2) = 20
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 2
  terminated:false
  C = 3
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 3
  Q(4,3) = 30
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 3
  terminated:false
  C = 4
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 4
  Q(4,4) = 20
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 4
  terminated:false
  C = 5
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 5
  Q(4,5) = 30
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 5
  terminated:false
  C = 6
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 6
  Q(4,6) = 30
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 6
  terminated:false
  C = 7
-220 F(R,C) READ Q(R, C)
+220 F(R:200,C:210) READ Q(R, C)
  R: 4
  C: 7
  Q(4,7) = 40
-230 F(R,C) NEXT C
+230 F(R:200,C:210) NEXT C
  C: 7
  terminated:true
-240 F(R) NEXT R
+240 F(R:200) NEXT R
  R: 4
  terminated:true
 300 LET S1 = 0
@@ -642,1788 +642,1788 @@
  L7 = 0
 340 LET I = 1
  I = 1
-360 F(C) FOR C = 0 TO 7
+360 F(C:360) FOR C = 0 TO 7
  C = 0
  terminated:false
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 0
  L(0) = 0
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 0
  terminated:false
  C = 1
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 1
  L(1) = 1
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 1
  terminated:false
  C = 2
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 2
  L(2) = 1
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 2
  terminated:false
  C = 3
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 3
  L(3) = 2
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 3
  terminated:false
  C = 4
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 4
  L(4) = 1
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 4
  terminated:false
  C = 5
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 5
  L(5) = 2
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 5
  terminated:false
  C = 6
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 6
  L(6) = 2
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 6
  terminated:false
  C = 7
-370 F(C) READ L(C)
+370 F(C:360) READ L(C)
  C: 7
  L(7) = 3
-380 F(C) NEXT C
+380 F(C:360) NEXT C
  C: 7
  terminated:true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 1
  1
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 0
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 0
  B = 1
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.417022
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.417022
  B: 1
  R: 0
  P(1,0): 0.644
  X = -0.226978
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.226978
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 1
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 1
  B = 2
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.720324
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.720324
  B: 2
  R: 0
  P(2,0): 0.644
  X = 0.076324
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.076324
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.076324
  B: 2
  R: 1
  P(2,1): 0.19
  X = -0.113676
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.113676
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 1
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 1
  R > 1: false
-670 F(R) PRINT "SINGLE   ";
+670 F(R:560) PRINT "SINGLE   ";
 SINGLE   
-680 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+680 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 1
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 1
  R = 2: false
-800 F(R) LET H = H + 1
+800 F(R:560) LET H = H + 1
  H: 0
  H = 1
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 1
  C: 0
  Q(1,0): 1
  X = 1
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 1
  Y = 0
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 1
  Y: 0
  C = 1
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 0
  Y: 0
  S = 0
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 2
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 2
  B = 3
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.000114375
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.000114375
  B: 3
  R: 0
  P(3,0): 0.72
  X = -0.719886
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.719886
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 3
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 3
  B = 4
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.302333
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.302333
  B: 4
  R: 0
  P(4,0): 0.641
  X = -0.338667
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.338667
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 0
  C: 1
  L(1): 1
  L7 = 1
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 0
  0 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 0
  S: 0
  S1 = 0
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 1
  I = 2
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 2
  I < 9: true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 2
  2
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 4
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 4
  B = 5
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.146756
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.146756
  B: 5
  R: 0
  P(5,0): 0.673
  X = -0.526244
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.526244
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 5
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 5
  B = 6
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.0923386
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.0923386
  B: 6
  R: 0
  P(6,0): 0.651
  X = -0.558661
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.558661
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 6
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 6
  B = 7
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.18626
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.18626
  B: 7
  R: 0
  P(7,0): 0.704
  X = -0.51774
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.51774
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 1
  C: 0
  L(0): 0
  L7 = 1
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 0
  0 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 0
  S: 0
  S1 = 0
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 2
  I = 3
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 3
  I < 9: true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 3
  3
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 7
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 7
  B = 8
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.345561
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.345561
  B: 8
  R: 0
  P(8,0): 0.709
  X = -0.363439
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.363439
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 8
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 8
  B = 9
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.396767
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.396767
  B: 9
  R: 0
  P(9,0): 0.836
  X = -0.439233
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.439233
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 9
  B < 9: false
-510 F(R) LET B = 0
+510 F(R:560) LET B = 0
  B = 0
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 0
  B = 1
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.538817
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.538817
  B: 1
  R: 0
  P(1,0): 0.644
  X = -0.105183
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.105183
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 1
  C: 0
  L(0): 0
  L7 = 1
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 0
  0 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 0
  S: 0
  S1 = 0
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 3
  I = 4
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 4
  I < 9: true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 4
  4
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 1
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 1
  B = 2
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.419195
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.419195
  B: 2
  R: 0
  P(2,0): 0.644
  X = -0.224805
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.224805
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 2
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 2
  B = 3
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.68522
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.68522
  B: 3
  R: 0
  P(3,0): 0.72
  X = -0.03478
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.03478
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 3
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 3
  B = 4
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.204452
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.204452
  B: 4
  R: 0
  P(4,0): 0.641
  X = -0.436548
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.436548
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 1
  C: 0
  L(0): 0
  L7 = 1
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 0
  0 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 0
  S: 0
  S1 = 0
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 4
  I = 5
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 5
  I < 9: true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 5
  5
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 4
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 4
  B = 5
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.878117
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.878117
  B: 5
  R: 0
  P(5,0): 0.673
  X = 0.205117
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.205117
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.205117
  B: 5
  R: 1
  P(5,1): 0.153
  X = 0.052117
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.052117
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 1
  terminated:false
  R = 2
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.052117
  B: 5
  R: 2
  P(5,2): 0.073
  X = -0.020883
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.020883
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 2
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 2
  R > 1: true
-690 F(R) IF R > 2 THEN 720
+690 F(R:560) IF R > 2 THEN 720
  R: 2
  R > 2: false
-700 F(R) PRINT "WALK   ";
+700 F(R:560) PRINT "WALK   ";
 WALK   
-710 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+710 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 2
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 2
  R = 2: true
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 2
  C: 0
  Q(2,0): 1
  X = 1
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 1
  Y = 0
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 1
  Y: 0
  C = 1
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 0
  Y: 0
  S = 0
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 5
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 5
  B = 6
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.0273876
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.0273876
  B: 6
  R: 0
  P(6,0): 0.651
  X = -0.623612
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.623612
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 6
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 6
  B = 7
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.670468
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.670468
  B: 7
  R: 0
  P(7,0): 0.704
  X = -0.033532
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.033532
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 7
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 7
  B = 8
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.417305
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.417305
  B: 8
  R: 0
  P(8,0): 0.709
  X = -0.291695
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.291695
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 1
  C: 1
  L(1): 1
  L7 = 2
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 0
  0 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 0
  S: 0
  S1 = 0
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 5
  I = 6
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 6
  I < 9: true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 6
  6
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 8
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 8
  B = 9
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.55869
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.55869
  B: 9
  R: 0
  P(9,0): 0.836
  X = -0.27731
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.27731
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 9
  B < 9: false
-510 F(R) LET B = 0
+510 F(R:560) LET B = 0
  B = 0
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 0
  B = 1
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.140387
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.140387
  B: 1
  R: 0
  P(1,0): 0.644
  X = -0.503613
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.503613
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 1
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 1
  B = 2
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.198101
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.198101
  B: 2
  R: 0
  P(2,0): 0.644
  X = -0.445899
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.445899
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 2
  C: 0
  L(0): 0
  L7 = 2
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 0
  0 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 0
  S: 0
  S1 = 0
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 6
  I = 7
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 7
  I < 9: true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 7
  7
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 2
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 2
  B = 3
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.800745
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.800745
  B: 3
  R: 0
  P(3,0): 0.72
  X = 0.080745
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.080745
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.080745
  B: 3
  R: 1
  P(3,1): 0.167
  X = -0.086255
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.086255
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 1
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 1
  R > 1: false
-670 F(R) PRINT "SINGLE   ";
+670 F(R:560) PRINT "SINGLE   ";
 SINGLE   
-680 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+680 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 1
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 1
  R = 2: false
-800 F(R) LET H = H + 1
+800 F(R:560) LET H = H + 1
  H: 1
  H = 2
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 1
  C: 0
  Q(1,0): 1
  X = 1
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 1
  Y = 0
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 1
  Y: 0
  C = 1
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 0
  Y: 0
  S = 0
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 3
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 3
  B = 4
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.968262
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.968262
  B: 4
  R: 0
  P(4,0): 0.641
  X = 0.327262
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.327262
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.327262
  B: 4
  R: 1
  P(4,1): 0.244
  X = 0.083262
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.083262
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 1
  terminated:false
  R = 2
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.083262
  B: 4
  R: 2
  P(4,2): 0.05
  X = 0.033262
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.033262
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 2
  terminated:false
  R = 3
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.033262
  B: 4
  R: 3
  P(4,3): 0.038
  X = -0.004738
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.004738
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 3
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 3
  R > 1: true
-690 F(R) IF R > 2 THEN 720
+690 F(R:560) IF R > 2 THEN 720
  R: 3
  R > 2: true
-720 F(R) IF R > 3 THEN 750
+720 F(R:560) IF R > 3 THEN 750
  R: 3
  R > 3: false
-730 F(R) PRINT "DOUBLE   ";
+730 F(R:560) PRINT "DOUBLE   ";
 DOUBLE   
-740 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+740 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 3
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 3
  R = 2: false
-800 F(R) LET H = H + 1
+800 F(R:560) LET H = H + 1
  H: 2
  H = 3
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 3
  C: 1
  Q(3,1): 12
  X = 12
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 12
  Y = 1
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 12
  Y: 1
  C = 2
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 0
  Y: 1
  S = 1
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 4
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 4
  B = 5
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.313424
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.313424
  B: 5
  R: 0
  P(5,0): 0.673
  X = -0.359576
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.359576
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 5
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 5
  B = 6
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.692323
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.692323
  B: 6
  R: 0
  P(6,0): 0.651
  X = 0.041323
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.041323
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.041323
  B: 6
  R: 1
  P(6,1): 0.182
  X = -0.140677
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.140677
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 1
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 1
  R > 1: false
-670 F(R) PRINT "SINGLE   ";
+670 F(R:560) PRINT "SINGLE   ";
 SINGLE   
-680 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+680 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 1
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 1
  R = 2: false
-800 F(R) LET H = H + 1
+800 F(R:560) LET H = H + 1
  H: 3
  H = 4
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 1
  C: 2
  Q(1,2): 11
  X = 11
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 11
  Y = 1
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 11
  Y: 1
  C = 1
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 1
  Y: 1
  S = 2
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 6
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 6
  B = 7
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.876389
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.876389
  B: 7
  R: 0
  P(7,0): 0.704
  X = 0.172389
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.172389
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.172389
  B: 7
  R: 1
  P(7,1): 0.162
  X = 0.010389
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.010389
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 1
  terminated:false
  R = 2
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.010389
  B: 7
  R: 2
  P(7,2): 0.079
  X = -0.068611
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.068611
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 2
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 2
  R > 1: true
-690 F(R) IF R > 2 THEN 720
+690 F(R:560) IF R > 2 THEN 720
  R: 2
  R > 2: false
-700 F(R) PRINT "WALK   ";
+700 F(R:560) PRINT "WALK   ";
 WALK   
-710 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+710 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 2
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 2
  R = 2: true
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 2
  C: 1
  Q(2,1): 3
  X = 3
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 3
  Y = 0
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 3
  Y: 0
  C = 3
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 2
  Y: 0
  S = 2
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 7
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 7
  B = 8
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.894607
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.894607
  B: 8
  R: 0
  P(8,0): 0.709
  X = 0.185607
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.185607
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.185607
  B: 8
  R: 1
  P(8,1): 0.162
  X = 0.023607
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.023607
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 1
  terminated:false
  R = 2
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.023607
  B: 8
  R: 2
  P(8,2): 0.071
  X = -0.047393
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.047393
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 2
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 2
  R > 1: true
-690 F(R) IF R > 2 THEN 720
+690 F(R:560) IF R > 2 THEN 720
  R: 2
  R > 2: false
-700 F(R) PRINT "WALK   ";
+700 F(R:560) PRINT "WALK   ";
 WALK   
-710 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+710 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 2
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 2
  R = 2: true
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 2
  C: 3
  Q(2,3): 7
  X = 7
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 7
  Y = 0
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 7
  Y: 0
  C = 7
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 2
  Y: 0
  S = 2
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 8
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 8
  B = 9
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.0850442
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.0850442
  B: 9
  R: 0
  P(9,0): 0.836
  X = -0.750956
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.750956
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 9
  B < 9: false
-510 F(R) LET B = 0
+510 F(R:560) LET B = 0
  B = 0
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 0
  B = 1
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.0390548
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.0390548
  B: 1
  R: 0
  P(1,0): 0.644
  X = -0.604945
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.604945
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 2
  C: 7
  L(7): 3
  L7 = 5
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 2
  2 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 0
  S: 2
  S1 = 2
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 7
  I = 8
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 8
  I < 9: true
-430 F(R) PRINT "INNING" I
+430 F(R:560) PRINT "INNING" I
 INNING
  I: 8
  8
-450 F(R) LET S = 0
+450 F(R:560) LET S = 0
  S = 0
-460 F(R) LET O = 0
+460 F(R:560) LET O = 0
  O = 0
-470 F(R) LET C = 0
+470 F(R:560) LET C = 0
  C = 0
-500 F(R) IF B < 9 THEN 520
+500 F(R:560) IF B < 9 THEN 520
  B: 1
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 1
  B = 2
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.16983
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.16983
  B: 2
  R: 0
  P(2,0): 0.644
  X = -0.47417
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.47417
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 0
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 0
  O = 1
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 2
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 2
  B = 3
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.878143
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.878143
  B: 3
  R: 0
  P(3,0): 0.72
  X = 0.158143
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: 0.158143
  X < 0: false
-590 F(R) NEXT R
+590 F(R:560) NEXT R
  R: 0
  terminated:false
  R = 1
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.158143
  B: 3
  R: 1
  P(3,1): 0.167
  X = -0.008857
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.008857
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 1
  R > 0: true
-660 F(R) IF R > 1 THEN 690
+660 F(R:560) IF R > 1 THEN 690
  R: 1
  R > 1: false
-670 F(R) PRINT "SINGLE   ";
+670 F(R:560) PRINT "SINGLE   ";
 SINGLE   
-680 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+680 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 1
  R = 0: false
-790 F(R) IF R = 2 THEN 810
+790 F(R:560) IF R = 2 THEN 810
  R: 1
  R = 2: false
-800 F(R) LET H = H + 1
+800 F(R:560) LET H = H + 1
  H: 4
  H = 5
-810 F(R) LET X = Q(R, C)
+810 F(R:560) LET X = Q(R, C)
  R: 1
  C: 0
  Q(1,0): 1
  X = 1
-820 F(R) LET Y = INT(X / 10)
+820 F(R:560) LET Y = INT(X / 10)
  X: 1
  Y = 0
-830 F(R) LET C = X - Y * 10
+830 F(R:560) LET C = X - Y * 10
  X: 1
  Y: 0
  C = 1
-840 F(R) LET S = S + Y
+840 F(R:560) LET S = S + Y
  S: 0
  Y: 0
  S = 0
-850 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+850 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 3
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 3
  B = 4
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.0983468
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.0983468
  B: 4
  R: 0
  P(4,0): 0.641
  X = -0.542653
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.542653
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 1
  O = 2: false
-870 F(R) LET O = O + 1
+870 F(R:560) LET O = O + 1
  O: 1
  O = 2
-880 F(R) GOTO 490
-500 F(R) IF B < 9 THEN 520
+880 F(R:560) GOTO 490
+500 F(R:560) IF B < 9 THEN 520
  B: 4
  B < 9: true
-520 F(R) LET B = B + 1
+520 F(R:560) LET B = B + 1
  B: 4
  B = 5
-550 F(R) LET X = RND(0)
+550 F(R:560) LET X = RND(0)
  X = 0.421108
-560 F(R) FOR R = 0 TO 3
+560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
-570 F(R) LET X = X - P(B, R)
+570 F(R:560) LET X = X - P(B, R)
  X: 0.421108
  B: 5
  R: 0
  P(5,0): 0.673
  X = -0.251892
-580 F(R) IF X < 0 THEN 620
+580 F(R:560) IF X < 0 THEN 620
  X: -0.251892
  X < 0: true
-630 F(R) IF R > 0 THEN 660
+630 F(R:560) IF R > 0 THEN 660
  R: 0
  R > 0: false
-640 F(R) PRINT "OUT   ";
+640 F(R:560) PRINT "OUT   ";
 OUT   
-650 F(R) GOTO 770
-780 F(R) IF R = 0 THEN 860
+650 F(R:560) GOTO 770
+780 F(R:560) IF R = 0 THEN 860
  R: 0
  R = 0: true
-860 F(R) IF O = 2 THEN 890
+860 F(R:560) IF O = 2 THEN 890
  O: 2
  O = 2: true
-895 F(R) LET L7 = L7 + L(C)
+895 F(R:560) LET L7 = L7 + L(C)
  L7: 5
  C: 1
  L(1): 1
  L7 = 6
-900 F(R) PRINT
+900 F(R:560) PRINT
 
-910 F(R) PRINT S; "RUNS"
+910 F(R:560) PRINT S; "RUNS"
  S: 0
  0 RUNS
-920 F(R) PRINT
+920 F(R:560) PRINT
 
-930 F(R) LET S1 = S1 + S
+930 F(R:560) LET S1 = S1 + S
  S1: 2
  S: 0
  S1 = 2
-940 F(R) LET I = I + 1
+940 F(R:560) LET I = I + 1
  I: 8
  I = 9
-945 F(R) IF I < 9 THEN 410
+945 F(R:560) IF I < 9 THEN 410
  I: 9
  I < 9: false
-960 F(R) PRINT
+960 F(R:560) PRINT
 
-965 F(R) PRINT "GAME TOTALS:"
+965 F(R:560) PRINT "GAME TOTALS:"
 GAME TOTALS:
-970 F(R) PRINT
+970 F(R:560) PRINT
 
-975 F(R) PRINT S1; "RUNS SCORED"
+975 F(R:560) PRINT S1; "RUNS SCORED"
  S1: 2
  2 RUNS SCORED
-980 F(R) PRINT L7; "MEN LEFT ON BASE"
+980 F(R:560) PRINT L7; "MEN LEFT ON BASE"
  L7: 6
  6 MEN LEFT ON BASE
-985 F(R) PRINT H; "HITS"
+985 F(R:560) PRINT H; "HITS"
  H: 5
  5 HITS
-990 F(R) END
+990 F(R:560) END
 STOP in line 990
 

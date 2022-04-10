@@ -25,13 +25,13 @@ Halstead complexity:
 20 (0 3) LET B = 1
   Origs: 10:auto
   Dests: 30:auto
-30 F(K) (1 3) FOR K = 1 TO I
+30 F(K:30) (1 3) FOR K = 1 TO I
   Origs: 20:auto
   Dests: 40:fornext, 50:fornext
-40 F(K) (0 8) LET B = B * (N - K + 1) / K
+40 F(K:30) (0 8) LET B = B * (N - K + 1) / K
   Origs: 30:fornext
   Dests: 50:auto
-50 F(K) (0 1) NEXT K
+50 F(K:30) (0 1) NEXT K
   Origs: 30:fornext, 40:auto
   Dests: 60:auto
 60 (0 2) PRINT B

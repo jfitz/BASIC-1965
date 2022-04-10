@@ -21,14 +21,14 @@ STOP in line 999
 130 (1) PRINT X0, Y0
 140 (1) LET Y = Y0
 150 (0) 
-160 F(X) (1) FOR X = X0 TO X1 - H STEP H
-170 F(X) (10) LET D1 = FNF(X, Y)
-180 F(X) (10) LET Y1 = Y
-190 F(X) (10) LET Y = Y + D1 * H / 2
-200 F(X) (10) LET D2 = FNF(X + H / 2, Y)
-210 F(X) (10) LET Y = Y1 + D2 * H
-220 F(X) (10) PRINT X + H, Y
-230 F(X) (10) NEXT X
+160 F(X:160) (1) FOR X = X0 TO X1 - H STEP H
+170 F(X:160) (10) LET D1 = FNF(X, Y)
+180 F(X:160) (10) LET Y1 = Y
+190 F(X:160) (10) LET Y = Y + D1 * H / 2
+200 F(X:160) (10) LET D2 = FNF(X + H / 2, Y)
+210 F(X:160) (10) LET Y = Y1 + D2 * H
+220 F(X:160) (10) PRINT X + H, Y
+230 F(X:160) (10) NEXT X
 240 (0) 
 900 (0) DATA 0, 1, 1
 910 (0) DATA 0.1

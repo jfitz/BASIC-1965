@@ -31,13 +31,13 @@ Halstead complexity:
 22 (0 4) LET S = -1
   Origs: 21:auto
   Dests: 30:auto
-30 F(I) (1 4) FOR I = B TO E STEP S
+30 F(I:30) (1 4) FOR I = B TO E STEP S
   Origs: 22:auto
   Dests: 40:fornext, 50:fornext
-40 F(I) (0 2) PRINT I
+40 F(I:30) (0 2) PRINT I
   Origs: 30:fornext
   Dests: 50:auto
-50 F(I) (0 1) NEXT I
+50 F(I:30) (0 1) NEXT I
   Origs: 30:fornext, 40:auto
   Dests: 90:auto
 90 (0 1) STOP

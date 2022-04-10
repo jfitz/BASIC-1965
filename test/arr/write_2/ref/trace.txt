@@ -1,53 +1,53 @@
 10 DIM A(6)
-20 F(I) FOR I = 0 TO 6
+20 F(I:20) FOR I = 0 TO 6
  I = 0
  terminated:false
-40 F(I) LET A(I) = I
+40 F(I:20) LET A(I) = I
  I: 0
  A(0) = 0
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 0
  terminated:false
  I = 1
-40 F(I) LET A(I) = I
+40 F(I:20) LET A(I) = I
  I: 1
  A(1) = 1
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 1
  terminated:false
  I = 2
-40 F(I) LET A(I) = I
+40 F(I:20) LET A(I) = I
  I: 2
  A(2) = 2
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 2
  terminated:false
  I = 3
-40 F(I) LET A(I) = I
+40 F(I:20) LET A(I) = I
  I: 3
  A(3) = 3
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 3
  terminated:false
  I = 4
-40 F(I) LET A(I) = I
+40 F(I:20) LET A(I) = I
  I: 4
  A(4) = 4
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 4
  terminated:false
  I = 5
-40 F(I) LET A(I) = I
+40 F(I:20) LET A(I) = I
  I: 5
  A(5) = 5
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 5
  terminated:false
  I = 6
-40 F(I) LET A(I) = I
+40 F(I:20) LET A(I) = I
  I: 6
  A(6) = 6
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 6
  terminated:true
 70 ARR WRITE A;

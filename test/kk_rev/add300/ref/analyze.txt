@@ -31,13 +31,13 @@ Halstead complexity:
 120 (0 2) GOSUB 2000
   Origs: 110:auto
   Dests: 130:auto, 2010:gosub
-130 F(I) (1 3) FOR I = 0 TO L
+130 F(I:130) (1 3) FOR I = 0 TO L
   Origs: 120:auto
   Dests: 140:fornext, 150:fornext
-140 F(I) (0 3) LET A(I) = C(I)
+140 F(I:130) (0 3) LET A(I) = C(I)
   Origs: 130:fornext
   Dests: 150:auto
-150 F(I) (0 1) NEXT I
+150 F(I:130) (0 1) NEXT I
   Origs: 130:fornext, 140:auto
   Dests: 160:auto
 160 (0 3) LET L1 = L
@@ -55,13 +55,13 @@ Halstead complexity:
 220 (0 2) GOSUB 2000
   Origs: 210:auto
   Dests: 230:auto, 2010:gosub
-230 F(I) (1 3) FOR I = 0 TO L
+230 F(I:230) (1 3) FOR I = 0 TO L
   Origs: 220:auto
   Dests: 240:fornext, 250:fornext
-240 F(I) (0 3) LET B(I) = C(I)
+240 F(I:230) (0 3) LET B(I) = C(I)
   Origs: 230:fornext
   Dests: 250:auto
-250 F(I) (0 1) NEXT I
+250 F(I:230) (0 1) NEXT I
   Origs: 230:fornext, 240:auto
   Dests: 260:auto
 260 (0 3) LET L2 = L
@@ -85,13 +85,13 @@ Halstead complexity:
 320 (0 3) LET L = L1
   Origs: 310:auto
   Dests: 330:auto
-330 F(I) (1 4) FOR I = L2 + 1 TO L
+330 F(I:330) (1 4) FOR I = L2 + 1 TO L
   Origs: 320:auto
   Dests: 340:fornext, 350:fornext
-340 F(I) (0 3) LET B(I) = 0
+340 F(I:330) (0 3) LET B(I) = 0
   Origs: 330:fornext
   Dests: 350:auto
-350 F(I) (0 1) NEXT I
+350 F(I:330) (0 1) NEXT I
   Origs: 330:fornext, 340:auto
   Dests: 360:auto
 360 (0 2) GOTO 500
@@ -100,22 +100,22 @@ Halstead complexity:
 420 (0 3) LET L = L2
   Origs: 310:ifthen
   Dests: 430:auto
-430 F(I) (1 4) FOR I = L1 + 1 TO L
+430 F(I:430) (1 4) FOR I = L1 + 1 TO L
   Origs: 420:auto
   Dests: 440:fornext, 450:fornext
-440 F(I) (0 3) LET A(I) = 0
+440 F(I:430) (0 3) LET A(I) = 0
   Origs: 430:fornext
   Dests: 450:auto
-450 F(I) (0 1) NEXT I
+450 F(I:430) (0 1) NEXT I
   Origs: 430:fornext, 440:auto
   Dests: 500:auto
-500 F(I) (1 3) FOR I = 0 TO L
+500 F(I:500) (1 3) FOR I = 0 TO L
   Origs: 360:goto, 450:auto
   Dests: 510:fornext, 520:fornext
-510 F(I) (0 4) LET C(I) = A(I) + B(I)
+510 F(I:500) (0 4) LET C(I) = A(I) + B(I)
   Origs: 500:fornext
   Dests: 520:auto
-520 F(I) (0 1) NEXT I
+520 F(I:500) (0 1) NEXT I
   Origs: 500:fornext, 510:auto
   Dests: 610:auto
 530 (0 0) 
@@ -139,31 +139,31 @@ Halstead complexity:
 1000 (0 1) REM READ A NUMBER C
   Origs: 
   Dests: 
-1010 G(1010) F(I) (1 3) FOR I = 0 TO 100
+1010 G(1010) F(I:1010) (1 3) FOR I = 0 TO 100
   Origs: 110:gosub, 210:gosub
   Dests: 1020:fornext, 1040:fornext
-1020 G(1010) F(I) (1 2) READ X(I)
+1020 G(1010) F(I:1010) (1 2) READ X(I)
   Origs: 1010:fornext
   Dests: 1030:auto
-1030 G(1010) F(I) (1 4) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) (1 4) IF X(I) < 0 THEN 1100
   Origs: 1020:auto
   Dests: 1040:auto, 1100:ifthen
-1040 G(1010) F(I) (0 1) NEXT I
+1040 G(1010) F(I:1010) (0 1) NEXT I
   Origs: 1010:fornext, 1030:auto
   Dests: 1050:auto
 1050 G(1010) (0 2) GOTO 1200
   Origs: 1040:auto
   Dests: 1200:goto
-1100 G(1010) F(I) (0 4) LET L = I - 1
+1100 G(1010) F(I:1010) (0 4) LET L = I - 1
   Origs: 1030:ifthen
   Dests: 1110:auto
-1110 G(1010) F(I) (1 3) FOR I = 0 TO L
+1110 G(1010) F(I:1010,I:1110) (1 3) FOR I = 0 TO L
   Origs: 1100:auto
   Dests: 1120:fornext, 1130:fornext
-1120 G(1010) F(I) (0 3) LET C(I) = X(L - I)
+1120 G(1010) F(I:1010,I:1110) (0 3) LET C(I) = X(L - I)
   Origs: 1110:fornext
   Dests: 1130:auto
-1130 G(1010) F(I) (0 1) NEXT I
+1130 G(1010) F(I:1010,I:1110) (0 1) NEXT I
   Origs: 1110:fornext, 1120:auto
   Dests: 1140:auto
 1140 G(1010) (0 1) RETURN
@@ -218,49 +218,49 @@ Halstead complexity:
 2200 G(2010) (0 3) LET L9 = L
   Origs: 2010:ifthen
   Dests: 2210:auto
-2210 G(2010) F(I) (1 5) FOR I = L9 TO 0 STEP -1
+2210 G(2010) F(I:2210) (1 5) FOR I = L9 TO 0 STEP -1
   Origs: 2070:goto, 2200:auto
   Dests: 2220:fornext, 2320:fornext
-2220 G(2010) F(I) (0 3) LET N = C(I)
+2220 G(2010) F(I:2210) (0 3) LET N = C(I)
   Origs: 2210:fornext
   Dests: 2230:auto
-2230 G(2010) F(I) (0 3) LET Q = 100
+2230 G(2010) F(I:2210) (0 3) LET Q = 100
   Origs: 2220:auto
   Dests: 2240:auto
-2240 G(2010) F(I,J) (1 3) FOR J = 1 TO 3
+2240 G(2010) F(I:2210,J:2240) (1 3) FOR J = 1 TO 3
   Origs: 2230:auto
   Dests: 2250:fornext, 2290:fornext
-2250 G(2010) F(I,J) (0 4) LET M = INT(N / Q)
+2250 G(2010) F(I:2210,J:2240) (0 4) LET M = INT(N / Q)
   Origs: 2240:fornext
   Dests: 2260:auto
-2260 G(2010) F(I,J) (0 6) LET N = N - M * Q
+2260 G(2010) F(I:2210,J:2240) (0 6) LET N = N - M * Q
   Origs: 2250:auto
   Dests: 2270:auto
-2270 G(2010) F(I,J) (0 4) LET Q = Q / 10
+2270 G(2010) F(I:2210,J:2240) (0 4) LET Q = Q / 10
   Origs: 2260:auto
   Dests: 2280:auto
-2280 G(2010) F(I,J) (0 2) PRINT M;
+2280 G(2010) F(I:2210,J:2240) (0 2) PRINT M;
   Origs: 2270:auto
   Dests: 2290:auto
-2290 G(2010) F(I,J) (0 1) NEXT J
+2290 G(2010) F(I:2210,J:2240) (0 1) NEXT J
   Origs: 2240:fornext, 2280:auto
   Dests: 2300:auto
-2300 G(2010) F(I) (1 4) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) (1 4) IF I = 0 THEN 2400
   Origs: 2290:auto
   Dests: 2310:auto, 2400:ifthen
-2310 G(2010) F(I) (0 2) PRINT ",   ";
+2310 G(2010) F(I:2210) (0 2) PRINT ",   ";
   Origs: 2300:auto
   Dests: 2320:auto
-2320 G(2010) F(I) (0 1) NEXT I
+2320 G(2010) F(I:2210) (0 1) NEXT I
   Origs: 2210:fornext, 2310:auto
   Dests: 2400:auto
-2400 G(2010) F(I) (0 2) PRINT
+2400 G(2010) F(I:2210) (0 2) PRINT
   Origs: 2300:ifthen, 2320:auto
   Dests: 2405:auto
-2405 G(2010) F(I) (0 2) PRINT
+2405 G(2010) F(I:2210) (0 2) PRINT
   Origs: 2400:auto
   Dests: 2410:auto
-2410 G(2010) F(I) (0 1) RETURN
+2410 G(2010) F(I:2210) (0 1) RETURN
   Origs: 2405:auto
   Dests: 
 2420 (0 0) 
@@ -272,22 +272,22 @@ Halstead complexity:
 3010 G(3010) (0 3) LET C(L + 1) = 0
   Origs: 610:gosub
   Dests: 3020:auto
-3020 G(3010) F(I) (1 3) FOR I = 0 TO L
+3020 G(3010) F(I:3020) (1 3) FOR I = 0 TO L
   Origs: 3010:auto
   Dests: 3030:fornext, 3070:fornext
-3030 G(3010) F(I) (0 3) LET N = C(I)
+3030 G(3010) F(I:3020) (0 3) LET N = C(I)
   Origs: 3020:fornext
   Dests: 3040:auto
-3040 G(3010) F(I) (0 4) LET M = INT(N / 1000)
+3040 G(3010) F(I:3020) (0 4) LET M = INT(N / 1000)
   Origs: 3030:auto
   Dests: 3050:auto
-3050 G(3010) F(I) (0 6) LET C(I) = N - 1000 * M
+3050 G(3010) F(I:3020) (0 6) LET C(I) = N - 1000 * M
   Origs: 3040:auto
   Dests: 3060:auto
-3060 G(3010) F(I) (0 4) LET C(I + 1) = C(I + 1) + M
+3060 G(3010) F(I:3020) (0 4) LET C(I + 1) = C(I + 1) + M
   Origs: 3050:auto
   Dests: 3070:auto
-3070 G(3010) F(I) (0 1) NEXT I
+3070 G(3010) F(I:3020) (0 1) NEXT I
   Origs: 3020:fornext, 3060:auto
   Dests: 3080:auto
 3080 G(3010) (1 4) IF M = 0 THEN 3100

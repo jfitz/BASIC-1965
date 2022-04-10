@@ -26,10 +26,10 @@ STOP in line 170
 50 (2) PRINT "SIZE OF SAMPLE"
 60 (2) INPUT N
 70 (2) LET J = 1
-80 F(I) (2) FOR I = 1 TO N - 1
-90 F(I) (4) LET K = 1 - (I / M)
-100 F(I) (4) LET J = J * K
-110 F(I) (4) NEXT I
+80 F(I:80) (2) FOR I = 1 TO N - 1
+90 F(I:80) (4) LET K = 1 - (I / M)
+100 F(I:80) (4) LET J = J * K
+110 F(I:80) (4) NEXT I
 120 (2) PRINT "PROBABILITY = "; J
 130 (2) PRINT
 140 (2) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"

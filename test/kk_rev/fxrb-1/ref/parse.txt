@@ -145,6 +145,7 @@
  TextConstant:"*"
  CarriageControl:;
 410 FOR K = I+1 TO 60
+ WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:K -> _
  start:   ["Variable:I -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
  end:     ["NumericConstant:60"]

@@ -43,13 +43,13 @@ Halstead complexity:
 120 (0 3) LET M = 0
   Origs: 100:auto
   Dests: 130:auto
-130 F(X) (1 7) FOR X = A + H / 2 TO B STEP H
+130 F(X:130) (1 7) FOR X = A + H / 2 TO B STEP H
   Origs: 120:auto
   Dests: 140:fornext, 150:fornext
-140 F(X) (0 6) LET M = M + FNF(X)
+140 F(X:130) (0 6) LET M = M + FNF(X)
   Origs: 130:fornext
   Dests: 10:function, 150:auto
-150 F(X) (0 1) NEXT X
+150 F(X:130) (0 1) NEXT X
   Origs: 130:fornext, 140:auto
   Dests: 160:auto
 160 (0 4) LET M = M * H

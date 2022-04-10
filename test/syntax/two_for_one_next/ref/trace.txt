@@ -1,37 +1,37 @@
 20 LET F = 0
  F = 0
-30 F(I) FOR I = 1 TO 4
+30 F(I:30) FOR I = 1 TO 4
  I = 1
  terminated:false
-40 F(I) PRINT I
+40 F(I:30) PRINT I
  I: 1
  1
-50 F(I) GOTO 90
-90 F(I) NEXT I
+50 F(I:30) GOTO 90
+90 F(I:30,I:70) NEXT I
  I: 1
  terminated:false
  I = 2
-40 F(I) PRINT I
+40 F(I:30) PRINT I
  I: 2
  2
-50 F(I) GOTO 90
-90 F(I) NEXT I
+50 F(I:30) GOTO 90
+90 F(I:30,I:70) NEXT I
  I: 2
  terminated:false
  I = 3
-40 F(I) PRINT I
+40 F(I:30) PRINT I
  I: 3
  3
-50 F(I) GOTO 90
-90 F(I) NEXT I
+50 F(I:30) GOTO 90
+90 F(I:30,I:70) NEXT I
  I: 3
  terminated:false
  I = 4
-40 F(I) PRINT I
+40 F(I:30) PRINT I
  I: 4
  4
-50 F(I) GOTO 90
-90 F(I) NEXT I
+50 F(I:30) GOTO 90
+90 F(I:30,I:70) NEXT I
  I: 4
  terminated:true
 100 IF F = 0 THEN 60
@@ -39,41 +39,41 @@
  F = 0: true
 60 LET F = 1
  F = 1
-70 F(I) FOR I = 10 TO 14
+70 F(I:70) FOR I = 10 TO 14
  I = 10
  terminated:false
-80 F(I) PRINT I
+80 F(I:70) PRINT I
  I: 10
  10
-90 F(I) NEXT I
+90 F(I:30,I:70) NEXT I
  I: 10
  terminated:false
  I = 11
-80 F(I) PRINT I
+80 F(I:70) PRINT I
  I: 11
  11
-90 F(I) NEXT I
+90 F(I:30,I:70) NEXT I
  I: 11
  terminated:false
  I = 12
-80 F(I) PRINT I
+80 F(I:70) PRINT I
  I: 12
  12
-90 F(I) NEXT I
+90 F(I:30,I:70) NEXT I
  I: 12
  terminated:false
  I = 13
-80 F(I) PRINT I
+80 F(I:70) PRINT I
  I: 13
  13
-90 F(I) NEXT I
+90 F(I:30,I:70) NEXT I
  I: 13
  terminated:false
  I = 14
-80 F(I) PRINT I
+80 F(I:70) PRINT I
  I: 14
  14
-90 F(I) NEXT I
+90 F(I:30,I:70) NEXT I
  I: 14
  terminated:true
 100 IF F = 0 THEN 60

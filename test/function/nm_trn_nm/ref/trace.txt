@@ -1,382 +1,382 @@
 10 DIM A(6, 5)
-20 F(I) FOR I = 0 TO 6
+20 F(I:20) FOR I = 0 TO 6
  I = 0
  terminated:false
-30 F(I,J) FOR J = 0 TO 5
+30 F(I:20,J:30) FOR J = 0 TO 5
  J = 0
  terminated:false
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 0
  J: 0
  A(0,0) = 0
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 0
  terminated:false
  J = 1
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 0
  J: 1
  A(0,1) = 1
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 1
  terminated:false
  J = 2
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 0
  J: 2
  A(0,2) = 2
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 2
  terminated:false
  J = 3
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 0
  J: 3
  A(0,3) = 3
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 3
  terminated:false
  J = 4
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 0
  J: 4
  A(0,4) = 4
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 4
  terminated:false
  J = 5
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 0
  J: 5
  A(0,5) = 5
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 5
  terminated:true
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 0
  terminated:false
  I = 1
-30 F(I,J) FOR J = 0 TO 5
+30 F(I:20,J:30) FOR J = 0 TO 5
  J = 0
  terminated:false
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 1
  J: 0
  A(1,0) = 10
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 0
  terminated:false
  J = 1
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 1
  J: 1
  A(1,1) = 11
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 1
  terminated:false
  J = 2
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 1
  J: 2
  A(1,2) = 12
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 2
  terminated:false
  J = 3
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 1
  J: 3
  A(1,3) = 13
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 3
  terminated:false
  J = 4
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 1
  J: 4
  A(1,4) = 14
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 4
  terminated:false
  J = 5
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 1
  J: 5
  A(1,5) = 15
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 5
  terminated:true
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 1
  terminated:false
  I = 2
-30 F(I,J) FOR J = 0 TO 5
+30 F(I:20,J:30) FOR J = 0 TO 5
  J = 0
  terminated:false
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 2
  J: 0
  A(2,0) = 20
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 0
  terminated:false
  J = 1
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 2
  J: 1
  A(2,1) = 21
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 1
  terminated:false
  J = 2
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 2
  J: 2
  A(2,2) = 22
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 2
  terminated:false
  J = 3
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 2
  J: 3
  A(2,3) = 23
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 3
  terminated:false
  J = 4
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 2
  J: 4
  A(2,4) = 24
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 4
  terminated:false
  J = 5
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 2
  J: 5
  A(2,5) = 25
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 5
  terminated:true
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 2
  terminated:false
  I = 3
-30 F(I,J) FOR J = 0 TO 5
+30 F(I:20,J:30) FOR J = 0 TO 5
  J = 0
  terminated:false
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 3
  J: 0
  A(3,0) = 30
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 0
  terminated:false
  J = 1
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 3
  J: 1
  A(3,1) = 31
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 1
  terminated:false
  J = 2
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 3
  J: 2
  A(3,2) = 32
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 2
  terminated:false
  J = 3
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 3
  J: 3
  A(3,3) = 33
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 3
  terminated:false
  J = 4
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 3
  J: 4
  A(3,4) = 34
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 4
  terminated:false
  J = 5
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 3
  J: 5
  A(3,5) = 35
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 5
  terminated:true
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 3
  terminated:false
  I = 4
-30 F(I,J) FOR J = 0 TO 5
+30 F(I:20,J:30) FOR J = 0 TO 5
  J = 0
  terminated:false
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 4
  J: 0
  A(4,0) = 40
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 0
  terminated:false
  J = 1
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 4
  J: 1
  A(4,1) = 41
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 1
  terminated:false
  J = 2
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 4
  J: 2
  A(4,2) = 42
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 2
  terminated:false
  J = 3
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 4
  J: 3
  A(4,3) = 43
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 3
  terminated:false
  J = 4
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 4
  J: 4
  A(4,4) = 44
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 4
  terminated:false
  J = 5
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 4
  J: 5
  A(4,5) = 45
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 5
  terminated:true
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 4
  terminated:false
  I = 5
-30 F(I,J) FOR J = 0 TO 5
+30 F(I:20,J:30) FOR J = 0 TO 5
  J = 0
  terminated:false
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 5
  J: 0
  A(5,0) = 50
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 0
  terminated:false
  J = 1
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 5
  J: 1
  A(5,1) = 51
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 1
  terminated:false
  J = 2
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 5
  J: 2
  A(5,2) = 52
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 2
  terminated:false
  J = 3
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 5
  J: 3
  A(5,3) = 53
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 3
  terminated:false
  J = 4
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 5
  J: 4
  A(5,4) = 54
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 4
  terminated:false
  J = 5
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 5
  J: 5
  A(5,5) = 55
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 5
  terminated:true
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 5
  terminated:false
  I = 6
-30 F(I,J) FOR J = 0 TO 5
+30 F(I:20,J:30) FOR J = 0 TO 5
  J = 0
  terminated:false
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 6
  J: 0
  A(6,0) = 60
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 0
  terminated:false
  J = 1
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 6
  J: 1
  A(6,1) = 61
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 1
  terminated:false
  J = 2
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 6
  J: 2
  A(6,2) = 62
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 2
  terminated:false
  J = 3
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 6
  J: 3
  A(6,3) = 63
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 3
  terminated:false
  J = 4
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 6
  J: 4
  A(6,4) = 64
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 4
  terminated:false
  J = 5
-40 F(I,J) LET A(I, J) = I * 10 + J
+40 F(I:20,J:30) LET A(I, J) = I * 10 + J
  I: 6
  J: 5
  A(6,5) = 65
-50 F(I,J) NEXT J
+50 F(I:20,J:30) NEXT J
  J: 5
  terminated:true
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 6
  terminated:true
 70 PRINT "MATRIX A"

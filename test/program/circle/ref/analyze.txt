@@ -166,37 +166,37 @@ Halstead complexity:
 401 (0 8) PRINT "ANGLE", "POINT", " ", "DISTANCES", " ", "RATIO", "DIFFERENCE"
   Origs: 306:auto
   Dests: 410:auto
-410 F(I) (1 4) FOR I = 0 TO 365 STEP 5
+410 F(I:410) (1 4) FOR I = 0 TO 365 STEP 5
   Origs: 401:auto
   Dests: 421:fornext, 441:fornext
 420 (0 1) REM PICK POINT ON CIRCLE D
   Origs: 
   Dests: 
-421 F(I) (0 5) LET T = FNR(I)
+421 F(I:410) (0 5) LET T = FNR(I)
   Origs: 410:fornext
   Dests: 61:function, 422:auto
-422 F(I) (0 7) LET I1 = D1 + COS(T) * D5
+422 F(I:410) (0 7) LET I1 = D1 + COS(T) * D5
   Origs: 421:auto
   Dests: 423:auto
-423 F(I) (0 7) LET I2 = D2 + SIN(T) * D5
+423 F(I:410) (0 7) LET I2 = D2 + SIN(T) * D5
   Origs: 422:auto
   Dests: 424:auto
-424 F(I) (0 5) LET G1 = FNL(A1, A2, I1, I2)
+424 F(I:410) (0 5) LET G1 = FNL(A1, A2, I1, I2)
   Origs: 423:auto
   Dests: 51:function, 425:auto
-425 F(I) (0 5) LET G2 = FNL(B1, B2, I1, I2)
+425 F(I:410) (0 5) LET G2 = FNL(B1, B2, I1, I2)
   Origs: 424:auto
   Dests: 51:function, 426:auto
-426 F(I) (0 4) LET R1 = G1 / G2
+426 F(I:410) (0 4) LET R1 = G1 / G2
   Origs: 425:auto
   Dests: 431:auto
 430 (0 1) REM PRINT RESULTS
   Origs: 
   Dests: 
-431 F(I) (0 9) PRINT T, I1; I2, G1; G2, R1, R1 - R0
+431 F(I:410) (0 9) PRINT T, I1; I2, G1; G2, R1, R1 - R0
   Origs: 426:auto
   Dests: 441:auto
-441 F(I) (0 1) NEXT I
+441 F(I:410) (0 1) NEXT I
   Origs: 410:fornext, 431:auto
   Dests: 999:auto
 900 (0 1) REM DATA - POINT A, POINT D, POINT C

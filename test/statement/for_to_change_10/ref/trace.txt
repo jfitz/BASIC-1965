@@ -1,17 +1,17 @@
-20 F(I) FOR I = 1 TO 5
+20 F(I:20) FOR I = 1 TO 5
  I = 1
  terminated:false
-30 F(I) PRINT "BEFORE: "; I
+30 F(I:20) PRINT "BEFORE: "; I
 BEFORE: 
  I: 1
  1
-40 F(I) LET I = 10
+40 F(I:20) LET I = 10
  I = 10
-50 F(I) PRINT "AFTER: "; I
+50 F(I:20) PRINT "AFTER: "; I
 AFTER: 
  I: 10
  10
-60 F(I) NEXT I
+60 F(I:20) NEXT I
  I: 10
  terminated:true
 70 PRINT "FINAL: "; I

@@ -76,16 +76,16 @@ Halstead complexity:
 920 G(920) (0 4) LET A = 1 / 7
   Origs: 120:gosub, 150:gosub, 180:gosub, 220:gosub, 250:gosub
   Dests: 930:auto
-930 G(920) F(I) (1 3) FOR I = 1 TO 12
+930 G(920) F(I:930) (1 3) FOR I = 1 TO 12
   Origs: 920:auto
   Dests: 940:fornext, 960:fornext
-940 G(920) F(I) (0 2) PRINT A
+940 G(920) F(I:930) (0 2) PRINT A
   Origs: 930:fornext
   Dests: 950:auto
-950 G(920) F(I) (0 4) LET A = A / 10
+950 G(920) F(I:930) (0 4) LET A = A / 10
   Origs: 940:auto
   Dests: 960:auto
-960 G(920) F(I) (0 1) NEXT I
+960 G(920) F(I:930) (0 1) NEXT I
   Origs: 930:fornext, 950:auto
   Dests: 990:auto
 990 G(920) (0 1) RETURN

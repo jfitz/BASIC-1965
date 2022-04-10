@@ -29,6 +29,7 @@
 380 FOR P = 1 TO 3
 390    LET X = N(P)
 400    FOR J = 4 TO 1 STEP -1
+ WARNING: FOR/NEXT nesting exceeds limit 3
 410       LET Y = INT(X/2)
 420       LET B(P,J) = X - 2*Y
 430       LET X = Y

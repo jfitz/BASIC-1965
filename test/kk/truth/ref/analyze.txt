@@ -25,49 +25,49 @@ Halstead complexity:
 15 (0 2) PRINT
   Origs: 10:auto
   Dests: 20:auto
-20 F(P) (1 5) FOR P = 1 TO 0 STEP -1
+20 F(P:20) (1 5) FOR P = 1 TO 0 STEP -1
   Origs: 15:auto
   Dests: 30:fornext, 150:fornext
-30 F(P,Q) (1 5) FOR Q = 1 TO 0 STEP -1
+30 F(P:20,Q:30) (1 5) FOR Q = 1 TO 0 STEP -1
   Origs: 20:fornext
   Dests: 40:fornext, 140:fornext
-40 F(P,Q,R) (1 5) FOR R = 1 TO 0 STEP -1
+40 F(P:20,Q:30,R:40) (1 5) FOR R = 1 TO 0 STEP -1
   Origs: 30:fornext
   Dests: 50:fornext, 130:fornext
-50 F(P,Q,R) (0 3) LET X = P
+50 F(P:20,Q:30,R:40) (0 3) LET X = P
   Origs: 40:fornext
   Dests: 60:auto
-60 F(P,Q,R) (0 2) GOSUB 200
+60 F(P:20,Q:30,R:40) (0 2) GOSUB 200
   Origs: 50:auto
   Dests: 70:auto, 200:gosub
-70 F(P,Q,R) (0 3) LET X = Q
+70 F(P:20,Q:30,R:40) (0 3) LET X = Q
   Origs: 60:auto
   Dests: 80:auto
-80 F(P,Q,R) (0 2) GOSUB 200
+80 F(P:20,Q:30,R:40) (0 2) GOSUB 200
   Origs: 70:auto
   Dests: 90:auto, 200:gosub
-90 F(P,Q,R) (0 3) LET X = R
+90 F(P:20,Q:30,R:40) (0 3) LET X = R
   Origs: 80:auto
   Dests: 95:auto
-95 F(P,Q,R) (0 2) GOSUB 200
+95 F(P:20,Q:30,R:40) (0 2) GOSUB 200
   Origs: 90:auto
   Dests: 100:auto, 200:gosub
-100 F(P,Q,R) (0 5) LET X = P * SGN(Q + R)
+100 F(P:20,Q:30,R:40) (0 5) LET X = P * SGN(Q + R)
   Origs: 95:auto
   Dests: 110:auto
-110 F(P,Q,R) (0 2) GOSUB 200
+110 F(P:20,Q:30,R:40) (0 2) GOSUB 200
   Origs: 100:auto
   Dests: 120:auto, 200:gosub
-120 F(P,Q,R) (0 2) PRINT
+120 F(P:20,Q:30,R:40) (0 2) PRINT
   Origs: 110:auto
   Dests: 130:auto
-130 F(P,Q,R) (0 1) NEXT R
+130 F(P:20,Q:30,R:40) (0 1) NEXT R
   Origs: 40:fornext, 120:auto
   Dests: 140:auto
-140 F(P,Q) (0 1) NEXT Q
+140 F(P:20,Q:30) (0 1) NEXT Q
   Origs: 30:fornext, 130:auto
   Dests: 150:auto
-150 F(P) (0 1) NEXT P
+150 F(P:20) (0 1) NEXT P
   Origs: 20:fornext, 140:auto
   Dests: 160:auto
 160 (0 1) STOP

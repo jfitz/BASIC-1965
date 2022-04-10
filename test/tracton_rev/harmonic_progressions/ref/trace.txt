@@ -32,508 +32,508 @@ HARMONIC PROGRESSION
 TERM NUMBER     TERM VALUE
 170 LET J = 0
  J = 0
-180 F(I) FOR I = 0 TO N - 1
+180 F(I:180) FOR I = 0 TO N - 1
  N: 20
  I = 0
  N - 1 = 19
  terminated:false
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 0
  K = 1
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 0
  D: 3
  L = 5
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 0
  L: 5
  J = 5
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 1
  1              
  L: 5
  5
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 0
  terminated:false
  I = 1
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 1
  K = 2
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 1
  D: 3
  L = 2
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 5
  L: 2
  J = 7
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 2
  2              
  L: 2
  2
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 1
  terminated:false
  I = 2
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 2
  K = 3
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 2
  D: 3
  L = 1.25
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 7
  L: 1.25
  J = 8.25
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 3
  3              
  L: 1.25
  1.25
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 2
  terminated:false
  I = 3
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 3
  K = 4
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 3
  D: 3
  L = 0.909091
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 8.25
  L: 0.909091
  J = 9.15909
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 4
  4              
  L: 0.909091
  0.909091
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 3
  terminated:false
  I = 4
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 4
  K = 5
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 4
  D: 3
  L = 0.714286
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 9.15909
  L: 0.714286
  J = 9.87338
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 5
  5              
  L: 0.714286
  0.714286
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 4
  terminated:false
  I = 5
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 5
  K = 6
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 5
  D: 3
  L = 0.588235
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 9.87338
  L: 0.588235
  J = 10.4616
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 6
  6              
  L: 0.588235
  0.588235
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 5
  terminated:false
  I = 6
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 6
  K = 7
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 6
  D: 3
  L = 0.5
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 10.4616
  L: 0.5
  J = 10.9616
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 7
  7              
  L: 0.5
  0.5
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 6
  terminated:false
  I = 7
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 7
  K = 8
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 7
  D: 3
  L = 0.434783
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 10.9616
  L: 0.434783
  J = 11.3964
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 8
  8              
  L: 0.434783
  0.434783
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 7
  terminated:false
  I = 8
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 8
  K = 9
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 8
  D: 3
  L = 0.384615
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 11.3964
  L: 0.384615
  J = 11.781
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 9
  9              
  L: 0.384615
  0.384615
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 8
  terminated:false
  I = 9
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 9
  K = 10
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 9
  D: 3
  L = 0.344828
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 11.781
  L: 0.344828
  J = 12.1258
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 10
  10             
  L: 0.344828
  0.344828
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 9
  terminated:false
  I = 10
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 10
  K = 11
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 10
  D: 3
  L = 0.3125
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 12.1258
  L: 0.3125
  J = 12.4383
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 11
  11             
  L: 0.3125
  0.3125
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 10
  terminated:false
  I = 11
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 11
  K = 12
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 11
  D: 3
  L = 0.285714
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 12.4383
  L: 0.285714
  J = 12.724
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 12
  12             
  L: 0.285714
  0.285714
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 11
  terminated:false
  I = 12
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 12
  K = 13
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 12
  D: 3
  L = 0.263158
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 12.724
  L: 0.263158
  J = 12.9872
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 13
  13             
  L: 0.263158
  0.263158
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 12
  terminated:false
  I = 13
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 13
  K = 14
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 13
  D: 3
  L = 0.243902
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 12.9872
  L: 0.243902
  J = 13.2311
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 14
  14             
  L: 0.243902
  0.243902
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 13
  terminated:false
  I = 14
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 14
  K = 15
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 14
  D: 3
  L = 0.227273
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 13.2311
  L: 0.227273
  J = 13.4584
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 15
  15             
  L: 0.227273
  0.227273
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 14
  terminated:false
  I = 15
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 15
  K = 16
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 15
  D: 3
  L = 0.212766
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 13.4584
  L: 0.212766
  J = 13.6712
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 16
  16             
  L: 0.212766
  0.212766
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 15
  terminated:false
  I = 16
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 16
  K = 17
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 16
  D: 3
  L = 0.2
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 13.6712
  L: 0.2
  J = 13.8712
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 17
  17             
  L: 0.2
  0.2
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 16
  terminated:false
  I = 17
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 17
  K = 18
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 17
  D: 3
  L = 0.188679
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 13.8712
  L: 0.188679
  J = 14.0599
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 18
  18             
  L: 0.188679
  0.188679
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 17
  terminated:false
  I = 18
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 18
  K = 19
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 18
  D: 3
  L = 0.178571
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 14.0599
  L: 0.178571
  J = 14.2385
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 19
  19             
  L: 0.178571
  0.178571
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 18
  terminated:false
  I = 19
-190 F(I) LET K = I + 1
+190 F(I:180) LET K = I + 1
  I: 19
  K = 20
-200 F(I) LET L = A / (B + (I * D))
+200 F(I:180) LET L = A / (B + (I * D))
  A: 10
  B: 2
  I: 19
  D: 3
  L = 0.169492
-210 F(I) LET J = J + L
+210 F(I:180) LET J = J + L
  J: 14.2385
  L: 0.169492
  J = 14.408
-220 F(I) IF C = 1 THEN 240
+220 F(I:180) IF C = 1 THEN 240
  C: 1
  C = 1: true
-240 F(I) PRINT K, L
+240 F(I:180) PRINT K, L
  K: 20
  20             
  L: 0.169492
  0.169492
-250 F(I) NEXT I
+250 F(I:180) NEXT I
  I: 19
  terminated:true
 260 PRINT "SUM = "; J

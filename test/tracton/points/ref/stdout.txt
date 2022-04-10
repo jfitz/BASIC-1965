@@ -47,12 +47,12 @@ STOP in line 250
 120 (2) LET Z = 6.28319 / N
 130 (2) PRINT
 140 (2) PRINT "COORDINATES"
-150 F(I) (2) FOR I = 0 TO N - 1
-160 F(I) (14) LET X = X0 + (R * COS(W + (Z * I)))
-170 F(I) (14) LET Y = Y0 + (R * SIN(W + (Z * I)))
-180 F(I) (14) LET P = I + 1
-190 F(I) (14) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
-200 F(I) (14) NEXT I
+150 F(I:150) (2) FOR I = 0 TO N - 1
+160 F(I:150) (14) LET X = X0 + (R * COS(W + (Z * I)))
+170 F(I:150) (14) LET Y = Y0 + (R * SIN(W + (Z * I)))
+180 F(I:150) (14) LET P = I + 1
+190 F(I:150) (14) PRINT "POINT:"; P, "X = "; X, "Y = "; Y
+200 F(I:150) (14) NEXT I
 210 (2) PRINT
 220 (2) PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 230 (2) INPUT L

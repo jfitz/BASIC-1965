@@ -4,7 +4,7 @@
  E = 5
 40 LET S = 1
  S = 1
-50 F(I) FOR I = B TO E STEP S
+50 F(I:50) FOR I = B TO E STEP S
  B: 1
  S: 1
  E: 5
@@ -13,53 +13,53 @@
  E = 5
  S = 1
  terminated:false
-60 F(I) PRINT I
+60 F(I:50) PRINT I
  I: 1
  1
-70 F(I) LET E = E + 1
+70 F(I:50) LET E = E + 1
  E: 5
  E = 6
-80 F(I) NEXT I
+80 F(I:50) NEXT I
  I: 1
  terminated:false
  I = 2
-60 F(I) PRINT I
+60 F(I:50) PRINT I
  I: 2
  2
-70 F(I) LET E = E + 1
+70 F(I:50) LET E = E + 1
  E: 6
  E = 7
-80 F(I) NEXT I
+80 F(I:50) NEXT I
  I: 2
  terminated:false
  I = 3
-60 F(I) PRINT I
+60 F(I:50) PRINT I
  I: 3
  3
-70 F(I) LET E = E + 1
+70 F(I:50) LET E = E + 1
  E: 7
  E = 8
-80 F(I) NEXT I
+80 F(I:50) NEXT I
  I: 3
  terminated:false
  I = 4
-60 F(I) PRINT I
+60 F(I:50) PRINT I
  I: 4
  4
-70 F(I) LET E = E + 1
+70 F(I:50) LET E = E + 1
  E: 8
  E = 9
-80 F(I) NEXT I
+80 F(I:50) NEXT I
  I: 4
  terminated:false
  I = 5
-60 F(I) PRINT I
+60 F(I:50) PRINT I
  I: 5
  5
-70 F(I) LET E = E + 1
+70 F(I:50) LET E = E + 1
  E: 9
  E = 10
-80 F(I) NEXT I
+80 F(I:50) NEXT I
  I: 5
  terminated:true
 99 END

@@ -1514,10 +1514,12 @@ class Program
       line = @lines[line_number]
       statements = line.statements
 
-      statements.each do |statement|
+      statements.each_with_index do |statement, stmt|
         reset_visited
 
-        statement.assign_fornext_markers(self)
+        line_stmt = LineStmt.new(line_number, stmt)
+
+        statement.assign_fornext_markers(self, line_stmt)
       end
     end
   end

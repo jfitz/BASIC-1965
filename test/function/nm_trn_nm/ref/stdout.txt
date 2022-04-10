@@ -29,11 +29,11 @@ MATRIX B
 STOP in line 199
 
 10 (1) DIM A(6, 5)
-20 F(I) (1) FOR I = 0 TO 6
-30 F(I,J) (7) FOR J = 0 TO 5
-40 F(I,J) (42) LET A(I, J) = I * 10 + J
-50 F(I,J) (42) NEXT J
-60 F(I) (7) NEXT I
+20 F(I:20) (1) FOR I = 0 TO 6
+30 F(I:20,J:30) (7) FOR J = 0 TO 5
+40 F(I:20,J:30) (42) LET A(I, J) = I * 10 + J
+50 F(I:20,J:30) (42) NEXT J
+60 F(I:20) (7) NEXT I
 70 (1) PRINT "MATRIX A"
 72 (1) MAT PRINT A;
 80 (1) MAT B = TRN(A)

@@ -26,14 +26,14 @@ STOP in line 999
 140 (1) LET Z = 0
 150 (0) 
 160 (1) READ N
-170 F(I) (1) FOR I = 1 TO N
-180 F(I) (5) READ X, Y
-190 F(I) (5) LET X1 = X1 + X
-200 F(I) (5) LET Y1 = Y1 + Y
-210 F(I) (5) LET X2 = X2 + X * X
-220 F(I) (5) LET Y2 = Y2 + Y * Y
-230 F(I) (5) LET Z = Z + X * Y
-240 F(I) (5) NEXT I
+170 F(I:170) (1) FOR I = 1 TO N
+180 F(I:170) (5) READ X, Y
+190 F(I:170) (5) LET X1 = X1 + X
+200 F(I:170) (5) LET Y1 = Y1 + Y
+210 F(I:170) (5) LET X2 = X2 + X * X
+220 F(I:170) (5) LET Y2 = Y2 + Y * Y
+230 F(I:170) (5) LET Z = Z + X * Y
+240 F(I:170) (5) NEXT I
 250 (0) 
 260 (1) LET X3 = X1 / N
 265 (1) LET Y3 = Y1 / N

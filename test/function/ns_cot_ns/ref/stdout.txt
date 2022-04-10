@@ -24,10 +24,10 @@ STOP in line 99
 
 10 (1) LET P = 3.14159
 20 (1) PRINT "ANGLE", "COTANGENT"
-30 F(I) (1) FOR I = 0 TO 2 STEP 0.1
-40 F(I) (21) LET A = I * P
-50 F(I) (21) LET C = COT(A)
-60 F(I) (21) PRINT A, C
-70 F(I) (21) NEXT I
+30 F(I:30) (1) FOR I = 0 TO 2 STEP 0.1
+40 F(I:30) (21) LET A = I * P
+50 F(I:30) (21) LET C = COT(A)
+60 F(I:30) (21) PRINT A, C
+70 F(I:30) (21) NEXT I
 99 (1) END
 

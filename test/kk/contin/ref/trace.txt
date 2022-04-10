@@ -3,412 +3,412 @@
 110 READ M, N
  M = 3
  N = 2
-120 F(I) FOR I = 1 TO M
+120 F(I:120) FOR I = 1 TO M
  M: 3
  I = 1
  M = 3
  terminated:false
-130 F(I) LET S = 0
+130 F(I:120) LET S = 0
  S = 0
-140 F(I,J) FOR J = 1 TO N
+140 F(I:120,J:140) FOR J = 1 TO N
  N: 2
  J = 1
  N = 2
  terminated:false
-150 F(I,J) READ O(I, J)
+150 F(I:120,J:140) READ O(I, J)
  I: 1
  J: 1
  O(1,1) = 17
-160 F(I,J) LET S = S + O(I, J)
+160 F(I:120,J:140) LET S = S + O(I, J)
  S: 0
  I: 1
  J: 1
  O(1,1): 17
  S = 17
-170 F(I,J) NEXT J
+170 F(I:120,J:140) NEXT J
  J: 1
  terminated:false
  J = 2
-150 F(I,J) READ O(I, J)
+150 F(I:120,J:140) READ O(I, J)
  I: 1
  J: 2
  O(1,2) = 42
-160 F(I,J) LET S = S + O(I, J)
+160 F(I:120,J:140) LET S = S + O(I, J)
  S: 17
  I: 1
  J: 2
  O(1,2): 42
  S = 59
-170 F(I,J) NEXT J
+170 F(I:120,J:140) NEXT J
  J: 2
  terminated:true
-180 F(I) LET R(I) = S
+180 F(I:120) LET R(I) = S
  I: 1
  S: 59
  R(1) = 59
-190 F(I) NEXT I
+190 F(I:120) NEXT I
  I: 1
  terminated:false
  I = 2
-130 F(I) LET S = 0
+130 F(I:120) LET S = 0
  S = 0
-140 F(I,J) FOR J = 1 TO N
+140 F(I:120,J:140) FOR J = 1 TO N
  N: 2
  J = 1
  N = 2
  terminated:false
-150 F(I,J) READ O(I, J)
+150 F(I:120,J:140) READ O(I, J)
  I: 2
  J: 1
  O(2,1) = 50
-160 F(I,J) LET S = S + O(I, J)
+160 F(I:120,J:140) LET S = S + O(I, J)
  S: 0
  I: 2
  J: 1
  O(2,1): 50
  S = 50
-170 F(I,J) NEXT J
+170 F(I:120,J:140) NEXT J
  J: 1
  terminated:false
  J = 2
-150 F(I,J) READ O(I, J)
+150 F(I:120,J:140) READ O(I, J)
  I: 2
  J: 2
  O(2,2) = 50
-160 F(I,J) LET S = S + O(I, J)
+160 F(I:120,J:140) LET S = S + O(I, J)
  S: 50
  I: 2
  J: 2
  O(2,2): 50
  S = 100
-170 F(I,J) NEXT J
+170 F(I:120,J:140) NEXT J
  J: 2
  terminated:true
-180 F(I) LET R(I) = S
+180 F(I:120) LET R(I) = S
  I: 2
  S: 100
  R(2) = 100
-190 F(I) NEXT I
+190 F(I:120) NEXT I
  I: 2
  terminated:false
  I = 3
-130 F(I) LET S = 0
+130 F(I:120) LET S = 0
  S = 0
-140 F(I,J) FOR J = 1 TO N
+140 F(I:120,J:140) FOR J = 1 TO N
  N: 2
  J = 1
  N = 2
  terminated:false
-150 F(I,J) READ O(I, J)
+150 F(I:120,J:140) READ O(I, J)
  I: 3
  J: 1
  O(3,1) = 114
-160 F(I,J) LET S = S + O(I, J)
+160 F(I:120,J:140) LET S = S + O(I, J)
  S: 0
  I: 3
  J: 1
  O(3,1): 114
  S = 114
-170 F(I,J) NEXT J
+170 F(I:120,J:140) NEXT J
  J: 1
  terminated:false
  J = 2
-150 F(I,J) READ O(I, J)
+150 F(I:120,J:140) READ O(I, J)
  I: 3
  J: 2
  O(3,2) = 61
-160 F(I,J) LET S = S + O(I, J)
+160 F(I:120,J:140) LET S = S + O(I, J)
  S: 114
  I: 3
  J: 2
  O(3,2): 61
  S = 175
-170 F(I,J) NEXT J
+170 F(I:120,J:140) NEXT J
  J: 2
  terminated:true
-180 F(I) LET R(I) = S
+180 F(I:120) LET R(I) = S
  I: 3
  S: 175
  R(3) = 175
-190 F(I) NEXT I
+190 F(I:120) NEXT I
  I: 3
  terminated:true
 210 LET S1 = 0
  S1 = 0
-220 F(J) FOR J = 1 TO N
+220 F(J:220) FOR J = 1 TO N
  N: 2
  J = 1
  N = 2
  terminated:false
-230 F(J) LET S = 0
+230 F(J:220) LET S = 0
  S = 0
-240 F(J,I) FOR I = 1 TO M
+240 F(J:220,I:240) FOR I = 1 TO M
  M: 3
  I = 1
  M = 3
  terminated:false
-250 F(J,I) LET S = S + O(I, J)
+250 F(J:220,I:240) LET S = S + O(I, J)
  S: 0
  I: 1
  J: 1
  O(1,1): 17
  S = 17
-260 F(J,I) NEXT I
+260 F(J:220,I:240) NEXT I
  I: 1
  terminated:false
  I = 2
-250 F(J,I) LET S = S + O(I, J)
+250 F(J:220,I:240) LET S = S + O(I, J)
  S: 17
  I: 2
  J: 1
  O(2,1): 50
  S = 67
-260 F(J,I) NEXT I
+260 F(J:220,I:240) NEXT I
  I: 2
  terminated:false
  I = 3
-250 F(J,I) LET S = S + O(I, J)
+250 F(J:220,I:240) LET S = S + O(I, J)
  S: 67
  I: 3
  J: 1
  O(3,1): 114
  S = 181
-260 F(J,I) NEXT I
+260 F(J:220,I:240) NEXT I
  I: 3
  terminated:true
-270 F(J) LET C(J) = S
+270 F(J:220) LET C(J) = S
  J: 1
  S: 181
  C(1) = 181
-280 F(J) LET S1 = S1 + S
+280 F(J:220) LET S1 = S1 + S
  S1: 0
  S: 181
  S1 = 181
-290 F(J) NEXT J
+290 F(J:220) NEXT J
  J: 1
  terminated:false
  J = 2
-230 F(J) LET S = 0
+230 F(J:220) LET S = 0
  S = 0
-240 F(J,I) FOR I = 1 TO M
+240 F(J:220,I:240) FOR I = 1 TO M
  M: 3
  I = 1
  M = 3
  terminated:false
-250 F(J,I) LET S = S + O(I, J)
+250 F(J:220,I:240) LET S = S + O(I, J)
  S: 0
  I: 1
  J: 2
  O(1,2): 42
  S = 42
-260 F(J,I) NEXT I
+260 F(J:220,I:240) NEXT I
  I: 1
  terminated:false
  I = 2
-250 F(J,I) LET S = S + O(I, J)
+250 F(J:220,I:240) LET S = S + O(I, J)
  S: 42
  I: 2
  J: 2
  O(2,2): 50
  S = 92
-260 F(J,I) NEXT I
+260 F(J:220,I:240) NEXT I
  I: 2
  terminated:false
  I = 3
-250 F(J,I) LET S = S + O(I, J)
+250 F(J:220,I:240) LET S = S + O(I, J)
  S: 92
  I: 3
  J: 2
  O(3,2): 61
  S = 153
-260 F(J,I) NEXT I
+260 F(J:220,I:240) NEXT I
  I: 3
  terminated:true
-270 F(J) LET C(J) = S
+270 F(J:220) LET C(J) = S
  J: 2
  S: 153
  C(2) = 153
-280 F(J) LET S1 = S1 + S
+280 F(J:220) LET S1 = S1 + S
  S1: 181
  S: 153
  S1 = 334
-290 F(J) NEXT J
+290 F(J:220) NEXT J
  J: 2
  terminated:true
 310 PRINT
 
 320 LET C = 0
  C = 0
-330 F(I) FOR I = 1 TO M
+330 F(I:330) FOR I = 1 TO M
  M: 3
  I = 1
  M = 3
  terminated:false
-340 F(I,J) FOR J = 1 TO N
+340 F(I:330,J:340) FOR J = 1 TO N
  N: 2
  J = 1
  N = 2
  terminated:false
-350 F(I,J) LET E = R(I) * C(J) / S1
+350 F(I:330,J:340) LET E = R(I) * C(J) / S1
  I: 1
  R(1): 59
  J: 1
  C(1): 181
  S1: 334
  E = 31.9731
-360 F(I,J) LET C = C + (O(I, J) - E) ^ 2 / E
+360 F(I:330,J:340) LET C = C + (O(I, J) - E) ^ 2 / E
  C: 0
  I: 1
  J: 1
  O(1,1): 17
  E: 31.9731
  C = 7.01196
-370 F(I,J) PRINT O(I, J),
+370 F(I:330,J:340) PRINT O(I, J),
  I: 1
  J: 1
  O(1,1): 17
  17             
-380 F(I,J) NEXT J
+380 F(I:330,J:340) NEXT J
  J: 1
  terminated:false
  J = 2
-350 F(I,J) LET E = R(I) * C(J) / S1
+350 F(I:330,J:340) LET E = R(I) * C(J) / S1
  I: 1
  R(1): 59
  J: 2
  C(2): 153
  S1: 334
  E = 27.0269
-360 F(I,J) LET C = C + (O(I, J) - E) ^ 2 / E
+360 F(I:330,J:340) LET C = C + (O(I, J) - E) ^ 2 / E
  C: 7.01196
  I: 1
  J: 2
  O(1,2): 42
  E: 27.0269
  C = 15.3072
-370 F(I,J) PRINT O(I, J),
+370 F(I:330,J:340) PRINT O(I, J),
  I: 1
  J: 2
  O(1,2): 42
  42             
-380 F(I,J) NEXT J
+380 F(I:330,J:340) NEXT J
  J: 2
  terminated:true
-390 F(I) PRINT
+390 F(I:330) PRINT
 
-400 F(I) NEXT I
+400 F(I:330) NEXT I
  I: 1
  terminated:false
  I = 2
-340 F(I,J) FOR J = 1 TO N
+340 F(I:330,J:340) FOR J = 1 TO N
  N: 2
  J = 1
  N = 2
  terminated:false
-350 F(I,J) LET E = R(I) * C(J) / S1
+350 F(I:330,J:340) LET E = R(I) * C(J) / S1
  I: 2
  R(2): 100
  J: 1
  C(1): 181
  S1: 334
  E = 54.1916
-360 F(I,J) LET C = C + (O(I, J) - E) ^ 2 / E
+360 F(I:330,J:340) LET C = C + (O(I, J) - E) ^ 2 / E
  C: 15.3072
  I: 2
  J: 1
  O(2,1): 50
  E: 54.1916
  C = 15.6314
-370 F(I,J) PRINT O(I, J),
+370 F(I:330,J:340) PRINT O(I, J),
  I: 2
  J: 1
  O(2,1): 50
  50             
-380 F(I,J) NEXT J
+380 F(I:330,J:340) NEXT J
  J: 1
  terminated:false
  J = 2
-350 F(I,J) LET E = R(I) * C(J) / S1
+350 F(I:330,J:340) LET E = R(I) * C(J) / S1
  I: 2
  R(2): 100
  J: 2
  C(2): 153
  S1: 334
  E = 45.8084
-360 F(I,J) LET C = C + (O(I, J) - E) ^ 2 / E
+360 F(I:330,J:340) LET C = C + (O(I, J) - E) ^ 2 / E
  C: 15.6314
  I: 2
  J: 2
  O(2,2): 50
  E: 45.8084
  C = 16.0149
-370 F(I,J) PRINT O(I, J),
+370 F(I:330,J:340) PRINT O(I, J),
  I: 2
  J: 2
  O(2,2): 50
  50             
-380 F(I,J) NEXT J
+380 F(I:330,J:340) NEXT J
  J: 2
  terminated:true
-390 F(I) PRINT
+390 F(I:330) PRINT
 
-400 F(I) NEXT I
+400 F(I:330) NEXT I
  I: 2
  terminated:false
  I = 3
-340 F(I,J) FOR J = 1 TO N
+340 F(I:330,J:340) FOR J = 1 TO N
  N: 2
  J = 1
  N = 2
  terminated:false
-350 F(I,J) LET E = R(I) * C(J) / S1
+350 F(I:330,J:340) LET E = R(I) * C(J) / S1
  I: 3
  R(3): 175
  J: 1
  C(1): 181
  S1: 334
  E = 94.8353
-360 F(I,J) LET C = C + (O(I, J) - E) ^ 2 / E
+360 F(I:330,J:340) LET C = C + (O(I, J) - E) ^ 2 / E
  C: 16.0149
  I: 3
  J: 1
  O(3,1): 114
  E: 94.8353
  C = 19.8878
-370 F(I,J) PRINT O(I, J),
+370 F(I:330,J:340) PRINT O(I, J),
  I: 3
  J: 1
  O(3,1): 114
  114            
-380 F(I,J) NEXT J
+380 F(I:330,J:340) NEXT J
  J: 1
  terminated:false
  J = 2
-350 F(I,J) LET E = R(I) * C(J) / S1
+350 F(I:330,J:340) LET E = R(I) * C(J) / S1
  I: 3
  R(3): 175
  J: 2
  C(2): 153
  S1: 334
  E = 80.1647
-360 F(I,J) LET C = C + (O(I, J) - E) ^ 2 / E
+360 F(I:330,J:340) LET C = C + (O(I, J) - E) ^ 2 / E
  C: 19.8878
  I: 3
  J: 2
  O(3,2): 61
  E: 80.1647
  C = 24.4694
-370 F(I,J) PRINT O(I, J),
+370 F(I:330,J:340) PRINT O(I, J),
  I: 3
  J: 2
  O(3,2): 61
  61             
-380 F(I,J) NEXT J
+380 F(I:330,J:340) NEXT J
  J: 2
  terminated:true
-390 F(I) PRINT
+390 F(I:330) PRINT
 
-400 F(I) NEXT I
+400 F(I:330) NEXT I
  I: 3
  terminated:true
 410 PRINT

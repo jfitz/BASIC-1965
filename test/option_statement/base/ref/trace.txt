@@ -1,183 +1,183 @@
 20 DIM A(10)
-30 F(I) FOR I = 1 TO 10
+30 F(I:30) FOR I = 1 TO 10
  I = 1
  terminated:false
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 1
  A(1) = 1
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 1
  terminated:false
  I = 2
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 2
  A(2) = 2
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 2
  terminated:false
  I = 3
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 3
  A(3) = 3
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 3
  terminated:false
  I = 4
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 4
  A(4) = 4
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 4
  terminated:false
  I = 5
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 5
  A(5) = 5
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 5
  terminated:false
  I = 6
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 6
  A(6) = 6
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 6
  terminated:false
  I = 7
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 7
  A(7) = 7
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 7
  terminated:false
  I = 8
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 8
  A(8) = 8
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 8
  terminated:false
  I = 9
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 9
  A(9) = 9
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 9
  terminated:false
  I = 10
-40 F(I) LET A(I) = I
+40 F(I:30) LET A(I) = I
  I: 10
  A(10) = 10
-50 F(I) NEXT I
+50 F(I:30) NEXT I
  I: 10
  terminated:true
 100 OPTION BASE 0
-110 F(I) FOR I = 0 TO 10
+110 F(I:110) FOR I = 0 TO 10
  I = 0
  terminated:false
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 0
  0 
  A(0): 0
  0
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 0
  terminated:false
  I = 1
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 1
  1 
  A(1): 1
  1
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 1
  terminated:false
  I = 2
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 2
  2 
  A(2): 2
  2
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 2
  terminated:false
  I = 3
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 3
  3 
  A(3): 3
  3
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 3
  terminated:false
  I = 4
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 4
  4 
  A(4): 4
  4
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 4
  terminated:false
  I = 5
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 5
  5 
  A(5): 5
  5
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 5
  terminated:false
  I = 6
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 6
  6 
  A(6): 6
  6
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 6
  terminated:false
  I = 7
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 7
  7 
  A(7): 7
  7
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 7
  terminated:false
  I = 8
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 8
  8 
  A(8): 8
  8
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 8
  terminated:false
  I = 9
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 9
  9 
  A(9): 9
  9
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 9
  terminated:false
  I = 10
-120 F(I) PRINT I; A(I)
+120 F(I:110) PRINT I; A(I)
  I: 10
  10 
  A(10): 10
  10
-130 F(I) NEXT I
+130 F(I:110) NEXT I
  I: 10
  terminated:true
 200 OPTION BASE 1
-210 F(I) FOR I = 0 TO 10
+210 F(I:210) FOR I = 0 TO 10
  I = 0
  terminated:false
-220 F(I) PRINT I; A(I)
+220 F(I:210) PRINT I; A(I)
  I: 0
  0 
 Error 118 Subscript out of range for 0 in line 220
