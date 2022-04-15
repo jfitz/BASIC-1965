@@ -5,6 +5,10 @@ D=-15.333
 E1= 120
 E2= 120
 E3= 0.012
+F0= 10{}
+F1= 10{M}
+F2= 10{FT2}
+F3= 10{M2 S}
 STOP in line 999
 
 10 (0) REM Test different values
@@ -15,6 +19,10 @@ STOP in line 999
 60 (1) LET E1 = 120
 62 (1) LET E2 = 120
 64 (1) LET E3 = 0.012
+70 (1) LET F0 = 10 {}
+71 (1) LET F1 = 10 {M}
+72 (1) LET F2 = 10 {FT2}
+73 (1) LET F3 = 10 {M2 S}
 120 (1) PRINT "A="; A
 130 (1) PRINT "B="; B
 140 (1) PRINT "C="; C
@@ -22,5 +30,9 @@ STOP in line 999
 160 (1) PRINT "E1="; E1
 162 (1) PRINT "E2="; E2
 164 (1) PRINT "E3="; E3
+170 (1) PRINT "F0="; F0
+171 (1) PRINT "F1="; F1
+172 (1) PRINT "F2="; F2
+173 (1) PRINT "F3="; F3
 999 (1) END
 

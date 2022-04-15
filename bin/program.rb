@@ -2439,7 +2439,7 @@ class Program
       next unless list_tokens
 
       tokens = line.tokens
-      text_tokens = tokens.map(&:to_s)
+      text_tokens = tokens.map(&:dump)
 
       texts << ("TOKENS: #{text_tokens}")
     end

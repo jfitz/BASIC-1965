@@ -347,6 +347,31 @@ class NumericSymbolTokenBuilder
   end
 end
 
+# token reader for unit constants
+class UnitsTokenBuilder
+  attr_reader :count
+
+  def try(text)
+    @token = ''
+
+    candidate = ''
+    i = 0
+    if !text.empty? && text[0] == '{'
+      until i == text.size || candidate[-1] == '}'
+        candidate += text[i]
+        i += 1
+      end
+    end
+
+    @token = candidate if candidate[-1] == '}'
+    @count = @token.size
+  end
+
+  def token
+    UnitsConstantToken.new(@token)
+  end
+end
+
 # token reader for variables
 class VariableTokenBuilder
   attr_reader :count

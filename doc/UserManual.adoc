@@ -84,6 +84,7 @@ I have changed a few things:
 - You may have multiple user-defined functions with the same names and different signatures
 - The ARR statements are not mentioned in Kemeny and Kurtz or in Coan
 - The DIM statement is executed in-line, and may contain expressions
+- Numeric values may have units specified
 
 Running BASIC-1965
 ------------------
@@ -629,6 +630,13 @@ Numeric literals may be integer or real, and may use E-notation with unsigned ex
 The 'E' must be uppercase; a lowercase 'e' will be rejected.
 Exponents may be signed or unsigned.
 
+Numeric literals may contain units.
+Units are specified after the value, in braces.
+Each unit is a text followed by an optional number.
+The text of units is defined by the programmer.
+Any arbitrary text may be used.
+BASIC does not care about the text value, only that the values match during operations.
+
 |==========
 |Numeric literal |Valid or reason not valid
 |0 |
@@ -646,7 +654,26 @@ Exponents may be signed or unsigned.
 |0A |Only digits 0 through 9 and decimal points (and the 'E' for exponent) are permitted
 |3.03+E3 |The sign for the exponent must be after the 'E'. (This expression will be parsed as the value 3.03 plus the contents of variable E3.)
 1e4 |The 'E' for exponent must be uppercase
+|0{M} |'M' for meter
+|1{FT} |'FT' for feet
+|2{mm} |'mm' for millimeters
+|-5{ft} |'ft' is different from 'FT'
+|17{M3} |'M3' for cubic meters
+|123456789{mi s-1} |miles per second
+|1.03{Kcal} |Kilocalories
+|-2.17{m s-2} |meters per second per second
+|1E4{KPa} |Kilopascals
+|-2E3{USD} |US dollars
+|1E-2{USD} |
+|2.37E+4{A} |Amps
 |==========
+
+Operations on values with units are limited.
+When adding or subtracting, the units of the two values must match.
+When multiplying two values, the units of the two values are added.
+When dividing two values, the units of the second value are subtracted from the units of the first value.
+When a value with units is raised to a power (EXP function or ** operator), the power must be an integer.
+When a value with units is given as the argument to the SQR() function, its units must have even values.
 
 Program statements
 ------------------

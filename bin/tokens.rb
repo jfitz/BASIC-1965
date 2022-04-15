@@ -98,6 +98,7 @@ class AbstractToken
     @is_text_constant = false
     @is_numeric_constant = false
     @is_boolean_constant = false
+    @is_units_constant = false
     @is_user_function = false
     @is_variable = false
     @is_statement_separator = false
@@ -123,6 +124,10 @@ class AbstractToken
 
   def pretty
     @text
+  end
+
+  def dump
+    "#{self.class.name}:#{@text}"
   end
 
   def null?
@@ -415,6 +420,51 @@ class BooleanConstantToken < AbstractToken
     super
 
     @is_boolean_constant = true
+  end
+end
+
+# units constant token
+class UnitsConstantToken < AbstractToken
+  attr_reader :values
+
+  def initialize(text)
+    super
+
+    @is_units_constant = true
+
+    @values = []
+
+    value = ''
+
+    text.each_char do |c|
+      if value == ''
+        value += c if is_alpha(c)
+      elsif is_alpha(value[-1])
+        value += c if is_alnum(c)
+      elsif is_digit(value[-1])
+        if is_digit(c)
+          value += c
+        end
+        if is_alpha(c)
+          @values << value
+          value = c
+        end
+      end
+    end
+
+    @values << value unless value.empty?
+  end
+
+  def is_digit(c)
+    '0' <= c && c <= '9'
+  end
+
+  def is_alpha(c)
+    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z'
+  end
+
+  def is_alnum(c)
+    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z' || '0' <= c && c <= '9'
   end
 end
 

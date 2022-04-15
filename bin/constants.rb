@@ -34,6 +34,7 @@ class AbstractElement
     @numeric_constant = false
     @text_constant = false
     @boolean_constant = false
+    @units_constant = false
   end
 
   def uncache
@@ -154,6 +155,10 @@ class AbstractElement
 
   def boolean_constant?
     @boolean_constant
+  end
+
+  def units_constant?
+    @units_constant
   end
 
   def pop_stack(stack); end
@@ -534,6 +539,7 @@ class NumericConstant < AbstractValueElement
   public
 
   attr_reader :symbol_text
+  attr_accessor :units
 
   def initialize(text)
     super()
@@ -864,7 +870,11 @@ class NumericConstant < AbstractValueElement
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
     digits = @value.to_s
-    lead_space + digits
+    units = ''
+    unless @units.nil?
+      units = "{#{@units.map(&:to_s).join(' ')}}"
+    end
+    lead_space + digits + units
   end
 end
 
@@ -1420,6 +1430,85 @@ class BooleanConstant < AbstractValueElement
 
   def numeric_value
     @value ? -1 : 0
+  end
+end
+
+# Units constants
+class UnitsConstant < AbstractValueElement
+  def self.accept?(token)
+    classes = %w[UnitsConstantToken]
+    classes.include?(token.class.to_s)
+  end
+
+  attr_reader :value, :symbol_text
+
+  def initialize(obj)
+    super()
+
+    @symbol_text = obj.to_s
+
+    @value = obj.values
+
+    @content_type = :units
+    @shape = :array
+    @constant = true
+    @units_constant = true
+  end
+
+  def set_content_type(type_stack)
+    type_stack.push(@content_type)
+  end
+
+  def set_shape(shape_stack)
+    shape_stack.push(@shape)
+  end
+
+  def set_constant(constant_stack)
+    constant_stack.push(@constant)
+  end
+
+  def eql?(other)
+    @value == other.to_v
+  end
+
+  def ==(other)
+    @value == other.to_v
+  end
+
+  def hash
+    @value.hash
+  end
+
+  def <=>(other)
+    to_i <=> other.to_i
+  end
+
+  def >(other)
+    @value > other.to_v
+  end
+
+  def >=(other)
+    @value >= other.to_v
+  end
+
+  def <(other)
+    @value < other.to_v
+  end
+
+  def <=(other)
+    @value <= other.to_v
+  end
+
+  def to_s
+    @value.map(&:to_s).join(' ')
+  end
+
+  def to_formatted_s
+    "{#{@value.map(&:to_s).join(' ')}}"
+  end
+
+  def compatible?(other)
+    false
   end
 end
 
