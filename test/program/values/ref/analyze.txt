@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 24
-Number of valid statements: 23
+Number of lines: 26
+Number of valid statements: 25
 Number of comments: 1
-Number of executable statements: 23
+Number of executable statements: 25
 
 Complexity:
 
-Comment density: 0.043
-Comprehension effort: 70
+Comment density: 0.040
+Comprehension effort: 76
 McCabe complexity: 1
 Halstead complexity:
- length: 57
- volume: 213.047
- difficulty: 1.100
- effort: 234.352
- language: 176.072
- intelligence: 193.679
- time: 0.217
+ length: 62
+ volume: 234.620
+ difficulty: 1.143
+ effort: 268.137
+ language: 179.631
+ intelligence: 205.292
+ time: 0.248
 
 10 (0 1) REM Test different values
   Origs: 
@@ -54,9 +54,12 @@ Halstead complexity:
   Dests: 73:auto
 73 (0 3) LET F3 = 10 {M2 S}
   Origs: 72:auto
+  Dests: 74:auto
+74 (0 3) LET F3 = 10 {M2 S-1}
+  Origs: 73:auto
   Dests: 120:auto
 120 (0 3) PRINT "A="; A
-  Origs: 73:auto
+  Origs: 74:auto
   Dests: 130:auto
 130 (0 3) PRINT "B="; B
   Origs: 120:auto
@@ -87,9 +90,12 @@ Halstead complexity:
   Dests: 173:auto
 173 (0 3) PRINT "F3="; F3
   Origs: 172:auto
+  Dests: 174:auto
+174 (0 3) PRINT "F4="; F4
+  Origs: 173:auto
   Dests: 999:auto
 999 (0 1) END
-  Origs: 173:auto
+  Origs: 174:auto
   Dests: :stop
 
 Unreachable code:

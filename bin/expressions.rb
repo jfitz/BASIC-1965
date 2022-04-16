@@ -2014,7 +2014,7 @@ class AbstractExpressionSet
     
     elements.each do |element|
       if element.units_constant? && !prev_element.nil? && prev_element.numeric_constant?
-        prev_element.units = element.value
+        prev_element.units = element.to_dict
       else
         new_elements << element
       end

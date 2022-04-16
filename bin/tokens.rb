@@ -432,27 +432,42 @@ class UnitsConstantToken < AbstractToken
 
     @is_units_constant = true
 
-    @values = []
+    @values = {}
 
-    value = ''
+    name = ''
+    power_s = ''
+    last_c = ''
 
     text.each_char do |c|
-      if value == ''
-        value += c if is_alpha(c)
-      elsif is_alpha(value[-1])
-        value += c if is_alnum(c)
-      elsif is_digit(value[-1])
-        if is_digit(c)
-          value += c
+      if is_alpha(c)
+        if !name.empty? && (is_digit(last_c) || '+-'.include?(last_c))
+          power_s = '1' if '+-'.include?(power_s)
+          @values[name] = power_s.to_i
+          name = ''
+          power_s = ''
         end
-        if is_alpha(c)
-          @values << value
-          value = c
-        end
+        name += c
+
+        last_c = c
+      end
+
+      if is_digit(c)
+        power_s += c
+
+        last_c = c
+      end
+
+      if '+-'.include?(c) && power_s.empty?
+        power_s += c
+
+        last_c = c
       end
     end
 
-    @values << value unless value.empty?
+    unless name.empty?
+      power_s = '1' if '+-'.include?(power_s)
+      @values[name] = power_s.to_i
+    end
   end
 
   def is_digit(c)
