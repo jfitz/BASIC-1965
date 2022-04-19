@@ -104,6 +104,7 @@ class AbstractToken
     @is_statement_separator = false
     @is_group_start = false
     @is_group_end = false
+    @is_invalid = false
   end
 
   def eql?(other)
@@ -198,10 +199,19 @@ class AbstractToken
   def statement_separator?
     @is_statement_separator
   end
+
+  def invalid?
+    @is_invalid
+  end
 end
 
 # invalid token
 class InvalidToken < AbstractToken
+  def initialize(text)
+    super
+
+    @is_invalid = true
+  end
 end
 
 # null token used for pretty()
@@ -422,16 +432,16 @@ class BooleanConstantToken < AbstractToken
     @is_boolean_constant = true
   end
 
+  def <=>(other)
+    @text.to_f <=> other.to_f
+  end
+
   def to_f
     @text.to_f.to_i
   end
 
   def to_i
     @text.to_f.to_i
-  end
-
-  def <=>(other)
-    @text.to_f <=> other.to_f
   end
 end
 

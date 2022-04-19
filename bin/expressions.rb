@@ -95,13 +95,13 @@ class AbstractCompound
 
     case dimensions.size
     when 0
-      raise BASICSyntaxError, 'No dimensions in matrix'
+      raise BASICSyntaxError, 'No dimensions in variable'
     when 1
       value = get_value_1(base)
     when 2
       value = get_value_2(base, base)
     else
-      raise BASICSyntaxError, 'Too many dimensions in matrix'
+      raise BASICSyntaxError, 'Too many dimensions in variable'
     end
 
     value.numeric_constant?
@@ -172,7 +172,9 @@ class AbstractCompound
 
   def posate_1
     n_cols = @dimensions[0].to_i
+
     values = {}
+
     base = $options['base'].value
 
     (base..n_cols).each do |col|
@@ -187,7 +189,9 @@ class AbstractCompound
   def posate_2
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
+
     values = {}
+
     base = $options['base'].value
 
     (base..n_rows).each do |row|
@@ -203,7 +207,9 @@ class AbstractCompound
 
   def negate_1
     n_cols = @dimensions[0].to_i
+
     values = {}
+
     base = $options['base'].value
 
     (base..n_cols).each do |col|
@@ -218,7 +224,9 @@ class AbstractCompound
   def negate_2
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
+
     values = {}
+
     base = $options['base'].value
 
     (base..n_rows).each do |row|
@@ -234,6 +242,7 @@ class AbstractCompound
 
   def max_1
     n_cols = @dimensions[0].to_i
+
     base = $options['base'].value
 
     max_value = get_value_1(base).to_v
@@ -249,6 +258,7 @@ class AbstractCompound
   def max_2
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
+
     base = $options['base'].value
 
     max_value = get_value_2(base, base).to_v
@@ -265,6 +275,7 @@ class AbstractCompound
 
   def min_1
     n_cols = @dimensions[0].to_i
+
     base = $options['base'].value
 
     min_value = get_value_1(base).to_v
@@ -280,6 +291,7 @@ class AbstractCompound
   def min_2
     n_rows = @dimensions[0].to_i
     n_cols = @dimensions[1].to_i
+
     base = $options['base'].value
 
     min_value = get_value_2(base, base).to_v
@@ -292,34 +304,6 @@ class AbstractCompound
     end
 
     min_value
-  end
-
-  def sum_1
-    n_cols = @dimensions[0].to_i
-    base = $options['base'].value
-
-    sum = 0
-
-    (base..n_cols).each do |col|
-      value = get_value_1(col)
-      sum += value.to_f
-    end
-
-    sum
-  end
-
-  def prod_1
-    n_cols = @dimensions[0].to_i
-    base = $options['base'].value
-
-    prod = 1
-
-    (base..n_cols).each do |col|
-      value = get_value_1(col)
-      prod *= value.to_f
-    end
-
-    prod
   end
 
   def median_1
@@ -392,8 +376,8 @@ class AbstractCompound
       span *= 2
     end
 
-    height = (max_value / value_span * span).to_i + 2
-    depth = -(span - height) - 1
+    height = (max_value / value_span * span).to_i + 1
+    depth = -(span - height)
 
     y_delta = value_span / span
     upper_value = (y_delta * height).round(6)
@@ -496,8 +480,8 @@ class AbstractCompound
       span *= 2
     end
 
-    height = (max_value / value_span * span).to_i + 2
-    depth = -(span - height) - 1
+    height = (max_value / value_span * span).to_i + 1
+    depth = -(span - height)
 
     y_delta = value_span / span
     upper_value = (y_delta * height).round(6)
@@ -710,6 +694,36 @@ class BASICArray < AbstractCompound
   end
 
   private
+
+  def sum_1
+    n_cols = @dimensions[0].to_i
+
+    base = $options['base'].value
+
+    sum = 0
+
+    (base..n_cols).each do |col|
+      value = get_value_1(col)
+      sum += value.to_f
+    end
+
+    sum
+  end
+
+  def prod_1
+    n_cols = @dimensions[0].to_i
+
+    base = $options['base'].value
+
+    prod = 1
+
+    (base..n_cols).each do |col|
+      value = get_value_1(col)
+      prod *= value.to_f
+    end
+
+    prod
+  end
 
   def print_1(printer)
     n_cols = @dimensions[0].to_i
