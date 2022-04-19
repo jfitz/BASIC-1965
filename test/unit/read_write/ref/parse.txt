@@ -1,0 +1,28 @@
+10 REM Test different values
+ Remark:Test different values
+20 READ F0, F1, F2, F3 ,F4
+ Variable:F0 -> _
+ Variable:F1 -> _
+ Variable:F2 -> _
+ Variable:F3 -> _
+ Variable:F4 -> _
+30 WRITE F0, F1, F2, F3, F4
+ Variable:F0 -> _
+ CarriageControl:,
+ Variable:F1 -> _
+ CarriageControl:,
+ Variable:F2 -> _
+ CarriageControl:,
+ Variable:F3 -> _
+ CarriageControl:,
+ Variable:F4 -> _
+ CarriageControl:NL
+90 DATA 10{}, 10{M}, 10{FT2}, 10{M2 S}, 10{M2 S-1}
+ NumericConstant:10
+ NumericConstant:10
+ NumericConstant:10
+ NumericConstant:10
+ NumericConstant:10
+99 END
+ 
+

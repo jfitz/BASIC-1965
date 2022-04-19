@@ -1,0 +1,65 @@
+Statistics:
+
+Number of lines: 13
+Number of valid statements: 12
+Number of comments: 1
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.083
+Comprehension effort: 29
+McCabe complexity: 6
+Halstead complexity:
+ length: 29
+ volume: 83.821
+ difficulty: 1.250
+ effort: 104.776
+ language: 53.645
+ intelligence: 67.057
+ time: 0.097
+
+10 (0 1) REM Test different values
+  Origs: 
+  Dests: 
+20 (1 2) READ F0
+  Origs: :start
+  Dests: 21:auto
+21 (1 2) READ F1
+  Origs: 20:auto
+  Dests: 22:auto
+22 (1 2) READ F2
+  Origs: 21:auto
+  Dests: 23:auto
+23 (1 2) READ F3
+  Origs: 22:auto
+  Dests: 24:auto
+24 (1 2) READ F4
+  Origs: 23:auto
+  Dests: 30:auto
+30 (0 3) PRINT "F0="; F0
+  Origs: 24:auto
+  Dests: 31:auto
+31 (0 3) PRINT "F1="; F1
+  Origs: 30:auto
+  Dests: 32:auto
+32 (0 3) PRINT "F2="; F2
+  Origs: 31:auto
+  Dests: 33:auto
+33 (0 3) PRINT "F3="; F3
+  Origs: 32:auto
+  Dests: 34:auto
+34 (0 3) PRINT "F4="; F4
+  Origs: 33:auto
+  Dests: 99:auto
+90 (0 2) DATA 10 {}, 10 {M}, 10 {FT2}, 10 {M2 S}, 10 {M2 S-1}
+  Origs: 
+  Dests: 
+99 (0 1) END
+  Origs: 34:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

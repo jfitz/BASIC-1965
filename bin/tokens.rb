@@ -421,6 +421,18 @@ class BooleanConstantToken < AbstractToken
 
     @is_boolean_constant = true
   end
+
+  def to_f
+    @text.to_f.to_i
+  end
+
+  def to_i
+    @text.to_f.to_i
+  end
+
+  def <=>(other)
+    @text.to_f <=> other.to_f
+  end
 end
 
 # units constant token
@@ -489,6 +501,7 @@ class UserFunctionToken < AbstractToken
 
   def initialize(text)
     super
+
     @is_user_function = true
     @content_type = :numeric
   end

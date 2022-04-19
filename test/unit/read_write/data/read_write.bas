@@ -1,0 +1,6 @@
+10 REM Test different values
+20 READ F0, F1, F2, F3 ,F4
+30 WRITE F0, F1, F2, F3, F4
+90 DATA 10{}, 10{M}, 10{FT2}, 10{M2 S}, 10{M2 S-1}
+99 END
+

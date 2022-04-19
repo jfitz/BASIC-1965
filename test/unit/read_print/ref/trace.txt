@@ -1,0 +1,34 @@
+90 DATA 10 {}, 10 {M}, 10 {FT2}, 10 {M2 S}, 10 {M2 S-1}
+20 READ F0
+ F0 = 10
+21 READ F1
+ F1 = 10
+22 READ F2
+ F2 = 10
+23 READ F3
+ F3 = 10
+24 READ F4
+ F4 = 10
+30 PRINT "F0="; F0
+F0=
+ F0: 10
+ 10
+31 PRINT "F1="; F1
+F1=
+ F1: 10
+ 10{M1}
+32 PRINT "F2="; F2
+F2=
+ F2: 10
+ 10{FT2}
+33 PRINT "F3="; F3
+F3=
+ F3: 10
+ 10{M2 S1}
+34 PRINT "F4="; F4
+F4=
+ F4: 10
+ 10{M2 S-1}
+99 END
+STOP in line 99
+

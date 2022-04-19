@@ -1198,7 +1198,18 @@ class IntegerConstant < AbstractValueElement
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
     digits = @value.to_s
-    lead_space + digits
+
+    unless @units.empty?
+      units_s = []
+
+      @units.each do |name, power|
+        units_s << "#{name}#{power.to_s}"
+      end
+
+      units = "{#{units_s.join(' ')}}"
+    end
+
+    lead_space + digits + units
   end
 end
 
