@@ -26,6 +26,7 @@ class AbstractToken
       pretty_tokens << WhitespaceToken.new(' ') unless
         token.separator? ||
         (token.group_start? && prev_is_variable) ||
+        (token.units? && prev.numeric_constant?) ||
         token.group_end? ||
         prev.group_start? ||
         (prev.operator? && !prev2_is_operand) ||
@@ -173,6 +174,10 @@ class AbstractToken
 
   def boolean_constant?
     @is_boolean_constant
+  end
+
+  def units?
+    @is_units_constant
   end
 
   def user_function?
