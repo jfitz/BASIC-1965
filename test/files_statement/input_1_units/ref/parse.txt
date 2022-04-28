@@ -1,0 +1,25 @@
+10 REM This is a test
+ Remark:This is a test
+20 FILES "input.txt"
+ TextConstant:"input.txt"
+30 INPUT #1;A,B,C,D
+ NumericConstant:1
+ UnaryOperatorHash:#(_) -> =FH
+ Variable:A -> _
+ Variable:B -> _
+ Variable:C -> _
+ Variable:D -> _
+40 PRINT A;B;C;D
+ Variable:A -> _
+ CarriageControl:;
+ Variable:B -> _
+ CarriageControl:;
+ Variable:C -> _
+ CarriageControl:;
+ Variable:D -> _
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
+

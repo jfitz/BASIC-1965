@@ -213,14 +213,14 @@ end
 class InputNumberTokenBuilder
   def try(text)
     regexes = [
-      /\A[+-]?\d+/,
-      /\A[+-]?\d+\./,
-      /\A[+-]?\d+E[+-]?\d+/,
-      /\A[+-]?\d+\.E[+-]?\d+/,
-      /\A[+-]?\d+\.\d+/,
-      /\A[+-]?\d+\.\d+E[+-]?\d+/,
-      /\A[+-]?\.\d+/,
-      /\A[+-]?\.\d+E[+-]?\d+/
+      /\A[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/,
+      /\A[+-]?\d+\.(\{[A-Za-z0-9\+\- _]*\})?/,
+      /\A[+-]?\d+E[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/,
+      /\A[+-]?\d+\.E[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/,
+      /\A[+-]?\d+\.\d+(\{[A-Za-z0-9\+\- _]*\})?/,
+      /\A[+-]?\d+\.\d+E[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/,
+      /\A[+-]?\.\d+(\{[A-Za-z0-9\+\- _]*\})?/,
+      /\A[+-]?\.\d+E[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/
     ]
 
     @token = ''
@@ -246,8 +246,10 @@ class NumberTokenBuilder
 
     candidate = ''
     i = 0
+
     if !text.empty? && text[0] != ' '
       accepted = true
+
       while i < text.size && accepted
         c = text[i]
         # ignore space char
@@ -255,6 +257,7 @@ class NumberTokenBuilder
           i += 1
         else
           accepted = accept?(candidate, c)
+
           if accepted
             candidate += c
             i += 1
@@ -277,16 +280,18 @@ class NumberTokenBuilder
 
     # check that string conforms to one of these
     regexes = [
-      /\A\d+\z/,
-      /\A\d+\.\z/,
-      /\A\d+E[+-]?\d+\z/,
-      /\A\d+\.E[+-]?\d+\z/,
-      /\A\d+\.\d+(E[+-]?\d+)?\z/,
-      /\A\.\d+(E[+-]?\d+)?\z/
+      /\A\d+(\{[A-Za-z0-9\+\- _]*\})?\z/,
+      /\A\d+\.(\{[A-Za-z0-9\+\- _]*\})?\z/,
+      /\A\d+E[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?\z/,
+      /\A\d+\.E[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?\z/,
+      /\A\d+\.\d+(E[+-]?\d+)?(\{[A-Za-z0-9\+\- _]*\})?\z/,
+      /\A\.\d+(E[+-]?\d+)?(\{[A-Za-z0-9\+\- _]*\})?\z/
     ]
 
     @token = ''
+
     regexes.each { |regex| regex.match(candidate) { |m| @token = m[0] } }
+
     @count = 0
     @count = i unless @token.empty?
     !@count.zero?
@@ -301,17 +306,29 @@ class NumberTokenBuilder
   def accept?(candidate, c)
     result = false
 
-    # can always append a digit
-    result = true if c =~ /[0-9]/
-    # can append a decimal point if no decimal point and no E
-    result = true if c == '.' && candidate.count('.', 'E').zero?
-    # can append E if no E and at least one digit (not just decimal point)
-    result = true if c == 'E' &&
-                     candidate.count('E').zero? &&
-                     !candidate.count('0-9').zero?
-    # can append sign if no chars or last char was E
-    result = true if c == '+' && (candidate.empty? || candidate[-1] == 'E')
-    result = true if c == '-' && (candidate.empty? || candidate[-1] == 'E')
+    return false if candidate.size.positive? && candidate[-1] == '}'
+
+    if candidate.include?('{')
+      result = true if c =~ /[\w _\+\-\}]/
+    else
+      # can always append a digit
+      result = true if c =~ /[0-9]/
+
+      # can append a decimal point if no decimal point and no E
+      result = true if c == '.' && candidate.count('.', 'E').zero?
+
+      # can append E if no E and at least one digit (not just decimal point)
+      result = true if c == 'E' &&
+                       candidate.count('E').zero? &&
+                       !candidate.count('0-9').zero?
+
+      # can append sign if no chars or last char was E
+      result = true if c == '+' && (candidate.empty? || candidate[-1] == 'E')
+      result = true if c == '-' && (candidate.empty? || candidate[-1] == 'E')
+
+      # can append a units sigil
+      result = true if c == '{'
+    end
 
     result
   end
@@ -344,31 +361,6 @@ class NumericSymbolTokenBuilder
 
   def token
     NumericSymbolToken.new(@token)
-  end
-end
-
-# token reader for unit constants
-class UnitsTokenBuilder
-  attr_reader :count
-
-  def try(text)
-    @token = ''
-
-    candidate = ''
-    i = 0
-    if !text.empty? && text[0] == '{'
-      until i == text.size || candidate[-1] == '}'
-        candidate += text[i]
-        i += 1
-      end
-    end
-
-    @token = candidate if candidate[-1] == '}'
-    @count = @token.size
-  end
-
-  def token
-    UnitsConstantToken.new(@token)
   end
 end
 

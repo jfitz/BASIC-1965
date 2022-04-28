@@ -34,7 +34,6 @@ class AbstractElement
     @numeric_constant = false
     @text_constant = false
     @boolean_constant = false
-    @units_constant = false
   end
 
   def uncache
@@ -155,10 +154,6 @@ class AbstractElement
 
   def boolean_constant?
     @boolean_constant
-  end
-
-  def units_constant?
-    @units_constant
   end
 
   def pop_stack(stack); end
@@ -539,24 +534,23 @@ class NumericConstant < AbstractValueElement
   public
 
   attr_reader :symbol_text
-  attr_accessor :units
 
-  def initialize(text)
+  def initialize(obj)
     super()
 
     numeric_classes = %w[Fixnum Integer Bignum Float]
     float_classes = %w[Rational NumericConstantToken]
 
     f = nil
-    f = text.to_f if float_classes.include?(text.class.to_s)
-    f = text if numeric_classes.include?(text.class.to_s)
+    f = obj.to_f if float_classes.include?(obj.class.to_s)
+    f = obj if numeric_classes.include?(obj.class.to_s)
 
-    if text.class.to_s == 'NumericSymbolToken'
-      f = text.value
+    if obj.class.to_s == 'NumericSymbolToken'
+      f = obj.value
       @symbol = true
     end
 
-    raise(BASICSyntaxError, "'#{text}' is not a number") if f.nil?
+    raise(BASICSyntaxError, "'#{obj}' is not a number") if f.nil?
 
     precision = $options['precision'].value
     if precision != 'INFINITE' && f != 0 && f != Float::INFINITY
@@ -570,10 +564,12 @@ class NumericConstant < AbstractValueElement
     @content_type = :numeric
     @shape = :scalar
     @constant = true
-    @symbol_text = text.to_s
+    @symbol_text = obj.to_s
     @value = float_to_possible_int(f)
     @numeric_constant = true
     @units = {}
+
+    @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
 
   def dump
@@ -838,7 +834,10 @@ class NumericConstant < AbstractValueElement
   end
 
   def to_s
-    @value.to_s
+    digits = @value.to_s
+    units = AbstractToken.units_to_s(@units)
+
+    digits + units
   end
 
   def to_b
@@ -871,17 +870,7 @@ class NumericConstant < AbstractValueElement
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
     digits = @value.to_s
-    units = ''
-
-    unless @units.empty?
-      units_s = []
-
-      @units.each do |name, power|
-        units_s << "#{name}#{power.to_s}"
-      end
-
-      units = "{#{units_s.join(' ')}}"
-    end
+    units = AbstractToken.units_to_s(@units)
 
     lead_space + digits + units
   end
@@ -906,17 +895,17 @@ class IntegerConstant < AbstractValueElement
 
   attr_reader :symbol_text
 
-  def initialize(text)
+  def initialize(obj)
     super()
 
     numeric_classes = %w[Fixnum Integer Bignum Float NumericConstantToken]
     f = nil
-    f = text.to_i if numeric_classes.include?(text.class.to_s)
-    f = text.to_f.to_i if text.class.to_s == 'IntegerConstantToken'
+    f = obj.to_i if numeric_classes.include?(obj.class.to_s)
+    f = obj.to_f.to_i if obj.class.to_s == 'NumericConstantToken'
 
-    raise BASICSyntaxError, "'#{text}' is not an integer" if f.nil?
+    raise BASICSyntaxError, "'#{obj}' is not an integer" if f.nil?
 
-    @symbol_text = text.to_s
+    @symbol_text = obj.to_s
     @content_type = :integer
     @shape = :scalar
     @constant = true
@@ -924,6 +913,9 @@ class IntegerConstant < AbstractValueElement
     @operand = true
     @precedence = 0
     @numeric_constant = true
+    @units = {}
+
+    @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
 
   def zero?
@@ -1165,7 +1157,10 @@ class IntegerConstant < AbstractValueElement
   end
 
   def to_s
-    @value.to_s
+    digits = @value.to_s
+    units = AbstractToken.units_to_s(@units)
+
+    digits + units
   end
 
   def to_b
@@ -1198,16 +1193,7 @@ class IntegerConstant < AbstractValueElement
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
     digits = @value.to_s
-
-    unless @units.empty?
-      units_s = []
-
-      @units.each do |name, power|
-        units_s << "#{name}#{power.to_s}"
-      end
-
-      units = "{#{units_s.join(' ')}}"
-    end
+    units = AbstractToken.units_to_s(@units)
 
     lead_space + digits + units
   end
@@ -1450,89 +1436,6 @@ class BooleanConstant < AbstractValueElement
 
   def numeric_value
     @value ? -1 : 0
-  end
-end
-
-# Units constants
-class UnitsConstant < AbstractValueElement
-  def self.accept?(token)
-    classes = %w[UnitsConstantToken]
-    classes.include?(token.class.to_s)
-  end
-
-  attr_reader :value, :symbol_text
-
-  def initialize(obj)
-    super()
-
-    @symbol_text = obj.to_s
-
-    @value = obj.values
-
-    @content_type = :units
-    @shape = :array
-    @constant = true
-    @units_constant = true
-  end
-
-  def set_content_type(type_stack)
-    type_stack.push(@content_type)
-  end
-
-  def set_shape(shape_stack)
-    shape_stack.push(@shape)
-  end
-
-  def set_constant(constant_stack)
-    constant_stack.push(@constant)
-  end
-
-  def eql?(other)
-    @value == other.to_v
-  end
-
-  def ==(other)
-    @value == other.to_v
-  end
-
-  def hash
-    @value.hash
-  end
-
-  def <=>(other)
-    to_i <=> other.to_i
-  end
-
-  def >(other)
-    @value > other.to_v
-  end
-
-  def >=(other)
-    @value >= other.to_v
-  end
-
-  def <(other)
-    @value < other.to_v
-  end
-
-  def <=(other)
-    @value <= other.to_v
-  end
-
-  def to_s
-    @value.map(&:to_s).join(' ')
-  end
-
-  def to_formatted_s
-    "{#{@value.map(&:to_s).join(' ')}}"
-  end
-
-  def to_dict
-    @value
-  end
-
-  def compatible?(other)
-    false
   end
 end
 
