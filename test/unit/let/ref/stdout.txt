@@ -1,0 +1,25 @@
+F0= 10
+F1= 10{M}
+F2= 10{FT2}
+F3= 10{M2 S}
+F4= 10{M2 S-1}
+STOP in line 99
+
+10 (0) REM Test different values
+20 (1) LET A0 = 10
+21 (1) LET A1 = 10{M}
+22 (1) LET A2 = 10{FT2}
+23 (1) LET A3 = 10{M2 S}
+24 (1) LET A4 = 10{M2 S-1}
+30 (1) LET F0 = A0
+31 (1) LET F1 = A1
+32 (1) LET F2 = A2
+33 (1) LET F3 = A3
+34 (1) LET F4 = A4
+40 (1) PRINT "F0="; F0
+41 (1) PRINT "F1="; F1
+42 (1) PRINT "F2="; F2
+43 (1) PRINT "F3="; F3
+44 (1) PRINT "F4="; F4
+99 (1) END
+
