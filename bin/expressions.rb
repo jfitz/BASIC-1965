@@ -1054,7 +1054,9 @@ class Matrix < AbstractCompound
     b = get_value_2(1, 2)
     c = get_value_2(2, 1)
     d = get_value_2(2, 2)
-    a.multiply(d) - b.multiply(c)
+    ad = a.multiply(d)
+    bc = b.multiply(c)
+    ad.subtract(bc)
   end
 
   def determinant_n
@@ -1069,8 +1071,9 @@ class Matrix < AbstractCompound
       v = get_value_2(1, col)
       # create submatrix
       subm = submatrix(1, col)
-      d = v.multiply(subm.determinant).multiply(sign)
-      det += d
+      d = v.multiply(subm.determinant)
+      d1 = d.multiply(sign)
+      det = det.add(d1)
       sign = sign.multiply(minus_one)
     end
 
@@ -1079,7 +1082,9 @@ class Matrix < AbstractCompound
 
   def submatrix(exclude_row, exclude_col)
     one = NumericConstant.new(1)
-    new_dims = [@dimensions[0] - one, @dimensions[1] - one]
+    r = @dimensions[0].subtract(one)
+    c = @dimensions[1].subtract(one)
+    new_dims = [r, c]
     new_values = submatrix_values(exclude_row, exclude_col)
     Matrix.new(new_dims, new_values)
   end
@@ -1121,7 +1126,7 @@ class Matrix < AbstractCompound
     minuend_coords = AbstractElement.make_coords(col, wcol)
     subtrahend = values[value_coords]
     minuend = values[minuend_coords]
-    new_value = subtrahend - minuend.multiply(factor)
+    new_value = subtrahend.subtract(minuend.multiply(factor))
     values[value_coords] = new_value
   end
 

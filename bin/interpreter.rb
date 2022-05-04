@@ -19,7 +19,7 @@ class AbstractForControl
 
   def bump_control(interpreter)
     current_value = interpreter.get_value(@control)
-    current_value += @step
+    current_value = current_value.add(@step)
 
     interpreter.unlock_variable(@control) if $options['lock_fornext'].value
     interpreter.set_value(@control, current_value)
@@ -58,9 +58,9 @@ class ForToControl < AbstractForControl
     current_value = interpreter.get_value(@control)
 
     if @step > zero
-      current_value + @step > @end
+      current_value.add(@step) > @end
     elsif @step < zero
-      current_value + @step < @end
+      current_value.add(@step) < @end
     else
       false
     end
