@@ -1,0 +1,44 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 15
+McCabe complexity: 1
+Halstead complexity:
+ length: 11
+ volume: 26.377
+ difficulty: 1.000
+ effort: 26.377
+ language: 26.377
+ intelligence: 26.377
+ time: 0.024
+
+10 (0 1) REM Test different values
+  Origs: 
+  Dests: 
+20 (0 3) LET A0 = 10{M}
+  Origs: :start
+  Dests: 21:auto
+21 (0 3) LET A1 = 20{L}
+  Origs: 20:auto
+  Dests: 22:auto
+22 (0 4) LET A2 = A0 + A1
+  Origs: 21:auto
+  Dests: 23:auto
+23 (0 3) PRINT "A2="; A2
+  Origs: 22:auto
+  Dests: 99:auto
+99 (0 1) END
+  Origs: 23:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
