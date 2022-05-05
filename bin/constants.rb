@@ -484,6 +484,13 @@ end
 
 # Numeric constants
 class NumericConstant < AbstractValueElement
+  def self.new_2(token, units)
+    n = NumericConstant.new(token)
+    n.set_units(units)
+
+    return n
+  end
+
   def self.accept?(token)
     classes =
       %w[Fixnum Integer Bignum Float NumericConstantToken NumericSymbolToken]
@@ -526,6 +533,7 @@ class NumericConstant < AbstractValueElement
   public
 
   attr_reader :symbol_text
+  attr_reader :units
 
   def initialize(obj)
     super()
@@ -564,14 +572,6 @@ class NumericConstant < AbstractValueElement
     @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
 
-  def dump
-    "#{self.class}:#{@symbol_text}"
-  end
-
-  def zero?
-    @value.zero?
-  end
-
   def set_content_type(type_stack)
     type_stack.push(@content_type)
   end
@@ -582,6 +582,18 @@ class NumericConstant < AbstractValueElement
 
   def set_constant(constant_stack)
     constant_stack.push(@constant)
+  end
+
+  def set_units(units)
+    @units = units
+  end
+
+  def dump
+    "#{self.class}:#{@symbol_text}"
+  end
+
+  def zero?
+    @value.zero?
   end
 
   def eql?(other)
@@ -634,8 +646,10 @@ class NumericConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
+    raise BASICRuntimeError, :te_units_no_match unless other.units == @units
+    
     value = @value + other.to_numeric.to_v
-    NumericConstant.new(value)
+    NumericConstant.new_2(value, @units)
   end
 
   def subtract(other)
@@ -843,6 +857,13 @@ end
 
 # Integer constants
 class IntegerConstant < AbstractValueElement
+  def self.new_2(token, units)
+    n = IntegerConstant.new(token)
+    n.set_units(units)
+
+    return n
+  end
+
   def self.accept?(token)
     classes = %w[Fixnum Integer Bignum Float IntegerConstantToken]
     classes.include?(token.class.to_s)
@@ -859,6 +880,7 @@ class IntegerConstant < AbstractValueElement
   end
 
   attr_reader :symbol_text
+  attr_reader :units
 
   def initialize(obj)
     super()
@@ -883,10 +905,6 @@ class IntegerConstant < AbstractValueElement
     @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
 
-  def zero?
-    @value.zero?
-  end
-
   def set_content_type(type_stack)
     type_stack.push(@content_type)
   end
@@ -897,6 +915,14 @@ class IntegerConstant < AbstractValueElement
 
   def set_constant(constant_stack)
     constant_stack.push(@constant)
+  end
+
+  def set_units(units)
+    @units = units
+  end
+
+  def zero?
+    @value.zero?
   end
 
   def eql?(other)
@@ -970,8 +996,10 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
+    raise BASICRuntimeError, :te_units_no_match unless other.units == @units
+    
     value = @value + other.to_numeric.to_v
-    IntegerConstant.new(value)
+    IntegerConstant.new_2(value, @units)
   end
 
   def subtract(other)
