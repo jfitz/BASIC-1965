@@ -83,28 +83,6 @@ class AbstractToken
     pretty_lines << pretty_line
   end
 
-  def self.units_to_s(units)
-    units_t = ''
-
-    unless units.empty?
-      units_s = []
-
-      units.each do |name, power|
-        if power == 1
-          # don't print power when it is 1
-          units_s << "#{name}"
-        else
-          # print all other powers
-          units_s << "#{name}#{power.to_s}"
-        end
-      end
-
-      units_t = "{#{units_s.join(' ')}}"
-    end
-
-    units_t
-  end
-
   attr_reader :text
 
   def initialize(text)
@@ -387,7 +365,14 @@ class NumericConstantToken < AbstractToken
     super
 
     @is_numeric_constant = true
-    @units = make_units(@text)
+
+    @units = Units.new({}, '{}')
+
+    if @text.include?('{')
+      index = @text.index('{')
+      text = @text[index..-1]
+      @units = Units.new({}, text)
+    end
   end
 
   def <=>(other)
@@ -407,69 +392,10 @@ class NumericConstantToken < AbstractToken
   end
 
   def pretty
-    float_to_possible_int(@text) + AbstractToken.units_to_s(@units)
+    float_to_possible_int(@text) + units.to_s
   end
 
   private
-
-  def make_units(text)
-    my_units = {}
-
-    return my_units unless text.include?('{') && text[-1] == '}'
-
-    i = text.index('{')
-    units_s = text[i..-2]
-    
-    name = ''
-    power_s = ''
-    last_c = ''
-
-    units_s.each_char do |c|
-      if is_alpha(c)
-        if !name.empty? && (is_digit(last_c) || '+-'.include?(last_c))
-          power_s = '1' if '+-'.include?(power_s)
-          my_units[name] = power_s.to_i
-          name = ''
-          power_s = ''
-        end
-
-        name += c
-
-        last_c = c
-      end
-
-      if is_digit(c)
-        power_s += c
-
-        last_c = c
-      end
-
-      if '+-'.include?(c) && power_s.empty?
-        power_s += c
-
-        last_c = c
-      end
-    end
-
-    unless name.empty?
-      power_s = '1' if '+-'.include?(power_s)
-      my_units[name] = power_s.to_i
-    end
-
-    my_units
-  end
-
-  def is_digit(c)
-    '0' <= c && c <= '9'
-  end
-
-  def is_alpha(c)
-    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z'
-  end
-
-  def is_alnum(c)
-    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z' || '0' <= c && c <= '9'
-  end
 
   def float_to_possible_int(s)
     f = s.to_f

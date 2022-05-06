@@ -305,7 +305,112 @@ class ParamSeparator < AbstractElement
   end
 end
 
-public
+# class for units
+class Units
+  attr_reader :values
+
+  def initialize(values, text)
+    @values = values
+
+    unless text.nil?
+      units_s = text[0..-1]
+      
+      name = ''
+      power_s = ''
+      last_c = ''
+
+      units_s.each_char do |c|
+        if is_alpha(c)
+          if !name.empty? && (is_digit(last_c) || '+-'.include?(last_c))
+            power_s = '1' if '+-'.include?(power_s)
+            # TODO: check powers in range -3..3
+            # TODO: check no duplicate name
+            @values[name] = power_s.to_i
+            name = ''
+            power_s = ''
+          end
+
+          name += c
+
+          last_c = c
+        end
+
+        if is_digit(c)
+          power_s += c
+
+          last_c = c
+        end
+
+        if '+-'.include?(c) && power_s.empty?
+          power_s += c
+
+          last_c = c
+        end
+      end
+
+      unless name.empty?
+        power_s = '1' if '+-'.include?(power_s)
+        # TODO: check powers in range -3..3
+        # TODO: check no duplicate name
+        @values[name] = power_s.to_i
+      end
+    end
+  end
+
+  def hash
+    @values.hash
+  end
+
+  def ==(other)
+    @values == other.values
+  end
+
+  def eq(other)
+    @values == other.values
+  end
+
+  def to_s
+    units_t = ''
+
+    unless @values.empty?
+      units_s = []
+
+      @values.each do |name, power|
+        if power == 1
+          # don't print power when it is 1
+          units_s << "#{name}"
+        else
+          # print all other powers
+          units_s << "#{name}#{power.to_s}"
+        end
+      end
+
+      units_t = "{#{units_s.join(' ')}}"
+    end
+
+    units_t
+  end
+
+  def add(other)
+    raise BASICRuntimeError, :te_units_no_match unless @values == other.values
+
+    Units.new(@values, nil)
+  end
+
+  private
+
+  def is_digit(c)
+    '0' <= c && c <= '9'
+  end
+
+  def is_alpha(c)
+    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z'
+  end
+
+  def is_alnum(c)
+    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z' || '0' <= c && c <= '9'
+  end
+end
 
 # class that holds a value
 class AbstractValueElement < AbstractElement
@@ -567,7 +672,7 @@ class NumericConstant < AbstractValueElement
     @symbol_text = obj.to_s
     @value = float_to_possible_int(f)
     @numeric_constant = true
-    @units = {}
+    @units = Units.new({}, '{}')
 
     @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
@@ -642,14 +747,15 @@ class NumericConstant < AbstractValueElement
   end
 
   def add(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in add()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    raise BASICRuntimeError, :te_units_no_match unless other.units == @units
-    
     value = @value + other.to_numeric.to_v
-    NumericConstant.new_2(value, @units)
+    units = @units.add(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def subtract(other)
@@ -813,10 +919,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def to_s
-    digits = @value.to_s
-    units = AbstractToken.units_to_s(@units)
-
-    digits + units
+    @value.to_s + @units.to_s
   end
 
   def to_b
@@ -848,10 +951,8 @@ class NumericConstant < AbstractValueElement
 
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
-    digits = @value.to_s
-    units = AbstractToken.units_to_s(@units)
 
-    lead_space + digits + units
+    lead_space + @value.to_s + @units.to_s
   end
 end
 
@@ -900,7 +1001,7 @@ class IntegerConstant < AbstractValueElement
     @operand = true
     @precedence = 0
     @numeric_constant = true
-    @units = {}
+    @units = Units.new({}, '{}')
 
     @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
@@ -996,10 +1097,10 @@ class IntegerConstant < AbstractValueElement
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
-    raise BASICRuntimeError, :te_units_no_match unless other.units == @units
-    
     value = @value + other.to_numeric.to_v
-    IntegerConstant.new_2(value, @units)
+    units = @units.add(other.units)
+
+    IntegerConstant.new_2(value, units)
   end
 
   def subtract(other)
@@ -1123,10 +1224,7 @@ class IntegerConstant < AbstractValueElement
   end
 
   def to_s
-    digits = @value.to_s
-    units = AbstractToken.units_to_s(@units)
-
-    digits + units
+    @value.to_s + @units.to_s
   end
 
   def to_b
@@ -1158,10 +1256,8 @@ class IntegerConstant < AbstractValueElement
 
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
-    digits = @value.to_s
-    units = AbstractToken.units_to_s(@units)
 
-    lead_space + digits + units
+    lead_space + @value.to_s + @units.to_s
   end
 end
 
