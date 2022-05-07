@@ -403,6 +403,26 @@ class Units
     Units.new(@values, nil)
   end
 
+  def multiply(other)
+    new_values = other.values.clone
+
+    @values.each do |name, power|
+      if new_values.key?(name)
+        new_power = new_values[name] + power
+      else
+        new_power = power
+      end
+
+      if new_power == 0
+        new_values.delete(name)
+      else
+        new_values[name] = new_power
+      end
+    end
+
+    Units.new(new_values, nil)
+  end
+
   private
 
   def is_digit(c)
@@ -783,7 +803,9 @@ class NumericConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value * other.to_numeric.to_v
-    NumericConstant.new(value)
+    units = @units.multiply(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def divide(other)
@@ -1119,7 +1141,7 @@ class IntegerConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value - other.to_numeric.to_v
-    units = @units.add(other.units)
+    units = @units.subtract(other.units)
     
     IntegerConstant.new_2(value, units)
   end
@@ -1131,7 +1153,9 @@ class IntegerConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value * other.to_numeric.to_v
-    IntegerConstant.new(value)
+    units = @units.multiply(other.units)
+    
+    IntegerConstant.new_2(value, units)
   end
 
   def divide(other)
