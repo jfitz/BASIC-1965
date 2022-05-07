@@ -404,13 +404,33 @@ class Units
   end
 
   def multiply(other)
-    new_values = other.values.clone
+    new_values = @values.clone
 
-    @values.each do |name, power|
+    other.values.each do |name, power|
       if new_values.key?(name)
         new_power = new_values[name] + power
       else
         new_power = power
+      end
+
+      if new_power == 0
+        new_values.delete(name)
+      else
+        new_values[name] = new_power
+      end
+    end
+
+    Units.new(new_values, nil)
+  end
+
+  def divide(other)
+    new_values = @values.clone
+
+    other.values.each do |name, power|
+      if new_values.key?(name)
+        new_power = new_values[name] - power
+      else
+        new_power = -power
       end
 
       if new_power == 0
@@ -816,7 +836,9 @@ class NumericConstant < AbstractValueElement
     raise BASICRuntimeError, :te_div_zero if other.zero?
 
     value = @value.to_f / other.to_numeric.to_f
-    NumericConstant.new(value)
+    units = @units.divide(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def power(other)
@@ -1166,7 +1188,9 @@ class IntegerConstant < AbstractValueElement
     raise BASICRuntimeError, :te_div_zero if other.zero?
 
     value = @value.to_f / other.to_numeric.to_f
-    IntegerConstant.new(value)
+    units = @units.divide(other.units)
+    
+    IntegerConstant.new_2(value, units)
   end
 
   def power(other)
