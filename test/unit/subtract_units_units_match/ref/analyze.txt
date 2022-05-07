@@ -12,23 +12,23 @@ Comprehension effort: 28
 McCabe complexity: 1
 Halstead complexity:
  length: 22
- volume: 64.778
- difficulty: 1.059
- effort: 68.588
- language: 57.780
- intelligence: 61.179
- time: 0.064
+ volume: 65.906
+ difficulty: 1.000
+ effort: 65.906
+ language: 65.906
+ intelligence: 65.906
+ time: 0.061
 
 10 (0 1) REM Test different values
   Origs: 
   Dests: 
-20 (0 3) LET A0 = 10{M}
+20 (0 3) LET A0 = 20{M}
   Origs: :start
   Dests: 21:auto
-21 (0 3) LET A1 = 20{M}
+21 (0 3) LET A1 = 17{M}
   Origs: 20:auto
   Dests: 22:auto
-22 (0 4) LET A2 = A0 + A1
+22 (0 4) LET A2 = A0 - A1
   Origs: 21:auto
   Dests: 23:auto
 23 (0 3) PRINT "A2="; A2
@@ -37,10 +37,10 @@ Halstead complexity:
 30 (0 3) LET B0 = 10{M S-1}
   Origs: 23:auto
   Dests: 31:auto
-31 (0 3) LET B1 = 20{M S-1}
+31 (0 3) LET B1 = 6{M S-1}
   Origs: 30:auto
   Dests: 32:auto
-32 (0 4) LET B2 = B0 + B1
+32 (0 4) LET B2 = B0 - B1
   Origs: 31:auto
   Dests: 33:auto
 33 (0 3) PRINT "B2="; B2

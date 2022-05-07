@@ -397,6 +397,12 @@ class Units
     Units.new(@values, nil)
   end
 
+  def subtract(other)
+    raise BASICRuntimeError, :te_units_no_match unless @values == other.values
+
+    Units.new(@values, nil)
+  end
+
   private
 
   def is_digit(c)
@@ -765,7 +771,9 @@ class NumericConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value - other.to_numeric.to_v
-    NumericConstant.new(value)
+    units = @units.subtract(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def multiply(other)
@@ -1093,7 +1101,8 @@ class IntegerConstant < AbstractValueElement
   end
 
   def add(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in add()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
@@ -1110,7 +1119,9 @@ class IntegerConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value - other.to_numeric.to_v
-    IntegerConstant.new(value)
+    units = @units.add(other.units)
+    
+    IntegerConstant.new_2(value, units)
   end
 
   def multiply(other)
@@ -1331,7 +1342,8 @@ class TextConstant < AbstractValueElement
   end
 
   def add(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in add()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
@@ -1339,7 +1351,8 @@ class TextConstant < AbstractValueElement
   end
 
   def multiply(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in multiply()"
 
     raise(BASICExpressionError, message) unless other.numeric_constant?
 
