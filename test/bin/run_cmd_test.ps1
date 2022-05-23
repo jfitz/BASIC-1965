@@ -6,6 +6,20 @@ param(
 [string[]]$OPTIONS
 )
 
+function Compare-Files {
+    param(
+        [string]$filea,
+        [string]$fileb
+    )
+
+    $HA = Get-FileHash $filea
+    $HAH = $HA.Hash
+    $HB = Get-FileHash $fileb
+    $HBH = $HB.Hash
+
+    return $HBH -eq $HAH
+}
+
 Write-Output ""
 Write-Output "Start test $TESTNAME"
 
@@ -30,13 +44,12 @@ Write-Output "run finished"
 
 # compare results
 Write-Output "Comparing stdout..."
-$HREF = Get-FileHash "$TESTBED\$TESTNAME\stdout.txt"
-$HREFH = $HREF.Hash
-$HACT = Get-FileHash "$TESTROOT\$TESTGROUP\$TESTNAME\ref\stdout.txt"
-$HACTH = $HACT.Hash
-If ($HACTH -ne $HREFH) {
+$FILEA = "$TESTBED\$TESTNAME\stdout.txt"
+$FILEB = "$TESTROOT\$TESTGROUP\$TESTNAME\ref\stdout.txt"
+If (Compare-Files -filea $FILEA -fileb $FILEB) {
+} else {
     Write-Output "Difference"
-    Copy-Item -Path "$TESTBED\$TESTNAME\stdout.txt" -Destination "$TESTROOT\$TESTGROUP\$TESTNAME\ref\stdout.txt"
+    Copy-Item -Path $FILEA -Destination $FILEB
     $ECOUNT++
 }
 Write-Output "compare done"
@@ -44,13 +57,12 @@ Write-Output "compare done"
 If (Test-Path "test\$TESTGROUP\$TESTNAME\ref\out_files.txt") {
     ForEach ($F in Get-Content test/$TESTGROUP/$TESTNAME/ref/out_files.txt) {
  	    Write-Output "Compare $F..."
-        $HREF = Get-FileHash "$TESTROOT\$TESTGROUP\$TESTNAME\ref\$F"
-        $HREFH = $HREF.Hash
-        $HACT = Get-FileHash "$TESTBED\$TESTNAME\$F"
-        $HACTH = $HACT.Hash
-        If ($HACTH -ne $HREFH) {
+        $FILEA = "$TESTBED\$TESTNAME\$F"
+        $FILEB = "$TESTROOT\$TESTGROUP\$TESTNAME\ref\$F"
+        If (Compare-Files -filea $FILEA -fileb $FILEB) {
+        } else {
             Write-Output "Difference"
-	        Copy-Item -Path "$TESTBED\$TESTNAME\$F" -Destination "$TESTROOT\$TESTGROUP\$TESTNAME\ref\$F"
+            Copy-Item -Path $FILEA -Destination $FILEB
             $ECOUNT++
 	    }
     }
