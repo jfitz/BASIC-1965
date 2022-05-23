@@ -98,7 +98,6 @@ class AbstractToken
     @is_text_constant = false
     @is_numeric_constant = false
     @is_boolean_constant = false
-    @is_units_constant = false
     @is_user_function = false
     @is_variable = false
     @is_statement_separator = false
@@ -360,10 +359,20 @@ end
 
 # numeric constant token
 class NumericConstantToken < AbstractToken
+  attr_reader :units
+
   def initialize(text)
     super
 
     @is_numeric_constant = true
+
+    @units = Units.new({}, '{}')
+
+    if @text.include?('{')
+      index = @text.index('{')
+      text = @text[index..-1]
+      @units = Units.new({}, text)
+    end
   end
 
   def <=>(other)
@@ -383,7 +392,7 @@ class NumericConstantToken < AbstractToken
   end
 
   def pretty
-    float_to_possible_int(@text)
+    float_to_possible_int(@text) + units.to_s
   end
 
   private
@@ -442,66 +451,6 @@ class BooleanConstantToken < AbstractToken
 
   def to_i
     @text.to_f.to_i
-  end
-end
-
-# units constant token
-class UnitsConstantToken < AbstractToken
-  attr_reader :values
-
-  def initialize(text)
-    super
-
-    @is_units_constant = true
-
-    @values = {}
-
-    name = ''
-    power_s = ''
-    last_c = ''
-
-    text.each_char do |c|
-      if is_alpha(c)
-        if !name.empty? && (is_digit(last_c) || '+-'.include?(last_c))
-          power_s = '1' if '+-'.include?(power_s)
-          @values[name] = power_s.to_i
-          name = ''
-          power_s = ''
-        end
-        name += c
-
-        last_c = c
-      end
-
-      if is_digit(c)
-        power_s += c
-
-        last_c = c
-      end
-
-      if '+-'.include?(c) && power_s.empty?
-        power_s += c
-
-        last_c = c
-      end
-    end
-
-    unless name.empty?
-      power_s = '1' if '+-'.include?(power_s)
-      @values[name] = power_s.to_i
-    end
-  end
-
-  def is_digit(c)
-    '0' <= c && c <= '9'
-  end
-
-  def is_alpha(c)
-    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z'
-  end
-
-  def is_alnum(c)
-    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z' || '0' <= c && c <= '9'
   end
 end
 

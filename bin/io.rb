@@ -20,17 +20,20 @@ module Reader
   end
 
   def verify_tokens(tokens)
-    evens = tokens.values_at(* tokens.each_index.select(&:even?))
+    state = :want_value
+    tokens.each do |token|
+      case state
+      when :want_value
+        raise BASICRuntimeError, :te_inp_no_num_text unless
+          token.numeric_constant?
 
-    evens.each do |token|
-      raise BASICRuntimeError, :te_inp_no_num_text unless
-        token.numeric_constant?
-    end
-
-    odds = tokens.values_at(* tokens.each_index.select(&:odd?))
-
-    odds.each do |token|
-      raise BASICRuntimeError, :te_exp_sep unless token.separator?
+        state = :want_sep
+      when :want_sep
+        raise BASICRuntimeError, :te_exp_sep unless
+          token.separator?
+        
+        state = :want_value
+      end
     end
   end
 end
@@ -47,8 +50,7 @@ module Inputter
     # drop whitespace
     tokens.delete_if(&:whitespace?)
 
-    # verify all even-index tokens are numeric
-    # verify all odd-index tokens are separators
+    # verify values between separators
     verify_tokens(tokens)
 
     # convert from tokens to values
@@ -125,7 +127,7 @@ class ConsoleIo
 
     zone_width = $options['zone_width'].value
 
-    print_item(' ') while @column % zone_width != 0 unless zone_width.zero?
+    print_item(' ') while @column % zone_width != 0 if zone_width.positive?
 
     @last_was_numeric = false
     @last_was_tab = true
@@ -136,7 +138,7 @@ class ConsoleIo
 
     zone_width = $options['semicolon_zone_width'].value
 
-    print_item(' ') while @column % zone_width != 0 unless zone_width.zero?
+    print_item(' ') while @column % zone_width != 0 if zone_width.positive?
 
     @last_was_numeric = false
     @last_was_tab = false
@@ -394,19 +396,21 @@ class FileHandler
       tokens = tokenizer.tokenize(line)
       tokens.delete_if { |token| token.separator? || token.whitespace? }
 
-      converted = read_convert(tokens)
-      data_store += converted
+      elements = read_convert(tokens)
+      data_store += elements
     end
 
     data_store
   end
 
   def read_convert(tokens)
-    converted = []
+    elements = []
 
-    tokens.each { |token| converted << NumericConstant.new(token) }
+    tokens.each do |token|
+      elements << NumericConstant.new(token) if token.numeric_constant?
+    end
 
-    converted
+    elements
   end
 
   def read_file(file_name)

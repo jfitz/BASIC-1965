@@ -34,7 +34,6 @@ class AbstractElement
     @numeric_constant = false
     @text_constant = false
     @boolean_constant = false
-    @units_constant = false
   end
 
   def uncache
@@ -155,10 +154,6 @@ class AbstractElement
 
   def boolean_constant?
     @boolean_constant
-  end
-
-  def units_constant?
-    @units_constant
   end
 
   def pop_stack(stack); end
@@ -310,7 +305,158 @@ class ParamSeparator < AbstractElement
   end
 end
 
-public
+# class for units
+class Units
+  attr_reader :values
+
+  def initialize(values, text)
+    @values = values
+
+    unless text.nil?
+      units_s = text[0..-1]
+      
+      name = ''
+      power_s = ''
+      last_c = ''
+
+      units_s.each_char do |c|
+        if is_alpha(c)
+          if !name.empty? && (is_digit(last_c) || '+-'.include?(last_c))
+            power_s = '1' if '+-'.include?(power_s)
+            # TODO: check powers in range -3..3
+            # TODO: check no duplicate name
+            @values[name] = power_s.to_i
+            name = ''
+            power_s = ''
+          end
+
+          name += c
+
+          last_c = c
+        end
+
+        if is_digit(c)
+          power_s += c
+
+          last_c = c
+        end
+
+        if '+-'.include?(c) && power_s.empty?
+          power_s += c
+
+          last_c = c
+        end
+      end
+
+      unless name.empty?
+        power_s = '1' if '+-'.include?(power_s)
+        # TODO: check powers in range -3..3
+        # TODO: check no duplicate name
+        @values[name] = power_s.to_i
+      end
+    end
+  end
+
+  def hash
+    @values.hash
+  end
+
+  def ==(other)
+    @values == other.values
+  end
+
+  def eq(other)
+    @values == other.values
+  end
+
+  def to_s
+    units_t = ''
+
+    unless @values.empty?
+      units_s = []
+
+      @values.each do |name, power|
+        if power == 1
+          # don't print power when it is 1
+          units_s << "#{name}"
+        else
+          # print all other powers
+          units_s << "#{name}#{power.to_s}"
+        end
+      end
+
+      units_t = "{#{units_s.join(' ')}}"
+    end
+
+    units_t
+  end
+
+  def add(other)
+    raise BASICRuntimeError, :te_units_no_match unless @values == other.values
+
+    Units.new(@values, nil)
+  end
+
+  def subtract(other)
+    raise BASICRuntimeError, :te_units_no_match unless @values == other.values
+
+    Units.new(@values, nil)
+  end
+
+  def multiply(other)
+    new_values = @values.clone
+
+    other.values.each do |name, power|
+      if new_values.key?(name)
+        new_power = new_values[name] + power
+      else
+        new_power = power
+      end
+
+      if new_power == 0
+        new_values.delete(name)
+      else
+        new_values[name] = new_power
+      end
+    end
+
+    Units.new(new_values, nil)
+  end
+
+  def divide(other)
+    new_values = @values.clone
+
+    other.values.each do |name, power|
+      if new_values.key?(name)
+        new_power = new_values[name] - power
+      else
+        new_power = -power
+      end
+
+      if new_power == 0
+        new_values.delete(name)
+      else
+        new_values[name] = new_power
+      end
+    end
+
+    Units.new(new_values, nil)
+  end
+
+  private
+
+  def is_digit(c)
+    '0' <= c && c <= '9'
+  end
+
+  def is_alpha(c)
+    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z'
+  end
+
+  def is_alnum(c)
+    'A' <= c && c <= 'Z' || 'a' <= c && c <= 'z' || '0' <= c && c <= '9'
+  end
+end
 
 # class that holds a value
 class AbstractValueElement < AbstractElement
@@ -446,14 +592,6 @@ class AbstractValueElement < AbstractElement
     raise(BASICExpressionError, 'Invalid operator #')
   end
 
-  def +(_other)
-    raise(BASICExpressionError, 'Invalid operator +')
-  end
-
-  def -(_other)
-    raise(BASICExpressionError, 'Invalid operator -')
-  end
-
   def add(_)
     raise(BASICExpressionError, 'Invalid operator add')
   end
@@ -497,6 +635,13 @@ end
 
 # Numeric constants
 class NumericConstant < AbstractValueElement
+  def self.new_2(token, units)
+    n = NumericConstant.new(token)
+    n.set_units(units)
+
+    return n
+  end
+
   def self.accept?(token)
     classes =
       %w[Fixnum Integer Bignum Float NumericConstantToken NumericSymbolToken]
@@ -539,24 +684,24 @@ class NumericConstant < AbstractValueElement
   public
 
   attr_reader :symbol_text
-  attr_accessor :units
+  attr_reader :units
 
-  def initialize(text)
+  def initialize(obj)
     super()
 
     numeric_classes = %w[Fixnum Integer Bignum Float]
     float_classes = %w[Rational NumericConstantToken]
 
     f = nil
-    f = text.to_f if float_classes.include?(text.class.to_s)
-    f = text if numeric_classes.include?(text.class.to_s)
+    f = obj.to_f if float_classes.include?(obj.class.to_s)
+    f = obj if numeric_classes.include?(obj.class.to_s)
 
-    if text.class.to_s == 'NumericSymbolToken'
-      f = text.value
+    if obj.class.to_s == 'NumericSymbolToken'
+      f = obj.value
       @symbol = true
     end
 
-    raise(BASICSyntaxError, "'#{text}' is not a number") if f.nil?
+    raise(BASICSyntaxError, "'#{obj}' is not a number") if f.nil?
 
     precision = $options['precision'].value
     if precision != 'INFINITE' && f != 0 && f != Float::INFINITY
@@ -570,18 +715,12 @@ class NumericConstant < AbstractValueElement
     @content_type = :numeric
     @shape = :scalar
     @constant = true
-    @symbol_text = text.to_s
+    @symbol_text = obj.to_s
     @value = float_to_possible_int(f)
     @numeric_constant = true
-    @units = {}
-  end
+    @units = Units.new({}, '{}')
 
-  def dump
-    "#{self.class}:#{@symbol_text}"
-  end
-
-  def zero?
-    @value.zero?
+    @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
 
   def set_content_type(type_stack)
@@ -594,6 +733,18 @@ class NumericConstant < AbstractValueElement
 
   def set_constant(constant_stack)
     constant_stack.push(@constant)
+  end
+
+  def set_units(units)
+    @units = units
+  end
+
+  def dump
+    "#{self.class}:#{@symbol_text}"
+  end
+
+  def zero?
+    @value.zero?
   end
 
   def eql?(other)
@@ -641,40 +792,16 @@ class NumericConstant < AbstractValueElement
     FileHandle.new(num)
   end
 
-  def +(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = @value + other.to_numeric.to_v
-    NumericConstant.new(value)
-  end
-
-  def -(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in -()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = @value - other.to_numeric.to_v
-    NumericConstant.new(value)
-  end
-
-  def *(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in *()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = @value * other.to_numeric.to_v
-    NumericConstant.new(value)
-  end
-
   def add(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in add()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value + other.to_numeric.to_v
-    NumericConstant.new(value)
+    units = @units.add(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def subtract(other)
@@ -684,7 +811,9 @@ class NumericConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value - other.to_numeric.to_v
-    NumericConstant.new(value)
+    units = @units.subtract(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def multiply(other)
@@ -694,7 +823,9 @@ class NumericConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value * other.to_numeric.to_v
-    NumericConstant.new(value)
+    units = @units.multiply(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def divide(other)
@@ -705,7 +836,9 @@ class NumericConstant < AbstractValueElement
     raise BASICRuntimeError, :te_div_zero if other.zero?
 
     value = @value.to_f / other.to_numeric.to_f
-    NumericConstant.new(value)
+    units = @units.divide(other.units)
+    
+    NumericConstant.new_2(value, units)
   end
 
   def power(other)
@@ -838,7 +971,7 @@ class NumericConstant < AbstractValueElement
   end
 
   def to_s
-    @value.to_s
+    @value.to_s + @units.to_s
   end
 
   def to_b
@@ -870,25 +1003,20 @@ class NumericConstant < AbstractValueElement
 
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
-    digits = @value.to_s
-    units = ''
 
-    unless @units.empty?
-      units_s = []
-
-      @units.each do |name, power|
-        units_s << "#{name}#{power.to_s}"
-      end
-
-      units = "{#{units_s.join(' ')}}"
-    end
-
-    lead_space + digits + units
+    lead_space + @value.to_s + @units.to_s
   end
 end
 
 # Integer constants
 class IntegerConstant < AbstractValueElement
+  def self.new_2(token, units)
+    n = IntegerConstant.new(token)
+    n.set_units(units)
+
+    return n
+  end
+
   def self.accept?(token)
     classes = %w[Fixnum Integer Bignum Float IntegerConstantToken]
     classes.include?(token.class.to_s)
@@ -905,18 +1033,19 @@ class IntegerConstant < AbstractValueElement
   end
 
   attr_reader :symbol_text
+  attr_reader :units
 
-  def initialize(text)
+  def initialize(obj)
     super()
 
     numeric_classes = %w[Fixnum Integer Bignum Float NumericConstantToken]
     f = nil
-    f = text.to_i if numeric_classes.include?(text.class.to_s)
-    f = text.to_f.to_i if text.class.to_s == 'IntegerConstantToken'
+    f = obj.to_i if numeric_classes.include?(obj.class.to_s)
+    f = obj.to_f.to_i if obj.class.to_s == 'NumericConstantToken'
 
-    raise BASICSyntaxError, "'#{text}' is not an integer" if f.nil?
+    raise BASICSyntaxError, "'#{obj}' is not an integer" if f.nil?
 
-    @symbol_text = text.to_s
+    @symbol_text = obj.to_s
     @content_type = :integer
     @shape = :scalar
     @constant = true
@@ -924,10 +1053,9 @@ class IntegerConstant < AbstractValueElement
     @operand = true
     @precedence = 0
     @numeric_constant = true
-  end
+    @units = Units.new({}, '{}')
 
-  def zero?
-    @value.zero?
+    @units = obj.units if obj.class.to_s == 'NumericConstantToken'
   end
 
   def set_content_type(type_stack)
@@ -940,6 +1068,14 @@ class IntegerConstant < AbstractValueElement
 
   def set_constant(constant_stack)
     constant_stack.push(@constant)
+  end
+
+  def set_units(units)
+    @units = units
+  end
+
+  def zero?
+    @value.zero?
   end
 
   def eql?(other)
@@ -1008,40 +1144,16 @@ class IntegerConstant < AbstractValueElement
     IntegerConstant.new(b)
   end
 
-  def +(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = @value + other.to_numeric.to_v
-    IntegerConstant.new(value)
-  end
-
-  def -(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in -()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = @value - other.to_numeric.to_v
-    IntegerConstant.new(value)
-  end
-
-  def *(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in *()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    value = @value * other.to_numeric.to_v
-    IntegerConstant.new(value)
-  end
-
   def add(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in add()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value + other.to_numeric.to_v
-    IntegerConstant.new(value)
+    units = @units.add(other.units)
+
+    IntegerConstant.new_2(value, units)
   end
 
   def subtract(other)
@@ -1051,7 +1163,9 @@ class IntegerConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value - other.to_numeric.to_v
-    IntegerConstant.new(value)
+    units = @units.subtract(other.units)
+    
+    IntegerConstant.new_2(value, units)
   end
 
   def multiply(other)
@@ -1061,7 +1175,9 @@ class IntegerConstant < AbstractValueElement
     raise(BASICExpressionError, message) unless compatible?(other)
 
     value = @value * other.to_numeric.to_v
-    IntegerConstant.new(value)
+    units = @units.multiply(other.units)
+    
+    IntegerConstant.new_2(value, units)
   end
 
   def divide(other)
@@ -1072,7 +1188,9 @@ class IntegerConstant < AbstractValueElement
     raise BASICRuntimeError, :te_div_zero if other.zero?
 
     value = @value.to_f / other.to_numeric.to_f
-    IntegerConstant.new(value)
+    units = @units.divide(other.units)
+    
+    IntegerConstant.new_2(value, units)
   end
 
   def power(other)
@@ -1165,7 +1283,7 @@ class IntegerConstant < AbstractValueElement
   end
 
   def to_s
-    @value.to_s
+    @value.to_s + @units.to_s
   end
 
   def to_b
@@ -1197,19 +1315,8 @@ class IntegerConstant < AbstractValueElement
 
   def to_formatted_s
     lead_space = @value >= 0 ? ' ' : ''
-    digits = @value.to_s
 
-    unless @units.empty?
-      units_s = []
-
-      @units.each do |name, power|
-        units_s << "#{name}#{power.to_s}"
-      end
-
-      units = "{#{units_s.join(' ')}}"
-    end
-
-    lead_space + digits + units
+    lead_space + @value.to_s + @units.to_s
   end
 end
 
@@ -1282,16 +1389,9 @@ class TextConstant < AbstractValueElement
     @value <= other.to_v
   end
 
-  def +(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in +()"
-
-    raise(BASICExpressionError, message) unless compatible?(other)
-
-    TextConstant.new(@value + other.to_v)
-  end
-
   def add(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in add()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
 
@@ -1299,7 +1399,8 @@ class TextConstant < AbstractValueElement
   end
 
   def multiply(other)
-    message = "Type mismatch (#{content_type}/#{other.content_type}) in add()"
+    message =
+      "Type mismatch (#{content_type}/#{other.content_type}) in multiply()"
 
     raise(BASICExpressionError, message) unless other.numeric_constant?
 
@@ -1450,89 +1551,6 @@ class BooleanConstant < AbstractValueElement
 
   def numeric_value
     @value ? -1 : 0
-  end
-end
-
-# Units constants
-class UnitsConstant < AbstractValueElement
-  def self.accept?(token)
-    classes = %w[UnitsConstantToken]
-    classes.include?(token.class.to_s)
-  end
-
-  attr_reader :value, :symbol_text
-
-  def initialize(obj)
-    super()
-
-    @symbol_text = obj.to_s
-
-    @value = obj.values
-
-    @content_type = :units
-    @shape = :array
-    @constant = true
-    @units_constant = true
-  end
-
-  def set_content_type(type_stack)
-    type_stack.push(@content_type)
-  end
-
-  def set_shape(shape_stack)
-    shape_stack.push(@shape)
-  end
-
-  def set_constant(constant_stack)
-    constant_stack.push(@constant)
-  end
-
-  def eql?(other)
-    @value == other.to_v
-  end
-
-  def ==(other)
-    @value == other.to_v
-  end
-
-  def hash
-    @value.hash
-  end
-
-  def <=>(other)
-    to_i <=> other.to_i
-  end
-
-  def >(other)
-    @value > other.to_v
-  end
-
-  def >=(other)
-    @value >= other.to_v
-  end
-
-  def <(other)
-    @value < other.to_v
-  end
-
-  def <=(other)
-    @value <= other.to_v
-  end
-
-  def to_s
-    @value.map(&:to_s).join(' ')
-  end
-
-  def to_formatted_s
-    "{#{@value.map(&:to_s).join(' ')}}"
-  end
-
-  def to_dict
-    @value
-  end
-
-  def compatible?(other)
-    false
   end
 end
 

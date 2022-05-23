@@ -509,7 +509,6 @@ def make_interpreter_tokenbuilders
 
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new
-  tokenbuilders << UnitsTokenBuilder.new
   tokenbuilders << NumericSymbolTokenBuilder.new
   tokenbuilders << VariableTokenBuilder.new
   tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanConstantToken)

@@ -896,7 +896,8 @@ class FunctionFra < AbstractFunction
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature1)
 
-    res = args[0] - args[0].truncate
+    a0int = args[0].truncate
+    res = args[0].subtract(a0int)
 
     @cached = res if @constant && $options['cache_const_expr']
     res
