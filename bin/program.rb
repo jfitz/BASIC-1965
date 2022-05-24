@@ -70,6 +70,10 @@ class LineNumber
   def to_s
     @line_number.to_s
   end
+
+  def to_token
+    NumericConstantToken.new(comp_value.to_s)
+  end
 end
 
 # line number range, in form start-end
@@ -392,14 +396,22 @@ class Line
     tokens = []
     separator = StatementSeparatorToken.new('\\')
 
+    # change statements
     @statements.each do |statement|
       statement.renumber(renumber_map)
+    end
+
+    # rebuild tokens
+    @statements.each do |statement|
       tokens << statement.keywords
       tokens << statement.tokens
       tokens << separator
     end
 
+    # drop last separator
     tokens.pop
+
+    # rebuild the line with the new tokens
     text = AbstractToken.pretty_tokens([], tokens.flatten)
     text = " #{text}" unless text.empty?
     Line.new(text, @statements, tokens.flatten, @comment)
@@ -1986,7 +1998,7 @@ class Program
     new_number = start
 
     @lines.keys.sort.each do |line_number|
-      token = NumericConstantToken.new(new_number)
+      token = NumericConstantToken.new(new_number.to_s)
       number = IntegerConstant.new(token)
       new_line_number = LineNumber.new(number)
       renumber_map[line_number] = new_line_number
