@@ -511,7 +511,7 @@ def make_interpreter_tokenbuilders
   tokenbuilders << NumberTokenBuilder.new
   tokenbuilders << NumericSymbolTokenBuilder.new
   tokenbuilders << VariableTokenBuilder.new
-  tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanConstantToken)
+  tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanLiteralToken)
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
@@ -563,7 +563,7 @@ def make_command_tokenbuilders
   tokenbuilders << TextTokenBuilder.new
   tokenbuilders << NumberTokenBuilder.new
   tokenbuilders << VariableTokenBuilder.new
-  tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanConstantToken)
+  tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanLiteralToken)
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
@@ -840,7 +840,7 @@ end
 
 # list the source
 unless list_filename.nil?
-  token = TextConstantToken.new("\"#{list_filename}\"")
+  token = TextLiteralToken.new("\"#{list_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -863,7 +863,7 @@ end
 
 # show parse dump
 unless parse_filename.nil?
-  token = TextConstantToken.new("\"#{parse_filename}\"")
+  token = TextLiteralToken.new("\"#{parse_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -886,7 +886,7 @@ end
 
 # show analysis
 unless analyze_filename.nil?
-  token = TextConstantToken.new("\"#{analyze_filename}\"")
+  token = TextLiteralToken.new("\"#{analyze_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -907,7 +907,7 @@ end
 
 # pretty-print the source
 unless pretty_filename.nil?
-  token = TextConstantToken.new("\"#{pretty_filename}\"")
+  token = TextLiteralToken.new("\"#{pretty_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -929,7 +929,7 @@ end
 
 # cross-reference the source
 unless cref_filename.nil?
-  token = TextConstantToken.new("\"#{cref_filename}\"")
+  token = TextLiteralToken.new("\"#{cref_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -950,7 +950,7 @@ end
 
 # run the source
 unless run_filename.nil?
-  token = TextConstantToken.new("\"#{run_filename}\"")
+  token = TextLiteralToken.new("\"#{run_filename}\"")
   args = [TextConstant.new(token)]
 
   filename, _keywords = parse_args(args)

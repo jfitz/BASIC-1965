@@ -17,7 +17,7 @@ class StatementFactory
     m = /\A\d+/.match(text)
 
     unless m.nil?
-      token = NumericConstantToken.new(m[0])
+      token = NumericLiteralToken.new(m[0])
       number = IntegerConstant.new(token)
       line_number = LineNumber.new(number)
       line_text = m.post_match

@@ -205,7 +205,7 @@ class TextTokenBuilder
   end
 
   def token
-    TextConstantToken.new(@token)
+    TextLiteralToken.new(@token)
   end
 end
 
@@ -233,7 +233,7 @@ class InputNumberTokenBuilder
   end
 
   def token
-    NumericConstantToken.new(@token)
+    NumericLiteralToken.new(@token)
   end
 end
 
@@ -298,7 +298,7 @@ class NumberTokenBuilder
   end
 
   def token
-    NumericConstantToken.new(@token)
+    NumericLiteralToken.new(@token)
   end
 
   private

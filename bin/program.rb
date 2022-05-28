@@ -72,7 +72,7 @@ class LineNumber
   end
 
   def to_token
-    NumericConstantToken.new(comp_value.to_s)
+    NumericLiteralToken.new(comp_value.to_s)
   end
 end
 
@@ -1077,7 +1077,7 @@ class Program
     # do not change to each_with_index
     # separator tokens are still present
     tokens.each do |token|
-      next unless token.class.to_s == 'NumericConstantToken'
+      next unless token.class.to_s == 'NumericLiteralToken'
 
       case i
       when 0
@@ -1998,7 +1998,7 @@ class Program
     new_number = start
 
     @lines.keys.sort.each do |line_number|
-      token = NumericConstantToken.new(new_number.to_s)
+      token = NumericLiteralToken.new(new_number.to_s)
       number = IntegerConstant.new(token)
       new_line_number = LineNumber.new(number)
       renumber_map[line_number] = new_line_number

@@ -1764,13 +1764,13 @@ class Expression
         arguments = nil
 
         if element.array?
-          token = NumericConstantToken.new('0')
+          token = NumericLiteralToken.new('0')
           constant = NumericConstant.new(token)
           arguments = [constant]
         end
 
         if element.matrix?
-          token = NumericConstantToken.new('0')
+          token = NumericLiteralToken.new('0')
           constant = NumericConstant.new(token)
           arguments = [constant, constant]
         end

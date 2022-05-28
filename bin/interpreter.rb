@@ -211,7 +211,7 @@ class Interpreter
     tokenbuilders << TextTokenBuilder.new
     tokenbuilders << NumberTokenBuilder.new
     tokenbuilders << VariableTokenBuilder.new
-    tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanConstantToken)
+    tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanLiteralToken)
     tokenbuilders << WhitespaceTokenBuilder.new
   end
 
@@ -1205,7 +1205,7 @@ class Interpreter
         vtoken1 = VariableToken.new(vname1_s)
         vname1 = VariableName.new(vtoken1)
         # convert subscript to numeric
-        sub1_token = NumericConstantToken.new(subs_s)
+        sub1_token = NumericLiteralToken.new(subs_s)
         sub1 = NumericConstant.new(sub1_token)
         subscripts = [sub1]
         # don't wrap subscripts for FORGET
@@ -1236,9 +1236,9 @@ class Interpreter
         # split [1] on comma e4 12 65
         sub1_s, sub2_s = subs_s.split(',')
         # convert subscripts to numerics
-        sub1_token = NumericConstantToken.new(sub1_s)
+        sub1_token = NumericLiteralToken.new(sub1_s)
         sub1 = NumericConstant.new(sub1_token)
-        sub2_token = NumericConstantToken.new(sub2_s)
+        sub2_token = NumericLiteralToken.new(sub2_s)
         sub2 = NumericConstant.new(sub2_token)
         subscripts = [sub1, sub2]
         # don't wrap subscripts for FORGET
