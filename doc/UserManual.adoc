@@ -659,13 +659,34 @@ BASIC does not care about the text value, only that the values match during oper
 |2{mm} |'mm' for millimeters
 |-5{ft} |'ft' is different from 'FT'
 |17{M3} |'M3' for cubic meters
-|123456789{mi s-1} |miles per second
+|123456789{mi1 s-1} |miles per second
 |1.03{Kcal} |Kilocalories
-|-2.17{m s-2} |meters per second per second
+|-2.17{m1 s-2} |meters per second per second
 |1E4{KPa} |Kilopascals
 |-2E3{USD} |US dollars
 |1E-2{USD} |
 |2.37E+4{A} |Amps
+|==========
+
+Units are specified with a name and a power.
+Names consist of alphabetic characters.
+The last unit may omit the power (it is assumed to be 1).
+Powers must be integers.
+Powers may range from -3 to +3, but may not be zero.
+
+Examples of units
+
+|==========
+|Name |Valid or reason it is not valid
+|M |
+|mm |
+|M2 |
+|M1 S-1 |
+|E0 |Power may not be zero
+|F1.4 |Power must be integer
+|F7 |Power must be in range -3 to 3
+|d.B |Name must be alphabetic
+|G(3) |Only alphabetic characters for names
 |==========
 
 Operations on values with units are limited.
@@ -1608,7 +1629,7 @@ If you want to use a scalar variable, enclose it in parentheses:
 	140 ARR A = (S) * B
 	150 ARR A = (S) * B - E
 
-The expression is limited to arithmetic operations (addition, subtraction, multiplication, division, and exponentiation).
+The expression is limited to arithmetic operations.
 Certain operations are available for certain combinations of operands:
 
 |==========
@@ -1903,7 +1924,7 @@ If you want to use a scalar variable, enclose it in parentheses:
 	140 MAT A = (S) * B
 	150 MAT A = (S) * B - E
 
-The expression is limited to arithmetic operations (addition, subtraction, multiplication, division, and exponentiation).
+The expression is limited to arithmetic operations.
 Certain operations are available for certain combinations of operands:
 
 |==========
@@ -2269,6 +2290,7 @@ SQR(x)
 
 Computes the square root of x.
 A negative value will cause an error.
+When a value with units is given as the argument, its units must have even powers.
 
 SUM(a)
 ~~~~~~

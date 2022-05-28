@@ -392,6 +392,10 @@ class Units
     0
   end
 
+  def empty?
+    @values.empty?
+  end
+
   def to_s
     units_t = ''
 
@@ -461,6 +465,21 @@ class Units
       else
         new_values[name] = new_power
       end
+    end
+
+    Units.new(new_values, nil)
+  end
+
+  def power(p)
+    p_i = p.to_i
+
+    raise BASICRuntimeError, :te_power_not_int unless
+      @values.empty? || p_i == p
+
+    new_values = {}
+
+    @values.each do |name, pow|
+      new_values[name] = pow * p_i
     end
 
     Units.new(new_values, nil)
@@ -872,9 +891,13 @@ class NumericConstant < AbstractValueElement
       "Type mismatch (#{content_type}/#{other.content_type}) in power()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
+    raise BASICRuntimeError, :te_power_not_pure unless
+      @units.empty? || other.units.empty?
 
     value = @value**other.to_numeric.to_v
-    NumericConstant.new(value)
+    units = @units.power(other.to_numeric.to_v)
+
+    NumericConstant.new_2(value, units)
   end
 
   def truncate
@@ -1226,9 +1249,13 @@ class IntegerConstant < AbstractValueElement
       "Type mismatch (#{content_type}/#{other.content_type}) in power()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
+    raise BASICRuntimeError, :te_power_not_pure unless
+      @units.empty? || other.units.empty?
 
     value = @value**other.to_numeric.to_v
-    IntegerConstant.new(value)
+    units = @units.power(other.to_numeric.to_v)
+
+    IntegerConstant.new_2(value, units)
   end
 
   def truncate

@@ -86,7 +86,9 @@ $error_codes = {
   te_func_alr: 211,
   te_no_chain: 220,
   te_option_no_run: 230,
-  te_units_no_match: 240
+  te_units_no_match: 240,
+  te_power_not_int: 241,
+  te_power_not_pure: 242
 }
 
 $error_messages = {
@@ -141,5 +143,7 @@ $error_messages = {
   te_func_alr: 'Function already defined',
   te_no_chain: 'Cannot chain to file',
   te_option_no_run: 'Cannot set option',
-  te_units_no_match: 'Units do not match'
+  te_units_no_match: 'Units do not match',
+  te_power_not_int: 'Unit power must be integer',
+  te_power_not_pure: 'Power must be pure number'
 }
